@@ -1,0 +1,258 @@
+{
+  "passed": false,
+  "browser": {
+    "passed": 7,
+    "failed": 11,
+    "skipped": 0,
+    "attempts": 18
+  },
+  "files": {
+    "0-data__qa__measurement-v3-browser-first.json.gz": {
+      "source": "data\\qa\\measurement-v3-browser-first.json",
+      "sha256": "7fc8b46097bf93e8c3776d0c56c999af2c85907e46671154ad77bdf9971a0f01",
+      "bytes": 89301,
+      "gzipSha256": "9525cd7e897ef02559997c67f3faf60b376e107d19f8f0ba64668027a4cbde85"
+    },
+    "1-data__qa__measurement-v3-browser-first.log.gz": {
+      "source": "data\\qa\\measurement-v3-browser-first.log",
+      "sha256": "54278564ea8edd5db9a9ef4fa1d5e443e73f387f4650059538f9a4e4a3abc8bc",
+      "bytes": 45222,
+      "gzipSha256": "3c4de493386717f1273c0857e34a75e6edb7dcc718180c1aee4d6163cddf55c6"
+    },
+    "2-data__qa__measurement-v3-focused-first.json.gz": {
+      "source": "data\\qa\\measurement-v3-focused-first.json",
+      "sha256": "a5982a552204b043329b67fa75db6279d3e00746bb1da1d8ecfab95402d900d2",
+      "bytes": 37737,
+      "gzipSha256": "0d14778d66507550fdbacd1b627ed0ebb5e27520c95cb5cb5a10333ab153e6f4"
+    },
+    "3-data__qa__measurement-v3-focused-first.log.gz": {
+      "source": "data\\qa\\measurement-v3-focused-first.log",
+      "sha256": "6d7f76509f2a11bc7e23f71cf9b0e3a9beb5412f36d9ff3548e6534ffe9c153d",
+      "bytes": 490,
+      "gzipSha256": "709a3ca68743e4e2b4b70c618e67396d8e360336fa95f79d739690910b66b237"
+    },
+    "4-data__qa__measurement-v3-focused-corrections.json.gz": {
+      "source": "data\\qa\\measurement-v3-focused-corrections.json",
+      "sha256": "d36ffcaa88b2c35e20336452dec008ee61a57b82e48313c3eefd847a976925a9",
+      "bytes": 9594,
+      "gzipSha256": "979c85084228e15f97a0414a5aea3c0b7528928169228ba728b899b069bafd31"
+    },
+    "5-data__qa__measurement-v3-focused-corrections.log.gz": {
+      "source": "data\\qa\\measurement-v3-focused-corrections.log",
+      "sha256": "73abae87ff578d1d7cfba18ab278c1990aafa2ea9cbfb344bb96e3801a01799c",
+      "bytes": 496,
+      "gzipSha256": "2dc693e7add08c0d39784324d361b9a533c3373fc0075742a43da899777b4238"
+    },
+    "6-apps__web__components__report-analysis-update.tsx.gz": {
+      "source": "apps\\web\\components\\report-analysis-update.tsx",
+      "sha256": "f41106db6d17a6c9cbd9ce26ae519e3e21888723548ee306006f73c183b7b2e3",
+      "bytes": 11046,
+      "gzipSha256": "8294595216996d95a24ee591b06a944bd6abea6b08a34bde8488e88a8b9e72c8"
+    },
+    "7-test-results__browser-product-acceptance__.last-run.json.gz": {
+      "source": "test-results\\browser-product-acceptance\\.last-run.json",
+      "sha256": "edae2198e0d5c82c69d06c02658cf69963d24efceedebd47a1fa862cfd458880",
+      "bytes": 586,
+      "gzipSha256": "33ee5d52f5e54798adc6d8749ae8e4887f0b7a0bca2c071a59a24b00de0cee94"
+    },
+    "8-test-results__browser-product-acceptance__knowledge-report-knowledge-05c2a--the-exact-original-command__error-context.md.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-05c2a--the-exact-original-command\\error-context.md",
+      "sha256": "177f363ff3765fdb95a4e66d82a7d5b58e0fa2496aa2f008bddeadc62eaa81b8",
+      "bytes": 76102,
+      "gzipSha256": "1b740ae9a4333f42a8ab932f528dfa1e73636568ce1d5fb06f83043710db732e"
+    },
+    "9-test-results__browser-product-acceptance__knowledge-report-knowledge-05c2a--the-exact-original-command__test-failed-1.png.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-05c2a--the-exact-original-command\\test-failed-1.png",
+      "sha256": "9b974930be291f78a17664782c1247183e9b5cd179c34496ac30fd4b61459e8f",
+      "bytes": 72779,
+      "gzipSha256": "6b8655660d59ee1075268c1853bf28537c8947834673d4ee0737317d88a1c86a"
+    },
+    "10-test-results__browser-product-acceptance__knowledge-report-knowledge-05c2a--the-exact-original-command__trace.zip.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-05c2a--the-exact-original-command\\trace.zip",
+      "sha256": "10a814f527fdcf4c2a8dcb59f4384514331d17881533684f9a2901ccac8c8c15",
+      "bytes": 8494366,
+      "gzipSha256": "e9e6dabeaa49d17b1395898884ab8f292b71dfa920cd2fb8605f82205ecaf71c"
+    },
+    "11-test-results__browser-product-acceptance__knowledge-report-knowledge-0e416-pens-its-durable-plan-route__error-context.md.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-0e416-pens-its-durable-plan-route\\error-context.md",
+      "sha256": "1aa094f9e8cf7b53bcf6f58bb8f269cc3b5d05cc4fd53eafdae8d1a0f859ffd5",
+      "bytes": 23042,
+      "gzipSha256": "a71ac6f8c632a66536838c2313055b7fd249439d15f67fe5346a9652bceeef2c"
+    },
+    "12-test-results__browser-product-acceptance__knowledge-report-knowledge-0e416-pens-its-durable-plan-route__test-failed-1.png.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-0e416-pens-its-durable-plan-route\\test-failed-1.png",
+      "sha256": "5115b661e3cb2cd86f4aa47af3c239d35206dcfc19f12f76ba040ec0210276bb",
+      "bytes": 60019,
+      "gzipSha256": "feee1188529c6446500544bca3f7d35f2ac30bc289fc37e5966878943023ef52"
+    },
+    "13-test-results__browser-product-acceptance__knowledge-report-knowledge-0e416-pens-its-durable-plan-route__trace.zip.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-0e416-pens-its-durable-plan-route\\trace.zip",
+      "sha256": "6bb95bb8a1e61eebfd75a391124b57c696de5f6f84f86e4da1a6af1ddd727d45",
+      "bytes": 3043882,
+      "gzipSha256": "a960f317654830f25d958fa483cd6f0f2d839137e981920f3d65a8f451d3a9b2"
+    },
+    "14-test-results__browser-product-acceptance__knowledge-report-knowledge-25bc1--keyboard-controls-fit-1280__error-context.md.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-25bc1--keyboard-controls-fit-1280\\error-context.md",
+      "sha256": "f0b04c4162ab639131d6016244ef462fd50991654e540a36cf431a9cdbb53c3b",
+      "bytes": 94964,
+      "gzipSha256": "878858bb73dd3bfa38660f74f78383c73831b2b7ed0d1d3454a9c340e859845e"
+    },
+    "15-test-results__browser-product-acceptance__knowledge-report-knowledge-25bc1--keyboard-controls-fit-1280__test-failed-1.png.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-25bc1--keyboard-controls-fit-1280\\test-failed-1.png",
+      "sha256": "3461074992d4e26b256a9be7290a628e938ebfec59e841ce0d2ccad049cb65a4",
+      "bytes": 121327,
+      "gzipSha256": "6b8092ccb5bc66e2156c4335b965a1b6e72de8d35c70da2bd244f46769da40ce"
+    },
+    "16-test-results__browser-product-acceptance__knowledge-report-knowledge-25bc1--keyboard-controls-fit-1280__trace.zip.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-25bc1--keyboard-controls-fit-1280\\trace.zip",
+      "sha256": "811bfe057b3279008255b1f0a364500180c8c0c30eb4c3da6be40c65ddb62889",
+      "bytes": 3023751,
+      "gzipSha256": "a0df4ca731d4391c6849f80fcfa3b3cde3cc4e45905f2809234aca3aafa754a6"
+    },
+    "17-test-results__browser-product-acceptance__knowledge-report-knowledge-4d1c7-ther-when-selecting-a-point__error-context.md.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-4d1c7-ther-when-selecting-a-point\\error-context.md",
+      "sha256": "6d536870ded4eeb87865225e56617934fc3304487c8ff7d945753a61f9277728",
+      "bytes": 92219,
+      "gzipSha256": "f0bc7c139951396af562a5b9bf27684613d85f548de28b2f25fc4a9931398e2a"
+    },
+    "18-test-results__browser-product-acceptance__knowledge-report-knowledge-4d1c7-ther-when-selecting-a-point__test-failed-1.png.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-4d1c7-ther-when-selecting-a-point\\test-failed-1.png",
+      "sha256": "f2e7d68d65aca6d7ba2594c32b97d049b1c75568e88f795ae1cdb8551c05b5fe",
+      "bytes": 120643,
+      "gzipSha256": "508c292ebbe826ecf7e489a97c636fc42fe61408b8460690d06ad36b2115d917"
+    },
+    "19-test-results__browser-product-acceptance__knowledge-report-knowledge-4d1c7-ther-when-selecting-a-point__trace.zip.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-4d1c7-ther-when-selecting-a-point\\trace.zip",
+      "sha256": "2617a859140d0291575f015e088ae2ba7e8057ed8068ba420757ee9c0926ef80",
+      "bytes": 2424334,
+      "gzipSha256": "2587616e102e2f4a06085ef50955986228685544817b5991683c9c6fc41cc0de"
+    },
+    "20-test-results__browser-product-acceptance__knowledge-report-knowledge-51aee-d-keyboard-controls-fit-768__error-context.md.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-51aee-d-keyboard-controls-fit-768\\error-context.md",
+      "sha256": "fcff6e97c02f696c28383be0870bcf21e35765b4dfffed9b49f909705732534d",
+      "bytes": 18058,
+      "gzipSha256": "5be74c8200b6461ad0ee02f2a43d56fe43972465ba5028d72ea4bc80876ed16f"
+    },
+    "21-test-results__browser-product-acceptance__knowledge-report-knowledge-51aee-d-keyboard-controls-fit-768__test-failed-1.png.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-51aee-d-keyboard-controls-fit-768\\test-failed-1.png",
+      "sha256": "20e78601467ce59c775509ae71d11e4027d9361cd219d87a7ae1913b518aa818",
+      "bytes": 73872,
+      "gzipSha256": "007cbc2e4e12371cd1b57207b90bddeb8d479353c2e53fb7cf4b1600133f804e"
+    },
+    "22-test-results__browser-product-acceptance__knowledge-report-knowledge-51aee-d-keyboard-controls-fit-768__trace.zip.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-51aee-d-keyboard-controls-fit-768\\trace.zip",
+      "sha256": "7700a355ae4b1527bda1f4a56f9b2b10ef7d91d00ac552f904ccd24892e04eb5",
+      "bytes": 3054219,
+      "gzipSha256": "01f4f999450e4f146cb8cf3ee6bc81bbae62781a3f41e3f18240fb26e11603cc"
+    },
+    "23-test-results__browser-product-acceptance__knowledge-report-knowledge-94e0f-dable-and-retry-can-recover__error-context.md.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-94e0f-dable-and-retry-can-recover\\error-context.md",
+      "sha256": "c15b7e197adcd4c2d2e041ca002adc0b926a31b923e1877303bf107177a4aded",
+      "bytes": 22210,
+      "gzipSha256": "d3bed7a1fff2f0c4403000a9f5a4d0f7d5a2353d6b36b148abe1c87472c3f06b"
+    },
+    "24-test-results__browser-product-acceptance__knowledge-report-knowledge-94e0f-dable-and-retry-can-recover__test-failed-1.png.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-94e0f-dable-and-retry-can-recover\\test-failed-1.png",
+      "sha256": "ab33ea1d18711854127ca43656a5a907831490e3c8707e67bee8b0d21675d8d0",
+      "bytes": 66285,
+      "gzipSha256": "7078f7b68f93911892d13e132e608e80bee7b66b5b2173a34647d5405d678af7"
+    },
+    "25-test-results__browser-product-acceptance__knowledge-report-knowledge-94e0f-dable-and-retry-can-recover__trace.zip.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-94e0f-dable-and-retry-can-recover\\trace.zip",
+      "sha256": "56cff539380f91ea7e904c1f18850f6ec5c51806f8e5814fb469348c92a64673",
+      "bytes": 3269210,
+      "gzipSha256": "f7f3768e6096382790b99e3825b8fe129701fb53f3ac7728f5f9e1861a3bde24"
+    },
+    "26-test-results__browser-product-acceptance__knowledge-report-knowledge-95de5-d-keyboard-controls-fit-390__error-context.md.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-95de5-d-keyboard-controls-fit-390\\error-context.md",
+      "sha256": "855156fcac6921ed88a38878097a78324b8dd16e7ad7fb3e78735ba1c5a91701",
+      "bytes": 94219,
+      "gzipSha256": "4aea2775334326fc049e2b0e5cbe5f93120894537e4647aeaba654f87e0ef83f"
+    },
+    "27-test-results__browser-product-acceptance__knowledge-report-knowledge-95de5-d-keyboard-controls-fit-390__test-failed-1.png.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-95de5-d-keyboard-controls-fit-390\\test-failed-1.png",
+      "sha256": "8e52f0f94a38024f72037838e1da6486cfe4a0e1e33071b2cd803420044e4645",
+      "bytes": 49283,
+      "gzipSha256": "b0f0ff2ed331428635007fbb335889eab9cbf82682df41446c6ecbc3fd37dc2f"
+    },
+    "28-test-results__browser-product-acceptance__knowledge-report-knowledge-95de5-d-keyboard-controls-fit-390__trace.zip.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-95de5-d-keyboard-controls-fit-390\\trace.zip",
+      "sha256": "dd7055238289959d674fdaf99975320e303c162f1409ca2ece580413dbf460e1",
+      "bytes": 1736571,
+      "gzipSha256": "98be1eff07f09d286f1762d011bcca6c1b9b88f54eca3fa1e2c832e431a9eae8"
+    },
+    "29-test-results__browser-product-acceptance__knowledge-report-knowledge-98d3b-ves-reload-back-and-forward__error-context.md.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-98d3b-ves-reload-back-and-forward\\error-context.md",
+      "sha256": "58b75a9e500ae2d31e673e1bd0152101a66c118230e79a689d6ece27b6581b5c",
+      "bytes": 20423,
+      "gzipSha256": "f4b702973cde2616dff23b1201e453f1488e497d1ef1430c35faa8affa12956a"
+    },
+    "30-test-results__browser-product-acceptance__knowledge-report-knowledge-98d3b-ves-reload-back-and-forward__test-failed-1.png.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-98d3b-ves-reload-back-and-forward\\test-failed-1.png",
+      "sha256": "5115b661e3cb2cd86f4aa47af3c239d35206dcfc19f12f76ba040ec0210276bb",
+      "bytes": 60019,
+      "gzipSha256": "feee1188529c6446500544bca3f7d35f2ac30bc289fc37e5966878943023ef52"
+    },
+    "31-test-results__browser-product-acceptance__knowledge-report-knowledge-98d3b-ves-reload-back-and-forward__trace.zip.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-98d3b-ves-reload-back-and-forward\\trace.zip",
+      "sha256": "5a93e9fa5b99fe436dfa74405711057fe7e4a809da60ffaa3b70a79f5aeb5e17",
+      "bytes": 2904996,
+      "gzipSha256": "ad6d8fea7b6c1f4257f811898870b41196b0339c226f71969ab9a04a6b1a587c"
+    },
+    "32-test-results__browser-product-acceptance__knowledge-report-knowledge-a65b4-ns-the-actual-matching-plan__error-context.md.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-a65b4-ns-the-actual-matching-plan\\error-context.md",
+      "sha256": "3db94717fb2467ed5a154b506258e092a014ef113eab0bde1f61adde7e949dae",
+      "bytes": 22279,
+      "gzipSha256": "3a7cdc227f976944018928c7939c8cb5ba31e70a6066d45e3bca079eb0f3927f"
+    },
+    "33-test-results__browser-product-acceptance__knowledge-report-knowledge-a65b4-ns-the-actual-matching-plan__test-failed-1.png.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-a65b4-ns-the-actual-matching-plan\\test-failed-1.png",
+      "sha256": "c84d715b0fbabc41734ed8099cebacc9ca9a9b536d51d9bd2b78183be18716c7",
+      "bytes": 66255,
+      "gzipSha256": "5bd8077705f4338cf413fb0485ec836ebf3b7c0dbb388cd230923f7bba674a52"
+    },
+    "34-test-results__browser-product-acceptance__knowledge-report-knowledge-a65b4-ns-the-actual-matching-plan__trace.zip.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-a65b4-ns-the-actual-matching-plan\\trace.zip",
+      "sha256": "09287de90a73d713dd2865f49341405d6f70ba77eb12a70c060216859c21c7fb",
+      "bytes": 3314484,
+      "gzipSha256": "47920fa949be647e51af66a44a0a6bb4ae197c0f3a461133cb1686d643f46a71"
+    },
+    "35-test-results__browser-product-acceptance__knowledge-report-knowledge-d94c0-fter-activation-and-refresh__error-context.md.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-d94c0-fter-activation-and-refresh\\error-context.md",
+      "sha256": "b9df5931c0b3a49f189da8d6e4d16c1b92416ec4dd76856b8ca1fbdb4fe4d4fb",
+      "bytes": 23080,
+      "gzipSha256": "e8fa36d5b969e1296773b796464199abb057a825727726a19f0af491341465c5"
+    },
+    "36-test-results__browser-product-acceptance__knowledge-report-knowledge-d94c0-fter-activation-and-refresh__test-failed-1.png.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-d94c0-fter-activation-and-refresh\\test-failed-1.png",
+      "sha256": "3f6b07706dd8524c3c0d2c81559548a980810cdbdcedeacaf74de2e139a01e3a",
+      "bytes": 56995,
+      "gzipSha256": "f9a0a55c49df6d5a5bcd26e1e4850803d2c7ab7255a794e83113318b956c3648"
+    },
+    "37-test-results__browser-product-acceptance__knowledge-report-knowledge-d94c0-fter-activation-and-refresh__trace.zip.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-d94c0-fter-activation-and-refresh\\trace.zip",
+      "sha256": "f486eeb5d974d5afde28481cb25c6489d1bdbbe5dcf1000f82e3af40f997a9fa",
+      "bytes": 3178482,
+      "gzipSha256": "5bf80d52c8ad787fb940c98d55be1337f78bb6bc32b70f9daab8a5dbd2b68ef1"
+    },
+    "38-test-results__browser-product-acceptance__knowledge-report-knowledge-f1ba7--keyboard-controls-fit-1440__error-context.md.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-f1ba7--keyboard-controls-fit-1440\\error-context.md",
+      "sha256": "81d900278565ef6d450c6cf907f95a4b7994ab507365b3c793c91a63cd3249c6",
+      "bytes": 94844,
+      "gzipSha256": "5fba059979a2c5f53c1e5f7f0fa92060d115d3e3946171bf9ffdfdc54036eb9e"
+    },
+    "39-test-results__browser-product-acceptance__knowledge-report-knowledge-f1ba7--keyboard-controls-fit-1440__test-failed-1.png.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-f1ba7--keyboard-controls-fit-1440\\test-failed-1.png",
+      "sha256": "6d3df0d6bae2c843a844b0674e6852cf1ecbaade01c7633aef2533db3b2f962b",
+      "bytes": 123562,
+      "gzipSha256": "c592abb99622272bb9ad9b5d83a900cbd3b6c487bb034a3fed56a2d3d55bd8c5"
+    },
+    "40-test-results__browser-product-acceptance__knowledge-report-knowledge-f1ba7--keyboard-controls-fit-1440__trace.zip.gz": {
+      "source": "test-results\\browser-product-acceptance\\knowledge-report-knowledge-f1ba7--keyboard-controls-fit-1440\\trace.zip",
+      "sha256": "19eeeaed310294cbfc147b7901f06d632d7c9b589735e2e3f690dd5e4863483c",
+      "bytes": 3166970,
+      "gzipSha256": "238af0a3159778617705bb25209196c89ce7102d9fc09b09ad59d46d2b367dd6"
+    }
+  },
+  "finding": "Repeated analysis-status reads exhausted real rate limits; first completed trace counted1178 API requests, including573 successful and48 rate-limited analysis-status requests. Original product thresholds retained. Focused backend first75passed/3fixture failures; corrected affected20passed."
+}

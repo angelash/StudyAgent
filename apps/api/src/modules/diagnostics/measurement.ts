@@ -1,7 +1,7 @@
 import { DiagnosticResponse, KnowledgeAtom, MasteryEstimate, MeasurementDimension, MeasurementItem } from '@study-agent/contracts';
 import { FAMILY_IDENTITY_VERSION, independentFamilyKey } from './family-identity';
 
-export const MEASUREMENT_VERSION = 'rule-estimate-v2';
+export const MEASUREMENT_VERSION = 'rule-estimate-v3';
 const round = (value: number, digits = 1) => Number(value.toFixed(digits));
 const dimensions: MeasurementDimension[] = ['understanding', 'procedure', 'transfer', 'retention'];
 
@@ -60,16 +60,24 @@ export function betaQuantile(probability: number, a: number, b: number) {
 }
 
 export type WeightedEvidence = { evidence: DiagnosticResponse; weight: number };
-export function weightedEvidence(responses: DiagnosticResponse[], mappings: Map<string, MeasurementItem>, now: Date): WeightedEvidence[] {
+/** Raw task scores are retained separately; only observed answers can estimate ability. */
+export const measurableResponse = (response: DiagnosticResponse) => response.disposition === 'answered' &&
+  response.status === 'scored' && typeof response.score === 'number' && Number.isFinite(response.score) &&
+  response.score >= 0 && response.score <= 1 && !response.priorExposure && response.hintLevel < 3;
+export const measuredQuestionKey = (response: DiagnosticResponse) =>
+  JSON.stringify([response.studentId, response.atomId, response.questionId, response.questionVersion]);
+export function firstQuestionResponses(responses: DiagnosticResponse[]) {
   const seen = new Set<string>();
+  return [...responses].sort((a, b) => a.submittedAt.localeCompare(b.submittedAt)).filter(response => {
+    const key = measuredQuestionKey(response); if (seen.has(key)) return false; seen.add(key); return true;
+  });
+}
+export function weightedEvidence(responses: DiagnosticResponse[], mappings: Map<string, MeasurementItem>, now: Date): WeightedEvidence[] {
   const families = new Map<string, number>();
   const weighted: WeightedEvidence[] = [];
-  for (const response of [...responses].sort((a, b) => a.submittedAt.localeCompare(b.submittedAt))) {
+  for (const response of firstQuestionResponses(responses)) {
     const mapping = mappings.get(`${response.itemId}@${response.mappingVersion}`) ?? mappings.get(response.itemId);
-    if (response.status !== 'scored' || response.score === null || response.priorExposure || !mapping || mapping.reviewStatus !== 'approved') continue;
-    const key = `${response.studentId}:${response.atomId}:${response.questionId}:${response.questionVersion}`;
-    if (seen.has(key)) continue; // A remembered question never becomes a fresh independent sample.
-    seen.add(key);
+    if (!measurableResponse(response) || !mapping || mapping.reviewStatus !== 'approved') continue;
     const familyKey = JSON.stringify([response.studentId, independentFamilyKey(response)]);
     const count = families.get(familyKey) ?? 0;
     families.set(familyKey, count + 1);
@@ -82,7 +90,8 @@ export function weightedEvidence(responses: DiagnosticResponse[], mappings: Map<
 }
 
 export function estimateMastery(atom: KnowledgeAtom, weighted: WeightedEvidence[]): MasteryEstimate {
-  const evidence = weighted.filter((item) => item.evidence.atomId === atom.id);
+  const evidence = weighted.filter((item) => item.evidence.atomId === atom.id && measurableResponse(item.evidence) &&
+    Number.isFinite(item.weight) && item.weight > 0);
   const n = evidence.reduce((sum, item) => sum + item.weight, 0);
   const success = evidence.reduce((sum, item) => sum + item.weight * item.evidence.score!, 0);
   const a = 1 + success, b = 1 + n - success;

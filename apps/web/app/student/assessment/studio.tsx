@@ -415,7 +415,9 @@ export function AssessmentStudio() {
             <div className="studio-section-head"><span className="studio-eyebrow">03 / 知道表现，也知道依据</span><h2>从知识点看清下一步。</h2><p>{report.summary}</p></div>
             {report.scopeSnapshot && <details className="studio-report-scope"><summary>本次范围：{report.scopeSnapshot.grade}年级 · {report.scopeSnapshot.term === 'upper' ? '上学期' : '下学期'} · {report.scopeSnapshot.textbookVersion}</summary><p>按评测开始时确认的范围测量：{report.scopeSnapshot.learnedAtomIds.length} 个知识点，{report.scopeSnapshot.selectedLessonIds?.length ?? 0} 个已学课时。</p>{(report.scopeSnapshot.uncoveredLessonIds?.length ?? 0) > 0 && <p>其中 {report.scopeSnapshot.uncoveredLessonIds!.length} 个课时尚缺已审核的知识映射，报告不评价这些课时。</p>}{report.scopeSnapshot.selectedLessonSnapshots?.map((lesson) => <p key={lesson.id}>{lesson.chapterName} / {lesson.name}{report.scopeSnapshot!.uncoveredLessonIds?.includes(lesson.id) && ' · 尚未覆盖'}</p>)}</details>}
             {report.status === 'aborted' && <div className="assessment-partial" role="status"><strong>本组提前结束，仅记录已答部分。</strong><p>未作答的内容保持未知。可查看当时的具体表现，重新评测后再建立指导计划。</p></div>}
-            <ReportAnalysisUpdate key={`${report.sessionId}:${report.version ?? 1}`} report={report} studentMode={!!studentMode}
+            <ReportAnalysisUpdate key={JSON.stringify([identity?.id, identity?.role, report.studentId, report.sessionId, report.version ?? 1,
+              report.measurementVersion, report.familyIdentityVersion, report.estimates.map(row => row.algorithmVersion)])} report={report} studentMode={!!studentMode}
+              ownerId={identity?.id ?? ''} ownerRole={identity?.role ?? ''}
               onRequiresUpdate={setAnalysisNeedsUpdate} onChange={next => setReport(current =>
                 current?.sessionId === next.sessionId && (current.version ?? 1) <= (next.version ?? 1) ? next : current)} />
             <ReportHistory key={`${report.sessionId}:${report.version ?? 1}`} sessionId={report.sessionId} />
@@ -427,6 +429,8 @@ export function AssessmentStudio() {
               {!!report.definitionContext.unverifiedEvidenceIds.length && <p>{report.definitionContext.unverifiedEvidenceIds.length} 条历史作答无法核对原定义，保留记录并继续补充新证据。</p>}
             </details>}
             <div className="studio-report-stats"><div><strong>{report.scoredCount}<small> / {report.totalCount}</small></strong><span>已评分题目</span></div><div><strong>{report.rawScore === null ? '待评分' : `${report.rawScore}%`}</strong><span>本次题目得分</span></div><div><strong>{report.unmeasuredAtomIds.length}</strong><span>尚未测到的点</span></div></div>
+            {report.measurementVersion === 'rule-estimate-v3' && report.evidence.some(row => row.disposition === 'dont_know') &&
+              <p className="studio-footnote">上方保留原任务记分，其中“暂时不会”记录为0分；下方知识掌握估计只采用实际作答，自述不计入能力样本。</p>}
             <KnowledgeReportWorkspace key={`${identity?.id}:${report.sessionId}:${report.version ?? 1}`} ownerId={identity?.id ?? ''} report={report}
               plans={reportPlans} currentPlan={plan} planRead={reportPlanRead} busy={busy} analysisNeedsUpdate={analysisNeedsUpdate}
               onRetryPlans={() => setPlanReadRevision(value => value + 1)} onVerify={(hypothesis, atomId) => { void verify(hypothesis, atomId); }}

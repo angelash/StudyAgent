@@ -277,6 +277,7 @@ export type DiagnosticGuidancePlan = {
   minutesPerDay: number; summary: string; actions: GuidanceAction[]; evidenceIds: string[];
   createdAt: string; aiStatus: 'not_requested' | 'available' | 'unavailable' | 'rejected';
   revision?: number; baselineReportVersion?: number; activatedAt?: string;
+  baselineMeasurementVersion?: string; baselineFamilyIdentityVersion?: string;
   aiAdoption?: { suggestionId: string; modelId: string; modelName: string; basedOnRevision: number; adoptedAt: string };
   retrospectiveReview?: { fingerprint: string; reviewedAt: string; actorId: string; note: string };
 };
@@ -302,6 +303,7 @@ export type ReviewTask = {
 
 export type DiagnosticReport = {
   familyIdentityVersion?: string;
+  measurementVersion?: string;
   sessionId: string; studentId: string; subject: z.infer<typeof subject>; status: DiagnosticSession['status'];
   answeredCount: number; totalCount: number; scoredCount: number; pendingReviewCount: number;
   rawScore: number | null; coverage: DiagnosticSession['coverage']; estimates: MasteryEstimate[];
@@ -315,4 +317,12 @@ export type DiagnosticReport = {
   definitionContext?: { origin: 'started' | 'unavailable';
     atoms: Array<{ id: string; name: string; version: number; objective: string; successCriterion: string; fingerprint: string | null }>;
     incompatibleEvidenceIds: string[]; unverifiedEvidenceIds: string[] };
+};
+
+export type DiagnosticReportAnalysisStatus = {
+  requiresReanalysis: boolean; reportVersion: number; canReanalyze: boolean;
+  reportMeasurementVersion: string; currentMeasurementVersion: string;
+  reportFamilyIdentityVersion: string; currentFamilyIdentityVersion: string;
+  measurementRulesChanged: boolean; familyRulesChanged: boolean;
+  affectedEvidenceIds: string[]; unverifiedEvidenceIds: string[]; reasons: string[];
 };

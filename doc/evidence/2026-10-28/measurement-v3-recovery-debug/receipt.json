@@ -1,0 +1,34 @@
+{
+  "scope": "One anonymous recovery test with temporary console-only lifecycle instrumentation; failed original retained. Debug source must not ship.",
+  "passed": false,
+  "files": {
+    "0-data__qa__measurement-v3-browser-debug.json.gz": {
+      "sha256": "8347c304e0ad6f6636099ff364c02d40022270fba4b0b05c641586c14a0c434e",
+      "bytes": 9429
+    },
+    "1-data__qa__measurement-v3-browser-debug.log.gz": {
+      "sha256": "08cdc37c36849d6d2c7f1d1fd2e1c8ca5f560e23ec34e1cef7c9513349a29b7c",
+      "bytes": 6373
+    },
+    "2-apps__web__components__report-analysis-update.tsx.gz": {
+      "sha256": "b2c00511cedde366123ee9a46ea2ef5bbb3d4802b329102509fb5e39037375fd",
+      "bytes": 12556
+    },
+    "3-test-results__browser-product-acceptance__.last-run.json.gz": {
+      "sha256": "f6d30d6fc653814c95e5444c1a6db84378db6020467519703a4bd32847efd810",
+      "bytes": 96
+    },
+    "4-test-results__browser-product-acceptance__knowledge-report-knowledge-05c2a--the-exact-original-command__error-context.md.gz": {
+      "sha256": "b75b4f815c012ff7b24c00992e7fb44cc99e9351d5d5c680bb427c16adeaaad4",
+      "bytes": 25123
+    },
+    "5-test-results__browser-product-acceptance__knowledge-report-knowledge-05c2a--the-exact-original-command__test-failed-1.png.gz": {
+      "sha256": "c4ced8e4fe2397ef0dc0e6853ba38dd1b7d8ce0a25aabf6e35786ba9629bff54",
+      "bytes": 70790
+    },
+    "6-test-results__browser-product-acceptance__knowledge-report-knowledge-05c2a--the-exact-original-command__trace.zip.gz": {
+      "sha256": "19c3277bf9b866b9995335b813a61ebbf5644802d6f7626a28b6134844b35659",
+      "bytes": 1110511
+    }
+  }
+}

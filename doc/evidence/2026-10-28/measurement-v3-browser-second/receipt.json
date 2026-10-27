@@ -1,0 +1,39 @@
+{
+  "passed": false,
+  "browser": {
+    "passed": 17,
+    "failed": 1,
+    "attempts": 18
+  },
+  "files": {
+    "0-data__qa__measurement-v3-browser-second.json.gz": {
+      "sha256": "355de543fd7c6ba93fdacb82395984f2cd6314cbdffc878238fd35af8ea62950",
+      "bytes": 27995
+    },
+    "1-data__qa__measurement-v3-browser-second.log.gz": {
+      "sha256": "29da14c208cefa1d94d6f67df979e634fea33b1e1cb53eb32c5737fbe171eae0",
+      "bytes": 9332
+    },
+    "2-apps__web__components__report-analysis-update.tsx.gz": {
+      "sha256": "23f75e7fafdd70579d29db6bd636d457c36d99f82882b3f70487d532f6a1763d",
+      "bytes": 12204
+    },
+    "3-test-results__browser-product-acceptance__.last-run.json.gz": {
+      "sha256": "f6d30d6fc653814c95e5444c1a6db84378db6020467519703a4bd32847efd810",
+      "bytes": 96
+    },
+    "4-test-results__browser-product-acceptance__knowledge-report-knowledge-05c2a--the-exact-original-command__error-context.md.gz": {
+      "sha256": "b7a1d9d093dfb57028b83cf44f83d1f3d0853a6ea38e6fec78a56853330ad6ad",
+      "bytes": 25123
+    },
+    "5-test-results__browser-product-acceptance__knowledge-report-knowledge-05c2a--the-exact-original-command__test-failed-1.png.gz": {
+      "sha256": "c4ced8e4fe2397ef0dc0e6853ba38dd1b7d8ce0a25aabf6e35786ba9629bff54",
+      "bytes": 70790
+    },
+    "6-test-results__browser-product-acceptance__knowledge-report-knowledge-05c2a--the-exact-original-command__trace.zip.gz": {
+      "sha256": "23fa77ace44b1220a7ae016f88c0cb33ee464da2bc2f9f1b68881991fdda2520",
+      "bytes": 1141133
+    }
+  },
+  "finding": "Rate-limit regression is absent after identity-scoped promise deduplication. Lost-command recovery POST returned201 but the original pending UI remained busy; all originals retained."
+}

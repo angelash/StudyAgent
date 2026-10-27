@@ -2,10 +2,11 @@ import { DiagnosticHypothesis, DiagnosticResponse, KnowledgeAtom, MeasurementIte
 import { createHash } from 'node:crypto';
 import { atomDefinitionFingerprint } from './measurement-definition';
 import { FAMILY_IDENTITY_VERSION, independentFamilyKey } from './family-identity';
+import { firstQuestionResponses, measurableResponse } from './measurement';
 
 const ids = (evidence: DiagnosticResponse[]) => evidence.map((item) => item.id);
 const families = (evidence: DiagnosticResponse[]) => new Set(evidence.map(independentFamilyKey)).size;
-export const DIAGNOSIS_VERSION = 'diagnosis-rules-v5';
+export const DIAGNOSIS_VERSION = 'diagnosis-rules-v6';
 
 // A family that merely changes its presentation must not fill both sides of a transfer contrast.
 const independentContrast = (basic: DiagnosticResponse[], transfer: DiagnosticResponse[]) =>
@@ -13,9 +14,9 @@ const independentContrast = (basic: DiagnosticResponse[], transfer: DiagnosticRe
 
 export function deriveHypotheses(studentId: string, subject: Subject, atoms: KnowledgeAtom[],
   responses: DiagnosticResponse[], mappings: Map<string, MeasurementItem>, previous: DiagnosticHypothesis[], at: string): DiagnosticHypothesis[] {
-  const eligible = responses.filter((item) => item.studentId === studentId && item.status === 'scored' && !item.priorExposure && item.hintLevel === 0 &&
+  const eligible = firstQuestionResponses(responses).filter((item) => item.studentId === studentId && item.status === 'scored' && !item.priorExposure && item.hintLevel === 0 &&
     (mappings.get(`${item.itemId}@${item.mappingVersion}`) ?? mappings.get(item.itemId))?.reviewStatus === 'approved');
-  const valid = eligible.filter(item => item.disposition === 'answered');
+  const valid = eligible.filter(measurableResponse);
   const results: DiagnosticHypothesis[] = [];
   for (const atom of atoms) {
     const local = valid.filter((item) => item.atomId === atom.id);

@@ -34,6 +34,8 @@ async function fixture(page: Page, disposition: 'dont_know' | 'skip' = 'dont_kno
 }
 
 test('knowledge report: the actual frozen goals, original estimates and self-reports stay together when selecting a point', async ({ page }) => {
+  let analysisReads = 0;
+  page.on('request', request => { if (new URL(request.url()).pathname.endsWith('/analysis-status')) analysisReads++; });
   await page.setViewportSize({ width: 1440, height: 1000 }); const f = await fixture(page);
   const directory = browserEvidence('knowledge-report');
   writeFileSync(join(directory, 'actual-report-original.json'), JSON.stringify(f.report, null, 2) + '\n');
@@ -44,12 +46,17 @@ test('knowledge report: the actual frozen goals, original estimates and self-rep
     await workspace.getByRole('button', { name: '查看知识点：' + estimate.atomName, exact: true }).click();
     await expect(workspace.getByRole('heading', { name: estimate.atomName, exact: true, level: 3 })).toBeVisible();
     await expect(workspace).toContainText(definition.objective); await expect(workspace).toContainText(definition.successCriterion);
-    await expect(workspace.getByRole('region', { name: '本点量化与未知项' }).getByText(estimate.mastery + '%', { exact: true })).toBeVisible();
+    expect(estimate).toMatchObject({ mastery: null, lower: null, upper: null, status: 'unknown', scoredCount: 0, independentFamilies: 0, algorithmVersion: 'rule-estimate-v3' });
+    const quantification = workspace.getByRole('region', { name: '本点量化与未知项' });
+    await expect(quantification).toContainText('尚未形成有效估计');
+    await expect(quantification).toContainText('不计入能力估计或独立样本');
+    await expect(quantification.getByRole('img')).toHaveCount(0);
     await expect(workspace.getByRole('region', { name: '本点量化与未知项' })).toContainText('仍需真实间隔复测');
     await expect(workspace.getByRole('region', { name: '本点表面表现' })).toContainText('选择暂时不会');
     expect(new URL(page.url()).searchParams.get('reportAtom')).toBe(atomId);
   }
   const countBefore = (await f.call('/diagnostics/sessions?' + new URLSearchParams({ studentId: f.studentId, subject: 'math' }))).length;
+  expect(analysisReads).toBeLessThanOrEqual(6);
   await workspace.getByRole('button', { name: '做一组题验证原因 ↗', exact: true }).click();
   await expect(page.getByRole('region', { name: '本次评测范围与题组' })).toBeVisible();
   expect((await f.call('/diagnostics/sessions?' + new URLSearchParams({ studentId: f.studentId, subject: 'math' }))).length).toBe(countBefore);
@@ -223,7 +230,7 @@ test('knowledge report: a controlled cause timeline remains complete and termina
   await expect(cause.getByText('合成状态展示 9 · 目标0', { exact: true })).toHaveCount(0);
 });
 
-for (const width of [390, 768, 1440]) test('knowledge report: complete point reading and keyboard controls fit ' + width, async ({ page }) => {
+for (const width of [390, 768, 1280, 1440]) test('knowledge report: complete point reading and keyboard controls fit ' + width, async ({ page }) => {
   await page.setViewportSize({ width, height: 1000 }); const f = await fixture(page), workspace = page.getByRole('region', { name: '知识点工作区' });
   const target = f.report.estimates[1], button = workspace.getByRole('button', { name: '查看知识点：' + target.atomName, exact: true });
   await button.focus(); await page.keyboard.press('Enter'); await expect(button).toHaveAttribute('aria-pressed', 'true');
@@ -235,4 +242,70 @@ for (const width of [390, 768, 1440]) test('knowledge report: complete point rea
   const source = detail.locator('.diagnostic-evidence').first(); await source.locator(':scope > summary').click();
   await expect(source).toContainText(original.stem); await expect(source.getByRole('heading', { name: '孩子提交的回答', exact: true })).toBeVisible();
   await page.screenshot({ path: join(browserEvidence('knowledge-report'), 'point-' + width + '.png'), fullPage: true });
+});
+
+test('knowledge report: a lost reanalysis receipt survives reload with the exact original command', async ({ page }) => {
+  const f = await fixture(page); const requests: unknown[] = [];
+  // Controlled compatibility projection exercises the browser protocol. Real version appends are tested through HTTP.
+  await page.route('**/api/diagnostics/sessions/*/analysis-status', async route => {
+    const response = await route.fetch(), payload = await response.json();
+    payload.data.requiresReanalysis = requests.length < 2; payload.data.canReanalyze = true;
+    payload.data.reasons = ['合成旧方法状态，仅核查浏览器原命令恢复'];
+    await route.fulfill({ response, json: payload });
+  });
+  await page.route('**/api/diagnostics/sessions/*/reanalyze', async route => {
+    requests.push(route.request().postDataJSON());
+    if (requests.length === 1) { await route.fetch(); await route.abort('failed'); }
+    else await route.continue();
+  });
+  const before = await f.call('/diagnostics/sessions/' + f.session.id + '/report-history');
+  await page.reload(); await page.getByRole('button', { name: '按原作答重新分析', exact: true }).click();
+  await expect(page.getByRole('button', { name: '恢复原核对结果', exact: true })).toBeVisible();
+  await page.reload(); await page.getByRole('button', { name: '恢复原核对结果', exact: true }).click();
+  await expect.poll(() => requests.length).toBe(2); expect(requests[1]).toEqual(requests[0]);
+  await expect(page.getByRole('region', { name: '重新核对报告依据' })).toHaveCount(0);
+  expect(await f.call('/diagnostics/sessions/' + f.session.id + '/report-history')).toEqual(before);
+});
+
+test('knowledge report: a version conflict archives its original command before a read-only latest-report check', async ({ page }) => {
+  const f = await fixture(page); let creates = 0, submitted: unknown;
+  await page.route('**/api/diagnostics/sessions/*/analysis-status', async route => {
+    const response = await route.fetch(), payload = await response.json(); payload.data.requiresReanalysis = true; payload.data.canReanalyze = true;
+    await route.fulfill({ response, json: payload });
+  });
+  await page.route('**/api/diagnostics/sessions/*/reanalyze', async route => {
+    creates++; submitted = route.request().postDataJSON();
+    await route.fulfill({ status: 409, json: { error: { message: '合成并发版本冲突，原命令尚未执行' } } });
+  });
+  await page.reload(); await page.getByRole('button', { name: '按原作答重新分析', exact: true }).click();
+  await page.getByRole('button', { name: '保留原操作副本，查看最新报告', exact: true }).click();
+  await expect(page.getByText('本机原核对操作副本（1）', { exact: true })).toBeVisible();
+  expect(creates).toBe(1);
+  await page.getByText('本机原核对操作副本（1）', { exact: true }).click();
+  const downloaded = page.waitForEvent('download'); await page.getByRole('button', { name: '下载原操作副本 1', exact: true }).click();
+  const download = await downloaded, path = await download.path();
+  const raw = JSON.parse(require('node:fs').readFileSync(path!, 'utf8'));
+  expect({ requestKey: raw.requestKey, expectedReportVersion: raw.expectedReportVersion, reason: raw.reason }).toEqual(submitted);
+  await page.reload(); await expect(page.getByText('本机原核对操作副本（1）', { exact: true })).toBeVisible();
+  expect(creates).toBe(1);
+});
+
+test('knowledge report: unavailable command storage prevents a new mutation while preserving the report', async ({ page }) => {
+  await fixture(page); let creates = 0;
+  await page.addInitScript(() => {
+    const write = Storage.prototype.setItem;
+    Storage.prototype.setItem = function (key, value) {
+      if (key.startsWith('studyagent.report-analysis-command.v1:')) throw new DOMException('Synthetic storage quota', 'QuotaExceededError');
+      return write.call(this, key, value);
+    };
+  });
+  await page.route('**/api/diagnostics/sessions/*/analysis-status', async route => {
+    const response = await route.fetch(), payload = await response.json(); payload.data.requiresReanalysis = true; payload.data.canReanalyze = true;
+    await route.fulfill({ response, json: payload });
+  });
+  await page.route('**/api/diagnostics/sessions/*/reanalyze', route => { creates++; return route.continue(); });
+  await page.reload(); await page.getByRole('button', { name: '按原作答重新分析', exact: true }).click();
+  await expect(page.getByRole('alert').filter({ hasText: 'Synthetic storage quota' })).toBeVisible();
+  await expect(page.getByRole('region', { name: '本点量化与未知项' })).toContainText('尚未形成有效估计');
+  expect(creates).toBe(0);
 });

@@ -11,7 +11,8 @@ import { StudentsService } from '../students/students.service';
 import { DiagnosticsService } from './diagnostics.service';
 import { estimateMastery, MEASUREMENT_VERSION, weightedEvidence } from './measurement';
 import { eligibleMeasurements } from './curriculum.service';
-import { FAMILY_IDENTITY_VERSION, familyAnalysisOutdated } from './family-identity';
+import { FAMILY_IDENTITY_VERSION } from './family-identity';
+import { reportMeasurementVersion } from './measurement-compatibility';
 import { TextbookRegistryService } from './textbook-registry.service';
 import { textbookSourceCitations } from './learning-source-citation';
 import { guidanceModelPort, type GuidanceModelPort } from './guidance-model-record';
@@ -61,7 +62,7 @@ export class GuidanceService {
     if (session.studentId !== studentId || session.status !== 'completed') throw new BadRequestException('请先完成当前孩子的评测');
     const report = this.diagnostics.report(user, session.id);
     if(command.expectedReportVersion!==undefined&&command.expectedReportVersion!==(report.version??1))throw new ConflictException('原评测报告已修订，请核对当前版本后重新制定计划');
-    if (familyAnalysisOutdated(report)) throw new ConflictException('题族计量方法已更新，请先重新分析原报告，再制定指导计划');
+    if (this.diagnostics.analysisCompatibility(report).requiresReanalysis) throw new ConflictException('能力或题族计量方法已更新或原依据无法核对，请先重新分析原报告，再制定指导计划');
     if (!session.atomSnapshots) throw new BadRequestException('历史评测未保存知识定义，请完成一轮新评测后建立指导计划');
     if (this.diagnostics.changedPlanDefinitions(session, report.estimates.map(estimate => estimate.atomId)).length) {
       throw new ConflictException('知识定义已调整，请按当前定义重新评测后建立计划');
@@ -108,6 +109,7 @@ export class GuidanceService {
       summary: `每天 ${command.minutesPerDay} 分钟，围绕 ${actions.map((item) => atomMap.get(item.atomId)?.name).join('、')} 先验证再指导；复测后调整。`,
       actions, evidenceIds: [...new Set(actions.flatMap((item) => item.evidenceIds))], createdAt: now.toISOString(), aiStatus: 'not_requested',
       revision: 1, baselineReportVersion: report.version ?? 1,
+      baselineMeasurementVersion: reportMeasurementVersion(report), baselineFamilyIdentityVersion: report.familyIdentityVersion,
     };
     this.store.append('diagnosticPlans', plan);
     const savedPlan=this.store.find('diagnosticPlans',{id:plan.id})!;
@@ -168,7 +170,7 @@ export class GuidanceService {
   private view(user: InMemoryUserAccount, plan: DiagnosticGuidancePlan): GuidancePlanView {
     const report = this.diagnostics.report(user, plan.baselineSessionId), version = this.baseVersion(plan);
     const changed = version !== (report.version ?? 1);
-    const measurementRulesChanged = familyAnalysisOutdated(report);
+    const measurementRulesChanged = this.diagnostics.analysisCompatibility(report).requiresReanalysis;
     const baseline = this.diagnostics.requireSession(user, plan.baselineSessionId);
     const definitionChangedActionIds = plan.actions.filter(action => this.diagnostics.changedPlanDefinitions(baseline, [action.atomId]).length).map(action => action.id);
     const definitionUnverifiedActionIds = baseline.atomSnapshots ? [] : plan.actions.map(action => action.id);
@@ -180,7 +182,7 @@ export class GuidanceService {
       definitionChangedActionIds, definitionUnverifiedActionIds,
       message: definitionUnverifiedActionIds.length ? '历史计划未保存知识定义，暂不能核对新旧证据。请重新评测后建立新计划；已开始的练习可继续回看。' :
         definitionChangedActionIds.length ? '知识点的目标或测量条件已调整。请重新评测当前定义，再建立新指导计划；原计划和已开始练习保留。' :
-        measurementRulesChanged ? '题族计量方法已更新。请先按原始作答重新分析报告，再核对计划；方法更新带来的数值变化不表示学习进步。' :
+        measurementRulesChanged ? '能力或题族计量方法已更新，或原依据无法核对。请先按保留的原始作答核对报告，再核对计划；方法变化不表示学习进步。' :
         changed ? '作为依据的评测已修订。请查看新证据，再确认或调整指导计划。' :
         report.pendingReviewCount ? `还有 ${report.pendingReviewCount} 条作答等待评分；当前指导按已有证据安排。` : '指导依据与当前评测版本一致。',
     } };
@@ -238,6 +240,7 @@ export class GuidanceService {
     if (data.actions.reduce((sum, a) => sum + a.minutes, 0) !== data.minutesPerDay) throw new BadRequestException('活动时长之和需要等于每日预算');
     this.preserveLegacy(plan, user.id);
     plan.minutesPerDay = data.minutesPerDay; plan.baselineReportVersion = report.version ?? 1; plan.source = 'human';
+    plan.baselineMeasurementVersion = reportMeasurementVersion(report); plan.baselineFamilyIdentityVersion = report.familyIdentityVersion;
     const active = report.hypotheses.filter(h => !['withdrawn', 'contradicted', 'resolved'].includes(h.status));
     plan.actions = data.actions.map(edit => {
       const old = plan.actions.find(a => a.id === edit.actionId)!;
@@ -374,10 +377,10 @@ export class GuidanceService {
       sessions: sessions.map(s => [s.id, this.diagnostics.report(user, s.id).version ?? 1]).sort((a, b) => String(a[0]).localeCompare(String(b[0]))),
       definitionContext: { baseline: baseline.atomSnapshots?.map(atom => [atom.id, atom.objective, atom.successCriterion, atom.prerequisiteIds]),
         incompatible: compatibility.incompatibleEvidenceIds, unverified: compatibility.unverifiedEvidenceIds },
-      evidence: [...before, ...after].map(r => [r.id, r.score, r.status, r.dimension, r.hintLevel, r.retentionDelayDays, comparisonKey(r)]).sort((a, b) => String(a[0]).localeCompare(String(b[0]))) });
+      evidence: [...before, ...after].map(r => [r.id, r.score, r.status, r.disposition, r.priorExposure, r.dimension, r.hintLevel, r.retentionDelayDays, comparisonKey(r)]).sort((a, b) => String(a[0]).localeCompare(String(b[0]))) });
     return { planId, baselineSessionId: plan.baselineSessionId, followupSessionIds, independentFollowupCount: independent.length, fingerprint,
       measurementContext: { measurementVersion: MEASUREMENT_VERSION, familyIdentityVersion: FAMILY_IDENTITY_VERSION,
-        notice: '前后估计都按同一套当前题族规则从原始作答重新计算；历史报告数值不直接相减，规则更新不表示学习改善。' },
+        notice: '前后估计都按同一套当前能力与题族规则从原始实际作答重新计算；自述不计量，历史报告数值不直接相减，规则更新不表示学习改善。' },
       practiceSessionIds: this.store.select('practiceSessions', { planId: planId }).map(s => s.id),
       reviewed: plan.retrospectiveReview?.fingerprint === fingerprint,
       definitionCompatibility: { incompatibleEvidenceIds: compatibility.incompatibleEvidenceIds, unverifiedEvidenceIds: compatibility.unverifiedEvidenceIds },
@@ -396,7 +399,8 @@ export class GuidanceService {
         const outcome = !post.length ? incompatiblePost ? 'different_definitions' : 'awaiting_retest' : !sharedScales.size ? 'different_dimensions' : !sufficient ? 'insufficient' :
           afterEstimate.lower! > beforeEstimate.upper! ? 'improved' : afterEstimate.upper! < beforeEstimate.lower! ? 'declined' : 'uncertain';
         return { atomId: atom.id, atomName: atom.name, before: beforeEstimate, after: afterEstimate, outcome,
-          retentionSamples: post.filter((item) => item.dimension === 'retention' && (item.retentionDelayDays ?? 0) >= 1).length,
+          retentionSamples: post.filter((item) => item.disposition === 'answered' && item.status === 'scored' && item.score !== null &&
+            !item.hintLevel && !item.priorExposure && item.dimension === 'retention' && (item.retentionDelayDays ?? 0) >= 1).length,
           note: outcome === 'improved' ? '观察到可比表现改善；仍需继续检查迁移与保持，不能据此证明单一干预因果。' : '证据量、测量维度或区间尚不足以确定改善，继续验证。' };
       }) };
   }

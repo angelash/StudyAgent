@@ -406,3 +406,11 @@ jobs:
           STUDY_TEST_POSTGRES_ADMIN_URL: postgresql://study_qa_admin:local_ci_only@127.0.0.1:5432/postgres
           STUDY_TEST_PG_BIN: /usr/lib/postgresql/16/bin
         run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/infrastructure/teaching-tool-storage.integration.test.ts src/modules/ai/teaching-tool.integration.test.ts
+
+      - name: Measurement v3, immutable reports, concurrent reanalysis and native privacy recovery on PostgreSQL
+        working-directory: apps/api
+        env:
+          STUDY_TEST_MEASUREMENT_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
+          STUDY_TEST_POSTGRES_ADMIN_URL: postgresql://study_qa_admin:local_ci_only@127.0.0.1:5432/postgres
+          STUDY_TEST_PG_BIN: /usr/lib/postgresql/16/bin
+        run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/diagnostics/measurement-versioning.integration.test.ts

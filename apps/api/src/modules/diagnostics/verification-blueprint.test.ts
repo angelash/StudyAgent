@@ -19,13 +19,14 @@ const choose = (rows = candidates(), limit = 12, seconds = 600) => selectVerific
   verificationBlueprint(hypothesis(), atom, 'basis'), rows, new Set(['target']), 'seed', limit, seconds);
 const response = (row: MeasurementItem, patch: Partial<DiagnosticResponse> = {}): DiagnosticResponse => ({
   id: `response-${row.id}`, itemId: row.id, atomId: row.atomId, family: row.family, dimension: row.dimension,
+  questionId: row.questionId, questionVersion: row.questionVersion,
   score: 1, correct: true, status: 'scored', disposition: 'answered', hintLevel: 0, priorExposure: false, ...patch,
 } as DiagnosticResponse);
 
 describe('frozen, falsifiable verification observation groups', () => {
   it('uses current rules and all direct prerequisites, with a separate target contrast', () => {
     const blueprint = verificationBlueprint(hypothesis('prerequisite_gap'), atom, 'basis');
-    expect(blueprint.sourceRuleVersion).toBe('source-rule'); expect(blueprint.ruleVersion).toBe('diagnosis-rules-v5');
+    expect(blueprint.sourceRuleVersion).toBe('source-rule'); expect(blueprint.ruleVersion).toBe('diagnosis-rules-v6');
     expect(blueprint.groups.map(group => group.atomId)).toEqual(['target', 'base-a', 'base-b']);
     expect(blueprint.groups.every(group => group.minIndependentFamilies === 2)).toBe(true);
     expect(blueprint.supportCondition).toContain('同时'); expect(blueprint.counterCondition).toContain('每个直接先修点');

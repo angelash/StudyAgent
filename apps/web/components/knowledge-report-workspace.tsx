@@ -65,7 +65,9 @@ export function KnowledgeReportWorkspace({ ownerId, report, plans, currentPlan, 
         {validRange ? <><div className="kr-interval" role="img" aria-label={'参考估计' + mastery + '%，区间' + lower + '%至' + upper + '%'}><span style={{ left: lower + '%', width: (upper - lower) + '%' }} /><i style={{ left: mastery + '%' }} /></div><p>参考区间 {lower}% – {upper}%。区间越宽，越需要补充证据。</p></> : mastery !== null && <p>估计区间暂时无法核对。</p>}
         <div className="kr-dimensions">{dimensions.map(([key, label]) => { const row = estimate?.dimensions.find(item => item.dimension === key), value = percent(row?.mastery); return <div key={key}><span>{label}</span><strong>{value === null ? '未测' : value + '%'}</strong></div>; })}</div>
         <p>{estimate?.scoredCount ?? 0} 条计入估计的记录 · {estimate?.independentFamilies ?? 0} 个题族；相同结构的变式合并考虑。</p>
-        {selfReports > 0 && <p className="kr-caution">本组有 {selfReports} 次选择暂时不会。现行规则将这类记录计入参考估计，但没有可核对的解题步骤，原因仍需实际作答验证。</p>}
+        {selfReports > 0 && <p className="kr-caution">本组有 {selfReports} 次选择暂时不会。{(report.measurementVersion ?? estimate?.algorithmVersion) === 'rule-estimate-v3' ?
+          '这是孩子的自述，不计入能力估计或独立样本；原任务记录保留，原因仍需新的实际作答验证。' :
+          '这份历史报告按当时方法保留，自述曾可能计入参考估计；没有可核对的解题步骤，请先核对计量依据，再以实际作答验证。'}</p>}
         <p>迁移：{estimate?.transferVerified ? '已有独立验证记录' : '仍需独立新题验证'} · 保持：{estimate?.retentionVerified ? '已有间隔验证记录' : '仍需真实间隔复测'}</p>
       </section>
       <section aria-label="本点表面表现"><h4>这组题里，看到了什么</h4>{evidence.length ? <><p>本组 {evidence.length} 条记录：选择暂时不会 {selfReports} 次，跳过 {evidence.filter(row => row.status === 'skipped' || row.disposition === 'skip').length} 次，表达待复核 {evidence.filter(row => row.status === 'pending_review').length} 次。具体过程按原题核对。</p><details><summary>逐题核对本组 {evidence.length} 条记录</summary>{evidence.map(row => <article className="kr-evidence" key={row.id}><strong>{row.disposition === 'dont_know' ? '选择暂时不会' : row.status === 'pending_review' ? '表达待复核' : row.status === 'skipped' || row.disposition === 'skip' ? '已跳过' : row.correct ? '达到本题标准' : '本题需要核查'}</strong>

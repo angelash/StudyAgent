@@ -21,6 +21,36 @@ function mappings(responses: DiagnosticResponse[]) {
 }
 
 describe('conservative atomic measurement', () => {
+  it('keeps self reports unknown in every dimension without changing the original task score', () => {
+    const records = ['understanding', 'procedure', 'transfer', 'retention'].flatMap((dimension, index) =>
+      [0, 1].map(offset => evidence(index * 2 + offset, { dimension: dimension as DiagnosticResponse['dimension'],
+        disposition: 'dont_know', score: 0, correct: false, retentionDelayDays: 7 })));
+    const original = structuredClone(records);
+    const value = estimateMastery(atom, weightedEvidence(records, mappings(records), now));
+    expect(value).toMatchObject({ status: 'unknown', mastery: null, lower: null, upper: null, scoredCount: 0,
+      effectiveSamples: 0, independentFamilies: 0, independentRate: null, transferVerified: false, retentionVerified: false, evidenceIds: [], lastMeasuredAt: null });
+    expect(value.dimensions.every(row => row.mastery === null && row.samples === 0)).toBe(true);
+    expect(records).toEqual(original);
+  });
+  it('uses only actual answers in mixed groups and protects all seen questions from later independent reuse', () => {
+    const answered = evidence(0), self = evidence(1, { disposition: 'dont_know', score: 0, correct: false });
+    const mixed = [answered, self];
+    expect(estimateMastery(atom, weightedEvidence(mixed, mappings(mixed), now)))
+      .toEqual(estimateMastery(atom, weightedEvidence([answered], mappings(mixed), now)));
+    for (const patch of [{ disposition: 'dont_know', score: 0 }, { disposition: 'skip', status: 'skipped', score: null },
+      { disposition: 'answered', status: 'pending_review', score: null }, { disposition: 'answered', hintLevel: 3 }]) {
+      const first = evidence(1, { ...patch, submittedAt: '2026-10-18T10:00:00Z' } as Partial<DiagnosticResponse>);
+      const repeat = evidence(2, { questionId: first.questionId, submittedAt: now.toISOString() });
+      const records = [first, repeat];
+      expect(weightedEvidence(records, mappings(records), now), JSON.stringify(patch)).toEqual([]);
+    }
+  });
+  it('does not infer an actual answer from missing or future dispositions, including direct weighted inputs', () => {
+    const records = [evidence(0), evidence(1, { disposition: 'dont_know', score: 0, correct: false })];
+    delete (records[0] as Partial<DiagnosticResponse>).disposition;
+    expect(weightedEvidence(records, mappings(records), now)).toEqual([]);
+    expect(estimateMastery(atom, records.map(response => ({ evidence: response, weight: 1 }))).mastery).toBeNull();
+  });
   it('computes Beta quantiles against closed-form distributions and symmetry', () => {
     expect(betaQuantile(0.025, 1, 1)).toBeCloseTo(0.025, 10);
     expect(betaQuantile(0.975, 2, 1)).toBeCloseTo(Math.sqrt(0.975), 10);
@@ -92,7 +122,7 @@ describe('conservative atomic measurement', () => {
       evidence(2, { atomId: 'place', correct: false, score: 0 }), evidence(3, { atomId: 'place', correct: false, score: 0 })];
     const hypotheses = deriveHypotheses('student', 'math', [definition], records, mappings(records), [], now.toISOString());
     expect(hypotheses).toHaveLength(1); expect(hypotheses[0]).toMatchObject({ cause: 'procedure_gap', status: 'proposed', confidence: 'low',
-      supportingEvidenceIds: [], reportedEvidenceIds: ['r0', 'r1'], ruleVersion: 'diagnosis-rules-v5' });
+      supportingEvidenceIds: [], reportedEvidenceIds: ['r0', 'r1'], ruleVersion: 'diagnosis-rules-v6' });
     expect(hypotheses[0].verification!.supportCondition).toContain('两个独立题族');
     expect(hypotheses[0].verification!.undecidedCondition).toContain('暂时不会');
   });

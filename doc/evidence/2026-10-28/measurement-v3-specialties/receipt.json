@@ -1,0 +1,102 @@
+{
+  "passed": true,
+  "scope": "Current SQLite10 and PostgreSQL10 actual HTTP, two instances, cold replay, native backup restoration and current child-deletion-ledger filtering. Tests overlap; do not sum with full suites.",
+  "sqlite": {
+    "passed": 10,
+    "failed": 0,
+    "skipped": 0
+  },
+  "postgres": {
+    "passed": 10,
+    "failed": 0,
+    "skipped": 0
+  },
+  "originalFailures": [
+    "Memory red and focused/browser originals archived separately.",
+    "Durable SQLite first0/7: test read outside scoped transaction; corrected7/7.",
+    "Legacy unanswered exposure filter1failed/9not selected; corrected inside current10/10."
+  ],
+  "browserScope": {
+    "lostReceiptSinglePassed": 1,
+    "fullCurrentKnowledgeReportPending": true,
+    "earlierSecond17passed1failed": "See separate second archive; not current all-pass."
+  },
+  "sourceHead": "8ed35b85928c3a4b9da85ae33996ec4a0a782136",
+  "uncommittedImplementationAtExecution": true,
+  "sourceInputs": 542,
+  "compiledInputs": 370,
+  "inputsSha256": "0d0796db63bcb4f457e4388fb60164602b47365bbf41b1510023ac02cbef28ef",
+  "files": {
+    "measurement-v3-durable-sqlite-first.json.gz": {
+      "sha256": "681e7ed5e173538d016fc28ed11109440d184c666e781e12d81964a521ce0519",
+      "bytes": 7867,
+      "gzipSha256": "cdfa904bf097b0a7a6961d224a34ab46b00864570045bce481b8b8df51468195"
+    },
+    "measurement-v3-durable-sqlite-first.log.gz": {
+      "sha256": "440b5121f39012af1726b7b71a996cf80db4220d3353eedb2f4e6ba763d52f3d",
+      "bytes": 497,
+      "gzipSha256": "c9011f49a801b4fd1ad1ca9032a39bf2a2fc07874be7dcd65f35d68e2f2cf059"
+    },
+    "measurement-v3-durable-sqlite-second.json.gz": {
+      "sha256": "ae517a62b9ae7e513746078b46ee635988c900386027b7bb09cf802d8fc84645",
+      "bytes": 3993,
+      "gzipSha256": "f6d6cb690bf24c2335c01147e75df67eb4ca1e6d320f9b7f725c0af704a20dd9"
+    },
+    "measurement-v3-durable-sqlite-second.log.gz": {
+      "sha256": "99e38e0303083ad2a1b0a8da42ded42416e6dc13c542ad68910b7d751d19137e",
+      "bytes": 498,
+      "gzipSha256": "e7dfd0e0c0ff318267a60378445552cf3b625b52de0e530809fe0fba8c69d64e"
+    },
+    "measurement-v3-durable-postgres-first.json.gz": {
+      "sha256": "c556e7d873b63474979cf0cfd17a476c87f262d5267ec25d54ddb116528d4ac5",
+      "bytes": 3991,
+      "gzipSha256": "7edf7c6a1219e834a826856a5e2c621f278c9dc7e95c9eed30cd06305aec59b8"
+    },
+    "measurement-v3-durable-postgres-first.log.gz": {
+      "sha256": "ef64c5c31754a37c91413651ced22c1b4c5480a55f526e87d5eb0ffffa8b155a",
+      "bytes": 499,
+      "gzipSha256": "70a8604673497f98b2f84b6c4001f29ba3901ecc3acb779b937df0186592aa86"
+    },
+    "measurement-v3-sqlite-native-first.json.gz": {
+      "sha256": "c95e4f68a7809f48ac5395c9bb1cd451c6fe9b67c92407d91af8499615f67107",
+      "bytes": 5441,
+      "gzipSha256": "e439eacb791d55a4dd55d455cf3c04eab55e02642a9f17a61038648ed0a1dbfb"
+    },
+    "measurement-v3-sqlite-native-first.log.gz": {
+      "sha256": "34164049f8d6a717e932a66d21735a1c341dee01af4215d043ebe94269f37a91",
+      "bytes": 496,
+      "gzipSha256": "7721f4c2560d0b0d9b880806a386ad2d76f245822d0290dd9a38abf71440d203"
+    },
+    "measurement-v3-postgres-native-first.json.gz": {
+      "sha256": "a4cda09a82545bc1e8b3ebd2830b2800071324afe79ad4b53523117f4303f355",
+      "bytes": 5441,
+      "gzipSha256": "982afb4647995c69d78deabf6bbdac551c33919b75fd400543ffb8e812028a8f"
+    },
+    "measurement-v3-postgres-native-first.log.gz": {
+      "sha256": "85c52da83888da1199777ae95d197e34550cd15acdf721051763e3041fbdb34f",
+      "bytes": 2048,
+      "gzipSha256": "b5d6c0f08200f000f3f4b1169a76ace58c60ea29cf12fc7db54415a567410465"
+    },
+    "measurement-v3-legacy-exposure-red.json.gz": {
+      "sha256": "900df53be459f834cd8e1ecdb0b02c7661febda4ab71d01ca56dea749d837ae5",
+      "bytes": 6031,
+      "gzipSha256": "fdb7a464ecc8fe1e7b2d595ba69f5ee05190d6a15a95a6b6009317385aafa291"
+    },
+    "measurement-v3-legacy-exposure-red.log.gz": {
+      "sha256": "6dbce140615f71efe222b48951cd0f4e7fccf99c22f49d91bf4d47e6c19883fb",
+      "bytes": 496,
+      "gzipSha256": "ac95e30b609d002af27dd36f67c196861cd53993cc965a342c48851855abb669"
+    },
+    "measurement-v3-browser-single-component.json.gz": {
+      "sha256": "f3b143baa6ffa2adff68d5aa63cb352ab9ebfcb1fc513cf1af115757e5bdb038",
+      "bytes": 4113,
+      "gzipSha256": "7f8ccfe5f04fe8170a5bf3b4734e8902fc558aa654d637b7dd687f66a9efedec"
+    },
+    "measurement-v3-browser-single-component.log.gz": {
+      "sha256": "1e3e3ef39b83291f9335752b2d4cf81fcc32668951b2a2e476e33c161edb41b8",
+      "bytes": 3645,
+      "gzipSha256": "a7bc1f7829dbb531b908d0c375411ada70509fc38433a742d91a648e5583995f"
+    }
+  },
+  "overallProductComplete": false
+}

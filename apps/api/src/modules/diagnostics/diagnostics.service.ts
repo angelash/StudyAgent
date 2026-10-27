@@ -23,7 +23,8 @@ import { advanceRouting, initializeRouting, routedItemAvailable, routedItems } f
 import { observedPerformance } from './observations';
 import { componentObservations } from './component-observations';
 import { verificationBlueprint, verificationResult } from './verification-blueprint';
-import { FAMILY_IDENTITY_VERSION, LEGACY_FAMILY_IDENTITY_VERSION, canonicalFamily, familyAnalysisOutdated, familyIdentityAffectsAtom } from './family-identity';
+import { FAMILY_IDENTITY_VERSION, canonicalFamily, familyIdentityAffectsAtom } from './family-identity';
+import { reportAnalysisCompatibility } from './measurement-compatibility';
 import { originalPaperExposure } from './paper-exposure';
 
 @Injectable()
@@ -52,7 +53,7 @@ export class DiagnosticsService {
       const baselineVersion = plan.baselineReportVersion ?? this.store.diagnosticReports.filter(r => r.sessionId === plan.baselineSessionId && r.createdAt <= plan.createdAt)
         .sort((a, b) => b.version - a.version)[0]?.version ?? 1;
       const baselineReport = this.report(user, plan.baselineSessionId);
-      if (familyAnalysisOutdated(baselineReport)) throw new ConflictException('题族计量方法已更新，请先重新分析原报告并核对指导计划');
+      if (this.analysisCompatibility(baselineReport).requiresReanalysis) throw new ConflictException('能力或题族计量方法已更新或原依据无法核对，请先重新分析原报告并核对指导计划');
       if (baselineVersion !== (baselineReport.version ?? 1)) throw new ConflictException('评测依据已修订，请先核对指导计划');
       const baseline = this.requireSession(user, plan.baselineSessionId);
       if (!baseline.atomSnapshots) throw new ConflictException('历史计划未保存知识定义，请重新评测后建立新计划');
@@ -439,13 +440,24 @@ export class DiagnosticsService {
   }
 
   effectiveResponses(studentId: string, subject: Subject) {
-    const sessions = new Set(this.store.select('diagnosticSessions', { studentId, subject, status: ['completed', 'aborted'] }).map((item) => item.id));
+    const history = this.store.select('diagnosticSessions', { studentId });
+    const sessions = new Set(history.filter(item => item.subject === subject && ['completed', 'aborted'].includes(item.status)).map(item => item.id));
+    const starts = new Map(history.map(item => [item.id, Date.parse(item.startedAt)]));
+    const firstSeen = new Map<string, number>();
+    for (const session of history) for (const question of session.questionSnapshots ?? []) {
+      const at = starts.get(session.id)!;
+      if (Number.isFinite(at) && at < (firstSeen.get(question.id) ?? Infinity)) firstSeen.set(question.id, at);
+    }
     return this.store.select('diagnosticResponses', { sessionId: [...sessions] }).map((item) => {
+      // Earlier frozen sessions prove exposure even if an old protocol omitted the flag.
+      // Preserve the stored original; this derived view never supplies a missing answer or score.
+      const knownEarlier = (firstSeen.get(item.questionId) ?? Infinity) < (starts.get(item.sessionId) ?? -Infinity);
+      const response = knownEarlier && !item.priorExposure ? { ...item, priorExposure: true } : item;
       const revision = this.store.select('scoringRevisions', { responseId: item.id }).sort((a, b) => b.version - a.version)[0];
-      return revision ? { ...item, score: revision.score, correct: revision.score === 1, status: 'scored' as const,
+      return revision ? { ...response, score: revision.score, correct: revision.score === 1, status: 'scored' as const,
         gradingReason: revision.reason, gradingVersion: `review-v${revision.version}`,
         scoreDetails: revision.ratings?.map(rating => ({ key: `criterion-${rating.criterionIndex}`, label: revision.rubricSnapshot?.[rating.criterionIndex]?.criterion ?? `量规${rating.criterionIndex + 1}`,
-          score: rating.score, origin: 'review' as const, observation: rating.observation })) } : item;
+          score: rating.score, origin: 'review' as const, observation: rating.observation })) } : response;
     });
   }
 
@@ -503,10 +515,20 @@ export class DiagnosticsService {
 
   analysisStatus(user: InMemoryUserAccount, sessionId: string) {
     const report = this.report(user, sessionId);
-    return { requiresReanalysis: familyAnalysisOutdated(report), reportVersion: report.version ?? 1,
-      reportFamilyIdentityVersion: report.familyIdentityVersion ?? LEGACY_FAMILY_IDENTITY_VERSION,
-      currentFamilyIdentityVersion: FAMILY_IDENTITY_VERSION,
-      canReanalyze: !!this.requireSession(user, sessionId).atomSnapshots && ['parent', 'admin'].includes(user.role) };
+    const { originalsAvailable, ...compatibility } = this.analysisCompatibility(report);
+    return { ...compatibility,
+      canReanalyze: originalsAvailable && !!this.requireSession(user, sessionId).atomSnapshots && ['parent', 'admin'].includes(user.role) };
+  }
+
+  analysisCompatibility(report: DiagnosticReport) {
+    const sessions = this.store.select('diagnosticSessions', { studentId: report.studentId, subject: report.subject });
+    const sources = new Map(sessions.map(session => [session.id, session]));
+    const retained = this.effectiveResponses(report.studentId, report.subject).filter(response => {
+      const session = sources.get(response.sessionId);
+      return session?.questionSnapshots?.some(question => question.id === response.questionId) &&
+        session.itemSnapshots?.some(item => item.id === response.itemId && item.version === response.mappingVersion);
+    });
+    return reportAnalysisCompatibility(report, retained);
   }
 
   /** A requested rule update appends a report; it cannot manufacture an intervention or overwrite the old result. */
@@ -525,14 +547,16 @@ export class DiagnosticsService {
     const report = this.report(user, sessionId);
     if ((report.version ?? 1) !== command.expectedReportVersion) throw new ConflictException('报告已有新版本，请重新查看后再分析');
     if (!session.atomSnapshots) throw new ConflictException('历史评测缺少冻结知识定义，请保留原报告并完成新评测');
-    if (report.familyIdentityVersion === FAMILY_IDENTITY_VERSION) return report;
+    const compatibility = this.analysisCompatibility(report);
+    if (!compatibility.requiresReanalysis) return report;
+    if (!compatibility.originalsAvailable) throw new ConflictException('部分计量原件已不可用，请保留原报告，确认范围后完成新的独立评测');
     this.refreshHypotheses(session.studentId, session.subject);
     const version = (report.version ?? 1) + 1, createdAt = new Date().toISOString();
     this.store.append('diagnosticReports', { id: this.store.nextId('report'), sessionId, version, createdAt,
       reanalysis: { actorId: user.id, requestKey: command.requestKey, inputHash },
-      report: { ...this.buildReport(session), revisionReason: `题族计量规则更新，依据原始作答重新分析；数值变化不等同于学习改善。${command.reason}` } });
+      report: { ...this.buildReport(session), revisionReason: `能力或题族计量规则更新，依据保留的原始作答重新分析；数值变化不等同于学习改善。${command.reason}` } });
     this.events.publish('diagnostic.report_reanalyzed', { sessionId, studentId: session.studentId, actorId: user.id,
-      previousVersion: report.version ?? 1, version, familyIdentityVersion: FAMILY_IDENTITY_VERSION });
+      previousVersion: report.version ?? 1, version, familyIdentityVersion: FAMILY_IDENTITY_VERSION, measurementVersion: MEASUREMENT_VERSION });
     return this.report(user, sessionId);
   }
 
@@ -580,7 +604,7 @@ export class DiagnosticsService {
           status: latest.status as DiagnosticHypothesis['status'], updatedAt: latest.at, history }] : [];
       });
     return { sessionId: session.id, studentId: session.studentId, subject: session.subject, status: session.status,
-      familyIdentityVersion: FAMILY_IDENTITY_VERSION,
+      familyIdentityVersion: FAMILY_IDENTITY_VERSION, measurementVersion: MEASUREMENT_VERSION,
       answeredCount: evidence.length, totalCount: session.itemIds.length, scoredCount: scored.length, pendingReviewCount: pending,
       rawScore: scored.length ? Math.round(scored.reduce((sum, item) => sum + item.score!, 0) / scored.length * 100) : null,
       coverage: session.coverage, estimates,
