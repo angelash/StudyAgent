@@ -1,0 +1,51 @@
+{
+  "at": "2026-10-27T03:18:46.404728+00:00",
+  "passed": true,
+  "deployed": false,
+  "scope": "Stable original red HTTP metadata case (11 pass/1 fail), corrected24 text/complete-context/catalog cases, then25 including actual restart durability under explicitly disabled legacy API credentials. Type/build passes after explicit Buffer annotation. No corrected full-suite, full-model or runtime delivery claim.",
+  "sourceAndCompiledFiles": {
+    "apps/api/src/modules/ai/xiaojiu-text-transport.ts": "14db8cf647f618539e7ddc6ae11d6f2bcfbb951acab6dcd11bad632bc9859671",
+    "apps/api/dist/apps/api/src/modules/ai/xiaojiu-text-transport.js": "6ff23d3f45adba4f1d96cea70eec363ff3e03991b136930c7fc4d21cd2fb8e53",
+    "apps/api/src/modules/ai/xiaojiu-chat.service.ts": "2294ef3d8b249943b6b9df1664bf4ca2d7ef7492f2787764169562bd33b48050",
+    "apps/api/dist/apps/api/src/modules/ai/xiaojiu-chat.service.js": "1e048b1e91cbcd034d1d0a11758469d730c9ddc8741ed40127e2807040b42ab4",
+    "apps/api/vitest.config.ts": "ee16715f15fcfa88d875d99c03e467a1131416cc23996bdadae267cef7cae373"
+  },
+  "files": [
+    {
+      "source": "data/qa/model-metadata-red.log",
+      "file": "00-model-metadata-red.log.gz",
+      "originalSha256": "dbb14bbb0cb4ad3e2e6fbd0664ce52c4e3d94fb196eca8756056249137ad125d",
+      "sha256": "906d37262a016a23e0080d9e63d71a7e7e5c2db0e79c5f3b24ccb491e0addf8d"
+    },
+    {
+      "source": "data/qa/model-metadata-green.log",
+      "file": "01-model-metadata-green.log.gz",
+      "originalSha256": "f6c4994a0904a4326ace7699e945c706ab5ac244d779d62502d0acfb1b963959",
+      "sha256": "fe8c4781ff6e33227cf32f4c1dc68e977423d07b4f98912cb6a24d9bbbe496ad"
+    },
+    {
+      "source": "data/qa/model-metadata-api-build.log",
+      "file": "02-model-metadata-api-build.log.gz",
+      "originalSha256": "e5e68d3fabae3dbfad85231e8074cefe023ad9ba264510eb1221b7f74c59e878",
+      "sha256": "97b877cc3342ef2cf95e80d2e6a93d59ab0f83ebcea75b9573ef46f5c099ed06"
+    },
+    {
+      "source": "data/qa/model-metadata-api-build-green.log",
+      "file": "03-model-metadata-api-build-green.log.gz",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "sha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c"
+    },
+    {
+      "source": "data/qa/model-metadata-api-typecheck.log",
+      "file": "04-model-metadata-api-typecheck.log.gz",
+      "originalSha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "sha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec"
+    },
+    {
+      "source": "data/qa/model-metadata-recovery-green.log",
+      "file": "05-model-metadata-recovery-green.log.gz",
+      "originalSha256": "0ce7763ef29248344b4ec2726a6978fe79586c80ca7fba87fae3a67d821f350a",
+      "sha256": "f26a14a0df983f86b3b22c82928985fdda2204a618fbab006f49892fedb32cc2"
+    }
+  ]
+}

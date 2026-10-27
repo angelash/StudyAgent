@@ -1,0 +1,183 @@
+{
+  "at": "2026-10-27T03:03:57.720408+00:00",
+  "passed": false,
+  "deployed": false,
+  "applicationRevision": "73bc8b9f6b5c7d2c60b66787cc3976eb03492019",
+  "scope": "Original full22 anonymous actual-application model attempt, independent protocol-only GPT diagnostic,23 passing synthetic boundary cases and failed original fullAPI before transport metadata correction. No rewritten or merged attempt. CLI-internal HTTP retries are not counted as CLI starts.",
+  "models": {
+    "count": 22,
+    "passed": 13,
+    "failed": 9,
+    "firstAttemptPassed": 13,
+    "originalCliStarts": 31,
+    "failedIds": [
+      "gpt-6.1-sol",
+      "gpt-6-astra",
+      "gpt-6-luna",
+      "gpt-6-sol",
+      "gpt-5.6-sol",
+      "gpt-5.6-terra",
+      "gpt-5.6-luna",
+      "gpt-5.5",
+      "claude-opus-5"
+    ]
+  },
+  "unit": {
+    "passed": 23,
+    "failed": 0
+  },
+  "fullApi": {
+    "passed": 1454,
+    "failed": 1,
+    "environmentSkipped": 60,
+    "failure": "durability.integration legacy assistant no-model call returned503; this runner inherited private environment without explicitly disabling the legacy OpenAI client. Fresh regression must blank legacy API credentials; not a passing full run."
+  },
+  "startupFailure": "Initial PM2 shell argument parsing lost required --output before any CLI model invocation; original error retained. Explicit args array was used for the full attempt.",
+  "metadataFinding": "Actual GPT upstream HTTP200 completed message/output_text streams included response.metadata, which original strict text transport rejects. Diagnostic retains protocol types, not upstream response text or credentials.",
+  "files": [
+    {
+      "source": "data/qa/current-models-73bc8b9-run1/catalog.json",
+      "file": "00-catalog.json.gz",
+      "originalSha256": "7028637cd7cb02eb63e16031bc7ba6e49427303c2652aac7580a98485cbde7d6",
+      "sha256": "d6476490b21cf86e5b2d5838cb582c614540a975033a11d830c5d69ee41c3759"
+    },
+    {
+      "source": "data/qa/current-models-73bc8b9-run1/claude-fable-5-1-f8064a2325.json",
+      "file": "01-claude-fable-5-1-f8064a2325.json.gz",
+      "originalSha256": "01d65fd09c3a56e656206c930fa181fe869ee7e11351431d83d1ef01a6451c37",
+      "sha256": "9c0bf7cc6bc88bf5fc19dc18ade14df7b0e96bc5e461d8d667f9a1f2d7cb1d1e"
+    },
+    {
+      "source": "data/qa/current-models-73bc8b9-run1/claude-opus-5.5-795584cf81.json",
+      "file": "02-claude-opus-5.5-795584cf81.json.gz",
+      "originalSha256": "6c8dd04a9e2d6278b09c95f9cbf08e394cecb59e18bab5416daaa1f1a003ef74",
+      "sha256": "c445146e2a5ae2ceed5e4ab5924367a1e39745660af159c02e3635f727059dd5"
+    },
+    {
+      "source": "data/qa/current-models-73bc8b9-run1/claude-sonnet-5-4b07d9a517.json",
+      "file": "03-claude-sonnet-5-4b07d9a517.json.gz",
+      "originalSha256": "97c37bb1a303abce8ec9e86cdc9c6e68cf21f77a74540274eebd73472862bef9",
+      "sha256": "337dc8a89627abd41cc4b5752206bf3838f85e7e28c4d5fe5a9dcb388655a15a"
+    },
+    {
+      "source": "data/qa/current-models-73bc8b9-run1/deepseek-v4-flash-f61ff5cf8e.json",
+      "file": "04-deepseek-v4-flash-f61ff5cf8e.json.gz",
+      "originalSha256": "03e82af897021a2b91bf771766c0fd2253c028ff087eb6bd8b86003536c37290",
+      "sha256": "a20a25860be49c5afcb229efc8274417b37001afa378967d0dba2df1f9775a3c"
+    },
+    {
+      "source": "data/qa/current-models-73bc8b9-run1/glm-5.2-bb43a640f0.json",
+      "file": "05-glm-5.2-bb43a640f0.json.gz",
+      "originalSha256": "80548bf42622fc7f62ff8551758e864bf1b5385221ebc0a84260c118d5324e7b",
+      "sha256": "7e540b6d91f39fc27af57a3cfca2d853eafb4feb7b5ae42006165a454d75ad15"
+    },
+    {
+      "source": "data/qa/current-models-73bc8b9-run1/glm-5.3-9691a990ed.json",
+      "file": "06-glm-5.3-9691a990ed.json.gz",
+      "originalSha256": "b127e22ad8e5cb5ea228b9cee9ba4211ac3c0863c2b67f919d92b9197847e840",
+      "sha256": "c8aeb73094a286cdc978eb1d74c08bbfc37c4d9f9be7317a4df2c483abcdd48e"
+    },
+    {
+      "source": "data/qa/current-models-73bc8b9-run1/glm-5.3-flash-0d8724178b.json",
+      "file": "07-glm-5.3-flash-0d8724178b.json.gz",
+      "originalSha256": "0c7c652e16d48e5c7bd5fe4eb3f03804ca35365f66661ed1230adb8df992106f",
+      "sha256": "e0af88964c73f4bc04e05dc1d8b87e389433dfd9ad3db3591ce0b4a1af07578e"
+    },
+    {
+      "source": "data/qa/current-models-73bc8b9-run1/grok-4.6-44968622fb.json",
+      "file": "08-grok-4.6-44968622fb.json.gz",
+      "originalSha256": "7018ce7e8e391c837087fcab3ec7fc3775965954a35dc48b45074d8bf587a387",
+      "sha256": "fc4d4d69467519df799c416698adf86df2c41ddfecf0591ea3735445e4a83836"
+    },
+    {
+      "source": "data/qa/current-models-73bc8b9-run1/grok-4.7-459415a966.json",
+      "file": "09-grok-4.7-459415a966.json.gz",
+      "originalSha256": "d878697f30117c3add2d8bfcd230c01dbb64fd314ee57c45b2ea79bee68004e3",
+      "sha256": "cfc48651a001e3abde510ad76de62f44eb7fdc6f475c7b745b81db9c3b005974"
+    },
+    {
+      "source": "data/qa/current-models-73bc8b9-run1/mimo-v2.6-flash-c7588f32c7.json",
+      "file": "10-mimo-v2.6-flash-c7588f32c7.json.gz",
+      "originalSha256": "73a1b1213fd004c584102f3e5afa08467bfda38b30e2c2284d3ce43d8b902656",
+      "sha256": "f2c6762a246ca4daf7e66e9beab9e7b659da32fe00ffcaac2dd17f1187d34850"
+    },
+    {
+      "source": "data/qa/current-models-73bc8b9-run1/mimo-v2.6-pro-42f4aabe21.json",
+      "file": "11-mimo-v2.6-pro-42f4aabe21.json.gz",
+      "originalSha256": "e3e101324b47645d6cd528c98620997c344eccd6c6f0909977d0c0c4343931ce",
+      "sha256": "956efea13f0c7c7f9d47f20613bf7a11b15348190641bf11f6d0aa3f6c3e45bc"
+    },
+    {
+      "source": "data/qa/current-models-73bc8b9-run1/mimo-v2.6-pro-ultraspeed-d9fbcbf1eb.json",
+      "file": "12-mimo-v2.6-pro-ultraspeed-d9fbcbf1eb.json.gz",
+      "originalSha256": "ece9b9c25d1dcb2e7f58733761261ccf1c2bf140caa5e9280be0f99558baa356",
+      "sha256": "24f1228dd0a639c1a57637f027c53f05c60a477fe5630c5f61365f18c78f54e6"
+    },
+    {
+      "source": "data/qa/current-models-73bc8b9-run1/progress.json",
+      "file": "13-progress.json.gz",
+      "originalSha256": "50b90dd6f2167f381f6a5b91d07d264c2f2a23a419902185504c797658cb413a",
+      "sha256": "9c57b0e2a053631d01cf7e22618c420a37c8692968bf337765e9c9180d06ea44"
+    },
+    {
+      "source": "data/qa/current-models-73bc8b9-run1/qwen3.8-max-bc33b81a67.json",
+      "file": "14-qwen3.8-max-bc33b81a67.json.gz",
+      "originalSha256": "95b0dbab1c3ac912f3241b2971baf46218c6a91e3a3b680f9dcde16393b2176d",
+      "sha256": "e37e20a82611e4d31dad031c466411c4989430c9f57ee7445e87bd8cdeb4d54d"
+    },
+    {
+      "source": "data/qa/current-models-73bc8b9-run1/receipt.json",
+      "file": "15-receipt.json.gz",
+      "originalSha256": "50b90dd6f2167f381f6a5b91d07d264c2f2a23a419902185504c797658cb413a",
+      "sha256": "9c57b0e2a053631d01cf7e22618c420a37c8692968bf337765e9c9180d06ea44"
+    },
+    {
+      "source": "data/qa/model-gpt-route-diagnostic-01.json",
+      "file": "16-model-gpt-route-diagnostic-01.json.gz",
+      "originalSha256": "1ab8f10dfd21966de0d20f7bf24cb4bbc604f417e4fe800577e4a9fe9831f66b",
+      "sha256": "52c37e5456b9fb4cf3f106c029e5831c9677714b65a891c2daf178a0bed470be"
+    },
+    {
+      "source": "data/qa/diagnose-gpt-text-route.cjs",
+      "file": "17-diagnose-gpt-text-route.cjs.gz",
+      "originalSha256": "303d6a71f20eea193008344a27347fa3f916c0b999284c2bf19e24d554f50049",
+      "sha256": "6786e33157c7197937a9f636f54aa4a2655efcb23089f1d679ebbbd6c87d6d27"
+    },
+    {
+      "source": "data/qa/model-qualification-full-api.json",
+      "file": "18-model-qualification-full-api.json.gz",
+      "originalSha256": "c05356e14bdddd88ca02221e1e599aebcc74cfd1b9df8909aee5592818f46a18",
+      "sha256": "b7cd41cabb83f1c22daf0e51d7890004590e8e928b9da65e2fa650869a4595d3"
+    },
+    {
+      "source": "data/qa/model-qualification-full-api.log",
+      "file": "19-model-qualification-full-api.log.gz",
+      "originalSha256": "e70a41493550468cba707345ceed366491b50e6a78d8e5041a51bdcd4f58f10b",
+      "sha256": "925f24b958b8e988c0baccc6d4e61320c5f9ab79288d75d85d6d2df33ce50e26"
+    },
+    {
+      "source": "data/qa/model-qualification-full-api-run.json",
+      "file": "20-model-qualification-full-api-run.json.gz",
+      "originalSha256": "433a7257ec80bf8e0a26549c3e9efa00b77d60129bdd4618b580eee86be7aa6a",
+      "sha256": "8545c2cd09e38fab12121bf37614ffa2e35f041c003083b32a79ad6c3997df0a"
+    },
+    {
+      "source": "data/qa/model-qualification-unit-first.log",
+      "file": "21-model-qualification-unit-first.log.gz",
+      "originalSha256": "26e98cd534342dd9ef7b6b3971a14e1d2e3d0f3f805bc5e4aad451392ab6597f",
+      "sha256": "f06d1f3006b33147e092771536e95e54bd9aa253ab4885f2234fe29f921d2e0d"
+    },
+    {
+      "source": "data/qa/current-models-73bc8b9.err.log",
+      "file": "22-current-models-73bc8b9.err.log.gz",
+      "originalSha256": "57a92e77b4eebca3415b1bc412015158925d6511b6ecb7d5a2d25f21df168569",
+      "sha256": "70f90390b4de0051ffadf44113d1aac0e53d644a6a6f47e38e112aaa5c55af18"
+    },
+    {
+      "source": "data/qa/current-models-73bc8b9-run1.out.log",
+      "file": "23-current-models-73bc8b9-run1.out.log.gz",
+      "originalSha256": "743feaab8a06ae57752566b78e17b69fc52f8f341bf116cf9dc948f9e341b5ae",
+      "sha256": "836af59e645f0c57b5f9be20967c0442c4e6cd00c205b88faf12ea16ad9b173e"
+    }
+  ]
+}

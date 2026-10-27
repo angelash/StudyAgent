@@ -7,6 +7,7 @@ import { startTextTransport, textProviderConfiguration, verifyTextResponse } fro
 
 const complete = (items: unknown[] = [{ type: 'message', content: [{ type: 'output_text', text: '{"reply":"匿名说明"}' }] }]) =>
   'event: response.completed\ndata: ' + JSON.stringify({ type: 'response.completed', response: { output: items } }) + '\n\n';
+const metadata = 'event: response.metadata\ndata: {"type":"response.metadata","metadata":{"note":"SYNTHETIC_METADATA_NOT_A_REPLY"}}\n\n';
 describe('text-only model transport boundary', () => {
   const servers: Server[] = [], transports: Awaited<ReturnType<typeof startTextTransport>>[] = [], directories: string[] = [];
   afterEach(async () => {
@@ -40,9 +41,18 @@ describe('text-only model transport boundary', () => {
       reasoning: { effort: 'high' }, input: '匿名合成问题' });
     expect(authorization).toBe('Bearer SYNTHETIC_ONLY'); expect(cookie).toBeUndefined();
   });
+  it('delivers a complete GPT-style text response while removing only the non-semantic metadata block', async () => {
+    const text = complete([{ type: 'message', content: [{ type: 'output_text', text: '{"reply":"完整原文与公式\\\\frac{1}{2}"}' }] }]);
+    const upstream = await fixture((_req, res) => res.writeHead(200, { 'Content-Type': 'text/event-stream' }).end(metadata + text));
+    const response = await command(await transport(upstream));
+    expect(response.status).toBe(200);
+    const body = await response.text(); expect(body).toBe(text);
+    expect(body).not.toContain('response.metadata'); expect(body).not.toContain('SYNTHETIC_METADATA_NOT_A_REPLY');
+  });
   it.each(['function_call', 'custom_tool_call', 'computer_call', 'web_search_call', 'mcp_call'])('buffers and rejects %s before the caller sees any tool event', async type => {
     const upstream = await fixture((_req, res) => {
       res.writeHead(200, { 'Content-Type': 'text/event-stream' });
+      res.write(metadata);
       res.write('event: response.output_text.delta\ndata: {"type":"response.output_text.delta","delta":"partial"}\n\n');
       res.end(complete([{ type, name: 'read_private_file', arguments: '{}' }]));
     });
@@ -52,6 +62,9 @@ describe('text-only model transport boundary', () => {
   });
   it('rejects tool argument events, missing completion, executable message parts and malformed streams', () => {
     for (const content of [
+      metadata,
+      'event: response.output_text.delta\ndata: {"type":"response.metadata"}\n\n' + complete(),
+      'data: {"type":"response.unknown_metadata","note":"not-allowlisted"}\n\n' + complete(),
       'data: {"type":"response.function_call_arguments.delta","delta":"{}"}\n\n' + complete(),
       'event: response.function_call_arguments.delta\ndata: {"type":"response.output_text.delta","delta":"mismatched"}\n\n' + complete(),
       'data: {"type":"response.output_text.delta","delta":"partial"}\n\n',

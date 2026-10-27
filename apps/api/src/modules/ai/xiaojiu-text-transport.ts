@@ -106,17 +106,25 @@ function verifyEvent(value: unknown) {
 }
 
 export function verifyTextResponse(bytes: Buffer) {
-  const text = bytes.toString('utf8'); let events = 0, completed = false;
-  for (const block of text.split(/\r?\n\r?\n/)) {
+  const text = bytes.toString('utf8'), parts = text.split(/(\r?\n\r?\n)/);
+  let events = 0, completed = false, removedMetadata = false, filtered = '';
+  for (let index = 0; index < parts.length; index += 2) {
+    const block = parts[index], separator = parts[index + 1] ?? '';
     const lines = block.split(/\r?\n/), names = lines.filter(line => line.startsWith('event:')).map(line => line.slice(6).trim());
     const data = lines.filter(line => line.startsWith('data:')).map(line => line.slice(5).trimStart()).join('\n');
-    if (!data || data === '[DONE]') continue;
-    const value = JSON.parse(data); verifyEvent(value);
+    if (!data || data === '[DONE]') { filtered += block + separator; continue; }
+    const value = JSON.parse(data);
     if (names.length > 1 || names.length === 1 && names[0] !== value.type) throw Error('text_transport_event_identity_mismatch');
+    // Discard the entire non-semantic payload emitted by the current GPT route.
+    // Metadata cannot supply text, tool calls or completion; other unknown events still fail.
+    if (value && typeof value === 'object' && value.type === 'response.metadata') { removedMetadata = true; continue; }
+    verifyEvent(value);
     events++;
     if (value.type === 'response.completed') completed = true;
+    filtered += block + separator;
   }
   if (!events || !completed) throw Error('text_transport_incomplete_response');
+  return removedMetadata ? Buffer.from(filtered, 'utf8') : bytes;
 }
 
 /** Only the original configured provider receives credentials. No tool event is released to the CLI. */
@@ -144,12 +152,13 @@ export async function startTextTransport(options: { upstream: string; modelId: s
       const upstream = await fetch(options.upstream, { method: 'POST', headers, body: JSON.stringify(body), signal: controller.signal, redirect: 'error' });
       if (!upstream.body) throw Error('text_transport_empty_response');
       const bytes = await boundedBody(upstream.body as unknown as AsyncIterable<Uint8Array>, maxResponseBytes);
+      let safeBytes: Buffer = bytes;
       if (upstream.ok) {
         if (!upstream.headers.get('content-type')?.includes('text/event-stream')) throw Error('text_transport_expected_events');
-        verifyTextResponse(bytes);
+        safeBytes = verifyTextResponse(bytes);
       }
       response.writeHead(upstream.status, { 'Content-Type': upstream.ok ? 'text/event-stream' : 'application/json', 'Cache-Control': 'no-store' });
-      response.end(bytes);
+      response.end(safeBytes);
     } catch {
       // Error details and bodies may contain private prompts/auth; the caller receives a stable bounded error only.
       if (!response.headersSent) response.writeHead(502, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
