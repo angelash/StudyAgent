@@ -1,0 +1,46 @@
+{
+  "at": "2026-10-27T07:25:24.604486+00:00",
+  "sourceUrl": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0",
+  "observed": [
+    "Existing saved practice second question and assistant input visible; no new message or answer submitted.",
+    "Closed existing practice to the course page. Materials switches the left panel to its empty state while the right unit outline remains.",
+    "Practices switches the left panel to cross-unit Practice, Project and Exam entries while the right unit outline remains."
+  ],
+  "images": {
+    "pixelWidth": 1280,
+    "pixelHeight": 800,
+    "dpr": "not measured"
+  },
+  "snapshotCoverage": "Runtime snapshots report partial/truncated coverage; preserve these flags. They are not a full page or source dump.",
+  "boundaries": [
+    "No new answer, skip, message, upload, microphone access or calendar write.",
+    "No asset download; existing captured repository assets remain the reference implementation source.",
+    "No original audio, code execution, mobile layout, refresh recovery or full CSS/computed-style parity verified in this observation."
+  ],
+  "files": [
+    {
+      "file": "materials.snapshot.txt.gz",
+      "originalBytes": 37673,
+      "originalSha256": "21df4e718d2bdab9213488f5a0476896263fed2bd51cd55b1e514d65536cbc97",
+      "storedSha256": "dc7fc9965de03aaa294a7227bf979aee970a78405582c758da60146e8ddaa38f"
+    },
+    {
+      "file": "practices.snapshot.txt.gz",
+      "originalBytes": 63170,
+      "originalSha256": "78e62721068a16bba725a8dbfc5a3fc87291a36624b1cd1ba2d47391337c8f10",
+      "storedSha256": "126371ac3e5575b42111c4ac80dafe7f9af1220f353b1b84a331b63c622fe672"
+    },
+    {
+      "file": "materials-1280.png",
+      "originalBytes": 262031,
+      "originalSha256": "c16089c24089ed943f3a1e77ef67fac2bf4dd84228f73f9a7b1ee62402d0f9ff",
+      "storedSha256": "c16089c24089ed943f3a1e77ef67fac2bf4dd84228f73f9a7b1ee62402d0f9ff"
+    },
+    {
+      "file": "practices-1280.png",
+      "originalBytes": 267315,
+      "originalSha256": "26facde27584f233a1f7984bb8503a6f7392d0e354735593a59c9e4c49a880f7",
+      "storedSha256": "26facde27584f233a1f7984bb8503a6f7392d0e354735593a59c9e4c49a880f7"
+    }
+  ]
+}
