@@ -1,0 +1,183 @@
+{
+  "at": "2026-10-27T07:45:22.311853+00:00",
+  "passed": true,
+  "head": "059f319ea680d1f08773b8bf8b8f0a932d23889c",
+  "phase": "local-complete-ci-and-runtime-pending",
+  "api": {
+    "passed": 1469,
+    "failed": 0,
+    "environmentSkipped": 60,
+    "reportSha256": "8887374dea491eae85519dae662fa60e508bca07082a506e8217c470fd760cc4"
+  },
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-27T07:09:42.922Z",
+      "duration": 2072279.607,
+      "expected": 375,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "originalAttempts": 375,
+    "reportSha256": "63d8d8fc22d264ca48b027872f91e5231d52d79c8077d80b47991597c4868249"
+  },
+  "focus": {
+    "stats": {
+      "startTime": "2026-10-27T07:06:47.745Z",
+      "duration": 161936.495,
+      "expected": 24,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "originalAttempts": 24,
+    "reportSha256": "00b79100655b306fd1911e0ffe69accf7c252c3d51722bf45754338cf1f63e9e"
+  },
+  "compiledFiles": 651,
+  "apiCompiledFiles": 360,
+  "qaWebBuildId": "EqxAvb7snL0OsukeqofqR",
+  "realModelExecutionInputsUnchanged": true,
+  "manualReview": [
+    "1280 answer with collapsed details and saved DOM/DPR1/fonts",
+    "390 assistant with complete72px input and14px model picker",
+    "768 assistant",
+    "1440 selected multiple choice; actual checkbox and spanning final choice"
+  ],
+  "limitations": [
+    "Synthetic accounts/storage/providers only; no new real supplier test.",
+    "Actual original states/DPR/audio and question content differ; not100percent parity.",
+    "Exact remote CI and stopped-service backup/production build/guarded runtime delivery are still pending."
+  ],
+  "files": [
+    {
+      "file": "api.json.gz",
+      "originalBytes": 753236,
+      "originalSha256": "8887374dea491eae85519dae662fa60e508bca07082a506e8217c470fd760cc4"
+    },
+    {
+      "file": "api.log.gz",
+      "originalBytes": 489,
+      "originalSha256": "058b0f00c4ad9dfa44e21ff9ef5662990dac2c1e9f8104bb84d4558ae0d652cb"
+    },
+    {
+      "file": "browser.json.gz",
+      "originalBytes": 419101,
+      "originalSha256": "63d8d8fc22d264ca48b027872f91e5231d52d79c8077d80b47991597c4868249"
+    },
+    {
+      "file": "browser.log.gz",
+      "originalBytes": 60514,
+      "originalSha256": "5f69abe002c03e19806a25aaf1fa44a13f84adc0b9b4c357af439fba8a75a297"
+    },
+    {
+      "file": "build-api.log.gz",
+      "originalBytes": 62,
+      "originalSha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced"
+    },
+    {
+      "file": "build-config.log.gz",
+      "originalBytes": 462,
+      "originalSha256": "28bd129dead20b84041f1c40c4ef24efd10de9858e36c06702ffda0586513112"
+    },
+    {
+      "file": "build-contracts.log.gz",
+      "originalBytes": 468,
+      "originalSha256": "3d28a465ee9f162339e5ed42bc3668cc475efe254baf6e6a4f4aad5eed4dd523"
+    },
+    {
+      "file": "build-web.log.gz",
+      "originalBytes": 1462,
+      "originalSha256": "18fa9f57596aae36ea89690dd23a9aa992abd90efb5afc1e74c2db4210736fc5"
+    },
+    {
+      "file": "compiled.json.gz",
+      "originalBytes": 93452,
+      "originalSha256": "6db00321dabddffd7ca2fb7b91573c37f09f1d619b0658c5b4965850cde628da"
+    },
+    {
+      "file": "focus.json.gz",
+      "originalBytes": 29698,
+      "originalSha256": "00b79100655b306fd1911e0ffe69accf7c252c3d51722bf45754338cf1f63e9e"
+    },
+    {
+      "file": "focus.log.gz",
+      "originalBytes": 4573,
+      "originalSha256": "b206d232d7aa3724a1f3df03fbef2e66c5d1fd6b584017e876ebe3c7d359e6e6"
+    },
+    {
+      "file": "receipt.json.gz",
+      "originalBytes": 3122,
+      "originalSha256": "a56662dede992146ee8b393ef79057a0248ee39780b916e12e67b33b077daedc"
+    },
+    {
+      "file": "source.json.gz",
+      "originalBytes": 299114,
+      "originalSha256": "1f990f1c86c0fc537fcbccc19cb8b3e5e1a9662b1c74b5800b6797fe39666b4f"
+    },
+    {
+      "file": "types-api.log.gz",
+      "originalBytes": 64,
+      "originalSha256": "3dd6db47859fa0cbbf2848a978bf41c83f7ab44fff924e237451a140ca18c4df"
+    },
+    {
+      "file": "types-web.log.gz",
+      "originalBytes": 64,
+      "originalSha256": "92a5fa6d934dd7f9ee13e23e4101157752842a9641ebb05a3e22cc61c6a59af8"
+    },
+    {
+      "file": "practice-screenshots/actual-desktop-layout.json",
+      "originalBytes": 818,
+      "originalSha256": "b1711e74f04f3d64a4754f39e1ea44c5a2cf33bac898775f90def4b570ef9785"
+    },
+    {
+      "file": "practice-screenshots/assistant-1280.png",
+      "originalBytes": 103380,
+      "originalSha256": "602c3a42e9e903ed24c8f903692d909626235a156be4de4e94570839d8a5f7bc"
+    },
+    {
+      "file": "practice-screenshots/assistant-1440.png",
+      "originalBytes": 105115,
+      "originalSha256": "d28fcaec9ee5dc12b38a23f0178ddfdac5fa3bf1091f635fc9041af4397ee7bd"
+    },
+    {
+      "file": "practice-screenshots/assistant-390.png",
+      "originalBytes": 38032,
+      "originalSha256": "c881d74d29ce608d0cd190540135902fd5aef95d48fbd1d2e161225c6ef6aa10"
+    },
+    {
+      "file": "practice-screenshots/assistant-768.png",
+      "originalBytes": 38240,
+      "originalSha256": "d179b7298a123d1b745e78dc194c31d1c1aa3ee65e6456b7fa00305adefb7750"
+    },
+    {
+      "file": "practice-screenshots/multiple-selected-1280.png",
+      "originalBytes": 72352,
+      "originalSha256": "0917f31a6d712838478489a19363e511644800939d74aad7a3ceb39050afa193"
+    },
+    {
+      "file": "practice-screenshots/multiple-selected-1440.png",
+      "originalBytes": 73466,
+      "originalSha256": "c248e4e58149e607b0d0171fd1d81d183e4e23d7dd8f03c32171db40ef0be68a"
+    },
+    {
+      "file": "practice-screenshots/multiple-selected-390.png",
+      "originalBytes": 60827,
+      "originalSha256": "bb8461fe1b475758f155732a9152f395d5a23de1844d17a1b5367d518c6a7f25"
+    },
+    {
+      "file": "practice-screenshots/multiple-selected-768.png",
+      "originalBytes": 69870,
+      "originalSha256": "48fd802f92828f742aaa2f82a853e2d5a4e732d581d55f0b68ad843377ac6c42"
+    },
+    {
+      "file": "practice-screenshots/single-answer-details-1280.png",
+      "originalBytes": 170035,
+      "originalSha256": "eb933ee4646142cf7652fc21cd05c4180a9c14a810af35a26aa9ab3243679798"
+    },
+    {
+      "file": "practice-screenshots/single-answered-1280.png",
+      "originalBytes": 155521,
+      "originalSha256": "ffacb1cb8aa1ef3894a848c9e04c442f9f04939b5ebec0e7d637dfb4da389730"
+    }
+  ]
+}
