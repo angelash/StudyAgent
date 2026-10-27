@@ -1,18 +1,19 @@
 'use client';
 import * as React from 'react';
-import type { StudioSpeechCapabilities } from '@study-agent/contracts';
+import type { StudioSpeechCapabilities, WhiteboardQuestionPosition } from '@study-agent/contracts';
 import { useSessionUser } from '../../lib/session-user';
 import { WhiteboardSession } from './whiteboard-session';
-import { isTopicWhiteboard, readWhiteboardOriginal, type PlayableWhiteboard } from './whiteboard-original';
+import { isTopicWhiteboard, isQuestionWhiteboard, readWhiteboardOriginal, type PlayableWhiteboard } from './whiteboard-original';
 export { drawWhiteboardScene, WhiteboardScenePreview } from './whiteboard-canvas';
 
-export type WhiteboardPlayerProps = { whiteboard: PlayableWhiteboard; narrationAvailable?: boolean; speech?: StudioSpeechCapabilities; onClose?: () => void };
+export type WhiteboardPlayerProps = { whiteboard: PlayableWhiteboard; narrationAvailable?: boolean; speech?: StudioSpeechCapabilities; onClose?: () => void;
+  onReturnToOriginal?: (position: WhiteboardQuestionPosition) => void; onAccessLost?: () => void };
 export function WhiteboardPlayer(props: WhiteboardPlayerProps) {
   const identity = useSessionUser(), board = props.whiteboard;
   const owner = React.useRef(identity?.id);
   const trigger = React.useRef<HTMLElement | null>(null);
   const [verified, setVerified] = React.useState<PlayableWhiteboard | null>(null), [error, setError] = React.useState('');
-  const preview = !isTopicWhiteboard(board) && board.id.endsWith('_preview');
+  const preview = !isTopicWhiteboard(board) && !isQuestionWhiteboard(board) && board.id.endsWith('_preview');
   React.useLayoutEffect(() => {
     trigger.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     return () => { if (trigger.current?.isConnected) trigger.current.focus(); };

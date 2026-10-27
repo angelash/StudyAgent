@@ -1,15 +1,16 @@
 'use client';
-import { whiteboardTaughtTableRows, type StudioWhiteboardScene, type WhiteboardSpeechUnit } from '@study-agent/contracts';
+import { whiteboardTaughtTableRows, whiteboardSceneExhibits, whiteboardSceneProgress, type StudioWhiteboardScene, type WhiteboardSpeechUnit } from '@study-agent/contracts';
 import { originalBoardFontFamily, originalUiFontFamily, type OriginalBoardFont } from '../../lib/original-teaching-fonts';
 import { whiteboardTextLines } from './whiteboard-table';
 import { renderWhiteboardFormula, whiteboardFormulaKey, whiteboardFormulaPages, type FormulaPage } from './whiteboard-formula';
 
 export type BoardCamera = { zoom: number; x: number; y: number; follow: boolean };
-type Part = { id: string; y: number; height: number; bullet?: number; row?: number; page?: { index: number; count: number } } & (
+type Part = { id: string; y: number; height: number; bullet?: number; row?: number; exhibitIndex?: number; diagramPart?: boolean; page?: { index: number; count: number } } & (
   { kind: 'text'; lines: string[]; font: number; title?: boolean } |
   { kind: 'table'; cells: string[][]; header: boolean; font: number } |
   { kind: 'image'; key: string; label: string; crop?: FormulaPage & { scale: number } } |
-  { kind: 'fraction'; visual: NonNullable<StudioWhiteboardScene['visual']>; scale: number }
+  { kind: 'fraction'; visual: NonNullable<StudioWhiteboardScene['visual']>; scale: number } |
+  { kind: 'diagram'; diagram: NonNullable<StudioWhiteboardScene['diagram']>; scale: number }
 );
 export type TeachingBlock = { id: string; scene: StudioWhiteboardScene; x: number; y: number; width: number; height: number; parts: Part[] };
 const gutter = 64, margin = 72;
@@ -22,7 +23,7 @@ export function layoutTeachingBlocks(context: CanvasRenderingContext2D, scenes: 
   const family = originalBoardFontFamily(font), columns = narrow ? [40] : [40, 40], columnWidth = narrow ? 1104 : 536, fontScale = narrow ? 2 : 1;
   const blocks = scenes.map(scene => {
     const column = narrow || columns[0] <= columns[1] ? 0 : 1, parts: Part[] = []; let y = 0;
-    function text(id: string, value: string, size = 30, extras: { title?: boolean; bullet?: number } = {}) {
+    function text(id: string, value: string, size = 30, extras: { title?: boolean; bullet?: number; exhibitIndex?: number; diagramPart?: boolean } = {}) {
       if (!value.trim()) return;
       size *= fontScale;
       context.font = size + 'px ' + family;
@@ -32,26 +33,33 @@ export function layoutTeachingBlocks(context: CanvasRenderingContext2D, scenes: 
     text('title', scene.title, 34, { title: true });
     if (scene.body) text('body', scene.body);
     for (const [index, bullet] of (scene.bullets ?? []).entries()) text('bullet:' + index, bullet, 30, { bullet: index });
-    if (scene.exhibit?.kind === 'table') {
-      const table = scene.exhibit, cellWidth = columnWidth / table.headers.length, size = 26 * fontScale, lineHeight = size * 1.4;
-      context.font = size + 'px ' + family;
-      for (const [index, row] of [table.headers, ...table.rows].entries()) {
-        const cells = row.map(cell => whiteboardTextLines(cell, Math.max(1, cellWidth - 20), value => context.measureText(value).width)), rowHeight = Math.max(...cells.map(cell => cell.length)) * lineHeight + 16;
-        parts.push({ id: scene.id + ':row:' + index, kind: 'table', cells, font: size, header: index === 0, row: index - 1, y, height: rowHeight }); y += rowHeight;
-      }
-      y += 20;
-    } else if (scene.exhibit?.kind === 'formula') {
-      try {
-        const formula = renderWhiteboardFormula(scene.exhibit.latex), layout = whiteboardFormulaPages(formula.width, formula.height, columnWidth / fontScale, 180);
-        for (const [index, page] of layout.pages.entries()) {
-          const height = Math.max(64, page.height * layout.scale) * fontScale;
-          parts.push({ id: scene.id + ':formula:' + index, kind: 'image', key: whiteboardFormulaKey(scene.exhibit.latex), label: scene.exhibit.latex,
-            crop: { ...page, scale: layout.scale * fontScale }, page: { index, count: layout.pages.length }, y, height }); y += height + 16;
+    if (scene.diagram) {
+      text('diagram-title', scene.diagram.title, 24, { diagramPart: true });
+      parts.push({ id: scene.id + ':diagram', kind: 'diagram', diagramPart: true, diagram: scene.diagram, scale: fontScale, y, height: 230 * fontScale }); y += 250 * fontScale;
+    }
+    for (const [exhibitIndex, exhibit] of whiteboardSceneExhibits(scene).entries()) {
+      const prefix = scene.exhibits ? 'exhibit:' + exhibitIndex + ':' : '';
+      if (exhibit.kind === 'table') {
+        const table = exhibit, cellWidth = columnWidth / table.headers.length, size = 26 * fontScale, lineHeight = size * 1.4;
+        context.font = size + 'px ' + family;
+        for (const [index, row] of [table.headers, ...table.rows].entries()) {
+          const cells = row.map(cell => whiteboardTextLines(cell, Math.max(1, cellWidth - 20), value => context.measureText(value).width)), rowHeight = Math.max(...cells.map(cell => cell.length)) * lineHeight + 16;
+          parts.push({ id: scene.id + ':' + prefix + 'row:' + index, kind: 'table', cells, font: size, header: index === 0, row: index - 1, exhibitIndex, y, height: rowHeight }); y += rowHeight;
         }
-      } catch {
-        text('formula-source-label', '原式阅读（暂未统一排版）', 18); text('formula-source', scene.exhibit.latex, 22);
+        y += 20;
+      } else if (exhibit.kind === 'formula') {
+        try {
+          const formula = renderWhiteboardFormula(exhibit.latex), layout = whiteboardFormulaPages(formula.width, formula.height, columnWidth / fontScale, 180);
+          for (const [index, page] of layout.pages.entries()) {
+            const height = Math.max(64, page.height * layout.scale) * fontScale;
+            parts.push({ id: scene.id + ':' + prefix + 'formula:' + index, kind: 'image', key: whiteboardFormulaKey(exhibit.latex), label: exhibit.latex, exhibitIndex,
+              crop: { ...page, scale: layout.scale * fontScale }, page: { index, count: layout.pages.length }, y, height }); y += height + 16;
+          }
+        } catch {
+          text(prefix + 'formula-source-label', '原式阅读（暂未统一排版）', 18, { exhibitIndex }); text(prefix + 'formula-source', exhibit.latex, 22, { exhibitIndex });
+        }
+        text(prefix + 'explanation', exhibit.explanation, 22, { exhibitIndex });
       }
-      text('explanation', scene.exhibit.explanation, 22);
     }
     if (scene.figure) {
       parts.push({ id: scene.id + ':figure', kind: 'image', key: scene.figure.snapshotId, label: scene.figure.alt, y, height: 320 * fontScale }); y += 336 * fontScale;
@@ -73,6 +81,15 @@ export function layoutTeachingBlocks(context: CanvasRenderingContext2D, scenes: 
 }
 
 function revealed(part: Part, block: TeachingBlock, unit: WhiteboardSpeechUnit | undefined, complete: boolean, progress: number) {
+  if (block.scene.reveal) {
+    const plan = whiteboardSceneProgress(block.scene, complete || !unit ? block.scene.narration.length : unit.end);
+    if (plan.mode === 'invalid') return part.kind === 'text' && part.title;
+    if (part.bullet !== undefined) return plan.bullets.includes(part.bullet);
+    if (part.diagramPart) return plan.diagram;
+    if (part.exhibitIndex !== undefined) return plan.exhibits[part.exhibitIndex] &&
+      (part.row === undefined || part.row < 0 || part.row < plan.rows[part.exhibitIndex]);
+    return true;
+  }
   if (complete || !unit) return true;
   if (part.bullet !== undefined) return unit.visibleBulletIndices.includes(part.bullet);
   if (part.page) return part.page.index <= Math.min(part.page.count - 1, Math.floor((unit.start + (unit.end - unit.start) * progress) / Math.max(1, block.scene.narration.length) * part.page.count));
@@ -92,7 +109,10 @@ export function drawTeachingFrame(context: CanvasRenderingContext2D, scenes: Stu
   const shown = blocks.filter(block => lastByScene.has(block.id)), active = shown.find(block => block.id === current.sceneId);
   const progress = Math.max(0, Math.min(1, options.progress ?? 0)), sceneProgress = Math.min(1, (current.start + (current.end - current.start) * progress) / Math.max(1, active?.scene.narration.length ?? 1));
   const requested = options.camera ?? { zoom: 1, x: 0, y: 0, follow: true }, readingHeight = (height - (options.captions === false ? 40 : 110)) / requested.zoom;
-  const automaticY = Math.max(0, (active?.y ?? 40) - 40 / requested.zoom + Math.max(0, (active?.height ?? 0) + 80 / requested.zoom - readingHeight) * sceneProgress);
+  const visibleHeight = active?.scene.reveal ? Math.max(0, ...active.parts.filter(part => revealed(part, active, current, false, progress)).map(part => part.y + part.height)) : active?.height ?? 0;
+  const previousHeight = active?.scene.reveal ? Math.max(0, ...active.parts.filter(part => revealed(part, active, { ...current, end: current.start }, false, 0)).map(part => part.y + part.height)) : 0;
+  const following = active?.scene.reveal ? Math.max(0, previousHeight + 80 / requested.zoom - readingHeight) * (1 - progress) + Math.max(0, visibleHeight + 80 / requested.zoom - readingHeight) * progress : Math.max(0, visibleHeight + 80 / requested.zoom - readingHeight) * sceneProgress;
+  const automaticY = Math.max(0, (active?.y ?? 40) - 40 / requested.zoom + following);
   const camera = { ...requested, y: requested.follow ? automaticY : requested.y };
   const visiblePartIds: string[] = [], visibleSceneIds = shown.map(block => block.id);
   context.save(); context.clearRect(0, 0, width, height); context.fillStyle = '#fafafa'; context.fillRect(0, 0, width, height);
@@ -136,7 +156,28 @@ export function drawTeachingFrame(context: CanvasRenderingContext2D, scenes: Stu
         context.fillStyle = '#737373'; context.font = '20px ' + family;
         context.fillText('图片尚未就绪，请在完整讲稿中核对来源。', x, y + 30);
       }
-    } else if (part.visual.kind === 'fraction_bars') {
+    } else if (part.kind === 'diagram') {
+      const { diagram, scale } = part, middle = y + 110 * scale;
+      context.strokeStyle = '#7950ff'; context.lineWidth = 2 * scale; context.font = 22 * scale + 'px ' + family; context.textAlign = 'center';
+      if (diagram.kind === 'venn') {
+        const radius = 87 * scale, left = x + block.width * .37, right = x + block.width * .63;
+        for (const [cx, color] of [[left, '#dbeafe80'], [right, '#e8e4ff80']] as const) { context.beginPath(); context.arc(cx, middle, radius, 0, Math.PI * 2); context.fillStyle = color; context.fill(); context.stroke(); }
+        context.fillStyle = '#262626';
+        diagram.labels.forEach((label, index) => {
+          const cx = x + block.width * [ .24, .76, .5 ][index], cy = middle + (index === 2 ? 43 * scale : 0);
+          const lines = whiteboardTextLines(label, block.width * .3, value => context.measureText(value).width);
+          lines.forEach((line, row) => context.fillText(line, cx, cy + (row - (lines.length - 1) / 2) * 26 * scale));
+        });
+      } else {
+        const boxWidth = block.width * .28, gap = block.width * .08;
+        const labels = diagram.labels.map(label => whiteboardTextLines(label, boxWidth - 12, value => context.measureText(value).width)), boxHeight = Math.max(88 * scale, ...labels.map(lines => lines.length * 26 * scale + 24 * scale));
+        diagram.labels.forEach((_label, index) => { const left = x + index * (boxWidth + gap); context.fillStyle = '#f1eff9'; context.fillRect(left, middle - boxHeight / 2, boxWidth, boxHeight); context.strokeRect(left, middle - boxHeight / 2, boxWidth, boxHeight);
+          context.fillStyle = '#262626'; labels[index].forEach((line, row) => context.fillText(line, left + boxWidth / 2, middle + (row - (labels[index].length - 1) / 2) * 26 * scale));
+          if (index < diagram.labels.length - 1) { const from = left + boxWidth + 5 * scale, to = left + boxWidth + gap - 5 * scale; context.beginPath(); context.moveTo(from, middle); context.lineTo(to, middle); context.lineTo(to - 8 * scale, middle - 6 * scale); context.moveTo(to, middle); context.lineTo(to - 8 * scale, middle + 6 * scale); context.stroke(); }
+        });
+      }
+      context.textAlign = 'left';
+    } else if (part.kind === 'fraction' && part.visual.kind === 'fraction_bars') {
       const scale = part.scale; context.font = 30 * scale + 'px ' + family;
       part.visual.terms.slice(0, 2).forEach((term, row) => {
         const top = y + row * 96 * scale; context.fillStyle = '#262626'; context.fillText(term.label + '  ' + term.numerator + '/' + term.denominator, x, top + 30 * scale);

@@ -1,0 +1,288 @@
+{
+  "at": "2026-10-26T23:49:30.324Z",
+  "deployed": false,
+  "overallProductComplete": false,
+  "browser": {
+    "cases": 29,
+    "stats": {
+      "startTime": "2026-10-26T23:46:22.885Z",
+      "duration": 147027.489,
+      "expected": 29,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "retries": 0,
+    "originalAttempts": 29
+  },
+  "api": {
+    "passed": 48,
+    "failed": 0,
+    "pending": 0
+  },
+  "realProviders": {
+    "passed": true,
+    "deepseekMs": 47449,
+    "minimaxMs": 2266,
+    "scope": "One anonymous adult original; actual queued structured answer and one HTTP narration sentence. Not all-provider or human listening acceptance."
+  },
+  "limitations": [
+    "Supplementary image candidates/adoption/version binding not yet implemented.",
+    "Adult UI/private deep-link/close regressions and full API/browser/PG/exact CI/release still pending.",
+    "Earlier 10-question runs overlap these15 questions and are not added to the29 total."
+  ],
+  "files": [
+    {
+      "source": "data/qa/whiteboard-question-browser.json",
+      "file": "00-whiteboard-question-browser.json.gz",
+      "originalSha256": "47dfae0bedef886ca4a7cb88988b2f37121d4fdfe8fc4ad044be2249e7128b46",
+      "sha256": "c44844e80398dc4c239be38e78230b3271813854d1f7b382b70b48c0170c37de"
+    },
+    {
+      "source": "data/qa/whiteboard-question-teaching-browser-first.log",
+      "file": "01-whiteboard-question-teaching-browser-first.log.gz",
+      "originalSha256": "4d71be27cdc2ac8c5f374dffe6fc952dd8ca7f3251b5120a9a18f6074282c54e",
+      "sha256": "2d038bf5d498f81a407766600e9a288f12f75d3536077aabea260d000f248e2c"
+    },
+    {
+      "source": "data/qa/whiteboard-question-teaching-current-api.json",
+      "file": "02-whiteboard-question-teaching-current-api.json.gz",
+      "originalSha256": "c2eafde466cd0b395a84a1eab5a23faff70cf946c7414e87c78de6b507d6a515",
+      "sha256": "84a21c16ddbaef068934165989bb8579ff0f0b58359ea5a8ac79838c8db6e6ce"
+    },
+    {
+      "source": "data/qa/whiteboard-question-teaching-browser-build.log",
+      "file": "03-whiteboard-question-teaching-browser-build.log.gz",
+      "originalSha256": "8a3e274ab5a153185e3c74ec03f0f4f99648403d937368d9d7b833cc513886d9",
+      "sha256": "86d05a2a14520f4a01f2a20811c28c2ae281469d51e32686b6f99e266b64aaca"
+    },
+    {
+      "source": "data/qa/question-teaching-live-hUcJVR/receipt.json",
+      "file": "04-receipt.json.gz",
+      "originalSha256": "d747796472480c0cdf7dcb8524682782c1cf1fdb4e6f0931ef5bfd3369e9bfd9",
+      "sha256": "5b7f5ccbac2090812a848d90841aa56e827f7752711c34c0144c53ca4d78247c"
+    },
+    {
+      "source": "data/qa/question-teaching-live-hUcJVR/answer-sentence.wav",
+      "file": "05-answer-sentence.wav.gz",
+      "originalSha256": "6def418e50b286ff9bc1dcedbbda5f55e2f8be5a559d9c273a9d383a11d996e6",
+      "sha256": "5d003dc4f1fda4d5fe5c1a0847ae539360ee90b23d72b877003c49bef32cb9e4"
+    },
+    {
+      "source": "data/qa/whiteboard-question-teaching-live.cjs",
+      "file": "06-whiteboard-question-teaching-live.cjs.gz",
+      "originalSha256": "aa5b8b7ddde706ca6333a2a0fd03c7dd13b77ace0a2ce44436732bf1e365bf36",
+      "sha256": "c32fac6e4ee80d1a91c6b5163b1f63e85013b1b3ed78e4e0a6c5d41b8dc14025"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/complete-notes.json",
+      "file": "07-complete-notes.json.gz",
+      "originalSha256": "0eb0b0bda9087ad633f287aa935e2b16f3f799b41b30e8a425109fb6daa700c0",
+      "sha256": "9259acdd7023f2015afeed0bd59567c9047bfb57d6a9d10dec4fecc05eca2c24"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/complete-notes.md",
+      "file": "08-complete-notes.md.gz",
+      "originalSha256": "69fa505c55c455a16fccb5e29acd680f0aab9518d65c268cbfffe59baeee2f0e",
+      "sha256": "066b46f27c04d32c73757e7404a184d3f299ffb8c3e3191b5652c6aeac5defe3"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/original-sentence-command.json",
+      "file": "09-original-sentence-command.json.gz",
+      "originalSha256": "65c520230e0eeb2ac23e902e4d4614fac6851383eebfcba2065ccca62e36d585",
+      "sha256": "ccef87c4dcab70acff08a154df3ec0bad60c7cd03c44f6a14228c9f0bf29b062"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/question-panel-1280.png",
+      "file": "10-question-panel-1280.png.gz",
+      "originalSha256": "6b813aed11a74b6dab88ad133671211ede63d1e60206c3020836770453aea000",
+      "sha256": "04bfdf3411103a84aac44112595db1fd743294a689a112677b526635d8e01250"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/question-panel-390.png",
+      "file": "11-question-panel-390.png.gz",
+      "originalSha256": "5b01cd1e48a5453f72d8c1f95ecdc18ec88df6bf7e183f077d207381413c6b62",
+      "sha256": "3c15fec98313a3c6809a1cb3ddd310f8080f851c782e21d498a8c929ef26f75d"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/question-panel-768.png",
+      "file": "12-question-panel-768.png.gz",
+      "originalSha256": "81f92f60e98e16ab73b9df4554d140bde8a5e9469168fafb08a72bdd6c99374b",
+      "sha256": "fecb97d1a2087931946664e235ebd0ecad9e7589d3f61bb35ad5a70ebc776418"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/supplement-2x-probe.json",
+      "file": "13-supplement-2x-probe.json.gz",
+      "originalSha256": "1ffc26e46cd5022bde85a8981dbfd9ab48d74e246685e1b8e82678b5216d1450",
+      "sha256": "7079cb444d3a537db4b7afaf51c90e6cd0aebb55c8e0853ff8f42cfdec0a1041"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/supplement-2x.srt",
+      "file": "14-supplement-2x.srt.gz",
+      "originalSha256": "de7d649225b7399a91cb69163dcf5ca723293f8952f4f1357a86e1f1c69ba439",
+      "sha256": "3cbeb546f6056da47a418261073ba9639ebdd7b26203a7023f0631cf7c2d1104"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/supplement-2x.webm",
+      "file": "15-supplement-2x.webm.gz",
+      "originalSha256": "d809df85052ae52fcb19518fec6dded893c32416b576a76ac0b9f1c81e2ce709",
+      "sha256": "8929e3b18382809e8e5d965bb7927abbcddb7ad04564963ba6f1ea6c97bdf7c7"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-narration.service.ts",
+      "file": "16-whiteboard-question-narration.service.ts.gz",
+      "originalSha256": "b4eb275dc6a987215eea8baabfd60006c3445b736fc585aa7470319706008b89",
+      "sha256": "64ca9b4aa53bd85f153e814e1aa8444da614d7ce213fa779df58659f319000a2"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-notes.test.ts",
+      "file": "17-whiteboard-question-notes.test.ts.gz",
+      "originalSha256": "5219a294dfd1989b7ea35d7e39acd4dbbb432ad8bb8d6603b395ad90e27e608c",
+      "sha256": "f829598f4421d457520202f5c5620d36bebacc85fd1f1e5645545b50db1eda42"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-teaching.test.ts",
+      "file": "18-whiteboard-question-teaching.test.ts.gz",
+      "originalSha256": "62ba0c20a3ce0c4d8f70abba93592e7cb24362e0654cd70615a0822d978e1170",
+      "sha256": "6d4c8d1553759a59ae5729e8fe54e3de24fb3fe698e3230dcb7abd8d16bdc9cb"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-teaching.ts",
+      "file": "19-whiteboard-question-teaching.ts.gz",
+      "originalSha256": "6d6b6139cdf690e69bb976bd7e5d25189c2d271da0f27f072f2165732c06e223",
+      "sha256": "24b51d198f2a677b5c6bd633e63334d1539ea438e40da9168e9ebb70bae17004"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-question-notes.ts",
+      "file": "20-whiteboard-question-notes.ts.gz",
+      "originalSha256": "967f8039424e286ac6c6d10c4fb5bf2e047f8f9c38d2b287fcb9bcad58fa2e0b",
+      "sha256": "b91a1deb17ac9b24217150fa053be0ca85171947976f2ac0ad24a72cf6f6a173"
+    },
+    {
+      "source": "apps/api/src/modules/ai/classroom-reply-board.ts",
+      "file": "21-classroom-reply-board.ts.gz",
+      "originalSha256": "f0787ad8a9d62ffba9517e18270a63f90136190e9fdd2260d73f2553687b2007",
+      "sha256": "3695542f630694a890c52133024103cc9d8d9ec850c765d377f75565c2e9c98d"
+    },
+    {
+      "source": "apps/api/src/modules/learning/learning.module.ts",
+      "file": "22-learning.module.ts.gz",
+      "originalSha256": "706b1a1edf0384c86d3ccdeda04503f38dcc5ea546d948cbd049a0c49aaa59a4",
+      "sha256": "c20dc27bd567b701e56a987d30ce397c830409c5d00fd666c6bb0fc634bc681d"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-worker.service.ts",
+      "file": "23-whiteboard-question-worker.service.ts.gz",
+      "originalSha256": "3efdad3cd1ddeb567f9d24ec9454d33df9c75cf7ad6a0838745d256348800739",
+      "sha256": "12d9bb4fcf18d051bd5e8dd3667f2321cafe7954db5a8e5db11ee0dd3a92af30"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "file": "24-whiteboard-question.controller.ts.gz",
+      "originalSha256": "421769c0d7ccf009d5c5e3f9c28d7eb51219cdc82838a027d3ef955302d7b49d",
+      "sha256": "90cfe94e70b54b0d0461c8739837b3406ceafc5253b7a45bd79f6e6e3518c9ea"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question.integration.test.ts",
+      "file": "25-whiteboard-question.integration.test.ts.gz",
+      "originalSha256": "00651d7c38207f38c0f077caecfca501cf847b132092d1c1e6964475e2be751e",
+      "sha256": "3e301e13eafc4cb4b25aa144846b423412588ade95d9b31a104dda162d5d686a"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question.service.ts",
+      "file": "26-whiteboard-question.service.ts.gz",
+      "originalSha256": "71d966b889c99bc2074d1e65e85012d52659f8a48776555d2ea3ee2ea8d57bd6",
+      "sha256": "fc4d63f48a1b0e443bc47098a37501edc5f59d0333d315e34673d90b1c90c612"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-exhibit.css",
+      "file": "27-whiteboard-exhibit.css.gz",
+      "originalSha256": "6d9e36693f006f4cf1b8953e17c1f4bcf2aa3bc65b681ba8f3dd133edbdaf126",
+      "sha256": "fe46ef43a831458b4284c3c8c615e53c7d9981f94c906672ec3237984862297d"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-frame.ts",
+      "file": "28-whiteboard-frame.ts.gz",
+      "originalSha256": "448ae0ee521a5fd749b04ad1b4444426e43b42cc1e21c1247837a3a1726d29aa",
+      "sha256": "7e582007242da33d64b3bd8ac0ae922be6543be28698f35e82c1262ec59ce562"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-media.ts",
+      "file": "29-whiteboard-media.ts.gz",
+      "originalSha256": "ff37f10ec1443c14afc84b3d201e34d71ee1564bd8b9d52d9af5bd658d354fa5",
+      "sha256": "3bd371e1fe057600552bef09da78f262183bec248a4f88b9501aa3e6bc908082"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-original.ts",
+      "file": "30-whiteboard-original.ts.gz",
+      "originalSha256": "14deaa7ea78ca8c6681e87290968d2d687b09c5c35385404913eb4f2c721f5e1",
+      "sha256": "5300866424aef8f16d740b338c5c9900ae3668e86eb77ecf50cbf95731c5d56f"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-player.tsx",
+      "file": "31-whiteboard-player.tsx.gz",
+      "originalSha256": "9e1d7d921866cfd7da4c25f6c1514f0f50e7c9092ad4dbfaea36aabbc7373066",
+      "sha256": "e3cbe76f2ca44b066d9ac02d02d79fb5a389f41814790c91cd9684a1fa5ab509"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-questions.css",
+      "file": "32-whiteboard-questions.css.gz",
+      "originalSha256": "291a2303ec60e29abc105bf19c09fa219a05c950ebf8e4b98607ea78ce23d691",
+      "sha256": "c287da12d54cc690b43f0dac253fa4153480fda9f3c61d34f014a8fb8f049387"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-questions.tsx",
+      "file": "33-whiteboard-questions.tsx.gz",
+      "originalSha256": "305621b2c47c07690fd2ab266f7ecc3553fba156ccdbcc1fa33e06217a64d0d4",
+      "sha256": "37e0012e5abe81a1150ea18203e72302b881cadb376e0bd9b2aa7ab517e2519e"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-reading-panel.tsx",
+      "file": "34-whiteboard-reading-panel.tsx.gz",
+      "originalSha256": "7f107ab9e071e3034f66fd9443e94846792f00e82569dd38edff3a9fb3309cb8",
+      "sha256": "12e8c8e1351ae8de4272675a7a4b4393c2aab5759b9d68e8c4377c171825ced2"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-session.tsx",
+      "file": "35-whiteboard-session.tsx.gz",
+      "originalSha256": "613beb0b61dc75cc1b70b676538ec84c1b70cd09d535d1de621d20f09d4a9c73",
+      "sha256": "65cb797cc4742a761269bc53f833fe3625520804ba2aa6d348a576195904e649"
+    },
+    {
+      "source": "apps/web/app/studio/workspace-dialog.tsx",
+      "file": "36-workspace-dialog.tsx.gz",
+      "originalSha256": "f60b030e1424f5784008ebac1b6f9dfe9dbf391753911609e4c94f10aeaa8a4c",
+      "sha256": "2dfd07200523cc603f878fab5eda432919fb33605eea4bdc165dd87ad337448d"
+    },
+    {
+      "source": "packages/contracts/src/studio.ts",
+      "file": "37-studio.ts.gz",
+      "originalSha256": "9f104925f3dd84457f67b69b83a84f4aa93b176d3fba44693e6124512e5e5a6e",
+      "sha256": "d507d485cb20b1d2722429be8d33175ac913186179ab24a4142de033ec7d8592"
+    },
+    {
+      "source": "packages/contracts/src/whiteboard-question.ts",
+      "file": "38-whiteboard-question.ts.gz",
+      "originalSha256": "887adf89ad6e5720dc8b582fea013556dbc5a2f7d6e4d75349e8d92372a700b7",
+      "sha256": "82516a17f1d269a05626db89570eb5ccf9cc34b64b32af172d8da7e04077c104"
+    },
+    {
+      "source": "packages/contracts/src/whiteboard-speech.ts",
+      "file": "39-whiteboard-speech.ts.gz",
+      "originalSha256": "11dd6b68db2fe42b46faf9f4218b79336e3561f3bb26b23c8cf4063447fa867e",
+      "sha256": "16e66ad4a94c56f5f3a0a96208f9641e635bc180a665e8db47e9382501e7edcf"
+    },
+    {
+      "source": "scripts/qa/whiteboard-question-fixture.cjs",
+      "file": "40-whiteboard-question-fixture.cjs.gz",
+      "originalSha256": "977b5e8db8860b84140982ecaf7b446977823dc50547949b69d461c267d09998",
+      "sha256": "d523715ae9c5aa0ec13db196241916993dfbc47bf84770a61ad42facc794c129"
+    },
+    {
+      "source": "tests/e2e/whiteboard-questions.spec.ts",
+      "file": "41-whiteboard-questions.spec.ts.gz",
+      "originalSha256": "bd46f4bcc719bb1ac769df79d831b766a28d53b702b66fbacf86bd449562a16b",
+      "sha256": "1921cf4fee65b654c32752180d1188e73c9f9911f97890304876485ebd4583a4"
+    }
+  ]
+}

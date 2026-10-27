@@ -1,0 +1,63 @@
+{
+  "passed": false,
+  "deployed": false,
+  "browser": {
+    "startTime": "2026-10-26T23:50:32.566Z",
+    "duration": 210854.15300000002,
+    "expected": 31,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "reason": "Closing supplementary teaching left keyboard focus away from the original opening button. Late audio was silent; the original board stayed open. Both private deep links passed.",
+  "files": [
+    {
+      "source": "data/qa/whiteboard-question-browser.json",
+      "file": "00-whiteboard-question-browser.json.gz",
+      "originalSha256": "fc769a730f644fa72ac698ce89dd156a89381b242aa1f1fea050e7fc63978838",
+      "sha256": "c8dcead3344c335244c710940fd59858fe196bf66b51d654cf2244afa185be87"
+    },
+    {
+      "source": "data/qa/whiteboard-question-teaching-browser-links.log",
+      "file": "01-whiteboard-question-teaching-browser-links.log.gz",
+      "originalSha256": "33e214a0d48d39a05e360bc896ae3b22a9ba719517881c6ece0457bd5206025e",
+      "sha256": "b66eb80fdbdb267fbd9e6d7f9d2c37c9777955fc957675649a5f14eaa9f67690"
+    },
+    {
+      "source": "tests/e2e/whiteboard-questions.spec.ts",
+      "file": "02-whiteboard-questions.spec.ts.gz",
+      "originalSha256": "cf911b00d3e8b7384f12c9a8f63330fed7922e128d07ebec45b268f5cb385eda",
+      "sha256": "5c7a1bff691f4ec2f943fd9fd324efeefdff0f3f11c292d96fe85ce23f07d301"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-questions.tsx",
+      "file": "03-whiteboard-questions.tsx.gz",
+      "originalSha256": "305621b2c47c07690fd2ab266f7ecc3553fba156ccdbcc1fa33e06217a64d0d4",
+      "sha256": "894a60edd80880cb57a0cdbbe34cb2f31ced86b258e7e8cea5f4beacdd805a54"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-session.tsx",
+      "file": "04-whiteboard-session.tsx.gz",
+      "originalSha256": "613beb0b61dc75cc1b70b676538ec84c1b70cd09d535d1de621d20f09d4a9c73",
+      "sha256": "ae5d199f1ad05a1c0f5cc8cbde19fb2362a7f369c3bb04e533158db64ca8c299"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-suppl-b94dc-original-board-remains-open/error-context.md",
+      "file": "05-error-context.md.gz",
+      "originalSha256": "31d4c1cf4e108248cd605d89e2efe6a521ac2efca64b442bf9e6ed1d6ba4d5a9",
+      "sha256": "69139d5e9694b6d8fff8a3c6d6cab83df983b31779264fc48ef753ca2c937247"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-suppl-b94dc-original-board-remains-open/test-failed-1.png",
+      "file": "06-test-failed-1.png.gz",
+      "originalSha256": "cd7562c97857e2936ba63e382421ef29418baefb51edaee2f3593023a2de52fc",
+      "sha256": "90bbd78c38d44c6924e4784666072e8919c98aff1f29d72d66faf8f213b93cd8"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/whiteboard-questions-suppl-b94dc-original-board-remains-open/trace.zip",
+      "file": "07-trace.zip.gz",
+      "originalSha256": "ec4334186ca52a5c71ae73b60bb836290773762c16d4457178640face7142fc1",
+      "sha256": "319a2467ed8a94acfdb9111ad2c3bb03145548746ba832aa57891a7549bdc6a7"
+    }
+  ]
+}

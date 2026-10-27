@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-26T23:58:28.502254+00:00",
+  "source": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0/sessions/whiteboard/ed43f6c4-fb26-4603-8645-8e2599424343",
+  "method": "Already logged-in user IAB; read snapshot, clicked existing Board note, captured visible1280x800 screenshot. No new question, microphone permission, submission or download action.",
+  "observations": [
+    "The whiteboard retains earlier navigation, concept notes, a diagram, a comparison table and an anonymous exercise together.",
+    "Board note in Chat history expands the complete named exercise inline with a subtle vertical rule; prose speech and board content have separate roles.",
+    "The table uses a shared set of comparison dimensions; the exercise asks for a classification and its reason rather than only a choice.",
+    "Top view/zoom/page/share/settings controls and a narrow resizable conversation panel remain visible."
+  ],
+  "limits": [
+    "A stationary resumed state; no timing, original audio playback or voice identity claim.",
+    "Image is1280x800; browser DPR was not measured.",
+    "This observation does not prove complete-course or100percent visual parity."
+  ],
+  "image": {
+    "file": "reference-note-expanded.png",
+    "sha256": "f4df60b8b5a9a2012e525d4c3755a06215a45b4f708220c34805efaf0eddc096"
+  }
+}

@@ -2,3 +2,8 @@
 .wb-formula-vector>div{width:max-content;min-width:100%;display:flex;justify-content:center}
 .wb-formula-vector svg{display:block;max-width:none;flex-shrink:0}
 .wb-formula-vector:focus-visible{outline:2px solid #6e94c4;outline-offset:3px}
+.wb-complete-diagram{width:100%;overflow:auto}
+.wb-complete-diagram figure{margin:12px 0;position:relative}
+.wb-complete-diagram svg{display:block;width:100%;min-width:280px;height:auto;font-size:20px}
+.wb-complete-diagram figcaption{font-size:12px;color:#737373}
+.wb-complete-diagram .cl-figure-open{position:absolute;right:0;top:0;border:1px solid #ececef;border-radius:8px;padding:4px 8px;background:#fff}

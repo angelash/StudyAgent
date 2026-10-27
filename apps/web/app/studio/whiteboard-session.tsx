@@ -1,11 +1,11 @@
 'use client';
 import * as React from 'react';
-import { WHITEBOARD_SPEECH_VERSION, WHITEBOARD_SPEEDS, isWhiteboardSpeed, whiteboardPresentation, whiteboardSrt, whiteboardTimeline } from '@study-agent/contracts';
-import type { WhiteboardTimeline, WhiteboardQuestionPosition } from '@study-agent/contracts';
+import { WHITEBOARD_SPEECH_VERSION, WHITEBOARD_SPEEDS, isWhiteboardSpeed, whiteboardPresentation, whiteboardSrt, whiteboardTimeline, whiteboardSceneExhibits } from '@study-agent/contracts';
+import type { WhiteboardTimeline, WhiteboardQuestionPosition, StudioQuestionWhiteboard } from '@study-agent/contracts';
 import { ApiRequestError, apiRequest, apiBaseUrl, getAuthToken } from '../../lib/api';
 import type { WhiteboardPlayerProps } from './whiteboard-player';
 import { drawTeachingFrame, type BoardCamera } from './whiteboard-frame';
-import { isTopicWhiteboard, readWhiteboardOriginal, WhiteboardOriginalChangedError } from './whiteboard-original';
+import { isTopicWhiteboard, isQuestionWhiteboard, readWhiteboardOriginal, WhiteboardOriginalChangedError } from './whiteboard-original';
 import { WhiteboardExhibit } from './whiteboard-exhibit';
 import { decodeTopicFigure, TopicFigureImage } from './topic-figure-image';
 import { decodeWhiteboardFormula } from './whiteboard-formula-image';
@@ -20,6 +20,7 @@ import { ClassroomToolTour, type ToolTourStep } from './classroom/tool-tour';
 import { WhiteboardReadingPanel, useWhiteboardReadingPanel } from './whiteboard-reading-panel';
 import { WhiteboardShareMenu } from './whiteboard-share-menu';
 import { WhiteboardQuestions } from './whiteboard-questions';
+import { ClassroomFigure } from './classroom/diagram';
 
 const whiteboardToolSteps: ToolTourStep[] = [
   { anchor: 'connection', location: '标题栏', title: '当前白板', text: '这里保留原白板标题。讲解位置按当前账号和白板保存，离开后可以继续。' },
@@ -33,7 +34,7 @@ const whiteboardToolSteps: ToolTourStep[] = [
 
 type Position = { ownerId: string; studentId: string | null; boardId: string; fingerprint: string; version: string; unitId: string;
   progress: number; audioTime: number | null; mode: 'text' | 'cloud'; voice: string; speed: number; at: number };
-export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrationAvailable = false, speech, onClose }:
+export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrationAvailable = false, speech, onClose, onAccessLost, onReturnToOriginal }:
   WhiteboardPlayerProps & { ownerId: string; preview: boolean }) {
   const presentation = React.useMemo(() => whiteboardPresentation(board), [board]);
   const units = presentation.units;
@@ -42,6 +43,8 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   const [tour, setTour] = React.useState(false), tourOrigin = React.useRef(0);
   const panel = useWhiteboardReadingPanel(ownerId), panelId = React.useId(), [tourPanel, setTourPanel] = React.useState(false);
   const [share, setShare] = React.useState(false);
+  const [answerBoard, setAnswerBoard] = React.useState<StudioQuestionWhiteboard | null>(null), answerActive = React.useRef(false), answerTrigger = React.useRef<HTMLElement | null>(null);
+  answerActive.current = answerBoard !== null;
   const questionCanLeave = React.useRef(true), userCloseRef = React.useRef<() => void>(() => {});
   const questionLeaveChange = React.useCallback((value: boolean) => { questionCanLeave.current = value; }, []);
   const fonts = useOriginalTeachingFonts(ownerId + ':' + board.id + ':' + board.fingerprint, JSON.stringify(board.scenes), boardFont);
@@ -73,6 +76,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   const resumeAudioTime = React.useRef<number | null>(null);
   const progressRef = React.useRef(progress), indexRef = React.useRef(unitIndex), position = React.useRef<Position | null>(null);
   const downloadUrls = React.useRef(new Set<string>()), closeRef = React.useRef(onClose);
+  const accessLostRef = React.useRef(onAccessLost ?? onClose); accessLostRef.current = onAccessLost ?? onClose;
   closeRef.current = onClose; progressRef.current = progress; indexRef.current = unitIndex;
   userCloseRef.current = () => {
     if (!questionCanLeave.current) {
@@ -100,7 +104,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   }, []);
   const speechQueue = React.useCallback(() => {
     if (!narration.current) narration.current = new WhiteboardNarration(board, () => {
-      generation.current++; setPlaying(false); releaseAudio(); exportRequest.current?.abort(); closeRef.current?.();
+      generation.current++; setPlaying(false); releaseAudio(); exportRequest.current?.abort(); accessLostRef.current?.();
     });
     return narration.current;
   }, [board, releaseAudio]);
@@ -111,6 +115,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       cameraRef.current = frame.camera;
       canvas.current!.dataset.frameScenes = JSON.stringify(frame.visibleSceneIds);
       canvas.current!.dataset.frameParts = JSON.stringify(frame.visiblePartIds);
+      canvas.current!.dataset.frameCamera = JSON.stringify(frame.camera);
     }
   }, [board.scenes, units, progress, images, unit, fonts.ready, boardFont, camera, dots, narrow, viewport]);
   React.useEffect(() => { if (exporting === null) render(); }, [render, exporting]);
@@ -123,7 +128,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       void readWhiteboardOriginal(board, current.signal).catch(error => {
         if (current.signal.aborted) return;
         generation.current++; narration.current?.clear(); setPlaying(false); resource.current?.audio.pause(); exportRequest.current?.abort(); exportRequest.current = null; setExporting(null);
-        if (error instanceof WhiteboardOriginalChangedError || error instanceof ApiRequestError && [401, 403, 404].includes(error.status)) closeRef.current?.();
+        if (error instanceof WhiteboardOriginalChangedError || error instanceof ApiRequestError && [401, 403, 404].includes(error.status)) accessLostRef.current?.();
         else setNotice('暂时无法核对原白板访问权限，播放已暂停，请重新打开后继续。');
       });
     };
@@ -173,7 +178,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     const request = new AbortController(), urls = new Set<string>(), formulaReleases: Array<() => void> = []; setImagesReady(false);
     const sources = [...new Map(board.scenes.flatMap(item => item.source ? [[item.source.materialId + ':' + item.source.page, item.source] as const] : [])).entries()];
     const figures = board.scenes.flatMap(scene => scene.figure ? [scene.figure] : []);
-    const formulas = [...new Set(board.scenes.flatMap(scene => scene.exhibit?.kind === 'formula' ? [scene.exhibit.latex] : []))];
+    const formulas = [...new Set(board.scenes.flatMap(scene => whiteboardSceneExhibits(scene).flatMap(exhibit => exhibit.kind === 'formula' ? [exhibit.latex] : [])))];
     void Promise.all([...sources.map(async ([key, source]) => {
       const token = getAuthToken();
       const response = await fetch(apiBaseUrl + '/api/learning/studio/materials/' + encodeURIComponent(source.materialId) + '/pages/' + source.page,
@@ -191,7 +196,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       formulaReleases.push(result.close); if (request.signal.aborted) result.close(); return [result.key, result.image] as const;
     })]).then(rows => { if (!request.signal.aborted) { setImages(new Map(rows.filter(row => row !== null))); setImagesReady(true); } }).catch(error => {
       if (request.signal.aborted) return;
-      if (error instanceof WhiteboardAccessError || error instanceof ApiRequestError && [401, 403, 404].includes(error.status)) closeRef.current?.(); else setNotice(error.message);
+      if (error instanceof WhiteboardAccessError || error instanceof ApiRequestError && [401, 403, 404].includes(error.status)) accessLostRef.current?.(); else setNotice(error.message);
     });
     return () => { request.abort(); urls.forEach(url => URL.revokeObjectURL(url)); formulaReleases.forEach(release => release()); };
   }, [board]);
@@ -199,7 +204,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
   React.useEffect(() => {
     dialog.current?.querySelector<HTMLButtonElement>('[aria-label="关闭白板"]')?.focus();
     const key = (event: KeyboardEvent) => {
-      if (event.defaultPrevented || document.querySelector('.ws-dialog-layer')) return;
+      if (event.defaultPrevented || answerActive.current || document.querySelector('.ws-dialog-layer')) return;
       if (event.key === 'Escape') {
         event.preventDefault();
         if (dialog.current?.querySelector('[data-whiteboard-share]')) { setShare(false); return; }
@@ -262,7 +267,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     })().catch(error => {
       if (!current()) return;
       narration.current?.cancelPending(); setPlaying(false); releaseAudio();
-      if (error instanceof WhiteboardAccessError || error instanceof WhiteboardOriginalChangedError || error instanceof ApiRequestError && [401, 403, 404].includes(error.status)) closeRef.current?.(); else setNotice(error instanceof Error ? error.message : '当前句语音未能播放。');
+      if (error instanceof WhiteboardAccessError || error instanceof WhiteboardOriginalChangedError || error instanceof ApiRequestError && [401, 403, 404].includes(error.status)) accessLostRef.current?.(); else setNotice(error instanceof Error ? error.message : '当前句语音未能播放。');
     });
     return () => { request.abort(); generation.current++; if (frame !== null) cancelAnimationFrame(frame);
       const audio = resource.current?.audio; if (audio) { audio.onended = null; audio.onerror = null; audio.pause(); if (audio.readyState < 1) releaseAudio(); } };
@@ -302,7 +307,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       saveBlob(blob, '-view.png'); setNotice('当前已讲视图已保存为 PNG。');
     } catch (error) {
       if (request.signal.aborted) return;
-      if (error instanceof WhiteboardOriginalChangedError || error instanceof WhiteboardAccessError || error instanceof ApiRequestError && [401, 403, 404].includes(error.status)) closeRef.current?.();
+      if (error instanceof WhiteboardOriginalChangedError || error instanceof WhiteboardAccessError || error instanceof ApiRequestError && [401, 403, 404].includes(error.status)) accessLostRef.current?.();
       else setNotice(error instanceof Error ? error.message : '当前板书暂时无法保存，请重试。');
     } finally { if (exportRequest.current === request) { exportRequest.current = null; if (!request.signal.aborted) setExporting(null); } }
   }
@@ -340,7 +345,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       }
     } catch (error) {
       if (request.signal.aborted) return;
-      if (error instanceof WhiteboardAccessError || error instanceof ApiRequestError && [401, 403, 404].includes(error.status)) closeRef.current?.(); else setNotice(error instanceof Error ? error.message : '导出未能完成，请重试。');
+      if (error instanceof WhiteboardAccessError || error instanceof ApiRequestError && [401, 403, 404].includes(error.status)) accessLostRef.current?.(); else setNotice(error instanceof Error ? error.message : '导出未能完成，请重试。');
     } finally {
       await prepared?.close();
       figureReleases.forEach(release => release());
@@ -356,14 +361,43 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     else requestAnimationFrame(() => dialog.current?.querySelector<HTMLElement>('[data-classroom-tour="' + whiteboardToolSteps[index].anchor + '"]')?.scrollIntoView({ block: 'center', inline: 'nearest' }));
   }
   function privateLink() {
-    const url = new URL(isTopicWhiteboard(board) ? '/studio/whiteboards' : '/studio', window.location.origin);
-    url.searchParams.set('whiteboard', board.id);
-    if (!isTopicWhiteboard(board)) { if (board.studentId) url.searchParams.set('student', board.studentId); url.searchParams.set('subject', board.subject); }
+    const topic = isTopicWhiteboard(board) || isQuestionWhiteboard(board) && board.originalBoardKind === 'topic';
+    const url = new URL(topic ? '/studio/whiteboards' : '/studio', window.location.origin);
+    url.searchParams.set('whiteboard', isQuestionWhiteboard(board) ? board.originalBoardId : board.id);
+    if (isQuestionWhiteboard(board)) url.searchParams.set('question', board.turnId);
+    if (!topic) { if (board.studentId) url.searchParams.set('student', board.studentId); if (board.subject) url.searchParams.set('subject', board.subject); }
     return url.href;
   }
+  function restoreQuestionPosition(saved: WhiteboardQuestionPosition) {
+    const index = units.findIndex(item => item.id === saved.unitId && item.sceneId === saved.sceneId && item.text === saved.sentenceText);
+    if (saved.fingerprint !== board.fingerprint || saved.presentationVersion !== WHITEBOARD_SPEECH_VERSION || index < 0) { setNotice('这条提问属于另一份原稿，请保留完整提问后重新打开对应版本。'); return; }
+    const bookmark = saved.bookmark; go(index, bookmark?.progress ?? 0);
+    if (bookmark) {
+      if (isWhiteboardSpeed(bookmark.speed)) setSpeed(bookmark.speed);
+      if (bookmark.mode === 'text' || narrationAvailable) setMode(bookmark.mode);
+      if (speech?.voices.some(item => item.id === bookmark.voice)) setVoice(bookmark.voice);
+      if (bookmark.mode === 'cloud' && bookmark.audioTime !== null) resumeAudioTime.current = bookmark.audioTime;
+      if (bookmark.camera) setCamera(structuredClone(bookmark.camera));
+    }
+    setNotice('已回到提问时的原句与进度，点击播放继续。'); if (panel.compact) panel.setMobileOpen(false);
+  }
+  function closeAnswer() { setAnswerBoard(null); requestAnimationFrame(() => {
+    if (answerTrigger.current?.isConnected && answerTrigger.current.getClientRects().length) answerTrigger.current.focus();
+    else dialog.current?.querySelector<HTMLButtonElement>('[data-panel-toggle]')?.focus();
+  }); }
+  React.useEffect(() => {
+    if (preview || isQuestionWhiteboard(board)) return;
+    const id = new URLSearchParams(window.location.search).get('question'); if (!id || id.length > 180) return;
+    const request = new AbortController(), base = '/learning/studio/' + (isTopicWhiteboard(board) ? 'topic-whiteboards/' : 'whiteboards/') + encodeURIComponent(board.id);
+    void apiRequest<StudioQuestionWhiteboard>(base + '/questions/' + encodeURIComponent(id) + '/board', { signal: request.signal }).then(value => {
+      if (!request.signal.aborted && value.originalBoardId === board.id && value.turnId === id) { pausePlayback(); setAnswerBoard(value); }
+    }).catch(error => { if (!request.signal.aborted) setNotice(error.message); });
+    return () => request.abort();
+  }, [board, preview]);
 
-  return <div ref={dialog} className="sa-whiteboard-modal wb-sentence-player hk-teaching whiteboard-root" role="dialog" aria-modal="true" aria-label="白板视频" style={{ fontFamily: originalUiFontFamily, '--hk-panel-space': (!panel.compact && (panel.expanded || tourPanel) ? panel.actualWidth : 0) + 'px' } as React.CSSProperties} data-original-font-status={fonts.ready ? 'ready' : fonts.error ? 'error' : 'loading'}>
+  return <div ref={dialog} className="sa-whiteboard-modal wb-sentence-player hk-teaching whiteboard-root" role="dialog" aria-modal="true" aria-label={isQuestionWhiteboard(board) ? 'AI补充讲解' : '白板视频'} style={{ fontFamily: originalUiFontFamily, '--hk-panel-space': (!panel.compact && (panel.expanded || tourPanel) ? panel.actualWidth : 0) + 'px' } as React.CSSProperties} data-original-font-status={fonts.ready ? 'ready' : fonts.error ? 'error' : 'loading'}>
     <header className="whiteboard-session-header"><button className="whiteboard-exit-course-btn" aria-label="关闭白板" onClick={() => userCloseRef.current()}>×</button>
+      {isQuestionWhiteboard(board) && onReturnToOriginal && <button className="whiteboard-exit-course-btn" aria-label="返回原讲解" onClick={() => onReturnToOriginal(board.originalPosition)}>↩</button>}
       <div className="whiteboard-session-title-pill" data-classroom-tour="connection"><h2 className="whiteboard-session-title-text">{board.title}</h2></div></header>
     <nav className="hk-board-tools" aria-label="白板视图"><div className="whiteboard-zoom-pill" data-classroom-tour="zoom">
       <button className="whiteboard-zoom-btn" disabled={exporting !== null || camera.zoom <= .5} aria-label="缩小白板" onClick={() => setCamera(value => ({ ...value, zoom: Math.max(.5, value.zoom - .1) }))}>−</button>
@@ -421,38 +455,31 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
         data-active={item.id === scene?.id} onClick={() => { const next = units.findIndex(unit => unit.sceneId === item.id); if (next >= 0) go(next); }}>
         <span>{String(index + 1).padStart(2, '0')}</span>{item.title}</button>)}</div>
     </main><WhiteboardReadingPanel panel={panel} tour={tourPanel} id={panelId} onClose={closePanel}>
-      {!preview && <WhiteboardQuestions board={board} ownerId={ownerId} disabled={exporting !== null} onCanLeaveChange={questionLeaveChange}
-        onUnavailable={() => closeRef.current?.()} capture={() => {
+      {!preview && !isQuestionWhiteboard(board) && <WhiteboardQuestions board={board} ownerId={ownerId} disabled={exporting !== null} onCanLeaveChange={questionLeaveChange}
+        onOpenTeaching={(value, trigger) => { answerTrigger.current = trigger; if (panel.compact) panel.setMobileOpen(false); setAnswerBoard(value); }}
+        onUnavailable={() => accessLostRef.current?.()} capture={() => {
           const current = units[indexRef.current]; if (!current || !position.current || exporting !== null) return null;
           pausePlayback();
           const audioTime = mode === 'cloud' ? resource.current?.key === whiteboardAudioKey(current.id, voice) ? resource.current.audio.currentTime : resumeAudioTime.current : null;
           return { presentationVersion: WHITEBOARD_SPEECH_VERSION, fingerprint: board.fingerprint, sceneId: current.sceneId, unitId: current.id, sentenceText: current.text,
-            bookmark: { progress: progressRef.current, audioTime: audioTime !== null && Number.isFinite(audioTime) ? audioTime : null, mode, voice, speed } };
-        }} onReturn={(saved: WhiteboardQuestionPosition) => {
-          const index = units.findIndex(item => item.id === saved.unitId && item.sceneId === saved.sceneId && item.text === saved.sentenceText);
-          if (saved.fingerprint !== board.fingerprint || saved.presentationVersion !== WHITEBOARD_SPEECH_VERSION || index < 0) { setNotice('这条提问属于另一份原稿，请保留完整提问后重新打开对应版本。'); return; }
-          const bookmark = saved.bookmark; go(index, bookmark?.progress ?? 0);
-          if (bookmark) {
-            if (isWhiteboardSpeed(bookmark.speed)) setSpeed(bookmark.speed);
-            if (bookmark.mode === 'text' || narrationAvailable) setMode(bookmark.mode);
-            if (speech?.voices.some(item => item.id === bookmark.voice)) setVoice(bookmark.voice);
-            if (bookmark.mode === 'cloud' && bookmark.audioTime !== null) resumeAudioTime.current = bookmark.audioTime;
-          }
-          setNotice('已回到提问时的原句与进度，点击播放继续。');
-          if (panel.compact) panel.setMobileOpen(false);
-        }}/>}
+            bookmark: { progress: progressRef.current, audioTime: audioTime !== null && Number.isFinite(audioTime) ? audioTime : null, mode, voice, speed, camera: structuredClone(cameraRef.current) } };
+        }} onReturn={restoreQuestionPosition}/>}
       <h3>逐句讲稿</h3><p>点击一句定位。观看与续播不计作掌握。</p>
       <ol>{units.map((item, index) => <li key={item.id}><button aria-current={index === unitIndex ? 'step' : undefined}
         disabled={exporting !== null} onClick={() => go(index)}>{item.text}</button></li>)}</ol>
       <h3>完整笔记与来源</h3>{board.scenes.map(item => <details key={item.id} open={item.id === scene?.id}><summary>{item.title}</summary>
         {item.body && <p>{item.body}</p>}{item.bullets && <ul>{item.bullets.map((bullet, index) => <li key={index}>{bullet}</li>)}</ul>}
-        <WhiteboardExhibit exhibit={item.exhibit}/>{item.figure && <TopicFigureImage source={item.figure} title={item.title} onOpen={pauseForFigure}/>}{item.visual && <p>{item.visual.note}</p>}{item.source && <p>来源：{item.source.label} · 第{item.source.page}页</p>}</details>)}
-      {isTopicWhiteboard(board) && <p className="wb-ai-origin">AI生成 · 待内容核对 · {board.origin.modelName}</p>}
+        {whiteboardSceneExhibits(item).map((exhibit, index) => <WhiteboardExhibit key={index} exhibit={exhibit}/>)}{item.diagram && <div className="wb-complete-diagram"><ClassroomFigure diagram={item.diagram} onOpen={pauseForFigure}/></div>}{item.figure && <TopicFigureImage source={item.figure} title={item.title} onOpen={pauseForFigure}/>}{item.visual && <p>{item.visual.note}</p>}{item.source && <p>来源：{item.source.label} · 第{item.source.page}页</p>}</details>)}
+      {(isTopicWhiteboard(board) || isQuestionWhiteboard(board)) && <p className="wb-ai-origin">AI生成 · 待内容核对 · {board.origin.modelName}</p>}
+      {isQuestionWhiteboard(board) && board.structureStatus === 'text-only' && <p>这条历史回答只保留文字，可逐句收听；尚未生成结构板书。</p>}
       <button onClick={() => { if (position.current) saveBlob(new Blob([JSON.stringify(position.current, null, 2)], { type: 'application/json' }), '-position.json'); }}>下载续播位置</button>
     </WhiteboardReadingPanel></div>
     {settings && <WhiteboardSettings context={ownerId + ':' + board.id + ':' + board.fingerprint} speech={speech} voice={voice} speed={speed} font={boardFont} dots={dots} muted={muted}
       onVoice={value => { generation.current++; narration.current?.clear(); releaseAudio(); resumeAudioTime.current = null; setPlaying(false); setProgress(0); setVoice(value); setNotice('音色已切换，下次播放从当前句开头开始。'); }}
       onSpeed={setSpeed} onFont={value => { pausePlayback(); setBoardFont(value); }} onDots={setDots} beforePreview={pausePlayback} onClose={() => setSettings(false)} onReplayTour={() => { tourOrigin.current = dialog.current?.scrollTop ?? 0; setTour(true); }}/>}
     {tour && <ClassroomToolTour onClose={finishTour} steps={whiteboardToolSteps} scope={dialog.current} label="白板工具导览" returnLabel="返回白板" welcome="了解白板工具" introduction="用七个实际控件，按自己的节奏阅读、听讲与回顾。" completion="导览结束。原讲解位置和笔记保持，准备好后再继续。" onStep={showTourStep}/>}
+    {answerBoard && <WhiteboardSession key={answerBoard.id + ':' + answerBoard.fingerprint} whiteboard={answerBoard} ownerId={ownerId} preview={false}
+      narrationAvailable={narrationAvailable} speech={speech} onClose={closeAnswer} onAccessLost={() => accessLostRef.current?.()}
+      onReturnToOriginal={saved => { closeAnswer(); restoreQuestionPosition(saved); }}/>}
   </div>;
 }

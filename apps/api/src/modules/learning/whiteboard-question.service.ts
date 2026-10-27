@@ -10,13 +10,16 @@ import { topicWhiteboardDigest } from './topic-whiteboard-content';
 import { buildWhiteboardQuestionContext } from './whiteboard-question-context';
 import { readWhiteboardQuestionOriginal, whiteboardQuestionAuthority } from './whiteboard-question-access';
 import { whiteboardQuestionTaskKind, type WhiteboardQuestionRecord } from './whiteboard-question-record';
+import { buildQuestionWhiteboard, whiteboardAnswerFingerprint } from './whiteboard-question-teaching';
 
 const key = z.string().trim().min(8).max(180), fingerprint = z.string().regex(/^[a-f0-9]{64}$/), unitId = z.string().min(1).max(2000);
 const contextSchema = z.object({ fingerprint, unitId }).strict();
 const commandSchema = contextSchema.extend({ requestKey: key, contextVersion: fingerprint, message: z.string().trim().min(1).max(3000),
   modelId: z.string().trim().min(1).max(180), intent: z.enum(WHITEBOARD_QUESTION_INTENTS),
   bookmark: z.object({ progress: z.number().finite().min(0).max(1), audioTime: z.number().finite().min(0).max(86400).nullable(),
-    mode: z.enum(['text', 'cloud']), voice: z.string().max(180), speed: z.number().refine(isWhiteboardSpeed, '不支持的白板语速') }).strict()
+    mode: z.enum(['text', 'cloud']), voice: z.string().max(180), speed: z.number().refine(isWhiteboardSpeed, '不支持的白板语速'),
+    camera: z.object({ zoom: z.number().finite().min(.5).max(2), x: z.number().finite().min(-1000000).max(1000000),
+      y: z.number().finite().min(-1000000).max(1000000), follow: z.boolean() }).strict().optional() }).strict()
     .default({ progress: 0, audioTime: null, mode: 'text', voice: '', speed: 1 }) }).strict();
 const activeStates = ['queued', 'running', 'retry_wait', 'cancel_requested'];
 
@@ -47,7 +50,8 @@ export class WhiteboardQuestionService {
     const task = provisional ?? await this.store.tasks.get(turn.taskId), status = turn.status === 'completed' ? 'completed' :
       task?.state === 'failed' ? 'failed' : task?.state === 'cancelled' ? 'cancelled' : task?.state === 'cancel_requested' ? 'cancelling' : turn.status;
     const { id, boardKind, boardId, requestKey, message, intent, modelId, modelName, position, revision, createdAt, updatedAt, reply } = turn;
-    return { id, boardKind, boardId, requestKey, message, intent, modelId, modelName, position: structuredClone(position), revision, createdAt, updatedAt, reply: structuredClone(reply), status,
+    return { id, boardKind, boardId, requestKey, message, intent, modelId, modelName, position: structuredClone(position), revision, createdAt, updatedAt,
+      reply: reply ? { ...structuredClone(reply), fingerprint: whiteboardAnswerFingerprint(reply) } : null, status,
       task: task ? { state: task.state, generation: task.generation, version: task.version, errorCode: task.errorCode } : null };
   }
   async list(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, id: string, input: unknown, session: InMemoryAuthSession) {
@@ -62,6 +66,27 @@ export class WhiteboardQuestionService {
     requestKey = validate(key, requestKey); this.original(user, kind, boardId, session);
     const turn = this.store.find('whiteboardQuestionTurns', { ownerUserId: user.id, boardKind: kind, boardId, requestKey });
     if (!turn) throw new NotFoundException('尚未找到这条原插问请求'); return this.view(turn);
+  }
+  answerContext(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, id: string, session: InMemoryAuthSession) {
+    const original = this.original(user, kind, boardId, session);
+    const turn = this.store.find('whiteboardQuestionTurns', { id, ownerUserId: user.id, boardKind: kind, boardId });
+    if (!turn) throw new NotFoundException('原补充讲解不存在');
+    if (turn.definitionHash !== original.definitionHash) throw new ConflictException('原稿版本已变化，这条回答保留为历史文字，请基于当前原稿重新提问');
+    return { board: buildQuestionWhiteboard(turn, original.board), definitionHash: original.definitionHash, authorityHash: original.authorityHash };
+  }
+  board(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, id: string, session: InMemoryAuthSession) {
+    return this.answerContext(user, kind, boardId, id, session).board;
+  }
+  async notes(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, session: InMemoryAuthSession) {
+    const original = this.original(user, kind, boardId, session), rows = this.rows(user, kind, boardId);
+    const turns = await Promise.all(rows.map(async row => ({ ...await this.view(row), originalStatus: row.definitionHash === original.definitionHash ? 'current' as const : 'archived' as const })));
+    return { format: 'studyagent-whiteboard-notes-v1' as const, exportedAt: new Date().toISOString(), ownerId: user.id,
+      boardKind: kind, boardId, definitionHash: original.definitionHash, original: structuredClone(original.board), turns,
+      notices: ['原讲解与AI补充分别保留。AI补充未经教师审核，不构成首答、评分或掌握证据。', '包含当前原件下全部已保存提问；未发送输入请另存完整提问副本。'] };
+  }
+  notesIdentity(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, session: InMemoryAuthSession) {
+    const original = this.original(user, kind, boardId, session);
+    return { ownerId: user.id, boardKind: kind, boardId, fingerprint: original.board.fingerprint, definitionHash: original.definitionHash };
   }
   private async assertNoActive(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, except?: string) {
     for (const row of this.rows(user, kind, boardId)) {
@@ -86,8 +111,11 @@ export class WhiteboardQuestionService {
     const model = this.models.resolve(command.modelId), history: WhiteboardQuestionRecord['history'] = []; let characters = 0;
     for (const row of rows.filter(row => row.status === 'completed' && row.reply && row.definitionHash === original.definitionHash &&
       row.position.fingerprint === command.fingerprint).slice(-5).reverse()) {
-      const size = row.message.length + row.reply!.text.length; if (characters + size > 12000) break;
-      characters += size; history.unshift({ role: 'user', content: row.message }, { role: 'assistant', content: row.reply!.text });
+      const notes = row.reply!.board, answer = row.reply!.text + (notes ? '\n[已发布的AI补充板书，非测量证据]\n' + JSON.stringify({
+        title: notes.title, points: notes.points, table: notes.table ?? null, formulas: notes.formulas ?? [], diagram: notes.diagram ?? null,
+      }) : '');
+      const size = row.message.length + answer.length; if (characters + size > 12000) break;
+      characters += size; history.unshift({ role: 'user', content: row.message }, { role: 'assistant', content: answer });
     }
     const now = new Date().toISOString(), turn: WhiteboardQuestionRecord = {
       id: this.store.nextId('whiteboard_question'), boardKind: kind, boardId, ownerUserId: user.id, studentId: original.board.studentId,

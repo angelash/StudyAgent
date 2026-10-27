@@ -29,8 +29,13 @@ const payload = z.object({ reply: text(4000), evidenceIds: z.array(z.string()).m
   });
 
 /** The model emits exact quotes; only application code creates frozen unit identities. */
-export function parseClassroomReplyBoard(value: unknown): { reply: string; evidenceIds: string[]; board: ClassroomReplyBoard } {
-  const parsed = payload.parse(value), speech = freezeSpeechTrack(parsed.reply, 'speech-v2'), { anchors, table, formulas, ...board } = parsed.board;
+export function parseClassroomReplyBoard(value: unknown, limits?: { replyMaxLength: number; formulaMaxLength: number }): { reply: string; evidenceIds: string[]; board: ClassroomReplyBoard } {
+  if (limits && (!Number.isSafeInteger(limits.replyMaxLength) || limits.replyMaxLength < 1 || limits.replyMaxLength > 8000 ||
+    !Number.isSafeInteger(limits.formulaMaxLength) || limits.formulaMaxLength < 1 || limits.formulaMaxLength > 4000)) throw new Error('Invalid teaching output limits');
+  const schema = limits ? payload.safeExtend({ reply: text(limits.replyMaxLength), board: payload.shape.board.safeExtend({
+    formulas: z.array(formula.safeExtend({ latex: text(limits.formulaMaxLength).refine(value => !unsafeTex.test(value), '公式不能包含链接、HTML、宏定义或外部资源命令') })).max(3),
+  }) }) : payload;
+  const parsed = schema.parse(value), speech = freezeSpeechTrack(parsed.reply, 'speech-v2'), { anchors, table, formulas, ...board } = parsed.board;
   const ids = (quotes: string[]) => quotes.map(quote => speech.units.find(unit => unit.text.includes(classroomSpeechText(quote)))!.id);
   return { reply: parsed.reply, evidenceIds: parsed.evidenceIds, board: { ...board, ...(table ? { table } : {}), ...(formulas.length ? { formulas } : {}),
     reveal: { version: 'speech-v2', sourceSha256: speech.sourceSha256, pointUnitIds: ids(anchors.points), tableRowUnitIds: ids(anchors.tableRows), formulaUnitIds: ids(anchors.formulas) } } };

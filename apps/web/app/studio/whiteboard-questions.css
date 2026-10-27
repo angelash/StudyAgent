@@ -34,3 +34,7 @@
 .hk-teaching.hk-teaching .wb-question-import:focus-within{outline:2px solid #b5a3f2;outline-offset:2px}
 .hk-teaching.hk-teaching .wb-question-import input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
 .hk-teaching.hk-teaching .wb-question-copies{display:flex;flex-direction:column;gap:6px;width:100%;font-size:11px}
+.hk-teaching.hk-teaching .wb-question-open{border:1px solid #e8e4f4;background:#f8f7fc;color:#7950ff;border-radius:8px;padding:6px 10px;font-size:11px;margin:5px 0 8px}
+.hk-teaching.hk-teaching .wb-question-notes{border:0;background:transparent;margin:0 0 12px;padding:0;font-size:11px;color:#737373}
+.hk-teaching.hk-teaching .wb-question-notes>summary{font-size:11px;cursor:pointer;list-style:none}
+.hk-teaching.hk-teaching .wb-question-notes>button{display:block;min-height:32px;margin-top:5px;padding:5px 8px;background:#fff;border:1px solid #ececef;border-radius:7px;font-size:11px;color:#737373}

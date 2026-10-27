@@ -55,6 +55,7 @@ export function WhiteboardReadingPanel({ panel, tour, id, onClose, children }:
       {children}
     </aside>
   </div>;
-  if (!panel.compact || !panel.mobileOpen || tour) return content;
-  return <WorkspaceDialog onClose={onClose}><section className="hk-reading-dialog" role="dialog" aria-modal="true" aria-label="讲稿与笔记">{content}</section></WorkspaceDialog>;
+  const modal = panel.compact && panel.mobileOpen && !tour;
+  return <WorkspaceDialog onClose={onClose} active={modal}><section className={modal ? 'hk-reading-dialog' : undefined}
+    style={modal ? undefined : { display: 'contents' }} role={modal ? 'dialog' : undefined} aria-modal={modal ? true : undefined} aria-label={modal ? '讲稿与笔记' : undefined}>{content}</section></WorkspaceDialog>;
 }

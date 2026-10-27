@@ -2,20 +2,22 @@
 import * as React from 'react';
 import { z } from 'zod';
 import { WHITEBOARD_QUESTION_INTENTS, type WhiteboardQuestionContextView, type WhiteboardQuestionPosition,
-  type WhiteboardQuestionTurnView } from '@study-agent/contracts';
-import { ApiRequestError, apiRequest } from '../../lib/api';
+  type WhiteboardQuestionTurnView, type StudioQuestionWhiteboard, type WhiteboardTeachingNotes } from '@study-agent/contracts';
+import { ApiRequestError, apiRequest, getAuthToken } from '../../lib/api';
 import { XiaojiuModelPicker, useXiaojiuModels } from '../../components/xiaojiu-model-picker';
 import { isTopicWhiteboard, type PlayableWhiteboard } from './whiteboard-original';
 import { topicCopies, topicStorage } from './whiteboards/local-copies';
 import { downloadTopicJson } from './whiteboards/download';
 import './whiteboard-questions.css';
+import { whiteboardQuestionNotesMarkdown } from './whiteboard-question-notes';
 
 const fingerprint = z.string().regex(/^[a-f0-9]{64}$/), key = z.string().min(8).max(180);
 const formSchema = z.object({ message: z.string().max(3000), modelId: z.string().max(180), intent: z.enum(WHITEBOARD_QUESTION_INTENTS) }).strict();
 const commandSchema = z.object({ fingerprint, unitId: z.string().min(1).max(2000), contextVersion: fingerprint, requestKey: key,
   modelId: z.string().min(1).max(180), intent: z.enum(WHITEBOARD_QUESTION_INTENTS), message: z.string().min(1).max(3000),
   bookmark: z.object({ progress: z.number().min(0).max(1), audioTime: z.number().min(0).max(86400).nullable(), mode: z.enum(['text','cloud']), voice: z.string().max(180),
-    speed: z.union([z.literal(.5),z.literal(.75),z.literal(1),z.literal(1.25),z.literal(1.5),z.literal(2)]) }).strict() }).strict();
+    speed: z.union([z.literal(.5),z.literal(.75),z.literal(1),z.literal(1.25),z.literal(1.5),z.literal(2)]),
+    camera: z.object({ zoom: z.number().min(.5).max(2), x: z.number().min(-1000000).max(1000000), y: z.number().min(-1000000).max(1000000), follow: z.boolean() }).strict().optional() }).strict() }).strict();
 const pendingSchema = z.discriminatedUnion('kind', [z.object({ kind: z.literal('create'), command: commandSchema }).strict(),
   z.object({ kind: z.enum(['cancel','retry']), turnId: z.string().max(180), command: z.object({ requestKey: key, generation: z.number().int().min(1), version: z.number().int().min(1) }).strict() }).strict()]);
 type Form = z.infer<typeof formSchema>;
@@ -25,9 +27,10 @@ const active = new Set(['queued','running','cancelling']);
 const statuses: Record<WhiteboardQuestionTurnView['status'], string> = { queued: '等待回答', running: '正在思考', cancelling: '正在取消', completed: 'AI补充讲解', failed: '回答未完成', cancelled: '已取消' };
 const intents: Record<Form['intent'], string> = { question: '问一个问题', example: '换个例子', simplify: '讲简单些', prerequisite: '补补基础', compare: '对比理解' };
 
-export function WhiteboardQuestions({ board, ownerId, disabled, capture, onReturn, onUnavailable, onCanLeaveChange }:
+export function WhiteboardQuestions({ board, ownerId, disabled, capture, onReturn, onOpenTeaching, onUnavailable, onCanLeaveChange }:
   { board: PlayableWhiteboard; ownerId: string; disabled: boolean; capture: () => WhiteboardQuestionPosition | null;
-    onReturn: (position: WhiteboardQuestionPosition) => void; onUnavailable: () => void; onCanLeaveChange: (value: boolean) => void }) {
+    onReturn: (position: WhiteboardQuestionPosition) => void; onOpenTeaching: (board: StudioQuestionWhiteboard, trigger: HTMLElement) => void;
+    onUnavailable: () => void; onCanLeaveChange: (value: boolean) => void }) {
   const kind = isTopicWhiteboard(board) ? 'topic' : 'guidance', base = '/learning/studio/' + (kind === 'topic' ? 'topic-whiteboards/' : 'whiteboards/') + encodeURIComponent(board.id) + '/questions';
   const models = useXiaojiuModels();
   const storage = React.useMemo(() => topicStorage('studyagent.whiteboard.questions.v1.' + ownerId + '.' + kind + '.' + board.id + '.' + board.fingerprint), [ownerId, kind, board.id, board.fingerprint]);
@@ -150,8 +153,29 @@ export function WhiteboardQuestions({ board, ownerId, disabled, capture, onRetur
     } catch (error) { fail(error); }
     finally { posting.current = false; if (alive.current) setBusy(false); }
   }
+  async function exportNotes(format: 'json' | 'markdown') {
+    if (posting.current || disabled) return;
+    capture(); posting.current = true; setBusy(true); setNotice('正在读取完整教学笔记…');
+    const epoch = serial.current, token = getAuthToken();
+    try {
+      const notes = await read<WhiteboardTeachingNotes>('/notes');
+      const identity = await read<{ ownerId: string; definitionHash: string }>('/notes/identity');
+      if (!alive.current || epoch !== serial.current || getAuthToken() !== token) return;
+      if (notes.ownerId !== ownerId || identity.ownerId !== ownerId || notes.boardId !== board.id || notes.boardKind !== kind ||
+        notes.original.fingerprint !== board.fingerprint || notes.definitionHash !== identity.definitionHash) throw new Error('原稿或权限已变化，笔记未下载，请重新读取。');
+      if (format === 'json') downloadTopicJson(notes, 'whiteboard-teaching-notes.json');
+      else {
+        const url = URL.createObjectURL(new Blob([whiteboardQuestionNotesMarkdown(notes)], { type: 'text/markdown;charset=utf-8' })), anchor = document.createElement('a');
+        anchor.href = url; anchor.download = 'whiteboard-teaching-notes.md'; document.body.append(anchor); anchor.click(); anchor.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+      }
+      setNotice('已导出原讲解与全部 ' + notes.turns.length + ' 条已保存提问；未发送输入仍保留在本页。');
+    } catch (error) { fail(error); }
+    finally { posting.current = false; if (alive.current) setBusy(false); }
+  }
   return <section className="wb-questions" aria-label="原句提问">
     <header><h3>一起想清楚</h3><span>AI补充讲解</span></header>
+    <details className="wb-question-notes"><summary>带走完整教学笔记</summary><button type="button" disabled={busy || disabled} onClick={() => void exportNotes('markdown')}>下载完整教学笔记 Markdown</button>
+      <button type="button" disabled={busy || disabled} onClick={() => void exportNotes('json')}>下载完整教学笔记 JSON</button></details>
     <div className="wb-question-messages" aria-live="polite" aria-busy={busy}>
       {!historyReady ? <p role="status">正在读取原提问…</p> : !turns.length && <p className="wb-question-empty">哪里没听懂，就从那一句问起。</p>}
       {!historyReady && <button type="button" onClick={() => void history().catch(fail)}>重新读取对话</button>}
@@ -163,6 +187,16 @@ export function WhiteboardQuestions({ board, ownerId, disabled, capture, onRetur
       {turns.map(turn => <article key={turn.id} className="wb-question-turn" data-status={turn.status}>
         <p className="wb-question-user">{turn.message}</p><div className="wb-question-meta"><span>{statuses[turn.status]}</span><span>{turn.modelName}</span></div>
         {turn.reply && <><p className="wb-question-answer">{turn.reply.text}</p>{!!turn.reply.anchors.length && <div className="wb-question-anchors">{turn.reply.anchors.map(anchor => <span key={anchor.id}>{anchor.source ? anchor.source.label + ' · 第' + anchor.source.page + '页' : anchor.label}</span>)}</div>}</>}
+        {turn.reply && <button type="button" className="wb-question-open" disabled={busy || disabled} onClick={event => {
+          const trigger = event.currentTarget;
+          capture(); setBusy(true); const epoch = serial.current;
+          void read<StudioQuestionWhiteboard>('/' + encodeURIComponent(turn.id) + '/board').then(value => {
+            if (!alive.current || epoch !== serial.current) return;
+            if (value.originalBoardKind !== kind || value.originalBoardId !== board.id || value.turnId !== turn.id || value.replyFingerprint !== turn.reply?.fingerprint)
+              throw new Error('补充讲解与原回答不一致，请重新读取对话。');
+            onOpenTeaching(value, trigger);
+          }).catch(fail).finally(() => { if (alive.current) setBusy(false); });
+        }}>{turn.reply.board ? '查看补充板书与声音' : '收听原回答'}</button>}
         <button type="button" className="wb-question-return" disabled={disabled} onClick={() => onReturn(turn.position)}>回到这句<span>{turn.position.sentenceText}</span></button>
         {active.has(turn.status) && <button type="button" disabled={busy || disabled || Boolean(pending) || !turn.task} onClick={() => { if (turn.task) void execute({ kind: 'cancel', turnId: turn.id, command: { requestKey: crypto.randomUUID(), generation: turn.task.generation, version: turn.task.version } }); }}>取消回答</button>}
         {['failed','cancelled'].includes(turn.status) && <button type="button" disabled={busy || disabled || Boolean(pending) || Boolean(activeTurn) || !turn.task} onClick={() => { if (turn.task) void execute({ kind: 'retry', turnId: turn.id, command: { requestKey: crypto.randomUUID(), generation: turn.task.generation, version: turn.task.version } }); }}>用原模型重试</button>}

@@ -19,11 +19,34 @@ export type WhiteboardTimeline = {
   kind: 'estimated-reading' | 'decoded-audio'; speed: number; durationMs: number; tailMs: number; entries: WhiteboardTimelineEntry[];
 };
 
+export function whiteboardSceneExhibits(scene: StudioWhiteboardScene) {
+  return scene.exhibits ?? (scene.exhibit ? [scene.exhibit] : []);
+}
+
+/** A server-authored plan binds complete items to actual source boundaries. Invalid plans reveal nothing. */
+export function whiteboardSceneProgress(scene: StudioWhiteboardScene, end: number) {
+  const exhibits = whiteboardSceneExhibits(scene), plan = scene.reveal;
+  if (plan === undefined) return { mode: 'legacy' as const, bullets: scene.bullets?.map((_, index) => index) ?? [],
+    exhibits: exhibits.map(() => true), rows: exhibits.map(item => item.kind === 'table' ? item.rows.length : 0), diagram: true };
+  const at = (value: number) => Number.isSafeInteger(value) && value > 0 && value <= scene.narration.length;
+  const ordered = (values: number[]) => values.every((value, index) => at(value) && (!index || values[index - 1] <= value));
+  const valid = plan && plan.version === 'whiteboard-reveal-v1' && plan.sourceText === scene.narration &&
+    Array.isArray(plan.bulletEnds) && plan.bulletEnds.length === (scene.bullets?.length ?? 0) && ordered(plan.bulletEnds) && Array.isArray(plan.exhibits) && plan.exhibits.length === exhibits.length &&
+    plan.exhibits.every((item, index) => item && at(item.at) && (exhibits[index].kind === 'table' ?
+      Array.isArray(item.rowEnds) && item.rowEnds.length === exhibits[index].rows.length && ordered(item.rowEnds) && item.rowEnds.every(row => row >= item.at) : !item.rowEnds?.length)) &&
+    (!scene.diagram || plan.diagramAt !== undefined && at(plan.diagramAt));
+  if (!valid) return { mode: 'invalid' as const, bullets: [], exhibits: exhibits.map(() => false), rows: exhibits.map(() => 0), diagram: false };
+  return { mode: 'verified' as const, bullets: plan.bulletEnds.flatMap((value, index) => value <= end ? [index] : []),
+    exhibits: plan.exhibits.map(item => item.at <= end), rows: plan.exhibits.map(item => item.rowEnds?.filter(value => value <= end).length ?? 0),
+    diagram: plan.diagramAt !== undefined && plan.diagramAt <= end };
+}
+
 /** Canvas rows and a frozen question context share the same whole-sentence frontier. */
 export function whiteboardTaughtTableRows(scene: StudioWhiteboardScene, unit: Pick<WhiteboardSpeechUnit, 'sceneId' | 'end'> | undefined, complete = false): number {
   if (scene.exhibit?.kind !== 'table') return 0;
   if (complete || !unit) return scene.exhibit.rows.length;
   if (unit.sceneId !== scene.id) return 0;
+  if (scene.reveal) return whiteboardSceneProgress(scene, unit.end).rows[0] ?? 0;
   return Math.max(0, Math.min(scene.exhibit.rows.length,
     Math.ceil(unit.end / Math.max(1, scene.narration.length) * scene.exhibit.rows.length)));
 }
@@ -52,7 +75,7 @@ export function whiteboardPresentation(board: Pick<StudioWhiteboard, 'fingerprin
       sceneId: scene.id, estimatedMs: classroomReadingMs(span.text, 'speech-v2'),
       // Legacy notes without a literal spoken match remain readable from the start.
       // Only an actual source overlap can reveal a newly aligned note.
-      visibleBulletIndices: starts.flatMap((start, index) => start < span.end ? [index] : []),
+      visibleBulletIndices: scene.reveal ? whiteboardSceneProgress(scene, span.end).bullets : starts.flatMap((start, index) => start < span.end ? [index] : []),
     }));
   });
   return { version: WHITEBOARD_SPEECH_VERSION, fingerprint: board.fingerprint, units };

@@ -1,0 +1,361 @@
+{
+  "at": "2026-10-27T00:01:55.558Z",
+  "deployed": false,
+  "overallProductComplete": false,
+  "gitHeadBeforeCommit": "ca05065b91e1c54e69da4c0e12f7b7d4d756d86d",
+  "browser": {
+    "cases": 32,
+    "originalAttempts": 32,
+    "retries": 0,
+    "stats": {
+      "startTime": "2026-10-26T23:55:54.032Z",
+      "duration": 186992.74,
+      "expected": 32,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "fullApi": {
+    "passed": 1418,
+    "failed": 0,
+    "environmentSkipped": 54,
+    "scope": "Application source at the completed full run; the later3 PG-only migration tests and the same HTTP fixture parameterization are separately tested below. No application API code changed afterwards."
+  },
+  "postgres": {
+    "passed": 24,
+    "failed": 0,
+    "skipped": 0,
+    "nativeMigrationCases": 3,
+    "httpCases": 21
+  },
+  "sqliteHttpAfterParameterization": {
+    "passed": 21,
+    "failed": 0
+  },
+  "realProviders": {
+    "receipt": "../whiteboard-question-teaching-stage/receipt.json",
+    "deepseekMs": 47449,
+    "minimaxMs": 2266
+  },
+  "failureBeforeFix": "../whiteboard-question-teaching-focus-before/receipt.json",
+  "limitations": [
+    "This32-case run includes18 question and14 prior settings cases; it is not the complete site suite. Earlier29-case and ten-question runs overlap and must not be added.",
+    "Supplementary image generation/adoption/version binding, native dump/restore privacy verification, full site, exact remote CI and rollback-capable production delivery remain pending.",
+    "No all-model live-provider, original-voice, complete-course pixel parity, teacher/device or long-term-learning acceptance claim."
+  ],
+  "files": [
+    {
+      "source": "data/qa/whiteboard-question-browser.json",
+      "file": "00-whiteboard-question-browser.json.gz",
+      "originalSha256": "0ffac1642258aef62e0044b52337aa5b03c7b78798710bbb37c9d933229aa483",
+      "sha256": "fd0a3e9464ecfebad471d75c4c329dfcb487ada22e00a23063960526cc33c253"
+    },
+    {
+      "source": "data/qa/whiteboard-question-teaching-browser-focus-green.log",
+      "file": "01-whiteboard-question-teaching-browser-focus-green.log.gz",
+      "originalSha256": "07a4b78db7dabf4130343480e2d803de970a86cbaed090420ed0c9322a5a647d",
+      "sha256": "4300bac64bf65c6acaa4d54de0221c8e10e6fb9d4d6b1ea658f3bf3ebc824786"
+    },
+    {
+      "source": "data/qa/whiteboard-question-teaching-focus-build.log",
+      "file": "02-whiteboard-question-teaching-focus-build.log.gz",
+      "originalSha256": "42dbbf38ac8f6bea9bed755ef11678b1aaa21f6a35d02ab7d6a01f67c542e8cc",
+      "sha256": "97fc59c0a7d23f233bd4559ce57fb4f993c78344292829d0aab665e5e570510d"
+    },
+    {
+      "source": "data/qa/whiteboard-question-teaching-full-api.json",
+      "file": "03-whiteboard-question-teaching-full-api.json.gz",
+      "originalSha256": "fd21896154b98338e00100db98c3ec1a8a4d5cce9fdcf6a88903f10d1514bb13",
+      "sha256": "73b59571b00095cb0f7eb1d58fa4d751ae172e9b04cbca2a76c9f212173b289d"
+    },
+    {
+      "source": "data/qa/whiteboard-question-teaching-full-api.log",
+      "file": "04-whiteboard-question-teaching-full-api.log.gz",
+      "originalSha256": "e8b959d34e792241d401ba9c45ff3c237e93cf30389438fb8f344ac7a99b40bb",
+      "sha256": "15f86b4147f53ecb6ee8e3e91884d9b43c39d1fa6ae9b0317e591707d1a87563"
+    },
+    {
+      "source": "data/qa/whiteboard-question-teaching-postgres-http.json",
+      "file": "05-whiteboard-question-teaching-postgres-http.json.gz",
+      "originalSha256": "eeb9ddb6053b4a5f9ea40cae85d182950e0ba1474948a662077bba6e6178b794",
+      "sha256": "23c4d1be7581c0aa123b43f20e47ddc292fcce577d92395cee63d19130577e18"
+    },
+    {
+      "source": "data/qa/whiteboard-question-teaching-postgres-http.log",
+      "file": "06-whiteboard-question-teaching-postgres-http.log.gz",
+      "originalSha256": "19d7ede202a26f75e5cc9933a4a92c0d276dbce7326e74a7e9917d0e27b116f9",
+      "sha256": "316038e5d066fd822560a13d4f206d2d589881d755c74e75dff44d564d86b9d5"
+    },
+    {
+      "source": "data/qa/whiteboard-question-teaching-final-sqlite-http.json",
+      "file": "07-whiteboard-question-teaching-final-sqlite-http.json.gz",
+      "originalSha256": "02690999fc380b2aeefdf78b239c43d267161dec733005793b79452ccd0fda62",
+      "sha256": "47e2830834018c5f55e85d3a13b0446271bbc0d70340a0c341fc438f3e4179c7"
+    },
+    {
+      "source": "data/qa/whiteboard-question-teaching-postgres-stage.json",
+      "file": "08-whiteboard-question-teaching-postgres-stage.json.gz",
+      "originalSha256": "df9e84fa9bf296ad8afbfc3b7b67ce9ed21e703a986ac4306112ff0fae305224",
+      "sha256": "3b9d576c21832558c1cbed80ba712c484a4e53879a031f0b1404ff960ce60c7a"
+    },
+    {
+      "source": "data/qa/whiteboard-question-teaching-pg.cjs",
+      "file": "09-whiteboard-question-teaching-pg.cjs.gz",
+      "originalSha256": "e3941c18e98947cd277217a595cb25b6073efe857649859bee73d63ac9f28de1",
+      "sha256": "20386a3c87213ed0c15a1df573d9a1e510e3365b85b0fe762938e15ca4544bfe"
+    },
+    {
+      "source": "data/qa/supplement-2x-late-frame.png",
+      "file": "10-supplement-2x-late-frame.png.gz",
+      "originalSha256": "e4dd0bad574b38290997281bf731a7c906acca745d778aaeb6087e0e64d8b1eb",
+      "sha256": "726e5857536d55cbd9aa65deaa132fa799c452a7280d099035c07000308eb814"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/complete-notes.json",
+      "file": "11-complete-notes.json.gz",
+      "originalSha256": "c1aebc87b3742688bd8ee960333af2cfe03a0fc847587108db020b8554d7b5bd",
+      "sha256": "1931011ad72f95c61e011317d80175aa329a8da4e58d20465337ffac748d9198"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/complete-notes.md",
+      "file": "12-complete-notes.md.gz",
+      "originalSha256": "67ad02b213ab74ac4bb94d09d8b5fb093683cb8d314566aba3f4baa52f42708d",
+      "sha256": "9e3470e4a0adf5d2908ccd9a4bd017961ee5cee3dd8d31e6eae6458433f1774a"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/original-sentence-command.json",
+      "file": "13-original-sentence-command.json.gz",
+      "originalSha256": "cdd37932c1f3972fe639d4151644beb10e1bdd1da3ab2c0984e737273c1b494f",
+      "sha256": "6e651856c9ac6de8854033953bebd94e4060ffa8213d33e84ae32c0559948790"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/question-panel-1280.png",
+      "file": "14-question-panel-1280.png.gz",
+      "originalSha256": "6b813aed11a74b6dab88ad133671211ede63d1e60206c3020836770453aea000",
+      "sha256": "04bfdf3411103a84aac44112595db1fd743294a689a112677b526635d8e01250"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/question-panel-390.png",
+      "file": "15-question-panel-390.png.gz",
+      "originalSha256": "5b01cd1e48a5453f72d8c1f95ecdc18ec88df6bf7e183f077d207381413c6b62",
+      "sha256": "3c15fec98313a3c6809a1cb3ddd310f8080f851c782e21d498a8c929ef26f75d"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/question-panel-768.png",
+      "file": "16-question-panel-768.png.gz",
+      "originalSha256": "81f92f60e98e16ab73b9df4554d140bde8a5e9469168fafb08a72bdd6c99374b",
+      "sha256": "fecb97d1a2087931946664e235ebd0ecad9e7589d3f61bb35ad5a70ebc776418"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/supplement-2x-probe.json",
+      "file": "17-supplement-2x-probe.json.gz",
+      "originalSha256": "17d00d35a3556c9ff5cecd0f9732c09c69ffe0d6ee83d5dbdc315decb13f1774",
+      "sha256": "c87a8502cd6fc75affd6ebde9a415978db4dcf6d12fb315930a0eab1fe021d29"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/supplement-2x.srt",
+      "file": "18-supplement-2x.srt.gz",
+      "originalSha256": "de7d649225b7399a91cb69163dcf5ca723293f8952f4f1357a86e1f1c69ba439",
+      "sha256": "3cbeb546f6056da47a418261073ba9639ebdd7b26203a7023f0631cf7c2d1104"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/supplement-2x.webm",
+      "file": "19-supplement-2x.webm.gz",
+      "originalSha256": "c5e4a9195b2c95cedc004225a1c2ea0bcda0c8eb54efbc17985a3d7b60511d28",
+      "sha256": "4ec4606f9eaa8dbcdc1ee5c83453fcc389a75ee67c0f8971036c36c5268a37b7"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/supplement-return-adult.png",
+      "file": "20-supplement-return-adult.png.gz",
+      "originalSha256": "f381b90670be1ef5843dbec8430942f2472eb50065b713dabfe8c48fa5760ac4",
+      "sha256": "9aafe73c9190258dfe7512b979e103eac10e61c8707b5174758eebe58cbbf13e"
+    },
+    {
+      "source": "data/qa/browser-evidence/whiteboard-questions/supplement-return-child.png",
+      "file": "21-supplement-return-child.png.gz",
+      "originalSha256": "f04b5c8883de9d532abad4f0c92c45ccd47e336cd04d1ca2ca0188dd6f6ade96",
+      "sha256": "453b53e4accf5ad84f9198d3dd65415e423c99cc75efcdd4ec07027be44c17f9"
+    },
+    {
+      "source": "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts",
+      "file": "22-whiteboard-question-postgres.integration.test.ts.gz",
+      "originalSha256": "691401873eaefd9e59e60ef05d85d2dc413a7894ec89e82d596815df347a3c90",
+      "sha256": "19fab7ba7da9179b16fe2dc51202e8da96783d477bd91763c946c358d49dbf74"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-narration.service.ts",
+      "file": "23-whiteboard-question-narration.service.ts.gz",
+      "originalSha256": "b4eb275dc6a987215eea8baabfd60006c3445b736fc585aa7470319706008b89",
+      "sha256": "64ca9b4aa53bd85f153e814e1aa8444da614d7ce213fa779df58659f319000a2"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-notes.test.ts",
+      "file": "24-whiteboard-question-notes.test.ts.gz",
+      "originalSha256": "5219a294dfd1989b7ea35d7e39acd4dbbb432ad8bb8d6603b395ad90e27e608c",
+      "sha256": "f829598f4421d457520202f5c5620d36bebacc85fd1f1e5645545b50db1eda42"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-teaching.test.ts",
+      "file": "25-whiteboard-question-teaching.test.ts.gz",
+      "originalSha256": "62ba0c20a3ce0c4d8f70abba93592e7cb24362e0654cd70615a0822d978e1170",
+      "sha256": "6d4c8d1553759a59ae5729e8fe54e3de24fb3fe698e3230dcb7abd8d16bdc9cb"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-teaching.ts",
+      "file": "26-whiteboard-question-teaching.ts.gz",
+      "originalSha256": "6d6b6139cdf690e69bb976bd7e5d25189c2d271da0f27f072f2165732c06e223",
+      "sha256": "24b51d198f2a677b5c6bd633e63334d1539ea438e40da9168e9ebb70bae17004"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-question-notes.ts",
+      "file": "27-whiteboard-question-notes.ts.gz",
+      "originalSha256": "967f8039424e286ac6c6d10c4fb5bf2e047f8f9c38d2b287fcb9bcad58fa2e0b",
+      "sha256": "b91a1deb17ac9b24217150fa053be0ca85171947976f2ac0ad24a72cf6f6a173"
+    },
+    {
+      "source": "scripts/qa/run-whiteboard-questions-postgres.cjs",
+      "file": "28-run-whiteboard-questions-postgres.cjs.gz",
+      "originalSha256": "fe1736e1f4d528860fedcbbd42e1a7d684a3293c133013e3049ddf0480e7e7cc",
+      "sha256": "fcab0b2e3611ea88ac0cce028b0df2027d7fa54dd7311a0412300b666be591e1"
+    },
+    {
+      "source": ".github/workflows/verify.yml",
+      "file": "29-verify.yml.gz",
+      "originalSha256": "7bee581704551885f2b2d5346c9b0ea2ae853ba52946eff91294d05831488c3f",
+      "sha256": "4b7e569476a060bb5838dabccc0d21a0dfeae04db22260283ddf0b8d363e4467"
+    },
+    {
+      "source": "apps/api/src/modules/ai/classroom-reply-board.ts",
+      "file": "30-classroom-reply-board.ts.gz",
+      "originalSha256": "f0787ad8a9d62ffba9517e18270a63f90136190e9fdd2260d73f2553687b2007",
+      "sha256": "3695542f630694a890c52133024103cc9d8d9ec850c765d377f75565c2e9c98d"
+    },
+    {
+      "source": "apps/api/src/modules/learning/learning.module.ts",
+      "file": "31-learning.module.ts.gz",
+      "originalSha256": "706b1a1edf0384c86d3ccdeda04503f38dcc5ea546d948cbd049a0c49aaa59a4",
+      "sha256": "c20dc27bd567b701e56a987d30ce397c830409c5d00fd666c6bb0fc634bc681d"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-worker.service.ts",
+      "file": "32-whiteboard-question-worker.service.ts.gz",
+      "originalSha256": "3efdad3cd1ddeb567f9d24ec9454d33df9c75cf7ad6a0838745d256348800739",
+      "sha256": "12d9bb4fcf18d051bd5e8dd3667f2321cafe7954db5a8e5db11ee0dd3a92af30"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "file": "33-whiteboard-question.controller.ts.gz",
+      "originalSha256": "421769c0d7ccf009d5c5e3f9c28d7eb51219cdc82838a027d3ef955302d7b49d",
+      "sha256": "90cfe94e70b54b0d0461c8739837b3406ceafc5253b7a45bd79f6e6e3518c9ea"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question.integration.test.ts",
+      "file": "34-whiteboard-question.integration.test.ts.gz",
+      "originalSha256": "c4d7fb565dc170ab9818508e89458f7f3556c890b84db500f4a852f8bd3dffa3",
+      "sha256": "11a02af0da788d7d8c809aff2c817201ff867cc3aba88706e024829073f20760"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question.service.ts",
+      "file": "35-whiteboard-question.service.ts.gz",
+      "originalSha256": "71d966b889c99bc2074d1e65e85012d52659f8a48776555d2ea3ee2ea8d57bd6",
+      "sha256": "fc4d63f48a1b0e443bc47098a37501edc5f59d0333d315e34673d90b1c90c612"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-exhibit.css",
+      "file": "36-whiteboard-exhibit.css.gz",
+      "originalSha256": "6d9e36693f006f4cf1b8953e17c1f4bcf2aa3bc65b681ba8f3dd133edbdaf126",
+      "sha256": "fe46ef43a831458b4284c3c8c615e53c7d9981f94c906672ec3237984862297d"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-frame.ts",
+      "file": "37-whiteboard-frame.ts.gz",
+      "originalSha256": "448ae0ee521a5fd749b04ad1b4444426e43b42cc1e21c1247837a3a1726d29aa",
+      "sha256": "7e582007242da33d64b3bd8ac0ae922be6543be28698f35e82c1262ec59ce562"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-media.ts",
+      "file": "38-whiteboard-media.ts.gz",
+      "originalSha256": "ff37f10ec1443c14afc84b3d201e34d71ee1564bd8b9d52d9af5bd658d354fa5",
+      "sha256": "3bd371e1fe057600552bef09da78f262183bec248a4f88b9501aa3e6bc908082"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-original.ts",
+      "file": "39-whiteboard-original.ts.gz",
+      "originalSha256": "14deaa7ea78ca8c6681e87290968d2d687b09c5c35385404913eb4f2c721f5e1",
+      "sha256": "5300866424aef8f16d740b338c5c9900ae3668e86eb77ecf50cbf95731c5d56f"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-player.tsx",
+      "file": "40-whiteboard-player.tsx.gz",
+      "originalSha256": "9e1d7d921866cfd7da4c25f6c1514f0f50e7c9092ad4dbfaea36aabbc7373066",
+      "sha256": "e3cbe76f2ca44b066d9ac02d02d79fb5a389f41814790c91cd9684a1fa5ab509"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-questions.css",
+      "file": "41-whiteboard-questions.css.gz",
+      "originalSha256": "291a2303ec60e29abc105bf19c09fa219a05c950ebf8e4b98607ea78ce23d691",
+      "sha256": "c287da12d54cc690b43f0dac253fa4153480fda9f3c61d34f014a8fb8f049387"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-questions.tsx",
+      "file": "42-whiteboard-questions.tsx.gz",
+      "originalSha256": "aeb20d7659a3be13ca63d83fd15cdaf7eb8035b65b8df16d9131951bcba16c79",
+      "sha256": "a9b807bf43ab45482399e006f88524f1c4210ee44b368050e418f466cb1daa95"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-reading-panel.tsx",
+      "file": "43-whiteboard-reading-panel.tsx.gz",
+      "originalSha256": "7f107ab9e071e3034f66fd9443e94846792f00e82569dd38edff3a9fb3309cb8",
+      "sha256": "12e8c8e1351ae8de4272675a7a4b4393c2aab5759b9d68e8c4377c171825ced2"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-session.tsx",
+      "file": "44-whiteboard-session.tsx.gz",
+      "originalSha256": "e98f56bea2dd1f5e46cc2a2a771491c15dd7b14f2dcfef7eb31db07e9a55b705",
+      "sha256": "a2149d7c17ca912214be310c7467e7ae29762db844a84d0566f065c84cb31a67"
+    },
+    {
+      "source": "apps/web/app/studio/workspace-dialog.tsx",
+      "file": "45-workspace-dialog.tsx.gz",
+      "originalSha256": "f60b030e1424f5784008ebac1b6f9dfe9dbf391753911609e4c94f10aeaa8a4c",
+      "sha256": "2dfd07200523cc603f878fab5eda432919fb33605eea4bdc165dd87ad337448d"
+    },
+    {
+      "source": "packages/contracts/src/studio.ts",
+      "file": "46-studio.ts.gz",
+      "originalSha256": "9f104925f3dd84457f67b69b83a84f4aa93b176d3fba44693e6124512e5e5a6e",
+      "sha256": "d507d485cb20b1d2722429be8d33175ac913186179ab24a4142de033ec7d8592"
+    },
+    {
+      "source": "packages/contracts/src/whiteboard-question.ts",
+      "file": "47-whiteboard-question.ts.gz",
+      "originalSha256": "887adf89ad6e5720dc8b582fea013556dbc5a2f7d6e4d75349e8d92372a700b7",
+      "sha256": "82516a17f1d269a05626db89570eb5ccf9cc34b64b32af172d8da7e04077c104"
+    },
+    {
+      "source": "packages/contracts/src/whiteboard-speech.ts",
+      "file": "48-whiteboard-speech.ts.gz",
+      "originalSha256": "11dd6b68db2fe42b46faf9f4218b79336e3561f3bb26b23c8cf4063447fa867e",
+      "sha256": "16e66ad4a94c56f5f3a0a96208f9641e635bc180a665e8db47e9382501e7edcf"
+    },
+    {
+      "source": "scripts/architecture/project-feature-definitions.cjs",
+      "file": "49-project-feature-definitions.cjs.gz",
+      "originalSha256": "13ba57c44de77c807bffb527bbbff508c3f855259f71cdf2d9881c12aca5e8e7",
+      "sha256": "a4a6220d3e3d330cab6c40f3cb84a774381a1346253db8ed3878c4b858b820fb"
+    },
+    {
+      "source": "scripts/qa/whiteboard-question-fixture.cjs",
+      "file": "50-whiteboard-question-fixture.cjs.gz",
+      "originalSha256": "977b5e8db8860b84140982ecaf7b446977823dc50547949b69d461c267d09998",
+      "sha256": "d523715ae9c5aa0ec13db196241916993dfbc47bf84770a61ad42facc794c129"
+    },
+    {
+      "source": "tests/e2e/whiteboard-questions.spec.ts",
+      "file": "51-whiteboard-questions.spec.ts.gz",
+      "originalSha256": "cf911b00d3e8b7384f12c9a8f63330fed7922e128d07ebec45b268f5cb385eda",
+      "sha256": "b305be3d0a91539ab44f67dd19c6eaad9ba8bddd52ba8366abd477cdc28602d8"
+    }
+  ]
+}

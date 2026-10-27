@@ -222,6 +222,8 @@ export type StudioWhiteboardExhibit = { kind: 'table'; headers: string[]; rows: 
   { kind: 'formula'; latex: string; explanation: string };
 export type StudioWhiteboardFigure = { snapshotId: string; sha256: string; originalSha256: string; width: number; height: number;
   alt: string; caption: string; imageUrl: string; originalUrl: string };
+export type StudioWhiteboardReveal = { version: 'whiteboard-reveal-v1'; sourceText: string; bulletEnds: number[];
+  exhibits: Array<{ at: number; rowEnds?: number[] }>; diagramAt?: number };
 export type StudioWhiteboardScene = {
   id: string;
   kind: 'title' | 'concept' | 'steps' | 'fraction_bars' | 'pdf_page' | 'check';
@@ -231,6 +233,9 @@ export type StudioWhiteboardScene = {
   bullets?: string[];
   visual?: TeachingVisual;
   exhibit?: StudioWhiteboardExhibit | null;
+  exhibits?: StudioWhiteboardExhibit[];
+  diagram?: { kind: 'venn' | 'flow'; title: string; labels: string[] };
+  reveal?: StudioWhiteboardReveal;
   figure?: StudioWhiteboardFigure;
   targetAtomIds?: string[];
   source?: { materialId: string; page: number; label: string };

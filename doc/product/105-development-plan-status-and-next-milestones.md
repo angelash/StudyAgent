@@ -338,3 +338,6 @@ M1后即开始可用课程的设备与真人试用；真实1/3/7/14日复测与�
 普通/PDF/主题白板已接入仅一条相邻准备及每次实际播放前的原稿授权核对，暂停/音色/手动跳句/失败明确重试保持；700ms受控等待下普通换句由743.8ms降至35.6ms、主题12.3ms，没有125新增供应商调用或真人听感结论。新鲜124/schema17停服一致数据/引用文件、890旧编译文件及私有配置回退均已验证；assetsIncluded:false，未冒称全部研究资产备份或完整恢复演练。原72项仍11 implemented/48 in_progress/13 planned/0 verified；M1～M7、全教材/题族、原CSS/字体/DPR/原声、教师/实机/长期学习验证继续，学校原生对接、计费和Marketplace排除。
 
 见[125完整规格与交付](125-whiteboard-continuous-narration-and-bounded-preparation.md#11-最终精确ci与实际守护交付)、[最终验收](../evidence/2026-10-26/whiteboard-continuity-acceptance.json)、[精确CI原件](../evidence/2026-10-26/whiteboard-continuity-exact-ci/receipt.json)与[实际运行](../evidence/2026-10-26/whiteboard-continuity-runtime.json)。
+
+
+2026-10-27接续131本地阶段：原句插问现已增加受鉴权的补充板书/显式声音、逐项图表及多公式、完整JSON/Markdown笔记和成人/孩子私有深链，复用原播放器与实际音轨时间表，返回恢复原句/音频位置/相机。完整API1,418通过/54环境跳过；后续同套HTTP在SQLite21和PG21分别通过，另PG三项迁移/冲突/冷重开通过，范围不相加。32浏览器/32原始尝试全通过，含18问答及14旧设置；扩展首轮31/1焦点缺陷原报告/截图/trace保留并修复。真实默认DS结构回答47,449ms，真实MiniMax回答单句2,266ms，均为匿名成人合成原件；不代表全部供应商、听感或教学质量。补充配图采用/版本绑定、原生恢复隐私、全站/精确CI及131可回退运行仍待；正式主目录保持130，Web和ready本轮200。72项11 implemented/50 in_progress/11 planned/0 verified与完整M1～M7范围不变。见[131当前范围](131-frozen-whiteboard-questions-and-teaching-continuity.md#14-补充板书声音与完整笔记的本地验证)与[本地原件](../evidence/2026-10-27/whiteboard-question-teaching-verified/receipt.json)。
