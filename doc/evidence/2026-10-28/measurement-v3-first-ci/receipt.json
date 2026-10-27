@@ -1,0 +1,48 @@
+{
+  "at": "2026-10-27T19:53:46.693528+00:00",
+  "passed": false,
+  "ciRun": 40564667058,
+  "head": "cbf8cec76d1f0d345748892f68d950b8c369d6d2",
+  "terminal": true,
+  "conclusion": "failure",
+  "application": {
+    "passed": 1513,
+    "failed": 1,
+    "environmentSkipped": 72
+  },
+  "postgresGuidance": {
+    "passed": 12,
+    "failed": 1
+  },
+  "browser": {
+    "passed": 415,
+    "originalAttempts": 415,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0
+  },
+  "cause": "Original obsolete-report guidance fixture did not actually create a new report under the new eligibility protocol. Corrected test on03fb553 requires a real appended version and preserves raw skips; production code unchanged. Failed jobs skipped later steps, including the new measurement PostgreSQL native step.",
+  "files": {
+    "measurement-v3-ci-first-terminal.json": {
+      "sha256": "6ab758d6ae5b5e72bfcabe71406decf59d33a170a846ebca9d388220f29e714a",
+      "bytes": 21053,
+      "gzipSha256": "d1889458c3b71dd5bfae323e5886a5fb29d265ca8a9a8c9581c30a37ddedf1fb"
+    },
+    "measurement-v3-ci-first-application-terminal.log": {
+      "sha256": "68cd71ac9231f07d18fc6c2de393db83f20ba46d0fe7d9f39e251af83dc39140",
+      "bytes": 271490,
+      "gzipSha256": "eafdb15774caf8069939cd2b700b4711ef9abe316e1b30ee31777fb682a049c5"
+    },
+    "measurement-v3-ci-first-postgres-terminal.log": {
+      "sha256": "92d194059a99a0c1a1a9ac3ebad87c0096721d7ebffe7ad146fa70b7e395bcc2",
+      "bytes": 331889,
+      "gzipSha256": "d12bed77a6ff19508e0d330cf9a913f004fc8c9773714324f29924cf223ee47d"
+    },
+    "source-course-full-browser.json": {
+      "sha256": "d3e3d86fe74e0aa31a6fe6ce4bbbb0b56946423bda2c009a52147895cce0af9a",
+      "bytes": 466327,
+      "gzipSha256": "c499fec32a7690de4ce5574da6840d5ce71fadfe1ff3309d6bab9da3301a82a3"
+    }
+  }
+}
