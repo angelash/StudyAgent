@@ -23,6 +23,9 @@ for (const width of [390, 768, 1280, 1440]) test(`reference navigation: truthful
   await expect(sidebar.getByRole('region', { name: '继续学习', exact: true })).toHaveCount(0);
   if (width <= 1000) {
     await expect(sidebar).toHaveAttribute('aria-modal', 'true');
+    const row = sidebar.getByRole('link', { name: 'Courses', exact: true }), icon = await row.locator('svg').boundingBox(), label = await row.locator('.button-label').boundingBox();
+    expect(label!.x, 'the open drawer keeps the icon and complete label in one horizontal row').toBeGreaterThan(icon!.x + icon!.width);
+    expect(Math.abs(label!.y + label!.height / 2 - icon!.y - icon!.height / 2)).toBeLessThanOrEqual(4);
     expect(await page.locator('.cl-course-layout').evaluate(node => Boolean(node.closest('[inert]')))).toBe(true);
     await page.keyboard.press('Shift+Tab'); expect(await sidebar.evaluate(node => node.contains(document.activeElement))).toBe(true);
     await page.screenshot({ path: evidence + '/navigation-' + width + '.png', fullPage: true });
@@ -58,4 +61,16 @@ test('reference navigation: resizing an open drawer restores usable desktop cont
   expect(await page.locator('.cl-course-layout').evaluate(node => Boolean(node.closest('[inert]')))).toBe(false);
   expect(await page.evaluate(() => document.body.style.overflow)).not.toBe('hidden');
   await page.getByRole('tab', { name: '练习', exact: true }).click(); await expect(page.getByRole('tabpanel', { name: '练习', exact: true })).toBeVisible();
+});
+test('reference navigation: blocked preference storage keeps current controls usable without inventing a saved preference', async ({ page }) => {
+  await enter(page, 1280);
+  await page.addInitScript(() => {
+    const read = Storage.prototype.getItem, write = Storage.prototype.setItem;
+    Storage.prototype.getItem = function (key) { if (key.startsWith('studyagent.navigation.compact.')) throw new Error('Synthetic unavailable navigation preferences'); return read.call(this, key); };
+    Storage.prototype.setItem = function (key, value) { if (key.startsWith('studyagent.navigation.compact.')) throw new Error('Synthetic unavailable navigation preferences'); return write.call(this, key, value); };
+  });
+  await page.reload(); const sidebar = page.getByLabel('学习工作台导航', { exact: true });
+  await sidebar.getByRole('button', { name: '收起学习导航', exact: true }).click(); await expect(sidebar).toHaveCSS('width', '60px');
+  await sidebar.getByRole('button', { name: '展开学习导航', exact: true }).click(); await expect(sidebar).toHaveCSS('width', '240px');
+  await page.reload(); await expect(sidebar.getByRole('button', { name: '收起学习导航', exact: true })).toBeVisible();
 });

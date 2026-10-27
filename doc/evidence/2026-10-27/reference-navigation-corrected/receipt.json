@@ -1,0 +1,65 @@
+{
+  "at": "2026-10-27T10:13:38.661048+00:00",
+  "head": "137f81cc95d5c789acefe871a6796e53182e6a70",
+  "automatedPassed": true,
+  "focus": {
+    "stats": {
+      "startTime": "2026-10-27T09:54:49.238Z",
+      "duration": 40611.335,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "originalAttempts": 8,
+    "reportSha256": "01d05cea91d7a91d12d2760c45401aa46e2bf9368eeddc55efad070f0b07ab35"
+  },
+  "releaseAccepted": false,
+  "manualFinding": "390 drawer links inherit old mobile horizontal-navigation flex-direction:column, stacking each icon and label. Fix explicit row adapter after a geometry witness on this exact compiled Web. Full388 and exactCI/production pending.",
+  "files": [
+    {
+      "file": "build-api.log.gz",
+      "originalSha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced"
+    },
+    {
+      "file": "build-config.log.gz",
+      "originalSha256": "dea6c775c89aaf7cec46602b3520bfd588b31f37c65427a7212327b10c12709b"
+    },
+    {
+      "file": "build-contracts.log.gz",
+      "originalSha256": "e88e5188a8579737c7b55dfa951b911a144d16a1aceab6f131061fccc449e983"
+    },
+    {
+      "file": "build-web.log.gz",
+      "originalSha256": "b05822e3b786bbe25d6b50cb2a7ec1d93571ad4c0e32a96f58e265532b74be1e"
+    },
+    {
+      "file": "compiled.json.gz",
+      "originalSha256": "71c488a3a05f2fb813362f0be538c79b7e3f04a2a05b8ceedf331d777d4d651a"
+    },
+    {
+      "file": "focus.json.gz",
+      "originalSha256": "01d05cea91d7a91d12d2760c45401aa46e2bf9368eeddc55efad070f0b07ab35"
+    },
+    {
+      "file": "focus.log.gz",
+      "originalSha256": "4b3af577749d18361991afd6115922d562108b93af90884485e44966967e6931"
+    },
+    {
+      "file": "receipt.json.gz",
+      "originalSha256": "9ab5758350b63dd7c9eb4cedb1bbf017681cde7c1a60bdf482b518611f62ae0e"
+    },
+    {
+      "file": "source.json.gz",
+      "originalSha256": "91228dec4c1d3dc18bba7daaf63faebb079a30e44b99d978abdcd52b514ab0de"
+    },
+    {
+      "file": "types-api.log.gz",
+      "originalSha256": "3dd6db47859fa0cbbf2848a978bf41c83f7ab44fff924e237451a140ca18c4df"
+    },
+    {
+      "file": "types-web.log.gz",
+      "originalSha256": "92a5fa6d934dd7f9ee13e23e4101157752842a9641ebb05a3e22cc61c6a59af8"
+    }
+  ]
+}
