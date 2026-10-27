@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "observedAt": "2026-10-27T05:22:33Z",
+  "site": "https://agent.hyperknow.io",
+  "courseId": "35b173b3-d501-4c0c-a6cf-ecac581431d0",
+  "sessionId": "ed43f6c4-fb26-4603-8645-8e2599424343",
+  "scope": "Read-only resumed board, existing correct first answer, existing skipped second question, navigation and assistant panel only. No new answers, skip submission, message, upload or microphone permission.",
+  "dpr": "not measured",
+  "freshCssOrCode": "not captured; downloads disabled",
+  "assistantConnection": "Persistent Refreshing your session observed; not verified healthy.",
+  "audioAndCode": "Not executed or listened in this observation.",
+  "pixelParity": "Not claimed; only desktop original reference screenshots.",
+  "files": [
+    {
+      "file": "board-restored.png",
+      "sha256": "675d93899bd29dc8e891f7d3625d043614fe15d8c9169d6dfa74efff68609b67",
+      "bytes": 251835,
+      "dimensions": [
+        1280,
+        800
+      ]
+    },
+    {
+      "file": "single-answer-existing-correct.png",
+      "sha256": "06fc610fee053e13e39f87bf0d9a12ace03ce022aff0286adf6ee342545d8ec6",
+      "bytes": 161870,
+      "dimensions": [
+        1280,
+        800
+      ]
+    },
+    {
+      "file": "multiple-existing-skipped.png",
+      "sha256": "ce620304a105b35989a3bf1a390f09ce54af7babc371135aea7c9ee237b27abd",
+      "bytes": 67631,
+      "dimensions": [
+        1280,
+        800
+      ]
+    },
+    {
+      "file": "multiple-assistant-refreshing.png",
+      "sha256": "c3c4f032b70c07326a55136a0a2e18f8de79eadbf0f4383185fe7cdd1528e6fb",
+      "bytes": 84295,
+      "dimensions": [
+        1280,
+        800
+      ]
+    }
+  ]
+}
