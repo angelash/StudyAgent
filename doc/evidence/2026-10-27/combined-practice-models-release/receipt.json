@@ -1,0 +1,85 @@
+{
+  "at": "2026-10-27T08:13:59.372021+00:00",
+  "passed": true,
+  "scope": "Stopped-service consistent schema20 database and referenced runtime files, verified966 old compiled rollback files and untouched five config/env. This is not a full research-asset backup or restore rehearsal.",
+  "privateBackupFolder": "output/daemon/release-backups/2026-10-27-model-experience-1793080749025",
+  "databaseVerifiedFiles": 1,
+  "assetsIncluded": false,
+  "oldCompiledFiles": 966,
+  "initialStopGate": "Initial API pid0/waiting restart rejected before database/source changes; explicit owned stop then all three pid0/stopped verified.",
+  "qualifiedInputBoundary": "Two source files were LF in existing main working tree but CRLF in original qualified input. Full normalized content equality established, original bytes archived, restored exact CRLF bytes;20 exact hashes pass. No source semantic edit or digest relaxation.",
+  "compiledBoundary": "361/362 JS/JSON inputs raw equal; only historic rate-limit JS has4 CRLF differences, complete normalized source/compiled bytes equal. Initial strict failure preserved.",
+  "savedGuardians": [
+    "study-agent-api",
+    "study-agent-web",
+    "study-agent-health"
+  ],
+  "savedTemporaryQa": 0,
+  "files": [
+    {
+      "file": "candidate.json.gz",
+      "originalSha256": "29a94ae2d5f75e779da0c540bc34426dfd2a7d63ca3e799fe6ff628b7706f3ce",
+      "originalBytes": 53994
+    },
+    {
+      "file": "candidate-strict-before-format-observation.json.gz",
+      "originalSha256": "41b7131f0ff1b842ff34b644bb5f7fb5bfbac5aa32b7888fa0813bc99d16be71",
+      "originalBytes": 53394
+    },
+    {
+      "file": "deployment-before.json.gz",
+      "originalSha256": "fa5e34cf227da9a142c791c1c6bb608d264d2619aecd0ff5eb8d4bb3e725d85f",
+      "originalBytes": 1354
+    },
+    {
+      "file": "deployment-target.json.gz",
+      "originalSha256": "dfeaff9beb0617e4dc5a06e304c989d6f44fbae2a77c900e5771a08c3dcc3eab",
+      "originalBytes": 152
+    },
+    {
+      "file": "backup-verified.json.gz",
+      "originalSha256": "092877387474132c5d2841c2bd209a6b6da82a7dabc057f09d2754f2b909741e",
+      "originalBytes": 452
+    },
+    {
+      "file": "build-backup-verification.json.gz",
+      "originalSha256": "699d1834afa5da407b926038883d13fa60d899573a2779c8612336793f81c781",
+      "originalBytes": 248
+    },
+    {
+      "file": "build-files.json.gz",
+      "originalSha256": "d72c222be6bad807e0f9379e39caa0dab1f23770197c40ecd404e6fd372dcfac",
+      "originalBytes": 185122
+    },
+    {
+      "file": "initial-stop-gate.json.gz",
+      "originalSha256": "2ed8a6503a5a07db09b8ecc49ee9d19be80b2f833193e727cd0ac65e16b72d63",
+      "originalBytes": 558
+    },
+    {
+      "file": "terminal-qa-cleanup.json.gz",
+      "originalSha256": "30bb03598e21a580d072266422d5c8219a2991b1ddb1458edf5670f27adc6f40",
+      "originalBytes": 707
+    },
+    {
+      "file": "compiled-strict-initial.json.gz",
+      "originalSha256": "2041aeb006884609006a2125b799d5b35967639846644004d842d796763ffa48",
+      "originalBytes": 179
+    },
+    {
+      "file": "compiled-crlf-observation.json.gz",
+      "originalSha256": "14165de544578bbd80d708265f0fe04351d528889bb5bb6ac4a33d3330305fa3",
+      "originalBytes": 864
+    },
+    {
+      "file": "qualified-input-strict-initial.json.gz",
+      "originalSha256": "76a07dd0a471de8a7ffcb79f88c8a500ceefea048b584f6bb0e90c87a2c9ac59",
+      "originalBytes": 749
+    },
+    {
+      "file": "qualified-input-exact-restored.json.gz",
+      "originalSha256": "4fb0f05d317d95f4368d5f74f2f4a293cbcba4cca2d205f6262b65ca029ffa45",
+      "originalBytes": 940
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "at": "2026-10-27T08:13:59.372021+00:00",
+  "passed": true,
+  "status": "runtime-delivered",
+  "revision": "278105ed03d00ba322d84b8d7f2f9bc96e09dd4b",
+  "applicationRevision": "059f319ea680d1f08773b8bf8b8f0a932d23889c",
+  "ciRun": 40465519169,
+  "schemaVersion": 20,
+  "webBuildId": "M34SOGY4NlMGWzrtPnUeo",
+  "localApi": {
+    "passed": 1469,
+    "failed": 0,
+    "environmentSkipped": 60
+  },
+  "linuxApi": {
+    "passed": 1461,
+    "failed": 0,
+    "environmentSkipped": 68
+  },
+  "localBrowser": {
+    "passed": 375,
+    "originalAttempts": 375,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0
+  },
+  "remoteBrowser": {
+    "passed": 375,
+    "originalAttempts": 375,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0
+  },
+  "focusBrowser": {
+    "passed": 24,
+    "originalAttempts": 24,
+    "retries": 0
+  },
+  "runtime": {
+    "httpChecks": 1212,
+    "originalAssets": 959,
+    "voiceSamples": 6,
+    "compiledInputs": 362,
+    "rawCompiledMatches": 361,
+    "stableIntervalMs": 89681,
+    "protectedConfigurationPreserved": true,
+    "localEnvironmentPreserved": true,
+    "oldBuildRollbackFiles": 966,
+    "consistentBackupVerifiedFiles": 1,
+    "assetsIncluded": false
+  },
+  "realModels": {
+    "passed": 21,
+    "failed": 1,
+    "total": 22,
+    "allModelsPassed": false,
+    "failedId": "claude-opus-5",
+    "scope": "Original complete anonymous text matrix only; compiled production read-only projection checked, no new supplier calls or visual/ongoing availability guarantee."
+  },
+  "wholeProductComplete": false,
+  "limitations": [
+    "Active legacy admin assessment/hint tool migration still pending; historical openai executions remain frozen.",
+    "Reference full states/DPR/audio, complete teacher-reviewed content, real devices and longitudinal learning measurement remain incomplete.",
+    "136 course panel has an independent implementation and14-case corrected acceptance; it is not included in this runtime."
+  ]
+}
