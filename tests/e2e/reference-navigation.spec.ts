@@ -32,7 +32,7 @@ for (const width of [390, 768, 1280, 1440]) test(`reference navigation: truthful
     await page.getByRole('button', { name: '打开学习导航', exact: true }).click();
   } else {
     expect((await sidebar.boundingBox())!.width).toBe(240);
-    await sidebar.getByRole('button', { name: '收起学习导航', exact: true }).click(); expect((await sidebar.boundingBox())!.width).toBe(60);
+    await sidebar.getByRole('button', { name: '收起学习导航', exact: true }).click(); await expect(sidebar).toHaveCSS('width', '60px');
     await expect(sidebar.getByRole('link', { name: 'Courses', exact: true })).toBeVisible();
     await page.reload(); await expect(page.getByRole('button', { name: '展开学习导航', exact: true })).toBeVisible();
     await page.getByRole('button', { name: '展开学习导航', exact: true }).click();

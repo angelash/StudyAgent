@@ -1,0 +1,60 @@
+{
+  "at": "2026-10-27T09:53:18.789820+00:00",
+  "head": "da443433b666e7e754d497877ca852a2957f2193",
+  "passed": false,
+  "cases": 8,
+  "passedCases": 4,
+  "failedCases": 4,
+  "originalAttempts": 8,
+  "retries": 0,
+  "findings": [
+    "Mobile390/768 focus restoration occurs before background inert cleanup, leaving menu trigger inactive. Restore inert first and focus trigger after layer cleanup, fenced to the still-closed narrow layout.",
+    "Desktop1280/1440 width asserted immediately after click while actual300ms original CSS transition is in progress. Keep exact60px target but wait for that real style; do not disable motion or change layout target."
+  ],
+  "files": [
+    {
+      "file": "build-api.log.gz",
+      "originalSha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced"
+    },
+    {
+      "file": "build-config.log.gz",
+      "originalSha256": "29e393c2a2e8bc12e2c3f8504a19300d96fdf1c242a600d77cf5c2baaf69e7f4"
+    },
+    {
+      "file": "build-contracts.log.gz",
+      "originalSha256": "cdc68218585a15773a86f713d57ee6c3324d46e63341a6aa1dd108bb4c1de654"
+    },
+    {
+      "file": "build-web.log.gz",
+      "originalSha256": "4b9d2cc46a67c4a9ad20c658a1f29c1482150470aff0cde674013d6513fdcd2e"
+    },
+    {
+      "file": "compiled.json.gz",
+      "originalSha256": "2acde157a6a2ab401b7296ca27c629bb33fecc38c8514381f4386ac1421866a6"
+    },
+    {
+      "file": "focus.json.gz",
+      "originalSha256": "b3543e4a57bf0f2173e7154a58da8e02100051f5d0364daacf8e20280a73208c"
+    },
+    {
+      "file": "focus.log.gz",
+      "originalSha256": "6680848ba5ce4cf2a5bb3385c1d575347546edc89a0b06502b567ac6fb05f137"
+    },
+    {
+      "file": "receipt.json.gz",
+      "originalSha256": "9bda0af8ca870cd5006e66279c5b170da64b2f774fe8a8e1601cad341a0fce89"
+    },
+    {
+      "file": "source.json.gz",
+      "originalSha256": "e852674423401538e241c8f9c3ba31d5387d0020c030289cdf9a38376c8c8815"
+    },
+    {
+      "file": "types-api.log.gz",
+      "originalSha256": "3dd6db47859fa0cbbf2848a978bf41c83f7ab44fff924e237451a140ca18c4df"
+    },
+    {
+      "file": "types-web.log.gz",
+      "originalSha256": "92a5fa6d934dd7f9ee13e23e4101157752842a9641ebb05a3e22cc61c6a59af8"
+    }
+  ]
+}

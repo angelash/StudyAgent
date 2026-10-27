@@ -23,6 +23,7 @@ export function StudioNavigation({ active, recent, onNavigate, onCreate, context
   recent?: Array<{ title: string; detail?: string; href: string }>; onNavigate?: (view: StudioView) => void; onCreate?: () => void; context?: LearningContext }) {
   const [mobile, setMobile] = React.useState(false), [narrow, setNarrow] = React.useState(false), [collapsed, setCollapsed] = React.useState(false);
   const trigger = React.useRef<HTMLButtonElement>(null), sidebar = React.useRef<HTMLElement>(null), user = useSessionUser();
+  const mobileOpen = React.useRef(false); mobileOpen.current = narrow && mobile;
   const [homeHref, setHomeHref] = React.useState('/learn');
   React.useEffect(() => {
     const query = window.matchMedia('(max-width:1000px)'), update = () => { setNarrow(query.matches); if (!query.matches) setMobile(false); };
@@ -50,7 +51,12 @@ export function StudioNavigation({ active, recent, onNavigate, onCreate, context
       }
       current = current.parentElement;
     }
-    return () => { for (const row of protectedElements) if (row.element.isConnected) row.element.inert = row.inert; };
+    return () => {
+      for (const row of protectedElements) if (row.element.isConnected) row.element.inert = row.inert;
+      requestAnimationFrame(() => {
+        if (!mobileOpen.current && window.matchMedia('(max-width:1000px)').matches && trigger.current?.isConnected) trigger.current.focus();
+      });
+    };
   }, [narrow, mobile]);
   function toggle() { const value = !collapsed; setCollapsed(value); try { localStorage.setItem('studyagent.navigation.compact.' + (user?.id ?? 'guest'), String(value)); } catch { /* Persistence is optional. */ } }
   const expanded = narrow || !collapsed, resume = recent?.[0], rootId = React.useId();
