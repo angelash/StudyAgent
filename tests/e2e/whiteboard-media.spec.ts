@@ -185,16 +185,17 @@ test('continuity: a failed adjacent preparation preserves current playback and n
 });
 
 test('continuity: closing during adjacent preparation aborts it and no late audio can play', async ({ page }) => {
-  const timing = await installNarrationTiming(page), f = await fixture(page);
+  const timing = await installNarrationTiming(page, 700, true), f = await fixture(page);
   try {
     await page.getByRole('button', { name: '播放', exact: true }).click();
     await expect.poll(async () => (await timing.read()).requests.length).toBe(2);
-    await page.getByRole('button', { name: '关闭白板', exact: true }).click(); await page.waitForTimeout(1000);
+    await page.getByRole('button', { name: '关闭白板', exact: true }).click(); timing.releaseAdjacent();
+    await expect.poll(async () => (await timing.read()).requests[1]?.failure).toBeTruthy();
     const result = await timing.save('close-pending'); expect(result.requests[1].failure).toBeTruthy();
     expect(result.audio.filter(row => row.index > 0 && row.event === 'playing')).toEqual([]);
     expect(await page.evaluate(() => (window as any).__whiteboardAudio.every((audio: HTMLAudioElement) => audio.paused && !audio.getAttribute('src')))).toBe(true);
     await expect(page.getByRole('dialog', { name: '白板视频' })).toHaveCount(0);
-  } finally { await page.unrouteAll({ behavior: 'wait' }); }
+  } finally { timing.releaseAdjacent(); await page.unrouteAll({ behavior: 'wait' }); }
 });
 
 test('continuity: an exact manual next keeps the prepared WAV paused and transfers it without another request', async ({ page }) => {

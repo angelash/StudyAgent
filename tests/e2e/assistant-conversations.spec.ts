@@ -197,3 +197,17 @@ test('history location: the first click uses the selected original conversation 
     expect((await call(f.actor,'/diagnostics/sessions/'+f.sessionId)).answeredCount).toBe(1);
   }finally{release();await page.unrouteAll({behavior:'wait'});}
 });
+
+test('history location: closing and reopening the same original conversation fences a late position reply',async({page})=>{
+  await setup(page);const message='LOCATE_CLOSED_'+crypto.randomUUID();await send(page,message);await expect(task(page)).toHaveAttribute('data-status','completed');
+  await panel(page).getByRole('button',{name:'查找历史',exact:true}).click();await page.getByLabel('检索历史关键词').fill(message);await panel(page).getByRole('button',{name:'搜索历史',exact:true}).click();await page.getByLabel('助教历史检索').getByRole('list').getByRole('button').click();
+  await expect(panel(page).locator('.assistant-message')).toHaveCount(2);
+  let release!:()=>void,held=0;const gate=new Promise<void>(resolve=>{release=resolve;}),before=page.url();
+  await page.route('**/api/ai/assistant/sessions/*/messages/page?pageSize=1',async route=>{const response=await route.fetch();held++;await gate;await route.fulfill({response});});
+  try{
+    await page.getByRole('button',{name:'回到相关学习位置',exact:true}).click();await expect.poll(()=>held).toBe(1);
+    await page.getByRole('button',{name:/^收起学习(?:小助教|观察助教)$/}).click();await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(page.getByRole('button',{name:'回到相关学习位置',exact:true})).toBeVisible();
+    const delivered=page.waitForResponse(response=>response.url().endsWith('/messages/page?pageSize=1'));release();await(await delivered).finished();
+    await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));await expect(page).toHaveURL(before);await expect(page.getByRole('button',{name:'回到相关学习位置',exact:true})).toBeVisible();
+  }finally{release();await page.unrouteAll({behavior:'wait'});}
+});
