@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "9004ba6825165946f065b8758724e2bbb2cf170d",
+  "sourceRevision": "13cd1f0036710adc0ca31fb22defe30653e118e1",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 125,
-    "activeNormalApiRoutes": 378,
-    "coveredApiRoutes": 378
+    "features": 127,
+    "activeNormalApiRoutes": 400,
+    "coveredApiRoutes": 400
   },
   "areas": [
     {
@@ -8861,6 +8861,355 @@
             "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
+        },
+        {
+          "id": "STUDIO-33",
+          "title": "原句白板插问、冻结模型与完整输入恢复",
+          "area": "studio",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
+          "pages": [
+            "/studio",
+            "/studio/classroom",
+            "/studio/projects",
+            "/studio/source-courses",
+            "/studio/whiteboards"
+          ],
+          "inputs": "两种原白板身份、实际原句与版本、五种教学意图、所选模型、完整问题和稳定请求键",
+          "implementation": "服务端从已保存原件冻结当前句及已讲知识块；队列保留原模型、完整输入、租约与取消代次，发布前复核原登录、孩子授权及原稿摘要。小九纯文本CLI使用一次性空目录和任务级Responses转发，实际上游无工具，拒绝工具响应而非只依赖提示。未发送输入与原请求分开恢复，分页历史、失败原重试、返回原句和相机书签由真实面板承载；关闭手机阅读层保留同一输入组件。",
+          "outputs": "可恢复原句问答、来源锚点、实际模型和明确任务状态",
+          "collections": [
+            "whiteboardQuestionTurns",
+            "studioWhiteboards",
+            "studioTopicWhiteboards"
+          ],
+          "limits": "不把插问、AI回答或回看当首答、掌握或根因测量；原稿变化不将旧回答带入新历史。21模型的合成协议验证不等于全部真实供应商或教学质量验证。完整PG恢复、整站、精确CI和运行交付按当批证据分别核对。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/whiteboards/:boardId/questions/context",
+              "controller": "GuidanceWhiteboardQuestionController",
+              "method": "context",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 25
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/whiteboards/:boardId/questions/requests/:key",
+              "controller": "GuidanceWhiteboardQuestionController",
+              "method": "receipt",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 26
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/whiteboards/:boardId/questions",
+              "controller": "GuidanceWhiteboardQuestionController",
+              "method": "list",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 32
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/whiteboards/:boardId/questions/:id",
+              "controller": "GuidanceWhiteboardQuestionController",
+              "method": "get",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 33
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/whiteboards/:boardId/questions",
+              "controller": "GuidanceWhiteboardQuestionController",
+              "method": "create",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 34
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/whiteboards/:boardId/questions/:id/cancel",
+              "controller": "GuidanceWhiteboardQuestionController",
+              "method": "cancel",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 35
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/whiteboards/:boardId/questions/:id/retry",
+              "controller": "GuidanceWhiteboardQuestionController",
+              "method": "retry",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 36
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/context",
+              "controller": "TopicWhiteboardQuestionController",
+              "method": "context",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 43
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/requests/:key",
+              "controller": "TopicWhiteboardQuestionController",
+              "method": "receipt",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 44
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboards/:boardId/questions",
+              "controller": "TopicWhiteboardQuestionController",
+              "method": "list",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 50
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/:id",
+              "controller": "TopicWhiteboardQuestionController",
+              "method": "get",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 51
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/topic-whiteboards/:boardId/questions",
+              "controller": "TopicWhiteboardQuestionController",
+              "method": "create",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 52
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/:id/cancel",
+              "controller": "TopicWhiteboardQuestionController",
+              "method": "cancel",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 53
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/:id/retry",
+              "controller": "TopicWhiteboardQuestionController",
+              "method": "retry",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 54
+            }
+          ],
+          "implementations": [
+            {
+              "name": "WhiteboardQuestionService.context",
+              "file": "apps/api/src/modules/learning/whiteboard-question.service.ts",
+              "line": 35
+            },
+            {
+              "name": "WhiteboardQuestionService.receipt",
+              "file": "apps/api/src/modules/learning/whiteboard-question.service.ts",
+              "line": 65
+            },
+            {
+              "name": "WhiteboardQuestionService.list",
+              "file": "apps/api/src/modules/learning/whiteboard-question.service.ts",
+              "line": 57
+            },
+            {
+              "name": "WhiteboardQuestionService.get",
+              "file": "apps/api/src/modules/learning/whiteboard-question.service.ts",
+              "line": 62
+            },
+            {
+              "name": "WhiteboardQuestionService.create",
+              "file": "apps/api/src/modules/learning/whiteboard-question.service.ts",
+              "line": 98
+            },
+            {
+              "name": "WhiteboardQuestionService.control",
+              "file": "apps/api/src/modules/learning/whiteboard-question.service.ts",
+              "line": 135
+            }
+          ],
+          "sourceFiles": [
+            "packages/contracts/src/whiteboard-question.ts",
+            "apps/api/src/modules/learning/whiteboard-question.service.ts",
+            "apps/api/src/modules/learning/whiteboard-question-worker.service.ts",
+            "apps/api/src/modules/learning/whiteboard-question-context.ts",
+            "apps/api/src/modules/learning/whiteboard-question-access.ts",
+            "apps/api/src/modules/learning/whiteboard-question.integration.test.ts",
+            "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts",
+            "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts",
+            "scripts/qa/run-whiteboard-questions-postgres.cjs",
+            "apps/api/src/modules/ai/xiaojiu-text-transport.ts",
+            "apps/api/src/modules/ai/xiaojiu-text-transport.test.ts",
+            "apps/web/app/studio/whiteboard-questions.tsx",
+            "tests/e2e/whiteboard-questions.spec.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
+            "apps/api/src/modules/learning/studio-course.test.ts",
+            "apps/api/src/modules/learning/studio.integration.test.ts",
+            "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+            "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
+            "tests/e2e/studio.spec.ts",
+            "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/classroom-practice.spec.ts",
+            "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
+            "tests/e2e/workspace.spec.ts"
+          ]
+        },
+        {
+          "id": "STUDIO-34",
+          "title": "原回答补充板书、显式声音与完整教学笔记",
+          "area": "studio",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
+          "pages": [
+            "/studio",
+            "/studio/classroom",
+            "/studio/projects",
+            "/studio/source-courses",
+            "/studio/whiteboards"
+          ],
+          "inputs": "已发布回答指纹、原句/原白板关系、真实音色、完整句计划及笔记格式",
+          "implementation": "一个回答生成独立受鉴权补充来源，保留唯一原旁白；要点、受控图、整行表格及多个完整公式绑定真实句边界，共用原播放器及声画时间表。显式进入和播放，返回恢复原句/进度/声音时间/相机。HTTP朗读在供应商前后复核身份；PNG、含声WebM与SRT复用真实解码时间表。完整JSON/Markdown笔记包含所有已保存问题，下载后段再次核对owner及原件摘要，关闭或撤权丢弃迟到结果。",
+          "outputs": "独立AI补充讲解、受控图表公式、逐句音轨、私有深链、完整笔记和可返回原稿",
+          "collections": [
+            "whiteboardQuestionTurns",
+            "studioWhiteboards",
+            "studioTopicWhiteboards"
+          ],
+          "limits": "旧纯文字回答保留文字与收听，不编造板书；超过向量引擎预算的公式完整显示原式，不冒称全部向量排版。补充生图候选/采用/原图/版本绑定仍待实现；声音实测只是一份匿名回答的一句，不能代替听感、全模型、整站和原站像素验证。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/whiteboards/:boardId/questions/:id/board",
+              "controller": "GuidanceWhiteboardQuestionController",
+              "method": "board",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 29
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/whiteboards/:boardId/questions/:id/board/narration/:sceneId",
+              "controller": "GuidanceWhiteboardQuestionController",
+              "method": "speak",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 30
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/whiteboards/:boardId/questions/notes",
+              "controller": "GuidanceWhiteboardQuestionController",
+              "method": "notes",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 27
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/whiteboards/:boardId/questions/notes/identity",
+              "controller": "GuidanceWhiteboardQuestionController",
+              "method": "notesIdentity",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 28
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/:id/board",
+              "controller": "TopicWhiteboardQuestionController",
+              "method": "board",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 47
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/:id/board/narration/:sceneId",
+              "controller": "TopicWhiteboardQuestionController",
+              "method": "speak",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 48
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/notes",
+              "controller": "TopicWhiteboardQuestionController",
+              "method": "notes",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 45
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/notes/identity",
+              "controller": "TopicWhiteboardQuestionController",
+              "method": "notesIdentity",
+              "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+              "line": 46
+            }
+          ],
+          "implementations": [
+            {
+              "name": "WhiteboardQuestionService.board",
+              "file": "apps/api/src/modules/learning/whiteboard-question.service.ts",
+              "line": 77
+            },
+            {
+              "name": "WhiteboardQuestionService.notes",
+              "file": "apps/api/src/modules/learning/whiteboard-question.service.ts",
+              "line": 80
+            },
+            {
+              "name": "WhiteboardQuestionService.notesIdentity",
+              "file": "apps/api/src/modules/learning/whiteboard-question.service.ts",
+              "line": 87
+            }
+          ],
+          "sourceFiles": [
+            "apps/api/src/modules/learning/whiteboard-question-teaching.ts",
+            "apps/api/src/modules/learning/whiteboard-question-narration.service.ts",
+            "apps/api/src/modules/learning/whiteboard-question-teaching.test.ts",
+            "apps/api/src/modules/learning/whiteboard-question-notes.test.ts",
+            "apps/web/app/studio/whiteboard-question-notes.ts",
+            "apps/web/app/studio/whiteboard-original.ts",
+            "apps/web/app/studio/whiteboard-frame.ts",
+            "apps/web/app/studio/whiteboard-session.tsx",
+            "apps/web/app/studio/whiteboard-reading-panel.tsx",
+            "tests/e2e/whiteboard-questions.spec.ts",
+            "apps/api/src/modules/learning/whiteboard-question.service.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
+            "apps/api/src/modules/learning/studio-course.test.ts",
+            "apps/api/src/modules/learning/studio.integration.test.ts",
+            "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+            "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
+            "tests/e2e/studio.spec.ts",
+            "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/classroom-practice.spec.ts",
+            "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
+            "tests/e2e/workspace.spec.ts"
+          ]
         }
       ]
     },
@@ -10105,7 +10454,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 345
+              "line": 346
             },
             {
               "name": "DomainEventBusService.publish",
@@ -10115,7 +10464,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 243
+              "line": 244
             }
           ],
           "sourceFiles": [
@@ -10308,7 +10657,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 243
+              "line": 244
             }
           ],
           "sourceFiles": [
@@ -10385,7 +10734,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 227
+              "line": 228
             },
             {
               "name": "RuntimeMetricsService.snapshot",

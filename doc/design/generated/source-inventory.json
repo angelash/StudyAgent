@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "9004ba6825165946f065b8758724e2bbb2cf170d",
+  "sourceRevision": "13cd1f0036710adc0ca31fb22defe30653e118e1",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
-    "declaredHttpRoutes": 399,
-    "activeHttpRoutes": 386,
-    "activeBusinessHttpRoutes": 378,
+    "declaredHttpRoutes": 421,
+    "activeHttpRoutes": 408,
+    "activeBusinessHttpRoutes": 400,
     "retiredHttpRoutes": 8,
     "activeModules": 19,
-    "activeControllers": 39,
-    "apiClasses": 150,
-    "apiFunctions": 418,
-    "domainCollections": 100,
-    "contractTypes": 356,
+    "activeControllers": 41,
+    "apiClasses": 155,
+    "apiFunctions": 433,
+    "domainCollections": 101,
+    "contractTypes": 365,
     "webPages": 29,
     "webRouteHandlers": 1,
-    "apiTestFiles": 163,
-    "browserTestFiles": 35
+    "apiTestFiles": 170,
+    "browserTestFiles": 36
   },
   "modules": [
     {
@@ -215,6 +215,8 @@
         "AiModule"
       ],
       "controllers": [
+        "GuidanceWhiteboardQuestionController",
+        "TopicWhiteboardQuestionController",
         "TopicWhiteboardVisualController",
         "TopicWhiteboardController",
         "SourceCourseCheckController",
@@ -234,6 +236,9 @@
         "ClassroomVisualController"
       ],
       "providers": [
+        "WhiteboardQuestionService",
+        "WhiteboardQuestionNarrationService",
+        "WhiteboardQuestionWorkerService",
         "TopicWhiteboardVisualService",
         "TopicWhiteboardVisualWorkerService",
         "TopicWhiteboardService",
@@ -9953,6 +9958,728 @@
     },
     {
       "verb": "GET",
+      "path": "/api/learning/studio/whiteboards/:boardId/questions/context",
+      "controller": "GuidanceWhiteboardQuestionController",
+      "method": "context",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 25,
+      "signature": "context(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Query() q: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.context"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/studio/whiteboards/:boardId/questions/requests/:key",
+      "controller": "GuidanceWhiteboardQuestionController",
+      "method": "receipt",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 26,
+      "signature": "receipt(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Param('key') key: string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.receipt"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/studio/whiteboards/:boardId/questions/notes",
+      "controller": "GuidanceWhiteboardQuestionController",
+      "method": "notes",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 27,
+      "signature": "notes(@Req() r: AuthenticatedRequest, @Param('boardId') id: string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.notes"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/studio/whiteboards/:boardId/questions/notes/identity",
+      "controller": "GuidanceWhiteboardQuestionController",
+      "method": "notesIdentity",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 28,
+      "signature": "notesIdentity(@Req() r: AuthenticatedRequest, @Param('boardId') id: string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.notesIdentity"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/studio/whiteboards/:boardId/questions/:id/board",
+      "controller": "GuidanceWhiteboardQuestionController",
+      "method": "board",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 29,
+      "signature": "board(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.board"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/studio/whiteboards/:boardId/questions/:id/board/narration/:sceneId",
+      "controller": "GuidanceWhiteboardQuestionController",
+      "method": "speak",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 30,
+      "signature": "speak(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Param('sceneId') scene: string, @Body() input: unknown, @Res({ passthrough: true }) response: Response)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/studio/whiteboards/:boardId/questions",
+      "controller": "GuidanceWhiteboardQuestionController",
+      "method": "list",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 32,
+      "signature": "list(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Query() q: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.list"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/studio/whiteboards/:boardId/questions/:id",
+      "controller": "GuidanceWhiteboardQuestionController",
+      "method": "get",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 33,
+      "signature": "get(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.get"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/studio/whiteboards/:boardId/questions",
+      "controller": "GuidanceWhiteboardQuestionController",
+      "method": "create",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 34,
+      "signature": "create(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Body() input: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.create"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/studio/whiteboards/:boardId/questions/:id/cancel",
+      "controller": "GuidanceWhiteboardQuestionController",
+      "method": "cancel",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 35,
+      "signature": "cancel(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Body() input: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.control"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/studio/whiteboards/:boardId/questions/:id/retry",
+      "controller": "GuidanceWhiteboardQuestionController",
+      "method": "retry",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 36,
+      "signature": "retry(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Body() input: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.control"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/context",
+      "controller": "TopicWhiteboardQuestionController",
+      "method": "context",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 43,
+      "signature": "context(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Query() q: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.context"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/requests/:key",
+      "controller": "TopicWhiteboardQuestionController",
+      "method": "receipt",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 44,
+      "signature": "receipt(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Param('key') key: string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.receipt"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/notes",
+      "controller": "TopicWhiteboardQuestionController",
+      "method": "notes",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 45,
+      "signature": "notes(@Req() r: AuthenticatedRequest, @Param('boardId') id: string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.notes"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/notes/identity",
+      "controller": "TopicWhiteboardQuestionController",
+      "method": "notesIdentity",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 46,
+      "signature": "notesIdentity(@Req() r: AuthenticatedRequest, @Param('boardId') id: string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.notesIdentity"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/:id/board",
+      "controller": "TopicWhiteboardQuestionController",
+      "method": "board",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 47,
+      "signature": "board(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.board"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/:id/board/narration/:sceneId",
+      "controller": "TopicWhiteboardQuestionController",
+      "method": "speak",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 48,
+      "signature": "speak(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Param('sceneId') scene: string, @Body() input: unknown, @Res({ passthrough: true }) response: Response)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/studio/topic-whiteboards/:boardId/questions",
+      "controller": "TopicWhiteboardQuestionController",
+      "method": "list",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 50,
+      "signature": "list(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Query() q: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.list"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/:id",
+      "controller": "TopicWhiteboardQuestionController",
+      "method": "get",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 51,
+      "signature": "get(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.get"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/studio/topic-whiteboards/:boardId/questions",
+      "controller": "TopicWhiteboardQuestionController",
+      "method": "create",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 52,
+      "signature": "create(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Body() input: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.create"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/:id/cancel",
+      "controller": "TopicWhiteboardQuestionController",
+      "method": "cancel",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 53,
+      "signature": "cancel(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Body() input: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.control"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/studio/topic-whiteboards/:boardId/questions/:id/retry",
+      "controller": "TopicWhiteboardQuestionController",
+      "method": "retry",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 54,
+      "signature": "retry(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Body() input: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "calls": [
+        "this.turns.control"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
       "path": "/api/library/overview",
       "controller": "LibraryController",
       "method": "overview",
@@ -13483,7 +14210,7 @@
         },
         {
           "name": "assertRestoreReady",
-          "line": 201,
+          "line": 204,
           "signature": "assertRestoreReady()",
           "access": "private",
           "decorators": [],
@@ -13493,7 +14220,7 @@
         },
         {
           "name": "migrateConstraints",
-          "line": 211,
+          "line": 214,
           "signature": "migrateConstraints(version: number, constraints: Array<{ name: string; collection: string; fields: string[]; pending?: boolean }>, extraSql = '')",
           "access": "private",
           "decorators": [],
@@ -13504,7 +14231,7 @@
         },
         {
           "name": "read",
-          "line": 240,
+          "line": 243,
           "signature": "read(): Promise<StateSnapshot>",
           "access": "public",
           "decorators": [],
@@ -13514,7 +14241,7 @@
         },
         {
           "name": "readImmutable",
-          "line": 245,
+          "line": 248,
           "signature": "readImmutable(): Promise<StateSnapshot>",
           "access": "public",
           "decorators": [],
@@ -13525,7 +14252,7 @@
         },
         {
           "name": "snapshotAt",
-          "line": 249,
+          "line": 252,
           "signature": "snapshotAt(revision: number): StateSnapshot | undefined",
           "access": "public",
           "decorators": [],
@@ -13533,7 +14260,7 @@
         },
         {
           "name": "remember",
-          "line": 255,
+          "line": 258,
           "signature": "remember(snapshot: StateSnapshot, loadedRows: number, partial = false): StateSnapshot",
           "access": "private",
           "decorators": [],
@@ -13541,7 +14268,7 @@
         },
         {
           "name": "rememberCommit",
-          "line": 262,
+          "line": 265,
           "signature": "rememberCommit(beforeRevision: number, revision: number, changes: Change[])",
           "access": "private",
           "decorators": [],
@@ -13549,7 +14276,7 @@
         },
         {
           "name": "readSnapshot",
-          "line": 283,
+          "line": 286,
           "signature": "readSnapshot(): Promise<StateSnapshot>",
           "access": "private",
           "decorators": [],
@@ -13561,7 +14288,7 @@
         },
         {
           "name": "commit",
-          "line": 321,
+          "line": 324,
           "signature": "commit(before: StateSnapshot, after: DomainState, options: CommitOptions = {}): Promise<number>",
           "access": "public",
           "decorators": [],
@@ -13572,7 +14299,7 @@
         },
         {
           "name": "commitSnapshot",
-          "line": 325,
+          "line": 328,
           "signature": "commitSnapshot(before: StateSnapshot, after: DomainState, options: CommitOptions): Promise<number>",
           "access": "private",
           "decorators": [],
@@ -13589,7 +14316,7 @@
         },
         {
           "name": "assertDependencies",
-          "line": 386,
+          "line": 389,
           "signature": "assertDependencies(before: StateSnapshot, changes: Change[], dependencies: ReadDependency[], query: (collection: string, where?: DomainSelector) => Promise<unknown[]>, conflict: () => Error, version: (collection: string) => Promise<number>)",
           "access": "private",
           "decorators": [],
@@ -13597,7 +14324,7 @@
         },
         {
           "name": "rebaseAppends",
-          "line": 416,
+          "line": 419,
           "signature": "rebaseAppends(before: StateSnapshot, changes: Change[], options: CommitOptions, maximum: (collection: string) => number)",
           "access": "private",
           "decorators": [],
@@ -13605,7 +14332,7 @@
         },
         {
           "name": "close",
-          "line": 428,
+          "line": 431,
           "signature": "close()",
           "access": "public",
           "decorators": [],
@@ -13704,7 +14431,7 @@
     {
       "name": "InMemoryStoreService",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 174,
+      "line": 175,
       "decorators": [
         {
           "name": "Injectable",
@@ -13715,7 +14442,7 @@
       "methods": [
         {
           "name": "recordRead",
-          "line": 202,
+          "line": 203,
           "signature": "recordRead(collection: string, where?: DomainSelector)",
           "access": "private",
           "decorators": [],
@@ -13725,7 +14452,7 @@
         },
         {
           "name": "mutableCollection",
-          "line": 212,
+          "line": 213,
           "signature": "mutableCollection(collection: string, allRecords: boolean): unknown[]",
           "access": "private",
           "decorators": [],
@@ -13735,7 +14462,7 @@
         },
         {
           "name": "select",
-          "line": 227,
+          "line": 228,
           "signature": "select(collection: K, where: DomainSelector): Array<StoreRecord<K>>",
           "access": "public",
           "decorators": [],
@@ -13747,7 +14474,7 @@
         },
         {
           "name": "find",
-          "line": 243,
+          "line": 244,
           "signature": "find(collection: K, where: DomainSelector): StoreRecord<K> | undefined",
           "access": "public",
           "decorators": [],
@@ -13757,7 +14484,7 @@
         },
         {
           "name": "inspect",
-          "line": 246,
+          "line": 247,
           "signature": "inspect(collection: K): ReadonlyArray<StoreRecord<K>>",
           "access": "public",
           "decorators": [],
@@ -13768,7 +14495,7 @@
         },
         {
           "name": "append",
-          "line": 259,
+          "line": 260,
           "signature": "append(collection: K, ...records: Array<StoreRecord<K>>)",
           "access": "public",
           "decorators": [],
@@ -13779,7 +14506,7 @@
         },
         {
           "name": "remove",
-          "line": 265,
+          "line": 266,
           "signature": "remove(collection: K, where: DomainSelector)",
           "access": "public",
           "decorators": [],
@@ -13791,7 +14518,7 @@
         },
         {
           "name": "onModuleInit",
-          "line": 273,
+          "line": 274,
           "signature": "onModuleInit()",
           "access": "public",
           "decorators": [],
@@ -13803,7 +14530,7 @@
         },
         {
           "name": "onApplicationBootstrap",
-          "line": 291,
+          "line": 292,
           "signature": "onApplicationBootstrap()",
           "access": "public",
           "decorators": [],
@@ -13813,7 +14540,7 @@
         },
         {
           "name": "requestContext",
-          "line": 298,
+          "line": 299,
           "signature": "requestContext(fn: () => T): Promise<T>",
           "access": "public",
           "decorators": [],
@@ -13824,7 +14551,7 @@
         },
         {
           "name": "commitRequest",
-          "line": 307,
+          "line": 308,
           "signature": "commitRequest(fence?: TaskFence)",
           "access": "public",
           "decorators": [],
@@ -13837,7 +14564,7 @@
         },
         {
           "name": "transaction",
-          "line": 327,
+          "line": 328,
           "signature": "transaction(fn: () => T | Promise<T>, fence?: TaskFence): Promise<T>",
           "access": "public",
           "decorators": [],
@@ -13849,7 +14576,7 @@
         },
         {
           "name": "enqueueTask",
-          "line": 339,
+          "line": 340,
           "signature": "enqueueTask(intent: TaskIntent)",
           "access": "public",
           "decorators": [],
@@ -13861,7 +14588,7 @@
         },
         {
           "name": "controlTask",
-          "line": 345,
+          "line": 346,
           "signature": "controlTask(operation: TaskOperation)",
           "access": "public",
           "decorators": [],
@@ -13873,7 +14600,7 @@
         },
         {
           "name": "onModuleDestroy",
-          "line": 357,
+          "line": 358,
           "signature": "onModuleDestroy()",
           "access": "public",
           "decorators": [],
@@ -13881,7 +14608,7 @@
         },
         {
           "name": "nextId",
-          "line": 460,
+          "line": 462,
           "signature": "nextId(prefix: string): string",
           "access": "public",
           "decorators": [],
@@ -13889,7 +14616,7 @@
         },
         {
           "name": "reset",
-          "line": 464,
+          "line": 466,
           "signature": "reset()",
           "access": "public",
           "decorators": [],
@@ -15760,7 +16487,7 @@
     {
       "name": "XiaojiuChatService",
       "file": "apps/api/src/modules/ai/xiaojiu-chat.service.ts",
-      "line": 60,
+      "line": 61,
       "decorators": [
         {
           "name": "Injectable",
@@ -15776,7 +16503,7 @@
       "methods": [
         {
           "name": "reply",
-          "line": 70,
+          "line": 71,
           "signature": "reply(input: XiaojiuChatRequest): Promise<XiaojiuChatReply>",
           "access": "public",
           "decorators": [],
@@ -15786,7 +16513,7 @@
         },
         {
           "name": "structured",
-          "line": 77,
+          "line": 78,
           "signature": "structured(input: XiaojiuChatRequest, schema: object, check: (value: unknown) => T, custom = true): Promise<T & {modelId:string;modelName:string}>",
           "access": "public",
           "decorators": [],
@@ -15800,7 +16527,7 @@
         },
         {
           "name": "prompt",
-          "line": 118,
+          "line": 135,
           "signature": "prompt(input: XiaojiuChatRequest, custom = false, schema?: object)",
           "access": "private",
           "decorators": [],
@@ -15808,15 +16535,15 @@
         },
         {
           "name": "run",
-          "line": 134,
-          "signature": "run(args: string[], prompt: string, signal?: AbortSignal)",
+          "line": 151,
+          "signature": "run(args: string[], prompt: string, workDirectory: string, environment: NodeJS.ProcessEnv, signal?: AbortSignal)",
           "access": "private",
           "decorators": [],
           "calls": []
         },
         {
           "name": "parse",
-          "line": 198,
+          "line": 215,
           "signature": "parse(value: string)",
           "access": "private",
           "decorators": [],
@@ -15859,7 +16586,7 @@
         {
           "name": "writeCompatibleCatalog",
           "line": 114,
-          "signature": "writeCompatibleCatalog(targetPath: string)",
+          "signature": "writeCompatibleCatalog(targetPath: string, options?: { textOnly: boolean })",
           "access": "public",
           "decorators": [],
           "calls": [
@@ -15868,7 +16595,7 @@
         },
         {
           "name": "catalogPath",
-          "line": 121,
+          "line": 125,
           "signature": "catalogPath()",
           "access": "private",
           "decorators": [],
@@ -15876,7 +16603,7 @@
         },
         {
           "name": "readConfiguredCatalog",
-          "line": 131,
+          "line": 135,
           "signature": "readConfiguredCatalog(): ModelSeed[]",
           "access": "private",
           "decorators": [],
@@ -23459,12 +24186,12 @@
     {
       "name": "LearningModule",
       "file": "apps/api/src/modules/learning/learning.module.ts",
-      "line": 54,
+      "line": 58,
       "decorators": [
         {
           "name": "Module",
           "args": [
-            "{ imports: [ProjectFileModule,StudioMaterialMaintenanceModule,StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [TopicWhiteboardVisualController,TopicWhiteboardController,SourceCourseCheckController,ProjectTeachingController,SourceCourseLifecycleController, ClassroomCodeController,ClassroomTurnController,StudioOriginalRepairController,StudioMaterialUploadController, LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [TopicWhiteboardVisualService,TopicWhiteboardVisualWorkerService,TopicWhiteboardService,TopicWhiteboardWorkerService,TopicWhiteboardNarrationService,SourceCourseCheckService,SourceCourseCheckWorkerService,ProjectTeachingService,SourceCourseLifecycleService, ClassroomCodeService,ClassroomTurnService,ClassroomTurnWorkerService,StudioOriginalRepairService,StudioOriginalRepairWorkerService,StudioMaterialIntegrityService,StudioMaterialUploadService, LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, SourceCourseCompilerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] }"
+            "{ imports: [ProjectFileModule,StudioMaterialMaintenanceModule,StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [GuidanceWhiteboardQuestionController,TopicWhiteboardQuestionController,TopicWhiteboardVisualController,TopicWhiteboardController,SourceCourseCheckController,ProjectTeachingController,SourceCourseLifecycleController, ClassroomCodeController,ClassroomTurnController,StudioOriginalRepairController,StudioMaterialUploadController, LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [WhiteboardQuestionService,WhiteboardQuestionNarrationService,WhiteboardQuestionWorkerService,TopicWhiteboardVisualService,TopicWhiteboardVisualWorkerService,TopicWhiteboardService,TopicWhiteboardWorkerService,TopicWhiteboardNarrationService,SourceCourseCheckService,SourceCourseCheckWorkerService,ProjectTeachingService,SourceCourseLifecycleService, ClassroomCodeService,ClassroomTurnService,ClassroomTurnWorkerService,StudioOriginalRepairService,StudioOriginalRepairWorkerService,StudioMaterialIntegrityService,StudioMaterialUploadService, LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, SourceCourseCompilerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] }"
           ]
         }
       ],
@@ -29106,6 +29833,748 @@
           "calls": [
             "this.store.inspect",
             "this.publishedRecord"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WhiteboardQuestionNarrationService",
+      "file": "apps/api/src/modules/learning/whiteboard-question-narration.service.ts",
+      "line": 9,
+      "decorators": [
+        {
+          "name": "Injectable",
+          "args": []
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "store",
+          "type": "InMemoryStoreService"
+        },
+        {
+          "name": "questions",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "speech",
+          "type": "SpeechService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "synthesize",
+          "line": 12,
+          "signature": "synthesize(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, turnId: string, sceneId: string, input: unknown, session: InMemoryAuthSession, signal: AbortSignal)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.questions.answerContext",
+            "this.store.transaction",
+            "this.speech.synthesize"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WhiteboardQuestionWorkerService",
+      "file": "apps/api/src/modules/learning/whiteboard-question-worker.service.ts",
+      "line": 21,
+      "decorators": [
+        {
+          "name": "Injectable",
+          "args": []
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "store",
+          "type": "InMemoryStoreService"
+        },
+        {
+          "name": "students",
+          "type": "StudentsService"
+        },
+        {
+          "name": "topics",
+          "type": "TopicWhiteboardService"
+        },
+        {
+          "name": "chat",
+          "type": "XiaojiuChatService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "onApplicationBootstrap",
+          "line": 30,
+          "signature": "onApplicationBootstrap()",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.runNext",
+            "this.logger.warn",
+            "this.timer.unref"
+          ]
+        },
+        {
+          "name": "onModuleDestroy",
+          "line": 35,
+          "signature": "onModuleDestroy()",
+          "access": "public",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "runNext",
+          "line": 41,
+          "signature": "runNext(): Promise<boolean>",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.execute"
+          ]
+        },
+        {
+          "name": "execute",
+          "line": 46,
+          "signature": "execute()",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.tasks.claim",
+            "this.store.tasks.heartbeat",
+            "this.store.requestContext",
+            "this.store.find",
+            "this.store.transaction",
+            "this.chat.structured",
+            "this.store.tasks.fail"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GuidanceWhiteboardQuestionController",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 21,
+      "decorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        },
+        {
+          "name": "Controller",
+          "args": [
+            "'learning/studio/whiteboards/:boardId/questions'"
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "context",
+          "line": 25,
+          "signature": "context(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Query() q: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'context'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.turns.context"
+          ]
+        },
+        {
+          "name": "receipt",
+          "line": 26,
+          "signature": "receipt(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Param('key') key: string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'requests/:key'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.turns.receipt"
+          ]
+        },
+        {
+          "name": "notes",
+          "line": 27,
+          "signature": "notes(@Req() r: AuthenticatedRequest, @Param('boardId') id: string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'notes'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.turns.notes"
+          ]
+        },
+        {
+          "name": "notesIdentity",
+          "line": 28,
+          "signature": "notesIdentity(@Req() r: AuthenticatedRequest, @Param('boardId') id: string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'notes/identity'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.turns.notesIdentity"
+          ]
+        },
+        {
+          "name": "board",
+          "line": 29,
+          "signature": "board(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "':id/board'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.turns.board"
+          ]
+        },
+        {
+          "name": "speak",
+          "line": 30,
+          "signature": "speak(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Param('sceneId') scene: string, @Body() input: unknown, @Res({ passthrough: true }) response: Response)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/board/narration/:sceneId'"
+              ]
+            }
+          ],
+          "calls": []
+        },
+        {
+          "name": "list",
+          "line": 32,
+          "signature": "list(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Query() q: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": []
+            }
+          ],
+          "calls": [
+            "this.turns.list"
+          ]
+        },
+        {
+          "name": "get",
+          "line": 33,
+          "signature": "get(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "':id'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.turns.get"
+          ]
+        },
+        {
+          "name": "create",
+          "line": 34,
+          "signature": "create(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Body() input: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": []
+            }
+          ],
+          "calls": [
+            "this.turns.create"
+          ]
+        },
+        {
+          "name": "cancel",
+          "line": 35,
+          "signature": "cancel(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Body() input: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/cancel'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.turns.control"
+          ]
+        },
+        {
+          "name": "retry",
+          "line": 36,
+          "signature": "retry(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Body() input: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/retry'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.turns.control"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TopicWhiteboardQuestionController",
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "line": 39,
+      "decorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        },
+        {
+          "name": "Controller",
+          "args": [
+            "'learning/studio/topic-whiteboards/:boardId/questions'"
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "turns",
+          "type": "WhiteboardQuestionService"
+        },
+        {
+          "name": "narration",
+          "type": "WhiteboardQuestionNarrationService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "context",
+          "line": 43,
+          "signature": "context(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Query() q: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'context'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.turns.context"
+          ]
+        },
+        {
+          "name": "receipt",
+          "line": 44,
+          "signature": "receipt(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Param('key') key: string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'requests/:key'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.turns.receipt"
+          ]
+        },
+        {
+          "name": "notes",
+          "line": 45,
+          "signature": "notes(@Req() r: AuthenticatedRequest, @Param('boardId') id: string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'notes'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.turns.notes"
+          ]
+        },
+        {
+          "name": "notesIdentity",
+          "line": 46,
+          "signature": "notesIdentity(@Req() r: AuthenticatedRequest, @Param('boardId') id: string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'notes/identity'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.turns.notesIdentity"
+          ]
+        },
+        {
+          "name": "board",
+          "line": 47,
+          "signature": "board(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "':id/board'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.turns.board"
+          ]
+        },
+        {
+          "name": "speak",
+          "line": 48,
+          "signature": "speak(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Param('sceneId') scene: string, @Body() input: unknown, @Res({ passthrough: true }) response: Response)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/board/narration/:sceneId'"
+              ]
+            }
+          ],
+          "calls": []
+        },
+        {
+          "name": "list",
+          "line": 50,
+          "signature": "list(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Query() q: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": []
+            }
+          ],
+          "calls": [
+            "this.turns.list"
+          ]
+        },
+        {
+          "name": "get",
+          "line": 51,
+          "signature": "get(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "':id'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.turns.get"
+          ]
+        },
+        {
+          "name": "create",
+          "line": 52,
+          "signature": "create(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Body() input: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": []
+            }
+          ],
+          "calls": [
+            "this.turns.create"
+          ]
+        },
+        {
+          "name": "cancel",
+          "line": 53,
+          "signature": "cancel(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Body() input: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/cancel'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.turns.control"
+          ]
+        },
+        {
+          "name": "retry",
+          "line": 54,
+          "signature": "retry(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Body() input: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "':id/retry'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.turns.control"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WhiteboardQuestionService",
+      "file": "apps/api/src/modules/learning/whiteboard-question.service.ts",
+      "line": 26,
+      "decorators": [
+        {
+          "name": "Injectable",
+          "args": []
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "store",
+          "type": "InMemoryStoreService"
+        },
+        {
+          "name": "students",
+          "type": "StudentsService"
+        },
+        {
+          "name": "topics",
+          "type": "TopicWhiteboardService"
+        },
+        {
+          "name": "models",
+          "type": "XiaojiuModelsService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "original",
+          "line": 31,
+          "signature": "original(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, id: string, session: InMemoryAuthSession)",
+          "access": "private",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "context",
+          "line": 35,
+          "signature": "context(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, id: string, input: unknown, session: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.original"
+          ]
+        },
+        {
+          "name": "rows",
+          "line": 39,
+          "signature": "rows(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.select"
+          ]
+        },
+        {
+          "name": "record",
+          "line": 43,
+          "signature": "record(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, id: string, session: InMemoryAuthSession)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.original",
+            "this.store.find"
+          ]
+        },
+        {
+          "name": "view",
+          "line": 49,
+          "signature": "view(turn: WhiteboardQuestionRecord, provisional?: WhiteboardQuestionTurnView['task']): Promise<WhiteboardQuestionTurnView>",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.store.tasks.get"
+          ]
+        },
+        {
+          "name": "list",
+          "line": 57,
+          "signature": "list(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, id: string, input: unknown, session: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.original",
+            "this.rows",
+            "this.view"
+          ]
+        },
+        {
+          "name": "get",
+          "line": 62,
+          "signature": "get(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, id: string, session: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.view",
+            "this.record"
+          ]
+        },
+        {
+          "name": "receipt",
+          "line": 65,
+          "signature": "receipt(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, requestKey: string, session: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.original",
+            "this.store.find",
+            "this.view"
+          ]
+        },
+        {
+          "name": "answerContext",
+          "line": 70,
+          "signature": "answerContext(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, id: string, session: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.original",
+            "this.store.find"
+          ]
+        },
+        {
+          "name": "board",
+          "line": 77,
+          "signature": "board(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, id: string, session: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.answerContext"
+          ]
+        },
+        {
+          "name": "notes",
+          "line": 80,
+          "signature": "notes(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, session: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.original",
+            "this.rows",
+            "this.view"
+          ]
+        },
+        {
+          "name": "notesIdentity",
+          "line": 87,
+          "signature": "notesIdentity(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, session: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.original"
+          ]
+        },
+        {
+          "name": "assertNoActive",
+          "line": 91,
+          "signature": "assertNoActive(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, except?: string)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.rows",
+            "this.store.tasks.get"
+          ]
+        },
+        {
+          "name": "create",
+          "line": 98,
+          "signature": "create(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, input: unknown, session: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.original",
+            "this.store.find",
+            "this.view",
+            "this.rows",
+            "this.assertNoActive",
+            "this.models.resolve",
+            "this.store.nextId",
+            "this.store.append",
+            "this.store.enqueueTask"
+          ]
+        },
+        {
+          "name": "control",
+          "line": 135,
+          "signature": "control(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, id: string, action: 'cancel' | 'retry', input: unknown, session: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.record",
+            "this.view",
+            "this.store.tasks.get",
+            "this.models.resolve",
+            "this.assertNoActive",
+            "this.store.controlTask"
           ]
         }
       ]
@@ -35450,7 +36919,7 @@
       "file": "apps/api/src/modules/ai/classroom-reply-board.ts",
       "name": "parseClassroomReplyBoard",
       "line": 32,
-      "signature": "parseClassroomReplyBoard(value: unknown): { reply: string; evidenceIds: string[]; board: ClassroomReplyBoard }"
+      "signature": "parseClassroomReplyBoard(value: unknown, limits?: { replyMaxLength: number; formulaMaxLength: number }): { reply: string; evidenceIds: string[]; board: ClassroomReplyBoard }"
     },
     {
       "file": "apps/api/src/modules/ai/codex-command.ts",
@@ -35505,6 +36974,36 @@
       "name": "compatibleCodexCatalog",
       "line": 63,
       "signature": "compatibleCodexCatalog(sourcePath: string)"
+    },
+    {
+      "file": "apps/api/src/modules/ai/xiaojiu-text-transport.ts",
+      "name": "textProviderConfiguration",
+      "line": 13,
+      "signature": "textProviderConfiguration(configPath = resolve(codexHomeDirectory(), 'config.toml'))"
+    },
+    {
+      "file": "apps/api/src/modules/ai/xiaojiu-text-transport.ts",
+      "name": "boundedBody",
+      "line": 73,
+      "signature": "boundedBody(stream: AsyncIterable<Uint8Array>, maximum: number)"
+    },
+    {
+      "file": "apps/api/src/modules/ai/xiaojiu-text-transport.ts",
+      "name": "verifyEvent",
+      "line": 83,
+      "signature": "verifyEvent(value: unknown)"
+    },
+    {
+      "file": "apps/api/src/modules/ai/xiaojiu-text-transport.ts",
+      "name": "verifyTextResponse",
+      "line": 108,
+      "signature": "verifyTextResponse(bytes: Buffer)"
+    },
+    {
+      "file": "apps/api/src/modules/ai/xiaojiu-text-transport.ts",
+      "name": "startTextTransport",
+      "line": 123,
+      "signature": "startTextTransport(options: { upstream: string; modelId: string; timeoutMs: number; signal?: AbortSignal })"
     },
     {
       "file": "apps/api/src/modules/content/curriculum-scaffold.ts",
@@ -37307,6 +38806,66 @@
       "signature": "reconcileTopicWhiteboard(row: TopicWhiteboardDraftRecord, task: TaskRow | null | undefined)"
     },
     {
+      "file": "apps/api/src/modules/learning/whiteboard-question-access.ts",
+      "name": "readWhiteboardQuestionOriginal",
+      "line": 14,
+      "signature": "readWhiteboardQuestionOriginal(store: InMemoryStoreService, students: StudentsService, topics: TopicWhiteboardService, user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, id: string, session: InMemoryAuthSession)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/whiteboard-question-access.ts",
+      "name": "whiteboardQuestionAuthority",
+      "line": 27,
+      "signature": "whiteboardQuestionAuthority(store: InMemoryStoreService, students: StudentsService, topics: TopicWhiteboardService, turn: WhiteboardQuestionRecord)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/whiteboard-question-context.ts",
+      "name": "teachingScene",
+      "line": 13,
+      "signature": "teachingScene(scene: StudioWhiteboardScene, unit?: WhiteboardSpeechUnit, complete = true)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/whiteboard-question-context.ts",
+      "name": "anchor",
+      "line": 35,
+      "signature": "anchor(boardKind: WhiteboardQuestionBoardKind, boardId: string, value: Omit<WhiteboardQuestionAnchor, 'id'>): WhiteboardQuestionAnchor"
+    },
+    {
+      "file": "apps/api/src/modules/learning/whiteboard-question-context.ts",
+      "name": "buildWhiteboardQuestionContext",
+      "line": 40,
+      "signature": "buildWhiteboardQuestionContext(board: QuestionBoard, boardKind: WhiteboardQuestionBoardKind, unitId: string, fingerprint: string)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/whiteboard-question-context.ts",
+      "name": "parseWhiteboardQuestionReply",
+      "line": 82,
+      "signature": "parseWhiteboardQuestionReply(prepared: Pick<ReturnType<typeof buildWhiteboardQuestionContext>, 'view'>, value: unknown)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/whiteboard-question-teaching.ts",
+      "name": "parseWhiteboardQuestionTeaching",
+      "line": 14,
+      "signature": "parseWhiteboardQuestionTeaching(prepared: Pick<ReturnType<typeof buildWhiteboardQuestionContext>, 'view'>, value: unknown)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/whiteboard-question-teaching.ts",
+      "name": "whiteboardAnswerFingerprint",
+      "line": 22,
+      "signature": "whiteboardAnswerFingerprint(reply: NonNullable<WhiteboardQuestionRecord['reply']>)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/whiteboard-question-teaching.ts",
+      "name": "buildQuestionWhiteboard",
+      "line": 28,
+      "signature": "buildQuestionWhiteboard(turn: WhiteboardQuestionRecord, original: StudioWhiteboard | StudioTopicWhiteboard): StudioQuestionWhiteboard"
+    },
+    {
+      "file": "apps/api/src/modules/learning/whiteboard-question.controller.ts",
+      "name": "narrate",
+      "line": 8,
+      "signature": "narrate(service: WhiteboardQuestionNarrationService, req: AuthenticatedRequest, response: Response, kind: WhiteboardQuestionBoardKind, board: string, id: string, sceneId: string, input: unknown)"
+    },
+    {
       "file": "apps/api/src/modules/library/library-html.ts",
       "name": "cleanPaperHtml",
       "line": 4,
@@ -37369,43 +38928,43 @@
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "mergeSelections",
-      "line": 101,
+      "line": 102,
       "signature": "mergeSelections(...selections: Selection[]): Selection"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "selectionCounts",
-      "line": 108,
+      "line": 109,
       "signature": "selectionCounts(selected: Selection): PrivacyCounts"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "selectionFingerprint",
-      "line": 115,
+      "line": 116,
       "signature": "selectionFingerprint(selection: Selection, context: unknown)"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "removeSelected",
-      "line": 118,
+      "line": 119,
       "signature": "removeSelected(store: InMemoryStoreService, selection: Selection)"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "scrub",
-      "line": 132,
+      "line": 133,
       "signature": "scrub(value: unknown): unknown"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "portableRecords",
-      "line": 137,
+      "line": 138,
       "signature": "portableRecords(selected: Selection, actorId: string): Record<string, unknown[]>"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "anonymizeSharedAttribution",
-      "line": 201,
+      "line": 205,
       "signature": "anonymizeSharedAttribution(store: InMemoryStoreService, studentIds: string[], actorId: string)"
     },
     {
@@ -37528,601 +39087,607 @@
       "name": "users",
       "type": "InMemoryUserAccount",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 358
+      "line": 359
     },
     {
       "name": "paperPublications",
       "type": "PaperPublication",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 359
+      "line": 360
     },
     {
       "name": "libraryBookmarks",
       "type": "LibraryBookmark",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 360
+      "line": 361
     },
     {
       "name": "paperPracticeSessions",
       "type": "PaperPracticeSessionRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 361
+      "line": 362
     },
     {
       "name": "paperPracticeCommands",
       "type": "PaperPracticeCommandRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 362
+      "line": 363
     },
     {
       "name": "practiceSessions",
       "type": "PracticeSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 363
+      "line": 364
     },
     {
       "name": "practiceAttempts",
       "type": "PracticeAttempt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 364
+      "line": 365
     },
     {
       "name": "practiceHints",
       "type": "PracticeHint",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 365
+      "line": 366
     },
     {
       "name": "practiceScoringRevisions",
       "type": "ScoringRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 366
+      "line": 367
     },
     {
       "name": "teacherAssignments",
       "type": "TeacherStudentAssignment",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 367
+      "line": 368
     },
     {
       "name": "evidenceFeedback",
       "type": "EvidenceFeedback",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 368
+      "line": 369
     },
     {
       "name": "importFiles",
       "type": "ImportFile",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 369
+      "line": 370
     },
     {
       "name": "processingArtifacts",
       "type": "ProcessingArtifact",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 370
+      "line": 371
     },
     {
       "name": "importPages",
       "type": "ImportPageEvidenceRef",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 371
+      "line": 372
     },
     {
       "name": "guidancePlanRevisions",
       "type": "GuidancePlanRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 372
+      "line": 373
     },
     {
       "name": "studentLearningAccess",
       "type": "StudentLearningAccess",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 373
+      "line": 374
     },
     {
       "name": "studentLearningCodes",
       "type": "StudentLearningCode",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 374
+      "line": 375
     },
     {
       "name": "studentAccessRevisions",
       "type": "StudentAccessRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 375
+      "line": 376
     },
     {
       "name": "studentProgressProposals",
       "type": "StudentProgressProposal",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 376
+      "line": 377
     },
     {
       "name": "privacyRequests",
       "type": "PrivacyReceipt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 377
+      "line": 378
     },
     {
       "name": "studentMedia",
       "type": "StudentMedia",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 378
+      "line": 379
     },
     {
       "name": "sessions",
       "type": "InMemoryAuthSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 379
+      "line": 380
     },
     {
       "name": "students",
       "type": "StudentProfile",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 380
+      "line": 381
     },
     {
       "name": "bindings",
       "type": "ParentStudentBinding",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 381
+      "line": 382
     },
     {
       "name": "studentInvitations",
       "type": "StudentInvitation",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 382
+      "line": 383
     },
     {
       "name": "subjectEnrollments",
       "type": "SubjectEnrollment",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 383
+      "line": 384
     },
     {
       "name": "textbookVolumes",
       "type": "TextbookVolume",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 384
+      "line": 385
     },
     {
       "name": "textbookUnits",
       "type": "TextbookUnit",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 385
+      "line": 386
     },
     {
       "name": "textbookLessons",
       "type": "TextbookLesson",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 386
+      "line": 387
     },
     {
       "name": "knowledgePoints",
       "type": "KnowledgePoint",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 387
+      "line": 388
     },
     {
       "name": "questions",
       "type": "Question",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 388
+      "line": 389
     },
     {
       "name": "questionDocuments",
       "type": "QuestionDocument",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 389
+      "line": 390
     },
     {
       "name": "questionAnswerSchemas",
       "type": "QuestionAnswerSchema",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 390
+      "line": 391
     },
     {
       "name": "questionSources",
       "type": "QuestionSourceRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 391
+      "line": 392
     },
     {
       "name": "questionImportJobs",
       "type": "QuestionImportJob",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 392
+      "line": 393
     },
     {
       "name": "questionImportRecords",
       "type": "QuestionImportRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 393
+      "line": 394
     },
     {
       "name": "assessments",
       "type": "AssessmentSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 394
+      "line": 395
     },
     {
       "name": "assessmentAnswers",
       "type": "AssessmentAnswerRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 395
+      "line": 396
     },
     {
       "name": "assessmentResults",
       "type": "AssessmentResult",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 396
+      "line": 397
     },
     {
       "name": "studyPlans",
       "type": "StudyPlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 397
+      "line": 398
     },
     {
       "name": "missions",
       "type": "DailyMissionInternal",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 398
+      "line": 399
     },
     {
       "name": "missionAnswers",
       "type": "MissionAnswerRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 399
+      "line": 400
     },
     {
       "name": "assistantSessions",
       "type": "AssistantSession & { ownerUserId: string; scopeKey?: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 400
+      "line": 401
     },
     {
       "name": "assistantMessages",
       "type": "AssistantMessage",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 401
+      "line": 402
     },
     {
       "name": "assistantTurns",
       "type": "AssistantTurnRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 402
+      "line": 403
     },
     {
       "name": "guidanceModelSuggestions",
       "type": "GuidanceModelSuggestionRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 403
+      "line": 404
     },
     {
       "name": "aiInsights",
       "type": "AIInsightRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 404
+      "line": 405
     },
     {
       "name": "events",
       "type": "Record<string, unknown>",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 405
+      "line": 406
     },
     {
       "name": "knowledgeAtoms",
       "type": "KnowledgeAtom",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 406
+      "line": 407
     },
     {
       "name": "learningScopes",
       "type": "LearningScope",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 407
+      "line": 408
     },
     {
       "name": "measurementItems",
       "type": "MeasurementItem",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 408
+      "line": 409
     },
     {
       "name": "measurementCandidates",
       "type": "MeasurementContentCandidate",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 409
+      "line": 410
     },
     {
       "name": "mistakeNotebookEntries",
       "type": "MistakeNotebookEntry",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 410
+      "line": 411
     },
     {
       "name": "textbookAtomMappings",
       "type": "TextbookAtomMapping",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 411
+      "line": 412
     },
     {
       "name": "curriculumRevisions",
       "type": "CurriculumRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 412
+      "line": 413
     },
     {
       "name": "diagnosticSessions",
       "type": "DiagnosticSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 413
+      "line": 414
     },
     {
       "name": "diagnosticBlueprints",
       "type": "DiagnosticBlueprintReservation",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 414
+      "line": 415
     },
     {
       "name": "diagnosticResponses",
       "type": "DiagnosticResponse",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 415
+      "line": 416
     },
     {
       "name": "diagnosticHypotheses",
       "type": "DiagnosticHypothesis",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 416
+      "line": 417
     },
     {
       "name": "diagnosticPlans",
       "type": "DiagnosticGuidancePlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 417
+      "line": 418
     },
     {
       "name": "reviewTasks",
       "type": "ReviewTask",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 418
+      "line": 419
     },
     {
       "name": "scoringRevisions",
       "type": "ScoringRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 419
+      "line": 420
     },
     {
       "name": "diagnosticHints",
       "type": "{ id: string; sessionId: string; itemId: string; level: number; at: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 420
+      "line": 421
     },
     {
       "name": "diagnosticReports",
       "type": "{ id: string; sessionId: string; version: number; createdAt: string; report: DiagnosticReport; reanalysis?: { actorId: string; requestKey: string; inputHash: string } }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 421
+      "line": 422
     },
     {
       "name": "diagnosticDrafts",
       "type": "{ id: string; sessionId: string; itemId: string; answer: unknown; updatedAt: string } & AnswerDraftMetadata",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 423
+      "line": 424
     },
     {
       "name": "gespLearningScopes",
       "type": "GespLearningScope",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 424
+      "line": 425
     },
     {
       "name": "gespLearningScopeRevisions",
       "type": "GespLearningScopeRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 425
+      "line": 426
     },
     {
       "name": "gespCodeSubmissions",
       "type": "GespCodeSubmissionReceipt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 426
+      "line": 427
     },
     {
       "name": "gespProbeSubmissions",
       "type": "GespProbeSubmissionReceipt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 427
+      "line": 428
     },
     {
       "name": "gespHintEvents",
       "type": "GespHintEvent",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 428
+      "line": 429
     },
     {
       "name": "gespGuidancePlans",
       "type": "GespGuidancePlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 429
+      "line": 430
     },
     {
       "name": "gespGuidancePlanRevisions",
       "type": "GespGuidancePlanRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 430
+      "line": 431
     },
     {
       "name": "gespReviewTasks",
       "type": "GespReviewTask",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 431
+      "line": 432
     },
     {
       "name": "gespTaskReviews",
       "type": "GespTaskReview",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 432
+      "line": 433
     },
     {
       "name": "gespTaskReviewRevisions",
       "type": "GespTaskReviewRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 433
+      "line": 434
     },
     {
       "name": "studioCourses",
       "type": "StudioCourse",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 434
+      "line": 435
     },
     {
       "name": "classroomSessions",
       "type": "ClassroomSessionRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 435
+      "line": 436
     },
     {
       "name": "classroomTurns",
       "type": "ClassroomTurnRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 436
+      "line": 437
+    },
+    {
+      "name": "whiteboardQuestionTurns",
+      "type": "WhiteboardQuestionRecord",
+      "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
+      "line": 438
     },
     {
       "name": "classroomCodeDrafts",
       "type": "ClassroomCodeDraftRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 437
+      "line": 439
     },
     {
       "name": "classroomVisuals",
       "type": "ClassroomVisualRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 438
+      "line": 440
     },
     {
       "name": "courseProjects",
       "type": "CourseProjectRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 439
+      "line": 441
     },
     {
       "name": "projectAssetUploads",
       "type": "ProjectUploadRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 440
+      "line": 442
     },
     {
       "name": "projectAssets",
       "type": "ProjectAssetRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 441
+      "line": 443
     },
     {
       "name": "sourceCourses",
       "type": "SourceCourseRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 442
+      "line": 444
     },
     {
       "name": "sourceCourseChecks",
       "type": "SourceCourseCheckRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 443
+      "line": 445
     },
     {
       "name": "sourceCourseCheckPublications",
       "type": "SourceCourseCheckPublication",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 444
+      "line": 446
     },
     {
       "name": "studioTopicWhiteboardDrafts",
       "type": "TopicWhiteboardDraftRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 445
+      "line": 447
     },
     {
       "name": "studioTopicWhiteboards",
       "type": "TopicWhiteboardRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 446
+      "line": 448
     },
     {
       "name": "studioTopicWhiteboardVisuals",
       "type": "TopicVisualRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 447
+      "line": 449
     },
     {
       "name": "sourceCourseStages",
       "type": "SourceCourseStageRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 448
+      "line": 450
     },
     {
       "name": "studioActivities",
       "type": "StudioActivity",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 449
+      "line": 451
     },
     {
       "name": "studioStudyPlans",
       "type": "StudioStudyPlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 450
+      "line": 452
     },
     {
       "name": "studioSourceMaterials",
       "type": "StudioSourceMaterial",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 451
+      "line": 453
     },
     {
       "name": "studioMaterialUploads",
       "type": "StudioMaterialUploadRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 452
+      "line": 454
     },
     {
       "name": "studioMaterialAssets",
       "type": "StudioMaterialAssetRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 453
+      "line": 455
     },
     {
       "name": "studioOriginalRepairs",
       "type": "StudioOriginalRepairRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 454
+      "line": 456
     },
     {
       "name": "studioLearningPacks",
       "type": "StudioLearningPack",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 455
+      "line": 457
     },
     {
       "name": "studioWhiteboards",
       "type": "StudioWhiteboard",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 456
+      "line": 458
     },
     {
       "name": "studioConnectors",
       "type": "StudioConnector & { encryptedFeedUrl: string; requestKey?: string; requestHash?: string; createdBy?: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 457
+      "line": 459
     },
     {
       "name": "studioScheduleEvents",
       "type": "StudioScheduleEvent & { createdBy?: string; requestHash?: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 458
+      "line": 460
     }
   ],
   "contractTypes": [
@@ -49631,9 +51196,42 @@
       ]
     },
     {
-      "name": "StudioWhiteboardScene",
+      "name": "StudioWhiteboardReveal",
       "file": "packages/contracts/src/studio.ts",
       "line": 225,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "version",
+          "optional": false,
+          "type": "'whiteboard-reveal-v1'"
+        },
+        {
+          "name": "sourceText",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "bulletEnds",
+          "optional": false,
+          "type": "number[]"
+        },
+        {
+          "name": "exhibits",
+          "optional": false,
+          "type": "Array<{ at: number; rowEnds?: number[] }>"
+        },
+        {
+          "name": "diagramAt",
+          "optional": true,
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "StudioWhiteboardScene",
+      "file": "packages/contracts/src/studio.ts",
+      "line": 227,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49677,6 +51275,21 @@
           "type": "StudioWhiteboardExhibit | null"
         },
         {
+          "name": "exhibits",
+          "optional": true,
+          "type": "StudioWhiteboardExhibit[]"
+        },
+        {
+          "name": "diagram",
+          "optional": true,
+          "type": "{ kind: 'venn' | 'flow'; title: string; labels: string[] }"
+        },
+        {
+          "name": "reveal",
+          "optional": true,
+          "type": "StudioWhiteboardReveal"
+        },
+        {
           "name": "figure",
           "optional": true,
           "type": "StudioWhiteboardFigure"
@@ -49701,7 +51314,7 @@
     {
       "name": "StudioWhiteboard",
       "file": "packages/contracts/src/studio.ts",
-      "line": 240,
+      "line": 245,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49779,14 +51392,14 @@
     {
       "name": "StudioConnectorKind",
       "file": "packages/contracts/src/studio.ts",
-      "line": 257,
+      "line": 262,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "StudioConnector",
       "file": "packages/contracts/src/studio.ts",
-      "line": 258,
+      "line": 263,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49854,7 +51467,7 @@
     {
       "name": "StudioScheduleEvent",
       "file": "packages/contracts/src/studio.ts",
-      "line": 273,
+      "line": 278,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49952,7 +51565,7 @@
     {
       "name": "StudioIntegrationOverview",
       "file": "packages/contracts/src/studio.ts",
-      "line": 294,
+      "line": 299,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49970,7 +51583,7 @@
     {
       "name": "StudioSpeechVoice",
       "file": "packages/contracts/src/studio.ts",
-      "line": 299,
+      "line": 304,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -50003,7 +51616,7 @@
     {
       "name": "StudioSpeechCapabilities",
       "file": "packages/contracts/src/studio.ts",
-      "line": 301,
+      "line": 306,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -50036,7 +51649,7 @@
     {
       "name": "StudioOverview",
       "file": "packages/contracts/src/studio.ts",
-      "line": 309,
+      "line": 314,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -50561,6 +52174,272 @@
       ]
     },
     {
+      "name": "WhiteboardQuestionBoardKind",
+      "file": "packages/contracts/src/whiteboard-question.ts",
+      "line": 6,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "WhiteboardQuestionIntent",
+      "file": "packages/contracts/src/whiteboard-question.ts",
+      "line": 8,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "WhiteboardQuestionAnchor",
+      "file": "packages/contracts/src/whiteboard-question.ts",
+      "line": 9,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "id",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "sceneId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "unitId",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "optional": true,
+          "type": "{ materialId: string; page: number; label: string }"
+        }
+      ]
+    },
+    {
+      "name": "WhiteboardQuestionPosition",
+      "file": "packages/contracts/src/whiteboard-question.ts",
+      "line": 13,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "presentationVersion",
+          "optional": false,
+          "type": "'whiteboard-speech-v1'"
+        },
+        {
+          "name": "fingerprint",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "sceneId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "unitId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "sentenceText",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "bookmark",
+          "optional": true,
+          "type": "{ progress: number; audioTime: number | null; mode: 'text' | 'cloud'; voice: string; speed: number;\r\n    camera?: { zoom: number; x: number; y: number; follow: boolean } }"
+        }
+      ]
+    },
+    {
+      "name": "WhiteboardQuestionTurnView",
+      "file": "packages/contracts/src/whiteboard-question.ts",
+      "line": 18,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "id",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "boardKind",
+          "optional": false,
+          "type": "WhiteboardQuestionBoardKind"
+        },
+        {
+          "name": "boardId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "requestKey",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "message",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "intent",
+          "optional": false,
+          "type": "WhiteboardQuestionIntent"
+        },
+        {
+          "name": "modelId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "modelName",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "optional": false,
+          "type": "WhiteboardQuestionPosition"
+        },
+        {
+          "name": "revision",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "createdAt",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "updatedAt",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "status",
+          "optional": false,
+          "type": "'queued' | 'running' | 'completed' | 'failed' | 'cancelled' | 'cancelling'"
+        },
+        {
+          "name": "reply",
+          "optional": false,
+          "type": "{ text: string; anchors: WhiteboardQuestionAnchor[]; modelId: string; modelName: string; createdAt: string;\r\n    board?: ClassroomReplyBoard; speech?: ClassroomSpeechTrack; fingerprint?: string } | null"
+        },
+        {
+          "name": "task",
+          "optional": false,
+          "type": "{ state: string; generation: number; version: number; errorCode: string | null } | null"
+        }
+      ]
+    },
+    {
+      "name": "StudioQuestionWhiteboard",
+      "file": "packages/contracts/src/whiteboard-question.ts",
+      "line": 26,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "WhiteboardQuestionContextView",
+      "file": "packages/contracts/src/whiteboard-question.ts",
+      "line": 32,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "boardKind",
+          "optional": false,
+          "type": "WhiteboardQuestionBoardKind"
+        },
+        {
+          "name": "boardId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "contextVersion",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "optional": false,
+          "type": "WhiteboardQuestionPosition"
+        },
+        {
+          "name": "anchors",
+          "optional": false,
+          "type": "WhiteboardQuestionAnchor[]"
+        }
+      ]
+    },
+    {
+      "name": "WhiteboardTeachingNotes",
+      "file": "packages/contracts/src/whiteboard-question.ts",
+      "line": 36,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "format",
+          "optional": false,
+          "type": "'studyagent-whiteboard-notes-v1'"
+        },
+        {
+          "name": "exportedAt",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "ownerId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "boardKind",
+          "optional": false,
+          "type": "WhiteboardQuestionBoardKind"
+        },
+        {
+          "name": "boardId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "definitionHash",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "original",
+          "optional": false,
+          "type": "StudioWhiteboard | StudioTopicWhiteboard"
+        },
+        {
+          "name": "turns",
+          "optional": false,
+          "type": "Array<WhiteboardQuestionTurnView & { originalStatus: 'current' | 'archived' }>"
+        },
+        {
+          "name": "notices",
+          "optional": false,
+          "type": "string[]"
+        }
+      ]
+    },
+    {
       "name": "WhiteboardSpeed",
       "file": "packages/contracts/src/whiteboard-speech.ts",
       "line": 6,
@@ -51047,6 +52926,8 @@
     "apps/api/src/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts",
     "apps/api/src/infrastructure/topic-whiteboard-visual-recovery.integration.test.ts",
     "apps/api/src/infrastructure/topic-whiteboard-visual-storage.integration.test.ts",
+    "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts",
+    "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts",
     "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
     "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
     "apps/api/src/modules/ai/classroom-image.service.test.ts",
@@ -51058,6 +52939,7 @@
     "apps/api/src/modules/ai/speech.service.test.ts",
     "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
     "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
+    "apps/api/src/modules/ai/xiaojiu-text-transport.test.ts",
     "apps/api/src/modules/content/open-resource-registry.test.ts",
     "apps/api/src/modules/diagnostics/adaptive-routing.integration.test.ts",
     "apps/api/src/modules/diagnostics/adaptive-routing.test.ts",
@@ -51162,6 +53044,10 @@
     "apps/api/src/modules/learning/topic-whiteboard.integration.test.ts",
     "apps/api/src/modules/learning/whiteboard-formula.test.ts",
     "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+    "apps/api/src/modules/learning/whiteboard-question-context.test.ts",
+    "apps/api/src/modules/learning/whiteboard-question-notes.test.ts",
+    "apps/api/src/modules/learning/whiteboard-question-teaching.test.ts",
+    "apps/api/src/modules/learning/whiteboard-question.integration.test.ts",
     "apps/api/src/modules/learning/whiteboard-speech.test.ts",
     "apps/api/src/modules/learning/whiteboard-table.test.ts",
     "apps/api/src/modules/learning/whiteboard-webm.test.ts",
@@ -51214,6 +53100,7 @@
     "tests/e2e/studio.spec.ts",
     "tests/e2e/topic-whiteboard.spec.ts",
     "tests/e2e/whiteboard-media.spec.ts",
+    "tests/e2e/whiteboard-questions.spec.ts",
     "tests/e2e/whiteboard-settings.spec.ts",
     "tests/e2e/workspace.spec.ts"
   ]

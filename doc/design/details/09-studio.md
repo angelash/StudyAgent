@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`9004ba6825165946f065b8758724e2bbb2cf170d`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`13cd1f0036710adc0ca31fb22defe30653e118e1`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`、`/studio/whiteboards`。
 
@@ -1239,3 +1239,98 @@
 - [scripts/processing/file_leases.py](../../../scripts/processing/file_leases.py)
 - [apps/web/app/studio/source-courses/pdf-material.tsx](../../../apps/web/app/studio/source-courses/pdf-material.tsx)
 - [tests/e2e/pdf-material.spec.ts](../../../tests/e2e/pdf-material.spec.ts)
+
+## STUDIO-33 原句白板插问、冻结模型与完整输入恢复
+
+**输入**：两种原白板身份、实际原句与版本、五种教学意图、所选模型、完整问题和稳定请求键。
+
+**处理与实现**：服务端从已保存原件冻结当前句及已讲知识块；队列保留原模型、完整输入、租约与取消代次，发布前复核原登录、孩子授权及原稿摘要。小九纯文本CLI使用一次性空目录和任务级Responses转发，实际上游无工具，拒绝工具响应而非只依赖提示。未发送输入与原请求分开恢复，分页历史、失败原重试、返回原句和相机书签由真实面板承载；关闭手机阅读层保留同一输入组件。
+
+**输出**：可恢复原句问答、来源锚点、实际模型和明确任务状态。
+
+**状态与持久化**：`whiteboardQuestionTurns`、`studioWhiteboards`、`studioTopicWhiteboards`
+
+**权限、失败与边界**：不把插问、AI回答或回看当首答、掌握或根因测量；原稿变化不将旧回答带入新历史。21模型的合成协议验证不等于全部真实供应商或教学质量验证。完整PG恢复、整站、精确CI和运行交付按当批证据分别核对。
+
+**关联接口**：
+
+- `GET /api/learning/studio/whiteboards/:boardId/questions/context` → `GuidanceWhiteboardQuestionController.context`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:25](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L25)。
+- `GET /api/learning/studio/whiteboards/:boardId/questions/requests/:key` → `GuidanceWhiteboardQuestionController.receipt`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:26](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L26)。
+- `GET /api/learning/studio/whiteboards/:boardId/questions` → `GuidanceWhiteboardQuestionController.list`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:32](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L32)。
+- `GET /api/learning/studio/whiteboards/:boardId/questions/:id` → `GuidanceWhiteboardQuestionController.get`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:33](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L33)。
+- `POST /api/learning/studio/whiteboards/:boardId/questions` → `GuidanceWhiteboardQuestionController.create`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:34](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L34)。
+- `POST /api/learning/studio/whiteboards/:boardId/questions/:id/cancel` → `GuidanceWhiteboardQuestionController.cancel`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:35](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L35)。
+- `POST /api/learning/studio/whiteboards/:boardId/questions/:id/retry` → `GuidanceWhiteboardQuestionController.retry`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:36](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L36)。
+- `GET /api/learning/studio/topic-whiteboards/:boardId/questions/context` → `TopicWhiteboardQuestionController.context`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:43](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L43)。
+- `GET /api/learning/studio/topic-whiteboards/:boardId/questions/requests/:key` → `TopicWhiteboardQuestionController.receipt`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:44](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L44)。
+- `GET /api/learning/studio/topic-whiteboards/:boardId/questions` → `TopicWhiteboardQuestionController.list`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:50](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L50)。
+- `GET /api/learning/studio/topic-whiteboards/:boardId/questions/:id` → `TopicWhiteboardQuestionController.get`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:51](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L51)。
+- `POST /api/learning/studio/topic-whiteboards/:boardId/questions` → `TopicWhiteboardQuestionController.create`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:52](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L52)。
+- `POST /api/learning/studio/topic-whiteboards/:boardId/questions/:id/cancel` → `TopicWhiteboardQuestionController.cancel`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:53](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L53)。
+- `POST /api/learning/studio/topic-whiteboards/:boardId/questions/:id/retry` → `TopicWhiteboardQuestionController.retry`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:54](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L54)。
+
+**服务方法**：
+
+- `WhiteboardQuestionService.context`；[apps/api/src/modules/learning/whiteboard-question.service.ts:35](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L35)。
+- `WhiteboardQuestionService.receipt`；[apps/api/src/modules/learning/whiteboard-question.service.ts:65](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L65)。
+- `WhiteboardQuestionService.list`；[apps/api/src/modules/learning/whiteboard-question.service.ts:57](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L57)。
+- `WhiteboardQuestionService.get`；[apps/api/src/modules/learning/whiteboard-question.service.ts:62](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L62)。
+- `WhiteboardQuestionService.create`；[apps/api/src/modules/learning/whiteboard-question.service.ts:98](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L98)。
+- `WhiteboardQuestionService.control`；[apps/api/src/modules/learning/whiteboard-question.service.ts:135](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L135)。
+
+**补充实现文件**：
+
+- [packages/contracts/src/whiteboard-question.ts](../../../packages/contracts/src/whiteboard-question.ts)
+- [apps/api/src/modules/learning/whiteboard-question-worker.service.ts](../../../apps/api/src/modules/learning/whiteboard-question-worker.service.ts)
+- [apps/api/src/modules/learning/whiteboard-question-context.ts](../../../apps/api/src/modules/learning/whiteboard-question-context.ts)
+- [apps/api/src/modules/learning/whiteboard-question-access.ts](../../../apps/api/src/modules/learning/whiteboard-question-access.ts)
+- [apps/api/src/modules/learning/whiteboard-question.integration.test.ts](../../../apps/api/src/modules/learning/whiteboard-question.integration.test.ts)
+- [apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts](../../../apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts)
+- [apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts](../../../apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts)
+- [scripts/qa/run-whiteboard-questions-postgres.cjs](../../../scripts/qa/run-whiteboard-questions-postgres.cjs)
+- [apps/api/src/modules/ai/xiaojiu-text-transport.ts](../../../apps/api/src/modules/ai/xiaojiu-text-transport.ts)
+- [apps/api/src/modules/ai/xiaojiu-text-transport.test.ts](../../../apps/api/src/modules/ai/xiaojiu-text-transport.test.ts)
+- [apps/web/app/studio/whiteboard-questions.tsx](../../../apps/web/app/studio/whiteboard-questions.tsx)
+- [tests/e2e/whiteboard-questions.spec.ts](../../../tests/e2e/whiteboard-questions.spec.ts)
+
+## STUDIO-34 原回答补充板书、显式声音与完整教学笔记
+
+**输入**：已发布回答指纹、原句/原白板关系、真实音色、完整句计划及笔记格式。
+
+**处理与实现**：一个回答生成独立受鉴权补充来源，保留唯一原旁白；要点、受控图、整行表格及多个完整公式绑定真实句边界，共用原播放器及声画时间表。显式进入和播放，返回恢复原句/进度/声音时间/相机。HTTP朗读在供应商前后复核身份；PNG、含声WebM与SRT复用真实解码时间表。完整JSON/Markdown笔记包含所有已保存问题，下载后段再次核对owner及原件摘要，关闭或撤权丢弃迟到结果。
+
+**输出**：独立AI补充讲解、受控图表公式、逐句音轨、私有深链、完整笔记和可返回原稿。
+
+**状态与持久化**：`whiteboardQuestionTurns`、`studioWhiteboards`、`studioTopicWhiteboards`
+
+**权限、失败与边界**：旧纯文字回答保留文字与收听，不编造板书；超过向量引擎预算的公式完整显示原式，不冒称全部向量排版。补充生图候选/采用/原图/版本绑定仍待实现；声音实测只是一份匿名回答的一句，不能代替听感、全模型、整站和原站像素验证。
+
+**关联接口**：
+
+- `GET /api/learning/studio/whiteboards/:boardId/questions/:id/board` → `GuidanceWhiteboardQuestionController.board`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:29](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L29)。
+- `POST /api/learning/studio/whiteboards/:boardId/questions/:id/board/narration/:sceneId` → `GuidanceWhiteboardQuestionController.speak`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:30](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L30)。
+- `GET /api/learning/studio/whiteboards/:boardId/questions/notes` → `GuidanceWhiteboardQuestionController.notes`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:27](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L27)。
+- `GET /api/learning/studio/whiteboards/:boardId/questions/notes/identity` → `GuidanceWhiteboardQuestionController.notesIdentity`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:28](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L28)。
+- `GET /api/learning/studio/topic-whiteboards/:boardId/questions/:id/board` → `TopicWhiteboardQuestionController.board`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:47](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L47)。
+- `POST /api/learning/studio/topic-whiteboards/:boardId/questions/:id/board/narration/:sceneId` → `TopicWhiteboardQuestionController.speak`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:48](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L48)。
+- `GET /api/learning/studio/topic-whiteboards/:boardId/questions/notes` → `TopicWhiteboardQuestionController.notes`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:45](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L45)。
+- `GET /api/learning/studio/topic-whiteboards/:boardId/questions/notes/identity` → `TopicWhiteboardQuestionController.notesIdentity`；[apps/api/src/modules/learning/whiteboard-question.controller.ts:46](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L46)。
+
+**服务方法**：
+
+- `WhiteboardQuestionService.board`；[apps/api/src/modules/learning/whiteboard-question.service.ts:77](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L77)。
+- `WhiteboardQuestionService.notes`；[apps/api/src/modules/learning/whiteboard-question.service.ts:80](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L80)。
+- `WhiteboardQuestionService.notesIdentity`；[apps/api/src/modules/learning/whiteboard-question.service.ts:87](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L87)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/learning/whiteboard-question-teaching.ts](../../../apps/api/src/modules/learning/whiteboard-question-teaching.ts)
+- [apps/api/src/modules/learning/whiteboard-question-narration.service.ts](../../../apps/api/src/modules/learning/whiteboard-question-narration.service.ts)
+- [apps/api/src/modules/learning/whiteboard-question-teaching.test.ts](../../../apps/api/src/modules/learning/whiteboard-question-teaching.test.ts)
+- [apps/api/src/modules/learning/whiteboard-question-notes.test.ts](../../../apps/api/src/modules/learning/whiteboard-question-notes.test.ts)
+- [apps/web/app/studio/whiteboard-question-notes.ts](../../../apps/web/app/studio/whiteboard-question-notes.ts)
+- [apps/web/app/studio/whiteboard-original.ts](../../../apps/web/app/studio/whiteboard-original.ts)
+- [apps/web/app/studio/whiteboard-frame.ts](../../../apps/web/app/studio/whiteboard-frame.ts)
+- [apps/web/app/studio/whiteboard-session.tsx](../../../apps/web/app/studio/whiteboard-session.tsx)
+- [apps/web/app/studio/whiteboard-reading-panel.tsx](../../../apps/web/app/studio/whiteboard-reading-panel.tsx)
+- [tests/e2e/whiteboard-questions.spec.ts](../../../tests/e2e/whiteboard-questions.spec.ts)
