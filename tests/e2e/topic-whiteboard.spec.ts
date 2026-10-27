@@ -145,9 +145,13 @@ test('topic-formula: actual shared image and fraction/root/alignment vector vide
   const crops = await page.evaluate(() => (window as any).formulaVideoCrops as Array<{ time: number; naturalWidth: number; sourceRight: number; scale: number; left: number; top: number; right: number; bottom: number }>);
   writeFileSync(join(directory, 'topic-formula-readable-video-crops.json'), JSON.stringify({ crops }, null, 2) + '\n');
   const widths = [...new Set(crops.map(crop => crop.naturalWidth))]; expect(widths).toHaveLength(3);
+  const decodedFrames = JSON.parse(execFileSync(process.env.STUDY_FFPROBE ?? 'ffprobe', ['-v', 'error', '-select_streams', 'v:0', '-show_frames', '-show_entries', 'frame=best_effort_timestamp_time', '-of', 'json', video], { windowsHide: true, encoding: 'utf8' })).frames as Array<{ best_effort_timestamp_time: string }>;
+  const timestamps = decodedFrames.map(frame => Number(frame.best_effort_timestamp_time));
+  expect(timestamps.length).toBeGreaterThan(3); expect(timestamps.every((time, index) => Number.isFinite(time) && time >= 0 && (!index || time >= timestamps[index - 1]))).toBe(true);
   const receipts: unknown[] = [];
-  for (const [name, time, source] of [['first', .2, 0], ['aligned', 4.2, 1], ['last', 11.9, 2]] as const) {
-    const frame = spawnSync(process.env.STUDY_FFMPEG ?? 'ffmpeg', ['-v', 'error', '-ss', String(time), '-i', video, '-frames:v', '1', '-f', 'image2pipe', '-vcodec', 'png', '-'], { windowsHide: true, maxBuffer: 8 * 1024 * 1024 });
+  for (const [name, requestedTime, source] of [['first', .2, 0], ['aligned', 4.2, 1], ['last', 11.9, 2]] as const) {
+    const frameIndex = timestamps.findIndex(time => time >= requestedTime); expect(frameIndex).toBeGreaterThanOrEqual(0); const time = timestamps[frameIndex];
+    const frame = spawnSync(process.env.STUDY_FFMPEG ?? 'ffmpeg', ['-v', 'error', '-i', video, '-vf', 'select=eq(n\\,' + frameIndex + ')', '-frames:v', '1', '-f', 'image2pipe', '-vcodec', 'png', '-'], { windowsHide: true, maxBuffer: 8 * 1024 * 1024 });
     expect(frame.status).toBe(0); const decoded = await sharp(frame.stdout).removeAlpha().raw().toBuffer({ resolveWithObject: true }); let ink = 0;
     // Measure actual vector source crops, then independently decode glyph ink
     // inside that image's complete visible bounds; notes cannot satisfy this.
@@ -155,7 +159,8 @@ test('topic-formula: actual shared image and fraction/root/alignment vector vide
     expect(region, name + ' complete vector bounds').toBeTruthy();
     for (let y = Math.ceil(region.top); y < Math.floor(region.bottom); y++) for (let x = Math.ceil(region.left); x < Math.floor(region.right); x++) { const offset = (y * 1280 + x) * 3;
       if (decoded.data[offset] < 120 && decoded.data[offset + 1] < 130 && decoded.data[offset + 2] < 120) ink++; }
-    expect(ink).toBeGreaterThan(100); receipts.push({ name, time, ink }); writeFileSync(join(directory, 'topic-formula-video-' + name + '.png'), frame.stdout);
+    writeFileSync(join(directory, 'topic-formula-video-' + name + '.png'), frame.stdout);
+    receipts.push({ name, requestedTime, time, frameIndex, region, ink }); writeFileSync(join(directory, 'topic-formula-frame-measurements.json'), JSON.stringify(receipts, null, 2) + '\n'); expect(ink).toBeGreaterThan(100);
   }
   writeFileSync(join(directory, 'topic-formula-video-probe.json'), JSON.stringify({ probe, frames: receipts }, null, 2) + '\n');
   const long = crops.filter(crop => crop.naturalWidth > 1500); expect(long.length).toBeGreaterThan(0);

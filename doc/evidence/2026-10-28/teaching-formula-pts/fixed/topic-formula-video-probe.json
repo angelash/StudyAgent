@@ -1,0 +1,172 @@
+{
+  "probe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "vp9",
+        "codec_long_name": "Google VP9",
+        "profile": "Profile 0",
+        "codec_type": "video",
+        "codec_tag_string": "[0][0][0][0]",
+        "codec_tag": "0x0000",
+        "width": 1280,
+        "height": 720,
+        "coded_width": 1280,
+        "coded_height": 720,
+        "has_b_frames": 0,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "16:9",
+        "pix_fmt": "yuv420p",
+        "level": -99,
+        "color_range": "pc",
+        "color_space": "bt709",
+        "color_transfer": "iec61966-2-1",
+        "color_primaries": "bt709",
+        "refs": 1,
+        "r_frame_rate": "60/1",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/1000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "eng",
+          "alpha_mode": "1"
+        }
+      },
+      {
+        "index": 1,
+        "codec_name": "opus",
+        "codec_long_name": "Opus (Opus Interactive Audio Codec)",
+        "codec_type": "audio",
+        "codec_tag_string": "[0][0][0][0]",
+        "codec_tag": "0x0000",
+        "sample_fmt": "fltp",
+        "sample_rate": "48000",
+        "channels": 2,
+        "channel_layout": "stereo",
+        "bits_per_sample": 0,
+        "initial_padding": 0,
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/1000",
+        "start_pts": 35,
+        "start_time": "0.035000",
+        "extradata_size": 19,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "eng"
+        }
+      }
+    ],
+    "format": {
+      "filename": "F:\\workspace\\github\\StudyAgent-tt-json\\test-results\\browser-product-acceptance\\.playwright-artifacts-0\\99722cd8-ef39-468d-be35-45e7bc166cfa",
+      "nb_streams": 2,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "matroska,webm",
+      "format_long_name": "Matroska / WebM",
+      "start_time": "0.000000",
+      "duration": "12.120000",
+      "size": "2120456",
+      "bit_rate": "1399640",
+      "probe_score": 100,
+      "tags": {
+        "encoder": "Chrome"
+      }
+    }
+  },
+  "frames": [
+    {
+      "name": "first",
+      "requestedTime": 0.2,
+      "time": 0.247,
+      "frameIndex": 6,
+      "region": {
+        "time": 0.2539000000357628,
+        "naturalWidth": 198,
+        "sourceRight": 198,
+        "scale": 1,
+        "left": 241,
+        "top": 265.6087017059326,
+        "right": 439,
+        "bottom": 338.6087017059326
+      },
+      "ink": 687
+    },
+    {
+      "name": "aligned",
+      "requestedTime": 4.2,
+      "time": 4.248,
+      "frameIndex": 102,
+      "region": {
+        "time": 4.254900000035763,
+        "naturalWidth": 135,
+        "sourceRight": 135,
+        "scale": 1,
+        "left": 872.5,
+        "top": 282,
+        "right": 1007.5,
+        "bottom": 396
+      },
+      "ink": 618
+    },
+    {
+      "name": "last",
+      "requestedTime": 11.9,
+      "time": 11.915,
+      "frameIndex": 286,
+      "region": {
+        "time": 11.921100000023841,
+        "naturalWidth": 15716,
+        "sourceRight": 15716,
+        "scale": 0.8,
+        "left": 672,
+        "top": 465.211181640625,
+        "right": 1208,
+        "bottom": 489.211181640625
+      },
+      "ink": 851
+    }
+  ]
+}

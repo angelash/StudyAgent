@@ -21,7 +21,25 @@
       "fontAssets": "not_acquired_or_verified",
       "comparisonStatus": "not_audited",
       "behaviorCoverage": "Only the archived visible state; no complete course or transition claim.",
-      "scopeNote": "Classroom 1000x959 CSS viewport with DPR 1.25 was inferred historically for selected captures, not directly read from the original runtime."
+      "scopeNote": "Classroom 1000x959 CSS viewport with DPR 1.25 was inferred historically for selected captures, not directly read from the original runtime.",
+      "latestLocalDeliveryEvidence": {
+        "updatedOn": "2026-10-28",
+        "productionRelease": "137 / schema20",
+        "receipts": [
+          {
+            "file": "doc/evidence/2026-10-27/reference-navigation-acceptance.json",
+            "sha256": "8764e26884ad4564dad2817cee5ef83f13a552873ec1255dc3ceae46d6161716"
+          },
+          {
+            "file": "doc/evidence/2026-10-27/course-panel-acceptance.json",
+            "sha256": "da01d9c420ce75fd8a45ac3034500ff6f0fc563d6ffaca15ff440bf64e53a7ca"
+          }
+        ],
+        "completePixelParity": false,
+        "referenceDevicePixelRatioVerified": false,
+        "humanDeviceOrOriginalSoundVerified": false,
+        "scope": "Actual delivered local behavior and bounded manual layouts only. These receipts do not turn the original comparisonStatus into full parity or cover unknown reference states."
+      }
     },
     {
       "id": "HK-OUTLINE-01",
@@ -39,7 +57,21 @@
       "fontAssets": "not_acquired_or_verified",
       "comparisonStatus": "not_audited",
       "behaviorCoverage": "Only the archived visible state; no complete course or transition claim.",
-      "scopeNote": "Classroom 1000x959 CSS viewport with DPR 1.25 was inferred historically for selected captures, not directly read from the original runtime."
+      "scopeNote": "Classroom 1000x959 CSS viewport with DPR 1.25 was inferred historically for selected captures, not directly read from the original runtime.",
+      "latestLocalDeliveryEvidence": {
+        "updatedOn": "2026-10-28",
+        "productionRelease": "137 / schema20",
+        "receipts": [
+          {
+            "file": "doc/evidence/2026-10-27/course-panel-acceptance.json",
+            "sha256": "da01d9c420ce75fd8a45ac3034500ff6f0fc563d6ffaca15ff440bf64e53a7ca"
+          }
+        ],
+        "completePixelParity": false,
+        "referenceDevicePixelRatioVerified": false,
+        "humanDeviceOrOriginalSoundVerified": false,
+        "scope": "Actual delivered local behavior and bounded manual layouts only. These receipts do not turn the original comparisonStatus into full parity or cover unknown reference states."
+      }
     },
     {
       "id": "HK-COURSE-01",
@@ -57,7 +89,21 @@
       "fontAssets": "not_acquired_or_verified",
       "comparisonStatus": "not_audited",
       "behaviorCoverage": "Only the archived visible state; no complete course or transition claim.",
-      "scopeNote": "Classroom 1000x959 CSS viewport with DPR 1.25 was inferred historically for selected captures, not directly read from the original runtime."
+      "scopeNote": "Classroom 1000x959 CSS viewport with DPR 1.25 was inferred historically for selected captures, not directly read from the original runtime.",
+      "latestLocalDeliveryEvidence": {
+        "updatedOn": "2026-10-28",
+        "productionRelease": "137 / schema20",
+        "receipts": [
+          {
+            "file": "doc/evidence/2026-10-27/course-panel-acceptance.json",
+            "sha256": "da01d9c420ce75fd8a45ac3034500ff6f0fc563d6ffaca15ff440bf64e53a7ca"
+          }
+        ],
+        "completePixelParity": false,
+        "referenceDevicePixelRatioVerified": false,
+        "humanDeviceOrOriginalSoundVerified": false,
+        "scope": "Actual delivered local behavior and bounded manual layouts only. These receipts do not turn the original comparisonStatus into full parity or cover unknown reference states."
+      }
     },
     {
       "id": "HK-BOARD-01",
@@ -80,6 +126,24 @@
         "reference": "doc/evidence/2026-10-23/hyperknow-board-reference.png",
         "referenceSha256": "48784628dd2c76eea2d3296340b52de8072127257e1500d839a385288e60d43b",
         "evidence": "archived-screenshot-only"
+      },
+      "latestLocalDeliveryEvidence": {
+        "updatedOn": "2026-10-28",
+        "productionRelease": "137 / schema20",
+        "receipts": [
+          {
+            "file": "doc/evidence/2026-10-27/teaching-controls-acceptance.json",
+            "sha256": "acf8b7786beeee1e1b82dbecadb1a9e44bb60d89faeac5696d214db301f8243e"
+          },
+          {
+            "file": "doc/evidence/2026-10-27/whiteboard-question-acceptance.json",
+            "sha256": "ed5458f864af57ee1d564d2c2e9817cd3d4dbe83f403d73bd2aa6fa6a8bdd1b7"
+          }
+        ],
+        "completePixelParity": false,
+        "referenceDevicePixelRatioVerified": false,
+        "humanDeviceOrOriginalSoundVerified": false,
+        "scope": "Actual delivered local behavior and bounded manual layouts only. These receipts do not turn the original comparisonStatus into full parity or cover unknown reference states."
       }
     },
     {
@@ -112,6 +176,20 @@
         "scope": "460px panel, independent preview of an already shown frozen sentence, six-step speed slider; actual provider catalogs have five IDs each, synthetic six-card test is layout only",
         "completePixelParity": false,
         "humanDeviceOrListeningAcceptance": false
+      },
+      "latestLocalDeliveryEvidence": {
+        "updatedOn": "2026-10-28",
+        "productionRelease": "137 / schema20",
+        "receipts": [
+          {
+            "file": "doc/evidence/2026-10-27/teaching-controls-acceptance.json",
+            "sha256": "acf8b7786beeee1e1b82dbecadb1a9e44bb60d89faeac5696d214db301f8243e"
+          }
+        ],
+        "completePixelParity": false,
+        "referenceDevicePixelRatioVerified": false,
+        "humanDeviceOrOriginalSoundVerified": false,
+        "scope": "Actual delivered local behavior and bounded manual layouts only. These receipts do not turn the original comparisonStatus into full parity or cover unknown reference states."
       }
     },
     {
@@ -135,6 +213,20 @@
         "reference": "doc/evidence/2026-10-23/hyperknow-practice-v2-reference.png",
         "referenceSha256": "44dc2d2917d5be798b7f8f5136c1d16c4908faa507509f098382c252280f97be",
         "evidence": "archived-screenshot-only"
+      },
+      "latestLocalDeliveryEvidence": {
+        "updatedOn": "2026-10-28",
+        "productionRelease": "137 / schema20",
+        "receipts": [
+          {
+            "file": "doc/evidence/2026-10-27/combined-practice-models-acceptance.json",
+            "sha256": "1aaa676ca7fd56e3850b9f932e8b90f1f3b630b303ed6352bdcc565ecba6b131"
+          }
+        ],
+        "completePixelParity": false,
+        "referenceDevicePixelRatioVerified": false,
+        "humanDeviceOrOriginalSoundVerified": false,
+        "scope": "Actual delivered local behavior and bounded manual layouts only. These receipts do not turn the original comparisonStatus into full parity or cover unknown reference states."
       }
     },
     {
@@ -179,7 +271,21 @@
       "reference": null,
       "evidence": "not_fully_observed",
       "comparisonStatus": "pending_reference_observation",
-      "requiredLocalAcceptance": "Implement and verify the complete authorized local behavior; retain the missing reference boundary."
+      "requiredLocalAcceptance": "Implement and verify the complete authorized local behavior; retain the missing reference boundary.",
+      "latestLocalDeliveryEvidence": {
+        "updatedOn": "2026-10-28",
+        "productionRelease": "137 / schema20",
+        "receipts": [
+          {
+            "file": "doc/evidence/2026-10-27/whiteboard-question-acceptance.json",
+            "sha256": "ed5458f864af57ee1d564d2c2e9817cd3d4dbe83f403d73bd2aa6fa6a8bdd1b7"
+          }
+        ],
+        "completePixelParity": false,
+        "referenceDevicePixelRatioVerified": false,
+        "humanDeviceOrOriginalSoundVerified": false,
+        "scope": "Actual delivered local behavior and bounded manual layouts only. These receipts do not turn the original comparisonStatus into full parity or cover unknown reference states."
+      }
     },
     {
       "id": "HK-TURN-02",
@@ -187,7 +293,21 @@
       "reference": null,
       "evidence": "not_fully_observed",
       "comparisonStatus": "pending_reference_observation",
-      "requiredLocalAcceptance": "Implement and verify the complete authorized local behavior; retain the missing reference boundary."
+      "requiredLocalAcceptance": "Implement and verify the complete authorized local behavior; retain the missing reference boundary.",
+      "latestLocalDeliveryEvidence": {
+        "updatedOn": "2026-10-28",
+        "productionRelease": "137 / schema20",
+        "receipts": [
+          {
+            "file": "doc/evidence/2026-10-27/whiteboard-question-acceptance.json",
+            "sha256": "ed5458f864af57ee1d564d2c2e9817cd3d4dbe83f403d73bd2aa6fa6a8bdd1b7"
+          }
+        ],
+        "completePixelParity": false,
+        "referenceDevicePixelRatioVerified": false,
+        "humanDeviceOrOriginalSoundVerified": false,
+        "scope": "Actual delivered local behavior and bounded manual layouts only. These receipts do not turn the original comparisonStatus into full parity or cover unknown reference states."
+      }
     },
     {
       "id": "HK-PRACTICE-02",
@@ -210,7 +330,21 @@
       "devicePixelRatio": null,
       "cssViewport": null,
       "behaviorCoverage": "One authorized operator correct submission, explanation and Next transition; no wrong/skip/help submission or score formula claim.",
-      "scopeNote": "880x887 source PNG and matching tour overlay CSS rectangle observed; DPR and exact CSS/font assets remain unknown."
+      "scopeNote": "880x887 source PNG and matching tour overlay CSS rectangle observed; DPR and exact CSS/font assets remain unknown.",
+      "latestLocalDeliveryEvidence": {
+        "updatedOn": "2026-10-28",
+        "productionRelease": "137 / schema20",
+        "receipts": [
+          {
+            "file": "doc/evidence/2026-10-27/combined-practice-models-acceptance.json",
+            "sha256": "1aaa676ca7fd56e3850b9f932e8b90f1f3b630b303ed6352bdcc565ecba6b131"
+          }
+        ],
+        "completePixelParity": false,
+        "referenceDevicePixelRatioVerified": false,
+        "humanDeviceOrOriginalSoundVerified": false,
+        "scope": "Actual delivered local behavior and bounded manual layouts only. These receipts do not turn the original comparisonStatus into full parity or cover unknown reference states."
+      }
     },
     {
       "id": "HK-PRACTICE-03",
@@ -258,6 +392,20 @@
         "scope": "Welcome, seven actual-control tour anchors, responsive positioning, focus and layout restoration, no learning or microphone side effects",
         "completePixelParity": false,
         "humanDeviceOrListeningAcceptance": false
+      },
+      "latestLocalDeliveryEvidence": {
+        "updatedOn": "2026-10-28",
+        "productionRelease": "137 / schema20",
+        "receipts": [
+          {
+            "file": "doc/evidence/2026-10-27/teaching-controls-acceptance.json",
+            "sha256": "acf8b7786beeee1e1b82dbecadb1a9e44bb60d89faeac5696d214db301f8243e"
+          }
+        ],
+        "completePixelParity": false,
+        "referenceDevicePixelRatioVerified": false,
+        "humanDeviceOrOriginalSoundVerified": false,
+        "scope": "Actual delivered local behavior and bounded manual layouts only. These receipts do not turn the original comparisonStatus into full parity or cover unknown reference states."
       }
     },
     {
@@ -290,6 +438,20 @@
         "scope": "Controlled SVG and bundled curriculum images open in fullscreen reader with focus restoration, failure alternative, pause and print exclusion; generated image path retained",
         "completePixelParity": false,
         "humanDeviceOrListeningAcceptance": false
+      },
+      "latestLocalDeliveryEvidence": {
+        "updatedOn": "2026-10-28",
+        "productionRelease": "137 / schema20",
+        "receipts": [
+          {
+            "file": "doc/evidence/2026-10-27/whiteboard-question-acceptance.json",
+            "sha256": "ed5458f864af57ee1d564d2c2e9817cd3d4dbe83f403d73bd2aa6fa6a8bdd1b7"
+          }
+        ],
+        "completePixelParity": false,
+        "referenceDevicePixelRatioVerified": false,
+        "humanDeviceOrOriginalSoundVerified": false,
+        "scope": "Actual delivered local behavior and bounded manual layouts only. These receipts do not turn the original comparisonStatus into full parity or cover unknown reference states."
       }
     },
     {
@@ -374,5 +536,20 @@
   "practiceRevisit": {
     "receipt": "doc/evidence/2026-10-26/hyperknow-practice-revisit.json",
     "scope": "Existing correct single-choice feedback and next multiple-choice view, no answers or assistant messages submitted; CSS/font/DPR unknown"
+  },
+  "lastLocalEvidenceRefresh": "2026-10-28",
+  "localAssetReuse": {
+    "originalManifest": "apps/web/public/reference/hyperknow/asset-manifest.json",
+    "deliveredVerification": "doc/evidence/2026-10-27/reference-navigation-runtime.json",
+    "originalManifestFiles": 937,
+    "servedReferenceAndMathAssets": 959,
+    "scope": "Archived original asset/CSS/font bytes and local math assets are hash verified in delivered137. This does not verify current original site computed CSS, DPR, audio, cover art, icons or all states."
+  },
+  "currentProductBoundary": {
+    "formalProduction": "137 / schema20",
+    "teachingCandidate": "138 / schema21; full411 and exactCI remain in progress",
+    "all72Verified": false,
+    "overallComplete": false,
+    "completionPercentage": null
   }
 }

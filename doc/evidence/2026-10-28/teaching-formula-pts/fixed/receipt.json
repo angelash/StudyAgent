@@ -1,0 +1,49 @@
+{
+  "scope": "Corrected actual frame PTS browser check, same original application bytes. Test thresholds, vector complete bounds, last symbol, audio/video and full subtitle checks retained.",
+  "sourceHead": "f5bff3f",
+  "dirtyCandidate": true,
+  "passed": 1,
+  "failed": 0,
+  "files": {
+    "teaching-formula-pts-fixed.json.gz": {
+      "bytes": 1368,
+      "sha256": "6fab66cb7831afd769af3e4981b405651e3d3a8155c1e44ead821f3310c3b3ee"
+    },
+    "teaching-formula-pts-fixed.log.gz": {
+      "bytes": 447,
+      "sha256": "e3c57b85139473f0271c2f121bea83facb1e8bc08f06765c8197cac128512ce2"
+    },
+    "topic-formula-frame-measurements.json": {
+      "bytes": 1023,
+      "sha256": "bbab3a6caed5bfcc37bf4a021ce05b7de830f8c833fda568d9976fc764c82be1"
+    },
+    "topic-formula-readable-video-crops.json": {
+      "bytes": 998189,
+      "sha256": "5232a411f13740251e09b75f09ceb319ce7d7d8cdd3812ff799215684dca4ddb"
+    },
+    "topic-formula-video-aligned.png": {
+      "bytes": 226263,
+      "sha256": "3b91243c2845645df71792d873014df6629e34248c28ee898309f6c02ad46499"
+    },
+    "topic-formula-video-first.png": {
+      "bytes": 187086,
+      "sha256": "edcb2c80253a1a56a99a76a0e95687bf0d2992432abb2072a8a40da1d0582eab"
+    },
+    "topic-formula-video-last.png": {
+      "bytes": 219536,
+      "sha256": "d6fc73ec81f448b160aac09686f78d31598b55035b361a3cae1d80c14380797c"
+    },
+    "topic-formula-video-probe.json": {
+      "bytes": 4379,
+      "sha256": "83e38319f2fa9611354c9c176f3873c37a632b275dcdc2ef6664681997eec1a3"
+    },
+    "topic-formula-video.srt": {
+      "bytes": 455,
+      "sha256": "76b3f2986c382d9428dcd72b3b905890d0c0982504ecaf839041730adbdd3cf9"
+    },
+    "topic-formula-video.webm": {
+      "bytes": 2120456,
+      "sha256": "8e2593ded934c83dbd28f9907bb92839aef1ffa51e5fccc059fbc2f326f3f967"
+    }
+  }
+}

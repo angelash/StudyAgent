@@ -1,0 +1,25 @@
+{
+  "headSha": "20d3bbf068906a8f72683fa099204e7f8698bb44",
+  "runId": 40533146188,
+  "status": "completed",
+  "conclusion": "failure",
+  "jobs": {
+    "application": "failure",
+    "postgres": "success",
+    "browser": "success"
+  },
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-27T15:42:46.843Z",
+      "duration": 2163164.298,
+      "expected": 407,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": 407,
+    "attempts": 407,
+    "retryAttempts": 0
+  },
+  "failure": "Single obsolete OPENAI_API_KEY assertion after legacy admin route migration, preserved; not a passing CI."
+}
