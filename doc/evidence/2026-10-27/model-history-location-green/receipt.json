@@ -1,0 +1,33 @@
+{
+  "head": "3e55d9ae6af86c0e953597120dfff5e40f67ef57",
+  "status": "scope-passed",
+  "cases": 40,
+  "originalAttempts": 40,
+  "retries": 0,
+  "skips": 0,
+  "failures": 0,
+  "scope": "Actual rebuilt QA Web, selected-history loading/close-reopen boundaries, existing assistant privacy/history, and controlled narration cancellation including real WAV/WebM/SRT. Not a new complete combined-product or provider check.",
+  "redSource": "../model-history-location-red/receipt.json",
+  "files": [
+    {
+      "file": "receipt.json.gz",
+      "originalSha256": "30b1d32fba05d4258520e99e03ccc7a8592a1469d6b39fa1cc96705a8a0bcd56"
+    },
+    {
+      "file": "source.json.gz",
+      "originalSha256": "0792d659577e878824bde12ca434076db79d6cad894d30cad25828319b3cc29f"
+    },
+    {
+      "file": "browser.json.gz",
+      "originalSha256": "6e35474528e7d775a5ddb41f3baa3f1927b5abfcd6d3d56c0407e24672458997"
+    },
+    {
+      "file": "browser.log.gz",
+      "originalSha256": "ff366a5f7068b2b81d776cffe0ac4cdbffe2e2a7666ad02398a53caf2171b115"
+    },
+    {
+      "file": "build.log.gz",
+      "originalSha256": "49e329a2e18284067c318ef2b1e0244ad0fee34f9d03add2cdc12e20615dee06"
+    }
+  ]
+}

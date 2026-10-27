@@ -1,11 +1,14 @@
 import { expect, test, type Page } from '@playwright/test';
 import { browserEvidence } from './evidence';
 import { writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 const api = `http://localhost:${process.env.E2E_API_PORT ?? '4107'}`, evidence = browserEvidence('practice-reference');
 async function open(page: Page, width: number) {
   await page.setViewportSize({ width, height: width >= 1000 ? 800 : width === 390 ? 844 : 900 });
   const nonce = crypto.randomUUID(), principal = 'practice-reference-' + nonce + '@local.test', credential = 'Practice-QA-' + nonce;
-  const response = await fetch(api + '/api/auth/register', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ principal, credential }) });
+  const bucket = createHash('sha256').update(test.info().testId).digest(), address = '198.18.' + bucket[0] + '.' + bucket[1];
+  await page.setExtraHTTPHeaders({ 'X-Forwarded-For': address });
+  const response = await fetch(api + '/api/auth/register', { method: 'POST', headers: { 'content-type': 'application/json', 'X-Forwarded-For': address }, body: JSON.stringify({ principal, credential }) });
   expect(response.status).toBe(201);
   await page.addInitScript(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
