@@ -1,8 +1,8 @@
 {
-  "at": "2026-10-27T04:00:59.259Z",
+  "at": "2026-10-27T04:12:43.082489+00:00",
   "passed": true,
-  "deployed": false,
-  "status": "full-candidate-verified-awaiting-runtime",
+  "deployed": true,
+  "status": "runtime-delivered",
   "applicationRevision": "10b0adac8de1344cf27654472ce49967e8f80d86",
   "apiRevision": "ecaccc031e8e7805beead1fd6f6b913e2dfbce09",
   "schemaVersion": 20,
@@ -43,8 +43,23 @@
     "finding": "Complex complete response missing despite simple one-field success; schema omission experiment also failed. No model substitution or incomplete-response acceptance."
   },
   "runtime": {
-    "status": "pending",
-    "currentlyDeliveredBatch": 132
+    "passed": true,
+    "revision": "06eabede5189a4f98d3b26f45ade6f017dadfc5a",
+    "buildId": "QmyviewsO29-4oAKKrIm0",
+    "schemaVersion": 20,
+    "httpChecks": 1212,
+    "compiledFiles": 363,
+    "rawCompiledMatches": 362,
+    "onlyFormatDifference": "rate-limit-repository.js: four CRLF only; normalized complete source and bytes identical",
+    "originalAssetFiles": 959,
+    "voiceSamples": 6,
+    "stableObservationMs": 224082,
+    "rollbackBuildFiles": 966,
+    "rollbackSchemaVersion": 20,
+    "assetsIncluded": false,
+    "protectedConfigurationPreserved": true,
+    "localEnvironmentPreserved": true,
+    "allModelsPassed": false
   },
   "wholeProductComplete": false,
   "limitations": [

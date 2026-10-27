@@ -1,0 +1,103 @@
+{
+  "at": "2026-10-27T04:12:43.059342+00:00",
+  "passed": true,
+  "scope": "Actual main GPT metadata and complete-context release. Complete fixed365 local/exactCI,1212 production HTTP/permission/resource checks,363 compiled files, fresh stopped-service132 schema20 rollback and three stable owned guardian observations. Real-model matrix remains21/22, not complete availability. Private configuration/family database stay local.",
+  "files": [
+    {
+      "source": "data/qa/model-metadata-production-build.log",
+      "file": "00-model-metadata-production-build.log.gz",
+      "originalSha256": "b855095f2ceb6008603f26e3356c636e7ab6b40e8fbce4276267a69f85bf59a4",
+      "sha256": "3a8052737fb6a6abea7a4641830c81a137d71fd7d02ff0285e28b20c6d80cccc"
+    },
+    {
+      "source": "data/qa/model-metadata-daemon-start.log",
+      "file": "01-model-metadata-daemon-start.log.gz",
+      "originalSha256": "94967849dd6313aef64334dfd672a0cac337d8fc0d96c8d0b05940a74d90fadd",
+      "sha256": "c23332d5a4d38eaae86bb0e067f96d5d4406e57bfde202aad18eef6e7bc62918"
+    },
+    {
+      "source": "data/qa/model-metadata-deployment-candidate.log",
+      "file": "02-model-metadata-deployment-candidate.log.gz",
+      "originalSha256": "9e795e95bc0c9c6c5527afbff433c606c5aafba2e916d8f7277619343e9480d9",
+      "sha256": "31ca977f34af3a0521b541e789b2bfecdf951a1f5b699f77b54bd43db7ef318d"
+    },
+    {
+      "source": "data/qa/model-metadata-deployment-prepare.log",
+      "file": "03-model-metadata-deployment-prepare.log.gz",
+      "originalSha256": "b91151205908ccb7f1ba6911543d62547b8d2a16e76db3adbf66e54cf0ceb00f",
+      "sha256": "627849f9ceaa9eb691df26352b47a5ca26ef31546139e6fc0d083ae63cf6720f"
+    },
+    {
+      "source": "data/qa/model-metadata-runtime-check-first.log",
+      "file": "04-model-metadata-runtime-check-first.log.gz",
+      "originalSha256": "1865c6534fb31ae7a0768841fdae3cdce4ba3ad3e6b826fc7f239268e9fad172",
+      "sha256": "0c7c55f91ce8663a5cf6b1415b33f1c58c8b19401995fc3661b50967358919af"
+    },
+    {
+      "source": "data/qa/model-metadata-runtime-check-green.log",
+      "file": "05-model-metadata-runtime-check-green.log.gz",
+      "originalSha256": "7443ae1bd9bb4c7790ad3744589cd7dcb963184288924876222051eea185860b",
+      "sha256": "20ee8e311f33d2885c35eab28aed422bca608d0cf91a119c676d2db0f259d389"
+    },
+    {
+      "source": "data/qa/model-metadata-compiled-crlf.log",
+      "file": "06-model-metadata-compiled-crlf.log.gz",
+      "originalSha256": "38d5cb0930a5ff2c8dfc65d93ef14f9092a8ba0f8ff4aac98376986becad4a13",
+      "sha256": "30ace143cab702eb8c9d48d3830c62cdf4dfabe86bfe261117a4c42b5e896aa7"
+    },
+    {
+      "source": "data/qa/prepare-model-metadata-release.cjs",
+      "file": "07-prepare-model-metadata-release.cjs.gz",
+      "originalSha256": "c35c96b3c62c2bfe8f3d02c99b2357ac686ef8aeb5ffbccfca03ee93ed56462d",
+      "sha256": "6c2976f1c3492bd3921610b1b686eff5e09d74f47fc71431b5cc1f0a43d6df56"
+    },
+    {
+      "source": "data/qa/prepare-model-metadata-candidate.cjs",
+      "file": "08-prepare-model-metadata-candidate.cjs.gz",
+      "originalSha256": "a01dd7a4ee3df6c16977083fb3e5fd83e29f94ccb9e48eb9f91428168847840c",
+      "sha256": "ede9a886f6d499d0a6db521d548d4eeb66d73f74cec93942c8d72e7efd100191"
+    },
+    {
+      "source": "data/qa/deploy-model-metadata-prepare.cjs",
+      "file": "09-deploy-model-metadata-prepare.cjs.gz",
+      "originalSha256": "31d540702a95fa2013c8f77602244cacb4eef3dc1b6da862ea21e1ae205951b0",
+      "sha256": "56439655f8c9123628b7aa56302edcb211aaec475bfffb6bfd26c1807bb3ac95"
+    },
+    {
+      "source": "data/qa/check-model-metadata-release.cjs",
+      "file": "10-check-model-metadata-release.cjs.gz",
+      "originalSha256": "8bfd159f2b240209240b1cd51ed50e83f43e60ff6572687d2e8f55932364fff3",
+      "sha256": "fd644df45c0940a192555b92e4f83343ed4a961e5f6cba289d877f2f138840df"
+    },
+    {
+      "source": "data/qa/observe-model-metadata.cjs",
+      "file": "11-observe-model-metadata.cjs.gz",
+      "originalSha256": "61708508ec5b1e0933e16c260e506d29e7ca3c06a94e53662ddedf3914c32fa2",
+      "sha256": "95eb2d1488decca325d1242a4b7cd1a04272d098e0ff811ef35986aae79909be"
+    },
+    {
+      "source": "data/qa/verify-model-metadata-compiled-crlf.cjs",
+      "file": "12-verify-model-metadata-compiled-crlf.cjs.gz",
+      "originalSha256": "3f0fe0c27c3e5f8ffe05499a1bc24f0ad6d281c6645b53bbeb8ba17ac6012ec0",
+      "sha256": "a6e951ed7f3efbef99560dd792656b037c9ca930d9a7a81fc9e9fcdeaeb82c18"
+    },
+    {
+      "source": "output/daemon/release-backups/2026-10-27-model-metadata-1793072624190/backup-verified.json",
+      "file": "13-backup-verified.json.gz",
+      "originalSha256": "098767e38e6f5408298c7112e8b6835da7fb006604d076a6c96d1b94d01ce465",
+      "sha256": "4df35da68927a46e119553aaafeef131f605e8b9e881d2e54c90546bfbe19477"
+    },
+    {
+      "source": "output/daemon/release-backups/2026-10-27-model-metadata-1793072624190/build-backup-verification.json",
+      "file": "14-build-backup-verification.json.gz",
+      "originalSha256": "ed24a5fda485fade492d1dfd3992cb5976e549f54a46401b43f0c76e74a56e1d",
+      "sha256": "b73167ca46476e73d79014eca7a17f4e6669a0758e22941f4127953806fb4f66"
+    },
+    {
+      "source": "output/daemon/release-backups/2026-10-27-model-metadata-1793072624190/compiled-crlf-observation.json",
+      "file": "15-compiled-crlf-observation.json.gz",
+      "originalSha256": "689074db2196b0c8e32307bf3b7d6f1a2bf5af4e5242d93dc07fde8ed304fa03",
+      "sha256": "1dbf6fc411e81eb3429873e216a83541de681a6a6f18a757f6ec7fa8c1c45288"
+    }
+  ]
+}
