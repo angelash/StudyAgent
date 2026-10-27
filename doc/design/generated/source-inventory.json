@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "09ee19bd32fb08d2b85428c387748e327c6fc2f6",
+  "sourceRevision": "1385d100e5a91e9378b8191d7fd897f8cb378075",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
-    "declaredHttpRoutes": 444,
-    "activeHttpRoutes": 431,
-    "activeBusinessHttpRoutes": 423,
+    "declaredHttpRoutes": 445,
+    "activeHttpRoutes": 432,
+    "activeBusinessHttpRoutes": 424,
     "retiredHttpRoutes": 8,
     "activeModules": 19,
     "activeControllers": 44,
     "apiClasses": 163,
-    "apiFunctions": 472,
+    "apiFunctions": 475,
     "domainCollections": 103,
-    "contractTypes": 385,
+    "contractTypes": 387,
     "webPages": 30,
     "webRouteHandlers": 1,
-    "apiTestFiles": 180,
-    "browserTestFiles": 40
+    "apiTestFiles": 183,
+    "browserTestFiles": 41
   },
   "modules": [
     {
@@ -704,13 +704,13 @@
       "retired": false
     },
     {
-      "verb": "POST",
-      "path": "/api/ai/assistant/sessions",
+      "verb": "GET",
+      "path": "/api/ai/assistant/lecture-context",
       "controller": "AiController",
-      "method": "openSession",
+      "method": "lectureContext",
       "file": "apps/api/src/modules/ai/ai.controller.ts",
       "line": 29,
-      "signature": "openSession(@Req() req: AuthenticatedRequest, @Body() body: { userRole: 'student' | 'parent'; studentId: string | null; subject?: 'math' | 'chinese' | 'english' | null; pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report'; contextRefType?: string | null; contextRefId?: string | null; contextItemId?: string | null; })",
+      "signature": "lectureContext(@Req() req: AuthenticatedRequest, @Query() query: unknown)",
       "classDecorators": [
         {
           "name": "UseGuards",
@@ -731,7 +731,40 @@
         }
       ],
       "calls": [
-        "this.aiService.openAssistantSession"
+        "this.aiService.lectureDescriptor"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/ai/assistant/sessions",
+      "controller": "AiController",
+      "method": "openSession",
+      "file": "apps/api/src/modules/ai/ai.controller.ts",
+      "line": 34,
+      "signature": "openSession(@Req() req: AuthenticatedRequest, @Body() body: { userRole: 'student' | 'parent'; studentId: string | null; subject?: 'math' | 'chinese' | 'english' | null; pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report' | 'classroom' | 'studio'; contextRefType?: string | null; contextRefId?: string | null; contextItemId?: string | null; })",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "aiService",
+          "type": "AiService"
+        },
+        {
+          "name": "teaching",
+          "type": "TeachingToolCompatibilityService"
+        }
+      ],
+      "calls": [
+        "this.aiService.openDurableAssistantSession"
       ],
       "active": true,
       "retired": false
@@ -742,7 +775,7 @@
       "controller": "AiController",
       "method": "chat",
       "file": "apps/api/src/modules/ai/ai.controller.ts",
-      "line": 46,
+      "line": 51,
       "signature": "chat(@Req() req: AuthenticatedRequest, @Res({ passthrough: true }) response: Response, @Param('sessionId') sessionId: string, @Body() body: { message: string; requestKey?: string; modelId?: string })",
       "classDecorators": [
         {
@@ -776,7 +809,7 @@
       "controller": "AiController",
       "method": "listMessages",
       "file": "apps/api/src/modules/ai/ai.controller.ts",
-      "line": 60,
+      "line": 65,
       "signature": "listMessages(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string)",
       "classDecorators": [
         {
@@ -15134,7 +15167,7 @@
     {
       "name": "InMemoryStoreService",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 177,
+      "line": 178,
       "decorators": [
         {
           "name": "Injectable",
@@ -15145,7 +15178,7 @@
       "methods": [
         {
           "name": "recordRead",
-          "line": 205,
+          "line": 206,
           "signature": "recordRead(collection: string, where?: DomainSelector)",
           "access": "private",
           "decorators": [],
@@ -15155,7 +15188,7 @@
         },
         {
           "name": "mutableCollection",
-          "line": 215,
+          "line": 216,
           "signature": "mutableCollection(collection: string, allRecords: boolean): unknown[]",
           "access": "private",
           "decorators": [],
@@ -15165,7 +15198,7 @@
         },
         {
           "name": "select",
-          "line": 230,
+          "line": 231,
           "signature": "select(collection: K, where: DomainSelector): Array<StoreRecord<K>>",
           "access": "public",
           "decorators": [],
@@ -15177,7 +15210,7 @@
         },
         {
           "name": "find",
-          "line": 246,
+          "line": 247,
           "signature": "find(collection: K, where: DomainSelector): StoreRecord<K> | undefined",
           "access": "public",
           "decorators": [],
@@ -15187,7 +15220,7 @@
         },
         {
           "name": "inspect",
-          "line": 249,
+          "line": 250,
           "signature": "inspect(collection: K): ReadonlyArray<StoreRecord<K>>",
           "access": "public",
           "decorators": [],
@@ -15198,7 +15231,7 @@
         },
         {
           "name": "append",
-          "line": 262,
+          "line": 263,
           "signature": "append(collection: K, ...records: Array<StoreRecord<K>>)",
           "access": "public",
           "decorators": [],
@@ -15209,7 +15242,7 @@
         },
         {
           "name": "remove",
-          "line": 268,
+          "line": 269,
           "signature": "remove(collection: K, where: DomainSelector)",
           "access": "public",
           "decorators": [],
@@ -15221,7 +15254,7 @@
         },
         {
           "name": "onModuleInit",
-          "line": 276,
+          "line": 277,
           "signature": "onModuleInit()",
           "access": "public",
           "decorators": [],
@@ -15233,7 +15266,7 @@
         },
         {
           "name": "onApplicationBootstrap",
-          "line": 294,
+          "line": 295,
           "signature": "onApplicationBootstrap()",
           "access": "public",
           "decorators": [],
@@ -15243,7 +15276,7 @@
         },
         {
           "name": "requestContext",
-          "line": 301,
+          "line": 302,
           "signature": "requestContext(fn: () => T): Promise<T>",
           "access": "public",
           "decorators": [],
@@ -15254,7 +15287,7 @@
         },
         {
           "name": "commitRequest",
-          "line": 310,
+          "line": 311,
           "signature": "commitRequest(fence?: TaskFence)",
           "access": "public",
           "decorators": [],
@@ -15267,7 +15300,7 @@
         },
         {
           "name": "transaction",
-          "line": 330,
+          "line": 331,
           "signature": "transaction(fn: () => T | Promise<T>, fence?: TaskFence): Promise<T>",
           "access": "public",
           "decorators": [],
@@ -15279,7 +15312,7 @@
         },
         {
           "name": "enqueueTask",
-          "line": 342,
+          "line": 343,
           "signature": "enqueueTask(intent: TaskIntent)",
           "access": "public",
           "decorators": [],
@@ -15291,7 +15324,7 @@
         },
         {
           "name": "controlTask",
-          "line": 348,
+          "line": 349,
           "signature": "controlTask(operation: TaskOperation)",
           "access": "public",
           "decorators": [],
@@ -15303,7 +15336,7 @@
         },
         {
           "name": "onModuleDestroy",
-          "line": 360,
+          "line": 361,
           "signature": "onModuleDestroy()",
           "access": "public",
           "decorators": [],
@@ -15311,7 +15344,7 @@
         },
         {
           "name": "nextId",
-          "line": 466,
+          "line": 467,
           "signature": "nextId(prefix: string): string",
           "access": "public",
           "decorators": [],
@@ -15319,7 +15352,7 @@
         },
         {
           "name": "reset",
-          "line": 470,
+          "line": 471,
           "signature": "reset()",
           "access": "public",
           "decorators": [],
@@ -16082,9 +16115,26 @@
           ]
         },
         {
-          "name": "openSession",
+          "name": "lectureContext",
           "line": 29,
-          "signature": "openSession(@Req() req: AuthenticatedRequest, @Body() body: { userRole: 'student' | 'parent'; studentId: string | null; subject?: 'math' | 'chinese' | 'english' | null; pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report'; contextRefType?: string | null; contextRefId?: string | null; contextItemId?: string | null; })",
+          "signature": "lectureContext(@Req() req: AuthenticatedRequest, @Query() query: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'assistant/lecture-context'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.aiService.lectureDescriptor"
+          ]
+        },
+        {
+          "name": "openSession",
+          "line": 34,
+          "signature": "openSession(@Req() req: AuthenticatedRequest, @Body() body: { userRole: 'student' | 'parent'; studentId: string | null; subject?: 'math' | 'chinese' | 'english' | null; pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report' | 'classroom' | 'studio'; contextRefType?: string | null; contextRefId?: string | null; contextItemId?: string | null; })",
           "access": "public",
           "decorators": [
             {
@@ -16095,12 +16145,12 @@
             }
           ],
           "calls": [
-            "this.aiService.openAssistantSession"
+            "this.aiService.openDurableAssistantSession"
           ]
         },
         {
           "name": "chat",
-          "line": 46,
+          "line": 51,
           "signature": "chat(@Req() req: AuthenticatedRequest, @Res({ passthrough: true }) response: Response, @Param('sessionId') sessionId: string, @Body() body: { message: string; requestKey?: string; modelId?: string })",
           "access": "public",
           "decorators": [
@@ -16118,7 +16168,7 @@
         },
         {
           "name": "listMessages",
-          "line": 60,
+          "line": 65,
           "signature": "listMessages(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string)",
           "access": "public",
           "decorators": [
@@ -16154,7 +16204,7 @@
     {
       "name": "AiService",
       "file": "apps/api/src/modules/ai/ai.service.ts",
-      "line": 52,
+      "line": 53,
       "decorators": [
         {
           "name": "Injectable",
@@ -16190,7 +16240,7 @@
       "methods": [
         {
           "name": "modelCatalog",
-          "line": 73,
+          "line": 74,
           "signature": "modelCatalog()",
           "access": "public",
           "decorators": [],
@@ -16200,7 +16250,7 @@
         },
         {
           "name": "assistantModelAvailable",
-          "line": 81,
+          "line": 82,
           "signature": "assistantModelAvailable()",
           "access": "public",
           "decorators": [],
@@ -16208,7 +16258,7 @@
         },
         {
           "name": "analyzeAssessment",
-          "line": 83,
+          "line": 84,
           "signature": "analyzeAssessment(command: AnalyzeAssessmentCommand): Promise<AIAnalysisResponse>",
           "access": "public",
           "decorators": [],
@@ -16222,7 +16272,7 @@
         },
         {
           "name": "generateHint",
-          "line": 134,
+          "line": 135,
           "signature": "generateHint(command: GenerateHintCommand)",
           "access": "public",
           "decorators": [],
@@ -16233,8 +16283,8 @@
         },
         {
           "name": "openAssistantSession",
-          "line": 188,
-          "signature": "openAssistantSession(command: { userRole: 'student' | 'parent'; studentId: string | null; subject?: Subject | null; pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report'; contextRefType?: string | null; contextRefId?: string | null; contextItemId?: string | null; }, user: InMemoryUserAccount): AssistantSession",
+          "line": 189,
+          "signature": "openAssistantSession(command: { userRole: 'student' | 'parent'; studentId: string | null; subject?: Subject | null; pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report' | 'classroom' | 'studio'; contextRefType?: string | null; contextRefId?: string | null; contextItemId?: string | null; }, user: InMemoryUserAccount): AssistantSession",
           "access": "public",
           "decorators": [],
           "calls": [
@@ -16242,13 +16292,71 @@
             "this.store.nextId",
             "this.resolveQuestionContext",
             "this.store.assistantSessions.find",
+            "this.publicAssistantSession",
             "this.store.append",
             "this.eventBus.publish"
           ]
         },
         {
+          "name": "openDurableAssistantSession",
+          "line": 253,
+          "signature": "openDurableAssistantSession(command: Parameters<AiService['openAssistantSession']>[0], user: InMemoryUserAccount, authSession?: InMemoryAuthSession): Promise<AssistantSession>",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.store.transaction",
+            "this.store.find",
+            "this.openAssistantSession"
+          ]
+        },
+        {
+          "name": "publicAssistantSession",
+          "line": 268,
+          "signature": "publicAssistantSession(session: AssistantSession): AssistantSession",
+          "access": "private",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "lectureDescriptor",
+          "line": 274,
+          "signature": "lectureDescriptor(user: InMemoryUserAccount, input: unknown): AssistantLectureDescriptor",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.store.find",
+            "this.lectureSnapshot"
+          ]
+        },
+        {
+          "name": "lectureSnapshot",
+          "line": 292,
+          "signature": "lectureSnapshot(session: AssistantSession, requireCurrent: boolean)",
+          "access": "private",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "assistantLectureSummary",
+          "line": 302,
+          "signature": "assistantLectureSummary(session: AssistantSession, requireCurrent = false)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.lectureSnapshot"
+          ]
+        },
+        {
+          "name": "independentStudioContext",
+          "line": 307,
+          "signature": "independentStudioContext(session: AssistantSession)",
+          "access": "private",
+          "decorators": [],
+          "calls": []
+        },
+        {
           "name": "assertSessionOwner",
-          "line": 235,
+          "line": 314,
           "signature": "assertSessionOwner(sessionId: string, user: InMemoryUserAccount, requireCurrentContext = true)",
           "access": "public",
           "decorators": [],
@@ -16260,11 +16368,13 @@
         },
         {
           "name": "resolveQuestionContext",
-          "line": 243,
+          "line": 323,
           "signature": "resolveQuestionContext(session: AssistantSession)",
           "access": "private",
           "decorators": [],
           "calls": [
+            "this.lectureSnapshot",
+            "this.independentStudioContext",
             "this.store.practiceSessions.find",
             "this.store.find",
             "this.store.select",
@@ -16274,11 +16384,13 @@
         },
         {
           "name": "assistantContext",
-          "line": 284,
-          "signature": "assistantContext(session: AssistantSession)",
+          "line": 365,
+          "signature": "assistantContext(session: AssistantSession, requireCurrentLecture = true)",
           "access": "private",
           "decorators": [],
           "calls": [
+            "this.independentStudioContext",
+            "this.lectureSnapshot",
             "this.resolveQuestionContext",
             "this.store.diagnosticPlans.filter",
             "this.store.diagnosticReports.filter",
@@ -16290,7 +16402,7 @@
         },
         {
           "name": "recordAssistance",
-          "line": 337,
+          "line": 423,
           "signature": "recordAssistance(context: ReturnType<AiService['assistantContext']>, messageId: string, studentId: string | null)",
           "access": "private",
           "decorators": [],
@@ -16301,7 +16413,7 @@
         },
         {
           "name": "chat",
-          "line": 348,
+          "line": 434,
           "signature": "chat(command: AssistantChatCommand): Promise<AssistantLegacyResult>",
           "access": "public",
           "decorators": [],
@@ -16311,8 +16423,8 @@
         },
         {
           "name": "assistantSnapshot",
-          "line": 352,
-          "signature": "assistantSnapshot(session: AssistantSession)",
+          "line": 438,
+          "signature": "assistantSnapshot(session: AssistantSession, requireCurrentLecture = true)",
           "access": "public",
           "decorators": [],
           "calls": [
@@ -16322,7 +16434,7 @@
         },
         {
           "name": "prepareAssistant",
-          "line": 362,
+          "line": 450,
           "signature": "prepareAssistant(sessionId: string, message: string, requestedModelId?: string): AssistantPreparation",
           "access": "public",
           "decorators": [],
@@ -16336,7 +16448,7 @@
         },
         {
           "name": "renderAssistant",
-          "line": 380,
+          "line": 468,
           "signature": "renderAssistant(prepared: AssistantPreparation, signal?: AbortSignal): Promise<AssistantReply>",
           "access": "public",
           "decorators": [],
@@ -16348,7 +16460,7 @@
         },
         {
           "name": "publishAssistant",
-          "line": 443,
+          "line": 531,
           "signature": "publishAssistant(prepared: AssistantPreparation, result: AssistantReply, requestKey: string)",
           "access": "public",
           "decorators": [],
@@ -16361,7 +16473,7 @@
         },
         {
           "name": "listMessages",
-          "line": 462,
+          "line": 550,
           "signature": "listMessages(sessionId: string)",
           "access": "public",
           "decorators": [],
@@ -16371,7 +16483,7 @@
         },
         {
           "name": "structureImportRecord",
-          "line": 466,
+          "line": 554,
           "signature": "structureImportRecord(command: StructureImportRecordCommand): Promise<QuestionImportAiSuggestion>",
           "access": "public",
           "decorators": [],
@@ -16384,7 +16496,7 @@
         },
         {
           "name": "enrichDiagnosticPlan",
-          "line": 515,
+          "line": 603,
           "signature": "enrichDiagnosticPlan(plan: DiagnosticGuidancePlan, context: unknown): Promise<{\r\n    status: 'available' | 'unavailable' | 'rejected';\r\n    value?: { summary: string; activities: Array<{ actionId: string; activity: string; evidenceIds: string[] }> };\r\n  }>",
           "access": "public",
           "decorators": [],
@@ -16395,7 +16507,7 @@
         },
         {
           "name": "requireClient",
-          "line": 542,
+          "line": 630,
           "signature": "requireClient(scene: string)",
           "access": "private",
           "decorators": [],
@@ -16403,7 +16515,7 @@
         },
         {
           "name": "parseAnalysisResponse",
-          "line": 550,
+          "line": 638,
           "signature": "parseAnalysisResponse(rawValue: string): Omit<AIAnalysisResponse, 'source'>",
           "access": "private",
           "decorators": [],
@@ -16413,7 +16525,7 @@
         },
         {
           "name": "parseQuestionImportSuggestion",
-          "line": 566,
+          "line": 654,
           "signature": "parseQuestionImportSuggestion(rawValue: string): QuestionImportAiSuggestion",
           "access": "private",
           "decorators": [],
@@ -16424,7 +16536,7 @@
         },
         {
           "name": "extractStructuredContent",
-          "line": 586,
+          "line": 674,
           "signature": "extractStructuredContent(content: string)",
           "access": "private",
           "decorators": [],
@@ -16432,7 +16544,7 @@
         },
         {
           "name": "wrapAiError",
-          "line": 596,
+          "line": 684,
           "signature": "wrapAiError(scene: string, error: unknown)",
           "access": "private",
           "decorators": [],
@@ -16440,7 +16552,7 @@
         },
         {
           "name": "getSubjectLabel",
-          "line": 608,
+          "line": 696,
           "signature": "getSubjectLabel(subject: Subject | null | undefined)",
           "access": "private",
           "decorators": [],
@@ -16448,7 +16560,7 @@
         },
         {
           "name": "isQuestionAnswerMode",
-          "line": 621,
+          "line": 709,
           "signature": "isQuestionAnswerMode(value: unknown): value is QuestionImportAiSuggestion['suggestedAnswerMode']",
           "access": "private",
           "decorators": [],
@@ -16456,7 +16568,7 @@
         },
         {
           "name": "recordInsight",
-          "line": 643,
+          "line": 731,
           "signature": "recordInsight(sourceType: AIInsightRecord['sourceType'], sourceId: string, studentId: string | null, summary: string, payload: AIAnalysisResponse)",
           "access": "private",
           "decorators": [],
@@ -16742,24 +16854,26 @@
           "decorators": [],
           "calls": [
             "this.ai.assertSessionOwner",
+            "this.ai.assistantLectureSummary",
             "this.store.find"
           ]
         },
         {
           "name": "context",
-          "line": 49,
+          "line": 57,
           "signature": "context(user:InMemoryUserAccount, sessionId:string): AssistantContextView",
           "access": "public",
           "decorators": [],
           "calls": [
             "this.ai.assertSessionOwner",
+            "this.ai.assistantLectureSummary",
             "this.ai.assistantSnapshot",
             "this.location"
           ]
         },
         {
           "name": "view",
-          "line": 52,
+          "line": 61,
           "signature": "view(turn:AssistantTurnRecord, provisional?:AssistantTurnView['task']): Promise<AssistantTurnView>",
           "access": "public",
           "decorators": [],
@@ -16769,7 +16883,7 @@
         },
         {
           "name": "record",
-          "line": 59,
+          "line": 68,
           "signature": "record(user:InMemoryUserAccount, sessionId:string, id:string)",
           "access": "private",
           "decorators": [],
@@ -16780,7 +16894,7 @@
         },
         {
           "name": "get",
-          "line": 62,
+          "line": 71,
           "signature": "get(user:InMemoryUserAccount, sessionId:string, id:string)",
           "access": "public",
           "decorators": [],
@@ -16791,7 +16905,7 @@
         },
         {
           "name": "list",
-          "line": 63,
+          "line": 72,
           "signature": "list(user:InMemoryUserAccount, sessionId:string, input:unknown={})",
           "access": "public",
           "decorators": [],
@@ -16803,7 +16917,7 @@
         },
         {
           "name": "assertIdle",
-          "line": 71,
+          "line": 80,
           "signature": "assertIdle(ownerUserId:string, except?:string)",
           "access": "private",
           "decorators": [],
@@ -16814,7 +16928,7 @@
         },
         {
           "name": "authorization",
-          "line": 76,
+          "line": 85,
           "signature": "authorization(user:InMemoryUserAccount, studentId:string|null, authSession?:InMemoryAuthSession): AssistantTurnRecord['authorization']",
           "access": "private",
           "decorators": [],
@@ -16825,7 +16939,7 @@
         },
         {
           "name": "create",
-          "line": 89,
+          "line": 98,
           "signature": "create(user:InMemoryUserAccount, sessionId:string, input:unknown, authSession?:InMemoryAuthSession, legacy=false)",
           "access": "public",
           "decorators": [],
@@ -16847,7 +16961,7 @@
         },
         {
           "name": "control",
-          "line": 113,
+          "line": 122,
           "signature": "control(user:InMemoryUserAccount, sessionId:string, id:string, action:'cancel'|'retry', input:unknown)",
           "access": "public",
           "decorators": [],
@@ -16862,7 +16976,7 @@
         },
         {
           "name": "page",
-          "line": 128,
+          "line": 137,
           "signature": "page(user:InMemoryUserAccount, sessionId:string, input:unknown): AssistantHistoryPage",
           "access": "public",
           "decorators": [],
@@ -16873,7 +16987,7 @@
         },
         {
           "name": "history",
-          "line": 144,
+          "line": 153,
           "signature": "history(user:InMemoryUserAccount, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -16885,7 +16999,7 @@
         },
         {
           "name": "cancelLatest",
-          "line": 160,
+          "line": 169,
           "signature": "cancelLatest(user:InMemoryUserAccount, sessionId:string, id:string)",
           "access": "private",
           "decorators": [],
@@ -16897,7 +17011,7 @@
         },
         {
           "name": "legacy",
-          "line": 168,
+          "line": 177,
           "signature": "legacy(command:AssistantChatCommand): Promise<AssistantLegacyResult>",
           "access": "public",
           "decorators": [],
@@ -38761,6 +38875,24 @@
       "signature": "bootstrap()"
     },
     {
+      "file": "apps/api/src/modules/ai/assistant-lecture-context.ts",
+      "name": "freezeAssistantLecture",
+      "line": 19,
+      "signature": "freezeAssistantLecture(courseId: string, lectureId: string, course: ClassroomCourse = classroomCourse()): AssistantLectureSnapshot"
+    },
+    {
+      "file": "apps/api/src/modules/ai/assistant-lecture-context.ts",
+      "name": "readAssistantLecture",
+      "line": 37,
+      "signature": "readAssistantLecture(value: unknown, referenceId: string, lectureId: string, requireCurrent: boolean, course: ClassroomCourse = classroomCourse()): { snapshot: AssistantLectureSnapshot; current: boolean }"
+    },
+    {
+      "file": "apps/api/src/modules/ai/assistant-lecture-context.ts",
+      "name": "assistantLectureSummary",
+      "line": 51,
+      "signature": "assistantLectureSummary(snapshot: AssistantLectureSnapshot, current: boolean)"
+    },
+    {
       "file": "apps/api/src/modules/ai/assistant-turn-record.ts",
       "name": "canonical",
       "line": 18,
@@ -41178,619 +41310,619 @@
       "name": "users",
       "type": "InMemoryUserAccount",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 361
+      "line": 362
     },
     {
       "name": "paperPublications",
       "type": "PaperPublication",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 362
+      "line": 363
     },
     {
       "name": "libraryBookmarks",
       "type": "LibraryBookmark",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 363
+      "line": 364
     },
     {
       "name": "paperPracticeSessions",
       "type": "PaperPracticeSessionRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 364
+      "line": 365
     },
     {
       "name": "paperPracticeCommands",
       "type": "PaperPracticeCommandRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 365
+      "line": 366
     },
     {
       "name": "practiceSessions",
       "type": "PracticeSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 366
+      "line": 367
     },
     {
       "name": "practiceAttempts",
       "type": "PracticeAttempt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 367
+      "line": 368
     },
     {
       "name": "practiceHints",
       "type": "PracticeHint",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 368
+      "line": 369
     },
     {
       "name": "practiceScoringRevisions",
       "type": "ScoringRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 369
+      "line": 370
     },
     {
       "name": "teacherAssignments",
       "type": "TeacherStudentAssignment",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 370
+      "line": 371
     },
     {
       "name": "evidenceFeedback",
       "type": "EvidenceFeedback",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 371
+      "line": 372
     },
     {
       "name": "importFiles",
       "type": "ImportFile",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 372
+      "line": 373
     },
     {
       "name": "processingArtifacts",
       "type": "ProcessingArtifact",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 373
+      "line": 374
     },
     {
       "name": "importPages",
       "type": "ImportPageEvidenceRef",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 374
+      "line": 375
     },
     {
       "name": "guidancePlanRevisions",
       "type": "GuidancePlanRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 375
+      "line": 376
     },
     {
       "name": "studentLearningAccess",
       "type": "StudentLearningAccess",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 376
+      "line": 377
     },
     {
       "name": "studentLearningCodes",
       "type": "StudentLearningCode",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 377
+      "line": 378
     },
     {
       "name": "studentAccessRevisions",
       "type": "StudentAccessRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 378
+      "line": 379
     },
     {
       "name": "studentProgressProposals",
       "type": "StudentProgressProposal",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 379
+      "line": 380
     },
     {
       "name": "privacyRequests",
       "type": "PrivacyReceipt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 380
+      "line": 381
     },
     {
       "name": "studentMedia",
       "type": "StudentMedia",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 381
+      "line": 382
     },
     {
       "name": "sessions",
       "type": "InMemoryAuthSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 382
+      "line": 383
     },
     {
       "name": "students",
       "type": "StudentProfile",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 383
+      "line": 384
     },
     {
       "name": "bindings",
       "type": "ParentStudentBinding",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 384
+      "line": 385
     },
     {
       "name": "studentInvitations",
       "type": "StudentInvitation",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 385
+      "line": 386
     },
     {
       "name": "subjectEnrollments",
       "type": "SubjectEnrollment",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 386
+      "line": 387
     },
     {
       "name": "textbookVolumes",
       "type": "TextbookVolume",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 387
+      "line": 388
     },
     {
       "name": "textbookUnits",
       "type": "TextbookUnit",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 388
+      "line": 389
     },
     {
       "name": "textbookLessons",
       "type": "TextbookLesson",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 389
+      "line": 390
     },
     {
       "name": "knowledgePoints",
       "type": "KnowledgePoint",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 390
+      "line": 391
     },
     {
       "name": "questions",
       "type": "Question",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 391
+      "line": 392
     },
     {
       "name": "questionDocuments",
       "type": "QuestionDocument",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 392
+      "line": 393
     },
     {
       "name": "questionAnswerSchemas",
       "type": "QuestionAnswerSchema",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 393
+      "line": 394
     },
     {
       "name": "questionSources",
       "type": "QuestionSourceRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 394
+      "line": 395
     },
     {
       "name": "questionImportJobs",
       "type": "QuestionImportJob",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 395
+      "line": 396
     },
     {
       "name": "questionImportRecords",
       "type": "QuestionImportRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 396
+      "line": 397
     },
     {
       "name": "assessments",
       "type": "AssessmentSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 397
+      "line": 398
     },
     {
       "name": "assessmentAnswers",
       "type": "AssessmentAnswerRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 398
+      "line": 399
     },
     {
       "name": "assessmentResults",
       "type": "AssessmentResult",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 399
+      "line": 400
     },
     {
       "name": "studyPlans",
       "type": "StudyPlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 400
+      "line": 401
     },
     {
       "name": "missions",
       "type": "DailyMissionInternal",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 401
+      "line": 402
     },
     {
       "name": "missionAnswers",
       "type": "MissionAnswerRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 402
+      "line": 403
     },
     {
       "name": "assistantSessions",
-      "type": "AssistantSession & { ownerUserId: string; scopeKey?: string }",
+      "type": "AssistantSession & { ownerUserId: string; scopeKey?: string; lectureSnapshot?: AssistantLectureSnapshot }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 403
+      "line": 404
     },
     {
       "name": "assistantMessages",
       "type": "AssistantMessage",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 404
+      "line": 405
     },
     {
       "name": "assistantTurns",
       "type": "AssistantTurnRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 405
+      "line": 406
     },
     {
       "name": "guidanceModelSuggestions",
       "type": "GuidanceModelSuggestionRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 406
+      "line": 407
     },
     {
       "name": "teachingToolRuns",
       "type": "TeachingToolRunRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 407
+      "line": 408
     },
     {
       "name": "aiInsights",
       "type": "AIInsightRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 408
+      "line": 409
     },
     {
       "name": "events",
       "type": "Record<string, unknown>",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 409
+      "line": 410
     },
     {
       "name": "knowledgeAtoms",
       "type": "KnowledgeAtom",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 410
+      "line": 411
     },
     {
       "name": "learningScopes",
       "type": "LearningScope",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 411
+      "line": 412
     },
     {
       "name": "measurementItems",
       "type": "MeasurementItem",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 412
+      "line": 413
     },
     {
       "name": "measurementCandidates",
       "type": "MeasurementContentCandidate",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 413
+      "line": 414
     },
     {
       "name": "mistakeNotebookEntries",
       "type": "MistakeNotebookEntry",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 414
+      "line": 415
     },
     {
       "name": "textbookAtomMappings",
       "type": "TextbookAtomMapping",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 415
+      "line": 416
     },
     {
       "name": "curriculumRevisions",
       "type": "CurriculumRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 416
+      "line": 417
     },
     {
       "name": "diagnosticSessions",
       "type": "DiagnosticSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 417
+      "line": 418
     },
     {
       "name": "diagnosticBlueprints",
       "type": "DiagnosticBlueprintReservation",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 418
+      "line": 419
     },
     {
       "name": "diagnosticResponses",
       "type": "DiagnosticResponse",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 419
+      "line": 420
     },
     {
       "name": "diagnosticHypotheses",
       "type": "DiagnosticHypothesis",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 420
+      "line": 421
     },
     {
       "name": "diagnosticPlans",
       "type": "DiagnosticGuidancePlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 421
+      "line": 422
     },
     {
       "name": "reviewTasks",
       "type": "ReviewTask",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 422
+      "line": 423
     },
     {
       "name": "scoringRevisions",
       "type": "ScoringRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 423
+      "line": 424
     },
     {
       "name": "diagnosticHints",
       "type": "{ id: string; sessionId: string; itemId: string; level: number; at: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 424
+      "line": 425
     },
     {
       "name": "diagnosticReports",
       "type": "{ id: string; sessionId: string; version: number; createdAt: string; report: DiagnosticReport; reanalysis?: { actorId: string; requestKey: string; inputHash: string } }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 425
+      "line": 426
     },
     {
       "name": "diagnosticDrafts",
       "type": "{ id: string; sessionId: string; itemId: string; answer: unknown; updatedAt: string } & AnswerDraftMetadata",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 427
+      "line": 428
     },
     {
       "name": "gespLearningScopes",
       "type": "GespLearningScope",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 428
+      "line": 429
     },
     {
       "name": "gespLearningScopeRevisions",
       "type": "GespLearningScopeRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 429
+      "line": 430
     },
     {
       "name": "gespCodeSubmissions",
       "type": "GespCodeSubmissionReceipt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 430
+      "line": 431
     },
     {
       "name": "gespProbeSubmissions",
       "type": "GespProbeSubmissionReceipt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 431
+      "line": 432
     },
     {
       "name": "gespHintEvents",
       "type": "GespHintEvent",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 432
+      "line": 433
     },
     {
       "name": "gespGuidancePlans",
       "type": "GespGuidancePlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 433
+      "line": 434
     },
     {
       "name": "gespGuidancePlanRevisions",
       "type": "GespGuidancePlanRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 434
+      "line": 435
     },
     {
       "name": "gespReviewTasks",
       "type": "GespReviewTask",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 435
+      "line": 436
     },
     {
       "name": "gespTaskReviews",
       "type": "GespTaskReview",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 436
+      "line": 437
     },
     {
       "name": "gespTaskReviewRevisions",
       "type": "GespTaskReviewRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 437
+      "line": 438
     },
     {
       "name": "studioCourses",
       "type": "StudioCourse",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 438
+      "line": 439
     },
     {
       "name": "classroomSessions",
       "type": "ClassroomSessionRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 439
+      "line": 440
     },
     {
       "name": "classroomTurns",
       "type": "ClassroomTurnRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 440
+      "line": 441
     },
     {
       "name": "whiteboardQuestionTurns",
       "type": "WhiteboardQuestionRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 441
+      "line": 442
     },
     {
       "name": "whiteboardQuestionVisuals",
       "type": "QuestionVisualRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 442
+      "line": 443
     },
     {
       "name": "classroomCodeDrafts",
       "type": "ClassroomCodeDraftRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 443
+      "line": 444
     },
     {
       "name": "classroomVisuals",
       "type": "ClassroomVisualRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 444
+      "line": 445
     },
     {
       "name": "courseProjects",
       "type": "CourseProjectRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 445
+      "line": 446
     },
     {
       "name": "projectAssetUploads",
       "type": "ProjectUploadRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 446
+      "line": 447
     },
     {
       "name": "projectAssets",
       "type": "ProjectAssetRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 447
+      "line": 448
     },
     {
       "name": "sourceCourses",
       "type": "SourceCourseRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 448
+      "line": 449
     },
     {
       "name": "sourceCourseChecks",
       "type": "SourceCourseCheckRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 449
+      "line": 450
     },
     {
       "name": "sourceCourseCheckPublications",
       "type": "SourceCourseCheckPublication",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 450
+      "line": 451
     },
     {
       "name": "studioTopicWhiteboardDrafts",
       "type": "TopicWhiteboardDraftRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 451
+      "line": 452
     },
     {
       "name": "studioTopicWhiteboards",
       "type": "TopicWhiteboardRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 452
+      "line": 453
     },
     {
       "name": "studioTopicWhiteboardVisuals",
       "type": "TopicVisualRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 453
+      "line": 454
     },
     {
       "name": "sourceCourseStages",
       "type": "SourceCourseStageRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 454
+      "line": 455
     },
     {
       "name": "studioActivities",
       "type": "StudioActivity",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 455
+      "line": 456
     },
     {
       "name": "studioStudyPlans",
       "type": "StudioStudyPlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 456
+      "line": 457
     },
     {
       "name": "studioSourceMaterials",
       "type": "StudioSourceMaterial",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 457
+      "line": 458
     },
     {
       "name": "studioMaterialUploads",
       "type": "StudioMaterialUploadRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 458
+      "line": 459
     },
     {
       "name": "studioMaterialAssets",
       "type": "StudioMaterialAssetRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 459
+      "line": 460
     },
     {
       "name": "studioOriginalRepairs",
       "type": "StudioOriginalRepairRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 460
+      "line": 461
     },
     {
       "name": "studioLearningPacks",
       "type": "StudioLearningPack",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 461
+      "line": 462
     },
     {
       "name": "studioWhiteboards",
       "type": "StudioWhiteboard",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 462
+      "line": 463
     },
     {
       "name": "studioConnectors",
       "type": "StudioConnector & { encryptedFeedUrl: string; requestKey?: string; requestHash?: string; createdBy?: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 463
+      "line": 464
     },
     {
       "name": "studioScheduleEvents",
       "type": "StudioScheduleEvent & { createdBy?: string; requestHash?: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 464
+      "line": 465
     }
   ],
   "contractTypes": [
@@ -42606,9 +42738,89 @@
       ]
     },
     {
-      "name": "AssistantContextView",
+      "name": "AssistantLectureSummary",
       "file": "packages/contracts/src/assistant-turn.ts",
       "line": 7,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "courseId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "courseVersion",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "courseTitle",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "unitId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "unitTitle",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "unitPosition",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "lectureId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "lectureTitle",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "lecturePosition",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "fingerprint",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "referenceId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "current",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "href",
+          "optional": false,
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "AssistantLectureDescriptor",
+      "file": "packages/contracts/src/assistant-turn.ts",
+      "line": 10,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "AssistantContextView",
+      "file": "packages/contracts/src/assistant-turn.ts",
+      "line": 11,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -42620,13 +42832,18 @@
           "name": "location",
           "optional": false,
           "type": "AssistantLocation"
+        },
+        {
+          "name": "lecture",
+          "optional": true,
+          "type": "AssistantLectureSummary"
         }
       ]
     },
     {
       "name": "AssistantTurnCommand",
       "file": "packages/contracts/src/assistant-turn.ts",
-      "line": 8,
+      "line": 12,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -42654,7 +42871,7 @@
     {
       "name": "AssistantTurnView",
       "file": "packages/contracts/src/assistant-turn.ts",
-      "line": 9,
+      "line": 13,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -42747,7 +42964,7 @@
     {
       "name": "AssistantHistoryPage",
       "file": "packages/contracts/src/assistant-turn.ts",
-      "line": 14,
+      "line": 18,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -42770,7 +42987,7 @@
     {
       "name": "AssistantTurnList",
       "file": "packages/contracts/src/assistant-turn.ts",
-      "line": 15,
+      "line": 19,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -42798,7 +43015,7 @@
     {
       "name": "AssistantHistorySearch",
       "file": "packages/contracts/src/assistant-turn.ts",
-      "line": 16,
+      "line": 20,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -55580,6 +55797,9 @@
     "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts",
     "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts",
     "apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts",
+    "apps/api/src/modules/ai/assistant-lecture-context.test.ts",
+    "apps/api/src/modules/ai/assistant-lecture-recovery.integration.test.ts",
+    "apps/api/src/modules/ai/assistant-lecture.integration.test.ts",
     "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
     "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
     "apps/api/src/modules/ai/classroom-image.service.test.ts",
@@ -55760,6 +55980,7 @@
     "tests/e2e/source-course-long.spec.ts",
     "tests/e2e/source-course-project.spec.ts",
     "tests/e2e/source-course.spec.ts",
+    "tests/e2e/studio-assistant.spec.ts",
     "tests/e2e/studio.spec.ts",
     "tests/e2e/teaching-tools.spec.ts",
     "tests/e2e/topic-whiteboard.spec.ts",

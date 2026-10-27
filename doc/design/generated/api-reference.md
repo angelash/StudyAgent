@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`09ee19bd32fb08d2b85428c387748e327c6fc2f6`。共 444 个 HTTP 路由声明，当前 AppModule 可达 423 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`1385d100e5a91e9378b8191d7fd897f8cb378075`。共 445 个 HTTP 路由声明，当前 AppModule 可达 424 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -64,18 +64,27 @@
 - 方法装饰器：`[]`
 - 调用：`this.teaching.submit`
 
-### POST /api/ai/assistant/sessions
+### GET /api/ai/assistant/lecture-context
 
-实现：[apps/api/src/modules/ai/ai.controller.ts:29](../../../apps/api/src/modules/ai/ai.controller.ts#L29)，方法 `openSession`。
+实现：[apps/api/src/modules/ai/ai.controller.ts:29](../../../apps/api/src/modules/ai/ai.controller.ts#L29)，方法 `lectureContext`。
 
-- 签名：`openSession(@Req() req: AuthenticatedRequest, @Body() body: { userRole: 'student' | 'parent'; studentId: string | null; subject?: 'math' | 'chinese' | 'english' | null; pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report'; contextRefType?: string | null; contextRefId?: string | null; contextItemId?: string | null; })`
+- 签名：`lectureContext(@Req() req: AuthenticatedRequest, @Query() query: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
-- 调用：`this.aiService.openAssistantSession`
+- 调用：`this.aiService.lectureDescriptor`
+
+### POST /api/ai/assistant/sessions
+
+实现：[apps/api/src/modules/ai/ai.controller.ts:34](../../../apps/api/src/modules/ai/ai.controller.ts#L34)，方法 `openSession`。
+
+- 签名：`openSession(@Req() req: AuthenticatedRequest, @Body() body: { userRole: 'student' | 'parent'; studentId: string | null; subject?: 'math' | 'chinese' | 'english' | null; pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report' | 'classroom' | 'studio'; contextRefType?: string | null; contextRefId?: string | null; contextItemId?: string | null; })`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.aiService.openDurableAssistantSession`
 
 ### POST /api/ai/assistant/sessions/:sessionId/messages
 
-实现：[apps/api/src/modules/ai/ai.controller.ts:46](../../../apps/api/src/modules/ai/ai.controller.ts#L46)，方法 `chat`。
+实现：[apps/api/src/modules/ai/ai.controller.ts:51](../../../apps/api/src/modules/ai/ai.controller.ts#L51)，方法 `chat`。
 
 - 签名：`chat(@Req() req: AuthenticatedRequest, @Res({ passthrough: true }) response: Response, @Param('sessionId') sessionId: string, @Body() body: { message: string; requestKey?: string; modelId?: string })`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -84,7 +93,7 @@
 
 ### GET /api/ai/assistant/sessions/:sessionId/messages
 
-实现：[apps/api/src/modules/ai/ai.controller.ts:60](../../../apps/api/src/modules/ai/ai.controller.ts#L60)，方法 `listMessages`。
+实现：[apps/api/src/modules/ai/ai.controller.ts:65](../../../apps/api/src/modules/ai/ai.controller.ts#L65)，方法 `listMessages`。
 
 - 签名：`listMessages(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`

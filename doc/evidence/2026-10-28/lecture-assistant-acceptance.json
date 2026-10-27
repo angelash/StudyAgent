@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "1385d100e5a91e9378b8191d7fd897f8cb378075",
+  "passed": false,
+  "phase": "full-browser-and-exact-ci-pending",
+  "scope": "140 adult authored lecture and independent persistent assistant. Complete M1-M7 and original72 goal remain active.",
+  "api": {
+    "passed": 1539,
+    "failed": 0,
+    "environmentSkipped": 65,
+    "beforeAfterFixedInputCount": 919,
+    "receipt": "lecture-full-api-first/receipt.json"
+  },
+  "browser": {
+    "priorSharedPassed": 37,
+    "priorSharedBeforeFinalNavigation": true,
+    "finalNavigationPassed": 2,
+    "full": null,
+    "receipts": [
+      "lecture-shared-second/receipt.json",
+      "lecture-navigation-final/receipt.json"
+    ]
+  },
+  "postgresCombination": {
+    "passed": 13,
+    "failed": 0,
+    "postgresHttp": 11,
+    "postgresNative": 1,
+    "sqliteNativeControl": 1,
+    "receipt": "lecture-live-and-postgres/receipt.json"
+  },
+  "realDefaultModel": {
+    "passed": 2,
+    "modelId": "deepseek-v4-flash",
+    "originalRequestReplayVerified": true,
+    "formalRecordsUnchanged": true,
+    "matrixRequalified": false,
+    "receipt": "lecture-live-and-postgres/receipt.json",
+    "originalRunnerFailure": "lecture-live-first/receipt.json"
+  },
+  "design": {
+    "areas": 14,
+    "features": 128,
+    "normalRoutes": 424,
+    "coveredRoutes": 424,
+    "sourceFiles": 594,
+    "markdownLinks": 3785,
+    "viewerChecks": 10,
+    "applicationBaseline": "measurement-v3-acceptance.json",
+    "baselineIsCurrent140Acceptance": false
+  },
+  "requirements": {
+    "implemented": 11,
+    "inProgress": 50,
+    "planned": 11,
+    "verified": 0
+  },
+  "exactCi": null,
+  "runtime": null,
+  "productionUpgradePerformed": false,
+  "limits": [
+    "Adult authored lecture source only; primary/material-course context remains subsequent work.",
+    "Conversation-to-artifact source/confirmation chain remains subsequent work.",
+    "No complete pixel/DPR/audio, teacher, all-content or long-term learning validation claim.",
+    "Earlier37 browser result predates final navigation; full current suite is required."
+  ]
+}

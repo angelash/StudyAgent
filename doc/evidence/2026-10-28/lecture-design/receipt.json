@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "sourceRevision": "1385d100e5a91e9378b8191d7fd897f8cb378075",
+  "areas": 14,
+  "features": 128,
+  "normalRoutes": 424,
+  "coveredRoutes": 424,
+  "sourceFiles": 594,
+  "markdownLinks": 3785,
+  "viewerChecks": 10,
+  "scope": "Static source-backed handbook and offline viewer only. Recorded application baseline remains delivered139; this does not claim140 full application or production acceptance.",
+  "files": {
+    "doc/design/generated/design-validation.json": {
+      "sha256": "579bfd0390317335974359c0e3e5afe90f7c0f96ec124e7995e11c522fcb2422",
+      "gzipSha256": "486120a02b918933cbff475d1f1a8a554dc51fadfda8f41896af9b342cb93630"
+    },
+    "doc/design/generated/coverage.json": {
+      "sha256": "f37949454810fa3c5a65a50ecacbb097786f73679c699bd3c50d335044aad3e0",
+      "gzipSha256": "051989dbe45559a85567dd6873568665fc0be1bc6f725c806e41672739b49727"
+    },
+    "doc/design/generated/source-inventory.json": {
+      "sha256": "4bdab6dbd941709e1338b28bbcf8f856121f52215fc7b9a0c0dd461586b6759d",
+      "gzipSha256": "11a4462818bbe43d0029c1f728bccd8f4c5d72a499f9c39d59d8fadac54112f2"
+    },
+    "doc/design/generated/content-snapshot.json": {
+      "sha256": "c3901d2b9ab1cc2a038132d93a9e078b72f1437eda5b909790cd3e2fc565f735",
+      "gzipSha256": "487c7bf8c0c315ec154d493609b6ac94ac2517f2f9b5244298ce4cd301994b4d"
+    },
+    "data/qa/lecture-design-authored.log": {
+      "sha256": "6b1528278f408783f3b30fee14e1c16e49a7466b6de730bc3102d2a0fe481792",
+      "gzipSha256": "277b6eab73778039ce7ed1c8687c8904d9872c3fabf3e4f87a311b7c743b8033"
+    },
+    "data/qa/lecture-design-inventory.log": {
+      "sha256": "65c6f16f199ae8e3d65a2aec5dd250d75ab066b5a5dbb9b0908fea7ec8387d44",
+      "gzipSha256": "ebac958ee3f6d9482215e0e5bf2856851113c3b0888f13b3fb16162ffdd3f4f6"
+    },
+    "data/qa/lecture-design-content.log": {
+      "sha256": "e95820dbe556ead23a88d9955c3175503e6a1a4d5963d954ad8832ccfb7b2ec6",
+      "gzipSha256": "62432f8f9e674f9adfa1af43b09161197ea0a253d7af4bd6abaa8f2ebd4d1456"
+    },
+    "data/qa/lecture-design-build.log": {
+      "sha256": "312c8509bacf03ca16e708ef6ca8591d8d4e67ce4a6abb8ed76734614dff1ca9",
+      "gzipSha256": "c013933456a5e58b3d314ff19db7e248d1972ce8a1eced0cb078b68ee92dc6d3"
+    },
+    "data/qa/lecture-design-validation.log": {
+      "sha256": "4afabc7a01cb38a9d5c360ea3e588b1c6433a24f546f38215cd3952b9d8d8774",
+      "gzipSha256": "c4cfc3a2622ce62085b98df775f5e167baf91890646e24dbb88fe447923c1c91"
+    },
+    "data/qa/lecture-final-doc-links.log": {
+      "sha256": "96681df7d7607d43017d7b1cfc2c90b0b2244d4f2ae8a95b2e9c9ddf4ba47bb4",
+      "gzipSha256": "a7fc176deeebe29bf40e2e2a461fb601077aed26d755e4d531f1a208589aaf1d"
+    },
+    "data/qa/project-design-viewer/desktop.png": {
+      "sha256": "2c36f663c7ceeed2470f08b17c24e393ff13651de9ae1d42ee3fad6f05f202ad",
+      "gzipSha256": "d5c156ea901a4198b6eef7e6591d80ac0572eb02f4dae4bc66845dafcb9d4d97"
+    },
+    "data/qa/project-design-viewer/mobile.png": {
+      "sha256": "66229edd87fb36bbd19ec7f603fc3985fd349520bd9ea12f7f5e002e66eeadf8",
+      "gzipSha256": "cc1187b316f356e053dac7f0a1f826469304e0034d3917a2e02770b5a10d1697"
+    }
+  }
+}

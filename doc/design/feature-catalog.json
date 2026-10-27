@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "09ee19bd32fb08d2b85428c387748e327c6fc2f6",
+  "sourceRevision": "1385d100e5a91e9378b8191d7fd897f8cb378075",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
     "features": 128,
-    "activeNormalApiRoutes": 423,
-    "coveredApiRoutes": 423
+    "activeNormalApiRoutes": 424,
+    "coveredApiRoutes": 424
   },
   "areas": [
     {
@@ -4483,7 +4483,7 @@
             {
               "name": "AiService.modelCatalog",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 73
+              "line": 74
             }
           ],
           "sourceFiles": [
@@ -4517,7 +4517,7 @@
             "/admin/ai-tools"
           ],
           "inputs": "角色、学生、学科、页面上下文、完整原问题、原modelId、requestKey与contextVersion",
-          "implementation": "普通提问和旧同步入口共用持久队列；冻结实际模型、内部授权/题目指纹，事务核对首答/订正与租约后一次发布消息对和辅助事实；排队/生成/检查/失败/取消由服务端版本化轮询恢复；停止等待与取消生成分开；原任务显式重试保留模型。",
+          "implementation": "普通提问和旧同步入口共用持久队列；冻结实际模型、内部授权/题目指纹，事务核对首答/订正与租约后一次发布消息对和辅助事实；排队/生成/检查/失败/取消由服务端版本化轮询恢复；停止等待与取消生成分开；原任务显式重试保留模型。成人讲座按课程/讲座/完整内容指纹冻结安全目标，不绑定孩子；移除讲座进入独立studio会话；首页复用同一持久组件；工具往返与刷新保留mode/audience及原讲座标识，恢复各自原稿。并发首次open在有限事务中重新鉴权并复用原会话。",
           "outputs": "可恢复原提问、真实任务状态、已校验消息和辅助事实",
           "collections": [
             "assistantSessions",
@@ -4528,12 +4528,20 @@
           "limits": "进行中诊断使用规则；非法引用和泄题必须失败；本机草稿只按账号/位置读取，缓存不可用保留文字并可下载；状态轮询不等于token流。",
           "endpoints": [
             {
+              "verb": "GET",
+              "path": "/api/ai/assistant/lecture-context",
+              "controller": "AiController",
+              "method": "lectureContext",
+              "file": "apps/api/src/modules/ai/ai.controller.ts",
+              "line": 29
+            },
+            {
               "verb": "POST",
               "path": "/api/ai/assistant/sessions",
               "controller": "AiController",
               "method": "openSession",
               "file": "apps/api/src/modules/ai/ai.controller.ts",
-              "line": 29
+              "line": 34
             },
             {
               "verb": "POST",
@@ -4541,7 +4549,7 @@
               "controller": "AiController",
               "method": "chat",
               "file": "apps/api/src/modules/ai/ai.controller.ts",
-              "line": 46
+              "line": 51
             },
             {
               "verb": "GET",
@@ -4549,7 +4557,7 @@
               "controller": "AiController",
               "method": "listMessages",
               "file": "apps/api/src/modules/ai/ai.controller.ts",
-              "line": 60
+              "line": 65
             },
             {
               "verb": "GET",
@@ -4602,49 +4610,54 @@
           ],
           "implementations": [
             {
-              "name": "AiService.openAssistantSession",
+              "name": "AiService.lectureDescriptor",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 188
+              "line": 274
+            },
+            {
+              "name": "AiService.openDurableAssistantSession",
+              "file": "apps/api/src/modules/ai/ai.service.ts",
+              "line": 253
             },
             {
               "name": "AiService.assertSessionOwner",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 235
+              "line": 314
             },
             {
               "name": "AiService.chat",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 348
+              "line": 434
             },
             {
               "name": "AiService.listMessages",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 462
+              "line": 550
             },
             {
               "name": "AssistantTurnService.context",
               "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
-              "line": 49
+              "line": 57
             },
             {
               "name": "AssistantTurnService.list",
               "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
-              "line": 63
+              "line": 72
             },
             {
               "name": "AssistantTurnService.get",
               "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
-              "line": 62
+              "line": 71
             },
             {
               "name": "AssistantTurnService.create",
               "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
-              "line": 89
+              "line": 98
             },
             {
               "name": "AssistantTurnService.control",
               "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
-              "line": 113
+              "line": 122
             }
           ],
           "sourceFiles": [
@@ -4652,6 +4665,12 @@
             "apps/api/src/modules/ai/assistant-turn-worker.service.ts",
             "apps/web/lib/assistant-conversation.tsx",
             "apps/web/components/assistant-widget.tsx",
+            "apps/api/src/modules/ai/assistant-lecture-context.ts",
+            "apps/api/src/modules/ai/assistant-lecture.integration.test.ts",
+            "apps/api/src/modules/ai/assistant-lecture-recovery.integration.test.ts",
+            "apps/web/app/studio/studio-instant-assistant.tsx",
+            "apps/web/app/studio/studio-instant-assistant.css",
+            "tests/e2e/studio-assistant.spec.ts",
             "apps/api/src/modules/ai/ai.service.ts"
           ],
           "tests": [
@@ -4689,7 +4708,7 @@
             "assistantMessages",
             "assistantTurns"
           ],
-          "limits": "每会话/总扫描有明确预算，超限报错；不静默截断结果；回看不改变首答/核查顺序，尚未开放题目不能通过定位提前查看。",
+          "limits": "每会话/总扫描有明确预算，超限报错；不静默截断结果；回看不改变首答/核查顺序，尚未开放题目不能通过定位提前查看。本人旧讲座深链仅从已保留原快照读取，缺失/损坏不重建；过期或移除讲座禁止发送/重试，保留本机原稿；选中其他历史时隐藏当前讲座卡。",
           "endpoints": [
             {
               "verb": "GET",
@@ -4712,12 +4731,12 @@
             {
               "name": "AssistantTurnService.history",
               "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
-              "line": 144
+              "line": 153
             },
             {
               "name": "AssistantTurnService.page",
               "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
-              "line": 128
+              "line": 137
             }
           ],
           "sourceFiles": [
@@ -10854,7 +10873,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 348
+              "line": 349
             },
             {
               "name": "DomainEventBusService.publish",
@@ -10864,7 +10883,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 246
+              "line": 247
             }
           ],
           "sourceFiles": [
@@ -11057,7 +11076,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 246
+              "line": 247
             }
           ],
           "sourceFiles": [
@@ -11134,7 +11153,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 230
+              "line": 231
             },
             {
               "name": "RuntimeMetricsService.snapshot",
