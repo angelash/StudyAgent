@@ -113,6 +113,56 @@ describe('durable internal teaching HTTP/' + (pgLocation ? 'PostgreSQL' : 'SQLit
     expect((await call('get', endpoint + '/runs', undefined, other)).runs).toEqual([]); expect(provider).toHaveBeenCalledTimes(count);
     for (const row of [first, hint, last]) await control(row, 'cancel');
   });
+  const legacyQuestion = () => ({ id: 'legacy-temporary-' + randomUUID(), subject: 'math', type: 'fill', stem: draft().source.question.stem,
+    answer: '6.4', analysis: '总分除以人数。' });
+  it('adapts the old analysis HTTP into one frozen DS task, restores it without catalog lookup and never invokes the old SDK method', async () => {
+    const ai = app.get(load('modules/ai/ai.service').AiService), old = vi.spyOn(ai, 'analyzeAssessment').mockImplementation(() => { throw Error('Retired SDK path must stay unused'); });
+    const c = { question: legacyQuestion(), answer: draft().answer, requestKey: randomUUID() }, count = provider.mock.calls.length;
+    try {
+      const queued = await call('post', '/ai/assessment/analyze', c, admin, 202); expect(queued).toMatchObject({ status: 'queued', summary: null, structuredResult: null, confidenceLevel: null,
+        modelId: 'deepseek-v4-flash', source: 'xiaojiu', reviewRequired: true, advisoryOnly: true }); expect(provider).toHaveBeenCalledTimes(count);
+      const resolveModel = vi.spyOn(models, 'resolve').mockImplementation(() => { throw Error('Do not resolve an original legacy replay'); });
+      try { expect((await call('post', '/ai/assessment/analyze', c, admin, 202)).runId).toBe(queued.runId); } finally { resolveModel.mockRestore(); }
+      await call('post', '/ai/assessment/analyze', { ...c, modelId: 'claude-sonnet-5' }, admin, 409);
+      await worker.runNext(); const done = await call('post', '/ai/assessment/analyze', c);
+      expect(done).toMatchObject({ runId: queued.runId, status: 'completed', structuredResult: { correct: false, judgement: 'incorrect' }, modelId: 'deepseek-v4-flash', source: 'xiaojiu', reviewRequired: true, advisoryOnly: true });
+      expect(done.summary).toBeTruthy(); expect((await call('get', done.runPath.slice(4))).snapshot.answer).toEqual(c.answer);
+      expect(provider).toHaveBeenCalledTimes(count + 1); expect(old).not.toHaveBeenCalled();
+    } finally { old.mockRestore(); }
+  });
+  it('adapts old hints to an explicit model/help level and preserves failed drafts without a rules fallback or automatic regeneration', async () => {
+    const ai = app.get(load('modules/ai/ai.service').AiService), old = vi.spyOn(ai, 'generateHint').mockImplementation(() => { throw Error('Retired hint SDK must stay unused'); });
+    try {
+      const c = { question: legacyQuestion(), answerHistoryCount: 3, modelId: 'claude-sonnet-5', requestKey: randomUUID() };
+      const queued = await call('post', '/ai/hints/generate', c, admin, 202); expect(queued.hint).toBeNull(); await worker.runNext();
+      const done = await call('post', '/ai/hints/generate', c); expect(done).toMatchObject({ runId: queued.runId, status: 'completed', source: 'xiaojiu', modelId: 'claude-sonnet-5', suggestedLevel: 2, reviewRequired: true, advisoryOnly: true }); expect(done.hint).toBeTruthy();
+      const failedInput = { ...c, requestKey: randomUUID(), hintLevel: 1 }; await call('post', '/ai/hints/generate', failedInput, admin, 202);
+      mode = 'invalid'; await worker.runNext(); mode = 'valid'; const count = provider.mock.calls.length;
+      const failed = await call('post', '/ai/hints/generate', failedInput, admin, 200); expect(failed).toMatchObject({ status: 'failed', hint: null, source: 'xiaojiu', errorCode: 'teaching_generation_failed' });
+      expect((await call('post', '/ai/hints/generate', failedInput, admin, 200)).runId).toBe(failed.runId); expect(provider).toHaveBeenCalledTimes(count); expect(old).not.toHaveBeenCalled();
+    } finally { old.mockRestore(); }
+  });
+  it('uses complete server originals for an old bank ID and replays its frozen record after withdrawal without disguising a new request as temporary', async () => {
+    const id = 'legacy-bank-' + randomUUID(), q = legacyQuestion();
+    await store.transaction(() => { store.append('questions', { ...q, id, status: 'published', stem: '服务端完整原题：' + q.stem });
+      store.append('questionDocuments', { questionId: id, version: 7, blocks: [{ id: 'original-formula', type: 'formula', text: '\\frac{32}{5}' }], attachments: [] }); });
+    const c = { question: { ...q, id, stem: '客户端伪造题干', answer: '客户端伪造答案' }, answer: draft().answer, requestKey: randomUUID() };
+    const queued = await call('post', '/ai/assessment/analyze', c, admin, 202), run = await call('get', queued.runPath.slice(4));
+    expect(run.snapshot).toMatchObject({ source: { kind: 'question_bank', questionId: id }, question: { stem: '服务端完整原题：' + q.stem, referenceAnswer: '6.4', originalDocument: { version: 7 } } });
+    await worker.runNext(); await store.transaction(() => { store.find('questions', { id }).status = 'withdrawn'; });
+    expect((await call('post', '/ai/assessment/analyze', c)).runId).toBe(queued.runId);
+    await call('post', '/ai/assessment/analyze', { ...c, requestKey: randomUUID() }, admin, 404);
+  });
+  it('keeps old teaching HTTP admin-only and rejects missing/non-finite answers and purpose/model collisions before any extra task', async () => {
+    const c = { question: legacyQuestion(), answer: null, requestKey: randomUUID() };
+    await call('post', '/ai/assessment/analyze', c, null, 401); await call('post', '/ai/assessment/analyze', c, parent, 403);
+    const queued = await call('post', '/ai/assessment/analyze', c, admin, 202);
+    await call('post', '/ai/hints/generate', { question: c.question, requestKey: c.requestKey, answerHistoryCount: 0 }, admin, 409);
+    await call('post', '/ai/assessment/analyze', { ...c, answer: undefined }, admin, 400);
+    const raw = JSON.stringify(c).replace('"answer":null', '"answer":1e999');
+    expect((await request(app.getHttpServer()).post('/api/ai/assessment/analyze').set('Authorization', 'Bearer ' + admin.token).type('json').send(raw)).status).toBe(400);
+    const run = await call('get', queued.runPath.slice(4)); expect(run.snapshot.answer).toBeNull(); await control(run, 'cancel');
+  });
   it('denies anonymous, non-admin and another admin access to an owner record', async () => {
     await call('post', endpoint + '/preflight', draft(), null, 401); await call('post', endpoint + '/preflight', draft(), parent, 403);
     const row = await create();

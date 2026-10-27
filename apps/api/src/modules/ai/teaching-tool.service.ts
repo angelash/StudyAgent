@@ -32,6 +32,7 @@ function hasMedia(value: unknown, depth = 0, budget = { count: 0 }): boolean {
 @Injectable()
 export class TeachingToolService {
   constructor(private readonly store: InMemoryStoreService, private readonly models: XiaojiuModelsService, private readonly provider: XiaojiuChatService) {}
+  modelAvailable() { return this.provider.enabled; }
   private async commandTransaction<T>(operation: () => T | Promise<T>): Promise<T> {
     // One fresh snapshot lets a concurrent winner's original receipt be read.
     // No supplier calls occur inside these command transactions.
@@ -145,7 +146,7 @@ export class TeachingToolService {
       if (previous) { if (previous.commandHash !== commandHash) throw new ConflictException('请求键已用于另一份题目、输入或模型'); return this.view(previous); }
       const prepared = this.prepared(user, c.draft), preview = prepared.view;
       if (preview.fingerprint !== c.fingerprint) throw new ConflictException('原题目或模型默认已变化，请核对完整预检后重新请求');
-      if (!this.provider.enabled) throw new ServiceUnavailableException('小九AI教研生成当前未启用，原输入与历史仍可保留');
+      if (!this.modelAvailable()) throw new ServiceUnavailableException('小九AI教研生成当前未启用，原输入与历史仍可保留');
       const now = new Date().toISOString(), id = this.store.nextId('teaching_tool'), inputHash = teachingToolDigest([preview.fingerprint, user.id]);
       const row: TeachingToolRunRecord = { id, requestKey: c.requestKey, ownerUserId: user.id, authorizationSessionId: auth.id, purpose: preview.snapshot.purpose,
         requestedModelId: preview.requestedModelId, modelId: preview.modelId, modelName: preview.modelName, snapshot: preview.snapshot, context: prepared.context,

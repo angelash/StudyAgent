@@ -1,4 +1,5 @@
 import { TeachingToolService } from './teaching-tool.service';
+import { TeachingToolCompatibilityService } from './teaching-tool-compatibility.service';
 import { TeachingToolWorkerService } from './teaching-tool-worker.service';
 import { TeachingToolController } from './teaching-tool.controller';
 import { teachingToolWorkerPort } from './teaching-tool-record';
@@ -18,7 +19,7 @@ import { assistantTurnPort, assistantWorkerPort } from './assistant-turn-record'
 @Module({
   imports: [StudentsModule],
   controllers: [AiController,AssistantTurnController,TeachingToolController],
-  providers: [TeachingToolService,TeachingToolWorkerService,{provide:teachingToolWorkerPort,useExisting:TeachingToolWorkerService},AiService, SpeechService, CodexPdfStructureService, XiaojiuModelsService, XiaojiuChatService,AssistantTurnService,AssistantTurnWorkerService,
+  providers: [TeachingToolCompatibilityService,TeachingToolService,TeachingToolWorkerService,{provide:teachingToolWorkerPort,useExisting:TeachingToolWorkerService},AiService, SpeechService, CodexPdfStructureService, XiaojiuModelsService, XiaojiuChatService,AssistantTurnService,AssistantTurnWorkerService,
     {provide:assistantTurnPort,useExisting:AssistantTurnService},{provide:assistantWorkerPort,useExisting:AssistantTurnWorkerService}],
   exports: [AiService, SpeechService, CodexPdfStructureService, XiaojiuModelsService, XiaojiuChatService],
 })

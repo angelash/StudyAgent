@@ -1,27 +1,29 @@
 import { Body, Controller, ForbiddenException, Get, Param, Post, Req, Res, UseGuards } from '@nestjs/common';
 import type { Response } from 'express';
 import { AuthGuard, AuthenticatedRequest } from '../../common/auth.guard';
-import { Question } from '@study-agent/contracts';
 import { AiService } from './ai.service';
+import { TeachingToolCompatibilityService } from './teaching-tool-compatibility.service';
 
 @UseGuards(AuthGuard)
 @Controller('ai')
 export class AiController {
-  constructor(private readonly aiService: AiService) {}
+  constructor(private readonly aiService: AiService, private readonly teaching: TeachingToolCompatibilityService) {}
 
   @Get('models')
   models() { return this.aiService.modelCatalog(); }
 
   @Post('assessment/analyze')
-  analyzeAssessment(@Req() req: AuthenticatedRequest, @Body() body: { question: Question; answer: unknown }) {
+  async analyzeAssessment(@Req() req: AuthenticatedRequest, @Body() body: unknown, @Res({ passthrough: true }) response: Response) {
     if (req.user.role !== 'admin') throw new ForbiddenException('该工具仅供教研使用');
-    return this.aiService.analyzeAssessment(body);
+    const result = await this.teaching.submit(req.user, req.authSession, 'assessment_analysis', body);
+    response.status(result.httpStatus); return result.data;
   }
 
   @Post('hints/generate')
-  generateHint(@Req() req: AuthenticatedRequest, @Body() body: { question: Question; answerHistoryCount: number }) {
+  async generateHint(@Req() req: AuthenticatedRequest, @Body() body: unknown, @Res({ passthrough: true }) response: Response) {
     if (req.user.role !== 'admin') throw new ForbiddenException('请从当前学习任务获取提示');
-    return this.aiService.generateHint(body);
+    const result = await this.teaching.submit(req.user, req.authSession, 'hint_draft', body);
+    response.status(result.httpStatus); return result.data;
   }
 
   @Post('assistant/sessions')

@@ -136,6 +136,12 @@ export default function AdminAnalyticsPage() {
         </div>
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           <Link
+            href="/admin/ai-tools"
+            style={{ padding: '10px 14px', borderRadius: 12, background: '#fff', border: '1px solid #cbd5e1', color: '#0f172a' }}
+          >
+            AI教研
+          </Link>
+          <Link
             href="/admin/content"
             style={{ padding: '10px 14px', borderRadius: 12, background: '#fff', border: '1px solid #cbd5e1', color: '#0f172a' }}
           >

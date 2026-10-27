@@ -1,0 +1,34 @@
+{
+  "stats": {
+    "startTime": "2026-10-27T15:32:27.261Z",
+    "duration": 72642.00200000001,
+    "expected": 17,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "dirtyCandidate": true,
+  "scope": "17 focused scenarios before the subsequent read-only archived-control view and live runner additions; full frozen candidate acceptance remains required.",
+  "files": {
+    "analysis-1280.png": {
+      "bytes": 171937,
+      "sha256": "4a5258dc4f467b539c0e8ed98f8a2a89ef47645bcc8d5d42b4ce2eed926690ac"
+    },
+    "analysis-390.png": {
+      "bytes": 178149,
+      "sha256": "c592c62d746fbf3b56339e99121efb46d15d5f32146086f86fd1be6c9bd01e21"
+    },
+    "analysis-768.png": {
+      "bytes": 161570,
+      "sha256": "3ad1bdcff874bd6eb42dfc66d901273459db83e958f8d6f21039e6ac6e49dc71"
+    },
+    "teaching-ui-fifth-browser.json.gz": {
+      "bytes": 2562,
+      "sha256": "59dba5ee8cdd44dc01f56c15833dca81d7936731eb36ed0a465c7510f1314d07"
+    },
+    "teaching-ui-fifth-browser.log.gz": {
+      "bytes": 2126,
+      "sha256": "ea9c4fa033860b1b22555060a8ca41c8728097da7c57d708732e6165c97d8619"
+    }
+  }
+}
