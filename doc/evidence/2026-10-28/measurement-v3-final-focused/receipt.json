@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "head": "078f2eef267b4868f59656b43e6073c842d015e2",
+  "tests": 18,
+  "originalAttempts": 18,
+  "failed": 0,
+  "skipped": 0,
+  "flaky": 0,
+  "retries": 0,
+  "scope": "Current actual browser report flows,390/768/1280/1440, exact command after lost receipt,409 original archive and storage failure. Compatibility projections are labelled synthetic; real version appends/native recovery are separately verified. Upcoming full API and415browser/CI remain pending.",
+  "files": {
+    "0-measurement-v3-browser-final-focused.json": {
+      "source": "data\\qa\\measurement-v3-browser-final-focused.json",
+      "sha256": "2c7648474e1e8c62234b141f8a05df3d4b4612989b3e481b47bbe77ed26a8ce6",
+      "bytes": 22684,
+      "gzipSha256": "953bac473682045fac3ecc87f63e6438acab5764dbdb6a0dd5afc280e5cf6f61"
+    },
+    "1-measurement-v3-browser-final-focused.log": {
+      "source": "data\\qa\\measurement-v3-browser-final-focused.log",
+      "sha256": "228a00d02aaf85c163ed75d5e23b9590aeb28391b97ce8497f72dde0878ed953",
+      "bytes": 6420,
+      "gzipSha256": "251ab298b2d6f1a68e126cf00be24644ca8c8e8c272732b0f986534032321bea"
+    },
+    "2-measurement-v3-full-browser-inputs.json": {
+      "source": "data\\qa\\measurement-v3-full-browser-inputs.json",
+      "sha256": "4d4d11f762ed34cb254763ae59c637d8e08e9bde4a3469368e0fe20a551bc2bc",
+      "bytes": 268566,
+      "gzipSha256": "7e64a83de4c07545c419e0c8421b26dd79b3641ebe8222a2fe53096d7efe11e3"
+    },
+    "3-actual-active-guidance-schedule.png": {
+      "source": "data\\qa\\browser-evidence\\measurement-v3-browser-final-focused-c66b5e3c5b\\knowledge-report\\actual-active-guidance-schedule.png",
+      "sha256": "88457fc766ac35dff7f59b1f2713c95a0d0240fdaf888dd24a455c298d50ee4b",
+      "bytes": 249741,
+      "gzipSha256": "89b592043e4944efe1bcb0e04dc7463cc026a13b656e3633f2d998ce0946930a"
+    },
+    "4-actual-pending-review-report.json": {
+      "source": "data\\qa\\browser-evidence\\measurement-v3-browser-final-focused-c66b5e3c5b\\knowledge-report\\actual-pending-review-report.json",
+      "sha256": "ae32a8483ec6fcf4aaf770e66146485408ed6347b46c5e2db5422fbc1e357c77",
+      "bytes": 10614,
+      "gzipSha256": "2e273851ca7301dd98b6d65f6fca8bf84735c5b071427af6cb0a36cf662db4e1"
+    },
+    "5-actual-report-original.json": {
+      "source": "data\\qa\\browser-evidence\\measurement-v3-browser-final-focused-c66b5e3c5b\\knowledge-report\\actual-report-original.json",
+      "sha256": "06a685255c023765c4c747745a82054842726fb4003d696d20c9a5c52953f999",
+      "bytes": 22034,
+      "gzipSha256": "614ac5ae6284a90be90391fab303ba23725e99f03b6a94fdd1f22cfb68b0e9f7"
+    },
+    "6-controlled-cause-history-projection.json": {
+      "source": "data\\qa\\browser-evidence\\measurement-v3-browser-final-focused-c66b5e3c5b\\knowledge-report\\controlled-cause-history-projection.json",
+      "sha256": "aac81c3099670acee48e2d704e99e37904591a6f20912ac26954027047f953e0",
+      "bytes": 26220,
+      "gzipSha256": "df5461202770b572d4ab4fdb615aa7db75722241a4e20adf23632d7ad015c0e3"
+    },
+    "7-point-1280.png": {
+      "source": "data\\qa\\browser-evidence\\measurement-v3-browser-final-focused-c66b5e3c5b\\knowledge-report\\point-1280.png",
+      "sha256": "3c1b363c4451a26c97ccdb9663421ad74acf9857b06c96ed0da5fc0efe3c86cf",
+      "bytes": 329350,
+      "gzipSha256": "13126f08d69acd68e0d345bd16198816dfb76dc935acd73fdf0b94946dd3ce63"
+    },
+    "8-point-1440.png": {
+      "source": "data\\qa\\browser-evidence\\measurement-v3-browser-final-focused-c66b5e3c5b\\knowledge-report\\point-1440.png",
+      "sha256": "63621e27131ff63412f37077aef2549417a31892e0886cd026f53348002262fb",
+      "bytes": 337150,
+      "gzipSha256": "16e3ef4fdb55c4798b7df3a25f720b101f4119b9d7a800b8b71f2d489d510d32"
+    },
+    "9-point-390.png": {
+      "source": "data\\qa\\browser-evidence\\measurement-v3-browser-final-focused-c66b5e3c5b\\knowledge-report\\point-390.png",
+      "sha256": "e1b48a8cbca8fb531bec5c52ac4b54986b435eeb3bb7623f3ce889fb0ef1e461",
+      "bytes": 273881,
+      "gzipSha256": "84352ee8016e2511b08f48c626cbadc952f1eefb298829ec157ed004368df53c"
+    },
+    "10-point-768.png": {
+      "source": "data\\qa\\browser-evidence\\measurement-v3-browser-final-focused-c66b5e3c5b\\knowledge-report\\point-768.png",
+      "sha256": "da431df49b7fa303ba424d5ee6c6386bc20256742f46c1e3ba8b7d1991bda30f",
+      "bytes": 317675,
+      "gzipSha256": "62897f753ed1fdd9809e374cee1c1503449f7c6e464db9594d0a511166840951"
+    },
+    "11-report-current.png": {
+      "source": "data\\qa\\browser-evidence\\measurement-v3-browser-final-focused-c66b5e3c5b\\knowledge-report\\report-current.png",
+      "sha256": "8cc47fc27c38094b3da5627c0896e075c520212800f1511f37ea5f202ebd64a3",
+      "bytes": 220239,
+      "gzipSha256": "3020e72aeeaf966644ab39d9c0c54bbc711d188ccc38af6b084569b83b1cc0bf"
+    },
+    "12-report-first-workspace.png": {
+      "source": "data\\qa\\browser-evidence\\measurement-v3-browser-final-focused-c66b5e3c5b\\knowledge-report\\report-first-workspace.png",
+      "sha256": "b269adb0372d5c15da58fc0504a74dc962e153f50f86f13f8d46c48a92568930",
+      "bytes": 195651,
+      "gzipSha256": "abef4c02fcec92636dd5b528cac3436ad5fdda8c1ff9397009e4e04e3b410c3e"
+    }
+  },
+  "wholeProductComplete": false
+}
