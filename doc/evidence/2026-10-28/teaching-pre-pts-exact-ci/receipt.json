@@ -1,0 +1,28 @@
+{
+  "headSha": "de3a6b373ead568e9a27e7a20588bf4df959f52e",
+  "runId": 40539817929,
+  "status": "completed",
+  "conclusion": "success",
+  "api": {
+    "passed": 1497,
+    "environmentSkipped": 72
+  },
+  "postgresTeaching": {
+    "passed": 30,
+    "sqliteOnlySkipped": 1
+  },
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-27T16:23:03.761Z",
+      "duration": 2166837.267,
+      "expected": 411,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": 411,
+    "attempts": 411,
+    "retryAttempts": 0
+  },
+  "scope": "Successful exact pre-PTS candidate; local first411 retains a video timestamp-coordinate assertion failure. Does not replace subsequent64d8bce test and updated public-resource CI."
+}

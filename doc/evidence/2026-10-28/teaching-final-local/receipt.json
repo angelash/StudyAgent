@@ -1,0 +1,76 @@
+{
+  "testedRevision": "64d8bce356cb62c4b361de112e9414761873229d",
+  "combinedCIHead": "64d8bce356cb62c4b361de112e9414761873229d",
+  "tests": 411,
+  "attempts": 411,
+  "passed": 411,
+  "failed": 0,
+  "skipped": 0,
+  "flaky": 0,
+  "retryAttempts": 0,
+  "stats": {
+    "startTime": "2026-10-27T16:49:29.507Z",
+    "duration": 1931039.219,
+    "expected": 411,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "fixedInputsRechecked": 2569,
+  "actualQaWebSourceCopiesMatched": 249,
+  "actualQaWebCompiledFiles": 703,
+  "buildId": "qTwueXCkezGjNPKHZEoqn",
+  "api": {
+    "passed": 1505,
+    "environmentSkipped": 64
+  },
+  "postgres": {
+    "passed": 30,
+    "sqliteOnlySkipped": 1
+  },
+  "modelEvidenceInputComparison": {
+    "data/qa/teaching-live-20d3bbf-first/receipt.json": {
+      "files": 29,
+      "mismatches": []
+    },
+    "data/qa/teaching-model-matrix-20d3bbf-first/receipt.json": {
+      "files": 20,
+      "mismatches": []
+    }
+  },
+  "scope": "Fixed actual full browser run after finite JSON fix, exact QA Web/source and compiled evidence. Local API/PG are separately archived overlapping scopes; neither covers human teaching or real-device acceptance. Exact remote CI and schema21 delivery remain required.",
+  "files": {
+    "analysis-1280.png": {
+      "bytes": 173698,
+      "sha256": "2b71342094b7a810d50f83284bf59e401c4bdc561c24bd788e9084f57d0dfcad"
+    },
+    "analysis-390.png": {
+      "bytes": 151615,
+      "sha256": "a931f7a89055e3c48a861b2cfb683bb1cfbc997169bfef668d5f60fd93362193"
+    },
+    "analysis-768.png": {
+      "bytes": 163121,
+      "sha256": "62dadd756f4ac62a56f60cfbc3176c2cc3be6c8a88a256d4e442fc10d53a4047"
+    },
+    "qa-web-compiled.json.gz": {
+      "bytes": 30758,
+      "sha256": "d0da17574afb6eb9033b4c2556826086867e4c1ff7860e8f01318557bde5cd78"
+    },
+    "teaching-64d8bce-fixed-inputs.json.gz": {
+      "bytes": 125650,
+      "sha256": "69f34cf3db5a6b1a68a9e6464c0d49fc8341e1979e98bf6ca92d23b36467e2d1"
+    },
+    "teaching-full-64d8bce.json.gz": {
+      "bytes": 31933,
+      "sha256": "e7991ceab87e3a9daa66a538e6e3390e5a38d1ec19a8fecbc87810b4995f1527"
+    },
+    "teaching-full-64d8bce.log.gz": {
+      "bytes": 15469,
+      "sha256": "4d294114f97ee06e0a92f6f50880ea554bb1f9e0c0b3ce922bc964ab6584157a"
+    },
+    "current-model-catalog-projection.json.gz": {
+      "bytes": 830,
+      "sha256": "6abad7bc93ff924068e037bb246e0b3333f5b97a632f1fb276cca3dbd7cc5bd3"
+    }
+  }
+}
