@@ -1,0 +1,51 @@
+{
+  "at": "2026-10-27T11:27:01.569670+00:00",
+  "passed": true,
+  "cases": 7,
+  "failed": 0,
+  "skipped": 0,
+  "apiTypes": "passed after correcting a test fixture union destructure type; original type failure preserved",
+  "sourceSha256": {
+    "apps/api/src/modules/ai/teaching-tool-protocol.ts": "b79205d41f0c49df4eac0bd0c1acba89d193d9c68fc288e073d1c6ae1c7a47f8",
+    "apps/api/src/modules/ai/teaching-tool-protocol.test.ts": "9737c886d530873e141f8a17651fd6cd4083c1c47f8b628e035674b85ec2bb0a"
+  },
+  "scope": "Private strict input/result protocol foundation only. Full whitespace and structured answer, canonical fingerprint, explicit unknown, complete size/depth/finite JSON bounds, source-version binding, exact quotes, unreviewed advisory-only flags, uncertainty and hint-level checks. Literal hint overlap is a warning, not a semantic safety guarantee.",
+  "notConnected": [
+    "No controller/worker/store collection/schema migration or admin page.",
+    "No model/provider call, production record, actual child data, grading or ability evidence.",
+    "Official pipeline unchanged; this does not complete138 or all-model migration."
+  ],
+  "preTestSetup": "Initial dependency-link setup used apps/api cwd and was corrected after exact-path and generated-entry checks; mistaken own nested links/copies removed, shared dependency targets unchanged.",
+  "files": [
+    {
+      "file": "teaching-tool-protocol-first.json.gz",
+      "originalSha256": "810c36667b25b08a9c4a1c6fcf6da37c6e46cdbc14504d7398d46737925c8171",
+      "originalBytes": 3978
+    },
+    {
+      "file": "teaching-tool-protocol-first.log.gz",
+      "originalSha256": "c80a4326129e12d969909d382d0a7212d30ff88458b5fbc48cb8f3ef23cabe27",
+      "originalBytes": 493
+    },
+    {
+      "file": "teaching-tool-protocol-types.log.gz",
+      "originalSha256": "5fe7359cd4d3dc852b6ea038edf1fe55f64c68a60bc030476bf35c8680fdb39d",
+      "originalBytes": 370
+    },
+    {
+      "file": "teaching-tool-protocol-types-corrected.log.gz",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "originalBytes": 0
+    },
+    {
+      "file": "teaching-tool-protocol-final.json.gz",
+      "originalSha256": "c06b5d3475f8cc8d86051b0b875db8e30c91d6a75657d20e9ffc1f35b8e7243e",
+      "originalBytes": 3981
+    },
+    {
+      "file": "teaching-tool-protocol-final.log.gz",
+      "originalSha256": "4d46997b72bba210d48413dc1fa8641b9ba4bdeedba311b793f5d862306fb4d4",
+      "originalBytes": 493
+    }
+  ]
+}

@@ -63,3 +63,9 @@
 兼容层保留两条原admin路由：可选modelId/requestKey，使用同一严格预检/冻结/执行与结果投影；无requestKey时由服务端创建一次明确新命令，有requestKey则重放原结果。旧调用仍返回原用途的summary/structuredResult/confidenceLevel/reviewRequired/source（分析）或hint/source（提示），追加modelId/modelName、advisoryOnly、runId/requestKey及结果状态；等待超过约定预算返回明确可恢复任务位置，不伪造完成。其输入/返回和退出/断网行为用实际HTTP契约验证，再编写具体控制器；不能仅以TypeScript旧签名推测兼容性。
 
 第一层先实现两个结果schema、完整输入限制/规范摘要和拒绝伪引用，不注册controller/worker、不新增集合/迁移或正式路由；保留该层尚未可用的边界。第二层再提交并实施21迁移和任务命令，与账号导出/删除、备份/恢复注册一起接通。现有代码中的schema20断言需区分“20→21迁移用例”和“当前最新版本”，保留旧迁移试验本意，不能把全部20文本机械替换成21。
+
+## 7. 第一层严格协议基础（未接入产品）
+
+已实现独立teaching-tool-protocol：完整输入保留、规范指纹、明确null未知、JSON有限值/深度/结构/18000总预算、题源指纹、两种严格JSON/Zod结果、确切原文引用、未知和人工复核/仅建议标志、保持提示层级与疑似答案重合提示。7项纯逻辑测试通过，API类型通过；原首轮测试夹具的union解构类型错误及修正后结果均保留，见[协议基础原件](../evidence/2026-10-27/teaching-tool-protocol-foundation/receipt.json)。提示重合检查只是一项字面警示，不声称语义防泄露。
+
+本层没有注册控制器、worker、持久集合/迁移、后台页面或任何供应商调用；不会改变正式测量/首答/评分。目录/运行仍由137与更早批次独立验证。下一步按第6节接入21迁移、现有持久任务和权限/原命令恢复，再接内部UI与真实匿名模型路径；不能把七项基础测试写成138已可用。
