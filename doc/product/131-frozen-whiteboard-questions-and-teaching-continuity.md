@@ -146,3 +146,10 @@ GET原questions/notes为当前授权下的一致完整教学快照：原白板�
 本次IAB确认原课程仍登录，点击既有Board note后可在聊天历史内展开完整匿名练习，画布保留先前要点/图/表/练习；[截图与观察范围](../evidence/2026-10-27/hyperknow-note-expansion/receipt.json)已归档。静止恢复态不证明动态节奏、原声音色或100%像素一致，DPR没有测量。
 
 仍需继续：显式targetKind/turn/回复摘要的补充配图候选、采用、原图与版本绑定；新回答结构的原生dump/restore及最新隐私账本；全站浏览器、设计快照、精确远端CI与可回退守护交付。超过现有MathJax600字符预算的公式完整显示原式，不能说全部公式已向量排版。正式主目录仍130，本地Web/ready本轮返回200；本节不表示131已经部署。原72项11 implemented/50 in_progress/11 planned/0 verified、完整M1～M7及教师/设备/全内容/原样式/原声/长期验证继续。
+
+
+## 15. 全站首轮失败原件与语义定位修复
+
+131本地完整浏览器首轮354项中353通过、1失败、无重试；远端5e6a276/40424044286已全部终态，application和postgres成功，browser同一用例初次及重试均失败，整个run仍为failure。完整本地[首轮原件](../evidence/2026-10-27/whiteboard-question-full-browser-before/receipt.json)与[远端终态、完整日志及两次截图/context/trace](../evidence/2026-10-27/whiteboard-question-ci-initial/receipt.json)分别保留。
+
+失败原因是旧测试用details的第2/3项寻找讲稿，而新增提问恢复区增加了details，导致点开错误控件。已改为通过真实summary标题“再比较条件”“最后保留反例”定位，完整表格/长公式断言保留，API/Web业务源码和固定编译未改变。[修正后的24项主题白板专项](../evidence/2026-10-27/whiteboard-question-topic-notes-green/receipt.json)24次原始尝试全通过、0重试。这不是完整354项或新精确CI通过；两项继续执行，正式运行仍130/schema18，整体目标不变。

@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "deployed": false,
+  "businessHead": "5e6a276d4d9c6fdaf0080e8f661f6079ca79b5d6",
+  "stats": {
+    "startTime": "2026-10-27T00:40:23.836Z",
+    "duration": 182546.318,
+    "expected": 24,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "files": [
+    {
+      "source": "data/qa/topic-whiteboard-browser.json",
+      "file": "topic-whiteboard-browser.json.gz",
+      "originalSha256": "ec19c5061a7def9602b570fc1037edba71d6d939e3ef3a98682b47d33e8fa930",
+      "sha256": "79b931564ede860c2605c20d44bc4696d1fb4afe2ef10301314d7eda923a6d13"
+    },
+    {
+      "source": "data/qa/whiteboard-question-topic-notes-green.log",
+      "file": "whiteboard-question-topic-notes-green.log.gz",
+      "originalSha256": "02a669955f17d82b9a74b2cbb98b5e336fc6a09399d25db8062bf4322553ff70",
+      "sha256": "f575eb26431121a00483eb6f497dabd43dfe3c16b0d6a999a3a39fa6ed2598be"
+    }
+  ],
+  "note": "24 topic whiteboard cases, 24 original attempts, no retries; semantic summary selectors fix the single local/remote full-run failure without changing business source or assertions. Full local browser and exact CI on the corrected test head remain pending."
+}

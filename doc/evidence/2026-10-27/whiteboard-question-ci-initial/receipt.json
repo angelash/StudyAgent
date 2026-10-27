@@ -1,0 +1,90 @@
+{
+  "passed": false,
+  "deployed": false,
+  "run": 40424044286,
+  "headSha": "5e6a276d4d9c6fdaf0080e8f661f6079ca79b5d6",
+  "status": "completed",
+  "conclusion": "failure",
+  "jobs": [
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "name": "application",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "browser": {
+    "startTime": "2026-10-27T00:07:35.933Z",
+    "duration": 1852775.819,
+    "expected": 353,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "note": "353 cases passed; one adult full-notes case failed both original and CI retry because legacy details nth indices reached the newly added question recovery controls. Complete local first failure and both remote attempts are retained. Application and PG successes do not turn this run green.",
+  "files": [
+    {
+      "source": "data/qa/whiteboard-question-ci-5e6a276-terminal.json",
+      "file": "00-qa-whiteboard-question-ci-5e6a276-terminal.json.gz",
+      "originalSha256": "81b1ab50126348e3b6b44a00f53002be403a224f087c8005b143ea2ef19382e5",
+      "sha256": "4195270ba01452061a655d0a80442cdb71bac4bebae91986a4e3976ea6be63d0"
+    },
+    {
+      "source": "data/qa/whiteboard-question-ci-5e6a276.log",
+      "file": "01-qa-whiteboard-question-ci-5e6a276.log.gz",
+      "originalSha256": "0a008c93ea42a6fc0d656a9262722428ee2719abf98b54ff6d37a24c99e1f8d9",
+      "sha256": "be4cee4c308a5ac7370652d120054c613056eef92dcf2cbf60fdfc54aff57ba1"
+    },
+    {
+      "source": "data/qa/whiteboard-question-ci-5e6a276-artifacts/browser-verification-evidence/data/qa/source-course-full-browser.json",
+      "file": "02-qa-source-course-full-browser.json.gz",
+      "originalSha256": "e2b87c8fc54f9fa36b7163a6221a0f1d7936d837b37fe07bd4b1d2b9b01f171f",
+      "sha256": "d3693e3e8e47bb17c9206cc661f30d9822dc39830c9278c0b23d021b626275c2"
+    },
+    {
+      "source": "data/qa/whiteboard-question-ci-5e6a276-artifacts/browser-verification-evidence/test-results/browser-product-acceptance/topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player/error-context.md",
+      "file": "03-topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player-error-context.md.gz",
+      "originalSha256": "40c51cf4f6a888fe50c8fd8b49d49b51d2c8f103d4f379c8563a3c4b54d02427",
+      "sha256": "01f542653f2c1a2156256e84041a8901248d64981d7a22e673b9dafbd1d016c3"
+    },
+    {
+      "source": "data/qa/whiteboard-question-ci-5e6a276-artifacts/browser-verification-evidence/test-results/browser-product-acceptance/topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player/test-failed-1.png",
+      "file": "04-topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player-test-failed-1.png.gz",
+      "originalSha256": "20df96efb12877a9f90a57a0f0b7d36a2f786790493f9afcdb6cb2d1c4d46beb",
+      "sha256": "b5a7927590f14e345a281f46d8e01234ae2c06cfb75efd632eb3f2ea823046b8"
+    },
+    {
+      "source": "data/qa/whiteboard-question-ci-5e6a276-artifacts/browser-verification-evidence/test-results/browser-product-acceptance/topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player/trace.zip",
+      "file": "05-topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player-trace.zip.gz",
+      "originalSha256": "68ebfbbd7ea62a2daac6a958021e4fbaee10f01a4cc083c17a52bf14aa44b255",
+      "sha256": "6c769ef9491bde07cc97640c0686071a4c7fafa5be745bb26da02fcbaf99c315"
+    },
+    {
+      "source": "data/qa/whiteboard-question-ci-5e6a276-artifacts/browser-verification-evidence/test-results/browser-product-acceptance/topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player-retry1/error-context.md",
+      "file": "06-topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player-retry1-error-context.md.gz",
+      "originalSha256": "40c51cf4f6a888fe50c8fd8b49d49b51d2c8f103d4f379c8563a3c4b54d02427",
+      "sha256": "01f542653f2c1a2156256e84041a8901248d64981d7a22e673b9dafbd1d016c3"
+    },
+    {
+      "source": "data/qa/whiteboard-question-ci-5e6a276-artifacts/browser-verification-evidence/test-results/browser-product-acceptance/topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player-retry1/test-failed-1.png",
+      "file": "07-topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player-retry1-test-failed-1.png.gz",
+      "originalSha256": "20df96efb12877a9f90a57a0f0b7d36a2f786790493f9afcdb6cb2d1c4d46beb",
+      "sha256": "b5a7927590f14e345a281f46d8e01234ae2c06cfb75efd632eb3f2ea823046b8"
+    },
+    {
+      "source": "data/qa/whiteboard-question-ci-5e6a276-artifacts/browser-verification-evidence/test-results/browser-product-acceptance/topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player-retry1/trace.zip",
+      "file": "08-topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player-retry1-trace.zip.gz",
+      "originalSha256": "6e2367ba84c2983c197687e77a029e2f5070f2312c433e93f7ceda4f16ce575e",
+      "sha256": "a33a35ad9fa33d68244453c38469d5007373453a768a4ac1ca47ab5b96db2921"
+    }
+  ]
+}

@@ -341,3 +341,6 @@ M1后即开始可用课程的设备与真人试用；真实1/3/7/14日复测与�
 
 
 2026-10-27接续131本地阶段：原句插问现已增加受鉴权的补充板书/显式声音、逐项图表及多公式、完整JSON/Markdown笔记和成人/孩子私有深链，复用原播放器与实际音轨时间表，返回恢复原句/音频位置/相机。完整API1,418通过/54环境跳过；后续同套HTTP在SQLite21和PG21分别通过，另PG三项迁移/冲突/冷重开通过，范围不相加。32浏览器/32原始尝试全通过，含18问答及14旧设置；扩展首轮31/1焦点缺陷原报告/截图/trace保留并修复。真实默认DS结构回答47,449ms，真实MiniMax回答单句2,266ms，均为匿名成人合成原件；不代表全部供应商、听感或教学质量。补充配图采用/版本绑定、原生恢复隐私、全站/精确CI及131可回退运行仍待；正式主目录保持130，Web和ready本轮200。72项11 implemented/50 in_progress/11 planned/0 verified与完整M1～M7范围不变。见[131当前范围](131-frozen-whiteboard-questions-and-teaching-continuity.md#14-补充板书声音与完整笔记的本地验证)与[本地原件](../evidence/2026-10-27/whiteboard-question-teaching-verified/receipt.json)。
+
+
+2026-10-27 131全站首轮留证：本地353/354通过，远端5e6a276/40424044286的application/PG成功、browser同一旧details序号定位失败，run已全部终态且保持failure。两处改为真实讲稿标题定位，完整表格/公式断言保留；修后24主题白板专项24原始尝试全通过/0重试。完整首轮与远端两次失败原件已归档；业务源码/固定Web未改，完整354与修后精确CI继续，主目录仍130/schema18。见[131第15节](131-frozen-whiteboard-questions-and-teaching-continuity.md#15-全站首轮失败原件与语义定位修复)。
