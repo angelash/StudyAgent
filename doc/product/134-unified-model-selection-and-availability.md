@@ -83,3 +83,15 @@ XiaojiuModelCatalog新增可选textCheck元数据，模型新增可选textCheck=
 另外真实Nest HTTP在独立SQLite、无孩子/无生产资料下，不传modelId发起一次普通助教。实际小九CLI5419ms一次成功，source=xiaojiu、modelId=deepseek-v4-flash，兼容客户端计数为0。随后把目录解析改成拒绝，原requestKey重放仍返回相同回答、消息仍两条、供应商调用仍一次。这次HTTP发生于公开资源复制之前，所以当时目录显示unknown；不得把该快照说成已验证当前21/22公开投影。
 
 本层完成不是134整体结束。完整API、实际发现的全站、精确远端CI及主目录可回退交付仍待；第二阶段旧评估/任务提示仍需迁移。源码审查确认旧主观题直接Boolean(ai.structuredResult.correct)生成0/1且忽略reviewRequired，旧评估重答还会覆盖记录。这里不能只换供应商并沿用“AI即正式评分”：下一阶段先提交人工复核、首答冻结、旧结果隔离及提示曝光的具体设计，再实现。72项状态保持11 implemented/50 in_progress/11 planned/0 verified，M1～M7和整体goal active。
+
+## 10. 完整回归、旧替身整改与运行边界
+
+原3a93387完整本地API1464通过/4失败/60环境跳过，368浏览器为368次原始尝试全过，零失败/跳过/重试。固定全部源码在运行结束后另逐SHA重核对，原始API失败与独立浏览器通过均保存在[首轮完整原件](../evidence/2026-10-27/model-default-full-before-fixture-correction/receipt.json)，没有把包装器整体失败改成通过。首个远端40454218283的PG和浏览器success、application失败，全部三组终态后才推下一版。
+
+四项失败来自旧测试仍替换兼容SDK、未启用现在的默认小九路径；测试因此落在规则分支，根本没覆盖其想验证的拒绝伪证据、拒绝答案泄露和冻结知识定义。先在独立工作树真实复现12通过/4失败，再替换为明确启用的小九回答替身，16项全部通过；保留零消息/零不当帮助、原引用/原定义/原报告隔离和正在诊断不调用模型等断言，并新增实际供应商调用计数，见[整改原件](../evidence/2026-10-27/model-default-regression-fixtures/receipt.json)。
+
+f820751仅修改这两份API测试，全部产品源码和20份真实矩阵源码/编译保持一致。新完整API1468通过/60环境跳过/0失败；已完成的368浏览器保留原头与原尝试，未重复无改动的界面验证，也不把旧头报告冒充新执行。精确远端f820751/40457557071仍在进行中，见[本地完整结果及旧CI原件](../evidence/2026-10-27/model-default-final-local-api/receipt.json)。当前正式main和守护仍133；已单独复制校验其966个旧编译文件及五份本地配置/真实环境作为回退准备，尚未做本批停服一致数据库备份，不能称为完成134交付。
+
+进一步核对当前AppModule和RetiredLearningController：第9节所述直接0/1评分与覆盖重答属于未注册的原型AssessmentsModule/MissionsModule，旧路由已明确410。现行诊断/训练的主观作答已pending_review、score=null并走人工复核；下一阶段应复用该系统，不能因看见未接入源码再造一套复核。当前仍活跃的旧兼容工具是教研专用/ai/assessment/analyze和/ai/hints/generate，另有冻结的历史openai助教执行；前两项迁移仍待，后者保留原模型。旧导入/计划辅助没有生产调用者，继续隔离。
+
+135练习界面在独立工作树按用户重登录后的四张参考另行实施，原控件CSS/字体、媒体绑定和25项专项已留证，373项完整回归在运行；其源码、编译和QA端口没有混入本批。72项与M1～M7完整目标继续，整体不结案。
