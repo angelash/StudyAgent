@@ -507,3 +507,8 @@ SQLite课堂组合35、PG33/2个SQLite专属跳过、完整API1069/34环境跳�
 ## 138 持久教研后端基础，未上线
 
 2026-10-27独立138进展：统一模型教研持久后端、schema21、表格/公式完整冻结、取消/原模型恢复和admin本人资料双库恢复已接入，当前完整API1498/0/64环境跳过、PG实际HTTP/原生恢复23/0/1 SQLite专属跳过、API/Web类型通过。所有初失败、双实例冲突、真实限流、无操作取消键和1e999重放红色原件保留；人工发现ISO时间字符串过滤漏项的纯服务红色，下一阶段先修并补HTTP边界。后台UI、旧SDK入口迁移、真实匿名供应商、新模型矩阵、完整浏览器/精确CI及正式schema21交付尚未完成；当前生产仍137/schema20，不能上线当前138或以测试全绿称整体完成。见[138当前完整范围](../138-internal-teaching-tools-unified-models.md)与[基础证据](../../evidence/2026-10-27/teaching-tool-durable-foundation/receipt.json)。72项与M1～M7保持。
+
+
+### 2026-10-28 138实际运行交付
+
+2026-10-28 138正式交付：主目录1618d91实际构建并运行schema21，buildId uoEIX8etphDnBG0Yznwij；精确64d8bce/40546374381三组success，本地与远端均411浏览器/411原始尝试全过，零失败、跳过、flaky与重试。完整API本地1505/0/64环境跳过、Linux1497/0/72，教研PG30/0/1 SQLite专属跳过，范围重叠不相加。1280实际HTTP/权限/资源、369编译全部原SHA、959原资产及6音频核对通过，三个守护PID与重启计数跨123787毫秒保持；前两次不足60秒的正式门禁拒绝与原观察保留，未降低门槛。五配置/真实环境原字节保留，新鲜137/schema20停服一致数据库/引用文件及971份旧构建回退逐SHA核验，assetsIncluded:false，不是全研究资产备份或完整恢复演练。/admin/ai-tools与analytics/会话入口、完整表格公式及有限JSON预检、持久分析/提示、原模型重试/取消/本人历史、原请求/冲突副本恢复和旧admin入口迁移均已上线；结果保持待复核，不写正式评分或计划。四个真实匿名教研样本通过；22模型文字矩阵21通过/旧Opus5失败、24次CLI启动，默认DeepSeek V4.1 Flash，不称22全通。139已先提交具体设计，随后独立实施。72项11 implemented/50 in_progress/11 planned/0 verified、完整M1～M7及原像素/DPR/原声、全内容/测量效度、教师/实机/长期门槛保持，整体active。见[本批验收](../../evidence/2026-10-28/teaching-tools-acceptance.json)与[实际运行原件](../../evidence/2026-10-28/teaching-tools-runtime/receipt.json)。

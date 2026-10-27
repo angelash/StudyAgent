@@ -1,0 +1,95 @@
+{
+  "at": "2026-10-27T17:51:22.544014+00:00",
+  "passed": true,
+  "files": {
+    "runtime.json": {
+      "sha256": "44225aae4461cfae3955965dcc4fb6fc764fece1c92969a2b76b12e9c02a898e",
+      "bytes": 527269,
+      "gzipSha256": "be500af12e58b9b5b4bfe439d7ff234565122a1d75884bdc3f3fe7e3df7382eb"
+    },
+    "candidate.json": {
+      "sha256": "07a8b5c30d30909def2e5c7539e809d71f533b0525c469e0ff500c2d56b1a1ee",
+      "bytes": 54557,
+      "gzipSha256": "9cc8193a23590a530d406082e151b011147a48abcd725e7bf81c5b850a0e2ede"
+    },
+    "backup-verified.json": {
+      "sha256": "f9a0d92fc274f1739f39991f248cc5df6a8e08fd6c4be58f8480483f3791b9fc",
+      "bytes": 452,
+      "gzipSha256": "ab80c3c384394befddca73ae0a76c5b51170c995b6b007929f35d618cb0f37d5"
+    },
+    "build-backup-verification.json": {
+      "sha256": "6ff31f4c7dfd536249a182151537332e5204bf40108a9b54065fd7747fe06869",
+      "bytes": 248,
+      "gzipSha256": "968c97c13ebce260ec75f134e2d76360fc628c6d9698630555834af67c13ff29"
+    },
+    "deployment-before.json": {
+      "sha256": "4083374886f88c7ffce29b6f0f65cd459914ffb6e6541c9ffefd2e13a1de9867",
+      "bytes": 1340,
+      "gzipSha256": "b98ee0eaf8d3d5bcb768c18692fa9216dfedc74a8fe4fc099b237b5095d08a79"
+    },
+    "deployment-target.json": {
+      "sha256": "467a7cce2d929ca778dca4efbdb83e18f01e104a24a131ecbfb56326b18ba1e1",
+      "bytes": 152,
+      "gzipSha256": "bad3fc3c46cf2e80398429da8795f5e1f6c0a2dcaeab9497287ee2ae11e52222"
+    },
+    "stop-transitions.json": {
+      "sha256": "39555e3979af9ea22492d624ed3b19ae740a33a5f004950118f1c59dc263a1f0",
+      "bytes": 389,
+      "gzipSha256": "bddb9f1668d6e496206a31b7d05ee5db3653b75f05e10ae1ce0ad79c1f21e711"
+    },
+    "build-files.json": {
+      "sha256": "75b10a912ed4aaa3765b712f4642c0e0c82ec4d3352d707e3d1f3e636f37b096",
+      "bytes": 185996,
+      "gzipSha256": "619d512876e77626593ae1b5a0665fa82a69b0d486576785aef51dcae95a3d87"
+    },
+    "teaching-production-source-alignment.json": {
+      "sha256": "7133803106c9d8f1c7f9950d5996190212c53cc00be2a9a71bdce23247a5c946",
+      "bytes": 16840,
+      "gzipSha256": "909d1210ec6540e4ebc3996712bf1674d52929d93b2cb2ddb439097f8ec8c86e"
+    },
+    "teaching-tools-deploy-prepare.log": {
+      "sha256": "8f223e06b9c3338b6f057343490390e478362e583a4b2bb6adc54b2b8545a88c",
+      "bytes": 1166,
+      "gzipSha256": "76b86569d72203657c8eea9de3c038acc2c42093f35a25c56f2cc24d8b86786c"
+    },
+    "teaching-tools-production-build.log": {
+      "sha256": "09750b1196608df771a7b92c48680286199684db4a6225719602c73ecb9d9b9b",
+      "bytes": 2962,
+      "gzipSha256": "3cd16176072a8f8f7d5faec13a0327622c1599341783659e171f840a364f2dec"
+    },
+    "teaching-tools-observation-1.json": {
+      "sha256": "e6db1f032909e5c255f7d3ede789ceb50bd1e17482b9b3e8227e00bff5bf7096",
+      "bytes": 603,
+      "gzipSha256": "a1d141fb321dd4d08aee8f1b724c6957f8868290138ca406326436ad54f41cc3"
+    },
+    "teaching-tools-observation-2.json": {
+      "sha256": "c3a0dc701251389df056bafc70612bc909aea93ca246f912c8a59e8548d059c2",
+      "bytes": 603,
+      "gzipSha256": "b4741fdf0392dbb706a0baf8b9d83420206bfc3f29c372dd43722480057b949a"
+    },
+    "teaching-tools-observation-3.json": {
+      "sha256": "06b1479d1208b495d1a4314fac7d8fe61a64d6fef3b0eb21552dae8e95cc6b2f",
+      "bytes": 603,
+      "gzipSha256": "48f46889b475b13b3a461bb395726d1f781e11dd089ac0ac659f64ebce010036"
+    },
+    "teaching-tools-observation-3-too-early.json": {
+      "sha256": "7e494308eecce3a57430173fc72a5bf49018d509347827f32db58c0f9a1cc24d",
+      "bytes": 603,
+      "gzipSha256": "6ddb9e7ae95df6096e0fd7e949fa8707c30ab685a6ad85cbfd27b0de92adc7a6"
+    },
+    "teaching-tools-observation-3-too-early-2.json": {
+      "sha256": "fefd78019abddfe7df2e44bf65676d1e7f4afcc576837d697c134fccb78c7f61",
+      "bytes": 603,
+      "gzipSha256": "0c950f964d9a16294b7e20eb6c91af54c48f051bd2d2f3496299bf99666f1a76"
+    }
+  },
+  "scope": "Original final runtime, exact compiled/static checks, build/stop and verified backup receipts. Private environment and private configuration contents are excluded.",
+  "earlyFinalization": {
+    "attempts": 2,
+    "observedIntervalsMs": [
+      33899,
+      57131
+    ],
+    "reason": "Both correctly rejected by the unchanged sixty-second stability gate. Original observations preserved; a new third observation passed after the required interval."
+  }
+}

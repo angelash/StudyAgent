@@ -1,0 +1,88 @@
+{
+  "at": "2026-10-27T17:51:22.544014+00:00",
+  "passed": true,
+  "status": "runtime-delivered",
+  "revision": "1618d91ed435b6343b3c0c91c5f21fd20920f066",
+  "applicationRevision": "a59e33516cf89248104b758b28862695e280b0c1",
+  "apiRevision": "20d3bbf068906a8f72683fa099204e7f8698bb44",
+  "ciHead": "64d8bce356cb62c4b361de112e9414761873229d",
+  "ciRun": 40546374381,
+  "schemaVersion": 21,
+  "webBuildId": "uoEIX8etphDnBG0Yznwij",
+  "entrypoints": [
+    "http://127.0.0.1:3217/admin/ai-tools",
+    "http://127.0.0.1:3217/learn"
+  ],
+  "localApi": {
+    "passed": 1505,
+    "failed": 0,
+    "environmentSkipped": 64
+  },
+  "localPostgres": {
+    "passed": 30,
+    "failed": 0,
+    "sqliteOnlySkipped": 1
+  },
+  "linuxApi": {
+    "passed": 1497,
+    "failed": 0,
+    "environmentSkipped": 72
+  },
+  "remotePostgresTeaching": {
+    "passed": 30,
+    "failed": 0,
+    "sqliteOnlySkipped": 1
+  },
+  "localBrowser": {
+    "passed": 411,
+    "originalAttempts": 411,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0
+  },
+  "remoteBrowser": {
+    "passed": 411,
+    "originalAttempts": 411,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0
+  },
+  "runtime": {
+    "httpChecks": 1280,
+    "originalAssets": 959,
+    "voiceSamples": 6,
+    "compiledInputs": 369,
+    "rawCompiledMatches": 369,
+    "stableIntervalMs": 123787,
+    "protectedConfigurationPreserved": true,
+    "localEnvironmentPreserved": true,
+    "oldBuildRollbackFiles": 971,
+    "consistentBackupVerifiedFiles": 1,
+    "assetsIncluded": false
+  },
+  "realModels": {
+    "checkedAt": "2026-10-27T15:46:21.909Z",
+    "passed": 21,
+    "failed": 1,
+    "total": 22,
+    "allModelsPassed": false,
+    "failedModel": "claude-opus-5",
+    "originalSha256": "0bc356799069ee48593888066b5a2cb02821049915a686ae09c69dcfbb0e9780",
+    "scope": "Anonymous complete text JSON matrix only; old Opus complex output still incomplete. No visual or continuing availability claim."
+  },
+  "realTeachingSamples": {
+    "passed": 4,
+    "defaultAndExplicitModel": true
+  },
+  "wholeProductComplete": false,
+  "limitations": [
+    "Anonymous production checks; authorized synthetic flows and media decode verified in isolated storage.",
+    "Captured fonts/CSS and local static bytes are verified; manual original geometry, full reference states/DPR/original audio, teacher, real-device and long-term acceptance remain incomplete.",
+    "21 of22 text models passed; claude-opus-5 remains failed.",
+    "139 self-reported difficulty and measurement versioning is designed, not yet implemented.",
+    "Local/remote API, PostgreSQL and browser suites overlap; counts must not be summed.",
+    "Verified stopped-service database/referenced files and compiled rollback do not constitute a full research-asset backup or complete restore rehearsal."
+  ]
+}
