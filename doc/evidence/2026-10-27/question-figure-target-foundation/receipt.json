@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "deployed": false,
+  "scope": "Pure explicit-target schemas, complete context/answer identity and private-free prompt boundaries. Eight new cases plus seven existing supplementary-board cases; overlap is not added to earlier suites.",
+  "tests": {
+    "passed": 15,
+    "failed": 0,
+    "skipped": 0
+  },
+  "contractsAndConfigBuild": true,
+  "apiTypes": true,
+  "firstTypeCheck": "Initial passing runtime tests still had two TypeScript fixture defects: an unsupported topic atomId and an incomplete record assertion. Fixed with complete typed records; current type check passes.",
+  "remaining": [
+    "No image HTTP or queue yet.",
+    "No actual image generation/edit, adoption, version playback, privacy/restore, browser or delivery acceptance.",
+    "Storage wrapper only reuses the existing checked private visual engine; its presence is not image generation."
+  ],
+  "files": [
+    {
+      "source": "data/qa/question-figure-context-first.json",
+      "file": "00-question-figure-context-first.json.gz",
+      "originalSha256": "71214ac527a72002fe94ff325315185535e24462afe789b8df7f945c963aba57",
+      "sha256": "1944b0e16c4f2a2586b8d8b84d6cff68b21ae275d4dc7d0686d4207eed450816"
+    },
+    {
+      "source": "data/qa/question-figure-context-typed.json",
+      "file": "01-question-figure-context-typed.json.gz",
+      "originalSha256": "e369bdcd1a15df63137b0360e13cd03863ac47641697617a9c810836fa46ee90",
+      "sha256": "5da02e88bef6c5aab4683f2ef598f1e4f790b0e3204f698456af38182e14accb"
+    },
+    {
+      "source": "packages/contracts/src/whiteboard-question-visual.ts",
+      "file": "02-whiteboard-question-visual.ts.gz",
+      "originalSha256": "100986b5ae8cb018292ff1912422d3b6e15d73d716b859fdbff82e5fd457edad",
+      "sha256": "1574ff07ddb194dcdf05f3296397697c3b95cbd7565562ee89cf9606665fa096"
+    },
+    {
+      "source": "packages/contracts/src/index.ts",
+      "file": "03-index.ts.gz",
+      "originalSha256": "725af5cd451f31c3b680dfbb996acb25264b0eacf54a88ed41e726f7e8de9f83",
+      "sha256": "e96cae13f856e9d44094994fe7941fb7388b4b7240ae2d119ab5cc6a9f3aafce"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-visual-context.ts",
+      "file": "04-whiteboard-question-visual-context.ts.gz",
+      "originalSha256": "5ceab250e70e9f53fb4b4880f7bdaf4203ffd8ab15224db08ce0b8139f4b7a06",
+      "sha256": "768330c0f669d8c73ed09da37c041e81091cad64a8cdc80f3e39958e94d478cc"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-visual-context.test.ts",
+      "file": "05-whiteboard-question-visual-context.test.ts.gz",
+      "originalSha256": "30e9c8248ae8ab70d0944c6914c932c3a88da371f8fec7bfef604d2f44b7b7d5",
+      "sha256": "5310e4059b1e4aa4215116558f8292fbdbfabd94fca2a59345c91394b05a9291"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-visual-storage.ts",
+      "file": "06-whiteboard-question-visual-storage.ts.gz",
+      "originalSha256": "3ad375388268b99f2d56105989f766a7b4c8aac6565175e92ff763059cb56b7c",
+      "sha256": "0b0f75fac38b2fcc6371d45843201d1b7b7a158d11940094ebb1ac7698647d50"
+    }
+  ]
+}
