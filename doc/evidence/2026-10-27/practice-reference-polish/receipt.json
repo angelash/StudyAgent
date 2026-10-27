@@ -1,0 +1,90 @@
+{
+  "head": "9cb4aca8c8b716f489fcee27481ca2eb3af30e20",
+  "status": "functional-and-inspected-scope-passed",
+  "cases": 25,
+  "originalAttempts": 25,
+  "retries": 0,
+  "failures": 0,
+  "scope": "Refined isolated functional paths and inspected local screenshots only. Not complete product, exact CI, original-image parity or production delivery.",
+  "inspected": [
+    "single-answered-1280 (details expanded)",
+    "multiple-selected-1280",
+    "assistant-390",
+    "multiple-selected-768"
+  ],
+  "verified": [
+    "Original local Satoshi-Medium and MiSans actually decoded",
+    "Original first-option shape color preserved despite legend",
+    "Selecting does not move the practice frame",
+    "Phone composer visibly holds two lines",
+    "390/768 assistant containment, Escape, focus return and original full text/selection"
+  ],
+  "remaining": [
+    "Full 373-case regression and exact CI",
+    "Fresh rollback and production delivery",
+    "Original question text and same image asset / DPR / unknown reference states differ",
+    "Final local full run will additionally capture collapsed explanation and actual geometry"
+  ],
+  "files": [
+    {
+      "file": "receipt.json.gz",
+      "originalSha256": "2629c9decd05fc95f34d29d370aac190f023c9b9297766830f078ccf04744128"
+    },
+    {
+      "file": "source.json.gz",
+      "originalSha256": "d86c62d4ddf27c0ad8c52fc5103b2261125f9ebded74644cac8570f37fce2d20"
+    },
+    {
+      "file": "browser.json.gz",
+      "originalSha256": "8689da02f28c7fe8621cfb43f6c3eda48708ed5170d0e8c3fb0bd1bc5b7ab0f5"
+    },
+    {
+      "file": "browser.log.gz",
+      "originalSha256": "0f707f1e561c483597808033b1b9208c5aa0ea001b5f0e9b31b501177a825afe"
+    },
+    {
+      "file": "build.log.gz",
+      "originalSha256": "4d555a4f032b4e54882b19d68b9a0df48ceceeee30351aac1a80440ac14bf169"
+    },
+    {
+      "file": "screenshots/assistant-1280.png",
+      "originalSha256": "602c3a42e9e903ed24c8f903692d909626235a156be4de4e94570839d8a5f7bc"
+    },
+    {
+      "file": "screenshots/assistant-1440.png",
+      "originalSha256": "047fc94c9e08b9a4b3ced52ca8b947a883491bcb24b35156684459ad7a9b7a51"
+    },
+    {
+      "file": "screenshots/assistant-390.png",
+      "originalSha256": "8d90516de817f489be9e55b411c1ed2a069580bc160531d8c0e66f5f265a7c02"
+    },
+    {
+      "file": "screenshots/assistant-768.png",
+      "originalSha256": "6489877cf1e867a0c93c9950fb51d9fafd2163b163ad6bb328ea65edcc768138"
+    },
+    {
+      "file": "screenshots/multiple-selected-1280.png",
+      "originalSha256": "0917f31a6d712838478489a19363e511644800939d74aad7a3ceb39050afa193"
+    },
+    {
+      "file": "screenshots/multiple-selected-1440.png",
+      "originalSha256": "14da41c2977d18cf795bd51ead4d20fc9087042c29dd009c630dd765a556e812"
+    },
+    {
+      "file": "screenshots/multiple-selected-390.png",
+      "originalSha256": "cd2cf954a6092ddbf9646d7f779f255efdfcf5b793ef9d9b82b336557cfee4f6"
+    },
+    {
+      "file": "screenshots/multiple-selected-768.png",
+      "originalSha256": "2304378b797318320f7885ed01bc952123de68fa5a4214bb546276f0cd92660a"
+    },
+    {
+      "file": "screenshots/single-answered-1280.png",
+      "originalSha256": "d1366a04541c23f91aa4bcd2183d0f5bd9ed01e4a530703c523ac8d64b04a41c"
+    },
+    {
+      "file": "web-typecheck.log.gz",
+      "originalSha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc"
+    }
+  ]
+}

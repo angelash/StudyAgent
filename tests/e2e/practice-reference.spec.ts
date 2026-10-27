@@ -1,5 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 import { browserEvidence } from './evidence';
+import { writeFileSync } from 'node:fs';
 const api = `http://localhost:${process.env.E2E_API_PORT ?? '4107'}`, evidence = browserEvidence('practice-reference');
 async function open(page: Page, width: number) {
   await page.setViewportSize({ width, height: width >= 1000 ? 800 : width === 390 ? 844 : 900 });
@@ -31,8 +32,12 @@ test('reference practice: explicit frozen media, three-column answer, readable f
   await expect(page.locator('.cl-answer-feedback')).toContainText('这次区分正确');
   const prompt = await page.locator('.cl-practice-prompt').boundingBox(), options = await page.locator('.cl-practice-options').boundingBox(), verdict = await page.locator('.cl-practice-support').boundingBox();
   expect(prompt!.x + prompt!.width).toBeLessThan(options!.x); expect(options!.x + options!.width).toBeLessThan(verdict!.x);
+  await page.screenshot({ path: evidence + '/single-answered-1280.png', fullPage: true });
+  writeFileSync(evidence + '/actual-desktop-layout.json', JSON.stringify({ viewport: page.viewportSize(), dpr: await page.evaluate(()=>devicePixelRatio),
+    frame: await page.locator('.cl-practice-card').boundingBox(), prompt, options, verdict, decodedFontFamilies: fonts,
+    scope: 'Actual local DOM layout and decoded local fonts only; original DPR not measured and question/image content differs.' }, null, 2) + '\n');
   await page.getByText('逐项对照选择与解释', { exact: true }).click(); await expect(page.locator('.cl-option-feedback')).toHaveCount(4);
-  await inside(page); await page.screenshot({ path: evidence + '/single-answered-1280.png', fullPage: true });
+  await inside(page); await page.screenshot({ path: evidence + '/single-answer-details-1280.png', fullPage: true });
   await page.getByRole('button', { name: '第2题', exact: true }).click(); await expect(page.locator('.cl-practice-prompt .cl-lesson-image')).toHaveCount(0);
   await page.getByRole('button', { name: '第3题', exact: true }).click(); await expect(page.locator('.cl-practice-prompt .cl-lesson-image img')).toHaveAttribute('src', '/classroom/agency-river-c7a9e2.webp');
   await page.reload(); await page.getByRole('button', { name: '第1题', exact: true }).click(); await expect(page.locator('.cl-answer-feedback')).toContainText('这次区分正确'); await expect(page.locator('.cl-practice-options input').first()).toBeDisabled();
