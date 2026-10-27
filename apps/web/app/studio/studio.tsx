@@ -37,6 +37,7 @@ export function LearningStudio() {
   const [prompt,setPrompt] = React.useState(''), [busy,setBusy] = React.useState(false), [error,setError] = React.useState('');
   const [tool,setTool] = React.useState('Concept Explanation'), [toolsOpen,setToolsOpen] = React.useState(false);
   const [showBuilder,setShowBuilder] = React.useState(false);
+  const builderReturnFocus = React.useRef<HTMLElement | null>(null);
   const [messages,setMessages] = React.useState<Array<{id:string;sender:string;content:string;modelId?:string|null;modelName?:string|null}>>([]), [session,setSession] = React.useState('');
   const [visual,setVisual] = React.useState<StudioOverview['selected'] extends infer T ? T extends {atoms:Array<infer A>} ? A|null : never : never>(null);
   const [whiteboardPreview,setWhiteboardPreview] = React.useState<StudioWhiteboard|null>(null);
@@ -106,7 +107,7 @@ export function LearningStudio() {
   const lastReading = [...(classroom?.readingProgress ?? classroom?.progress ?? [])].sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt))[0];
   const lastLesson = classroom?.course.units.flatMap(unit=>unit.lectures.flatMap(lecture=>lecture.lessons)).find(lesson=>lesson.id===lastReading?.lessonId);
   return <main className="sa-app ws-app" data-view={view}>
-    <StudioNavigation context={{ studentId: studentId || undefined, subject }} active={view} onNavigate={navigate} onCreate={()=>setShowBuilder(true)} recent={[
+    <StudioNavigation context={{ studentId: studentId || undefined, subject }} active={view} onNavigate={navigate} onCreate={target=>{builderReturnFocus.current=target??null;setShowBuilder(true);}} recent={[
       ...(lastReading && lastLesson ? [{title:lastLesson.title,detail:classroom!.course.title,href:'/studio/classroom?'+new URLSearchParams({lesson:lastReading.lessonId,session:lastReading.sessionId})}] : []),
       ...activities.slice(0,3).map(activity=>({title:activity.title,detail:activity.detail,href:activity.href}))]}/>
     <section className="sa-stage"><header className="sa-top"><div><strong>{labels[view]}</strong>{overview?.children.length ? <select aria-label="学习档案" value={studentId} onChange={e=>changeScope(e.target.value,subject)}>{overview?.children.map(c=><option key={c.id} value={c.id}>{c.nickname}</option>)}</select> : <Link href="/parent/dashboard">创建学习档案</Link>}<select aria-label="学科" value={subject} onChange={e=>changeScope(studentId,e.target.value as StudioSubject)}>{subjects.map(([k,n])=><option key={k} value={k}>{n}</option>)}</select></div><div><Link href="/studio/classroom">教学课堂 ↗</Link><Link href="/">学习观察室</Link></div></header>{error&&<div className="sa-error" role="alert">{error}<button onClick={()=>setError('')}>×</button></div>}
@@ -131,7 +132,7 @@ export function LearningStudio() {
         atoms={overview.selected.atoms} estimates={overview.selected.estimates} materials={overview.materials} packs={overview.studyPacks}
         onChanged={load} onError={setError}/>}</section>}
     </section>
-    {showBuilder&&<CourseBuilder key={studentId+subject} studentId={studentId} subject={subject} selected={overview?.selected??null} initialTitle={prompt} onClose={()=>setShowBuilder(false)} onRefresh={load} onCreated={course=>{setShowBuilder(false);navigate('courses',course);void load();}}/>}
+    {showBuilder&&<CourseBuilder key={studentId+subject} studentId={studentId} subject={subject} selected={overview?.selected??null} initialTitle={prompt} returnFocus={builderReturnFocus.current} onClose={()=>{setShowBuilder(false);builderReturnFocus.current=null;}} onRefresh={load} onCreated={course=>{setShowBuilder(false);builderReturnFocus.current=null;navigate('courses',course);void load();}}/>}
     {activeWhiteboard&&<WhiteboardPlayer whiteboard={activeWhiteboard} narrationAvailable={overview?.narrationAvailable} speech={overview?.speech} onClose={()=>setActiveWhiteboard(null)}/>}
     {whiteboardPreview&&<div className="sa-whiteboard-preview-modal"><button className="sa-scrim" onClick={()=>setWhiteboardPreview(null)}/><section><header><div><span className="studio-kicker">WHITEBOARD SESSION</span><h2>{whiteboardPreview.title}</h2></div><button aria-label="关闭预览" onClick={()=>setWhiteboardPreview(null)}>×</button></header><WhiteboardScenePreview scene={whiteboardPreview.scenes[0]} /><div className="sa-whiteboard-preview-copy"><strong>{whiteboardPreview.scenes.length} 幕 · {Math.ceil(whiteboardPreview.durationMs/1000)} 秒</strong><p>预览采用逐句文字阅读。保存后可选择云语音，按实际音轨结束继续；WebM 与 SRT 共用完整逐句时间表。</p></div><footer><button onClick={()=>setActiveWhiteboard(whiteboardPreview)}>播放预览</button><button disabled={busy} onClick={()=>void saveWhiteboard()}>{busy?'正在保存…':'保存到学习工作台'}</button></footer></section></div>}
   </main>;

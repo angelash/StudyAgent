@@ -20,7 +20,7 @@ export function StudioSymbol({ path, size = 20 }: { path: string; size?: number 
   return <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={path}/></svg>;
 }
 export function StudioNavigation({ active, recent, onNavigate, onCreate, context }: { active: StudioView | 'whiteboards';
-  recent?: Array<{ title: string; detail?: string; href: string }>; onNavigate?: (view: StudioView) => void; onCreate?: () => void; context?: LearningContext }) {
+  recent?: Array<{ title: string; detail?: string; href: string }>; onNavigate?: (view: StudioView) => void; onCreate?: (returnFocus?: HTMLElement | null) => void; context?: LearningContext }) {
   const [mobile, setMobile] = React.useState(false), [narrow, setNarrow] = React.useState(false), [collapsed, setCollapsed] = React.useState(false);
   const trigger = React.useRef<HTMLButtonElement>(null), sidebar = React.useRef<HTMLElement>(null), user = useSessionUser();
   const mobileOpen = React.useRef(false); mobileOpen.current = narrow && mobile;
@@ -54,6 +54,7 @@ export function StudioNavigation({ active, recent, onNavigate, onCreate, context
     return () => {
       for (const row of protectedElements) if (row.element.isConnected) row.element.inert = row.inert;
       requestAnimationFrame(() => {
+        if (document.querySelector('.ws-dialog-layer')) return;
         if (!mobileOpen.current && window.matchMedia('(max-width:1000px)').matches && trigger.current?.isConnected) trigger.current.focus();
       });
     };
@@ -82,7 +83,10 @@ export function StudioNavigation({ active, recent, onNavigate, onCreate, context
           aria-label="AI Whiteboards" title={!expanded ? 'AI白板' : undefined} aria-current={active === 'whiteboards' ? 'page' : undefined} onClick={afterNavigate}>
           <StudioSymbol path="M4 4h16v13H4ZM8 21l4-4 4 4M8 8h8M8 12h5"/><span className="button-label">AI白板</span></Link>
       </nav>
-      {onCreate && expanded && <button type="button" className="ws-reference-create" onClick={() => { afterNavigate(); onCreate(); }}>＋ 创建课程</button>}
+      {onCreate && expanded && <button type="button" className="ws-reference-create" onClick={() => {
+        const target = narrow ? trigger.current : document.activeElement as HTMLElement | null;
+        afterNavigate(); onCreate(target);
+      }}>＋ 创建课程</button>}
       {expanded && <div className="history-sections-container"><section className="sidebar-resume-section" aria-label={resume ? '继续学习' : '开始学习'}>
         <header className="sidebar-history-header"><h3>{resume ? '继续学习' : '开始学习'}</h3></header>
         {resume ? <Link className="sidebar-resume-card" href={resume.href} onClick={afterNavigate}><span className="sidebar-resume-card-top"><b className="sidebar-resume-title">{resume.title}</b></span>

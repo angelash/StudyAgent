@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-27T11:23:47.589689+00:00",
+  "passed": false,
+  "ciRun": 40489621177,
+  "head": "f73712945f5b21e5f11f5e2d475654b7da1ad85f",
+  "browser": {
+    "passedCases": 388,
+    "failedCases": 1,
+    "cases": 389,
+    "originalAttempts": 390,
+    "failedAttempts": 2,
+    "flaky": 0,
+    "skipped": 0,
+    "retries": 1
+  },
+  "application": "success",
+  "postgres": "success",
+  "finding": "Same old390px Materials click without opening the new navigation drawer as local failure. RemoteCI retried it once and failed again; both original traces retained. Do not call389 attempts or zero-retry. No runtime release.",
+  "files": [
+    {
+      "file": "run.json.gz",
+      "originalSha256": "9d45bdaafcbccfdec923d17df869615cd724a5faa1fb4b6a29674bf667d34d53"
+    },
+    {
+      "file": "jobs.log.gz",
+      "originalSha256": "33a023cbab886420421e30754e188e702dd21f6659603f3f18e9e02936a67971"
+    },
+    {
+      "file": "browser.json.gz",
+      "originalSha256": "23621861c28fafa20abdee083529ca63d892206e17e2ffaf4de6950bae89b591"
+    }
+  ]
+}
