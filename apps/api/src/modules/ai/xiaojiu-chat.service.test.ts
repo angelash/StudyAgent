@@ -48,6 +48,7 @@ describe('XiaojiuChatService', () => {
 
   it('includes custom schema in the model prompt and retries with the missing field path', async () => {
     const prompts: string[] = [];
+    const attempts: Array<{ attempt: number; status: string; failureKind?: string }> = [];
     spawnMock.mockImplementation(() => {
       const child = new MockChildProcess(); let prompt = '';
       child.stdin.on('data', chunk => { prompt += String(chunk); });
@@ -63,12 +64,51 @@ describe('XiaojiuChatService', () => {
     const schema = { type: 'object', properties: { title: { type: 'string' }, overview: { type: 'string' } }, required: ['title', 'overview'], additionalProperties: false };
     const result = await new XiaojiuChatService(new XiaojiuModelsService()).structured({ modelId: 'deepseek-v4-flash',
       system: 'Create a source-backed course', context: '', history: [], message: 'Generate' }, schema,
-      value => z.object({ title: z.string(), overview: z.string() }).strict().parse(value));
+      value => z.object({ title: z.string(), overview: z.string() }).strict().parse(value), true, event => attempts.push(event));
     expect(result.overview).toBe('From the supplied source');
     expect(prompts).toHaveLength(2);
     expect(prompts[0]).toContain('<输出schema>' + JSON.stringify(schema));
     expect(prompts[1]).toContain('"path":["overview"]');
     expect(prompts[0]).not.toContain('{"reply":string');
+    expect(attempts.map(({ attempt, status, failureKind }) => ({ attempt, status, ...(failureKind ? { failureKind } : {}) }))).toEqual([
+      { attempt: 1, status: 'started' }, { attempt: 1, status: 'failed', failureKind: 'invalid-output' },
+      { attempt: 2, status: 'started' }, { attempt: 2, status: 'succeeded' },
+    ]);
+  });
+
+  it.each(['context', 'history'] as const)('rejects excessive %s before starting a CLI or model request', async field => {
+    const service = new XiaojiuChatService(new XiaojiuModelsService());
+    const input = { modelId: 'deepseek-v4-flash', system: '只依据证据回答', context: '',
+      history: [] as Array<{ role: 'user'; content: string }>, message: '检查条件' };
+    if (field === 'context') input.context = '条'.repeat(18000) + '末尾公式不能丢失';
+    else input.history = Array.from({ length: 11 }, (_, i) => ({ role: 'user', content: '第' + i + '个完整条件' }));
+    await expect(service.reply(input)).rejects.toThrow(field === 'context' ? '原文不会被截断' : '消息不会被静默省略');
+    expect(spawnMock).not.toHaveBeenCalled();
+  });
+
+  it('sends the complete boundary-sized evidence and all ten selected history messages', async () => {
+    respondWith({ reply: '完整条件均已核对', evidenceIds: [] });
+    let prompt = '';
+    const implementation = spawnMock.getMockImplementation()!;
+    spawnMock.mockImplementation((...args: unknown[]) => {
+      const child = implementation(...args); child.stdin.on('data', (chunk: Buffer) => { prompt += String(chunk); }); return child;
+    });
+    const tail = '末尾必要条件：x=\\frac{11}{13}，单位不能省略。';
+    const context = '始'.repeat(18000 - tail.length) + tail;
+    const history = Array.from({ length: 10 }, (_, i) => ({ role: 'user' as const, content: '完整消息' + i + '。' }));
+    await new XiaojiuChatService(new XiaojiuModelsService()).reply({ modelId: 'deepseek-v4-flash',
+      system: '检查边界', context, history, message: '根据原条件回答' });
+    expect(prompt).toContain('<学习证据>' + context + '</学习证据>');
+    expect(prompt).toContain('<历史>' + JSON.stringify(history) + '</历史>');
+    expect(spawnMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('keeps the original successful result even if an internal observer fails', async () => {
+    respondWith({ reply: '原结果保留', evidenceIds: [] });
+    const result = await new XiaojiuChatService(new XiaojiuModelsService()).structured({ modelId: 'deepseek-v4-flash',
+      system: '检查观察器隔离', context: '', history: [], message: '检查' }, {}, value => value as { reply: string }, true,
+      () => { throw Error('diagnostic sink failed'); });
+    expect(result.reply).toBe('原结果保留'); expect(spawnMock).toHaveBeenCalledTimes(1);
   });
 
   it('retains validated classroom board and requests its structured output schema', async () => {

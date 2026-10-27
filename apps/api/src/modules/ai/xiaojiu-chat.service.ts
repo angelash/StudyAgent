@@ -1,6 +1,6 @@
 import type { ClassroomReplyBoard } from '@study-agent/contracts';
 import { classroomReplyPresentationSchema, parseClassroomReplyBoard } from './classroom-reply-board';
-import { Injectable, ServiceUnavailableException } from '@nestjs/common';
+import { BadRequestException, Injectable, ServiceUnavailableException } from '@nestjs/common';
 import { loadApiEnv } from '@study-agent/config';
 import { spawn } from 'node:child_process';
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
@@ -58,6 +58,14 @@ export type XiaojiuChatReply = z.infer<typeof chatResultSchema> & {
   board?: ClassroomReplyBoard;
 };
 
+/** Internal diagnostics only: never include prompts, paths, provider addresses or raw errors. */
+export type XiaojiuModelAttempt = {
+  attempt: number;
+  status: 'started' | 'succeeded' | 'failed';
+  elapsedMs: number;
+  failureKind?: 'cancelled' | 'invalid-output' | 'provider-error';
+};
+
 @Injectable()
 export class XiaojiuChatService {
   private readonly env = loadApiEnv();
@@ -75,8 +83,14 @@ export class XiaojiuChatService {
   }
 
   /** Internal generation path: schemas and validators come from application code, never a web request. */
-  async structured<T extends object>(input: XiaojiuChatRequest, schema: object, check: (value: unknown) => T, custom = true): Promise<T & {modelId:string;modelName:string}> {
+  async structured<T extends object>(input: XiaojiuChatRequest, schema: object, check: (value: unknown) => T, custom = true,
+    observe?: (event: XiaojiuModelAttempt) => void): Promise<T & {modelId:string;modelName:string}> {
     if (!this.enabled) throw new ServiceUnavailableException('小九AI模型对话当前未启用');
+    if (input.context.length > 18_000)
+      throw new BadRequestException('完整学习证据超过18000字符，请减少所选范围后重试；原文不会被截断');
+    if (input.history.length > 10)
+      throw new BadRequestException('本次历史消息超过10条，请明确选择对话范围后重试；消息不会被静默省略');
+    if (input.signal?.aborted) throw new ServiceUnavailableException('本次对话已取消');
     const model = this.models.resolve(input.modelId);
     const directory = mkdtempSync(resolve(tmpdir(), 'study-agent-chat-'));
     const workDirectory = resolve(directory, 'empty-work');
@@ -106,16 +120,22 @@ export class XiaojiuChatService {
       const prompt = this.prompt(input, custom, schema);
       let lastError: unknown;
       let correction = '';
+      const notify = (event: XiaojiuModelAttempt) => { try { observe?.(event); } catch { /* Diagnostics cannot change a model result. */ } };
       for (let attempt = 0; attempt < 2; attempt += 1) {
         let checking = false;
+        const started = Date.now();
+        notify({ attempt: attempt + 1, status: 'started', elapsedMs: 0 });
         try {
           const finalMessage = await this.run(args,
             attempt ? prompt + '\n上一次输出不符合结构。本次必须返回完整 JSON，修正这些问题：' + correction : prompt,
             workDirectory, connection.environment, input.signal);
           checking = true;
           const checked = check(this.parse(finalMessage));
+          notify({ attempt: attempt + 1, status: 'succeeded', elapsedMs: Date.now() - started });
           return { ...checked, modelId: model.id, modelName: model.label };
         } catch (error) {
+          notify({ attempt: attempt + 1, status: 'failed', elapsedMs: Date.now() - started,
+            failureKind: input.signal?.aborted ? 'cancelled' : checking ? 'invalid-output' : 'provider-error' });
           lastError = error;
           correction = error instanceof z.ZodError
             ? JSON.stringify(error.issues.slice(0, 12).map(issue => ({ path: issue.path, code: issue.code,
@@ -142,8 +162,8 @@ export class XiaojiuChatService {
         : input.classroomBoard
         ? '只返回输出schema要求的JSON：reply是口头讲解，evidenceIds是依据ID；board是提炼后的知识笔记，不能逐字复制reply。board.title不超过30字，points有1至5条，每条尽量不超过35字、最多80字，只写概念、对照或关键条件。diagram可为null；确需关系图时，仅用venn或flow，必须3个不超过20字的labels。不要HTML、脚本、代码或作答选项，不把推测写成已验证事实。'
         : '只返回符合输出 schema 的 JSON：{"reply":string,"evidenceIds":string[]}。',
-      '<学习证据>' + input.context.slice(0, 18_000) + '</学习证据>',
-      '<历史>' + JSON.stringify(input.history.slice(-10)) + '</历史>',
+      '<学习证据>' + input.context + '</学习证据>',
+      '<历史>' + JSON.stringify(input.history) + '</历史>',
       '<当前问题>' + input.message + '</当前问题>',
     ].join('\n\n');
   }
