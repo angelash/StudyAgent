@@ -125,7 +125,7 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
   const recent = [...readingProgress].filter(row => allLessons.some(lesson => lesson.id === row.lessonId)).sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt))[0];
   const next = allLessons.find(lesson => lesson.id === recent?.lessonId && !recent.completed) ?? allLessons.find(lesson => !reading.get(lesson.id)?.completed);
   return <main className="cl-shell ws-classroom-shell">
-    <StudioNavigation active="courses" recent={[{title:allLessons.find(lesson=>lesson.id===recent?.lessonId)?.title??'社会学想象力',detail:'社会学概论',href:'/studio/classroom?'+new URLSearchParams({lesson:recent?.lessonId??'soc-1-1-1',...(recent?{session:recent.sessionId}:{})})}]} />
+    <StudioNavigation active="courses" recent={recent ? [{title:allLessons.find(lesson=>lesson.id===recent.lessonId)?.title ?? '继续原课堂',detail:course?.title,href:'/studio/classroom?'+new URLSearchParams({lesson:recent.lessonId,session:recent.sessionId})}] : []} />
     <div className="cl-course-layout cl-reference-directory"><aside className="cl-course-sidebar"><Link className="cl-exit-course" href={libraryHref}>× <span>退出课程</span></Link>
       <CourseCover /><div className="cl-curator"><span>S</span><div><small>策划自</small><b>StudyAgent Learning Studio</b></div></div>
       <h1>{course?.title ?? '教学课堂'}</h1><p>{course?.description}</p><details><summary>显示更多</summary><p>{course?.description}</p><p>{course?.provenance}</p><p>60 个微课 · 15 个讲座 · 5 个单元项目</p></details>

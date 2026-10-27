@@ -45,6 +45,7 @@ test('course library and outline preserve navigation, panels, help and classroom
   await page.getByRole('button',{name:'获取帮助',exact:true}).first().click();await expect(page.getByLabel('向课堂老师提问')).toHaveValue(/我正在学习/);
   await page.goBack();await page.setViewportSize({width:390,height:844});await expect(page.locator('.cl-unit-nav')).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);await screenshot(page,'workspace-outline-mobile');
+  await page.getByRole('button',{name:'打开学习导航',exact:true}).click();
   await page.locator('.ws-navigation').getByRole('link',{name:'Courses',exact:true}).click();await expect(page.getByRole('heading',{name:'我的课程'})).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);await screenshot(page,'workspace-courses-mobile');
   expect(errors).toEqual([]);
