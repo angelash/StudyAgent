@@ -1,0 +1,79 @@
+{
+  "at": "2026-10-27T11:18:09.046319+00:00",
+  "head": "f73712945f5b21e5f11f5e2d475654b7da1ad85f",
+  "passed": false,
+  "cases": 389,
+  "passedCases": 388,
+  "failedCases": 1,
+  "originalAttempts": 389,
+  "retries": 0,
+  "apiReportCarried": {
+    "head": "0edc3d5dd1676cf880986f8054a1611b23d3af98",
+    "reportSha256": "14aadb2ee773b965c8737431cdf0ee0ee0a50dc4aef9fc03c21db72097c91482",
+    "reason": "API/package source/tests and all362 non-Web compiled inputs are byte-identical; new changes are directory CSS and browser readability assertions. Original1469/60 result retained, not a new API execution."
+  },
+  "apiProvenanceClarification": "Original API1469/60 is unchanged by137 navigation CSS/components and browser assertions. The copied runner reason mentions directory CSS/readability from136; this annotation corrects the scope while preserving that original receipt. No new local API execution.",
+  "finding": "The existing390px studio journey clicks Materials without first opening the new real navigation drawer; its earlier course creation and all other388 cases passed. Preserve every existing later material/pack assertion and navigate through the real menu before clicking. Add a separate creator-drawer to blueprint focus handoff witness.",
+  "files": [
+    {
+      "file": "api.json.gz",
+      "originalSha256": "14aadb2ee773b965c8737431cdf0ee0ee0a50dc4aef9fc03c21db72097c91482"
+    },
+    {
+      "file": "browser.json.gz",
+      "originalSha256": "4429cac4f3181250cc159bc2e30fcbcd98f5382976ddec40ec7ae4a102b99497"
+    },
+    {
+      "file": "browser.log.gz",
+      "originalSha256": "364d62d184ab44f2c23c84b1b5a740b866a90995f23c6f6e24d6efdcf8e96c6a"
+    },
+    {
+      "file": "build-api.log.gz",
+      "originalSha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced"
+    },
+    {
+      "file": "build-config.log.gz",
+      "originalSha256": "9d136fa0ee08b65242fd36b219b6ab9d08c75c008b07262fc63ad840a98df6f3"
+    },
+    {
+      "file": "build-contracts.log.gz",
+      "originalSha256": "f5e5953052daaf3b3470f7ef00c514bdf65bb639eafe0b664787e0eb8c1113b0"
+    },
+    {
+      "file": "build-web.log.gz",
+      "originalSha256": "c31e298cef53aa314ba5e025402d7a8820c56b57ad96cd13b00fa3a2a2fe4c79"
+    },
+    {
+      "file": "compiled.json.gz",
+      "originalSha256": "aeab29b51ae79272e734060bad8e1e975ef2811937afc38b85b31828d2147aa8"
+    },
+    {
+      "file": "focus.json.gz",
+      "originalSha256": "859abcee529f08de6b6394902b8b29a7b02e6c9fd7fee13ed4c3c34eba772b25"
+    },
+    {
+      "file": "focus.log.gz",
+      "originalSha256": "80368cb2b1641aeb1190a1aeedc449a8894a2b16a9044a411520e2b45a93e0e4"
+    },
+    {
+      "file": "original-css-check.log.gz",
+      "originalSha256": "b8038e02ab5885610ab41d31668cf7dc1ab719f588fd6ba7ca01c4ae8a873a13"
+    },
+    {
+      "file": "receipt.json.gz",
+      "originalSha256": "89a46497cbad3e8c5d38d5fdbe7ed626b4db634c2a1b586da828117ae56b0c2f"
+    },
+    {
+      "file": "source.json.gz",
+      "originalSha256": "e6672ed515fa8e36bb326fa192ffcd43735164ce2ac0c188239a783d8c93d2f7"
+    },
+    {
+      "file": "types-api.log.gz",
+      "originalSha256": "3dd6db47859fa0cbbf2848a978bf41c83f7ab44fff924e237451a140ca18c4df"
+    },
+    {
+      "file": "types-web.log.gz",
+      "originalSha256": "92a5fa6d934dd7f9ee13e23e4101157752842a9641ebb05a3e22cc61c6a59af8"
+    }
+  ]
+}

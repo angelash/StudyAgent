@@ -155,6 +155,7 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/studio');
+  await page.getByRole('button', { name: '打开学习导航', exact: true }).click();
   await page.getByRole('button', { name: 'Materials' }).click();
   await page.getByRole('tab', { name: '个性化学案' }).click();
   await expect(page.locator('.sa-pack-layout')).toBeVisible();

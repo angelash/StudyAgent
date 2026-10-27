@@ -74,3 +74,14 @@ test('reference navigation: blocked preference storage keeps current controls us
   await sidebar.getByRole('button', { name: '展开学习导航', exact: true }).click(); await expect(sidebar).toHaveCSS('width', '240px');
   await page.reload(); await expect(sidebar.getByRole('button', { name: '收起学习导航', exact: true })).toBeVisible();
 });
+test('reference navigation: a mobile drawer hands focus to the real course blueprint and returns to its menu trigger after closing', async ({ page }) => {
+  await enter(page, 390); await page.goto('/studio?view=courses'); await expect(page.getByRole('heading', { name: '我的课程', exact: true })).toBeVisible();
+  const trigger = page.getByRole('button', { name: '打开学习导航', exact: true }); await trigger.click();
+  await page.getByRole('dialog', { name: '学习工作台导航', exact: true }).getByRole('button', { name: '＋ 创建课程', exact: true }).click();
+  const blueprint = page.getByRole('dialog', { name: '课程蓝图', exact: true }); await expect(blueprint).toBeVisible();
+  await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+  expect(await blueprint.evaluate(node => node.contains(document.activeElement))).toBe(true);
+  await page.keyboard.press('Tab'); expect(await blueprint.evaluate(node => node.contains(document.activeElement))).toBe(true);
+  await page.keyboard.press('Escape'); await expect(blueprint).toHaveCount(0); await expect(trigger).toBeFocused();
+  expect(await page.evaluate(() => document.body.style.overflow)).not.toBe('hidden');
+});
