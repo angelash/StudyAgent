@@ -25,7 +25,11 @@ export function AssistantWidget(props:AssistantWidgetProps){
     contextRefType:props.contextRefType??null,contextRefId:props.contextRefId??null,contextItemId:props.contextItemId??null});
   const conversation=useAssistantConversation({open,ownerId:identity?.id??null,scope:context,context});
   const {catalog,modelId,setModelId,error:modelError,reload:reloadModels}=useXiaojiuModels(open&&!!identity);
-  React.useEffect(()=>{locateEpoch.current++;},[identity?.id,context,conversation.viewSessionId,open]);
+  const locationSessionId=conversation.historical??conversation.viewSessionId;
+  const locationKey=JSON.stringify([identity?.id,context,conversation.historical,locationSessionId,open]);
+  const locationBoundary=React.useRef({key:locationKey,version:0});
+  if(locationBoundary.current.key!==locationKey)locationBoundary.current={key:locationKey,version:locationBoundary.current.version+1};
+  React.useEffect(()=>()=>{locateEpoch.current++;},[]);
   React.useEffect(()=>{historyEpoch.current++;historyAbort.current?.abort();setHistoryOpen(false);setHistory(null);setHistoryError('');setHistoryQuery('');setMessageQuery('');},[identity?.id,context]);
   React.useEffect(()=>()=>historyAbort.current?.abort(),[]);
   React.useEffect(()=>{if(follow.current)log.current?.scrollTo({top:log.current.scrollHeight,behavior:'instant'});},[conversation.messages.length,conversation.viewSessionId]);
@@ -38,10 +42,10 @@ export function AssistantWidget(props:AssistantWidgetProps){
   }
   function toggleHistory(){setHistoryOpen(v=>!v);if(!historyOpen)void searchHistory();}
   async function locate(){
-    if(!conversation.viewSessionId)return;setHistoryError('');const owner=identity?.id,revision=++locateEpoch.current;
-    try{const page=await apiRequest<{location:{href:string|null}}>('/ai/assistant/sessions/'+conversation.viewSessionId+'/messages/page?pageSize=1');
-      const href=page.location.href;if(owner!==currentIdentity.current||revision!==locateEpoch.current)return;if(href&&/^\/(student|parent)\//.test(href))window.location.assign(href);else setHistoryError('这段对话没有可直接打开的学习活动。');
-    }catch(e){if(owner===currentIdentity.current&&revision===locateEpoch.current)setHistoryError((e as Error).message);}
+    if(!locationSessionId)return;setHistoryError('');const owner=identity?.id,revision=++locateEpoch.current,boundary=locationBoundary.current.version;
+    try{const page=await apiRequest<{location:{href:string|null}}>('/ai/assistant/sessions/'+locationSessionId+'/messages/page?pageSize=1');
+      const href=page.location.href;if(owner!==currentIdentity.current||revision!==locateEpoch.current||boundary!==locationBoundary.current.version)return;if(href&&/^\/(student|parent)\//.test(href))window.location.assign(href);else setHistoryError('这段对话没有可直接打开的学习活动。');
+    }catch(e){if(owner===currentIdentity.current&&revision===locateEpoch.current&&boundary===locationBoundary.current.version)setHistoryError((e as Error).message);}
   }
   const t=conversation.turn,canCancel=!!t&&['queued','running','validating'].includes(t.status),canRetry=!!t&&['failed','cancelled'].includes(t.status)&&t.task?.errorCode!=='assistant_context_changed';
   const blocked=conversation.loading||conversation.busy||conversation.waiting||!!conversation.pending||!!conversation.historical||conversation.mismatch||!conversation.sessionId;

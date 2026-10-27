@@ -1,0 +1,66 @@
+{
+  "status": "reproduced-before-product-fix",
+  "scope": "One controlled original UI attempt holds the history-view POST before the first locate click. Original product fails to navigate. Two original remote retry traces preserved.",
+  "localOriginalAttempts": 1,
+  "localFailed": 1,
+  "localRetries": 0,
+  "firstRemoteRun": 40454218283,
+  "firstRemoteBrowserCases": 368,
+  "firstRemoteOriginalAttempts": 370,
+  "firstRemoteFlaky": 2,
+  "findings": [
+    "Historical banner renders while viewSessionId is reset and its POST is still pending; first click returns without a location GET",
+    "Old locate invalidation uses later effects; synchronous identity and chosen-history boundaries are required",
+    "Original audio test did not guarantee its second request was still pending at close"
+  ],
+  "files": [
+    {
+      "file": "local-red.json.gz",
+      "originalSha256": "05e8b281d5fac489db665e6ecb493a53f4000cb82465414456fa71eecf83aefc"
+    },
+    {
+      "file": "local-red.log.gz",
+      "originalSha256": "0ca2b5ace5515b185cae51ed194420f07fb1f0663c56595cb6e1ef5606065212"
+    },
+    {
+      "file": "local-first/error-context.md.gz",
+      "originalSha256": "d4a50a7b20643d403cba54e04af33bd269d92bc858af8c31aad994c6260eac9a"
+    },
+    {
+      "file": "local-first/test-failed-1.png",
+      "originalSha256": "8cc3d176b38d5b343315e49b0e19c83d6bab49438cc858904e8a8eb71984dbe1"
+    },
+    {
+      "file": "local-first/trace.zip",
+      "originalSha256": "f658d28982a017d5af7be6404db8e710198b5ba55f9983175011157c3c63a730"
+    },
+    {
+      "file": "remote-first/assistant-conversations-di-1c84d-ithout-opening-a-future-one/error-context.md.gz",
+      "originalSha256": "8c53a6409499d3f3058ff89d352788ed26190e1607a798282942640023f14b46"
+    },
+    {
+      "file": "remote-first/assistant-conversations-di-1c84d-ithout-opening-a-future-one/test-failed-1.png",
+      "originalSha256": "52c9a2822cbc707ae105c788e310394a56f41a47354d45178fd942e2732b7a29"
+    },
+    {
+      "file": "remote-first/assistant-conversations-di-1c84d-ithout-opening-a-future-one/trace.zip",
+      "originalSha256": "d86a0e065142f6cb12190aca43a75872163496de54ce627572a8b7b84ceaba54"
+    },
+    {
+      "file": "remote-first/whiteboard-media-continuit-d3703--and-no-late-audio-can-play/error-context.md.gz",
+      "originalSha256": "d8c80d9f625a8e3cc3aaed53367e80124162e34f347cd032d37858c4bf8f37d9"
+    },
+    {
+      "file": "remote-first/whiteboard-media-continuit-d3703--and-no-late-audio-can-play/test-failed-1.png",
+      "originalSha256": "55b7662503d56875cdc5f25c6204a8b1c1b520c2650fa314f4f245e2d80b433d"
+    },
+    {
+      "file": "remote-first/whiteboard-media-continuit-d3703--and-no-late-audio-can-play/trace.zip",
+      "originalSha256": "4b3a969cc24df0a2090cfb09d6711011f5b31b7b3f5b1d02d88def03621df353"
+    },
+    {
+      "file": "original-widget.tsx.gz",
+      "originalSha256": "0e19bc253f39481cbc74ff511ce4dab68ebfb838a3cd8bafbb378d8c22aac584"
+    }
+  ]
+}

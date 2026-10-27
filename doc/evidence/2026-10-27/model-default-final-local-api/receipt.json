@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "at": "2026-10-27T06:06:00.393584+00:00",
+  "head": "f8207513c89f90062d92ee754c0d7bb1597e4eb0",
+  "status": "local-api-passed-ci-pending",
+  "api": {
+    "passed": 1468,
+    "failed": 0,
+    "environmentSkipped": 60,
+    "reportSha256": "12f7198d11094a092eff9928bae8adf25af8e683f942db38849255fdebf2b01e"
+  },
+  "retainedLocalBrowser": {
+    "head": "3a933875b3b6ee26a4b6cdc6fdd6cf354a848441",
+    "cases": 368,
+    "originalAttempts": 368,
+    "retries": 0,
+    "productAndCompiledUnchanged": true,
+    "scope": "Only two API test fixtures changed; original full browser was separately verified and retained."
+  },
+  "firstRemoteCi": {
+    "run": 40454218283,
+    "overall": "failure",
+    "application": "failure",
+    "postgres": "success",
+    "browser": {
+      "expected": 366,
+      "unexpected": 0,
+      "flaky": 2,
+      "skipped": 0,
+      "cases": 368,
+      "originalAttempts": 370,
+      "allSinglePass": false
+    }
+  },
+  "correctedRemoteCi": {
+    "run": 40457557071,
+    "head": "f8207513c89f90062d92ee754c0d7bb1597e4eb0",
+    "status": "in_progress"
+  },
+  "remaining": [
+    "Exact corrected CI terminal and original reports",
+    "Fresh stopped-service database and referenced file backup",
+    "Main production build, compile/resource/privacy checks and stable guardian observation",
+    "134 legacy authoring tools still need unified path; formal measurement continues human review"
+  ],
+  "files": [
+    {
+      "file": "receipt.json.gz",
+      "originalSha256": "83107b41add9a1f2766a6c812190238d508b20b5980605ee37a7d221ab08fc18"
+    },
+    {
+      "file": "source.json.gz",
+      "originalSha256": "b894c1c010c9086da43bf32b84ad22e78b352c6453c275535962986ad841921a"
+    },
+    {
+      "file": "api.json.gz",
+      "originalSha256": "12f7198d11094a092eff9928bae8adf25af8e683f942db38849255fdebf2b01e"
+    },
+    {
+      "file": "api.log.gz",
+      "originalSha256": "02bc5da8b214e9326f01f2299ff43c4db03486971781a5bb8582dfa7b578b389"
+    },
+    {
+      "file": "run-model134-corrected-api.cjs.gz",
+      "originalSha256": "58c60c7f3bc9975a3d650eecd9f88514eeb70191698a663c930a5c18c5ed8340"
+    },
+    {
+      "file": "model134-ci-first-40454218283.json.gz",
+      "originalSha256": "4807860b2b4bb5aa47dc14170e95b3b0375ad8fa6b6996f7ab82d2d1c03feee5"
+    },
+    {
+      "file": "model134-ci-first-40454218283-failed.log.gz",
+      "originalSha256": "60e7ed9e1d1d8d4fc88ea936bf1e9d44f88c36c35bf9cfe333adcebe2d5afd56"
+    },
+    {
+      "file": "first-ci-browser-original.json.gz",
+      "originalSha256": "bb9c48e0e7a5c29da331a61ec22bdc187a2e0d34bc0739c8d99ccb38e29aa2de"
+    }
+  ]
+}

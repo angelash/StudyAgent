@@ -182,3 +182,32 @@ test('diagnostic rules stay deterministic and history locates an answered frozen
   await page.getByRole('button',{name:'回到当前核查进度',exact:true}).click();await expect(page.getByLabel('数字或分数答案')).toBeVisible();
   const state=await call(f.actor,'/diagnostics/sessions/'+f.sessionId),future=state.items[2].id;await page.goto(f.href+'&item='+encodeURIComponent(future));await expect(page.getByRole('region',{name:'从历史对话定位的题目'})).toHaveCount(0);await expect(page.getByText('这道题尚未开放或不属于原评测，请按当前核查顺序继续。')).toBeVisible();expect((await call(f.actor,'/diagnostics/sessions/'+f.sessionId)).answeredCount).toBe(1);
 });
+
+test('history location: the first click uses the selected original conversation while its view is still loading',async({page})=>{
+  const f=await setup(page,'diagnostic'),message='LOCATE_LOADING_'+crypto.randomUUID();await send(page,message);await expect(task(page)).toHaveAttribute('data-status','completed');
+  await page.getByRole('button',{name:'收起学习观察助教',exact:true}).click();await page.getByLabel('数字或分数答案').fill('6');await page.getByRole('button',{name:'提交，下一步',exact:false}).click();
+  await expect.poll(async()=>(await call(f.actor,'/diagnostics/sessions/'+f.sessionId)).answeredCount).toBe(1);await expect(page.getByLabel('数字或分数答案')).toHaveValue('');
+  await open(page);await expect(page.getByLabel('想一起看看什么')).toBeEnabled();await panel(page).getByRole('button',{name:'查找历史',exact:true}).click();await page.getByLabel('检索历史关键词').fill(message);await panel(page).getByRole('button',{name:'搜索历史',exact:true}).click();
+  let release!:()=>void,held=0;const gate=new Promise<void>(resolve=>{release=resolve;});
+  await page.route('**/api/ai/assistant/sessions',async route=>{if(route.request().method()!=='POST')return route.continue();held++;await gate;if(route.request().failure())return route.abort('aborted');await route.continue().catch(error=>{if(!route.request().failure())throw error;});});
+  try{
+    await page.getByLabel('助教历史检索').getByRole('list').getByRole('button').click();await expect.poll(()=>held).toBe(1);
+    await page.getByRole('button',{name:'回到相关学习位置',exact:true}).click();
+    await expect(page).toHaveURL(new RegExp('item='+encodeURIComponent(f.itemId)));await expect(page.getByRole('region',{name:'从历史对话定位的题目'})).toContainText('合成题型验收 numeric_blank');await expect(page.getByLabel('数字或分数答案')).toHaveCount(0);
+    expect((await call(f.actor,'/diagnostics/sessions/'+f.sessionId)).answeredCount).toBe(1);
+  }finally{release();await page.unrouteAll({behavior:'wait'});}
+});
+
+test('history location: closing and reopening the same original conversation fences a late position reply',async({page})=>{
+  await setup(page);const message='LOCATE_CLOSED_'+crypto.randomUUID();await send(page,message);await expect(task(page)).toHaveAttribute('data-status','completed');
+  await panel(page).getByRole('button',{name:'查找历史',exact:true}).click();await page.getByLabel('检索历史关键词').fill(message);await panel(page).getByRole('button',{name:'搜索历史',exact:true}).click();await page.getByLabel('助教历史检索').getByRole('list').getByRole('button').click();
+  await expect(panel(page).locator('.assistant-message')).toHaveCount(2);
+  let release!:()=>void,held=0;const gate=new Promise<void>(resolve=>{release=resolve;}),before=page.url();
+  await page.route('**/api/ai/assistant/sessions/*/messages/page?pageSize=1',async route=>{const response=await route.fetch();held++;await gate;await route.fulfill({response});});
+  try{
+    await page.getByRole('button',{name:'回到相关学习位置',exact:true}).click();await expect.poll(()=>held).toBe(1);
+    await page.getByRole('button',{name:/^收起学习(?:小助教|观察助教)$/}).click();await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(page.getByRole('button',{name:'回到相关学习位置',exact:true})).toBeVisible();
+    const delivered=page.waitForResponse(response=>response.url().endsWith('/messages/page?pageSize=1'));release();await(await delivered).finished();
+    await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));await expect(page).toHaveURL(before);await expect(page.getByRole('button',{name:'回到相关学习位置',exact:true})).toBeVisible();
+  }finally{release();await page.unrouteAll({behavior:'wait'});}
+});
