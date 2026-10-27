@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { createRequire } from 'node:module';
-import { beforeAll, afterAll, describe, expect, it, vi } from 'vitest';
+import { beforeAll, afterAll, afterEach, describe, expect, it, vi } from 'vitest';
 import { NestFactory } from '@nestjs/core';
 import type { INestApplication } from '@nestjs/common';
 import request from 'supertest';
@@ -25,6 +25,15 @@ describe('evidence coach without search subprocess or a required AI key', () => 
       summary: 'OTHER_CHILD_PRIVATE_MARKER', actions: [], evidenceIds: [] });
   });
   afterAll(async () => { await app?.close(); if (previousKey) process.env.OPENAI_API_KEY = previousKey; });
+  afterEach(() => vi.restoreAllMocks());
+  function modelReply(reply: (command: any) => Promise<{ reply: string; evidenceIds: string[] }>) {
+    const { XiaojiuChatService } = require('../../../dist/apps/api/src/modules/ai/xiaojiu-chat.service.js');
+    const runner = app.get(XiaojiuChatService);
+    const enabled = vi.spyOn(runner, 'enabled', 'get').mockReturnValue(true);
+    const provider = vi.spyOn(runner, 'reply').mockImplementation(async (command: any) => ({ ...await reply(command),
+      modelId: command.modelId, modelName: 'Synthetic evidence coach' }));
+    return { provider, enabled };
+  }
   const post = (path: string, body: unknown) => request(app.getHttpServer()).post(`/api/ai${path}`)
     .set('Authorization', `Bearer ${account.token}`).send(body as object);
   const question = (id: string) => ({ id, stem: '先整理两堆积木的条件，再说明怎样合并。', answer: 731, analysis: 'PRIVATE_REFERENCE_ANALYSIS',
@@ -75,9 +84,10 @@ describe('evidence coach without search subprocess or a required AI key', () => 
   });
   it('rejects fabricated model evidence and cancels without saving a partial conversation', async () => {
     const session = ai.openAssistantSession({ userRole: 'parent', studentId: 'child', subject: 'math', pageContext: 'review' }, store.users[0]);
-    ai.client = { chat: { completions: { create: async () => ({ choices: [{ message: { content: JSON.stringify({ reply: '这个结论没有合法依据，应该被系统拒绝。', evidenceIds: ['invented-evidence'] }) } }] }) } } };
+    const { provider } = modelReply(async () => ({ reply: '这个结论没有合法依据，应该被系统拒绝。', evidenceIds: ['invented-evidence'] }));
     const originalCount = store.assistantMessages.length;
     await expect(ai.chat({ sessionId: session.id, message: '请分析原因' })).rejects.toThrow('未完成');
+    expect(provider).toHaveBeenCalledOnce(); expect(provider.mock.calls[0][0]).toMatchObject({ modelId: 'deepseek-v4-flash' });
     expect(store.assistantMessages).toHaveLength(originalCount);
     const before = store.assistantMessages.length, controller = new AbortController(); controller.abort();
     await expect(ai.chat({ sessionId: session.id, message: '取消本次请求', signal: controller.signal })).rejects.toThrow('取消');
@@ -95,18 +105,19 @@ describe('evidence coach without search subprocess or a required AI key', () => 
     const opened = await post('/assistant/sessions', input).expect(201), id = opened.body.data.id;
     expect((await post('/assistant/sessions', input).expect(201)).body.data.id).toBe(id);
     let prompt = '';
-    ai.client = { chat: { completions: { create: async (command: any) => {
-      prompt = JSON.stringify(command.messages);
-      return { choices: [{ message: { content: JSON.stringify({ reply: '最终答案是731，这条泄露答案的回复应当被拒绝。', evidenceIds: [] }) } }] };
-    } } } };
+    const { enabled, provider } = modelReply(async (command: any) => {
+      prompt = JSON.stringify(command);
+      return { reply: '最终答案是731，这条泄露答案的回复应当被拒绝。', evidenceIds: [] };
+    });
     const rejected = { message: '我已经写了想法，怎样检查条件？', requestKey: 'practice-help-rejected' };
     await post(`/assistant/sessions/${id}/messages`, rejected).expect(503);
+    expect(provider).toHaveBeenCalledOnce(); expect(store.assistantMessages.filter((row: any) => row.sessionId === id)).toHaveLength(0);
     expect(prompt).toContain('两堆积木'); expect(prompt).toContain('我先把数量');
     expect(prompt).not.toContain('PRIVATE_REFERENCE_ANALYSIS'); expect(prompt).not.toContain('731'); expect(prompt).not.toContain('gradingConfig');
     expect(prompt).toContain('\\"memory\\"'); expect(prompt).toContain('当前指导计划');
     expect(prompt).not.toContain('undefined分钟');
     expect(store.practiceHints.filter((h: any) => h.sessionId === 'coach-practice')).toHaveLength(0);
-    ai.client = null;
+    enabled.mockReturnValue(false);
     const message = { ...rejected, requestKey: 'practice-help-1' };
     const response = (await post(`/assistant/sessions/${id}/messages`, message).expect(201)).body.data;
     expect(response.source).toBe('rules'); expect(response.assistanceRecorded).toBe(true); expect(response.reply).toContain('草稿');
@@ -151,7 +162,7 @@ describe('evidence coach without search subprocess or a required AI key', () => 
     await expect(ai.chat({ sessionId: session.id, message: '这次请求已取消', signal: canceled.signal })).rejects.toThrow('取消');
     expect(store.diagnosticHints.filter((h: any) => h.sessionId === 'coach-diagnostic')).toHaveLength(0);
     let called = false;
-    ai.client = { chat: { completions: { create: async () => { called = true; throw new Error('Must not use a model to supply diagnostic answers'); } } } };
+    const { provider } = modelReply(async () => { called = true; throw new Error('Must not use a model to supply diagnostic answers'); });
     const help = await post(`/assistant/sessions/${session.id}/messages`, { message: '帮我整理条件', requestKey: 'diagnostic-help' }).expect(201);
     expect(help.body.data.assistanceRecorded).toBe(true); expect(called).toBe(false);
     const answer = await request(app.getHttpServer()).post('/api/diagnostics/sessions/coach-diagnostic/responses').set('Authorization', `Bearer ${account.token}`)
@@ -159,6 +170,7 @@ describe('evidence coach without search subprocess or a required AI key', () => 
     expect(store.diagnosticResponses.find((r: any) => r.id === answer.body.data.responseId).hintLevel).toBe(1);
     const afterSubmit = await post(`/assistant/sessions/${session.id}/messages`, { message: '刚才的回答对了吗', requestKey: 'diagnostic-after-submit-help' }).expect(201);
     expect(afterSubmit.body.data.source).toBe('rules'); expect(afterSubmit.body.data.assistanceRecorded).toBe(false); expect(called).toBe(false);
+    expect(provider).not.toHaveBeenCalled();
     ai.client = null;
   });
 
@@ -179,10 +191,10 @@ describe('evidence coach without search subprocess or a required AI key', () => 
     store.practiceSessions.push({ id: 'frozen-coach-practice', studentId: 'child', subject: 'math', planId: 'frozen-coach-plan',
       atomId: original.id, status: 'in_progress', questionIds: ['frozen-coach-q'], snapshots: [question('frozen-coach-q')] });
     let prompt = '';
-    ai.client = { chat: { completions: { create: async (command: any) => {
-      prompt = JSON.stringify(command.messages);
-      return { choices: [{ message: { content: JSON.stringify({ reply: '请对照当时的数量条件说明思路，并通过当前范围的新评测重新核查。', evidenceIds: [] }) } }] };
-    } } } };
+    const { enabled, provider } = modelReply(async (command: any) => {
+      prompt = JSON.stringify(command);
+      return { reply: '请对照当时的数量条件说明思路，并通过当前范围的新评测重新核查。', evidenceIds: [] };
+    });
     try {
       for (const [kind, ref, item] of [['diagnostic', 'frozen-coach-baseline', null], ['plan', 'frozen-coach-plan', null],
         ['practice', 'frozen-coach-practice', 'frozen-coach-q']] as const) {
@@ -193,14 +205,12 @@ describe('evidence coach without search subprocess or a required AI key', () => 
         expect(prompt).not.toContain('UNRELATED_REPORT_MARKER'); expect(prompt).not.toContain('LIVE_DEFINITION_NAME');
         expect(prompt).not.toContain('LIVE_DEFINITION_OBJECTIVE'); expect(prompt).toContain('重新评测');
         if (kind === 'practice') expect(prompt).toContain(original.objective);
-        ai.client = null;
+        enabled.mockReturnValue(false);
         const fallback = (await post(`/assistant/sessions/${session.id}/messages`, { message: '现在应该怎样继续？', requestKey: `frozen-${kind}-fallback` }).expect(201)).body.data;
         expect(fallback.reply).toContain('重新评测');
-        ai.client = { chat: { completions: { create: async (command: any) => {
-          prompt = JSON.stringify(command.messages);
-          return { choices: [{ message: { content: JSON.stringify({ reply: '请对照当时的条件说明思路，并按当前范围重新评测。', evidenceIds: [] }) } }] };
-        } } } };
+        enabled.mockReturnValue(true);
       }
+      expect(provider).toHaveBeenCalledTimes(3);
     } finally { ai.client = null; }
   });
 });

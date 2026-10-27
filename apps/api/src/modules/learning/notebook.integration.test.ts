@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { NestFactory } from '@nestjs/core';
-import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import request from 'supertest';
 import sharp from 'sharp';
 import { mkdtempSync, rmSync } from 'node:fs';
@@ -12,6 +12,7 @@ describe('persistent mistake organization, frozen original redo and independent 
   let app: any, store: any, auth: any, parent: any, other: any, admin: any, ai: any;
   const credential = 'notebook-fixture-secret', directory = mkdtempSync(join(tmpdir(), 'study-notebook-'));
   const previousRoot = process.env.STUDY_DATA_DIR, previousKey = process.env.OPENAI_API_KEY;
+  afterEach(() => vi.restoreAllMocks());
   beforeAll(async () => {
     process.env.STUDY_DATA_DIR = directory; delete process.env.OPENAI_API_KEY;
     const { AppModule } = require('../../../dist/apps/api/src/app.module.js');
@@ -147,10 +148,16 @@ describe('persistent mistake organization, frozen original redo and independent 
     store.knowledgeAtoms[0].objective = 'LIVE_OBJECTIVE_MUST_NOT_BE_USED'; store.knowledgeAtoms[0].version++;
     store.diagnosticPlans.push({ id: 'later-plan', studentId: 'child', subject: 'math', createdAt: '2099', status: 'active', baselineSessionId: 'different-baseline', summary: 'UNRELATED_NEW_PLAN', actions: [], evidenceIds: [] });
     let prompt = '';
-    ai.client = { chat: { completions: { create: async (input: any) => { prompt = JSON.stringify(input.messages); return { choices: [{ message: { content: JSON.stringify({ reply: '先用自己的话解释题目的两个部分和整体之间的关系。', evidenceIds: [] }) } }] }; } } } };
+    const runner = app.get(require('../../../dist/apps/api/src/modules/ai/xiaojiu-chat.service.js').XiaojiuChatService);
+    vi.spyOn(runner, 'enabled', 'get').mockReturnValue(true);
+    const provider = vi.spyOn(runner, 'reply').mockImplementation(async (input: any) => {
+      prompt = JSON.stringify(input); return { reply: '先用自己的话解释题目的两个部分和整体之间的关系。', evidenceIds: [],
+        modelId: input.modelId, modelName: 'Synthetic notebook coach' };
+    });
     const assistant = await call('post', '/ai/assistant/sessions', { userRole: 'student', studentId: 'child', subject: 'math', pageContext: 'mission', contextRefType: 'practice', contextRefId: redo.id, contextItemId: original.questionId });
     await call('post', `/ai/assistant/sessions/${assistant.id}/messages`, { message: '我想重新解释当时的条件。', requestKey: randomUUID() });
     expect(prompt).toContain('FROZEN_OBJECTIVE'); expect(prompt).not.toContain('LIVE_OBJECTIVE_MUST_NOT_BE_USED'); expect(prompt).not.toContain('UNRELATED_NEW_PLAN');
+    expect(provider).toHaveBeenCalledOnce(); expect(provider.mock.calls[0][0]).toMatchObject({ modelId: 'deepseek-v4-flash' });
     await call('get', `/learning/practice/${redo.id}`, undefined, other, 403);
   });
 
