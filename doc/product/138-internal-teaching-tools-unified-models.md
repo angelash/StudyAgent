@@ -49,3 +49,17 @@
 7. 新完整API/浏览器、精确CI与两库原生恢复完成后，主目录新鲜停服一致数据/旧构建回退、真实生产构建、实际入口/权限/模型状态及守护稳定交付。上一远端CI全部终态前不推送新运行，不取消或覆盖旧原件。
 
 规格提交时只完成调用调查与设计，没有本批实现、真实模型调用或测试通过结论。完整教师/教材/设备/原像素与声音、真实测量有效性和长期复测仍按105继续；不能以教研建议替代这些验收。
+
+## 6. 第一实现层的数据与命令细化（实施前）
+
+复用`domain_records`与现有任务仓储，不新造任务表或绕过lease。当前主线数据库为20；本批正式接入持久集合时新增21迁移，集合名`teachingToolRuns`。SQLite使用json_extract、PG使用body->>创建`teaching_tool_creation_request`唯一索引，字段(ownerUserId,requestKey)，只约束该集合；同一键不同完整commandHash拒绝，同一键同输入返回原记录。现有ownerUserId/id/taskId查询字段和事务机制复用，输入按完整规范JSON摘要，不依赖object属性顺序；不会因服务端重启再解析模型目录而改变原模型。
+
+每条记录冻结id、ownerUserId、authorizationSessionId、purpose(assessment_analysis/hint_draft)、requestKey、commandHash、inputHash、requestedModelId、实际modelId/modelName、taskId、revision、createdAt/updatedAt、snapshot与result。snapshot含题目来源(kind=temporary/question_bank)、服务端读取的原ID/版本指纹、完整stem/referenceAnswer/referenceAnalysis、本次待核对answer或hintLevel，以及固定文字用途说明。没有studentId、score、knowledgeEstimate或采用状态。result使用两种严格schema的鉴别联合，原始供应商事件/秘密配置不保存在公开view。
+
+集合内部阶段只需queued/running/validating/completed，外部failed/cancelling/cancelled从task状态投影，避免失败后仍占据伪活动索引。task kind为`ai.teaching.analysis`或`ai.teaching.hint`，payload只含runId，payloadHash绑定冻结inputHash；worker按原generation/leaseToken进行checkpoint、校验和最终原子结果写入。heartbeat丢失、明确取消、原账号不再active/admin、原授权会话撤销或到期、原题来源权限撤回时停止供应商与迟到提交。普通断网不撤销持久任务；用户在另一有效admin会话可读取属于自己的原任务，再明确决定新建或原模型重试。
+
+新入口为`POST /ai/teaching-tools/preflight`、`POST /ai/teaching-tools/runs`、`GET /ai/teaching-tools/runs`、`GET /ai/teaching-tools/runs/:id`、`GET /ai/teaching-tools/requests/:requestKey`、`POST /ai/teaching-tools/runs/:id/cancel`与`POST /ai/teaching-tools/runs/:id/retry`。预检纯读取并返回完整输入摘要/长度/来源可用性，不发CLI或创建任务。create必须带requestKey及预检fingerprint，事务内重新读取来源并核对完整指纹后才冻结；cancel/retry带expectedTaskVersion和requestKey，通过现有任务命令/代次协议防重复。列表按purpose/日期/page/pageSize查询，不把其他admin任务或秘密错误混入。
+
+兼容层保留两条原admin路由：可选modelId/requestKey，使用同一严格预检/冻结/执行与结果投影；无requestKey时由服务端创建一次明确新命令，有requestKey则重放原结果。旧调用仍返回原用途的summary/structuredResult/confidenceLevel/reviewRequired/source（分析）或hint/source（提示），追加modelId/modelName、advisoryOnly、runId/requestKey及结果状态；等待超过约定预算返回明确可恢复任务位置，不伪造完成。其输入/返回和退出/断网行为用实际HTTP契约验证，再编写具体控制器；不能仅以TypeScript旧签名推测兼容性。
+
+第一层先实现两个结果schema、完整输入限制/规范摘要和拒绝伪引用，不注册controller/worker、不新增集合/迁移或正式路由；保留该层尚未可用的边界。第二层再提交并实施21迁移和任务命令，与账号导出/删除、备份/恢复注册一起接通。现有代码中的schema20断言需区分“20→21迁移用例”和“当前最新版本”，保留旧迁移试验本意，不能把全部20文本机械替换成21。
