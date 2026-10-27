@@ -1,0 +1,72 @@
+{
+  "at": "2026-10-27T10:25:49.528085+00:00",
+  "passed": true,
+  "status": "runtime-delivered",
+  "revision": "994d9ec290f5d1793bd067cb7c5560fdf1dda6dd",
+  "applicationRevision": "b11f104918d09c57a3c3ab60a0fedc56b31b0a0f",
+  "apiRevision": "059f319ea680d1f08773b8bf8b8f0a932d23889c",
+  "ciRun": 40481433427,
+  "schemaVersion": 20,
+  "webBuildId": "L6mZX7xGYOCjG8vJHuPkb",
+  "localApi": {
+    "passed": 1469,
+    "failed": 0,
+    "environmentSkipped": 60,
+    "originalExecutionHead": "0edc3d5dd1676cf880986f8054a1611b23d3af98",
+    "provenance": "Carried by exact unchanged API/package source, tests and362 compiled non-Web inputs after CSS/browser-only correction; not a new API run."
+  },
+  "linuxApi": {
+    "passed": 1461,
+    "failed": 0,
+    "environmentSkipped": 68
+  },
+  "localBrowser": {
+    "passed": 382,
+    "originalAttempts": 382,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0
+  },
+  "remoteBrowser": {
+    "passed": 382,
+    "originalAttempts": 382,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0
+  },
+  "focusBrowser": {
+    "passed": 16,
+    "originalAttempts": 16,
+    "retries": 0
+  },
+  "initialAutomatedBaseline": "0edc3d5 also passed382/CI, but manual768 read failed. Original reports and stable48px red preserved; publication held until correction and new exactCI.",
+  "runtime": {
+    "httpChecks": 1212,
+    "originalAssets": 959,
+    "voiceSamples": 6,
+    "compiledInputs": 362,
+    "rawCompiledMatches": 361,
+    "stableIntervalMs": 230607,
+    "protectedConfigurationPreserved": true,
+    "localEnvironmentPreserved": true,
+    "oldBuildRollbackFiles": 968,
+    "consistentBackupVerifiedFiles": 1,
+    "assetsIncluded": false
+  },
+  "realModels": {
+    "passed": 21,
+    "failed": 1,
+    "total": 22,
+    "allModelsPassed": false,
+    "failedId": "claude-opus-5",
+    "scope": "Unchanged original complete anonymous text matrix and actual compiled read-only projection only."
+  },
+  "wholeProductComplete": false,
+  "limitations": [
+    "Original course cover is still the existingSVG substitute; global navigation137 remains independent.",
+    "No originalDPR/full states/audio/teacher/real-device/whole curriculum/longitudinal validation claim.",
+    "Active legacy admin assessment/hint migration still pending."
+  ]
+}
