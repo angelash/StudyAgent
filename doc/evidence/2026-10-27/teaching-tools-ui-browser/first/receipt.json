@@ -1,0 +1,28 @@
+{
+  "result": "13 failed, 1 passed",
+  "rootCause": "Admin login lands on analytics with no AI teaching tools entry; failed scenarios do not establish workbench behavior.",
+  "sourceHead": "3d966ca",
+  "dirtyCandidate": true,
+  "reportStats": {
+    "startTime": "2026-10-27T15:09:17.876Z",
+    "duration": 244552.389,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 13,
+    "flaky": 0
+  },
+  "files": {
+    "failures.zip": {
+      "bytes": 4849884,
+      "sha256": "5af0414e980709adb77d016021e2b0098ba18b73ba1b4407350868ac68c3d9bc"
+    },
+    "teaching-ui-first-browser.json.gz": {
+      "bytes": 4048,
+      "sha256": "f425f6be21091f5bc3961c054f6a3f46f5061fff1bc6c4c9aa2ba937476ff496"
+    },
+    "teaching-ui-first-browser.log.gz": {
+      "bytes": 3563,
+      "sha256": "9c7629dc12a468f4755683174a3afe5ddf72aa3f675096f669d6adece07d3215"
+    }
+  }
+}

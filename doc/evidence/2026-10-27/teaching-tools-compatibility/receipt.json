@@ -1,0 +1,41 @@
+{
+  "sourceScope": "Uncommitted compatibility implementation after 3d966ca; before modelAvailable wrapper and subsequent UI additions. Does not replace full candidate API regression.",
+  "reports": {
+    "teaching-compat-local-first.json": {
+      "numTotalTests": 43,
+      "numPassedTests": 39,
+      "numFailedTests": 0,
+      "numPendingTests": 4,
+      "success": true
+    },
+    "teaching-compat-postgres-first.json": {
+      "numTotalTests": 31,
+      "numPassedTests": 30,
+      "numFailedTests": 0,
+      "numPendingTests": 1,
+      "success": true
+    }
+  },
+  "files": {
+    "teaching-compat-api-types-first.log.gz": {
+      "bytes": 119,
+      "sha256": "7bf1e41fa740657303e486319c5007f1316bbbd284988e3d1553ad75a62ddbc1"
+    },
+    "teaching-compat-local-first.json.gz": {
+      "bytes": 3187,
+      "sha256": "c865fc4e45184725422412e0ec94e2fa89555f8a61ac86dffd4070571ec0386e"
+    },
+    "teaching-compat-local-first.log.gz": {
+      "bytes": 405,
+      "sha256": "da4963dd00d1ac87ec9c460fafd5dd7972a47acd181584de3757d8caa7e612e5"
+    },
+    "teaching-compat-postgres-first.json.gz": {
+      "bytes": 2364,
+      "sha256": "b8179128af3e26856ae7197470dc3ae0ad590364b25230c315e7e2692532f939"
+    },
+    "teaching-compat-postgres-first.log.gz": {
+      "bytes": 1809,
+      "sha256": "b2cff1765bcaa1a4a94274fbdb54e6af999a8e93c4029b9f9849d4de0756a564"
+    }
+  }
+}

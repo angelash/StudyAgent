@@ -1,0 +1,46 @@
+{
+  "headSha": "92dfee2011a43fb482c11691dd710304d420e20c",
+  "runId": 40517472450,
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "application",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "browser": {
+    "tests": 390,
+    "attempts": 390,
+    "passed": 390,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retryAttempts": 0
+  },
+  "scope": "Exact 92dfee2 backend foundation only; this does not validate the subsequent date, compatibility or teaching UI candidate.",
+  "files": {
+    "jobs.log.gz": {
+      "bytes": 150949,
+      "sha256": "22f41b3da010a675b00a3d421ec137c7b9c4b8bb84ffd72dcd26f21360b44ade"
+    },
+    "run.json.gz": {
+      "bytes": 3137,
+      "sha256": "6981e311abc5aea52826a2c58be9eecaad9172d9dfe6d807d47574094f68b05b"
+    },
+    "source-course-full-browser.json.gz": {
+      "bytes": 30694,
+      "sha256": "dc9f63c964b707e44cb89cae72b3a6b5f8177552bf569f37ee14c3a238bbf5a9"
+    }
+  }
+}

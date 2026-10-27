@@ -1,0 +1,25 @@
+{
+  "stats": {
+    "startTime": "2026-10-27T15:16:57.525Z",
+    "duration": 98494.939,
+    "expected": 11,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  },
+  "dirtyCandidate": true,
+  "files": {
+    "failures.zip": {
+      "bytes": 1907773,
+      "sha256": "6ea33d7de625a5046aa049b8de7ba1e7a7070d5f5152c5f7777260b220dc4b08"
+    },
+    "teaching-ui-second-browser.json.gz": {
+      "bytes": 5095,
+      "sha256": "68ebe99eeee5575a2392d5615f380bdea52015c89f4df5da6f6103df30d7cf15"
+    },
+    "teaching-ui-second-browser.log.gz": {
+      "bytes": 4391,
+      "sha256": "0e2f0b9a8b6d7c615f3356b349d068d9afefde8a77adaeaf8c855b2094968f00"
+    }
+  }
+}
