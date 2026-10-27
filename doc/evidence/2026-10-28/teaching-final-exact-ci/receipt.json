@@ -1,0 +1,76 @@
+{
+  "headSha": "64d8bce356cb62c4b361de112e9414761873229d",
+  "runId": 40546374381,
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "application",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "api": {
+    "passed": 1497,
+    "failed": 0,
+    "environmentSkipped": 72
+  },
+  "postgresTeaching": {
+    "passed": 30,
+    "failed": 0,
+    "sqliteOnlySkipped": 1
+  },
+  "browser": {
+    "tests": 411,
+    "attempts": 411,
+    "passed": 411,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retryAttempts": 0,
+    "stats": {
+      "startTime": "2026-10-27T17:03:24.989Z",
+      "duration": 2133437.031,
+      "expected": 411,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "scope": "Exact64d8bce three-job CI including complete browser with corrected decoded PTS and current sealed model resource. Teaching PG is an overlapping sub-suite, not a sum. No real teacher, physical device or long-term learning claim.",
+  "files": {
+    "jobs.log.gz": {
+      "bytes": 151826,
+      "sha256": "51af7d7a442da58491dc3958cecc0806a7f3da72cd6f667a6a484b65af3e6444"
+    },
+    "postgres-job-summary.json.gz": {
+      "bytes": 289,
+      "sha256": "ce0fe42fb3acfc073628886455d3da6643c0690adff61324586facb93512f92f"
+    },
+    "run.json.gz": {
+      "bytes": 3145,
+      "sha256": "9dbf3dfd671b60ce144eb721cc3cd89b34222beebf37cef61a09d4c49e731700"
+    },
+    "source-course-full-browser.json.gz": {
+      "bytes": 32233,
+      "sha256": "5f04b84c537d8100a1aca7a63125ceaaed2b2fef895347222894ad4d2bc00391"
+    },
+    "verifier-first.py.gz": {
+      "bytes": 1232,
+      "sha256": "36a697cd9950468b3f67c249f37672b06f4ddf48e63f462d8ecc68c0751e9cbd"
+    },
+    "verifier-rejection.json.gz": {
+      "bytes": 379,
+      "sha256": "eeb6d1bd86b25ef736b45d01855d06843dddd4eef392a18298cb24108936368f"
+    }
+  }
+}
