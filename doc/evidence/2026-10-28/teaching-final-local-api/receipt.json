@@ -1,0 +1,52 @@
+{
+  "testedRevision": "a59e33516cf89248104b758b28862695e280b0c1",
+  "api": {
+    "passed": 1505,
+    "failed": 0,
+    "environmentSkipped": 64
+  },
+  "postgres": {
+    "passed": 30,
+    "failed": 0,
+    "sqliteOnlySkipped": 1
+  },
+  "fixedInputsRechecked": 2569,
+  "applicationSourceComparison": {
+    "files": 1934,
+    "semanticDifferences": []
+  },
+  "modelInputs": {
+    "data/qa/teaching-live-20d3bbf-first/receipt.json": {
+      "count": 29,
+      "different": []
+    },
+    "data/qa/teaching-model-matrix-20d3bbf-first/receipt.json": {
+      "count": 20,
+      "different": []
+    }
+  },
+  "browserStatus": "Final411 running in the fixed a59e335 worktree; not yet claimed passed.",
+  "scope": "Actual complete API plus actual PostgreSQL HTTP/worker/native backup+deletion-ledger restore. Counts overlap, do not add. Documentation-only descendant shares the same application source.",
+  "files": {
+    "teaching-a59e335-fixed-inputs.json.gz": {
+      "bytes": 125748,
+      "sha256": "836aa7d3e48d1778ac15fbb416e8eaae76fa13c0af41d89551d88f15ed23a2cd"
+    },
+    "teaching-full-api-a59e335.json.gz": {
+      "bytes": 87281,
+      "sha256": "c7fb6776d1645513900667ce0d8315de6772e8d1246a739699d56d4b163575d8"
+    },
+    "teaching-full-api-a59e335.log.gz": {
+      "bytes": 19154,
+      "sha256": "2da01faa2dae00a34a3453e49c514e08be81e52cb43fc33bf6fc1509b0f8c31e"
+    },
+    "teaching-full-postgres-a59e335.json.gz": {
+      "bytes": 2374,
+      "sha256": "69970f41c72c82086223a98940e4d6495bb04f89ec06603d73244aa80903adce"
+    },
+    "teaching-full-postgres-a59e335.log.gz": {
+      "bytes": 1905,
+      "sha256": "ad52bbdc2630a698c6ee130694692aeaeb4e3f5e6d59db27f3fb5d94100aacda"
+    }
+  }
+}
