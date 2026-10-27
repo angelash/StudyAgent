@@ -1,0 +1,54 @@
+{
+  "at": "2026-10-27T02:50:10.526Z",
+  "passed": true,
+  "deployed": false,
+  "status": "full-candidate-verified-awaiting-runtime",
+  "applicationRevision": "3523b41d5e8242a285502a7a1c927adc720ca243",
+  "schemaVersion": 20,
+  "ciRun": 40437003207,
+  "localBrowser": {
+    "passed": 365,
+    "originalAttempts": 365,
+    "retries": 0,
+    "failed": 0,
+    "skipped": 0
+  },
+  "remoteBrowser": {
+    "passed": 365,
+    "originalAttempts": 365,
+    "retries": 0,
+    "failed": 0,
+    "skipped": 0
+  },
+  "localApi": {
+    "passed": 1451,
+    "environmentSkipped": 60,
+    "failed": 0,
+    "inheritedUnchangedBackend": true
+  },
+  "linuxApi": {
+    "passed": 1443,
+    "environmentSkipped": 68,
+    "failed": 0
+  },
+  "localPostgresAndNative": {
+    "passed": 19,
+    "scope": "13 HTTP +3 SQLite +3 PostgreSQL; overlapping, not additive"
+  },
+  "realProviders": {
+    "anonymousDefaultDsAnswerMs": 58938,
+    "imageGenerateMs": 40463,
+    "originalPngEditMs": 43048,
+    "teacherReviewed": false
+  },
+  "runtime": {
+    "status": "pending",
+    "currentlyDeliveredSchema": 19
+  },
+  "wholeProductComplete": false,
+  "limitations": [
+    "Full reference states/DPR/original audio and manual geometry remain incomplete.",
+    "No full textbook coverage, formal measurement validation, real-device or longitudinal acceptance claim.",
+    "Current all-model checks and GPT metadata compatibility are isolated133 work, not this candidate."
+  ]
+}
