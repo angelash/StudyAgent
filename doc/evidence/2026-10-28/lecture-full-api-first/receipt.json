@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "passedTests": 1539,
+  "failedTests": 0,
+  "environmentSkipped": 65,
+  "fixedBackendContractAndCompiledFiles": 919,
+  "beforeAfterShaUnchanged": true,
+  "scope": "Complete local API suite. Original before919 inputs remained byte-identical through completion and local123e9a9 commit. No full browser, remote CI or production delivery implied.",
+  "files": {
+    "data/qa/lecture-full-api-first.json": {
+      "sha256": "e4d9b9a697b10f24ab164bd0504f6b220cd6b6ba0dc483f607f1756e652bbea2",
+      "gzipSha256": "04d4f19c6fb373cb16fbee3c357d29a6ca7d5ab9f5764ea1f76137ff21bfb0e4",
+      "bytes": 790704
+    },
+    "data/qa/lecture-full-api-first.log": {
+      "sha256": "f1a8f9d8d33dd3e613fc335dfa7dbcd6381dfe171e2344246c219eafd24a8d12",
+      "gzipSha256": "303fbd4175ea537ed978a241abb814bf28cb137c670075b3eb202a22a4d768f0",
+      "bytes": 489
+    },
+    "data/qa/lecture-full-api-inputs.json": {
+      "sha256": "6907abb1c00faf399c6e0aa0cbe454408b810542e7524e6316b3c4df0aaf0f80",
+      "gzipSha256": "c57ea174e1772a131da6a38af5d7145a45167dc01cbfb648f874226091f557fd",
+      "bytes": 125899
+    },
+    "data/qa/lecture-pre-final-api-typecheck.log": {
+      "sha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "gzipSha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec",
+      "bytes": 68
+    }
+  }
+}

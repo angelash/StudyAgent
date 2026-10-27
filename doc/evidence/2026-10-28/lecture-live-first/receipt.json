@@ -1,0 +1,40 @@
+{
+  "passed": false,
+  "cases": 2,
+  "cliStarts": 2,
+  "actualCompletedTurns": 2,
+  "formalRecordsUnchanged": true,
+  "scope": "Actual anonymous default DS lecture and independent turns completed and saved. Runner incorrectly assumed chronological page order and inspected user at index1. Assertions stopped before replay validation; preserve original failure and fix to role+receipt IDs, then new real samples. No model qualification matrix changed.",
+  "files": {
+    "data/qa/lecture-live-first/progress.json": {
+      "sha256": "bc20a4b69042310c6460f944bf3877cd03d1de19ce2d124ba78ee7f1886e63fc",
+      "gzipSha256": "2fc38920385eef3e29991441f2df881efb8072857bde888aad29556387f1e103",
+      "bytes": 5459
+    },
+    "data/qa/lecture-live-first/receipt.json": {
+      "sha256": "bc20a4b69042310c6460f944bf3877cd03d1de19ce2d124ba78ee7f1886e63fc",
+      "gzipSha256": "2fc38920385eef3e29991441f2df881efb8072857bde888aad29556387f1e103",
+      "bytes": 5459
+    },
+    "data/qa/lecture-live-first/lecture.json": {
+      "sha256": "b2fc16b1e5cbe9f3ad6ad7fe81bf546e48f6697960a1987eb045a33387d4746a",
+      "gzipSha256": "f638d301f3b2552c38c42dd176694cf22ea82aef5e0ad44a1f107ac9d60d795e",
+      "bytes": 8005
+    },
+    "data/qa/lecture-live-first/independent.json": {
+      "sha256": "057d83b190efd70ab10f7c3f728df59b267814a2c3b9f8347e7caee303b73481",
+      "gzipSha256": "7af459b4c5b556d91fb978f71b1ee3c2ad16b0e0234dfa328e2fcb2a5cf395b8",
+      "bytes": 4930
+    },
+    "data/qa/lecture-live-first.log": {
+      "sha256": "bde692efa024d004e1a0b1cd8b8513aaa7fb7e5a23a95a34f72c7ee969005836",
+      "gzipSha256": "c07a682b3b285db1efd69a3c38988e60ffc87b46dd36fcdec2493578f4666aa8",
+      "bytes": 204
+    },
+    "scripts/qa/lecture-assistant-live.cjs": {
+      "sha256": "53f1a59e5980ed198b306b719e5eb7f8af4b518db63332595c2c3186fcda11be",
+      "gzipSha256": "a5a3cf00d7dc70baf3a18094955c9b24b2ed50041db4474200865f04ff339285",
+      "bytes": 8465
+    }
+  }
+}
