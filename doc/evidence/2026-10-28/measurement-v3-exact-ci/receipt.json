@@ -1,0 +1,212 @@
+{
+  "at": "2026-10-27T20:15:21.825011+00:00",
+  "passed": true,
+  "head": "03fb55324a2125e45a054c801394990b1dad404b",
+  "ciRun": 40570429189,
+  "terminal": true,
+  "jobs": {
+    "postgres": "success",
+    "browser": "success",
+    "application": "success"
+  },
+  "linuxApi": {
+    "passed": 1514,
+    "failed": 0,
+    "environmentSkipped": 72
+  },
+  "postgresSuites": [
+    {
+      "step": "PostgreSQL migration, recovery and fencing",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Source-course staged generation and checkpoint recovery on PostgreSQL",
+      "passed": 23,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Classroom image task lifecycle and private references on PostgreSQL",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Long-source chunks, independent checkpoints and original files on PostgreSQL",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Resumable PDF uploads, page recovery, collection and read-only audit on PostgreSQL",
+      "passed": 81,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Frozen classroom captions, historical upgrade and narration guards on PostgreSQL",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Durable classroom turns, original position and permission fencing on PostgreSQL",
+      "passed": 16,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "step": "Frozen classroom code drafts, conflicts, learner permissions and privacy on PostgreSQL",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "step": "Course revision families, impact previews and historical privacy on PostgreSQL",
+      "passed": 10,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "step": "Project actual attachments, native file recovery and latest privacy ledger on PostgreSQL",
+      "passed": 12,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "step": "Recoverable answer drafts, first submissions and correction fencing on PostgreSQL",
+      "passed": 10,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "step": "Ordinary assistant turns, native recovery and latest deletion ledger on PostgreSQL",
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Frozen classroom multiple choices, first feedback and native recovery on PostgreSQL",
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Original rule plans, durable model suggestions and native deletion recovery on PostgreSQL",
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Neutral classroom voice samples, fixed bytes and real learner permissions on PostgreSQL",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Guided project narration, original actor receipts and storage restart on PostgreSQL",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Source-course projects, read-only journeys and JSONB teaching continuity on PostgreSQL",
+      "passed": 15,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "step": "Independent source check generation, publication, student privacy and native recovery on PostgreSQL",
+      "passed": 26,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Frozen whiteboard sentences, original commands, current access and native restart on PostgreSQL",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Original whiteboard questions, supplementary teaching and migration on PostgreSQL",
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Question-bound PNG originals, immutable versions, schema20 and native privacy recovery on PostgreSQL",
+      "passed": 19,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "AI topic whiteboard original commands, checkpoints and permissions on PostgreSQL",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 2
+    },
+    {
+      "step": "Topic whiteboard image originals, shared retention and native recovery on PostgreSQL",
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Original paper practice, exact command recovery and student permissions on PostgreSQL",
+      "passed": 23,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Internal teaching drafts, admin-owned data and schema21 native recovery on PostgreSQL",
+      "passed": 30,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "step": "Measurement v3, immutable reports, concurrent reanalysis and native privacy recovery on PostgreSQL",
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "browser": {
+    "passed": 415,
+    "originalAttempts": 415,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0
+  },
+  "scope": "Original exact-head CI logs and browser artifact; PostgreSQL suites overlap with other API/browser checks and are not summed. Original failed CI40564667058 remains archived separately.",
+  "files": {
+    "terminal.json": {
+      "sha256": "e3e4085fe344f5fff106538d7098300e464024faa87f4af1523aadd9fac49707",
+      "bytes": 21053,
+      "gzipSha256": "01cb41b6593b470830d090f43e972eda716ddafc14b72907c50ec2db0699b79f"
+    },
+    "postgres.log": {
+      "sha256": "e904e370f391ccbe6371c1725b57f49b7e79459ad08795de3bf9bed49494bf10",
+      "bytes": 431382,
+      "gzipSha256": "d4aec7a6b120b6b86305029d03d55fc7d5893085df00a669a9c6595c06f2c515"
+    },
+    "browser.log": {
+      "sha256": "b5eb6192a9749e6e103549f9ff078b3f78b3b1b8c7b2147f7c150ba38f7209e4",
+      "bytes": 283168,
+      "gzipSha256": "baf10c055df3e8f78f8fc502b36f6a0fa010d5be34f0aff3bc49a633e0dadfe8"
+    },
+    "application.log": {
+      "sha256": "841ab5af9e90ec15e1bb42886f7499ac1515ee32153418df63b27590087c9bc3",
+      "bytes": 335343,
+      "gzipSha256": "36cbe817e8d5df9145e86aebd8a4552c50a8bae3fcf0c332e9bed536a468166b"
+    },
+    "source-course-full-browser.json": {
+      "sha256": "a59361e58b96bf2aea96fb65d1f521b3ee09ec2e8466672a9e9cb1c29892bf49",
+      "bytes": 466317,
+      "gzipSha256": "eb4a41e849831485dc378b101365fd348714262f00715bc8930063b107cb2195"
+    }
+  },
+  "wholeProductComplete": false
+}

@@ -1,0 +1,105 @@
+{
+  "at": "2026-10-27T19:51:59.805073+00:00",
+  "passed": true,
+  "head": "03fb55324a2125e45a054c801394990b1dad404b",
+  "applicationRevision": "6a51299711a8c40c62974490a9dd28bc9c5453c2",
+  "localApi": {
+    "passed": 1522,
+    "failed": 0,
+    "environmentSkipped": 64
+  },
+  "localBrowser": {
+    "passed": 415,
+    "originalAttempts": 415,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0,
+    "rerunOnCorrectedHead": false,
+    "sourceRevision": "cbf8cec76d1f0d345748892f68d950b8c369d6d2",
+    "scope": "Original unchanged application run, inherited through explicit source/runtime/E2E continuity. Not a new local browser run on corrected fixture."
+  },
+  "continuity": {
+    "runtimeChanges": [
+      "apps/api/src/modules/diagnostics/guidance-model.integration.test.ts"
+    ],
+    "rawCompiledMatches": 370,
+    "rawUnchangedManifestSourceMatches": 1421,
+    "originalWebInputs": 2002,
+    "qaWebSourceCopies": 313,
+    "e2eDefinitionMatches": 42,
+    "inputChecks": {
+      "measurement-v3-corrected-full-api-inputs.json": {
+        "checked": 1422,
+        "head": "03fb55324a2125e45a054c801394990b1dad404b",
+        "rawSha256": true
+      },
+      "measurement-v3-full-browser-inputs.json": {
+        "checked": 2002,
+        "head": "078f2eef267b4868f59656b43e6073c842d015e2",
+        "rawSha256": true
+      }
+    }
+  },
+  "nativeGuidanceReplay": {
+    "passed": 1,
+    "failed": 0,
+    "notSelectedOrSqliteOnly": 12,
+    "durationMs": 57186,
+    "thresholdMs": 60000,
+    "scope": "Isolated replay of unchanged native recovery after first combined PostgreSQL timeout. Does not turn the first combined run into13/13."
+  },
+  "files": {
+    "measurement-v3-corrected-full-api.json": {
+      "sha256": "1646f7d009de731326434bca67caee4de6036a13bb9b6d17ec98a42016f8f98a",
+      "bytes": 780280,
+      "gzipSha256": "047c0f1089bc994f35236bf84605b18b1f6fd93cf4aa6341d5af190041c89193"
+    },
+    "measurement-v3-corrected-full-api.log": {
+      "sha256": "1f1f35352c619cc9e8a83fad9caa0db2ab912abf0881204ab9ce2c52d843da04",
+      "bytes": 488,
+      "gzipSha256": "41a4365b955ffdf362c8486b7a33ae778b8b9936bbd0f598421e948cfe75772c"
+    },
+    "measurement-v3-corrected-full-api-inputs.json": {
+      "sha256": "f4375f059a992ecafe2685e4f8d33718cee726d17953fef358cc824913fec039",
+      "bytes": 186729,
+      "gzipSha256": "4d35c03d43bdc61379023cdb7c9c0881ae8a0fed7161db958b962425ce4d6602"
+    },
+    "guidance-native-isolated.json": {
+      "sha256": "0bf5b056c715b1492d93c83e7f1914b3679920fb6fe5f74e0ffe32020d77ef07",
+      "bytes": 6354,
+      "gzipSha256": "1230da4ad4d8f14119d9eb26a940cea5239487949a9d0030f267719ca63fa8d1"
+    },
+    "guidance-native-isolated.log": {
+      "sha256": "ed62ea02867e2c9f029ad4cc02bbfd37fd775796efaad7e8054807f4b052ccca",
+      "bytes": 1073,
+      "gzipSha256": "43bbdb25a0afa31f2d696a9ec07ada5400e22f1acfc614aa7809f8001066406b"
+    },
+    "run-guidance-native-isolated.cjs": {
+      "sha256": "a02a64a39a029b6d063dd176264936a3e580629452db4ab605c176dc461f75c3",
+      "bytes": 343,
+      "gzipSha256": "9fad35acead2932e8775bbdbf80ced20096ada19dc20f59e1d402535327400f5"
+    },
+    "measurement-v3-full-browser-first.json": {
+      "sha256": "bce3b58e0fd9276f7050ff027e45954d843af9277f702cd67579c03244b4e257",
+      "bytes": 463680,
+      "gzipSha256": "10ce644c87dce37f877042e43fd39b15ab10b54efc724da0c723e4589ff24312"
+    },
+    "measurement-v3-full-browser-first.log": {
+      "sha256": "91277e117b2054b0bfeac7871492d337f9d62ad919626e7e0d226bf41188d082",
+      "bytes": 67641,
+      "gzipSha256": "5578cdc7f85f0ab11d8f261c9d7f6a8d6bb239ced66645afaa07387095a1d47f"
+    },
+    "measurement-v3-full-browser-inputs.json": {
+      "sha256": "4d4d11f762ed34cb254763ae59c637d8e08e9bde4a3469368e0fe20a551bc2bc",
+      "bytes": 268566,
+      "gzipSha256": "7e64a83de4c07545c419e0c8421b26dd79b3641ebe8222a2fe53096d7efe11e3"
+    },
+    "measurement-v3-e2e-inputs.json": {
+      "sha256": "4fa6ef4d283bcea445d7af0b1c5cde2f28a229d957e014f5e481d035b0cf9c20",
+      "bytes": 11763,
+      "gzipSha256": "a810689af5c44759c326442eaa11d056f0f63e74c98ff44cddd20df0fad9386a"
+    }
+  },
+  "wholeProductComplete": false
+}
