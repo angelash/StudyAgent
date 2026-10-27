@@ -1,0 +1,124 @@
+{
+  "at": "2026-10-27T10:11:10.279396+00:00",
+  "head": "b11f104918d09c57a3c3ab60a0fedc56b31b0a0f",
+  "passed": true,
+  "scope": "Corrected tablet directory; complete382 browser cases, original API result retained only after exact API/package source/tests/362 compiled input hashes match.",
+  "api": {
+    "passed": 1469,
+    "failed": 0,
+    "environmentSkipped": 60,
+    "reportSha256": "14aadb2ee773b965c8737431cdf0ee0ee0a50dc4aef9fc03c21db72097c91482"
+  },
+  "apiCarriedFrom": {
+    "head": "0edc3d5dd1676cf880986f8054a1611b23d3af98",
+    "reportSha256": "14aadb2ee773b965c8737431cdf0ee0ee0a50dc4aef9fc03c21db72097c91482",
+    "reason": "API/package source/tests and all362 non-Web compiled inputs are byte-identical; new changes are directory CSS and browser readability assertions. Original1469/60 result retained, not a new API execution."
+  },
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-27T09:26:15.433Z",
+      "duration": 1952461.98,
+      "expected": 382,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "originalAttempts": 382,
+    "reportSha256": "7c61cb4f7af8299095110568126b8716959bd6a2ccb71f99b3310dee069edc25"
+  },
+  "focus": {
+    "stats": {
+      "startTime": "2026-10-27T09:24:31.073Z",
+      "duration": 92452.428,
+      "expected": 16,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "originalAttempts": 16,
+    "reportSha256": "543bb0f37976a968f1094c1002fb1cd1f4e1ae3977ef0e8437fe5b0459e80099"
+  },
+  "compiledFiles": 652,
+  "qaWebBuildId": "G1W-1LowYEirw96tJ2BXL",
+  "realModelExecutionInputsUnchanged": true,
+  "manualReview": [
+    "768 and390: full horizontal lesson titles and all actions visible; no one-glyph column.",
+    "1280 and1440 screenshot originals preserved; original1280x800 reference has different contents/DPR unknown."
+  ],
+  "files": [
+    {
+      "file": "api.json.gz",
+      "originalSha256": "14aadb2ee773b965c8737431cdf0ee0ee0a50dc4aef9fc03c21db72097c91482",
+      "originalBytes": 753730
+    },
+    {
+      "file": "browser.json.gz",
+      "originalSha256": "7c61cb4f7af8299095110568126b8716959bd6a2ccb71f99b3310dee069edc25",
+      "originalBytes": 426981
+    },
+    {
+      "file": "browser.log.gz",
+      "originalSha256": "74ee9974af4c3274757eb11a3c9edeea62619da4a593cc169feb51890d0dd6d5",
+      "originalBytes": 61695
+    },
+    {
+      "file": "build-api.log.gz",
+      "originalSha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "originalBytes": 62
+    },
+    {
+      "file": "build-config.log.gz",
+      "originalSha256": "0617cdedb09fd3a8b63a02855e7adadbb37bc79bd5b152703bbcbaa58de31b22",
+      "originalBytes": 462
+    },
+    {
+      "file": "build-contracts.log.gz",
+      "originalSha256": "1b915e494703fde219e485035b8d427f65c78bf4b6f9d87abca6c5226a6b9c15",
+      "originalBytes": 468
+    },
+    {
+      "file": "build-web.log.gz",
+      "originalSha256": "2f6aa9923b887aa221f542b59d5b972b2ffbb5c6ee280ea753a1482df4a4b4b0",
+      "originalBytes": 1464
+    },
+    {
+      "file": "compiled.json.gz",
+      "originalSha256": "d53532ee7a065801cad1860648b663e20abc1a023700fe957bfe393203fa3d48",
+      "originalBytes": 93588
+    },
+    {
+      "file": "focus.json.gz",
+      "originalSha256": "543bb0f37976a968f1094c1002fb1cd1f4e1ae3977ef0e8437fe5b0459e80099",
+      "originalBytes": 20700
+    },
+    {
+      "file": "focus.log.gz",
+      "originalSha256": "d5eb4cb419cb9272f1ed58eb02357ed6b1e89be9aca977e87e0ee702a9032cb8",
+      "originalBytes": 3250
+    },
+    {
+      "file": "receipt.json.gz",
+      "originalSha256": "b0b98ddbc86c00482782939ce3ce7658906dd7744e0f0dde433d82779749ab2f",
+      "originalBytes": 3353
+    },
+    {
+      "file": "source.json.gz",
+      "originalSha256": "1e5f22e6c38e23147fd293ae3cef9c7277d78e7a2c50ce37cfad6e06c3f9801f",
+      "originalBytes": 299467
+    },
+    {
+      "file": "types-api.log.gz",
+      "originalSha256": "3dd6db47859fa0cbbf2848a978bf41c83f7ab44fff924e237451a140ca18c4df",
+      "originalBytes": 64
+    },
+    {
+      "file": "types-web.log.gz",
+      "originalSha256": "92a5fa6d934dd7f9ee13e23e4101157752842a9641ebb05a3e22cc61c6a59af8",
+      "originalBytes": 64
+    }
+  ],
+  "pending": [
+    "new exactCI final original verification",
+    "fresh stopped database backup and actual production guardian release"
+  ]
+}

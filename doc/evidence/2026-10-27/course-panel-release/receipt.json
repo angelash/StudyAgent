@@ -1,0 +1,83 @@
+{
+  "at": "2026-10-27T10:25:49.528085+00:00",
+  "passed": true,
+  "privateBackupFolder": "output/daemon/release-backups/2026-10-27-course-panel-1793090064884",
+  "databaseVerifiedFiles": 1,
+  "assetsIncluded": false,
+  "oldCompiledFiles": 968,
+  "protectedConfigurationPreserved": true,
+  "localEnvironmentPreserved": true,
+  "qualifiedExecutionInputsExact": 20,
+  "compiledCompared": 362,
+  "rawCompiledMatches": 361,
+  "onlyCompiledFormatDifference": "Exact historic rate-limit JS4CRLF only; full normalized source and output identical. Initial strict refusal retained.",
+  "startupInventory": [
+    "study-agent-api",
+    "study-agent-web",
+    "study-agent-health"
+  ],
+  "savedTemporaryQa": 0,
+  "scope": "Fresh stopped-service consistent schema20 database and referenced runtime files, verified968 old builds and private config. Not a whole research-asset backup or full restore rehearsal.",
+  "files": [
+    {
+      "file": "candidate.json.gz",
+      "originalSha256": "8fba8b0b690262bc9244e8ca9a4757452408ee0f6763a84f21a4e96fffb60b77",
+      "originalBytes": 54423
+    },
+    {
+      "file": "candidate-strict-before-format-observation.json.gz",
+      "originalSha256": "37e02d80d4006e1afd9c210d51b4ca7e1e6d374038966fc7b19d2283968942cc",
+      "originalBytes": 53823
+    },
+    {
+      "file": "deployment-before.json.gz",
+      "originalSha256": "4cee1bde534532820169de1903a901ba80d6e2a2557ac4bfa7fb32785573a7a1",
+      "originalBytes": 1352
+    },
+    {
+      "file": "deployment-target.json.gz",
+      "originalSha256": "606a99e19b261b3f0c53dabfcdc3bffcf6e4b048f1e80644ac7073ba7e4d8a26",
+      "originalBytes": 152
+    },
+    {
+      "file": "backup-verified.json.gz",
+      "originalSha256": "a6186b01e42c1fdf7183f78b2893b9fa6087dfac03984229345d0afe98417c40",
+      "originalBytes": 452
+    },
+    {
+      "file": "build-backup-verification.json.gz",
+      "originalSha256": "3bf3d9bb39acdebe9616d760f2a775540eece952a5056fe7be029095ed0f740d",
+      "originalBytes": 248
+    },
+    {
+      "file": "build-files.json.gz",
+      "originalSha256": "71e70fa321a2ca45d07844b224af862f1e29925a7a4fd50d486bb7e3f86f6455",
+      "originalBytes": 185492
+    },
+    {
+      "file": "stop-transitions.json.gz",
+      "originalSha256": "8c8d8d63f2417ec8d4308ce47df9dae043fc553f1e757e2b68135b3f745f1c2b",
+      "originalBytes": 389
+    },
+    {
+      "file": "terminal-qa-cleanup.json.gz",
+      "originalSha256": "d9f22951d30c6c2e30dbf56273ad733c2b78b3c3eccf609c2656900f5aeccea5",
+      "originalBytes": 494
+    },
+    {
+      "file": "compiled-strict-initial.json.gz",
+      "originalSha256": "d153473e1149bf71c32602d0f60bf336bfc17e2b1cfcb26153820f7913b1a331",
+      "originalBytes": 179
+    },
+    {
+      "file": "compiled-crlf-observation.json.gz",
+      "originalSha256": "094adbcd07488ac488a14a0bbb0ccf022fbc964500b718943d44466c80f754fb",
+      "originalBytes": 797
+    },
+    {
+      "file": "qualified-input-verification.json.gz",
+      "originalSha256": "c3f0b0334dc2efb73039f536fbbea583a109e1e7680f8ff3eba872e5b3e9ee9c",
+      "originalBytes": 233
+    }
+  ]
+}
