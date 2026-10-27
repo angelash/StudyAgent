@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "scope": "Actual main production build, exact question HTTP authorization/static/compiled checks, stopped-service schema18 rollback and three owned guardian observations. Raw private configuration and live family database remain local.",
+  "files": [
+    {
+      "source": "data/qa/whiteboard-question-production-build.log",
+      "file": "whiteboard-question-production-build.log.gz",
+      "originalSha256": "7d1f0f3b761583626b6a60d8a9989a79863a7e9a5cf1b8aaa91b36b0e5e5282c",
+      "sha256": "4c867a69f204c1c21ef0e58e8fb68f33a9567e8a8481ee66ce30a1d3b5459016"
+    },
+    {
+      "source": "data/qa/whiteboard-question-daemon-start.log",
+      "file": "whiteboard-question-daemon-start.log.gz",
+      "originalSha256": "9900a2e6163583db503aa5db5f7a065249019af6649bed43dfbbb17074fff3b7",
+      "sha256": "32ecdba8a35b78aafd5a7615371fb58920a9d61b02bf32d8c1c39dd571460566"
+    },
+    {
+      "source": "data/qa/whiteboard-question-deployment-prepare.log",
+      "file": "whiteboard-question-deployment-prepare.log.gz",
+      "originalSha256": "40c1c72c8873123d34173a7cec39816909fd045c41364468b1d4cd51bd6d3948",
+      "sha256": "91f597c84d768a182cc774a5e38ad0fafea71f33cda95122e5bf78a94b5209b1"
+    },
+    {
+      "source": "data/qa/whiteboard-question-runtime-check-first.log",
+      "file": "whiteboard-question-runtime-check-first.log.gz",
+      "originalSha256": "1865c6534fb31ae7a0768841fdae3cdce4ba3ad3e6b826fc7f239268e9fad172",
+      "sha256": "0c7c55f91ce8663a5cf6b1415b33f1c58c8b19401995fc3661b50967358919af"
+    },
+    {
+      "source": "data/qa/whiteboard-question-runtime-check-green.log",
+      "file": "whiteboard-question-runtime-check-green.log.gz",
+      "originalSha256": "6a243963ff42353e15e0828b4e64d996e4d134c5c5de2fa61587ef76f3523fbf",
+      "sha256": "db3d46dc57ddb5089544ceac0d3432dee8b554b617274a47c5a517f9c44ae7bc"
+    },
+    {
+      "source": "data/qa/prepare-whiteboard-question-candidate.cjs",
+      "file": "prepare-whiteboard-question-candidate.cjs.gz",
+      "originalSha256": "d007c153356a860073dec03db3a4dc5a54434bbc9a2c954bea23cb0cfaadcde9",
+      "sha256": "5e36c12ab9ba5c8823fc4540c7c44e8602fc3e8dac93d52c0fc96b6cb9da7cdf"
+    },
+    {
+      "source": "data/qa/deploy-whiteboard-question-prepare.cjs",
+      "file": "deploy-whiteboard-question-prepare.cjs.gz",
+      "originalSha256": "f5b00205d205fbe8d161340cf875203b0d44805aa9ff66156e8f76f38b9ab597",
+      "sha256": "8598da476f48b7925edf7fd892c26d7943eee950ff51f77b1de341b0e881b179"
+    },
+    {
+      "source": "data/qa/check-whiteboard-question-release.cjs",
+      "file": "check-whiteboard-question-release.cjs.gz",
+      "originalSha256": "472875e37b0ee07783533d6fa44a445c13eec1162a435c5965861d4b02ddee98",
+      "sha256": "daaf4160ea973a58641847e4f48628a78a7034c8566412aea4bf6e0ebe781b5e"
+    },
+    {
+      "source": "data/qa/observe-whiteboard-question.cjs",
+      "file": "observe-whiteboard-question.cjs.gz",
+      "originalSha256": "fa70533435a9f60c02424c25fb289b7773d7a98cfa7c16a4f92e904e966eb709",
+      "sha256": "32a47ece800af0a412a26ac059651528185ddf7480be23b9438402f8e9ef27f1"
+    },
+    {
+      "source": "output/daemon/release-backups/2026-10-27-whiteboard-questions-1793063517660/backup-verified.json",
+      "file": "backup-verified.json.gz",
+      "originalSha256": "d64e54f27dc94c864108165dd77675639d9b0ee4805add66786a883fa7ff7da3",
+      "sha256": "c27c37c8b4cc39ac458fd4caae5ffc65b53fc782d25bae90fa7634e08f99d7d7"
+    },
+    {
+      "source": "output/daemon/release-backups/2026-10-27-whiteboard-questions-1793063517660/build-backup-verification.json",
+      "file": "build-backup-verification.json.gz",
+      "originalSha256": "d9649aa613803275b411458cc2c3e1ddac0e8e25aa9242ca28c4567801175373",
+      "sha256": "9c34729b3545bfe28678b720da059979b60dfa9a3411211d3d7e3986429c7230"
+    },
+    {
+      "source": "output/daemon/release-backups/2026-10-27-whiteboard-questions-1793063517660/compiled-crlf-observation.json",
+      "file": "compiled-crlf-observation.json.gz",
+      "originalSha256": "68af2167f37df26f11f2a84323025069995bee2d7e10a680086acee35a078194",
+      "sha256": "c02548c83e6e353635d641be6ac8691a5c0896543124de4cf18dd4203e16b7bf"
+    }
+  ]
+}

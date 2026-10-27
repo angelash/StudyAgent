@@ -1,0 +1,79 @@
+{
+  "passed": true,
+  "overallProductComplete": false,
+  "status": "supplementary-whiteboard-scope-delivered",
+  "applicationRevision": "e99e4da818645a057eba98641405086098105ac2",
+  "apiRevision": "e99e4da818645a057eba98641405086098105ac2",
+  "productionBuildRevision": "7444edbfd19035e94799470807c7c557374953e2",
+  "ciHead": "e99e4da818645a057eba98641405086098105ac2",
+  "ciRun": 40428575995,
+  "webBuildId": "VJc9ClTuKJdXN4f1FUAC2",
+  "schemaVersion": 19,
+  "entrypoints": [
+    "http://127.0.0.1:3217/studio",
+    "http://127.0.0.1:3217/studio/whiteboards"
+  ],
+  "validation": {
+    "localBrowser": {
+      "passed": 354,
+      "originalAttempts": 354,
+      "retries": 0,
+      "failed": 0
+    },
+    "remoteBrowser": {
+      "passed": 354,
+      "originalAttempts": 354,
+      "retries": 0,
+      "failed": 0
+    },
+    "localApi": {
+      "passed": 1418,
+      "environmentSkipped": 54,
+      "failed": 0
+    },
+    "linuxApi": {
+      "passed": 1410,
+      "environmentSkipped": 65,
+      "failed": 0
+    },
+    "localPostgres": {
+      "passed": 24,
+      "scope": "Question HTTP/migration subgroup; separate complete CI PostgreSQL job succeeded."
+    },
+    "httpChecks": 1187,
+    "compiledFiles": 353,
+    "rawEqualCompiledFiles": 352,
+    "formatOnlyCompiledDifferences": [
+      {
+        "file": "apps/api/dist/apps/api/src/infrastructure/rate-limit-repository.js",
+        "sha256": "b3db1193083c0bf2514e629820c964baefe1ef3dd7c7e91965dd62438a83a7f2",
+        "expectedSha256": "934428b676b84a89387868c0c099d3334ccddd1bab128949b2c21b3d46f223ca",
+        "formatOnly": true
+      }
+    ],
+    "staticShaFiles": 959,
+    "voiceShaFiles": 6,
+    "observedIntervalMs": 70971
+  },
+  "protectedLocalConfigurationsPreserved": 5,
+  "privateEnvironmentPreserved": true,
+  "backup": {
+    "path": "F:\\workspace\\github\\StudyAgent\\output\\daemon\\release-backups\\2026-10-27-whiteboard-questions-1793063517660",
+    "bundle": "data-bundle-final",
+    "verifiedFiles": 1,
+    "assetsIncluded": false,
+    "buildCopy": {
+      "at": "2026-10-27T01:12:24.659Z",
+      "passed": true,
+      "files": 945,
+      "bytes": 17845559,
+      "scope": "Existing immutable compiled builds excluding cache, and private configuration copies. No stopped-service database backup has been made yet."
+    },
+    "scope": "Fresh stopped-service consistent database and referenced runtime files plus SHA-verified129 compiled builds and private config. No independent research-asset archive or full restore rehearsal."
+  },
+  "remaining": [
+    "132 answer images and immutable versions still require full-site and exact CI plus production delivery.",
+    "Complete original reference states, manual geometry, full content/camera/OCR/exports, course/practice/project shells and M1-M7 remain active.",
+    "Teacher, physical-device, original-voice/DPR, measurement validity and long-term learning acceptance remain distinct."
+  ]
+}

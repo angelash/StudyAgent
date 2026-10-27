@@ -164,3 +164,6 @@ GET原questions/notes为当前授权下的一致完整教学快照：原白板�
 本地接续全站曾漏传固定Web使用的3172/4172，导致重复登录失败，已主动停止并保存[端口错配原件](../evidence/2026-10-27/whiteboard-question-browser-port-mismatch/receipt.json)。中断未写新JSON，该目录复制到的旧JSON已明确标为此前报告，不能算中断轮统计；按原端口的完整354结果另存于上方最终收据。没有为重跑改写API/Web编译或放宽登录断言。
 
 概要/详细设计已按当前e99来源重新生成并核对。正式交付仍需新鲜停服一致schema18回退、主目录实际构建、schema19迁移及守护观察；此时主目录仍130。132配图候选/实际原PNG编辑/不可覆盖版本在另一工作树开发和验证，不混进本节131结果。整体M1～M7及72项11 implemented/50 in_progress/11 planned/0 verified保持。
+
+
+2026-10-27原句插问与补充教学131已正式交付：精确CI e99e4da/40428575995三组success，本地与远端均354浏览器/354原始尝试/0失败和重试。本地完整API1418通过/54环境跳过，Linux1410通过/65环境跳过，本地PG问答/迁移24全过。主目录实际buildId VJc9ClTuKJdXN4f1FUAC2、schema19，1187项HTTP/权限/资源检查、353编译文件核对、959原资产/字体和6音频SHA通过，三次守护观察跨70971毫秒PID及重启计数稳定。352编译原始SHA完全一致，一份rate-limit-repository.js仅4处CRLF差异，保留首次严格拒绝和逐文件归一核对，未改写固定输入或放宽其他文件。原五配置及真实环境保留；新鲜130/schema18停服一致数据库及945旧编译/配置回退逐SHA核验，assetsIncluded:false，不代表全研究资产独立备份或完整恢复演练。原句/模型/五讲法/完整输入恢复、独立逐项板书/图表公式/显式声音、真实WebM/SRT、原句/相机/声音时间返回、全部JSON/Markdown笔记和成人/孩子私有深链已上线。原定位失败、焦点失败与端口中断均留证。132配图和不可覆盖版本另在独立工作树验证，待全站/精确CI及交付；完整M1～M7、全教材/测量有效性、原像素/DPR/原声、自由几何、教师/实机/长期验收继续，整体goal active，72项11 implemented/50 in_progress/11 planned/0 verified不变。见[131验收](../evidence/2026-10-27/whiteboard-question-acceptance.json)、[精确CI](../evidence/2026-10-27/whiteboard-question-exact-ci/receipt.json)及[实际运行](../evidence/2026-10-27/whiteboard-question-runtime.json)。
