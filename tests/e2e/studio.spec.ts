@@ -27,6 +27,11 @@ function writeTextPdf() {
   return { path, cleanup: () => rmSync(directory, { recursive: true, force: true }) };
 }
 
+async function selectWorkspaceView(page: import('@playwright/test').Page, name: 'Home' | 'Courses' | 'Calendar' | 'Materials') {
+  if ((page.viewportSize()?.width ?? 1280) <= 1000) await page.getByRole('button', { name: '打开学习导航', exact: true }).click();
+  await page.getByRole('button', { name, exact: true }).click();
+}
+
 test('a parent can build and reopen an evidence-backed learning studio course', async ({ page }) => {
   test.setTimeout(240_000);
   const errors: string[] = []; page.on('pageerror', error => errors.push(error.message));
@@ -69,7 +74,7 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await expect(page.getByText('Unit 1:', { exact: false }).first()).toBeVisible();
   if (!process.env.CI) await page.screenshot({ path: browserEvidence('studio') + '/studio-course-polished.png', fullPage: true });
 
-  await page.getByRole('button', { name: 'Courses', exact: true }).click();
+  await selectWorkspaceView(page, 'Courses');
   const ticket = page.locator('.ws-course-ticket').filter({ has: page.getByRole('button', { name: '打开课程：分数关系与证据', exact: true }) });
   await page.evaluate(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
   await ticket.locator('.ws-ticket-next').click();
@@ -78,7 +83,7 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await page.getByRole('button', { name: '保存并离开' }).click();
   await expect(page.getByRole('heading', { name: '分数关系与证据' })).toBeVisible();
 
-  await page.getByRole('button', { name: 'Home' }).click();
+  await selectWorkspaceView(page, 'Home');
   await page.getByRole('button', { name: 'Instant Assistance' }).click();
   await page.getByRole('button', { name: 'Concept Explanation' }).click();
   await page.locator('.sa-tools-popover').getByRole('button', { name: /Whiteboard session/ }).click();
@@ -99,7 +104,7 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   expect((await subtitleDownload).suggestedFilename()).toMatch(/\.srt$/);
   await page.getByRole('button', { name: '关闭白板' }).click();
 
-  await page.getByRole('button', { name: 'Calendar' }).click();
+  await selectWorkspaceView(page, 'Calendar');
   await page.getByRole('button', { name: '＋ 新建学习安排' }).click();
   await page.getByLabel('任务名称').fill('分数复习安排');
   await page.getByLabel('完成标准').fill('独立完成 5 道新题并说出关键步骤');
@@ -126,7 +131,7 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   if (!process.env.CI) await page.screenshot({ path: browserEvidence('studio') + '/studio-calendar-polished.png', fullPage: true });
 
   const pdf = writeTextPdf();
-  await page.getByRole('button', { name: 'Materials' }).click();
+  await selectWorkspaceView(page, 'Materials');
   await expect(page.getByRole('tab', { name: 'PDF 页级资料' })).toHaveAttribute('aria-selected', 'true');
   await page.locator('input[type=file]').setInputFiles(pdf.path);
   await expect(page.getByText('分数讲义', { exact: true }).first()).toBeVisible({ timeout: 30_000 });
@@ -155,17 +160,16 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/studio');
-  await page.getByRole('button', { name: '打开学习导航', exact: true }).click();
-  await page.getByRole('button', { name: 'Materials' }).click();
+  await selectWorkspaceView(page, 'Materials');
   await page.getByRole('tab', { name: '个性化学案' }).click();
   await expect(page.locator('.sa-pack-layout')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
-  await page.getByRole('button', { name: 'Calendar' }).click();
+  await selectWorkspaceView(page, 'Calendar');
   await page.locator('.ws-calendar-management > summary').click();
   await expect(page.locator('.sa-plan-card')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
 
-  await page.getByRole('button', { name: 'Home' }).click();
+  await selectWorkspaceView(page, 'Home');
   await page.reload();
   await expect(page.getByRole('button', { name: 'Craft Courses' })).toBeVisible();
   expect(errors).toEqual([]);

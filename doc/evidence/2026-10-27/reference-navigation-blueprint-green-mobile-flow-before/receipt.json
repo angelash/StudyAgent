@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-27T11:39:20.190926+00:00",
+  "head": "7fa465f177aaa1b87ea9b9ac134bda2c9dc21cb1",
+  "passed": false,
+  "cases": 11,
+  "passedCases": 10,
+  "failedCases": 1,
+  "originalAttempts": 11,
+  "retries": 0,
+  "finding": "New real blueprint focus handoff passed. Existing full studio journey reaches390px material pack but next Calendar/Home clicks still assume permanently visible navigation. Adapt the whole sequence through one real-menu helper; preserve all original material/plan/course assertions. Full390 was not started.",
+  "files": [
+    {
+      "file": "build-api.log.gz",
+      "originalSha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced"
+    },
+    {
+      "file": "build-config.log.gz",
+      "originalSha256": "9e6d0ddff11605eb6c3e5ed5845057a3a46a45b760863b4657f8fe7a48a30c24"
+    },
+    {
+      "file": "build-contracts.log.gz",
+      "originalSha256": "089a7095a5919e983fc3c1ddac798d4b857ea817247e8556c37cb36f1d796a77"
+    },
+    {
+      "file": "build-web.log.gz",
+      "originalSha256": "44595c6eecf34dbee6fa47ca5bc191271428352eade39f6805ee67fc68396bbb"
+    },
+    {
+      "file": "compiled.json.gz",
+      "originalSha256": "60a08a733dce0b934ccb622c0a2ac6fad869c32a2bd9cda61e0a135adfe5ede6"
+    },
+    {
+      "file": "focus.json.gz",
+      "originalSha256": "8c08f67025d4c44b604f6b36ce02a42cdd7576ccd99e051b843aacdaba3a6c9c"
+    },
+    {
+      "file": "focus.log.gz",
+      "originalSha256": "a56dda7c2fafd00c209a75c0c0d15a19f716e271c51390ba97cf206a66f09506"
+    },
+    {
+      "file": "original-css-check.log.gz",
+      "originalSha256": "b8038e02ab5885610ab41d31668cf7dc1ab719f588fd6ba7ca01c4ae8a873a13"
+    },
+    {
+      "file": "receipt.json.gz",
+      "originalSha256": "4276d8594aa4fc65c241a9c41d013bcbcafb75f0d4ef80c2700693094a3e74e9"
+    },
+    {
+      "file": "source.json.gz",
+      "originalSha256": "23aa8dd083750c4c8b384edeb113c9a788551ca4d92ca8f0df11cdfba8c62ad8"
+    },
+    {
+      "file": "types-api.log.gz",
+      "originalSha256": "3dd6db47859fa0cbbf2848a978bf41c83f7ab44fff924e237451a140ca18c4df"
+    },
+    {
+      "file": "types-web.log.gz",
+      "originalSha256": "92a5fa6d934dd7f9ee13e23e4101157752842a9641ebb05a3e22cc61c6a59af8"
+    }
+  ]
+}
