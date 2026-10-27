@@ -1,0 +1,58 @@
+{
+  "passed": false,
+  "failedTests": 2,
+  "passedTests": 0,
+  "originalAttempts": 2,
+  "retries": 0,
+  "scope": "Actual lecture and independent tool navigation lose mode=instant immediately on entering Materials. Original reports, definitions, screenshots and traces retained before repairing URL scope preservation.",
+  "files": {
+    "data/qa/lecture-navigation-before.json": {
+      "sha256": "d01ba6f8d0fbf7f0ef89f5bedfcf25de5562f9092b91a6f12d07dcc7c2267478",
+      "gzipSha256": "69dc40d7efb69dbc238c2959a4fe5f0f86388fb77b90c65cc9d608cbbbbd6a14"
+    },
+    "data/qa/lecture-navigation-before.log": {
+      "sha256": "6a22c23aa1a388379dd0ef772794b9615571fe247847287a90345de3ed294e05",
+      "gzipSha256": "4bf519a520b2a49671d4717b494050fb5fae2e2b15524abf663e4d582b8aeae7"
+    },
+    "apps/web/app/studio/studio.tsx": {
+      "sha256": "ea680f1a16e83c6bdac4d844fff504795f51e16cbefff5af3ecd1c470d7531e1",
+      "gzipSha256": "1924d8ed3166a22bfdeef9b3dce552947751bc29655b678386e2ef28f7dee1cb"
+    },
+    "tests/e2e/studio-assistant.spec.ts": {
+      "sha256": "65ed8867364bd782cbf0c1c22149e5a706f2eb91b90d135cb2ab8d953282e207",
+      "gzipSha256": "7a3c8e74af38cae1cdcf38b31298a97210dec6f0ea402d52d20907094160a703"
+    },
+    "scripts/qa/run-source-course-browser.cjs": {
+      "sha256": "6f6a01128bcc970409cf990f4b3823bf7ff915979262a893d5de7dd67bda17ed",
+      "gzipSha256": "1876f4d3d290a06d37df3b7416083f0786ca8f72042399a49173263e44ee098b"
+    },
+    "test-results/.last-run.json": {
+      "sha256": "5664a4652b4662e18673c27636c0a027888cdec4152ce425903daafa3b3f7d31",
+      "gzipSha256": "11a37403f76880edc4a8f36f04442a15560f03f5f17b823211710814fde2dfa4"
+    },
+    "test-results/studio-assistant-lecture-n-c58e2--refresh-and-planner-return/error-context.md": {
+      "sha256": "219d30ba94ca1e3f6d48d4ad57ee3b7304dc0b2e8d26966bfebafe955265dac9",
+      "gzipSha256": "45f64bacfaceaafefb524b4fd60addfd6d9f047b2019346c1715f5aac97fdf07"
+    },
+    "test-results/studio-assistant-lecture-n-c58e2--refresh-and-planner-return/test-failed-1.png": {
+      "sha256": "08e1ef1d15abe3fa383242b82628c24da8013382fc9000e4501e77280b916c79",
+      "gzipSha256": "3b196f9d5732d5fd42fdac7a7c02725eb7a349a10676cc43342e921d65a15e03"
+    },
+    "test-results/studio-assistant-lecture-n-c58e2--refresh-and-planner-return/trace.zip": {
+      "sha256": "75f51e1e8397316a4e8a5b5f728c9b168dd3025065b2a28a1bf4249493287f2c",
+      "gzipSha256": "ed2b830aa64398ec5d124795a17d2e2d63b15bad35974753abc15216b98dcebb"
+    },
+    "test-results/studio-assistant-lecture-n-dc640--refresh-and-planner-return/error-context.md": {
+      "sha256": "3c30587fbb36c13ae024a68c6c75a063a7f034454e4f9b59af0f2aa47ac0296a",
+      "gzipSha256": "8d61622b6a02e9c69e11717ab11639a7906d22b5527396f921c474169c8abecb"
+    },
+    "test-results/studio-assistant-lecture-n-dc640--refresh-and-planner-return/test-failed-1.png": {
+      "sha256": "08e1ef1d15abe3fa383242b82628c24da8013382fc9000e4501e77280b916c79",
+      "gzipSha256": "3b196f9d5732d5fd42fdac7a7c02725eb7a349a10676cc43342e921d65a15e03"
+    },
+    "test-results/studio-assistant-lecture-n-dc640--refresh-and-planner-return/trace.zip": {
+      "sha256": "73b62b3d6e1eb8cf47fa82825838453a6432314a702894e34002d704d8cc00ec",
+      "gzipSha256": "2f7598870a85eaf964378d5cab23d39f87fa848470cbe8566f53b67f9de1ba1e"
+    }
+  }
+}

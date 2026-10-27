@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "live": {
+    "revision": "26f896f3b12070c2df0a4443c5a8cddee9d08335",
+    "cases": [
+      {
+        "mode": "lecture",
+        "modelId": "deepseek-v4-flash",
+        "elapsedMs": 17726,
+        "cliStarts": 1
+      },
+      {
+        "mode": "independent",
+        "modelId": "deepseek-v4-flash",
+        "elapsedMs": 14257,
+        "cliStarts": 1
+      }
+    ],
+    "formalRecordsUnchanged": true,
+    "fixedSourceAndCompiledFiles": 27,
+    "originalFailure": "../lecture-live-first/receipt.json"
+  },
+  "postgresCombination": {
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0,
+    "postgresHttp": 11,
+    "postgresNative": 1,
+    "sqliteNativeControl": 1
+  },
+  "scope": "Actual anonymous durable HTTP/CLI samples and current dual-driver combination. Default DS only, no full model requalification, teacher/content validity, pixel/audio parity or production delivery claim. Native and full API/browser scopes overlap and are not added.",
+  "files": {
+    "data/qa/lecture-live-second/receipt.json": {
+      "sha256": "d989336bf36d613520366776d8a9b8a64def266f905826f45aa4b09f97726271",
+      "gzipSha256": "38161cac205813b58a5cdf915ac4786d5fadbdb56689be5ac35a27ddd7e86b92"
+    },
+    "data/qa/lecture-live-second/progress.json": {
+      "sha256": "d989336bf36d613520366776d8a9b8a64def266f905826f45aa4b09f97726271",
+      "gzipSha256": "38161cac205813b58a5cdf915ac4786d5fadbdb56689be5ac35a27ddd7e86b92"
+    },
+    "data/qa/lecture-live-second/lecture.json": {
+      "sha256": "bb198a51337bbedc14251a27ba0d7bf368ef512ec76d280332d5ee44eeff172e",
+      "gzipSha256": "dffba2552915e9ae7c0d2066fc99110f90c747ffdc1942f9711c6a708118c0bb"
+    },
+    "data/qa/lecture-live-second/independent.json": {
+      "sha256": "5421fb23b5998b0388570bc50c0312463c5e3ebe485aec80fa5b9ae8d23fe92a",
+      "gzipSha256": "2655afb04563edfab8a342854b9500dd9bc885b10e9c00033f1e3e12af1e5824"
+    },
+    "data/qa/lecture-live-second.log": {
+      "sha256": "08723e7fb75c7e0f0e7ad9d36d8884880462ef47259de28382bcd83518badefc",
+      "gzipSha256": "f6b7394032900de1411e28e0ea5fa29b5df91601dc2383f668fa802487ae726d"
+    },
+    "data/qa/lecture-postgres-final.json": {
+      "sha256": "7bcc79608c70de8209f1a7bc0c4990250c67dc2d27372f797f8bf9cceb3d05ab",
+      "gzipSha256": "82a1adf6445ebb1192ad379f7cc83d2630c7195a976a99320ca70c251e7c888a"
+    },
+    "data/qa/lecture-postgres-final.log": {
+      "sha256": "42f7e53ba074754a7bd1ae16f28b4cab7db41089c861074830b9b63d05f52224",
+      "gzipSha256": "119e1a1f0748000e205f8de0415b6adace45f1be93e52088ecc69c8a0a7763d0"
+    },
+    "scripts/qa/lecture-assistant-live.cjs": {
+      "sha256": "cd02a64a823b50ac055ce1aa36e75de7939c540965063919d082cccf8618c73a",
+      "gzipSha256": "5e3c12fd3cad1cee1a5f220f0317b354115b1b1d98130f6cb0fa8265dbade4a6"
+    },
+    "scripts/qa/run-lecture-assistant-postgres.cjs": {
+      "sha256": "11f9b9bc2bbc47191f7ef68a06c6ff08c378ed40c3a4bda01118df1e8ba62a12",
+      "gzipSha256": "cbbf25b352f09d2f4041f854d092bee9a459210ab9d2bfec16c9150be0c87af7"
+    },
+    "apps/api/src/modules/ai/assistant-lecture.integration.test.ts": {
+      "sha256": "9d67c0866b2b09e247a53565190fae6ad43bc4835c1889974122197a50987c9a",
+      "gzipSha256": "3959488437578733801ef252ba55c0a3d82000460c9c63aefa970359732260c8"
+    },
+    "apps/api/src/modules/ai/assistant-lecture-recovery.integration.test.ts": {
+      "sha256": "8b96141269e549a6e45b0d16e48e016e1e47fba0db827986d8a7a75b53d912c2",
+      "gzipSha256": "d1c0b6dbeee319d277c5cc2c692d732e0cf552c5f2fa591b84c183e38ee4170a"
+    }
+  }
+}

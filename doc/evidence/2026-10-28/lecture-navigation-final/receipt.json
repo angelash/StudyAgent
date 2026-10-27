@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "passedTests": 2,
+  "failedTests": 0,
+  "originalAttempts": 2,
+  "retries": 0,
+  "skipped": 0,
+  "flaky": 0,
+  "scope": "Actual lecture and independent Materials refresh, Home draft recovery, Planner/Calendar return and scope chip preservation. Zero assistant-turn/classroom-session POSTs. Current QA root source matches. Complete1539 API inputs919 raw SHAs remain unchanged after Web rebuild; full browser and remote CI/production remain pending.",
+  "files": {
+    "data/qa/lecture-navigation-final.json": {
+      "sha256": "1a00784d977e45ded4a66e49693016fe20cf60a593f63d246cd80553c7300939",
+      "gzipSha256": "09600f6c2ddd392d3ea521cb4cb19ea4346cf51298ad3e49f9f410a2cdfc84d1"
+    },
+    "data/qa/lecture-navigation-final.log": {
+      "sha256": "90bc18394ffd949761a0447c5f12a32fd62d4557a4bd85537c7828a17eadab52",
+      "gzipSha256": "216ccbdf64ca518317ac2a5191ebbc52912467c6820965b45c75e9d611272df0"
+    },
+    "data/qa/lecture-navigation-typecheck.log": {
+      "sha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc",
+      "gzipSha256": "280feefa43a1a2d6b5ebb62618a6d36d932de3e009b707d14976e55a78dd4326"
+    },
+    "tests/e2e/studio-assistant.spec.ts": {
+      "sha256": "0fbef206dd475b7bfd224219cb3786ca3a8bc476c1ffe21d69885bd2e597fa92",
+      "gzipSha256": "296f97456ea1a2cde410a802955fb4a2fdc308e8d6e9513ce1ddd238051ccff0"
+    },
+    "scripts/qa/run-source-course-browser.cjs": {
+      "sha256": "6f6a01128bcc970409cf990f4b3823bf7ff915979262a893d5de7dd67bda17ed",
+      "gzipSha256": "1876f4d3d290a06d37df3b7416083f0786ca8f72042399a49173263e44ee098b"
+    },
+    "apps/web/app/studio/studio.tsx": {
+      "sha256": "93d1b88c5733e8eb82419918694ca42eb40e58e212f9219b60d3008c2a8a822f",
+      "gzipSha256": "4675bd162a4e1774e768845d6ad9b17d679cf2596ae5b5b347b8c173215ea228"
+    },
+    "actual-qa-source/studio.tsx": {
+      "sha256": "93d1b88c5733e8eb82419918694ca42eb40e58e212f9219b60d3008c2a8a822f",
+      "gzipSha256": "4675bd162a4e1774e768845d6ad9b17d679cf2596ae5b5b347b8c173215ea228"
+    },
+    "screenshots/studio-assistant/navigation-retained-independent.png": {
+      "sha256": "e29fb53727b312c11d7fbb6ed1ab4efb018c4f750b5e5af616a7a6fb5fca5856",
+      "gzipSha256": "978525d984ea756fde559efc89ca76cab606b1043982bca3be339909c1c494d2"
+    },
+    "screenshots/studio-assistant/navigation-retained-lecture.png": {
+      "sha256": "3b3cd07a48a5b4ae28e07ad7d97ffeadd4813d27a59149f7cddf2fe5bb996ede",
+      "gzipSha256": "e7d9604ce0518c909ee713d7ced52a07321c660e57bd72ca38a3c51a2f256cab"
+    }
+  }
+}

@@ -181,3 +181,14 @@ test('lecture-assistant: changing the selected learner fences a late whiteboard 
     await expect(page.locator('.sa-whiteboard-preview-modal')).toHaveCount(0);await expect(page.getByRole('combobox',{name:'学习档案',exact:true})).toHaveValue(children[1].id);await expect(input(page)).toHaveValue('');expect(saves).toEqual([]);
   }finally{release();}
 });
+
+for(const mode of ['lecture','independent'])test('lecture-navigation: '+mode+' tools retain the original scope and draft through material refresh and planner return',async({page})=>{
+  test.setTimeout(90000);await lecture(page);if(mode==='independent')await page.getByRole('button',{name:'移除讲座上下文',exact:true}).click();await expect(input(page)).toBeEnabled();
+  const original=new URL(page.url()),keys=mode==='lecture'?['mode','lectureCourse','lecture','lectureVersion']:['mode','audience'],draft='工具往返后仍属于原范围的匿名草稿 '+mode,posts:string[]=[];
+  page.on('request',request=>{if(request.method()==='POST'&&(/\/ai\/assistant\/sessions\/[^/?]+\/turns$/.test(request.url())||/\/learning\/classroom\/sessions(?:\?|$)/.test(request.url())))posts.push(request.url());});
+  const assertScope=()=>{const current=new URL(page.url());for(const key of keys)expect(current.searchParams.get(key),'preserved '+key).toBe(original.searchParams.get(key));};
+  await input(page).fill(draft);await page.getByRole('button',{name:'打开学习资料',exact:true}).click();await expect(page).toHaveURL(/view=materials/);assertScope();await page.reload();await expect(page.locator('.sa-top strong')).toHaveText('资料');
+  await page.locator('.ws-navigation').getByRole('button',{name:'Home',exact:true}).click();await expect(input(page)).toHaveValue(draft);assertScope();
+  await page.getByRole('button',{name:'Tools',exact:true}).click();await page.getByRole('menuitem',{name:/Study Planner/}).click();await expect(page).toHaveURL(/view=calendar/);assertScope();
+  await page.locator('.ws-navigation').getByRole('button',{name:'Home',exact:true}).click();await expect(input(page)).toHaveValue(draft);assertScope();await expect(page.getByRole('region',{name:'当前讲座上下文'})).toHaveCount(mode==='lecture'?1:0);expect(posts).toEqual([]);await shot(page,'navigation-retained-'+mode);
+});

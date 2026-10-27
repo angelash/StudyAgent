@@ -111,3 +111,11 @@ AssistantSession的pageContext增加classroom；contextRefType增加classroom_le
 白板预览请求在孩子/身份/页面/模式切换时取消，迟到结果不显示；预览处理中输入区禁用，新范围能继续输入。旧版本本机待确认命令保持原字节、不能自动重发；历史选中其他会话时隐藏当前讲座卡和原版本标签，原件不可读也仍允许本人历史检索。跨账号旧版本不能读到对方消息。
 
 当前完整API回归使用919份后端/契约/编译输入的运行前指纹，报告完成前不宣称通过。继续处理内部工具导航返回首页时的讲座/独立模式URL保留，随后固定最终应用、完整浏览器、最新PG、真实匿名模型样本、精确CI及可回退守护交付。真实模型样本runner已写但尚未执行，本批仍不能继承旧21/22记录称为当前全通。完整小学/资料课上下文、会话转各类产物及M1～M7剩余范围按第10节继续；72项仍11 implemented/50 in_progress/11 planned/0 verified，整体目标active。
+
+## 15. 完整API、真实默认模型及导航收尾（仍待整站与交付）
+
+完整本地API已完成：1539通过、0失败、65环境条件跳过，运行前后919份后端/契约/编译输入原字节一致，随后两次Web重建后仍逐SHA一致，见[完整API原件](../evidence/2026-10-28/lecture-full-api-first/receipt.json)。最新PG运行组合13项全过：11讲座HTTP、1 PG原生恢复、1 SQLite原生对照；不与完整API相加。
+
+真实小九CLI匿名样本各完成一条讲座和独立学习，Auto均实际解析deepseek-v4-flash，17726ms与14257ms、各1次CLI启动；消息角色、userMessageId/assistantMessageId/inReplyTo与原请求重放均核对，重放不再执行模型，正式测量/计划/评分记录保持原SHA。最初两条实际回答已完成，但样本脚本误按分页index1读取了用户消息，未走到重放断言，原失败与完整匿名回答保留；修正为按角色及回执ID后使用新的匿名实例完整复验通过。见[真实模型及最新双库原件](../evidence/2026-10-28/lecture-live-and-postgres/receipt.json)和[原失败](../evidence/2026-10-28/lecture-live-first/receipt.json)。该两条不构成稳定率、教师质量、物理上游身份或22模型全通证明；历史文字矩阵仍21/22、旧Opus5失败，公共资格记录未改。
+
+工具往返现保留mode/audience与lectureCourse/lecture/lectureVersion，即使资料页刷新，再返回首页或经过Study Planner/Calendar，也恢复原上下文与独立草稿。实际初轮2失败定位到mode丢失；修复后原新测试误将根导航Home按钮写成链接，又单独留证，校正语义角色而保留所有URL、草稿、讲座卡和零POST断言，最终2原始尝试单次全过。见[导航验收](../evidence/2026-10-28/lecture-navigation-final/receipt.json)、[原丢失](../evidence/2026-10-28/lecture-navigation-before/receipt.json)与[测试角色原件](../evidence/2026-10-28/lecture-navigation-second/receipt.json)。37项共享浏览器发生在该导航收尾前，不能冒充新最终整站验收；接续冻结当前实际QA Web和源码，运行完整浏览器、精确远端CI、主目录一致备份/实际构建/守护观察。当前正式仍139，完整72项与M1～M7继续。
