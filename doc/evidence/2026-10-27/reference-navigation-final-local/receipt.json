@@ -1,0 +1,137 @@
+{
+  "at": "2026-10-27T12:23:18.269553+00:00",
+  "head": "0e5582fb80ea824a462ea9cea2e15c8be9c40f64",
+  "passed": true,
+  "browser": {
+    "passed": 390,
+    "originalAttempts": 390,
+    "retries": 0,
+    "stats": {
+      "startTime": "2026-10-27T11:41:13.449Z",
+      "duration": 1936613.2429999998,
+      "expected": 390,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "originalSha256": "4ba0ccd7d98df188e6a0b5143af3ca74fff88cb24635151bc2ccd67896821e9e"
+  },
+  "focus": {
+    "passed": 11,
+    "originalAttempts": 11,
+    "retries": 0,
+    "stats": {
+      "startTime": "2026-10-27T11:39:35.810Z",
+      "duration": 85836.081,
+      "expected": 11,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "originalSha256": "167e2d14986783ab2710126dec7f128ce1324ab9746c81acfa13b72ff281412c"
+  },
+  "apiCarriedFrom": {
+    "head": "0edc3d5dd1676cf880986f8054a1611b23d3af98",
+    "reportSha256": "14aadb2ee773b965c8737431cdf0ee0ee0a50dc4aef9fc03c21db72097c91482",
+    "reason": "API/package source/tests and all362 non-Web compiled inputs remain byte-identical to0edc3d5. This137 candidate changes navigation/components/CSS and browser journeys, including real blueprint focus handoff; original1469/60 result retained, not a new API execution."
+  },
+  "api": {
+    "passed": 1469,
+    "failed": 0,
+    "environmentSkipped": 60,
+    "reportSha256": "14aadb2ee773b965c8737431cdf0ee0ee0a50dc4aef9fc03c21db72097c91482"
+  },
+  "compiledFiles": 669,
+  "qaWebBuildId": "1NTrNqkGxq6c6GLktWkkL",
+  "files": [
+    {
+      "file": "api.json.gz",
+      "originalSha256": "14aadb2ee773b965c8737431cdf0ee0ee0a50dc4aef9fc03c21db72097c91482",
+      "compressedSha256": "227c3dd3fafb8d652b41b03e6a80163fddb35d5cbfac9f44eff719f0613a9ff1",
+      "originalBytes": 753730
+    },
+    {
+      "file": "browser.json.gz",
+      "originalSha256": "4ba0ccd7d98df188e6a0b5143af3ca74fff88cb24635151bc2ccd67896821e9e",
+      "compressedSha256": "5473913915f3c6adcd1b54d4ce358ea77cddd9fe1db86f47809ad45d6bd46fbf",
+      "originalBytes": 436106
+    },
+    {
+      "file": "browser.log.gz",
+      "originalSha256": "1588b65c5b5bd7d4d595545b9676a785e2ea8c1f3b269262da872a030db50928",
+      "compressedSha256": "c284ce6dca18a6fdecbfa537460cae9a3e442370cc8444c400e06ef21af42aa5",
+      "originalBytes": 63131
+    },
+    {
+      "file": "compiled.json.gz",
+      "originalSha256": "e16cc04be66563e193c6d5ff31b99c0bad93fc993c785426997df1fc64a46969",
+      "compressedSha256": "692539fd3b6a4d560d38ece7b8146c9a6e751914376833789f98ca1d0d89b098",
+      "originalBytes": 97112
+    },
+    {
+      "file": "focus.json.gz",
+      "originalSha256": "167e2d14986783ab2710126dec7f128ce1324ab9746c81acfa13b72ff281412c",
+      "compressedSha256": "3c4880cec6f56bfd82fe0432eebeaf40ea0f4af4ece4cb2881c563ca189f5954",
+      "originalBytes": 15488
+    },
+    {
+      "file": "focus.log.gz",
+      "originalSha256": "ebabaac7ff693daec2624e524c00ef96f849d70aaeca4d57869b543a4bf36a7b",
+      "compressedSha256": "d113ff80deae226ddc4f67b30b8169d170ce5ad79648a6edb3253100d1e34743",
+      "originalBytes": 2485
+    },
+    {
+      "file": "original-css-check.log.gz",
+      "originalSha256": "b8038e02ab5885610ab41d31668cf7dc1ab719f588fd6ba7ca01c4ae8a873a13",
+      "compressedSha256": "a8e9886d2a4588cb2169a32cd5b462d4f3216a49e944656f33fb83929a62282a",
+      "originalBytes": 196
+    },
+    {
+      "file": "receipt.json.gz",
+      "originalSha256": "e9075a434e124095c09b53da847bccc8eaa0d6bbaa5a96619a3fd2f0d93296b0",
+      "compressedSha256": "9f86b50571f023b973083843cf43274b47ba6100b57932400aafb248a6ccb945",
+      "originalBytes": 2518
+    },
+    {
+      "file": "source.json.gz",
+      "originalSha256": "75cb63c1fd64bd84e25afbceb842519e698799f11c324ab58af7606fe544a5b9",
+      "compressedSha256": "d64c7c0ade60825d7d1beff066484fc5d33f6e128a72eca30da854fd63977152",
+      "originalBytes": 300084
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "screenshots/focus-8d4823fab1/navigation-1280.png",
+      "sha256": "fa89a3ba0863b72944b6e4aab0d35b22d73a149e502f2acc8f4892e7a3b66f2a"
+    },
+    {
+      "file": "screenshots/focus-8d4823fab1/navigation-1440.png",
+      "sha256": "610c050a0d44f0cea2d7a336dd5a1e95408b376741c40cb422dd07fff41ff871"
+    },
+    {
+      "file": "screenshots/focus-8d4823fab1/navigation-390.png",
+      "sha256": "6b9e809a79b542039152e1ef8b507c63c17a232ffec3274fb998477fb652fda0"
+    },
+    {
+      "file": "screenshots/focus-8d4823fab1/navigation-768.png",
+      "sha256": "abe804860e41c9a86f1c3c4d5a4ec0700062381cf2233f9ea4cab4bbb168bfc0"
+    },
+    {
+      "file": "screenshots/browser-c9a95452cc/navigation-1280.png",
+      "sha256": "fa89a3ba0863b72944b6e4aab0d35b22d73a149e502f2acc8f4892e7a3b66f2a"
+    },
+    {
+      "file": "screenshots/browser-c9a95452cc/navigation-1440.png",
+      "sha256": "ef1732b077d71ba89d1005731773b7e30a75366d79547377521e66f123adc32f"
+    },
+    {
+      "file": "screenshots/browser-c9a95452cc/navigation-390.png",
+      "sha256": "eea977432c40aac4733abd468bffa4e6147a7e0a2713e2b0d897425152710839"
+    },
+    {
+      "file": "screenshots/browser-c9a95452cc/navigation-768.png",
+      "sha256": "57af74cf863a99b41c6e77922c632c03eac1462141540fed2e0179ab3cba6e49"
+    }
+  ],
+  "scope": "Original fixed 0e5582f local 11 and390 single-pass journeys. API1469/60 carried by exact unchanged source/test/362 compiled identity; no fresh API run, live provider, real child or runtime delivery. All prior failures retained separately."
+}
