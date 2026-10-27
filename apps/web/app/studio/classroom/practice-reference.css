@@ -1,0 +1,132 @@
+/* Layout adapters for the captured PracticePage controls; no learning or grading rules live here. */
+.cl-room[data-practice=true] {
+  --font-satoshi-medium: "Satoshi-Medium", MiSans, sans-serif;
+  --font-satoshi-semibold: "Satoshi-Bold", MiSans, sans-serif;
+  --font-satoshi-regular: "Satoshi-Regular", MiSans, sans-serif;
+  padding: 0 36px 30px;
+  overflow: auto;
+  color: #1f1f1f;
+  font-family: var(--font-satoshi-regular);
+}
+.cl-room[data-practice=true] .cl-practice-full,
+.cl-room[data-practice=true] .cl-practice-full button,
+.cl-room[data-practice=true] .cl-practice-full small { font-family: var(--font-satoshi-regular); }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-top { height: 52px; gap: 12px; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-top>button:first-child {
+  display: grid; place-items: center; padding: 0; width: 32px; height: 40px; flex-shrink: 0;
+}
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-progress { gap: 10px; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-progress button { width: 17px; height: 10px; background: #d4d4d4; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-progress button[data-answered=true] { background: #385da0; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-progress button[aria-current=step] { outline-color: #d4d4d4; outline-offset: 3px; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-score { padding: 6px 13px; font-size: 13px; background: #f7faff; }
+.cl-room[data-practice=true] .cl-practice-full .cl-assistant-toggle { display: inline-flex; align-items: center; gap: 7px; }
+.cl-room[data-practice=true] .cl-practice-full .cl-assistant-toggle img { width: 15px; height: 15px; }
+.cl-room[data-practice=true] .cl-practice-full .cl-assistant-toggle[aria-expanded=true] img { filter: brightness(0) invert(1); }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-card:not(.cl-review-card) {
+  min-height: calc(100dvh - 82px); padding: 88px 7.5% 74px; border: 1.5px solid #e5e5e5;
+  border-radius: 14px; display: flex; flex-direction: column; position: relative;
+}
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-body {
+  display: grid; grid-template-columns: minmax(0, 1.06fr) minmax(0, 1fr); gap: 64px;
+  max-width: 1040px; width: 100%; margin: 0 auto; flex: 0 0 auto; align-items: center;
+}
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-body[data-has-image=false],
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-body[data-multiple=true] {
+  display: block; max-width: 672px;
+}
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-prompt { min-width: 0; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-prompt h2 { margin: 12px 0 28px; font-size: 17px; font-weight: 500; line-height: 1.45; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-prompt .cl-lesson-image {
+  margin: 28px 0 0; padding: 22px; border: 1px solid #efefef; border-radius: 18px;
+  box-shadow: 0 10px 28px #14141409; max-width: none; min-height: 282px; background: #fff;
+}
+.cl-room[data-practice=true] .cl-practice-full .cl-lesson-image img { max-height: 300px; object-fit: contain; }
+.cl-room[data-practice=true] .cl-practice-full .cl-lesson-image figcaption { font-size: 11px; padding: 5px 0 0; color: #a7a7a7; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-options { padding: 0; margin: 0; gap: 12px; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-options label {
+  font: 15px/1.35 var(--font-satoshi-medium); min-height: 76px; padding: 15px 22px 15px 18px; gap: 13px; border-radius: 15px; border-width: 1px; align-items: center;
+}
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-options[data-multiple=true] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-options[data-multiple=true] label:last-of-type:nth-of-type(odd) { grid-column: 1 / -1; }
+.cl-room[data-practice=true] .cl-practice-full .cl-option-content { flex: 1; min-width: 0; }
+.cl-room[data-practice=true] .cl-practice-full .cl-option-shape { width: 34px; height: 34px; border-radius: 9px; flex: 0 0 34px; }
+.cl-room[data-practice=true] .cl-practice-full .cl-option-shape svg { fill: currentColor; }
+.cl-room[data-practice=true] .cl-practice-full .cl-option-checkbox {
+  display: grid; place-items: center; width: 19px; height: 19px; flex: 0 0 19px;
+  border: 2px solid #b9c4d8; border-radius: 4px; background: #fff; color: #fff; font: 12px/1 sans-serif;
+}
+.cl-room[data-practice=true] .cl-practice-full .cl-option-checkbox.checked { background: #4c6696; border-color: #4c6696; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-options label>b { font: 10px/1 var(--font-satoshi-regular); right: 11px; top: 9px; color: #afb7c4; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-options:disabled label { opacity: 1; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-options label[data-feedback=neutral] .cl-option-shape { background: #f3f4f6; color: #b6bcc7; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-support { max-width: 672px; width: 100%; margin: 22px auto 16px; min-height: 0; }
+.cl-room[data-practice=true] .cl-practice-full .cl-hint-button { padding: 5px 0; font: 12px/1.5 var(--font-satoshi-regular); color: #7f8999; background: none; border: 0; text-decoration: underline; text-underline-offset: 3px; }
+.cl-room[data-practice=true] .cl-practice-full .cl-answer-feedback { padding: 0; border: 0; background: transparent; color: #444; }
+.cl-room[data-practice=true] .cl-practice-full .cl-answer-feedback>b { display: inline-flex; border: 1px solid #c3474724; border-radius: 999px; padding: 7px 12px; background: #c3474714; color: #a83838; font-size: 14px; font-weight: 500; }
+.cl-room[data-practice=true] .cl-practice-full .cl-answer-feedback[data-correct=true]>b { border-color: #2e8b5729; background: #2e8b571a; color: #1d6b45; }
+.cl-room[data-practice=true] .cl-practice-full .cl-answer-feedback>p { margin: 16px 0 12px; font-size: 15px; line-height: 1.65; }
+.cl-room[data-practice=true] .cl-practice-full .cl-answer-feedback>small { font-size: 11px; line-height: 1.7; color: #9299a4; }
+.cl-room[data-practice=true] .cl-practice-full .cl-feedback-details { margin: 14px 0 0; font-size: 12px; line-height: 1.7; color: #7c8594; }
+.cl-room[data-practice=true] .cl-practice-full .cl-feedback-details summary { cursor: pointer; padding: 5px 0; }
+.cl-room[data-practice=true] .cl-practice-full .cl-feedback-details ol { list-style: none; padding: 0; }
+.cl-room[data-practice=true] .cl-practice-full .cl-feedback-details li { padding: 10px 0; border-top: 1px solid #ececec; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-actions { margin-top: auto; padding-top: 24px; min-height: 70px; position: relative; gap: 22px; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-actions .cl-check { min-width: 208px; padding: 15px 48px; font-size: 16px; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-actions .cl-check.practice-check-btn--next { min-width: 168px; padding: 14px 30px; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-actions .cl-skip { position: absolute; left: calc(50% + 126px); top: auto; transform: none; min-width: 96px; padding: 12px 24px; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-actions .cl-dont-know { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); padding: 4px 12px; min-height: 28px; border: 0; background: transparent; color: #969da6; font-size: 12px; }
+.cl-room[data-practice=true] .cl-practice-full .cl-practice-actions .cl-practice-previous { position: absolute; left: calc(50% - 158px); width: 36px; height: 44px; padding: 0; border: 0; border-radius: 50%; box-shadow: none; color: #9299a4; }
+.cl-room[data-practice=true] .cl-chat-panel { top: 52px; right: 36px; bottom: 30px; width: min(30vw, 340px); border: 1.5px solid #e5e5e5; border-radius: 14px; box-shadow: none; font-family: var(--font-satoshi-regular); }
+.cl-room[data-practice=true][data-assistant=true] .cl-practice-card { margin-right: calc(min(30vw, 340px) + 12px); }
+.cl-room[data-practice=true][data-assistant=true] .cl-practice-full .cl-practice-card:not(.cl-review-card) { padding-left: 7.5%; padding-right: 7.5%; }
+.cl-room[data-practice=true][data-assistant=true] .cl-practice-image,
+.cl-room[data-practice=true][data-assistant=true] .cl-lesson-image { display: block; }
+.cl-room[data-practice=true] .cl-practice-assistant-note { margin: auto 0; padding: 20px 8px; color: #ababab; font: 13px/1.65 var(--font-satoshi-regular); text-align: center; }
+.cl-room[data-practice=true] .cl-history:has(.cl-practice-assistant-note:only-of-type) { display: flex; flex-direction: column; }
+.cl-room[data-practice=true] .cl-history .cl-speaking { display: none; }
+@media (min-width: 1101px) {
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-card[data-state=answered][data-multiple=false] {
+    display: grid; grid-template-columns: minmax(0, 2.25fr) minmax(0, 1fr); grid-template-rows: 1fr auto; gap: 24px 64px; padding: 68px 16px 40px;
+  }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-card[data-state=answered][data-multiple=false] .cl-practice-body { max-width: none; }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-card[data-state=answered][data-multiple=false] .cl-practice-support { margin: 0; align-self: center; }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-card[data-state=answered][data-multiple=false] .cl-practice-actions { grid-column: 1 / -1; }
+  .cl-room[data-practice=true][data-assistant=true] .cl-practice-full .cl-practice-card[data-state=answered][data-multiple=false] { display: flex; }
+  .cl-room[data-practice=true][data-assistant=true] .cl-practice-full .cl-practice-card[data-state=answered] .cl-practice-body { display: block; }
+}
+@media (max-width: 1100px) {
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-body { display: block; max-width: 672px; }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-prompt .cl-lesson-image { max-width: 360px; min-height: 0; margin: 24px auto; }
+}
+@media (max-width: 1000px) {
+  .cl-room[data-practice=true][data-assistant=true] .cl-practice-card { margin-right: 0; }
+  .cl-room[data-practice=true] .cl-chat-panel { position: fixed; inset: 16px; width: auto; max-width: 650px; margin: 0 auto; display: flex!important; z-index: 101; background: #fff; }
+  .cl-room[data-practice=true] .cl-chat-panel>header { min-height: 52px; }
+  .cl-room[data-practice=true] .cl-chat-panel>header button { width: 44px; height: 44px; }
+}
+@media (max-width: 720px) {
+  .cl-room[data-practice=true] { padding: 0 12px 12px; }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-top { height: 60px; }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-top>button:first-child { width: 40px; height: 44px; }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-progress { position: static; transform: none; flex: 1; max-width: none; gap: 8px; }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-progress button { width: 14px; height: 10px; }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-score { display: none; }
+  .cl-room[data-practice=true] .cl-practice-full .cl-assistant-toggle { min-height: 44px; padding: 0 12px; }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-card:not(.cl-review-card) { min-height: calc(100dvh - 74px); padding: 30px 18px 24px; }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-options[data-multiple=true] { grid-template-columns: minmax(0, 1fr); }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-options label { padding: 16px 14px; min-height: 76px; gap: 12px; }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-prompt h2 { font-size: 17px; line-height: 1.6; }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-actions { gap: 12px; padding-top: 20px; flex-wrap: wrap; }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-actions .cl-check { min-width: 140px; padding: 14px 20px; }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-actions .cl-skip,
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-actions .cl-dont-know,
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-actions .cl-practice-previous { position: static; transform: none; min-height: 44px; }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-actions .cl-skip { min-width: 76px; padding: 12px 18px; }
+  .cl-room[data-practice=true] .cl-practice-full .cl-practice-actions .cl-dont-know { flex-basis: 100%; }
+  .cl-room[data-practice=true] .cl-practice-full[data-many=true] .cl-practice-progress { flex-basis: 100%; }
+  .cl-room[data-practice=true] .cl-practice-full[data-many=true] .cl-practice-top { height: auto; min-height: 86px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cl-room[data-practice=true] .cl-practice-full * { animation: none!important; transition: none!important; }
+}

@@ -38,6 +38,28 @@ describe('frozen classroom choice sets and immutable first feedback', () => {
       row.hintKeys[questionId] = ['先找依据与结论的区别。','再找哪项行动能形成对照。'];
     }); return { sessionId: opened.id, questionId, path: '/learning/classroom/sessions/' + opened.id + '/answers' };
   }
+  it('freezes explicit question images without inventing images for a historical session or changing its first answer', async () => {
+    const current = await call('post', '/learning/classroom/sessions', { lessonId: 'soc-1-1-1', useCurrentVersion: true });
+    expect(current.lesson.questions.filter((question: any) => question.image)).toHaveLength(2);
+    expect(current.lesson.questions[0].image.src).toBe('/classroom/venn-d8b3f1.webp');
+    expect(current.lesson.questions[2].image.src).toBe('/classroom/agency-river-c7a9e2.webp');
+    expect(current.lesson.questions[1].image).toBeUndefined();
+    expect(current.lesson.questions.find((question: any) => question.selectionMode === 'multiple').image).toBeUndefined();
+    const command = { questionId: current.lesson.questions[0].id, selectedIndex: 0, requestKey: randomUUID() };
+    const answered = await call('post', '/learning/classroom/sessions/' + current.id + '/answers', command);
+    await store.transaction(() => {
+      const old = store.find('classroomSessions', { id: current.id });
+      for (const question of old.lesson.questions) delete question.image;
+      old.contentFingerprint = require('../../../dist/apps/api/src/modules/learning/classroom-curriculum.js').classroomFingerprint(old.lesson);
+    });
+    const historical = await call('get', '/learning/classroom/sessions/' + current.id);
+    expect(historical.contentStatus).toBe('archived');
+    expect(historical.lesson.questions.some((question: any) => question.image)).toBe(false);
+    expect(historical.answers).toEqual(answered.answers);
+    const reopened = await call('post', '/learning/classroom/sessions', { lessonId: 'soc-1-1-1', useCurrentVersion: true });
+    expect(reopened.id).not.toBe(current.id); expect(reopened.lesson.questions[0].image).toEqual(current.lesson.questions[0].image);
+    expect((await call('post', '/learning/classroom/sessions/' + current.id + '/answers', command)).answers).toEqual(answered.answers);
+  });
   const command = (f: any, selectedIndices: number[], extra: object = {}) => ({ protocol: 'classroom-choice-v2', questionId: f.questionId, selectedIndices, disposition: 'answered', requestKey: randomUUID(), ...extra });
   it('withholds keys before submission and returns the exact frozen set and explanations only after answering', async () => {
     const f = await fixture(), before = await call('get', '/learning/classroom/sessions/' + f.sessionId); expect(before.lesson.questions.find((q: any) => q.id === f.questionId).selectionMode).toBe('multiple'); expect(JSON.stringify(before)).not.toMatch(/correctIndices|optionExplanations|answerKeys/);

@@ -191,7 +191,9 @@ const course: ClassroomCourse = {
           lesson.questions = checks.map(([label, prompt, answers, correct, explanation], index) => {
             const checkId = index === 0 ? questionId : id + ':check:' + index;
             keys.set(checkId, { answer: correct, explanation });
-            return { id: checkId, prompt, options: [...answers], hint: '回想“' + label + '”的分析边界，排除忽略条件或把关系说成绝对的解释。' };
+            return { id: checkId, prompt, options: [...answers], hint: '回想“' + label + '”的分析边界，排除忽略条件或把关系说成绝对的解释。',
+              ...(index === 0 ? { image: { src: '/classroom/venn-d8b3f1.webp', alt: '个人传记与历史结构相交的概念图', caption: '传记与历史' } } :
+                index === 2 ? { image: { src: '/classroom/agency-river-c7a9e2.webp', alt: '个人调整划桨方式并合作改善航道，行动受到水流与航道条件影响', caption: '结构与能动性' } } : {}) };
           });
         }
         for (const [index, question] of lesson.questions.entries()) {

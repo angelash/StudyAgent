@@ -12,6 +12,8 @@ import { useClassroomVisuals,VisualPanel,VisualImage,downloadVisualNotes,waitFor
 import { PracticePanel } from './practice-panel';
 import { ClassroomIcon } from './icons';
 import './classroom.css';
+import './practice-reference.generated.css';
+import './practice-reference.css';
 import { StudioNavigation } from '../studio-navigation';
 import '../workspace.css';
 import { WorkspaceDialog } from '../workspace-dialog';
@@ -190,6 +192,13 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const [replyUnit,setReplyUnit]=React.useState<{messageId:string;unitId:string|null}|null>(null),[expandedReply,setExpandedReply]=React.useState('');
   const replyAudio = React.useRef<{ abort: AbortController; audio: HTMLAudioElement | null; url: string } | null>(null);
   const recognition = React.useRef<SpeechRecognitionSession | null>(null), [showChat, setShowChat] = React.useState(initialTab !== 'practice');
+  const practiceAssistantButton = React.useRef<HTMLButtonElement | null>(null);
+  const [practiceNarrow, setPracticeNarrow] = React.useState(false);
+  React.useEffect(() => {
+    const query = window.matchMedia('(max-width:1000px)'), update = () => setPracticeNarrow(query.matches);
+    update(); query.addEventListener('change', update); return () => query.removeEventListener('change', update);
+  }, []);
+  function closePracticeAssistant() { setShowChat(false); if (standalonePractice) requestAnimationFrame(() => practiceAssistantButton.current?.focus()); }
   const { catalog, modelId, setModelId, error: modelCatalogError, reload: reloadModelCatalog } = useXiaojiuModels();
   const revisionQueue = React.useRef<Promise<unknown>>(Promise.resolve());
   const cloudAudio = React.useRef<HTMLAudioElement | null>(null), cache = React.useRef(new Map<string, Blob>());
@@ -504,7 +513,8 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     onSource={session.sourceCheckId?key=>{pause();setCheckSource(key);}:undefined}
     assessment={lesson.assessment} contentStatus={session.contentStatus} notice={standalone ? notice : undefined} onDismiss={() => setNotice('')} onCurrent={() => onNext(lesson.id, 'practice', true)} onLearn={id => onNext(id)}
     onHint={(id,level) => void hint(id,level)} onAnswer={disposition => void answer(disposition)}
-    onClose={() => setExit(true)} onAssistant={() => { setShowChat(!showChat); setTab('history'); }}/>; }
+    assistantOpen={showChat} assistantButtonRef={practiceAssistantButton} inactive={standalone && showChat && practiceNarrow}
+    onClose={() => setExit(true)} onAssistant={() => { if (showChat) closePracticeAssistant(); else { setShowChat(true); setTab('history'); } }}/>; }
   const subtitle = replySubtitle || (session.revealed ? classroomStepUnits(session,current)[session.sentenceCursor ?? 0]?.text : '准备好后，点击 ▶ 开始。');
   return <main className="cl-room" data-dots={dots} data-mobile={mobile} data-practice={standalonePractice} data-assistant={showChat} style={{ '--cl-chat-width': showChat ? chatWidth + 'px' : '0px' } as React.CSSProperties}>
     {standalonePractice && practice(true)}
@@ -533,7 +543,8 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     {showChat && <><div className="cl-divider" role="separator" aria-label="调整对话面板宽度" aria-orientation="vertical" aria-valuenow={chatWidth} aria-valuemin={320} aria-valuemax={650} tabIndex={0}
       onPointerDown={event => { event.currentTarget.setPointerCapture(event.pointerId); }} onPointerMove={event => { if (event.buttons === 1) setChatWidth(Math.max(320, Math.min(650, window.innerWidth - event.clientX - 20))); }}
       onKeyDown={event => { if (event.key === 'ArrowLeft') setChatWidth(Math.min(650, chatWidth + 20)); if (event.key === 'ArrowRight') setChatWidth(Math.max(320, chatWidth - 20)); }}/>
-      <aside className="cl-chat-panel"><header data-classroom-tour="history"><b><ClassroomIcon name="chat"/> Chat history</b><button aria-label="隐藏对话面板" onClick={() => setShowChat(false)}><ClassroomIcon name="close" size={18}/></button></header>
+      <WorkspaceDialog active={standalonePractice && practiceNarrow} onClose={closePracticeAssistant} returnFocus={standalonePractice ? practiceAssistantButton.current : undefined}>
+      <aside id="classroom-assistant-panel" className="cl-chat-panel" role={standalonePractice && practiceNarrow ? 'dialog' : undefined} aria-modal={standalonePractice && practiceNarrow || undefined} aria-label={standalonePractice ? '练习助教' : undefined}><header data-classroom-tour="history"><b><ClassroomIcon name="chat"/> {standalonePractice ? 'Assistant' : 'Chat history'}</b><button aria-label="隐藏对话面板" onClick={closePracticeAssistant}><ClassroomIcon name="close" size={18}/></button></header>
         <div className="cl-chat-tabs" role="tablist" aria-label="课堂内容">{(['history', 'practice', 'project'] as const).map((value, index) => <button key={value} role="tab" aria-selected={tab === value} onClick={() => { setTab(value); if (value !== 'history') setPlaying(false); }}>{['讲解与插问', '课堂练习', '单元项目'][index]}</button>)}</div>
         <div className="cl-history" aria-label="课堂对话历史" ref={historyElement} onScroll={event => {
           const target = event.currentTarget; following.current = target.scrollHeight - target.scrollTop - target.clientHeight < 100;
@@ -567,7 +578,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
           <button data-classroom-tour="playback" type="button" aria-label={playing ? '暂停讲解' : '继续讲解'} disabled={busy} onClick={() => { const resume = !playing; pause(); setTab('history'); setPlaying(resume); }}>{playing ? 'Ⅱ' : '▷'}</button>
           {question.trim() ? <button type="submit" aria-label="发送课堂问题" disabled={busy||!turns.loaded||Boolean(turns.uncertain)}>↑</button> : <button type="button" aria-label="停止课堂讲解" onClick={pause}>■</button>}</div>
           <XiaojiuModelPicker error={modelCatalogError} onRetry={reloadModelCatalog} catalog={catalog} value={modelId} onChange={setModelId} compact disabled={busy}/></form>
-      </aside></>}
+      </aside></WorkspaceDialog></>}
     {!showChat && !standalonePractice && <button className="cl-show-chat" onClick={() => setShowChat(true)}>打开对话与控制 ▤</button>}
     {settings && <WorkspaceDialog onClose={()=>{pause();setSettings(false);}}><div className="cl-modal-backdrop"><section className="cl-settings" role="dialog" aria-modal="true" aria-label="课堂设置"><header><h2>Session settings</h2><button aria-label="关闭课堂设置" onClick={() => setSettings(false)}>×</button></header>
       <h3>VOICE OPTIONS <span>{session.speech.available ? session.speech.voices.find(item => item.id === voice)?.label ?? 'AI 语音' : '文字讲解'}</span></h3><div className="cl-voice-grid" role="radiogroup" aria-label="课堂音色">{visibleVoices.map((item, index) => <div className="cl-voice-choice" key={item.id} data-active={voice === item.id}>

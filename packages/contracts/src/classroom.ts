@@ -12,6 +12,7 @@ export type ClassroomStep = { id: string; title: string; narration: string; bloc
 export type ClassroomSelectionMode = 'single' | 'multiple';
 export type ClassroomAnswerDisposition = 'answered' | 'skip' | 'dont_know';
 export type ClassroomQuestion = { id: string; prompt: string; options: string[]; hint: string;
+  image?: NonNullable<ClassroomBlock['image']>;
   targetLessonIds?: string[];
   selectionMode?: ClassroomSelectionMode;
   hintCount?: number; table?: { caption: string; headers: string[]; rows: string[][] }; diagram?: ClassroomDiagram;
