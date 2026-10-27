@@ -1,0 +1,126 @@
+{
+  "at": "2026-10-27T20:20:35.423939+00:00",
+  "passed": true,
+  "files": {
+    "runtime.json": {
+      "sha256": "cf7ef64368fbba890121a51d4901776f1bd3a71cf5aaaf7276f5fd4359e8019e",
+      "bytes": 530241,
+      "gzipSha256": "fd4cec72f72fb3430cb598b57feece2d0f63803ffe4587cd1e5193b9bad8db98"
+    },
+    "candidate.json": {
+      "sha256": "35923399f7ae0d0efd11ea6bfed8dfb71c5e8abdf51d43ff1de3f109212b4748",
+      "bytes": 56911,
+      "gzipSha256": "0f2738600ee275dc17486a3cecb35eadc07ce5ac5b9d86756c43827769eb9645"
+    },
+    "backup-verified.json": {
+      "sha256": "5160001497fe8ba9b0e79adc80eaea1eeda27c4d5fd97ad2c1bbdf042073ce6c",
+      "bytes": 452,
+      "gzipSha256": "5442810410c8f9a2bd3f92b766eea9d8a8fc2ebebd070dddf6089b80826e4146"
+    },
+    "build-backup-verification.json": {
+      "sha256": "1d56cc0010ecd99db27ecbff406ac0f273716dc18b00e9a860fcd9111f1a6184",
+      "bytes": 248,
+      "gzipSha256": "cc11662ee20f2e6de41759ac4ea639e9d1cb38019b94813ca598c3b0e37db91f"
+    },
+    "deployment-before.json": {
+      "sha256": "00599e5835780f741b39d24887d4c354d1dbc0b9ea161aeb2d5361b152151094",
+      "bytes": 1343,
+      "gzipSha256": "1c9b4838708c9d8c38cd27919a7462913cdf967c9ba0b8df0fa0df9883e601b5"
+    },
+    "deployment-target.json": {
+      "sha256": "d17c8b8dcbafdaf23e5b150ca3ecc4f3be767a72011bb6fc820d5e0986716341",
+      "bytes": 152,
+      "gzipSha256": "f82889f8c5bf2fa8ae43556c5a200386b3756f4de26e521868b0ea8d40443b19"
+    },
+    "stop-transitions.json": {
+      "sha256": "c9c966c59550bf2397831e4a04573e2f27a00daa039806cbda5c4b1670820918",
+      "bytes": 389,
+      "gzipSha256": "c719d3bd77438fe525017dff612ce2d0756a93f43a75f7932cd49d0b92a724b0"
+    },
+    "build-files.json": {
+      "sha256": "570a14662526636147102783d7690bcd14d542c8c5e1658e9893aca6e46a9c5a",
+      "bytes": 191126,
+      "gzipSha256": "f7e8eb23b9669b44d736b8bed2abdfc956504e7f256150cd27dbeebe733892bf"
+    },
+    "candidate-first-before-public-receipt-alignment.json": {
+      "sha256": "33b398d73348d0d89e11f8e8bfa3db1c57039a6a71a2346afbbd98b53e5e08b7",
+      "bytes": 55576,
+      "gzipSha256": "bf56a6d3435cc95931b4c1ff6023cfb1d4bb7dd66b22911fccc326f946b61644"
+    },
+    "measurement-v3-production-source-alignment.json": {
+      "sha256": "653d9b15471f6ec3e36b7ac7067b837136f31ae71debf6425ede24b378534d7a",
+      "bytes": 208684,
+      "gzipSha256": "4183e8c6ce83d66d6417b7c85b320676c42a59b1aaad684bd9843c67102b2283"
+    },
+    "measurement-v3-deploy-prepare.log": {
+      "sha256": "62f2aa994dfe404ffdf64e09624566d9f3b7dd1faf974b67cbf338bcd6c01374",
+      "bytes": 1166,
+      "gzipSha256": "b0fb1db480109e85c5bf2773b46cd8c2afbc176cd52944a21f937e10936e1c68"
+    },
+    "measurement-v3-production-build.log": {
+      "sha256": "43544d2429576d720b48fb6184ec650dc1124b9b08d8be37c56df92b1a04544f",
+      "bytes": 2961,
+      "gzipSha256": "4599d063330b2b0e01430c748f25657806c69aa4509230f261bf2a71ae1cb074"
+    },
+    "measurement-v3-observation-1.json": {
+      "sha256": "4d1ecfec18279d5e41f80748a928da8ea7191209d78120d918bd5b7680b4801c",
+      "bytes": 603,
+      "gzipSha256": "0d37c21514896d9df26c92816b35a2d5b915ed248bc134224b5e34f952efb676"
+    },
+    "measurement-v3-observation-2.json": {
+      "sha256": "b2fc78dcdc4bcfcbd6cd811896e64abf9c549d65c19980231419c6779356f4c9",
+      "bytes": 603,
+      "gzipSha256": "f3d33094ed98719d970b7bcd3ea4213310a03df33c11867fd827ba3a1140c0c0"
+    },
+    "measurement-v3-observation-3.json": {
+      "sha256": "8f7179ab421cc1cbc24fad5ae038f58a82eb7cf26d6d5b2595a9b0a4ebfcea20",
+      "bytes": 603,
+      "gzipSha256": "e44df82630f4a5e929ac557a7228046ad4aa74203d9063c7192a51ec1225ccd3"
+    },
+    "measurement-v3-daemon-start.log": {
+      "sha256": "0fbf290bbedff890403013d05b771d82d3ca806bb78982a557fe4bbd2d412a0d",
+      "bytes": 4550,
+      "gzipSha256": "75d430a4dc265284e92ae45277b661b69f46d144968bddc926cc65b2cfd53086"
+    },
+    "measurement-v3-runtime-final-check.log": {
+      "sha256": "f76c6615cb88ac3932278990bf7c1bb4977f00d2cc5fcc1fd5a2a1cab18fa576",
+      "bytes": 118,
+      "gzipSha256": "fa5acd0da0e38b87208d053b3ab06b607abafffc0ec86c0d1867ce44f3a615a7"
+    },
+    "measurement-v3-runtime-first-failure.json": {
+      "sha256": "4a294e3467452ac9f4ef570bd7354e8bd7be894181e3a13bd5a9b7a62995694c",
+      "bytes": 514,
+      "gzipSha256": "629cd2f584a3d49298f8d776ae639667224f2ac78a79df2b97a0ba557a5cd075"
+    },
+    "measurement-v3-public-receipt-alignment.json": {
+      "sha256": "fd8ad8db95941ad9370b7cb4004faef0a4337fde4c946eb48d63f499b49846dd",
+      "bytes": 842,
+      "gzipSha256": "0208523e36fc3cbd29ac9144c38e3866c012db7131d7cadcc1297cd6c6b22f92"
+    }
+  },
+  "firstRuntimeRejection": {
+    "at": "2026-10-27T20:18:22Z",
+    "passed": false,
+    "exitCode": 1,
+    "observedError": "Public qualified receipt bytes differ",
+    "runtimeReportWritten": false,
+    "originalOutputLocation": "Original terminal tool output in this conversation; no separate first-attempt stdout file was created.",
+    "cause": "The inherited138 public JSON raw digest differs only by line endings from fixed139 raw inputs.",
+    "scope": "Structured record of the actual first checker rejection; not a fabricated raw log."
+  },
+  "qualificationSourceAlignment": {
+    "at": "2026-10-27T20:19:36.141103+00:00",
+    "file": "resources/ai/model-qualification.json",
+    "oldRevision": "89c7465bfb8eb194947cb834afa46de8b1767127",
+    "fixedHead": "03fb55324a2125e45a054c801394990b1dad404b",
+    "oldSha256": "41b09a18fa13cd5183178e2dbcf72e7f4995b93ecc3f867ae0c7f711a2146bb4",
+    "actualFixedSha256": "5afee5831a995c79c8ece07e9e32d1e17c90feb3f65dc778d5b2bc70edbbf6c9",
+    "fixedInputManifestSha256": "5afee5831a995c79c8ece07e9e32d1e17c90feb3f65dc778d5b2bc70edbbf6c9",
+    "onlyLineEndings": true,
+    "parsedContentsIdentical": true,
+    "qualificationFingerprint": null,
+    "scope": "Candidate inherited138 raw digest although all139 source files were aligned to frozen Windows candidate bytes. Actual application file is unchanged from exact tested03fb553; only release metadata corrected. No new model calls."
+  },
+  "qualificationReceiptFingerprint": "68de72ee1651b4d55cfad317ad30ec742b359a8fcc2552d23490ccee28125fc4",
+  "scope": "Original actual139 build/runtime, stopped138 backup/config digest and stable guardian receipts. Private configuration and database contents excluded."
+}

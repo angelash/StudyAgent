@@ -1,0 +1,342 @@
+{
+  "revision": "09ee19bd32fb08d2b85428c387748e327c6fc2f6",
+  "applicationRevision": "6a51299711a8c40c62974490a9dd28bc9c5453c2",
+  "apiRevision": "6a51299711a8c40c62974490a9dd28bc9c5453c2",
+  "ciHead": "03fb55324a2125e45a054c801394990b1dad404b",
+  "ciRun": 40570429189,
+  "schemaVersion": 21,
+  "webBuildId": "aLqEJIxuWkfc4cO9HWbBf",
+  "at": "2026-10-27T20:20:35.423939+00:00",
+  "passed": true,
+  "status": "runtime-delivered",
+  "entrypoints": [
+    "http://127.0.0.1:3217/student/assessment",
+    "http://127.0.0.1:3217/studio"
+  ],
+  "localApi": {
+    "passed": 1522,
+    "failed": 0,
+    "environmentSkipped": 64
+  },
+  "localBrowser": {
+    "passed": 415,
+    "originalAttempts": 415,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0,
+    "rerunOnCorrectedHead": false,
+    "sourceRevision": "cbf8cec76d1f0d345748892f68d950b8c369d6d2",
+    "scope": "Original unchanged application run, inherited through explicit source/runtime/E2E continuity. Not a new local browser run on corrected fixture."
+  },
+  "linuxApi": {
+    "passed": 1514,
+    "failed": 0,
+    "environmentSkipped": 72
+  },
+  "remoteBrowser": {
+    "passed": 415,
+    "originalAttempts": 415,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0
+  },
+  "localNativeMeasurement": {
+    "sqlitePassed": 10,
+    "postgresPassed": 10,
+    "skipped": 0,
+    "receipt": "measurement-v3-specialties/receipt.json"
+  },
+  "remotePostgresSuites": [
+    {
+      "step": "PostgreSQL migration, recovery and fencing",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Source-course staged generation and checkpoint recovery on PostgreSQL",
+      "passed": 23,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Classroom image task lifecycle and private references on PostgreSQL",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Long-source chunks, independent checkpoints and original files on PostgreSQL",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Resumable PDF uploads, page recovery, collection and read-only audit on PostgreSQL",
+      "passed": 81,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Frozen classroom captions, historical upgrade and narration guards on PostgreSQL",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Durable classroom turns, original position and permission fencing on PostgreSQL",
+      "passed": 16,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "step": "Frozen classroom code drafts, conflicts, learner permissions and privacy on PostgreSQL",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "step": "Course revision families, impact previews and historical privacy on PostgreSQL",
+      "passed": 10,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "step": "Project actual attachments, native file recovery and latest privacy ledger on PostgreSQL",
+      "passed": 12,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "step": "Recoverable answer drafts, first submissions and correction fencing on PostgreSQL",
+      "passed": 10,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "step": "Ordinary assistant turns, native recovery and latest deletion ledger on PostgreSQL",
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Frozen classroom multiple choices, first feedback and native recovery on PostgreSQL",
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Original rule plans, durable model suggestions and native deletion recovery on PostgreSQL",
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Neutral classroom voice samples, fixed bytes and real learner permissions on PostgreSQL",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Guided project narration, original actor receipts and storage restart on PostgreSQL",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Source-course projects, read-only journeys and JSONB teaching continuity on PostgreSQL",
+      "passed": 15,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "step": "Independent source check generation, publication, student privacy and native recovery on PostgreSQL",
+      "passed": 26,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Frozen whiteboard sentences, original commands, current access and native restart on PostgreSQL",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Original whiteboard questions, supplementary teaching and migration on PostgreSQL",
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Question-bound PNG originals, immutable versions, schema20 and native privacy recovery on PostgreSQL",
+      "passed": 19,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "AI topic whiteboard original commands, checkpoints and permissions on PostgreSQL",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 2
+    },
+    {
+      "step": "Topic whiteboard image originals, shared retention and native recovery on PostgreSQL",
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Original paper practice, exact command recovery and student permissions on PostgreSQL",
+      "passed": 23,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "step": "Internal teaching drafts, admin-owned data and schema21 native recovery on PostgreSQL",
+      "passed": 30,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "step": "Measurement v3, immutable reports, concurrent reanalysis and native privacy recovery on PostgreSQL",
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "nativeGuidanceIsolatedReplay": {
+    "passed": 1,
+    "failed": 0,
+    "notSelectedOrSqliteOnly": 12,
+    "durationMs": 57186,
+    "thresholdMs": 60000,
+    "scope": "Isolated replay of unchanged native recovery after first combined PostgreSQL timeout. Does not turn the first combined run into13/13."
+  },
+  "measurement": {
+    "version": "rule-estimate-v3",
+    "diagnosisVersion": "diagnosis-rules-v6",
+    "syntheticSelfReport": {
+      "atomId": "anonymous-qa-atom",
+      "atomName": "anonymous QA",
+      "grade": 1,
+      "mastery": null,
+      "lower": null,
+      "upper": null,
+      "status": "unknown",
+      "rawCorrect": 0,
+      "scoredCount": 0,
+      "effectiveSamples": 0,
+      "independentFamilies": 0,
+      "dimensions": [
+        {
+          "dimension": "understanding",
+          "mastery": null,
+          "samples": 0
+        },
+        {
+          "dimension": "procedure",
+          "mastery": null,
+          "samples": 0
+        },
+        {
+          "dimension": "transfer",
+          "mastery": null,
+          "samples": 0
+        },
+        {
+          "dimension": "retention",
+          "mastery": null,
+          "samples": 0
+        }
+      ],
+      "independentRate": null,
+      "transferVerified": false,
+      "retentionVerified": false,
+      "evidenceIds": [],
+      "lastMeasuredAt": null,
+      "algorithmVersion": "rule-estimate-v3",
+      "familyIdentityVersion": "authored-family-identity-v1"
+    },
+    "actualAnswerControl": {
+      "atomId": "anonymous-qa-atom",
+      "atomName": "anonymous QA",
+      "grade": 1,
+      "mastery": 33.3,
+      "lower": 1.3,
+      "upper": 84.2,
+      "status": "insufficient",
+      "rawCorrect": 0,
+      "scoredCount": 1,
+      "effectiveSamples": 1,
+      "independentFamilies": 1,
+      "dimensions": [
+        {
+          "dimension": "understanding",
+          "mastery": 33.3,
+          "samples": 1
+        },
+        {
+          "dimension": "procedure",
+          "mastery": null,
+          "samples": 0
+        },
+        {
+          "dimension": "transfer",
+          "mastery": null,
+          "samples": 0
+        },
+        {
+          "dimension": "retention",
+          "mastery": null,
+          "samples": 0
+        }
+      ],
+      "independentRate": 100,
+      "transferVerified": false,
+      "retentionVerified": false,
+      "evidenceIds": [
+        "anonymous-real-answer"
+      ],
+      "lastMeasuredAt": null,
+      "algorithmVersion": "rule-estimate-v3",
+      "familyIdentityVersion": "authored-family-identity-v1"
+    },
+    "passed": true
+  },
+  "runtime": {
+    "httpChecks": 1282,
+    "compiledInputs": 370,
+    "rawCompiledMatches": 370,
+    "originalAssets": 959,
+    "voiceSamples": 6,
+    "stableIntervalMs": 107400,
+    "protectedConfigurationPreserved": true,
+    "localEnvironmentPreserved": true,
+    "oldBuildRollbackFiles": 996,
+    "consistentBackupVerifiedFiles": 1,
+    "assetsIncluded": false
+  },
+  "realModels": {
+    "checkedAt": "2026-10-27T15:46:21.909Z",
+    "passed": 21,
+    "failed": 1,
+    "total": 22,
+    "allModelsPassed": false,
+    "failedModel": "claude-opus-5",
+    "originalSha256": "0bc356799069ee48593888066b5a2cb02821049915a686ae09c69dcfbb0e9780",
+    "scope": "Anonymous complete text JSON matrix only; old Opus complex output still incomplete. No visual or continuing availability claim."
+  },
+  "wholeProductComplete": false,
+  "limitations": [
+    "Anonymous production checks; authorized synthetic flows and media decode verified in isolated storage.",
+    "Captured fonts/CSS and local static bytes are verified; manual original geometry, full reference states/DPR/original audio, teacher, real-device and long-term acceptance remain incomplete.",
+    "The initial runtime checker rejected an inherited138 JSON raw digest; original139 fixed source was unchanged, line-ending-only equality proved, candidate metadata corrected and full runtime check rerun.",
+    "Current local browser415 inherited explicitly through unchanged runtime/application/E2E continuity; exact corrected remote head reran all415.",
+    "Original failed full API, first CI, browser debugging and PostgreSQL guidance timeout remain archived; isolated replay is not an initial13/13 success.",
+    "Real text model matrix inherited from138:21passed/claude-opus-5failed; no139 real-model call.",
+    "API, PostgreSQL and browser suite counts overlap and must not be summed.",
+    "Fresh stopped-service schema21 database/referenced files and996 compiled rollback are verified; assetsIncluded:false is not a full research-asset archive or full production restore rehearsal."
+  ]
+}
