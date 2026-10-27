@@ -1,0 +1,30 @@
+{
+  "observedAt": "2026-10-27T20:00:46.625Z",
+  "source": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0/sessions/whiteboard/ed43f6c4-fb26-4603-8645-8e2599424343",
+  "newMessageSent": false,
+  "observed": [
+    "Resume opened an existing whiteboard and its saved teaching history",
+    "Board contains short headings, bullet summaries, a comparison table and an embedded diagram",
+    "Chat history keeps sentence/paragraph teaching blocks and links to board notes/figure",
+    "Resumed conversation asks for a new query to continue teaching",
+    "100% zoom and page1/1 controls visible",
+    "Figure appeared in an about:srcdoc child document with a labelled Venn diagram"
+  ],
+  "screenshot": {
+    "file": "resumed-whiteboard-content-crop.png",
+    "sha256": "b7befe5018cebfd3352bdab7087e77dbe012171d53b356628005a037969eccd5",
+    "sourceSha256": "10a7b87e079b73a9c4b1ffd33b9480e9d500e4ed9e4020f3fc3f7030e858e755",
+    "crop": [
+      20,
+      85,
+      480,
+      780
+    ],
+    "scope": "Board-only crop excludes existing personal greeting, account area and conversation."
+  },
+  "limitations": [
+    "Snapshot of resumed state; no new playback timing, waveform or full original voice recording was measured.",
+    "Diagram child document is observed; this does not prove all reference figures use the same implementation.",
+    "DPR unknown; not a100% parity claim."
+  ]
+}
