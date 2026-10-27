@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-27T09:17:28.899185+00:00",
+  "ciRun": 40473809494,
+  "head": "0edc3d5dd1676cf880986f8054a1611b23d3af98",
+  "allJobsSuccess": true,
+  "browser": {
+    "passed": 382,
+    "originalAttempts": 382,
+    "retries": 0,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "linuxApi": {
+    "passed": 1461,
+    "failed": 0,
+    "environmentSkipped": 68
+  },
+  "releaseAccepted": false,
+  "reason": "Manual768px screenshot exposes micro-lesson titles squeezed to one glyph per line despite all382 automated cases passing. Original exactCI remains intact; runtime release waits for readability correction and new exactCI.",
+  "files": [
+    {
+      "file": "run.json.gz",
+      "originalSha256": "a1cb12cf7696a384672329b2bd357af12cd7cc0b6d7ef8063554115ba9306a6c",
+      "originalBytes": 20591
+    },
+    {
+      "file": "jobs.log.gz",
+      "originalSha256": "971e07894cbc0d6891a5a572b2565b8f8e5992c502919ee20fdd566a9c09302d",
+      "originalBytes": 1000384
+    },
+    {
+      "file": "browser.json.gz",
+      "originalSha256": "58c036a68befe3ab6773846979b98814a48a68604903c34303dc24f51d8839ee",
+      "originalBytes": 429898
+    }
+  ]
+}
