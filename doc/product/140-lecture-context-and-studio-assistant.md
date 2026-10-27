@@ -81,3 +81,11 @@ AssistantSession的pageContext增加classroom；contextRefType增加classroom_le
 深链lectureVersion保存上述指纹；原内容未改时刷新仍匹配，版本变动时保留草稿并提供现行版本入口。旧会话的GET context/历史可以读取经过结构与指纹核对的保留快照，标明current=false；POST turns、retry和worker发布需要current=true。实际发送依据新安全快照指纹与旧task bindingHash核对，不能因为历史只读允许而放宽发布。公共响应仅返回标题、位置、版本、current和返回链接，完整教学快照留在原会话/冻结任务中。
 
 原CSS已在现有资产中找到：`apps/web/public/reference/hyperknow/assets/css/index-CkZwjgwy.css`。其中lecture-context-chip原规则为min-height48px、max-width300px、gap10px、padding7px 26px 7px 10px、10px圆角、边框#DCE5F5和#fafcff→#f3f7fd背景；标题13.5px、位置10.5px、课程12px，删除按钮16px。input-box原规则为49vw/min-width620px、20px圆角、16px内距及#EFEFEF边框，home-mode-tabs有原背景、阴影和定位。实现应从这份已归档原件提取有来源的完整相关规则并限定本地作用域，连同媒体查询/动画/字体变量处理，避免全局原站CSS覆盖现有页面。窄屏以原媒体查询及实际快照验证；不只套上述桌面常数。原件身份与截图见[观察记录](../evidence/2026-10-28/hyperknow-lecture-assistance/receipt.json)。
+
+## 12. 普通独立学习与首页组件接入前细化
+
+讲座卡移除后进入普通独立学习，不应继续使用“小学家长陪伴教练”的系统提示。因此在现有协议增加pageContext=studio：仅非学生账号、userRole=parent、studentId/subject/contextRefType/contextRefId/contextItemId全空时允许。服务端构建independentStudy安全上下文，不带入任何孩子记录；冻结任务包含此模式，模型与本地规则均明确为一般学习助教。它与原有student_home学生档案上下文分开，不改已有题目/报告/计划助教的提示或独立性。相同scope复用原会话，移除讲座不重写讲座会话；URL用mode=instant&audience=independent保留普通独立模式。用户显式切换到孩子档案后才恢复原学生范围。
+
+首页采用AssistantWidget的inline呈现，保留同一useAssistantConversation、任务、历史、原请求、模型和取消协议。只扩展呈现插槽及受限内部返回位置，不复制另一套轮询和草稿实现。输入卡及讲座卡使用原CSS的有来源规则；首页工具操作复用已有真实工作区或原白板预览，不能把装饰符号写成已实现语音/上传能力。成人讲座或独立模式不得自动将问题写入某个孩子的白板/计划；完整对话转产物继续按第10节接通并另留确认与来源。
+
+课程入口先只读取得当前讲座摘要，再打开带版本的独立助教深链，过程中不创建微课session。收到迟到结果时核对账号、当前路由和请求代次。首页失效深链保留当前输入、旧版本说明及当前版本入口，不自动发问题；用户返回课程时定位原讲座，实际内容有更新则明确版本差异。学生会话历史、孩子切换、撤权和原模型重试继续按113验证。
