@@ -39,11 +39,18 @@
       "sha256": "e79349799e4b891264c931d5b2f66005f8aa94a8f743a5fd6891638c18a9fd75",
       "gzipSha256": "7c1ca3a80a63c795c61aa3cdda04bd31b00fdc06f6d7a59ca9f0d5eaf1ba373c",
       "bytes": 486
+    },
+    "lecture-context-api-build.log": {
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "gzipSha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "bytes": 66
     }
   },
   "apiConnected": false,
   "frontendConnected": false,
   "productionDelivered": false,
   "realModelCalled": false,
-  "scope": "Pure helper foundation only. HTTP authorization, worker publication, PostgreSQL/native recovery, frontend and full release gates remain required."
+  "scope": "Pure helper foundation only. HTTP authorization, worker publication, PostgreSQL/native recovery, frontend and full release gates remain required.",
+  "isolatedApiBuildPassed": true,
+  "buildScope": "Own worktree API compilation only. Existing dependencies read through junctions; no install or shared dependency build. No production build claim."
 }
