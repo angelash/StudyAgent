@@ -28,6 +28,8 @@ import { useVoicePreview } from './voice-preview';
 import { usePracticeDraft } from './practice-draft';
 import { CourseLessonStatus,CourseProjectStatus } from '../course-activity';
 import { FrozenCheckSource } from './check-source';
+import { CoursePanels } from './course-panels';
+import './course-panels.css';
 
 function Ring({ state = 'new' }: { state?: 'new' | 'started' | 'viewed' | 'correct' }) {
   return <span className="cl-ring" data-state={state} aria-label={{ new: '未开始', started: '已接触', viewed: '讲解已读', correct: '本题答对' }[state]} />;
@@ -62,6 +64,7 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
   const open = React.useCallback(async (lessonId: string, tab: 'history' | 'practice' | 'project' = 'history', studioCourseId?: string, history: 'push' | 'none' = 'push', assistance = false, savedSessionId?: string, useCurrentVersion = false, sourceCourseId?:string,sourceCheckId?:string) => {
     loadController.current?.abort(); const controller = new AbortController(); loadController.current = controller;
     setLoading(true); setError('');
+    const entryQuery = new URLSearchParams(window.location.search);
     try {
       const row = savedSessionId ? await apiRequest<ClassroomSessionView>('/learning/classroom/sessions/' + encodeURIComponent(savedSessionId), { signal: controller.signal }) :
         await apiRequest<ClassroomSessionView>('/learning/classroom/sessions', { method: 'POST',
@@ -69,7 +72,7 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
       if (controller.signal.aborted) return;
       if (lessonId && row.lessonId !== lessonId || studioCourseId && row.studioCourseId !== studioCourseId || sourceCourseId&&row.sourceCourseId!==sourceCourseId||sourceCheckId&&row.sourceCheckId!==sourceCheckId) throw new Error('保存记录与当前课程入口不一致，请从课程历史重新进入。');
       setInitialTab(tab); setHelp(assistance); setSession(row); studio.current = row.studioCourseId;sourceCourse.current=row.sourceCourseId;
-      const query = new URLSearchParams(window.location.search); query.set('lesson', row.lessonId); query.set('session', row.id); query.set('tab', tab); if (row.studioCourseId) query.set('studioCourseId', row.studioCourseId); else query.delete('studioCourseId'); if(assistance) query.set('help','1'); else query.delete('help');
+      const query = entryQuery; query.set('lesson', row.lessonId); query.set('session', row.id); query.set('tab', tab); if (row.studioCourseId) query.set('studioCourseId', row.studioCourseId); else query.delete('studioCourseId'); if(assistance) query.set('help','1'); else query.delete('help');
       if(row.sourceCourseId)query.set('sourceCourseId',row.sourceCourseId);else query.delete('sourceCourseId');
       if(row.sourceCheckId)query.set('sourceCheckId',row.sourceCheckId);else query.delete('sourceCheckId');
       if(history==='push') window.history.pushState(null, '', '/studio/classroom?' + query);
@@ -123,12 +126,14 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
   const next = allLessons.find(lesson => lesson.id === recent?.lessonId && !recent.completed) ?? allLessons.find(lesson => !reading.get(lesson.id)?.completed);
   return <main className="cl-shell ws-classroom-shell">
     <StudioNavigation active="courses" recent={[{title:allLessons.find(lesson=>lesson.id===recent?.lessonId)?.title??'社会学想象力',detail:'社会学概论',href:'/studio/classroom?'+new URLSearchParams({lesson:recent?.lessonId??'soc-1-1-1',...(recent?{session:recent.sessionId}:{})})}]} />
-    <div className="cl-course-layout"><aside className="cl-course-sidebar"><Link className="cl-exit-course" href={libraryHref}>× <span>退出课程</span></Link>
+    <div className="cl-course-layout cl-reference-directory"><aside className="cl-course-sidebar"><Link className="cl-exit-course" href={libraryHref}>× <span>退出课程</span></Link>
       <CourseCover /><div className="cl-curator"><span>S</span><div><small>策划自</small><b>StudyAgent Learning Studio</b></div></div>
       <h1>{course?.title ?? '教学课堂'}</h1><p>{course?.description}</p><details><summary>显示更多</summary><p>{course?.provenance}</p><p>60 个微课 · 15 个讲座 · 5 个单元项目</p></details>
-      <div className="cl-panel-label">面板</div><div className="cl-course-tabs" role="tablist" aria-label="课程面板">
-        {(['units', 'materials', 'practices'] as const).map((item, index) => <button key={item} role="tab" aria-selected={panel === item} onClick={() => {setPanel(item);const params=new URLSearchParams(window.location.search);params.set('unit',String(unitIndex));params.set('panel',item);window.history.replaceState(null,'','/studio/classroom?'+params);}}>{['单元', '资料', '练习'][index]}</button>)}
-      </div><div className="cl-unit-nav">{course?.units.map((item, index) => <button key={item.id} data-active={unitIndex === index} onClick={() => {setUnitIndex(index);const params=new URLSearchParams(window.location.search);params.set('unit',String(index));params.set('panel',panel);window.history.replaceState(null,'','/studio/classroom?'+params);}}><b>{index + 1}</b>{item.title}</button>)}</div>
+      <CoursePanels catalog={catalog} panel={panel} unitIndex={unitIndex} busy={loading}
+        onPanel={value => { setPanel(value); const query = new URLSearchParams(window.location.search); query.set('unit', String(unitIndex)); query.set('panel', value); window.history.replaceState(null, '', '/studio/classroom?' + query); }}
+        onUnit={index => { setUnitIndex(index); const query = new URLSearchParams(window.location.search); query.set('unit', String(index)); query.set('panel', panel); window.history.replaceState(null, '', '/studio/classroom?' + query); }}
+        onPractice={(lessonId, index, sessionId) => { setUnitIndex(index); const query = new URLSearchParams(window.location.search); query.set('unit', String(index)); query.set('panel', panel); window.history.replaceState(null, '', '/studio/classroom?' + query); void open(lessonId, 'practice', undefined, 'push', false, sessionId); }}
+        projectHref={index => { const target = course!.units[index], project = catalog?.projectActivities?.filter(item => item.unitId === target.id).sort((a,b) => b.updatedAt.localeCompare(a.updatedAt))[0]; return '/studio/projects?' + copyCourseFilters(libraryHref, new URLSearchParams({ unitId: target.id, returnUnit: String(index), returnPanel: panel, ...(project ? { project: project.projectId, stage: project.stageId } : {}) })); }} />
     </aside><section className="cl-outline">
       {error && <div className="cl-error" role="alert">{error}<button onClick={() => void refresh()}>重试</button></div>}
       {loading && <div className="cl-open-status" role="status">正在恢复课堂…</div>}
@@ -139,26 +144,24 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
         <div className="cl-legend"><span><Ring state="viewed"/>讲解已读</span><span><Ring state="started"/>已接触</span><span><Ring/>未开始</span><span>▣ Project</span><span>♙ Exam</span></div>
         <div className="ws-course-route"><div className="cl-status-strip">{unit.lectures.flatMap(lecture => lecture.lessons).map(lesson => <button key={lesson.id} title={lesson.title} onClick={() => void open(lesson.id)}><Ring state={state(lesson.id)}/></button>)}
           <Link title="单元项目" href={'/studio/projects?'+copyCourseFilters(libraryHref,new URLSearchParams({unitId:unit.id,returnUnit:String(unitIndex),returnPanel:panel}))}>▣</Link><button title="单元核查" onClick={() => void open('unit-exam:' + unit.id, 'practice')}>♙</button></div>
-        {next && <button className="cl-next" onClick={() => void open(next.id)}>▶ <span>下一步：{next.title}</span> ›</button>}</div>
+        {next && <button className="cl-next" onClick={() => void open(next.id, 'history', undefined, 'push', false, reading.get(next.id)?.sessionId)}>▶ <span>下一步：{next.title}</span> ›</button>}</div>
 
         <details className="ca-journey" aria-label="本单元学习进程"><summary>学习进程 · 本单元</summary><p>讲解、练习和项目分别记录。已读、自评和AI建议不等于知识已掌握。</p><ol>{[...unit.lectures.flatMap(lecture=>lecture.lessons),{id:'unit-exam:'+unit.id,title:unit.title+'综合核查',objective:unit.objective}].map(lesson=>{const activity=catalog?.lessonActivities?.find(item=>item.lessonId===lesson.id);return <li key={lesson.id}><h3>{lesson.title}</h3><CourseLessonStatus value={activity}/><div className="ca-links">{activity?.kind!=='unit_check'&&<button onClick={()=>void open(lesson.id,'history',undefined,'push',false,activity?.reading.sessionId??undefined)}>{activity?.reading.sessionId?'继续讲解':'开始讲解'}</button>}<button onClick={()=>void open(lesson.id,'practice',undefined,'push',false,activity?.practice.sessionId??undefined)}>{activity?.practice.summary.answered?'继续本次练习':'开始练习'}</button></div></li>;})}</ol><h3>本单元项目</h3>{catalog?.projectActivities?.filter(project=>project.unitId===unit.id).length?<ul>{catalog.projectActivities.filter(project=>project.unitId===unit.id).map(project=><li key={project.projectId}><CourseProjectStatus value={project}/><div className="ca-links"><Link href={'/studio/projects?'+copyCourseFilters(libraryHref,new URLSearchParams({unitId:unit.id,project:project.projectId,stage:project.stageId,returnUnit:String(unitIndex),returnPanel:panel}))}>继续项目 →</Link></div></li>)}</ul>:<div className="ca-links"><Link href={'/studio/projects?'+copyCourseFilters(libraryHref,new URLSearchParams({unitId:unit.id,returnUnit:String(unitIndex),returnPanel:panel}))}>开始项目 →</Link></div>}</details>
         {Boolean(catalog?.archivedSessions?.length) && <details className="cl-archived-sessions"><summary>查看保留的旧版学习记录（{catalog!.archivedSessions!.length}）</summary><p>旧题和首次作答按当时版本保存。打开旧记录不会换成新题。</p><ul>{catalog!.archivedSessions!.map(saved => <li key={saved.sessionId}>
           <Link href={'/studio/classroom?' + new URLSearchParams({ lesson: saved.lessonId, session: saved.sessionId, tab: 'practice' })}>{saved.title} · 已记录 {saved.answered}/{saved.total} 题</Link><small>{new Date(saved.updatedAt).toLocaleString('zh-CN')}</small></li>)}</ul></details>}
-        {panel === 'materials' ? <div className="cl-card"><h2>参考资料</h2><p>自编讲解以通用概念和匿名情境教学。以下为开放的进一步阅读入口，未逐节宣称页码引用。</p>
-          {course.references.map(reference => <a key={reference.url} href={reference.url} target="_blank" rel="noreferrer">{reference.title} ↗</a>)}
-          <Link href="/studio?view=materials">打开我的 PDF 与学案 →</Link></div> : <div className="cl-timeline">
+        <div className="cl-timeline">
           {unit.lectures.map((lecture, index) => <article className="cl-lecture" key={lecture.id}>
             <span className="cl-timeline-icon">▧</span><header><button onClick={() => setExpanded(rows => rows.includes(lecture.id) ? rows.filter(id => id !== lecture.id) : [...rows, lecture.id])} aria-expanded={expanded.includes(lecture.id)}>
               讲次 {index + 1}：{lecture.title}</button><button className="cl-assist" onClick={() => void open(lecture.lessons[0].id, 'history', undefined, 'push', true)}>获取帮助</button></header>
             <p>{lecture.description}</p>
-            {(expanded.includes(lecture.id) || panel === 'practices') && <div className="cl-microlessons">{lecture.lessons.map(lesson => <div className="cl-micro" key={lesson.id}>
+            {expanded.includes(lecture.id) && <div className="cl-microlessons">{lecture.lessons.map(lesson => <div className="cl-micro" key={lesson.id}>
               <span className="ws-micro-title">{lesson.title}<button className="ws-lesson-info" aria-label={'查看学习目标：' + lesson.title} onClick={() => setLessonInfo(lesson)}>⊙</button></span><button className="cl-learn" disabled={loading} onClick={() => void open(lesson.id)}>{reading.has(lesson.id) ? '▶ 继续学习' : '▶ 学习'}</button>
               <button className="cl-practice" disabled={loading} onClick={() => void open(lesson.id, 'practice')}>♧ 练习{Boolean(progress.get(lesson.id)?.answered) && <span title="已有练习记录"> ·</span>}</button><Ring state={state(lesson.id)}/>
             </div>)}</div>}
           </article>)}
           <article className="cl-lecture cl-project"><span className="cl-timeline-icon">▣</span><small>PROJECT · {unitIndex + 1} / 5</small><h3>{unit.project.title}</h3><p>{unit.project.brief}</p><Link className="ws-open-activity" href={'/studio/projects?'+copyCourseFilters(libraryHref,new URLSearchParams({unitId:unit.id,returnUnit:String(unitIndex),returnPanel:panel}))}>开始项目 →</Link></article>
           <article className="cl-lecture cl-exam"><span className="cl-timeline-icon">♙</span><small>UNIT CHECK</small><h3>{unit.title}综合核查</h3><p>覆盖本单元的 12 个主题，12 道新情境题保留首次作答、跳过与提示记录。</p><button onClick={() => void open('unit-exam:' + unit.id, 'practice')}>Start →</button></article>
-        </div>}
+        </div>
       </>}
     </section></div>
     {lessonInfo && <WorkspaceDialog onClose={() => setLessonInfo(null)}><section className="ws-event-dialog ws-help-dialog" role="dialog" aria-modal="true" aria-label="微课学习目标"><header><h2>{lessonInfo.title}</h2><button aria-label="关闭学习目标" onClick={() => setLessonInfo(null)}>×</button></header><p>{lessonInfo.objective}</p><p>通过讲解理解概念，再用课堂题目检查。课堂记录会保留在当前账号下。</p><footer><button onClick={() => { setLessonInfo(null); void open(lessonInfo.id); }}>开始学习</button><button onClick={() => { setLessonInfo(null); void open(lessonInfo.id, 'practice'); }}>检查理解</button></footer></section></WorkspaceDialog>}

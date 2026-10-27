@@ -1,0 +1,25 @@
+.cl-reference-directory .cl-course-panels [hidden]{display:none}
+.cl-reference-directory .cl-course-panels [role=tabpanel]{outline-offset:3px}
+.cl-reference-directory .cl-panel-empty{margin:14px 8px;font-size:12px;line-height:1.7;color:#7c8797}
+.cl-reference-directory .cl-panel-library{display:block;margin:12px 8px;color:#506f9f;font-size:13px}
+.cl-reference-directory .cl-panel-subtitle{margin:24px 8px 6px;font-size:12px;font-weight:600;color:#5e6a7c}
+.cl-reference-directory .cl-panel-note{margin:0 8px 12px;font-size:12px;line-height:1.7;color:#7c8797}
+.cl-reference-directory .cl-panel-reference{display:flex;align-items:start;gap:10px;margin:4px 0;padding:9px 8px;font-size:13px;line-height:1.6;border-radius:8px;overflow-wrap:anywhere}
+.cl-reference-directory .cl-panel-reference span{margin-left:auto;flex:none}
+.cl-reference-directory .cl-panel-activities{display:grid;gap:2px}
+.cl-reference-directory .cl-panel-activity{display:flex;align-items:start;gap:12px;min-width:0;min-height:49px;width:100%;padding:10px 12px;border:0;border-radius:8px;background:transparent;text-align:left;color:#344057;line-height:1.5;text-decoration:none}
+.cl-reference-directory .cl-panel-activity>img{width:14px;height:14px;flex:none;margin-top:4px;opacity:.65}
+.cl-reference-directory .cl-panel-activity>span{display:grid;gap:1px;min-width:0;overflow-wrap:anywhere}
+.cl-reference-directory .cl-panel-activity b{font-size:13px;font-weight:500}
+.cl-reference-directory .cl-panel-activity small{font-size:11px;color:#8a9cb8}
+.cl-reference-directory .cl-panel-activity:hover,.cl-reference-directory .cl-panel-reference:hover{background:#eef1f6}
+.cl-reference-directory .cl-unit-nav button>span{min-width:0;overflow-wrap:anywhere}
+@media(min-width:1101px){
+  .ws-classroom-shell .cl-reference-directory{height:calc(100dvh - 60px);min-height:0;gap:82px}
+  .ws-classroom-shell .cl-reference-directory>.cl-course-sidebar{position:static;max-height:100%;overflow:auto;scrollbar-width:thin;padding-right:2px}
+  .ws-classroom-shell .cl-reference-directory>.cl-outline{overflow:auto;max-height:100%;scrollbar-width:thin;padding:0 2px 50px 0;overscroll-behavior:contain}
+}
+@media(max-width:1100px){
+  .cl-reference-directory .cl-course-panels [role=tabpanel]{max-height:320px;overflow:auto;scrollbar-width:thin}
+  .cl-reference-directory .cl-panel-activity{min-height:44px;padding:10px 8px}
+}

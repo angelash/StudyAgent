@@ -1,0 +1,52 @@
+import { expect, test, type Page } from '@playwright/test';
+import { createHash } from 'node:crypto';
+import { browserEvidence } from './evidence';
+const api = `http://localhost:${process.env.E2E_API_PORT ?? '4107'}/api`;
+const evidence = browserEvidence('course-panels');
+async function enter(page: Page, width = 1280) {
+  await page.setViewportSize({ width, height: width === 390 ? 844 : 900 });
+  const nonce = crypto.randomUUID(), principal = 'course-panel-' + nonce + '@local.test', credential = 'Panel-QA-' + nonce;
+  const hash = createHash('sha256').update(test.info().testId).digest(), address = '198.19.' + hash[0] + '.' + hash[1];
+  await page.setExtraHTTPHeaders({ 'X-Forwarded-For': address });
+  const response = await fetch(api + '/auth/register', { method: 'POST', headers: { 'content-type': 'application/json', 'X-Forwarded-For': address }, body: JSON.stringify({ principal, credential }) });
+  expect(response.status).toBe(201); const actor = (await response.json()).data;
+  await page.addInitScript(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
+  await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
+  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.goto('/studio/classroom?unit=0&panel=units');
+  await expect(page.locator('.cl-lecture')).toHaveCount(5);
+  const read = async (path: string) => { const response = await fetch(api + path, { headers: { Authorization: 'Bearer ' + actor.token, 'X-Forwarded-For': address } }); expect(response.ok).toBe(true); return (await response.json()).data; };
+  return { read };
+}
+for (const width of [390, 768, 1280, 1440]) test(`course panels: references and all activities preserve the unit outline, complete titles and keyboard focus at ${width}`, async ({ page }) => {
+  await enter(page, width);
+  const first = page.locator('.cl-lecture').first(); await expect(first.getByRole('button').first()).toHaveAttribute('aria-expanded', 'true');
+  const units = page.getByRole('tab', { name: '单元', exact: true }); await units.focus(); await page.keyboard.press('ArrowRight');
+  await expect(page.getByRole('tab', { name: '资料', exact: true })).toBeFocused();
+  await expect(page.getByRole('tabpanel', { name: '资料', exact: true })).toContainText('延伸阅读');
+  await expect(page.locator('.cl-lecture')).toHaveCount(5); await expect(first.getByRole('button').first()).toHaveAttribute('aria-expanded', 'true');
+  await page.keyboard.press('End'); await expect(page.getByRole('tab', { name: '练习', exact: true })).toBeFocused();
+  const practices = page.getByRole('tabpanel', { name: '练习', exact: true }); await expect(practices.locator('.cl-panel-activity')).toHaveCount(70);
+  await expect(practices).toContainText('单元 5 · Unit Check');
+  await expect(page.locator('.cl-lecture')).toHaveCount(5);
+  const last = practices.locator('.cl-panel-activity').last(); await last.scrollIntoViewIfNeeded();
+  const box = await last.boundingBox(); expect(box!.x).toBeGreaterThanOrEqual(0); expect(box!.x + box!.width).toBeLessThanOrEqual(width);
+  await page.screenshot({ path: evidence + '/activities-' + width + '.png', fullPage: true });
+  await page.reload(); await expect(page.getByRole('tab', { name: '练习', exact: true })).toHaveAttribute('aria-selected', 'true');
+  await expect(page.locator('.cl-lecture')).toHaveCount(5);
+});
+test('course panels: a cross-unit practice returns to its original panel and reopens the exact first answer after refresh', async ({ page }) => {
+  const { read } = await enter(page), catalog = await read('/learning/classroom/catalog'), lesson = catalog.course.units[1].lectures[0].lessons[0];
+  await page.getByRole('tab', { name: '练习', exact: true }).click();
+  const entry = () => page.getByRole('tabpanel', { name: '练习', exact: true }).getByRole('button').filter({ hasText: lesson.title }).first();
+  await entry().click(); await expect(page.getByRole('button', { name: 'Check →', exact: true })).toBeVisible();
+  const original = new URL(page.url()).searchParams.get('session')!;
+  await page.locator('.cl-practice-options input').first().check(); await page.getByRole('button', { name: 'Check →', exact: true }).click();
+  await expect(page.locator('.cl-answer-feedback')).toBeVisible();
+  const saved = await read('/learning/classroom/sessions/' + original); expect(saved.answers).toHaveLength(1);
+  await page.getByRole('button', { name: '关闭独立练习', exact: true }).click(); await page.getByRole('button', { name: '保存并离开', exact: true }).click();
+  await expect(page.getByRole('tab', { name: '练习', exact: true })).toHaveAttribute('aria-selected', 'true');
+  await expect(page).toHaveURL(/unit=1/); await page.reload(); await entry().click();
+  await expect(page.locator('.cl-answer-feedback')).toBeVisible(); expect(new URL(page.url()).searchParams.get('session')).toBe(original);
+  expect((await read('/learning/classroom/sessions/' + original)).answers).toEqual(saved.answers);
+});
