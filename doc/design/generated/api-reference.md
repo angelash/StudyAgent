@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`e99e4da818645a057eba98641405086098105ac2`。共 421 个 HTTP 路由声明，当前 AppModule 可达 400 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`7da5ceea50bed43169e450f5909cbc0d33f40d2a`。共 437 个 HTTP 路由声明，当前 AppModule 可达 416 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -2681,6 +2681,154 @@
 - 方法装饰器：`[]`
 - 调用：`this.narration.synthesize`
 
+## WhiteboardQuestionVisualController — 当前接入
+
+### GET /api/learning/studio/whiteboard-question-visuals/capabilities
+
+实现：[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:15](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L15)，方法 `capabilities`。
+
+- 签名：`capabilities()`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.images.capabilities`
+
+### GET /api/learning/studio/whiteboard-question-visuals/source
+
+实现：[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:16](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L16)，方法 `source`。
+
+- 签名：`source(@Req() r: AuthenticatedRequest, @Query() q: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.images.source`
+
+### GET /api/learning/studio/whiteboard-question-visuals/requests/:key
+
+实现：[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:17](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L17)，方法 `receipt`。
+
+- 签名：`receipt(@Req() r: AuthenticatedRequest, @Param('key') key: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.images.receipt`
+
+### GET /api/learning/studio/whiteboard-question-visuals
+
+实现：[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:18](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L18)，方法 `list`。
+
+- 签名：`list(@Req() r: AuthenticatedRequest, @Query() q: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.images.list`
+
+### POST /api/learning/studio/whiteboard-question-visuals/preflight
+
+实现：[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:19](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L19)，方法 `preflight`。
+
+- 签名：`preflight(@Req() r: AuthenticatedRequest, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.images.preflight`
+
+### POST /api/learning/studio/whiteboard-question-visuals/adopt
+
+实现：[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:20](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L20)，方法 `adopt`。
+
+- 签名：`adopt(@Req() r: AuthenticatedRequest, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.images.adopt`
+
+### POST /api/learning/studio/whiteboard-question-visuals
+
+实现：[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:21](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L21)，方法 `create`。
+
+- 签名：`create(@Req() r: AuthenticatedRequest, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.images.prepare`
+
+### GET /api/learning/studio/whiteboard-question-visuals/:id
+
+实现：[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:22](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L22)，方法 `get`。
+
+- 签名：`get(@Req() r: AuthenticatedRequest, @Param('id') id: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.images.get`
+
+### GET /api/learning/studio/whiteboard-question-visuals/:id/requests/:key
+
+实现：[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:23](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L23)，方法 `controlReceipt`。
+
+- 签名：`controlReceipt(@Req() r: AuthenticatedRequest, @Param('id') id: string, @Param('key') key: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.images.receipt`
+
+### GET /api/learning/studio/whiteboard-question-visuals/:id/:part
+
+实现：[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:24](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L24)，方法 `file`。
+
+- 签名：`file(@Req() r: AuthenticatedRequest, @Param('id') id: string, @Param('part') part: string, @Res({ passthrough: true }) response: Response)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.images.file`
+
+### POST /api/learning/studio/whiteboard-question-visuals/:id/edit
+
+实现：[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:27](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L27)，方法 `edit`。
+
+- 签名：`edit(@Req() r: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.images.prepare`
+
+### POST /api/learning/studio/whiteboard-question-visuals/:id/cancel
+
+实现：[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:28](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L28)，方法 `cancel`。
+
+- 签名：`cancel(@Req() r: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.images.control`
+
+### POST /api/learning/studio/whiteboard-question-visuals/:id/retry
+
+实现：[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:29](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L29)，方法 `retry`。
+
+- 签名：`retry(@Req() r: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.images.control`
+
+## WhiteboardQuestionTeachingVersionController — 当前接入
+
+### GET /api/learning/studio/:boardType/:boardId/questions/:turnId/teaching-versions
+
+实现：[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:39](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L39)，方法 `versions`。
+
+- 签名：`versions(@Req() r: AuthenticatedRequest, @Param('boardType') type: string, @Param('boardId') board: string, @Param('turnId') turn: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.images.source`、`this.target`
+
+### GET /api/learning/studio/:boardType/:boardId/questions/:turnId/teaching-versions/:id/board
+
+实现：[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:42](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L42)，方法 `board`。
+
+- 签名：`board(@Req() r: AuthenticatedRequest, @Param('boardType') type: string, @Param('boardId') board: string, @Param('turnId') turn: string, @Param('id') id: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.images.teaching`、`this.target`
+
+### GET /api/learning/studio/:boardType/:boardId/questions/:turnId/teaching-versions/:id/figure/:part
+
+实现：[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:45](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L45)，方法 `file`。
+
+- 签名：`file(@Req() r: AuthenticatedRequest, @Param('boardType') type: string, @Param('boardId') board: string, @Param('turnId') turn: string, @Param('id') id: string, @Param('part') part: string, @Res({ passthrough: true }) response: Response)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.images.versionFile`、`this.target`
+
 ## GuidanceWhiteboardQuestionController — 当前接入
 
 ### GET /api/learning/studio/whiteboards/:boardId/questions/context
@@ -2723,7 +2871,7 @@
 
 实现：[apps/api/src/modules/learning/whiteboard-question.controller.ts:29](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L29)，方法 `board`。
 
-- 签名：`board(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string)`
+- 签名：`board(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Query('teachingVersionId') version?: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.turns.board`
@@ -2824,7 +2972,7 @@
 
 实现：[apps/api/src/modules/learning/whiteboard-question.controller.ts:47](../../../apps/api/src/modules/learning/whiteboard-question.controller.ts#L47)，方法 `board`。
 
-- 签名：`board(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string)`
+- 签名：`board(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Query('teachingVersionId') version?: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.turns.board`

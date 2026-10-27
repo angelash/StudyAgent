@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`e99e4da818645a057eba98641405086098105ac2`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`7da5ceea50bed43169e450f5909cbc0d33f40d2a`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`、`/studio/whiteboards`。
 
@@ -1271,12 +1271,12 @@
 
 **服务方法**：
 
-- `WhiteboardQuestionService.context`；[apps/api/src/modules/learning/whiteboard-question.service.ts:35](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L35)。
-- `WhiteboardQuestionService.receipt`；[apps/api/src/modules/learning/whiteboard-question.service.ts:65](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L65)。
-- `WhiteboardQuestionService.list`；[apps/api/src/modules/learning/whiteboard-question.service.ts:57](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L57)。
-- `WhiteboardQuestionService.get`；[apps/api/src/modules/learning/whiteboard-question.service.ts:62](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L62)。
-- `WhiteboardQuestionService.create`；[apps/api/src/modules/learning/whiteboard-question.service.ts:98](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L98)。
-- `WhiteboardQuestionService.control`；[apps/api/src/modules/learning/whiteboard-question.service.ts:135](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L135)。
+- `WhiteboardQuestionService.context`；[apps/api/src/modules/learning/whiteboard-question.service.ts:36](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L36)。
+- `WhiteboardQuestionService.receipt`；[apps/api/src/modules/learning/whiteboard-question.service.ts:67](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L67)。
+- `WhiteboardQuestionService.list`；[apps/api/src/modules/learning/whiteboard-question.service.ts:59](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L59)。
+- `WhiteboardQuestionService.get`；[apps/api/src/modules/learning/whiteboard-question.service.ts:64](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L64)。
+- `WhiteboardQuestionService.create`；[apps/api/src/modules/learning/whiteboard-question.service.ts:101](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L101)。
+- `WhiteboardQuestionService.control`；[apps/api/src/modules/learning/whiteboard-question.service.ts:138](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L138)。
 
 **补充实现文件**：
 
@@ -1303,7 +1303,7 @@
 
 **状态与持久化**：`whiteboardQuestionTurns`、`studioWhiteboards`、`studioTopicWhiteboards`
 
-**权限、失败与边界**：旧纯文字回答保留文字与收听，不编造板书；超过向量引擎预算的公式完整显示原式，不冒称全部向量排版。补充生图候选/采用/原图/版本绑定仍待实现；声音实测只是一份匿名回答的一句，不能代替听感、全模型、整站和原站像素验证。
+**权限、失败与边界**：旧纯文字回答保留文字与收听，不编造板书；超过向量引擎预算的公式完整显示原式，不冒称全部向量排版。补充配图与不可覆盖版本见STUDIO-35；声音实测只是一份匿名回答的一句，不能代替听感、全模型、整站和原站像素验证。
 
 **关联接口**：
 
@@ -1318,9 +1318,9 @@
 
 **服务方法**：
 
-- `WhiteboardQuestionService.board`；[apps/api/src/modules/learning/whiteboard-question.service.ts:77](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L77)。
-- `WhiteboardQuestionService.notes`；[apps/api/src/modules/learning/whiteboard-question.service.ts:80](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L80)。
-- `WhiteboardQuestionService.notesIdentity`；[apps/api/src/modules/learning/whiteboard-question.service.ts:87](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L87)。
+- `WhiteboardQuestionService.board`；[apps/api/src/modules/learning/whiteboard-question.service.ts:80](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L80)。
+- `WhiteboardQuestionService.notes`；[apps/api/src/modules/learning/whiteboard-question.service.ts:83](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L83)。
+- `WhiteboardQuestionService.notesIdentity`；[apps/api/src/modules/learning/whiteboard-question.service.ts:90](../../../apps/api/src/modules/learning/whiteboard-question.service.ts#L90)。
 
 **补充实现文件**：
 
@@ -1334,3 +1334,71 @@
 - [apps/web/app/studio/whiteboard-session.tsx](../../../apps/web/app/studio/whiteboard-session.tsx)
 - [apps/web/app/studio/whiteboard-reading-panel.tsx](../../../apps/web/app/studio/whiteboard-reading-panel.tsx)
 - [tests/e2e/whiteboard-questions.spec.ts](../../../tests/e2e/whiteboard-questions.spec.ts)
+
+## STUDIO-35 原回答配图、原PNG编辑与不可覆盖教学版本
+
+**输入**：原白板类型/ID、turn/回复指纹/原稿摘要、完整要求、预检摘要、原PNG身份和稳定命令键。
+
+**处理与实现**：schema20独立owner/request唯一索引；预检异步探测后和生成/编辑/发布前后复核当前登录、授权、完整回答及租约。实际原PNG编辑、SHA校验、明确采用创建UUID教学版本并保留原回答/所有旧图；原命令重放不改变后来选择，旧标签竞争拒绝。图片来源、声音请求、私有链接和续播绑定确切版本；完整JSON/Markdown保留公开版本和SHA。独立本机文档槽保留完整要求与原请求，存储失败下载/导入/离开保护。双库备份包含冻结原图/显示图，最新删除账本不复活旧图片，保留合法引用与未知文件。
+
+**输出**：可核对图片候选、实际原PNG、完整请求恢复和可回看/导出的独立教学版本。
+
+**状态与持久化**：`whiteboardQuestionVisuals`、`whiteboardQuestionTurns`
+
+**权限、失败与边界**：真实供应商只验证一份匿名DS回答与gpt-image-2生成/编辑各一次；图示待教师核对，不能作精密测量或正式评分。浏览器验收进行中，全站/精确CI/守护交付及原站像素、真人听感和长期教学仍待。
+
+**关联接口**：
+
+- `GET /api/learning/studio/whiteboard-question-visuals/capabilities` → `WhiteboardQuestionVisualController.capabilities`；[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:15](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L15)。
+- `GET /api/learning/studio/whiteboard-question-visuals/source` → `WhiteboardQuestionVisualController.source`；[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:16](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L16)。
+- `GET /api/learning/studio/whiteboard-question-visuals/requests/:key` → `WhiteboardQuestionVisualController.receipt`；[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:17](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L17)。
+- `GET /api/learning/studio/whiteboard-question-visuals` → `WhiteboardQuestionVisualController.list`；[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:18](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L18)。
+- `POST /api/learning/studio/whiteboard-question-visuals/preflight` → `WhiteboardQuestionVisualController.preflight`；[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:19](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L19)。
+- `POST /api/learning/studio/whiteboard-question-visuals/adopt` → `WhiteboardQuestionVisualController.adopt`；[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:20](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L20)。
+- `POST /api/learning/studio/whiteboard-question-visuals` → `WhiteboardQuestionVisualController.create`；[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:21](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L21)。
+- `GET /api/learning/studio/whiteboard-question-visuals/:id` → `WhiteboardQuestionVisualController.get`；[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:22](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L22)。
+- `GET /api/learning/studio/whiteboard-question-visuals/:id/requests/:key` → `WhiteboardQuestionVisualController.controlReceipt`；[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:23](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L23)。
+- `GET /api/learning/studio/whiteboard-question-visuals/:id/:part` → `WhiteboardQuestionVisualController.file`；[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:24](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L24)。
+- `POST /api/learning/studio/whiteboard-question-visuals/:id/edit` → `WhiteboardQuestionVisualController.edit`；[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:27](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L27)。
+- `POST /api/learning/studio/whiteboard-question-visuals/:id/cancel` → `WhiteboardQuestionVisualController.cancel`；[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:28](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L28)。
+- `POST /api/learning/studio/whiteboard-question-visuals/:id/retry` → `WhiteboardQuestionVisualController.retry`；[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:29](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L29)。
+- `GET /api/learning/studio/:boardType/:boardId/questions/:turnId/teaching-versions` → `WhiteboardQuestionTeachingVersionController.versions`；[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:39](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L39)。
+- `GET /api/learning/studio/:boardType/:boardId/questions/:turnId/teaching-versions/:id/board` → `WhiteboardQuestionTeachingVersionController.board`；[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:42](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L42)。
+- `GET /api/learning/studio/:boardType/:boardId/questions/:turnId/teaching-versions/:id/figure/:part` → `WhiteboardQuestionTeachingVersionController.file`；[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:45](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L45)。
+
+**服务方法**：
+
+- `WhiteboardQuestionVisualService.capabilities`；[apps/api/src/modules/learning/whiteboard-question-visual.service.ts:30](../../../apps/api/src/modules/learning/whiteboard-question-visual.service.ts#L30)。
+- `WhiteboardQuestionVisualService.source`；[apps/api/src/modules/learning/whiteboard-question-visual.service.ts:31](../../../apps/api/src/modules/learning/whiteboard-question-visual.service.ts#L31)。
+- `WhiteboardQuestionVisualService.receipt`；[apps/api/src/modules/learning/whiteboard-question-visual.service.ts:95](../../../apps/api/src/modules/learning/whiteboard-question-visual.service.ts#L95)。
+- `WhiteboardQuestionVisualService.list`；[apps/api/src/modules/learning/whiteboard-question-visual.service.ts:101](../../../apps/api/src/modules/learning/whiteboard-question-visual.service.ts#L101)。
+- `WhiteboardQuestionVisualService.preflight`；[apps/api/src/modules/learning/whiteboard-question-visual.service.ts:47](../../../apps/api/src/modules/learning/whiteboard-question-visual.service.ts#L47)。
+- `WhiteboardQuestionVisualService.adopt`；[apps/api/src/modules/learning/whiteboard-question-visual.service.ts:111](../../../apps/api/src/modules/learning/whiteboard-question-visual.service.ts#L111)。
+- `WhiteboardQuestionVisualService.prepare`；[apps/api/src/modules/learning/whiteboard-question-visual.service.ts:70](../../../apps/api/src/modules/learning/whiteboard-question-visual.service.ts#L70)。
+- `WhiteboardQuestionVisualService.get`；[apps/api/src/modules/learning/whiteboard-question-visual.service.ts:94](../../../apps/api/src/modules/learning/whiteboard-question-visual.service.ts#L94)。
+- `WhiteboardQuestionVisualService.file`；[apps/api/src/modules/learning/whiteboard-question-visual.service.ts:107](../../../apps/api/src/modules/learning/whiteboard-question-visual.service.ts#L107)。
+- `WhiteboardQuestionVisualService.control`；[apps/api/src/modules/learning/whiteboard-question-visual.service.ts:129](../../../apps/api/src/modules/learning/whiteboard-question-visual.service.ts#L129)。
+- `WhiteboardQuestionTeachingVersionController.target`；[apps/api/src/modules/learning/whiteboard-question-visual.controller.ts:35](../../../apps/api/src/modules/learning/whiteboard-question-visual.controller.ts#L35)。
+- `WhiteboardQuestionVisualService.teaching`；[apps/api/src/modules/learning/whiteboard-question-visual.service.ts:120](../../../apps/api/src/modules/learning/whiteboard-question-visual.service.ts#L120)。
+- `WhiteboardQuestionVisualService.versionFile`；[apps/api/src/modules/learning/whiteboard-question-visual.service.ts:124](../../../apps/api/src/modules/learning/whiteboard-question-visual.service.ts#L124)。
+
+**补充实现文件**：
+
+- [packages/contracts/src/whiteboard-question-visual.ts](../../../packages/contracts/src/whiteboard-question-visual.ts)
+- [apps/api/src/modules/learning/whiteboard-question-visual-context.ts](../../../apps/api/src/modules/learning/whiteboard-question-visual-context.ts)
+- [apps/api/src/modules/learning/whiteboard-question-visual-access.ts](../../../apps/api/src/modules/learning/whiteboard-question-visual-access.ts)
+- [apps/api/src/modules/learning/whiteboard-question-visual-worker.service.ts](../../../apps/api/src/modules/learning/whiteboard-question-visual-worker.service.ts)
+- [apps/api/src/modules/learning/whiteboard-question-teaching-versions.ts](../../../apps/api/src/modules/learning/whiteboard-question-teaching-versions.ts)
+- [apps/api/src/modules/learning/whiteboard-question-visual-retention.ts](../../../apps/api/src/modules/learning/whiteboard-question-visual-retention.ts)
+- [apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts](../../../apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts)
+- [apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts](../../../apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts)
+- [apps/web/app/studio/whiteboard-question-figures.tsx](../../../apps/web/app/studio/whiteboard-question-figures.tsx)
+- [apps/web/app/studio/whiteboard-question-figures.css](../../../apps/web/app/studio/whiteboard-question-figures.css)
+- [apps/web/app/studio/whiteboard-questions.tsx](../../../apps/web/app/studio/whiteboard-questions.tsx)
+- [apps/web/app/studio/whiteboard-media.ts](../../../apps/web/app/studio/whiteboard-media.ts)
+- [apps/web/app/studio/whiteboard-original.ts](../../../apps/web/app/studio/whiteboard-original.ts)
+- [apps/web/app/studio/whiteboard-session.tsx](../../../apps/web/app/studio/whiteboard-session.tsx)
+- [apps/web/app/studio/whiteboard-question-notes.ts](../../../apps/web/app/studio/whiteboard-question-notes.ts)
+- [tests/e2e/whiteboard-questions.spec.ts](../../../tests/e2e/whiteboard-questions.spec.ts)
+- [scripts/qa/question-figure-live.cjs](../../../scripts/qa/question-figure-live.cjs)
+- [scripts/qa/run-question-figures-postgres.cjs](../../../scripts/qa/run-question-figures-postgres.cjs)
