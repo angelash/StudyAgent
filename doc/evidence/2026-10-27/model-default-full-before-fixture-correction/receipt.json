@@ -1,0 +1,46 @@
+{
+  "head": "3a933875b3b6ee26a4b6cdc6fdd6cf354a848441",
+  "at": "2026-10-27T05:47:47.306110+00:00",
+  "status": "failed",
+  "scope": "Original full candidate attempt. API has four failures; browser complete and separately checked without retry. No aggregate success claim.",
+  "api": {
+    "passed": 1464,
+    "failed": 4,
+    "pending": 60
+  },
+  "browser": {
+    "passed": 368,
+    "originalAttempts": 368,
+    "retries": 0,
+    "skips": 0,
+    "failed": 0,
+    "rawSha256": "3361249aca66f657173f3e0cd116f7ee997b817aa76c901a17d6fcc94d3ca72e"
+  },
+  "allFixedSourceRecheckedAfterTerminal": true,
+  "files": [
+    {
+      "file": "receipt.json.gz",
+      "originalSha256": "e939c1af0b4f57176d679c5ed02ee8ee232c40a51ae94a53bcca1c7934e57aeb"
+    },
+    {
+      "file": "source.json.gz",
+      "originalSha256": "29e664c5999b222f152aa25ed545bc68bc53eb1d1f58bb7f8ebc6a6955ffc3a3"
+    },
+    {
+      "file": "browser.json.gz",
+      "originalSha256": "3361249aca66f657173f3e0cd116f7ee997b817aa76c901a17d6fcc94d3ca72e"
+    },
+    {
+      "file": "browser.log.gz",
+      "originalSha256": "205a05db4a07bc3f9fd372ba480b0226e1de268dc8c01593cafd31e393bc8dbd"
+    },
+    {
+      "file": "api.json.gz",
+      "originalSha256": "0059eb1d1a912e4caeeeb3772b74b1bdae3cfe475a7b4ceb5fb00adae7a9adaa"
+    },
+    {
+      "file": "api.log.gz",
+      "originalSha256": "0a61224eabf6fb5bf3ea1c58855e73519109851ac5d80774ae94b5f619f7f145"
+    }
+  ]
+}
