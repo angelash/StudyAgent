@@ -49,13 +49,13 @@ function summary(db) {
     db.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state !== 'ready') fail('source_database_restore_incomplete');
   if (db.prepare('PRAGMA integrity_check').get().integrity_check !== 'ok') fail('database_integrity_failed');
   const versions = db.prepare('SELECT version FROM schema_migrations ORDER BY version').all().map(r => r.version);
-  if (!versions.length || versions.at(-1) > 19) fail('unsupported_database_schema');
+  if (!versions.length || versions.at(-1) > 20) fail('unsupported_database_schema');
   return { schemaVersions: versions, revision: db.prepare('SELECT revision FROM store_meta WHERE id=1').get().revision,
     collections: db.prepare('SELECT collection,COUNT(*) AS count FROM domain_records GROUP BY collection ORDER BY collection').all().map(r => ({ ...r })),
     tasks: db.prepare('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state').all().map(r => ({ ...r })) };
 }
 function references(db) {
-  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioTopicWhiteboardVisuals','studioTopicWhiteboards','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions','studioMaterialAssets')").all());
+  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioTopicWhiteboardVisuals','studioTopicWhiteboards','whiteboardQuestionVisuals','whiteboardQuestionTurns','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions','studioMaterialAssets')").all());
 }
 function referencesFromRecords(rows) {
   const result = new Map();
@@ -119,13 +119,26 @@ function referencesFromRecords(rows) {
           add('topic-whiteboard-visuals/'+figure.visualId+'/'+file.name,file.sha256,file.size);
         }
       }
-    } else if (row.collection === 'classroomVisuals' || row.collection === 'studioTopicWhiteboardVisuals') {
-      const topic = row.collection === 'studioTopicWhiteboardVisuals', prefix = topic ? 'topic_whiteboard_visual' : 'classroom_visual';
+    } else if (row.collection === 'whiteboardQuestionTurns') {
+      if (value.teachingVersions !== undefined && !Array.isArray(value.teachingVersions)) fail('invalid_question_figure_snapshot');
+      for (const version of value.teachingVersions ?? []) {
+        const figure = version.figure;
+        if (!figure || !/^whiteboard_question_visual_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(figure.visualId) ||
+          figure.width !== 1536 || figure.height !== 1024 || version.target?.turnId !== value.id || version.target?.boardId !== value.boardId ||
+          version.target?.boardKind !== value.boardKind || !/^[a-f0-9]{64}$/.test(version.target?.replyFingerprint ?? '')) fail('invalid_question_figure_snapshot');
+        for (const file of [figure.original, figure.image]) {
+          if (!file || !/^[a-f0-9]{64}\.png$/.test(file.name) || file.name !== file.sha256 + '.png') fail('invalid_question_figure_snapshot');
+          add('whiteboard-question-visuals/' + figure.visualId + '/' + file.name, file.sha256, file.size);
+        }
+      }
+    } else if (row.collection === 'classroomVisuals' || row.collection === 'studioTopicWhiteboardVisuals' || row.collection === 'whiteboardQuestionVisuals') {
+      const topic = row.collection === 'studioTopicWhiteboardVisuals', question = row.collection === 'whiteboardQuestionVisuals',
+        prefix = question ? 'whiteboard_question_visual' : topic ? 'topic_whiteboard_visual' : 'classroom_visual';
       if (!new RegExp('^' + prefix + '_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$').test(value.id)) fail('invalid_visual_reference');
-      if (topic && value.status === 'ready' && (!value.files || Object.keys(value.files).sort().join(',') !== 'image,original,prompt' || value.width !== 1536 || value.height !== 1024)) fail('invalid_visual_file_reference');
+      if ((topic || question) && value.status === 'ready' && (!value.files || Object.keys(value.files).sort().join(',') !== 'image,original,prompt' || value.width !== 1536 || value.height !== 1024)) fail('invalid_visual_file_reference');
       if (value.status === 'ready' && value.files) for (const file of Object.values(value.files)) {
         if (!/^[a-f0-9]{64}\.(?:png|txt)$/.test(file.name) || !file.name.startsWith(file.sha256 + '.')) fail('invalid_visual_file_reference');
-        add(`${topic ? 'topic-whiteboard-visuals' : 'classroom-visuals'}/${value.id}/${file.name}`,file.sha256,file.size);
+        add(`${question ? 'whiteboard-question-visuals' : topic ? 'topic-whiteboard-visuals' : 'classroom-visuals'}/${value.id}/${file.name}`,file.sha256,file.size);
       }
     } else if (row.collection === 'studentMedia') {
       if (!/^student_media_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(value.id)) fail('invalid_student_media_reference');
@@ -188,7 +201,7 @@ async function verifyBundle({ bundle, incomplete = false }) {
   const paths = new Map(), portablePaths = new Set();
   let verifiedCount = 0;
   for (const file of manifest.files) {
-    if (!/^(database\/study-agent\.sqlite3|data\/(?:processing|student-media|classroom-visuals|topic-whiteboard-visuals|studio-materials|studio-uploads|project-assets|project-uploads)\/.+|assets\/.+)$/.test(file.path) || portablePaths.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
+    if (!/^(database\/study-agent\.sqlite3|data\/(?:processing|student-media|classroom-visuals|topic-whiteboard-visuals|whiteboard-question-visuals|studio-materials|studio-uploads|project-assets|project-uploads)\/.+|assets\/.+)$/.test(file.path) || portablePaths.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
     const target = within(root, file.path), stat = fs.statSync(target);
     if (!stat.isFile() || stat.size !== file.size || digest(target) !== file.sha256) fail('bundle_integrity_failed');
     paths.set(file.path, file);

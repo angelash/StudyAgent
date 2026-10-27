@@ -2,6 +2,7 @@ import type { ClassroomReplyBoard } from './classroom-board';
 import type { ClassroomSpeechTrack } from './classroom-speech';
 import type { StudioWhiteboard, StudioSubject } from './studio';
 import type { StudioTopicWhiteboard } from './topic-whiteboard';
+import type { QuestionTeachingVersionView } from './whiteboard-question-visual';
 
 export type WhiteboardQuestionBoardKind = 'guidance' | 'topic';
 export const WHITEBOARD_QUESTION_INTENTS = ['question', 'example', 'simplify', 'prerequisite', 'compare'] as const;
@@ -22,6 +23,7 @@ export type WhiteboardQuestionTurnView = {
   reply: { text: string; anchors: WhiteboardQuestionAnchor[]; modelId: string; modelName: string; createdAt: string;
     board?: ClassroomReplyBoard; speech?: ClassroomSpeechTrack; fingerprint?: string } | null;
   task: { state: string; generation: number; version: number; errorCode: string | null } | null;
+  teachingVersions?: QuestionTeachingVersionView[];
 };
 export type StudioQuestionWhiteboard = Omit<StudioWhiteboard, 'studentId' | 'subject'> & {
   kind: 'question-whiteboard'; studentId: string | null; subject: StudioSubject | null;

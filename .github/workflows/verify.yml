@@ -362,6 +362,14 @@ jobs:
           STUDY_TEST_WHITEBOARD_QUESTION_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
         run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/infrastructure/whiteboard-question-postgres.integration.test.ts src/modules/learning/whiteboard-question.integration.test.ts
 
+      - name: Question-bound PNG originals, immutable versions, schema20 and native privacy recovery on PostgreSQL
+        working-directory: apps/api
+        env:
+          STUDY_TEST_QUESTION_VISUAL_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
+          STUDY_TEST_POSTGRES_ADMIN_URL: postgresql://study_qa_admin:local_ci_only@127.0.0.1:5432/postgres
+          STUDY_TEST_PG_BIN: /usr/lib/postgresql/16/bin
+        run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/infrastructure/whiteboard-question-visual-storage.integration.test.ts src/modules/learning/whiteboard-question-visual.integration.test.ts
+
       - name: AI topic whiteboard original commands, checkpoints and permissions on PostgreSQL
         working-directory: apps/api
         env:

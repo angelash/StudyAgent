@@ -23,7 +23,7 @@ describe('paper practice schema18 migrations and durable replay constraints', ()
       const before = await old17(location), migrated = new DomainDatabase(location); await migrated.open();
       try { expect(await migrated.read()).toEqual(before); } finally { await migrated.close(); }
       const raw = new DatabaseSync(location);
-      try { expect((raw.prepare('SELECT MAX(version) version FROM schema_migrations').get() as any).version).toBe(19); expect(raw.prepare("SELECT name FROM sqlite_master WHERE type='index' AND name LIKE 'paper_practice_%'").all()).toHaveLength(2); } finally { raw.close(); }
+      try { expect((raw.prepare('SELECT MAX(version) version FROM schema_migrations').get() as any).version).toBe(20); expect(raw.prepare("SELECT name FROM sqlite_master WHERE type='index' AND name LIKE 'paper_practice_%'").all()).toHaveLength(2); } finally { raw.close(); }
     } finally { cleanup(directory); }
   });
   it('rolls back a duplicate-key legacy migration atomically and retains both conflicting source records for explicit repair', async () => {

@@ -22,7 +22,7 @@ export type QuestionVisualPreflightInput = z.infer<typeof questionVisualPrefligh
 export type QuestionVisualPrepareCommand = z.infer<typeof questionVisualGenerateSchema> | z.infer<typeof questionVisualEditSchema>;
 export type QuestionVisualAdoptCommand = z.infer<typeof questionVisualAdoptSchema>;
 export type QuestionVisualView = Omit<TopicVisualView, 'draftId' | 'sceneIndex' | 'sceneTeachingFingerprint'> & {
-  target: QuestionVisualTarget; teachingFingerprint: string;
+  target: QuestionVisualTarget; teachingFingerprint: string; originalSha256: string | null;
 };
 export type QuestionTeachingVersionView = { id: string; previousVersionId: string | null; replyFingerprint: string; current: boolean;
   figure: { visualId: string; originalSha256: string; imageSha256: string; alt: string; caption: string } | null; createdAt: string };

@@ -97,7 +97,7 @@ for (const driver of ['sqlite', 'postgres'] as const) describe.skipIf(driver ===
       const options = { dataDir: source, destination: bundle, assets, connectionString: sourceLocation, pgBin: process.env.STUDY_TEST_PG_BIN };
       if (driver === 'sqlite') await backup.createBundle(options); else await native.createPostgresBundle(options);
       const verified = driver === 'sqlite' ? await backup.verifyBundle({ bundle }) : await native.verifyPostgresBundle({ bundle, pgBin: process.env.STUDY_TEST_PG_BIN });
-      expect(verified.manifest.database.schemaVersions.at(-1)).toBe(19);
+      expect(verified.manifest.database.schemaVersions.at(-1)).toBe(20);
       await app.close(); app = null; const target = join(directory, 'target'), targetLocation = await database(); expect((await restore(targetLocation, target)).assetsIncluded).toBe(true);
       const hash = (file: string) => createHash('sha256').update(readFileSync(file)).digest('hex');
       for (const name of ['catalog.sqlite3', 'shijuanbao/archive.sqlite3', 'shijuanbao/media/figure.png', 'shijuanbao/media/paper.pdf']) expect(hash(join(target, 'assets', name))).toBe(hash(join(assets, name)));
@@ -131,8 +131,8 @@ for (const driver of ['sqlite', 'postgres'] as const) describe.skipIf(driver ===
       await boot(deletedLocation, deleted, join(deleted, 'assets')); await call('post', '/auth/login', { principal, credential }, 401, '');
       await store.requestContext(() => { expect(store.paperPracticeSessions).toHaveLength(0); expect(store.paperPracticeCommands).toHaveLength(0); expect(store.paperPublications.length).toBe(2); });
       await app.close(); app = null;
-      if (driver === 'sqlite') { const future = new DatabaseSync(join(deleted, 'study-agent.sqlite3')); try { future.prepare('INSERT INTO schema_migrations VALUES(20,?)').run(new Date().toISOString()); } finally { future.close(); } }
-      else { const future = new Pool({ connectionString: deletedLocation }); try { await future.query('INSERT INTO schema_migrations(version) VALUES(20)'); } finally { await future.end(); } }
+      if (driver === 'sqlite') { const future = new DatabaseSync(join(deleted, 'study-agent.sqlite3')); try { future.prepare('INSERT INTO schema_migrations VALUES(21,?)').run(new Date().toISOString()); } finally { future.close(); } }
+      else { const future = new Pool({ connectionString: deletedLocation }); try { await future.query('INSERT INTO schema_migrations(version) VALUES(21)'); } finally { await future.end(); } }
       const futureOptions = { dataDir: deleted, destination: join(directory, 'future-refused'), connectionString: deletedLocation, pgBin: process.env.STUDY_TEST_PG_BIN };
       await expect(driver === 'sqlite' ? backup.createBundle(futureOptions) : native.createPostgresBundle(futureOptions)).rejects.toThrow('unsupported_database_schema');
       expect(existsSync(join(futureOptions.destination, 'manifest.json'))).toBe(false);

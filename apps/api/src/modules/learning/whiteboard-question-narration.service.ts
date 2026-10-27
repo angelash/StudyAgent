@@ -1,6 +1,6 @@
 import { BadRequestException, ConflictException, Injectable, StreamableFile } from '@nestjs/common';
 import { z } from 'zod';
-import { WHITEBOARD_SPEECH_VERSION, whiteboardPresentation, type WhiteboardQuestionBoardKind } from '@study-agent/contracts';
+import { WHITEBOARD_SPEECH_VERSION, whiteboardPresentation, questionTeachingVersionIdSchema, type WhiteboardQuestionBoardKind } from '@study-agent/contracts';
 import { validate } from '../../common/validation';
 import { InMemoryStoreService, type InMemoryAuthSession, type InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { SpeechService } from '../ai/speech.service';
@@ -14,8 +14,8 @@ export class WhiteboardQuestionNarrationService {
     if (signal.aborted) throw new BadRequestException('补充讲解朗读已停止');
     const hash = z.string().regex(/^[a-f0-9]{64}$/);
     const command = validate(z.object({ voice: z.string().min(1).max(120).optional(), presentationVersion: z.literal(WHITEBOARD_SPEECH_VERSION),
-      fingerprint: hash, replyFingerprint: hash, unitId: z.string().min(1).max(2000) }).strict(), input);
-    const context = () => this.questions.answerContext(user, kind, boardId, turnId, session);
+      fingerprint: hash, replyFingerprint: hash, teachingVersionId: questionTeachingVersionIdSchema.optional(), unitId: z.string().min(1).max(2000) }).strict(), input);
+    const context = () => this.questions.answerContext(user, kind, boardId, turnId, session, command.teachingVersionId ?? 'original');
     const initial = await this.store.transaction(context);
     const unit = whiteboardPresentation(initial.board).units.find(unit => unit.id === command.unitId && unit.sceneId === sceneId);
     if (!unit || initial.board.fingerprint !== command.fingerprint || initial.board.replyFingerprint !== command.replyFingerprint)

@@ -21,6 +21,7 @@ import type { ProjectAssetRecord } from '../learning/project-file-record';
 import type { StudioTopicWhiteboard } from '@study-agent/contracts';
 import { topicVisualDescriptorFile } from '../learning/topic-whiteboard-visual-storage';
 import { topicVisualTaskKind, topicVisualPurgeKind } from '../learning/topic-whiteboard-visual-access';
+import { questionVisualTaskKind, questionVisualPurgeKind } from '../learning/whiteboard-question-visual-access';
 
 const policyVersion = 'family-data-v1';
 const retentionNotice = '删除会清除当前业务库中的所选资料和学习身份。已下载副本及离线备份需另行管理；运维恢复旧备份时须提供最新删除记录。共同监护档案会继续保留学习事实和复核历史，关闭账号的历史署名改为匿名。';
@@ -220,6 +221,12 @@ export class PrivacyService {
         ['queued','running','retry_wait','cancel_requested'].includes(task.state))
         await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});
     }
+    for(const visual of selection.whiteboardQuestionVisuals??[]){
+      const task=await this.store.tasks.get(String(visual.taskId));
+      if(task?.kind===questionVisualTaskKind&&task.ownerUserId===visual.ownerUserId&&task.payload.visualId===visual.id&&
+        ['queued','running','retry_wait','cancel_requested'].includes(task.state))
+        await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});
+    }
     for(const draft of selection.studioTopicWhiteboardDrafts??[]){
       const task=await this.store.tasks.get(String(draft.taskId));
       if(task?.kind==='studio.topic-whiteboard.generate'&&task.ownerUserId===draft.ownerUserId&&task.payload.draftId===draft.id&&
@@ -251,6 +258,10 @@ export class PrivacyService {
       ...(selection.studioTopicWhiteboards??[]).flatMap(board=>(board.figureSnapshots??[]).map((figure:{visualId:string})=>figure.visualId))])];
     if(topicVisualIds.length)await this.store.enqueueTask({id:this.store.nextId('task'),kind:topicVisualPurgeKind,ownerUserId:actor.id,
       requestKey:'topic-visual-purge:'+receipt.id,payloadHash:visualDigest(topicVisualIds),payload:{ids:topicVisualIds},createdAt:new Date().toISOString(),maxAttempts:5});
+    const questionVisualIds=[...new Set([...(selection.whiteboardQuestionVisuals??[]).map(row=>String(row.id)),
+      ...(selection.whiteboardQuestionTurns??[]).flatMap(turn=>(turn.teachingVersions??[]).map((version:{figure:{visualId:string}})=>version.figure.visualId))])];
+    if(questionVisualIds.length)await this.store.enqueueTask({id:this.store.nextId('task'),kind:questionVisualPurgeKind,ownerUserId:actor.id,
+      requestKey:'question-visual-purge:'+receipt.id,payloadHash:visualDigest(questionVisualIds),payload:{ids:questionVisualIds},createdAt:new Date().toISOString(),maxAttempts:5});
     this.events.publish('privacy.deletion_completed', { receiptId: receipt.id, kind, subjectHash: receipt.subjectHash, counts: receipt.counts, policyVersion });
     return receipt;
   }

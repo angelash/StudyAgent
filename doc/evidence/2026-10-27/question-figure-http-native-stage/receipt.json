@@ -1,0 +1,129 @@
+{
+  "passed": true,
+  "deployed": false,
+  "scope": "Native schema20 and HTTP backend stage only; generation providers are decodable PNG fixtures. No real provider, UI, full-suite, exact CI or production claim.",
+  "summary": {
+    "sqlite": {
+      "numPassedTests": 34,
+      "numPendingTests": 4,
+      "numFailedTests": 0,
+      "numTotalTests": 38,
+      "success": true
+    },
+    "postgres": {
+      "numPassedTests": 19,
+      "numPendingTests": 0,
+      "numFailedTests": 0,
+      "numTotalTests": 19,
+      "success": true
+    }
+  },
+  "files": [
+    {
+      "source": "data/qa/question-figure-http-first.json",
+      "file": "question-figure-http-first.json.gz",
+      "originalSha256": "782dcff11437d7adecfbe55e419fe71df6f8c58f3dc1a6b2c01856b1b0ecf86e",
+      "sha256": "152c4d5aac3e47ea6143048387fa115e86ed728ce8ca9077522d33610bb586b2"
+    },
+    {
+      "source": "data/qa/question-figure-http-first.log",
+      "file": "question-figure-http-first.log.gz",
+      "originalSha256": "81e143ee5d8f17e76d42d17acd5dd46fb998574e4d958441d007a85af18825a6",
+      "sha256": "0fd34db28bdd784d69c4d0f6c7475fee5aa8755fdf62a92ec8443b678348bfdb"
+    },
+    {
+      "source": "data/qa/question-figure-http-late.json",
+      "file": "question-figure-http-late.json.gz",
+      "originalSha256": "b40d2a983cf7a73f5db0e124eec6a1cfe0a281ed5e6b31f39e9107d98792068e",
+      "sha256": "917614eb7aa7931919eed69042435b82e3fdaff074a20be6931ee9c7e558c5b0"
+    },
+    {
+      "source": "data/qa/question-figure-http-late.log",
+      "file": "question-figure-http-late.log.gz",
+      "originalSha256": "b2b0d5d95d30b13dfd3aa0a6e5083a613a2017ef3aa4557b9d74bc5b42e1aecb",
+      "sha256": "3f1480e76b0e3234d8cf8fb7de7ca0e18cf7b408c11692dabd1db6339c3566ea"
+    },
+    {
+      "source": "data/qa/question-figure-http-recovery-first.json",
+      "file": "question-figure-http-recovery-first.json.gz",
+      "originalSha256": "6eb026eaf09757b1528901b424e3924f230d4ba0713946f95c6e5c3490eab9d9",
+      "sha256": "08b959c4b08b0c66329a73f2ce0d14ee7a6b5aa5edcd236601bf97843ed2d086"
+    },
+    {
+      "source": "data/qa/question-figure-http-recovery-first.log",
+      "file": "question-figure-http-recovery-first.log.gz",
+      "originalSha256": "0c5128194756808b7152bba8457b108c1bba204d88cd2f4eba16c9ba6a921433",
+      "sha256": "4a9c026718369039dac555e963b699815037bb6ae6e548d253641612652a0cef"
+    },
+    {
+      "source": "data/qa/question-figure-http-recovery-login.json",
+      "file": "question-figure-http-recovery-login.json.gz",
+      "originalSha256": "ff69de43e65f3cbc70c14d0d23bd875ef602794a3419a09797ec2d25ef6fce32",
+      "sha256": "65e9478df83adc4e5a1cace7ffe97e7bfe46c096dc9976ac29f79e6b7065d825"
+    },
+    {
+      "source": "data/qa/question-figure-http-recovery-login.log",
+      "file": "question-figure-http-recovery-login.log.gz",
+      "originalSha256": "a5528b03e6d88a90037d1505526d713de631d72384c834611c54dbbce6dcbd36",
+      "sha256": "f6e4269e886bfde87f67698e56d4919d5c928e1c248602cdc7df5ef481bbd95f"
+    },
+    {
+      "source": "data/qa/question-figure-http-postgres-first.json",
+      "file": "question-figure-http-postgres-first.json.gz",
+      "originalSha256": "914165e923fea100ee7f4c1ff012d4c34b6a0b73ba84995cf5b955c6f0781115",
+      "sha256": "ef73b33a158807f51903fd66a82ec4b91436b250f17bfe99240b77b88fd32d9a"
+    },
+    {
+      "source": "data/qa/question-figure-http-postgres-first.log",
+      "file": "question-figure-http-postgres-first.log.gz",
+      "originalSha256": "ddb3ab12a942dffa49028908e560f3178d235bb7d1bce5f855550765d0ea953e",
+      "sha256": "242e0c4a7e24f986dafa1148e430ab786a047cbc662c7a68ceb8c0d47ffada2a"
+    },
+    {
+      "source": "data/qa/question-figure-http-postgres-schema.json",
+      "file": "question-figure-http-postgres-schema.json.gz",
+      "originalSha256": "ad57c21d080aaed597b10988a9f7b7fba36dd93a305dea7af1bcb3fe0d730479",
+      "sha256": "a2ee3ec411a8d1eaa7b825098703fb4b034bbced76ce57dbccee410107dc6cfe"
+    },
+    {
+      "source": "data/qa/question-figure-http-postgres-schema.log",
+      "file": "question-figure-http-postgres-schema.log.gz",
+      "originalSha256": "8014e9e018f520a2ec5ed41ff05abea1e7196086bdb039669d64ac8b3c4f9a1a",
+      "sha256": "a3c134457b9fc8da23578415c5723b2fd75bb4e835332f1a00aaf3549a45d26d"
+    },
+    {
+      "source": "data/qa/question-figure-storage-regression.json",
+      "file": "question-figure-storage-regression.json.gz",
+      "originalSha256": "13e3d97a35d585416cc374b88bed5dcfddade1d239561e4ad1e259485815445d",
+      "sha256": "bb47788bab899e50dcfe0a81aa019f9988b40f95169610b3eabcbc520450c5ec"
+    },
+    {
+      "source": "data/qa/question-figure-storage-regression.log",
+      "file": "question-figure-storage-regression.log.gz",
+      "originalSha256": "05205c1e57ea656c8a4d1d0490282ed499dc2736eba27d8aa004b09899853bd2",
+      "sha256": "94786649a500aa77e1ec80555c6ea402d4b5ee6ce8ae6921ddf9002a79e0348f"
+    },
+    {
+      "source": "data/qa/question-figure-api-build.log",
+      "file": "question-figure-api-build.log.gz",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "sha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c"
+    },
+    {
+      "source": "data/qa/question-figure-full-api.log",
+      "file": "question-figure-full-api.log.gz",
+      "originalSha256": "7869b6eed1222d4573eaf15c202a6ecb6381043a35c68c74c8d757be5977f8e6",
+      "sha256": "98d792d93be4ffa88cbde6ed6ae7aa5ca58f6d302141494301856799438ae1b5"
+    },
+    {
+      "source": "data/qa/question-figure-full-api.json",
+      "file": "question-figure-full-api.json.gz",
+      "originalSha256": "1c56f1482db9d37c4a809d06a9a25fdbc0dced34ac502d2d069a39b5dcb5c85f",
+      "sha256": "02bb8113556a0f9e42e667a8b06692031ba4eec5886033df30ccac0e554b61c6"
+    }
+  ],
+  "priorAttempts": [
+    "7/7 initial HTTP; 10/12 late checks with two data:null fixture assertions corrected; 12/13 recovery with one deliberately revoked login fixture corrected; 13/13 after real login. Originals retained.",
+    "The root-CWD full API invocation discovered no tests. Its report is retained as a failed invocation, not a suite result. The correctly scoped full API run is still active and is not included here."
+  ]
+}

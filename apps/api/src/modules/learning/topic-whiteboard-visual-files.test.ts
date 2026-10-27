@@ -37,13 +37,13 @@ describe('topic figure original files and native recovery', () => {
     await sharp({ create: { width: 1536, height: 1024, channels: 3, background: 'white' } }).withMetadata({ orientation: 6 }).png().toFile(file);
     await expect(publishTopicVisual(id, file, 'Anonymous fixture')).rejects.toThrow('visual_dimensions_invalid');
   });
-  it('backs up all current schema19 image references and cold restores their original byte identities', async () => {
+  it('backs up all current schema20 image references and cold restores their original byte identities', async () => {
     const { source, id, published } = await publish(), db = new DomainDatabase(join(source, 'study-agent.sqlite3'));
     const bundle = join(directory!, 'bundle'), restored = join(directory!, 'restored'); await db.open();
     try {
       await db.commit(await db.read(), { studioTopicWhiteboardVisuals: [{ id, ownerUserId: 'owner', requestKey: 'original', status: 'ready', ...published }] });
       await backup.createBundle({ dataDir: source, destination: bundle }); const checked = await backup.verifyBundle({ bundle });
-      expect(checked.database.schemaVersions.at(-1)).toBe(19); expect(checked.verifiedFiles).toBeGreaterThanOrEqual(3);
+      expect(checked.database.schemaVersions.at(-1)).toBe(20); expect(checked.verifiedFiles).toBeGreaterThanOrEqual(3);
       await backup.restoreBundle({ bundle, destination: restored });
       const recovered = new DomainDatabase(join(restored, 'study-agent.sqlite3')); await recovered.open();
       try {

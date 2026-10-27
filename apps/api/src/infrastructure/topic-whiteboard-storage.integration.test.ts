@@ -19,7 +19,7 @@ describe('AI topic whiteboard schema and private original records', () => {
       expect(old.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(15); old.close();
       db = new DomainDatabase(location); await db.open(); expect((await db.read()).state.studioWhiteboards).toEqual([legacy]);
       const probe = new DatabaseSync(location, { readOnly: true });
-      try { expect(probe.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()).toEqual({ version: 19 });
+      try { expect(probe.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()).toEqual({ version: 20 });
         expect(probe.prepare("SELECT name FROM sqlite_master WHERE name LIKE 'topic_whiteboard_%' ORDER BY name").all().map((row: any) => row.name))
           .toEqual(['topic_whiteboard_prepare_request', 'topic_whiteboard_publication_draft']);
       } finally { probe.close(); }
@@ -58,14 +58,14 @@ describe('AI topic whiteboard schema and private original records', () => {
     anonymizeSharedAttribution(store, ['child'], 'first'); expect(store.studioTopicWhiteboards[0].ownerUserId).toBe('deleted-account:shared');
     expect(store.studioTopicWhiteboardDrafts[1].authorization.guardianId).toBe('deleted-account');
   });
-  it('backs up, verifies and cold restores current schema19 original topic records without modifying them', async () => {
+  it('backs up, verifies and cold restores current schema20 original topic records without modifying them', async () => {
     const directory = mkdtempSync(join(tmpdir(), 'study-topic-backup-')), source = join(directory, 'source'), bundle = join(directory, 'bundle'), restored = join(directory, 'restored');
     const db = new DomainDatabase(join(source, 'study-agent.sqlite3')); await db.open();
     try {
       const initial = { studioTopicWhiteboardDrafts: [{ id: 'draft', ownerUserId: 'owner', requestKey: 'original', prepared: { input: { prompt: '完整原主题' } } }],
         studioTopicWhiteboards: [{ id: 'board', ownerUserId: 'owner', sourceDraftId: 'draft', studentId: null, title: '完整原稿' }] };
       await db.commit(await db.read(), initial); await backup.createBundle({ dataDir: source, destination: bundle });
-      const verified = await backup.verifyBundle({ bundle }); expect(verified.database.schemaVersions.at(-1)).toBe(19);
+      const verified = await backup.verifyBundle({ bundle }); expect(verified.database.schemaVersions.at(-1)).toBe(20);
       await backup.restoreBundle({ bundle, destination: restored }); const recovered = new DomainDatabase(join(restored, 'study-agent.sqlite3')); await recovered.open();
       try { const state = (await recovered.read()).state; expect(state.studioTopicWhiteboardDrafts).toEqual(initial.studioTopicWhiteboardDrafts); expect(state.studioTopicWhiteboards).toEqual(initial.studioTopicWhiteboards); expect(state.events).toEqual([expect.objectContaining({ eventName: 'operations.restored' })]); } finally { await recovered.close(); }
     } finally { await db.close(); rmSync(directory, { recursive: true, force: true }); }

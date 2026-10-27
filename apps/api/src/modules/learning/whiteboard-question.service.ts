@@ -1,6 +1,6 @@
 import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { z } from 'zod';
-import { isWhiteboardSpeed, WHITEBOARD_QUESTION_INTENTS, type WhiteboardQuestionBoardKind, type WhiteboardQuestionTurnView } from '@study-agent/contracts';
+import { isWhiteboardSpeed, WHITEBOARD_QUESTION_INTENTS, questionTeachingVersionIdSchema, type WhiteboardQuestionBoardKind, type WhiteboardQuestionTurnView } from '@study-agent/contracts';
 import { validate } from '../../common/validation';
 import { InMemoryStoreService, type InMemoryAuthSession, type InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { StudentsService } from '../students/students.service';
@@ -10,7 +10,8 @@ import { topicWhiteboardDigest } from './topic-whiteboard-content';
 import { buildWhiteboardQuestionContext } from './whiteboard-question-context';
 import { readWhiteboardQuestionOriginal, whiteboardQuestionAuthority } from './whiteboard-question-access';
 import { whiteboardQuestionTaskKind, type WhiteboardQuestionRecord } from './whiteboard-question-record';
-import { buildQuestionWhiteboard, whiteboardAnswerFingerprint } from './whiteboard-question-teaching';
+import { whiteboardAnswerFingerprint } from './whiteboard-question-teaching';
+import { buildQuestionTeachingVersion, questionTeachingVersions } from './whiteboard-question-teaching-versions';
 
 const key = z.string().trim().min(8).max(180), fingerprint = z.string().regex(/^[a-f0-9]{64}$/), unitId = z.string().min(1).max(2000);
 const contextSchema = z.object({ fingerprint, unitId }).strict();
@@ -52,7 +53,8 @@ export class WhiteboardQuestionService {
     const { id, boardKind, boardId, requestKey, message, intent, modelId, modelName, position, revision, createdAt, updatedAt, reply } = turn;
     return { id, boardKind, boardId, requestKey, message, intent, modelId, modelName, position: structuredClone(position), revision, createdAt, updatedAt,
       reply: reply ? { ...structuredClone(reply), fingerprint: whiteboardAnswerFingerprint(reply) } : null, status,
-      task: task ? { state: task.state, generation: task.generation, version: task.version, errorCode: task.errorCode } : null };
+      task: task ? { state: task.state, generation: task.generation, version: task.version, errorCode: task.errorCode } : null,
+      ...(turn.teachingVersions?.length ? { teachingVersions: questionTeachingVersions(turn) } : {}) };
   }
   async list(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, id: string, input: unknown, session: InMemoryAuthSession) {
     const query = validate(z.object({ page: z.coerce.number().int().min(1).max(100000).default(1), pageSize: z.coerce.number().int().min(1).max(30).default(10) }).strict(), input);
@@ -67,15 +69,16 @@ export class WhiteboardQuestionService {
     const turn = this.store.find('whiteboardQuestionTurns', { ownerUserId: user.id, boardKind: kind, boardId, requestKey });
     if (!turn) throw new NotFoundException('尚未找到这条原插问请求'); return this.view(turn);
   }
-  answerContext(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, id: string, session: InMemoryAuthSession) {
+  answerContext(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, id: string, session: InMemoryAuthSession, versionId?: string) {
     const original = this.original(user, kind, boardId, session);
     const turn = this.store.find('whiteboardQuestionTurns', { id, ownerUserId: user.id, boardKind: kind, boardId });
     if (!turn) throw new NotFoundException('原补充讲解不存在');
     if (turn.definitionHash !== original.definitionHash) throw new ConflictException('原稿版本已变化，这条回答保留为历史文字，请基于当前原稿重新提问');
-    return { board: buildQuestionWhiteboard(turn, original.board), definitionHash: original.definitionHash, authorityHash: original.authorityHash };
+    const version = validate(questionTeachingVersionIdSchema.optional(), versionId);
+    return { board: buildQuestionTeachingVersion(turn, original.board, version), definitionHash: original.definitionHash, authorityHash: original.authorityHash };
   }
-  board(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, id: string, session: InMemoryAuthSession) {
-    return this.answerContext(user, kind, boardId, id, session).board;
+  board(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, id: string, session: InMemoryAuthSession, versionId?: string) {
+    return this.answerContext(user, kind, boardId, id, session, versionId).board;
   }
   async notes(user: InMemoryUserAccount, kind: WhiteboardQuestionBoardKind, boardId: string, session: InMemoryAuthSession) {
     const original = this.original(user, kind, boardId, session), rows = this.rows(user, kind, boardId);

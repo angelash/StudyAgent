@@ -96,10 +96,14 @@ async function applyDeletionLedger(query, ledger) {
     const body=typeof record.body==='string'?JSON.parse(record.body):record.body;
     if(record.collection==='studioTopicWhiteboardVisuals')topicIds.add(body.id);
     if(record.collection==='studioTopicWhiteboards')for(const figure of body.figureSnapshots??[])topicIds.add(figure.visualId);
+    if(record.collection==='whiteboardQuestionVisuals')topicIds.add(body.id);
+    if(record.collection==='whiteboardQuestionTurns')for(const version of body.teachingVersions??[])topicIds.add(version.figure.visualId);
   }
   const retain=(id,file)=>{if(!file||!/^[a-f0-9]{64}\.(?:png|txt)$/.test(file.name)||file.name!==file.sha256+(file.name.endsWith('.png')?'.png':'.txt'))fail('invalid_topic_figure_reference');topicIds.add(id);if(!keep.has(id))keep.set(id,new Set());keep.get(id).add(file.name);};
   for(const visual of store.studioTopicWhiteboardVisuals??[])if(visual.status==='ready'&&visual.files)for(const file of Object.values(visual.files))retain(visual.id,file);
   for(const board of store.studioTopicWhiteboards??[])for(const figure of board.figureSnapshots??[]){retain(figure.visualId,figure.original);retain(figure.visualId,figure.image);}
+  for(const visual of store.whiteboardQuestionVisuals??[])if(visual.status==='ready'&&visual.files)for(const file of Object.values(visual.files))retain(visual.id,file);
+  for(const turn of store.whiteboardQuestionTurns??[])for(const version of turn.teachingVersions??[]){retain(version.figure.visualId,version.figure.original);retain(version.figure.visualId,version.figure.image);}
   const topicVisualRetentions=[...topicIds].sort().map(id=>({id,names:[...(keep.get(id)??[])].sort()}));
   return { appliedDeletionReceipts: ledger.entries.length, privacyRowsRemoved: removed, deletionLedgerSha256: ledger.sha256, topicVisualRetentions,
     removedMediaIds: [...removedMediaIds,...records.filter(row=>['classroomVisuals','projectAssets','projectAssetUploads'].includes(row.collection)&&!(store[row.collection]??[]).some(item=>item.id===row.record_id)).map(row=>row.record_id)] };
@@ -126,9 +130,9 @@ function purgeRestoredMedia(root, ids = [], manifest, onDelete, topicVisualReten
     }
   }
   for(const {id,names} of topicVisualRetentions){
-    if(!/^topic_whiteboard_visual_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(id)||!Array.isArray(names)||names.some(name=>!/^[a-f0-9]{64}\.(?:png|txt)$/.test(name)))fail('invalid_topic_figure_reference');
+    if(!/^(?:topic_whiteboard_visual|whiteboard_question_visual)_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(id)||!Array.isArray(names)||names.some(name=>!/^[a-f0-9]{64}\.(?:png|txt)$/.test(name)))fail('invalid_topic_figure_reference');
     if(!manifest)fail('topic_figure_restore_manifest_required');
-    const directory=within(root,'topic-whiteboard-visuals/'+id),keep=new Set(names),{walk,digest}=require('./backup.cjs').files;
+    const directory=within(root,(id.startsWith('whiteboard_question_visual_')?'whiteboard-question-visuals/':'topic-whiteboard-visuals/')+id),keep=new Set(names),{walk,digest}=require('./backup.cjs').files;
     if(!fs.existsSync(directory)){if(keep.size)fail('restore_media_retained_file_missing');continue;}
     const expected=new Map(manifest.files.map(file=>[file.path,file])),files=[...walk(directory)];
     for(const item of files){

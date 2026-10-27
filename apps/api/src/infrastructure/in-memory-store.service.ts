@@ -7,6 +7,7 @@ import type { AnswerDraftMetadata } from '@study-agent/contracts';
 import type { ClassroomCodeDraftRecord } from '../modules/learning/classroom-code.service';
 import type { ClassroomTurnRecord } from '../modules/learning/classroom-turn-record';
 import type { WhiteboardQuestionRecord } from '../modules/learning/whiteboard-question-record';
+import type { QuestionVisualRecord } from '../modules/learning/whiteboard-question-visual-record';
 import type { AssistantTurnRecord } from '../modules/ai/assistant-turn-record';
 import type { GuidanceModelSuggestionRecord } from '../modules/diagnostics/guidance-model-record';
 import { Injectable, OnModuleInit, OnApplicationBootstrap, OnModuleDestroy } from '@nestjs/common';
@@ -436,6 +437,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   classroomSessions: ClassroomSessionRecord[] = [];
   classroomTurns: ClassroomTurnRecord[] = [];
   whiteboardQuestionTurns: WhiteboardQuestionRecord[] = [];
+  whiteboardQuestionVisuals: QuestionVisualRecord[] = [];
   classroomCodeDrafts: ClassroomCodeDraftRecord[] = [];
   classroomVisuals: ClassroomVisualRecord[] = [];
   courseProjects: CourseProjectRecord[] = [];
@@ -542,6 +544,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.classroomSessions = [];
     this.classroomTurns = [];
     this.whiteboardQuestionTurns = [];
+    this.whiteboardQuestionVisuals = [];
     this.classroomCodeDrafts = [];
     this.classroomVisuals = [];
     this.courseProjects = [];

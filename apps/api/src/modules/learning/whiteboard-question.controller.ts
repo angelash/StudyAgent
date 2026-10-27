@@ -26,7 +26,7 @@ export class GuidanceWhiteboardQuestionController {
   @Get('requests/:key') receipt(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Param('key') key: string) { return this.turns.receipt(r.user, 'guidance', id, key, r.authSession); }
   @Get('notes') notes(@Req() r: AuthenticatedRequest, @Param('boardId') id: string) { return this.turns.notes(r.user, 'guidance', id, r.authSession); }
   @Get('notes/identity') notesIdentity(@Req() r: AuthenticatedRequest, @Param('boardId') id: string) { return this.turns.notesIdentity(r.user, 'guidance', id, r.authSession); }
-  @Get(':id/board') board(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string) { return this.turns.board(r.user, 'guidance', board, id, r.authSession); }
+  @Get(':id/board') board(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Query('teachingVersionId') version?: string) { return this.turns.board(r.user, 'guidance', board, id, r.authSession, version); }
   @Post(':id/board/narration/:sceneId') speak(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Param('sceneId') scene: string,
     @Body() input: unknown, @Res({ passthrough: true }) response: Response) { return narrate(this.narration, r, response, 'guidance', board, id, scene, input); }
   @Get() list(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Query() q: unknown) { return this.turns.list(r.user, 'guidance', id, q, r.authSession); }
@@ -44,7 +44,7 @@ export class TopicWhiteboardQuestionController {
   @Get('requests/:key') receipt(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Param('key') key: string) { return this.turns.receipt(r.user, 'topic', id, key, r.authSession); }
   @Get('notes') notes(@Req() r: AuthenticatedRequest, @Param('boardId') id: string) { return this.turns.notes(r.user, 'topic', id, r.authSession); }
   @Get('notes/identity') notesIdentity(@Req() r: AuthenticatedRequest, @Param('boardId') id: string) { return this.turns.notesIdentity(r.user, 'topic', id, r.authSession); }
-  @Get(':id/board') board(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string) { return this.turns.board(r.user, 'topic', board, id, r.authSession); }
+  @Get(':id/board') board(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Query('teachingVersionId') version?: string) { return this.turns.board(r.user, 'topic', board, id, r.authSession, version); }
   @Post(':id/board/narration/:sceneId') speak(@Req() r: AuthenticatedRequest, @Param('boardId') board: string, @Param('id') id: string, @Param('sceneId') scene: string,
     @Body() input: unknown, @Res({ passthrough: true }) response: Response) { return narrate(this.narration, r, response, 'topic', board, id, scene, input); }
   @Get() list(@Req() r: AuthenticatedRequest, @Param('boardId') id: string, @Query() q: unknown) { return this.turns.list(r.user, 'topic', id, q, r.authSession); }
