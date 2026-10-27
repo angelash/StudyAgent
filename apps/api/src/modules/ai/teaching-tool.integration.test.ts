@@ -93,6 +93,26 @@ describe('durable internal teaching HTTP/' + (pgLocation ? 'PostgreSQL' : 'SQLit
     await call('post', endpoint + '/preflight', { ...original, modelId: 'unavailable-teaching-model' }, admin, 400);
     await call('post', endpoint + '/preflight', { ...original, answer: 'x'.repeat(8001) }, admin, 400);
   });
+  it('date precision: includes a millisecond record when the requested lower bound has whole seconds', async () => {
+    const row = await create(); await store.transaction(() => { store.find('teachingToolRuns', { id: row.id }).createdAt = '2026-01-01T10:00:00.123Z'; });
+    const query = new URLSearchParams({ from: '2026-01-01T10:00:00Z', to: '2026-01-01T10:00:01Z' });
+    const result = await call('get', endpoint + '/runs?' + query); expect(result.runs.map((run: any) => run.id)).toEqual([row.id]); await control(row, 'cancel');
+  });
+  it('date precision: treats two equivalent ISO bounds as the same instant, and rejects only a genuinely reversed range', async () => {
+    const query = new URLSearchParams({ from: '2026-01-01T10:00:00Z', to: '2026-01-01T10:00:00.000Z' });
+    expect((await call('get', endpoint + '/runs?' + query)).runs).toEqual([]);
+    const reversed = new URLSearchParams({ from: '2026-01-01T10:00:01Z', to: '2026-01-01T10:00:00.999Z' });
+    await call('get', endpoint + '/runs?' + reversed, undefined, admin, 400);
+  });
+  it('pages and purpose-filters only the owner original history without issuing a provider request', async () => {
+    const first = await create(), hint = await create(draft('hint_draft')), last = await create(), count = provider.mock.calls.length;
+    await store.transaction(() => { store.find('teachingToolRuns', { id: first.id }).createdAt = '2026-01-01T10:00:00.000Z'; store.find('teachingToolRuns', { id: last.id }).createdAt = '2026-01-01T10:00:01.000Z'; });
+    const page1 = await call('get', endpoint + '/runs?purpose=assessment_analysis&pageSize=1'), page2 = await call('get', endpoint + '/runs?purpose=assessment_analysis&pageSize=1&page=2');
+    expect(page1.runs.map((row: any) => row.id)).toEqual([last.id]); expect(page1.hasMore).toBe(true);
+    expect(page2.runs.map((row: any) => row.id)).toEqual([first.id]); expect(page2.hasMore).toBe(false);
+    expect((await call('get', endpoint + '/runs', undefined, other)).runs).toEqual([]); expect(provider).toHaveBeenCalledTimes(count);
+    for (const row of [first, hint, last]) await control(row, 'cancel');
+  });
   it('denies anonymous, non-admin and another admin access to an owner record', async () => {
     await call('post', endpoint + '/preflight', draft(), null, 401); await call('post', endpoint + '/preflight', draft(), parent, 403);
     const row = await create();

@@ -115,9 +115,11 @@ export class TeachingToolService {
     this.assertAdmin(user);
     const c = validate(z.object({ purpose: z.enum(['assessment_analysis', 'hint_draft']).optional(), page: z.coerce.number().int().min(1).max(200).default(1),
       pageSize: z.coerce.number().int().min(1).max(50).default(20), from: z.iso.datetime().optional(), to: z.iso.datetime().optional() }).strict(), input);
-    if (c.from && c.to && c.from > c.to) throw new BadRequestException('教研记录日期范围不可用');
+    const from = c.from ? Date.parse(c.from) : null, to = c.to ? Date.parse(c.to) : null;
+    if (from !== null && to !== null && from > to) throw new BadRequestException('教研记录日期范围不可用');
     const rows = this.store.select('teachingToolRuns', { ownerUserId: user.id, ...(c.purpose ? { purpose: c.purpose } : {}) })
-      .filter(row => (!c.from || row.createdAt >= c.from) && (!c.to || row.createdAt <= c.to)).sort((a, b) => b.createdAt.localeCompare(a.createdAt) || b.id.localeCompare(a.id));
+      .filter(row => (from === null || Date.parse(row.createdAt) >= from) && (to === null || Date.parse(row.createdAt) <= to))
+      .sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt) || b.id.localeCompare(a.id));
     if (rows.length > 10000) throw new BadRequestException('请按原请求或日期范围读取教研记录');
     return { runs: await Promise.all(rows.slice((c.page - 1) * c.pageSize, c.page * c.pageSize).map(row => this.view(row))), page: c.page, pageSize: c.pageSize, hasMore: rows.length > c.page * c.pageSize };
   }

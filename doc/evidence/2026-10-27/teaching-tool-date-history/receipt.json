@@ -1,0 +1,63 @@
+{
+  "at": "2026-10-27T14:15:36.859366+00:00",
+  "passed": true,
+  "baseHead": "92dfee2011a43fb482c11691dd710304d420e20c",
+  "reports": {
+    "teaching-date-http-red": {
+      "passed": 0,
+      "failed": 2,
+      "skipped": 17
+    },
+    "teaching-date-fixed-local": {
+      "passed": 32,
+      "failed": 0,
+      "skipped": 4
+    },
+    "teaching-date-fixed-postgres": {
+      "passed": 26,
+      "failed": 0,
+      "skipped": 1
+    }
+  },
+  "sourceSha256": {
+    "apps/api/src/modules/ai/teaching-tool.service.ts": "0755b5abb479d544bfebdd4eabdb96c2d2f01164bc5168d8f22b06db6b94384e",
+    "apps/api/src/modules/ai/teaching-tool.integration.test.ts": "90f59c50d09ce8572846072b76c94ee0653f7b231eb400d48987f3ac9a747691"
+  },
+  "files": [
+    {
+      "file": "teaching-date-fixed-build.log.gz",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424"
+    },
+    {
+      "file": "teaching-date-fixed-local.json.gz",
+      "originalSha256": "3bda8c889f72980c79d91ea95507f5be11e64adfdc76f6ccdc351252ce3ea6c9"
+    },
+    {
+      "file": "teaching-date-fixed-local.log.gz",
+      "originalSha256": "063b844f23d864b0312ac01c46a73985be17fcf2426cc15d0f981be3fcaf77d6"
+    },
+    {
+      "file": "teaching-date-fixed-postgres.json.gz",
+      "originalSha256": "42558320b1f14f9b12d7fd29fe1ac576712dd49ce4b3b901815723d798ec9620"
+    },
+    {
+      "file": "teaching-date-fixed-postgres.log.gz",
+      "originalSha256": "12848f887de40fa392afb5034889d7d454366f186c5cc5b777fc9e6eaef6000d"
+    },
+    {
+      "file": "teaching-date-http-red-build.log.gz",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424"
+    },
+    {
+      "file": "teaching-date-http-red.json.gz",
+      "originalSha256": "015027bfa9ae552de3889169ebd1d1b9f01da55fb793e300a33ed4a5adac7260"
+    },
+    {
+      "file": "teaching-date-http-red.log.gz",
+      "originalSha256": "a0b2de3f8b0a4a6d81a9c8e387df19925210a1ba69c8c88faea7999a8e35f14d"
+    }
+  ],
+  "scope": "Actual synthetic HTTP/worker/SQLite and PostgreSQL, time precision/range/owner/purpose/paging read journeys plus existing teaching draft and native recovery cases. No new full API run, real provider, browser or production/schema21 delivery.",
+  "fullApiProvenance": "1498/0/64 belongs to unchanged92dfee2 baseline before this date-filter service change. New complete regression/CI must cover the eventual UI/compatibility candidate.",
+  "wholeProductComplete": false
+}
