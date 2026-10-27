@@ -1,0 +1,83 @@
+{
+  "at": "2026-10-27T02:50:10.525Z",
+  "passed": true,
+  "deployed": false,
+  "head": "3523b41d5e8242a285502a7a1c927adc720ca243",
+  "run": 40437003207,
+  "scope": "Exact three terminal successful CI jobs, original remote365 single-attempt browser report and actual Linux API/PG counts.",
+  "jobs": [
+    {
+      "name": "application",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121967966310
+    },
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121967966629
+    },
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121967966699
+    }
+  ],
+  "browser": {
+    "source": "data/qa/question-figure-ci-40437003207-artifacts/data/qa/source-course-full-browser.json",
+    "sha256": "c5c3e1c4d004040841d32600a73640e8d65d6a2cbc9668034713cd65b7d6719a",
+    "stats": {
+      "startTime": "2026-10-27T02:14:22.336Z",
+      "duration": 1891063.609,
+      "expected": 365,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "originalAttempts": 365
+  },
+  "linuxApi": {
+    "passed": 1443,
+    "environmentSkipped": 68,
+    "failed": 0
+  },
+  "postgresQuestionFigures": {
+    "passed": 19,
+    "failed": 0,
+    "overlapsLocal": true
+  },
+  "files": [
+    {
+      "source": "data/qa/question-figure-ci-40437003207-logs/run.json",
+      "file": "00-run.json.gz",
+      "originalSha256": "51584761188fc3fae40cd6b581a22c53378b7a2de0f49062bcf1ef946269afab",
+      "sha256": "b50557c003f3d01364181ace5763c003bfff0a628e8c5ab05e50e624feb689f2"
+    },
+    {
+      "source": "data/qa/question-figure-ci-40437003207-logs/application.log",
+      "file": "01-application.log.gz",
+      "originalSha256": "d9df55f441d6903b0b7ee4a1f554545e10b5394c0d9527afcc76ffff56dd9e0b",
+      "sha256": "e74a21fa0d6b8fd7510685e61cc3415cf48aa8995ee29abb242d4305633c8f89"
+    },
+    {
+      "source": "data/qa/question-figure-ci-40437003207-logs/postgres.log",
+      "file": "02-postgres.log.gz",
+      "originalSha256": "293ff82fa7df7fcf6f55b983f0d8ad241bad49ecf32d3ab349ffa4b39ec93947",
+      "sha256": "7af9faa98ecf241e4bd28243d5c9e92538d19394f5976da7a3e82e9efde70852"
+    },
+    {
+      "source": "data/qa/question-figure-ci-40437003207-logs/browser.log",
+      "file": "03-browser.log.gz",
+      "originalSha256": "6eec0b36cd1b7e8a4e20f65093ff8b8b69da461194f0a828a9646534bd7e46a1",
+      "sha256": "5d75c00ddc305bfc0e5f7b62ea070fc94f9b42646344af5e8d9a1f5dc779e1ec"
+    },
+    {
+      "source": "data/qa/question-figure-ci-40437003207-artifacts/data/qa/source-course-full-browser.json",
+      "file": "04-source-course-full-browser.json.gz",
+      "originalSha256": "c5c3e1c4d004040841d32600a73640e8d65d6a2cbc9668034713cd65b7d6719a",
+      "sha256": "b711ec539d3efbd1bc1dc56206cb438c1e3f51e09d5f6191b72ee74a4e259bc3"
+    }
+  ]
+}

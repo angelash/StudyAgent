@@ -1,0 +1,97 @@
+{
+  "at": "2026-10-27T03:13:24.181083+00:00",
+  "passed": true,
+  "scope": "Actual schema20 main production build, verified complete365 exact candidate,1209 HTTP/permissions/assets,363 compiled files, stopped-service schema19 rollback and three owned stable guardian observations. Private configuration and family database remain local. Initial delivery helper syntax refusal and strict CRLF refusal retained; neither mutated frozen candidate.",
+  "files": [
+    {
+      "source": "data/qa/question-figure-production-build.log",
+      "file": "00-question-figure-production-build.log.gz",
+      "originalSha256": "71ad5caa176ae4cbf340a89a3975203f3526d0ee99e9fcec28d7408461846628",
+      "sha256": "3ffdf8a9318b1d08f814213b6f3d843e407dc47a108261bc7a499acecd1a8778"
+    },
+    {
+      "source": "data/qa/question-figure-daemon-start.log",
+      "file": "01-question-figure-daemon-start.log.gz",
+      "originalSha256": "4437d674062d0a302ed7f3841381c0543ce7bc4c8a9bc138263dd066fa6e20f5",
+      "sha256": "6c5b49bfb39243a1234235035351f150f280c4b176af8a0c198d7edc0c2244f3"
+    },
+    {
+      "source": "data/qa/question-figure-deployment-candidate.log",
+      "file": "02-question-figure-deployment-candidate.log.gz",
+      "originalSha256": "ae917593fecf3e9e4d41bc9e6c8e47b05dca8b5f5a5d84424bf411a6edf1f5c3",
+      "sha256": "83e57799c620ac5956a852348235573850a408ff04b82ce33244bc605e8c06ee"
+    },
+    {
+      "source": "data/qa/question-figure-deployment-candidate-green.log",
+      "file": "03-question-figure-deployment-candidate-green.log.gz",
+      "originalSha256": "c1e11a6a6649d62de3f148c076422704dae6052f98f1696cb919f703bf5e8977",
+      "sha256": "302aea63ba59085fc65f49543c9e4c1b62b58fcb03386c32945301d6e1a22c63"
+    },
+    {
+      "source": "data/qa/question-figure-deployment-prepare.log",
+      "file": "04-question-figure-deployment-prepare.log.gz",
+      "originalSha256": "781790c60032b208424dbb9f7aadff0e80ba555ca8d9231758c3a98a31767772",
+      "sha256": "c462a20326126dee748f157e9a6cb9d50edbc68ba8ff7aab69449e915a131bdf"
+    },
+    {
+      "source": "data/qa/question-figure-runtime-check-first.log",
+      "file": "05-question-figure-runtime-check-first.log.gz",
+      "originalSha256": "1865c6534fb31ae7a0768841fdae3cdce4ba3ad3e6b826fc7f239268e9fad172",
+      "sha256": "0c7c55f91ce8663a5cf6b1415b33f1c58c8b19401995fc3661b50967358919af"
+    },
+    {
+      "source": "data/qa/question-figure-runtime-check-green.log",
+      "file": "06-question-figure-runtime-check-green.log.gz",
+      "originalSha256": "5bdc0d345506b9cd65fbc5684417ea47d04f3a04a1a14f1ec0f59c0f45ef6e62",
+      "sha256": "b3f7be1e445aa3367ba86d6bc610579d239862fb75191c7265f88877e4d17866"
+    },
+    {
+      "source": "data/qa/prepare-question-figure-release.cjs",
+      "file": "07-prepare-question-figure-release.cjs.gz",
+      "originalSha256": "fd72afcacf3fca41e2cf540aaf6dad1b689c07c8d792f58c944ebdc666a06cd4",
+      "sha256": "89cc818b6d17dbb815b44b6242e714e37b8a32bd48afef1eb3806aedb5cd0f4d"
+    },
+    {
+      "source": "data/qa/prepare-question-figure-candidate.cjs",
+      "file": "08-prepare-question-figure-candidate.cjs.gz",
+      "originalSha256": "8ea2277d7042d7b4fb3d7a8cf747b81a568bfba0ba98e6814212df80fa676627",
+      "sha256": "7319f56c533e709a611559618cdef41bb3f837e29c923df22ad1e451706f0d4b"
+    },
+    {
+      "source": "data/qa/deploy-question-figure-prepare.cjs",
+      "file": "09-deploy-question-figure-prepare.cjs.gz",
+      "originalSha256": "23bb2522f1e800303fb72bd9b3a58b77d7eba88f7afef6dca0c052b60ca81d23",
+      "sha256": "1b9da39dd7b0bf14dc74fa9c98b2a0972d30a9cabbd842668fb90dc2b9fe58ca"
+    },
+    {
+      "source": "data/qa/check-question-figure-release.cjs",
+      "file": "10-check-question-figure-release.cjs.gz",
+      "originalSha256": "84783d882c44ed521ee1da59ca06e75a3120e21046c5e1e73fad9283f92e2630",
+      "sha256": "c84ab03644398a6bf69664487c4a406f1d10291bb9365ceff943449cf0c0f8af"
+    },
+    {
+      "source": "data/qa/observe-question-figure.cjs",
+      "file": "11-observe-question-figure.cjs.gz",
+      "originalSha256": "cc4ef7454a921e8ee37daafaea995c786d10f53f7b7df68a12d0b93911122b23",
+      "sha256": "73a10ab61d4fd1f5b23dddda65357481d29eb6389158a925f36e5c6555195bb2"
+    },
+    {
+      "source": "output/daemon/release-backups/2026-10-27-question-figures-1793068706206/backup-verified.json",
+      "file": "12-backup-verified.json.gz",
+      "originalSha256": "eee497c37ea19db0f8273032e41b32daa8240172354eff218890b7bb9adf6383",
+      "sha256": "18eb3f10454298fe957358cc2bbfd47c178005c48bd747d3ca0d0848d0ff3d40"
+    },
+    {
+      "source": "output/daemon/release-backups/2026-10-27-question-figures-1793068706206/build-backup-verification.json",
+      "file": "13-build-backup-verification.json.gz",
+      "originalSha256": "beac992d395219d212ac2b644e437f207aeb5a06570041f01165607a2a8b50a2",
+      "sha256": "43156a248156ae45f89ed9936f18fcdd6c051b9f16e8b8b8239c1e091f65ef5c"
+    },
+    {
+      "source": "output/daemon/release-backups/2026-10-27-question-figures-1793068706206/compiled-crlf-observation.json",
+      "file": "14-compiled-crlf-observation.json.gz",
+      "originalSha256": "4b01978b2e8406791fbd7a0e65154907ab7f6d716a2cf9b4d50faecda475c35e",
+      "sha256": "6fab9c046e12fa9cecba43c4e2273155cb7b200599d8b50f4d7550295d87bf44"
+    }
+  ]
+}
