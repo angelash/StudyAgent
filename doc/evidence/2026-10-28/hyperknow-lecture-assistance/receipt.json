@@ -1,0 +1,55 @@
+{
+  "observedAt": "2026-10-27T19:54:23.083Z",
+  "source": "https://agent.hyperknow.io/",
+  "courseSource": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0",
+  "observed": {
+    "entry": "Lecture1 Get Assistance navigates to root Instant Assistance",
+    "chips": [
+      "社会学思考",
+      "U1·L1",
+      "社会学概论"
+    ],
+    "removeControl": "Remove lecture context",
+    "tools": [
+      "Whiteboard session",
+      "Study Planner"
+    ],
+    "modes": [
+      "Concept Explanation",
+      "Personal Study Materials Generation",
+      "Long-files Digestion",
+      "Problem Solving",
+      "Visualization"
+    ],
+    "responseModes": {
+      "Normal": "Classic Mode. More comprehensive answers and functionalities.",
+      "Fast": "Fast Mode. Ideal for short responses."
+    },
+    "viewport": [
+      880,
+      887
+    ],
+    "dpr": null,
+    "composerWidthPx": 620,
+    "navigationWidthPx": 60
+  },
+  "screenshot": {
+    "file": "lecture-assistant-composer-crop.png",
+    "sha256": "3c0a3ca34427fcdeed9678b4869fdb0ed66873519f01661e687761aaad4e14a7",
+    "sourceSha256": "8800eb8b2c3e43ef35b0de08af922d7e53ff5d308ee3ea966483596d18801a34",
+    "crop": [
+      60,
+      210,
+      880,
+      530
+    ],
+    "scope": "Account header and unrelated news excluded. Only the central composer and mode rows are archived."
+  },
+  "noNewQuestionOrAnswerSubmitted": true,
+  "noWhiteboardOrPlanGenerated": true,
+  "limitations": [
+    "Generation output, voice and persistence algorithms were not tested in this observation.",
+    "Five course activity legend labels do not prove formal measurement thresholds.",
+    "Original CSS/fonts already captured; this screenshot does not establish100% pixel parity."
+  ]
+}
