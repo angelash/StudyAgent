@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-27T08:06:57.795Z",
+  "services": [
+    {
+      "name": "study-agent-api",
+      "pid": 66144,
+      "status": "online",
+      "restarts": 1164,
+      "cwd": "F:\\workspace\\github\\StudyAgent"
+    },
+    {
+      "name": "study-agent-web",
+      "pid": 36128,
+      "status": "online",
+      "restarts": 3,
+      "cwd": "F:\\workspace\\github\\StudyAgent"
+    },
+    {
+      "name": "study-agent-health",
+      "pid": 51116,
+      "status": "online",
+      "restarts": 1,
+      "cwd": "F:\\workspace\\github\\StudyAgent"
+    }
+  ],
+  "http": {
+    "learn": 200,
+    "ready": 200
+  }
+}

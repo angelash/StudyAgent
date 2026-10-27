@@ -111,3 +111,7 @@ f820751仅修改这两份API测试，全部产品源码和20份真实矩阵源�
 历史定位同步边界已包含明确历史ID、账号/上下文与展开状态，A→B→A和关闭/重开均拒绝迟到导航；挂起读取的首次点击与受控音频取消40项全部单次通过。合并135后059f319新鲜构建，24交叉、375完整浏览器均原始单次通过，零失败/跳过/重试；完整API1469通过/60环境跳过。20份真实模型执行输入和651份编译输入起止逐SHA相同，公开收据仍为21通过/1旧Opus失败。精确CI40465519169与主目录实际交付尚待；原生PG与Linux结果另记，不能把本地结果冒充远端或正式运行。见[完整原件](../evidence/2026-10-27/combined-practice-models-local/receipt.json)。整体72项11 implemented/50 in_progress/11 planned/0 verified与M1～M7继续。
 
 精确CI40465519169/059f319现已三组终态success，原始375浏览器375次尝试零失败/跳过/flaky/重试，Linux API1461通过/68环境跳过。见[精确原件](../evidence/2026-10-27/combined-practice-models-exact-ci/receipt.json)。尚不以CI代替主目录运行交付。
+
+## 13. 合并批次实际守护交付
+
+2026-10-27当前正式交付：134/135模型选择、历史定位与练习逐状态整改已合入main实际构建278105e（代码/精确CI059f319/40465519169），buildId M34SOGY4NlMGWzrtPnUeo、schema20。本地1469 API通过/60环境跳过，Linux1461通过/68环境跳过；本地及远端均375浏览器/375原始尝试单次通过，零失败/跳过/flaky/重试。1212实际HTTP/权限/资源、959原资产与6音频核对通过，三个守护PID/重启计数跨89681毫秒稳定；20份模型执行输入逐SHA相同。362编译JS/JSON输入中361原SHA一致，仅历史rate-limit JS有4处CRLF差异，完整归一源码和编译字节相同；两份原模型源文件已恢复确切检查字节，严格拒绝原件保留。五配置和真实环境原字节保持；新鲜133/schema20停服一致数据/引用文件及966旧编译回退已核验，assetsIncluded:false，不代表全部研究资产备份或完整恢复演练。默认DS、九处可读菜单与检查状态、历史首次定位/迟到栅栏、原CSS/字体/图标练习和冻结配图已上线。真实文字模型仍21通过/1旧Opus失败，不称22全通。136课程侧栏在独立工作区完成规格、实现和14条修正后专项，尚未进入本运行版。72项11 implemented/50 in_progress/11 planned/0 verified及M1～M7、教师/实机/全内容/原像素DPR声音和长期测量门槛保持，整体active。见[本批验收](../evidence/2026-10-27/combined-practice-models-acceptance.json)、[实际运行](../evidence/2026-10-27/combined-practice-models-runtime.json)与[回退边界](../evidence/2026-10-27/combined-practice-models-release/receipt.json)。
