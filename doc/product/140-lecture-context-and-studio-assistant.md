@@ -119,3 +119,11 @@ AssistantSession的pageContext增加classroom；contextRefType增加classroom_le
 真实小九CLI匿名样本各完成一条讲座和独立学习，Auto均实际解析deepseek-v4-flash，17726ms与14257ms、各1次CLI启动；消息角色、userMessageId/assistantMessageId/inReplyTo与原请求重放均核对，重放不再执行模型，正式测量/计划/评分记录保持原SHA。最初两条实际回答已完成，但样本脚本误按分页index1读取了用户消息，未走到重放断言，原失败与完整匿名回答保留；修正为按角色及回执ID后使用新的匿名实例完整复验通过。见[真实模型及最新双库原件](../evidence/2026-10-28/lecture-live-and-postgres/receipt.json)和[原失败](../evidence/2026-10-28/lecture-live-first/receipt.json)。该两条不构成稳定率、教师质量、物理上游身份或22模型全通证明；历史文字矩阵仍21/22、旧Opus5失败，公共资格记录未改。
 
 工具往返现保留mode/audience与lectureCourse/lecture/lectureVersion，即使资料页刷新，再返回首页或经过Study Planner/Calendar，也恢复原上下文与独立草稿。实际初轮2失败定位到mode丢失；修复后原新测试误将根导航Home按钮写成链接，又单独留证，校正语义角色而保留所有URL、草稿、讲座卡和零POST断言，最终2原始尝试单次全过。见[导航验收](../evidence/2026-10-28/lecture-navigation-final/receipt.json)、[原丢失](../evidence/2026-10-28/lecture-navigation-before/receipt.json)与[测试角色原件](../evidence/2026-10-28/lecture-navigation-second/receipt.json)。37项共享浏览器发生在该导航收尾前，不能冒充新最终整站验收；接续冻结当前实际QA Web和源码，运行完整浏览器、精确远端CI、主目录一致备份/实际构建/守护观察。当前正式仍139，完整72项与M1～M7继续。
+
+## 16. 首轮完整失败与字体注册归属修复（待重跑完整门禁）
+
+完整本地432次原始尝试431通过/1失败、零重试/跳过，4322份固定输入全部原SHA保持；唯一失败是实际白板字体首次失败后显式重试仍为error。精确067078e/40594342095已全部终态：application与postgres成功，browser同一用例原始与一次重试均失败。原本地、远端三组日志/实际报告、两次失败trace与截图均保留，不能把重试或专项结果替代完整通过。见[首次完整本地](../evidence/2026-10-28/lecture-full-browser-first/receipt.json)和[首次精确CI](../evidence/2026-10-28/lecture-exact-ci-first/receipt.json)。
+
+原因是新增助教样式直接import了完整原字体表，而白板仍通过已有受控注册器加载相同字体。显式重试只更新受控字体，额外import中的失败字体继续残留。现移除该import，助教采用同一个useOriginalTeachingFonts的standard模式，界面字体失败可显式重试且普通输入保持可用；未修改加载器算法或清除原有UI字体。新检查聚焦只用于白板的Virgil与Xiaolai共210个声明，并实际验证Satoshi三种字重及MiSans已加载；页面既有UI字体合法存在，不能要求document.fonts总数为815。初始诊断错误要求总数815的原失败也保留。见[修复前与诊断原件](../evidence/2026-10-28/lecture-font-registry-before/receipt.json)。
+
+修复后真实QA构建07EJTat-vlUXvvAcBPNV4的28项单次全通过、零失败/跳过/flaky/重试，包括原字体恢复、新单注册器检查、讲座/独立对话、导航及日历；Web类型检查通过，919份后端/契约/编译输入保持完整API运行时原SHA。见[字体及交互专项原件](../evidence/2026-10-28/lecture-font-owner-after/receipt.json)。接着以新提交/实际QA冻结重新运行完整浏览器与精确远端CI；新套件预计433项但必须按实际发现及原始报告核对。正式仍139，无140停服、数据库备份、合并或生产构建，既有回退拷贝只是准备阶段。M1～M7与完整72项继续。

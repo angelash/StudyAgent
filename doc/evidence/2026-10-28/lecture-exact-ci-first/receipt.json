@@ -1,0 +1,84 @@
+{
+  "passed": false,
+  "head": "067078e3cfd743aa56e54d6a3905fcb7aef6356e",
+  "ciRun": 40594342095,
+  "runAttempt": 1,
+  "jobs": {
+    "browser": "failure",
+    "postgres": "success",
+    "application": "success"
+  },
+  "browser": {
+    "passedTests": 431,
+    "failedCases": 1,
+    "failedAttempts": 2,
+    "originalAttempts": 432,
+    "retries": 1,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "api": {
+    "passed": 1531,
+    "failed": 0,
+    "environmentSkipped": 73
+  },
+  "lecturePostgresStepPassed": 13,
+  "scope": "Original exact067 CI failed the same real font retry on both initial and retry attempts. Application/PG jobs succeeded. Raw logs retain gh caret-escaped ANSI; parser subsequently normalized that representation. Original complete browser report and both failure traces/screenshots preserved. No CI cancellation, pass waiver or production delivery.",
+  "files": {
+    "application.log": {
+      "sha256": "c2904172817f8c782ff3099f9e1924bb033464cf49fe1812b946933a41dc9f47",
+      "gzipSha256": "b4e0680f8138886356ef6cbf567c49ac6e62a4abc96f9c9e254640c1b497e6c8",
+      "bytes": 338160
+    },
+    "browser.log": {
+      "sha256": "30c271510edebaa0ec60900b49f8f1843978f6ebd9eee4cf71d112d7f4040138",
+      "gzipSha256": "a98f96812f11bfcae5c359fb648f3f56da32aa5828889be5e02996b1fff050fd",
+      "bytes": 300501
+    },
+    "postgres.log": {
+      "sha256": "eaf8fb3ca92f84d9583cefe45a6cc94d367a4b7a2c23c2f1a11bd1188da47f20",
+      "gzipSha256": "470aef69b5cef1c2fe4587af0486cffaf165008f444832f97c20dd02736e2fb5",
+      "bytes": 445929
+    },
+    "source-course-full-browser.json": {
+      "sha256": "55ceabbb4d41c73d15371250ca2650e21215f8555472e4941a0797b2de48e4df",
+      "gzipSha256": "aa33ec9839dba157823126bec872658c951ac91c5db507d2a3570f07574366f9",
+      "bytes": 501738
+    },
+    "terminal.json": {
+      "sha256": "a654bc6b098cc1a224552f1185784a63e5354c10c2458811cfa6df76e90dbbda",
+      "gzipSha256": "d5568d4108fc75857242573bbb70b85dff3e2f25cd159731892ea09ed019ba66",
+      "bytes": 31189
+    },
+    "artifact/test-results/browser-product-acceptance/original-teaching-fonts-or-2afc4-try-recovers-the-same-board/error-context.md": {
+      "sha256": "641a4ef28e2acd48026581228b7950d77a2150174792c6f2ff4415e0d6f675bb",
+      "gzipSha256": "a6351df8329e5a3545492b3f5be8cdbc30851edc22c9a217874be3a0e4280630",
+      "bytes": 18047
+    },
+    "artifact/test-results/browser-product-acceptance/original-teaching-fonts-or-2afc4-try-recovers-the-same-board/test-failed-1.png": {
+      "sha256": "d90bbe261c5182702447fc864529bc0710ce04cb6ced6ac09e22e05f20a315fe",
+      "gzipSha256": "4742ceed2487657ba9808c8060053832eccb4412641a8304388f16893796793b",
+      "bytes": 96046
+    },
+    "artifact/test-results/browser-product-acceptance/original-teaching-fonts-or-2afc4-try-recovers-the-same-board/trace.zip": {
+      "sha256": "a0e5528be947c41d44a42ce88059aa6b1d11565d82649d3b617dc7684e71c764",
+      "gzipSha256": "4d32354ea79cfad24be1047420eb5372abdb7dfa9b5c642ad27adb8e93717fbc",
+      "bytes": 3086683
+    },
+    "artifact/test-results/browser-product-acceptance/original-teaching-fonts-or-2afc4-try-recovers-the-same-board-retry1/error-context.md": {
+      "sha256": "641a4ef28e2acd48026581228b7950d77a2150174792c6f2ff4415e0d6f675bb",
+      "gzipSha256": "a6351df8329e5a3545492b3f5be8cdbc30851edc22c9a217874be3a0e4280630",
+      "bytes": 18047
+    },
+    "artifact/test-results/browser-product-acceptance/original-teaching-fonts-or-2afc4-try-recovers-the-same-board-retry1/test-failed-1.png": {
+      "sha256": "d90bbe261c5182702447fc864529bc0710ce04cb6ced6ac09e22e05f20a315fe",
+      "gzipSha256": "4742ceed2487657ba9808c8060053832eccb4412641a8304388f16893796793b",
+      "bytes": 96046
+    },
+    "artifact/test-results/browser-product-acceptance/original-teaching-fonts-or-2afc4-try-recovers-the-same-board-retry1/trace.zip": {
+      "sha256": "ca4c49e82c1cf5a78c6dd26de77e907404ce8c901b6c7263dfc9e44f71c8e91d",
+      "gzipSha256": "2200448f5660fb3dd36645021619858c0d4ec937cfa4c7a4b1e4f8f656f1cc2c",
+      "bytes": 2885320
+    }
+  }
+}

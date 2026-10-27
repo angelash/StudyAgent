@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "sourceRevision": "1385d100e5a91e9378b8191d7fd897f8cb378075",
   "passed": false,
-  "phase": "full-browser-and-exact-ci-pending",
+  "phase": "first-full-and-exact-ci-failed-font-fix-focused-passed-full-rerun-pending",
   "scope": "140 adult authored lecture and independent persistent assistant. Complete M1-M7 and original72 goal remain active.",
   "api": {
     "passed": 1539,
@@ -19,7 +19,22 @@
     "receipts": [
       "lecture-shared-second/receipt.json",
       "lecture-navigation-final/receipt.json"
-    ]
+    ],
+    "firstFull": {
+      "passed": false,
+      "passedTests": 431,
+      "failedTests": 1,
+      "originalAttempts": 432,
+      "retries": 0,
+      "receipt": "lecture-full-browser-first/receipt.json"
+    },
+    "fontFixFocused": {
+      "passed": true,
+      "passedTests": 28,
+      "originalAttempts": 28,
+      "retries": 0,
+      "receipt": "lecture-font-owner-after/receipt.json"
+    }
   },
   "postgresCombination": {
     "passed": 13,
@@ -63,5 +78,11 @@
     "Conversation-to-artifact source/confirmation chain remains subsequent work.",
     "No complete pixel/DPR/audio, teacher, all-content or long-term learning validation claim.",
     "Earlier37 browser result predates final navigation; full current suite is required."
-  ]
+  ],
+  "exactCiFirst": {
+    "head": "067078e3cfd743aa56e54d6a3905fcb7aef6356e",
+    "ciRun": 40594342095,
+    "passed": false,
+    "receipt": "lecture-exact-ci-first/receipt.json"
+  }
 }

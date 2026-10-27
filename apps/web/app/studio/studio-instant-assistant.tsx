@@ -6,6 +6,7 @@ import { AssistantWidget, type AssistantComposerContext } from '../../components
 import { XiaojiuModelPicker } from '../../components/xiaojiu-model-picker';
 import { apiRequest } from '../../lib/api';
 import type { SessionUser } from '../../lib/session-user';
+import { useOriginalTeachingFonts } from '../../lib/original-teaching-fonts';
 import './reference-assistant.generated.css';
 import './studio-instant-assistant.css';
 
@@ -52,9 +53,11 @@ export function StudioInstantAssistant(props: Props) {
   const independent = props.identity.role !== 'student' && (hasLecture || query.get('audience') === 'independent' || !props.studentId);
   const readOnly = hasLecture && Boolean(error || descriptor && !descriptor.current);
   const reference = descriptor?.referenceId ?? (validRequest && fingerprint ? courseId + '@' + fingerprint : 'unavailable-lecture');
+  const fonts=useOriginalTeachingFonts('studio-assistant:'+key,['Time for flashcards? Concept Explanation Personal Study Materials Generation Long-files Digestion Problem Solving Visualization Tools Whiteboard','学习工作台 想一起看看什么 返回本讲',descriptor?.courseTitle??'',descriptor?.lectureTitle??''].join(' '),'standard');
   function remove() { const next = new URLSearchParams({ view: 'home', mode: 'instant', audience: 'independent' }); localNavigate(next); }
   function current() { const next = new URLSearchParams({ view: 'home', mode: 'instant', lectureCourse: courseId, lecture: lectureId }); localNavigate(next); }
-  return <div className="sa-instant-workspace">
+  return <div className="sa-instant-workspace" data-original-font-status={fonts.ready?'ready':fonts.error?'error':'loading'}>
+    {fonts.error&&<p className="assistant-notice" role="status">界面字体暂未读回。<button type="button" onClick={fonts.retry}>重新准备界面字体</button></p>}
     <div className="sa-reference-hero"><img src="/reference/hyperknow-hero/assistant-ufo-crop.png" width={66} height={73} alt="" /><h1>Time for flashcards?</h1></div>
     {loading ? <p className="sa-context-loading" role="status">正在核对本讲的课程与教学目标…</p> : <>
       {error && <aside className="sa-context-error" role="alert"><p>{error}</p><button onClick={() => setRetry(v => v + 1)}>重新核对讲座</button>{validRequest && <button onClick={current}>打开当前讲座版本</button>}<Link href="/studio/classroom">返回课程</Link></aside>}

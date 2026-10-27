@@ -1,0 +1,288 @@
+{
+  "passed": true,
+  "baseRevision": "067078e3cfd743aa56e54d6a3905fcb7aef6356e",
+  "uncommittedFontOwnershipFix": true,
+  "actualQaBuildId": "07EJTat-vlUXvvAcBPNV4",
+  "passedTests": 28,
+  "failedTests": 0,
+  "originalAttempts": 28,
+  "retries": 0,
+  "skipped": 0,
+  "flaky": 0,
+  "unchangedApiFixedInputs": 919,
+  "changedApiInputs": [],
+  "boardOnlyFontFaces": 210,
+  "scope": "Focused actual font retry, single controlled board font registry, real assistant UI fonts, 17 assistant/navigation journeys and Studio/workspace. Full local browser and exact CI are separate pending gates. Existing UI MiSans/Satoshi declarations remain; do not infer total document font count or pixel parity.",
+  "files": {
+    "data/qa/lecture-font-owner-after.json": {
+      "sha256": "98331f2499c969969b3c2077a8ec8e778d49b0322c37bbfd7e42273ff9efd09a",
+      "gzipSha256": "a93b8820f96e9ed64a88054016ae9ad166b33b1a9773a2b04a6104ceecb6ed47",
+      "bytes": 34191
+    },
+    "data/qa/lecture-font-owner-after.log": {
+      "sha256": "8bc6c866d49c9d6ae7d84c287dd4cdb622b79bd5a9fde4c5b7f94301b0c9f450",
+      "gzipSha256": "db880002f5e39ba124b1b0bfbc2b9a3712ba343edf5c927c80aae22ee4e694c8",
+      "bytes": 7995
+    },
+    "data/qa/lecture-font-owner-typecheck.log": {
+      "sha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc",
+      "gzipSha256": "280feefa43a1a2d6b5ebb62618a6d36d932de3e009b707d14976e55a78dd4326",
+      "bytes": 68
+    },
+    "apps/web/app/studio/studio-instant-assistant.tsx": {
+      "sha256": "8d6adda64133068bb09a85ded6e61286a18c84fcce83662d2184734854c65de1",
+      "gzipSha256": "6cbfe950b7512ee4fcd0fbe86a00928b3ea34622666acc499e328b0ca40bbdfb",
+      "bytes": 14181
+    },
+    "apps/web/app/studio/studio-instant-assistant.css": {
+      "sha256": "eb09675d8e6fda0f2aad7afccab4be6eac01308970818d472044cdc9a715e962",
+      "gzipSha256": "427ff42b3f7d737781c005e0324b47faecd1906a9da45a9fe57c787cbbbed392",
+      "bytes": 6626
+    },
+    "tests/e2e/original-teaching-fonts.spec.ts": {
+      "sha256": "13e7a6594ef0f34864e8c0ed06e7360b388bc97b7fbc9a94d66bc502355f7395",
+      "gzipSha256": "140f76e9641a5ab235308aeb326378a2844629fe55aafffb394ecc09b19e95dc",
+      "bytes": 17227
+    },
+    "apps/web/lib/original-teaching-fonts.ts": {
+      "sha256": "5b06bcff9c0747a47bc3e69301039b0aaaa19cf6505f3c713d0d1eaec0e6b019",
+      "gzipSha256": "82eaf60b20a1433fae840fc6dd71dc738e168514d19d106f19bd41f8f70641f4",
+      "bytes": 6410
+    },
+    "apps/web/lib/original-teaching-fonts.json": {
+      "sha256": "e4319ea46a0b17947a6c0c606a87f86907c5e6d98271a76031770c9b373b2a02",
+      "gzipSha256": "7a0342fe87cf8ae3cfde62c3932cd773170239352b10b43cb79834351566947f",
+      "bytes": 4820
+    },
+    "data/qa/lecture-full-api-inputs.json": {
+      "sha256": "6907abb1c00faf399c6e0aa0cbe454408b810542e7524e6316b3c4df0aaf0f80",
+      "gzipSha256": "c57ea174e1772a131da6a38af5d7145a45167dc01cbfb648f874226091f557fd",
+      "bytes": 125899
+    },
+    "screenshots/original-math-font-isolation/actual-math-editor-fonts.json": {
+      "sha256": "2f6209b7a50584e71cfebadd7447270ab2cecfcdb886a8daae8c51697d719ba1",
+      "gzipSha256": "8a82e6338c1b7a858f2a9267601e5eb9958c8567266477de323a85c0283452d8",
+      "bytes": 5209
+    },
+    "screenshots/original-math-font-isolation/actual-tall-formula.png": {
+      "sha256": "a52dbee463f0de322b963b033a742ec23b5d2a53cc5e37116cfca5a52419665e",
+      "gzipSha256": "b90a24e82c5888a0f80c1ea8cd11f67311aa039b1e081d02a66670f6eb9ef145",
+      "bytes": 4574
+    },
+    "screenshots/original-teaching-fonts/actual-board-fonts.png": {
+      "sha256": "0ce78b7d1e942b71b36262b6ca60b79e0631afe8251bdcc59fa46845fae23138",
+      "gzipSha256": "c3068acb8d4120c9a8d25c7c77acb7943284f6c0c512a36b96333243a3879d80",
+      "bytes": 130140
+    },
+    "screenshots/original-teaching-fonts/actual-loaded-fonts.json": {
+      "sha256": "e122265786076aae99172fad2bbe0fd2d757f379a1d1fa8a385cf7a39c63d930",
+      "gzipSha256": "aacf61a110efaa1af8568656e447252db52bcdea84ae0b58c09b5012b61ac9f9",
+      "bytes": 7285
+    },
+    "screenshots/original-teaching-fonts/single-registry-before-assistant.json": {
+      "sha256": "5256a0f8210b459cf6d3b2fd4d60a19848f2d473eff7e8170886749701b921c3",
+      "gzipSha256": "74ed8a18c7b987f21796b6129eec9b9a2a27fe83cb68ef46b9c425fca0f01bd9",
+      "bytes": 41
+    },
+    "screenshots/original-teaching-frames/cumulative-second-scene.png": {
+      "sha256": "47b491b204f1a050b6a1c8e83bd621df42daa9cc0c07c75f8d828ce3df9aa079",
+      "gzipSha256": "a36c071ab15496128ebc7f73f2dff3e772b84e316eb9af1bfcfe7dfc8d40bcdf",
+      "bytes": 129393
+    },
+    "screenshots/original-teaching-frames/original-shell-1280.png": {
+      "sha256": "16828b73b3b24dbcd9e2b6257043413fcc95693d03451a44350a90b7077d168f",
+      "gzipSha256": "62b7b54b6e420c151fe04303c0bfe75ca3145d637cdc0debbd291503e922b551",
+      "bytes": 118293
+    },
+    "screenshots/original-teaching-frames/original-shell-390.png": {
+      "sha256": "74651ded9e2565c9f25458c51f41bd45c8f33cf6a4e2e868cf6bf8b92d3223e1",
+      "gzipSha256": "c23bd342c0674ef08e2217520ad5d1fff44b11f1c76bd2b3d7e1643f750c0086",
+      "bytes": 45689
+    },
+    "screenshots/original-teaching-frames/original-shell-768.png": {
+      "sha256": "4a99467b8b3ebe912021ab531273e09c9eb385cca796aa940e7d014cca33fc91",
+      "gzipSha256": "a2899e9e31925686adbeb70eb5ab41a5061538962852d1e1b8525da453dd1e67",
+      "bytes": 57135
+    },
+    "screenshots/studio/studio-calendar-polished.png": {
+      "sha256": "84028374a02969037a8d4a14c944a1ff352980c0c4737fdf063be0131e4e448c",
+      "gzipSha256": "4bd50617f9b6a0ca0c7bfdd7ef7c201145084436a164cfb3db4744b6df48ebea",
+      "bytes": 377182
+    },
+    "screenshots/studio/studio-course-polished.png": {
+      "sha256": "04d4c0d5668fed69612f60261ca1660b7b2bd9312df90be159bf8279daaf1616",
+      "gzipSha256": "d78e11510e46d35a92cb20ec1c3c4409539b5251ef5ee25a86ea3af91ac54fc5",
+      "bytes": 185473
+    },
+    "screenshots/studio/studio-home-polished.png": {
+      "sha256": "5aadcdbcd41dbf74c09012f2af58f2ccf88c0f0659aac97b5a21ed66d397036b",
+      "gzipSha256": "594d9c08d23f9cff506ef0b2be1a69761c4f6f6bcf8094c4258c64b974c4ee25",
+      "bytes": 164062
+    },
+    "screenshots/studio/studio-materials-and-pack.png": {
+      "sha256": "cdbc42ae8cc5a03b2692428764d44e773f19b781f39fb438e4a86c7e4c70b9c5",
+      "gzipSha256": "f285184cc83cf9ca253a84ab7e3bbc27397fb42de0ce21dd1ba3f0d18ddc1964",
+      "bytes": 129144
+    },
+    "screenshots/studio/studio-pdf-structure-review.png": {
+      "sha256": "bea26eac7e36d32d641e69bbd1b6cea14a6bc5c046e32fefa1adec04f3ad1e98",
+      "gzipSha256": "155c6b571941aa91b0d321cd5e202d9d734ff6854f513b400f70a3a8eaacc07d",
+      "bytes": 171593
+    },
+    "screenshots/studio/studio-whiteboard-player.png": {
+      "sha256": "70df835381fbe178740bd24a7482107b182d011b9a0969290c35b0d0656ffc96",
+      "gzipSha256": "8b5784dbb73b447ed4581561cf8cf6af276759bb7dd27792dfbb03c35f6c5806",
+      "bytes": 13800
+    },
+    "screenshots/studio/studio-whiteboard-preview.png": {
+      "sha256": "d028749cb0826490c4730155e86530f9dc18192a978f983736ad29e2b189c364",
+      "gzipSha256": "888f32c8cce6294469d8b5658b3e3af79b6910f846a5092505353e996529b282",
+      "bytes": 153794
+    },
+    "screenshots/studio-assistant/cancel-retry-original-lecture.png": {
+      "sha256": "ed25dafe421083ccaa0bda9608f0c18f01285d25256af02db5e22990ea94f0c1",
+      "gzipSha256": "e460e0e074d776b92ad71db4673c76dbba180fda40235c96640a69c0c49415f5",
+      "bytes": 117056
+    },
+    "screenshots/studio-assistant/directory-state.json": {
+      "sha256": "acb24b77f19e4e3e6db3dd26d4b1b3b5c70924f6c935d77b329005c5d162c4f9",
+      "gzipSha256": "54b3fe758f2d4efd5e04c6f34cba4281ea78ed375289a3575f5b7786de027a7f",
+      "bytes": 240
+    },
+    "screenshots/studio-assistant/directory-state.png": {
+      "sha256": "a3a1e8f9e187bb7c3144b947bef0bd2df29524b32f8d8720fccfdb3d8ebf1b8e",
+      "gzipSha256": "de2c2ca7e3bde63b42c33622b757ba048c63e86a3130203e61df2e79ac7e52dc",
+      "bytes": 79999
+    },
+    "screenshots/studio-assistant/entry-1440-layout.json": {
+      "sha256": "817cbc508c57c14aaa1e35f73431d983e28782f253e0c7b482715757732cf650",
+      "gzipSha256": "9e519ec511f06637ccc954c05e8f59cba890e2bb199cbc4d02c1f41593ac1f2a",
+      "bytes": 960
+    },
+    "screenshots/studio-assistant/entry-1440.png": {
+      "sha256": "a700c84672f6f63cfa0643e458fe9b3cc431d063a4f2913d1af6fc44f03b65b8",
+      "gzipSha256": "581bb1582cde80b76561559a99da418433b6f991c29a818761d3321f0ac7c36e",
+      "bytes": 84052
+    },
+    "screenshots/studio-assistant/entry-390-layout.json": {
+      "sha256": "28dbdeabd2d4a502aec22fc99f44f1114c529cafc8f92e52c2e149cc36f02936",
+      "gzipSha256": "6e58c76553c5f9257a8eed105ecec07762c77de10b28ab3c1a32bf853a45d95e",
+      "bytes": 860
+    },
+    "screenshots/studio-assistant/entry-390.png": {
+      "sha256": "0a95ebb58c76cda85c77e256dfab6112ec8dc388d76cc5629e226c13d6f05bec",
+      "gzipSha256": "46732f8f6e638b69afd9363772db10ee66f0b362c9c7ca17e0ecc4e5c422da2d",
+      "bytes": 51722
+    },
+    "screenshots/studio-assistant/entry-768-layout.json": {
+      "sha256": "f860368c9b4e2f83130bc43c5972fbe2edc04f3cdf05b0a1262d5d6c7316bd68",
+      "gzipSha256": "0563dfd1b3eff22a244764ef5385512063ca33cade5618b3ceb66118d9c529a2",
+      "bytes": 860
+    },
+    "screenshots/studio-assistant/entry-768.png": {
+      "sha256": "673b3ceefb3db5f1aa582f207e4dd12d9fd03a390447bb10fb164355c73b8bc7",
+      "gzipSha256": "8a8af0695e70bb6bb13f8f2967ae3d91f9f7a507379d289b9b2e639ef1512f91",
+      "bytes": 55749
+    },
+    "screenshots/studio-assistant/entry-880-layout.json": {
+      "sha256": "f68cd29aaf9c59e5ded1fc12ff0868e146673ecb6c172331b2138c99c2f881b1",
+      "gzipSha256": "91dc6a3440565e365f7d05cad03d80b7406c712270cb8ad4db02a60637058fd4",
+      "bytes": 862
+    },
+    "screenshots/studio-assistant/entry-880.png": {
+      "sha256": "7868f58225c6d05a1156deca25661e3f5c0b9cec38baa1d950ea2c07431a3358",
+      "gzipSha256": "770067879e29a054f6ec539d899c6d4ae93ca723c809c67a51ebd1e3b18cf25f",
+      "bytes": 56615
+    },
+    "screenshots/studio-assistant/navigation-retained-independent.png": {
+      "sha256": "dc1f4176b13f50bd4b767032e9404e12a24daee71ad30ecbffc0025cd433fd1b",
+      "gzipSha256": "00e94f196d6ab826eda8596ea948c3f46f51d31c73156fc35f6fa93a01edcb7e",
+      "bytes": 74691
+    },
+    "screenshots/studio-assistant/navigation-retained-lecture.png": {
+      "sha256": "3b3cd07a48a5b4ae28e07ad7d97ffeadd4813d27a59149f7cddf2fe5bb996ede",
+      "gzipSha256": "e7d9604ce0518c909ee713d7ced52a07321c660e57bd72ca38a3c51a2f256cab",
+      "bytes": 80861
+    },
+    "screenshots/studio-assistant/readonly-pending-and-history.png": {
+      "sha256": "d926470be222cc00ae58dbfeac7c23f934cbf15cf53674c41964040609e95097",
+      "gzipSha256": "342c1a21e00967f8a29358fc16163ff8dec2750149766bf00d8e7c4820ab0a0e",
+      "bytes": 123520
+    },
+    "screenshots/studio-assistant/recovered-original-request.png": {
+      "sha256": "41a7dbe518c140ec913fdc6b86a3904d49448a8323e9640bffb0a49403ed56c1",
+      "gzipSha256": "e01c10c937debe504e2b99d450dc87b367c12320b8fedccc6cc4207d98ac3f62",
+      "bytes": 113414
+    },
+    "screenshots/studio-assistant/retained-original-readonly.png": {
+      "sha256": "2c9510d2748b2fe6fa2d6dc797dc37df560bd34204a663f31780763139dfe191",
+      "gzipSha256": "395a7ce889525fed43979fe0657b04881323f7b3095ebfc6811b2e22b4a55e16",
+      "bytes": 89763
+    },
+    "screenshots/studio-assistant/saved-original-model.png": {
+      "sha256": "884e9f03c2e876067926526480a5b92e80050facabb614ae4ff6c47bf306f8ba",
+      "gzipSha256": "8cd2e1d75eef528422ac48e41bae1bc34b7bff97336acadf047b7084c5c3343f",
+      "bytes": 114575
+    },
+    "screenshots/studio-assistant/separate-drafts.png": {
+      "sha256": "9646a933fa0213727a5b38f81806ad33f1822b8005484dd0d6536ae5ae63a976",
+      "gzipSha256": "316c4d1a26d04220f0b69b940172d9f988a965239a0231f5f9f2ea0602c5cffa",
+      "bytes": 73848
+    },
+    "screenshots/workspace/workspace-calendar-empty-desktop.png": {
+      "sha256": "8e84fef31c27642ad9df3d14b892b880e04acc1ade9d2b3cc0dcfcc5c2cce315",
+      "gzipSha256": "66aca937e30fe9ba23ff60a7ea657c5b279739b067a006cafbf56c3c19252a24",
+      "bytes": 118801
+    },
+    "screenshots/workspace/workspace-calendar-mobile.png": {
+      "sha256": "3f03cc343163b94b6f344f20250b6a3ef511ef7e1aa4fa98b37ad492fe10d32a",
+      "gzipSha256": "765019a871908bdc29fa02bb27ffd7b679d2eb625f1b6719cd667a4d600233e2",
+      "bytes": 67372
+    },
+    "screenshots/workspace/workspace-calendar-tasks-desktop.png": {
+      "sha256": "cbf8845fdf07a4503ecf3bf71f617de3e4ae83a5727e4eccdc386699143c7f56",
+      "gzipSha256": "b6546dc14f462195913e097ba531f092c91deeb9e249a926a7fbc267bfd060e2",
+      "bytes": 117629
+    },
+    "screenshots/workspace/workspace-courses-desktop.png": {
+      "sha256": "5e41baf6dc970d54f3d3b9b9cf8d8c927abfa3603de194b728bd32f7670b6678",
+      "gzipSha256": "aebd325320a797caf0f85b233a2234bf87f18ddb34ccf98d935d198a7914334a",
+      "bytes": 136184
+    },
+    "screenshots/workspace/workspace-courses-mobile.png": {
+      "sha256": "4c10593ab8c8192519f5d36c1e48631291cba0d436a62e6f1d689b35f7ff9808",
+      "gzipSha256": "1b16f35f38de9cc28875d204e505e94bb9793cdf3d1c84930d4d1eacde33f532",
+      "bytes": 94770
+    },
+    "screenshots/workspace/workspace-outline-desktop.png": {
+      "sha256": "82cfa9ab8fc4035015e282452dee8e96e7e59687bca571cae9c840e3886b83dc",
+      "gzipSha256": "789deb8d2a109a973ccccdeac297ecaab01e8335ef04cc564e58fff27dd33d55",
+      "bytes": 177127
+    },
+    "screenshots/workspace/workspace-outline-mobile.png": {
+      "sha256": "29926d88ef51a59a728ab4ef8a2145d0091fb831ab7ca059d83f43475ac129ea",
+      "gzipSha256": "7537fe9e88aea6e0b1d442a56d084404e044b634e981d40e73c631041aa3aa99",
+      "bytes": 159440
+    },
+    "test-results/.last-run.json": {
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+      "gzipSha256": "ab2773fce076cedf886e7b45072ea49d0dfc6bdbbca2d9e3779ab76473918f40",
+      "bytes": 45
+    },
+    "actual-qa-source/app/studio/studio-instant-assistant.tsx": {
+      "sha256": "8d6adda64133068bb09a85ded6e61286a18c84fcce83662d2184734854c65de1",
+      "gzipSha256": "6cbfe950b7512ee4fcd0fbe86a00928b3ea34622666acc499e328b0ca40bbdfb",
+      "bytes": 14181
+    },
+    "actual-qa-source/app/studio/studio-instant-assistant.css": {
+      "sha256": "eb09675d8e6fda0f2aad7afccab4be6eac01308970818d472044cdc9a715e962",
+      "gzipSha256": "427ff42b3f7d737781c005e0324b47faecd1906a9da45a9fe57c787cbbbed392",
+      "bytes": 6626
+    },
+    "actual-qa-source/lib/original-teaching-fonts.ts": {
+      "sha256": "5b06bcff9c0747a47bc3e69301039b0aaaa19cf6505f3c713d0d1eaec0e6b019",
+      "gzipSha256": "82eaf60b20a1433fae840fc6dd71dc738e168514d19d106f19bd41f8f70641f4",
+      "bytes": 6410
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "passed": false,
+  "passedTests": 6,
+  "failedTests": 2,
+  "originalAttempts": 8,
+  "retries": 0,
+  "declaredCapturedFamilyFaces": 2207,
+  "capturedRegistryFaces": 815,
+  "existingUiMiSansDeclarations": 565,
+  "scope": "Actual retry failure reproduced plus diagnostic duplication. The first diagnostic expected815 total without accounting for the existing UI MiSans sheet; narrow the next invariant to board-only Virgil/Xiaolai faces. CSS import and controlled board registry both register the captured sheet. No application correction yet.",
+  "files": {
+    "data/qa/lecture-font-registry-before.json": {
+      "sha256": "0172998540e13d4bcf202c0de306f92bf847a09556fe07e40869b9a24d6e33cb",
+      "gzipSha256": "78feeea35f56592b350b62553ca4e8afa734c8aed0466e8c96ada688d40a4ad0"
+    },
+    "data/qa/lecture-font-registry-before.log": {
+      "sha256": "8e272c48fb93c3c4bf34f6651a5558e72c63aeb4a3ebf78682208cdd5cd60308",
+      "gzipSha256": "8f09e91d8aea65a3d80af9fbcfa0a14672785874141aaa5143013b3eab1b9a6d"
+    },
+    "apps/web/lib/original-teaching-fonts.ts": {
+      "sha256": "5b06bcff9c0747a47bc3e69301039b0aaaa19cf6505f3c713d0d1eaec0e6b019",
+      "gzipSha256": "82eaf60b20a1433fae840fc6dd71dc738e168514d19d106f19bd41f8f70641f4"
+    },
+    "apps/web/lib/original-teaching-fonts.json": {
+      "sha256": "e4319ea46a0b17947a6c0c606a87f86907c5e6d98271a76031770c9b373b2a02",
+      "gzipSha256": "7a0342fe87cf8ae3cfde62c3932cd773170239352b10b43cb79834351566947f"
+    },
+    "apps/web/app/studio/studio-instant-assistant.css": {
+      "sha256": "a533f8312704b0410ec3f273e9438a263ea2f2295d7edec963588fc46765c14e",
+      "gzipSha256": "95fe0d99db641b16bf535cc2eceeb12a20e1893ca55fb8a75244f62ac340af22"
+    },
+    "apps/web/app/studio/studio-instant-assistant.tsx": {
+      "sha256": "09b848b85945db847d73021b01930c29d40b0ec2f9fa77ebddee4e43f6c3d08c",
+      "gzipSha256": "7b54d9aebd11dfe43647fb14047e32aee917d4b3245024280b1319e8f5c46434"
+    },
+    "tests/e2e/original-teaching-fonts.spec.ts": {
+      "sha256": "11835b8dec399ed936d9c1cb64402868225a764e25fc996b8cfd675d04b3c289",
+      "gzipSha256": "25a49190e51843f2f181e9772792364ccb1d5117bf3da1d2378483e9543c05b2"
+    },
+    "screenshots/original-math-font-isolation/actual-math-editor-fonts.json": {
+      "sha256": "22db7a6ba3af8d6945076a76da99571f9d0f1682d749cd87487b744dc70b024f",
+      "gzipSha256": "fbcff73a90036657a10d6f2b989a0bc21be227c89ae018193cedd8a0e44a427a"
+    },
+    "screenshots/original-math-font-isolation/actual-tall-formula.png": {
+      "sha256": "a52dbee463f0de322b963b033a742ec23b5d2a53cc5e37116cfca5a52419665e",
+      "gzipSha256": "b90a24e82c5888a0f80c1ea8cd11f67311aa039b1e081d02a66670f6eb9ef145"
+    },
+    "screenshots/original-teaching-fonts/actual-board-fonts.png": {
+      "sha256": "1aa7bc1271cacd1b97619145fc2dd5788c39a8de9c4e8e7f7cede61dfe2a58ce",
+      "gzipSha256": "ac6573ea06603cc7f54b62e1aa3cfe47acb008c971d2986eeb8541c1475957c5"
+    },
+    "screenshots/original-teaching-fonts/actual-loaded-fonts.json": {
+      "sha256": "58a087ea94bc6391f8e5afeae0acfb38daaebaee8f27b087fac7bd5d19007196",
+      "gzipSha256": "0a49978129dfc892250f9007e70164f9d0923f447b0e9fb2a8364e8f54400254"
+    },
+    "screenshots/original-teaching-fonts/single-registry-before-assistant.json": {
+      "sha256": "cdca0ccb0db5ff16f164a28a0bb5528c3d230d4b0ea7004f7b4fddc84abbcd72",
+      "gzipSha256": "9d479e463ad0b997804cdecde82a842722b602976aa2fcd55b88f9f5f748dfce"
+    },
+    "screenshots/original-teaching-frames/cumulative-second-scene.png": {
+      "sha256": "47b491b204f1a050b6a1c8e83bd621df42daa9cc0c07c75f8d828ce3df9aa079",
+      "gzipSha256": "a36c071ab15496128ebc7f73f2dff3e772b84e316eb9af1bfcfe7dfc8d40bcdf"
+    },
+    "screenshots/original-teaching-frames/original-shell-1280.png": {
+      "sha256": "16828b73b3b24dbcd9e2b6257043413fcc95693d03451a44350a90b7077d168f",
+      "gzipSha256": "62b7b54b6e420c151fe04303c0bfe75ca3145d637cdc0debbd291503e922b551"
+    },
+    "screenshots/original-teaching-frames/original-shell-390.png": {
+      "sha256": "60269af8a89bf9e854520f63b8cd09cd486e2bbe3532a2982a66dd1c50849585",
+      "gzipSha256": "7baaa26c188a57f0e05469e719c0c35fa4b6abb5382566561dc6d4cfcb716918"
+    },
+    "screenshots/original-teaching-frames/original-shell-768.png": {
+      "sha256": "4a99467b8b3ebe912021ab531273e09c9eb385cca796aa940e7d014cca33fc91",
+      "gzipSha256": "a2899e9e31925686adbeb70eb5ab41a5061538962852d1e1b8525da453dd1e67"
+    },
+    "test-results/.last-run.json": {
+      "sha256": "088d5df9ba60956059adb1157f01bac791a7a6850ed80e7cb934d3e15c6f2cc7",
+      "gzipSha256": "74c55822c5856f582b64f22bb21dcbdb180e256b550c92a318aa098dfa0d5122"
+    },
+    "test-results/original-teaching-fonts-or-0b567--prepares-its-real-UI-fonts/error-context.md": {
+      "sha256": "48da75062966b0ebaa3b0ec9bcd4b1a423074f7b339caecb3bfb526366589296",
+      "gzipSha256": "88c4cf824279ef4ca8e05d2045646eb66b9d172f1965b8431e395f6c3a516bde"
+    },
+    "test-results/original-teaching-fonts-or-0b567--prepares-its-real-UI-fonts/test-failed-1.png": {
+      "sha256": "8a335a7471739460dc38d10b497430755d95f3deb18fcea80ead9ebf5f398acc",
+      "gzipSha256": "e0b8e502572b54b46d16f29e1d4fc7da3b24c0915ae901da89cd1fbc6f847bdf"
+    },
+    "test-results/original-teaching-fonts-or-0b567--prepares-its-real-UI-fonts/trace.zip": {
+      "sha256": "0946af5bb51c6d6179dea0fd6d748e9e19c070c115ad20f3a86b7511bf9cee6b",
+      "gzipSha256": "a1216f7c145ce5d90a0397e714e250785c8d2d92ade17a99871a712a8e2e4e0d"
+    },
+    "test-results/original-teaching-fonts-or-2afc4-try-recovers-the-same-board/error-context.md": {
+      "sha256": "cd6879afdc05c3dd13bbddb41dad4394ab70504e6abbdcdea4968fac6af73b01",
+      "gzipSha256": "dc30c23e2c07c26c7a6182c9b87a6c9afc18a5059b427df1b8a4a169307e9cd6"
+    },
+    "test-results/original-teaching-fonts-or-2afc4-try-recovers-the-same-board/test-failed-1.png": {
+      "sha256": "ead13faaed6137cd78c41e3a23a1a94a23d723d6dc01e7078c6275e18e8b26f5",
+      "gzipSha256": "a0c575807fd98a7a8d3d8d1c1b8a97222eccff9e387d34254446cb3fd555d3a2"
+    },
+    "test-results/original-teaching-fonts-or-2afc4-try-recovers-the-same-board/trace.zip": {
+      "sha256": "9d8e702f62ca8f21e161ce450cb1024dd0a35ab075ee75ba46618b7b76a374e3",
+      "gzipSha256": "9abafcf255c73ecb947ef3590e0f14b222766c0b4daa47f814bddc862a08b365"
+    }
+  }
+}

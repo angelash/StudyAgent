@@ -128,3 +128,14 @@ test('original fonts: captured math faces stay isolated and the real formula edi
   for(const file of manifest.files){const font=await page.request.get('/vendor/mathlive/'+file.path),bytes=await font.body();expect(font.status()).toBe(200);expect(bytes.length).toBe(file.size);expect(createHash('sha256').update(bytes).digest('hex')).toBe(file.sha256);}
   const directory=browserEvidence('original-math-font-isolation');writeFileSync(join(directory,'actual-math-editor-fonts.json'),JSON.stringify({capturedMathAliases:captured.filter(family=>family.startsWith('HKOriginal-KaTeX_')),requests,loaded,actualFontDigests,manifest},null,2)+'\n');await field.screenshot({path:join(directory,'actual-tall-formula.png')});
 });
+
+test('original fonts: assistant shares the controlled registry without duplicate board faces and prepares its real UI fonts',async({page})=>{
+  const registry=JSON.parse(readFileSync(join(process.cwd(),'apps/web/lib/original-teaching-fonts.json'),'utf8')),families=['Virgil','Xiaolai'],expected=registry.families.filter((row:{family:string})=>families.includes(row.family)).reduce((sum:number,row:{fontFaces:number})=>sum+row.fontFaces,0);
+  const count=()=>page.evaluate(names=>Array.from(document.fonts).filter(face=>names.includes(face.family.replace(/^['"]|['"]$/g,''))).length,families);
+  await page.goto(await board(page));const dialog=page.getByRole('dialog',{name:'白板视频',exact:true});await expect(dialog).toHaveAttribute('data-original-font-status','ready');
+  const declared=await count();writeFileSync(join(browserEvidence('original-teaching-fonts'),'single-registry-before-assistant.json'),JSON.stringify({expected,declared},null,2)+'\n');expect(declared).toBe(expected);
+  await page.goto('/studio?view=home&mode=instant&audience=independent');await expect(page.locator('.sa-instant-workspace')).toHaveAttribute('data-original-font-status','ready');await expect(page.getByLabel('想一起看看什么',{exact:true})).toBeEnabled();
+  expect(await count()).toBe(expected);const loaded=await page.evaluate(()=>Array.from(document.fonts).filter(face=>face.status==='loaded').map(face=>face.family.replace(/^['"]|['"]$/g,'')));
+  for(const family of ['Satoshi-Regular','Satoshi-Medium','Satoshi-Bold','MiSans'])expect(loaded).toContain(family);
+  await expect(page.locator('link[data-original-teaching-fonts]')).toHaveCount(1);
+});
