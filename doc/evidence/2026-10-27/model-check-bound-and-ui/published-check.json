@@ -1,0 +1,285 @@
+{
+  "version": 1,
+  "kind": "xiaojiu-text-qualification",
+  "selection": "complete-current-application-catalog",
+  "status": "complete",
+  "startedAt": "2026-10-27T05:01:16.667Z",
+  "completedAt": "2026-10-27T05:04:59.433Z",
+  "catalogFingerprint": "a216046ec0f758591ee584714f39c3a3263ba16825e8f29a8d01674d41bc2d85",
+  "connectionFingerprint": "5866431f4afcba995ec74270a8eee15aa4d26c1d906cd611d58d9eef9f2fd55e",
+  "sourceReceiptSha256": "a7b322006f1f9637dadab0c544d915e294c3aba7a48eb255e47550aae74d40bf",
+  "models": [
+    {
+      "id": "claude-fable-5-1",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:03:10.828Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 10637
+        }
+      ]
+    },
+    {
+      "id": "claude-opus-5",
+      "status": "failed",
+      "completedAt": "2026-10-27T05:04:59.410Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "failed",
+          "elapsedMs": 60893,
+          "failureKind": "provider-error"
+        },
+        {
+          "attempt": 2,
+          "status": "failed",
+          "elapsedMs": 60927,
+          "failureKind": "provider-error"
+        }
+      ]
+    },
+    {
+      "id": "claude-opus-5.5",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:01:50.286Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 10202
+        }
+      ]
+    },
+    {
+      "id": "claude-sonnet-5",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:01:55.306Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 4582
+        }
+      ]
+    },
+    {
+      "id": "deepseek-v4-flash",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:01:40.046Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 4288
+        }
+      ]
+    },
+    {
+      "id": "glm-5.2",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:03:00.154Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 20926
+        }
+      ]
+    },
+    {
+      "id": "glm-5.3",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:02:52.518Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 11333
+        }
+      ]
+    },
+    {
+      "id": "glm-5.3-flash",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:02:02.742Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 27922
+        }
+      ]
+    },
+    {
+      "id": "gpt-5.5",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:02:39.195Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 6371
+        }
+      ]
+    },
+    {
+      "id": "gpt-5.6-luna",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:02:41.151Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 12968
+        }
+      ]
+    },
+    {
+      "id": "gpt-5.6-sol",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:02:32.794Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 33179
+        }
+      ]
+    },
+    {
+      "id": "gpt-5.6-terra",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:02:28.152Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 25375
+        }
+      ]
+    },
+    {
+      "id": "gpt-6-astra",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:01:25.100Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 7525
+        }
+      ]
+    },
+    {
+      "id": "gpt-6-luna",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:01:35.717Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 10855
+        }
+      ]
+    },
+    {
+      "id": "gpt-6-sol",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:01:59.577Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 4234
+        }
+      ]
+    },
+    {
+      "id": "gpt-6.1-sol",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:01:24.381Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 7629
+        }
+      ]
+    },
+    {
+      "id": "grok-4.6",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:02:57.557Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 5002
+        }
+      ]
+    },
+    {
+      "id": "grok-4.7",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:01:34.782Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 9645
+        }
+      ]
+    },
+    {
+      "id": "mimo-v2.6-flash",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:03:22.071Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 6004
+        }
+      ]
+    },
+    {
+      "id": "mimo-v2.6-pro",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:03:16.034Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 5171
+        }
+      ]
+    },
+    {
+      "id": "mimo-v2.6-pro-ultraspeed",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:03:25.326Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 3218
+        }
+      ]
+    },
+    {
+      "id": "qwen3.8-max",
+      "status": "passed",
+      "completedAt": "2026-10-27T05:03:34.744Z",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "elapsedMs": 9379
+        }
+      ]
+    }
+  ],
+  "receiptFingerprint": "d6762e4811692807ba6894a057e3fd8a7ac08d4ad4670597cde9a43b949f8a82"
+}

@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "head": "16cea683e50d1f28e899aa2237fe5fa72de51733",
+  "startedAt": "2026-10-27T05:09:32.831Z",
+  "status": "complete",
+  "passed": true,
+  "scope": "One anonymous actual Nest HTTP default assistant request and exact durable replay. Real configured Xiaojiu CLI, isolated SQLite and no child or production data. Not a quality or full model availability claim.",
+  "sourceAndCompiledSha256": {
+    "apps/api/src/modules/ai/xiaojiu-models.service.ts": "3eaaa51d51bed6e407b555bb856e3c7f8677f31f9d331603c8810389c849c1ba",
+    "apps/api/dist/apps/api/src/modules/ai/xiaojiu-models.service.js": "47e69c13a23fe86418a1d89d1c9c37f174cd37af9197e77069a4dd2a5b65edeb",
+    "apps/api/src/modules/ai/xiaojiu-chat.service.ts": "2294ef3d8b249943b6b9df1664bf4ca2d7ef7492f2787764169562bd33b48050",
+    "apps/api/dist/apps/api/src/modules/ai/xiaojiu-chat.service.js": "1e048b1e91cbcd034d1d0a11758469d730c9ddc8741ed40127e2807040b42ab4",
+    "apps/api/src/modules/ai/xiaojiu-text-transport.ts": "14db8cf647f618539e7ddc6ae11d6f2bcfbb951acab6dcd11bad632bc9859671",
+    "apps/api/dist/apps/api/src/modules/ai/xiaojiu-text-transport.js": "6ff23d3f45adba4f1d96cea70eec363ff3e03991b136930c7fc4d21cd2fb8e53",
+    "apps/api/src/modules/ai/codex-command.ts": "468ec873c3c105d6e5b5ad91659cab8e1595c2d2f2f1c65bdb04a32d6419dd58",
+    "apps/api/dist/apps/api/src/modules/ai/codex-command.js": "6f9f7465ea7479d2ca650c181b4af01aeac958063b22ea6d982e30c36fef20fa",
+    "apps/api/src/modules/ai/xiaojiu-model-qualification.ts": "dd4ecf66d0a7cc1d0240d1292cc15067b6bbab6cb84217e3d901fc38a6d54aee",
+    "apps/api/dist/apps/api/src/modules/ai/xiaojiu-model-qualification.js": "72ecb72884a060485223e60abe1450c676d4b7f20257a0e318329ea727c37784",
+    "apps/api/src/modules/ai/ai.service.ts": "6b05f9f200bb9f39035a2ea70dd70aa9d1da586823f9e30e5279f54597c9758e",
+    "apps/api/dist/apps/api/src/modules/ai/ai.service.js": "bcd6c305ebef4b02556abb54f3cd9ed047ab21271b1a7f9a27bbd886c4e992d2",
+    "apps/api/src/common/terminate-child-process.ts": "8701bac014858ba245a30e19d67ee9da718c4df3bd82e9346398e123d5615cdc",
+    "apps/api/dist/apps/api/src/common/terminate-child-process.js": "9107bc90ba07dbfb68e9e57aef6cfab74fa30a52ca40acd72f69406f8fc912ae",
+    "packages/config/src/index.ts": "bd070e12bbee47ce2f2dfb94835a780504133c152f6df9512bcda59a4da02799",
+    "packages/config/dist/index.js": "e270598a6af676f2aa125d3f4ebc4a291d15917b46fc7e2b23f2d036f61c065d",
+    "packages/contracts/src/ai-models.ts": "c27640b994c433be31aa6f048e727446f86e68252d695732740f5dd652b0df63",
+    "packages/contracts/dist/index.js": "d446624c3c5e09a38a321f59a19ce06a882006fb3160b86e247087c7a6b75028",
+    "scripts/qa/qualify-xiaojiu-models.cjs": "16f82ffba5474369402429bf25d0263d8055ee4c97a38efee86e9b9a276723f0",
+    "scripts/qa/publish-xiaojiu-model-qualification.cjs": "622fa658754729471960a6f32c75ddd539a7c078885dcd58e51d201954172b3b"
+  },
+  "cliAttempts": [
+    {
+      "attempt": 1,
+      "status": "started",
+      "elapsedMs": 0
+    },
+    {
+      "attempt": 1,
+      "status": "succeeded",
+      "elapsedMs": 5419
+    }
+  ],
+  "supplierCalls": 1,
+  "compatibilityCalls": 0,
+  "catalogCheck": {
+    "scope": "anonymous-text-json",
+    "receiptFingerprint": null,
+    "completedAt": null,
+    "passed": 0,
+    "failed": 0,
+    "unknown": 22,
+    "allModelsPassed": null,
+    "reason": "not-checked"
+  },
+  "modelId": "deepseek-v4-flash",
+  "modelName": "DeepSeek V4.1 Flash",
+  "reply": "先逐句读题，用笔标出数字、单位、明确关系和限定词；把每个已知条件改写成一句短话，再单独写出题目要求。作答前逐项核对：每个条件是否已理解、单位是否统一、条件与要求之间的联系是否找到。若卡住，先回头确认哪项条件尚未对应，作为补充读题和验证的依据；一次未对应不代表能力薄弱。",
+  "anonymousMessage": "请给一个简短的匿名学习建议：如何先找清题目中的已知条件再做答？不要推测我的年龄、年级或已有能力。",
+  "messageCount": 2,
+  "replayIdentical": true,
+  "sourceReceiptSha256": "a7b322006f1f9637dadab0c544d915e294c3aba7a48eb255e47550aae74d40bf",
+  "completedAt": "2026-10-27T05:09:40.940Z"
+}
