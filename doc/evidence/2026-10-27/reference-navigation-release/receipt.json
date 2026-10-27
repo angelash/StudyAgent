@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-27T12:40:41.368497+00:00",
+  "passed": true,
+  "files": [
+    {
+      "file": "candidate.json.gz",
+      "originalSha256": "672b168cb6a1b516cbc9bbbcbe8c40d86e5245546e8ff656ace0b417151fb1ca",
+      "originalBytes": 54126
+    },
+    {
+      "file": "backup-verified.json.gz",
+      "originalSha256": "ff6629f9c990f638524a1538e4741038b2d00c1ac296188d24922eb5a042435e",
+      "originalBytes": 452
+    },
+    {
+      "file": "build-backup-verification.json.gz",
+      "originalSha256": "61f20ad83bc71da823eb75e2c7ae251ab235360b3b6f6bd32a8c3877b4486f77",
+      "originalBytes": 248
+    },
+    {
+      "file": "stop-transitions.json.gz",
+      "originalSha256": "f91facaf0d3a5aea66919fa0c6f956bc71cf5aed1c9ad4cde9341dbc9b2ca00a",
+      "originalBytes": 389
+    },
+    {
+      "file": "runtime.json.gz",
+      "originalSha256": "041c28a1c912f176a2ea3259e948b69ea7052a5ba07617afca40bdb2ec955186",
+      "originalBytes": 519873
+    },
+    {
+      "file": "production-build.log.gz",
+      "originalSha256": "e938d7dcaf2ddeadd38ac06652d435f143d2164d1dc2075081b2c68de65b271b",
+      "originalBytes": 2935
+    },
+    {
+      "file": "production-start.log.gz",
+      "originalSha256": "8831c32f0ee3440b0eca8e3694f4a090f555ae8b11826760f8472d2397e44f0e",
+      "originalBytes": 4550
+    }
+  ],
+  "scope": "Actual main production build, three observed owned guardians, anonymous HTTP/private-route gates and served asset hashes; stopped-service consistent schema20 database plus969 old compiled rollback files. No private configuration contents, research-asset backup or full restore rehearsal."
+}

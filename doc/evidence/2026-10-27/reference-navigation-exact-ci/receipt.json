@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-27T12:27:46.110408+00:00",
+  "passed": true,
+  "head": "0e5582fb80ea824a462ea9cea2e15c8be9c40f64",
+  "ciRun": 40498629069,
+  "jobs": [
+    {
+      "name": "application",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "browser": {
+    "passed": 390,
+    "originalAttempts": 390,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0,
+    "originalSha256": "87f773c4f0657fe4d87d8772b19c046495147e9a7d7a0b947a3fd70b79fcf881"
+  },
+  "linuxApi": {
+    "passed": 1461,
+    "failed": 0,
+    "environmentSkipped": 68,
+    "originalSummary": "application\tRun npm test\t2026-10-27T11:54:21.0965841Z       Tests  1461 passed | 68 skipped (1529)"
+  },
+  "files": [
+    {
+      "file": "run.json.gz",
+      "originalSha256": "c1bf6d046e4eb1a4693c3e74a89ddf82a3b1d004c1488eaef57cb1b8b271418c",
+      "compressedSha256": "7382b226ca828da3bc146af05ff146536f3538a4c449ca670ef74aaaa00e6659",
+      "originalBytes": 20616
+    },
+    {
+      "file": "jobs.log.gz",
+      "originalSha256": "466f1629f8b881ab2a818288ea105c1c6c06ad916107134ce871200e7abd2ea7",
+      "compressedSha256": "6314816b326d73fbbebd61a83a6920c9154c3cf6de71798d44f4f07aaea7a42d",
+      "originalBytes": 1004884
+    },
+    {
+      "file": "browser.json.gz",
+      "originalSha256": "87f773c4f0657fe4d87d8772b19c046495147e9a7d7a0b947a3fd70b79fcf881",
+      "compressedSha256": "7879d28abe090ddea27a3a191f661ba4d96d0671da867c5f7bfe695dc85fbb15",
+      "originalBytes": 438866
+    }
+  ],
+  "scope": "Exact0e5582f Linux application/PostgreSQL/browser CI. Complete390 original attempts, zero retry. Earlier f737129 remote389 cases/390 attempts with one retry and failure remain separate."
+}

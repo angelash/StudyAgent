@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-27T12:40:41.380027+00:00",
+  "passed": true,
+  "status": "runtime-delivered",
+  "revision": "9907bdf966ac0247caf2fc3a6e674308a0ea4b6e",
+  "applicationRevision": "7fa465f177aaa1b87ea9b9ac134bda2c9dc21cb1",
+  "ciHead": "0e5582fb80ea824a462ea9cea2e15c8be9c40f64",
+  "ciRun": 40498629069,
+  "schemaVersion": 20,
+  "webBuildId": "lDcYsyiN0CUDuvRiFxrWK",
+  "localApi": {
+    "passed": 1469,
+    "failed": 0,
+    "environmentSkipped": 60,
+    "head": "0edc3d5dd1676cf880986f8054a1611b23d3af98",
+    "reportSha256": "14aadb2ee773b965c8737431cdf0ee0ee0a50dc4aef9fc03c21db72097c91482",
+    "reason": "API/package source/tests and all362 non-Web compiled inputs remain byte-identical to0edc3d5. This137 candidate changes navigation/components/CSS and browser journeys, including real blueprint focus handoff; original1469/60 result retained, not a new API execution."
+  },
+  "linuxApi": {
+    "passed": 1461,
+    "failed": 0,
+    "environmentSkipped": 68
+  },
+  "localBrowser": {
+    "passed": 390,
+    "originalAttempts": 390,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0
+  },
+  "remoteBrowser": {
+    "passed": 390,
+    "originalAttempts": 390,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0
+  },
+  "focusBrowser": {
+    "passed": 11,
+    "originalAttempts": 11,
+    "retries": 0
+  },
+  "originalFailures": "f737129 local389 cases388passed/1failed; remote389 cases390attempts with one retry still failed. Mobile blueprint10cases9passed/1failed then11cases10passed/1old phone flow failure; all originals retained separately.",
+  "runtime": {
+    "httpChecks": 1259,
+    "originalAssets": 959,
+    "voiceSamples": 6,
+    "compiledInputs": 362,
+    "rawCompiledMatches": 361,
+    "stableIntervalMs": 290703,
+    "protectedConfigurationPreserved": true,
+    "localEnvironmentPreserved": true,
+    "oldBuildRollbackFiles": 969,
+    "consistentBackupVerifiedFiles": 1,
+    "assetsIncluded": false
+  },
+  "realModels": {
+    "passed": 21,
+    "failed": 1,
+    "total": 22,
+    "allModelsPassed": false,
+    "failedId": "claude-opus-5",
+    "scope": "Unchanged original anonymous complete text matrix and actual compiled read-only projection; no visual or continuing availability claim."
+  },
+  "wholeProductComplete": false,
+  "limitations": [
+    "Original logo/icons and course cover remain substitutes; no100percent pixel identity claim.",
+    "OriginalDPR/full states/audio/teacher/real-device/whole curriculum/longitudinal acceptance still pending.",
+    "138 internal teaching-tool legacy endpoints and full UI remain in development in an isolated tree."
+  ]
+}

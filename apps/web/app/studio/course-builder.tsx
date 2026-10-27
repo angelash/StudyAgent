@@ -6,10 +6,11 @@ import { apiRequest } from '../../lib/api';
 import { WorkspaceDialog } from './workspace-dialog';
 import './course-builder.css';
 
-export function CourseBuilder({ studentId, subject, selected, initialTitle, onClose, onCreated, onRefresh }: {
+export function CourseBuilder({ studentId, subject, selected, initialTitle, onClose, onCreated, onRefresh, returnFocus }: {
   studentId: string; subject: StudioSubject; selected: StudioOverview['selected']; initialTitle: string;
   onClose: () => void; onCreated: (course: StudioCourse) => void;
   onRefresh: () => Promise<void>;
+  returnFocus?: HTMLElement | null;
 }) {
   const atoms = selected?.atoms ?? [];
   const [title, setTitle] = React.useState(initialTitle.slice(0, 180)), [objective, setObjective] = React.useState('');
@@ -54,7 +55,7 @@ export function CourseBuilder({ studentId, subject, selected, initialTitle, onCl
       if (!request.signal.aborted) onCreated(course);
     } catch (reason) { if (!request.signal.aborted) { setError((reason as Error).message); setPhase('reviewing'); } }
   }
-  return <WorkspaceDialog onClose={close} busy={creating}><section className="ws-builder ws-course-builder" role="dialog" aria-modal="true" aria-label="课程蓝图">
+  return <WorkspaceDialog onClose={close} busy={creating} returnFocus={returnFocus}><section className="ws-builder ws-course-builder" role="dialog" aria-modal="true" aria-label="课程蓝图">
     <header><div><small>COURSE BLUEPRINT</small><h2>{preview ? '审阅课程蓝图' : '设计这次学习'}</h2></div><button type="button" aria-label="关闭课程蓝图" disabled={creating} onClick={close}>×</button></header>
     <ol className="ws-blueprint-steps" aria-label="创建课程步骤"><li aria-current={!preview ? 'step' : undefined}>1 · 目标与范围</li><li aria-current={preview ? 'step' : undefined}>2 · 审阅后确认</li></ol>
     {!preview&&<p className="ws-source-course-entry"><Link href={'/studio/source-courses?'+new URLSearchParams({new:'1',...(studentId?{studentId,subject}:{})})}>用自己的 PDF 或文字资料创建课程 →</Link></p>}
