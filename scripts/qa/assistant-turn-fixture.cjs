@@ -17,6 +17,29 @@ exports.installAssistantTurnFixture=function(app){
       return {ids,count};});res.status(201).json({data,error:null,meta:{fixture:true}});
     }catch{res.status(403).json({data:null,error:{code:'fixture_denied',message:'Synthetic assistant fixture rejected'},meta:{fixture:true}});}
   });
+  app.getHttpAdapter().getInstance().post('/api/qa/assistant/lecture-history',async(req,res)=>{
+    try{const data=await store.transaction(()=>{
+      const {requestToken}=require('../../apps/api/dist/apps/api/src/common/auth.guard.js'),{hashToken}=require('../../apps/api/dist/apps/api/src/modules/auth/auth.service.js');
+      const auth=store.find('sessions',{tokenHash:hashToken(requestToken(req))}),user=auth&&!auth.revokedAt&&Date.parse(auth.expiresAt)>Date.now()?store.find('users',{id:auth.userId,status:'active',role:'parent'}):null;
+      if(!user)throw Error('unauthorized');
+      const {classroomCourse}=require('../../apps/api/dist/apps/api/src/modules/learning/classroom-curriculum.js');
+      const {freezeAssistantLecture,assistantLectureReference}=require('../../apps/api/dist/apps/api/src/modules/ai/assistant-lecture-context.js');
+      const {assistantDigest}=require('../../apps/api/dist/apps/api/src/modules/ai/assistant-turn-record.js');
+      const course=classroomCourse(),lectureId=String(req.body?.lectureId??course.units[0].lectures[0].id);
+      const current=freezeAssistantLecture(course.id,lectureId),{fingerprint:_fingerprint,...safe}=current;
+      safe.description='匿名保留版本：使用另一组例子比较概念与适用边界。';const snapshot={...safe,fingerprint:assistantDigest(safe)},referenceId=assistantLectureReference(snapshot);
+      const existing=store.find('assistantSessions',{ownerUserId:user.id,contextRefType:'classroom_lecture',contextRefId:referenceId,contextItemId:lectureId});
+      const id=existing?.id??store.nextId('assistant_session');
+      if(!existing){
+        store.append('assistantSessions',{id,ownerUserId:user.id,userRole:'parent',studentId:null,subject:null,pageContext:'classroom',contextRefType:'classroom_lecture',contextRefId:referenceId,contextItemId:lectureId,status:'active',
+          scopeKey:assistantDigest([user.id,'parent',null,null,'classroom','classroom_lecture',referenceId,lectureId]),lectureSnapshot:snapshot});
+        store.append('assistantMessages',{id:store.nextId('assistant_message'),sessionId:id,sender:'user',content:'LECTURE_OLD_HISTORY_MARKER · 原讲座的匿名问题',createdAt:new Date(Date.now()-60000).toISOString()},
+          {id:store.nextId('assistant_message'),sessionId:id,sender:'assistant',content:'这是按匿名保留原版本给出的说明，请比较概念和反例。',source:'rules',createdAt:new Date(Date.now()-59000).toISOString()});
+      }
+      return {sessionId:id,courseId:course.id,lectureId,fingerprint:snapshot.fingerprint,referenceId,
+        href:'/studio?'+new URLSearchParams({view:'home',mode:'instant',lectureCourse:course.id,lecture:lectureId,lectureVersion:snapshot.fingerprint})};
+    });res.status(201).json({data,error:null,meta:{fixture:true}});}catch{res.status(403).json({data:null,error:{code:'fixture_denied',message:'Synthetic lecture history fixture rejected'},meta:{fixture:true}});}
+  });
   return async input=>{
     const n=(attempts.get(input.message)??0)+1;attempts.set(input.message,n);
     if(input.message.includes('[assistant-fail-once]')&&n===1)throw Error('Synthetic assistant failure');

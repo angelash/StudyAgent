@@ -4,7 +4,11 @@ export type AssistantHistoryMessage = { id: string; sessionId: string; sender: '
   sequence?: number; source?: AssistantReplySource; modelId?: string | null; modelName?: string | null; evidenceIds?: string[]; assistanceRecorded?: boolean; inReplyTo?: string };
 export type AssistantLocation = { sessionId: string; pageContext: string; studentId: string | null; subject: string | null;
   contextRefType: string | null; contextRefId: string | null; contextItemId: string | null; href: string | null };
-export type AssistantContextView = { contextVersion: string; location: AssistantLocation };
+export type AssistantLectureSummary = { courseId: string; courseVersion: string; courseTitle: string;
+  unitId: string; unitTitle: string; unitPosition: number; lectureId: string; lectureTitle: string; lecturePosition: number;
+  fingerprint: string; referenceId: string; current: boolean; href: string };
+export type AssistantLectureDescriptor = AssistantLectureSummary & { sessionId?: string };
+export type AssistantContextView = { contextVersion: string; location: AssistantLocation; lecture?: AssistantLectureSummary };
 export type AssistantTurnCommand = { requestKey: string; message: string; modelId: string; contextVersion: string };
 export type AssistantTurnView = { id: string; sessionId: string; requestKey: string; message: string; requestedModelId: string | null;
   modelId: string | null; modelName: string; source: AssistantReplySource; contextVersion: string; location: AssistantLocation;

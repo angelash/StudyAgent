@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "passedTests": 32,
+  "failedTests": 1,
+  "skipped": 0,
+  "cause": "The fixture changed a parent account role while retaining its parent token; the auth guard correctly returned401 before the handler. It did not create a valid student login.",
+  "next": "Retain the invalid-token rejection and create a real enabled child learning-code session to verify student403 without weakening authentication.",
+  "files": {
+    "report.json": {
+      "sha256": "cccb81fc25e6c61a5685b9abe770f3c23d51e260e6cebb38eb861f49009c5e0b",
+      "gzipSha256": "2f87c1f334d8190db93237f0e96a69022d47e74bdb7e66542da7559278cf1064",
+      "bytes": 16612
+    },
+    "report.log": {
+      "sha256": "175c6e6094ff5c0abcc4890fdc0a43d680cc6e6020233b7448bc3e784fa5ce87",
+      "gzipSha256": "9250f9fcc0f66d84f7eaf3b5f1678c05d96a7efa7d00eb7c02d5e275db96cafc",
+      "bytes": 487
+    },
+    "test-fixture.ts": {
+      "sha256": "8daa423989f15b0223014e1bfd359e55587197ef8b2a0a5dd0b73e075f5771aa",
+      "gzipSha256": "7b31c65f9bd8e877a8cafc28b7988954fbd67e976e75e38abef2e8958a404b0d",
+      "bytes": 11565
+    }
+  }
+}

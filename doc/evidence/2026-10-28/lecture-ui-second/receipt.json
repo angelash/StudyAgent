@@ -1,0 +1,177 @@
+{
+  "passed": false,
+  "passedTests": 5,
+  "failedTests": 5,
+  "skipped": 0,
+  "flaky": 0,
+  "originalAttempts": 10,
+  "retries": 0,
+  "scope": "Expanded first10 actual browser checks. Three larger responsive entries and durable pending resume passed. Mobile overflow, restored draft locator, lost-receipt message refresh, hidden empty log locator, and same-selection scope clearing require follow-up. First transitional screenshot remains separate.",
+  "files": {
+    "lecture-ui-second.json": {
+      "sha256": "5f9df37ea2a4e7cb47dd059cc83fcc3e5f3c216c6f7e9a68a020f686861eacb8",
+      "gzipSha256": "da0ed3e54094f9bb58758f24a112deb6d743ba1657b2c1dcfb0f3e40edd64905",
+      "bytes": 42358
+    },
+    "lecture-ui-second.log": {
+      "sha256": "2a455279025015a5b656b2fc8b9c5a543ec3f10410efd499a6218736cce8e643",
+      "gzipSha256": "7a045b5080644f164709783e97c264b6ff21bd7b7dd16cddf235485976827cd5",
+      "bytes": 21852
+    },
+    "lecture-ui-first-typecheck.log": {
+      "sha256": "90e9eb2f3caa45ac6b063a986e6a9678543c86b401073520f7429ceb8bd75a84",
+      "gzipSha256": "f03cf2bcf34aef89e651e7040eee07dbc31e2f5d6f6be5f490d119ad56303b09",
+      "bytes": 605
+    },
+    "test-results/.last-run.json": {
+      "sha256": "d5df2588c987429956ae406b50d5fe64694b4cb17cdf5796bb69894d68628429",
+      "gzipSha256": "74d6a3f024162d0b6e2206fccdc4a8adb9b2d0d03742d39def6413106ee38e94",
+      "bytes": 292
+    },
+    "test-results/studio-assistant-lecture-a-2f999-quest-and-no-duplicate-post/error-context.md": {
+      "sha256": "caee7933e2f31a0f5add5912a475c38eb16f4e43af51b24f51d4784109698527",
+      "gzipSha256": "b8a37315dfbbcbbde1a4cdf09002870eac329873c79c984d96fc91fd55ea9c21",
+      "bytes": 22621
+    },
+    "test-results/studio-assistant-lecture-a-2f999-quest-and-no-duplicate-post/test-failed-1.png": {
+      "sha256": "7b9fd041175e3cf407b7324baf1fa9194e67a8764f0fde9e02e37e49ffb9dd4d",
+      "gzipSha256": "07e712428ecc67cc27b3c9a5f332a8afbac419f090c6b346687cba76aeca48df",
+      "bytes": 87021
+    },
+    "test-results/studio-assistant-lecture-a-2f999-quest-and-no-duplicate-post/trace.zip": {
+      "sha256": "84cbcb91c6f0fbe10c7ef42d51e4ccaf074b3de6e1c093d417937153967b6816",
+      "gzipSha256": "fed48d061fd5b5a841f4109fcf2fcd01ffc252b60ff8d537f34db59c1fb86a20",
+      "bytes": 2060544
+    },
+    "test-results/studio-assistant-lecture-a-634e0-plete-model-selection-at390/error-context.md": {
+      "sha256": "47b168e6eacaffa660cf55dff522bcaf436178c39db7e7ef72067725b4338690",
+      "gzipSha256": "056442871508436cd5398ddec4c7588b0f9d661cd8623a73d856c845fc88c154",
+      "bytes": 19719
+    },
+    "test-results/studio-assistant-lecture-a-634e0-plete-model-selection-at390/test-failed-1.png": {
+      "sha256": "aa8a0c6aed55f01bc504222197d509d893ac83f9f7dc06e8bb58c1541c8ac90c",
+      "gzipSha256": "49c5626e89f223056f1ca1baebce2916b2bc5df7c08abbb286a2ac3a37cec0c7",
+      "bytes": 49503
+    },
+    "test-results/studio-assistant-lecture-a-634e0-plete-model-selection-at390/trace.zip": {
+      "sha256": "4bfb38a2fea90b92637ea2c4e644de67c11e8124813c6f38ae43d6783f4d2b64",
+      "gzipSha256": "f890cac3e6c66875bf33473eec604a8621d1c07a7b439366d2387d9511e293f9",
+      "bytes": 1502824
+    },
+    "test-results/studio-assistant-lecture-a-6e21b-sent-drafts-without-sending/error-context.md": {
+      "sha256": "3db88d7c65a36aaa6eb48005c32c0421ba20f571c1066d24ad7b49c76e148067",
+      "gzipSha256": "336b6982636809b5e6bc29ed12dc26c71e1dd5e3128475e07f11ca7ab8700e9c",
+      "bytes": 16979
+    },
+    "test-results/studio-assistant-lecture-a-6e21b-sent-drafts-without-sending/test-failed-1.png": {
+      "sha256": "a1a1ab9ff1fc402c668d7f2c95560f1ed4499446c2b4034f87356620709604d8",
+      "gzipSha256": "18d8fe5c3254c1a492740a061ae5fccc35c56efa4c5fec4987dd5113c24a2690",
+      "bytes": 80073
+    },
+    "test-results/studio-assistant-lecture-a-6e21b-sent-drafts-without-sending/trace.zip": {
+      "sha256": "a1d39aef1e8e6d38a22cfc9320cdf11d4ac231d3c6d3f9cad42616873f564b60",
+      "gzipSha256": "55507463871bd74900ccbd9c268e93c387a6b6ed2f0d2aa29c1adecafd53b99b",
+      "bytes": 1874258
+    },
+    "test-results/studio-assistant-lecture-a-7762c-ting-or-resending-a-session/error-context.md": {
+      "sha256": "23e3e15e55119721fe79ab84fde6efff6a03a027d238522b4f550c889510cefd",
+      "gzipSha256": "d41e5168dbe134db6ff69315903d561d9f0d0051f8e0794d7920661a43aa4f20",
+      "bytes": 15834
+    },
+    "test-results/studio-assistant-lecture-a-7762c-ting-or-resending-a-session/test-failed-1.png": {
+      "sha256": "8939a409d9d8964539903b1c5efa4ae17d63053f5fc078dc35168cb51824237b",
+      "gzipSha256": "597226489c86a2c034d479cedeaa9e6cf78a0906e13b1ed6d55e95e9d8009f3c",
+      "bytes": 54074
+    },
+    "test-results/studio-assistant-lecture-a-7762c-ting-or-resending-a-session/trace.zip": {
+      "sha256": "da0bcb3ff753681bf1e7b2e53a26bc5b550167e6c37182e9d8b972a36c2aa1f2",
+      "gzipSha256": "58eab9c013e2ddd3b2c5448e37f07a2c69c5b707a9fa59957dafaf26bb93f1d5",
+      "bytes": 1353540
+    },
+    "test-results/studio-assistant-lecture-a-7f0ae-the-previous-active-session/error-context.md": {
+      "sha256": "033f1490230b6f4e1ad1420edae226396ca4188ba83d89a629df21ff20743090",
+      "gzipSha256": "164b3fbc50c3010fcc17b033e57f8249cced9541f6b751c4465e923070d32602",
+      "bytes": 16794
+    },
+    "test-results/studio-assistant-lecture-a-7f0ae-the-previous-active-session/test-failed-1.png": {
+      "sha256": "f96b3a0d3e314dd11338e9a3dd7bfa5a1b12b472f783628270dc50b0b5ce48dc",
+      "gzipSha256": "02b1d3b45d22f11072b13f3fc3aebf42fec1ec66556842e64a0e262596674ba1",
+      "bytes": 141690
+    },
+    "test-results/studio-assistant-lecture-a-7f0ae-the-previous-active-session/trace.zip": {
+      "sha256": "3e206584601a7ac5b0296c97bfee7343ef47ba99fd5489f97601251ff6081a1a",
+      "gzipSha256": "6a254ffebca38b46735a2ee2bd5e5f9ebb60d5ae698852aa47abbbda905e1026",
+      "bytes": 1887294
+    },
+    "screens/directory-state.json": {
+      "sha256": "acb24b77f19e4e3e6db3dd26d4b1b3b5c70924f6c935d77b329005c5d162c4f9",
+      "gzipSha256": "54b3fe758f2d4efd5e04c6f34cba4281ea78ed375289a3575f5b7786de027a7f",
+      "bytes": 240
+    },
+    "screens/directory-state.png": {
+      "sha256": "1ee52604a182a882e53f23671d1bf762160fb3f1e36dbce04e26aea487dd0679",
+      "gzipSha256": "ff2f39854081462e1ccf70a3b717f5d3b396427caf306d83e036e6f574b20c75",
+      "bytes": 79968
+    },
+    "screens/entry-1440.png": {
+      "sha256": "2e0154c4c4467b7d9ab9603e33b88e43a03874d5cf3a2e2be3902352cc069595",
+      "gzipSha256": "935f0e8ad685b00cbe02762eeda8331bbcfe7e6efc969d808cd0b43f61cb1076",
+      "bytes": 84060
+    },
+    "screens/entry-768.png": {
+      "sha256": "87beab62913e16c694e26b37c631dccac34e4527b52657ffb57cc87e33b206dc",
+      "gzipSha256": "3d101f8d82993611ef7741789ccac5f7ece57f9561d04b76294087051cdd9bb1",
+      "bytes": 55775
+    },
+    "screens/entry-880.png": {
+      "sha256": "527b279a559b767f7e975fb733e4b8147b3414ba4c2d3cce0877357ccf8aa750",
+      "gzipSha256": "dc188755f44cdf004ef928d22ae5474ef15701317534623010faad09b24113be",
+      "bytes": 56564
+    },
+    "screens/retained-original-readonly.png": {
+      "sha256": "b487486eafc83a70dd2d44b7d3c795d3bbadd214fd126e164940e28174327e99",
+      "gzipSha256": "9a6a3a9cab720b35adb1ebced22e43066b8c6a0091df3a70e8b25339b803968c",
+      "bytes": 92409
+    },
+    "screens/saved-original-model.png": {
+      "sha256": "f642d2f7ae9bff54a42224e9dd694b1e64613db7eb65a2e1ba34b0e028949f09",
+      "gzipSha256": "297e67e4404275ee2619daae3938a2c2e4991a8b0009d72a3ae8c0e07ec6ba40",
+      "bytes": 114591
+    },
+    "actual-qa-source/app/studio/studio.tsx": {
+      "sha256": "cb3bd1e7b023ec5221df2f179532c993a25124dbc140cc11f842008868acbf3e",
+      "gzipSha256": "c0dab8fa628d2e7d5254e1e70dec69aa958eeae4c8187a40cad9686da0377739",
+      "bytes": 29286
+    },
+    "actual-qa-source/app/studio/studio-instant-assistant.tsx": {
+      "sha256": "1a15d2720833f4640848f58639d0a17fabbc5a1ba71a574544491c5ac84cf796",
+      "gzipSha256": "a1679cbf63790a06e84b2cce11d35d64737689be7fbd6d9a2e7e1a7bcc092837",
+      "bytes": 13336
+    },
+    "actual-qa-source/app/studio/studio-instant-assistant.css": {
+      "sha256": "43a44881edbf81e436d190ac2c177f869bae400a534a3637afd2bb361501533f",
+      "gzipSha256": "de2d655e08c19a1ca55dc6d610ee43d9eac399a8d6fb66f649e40e142ed4d207",
+      "bytes": 6524
+    },
+    "actual-qa-source/components/assistant-widget.tsx": {
+      "sha256": "4c5ab2b38bf916faf83fc9e06a16811c1bf81c677b860b4e112eeb62397cb0e2",
+      "gzipSha256": "378e39839c32239e3ed10a3b12292c8868bc929d991cb2fe6b4cf0f82be4aa54",
+      "bytes": 15990
+    },
+    "actual-qa-source/components/xiaojiu-model-picker.tsx": {
+      "sha256": "3594f786e9a0ce44487cec0721b2f86470ad873a3c004f38ac62f40438eb3640",
+      "gzipSha256": "9d9036cb874dd2b4de8611ea39429b5123e56396121805a6c96f684271577616",
+      "bytes": 5976
+    },
+    "actual-qa-source/lib/assistant-conversation.tsx": {
+      "sha256": "843e20566348a9880f40a9ec69384cea52e6cc6af8ea61f5635b5c83cda2ff91",
+      "gzipSha256": "e909ebe1e6953528e2316be0b8dae75f9a0953612fc0bca9fd76483136adc63e",
+      "bytes": 18021
+    },
+    "tests/studio-assistant.spec.ts": {
+      "sha256": "321536539cbfe01ebde75060b52e1edbf88035eff6aeb84507ff7b36df3e1dd8",
+      "gzipSha256": "0237043d6687079cc62ab952eb57e10f61a56c3a3a8edb560450d65477315819",
+      "bytes": 12723
+    }
+  }
+}

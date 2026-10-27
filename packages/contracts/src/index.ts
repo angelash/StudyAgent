@@ -710,7 +710,7 @@ export const assistantSessionSchema = z.object({
   userRole: z.enum(['student', 'parent']),
   studentId: z.string().nullable(),
   subject: subjectSchema.nullable(),
-  pageContext: z.enum(['student_home', 'assessment', 'mission', 'review', 'weekly_report']),
+  pageContext: z.enum(['student_home', 'assessment', 'mission', 'review', 'weekly_report', 'classroom', 'studio']),
   contextRefType: z.string().nullable(),
   contextRefId: z.string().nullable(),
   contextItemId: z.string().nullable().optional(),

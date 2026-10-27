@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "expectedRed": true,
+  "failed": 1,
+  "notSelected": 5,
+  "cause": "Actual authenticated HTTP GET lecture-context returned404 instead of200 before route implementation.",
+  "scope": "Isolated SQLite and synthetic account. Other cases not selected; no frontend or PostgreSQL coverage claimed.",
+  "files": {
+    "lecture-http-before.json": {
+      "sha256": "ba03b036b641d58398c1ad595bd3214d8ed214195b7a2fa8326a01de090b5d94",
+      "gzipSha256": "c64d183737b1e77ce4b1eca479e243db31c8b2d7428efcc541b1361ad672d706",
+      "bytes": 4576
+    },
+    "lecture-http-before.log": {
+      "sha256": "83d8f160482a9960954902795d2ea2bd727069a9eb0dcf1730b63aea46c36576",
+      "gzipSha256": "66f9214a8067044a982a6e12e00f66de233182c51060c916b256c2bf9b1449fd",
+      "bytes": 486
+    },
+    "original-test.ts": {
+      "sha256": "eebf8e39d98a90127e7b75552b5d9c26f611cd0c43aeb69f95e946d1af546896",
+      "gzipSha256": "4c4adc9d854bc50e61a2427c8e8ba943cbf89617e74921b5864374df839d3e44",
+      "bytes": 11317
+    }
+  }
+}

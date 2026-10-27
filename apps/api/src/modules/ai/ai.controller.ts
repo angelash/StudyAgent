@@ -1,4 +1,4 @@
-import { Body, Controller, ForbiddenException, Get, Param, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, ForbiddenException, Get, Param, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
 import type { Response } from 'express';
 import { AuthGuard, AuthenticatedRequest } from '../../common/auth.guard';
 import { AiService } from './ai.service';
@@ -26,6 +26,11 @@ export class AiController {
     response.status(result.httpStatus); return result.data;
   }
 
+  @Get('assistant/lecture-context')
+  lectureContext(@Req() req: AuthenticatedRequest, @Query() query: unknown) {
+    return this.aiService.lectureDescriptor(req.user, query);
+  }
+
   @Post('assistant/sessions')
   openSession(
     @Req() req: AuthenticatedRequest,
@@ -34,13 +39,13 @@ export class AiController {
       userRole: 'student' | 'parent';
       studentId: string | null;
       subject?: 'math' | 'chinese' | 'english' | null;
-      pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report';
+      pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report' | 'classroom' | 'studio';
       contextRefType?: string | null;
       contextRefId?: string | null;
       contextItemId?: string | null;
     },
   ) {
-    return this.aiService.openAssistantSession(body, req.user);
+    return this.aiService.openDurableAssistantSession(body, req.user, req.authSession);
   }
 
   @Post('assistant/sessions/:sessionId/messages')

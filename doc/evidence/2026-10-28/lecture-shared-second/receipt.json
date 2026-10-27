@@ -1,0 +1,307 @@
+{
+  "passed": true,
+  "passedTests": 37,
+  "failedTests": 0,
+  "originalAttempts": 37,
+  "retries": 0,
+  "skipped": 0,
+  "flaky": 0,
+  "scope": "All19 existing assistant,15 lecture/preview,1 studio and2 workspace browser journeys passed. Updated specified help/tool routes retain original video/subtitle/PDF/calendar assertions. Actual QA/source equality checked after terminal run; not a before/after whole-input freeze or full application run. Full API remains separate.",
+  "actualQaSourceMatches": [
+    "app/studio/studio.tsx",
+    "app/studio/studio-instant-assistant.tsx",
+    "app/studio/studio-instant-assistant.css",
+    "components/assistant-widget.tsx",
+    "lib/assistant-conversation.tsx",
+    "components/xiaojiu-model-picker.tsx",
+    "components/xiaojiu-model-picker.css",
+    "app/studio/classroom/workbench.tsx"
+  ],
+  "files": {
+    "data/qa/lecture-shared-second.json": {
+      "sha256": "4343b6225673698e870f018c893162ef6f247510cdd4259991ab9248256ab9b0",
+      "gzipSha256": "c6bb2a891f4e3a451c672fa55ddd7ad8147e1c18b69984f1422140f9f7501a78",
+      "bytes": 44161
+    },
+    "data/qa/lecture-shared-second.log": {
+      "sha256": "c59c1cf92ff06478d85e41847b212e22c7e5a5cab607cf5abe1ef6528aa1c523",
+      "gzipSha256": "417e3397bc0f15804c478308381b39d718c39020726d36ff1541b3e9d77f05e6",
+      "bytes": 9578
+    },
+    "data/qa/lecture-whiteboard-typecheck.log": {
+      "sha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc",
+      "gzipSha256": "280feefa43a1a2d6b5ebb62618a6d36d932de3e009b707d14976e55a78dd4326",
+      "bytes": 68
+    },
+    "tests/e2e/studio-assistant.spec.ts": {
+      "sha256": "492ba69a8a9b6c485331cf85359a3c401d2bc305c162049416c3aa74bbc9fb23",
+      "gzipSha256": "7f6dbc39bd486e511e934a5dcb95e1d38185af013a98b575344c099656ca32a3",
+      "bytes": 23596
+    },
+    "tests/e2e/studio.spec.ts": {
+      "sha256": "0590613a89c0b1ffe71143ebb8438462a7cca7865b771a7bb7b629b9cd1b94ba",
+      "gzipSha256": "f311bbfcf0398f04c5da7dcdf616606672980107d8fe277f90195242f708ef76",
+      "bytes": 12539
+    },
+    "tests/e2e/workspace.spec.ts": {
+      "sha256": "28c28bc56628fe19aa78ab312eedeb0c10cf00ba936c5eb1168bf9ce18ff675f",
+      "gzipSha256": "da59b10fcd1d7cbeb853c5694b32e7b834c070b0f39754c63b9f6e1c172c424f",
+      "bytes": 11456
+    },
+    "screenshots/assistant-conversations/actual-default-model-1280.png": {
+      "sha256": "6233cc925b01fbafe3e7d1a407212d842d90774abedf471ae2f5612bc23f0cc1",
+      "gzipSha256": "06baea0f08811ab6bf5c6da56c54eef6a5975973de1b524916cce3f8d9fe7fe1",
+      "bytes": 85988
+    },
+    "screenshots/assistant-conversations/actual-default-model-390.png": {
+      "sha256": "21e8619b167bcdb422703fdabbe7574e8c4d2f1fac9d4f1bb64ffedfe5d4e2df",
+      "gzipSha256": "ed4369a88a9a9aa1c11c72428d62eaa477f57314e98d106083a7982c3fe42c1f",
+      "bytes": 39214
+    },
+    "screenshots/assistant-conversations/actual-default-model-768.png": {
+      "sha256": "e74dff53308e176c2cd71a411b7675c228b95e1e71781f062429e96c95bb9fc3",
+      "gzipSha256": "f7fd55cacf4a025623af82129f36fe7fa141f54c116f5d7d866f202d27fc1100",
+      "bytes": 78019
+    },
+    "screenshots/assistant-conversations/diagnostic-history-readonly.png": {
+      "sha256": "9e1d2e87305e8cad041e3b3faf30697a0ddd42172e3ac81850c0d7801c1d765d",
+      "gzipSha256": "b80474bdff87bb916246c809aa1d8ba79ab2cddb232f741bf0861d80e5319e21",
+      "bytes": 59232
+    },
+    "screenshots/assistant-conversations/history-old-message-768.png": {
+      "sha256": "55352fa2c77e186c2e742d2989173a25198fffc85b7fcca2715066d8725a212c",
+      "gzipSha256": "5a20a8f3b533b8bf10985513185bc8402eb81c2a37e0fc6e6800e577445ac5a5",
+      "bytes": 79520
+    },
+    "screenshots/assistant-conversations/model-check-failed-1280.png": {
+      "sha256": "b54f56f29bbde7036d05aa7920932d06d1caf182f6daa12e6f8a75d25874a395",
+      "gzipSha256": "f9c5c2d93ff09009d6c05a5bd3fcebf0fd9994f123e3e8b8da2ba8f05df9c4a0",
+      "bytes": 91983
+    },
+    "screenshots/assistant-conversations/model-check-failed-390.png": {
+      "sha256": "16f8b6f878e725eac58a3ee34c9655488482d781e14c071977e60fb48e336fc9",
+      "gzipSha256": "ff06981a2c6ae68e55d42ea388c58da823cc63b2259ab40548e4963ec3a9b9cf",
+      "bytes": 44540
+    },
+    "screenshots/assistant-conversations/model-check-failed-768.png": {
+      "sha256": "f63c3319ea01e6457336e9bea5285a86b6c41c8c3c9273b54e9a22ff3a577d18",
+      "gzipSha256": "747b4e348c9dd3ff2d483ad19c0fd53f3c0d8145e228e245dac112caf0fc5fc0",
+      "bytes": 83779
+    },
+    "screenshots/assistant-conversations/retry-original-model.png": {
+      "sha256": "b424a57b5ae9ae033f8ac19c4b5f42b1babf6a46a98bea44aa3e1bb2b2f6772c",
+      "gzipSha256": "6aa72218ee6bf6fd0ec700b6ee7e75e5d19ace834416ac7ceae3590de338facd",
+      "bytes": 92548
+    },
+    "screenshots/assistant-conversations/saved-conversation-1440.png": {
+      "sha256": "4bec424c9e2544468c3967d952b535e60286d46a476b945b53c87f49465c2989",
+      "gzipSha256": "2a7bc317e2b4f1819248908828849991c724c0648dc2eaca9ee9b6de03d32fdb",
+      "bytes": 98059
+    },
+    "screenshots/assistant-conversations/saved-conversation-390.png": {
+      "sha256": "572829d3b6661c0ad280bec783dabb38b0c4f8f5fdf4bd8e58ae56d525964343",
+      "gzipSha256": "134dc6ecea85764340af907fcc931ccedcbca1d1613bb3d18c104079d9dc7b5a",
+      "bytes": 44229
+    },
+    "screenshots/assistant-conversations/saved-conversation-768.png": {
+      "sha256": "d6453bb3ef7683745960598b366b6d151b9369915e02b881127228b1462dc79c",
+      "gzipSha256": "ce2f5303609a62c3153551e7e88ddad9ae496c9a2f1dcde18bacd54ad7350382",
+      "bytes": 85589
+    },
+    "screenshots/studio/studio-calendar-polished.png": {
+      "sha256": "a09eea16f335e3f6935e5d7f36640fdd8cdeb6121fde6d32ea18215ff85a232b",
+      "gzipSha256": "7f4b231fef1bff112eafb2ddda79bd5977fbb8637a54112389ab160569268ae1",
+      "bytes": 411693
+    },
+    "screenshots/studio/studio-course-polished.png": {
+      "sha256": "328ba7141fd3e9b2046c11b18b929267170104b86de96dd000734c1803a5112f",
+      "gzipSha256": "5ac4153fc66fd8d29d41d61ec8508269766d8f840a08bd0878c44a9b949e1f8b",
+      "bytes": 186433
+    },
+    "screenshots/studio/studio-home-polished.png": {
+      "sha256": "d0be6da98f0b48cb3b26b1529b8c66473551af1d7c48db65d85a77baabdabbc3",
+      "gzipSha256": "ebf815c8f9b9c651aab62d94a2e21ec44f7fd3a09303048ebe7acd96fa942fda",
+      "bytes": 164140
+    },
+    "screenshots/studio/studio-materials-and-pack.png": {
+      "sha256": "341d50c3d888b845c0d38e1e9067f9a5edc3288a6a63d02272148e301631dc10",
+      "gzipSha256": "2c1d356f7309ca655bb19f2febe4f2342a88273bb1f3e7be89e5d262969e5683",
+      "bytes": 129055
+    },
+    "screenshots/studio/studio-pdf-structure-review.png": {
+      "sha256": "c0de65ba6f1242b8aa07c382d5e0ef13fc77af8b1d9b45c6db5d2b6275644c37",
+      "gzipSha256": "a4ab051fa7934ef1533a14d39816db8cabd5a29cdb5b05aa722fcfb16c24776e",
+      "bytes": 171521
+    },
+    "screenshots/studio/studio-whiteboard-player.png": {
+      "sha256": "09069f088730bb5ef8e7735bad8f0af74fb94715b14c0826a8accd66a3a7b8bf",
+      "gzipSha256": "505d8905ab87b03291ad8eef92c859e6a703701369ab104d25af6fc661d5f55e",
+      "bytes": 139304
+    },
+    "screenshots/studio/studio-whiteboard-preview.png": {
+      "sha256": "702850551d7327bfb42a40b565a9a3264a7d98c41b07fc14208e513779a71a08",
+      "gzipSha256": "87925e9afdce9b2694a9d8bed418abebbe115f62314edd5bd322b6ea8732ac5b",
+      "bytes": 153809
+    },
+    "screenshots/studio-assistant/cancel-retry-original-lecture.png": {
+      "sha256": "af23a97194814b385a54b4313488934400a73bbd5124acc919726fed5d2dd373",
+      "gzipSha256": "3d96b72055123b625090131863652b8070d481f8866d2e67b5be2301487c4979",
+      "bytes": 117935
+    },
+    "screenshots/studio-assistant/directory-state.json": {
+      "sha256": "acb24b77f19e4e3e6db3dd26d4b1b3b5c70924f6c935d77b329005c5d162c4f9",
+      "gzipSha256": "54b3fe758f2d4efd5e04c6f34cba4281ea78ed375289a3575f5b7786de027a7f",
+      "bytes": 240
+    },
+    "screenshots/studio-assistant/directory-state.png": {
+      "sha256": "7729eb29886079b3fb732cba064b9ab44b8f59f78c7b0c9fb3b58f152ab20319",
+      "gzipSha256": "11cbfcc0a56bcfed59d302183e30533e9797ca0eb4174de42f83550778618f13",
+      "bytes": 80005
+    },
+    "screenshots/studio-assistant/entry-1440-layout.json": {
+      "sha256": "817cbc508c57c14aaa1e35f73431d983e28782f253e0c7b482715757732cf650",
+      "gzipSha256": "9e519ec511f06637ccc954c05e8f59cba890e2bb199cbc4d02c1f41593ac1f2a",
+      "bytes": 960
+    },
+    "screenshots/studio-assistant/entry-1440.png": {
+      "sha256": "f2308c7d62d7b1a234fb799b4dfd5c4dd7eb2d5323e643eb3505572470b84343",
+      "gzipSha256": "e829630c308d988dd228324ae75f311cf4382f872b730169fcf223f74f39421c",
+      "bytes": 84035
+    },
+    "screenshots/studio-assistant/entry-390-layout.json": {
+      "sha256": "28dbdeabd2d4a502aec22fc99f44f1114c529cafc8f92e52c2e149cc36f02936",
+      "gzipSha256": "6e58c76553c5f9257a8eed105ecec07762c77de10b28ab3c1a32bf853a45d95e",
+      "bytes": 860
+    },
+    "screenshots/studio-assistant/entry-390.png": {
+      "sha256": "6f7b088a9397f8faf35360a49900c8db0717be72e628676c7c671c1e1361d8d6",
+      "gzipSha256": "a48a4471bed31cb17cb2cc91afb5af35acdc68596af95d04ad5c17b44a81c1b0",
+      "bytes": 52734
+    },
+    "screenshots/studio-assistant/entry-768-layout.json": {
+      "sha256": "f860368c9b4e2f83130bc43c5972fbe2edc04f3cdf05b0a1262d5d6c7316bd68",
+      "gzipSha256": "0563dfd1b3eff22a244764ef5385512063ca33cade5618b3ceb66118d9c529a2",
+      "bytes": 860
+    },
+    "screenshots/studio-assistant/entry-768.png": {
+      "sha256": "87beab62913e16c694e26b37c631dccac34e4527b52657ffb57cc87e33b206dc",
+      "gzipSha256": "3d101f8d82993611ef7741789ccac5f7ece57f9561d04b76294087051cdd9bb1",
+      "bytes": 55775
+    },
+    "screenshots/studio-assistant/entry-880-layout.json": {
+      "sha256": "f68cd29aaf9c59e5ded1fc12ff0868e146673ecb6c172331b2138c99c2f881b1",
+      "gzipSha256": "91dc6a3440565e365f7d05cad03d80b7406c712270cb8ad4db02a60637058fd4",
+      "bytes": 862
+    },
+    "screenshots/studio-assistant/entry-880.png": {
+      "sha256": "21b8d0742bc12f74ba10e2486ad46f5c83f3dcb272440010ceb73b9e0d84bc93",
+      "gzipSha256": "0ea9d8e4acb6e601a126034cca9cdf12e91ad2b9c6e18041963130fb6933a07f",
+      "bytes": 56564
+    },
+    "screenshots/studio-assistant/readonly-pending-and-history.png": {
+      "sha256": "608728c4587a2435d05a9f16e71b191cc41f4f6604db68276e4f8d0fe1bf1edf",
+      "gzipSha256": "5ba5839be8b5780211ed0e97a5153ecfc775a8f9fa5da66d3f3be041c36f7d11",
+      "bytes": 123282
+    },
+    "screenshots/studio-assistant/recovered-original-request.png": {
+      "sha256": "41a7dbe518c140ec913fdc6b86a3904d49448a8323e9640bffb0a49403ed56c1",
+      "gzipSha256": "e01c10c937debe504e2b99d450dc87b367c12320b8fedccc6cc4207d98ac3f62",
+      "bytes": 113414
+    },
+    "screenshots/studio-assistant/retained-original-readonly.png": {
+      "sha256": "bfd226262267ee43d7d86d4b666647e788d44f2737a3312563f1f7c3fbc42d50",
+      "gzipSha256": "bab095431b90ecea4f404dbcd483f867b171c4daca8e58d9171b9f0bd02e4aab",
+      "bytes": 89801
+    },
+    "screenshots/studio-assistant/saved-original-model.png": {
+      "sha256": "884e9f03c2e876067926526480a5b92e80050facabb614ae4ff6c47bf306f8ba",
+      "gzipSha256": "8cd2e1d75eef528422ac48e41bae1bc34b7bff97336acadf047b7084c5c3343f",
+      "bytes": 114575
+    },
+    "screenshots/studio-assistant/separate-drafts.png": {
+      "sha256": "9646a933fa0213727a5b38f81806ad33f1822b8005484dd0d6536ae5ae63a976",
+      "gzipSha256": "316c4d1a26d04220f0b69b940172d9f988a965239a0231f5f9f2ea0602c5cffa",
+      "bytes": 73848
+    },
+    "screenshots/workspace/workspace-calendar-empty-desktop.png": {
+      "sha256": "c40cfe10cb4534f2720e350437c9e8849a1e6fbc7cd3061bed657e8da8910443",
+      "gzipSha256": "a2b8a454e7b2242ce7373a38853cae2ebb453ab935842b5ab58e26aa10e67ba3",
+      "bytes": 118696
+    },
+    "screenshots/workspace/workspace-calendar-mobile.png": {
+      "sha256": "8b97cfde98035f720f11a7e65b88491acc3eb912e8d2b825cfc29a34ab06170d",
+      "gzipSha256": "e112653172aa5a8b26ad701fd06a29eacd114efac6326e190c0ffe0646e3f99b",
+      "bytes": 67450
+    },
+    "screenshots/workspace/workspace-calendar-tasks-desktop.png": {
+      "sha256": "cbf8845fdf07a4503ecf3bf71f617de3e4ae83a5727e4eccdc386699143c7f56",
+      "gzipSha256": "b6546dc14f462195913e097ba531f092c91deeb9e249a926a7fbc267bfd060e2",
+      "bytes": 117629
+    },
+    "screenshots/workspace/workspace-courses-desktop.png": {
+      "sha256": "89a6d7b950537785dcdb2b2824f052355db13e31ea44701a7cf5d05417183bdc",
+      "gzipSha256": "1c00febb4cd98b83dd5277bb7c2d59bd9f87a202b42611fe5e62997525fb221b",
+      "bytes": 136148
+    },
+    "screenshots/workspace/workspace-courses-mobile.png": {
+      "sha256": "b3c2200a9072f2bbfb658a791c7ad509a67815fd57af4b8b801cfc3a2d9d90fd",
+      "gzipSha256": "909b3873494508f815073446528926368e1e0f620cdd7367c0ee19dc31a084f4",
+      "bytes": 94831
+    },
+    "screenshots/workspace/workspace-outline-desktop.png": {
+      "sha256": "82cfa9ab8fc4035015e282452dee8e96e7e59687bca571cae9c840e3886b83dc",
+      "gzipSha256": "789deb8d2a109a973ccccdeac297ecaab01e8335ef04cc564e58fff27dd33d55",
+      "bytes": 177127
+    },
+    "screenshots/workspace/workspace-outline-mobile.png": {
+      "sha256": "29926d88ef51a59a728ab4ef8a2145d0091fb831ab7ca059d83f43475ac129ea",
+      "gzipSha256": "7537fe9e88aea6e0b1d442a56d084404e044b634e981d40e73c631041aa3aa99",
+      "bytes": 159440
+    },
+    "test-results/.last-run.json": {
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+      "gzipSha256": "ab2773fce076cedf886e7b45072ea49d0dfc6bdbbca2d9e3779ab76473918f40",
+      "bytes": 45
+    },
+    "actual-qa-source/app/studio/studio.tsx": {
+      "sha256": "ea680f1a16e83c6bdac4d844fff504795f51e16cbefff5af3ecd1c470d7531e1",
+      "gzipSha256": "1924d8ed3166a22bfdeef9b3dce552947751bc29655b678386e2ef28f7dee1cb",
+      "bytes": 30048
+    },
+    "actual-qa-source/app/studio/studio-instant-assistant.tsx": {
+      "sha256": "09b848b85945db847d73021b01930c29d40b0ec2f9fa77ebddee4e43f6c3d08c",
+      "gzipSha256": "7b54d9aebd11dfe43647fb14047e32aee917d4b3245024280b1319e8f5c46434",
+      "bytes": 13506
+    },
+    "actual-qa-source/app/studio/studio-instant-assistant.css": {
+      "sha256": "a533f8312704b0410ec3f273e9438a263ea2f2295d7edec963588fc46765c14e",
+      "gzipSha256": "95fe0d99db641b16bf535cc2eceeb12a20e1893ca55fb8a75244f62ac340af22",
+      "bytes": 6696
+    },
+    "actual-qa-source/components/assistant-widget.tsx": {
+      "sha256": "6682dc329f1ac0635076044a36b7fb17afcbcfdef89aa39576a2aecadd0eaab7",
+      "gzipSha256": "fde75b23afb71b4b7ec5aff07f352080861c0de59bb48ac3cd24b3043d36ef7b",
+      "bytes": 16051
+    },
+    "actual-qa-source/lib/assistant-conversation.tsx": {
+      "sha256": "39ade34e92628b1a607b96e756d864963a1fcb95d7e5110b0264ffada0c534d9",
+      "gzipSha256": "b0c84f9a82e52b621ce9fff85cc5787bb5c265e1445d383d24d2f72ddff14cea",
+      "bytes": 18709
+    },
+    "actual-qa-source/components/xiaojiu-model-picker.tsx": {
+      "sha256": "3594f786e9a0ce44487cec0721b2f86470ad873a3c004f38ac62f40438eb3640",
+      "gzipSha256": "9d9036cb874dd2b4de8611ea39429b5123e56396121805a6c96f684271577616",
+      "bytes": 5976
+    },
+    "actual-qa-source/components/xiaojiu-model-picker.css": {
+      "sha256": "628d33d6aaceaa2aaa15a4bfddfdb06702027d8f0410272909249b3b5561c071",
+      "gzipSha256": "2b55e9b63d5a13b0de7932e41e0c37b3719711507cda27aefa3995d383b2d843",
+      "bytes": 3082
+    },
+    "actual-qa-source/app/studio/classroom/workbench.tsx": {
+      "sha256": "758a5460c5e6cf6feaaa4c9ee7e8352b677af341d4cd3510aad6db9a9725424a",
+      "gzipSha256": "70152068cd2b22fd65bb385fa2ef18df494e4b5a2d0c60f16d162b783f48cab0",
+      "bytes": 77413
+    }
+  }
+}

@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import Link from 'next/link';
-import type { ClassroomTurnIntent, ClassroomTurnView, ClassroomCatalog, ClassroomLesson, ClassroomSessionView, ClassroomUnit } from '@study-agent/contracts';
+import type { AssistantLectureDescriptor, ClassroomTurnIntent, ClassroomTurnView, ClassroomCatalog, ClassroomLesson, ClassroomSessionView, ClassroomUnit } from '@study-agent/contracts';
 import { classroomStepUnits,classroomReplyUnits,classroomReadingMs, classroomPracticeSummary } from '@study-agent/contracts';
 import { apiBaseUrl, apiRequest,getAuthToken } from '../../../lib/api';
 import { useSessionUser } from '../../../lib/session-user';
@@ -54,7 +54,30 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
   const [lessonInfo, setLessonInfo] = React.useState<Pick<ClassroomLesson, 'id' | 'title' | 'objective'> | null>(null), [help, setHelp] = React.useState(false);
   const studio = React.useRef<string | undefined>(undefined), loadController = React.useRef<AbortController | null>(null);
   const catalogController=React.useRef<AbortController|null>(null);
+  const assistController=React.useRef<AbortController|null>(null),assistEpoch=React.useRef(0);
+  const [assisting,setAssisting]=React.useState<string|null>(null),[returnLecture,setReturnLecture]=React.useState(''),[returnNotice,setReturnNotice]=React.useState('');
+  React.useEffect(()=>()=>{assistEpoch.current++;assistController.current?.abort();},[]);
   const sourceCourse = React.useRef<string | undefined>(undefined);
+  async function assist(lectureId:string){
+    if(!catalog||!identity)return;assistController.current?.abort();const controller=new AbortController();assistController.current=controller;
+    const revision=++assistEpoch.current,location=window.location.pathname+window.location.search;setAssisting(lectureId);setError('');
+    try{
+      const value=await apiRequest<AssistantLectureDescriptor>('/ai/assistant/lecture-context?'+new URLSearchParams({courseId:catalog.course.id,lectureId}),{signal:controller.signal});
+      if(controller.signal.aborted||revision!==assistEpoch.current||window.location.pathname+window.location.search!==location)return;
+      if(value.courseId!==catalog.course.id||value.lectureId!==lectureId||!value.current||!/^[a-f0-9]{64}$/.test(value.fingerprint))throw Error('讲座版本未能核对，请重新打开课程。');
+      window.location.assign('/studio?'+new URLSearchParams({view:'home',mode:'instant',lectureCourse:value.courseId,lecture:value.lectureId,lectureVersion:value.fingerprint}));
+    }catch(error){if(!controller.signal.aborted&&revision===assistEpoch.current)setError((error as Error).message);}
+    finally{if(!controller.signal.aborted&&revision===assistEpoch.current)setAssisting(null);}
+  }
+  React.useEffect(()=>{
+    if(!catalog||session)return;const query=new URLSearchParams(window.location.search),id=query.get('lecture'),version=query.get('lectureVersion');
+    if(!id)return;setReturnLecture(id);const target=document.getElementById('lecture-'+id);target?.scrollIntoView({block:'center'});target?.focus({preventScroll:true});
+    if(!version||!/^[a-f0-9]{64}$/.test(version))return;const controller=new AbortController();
+    void apiRequest<AssistantLectureDescriptor>('/ai/assistant/lecture-context?'+new URLSearchParams({courseId:catalog.course.id,lectureId:id,fingerprint:version}),{signal:controller.signal})
+      .then(value=>{if(!controller.signal.aborted)setReturnNotice(value.current?'':'课程目录已更新，原讲座对话仍保留；此处显示当前课程内容。');})
+      .catch(error=>{if(!controller.signal.aborted)setReturnNotice((error as Error).message);});
+    return()=>controller.abort();
+  },[catalog,session,unitIndex]);
   const refresh = React.useCallback(async () => {
     if (!identity || identity.role === 'student') return;
     catalogController.current?.abort();const controller=new AbortController();catalogController.current=controller;
@@ -136,6 +159,7 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
         projectHref={index => { const target = course!.units[index], project = catalog?.projectActivities?.filter(item => item.unitId === target.id).sort((a,b) => b.updatedAt.localeCompare(a.updatedAt))[0]; return '/studio/projects?' + copyCourseFilters(libraryHref, new URLSearchParams({ unitId: target.id, returnUnit: String(index), returnPanel: panel, ...(project ? { project: project.projectId, stage: project.stageId } : {}) })); }} />
     </aside><section className="cl-outline">
       {error && <div className="cl-error" role="alert">{error}<button onClick={() => void refresh()}>重试</button></div>}
+      {returnNotice&&<div className="cl-error" role="status">{returnNotice}</div>}
       {loading && <div className="cl-open-status" role="status">正在恢复课堂…</div>}
       {identity.role === 'student' && !loading && <div className="cl-empty">请从你的学习课程中打开已审核微课。<Link href="/studio">返回课程</Link></div>}
       {course && unit && <>
@@ -150,9 +174,9 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
         {Boolean(catalog?.archivedSessions?.length) && <details className="cl-archived-sessions"><summary>查看保留的旧版学习记录（{catalog!.archivedSessions!.length}）</summary><p>旧题和首次作答按当时版本保存。打开旧记录不会换成新题。</p><ul>{catalog!.archivedSessions!.map(saved => <li key={saved.sessionId}>
           <Link href={'/studio/classroom?' + new URLSearchParams({ lesson: saved.lessonId, session: saved.sessionId, tab: 'practice' })}>{saved.title} · 已记录 {saved.answered}/{saved.total} 题</Link><small>{new Date(saved.updatedAt).toLocaleString('zh-CN')}</small></li>)}</ul></details>}
         <div className="cl-timeline">
-          {unit.lectures.map((lecture, index) => <article className="cl-lecture" key={lecture.id}>
+          {unit.lectures.map((lecture, index) => <article className="cl-lecture" key={lecture.id} id={'lecture-'+lecture.id} tabIndex={-1} data-return-target={returnLecture===lecture.id}>
             <span className="cl-timeline-icon">▧</span><header><button onClick={() => setExpanded(rows => rows.includes(lecture.id) ? rows.filter(id => id !== lecture.id) : [...rows, lecture.id])} aria-expanded={expanded.includes(lecture.id)}>
-              讲次 {index + 1}：{lecture.title}</button><button className="cl-assist" onClick={() => void open(lecture.lessons[0].id, 'history', undefined, 'push', true)}>获取帮助</button></header>
+              讲次 {index + 1}：{lecture.title}</button><button className="cl-assist" disabled={loading||assisting!==null} aria-busy={assisting===lecture.id} onClick={() => void assist(lecture.id)}>{assisting===lecture.id?'正在核对…':'获取帮助'}</button></header>
             <p>{lecture.description}</p>
             {expanded.includes(lecture.id) && <div className="cl-microlessons">{lecture.lessons.map(lesson => <div className="cl-micro" key={lesson.id}>
               <span className="ws-micro-title">{lesson.title}<button className="ws-lesson-info" aria-label={'查看学习目标：' + lesson.title} onClick={() => setLessonInfo(lesson)}>⊙</button></span><button className="cl-learn" disabled={loading} onClick={() => void open(lesson.id)}>{reading.has(lesson.id) ? '▶ 继续学习' : '▶ 学习'}</button>

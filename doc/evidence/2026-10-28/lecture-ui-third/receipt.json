@@ -1,0 +1,169 @@
+{
+  "passed": true,
+  "passedTests": 10,
+  "failedTests": 0,
+  "originalAttempts": 10,
+  "retries": 0,
+  "skipped": 0,
+  "flaky": 0,
+  "scope": "Actual ten browser journeys after the five retained second-run failures. Mobile controls are measured within viewport; 880 input card remains620px. QA/source byte equality checked after terminal run, not a before/after frozen run. No production delivery or full regression claimed.",
+  "actualQaSourceMatches": [
+    "app/studio/studio-instant-assistant.tsx",
+    "app/studio/studio-instant-assistant.css",
+    "app/studio/studio.tsx",
+    "app/studio/classroom/workbench.tsx",
+    "app/studio/classroom/classroom.css",
+    "components/assistant-widget.tsx",
+    "components/xiaojiu-model-picker.tsx",
+    "components/xiaojiu-model-picker.css",
+    "lib/assistant-conversation.tsx",
+    "app/studio/reference-assistant.generated.css"
+  ],
+  "files": {
+    "lecture-ui-third.json": {
+      "sha256": "ca4a3fe587f7b1018e5d40fe9372728c31c0b15827f58d6be51f5b748b92a634",
+      "gzipSha256": "2b3261404468ed87aced563d059831c5a0856d7fdd218cc85323c35df564e8f5",
+      "bytes": 13868
+    },
+    "lecture-ui-third.log": {
+      "sha256": "d389bee3b1d84cf8ac756d0e6dd562205e3666e6b46549e79c8a26692aaaf3a5",
+      "gzipSha256": "8fdd768e484d8ca6b9c812cb4de40ff07bd57acd46a8f0af1657da3b856da86a",
+      "bytes": 5045
+    },
+    "lecture-ui-fourth-typecheck.log": {
+      "sha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc",
+      "gzipSha256": "280feefa43a1a2d6b5ebb62618a6d36d932de3e009b707d14976e55a78dd4326",
+      "bytes": 68
+    },
+    "studio-assistant.spec.ts": {
+      "sha256": "140a5e63873e4bd5021d78a5032ddec1a9c9461d533890c054ffd3213f62e32c",
+      "gzipSha256": "404a9475c6c46e344002be97594da0a7369b23da04c72ac8e95b06c74ef98f3b",
+      "bytes": 13449
+    },
+    "screenshots/studio-assistant/directory-state.json": {
+      "sha256": "acb24b77f19e4e3e6db3dd26d4b1b3b5c70924f6c935d77b329005c5d162c4f9",
+      "gzipSha256": "54b3fe758f2d4efd5e04c6f34cba4281ea78ed375289a3575f5b7786de027a7f",
+      "bytes": 240
+    },
+    "screenshots/studio-assistant/directory-state.png": {
+      "sha256": "a3a1e8f9e187bb7c3144b947bef0bd2df29524b32f8d8720fccfdb3d8ebf1b8e",
+      "gzipSha256": "de2c2ca7e3bde63b42c33622b757ba048c63e86a3130203e61df2e79ac7e52dc",
+      "bytes": 79999
+    },
+    "screenshots/studio-assistant/entry-1440-layout.json": {
+      "sha256": "817cbc508c57c14aaa1e35f73431d983e28782f253e0c7b482715757732cf650",
+      "gzipSha256": "9e519ec511f06637ccc954c05e8f59cba890e2bb199cbc4d02c1f41593ac1f2a",
+      "bytes": 960
+    },
+    "screenshots/studio-assistant/entry-1440.png": {
+      "sha256": "a700c84672f6f63cfa0643e458fe9b3cc431d063a4f2913d1af6fc44f03b65b8",
+      "gzipSha256": "581bb1582cde80b76561559a99da418433b6f991c29a818761d3321f0ac7c36e",
+      "bytes": 84052
+    },
+    "screenshots/studio-assistant/entry-390-layout.json": {
+      "sha256": "28dbdeabd2d4a502aec22fc99f44f1114c529cafc8f92e52c2e149cc36f02936",
+      "gzipSha256": "6e58c76553c5f9257a8eed105ecec07762c77de10b28ab3c1a32bf853a45d95e",
+      "bytes": 860
+    },
+    "screenshots/studio-assistant/entry-390.png": {
+      "sha256": "110b1eb65d522a8846c274ae3466446ef302606d5c6300eb7f49b6ec3c225f61",
+      "gzipSha256": "3527151df0f4572eb26979a9807a4709d48c69244277128b40d83240257cf0a4",
+      "bytes": 52760
+    },
+    "screenshots/studio-assistant/entry-768-layout.json": {
+      "sha256": "f860368c9b4e2f83130bc43c5972fbe2edc04f3cdf05b0a1262d5d6c7316bd68",
+      "gzipSha256": "0563dfd1b3eff22a244764ef5385512063ca33cade5618b3ceb66118d9c529a2",
+      "bytes": 860
+    },
+    "screenshots/studio-assistant/entry-768.png": {
+      "sha256": "c9bd5132095c654810488dcd69910bb28447be94910932c2ef828be87a239a9b",
+      "gzipSha256": "e4964d95675c1975c9ee59f1f4a04f2180f5a8d1449b6da5c436c852325fb22e",
+      "bytes": 55775
+    },
+    "screenshots/studio-assistant/entry-880-layout.json": {
+      "sha256": "f68cd29aaf9c59e5ded1fc12ff0868e146673ecb6c172331b2138c99c2f881b1",
+      "gzipSha256": "91dc6a3440565e365f7d05cad03d80b7406c712270cb8ad4db02a60637058fd4",
+      "bytes": 862
+    },
+    "screenshots/studio-assistant/entry-880.png": {
+      "sha256": "21b8d0742bc12f74ba10e2486ad46f5c83f3dcb272440010ceb73b9e0d84bc93",
+      "gzipSha256": "0ea9d8e4acb6e601a126034cca9cdf12e91ad2b9c6e18041963130fb6933a07f",
+      "bytes": 56564
+    },
+    "screenshots/studio-assistant/recovered-original-request.png": {
+      "sha256": "41a7dbe518c140ec913fdc6b86a3904d49448a8323e9640bffb0a49403ed56c1",
+      "gzipSha256": "e01c10c937debe504e2b99d450dc87b367c12320b8fedccc6cc4207d98ac3f62",
+      "bytes": 113414
+    },
+    "screenshots/studio-assistant/retained-original-readonly.png": {
+      "sha256": "bfd226262267ee43d7d86d4b666647e788d44f2737a3312563f1f7c3fbc42d50",
+      "gzipSha256": "bab095431b90ecea4f404dbcd483f867b171c4daca8e58d9171b9f0bd02e4aab",
+      "bytes": 89801
+    },
+    "screenshots/studio-assistant/saved-original-model.png": {
+      "sha256": "f642d2f7ae9bff54a42224e9dd694b1e64613db7eb65a2e1ba34b0e028949f09",
+      "gzipSha256": "297e67e4404275ee2619daae3938a2c2e4991a8b0009d72a3ae8c0e07ec6ba40",
+      "bytes": 114591
+    },
+    "screenshots/studio-assistant/separate-drafts.png": {
+      "sha256": "9646a933fa0213727a5b38f81806ad33f1822b8005484dd0d6536ae5ae63a976",
+      "gzipSha256": "316c4d1a26d04220f0b69b940172d9f988a965239a0231f5f9f2ea0602c5cffa",
+      "bytes": 73848
+    },
+    "test-results/.last-run.json": {
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+      "gzipSha256": "ab2773fce076cedf886e7b45072ea49d0dfc6bdbbca2d9e3779ab76473918f40",
+      "bytes": 45
+    },
+    "actual-qa-source/app/studio/studio-instant-assistant.tsx": {
+      "sha256": "ec077c3e93048094da8d4c3c79b2c6f9b16db02c5d3942cb4226f26979a63b46",
+      "gzipSha256": "e4fdf2c399c9c7ad4aceac61cd0fcb565ccf0808993dd50a7647cb942428d314",
+      "bytes": 13433
+    },
+    "actual-qa-source/app/studio/studio-instant-assistant.css": {
+      "sha256": "a533f8312704b0410ec3f273e9438a263ea2f2295d7edec963588fc46765c14e",
+      "gzipSha256": "95fe0d99db641b16bf535cc2eceeb12a20e1893ca55fb8a75244f62ac340af22",
+      "bytes": 6696
+    },
+    "actual-qa-source/app/studio/studio.tsx": {
+      "sha256": "e8d94c37743a2bac685a8322b90ad5fe9d4c3e83c54b95c74b48ef6ea7e9a063",
+      "gzipSha256": "ff71c60d114cc96efc3df1c23652e7fc14ec687c607384f3817ab77706b8cfb4",
+      "bytes": 29329
+    },
+    "actual-qa-source/app/studio/classroom/workbench.tsx": {
+      "sha256": "758a5460c5e6cf6feaaa4c9ee7e8352b677af341d4cd3510aad6db9a9725424a",
+      "gzipSha256": "70152068cd2b22fd65bb385fa2ef18df494e4b5a2d0c60f16d162b783f48cab0",
+      "bytes": 77413
+    },
+    "actual-qa-source/app/studio/classroom/classroom.css": {
+      "sha256": "e5b4bb325707b659670d5ce934435088f0716ea0c6cbee693521f20047f2056f",
+      "gzipSha256": "388f8d0813219b461728338c6350527321dbdfa7d497832c0b2b2deaf68e668b",
+      "bytes": 54267
+    },
+    "actual-qa-source/components/assistant-widget.tsx": {
+      "sha256": "6682dc329f1ac0635076044a36b7fb17afcbcfdef89aa39576a2aecadd0eaab7",
+      "gzipSha256": "fde75b23afb71b4b7ec5aff07f352080861c0de59bb48ac3cd24b3043d36ef7b",
+      "bytes": 16051
+    },
+    "actual-qa-source/components/xiaojiu-model-picker.tsx": {
+      "sha256": "3594f786e9a0ce44487cec0721b2f86470ad873a3c004f38ac62f40438eb3640",
+      "gzipSha256": "9d9036cb874dd2b4de8611ea39429b5123e56396121805a6c96f684271577616",
+      "bytes": 5976
+    },
+    "actual-qa-source/components/xiaojiu-model-picker.css": {
+      "sha256": "628d33d6aaceaa2aaa15a4bfddfdb06702027d8f0410272909249b3b5561c071",
+      "gzipSha256": "2b55e9b63d5a13b0de7932e41e0c37b3719711507cda27aefa3995d383b2d843",
+      "bytes": 3082
+    },
+    "actual-qa-source/lib/assistant-conversation.tsx": {
+      "sha256": "39ade34e92628b1a607b96e756d864963a1fcb95d7e5110b0264ffada0c534d9",
+      "gzipSha256": "b0c84f9a82e52b621ce9fff85cc5787bb5c265e1445d383d24d2f72ddff14cea",
+      "bytes": 18709
+    },
+    "actual-qa-source/app/studio/reference-assistant.generated.css": {
+      "sha256": "2fe0fb309d56f9a3372408fa66548203f7e7db3bd3f30705e7ea9ff01d519c15",
+      "gzipSha256": "b15083a0e94e35556a0a9b60ffc8c3586839fc123a8d257381161c734e5b0810",
+      "bytes": 9419
+    }
+  }
+}

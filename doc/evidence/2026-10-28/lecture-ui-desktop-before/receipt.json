@@ -1,0 +1,65 @@
+{
+  "passed": false,
+  "expected": 0,
+  "failed": 1,
+  "attempts": 1,
+  "viewport": [
+    1280,
+    887
+  ],
+  "cause": "Get Assistance created one micro-lesson classroom session and navigated to classroom?lesson=...&help=1 instead of whole-lecture Instant Assistance.",
+  "state": {
+    "url": "http://localhost:3107/studio/classroom?lesson=soc-1-1-1&session=classroom_9d5955f7-a9a9-42eb-9fc6-b7c4139b8b27&tab=history&help=1",
+    "classroomPosts": [
+      "http://localhost:4107/api/learning/classroom/sessions"
+    ],
+    "errors": []
+  },
+  "files": {
+    "lecture-ui-desktop-before.json": {
+      "sha256": "33996f06f5aecda284cc762a3a86968e3a637f1a1dac826b27418b68d2b0fd47",
+      "gzipSha256": "42b1ab845aa818450f5c1d13b00db88325cb035572d026f7986ef21bdc10f6e5",
+      "bytes": 10034
+    },
+    "lecture-ui-desktop-before.log": {
+      "sha256": "05e20eec2c21a2928039c8c40f2edb059cfc8bd34ccc63a420091eb31c2e7241",
+      "gzipSha256": "72c137a2083b9d5d660f6dcf0ffe77e81f5ab3d1fd4e64d928bbf1237927aae1",
+      "bytes": 4102
+    },
+    ".last-run.json": {
+      "sha256": "0a254964201ca368065d745108f5f325d7457e842b7c128deb13018ba0272861",
+      "gzipSha256": "f8e16b1b9d3ce50fcb8e7268615bee35ac33afc5d7e382f8d3236d5e91d2f49a",
+      "bytes": 96
+    },
+    "error-context.md": {
+      "sha256": "60f2201b113c99f9e8699df9bed322277d8b341ed2d864c0bc39b6b1a948a1ed",
+      "gzipSha256": "95842dd6564d106f2d0dc0baa09d6ff7a1d4003cd913392edde350f6d4bbb614",
+      "bytes": 6782
+    },
+    "test-failed-1.png": {
+      "sha256": "97e436a07a297a1700fa21d76cc4bb5ef8313f74f6459ce38b327061d55b0364",
+      "gzipSha256": "cc7ed9fe6472d6a0a5c65931f0893987d32ab3df8c8eed1f90b5d49913ef2511",
+      "bytes": 86414
+    },
+    "trace.zip": {
+      "sha256": "1f25581f7584c42d3ad61575bf966ac0743c9918f726c129607d64e60db83c4c",
+      "gzipSha256": "4e4805efc63d634260dbc768bcb2eb9b4d3fbb118288394e61c55a3a4037a951",
+      "bytes": 1654335
+    },
+    "directory-state.json": {
+      "sha256": "25758c548099a51f08157af2fa5852e9e99e7b5c922dc538fcefd0978188477e",
+      "gzipSha256": "ad44473b4ddfd54377e4b161276c90e06cee1c71eb58aeb0dbc2a0d86c5e5337",
+      "bytes": 247
+    },
+    "directory-state.png": {
+      "sha256": "f0e227d873f4512a58da984429e491f45fe327969559de9cf427c22de92bbd22",
+      "gzipSha256": "08fcdec0415f352e9933c0a5676151e5dc4669631f5bd57d5e80a8703b12b2f6",
+      "bytes": 86417
+    },
+    "original-test.ts": {
+      "sha256": "ac3739868654cee3e43b88523fa795128e98c3d1f61020a384a5d1001f6e7a50",
+      "gzipSha256": "b22747ec7f7b0968b809b6c12bf1fb22f90aef916508710127746c3730a4ed76",
+      "bytes": 2641
+    }
+  }
+}

@@ -13,7 +13,7 @@ function decode(raw:string,ownerId:string,scope:string):Draft|null {
   if(v.pending){const p=v.pending;if(typeof p.requestKey!=='string'||p.requestKey.length<8||p.requestKey.length>180||typeof p.message!=='string'||!p.message.trim()||p.message.length>3000||typeof p.modelId!=='string'||!p.modelId||p.modelId.length>180||!/^[a-f0-9]{64}$/.test(p.contextVersion))return null;}
   return v;
 }
-export function useAssistantConversation({open,ownerId,scope,context}:{open:boolean;ownerId:string|null;scope:string;context:string}){
+export function useAssistantConversation({open,ownerId,scope,context,readOnly=false,frozenLectureSessionId}:{open:boolean;ownerId:string|null;scope:string;context:string;readOnly?:boolean;frozenLectureSessionId?:string}){
   const [input,setInputState]=React.useState(''),[messages,setMessages]=React.useState<AssistantHistoryMessage[]>([]),[turn,setTurn]=React.useState<AssistantTurnView|null>(null);
   const [turns,setTurns]=React.useState<AssistantTurnList|null>(null),[pending,setPending]=React.useState<AssistantTurnCommand|null>(null);
   const [sessionId,setSessionId]=React.useState(''),[viewSessionId,setViewSessionId]=React.useState(''),[historical,setHistorical]=React.useState<string|null>(null);
@@ -38,7 +38,7 @@ export function useAssistantConversation({open,ownerId,scope,context}:{open:bool
   function accept(next:AssistantTurnView,save=true,select=true){
     if(select)setTurn(old=>old?.id===next.id&&old.revision===next.revision&&old.task?.version===next.task?.version&&old.status===next.status?old:next);
     setTurns(old=>old?{...old,turns:[next,...old.turns.filter(t=>t.id!==next.id)]}:null);
-    if(select&&save&&!historical&&!mismatchRef.current&&(!draft.current?.pending||draft.current.pending.requestKey===next.requestKey)){const clear=draft.current?.pending?.requestKey===next.requestKey&&draft.current.input.trim()===next.message;
+    if(select&&save&&!historical&&!readOnly&&!mismatchRef.current&&(!draft.current?.pending||draft.current.pending.requestKey===next.requestKey)){const clear=draft.current?.pending?.requestKey===next.requestKey&&draft.current.input.trim()===next.message;
       if(draft.current?.lastTurnId!==next.id||draft.current?.pending)write({lastTurnId:next.id,pending:null,...(clear?{input:''}:{})});if(clear)setInputState('');setPending(null);}
   }
   async function page(id:string,before:string|null=null,query='',replace=false){
@@ -53,7 +53,7 @@ export function useAssistantConversation({open,ownerId,scope,context}:{open:bool
     return list;
   }
   React.useEffect(()=>{
-    const revision=++epoch.current;stopRequests();setError('');setNotice('');setBusy(false);setSuspended(false);
+    const revision=++epoch.current;stopRequests();setError('');setNotice('');setBusy(false);setSuspended(false);setSessionId('');
     if(!open||!ownerId){setLoading(false);return;}
     if(lastScope.current!==key){lastScope.current=key;if(historical){setHistorical(null);setHistoryTarget(null);setMessageAnchor(null);setLoading(true);return;}}
     setLoading(true);setMessages([]);setTurn(null);setTurns(null);setCursor(null);setLocation(null);setViewSessionId('');setStorageNotice('');setMismatch(false);mismatchRef.current=false;
@@ -62,22 +62,37 @@ export function useAssistantConversation({open,ownerId,scope,context}:{open:bool
     draftKey.current=key;draft.current=restored??{version:1,ownerId,scope,sessionId:'',input:'',pending:null,lastTurnId:null};
     setOwnerScope(key);setInputState(draft.current.input);setPending(draft.current.pending);
     (async()=>{try{
-      const s=await call<{id:string}>('/ai/assistant/sessions',{method:'POST',body:context});if(epoch.current!==revision)return;
-      setSessionId(s.id);if(draft.current!.sessionId&&draft.current!.sessionId!==s.id){setError('本机提问对应另一份学习上下文，原问题与命令仍保留，可下载后转为新提问。');setMismatch(true);mismatchRef.current=true;}else write({sessionId:s.id});
+      let s:{id:string};
+      if(readOnly){
+        if(historical)s={id:''}; // The selected owner's history is authorized by its read endpoints, independently of an unavailable base lecture.
+        else {
+        if(!frozenLectureSessionId)throw Error('原讲座版本无法读取。本机草稿仍保留，可下载后打开当前版本。');
+        const command=JSON.parse(context),retained=await call<AssistantContextView>('/ai/assistant/sessions/'+frozenLectureSessionId+'/context');
+        const location=retained.location;
+        if(command.pageContext!=='classroom'||command.contextRefType!=='classroom_lecture'||location.pageContext!==command.pageContext||
+          location.contextRefType!==command.contextRefType||location.contextRefId!==command.contextRefId||location.contextItemId!==command.contextItemId||location.studentId!==null||location.subject!==null)
+          throw Error('原讲座会话与当前学习位置不匹配，已保留本机草稿。');
+        s={id:frozenLectureSessionId};
+        }
+      }else s=await call<{id:string}>('/ai/assistant/sessions',{method:'POST',body:context});
+      if(epoch.current!==revision)return;
+      setSessionId(s.id);if(!readOnly){if(draft.current!.sessionId&&draft.current!.sessionId!==s.id){setError('本机提问对应另一份学习上下文，原问题与命令仍保留，可下载后转为新提问。');setMismatch(true);mismatchRef.current=true;}else write({sessionId:s.id});}
       const id=historical??s.id;setViewSessionId(id);
       activeQuery.current='';
       const [p,list]=await Promise.all([call<AssistantHistoryPage>('/ai/assistant/sessions/'+id+'/messages/page?pageSize=25'+(historical&&messageAnchor?'&anchor='+encodeURIComponent(messageAnchor):'')),call<AssistantTurnList>('/ai/assistant/sessions/'+id+'/turns?pageSize=25')]);
       if(epoch.current!==revision)return;setMessages(p.messages.sort(order));setCursor(p.nextCursor);setLocation(p.location);setTurns(list);
-      const local=draft.current!,pendingCommand=!historical&&!mismatchRef.current?local.pending:null;
+      // Message and task reads can straddle publication. A completed task is terminal, so polling cannot repair a stale message page.
+      async function recoverPublished(next:AssistantTurnView){if(next.status==='completed'&&next.assistantMessageId&&!p.messages.some(message=>message.id===next.assistantMessageId)&&!(historical&&messageAnchor))await page(id,null,'',true);}
+      const local=draft.current!,pendingCommand=!historical&&!readOnly&&!mismatchRef.current?local.pending:null;
       if(pendingCommand){const probe=await call<AssistantTurnList>('/ai/assistant/sessions/'+s.id+'/turns?requestKey='+encodeURIComponent(pendingCommand.requestKey));if(epoch.current!==revision)return;
-        const found=probe.turns[0];if(found)accept(found);else setNotice('原发送结果尚未确认；核对会继续使用同一个请求。');
-      }else{const target=historical?historyTarget:!mismatchRef.current?local.lastTurnId:null;
+        const found=probe.turns[0];if(found){accept(found);await recoverPublished(found);}else setNotice('原发送结果尚未确认；核对会继续使用同一个请求。');
+      }else{const target=historical?historyTarget:readOnly&&local.pending?list.turns.find(turn=>turn.requestKey===local.pending!.requestKey)?.id:!mismatchRef.current?local.lastTurnId:null;
         let latest=list.turns.find(t=>t.id===target);
         if(!latest&&target)try{latest=await call<AssistantTurnView>('/ai/assistant/sessions/'+id+'/turns/'+target);}catch(e){if(!(e instanceof ApiRequestError&&e.status===404))throw e;}
-        if(epoch.current!==revision)return;latest??=list.turns.find(active)??list.turns[0];if(latest)accept(latest,!historical);}
+        if(epoch.current!==revision)return;latest??=list.turns.find(active)??list.turns[0];if(latest){accept(latest,!historical);await recoverPublished(latest);}}
     }catch(e){if(epoch.current===revision&&(e as Error).name!=='AbortError')setError((e as Error).message);}finally{if(epoch.current===revision)setLoading(false);}})();
     return()=>{epoch.current++;stopRequests();};
-  },[open,ownerId,scope,historical,historyTarget,selectionRevision]); // Clearing a search highlight does not reopen or resend a conversation.
+  },[open,ownerId,scope,historical,historyTarget,selectionRevision,readOnly,frozenLectureSessionId]); // Clearing a search highlight does not reopen or resend a conversation.
   const pollingTurn=active(turn)?turn:turns?.turns.find(active)??null;
   React.useEffect(()=>{
     if(!open||!matches||suspended||!pollingTurn||!viewSessionId)return;
@@ -88,10 +103,10 @@ export function useAssistantConversation({open,ownerId,scope,context}:{open:bool
       if(active(next))timer=setTimeout(()=>void poll(),1500);
     }catch(e){if(alive&&revision===epoch.current&&(e as Error).name!=='AbortError'){setError((e as Error).message);setSuspended(true);}}}
     timer=setTimeout(()=>void poll(),750);return()=>{alive=false;if(timer)clearTimeout(timer);};
-  },[open,matches,suspended,pollingTurn?.id,pollingTurn?.status,turn?.id,viewSessionId,historical]);
+  },[open,matches,suspended,pollingTurn?.id,pollingTurn?.status,turn?.id,viewSessionId,historical,readOnly]);
   function change(value:string){setInputState(value);write({input:value});}
   async function submit(modelId:string,recover=false){
-    if(!sessionId||busy||historical||mismatch)return;setBusy(true);setError('');setNotice('');setSuspended(false);const revision=epoch.current;
+    if(!sessionId||busy||historical||mismatch||readOnly)return;setBusy(true);setError('');setNotice('');setSuspended(false);const revision=epoch.current;
     try{
       let command=recover?draft.current?.pending:null;
       if(!command){if(!input.trim())return;const current=await call<AssistantContextView>('/ai/assistant/sessions/'+sessionId+'/context');if(revision!==epoch.current)return;
@@ -102,14 +117,14 @@ export function useAssistantConversation({open,ownerId,scope,context}:{open:bool
       setError((e as Error).message);
       if(e instanceof ApiRequestError&&[400,409,429,503].includes(e.status)&&draft.current?.pending){
         try{const command=draft.current.pending,list=await call<AssistantTurnList>('/ai/assistant/sessions/'+sessionId+'/turns?requestKey='+encodeURIComponent(command.requestKey));if(revision!==epoch.current)return;
-          if(list.turns[0]){accept(list.turns[0]);setNotice('已读取服务器保存的原提问；本机文字保留供核对。');}
+          if(list.turns[0]){accept(list.turns[0]);if(list.turns[0].status==='completed')await refresh();setNotice('已读取服务器保存的原提问；本机文字保留供核对。');}
           else{write({pending:null});setPending(null);setNotice('当前未找到原请求回执，文字已保留；请核对当前上下文后再发送。');}
         }catch{/* Keep the original unacknowledged command on a failed read. */}
       }
     }}finally{if(revision===epoch.current)setBusy(false);}
   }
   async function control(action:'cancel'|'retry'){
-    if(!turn||busy)return;const revision=epoch.current,id=turn.id;setBusy(true);setError('');setNotice('');
+    if(!turn||busy||readOnly&&action==='retry')return;const revision=epoch.current,id=turn.id;setBusy(true);setError('');setNotice('');
     try{const latest=await call<AssistantTurnView>('/ai/assistant/sessions/'+viewSessionId+'/turns/'+id);if(revision!==epoch.current)return;
       const next=latest.status==='completed'?latest:await call<AssistantTurnView>('/ai/assistant/sessions/'+viewSessionId+'/turns/'+id+'/'+action,{method:'POST',body:JSON.stringify({generation:latest.task!.generation,version:latest.task!.version})});
       if(revision!==epoch.current)return;accept(next,!historical);setSuspended(false);if(next.status==='completed')await refresh();
@@ -123,9 +138,9 @@ export function useAssistantConversation({open,ownerId,scope,context}:{open:bool
   async function resetMessages(){const revision=epoch.current;activeQuery.current='';setMessageAnchor(null);setError('');try{await refresh(viewSessionId,true);}catch(e){if(revision===epoch.current)setError((e as Error).message);}}
   async function moreTurns(){if(!turns?.hasMore||busy)return;const revision=epoch.current;setBusy(true);try{const next=await call<AssistantTurnList>('/ai/assistant/sessions/'+viewSessionId+'/turns?page='+String(turns.page+1));if(revision===epoch.current)setTurns(old=>old?{...next,turns:[...new Map([...old.turns,...next.turns].map(t=>[t.id,t])).values()]}:next);}catch(e){if(revision===epoch.current)setError((e as Error).message);}finally{if(revision===epoch.current)setBusy(false);}}
   function download(){const value=draft.current;if(!value)return;const href=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=href;a.download='学习提问副本.json';a.click();setTimeout(()=>URL.revokeObjectURL(href),1000);}
-  function newScope(){download();write({sessionId,pending:null,lastTurnId:null});setPending(null);setMismatch(false);mismatchRef.current=false;setError('');setNotice('已发起原提问副本下载，当前文字可在新上下文中重新发送。');}
-  function editOriginal(){if(!turn||pending||historical||active(turn))return;if(input&&input.trim()!==turn.message){download();setNotice('已发起当前草稿副本下载，原问题已放入输入框。');}change(turn.message);}
+  function newScope(){download();if(readOnly){setNotice('原讲座只读。原稿已保留，请打开当前讲座版本后重新提问。');return;}write({sessionId,pending:null,lastTurnId:null});setPending(null);setMismatch(false);mismatchRef.current=false;setError('');setNotice('已发起原提问副本下载，当前文字可在新上下文中重新发送。');}
+  function editOriginal(){if(!turn||pending||historical||readOnly||active(turn))return;if(input&&input.trim()!==turn.message){download();setNotice('已发起当前草稿副本下载，原问题已放入输入框。');}change(turn.message);}
   function browse(id:string|null,target:string|null=null,anchor:string|null=null){setHistorical(id);setHistoryTarget(target);setMessageAnchor(anchor);setSelectionRevision(n=>n+1);}
-  return {input,change,messages,turn,turns,pending,sessionId,viewSessionId,historical,browse,messageAnchor,matches,loading,busy,suspended,error,storageNotice,notice,cursor,location,mismatch,newScope,
+  return {input,change,messages,turn,turns,pending,sessionId,viewSessionId,historical,browse,messageAnchor,matches,loading,busy,suspended,error,storageNotice,notice,cursor,location,mismatch,newScope,readOnly,
     waiting:active(turn)||!!turns?.turns.some(active),submit,control,stopWaiting,resume,older,searchMessages,resetMessages,moreTurns,download,editOriginal,selectTurn:(value:AssistantTurnView)=>{accept(value,!historical);setSuspended(false);}};
 }

@@ -1,0 +1,75 @@
+{
+  "passed": false,
+  "expected": 0,
+  "failed": 1,
+  "attempts": 1,
+  "viewport": [
+    880,
+    887
+  ],
+  "cause": "At the actual880px viewport, the existing @media(max-width:1250px) .cl-assist{display:none} hides Get Assistance. The test never clicked or tested navigation.",
+  "scope": "Actual isolated Web and anonymous login. Original report, screenshot, trace and byte-matching QA/source copies retained. Desktop wrong-route behavior is still to be verified separately.",
+  "files": {
+    "lecture-ui-before.json": {
+      "sha256": "5cbe6b7e31bbdb12ddf03aa6641c9759fab9db5957e40ea28f087a807d1fe299",
+      "gzipSha256": "8bda827a0e1eb1d009ef531df45a05d6500e4a55fc13abf5f41730a5255c1567",
+      "bytes": 8199
+    },
+    "lecture-ui-before.log": {
+      "sha256": "99466db76acd26ca12186df7467be079f663fa446ae7490da6964d6b02f7cfaf",
+      "gzipSha256": "4c287b83d010613293e85104aec00922ed43118300d6cb88e6f6f4b6f8a52b04",
+      "bytes": 6242
+    },
+    ".last-run.json": {
+      "sha256": "0a254964201ca368065d745108f5f325d7457e842b7c128deb13018ba0272861",
+      "gzipSha256": "f8e16b1b9d3ce50fcb8e7268615bee35ac33afc5d7e382f8d3236d5e91d2f49a",
+      "bytes": 96
+    },
+    "error-context.md": {
+      "sha256": "ce91daa19072617e278bab918d14b53bd8bf656af82ef639bf3c26184fc5ddc8",
+      "gzipSha256": "6051123696d5f0644d9435c198186dda2c5519b4d310aaa7f8c405aac0026e1c",
+      "bytes": 11580
+    },
+    "test-failed-1.png": {
+      "sha256": "5f8ae60d3e2d5449c7e65bee726d09531d60c3a773ea57983cdc85ec9ce36fb0",
+      "gzipSha256": "5e468c078ab3fa8cdd75132c134faba25c3a15355b429bca236ac6dbaa0c6bf3",
+      "bytes": 73161
+    },
+    "trace.zip": {
+      "sha256": "0553cc5ed5fb5ea9f4059813ba46904bec90ce3817992722609df5470a9e8602",
+      "gzipSha256": "1f12c894de73c67837f6d04b663f9685a66ae7be2b4255c2d0e1b0c46f16f1c1",
+      "bytes": 1146207
+    },
+    "directory-state.json": {
+      "sha256": "52bb5b48abcf29bf47a89c86203a8d7a30df2a384a857b0df45e1b232e6032be",
+      "gzipSha256": "c72d05e6005cc32c1e7765014969b0b3eff9f83188a98b7ecc57a47035218e2b",
+      "bytes": 93
+    },
+    "directory-state.png": {
+      "sha256": "43cb7c00b390f1e32dd2b4f96bcf24730830d7a10c18d473dc4910942939913f",
+      "gzipSha256": "2d03909e0db8197d4916a90713a1ef308549085fff1fc85207c7e12ee5fce9aa",
+      "bytes": 176057
+    },
+    "workbench.tsx": {
+      "sha256": "c0e2d1eadbb55498d85dc15e6517516f01ae46860e5b4e8728601ec2b3192b5d",
+      "gzipSha256": "1bc899716dab6983fb237b3b6029567e1cf73c5eb576db3ed1d2ae8cb233b122",
+      "bytes": 74547
+    },
+    "workspace.css": {
+      "sha256": "3525acd0219a4d37720793012b4b29bb49dd324bd08a86d4f44de7e2bb076f12",
+      "gzipSha256": "60918038f2eb740ea79e1926c2a36775c41ec5ebdbf0636229bd39253af620fe",
+      "bytes": 36649
+    },
+    "classroom.css": {
+      "sha256": "b0581a309b118d195ce6d63989cb1ddef663fdf5842622d8a36c03b511e43037",
+      "gzipSha256": "41088d6779da29656f802b5b7360b6da055d38ac62367695216591baf205c709",
+      "bytes": 54242
+    }
+  },
+  "sourceRule": {
+    "file": "apps/web/app/studio/classroom/classroom.css",
+    "media": "(max-width:1250px)",
+    "selector": ".cl-assist",
+    "declaration": "display:none"
+  }
+}

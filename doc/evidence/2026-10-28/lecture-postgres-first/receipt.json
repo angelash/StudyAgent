@@ -1,0 +1,33 @@
+{
+  "passed": false,
+  "passedTests": 10,
+  "failedTests": 2,
+  "environmentSkipped": 0,
+  "scope": "First PostgreSQL native/HTTP run. JSONB key ordering invalidated a raw JSON string equality; semantic snapshot and canonical fingerprint checks will replace that fixture assumption. Concurrent first session opens exposed a real409 commit conflict needing bounded transaction recovery. Originals retained before changes.",
+  "files": {
+    "data/qa/lecture-assistant-postgres.json": {
+      "sha256": "23e7d8bdff4249294fe5ad80792422c89080ace9c58c46e1ec36395fe360ded5",
+      "gzipSha256": "adbaccaa34538544a91d171160fe75b045b90df4d83202ac190eb84681e25fce"
+    },
+    "data/qa/lecture-assistant-postgres.log": {
+      "sha256": "446efa6d12d19e1d32bbe8a9ba22aaee5b362aac1dce9829d891abcb424b5504",
+      "gzipSha256": "85bd68ef75db4a266157eeac56c27e2f2c9228ef8f82809ffa6a0fb83483274b"
+    },
+    "apps/api/src/modules/ai/assistant-lecture-recovery.integration.test.ts": {
+      "sha256": "c09662789cf58b90134244f4aed66eddcfd041333c3e83c7db65727c177ece11",
+      "gzipSha256": "d8feac412ef45ce82913bc83c5a2c7fc93dfe3851e4969357de43bbb8f9493ac"
+    },
+    "apps/api/src/modules/ai/assistant-lecture.integration.test.ts": {
+      "sha256": "3f11131da28f47f399f584fae33b55c40843ccbf2f7318f78d782a15ba84855d",
+      "gzipSha256": "e3d85bfb1ac74ebcbb88e0615cce5242d3da2036e9e9b491e329eee0bd589ab0"
+    },
+    "apps/api/src/modules/ai/ai.service.ts": {
+      "sha256": "624c8e2a835905d2c0de32af30e2f323d09dcc92ae5b3536cb8a404e30f3cfab",
+      "gzipSha256": "85f0c0855317b5146d0e1a7a6605c805fea793c3be663a8cf8b96a20d2cbf68b"
+    },
+    "apps/api/src/modules/ai/ai.controller.ts": {
+      "sha256": "2c2de02e09c5bad986e6006b924b3dffd76cf1a6ffa793ad4d1daaa1f8228282",
+      "gzipSha256": "ce3e5dec1df584add98fb4723cb45290702dc866e04300264515581249472ad2"
+    }
+  }
+}

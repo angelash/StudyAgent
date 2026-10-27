@@ -86,9 +86,10 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await selectWorkspaceView(page, 'Home');
   await page.getByRole('button', { name: 'Instant Assistance' }).click();
   await page.getByRole('button', { name: 'Concept Explanation' }).click();
-  await page.locator('.sa-tools-popover').getByRole('button', { name: /Whiteboard session/ }).click();
-  await page.locator('.sa-composer textarea').fill('解释异分母分数加法');
-  await page.locator('.sa-composer > div > button:last-child').click();
+  await page.getByRole('button', { name: 'Tools', exact: true }).click();
+  await page.getByRole('menuitem', { name: /Whiteboard session/ }).click();
+  await page.getByLabel('想一起看看什么', { exact: true }).fill('解释异分母分数加法');
+  await page.getByRole('button', { name: '预览白板主题', exact: true }).click();
   await expect(page.getByText('WHITEBOARD SESSION', { exact: true })).toBeVisible();
   if (!process.env.CI) await page.screenshot({ path: browserEvidence('studio') + '/studio-whiteboard-preview.png', fullPage: true });
   await page.getByRole('button', { name: '保存到学习工作台' }).click();

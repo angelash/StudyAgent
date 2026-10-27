@@ -59,6 +59,7 @@ export function XiaojiuModelPicker(input: {
   onChange: (value: string) => void;
   disabled?: boolean;
   compact?: boolean;
+  presentation?: 'panel' | 'inline';
   error?: string;
   onRetry?: () => void;
 }) {
@@ -69,7 +70,8 @@ export function XiaojiuModelPicker(input: {
   const defaultName = input.catalog?.models.find(model => model.id === input.catalog?.defaultModel)?.label;
   const label = (model: XiaojiuModelCatalog['models'][number]) => model.label +
     (model.textCheck?.status === 'failed' ? ' · 上次未通过' : '');
-  return <div className="xiaojiu-model-picker" data-compact={input.compact}>
+  const qualification=<><span>{checkLabel(selected?.textCheck)}</span>{checkNote(selected?.textCheck)&&<small>{checkNote(selected?.textCheck)}</small>}</>;
+  return <div className="xiaojiu-model-picker" data-compact={input.compact} data-presentation={input.presentation??'panel'}>
     <label><span>模型</span><select aria-label="选择大模型" value={input.value}
       disabled={input.disabled || !input.catalog} onChange={event => input.onChange(event.target.value)}>
       <option value="auto">Auto · {defaultName ? `平台默认 ${defaultName}` : '平台默认模型'}</option>
@@ -81,9 +83,9 @@ export function XiaojiuModelPicker(input: {
           <option key={model.id} value={model.id}>{label(model)}</option>)}</optgroup> : null;
       })}
     </select></label>
-    {input.catalog && <div className="xiaojiu-model-check" data-status={selected?.textCheck?.status ?? 'unknown'}>
-      <span>{checkLabel(selected?.textCheck)}</span>{checkNote(selected?.textCheck) && <small>{checkNote(selected?.textCheck)}</small>}
-    </div>}
+    {input.catalog&&(input.presentation==='inline'?<details className="xiaojiu-model-check-popover" data-status={selected?.textCheck?.status??'unknown'}>
+      <summary aria-label="模型文字检查说明" title={checkLabel(selected?.textCheck)}>{selected?.textCheck?.status==='failed'?'!':'ⓘ'}</summary><div className="xiaojiu-model-check">{qualification}</div>
+    </details>:<div className="xiaojiu-model-check" data-status={selected?.textCheck?.status??'unknown'}>{qualification}</div>)}
     {input.error && <div className="xiaojiu-model-reload" role="alert"><span>模型目录暂未读取成功。</span>
       {input.onRetry && <button type="button" onClick={input.onRetry}>重新读取模型目录</button>}</div>}
     {!input.compact && <p><b>{selected?.label ?? '正在读取模型目录'}</b>

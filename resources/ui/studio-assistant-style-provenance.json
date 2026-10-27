@@ -1,0 +1,377 @@
+{
+  "version": 1,
+  "source": "apps/web/public/reference/hyperknow/assets/css/index-CkZwjgwy.css",
+  "sourceSha256": "cce6185b6293280df5c484044f310272f32297afd40a71527e842a9fd57f0183",
+  "output": "apps/web/app/studio/reference-assistant.generated.css",
+  "outputSha256": "2fe0fb309d56f9a3372408fa66548203f7e7db3bd3f30705e7ea9ff01d519c15",
+  "rules": [
+    {
+      "selector": ".lecture-context-chip",
+      "media": [],
+      "originalSha256": "7e828b61af41575b9447cc5d5fc12abcaff5f05ff35b00156b97c25208511048",
+      "derivedSha256": "7cc43de1b2ccf908569564edeb9e19ea2f8c06711185fb6dcda7b4d734371f71"
+    },
+    {
+      "selector": ".lecture-context-chip-icon",
+      "media": [],
+      "originalSha256": "d06d4d53a9898b900926f1e7883abcab53102daa57c907e7326dcbfae75a9862",
+      "derivedSha256": "2030b24c4f15e2275ad4c4310fc2d7f766a772c559060c09c329ea4d8f7c19ba"
+    },
+    {
+      "selector": ".lecture-context-chip-info",
+      "media": [],
+      "originalSha256": "ab787785532166e1c35e956bce2b1ebb5391df3b3066b21c34a91f1a2df3fcae",
+      "derivedSha256": "9dff14add2b9966ceb5a84b4c53dd2beea95d5826031daa3452201f49d966592"
+    },
+    {
+      "selector": ".lecture-context-chip-title",
+      "media": [],
+      "originalSha256": "8aa1c4c7ce94424fcf031da064f6406188c067ad7ed24f3a72b8fc24e40f47fb",
+      "derivedSha256": "83af1e8a99d919a506bab0e6d1670008bc16d68a9899466a8c7ce83c065c9ac9"
+    },
+    {
+      "selector": ".lecture-context-chip-meta",
+      "media": [],
+      "originalSha256": "f599b36400b6c22bf948334577968c8a714ff562223ea984add790ad218fb899",
+      "derivedSha256": "b4db9edf8eb98b79500ba1201f6ae4668d30006adfadc0cd718f51751d37c579"
+    },
+    {
+      "selector": ".lecture-context-chip-position",
+      "media": [],
+      "originalSha256": "26278c3d8f5d935c5c3e466ff6611ad6f09d343173b62f722f35832bc7b5ff08",
+      "derivedSha256": "240add971bbd068ccc16512ac051395d0d9b596c042442afc415c2c9e6c96679"
+    },
+    {
+      "selector": ".lecture-context-chip-course",
+      "media": [],
+      "originalSha256": "8267bd6c9a475f683b423b403e2c2ca626a8bd5156b2b9f030f4a75fb5695d7b",
+      "derivedSha256": "db4fac210e520d89d2d635c6c9fce57999cbdb704fca01a96f22f60599fa36a2"
+    },
+    {
+      "selector": ".lecture-context-chip-remove",
+      "media": [],
+      "originalSha256": "22f642302ebef6c0c68ad8b63a31c2513f195a2a63887d6c03d8d072544e21ed",
+      "derivedSha256": "a1a36fc6c0dc2585201faf5f5b66b543028c0b3c50aa6ebe36a2103cdce10959"
+    },
+    {
+      "selector": ".lecture-context-chip-remove:hover",
+      "media": [],
+      "originalSha256": "d012885e02178e45d678f18dc74c2769c27e53807da85a8aea41dbcfbdaae2e2",
+      "derivedSha256": "467ed5be20a47d012a4db22a9421dc0fc92595698d772883ab034a74c25dbcfa"
+    },
+    {
+      "selector": ".lecture-context-chip--compact",
+      "media": [],
+      "originalSha256": "42dbcc095f87643634f3051f8de0d527afef4fb72bae3e22e5dd283f8c576953",
+      "derivedSha256": "05ab91084afddf48fa28da6c38c8d7a0e91f86f0d43d4851d7f56d421d9eaf3f"
+    },
+    {
+      "selector": ".lecture-context-chip--compact .lecture-context-chip-icon",
+      "media": [],
+      "originalSha256": "90fe53726688663b64027fb161763f41db66f7308a1b2c794434e3434cad950a",
+      "derivedSha256": "373471c4234394f48adf7b12743b641af39c31bb1400a70006e6d2200dd6ac0a"
+    },
+    {
+      "selector": ".lecture-context-chip--compact .lecture-context-chip-info",
+      "media": [],
+      "originalSha256": "70898e544ffcc06a0174e0cda24aae72d510c7c339febd804738faa3f8b8036c",
+      "derivedSha256": "28e47f5ed3659faa7377be6779d8f1c197cd60dfcf1077205027e67ae1c2e61f"
+    },
+    {
+      "selector": ".lecture-context-chip--compact .lecture-context-chip-title",
+      "media": [],
+      "originalSha256": "4659536262b5d3f1749ee99a7e22468befd8d5543fc725526cc4f318065539ca",
+      "derivedSha256": "fb10e48f75d40124be95aea900c58f359200a3b34e9aa47065aa04236211fc94"
+    },
+    {
+      "selector": ".lecture-context-chip--compact .lecture-context-chip-position",
+      "media": [],
+      "originalSha256": "bcfa1fa4af75a14d77cd1e696c3460393c82f4b09a86c86bd24c5ec2b97942d7",
+      "derivedSha256": "3a1321be750cb93802ec6e61591510b99df7280ae74efb144745161b90676a26"
+    },
+    {
+      "selector": ".lecture-context-chip--compact .lecture-context-chip-course",
+      "media": [],
+      "originalSha256": "f6648d242d594af207c10bed0859ed4f387d14726894a0b597b3bf3bda6ea099",
+      "derivedSha256": "36151a4572fdcd64dfb2d81d2e1a1936c22dcd1fa04c02f5cb97d474b6d903e5"
+    },
+    {
+      "selector": ".lecture-context-chip",
+      "media": [
+        "@media (prefers-reduced-motion: reduce)"
+      ],
+      "originalSha256": "737a9a183f8927c3c86cc487859e19940785965004e3519c12da2d453a7d8fc4",
+      "derivedSha256": "2ddef56dacdcf8f01f40ba5ac79a5f429a340e210f8f253f7c606fff9541332b"
+    },
+    {
+      "selector": ".home-mode-tabs",
+      "media": [],
+      "originalSha256": "b1028bed9266c9196d2b806ae189b0929b8f69541376d8ea371fee02bd92f707",
+      "derivedSha256": "6de551c6938c9c50b8f2a5147a0b284e1b1534eaf31dba948f35cd08a68516ec"
+    },
+    {
+      "selector": ".home-mode-tab",
+      "media": [],
+      "originalSha256": "2b488228509fa1953b021fc13e9f77c6f515a0325796c78f5aa9dd7aef865b62",
+      "derivedSha256": "eb9aaee0ee966149b47528c08dc378be4e72ff074da38eb00368fcf701fe29ad"
+    },
+    {
+      "selector": ".home-mode-tab:hover",
+      "media": [],
+      "originalSha256": "bb4002308607130ce875f3e8322aa5d5d8182529ca1d2cc15816e08b35f62d46",
+      "derivedSha256": "44b4736f8abd4bf473848f7f8e42709b9c55a0255eeb7d49a327ae87e70e43c5"
+    },
+    {
+      "selector": ".home-mode-tab.active",
+      "media": [],
+      "originalSha256": "b6febfe09f1be0ff14bfe66bda9e33d28bf24aa6b52895964f7a80a8054084a5",
+      "derivedSha256": "9c52b306f5a428568c79fb371d8dbfcd8f63fe136da614155154e5a9c2cb81e5"
+    },
+    {
+      "selector": ".craft-course-input-field::-webkit-scrollbar,.input-field::-webkit-scrollbar",
+      "media": [],
+      "originalSha256": "416f4c3cd565ee70663be40c612b5a08efd04313e5e679d661a55b8bb1ff1495",
+      "derivedSha256": "702caa7f8fef2f86db7b401d3f2312a5e3526a233c1fd56eb076d1041cff5a03"
+    },
+    {
+      "selector": ".craft-course-input-field::-webkit-scrollbar-thumb,.input-field::-webkit-scrollbar-thumb",
+      "media": [],
+      "originalSha256": "e01d9dfa44751add2c7194fbb821e5888fc888d5788b832d9762fd4845839edf",
+      "derivedSha256": "6f1a55c24f118b48e34673cc424bc00b66261875b20f2eee417b2353afcef6e8"
+    },
+    {
+      "selector": ".craft-course-input-field::-webkit-scrollbar-track,.input-field::-webkit-scrollbar-track",
+      "media": [],
+      "originalSha256": "a2a8f132b2dc35bb64b5ce06b55af7f6784984d193e0c21c79bdf727a60d345d",
+      "derivedSha256": "3993b0fd13fe1e34a7020326f13c6f623c901fc9cc9b82e14ec51f13f82e1e63"
+    },
+    {
+      "selector": ".input-box",
+      "media": [],
+      "originalSha256": "472b2b78cd04360c10fcfffca5f0d5721a15346af52d5713b7e82231ce729ea2",
+      "derivedSha256": "efa7605275759c501bdc167f628c1de2b52ef7823a65957c041837b313feb91f"
+    },
+    {
+      "selector": ".input-box:focus-within",
+      "media": [],
+      "originalSha256": "168d0a255ae1ed7987f7f4904e176dd0076de34bca12555d9f4a1f41f5c94b94",
+      "derivedSha256": "1d29199b27a0fa87aea319ad9b619185de552a4f52c66c45150152ddc279e512"
+    },
+    {
+      "selector": ".input-box.drag-over,.craft-course-input-box.drag-over",
+      "media": [],
+      "originalSha256": "d7e290eeef019c1602dda6aaa3517606d08f7fd361c9c39cb7f28043a19f6ad1",
+      "derivedSha256": "3115895ae77c83063bc7f9dd6a20f246ab43d4ea44f134d064dfa63afca0d076"
+    },
+    {
+      "selector": ".input-box.sending",
+      "media": [],
+      "originalSha256": "6018bf45b045be294a1825284fc2535157db5242ae7d0720bfaeddb05aaf7c82",
+      "derivedSha256": "3aac9e0e7cb6f570d668ecdb9cd46fd321f00db7c150240b95837c4629eb7941"
+    },
+    {
+      "selector": ".input-area",
+      "media": [],
+      "originalSha256": "acf416a403578277dcfdc4464923e390bd3399048c1cc660705edc025727f1a5",
+      "derivedSha256": "70b95ae6ff300c8aec8433cf41d2959a0187468b4845b4e484435258202425be"
+    },
+    {
+      "selector": ".input-field",
+      "media": [],
+      "originalSha256": "20b0a6bafaa72b28bd03a632d37be356ef57a1eb84d3fe02d311f9b0ba0e2635",
+      "derivedSha256": "86c791f74fe573086f842ab0b6f0fdc4404edef80b3e1bcf2676c90bb6a984d6"
+    },
+    {
+      "selector": ".input-field:disabled",
+      "media": [],
+      "originalSha256": "8ff7d2b7ac5bc43d85d4958bb8d3e4c9754db6b94df81b262b7a4f27498dd66f",
+      "derivedSha256": "0529e381a605877acba9462d937611c1bd345cdcc9237c5f68cea3d4e480c2a4"
+    },
+    {
+      "selector": ".button-row",
+      "media": [],
+      "originalSha256": "949bf5515f45f9e88120cc888ea915c2bd9cb44f37cda43d599d5a61b2f56095",
+      "derivedSha256": "c96987f8968cf170c499722509bf6715e77a071af8ebf4a707db853b57400e4f"
+    },
+    {
+      "selector": ".composer-right-group",
+      "media": [],
+      "originalSha256": "cbfd42355fba142c559c59b0498f5a05cda27c9bd111e0175f4c65ff6b51d89b",
+      "derivedSha256": "6f03428a2b6208e7ec6b2ef494e44515fac281b372ef8b85eb191101d9603cfb"
+    },
+    {
+      "selector": ".left-button-group",
+      "media": [],
+      "originalSha256": "3dfafe07ba67f6810df41a97950c51cba0fd5ba60c5c0c589e3b0bb6794db3ce",
+      "derivedSha256": "47e456a779cc805a2c4c51ddcbf3af089b5e3492499b9c92d5236fed32fd2ca7"
+    },
+    {
+      "selector": ".tools-button",
+      "media": [],
+      "originalSha256": "79da9aeac1b68aef5d40824220ebd1986c0b5ba1f4a725dd36eff3229dd1444b",
+      "derivedSha256": "83362d8d8a1945a112d614716da010bc87b547eb391a90636f7682df537d6747"
+    },
+    {
+      "selector": ".tools-button.tools-selected",
+      "media": [],
+      "originalSha256": "b15d42e98a978561813477d1ec66ab6960e607505c154d3d00e1f9872c1c9173",
+      "derivedSha256": "3d8429b52afc3ffce3b538bc016c657b19e36be3e88afeb26ebeb971d385fa11"
+    },
+    {
+      "selector": ".tools-button.tools-selected .tools-button-text",
+      "media": [],
+      "originalSha256": "bb2609fd371403983f2fe77515465e4b7d90312f5a657a4e56df539a50f3a739",
+      "derivedSha256": "5ebf1ca6f534222e8dfe5e0705d568ee30d74257ae73f6b239df0fa85e7292c8"
+    },
+    {
+      "selector": ".tools-button.tools-selected .tools-button-icon",
+      "media": [],
+      "originalSha256": "840bd57829dad00835ee3302f9dbe345cac6974a6dbeb07080f4bdfd6a4c565d",
+      "derivedSha256": "8cf607507ddf825cea8fb69d3153c453d1500f98f84388ab774a09b797e5011a"
+    },
+    {
+      "selector": ".tools-button:not(.tools-selected):hover",
+      "media": [],
+      "originalSha256": "f75e71ea81fefe6f47052e9a1dfe261da1f6eb1c78b4cc709ba6226d954ffa64",
+      "derivedSha256": "a4fa2c7b5b20a170b7af876b3fea04e3a97c3fed541ffb9a91432a0d2e3175be"
+    },
+    {
+      "selector": ".tools-button-icon",
+      "media": [],
+      "originalSha256": "f532a57608cce3b2a9c39e3eca3f5ed76d2c163996864db32fdfb8fdc5218075",
+      "derivedSha256": "d9e22691ced51fbd69fbfc43235e412f83ebdc25f54d9e2fc8aa24dee54a803e"
+    },
+    {
+      "selector": ".tools-button-text",
+      "media": [],
+      "originalSha256": "0f1440ae874544908be51cef28cbd691805501085a780250d5ca5fe96e84ab21",
+      "derivedSha256": "438e3da69349de0af4f33d509150a637963675576cfa5a9b4a6ab3be0864007e"
+    },
+    {
+      "selector": ".tools-button-cost",
+      "media": [],
+      "originalSha256": "18dc01f5dd1ac23b3ba94d5f847e3299e765f96982e2cf4e1ea46bf48e4e1c83",
+      "derivedSha256": "384f6d312a3f3fd93e422e72daf3aa282f93935c830c9b4a3b0f2f1f24d15a7f"
+    },
+    {
+      "selector": ".tools-button-cost-icon",
+      "media": [],
+      "originalSha256": "5474211618478b1b2362389a75db8f068da177e19c83a926ab0f972f3398d178",
+      "derivedSha256": "df65340669e2be33e8c63b5f0ff0544d8f198079d1e9040c6620b426164ea23f"
+    },
+    {
+      "selector": ".tools-button.tools-selected:hover .tools-clear-icon",
+      "media": [],
+      "originalSha256": "fbf41fc00ca6f3207f87b700084eb8736daf03ec1ae2e7556a4528f522f6081d",
+      "derivedSha256": "49be9c154060f8605b369aa614205d04492d3924898831590c29f9bdbf61c6d1"
+    },
+    {
+      "selector": ".tools-button.tools-selected .deep-icon",
+      "media": [],
+      "originalSha256": "6f9940e8b499f03b598e5fcacaf93cf64e203093b2c5b5cade68e88b8f15b3bc",
+      "derivedSha256": "c2e822c9c6d215b6a57424e14a95921a649e3988aaad100137dd64b44cea7028"
+    },
+    {
+      "selector": ".tools-button.tools-selected:hover .deep-icon",
+      "media": [],
+      "originalSha256": "a267b35ad96a3c4e3da64fe8b5f6aa6806f5e19bb64a2e25a804b8da64ceb9f6",
+      "derivedSha256": "8618ab8e49d045b2604f8b64f407d26b6ca0e239c625f2e47c545de2a95308c5"
+    },
+    {
+      "selector": ".send-button",
+      "media": [],
+      "originalSha256": "ccff79d0631b18f408171d471f589c6756f92d965606077984ffd28f958aba4a",
+      "derivedSha256": "3db3d6ba9d2564c754428732ea479a03bb48a906585e5ee0be42ba0f9a1ec093"
+    },
+    {
+      "selector": ".send-button:hover",
+      "media": [],
+      "originalSha256": "2558290696a31a366ee0cd9568b6f830f6a8a223f7be1fe491bd99200dc950e9",
+      "derivedSha256": "45e431cb26b8e3391619324d5e0baaf73ce62bc7e0986b0f1f21bef94305bb9f"
+    },
+    {
+      "selector": ".send-button img",
+      "media": [],
+      "originalSha256": "8dccdf18e8373c68325d2c676aa8be780d15734c2b0941a691d7c9fb6ede3c25",
+      "derivedSha256": "6f4b281d1b2b6759c15e1ab73a517e916f123dea6e572a6e8b3eff76d645a000"
+    },
+    {
+      "selector": ".send-button.disabled",
+      "media": [],
+      "originalSha256": "420bffd16c4c440dd7040a51bc5e3eca14e760d0c464ac6ffc78a5fe13bc428c",
+      "derivedSha256": "ce073cf2317b68de265fc58c8639c23e001fd43f3749be4ded32328946145a9a"
+    },
+    {
+      "selector": ".send-button.disabled:hover",
+      "media": [],
+      "originalSha256": "568e75894432fb0adb530556728c033762f2a71722835d98aad009d0360d2782",
+      "derivedSha256": "8a8dd770e0e98757cd80ecdfe468b56b094b79e994551d61031cd6b59d03d6d9"
+    },
+    {
+      "selector": ".send-button.enabled:hover",
+      "media": [],
+      "originalSha256": "ba0f11b99b8fa4dda340cfff08c3e79d1aa1fd65e8aff08c26d97d0b45511303",
+      "derivedSha256": "3cfe1563a081b6eb21de2ac58e6fb1346a90b5459e9ba71d27b28279c44dc825"
+    },
+    {
+      "selector": ".send-button .loading-spinner",
+      "media": [],
+      "originalSha256": "379afbed9002d2eb70588e4a2bb98910b85f0b3cc063abbd2fe83d6afc58876d",
+      "derivedSha256": "55819e70c49d7b6f83825aa3cbaed8f27b864ce472f60f0e5b4cf9da0348567f"
+    },
+    {
+      "selector": ".add-button-container,.mode-button-container,.tools-button-container",
+      "media": [],
+      "originalSha256": "e5d8b5765dab99053552133fe0638c12b8bf03d92b17c71b1e2384426088b153",
+      "derivedSha256": "0abe05fff8ac27d961aee14c6510f7ad0f5305f56f550f88229f7d8ce7fd2e3d"
+    },
+    {
+      "selector": ".action-buttons-section",
+      "media": [],
+      "originalSha256": "99b19bd7f58018a36f099860fb83ba31aab0b790f5a9eed6c14ec991ac080ddb",
+      "derivedSha256": "400663af2cff34866a50a8a99f60c6fe434b6a8d3c23a0a556c5d2316991fc7b"
+    },
+    {
+      "selector": ".action-buttons-grid",
+      "media": [],
+      "originalSha256": "77d2c2453d4d4711ad2ccb89a0c83d15b9c6c51469198de14b37c64cff04d097",
+      "derivedSha256": "7301eb6f160cfbab240e35236ef477c32629dd7a1ee285f62ee6d6dde6da7192"
+    },
+    {
+      "selector": ".action-buttons-row",
+      "media": [],
+      "originalSha256": "34e5063f0078f69261dfc17a845196cdbd4d9f35f2ae54949c07b9a7d0cddfd4",
+      "derivedSha256": "be9911d18c3d55d66bdb727a984e9451a3351042f349a3158538cf0ac05f3a01"
+    },
+    {
+      "selector": ".action-button",
+      "media": [],
+      "originalSha256": "9690855bcbe2dc0b5a6cfeed7086e4b3e4059d3e6294299508d21a550cf8e394",
+      "derivedSha256": "068864cf5257c10d050dfe8a7401922180b8c44113555f2a7ed7671f6cee382b"
+    },
+    {
+      "selector": ".action-button:hover",
+      "media": [],
+      "originalSha256": "f75ad681efa6aa266ee2b294d269b7e46966fa878d5c3fa381c972b9962a6088",
+      "derivedSha256": "9bbb08d83cd90ce6047c7ac9151743917bf28128fb6e83b6a9db37992d16975e"
+    },
+    {
+      "selector": ".action-button:hover .recommendation-upgraded-badge,.recommendation-item:hover .recommendation-upgraded-badge",
+      "media": [],
+      "originalSha256": "eac1d116308f5699e5a3f745df72abd39bb25b14bc29f1d1f034a30997a635db",
+      "derivedSha256": "446966ee22430a327a5b93172b525f071548c42d424b63643f45f23c5191e730"
+    },
+    {
+      "selector": ".secondary-banner-wrapper--hidden~.action-buttons-section",
+      "media": [],
+      "originalSha256": "3673545a51500ff78199ce4b01c509558ce3e8d981ee0eb6ab274348ddb873f1",
+      "derivedSha256": "36475e1abee6b27221a3d31560ef25a36610f822e65ae0195a41fa706b8db5d4"
+    }
+  ],
+  "transformations": [
+    "Every selector is scoped to .sa-reference-assistant.",
+    "Animation names are prefixed to avoid global collisions.",
+    "Original declarations and responsive media are otherwise retained."
+  ],
+  "scope": "Source-backed CSS subset only. Page geometry, model picker and unavailable original assets still require separate visual validation."
+}

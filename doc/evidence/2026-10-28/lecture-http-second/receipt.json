@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "tests": {
+    "newLectureHttp": 6,
+    "pureLectureHelper": 5,
+    "ordinaryAssistantHttp": 22,
+    "total": 33,
+    "failed": 0,
+    "skipped": 0
+  },
+  "compiledAfterRunCount": 371,
+  "scope": "SQLite actualHTTP, model stub, cold reopen and current-version/owner fencing; compiled hashes captured after the unchanged run, not a before/after full-input freeze. No PostgreSQL, native restoration, browser or real-model run claimed.",
+  "originalFailure": "../lecture-http-first/receipt.json",
+  "files": {
+    "report.json": {
+      "sha256": "fce7fe8480e257a7f0a1a33c5c329ce99181ee383fed565744552093b2d64e9b",
+      "gzipSha256": "0cf1ebdf4875038dc792f890ec4bd312c8870db382f98389d302bb7c5a14fdf6",
+      "bytes": 15266
+    },
+    "report.log": {
+      "sha256": "4d22b1bc4f4016519173975aa7498983216ffe29a53a4e7a08ab011ffa4df504",
+      "gzipSha256": "420f9807d1ea879d4c9929a07e9152a1cd4b66bdadd4c4f2efbfb7a264fc7d1c",
+      "bytes": 486
+    },
+    "test-fixture.ts": {
+      "sha256": "2682e5e731007d1d5d19833c06c403ba7085ea1eb15743ac620f86a4625066ce",
+      "gzipSha256": "3332f3926ddf39d9d8577f2eaa7e9f3d6d057d83374e555374a1fe55474257be",
+      "bytes": 12548
+    }
+  }
+}

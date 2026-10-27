@@ -1,0 +1,29 @@
+{
+  "passed": false,
+  "passedTests": 37,
+  "failedTests": 1,
+  "environmentSkipped": 1,
+  "scope": "First native lecture recovery fixture attempted a second active request for the same owner. Existing one-active-request guard returned409 correctly. API typecheck also exposed untyped mock call arguments. Original reports and test definitions retained before corrections.",
+  "files": {
+    "data/qa/lecture-expanded-http.json": {
+      "sha256": "319ac30d0f7af9dd2690affed31d40a11a98032c268bfc6cce8328f2b52984ac",
+      "gzipSha256": "687a413ec695b4a55cc9678ecd92d78c27d21b760ad3b2bef31ebda32dc041cd"
+    },
+    "data/qa/lecture-expanded-http.log": {
+      "sha256": "71e7b97e3a1b6ee8dcdabd0244ff5e8cfa573df38d12309a5b1fc26e508e4879",
+      "gzipSha256": "e5a30e2512b48eea0c3274670afc2b418f3412b110411f180005acd673549766"
+    },
+    "data/qa/lecture-expanded-api-typecheck.log": {
+      "sha256": "20fd2f3465408b7d89459b883847cad7495ab568b61a9bff17023c19e11e4d83",
+      "gzipSha256": "b58a73e6946c58c9cec62381c633f04650e94ff31c4ad2eabb71fe30b7af1b37"
+    },
+    "apps/api/src/modules/ai/assistant-lecture-recovery.integration.test.ts": {
+      "sha256": "eafc6b873d840d97a3c766c69268a8b9676e26e92049bd9155c754ed71960246",
+      "gzipSha256": "d58ef61ba390130748ba0d5070836b7445531e928d6f6900c6bf6d7fc8b79fba"
+    },
+    "apps/api/src/modules/ai/assistant-lecture.integration.test.ts": {
+      "sha256": "277d9eff9498fb4eb1ad233f8a693d9ba7e2b181109d71d911f033702bd1c0e1",
+      "gzipSha256": "84607fec42e4d7371dc179de818e5e3541511d8bb8ad4ac3c862d4611d9c355b"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "passed": true,
+  "reports": [
+    {
+      "report": "lecture-independent-http",
+      "passed": 34,
+      "failed": 0,
+      "environmentSkipped": 0
+    },
+    {
+      "report": "lecture-readonly-http",
+      "passed": 35,
+      "failed": 0,
+      "environmentSkipped": 0
+    },
+    {
+      "report": "lecture-final-http",
+      "passed": 36,
+      "failed": 0,
+      "environmentSkipped": 0
+    },
+    {
+      "report": "lecture-recovery-second",
+      "passed": 38,
+      "failed": 0,
+      "environmentSkipped": 1
+    },
+    {
+      "report": "lecture-postgres-second",
+      "passed": 12,
+      "failed": 0,
+      "environmentSkipped": 0
+    }
+  ],
+  "scope": "Distinct incremental reports, not additive. Earlier34/35/36 reports predate later changes; SQLite38/0/1 precedes bounded-open recovery, PG12/0/0 covers its first correction. A new revocation test and final full regressions remain. No before/after compiled freeze or current full suite claimed.",
+  "files": {
+    "lecture-independent-http.json": {
+      "sha256": "d2d8e28dd76014ad84dae91232d6a3096a12ccaba5a5edcbae237e4769b21375",
+      "gzipSha256": "8191a197bac90bacc04ed15b7d649d3de9caac3cae7e68dad471cbe564f08a87"
+    },
+    "lecture-independent-http.log": {
+      "sha256": "46bdd51456e71689dc65cc22164bc75235d8b5da4db08cdddcbc6d84edd281cd",
+      "gzipSha256": "dc7b3f9c5f36c94479d8243a6c51ffa0d353025a3ad8ba43a3b38f0a9ca46a9f"
+    },
+    "lecture-readonly-http.json": {
+      "sha256": "5743687ece7f251b8825f0ece8e5beb98b3447ee1144b3e116d50d4a93e4fbee",
+      "gzipSha256": "ee4a5b24ba602c35cbefc3a85224e91630e8eeb72c97a036bd4bf4ab6bdf5e99"
+    },
+    "lecture-readonly-http.log": {
+      "sha256": "6ec05ac7d5835ac09d060632c894188768f4a5c6be01cb93abbb813a3db7959c",
+      "gzipSha256": "82dadf3cc40292fca7dc24cecf1f462c2f630edd464f19a778042efa258d4c50"
+    },
+    "lecture-final-http.json": {
+      "sha256": "eeb2a3b65dd07e22e29fa4b7525a57ddd3501e808ebd4a4f038a43b6c8ab8eba",
+      "gzipSha256": "8ac38bc92ab9d4f4520a4e016c8c2f405a2c1924a7f7c9af6caced01c4d9e4ba"
+    },
+    "lecture-final-http.log": {
+      "sha256": "1391b5ba95fb6fd984191f5f4338514c48533e42468a9449bf9a58eb70b6e363",
+      "gzipSha256": "6a02a1870e776fd72717be628198d65cad4eac571a23b58187e520c42c294a0d"
+    },
+    "lecture-recovery-second.json": {
+      "sha256": "0a580c647019a31386c6dd6be288e328e779511ed928a783966cc28c9c666ef0",
+      "gzipSha256": "12d7761d7bf426359f8d020ccb9bb884040f3b0ce7c7dd37dab3ec0fcab6ddae"
+    },
+    "lecture-recovery-second.log": {
+      "sha256": "0556b4d5183894c92c580707e9b3ff8f9f2ea8f7277c7b7473ef9fc6a7ad6831",
+      "gzipSha256": "8fc475973464a545d8041ec7cbea17fe81cb55a86ba6f311af5dd52d0ef9f38f"
+    },
+    "lecture-postgres-second.json": {
+      "sha256": "9a54c3bbd8044f3154569b593d756f833f2926f8fac2736d5205bc024107b1cc",
+      "gzipSha256": "de06eeba68a36215ca4610b6ce3b9a4e88c02ab0d03c32c02e0b13f9344fd1b5"
+    },
+    "lecture-postgres-second.log": {
+      "sha256": "6066efaed5f690b077950fae7946791141c6feab85007c6e26f8dbdedd4b3985",
+      "gzipSha256": "6b4ad63db7e351363b8848b78ca85195ffa3980fc63a5b174d7f8ec8932b2cb2"
+    },
+    "assistant-lecture-recovery.integration.test.ts": {
+      "sha256": "8b96141269e549a6e45b0d16e48e016e1e47fba0db827986d8a7a75b53d912c2",
+      "gzipSha256": "d1c0b6dbeee319d277c5cc2c692d732e0cf552c5f2fa591b84c183e38ee4170a"
+    },
+    "run-lecture-assistant-postgres.cjs": {
+      "sha256": "11f9b9bc2bbc47191f7ef68a06c6ff08c378ed40c3a4bda01118df1e8ba62a12",
+      "gzipSha256": "cbbf25b352f09d2f4041f854d092bee9a459210ab9d2bfec16c9150be0c87af7"
+    }
+  }
+}

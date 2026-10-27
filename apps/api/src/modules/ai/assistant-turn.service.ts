@@ -34,6 +34,14 @@ export class AssistantTurnService {
   constructor(private readonly store:InMemoryStoreService,private readonly ai:AiService,private readonly students:StudentsService,private readonly moduleRef:ModuleRef){}
   private location(sessionId:string,user:InMemoryUserAccount):AssistantLocation {
     const s=this.ai.assertSessionOwner(sessionId,user,false), params=new URLSearchParams();
+    if(s.pageContext==='studio')return {sessionId:s.id,pageContext:s.pageContext,studentId:null,subject:null,contextRefType:null,contextRefId:null,contextItemId:null,
+      href:'/studio?view=home&mode=instant&audience=independent'};
+    if(s.contextRefType==='classroom_lecture'){
+      let href:string|null=null;
+      try{href=this.ai.assistantLectureSummary(s,false)?.href??null;}catch(error){if(!(error instanceof ConflictException))throw error;}
+      return {sessionId:s.id,pageContext:s.pageContext,studentId:null,subject:null,contextRefType:s.contextRefType,contextRefId:s.contextRefId,
+        contextItemId:s.contextItemId??null,href};
+    }
     if(s.studentId)params.set('studentId',s.studentId);if(s.subject)params.set('subject',s.subject);
     let path='/student/assessment',available=true;
     if(s.contextRefType==='practice') {const activity=this.store.find('practiceSessions',{id:s.contextRefId!,studentId:s.studentId!,subject:s.subject!});
@@ -47,7 +55,8 @@ export class AssistantTurnService {
       contextItemId:s.contextItemId??null,href:s.studentId&&available?path+'?'+params.toString():null};
   }
   context(user:InMemoryUserAccount,sessionId:string):AssistantContextView {
-    const session=this.ai.assertSessionOwner(sessionId,user,false);return {contextVersion:this.ai.assistantSnapshot(session).contextVersion,location:this.location(sessionId,user)};
+    const session=this.ai.assertSessionOwner(sessionId,user,false),lecture=this.ai.assistantLectureSummary(session,false);
+    return {contextVersion:this.ai.assistantSnapshot(session,false).contextVersion,location:this.location(sessionId,user),...(lecture?{lecture}:{})};
   }
   async view(turn:AssistantTurnRecord,provisional?:AssistantTurnView['task']):Promise<AssistantTurnView> {
     const task=provisional??await this.store.tasks.get(turn.taskId);

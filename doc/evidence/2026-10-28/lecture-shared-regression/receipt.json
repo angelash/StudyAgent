@@ -1,0 +1,239 @@
+{
+  "passed": false,
+  "passedTests": 34,
+  "failedTests": 2,
+  "originalAttempts": 36,
+  "retries": 0,
+  "skipped": 0,
+  "flaky": 0,
+  "frozenInputCount": 1466,
+  "beforeAfterShaUnchanged": true,
+  "apiFocused": {
+    "passed": 39,
+    "failed": 0,
+    "postgresSkipped": 1
+  },
+  "scope": "All19 original assistant and14 new lecture journeys passed, plus calendar. Studio whiteboard tool and workspace assistance still used superseded selectors/behavior; original reports, two traces and definitions retained before updating to actual specified flow. Full suite, real models and production remain pending.",
+  "files": {
+    "data/qa/lecture-shared-regression.json": {
+      "sha256": "d257ebbb1a37314a2e2687acf884d3f9e0b1b011b0504c9fedc5c876b2799a8f",
+      "gzipSha256": "83e7bf230d4e53b9b000c05c00149d81822845bf0fc8db685559f9d1d3f3be84"
+    },
+    "data/qa/lecture-shared-regression.log": {
+      "sha256": "2417764b01876729a0c4c33b54f4c5456a61e7ec10d1e289af0e0540f69750aa",
+      "gzipSha256": "0644bfb02828d69a58e198e0a9bdbf4655836f5a6971151ef51d66d34fa53ed7"
+    },
+    "data/qa/lecture-fixed-http.json": {
+      "sha256": "deeb4914c9528aab2622e02de953d785f354abe6099a052527a5441876c73df9",
+      "gzipSha256": "30c59ea9cc33798322ef0e54db19ee3cb6d13d64771dd762a962b1dd3eff90da"
+    },
+    "data/qa/lecture-fixed-http.log": {
+      "sha256": "edd08f91072fa54ff96dfccf81d401c04c3ed0757efb1e52f1e231f357f7d006",
+      "gzipSha256": "8f93a29e1246208790f2e553e1fe03beed2a3bf710febbd24bcff9ddb1191afc"
+    },
+    "data/qa/lecture-regression-inputs.json": {
+      "sha256": "57321207ff797dc074495c4008cf1e6380d4e952d4865bd5d604f9448b77218d",
+      "gzipSha256": "c90049311150b59d747c185ed81986dcc6b2537e4ff0f5dc848a061198049c66"
+    },
+    "tests/e2e/studio-assistant.spec.ts": {
+      "sha256": "7df216dbad8116c6558777d7aecb6330b2f2d85260b57dc4160060f2b834e385",
+      "gzipSha256": "66e343c4976e256a6954e0ea9c17bcf1bb2f824b86657464c0dc07aed5deb9e8"
+    },
+    "tests/e2e/studio.spec.ts": {
+      "sha256": "a25fcf4c8c302e24b767037ae41fcc79e8332307a60c1b93e277d262b0b68117",
+      "gzipSha256": "28b791106b236a8f7cb012415d576335884569901bd5adda6fe8189815037adf"
+    },
+    "tests/e2e/workspace.spec.ts": {
+      "sha256": "efc6d96599e7f7b0bb773f780c446a66a6fdee5726ee3ea47b79e2d0d3af61af",
+      "gzipSha256": "e94ce28b8768d60addf5a0ef4d934d6ec1d956fcd35d4a78b2880e63cfc65025"
+    },
+    "screenshots/assistant-conversations/actual-default-model-1280.png": {
+      "sha256": "49f602b3e56f843816e197ecc9e74c0c5e3a8ee2a38dcb89549a5a75323f1acc",
+      "gzipSha256": "d6b576bbcf5395024103c3cb44416a88c79cca2df61727ea0131c9ffb5906a24"
+    },
+    "screenshots/assistant-conversations/actual-default-model-390.png": {
+      "sha256": "21e8619b167bcdb422703fdabbe7574e8c4d2f1fac9d4f1bb64ffedfe5d4e2df",
+      "gzipSha256": "ed4369a88a9a9aa1c11c72428d62eaa477f57314e98d106083a7982c3fe42c1f"
+    },
+    "screenshots/assistant-conversations/actual-default-model-768.png": {
+      "sha256": "d46f3f3c3d59ffe6ed681e92d6976f08b1fbb3c225cf08ea71fd051839eef49e",
+      "gzipSha256": "c14e7c7eef7b9145cd5280dadd3642389c3c916834c2cd1703d6de754b36efb2"
+    },
+    "screenshots/assistant-conversations/diagnostic-history-readonly.png": {
+      "sha256": "924eeb33add00789bcaacda9b577ac48cba5eac0641dda066c8c899541dbd88d",
+      "gzipSha256": "3b412cbd1e06eaeee7114c1f1a197198837b9f4975fcc8413acbd9e82068aa1d"
+    },
+    "screenshots/assistant-conversations/history-old-message-768.png": {
+      "sha256": "428d6b19c4e2da2d2d7608a76e8baf4e6ccf8c9818209f90eea23d35e0c23788",
+      "gzipSha256": "9827841d0bccd7a5166fa2b64569236720b5a83d85766e17161d39935f215bbd"
+    },
+    "screenshots/assistant-conversations/model-check-failed-1280.png": {
+      "sha256": "e3defc8c33b9f3d1786ce22acb8d78ca6df4eabea054950345e1579d9c44401e",
+      "gzipSha256": "00f4a8b5718de38d6206c66940e943ba02af2b0fb62fe3cdf63b95d0a35bf107"
+    },
+    "screenshots/assistant-conversations/model-check-failed-390.png": {
+      "sha256": "a0383ce9a0df86cf9806fc5bb0f99a3bbd11843b39ae807804a331984ccad607",
+      "gzipSha256": "3e61ac28853c6344738e909ee7dd17d87f44dc5c18467b7d964d94619b506d83"
+    },
+    "screenshots/assistant-conversations/model-check-failed-768.png": {
+      "sha256": "2b7072bcd511496d3d22b48bcbe4e6d2682eea9a416b4106310f7d9d55a6af19",
+      "gzipSha256": "5baab597e0b9aadb96696ad12d88f4c01d3e30f40f9048c56e680e9aefd80ee7"
+    },
+    "screenshots/assistant-conversations/retry-original-model.png": {
+      "sha256": "85591e62b6e21fda803654d13c3d74cf3aa15f521a11aba5def334dcb5018615",
+      "gzipSha256": "bac20395d2305a7dd6c897c4e56754e2116b39fdab812da7038c58330412f687"
+    },
+    "screenshots/assistant-conversations/saved-conversation-1440.png": {
+      "sha256": "c0000b2672601a942aa19ef876de150df68ef5bbbd06724b21000b94e2d73741",
+      "gzipSha256": "a6c2739353e9035b04c602bc319801fc6c1b8afd0a880bd970955a4a36254f59"
+    },
+    "screenshots/assistant-conversations/saved-conversation-390.png": {
+      "sha256": "fe7305d482987dc7191e0afb000eec7ce39116fbb000bb0d0db2a6e31d0d0351",
+      "gzipSha256": "8ab87d135011d8d55eda45f4167fb74e18d9c87338a97e48afd6106ccd6968e4"
+    },
+    "screenshots/assistant-conversations/saved-conversation-768.png": {
+      "sha256": "da8f2a46a1161ddd5e1b813d8174ff6b20e7d00b8b6c4bdd29d41618f1260294",
+      "gzipSha256": "7398f9a924e7d070e7799bac27023f116185db07545d32286c5b0e076ab04021"
+    },
+    "screenshots/studio/studio-course-polished.png": {
+      "sha256": "7fee57119d76d7b9e338304565cc8c42f7cae41d600871b8287a6cda25406c02",
+      "gzipSha256": "5d2025bed8da0126539538b424725036521c9e7890ee1fa239213aa1a9e7d43b"
+    },
+    "screenshots/studio/studio-home-polished.png": {
+      "sha256": "83e8bdc501a98f8021c1ae543c8e58f261761ad59945e628e6bede165a9e1db4",
+      "gzipSha256": "84bd7c8960385870020b330fc84439e22ff5135f42015a1b7c6360d1fc9a6dfc"
+    },
+    "screenshots/studio-assistant/cancel-retry-original-lecture.png": {
+      "sha256": "3d1aa6d4f56b243a69bf56c4ed93fb02371c3b7440c48493d8b33e38f8bc298c",
+      "gzipSha256": "76043b019d0a1a6c63b1b64f6148db87b8c1d3920ea27970a6851f2167eaae5d"
+    },
+    "screenshots/studio-assistant/directory-state.json": {
+      "sha256": "acb24b77f19e4e3e6db3dd26d4b1b3b5c70924f6c935d77b329005c5d162c4f9",
+      "gzipSha256": "54b3fe758f2d4efd5e04c6f34cba4281ea78ed375289a3575f5b7786de027a7f"
+    },
+    "screenshots/studio-assistant/directory-state.png": {
+      "sha256": "1ee52604a182a882e53f23671d1bf762160fb3f1e36dbce04e26aea487dd0679",
+      "gzipSha256": "ff2f39854081462e1ccf70a3b717f5d3b396427caf306d83e036e6f574b20c75"
+    },
+    "screenshots/studio-assistant/entry-1440-layout.json": {
+      "sha256": "817cbc508c57c14aaa1e35f73431d983e28782f253e0c7b482715757732cf650",
+      "gzipSha256": "9e519ec511f06637ccc954c05e8f59cba890e2bb199cbc4d02c1f41593ac1f2a"
+    },
+    "screenshots/studio-assistant/entry-1440.png": {
+      "sha256": "a700c84672f6f63cfa0643e458fe9b3cc431d063a4f2913d1af6fc44f03b65b8",
+      "gzipSha256": "581bb1582cde80b76561559a99da418433b6f991c29a818761d3321f0ac7c36e"
+    },
+    "screenshots/studio-assistant/entry-390-layout.json": {
+      "sha256": "28dbdeabd2d4a502aec22fc99f44f1114c529cafc8f92e52c2e149cc36f02936",
+      "gzipSha256": "6e58c76553c5f9257a8eed105ecec07762c77de10b28ab3c1a32bf853a45d95e"
+    },
+    "screenshots/studio-assistant/entry-390.png": {
+      "sha256": "110b1eb65d522a8846c274ae3466446ef302606d5c6300eb7f49b6ec3c225f61",
+      "gzipSha256": "3527151df0f4572eb26979a9807a4709d48c69244277128b40d83240257cf0a4"
+    },
+    "screenshots/studio-assistant/entry-768-layout.json": {
+      "sha256": "f860368c9b4e2f83130bc43c5972fbe2edc04f3cdf05b0a1262d5d6c7316bd68",
+      "gzipSha256": "0563dfd1b3eff22a244764ef5385512063ca33cade5618b3ceb66118d9c529a2"
+    },
+    "screenshots/studio-assistant/entry-768.png": {
+      "sha256": "87beab62913e16c694e26b37c631dccac34e4527b52657ffb57cc87e33b206dc",
+      "gzipSha256": "3d101f8d82993611ef7741789ccac5f7ece57f9561d04b76294087051cdd9bb1"
+    },
+    "screenshots/studio-assistant/entry-880-layout.json": {
+      "sha256": "f68cd29aaf9c59e5ded1fc12ff0868e146673ecb6c172331b2138c99c2f881b1",
+      "gzipSha256": "91dc6a3440565e365f7d05cad03d80b7406c712270cb8ad4db02a60637058fd4"
+    },
+    "screenshots/studio-assistant/entry-880.png": {
+      "sha256": "527b279a559b767f7e975fb733e4b8147b3414ba4c2d3cce0877357ccf8aa750",
+      "gzipSha256": "dc188755f44cdf004ef928d22ae5474ef15701317534623010faad09b24113be"
+    },
+    "screenshots/studio-assistant/readonly-pending-and-history.png": {
+      "sha256": "d6667b08f6d14613ae53992c614280fbf89c84835e3d881711cae46eb5c58159",
+      "gzipSha256": "4571db807dae710dc0ffcb3a2740fb4f0842e0fd49805f185cae59bf10b0b409"
+    },
+    "screenshots/studio-assistant/recovered-original-request.png": {
+      "sha256": "41a7dbe518c140ec913fdc6b86a3904d49448a8323e9640bffb0a49403ed56c1",
+      "gzipSha256": "e01c10c937debe504e2b99d450dc87b367c12320b8fedccc6cc4207d98ac3f62"
+    },
+    "screenshots/studio-assistant/retained-original-readonly.png": {
+      "sha256": "bfd226262267ee43d7d86d4b666647e788d44f2737a3312563f1f7c3fbc42d50",
+      "gzipSha256": "bab095431b90ecea4f404dbcd483f867b171c4daca8e58d9171b9f0bd02e4aab"
+    },
+    "screenshots/studio-assistant/saved-original-model.png": {
+      "sha256": "f642d2f7ae9bff54a42224e9dd694b1e64613db7eb65a2e1ba34b0e028949f09",
+      "gzipSha256": "297e67e4404275ee2619daae3938a2c2e4991a8b0009d72a3ae8c0e07ec6ba40"
+    },
+    "screenshots/studio-assistant/separate-drafts.png": {
+      "sha256": "9646a933fa0213727a5b38f81806ad33f1822b8005484dd0d6536ae5ae63a976",
+      "gzipSha256": "316c4d1a26d04220f0b69b940172d9f988a965239a0231f5f9f2ea0602c5cffa"
+    },
+    "screenshots/workspace/workspace-calendar-empty-desktop.png": {
+      "sha256": "8e84fef31c27642ad9df3d14b892b880e04acc1ade9d2b3cc0dcfcc5c2cce315",
+      "gzipSha256": "66aca937e30fe9ba23ff60a7ea657c5b279739b067a006cafbf56c3c19252a24"
+    },
+    "screenshots/workspace/workspace-calendar-mobile.png": {
+      "sha256": "8b97cfde98035f720f11a7e65b88491acc3eb912e8d2b825cfc29a34ab06170d",
+      "gzipSha256": "e112653172aa5a8b26ad701fd06a29eacd114efac6326e190c0ffe0646e3f99b"
+    },
+    "screenshots/workspace/workspace-calendar-tasks-desktop.png": {
+      "sha256": "cbf8845fdf07a4503ecf3bf71f617de3e4ae83a5727e4eccdc386699143c7f56",
+      "gzipSha256": "b6546dc14f462195913e097ba531f092c91deeb9e249a926a7fbc267bfd060e2"
+    },
+    "screenshots/workspace/workspace-courses-desktop.png": {
+      "sha256": "cbff2742a0dc4e5e899aa8e22f88a6a56c08bd3efb1675baad872e549cd5bb26",
+      "gzipSha256": "5ffff57fca4ff14ec902cf23bc5db78494163932bd2f95ce6d81dd3773cbb9ce"
+    },
+    "screenshots/workspace/workspace-outline-desktop.png": {
+      "sha256": "82cfa9ab8fc4035015e282452dee8e96e7e59687bca571cae9c840e3886b83dc",
+      "gzipSha256": "789deb8d2a109a973ccccdeac297ecaab01e8335ef04cc564e58fff27dd33d55"
+    },
+    "test-results/.last-run.json": {
+      "sha256": "fe70437b2ad363595a8cf5fd602641383126a609eb7468927c882fd089a666b1",
+      "gzipSha256": "68a15598f581593ce4881f22a31f76866603a5fdd669d8c9f88351f7f1e385ea"
+    },
+    "test-results/studio-a-parent-can-build--c363a-cked-learning-studio-course/error-context.md": {
+      "sha256": "1aac29796bede5ab420a5a50a03d567581781650d84687c57c8f19cf08614f08",
+      "gzipSha256": "f7701bc851d370a51fc1246c3213683ab6f2b198a08ff5051256f67aef943dc5"
+    },
+    "test-results/studio-a-parent-can-build--c363a-cked-learning-studio-course/test-failed-1.png": {
+      "sha256": "679613a8f5ce17dbe0f272039ba7a6cf474a64571edb56adba3ebdccd1658572",
+      "gzipSha256": "59dc2b9460faa3e264a1ef4741cdedc74fba34d631b4dc741933fa6e9878ff43"
+    },
+    "test-results/studio-a-parent-can-build--c363a-cked-learning-studio-course/trace.zip": {
+      "sha256": "455b50425f8aa646f41cd10c44ae4c1e07c72ab072aac04c660cb7177fbab6d2",
+      "gzipSha256": "97806cd6336b0102d5d154e045163e837fd104698f586ea9a4530efa3629f8ac"
+    },
+    "test-results/workspace-course-library-a-4832d--and-classroom-back-forward/error-context.md": {
+      "sha256": "cc0df0133b4d00ddf7e54ff95ad0cd221169d6a12165230453b5f6e5d528eaf6",
+      "gzipSha256": "e4a1da28262d86f90fdb7fa0e93797937b561945cbb3c2a70113a812431efc9f"
+    },
+    "test-results/workspace-course-library-a-4832d--and-classroom-back-forward/test-failed-1.png": {
+      "sha256": "4f18f4da8dcaba9b361966d5f3db0b5686ad68a1d3e08f769a6536125244f908",
+      "gzipSha256": "6bea6888b56ed7caeb3619a94b4f4f054834d7b5ffdcb8718a9fad5d1327919f"
+    },
+    "test-results/workspace-course-library-a-4832d--and-classroom-back-forward/trace.zip": {
+      "sha256": "f3dc7001e953620a795af4bd4c80bf9e32aafb0d50307b2a26a124af8c17cd1a",
+      "gzipSha256": "046ca1a4fbfd1d7fe46fbb4cc67650f396d7c9a7e17348ababf0dd2aa1db4727"
+    },
+    "actual-qa-source/app/studio/studio.tsx": {
+      "sha256": "e8d94c37743a2bac685a8322b90ad5fe9d4c3e83c54b95c74b48ef6ea7e9a063",
+      "gzipSha256": "ff71c60d114cc96efc3df1c23652e7fc14ec687c607384f3817ab77706b8cfb4"
+    },
+    "actual-qa-source/app/studio/studio-instant-assistant.tsx": {
+      "sha256": "ec077c3e93048094da8d4c3c79b2c6f9b16db02c5d3942cb4226f26979a63b46",
+      "gzipSha256": "e4fdf2c399c9c7ad4aceac61cd0fcb565ccf0808993dd50a7647cb942428d314"
+    },
+    "actual-qa-source/app/studio/studio-instant-assistant.css": {
+      "sha256": "a533f8312704b0410ec3f273e9438a263ea2f2295d7edec963588fc46765c14e",
+      "gzipSha256": "95fe0d99db641b16bf535cc2eceeb12a20e1893ca55fb8a75244f62ac340af22"
+    },
+    "actual-qa-source/components/assistant-widget.tsx": {
+      "sha256": "6682dc329f1ac0635076044a36b7fb17afcbcfdef89aa39576a2aecadd0eaab7",
+      "gzipSha256": "fde75b23afb71b4b7ec5aff07f352080861c0de59bb48ac3cd24b3043d36ef7b"
+    },
+    "actual-qa-source/lib/assistant-conversation.tsx": {
+      "sha256": "39ade34e92628b1a607b96e756d864963a1fcb95d7e5110b0264ffada0c534d9",
+      "gzipSha256": "b0c84f9a82e52b621ce9fff85cc5787bb5c265e1445d383d24d2f72ddff14cea"
+    }
+  }
+}

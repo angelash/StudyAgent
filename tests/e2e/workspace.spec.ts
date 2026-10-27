@@ -42,7 +42,8 @@ test('course library and outline preserve navigation, panels, help and classroom
   await page.goForward();await expect(page.locator('.cl-room')).toBeVisible();
   await page.getByRole('button',{name:'离开课堂',exact:true}).click();await page.getByRole('button',{name:'保存并离开'}).click();
   await expect(page.locator('.cl-unit-nav button').nth(2)).toHaveAttribute('data-active','true');
-  await page.getByRole('button',{name:'获取帮助',exact:true}).first().click();await expect(page.getByLabel('向课堂老师提问')).toHaveValue(/我正在学习/);
+  const classroomPosts:string[]=[];page.on('request',request=>{if(request.method()==='POST'&&/\/learning\/classroom\/sessions(?:\?|$)/.test(request.url()))classroomPosts.push(request.url());});
+  await page.getByRole('button',{name:'获取帮助',exact:true}).first().click();await expect(page).toHaveURL(/\/studio\?[^#]*mode=instant/);await expect(page.getByRole('region',{name:'当前讲座上下文'})).toContainText('U3·L1');await expect(page.getByLabel('想一起看看什么',{exact:true})).toBeEnabled();expect(classroomPosts).toEqual([]);
   await page.goBack();await page.setViewportSize({width:390,height:844});await expect(page.locator('.cl-unit-nav')).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);await screenshot(page,'workspace-outline-mobile');
   await page.getByRole('button',{name:'打开学习导航',exact:true}).click();

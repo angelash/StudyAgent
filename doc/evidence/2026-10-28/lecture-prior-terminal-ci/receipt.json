@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "runs": [
+    {
+      "ciRun": 40577390743,
+      "head": "ab83ecd97d9e1a278190a8e3ee00d3a9f6684da2",
+      "jobs": {
+        "postgres": "success",
+        "application": "success",
+        "browser": "success"
+      },
+      "sha256": "75139c771dbeb91061453ce98f4a323374c15de3a4a02c3a26f64730ac561a20",
+      "gzipSha256": "6cbc5f0d8f4df084a50e425fa1ef623eff7a4fca1823d392c802550cc1d82996"
+    },
+    {
+      "ciRun": 40577390788,
+      "head": "c92d999b91f277c3e5a6bf7a552928b1b3340b9c",
+      "jobs": {
+        "postgres": "success",
+        "application": "success",
+        "browser": "success"
+      },
+      "sha256": "d8472c7f182209f51b9f33407ef483f3130a06f8c7db3b92dcc1db212b5277f8",
+      "gzipSha256": "08282ce961718bec739abf09d95531d4251ac75be321e70bb58869ebac1862ea"
+    }
+  ],
+  "scope": "Terminal exact-head metadata only. Main is delivered139 documentation; c92d999 is the lecture helper foundation, not the new integration. No new retry/attempt counts or current140 integration acceptance claimed."
+}

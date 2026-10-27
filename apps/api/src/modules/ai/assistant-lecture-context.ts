@@ -49,7 +49,7 @@ export function readAssistantLecture(value: unknown, referenceId: string, lectur
 }
 
 export function assistantLectureSummary(snapshot: AssistantLectureSnapshot, current: boolean) {
-  const query = new URLSearchParams({ unit: String(snapshot.unitPosition - 1), panel: 'units', lecture: snapshot.lectureId });
+  const query = new URLSearchParams({ unit: String(snapshot.unitPosition - 1), panel: 'units', lecture: snapshot.lectureId, lectureVersion: snapshot.fingerprint });
   return { courseId: snapshot.courseId, courseVersion: snapshot.courseVersion, courseTitle: snapshot.courseTitle,
     unitId: snapshot.unitId, unitTitle: snapshot.unitTitle, unitPosition: snapshot.unitPosition,
     lectureId: snapshot.lectureId, lectureTitle: snapshot.lectureTitle, lecturePosition: snapshot.lecturePosition,
