@@ -1,0 +1,111 @@
+{
+  "head": "f0465abf1b8fe9f7899d8fb1b6c866cda1cd5d03",
+  "status": "partial-visual-review",
+  "apiPassed": 21,
+  "browserCases": 25,
+  "originalAttempts": 25,
+  "retries": 0,
+  "failures": 0,
+  "scope": "Functional first pass, not final visual or whole-product acceptance.",
+  "visualInspection": [
+    "single-answered-1280",
+    "multiple-selected-1280",
+    "assistant-390"
+  ],
+  "followup": [
+    "Recovery clear button shifts frame downward before the card",
+    "Original practice fonts must be explicitly loaded and decoded on this route",
+    "Legend shifts original nth-child color order",
+    "Phone assistant composer clips the visible second line"
+  ],
+  "files": [
+    {
+      "file": "receipt.json.gz",
+      "originalSha256": "f4500bb7f47f25e18839e10ea8b68b7444ae2f3434a93c45c3ed322bc8abda7b"
+    },
+    {
+      "file": "source.json.gz",
+      "originalSha256": "8a2824aa297c63cee248166bc693d32dfef16688212787d2c406db68165d5b8e"
+    },
+    {
+      "file": "browser.json.gz",
+      "originalSha256": "8946ba963c27241ee9cb3e0df4aa58123ce55ea887b845e7f4ce1d971e055a50"
+    },
+    {
+      "file": "browser.log.gz",
+      "originalSha256": "6a197e0fec4710633b8b485ed8a84cd1f3245e391356f20d7b88636c3d32ea51"
+    },
+    {
+      "file": "build.log.gz",
+      "originalSha256": "338c9cf87e557903d5f291b0af39be6ad2bbe0543bc2ade06200cd307a56eaf4"
+    },
+    {
+      "file": "135-media-api-first.json.gz",
+      "originalSha256": "460ae7740ea266c64be45bc953094032b23097dba4c9cccd078f00324f6c1f6f"
+    },
+    {
+      "file": "135-media-api-first.log.gz",
+      "originalSha256": "0e7f0a8b26cdc2c8546c7970da749844092ea0a2e821fc81d5944ed7751dd52d"
+    },
+    {
+      "file": "135-api-typecheck-first.log.gz",
+      "originalSha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387"
+    },
+    {
+      "file": "135-web-typecheck-first.log.gz",
+      "originalSha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc"
+    },
+    {
+      "file": "screenshots/assistant-1280.png",
+      "originalSha256": "300f9ebf14fd263e6ceb2926de28d5a1ead28aae13e7bf87b0e7df1c9eb5c51c"
+    },
+    {
+      "file": "screenshots/assistant-1440.png",
+      "originalSha256": "1804a931b68f23958fb7003b052af8f08735ae14cf05c57e7b4a66b5b12aaf08"
+    },
+    {
+      "file": "screenshots/assistant-390.png",
+      "originalSha256": "dfc72915cad16298527e96fd375d364e4ae1d60ca28d6b5ff924946c3c96fc1b"
+    },
+    {
+      "file": "screenshots/assistant-768.png",
+      "originalSha256": "833730a2368d4a5ad913781853e9685fdede4ba04bb339e81fc6c859392bb3cf"
+    },
+    {
+      "file": "screenshots/multiple-selected-1280.png",
+      "originalSha256": "45f9117ed186e1a895413fb2178f8add4965b78e84cb56f7f742d38ab61d3a78"
+    },
+    {
+      "file": "screenshots/multiple-selected-1440.png",
+      "originalSha256": "4a48ffac263dc479ece27200ff95c39feeb54f95d6ccbc7d11588466401b121c"
+    },
+    {
+      "file": "screenshots/multiple-selected-390.png",
+      "originalSha256": "6012767dcc82bf43cc56bc058ade202b54202b2dd312f4f7dcd5abe23c749219"
+    },
+    {
+      "file": "screenshots/multiple-selected-768.png",
+      "originalSha256": "484fd66d453b52f39d318ad947e9752c81eff04cf78212d7bfe7373aabafda92"
+    },
+    {
+      "file": "screenshots/single-answered-1280.png",
+      "originalSha256": "4a8e40686f163e3eb70630ef6178d32958e07245d07e2c8c9356d86913edd939"
+    },
+    {
+      "file": "source/practice-panel.tsx.gz",
+      "originalSha256": "fa210781b771df0533464a97fb31e54fb95537b2c9b5adbc6ae8ec982c862138"
+    },
+    {
+      "file": "source/practice-reference.css.gz",
+      "originalSha256": "507ae349e744a3476e25406b6dac74b110d5a7b29ee099358a3e0eb589705f44"
+    },
+    {
+      "file": "source/practice-reference.generated.css.gz",
+      "originalSha256": "30ee859e629cb16e2a2756c79b899da9bd23537ccfcf79d304e2b5af741a701f"
+    },
+    {
+      "file": "source/scope-hyperknow-practice.cjs.gz",
+      "originalSha256": "bbc27a906051d31671f618149b17050fdb84ce3cc79adff54ef235c63cf79d54"
+    }
+  ]
+}

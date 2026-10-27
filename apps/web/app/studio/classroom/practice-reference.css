@@ -61,6 +61,8 @@
 .cl-room[data-practice=true] .cl-practice-full .cl-practice-options:disabled label { opacity: 1; }
 .cl-room[data-practice=true] .cl-practice-full .cl-practice-options label[data-feedback=neutral] .cl-option-shape { background: #f3f4f6; color: #b6bcc7; }
 .cl-room[data-practice=true] .cl-practice-full .cl-practice-support { max-width: 672px; width: 100%; margin: 22px auto 16px; min-height: 0; }
+.cl-room[data-practice=true] .cl-practice-full .cl-choice-recovery { grid-column: 1 / -1; width: 100%; max-width: 672px; margin: 0 auto 8px; color: #7f8999; }
+.cl-room[data-practice=true] .cl-practice-full .cl-choice-recovery button { font-size: 12px; padding: 4px 0; border: 0; background: none; color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 .cl-room[data-practice=true] .cl-practice-full .cl-hint-button { padding: 5px 0; font: 12px/1.5 var(--font-satoshi-regular); color: #7f8999; background: none; border: 0; text-decoration: underline; text-underline-offset: 3px; }
 .cl-room[data-practice=true] .cl-practice-full .cl-answer-feedback { padding: 0; border: 0; background: transparent; color: #444; }
 .cl-room[data-practice=true] .cl-practice-full .cl-answer-feedback>b { display: inline-flex; border: 1px solid #c3474724; border-radius: 999px; padding: 7px 12px; background: #c3474714; color: #a83838; font-size: 14px; font-weight: 500; }
@@ -85,6 +87,9 @@
 .cl-room[data-practice=true] .cl-practice-assistant-note { margin: auto 0; padding: 20px 8px; color: #ababab; font: 13px/1.65 var(--font-satoshi-regular); text-align: center; }
 .cl-room[data-practice=true] .cl-history:has(.cl-practice-assistant-note:only-of-type) { display: flex; flex-direction: column; }
 .cl-room[data-practice=true] .cl-history .cl-speaking { display: none; }
+.cl-room[data-practice=true] .cl-input>.cl-compose-row { align-items: flex-end; }
+.cl-room[data-practice=true] .cl-input textarea { height: 72px; min-height: 72px; max-height: 160px; overflow-y: auto; font: 14px/1.6 var(--font-satoshi-regular); }
+.cl-room[data-practice=true] .cl-input .xiaojiu-model-picker select { height: auto; min-height: 40px; font-size: 14px; color: #536b94; }
 @media (min-width: 1101px) {
   .cl-room[data-practice=true] .cl-practice-full .cl-practice-card[data-state=answered][data-multiple=false] {
     display: grid; grid-template-columns: minmax(0, 2.25fr) minmax(0, 1fr); grid-template-rows: 1fr auto; gap: 24px 64px; padding: 68px 16px 40px;

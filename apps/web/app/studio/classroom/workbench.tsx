@@ -40,7 +40,7 @@ export { lessonUrl };
 
 export function ClassroomWorkbench() {
   const identity = useSessionUser();
-  return <ClassroomWorkspace key={identity?identity.id+':'+identity.role:identity===undefined?'pending':'signed-out'} identity={identity}/>;
+  return <><link rel="stylesheet" href="/reference/hyperknow/font/Satoshi_Complete/Fonts/WEB/css/satoshi.css" precedence="classroom-fonts"/><link rel="stylesheet" href="/reference/hyperknow/fonts/misans/misans.css" precedence="classroom-fonts"/><ClassroomWorkspace key={identity?identity.id+':'+identity.role:identity===undefined?'pending':'signed-out'} identity={identity}/></>;
 }
 function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUser>}){
   const [catalog, setCatalog] = React.useState<ClassroomCatalog | null>(null), [unitIndex, setUnitIndex] = React.useState(0);

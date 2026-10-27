@@ -2,7 +2,7 @@ import { expect, test, type Page } from '@playwright/test';
 import { browserEvidence } from './evidence';
 const api = `http://localhost:${process.env.E2E_API_PORT ?? '4107'}`, evidence = browserEvidence('practice-reference');
 async function open(page: Page, width: number) {
-  await page.setViewportSize({ width, height: width === 390 ? 844 : 900 });
+  await page.setViewportSize({ width, height: width >= 1000 ? 800 : width === 390 ? 844 : 900 });
   const nonce = crypto.randomUUID(), principal = 'practice-reference-' + nonce + '@local.test', credential = 'Practice-QA-' + nonce;
   const response = await fetch(api + '/api/auth/register', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ principal, credential }) });
   expect(response.status).toBe(201);
@@ -20,6 +20,12 @@ async function inside(page: Page) {
 }
 test('reference practice: explicit frozen media, three-column answer, readable full feedback and no unrelated next-question image', async ({ page }) => {
   await open(page, 1280);
+  const fonts = await page.evaluate(async () => {
+    await document.fonts.load('15px "Satoshi-Medium"', 'Practice'); await document.fonts.load('15px MiSans', '社会学想象力');
+    return [...document.fonts].filter(face=>face.status==='loaded').map(face=>face.family.replaceAll('"','').replaceAll("'",''));
+  });
+  expect(fonts).toContain('Satoshi-Medium'); expect(fonts).toContain('MiSans');
+  await expect(page.locator('.cl-practice-options label').first().locator('svg')).toHaveCSS('fill', 'rgb(195, 71, 71)');
   await expect(page.locator('.cl-practice-prompt .cl-lesson-image img')).toHaveAttribute('src', '/classroom/venn-d8b3f1.webp');
   await page.locator('.cl-practice-options input').first().check(); await page.getByRole('button', { name: 'Check →' }).click();
   await expect(page.locator('.cl-answer-feedback')).toContainText('这次区分正确');
@@ -35,12 +41,15 @@ for (const width of [390, 768, 1280, 1440]) test(`reference practice: multiple c
   await open(page, width); await page.getByRole('button', { name: '第6题', exact: true }).click();
   await expect(page.locator('.cl-practice-prompt .cl-lesson-image')).toHaveCount(0);
   await expect(page.locator('.cl-practice-options input[type=checkbox]')).toHaveCount(5);
-  const input = page.locator('.cl-practice-options input').first(); await input.check();
+  const input = page.locator('.cl-practice-options input').first(), frameBefore = await page.locator('.cl-practice-card').boundingBox(); await input.check();
+  await expect(page.getByRole('button', { name: 'Check →' })).toBeEnabled();
+  expect((await page.locator('.cl-practice-card').boundingBox())!.y).toBe(frameBefore!.y);
   const cards = page.locator('.cl-practice-options label');
   if (width > 720) { const first = await cards.first().boundingBox(), last = await cards.last().boundingBox(); expect(last!.width).toBeGreaterThan(first!.width * 1.9); }
   await inside(page); await page.screenshot({ path: evidence + '/multiple-selected-' + width + '.png', fullPage: true });
   const trigger = page.getByRole('button', { name: '☏ Assistant', exact: true }); await trigger.click();
   const field = page.getByRole('textbox', { name: '向课堂老师提问' }); await field.fill('请保留这段完整的未发送文字，并帮我区分观察和推断。');
+  expect((await field.boundingBox())!.height).toBeGreaterThanOrEqual(70);
   if (width <= 1000) {
     const dialog = page.getByRole('dialog', { name: '练习助教' }); await expect(dialog).toBeVisible();
     await page.keyboard.press('Tab'); expect(await dialog.evaluate(node => node.contains(document.activeElement))).toBe(true);
