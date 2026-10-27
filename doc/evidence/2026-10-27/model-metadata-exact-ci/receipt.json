@@ -1,0 +1,82 @@
+{
+  "at": "2026-10-27T04:00:59.258Z",
+  "passed": true,
+  "deployed": false,
+  "head": "10b0adac8de1344cf27654472ce49967e8f80d86",
+  "run": 40443714547,
+  "scope": "Exact three terminal successful jobs, original remote365 single-attempt browser and actual Linux API1448/68. Synthetic provider suites do not establish all22 real routes online.",
+  "jobs": [
+    {
+      "name": "application",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121989842322
+    },
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121989842665
+    },
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 121989842685
+    }
+  ],
+  "browser": {
+    "source": "data/qa/model-metadata-ci-40443714547-artifacts/data/qa/source-course-full-browser.json",
+    "sha256": "3be57041cbe0e4e0dfbb77d92e3ba0b28666eff13f114fcc3be690db5c348afd",
+    "stats": {
+      "startTime": "2026-10-27T03:24:04.421Z",
+      "duration": 1932470.5690000001,
+      "expected": 365,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "originalAttempts": 365
+  },
+  "linuxApi": {
+    "passed": 1448,
+    "environmentSkipped": 68,
+    "failed": 0
+  },
+  "postgres": {
+    "jobStatus": "success",
+    "currentRun": true
+  },
+  "files": [
+    {
+      "source": "data/qa/model-metadata-ci-40443714547-logs/run.json",
+      "file": "00-run.json.gz",
+      "originalSha256": "7c27978e98a299d6406be1a2e4dbfc4950ebae56bb427df67177dcb04b4a443f",
+      "sha256": "0bb379c886864c60087eceac5e9f886fd6d4296b58b8922f3fef3f424ce5093e"
+    },
+    {
+      "source": "data/qa/model-metadata-ci-40443714547-logs/application.log",
+      "file": "01-application.log.gz",
+      "originalSha256": "7d4b6b7eb632860088838159b4eba69bb7a9210390c73e118e1722ca2051abb7",
+      "sha256": "b32a5d46611d8bda46f33bba6fe18a6bec6f133fdb626ce481048cbe4eab2ad6"
+    },
+    {
+      "source": "data/qa/model-metadata-ci-40443714547-logs/postgres.log",
+      "file": "02-postgres.log.gz",
+      "originalSha256": "155598629a833de1484c60f36501acf44db0eefe9f0ff15ba932581f1a52442a",
+      "sha256": "7f98885dad2a9346f67434deedc197485f53824a67cf1999e956028b15444c3c"
+    },
+    {
+      "source": "data/qa/model-metadata-ci-40443714547-logs/browser.log",
+      "file": "03-browser.log.gz",
+      "originalSha256": "797f8cb5d3fbbfb6b875d00fcca054d978ec7eab69dc13173d0417002d8fc3e4",
+      "sha256": "2a1b34a26d5ea467782302603219233eb8eb41454281735e132b9d1cdbb5ac53"
+    },
+    {
+      "source": "data/qa/model-metadata-ci-40443714547-artifacts/data/qa/source-course-full-browser.json",
+      "file": "04-source-course-full-browser.json.gz",
+      "originalSha256": "3be57041cbe0e4e0dfbb77d92e3ba0b28666eff13f114fcc3be690db5c348afd",
+      "sha256": "a031594408c39ba7fc7a1076c8bd2274b0ba5164011d47efcb44925863a71eed"
+    }
+  ]
+}

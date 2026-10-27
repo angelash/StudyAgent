@@ -1,0 +1,70 @@
+{
+  "at": "2026-10-27T04:12:43.082489+00:00",
+  "passed": true,
+  "deployed": true,
+  "status": "runtime-delivered",
+  "applicationRevision": "10b0adac8de1344cf27654472ce49967e8f80d86",
+  "apiRevision": "ecaccc031e8e7805beead1fd6f6b913e2dfbce09",
+  "schemaVersion": 20,
+  "ciRun": 40443714547,
+  "releaseScope": "GPT metadata compatibility and complete context/history guards. Full model availability remains incomplete.",
+  "localBrowser": {
+    "passed": 365,
+    "originalAttempts": 365,
+    "failed": 0,
+    "skipped": 0,
+    "retries": 0
+  },
+  "remoteBrowser": {
+    "passed": 365,
+    "originalAttempts": 365,
+    "failed": 0,
+    "skipped": 0,
+    "retries": 0
+  },
+  "localApi": {
+    "passed": 1456,
+    "failed": 0,
+    "environmentSkipped": 60
+  },
+  "linuxApi": {
+    "passed": 1448,
+    "failed": 0,
+    "environmentSkipped": 68
+  },
+  "realModelMatrix": {
+    "passed": 21,
+    "failed": 1,
+    "total": 22,
+    "firstAttemptPassed": 21,
+    "originalCliStarts": 23,
+    "allModelsPassed": false,
+    "failedId": "claude-opus-5",
+    "finding": "Complex complete response missing despite simple one-field success; schema omission experiment also failed. No model substitution or incomplete-response acceptance."
+  },
+  "runtime": {
+    "passed": true,
+    "revision": "06eabede5189a4f98d3b26f45ade6f017dadfc5a",
+    "buildId": "QmyviewsO29-4oAKKrIm0",
+    "schemaVersion": 20,
+    "httpChecks": 1212,
+    "compiledFiles": 363,
+    "rawCompiledMatches": 362,
+    "onlyFormatDifference": "rate-limit-repository.js: four CRLF only; normalized complete source and bytes identical",
+    "originalAssetFiles": 959,
+    "voiceSamples": 6,
+    "stableObservationMs": 224082,
+    "rollbackBuildFiles": 966,
+    "rollbackSchemaVersion": 20,
+    "assetsIncluded": false,
+    "protectedConfigurationPreserved": true,
+    "localEnvironmentPreserved": true,
+    "allModelsPassed": false
+  },
+  "wholeProductComplete": false,
+  "limitations": [
+    "No visual input or ongoing availability guarantee from anonymous text checks.",
+    "Legacy assistant default/assessment/hint migration and readable model status UI remain134 work.",
+    "Original reference states/DPR/audio/manual geometry, full content, teacher/real-device/longitudinal validation remain incomplete."
+  ]
+}

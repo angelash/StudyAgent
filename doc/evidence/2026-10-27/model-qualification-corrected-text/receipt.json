@@ -1,0 +1,250 @@
+{
+  "at": "2026-10-27T03:38:23.145656+00:00",
+  "passed": false,
+  "deployed": false,
+  "applicationRevision": "10b0adac8de1344cf27654472ce49967e8f80d86",
+  "scope": "Corrected complete22 actual application text qualification:21 passed on their first CLI start, old Claude Opus5 failed. Separate simple anonymous Opus success, same original full challenge failure and a failed schema-flag omission experiment do not replace the complete matrix. Actual corrected full API1456/60 passed. Full browser/exactCI/runtime pending.",
+  "models": {
+    "count": 22,
+    "passed": 21,
+    "failed": 1,
+    "firstAttemptPassed": 21,
+    "originalCliStarts": 23,
+    "failedIds": [
+      "claude-opus-5"
+    ],
+    "visualVerified": false
+  },
+  "fullApi": {
+    "passed": 1456,
+    "failed": 0,
+    "environmentSkipped": 60,
+    "source": "data/qa/model-metadata-full-api.json",
+    "sha256": "0f3b35e5b8b0af37cd0ecdb4ddb046e87d4042520573de6d547a3364f81369b0"
+  },
+  "opus5Finding": "Simple one-field JSON completed in4593ms. The exact full anonymous challenge repeatedly lacked response.completed; only response.created typed events were observed, including16 observed internal HTTP attempts across2 CLI starts. Omitting the provider schema flag also failed after2 CLI starts. This does not establish a supported alternate mode or justify weakening complete-response validation.",
+  "files": [
+    {
+      "source": "data/qa/current-models-10b0ada/catalog.json",
+      "file": "00-catalog.json.gz",
+      "originalSha256": "7028637cd7cb02eb63e16031bc7ba6e49427303c2652aac7580a98485cbde7d6",
+      "sha256": "d6476490b21cf86e5b2d5838cb582c614540a975033a11d830c5d69ee41c3759"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/claude-fable-5-1-f8064a2325.json",
+      "file": "01-claude-fable-5-1-f8064a2325.json.gz",
+      "originalSha256": "7aaf41ac767a924606de0db9613ce16830089a02152b454c7fdf025fdb4b4023",
+      "sha256": "de7e3bbda2bc58b5852b3c0c42aa16b3e8b8a5bb6921f2f421d0913902c2607f"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/claude-opus-5.5-795584cf81.json",
+      "file": "02-claude-opus-5.5-795584cf81.json.gz",
+      "originalSha256": "4aa960d0dc4f1a14810a4bf9accc997b0af617e6c2bc03a53b4ed0902177eb97",
+      "sha256": "a2fa48ded5a61720cb3103b1618de953f1ee3bd5c5ee03151cd3e3da67d46707"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/claude-sonnet-5-4b07d9a517.json",
+      "file": "03-claude-sonnet-5-4b07d9a517.json.gz",
+      "originalSha256": "498e4728386846baf21c5b12dc00f829c1b7b83676123ad926ad416f5f38d37f",
+      "sha256": "4a19c7e062c7e31a058568ee3202ce35133406a53476265c8f8e996934c553c3"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/deepseek-v4-flash-f61ff5cf8e.json",
+      "file": "04-deepseek-v4-flash-f61ff5cf8e.json.gz",
+      "originalSha256": "6802b0a076901ffe0811fc6f82e7f5b0a2dbb3035c306c39dbfa46097dd343ed",
+      "sha256": "cf8a1deb49087dda9bfb1a68e5f8d2c075f9d4ad30c84ef2434d052df0f7f272"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/glm-5.2-bb43a640f0.json",
+      "file": "05-glm-5.2-bb43a640f0.json.gz",
+      "originalSha256": "c45c8beca66633ffee837e3dcf9c94bc92729e9f9a37df10d2071b8057cf7ba5",
+      "sha256": "a9c2c0eb39141487e3f53a9824b21d1f8fd816409f8ae2d297ef1b4e17c5d46c"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/glm-5.3-9691a990ed.json",
+      "file": "06-glm-5.3-9691a990ed.json.gz",
+      "originalSha256": "2ac6a7001c5891c5a4df0f0f7df84bd0d9059b5bce55b22c60c428d09515e690",
+      "sha256": "0feced86e677e84c622a504cd2f2f88b1886461f93275c6e6fbcfdae2e99b63b"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/glm-5.3-flash-0d8724178b.json",
+      "file": "07-glm-5.3-flash-0d8724178b.json.gz",
+      "originalSha256": "614aa3ccc8a8881386d74d881e76d4e8321bfebbd5fc21d56a80b6db0139d4b4",
+      "sha256": "d7e474ad35ed79836e7a078a20b9ef27541832d6432904e5028f161ede025659"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/gpt-5.5-ffc50c7066.json",
+      "file": "08-gpt-5.5-ffc50c7066.json.gz",
+      "originalSha256": "f1898dcd25dd9f7eeef7d7a9eef25fbd492af539e5bf464414a2610f1806ac9e",
+      "sha256": "d4f314b14a2ed3fea193eeb5a5d023dd1c969194eb8e886831bbabcd9f21fa00"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/gpt-5.6-luna-e33230db3d.json",
+      "file": "09-gpt-5.6-luna-e33230db3d.json.gz",
+      "originalSha256": "410be5c9182d86efb318fe53a10ffb6e955ee79e6c09159527afeac6b179e455",
+      "sha256": "c63be60bd90db4a58324594d8cf97ff3915c6b35aa273f2e2108d01a08b6b916"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/gpt-5.6-sol-419255f2bb.json",
+      "file": "10-gpt-5.6-sol-419255f2bb.json.gz",
+      "originalSha256": "26dabf7c46e320d3de5b2ae435b1f8295cc3e06625b78eb62dcd1d2f7e4973f6",
+      "sha256": "30fef7765ceb7d89389c6a27b04976a9c4632d2a9692a42388cfe4f0ea1b947e"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/gpt-5.6-terra-deda3dc02a.json",
+      "file": "11-gpt-5.6-terra-deda3dc02a.json.gz",
+      "originalSha256": "fe1283add7178c88f0d3e45429faf228469d44a4b8ee3c5b53463dd66e4a6d29",
+      "sha256": "9ffb91a04520e0430ad36d1aaf0b445c0742e9efad3067637a09e68e22ab8812"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/gpt-6-astra-576a599a64.json",
+      "file": "12-gpt-6-astra-576a599a64.json.gz",
+      "originalSha256": "93c56d6c1e89b19bf6ed2f39589ff7ff2138f5291d718831ae940d243ebbf9b6",
+      "sha256": "c3fa52af39ea7aed0571f1c642c85f5e5e5ea4ee19a90a5476e43b383b5aa092"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/gpt-6-luna-9a7e60cd1c.json",
+      "file": "13-gpt-6-luna-9a7e60cd1c.json.gz",
+      "originalSha256": "a22d62595cb917d267038ad76af71bc048c5743de86da4292d7eedd3235d37c0",
+      "sha256": "d02fb1bd837ae41b0310622380a11357fbcf8078e948028a53babcb5af8fb423"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/gpt-6-sol-7388db16de.json",
+      "file": "14-gpt-6-sol-7388db16de.json.gz",
+      "originalSha256": "1a844a0716ddf3717353b027df73deecd2637df66198232bad832554c8820245",
+      "sha256": "5a30a0cb5c47c13c3927cab493d9fbf99576f785870fcb2a1ace835e29d3fbf5"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/gpt-6.1-sol-dedfefd511.json",
+      "file": "15-gpt-6.1-sol-dedfefd511.json.gz",
+      "originalSha256": "28ae99b127cce5edc6210c9ca8a186a68729b4fd6fd46308f02e8662082a0c83",
+      "sha256": "16a9616b18ce7a5c204c6c1d54bf6001895a4d42cb629fdb38c4053768df3b7a"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/grok-4.6-44968622fb.json",
+      "file": "16-grok-4.6-44968622fb.json.gz",
+      "originalSha256": "4447aad2cb2d2608300b4dadcdb14a71111194862d81ba4ce5c827bb18a1324a",
+      "sha256": "64c56ca12ca98dcf822281cd3436af536e6ca1f3054aef4b1b4afeda62c6a9ca"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/grok-4.7-459415a966.json",
+      "file": "17-grok-4.7-459415a966.json.gz",
+      "originalSha256": "04be7cc8253af9fa8fa9338f86bf6783e57041525d1c80bb4e7b125d47c7a27f",
+      "sha256": "e284756abc8f4a74359fab54a358a0fa137b031ab586d1d1107de7b236a809d1"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/mimo-v2.6-flash-c7588f32c7.json",
+      "file": "18-mimo-v2.6-flash-c7588f32c7.json.gz",
+      "originalSha256": "82310e198c168783570ad6b9c02dd36fc81e710498c6fb2b1928dcbde8dfc30e",
+      "sha256": "a04a8692d531f3f5f597ca1b4c330c71608bada75a8b15da274cfa8f88664f4e"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/mimo-v2.6-pro-42f4aabe21.json",
+      "file": "19-mimo-v2.6-pro-42f4aabe21.json.gz",
+      "originalSha256": "920cdd101e5b2fd8f0eea29ccb5e3b34a486552b59b1427515f20d0bb23ac947",
+      "sha256": "d809e27b7e7af0ab230edcbd1962e5940de73e9c3acb319e33330d06a39ba219"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/mimo-v2.6-pro-ultraspeed-d9fbcbf1eb.json",
+      "file": "20-mimo-v2.6-pro-ultraspeed-d9fbcbf1eb.json.gz",
+      "originalSha256": "427cdf1726ce1f3c7bfefc4d87768ca789b72cf828c2bf10e88135882b0b5a5f",
+      "sha256": "645be923eb586ce703e7f08dd21fd152853b5490b6c821bd891ac060a7310c83"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/progress.json",
+      "file": "21-progress.json.gz",
+      "originalSha256": "0352234d9d55bdb6eca8f73355d2a9dd7619f493290ab1827e8bd343438ec5c7",
+      "sha256": "2fed8120258c4e60c5327d56ebb5c5abe29dcbf3b2c54d55167000ee1159bef0"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/qwen3.8-max-bc33b81a67.json",
+      "file": "22-qwen3.8-max-bc33b81a67.json.gz",
+      "originalSha256": "93152b0c7288f1a72b43cd55b3c6049d4cc662bb5633fd42a01cc6cae4346b1d",
+      "sha256": "b006527265fa76abda24d631a24c0c8019d74469e749575c5df7256a5b1465ce"
+    },
+    {
+      "source": "data/qa/current-models-10b0ada/receipt.json",
+      "file": "23-receipt.json.gz",
+      "originalSha256": "0352234d9d55bdb6eca8f73355d2a9dd7619f493290ab1827e8bd343438ec5c7",
+      "sha256": "2fed8120258c4e60c5327d56ebb5c5abe29dcbf3b2c54d55167000ee1159bef0"
+    },
+    {
+      "source": "data/qa/model-metadata-full-api.json",
+      "file": "24-model-metadata-full-api.json.gz",
+      "originalSha256": "0f3b35e5b8b0af37cd0ecdb4ddb046e87d4042520573de6d547a3364f81369b0",
+      "sha256": "e2117089233507a86c73470e16da6664670306fdb1a9d77c7c408990d65d7b96"
+    },
+    {
+      "source": "data/qa/model-metadata-full-api.log",
+      "file": "25-model-metadata-full-api.log.gz",
+      "originalSha256": "5abd2c6da7dd89432f65097e10aa0da3528baaed9e130ec9c1168373158d372e",
+      "sha256": "1c585e993d6dab22ec6c032eed0e3186f6854846ee702c40a309436d3670bd83"
+    },
+    {
+      "source": "data/qa/model-metadata-full-api-run.json",
+      "file": "26-model-metadata-full-api-run.json.gz",
+      "originalSha256": "ed53a92e3345809cecd51e42c71739f3d8f1460d36878b5b9d71dcd744113e03",
+      "sha256": "5aa65f1ae97df6d16d33244ce7e8e1e51c6e3929ca5d554704df39fa09173dc8"
+    },
+    {
+      "source": "data/qa/model-opus5-route-diagnostic-02.json",
+      "file": "27-model-opus5-route-diagnostic-02.json.gz",
+      "originalSha256": "cf7ce32d521749dca10d61c7ef945eadce35e32c35a743deda7c672ad200b5f9",
+      "sha256": "31b68d778c7e0c0652c5695bea56e3599e3f9f2854ebbdc57654505a5b2e8596"
+    },
+    {
+      "source": "data/qa/model-opus5-exact-protocol.json",
+      "file": "28-model-opus5-exact-protocol.json.gz",
+      "originalSha256": "314ac88d1045b0dc26c4f1aea91e13cded2786295f0e451bbf1e04cc73ccfd30",
+      "sha256": "30d939305c17d7861da24c10e1e319bd2f1517e30b3da420a4dbbb2d9142aa7d"
+    },
+    {
+      "source": "data/qa/model-opus5-schema-mode.json",
+      "file": "29-model-opus5-schema-mode.json.gz",
+      "originalSha256": "61b46b9172f16aa5cdcfba87732445d2442be01496ca5b26d5a6aee19946ebff",
+      "sha256": "38b9db9d9d4c74c6886e9a2a8a0808916ed06d6483438e4ccee4cc9e6ffee0a4"
+    },
+    {
+      "source": "data/qa/diagnose-opus5-text-route.cjs",
+      "file": "30-diagnose-opus5-text-route.cjs.gz",
+      "originalSha256": "50a7291ccec7feb6bddc178f9ed9d54bddf3ad9bff675699be078a72f9d9130c",
+      "sha256": "fa5697d476e833e132cc351ffe780701f35ae9c6f743da56e06477cdf4194fe4"
+    },
+    {
+      "source": "data/qa/diagnose-opus5-exact-qualification.cjs",
+      "file": "31-diagnose-opus5-exact-qualification.cjs.gz",
+      "originalSha256": "d06ce98a379932b7a46a7d78b1e04eefd2204a191985fe702fdb7bfde01960e6",
+      "sha256": "233d7ebd62fac97e9a96fefe07084a4e56c53b280fcc88ceec89dc826b10c213"
+    },
+    {
+      "source": "data/qa/diagnose-opus5-schema-mode.cjs",
+      "file": "32-diagnose-opus5-schema-mode.cjs.gz",
+      "originalSha256": "1a8f9a5e4c40d9b520eb211ec4b29bb08cefecb1103de385452a097e6f16514d",
+      "sha256": "fa4722e35ea5ef3c2ad12aaca4b706d16a47d9299691a54f6b27826de6c1a984"
+    },
+    {
+      "source": "data/qa/model-opus5-exact-10b0ada/catalog.json",
+      "file": "33-catalog.json.gz",
+      "originalSha256": "7028637cd7cb02eb63e16031bc7ba6e49427303c2652aac7580a98485cbde7d6",
+      "sha256": "d6476490b21cf86e5b2d5838cb582c614540a975033a11d830c5d69ee41c3759"
+    },
+    {
+      "source": "data/qa/model-opus5-exact-10b0ada/progress.json",
+      "file": "34-progress.json.gz",
+      "originalSha256": "115dc7ac178c6e44e6405c5c231105e4656c11f1d01b13e87dddea68c65040cd",
+      "sha256": "847c18fd1999e8fb058f772290aab5c3fc79dd50e0a73c38ec29bc349a52a3fd"
+    },
+    {
+      "source": "data/qa/model-opus5-exact-10b0ada/receipt.json",
+      "file": "35-receipt.json.gz",
+      "originalSha256": "115dc7ac178c6e44e6405c5c231105e4656c11f1d01b13e87dddea68c65040cd",
+      "sha256": "847c18fd1999e8fb058f772290aab5c3fc79dd50e0a73c38ec29bc349a52a3fd"
+    }
+  ],
+  "opus5Protocol": {
+    "observedHttpStarts": 16,
+    "typedCreatedOnlyStreams": 15,
+    "connectionFailed": 1,
+    "completedResponseObserved": false
+  }
+}
