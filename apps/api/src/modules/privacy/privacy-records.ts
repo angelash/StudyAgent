@@ -6,6 +6,7 @@ import { sourceCourseVersioningView, sourceCourseLesson } from '../learning/sour
 import { compilationView } from '../learning/source-course-compilation';
 import { studioMaterialView } from '../learning/studio-material-access';
 import { publicTopicWhiteboard } from '../learning/topic-whiteboard-projection';
+import { publicQuestionTeachingVersion } from '../learning/whiteboard-question-teaching-versions';
 
 type Row = Record<string, any>;
 export type Selection = Record<string, Row[]>;
@@ -169,7 +170,9 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student')).map(({ requests: _requests, baseHash: _base, ...row }) => row);
     else if (name === 'whiteboardQuestionTurns') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student'))
-      .map(({ authorization: _auth, prepared: _prepared, history: _history, inputHash: _hash, definitionHash: _definition, taskId: _task, commands: _commands, ...row }) => row);
+      .map(({ authorization: _auth, prepared: _prepared, history: _history, inputHash: _hash, definitionHash: _definition, taskId: _task, commands: _commands,
+        teachingVersions: _versions, figureAdoptionCommands: _adoptions, ...row }) => ({ ...row,
+        ...(_versions ? { teachingVersions: _versions.map((version: any) => publicQuestionTeachingVersion(version, version.id === row.currentTeachingVersionId)) } : {}) }));
     else if (name === 'classroomTurns') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student'))
       .map(({ authorization: _auth, context: _context, history: _history, inputHash: _hash, lessonHash: _lesson, taskId: _task, ...row }) => row);

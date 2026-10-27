@@ -1,0 +1,61 @@
+{
+  "passed": true,
+  "deployed": false,
+  "scope": "Pure immutable adoption/version projection and actual portableRecords privacy projection;9 new version cases plus8 existing target and7 original-board cases. Not HTTP/worker, actual generated images, byte ownership or native recovery acceptance.",
+  "tests": {
+    "passed": 24,
+    "failed": 0,
+    "skipped": 0
+  },
+  "apiTypesAndBuild": true,
+  "files": [
+    {
+      "source": "data/qa/question-figure-versions-first.json",
+      "file": "00-question-figure-versions-first.json.gz",
+      "originalSha256": "fd22c8cc858c42f208345677fce734e50227fe146b0ae31f1625ced073460f75",
+      "sha256": "9877965d6e304b555f304a8672dfde02e650962c2c0bddf0673b8e2f46f2a625"
+    },
+    {
+      "source": "data/qa/question-figure-versions-private.json",
+      "file": "01-question-figure-versions-private.json.gz",
+      "originalSha256": "ced8d6a37aaa1201778d0b78098fbbc7d0dcf46fc173fa727610643b1d29136d",
+      "sha256": "4e09eecefe4f2d79bc5937077d77c93af63995dd860f3ae8fc1dd3f0a630c18c"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-teaching-versions.ts",
+      "file": "02-whiteboard-question-teaching-versions.ts.gz",
+      "originalSha256": "a7abe351f3ff6b523cefbb93961efe0969b2fcd0b1a0b8e8f3c1cce095d4d999",
+      "sha256": "a159210ae9aa742e90ca687b6aa773812e23fe7ee646f2da87955b2dbfad1c77"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-teaching-versions.test.ts",
+      "file": "03-whiteboard-question-teaching-versions.test.ts.gz",
+      "originalSha256": "9c2f7c334bc0eab0b116245efb497f947060cb63836201ba8a3747d9ccae2f6b",
+      "sha256": "7641c3c049d10e20d5ec36723ac9ebc328a93713d7bb4918e9c760a3e8ad58a4"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-record.ts",
+      "file": "04-whiteboard-question-record.ts.gz",
+      "originalSha256": "e7b7df51d44e806efaddd8044f2a935ac2a9b8536046bcc66c47f61be4bd81d1",
+      "sha256": "9232efe3db9eb08f3d7daeab3868bb3883906813c8a3947b02d790bc8a2cd4dd"
+    },
+    {
+      "source": "apps/api/src/modules/learning/whiteboard-question-visual-record.ts",
+      "file": "05-whiteboard-question-visual-record.ts.gz",
+      "originalSha256": "a65449173fa87587cfd1062a56e04baff92e7a804434542e03d8330d731d00af",
+      "sha256": "8737966e39be0614173384b928911498024329b93ab18ebe81ebe00c00a0d6e3"
+    },
+    {
+      "source": "apps/api/src/modules/privacy/privacy-records.ts",
+      "file": "06-privacy-records.ts.gz",
+      "originalSha256": "17163a8808674f3c86fc48c0f295c25727a14950eb56fc4d590715586a8814fd",
+      "sha256": "cf58b522069a5466fb2a906b4089bd0af5edc6a5cf466deb8d3c657e02cb6be0"
+    },
+    {
+      "source": "packages/contracts/src/whiteboard-question.ts",
+      "file": "07-whiteboard-question.ts.gz",
+      "originalSha256": "ac37a3072ad81ba7f6ca06becfc1997eb5d92688dab73adb726b41980f0bc913",
+      "sha256": "fdcc219293feeae48f16d0ccc24610627600073b0fb3b0b1c3ad3b12dee30951"
+    }
+  ]
+}

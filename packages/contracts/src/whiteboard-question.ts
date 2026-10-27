@@ -26,6 +26,7 @@ export type WhiteboardQuestionTurnView = {
 export type StudioQuestionWhiteboard = Omit<StudioWhiteboard, 'studentId' | 'subject'> & {
   kind: 'question-whiteboard'; studentId: string | null; subject: StudioSubject | null;
   originalBoardKind: WhiteboardQuestionBoardKind; originalBoardId: string; turnId: string; replyFingerprint: string;
+  teachingVersionId?: string;
   originalPosition: WhiteboardQuestionPosition; structureStatus: 'structured' | 'text-only';
   origin: { modelId: string; modelName: string; teacherReviewStatus: 'pending'; formalMeasurementEligible: false };
 };
