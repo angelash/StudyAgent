@@ -1,0 +1,22 @@
+{
+  "status": "strict-input-check-rejected-before-test-execution",
+  "head": "15f9d0627a237e4cbadd64b8ee7c25201d4f01c2",
+  "buildAndTypes": "all six stages passed",
+  "focusAttempts": 0,
+  "fullAttempts": 0,
+  "scope": "Two exact files differ only by CRLF. No gate was relaxed and no old supplier report rewritten. Fresh run will restore the original qualified bytes and rebuild own outputs.",
+  "lineEndings": [
+    {
+      "file": "apps/api/src/modules/ai/xiaojiu-model-qualification.ts",
+      "beforeSha256": "46d925f0c70fa13fb2e7cbba618b20a58b16b0c6271ef62cf92ecd60317c9b5f",
+      "restoredSha256": "dd4ecf66d0a7cc1d0240d1292cc15067b6bbab6cb84217e3d901fc38a6d54aee",
+      "crlfCount": 123
+    },
+    {
+      "file": "scripts/qa/publish-xiaojiu-model-qualification.cjs",
+      "beforeSha256": "767d32421ff57691a557183d3fec893511cc836cc6bd094f7ac0e4c373cf46bd",
+      "restoredSha256": "622fa658754729471960a6f32c75ddd539a7c078885dcd58e51d201954172b3b",
+      "crlfCount": 60
+    }
+  ]
+}
