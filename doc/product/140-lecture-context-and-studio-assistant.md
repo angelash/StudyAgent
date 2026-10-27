@@ -73,3 +73,11 @@ AssistantSession的pageContext增加classroom；contextRefType增加classroom_le
 后续继续把会话明确选中的问题/回答和授权原文快照带到主题白板、图像、学习材料、独立练习及日历计划；每类产物保留原模型、来源、预检、显式确认、取消/重试/原回执和历史版本。生成内容不自动写正式知识掌握，也不自动新增日历事项。白板逐要点、逐句声音/字幕和表格公式继续沿既有引擎；材料OCR/长文/公式结构与原页证据保留。课程五级显示必须有本地可解释的活动依据，不能把浏览记录等同正式评测；算法另先设计。
 
 原CSS/字体/图片/图表/题型全状态、原声与节奏、全内容与教师/实机/真实间隔验证仍按M1～M7保留。140完成不等于完整HyperKnow复刻或整个平台完成。
+
+## 11. 实施前细化的版本标识与原CSS
+
+课程原version目前是练习协议版本，不能单独保证讲座正文未变。因此增加只读GET `/ai/assistant/lecture-context?courseId=…&lectureId=…`，仅允许成人目录可访问身份，返回安全摘要、课程原版本、完整安全讲座快照指纹及可用于open的引用。`contextRefId=courseId@完整sha256`，`contextItemId=lectureId`；指纹覆盖协议、课程id/版本/标题、单元id/标题/位置、讲座id/标题/描述/位置和各微课id/标题/objective。不存在的课程/讲座、学生身份和多余参数明确拒绝。前端只读取得此版本，随后open由服务端重新构建核对；读写之间更新返回冲突，不能冻结新旧混合讲稿。
+
+深链lectureVersion保存上述指纹；原内容未改时刷新仍匹配，版本变动时保留草稿并提供现行版本入口。旧会话的GET context/历史可以读取经过结构与指纹核对的保留快照，标明current=false；POST turns、retry和worker发布需要current=true。实际发送依据新安全快照指纹与旧task bindingHash核对，不能因为历史只读允许而放宽发布。公共响应仅返回标题、位置、版本、current和返回链接，完整教学快照留在原会话/冻结任务中。
+
+原CSS已在现有资产中找到：`apps/web/public/reference/hyperknow/assets/css/index-CkZwjgwy.css`。其中lecture-context-chip原规则为min-height48px、max-width300px、gap10px、padding7px 26px 7px 10px、10px圆角、边框#DCE5F5和#fafcff→#f3f7fd背景；标题13.5px、位置10.5px、课程12px，删除按钮16px。input-box原规则为49vw/min-width620px、20px圆角、16px内距及#EFEFEF边框，home-mode-tabs有原背景、阴影和定位。实现应从这份已归档原件提取有来源的完整相关规则并限定本地作用域，连同媒体查询/动画/字体变量处理，避免全局原站CSS覆盖现有页面。窄屏以原媒体查询及实际快照验证；不只套上述桌面常数。原件身份与截图见[观察记录](../evidence/2026-10-28/hyperknow-lecture-assistance/receipt.json)。
