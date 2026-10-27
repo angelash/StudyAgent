@@ -16,7 +16,11 @@
 .cl-reference-directory .cl-unit-nav button>span{min-width:0;overflow-wrap:anywhere}
 @media(min-width:1101px){
   .ws-classroom-shell .cl-reference-directory{height:calc(100dvh - 60px);min-height:0;gap:82px}
-  .ws-classroom-shell .cl-reference-directory>.cl-course-sidebar{position:static;max-height:100%;overflow:auto;scrollbar-width:thin;padding-right:2px}
+  .ws-classroom-shell .cl-reference-directory>.cl-course-sidebar{position:static;display:flex;flex-direction:column;height:100%;max-height:100%;overflow:hidden;padding-right:2px}
+  .cl-reference-directory>.cl-course-sidebar>:not(.cl-course-panels){flex-shrink:0}
+  .cl-reference-directory>.cl-course-sidebar>.cl-course-panels{display:flex;flex-direction:column;min-height:120px;flex:1}
+  .cl-reference-directory .cl-course-panels>[role=tabpanel]{min-height:0;flex:1;overflow:auto;scrollbar-width:thin;overscroll-behavior:contain}
+  .ws-classroom-shell .cl-reference-directory>.cl-course-sidebar:has(>details[open]){overflow:auto;scrollbar-width:thin}
   .ws-classroom-shell .cl-reference-directory>.cl-outline{overflow:auto;max-height:100%;scrollbar-width:thin;padding:0 2px 50px 0;overscroll-behavior:contain}
 }
 @media(max-width:1100px){

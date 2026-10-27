@@ -107,7 +107,7 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
     }
     const unit = catalog?.course.units.findIndex(item => item.lectures.some(lecture => lecture.lessons.some(lesson => lesson.id === session?.lessonId)) || session?.lessonId === 'unit-exam:' + item.id) ?? unitIndex;
     const selectedUnit = unit >= 0 ? unit : unitIndex; setUnitIndex(selectedUnit);
-    const query=new URLSearchParams(window.location.search);for(const key of ['lesson','session','tab','help'])query.delete(key);query.set('unit',String(selectedUnit));query.set('panel',panel);
+    const query=new URLSearchParams(window.location.search);for(const key of ['lesson','session','tab','help'])query.delete(key);query.set('unit',String(selectedUnit));const returnPanel=query.get('panel')==='materials'?'materials':query.get('panel')==='practices'?'practices':'units';setPanel(returnPanel);query.set('panel',returnPanel);
     window.history.replaceState(null, '', '/studio/classroom?' + query); void refresh();
   }
   if (identity === undefined) return <div className="cl-loading" role="status">正在打开教学课堂…</div>;
@@ -128,7 +128,7 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
     <StudioNavigation active="courses" recent={[{title:allLessons.find(lesson=>lesson.id===recent?.lessonId)?.title??'社会学想象力',detail:'社会学概论',href:'/studio/classroom?'+new URLSearchParams({lesson:recent?.lessonId??'soc-1-1-1',...(recent?{session:recent.sessionId}:{})})}]} />
     <div className="cl-course-layout cl-reference-directory"><aside className="cl-course-sidebar"><Link className="cl-exit-course" href={libraryHref}>× <span>退出课程</span></Link>
       <CourseCover /><div className="cl-curator"><span>S</span><div><small>策划自</small><b>StudyAgent Learning Studio</b></div></div>
-      <h1>{course?.title ?? '教学课堂'}</h1><p>{course?.description}</p><details><summary>显示更多</summary><p>{course?.provenance}</p><p>60 个微课 · 15 个讲座 · 5 个单元项目</p></details>
+      <h1>{course?.title ?? '教学课堂'}</h1><p>{course?.description}</p><details><summary>显示更多</summary><p>{course?.description}</p><p>{course?.provenance}</p><p>60 个微课 · 15 个讲座 · 5 个单元项目</p></details>
       <CoursePanels catalog={catalog} panel={panel} unitIndex={unitIndex} busy={loading}
         onPanel={value => { setPanel(value); const query = new URLSearchParams(window.location.search); query.set('unit', String(unitIndex)); query.set('panel', value); window.history.replaceState(null, '', '/studio/classroom?' + query); }}
         onUnit={index => { setUnitIndex(index); const query = new URLSearchParams(window.location.search); query.set('unit', String(index)); query.set('panel', panel); window.history.replaceState(null, '', '/studio/classroom?' + query); }}

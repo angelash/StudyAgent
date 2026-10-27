@@ -52,3 +52,26 @@ test('course panels: a cross-unit practice returns to its original panel and reo
   await page.getByRole('button', { name: '第1题', exact: true }).click(); await expect(page.locator('.cl-answer-feedback')).toBeVisible();
   expect((await read('/learning/classroom/sessions/' + original)).answers).toEqual(saved.answers);
 });
+test('course panels: the actual cross-unit project returns to the same course panel and target unit', async ({ page }) => {
+  const { read } = await enter(page), catalog = await read('/learning/classroom/catalog'), unit = catalog.course.units[2];
+  await page.getByRole('tab', { name: '练习', exact: true }).click();
+  await page.getByRole('tabpanel', { name: '练习', exact: true }).getByRole('link').filter({ hasText: unit.project.title }).click();
+  await expect(page).toHaveURL(/\/studio\/projects\?/); expect(new URL(page.url()).searchParams.get('unitId')).toBe(unit.id);
+  await page.getByRole('link', { name: '‹ 返回课程', exact: true }).click();
+  await expect(page.getByRole('tab', { name: '练习', exact: true })).toHaveAttribute('aria-selected', 'true');
+  expect(new URL(page.url()).searchParams.get('unit')).toBe('2');
+  await expect(page.locator('.cl-unit-heading')).toContainText(unit.title);
+});
+test('course panels: the actual cross-unit check keeps its unit, original session and unanswered return after refresh', async ({ page }) => {
+  const { read } = await enter(page), catalog = await read('/learning/classroom/catalog'), unit = catalog.course.units[3];
+  await page.getByRole('tab', { name: '练习', exact: true }).click();
+  const entry = () => page.getByRole('tabpanel', { name: '练习', exact: true }).getByRole('button').filter({ hasText: unit.title + '综合核查' });
+  await entry().click(); await expect(page.getByRole('button', { name: 'Check →', exact: true })).toBeVisible();
+  const original = new URL(page.url()).searchParams.get('session')!, row = await read('/learning/classroom/sessions/' + original);
+  expect(row.lessonId).toBe('unit-exam:' + unit.id); expect(row.answers).toHaveLength(0);
+  await page.getByRole('button', { name: '关闭独立练习', exact: true }).click(); await page.getByRole('button', { name: '保存并离开', exact: true }).click();
+  await expect(page.getByRole('tab', { name: '练习', exact: true })).toHaveAttribute('aria-selected', 'true');
+  expect(new URL(page.url()).searchParams.get('unit')).toBe('3'); await page.reload(); await entry().click();
+  await expect(page.getByRole('button', { name: '第1题', exact: true })).toHaveAttribute('aria-current', 'step');
+  expect(new URL(page.url()).searchParams.get('session')).toBe(original); expect((await read('/learning/classroom/sessions/' + original)).answers).toEqual([]);
+});
