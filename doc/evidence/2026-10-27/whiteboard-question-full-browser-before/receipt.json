@@ -1,0 +1,70 @@
+{
+  "passed": false,
+  "deployed": false,
+  "candidate": "5e6a276d4d9c6fdaf0080e8f661f6079ca79b5d6",
+  "stats": {
+    "startTime": "2026-10-27T00:05:24.442Z",
+    "duration": 1737433.764,
+    "expected": 353,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "scope": "First complete354-case run:353 passed, one missing table after the adult generation/recovery journey. No retry or replacement run yet. Root cause still under investigation.",
+  "files": [
+    {
+      "source": "data/qa/source-course-full-browser.json",
+      "file": "00-source-course-full-browser.json.gz",
+      "originalSha256": "1d118596aa8e525b0c14156e367a2f08208dd2832fc552be4a743ed8e0d1f242",
+      "sha256": "964d7dcdf1259a07bc32811c68b5ac43e338808f1a1e31c5d8acd1fb421299e0"
+    },
+    {
+      "source": "data/qa/whiteboard-question-full-browser.log",
+      "file": "01-whiteboard-question-full-browser.log.gz",
+      "originalSha256": "1405b072a07668f07c7d1302dc48f9bf5e5c6cfac8d36440f9ae7ad4c0979a1c",
+      "sha256": "f5cac3db033745339426f155a8fd7f97a8485eb3c5319d21ff728261811f371b"
+    },
+    {
+      "source": "tests/e2e/topic-whiteboard.spec.ts",
+      "file": "02-topic-whiteboard.spec.ts.gz",
+      "originalSha256": "163e749408c9405680cae911e6d9d322e0af5fb9dd2b56ca96efc5ffffe25fd9",
+      "sha256": "65ce7369a971679f8978142a6813ec8ea042542687b40b704b6baa47ebd857e1"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-reading-panel.tsx",
+      "file": "03-whiteboard-reading-panel.tsx.gz",
+      "originalSha256": "7f107ab9e071e3034f66fd9443e94846792f00e82569dd38edff3a9fb3309cb8",
+      "sha256": "3c8d8dece6baa7f156a8cddf9c48446b58d059364df7f992ef7142f2194568c6"
+    },
+    {
+      "source": "apps/web/app/studio/workspace-dialog.tsx",
+      "file": "04-workspace-dialog.tsx.gz",
+      "originalSha256": "f60b030e1424f5784008ebac1b6f9dfe9dbf391753911609e4c94f10aeaa8a4c",
+      "sha256": "ea7f032a4d9efad1efafd4271b3763cdab67142347dd1b6f3e1061b7292c9e0e"
+    },
+    {
+      "source": "apps/web/app/studio/whiteboard-session.tsx",
+      "file": "05-whiteboard-session.tsx.gz",
+      "originalSha256": "e98f56bea2dd1f5e46cc2a2a771491c15dd7b14f2dcfef7eb31db07e9a55b705",
+      "sha256": "a0f113f7a8998eaff303b82d0acba63dad6de2d1651aab70f175b6bcf6c4df75"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player/error-context.md",
+      "file": "06-error-context.md.gz",
+      "originalSha256": "d8fb1926dc41e9bfe2285c2f131de487ebc5d293379ac4ca4e0082df3626d451",
+      "sha256": "f7696b5eea8e0e9aa0c5c5d7468a08c76785ddc2187168efab8df9e8f56ddaf9"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player/test-failed-1.png",
+      "file": "07-test-failed-1.png.gz",
+      "originalSha256": "e346c6ddcba82183510e94edb3be326d8ff91beaf708241024961516404ee581",
+      "sha256": "8f06c31477abde69c2af8e1cb239a92176413278fda59ee36d3ef8bafacedb35"
+    },
+    {
+      "source": "test-results/browser-product-acceptance/topic-whiteboard-adult-ori-fb4f1-mplete-table-formula-player/trace.zip",
+      "file": "08-trace.zip.gz",
+      "originalSha256": "443a4659cc0948ead137e08a178c84c0ce3753d77cce2b794dc5f698c20e065f",
+      "sha256": "59f1b452fb01210eea04564c92838d6cefefe5bece1fa7e3c0965e4a528d6d60"
+    }
+  ]
+}

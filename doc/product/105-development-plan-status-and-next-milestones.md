@@ -1,5 +1,9 @@
 # 开发计划核对、整体进度与后续里程碑
 
+2026-10-27原句插问与补充教学131已正式交付：精确CI e99e4da/40428575995三组success，本地与远端均354浏览器/354原始尝试/0失败和重试。本地完整API1418通过/54环境跳过，Linux1410通过/65环境跳过，本地PG问答/迁移24全过。主目录实际buildId VJc9ClTuKJdXN4f1FUAC2、schema19，1187项HTTP/权限/资源检查、353编译文件核对、959原资产/字体和6音频SHA通过，三次守护观察跨70971毫秒PID及重启计数稳定。352编译原始SHA完全一致，一份rate-limit-repository.js仅4处CRLF差异，保留首次严格拒绝和逐文件归一核对，未改写固定输入或放宽其他文件。原五配置及真实环境保留；新鲜130/schema18停服一致数据库及945旧编译/配置回退逐SHA核验，assetsIncluded:false，不代表全研究资产独立备份或完整恢复演练。原句/模型/五讲法/完整输入恢复、独立逐项板书/图表公式/显式声音、真实WebM/SRT、原句/相机/声音时间返回、全部JSON/Markdown笔记和成人/孩子私有深链已上线。原定位失败、焦点失败与端口中断均留证。132配图和不可覆盖版本另在独立工作树验证，待全站/精确CI及交付；完整M1～M7、全教材/测量有效性、原像素/DPR/原声、自由几何、教师/实机/长期验收继续，整体goal active，72项11 implemented/50 in_progress/11 planned/0 verified不变。见[131验收](../evidence/2026-10-27/whiteboard-question-acceptance.json)、[精确CI](../evidence/2026-10-27/whiteboard-question-exact-ci/receipt.json)及[实际运行](../evidence/2026-10-27/whiteboard-question-runtime.json)。
+
+以下保留旧交付及候选记录，当前正式版本以上方收据为准。
+
 2026-10-27教学设置/面板/工具130正式交付：业务eeab006，精确CI 46f844b/40409549951三组success；本地与远端336浏览器均336次原始单次通过、零失败/跳过/flaky/重试。本地完整API本次1355通过/54环境跳过，Linux1347通过/62环境跳过；本地PG未新跑、仅保留旧基线，本次精确远端PG重新运行成功。主目录实际生产buildId HzR4EwWBJcn7nJkoQa_Jw、schema18；1162项HTTP、335编译文件、959字体/原资产/MathLive及6实际音频SHA通过，三次守护观察跨70289毫秒PID/重启计数稳定；一份rate-limit-repository.js仅CRLF差异逐文件独立核对，未放宽其余摘要。原五配置/真实环境原字节保持，新鲜129/schema18停服一致数据库/引用文件及943旧编译/私有配置回退逐SHA核验，assetsIncluded:false，不代表全部研究资产独立备份或完整恢复演练。六档真实播放/视频/SRT、原460px设置/六MiniMax试听、七控件导览、380px可调面板/390和768入口、原私有链接/264px菜单/真实PNG像素已上线；原chat SVG直接本机复用。原参考六声音仅研究归档，未冒充当前合成音色。首次分享焦点70通过/1失败与修复证据保留。131插问仍独立开发，原自由几何/完整课程练习项目外壳、参考状态/DPR/原声、全内容/测量有效性/教师实机长期及M1～M7继续；整体目标active，72项仍11 implemented/50 in_progress/11 planned/0 verified。见[130验收](../evidence/2026-10-27/teaching-controls-acceptance.json)、[精确CI](../evidence/2026-10-27/teaching-controls-exact-ci/receipt.json)和[实际运行](../evidence/2026-10-27/teaching-controls-runtime.json)。
 
 131原句插问基础200f9e0已本地提交：两种原件的可靠问答/原模型/原句返回/独立草稿与JSON恢复已接入，10项浏览器和19项文本边界专项通过；视觉恢复区收尾后同10项再次原始单次通过，重叠不相加。完整API首轮1404通过/2旧未来版本夹具失败/54环境跳过，修正夹具后受影响5项通过，尚未重新跑出完整全绿。回答声音/补充板书/完整笔记与图片绑定的具体后续规格已先提交f5424a2；新PG/整站/精确CI/正式131交付仍待。当前正式服务保持130，72项和M1～M7不变。见[131规格](131-frozen-whiteboard-questions-and-teaching-continuity.md)、[交互收尾](../evidence/2026-10-27/whiteboard-question-recovery-polish/receipt.json)、[首轮完整API](../evidence/2026-10-27/whiteboard-question-full-api-before/receipt.json)与[文本边界](../evidence/2026-10-27/whiteboard-question-text-transport/receipt.json)。
@@ -341,3 +345,9 @@ M1后即开始可用课程的设备与真人试用；真实1/3/7/14日复测与�
 
 
 2026-10-27接续131本地阶段：原句插问现已增加受鉴权的补充板书/显式声音、逐项图表及多公式、完整JSON/Markdown笔记和成人/孩子私有深链，复用原播放器与实际音轨时间表，返回恢复原句/音频位置/相机。完整API1,418通过/54环境跳过；后续同套HTTP在SQLite21和PG21分别通过，另PG三项迁移/冲突/冷重开通过，范围不相加。32浏览器/32原始尝试全通过，含18问答及14旧设置；扩展首轮31/1焦点缺陷原报告/截图/trace保留并修复。真实默认DS结构回答47,449ms，真实MiniMax回答单句2,266ms，均为匿名成人合成原件；不代表全部供应商、听感或教学质量。补充配图采用/版本绑定、原生恢复隐私、全站/精确CI及131可回退运行仍待；正式主目录保持130，Web和ready本轮200。72项11 implemented/50 in_progress/11 planned/0 verified与完整M1～M7范围不变。见[131当前范围](131-frozen-whiteboard-questions-and-teaching-continuity.md#14-补充板书声音与完整笔记的本地验证)与[本地原件](../evidence/2026-10-27/whiteboard-question-teaching-verified/receipt.json)。
+
+
+2026-10-27 131全站首轮留证：本地353/354通过，远端5e6a276/40424044286的application/PG成功、browser同一旧details序号定位失败，run已全部终态且保持failure。两处改为真实讲稿标题定位，完整表格/公式断言保留；修后24主题白板专项24原始尝试全通过/0重试。完整首轮与远端两次失败原件已归档；业务源码/固定Web未改，完整354与修后精确CI继续，主目录仍130/schema18。见[131第15节](131-frozen-whiteboard-questions-and-teaching-continuity.md#15-全站首轮失败原件与语义定位修复)。
+
+
+2026-10-27 131完整门禁：固定e99e4da本地354浏览器/354原始尝试全通过，精确远端40428575995三组success、浏览器同354单次全过，Linux API1410通过/65环境跳过，PG问答子组24全过。本地既有完整API1418/54及PG24原件逐SHA核对，测试定位修正没有改变API业务或编译。端口错配中断与旧定位失败分别留证；最终原始报告/受控源码/实际QA Web/编译指纹已冻结。正式主目录仍130，开始新鲜回退、生产构建与守护交付；132图片与版本继续独立，不混用结果。见[131第16节](131-frozen-whiteboard-questions-and-teaching-continuity.md#16-完整固定来源与精确远端通过)。
