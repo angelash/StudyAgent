@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-27T07:50:35.846442+00:00",
+  "passed": true,
+  "head": "059f319ea680d1f08773b8bf8b8f0a932d23889c",
+  "ciRun": 40465519169,
+  "allJobsSuccess": true,
+  "browser": {
+    "passed": 375,
+    "originalAttempts": 375,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0
+  },
+  "linuxApi": {
+    "passed": 1461,
+    "failed": 0,
+    "environmentSkipped": 68
+  },
+  "postgres": "All workflow PostgreSQL service/command/native recovery steps passed; per-step scopes overlap and are not added to API total. See original job log.",
+  "files": [
+    {
+      "file": "run.json.gz",
+      "originalSha256": "1b253af46102ae5072f5b5bc395f21eb497349c716fdcd17e57c5f2cfac3bb00",
+      "originalBytes": 20591
+    },
+    {
+      "file": "jobs.log.gz",
+      "originalSha256": "181da0a0cdf9927604b9f69348636ca52d51fd38a12193e4e187c08e479920dc",
+      "originalBytes": 1003610
+    },
+    {
+      "file": "browser.json.gz",
+      "originalSha256": "61763065d0d4eab3d0c88b77eb90bb88d3dd29ecbb7edc917fdd3847b620ea0b",
+      "originalBytes": 421887
+    }
+  ],
+  "limits": [
+    "CI success is not production runtime delivery or whole-product completion.",
+    "Real text model matrix remains21 passed/1 old Opus failed; no new supplier calls in this synthetic workflow."
+  ]
+}
