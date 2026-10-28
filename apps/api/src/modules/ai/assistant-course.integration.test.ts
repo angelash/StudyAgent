@@ -155,6 +155,75 @@ describe('course assistant authority, frozen scopes and durable replies', () => 
     expect(sent.context).toContain('公开资料'); expect(sent.context).not.toMatch(/PRIVATE_|studentId|ownerUserId|questions|originalResult/);
     expect((await call('get', base(session.id) + '/context')).course.href).toContain('/studio/source-courses?');
   });
+  it('publishes only frozen course references and retains them through original legacy replay', async () => {
+    const f = await primary(), { d, session } = await open(f);
+    const reply = vi.spyOn(chat, 'reply').mockImplementation(async () => ({ reply: '比较数量之前，先核对整体与单位，再解释一个新情境。', evidenceIds: [],
+      sourceKeys: ['atom-1', 'atom-1'], modelId: 'deepseek-v4-flash', modelName: 'Synthetic cited model' }));
+    const c = await input(session.id), turn = await call('post', base(session.id) + '/turns', c); await worker.runNext();
+    expect((await call('get', base(session.id) + '/turns/' + turn.id)).status).toBe('completed');
+    const page = await call('get', base(session.id) + '/messages/page'), refs = page.messages.find((m: { sender: string }) => m.sender === 'assistant').sourceReferences;
+    expect(refs).toHaveLength(1); expect(refs[0]).toMatchObject({ key: 'atom-1', kind: 'primary_unit', courseId: f.row.id, itemId: f.itemId,
+      title: '统一单位', contextFingerprint: d.fingerprint });
+    expect(new URL(refs[0].href, 'https://local.invalid').searchParams.get('assistantSourceSession')).toBe(session.id);
+    expect(reply.mock.calls[0][0].context).not.toContain('assistantSourceSession');
+    const replay = await call('post', base(session.id) + '/messages', { requestKey: c.requestKey, message: c.message, modelId: c.modelId });
+    expect(replay.sourceReferences).toEqual(refs); expect(reply).toHaveBeenCalledOnce();
+    const oldKey = randomUUID();
+    await store.transaction(() => {
+      const id = store.nextId('assistant_message');
+      store.append('assistantMessages', { id, sessionId: session.id, sender: 'user', content: c.message, requestKey: oldKey, createdAt: new Date().toISOString() },
+        { id: store.nextId('assistant_message'), sessionId: session.id, sender: 'assistant', content: '旧接口保存的原课程解释。', inReplyTo: id,
+          evidenceIds: [], sourceReferences: refs, source: 'xiaojiu', modelId: c.modelId, modelName: 'Synthetic', createdAt: new Date().toISOString() });
+    });
+    const oldReplay = await call('post', base(session.id) + '/messages', { requestKey: oldKey, message: c.message, modelId: c.modelId });
+    expect(oldReplay.sourceReferences).toEqual(refs); expect(reply).toHaveBeenCalledOnce();
+    const insight = await store.requestContext(() => store.select('aiInsights', { sourceId: session.id }).at(-1));
+    expect(insight.payload.structuredResult.sourceReferences).toEqual(refs); expect(insight.payload.structuredResult.usedLocalContext).toBe(true);
+  });
+  it('rejects an invented course source key without publishing messages or original model text', async () => {
+    const f = await material(), { session } = await open(f), text = '这段带有伪造出处的模型原文不可发布。';
+    vi.spyOn(chat, 'reply').mockImplementation(async () => ({ reply: text, evidenceIds: [], sourceKeys: ['INVENTED_PRIVATE_SOURCE'], modelId: 'deepseek-v4-flash', modelName: 'Synthetic' }));
+    const turn = await call('post', base(session.id) + '/turns', await input(session.id)); await worker.runNext();
+    const failed = await call('get', base(session.id) + '/turns/' + turn.id); expect(failed.status).toBe('failed');
+    expect(JSON.stringify(failed)).not.toMatch(/伪造出处|INVENTED_PRIVATE_SOURCE/);
+    expect((await call('get', base(session.id) + '/messages/page')).messages).toEqual([]);
+    expect(await store.requestContext(() => store.select('aiInsights', { sourceId: session.id }).length)).toBe(0);
+  });
+  it('rechecks reference attributes at worker publication without writing a message or insight', async () => {
+    const f = await primary(), { session } = await open(f), ai = app.get(require('../../../dist/apps/api/src/modules/ai/ai.service.js').AiService);
+    const reply = vi.spyOn(chat, 'reply').mockResolvedValue({ reply: '依据所选教学解释条件。', evidenceIds: [], sourceKeys: ['atom-1'], modelId: 'deepseek-v4-flash', modelName: 'Synthetic' });
+    const original = ai.renderAssistant.bind(ai);
+    vi.spyOn(ai, 'renderAssistant').mockImplementation(async (...args: unknown[]) => {
+      const result = await original(...args); result.sourceReferences[0].href = 'https://invalid.test'; return result;
+    });
+    const turn = await call('post', base(session.id) + '/turns', await input(session.id)); await worker.runNext(); expect(reply).toHaveBeenCalledOnce();
+    expect((await call('get', base(session.id) + '/turns/' + turn.id)).status).toBe('failed');
+    expect((await call('get', base(session.id) + '/messages/page')).messages).toEqual([]);
+    expect(await store.requestContext(() => store.select('aiInsights', { sourceId: session.id }).length)).toBe(0);
+  });
+  it('previews original material teaching after a source edit and keeps its trusted reference unchanged', async () => {
+    const f = await material(), { session } = await open(f);
+    vi.spyOn(chat, 'reply').mockImplementation(async () => ({ reply: '先核对原资料中比较数量的条件，再用一个新情境验证。', evidenceIds: [], sourceKeys: ['material-1'], modelId: 'deepseek-v4-flash', modelName: 'Synthetic' }));
+    const turn = await call('post', base(session.id) + '/turns', await input(session.id)); await worker.runNext();
+    expect((await call('get', base(session.id) + '/turns/' + turn.id)).status).toBe('completed');
+    const first = await call('get', base(session.id) + '/sources/material-1');
+    expect(first).toMatchObject({ scope: 'lesson-citation', current: true, reference: { key: 'material-1', title: '公开资料', page: 3, sourceVersion: 'source-v1' } });
+    expect(JSON.stringify(first)).not.toMatch(/PRIVATE_|ownerUserId|studentId|questions|originalResult/);
+    await store.transaction(() => { const row = store.find('sourceCourses', { id: f.row.id }); row.result.lessons[0].concept += ' ONLY_NEW_COURSE_BODY'; row.sources[0].version = 'source-v2'; });
+    const retained = await call('get', base(session.id) + '/sources/material-1'); expect(retained.current).toBe(false);
+    expect(retained.reference).toEqual(first.reference); expect(retained.sections).toEqual(first.sections); expect(JSON.stringify(retained)).not.toContain('ONLY_NEW_COURSE_BODY');
+    await call('get', base(session.id) + '/sources/material-1', undefined, other, 404);
+  });
+  it('lets the actual learner read only the selected frozen source sections', async () => {
+    const f = await primary(), { actor } = await learner(f.student.id);
+    const d = await descriptor(f, actor, { selection: JSON.stringify({ mode: 'detail', partKeys: ['atom-1:concept'] }) });
+    const session = await call('post', '/ai/assistant/sessions', command(d, 'student'), actor);
+    const source = await call('get', base(session.id) + '/sources/atom-1', undefined, actor);
+    expect(source.sections).toHaveLength(1); expect(source.sections[0].blocks[0].text).toBe(teaching().explanation);
+    expect(JSON.stringify(source)).not.toContain(teaching().example.prompt);
+    await call('get', base(session.id) + '/sources/unknown', undefined, actor, 404);
+    await call('get', base(session.id) + '/sources/atom-1', undefined, parent, 404);
+  });
   it('distinguishes an owner ready draft and makes its old scope read-only after publication', async () => {
     const f = await material(null, false), { d, session } = await open(f); expect(d.accessMode).toBe('authoring');
     await call('get', descriptorPath(f), undefined, other, 403);
@@ -251,16 +320,22 @@ describe('course assistant authority, frozen scopes and durable replies', () => 
     await call('get', descriptorPath(f, { selection: '{broken' }), undefined, parent, 400);
   });
   it('recovers the same original session and completed request after a real API restart', async () => {
-    const f = await material(), { session } = await open(f), reply = model(), c = await input(session.id), turn = await call('post', base(session.id) + '/turns', c);
+    const f = await material(), { session } = await open(f), reply = vi.spyOn(chat, 'reply').mockResolvedValue({ reply: '依据资料短摘，先核对整体与单位。', evidenceIds: [], sourceKeys: ['material-1'], modelId: 'deepseek-v4-flash', modelName: 'Synthetic' }),
+      c = await input(session.id), turn = await call('post', base(session.id) + '/turns', c);
     await worker.runNext(); const done = await call('get', base(session.id) + '/turns/' + turn.id); expect(done.status).toBe('completed'); expect(reply).toHaveBeenCalledOnce();
+    const source = await call('get', base(session.id) + '/sources/material-1');
     await app.close(); vi.restoreAllMocks(); await boot(); const reopened = await open(f); expect(reopened.session.id).toBe(session.id);
     expect((await call('post', base(session.id) + '/turns', c)).assistantMessageId).toBe(done.assistantMessageId);
     expect((await call('get', base(session.id) + '/messages/page')).messages).toHaveLength(2);
+    expect(await call('get', base(session.id) + '/sources/material-1')).toEqual(source);
+    const replay = await call('post', base(session.id) + '/messages', { requestKey: c.requestKey, message: c.message, modelId: c.modelId });
+    expect(replay.sourceReferences).toEqual([source.reference]);
   });
   it('refuses current reconstruction of a corrupt stored snapshot while preserving own messages', async () => {
     const f = await primary(), { session } = await open(f), reply = model(), turn = await call('post', base(session.id) + '/turns', await input(session.id)); await worker.runNext(); expect(reply).toHaveBeenCalledOnce();
     await store.transaction(() => { store.find('assistantSessions', { id: session.id }).courseSnapshot.teaching.parts[0].blocks[0].text = 'CORRUPT'; });
     await call('get', base(session.id) + '/context', undefined, parent, 409); expect((await call('get', base(session.id) + '/messages/page')).messages).toHaveLength(2);
+    await call('get', base(session.id) + '/sources/atom-1', undefined, parent, 409);
     expect((await call('get', base(session.id) + '/turns/' + turn.id)).status).toBe('completed');
   });
 });

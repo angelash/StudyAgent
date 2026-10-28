@@ -1,0 +1,50 @@
+{
+  "passed": false,
+  "passedTests": 18,
+  "failedTests": 4,
+  "knownFailures": [
+    "Known source keys are not resolved or persisted.",
+    "Unknown source keys are silently ignored.",
+    "No owner original-source read endpoint.",
+    "No learner selected-source read endpoint."
+  ],
+  "scope": "Actual B2a HTTP baseline before structured source implementation; existing18 authorization controls remain passed. Synthetic provider mocks only.",
+  "newModelCalls": 0,
+  "files": {
+    "data/qa/course-sources-before.json": {
+      "sha256": "a66b35f3f90a03d1c5c7994054851afc491fd1840c43e31188dc1aa0077461d5",
+      "gzipSha256": "d90aba240de5f6c279562e5e753e67fda679f0b1881652a3f22dd3ec37471fad",
+      "bytes": 14090
+    },
+    "data/qa/course-sources-before.log": {
+      "sha256": "c8843d9ff2f6dac2b7ab09f51c0431f1cbe94a731be4305d87f6dbf8d8e6494c",
+      "gzipSha256": "af99f1bdbf7e5735273a08069dca3397c23ecbc0fa8f7c87ceb25c18f90d2c39",
+      "bytes": 7793
+    },
+    "apps/api/src/modules/ai/assistant-course.integration.test.ts": {
+      "sha256": "8085913c57ef6569dad1dc87c2952bc537f79f229cbc9d608be4f48103f99e81",
+      "gzipSha256": "0bd1b307fc7b635e0ae2d1f574ddf021b2fab04b6e4baefee76d63fe2fbb74b5",
+      "bytes": 34278
+    },
+    "apps/api/src/modules/ai/ai.service.ts": {
+      "sha256": "d525aad9eb2e6c3be6eee8744a8540cbfae00e92e580eab08b16b74867398ec5",
+      "gzipSha256": "883d0e5368d906bd961f494e3349c19a3f1fa05d6867aa85d732f4f91433a0e1",
+      "bytes": 57805
+    },
+    "apps/api/dist/apps/api/src/modules/ai/ai.service.js": {
+      "sha256": "375cdb3d16c570fb164c0bffcc98c3ccff688712409150cc87245bb5c6b38777",
+      "gzipSha256": "3b362380b81192f91ce23034d632966a5d765ae2703ba1e4941ab1f040fdfd60",
+      "bytes": 62312
+    },
+    "apps/api/src/modules/ai/xiaojiu-chat.service.ts": {
+      "sha256": "2294ef3d8b249943b6b9df1664bf4ca2d7ef7492f2787764169562bd33b48050",
+      "gzipSha256": "07d12a68a9eaf12d111ff9f5bc97c360990882557342934b7c69d318f69af69a",
+      "bytes": 14992
+    },
+    "packages/contracts/src/assistant-turn.ts": {
+      "sha256": "3acffa62ee0b9c00e8dd616491913a904b0171c17c91070c59f68a6d6948ac7f",
+      "gzipSha256": "edb906b1a53bd48400e551d6130f647efd2e0034638288dd414b278f4a94237a",
+      "bytes": 4237
+    }
+  }
+}

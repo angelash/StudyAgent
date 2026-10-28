@@ -1,0 +1,31 @@
+{
+  "observedAt": "2026-10-28",
+  "url": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0/sessions/whiteboard/ed43f6c4-fb26-4603-8645-8e2599424343",
+  "authenticated": true,
+  "observations": [
+    "Existing course resumes with preserved board notes, a Venn figure, a comparison table and chat history.",
+    "History note buttons can expand their board content in the conversation.",
+    "Session settings contain Warm, Calm, Bright, Gentle, Professional and Lively voice choices.",
+    "Speed choices: 0.5, 0.75, 1, 1.25, 1.5 and 2.",
+    "Handwriting and Standard board font choices, background dots and Replay the tour are present.",
+    "Exercise asks for a classification and the reasoning using an anonymous scenario."
+  ],
+  "actions": [
+    "Read existing authenticated page and screenshot",
+    "Dismiss resumed-conversation hint",
+    "Open and close Session settings without changing settings",
+    "Expand existing Board note in history"
+  ],
+  "limits": [
+    "No new chat, answers, uploads, audio generation or code execution were submitted.",
+    "A retained state does not prove the original temporal reveal or audible voice quality.",
+    "No claim of complete reference course capture, CSS retrieval, all capabilities or pixel parity."
+  ],
+  "screenshot": {
+    "file": "whiteboard-history.png",
+    "bytes": 328761,
+    "sha256": "fd6575f081c65375727293f1dba9bfd530fc1e302888ccde93bec75d8894e42c",
+    "width": 1600,
+    "height": 1000
+  }
+}

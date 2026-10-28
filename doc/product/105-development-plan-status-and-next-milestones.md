@@ -1,5 +1,7 @@
 # 开发计划核对、整体进度与后续里程碑
 
+2026-10-28 142 B2b：模型只返回已选教学sourceKeys，可信出处由冻结快照派生并在发布前复核，消息/insight/两种原请求重放及受鉴权原文预览已接通。SQLite与provider组合75通过、PG课程HTTP23通过；含两种原生backup/restore与最新作者/孩子删除账本的组合25通过，范围重叠不相加。作者私稿/私聊清除、其他监护人发布副本保留、孩子删除后旧备份不复活、导出私聊隔离均有实际原件；38/1倒序消息fixture、0/1原导出断言与类型失败保留。完整API1690通过/0失败/66环境跳过，955输入在运行前后全SHA保持，整套结束后仅去除contracts源多余EOF空行，业务文本不变；类型/隔离构建通过。尚无新142真实CLI/前端或生产交付。B2a精确8c53da7/40631645799三组已success，434浏览器/434单次全过、零重试。HyperKnow登录后白板/历史/设置与练习原状态已重新实查归档。C入口/选区/原稿/出处交互、D真实默认样本/完整两端/精确CI/主目录协调交付继续，72项仍11 implemented/50 in_progress/11 planned/0 verified，M1～M7范围保持。见[142 B2b](142-course-teaching-context-and-source-references.md#20-b2b可信出处原文预览和原生恢复)、[专项原件](../evidence/2026-10-28/course-sources-verified/receipt.json)、[完整API](../evidence/2026-10-28/course-sources-full-api/receipt.json)和[上一批精确CI](../evidence/2026-10-28/course-b2a-ci-verified/receipt.json)。
+
 2026-10-28 142 B2a：小学单元/资料课预检与持久会话已按服务端权限/档案/学科/发布语境接入，正式评测中阻断自由模型、原版本与原授权/原命令栅栏保持。71组合、18真实PG及类型/隔离contracts/API构建通过；B1远端433例有1例fixture失败/1重试原件保留，一致旧v2+显式旧v1修复后18浏览器单次全过，383输入保持。来源模型键/冻结出处预览、C界面及D整体门禁仍待。主目录另有化学课程并行开发，31旧控制变化已留证且保留，不覆盖其活跃源码/构建；141仅作为最后独立运行验收，最终主目录交付必须新核对。完整72项与M1～M7继续，见[142 B2a](142-course-teaching-context-and-source-references.md#19-b2a课程权限持久会话与浏览器fixture修复)。
 
 2026-10-28 142 B1：独立API已接真实成人教学正文v2、旧v1原样只读和两provider共享教学指令；124专项及18 PG通过，真实编译15讲/60微课完整context12266～14050字符，类型/独立构建通过，378生产/契约输入保持。旧4项正文缺失/迁移与3项指令失败、fixture/类型/PG准备错误均留证；没有真实模型、142前端或生产升级。正式仍141，B2小学/资料课授权和出处链、C体验、D完整门禁及72项/M1～M7继续。见[142 B1](142-course-teaching-context-and-source-references.md#15-b1成人正文接线旧v1及双通道指令)。

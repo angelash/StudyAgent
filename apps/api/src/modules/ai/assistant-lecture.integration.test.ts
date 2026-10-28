@@ -102,6 +102,11 @@ describe('adult lecture assistant HTTP and frozen task boundaries', () => {
     await call('get', base(first.session.id) + '/context', undefined, other, 404);
     await call('get', base(first.session.id) + '/turns', undefined, other, 404);
     await call('get', base(first.session.id) + '/messages/page', undefined, other, 404);
+    const source = await call('get', base(first.session.id) + '/sources/lecture-1-1');
+    expect(source.scope).toBe('teaching-sections'); expect(source.sections).toHaveLength(1); expect(source.reference.kind).toBe('classroom_lecture');
+    expect(source.sections[0].blocks[0].text).toBe(curriculum.classroomLesson(lecture.lessons[0].id).steps[0].narration);
+    await call('get', base(first.session.id) + '/sources/lecture-1-1', undefined, other, 404);
+    await call('get', base(first.session.id) + '/sources/unknown', undefined, parent, 404);
   });
 
   it('runs one durable turn with adult teaching context and no child, scoring or progress writes', async () => {
@@ -165,6 +170,7 @@ describe('adult lecture assistant HTTP and frozen task boundaries', () => {
     });
     const original = JSON.stringify(legacy.lectureSnapshot), context = await call('get', base(legacy.id) + '/context');
     expect(context.lecture.current).toBe(false);
+    await call('get', base(legacy.id) + '/sources/lecture-1-1', undefined, parent, 404);
     expect((await call('get', base(legacy.id) + '/messages/page')).messages[0].content).toBe('原目标快照中的旧问题。');
     expect(await call('get', descriptorPath + '&fingerprint=' + legacy.lectureSnapshot.fingerprint)).toMatchObject({ sessionId: legacy.id, current: false });
     await call('post', base(legacy.id) + '/turns', await input(legacy.id), parent, 409);

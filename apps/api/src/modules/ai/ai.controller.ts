@@ -37,6 +37,11 @@ export class AiController {
     return this.aiService.courseDescriptor(req.user, query);
   }
 
+  @Get('assistant/sessions/:sessionId/sources/:sourceKey')
+  sourcePreview(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Param('sourceKey') sourceKey: string) {
+    return this.aiService.sourcePreview(req.user, sessionId, sourceKey);
+  }
+
   @Post('assistant/sessions')
   openSession(
     @Req() req: AuthenticatedRequest,

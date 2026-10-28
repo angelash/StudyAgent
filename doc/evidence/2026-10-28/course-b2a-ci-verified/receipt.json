@@ -1,0 +1,61 @@
+{
+  "runId": 40631645799,
+  "head": "8c53da7779da8de9fb4713a5887331c9def555ae",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "application",
+      "conclusion": "success"
+    },
+    {
+      "name": "postgres",
+      "conclusion": "success"
+    },
+    {
+      "name": "browser",
+      "conclusion": "success"
+    }
+  ],
+  "browser": {
+    "startTime": "2026-10-28T04:22:00.335Z",
+    "duration": 2202793.894,
+    "expected": 434,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "tests": 434,
+    "originalAttempts": 434,
+    "retries": 0,
+    "failedAttempts": 0
+  },
+  "applicationOriginalSummary": [],
+  "liveCliStarts": 0,
+  "note": "Exact B2a CI. New B2b source keys/previews/native recovery were not in this commit, and this does not prove current main production byte continuity or new course UI.",
+  "files": {
+    "data/qa/course-b2a-ci-terminal.json": {
+      "bytes": 21632,
+      "sha256": "366337c1645dc4cd08d4e3b6aa237b66c0a64f79dd8a62cb93bf6c849d179de0",
+      "gzipSha256": "4b2a06b0def044c65383592dddf2c76cd17279a2c226d90cc60fff59ba785ed5"
+    },
+    "data/qa/course-b2a-ci-terminal.log": {
+      "bytes": 1075984,
+      "sha256": "724622226a4bcd9ec6c6c05fc481e1205eea6261bd97b2d25e724d9ce0cb5939",
+      "gzipSha256": "8fdce09f8718afda08ed3900d94780fcee708d14d6b89e5511d545334ee01ded"
+    },
+    "data/qa/course-b2a-ci-source.tar": {
+      "bytes": 696320,
+      "sha256": "8ec871c3d0c5a57025cb485247ae2f808327e45fe1f8cd123a0480000f877bee",
+      "gzipSha256": "66529d006369519a35ec3dbd81c62e44b7edd3a3c3d8a4893f8daceeda2e4b77"
+    },
+    "data/qa/course-b2a-ci-artifacts/data/qa/source-course-full-browser.json": {
+      "bytes": 487449,
+      "sha256": "afcd6ac2895358dfb95f0b0f938997b917b14235d0f064367afba2a2464fcbb1",
+      "gzipSha256": "8d11051246bb55a428a38e19a0f15063458a0193f20b298a85c5d8c716d7d0b4"
+    }
+  },
+  "application": {
+    "passed": 1657,
+    "failed": 0,
+    "environmentSkipped": 73
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "native": {
+    "passed": 0,
+    "failed": 1,
+    "skipped": 1
+  },
+  "liveCliStarts": 0,
+  "note": "Native first check overreached by prohibiting the author own source-course original data in their own portable export. Scope assertion to the new assistant snapshots/messages/insights; preserve guardian private chat exclusion. First typecheck also retained: new unit fixture needed v2 union narrowing.",
+  "files": {
+    "data/qa/course-sources-native-first.json": {
+      "bytes": 2106,
+      "sha256": "0350bde34f0ad54f2d87009ece8ca612e98a4bf45d28d998db9153c9bf4d5d19"
+    },
+    "data/qa/course-sources-native-first.log": {
+      "bytes": 37920,
+      "sha256": "ba748a7be0b58c03cb23efea35fc8f89f8230992dc85cba3c0aac1a8edc7d450"
+    },
+    "data/qa/course-sources-typecheck-first.log": {
+      "bytes": 5716,
+      "sha256": "c97ea5ea0494036d8873f214d6f5e8869d9c33ca3ca2b13ebae5e168df2790c7"
+    }
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "phase": "B2b focused sources and native recovery",
+  "focused": {
+    "passed": 75,
+    "failed": 0,
+    "skipped": 0
+  },
+  "coursePostgresHttp": {
+    "passed": 23,
+    "failed": 0,
+    "skipped": 0
+  },
+  "nativeSqlite": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 1,
+    "skipReason": "PostgreSQL requires explicit isolated QA credentials"
+  },
+  "coursePostgresWithNative": {
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0,
+    "nativeDrivers": [
+      "sqlite",
+      "postgres"
+    ]
+  },
+  "typecheck": "passed",
+  "apiBuild": "passed",
+  "liveCliStarts": 0,
+  "productionUpgrade": false,
+  "note": "Scopes overlap and are not additive. Full API and isolated PG/native recovery passed. No new142 course frontend, real model sample, pixel parity or production delivery claim. Original first failures preserved in separate receipts.",
+  "files": {
+    "data/qa/course-sources-second.json": {
+      "bytes": 30980,
+      "sha256": "f81589f5b7d844c46075ea795c915a36c4b923e5e2f5f30c1483527366fd23b2",
+      "gzipSha256": "8ce26b8801942122241444e35614226ddb0ff59d26929dcbda6dc04292ad8880"
+    },
+    "data/qa/course-sources-second.log": {
+      "bytes": 1885,
+      "sha256": "d7c844ba694b0cbead98cb441bfb9591ec005b10d5beb502cb57110da70f8202",
+      "gzipSha256": "a577fe73fd00f387db24c9fd76ba27a0d8ece897192cd795d6ef97314f2222ca"
+    },
+    "data/qa/course-sources-api-build-second.log": {
+      "bytes": 66,
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "gzipSha256": "3b25b5cf20accf7a8249f9ac5a5670d254995d61a23a5adeec41a781b29babdb"
+    },
+    "data/qa/course-sources-typecheck-second.log": {
+      "bytes": 68,
+      "sha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "gzipSha256": "8baa2244760e28c3d636087f691d47f33a642ddafaf6b45253637faf1134a6f5"
+    },
+    "data/qa/course-sources-typecheck-third.log": {
+      "bytes": 68,
+      "sha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "gzipSha256": "8baa2244760e28c3d636087f691d47f33a642ddafaf6b45253637faf1134a6f5"
+    },
+    "data/qa/course-sources-postgres-first.json": {
+      "bytes": 10700,
+      "sha256": "644ab40f35aaa7ce9d36d5446b4f8ffac347f2475639924e8aeaf0b102533502",
+      "gzipSha256": "662c857a1ba9f9b93f77ba583bb342849f93032da06ff5b6b26053718f7c0431"
+    },
+    "data/qa/course-sources-postgres-first.log": {
+      "bytes": 1154,
+      "sha256": "44f37a3985dff6a682b7a50ff205cdd1a361308f9773e1f3fc327addfb033be9",
+      "gzipSha256": "e4a5f8ed64abd97e20503b009dd3396b6a27f4cc7be9a2a243cba08dfa4b10da"
+    },
+    "data/qa/course-sources-native-second.json": {
+      "bytes": 1654,
+      "sha256": "660652789481718b9c8b7c28a36f9cd3193ec46a945f382256507087ed09f38b",
+      "gzipSha256": "e30a249a3d456f4f687f839eeadc61f6406a675ad8bb5dc3cc99896a89eddd0e"
+    },
+    "data/qa/course-sources-native-second.log": {
+      "bytes": 1002,
+      "sha256": "90ddeb1204e5e55030a0b9c0c85965d7b203079bba0d83904b77e7d9f40014c6",
+      "gzipSha256": "8477764845361ca0dc72a825ba473b2f51abebce5a3cc9f79740df57cf8176e6"
+    },
+    "data/qa/course-sources-postgres-native-first.json": {
+      "bytes": 11920,
+      "sha256": "040f2cb0e2276f10fc622e7a42af7b1394b8084dfdfd92e2cea620708494c9ea",
+      "gzipSha256": "8043e46413696c4ffb501a9eead7ec6db344e3b0ad1abce7379d9daaf861c6a3"
+    },
+    "data/qa/course-sources-postgres-native-first.log": {
+      "bytes": 1539,
+      "sha256": "64a10cbe0c896eadbb8e828b3e74f342df0e452d82477ffc997f1b07e914f8d5",
+      "gzipSha256": "f7693e297787a756dec9a6e7e0a489f79c67b9b22e6a48afb5fac1721f9fe1f5"
+    },
+    "data/qa/course-sources-final-inputs.json": {
+      "bytes": 173637,
+      "sha256": "54aad265059ae6a47bf2ec2513fc05b317f4a3d45f1f87ff8dd7525f7ef94da3",
+      "gzipSha256": "4ce58cac62c6c96dbbfc366fb473d64e160a9875f1eed16b1c8839e68cebac1f"
+    },
+    "data/qa/course-sources-web-typecheck-first.log": {
+      "bytes": 68,
+      "sha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc",
+      "gzipSha256": "d4246619e9b8b4b09138abbb0ce2bfceac93cd7569f485b9095890e33b50fdb3"
+    },
+    "data/qa/course-sources-doc-links-first.log": {
+      "bytes": 116,
+      "sha256": "c85e5103f1e5bb5b8e158c64111fc18ff0b2dac8395b9728678a2810f5417557",
+      "gzipSha256": "bd4d3db4fdf71459f8db048b2a998383b30619c7c58383a7f2bed9f69f8521cf"
+    },
+    "data/qa/course-sources-contracts-build-final.log": {
+      "bytes": 484,
+      "sha256": "5e179bbbffcf08a499a82e50096701f6804fa82b1915da3d89b3432caa99bce4",
+      "gzipSha256": "e6a3328ae7fc88e8198f0404249476518817bcd31b75ee06c53d7d5735a23a1c"
+    },
+    "data/qa/course-sources-api-build-final.log": {
+      "bytes": 66,
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "gzipSha256": "3b25b5cf20accf7a8249f9ac5a5670d254995d61a23a5adeec41a781b29babdb"
+    },
+    "data/qa/course-sources-final-rebuild-controls.json": {
+      "bytes": 231,
+      "sha256": "42dd93dffd4950dad829eed97f7a7bf5d20d4b9b8b70100179a0d680d1dd8d02",
+      "gzipSha256": "ef8f2770a17d30edec4515b580ff0f817da003dba73e334b3d63e25f1d912d8a"
+    },
+    "data/qa/course-sources-typecheck-final.log": {
+      "bytes": 68,
+      "sha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "gzipSha256": "8baa2244760e28c3d636087f691d47f33a642ddafaf6b45253637faf1134a6f5"
+    },
+    "data/qa/course-sources-doc-links-final.log": {
+      "bytes": 116,
+      "sha256": "8fe78a8ee396822262963ba1066bab9cb881df8ee96ee1602df6e3ff5e2df865",
+      "gzipSha256": "5a9e6c9627b31a9ad80b74f47e91fe7a36b329e83106f087ce7ead86144b640a"
+    }
+  },
+  "webTypecheck": "passed",
+  "documentationLinks": {
+    "checked": 3845,
+    "missing": 0
+  },
+  "fullApi": {
+    "passed": 1690,
+    "failed": 0,
+    "environmentSkipped": 66,
+    "receipt": "../course-sources-full-api/receipt.json"
+  },
+  "finalContractsBuild": "passed",
+  "finalApiBuild": "passed",
+  "finalApiTypecheck": "passed",
+  "finalDocumentationLinks": {
+    "checked": 3854,
+    "missing": 0
+  },
+  "finalRebuildCompiledContinuity": "All original compiled bytes unchanged after final whitespace normalization"
+}

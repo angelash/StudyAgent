@@ -1,9 +1,17 @@
+import type { ClassroomDiagram } from './classroom';
+
 export type AssistantReplySource = 'rules' | 'openai' | 'xiaojiu';
 export type AssistantCourseKind = 'primary_unit' | 'material_lesson';
 export type AssistantTeachingSelection = { mode: 'complete' } | { mode: 'overview' } | { mode: 'detail'; partKeys: string[] };
 export type AssistantTeachingCoverage = { totalParts: number; includedParts: number; totalTargets: number; includedTargets: number; complete: boolean };
 export type AssistantSourceReference = { key: string; kind: 'classroom_lecture' | AssistantCourseKind; courseId: string; itemId: string;
-  title: string; href: string; page?: number; quote?: string; sourceVersion?: string };
+  title: string; href: string; contextFingerprint: string; originHref?: string; page?: number; quote?: string; sourceVersion?: string };
+export type AssistantTeachingBlock = { kind: 'text' | 'points' | 'table' | 'diagram' | 'code' | 'figure'; text: string; items?: string[]; code?: string;
+  table?: { headers: string[]; rows: string[][] }; diagram?: ClassroomDiagram; figure?: { alt: string; caption: string } };
+export type AssistantSourcePreview = { reference: AssistantSourceReference; current: boolean; scope: 'teaching-sections' | 'lesson-citation';
+  accessMode?: 'published' | 'authoring'; selection: AssistantTeachingSelection; coverage: AssistantTeachingCoverage;
+  targets: Array<{ id: string; title: string; objective: string; atomId?: string; atomVersion?: number }>;
+  sections: Array<{ key: string; title: string; targetId: string; phase?: 'orient' | 'concept' | 'example' | 'contrast' | 'check' | 'transfer'; blocks: AssistantTeachingBlock[] }> };
 export type AssistantReply = { reply: string; source: AssistantReplySource; evidenceIds: string[]; modelId: string | null; modelName: string | null;
   sourceReferences?: AssistantSourceReference[] };
 export type AssistantHistoryMessage = { id: string; sessionId: string; sender: 'user' | 'assistant'; content: string; createdAt: string;

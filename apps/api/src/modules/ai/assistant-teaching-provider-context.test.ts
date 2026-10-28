@@ -28,4 +28,40 @@ describe.each(['xiaojiu', 'openai'] as const)('%s uses the actual teaching role 
     if (mode === 'lecture') { expect(system).toContain('本讲正文'); expect(JSON.parse(sent).lecture.teaching.parts.length).toBeGreaterThan(20); }
     expect(system).toContain('evidenceIds');
   });
+
+  function cited(payload: object) {
+    const ai = Object.create(AiService.prototype), course = classroomCourse(), lecture = freezeAssistantLecture(course.id, course.units[0].lectures[0].id);
+    ai.xiaojiu = { reply: vi.fn().mockResolvedValue({ ...payload, modelId: 'deepseek-v4-flash', modelName: 'Synthetic' }) };
+    ai.client = { chat: { completions: { create: vi.fn().mockResolvedValue({ choices: [{ message: { content: JSON.stringify(payload) } }] }) } } };
+    const prepared = { session: { id: 'source session &?', userRole: 'parent', studentId: null, subject: null, pageContext: 'classroom',
+      contextRefType: 'classroom_lecture', contextRefId: course.id + '@' + lecture.fingerprint, contextItemId: lecture.lectureId },
+      message: '请解释本讲概念。', contextJson: JSON.stringify({ lecture, evidenceIds: [], bound: null }), modelId: 'deepseek-v4-flash', modelName: 'Synthetic', history: [], execution };
+    return { ai, lecture, prepared };
+  }
+
+  it('resolves selected teaching keys to trusted internal references without accepting them as learner evidence', async () => {
+    const { ai, lecture, prepared } = cited({ reply: '依据本讲所选段落解释概念，再用一个匿名情境核对。', evidenceIds: [], sourceKeys: ['lecture-1-1', 'lecture-1-1'] });
+    const result = await ai.renderAssistant(prepared);
+    expect(result.sourceReferences).toHaveLength(1); expect(result.sourceReferences[0]).toMatchObject({ key: 'lecture-1-1', title: lecture.teaching.sources[0].title,
+      contextFingerprint: lecture.fingerprint });
+    const link = new URL(result.sourceReferences[0].href, 'https://local.invalid');
+    expect(link.pathname).toBe('/studio'); expect(link.searchParams.get('assistantSourceSession')).toBe(prepared.session.id);
+    expect(link.searchParams.get('assistantSourceKey')).toBe('lecture-1-1'); expect(result.evidenceIds).toEqual([]);
+    if (execution === 'xiaojiu') expect(ai.xiaojiu.reply.mock.calls[0][0].courseSources).toBe(true);
+  });
+
+  it.each([
+    { evidenceIds: [], sourceKeys: ['unknown-source'] },
+    { evidenceIds: ['lecture-1-1'], sourceKeys: [] },
+    { evidenceIds: [], sourceKeys: [null] },
+  ])('rejects invented, misclassified or malformed course references %#', async invalid => {
+    const { ai, prepared } = cited({ reply: '这段不符合出处边界的解释不得发布。', ...invalid });
+    await expect(ai.renderAssistant(prepared)).rejects.toThrow();
+  });
+
+  if (execution === 'openai') it('rejects provider-supplied source URLs, titles and pages', async () => {
+    const { ai, prepared } = cited({ reply: '这段伪造出处的解释不得发布。', evidenceIds: [], sourceKeys: ['lecture-1-1'],
+      sourceReferences: [{ key: 'lecture-1-1', href: 'https://invalid.test', title: '伪造标题', page: 999 }] });
+    await expect(ai.renderAssistant(prepared)).rejects.toThrow();
+  });
 });

@@ -1,0 +1,44 @@
+{
+  "baseHead": "8c53da7779da8de9fb4713a5887331c9def555ae",
+  "passedTests": 1690,
+  "failedTests": 0,
+  "environmentSkippedTests": 66,
+  "passedFiles": 180,
+  "environmentSkippedFiles": 11,
+  "elapsedSeconds": 1335.01,
+  "inputControls": {
+    "checked": 955,
+    "changed": 0
+  },
+  "postRunNormalization": "One contracts source EOF blank removed only after original full run completed; no business-content change, compiled outputs remain unchanged.",
+  "liveCliStarts": 0,
+  "productionUpgrade": false,
+  "note": "Full own API regression. PostgreSQL and native course recovery separately verified. No full142 frontend/browser/default-model/pixel or main production delivery claim.",
+  "files": {
+    "data/qa/course-sources-full-api-first.json": {
+      "bytes": 849298,
+      "sha256": "884b0c4bb3f81662782be6382076fffe71e083c7b00b4dbf7dc089b8469a09bf",
+      "gzipSha256": "c9f2166519b35515b513b77f91e2a58c1f7c3cafe819fa25c6e599a10cdf5c02"
+    },
+    "data/qa/course-sources-full-api-first.log": {
+      "bytes": 70507,
+      "sha256": "87880c226dd84e9734318037701d74a50c16c8115d9ccc22822826708f744909",
+      "gzipSha256": "3dd791f1656c935ec41bd2d5c60827d09485a56c2def3d034d3c7f38513bbf41"
+    },
+    "data/qa/course-sources-final-inputs.json": {
+      "bytes": 173637,
+      "sha256": "54aad265059ae6a47bf2ec2513fc05b317f4a3d45f1f87ff8dd7525f7ef94da3",
+      "gzipSha256": "4ce58cac62c6c96dbbfc366fb473d64e160a9875f1eed16b1c8839e68cebac1f"
+    },
+    "data/qa/course-sources-final-inputs-verified.json": {
+      "bytes": 82,
+      "sha256": "a6897be957cbcb4f2d4157abafa3acaf5dff5a06e0b5e1ee049744cce3b8dea4",
+      "gzipSha256": "31261f9e92a25b0260c7562d185f4e70398a3331e427526fabaabac3971ccce1"
+    },
+    "data/qa/course-sources-post-run-whitespace.json": {
+      "bytes": 349,
+      "sha256": "e808ac6f52e353e26b8643868517af3b793fc92f7a483e4c077bc4740abfdeaf",
+      "gzipSha256": "30d3a0742bb092dc5124d55b90ae1e1b11a0f2d81c0bc2d73017a3ef11dec43e"
+    }
+  }
+}

@@ -193,7 +193,7 @@ export class AssistantTurnService {
       const durable=command.requestKey?this.store.find('assistantTurns',{ownerUserId:user.id,requestKey:command.requestKey}):null;
       if(previous&&!durable){if(previous.content!==command.message.trim())throw new ConflictException('请求键已用于另一条提问');const reply=this.store.find('assistantMessages',{sessionId:s.id,inReplyTo:previous.id});
         if(!reply)throw new ConflictException('历史回答暂不可用');if(command.modelId&&reply.modelId!==command.modelId)throw new ConflictException('历史请求的模型不同');
-        return {user,previousResult:{reply:reply.content,source:reply.source??'rules',modelId:reply.modelId??null,modelName:reply.modelName??null,evidenceIds:reply.evidenceIds??[],assistanceRecorded:reply.assistanceRecorded??false,messages:this.ai.listMessages(s.id)} as AssistantLegacyResult,contextVersion:''};}
+        return {user,previousResult:{reply:reply.content,source:reply.source??'rules',modelId:reply.modelId??null,modelName:reply.modelName??null,evidenceIds:reply.evidenceIds??[],...(reply.sourceReferences?.length?{sourceReferences:reply.sourceReferences}:{}),assistanceRecorded:reply.assistanceRecorded??false,messages:this.ai.listMessages(s.id)} as AssistantLegacyResult,contextVersion:''};}
       return {user,previousResult:null,contextVersion:durable?.contextVersion??this.ai.assistantSnapshot(s).contextVersion};});
     if(initial.previousResult)return initial.previousResult;
     let turn=await this.create(initial.user,command.sessionId,{requestKey:command.requestKey??randomUUID(),message:command.message,modelId:command.modelId??null,contextVersion:initial.contextVersion},command.authSession,true);
@@ -201,7 +201,7 @@ export class AssistantTurnService {
     while(Date.now()<deadline){
       if(command.signal?.aborted){const cancelled=await this.cancelLatest(initial.user,turn.sessionId,turn.id).catch(()=>null);
         throw new BadRequestException(cancelled&&['cancelling','cancelled'].includes(cancelled.status)?'本次对话已请求取消，请读取实际终态':'本次等待已停止，取消尚未确认，请读取实际提问状态');}
-      if(turn.status==='completed')return this.store.requestContext(()=>{this.ai.assertSessionOwner(turn.sessionId,initial.user,false);const m=this.store.find('assistantMessages',{id:turn.assistantMessageId,sessionId:turn.sessionId});if(!m)throw new NotFoundException('回答已不可用');return {reply:m.content,source:m.source??'rules',evidenceIds:m.evidenceIds??[],modelId:m.modelId??null,modelName:m.modelName??null,assistanceRecorded:m.assistanceRecorded??false,messages:this.ai.listMessages(turn.sessionId)};});
+      if(turn.status==='completed')return this.store.requestContext(()=>{this.ai.assertSessionOwner(turn.sessionId,initial.user,false);const m=this.store.find('assistantMessages',{id:turn.assistantMessageId,sessionId:turn.sessionId});if(!m)throw new NotFoundException('回答已不可用');return {reply:m.content,source:m.source??'rules',evidenceIds:m.evidenceIds??[],...(m.sourceReferences?.length?{sourceReferences:m.sourceReferences}:{}),modelId:m.modelId??null,modelName:m.modelName??null,assistanceRecorded:m.assistanceRecorded??false,messages:this.ai.listMessages(turn.sessionId)};});
       if(['failed','cancelled'].includes(turn.status))throw new ServiceUnavailableException(turn.status==='cancelled'?'本次对话已取消':'提问未完成，可从已保存任务重试或在当前上下文重新提问');
       void worker.runNext().catch(()=>{});await new Promise(resolve=>setTimeout(resolve,80));turn=await this.store.requestContext(()=>this.get(initial.user,turn.sessionId,turn.id));
     }

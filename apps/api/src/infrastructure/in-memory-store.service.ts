@@ -12,6 +12,7 @@ import type { QuestionVisualRecord } from '../modules/learning/whiteboard-questi
 import type { AssistantTurnRecord } from '../modules/ai/assistant-turn-record';
 import type { AssistantLectureSnapshot } from '../modules/ai/assistant-lecture-context';
 import type { AssistantCourseSnapshot } from '../modules/ai/assistant-course-context';
+import type { AssistantSourceReference } from '@study-agent/contracts';
 import type { GuidanceModelSuggestionRecord } from '../modules/diagnostics/guidance-model-record';
 import { Injectable, OnModuleInit, OnApplicationBootstrap, OnModuleDestroy } from '@nestjs/common';
 import type { ClassroomSessionRecord } from '../modules/learning/classroom.service';
@@ -158,6 +159,7 @@ export type AssistantMessage = {
   modelName?: string | null;
   evidenceIds?: string[];
   assistanceRecorded?: boolean;
+  sourceReferences?: AssistantSourceReference[];
 };
 
 export type AIInsightRecord = {

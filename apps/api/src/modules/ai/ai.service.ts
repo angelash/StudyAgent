@@ -7,7 +7,7 @@ import {
   ServiceUnavailableException,
 } from '@nestjs/common';
 import { ModuleRef } from '@nestjs/core';
-import type { AssistantReply, AssistantLectureDescriptor, AssistantCourseDescriptor, AssistantCourseKind, AssistantTeachingSelection } from '@study-agent/contracts';
+import type { AssistantReply, AssistantLectureDescriptor, AssistantCourseDescriptor, AssistantCourseKind, AssistantTeachingSelection, AssistantSourceReference } from '@study-agent/contracts';
 import { assistantDigest, assistantTurnPort, type AssistantChatCommand, type AssistantPreparation, type AssistantLegacyResult, type AssistantTurnPort } from './assistant-turn-record';
 import { assistantLectureReference, assistantLectureSummary, freezeAssistantLecture, readAssistantLecture, type AssistantLectureSnapshot } from './assistant-lecture-context';
 import { assistantTeachingInstructions } from './assistant-teaching-instructions';
@@ -15,6 +15,7 @@ import { assistantCourseDescriptor as describeAssistantCourse, assistantCourseRe
   assertCourseAssessmentAvailable, courseAssessmentBlock, courseAssistantContext, freezeAssistantCourse, previewAssistantCourse, readAssistantCourse,
   resolveCourseTeachingSource, type AssistantCourseSnapshot, type CourseTeachingSource } from './assistant-course-context';
 import { teachingContentSelectionSchema } from './assistant-teaching-content';
+import { assistantSourcePreview, assistantSourceReferenceSchema, assistantTeachingSources, trustedAssistantSources, validateAssistantSourceReferences } from './assistant-source-references';
 import { loadApiEnv } from '@study-agent/config';
 import {
   AIAnalysisResponse,
@@ -381,6 +382,13 @@ export class AiService {
     return { ...summarizeAssistantCourse(retained.snapshot, retained.current), canSend: retained.current && !block, ...(block ? { blocked: block } : {}) };
   }
 
+  sourcePreview(user: InMemoryUserAccount, sessionId: string, sourceKey: string) {
+    const key = validate(z.string().min(1).max(100), sourceKey), session = this.assertSessionOwner(sessionId, user, false);
+    const course = this.courseSnapshot(session, false), lecture = this.lectureSnapshot(session, false);
+    const teaching = course?.snapshot.teaching ?? (lecture?.snapshot.protocol === 'classroom-lecture-v2' ? lecture.snapshot.teaching : null);
+    return assistantSourcePreview(session, teaching, key, course?.current ?? lecture?.current ?? false, course?.snapshot.accessMode);
+  }
+
   private lectureSnapshot(session: AssistantSession, requireCurrent: boolean) {
     if (session.contextRefType !== 'classroom_lecture') {
       if (session.pageContext === 'classroom') throw new BadRequestException('原讲座上下文不完整');
@@ -564,9 +572,11 @@ export class AiService {
     const session=prepared.session, message=prepared.message, command={modelId:prepared.modelId,signal};
     const context=JSON.parse(prepared.contextJson) as ReturnType<AiService['assistantContext']>;
     const { withheldAnswer, bound, ...safeContext } = context;
+    const teaching = assistantTeachingSources(context);
     const system = assistantTeachingInstructions(context.course ? context.course.kind === 'primary_unit' ? 'primary-course' : 'material-course' :
       context.lecture ? context.lecture.protocol === 'classroom-lecture-v2' ? 'lecture-teaching' : 'lecture-goals' :
-      context.independentStudy ? 'independent' : 'evidence', session.userRole, this.getSubjectLabel(session.subject));
+      context.independentStudy ? 'independent' : 'evidence', session.userRole, this.getSubjectLabel(session.subject)) +
+      (teaching ? '如果解释依据了本次教学原文，用sourceKeys列出lecture.teaching.sources或course.teaching.sources中实际支持解释的key；通常学科知识不伪造课程出处。没有引用时可省略或为空数组，课程key不得放进学生作答evidenceIds。' : '');
     const fallback = context.course ? `围绕“${context.course.teaching.itemTitle}”，先说明一个概念，再比较一个例子和反例。当前为本地课程引导，没有调用模型，不形成能力评测结果；需要模型讲解时请核对连接后使用原模型重试。` : context.lecture ? `围绕“${context.lecture.lectureTitle}”，先用自己的话说明${context.lecture.lessons.map(lesson => '“' + lesson.title + '”').join('、')}之间的联系，再用一个匿名情境比较解释与反例。当前为本地教学引导，没有调用模型，也不形成能力评测结果。` : context.independentStudy ? '先说说你想理解的概念、已有认识或具体问题，我们可以用例子、反例和一个新情境逐步核对。当前是本地学习引导，没有调用模型，也没有绑定孩子的评测或计划。' : session.userRole !== 'student' && context.definitionNotice ? context.definitionNotice : session.userRole === 'student' ?
       `${context.currentQuestion?.atomName ? `我们先看“${context.currentQuestion.atomName}”。${context.currentQuestion.objective ?? ''}。` : ''}${context.currentQuestion?.draft && context.currentQuestion.draft !== 'null' ? '你已经留下了思路草稿。先指出其中哪一步用到了题目的条件。' : '先用自己的话说一说题目要解决什么，再列出已知条件。'}你可以告诉我卡在哪一步；完成后再用一道新题检查。` :
       context.plan ? `当前计划：${context.plan.summary} 陪伴时先请孩子解释思路，只在卡住的一步给提示，再用独立新题验证。${context.report?.summary ?? ''}` :
@@ -575,16 +585,15 @@ export class AiService {
           '先确认孩子的年级、教材和已学范围，完成一组知识点评测。还未测到的内容保持未知，再根据具体证据安排验证与指导。';
     let reply = fallback, source: 'rules' | 'openai' | 'xiaojiu' = 'rules', citations: string[] = [];
     let selectedModelId: string | null = null, selectedModelName: string | null = null;
+    let sourceReferences: AssistantSourceReference[] = [];
     const history = prepared.history;
     // In-progress diagnostic items use deterministic prompts. Any help is
     // recorded before the response is returned and excluded from independent evidence.
-    const modelEligible = (session.userRole === 'parent' || bound) &&
-      !(bound?.kind === 'diagnostic' && ['in_progress', 'paused'].includes(bound.assessmentStatus));
     if (prepared.execution === 'xiaojiu') {
       try {
         const result = await this.xiaojiu.reply({ modelId: prepared.modelId!,
           system,
-          context: JSON.stringify(safeContext), history, message, signal: command.signal });
+          context: JSON.stringify(safeContext), history, message, signal: command.signal, ...(teaching ? { courseSources: true } : {}) });
         const reveals = session.userRole === 'student' && withheldAnswer !== undefined &&
           ['string', 'number'].includes(typeof withheldAnswer) && result.reply.includes(String(withheldAnswer));
         if (result.evidenceIds.some(id => !context.evidenceIds.includes(id)) || reveals ||
@@ -592,6 +601,7 @@ export class AiService {
           throw new ServiceUnavailableException('所选模型返回了不符合证据边界的回答，请重试或切换模型');
         reply = result.reply;
         citations = result.evidenceIds;
+        sourceReferences = trustedAssistantSources(session, teaching, result.sourceKeys);
         selectedModelId = result.modelId;
         selectedModelName = result.modelName;
         source = 'xiaojiu';
@@ -604,39 +614,46 @@ export class AiService {
       try {
         const completion = await this.client.chat.completions.create({ model: prepared.modelId!,
           temperature: 0.2, max_tokens: 1200, response_format: { type: 'json_object' }, messages: [
-            { role: 'system', content: system + '只输出 JSON: reply, evidenceIds。' },
+            { role: 'system', content: system + '只输出 JSON: reply, evidenceIds' + (teaching ? '，可选sourceKeys' : '') + '。' },
             { role: 'system', content: JSON.stringify(safeContext) }, ...history, { role: 'user', content: message },
           ] }, { signal: command.signal });
-        const result = z.object({ reply: z.string().trim().min(5).max(2000), evidenceIds: z.array(z.string()).max(50) }).strict()
-          .parse(JSON.parse(completion.choices[0]?.message?.content ?? '{}'));
+        const base = z.object({ reply: z.string().trim().min(5).max(2000), evidenceIds: z.array(z.string()).max(50) }).strict();
+        const raw = JSON.parse(completion.choices[0]?.message?.content ?? '{}');
+        const result = teaching ? base.extend({ sourceKeys: z.array(z.string().min(1).max(100)).max(50).optional() }).parse(raw) : base.parse(raw);
         const reveals = session.userRole === 'student' && withheldAnswer !== undefined &&
           ['string', 'number'].includes(typeof withheldAnswer) && result.reply.includes(String(withheldAnswer));
         if (result.evidenceIds.some((id) => !context.evidenceIds.includes(id)) || reveals || !inspectTeachingOutput(result.reply).allowed) throw new Error('Unsupported output');
         reply = result.reply; citations = result.evidenceIds; source = 'openai';
+        sourceReferences = trustedAssistantSources(session, teaching, 'sourceKeys' in result ? result.sourceKeys : undefined);
         selectedModelId = prepared.modelId; selectedModelName = prepared.modelName;
       } catch (error) { throw new ServiceUnavailableException(command.signal?.aborted ? '本次对话已取消' : '模型回答未通过校验或生成失败，请重试'); }
     }
 
     if (signal?.aborted) throw new BadRequestException('本次对话已取消');
-    const value=z.object({reply:z.string().trim().min(1).max(4000),source:z.enum(['rules','openai','xiaojiu']),evidenceIds:z.array(z.string()).max(50),modelId:z.string().nullable(),modelName:z.string().nullable()}).strict()
-      .parse({reply,source,evidenceIds:citations,modelId:selectedModelId,modelName:selectedModelName});
+    const value=z.object({reply:z.string().trim().min(1).max(4000),source:z.enum(['rules','openai','xiaojiu']),evidenceIds:z.array(z.string()).max(50),modelId:z.string().nullable(),modelName:z.string().nullable(),
+      sourceReferences:z.array(assistantSourceReferenceSchema).max(50).optional()}).strict()
+      .parse({reply,source,evidenceIds:citations,modelId:selectedModelId,modelName:selectedModelName,...(sourceReferences.length ? { sourceReferences } : {})});
     return value;
   }
 
   publishAssistant(prepared: AssistantPreparation, result: AssistantReply, requestKey: string) {
     const session=prepared.session, message=prepared.message, context=JSON.parse(prepared.contextJson) as ReturnType<AiService['assistantContext']>;
     const bound=context.bound, {reply,source,evidenceIds:citations,modelId:selectedModelId,modelName:selectedModelName}=result;
+    const sourceReferences = validateAssistantSourceReferences(session, assistantTeachingSources(context), result.sourceReferences);
     const userMessageId = this.store.nextId('assistant_message'), assistantMessageId = this.store.nextId('assistant_message');
     const assistanceRecorded = this.recordAssistance(context, assistantMessageId, session.studentId);
     this.store.append('assistantMessages', { id: userMessageId, sessionId: session.id, sender: 'user', content: message, requestKey, createdAt: new Date().toISOString() },
       { id: assistantMessageId, sessionId: session.id, sender: 'assistant', content: reply, inReplyTo: userMessageId, source,
         modelId: selectedModelId, modelName: selectedModelName, evidenceIds: citations,
+        ...(sourceReferences.length ? { sourceReferences } : {}),
         assistanceRecorded, createdAt: new Date().toISOString() });
     this.recordInsight('assistant', session.id, session.studentId, reply, { summary: reply,
       structuredResult: { pageContext: session.pageContext, model: selectedModelId ?? 'local-guidance',
         modelName: selectedModelName,
         ...(source !== 'rules' ? { outputPolicyVersion: TEACHING_OUTPUT_POLICY_VERSION } : {}),
-        promptVersion: 'evidence-coach-v2', evidenceIds: citations, usedLocalContext: Boolean(context.scope || context.report || context.plan || bound),
+        promptVersion: context.course || context.lecture?.protocol === 'classroom-lecture-v2' ? 'teaching-sources-v1' : context.independentStudy ? 'independent-coach-v1' : 'evidence-coach-v2',
+        evidenceIds: citations, usedLocalContext: Boolean(context.course || context.lecture || context.scope || context.report || context.plan || bound),
+        ...(sourceReferences.length ? { sourceReferences } : {}),
         contextRefType: session.contextRefType, contextRefId: session.contextRefId, contextItemId: session.contextItemId ?? null, assistanceRecorded },
       confidenceLevel: 'low', reviewRequired: true, source: source === 'rules' ? 'rules' : 'openai' });
 

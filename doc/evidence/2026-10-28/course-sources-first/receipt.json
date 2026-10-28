@@ -1,0 +1,19 @@
+{
+  "phase": "B2b first compiled implementation",
+  "passed": 38,
+  "failed": 1,
+  "liveCliStarts": 0,
+  "note": "New test indexed reverse-chronological page messages[1], which is the user message. Repair selects assistant sender; persisted result and publication validation remain unchanged. This run does not verify new course frontend or native recovery.",
+  "files": {
+    "data/qa/course-sources-first.json": {
+      "bytes": 17040,
+      "sha256": "587f7caceab49686c19f1071ca2dabcda10ac1da9e921dc747e132842b27a281",
+      "gzipSha256": "3483fb01b276931ae52e6d85b2f1b00d8f6cfdf9de82afc6b8a91e9b2b258106"
+    },
+    "data/qa/course-sources-first.log": {
+      "bytes": 4217,
+      "sha256": "476d32aca03ca6e0f0ea038b135b1b46bafd0a670d0381314ab7f394ad5e8c6d",
+      "gzipSha256": "d93355f424afc90c8b45926b25af6e453291aea482f4b2f9ebd05e3cb2ae0127"
+    }
+  }
+}

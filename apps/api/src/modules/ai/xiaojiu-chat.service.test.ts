@@ -111,6 +111,39 @@ describe('XiaojiuChatService', () => {
     expect(result.reply).toBe('原结果保留'); expect(spawnMock).toHaveBeenCalledTimes(1);
   });
 
+  it('enables only source keys for explicit course mode and preserves the full input', async () => {
+    respondWith({ reply: '依据所选段落解释比较条件。', evidenceIds: [], sourceKeys: ['atom-1'] });
+    let schema: any, prompt = ''; const implementation = spawnMock.getMockImplementation()!;
+    spawnMock.mockImplementation((...args: unknown[]) => {
+      const cliArgs = args[1] as string[]; schema = JSON.parse(readFileSync(cliArgs[cliArgs.indexOf('--output-schema') + 1], 'utf8'));
+      const child = implementation(...args); child.stdin.on('data', (chunk: Buffer) => { prompt += String(chunk); }); return child;
+    });
+    const context = JSON.stringify({ course: { teaching: { sources: [{ key: 'atom-1' }], end: '末尾完整条件' } } });
+    const result = await new XiaojiuChatService(new XiaojiuModelsService()).reply({ modelId: 'deepseek-v4-flash', courseSources: true,
+      system: '解释所选教学', context, history: [], message: '请说明比较条件。' });
+    expect(result.sourceKeys).toEqual(['atom-1']); expect(schema.additionalProperties).toBe(false);
+    expect(schema.properties.sourceKeys.items.type).toBe('string'); expect(schema.properties).not.toHaveProperty('sourceReferences');
+    expect(prompt).toContain('<学习证据>' + context + '</学习证据>'); expect(prompt).toContain('不得输出URL'); expect(spawnMock).toHaveBeenCalledTimes(1);
+  });
+
+  it.each([
+    { courseSources: false, result: { sourceKeys: ['atom-1'] } },
+    { courseSources: true, result: { sourceKeys: [{ key: 'atom-1', href: 'https://invalid.test' }] } },
+    { courseSources: true, result: { sourceKeys: ['atom-1'], sourceReferences: [{ title: '伪造', href: 'https://invalid.test' }] } },
+    { courseSources: true, result: { sourceKeys: Array.from({ length: 51 }, () => 'atom-1') } },
+  ])('rejects unrequested or fabricated source metadata %#', async ({ courseSources, result }) => {
+    respondWith({ reply: '这段输出必须通过原协议检查。', evidenceIds: [], ...result });
+    await expect(new XiaojiuChatService(new XiaojiuModelsService()).reply({ modelId: 'deepseek-v4-flash', courseSources,
+      system: '解释概念', context: '', history: [], message: '说明条件。' })).rejects.toThrow('连续两次');
+    expect(spawnMock).toHaveBeenCalledTimes(2);
+  });
+
+  it.each(['classroomBoard', 'classroomPresentation'] as const)('rejects mixed course and %s protocols before a CLI starts', async field => {
+    await expect(new XiaojiuChatService(new XiaojiuModelsService()).reply({ modelId: 'deepseek-v4-flash', courseSources: true, [field]: true,
+      system: '', context: '', history: [], message: '继续' })).rejects.toThrow('不同的响应协议');
+    expect(spawnMock).not.toHaveBeenCalled();
+  });
+
   it('retains validated classroom board and requests its structured output schema', async () => {
     respondWith({ reply: '从一个匿名社区的岗位变化开始核查。', evidenceIds: [], board });
     let schema: { required: string[] } | undefined;
