@@ -26,3 +26,5 @@
 精确a377815 / 40704086547已全部终态：application success（完整API1720通过/74环境跳过）、browser success（466/466次原始尝试通过，无失败/跳过/重试）、postgres failure。失败点是guidance原生恢复完整用例超过60000ms；该点之后PG步骤被跳过，不能声称这轮全PG通过。没有人为取消任何CI。原日志/metadata/下载报告见[第二轮原件](../evidence/2026-10-28/chemistry-v2-exact-ci-second/receipt.json)。
 
 只把同一个原生恢复测试的有界预算改为120000ms，与其他原生用例一致；生产行为、供应商超时、重试/跳过及原断言不变。实际本地双库runner13/13通过，原生SQLite26463.9412ms、PG66590.0203ms，见[预算与实际耗时](../evidence/2026-10-28/guidance-native-recovery-budget/receipt.json)。原60秒失败与新本地成功均保留；全旧CI终态后才推送修正，仍需新精确CI及实际主目录交付。
+
+最终source/schema21候选517cd7c / 40712644000三组全部success，466浏览器原始尝试零失败/跳过/重试，Linux完整API1720/74环境跳过；已在主目录实际构建，buildId Jw5yWOSG7naRSrIJM4SNZ。28原图、12编译模块、16保护集合和三次203195ms守护稳定观察通过，五配置与私有环境保持。新鲜停服一致备份和1105旧编译文件已核验；未包含笔记/schema22。见[精确CI](../evidence/2026-10-28/chemistry-v2-exact-ci-third/receipt.json)与[实际运行](../evidence/2026-10-28/chemistry-v2-source-runtime/receipt.json)。

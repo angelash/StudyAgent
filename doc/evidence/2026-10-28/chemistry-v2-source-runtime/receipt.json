@@ -1,0 +1,157 @@
+{
+  "passed": true,
+  "productionBuildRevision": "517cd7c165841e0a13f575dbdbfb5c7f186fe5cb",
+  "ciRun": 40712644000,
+  "buildId": "Jw5yWOSG7naRSrIJM4SNZ",
+  "schemaVersion": 21,
+  "actualProductionChecks": {
+    "http": 9,
+    "originalFigures": 28,
+    "compiledModules": 12,
+    "preservedCollections": 16,
+    "guardianSamples": 3,
+    "guardianElapsedMilliseconds": 203195
+  },
+  "course": {
+    "id": "studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+    "subject": "chemistry",
+    "grade": 9,
+    "profileGrade": 4,
+    "units": 7,
+    "teachingVersion": "chemistry-tutorial-2026-10-28-v2"
+  },
+  "actualUnitContexts": [
+    {
+      "parts": 32,
+      "figures": 4,
+      "fullJsonCharacters": 14404
+    },
+    {
+      "parts": 32,
+      "figures": 4,
+      "fullJsonCharacters": 14801
+    },
+    {
+      "parts": 32,
+      "figures": 4,
+      "fullJsonCharacters": 14671
+    },
+    {
+      "parts": 32,
+      "figures": 4,
+      "fullJsonCharacters": 14848
+    },
+    {
+      "parts": 32,
+      "figures": 4,
+      "fullJsonCharacters": 15158
+    },
+    {
+      "parts": 32,
+      "figures": 4,
+      "fullJsonCharacters": 15071
+    },
+    {
+      "parts": 32,
+      "figures": 4,
+      "fullJsonCharacters": 15106
+    }
+  ],
+  "rollback": {
+    "at": "2026-10-28T15:52:19.854Z",
+    "verifiedFiles": 1,
+    "compiledFiles": 1105,
+    "schemaVersion": 21,
+    "assetsIncluded": false,
+    "scope": "Stopped consistent SQLite plus every database-referenced runtime file, original compiled runtime and private config. No complete research archive or full recovery rehearsal."
+  },
+  "verificationFailure": "First runtime helper resolved a module relative to data/qa and stopped after16 collection comparisons. Original report/helper retained; absolute repository module path fixed, second full check passes. No product patch or rerun overwrite.",
+  "limits": [
+    "Actual running new Web build and source/schema21 API, original course generated from persisted production records, original28 public figures and anonymous guards verified. No real learner write or provider call.",
+    "Production credentials are not configured for this run; authenticated source/course journeys are proven in isolated full466 browser CI, not a new production-account login.",
+    "Notes/schema22 and source-whiteboard C1 remain separate development; no entire product, textbook, teacher, audio or pixel-parity claim.",
+    "Backup includes stopped database, database-referenced files,1105 old compiled files and private configuration locally. It is not a complete asset backup or full recovery drill. Private environment/config bytes are not published."
+  ],
+  "files": {
+    "output/daemon/release-backups/chemistry-source-20261028-1793202242028/deployment-before.json": {
+      "bytes": 812,
+      "sha256": "283986242381518b5410465b515333f209fd0156140ea64f8b1c3d9a2cc282de",
+      "gzipSha256": "1820f38e176611f37657175b4a5253ed85a2f1608832a5d746d00964795ad905"
+    },
+    "output/daemon/release-backups/chemistry-source-20261028-1793202242028/backup-verified.json": {
+      "bytes": 324,
+      "sha256": "976ba0456878150914622e43ac37a5d5507497406b7e07296da9c02bd9cc1181",
+      "gzipSha256": "d159d6a4d4976d6454026adcd50ed8d4386f176b9ed6f9039313e440b5b195c7"
+    },
+    "output/daemon/release-backups/chemistry-source-20261028-1793202242028/protected-records-before.json": {
+      "bytes": 2195,
+      "sha256": "f097081ffa02010e2bdcbb72b64189e80515c16b222700cb4ac25c58a997c87c",
+      "gzipSha256": "054c02ee92cf2951280be08a6c6beca8a64ea906282b30fd48ba6f7ccb6c0a10"
+    },
+    "output/daemon/release-backups/chemistry-source-20261028-1793202242028/original-live-readiness.json": {
+      "bytes": 436,
+      "sha256": "4216efc7641deb723bcfda4e5002148952729cceebe4f8bd609018d0c67d13c0",
+      "gzipSha256": "62f98cfc76d063733354eed1683503d245921e86591ae960cfc7a465aaa8aa85"
+    },
+    "output/daemon/release-backups/chemistry-source-20261028-1793202242028/runtime-first.json": {
+      "bytes": 2111,
+      "sha256": "7cdbe9761f1451d673b56b69c70419b97066e9dbd12381393e433bed99dc0daa",
+      "gzipSha256": "a3b61dd6694b306dec83b053db4f59905a5dfe03ed3dcfb679b2e6b686d044b8"
+    },
+    "output/daemon/release-backups/chemistry-source-20261028-1793202242028/runtime-second.json": {
+      "bytes": 10236,
+      "sha256": "6c411f8d1b754f51da4893e8907d09ac1491feaf4f9f2fdfebe480c3a29b399d",
+      "gzipSha256": "9df74aed6f9ee3ef4a3f8f94a45f2e78a5ef6eecb89e8de92855029ce42dfbb9"
+    },
+    "output/daemon/release-backups/chemistry-source-20261028-1793202242028/guardian-observation-2.json": {
+      "bytes": 420,
+      "sha256": "baa3444417914a94eb08c7c8f9bda0d67e4fbf1b8573cb0c5064f2e78608a0ea",
+      "gzipSha256": "09c8fc4e727f4ecd8d265dcae062f5e1b5b54f1199bda9d5f08372315f832489"
+    },
+    "output/daemon/release-backups/chemistry-source-20261028-1793202242028/guardian-observation-3.json": {
+      "bytes": 469,
+      "sha256": "a92dd1845fd26d1a893517718b62518324465c7818adc1a94d05f323f989b444",
+      "gzipSha256": "f8f99c7a9a909ed276762f82deec42cafd3660d24a83ae44ff44ae068ee9fc72"
+    },
+    "data/qa/prepare-chemistry-source-rollback.cjs": {
+      "bytes": 2374,
+      "sha256": "fb532bf631d5f2b249e03875abd55e8f8aa68f49ddf539f997f0c0df64b6e29d",
+      "gzipSha256": "e1d2722db6eb791301b57ec4a1f2324116b309e58500759baff668f7f3f8e8eb"
+    },
+    "data/qa/deliver-chemistry-source-prepare.cjs": {
+      "bytes": 7278,
+      "sha256": "8b920597c2429627519f021b977a49fc4ba52953d3209d47d67a1e3558d543ae",
+      "gzipSha256": "31f8593389d65a1fdc979446c42722b1e09e0a77233c71032106f0330e591c8a"
+    },
+    "data/qa/rollback-chemistry-source-compiled.cjs": {
+      "bytes": 3417,
+      "sha256": "ba394de59deff401163dff59a9cefa2db48f860dce90a52a778451e56167790d",
+      "gzipSha256": "9831a2b7de8431c745b741beaca7bc3adc1e84f6b4e4aa2e6a1c9002fb5bf851"
+    },
+    "data/qa/verify-chemistry-source-runtime.cjs": {
+      "bytes": 7071,
+      "sha256": "6bb3cbd58223ab0c045fa2015031531ded389762d9c7a2697f5dd01a73553467",
+      "gzipSha256": "837a1d5defa1e0f52fb32711786c91dca5bac3424f13c395d6c8d0b895403f28"
+    },
+    "data/qa/verify-chemistry-source-runtime-second.cjs": {
+      "bytes": 7086,
+      "sha256": "aa93eb9a14d1851f2498d32076286b2b0fffa59f459a19a1d462d69b3491614b",
+      "gzipSha256": "9564f22edfd127f3f07e56b0842139cb092651ed64977c2c20dffe97ba8b24d2"
+    },
+    "data/qa/chemistry-source-delivery-verify-only.log": {
+      "bytes": 808,
+      "sha256": "83182987b3439d0993b0e5d086a5347d1764ceadcd2607397b5744bd4d1e4e92",
+      "gzipSha256": "7dbc217df063f56d01fce5a32583b5a620d05398b6bdc010a0c7482a6c0dc87b"
+    },
+    "data/qa/chemistry-source-delivery-prepare-first.log": {
+      "bytes": 2273,
+      "sha256": "26a92c1374713b70f06d9fde4324301709d45a307a4459efa3ab3d489cff4469",
+      "gzipSha256": "81dcb3f792fa1d95c74c76caaed29fa41eb427cc4e1eeb01d6cc795d4d1a3cfa"
+    },
+    "data/qa/chemistry-source-main-build-and-start-first.log": {
+      "bytes": 7590,
+      "sha256": "fb811d2fbfb159a3f0251b1b19356f0047aae4f4ddc9a3897bdeb053536311db",
+      "gzipSha256": "5356fefb66fb2be4ffc96fa537f8049532d37f8dd29be3381712954fd239999d"
+    }
+  }
+}
