@@ -1,0 +1,294 @@
+{
+  "at": "2026-10-28T21:15:16.233084+00:00",
+  "passed": true,
+  "mergedCode": "0e7f3c34",
+  "scope": "Integrated CUI source boards, released notes and D1 current atomic-coverage preflight; no D2/schema24.",
+  "browser": {
+    "startTime": "2026-10-28T21:09:19.303Z",
+    "duration": 203787.653,
+    "expected": 35,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "retries": 0,
+  "inputCheck": {
+    "checked": 3191,
+    "changed": []
+  },
+  "inputCaptureTiming": {
+    "at": "2026-10-28T21:10:28.773932+00:00",
+    "capturedDuringFocusedRun": true,
+    "limitation": "Focused35 launch occurred before this additional build-file manifest. API/source inputs were already frozen by1802 gate and checked at integration; this is not claimed as a prelaunch focused-run freeze. No source/build edit occurred after the isolated build."
+  },
+  "comparison": {
+    "apiInputs": {
+      "checked": 2613,
+      "changed": []
+    },
+    "webSourceAndTestsFrom501": {
+      "checked": 320,
+      "gitBlobDiff": [],
+      "rawLineEndingDifferences": [
+        "apps/web/app/studio/whiteboards/assistant-source.tsx",
+        "apps/web/app/studio/whiteboards/rejected-edits.ts",
+        "apps/web/app/studio/whiteboards/source-write-guard.tsx",
+        "apps/web/components/assistant-whiteboards.css",
+        "apps/web/components/assistant-whiteboards.tsx",
+        "tests/e2e/assistant-whiteboards.spec.ts"
+      ],
+      "normalizedChanged": []
+    },
+    "runtimeDifferenceFromCUI501": [
+      "apps/api/dist/apps/api/src/common/auth.guard.js",
+      "apps/api/dist/apps/api/src/modules/learning/assistant-practice-preflight.controller.js",
+      "apps/api/dist/apps/api/src/modules/learning/assistant-practice-preflight.service.js",
+      "apps/api/dist/apps/api/src/modules/learning/learning.module.js",
+      "apps/api/dist/packages/contracts/src/assistant-practice.js",
+      "apps/api/dist/packages/contracts/src/index.js",
+      "packages/contracts/dist/index.js"
+    ],
+    "interpretation": "1802 API frozen inputs remain exact. Web/e2e Git blobs and normalized bytes match CUI501; raw checkout EOL differences are explicit. API differs, exact merged remote501 still required."
+  },
+  "buildContext": {
+    "version": 1,
+    "apiPort": 4143,
+    "buildId": "4ij4zlQ8IfL5uTVx9PcZu"
+  },
+  "limitations": [
+    "This35 overlaps CUI501; old CUI501 is not declared a complete D1 browser gate. Exact integrated remoteCI will rerun full501 andPG.",
+    "Focused-run build manifest was captured after launch; original1802 API inputs were already frozen and retained. No prelaunch focused-manifest claim.",
+    "Six text checkout line-ending differences are explicit; Git blobs and normalized source match, API has seven expected runtime differences.",
+    "No production rollout or full product completion claim."
+  ],
+  "files": [
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-notes/complete-overlong-reading-scroll.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-notes/complete-overlong-reading-scroll.png.gz",
+      "sha256": "068fe484d829d6871f0a7594d12997c0d54a33add1a9ff51edc2a13a5eef53e6",
+      "bytes": 113061
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-notes/confirmed-1440.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-notes/confirmed-1440.png.gz",
+      "sha256": "7b0e253c715408a1a702b65d6386eb95ef605b808d44084ff094cf1ab7b4df30",
+      "bytes": 131107
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-notes/confirmed-390.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-notes/confirmed-390.png.gz",
+      "sha256": "b21135279a81a6029dc6b0c8ae99b7d153be3ee8c532add6af9b58e53aa755fa",
+      "bytes": 75201
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-notes/confirmed-768.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-notes/confirmed-768.png.gz",
+      "sha256": "c5abd34dab7c942eff435af4ad7aa86a45bccebf9bf0ba61d8a15982cd82c8b8",
+      "bytes": 90874
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-notes/confirmed-880.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-notes/confirmed-880.png.gz",
+      "sha256": "5670d1e60ed9a2b984449eda70a9a9244794ec5fa3817d92e0e15e4389689a49",
+      "bytes": 91725
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-notes/local-draft-and-adopted-server.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-notes/local-draft-and-adopted-server.png.gz",
+      "sha256": "6d275386c7695f0ba01b78af8dadfa99fa1024a2da5857d9fa25ed4b08b58596",
+      "bytes": 99183
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-notes/original-request-recovered.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-notes/original-request-recovered.png.gz",
+      "sha256": "bf8440d373e770d80e7a90c493c1a40ca6350801b88c544bca4f52af83bf5192",
+      "bytes": 118731
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/adopted-player-1440.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/adopted-player-1440.png.gz",
+      "sha256": "07765757da225ce12cdc5587762e2e4eb9b548ea6bf0e1d63ab943e0ac91cd96",
+      "bytes": 129243
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/adopted-player-390.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/adopted-player-390.png.gz",
+      "sha256": "c3092ead35700367dc68edf57472d0bfca13bd17cf602f7d0b3101e0e0b87ed4",
+      "bytes": 41712
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/adopted-player-768.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/adopted-player-768.png.gz",
+      "sha256": "38f98c81007cc40952d00ba5f06baf4c2c22a05793297c4c37f545dd68ef9409",
+      "bytes": 51469
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/adopted-player-880.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/adopted-player-880.png.gz",
+      "sha256": "02c0e4e0d99f727108d41eb6303d8dc4d0fb49d2190ed0f55505d49ab305f9b5",
+      "bytes": 56330
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/independent-document-copies.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/independent-document-copies.png.gz",
+      "sha256": "0e813e47fd34bb127e1590484bef2d9fb015e8365452bc16bb5d427347af9052",
+      "bytes": 113456
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/original-create-recovered.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/original-create-recovered.png.gz",
+      "sha256": "dcfebe65b5592887b79e833854d75bfce62bf661f800624bcd201a8bc51e1f96",
+      "bytes": 100160
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/original-review-resumed.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/original-review-resumed.png.gz",
+      "sha256": "b08c601376d619ed999f9c57108e907566033636786e3523c8c7045ddab9a9e8",
+      "bytes": 112729
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/paused-source-guard-resumed.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/paused-source-guard-resumed.png.gz",
+      "sha256": "8f39569ce6904d2370849c61bda26ce2c0500b2a5c7d4b889aad84662be40907",
+      "bytes": 67034
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/private-source-image-and-narration.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/private-source-image-and-narration.png.gz",
+      "sha256": "a862aca1eb6733b6dce3cb607d9326764f32649a85c2db91042cadd6df562f28",
+      "bytes": 148018
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/source-selection-1440.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/source-selection-1440.png.gz",
+      "sha256": "87a632c732ec2207f378c0f637289f5c04ca1aae86939290b452f21f43672383",
+      "bytes": 138484
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/source-selection-390.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/source-selection-390.png.gz",
+      "sha256": "67fd36c2529362c3171793eeaa86858fbcd5ac3652d3d49aa297da5309ff9b80",
+      "bytes": 85759
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/source-selection-768.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/source-selection-768.png.gz",
+      "sha256": "fddd621a46492640976d066e29c46b5a6b0c2d6d98691225cec050164db04383",
+      "bytes": 95768
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/source-selection-880.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/source-selection-880.png.gz",
+      "sha256": "553d3d7480bc8cc7c0b50931db6298a514a0ffd4798f59febe1a8a911eb5504d",
+      "bytes": 96715
+    },
+    {
+      "source": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/source409-original-command.png",
+      "archive": "data/qa/browser-evidence/source-teaching-integrated-browser-first-3bc4598fed/assistant-whiteboards/source409-original-command.png.gz",
+      "sha256": "b0161a796f5d42c74b8d586544c705742ad70b5836e3861e28c3602ae412a6a4",
+      "bytes": 117958
+    },
+    {
+      "source": "data/qa/freeze-source-teaching-integrated-browser-first.py",
+      "archive": "data/qa/freeze-source-teaching-integrated-browser-first.py.gz",
+      "sha256": "f29049afd3dfc0624313ff291812e8e1f0bb02304484f06d8eda189112dff30f",
+      "bytes": 1485
+    },
+    {
+      "source": "data/qa/source-teaching-integrated-browser-first-capture-note.json",
+      "archive": "data/qa/source-teaching-integrated-browser-first-capture-note.json.gz",
+      "sha256": "e6f48e705f67567ca18cc7c57fd43e33aa6b980469465ed6111ba974658dac13",
+      "bytes": 366
+    },
+    {
+      "source": "data/qa/source-teaching-integrated-browser-first-inputs-verification.log",
+      "archive": "data/qa/source-teaching-integrated-browser-first-inputs-verification.log.gz",
+      "sha256": "9ad52e0df8ad81d5c9826f49b0cc096600e8783a9b6a1695fe0137e6224eb578",
+      "bytes": 34
+    },
+    {
+      "source": "data/qa/source-teaching-integrated-browser-first-inputs.json",
+      "archive": "data/qa/source-teaching-integrated-browser-first-inputs.json.gz",
+      "sha256": "d69fb06ee8f82ffd7aa62335d645f786c55aef2ed9cb682e14f2d1f61b04f7ea",
+      "bytes": 630112
+    },
+    {
+      "source": "data/qa/source-teaching-integrated-browser-first.json",
+      "archive": "data/qa/source-teaching-integrated-browser-first.json.gz",
+      "sha256": "de3092a674eeb319610b251378882dd4928e3c361b0e5157742d1c7da70fb024",
+      "bytes": 41901
+    },
+    {
+      "source": "data/qa/source-teaching-integrated-browser-first.log",
+      "archive": "data/qa/source-teaching-integrated-browser-first.log.gz",
+      "sha256": "66f481b9ba8211f790ce9c951db5997920a3ffc7c441f7832d1781a86f99f3f0",
+      "bytes": 6685
+    },
+    {
+      "source": "data/qa/source-teaching-integrated-first-design.log",
+      "archive": "data/qa/source-teaching-integrated-first-design.log.gz",
+      "sha256": "1ac9a3b9af32e230394b20e0aabaa8ffd3669702232b3da437c94567d71e1e1a",
+      "bytes": 3482
+    },
+    {
+      "source": "data/qa/source-teaching-merge-first-conflicts/.gitattributes",
+      "archive": "data/qa/source-teaching-merge-first-conflicts/.gitattributes.gz",
+      "sha256": "52e68299e95904705c5ed22859242d8c8440916868e74c7559dcf8bf1a1b2a97",
+      "bytes": 6470
+    },
+    {
+      "source": "data/qa/source-teaching-merge-first-conflicts/doc/product/105-development-plan-status-and-next-milestones.md",
+      "archive": "data/qa/source-teaching-merge-first-conflicts/doc/product/105-development-plan-status-and-next-milestones.md.gz",
+      "sha256": "f8f789bc551abecd903782692940375bf8b057b3326829e9365d404ee3326c26",
+      "bytes": 138870
+    },
+    {
+      "source": "data/qa/source-teaching-merge-first-input-error.log",
+      "archive": "data/qa/source-teaching-merge-first-input-error.log.gz",
+      "sha256": "db52d6c307e73ebec3b8046df5401151b7133a47caff59e923fda5200a386674",
+      "bytes": 337
+    },
+    {
+      "source": "data/qa/source-teaching-merge-first-raw-changes.json",
+      "archive": "data/qa/source-teaching-merge-first-raw-changes.json.gz",
+      "sha256": "c9b56c6c70685732d08593b5d2f61eb6a310cdde6a73cedc1ffd373856a424d8",
+      "bytes": 23
+    },
+    {
+      "source": "data/qa/source-teaching-merge-second-input-check.json",
+      "archive": "data/qa/source-teaching-merge-second-input-check.json.gz",
+      "sha256": "db757ee5dce51965b4a2c204a44c786f3933963674212134d789954205135a40",
+      "bytes": 1301
+    },
+    {
+      "source": "data/qa/source-teaching-release-first-build.log",
+      "archive": "data/qa/source-teaching-release-first-build.log.gz",
+      "sha256": "b7893363ad4380da18b5cff11f9969cde4cf8e2672b29b8881894e8cf2096df9",
+      "bytes": 1561
+    },
+    {
+      "source": "data/qa/source-teaching-release-first-web-types.log",
+      "archive": "data/qa/source-teaching-release-first-web-types.log.gz",
+      "sha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc",
+      "bytes": 68
+    },
+    {
+      "source": "data/qa/source-teaching-release-web-first/.build-context.json",
+      "archive": "data/qa/source-teaching-release-web-first/.build-context.json.gz",
+      "sha256": "a2100eb156f064b9718faf2eface2818598a6e6729c139508bf6d0492951cd5a",
+      "bytes": 63
+    },
+    {
+      "source": "data/qa/source-teaching-release-web-first/.next/BUILD_ID",
+      "archive": "data/qa/source-teaching-release-web-first/.next/BUILD_ID.gz",
+      "sha256": "35bf741d2539f32d7b02e4e7bdc394528d78a632e6a75c92e40b1a096b07579f",
+      "bytes": 21
+    },
+    {
+      "source": "doc/design/generated/design-validation.json",
+      "archive": "doc/design/generated/design-validation.json.gz",
+      "sha256": "3bb075e539b9608bb6ac542bf00cccb66b7638b1e7b11a38885172e58ff13fc8",
+      "bytes": 89574
+    }
+  ]
+}

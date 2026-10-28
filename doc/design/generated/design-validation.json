@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-28T20:39:56.977Z",
-  "sourceRevision": "95715abf997e4d3356cf8f6593238f84e565c6ea",
+  "at": "2026-10-28T21:12:00.754Z",
+  "sourceRevision": "0e7f3c349c2d3fd2b217dd84e285d4399967f7fd",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -560,8 +560,8 @@
       "doc/product/142-guangzhou-chemistry-teaching-validation.md": "9eefaaa8f0de89bccdae4ed6fcaf5bb23bd2a1163d67caaacebd80c90da8372d",
       "doc/product/143-assistant-messages-to-learning-artifacts.md": "3bb667ecbf945226d55191b3e7a719c7fedfd3f86a5bb4babb130711ee6957d0",
       "doc/product/143-chemistry-course-content-correction.md": "8d8a449f7b7e2fded2f29c257740cb8773775400c350372575cdc7a9261c9966",
-      "doc/product/146-conversation-sourced-whiteboard-teaching.md": "78bbdb92e9ede13df05b30ab57a413b7b4c69bd906e9f58f3a61c04327e34dd0",
-      "doc/product/147-conversation-practice-guidance-and-review.md": "b637c9228e7b44d240ccaebf77bce665a58692cccafa776ea483f99c40207a21",
+      "doc/product/146-conversation-sourced-whiteboard-teaching.md": "18029c8bef2a72fb21cdd9a260371be5ff7c612b80aa2280edf76f784d6e1eab",
+      "doc/product/147-conversation-practice-guidance-and-review.md": "0d1106d2cd6408bdc2e8ac44cc08a4c7cb5de543c0984876f11d6705fb49e8b5",
       "packages/contracts/src/ai-models.ts": "c27640b994c433be31aa6f048e727446f86e68252d695732740f5dd652b0df63",
       "packages/contracts/src/ai-teaching-tools.ts": "5063a057c70360db1e3f122ca68cb4632b621e58a2b9163e3c864b71475ed005",
       "packages/contracts/src/answer-draft.ts": "226653dad8a598fb1d4b27fe76e804f63e49a06d1884b586569facbaec8682dd",
@@ -709,7 +709,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 4182,
+    "checked": 4192,
     "missing": []
   },
   "staticContent": {
@@ -780,7 +780,7 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-29/assistant-practice-preflight-first/receipt.json",
+    "receipt": "../evidence/2026-10-29/assistant-practice-preflight-full-api-first/receipt.json",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

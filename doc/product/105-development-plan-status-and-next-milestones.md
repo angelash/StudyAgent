@@ -488,3 +488,6 @@ M1后即开始可用课程的设备与真人试用；真实1/3/7/14日复测与�
 
 
 2026-10-29 146 CUI完整浏览器终态：45文件501旅程/501原始尝试全过，零失败/跳过/flaky/重试，3183输入SHA保持，测试/校验退出0，[原件](../evidence/2026-10-29/assistant-whiteboard-ui-complete-browser-first/receipt.json)。本轮API不包含新D1，不直接复用为D1浏览器结论；D1独立完整1802/74及双库20已经留证。下一步整合/核对代码并重新运行精确远端全站/PG，schema23正式交付仍待，原72/M1～M7及D2～D4整体active。
+
+
+2026-10-29来源教学整合候选：release/source-teaching-20261029以0e7f3c34合并CUI白板与D1预检，两处文档冲突保留双方历史。D1完整1802/74的2613输入在合并后逐SHA不变；320份Web/端到端源的Git内容及规范化字节等于CUI501，6处checkout行尾差异单列；7处API运行JS差异明确，因此不把旧501当新API整站。新独立Web构建4ij4zlQ8IfL5uTVx9PcZu、Web类型和同新API的35条来源/笔记实际浏览器旅程全过，零失败/跳过/重试；3191补充输入保持，清楚标注该补充清单在专项启动后采集。14领域/133功能/444接口、671源码/4192链接/10离线页通过。见[整合原件](../evidence/2026-10-29/source-teaching-integrated-local-first/receipt.json)。下一步精确远端CI重新全站501/完整API/PG并可回退schema23交付；正式仍schema22，D2～D4和原72/M1～M7整体active。

@@ -144,3 +144,8 @@ schema24预计新增私有artifact、本人教学会话、学生assignment三类
 ## 14. D1完整API终态
 
 包含来源白板/笔记共同基线与D1只读预检的首次受管完整API1876项中1802通过/0失败/74环境跳过，2613冻结输入逐SHA保持，测试/验证均退出0，见[完整API原件](../evidence/2026-10-29/assistant-practice-preflight-full-api-first/receipt.json)。实际PG20与SQLite20分别作为专项，不合并计数。没有D2生成/采用/作答或schema24。独立CUI501的Web源码相同但API较旧，不冒充D1完整浏览器；后续整合候选在精确远端CI重新运行全站与PG，本地主目录仍schema22。完整产品退出条件继续active。
+
+
+## 15. 白板/笔记与D1的正式整合候选
+
+0e7f3c34保留当前1802完整API输入，并整合已过CUI501及正式父分支CI的白板/笔记。新Web构建/类型与新API的来源18+笔记17共35专项全过，零失败/跳过/重试；320份Web/e2e Git内容一致，6处行尾规范化差异和7处API运行差异原样留证。3191补充输入保持，但该清单在专项启动后采集，不补称预先冻结。见[整合原件](../evidence/2026-10-29/source-teaching-integrated-local-first/receipt.json)。当前进入整合精确远端CI，不把专项或旧API的501冒充当前整站；正式schema22未变，D2～D4及整体继续。
