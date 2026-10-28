@@ -88,7 +88,7 @@ function SourceCourseWorkspace({identity}:{identity:ReturnType<typeof useSession
       try{const params=new URLSearchParams(window.location.search);setSearch(params.toString());const available=await apiRequest<Array<{id:string;nickname:string;grade:number}>>('/learning/students',{signal:controller.signal});
         if(version!==generation.current)return;setProfiles(available);const selected=params.get('studentId')??params.get('student')??(identity.role==='student'?available[0]?.id??'':'');
         if(selected&&!available.some(profile=>profile.id===selected))throw new Error('这个学习档案当前不可用，请返回学习首页核对。');
-        const nextSubject=['math','chinese','english'].includes(params.get('subject')??'')?params.get('subject') as StudioSubject:'math';setStudentId(selected);setSubject(nextSubject);
+        const nextSubject=['math','chinese','english','chemistry'].includes(params.get('subject')??'')?params.get('subject') as StudioSubject:'math';setStudentId(selected);setSubject(nextSubject);
         const filters=new URLSearchParams(selected?{studentId:selected,subject:nextSubject}:{}),[files,list]=await Promise.all([apiRequest<Material[]>('/learning/source-courses/materials?view=catalog&'+filters,{signal:controller.signal}),apiRequest<SourceCourseSummary[]>('/learning/source-courses?'+filters,{signal:controller.signal})]);
         const course=params.get('course')?await apiRequest<SourceCourseView>('/learning/source-courses/'+encodeURIComponent(params.get('course')!),{signal:controller.signal}):null;
         if(version!==generation.current)return;setMaterials(files);setCourses(list);setRow(course);setCreating(!course&&params.get('new')==='1');setSourceKey(params.get('source')??'');

@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-28T08:39:34.894Z",
+  "buildId": "LBCvtgizX3fdu8huuRgDZ",
+  "checks": [
+    {
+      "url": "http://127.0.0.1:4217/api/ready",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3217/api/ready",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3217/studio?view=courses&subject=chemistry&course=studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+      "status": 200
+    },
+    {
+      "url": "https://study-agent.iepose.cn/api/ready",
+      "status": 200
+    },
+    {
+      "url": "https://study-agent.iepose.cn/studio?view=courses&subject=chemistry&course=studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+      "status": 200
+    },
+    {
+      "url": "https://study-agent.iepose.cn/api/chemistry/catalog",
+      "status": 401
+    }
+  ]
+}

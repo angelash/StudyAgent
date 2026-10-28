@@ -5,8 +5,10 @@ export * from './curriculum';
 export * from './reviews';
 export * from './learning';
 export * from './studio';
+export * from './chemistry';
+export * from './studio-course-request';
 
-export const subjectSchema = z.enum(['chinese', 'math', 'english']);
+export const subjectSchema = z.enum(['chinese', 'math', 'english', 'chemistry']);
 export type Subject = z.infer<typeof subjectSchema>;
 
 export const roleSchema = z.enum(['parent', 'student', 'teacher', 'operator', 'admin']);
@@ -49,11 +51,12 @@ export const studentProfileSchema = z.object({
   id: z.string(),
   userId: z.string(),
   nickname: z.string(),
-  grade: z.number().int().min(1).max(6),
+  grade: z.number().int().min(1).max(9),
   defaultVersionMap: z.object({
     chinese: z.string(),
     math: z.string(),
     english: z.string(),
+    chemistry: z.string().optional(),
   }),
   preferredSessionMinutes: z.number().int().positive(),
 });
@@ -74,7 +77,7 @@ export const textbookVolumeSchema = z.object({
   id: z.string(),
   subject: subjectSchema,
   publisherVersion: z.string(),
-  grade: z.number().int().min(1).max(6),
+  grade: z.number().int().min(1).max(9),
   term: z.enum(['first', 'second']),
   displayName: z.string(),
   sourcePath: z.string(),

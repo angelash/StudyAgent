@@ -101,7 +101,7 @@ export function StudyPlanner({ studentId, subject, plans, atoms, canCreate, open
         <div className="sa-plan-fields"><label>目标日期<input type="date" value={targetDate} min={localDate()} onChange={event => { setTargetDate(event.target.value); setRequestKey(crypto.randomUUID()); }} required /></label>
           <label>首次开始<input type="datetime-local" value={firstSessionAt} onChange={event => { setFirstSessionAt(event.target.value); setRequestKey(crypto.randomUUID()); }} required /></label>
           <label>每次时长<select value={minutesPerDay} onChange={event => { setMinutesPerDay(Number(event.target.value)); setRequestKey(crypto.randomUUID()); }}>{[10, 15, 20, 25, 30, 40, 50, 60].map(value => <option key={value} value={value}>{value} 分钟</option>)}</select></label></div>
-        <footer><span>只使用当前{subject === 'math' ? '数学' : subject === 'chinese' ? '语文' : '英语'}已确认范围内、已发布且有教学依据的知识点；会避开现有日历冲突。</span>
+        <footer><span>只使用当前{subject === 'math' ? '数学' : subject === 'chinese' ? '语文' : subject === 'chemistry' ? '化学' : '英语'}已确认范围内、已发布且有教学依据的知识点；会避开现有日历冲突。</span>
           <button disabled={busy || !goal.trim() || !targetDate || !firstSessionAt}>{busy ? '正在编排…' : '预览学习计划'}</button></footer>
       </> : <>
         <div className="sa-plan-evidence">{preview.evidence.map(item => <article key={item.atomId} data-status={item.status}><strong>{item.atomName}</strong>

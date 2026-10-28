@@ -33,7 +33,7 @@ const externalSourceRegistry: ExternalSourceReference[] = [
   {
     id: 'oer-commons',
     label: 'OER Commons',
-    subjects: ['chinese', 'math', 'english'],
+    subjects: ['chinese', 'math', 'english', 'chemistry'],
     sourceType: 'open_content',
     licenseClass: 'B_OPEN',
     licenseName: 'Varies by resource (openly licensed only)',
@@ -57,7 +57,7 @@ const externalSourceRegistry: ExternalSourceReference[] = [
   {
     id: 'smartedu',
     label: '国家中小学智慧教育平台',
-    subjects: ['chinese', 'math', 'english'],
+    subjects: ['chinese', 'math', 'english', 'chemistry'],
     sourceType: 'public_reference',
     licenseClass: 'C_PUBLIC_REFERENCE_ONLY',
     licenseName: null,
@@ -82,7 +82,7 @@ const externalSourceRegistry: ExternalSourceReference[] = [
   {
     id: 'chinatextbook-coldarchive',
     label: 'ChinaTextbook 本地冷归档',
-    subjects: ['chinese', 'math', 'english'],
+    subjects: ['chinese', 'math', 'english', 'chemistry'],
     sourceType: 'public_reference',
     licenseClass: 'C_PUBLIC_REFERENCE_ONLY',
     licenseName: null,

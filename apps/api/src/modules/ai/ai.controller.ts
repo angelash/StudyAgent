@@ -38,7 +38,7 @@ export class AiController {
     body: {
       userRole: 'student' | 'parent';
       studentId: string | null;
-      subject?: 'math' | 'chinese' | 'english' | null;
+      subject?: 'math' | 'chinese' | 'english' | 'chemistry' | null;
       pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report' | 'classroom' | 'studio';
       contextRefType?: string | null;
       contextRefId?: string | null;

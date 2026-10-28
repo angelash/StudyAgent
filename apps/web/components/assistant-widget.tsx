@@ -9,7 +9,7 @@ import { XiaojiuModelPicker,useXiaojiuModels } from './xiaojiu-model-picker';
 import './assistant-widget.css';
 
 export type AssistantComposerContext={conversation:ReturnType<typeof useAssistantConversation>;models:ReturnType<typeof useXiaojiuModels>;blocked:boolean};
-type AssistantWidgetProps={userRole:'student'|'parent';studentId:string|null;subject?:'math'|'chinese'|'english'|null;
+type AssistantWidgetProps={userRole:'student'|'parent';studentId:string|null;subject?:'math'|'chinese'|'english'|'chemistry'|null;
   pageContext:'student_home'|'assessment'|'mission'|'review'|'weekly_report'|'classroom'|'studio';contextRefType?:'practice'|'diagnostic'|'plan'|'classroom_lecture'|null;
   contextRefId?:string|null;contextItemId?:string|null;title:string;subtitle:string;inline?:boolean;readOnly?:boolean;frozenLectureSessionId?:string;
   renderComposer?:(context:AssistantComposerContext)=>React.ReactNode};

@@ -23,7 +23,7 @@ export default defineConfig({
     ['list'],
     ['json', { outputFile: process.env.E2E_RESULT_FILE ?? 'data/qa/browser-product-acceptance.json' }],
   ],
-  outputDir: 'test-results/browser-product-acceptance',
+  outputDir: process.env.E2E_OUTPUT_DIR ?? 'test-results/browser-product-acceptance',
   use: {
     actionTimeout: 15_000,
     baseURL: webUrl,

@@ -4,7 +4,7 @@ import { KnowledgeAtom } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { QuestionWorkspaceService } from '../question-workspace/question-workspace.service';
 import { assertAcyclic, CurriculumService } from './curriculum.service';
-import { buildFoundationCurriculum, foundationQuestionId, FoundationDefinition } from './foundation-curriculum';
+import { buildActiveCurriculum, foundationQuestionId, FoundationDefinition } from './foundation-curriculum';
 import { gradeResponse } from './scoring';
 import { authoredRelationDefinitionUpdate, authoredRelationReleases, authoredRelationReleaseActor, authoredRelationTargetsCompatible, authoredSeedMeasurementFingerprint, reviewedAuthoredRelationMappings } from './authored-relation-release';
 
@@ -30,7 +30,7 @@ export class FoundationSeedService implements OnModuleInit {
     this.seedAuthoredCurriculum();
   }
   seedAuthoredCurriculum() {
-    const definitions = buildFoundationCurriculum();
+    const definitions = buildActiveCurriculum();
     assertAcyclic(definitions.map((item) => item.atom));
     for (const { atom } of definitions) if (!this.store.find('knowledgeAtoms', { id: atom.id })) {
       // A newly introduced child must not republish an editor's retired parent or prerequisite.

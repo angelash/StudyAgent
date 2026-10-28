@@ -197,7 +197,7 @@ export class AiService {
     contextItemId?: string | null;
   }, user: InMemoryUserAccount): AssistantSession {
     command = validate(z.object({ userRole: z.enum(['student', 'parent']), studentId: z.string().min(1).max(180).nullable(),
-      subject: z.enum(['math', 'chinese', 'english']).nullable().optional(),
+      subject: z.enum(['math', 'chinese', 'english', 'chemistry']).nullable().optional(),
       pageContext: z.enum(['student_home', 'assessment', 'mission', 'review', 'weekly_report', 'classroom', 'studio']),
       contextRefType: z.enum(['diagnostic', 'practice', 'plan', 'classroom_lecture']).nullable().optional(), contextRefId: z.string().min(1).max(180).nullable().optional(),
       contextItemId: z.string().min(1).max(180).nullable().optional(),

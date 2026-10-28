@@ -14,7 +14,7 @@ import { materialVersion } from './source-course-selection';
 import { sourceDigest } from './source-course-content';
 import { StudioMaterialMaintenanceService } from './studio-material-maintenance.service';
 
-const id=z.string().min(1).max(180),key=z.string().min(8).max(180),scope={studentId:id.optional(),subject:z.enum(['math','chinese','english']).optional()};
+const id=z.string().min(1).max(180),key=z.string().min(8).max(180),scope={studentId:id.optional(),subject:z.enum(['math','chinese','english','chemistry']).optional()};
 export type StudioMaterialUploadRecord=StudioMaterialUpload&{requestKey:string;requestHash:string;aliases?:Array<{key:string;hash:string}>;guardianId?:string;accessVersion?:number;filesCollectedAt?:string};
 @Injectable()
 export class StudioMaterialUploadService {

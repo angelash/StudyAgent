@@ -63,3 +63,7 @@ scripts/qa/publish-xiaojiu-model-qualification.cjs text eol=lf
 # Scoped original sidebar artifacts must remain reproducible on Windows and Linux.
 apps/web/app/studio/reference-navigation.generated.css text eol=lf
 apps/web/app/studio/reference-navigation-source.json text eol=lf
+
+# Chemistry acceptance artifacts retain exact original bytes.
+doc/evidence/2026-10-28/chemistry* -text -whitespace
+doc/evidence/2026-10-28/chemistry*/** -text -whitespace

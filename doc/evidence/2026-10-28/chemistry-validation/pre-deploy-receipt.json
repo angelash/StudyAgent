@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-28T04:41:35.088Z",
+  "artifacts": [
+    {
+      "source": "data/qa/chemistry-api-full.json",
+      "file": "chemistry-api-full.json",
+      "bytes": 817602,
+      "sha256": "ec19e369258211a12a179cce80abb4f8dd01ad95f22d897b9197fee2cb29fff2"
+    },
+    {
+      "source": "data/qa/chemistry-api-full.log",
+      "file": "chemistry-api-full.log",
+      "bytes": 721,
+      "sha256": "7fd19418eb44442f5c06a4618b8c9d668d21ea90f841de3aa60611149e4e636c"
+    },
+    {
+      "source": "data/qa/chemistry-api-final-focused.json",
+      "file": "chemistry-api-final-focused.json",
+      "bytes": 5283,
+      "sha256": "fe277e831fe53c21523128f5c5fddde925787bb8d883fe139cbf9274776be9fe"
+    },
+    {
+      "source": "data/qa/chemistry-api-final-focused.log",
+      "file": "chemistry-api-final-focused.log",
+      "bytes": 474,
+      "sha256": "b0fcf66e06e0fa25b1efaabcdcfa860c09256dc16278424f93fb81451e21c88c"
+    },
+    {
+      "source": "data/qa/chemistry-web-final-build.log",
+      "file": "chemistry-web-final-build.log",
+      "bytes": 1559,
+      "sha256": "8d9589289b1ae6e663f6fec105651ff10ffd8a798b331c2fe5360e85e1bbe834"
+    },
+    {
+      "source": "data/qa/chemistry-browser-second.json",
+      "file": "chemistry-browser-second.json",
+      "bytes": 14096,
+      "sha256": "81f69e8190033a87d2636b3d4c581e6942c3a047bac2f461a29c0004a63b9893"
+    }
+  ],
+  "scope": "Full API 1624 passed/65 environment skips before the final grade-context change; final chemistry regression 10 passed after it. Final browser and runtime receipts follow separately."
+}

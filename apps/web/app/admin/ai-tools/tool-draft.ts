@@ -4,7 +4,7 @@ import type { TeachingToolDraft, TeachingToolPurpose, TeachingToolSnapshot } fro
 import { topicCopies, topicStorage } from '../../studio/whiteboards/local-copies';
 
 const format = z.enum(['text', 'json']);
-export const teachingFormSchema = z.object({ source: z.enum(['temporary', 'question_bank']), bankSubject: z.enum(['math', 'chinese', 'english']),
+export const teachingFormSchema = z.object({ source: z.enum(['temporary', 'question_bank']), bankSubject: z.enum(['math', 'chinese', 'english', 'chemistry']),
   questionId: z.string(), title: z.string(), subject: z.string(), stem: z.string(), referenceAnswer: z.string(), referenceFormat: format,
   referenceUnknown: z.boolean(), referenceAnalysis: z.string(), answer: z.string(), answerFormat: format, answerUnknown: z.boolean(),
   originalDocument: z.string(), originalAnswerSchema: z.string(), mediaNotice: z.string().default(''), hintLevel: z.union([z.literal(1), z.literal(2), z.literal(3)]), modelId: z.string() }).strict();
@@ -42,7 +42,7 @@ export function teachingDraft(form: TeachingForm, purpose: TeachingToolPurpose):
 export function formFromSnapshot(snapshot: TeachingToolSnapshot, modelId: string): TeachingForm {
   const form = emptyTeachingForm(), question = snapshot.question;
   form.modelId = modelId;
-  if (['math', 'chinese', 'english'].includes(question.subject)) form.bankSubject = question.subject as TeachingForm['bankSubject'];
+  if (['math', 'chinese', 'english', 'chemistry'].includes(question.subject)) form.bankSubject = question.subject as TeachingForm['bankSubject'];
   if (snapshot.source.kind === 'question_bank') { form.source = 'question_bank'; form.questionId = snapshot.source.questionId; }
   { form.title = snapshot.source.kind === 'temporary' ? snapshot.source.title : '原题草稿 ' + snapshot.source.questionId; form.subject = question.subject; form.stem = question.stem; form.referenceAnalysis = question.referenceAnalysis;
     form.referenceUnknown = question.referenceAnswer === null; form.referenceFormat = typeof question.referenceAnswer === 'string' ? 'text' : 'json';

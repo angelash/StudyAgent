@@ -71,7 +71,7 @@ export function buildStudioStudyPlan(input: BuildPlanInput): StudioStudyPlanPrev
       evidenceBasis: '目标时间内冲突较多，先保留一个明确起点' });
   }
   const plan: StudioStudyPlan = { id: input.id, studentId: input.studentId, subject: input.subject,
-    title: clean(input.title || `到 ${input.targetDate.slice(0, 10)} 的${input.subject === 'math' ? '数学' : input.subject === 'chinese' ? '语文' : '英语'}学习计划`, 180),
+    title: clean(input.title || `到 ${input.targetDate.slice(0, 10)} 的${input.subject === 'math' ? '数学' : input.subject === 'chinese' ? '语文' : input.subject === 'chemistry' ? '化学' : '英语'}学习计划`, 180),
     goal: clean(input.goal, 1000), targetDate: input.targetDate.slice(0, 10), minutesPerDay: minutes,
     status: 'active', sessions, fingerprint: '', revision: 1, createdAt: now, updatedAt: now };
   plan.fingerprint = createHash('sha256').update(JSON.stringify({ studentId: input.studentId, subject: input.subject,

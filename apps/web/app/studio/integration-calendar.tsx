@@ -41,7 +41,7 @@ export function IntegrationCalendar({ user, studentId, subject, value, plans, at
     const start = new Date(Date.now() + 60 * 60_000); start.setMinutes(0, 0, 0);
     if(day){const selected=new Date(day+'T12:00:00');start.setFullYear(selected.getFullYear(),selected.getMonth(),selected.getDate());}
     setPlanStart(new Date(start.getTime() - start.getTimezoneOffset() * 60_000).toISOString().slice(0, 16));
-    setPlanTitle(`${subject === 'math' ? '数学' : subject === 'chinese' ? '语文' : '英语'}学习安排`);
+    setPlanTitle(`${subject === 'math' ? '数学' : subject === 'chinese' ? '语文' : subject === 'chemistry' ? '化学' : '英语'}学习安排`);
     setDialogError(''); setAdding(form === 'sync'); setPlanning(form === 'plan'); setRequestKey(crypto.randomUUID());
   }
   React.useEffect(() => { if (openPlanner && canManage) setManagement(true); }, [openPlanner, canManage]);

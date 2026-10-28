@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-28T10:15:14.005250+00:00",
+  "policy": "Original browser traces preserved in ignored local data/qa/chemistry-archive-private-20261028; published copies redact authentication and test passwords. Evidence assertions and screenshots are unchanged.",
+  "traces": [
+    {
+      "path": "doc/evidence/2026-10-28/chemistry-content-correction-first/chemistry-chemistry-a-chem-4f30e-not-override-course-content/trace.zip",
+      "originalSha256": "8e5592d8d675f42494b99387c34d4997a4cd7d23dcd0fd4535ef87d3c2fe6db3",
+      "publishedSha256": "1653b36bbd67b41ea0bd3b6cd39a41b4112f2015714047554c44603ea01cd68c",
+      "redactedValues": 4,
+      "modifiedEntries": [
+        "1-trace.network",
+        "resources/06bafea77b3b45cc023abeea01d480069d7a7b55.json"
+      ]
+    },
+    {
+      "path": "doc/evidence/2026-10-28/chemistry-content-correction-first/chemistry-chemistry-each-u-7de90-s-in-the-rendered-classroom/trace.zip",
+      "originalSha256": "84e48f63258f9efbe8e0a15143929e71167bfe2cd2e5c124122fde8df64f66b8",
+      "publishedSha256": "16fae05e3d22b28594809855a7be420223ac3e20145214bc6bea9a4d140f0f88",
+      "redactedValues": 4,
+      "modifiedEntries": [
+        "1-trace.network",
+        "resources/d91807c992780a55cd938bcc5feec45dfdfe9cf6.json"
+      ]
+    },
+    {
+      "path": "doc/evidence/2026-10-28/chemistry-content-correction-first/chromium-buffer-failure/trace.zip",
+      "originalSha256": "2fedcb0f000c241b7c70ec64a59e0cfcce87560c7d7f883df80e09dde99280f1",
+      "publishedSha256": "04340de83a7538e7884be8afc900d329046060ae27e40e7ceb8d616da5d991fa",
+      "redactedValues": 0,
+      "modifiedEntries": []
+    },
+    {
+      "path": "doc/evidence/2026-10-28/chemistry-content-correction-first/mobile-navigation-failure/trace.zip",
+      "originalSha256": "ba2c39c37389b3bd2b28d7315a12cd450aab79b2f49b7ee7ed52348dfb9c0054",
+      "publishedSha256": "d3a81b20f8d9a47e436e0ad1af1a048d50ed72afed41a0779f3cdfaf9eb5e872",
+      "redactedValues": 4,
+      "modifiedEntries": [
+        "1-trace.network",
+        "resources/0e8e3388ac7a67d1a2956345e779575895e51485.json"
+      ]
+    },
+    {
+      "path": "doc/evidence/2026-10-28/chemistry-course-library-first/browser-product-acceptance/chemistry-chemistry-family-ad663-d-old-links-keep-their-unit/trace.zip",
+      "originalSha256": "c4f5c08c5d1ed555df0e28a20a33421fe16dd58ac2a410958cbb61a583abb6b7",
+      "publishedSha256": "b3f3508549d5e32c7c28c23eae636ce3efa32a42cbe812dca3a87afa10df054a",
+      "redactedValues": 4,
+      "modifiedEntries": [
+        "1-trace.network",
+        "resources/fad60fdd23553f3ff7815eadb1e41e53b582a37e.json"
+      ]
+    },
+    {
+      "path": "doc/evidence/2026-10-28/chemistry-first-browser/3-trace.zip",
+      "originalSha256": "9721969ead51768d33552b7f7f2a974925af3e6972be56460ab130c4a20a0929",
+      "publishedSha256": "c720a690dc5bf4aade705abe3f5e521fa1572908038c0fcd1690afab231ca334",
+      "redactedValues": 4,
+      "modifiedEntries": [
+        "1-trace.network",
+        "resources/1f34377fe59ba06454e5d9ae4d7e04af9bfb800e.json"
+      ]
+    },
+    {
+      "path": "doc/evidence/2026-10-28/chemistry-first-browser/6-trace.zip",
+      "originalSha256": "e6ac9c3cec0d7051c0e7d8ed96251ecd354e44b8e730a1fa5952addc565f33e7",
+      "publishedSha256": "dc65fdfc6dc3f2eebba62fe676cd1fc28024e40ef66b390bddfb01ef9662a811",
+      "redactedValues": 4,
+      "modifiedEntries": [
+        "1-trace.network",
+        "resources/38e9829a2186dd5a7cab7bed9fbe9fec1cc52480.json"
+      ]
+    }
+  ]
+}

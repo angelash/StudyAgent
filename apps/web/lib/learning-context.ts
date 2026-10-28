@@ -2,7 +2,7 @@ import type { Subject } from '@study-agent/contracts';
 
 export const learningContextKey = 'study_agent_learning_context_v1';
 export type LearningContext = { studentId?: string; subject: Subject };
-const subjects: string[] = ['math', 'chinese', 'english'];
+const subjects: string[] = ['math', 'chinese', 'english', 'chemistry'];
 
 export function readLearningContext(actorId: string, search: string): LearningContext {
   const params = new URLSearchParams(search);
@@ -25,7 +25,7 @@ export function clearLearningContext() {
 }
 
 /** Adapt the existing route conventions; never accept an external destination. */
-export function learningContextHref(route: '/learn' | '/studio' | '/parent/dashboard' | '/student/assessment' | '/student/today' | '/library', context?: LearningContext) {
+export function learningContextHref(route: '/learn' | '/studio' | '/parent/dashboard' | '/student/assessment' | '/student/today' | '/library' | '/chemistry', context?: LearningContext) {
   if (!context) return route;
   const params = new URLSearchParams({ subject: context.subject });
   if (context.studentId) params.set(route === '/learn' || route === '/studio' ? 'student' : 'studentId', context.studentId);
