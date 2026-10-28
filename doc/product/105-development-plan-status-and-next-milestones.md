@@ -474,3 +474,6 @@ M1后即开始可用课程的设备与真人试用；真实1/3/7/14日复测与�
 
 
 2026-10-29 143 D实施前接续：已基于实际来源、eligibleMeasurements、诊断蓝图、PracticeSession、GuidanceService及内部日历代码归档[147具体方案](147-conversation-practice-guidance-and-review.md)，分D1只读预检、D2教学候选/首答曝光、D3真实报告指导和D4冲突排期/到期复测。当前尚未实现新端点/schema24，不增加443接口或原72完成数；正在运行的来源候选源码/编译继续冻结。
+
+
+2026-10-29 147 D1本地预检：7cf76c56具体设计后，新只读practice/preflight接通；SQLite与实际PG各18通过/零跳过，10新预检+8原来源兼容不累加，8输入SHA保持，全业务集合前后SHA与零模型调用验证通过。首轮9/1独立会话测试准备错误和零测试快照cwd错误原件保留。已接AI-13及PG CI步骤，完整门禁/远端/正式交付仍待；无D2出题/作答UI、无schema24/正式证据/计划/日历写入。见[147本层](147-conversation-practice-guidance-and-review.md#11-d1只读预检的本地结果)及[原件](../evidence/2026-10-29/assistant-practice-preflight-first/receipt.json)。独立CUI完整门禁不包含本D1，整体active。

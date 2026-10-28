@@ -79,6 +79,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^learning\/practice\/[^/]+\/(responses|complete)$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/hint$/,
     /^learning\/feedback$/, /^ai\/assistant\/sessions(\/[^/]+\/(messages|turns(\/[^/]+\/(cancel|retry))?))?$/, /^learning\/media(\/[^/]+\/(complete|cancel))?$/, /^gesp\/(code|probe)-submissions$/, /^gesp\/hints$/,
     /^ai\/assistant\/sessions\/[^/]+\/artifacts\/preflight$/,
+    /^ai\/assistant\/sessions\/[^/]+\/artifacts\/practice\/preflight$/,
     /^ai\/assistant\/sessions\/[^/]+\/artifacts\/whiteboards(\/preflight)?$/,
     /^ai\/assistant\/sessions\/[^/]+\/artifacts\/notes(\/[^/]+\/confirm)?$/,
     /^library\/practice\/sessions\/[^/]+\/items\/[^/]+\/verification-preview$/,

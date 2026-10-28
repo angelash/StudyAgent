@@ -1,0 +1,233 @@
+{
+  "at": "2026-10-28T20:33:47.646937+00:00",
+  "passed": true,
+  "designBeforeImplementation": "7cf76c56",
+  "runs": {
+    "practice-preflight-sqlite-first": {
+      "numPassedTests": 9,
+      "numFailedTests": 1,
+      "numPendingTests": 0,
+      "success": false
+    },
+    "practice-preflight-sqlite-second": {
+      "numPassedTests": 18,
+      "numFailedTests": 0,
+      "numPendingTests": 0,
+      "success": true
+    },
+    "practice-preflight-postgres-first": {
+      "numPassedTests": 18,
+      "numFailedTests": 0,
+      "numPendingTests": 0,
+      "success": true
+    }
+  },
+  "finalInputCheck": {
+    "checked": 8,
+    "changed": []
+  },
+  "implemented": [
+    "Strict read-only source-practice preflight, complete source and explicit adult/student atomic targets.",
+    "Current source/target authority, grade and subject separation, explicit audience transfer, old-source confirmation and active assessment fences.",
+    "Reviewed candidate counts only, canonical family and original diagnostic/practice/paper exposure, content/definition/scope/identity fingerprints.",
+    "Actual HTTP tests hash every persisted business collection before/after; no model calls or new practice/evidence/tasks/plans/calendar objects."
+  ],
+  "failuresRetained": [
+    "First snapshot preparation used apps/api cwd and failed before any test; root correction logged.",
+    "First SQLite10:9passed/1 fixture preparation failure: independent session incorrectly bound a child/subject, rejected400. Second uses existing real course context; original strict input/no-write assertions now execute."
+  ],
+  "limitations": [
+    "D1only:no practice generation/adoption/answering UI, no schema24 migration.",
+    "No fresh complete API/browser/precise remote CI or production delivery for D1; separate CUI1790 and501 gate excludes this implementation.",
+    "SQLite18 andPG18 overlap; not a combined36-case run.",
+    "No live provider call, teacher review, pixel/audio/device or real learning outcome claim; whole goal active."
+  ],
+  "files": [
+    {
+      "source": "data/qa/practice-preflight-first-build.log",
+      "archive": "data/qa/practice-preflight-first-build.log.gz",
+      "sha256": "9f12bdef66ebb286314ea10e02f3c423b25bbc2a3786fbc5685a01e4b494e82f",
+      "bytes": 1030
+    },
+    {
+      "source": "data/qa/practice-preflight-first-inputs/apps/api/src/common/auth.guard.ts",
+      "archive": "data/qa/practice-preflight-first-inputs/apps/api/src/common/auth.guard.ts.gz",
+      "sha256": "6f8ef7db47561687d3ac50d55854d1c17b6aacac578023714ff00109bcb391b4",
+      "bytes": 10445
+    },
+    {
+      "source": "data/qa/practice-preflight-first-inputs/apps/api/src/modules/learning/assistant-practice-preflight.controller.ts",
+      "archive": "data/qa/practice-preflight-first-inputs/apps/api/src/modules/learning/assistant-practice-preflight.controller.ts.gz",
+      "sha256": "cb917e484d0d4be5da9201f27658ea8047f660c10dac4f09b68dd8314a60570f",
+      "bytes": 684
+    },
+    {
+      "source": "data/qa/practice-preflight-first-inputs/apps/api/src/modules/learning/assistant-practice-preflight.integration.test.ts",
+      "archive": "data/qa/practice-preflight-first-inputs/apps/api/src/modules/learning/assistant-practice-preflight.integration.test.ts.gz",
+      "sha256": "6e96f1eae088827e285f449cbbead1e16cbd33b3126184948493087bba33ae79",
+      "bytes": 18629
+    },
+    {
+      "source": "data/qa/practice-preflight-first-inputs/apps/api/src/modules/learning/assistant-practice-preflight.service.ts",
+      "archive": "data/qa/practice-preflight-first-inputs/apps/api/src/modules/learning/assistant-practice-preflight.service.ts.gz",
+      "sha256": "db4a064f6436afef248c2758a033ec8d04998e6dea92b81eaf349db422f3e9b2",
+      "bytes": 8862
+    },
+    {
+      "source": "data/qa/practice-preflight-first-inputs/apps/api/src/modules/learning/learning.module.ts",
+      "archive": "data/qa/practice-preflight-first-inputs/apps/api/src/modules/learning/learning.module.ts.gz",
+      "sha256": "fdb592719d9ada813e2e0b9f0fa6c749864eeeff24807651bc3cb44263b5a281",
+      "bytes": 6972
+    },
+    {
+      "source": "data/qa/practice-preflight-first-inputs/manifest.json",
+      "archive": "data/qa/practice-preflight-first-inputs/manifest.json.gz",
+      "sha256": "ffccb94f9ea82d4a331971cf8ff41675bd2818d81ef39d7a551b8f848d7bf5ba",
+      "bytes": 1321
+    },
+    {
+      "source": "data/qa/practice-preflight-first-inputs/packages/contracts/src/assistant-practice.ts",
+      "archive": "data/qa/practice-preflight-first-inputs/packages/contracts/src/assistant-practice.ts.gz",
+      "sha256": "ecb55f274920e8e55e43532a7233bce3654b8dc347156a975f5286f99ff2c181",
+      "bytes": 2180
+    },
+    {
+      "source": "data/qa/practice-preflight-first-inputs/packages/contracts/src/index.ts",
+      "archive": "data/qa/practice-preflight-first-inputs/packages/contracts/src/index.ts.gz",
+      "sha256": "d54a8d2fae60fc313c571bcd68f0fe81a7aae0d8a612b4ba69873cfe2eaf022a",
+      "bytes": 25131
+    },
+    {
+      "source": "data/qa/practice-preflight-first-inputs-verification.json",
+      "archive": "data/qa/practice-preflight-first-inputs-verification.json.gz",
+      "sha256": "f00f15228929b45830a937d58da9d976851ee89c6a390ca04d81cb71cf32d810",
+      "bytes": 40
+    },
+    {
+      "source": "data/qa/practice-preflight-first-types.log",
+      "archive": "data/qa/practice-preflight-first-types.log.gz",
+      "sha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "bytes": 68
+    },
+    {
+      "source": "data/qa/practice-preflight-postgres-first.json",
+      "archive": "data/qa/practice-preflight-postgres-first.json.gz",
+      "sha256": "80ad4be700bf0f27f0c9ecbc19a8610d3383bcb1152755c288ff462bfbb92d38",
+      "bytes": 9834
+    },
+    {
+      "source": "data/qa/practice-preflight-postgres-first.log",
+      "archive": "data/qa/practice-preflight-postgres-first.log.gz",
+      "sha256": "71b04ecf5716122ff0ad79ff4f07d45582e9d687250d5d9e229d031f6679a6da",
+      "bytes": 2219
+    },
+    {
+      "source": "data/qa/practice-preflight-preparation-first.log",
+      "archive": "data/qa/practice-preflight-preparation-first.log.gz",
+      "sha256": "d2af47d03a2d246663e9f253524b37555fe0de8b486e0ac8a52ee6eaecb6fef2",
+      "bytes": 172
+    },
+    {
+      "source": "data/qa/practice-preflight-second-build.log",
+      "archive": "data/qa/practice-preflight-second-build.log.gz",
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "bytes": 66
+    },
+    {
+      "source": "data/qa/practice-preflight-second-inputs/apps/api/src/common/auth.guard.ts",
+      "archive": "data/qa/practice-preflight-second-inputs/apps/api/src/common/auth.guard.ts.gz",
+      "sha256": "6f8ef7db47561687d3ac50d55854d1c17b6aacac578023714ff00109bcb391b4",
+      "bytes": 10445
+    },
+    {
+      "source": "data/qa/practice-preflight-second-inputs/apps/api/src/modules/learning/assistant-practice-preflight.controller.ts",
+      "archive": "data/qa/practice-preflight-second-inputs/apps/api/src/modules/learning/assistant-practice-preflight.controller.ts.gz",
+      "sha256": "cb917e484d0d4be5da9201f27658ea8047f660c10dac4f09b68dd8314a60570f",
+      "bytes": 684
+    },
+    {
+      "source": "data/qa/practice-preflight-second-inputs/apps/api/src/modules/learning/assistant-practice-preflight.integration.test.ts",
+      "archive": "data/qa/practice-preflight-second-inputs/apps/api/src/modules/learning/assistant-practice-preflight.integration.test.ts.gz",
+      "sha256": "a1c3994e4a3d8b412d8573ce6f12be8e674fe79c1747f3bdd1ba57e6828509c1",
+      "bytes": 18515
+    },
+    {
+      "source": "data/qa/practice-preflight-second-inputs/apps/api/src/modules/learning/assistant-practice-preflight.service.ts",
+      "archive": "data/qa/practice-preflight-second-inputs/apps/api/src/modules/learning/assistant-practice-preflight.service.ts.gz",
+      "sha256": "db4a064f6436afef248c2758a033ec8d04998e6dea92b81eaf349db422f3e9b2",
+      "bytes": 8862
+    },
+    {
+      "source": "data/qa/practice-preflight-second-inputs/apps/api/src/modules/learning/learning.module.ts",
+      "archive": "data/qa/practice-preflight-second-inputs/apps/api/src/modules/learning/learning.module.ts.gz",
+      "sha256": "fdb592719d9ada813e2e0b9f0fa6c749864eeeff24807651bc3cb44263b5a281",
+      "bytes": 6972
+    },
+    {
+      "source": "data/qa/practice-preflight-second-inputs/manifest.json",
+      "archive": "data/qa/practice-preflight-second-inputs/manifest.json.gz",
+      "sha256": "75cc40304c3c181d3a597dfc92a262ef2a93bd4632e8c78f3c14c360d871bd18",
+      "bytes": 1493
+    },
+    {
+      "source": "data/qa/practice-preflight-second-inputs/packages/contracts/src/assistant-practice.ts",
+      "archive": "data/qa/practice-preflight-second-inputs/packages/contracts/src/assistant-practice.ts.gz",
+      "sha256": "ecb55f274920e8e55e43532a7233bce3654b8dc347156a975f5286f99ff2c181",
+      "bytes": 2180
+    },
+    {
+      "source": "data/qa/practice-preflight-second-inputs/packages/contracts/src/index.ts",
+      "archive": "data/qa/practice-preflight-second-inputs/packages/contracts/src/index.ts.gz",
+      "sha256": "d54a8d2fae60fc313c571bcd68f0fe81a7aae0d8a612b4ba69873cfe2eaf022a",
+      "bytes": 25131
+    },
+    {
+      "source": "data/qa/practice-preflight-second-inputs/scripts/qa/run-assistant-practice-preflight.cjs",
+      "archive": "data/qa/practice-preflight-second-inputs/scripts/qa/run-assistant-practice-preflight.cjs.gz",
+      "sha256": "9d16050e337e603552b0dbed7abee311505a57882ce47b43be40ad5ead909f44",
+      "bytes": 1730
+    },
+    {
+      "source": "data/qa/practice-preflight-second-inputs-verification.json",
+      "archive": "data/qa/practice-preflight-second-inputs-verification.json.gz",
+      "sha256": "96e5b669e4c4c5523256fe421813358419eec07ce4c9f810c7255f32dd2af11a",
+      "bytes": 40
+    },
+    {
+      "source": "data/qa/practice-preflight-second-types.log",
+      "archive": "data/qa/practice-preflight-second-types.log.gz",
+      "sha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "bytes": 68
+    },
+    {
+      "source": "data/qa/practice-preflight-sqlite-first.json",
+      "archive": "data/qa/practice-preflight-sqlite-first.json.gz",
+      "sha256": "7d48a11fe335ea03cb76f4c495930d6aa8c3371db51fed671ce9175735dd8abf",
+      "bytes": 6220
+    },
+    {
+      "source": "data/qa/practice-preflight-sqlite-first.log",
+      "archive": "data/qa/practice-preflight-sqlite-first.log.gz",
+      "sha256": "ecea61bb8b53a406176b507a62f7c31b6f5ff3e600b1bb49438cd469a3376f18",
+      "bytes": 3414
+    },
+    {
+      "source": "data/qa/practice-preflight-sqlite-second.json",
+      "archive": "data/qa/practice-preflight-sqlite-second.json.gz",
+      "sha256": "4103e7444f87ac603d3356540d960085dea7ad9574841db6950a8d139a165dac",
+      "bytes": 9839
+    },
+    {
+      "source": "data/qa/practice-preflight-sqlite-second.log",
+      "archive": "data/qa/practice-preflight-sqlite-second.log.gz",
+      "sha256": "6daf083aae023f791a7389654a79d33e0b19cb1eb0bd216113a942c9ea2770ad",
+      "bytes": 2217
+    },
+    {
+      "source": "data/qa/practice-preflight-third-build.log",
+      "archive": "data/qa/practice-preflight-third-build.log.gz",
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "bytes": 66
+    }
+  ]
+}
