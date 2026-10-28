@@ -1,0 +1,27 @@
+{
+  "scope": "Owned anonymous before-implementation HTTP scenario. No production records or real model calls.",
+  "passed": true,
+  "missingCapabilityConfirmed": true,
+  "httpStatus": 404,
+  "message": "Cannot POST /api/ai/assistant/sessions/assistant_session_3b06e9d3-2259-457c-8994-a73e57a76517/artifacts/preflight",
+  "originalMessageUnchanged": true,
+  "sourceRevision": "6181d45ca56435ce398b430e1606d90907abd327",
+  "modelCalls": 0,
+  "files": {
+    "data/qa/artifact143-preflight-before.json": {
+      "bytes": 439,
+      "sha256": "500af95b97b7cdc1fde36cc3a5645b12c40103cc6175f5892af44b653e9d7ea8",
+      "gzipSha256": "1f1d2f61593ceaad048669f0dd3b7ea9ef7ede3995b6c4dc435aa7ac27ca0c23"
+    },
+    "data/qa/artifact143-preflight-before.log": {
+      "bytes": 407,
+      "sha256": "005f706345518ea23a7e5c7faf3a050a0b205acf839fa354e5e1280c5e82aec2",
+      "gzipSha256": "886b12f2441fb04e79fab76695e4e7c307532de3e64030d212ec1f51e3ca79f0"
+    },
+    "data/qa/artifact143-preflight-before.cjs": {
+      "bytes": 3325,
+      "sha256": "a2dc40dc660697cdec3865c42b97a6018ca29ebdd585a6ff98580b1aa4a5b42b",
+      "gzipSha256": "a010f52a0decd1d608324d9837d810f212057e80db9cf39fe8c26b185e03c21e"
+    }
+  }
+}
