@@ -115,3 +115,23 @@ C1已实现只读preflight接口，复用当前来源服务而非前端回传正
 首轮编译漏掉既有teacher/operator角色，已改引用UserRole。HTTP首轮5通过/1失败是测试使用不合法dashboard上下文，修为实际课程会话后6通过；增加成人讲座与另一共享监护人后PG首轮7/1因测试访问不存在的学生详情路由，修为真实课程上下文授权验证后PG8全过。原编译、失败报告及对应测试源码均分别归档；6项中间通过未声称保留完整当时源码。当前八项源码及API编译原件单独留证。
 
 C2持久生成/复核/采用、schema23、图片声音/播放器入口及C3完整界面仍未实现；创建、列表、创建回执仍404。没有将只读C1视为完整白板链路、主目录交付或全产品完成。当前笔记整站门禁继续独立工作区运行，未修改其冻结输入和正式主目录。
+
+## 13. C2持久生成的实施前落点与旧读取器保护
+
+在36e0dc27核对当前真实实现后，C2采用下列具体扩展；本节提交先于C2业务代码。C1源码/报告已独立归档，当前笔记整站运行器属于另一工作区，不能修改其冻结输入。
+
+- `PreparedTopicWhiteboard`形成显式v1/assistant-topic-whiteboard-v1联合。来源分支的input仍有短显示标题、objective与所选模型，但完整原文只来自source.origin/context，另存sourceFingerprint与原选择/旧来源确认。audience新增服务器派生assistant类别，targetAtomIds固定为空，不伪装成adult或套用普通student已学范围。
+- `AssistantArtifactService`提取内部只读来源读取：本人/原范围/可信引用始终核查；已有HTTP预检继续在学生评测中阻断。新的白板权限适配器分别处理历史读取与当前生成/编辑/采用/图片/声音写入，稳定源指纹与当前资格分开核对。
+- `AssistantWhiteboardService`负责重建完整Prepared、原来源读取与写入资格，不反向依赖TopicWhiteboardService。创建/列表/创建receipt由现有TopicWhiteboardService与来源控制器接入，事务内共用原draft/task/prepare回执；原请求键在同一owner中仍唯一，跨来源会话不得读回。source endpoint继续严格拒绝前端正文、年级与studentId。
+- 原纯授权函数保留v1入口；遇到来源协议且没有来源校验适配器时明确拒绝。正文worker和heartbeat/checkpoint、全部编辑/采用、图片上下文/worker/读取、旁白及发布读取逐一接入来源适配器；原登录/绑定/学习码授权摘要继续冻结。
+- 每幕sourceMap固定为messageIds、referenceKeys、status=sourced或supplementary、explanation。引用必须属于本幕所标消息的已保存可信引用；sourced至少一条原消息，新增解释明确标记。普通v1输入不允许sourceMap。来源生成及复核使用独立扩展JSON Schema，原始稿/修订稿/人工稿及映射一同参与指纹和版本历史。
+- 采用的来源白板保存privateToCreator标记与原draft关系；发布读取先核对创建者，再检查原来源可读性。通用白板scene投影逐项去除sourceMap，私有原文只走本人source接口；不把全私聊复制到公开origin。原作者账户删除必须清除其关联孩子的私人白板，不能按共享教学匿名保留。portableRecords对其他监护人过滤来源白板；本人导出包含完整origin与编辑稿，去掉授权与请求内部字段。
+
+核对发现：v22的DomainDatabase.open依靠study_restore_guard.state='ready'拒绝未完成恢复，但没有未知schema的独立启动拒绝。仅写schema23编号不能证明旧程序拒绝读取，更不能允许v22与新来源私有记录混跑。C2因此增加实际可验证的最低读取版本保护：
+
+1. 先保留当前完整v22 API编译、备份工具及SHA作为旧读取器独立测试原件，不重建共享依赖。
+2. schema23迁移保持原集合和索引，在同一迁移事务将既有guard从ready改为ready-schema23；新程序支持ready与ready-schema23，恢复中等状态仍拒绝，并在迁移前拒绝未来schema24。v22原代码会因非ready状态拒绝打开；必须用实际保存的旧读取器证明其拒绝且不改原记录，不能用新代码假扮旧版本。
+3. SQLite与PG备份支持23及ready-schema23，原生恢复最终提交依据实际schema恢复正确reader guard；21/22旧备份仍先恢复ready，再由新程序迁移。事务中断或复制失败不能提前写ready-schema23。对应未来版本测试改为24，旧22→23与旧21→22回滚语义分别保留，不能全局替换常量。
+4. 所有旧v22实例停止并核对监听后才迁移，禁止旧实例继续持有旧内存快照。schema23运行后，回退工具不能只恢复v22编译而继续使用23库；需要明确兼容读取器或受控一致数据恢复与最新删除账本，保留升级后的新记录与失败产物，不做无声数据降级。
+
+C2先做双库当前/旧读取器保护、完整创建/原请求、冻结worker生成/复核、编辑/采用和私有读取，再做图片/声音写入竞争、原生恢复及隐私矩阵。C3再接原助教选择面板/模型选型、独立草稿/恢复、完整来源及播放器往返；C2的接口结果不能代替完整教学界面或146整体完成。
