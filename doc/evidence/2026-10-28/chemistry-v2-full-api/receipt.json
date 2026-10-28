@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "sourceRevision": "509109b7b27cac841a5a68a87d5c857903d702de",
+  "scope": "Fresh complete API regression of c457 tutorial plus course sources and143 A, with independent owned fixtures. No note-B implementation or production changes in this workspace.",
+  "tests": {
+    "passed": 1728,
+    "failed": 0,
+    "environmentSkipped": 66,
+    "durationSeconds": 793.32
+  },
+  "controls": {
+    "checked": 3253,
+    "changed": []
+  },
+  "limits": [
+    "Includes source/API/contracts/config, compiled and browser fixture hashes; no full environment or credential snapshot.",
+    "Full browser remains active on the same immutable candidate. Exact896457e CI failed a later primary-package gate after its API tests; the failure is preserved and is not a passed whole CI.",
+    "No complete product, human measurement, teacher, textbook, pixel/DPR/audio or live model parity claim."
+  ],
+  "files": {
+    "data/qa/chemistry-v2-full-api-first.json": {
+      "sha256": "b699b3315b049cfbeed1d7d99d7388e0e3d094b4bf961107d2d5814508328740",
+      "bytes": 868463,
+      "gzipSha256": "a65bffade62743ff2db8aac68991e0fb8a53affe3365d3814933fb6f3c4dffff"
+    },
+    "data/qa/chemistry-v2-full-api-first.log": {
+      "sha256": "167f6089bf848c8a01001dd7c18c9defbb382023500a00b8c939106d392bb534",
+      "bytes": 73584,
+      "gzipSha256": "a4b1fcb33214a023242e43b712662fbbb50c1e99b0f1735487d34785995f3509"
+    },
+    "data/qa/chemistry-v2-full-first-inputs.json": {
+      "sha256": "620f3bbb9af1b07ddfc5c8ceae57f8a232e80ddee1f4387ae31f83d7894c33cf",
+      "bytes": 636679,
+      "gzipSha256": "7dc247e259617d53cc8d7da2ad9010ba2b0e1de049745f6bf28f729bb6f516a1"
+    },
+    "data/qa/chemistry-v2-full-api-inputs-verification.log": {
+      "sha256": "6f0c43ca94436a54b6c855ef1c3a50e597649b81aae844dd10198ef539fed515",
+      "bytes": 34,
+      "gzipSha256": "4eb755f17d3053b26de8964c283c12a3686b35fc85ea59eba5e3102f87a92ae8"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "passed": false,
+  "runId": 40694625161,
+  "sourceRevision": "896457e1680a366729f315c858f35f9f2b5961a6",
+  "jobs": {
+    "application": "failure",
+    "postgres": "success",
+    "browser": "cancelled"
+  },
+  "fullApi": {
+    "passed": 1720,
+    "failed": 0,
+    "environmentSkipped": 74
+  },
+  "browser": {
+    "originalAttempts": 466,
+    "passed": 466,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0,
+    "stats": {
+      "startTime": "2026-10-28T13:17:19.388Z",
+      "duration": 2533137.029,
+      "expected": 466,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "actualFailures": [
+    "Application later fails old primary package card count286!=258; local strict correction verifies258 primary cards and unchanged28 chemistry atoms.",
+    "Browser check annotation explicitly: The job has exceeded the maximum execution time of45m0s. All466 original tests passed before the job budget expired; job remains cancelled and whole CI remains failure. No run cancellation command issued."
+  ],
+  "limits": [
+    "PostgreSQL groups overlap and are not added into another global count.",
+    "Current candidate needs a new exact CI after the gate/timeout repairs; no all-green CI or runtime delivery claim."
+  ],
+  "files": {
+    "data/qa/chemistry-v2-exact-ci-first-metadata.json": {
+      "sha256": "d29333a7449a44898499032d480628e599d610df216124c7de6f7b3be86c1d89",
+      "bytes": 21615,
+      "gzipSha256": "464fed8e4881995a3894d58f27ad56e23b89905425172fcf753c0acb6aeb2c3f"
+    },
+    "data/qa/chemistry-v2-exact-ci-first-all-jobs.log": {
+      "sha256": "771e461d1615d28a6feb1e57695b7eb263766bed024eb2330c0d701cec80eba2",
+      "bytes": 1065804,
+      "gzipSha256": "b6e483445459c93fe670913d694dc20c0bae0eeaa79333fe45ae0626c154cbf9"
+    },
+    "data/qa/chemistry-v2-exact-ci-first-browser-annotations.json": {
+      "sha256": "e94445a28ecc1f5b7a247ff3a65ef397b6201be1f27707bf8c00790f07d366b1",
+      "bytes": 491,
+      "gzipSha256": "ade9bc6ea8e9c4bf0f1299303eb387cbb0daf0804e47acfb303dac0554c6de30"
+    },
+    "data/qa/chemistry-v2-exact-ci-first-artifacts.json": {
+      "sha256": "daa5cbe6736c0a948b716f17682b8e8b46d19a1d50801cf42fc74ae0092fecf4",
+      "bytes": 99,
+      "gzipSha256": "08febf7ae8d7c5e829ce7a1b95f8a595970ef4e6f219d52c4a672b39246a9e80"
+    },
+    "data/qa/chemistry-v2-exact-ci-first-browser-artifact/data/qa/source-course-full-browser.json": {
+      "sha256": "dd0eb48aded5ca022aa68b7ef7ef72a5d9340eb4ed5b7dfa4b1bddbee4c67b90",
+      "bytes": 522984,
+      "gzipSha256": "685f82e95058bb432559697b22d6129a6c6cd5afd4ba0246040c41705b6fdcf5"
+    }
+  }
+}
