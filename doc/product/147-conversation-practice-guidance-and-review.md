@@ -229,3 +229,21 @@ PracticeSession新增origin=assistant_artifact与assistantAssignmentId/assistant
 b436ebb1先提交具体协议与原生bank题型边界，再实现最多6次残量增广的联合选题。每点两种不同canonicalFamily、全局questionId唯一；歧义映射及真实已见题/同点结构排除；同键同输入的候选重排保持结果，未入选映射替换或曝光身份变化也改变指纹。联合覆盖不足只返回明确缺口，不发布半份题组。
 
 首轮10/10专项、零失败/跳过/重试；8源码和2编译输入前后SHA保持，API构建与全类型通过。原D2b正文62独立留证，不把两轮相加成单轮72。见[联合选题原件](../evidence/2026-10-29/assistant-practice-bank-selection-first/receipt.json)。本层不新增API、数据库集合、任务、schema24或正式学习证据；调用方仍须从当前真实eligibleMeasurements/canonicalFamily/曝光重建输入并重读授权。原生题目/评分快照、候选/assignment及真实学习码开始/作答继续在schema23实际交付后实施。
+
+## 21. schema24私人审核题候选的首个持久批次
+
+schema23已按15.2实际交付，独立practice-content分支已合入5e9bea13交付记录。下面开始第18节D2a的持久实现；正式主目录保持schema23，schema24全部D2a作答/恢复验收完成前不发布。当前main归档提交CI40779065252继续独立运行，不取消或再推送覆盖。
+
+首批开放审核题候选的创建/分页/原创建回执/本人完整读取/教学说明编辑，不开放安排或作答空壳。新contracts/assistant-reviewed-practice.ts定义严格创建输入：D1完整selection/objective/两确认/明确student受众、contentMode=reviewed_bank、preflightFingerprint及requestKey；adult审核bank拒绝，成人后续走AI本人自练。编辑仅title/instructions和expectedRevision/contentFingerprint/requestKey，不能修改冻结原题、答案、原目标或原objective。列表复用有界pageSize及来源/本人绑定游标；原回执带artifactId/操作/revision/contentFingerprint/at，不携带私聊全文。
+
+assistant-practice-record.ts的首个记录协议assistant-practice-artifact-v1固定contentMode=reviewed_bank、ownerUserId/ownerRole、sourceSessionId/studentId/subject、完整原createInput及requestHash、bank快照、原始与当前教学title/instructions、revision/contentFingerprint、有界100条命令回执和逐版本完整说明历史。bank使用assistant-reviewed-bank-practice-v1，冻结完整origin及sourceFingerprint、原scopeSnapshot与scopeFingerprint、独立profileGrade、familyIdentityVersion、联合selectionFingerprint和每组完整atomSnapshot/definitionFingerprint。每题保存确切MeasurementItem、Question（含原答案/analysis）、QuestionRenderPayload及完整题包contentFingerprint；不将非选择题改成分类题，不伪造模型/复核成功。引用说明标为题库教学补充，非聊天原文支持；不产生掌握、正式response或孩子曝光。
+
+创建在一次store.transaction内先核对原会话本人，再验证当前token/角色/目标孩子学习码或监护关系。原创建键重放只回原回执、异内容409；重放仍需当前读取权限，但不重新生成或写入候选。新创建重新执行D1与两项确认/当前评测检查并比对完整预检指纹，然后取当前eligibleMeasurements、canonicalFamily及诊断/训练/原卷实际曝光，调用第19节联合选择器。完整题包与scope/定义快照由服务端重建；同题量但内容/定义/审核变化不能复用旧确认。并发同owner/key依赖数据库唯一键和现有事务重试，不靠进程内Map。
+
+读取只给当前有权的本人作者，另一个监护人不可读私聊；目标孩子权限与原登录在每次读取和回执查询重新核对。编辑在事务内再核对当前来源/当前scope与每个原目标定义、冻结题包的当前审核/内容/题族身份及当前评测；历史读取不改变其原快照，任何变化均保留原稿并拒绝新编辑。命令键包含实际actor、操作和完整内容身份；旧编辑回执不能覆盖新版本。原sourceGrade、scopeGrade和profileGrade分别显示，不修改档案。
+
+SQLite/PG迁移24增加assistantPracticeArtifacts(ownerUserId,requestKey)唯一约束及ready-schema24最低reader标记；旧23读取器须实际拒绝24。当前reader/backup脚本必须继续正确区分旧ready、23的ready-schema23与24的ready-schema24，不能把23误当旧ready。启动、SQLite/PG原生backup/restore同用assistant-practice-integrity语义核对器，逐记录检查id/作者/原会话/目标孩子、完整源SHA与选择、scope/原子定义、审核mapping/原题/渲染题包、联合分组、正文身份与全部历史/回执；重算bundle哈希不能绕过错位关联。尚未实现的assignment/self-session数据必须拒绝读取，不能静默丢弃；后续同一未发布schema24开发批次接齐后再放行。
+
+隐私导出只包含本人或实际学生本人创建的私人候选；监护人导出孩子资料不能获得另一个监护人的origin。作者删除清除本人候选，孩子删除清除其目标候选；adult原会话到孩子的候选也不能遗漏。最新删除账本在恢复前后重放，不能因原会话仍在而复活已删除候选。共享安排保留与私人来源删除的状态/历史规则在安排批次再具体补齐，当前不创建该类记录。
+
+本批专项使用隔离SQLite与实际PG，至少验证完整长来源/原生表格公式题快照、同键重放/异键/并发、本人及跨监护权限、当前范围/定义/审核题内容/原消息变化、学生与家长目标的当前评测保护、编辑冲突/原回执/旧历史、零训练/掌握/任务/曝光写入、实际重启/原生恢复与损坏关联拒绝、最新删除账本及旧23reader拒绝。原失败与源码/编译SHA保留；完整D2 UI/安排/实际作答和正式schema24交付仍继续，不用本批候选完成替代整个D2。
