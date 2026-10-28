@@ -1,0 +1,107 @@
+{
+  "passed": false,
+  "head": "42ad7f031c86bc6adac3cfd910eb7f0ce42bbeb4",
+  "ciRun": 40622126236,
+  "jobs": {
+    "postgres": "success",
+    "application": "success",
+    "browser": "failure"
+  },
+  "browser": {
+    "passedAttempts": 432,
+    "failedAttempts": 2,
+    "originalAttempts": 433,
+    "retries": 1,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "failedCases": [
+    {
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: a retained original version opens from the server without creating or resending a session",
+      "status": "unexpected",
+      "attempts": [
+        "failed",
+        "failed"
+      ]
+    }
+  ],
+  "api": {
+    "passed": 1639,
+    "environmentSkipped": 73
+  },
+  "knownFinding": "Retained-history browser fixture edits only outer description after freezing v2, leaving nested teaching.description/catalog identity inconsistent. Runtime correctly refuses that fixture. Preserve strict snapshot checks; generate coherent old v2 and an explicit legacy v1 fixture, then rerun actual browser flows.",
+  "scope": "Exact terminal failed B1 run with original reports/traces, all three logs and Git-original source. Does not qualify current uncommitted B2 code or production.",
+  "files": {
+    "terminal.json": {
+      "sha256": "01ad2c4098cff3853fda7cada96d150cfbbede54ebd281ae52fa63f2d1a79f2b",
+      "gzipSha256": "e57911099eacaacc38b5c2ba7c6d44788bff284022f3325fc53a4dd311c42e87",
+      "bytes": 32070
+    },
+    "postgres.log": {
+      "sha256": "f40d644f072240c885bde2d1c8a5b06a1fd764ecdfd60cbf2cb47fb4d257a4e6",
+      "gzipSha256": "4817cb23e122707c9b4105c3fc2270347427fc222ee79a17b7835f9a977e3b0c",
+      "bytes": 444148
+    },
+    "application.log": {
+      "sha256": "a76f667945dffc58991fae336d611173b1d2b95966a977b394a06d3af67525ec",
+      "gzipSha256": "f39207f81a451870d278861351a87d5fa62b1fe51173eecde442645c37319e56",
+      "bytes": 338248
+    },
+    "browser.log": {
+      "sha256": "b92e1668d477f78e78a4218711a2fd19aa2e6bc7b0d3f39f33f2ba3600fd285e",
+      "gzipSha256": "50144753d9aa44ae8e66e11178abb19c9c7cb3a9118952c8bc9c8486e9055b20",
+      "bytes": 302567
+    },
+    "artifact/data/qa/source-course-full-browser.json": {
+      "sha256": "404c30564488f842e3811f3791ce0a84e4a0d54c1a0781d02d5688bec48ec184",
+      "gzipSha256": "adc43d1447a72fdec87eda1b518c91969852686a00bb07e493007bc3bef67943",
+      "bytes": 501167
+    },
+    "artifact/test-results/browser-product-acceptance/studio-assistant-lecture-a-7762c-ting-or-resending-a-session/error-context.md": {
+      "sha256": "712b696be3f1fe29b6385626fb4262e348204dbf386e0f032d7e404bf6beb800",
+      "gzipSha256": "fd16cef8b37fd231f4369fb4f06ab27929b9bfb0fa6efc855b69ca87bde417cc",
+      "bytes": 29470
+    },
+    "artifact/test-results/browser-product-acceptance/studio-assistant-lecture-a-7762c-ting-or-resending-a-session/test-failed-1.png": {
+      "sha256": "7f53078db45b6edab2773e65ad784316128e40cc1e6aa86d95f58a202cacbc82",
+      "gzipSha256": "7bbf31357cbba7a65bb67fac74dabf6cfba86cbf34e3299480d6f6fb293ee3ef",
+      "bytes": 85162
+    },
+    "artifact/test-results/browser-product-acceptance/studio-assistant-lecture-a-7762c-ting-or-resending-a-session/trace.zip": {
+      "sha256": "bb57279911c8ab71d3bb2b1ed6af2d4471e8bc78d28fcf7f37b7567a2ba52a17",
+      "gzipSha256": "89f59a2ff5c7be9bd67ee5b75e3cb7198a5741ba552ef880e2a69ef73332e70f",
+      "bytes": 1358429
+    },
+    "artifact/test-results/browser-product-acceptance/studio-assistant-lecture-a-7762c-ting-or-resending-a-session-retry1/error-context.md": {
+      "sha256": "712b696be3f1fe29b6385626fb4262e348204dbf386e0f032d7e404bf6beb800",
+      "gzipSha256": "fd16cef8b37fd231f4369fb4f06ab27929b9bfb0fa6efc855b69ca87bde417cc",
+      "bytes": 29470
+    },
+    "artifact/test-results/browser-product-acceptance/studio-assistant-lecture-a-7762c-ting-or-resending-a-session-retry1/test-failed-1.png": {
+      "sha256": "7f53078db45b6edab2773e65ad784316128e40cc1e6aa86d95f58a202cacbc82",
+      "gzipSha256": "7bbf31357cbba7a65bb67fac74dabf6cfba86cbf34e3299480d6f6fb293ee3ef",
+      "bytes": 85162
+    },
+    "artifact/test-results/browser-product-acceptance/studio-assistant-lecture-a-7762c-ting-or-resending-a-session-retry1/trace.zip": {
+      "sha256": "d050728d5b89ef87ff6686e823572338309900b44a59f44696dd8a89a87669db",
+      "gzipSha256": "d0c230d1caf9ebf1315fb53bf53f0d1d09f79526cc16a15f5b58ccd89ee75ddf",
+      "bytes": 1307419
+    },
+    "original-source/scripts/qa/assistant-turn-fixture.cjs": {
+      "sha256": "f3fd81745747d7bf67ee864a16dcd12da2f909b780160e5167577f09a5510bdb",
+      "gzipSha256": "548dfdd7cdf0f9ae91fdc4a31f15bcc57d895dc39106e7c6d85b8d01b939108e",
+      "bytes": 6440
+    },
+    "original-source/tests/e2e/studio-assistant.spec.ts": {
+      "sha256": "0fbef206dd475b7bfd224219cb3786ca3a8bc476c1ffe21d69885bd2e597fa92",
+      "gzipSha256": "296f97456ea1a2cde410a802955fb4a2fdc308e8d6e9513ce1ddd238051ccff0",
+      "bytes": 25510
+    },
+    "original-source/apps/api/src/modules/ai/assistant-lecture-context.ts": {
+      "sha256": "bdfadbeb42ac3f9b63d77c6bf85e01a9928379c7ce8d85155516211a8756c7c4",
+      "gzipSha256": "20e3fcb9e23232632f3f7d8b0ea09b288b0e93f9cecd3f27e5ce66e2ac08948d",
+      "bytes": 6342
+    }
+  }
+}

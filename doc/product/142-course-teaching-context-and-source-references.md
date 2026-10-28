@@ -133,3 +133,13 @@ AiService调用统一的assistant-course-context解析器；复用StudentsServic
 课程输出另增可选sourceKeys（最多50）；Xiaojiu只在显式courseSources模式使用扩展schema，不放宽原普通聊天/课堂board/presentation协议；OpenAI兼容路径同样严格。未知键、将课程键塞进evidenceIds或模型自造出处属性都拒绝。服务器从prepared冻结正文构造AssistantSourceReference（key/kind/courseId/itemId/title、可选page/quote/sourceVersion、内部href），不能从现行课程重写旧出处。AssistantReply/HistoryMessage、持久消息、worker回执/legacy重放、insight和后续UI/导出均保留可选sourceReferences；缺省旧消息不回填。发布前再次核对来源对象与原冻结出处一致。课程sources不自动生成正式测量、根因、指导或日历。
 
 验证分别包含SQLite/PG真实HTTP：父母/学生/管理员、本人ready和其他人私稿、跨档案/跨账号、长ID条件、所有选择与正文超限、旧历史/缺损快照、sourceKeys伪造与两通道、发布/撤回/归档、原命令重放、并发首次开、队列中评测开始/撤权/正文修改、原生恢复与最新删除账本。所有源引用仍是教学来源，不是学生能力证据。B2、C、D未全部通过并交付前，正式保持141，完整72项与M1～M7不缩减。
+
+## 17. 冻结出处预览的具体补充（实施前）
+
+出处href必须能读取当时实际用于回答的已选教学，而不是无提示地转到改过的现行课程。新增GET `/ai/assistant/sessions/:sessionId/sources/:sourceKey`，仅允许当前登录者自己的会话及当前可访问的学习档案。读取冻结的lecture-v2/courseSnapshot安全投影，不从当前课补造原文；无来源的旧v1和未知key返回404，损坏原件返回409。返回AssistantSourcePreview：可信reference、当前版本状态、实际选择/覆盖、相关安全教学段落及目标。资料课以lesson-citation标明它是本课所用资料短摘，不能伪称逐段都来自该页。此接口只读，不调用模型或改变进度/证据。
+
+AssistantSourceReference记录contextFingerprint以及服务器构造的href（studio中的原会话/sourceKey/课程版本定位）；可另给originHref打开当前可用课程/资料页，UI明确区别“当时的教学出处”和当前课程。路径/标题/页码/版本/quote全部从prepared的冻结快照派生，模型只返回sourceKeys。C层加载预览时先核对原会话和身份，不能因打开出处擅自创建新会话或丢原草稿；学生不被送入成人独立模式。预览关闭、刷新和返回保留原会话/选择/焦点，来源更新后原引文仍保持。
+
+## 18. B1首次精确远端失败的原始记录
+
+42ad7f0/40622126236已全部终态：application/PG success，browser failure。原始报告实际433例，432通过，1例失败并重试仍失败，故434次尝试中2失败、1重试；不能记全绿或零重试。Linux API1639通过/73环境跳过。失败是保留旧讲座的浏览器fixture从新v2快照只改外层description并重算外层SHA，却保留旧teaching.description/catalog identity，运行校验正确拒绝。修复fixture生成完整一致的旧教学版本，另外覆盖真实旧v1格式；保留生产完整性检查和原历史/不新建/不重发断言。全日志、原报告/截图/trace及精确Git原源见[首次精确CI原件](../evidence/2026-10-28/course-b1-ci-first/receipt.json)。当前B2未归入这次CI结论，正式141保持。
