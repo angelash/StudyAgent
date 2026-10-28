@@ -1,0 +1,33 @@
+{
+  "passed": false,
+  "status": "existing-incorrect-rejection-reproduced",
+  "baseRevision": "cb30e439d3ccb9bf66af09be16ea755871cd92a2",
+  "compiledSource": "2c2ad96ac1dd35e3b0908c8d5546df9a07477b3492311c3552543a5e42e7e75f",
+  "incorrectlyRejectedNormalTeaching": 2,
+  "acceptedControl": 1,
+  "realModelCalls": 0,
+  "databaseWrites": false,
+  "scope": "Read-only synthetic calls to current compiled adult renderAssistant. No actual model call, user account, database write or formal measurement.",
+  "files": {
+    "data/qa/assistant-generality-probe-before.json": {
+      "sha256": "eb47eca553a38ba7b2d4ca028bbdf2adc28eea5b8a6d45e6fef7218641d12068",
+      "gzipSha256": "46c0042bee6cd62fc0bff58d201e1ae7043ff90b13a4b945d3c9654131f82fe5",
+      "bytes": 817
+    },
+    "data/qa/probe-assistant-generality.cjs": {
+      "sha256": "68cd3866690a10c50200a268810098d3d0d690f89c8b2ddc033d943f746cc11b",
+      "gzipSha256": "58ee0c73512e639635693ddaf1a1dcf4e4132468c9e2dd6178f90e1de0d653f8",
+      "bytes": 1473
+    },
+    "apps/api/src/modules/ai/ai.service.ts": {
+      "sha256": "83676bdbcf19da6a564d445690505918baf7c1bcca2d9241157e70744aa6f8b4",
+      "gzipSha256": "b294c1924cd1e729202fbacd74a54cd94ab42d3fdda2bf63a3c085324f68ef12",
+      "bytes": 49835
+    },
+    "apps/api/dist/apps/api/src/modules/ai/ai.service.js": {
+      "sha256": "2c2ad96ac1dd35e3b0908c8d5546df9a07477b3492311c3552543a5e42e7e75f",
+      "gzipSha256": "a8598cea5edcdb3744c2bbb45edb181ebc6ff43bbd2280a36b810744d520acdd",
+      "bytes": 53336
+    }
+  }
+}
