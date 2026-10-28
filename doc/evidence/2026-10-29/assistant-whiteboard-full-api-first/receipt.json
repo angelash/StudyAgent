@@ -1,0 +1,83 @@
+{
+  "passed": true,
+  "sourceCommit": "5cb3b0be646f11457ec1b339a81505e8c9cacb1b",
+  "stats": {
+    "numPassedTests": 1790,
+    "numFailedTests": 0,
+    "numPendingTests": 74
+  },
+  "frozenInputs": {
+    "checked": 2598,
+    "changed": []
+  },
+  "process": {
+    "at": "2026-10-28T18:54:27.805Z",
+    "testExit": 0,
+    "verificationExit": 0,
+    "reportPresent": true
+  },
+  "configuration": {
+    "STUDY_SEED_FOUNDATION": "true",
+    "STUDY_WORKER_ENABLED": "false",
+    "XIAOJIU_CHAT_ENABLED": "false"
+  },
+  "scope": "Complete schema23 source-whiteboard backend API run:1790passed/0failed/74environmental skips;2598input hashes unchanged. Original v1,note,source content/task/authority/image/narration and actual SQLite native recovery are included.",
+  "limits": [
+    "Most native PG checks require explicit environment; separate actualPG114/2 and SQLite source23/23 remain independent,overlapping counts are not summed.",
+    "C3 new UI workspace,front-end source selection/mapping changes and browser fixtures are separate and not included.",
+    "Exact CI/main integration/deployment for this source candidate remains pending; production is still schema21.",
+    "No new live providers,production learning writes,pixel/audio,teacher,complete-content or real learning-outcome conclusion."
+  ],
+  "files": {
+    "data/qa/source-whiteboard-full-api-first.json.gz": {
+      "sha256": "a83724a1ea7b19793bc09e6869cbbde260d37a2ba24f344cf67492389dbeb6d4",
+      "originalSha256": "b8a57e77e6c4bbc40a1e0ce0bc631c30fc7b8c2b5abcf0ee41bde19aadff2adb",
+      "originalBytes": 900494
+    },
+    "data/qa/source-whiteboard-full-api-first.log.gz": {
+      "sha256": "79ade60bd9f050d042167bea36f0642c3f86124756afd24e620bb92c9dbfacc4",
+      "originalSha256": "46f3ed322e89c5b24133e236b591185850ab28a83ff9a4618c4f18746230b983",
+      "originalBytes": 77911
+    },
+    "data/qa/source-whiteboard-full-api-first-inputs.json.gz": {
+      "sha256": "2db126f2aefc4a6712d9f17c8488abebe7a7c72b96038568b77a80df692859fd",
+      "originalSha256": "a54eeeeab25eb5546faa64ce39dc925784a8aff99e163963caeebc3b4c75d403",
+      "originalBytes": 496641
+    },
+    "data/qa/source-whiteboard-full-api-first-process-result.json.gz": {
+      "sha256": "8092b58bb11595c12e6c7c52149524ff72132c823ab7ec0cf542453ce7d0bb82",
+      "originalSha256": "799574010959f0bcf61ee299b414624eea29b3658e4b1fdbed3d23c992ca1bc7",
+      "originalBytes": 106
+    },
+    "data/qa/source-whiteboard-full-api-first-inputs-verification.log.gz": {
+      "sha256": "b622d8819d25037554b32135367bb8b4f2eaf338c389bd0aba43296f43bcdd9d",
+      "originalSha256": "22fdf77ad8fbe93678de4941c1743385076b0f75ee6fbf77c5ec8bf424a8195e",
+      "originalBytes": 34
+    },
+    "data/qa/source-whiteboard-full-api-first-build.log.gz": {
+      "sha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "originalBytes": 66
+    },
+    "data/qa/source-whiteboard-full-api-first-pm2-out.log.gz": {
+      "sha256": "90aadbac67d0d600e4d5f34277fb8dd6d4509946a10ed1c9eeae6798ce3048f3",
+      "originalSha256": "feb291428f00655b781fa730fce461511a0cd6f173cdbb382922efddf8a931d3",
+      "originalBytes": 155
+    },
+    "data/qa/source-whiteboard-full-api-first-pm2-error.log.gz": {
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "originalBytes": 0
+    },
+    "data/qa/run-managed-source-whiteboard-full-api-first.cjs.gz": {
+      "sha256": "c9559b2aa51073303f4387a05eb6b149bd85e6a750c13c12a14eb0be4c88f91f",
+      "originalSha256": "7bdf94c2ed3df930a947159260efb2c446a60e373d2b6eb1fe12d6d5b095d566",
+      "originalBytes": 1599
+    },
+    "data/qa/freeze-source-whiteboard-full-api-first.py.gz": {
+      "sha256": "84c3272e1e8ed806633b6193e95e9d875b0b7b53c50d8821f4597927a3be04a5",
+      "originalSha256": "881a12167ff6a35ac861bc3c054f8fcb48c31554f4bd5940e3bdb0a7a74c7ff6",
+      "originalBytes": 1260
+    }
+  }
+}
