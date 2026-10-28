@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "scope": "Only the bounded QA timeout of the existing full seeded native guidance recovery journey changes60s to120s, matching other native tests; original authority, model, cancellation, receipt and deletion-ledger assertions retained.",
+  "remoteOriginal": {
+    "runId": 40704086547,
+    "sourceRevision": "a3778154cfead3fdf789ddc3c743702d50666cbc",
+    "jobId": 122871384503,
+    "failed": "postgres guidance native recovery: Test timed out in60000ms; original job log retained. Application is successful; browser still active at this point."
+  },
+  "local": {
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0,
+    "nativeCases": [
+      {
+        "name": "sqlite original guidance plans native recovery restores rule creation, frozen model, cancellation and adoption receipts, then applies the latest deletion ledger",
+        "durationMilliseconds": 26463.9412,
+        "status": "passed"
+      },
+      {
+        "name": "postgres original guidance plans native recovery restores rule creation, frozen model, cancellation and adoption receipts, then applies the latest deletion ledger",
+        "durationMilliseconds": 66590.0203,
+        "status": "passed"
+      }
+    ]
+  },
+  "limits": [
+    "The actual PostgreSQL native case takes66.59 seconds locally and completes every original assertion; this is longer than the former budget.",
+    "No production behavior or provider timeout changed; no retry/skip/CI cancellation added. New exact CI remains required after the current run ends."
+  ],
+  "files": {
+    "data/qa/chemistry-v2-exact-ci-second-postgres-job.log": {
+      "bytes": 230793,
+      "sha256": "53a3ddf848f9f2a3e5ca357170fe90af8bd00d0b216db5253367c4edf070fe1a",
+      "gzipSha256": "0d0d2c7a2725c40af725d4fb75bc9dda919a2cff4f1227eaeff388c9286e23f1"
+    },
+    "data/qa/chemistry-v2-guidance-native-budget-first.json": {
+      "bytes": 6711,
+      "sha256": "84990e04f81df2509650335e859519efc35bddbbb0aaebc6df40afbdf57531c3",
+      "gzipSha256": "39651cf63ade2936f8ef036e7b50753a67690fb5911b5c247fbb5a22f716ffe4"
+    },
+    "data/qa/chemistry-v2-guidance-native-budget-first.log": {
+      "bytes": 1631,
+      "sha256": "7e36429af2f9e35e59604756b650abee34e2ed5e07f7cde1359eeabf146be1f4",
+      "gzipSha256": "53aa0ffad07a760431bc8b8c5a1dcf65341f929e612a98ed225b32c2d1e520be"
+    },
+    "apps/api/src/modules/diagnostics/guidance-model-recovery.integration.test.ts": {
+      "bytes": 10696,
+      "sha256": "93ba8c5011267fa61e93ca92b20070cceb8303a4db43498f59f9df84aa1fe3ff",
+      "gzipSha256": "537adce39e040484118725181dd79f4298cec79df95c09324ad1e0d2ee30e50c"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "passed": false,
+  "runId": 40704086547,
+  "sourceRevision": "a3778154cfead3fdf789ddc3c743702d50666cbc",
+  "jobs": {
+    "browser": "success",
+    "application": "success",
+    "postgres": "failure"
+  },
+  "browser": {
+    "startTime": "2026-10-28T14:18:41.678Z",
+    "duration": 2534354.674,
+    "expected": 466,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "originalAttempts": 466,
+    "retries": 0
+  },
+  "fullApiSummaries": [
+    "application\tRun npm test\t2026-10-28T14:24:53.7313875Z ^[[2m      Tests ^[[22m ^[[1m^[[32m1720 passed^[[39m^[[22m^[[2m | ^[[22m^[[33m74 skipped^[[39m^[[90m (1794)^[[39m"
+  ],
+  "actualFailure": "PostgreSQL native guidance recovery exceeds60000ms. Remaining PG steps skipped after this failure, not verified by this run. Application and browser jobs success. No CI cancelled.",
+  "repair": "Only existing native QA case budget120000ms; actual local PG case66590.0203ms completes all assertions,13/13 real SQLite+PG runner. New exact CI required.",
+  "files": {
+    "data/qa/chemistry-v2-exact-ci-second-metadata.json": {
+      "bytes": 21633,
+      "sha256": "07de159b6e9d7fce0d7908bac3eb3274b1d37930a803ca62e1c5162a7c245984",
+      "gzipSha256": "30004a5456dca372585d02e8afca39e08947c775686f24eb9010af98654ee1c5"
+    },
+    "data/qa/chemistry-v2-exact-ci-second-all-jobs.log": {
+      "bytes": 981599,
+      "sha256": "dc9f6a40b784bce74d0e09c61400866fc7c09d469d3e064788aa85ef7406a867",
+      "gzipSha256": "ec15a25f83c0bd702f9fe6db1ff2b9ec87519f0263e8241567e38ddbe1b6bc5c"
+    },
+    "data/qa/chemistry-v2-exact-ci-second-artifacts.json": {
+      "bytes": 99,
+      "sha256": "9fc19017ae574d4d8c3ad2daf9cca5c573bb00dfa0ba2e0bca8aee13d8c2c790",
+      "gzipSha256": "69cd8fc81ff873123270097018c2b0cbdf7287f37442685ed1fbe96efffbfb5c"
+    },
+    "data/qa/chemistry-v2-exact-ci-second-browser-artifact/data/qa/source-course-full-browser.json": {
+      "bytes": 522888,
+      "sha256": "67dab3638bef85e647594ca0a0f9cfaf166862158610046b7b6b6c66c5aa774c",
+      "gzipSha256": "b466dbbd6f36d0d007ec6825c4798e86eec84ada3d5789cf9a21f67bfcce8ebf"
+    }
+  }
+}
