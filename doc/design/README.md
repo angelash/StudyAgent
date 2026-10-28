@@ -1,6 +1,6 @@
 # StudyAgent 当前功能与设计总册
 
-2026-10-28候选结构更新：当前代码基线a59e335，14领域/128项功能/423个正常接入HTTP路由、103个领域集合、384个共享契约定义、30个Web页。138已接入admin内部教研工作台、统一模型持久分析/提示、原稿/原操作恢复和schema21；默认DS/明确备选四匿名样本及21专项通过，旧模型Opus5仍失败，完整新候选回归/精确CI/运行交付继续。设计总册是源码说明，不代表当前生产已从137/schema20升级；见[具体138](../product/138-internal-teaching-tools-unified-models.md)与[完整计划105](../product/105-development-plan-status-and-next-milestones.md)。以下较早统计是分批历史。
+2026-10-28当前结构：源码基线b62ef293b0001b6ddf743bc02846e5f2739ba031，14领域/128项功能/424个常规HTTP路由、103个领域集合、387个共享契约定义、30个Web页。140已接入成人讲座目标快照、独立持久助教、原上下文导航及统一字体注册；字体修复专项28项、完整本地433及精确40601241878远端433均零重试通过，应用/PG/浏览器三组success。正式服务保持139/schema21；原子能力计量与版本化指导已运行，设计生成不等于140交付。默认DeepSeek V4.1 Flash，历史模型文字资格21/22、旧Opus5失败；本批另有两条完整默认模型样本。完整产品、教师/设备/原声/像素与长期验证继续，见[140具体范围](../product/140-lecture-context-and-studio-assistant.md)、[139正式验收](../evidence/2026-10-28/measurement-v3-acceptance.json)及[完整计划105](../product/105-development-plan-status-and-next-milestones.md)。以下较早统计是分批历史。
 
 整理日期：2026-10-26。当前课堂实现包含[107持久插问](../product/107-classroom-turns-and-reference-state-parity.md)、[108代码实验](../product/108-classroom-code-experiments-and-draft-recovery.md)、[110资料课程版本](../product/110-source-course-revisions-and-lifecycle.md)、[111真实项目文件](../product/111-project-attachments-and-frozen-file-evidence.md)、[112可恢复作答](../product/112-recoverable-answer-drafts-and-complete-input-journeys.md)和[109图表/公式/节奏](../product/109-classroom-comparison-formulas-and-reply-pacing.md)；原件恢复见[交付106](../product/106-original-repair-product-delivery.md)。源码基线、验证与守护运行版本分别以各批收据为准，开发接入不自动等于运行交付。完整范围与剩余里程碑见[计划105](../product/105-development-plan-status-and-next-milestones.md)。
 
@@ -12,10 +12,10 @@
 
 ## 阅读入口
 
-- [功能框架](01-functional-framework.md)：14个领域、125项功能，包含角色、入口、能力和限制。
+- [功能框架](01-functional-framework.md)：14个领域、128项功能，包含角色、入口、能力和限制。
 - [概要设计](02-high-level-design.md)：产品边界、角色、架构、模块依赖、业务闭环和关键设计决策。
 - [核心详细设计](03-core-detailed-design.md)：范围、组题、评分、能力估计、原因验证、指导、AI、课堂和日历的处理细节。
-- [数据与状态设计](04-data-and-state-design.md)：实体关系、100个领域集合、SQL结构、版本与状态机。
+- [数据与状态设计](04-data-and-state-design.md)：实体关系、103个领域集合、SQL结构、版本与状态机。
 - [运行、资产与质量设计](05-runtime-assets-and-quality.md)：依赖、AI通道、处理链、部署、备份恢复、测试与当前证据。
 - [完成边界与待完善项](06-boundaries-and-follow-ups.md)：已实现、历史保留、待验证和明确不做的范围。
 - [离线功能浏览器](index.html)：按领域或关键词查找功能，展开输入、处理、输出、接口、数据与代码。

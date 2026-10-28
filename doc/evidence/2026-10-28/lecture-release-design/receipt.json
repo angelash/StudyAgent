@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "sourceRevision": "b62ef293b0001b6ddf743bc02846e5f2739ba031",
+  "areas": 14,
+  "features": 128,
+  "normalRoutes": 424,
+  "coveredRoutes": 424,
+  "sourceFiles": 594,
+  "markdownLinks": 3800,
+  "viewerChecks": 10,
+  "applicationBaselineEvidence": {
+    "newlyRunByThisScript": false,
+    "receipt": "../evidence/2026-10-28/measurement-v3-acceptance.json",
+    "revision": "6a51299711a8c40c62974490a9dd28bc9c5453c2",
+    "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
+  },
+  "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
+  "files": {
+    "doc/design/generated/design-validation.json": {
+      "sha256": "5e779a7ce9ebce369c93158708b446b1d3b84c018a350bd18b571070ae4b2f20",
+      "gzipSha256": "ba014666bc77b44ade7031e7026793dcb37edf41cbd0827cd510dc7a34205810",
+      "bytes": 79436
+    },
+    "doc/design/README.md": {
+      "sha256": "791ce06e870f414b9f1024e7f58e03ec3c8182701e0f1e3d162a9c700359361d",
+      "gzipSha256": "d48d4d1f264edb1f7a7eb91d12982ba8f7191cb52609a8efe4c1bdd6fe545b9f",
+      "bytes": 19101
+    },
+    "doc/design/06-boundaries-and-follow-ups.md": {
+      "sha256": "266eaf2aa732a05ed1c25a73141928c90941ddd84b101d6baebba3d602c25089",
+      "gzipSha256": "1f017d2decd89e109420196f32cbe3ad96eee5ae1fb484550f2ca8bfc7a3eeb8",
+      "bytes": 15473
+    },
+    "doc/product/140-lecture-context-and-studio-assistant.md": {
+      "sha256": "0c62a865f286e43eae2e8d71a573352b4b611c59acc0ae294b0d4db2679edb51",
+      "gzipSha256": "58aba1fab715be864c020f2e7ec16e69517fdbcc1b61b7a86299ef06a87ff578",
+      "bytes": 27870
+    },
+    "doc/product/105-development-plan-status-and-next-milestones.md": {
+      "sha256": "3c7cf272f7b49b668303644c76e43d2c56c59e456946a525dd3ddfbde8cf11b8",
+      "gzipSha256": "5df50c36682c489940903bb2e5a45dc17d9579c2b1fd00b77762fcac916b4184",
+      "bytes": 105677
+    },
+    "data/qa/lecture-release-design-validation.log": {
+      "sha256": "2bd178c396dc7ee02d335096510b585170867917809100c731daf3e92bab734b",
+      "gzipSha256": "d147ae7693357a628f7444a0f61a92bc4e376e5a5102a061ea00eb10d581bd55",
+      "bytes": 281
+    },
+    "data/qa/project-design-viewer/desktop.png": {
+      "sha256": "5afab569c42b2a01fbd4105405891951ca804bdffe556d55535bd4677bde94c6",
+      "gzipSha256": "ac1a76ffdb57ca77f8dce0ee8db7799295453d579275686955a451fbef666c18",
+      "bytes": 188430
+    },
+    "data/qa/project-design-viewer/mobile.png": {
+      "sha256": "7ed2acfd48aa1dff52bbaca4e1122ba0b23396c6c75014058f9cbb4e8dce2df7",
+      "gzipSha256": "013fe8244b2bf45836c235876692743916b3a313ea4f80c8db8443ab0104e10b",
+      "bytes": 127200
+    }
+  }
+}

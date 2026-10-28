@@ -1,6 +1,6 @@
 # 核心业务详细设计
 
-本文补充 [105项功能实现目录](01-functional-framework.md) 中跨模块的处理顺序、算法和失败行为。各接口完整参数签名与实现行号见 [接口索引](generated/api-reference.md)。
+本文补充 [完整功能实现目录](01-functional-framework.md) 中跨模块的处理顺序、算法和失败行为。各接口完整参数签名与实现行号见 [接口索引](generated/api-reference.md)。
 
 ## 1. 通用请求与事务
 

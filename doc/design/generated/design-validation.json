@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-27T22:19:37.852Z",
-  "sourceRevision": "1385d100e5a91e9378b8191d7fd897f8cb378075",
+  "at": "2026-10-28T00:00:23.562Z",
+  "sourceRevision": "b62ef293b0001b6ddf743bc02846e5f2739ba031",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -425,8 +425,8 @@
       "apps/web/app/studio/source-courses/pdf-material.tsx": "976683cfb3490025924d98b9435b51d05427cd804172ae60bdff8480b3072244",
       "apps/web/app/studio/source-courses/source-courses.css": "b6210bf56de3b296ce565407d49d59ef2ea3bfdc2d2c1fece9d6c4185cd3982f",
       "apps/web/app/studio/source-courses/workbench.tsx": "0eb1738e752a252b13907e42dd33320752e73072e5d859ab3d1277337a74b1bb",
-      "apps/web/app/studio/studio-instant-assistant.css": "a533f8312704b0410ec3f273e9438a263ea2f2295d7edec963588fc46765c14e",
-      "apps/web/app/studio/studio-instant-assistant.tsx": "09b848b85945db847d73021b01930c29d40b0ec2f9fa77ebddee4e43f6c3d08c",
+      "apps/web/app/studio/studio-instant-assistant.css": "eb09675d8e6fda0f2aad7afccab4be6eac01308970818d472044cdc9a715e962",
+      "apps/web/app/studio/studio-instant-assistant.tsx": "8d6adda64133068bb09a85ded6e61286a18c84fcce83662d2184734854c65de1",
       "apps/web/app/studio/studio-navigation.tsx": "cbb3f83f512e69b4b5ebec999a68bf72aea4d8724d900b08905524f89470d957",
       "apps/web/app/studio/studio.tsx": "93d1b88c5733e8eb82419918694ca42eb40e58e212f9219b60d3008c2a8a822f",
       "apps/web/app/studio/topic-figure-image.tsx": "c8d02ec17500c3e71d0c93d9782624ef751e392ee8b4fa47058f92392f6f3610",
@@ -605,7 +605,7 @@
       "tests/e2e/guidance-model.spec.ts": "5b9c25414004dc5a4627d19583930741bd69f3c118b2ea1e1030ea55c076c990",
       "tests/e2e/knowledge-report.spec.ts": "998e40eb679f2d48848c87eb8ef564a0be2058d234f4d75e0be6c4517991dfb0",
       "tests/e2e/learning-home.spec.ts": "c167675d4de10b5865ae76d42bda578e15b095540c85ca61bac331f9201a11af",
-      "tests/e2e/original-teaching-fonts.spec.ts": "ac70719ce7b054debbbcce0226ee3844bdeecdc137cab97195a299a14e882251",
+      "tests/e2e/original-teaching-fonts.spec.ts": "13e7a6594ef0f34864e8c0ed06e7360b388bc97b7fbc9a94d66bc502355f7395",
       "tests/e2e/paper-practice.spec.ts": "a0d8c7d8183fa47dcf9cd88aa7d0bcff55254e7a8b7a4f40c23dee4f7ffd4230",
       "tests/e2e/pdf-material.spec.ts": "cf3e8c04730ae12bf97c866a4a1562d2101ead5ea26cacd8bb7b117d12ceb406",
       "tests/e2e/product-smoke.spec.ts": "83a76aadc8364a664142b0b66eb535555bc670265017ec8f251db75a849eea82",
@@ -632,7 +632,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 3785,
+    "checked": 3800,
     "missing": []
   },
   "staticContent": {

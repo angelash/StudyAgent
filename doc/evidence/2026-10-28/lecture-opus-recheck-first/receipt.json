@@ -1,0 +1,34 @@
+{
+  "passed": false,
+  "status": "complete",
+  "revision": "b62ef293b0001b6ddf743bc02846e5f2739ba031",
+  "modelId": "claude-opus-5",
+  "modelStatus": "failed",
+  "failureKind": "provider-error",
+  "cliStarts": 2,
+  "elapsedMs": 122970,
+  "publicQualificationChanged": false,
+  "scope": "Single failed model recheck through the current configured actual application CLI. The full original21/22 qualification remains unchanged; this is neither a new full matrix nor a passed default-model sample. Anonymous text challenge, no production records.",
+  "files": {
+    "catalog.json": {
+      "sha256": "7028637cd7cb02eb63e16031bc7ba6e49427303c2652aac7580a98485cbde7d6",
+      "gzipSha256": "d6476490b21cf86e5b2d5838cb582c614540a975033a11d830c5d69ee41c3759",
+      "bytes": 7402
+    },
+    "progress.json": {
+      "sha256": "6619c447639d1bb6c1d4c687f7fe15c0b97fe48db65e47767289acbcfabbdd92",
+      "gzipSha256": "7a1efe3b355b8e8ab35b1de11fefef2ec27bb03f3cc12758f561f32e67133d64",
+      "bytes": 4719
+    },
+    "receipt.json": {
+      "sha256": "6619c447639d1bb6c1d4c687f7fe15c0b97fe48db65e47767289acbcfabbdd92",
+      "gzipSha256": "7a1efe3b355b8e8ab35b1de11fefef2ec27bb03f3cc12758f561f32e67133d64",
+      "bytes": 4719
+    },
+    "lecture-opus-recheck-first.log": {
+      "sha256": "76a3095b3165563e0771cd6d1575cce86d28e17353b6ca33f3ff14316f47e667",
+      "gzipSha256": "7f033299e03e076564ea8a64fddc5fd371d212b2f45195cbbd8538ca1ef8e9e6",
+      "bytes": 208
+    }
+  }
+}

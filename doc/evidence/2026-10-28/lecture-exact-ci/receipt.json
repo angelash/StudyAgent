@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "head": "b62ef293b0001b6ddf743bc02846e5f2739ba031",
+  "ciRun": 40601241878,
+  "runAttempt": 1,
+  "jobs": {
+    "application": "success",
+    "postgres": "success",
+    "browser": "success"
+  },
+  "browser": {
+    "passedTests": 433,
+    "failedTests": 0,
+    "originalAttempts": 433,
+    "retries": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "api": {
+    "passed": 1531,
+    "failed": 0,
+    "environmentSkipped": 73
+  },
+  "lecturePostgresStepPassed": 13,
+  "scope": "Actual exact-head terminal jobs, original full browser JSON and all three job logs. Browser attempts/retries parsed directly, Linux API summary read from its log, lecture PG step includes its SQLite native control. Scopes overlap and are not summed. Production/runtime remains separate.",
+  "files": {
+    "terminal.json": {
+      "sha256": "299f35f7f18eb4e023541c191b3f9d2cb50054e6b1bf1d0330074a840581a839",
+      "gzipSha256": "688dc75ba3ca60e0f28bbef914d42bede5e0662b6d20b82ee89aa55d97909ff0",
+      "bytes": 31189
+    },
+    "application.log": {
+      "sha256": "832cc96704063bb46a46a605036b043bc986b76504d1b97ec1ac69917691aca3",
+      "gzipSha256": "66f8c17a6d154b87ba253bbd4182a4c50cc469dbfd620b10c8f9c4d1c13f4e45",
+      "bytes": 340833
+    },
+    "postgres.log": {
+      "sha256": "6672850c74829090e5cfc048acd0ac0851cf149a5031f146d0cabf8630ff10a5",
+      "gzipSha256": "b7a1bb19a630ddf46174c0c129889af147c381d66f6c1b63fe589945ad6924fc",
+      "bytes": 439257
+    },
+    "browser.log": {
+      "sha256": "87ebe70590dbe04a3d124a960f9872c337a7e68f0f8ceaed186e1f43c4526fe8",
+      "gzipSha256": "95b236023b7238c67f29357bdb68f2b427f0460508c92a730be431d7ef8e549a",
+      "bytes": 288328
+    },
+    "source-course-full-browser.json": {
+      "sha256": "7ae2d2f3c99c93be2acdf615326a303119952c8c255e2bec1f517710233f5c60",
+      "gzipSha256": "65bd0e375ceabbf14c4afbe0ee63cc8a629d41ae4af23e2411dc32044e159b53",
+      "bytes": 486221
+    }
+  }
+}

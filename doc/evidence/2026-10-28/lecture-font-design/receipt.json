@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "sourceRevision": "b62ef293b0001b6ddf743bc02846e5f2739ba031",
+  "areas": 14,
+  "features": 128,
+  "normalRoutes": 424,
+  "coveredRoutes": 424,
+  "sourceFiles": 594,
+  "markdownLinks": 3790,
+  "viewerChecks": 10,
+  "applicationBaselineEvidence": {
+    "newlyRunByThisScript": false,
+    "receipt": "../evidence/2026-10-28/measurement-v3-acceptance.json",
+    "revision": "6a51299711a8c40c62974490a9dd28bc9c5453c2",
+    "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
+  },
+  "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
+  "archiveRunnerNote": "First receipt writer used the wrong markdownLinks key; all ten original gzip files remained intact and receipt was reconstructed from those original bytes.",
+  "files": {
+    "data/qa/lecture-font-design-build.log": {
+      "sha256": "312c8509bacf03ca16e708ef6ca8591d8d4e67ce4a6abb8ed76734614dff1ca9",
+      "gzipSha256": "c013933456a5e58b3d314ff19db7e248d1972ce8a1eced0cb078b68ee92dc6d3",
+      "bytes": 102
+    },
+    "data/qa/lecture-font-design-content.log": {
+      "sha256": "e95820dbe556ead23a88d9955c3175503e6a1a4d5963d954ad8832ccfb7b2ec6",
+      "gzipSha256": "62432f8f9e674f9adfa1af43b09161197ea0a253d7af4bd6abaa8f2ebd4d1456",
+      "bytes": 2612
+    },
+    "data/qa/lecture-font-design-inventory.log": {
+      "sha256": "56b4d8fdf767de4f82426a8935d53ea500f1e5c5c81f51482086fc62ab7f88af",
+      "gzipSha256": "b06986fb277ea8516fd1ef315e7f919669880117445477158d003fa589d551f6",
+      "bytes": 487
+    },
+    "data/qa/lecture-font-design-validation.log": {
+      "sha256": "17001a81b8d1da41d960cf101bd234cfbdcc50e8916ae84b557d8343029dc818",
+      "gzipSha256": "f4d5ba44ffb465a0a7c586aff0d8628f4a2df88d51a76c0d1ab04dfb1e1ee9ae",
+      "bytes": 281
+    },
+    "data/qa/project-design-viewer/desktop.png": {
+      "sha256": "5afab569c42b2a01fbd4105405891951ca804bdffe556d55535bd4677bde94c6",
+      "gzipSha256": "ac1a76ffdb57ca77f8dce0ee8db7799295453d579275686955a451fbef666c18",
+      "bytes": 188430
+    },
+    "data/qa/project-design-viewer/mobile.png": {
+      "sha256": "7ed2acfd48aa1dff52bbaca4e1122ba0b23396c6c75014058f9cbb4e8dce2df7",
+      "gzipSha256": "013fe8244b2bf45836c235876692743916b3a313ea4f80c8db8443ab0104e10b",
+      "bytes": 127200
+    },
+    "doc/design/feature-catalog.json": {
+      "sha256": "770c72c2b9c3004ddd4bc5f809df9af63862a21262251e0b7042f7e081725f4b",
+      "gzipSha256": "2c03c679c0478033466ce116bf8ab57586041057bf0fe61e3a4643b6de37229a",
+      "bytes": 526771
+    },
+    "doc/design/generated/coverage.json": {
+      "sha256": "10db03a51bf7a1852d35bf3a950fd86118595109f2ee0d974f3357d6da03f593",
+      "gzipSha256": "25ab295f976f4a39df35ed21f45b14662149be73f770b6a1d5f15e2935170eac",
+      "bytes": 3026
+    },
+    "doc/design/generated/design-validation.json": {
+      "sha256": "983b15b20b83c0f01eba0353c9dca3ca5fb940ba5ea3c078315a9286bdb399b6",
+      "gzipSha256": "4496caf3819b017847f5887735ba899bb9dd662f46c030417af94c45e45db51b",
+      "bytes": 79436
+    },
+    "doc/design/generated/source-inventory.json": {
+      "sha256": "38fb4ef2c823cda9ff2b0a82f7bc94a89bc83a7f61c19d301ce9de5364c86029",
+      "gzipSha256": "9ca680211a676248c51ea9b746659a6c15f3f06194962cb0fa6cd50e8e03e340",
+      "bytes": 1550458
+    }
+  }
+}

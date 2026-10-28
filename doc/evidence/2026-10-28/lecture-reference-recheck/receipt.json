@@ -1,0 +1,45 @@
+{
+  "source": "https://agent.hyperknow.io/",
+  "course": "35b173b3-d501-4c0c-a6cf-ecac581431d0",
+  "observedSurfaceSize": [
+    880,
+    887
+  ],
+  "dpr": null,
+  "actions": [
+    "Read resumed original whiteboard",
+    "Opened session settings without changing values",
+    "Read original course directory",
+    "Opened the existing in-progress practice",
+    "Expanded question assistant without sending",
+    "Navigated from the already answered first question to the second question without selecting or submitting an answer"
+  ],
+  "observations": {
+    "whiteboard": "Concise title, objective/navigation lines, concept distinctions, side-by-side comparison table and anonymous practice prompt are on the board; longer spoken teaching text is in the conversation panel. The Venn illustration offers enlargement. The restored session retains board/history and asks the learner to continue.",
+    "settings": "Six named voice categories with separate sample buttons; speed stops 0.5,0.75,1,1.25,1.5,2; handwriting/standard, dots and replay tour visible. No setting changed or sample played in this recheck.",
+    "practice": "Independent full-screen panel; single-choice answered result with explanation, image and Next; question assistant has its own toggle and composer. Next opens a five-option multiple-choice view with color/shape markers, separate checkboxes, Check/Skip and previous arrow. A speed-bonus display and a retained Skipped label are present; their scoring and persistence algorithms are unknown."
+  },
+  "limits": [
+    "Screenshots are read-only visual evidence, not recovered source CSS, known-DPR pixel parity or complete course coverage.",
+    "No new question answer, chat message, upload, sample audio or model generation was submitted in this recheck.",
+    "The displayed score, first correct answer and second skipped status were existing account state; no learning outcome or scoring rule is inferred.",
+    "Visible course content is not the complete original corpus, and no original voice timing, audio identity or code runtime was verified in this recheck."
+  ],
+  "files": {
+    "whiteboard-resumed.png": {
+      "sha256": "10a7b87e079b73a9c4b1ffd33b9480e9d500e4ed9e4020f3fc3f7030e858e755",
+      "gzipSha256": "305d7d819100663c8b5653600d0c7627891475720d7d73bb51585149ee953570",
+      "bytes": 212894
+    },
+    "practice-result-assistant.png": {
+      "sha256": "9f3c0cd266a3c9987babf5f490776d78c0045734bcb5915256d728fd0c1118f3",
+      "gzipSha256": "c193848ab7b91ec7aed74e64cb044d15f046edbc5e5f1727acc9373d493ce3ac",
+      "bytes": 132777
+    },
+    "practice-multiple-assistant.png": {
+      "sha256": "19efd1f2a9b68014d82a4000bc24cbbb5820bb97490125471ec0d11c8452624b",
+      "gzipSha256": "a018c3cc776bf9ff02f1a3e43a7ca3f6fc9c4ab91889a9156fed325ada1ca233",
+      "bytes": 84915
+    }
+  }
+}

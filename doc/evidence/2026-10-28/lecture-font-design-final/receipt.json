@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "sourceRevision": "b62ef293b0001b6ddf743bc02846e5f2739ba031",
+  "areas": 14,
+  "features": 128,
+  "normalRoutes": 424,
+  "coveredRoutes": 424,
+  "sourceFiles": 594,
+  "markdownLinks": 3792,
+  "viewerChecks": 10,
+  "applicationBaselineEvidence": {
+    "newlyRunByThisScript": false,
+    "receipt": "../evidence/2026-10-28/measurement-v3-acceptance.json",
+    "revision": "6a51299711a8c40c62974490a9dd28bc9c5453c2",
+    "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
+  },
+  "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
+  "files": {
+    "doc/design/README.md": {
+      "sha256": "626fa1a09cc2d78bcd69101ede3e1ac7aed252a71e3322c7fb28eda35ddbd6a0",
+      "gzipSha256": "7d96a165754038c60fce683f2575cb1d9516167eac1cd4f079b87e1a12d733cd",
+      "bytes": 19051
+    },
+    "doc/design/03-core-detailed-design.md": {
+      "sha256": "af0a2c765c4b197866b680996951bea4985b6dfde76eb66c1b6460ae009c44a1",
+      "gzipSha256": "45fd739542568a019457bc57b552187494dabbbc613460aef36821090ee2058a",
+      "bytes": 46845
+    },
+    "doc/design/04-data-and-state-design.md": {
+      "sha256": "c3049e5c30bdaf54658c66e828680e31e4fec76b9e1e6d498723e1e2330c5aec",
+      "gzipSha256": "971ef87dffd6d32d26e2fdabf07656ebea70b12b0ec687c769f82dfab98ca651",
+      "bytes": 24226
+    },
+    "doc/design/06-boundaries-and-follow-ups.md": {
+      "sha256": "1bbf98e66a622a18f6fc96fe28ed5c76026bd7ba9effc11306247a5b3c635976",
+      "gzipSha256": "865df642de063bc9f4f3bd2d4396e1d6cada6d5e8731544919c88fb939d6c371",
+      "bytes": 15421
+    },
+    "doc/design/generated/design-validation.json": {
+      "sha256": "69a92c9ec8b462453569c2026e78e00ce904e7780f88b69a9c12476bd70f78a2",
+      "gzipSha256": "6b4f47fab02b3c4f3f13658a92d34389a5041e98e0ff689d7d91029825bed203",
+      "bytes": 79436
+    },
+    "doc/design/generated/coverage.json": {
+      "sha256": "10db03a51bf7a1852d35bf3a950fd86118595109f2ee0d974f3357d6da03f593",
+      "gzipSha256": "25ab295f976f4a39df35ed21f45b14662149be73f770b6a1d5f15e2935170eac",
+      "bytes": 3026
+    },
+    "doc/design/feature-catalog.json": {
+      "sha256": "770c72c2b9c3004ddd4bc5f809df9af63862a21262251e0b7042f7e081725f4b",
+      "gzipSha256": "2c03c679c0478033466ce116bf8ab57586041057bf0fe61e3a4643b6de37229a",
+      "bytes": 526771
+    },
+    "doc/design/generated/source-inventory.json": {
+      "sha256": "38fb4ef2c823cda9ff2b0a82f7bc94a89bc83a7f61c19d301ce9de5364c86029",
+      "gzipSha256": "9ca680211a676248c51ea9b746659a6c15f3f06194962cb0fa6cd50e8e03e340",
+      "bytes": 1550458
+    },
+    "data/qa/lecture-font-design-inventory.log": {
+      "sha256": "56b4d8fdf767de4f82426a8935d53ea500f1e5c5c81f51482086fc62ab7f88af",
+      "gzipSha256": "b06986fb277ea8516fd1ef315e7f919669880117445477158d003fa589d551f6",
+      "bytes": 487
+    },
+    "data/qa/lecture-font-design-content.log": {
+      "sha256": "e95820dbe556ead23a88d9955c3175503e6a1a4d5963d954ad8832ccfb7b2ec6",
+      "gzipSha256": "62432f8f9e674f9adfa1af43b09161197ea0a253d7af4bd6abaa8f2ebd4d1456",
+      "bytes": 2612
+    },
+    "data/qa/lecture-font-design-build.log": {
+      "sha256": "312c8509bacf03ca16e708ef6ca8591d8d4e67ce4a6abb8ed76734614dff1ca9",
+      "gzipSha256": "c013933456a5e58b3d314ff19db7e248d1972ce8a1eced0cb078b68ee92dc6d3",
+      "bytes": 102
+    },
+    "data/qa/lecture-font-design-final-validation.log": {
+      "sha256": "c51eaa470b4cf397c4e01af6cba0f529226fd7183e3665973422061211e50a91",
+      "gzipSha256": "e8656312f94440a47620c93d790f4109c4279b3f7ea4be15c28edf6b24bdd0a6",
+      "bytes": 281
+    },
+    "data/qa/project-design-viewer/desktop.png": {
+      "sha256": "5afab569c42b2a01fbd4105405891951ca804bdffe556d55535bd4677bde94c6",
+      "gzipSha256": "ac1a76ffdb57ca77f8dce0ee8db7799295453d579275686955a451fbef666c18",
+      "bytes": 188430
+    },
+    "data/qa/project-design-viewer/mobile.png": {
+      "sha256": "7ed2acfd48aa1dff52bbaca4e1122ba0b23396c6c75014058f9cbb4e8dce2df7",
+      "gzipSha256": "013fe8244b2bf45836c235876692743916b3a313ea4f80c8db8443ab0104e10b",
+      "bytes": 127200
+    }
+  }
+}
