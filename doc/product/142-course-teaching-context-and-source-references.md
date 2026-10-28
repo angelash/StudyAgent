@@ -119,3 +119,17 @@ courseSnapshot是既有assistantSessions中的可选安全JSON，不新增集合
 旧行为4失败/2保护、旧双通道指令3失败/3保护原件均保留。首轮组合29/1源目录与例子fixture不一致已保留并提供一致resolver；两次新增测试的类型标注错误也保留。PG首次因默认本工作区不存在凭据文件而在测试前退出，不计测试失败/跳过，第二次使用既有15439隔离QA配置运行，没有复制凭据。见[旧正文/协议失败](../evidence/2026-10-28/lecture-teaching-migration-before/receipt.json)、[首轮fixture](../evidence/2026-10-28/lecture-teaching-migration-first/receipt.json)、[旧双通道失败](../evidence/2026-10-28/teaching-provider-context-before/receipt.json)及[B1完整原件](../evidence/2026-10-28/lecture-teaching-b1-verified/receipt.json)。
 
 正式运行仍141/Fr2r2Kk2ddHCxQhccI7rC。接续B2小学/资料课受鉴权上下文、条件长引用、评测中保护/当前权限/发布与worker栅栏、可信来源键与隐私恢复；C入口/选择/草稿/历史/学生返回，D真实默认样本/完整两端门禁/精确CI/可回退交付保持。B1不能记作完整142或全产品交付。
+
+## 16. B2接线契约与授权实施前补充
+
+新增受现有AuthGuard保护的GET `/ai/assistant/course-context`，入参kind=primary_unit/material_lesson、courseId/itemId，以及可选fingerprint和JSON编码selection；只接受结构化选择，不接收正文或自造档案。返回AssistantCourseDescriptor，包括服务端推导的studentId/subject、published/authoring语境、原教学指纹/referenceId、实际选择/覆盖、预算与全部可选条目以及内部返回href。持久开会话pageContext新增course、contextRefType为这两个kind；仅course类型的contextRefId放宽到400，其余原180保持。新可选contextSelection由严格schema检查，仅讲座或course可以携带，不改变原诊断/练习/计划协议。
+
+新增私有courseSnapshot，协议assistant-course-v1，冻结kind、studentId、subject、published/authoring、teaching快照和外层指纹。外层覆盖档案/学科及发布语境，模型仅接收安全teaching和语境，不接收studentId/owner/prompt/完整上传文。公开session仍白名单，scopeKey继续包含账号/角色/档案/学科/原类型/reference/item；选择已进入教学指纹。同内容发布也使原authoring范围只读。小学只有active/completed的已确认课程可新发；资料课只有有权访问的active发布版，或当前本人ready且draft教案可新发，后者明确待核对且学生不可用。archive/withdraw/discard/替代发布只保留按当前权限可读的本人旧会话，不重新生成旧正文。原sourceCourse的revision、阅读状态等仍不作教学指纹。
+
+AiService调用统一的assistant-course-context解析器；复用StudentsService和assertSourceCourseAccess，始终按实际课程行派生身份范围，再与开会话请求精确匹配。发问/重试/worker heartbeat及发布走现有assistantAuthority→assistantSnapshot，重复检查发布语境、原快照、当前内容和当前权限。userRole=student存在in_progress/paused正式诊断时，自由课程入口返回assessment_in_progress及内部返回评测href，保持原问题；开会话/发送/重试/发布均受限，历史仍按原授权只读。不改变原题帮助的规则提示与assistance记录，不把课程聊天标为独立作答。
+
+共享AssistantCourseSummary/Descriptor及ContextView.course表示新上下文，AssistantTurnService的位置、历史与context一起接入。href只由服务器按现有studio/资料课内部路由和已编码ID构造，客户端不得提供URL；学生移除回其学习页，成人移除回真正独立学习，C层实现。完整JSON预算要包含外层上下文；descriptor预算预留与实际prepare/render一致核对，不能只看某一段。完整/概览保留全目标，细选仅带实际知识点目标，覆盖数字明确。过长选择拒绝并保留问题，不自动换范围。
+
+课程输出另增可选sourceKeys（最多50）；Xiaojiu只在显式courseSources模式使用扩展schema，不放宽原普通聊天/课堂board/presentation协议；OpenAI兼容路径同样严格。未知键、将课程键塞进evidenceIds或模型自造出处属性都拒绝。服务器从prepared冻结正文构造AssistantSourceReference（key/kind/courseId/itemId/title、可选page/quote/sourceVersion、内部href），不能从现行课程重写旧出处。AssistantReply/HistoryMessage、持久消息、worker回执/legacy重放、insight和后续UI/导出均保留可选sourceReferences；缺省旧消息不回填。发布前再次核对来源对象与原冻结出处一致。课程sources不自动生成正式测量、根因、指导或日历。
+
+验证分别包含SQLite/PG真实HTTP：父母/学生/管理员、本人ready和其他人私稿、跨档案/跨账号、长ID条件、所有选择与正文超限、旧历史/缺损快照、sourceKeys伪造与两通道、发布/撤回/归档、原命令重放、并发首次开、队列中评测开始/撤权/正文修改、原生恢复与最新删除账本。所有源引用仍是教学来源，不是学生能力证据。B2、C、D未全部通过并交付前，正式保持141，完整72项与M1～M7不缩减。
