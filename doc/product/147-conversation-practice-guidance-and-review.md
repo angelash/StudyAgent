@@ -203,3 +203,15 @@ PracticeSession新增origin=assistant_artifact与assistantAssignmentId/assistant
 界面优先复用助教原消息选择和现有白板/笔记弹层，增加明确“给孩子的练习”入口：选择孩子/学科/已学原子点→完整来源与原课程/档案/当前范围分开核对→覆盖/阻断→候选逐组预览→明确安排。孩子从今日任务与原assignment链接进入本组，实际沿现有StructuredAnswerInput作答；题干、理由、提示/参考答案和反馈按明确动作逐步出现，手机保持原位置/未提交内容。新入口不展示未接通的生成按钮；成人自练完整链路未接好前保持明确未开放。
 
 退出验收覆盖SQLite与真实PG的本人来源/监护/当前评测保护、同键异内容/丢响应/双实例、家长预览零孩子写入、真实学习码分atom开始与actor记录、参考答案曝光和首答不覆盖、范围/定义/审核题变更、另一监护人私聊隔离、作者/孩子删除及原生恢复/旧reader拒绝。浏览器验收至少包含完整桌面/手机开始作答、刷新与双标签、原键恢复及改权限/评测后保留输入。完整API/整站/精确CI与正式schema24可回退交付分别留证，不以纯正文61或D1双库20替代。
+
+## 19. 审核题联合选题的离线基础规格
+
+实际题库的QuestionRenderPayload可能含填空、步骤、音频和真实表格/公式，不能强行改写成D2b分类/开放表达协议。reviewed_bank模式后续使用独立assistant-reviewed-bank-practice-v1：每个明确原子点一组，两道原题/答案/评分及审核mapping快照，保留原renderPayload；AI模式继续assistant-teaching-practice-content-v1。两者均为教学候选，公开开始、作答和恢复仍按第18节实现后才接通。
+
+本批先在assistant-practice-bank-selection.ts实现离线选择器，不新增表、持久化、端点或任务。调用方必须从实际eligibleMeasurements取得当前审核候选、从canonicalFamily取得结构身份，传入精确1至3目标、原预检SHA作为seed、候选atomId/questionId/family/mappingId和真实已见question及按atom区分的已见family。纯函数不能据此宣称来源/权限/审核已获当前授权；后续service仍在事务内重读原数据。未知目标、重复目标或同一mappingId对应不同内容须拒绝，候选与输入不裁切。
+
+先将同atom/question映射按canonicalFamily聚合；同题存在多个不同结构身份时全部排除，不靠随机挑一个冒充清晰审核。已见题和已见同点结构全部排除。每点需两种不同family，同时整份练习的questionId不得重复。不能按每点独立贪心：独立可各选两题但可能争用同一原题。采用有界目标流图source→atom(容量2)→atom/family(容量1)→question(全局容量1)→sink，以最多6次增广求完整联合分配；稳定seed排序使相同命令与候选顺序变化得到同一结果。
+
+未达到2×目标点数时整体返回覆盖缺口，不返回可误采用的半份题组；成功逐atom返回两个确切mapping/question/family。selectionFingerprint绑定算法版本、全部候选身份（不只最终入选）、完整曝光身份、目标顺序、seed和最终分组；题量不变但审核映射替换/曝光变化也失效。service提供的原预检SHA还必须绑定完整题干/答案/定义/范围，选择器自身不能证明题目正文或审核合法。
+
+后续开始第2/3组时按该组当前题目/定义/范围/权限重新核对；已由同一assignment真实开始的其他组曝光保留，不因第一组合法开始就对整份D1 canPrepare重跑并封死后续组。当前组自己新增的外部曝光仍需明确重新核对，不能静默换题。离线验收包括可重分配的争用、每点足量但联合不足、同点family唯一、全局题目唯一、原曝光/歧义排除、种子及重排稳定、未入选候选改变指纹和无输入突变；不替代实际SQLite/PG、真实学习码或端到端产品旅程。
