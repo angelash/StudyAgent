@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "sourceRevision": "e5b773da98f529432f919f23483edc01f41009dd",
+  "counts": {
+    "numPassedTests": 1737,
+    "numFailedTests": 0,
+    "numPendingTests": 70
+  },
+  "controls": {
+    "checked": 3150,
+    "changed": []
+  },
+  "scope": "Complete note/schema22 API, owned synthetic fixtures and no live provider. Current frozen3150 inputs unchanged. Original complete failure and both native followups retained separately. Whole browser, exact CI and note production delivery pending.",
+  "files": {
+    "data/qa/note-full-api-second.json": {
+      "bytes": 874034,
+      "sha256": "f3e66d519ddb4ed7c1b532b766036962844871e854fbba7d2532a7b3c55572a3",
+      "gzipSha256": "c980947aacca437b81e0103a68a8fd9c49f7650437d93cd4c78374e9fc8abbde"
+    },
+    "data/qa/note-full-api-second.log": {
+      "bytes": 482,
+      "sha256": "a381d68cd660856fe122a76aea5d0a29e38b1ddbfcdbdaa6052579c297535bd6",
+      "gzipSha256": "2fbb5b3f62e715e5fa087bc7d4ec2c7df4e45af44a375f758c92f7a08308517f"
+    },
+    "data/qa/note-full-api-second-inputs.json": {
+      "bytes": 611421,
+      "sha256": "31b63e9cae9d6bc2b38d11eace945370be5ed7f054659311c91b7a635157983b",
+      "gzipSha256": "f6b04e508d14c24dc469426c8ad1b590d814d852dc5d35c53080b2087a65bb9c"
+    },
+    "data/qa/note-full-api-second-inputs-verification.log": {
+      "bytes": 34,
+      "sha256": "2c6f64f86172f5d0c39be4b9302c8b530693e6bf7cb4b1c1f452be5a62271c1e",
+      "gzipSha256": "e77034adc91124a613b2eccec4da2e2c3fd9052b793e832a2fed2a8478e21818"
+    }
+  }
+}
