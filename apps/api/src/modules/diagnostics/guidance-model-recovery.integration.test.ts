@@ -86,5 +86,7 @@ for(const driver of ['sqlite','postgres'] as const)(driver==='sqlite'||pgLocatio
       for(const[name,value]of Object.entries(prior)){if(value===undefined)delete process.env[name];else process.env[name]=value;}
       if(!resolve(directory).startsWith(resolve(tmpdir())+sep))throw Error('Unsafe guidance recovery directory');rmSync(directory,{recursive:true,force:true});
     }
-  },60000);
+  // Full seeded native dumps, two cold restores and current deletion-ledger checks
+  // need the same bounded budget as the other native recovery journeys on CI.
+  },120000);
 });
