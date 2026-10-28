@@ -44,7 +44,7 @@ D1通过后再实现严格assistant-practice-artifact-v1。保存origin、目标
 
 UI复用WorkspaceDialog、原模型选择器与当前来源选取/原稿/本机多副本能力。开始前展示“练习及理由”而不展开答案，逐题给出输入、保留首次回答、明确提交/下一题、当前提示状态和返回原消息。反馈定位这一步的条件和反例，再提供不同情境；不一次铺满答案。图片采用已有真实资产或独立生成/预览/确认流程，模型文字描述不当作图片；表格整行、字幕完整句、板书逐item。
 
-采用事务原子写入私有artifact确认关系、真实PracticeSession及回执；扩展origin=assistant_artifact，显式artifact ID和来源教学快照，不能伪造planId。完整私聊不进入面向孩子的练习DTO、分析、日历或模型图片prompt。共享监护人可见孩子的合法练习记录时仍不可读作者私聊；作者删除时按明确教学保留协议清除私有origin并对教学副本脱敏，不能用共享壳留存应删私聊。
+采用事务原子写入私有artifact确认及原回执。成人/监护人自练保存独立的本人教学会话，不伪造studentId/atomId/planId。给孩子的内容先明确预览后保存assignment；孩子本人真实开始时，再按每个原子点创建独立PracticeSession及原开始回执，扩展origin=assistant_artifact与确切assignment/artifact教学快照。不能把1至3个点的答案统记到一个atomId，也不能因家长预览就写孩子作答或曝光。完整私聊不进入面向孩子的练习DTO、分析、日历或模型图片prompt。共享监护人可见孩子的合法练习记录时仍不可读作者私聊；作者删除时按明确教学保留协议清除私有origin并对教学副本脱敏，不能用共享壳留存应删私聊。
 
 ## 5. 首答、提示与正式证据接续
 
@@ -120,3 +120,22 @@ SQLite第二轮两文件18/18、实际PostgreSQL首轮同两文件18/18全部通
 新SQLite第三轮与实际PG第二轮各20/20通过，零失败/跳过；12新预检+8原来源兼容不与旧18相加，8输入SHA保持，API类型通过。原首轮9/1及零测试准备错误仍在前收据。设计总册同步14领域/133功能/444接口全映射，671源引用、4182链接和10离线页检查通过；首版生成资料先保留后更新AI-12当前多稿/1790边界文字。完整原件见[当前状态补充](../evidence/2026-10-29/assistant-practice-preflight-current-state-first/receipt.json)。
 
 D1新的受管完整API已在本工作区冻结启动，终态前不改源码/编译/用例；独立CUI的501浏览器继续运行。完整API/浏览器/精确CI/可回退交付结论各自独立，D2～D4及全产品仍active。
+
+
+## 13. D2受众、单点训练和实际作答者的实施前补齐
+
+按实际代码复核：PracticeSession要求非空studentId/subject/atomId，现有起点是一个指导action/知识点；PracticeAttempt没有显式actorId/actorRole，submit只通过可访问孩子与可选draftFence校验，feedback会依据首答/提示/答案曝光说“独立完成”。因此D2不能把成人null受众塞进现有训练、不能造空计划，也不能仅加origin后允许监护人替孩子获得该反馈。这里修正第4节采用落点，本节仍是实施前规格，不在当前D1完整API中改这些旧路径。
+
+D2a学生审核题分组：原1至3目标点各有2题起的明确组，合计2至6题；每题固定本组atomId和已审核版本。父级artifact保留完整来源和逐题映射，只给作者。监护人查看完整“给孩子的练习预览”（题目、预期表达、理由与反馈、目标、可见资料），明确确认后创建assistantPracticeAssignments；assignment只保存已确认教学投影/目标/发布者引用，不带私聊origin。确认只表示安排，不计学习或曝光。
+
+孩子本人从assignment点“开始本组”时校验当前学习码授权、本人孩子、原范围/定义/审核包和当前评测，在一个事务内固定本组题目快照、创建origin=assistant_artifact的真实PracticeSession和原开始回执。每个原子点一个训练，父assignment记录多个确切session ID。孩子读取题目或看答案才记录对应曝光；现有正式排题对已创建的本人练习保守排除可以继续，但不得因家长私有预览创建孩子的practiceSession。来源版本变更保留既有历史，新的开始重新核对，不能自动换题后冒充原命令。
+
+新来源孩子训练的提交/草稿/提示/完成，服务端必须显式确认user.role=student及authSession.studentId=目标孩子；新提交记录actorId/actorRole和subject identity，不能只信客户端draftFence。监护人可读合法孩子教学记录/管理assignment，但其自练进入本人的独立教学会话，不写孩子PracticeAttempt。新来源的反馈按教学训练性质展示，不能继承“首答即独立完成”的旧推定；看过来源解答、答案展开、家长示范及提示均独立保存，正式测量始终需要现有诊断的新题/真实身份/资格。旧记录缺actor不回填猜测作者，不把原历史批量改成正式独立。
+
+成人与监护人自练使用新的assistantTeachingPracticeSessions（确切集合名在schema24注册前再核对），包含ownerUserId、artifact ID、固定题目投影、每题首答/理由、提示/答案展开、原请求回执及历史，不要求孩子/学科/正式atom。复用StructuredAnswerInput、安全表格/公式/代码与当前恢复组件；不通过空studentId绕过旧PracticeSession。成人“分类+理由”、不确定参考答案和未审核AI题只提供教学反馈/待人工核查，不写确定性分或MasteryEstimate。学生的AI待核对题如后续开放也用明确的未量化教学路径，不假借审核bank训练。
+
+D2b纯正文生成先定义独立assistant-teaching-practice-content-v1：2至6题、完整题干和理由提问、2至6项分类选择或开放表达、参考解释/适用条件/反例、逐题sourceMap及用户明确目标；成人targetAtomIds为空，学生只接受已明确选择目标，模型不能添加正式证据、审批状态或分数。生成与复核各有严格schema，uncertain保留原文，无变化修订拒绝；题目模型输出只能成为待核对候选。图片仍独立原资产/生图预览确认，输出的图片文字不能当已存在图片。正文预算和来源预算分别核对，不裁切。
+
+schema24预计新增私有artifact、本人教学会话、学生assignment三类关系，扩展现有PracticeSession来源和新来源Attempt的明确actor；先完成schema23交付后再落迁移/公开创建。双库实际恢复须验证父artifact→assignment→每组实践会话/原子→原开始及作答回执，作者删除清除本人origin/自练，孩子删除清除assignment/实践；最新删除账本重放不得复活。另一个有权监护人仍不读作者私聊。
+
+专项验收至少包括成人null受众完整自练、家长预览/陪练不写孩子集合或曝光、真实学习码本人开始、同组同键多实例单一训练、多个目标分组不串点、家长伪造child draftFence仍拒绝、不同实际作答者不复用原请求、首答与理由不覆盖、先看答案/提示/示范的资格区别、原来源/范围/权限变化、暂停评测、双库隐私和原生恢复。先交审核bank学生路径，再接AI未审核候选和成人完整教学；任何一层不能用当前D1只读20/20或CUI1790/501替代。
