@@ -48,7 +48,13 @@ async function main() {
     assert.deepEqual(context.evidenceIds, []); assert(!/PRIVATE_|studentId|ownerUserId|withheldAnswer|scoring/.test(input.context));
     save();
     return structured(input, schema, value => { (observed.originalStructuredOutputs ??= []).push(JSON.parse(JSON.stringify(value))); save(); return check(value); }, custom,
-      event => { observed.attempts.push(event); save(); });
+      event => { observed.attempts.push(event); save(); }).catch(error=>{
+        // This runner uses anonymous prompts only. Never persist auth, provider URLs or opaque credentials from a CLI error.
+        const message=String(error?.message??'').replace(/https?:\/\/[^\s"'<>]+/g,'[url]').replace(/Bearer\s+[^\s"']+/gi,'Bearer [redacted]')
+          .replace(/(["']?(?:api[_-]?key|authorization|access[_-]?token|password)["']?\s*[:=]\s*)["']?[^\s,}"']+/gi,'$1[redacted]')
+          .replace(/\b[A-Za-z0-9_-]{24,}\b/g,'[opaque]');
+        observed.providerFailure={name:error?.constructor?.name??'Error',redactedMessage:message.slice(0,1000)};save();throw error;
+      });
   };
   let actor;
   async function call(method, route, body) {
