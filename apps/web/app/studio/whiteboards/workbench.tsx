@@ -43,6 +43,7 @@ function TopicWorkspace({ identity }: { identity: NonNullable<ReturnType<typeof 
   const [scope, setScope] = React.useState<Scope>({ studentId: identity.role === 'student' ? identity.studentId ?? '' : '', subject: 'math' });
   const [profiles, setProfiles] = React.useState<StudioOverview['children']>([]), [overview, setOverview] = React.useState<StudioOverview | null>(null);
   const [selection, setSelection] = React.useState<Selection>(null), [row, setRow] = React.useState<TopicWhiteboardDraftView | null>(null), [board, setBoard] = React.useState<StudioTopicWhiteboard | null>(null);
+  const sourceReturn = React.useRef<{ boardId: string; draftId: string } | null>(null);
   const [drafts, setDrafts] = React.useState<Page<TopicWhiteboardDraftView> | null>(null), [published, setPublished] = React.useState<Page<StudioTopicWhiteboard> | null>(null);
   const [listPage, setListPage] = React.useState(1), [search, setSearch] = React.useState(''), [refresh, setRefresh] = React.useState(0), [tab, setTab] = React.useState<'drafts' | 'saved'>('drafts');
   const [error, setError] = React.useState(''), [notice, setNotice] = React.useState(''), [canLeave, setCanLeave] = React.useState(true), [loading, setLoading] = React.useState(false);
@@ -129,10 +130,10 @@ function TopicWorkspace({ identity }: { identity: NonNullable<ReturnType<typeof 
         onCreated={value => { setFormCanLeave(true); choose({ kind: 'draft', id: value.id }, true); setRefresh(value => value + 1); }}/>
     </aside><section className="tw-main" aria-label="白板工作区">
       {loading ? <p role="status">正在读取原白板…</p> : row ? <TopicCandidate key={row.id} row={row} ownerId={identity.id} onChanged={value => { setRow(value); setRefresh(value => value + 1); }}
-        onCanLeaveChange={canLeaveChange} onOpen={id => choose({ kind: 'whiteboard', id })}/> : board ? <section className="tw-saved-board"><span className="tw-eyebrow">SAVED BOARD</span><h2>{board.title}</h2><p>AI生成 · 待内容核对 · {board.origin.modelName}</p>
+        onCanLeaveChange={canLeaveChange} onOpen={id => { sourceReturn.current = row.audience.kind === 'assistant' ? { boardId: id, draftId: row.id } : null; choose({ kind: 'whiteboard', id }); }}/> : board ? <section className="tw-saved-board"><span className="tw-eyebrow">SAVED BOARD</span><h2>{board.title}</h2><p>AI生成 · 待内容核对 · {board.origin.modelName}</p>
         <button className="tw-primary" onClick={() => setBoard({ ...board })}>继续阅读</button>{board.origin.draftId && <button onClick={() => choose({ kind: 'draft', id: board.origin.draftId! })}>查看自己的原稿</button>}</section> :
         <div className="tw-empty"><div aria-hidden="true" className="tw-board-mark">Aa <span>＋</span> ∑</div><h2>让知识有条理地展开。</h2><p>概念、步骤、对照表与公式，保留完整讲稿。生成后你可以修改和核对，再开始逐句播放。</p><small>成人主题无需建立孩子档案。孩子白板只使用明确选择的已学知识点。</small></div>}
-      {board && <WhiteboardPlayer whiteboard={board} narrationAvailable={overview?.narrationAvailable} speech={overview?.speech} onClose={() => choose(null)}/>}
+      {board && <WhiteboardPlayer whiteboard={board} narrationAvailable={overview?.narrationAvailable} speech={overview?.speech} onClose={() => choose(sourceReturn.current?.boardId === board.id ? { kind: 'draft', id: sourceReturn.current.draftId } : null)}/>}
     </section><aside className="tw-library" aria-label="白板与候选历史"><header><h2>我的白板</h2><button onClick={() => choose(null)}>＋ 新白板</button></header>
       <div className="tw-tabs"><button aria-pressed={tab === 'drafts'} onClick={() => { setTab('drafts'); setListPage(1); }}>教学草稿</button><button aria-pressed={tab === 'saved'} onClick={() => { setTab('saved'); setListPage(1); }}>已保存</button></div>
       <label className="tw-search"><span className="sr-only">搜索我的白板</span><input placeholder="搜索主题或标题" value={search} onChange={event => { setSearch(event.target.value); setListPage(1); }}/></label>
@@ -298,7 +299,7 @@ function TopicCandidate({ row, ownerId, onChanged, onCanLeaveChange, onOpen }: {
     try { const result = await apiRequest<Page<{ version: number; content: unknown; at: string }>>(base + '/drafts/' + row.id + '/history?page=' + page + '&limit=3', { signal: request.signal });
       if (!request.signal.aborted) setHistory(result); } catch (error) { if (!request.signal.aborted) setNotice((error as Error).message); }
   }
-  return <article className="tw-candidate"><header><span className="tw-eyebrow">{statusLabel[row.status]}</span><h2 ref={heading} tabIndex={-1}>{row.content?.title ?? row.prompt}</h2><p>{row.modelName} · {row.studentId ? '孩子已确认范围' : '本人成人主题'}</p></header>
+  return <article className="tw-candidate"><header><span className="tw-eyebrow">{statusLabel[row.status]}</span><h2 ref={heading} tabIndex={-1}>{row.content?.title ?? row.prompt}</h2><p>{row.modelName} · {row.audience.kind === 'assistant' ? '来自本人原对话 · 私人教学白板' : row.studentId ? '孩子已确认范围' : '本人成人主题'}</p></header>
     <div className="tw-generation-state" role="status">{active.has(row.status) ? row.status === 'cancelling' ? '正在停止原生成进程…' : row.stage === 'reviewing' ? '教学初稿已保留，正在复核…' : '正在编写完整教学稿…' : statusLabel[row.status]}</div>
     {row.status === 'failed' && <p className="tw-notice">生成未完成，已保存的阶段继续保留。你可以用原模型重试，或下载现有稿件。</p>}
     <div className="tw-actions">{['queued', 'generating'].includes(row.status) && <button disabled={busy || Boolean(pending)} onClick={() => void perform('cancel')}>取消生成</button>}

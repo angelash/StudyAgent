@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import type { UserRole } from './index';
 import { assistantArtifactSelectionSchema, assistantNoteListSchema, type AssistantArtifactOrigin } from './assistant-artifact';
-import { topicWhiteboardContentSchema } from './topic-whiteboard';
+import { topicWhiteboardContentSchema, type TopicWhiteboardDraftView } from './topic-whiteboard';
 
 export const assistantWhiteboardPreflightSchema = z.object({
   selection: assistantArtifactSelectionSchema,
@@ -25,6 +25,12 @@ export type AssistantWhiteboardPreflight = {
   sourceFingerprint: string; fingerprint: string; contextCharacters: number; maxContextCharacters: 18000;
   fits: boolean; historical: boolean; canGenerate: boolean;
   blocked?: { code: 'source_budget_exceeded' | 'historical_source_confirmation_required' | 'model_unavailable'; message: string };
+};
+export type AssistantWhiteboardSummary = Pick<TopicWhiteboardDraftView, 'id' | 'prompt' | 'objective' | 'modelId' | 'modelName' | 'status' | 'stage' | 'revision' | 'contentFingerprint' | 'whiteboardId' | 'createdAt' | 'updatedAt'>;
+export type AssistantWhiteboardPage = { items: AssistantWhiteboardSummary[]; nextCursor: string | null };
+export type AssistantWhiteboardSourceView = {
+  protocol: 'assistant-topic-whiteboard-v1'; draftId: string; sourceFingerprint: string; origin: AssistantArtifactOrigin;
+  mappings: { original: Array<AssistantWhiteboardSourceMap & { sceneIndex: number }>; current: Array<AssistantWhiteboardSourceMap & { sceneIndex: number }> };
 };
 
 export const assistantWhiteboardSourceMapSchema = z.object({

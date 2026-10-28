@@ -11,3 +11,7 @@ export const editableTopicContentSchema = z.object({ title: text(120), descripti
     bullets: z.array(text(240)).max(6), targetAtomIds: z.array(z.string().min(1).max(180)).max(6), exhibit,
     figure: z.object({ visualId: topicVisualIdSchema, alt: text(600), caption: text(600) }).strict().optional() }).strict()).min(3).max(8),
 }).strict();
+export const editableAssistantContentSchema = editableTopicContentSchema.extend({ scenes: z.array(editableTopicContentSchema.shape.scenes.element.extend({
+  sourceMap: z.object({ messageIds: z.array(text(180)).max(20), referenceKeys: z.array(text(180)).max(40),
+    status: z.enum(['sourced', 'supplementary']), explanation: text(600) }).strict(),
+})).min(3).max(8) }).strict();

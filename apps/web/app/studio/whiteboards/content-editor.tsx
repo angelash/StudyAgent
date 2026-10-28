@@ -1,9 +1,10 @@
 'use client';
 import * as React from 'react';
-import { topicWhiteboardContentSchema, topicWhiteboardEditSchema, type TopicWhiteboardContent, type TopicWhiteboardDraftView } from '@study-agent/contracts';
+import { assistantWhiteboardContentSchema, assistantWhiteboardEditSchema, topicWhiteboardContentSchema, topicWhiteboardEditSchema, type AssistantWhiteboardSourceMap, type TopicWhiteboardContent, type TopicWhiteboardDraftView } from '@study-agent/contracts';
 import { ApiRequestError, apiRequest } from '../../../lib/api';
 import { WhiteboardExhibit } from '../whiteboard-exhibit';
-import { editableTopicContentSchema } from './content-draft';
+import { editableAssistantContentSchema, editableTopicContentSchema } from './content-draft';
+import { AssistantWhiteboardOrigin, TopicSourceMapEditor, useWhiteboardSource } from './assistant-source';
 import { TopicManuscript } from './manuscript';
 import { topicCopies, topicStorage } from './local-copies';
 import { topicCommandMatches } from './command-digest';
@@ -17,6 +18,10 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange: re
   onDirtyChange: (value: boolean) => void;
 }) {
   const [content, setContent] = React.useState<TopicWhiteboardContent>(() => structuredClone(row.content!));
+  const isSource = row.audience.kind === 'assistant', source = useWhiteboardSource(row.id, isSource);
+  const savedSchema = isSource ? assistantWhiteboardContentSchema : topicWhiteboardContentSchema;
+  const localSchema = isSource ? editableAssistantContentSchema : editableTopicContentSchema;
+  const editSchema = isSource ? assistantWhiteboardEditSchema : topicWhiteboardEditSchema;
   const [baseline, setBaseline] = React.useState({ fingerprint: row.contentFingerprint!, revision: row.revision, content: structuredClone(row.content!) });
   const [pending, setPending] = React.useState<EditCommand | null>(null), [ready, setReady] = React.useState(false), [busy, setBusy] = React.useState(false);
   const [notice, setNotice] = React.useState(''), [storageError, setStorageError] = React.useState(false);
@@ -32,9 +37,9 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange: re
   const [copies, setCopies] = React.useState<Array<{ key: string; at: number; value: LocalEditCopy }>>([]);
   const dirty = JSON.stringify(content) !== JSON.stringify(baseline.content), changedOnServer = row.contentFingerprint !== baseline.fingerprint || row.status === 'ready' && row.revision !== baseline.revision;
   function decode(raw: string): LocalEditCopy | null {
-    const saved = JSON.parse(raw), parsed = editableTopicContentSchema.safeParse(saved.content), base = topicWhiteboardContentSchema.safeParse(saved.baseline?.content);
+    const saved = JSON.parse(raw), parsed = localSchema.safeParse(saved.content), base = savedSchema.safeParse(saved.baseline?.content);
     if (saved.ownerId !== ownerId || saved.id !== row.id || !parsed.success || !base.success || !/^[a-f0-9]{64}$/.test(saved.baseline.fingerprint) || !Number.isSafeInteger(saved.baseline.revision) || saved.baseline.revision < 0) return null;
-    const original = saved.pending ? topicWhiteboardEditSchema.safeParse(saved.pending) : null;
+    const original = saved.pending ? editSchema.safeParse(saved.pending) : null;
     return { content: parsed.data, baseline: { ...saved.baseline, content: base.data }, pending: original?.success ? original.data : null };
   }
   function restoreCopy(saved: LocalEditCopy) { sequence.current++; setContent(saved.content); latest.current = saved.content; setBaseline(saved.baseline); setPending(saved.pending); }
@@ -70,7 +75,7 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange: re
     if (busy || !ready || row.status !== 'ready' || changedOnServer && !pending) return;
     const command = pending ?? { expectedRevision: baseline.revision, contentFingerprint: baseline.fingerprint,
       content: structuredClone(content), requestKey: crypto.randomUUID() };
-    const validation = topicWhiteboardEditSchema.safeParse(command);
+    const validation = editSchema.safeParse(command);
     if (!validation.success) { setNotice(validation.error.issues.map(issue => issue.message).join('；')); return; }
     setPending(command); setBusy(true); setNotice('');
     try { localStorage.setItem(key, JSON.stringify({ ownerId, id: row.id, content, baseline, pending: command, at: Date.now() })); }
@@ -112,6 +117,8 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange: re
     setNotice(keepLocal ? '已明确采用服务器基线并保留我的全文。请比较后保存。' : '已采用当前服务器稿。');
   }
   return <section className="tw-editor" aria-label="完整白板改稿">
+    {isSource && <aside className="tw-source-context"><h3>来自本人对话的教学草稿</h3><p>原教学年级：{row.audience.kind === 'assistant' ? row.audience.courseGrade ?? '未指定' : ''} · 学生档案年级：{row.audience.kind === 'assistant' ? row.audience.profileGrade ?? '未指定' : ''}</p>
+      {source.error ? <p role="alert">{source.error}。本机改稿仍保留。</p> : source.value ? <AssistantWhiteboardOrigin origin={source.value.origin}/> : <p role="status">正在核对原对话来源…</p>}</aside>}
     <header><div><h2>完整教学稿</h2><p>{dirty ? '有本机修改' : '与所用基线一致'} · {storageError ? '本机存储不可用' : '本机草稿已保留'}</p></div>
       <button type="button" onClick={() => { downloadTopicJson({ content, baseline, pending }, 'whiteboard-edit.json'); setDownloadedRevision(sequence.current); onCanLeaveChange(true); }}>下载完整改稿</button></header>
     {notice && <p className="tw-notice" role="status">{notice}</p>}
@@ -146,6 +153,8 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange: re
           <div className="tw-actions"><button disabled={scene.exhibit.rows.length >= 12} onClick={() => { if (scene.exhibit?.kind === 'table') sceneChange(index, { exhibit: { ...scene.exhibit, rows: [...scene.exhibit.rows, scene.exhibit.headers.map(() => '')] } }); }}>添加整行</button>
             <button disabled={scene.exhibit.headers.length >= 5} onClick={() => { if (scene.exhibit?.kind === 'table') sceneChange(index, { exhibit: { ...scene.exhibit, headers: [...scene.exhibit.headers, '新列'], rows: scene.exhibit.rows.map(row => [...row, '']) } }); }}>添加列</button>
             <button disabled={scene.exhibit.headers.length <= 2} onClick={() => { if (scene.exhibit?.kind === 'table') sceneChange(index, { exhibit: { ...scene.exhibit, headers: scene.exhibit.headers.slice(0, -1), rows: scene.exhibit.rows.map(row => row.slice(0, -1)) } }); }}>删除最后一列</button></div></div>}
+        {isSource && source.value && <TopicSourceMapEditor map={(scene as typeof scene & { sourceMap: AssistantWhiteboardSourceMap }).sourceMap} origin={source.value.origin}
+          onChange={sourceMap => change({ ...content, scenes: content.scenes.map((item, current) => current === index ? { ...item, sourceMap } : item) })}/>}
         <WhiteboardExhibit exhibit={scene.exhibit}/>
         {scene.figure && <div className="tw-figure-caption"><p>本幕已选图片，保存时会重新核对原图和教学内容。</p>
           <label>已选图片的替代说明<textarea maxLength={600} value={scene.figure.alt} onChange={event => sceneChange(index, { figure: { ...scene.figure!, alt: event.target.value } })}/></label>

@@ -19,6 +19,7 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
   const guidanceReply=require('./guidance-model-fixture.cjs').installGuidanceModelFixture(app);
   const sourceCheckReply=require('./source-check-fixture.cjs').installSourceCheckFixture(app);
   const topicReply=require('./topic-whiteboard-fixture.cjs').installTopicWhiteboardFixture(app);
+  const assistantWhiteboardReply=require('./assistant-whiteboard-fixture.cjs').installAssistantWhiteboardFixture(app);
   const whiteboardQuestionReply=require('./whiteboard-question-fixture.cjs').installWhiteboardQuestionFixture();
   const teachingReply=require('./teaching-tool-fixture.cjs').installTeachingToolFixture(app);
   provider.reply=async input=>{
@@ -37,6 +38,7 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
     return{...payload,modelId:input.modelId,modelName:'Synthetic classroom fixture'};
   };
   provider.structured=async(input,schema,check,custom=true)=>{
+    const sourceWhiteboard=await assistantWhiteboardReply(input,check);if(sourceWhiteboard)return sourceWhiteboard;
     const teaching=await teachingReply(input,check);if(teaching)return teaching;
     const question=await whiteboardQuestionReply(input,check);if(question)return question;
     const topic=await topicReply(input,check);if(topic)return topic;

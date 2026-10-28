@@ -1,8 +1,8 @@
 'use client';
-import { topicWhiteboardContentSchema } from '@study-agent/contracts';
+import { assistantWhiteboardContentSchema, topicWhiteboardContentSchema } from '@study-agent/contracts';
 import { WhiteboardExhibit } from '../whiteboard-exhibit';
 export function TopicManuscript({ content }: { content: unknown }) {
-  const parsed = topicWhiteboardContentSchema.safeParse(content);
+  const parsed = topicWhiteboardContentSchema.or(assistantWhiteboardContentSchema).safeParse(content);
   if (!parsed.success) return <p role="status">此原稿暂不能排版，请下载完整版本核对。</p>;
   const manuscript = parsed.data;
   return <article className="tw-manuscript"><h3>{manuscript.title}</h3><p>{manuscript.description}</p>

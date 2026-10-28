@@ -1,4 +1,4 @@
-import { topicWhiteboardConfirmSchema, topicWhiteboardControlSchema, topicWhiteboardEditSchema,
+import { assistantWhiteboardCreateSchema, assistantWhiteboardEditSchema, topicWhiteboardConfirmSchema, topicWhiteboardControlSchema, topicWhiteboardEditSchema,
   topicVisualGenerateSchema, topicVisualEditSchema, topicVisualControlSchema, questionVisualGenerateSchema, questionVisualEditSchema, questionVisualControlSchema } from '@study-agent/contracts';
 function canonical(value: unknown): unknown {
   if (Array.isArray(value)) return value.map(canonical);
@@ -9,8 +9,16 @@ function canonical(value: unknown): unknown {
 export async function topicCommandMatches(action: 'edit' | 'confirm' | 'cancel' | 'retry', body: unknown, fingerprint?: string) {
   if (!fingerprint || !globalThis.crypto?.subtle) return false;
   try {
-    const command = (action === 'edit' ? topicWhiteboardEditSchema : action === 'confirm' ? topicWhiteboardConfirmSchema : topicWhiteboardControlSchema).parse(body);
+    const command = (action === 'edit' ? topicWhiteboardEditSchema.or(assistantWhiteboardEditSchema) : action === 'confirm' ? topicWhiteboardConfirmSchema : topicWhiteboardControlSchema).parse(body);
     const identity = { ...(['cancel', 'retry'].includes(action) ? { action } : {}), ...command, requestKey: undefined };
+    const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(canonical(identity))));
+    return [...new Uint8Array(digest)].map(value => value.toString(16).padStart(2, '0')).join('') === fingerprint;
+  } catch { return false; }
+}
+export async function assistantWhiteboardCommandMatches(sessionId: string, body: unknown, fingerprint?: string) {
+  if (!fingerprint || !globalThis.crypto?.subtle) return false;
+  try {
+    const command = assistantWhiteboardCreateSchema.parse(body), identity = { kind: 'assistant-topic-whiteboard-v1', sessionId, ...command, requestKey: undefined };
     const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(canonical(identity))));
     return [...new Uint8Array(digest)].map(value => value.toString(16).padStart(2, '0')).join('') === fingerprint;
   } catch { return false; }
