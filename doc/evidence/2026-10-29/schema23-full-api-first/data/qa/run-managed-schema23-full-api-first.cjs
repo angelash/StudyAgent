@@ -1,0 +1,7 @@
+const fs=require('node:fs'),path=require('node:path'),{spawnSync}=require('node:child_process');
+const root=path.resolve(__dirname,'../..'),prefix='data/qa/schema23-full-api-first',log=path.join(root,prefix+'.log');
+if(fs.existsSync(log)||fs.existsSync(path.join(root,prefix+'.json')))throw Error('Original full API output exists');
+const frozen=spawnSync('python',['-X','utf8','data/qa/freeze-schema23-full-api-first.py'],{cwd:root,windowsHide:true,stdio:'inherit'});if(frozen.status!==0)throw Error('Input freeze failed');
+const fd=fs.openSync(log,'wx');let result;try{result=spawnSync(process.execPath,['--env-file=../../.env','../../node_modules/vitest/vitest.mjs','run','--maxWorkers=2','--reporter=default','--reporter=json','--outputFile='+path.join(root,prefix+'.json')],{cwd:path.join(root,'apps/api'),env:process.env,windowsHide:true,stdio:['ignore',fd,fd]});}finally{fs.closeSync(fd);}
+const verified=spawnSync('python',['-X','utf8','data/qa/freeze-schema23-full-api-first.py','--verify'],{cwd:root,windowsHide:true,encoding:'utf8'});fs.writeFileSync(path.join(root,prefix+'-inputs-verification.log'),(verified.stdout??'')+(verified.stderr??''),{flag:'wx'});
+const receipt={at:new Date().toISOString(),testExit:result.status,verificationExit:verified.status,reportPresent:fs.existsSync(path.join(root,prefix+'.json'))};fs.writeFileSync(path.join(root,prefix+'-process-result.json'),JSON.stringify(receipt,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(receipt));process.exitCode=result.status||verified.status||0;

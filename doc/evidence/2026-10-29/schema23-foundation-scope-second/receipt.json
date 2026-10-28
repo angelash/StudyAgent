@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "stats": {
+    "numPassedTests": 3,
+    "numFailedTests": 0,
+    "numPendingTests": 0
+  },
+  "configuration": {
+    "STUDY_SEED_FOUNDATION": "true",
+    "STUDY_WORKER_ENABLED": "false",
+    "XIAOJIU_CHAT_ENABLED": "false"
+  },
+  "scope": "The same two original durability suites,3 cases,pass with explicit foundation seed enabled. Product,test source and compiled inputs are unchanged. The previous complete API run remains1747 pass/2 fail/73 skip. A fresh full run uses the corrected runner environment.",
+  "files": {
+    "data/qa/schema23-foundation-scope-second.json": {
+      "bytes": 2301,
+      "sha256": "9cb3bf505768010929cfaff4b6c0a775c49843a3efe468048c5295a6dc55b43a"
+    },
+    "apps/api/src/durability.integration.test.ts": {
+      "bytes": 11503,
+      "sha256": "d778ad524292ed2c998f2b1da5b7668c0bd32cad4385e7385476b052b62bd020"
+    },
+    "apps/api/src/modules/student-media/student-media.durability.integration.test.ts": {
+      "bytes": 11222,
+      "sha256": "9ffbff8e034fa33542f7c6ed719aa6966723d39992b57fd9286adde286c4bc73"
+    },
+    "original.log.gz": {
+      "sha256": "d1a1a9941c33a58b7602fecb87c20261eb834600ebdca8bf50418ddc03d12b37",
+      "originalSha256": "1618b06f96fc5f446d4c8d75500443884620f5ffc31d4e91b24e1f904e95cd98"
+    }
+  }
+}

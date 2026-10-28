@@ -1,0 +1,85 @@
+{
+  "passed": false,
+  "sourceCommit": "44feae7fc33bd9d7e615caa425c1bbe959ccb830",
+  "stats": {
+    "numPassedTests": 1747,
+    "numFailedTests": 2,
+    "numPendingTests": 73
+  },
+  "frozenInputs": {
+    "checked": 2605,
+    "changed": []
+  },
+  "process": {
+    "at": "2026-10-28T17:17:59.909Z",
+    "testExit": 1,
+    "verificationExit": 0,
+    "reportPresent": true
+  },
+  "failures": [
+    {
+      "name": "real API persistence across application restarts restores session, student, immutable assessment and practice draft; failed requests leave no partial mutations",
+      "error": "TypeError: Cannot read properties of undefined (reading 'atomId')"
+    },
+    {
+      "name": "real SQLite media upload recovery and deletion outbox resumes a partially uploaded image across API restarts, restores the saved draft, and cleans bytes only after committed deletion",
+      "error": "Error: expected 200 \"OK\", got 400 \"Bad Request\""
+    }
+  ],
+  "observedConfiguration": {
+    "STUDY_SEED_FOUNDATION": "false",
+    "STUDY_WORKER_ENABLED": "false",
+    "STUDY_STORAGE": "sqlite",
+    "XIAOJIU_CHAT_ENABLED": "false"
+  },
+  "investigation": "Both failing fixtures expect seeded foundation content but this worktree explicitly disables it. Re-run those actual two fixtures with explicit foundation seed enabled before attributing the failures to runner configuration. Original failed complete run remains failed.",
+  "limits": [
+    "No source-whiteboard creation/worker/adoption or production completion claim.",
+    "No source inputs changed during the original managed run."
+  ],
+  "files": {
+    "data/qa/schema23-full-api-first.json": {
+      "bytes": 885641,
+      "sha256": "c18f2509a4c7a261c8e8be16ffd61fdd9c02738b6ccbb8c16c7a49059ead244c"
+    },
+    "data/qa/schema23-full-api-first-inputs.json": {
+      "bytes": 497896,
+      "sha256": "a4a052debb3d68e5f6bf0d1f79f1fe143b062669f8145f67a6e62de161aa9edf"
+    },
+    "data/qa/schema23-full-api-first-process-result.json": {
+      "bytes": 106,
+      "sha256": "ae7a11a531297dfb848a989fc66689908e0bdd6bb8473be9840912ab9a044f11"
+    },
+    "data/qa/run-managed-schema23-full-api-first.cjs": {
+      "bytes": 1531,
+      "sha256": "0516c84ae06d84e4fb1d59ff93bccd37d9719cca003ea3549bb91880a1623f01"
+    },
+    "data/qa/freeze-schema23-full-api-first.py": {
+      "bytes": 1239,
+      "sha256": "774ab196d71eda317423765f46097cc7a42c069dd797c3be2f9784ed8b5aa3a6"
+    },
+    "apps/api/src/durability.integration.test.ts": {
+      "bytes": 11503,
+      "sha256": "d778ad524292ed2c998f2b1da5b7668c0bd32cad4385e7385476b052b62bd020"
+    },
+    "apps/api/src/modules/student-media/student-media.durability.integration.test.ts": {
+      "bytes": 11222,
+      "sha256": "9ffbff8e034fa33542f7c6ed719aa6966723d39992b57fd9286adde286c4bc73"
+    },
+    "schema23-full-api-first.log.gz": {
+      "sha256": "605fb9ab5ce979971ae1b9de83320bcf6b7198957183b327a3394e1fb543d460",
+      "originalSha256": "77798f7d5a7a56cc0e48caeee8f907270b71da18593b3c8379f6b9fc2b196a0d",
+      "originalBytes": 79386
+    },
+    "schema23-full-api-first-inputs-verification.log.gz": {
+      "sha256": "c5b64dee82428730a6db79dfaa3ee8127ef0094bafa38d6ad3018b1171149fa3",
+      "originalSha256": "7d199b0661dcf7363d1493f5d2e4123f93c34fb67c108866abb78fe3112e785c",
+      "originalBytes": 34
+    },
+    "schema23-existing-build-first.log.gz": {
+      "sha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "originalBytes": 66
+    }
+  }
+}
