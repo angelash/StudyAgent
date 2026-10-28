@@ -1,0 +1,79 @@
+{
+  "passed": false,
+  "sourceRevision": "088b8f6b9f2f1df45a368ae260d91e686123dd38",
+  "counts": {
+    "numPassedTests": 1734,
+    "numFailedTests": 3,
+    "numPendingTests": 70
+  },
+  "controls": {
+    "checked": 3150,
+    "changed": []
+  },
+  "actualFailures": [
+    {
+      "file": "topic-whiteboard-visual-files.test.ts",
+      "name": "topic figure original files and native recovery backs up all current schema20 image references and cold restores their original byte identities",
+      "failureMessages": [
+        "AssertionError: expected 22 to be 21 // Object.is equality\n    at F:/workspace/github/StudyAgent-note-artifacts/apps/api/src/modules/learning/topic-whiteboard-visual-files.test.ts:46:54\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+      ]
+    },
+    {
+      "file": "whiteboard-question-visual.integration.test.ts",
+      "name": "actual original-answer image HTTP tasks, byte identity and adoption versions on SQLite cold restores actual version PNGs, then applies a newer deletion ledger without resurrecting private images or erasing another owner",
+      "failureMessages": [
+        "AssertionError: expected 22 to be 21 // Object.is equality\n    at F:/workspace/github/StudyAgent-note-artifacts/apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts:193:64\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+      ]
+    },
+    {
+      "file": "paper-practice-recovery.integration.test.ts",
+      "name": "sqlite original paper practice native recovery cold restores exact first answers, corrections and request receipts with original media, and applies newer child and account deletion receipts",
+      "failureMessages": [
+        "AssertionError: expected 22 to be 21 // Object.is equality\n    at F:/workspace/github/StudyAgent-note-artifacts/apps/api/src/modules/library/paper-practice-recovery.integration.test.ts:100:64\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+      ]
+    }
+  ],
+  "scope": "First complete API run with note schema22; no live provider call. Three native backup metadata assertions still expect former21; current actual22. Original assertions, full reports and exact frozen inputs preserved before repair.",
+  "files": {
+    "data/qa/note-full-api-first.json": {
+      "bytes": 875026,
+      "sha256": "7cb37122ed476ab05126fb7eccbd446f935c37d2ba7bd8ff973263d750b73027",
+      "gzipSha256": "9ccc5de90b4e7b9a6c919426ad65661c7bcacb35c86c0c2a1203f807971cac22"
+    },
+    "data/qa/note-full-api-first.log": {
+      "bytes": 481,
+      "sha256": "5dc09210232d7a40c3687203df6f8f9ea316af61420785fac4d85da319806d0d",
+      "gzipSha256": "08ff5e0010a2bf557ec29d4352343834f05ce111dde8ec90c7cf2f3720e1fe53"
+    },
+    "data/qa/note-full-api-first-inputs.json": {
+      "bytes": 611421,
+      "sha256": "ac6dc64c39a76176ed173141e3c443a2bd4daa89dcaabf0af5a03df89b0a5c08",
+      "gzipSha256": "fa983a643dbd62381693315b24ed2ef614c2796bd7d5aa1d5bb3d3d4b96c1b29"
+    },
+    "data/qa/note-full-api-first-inputs-verification.log": {
+      "bytes": 34,
+      "sha256": "2c6f64f86172f5d0c39be4b9302c8b530693e6bf7cb4b1c1f452be5a62271c1e",
+      "gzipSha256": "e77034adc91124a613b2eccec4da2e2c3fd9052b793e832a2fed2a8478e21818"
+    },
+    "data/qa/note-full-api-build-first.log": {
+      "bytes": 66,
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "gzipSha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c"
+    },
+    "apps/api/src/modules/learning/topic-whiteboard-visual-files.test.ts": {
+      "bytes": 6657,
+      "sha256": "1f3e93fffc8e760ffae0c2b796d4a763a59464b1548e958a4cc6d2d24dccc092",
+      "gzipSha256": "f99b0e5a45da4bc1a406cde538e9bf26db4ba27943be6866f904ac7cf71c5552"
+    },
+    "apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts": {
+      "bytes": 25739,
+      "sha256": "973aba1d20ed99e59a3ceb99506f1afc5b47eb3b7ab8273b6ed5dcaa929b5e5b",
+      "gzipSha256": "02aceeecbe1c2a59082e43ede41409628f428f81fd55d5f811790b60150ee793"
+    },
+    "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts": {
+      "bytes": 19068,
+      "sha256": "cd8967bc66bc17ff8386da2b731b943c11307a87b41ca99138604a9a4b21c42d",
+      "gzipSha256": "b9da53b8b889585bbe2543f491cdba1f093cfbb9739257d30d6f4ced1e65e9aa"
+    }
+  }
+}
