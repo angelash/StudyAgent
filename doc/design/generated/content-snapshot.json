@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "fa8328b0a5a6cab67e0b9a923c0f3a7a6bb0452d",
+  "sourceRevision": "2b1a0471ddf1bef152f601f53d57148c4e188151",
   "scope": "Static versioned curriculum and registry counts. No real family database, full raw-asset byte inventory, runtime model calls, textbook coverage review or human validity study.",
   "authored": {
-    "auditAt": "2026-10-28T08:04:39.144Z",
+    "auditAt": "2026-10-28T10:15:13.362Z",
     "auditCommand": "node scripts/qa/audit-authored-curriculum.cjs data/qa/project-design-authored-audit.json",
     "localAuditArtifact": "data/qa/project-design-authored-audit.json",
-    "localAuditSha256": "6d62b717eb9a64fa7ce254c35c07f98190188559c637d87d17d6265c0e7cdd1c",
+    "localAuditSha256": "f8a6007e5c109c1a0c900ff027279eca1af6e305d2a9f6ef4f0ec25e60536a61",
     "passed": true,
     "familyIdentityVersion": "authored-family-identity-v1",
     "materialCoverageVersion": "verification-materials-v1",
@@ -168,8 +168,8 @@
       "apps/api/src/modules/diagnostics/verification-blueprint.ts": "c2cd5f751219f214dd1cc023bf436432d3126e8745bece848ee18e3418aa5318",
       "apps/api/src/modules/diagnostics/diagnosis.ts": "d8bd4a3f06d93a502147e29b40fa2e2410ceaf436a44065cf2ee967480c25c5e",
       "apps/api/src/modules/diagnostics/family-identity.ts": "8b5d173190e934e94cf1dfc2193948e12f9433c051cb2d50c13c1373bf6a9ae8",
-      "apps/api/src/modules/diagnostics/foundation-curriculum.ts": "c4e9964ff87e377f93ae6a8645e9f2697de239aaf563d5f502aba6decea7896b",
-      "apps/api/src/modules/diagnostics/foundation-seed.service.ts": "2af3b38205d266f2057e08bacfcd39848dcbe9793255f7562feeb9db0d55a0a7",
+      "apps/api/src/modules/diagnostics/foundation-curriculum.ts": "4f19849d196851aabe909b8015ca973247b0059543aede1c1a1fe219f65a5e2e",
+      "apps/api/src/modules/diagnostics/foundation-seed.service.ts": "8346b0db77e7fdb226fed8a0e5c8202f48b80343291017c26f527d24e6628e97",
       "apps/api/src/modules/diagnostics/original-core-curriculum.ts": "074362bce5cf82d4c2aedc076a07e8bc88bf53cd1a81981af0dc74f44394860f",
       "apps/api/src/modules/diagnostics/structured-curriculum.ts": "755432706885ca702fd8ace559497d4e83c14a945dbf860fc4aedb3e5c307f11",
       "apps/api/src/modules/diagnostics/authored-relation-release.ts": "019c3b2909663d2c30a92683045850e0fbc397009b65634d62466f7c3103a55b",
@@ -195,7 +195,7 @@
       "apps/api/src/modules/diagnostics/authored-chinese-teaching.ts": "e5ad7c8cbe190684ca2fc3da7074242b40ec074e54fbe49bd046d8ab7cbd62b6",
       "apps/api/src/modules/diagnostics/authored-english-teaching.ts": "bf50eded86a4149bbbf8845e589330ab9ef716f8043576e82beb81ff0082dc8c",
       "apps/api/src/modules/diagnostics/teaching-author.ts": "8d4153fd7d4d80b02a00788402cd053e9c600af3b87cf65ea43af2599f91049c",
-      "scripts/qa/audit-authored-curriculum.cjs": "fd2f9092cffa3158c0bd70ba9f49777d76224162455eeb0a6a95c87b8c73e0ae",
+      "scripts/qa/audit-authored-curriculum.cjs": "60ec78e081cefe712c83c169f2f1a01c1896d62e575d6f5e749031c50cc74efb",
       "apps/api/src/modules/question-workspace/question-workspace.service.ts": "f6a31532bd170a4e8857947a66cdd2b72845af89e1d3c6d79fc77ac3ddafc187",
       "resources/curriculum/authored-family-identities-v1.json": "ca6329ae34a3a741730fe006d4f2f7a14a3dbeda66ea6b30fb370fb6450e55eb",
       "resources/curriculum/authored-task-baseline-5678-v1.json": "7a701002c3d6a386bc0c63aff1d895d4e8e35451749eff9b11db9ab78f312cae",
@@ -251,7 +251,7 @@
       "apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts": "e3af27d7b9042dd0feead644259ba6be43850332eeb8ab14a3bf21576bb4a022",
       "apps/api/src/infrastructure/in-memory-store.service.ts": "ce648465c2b2fc27247e102c1a48c2aa6961f7e89d39956042dd1109e721bb0d",
       "apps/api/src/infrastructure/domain-database.ts": "fab175f122447097ac5b927d257f97eace1a6bda5be86d1b499b09a5501b1ef5",
-      "apps/api/src/common/auth.guard.ts": "ad427708fa3e51b2335c40ed539a1fb0eb66f83ee37ccc08bfd950a69b34a5f2",
+      "apps/api/src/common/auth.guard.ts": "52b5c56909f2ef4f13865ee3e981ccac829a5f2deb02b81fde515ebb496e8c17",
       "apps/web/app/admin/gesp/page.tsx": "4d2d3f74e8a5d3a6d424b68f4ab07e52e409755ae18be4bc040403b17c8e2ebf",
       "apps/web/app/admin/gesp/gesp.css": "49aa3d48ce34e2e3479cd2871806df0f067fce96a853ab77d6c8ad82c827ddcd",
       "apps/api/src/modules/privacy/privacy-records.ts": "da5bb417ed517a2b114b290e74c7dc8e4a9357637f5a230d367624a1863d240a",
@@ -262,12 +262,12 @@
       "apps/web/app/student/gesp/gesp-student.css": "47f71ffde36f84f529a1a0860b54c567ec074103f9f4c3be9979566964e3e72e",
       "apps/web/app/admin/curriculum/mapping-worklist.tsx": "0a2a91ead25a5ff1c7121f8e2eb16f122c13b4e41fe06d66ea35b71f7f818016",
       "apps/web/app/admin/curriculum/mapping-worklist.css": "5c28b1225f4fc22e21f865d91ed254ef40beaabcf5356f3aa4eee6d06f5593f7",
-      "apps/api/src/modules/diagnostics/curriculum.service.ts": "7ee62a0f5dba5d7dd8ed96b847878fcd481d3d8524796702cfffbeae1ff8d055",
-      "apps/api/src/modules/diagnostics/diagnostics.controller.ts": "30dc943762da40abd3750a6b51b52998e425071661016ca94df035c58dc47289",
-      "apps/api/src/modules/diagnostics/textbook-registry.service.ts": "3a385470076591e05909d5ba5dab688e9dedabd0caa9b2b1723e413e73bdb016",
+      "apps/api/src/modules/diagnostics/curriculum.service.ts": "4710a6d2c26e41ebb6f6ba76cb2a1d118fd53c1eddb14c7af64b755da86b505b",
+      "apps/api/src/modules/diagnostics/diagnostics.controller.ts": "efb662d72922454b817b1bda2f5111ade453f3b1f254071c42081cbffaf8b0f2",
+      "apps/api/src/modules/diagnostics/textbook-registry.service.ts": "712d96896766ca75f4789deace4c8626f1da4c4883a275c84a13eaafe528d128",
       "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts": "45d810912de776d0dd6b04dc0dc78f52de70059d681a9f1d301060a6ecba590f",
       "apps/api/src/common/stream-file.ts": "30cbd53b45fbcd2c3fcc2faf687b198909763e094f9b0008a09d2b5575c4bac7",
-      "apps/web/app/admin/curriculum/page.tsx": "56ad0bf17b915d8987f32c37d15996016412e754f92c54ff2f868fa569074d38",
+      "apps/web/app/admin/curriculum/page.tsx": "2f7c5c480eb6a05aab612cbb9f7530957914f8f48c6c58127a650f2dceca6dcd",
       "apps/web/app/admin/curriculum/curriculum.css": "8a5f1a19523876779f42d8b4a2d39839b1d80457cbbd7e04160c91a8633ad839",
       "resources/curriculum/atom-catalog-v1.json": "02464cb314814076ec25c3bfcdc60449f8077a84862f01b94eb65bc19298fc70",
       "resources/curriculum/chinatextbook-chinese-v1.json": "14a67198b3c05cc7cc9a38f0c0b10159c9370c00e726ea04dcf100687759386e",
@@ -373,7 +373,20 @@
       "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-8.svg": "a161387abf15abe31c69271ea3b14f6fc3f23df2c096544c7a12f3091543163a",
       "apps/web/public/question-assets/fourth-grade-geometry-statistics-v1/rotated-angle-9.svg": "37131d792b2d45c3621df63f5eb044e6716f191c5e0d113a3bade8db105ff098"
     },
-    "interpretation": "Structural completeness of currently authored points and material budgets only. Not full textbook coverage or standardized measurement validity."
+    "interpretation": "Primary-school foundation math, Chinese and English structural audit only. Chemistry is inventoried separately. Not full textbook coverage or standardized measurement validity."
+  },
+  "chemistry": {
+    "version": "guangzhou-pep-chemistry-9-upper-v1",
+    "grade": 9,
+    "term": "upper",
+    "units": 7,
+    "authoredPoints": 28,
+    "teachingCards": 28,
+    "originalRuleExercises": 2016,
+    "sourceSha256": {
+      "apps/api/src/modules/diagnostics/chemistry-curriculum.ts": "10336870bd2e857a87bdc90e766ead80d92ec8973c6212c7cca4758690d67371"
+    },
+    "interpretation": "Separate original chemistry course counts. Exercise count is not independent family count, a standardized norm, teacher approval, publisher textbook coverage or real learner retention evidence."
   },
   "registry": {
     "textbooks": {
@@ -420,7 +433,7 @@
     "multipleChoiceUnitChecks": 1,
     "hintLevels": 490,
     "sourceSha256": {
-      "apps/api/src/modules/learning/classroom-curriculum.ts": "2b5a13b8dabee036270ff668ba75540a621a493e53d4caf5555aa97c81a3aeef",
+      "apps/api/src/modules/learning/classroom-curriculum.ts": "3ea7a9ca76205ed74688c8060dc7a8069c87a4fe74c3a092a7feca0611a6f84d",
       "apps/api/src/modules/learning/classroom-board-notes.ts": "516a04a5ed971e481c6d8b0c44373c522d512394bf1b3d2dec1c04a2a103c24b",
       "apps/api/src/modules/learning/classroom-unit-checks.ts": "d7d0a955650dc6a0c49debda3568f08be789ed10e624252858af6f343cbde0e6",
       "apps/api/src/modules/learning/classroom-choice-content.ts": "71343c977df47a9f5526eaedd9ae553da8a42c36df1821e85dcc2488f5b39168",

@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`fa8328b0a5a6cab67e0b9a923c0f3a7a6bb0452d`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`2b1a0471ddf1bef152f601f53d57148c4e188151`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`、`/studio/whiteboards`。
 
@@ -48,6 +48,48 @@
 - [tests/e2e/course-builder.spec.ts](../../../tests/e2e/course-builder.spec.ts)
 - [tests/e2e/workspace.spec.ts](../../../tests/e2e/workspace.spec.ts)
 
+## STUDIO-36 九上化学课程、真实学科与独立核查
+
+**输入**：本人档案、实际化学课程身份、单元/学期核查、原请求与课程版本。
+
+**处理与实现**：课程库提供七单元28目标的原创九上化学教学路径，预览不建课，显式添加保留范围与原请求。真实课程决定subject/grade，旧数学参数不能覆盖化学正文；标题请求与所选学科/年级不符时拒绝，旧错误课程可按原指纹预检和精确修正，保留学生档案、原数学课程与作答。原生课堂、配套练习、独立核查、证据报告、原因核查、指导及到期复测沿现有流程。课程助教带实际化学原文/目标/来源，区分四年级档案与九年级课程，正式评测保护与原出处页头身份同调。
+
+**输出**：可恢复原生课程与化学考核、独立作答记录、保留原版本的教学问答和来源。
+
+**状态与持久化**：`studioCourses`、`learningScopes`、`diagnosticSessions`、`diagnosticResponses`、`diagnosticPlans`、`reviewTasks`
+
+**权限、失败与边界**：2016配套规则题的数量不等于2016独立题族或常模；原创路径不是现行教材逐页恢复，参考目录/PDF不自动获教学资格。看过讲解、提示后作答、独立首答与模拟时钟结果分开；真实保持、教师审核、全模型与像素听感仍需证据。
+
+**关联接口**：
+
+- `GET /api/chemistry/catalog` → `ChemistryController.catalog`；[apps/api/src/modules/learning/chemistry.controller.ts:9](../../../apps/api/src/modules/learning/chemistry.controller.ts#L9)。
+- `POST /api/chemistry/enroll` → `ChemistryController.enroll`；[apps/api/src/modules/learning/chemistry.controller.ts:10](../../../apps/api/src/modules/learning/chemistry.controller.ts#L10)。
+- `POST /api/chemistry/checkpoints/start` → `ChemistryController.start`；[apps/api/src/modules/learning/chemistry.controller.ts:11](../../../apps/api/src/modules/learning/chemistry.controller.ts#L11)。
+
+**服务方法**：
+
+- `ChemistryService.catalog`；[apps/api/src/modules/learning/chemistry.service.ts:96](../../../apps/api/src/modules/learning/chemistry.service.ts#L96)。
+- `ChemistryService.enroll`；[apps/api/src/modules/learning/chemistry.service.ts:125](../../../apps/api/src/modules/learning/chemistry.service.ts#L125)。
+- `ChemistryService.start`；[apps/api/src/modules/learning/chemistry.service.ts:151](../../../apps/api/src/modules/learning/chemistry.service.ts#L151)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/diagnostics/chemistry-curriculum.ts](../../../apps/api/src/modules/diagnostics/chemistry-curriculum.ts)
+- [apps/api/src/modules/diagnostics/chemistry-curriculum.test.ts](../../../apps/api/src/modules/diagnostics/chemistry-curriculum.test.ts)
+- [apps/api/src/modules/learning/chemistry.controller.ts](../../../apps/api/src/modules/learning/chemistry.controller.ts)
+- [apps/api/src/modules/learning/chemistry-course.ts](../../../apps/api/src/modules/learning/chemistry-course.ts)
+- [apps/api/src/modules/learning/chemistry-course-correction.ts](../../../apps/api/src/modules/learning/chemistry-course-correction.ts)
+- [apps/api/src/modules/learning/chemistry.integration.test.ts](../../../apps/api/src/modules/learning/chemistry.integration.test.ts)
+- [apps/api/src/modules/learning/chemistry-course-correction.integration.test.ts](../../../apps/api/src/modules/learning/chemistry-course-correction.integration.test.ts)
+- [apps/api/src/modules/ai/assistant-chemistry.integration.test.ts](../../../apps/api/src/modules/ai/assistant-chemistry.integration.test.ts)
+- [packages/contracts/src/chemistry.ts](../../../packages/contracts/src/chemistry.ts)
+- [packages/contracts/src/studio-course-request.ts](../../../packages/contracts/src/studio-course-request.ts)
+- [apps/web/app/studio/chemistry-course-tools.tsx](../../../apps/web/app/studio/chemistry-course-tools.tsx)
+- [apps/web/app/studio/course-assessments.css](../../../apps/web/app/studio/course-assessments.css)
+- [tests/e2e/chemistry.spec.ts](../../../tests/e2e/chemistry.spec.ts)
+- [doc/product/142-guangzhou-chemistry-teaching-validation.md](../../../doc/product/142-guangzhou-chemistry-teaching-validation.md)
+- [doc/product/143-chemistry-course-content-correction.md](../../../doc/product/143-chemistry-course-content-correction.md)
+
 ## STUDIO-01 统一工作台、课程筛选与连续学习
 
 **输入**：view、student、subject、course、关键词、状态、类型、来源、最近学习与排序。
@@ -93,9 +135,9 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:525](../../../apps/api/src/modules/learning/learning.service.ts#L525)。
-- `LearningService.createStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:541](../../../apps/api/src/modules/learning/learning.service.ts#L541)。
-- `LearningService.startStudioLesson`；[apps/api/src/modules/learning/learning.service.ts:570](../../../apps/api/src/modules/learning/learning.service.ts#L570)。
+- `LearningService.previewStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:532](../../../apps/api/src/modules/learning/learning.service.ts#L532)。
+- `LearningService.createStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:550](../../../apps/api/src/modules/learning/learning.service.ts#L550)。
+- `LearningService.startStudioLesson`；[apps/api/src/modules/learning/learning.service.ts:579](../../../apps/api/src/modules/learning/learning.service.ts#L579)。
 
 **补充实现文件**：
 
@@ -326,8 +368,8 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:215](../../../apps/api/src/modules/learning/learning.service.ts#L215)。
-- `LearningService.createStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:227](../../../apps/api/src/modules/learning/learning.service.ts#L227)。
+- `LearningService.previewStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:222](../../../apps/api/src/modules/learning/learning.service.ts#L222)。
+- `LearningService.createStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:234](../../../apps/api/src/modules/learning/learning.service.ts#L234)。
 
 **补充实现文件**：
 
@@ -351,7 +393,7 @@
 
 **服务方法**：
 
-- `LearningService.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.service.ts:501](../../../apps/api/src/modules/learning/learning.service.ts#L501)。
+- `LearningService.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.service.ts:508](../../../apps/api/src/modules/learning/learning.service.ts#L508)。
 
 **补充实现文件**：
 
@@ -400,9 +442,9 @@
 
 **服务方法**：
 
-- `LearningService.uploadStudioPdf`；[apps/api/src/modules/learning/learning.service.ts:259](../../../apps/api/src/modules/learning/learning.service.ts#L259)。
-- `LearningService.studioPdfPageImage`；[apps/api/src/modules/learning/learning.service.ts:320](../../../apps/api/src/modules/learning/learning.service.ts#L320)。
-- `LearningService.studioPdfOriginal`；[apps/api/src/modules/learning/learning.service.ts:330](../../../apps/api/src/modules/learning/learning.service.ts#L330)。
+- `LearningService.uploadStudioPdf`；[apps/api/src/modules/learning/learning.service.ts:266](../../../apps/api/src/modules/learning/learning.service.ts#L266)。
+- `LearningService.studioPdfPageImage`；[apps/api/src/modules/learning/learning.service.ts:327](../../../apps/api/src/modules/learning/learning.service.ts#L327)。
+- `LearningService.studioPdfOriginal`；[apps/api/src/modules/learning/learning.service.ts:337](../../../apps/api/src/modules/learning/learning.service.ts#L337)。
 
 **补充实现文件**：
 
@@ -446,8 +488,8 @@
 
 **服务方法**：
 
-- `LearningService.reviewStudioPdfStructure`；[apps/api/src/modules/learning/learning.service.ts:345](../../../apps/api/src/modules/learning/learning.service.ts#L345)。
-- `LearningService.retryStudioPdfProcessing`；[apps/api/src/modules/learning/learning.service.ts:373](../../../apps/api/src/modules/learning/learning.service.ts#L373)。
+- `LearningService.reviewStudioPdfStructure`；[apps/api/src/modules/learning/learning.service.ts:352](../../../apps/api/src/modules/learning/learning.service.ts#L352)。
+- `LearningService.retryStudioPdfProcessing`；[apps/api/src/modules/learning/learning.service.ts:380](../../../apps/api/src/modules/learning/learning.service.ts#L380)。
 
 ## STUDIO-14 PDF页级白板
 
@@ -468,8 +510,8 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:408](../../../apps/api/src/modules/learning/learning.service.ts#L408)。
-- `LearningService.createStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:423](../../../apps/api/src/modules/learning/learning.service.ts#L423)。
+- `LearningService.previewStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:415](../../../apps/api/src/modules/learning/learning.service.ts#L415)。
+- `LearningService.createStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:430](../../../apps/api/src/modules/learning/learning.service.ts#L430)。
 
 **补充实现文件**：
 
@@ -494,8 +536,8 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:453](../../../apps/api/src/modules/learning/learning.service.ts#L453)。
-- `LearningService.createStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:474](../../../apps/api/src/modules/learning/learning.service.ts#L474)。
+- `LearningService.previewStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:460](../../../apps/api/src/modules/learning/learning.service.ts#L460)。
+- `LearningService.createStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:481](../../../apps/api/src/modules/learning/learning.service.ts#L481)。
 
 **补充实现文件**：
 
@@ -521,9 +563,9 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:118](../../../apps/api/src/modules/learning/learning.service.ts#L118)。
-- `LearningService.createStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:134](../../../apps/api/src/modules/learning/learning.service.ts#L134)。
-- `LearningService.updateStudioPlanSession`；[apps/api/src/modules/learning/learning.service.ts:172](../../../apps/api/src/modules/learning/learning.service.ts#L172)。
+- `LearningService.previewStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:125](../../../apps/api/src/modules/learning/learning.service.ts#L125)。
+- `LearningService.createStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:141](../../../apps/api/src/modules/learning/learning.service.ts#L141)。
+- `LearningService.updateStudioPlanSession`；[apps/api/src/modules/learning/learning.service.ts:179](../../../apps/api/src/modules/learning/learning.service.ts#L179)。
 
 **补充实现文件**：
 
