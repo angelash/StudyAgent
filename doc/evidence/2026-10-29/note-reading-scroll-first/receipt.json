@@ -1,0 +1,79 @@
+{
+  "passed": false,
+  "stats": {
+    "startTime": "2026-10-28T16:38:16.166Z",
+    "duration": 124489.415,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "scope": "Bounded reading-area first verification:16 passed,1 fill timeout; no retries. Input/action diagnosis is separate from product acceptance. Original trace stays local.",
+  "originalTrace": "data/qa/source-course-browser-1793205485206-22088/browser-output/assistant-notes-assistant--664b4-rver-writes-remain-disabled/trace.zip",
+  "files": {
+    "data/qa/note-reading-scroll-browser-first.json": {
+      "bytes": 474595,
+      "sha256": "2b41eda31c9593906ec04e576bb488b8e47f50628b4f21495a6e7de7ee4acc04"
+    },
+    "data/qa/note-reading-scroll-browser-first.log": {
+      "bytes": 109742,
+      "sha256": "bc6d2d978999d6782d6c88bef231c958b700f60c24eb0f2bda917fc7082703ac"
+    },
+    "apps/web/components/assistant-notes.tsx": {
+      "bytes": 30205,
+      "sha256": "1397835f82a70d317423ba7059b5e11be278663b25799565139fb454bd0deba9"
+    },
+    "apps/web/components/assistant-notes.css": {
+      "bytes": 6223,
+      "sha256": "a66a7dad23ca18eb84444b0df7d58c9626e50502c54fd80cf89aca1b3f548fe3"
+    },
+    "tests/e2e/assistant-notes.spec.ts": {
+      "bytes": 31719,
+      "sha256": "3c916d88e2a03ea7049399fff9694c050ff511e0fc4578db0b222c365f1b5e14"
+    },
+    "long-note-failure.png": {
+      "bytes": 105511,
+      "sha256": "a025040cd7860aa92bc0c5f570481bf8ff0c6157d1838e75c26de37871145179"
+    },
+    "data/qa/diagnose-long-note-native-first.cjs": {
+      "bytes": 1182,
+      "sha256": "81cefeda37700852c8905b2861b7b5a782db32e28d1c5c993886f3b3607bb3c5"
+    },
+    "data/qa/diagnose-long-note-native-first.json": {
+      "bytes": 224,
+      "sha256": "b3d5c957db4c4bf0b8a40d4b1a0dc5b35762b1abcc0ccf7362962d2600225e52"
+    },
+    "data/qa/diagnose-long-note-native-second.cjs": {
+      "bytes": 1203,
+      "sha256": "d479cb425da881d602d0597512449cc448fcb2e20a88e72616d9dcf943cc0f19"
+    },
+    "data/qa/diagnose-long-note-native-second.json": {
+      "bytes": 386,
+      "sha256": "f3aa6309a4ad43328e15aef3b90745140ffb13eee468a8dd7b1d0123b0f79009"
+    },
+    "data/qa/diagnose-long-note-native-paste-third.cjs": {
+      "bytes": 1414,
+      "sha256": "fa305a8adf7bc35a97cd72bb91d6ea6e461f1bbbc0b18b93114080be1b1f1413"
+    },
+    "data/qa/diagnose-long-note-native-paste-third.json": {
+      "bytes": 119,
+      "sha256": "d735873df66756066fe2b75fe0e30c41bbe92180fba33d87c395ba96524d9835"
+    }
+  },
+  "publishedTrace": {
+    "file": "failure-trace-sanitized.zip",
+    "sha256": "780f1889ef966aab8d13568a97407623d9dce8bee3149ab960fd8f5258de4669",
+    "originalSha256": "02e29ade4923492fb7e029a3f39d478f250d8ce81abdb1c20f04107f415c2494",
+    "sanitization": {
+      "redactedValues": 5,
+      "changedEntries": [
+        "test.trace",
+        "1-trace.trace",
+        "1-trace.network",
+        "resources/c28b80db9e1e0ee8c438a18736ace21784349a4d.json",
+        "resources/fcb5c125549e601dc5af3eaeb62cc0db77a4d778.json"
+      ],
+      "unchangedBinaryEntries": 59
+    }
+  }
+}

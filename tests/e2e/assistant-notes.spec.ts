@@ -128,7 +128,22 @@ test('assistant notes: overlong pasted text stays complete through reopening and
   test.setTimeout(120000); const f = await fixture(page); await enter(page, f.message); await create(page); const dialog = panel(page);
   const text = '全文保留，不截断。\n'.repeat(3100) + '完整末尾_MARKER'; expect(text.length).toBeGreaterThan(30000);
   const before = (await call(f.actor, f.base)).items[0]; const writes: string[] = []; page.on('request', r => { if (['POST', 'PATCH'].includes(r.method()) && r.url().includes('/artifacts/notes')) writes.push(r.url()); });
-  await dialog.getByLabel('笔记编辑稿').fill(text); await expect(dialog.getByLabel('笔记编辑稿')).toHaveValue(text); await expect(dialog.getByRole('status').filter({ hasText: '超出' })).toContainText(String(text.length - 30000));
+  // Exercise a real paste. Chromium insertText used by fill() spends seconds per
+  // thousand newlines even on a bare textarea; a paste inserts the same full text.
+  await page.context().grantPermissions(['clipboard-read', 'clipboard-write'], { origin: new URL(page.url()).origin });
+  const previousClipboard = await page.evaluate(() => navigator.clipboard.readText());
+  try {
+    await page.evaluate(value => navigator.clipboard.writeText(value), text);
+    await dialog.getByLabel('笔记编辑稿').focus(); await page.keyboard.press('ControlOrMeta+A'); await page.keyboard.press('ControlOrMeta+V');
+  } finally { await page.evaluate(value => navigator.clipboard.writeText(value), previousClipboard); }
+  await expect(dialog.getByLabel('笔记编辑稿')).toHaveValue(text); await expect(dialog.getByRole('status').filter({ hasText: '超出' })).toContainText(String(text.length - 30000));
+  const reading = dialog.getByRole('region', { name: '笔记阅读稿', exact: true });
+  await expect(reading).toHaveAttribute('tabindex', '0'); await expect(reading).toContainText('完整末尾_MARKER');
+  expect(await reading.evaluate(node => node.getBoundingClientRect().height)).toBeLessThanOrEqual(421);
+  expect(await reading.evaluate(node => node.scrollHeight > node.clientHeight)).toBe(true);
+  await reading.focus(); await expect(reading).toBeFocused(); await page.keyboard.press('End');
+  await expect.poll(() => reading.evaluate(node => node.scrollTop)).toBeGreaterThan(0);
+  await page.screenshot({ path: evidence + '/complete-overlong-reading-scroll.png' });
   await expect(dialog.getByRole('button', { name: '保存编辑稿', exact: true })).toBeDisabled(); await expect(dialog.getByRole('button', { name: '采用这份笔记', exact: true })).toBeDisabled();
   await page.keyboard.press('Escape'); await enter(page, f.message); await expect(dialog.getByLabel('笔记编辑稿')).toHaveValue(text);
   const download = page.waitForEvent('download'); await dialog.getByRole('button', { name: '下载本机稿', exact: true }).last().click(); const file = await download; expect(JSON.parse(await readFile((await file.path())!, 'utf8')).markdown).toBe(text);
