@@ -3,6 +3,7 @@ import type { Response } from 'express';
 import { AuthGuard, AuthenticatedRequest } from '../../common/auth.guard';
 import { AiService } from './ai.service';
 import { TeachingToolCompatibilityService } from './teaching-tool-compatibility.service';
+import type { AssistantSession, AssistantTeachingSelection } from '@study-agent/contracts';
 
 @UseGuards(AuthGuard)
 @Controller('ai')
@@ -31,6 +32,11 @@ export class AiController {
     return this.aiService.lectureDescriptor(req.user, query);
   }
 
+  @Get('assistant/course-context')
+  courseContext(@Req() req: AuthenticatedRequest, @Query() query: unknown) {
+    return this.aiService.courseDescriptor(req.user, query);
+  }
+
   @Post('assistant/sessions')
   openSession(
     @Req() req: AuthenticatedRequest,
@@ -39,10 +45,11 @@ export class AiController {
       userRole: 'student' | 'parent';
       studentId: string | null;
       subject?: 'math' | 'chinese' | 'english' | null;
-      pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report' | 'classroom' | 'studio';
+      pageContext: AssistantSession['pageContext'];
       contextRefType?: string | null;
       contextRefId?: string | null;
       contextItemId?: string | null;
+      contextSelection?: AssistantTeachingSelection;
     },
   ) {
     return this.aiService.openDurableAssistantSession(body, req.user, req.authSession);

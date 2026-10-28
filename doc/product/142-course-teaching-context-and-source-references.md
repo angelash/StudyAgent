@@ -143,3 +143,17 @@ AssistantSourceReference记录contextFingerprint以及服务器构造的href（s
 ## 18. B1首次精确远端失败的原始记录
 
 42ad7f0/40622126236已全部终态：application/PG success，browser failure。原始报告实际433例，432通过，1例失败并重试仍失败，故434次尝试中2失败、1重试；不能记全绿或零重试。Linux API1639通过/73环境跳过。失败是保留旧讲座的浏览器fixture从新v2快照只改外层description并重算外层SHA，却保留旧teaching.description/catalog identity，运行校验正确拒绝。修复fixture生成完整一致的旧教学版本，另外覆盖真实旧v1格式；保留生产完整性检查和原历史/不新建/不重发断言。全日志、原报告/截图/trace及精确Git原源见[首次精确CI原件](../evidence/2026-10-28/course-b1-ci-first/receipt.json)。当前B2未归入这次CI结论，正式141保持。
+
+## 19. B2a课程权限/持久会话与浏览器fixture修复
+
+已实现GET course-context与course pageContext，primary_unit/material_lesson的严格输入/条件400长引用、服务端档案学科派生和匹配、private assistant-course-v1快照/全模型上下文预算、本人ready作者语境与已确认发布语境、实际选择和覆盖、原版历史/分页/内部返回定位。未知字段/伪造快照/错档案/错学科拒绝；新发及task原授权/原模型/发布栅栏继续。资料课发布即使正文不变也使旧authoring只读，归档/撤回不重建旧版。学生正式评测in_progress/paused时新入口/发问/worker被阻断并提供评测返回，旧历史可读且标明canSend=false。仅为学生新增精确GET course-context白名单，成人讲座接口仍403。
+
+新增18条实际HTTP覆盖父母/真实学习码学生/持久管理员fixture、其他家庭及其他监护人的私聊隔离、245字符引用而旧引用仍180、完整正文/无私稿题目原上传全文、ready/published、评测开始后排队失效、正文在供应商运行中变化后拒发、两实例同scope/同命令去重、撤权后不能重试原授权但可显式新命令、监护绑定撤回、冷重开、损坏原件和超限完整/细选。SQLite与相关旧控制组合71通过，独立真实PG18通过，类型检查与本工作区contracts/API构建通过。mock provider调用与真实CLI资格分开，本层没有真实模型启动或生产数据写入；合成诊断状态仅用于边界fixture，不生成能力结果。
+
+首轮12/3因为新GET未加入学生默认拒绝白名单，修后67/1是未注册网址实际404却被测试期望403；两轮原件保留，后者只改未注册路径预期，真实成人接口403不变。测试中未声明类型的CJS provider导致unknown编译错误亦留证并改为真实provider类型。原件见[首轮](../evidence/2026-10-28/course-session-http-first/receipt.json)、[路由fixture](../evidence/2026-10-28/course-session-http-second/receipt.json)及[权限完整专项](../evidence/2026-10-28/course-session-authority-verified/receipt.json)。新PG runner只读取既有15439 QA配置，专用CI PG步骤接入，不复制或公开凭据。
+
+B1远端fixture现由完整freeze函数生成一致旧v2，另显式构造严格旧v1，生产校验没有放宽。实际浏览器18项/18原始尝试全部通过、零失败/跳过/flaky/重试，383个固定输入原SHA保持；包含两种旧版读历史、原草稿/原请求、身份切换、导航往返和不自动POST。QA Web仍真实07EJTat-vlUXvvAcBPNV4，无前端Git变化；这不是新course UI验证或全站回归。见[实际18项](../evidence/2026-10-28/course-lecture-fixture-browser/receipt.json)。
+
+生产独立验收最后仍是141；但执行隔离检查时发现主目录另一组化学课程源码/构建同时变化，原376控制中的31份主目录产物已不同。两目录realpath不同、主目录没有本批courseDescriptor代码，化学改动均保留，没有执行主目录恢复/构建/部署。因此不能沿用“主目录编译仍全SHA保持”的说法；原141收据是历史交付，之后主目录交付必须重新核对并协调，不能覆盖其他任务活跃输入。并发状态原件在权限收据中。
+
+此时sourceReferences只是已预留共享契约，尚未实现模型sourceKeys解析/可信出处生成落库/原出处预览，不能记作已有来源展示；B2b及原生course恢复、C完整入口/选择/草稿/出处交互、D真实样本/完整两端/精确CI与新鲜可回退交付继续。新增路由/类型的整体设计总册将在完整接线后刷新，不用141静态验证冒充当前源码覆盖。原72项与M1～M7、教师/实机/像素/DPR/原声/全内容/真实间隔门槛均保持。

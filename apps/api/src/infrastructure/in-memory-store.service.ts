@@ -11,6 +11,7 @@ import type { WhiteboardQuestionRecord } from '../modules/learning/whiteboard-qu
 import type { QuestionVisualRecord } from '../modules/learning/whiteboard-question-visual-record';
 import type { AssistantTurnRecord } from '../modules/ai/assistant-turn-record';
 import type { AssistantLectureSnapshot } from '../modules/ai/assistant-lecture-context';
+import type { AssistantCourseSnapshot } from '../modules/ai/assistant-course-context';
 import type { GuidanceModelSuggestionRecord } from '../modules/diagnostics/guidance-model-record';
 import { Injectable, OnModuleInit, OnApplicationBootstrap, OnModuleDestroy } from '@nestjs/common';
 import type { ClassroomSessionRecord } from '../modules/learning/classroom.service';
@@ -401,7 +402,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   studyPlans: StudyPlan[] = [];
   missions: DailyMissionInternal[] = [];
   missionAnswers: MissionAnswerRecord[] = [];
-  assistantSessions: Array<AssistantSession & { ownerUserId: string; scopeKey?: string; lectureSnapshot?: AssistantLectureSnapshot }> = [];
+  assistantSessions: Array<AssistantSession & { ownerUserId: string; scopeKey?: string; lectureSnapshot?: AssistantLectureSnapshot; courseSnapshot?: AssistantCourseSnapshot }> = [];
   assistantMessages: AssistantMessage[] = [];
   assistantTurns: AssistantTurnRecord[] = [];
   guidanceModelSuggestions: GuidanceModelSuggestionRecord[] = [];

@@ -7,10 +7,14 @@ import {
   ServiceUnavailableException,
 } from '@nestjs/common';
 import { ModuleRef } from '@nestjs/core';
-import type { AssistantReply, AssistantLectureDescriptor } from '@study-agent/contracts';
+import type { AssistantReply, AssistantLectureDescriptor, AssistantCourseDescriptor, AssistantCourseKind, AssistantTeachingSelection } from '@study-agent/contracts';
 import { assistantDigest, assistantTurnPort, type AssistantChatCommand, type AssistantPreparation, type AssistantLegacyResult, type AssistantTurnPort } from './assistant-turn-record';
 import { assistantLectureReference, assistantLectureSummary, freezeAssistantLecture, readAssistantLecture, type AssistantLectureSnapshot } from './assistant-lecture-context';
 import { assistantTeachingInstructions } from './assistant-teaching-instructions';
+import { assistantCourseDescriptor as describeAssistantCourse, assistantCourseReference, assistantCourseSummary as summarizeAssistantCourse,
+  assertCourseAssessmentAvailable, courseAssessmentBlock, courseAssistantContext, freezeAssistantCourse, previewAssistantCourse, readAssistantCourse,
+  resolveCourseTeachingSource, type AssistantCourseSnapshot, type CourseTeachingSource } from './assistant-course-context';
+import { teachingContentSelectionSchema } from './assistant-teaching-content';
 import { loadApiEnv } from '@study-agent/config';
 import {
   AIAnalysisResponse,
@@ -192,28 +196,49 @@ export class AiService {
     userRole: 'student' | 'parent';
     studentId: string | null;
     subject?: Subject | null;
-    pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report' | 'classroom' | 'studio';
+    pageContext: AssistantSession['pageContext'];
     contextRefType?: string | null;
     contextRefId?: string | null;
     contextItemId?: string | null;
+    contextSelection?: AssistantTeachingSelection;
   }, user: InMemoryUserAccount): AssistantSession {
     command = validate(z.object({ userRole: z.enum(['student', 'parent']), studentId: z.string().min(1).max(180).nullable(),
       subject: z.enum(['math', 'chinese', 'english']).nullable().optional(),
-      pageContext: z.enum(['student_home', 'assessment', 'mission', 'review', 'weekly_report', 'classroom', 'studio']),
-      contextRefType: z.enum(['diagnostic', 'practice', 'plan', 'classroom_lecture']).nullable().optional(), contextRefId: z.string().min(1).max(180).nullable().optional(),
+      pageContext: z.enum(['student_home', 'assessment', 'mission', 'review', 'weekly_report', 'classroom', 'studio', 'course']),
+      contextRefType: z.enum(['diagnostic', 'practice', 'plan', 'classroom_lecture', 'primary_unit', 'material_lesson']).nullable().optional(), contextRefId: z.string().min(1).max(400).nullable().optional(),
       contextItemId: z.string().min(1).max(180).nullable().optional(),
-    }).strict(), command);
+      contextSelection: teachingContentSelectionSchema.optional(),
+    }).strict().superRefine((value, ctx) => {
+      const course = value.contextRefType === 'primary_unit' || value.contextRefType === 'material_lesson';
+      if (!course && value.contextRefId && value.contextRefId.length > 180) ctx.addIssue({ code: 'custom', path: ['contextRefId'], message: '原学习引用最多180字符' });
+      if (value.contextSelection && !course && value.contextRefType !== 'classroom_lecture') ctx.addIssue({ code: 'custom', path: ['contextSelection'], message: '当前活动不支持教学范围选择' });
+    }), command);
     if (user.role === 'student' && (command.userRole !== 'student' || !command.studentId)) throw new ForbiddenException('请使用当前孩子的学习助教');
     const isLecture = command.contextRefType === 'classroom_lecture';
     let lectureSnapshot: AssistantLectureSnapshot | undefined;
+    let courseSnapshot: AssistantCourseSnapshot | undefined;
     if (isLecture || command.pageContext === 'classroom') {
       if (user.role === 'student' || command.userRole !== 'parent') throw new ForbiddenException('成人讲座助教需由家长或教研账号打开');
       if (!isLecture || command.pageContext !== 'classroom' || command.studentId !== null || command.subject != null || !command.contextRefId || !command.contextItemId)
         throw new BadRequestException('成人讲座需独立的课程上下文，不绑定孩子或学科');
       const separator = command.contextRefId.lastIndexOf('@');
       if (separator < 1) throw new BadRequestException('请先读取讲座的当前版本');
-      lectureSnapshot = freezeAssistantLecture(command.contextRefId.slice(0, separator), command.contextItemId);
+      lectureSnapshot = freezeAssistantLecture(command.contextRefId.slice(0, separator), command.contextItemId, undefined, command.contextSelection);
       if (assistantLectureReference(lectureSnapshot) !== command.contextRefId) throw new ConflictException('讲座内容已更新，请重新核对当前版本');
+    }
+    const isCourse = command.contextRefType === 'primary_unit' || command.contextRefType === 'material_lesson';
+    if (isCourse || command.pageContext === 'course') {
+      if (!isCourse || command.pageContext !== 'course' || !command.contextRefId || !command.contextItemId)
+        throw new BadRequestException('请完整指定课程和当前教学条目');
+      const separator = command.contextRefId.lastIndexOf('@');
+      if (separator < 1) throw new BadRequestException('请先核对课程的当前教学版本');
+      const source = resolveCourseTeachingSource(this.store, this.students, user, command.contextRefType as AssistantCourseKind,
+        command.contextRefId.slice(0, separator), command.contextItemId);
+      if (command.studentId !== source.studentId || (command.subject ?? null) !== source.subject)
+        throw new BadRequestException('课程所属档案或学科与当前选择不一致，请保留问题并核对');
+      assertCourseAssessmentAvailable(this.store, source.studentId, command.userRole);
+      courseSnapshot = freezeAssistantCourse(source, command.contextSelection);
+      if (assistantCourseReference(courseSnapshot) !== command.contextRefId) throw new ConflictException('课程教学内容或发布语境已变化，请重新核对');
     }
     if (command.pageContext === 'studio') {
       if (user.role === 'student' || command.userRole !== 'parent') throw new ForbiddenException('独立学习需由家长或教研账号打开');
@@ -222,7 +247,7 @@ export class AiService {
     }
     if (command.studentId) this.students.assertCanAccessStudent(user, command.studentId);
     if (Boolean(command.contextRefType) !== Boolean(command.contextRefId) || command.contextItemId && !command.contextRefId) throw new BadRequestException('请完整指定当前学习上下文');
-    const session: AssistantSession & { ownerUserId: string; scopeKey?: string; lectureSnapshot?: AssistantLectureSnapshot } = {
+    const session: AssistantSession & { ownerUserId: string; scopeKey?: string; lectureSnapshot?: AssistantLectureSnapshot; courseSnapshot?: AssistantCourseSnapshot } = {
       ownerUserId: user.id,
       id: this.store.nextId('assistant_session'),
       userRole: command.userRole,
@@ -234,6 +259,7 @@ export class AiService {
       contextItemId: command.contextItemId ?? null,
       status: 'active',
       ...(lectureSnapshot ? { lectureSnapshot } : {}),
+      ...(courseSnapshot ? { courseSnapshot } : {}),
     };
 
     this.resolveQuestionContext(session);
@@ -242,7 +268,7 @@ export class AiService {
     const existing = this.store.assistantSessions.find(s => s.ownerUserId === user.id && s.status === 'active' &&
       s.userRole === session.userRole && s.studentId === session.studentId && s.subject === session.subject && s.pageContext === session.pageContext &&
       s.contextRefType === session.contextRefType && s.contextRefId === session.contextRefId && (s.contextItemId ?? null) === session.contextItemId);
-    if (existing) { if (lectureSnapshot) this.resolveQuestionContext(existing); existing.scopeKey = session.scopeKey; return this.publicAssistantSession(existing); }
+    if (existing) { if (lectureSnapshot || courseSnapshot) this.resolveQuestionContext(existing); existing.scopeKey = session.scopeKey; return this.publicAssistantSession(existing); }
 
     this.store.append('assistantSessions', session);
     this.eventBus.publish('assistant.session_opened', {
@@ -291,6 +317,70 @@ export class AiService {
     return assistantLectureSummary(current!, true);
   }
 
+  courseDescriptor(user: InMemoryUserAccount, input: unknown): AssistantCourseDescriptor {
+    const command = validate(z.object({ kind: z.enum(['primary_unit', 'material_lesson']), courseId: z.string().min(1).max(180),
+      itemId: z.string().min(1).max(180), fingerprint: z.string().regex(/^[a-f0-9]{64}$/).optional(), selection: z.string().max(12_000).optional() }).strict(), input);
+    let selection: AssistantTeachingSelection | undefined;
+    if (command.selection !== undefined) {
+      let value: unknown; try { value = JSON.parse(command.selection); } catch { throw new BadRequestException('教学范围选择格式不完整，请保留问题并重新核对'); }
+      selection = validate(teachingContentSelectionSchema, value);
+    }
+    let source: CourseTeachingSource | null = null, snapshot: AssistantCourseSnapshot | undefined;
+    try {
+      source = resolveCourseTeachingSource(this.store, this.students, user, command.kind, command.courseId, command.itemId, Boolean(command.fingerprint));
+      if (!command.fingerprint) assertCourseAssessmentAvailable(this.store, source.studentId, user.role === 'student' ? 'student' : 'parent');
+      if (source.current) snapshot = previewAssistantCourse(source, selection);
+    } catch (error) { if (!command.fingerprint || !(error instanceof NotFoundException || error instanceof ConflictException)) throw error; }
+    if (command.fingerprint && command.fingerprint !== snapshot?.fingerprint) {
+      const original = this.store.find('assistantSessions', { ownerUserId: user.id, pageContext: 'course', contextRefType: command.kind,
+        contextRefId: command.courseId + '@' + command.fingerprint, contextItemId: command.itemId });
+      if (!original) throw new ConflictException('当前账号没有这个课程原版本，请保留问题并打开当前课程');
+      const retained = this.courseSnapshot(original, false);
+      if (!retained) throw new ConflictException('原课程上下文不完整，请保留原对话');
+      const block = courseAssessmentBlock(this.store, retained.snapshot.studentId, original.userRole);
+      return { ...describeAssistantCourse(retained.snapshot, retained.source, retained.current), sessionId: original.id,
+        canSend: retained.current && !block, ...(block ? { blocked: block } : {}) };
+    }
+    if (!snapshot || !source) throw new ConflictException('课程当前教学原件不可用，请保留问题并返回课程');
+    const block = courseAssessmentBlock(this.store, snapshot.studentId, user.role === 'student' ? 'student' : 'parent');
+    const descriptor = describeAssistantCourse(snapshot, source, true);
+    return { ...descriptor, canSend: descriptor.selectionFits === true && !block, ...(block ? { blocked: block } : {}) };
+  }
+
+  private courseSnapshot(session: AssistantSession, requireCurrent: boolean) {
+    const kind = session.contextRefType;
+    if (kind !== 'primary_unit' && kind !== 'material_lesson') {
+      if (session.pageContext === 'course') throw new BadRequestException('原课程上下文不完整');
+      return null;
+    }
+    if (session.pageContext !== 'course' || !session.contextRefId || !session.contextItemId) throw new BadRequestException('原课程上下文不完整');
+    const stored = session as AssistantSession & { ownerUserId?: string; courseSnapshot?: unknown };
+    const snapshot = readAssistantCourse(stored.courseSnapshot, session.contextRefId, session.contextItemId);
+    if (snapshot.kind !== kind || snapshot.studentId !== session.studentId || snapshot.subject !== (session.subject ?? null))
+      throw new ConflictException('原课程档案、学科与会话不一致');
+    if (!stored.ownerUserId) throw new ForbiddenException('原课程助教身份缺失');
+    const owner = this.store.find('users', { id: stored.ownerUserId, status: 'active' });
+    if (!owner) throw new ForbiddenException('原课程助教身份已不可用');
+    if (owner.role === 'student' && (session.userRole !== 'student' || !snapshot.studentId || snapshot.accessMode === 'authoring'))
+      throw new ForbiddenException('请使用当前孩子的已确认课程');
+    if (snapshot.studentId) this.students.assertCanAccessStudent(owner, snapshot.studentId);
+    let source: CourseTeachingSource | null = null, current = false;
+    try {
+      source = resolveCourseTeachingSource(this.store, this.students, owner, kind, snapshot.teaching.courseId, snapshot.teaching.itemId, !requireCurrent);
+      if (source.current) current = assistantCourseReference(freezeAssistantCourse(source, snapshot.teaching.selection)) === session.contextRefId;
+    } catch (error) { if (requireCurrent || !(error instanceof NotFoundException || error instanceof ConflictException || error instanceof BadRequestException)) throw error; }
+    if (requireCurrent && !current) throw new ConflictException('课程内容或发布语境已变化，请保留原对话并核对当前版本');
+    if (requireCurrent) assertCourseAssessmentAvailable(this.store, snapshot.studentId, session.userRole);
+    return { snapshot, source, current };
+  }
+
+  assistantCourseSummary(session: AssistantSession, requireCurrent = false) {
+    const retained = this.courseSnapshot(session, requireCurrent);
+    if (!retained) return undefined;
+    const block = courseAssessmentBlock(this.store, retained.snapshot.studentId, session.userRole);
+    return { ...summarizeAssistantCourse(retained.snapshot, retained.current), canSend: retained.current && !block, ...(block ? { blocked: block } : {}) };
+  }
+
   private lectureSnapshot(session: AssistantSession, requireCurrent: boolean) {
     if (session.contextRefType !== 'classroom_lecture') {
       if (session.pageContext === 'classroom') throw new BadRequestException('原讲座上下文不完整');
@@ -323,7 +413,7 @@ export class AiService {
   }
 
   private resolveQuestionContext(session: AssistantSession) {
-    if (this.lectureSnapshot(session, true) || this.independentStudioContext(session)) return null;
+    if (this.courseSnapshot(session, true) || this.lectureSnapshot(session, true) || this.independentStudioContext(session)) return null;
     if (!session.contextRefType && !session.contextRefId) return null;
     if (!session.studentId) throw new BadRequestException('题目上下文必须属于一个学生档案');
     const matches = (studentId: string, subject: string) => studentId === session.studentId && subject === session.subject;
@@ -365,10 +455,12 @@ export class AiService {
   }
 
   private assistantContext(session: AssistantSession, requireCurrentLecture = true) {
-    if (this.independentStudioContext(session)) return { independentStudy: true, lecture: undefined, scope: null, report: null, plan: null,
+    const course = this.courseSnapshot(session, requireCurrentLecture);
+    if (course) return courseAssistantContext(course.snapshot);
+    if (this.independentStudioContext(session)) return { independentStudy: true, lecture: undefined, course: undefined, scope: null, report: null, plan: null,
       memory: null, definitionNotice: null, currentQuestion: null, evidenceIds: [] as string[], withheldAnswer: undefined, bound: null };
     const lecture = this.lectureSnapshot(session, requireCurrentLecture);
-    if (lecture) return { independentStudy: undefined, lecture: lecture.snapshot, scope: null, report: null, plan: null, memory: null, definitionNotice: null,
+    if (lecture) return { independentStudy: undefined, lecture: lecture.snapshot, course: undefined, scope: null, report: null, plan: null, memory: null, definitionNotice: null,
       currentQuestion: null, evidenceIds: [] as string[], withheldAnswer: undefined, bound: null };
     const bound = this.resolveQuestionContext(session);
     const subject = session.subject;
@@ -408,7 +500,7 @@ export class AiService {
       hypotheses: latest?.hypotheses.filter(hypothesis => !['resolved', 'contradicted', 'withdrawn'].includes(hypothesis.status)).slice(0, 5) ?? [],
       reviews: reviews.map(review => ({ id: review.id, dueAt: review.dueAt, status: review.status })),
     } : null;
-    return { independentStudy: undefined, lecture: undefined as AssistantLectureSnapshot | undefined, scope: scope ? { grade: scope.grade, term: scope.term, textbookVersion: scope.textbookVersion,
+    return { independentStudy: undefined, lecture: undefined as AssistantLectureSnapshot | undefined, course: undefined, scope: scope ? { grade: scope.grade, term: scope.term, textbookVersion: scope.textbookVersion,
         learned: scope.learnedAtomIds.map((id) => frozen ? definitions?.find(atom => atom.id === id)?.name ?? id : this.store.find('knowledgeAtoms', { id })?.name ?? id) } : null,
       report: latest ? { summary: latest.summary, estimates: latest.estimates, hypotheses: latest.hypotheses,
         definitionContext: latest.definitionContext, definitionNotice } : null,
@@ -444,6 +536,7 @@ export class AiService {
     const bindingHash = assistantDigest({ session: [session.id,session.studentId,session.subject,session.contextRefType,session.contextRefId,session.contextItemId],
       bound: bound ? {...bound, draft: undefined} : null, report:context.report, plan:context.plan, scope:context.scope,
       ...(context.lecture ? { lecture: context.lecture.fingerprint } : {}),
+      ...(context.course ? { course: context.course.teaching.fingerprint, courseMode: context.course.accessMode } : {}),
       ...(context.independentStudy ? { independentStudy: true } : {}),
       attempts: bound?.kind === 'practice' ? this.store.select('practiceAttempts',{sessionId:bound.sessionId,questionId:bound.itemId}) : [] });
     return { contextJson: JSON.stringify(context), contextVersion, bindingHash };
@@ -456,7 +549,7 @@ export class AiService {
     const snapshot = this.assistantSnapshot(session), context = JSON.parse(snapshot.contextJson) as ReturnType<AiService['assistantContext']>;
     const {withheldAnswer, bound, ...safe} = context;
     if (JSON.stringify(safe).length > 18000) throw new BadRequestException('当前学习上下文过长，请缩小到具体题目或活动后重新提问');
-    const eligible = (session.userRole === 'parent' || bound) && !(bound?.kind === 'diagnostic' && ['in_progress','paused'].includes(bound.assessmentStatus));
+    const eligible = (session.userRole === 'parent' || bound || context.course) && !(bound?.kind === 'diagnostic' && ['in_progress','paused'].includes(bound.assessmentStatus));
     const modelAvailable = this.assistantModelAvailable();
     const selected = requestedModelId ? this.models.resolve(requestedModelId) : eligible && modelAvailable ? this.models.resolve() : null;
     if (eligible && requestedModelId && !modelAvailable) throw new ServiceUnavailableException('小九模型服务尚未启用，请检查模型连接后重试');
@@ -471,9 +564,10 @@ export class AiService {
     const session=prepared.session, message=prepared.message, command={modelId:prepared.modelId,signal};
     const context=JSON.parse(prepared.contextJson) as ReturnType<AiService['assistantContext']>;
     const { withheldAnswer, bound, ...safeContext } = context;
-    const system = assistantTeachingInstructions(context.lecture ? context.lecture.protocol === 'classroom-lecture-v2' ? 'lecture-teaching' : 'lecture-goals' :
+    const system = assistantTeachingInstructions(context.course ? context.course.kind === 'primary_unit' ? 'primary-course' : 'material-course' :
+      context.lecture ? context.lecture.protocol === 'classroom-lecture-v2' ? 'lecture-teaching' : 'lecture-goals' :
       context.independentStudy ? 'independent' : 'evidence', session.userRole, this.getSubjectLabel(session.subject));
-    const fallback = context.lecture ? `围绕“${context.lecture.lectureTitle}”，先用自己的话说明${context.lecture.lessons.map(lesson => '“' + lesson.title + '”').join('、')}之间的联系，再用一个匿名情境比较解释与反例。当前为本地教学引导，没有调用模型，也不形成能力评测结果。` : context.independentStudy ? '先说说你想理解的概念、已有认识或具体问题，我们可以用例子、反例和一个新情境逐步核对。当前是本地学习引导，没有调用模型，也没有绑定孩子的评测或计划。' : session.userRole !== 'student' && context.definitionNotice ? context.definitionNotice : session.userRole === 'student' ?
+    const fallback = context.course ? `围绕“${context.course.teaching.itemTitle}”，先说明一个概念，再比较一个例子和反例。当前为本地课程引导，没有调用模型，不形成能力评测结果；需要模型讲解时请核对连接后使用原模型重试。` : context.lecture ? `围绕“${context.lecture.lectureTitle}”，先用自己的话说明${context.lecture.lessons.map(lesson => '“' + lesson.title + '”').join('、')}之间的联系，再用一个匿名情境比较解释与反例。当前为本地教学引导，没有调用模型，也不形成能力评测结果。` : context.independentStudy ? '先说说你想理解的概念、已有认识或具体问题，我们可以用例子、反例和一个新情境逐步核对。当前是本地学习引导，没有调用模型，也没有绑定孩子的评测或计划。' : session.userRole !== 'student' && context.definitionNotice ? context.definitionNotice : session.userRole === 'student' ?
       `${context.currentQuestion?.atomName ? `我们先看“${context.currentQuestion.atomName}”。${context.currentQuestion.objective ?? ''}。` : ''}${context.currentQuestion?.draft && context.currentQuestion.draft !== 'null' ? '你已经留下了思路草稿。先指出其中哪一步用到了题目的条件。' : '先用自己的话说一说题目要解决什么，再列出已知条件。'}你可以告诉我卡在哪一步；完成后再用一道新题检查。` :
       context.plan ? `当前计划：${context.plan.summary} 陪伴时先请孩子解释思路，只在卡住的一步给提示，再用独立新题验证。${context.report?.summary ?? ''}` :
         context.report ? `${context.report.summary} 先看知识点的证据和待验证原因，再制定每天可完成的指导计划。单次答错不足以确定深层原因。` :

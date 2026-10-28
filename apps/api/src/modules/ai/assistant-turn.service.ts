@@ -42,6 +42,12 @@ export class AssistantTurnService {
       return {sessionId:s.id,pageContext:s.pageContext,studentId:null,subject:null,contextRefType:s.contextRefType,contextRefId:s.contextRefId,
         contextItemId:s.contextItemId??null,href};
     }
+    if(s.pageContext==='course'){
+      let href:string|null=null;
+      try{href=this.ai.assistantCourseSummary(s,false)?.href??null;}catch(error){if(!(error instanceof ConflictException))throw error;}
+      return {sessionId:s.id,pageContext:s.pageContext,studentId:s.studentId,subject:s.subject??null,contextRefType:s.contextRefType,
+        contextRefId:s.contextRefId,contextItemId:s.contextItemId??null,href};
+    }
     if(s.studentId)params.set('studentId',s.studentId);if(s.subject)params.set('subject',s.subject);
     let path='/student/assessment',available=true;
     if(s.contextRefType==='practice') {const activity=this.store.find('practiceSessions',{id:s.contextRefId!,studentId:s.studentId!,subject:s.subject!});
@@ -55,8 +61,8 @@ export class AssistantTurnService {
       contextItemId:s.contextItemId??null,href:s.studentId&&available?path+'?'+params.toString():null};
   }
   context(user:InMemoryUserAccount,sessionId:string):AssistantContextView {
-    const session=this.ai.assertSessionOwner(sessionId,user,false),lecture=this.ai.assistantLectureSummary(session,false);
-    return {contextVersion:this.ai.assistantSnapshot(session,false).contextVersion,location:this.location(sessionId,user),...(lecture?{lecture}:{})};
+    const session=this.ai.assertSessionOwner(sessionId,user,false),lecture=this.ai.assistantLectureSummary(session,false),course=this.ai.assistantCourseSummary(session,false);
+    return {contextVersion:this.ai.assistantSnapshot(session,false).contextVersion,location:this.location(sessionId,user),...(lecture?{lecture}:{}),...(course?{course}:{})};
   }
   async view(turn:AssistantTurnRecord,provisional?:AssistantTurnView['task']):Promise<AssistantTurnView> {
     const task=provisional??await this.store.tasks.get(turn.taskId);

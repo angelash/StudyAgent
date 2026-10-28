@@ -313,6 +313,12 @@ jobs:
           STUDY_TEST_PG_BIN: /usr/lib/postgresql/16/bin
         run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/ai/assistant-lecture.integration.test.ts src/modules/ai/assistant-lecture-recovery.integration.test.ts --maxWorkers=1
 
+      - name: Authorized primary and material course assistant scopes on PostgreSQL
+        working-directory: apps/api
+        env:
+          STUDY_TEST_COURSE_ASSISTANT_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
+        run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/ai/assistant-course.integration.test.ts --maxWorkers=1
+
       - name: Frozen classroom multiple choices, first feedback and native recovery on PostgreSQL
         working-directory: apps/api
         env:

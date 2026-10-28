@@ -1,0 +1,81 @@
+{
+  "passed": false,
+  "phase": "course-session-first-http",
+  "passedTests": 12,
+  "failedTests": 3,
+  "knownFailure": "Exact new GET course-context is absent from deny-by-default student route allowlist. Three actual learner preflights return403 before resource-level authorization. Retain and add only this exact GET, keeping lecture/unknown/management routes denied.",
+  "newModelCalls": 0,
+  "productionStill141": true,
+  "files": {
+    "data/qa/course-session-http-first.json": {
+      "sha256": "c2a7df4304534fdda568e4e117de4925b64c13fede383fb3834c67dcee8bff62",
+      "gzipSha256": "2247add0dc9123cdcf08453968fcf776781baab6af20dfecd2cf488b2a82ed0a",
+      "bytes": 12077
+    },
+    "data/qa/course-session-http-first.log": {
+      "sha256": "7adeb21eb49e42569c1e5953f0c4f043abd37c84ce4ede1e18847f27e400ca19",
+      "gzipSha256": "b2d880f3e47853dd997491b27c95334e530a906afd9bff4ed8839a56a59a7027",
+      "bytes": 6950
+    },
+    "data/qa/course-session-own-contracts-build-first.log": {
+      "sha256": "6265c5d4c975d39f7f6e69594f23eadbb13479e15db7ec3fa3d2d5e8737dbc83",
+      "gzipSha256": "2e1be4d0056c39f5af602bc743da7e6d2184c336d3b9be6a300931a8db858330",
+      "bytes": 485
+    },
+    "data/qa/course-session-api-build-first.log": {
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "gzipSha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "bytes": 66
+    },
+    "apps/api/src/common/auth.guard.ts": {
+      "sha256": "9d47143363712558502e02a022bf756e76fa5ca07eb51e86db49c4ef343de3c5",
+      "gzipSha256": "fde11487cffff5f9f09adf7263bb07e11d2a462b6acdf084a2ed1b4654f7f15b",
+      "bytes": 9534
+    },
+    "apps/api/src/modules/ai/assistant-course-context.ts": {
+      "sha256": "cba562f47064280392176f487e58680e3aeb6a755dd75da8864a4eda420d4a0b",
+      "gzipSha256": "03fd34bb092029e5b832c5364c0a42ad7d1605088679ddaa1461c356ea50190f",
+      "bytes": 10522
+    },
+    "apps/api/src/modules/ai/assistant-course.integration.test.ts": {
+      "sha256": "c17b26b03c5b1066c0cb84daf8d28b0c8eadec863bdb8d43b3905115ed87d829",
+      "gzipSha256": "d9ba355e51313bef1a996ff00bf2e7bf35c8b70f3315055002c0c2c228f35cf0",
+      "bytes": 24532
+    },
+    "apps/api/src/modules/ai/ai.service.ts": {
+      "sha256": "d525aad9eb2e6c3be6eee8744a8540cbfae00e92e580eab08b16b74867398ec5",
+      "gzipSha256": "883d0e5368d906bd961f494e3349c19a3f1fa05d6867aa85d732f4f91433a0e1",
+      "bytes": 57805
+    },
+    "apps/api/src/modules/ai/ai.controller.ts": {
+      "sha256": "6f961fa880c785257dda1711f41dbc6df72422aef7d32a32dee1a67be702e9c7",
+      "gzipSha256": "4be7ea09cab3bda12eb08a5c9d33c2910270e41bfc37893001462b8854bc468f",
+      "bytes": 3558
+    },
+    "apps/api/dist/apps/api/src/common/auth.guard.js": {
+      "sha256": "1d9d8a829a049b1c5016749e83789df559db7b88ffea5a787b92d0491d8f0ec4",
+      "gzipSha256": "de45e14b03e01bba33cb8f6b24659c6652521ffab9d738171f86519fd2896df9",
+      "bytes": 10542
+    },
+    "apps/api/dist/apps/api/src/modules/ai/assistant-course-context.js": {
+      "sha256": "618278a12cdad87e5b0c296e7d81f2dba9bd00807cf67bc22defe20b4de89269",
+      "gzipSha256": "f946901d451ed73e9c72a4cb7723b52a31245a51a6ec7ed2c31319395e371f7a",
+      "bytes": 10519
+    },
+    "apps/api/dist/apps/api/src/modules/ai/ai.service.js": {
+      "sha256": "375cdb3d16c570fb164c0bffcc98c3ccff688712409150cc87245bb5c6b38777",
+      "gzipSha256": "3b362380b81192f91ce23034d632966a5d765ae2703ba1e4941ab1f040fdfd60",
+      "bytes": 62312
+    },
+    "packages/contracts/src/assistant-turn.ts": {
+      "sha256": "3acffa62ee0b9c00e8dd616491913a904b0171c17c91070c59f68a6d6948ac7f",
+      "gzipSha256": "edb906b1a53bd48400e551d6130f647efd2e0034638288dd414b278f4a94237a",
+      "bytes": 4237
+    },
+    "packages/contracts/src/index.ts": {
+      "sha256": "13dc4b3691e75e704094a796b2454960595725bf11f4060ccd9537f0152661d3",
+      "gzipSha256": "c541c04e6e43497dc6281767689bfb01b6c45dad6d96294154565fa7fffbaefb",
+      "bytes": 25618
+    }
+  }
+}

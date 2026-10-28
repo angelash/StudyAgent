@@ -22,12 +22,23 @@ exports.installAssistantTurnFixture=function(app){
       const {requestToken}=require('../../apps/api/dist/apps/api/src/common/auth.guard.js'),{hashToken}=require('../../apps/api/dist/apps/api/src/modules/auth/auth.service.js');
       const auth=store.find('sessions',{tokenHash:hashToken(requestToken(req))}),user=auth&&!auth.revokedAt&&Date.parse(auth.expiresAt)>Date.now()?store.find('users',{id:auth.userId,status:'active',role:'parent'}):null;
       if(!user)throw Error('unauthorized');
-      const {classroomCourse}=require('../../apps/api/dist/apps/api/src/modules/learning/classroom-curriculum.js');
+      const {classroomCourse,classroomLesson}=require('../../apps/api/dist/apps/api/src/modules/learning/classroom-curriculum.js');
       const {freezeAssistantLecture,assistantLectureReference}=require('../../apps/api/dist/apps/api/src/modules/ai/assistant-lecture-context.js');
       const {assistantDigest}=require('../../apps/api/dist/apps/api/src/modules/ai/assistant-turn-record.js');
       const course=classroomCourse(),lectureId=String(req.body?.lectureId??course.units[0].lectures[0].id);
-      const current=freezeAssistantLecture(course.id,lectureId),{fingerprint:_fingerprint,...safe}=current;
-      safe.description='匿名保留版本：使用另一组例子比较概念与适用边界。';const snapshot={...safe,fingerprint:assistantDigest(safe)},referenceId=assistantLectureReference(snapshot);
+      const oldLecture=course.units.flatMap(unit=>unit.lectures).find(lecture=>lecture.id===lectureId);
+      if(!oldLecture)throw Error('invalid fixture lecture');
+      oldLecture.description='匿名保留版本：使用另一组例子比较概念与适用边界。';
+      const protocol=req.body?.protocol??'classroom-lecture-v2';if(!['classroom-lecture-v1','classroom-lecture-v2'].includes(protocol))throw Error('invalid fixture protocol');
+      let snapshot=freezeAssistantLecture(course.id,lectureId,course,{mode:'complete'},id=>{
+        const lesson=classroomLesson(id);if(lesson)lesson.steps[0].narration='匿名旧教学正文：先比较概念，再用另一组例子核对适用条件。';return lesson;
+      });
+      if(protocol==='classroom-lecture-v1'){
+        const safe={protocol,courseId:snapshot.courseId,courseVersion:snapshot.courseVersion,courseTitle:snapshot.courseTitle,unitId:snapshot.unitId,
+          unitTitle:snapshot.unitTitle,unitPosition:snapshot.unitPosition,lectureId:snapshot.lectureId,lectureTitle:snapshot.lectureTitle,
+          description:snapshot.description,lecturePosition:snapshot.lecturePosition,lessons:snapshot.lessons};snapshot={...safe,fingerprint:assistantDigest(safe)};
+      }
+      const referenceId=assistantLectureReference(snapshot);
       const existing=store.find('assistantSessions',{ownerUserId:user.id,contextRefType:'classroom_lecture',contextRefId:referenceId,contextItemId:lectureId});
       const id=existing?.id??store.nextId('assistant_session');
       if(!existing){

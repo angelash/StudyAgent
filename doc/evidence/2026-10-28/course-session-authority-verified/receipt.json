@@ -1,0 +1,172 @@
+{
+  "passed": true,
+  "phase": "course-authority-only-not-delivered",
+  "baseRevision": "bfbf48acba5e441a5e3b34b85593b09b278d5ca6",
+  "focusedPassed": 71,
+  "newCourseHttpCases": 18,
+  "postgresHttpCases": 18,
+  "overlappingScopesNotSummed": true,
+  "apiAndTestsTypecheckPassed": true,
+  "ownContractsAndApiBuildPassed": true,
+  "typecheckFixtureFailureRetained": "Untyped CJS chat mock returned unknown; fixed by typing the provider, no assertion weakened.",
+  "firstHttpFailed": 3,
+  "secondHttpFailed": 1,
+  "newModelCalls": 0,
+  "newCollections": 0,
+  "newSchemaMigration": false,
+  "schemaVersionExpected": 21,
+  "full142GatePassed": false,
+  "productionControlContinuity": false,
+  "productionControlNote": "Original376 baseline later differs in31 main outputs due independent concurrent chemistry source/build work. Distinct real paths checked; main changes preserved, no restore/build/deploy attempted. Original141 acceptance is historical, final main reconciliation required.",
+  "scope": "Primary/material preflight, conditional long IDs, server-derived scope, ready/published versions, actual parent/student/admin fixture, current authorization/assessment fences, concurrent APIs/guardians, original grants, stale and late replies, history, exact budgets and restart. Course source-key publication/source preview/frontend/native course recovery/full142 and new production delivery still pending.",
+  "files": {
+    "data/qa/course-session-http-third.json": {
+      "sha256": "2c64c0d213ff02df519a7b71d6aa6c6e4172c3b587ab3faa8059b5b5f3c3cc9d",
+      "gzipSha256": "cec11f9cc81970ba629f654f91d5fe850a4f35c1fee94fe1785180f26c061203",
+      "bytes": 29985
+    },
+    "data/qa/course-session-http-third.log": {
+      "sha256": "eb21f19a0f4405df0af8e6bf26f4f3206f177a431f18b152e14473c261abca88",
+      "gzipSha256": "08fa98466e974e8803d3399471bb14a17ff913b9586f6723a26f512d8c7c15ca",
+      "bytes": 1771
+    },
+    "data/qa/course-session-http-fourth.json": {
+      "sha256": "9371917c8677c7382300dd0e5b9685fababa3c4ee47dfe12a6b5c0d6b1021dd1",
+      "gzipSha256": "98ab229cbd8532ac78e39e0ee6f25869b487c537f9f8f2c34df34ca68744eecf",
+      "bytes": 31307
+    },
+    "data/qa/course-session-http-fourth.log": {
+      "sha256": "df2650e4323366fb0203f8a16fc27f09e1611c795d811c76938e38f0862b7f75",
+      "gzipSha256": "82c3ba501468017d631b2dca39d73ff378c2b91f48a1542193592afc751ed807",
+      "bytes": 1998
+    },
+    "data/qa/course-session-typecheck-first.log": {
+      "sha256": "5c8884b273c44635f0e3664e42796c638f200bfeb299dddeb62449ee9e091e41",
+      "gzipSha256": "dc36e1ea1d9605a1473145a1479eded5d3ba83a0607a089fb6695be5ebbcfb2e",
+      "bytes": 848
+    },
+    "data/qa/course-session-typecheck-second.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "bytes": 0
+    },
+    "data/qa/course-session-typecheck-third.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "bytes": 0
+    },
+    "data/qa/course-session-postgres-first.json": {
+      "sha256": "4ee1001ad429bc09552b652b13bad412c9b01b63705fbf31a7028ce8b32a87f0",
+      "gzipSha256": "218c5076454ce0b08684df254c7335f535e08f70447ef7c51fd248ae007a4984",
+      "bytes": 8553
+    },
+    "data/qa/course-session-postgres-first.log": {
+      "sha256": "b5fc25281642589195b4786cc83f3c3b8a74f9bdc4e4d3c5e3f3f707c2f3ad91",
+      "gzipSha256": "5b54a06e5625f057c1cf8cd7411bf176a52cd384a8dab92eaae84607e6c6a624",
+      "bytes": 1260
+    },
+    "data/qa/course-session-own-contracts-build-first.log": {
+      "sha256": "6265c5d4c975d39f7f6e69594f23eadbb13479e15db7ec3fa3d2d5e8737dbc83",
+      "gzipSha256": "2e1be4d0056c39f5af602bc743da7e6d2184c336d3b9be6a300931a8db858330",
+      "bytes": 485
+    },
+    "data/qa/course-session-api-build-first.log": {
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "gzipSha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "bytes": 66
+    },
+    "data/qa/course-session-api-build-second.log": {
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "gzipSha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "bytes": 66
+    },
+    "data/qa/course-session-protected-inputs.json": {
+      "sha256": "ea895455eee6cd9a6cdf61b474ad8038569b24449b709041ea6565dd5a626b0b",
+      "gzipSha256": "6d60c4c34497926f2d4ae47b8aa0939bed4704dc104fad4d66ed9091232347ec",
+      "bytes": 56129
+    },
+    "data/qa/course-session-main-concurrent-change.json": {
+      "sha256": "06c5b00d9210b3d49351e5a59be546eb805394ce0330e97787100ace2413f699",
+      "gzipSha256": "6514e1f4f0586fe90d5ce8a6e510810958cbac910df953befb997d038e25b9cb",
+      "bytes": 16972
+    },
+    "apps/api/src/common/auth.guard.ts": {
+      "sha256": "951af955f2f233fcefcccaf86a7a99516ddc8d8e23d65b98203a588c5c132729",
+      "gzipSha256": "855fdfaf5fc4587128fdba8f60c2bc93b4797943a3207a1f041f79759489f2e6",
+      "bytes": 9569
+    },
+    "apps/api/src/modules/ai/assistant-course-context.ts": {
+      "sha256": "cba562f47064280392176f487e58680e3aeb6a755dd75da8864a4eda420d4a0b",
+      "gzipSha256": "03fd34bb092029e5b832c5364c0a42ad7d1605088679ddaa1461c356ea50190f",
+      "bytes": 10522
+    },
+    "apps/api/src/modules/ai/assistant-course.integration.test.ts": {
+      "sha256": "dbb25bb0a612130fe164c978b05662122e7295adf5e0b27a8e2365e18a428f72",
+      "gzipSha256": "59ea6e607610f82f2da63e85108dd1f54938875a3513fdc542c037f3027c0595",
+      "bytes": 29174
+    },
+    "apps/api/src/modules/ai/ai.service.ts": {
+      "sha256": "d525aad9eb2e6c3be6eee8744a8540cbfae00e92e580eab08b16b74867398ec5",
+      "gzipSha256": "883d0e5368d906bd961f494e3349c19a3f1fa05d6867aa85d732f4f91433a0e1",
+      "bytes": 57805
+    },
+    "apps/api/src/modules/ai/ai.controller.ts": {
+      "sha256": "6f961fa880c785257dda1711f41dbc6df72422aef7d32a32dee1a67be702e9c7",
+      "gzipSha256": "4be7ea09cab3bda12eb08a5c9d33c2910270e41bfc37893001462b8854bc468f",
+      "bytes": 3558
+    },
+    "apps/api/src/modules/ai/assistant-teaching-content.ts": {
+      "sha256": "ca1e56e2629276e050ac0585154136041f696fb70fdf290e16207f65085a2adc",
+      "gzipSha256": "7e61ab30d20e78e19d4699771fd287da6544ae02dc0da61281d66693c134905a",
+      "bytes": 19129
+    },
+    "apps/api/src/modules/ai/assistant-teaching-instructions.ts": {
+      "sha256": "7dadd62b177cf3e2c1e325865dcf432d6f8ccc9cafdf0abb90786e486911465d",
+      "gzipSha256": "912884da288491d3f889b300c784ed65a64e1687e6a310cf94643c62f5e9e68c",
+      "bytes": 3727
+    },
+    "apps/api/src/modules/ai/assistant-turn.service.ts": {
+      "sha256": "27552cf85a914d4b70e43100c22161043e182c15456b4517c4231a3a50261520",
+      "gzipSha256": "cf835f552d69992d517c7f39060b8f60abec556aaa8f108f3394bd9cb7bb4d24",
+      "bytes": 23564
+    },
+    "apps/api/src/infrastructure/in-memory-store.service.ts": {
+      "sha256": "8beaa927caa3a67a9c8358f28eaa6ae3d6251a469c4f9987fe31f4645c1f2b14",
+      "gzipSha256": "f34654df8f595bda542dea30760f10c8360679337c0e89e532fe9763b6f4fbbb",
+      "bytes": 28025
+    },
+    "packages/contracts/src/assistant-turn.ts": {
+      "sha256": "3acffa62ee0b9c00e8dd616491913a904b0171c17c91070c59f68a6d6948ac7f",
+      "gzipSha256": "edb906b1a53bd48400e551d6130f647efd2e0034638288dd414b278f4a94237a",
+      "bytes": 4237
+    },
+    "packages/contracts/src/index.ts": {
+      "sha256": "13dc4b3691e75e704094a796b2454960595725bf11f4060ccd9537f0152661d3",
+      "gzipSha256": "c541c04e6e43497dc6281767689bfb01b6c45dad6d96294154565fa7fffbaefb",
+      "bytes": 25618
+    },
+    "apps/api/dist/apps/api/src/modules/ai/assistant-course-context.js": {
+      "sha256": "618278a12cdad87e5b0c296e7d81f2dba9bd00807cf67bc22defe20b4de89269",
+      "gzipSha256": "f946901d451ed73e9c72a4cb7723b52a31245a51a6ec7ed2c31319395e371f7a",
+      "bytes": 10519
+    },
+    "apps/api/dist/apps/api/src/modules/ai/ai.service.js": {
+      "sha256": "375cdb3d16c570fb164c0bffcc98c3ccff688712409150cc87245bb5c6b38777",
+      "gzipSha256": "3b362380b81192f91ce23034d632966a5d765ae2703ba1e4941ab1f040fdfd60",
+      "bytes": 62312
+    },
+    "scripts/qa/run-course-assistant-postgres.cjs": {
+      "sha256": "f600925798a8fc05383768a777a1ebd07c27458fe2f01efc77c2260d0d35ecbe",
+      "gzipSha256": "13a5302f419740e0c12bc1cf22be93e599d614aef184d7b42b99ec11447c609d",
+      "bytes": 1496
+    },
+    ".github/workflows/verify.yml": {
+      "sha256": "e6c2793a503dc17a690a68137aba031a2a0d1c044ec63ab16f3b1b7beae76eaf",
+      "gzipSha256": "98a44bf5617148cb1dd211bd71ad000f456fcf46f5a90daf89856b2995493b6d",
+      "bytes": 29992
+    }
+  },
+  "productionFormalRecordsWritten": 0,
+  "modelCreatedFormalResults": false,
+  "syntheticFormalSessionFixturesUsed": true
+}

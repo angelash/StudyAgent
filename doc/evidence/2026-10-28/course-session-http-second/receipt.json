@@ -1,0 +1,30 @@
+{
+  "passed": false,
+  "passedTests": 67,
+  "failedTests": 1,
+  "knownFailure": "Added unknown /course-context/private URL is not registered, so Nest returns404 before AuthGuard. Test incorrectly expected403; actual registered lecture route remains403 for student. Only expected status of unregistered URL is corrected.",
+  "scopesOverlap": true,
+  "newModelCalls": 0,
+  "files": {
+    "data/qa/course-session-http-second.json": {
+      "sha256": "b68317be9451656fbbfddcd06c97074e7e6605764e2b5613fa6c860b3f40f61d",
+      "gzipSha256": "08887a8f21f070e1782b3621369955514f42f7c43ff00451429bf3c71b510b5a",
+      "bytes": 31329
+    },
+    "data/qa/course-session-http-second.log": {
+      "sha256": "0f4ea1e958d6c447e1d8574ea9d3f7ea2c4793157cbdd936f44dfb5c18a3242f",
+      "gzipSha256": "7eb2dbbf932a621310df790f21bcb0778415d47815146bc44793b901b4e72eff",
+      "bytes": 4690
+    },
+    "apps/api/src/common/auth.guard.ts": {
+      "sha256": "951af955f2f233fcefcccaf86a7a99516ddc8d8e23d65b98203a588c5c132729",
+      "gzipSha256": "855fdfaf5fc4587128fdba8f60c2bc93b4797943a3207a1f041f79759489f2e6",
+      "bytes": 9569
+    },
+    "apps/api/src/modules/ai/assistant-course.integration.test.ts": {
+      "sha256": "4e36573a4aec0c05a7ec8e23345ca66f5f348d7882ee0a406b312c0a7699ac33",
+      "gzipSha256": "9902e8b7eb1e0ca44a108019dc4f04cf081c72b91314ecfa30e34d661d871290",
+      "bytes": 24748
+    }
+  }
+}

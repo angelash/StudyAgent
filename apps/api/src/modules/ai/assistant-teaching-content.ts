@@ -39,6 +39,7 @@ const selectionSchema = z.discriminatedUnion('mode', [
   z.object({ mode: z.literal('complete') }).strict(), z.object({ mode: z.literal('overview') }).strict(),
   z.object({ mode: z.literal('detail'), partKeys: z.array(key).min(1).max(2000) }).strict(),
 ]);
+export const teachingContentSelectionSchema = selectionSchema;
 const snapshotSchema = catalogSchema.extend({ parts: z.array(partSchema).max(2000), selection: selectionSchema, catalogFingerprint: z.string().regex(/^[a-f0-9]{64}$/),
   coverage: z.object({ totalParts: z.number().int().positive(), includedParts: z.number().int().nonnegative(),
     totalTargets: z.number().int().positive(), includedTargets: z.number().int().positive(),
@@ -192,6 +193,10 @@ function selectedSnapshot(catalog: TeachingCatalog, input: unknown, catalogFinge
 
 function checkBudget(maximumCharacters: number) {
   if (!Number.isSafeInteger(maximumCharacters) || maximumCharacters < 1 || maximumCharacters > 18_000) throw new BadRequestException('教学上下文预算不合法');
+}
+/** Preflight measurement only. Sending must apply the complete context budget. */
+export function projectTeachingContent(value: TeachingCatalog, selection: TeachingContentSelection): TeachingContentSnapshot {
+  return selectedSnapshot(checkedCatalog(value), selection);
 }
 export function freezeTeachingContent(value: TeachingCatalog, selection: TeachingContentSelection = { mode: 'complete' }, maximumCharacters = 18_000): TeachingContentSnapshot {
   checkBudget(maximumCharacters);

@@ -42,7 +42,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^diagnostics\/students\/[^/]+\/evidence\/[^/]+$/,
     /^diagnostics\/plans\/[^/]+(\/(reviews|retrospective))?$/,
     /^learning\/practice\/[^/]+(\/questions\/[^/]+)?$/, /^learning\/feedback$/,
-    /^ai\/models$/, /^ai\/assistant\/history$/, /^ai\/assistant\/sessions\/[^/]+\/(context|messages(\/page)?|turns(\/[^/]+)?)$/, /^learning\/media\/(capabilities|[^/]+(\/content)?)$/,
+    /^ai\/models$/, /^ai\/assistant\/history$/, /^ai\/assistant\/course-context$/, /^ai\/assistant\/sessions\/[^/]+\/(context|messages(\/page)?|turns(\/[^/]+)?)$/, /^learning\/media\/(capabilities|[^/]+(\/content)?)$/,
     /^measurement-content\/candidates\/[^/]+\/media\/\d+$/,
     /^library\/(overview|facets|papers|media)$/, /^library\/papers\/[^/]+$/,
     /^library\/practice\/reviews(\/calendar(\/export)?)?$/,

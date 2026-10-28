@@ -99,9 +99,9 @@ test('lecture-assistant: a lost receipt is recovered with the original request a
   await expect(page.getByRole('log', { name: '当前学习对话' }).locator('.assistant-message')).toHaveCount(2);expect(stalePages).toBeGreaterThanOrEqual(2); await shot(page, 'recovered-original-request');
 });
 
-test('lecture-assistant: a retained original version opens from the server without creating or resending a session', async ({ page }) => {
+for(const protocol of ['classroom-lecture-v1','classroom-lecture-v2'])test('lecture-assistant: a retained original version opens from the server without creating or resending a session · '+protocol, async ({ page }) => {
   test.setTimeout(120000); await page.setViewportSize({ width: 880, height: 887 }); await page.emulateMedia({ reducedMotion: 'reduce' }); const actor = await login(page);
-  const original = await call(actor, '/qa/assistant/lecture-history', {}), posts: string[] = [];
+  const original = await call(actor, '/qa/assistant/lecture-history', {protocol}), posts: string[] = [];
   page.on('request', request => { if (request.method() === 'POST' && /\/ai\/assistant\/sessions(?:\/|$)/.test(request.url())) posts.push(request.url()); });
   await page.goto(original.href); await expect(page.getByRole('log', { name: '当前学习对话' })).toContainText('LECTURE_OLD_HISTORY_MARKER');
   await expect(input(page)).toBeDisabled(); await expect(page.getByRole('button', { name: '发送学习问题' })).toBeDisabled(); expect(posts).toEqual([]);
