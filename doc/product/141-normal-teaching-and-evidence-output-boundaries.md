@@ -47,3 +47,11 @@ ai.service.ts在Xiaojiu助教、OpenAI兼容助教、旧可选指导润色三个
 `renderAssistant`的Xiaojiu和OpenAI兼容路径用新函数检查reply；`enrichDiagnosticPlan`只检查summary及每个activity字段，ID和引用仍由原schema及允许集合校验，不对整个JSON字符串做词匹配。只对通过策略的AI产出在既有insight结构化元数据追加outputPolicyVersion；规则提示不伪称已通过模型输出检查。旧insight/消息不回填或重判，持久任务和会话数据schema不变。
 
 必要单测包括正反教学、局部/跨句否定、双重否定、免责声明后继续下断言、中英文常见标签、NFKC/不可见字符、技术术语、数学断言及确定根因。HTTP/worker检查实际同一请求写入、失败不发布、原键不再调用、原模型重试与正式计量SHA保持。保留不支持的精确形式和后续边界，不靠减少原安全断言来制造通过。
+
+## 7. 当前实现、原失败及专项范围
+
+141已在独立工作区实现统一策略、三个调用入口、AI insight输出策略版本；题目答案/引用/正式计量/会话与任务协议未改，schema21保持。旧编译caller基线12项中7个正常表达/不透明ID误拦失败、5个已有保护通过；原件已保留。首轮67专项全过；HTTP组合103中102过/1新增规则测试错误地漏传canonical turn必需modelId的400保留，改为原有legacy messages规则入口后选中1项通过/13未选择。另补三条“不能仅凭一次错题就说…”及两条双重否定，原策略55过/5失败已留证，再补齐局部归属而不放行跨句免责声明。
+
+最新SQLite/策略/旧助教组合108项全部通过、PG组合16项通过（14 HTTP、1 PG原生、1 SQLite对照），API及测试类型检查通过。范围重叠，不能相加作覆盖率。主目录373编译与本工作区contracts/config四产物共377输入仍原SHA一致，正式继续140/NkfAGfS0FLw-vibTZyptB，没有141真实模型调用或正式数据写入。见[当前专项](../evidence/2026-10-28/teaching-output-focused/receipt.json)、[原caller失败](../evidence/2026-10-28/teaching-output-caller-before/receipt.json)、[原HTTP测试失败](../evidence/2026-10-28/teaching-output-http-first/receipt.json)及[五条语义范围反例](../evidence/2026-10-28/teaching-output-scope-before/receipt.json)。
+
+接续真实默认模型的普通否定/定义讲解、完整API/433浏览器、精确远端及新鲜可回退交付。模型文字资格仍继承140的21/22，旧Opus5当前两次复查失败不变；不以本批mock声称全模型或教师质量通过。有限局部语义规则不等于完备事实核查，旧消息不重判、正式掌握/原因仍由已有独立证据协议决定。完整M1～M7及72项继续。

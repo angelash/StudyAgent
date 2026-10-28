@@ -35,6 +35,7 @@ import { codexHomeDirectory, XiaojiuModelsService } from './xiaojiu-models.servi
 import { modelConnectionFingerprint, readModelQualification } from './xiaojiu-model-qualification';
 import { textProviderConfiguration } from './xiaojiu-text-transport';
 import { workspaceRoot } from '../../infrastructure/workspace-paths';
+import { inspectTeachingOutput, TEACHING_OUTPUT_POLICY_VERSION } from './teaching-output-policy';
 
 type AnalyzeAssessmentCommand = {
   question: Question;
@@ -493,7 +494,7 @@ export class AiService {
         const reveals = session.userRole === 'student' && withheldAnswer !== undefined &&
           ['string', 'number'].includes(typeof withheldAnswer) && result.reply.includes(String(withheldAnswer));
         if (result.evidenceIds.some(id => !context.evidenceIds.includes(id)) || reveals ||
-            /(智力低|ADHD|笨|懒惰|确诊|一定是)/i.test(result.reply))
+            !inspectTeachingOutput(result.reply).allowed)
           throw new ServiceUnavailableException('所选模型返回了不符合证据边界的回答，请重试或切换模型');
         reply = result.reply;
         citations = result.evidenceIds;
@@ -516,7 +517,7 @@ export class AiService {
           .parse(JSON.parse(completion.choices[0]?.message?.content ?? '{}'));
         const reveals = session.userRole === 'student' && withheldAnswer !== undefined &&
           ['string', 'number'].includes(typeof withheldAnswer) && result.reply.includes(String(withheldAnswer));
-        if (result.evidenceIds.some((id) => !context.evidenceIds.includes(id)) || reveals || /(智力低|ADHD|笨|懒惰|确诊|一定是)/i.test(result.reply)) throw new Error('Unsupported output');
+        if (result.evidenceIds.some((id) => !context.evidenceIds.includes(id)) || reveals || !inspectTeachingOutput(result.reply).allowed) throw new Error('Unsupported output');
         reply = result.reply; citations = result.evidenceIds; source = 'openai';
         selectedModelId = prepared.modelId; selectedModelName = prepared.modelName;
       } catch (error) { throw new ServiceUnavailableException(command.signal?.aborted ? '本次对话已取消' : '模型回答未通过校验或生成失败，请重试'); }
@@ -540,6 +541,7 @@ export class AiService {
     this.recordInsight('assistant', session.id, session.studentId, reply, { summary: reply,
       structuredResult: { pageContext: session.pageContext, model: selectedModelId ?? 'local-guidance',
         modelName: selectedModelName,
+        ...(source !== 'rules' ? { outputPolicyVersion: TEACHING_OUTPUT_POLICY_VERSION } : {}),
         promptVersion: 'evidence-coach-v2', evidenceIds: citations, usedLocalContext: Boolean(context.scope || context.report || context.plan || bound),
         contextRefType: session.contextRefType, contextRefId: session.contextRefId, contextItemId: session.contextItemId ?? null, assistanceRecorded },
       confidenceLevel: 'low', reviewRequired: true, source: source === 'rules' ? 'rules' : 'openai' });
@@ -619,9 +621,9 @@ export class AiService {
       const value = result.data;
       if (value.activities.length !== plan.actions.length || new Set(value.activities.map((item) => item.actionId)).size !== plan.actions.length ||
         value.activities.some((item) => !plan.actions.some((action) => action.id === item.actionId) || item.evidenceIds.some((id) => !plan.evidenceIds.includes(id))) ||
-        /(智力低|注意力缺陷|ADHD|笨|懒惰|确诊|一定是)/i.test(JSON.stringify(value))) return { status: 'rejected' };
+        !inspectTeachingOutput(value.summary).allowed || value.activities.some(item => !inspectTeachingOutput(item.activity).allowed)) return { status: 'rejected' };
       this.recordInsight('assistant', plan.id, plan.studentId, value.summary, { summary: value.summary,
-        structuredResult: { scene: 'diagnostic_guidance', model: this.env.OPENAI_MODEL, promptVersion: 'guidance-v1', evidenceIds: plan.evidenceIds },
+        structuredResult: { scene: 'diagnostic_guidance', model: this.env.OPENAI_MODEL, promptVersion: 'guidance-v1', outputPolicyVersion: TEACHING_OUTPUT_POLICY_VERSION, evidenceIds: plan.evidenceIds },
         confidenceLevel: 'medium', reviewRequired: true, source: 'openai' });
       return { status: 'available', value };
     } catch { return { status: 'unavailable' }; }

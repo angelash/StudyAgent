@@ -1,0 +1,80 @@
+{
+  "passed": false,
+  "phase": "one-new-rules-test-fixture-failure",
+  "tests": 103,
+  "passedTests": 102,
+  "failedTests": 1,
+  "priorFocusedPassed": 67,
+  "overlappingScopesNotSummed": true,
+  "knownFailure": "New rules control posts a canonical turn without its required modelId and receives400. Existing legacy messages rules entry accepts requests without a model. No production behavior changed for this test correction.",
+  "inputCapture": "Source and actual compiled inputs retained after the terminal run; no complete before/after freeze claim.",
+  "unchangedProtectedCompiledInputs": 377,
+  "realModelCalls": 0,
+  "files": {
+    "data/qa/teaching-output-focused-first.json": {
+      "sha256": "69d1666a0f1d40a610d83e160a3766b6999b6af356ebeb9a863842fa7d5b35ef",
+      "gzipSha256": "4b280fe9f6d367d7c78e5329d5efc5e084c70235249629acb3b2a80e73ef9faa",
+      "bytes": 23455
+    },
+    "data/qa/teaching-output-focused-first.log": {
+      "sha256": "0f95bbe70b52f180c580e3a958686e76a24992d8bd9ee6d778da0d3f149c9555",
+      "gzipSha256": "536ffac1771320d660422d19275e56a21548a8b7a87cf9004ea6b0962d5f8677",
+      "bytes": 496
+    },
+    "data/qa/teaching-output-http-first.json": {
+      "sha256": "97a811afa38c79a16ab9f65d44b4b9428372becbb266acb0b446d9d7955af1aa",
+      "gzipSha256": "d64e00e706ba0c6260c5d49856e4b45434ee8ad592489bfe01f756d4001a42bd",
+      "bytes": 41045
+    },
+    "data/qa/teaching-output-http-first.log": {
+      "sha256": "c344fd0f089992fc01aa230757548a1fd4697943bdd47d521a9bcde735452d5e",
+      "gzipSha256": "adcdbd20656522e8a72df7908e506a631c4cb346ac6be38ca2dd3636e1f84ee6",
+      "bytes": 493
+    },
+    "data/qa/teaching-output-api-build-first.log": {
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "gzipSha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "bytes": 66
+    },
+    "data/qa/teaching-output-protected-compiled.json": {
+      "sha256": "9468d4af6000f07f55ad3702b6e2cff461491f678284cbac6d746342d53d9b68",
+      "gzipSha256": "c855fa3d3d299cea65d60332b50cd474abc0d2c399d49280d1dc3f646e56be78",
+      "bytes": 55733
+    },
+    "apps/api/src/modules/ai/teaching-output-policy.ts": {
+      "sha256": "cb1a38333b2be3ef1204e60af4e1faf38f1436616d7791b013a4a1fbddf1a045",
+      "gzipSha256": "e27e6c9834a7f71aec707cf4d3717bfaf4a76acbf0a046a39b709839223088e3",
+      "bytes": 5379
+    },
+    "apps/api/src/modules/ai/teaching-output-policy.test.ts": {
+      "sha256": "b9f529e6ac02dd78af35639250ecc589a763dc2e3bf7c46fc04648906165ff19",
+      "gzipSha256": "2605ad2fa708f14740409c19f9d79c615697ec37ef46c6c545c16eb4bda02ee5",
+      "bytes": 3441
+    },
+    "apps/api/src/modules/ai/teaching-output-caller.test.ts": {
+      "sha256": "eb8dcd1e443a4c81ce194ab6df8e85ec29faab54255e3c57b0e202865f9f7ea1",
+      "gzipSha256": "2a672e54c5f84938a2123ddc64009ac9aa175c6a856b0d432d07e63fe17b27b4",
+      "bytes": 4371
+    },
+    "apps/api/src/modules/ai/assistant-lecture.integration.test.ts": {
+      "sha256": "39a93ededcf7b3f09e652e033ecfaa290e741711ad6ff9dd7ec9427a3c8bddff",
+      "gzipSha256": "7aa43ee76567913996a8c80830f128584af92d2fa2e2e47bff5185f333d4df39",
+      "bytes": 24603
+    },
+    "apps/api/src/modules/ai/ai.service.ts": {
+      "sha256": "40ed4304c96b6ac729d42c8fb5c461774b2600a6a0a7df6862797a60c16e67dd",
+      "gzipSha256": "1c73936571163e38af734fc48b0e0fe8872a19232b6dc97c0c0c840391ac19fa",
+      "bytes": 50074
+    },
+    "apps/api/dist/apps/api/src/modules/ai/ai.service.js": {
+      "sha256": "a399bc151e8d8b3380ef301f659b1317e75f4948b3b3f4ccb859ca1aeb42060f",
+      "gzipSha256": "25d996291ea7123a2ac11e12ce6bf6228109dc71cf438a5a30259dea4816c564",
+      "bytes": 53723
+    },
+    "apps/api/dist/apps/api/src/modules/ai/teaching-output-policy.js": {
+      "sha256": "6555d6c481328c30fb0485da18df0802e89769b7699bd1dc1c99f0f261b1edf1",
+      "gzipSha256": "4d2b6fc7ec3967e1a36cb67fa9ba286fd9cb25f46558ec13505a88b056c18923",
+      "bytes": 5514
+    }
+  }
+}

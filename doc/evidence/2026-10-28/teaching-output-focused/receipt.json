@@ -1,0 +1,101 @@
+{
+  "passed": true,
+  "policyVersion": "teaching-output-policy-v1",
+  "sqliteAndPolicyCombination": 108,
+  "postgresCombination": 16,
+  "postgresHttp": 14,
+  "postgresNative": 1,
+  "sqliteNativeControl": 1,
+  "scopesOverlap": true,
+  "correctedRulesEntryOnly": {
+    "passed": 1,
+    "unselected": 13
+  },
+  "typecheckPassed": true,
+  "unchangedMainAndDependencyCompiledInputs": 377,
+  "realModelCalls": 0,
+  "productionStill140": true,
+  "inputCapture": "After terminal matching source and compiled copies; complete before/after freeze remains required for full runs.",
+  "files": {
+    "data/qa/teaching-output-http-second.json": {
+      "sha256": "7b0565c04dd74d87c9ec06296f3f56a8ddae380a88f46d072f4f884eab24a9cb",
+      "gzipSha256": "bf16f137ce8b645d58b8132ac339fe6dcb30501a05f5da277cccc700aa8c8a19",
+      "bytes": 41348
+    },
+    "data/qa/teaching-output-http-second.log": {
+      "sha256": "90abcbf9eaa9614dd65fde7a15fabc5e1899bc90a2df64536ef1986e5e68ba58",
+      "gzipSha256": "ad9a05a019981995c7470e928b4a3ecf16957a4e551fae12a13e7d48f61a2324",
+      "bytes": 494
+    },
+    "data/qa/teaching-output-rules-second.json": {
+      "sha256": "ee36aafb83dd3ea03e0341d00fe643c70935d9ecaeeacff1c5bc04abb95ceabe",
+      "gzipSha256": "999f644f550e72f4a84531dbc5875a8f47d21c32cd8050c44ee84e4bb81abdc2",
+      "bytes": 6380
+    },
+    "data/qa/teaching-output-rules-second.log": {
+      "sha256": "9ae7a6cb72b18f9479e0c7718a70d61cffbcc480439ea13e8170bf52640efe99",
+      "gzipSha256": "bd8442a2446f99204e1027ce29a667d4b9d8a4ee28c45036158339b629cd6b78",
+      "bytes": 495
+    },
+    "data/qa/teaching-output-postgres-first.json": {
+      "sha256": "1cd6b8a221c76199f1f7ac387920a7eb480b94b88de6e003e89919774ec81e3d",
+      "gzipSha256": "5d93070cf9aeacec89a9e3334ec5434c551a6a9b7ef0f0a334df0e01c366e1fc",
+      "bytes": 8007
+    },
+    "data/qa/teaching-output-postgres-first.log": {
+      "sha256": "14c1224a1e16ff9d69a31354131991f17904c7b7d91d8a4957f5a324d8d7acaf",
+      "gzipSha256": "c5654cd9a825b8fde3cacb406804d8331acfcd1de36fb47ce2eca69e89e5ccb0",
+      "bytes": 1533
+    },
+    "data/qa/teaching-output-api-typecheck.log": {
+      "sha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "gzipSha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec",
+      "bytes": 68
+    },
+    "data/qa/teaching-output-api-build-second.log": {
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "gzipSha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "bytes": 66
+    },
+    "data/qa/teaching-output-protected-compiled.json": {
+      "sha256": "9468d4af6000f07f55ad3702b6e2cff461491f678284cbac6d746342d53d9b68",
+      "gzipSha256": "c855fa3d3d299cea65d60332b50cd474abc0d2c399d49280d1dc3f646e56be78",
+      "bytes": 55733
+    },
+    "apps/api/src/modules/ai/ai.service.ts": {
+      "sha256": "40ed4304c96b6ac729d42c8fb5c461774b2600a6a0a7df6862797a60c16e67dd",
+      "gzipSha256": "1c73936571163e38af734fc48b0e0fe8872a19232b6dc97c0c0c840391ac19fa",
+      "bytes": 50074
+    },
+    "apps/api/src/modules/ai/teaching-output-policy.ts": {
+      "sha256": "7adc55430bcb9fd272ac5badc7b16fceeae32fc64f5ad5e123ce9fe45383946b",
+      "gzipSha256": "75795ddb60911a1e34a2626c2b3b5e99d6912cc4de6a79506a417acc11bd6416",
+      "bytes": 5581
+    },
+    "apps/api/src/modules/ai/teaching-output-policy.test.ts": {
+      "sha256": "56505f5db0a72ab128b4123443862271cc65445c851880d5ff6a9d321b03b8be",
+      "gzipSha256": "180ec3149bd4f39e099ff42cc01cc77e425c3a4d086c6fff6404cdcec766d547",
+      "bytes": 3697
+    },
+    "apps/api/src/modules/ai/teaching-output-caller.test.ts": {
+      "sha256": "eb8dcd1e443a4c81ce194ab6df8e85ec29faab54255e3c57b0e202865f9f7ea1",
+      "gzipSha256": "2a672e54c5f84938a2123ddc64009ac9aa175c6a856b0d432d07e63fe17b27b4",
+      "bytes": 4371
+    },
+    "apps/api/src/modules/ai/assistant-lecture.integration.test.ts": {
+      "sha256": "a349c2e7cc4935fddd8112c849324f0200265930dcbf650453f79375bbcc401f",
+      "gzipSha256": "24365add77562ea9a8e3bb8ad9816b517350fe226846ffd399ca8eeda3cf33a0",
+      "bytes": 24506
+    },
+    "apps/api/dist/apps/api/src/modules/ai/ai.service.js": {
+      "sha256": "a399bc151e8d8b3380ef301f659b1317e75f4948b3b3f4ccb859ca1aeb42060f",
+      "gzipSha256": "25d996291ea7123a2ac11e12ce6bf6228109dc71cf438a5a30259dea4816c564",
+      "bytes": 53723
+    },
+    "apps/api/dist/apps/api/src/modules/ai/teaching-output-policy.js": {
+      "sha256": "3f3eae2a7e023a479cec305f473509a49d1ebe9ed84e1731cacd2bb78e044e12",
+      "gzipSha256": "e19ffd5a52580919e5130a7e6cdd2af96d5d577b2ee612c747746728b73381e2",
+      "bytes": 5716
+    }
+  }
+}

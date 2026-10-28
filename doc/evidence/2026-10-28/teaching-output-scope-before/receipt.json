@@ -1,0 +1,28 @@
+{
+  "passed": false,
+  "passedTests": 55,
+  "failedTests": 5,
+  "scope": "Three ordinary cannot-infer-from-one-answer phrases were overblocked, and two double negations were incorrectly allowed by the initial local policy. Original source and five red semantic regressions retained before correction. No real provider or production changes.",
+  "files": {
+    "data/qa/teaching-output-scope-before.json": {
+      "sha256": "c81d64de2c9c0fb79b15a6534ce4e26ebf7cb8993e8bfe022cacdd98255086e0",
+      "gzipSha256": "53b7fe823caf277b440fa2c137b10324aa14952d11c74154a31e0455c30e56fa",
+      "bytes": 25737
+    },
+    "data/qa/teaching-output-scope-before.log": {
+      "sha256": "d5a094543df2cc2aca25c22106a480c127e61526828f09cb450720896b8911b5",
+      "gzipSha256": "88883b9f5feb554295c7f2973dad88f5b131f3ae76601981a9e9ce0b7acab8f0",
+      "bytes": 495
+    },
+    "apps/api/src/modules/ai/teaching-output-policy.ts": {
+      "sha256": "cb1a38333b2be3ef1204e60af4e1faf38f1436616d7791b013a4a1fbddf1a045",
+      "gzipSha256": "e27e6c9834a7f71aec707cf4d3717bfaf4a76acbf0a046a39b709839223088e3",
+      "bytes": 5379
+    },
+    "apps/api/src/modules/ai/teaching-output-policy.test.ts": {
+      "sha256": "56505f5db0a72ab128b4123443862271cc65445c851880d5ff6a9d321b03b8be",
+      "gzipSha256": "180ec3149bd4f39e099ff42cc01cc77e425c3a4d086c6fff6404cdcec766d547",
+      "bytes": 3697
+    }
+  }
+}

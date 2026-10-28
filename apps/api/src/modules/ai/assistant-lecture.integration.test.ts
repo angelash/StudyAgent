@@ -5,7 +5,7 @@ import request from 'supertest';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve, dirname, basename } from 'node:path';
-import { randomUUID } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { Pool } from 'pg';
 import type { XiaojiuChatService } from './xiaojiu-chat.service';
 
@@ -212,5 +212,63 @@ describe('adult lecture assistant HTTP and frozen task boundaries', () => {
     });
     await call('post','/ai/assistant/sessions',command(descriptor),actor,403);
     expect(await store.requestContext(()=>store.select('assistantSessions',{ownerUserId:actor.user.id}).length)).toBe(before);
+  });
+
+  const independent = () => call('post', '/ai/assistant/sessions', { userRole: 'parent', studentId: null, subject: null, pageContext: 'studio' });
+  const formalDigest = () => store.requestContext(() => createHash('sha256').update(JSON.stringify(
+    ['classroomSessions', 'diagnosticResponses', 'practiceAttempts', 'diagnosticPlans', 'diagnosticHypotheses', 'scoringRevisions']
+      .map(name => store.select(name, {})))).digest('hex'));
+
+  it('publishes normal mathematical explanation once with its policy version and unchanged formal records', async () => {
+    const session = await independent(), original = await input(session.id), before = await formalDigest();
+    const text = '奇数不一定是质数，9是反例；每个正方形一定是长方形，因为它有四个直角。';
+    const reply = vi.spyOn(chat, 'reply').mockResolvedValue({ reply: text, evidenceIds: [], modelId: 'deepseek-v4-flash', modelName: 'Synthetic policy model' });
+    const turn = await call('post', base(session.id) + '/turns', original);
+    await worker.runNext();
+    const done = await call('get', base(session.id) + '/turns/' + turn.id);
+    expect(done.status).toBe('completed');
+    const page = await call('get', base(session.id) + '/messages/page');
+    expect(page.messages.find((message: any) => message.id === done.assistantMessageId)).toMatchObject({ content: text, modelId: 'deepseek-v4-flash' });
+    expect((await call('post', base(session.id) + '/turns', original)).assistantMessageId).toBe(done.assistantMessageId);
+    expect(reply).toHaveBeenCalledOnce();
+    const insight = await store.requestContext(() => store.select('aiInsights', { sourceId: session.id }).at(-1));
+    expect(insight.payload.structuredResult.outputPolicyVersion).toBe('teaching-output-policy-v1');
+    expect(await formalDigest()).toBe(before);
+  });
+
+  it('keeps a rejected learner claim unpublished and replays or explicitly retries only its original turn', async () => {
+    const session = await independent(), original = await input(session.id), before = await formalDigest();
+    const count = await store.requestContext(() => store.select('assistantMessages', { sessionId: session.id }).length);
+    const rejected = '我不能诊断；但是孩子就是笨。';
+    const reply = vi.spyOn(chat, 'reply').mockResolvedValue({ reply: rejected, evidenceIds: [], modelId: 'deepseek-v4-flash', modelName: 'Synthetic rejected model' });
+    const turn = await call('post', base(session.id) + '/turns', original);
+    await worker.runNext();
+    const failed = await call('get', base(session.id) + '/turns/' + turn.id);
+    expect(failed.status).toBe('failed');
+    expect(JSON.stringify(failed)).not.toContain(rejected);
+    expect((await call('post', base(session.id) + '/turns', original)).id).toBe(turn.id);
+    expect(reply).toHaveBeenCalledOnce();
+    expect(await store.requestContext(() => store.select('assistantMessages', { sessionId: session.id }).length)).toBe(count);
+    reply.mockResolvedValue({ reply: '单次答错不能说明孩子笨，先核对步骤，再用独立新题验证。', evidenceIds: [], modelId: 'deepseek-v4-flash', modelName: 'Synthetic recovered model' });
+    const retry = await call('post', base(session.id) + '/turns/' + turn.id + '/retry', { generation: failed.task.generation, version: failed.task.version });
+    expect(retry.id).toBe(turn.id);
+    await worker.runNext();
+    expect((await call('get', base(session.id) + '/turns/' + turn.id)).status).toBe('completed');
+    expect(reply).toHaveBeenCalledTimes(2);
+    expect(reply.mock.calls.map(args => args[0].modelId)).toEqual(['deepseek-v4-flash', 'deepseek-v4-flash']);
+    expect(await store.requestContext(() => store.select('assistantMessages', { sessionId: session.id }).length)).toBe(count + 2);
+    expect(await formalDigest()).toBe(before);
+  });
+
+  it('does not mark deterministic rules as a model output policy inspection', async () => {
+    const session = await independent();
+    vi.spyOn(chat, 'enabled', 'get').mockReturnValue(false);
+    const reply = vi.spyOn(chat, 'reply');
+    const result = await call('post', base(session.id) + '/messages', { message: '请先说明独立学习的一步。', requestKey: randomUUID() });
+    expect(result.source).toBe('rules');
+    expect(reply).not.toHaveBeenCalled();
+    const insight = await store.requestContext(() => store.select('aiInsights', { sourceId: session.id }).at(-1));
+    expect(insight.payload.source).toBe('rules');
+    expect(insight.payload.structuredResult).not.toHaveProperty('outputPolicyVersion');
   });
 });

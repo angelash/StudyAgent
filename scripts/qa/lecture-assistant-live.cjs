@@ -3,7 +3,7 @@ require('reflect-metadata');
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const {randomUUID,createHash}=require('node:crypto'),{execFileSync}=require('node:child_process');
 const {NestFactory}=require('@nestjs/core'),request=require('supertest'),root=path.resolve(__dirname,'../..');
-const args=process.argv.slice(2),index=args.indexOf('--output');
+const args=process.argv.slice(2),index=args.indexOf('--output'),teachingOutput=args.includes('--teaching-output');
 if(index<0||!args[index+1])throw Error('Explicit fresh --output required');
 const directory=path.resolve(root,args[index+1]);
 if(!directory.startsWith(path.join(root,'data/qa')+path.sep)||fs.existsSync(directory))throw Error('Fresh owned QA directory required');
@@ -12,10 +12,10 @@ if(execFileSync('git',['status','--porcelain','--',...relevant],{cwd:root,encodi
 Object.assign(process.env,{NODE_ENV:'development',STUDY_STORAGE:'sqlite',STUDY_DATA_DIR:path.join(directory,'private-runtime'),STUDY_WORKER_ENABLED:'false',STUDY_SEED_FOUNDATION:'false',XIAOJIU_CHAT_ENABLED:'true',XIAOJIU_CHAT_TIMEOUT_MS:'60000',OPENAI_API_KEY:'',MINIMAX_API_KEY:''});
 const load=name=>require(path.join(root,'apps/api/dist/apps/api/src',name+'.js'));
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex'),inputs={};
-for(const name of ['ai.controller','ai.service','assistant-lecture-context','assistant-turn.service','assistant-turn-worker.service','assistant-turn-record','xiaojiu-chat.service','xiaojiu-models.service','xiaojiu-text-transport','codex-command'])
+for(const name of ['ai.controller','ai.service','teaching-output-policy','assistant-lecture-context','assistant-turn.service','assistant-turn-worker.service','assistant-turn-record','xiaojiu-chat.service','xiaojiu-models.service','xiaojiu-text-transport','codex-command'])
  for(const file of ['apps/api/src/modules/ai/'+name+'.ts','apps/api/dist/apps/api/src/modules/ai/'+name+'.js'])inputs[file]=sha(fs.readFileSync(path.join(root,file)));
 for(const file of ['scripts/qa/lecture-assistant-live.cjs','apps/api/src/modules/learning/classroom-curriculum.ts','apps/api/dist/apps/api/src/modules/learning/classroom-curriculum.js','packages/contracts/src/assistant-turn.ts','packages/contracts/dist/index.js','packages/config/src/index.ts','packages/config/dist/index.js'])inputs[file]=sha(fs.readFileSync(path.join(root,file)));
-const receipt={version:1,revision:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8',windowsHide:true}).trim(),startedAt:new Date().toISOString(),passed:false,status:'running',sourceAndCompiledSha256:inputs,cases:[],scope:'Two anonymous default-model samples through actual HTTP, durable worker and configured Xiaojiu CLI. No fixtures, model matrix requalification, teacher validation, pixel/audio parity or stable success-rate claim.'};
+const receipt={version:1,revision:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8',windowsHide:true}).trim(),startedAt:new Date().toISOString(),passed:false,status:'running',sourceAndCompiledSha256:inputs,cases:[],teachingOutput,scope:'Two anonymous default-model samples through actual HTTP, durable worker and configured Xiaojiu CLI. Optional teaching-output mode asks for normal qualified/definitional explanations and verifies their recorded output-policy version. No fixtures, model matrix requalification, teacher validation, pixel/audio parity or stable success-rate claim.'};
 fs.mkdirSync(directory,{recursive:true});const save=()=>fs.writeFileSync(path.join(directory,'progress.json'),JSON.stringify(receipt,null,2)+'\n');
 let app,observed;
 (async()=>{
@@ -34,13 +34,15 @@ let app,observed;
    let descriptor,body={userRole:'parent',studentId:null,subject:null,pageContext:'studio',contextRefType:null,contextRefId:null,contextItemId:null};
    if(mode==='lecture'){const course=load('modules/learning/classroom-curriculum').classroomCourse();descriptor=await call('get','/ai/assistant/lecture-context?'+new URLSearchParams({courseId:course.id,lectureId:course.units[0].lectures[0].id}));body={...body,pageContext:'classroom',contextRefType:'classroom_lecture',contextRefId:descriptor.referenceId,contextItemId:descriptor.lectureId};}
    const session=await call('post','/ai/assistant/sessions',body),base='/ai/assistant/sessions/'+session.id,context=await call('get',base+'/context');
-   const command={requestKey:randomUUID(),message:mode==='lecture'?'请围绕本讲目标，用匿名情境解释个人困扰与公共议题的区别，给一个反例和一个检验理解的小问题，不推断我已掌握。':'请用匿名学习情境解释相关性与因果关系的区别，给一个反例及下一步检验问题，不生成孩子的能力结论。',modelId:'auto',contextVersion:context.contextVersion};
+   const message=teachingOutput?(mode==='lecture'?'请围绕本讲解释：个人困扰不一定是公共议题。用一个匿名情境及一个反例说明边界，不推断学习者能力。':'请解释为什么奇数不一定是质数，以及为什么每个正方形一定是长方形。用9和一个四边形作例子，不评定任何学习者能力。'):(mode==='lecture'?'请围绕本讲目标，用匿名情境解释个人困扰与公共议题的区别，给一个反例和一个检验理解的小问题，不推断我已掌握。':'请用匿名学习情境解释相关性与因果关系的区别，给一个反例及下一步检验问题，不生成孩子的能力结论。');
+   const command={requestKey:randomUUID(),message,modelId:'auto',contextVersion:context.contextVersion};
    const created=await call('post',base+'/turns',command);row.turnId=created.id;row.modelId=created.modelId;assert.equal(created.modelId,'deepseek-v4-flash');
    assert.equal(await worker.runNext(),true);const result=await call('get',base+'/turns/'+created.id),messages=await call('get',base+'/messages/page');row.taskStatus=result.status;row.errorCode=result.task?.errorCode??null;
    fs.writeFileSync(path.join(directory,mode+'.json'),JSON.stringify({descriptor,session,context,command,result,messages},null,2)+'\n',{flag:'wx'});
    assert.equal(result.status,'completed');assert.equal(row.contextMode,mode);assert.equal(row.noChildEvidence,true);assert.equal(messages.messages.length,2);
    const original=messages.messages.find(message=>message.sender==='user'),answer=messages.messages.find(message=>message.sender==='assistant');
    assert.equal(original.id,result.userMessageId);assert.equal(original.content,command.message);assert.equal(answer.id,result.assistantMessageId);assert.equal(answer.inReplyTo,original.id);assert.equal(answer.source,'xiaojiu');assert.equal(answer.modelId,'deepseek-v4-flash');assert(answer.content.trim());assert.deepEqual(answer.evidenceIds,[]);
+   if(teachingOutput){const insight=await store.requestContext(()=>store.select('aiInsights',{sourceId:session.id}).at(-1));row.outputPolicyVersion=insight?.payload?.structuredResult?.outputPolicyVersion;assert.equal(row.outputPolicyVersion,'teaching-output-policy-v1');row.containsFormerlyBlockedPhrase=answer.content.includes('一定是');}
    const starts=row.attempts.filter(event=>event.status==='started').length,replayed=await call('post',base+'/turns',command);assert.equal(replayed.assistantMessageId,result.assistantMessageId);assert.equal(await worker.runNext(),false);assert.equal(row.attempts.filter(event=>event.status==='started').length,starts);row.status='passed';
   }catch{row.status='failed';}
   row.elapsedMs=Date.now()-start;row.completedAt=new Date().toISOString();save();console.log(JSON.stringify({mode,status:row.status,modelId:row.modelId,elapsedMs:row.elapsedMs,cliStarts:row.attempts.filter(event=>event.status==='started').length}));
