@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "ef7466b508847dd70320cf2bd8521574789b1cdb",
+  "sourceRevision": "fa8328b0a5a6cab67e0b9a923c0f3a7a6bb0452d",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 128,
-    "activeNormalApiRoutes": 424,
-    "coveredApiRoutes": 424
+    "features": 129,
+    "activeNormalApiRoutes": 426,
+    "coveredApiRoutes": 426
   },
   "areas": [
     {
@@ -4476,14 +4476,14 @@
               "controller": "AiController",
               "method": "models",
               "file": "apps/api/src/modules/ai/ai.controller.ts",
-              "line": 12
+              "line": 13
             }
           ],
           "implementations": [
             {
               "name": "AiService.modelCatalog",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 75
+              "line": 81
             }
           ],
           "sourceFiles": [
@@ -4517,7 +4517,7 @@
             "/admin/ai-tools"
           ],
           "inputs": "角色、学生、学科、页面上下文、完整原问题、原modelId、requestKey与contextVersion",
-          "implementation": "普通提问和旧同步入口共用持久队列；冻结实际模型、内部授权/题目指纹，事务核对首答/订正与租约后一次发布消息对和辅助事实；排队/生成/检查/失败/取消由服务端版本化轮询恢复；停止等待与取消生成分开；原任务显式重试保留模型。成人讲座按课程/讲座/完整内容指纹冻结安全目标，不绑定孩子；移除讲座进入独立studio会话；首页复用同一持久组件；工具往返与刷新保留mode/audience及原讲座标识，恢复各自原稿。并发首次open在有限事务中重新鉴权并复用原会话。 三个旧模型回答入口共用teaching-output-policy-v1，允许数学断言、局部否定及明确技术术语；学习者标签/确定根因仍拒绝，不能用跨句免责声明或双重否定放行；ID和引用按原结构验证，AI insight记录策略版本，规则提示不伪称模型检查。",
+          "implementation": "普通提问和旧同步入口共用持久队列；冻结实际模型、内部授权/题目指纹，事务核对首答/订正与租约后一次发布消息对和辅助事实；排队/生成/检查/失败/取消由服务端版本化轮询恢复；停止等待与取消生成分开；原任务显式重试保留模型。成人讲座按课程/讲座/完整教学正文指纹冻结安全白名单内容，旧v1目标保持只读，不绑定孩子；移除讲座进入独立studio会话；首页复用同一持久组件；工具往返与刷新保留mode/audience及原讲座标识，恢复各自原稿。并发首次open在有限事务中重新鉴权并复用原会话。 三个旧模型回答入口共用teaching-output-policy-v1，允许数学断言、局部否定及明确技术术语；学习者标签/确定根因仍拒绝，不能用跨句免责声明或双重否定放行；ID和引用按原结构验证，AI insight记录策略版本，规则提示不伪称模型检查。",
           "outputs": "可恢复原提问、真实任务状态、已校验消息和辅助事实",
           "collections": [
             "assistantSessions",
@@ -4533,7 +4533,7 @@
               "controller": "AiController",
               "method": "lectureContext",
               "file": "apps/api/src/modules/ai/ai.controller.ts",
-              "line": 29
+              "line": 30
             },
             {
               "verb": "POST",
@@ -4541,7 +4541,7 @@
               "controller": "AiController",
               "method": "openSession",
               "file": "apps/api/src/modules/ai/ai.controller.ts",
-              "line": 34
+              "line": 45
             },
             {
               "verb": "POST",
@@ -4549,7 +4549,7 @@
               "controller": "AiController",
               "method": "chat",
               "file": "apps/api/src/modules/ai/ai.controller.ts",
-              "line": 51
+              "line": 63
             },
             {
               "verb": "GET",
@@ -4557,7 +4557,7 @@
               "controller": "AiController",
               "method": "listMessages",
               "file": "apps/api/src/modules/ai/ai.controller.ts",
-              "line": 65
+              "line": 77
             },
             {
               "verb": "GET",
@@ -4612,52 +4612,52 @@
             {
               "name": "AiService.lectureDescriptor",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 275
+              "line": 303
             },
             {
               "name": "AiService.openDurableAssistantSession",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 254
+              "line": 282
             },
             {
               "name": "AiService.assertSessionOwner",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 315
+              "line": 414
             },
             {
               "name": "AiService.chat",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 435
+              "line": 536
             },
             {
               "name": "AiService.listMessages",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 552
+              "line": 663
             },
             {
               "name": "AssistantTurnService.context",
               "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
-              "line": 57
+              "line": 63
             },
             {
               "name": "AssistantTurnService.list",
               "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
-              "line": 72
+              "line": 78
             },
             {
               "name": "AssistantTurnService.get",
               "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
-              "line": 71
+              "line": 77
             },
             {
               "name": "AssistantTurnService.create",
               "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
-              "line": 98
+              "line": 104
             },
             {
               "name": "AssistantTurnService.control",
               "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
-              "line": 122
+              "line": 128
             }
           ],
           "sourceFiles": [
@@ -4735,17 +4735,103 @@
             {
               "name": "AssistantTurnService.history",
               "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
-              "line": 153
+              "line": 159
             },
             {
               "name": "AssistantTurnService.page",
               "file": "apps/api/src/modules/ai/assistant-turn.service.ts",
-              "line": 137
+              "line": 143
             }
           ],
           "sourceFiles": [
             "apps/web/app/student/assessment/studio.tsx",
             "apps/api/src/modules/ai/assistant-turn.service.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
+            "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
+            "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+            "apps/api/src/modules/ai/speech.service.test.ts",
+            "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
+            "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
+            "apps/api/src/common/terminate-child-process.integration.test.ts",
+            "tests/e2e/assistant-conversations.spec.ts",
+            "apps/api/src/modules/ai/teaching-tool.integration.test.ts",
+            "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+            "tests/e2e/teaching-tools.spec.ts"
+          ]
+        },
+        {
+          "id": "AI-10",
+          "title": "授权课程教学、范围选择与原出处",
+          "area": "ai",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生、教研",
+          "pages": [
+            "/studio",
+            "/studio/classroom",
+            "/student/assessment",
+            "/student/today",
+            "/admin/ai-tools"
+          ],
+          "inputs": "课程种类/对象/原教学版本、完整或概览/条目选择、真实档案身份、原模型/原命令与来源键",
+          "implementation": "三类安全白名单投影只带实际讲解、知识要点/图表代码及资料短摘，成人v1原目标保持只读，v2采用实际教学正文。服务端派生小学/资料课的档案学科、published/authoring与完整上下文预算；工作台提供单元/课时入口和逐目标完整选区，超预算保留完整问题，显式整段副本跨scope而不覆盖已有草稿。当前授权、版本、学生正式评测和迟到worker均重复核对；模型仅回已选来源key，发布前再次从prepared冻结原件核对完整出处，保留原消息/insight/重放。独立原出处页只读，不因打开出处建新会话；资料短摘与当前课分开；图表/代码纯教学显示，原草稿和25条以外旧消息定位均可恢复。真实双库原生恢复叠加最新删除账本，清除作者私聊/私稿和孩子数据而保留其他监护人已发布副本。",
+          "outputs": "可核对教学范围、持久课程问答、可信原出处、独立草稿与原消息返回",
+          "collections": [
+            "assistantSessions",
+            "assistantTurns",
+            "assistantMessages",
+            "aiInsights"
+          ],
+          "limits": "课程来源不是作答证据；助教解释不形成掌握/诊断/计划。18000完整JSON超预算明确拒绝，不静默裁切或降级。图片仅带文字描述；资料页短摘不能证明全部讲解逐段来自原页。当前代码专项与整站/真实模型/生产交付/教师和像素门禁分别按142原件核对，目录/测试存在不表示全部范围已验收。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/ai/assistant/course-context",
+              "controller": "AiController",
+              "method": "courseContext",
+              "file": "apps/api/src/modules/ai/ai.controller.ts",
+              "line": 35
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/assistant/sessions/:sessionId/sources/:sourceKey",
+              "controller": "AiController",
+              "method": "sourcePreview",
+              "file": "apps/api/src/modules/ai/ai.controller.ts",
+              "line": 40
+            }
+          ],
+          "implementations": [
+            {
+              "name": "AiService.courseDescriptor",
+              "file": "apps/api/src/modules/ai/ai.service.ts",
+              "line": 321
+            },
+            {
+              "name": "AiService.sourcePreview",
+              "file": "apps/api/src/modules/ai/ai.service.ts",
+              "line": 385
+            }
+          ],
+          "sourceFiles": [
+            "apps/api/src/modules/ai/assistant-teaching-content.ts",
+            "apps/api/src/modules/ai/assistant-course-context.ts",
+            "apps/api/src/modules/ai/assistant-source-references.ts",
+            "apps/api/src/modules/ai/assistant-teaching-instructions.ts",
+            "apps/api/src/modules/ai/assistant-course.integration.test.ts",
+            "apps/api/src/modules/ai/assistant-course-recovery.integration.test.ts",
+            "apps/api/src/modules/ai/assistant-source-references.test.ts",
+            "apps/api/src/modules/ai/assistant-teaching-provider-context.test.ts",
+            "apps/web/app/studio/studio-course-assistant.tsx",
+            "apps/web/app/studio/studio-course-assistant.css",
+            "apps/web/lib/assistant-course-client.ts",
+            "apps/web/lib/assistant-course-navigation.ts",
+            "apps/web/components/assistant-source-preview.tsx",
+            "apps/web/components/assistant-source-preview.css",
+            "tests/e2e/course-assistant.spec.ts",
+            "doc/product/142-course-teaching-context-and-source-references.md",
+            "apps/api/src/modules/ai/ai.service.ts"
           ],
           "tests": [
             "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
@@ -4829,7 +4915,7 @@
               "controller": "AiController",
               "method": "analyzeAssessment",
               "file": "apps/api/src/modules/ai/ai.controller.ts",
-              "line": 15
+              "line": 16
             },
             {
               "verb": "POST",
@@ -4837,7 +4923,7 @@
               "controller": "AiController",
               "method": "generateHint",
               "file": "apps/api/src/modules/ai/ai.controller.ts",
-              "line": 22
+              "line": 23
             },
             {
               "verb": "POST",
@@ -10877,7 +10963,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 349
+              "line": 352
             },
             {
               "name": "DomainEventBusService.publish",
@@ -10887,7 +10973,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 247
+              "line": 250
             }
           ],
           "sourceFiles": [
@@ -11080,7 +11166,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 247
+              "line": 250
             }
           ],
           "sourceFiles": [
@@ -11157,7 +11243,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 231
+              "line": 234
             },
             {
               "name": "RuntimeMetricsService.snapshot",

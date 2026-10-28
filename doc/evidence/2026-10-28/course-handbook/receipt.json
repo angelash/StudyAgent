@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "sourceRevision": "fa8328b0a5a6cab67e0b9a923c0f3a7a6bb0452d",
+  "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
+  "features": {
+    "areas": 14,
+    "features": 129,
+    "activeNormalApiRoutes": 426,
+    "coveredApiRoutes": 426
+  },
+  "coverage": {
+    "activeNormalApiRoutes": 426,
+    "coveredApiRoutes": 426,
+    "uncovered": []
+  },
+  "applicationBaselineEvidence": {
+    "newlyRunByThisScript": false,
+    "receipt": "../evidence/2026-10-28/teaching-output-acceptance.json",
+    "revision": "ef7466b508847dd70320cf2bd8521574789b1cdb",
+    "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
+  },
+  "sourceFiles": 614,
+  "markdownLinks": 3903,
+  "viewerChecks": 10,
+  "files": {
+    "doc/design/feature-catalog.json": {
+      "bytes": 532625,
+      "sha256": "22735b55ef051bb0dd2a7bb1f85c2196af89df4f47634538b398791f54bd4bf5",
+      "gzipSha256": "04a86c96a7e4b30a86e28e18aae23ce679b230609d7ac727ac2d741da9834eb7"
+    },
+    "doc/design/generated/source-inventory.json": {
+      "bytes": 1571370,
+      "sha256": "a530b3a4d56286f5acaf7f6929c7646f984fcba89a031afe8ba898164d9db91d",
+      "gzipSha256": "bed205cad130d3aee52996c7f8a29bcf063421873552c3eac1cf263436bcfbcb"
+    },
+    "doc/design/generated/coverage.json": {
+      "bytes": 3026,
+      "sha256": "a977e8a8c1ff6cfece78529e24852f0886bcb52b136f4fa1f2e5f2dcb7802db3",
+      "gzipSha256": "66de285a68ce8b6603864ecdec6521d861f7d32d39f12279ca9d306623f0ae3e"
+    },
+    "doc/design/generated/content-snapshot.json": {
+      "bytes": 38128,
+      "sha256": "ac48fab869c631cfed6a115dde6f5679cbcd46f649a4cf9f09804b2fc4a24e61",
+      "gzipSha256": "923ab15c81317647e7f1442668b71661822dee090ed57b509bd590247d38c61e"
+    },
+    "doc/design/generated/design-validation.json": {
+      "bytes": 82060,
+      "sha256": "98a16531e40a47202f5342d8498f0a95565af5b1c60c21c1981c77d46254b66b",
+      "gzipSha256": "428108abc578d24ab19adbc3698de746932616262b9f6bd2a22140f15395f9a2"
+    },
+    "doc/design/index.html": {
+      "bytes": 395817,
+      "sha256": "3b7bf7e767b47322dc1612874d1992aa73fe23fdd9745b43d5c84b4aed35a3aa",
+      "gzipSha256": "fe662b4f28408823045ff8defaec4da6f8ef89200a031770545dac98d4c6d62b"
+    },
+    "data/qa/course-handbook-inventory.log": {
+      "bytes": 487,
+      "sha256": "4dd465925896a4d4614d89cebb82213304e89f164c1447c1033057963e0d8be8",
+      "gzipSha256": "cfc80cee99e9e0f378dbfe235a242aa7bb6aaa6f127072bc75efb2df4ceb0444"
+    },
+    "data/qa/course-handbook-curriculum.log": {
+      "bytes": 119,
+      "sha256": "6b1528278f408783f3b30fee14e1c16e49a7466b6de730bc3102d2a0fe481792",
+      "gzipSha256": "277b6eab73778039ce7ed1c8687c8904d9872c3fabf3e4f87a311b7c743b8033"
+    },
+    "data/qa/course-handbook-content.log": {
+      "bytes": 2612,
+      "sha256": "e95820dbe556ead23a88d9955c3175503e6a1a4d5963d954ad8832ccfb7b2ec6",
+      "gzipSha256": "62432f8f9e674f9adfa1af43b09161197ea0a253d7af4bd6abaa8f2ebd4d1456"
+    },
+    "data/qa/course-handbook-build.log": {
+      "bytes": 102,
+      "sha256": "aa0aa391338de501cd1e7fdd81f51d6d1ebf3d2bac9ccd1bcf9d34a49e1bba6d",
+      "gzipSha256": "5a3a2727142784b95c9d3c100a2e58b458c10ca501e398fbef5d435c4a72b507"
+    },
+    "data/qa/course-handbook-validate.log": {
+      "bytes": 281,
+      "sha256": "e8800aafee5f5e79fa59587541597ceec0f5799e0af3cc1f56f28ef642e673c4",
+      "gzipSha256": "fa5d6840631e07ad7b8caa26d18096fdfa80c84866695b9541df94ea9fb9cdf9"
+    },
+    "data/qa/project-design-viewer/desktop.png": {
+      "bytes": 188670,
+      "sha256": "30ecd037042325a27c360863dfb0438426457750f23dac57c174e1c09a2c47a1",
+      "gzipSha256": "496118758ea7f2234b2a5a273f01cccb787ebad3075b7c0671a177ee14da4e33"
+    },
+    "data/qa/project-design-viewer/mobile.png": {
+      "bytes": 127202,
+      "sha256": "da701f673caedc0dbf2060b10c11a4a2bc7fc45bf1722acda5b9539e04a2770e",
+      "gzipSha256": "cde6f810fa51ca1c7f43ea922dff6e5081fc2bcb8b15fc72c64ea07b1bba0e5c"
+    }
+  }
+}
