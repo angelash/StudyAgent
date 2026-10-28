@@ -1,10 +1,11 @@
+import { syntheticFamilyHeaders } from './synthetic-family';
 import { expect, test, type Page } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 const api = `http://localhost:${process.env.E2E_API_PORT ?? '4107'}/api`;
 const { classroomAnswerKey } = require('../../apps/api/dist/apps/api/src/modules/learning/classroom-curriculum.js');
 async function login(page: Page) {
   const key = `${Date.now()}-${Math.floor(Math.random() * 100000)}`, principal = `practice-${key}@local.test`, credential = `Practice-${key}`;
-  const response = await fetch(api + '/auth/register', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({principal,credential}) });
+  const response = await fetch(api + '/auth/register', { method: 'POST', headers: await syntheticFamilyHeaders(page), body: JSON.stringify({principal,credential}) });
   expect(response.status).toBe(201); const actor = (await response.json()).data;
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
   await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);

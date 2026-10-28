@@ -1,3 +1,4 @@
+import { syntheticFamilyHeaders } from './synthetic-family';
 import { browserEvidence } from './evidence';
 import { expect, test } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
@@ -6,7 +7,7 @@ const apiUrl = `http://localhost:${process.env.E2E_API_PORT ?? '4107'}`;
 const evidenceDirectory = browserEvidence('classroom');
 async function login(page: import('@playwright/test').Page) {
   const suffix = Date.now() + '-' + Math.floor(Math.random() * 100000), principal = 'classroom-' + suffix + '@local.test', credential = 'Classroom-' + suffix;
-  const registered = await fetch(apiUrl + '/api/auth/register', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ principal, credential }) });
+  const registered = await fetch(apiUrl + '/api/auth/register', { method: 'POST', headers: await syntheticFamilyHeaders(page), body: JSON.stringify({ principal, credential }) });
   expect(registered.status).toBe(201);
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
   await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);

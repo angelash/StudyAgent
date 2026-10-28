@@ -1,3 +1,4 @@
+import { syntheticFamilyHeaders } from './synthetic-family';
 import { expect, test, type Page } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 
@@ -5,7 +6,7 @@ const api = `http://localhost:${process.env.E2E_API_PORT ?? '4107'}/api`;
 const courseTitle = '广州人教版九上化学 · 学习与验证';
 async function fixture(page: Page) {
   const key = `${Date.now()}-${Math.floor(Math.random() * 100000)}`, principal = `chemistry-${key}@local.test`, credential = `Chemistry-${key}`;
-  const registration = await fetch(api + '/auth/register', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ principal, credential }) });
+  const registration = await fetch(api + '/auth/register', { method: 'POST', headers: await syntheticFamilyHeaders(page), body: JSON.stringify({ principal, credential }) });
   expect(registration.status).toBe(201); const account = (await registration.json()).data;
   const headers = { 'content-type': 'application/json', authorization: 'Bearer ' + account.token };
   const child = await fetch(api + '/students', { method: 'POST', headers, body: JSON.stringify({ nickname: '九上化学验收', grade: 9, preferredSessionMinutes: 25,
@@ -225,7 +226,24 @@ for (const width of [390, 1440]) test('chemistry assistant: actual course teachi
   await expect(page.locator('.assistant-source-content')).toContainText(actualUnit.lessons.find((l: any) => l.kind === 'learn').teaching.teaching.explanation);
   await expect(page.locator('.assistant-source-panel')).not.toContainText(/两位数乘两位数|异分母|通分/);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+  const image = page.locator('.assistant-source-content .cl-lesson-image img').first();
+  await expect(image).toHaveAttribute('src', /^\/classroom\/chemistry-v2\/[a-z-]+\.svg$/);
+  await expect.poll(() => image.evaluate((node: HTMLImageElement) => node.complete && node.naturalWidth > 0)).toBe(true);
+  const expand = page.locator('.assistant-source-content .cl-lesson-image button').first();
+  await expand.click(); await expect(page.getByRole('button', { name: '关闭图片', exact: true })).toBeVisible();
+  await screenshot(page, 'assistant-original-image-' + width);
+  await page.keyboard.press('Escape'); await expect(expand).toBeFocused();
   await screenshot(page, 'assistant-source-' + width);
+  await page.route('**/api/ai/assistant/sessions/*/sources/*', async route => {
+    const response = await route.fetch(), body = await response.json();
+    for (const part of body.data.sections) for (const block of part.blocks) if (block.figure?.asset) block.figure.asset.status = 'changed';
+    await route.fulfill({ response, json: body });
+  });
+  await page.reload(); await expect(page.getByRole('status').filter({ hasText: '原图暂时无法核对' })).toBeVisible();
+  await expect(page.locator('.assistant-source-content .cl-lesson-image img')).toHaveCount(0);
+  await expect(page.locator('.assistant-source-content')).toContainText(actualUnit.lessons.find((l: any) => l.kind === 'learn').teaching.teaching.explanation);
+  await page.unroute('**/api/ai/assistant/sessions/*/sources/*'); await page.reload();
+  await expect.poll(() => image.evaluate((node: HTMLImageElement) => node.complete && node.naturalWidth > 0)).toBe(true);
   await page.getByRole('link', { name: '返回原对话', exact: true }).click(); await expect(composer).toHaveValue('保留原化学单元的问题草稿。');
   await page.getByRole('link', { name: /^返回本课/ }).click();
   await expect(page.getByRole('heading', { name: courseTitle, exact: true })).toBeVisible();

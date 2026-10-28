@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { assistantDigest } from './assistant-turn-record';
 import type { AssistantLectureSnapshot } from './assistant-lecture-context';
 import type { TeachingContentSnapshot } from './assistant-teaching-content';
+import { previewControlledTeachingFigure } from './assistant-controlled-figure';
 
 export const assistantSourceReferenceSchema = z.object({
   key: z.string().min(1).max(100), kind: z.enum(['classroom_lecture', 'primary_unit', 'material_lesson']),
@@ -73,5 +74,6 @@ export function assistantSourcePreview(session: AssistantSession, teaching: Teac
   return { reference, current, scope: teaching.protocol === 'material-lesson-v1' ? 'lesson-citation' : 'teaching-sections',
     ...(accessMode ? { accessMode } : {}), selection: teaching.selection, coverage: teaching.coverage,
     targets: teaching.targets.filter(t => targets.has(t.id)), sections: related.map(({ key, title, targetId, phase, blocks }) =>
-      ({ key, title, targetId, ...(phase ? { phase } : {}), blocks })) };
+      ({ key, title, targetId, ...(phase ? { phase } : {}), blocks: blocks.map(block => block.figure?.asset ?
+        { ...block, figure: { ...block.figure, asset: previewControlledTeachingFigure(block.figure.asset) } } : block) })) };
 }

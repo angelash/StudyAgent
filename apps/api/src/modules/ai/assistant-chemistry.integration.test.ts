@@ -92,6 +92,30 @@ describe('actual chemistry course teaching assistant across a younger profile', 
     expect(await fingerprint()).toBe(before);
   });
 
+  it('retains the original v1 reply/source and requires the actual tutorial version for a new conversation', async () => {
+    const version = course.teachingVersion, names = ['students', 'learningScopes', 'diagnosticResponses', 'practiceAttempts', 'masteryEstimates'];
+    const fingerprint = () => store.requestContext(() => createHash('sha256').update(JSON.stringify(names.map(n => store.inspect(n)))).digest('hex'));
+    const before = await fingerprint(); let original: any, oldSource: any, message: any;
+    await store.transaction(() => { delete store.find('studioCourses', { id: course.id }).teachingVersion; });
+    try {
+      const descriptor = await call('get', path()); original = await call('post', '/ai/assistant/sessions', command(descriptor));
+      oldSource = await call('get', '/ai/assistant/sessions/' + original.id + '/sources/atom-1');
+      message = { id: randomUUID(), sessionId: original.id, sender: 'assistant', content: '原版已保存的完整化学解释。', createdAt: new Date().toISOString(), source: 'rules', sourceReferences: [oldSource.reference] };
+      await store.transaction(() => store.append('assistantMessages', message));
+    } finally { await store.transaction(() => { store.find('studioCourses', { id: course.id }).teachingVersion = version; }); }
+    const current = await call('get', path()), context = await call('get', '/ai/assistant/sessions/' + original.id + '/context');
+    expect(context.course).toMatchObject({ current: false, canSend: false }); expect(current.fingerprint).not.toBe(oldSource.reference.contextFingerprint);
+    const retained = await call('get', '/ai/assistant/sessions/' + original.id + '/sources/atom-1');
+    expect(retained.current).toBe(false); expect(retained.sections).toEqual(oldSource.sections);
+    expect((await call('get', '/ai/assistant/sessions/' + original.id + '/messages/page')).messages.some((row: any) => row.id === message.id && row.content === message.content)).toBe(true);
+    const selected = await call('post', '/ai/assistant/sessions/' + original.id + '/artifacts/preflight', { kind: 'verbatim_note', selection: { messageIds: [message.id] }, objective: '保留原版解释' }, parent, 200);
+    expect(selected.origin.course.current).toBe(false); expect(selected.origin.messages[0].content).toBe(message.content);
+    const next = await call('post', '/ai/assistant/sessions', command(current)); expect(next.id).not.toBe(original.id);
+    const source = await call('get', '/ai/assistant/sessions/' + next.id + '/sources/atom-1');
+    expect(source.current).toBe(true); expect(source.sections.flatMap((part: any) => part.blocks).some((block: any) => block.figure?.asset?.status === 'verified')).toBe(true);
+    expect(await fingerprint()).toBe(before);
+  });
+
   it('keeps the student in the actual chemistry course and fences a pending assessment before creating a new command', async () => {
     const access = await call('post', '/students/' + student.id + '/learning-access', { enabled: true, expectedVersion: 0, requestKey: randomUUID(), reason: '匿名化学教学验证' });
     const code = await call('post', '/students/' + student.id + '/learning-access/codes', { expectedVersion: access.version, requestKey: randomUUID() });

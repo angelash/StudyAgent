@@ -1,0 +1,1842 @@
+{
+  "passed": false,
+  "sourcePublicationEquivalent": "eec4cb38f8a979d66837d62572b93efc9db0fe8c",
+  "scope": "Complete artificial registration-pressure run of143 A before the later chemistry tutorial merge/alignment. Synthetic own loopback actors and deterministic providers; shared address accepts30 and rejects31st, original production limit retained.",
+  "stats": {
+    "startTime": "2026-10-28T11:10:15.275Z",
+    "duration": 2781007.0609999998,
+    "expected": 446,
+    "skipped": 0,
+    "unexpected": 18,
+    "flaky": 0
+  },
+  "originalAttempts": 464,
+  "retries": 0,
+  "failedAttempts": 18,
+  "controls": {
+    "checked": 3062,
+    "changed": []
+  },
+  "finding": "All18 failures at synthetic registration: expected201 received429, before their classroom/geometry assertions. Four additional legacy helpers still shared the exhausted default bucket. No visual regression conclusion from these failures. All raw reports retained.",
+  "runnerFinding": "The --full branch ignored --grep; JSON reporter path was relative to the temporary config directory and is retained at its actual nested location. Actual464 scope is recorded, not relabeled as a targeted11.",
+  "redactions": {
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-normal-84b74--library-on-three-viewports/trace.zip": {
+      "originalSha256": "e31f63e408699e3dd4a912266151cc98ac89c0eadf0b20034f0b4773f6301142",
+      "publishedSha256": "60d02f9d7a6b2388f51cb59ce5dca22b1d8e269326ddd754e82d4f377fa6af82",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 2
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-course-b6b23-rst-answers-after-reopening/trace.zip": {
+      "originalSha256": "438bdf5c8d086fa9889efe0a4a0a8940d638dafce0ef2259b0ade438df100b67",
+      "publishedSha256": "f86ed0f1f3e0a35c64b8a6a8065d886cc9352c4f38e955601c92ac0ad0c5b555",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 2
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-family-ad663-d-old-links-keep-their-unit/trace.zip": {
+      "originalSha256": "8e47b3118358e5b7b2ff3cd0ab7c60f8f4c04ff1d64caf97ea166f6ce20b2d99",
+      "publishedSha256": "e68950b2b8989f2f0af7f4be3a694349893f30db2c94ff64f91a4b04142b76c8",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 2
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-viewin-485a7-until-the-parent-changes-it/trace.zip": {
+      "originalSha256": "074f2d14eab320c67523070e66c7331814d14ef4c161904088ed26b74d452cb4",
+      "publishedSha256": "3a7c3bd4869c3608ca42bc5793ead99183e08164e121817ea39d3cd007b88f8d",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 2
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-a-chem-4f30e-not-override-course-content/trace.zip": {
+      "originalSha256": "78dbadaf6bf3b678e17b8f96f69cf3b4071fc674122c81cb854056e6109f39e1",
+      "publishedSha256": "2f85dac3a834f4483331a46baac890dd05739b5e25f8fdf9e0bc27deda0b7dd8",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 2
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-each-u-7de90-s-in-the-rendered-classroom/trace.zip": {
+      "originalSha256": "ffc2d4d9a7b345d724c77285e1134d2f261eb36a80dd548f6f88f5ba7f5c2555",
+      "publishedSha256": "136e3d05de16bdeef5e8d21bb35c63d0009774b5a780a344dc904a234a913315",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 2
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-assist-218d5-to-its-original-unit-at-390/trace.zip": {
+      "originalSha256": "85d87fb2ec6d8ca41cc56f755241c9b374fa040930c6f7fcaaf6354aa0b9a7c3",
+      "publishedSha256": "19ec2bc033c358e71a3e0e716b7c8082bcf4359448675b50bd7a76accfa8580f",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 2
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-assist-6bc22-o-its-original-unit-at-1440/trace.zip": {
+      "originalSha256": "7139c7bca2034228a65f6ae54e71e39a64636749006088705728838ef696f393",
+      "publishedSha256": "b2df77f3bd4804b3b31686cba26214c1945489a784291be15d8d9fe0c9520dce",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 3
+    },
+    "data/qa/registration-pressure-browser-output/classroom-practice-practic-d512c--after-a-lost-hint-response/trace.zip": {
+      "originalSha256": "452c5e4d722ee8d2dd5f085b7ea725a6207a471215453ea4422f48f5e8318084",
+      "publishedSha256": "1ff1a3eea6dff54695710f3f832e4f711aa93889dfa94ad2e2fdf8744c9ce7fe",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 2
+    },
+    "data/qa/registration-pressure-browser-output/classroom-practice-every-u-e1f77-top-tablet-and-phone-widths/trace.zip": {
+      "originalSha256": "968951066f3d5df17228b09cb9782e4e46acb562687fc8bf9c7117c4eaf122f3",
+      "publishedSha256": "a586d68b02bca861dedbc3a376bbd7615be9f04c579610a1c5b736b381eb7fc4",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 2
+    },
+    "data/qa/registration-pressure-browser-output/classroom-review-unit-chec-e7a94-ul-review-with-topic-return/trace.zip": {
+      "originalSha256": "76e1bc04a01f714830cdabff6ca6f9617abdb84636afb6558a16d9434e4b2622",
+      "publishedSha256": "be7cf05135b3d5d5c84be885ca112e27550a6efe631e811c91caa1c3cb2fb7de",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 3
+    },
+    "data/qa/registration-pressure-browser-output/classroom-review-saved-ses-5e096--reject-a-mismatched-lesson/trace.zip": {
+      "originalSha256": "4542cce933fdab4e288160f8e3622d5d98fd5c0759202feb4b9161a0e3f69a69",
+      "publishedSha256": "a4265458318bfaaea26c5cbd2d7edd81b388e89d49ebb9d09dc5eead957d2e79",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 2
+    },
+    "data/qa/registration-pressure-browser-output/classroom-course-classroom-a2bc1-g-checks-and-durable-resume/trace.zip": {
+      "originalSha256": "20faae5944d6d33af9cac74880cdf6ee4a2526406efada25f1e65f5eca55ab2d",
+      "publishedSha256": "4f846aa6b61087be7295850a22e77ad82ccd9e9b939f3f32fc56b9190bd7c800",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 3
+    },
+    "data/qa/registration-pressure-browser-output/classroom-audio-playback-e-352b3-later-automatic-advancement/trace.zip": {
+      "originalSha256": "d3362b00252ed96d226fa4fdf90001555ee6ad71ac8fbb9aa4aaace1aa459ac0",
+      "publishedSha256": "c614faafd50448d1b745937e9987ef91397f86767d449e85c9a129e37b18a4e4",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 2
+    },
+    "data/qa/registration-pressure-browser-output/classroom-question-replies-9e91f--restored-session-rendering/trace.zip": {
+      "originalSha256": "cb04d2789ab5142848714c135c7993c1e1b60de6ba5e1717e5eef70714fa4c27",
+      "publishedSha256": "3c1b98e833bc811c4ae8eaa7f6f0c73da484c1d7fcd41fbac835ff72bc3e9bb9",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 3
+    },
+    "data/qa/registration-pressure-browser-output/classroom-board-notes-reve-e7a0f--spoken-sentence-boundaries/trace.zip": {
+      "originalSha256": "cb7f77995ce679d4458e72f9222190870de6d7a61c1cee3b8516bdf972a1e242",
+      "publishedSha256": "c30ab3950a2bbfa30e118b4ef4694f4025cd2a08c6af634c9f35d1c461305eed",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 2
+    },
+    "data/qa/registration-pressure-browser-output/classroom-independent-prac-30667-n-flow-on-desktop-and-phone/trace.zip": {
+      "originalSha256": "6c40a3d88122927f8d659e6651115ac3b0a778961434f580bcd358f25557136f",
+      "publishedSha256": "7441f86dc3efa2c10d28d3d26feb5e45741802c1ba9d2f3920e1f62a465ea387",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 3
+    },
+    "data/qa/registration-pressure-browser-output/classroom-reference-viewpo-6b2f2--the-observed-display-scale/trace.zip": {
+      "originalSha256": "6e8138ca00a57790b7f75ef63d801417beb635fa87cad93afb6df79d6a166be0",
+      "publishedSha256": "912dc7b2ed6e12963f3ad9c9415659d39baca84bee4bfe1674e68447f2c590d7",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 2
+    }
+  },
+  "files": {
+    "data/qa/data/qa/registration-pressure-browser-first.json": {
+      "bytes": 605944,
+      "sha256": "967a5e639ffa17b4d759dece5f54e0d053ce7e89844239de074015532708d614",
+      "gzipSha256": "8f8f4052eb40b26236eaf7a95560d2c11257a7472160edb508051023b8a61979"
+    },
+    "data/qa/registration-pressure-browser-first.log": {
+      "bytes": 133854,
+      "sha256": "93379168a6b6970b1afb655124a52966a3c8eeebfc8e682a73d4550d02a3986e",
+      "gzipSha256": "b4c7ad508e20cbe7725da5f0ba482a6cdbc38121dd351b2b666025fa27ab4017"
+    },
+    "data/qa/registration-pressure-first-summary.json": {
+      "bytes": 5540,
+      "sha256": "f7c6682e6a99f7075ac52a2f3286cd9cc0f62e7d95aa3c009ece1697ae4d686c",
+      "gzipSha256": "487562e6a2b71c84f369cc54fe4848b15b63b0e9a4273bc4980580e0cea8bfd0"
+    },
+    "data/qa/artifact143-pressure-inputs.json": {
+      "bytes": 587896,
+      "sha256": "0878e9ea256aa9033cbd7493043eed94ea0f74816524666b1b5b190a5a8cad96",
+      "gzipSha256": "397eaf047353a479f98d1f6fbd86437c4c00bcf21f4a4b17a078653c8c7ff715"
+    },
+    "data/qa/artifact143-pressure-inputs-verification.log": {
+      "bytes": 34,
+      "sha256": "2146b24d2059a959051a900fc62f5a92d36f228a647e3c143bbbc8da651d77be",
+      "gzipSha256": "6e283aaed4395fb73cf208ad137dce0bc5bdc9176ddd03e72bb32617797be643"
+    },
+    "data/qa/registration-pressure-setup-result.json": {
+      "bytes": 226,
+      "sha256": "3d17b9554b499262404847ddf2ab5399679b7c4457e0b164044adb466886a086",
+      "gzipSha256": "908b976fe0847ba08e1fbb6fba01a5e618c4828b753cd8bbd0fd667552714d5e"
+    },
+    "data/qa/registration-pressure-selection-note.json": {
+      "bytes": 647,
+      "sha256": "3054de655ed53e3eeeab475de03dad6d67599f2f9ef8d93366a490540183f09d",
+      "gzipSha256": "08f22936f1a9d926fe03c0ab6ddff2a28978c7fcd66370063e20942cad96cc6b"
+    },
+    "data/qa/registration-pressure.config.ts": {
+      "bytes": 396,
+      "sha256": "ad0b1d927170dd715e5999658077393c87df97554b1c04128afe799b20d668c8",
+      "gzipSha256": "1850256013899e22eaa4b00ae98a4ca1e72ce488379be1a660779cca7ebb53f2"
+    },
+    "data/qa/registration-pressure-setup.cjs": {
+      "bytes": 1152,
+      "sha256": "de5f4bb1eedf880114002915a68f47d973ccecc2428c90d7fd4f14bc19d51b37",
+      "gzipSha256": "1e99055b1a0fad00fec5e487b9fe7fba397ad311d21638a8915d225ae9e6d3c3"
+    },
+    "data/qa/run-registration-pressure-browser.cjs": {
+      "bytes": 10112,
+      "sha256": "6d826df9cf334b8809d37dd338d2fb717ea702e4fef2f8d1de336adc41e0ce8c",
+      "gzipSha256": "66979f1b29c429a9f5eaebb8e0ed6e2772f6830b6438467be551a2cc157c6fb9"
+    },
+    "data/qa/experience-web/.next/BUILD_ID": {
+      "bytes": 21,
+      "sha256": "908456d9f606046d0e09683522479e377ab5e71cabec62885a63acd71995bd4d",
+      "gzipSha256": "3597442ed5e70134cc55a127d04b98a194e01b8bb9beaa98f6378a2b9009a800"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-normal-84b74--library-on-three-viewports/test-failed-1.png": {
+      "bytes": 4254,
+      "sha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401",
+      "gzipSha256": "57c491c47ae425154379567124f7ec5020dff2efae1c19985b54d34021eb054d"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-normal-84b74--library-on-three-viewports/error-context.md": {
+      "bytes": 10542,
+      "sha256": "35b66740e75d57892dffd5acffcf7a5fe57fc58937092860ecd42f31b34b54c7",
+      "gzipSha256": "e8f3d874efb9907833dcd6123470ae1995e0e83b6cbe4c25d7daa059cd41a599"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-normal-84b74--library-on-three-viewports/trace.zip": {
+      "bytes": 12431,
+      "sha256": "60d02f9d7a6b2388f51cb59ce5dca22b1d8e269326ddd754e82d4f377fa6af82",
+      "gzipSha256": "37fe093fe6df7bc781fe6f15ae2ecb612e4af79696d9aa459c8f767543d7d9bb"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-course-b6b23-rst-answers-after-reopening/test-failed-1.png": {
+      "bytes": 4254,
+      "sha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401",
+      "gzipSha256": "57c491c47ae425154379567124f7ec5020dff2efae1c19985b54d34021eb054d"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-course-b6b23-rst-answers-after-reopening/error-context.md": {
+      "bytes": 10529,
+      "sha256": "502d79a320260958b7e021398e4bdeccfe4bcd9e7e0578f5448d380f4c93a7a0",
+      "gzipSha256": "0ae2e7e88773daabeab4e35b854e3524d4b81c3da92623cb3f0b4101664155db"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-course-b6b23-rst-answers-after-reopening/trace.zip": {
+      "bytes": 12480,
+      "sha256": "f86ed0f1f3e0a35c64b8a6a8065d886cc9352c4f38e955601c92ac0ad0c5b555",
+      "gzipSha256": "2f8d799c55887480079e5016b534e172d71300cd554c212200c69c71d270ebd1"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-family-ad663-d-old-links-keep-their-unit/test-failed-1.png": {
+      "bytes": 4254,
+      "sha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401",
+      "gzipSha256": "57c491c47ae425154379567124f7ec5020dff2efae1c19985b54d34021eb054d"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-family-ad663-d-old-links-keep-their-unit/error-context.md": {
+      "bytes": 10536,
+      "sha256": "13243f57267b4efa8503aa30ffc91544781b43b4c159b8827294c67e5521a459",
+      "gzipSha256": "0ac5875f22af740abd2dfb3ee7acd7d9b9846de257bba038e32344d0d54c8ec4"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-family-ad663-d-old-links-keep-their-unit/trace.zip": {
+      "bytes": 12536,
+      "sha256": "e68950b2b8989f2f0af7f4be3a694349893f30db2c94ff64f91a4b04142b76c8",
+      "gzipSha256": "7ffbc6e0174655bf7749cdc23f11371d50b1724a6ac7d3e69ebf1bcc5c511198"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-viewin-485a7-until-the-parent-changes-it/test-failed-1.png": {
+      "bytes": 4254,
+      "sha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401",
+      "gzipSha256": "57c491c47ae425154379567124f7ec5020dff2efae1c19985b54d34021eb054d"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-viewin-485a7-until-the-parent-changes-it/error-context.md": {
+      "bytes": 10525,
+      "sha256": "f8b98a98a208242ba67f74fd22975dc46826de5e44a21e3679ac03383f59245e",
+      "gzipSha256": "34ea0a0629048c763ebe6ab0bbccf0b143561b617deb934b4a5bf5c6a7eafe52"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-viewin-485a7-until-the-parent-changes-it/trace.zip": {
+      "bytes": 12515,
+      "sha256": "3a7c3bd4869c3608ca42bc5793ead99183e08164e121817ea39d3cd007b88f8d",
+      "gzipSha256": "41baabab81f12af29179c72318af55b5deeb3228737ef3ee0b19ef5a08dce963"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-a-chem-4f30e-not-override-course-content/test-failed-1.png": {
+      "bytes": 4254,
+      "sha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401",
+      "gzipSha256": "57c491c47ae425154379567124f7ec5020dff2efae1c19985b54d34021eb054d"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-a-chem-4f30e-not-override-course-content/error-context.md": {
+      "bytes": 10551,
+      "sha256": "ba36122b8e57e3c42001c463ffd7e736aa620de13d6232223cd4bffd3f84e2ed",
+      "gzipSha256": "f2cffc83c089ea43df93a285bcb392af7606f98fa1efe4e63c5e653b7ea76583"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-a-chem-4f30e-not-override-course-content/trace.zip": {
+      "bytes": 12541,
+      "sha256": "2f85dac3a834f4483331a46baac890dd05739b5e25f8fdf9e0bc27deda0b7dd8",
+      "gzipSha256": "65c5be36b1b2b45a81b196588c19e1b208c2c4e62c966edb192cb3d958f65ccd"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-each-u-7de90-s-in-the-rendered-classroom/test-failed-1.png": {
+      "bytes": 4254,
+      "sha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401",
+      "gzipSha256": "57c491c47ae425154379567124f7ec5020dff2efae1c19985b54d34021eb054d"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-each-u-7de90-s-in-the-rendered-classroom/error-context.md": {
+      "bytes": 10529,
+      "sha256": "981bf45706659ef45f43c945ea530d2657231432dd6615132c7731498b29cb4e",
+      "gzipSha256": "fdfdea7b3f733a5a9c1c0cc2c19752796b5a342c9a214606932eac5c0aa4801a"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-each-u-7de90-s-in-the-rendered-classroom/trace.zip": {
+      "bytes": 12503,
+      "sha256": "136e3d05de16bdeef5e8d21bb35c63d0009774b5a780a344dc904a234a913315",
+      "gzipSha256": "caf12d9d1efe861de8ae301654bd5070bf305fd178ca31550bba1ec7895fc49e"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-assist-218d5-to-its-original-unit-at-390/test-failed-1.png": {
+      "bytes": 3102,
+      "sha256": "36e06c7f886be30969b81a74408bfa1b819ade977703894d5bf02bc8b25bb324",
+      "gzipSha256": "2c12034907df3a7850055828feed443e68f11eff263571634fb7704ed4f11f40"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-assist-218d5-to-its-original-unit-at-390/error-context.md": {
+      "bytes": 10529,
+      "sha256": "ba8275161dcb33e6c3af51f38136ecbd94b14986b55572dbe9f9f48b74e8e4c2",
+      "gzipSha256": "26e2aaff64e78c7cbfbfa8bde78c132b8bd0bacc65be3ebf256f24b6dece1b34"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-assist-218d5-to-its-original-unit-at-390/trace.zip": {
+      "bytes": 13012,
+      "sha256": "19ec2bc033c358e71a3e0e716b7c8082bcf4359448675b50bd7a76accfa8580f",
+      "gzipSha256": "19bd529030ecebbb2afcdfc7593fa3e7ccd3a70ff27dfeaa354d468ad26937da"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-assist-6bc22-o-its-original-unit-at-1440/test-failed-1.png": {
+      "bytes": 6234,
+      "sha256": "11c65be8621548249d7515ef8dbba61003a8ca9520bd221f6208ccacd9772aa2",
+      "gzipSha256": "663a8af5f4aa2d1c73f17db8ca4b8d0b03f2af7126c36005880eccb22b4b93ab"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-assist-6bc22-o-its-original-unit-at-1440/error-context.md": {
+      "bytes": 10530,
+      "sha256": "cf7dc96316d41cfacefa9959d26f3a36e323e9c84659fa9c4446aad8072b379e",
+      "gzipSha256": "fec162b521015f48bc741ff43abce0ee3dd3aafc736b9b8ae7c93960abd15c43"
+    },
+    "data/qa/registration-pressure-browser-output/chemistry-chemistry-assist-6bc22-o-its-original-unit-at-1440/trace.zip": {
+      "bytes": 13487,
+      "sha256": "b2df77f3bd4804b3b31686cba26214c1945489a784291be15d8d9fe0c9520dce",
+      "gzipSha256": "835a654f3e0f81d82e64a7a59d5d244ea9eeff1be0b2929bb1dd82538bdaccca"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-practice-practic-d512c--after-a-lost-hint-response/test-failed-1.png": {
+      "bytes": 4254,
+      "sha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401",
+      "gzipSha256": "57c491c47ae425154379567124f7ec5020dff2efae1c19985b54d34021eb054d"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-practice-practic-d512c--after-a-lost-hint-response/error-context.md": {
+      "bytes": 8211,
+      "sha256": "a3efa01827cf66b12bd25ae14b8eafbbc8150248602b5ddc7dc3397680ca8e18",
+      "gzipSha256": "c82b366f6b25077f6777a66afc37e7970228e123e9fa10f6c4f7567e032bdb48"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-practice-practic-d512c--after-a-lost-hint-response/trace.zip": {
+      "bytes": 9751,
+      "sha256": "1ff1a3eea6dff54695710f3f832e4f711aa93889dfa94ad2e2fdf8744c9ce7fe",
+      "gzipSha256": "8566a98bf0398ab5b86ad0a50e6608793c3299b029033ed737859c852ac973db"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-practice-every-u-e1f77-top-tablet-and-phone-widths/test-failed-1.png": {
+      "bytes": 4254,
+      "sha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401",
+      "gzipSha256": "57c491c47ae425154379567124f7ec5020dff2efae1c19985b54d34021eb054d"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-practice-every-u-e1f77-top-tablet-and-phone-widths/error-context.md": {
+      "bytes": 8218,
+      "sha256": "0282f4541ce46ecb05c4b0d8547eac404d7778126825e8377dc638fe0f812c4f",
+      "gzipSha256": "38798877c4fdb70aaf3fe8338e704fdafbcbfdcb187c264e05e343700f280e54"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-practice-every-u-e1f77-top-tablet-and-phone-widths/trace.zip": {
+      "bytes": 9817,
+      "sha256": "a586d68b02bca861dedbc3a376bbd7615be9f04c579610a1c5b736b381eb7fc4",
+      "gzipSha256": "3072abbbab5e416ed148314b6fdd983950fa90d0c68ca056d82fe496aaeb2653"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-review-unit-chec-e7a94-ul-review-with-topic-return/test-failed-1.png": {
+      "bytes": 6234,
+      "sha256": "11c65be8621548249d7515ef8dbba61003a8ca9520bd221f6208ccacd9772aa2",
+      "gzipSha256": "663a8af5f4aa2d1c73f17db8ca4b8d0b03f2af7126c36005880eccb22b4b93ab"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-review-unit-chec-e7a94-ul-review-with-topic-return/error-context.md": {
+      "bytes": 8592,
+      "sha256": "b2af84843295ae1a0683a8ba4c97736380b1ff582d21d9b19344947aa793cbf2",
+      "gzipSha256": "0b71fceec25c3c6a0576b3a8be9e4d0c579960278b8cbdc7d62e04940fb3cb05"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-review-unit-chec-e7a94-ul-review-with-topic-return/trace.zip": {
+      "bytes": 10793,
+      "sha256": "be7cf05135b3d5d5c84be885ca112e27550a6efe631e811c91caa1c3cb2fb7de",
+      "gzipSha256": "df520b86c2454f49af645f005a8556c68f56baa545ad0377d362b4a2aaf0e055"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-review-saved-ses-5e096--reject-a-mismatched-lesson/test-failed-1.png": {
+      "bytes": 4254,
+      "sha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401",
+      "gzipSha256": "57c491c47ae425154379567124f7ec5020dff2efae1c19985b54d34021eb054d"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-review-saved-ses-5e096--reject-a-mismatched-lesson/error-context.md": {
+      "bytes": 8581,
+      "sha256": "0e9bda4e12871545c450f1316dbf4b3762c15f43ece82c7fd792bf2e594ecc93",
+      "gzipSha256": "aa1fbd019360ba5d735fdfa860e127e1c305f9e96bed2524ab04627027a8113a"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-review-saved-ses-5e096--reject-a-mismatched-lesson/trace.zip": {
+      "bytes": 9797,
+      "sha256": "a4265458318bfaaea26c5cbd2d7edd81b388e89d49ebb9d09dc5eead957d2e79",
+      "gzipSha256": "545fcb7b66324a8d06280b857af3c9eb4ee9604e7b3ac74f42865c1d46dd58d8"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-course-classroom-a2bc1-g-checks-and-durable-resume/test-failed-1.png": {
+      "bytes": 6489,
+      "sha256": "cb9c3b8047859412e8abcaed51ad9ecefb4bd820c8849af4992e593d500d1836",
+      "gzipSha256": "53885fd003a0b24aa7fddf7a4bfc1ccd6c158c569cf5fc3fe561fc1dc9c9b38a"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-course-classroom-a2bc1-g-checks-and-durable-resume/error-context.md": {
+      "bytes": 11825,
+      "sha256": "553889636c6cf213d19b1e4bf6b579c5a95fc7cde7466075eb3ef528354399b6",
+      "gzipSha256": "8678246ccd47001436581bab0e545e1b049ce5307e18ac0a45a8a361e36e38e4"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-course-classroom-a2bc1-g-checks-and-durable-resume/trace.zip": {
+      "bytes": 14314,
+      "sha256": "4f846aa6b61087be7295850a22e77ad82ccd9e9b939f3f32fc56b9190bd7c800",
+      "gzipSha256": "5a3b453dd44874ae27431f1c25e6fa78d4efec55909ab89a4b17088d3a6d8dbc"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-audio-playback-e-352b3-later-automatic-advancement/test-failed-1.png": {
+      "bytes": 4254,
+      "sha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401",
+      "gzipSha256": "57c491c47ae425154379567124f7ec5020dff2efae1c19985b54d34021eb054d"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-audio-playback-e-352b3-later-automatic-advancement/error-context.md": {
+      "bytes": 11824,
+      "sha256": "215134dea2fe79728dc8580e6d9c061f0008eaeea4fecc5aa8809cd7131c8728",
+      "gzipSha256": "659a07ac60ecaafee5ce2c012229562cdd905496df7cd9389ac075d97b776091"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-audio-playback-e-352b3-later-automatic-advancement/trace.zip": {
+      "bytes": 13425,
+      "sha256": "c614faafd50448d1b745937e9987ef91397f86767d449e85c9a129e37b18a4e4",
+      "gzipSha256": "8a6a87a85c8183d0e277addb1e8d6a16ef6c2ffece57925d2aa453f6015a931d"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-question-replies-9e91f--restored-session-rendering/test-failed-1.png": {
+      "bytes": 7774,
+      "sha256": "3f8aae889fca0b679c03db591992b16b2875433f9ef19674bae19be7547f9dc0",
+      "gzipSha256": "69ebe21ae4bc03c5bb247e7652c7fae5cd603c91d221b6828b58eac9a4fc35db"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-question-replies-9e91f--restored-session-rendering/error-context.md": {
+      "bytes": 11827,
+      "sha256": "19ec7dc44b99eda7cd2e29b1b7963fd5894e39159950ece66ae38031dbf01916",
+      "gzipSha256": "dd4d3d0b20fbdb9a291a57c712298aace595d1627b29b9a5b72caac5a0acc74a"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-question-replies-9e91f--restored-session-rendering/trace.zip": {
+      "bytes": 14447,
+      "sha256": "3c1b98e833bc811c4ae8eaa7f6f0c73da484c1d7fcd41fbac835ff72bc3e9bb9",
+      "gzipSha256": "48749faf990cc03557f0973439c6ad01c344b23a5870790f3c87feec741d7afc"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-board-notes-reve-e7a0f--spoken-sentence-boundaries/test-failed-1.png": {
+      "bytes": 4254,
+      "sha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401",
+      "gzipSha256": "57c491c47ae425154379567124f7ec5020dff2efae1c19985b54d34021eb054d"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-board-notes-reve-e7a0f--spoken-sentence-boundaries/error-context.md": {
+      "bytes": 11822,
+      "sha256": "952a5d2d1b11b1aa4669c847ab64de5d4a8fa7fe8e4c07f6a3096baecdbf8cb6",
+      "gzipSha256": "018946c9958bc564e3051c5e38ea14c67b537ea1e9afdc27986b08c853449ec9"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-board-notes-reve-e7a0f--spoken-sentence-boundaries/trace.zip": {
+      "bytes": 13471,
+      "sha256": "c30ab3950a2bbfa30e118b4ef4694f4025cd2a08c6af634c9f35d1c461305eed",
+      "gzipSha256": "a3832b8a220c48f049709ac6476a6378e3a75fed44b02354fb763b5011388471"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-independent-prac-30667-n-flow-on-desktop-and-phone/test-failed-1.png": {
+      "bytes": 7008,
+      "sha256": "4382530e47d2824b62349780cbe014df53c0a143f750dedff4fb1602f541b2aa",
+      "gzipSha256": "4c11ee44ede8d447d30fd29929c5ee1a97da2cd8499acc59d82361299e8e92d9"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-independent-prac-30667-n-flow-on-desktop-and-phone/error-context.md": {
+      "bytes": 11822,
+      "sha256": "6dcb0d5c246df9c79f102b38a84361c97acc4b3c76ddf8bf452646f4ea8571f6",
+      "gzipSha256": "aac73cb169f66a7a47214e5dcf37ec5de6b51e1d5337e951f757225ab6d5ee84"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-independent-prac-30667-n-flow-on-desktop-and-phone/trace.zip": {
+      "bytes": 14410,
+      "sha256": "7441f86dc3efa2c10d28d3d26feb5e45741802c1ba9d2f3920e1f62a465ea387",
+      "gzipSha256": "2c6798cbef449659922cc2b3a9d54131016e59aa2ab31fa3cb0cc26dbc865c69"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-reference-viewpo-6b2f2--the-observed-display-scale/test-failed-1.png": {
+      "bytes": 7008,
+      "sha256": "4382530e47d2824b62349780cbe014df53c0a143f750dedff4fb1602f541b2aa",
+      "gzipSha256": "4c11ee44ede8d447d30fd29929c5ee1a97da2cd8499acc59d82361299e8e92d9"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-reference-viewpo-6b2f2--the-observed-display-scale/error-context.md": {
+      "bytes": 11864,
+      "sha256": "37c80dd3c44930f9bb621c873dda0f95a2ee2be338468018f9cddfdd77e1b408",
+      "gzipSha256": "f8a0fe45ff6fc90e87aacba687cf9133f53e6ad1db77540ef88efc63fedbe4a9"
+    },
+    "data/qa/registration-pressure-browser-output/classroom-reference-viewpo-6b2f2--the-observed-display-scale/trace.zip": {
+      "bytes": 13629,
+      "sha256": "912dc7b2ed6e12963f3ad9c9415659d39baca84bee4bfe1674e68447f2c590d7",
+      "gzipSha256": "eb3af29826eeee9a4b11e1deb37c1cf4e63d8b2965cd795d7e32cd3f5bdcba18"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/assistant-conversations/actual-default-model-1280.png": {
+      "bytes": 86066,
+      "sha256": "fd6c4ec01eb7b88592afd6196f9f5318c797a305834f589736f7d1fb87912015",
+      "gzipSha256": "24401cb2e9764e9b3e145d184365f97e09d5dcbe46f4a2e36940fce274d04a63"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/assistant-conversations/actual-default-model-390.png": {
+      "bytes": 39214,
+      "sha256": "21e8619b167bcdb422703fdabbe7574e8c4d2f1fac9d4f1bb64ffedfe5d4e2df",
+      "gzipSha256": "ed4369a88a9a9aa1c11c72428d62eaa477f57314e98d106083a7982c3fe42c1f"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/assistant-conversations/actual-default-model-768.png": {
+      "bytes": 78018,
+      "sha256": "d46f3f3c3d59ffe6ed681e92d6976f08b1fbb3c225cf08ea71fd051839eef49e",
+      "gzipSha256": "c14e7c7eef7b9145cd5280dadd3642389c3c916834c2cd1703d6de754b36efb2"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/assistant-conversations/diagnostic-history-readonly.png": {
+      "bytes": 59232,
+      "sha256": "9e1d2e87305e8cad041e3b3faf30697a0ddd42172e3ac81850c0d7801c1d765d",
+      "gzipSha256": "b80474bdff87bb916246c809aa1d8ba79ab2cddb232f741bf0861d80e5319e21"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/assistant-conversations/history-old-message-768.png": {
+      "bytes": 79632,
+      "sha256": "82b13eb1a4d567b41675f5b1b2b32a01a3b866da2bc45445ea5a665366421b37",
+      "gzipSha256": "3ac9ec3c6880788c5ad27d7c9331c4e9b6c3491f9a2e7ea47df4626c6a342a26"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/assistant-conversations/model-check-failed-1280.png": {
+      "bytes": 91855,
+      "sha256": "fc8ef974dffec81d74dbce22bce2e41c7bcaa414b4863585d32fe696abac49d6",
+      "gzipSha256": "5e69090e747a1ffe890bf76550c1a390037d8c0445afddd69faab24b59842ba8"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/assistant-conversations/model-check-failed-390.png": {
+      "bytes": 44470,
+      "sha256": "ce8c5ab12486315a4364046a3ede8fd2240012ce96b89e7447473a0ea0240d0c",
+      "gzipSha256": "119a95d5d84eebef0935ccabcb7b4d6fd146223e6618f097c2c8a5c569851783"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/assistant-conversations/model-check-failed-768.png": {
+      "bytes": 83711,
+      "sha256": "f3a539f7ef84e765fadd2332682b3037e087d9cb6d8ac277ffe1142196bcb7b3",
+      "gzipSha256": "b72fa5bf2a836a464b4c02d8b698cf00024a96b351e7550bdaca4374caf5a4c3"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/assistant-conversations/retry-original-model.png": {
+      "bytes": 92390,
+      "sha256": "1aeb4395820fdd65f9d61cf033da821594bec61cb55ffcf93ce6eb6e087d1aad",
+      "gzipSha256": "5d4ba00fec31d555e4ed4c7736c38af162422401bdc2f966c91e6e2ea5cfd359"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/assistant-conversations/saved-conversation-1440.png": {
+      "bytes": 98152,
+      "sha256": "ef81d9cc13819da9d14ac03983ef8ddbe3264526ff6519526c2b55acc8302bc8",
+      "gzipSha256": "28f96b43d521c7a0dd814b7898b33442220cc811d38d70b99cb2350fda122552"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/assistant-conversations/saved-conversation-390.png": {
+      "bytes": 44171,
+      "sha256": "4008c9252998716084f1ec6e846212f2bb4bdcea9827232d4d48d6a28971856e",
+      "gzipSha256": "dc53da6eef6d8904c49928a15ef6528bdb9667c932048f010d204671f6f33f67"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/assistant-conversations/saved-conversation-768.png": {
+      "bytes": 85660,
+      "sha256": "173d9025d4fab3d813d7f1dbf855599a562cd915042ac9997ef5a5c4e983bafe",
+      "gzipSha256": "6fe9b667d389095bf5a78a0a20f82bc219ea88ca990a9d15381ab34bfad09054"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-boards/comparison-1440.png": {
+      "bytes": 141114,
+      "sha256": "4746756c99ec08864804c876d3b5d896c964a3f4e286ae50cee10e86c7e19622",
+      "gzipSha256": "a3564490a8633d82325cb30aa82c461956acbaf9a6edd598ad5daa1d8f46a3e8"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-boards/comparison-390.png": {
+      "bytes": 60242,
+      "sha256": "8d7ece1495df5ce351251e54bbd3cb772c10235b6717e56be0159679b3d01c51",
+      "gzipSha256": "e43b37e0d3f05a2cb0b5b4211868fcea53671288049d0b20420f77f73c5d0a6b"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-boards/comparison-768.png": {
+      "bytes": 130306,
+      "sha256": "222aceefe68963bf95c1197198f8462613ee0907361d7ed48e2c5fa6ce7ff0cb",
+      "gzipSha256": "cb0c2ffcab207d7d99ecbbd0dab8d1c6cba752ffdd0218b4a0baac22768e810f"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-boards/comparison-print.png": {
+      "bytes": 263250,
+      "sha256": "ee58fec2e219fa1f34bed1fdfd67f61a755d6c76bb4ea91a63bcbbb871ac0ff1",
+      "gzipSha256": "1bc81cf5da27042f0e22fd08e06d6b4f55719a32db9b2874813e935926b9f6c1"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-boards/offline-notes-1793186248549.html": {
+      "bytes": 2666,
+      "sha256": "a1f6d03543fa14bddb8d5a9e8b8fe4f928340eb568421173a6995e85c66c37be",
+      "gzipSha256": "9712572b1dd4d11be9a17309ead276e826dbe4041cce1dda41e5c37b96a8be72"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-captions/english-1440.png": {
+      "bytes": 74265,
+      "sha256": "376addb0d1c43565c3319cf7ece42971d3ce14394d66496f8f99658072c7fcf8",
+      "gzipSha256": "d13bde11d68231693323338b4c8cc7e5b67cef83e9acc2de8f960256f77160f9"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-captions/english-390.png": {
+      "bytes": 27370,
+      "sha256": "97183767e86fb5fbd42b28b95aa8a15a76062a80efaebb18dcce8078c28fba31",
+      "gzipSha256": "762f3023cadf109315adaf0824c9d058405ae1059741ce14250fe072c080c821"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-captions/english-768.png": {
+      "bytes": 66955,
+      "sha256": "14233a4b92646952a5b1754c9b97cac3ec2b31ab665965e8c1bb50a350fa56b8",
+      "gzipSha256": "9e78f45567e65bf89a4f9b5c7f250ffc9932cfffa458591ea5c8ac14ec24a911"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-captions/legacy-confirm.png": {
+      "bytes": 127529,
+      "sha256": "88429ee00bed952ecd43c45d920163af4933e1db5fa623805dbe698cc2704d99",
+      "gzipSha256": "6754297f268b37bd9f6a0b09881e9d8ad259b45dfa4956a16e0d9bfb43e21e10"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-captions/long-token-1440.png": {
+      "bytes": 105296,
+      "sha256": "4013e31c18e0aa8525431c6cb0c0816c30648345a478c38f74a7a81269e53a37",
+      "gzipSha256": "2bf669d56026ae82487366626349a6be9831c49542432fbf53666ef1a29ebf74"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-captions/long-token-390.png": {
+      "bytes": 33430,
+      "sha256": "8bbaba9524385db991ff84962f6b22729e28d6fb303dde06f727950cc1661ca9",
+      "gzipSha256": "99cb34631cc91fe55c77462a5d5f70aa327de22e66b8a6610023fb0f9e04270d"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-captions/long-token-768.png": {
+      "bytes": 94117,
+      "sha256": "d3f89a507ea84f995f409203b1c3c985ee9309c31bca9ee72f1015e65243afb2",
+      "gzipSha256": "d2e46c33b39fa563dc4547faca3094d12a26397cce084bdafa9ba00bfbd414c0"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-choice/assistant-1440.png": {
+      "bytes": 102262,
+      "sha256": "5ba1eb621388f7aaa5ba0e5aa534d4eeac94c0ba9862fbfaef07c8b8b9fd1e5c",
+      "gzipSha256": "12527ee0c8dd70d7054c70d9ccce5eacc681f6b5284caf24a36d7d44bab490a6"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-choice/assistant-390.png": {
+      "bytes": 28376,
+      "sha256": "e1222baeb1022ce2167d37f1e732315da4ee63f8236fee63f00200edb5cb40aa",
+      "gzipSha256": "befc0ecc7a0c05e0ca3ee0546091de9ddc6e0d1d9d3f42fde156bf7eefd3054e"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-choice/assistant-768.png": {
+      "bytes": 31893,
+      "sha256": "81dc9677649c3e85945d43863fe2e031e248127a5895d1375ef982a2349958d8",
+      "gzipSha256": "3df95e909542b4e7b84083e3c48a34b18ad15302ad6098784d84cad0e9636c99"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-choice/multiple-1440.png": {
+      "bytes": 79116,
+      "sha256": "580f1ad06b5dd788ddf7ea7639c71910fb2b796181a4d40b5dbf503629de713e",
+      "gzipSha256": "f5a0200c6f7a59ac348d67598956f8ea7abf27061dd160fed874934c1c02f06f"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-choice/multiple-390.png": {
+      "bytes": 70714,
+      "sha256": "6dab65d91cb889be849b2ab05be666d2073be4bb0fc1148c8a6d62d4003a372a",
+      "gzipSha256": "a0f3d530285fabe9e6d7a5a8874842d578c213b797ebd0cc9093f18afe4afcbc"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-choice/multiple-768.png": {
+      "bytes": 74265,
+      "sha256": "ebf5edbfecfb52216066cd4b0269ed0e5f7d394bde2f7a93c88971e99017ceb8",
+      "gzipSha256": "2796e49480e33759df7c20877cdaed10c25cdaeaa3c690fcfe67005349b022ef"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-code/editor-1440.png": {
+      "bytes": 109635,
+      "sha256": "7a615751c234c7fefc1e4aa579e2d0f9be45555e155ed031351ac1b211b65a47",
+      "gzipSha256": "0e79357f9b018dadc6e70d1f993ce8cdd98e1863d982b3d5dfd7f1f9f030b9db"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-code/editor-390.png": {
+      "bytes": 52384,
+      "sha256": "16aeb8bb3362c1b732981169dc1a3863ed1bf3033b6096699155284074c748dd",
+      "gzipSha256": "adff7d0df5f33d874f9f665b508f587695d5fc1b84074089751da700b13e7cca"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-code/editor-768.png": {
+      "bytes": 100930,
+      "sha256": "f0c08179686f6e0f27dc36055897cc063a94f6d276fad58c50731be883239028",
+      "gzipSha256": "99e66c63dde239d79c4007afd96a62611163cb379b86fa0cbaa7fd1540682367"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-tools/controlled-figure-1440.png": {
+      "bytes": 98800,
+      "sha256": "da108e0be0ae2cc3e1bd06cc927017a31c8a5079faed59a49723d8807f9bf922",
+      "gzipSha256": "b3d86bd7a01c01ca3a255b8cfe09557f69d90e9b95a85ee5ee9a12cf59d3a145"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-tools/curriculum-image-390.png": {
+      "bytes": 132861,
+      "sha256": "ec47ca9732dfa002ad764b299fd81ca94a5d32da713f40261c477464d8640c05",
+      "gzipSha256": "27fe4515798bdb816cf1c9c05656687f4f45baa12491cfa06a96302456d463aa"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-tools/tour-history-1440.png": {
+      "bytes": 86465,
+      "sha256": "4d164d7b356b2f0745e988b3c58433d960863ba2666f717c4263e4956233b553",
+      "gzipSha256": "bb1cde3f5462151e679077e7701bb154cc0dfe11351893c9fe6f858176532157"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-tools/tour-microphone-390.png": {
+      "bytes": 50952,
+      "sha256": "b299769dec84c3cb2ca0870f4b1c6ce2c9efb53809d85551c11d4796e31e4fe5",
+      "gzipSha256": "f764f7236b771634d7ed7dbc8e12a485e6a2a5d7bdeae746985c8cd829f99114"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-tools/tour-settings-880.png": {
+      "bytes": 82112,
+      "sha256": "777260b1a9d0fa9d33b221242c887de72b7da69d4e1beb9d7a3f07126619c7b6",
+      "gzipSha256": "d3fb5a5c5c04e6dad78f907121ab4824b851b3d5c161b758ffcc7f9adef8686a"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-tools/tour-sound-768.png": {
+      "bytes": 86302,
+      "sha256": "8e9ab1732bdd7f9a73a99bad217ec7185ba5de63ededce66c25fdf13b271b1cc",
+      "gzipSha256": "a12285d62411515b9713ad7b688e60d644d72a149dc48969f1547ba6806f0726"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-tools/voice-settings-390.png": {
+      "bytes": 47427,
+      "sha256": "4761d1ae648520cc1840c55fee429539bbc8299cd8ee26c9350312344649531f",
+      "gzipSha256": "8b169a093806d47ee77b61cd1555ebc9cfeee44208032a3e16fec10d2d7acb14"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-tools/voice-settings-768.png": {
+      "bytes": 106014,
+      "sha256": "d2b0264e66b10c9f3f4cb93ac22f0056c5c1327d1211a2f1bdf59cf967f24b35",
+      "gzipSha256": "eea77f55bb346010bb5359f81a9dbf1f4bedac54ebe4a58bb45cc1102a57e88e"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-tools/voice-settings-880.png": {
+      "bytes": 119387,
+      "sha256": "c722ad6d11396fa20c4c297c85257ccf4ed4be65c23ce095feeaa81c384076f4",
+      "gzipSha256": "01e3ec749edf049a53563ef4c11e7ef4716e6baf8ca78d52009a5b66bdaf2fdb"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-turns/recovered-1440.png": {
+      "bytes": 258507,
+      "sha256": "efa8019784775198fe62ff9c3a2f4fbba90aa9c63d9901cde5203c4673cffe87",
+      "gzipSha256": "92e4443c4ce2b8cbb7608d2abbb0aaa0b17b460c2c2119a1be06a3801707204b"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-turns/recovered-390.png": {
+      "bytes": 51937,
+      "sha256": "a3f9e2a13ae67b1c492ac51ef6f7db13cf85622a67e29ad5ca4a573bba6cbfed",
+      "gzipSha256": "cde92d7de3979c5f1816fb00188ddea2c125d9912099a9d2da88071422edf83d"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-turns/recovered-768.png": {
+      "bytes": 191077,
+      "sha256": "99ca82f2a025c53b354976335b460b56fda32ee28bd6acac7a41ef275bfe8eef",
+      "gzipSha256": "75490bf8064c3c89c5d6198d8a34c7a04b446c2a88c7e68561dfe5ecd5350982"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-turns/teaching-modes.png": {
+      "bytes": 113724,
+      "sha256": "c058e86c5bfa1e753130c10aa85e797da79afd1ed7061752adac595e480d80f4",
+      "gzipSha256": "73b04aa228dd7c47f1cb24adacbf7c1001410f4de86598ad313d2a2a5850ece0"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-visual/candidate-1440.png": {
+      "bytes": 162525,
+      "sha256": "9fb7ea6f513c2e833b6c698eaea629bbb0343a0bf398a9dafb54dd974d6bbc77",
+      "gzipSha256": "1c0a5ac67bbf3c5b65fa85a95cc119441f71059879df40b6b98730d0f27c166f"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-visual/candidate-390.png": {
+      "bytes": 33888,
+      "sha256": "9b04a2de89507e4c59a04a65b4d90e9adfdbc62d8d7c709501c398c2acc2efa5",
+      "gzipSha256": "beec4f2cb46aa8ca76fc7cbdf59dd0ba2456cc5344b2d5e5d58dd6010a1073ea"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-visual/candidate-768.png": {
+      "bytes": 47829,
+      "sha256": "4ffda673ede87d592bf8b7595faf4b742b5466f43dabdc621c6fb0ce0a3564f2",
+      "gzipSha256": "7670956fc01147e35acb2f06d6530a33eea39071b4196a7a6fbe7bd104197d76"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-visual/candidate-actions-1440.png": {
+      "bytes": 162656,
+      "sha256": "cecbe3aceb275d9ce738b5421cd92875ba2cbbe90ea65f03098e6997ea7312dd",
+      "gzipSha256": "218f059ea7ecc15f1c430fe75ca1a115f1860ede64cdd0084ee66c3ca563fadd"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-visual/candidate-actions-390.png": {
+      "bytes": 34213,
+      "sha256": "c3aa4227eeb214d563b31e3754fc782fda45de185175bdbdf64bfee1188f5ac4",
+      "gzipSha256": "5333f1566c2ffa8a8ac06883c0087990dc4894d881a15e862709400869e40e05"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-visual/candidate-actions-768.png": {
+      "bytes": 47827,
+      "sha256": "b98e319501b79a355e8a2dd0c0b023e0ea583c8dd134bad6ac97d2534ad5f4db",
+      "gzipSha256": "a38b69c926f435e7110a26e7d6449f27cc73f2cee349f0b6653baa85448d7cc3"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/classroom-visual/selected-mobile.png": {
+      "bytes": 48902,
+      "sha256": "cca00a468e170fc17e165291b8f934c7f87e07f27cbb2abbb90c05e8dbc6edc1",
+      "gzipSha256": "1816dd5e74afc610191dfe1e53680431c5ba0b145efbfa4fc0055a024516169b"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-assistant/material-entry-1440.png": {
+      "bytes": 83278,
+      "sha256": "0df2fe752ba1c97b1b5e0cd54d6ba04b49c2ce47b486731a780181597807d0d6",
+      "gzipSha256": "1a05e824d20c6924889d3fe9ab7080375bbe01edc59e8741ee951972d01c2cdb"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-assistant/material-entry-390.png": {
+      "bytes": 49120,
+      "sha256": "8a890bbefd7749dc1eb1f4a651a6b3392bf3ad0dbd9591829b82f5a6bf0dc54b",
+      "gzipSha256": "033e5e2fbe3a367fa812849b58f0ecbb9c0a96d507f1c75ecb42341a47e08c6c"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-assistant/material-entry-768.png": {
+      "bytes": 54127,
+      "sha256": "bc20e5c60eb508133ca22ba5f999c1fa65af33d4a3904e85e708cdb99523f111",
+      "gzipSha256": "d6b05689ea01b9b89f018db7280590826e297079783b0bba298e721aeae8f7aa"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-assistant/material-entry-880.png": {
+      "bytes": 55199,
+      "sha256": "c14b66456f7c5dd8efe8358a59e83448005203b811bf4c055335ee1810af63e5",
+      "gzipSha256": "057ca9727f169d69da55165ccbad05c7688d6ca4be378bf16d6b837d36075a1b"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-assistant/primary-entry-1440.png": {
+      "bytes": 120363,
+      "sha256": "f6735b94fb6ae3e3b9f4ea43349840e2c66a59fe04050f691fdf3059e22a5b6b",
+      "gzipSha256": "c9ce9d691a68256bc19b929be0c910a88514acef6aed392993c69946a537cf76"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-assistant/primary-entry-390.png": {
+      "bytes": 81335,
+      "sha256": "636728a04f26302f2b743c611bf66358f1aac0d93ff081205ba2888831cda178",
+      "gzipSha256": "d6208d5e6d8755ee241ec6fa0126914abada94c5f80b1fc62e94629dd8809752"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-assistant/primary-entry-768.png": {
+      "bytes": 89252,
+      "sha256": "f37f619746d5e072fe7ece56814550d7e60e86cf19634248ed0151e59f253d4b",
+      "gzipSha256": "9c691b480b9a788ffd8ac513bf5c0f466f3131ce5505f97e7d76055ad72896a7"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-assistant/primary-entry-880.png": {
+      "bytes": 90372,
+      "sha256": "da04477a8444de9e4d6118a3b1c4f53006feace189f6895d1fb988ac988cdde8",
+      "gzipSha256": "1fbf174fa6e04f55a45a473e8fa0f3234d3401b2c4dbcc692e78e18f560b2717"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-assistant/source-code-390.png": {
+      "bytes": 98859,
+      "sha256": "5930d2858dc0b80f03edeb26e423ea133e8c0d9a28403f201c171bb036156b53",
+      "gzipSha256": "3b76e0a885d00a8c45cd342499117b50055948ac44baf1737d9231f0710ec415"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-assistant/source-direct.png": {
+      "bytes": 75637,
+      "sha256": "b000be10a86b8bf6c99885fb469b82a48e7856189abe7cfefc9126011a2c4955",
+      "gzipSha256": "2eae3ee7e0896a7fe7b1121cfafc6200c4a9a3593e3d1af775aa918061fe43c8"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-assistant/source-table-390.png": {
+      "bytes": 94590,
+      "sha256": "0a4e98f3deaa94833eeedd3531ccaf7fb0667060dbc1e10522200eccdc76f788",
+      "gzipSha256": "82de9ff2fa7605b164a67427d389c6044e12894e16236671d5de0f5b973ed4a2"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-lifecycle/impact-1440.png": {
+      "bytes": 277966,
+      "sha256": "743f90e8de46c46436818221aaeba3dfbe31c6affebb94a1511084c1d11b575c",
+      "gzipSha256": "31526985ce5d59b5030b953531a5db7efd3e2fbe370f668ed500badb3647285c"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-lifecycle/impact-390.png": {
+      "bytes": 195361,
+      "sha256": "6df35c6f1721ac9a00a1198a821d06a367cbed57f93c1483252e760390ab9487",
+      "gzipSha256": "486204168e8f1192ca5012658c21dd75cee7f129cebc496e06145f030bfbe4d2"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-lifecycle/impact-768.png": {
+      "bytes": 227050,
+      "sha256": "b3a801b0ac6c7e80b0b62bab96dab8a8c1df16112a07e4315911ca435c362254",
+      "gzipSha256": "d9f8fae60d4fc4c7a5d4f4e66b021666169361f02253a8476095a6a60ac1f229"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-panels/activities-1280.png": {
+      "bytes": 170904,
+      "sha256": "1444eb40af7acd1b0d0d370b0708d94693f28b8cea2c0a6a0791f04638167a58",
+      "gzipSha256": "7461c206390fa45527b54721738488d40b7bd9146fb8af0aa4cbdc562bc4af11"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-panels/activities-1440.png": {
+      "bytes": 177046,
+      "sha256": "ccae910490e694e42f4aa6e71bfc87bcb4c697d4c34f611e9490336fd2b5035e",
+      "gzipSha256": "6fe4c7493c9ac6946c4a9dbe1f53f1e06868cbdbdd8d861f7767f494fb2ca35f"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-panels/activities-390.png": {
+      "bytes": 175257,
+      "sha256": "d9441cbae545667cfe44ab9bcdf13a141c9d5a50d66ff09e8c0ac096f4be5e30",
+      "gzipSha256": "37a83e89c9646df5113b3b035473dd7772a0dd9607bcb3b51b065a21a3392b67"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/course-panels/activities-768.png": {
+      "bytes": 193662,
+      "sha256": "7ee4e4b76a8da95412c52d7ca7e1aae4bb4fbc6d57b6b1663684620b28f31e3c",
+      "gzipSha256": "ff08c96c0f9c80f42853ce034ec19fa2ae495151a1e258e50f8429c6780bb685"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/guidance-model/comparison-1440.png": {
+      "bytes": 230979,
+      "sha256": "674ea81e36742c782283bb672dd09b4148a6207630e74f07cc99d7c16544f0bd",
+      "gzipSha256": "d43a735f02e027865a83395e0630682e3b7a778a698a623a94d6b3fabfcd498e"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/guidance-model/comparison-390.png": {
+      "bytes": 187697,
+      "sha256": "6d25634440525eb709612c376751ee9d7a0d50d0ab48ae3c895d8884bec8b8f9",
+      "gzipSha256": "08f27140df2f4eef091c0a2d613306d2c8730093f1485b27fd3114f2757b0b45"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/guidance-model/comparison-768.png": {
+      "bytes": 220547,
+      "sha256": "62809fd2a760afb0006fd28a2c585651e2324af6c6286c1437142ae9abb68186",
+      "gzipSha256": "fe7b2487446c4cd8995012f0ad790f6031b9a4d963b568b53bb79e0715811926"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/knowledge-report/actual-active-guidance-schedule.png": {
+      "bytes": 251376,
+      "sha256": "17e264f4de5813cf890d8e8615cd2c941c055a5f2d98c07d85e5de7a252d0723",
+      "gzipSha256": "abb732cf7557cf5ae6b843e5634e386a10e80cfac9aadb0b3bddc7ba98353c8c"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/knowledge-report/actual-pending-review-report.json": {
+      "bytes": 10614,
+      "sha256": "eff7b69dddf3107924aad3ab233414d81dca763974dac230b395a2f92a01093a",
+      "gzipSha256": "3c9c351778bfbe7cc51fbbb37bdc7c84db78701fe822eaca46277ce246d183c3"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/knowledge-report/actual-report-original.json": {
+      "bytes": 23891,
+      "sha256": "0579aeaeed2347d4cb869de69b34c5107b9400d58f7e4fc6cd8dbe91b6d26dd2",
+      "gzipSha256": "7dcbbc2d9d960a9ce6061c0969c7486ddb62f07648fe55b2d089abd384536933"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/knowledge-report/controlled-cause-history-projection.json": {
+      "bytes": 26220,
+      "sha256": "f294ccdcf102647bc3753cd226100dacd86d71f98dd52ae8abb1798b64b37769",
+      "gzipSha256": "7bf707c25b2645e389d18a2f969c41cac87c7cbacccfb9de17eaa4697b83f549"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/knowledge-report/point-1280.png": {
+      "bytes": 330327,
+      "sha256": "3101c285f24a920db18f35c80fe02c363d18dfb35be0fe939576b16cef539f74",
+      "gzipSha256": "18105460cefb32338563f3cbebb26aae596206d63f72b955f48cf6e56b6366eb"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/knowledge-report/point-1440.png": {
+      "bytes": 358476,
+      "sha256": "9c1ded21cffc7e0ff8b814d7d96e9512090dcda72421f73ae92a0bc506ffa027",
+      "gzipSha256": "fabcacb804bac91330e2e1bf0adba156e5fa3905c6b3fd0a728f336fd076063e"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/knowledge-report/point-390.png": {
+      "bytes": 288727,
+      "sha256": "e09f5817ac808d8958570f2c82f451cae0174f7c687a4a94693bf826d770f41c",
+      "gzipSha256": "24a6a03ea56b8b3838a5f262215aeea27832a0668d6bab4c7710e4bf976075e1"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/knowledge-report/point-768.png": {
+      "bytes": 315625,
+      "sha256": "1458e051463e260ba78d265a28afd4bfc57a696ee2fc7abd580603dd7133e10d",
+      "gzipSha256": "f36b949e0ca2fdc150bb34eeae375a99d6c1d208ba0dd5afbec6117794d1378a"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/knowledge-report/report-current.png": {
+      "bytes": 219875,
+      "sha256": "d1a77017ee7c29bb6c2f18501d14ca60a1ddb28d0d9a327a43d5400da2ef0d14",
+      "gzipSha256": "5d4082718635b6e89c7768c50c65150dae067c8661afeade0bf2e0262ae060f5"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/knowledge-report/report-first-workspace.png": {
+      "bytes": 195807,
+      "sha256": "f5837d708c69e89b1d53b0974d7a12803958d8a586a844b85ddba970669ca021",
+      "gzipSha256": "91c9ff2b7fda143ba6f73a06c3ff7d183101a2f3fda8115a57ea1284abf61826"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/long-pdf/checkpoint.png": {
+      "bytes": 178116,
+      "sha256": "f4bb4b5812f4f0b1162bad1a5f00820c1e3f646fe6e01ef38ad9e30fc0ea170c",
+      "gzipSha256": "f508d52324c5e14a824d26c62850718913f9d764b8929a12f372cd1dab108297"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/long-pdf/file-check-1440.png": {
+      "bytes": 204985,
+      "sha256": "97951215261ed45bbaad7bcf486da4ff7846ef753a0e5770167f21138c45f329",
+      "gzipSha256": "ef92591650f0ab227a6bc3687a64eef4d67ec0e8b21355374c1f7e7c4436c72c"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/long-pdf/file-check-390.png": {
+      "bytes": 171305,
+      "sha256": "8ff21a2ab398c6870be58a393d08b0a0daac4352bdaf708819b5b0b8937deb4f",
+      "gzipSha256": "84012c5b564e103cf17de382447f5f07ce24b1b356c27129a8f58e5bdf1d0b8a"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/long-pdf/original-repair-1440.png": {
+      "bytes": 226107,
+      "sha256": "e25d8d4a96147c7609b185b1b0dede071646352d6d5f1a9682bfbea0ac264a90",
+      "gzipSha256": "633c6af1a68d767ef2d2870c60458c0997bc83b3f718b9cb119773fc970d8ca0"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/long-pdf/original-repair-390.png": {
+      "bytes": 192758,
+      "sha256": "4f7b94259f44e5f442679d534413bdc9516b0bf9d8ab223b90f2a3aac726bddf",
+      "gzipSha256": "9e7f77f696f507e40b003111e8b4e3a4ddca07b0aa9e07e2179007340db6d447"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/long-pdf/original-repair-768.png": {
+      "bytes": 197424,
+      "sha256": "9e532152918fa4bf8e7fe29400bbae6baedf5623c3cec56525a0c9e2af69cf44",
+      "gzipSha256": "5b886a773e1f2b42eaa7288d68cb3eb84d891c16036ab7a211f3232e90cf54f0"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/long-pdf/original-workbench-repaired.png": {
+      "bytes": 189397,
+      "sha256": "6e56dda991efab4fa740bfcd13ecb0d9dbcef4ee7a9e31e077784f64189f3963",
+      "gzipSha256": "a07f0612bdbc7a94dbb750233189b45c3cabb089ea77d9a61911b72846b5c862"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/long-pdf/source-1440.png": {
+      "bytes": 212027,
+      "sha256": "e17058a182b8d442c0e588547c568a64b430fbe830ab43e8fa2fbb3761efff9d",
+      "gzipSha256": "f37a907a62b376a3f5d4bce2d2972d0c32767d94d0973f68a45ca8c91445e767"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/long-pdf/source-390.png": {
+      "bytes": 180108,
+      "sha256": "355454e78dbdd5e0adcf56edddfad580a8e399a99ecde47116939f37e161c8e3",
+      "gzipSha256": "2ffc450f1ff8b693b5055e7cc00a91dca0cc807ce185561e9246ab570f120463"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/long-pdf/source-768.png": {
+      "bytes": 184253,
+      "sha256": "b6682c1224355aecc3765eaec8eaad80f6fe10bd6069d2f23a6d1873ce621948",
+      "gzipSha256": "375cb3bd8f7e84faed564b0fb5b1923b8215540aff8b503b27dc32333466590f"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/long-pdf/workbench.png": {
+      "bytes": 159571,
+      "sha256": "c81a97545fb9532f5ffb3e9426a9cc84ec74791244571115ba243e37e8694ed7",
+      "gzipSha256": "0acad18493e76958471a74dd65f541f86613685efa42862bcffd21a014b0aece"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/neutral-voices/settings-1440.png": {
+      "bytes": 157588,
+      "sha256": "bc13f6f771b39e31e0794719d679bf7cbf47e69647741586c1173eeb9aa735ea",
+      "gzipSha256": "1d991aea2aae0abe98e6fa020fd46a5e71f109b4292e24ca343de7bb7c68ccd2"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/neutral-voices/settings-390.png": {
+      "bytes": 59957,
+      "sha256": "8bb9fd169b009e083daa27fa7e90661c6fd8572dd0c4d31d93bdfb293c492e9f",
+      "gzipSha256": "696401a5052ae79c6ad3e6cc99616032d0bf87161504b7771a1ad49fea535c62"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/neutral-voices/settings-768.png": {
+      "bytes": 86488,
+      "sha256": "73191a89f43d362a98fd85fb1540fd4b6d56a07b2123c601bbaba40893060743",
+      "gzipSha256": "3460f5ae76accfc1c0142204659ad2f749ef6be622fd8cae29bf655f8116b70e"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/original-math-font-isolation/actual-math-editor-fonts.json": {
+      "bytes": 5228,
+      "sha256": "08c1b7ab9a4a5b9220a1299ad0c9f68d3ce1f0083d5247409d9e7de77e2b223e",
+      "gzipSha256": "2e368a6766fac68d76a78850aa74391e4144a3ddf031106bdb91b904e21354c6"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/original-math-font-isolation/actual-tall-formula.png": {
+      "bytes": 4574,
+      "sha256": "a52dbee463f0de322b963b033a742ec23b5d2a53cc5e37116cfca5a52419665e",
+      "gzipSha256": "b90a24e82c5888a0f80c1ea8cd11f67311aa039b1e081d02a66670f6eb9ef145"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/original-teaching-fonts/actual-board-fonts.png": {
+      "bytes": 130138,
+      "sha256": "1aa7bc1271cacd1b97619145fc2dd5788c39a8de9c4e8e7f7cede61dfe2a58ce",
+      "gzipSha256": "ac6573ea06603cc7f54b62e1aa3cfe47acb008c971d2986eeb8541c1475957c5"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/original-teaching-fonts/actual-loaded-fonts.json": {
+      "bytes": 7285,
+      "sha256": "ef641b2262741c3ff23a789d7a64819c6317e1837810ffb8bc5b105c5ac0d5f3",
+      "gzipSha256": "1c371da0d2e9bd66d602b182fde018689d162afae26c0349c04a703d50d83ed0"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/original-teaching-fonts/single-registry-before-assistant.json": {
+      "bytes": 41,
+      "sha256": "5256a0f8210b459cf6d3b2fd4d60a19848f2d473eff7e8170886749701b921c3",
+      "gzipSha256": "74ed8a18c7b987f21796b6129eec9b9a2a27fe83cb68ef46b9c425fca0f01bd9"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/original-teaching-frames/cumulative-second-scene.png": {
+      "bytes": 129397,
+      "sha256": "cd8d829bfd84ef9622fb74d88db1499d0cef97cff558bebe11eafa46f21659f7",
+      "gzipSha256": "50fbd36a43535efab87e62e309a0c9383c38c89680ab5a742743a73ce6157b0c"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/original-teaching-frames/original-shell-1280.png": {
+      "bytes": 118293,
+      "sha256": "16828b73b3b24dbcd9e2b6257043413fcc95693d03451a44350a90b7077d168f",
+      "gzipSha256": "62b7b54b6e420c151fe04303c0bfe75ca3145d637cdc0debbd291503e922b551"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/original-teaching-frames/original-shell-390.png": {
+      "bytes": 45689,
+      "sha256": "74651ded9e2565c9f25458c51f41bd45c8f33cf6a4e2e868cf6bf8b92d3223e1",
+      "gzipSha256": "c23bd342c0674ef08e2217520ad5d1fff44b11f1c76bd2b3d7e1643f750c0086"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/original-teaching-frames/original-shell-768.png": {
+      "bytes": 57135,
+      "sha256": "4a99467b8b3ebe912021ab531273e09c9eb385cca796aa940e7d014cca33fc91",
+      "gzipSha256": "a2899e9e31925686adbeb70eb5ab41a5061538962852d1e1b8525da453dd1e67"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/paper-practice/actual-completed-review.png": {
+      "bytes": 172684,
+      "sha256": "75934fcb065cb5b85c3ccca109784fdddb6e09338a7005014bf5b5040987271b",
+      "gzipSha256": "908fb2a2cfbd0595d0e1ce9e2cf55bc3d4e3dc5385033a0ee880cee0a155beaa"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/paper-practice/actual-first-answer-and-correction.json": {
+      "bytes": 1458,
+      "sha256": "31a723c5c977dad1395eea951704e8f93e7407f971030f5dcf42e170c18467be",
+      "gzipSha256": "2635698279f11fd40fcb093ffe990e2f187418291db2b1204e047c6512e98edc"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/paper-practice/question-image-1440.png": {
+      "bytes": 162426,
+      "sha256": "5af7e80b0b00b3572752f8c694f8ba76a9c798511c41b65c71d785815098ab2d",
+      "gzipSha256": "81df19df5ddaac1ac86fe3ca4f4d2314c38dc4d6ae0b944e69f09a9644388e2d"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/paper-practice/question-image-390.png": {
+      "bytes": 143910,
+      "sha256": "eb1af7aad5e6f1fa8a01da34a66fc9e3ca8c1c99ebf50132defa16aa554e0407",
+      "gzipSha256": "71b9f947432febc27aafdb7dcde07b814d11f38c5995cb5068d2cedcbbc5ec77"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/paper-practice/question-image-768.png": {
+      "bytes": 149674,
+      "sha256": "af98e97cf252ff684db8823d6c059af969cf8585e73d912b2b4c1ef818d23be6",
+      "gzipSha256": "904a3eb79b889fad30cac5533baef1fc82939f2663e7b002ebb9dc85674f6b12"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/paper-practice/review-workspace-1440.png": {
+      "bytes": 75485,
+      "sha256": "b313b996c2974c1157808a7a4ad81029756632a47a8ca03d593662be99d4604d",
+      "gzipSha256": "2b4d66529e4cd9386cf0defde43be36b9b373e0572ac4d9c2ab13f76cb3453d3"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/paper-practice/review-workspace-390.png": {
+      "bytes": 63151,
+      "sha256": "a90dc9b0ea158812906edc211c84764f4a55c408b4c0c55ee753b124e795427d",
+      "gzipSha256": "7f5e080a2112c98788c8e265c81c58547c54e742839ae108f778066bc3aefbdc"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/paper-practice/review-workspace-768.png": {
+      "bytes": 70537,
+      "sha256": "681223027d0f3e3698f293fdc35a19fa596b92aa1d7bd1a53a856696e48249b7",
+      "gzipSha256": "59c850d2a5fafb8ba2dfd79bf941847b7ad96e8f7769133d5b624b2bfcdfe2ee"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/paper-practice/unified-calendar-1440.png": {
+      "bytes": 128236,
+      "sha256": "e858ede6bbb243924af61c1cefc3ee510d2a6cede7cff6d6e2b128ec4060a217",
+      "gzipSha256": "c6ae0ed06d03e43736c5484a01b81cda1693241c1a3fccb4aab5c0f6922be300"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/paper-practice/unified-calendar-390.png": {
+      "bytes": 78355,
+      "sha256": "1c79c83a977baab0e8a0cd2e5d230c8850ec6597ca93e0900faefe0f79c21e6b",
+      "gzipSha256": "7f08c036eaba196e6b2a0978300fb0d1e327075951402bce3e4533a9c6a0b5d6"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/paper-practice/unified-calendar-768.png": {
+      "bytes": 92331,
+      "sha256": "c3b5c95c761c37393412af781b717e60110f6578dda9cdac8f46de4f2aa34cd2",
+      "gzipSha256": "43bba0511a411c9920c76e1316d5eb38b6dc5b645a9d83417a5b32f14f661753"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/practice-reference/actual-desktop-layout.json": {
+      "bytes": 958,
+      "sha256": "379cd23d6da1716976e03243fa7b1a012ea2a710961680ad20f1f01dad2abf17",
+      "gzipSha256": "18223907fbb48a758aa0ed37d0a04cba097d2534e36eac24793dd2b442b83214"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/practice-reference/assistant-1280.png": {
+      "bytes": 103011,
+      "sha256": "f6c15adfca03a3cf0ed63e854eef88370e7c036d710bddf5548bff828cd16736",
+      "gzipSha256": "192b113f25c490c7dd260e7e1a96effcc99dfbcb1fb64d69aefdbd65640d3309"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/practice-reference/assistant-1440.png": {
+      "bytes": 105115,
+      "sha256": "d28fcaec9ee5dc12b38a23f0178ddfdac5fa3bf1091f635fc9041af4397ee7bd",
+      "gzipSha256": "33ea48110ecc6159b39eec861baac98fb54de0c95e653f453d19eb6f2aa57f36"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/practice-reference/assistant-390.png": {
+      "bytes": 38119,
+      "sha256": "bf3c4ad1b1726bc5ff364b235c34386985af4bbe0a40df844c34f5a17aca3f51",
+      "gzipSha256": "6e3f6e888a3588f266c99bd7657d73b777c6f2b3aba74ff13848cb718db950c7"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/practice-reference/assistant-768.png": {
+      "bytes": 38509,
+      "sha256": "f2a6fb708df2c669bee14fd7ef02d6d78629e824fc986ca5e4351b6eb758eab4",
+      "gzipSha256": "21dc1695cd25812ad70fc2e5e787a61b5435c5d8801011b639ca2d7faf8e6ad1"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/practice-reference/multiple-selected-1280.png": {
+      "bytes": 72444,
+      "sha256": "9012bbaa79d5ec94499a1194a1b448649708ad53e4e059858f547ba54b13fc07",
+      "gzipSha256": "ff0e660a5bd7edb2543bc7eb751e86fdef029da656d8bda55078d743049b7745"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/practice-reference/multiple-selected-1440.png": {
+      "bytes": 74025,
+      "sha256": "c4d99e3abb1be7a1103a711ea94809680f5f474078c0237781ee8223550c7337",
+      "gzipSha256": "c721f9d6c3d378feb4b854dc34ea781000ad3cc02ec027b2784ff0a8765e3467"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/practice-reference/multiple-selected-390.png": {
+      "bytes": 61280,
+      "sha256": "f8d27ab5298c494806ba5570b3be87cd2e0caf8dfca4aaecdb6d049e2271609e",
+      "gzipSha256": "d8ba29b0187ff8a53c10029324c56cb45ba942a5758ba1d1758206a023747f31"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/practice-reference/multiple-selected-768.png": {
+      "bytes": 70391,
+      "sha256": "c799907b635526c23e08db4393b5c80e0fc008cb68fc55c98da080b81a3ae783",
+      "gzipSha256": "60c6683ce3df0b146caa59e385d73152a9adbeff4c21453f10e2d80f26beb117"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/practice-reference/single-answer-details-1280.png": {
+      "bytes": 170035,
+      "sha256": "eb933ee4646142cf7652fc21cd05c4180a9c14a810af35a26aa9ab3243679798",
+      "gzipSha256": "362a13c71a04c3049ab652c3ce9cb5659bc053fc1aaf8d72c301bc4065a09ad7"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/practice-reference/single-answered-1280.png": {
+      "bytes": 155087,
+      "sha256": "2dc1a79541c63334e9df0ce2c9fcde6e64dc2db0a27948ebc0e16470b6e9792c",
+      "gzipSha256": "97a5a61cbb5dc34d037698938aa01d0d57dee9661292cdd5ce009ae86d0e233d"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/project-teaching/field-1440.png": {
+      "bytes": 31158,
+      "sha256": "c9e8d9d01c92d556256fc3522b9bb89232793e9b2233f749660814f94dd295ee",
+      "gzipSha256": "0665dad02fd24406f66a3c807d454cccfa622aef61239600af8419c89ffe5236"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/project-teaching/field-390.png": {
+      "bytes": 25962,
+      "sha256": "cf00e00d8dfa40d25eb274e74f5aaa9bea02ef8603cabcc1cd1e29254faa8e98",
+      "gzipSha256": "bf626db7ef2943ec1d61ab6ae5160954f13de1610da66608bc798fcb72611944"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/project-teaching/field-768.png": {
+      "bytes": 27726,
+      "sha256": "ca395276ae657f7e0278508ff056f0e0a4d3158aaf993f9ada07da44d4aad84d",
+      "gzipSha256": "1fadfccd36e73514d177ae529dd07c15d6d0154dfd5357f4442e58f86392ea69"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/reference-navigation/navigation-1280.png": {
+      "bytes": 160717,
+      "sha256": "fa89a3ba0863b72944b6e4aab0d35b22d73a149e502f2acc8f4892e7a3b66f2a",
+      "gzipSha256": "af95801fac4532a9f0428e4bf78e0ac866061ccb37c26ab7e2de74e000a1ad1b"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/reference-navigation/navigation-1440.png": {
+      "bytes": 169023,
+      "sha256": "43b26b7b61354afef7ccb87ee0e9d2e89730e59f6273887241243af7a6416fe3",
+      "gzipSha256": "3cdf03d083da1821a305e4acfb788aec7ccf14140a7e17acb70e367d03d6fc76"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/reference-navigation/navigation-390.png": {
+      "bytes": 129641,
+      "sha256": "27cc3e712584c1bac49d7290efe520a23e9d16836bd560106aedbbe8571270d0",
+      "gzipSha256": "e832aa7715be1872a0f6f3a26dcf5ae9bd4d8bfaec459e2f07ab21a0f7561d59"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/reference-navigation/navigation-768.png": {
+      "bytes": 148996,
+      "sha256": "c68f06a548302e078196b54f3adfe17a1cc16880e95f66792c96462ef47a3df9",
+      "gzipSha256": "ed4fdb5dc91480216bca588a26f51b47ae5fe0f921c99aeaea48e61bc06d02c0"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-check/authoring-readable-original.png": {
+      "bytes": 135977,
+      "sha256": "d7d378f0723695fc794efb0a190796de80893d1aca80115a56419932ec018a24",
+      "gzipSha256": "7e233e89b1d9ad9bb9a1df95f140a9719265f6fa9caf76ef5e1808ed8fbf2b2a"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-check/candidates-1440.png": {
+      "bytes": 287264,
+      "sha256": "cb43bf01d31cdacc6bdb2e2a77531d688be09043caa8c01d1eaf9c2b9489a779",
+      "gzipSha256": "3a6a0102bb0901121f8618ddd792f81d65a668a1b5908af7d744c7d8d14f5ecf"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-check/candidates-390.png": {
+      "bytes": 244506,
+      "sha256": "9ca1a829283e26c8c9e89ec4899577beeeb3de3c79231cd67207295482cb634a",
+      "gzipSha256": "536ff51b854051384181323da838a4f6ca30d805448d620c9f32aee2acf00b00"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-check/candidates-768.png": {
+      "bytes": 254972,
+      "sha256": "f0d81642180e1a8527ed076a3c673d8a9a6f8fbfe341fa45ce95610bbad20700",
+      "gzipSha256": "732e508e1c82c21db7f345d804620391b645c94ea02904256338fcdd74d4312c"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-check/frozen-source-1440.png": {
+      "bytes": 122933,
+      "sha256": "d470b5053b78d4e7c8ae1f8d603aa8afeff9a3c729ef43831ea5a8c6097d6149",
+      "gzipSha256": "ead87dfdc20c9ef803d3f59fec3730b4cff6efa6fc543418dedaeb7e0428e2e6"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-check/frozen-source-390.png": {
+      "bytes": 95253,
+      "sha256": "8d46339d9b42975455b9e910b674575503f145f1430530567d460de43844ff7b",
+      "gzipSha256": "b05db9ae36b44c439b27f293b775c99d9cfcff96d55daf3a2a3b7b252317b4b3"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-check/frozen-source-768.png": {
+      "bytes": 104518,
+      "sha256": "e26ae6b8703df011d319a2d52f5b050e40ec43ef482b0c04d3fa2e05188fac43",
+      "gzipSha256": "2387f9082d0d09656ad8d722c3ef29be90d184fbedb7ddb93b4322ff7adf864d"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-check/review-1440.png": {
+      "bytes": 86135,
+      "sha256": "1cc7a0b982435508cd2ec2236b01ef32001fa3821a8dae3a2bbd5e2f5a089910",
+      "gzipSha256": "6837793d93c79aeb6876bfbb74fc44861c24218243f4b28bfad10ecdb1fff8f7"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-check/review-390.png": {
+      "bytes": 70637,
+      "sha256": "4cb3fb8ec61b20b8f4291e2c188e2037acab0fd8d965e04bb3a4e2c6dd1e2b1d",
+      "gzipSha256": "61ffac3979fc1123018ed1235732f422a244341923d83d3a9327c039b7b978fb"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-check/review-768.png": {
+      "bytes": 81707,
+      "sha256": "453f26fd79e56ff7ee9a900fa5b5e148011b0b3f67af3ced55e1300be1389563",
+      "gzipSha256": "31f3655fc4fedf68b86735ff024d2c937c6c0f0055da0fd673e45c72311528ef"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course/course-1440.png": {
+      "bytes": 22555,
+      "sha256": "351345455a2a8150a5641b5755913c4fbfe7c2ee7d1a0f67b8e23ada9690bf48",
+      "gzipSha256": "1cde54fb1e343f7b1492a8b4ec9d8643ec871053eed45741150c068de0377809"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course/course-390.png": {
+      "bytes": 221956,
+      "sha256": "73438cb4fbffc53083ec42aa111914e1357dc416075b9776d91f2eba158bcfdb",
+      "gzipSha256": "384f5ff82a09dee2faa70a3c40cf9a8259136b00086a4adb57d8300da510d7ec"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course/course-768.png": {
+      "bytes": 16830,
+      "sha256": "3da7631eed0735626feb4f75e97800aba7ba4afe75777f3a205c7050433af681",
+      "gzipSha256": "5fbd594b8ade6dd03d298be14a0e485230b62a9ab01c3ad20c0dfa795cd6afcc"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course/create-1440.png": {
+      "bytes": 171131,
+      "sha256": "336d61247cc26cad45424589812a2824dabebd336fb3dbb3172f6045582787c6",
+      "gzipSha256": "a7a107b7dbc6932512ea4e73eb4fd9ef5cc322603538107d4bbc9d88695f5bae"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course/create-390.png": {
+      "bytes": 139319,
+      "sha256": "63a4a2c0e95d970d2265732b7aba22666444f3e5b223bdda3b443ce1c7444c8c",
+      "gzipSha256": "55544718ce79045976506f9f2afb49916839f2cb0715ad6803d2be2714378f90"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course/create-768.png": {
+      "bytes": 144739,
+      "sha256": "a104755ab63ab8b03ac4740c13efda96ebc52b4d351b460a3e40ed09ed271cdd",
+      "gzipSha256": "b126f4530b19695fdf94df43c2a8633a64b9c14bc4b82f79161ff143ffc86e88"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course/editor-1440.png": {
+      "bytes": 239747,
+      "sha256": "82ec2dd5d2569c91e6f0aca71768bd1a14a24eb7c27fcb7e0c7451c45db6466b",
+      "gzipSha256": "27b06a35392005a27ff29f4447d655062300f1db655b707ac521161be8f57d67"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course/editor-390.png": {
+      "bytes": 202360,
+      "sha256": "6ee2e9a52c0f9232d6b9819ef129fbba2bdd829113216101e5c6eb238a2b904d",
+      "gzipSha256": "88b0ab16b662ed46dbf102840df43b232f2a1999617d0292ee7fde12ede225df"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course/editor-768.png": {
+      "bytes": 206156,
+      "sha256": "784544d823862e47bab2cfff80ea0e1ea9696c592c6af7455c59dcdbe5e22c61",
+      "gzipSha256": "1cc28bd746b21545cbe0667a10021d3374fe00b70f775e7f04ee890373daf629"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course/pdf-original.png": {
+      "bytes": 188169,
+      "sha256": "1680e7315af5c168f3e417be03166084bf116a7dcdb22ca7cc3cdf0d0be1aa7b",
+      "gzipSha256": "7d802cecfbbe86a542d4ce42c51a8a076d880c0c4064622521f5bd5874ddb62a"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course/pipeline-failed.png": {
+      "bytes": 114543,
+      "sha256": "5752bf8757544f0f708033c6cc3563d4218f624b83b23a548467e6c28986b319",
+      "gzipSha256": "7391e9ee9158590d1ce5cc8264edc299d7339fdb3cbf1be94b5c52006586bf7a"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course/pipeline-progress.png": {
+      "bytes": 108210,
+      "sha256": "fdd498553836dc2120d4d8a20c0b53f855bf124f0f5256baaa2d39c0675cef7a",
+      "gzipSha256": "a7be1f0c1386d38bd7e00351e60d2f465fdd2fe7da510fcf4151e26e1c652747"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course/pipeline-review-1440.png": {
+      "bytes": 448176,
+      "sha256": "b6feb8e240d323341927fc67dc1f60a56d7228607299b232d599c25caa25aa11",
+      "gzipSha256": "95bd64f5bca7b0a4c5e4a10059a614fb8b93096e2ffe1abf2c81de33bcd5e398"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course/pipeline-review-390.png": {
+      "bytes": 392285,
+      "sha256": "3af98dc959ef9dda1e73eb1a20941b168c65734a71d3a4ae71c63d5d61895eec",
+      "gzipSha256": "a58c336615e0a3679782d12db12f9580682617af550d5aeef8da3d3a4aced0e4"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course/pipeline-review-768.png": {
+      "bytes": 407988,
+      "sha256": "7974255abf3d6ae3cf2061a10c68d0c58bb9b2d3508433e0a90c8c1e60e475eb",
+      "gzipSha256": "1e35bb86cf9d06fbde412980a7f90524dddca92d6fc9fdddc0eca2b225f60b05"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course-long/coverage-1440.png": {
+      "bytes": 661265,
+      "sha256": "3df5eef34c8799327ecb24d83c3bac19f8d076793a519469bd45a76d9e86a11a",
+      "gzipSha256": "0a6ab040e71305b9e39384fd79593c1a274d394306d5c4f38b878a700d62f7bc"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course-long/coverage-390.png": {
+      "bytes": 560206,
+      "sha256": "17d9e24e284821d16a73084e5464da4220eb0b7a84beeb52ccb9933b873743a1",
+      "gzipSha256": "2d902a2b04af74efcf190fdae64d8dc6c51b70fde51fa336ec8eb8ccdf62bd5f"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course-long/coverage-768.png": {
+      "bytes": 666457,
+      "sha256": "590215ac2a5ca9c81d8e0dde7264395d60a5795b049070c306daef7cf5e1e1a1",
+      "gzipSha256": "03612c0528225dfc5a1c8a19d932e5340d1a69ff6e6a7abdb8f30e049e808bc7"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-course-long/resume-failed.png": {
+      "bytes": 114820,
+      "sha256": "6154c75f8383d181614eca73eefd2ece198957c0cd14ff581cca150bf18f1877",
+      "gzipSha256": "b8940045b572b6b20cf46bec47de546b4418c8d9dbfd79eb4ac8d30774572b1b"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-project/source-project-1440.png": {
+      "bytes": 173140,
+      "sha256": "cc62d4728b284ce5ea5403fbd0c041720c63d5bf78dbf7e120f9a7eadce346e4",
+      "gzipSha256": "15953f52673a9ea0c6b694414f24da635060de64c1a2f88b444269ba30896c9a"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-project/source-project-390.png": {
+      "bytes": 136654,
+      "sha256": "2ae255dcf5ff3ccacf4420050ee270ca81e60b475b5d11a418f7a243bb4866c1",
+      "gzipSha256": "4f17860077ff1fa76b67a6745268ade341b78ab35b1f74037222ae5fa0584ceb"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/source-project/source-project-768.png": {
+      "bytes": 160553,
+      "sha256": "cc0b87681ba4137264849f26f4d3a99cb9b469c34f5072f05d955bde58619dea",
+      "gzipSha256": "9379f0a5800607c80be18c8511e63d7b3f442dfd96129cc5a994185e444ba3a0"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio/studio-calendar-polished.png": {
+      "bytes": 391937,
+      "sha256": "d3427bf84d8e31448c27909edb4865ba7c50dc804b301c62872c2e402f986a27",
+      "gzipSha256": "b88e18d915997c99aeb7fc7eaa12c4bf10d55fddf69f44c886eab06427a8477e"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio/studio-course-polished.png": {
+      "bytes": 189243,
+      "sha256": "26003beeac950ad2a74238df6a8e6bda3159a64d0417e91adeb014e08b883b9e",
+      "gzipSha256": "d90ab46de95e9fcd12218561eb8d8ec5bba21c23d4509bee96c011ac4787576b"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio/studio-home-polished.png": {
+      "bytes": 164064,
+      "sha256": "83e8bdc501a98f8021c1ae543c8e58f261761ad59945e628e6bede165a9e1db4",
+      "gzipSha256": "84bd7c8960385870020b330fc84439e22ff5135f42015a1b7c6360d1fc9a6dfc"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio/studio-materials-and-pack.png": {
+      "bytes": 129144,
+      "sha256": "cdbc42ae8cc5a03b2692428764d44e773f19b781f39fb438e4a86c7e4c70b9c5",
+      "gzipSha256": "f285184cc83cf9ca253a84ab7e3bbc27397fb42de0ce21dd1ba3f0d18ddc1964"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio/studio-model-selector.png": {
+      "bytes": 324400,
+      "sha256": "457285495783b6ea0a1715ef6caedd64d706e1ff269e8801decb3f07b280b512",
+      "gzipSha256": "d6114643e50a6cc4af8acedd5ebf4d2fe52bf82ca73534dfcf2d4d9f644914c9"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio/studio-pdf-structure-review.png": {
+      "bytes": 171521,
+      "sha256": "c0de65ba6f1242b8aa07c382d5e0ef13fc77af8b1d9b45c6db5d2b6275644c37",
+      "gzipSha256": "a4ab051fa7934ef1533a14d39816db8cabd5a29cdb5b05aa722fcfb16c24776e"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio/studio-whiteboard-player.png": {
+      "bytes": 13800,
+      "sha256": "70df835381fbe178740bd24a7482107b182d011b9a0969290c35b0d0656ffc96",
+      "gzipSha256": "8b5784dbb73b447ed4581561cf8cf6af276759bb7dd27792dfbb03c35f6c5806"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio/studio-whiteboard-preview.png": {
+      "bytes": 153798,
+      "sha256": "c44b8fe9a4ea91f229edb8ba0c353e8bf92e31df134dd02436f21fc5f72b5b02",
+      "gzipSha256": "97f411bb0dcc1c0d2be8cce57b26c0e3176464fd6acee31cbf2d72166c2ba254"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/cancel-retry-original-lecture.png": {
+      "bytes": 117924,
+      "sha256": "6a73c93bda20b9859a5eab3b2d7cd760a1bd8866617d116cfd3eee282e60095d",
+      "gzipSha256": "1dc088506bcff631c53cacb3afea7167675afc17085256e22e6b6aa3794809d5"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/directory-state.json": {
+      "bytes": 240,
+      "sha256": "6c6fca467c61dc98b8c7d94383b25361260396d9f036166be225a96892f4721a",
+      "gzipSha256": "250bb9d839a3976eed39bb593a00411c3ad66f319eb8ef36d2920c237bb0e546"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/directory-state.png": {
+      "bytes": 79999,
+      "sha256": "a3a1e8f9e187bb7c3144b947bef0bd2df29524b32f8d8720fccfdb3d8ebf1b8e",
+      "gzipSha256": "de2c2ca7e3bde63b42c33622b757ba048c63e86a3130203e61df2e79ac7e52dc"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/entry-1440-layout.json": {
+      "bytes": 960,
+      "sha256": "817cbc508c57c14aaa1e35f73431d983e28782f253e0c7b482715757732cf650",
+      "gzipSha256": "9e519ec511f06637ccc954c05e8f59cba890e2bb199cbc4d02c1f41593ac1f2a"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/entry-1440.png": {
+      "bytes": 84052,
+      "sha256": "a700c84672f6f63cfa0643e458fe9b3cc431d063a4f2913d1af6fc44f03b65b8",
+      "gzipSha256": "581bb1582cde80b76561559a99da418433b6f991c29a818761d3321f0ac7c36e"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/entry-390-layout.json": {
+      "bytes": 860,
+      "sha256": "28dbdeabd2d4a502aec22fc99f44f1114c529cafc8f92e52c2e149cc36f02936",
+      "gzipSha256": "6e58c76553c5f9257a8eed105ecec07762c77de10b28ab3c1a32bf853a45d95e"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/entry-390.png": {
+      "bytes": 51734,
+      "sha256": "78c7771d33620e59e8c171d2ecf1f185b7d1315ddc255792423b85d803ec169b",
+      "gzipSha256": "a22cf62bc3cdd31f1f8536aa602853ca6befb6521a407550d008da27adf0bc64"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/entry-768-layout.json": {
+      "bytes": 860,
+      "sha256": "f860368c9b4e2f83130bc43c5972fbe2edc04f3cdf05b0a1262d5d6c7316bd68",
+      "gzipSha256": "0563dfd1b3eff22a244764ef5385512063ca33cade5618b3ceb66118d9c529a2"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/entry-768.png": {
+      "bytes": 55715,
+      "sha256": "79c90d4d0d9fa9dc47ed050e7167760f19cbecce1d2f3f7e31761f86cbc21f40",
+      "gzipSha256": "471c35f58941060828d2c9d7b6f3d04c3833038bad5d9b5e648b2533f7e04033"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/entry-880-layout.json": {
+      "bytes": 862,
+      "sha256": "f68cd29aaf9c59e5ded1fc12ff0868e146673ecb6c172331b2138c99c2f881b1",
+      "gzipSha256": "91dc6a3440565e365f7d05cad03d80b7406c712270cb8ad4db02a60637058fd4"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/entry-880.png": {
+      "bytes": 56587,
+      "sha256": "e0a08746a6fcf0df56a05861f8351e7ca75114d28121cf77360ef1e309ed8fe5",
+      "gzipSha256": "b3886527d7b627ba23b76830a006e4b5965587a9b3b3b51aaaafc12f9d53a398"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/navigation-retained-independent.png": {
+      "bytes": 77927,
+      "sha256": "0b84c5a0fa426d9f2e578190ce9da8d364640aabab3705c3d48b5749f1988fbe",
+      "gzipSha256": "e6bf292a519a88e5eaf18a652b1bd811f602e3bb71bd43a20fe60fbf6499fa29"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/navigation-retained-lecture.png": {
+      "bytes": 80887,
+      "sha256": "90dc2a10e2536eef42f9d8aa04344fe0237b249f1d5f3866c2acb3c5ab896f89",
+      "gzipSha256": "925e3154195d883a8011471c8d4a2c257cac30dadc6c7b5e8e73fb09a4d9060a"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/readonly-pending-and-history.png": {
+      "bytes": 123369,
+      "sha256": "9a124df9a1066943d9d195e2740dffc30813dce9a5d33b5729c52fff8b0b7286",
+      "gzipSha256": "f3c3cb226efbcdba7d35c2549a54375e6fb647b5c954c31cf8451c98cb68d5c5"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/recovered-original-request.png": {
+      "bytes": 113414,
+      "sha256": "41a7dbe518c140ec913fdc6b86a3904d49448a8323e9640bffb0a49403ed56c1",
+      "gzipSha256": "e01c10c937debe504e2b99d450dc87b367c12320b8fedccc6cc4207d98ac3f62"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/retained-original-readonly.png": {
+      "bytes": 89763,
+      "sha256": "2c9510d2748b2fe6fa2d6dc797dc37df560bd34204a663f31780763139dfe191",
+      "gzipSha256": "395a7ce889525fed43979fe0657b04881323f7b3095ebfc6811b2e22b4a55e16"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/saved-original-model.png": {
+      "bytes": 114575,
+      "sha256": "884e9f03c2e876067926526480a5b92e80050facabb614ae4ff6c47bf306f8ba",
+      "gzipSha256": "8cd2e1d75eef528422ac48e41bae1bc34b7bff97336acadf047b7084c5c3343f"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/studio-assistant/separate-drafts.png": {
+      "bytes": 73876,
+      "sha256": "3446217a9161e7a81f787bfb69e62f75a0271515dd3de49f161d76af243b75a5",
+      "gzipSha256": "839f97fd3058fe137647b2dad906ca940d64546a728647de9337dbbc66b81994"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/teaching-tools/analysis-1280.png": {
+      "bytes": 173755,
+      "sha256": "603fb40be0caab652226a458e4528e3055bce733e3a8846cf62caae7f8757291",
+      "gzipSha256": "2a9d586b7e386d102ecff008f1c5cb361ef767df3ad2e240aeb0a2ff232dd6c5"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/teaching-tools/analysis-390.png": {
+      "bytes": 151758,
+      "sha256": "9d5d4934dcf4580f4846e3ca12138f145589ed3d4312b21b3b5bb88480ecff87",
+      "gzipSha256": "df638cfd0fd0c26deb9a3e4670c74294dbcc0b0781b2162683650e9fc68a2cde"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/teaching-tools/analysis-768.png": {
+      "bytes": 163367,
+      "sha256": "07b1f2f21c2c7292bfb1889d393c662d41ca22baad3f28348a7da667ea4584d2",
+      "gzipSha256": "8031d7f758ec99ad78f62083a125190d61586e7c534238d88fea39438c251fd1"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/adult-complete-player.png": {
+      "bytes": 138982,
+      "sha256": "deb324fec0d424177b35edf7775c94ac16217d34c4faf00f98c497877692f5f1",
+      "gzipSha256": "1f82eba2f0d3224cdf2f2c6c88f04d83bc2af3a5d55bee17ac17f519a969b9e1"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/child-editor-1440.png": {
+      "bytes": 288218,
+      "sha256": "d0e70b1a003602081a56e2b0ef210cf62dc880aa46df2666ac443a2687f67240",
+      "gzipSha256": "36191179f9b9da7f4d1d69030fe77dfc487863316807dbcae2346ae15f1a15cc"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/child-editor-390.png": {
+      "bytes": 247262,
+      "sha256": "15ffbe97d2b5a13c3a18063decb01c24d97f1e981fe8bf843e9d9c7afc105e92",
+      "gzipSha256": "eb881e115f838ed4d9444716cc48b0560e38f641d61beaa41e1e3aea8801144d"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/child-editor-768.png": {
+      "bytes": 258733,
+      "sha256": "b62f5917c3a90301fd90f81152e1a47fa4046a4dc99880dcc2c7fda7d9fc9502",
+      "gzipSha256": "20f619a8f03956b527d5cad34d5307dad59c2d80c98b25b10c5386298f6a7079"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-figure-reader-1440.png": {
+      "bytes": 249815,
+      "sha256": "13e50dd41444f567cae9304ff7e0672766632b3ec30cb91aee2d6e84fb952f8d",
+      "gzipSha256": "fe2973eeaaf98f695a7418ad35905307c3e86defc693aeb7130b9f189902498e"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-figure-reader-390.png": {
+      "bytes": 68767,
+      "sha256": "9d6bebf65452fb6dd049f4f2bc542c66f665543f7baf84f1f7fecf482c228e87",
+      "gzipSha256": "44c42dd368d3a28e20d1379b3cb3de406b833519cba3a4ea24dfe1df7b7b7a33"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-figure-reader-768.png": {
+      "bytes": 144478,
+      "sha256": "182a98aef6e9aaecc427c39ff639f8a94b58e046c0676ddd6946fee9d6e27b54",
+      "gzipSha256": "f29acd9240c2989acfdb6a6571456e99993642ffd9c141e1b8594854138f0289"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-figure-saved-player.png": {
+      "bytes": 149825,
+      "sha256": "ba82c46794323e1616ec7213499b51f6f6d1b51879c424b1c83914429a48d30f",
+      "gzipSha256": "95e5a3d17b78b6e4bebf8828655b4c0538aef88215eb75327fac958d21a45847"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-figure-video-first-frame.png": {
+      "bytes": 178540,
+      "sha256": "1b916a4eabdcf1e695a661fa5d321ca60dde4d2649c8b8ba583a8a09bdee9da0",
+      "gzipSha256": "a9223368ca3a2ccb34163576c1b071e8967b53524d2522eff92769e358d4d68a"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-figure-video-probe.json": {
+      "bytes": 3319,
+      "sha256": "fac3a531740b097dae8f25981f8c26dd00439424eaa597483eb74e43bdd30ee9",
+      "gzipSha256": "e2ac6cb159ff058dc9043ede9cde389783deb578f55fca22fab05b855a70bd7f"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-figure-video.srt": {
+      "bytes": 521,
+      "sha256": "2d2f189311f99d1b69c730f70c7e38c4ee5a73f3b38cde8096b44a1ad7e721da",
+      "gzipSha256": "1391877d8373d23bf5db3f7ee89f9a63212d8fb6a48d046eb543b35b8dddb2fa"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-figure-video.webm": {
+      "bytes": 1490941,
+      "sha256": "aa606e3441eab5a8d7cbcefc57ed0ed8295694d0e442262040ccfb87f37294e0",
+      "gzipSha256": "006b85b8e9453e8abfaec80bc7048e31b4b01706ef080b064b3283402a9e30b9"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-formula-frame-measurements.json": {
+      "bytes": 1014,
+      "sha256": "2e454a7041bf632ba62eb7f050159b504ac9bc792fe578389745cecaf5e9fd1e",
+      "gzipSha256": "0557cc8b6a2250965c5f1adf58c15b9fa4253f86e6208510a2662a7460d8132d"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-formula-readable-video-crops.json": {
+      "bytes": 997838,
+      "sha256": "9b87430fd41752faa2fd2b4629910c4394ba0c321086395b8262fd7002e1d033",
+      "gzipSha256": "cf5b30c099ea239a5f002b15e97787f96609b1dd7f47f2ad7dc6c2ec579bf8a0"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-formula-reader-1440.png": {
+      "bytes": 147868,
+      "sha256": "8431643c9ef0a0563e3cec80795fdedfb33dce5f57086cf30a11b7cdc2185565",
+      "gzipSha256": "c1396d45cb672903b8bf3d121209804332241bec0bd4e98949810ba3ea40e8fe"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-formula-reader-390.png": {
+      "bytes": 59478,
+      "sha256": "6914f6ce387e3fd89b7646e37f1f25de4c93eb62459bc2a3857fefd79c2e3350",
+      "gzipSha256": "9a9d200ba6003231cefd3666bcfd2fe3de1d6c7c9eaaae20584c955ce25fc60f"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-formula-reader-768.png": {
+      "bytes": 67037,
+      "sha256": "37a45c0a15cde0deadba3278ad8cd9211ebcd01be802ae5f0f6e02b43be3aead",
+      "gzipSha256": "c8a974677115627eba03502d413b6530e88169da6650d46edfa46f85c96f1e6e"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-formula-video-aligned.png": {
+      "bytes": 229811,
+      "sha256": "99e593bb8f25715dd9b82fb69d90019bee4e964b3e3a92a2ba75c299f976dd99",
+      "gzipSha256": "dc32658f9726df9bd91c34b93b5940dd3be7270760200c4a82103719f103ff7c"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-formula-video-first.png": {
+      "bytes": 183161,
+      "sha256": "af5f788d6782652a119e3c5b6dde5cf120f0905c5d51ecffce7b8b1c295edee2",
+      "gzipSha256": "ab42a03757743c21eb90819210bb3071a216042a7b715db73ac4f9b55ff8e539"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-formula-video-last.png": {
+      "bytes": 222150,
+      "sha256": "d500ed0015ad61de7011183f8383f8ef37ab524bc39b6d7bb20ba4f2609a6341",
+      "gzipSha256": "7296e7910e45d4ca95a7a2b0ad6e4d57adf7a9238fab951487754df8af064eb2"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-formula-video-probe.json": {
+      "bytes": 4383,
+      "sha256": "19017afffe3e6bf46b13f53a382d6fc9dd295f0366aceedf8ea21f099e1acad0",
+      "gzipSha256": "48109049f660a9d40504680b231d24560094962a4e330f49ea65e32ed090e007"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-formula-video.srt": {
+      "bytes": 455,
+      "sha256": "76b3f2986c382d9428dcd72b3b905890d0c0982504ecaf839041730adbdd3cf9",
+      "gzipSha256": "eb0c5631d9f5a3c1842ffde674981bf470aafa586d5142abca4333b86e0ace07"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/topic-whiteboard/topic-formula-video.webm": {
+      "bytes": 2138671,
+      "sha256": "20ecdee3d56f8acf16bf1013fbc8f77835320e13cec6c90cecdd0302f17ac016",
+      "gzipSha256": "386a64b5a79bb88657f45ca9632a7e558f6419fded3f1bd4f4b5c9b007a3767e"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-continuity/adjacent-transfer.json": {
+      "bytes": 1722,
+      "sha256": "f9fd4369ef4d3a090e645bbef62ad3f87b16a4906ad177f3a3241a6c2f421e60",
+      "gzipSha256": "5296c917392de70f89b331c917478e4441dda4e62c9c2d341aa0af33b43797c1"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-continuity/adult-topic-transfer.json": {
+      "bytes": 1748,
+      "sha256": "5ff9690957418135461d3d3887ac11e41e0246180f441dea5c173272385263ff",
+      "gzipSha256": "64258c4973d90ae1bba72408f3ad99af0116a2b75add2395d79670599c76e5ab"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-continuity/close-pending.json": {
+      "bytes": 740,
+      "sha256": "9392d4900215476ff39218a61998db6cd18e882f2c455383e2975726e4005273",
+      "gzipSha256": "7e4f87fe860f8cea952dd8843d574d9880fc1d7c3ced29d1871b355976d06a9b"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-continuity/manual-next.json": {
+      "bytes": 1191,
+      "sha256": "8070a7a7068b1f8281e7dd6f3a1449cf9554e875a1978b7042aa4d2b79f2a5eb",
+      "gzipSha256": "031d0d33adaa5ac5fd383f10be835a5ed0479ed6c06823d8a2d4e18d6e8de66d"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-continuity/revoked-prepared.json": {
+      "bytes": 1122,
+      "sha256": "2fda073f66650fdecf9308c0ab2e2c670b1bb51574de00f917cbf9e28af4915f",
+      "gzipSha256": "c92b0740b7e0d0460084957b663297ca7b1e0035e8d26938a7806f424b91efc1"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-continuity/revoked-session.json": {
+      "bytes": 1123,
+      "sha256": "ac9a1f32acce9cf24c41189dcf3e2335b95559983abe270894f2394b616a1e17",
+      "gzipSha256": "aa3d1d76e7020bb0b6e2ba1a04472eb1bc35341ddec07b48750b1a5dc4e949dc"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-continuity/slow-cancel.json": {
+      "bytes": 998,
+      "sha256": "c1cb2c440097c5685a901359166a39879f658c10b1011386566b7957dbaecf07",
+      "gzipSha256": "10d44020f085f0fb77357c1d1d72f292ba140ac172b133df62ef175c02a31eb3"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-continuity/three-complete-with-speed.json": {
+      "bytes": 3079,
+      "sha256": "81601557ad7053ef3fd7b39f49070078ad218d35b23a4353e2e7c5c235f08993",
+      "gzipSha256": "76df302823ece329b3929ecffa88e976e104cf6092aef1c5f6e431d94093f325"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-continuity/voice-change.json": {
+      "bytes": 1393,
+      "sha256": "a01daf9c149189bca7adb4ead0ad41de6be0725dec094905ee56935437c59125",
+      "gzipSha256": "aacdff2b168cb54527445eca1c13598ff6ea5b04247db9b9b8b28b7b5309f983"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-media/decoded-fixture.srt": {
+      "bytes": 297,
+      "sha256": "8f939f00bc90c727e212e01e8d2d4def8014e71a9c8e5499712ba740f452719d",
+      "gzipSha256": "3215ff400a87de098d331b25d90e3def45b88e4d8e3b13f5467d3d47b8dce352"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-media/decoded-fixture.webm": {
+      "bytes": 313428,
+      "sha256": "7abfdc771151270f365327110d70d69be7cbbdcfbf03397cd384ef1b5cb9a843",
+      "gzipSha256": "950bc1063248ed1c96f8d6a4e4d9032a2b9e21f0ac13934427aff8db623c193e"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-media/decoder.json": {
+      "bytes": 384,
+      "sha256": "8a5bc5f72a909d683f8fabb3443f7f37ac9dbf245f6b0d850f48f4c263161917",
+      "gzipSha256": "5c7778690b4f09f674c131fa541403fe3e258ee0636e26b7595a8b1d8f998392"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-media/independent-opus-control.webm": {
+      "bytes": 10715,
+      "sha256": "b1932183e42308297dfc15518214628dee04ab3b807c01ba7e94e47bfde26831",
+      "gzipSha256": "6723c00cebc63a792e1d016615cd1630d1af66395e5cf98f3ea9efc676677e62"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-question-figures/adopted-2x.webm": {
+      "bytes": 459195,
+      "sha256": "f13ccee2c9f7277ee36a29e772409bbeea26a1085e9654bee1cd4cabb5a8e23c",
+      "gzipSha256": "381773a15994b6bc71920ea12893fc5f0b760782d8f459ee409939a64cf7be67"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-question-figures/adopted-mobile-390.png": {
+      "bytes": 68021,
+      "sha256": "823859accae07704dde24764fe568a7fab9b4cf1867aa9f388a3d2f17be67c5f",
+      "gzipSha256": "271200ae388d2b87d3210733673bb21b91fc2b220d9d1358538722da33f66f1d"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-question-figures/adopted-mobile-768.png": {
+      "bytes": 75737,
+      "sha256": "d2a7655a43ed2e7d14facd207c302f31d3dc859b4b19e192a9e55d7bec7df163",
+      "gzipSha256": "3595eca3a10435fec25b83c2675bf36da993e6ce827e86574902db9f6ba70539"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-question-figures/adopted-version.png": {
+      "bytes": 132333,
+      "sha256": "bf2ef0d1bf99df1e47aac2a0e8b0cb9ba9b53a4f1082b8da2fa12db4e3b17adf",
+      "gzipSha256": "5c7a3d46154265efbc3605c9ff7f6ff5e554a55b521c27b9f94c4ca5c887d63b"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-question-figures/full-input-1280.png": {
+      "bytes": 121903,
+      "sha256": "6cd2a2f3efdc27df365b2719d9c4700e8644bbec08e97da26409e65eff7fa0fc",
+      "gzipSha256": "1d4fb223b334d38d22693d101ad0f85332af8aa7213bb682f57226293d52aa7d"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-question-figures/full-input-390.png": {
+      "bytes": 57006,
+      "sha256": "738b079aa9273da822adc2e5606e57f50542a5438590ee92a533e596207d422a",
+      "gzipSha256": "2934d29146d91fc5366488c15c3b631851358242a8dd549d8d4d03e866f8de83"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-question-figures/full-input-768.png": {
+      "bytes": 70662,
+      "sha256": "68e6e8a6dc7833893e71099ab63e7525236489ba42583790ce71c3b174904f86",
+      "gzipSha256": "16806db3d257e49bc807dfc9db9bc241abb3f7cfd85851ae53e46525c17a2ccf"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-question-figures/image-reader-390.png": {
+      "bytes": 70627,
+      "sha256": "338add4e7f1c97e00eb2dccd2ca0f744c03d1a96faafde402981e050684809c4",
+      "gzipSha256": "7d37150c795532116aad3cd86ae14e32bb3de02c009218b0beaf21ea6d4d13b0"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-question-figures/image-reader-768.png": {
+      "bytes": 142857,
+      "sha256": "ba0873ec9630c582e2f2dd9b50ee6e73e8d1307705afbef56cddb915a5d2af59",
+      "gzipSha256": "af5a5017b0a5006be87a91c19fad28a246982395d743ad53365f0a14b372ec04"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-questions/complete-notes.json": {
+      "bytes": 47533,
+      "sha256": "96cc97e1e56da1164a5e0d4331873a86c09cb0e5769a1963da022fa635e7c4c2",
+      "gzipSha256": "d40f0ec65f347ed63b1b7c49d5fc22db75bf27599175ca454e628d6eae671274"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-questions/complete-notes.md": {
+      "bytes": 7522,
+      "sha256": "044cdd988c6e735d4a6ca48ad3983b845ed5ac46eb966dba3efb654fd5f3ca7b",
+      "gzipSha256": "41419e847af1987de2ac6bbdb372466c39431a499b7a0c8705f783c419b8fcbb"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-questions/original-sentence-command.json": {
+      "bytes": 874,
+      "sha256": "c2e45393b4250eb86e147f37a35712ec40008c7d7f28a420d9b2152ea785f630",
+      "gzipSha256": "9f001eae73b1739b8f20b067b3dcd2d113af86f987fc6b2afa262a7920160b59"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-questions/question-panel-1280.png": {
+      "bytes": 111607,
+      "sha256": "f322dd4fefd360b087efb3603818bd49c5450961d69e01675b96314c69058b6a",
+      "gzipSha256": "dc66ddebd754be79ee68c383e65e6c4a255489a5c823783735fa7d99eaaf65f7"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-questions/question-panel-390.png": {
+      "bytes": 61326,
+      "sha256": "ce62c5225096f9f3b40543227de2112680d1f9b99ff30a243fab8bb010c3a2c7",
+      "gzipSha256": "9d542d1a2edc00b11e4b9cf8765272aac4c09b7cd1da6edd0ffdbfc7ddef52e1"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-questions/question-panel-768.png": {
+      "bytes": 66387,
+      "sha256": "5edcb3a1e7994c62c1f88d492424e602c126f6aa2452c75d925166bdfe8a3d76",
+      "gzipSha256": "cc38660ed5dff9d2e161c698155375c53bef81643a6be9a416b98c4c7440c459"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-questions/supplement-2x-probe.json": {
+      "bytes": 3002,
+      "sha256": "0245b8766f1ce33fcc4a8a327227e59b2e03fe50acca157ab50ecb75ef85a40a",
+      "gzipSha256": "e7467ca4d0585cc682edd5c979f0c40e7e6a5e0c783f9555f6eb2f9e57c99323"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-questions/supplement-2x.srt": {
+      "bytes": 295,
+      "sha256": "de7d649225b7399a91cb69163dcf5ca723293f8952f4f1357a86e1f1c69ba439",
+      "gzipSha256": "bb3616489aca69e479d9e68a08e5e468f0ea4e52e4390a72664a8ecf9f8d97ee"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-questions/supplement-2x.webm": {
+      "bytes": 786758,
+      "sha256": "004dd23add6ad7f11388071a857d875187aefed5157a09aa20d6502c319c3f5e",
+      "gzipSha256": "1ccaf491fe1c2fa32b41c1b4f5ad7d0dee68e7f547f7f99477edcae58d54dbe2"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-questions/supplement-return-adult.png": {
+      "bytes": 110641,
+      "sha256": "f0be8318b9ec4e6ceaf37fe5661c67c4c79a427ff9068b04fad4ce222eb44a69",
+      "gzipSha256": "1e37dbec4d52e38d8d46b273a2d489bcb60e11dbd7f424e1a0f4e8ddcf5b3efb"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-questions/supplement-return-child.png": {
+      "bytes": 109038,
+      "sha256": "93417f86e1e0c47b94f27e0765a84598a43dd16c3492347e19dc769e8afb032c",
+      "gzipSha256": "fb8b16aed295db7baadeda9aa4969f98a71c78234c4b3f36ee045e71b0036e64"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-settings/actual-current-view.png": {
+      "bytes": 71029,
+      "sha256": "4f9dd7c6708f5aba50d191e8cabfbbddca948d5478225ec994d5fe15efad416a",
+      "gzipSha256": "8789a1a215413ddc59b7d3f343ca7e78036477b9ff13c6d09067c9cd82b4b64e"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-settings/actual-neutral-clip-decode.json": {
+      "bytes": 628,
+      "sha256": "c08bd1d241344a7947bb80b37ebe4bff5f73115a8094c9f1ee21cad79da278de",
+      "gzipSha256": "428bd8077732bba9018ae71f3e7ac8972167dea809707dd9aeec93465fdd5d94"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-settings/current-view-pixel-check.json": {
+      "bytes": 602,
+      "sha256": "9c275fee42bdcf4af24e9b29a2520c9c30879e17f24a3326757f822346ea64d2",
+      "gzipSha256": "4cb8e768a1f371f96722dfb9c4defb0a853d8be897cf9df321a97641fe49c039"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-settings/double-rate-probe.json": {
+      "bytes": 3002,
+      "sha256": "47bfa496dce8c4557d7092cc77f15d875fe32d9950b0649007ad37718e173f34",
+      "gzipSha256": "38c0ab4dfa127f232e9897b4373209e2c3048fae8b52cb40990f5abc41313713"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-settings/double-rate.srt": {
+      "bytes": 297,
+      "sha256": "b7f29469dbbf2658df2eb248e1c2d27fa0aaa9123df5bddf4979d0604cc680d9",
+      "gzipSha256": "5129967536563357bdf89089027db440ed38522a8b761f6792744ccd9d7bb675"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-settings/double-rate.webm": {
+      "bytes": 181515,
+      "sha256": "1931bded6726a6571f82b180b27e0501b3d80987c2761dfabf8b911b411e0f0a",
+      "gzipSha256": "7fe210e0dca8f7880a3c424ddd0134a2d2d1369587cf580f1fbad547fdd1256e"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-settings/original-settings-1280.png": {
+      "bytes": 158653,
+      "sha256": "adadfd91e0ac7b1d6f01d59f504626ca3cb8bc8a20e1ef8eb347fc33280b5f20",
+      "gzipSha256": "acfd727cade555f9ca281a7dbe96db466209e76a99ce394dcca287916653db64"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-settings/reading-panel-1440.png": {
+      "bytes": 111516,
+      "sha256": "df47f3cecb82ee533e8c88ae2498d985f3eb92e9782de0a44bcfcf0cf12b0b6b",
+      "gzipSha256": "c9c24512e714d1c8acc3db9e429b69089d183a193e65bf340557b6c9e772fac5"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-settings/reading-panel-390.png": {
+      "bytes": 46549,
+      "sha256": "d6735528020f7e7f521e58ce3b67b0d3657352caea2c529fe87f527b51918a41",
+      "gzipSha256": "44fee0bb6607c3e6d28b4da802c0534b52198af892d977c6ac01d75c73025ba7"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-settings/reading-panel-768.png": {
+      "bytes": 48835,
+      "sha256": "eba37c5e6c994fd709623b8e793a288c56a51ad29b6602c95764cf429703207a",
+      "gzipSha256": "0974d8b4eaea1a8f5d2aeae6c76bf491f1533cd9813c2937f5933c90879ebd42"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-settings/share-toolbar-1280.png": {
+      "bytes": 119230,
+      "sha256": "a8e6117c0806815e679381c0bf09ca87ef770bddab852ba416c0f61a31e4e0a9",
+      "gzipSha256": "e0a4120d00f06cfc13820f8122291265e2f0f640cab0ef3fb416c4cec4d5a288"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-settings/share-toolbar-390.png": {
+      "bytes": 51158,
+      "sha256": "7e820f6393ce721a46a86706bddf7406e36c2a7dde8d5ff14babc91c3394ae7f",
+      "gzipSha256": "5118ff23fe6589388b84e148af9e3a0aa33abd1a008af1b04c39f6c143a23132"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/whiteboard-settings/share-toolbar-768.png": {
+      "bytes": 65448,
+      "sha256": "2587f6c898cdcb57347df2e36dee15f7a5448495100681f7ce5a8eab62c8be46",
+      "gzipSha256": "46c230e7e34acc1451469a0aa68c64a1977c23b659d7c4ae96a8f5c4d380c358"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/workspace/workspace-calendar-empty-desktop.png": {
+      "bytes": 118801,
+      "sha256": "8e84fef31c27642ad9df3d14b892b880e04acc1ade9d2b3cc0dcfcc5c2cce315",
+      "gzipSha256": "66aca937e30fe9ba23ff60a7ea657c5b279739b067a006cafbf56c3c19252a24"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/workspace/workspace-calendar-mobile.png": {
+      "bytes": 67372,
+      "sha256": "3f03cc343163b94b6f344f20250b6a3ef511ef7e1aa4fa98b37ad492fe10d32a",
+      "gzipSha256": "765019a871908bdc29fa02bb27ffd7b679d2eb625f1b6719cd667a4d600233e2"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/workspace/workspace-calendar-tasks-desktop.png": {
+      "bytes": 117629,
+      "sha256": "cbf8845fdf07a4503ecf3bf71f617de3e4ae83a5727e4eccdc386699143c7f56",
+      "gzipSha256": "b6546dc14f462195913e097ba531f092c91deeb9e249a926a7fbc267bfd060e2"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/workspace/workspace-courses-desktop.png": {
+      "bytes": 136163,
+      "sha256": "851be3d0f02ee62de0ed07fe9c09e180808d0281d2f97b0d9cfc8b3212cce194",
+      "gzipSha256": "09528287775e3ee51a9beeab4a5c7b4a2754c492729250fb6272bfc06194d07f"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/workspace/workspace-courses-mobile.png": {
+      "bytes": 94770,
+      "sha256": "4c10593ab8c8192519f5d36c1e48631291cba0d436a62e6f1d689b35f7ff9808",
+      "gzipSha256": "1b16f35f38de9cc28875d204e505e94bb9793cdf3d1c84930d4d1eacde33f532"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/workspace/workspace-outline-desktop.png": {
+      "bytes": 177127,
+      "sha256": "82cfa9ab8fc4035015e282452dee8e96e7e59687bca571cae9c840e3886b83dc",
+      "gzipSha256": "789deb8d2a109a973ccccdeac297ecaab01e8335ef04cc564e58fff27dd33d55"
+    },
+    "data/qa/browser-evidence/registration-pressure-browser-first-bcc3f5bc83/workspace/workspace-outline-mobile.png": {
+      "bytes": 159440,
+      "sha256": "29926d88ef51a59a728ab4ef8a2145d0091fb831ab7ca059d83f43475ac129ea",
+      "gzipSha256": "7537fe9e88aea6e0b1d442a56d084404e044b634e981d40e73c631041aa3aa99"
+    }
+  }
+}

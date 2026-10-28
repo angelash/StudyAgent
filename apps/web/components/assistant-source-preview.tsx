@@ -6,10 +6,11 @@ import { apiRequest, ApiRequestError } from '../lib/api';
 import { internalAssistantHref } from '../lib/assistant-course-navigation';
 import { useOriginalTeachingFonts } from '../lib/original-teaching-fonts';
 import { ClassroomFigure } from '../app/studio/classroom/diagram';
+import { ClassroomImage } from '../app/studio/classroom/classroom-image';
 import './assistant-source-preview.css';
 
 type Props = { ownerId: string; search: string };
-const sourceInterfaceText = 'TEACHING SOURCE 当时的教学出处 返回原对话 打开当前课程 返回学习页面 保留本次回答使用的教学内容与范围。教学字体暂未读回。重新准备字体 正在读取原会话保存的教学出处… 重新读取出处 与当前教学版本一致 保留的原教学版本 · 当前课程已变化 · 当时为待核对教案 第 页 来源版本 本次问答带入 个知识目标、个教学条目。下面显示与这条出处相关的 个条目。这是本课使用的资料短摘与相关讲解。讲解中的全部内容仍需结合原资料核对。原问答使用图片的文字说明 图形完整标注 原教学代码 示意尺度 · 非统计数据';
+const sourceInterfaceText = 'TEACHING SOURCE 当时的教学出处 返回原对话 打开当前课程 返回学习页面 保留本次回答使用的教学内容与范围。教学字体暂未读回。重新准备字体 正在读取原会话保存的教学出处… 重新读取出处 与当前教学版本一致 保留的原教学版本 · 当前课程已变化 · 当时为待核对教案 第 页 来源版本 本次问答带入 个知识目标、个教学条目。下面显示与这条出处相关的 个条目。这是本课使用的资料短摘与相关讲解。讲解中的全部内容仍需结合原资料核对。原问答使用图片的文字说明 图形完整标注 原教学代码 示意尺度 · 非统计数据 原图暂时无法核对，已保留当时的完整说明。放大图片 关闭图片';
 function validate(value: AssistantSourcePreview, sessionId: string, key: string) {
   if (!value || !value.reference || value.reference.key !== key || !/^[a-f0-9]{64}$/.test(value.reference.contextFingerprint) || typeof value.current !== 'boolean' ||
     !['teaching-sections', 'lesson-citation'].includes(value.scope) || !Array.isArray(value.sections) || value.sections.length > 2000 ||
@@ -84,6 +85,14 @@ function SourceBlock({ block, heading }: { block: AssistantTeachingBlock; headin
     {block.table && <div className="assistant-source-table"><table><thead><tr>{block.table.headers.map((header, index) => <th key={index} scope="col">{header}</th>)}</tr></thead><tbody>{block.table.rows.map((row, index) => <tr key={index}>{row.map((cell, column) => <td key={column}>{cell}</td>)}</tr>)}</tbody></table></div>}
     {block.diagram && <><ClassroomFigure diagram={block.diagram}/><ul aria-label="图形完整标注">{block.diagram.labels.map((label, index) => <li key={index}>{label}{block.diagram?.captions?.[index] && ' · ' + block.diagram.captions[index]}</li>)}</ul></>}
     {block.code !== undefined && <pre tabIndex={0} aria-label="原教学代码"><code>{block.code}</code></pre>}
-    {block.figure && <figure><p>{block.figure.alt}</p><figcaption>{block.figure.caption} · 原问答使用图片的文字说明</figcaption></figure>}
+    {block.figure && <SourceFigure figure={block.figure}/>}
   </div>;
+}
+
+function SourceFigure({ figure }: { figure: NonNullable<AssistantTeachingBlock['figure']> }) {
+  const asset = figure.asset;
+  const verified = asset?.status === 'verified' && typeof asset.href === 'string' && typeof asset.sha256 === 'string' && /^[a-f0-9]{64}$/.test(asset.sha256) && /^\/classroom\/chemistry-v2\/[a-z][a-z0-9-]*\.svg$/.test(asset.href);
+  return <>{verified ? <ClassroomImage image={{ src: asset.href, alt: figure.alt, caption: figure.caption }}/> : null}
+    <figure><p>{figure.alt}</p>{asset && !verified && <p role="status">原图暂时无法核对，已保留当时的完整说明。</p>}
+      <figcaption>{verified ? '原问答使用图片的文字说明' : figure.caption + ' · 原问答使用图片的文字说明'}</figcaption></figure></>;
 }

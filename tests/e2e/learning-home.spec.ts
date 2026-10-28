@@ -5,7 +5,7 @@ import { syntheticFamilyHeaders } from './synthetic-family';
 const api = `http://localhost:${process.env.E2E_API_PORT ?? '4107'}/api`;
 async function account(page: Page, children = 0) {
   const key = `${Date.now()}-${Math.floor(Math.random() * 100000)}`, principal = `home-${key}@local.test`, credential = `Home-browser-${key}`;
-  const response = await fetch(api + '/auth/register', { method: 'POST', headers: syntheticFamilyHeaders(), body: JSON.stringify({ principal, credential }) });
+  const response = await fetch(api + '/auth/register', { method: 'POST', headers: await syntheticFamilyHeaders(page), body: JSON.stringify({ principal, credential }) });
   expect(response.status).toBe(201); const { data } = await response.json();
   const headers = { 'content-type': 'application/json', authorization: 'Bearer ' + data.token };
   const profiles: Array<{ id: string; nickname: string }> = [];

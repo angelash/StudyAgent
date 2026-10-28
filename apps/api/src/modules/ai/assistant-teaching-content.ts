@@ -1,9 +1,10 @@
 import { BadRequestException, ConflictException, NotFoundException } from '@nestjs/common';
 import type { ClassroomCourse, ClassroomLesson, ClassroomBlock, StudioCourse } from '@study-agent/contracts';
 import { z } from 'zod';
-import { classroomCourse, classroomLesson } from '../learning/classroom-curriculum';
+import { classroomCourse, classroomLesson, curriculumClassroomLesson } from '../learning/classroom-curriculum';
 import type { SourceCourseRecord } from '../learning/source-course-content';
 import { assistantDigest } from './assistant-turn-record';
+import { controlledTeachingFigure } from './assistant-controlled-figure';
 
 // These functions project already authorized teaching records. They do not grant
 // course access, inspect a learner, or read an upload's full text or scoring keys.
@@ -16,7 +17,10 @@ const blockSchema = z.object({
   table: z.object({ headers: strings, rows: z.array(strings).max(500) }).strict().optional(),
   diagram: z.object({ kind: z.enum(['venn', 'flow', 'bars', 'network']), title, labels: strings,
     values: z.array(z.number().finite()).max(200).optional(), captions: strings.optional() }).strict().optional(),
-  figure: z.object({ alt: text, caption: text }).strict().optional(),
+  figure: z.object({ alt: text, caption: text, asset: z.object({
+    href: z.string().regex(/^\/classroom\/chemistry-v2\/[a-z][a-z0-9-]*\.svg$/),
+    sha256: z.string().regex(/^[a-f0-9]{64}$/), status: z.enum(['verified', 'changed', 'unavailable']).optional(),
+  }).strict().optional() }).strict().optional(),
 }).strict();
 const targetSchema = z.object({ id, title, objective: text, atomId: id.optional(), atomVersion: z.number().int().positive().optional() }).strict();
 const partSchema = z.object({ key, targetId: id, title,
@@ -84,9 +88,19 @@ function classroomBlock(block: ClassroomBlock): Block {
       kind: block.diagram.kind, title: block.diagram.title, labels: [...block.diagram.labels],
       ...(block.diagram.values ? { values: [...block.diagram.values] } : {}), ...(block.diagram.captions ? { captions: [...block.diagram.captions] } : {}),
     } } : {}) };
-    case 'image': return { kind: 'figure', text: block.text, ...(block.image ? {
-      figure: { alt: block.image.alt, caption: block.image.caption },
-    } : {}) };
+    case 'image': {
+      const asset = block.image && controlledTeachingFigure(block.image.src);
+      return { kind: 'figure', text: block.text, ...(block.image ? {
+        figure: { alt: block.image.alt, caption: block.image.caption, ...(asset ? { asset } : {}) },
+      } : {}) };
+    }
+    case 'experiment': {
+      if (!block.experiment) throw new ConflictException('原模型说明不完整，请返回课程核对');
+      const model = block.experiment;
+      return points(block.text, ['预测：' + model.prediction.question,
+        ...model.prediction.options.map((option, index) => `预测选项 ${index + 1}：${option}`),
+        '观察：' + model.observation, '解释：' + model.explanation, '模型边界：' + model.limitation]);
+    }
     default: throw new ConflictException('课程含尚不支持的教学表达，请返回原课阅读');
   }
 }
@@ -137,9 +151,28 @@ export function primaryUnitTeachingCatalog(course: StudioCourse, unitId: string)
         table: { headers: ['标注', '分子', '分母'], rows: visual.terms.map(term => [term.label, String(term.numerator), String(term.denominator)]) } },
       paragraph(`共同分母 ${visual.commonDenominator}；运算 ${visual.operator}；结果 ${visual.result.numerator}/${visual.result.denominator}`)]);
     }
+    if (course.teachingVersion) {
+      const actual = curriculumClassroomLesson(course, lesson);
+      if (!actual) throw new ConflictException('当前版本的原课堂讲解不存在，请返回课程核对');
+      const supplements = actual.steps.flatMap(step => {
+        const added = step.blocks.filter(block => block.id.startsWith(lesson.id + ':v2:'));
+        if (!added.length) return [];
+        // The real concept narration already contains the authored insight and reading guidance.
+        return [paragraph(step.narration), ...added.filter(block => !['text', 'heading'].includes(block.kind)).map(classroomBlock)];
+      });
+      if (course.subject === 'chemistry' && !supplements.length) throw new ConflictException('当前化学版本缺少可核对的课堂补充，请保留原问题');
+      if (supplements.length) add('classroom-tutorial', '原课堂补充 · ' + lesson.title, supplements);
+      for (const [indexOfSource, source] of (actual.sourceReferences ?? []).entries()) {
+        const sourceKey = `atom-${index + 1}:classroom-source-${indexOfSource + 1}`;
+        sources.push({ key: sourceKey, title: source.title, targetId: lesson.id, sourceKey: source.sourceKey,
+          sourceVersion: course.teachingVersion, ...(source.page ? { page: source.page } : {}), ...(source.quote ? { quote: source.quote } : {}) });
+        parts.filter(part => part.targetId === lesson.id).forEach(part => part.referenceKeys.push(sourceKey));
+      }
+    }
     return { id: lesson.id, title: lesson.title, objective: lesson.objective, atomId: lesson.atomId, atomVersion: saved.atomVersion };
   });
-  return checkedCatalog({ protocol: 'primary-unit-v1', courseId: course.id, courseTitle: course.title, courseVersion: 'primary-teaching-v1',
+  return checkedCatalog({ protocol: 'primary-unit-v1', courseId: course.id, courseTitle: course.title,
+    courseVersion: course.teachingVersion ? 'primary-teaching-v1:' + course.teachingVersion : 'primary-teaching-v1',
     itemId: unit.id, itemTitle: unit.title, description: unit.objective, subject: course.subject, grade: course.grade, term: course.term,
     scopeVersion: course.scopeVersion, textbookVersion: course.textbookVersion, targets, parts, sources });
 }
