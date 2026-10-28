@@ -1,0 +1,148 @@
+{
+  "passed": true,
+  "scope": "143 A read-only source selection and preflight only. Does not create notes, publish an artifact, offer a new frontend entry, call a live model or change learner mastery. Synthetic owned SQLite/Postgres, real authenticated HTTP.",
+  "baseRevision": "d4d5ba980c45de17585c79e2a879d7fc67b5c813",
+  "uncommittedImplementation": true,
+  "sqlite": {
+    "passed": 51,
+    "failed": 0,
+    "pending": 0
+  },
+  "postgres": {
+    "passed": 51,
+    "failed": 0,
+    "pending": 0
+  },
+  "newSourceCases": 8,
+  "overlappingSuitesNotAdded": true,
+  "firstFailure": "../artifact143-source-first/receipt.json",
+  "modelCalls": 0,
+  "newPersistentCollections": 0,
+  "newFrontendEntry": false,
+  "frozenPressureInputs": 3062,
+  "webBuildId": "dQ9oSCtUTPqiA-1svhjcA",
+  "pressureBrowser": {
+    "status": "in_progress",
+    "actualFullScope": 464,
+    "sharedAddressAcceptedBeforeLimit": 30,
+    "nextSharedRequestStatus": 429,
+    "resultNotYetClaimed": true
+  },
+  "files": {
+    "data/qa/artifact143-source-sqlite-second.json": {
+      "bytes": 24109,
+      "sha256": "ba34ef0f9216945450235659973e506c42e3764669fe844325e335a87bded856",
+      "gzipSha256": "d88b49ebb00ebcc2caf6ca0f4caa1cf4bda34da0363b4eb9d5d657b7555880a8"
+    },
+    "data/qa/artifact143-source-sqlite-second.log": {
+      "bytes": 1812,
+      "sha256": "8cce323d0322eb472fc146925d8b839e884435675a3ebb8c18da312daa963ddf",
+      "gzipSha256": "ab0cd67971e1a56740756f473730029af974164582485dfd7d74a709efb24814"
+    },
+    "data/qa/artifact143-source-postgres-first.json": {
+      "bytes": 24118,
+      "sha256": "6a4cc0415ed0832c3208e8bff8e84088f6b7f1b7724fe38b8248f34b647f20d5",
+      "gzipSha256": "411510effbae22d4a7c0068e7867fdf32eacb91452a3bd26bc4b3ba3ebce8093"
+    },
+    "data/qa/artifact143-source-postgres-first.log": {
+      "bytes": 2037,
+      "sha256": "2f8437b8d5e7f633599037bec40b4147f6c21aca72824a03f2f9f94b87baa96a",
+      "gzipSha256": "1a08ade3f43e6547021e2d2447c5bbf723c04bd5f3961c335f8eefce87fde47b"
+    },
+    "data/qa/artifact143-web-build-first.log": {
+      "bytes": 1559,
+      "sha256": "729a43d80900b5b88d2b8b6af7011a022f0559e39ba89fa53ddbf08778eae199",
+      "gzipSha256": "d81e1876e79e1d802ceb4f75066298e8b0dfcf993436e463c547850bf99cb7cf"
+    },
+    "data/qa/artifact143-pressure-inputs.json": {
+      "bytes": 587896,
+      "sha256": "0878e9ea256aa9033cbd7493043eed94ea0f74816524666b1b5b190a5a8cad96",
+      "gzipSha256": "397eaf047353a479f98d1f6fbd86437c4c00bcf21f4a4b17a078653c8c7ff715"
+    },
+    "data/qa/registration-pressure-setup-result.json": {
+      "bytes": 226,
+      "sha256": "3d17b9554b499262404847ddf2ab5399679b7c4457e0b164044adb466886a086",
+      "gzipSha256": "908b976fe0847ba08e1fbb6fba01a5e618c4828b753cd8bbd0fd667552714d5e"
+    },
+    "data/qa/registration-pressure-selection-note.json": {
+      "bytes": 647,
+      "sha256": "3054de655ed53e3eeeab475de03dad6d67599f2f9ef8d93366a490540183f09d",
+      "gzipSha256": "08f22936f1a9d926fe03c0ab6ddff2a28978c7fcd66370063e20942cad96cc6b"
+    },
+    "data/qa/experience-web/.next/BUILD_ID": {
+      "bytes": 21,
+      "sha256": "908456d9f606046d0e09683522479e377ab5e71cabec62885a63acd71995bd4d",
+      "gzipSha256": "3597442ed5e70134cc55a127d04b98a194e01b8bb9beaa98f6378a2b9009a800"
+    },
+    "packages/contracts/src/assistant-artifact.ts": {
+      "bytes": 2332,
+      "sha256": "3fcbe04d2d9c583d2df789795e91b2f768823bc92c7810fdfcf8a25044031f13",
+      "gzipSha256": "e8ec0b8378f715c714a5e7db82b7dec6e39d67e994e2e5636ed729bee6cc1a80"
+    },
+    "apps/api/src/modules/ai/assistant-artifact.service.ts": {
+      "bytes": 5855,
+      "sha256": "76480b4ceb98a44ee875a59b2f45ab642a200ab7ef787f20b34b59d3a68b8116",
+      "gzipSha256": "74a5aee6b1a1a3fd368e9e51578c9778e7939e91cd567f04b54ca859933ebadf"
+    },
+    "apps/api/src/modules/ai/assistant-artifact.controller.ts": {
+      "bytes": 660,
+      "sha256": "b8072aebdd6065e404cdeed8d75ea72fa121e18c2669151c04c718aa46996f45",
+      "gzipSha256": "16cc446271b1f21f601f6a97916bf8e3340a78714455e8e276da09693e062361"
+    },
+    "apps/api/src/modules/ai/assistant-artifact.integration.test.ts": {
+      "bytes": 19995,
+      "sha256": "ae4e2af5af08c3ef6c0229481169929eb238538ba6ba70db90fd8f1ba91edbf1",
+      "gzipSha256": "76ff5c8a42faf45801e5c369c82e8792783480ed996758d24b1b2fa0c12b191d"
+    },
+    "apps/api/src/common/auth.guard.ts": {
+      "bytes": 9748,
+      "sha256": "066b164065144d042e7b52e75b30fad4b3bd3ba7e40baa601540b1ebce0a01b8",
+      "gzipSha256": "18bcfb34f549fda7790f149db96668bcd40a44642a0610e7dff91496128ee3e4"
+    },
+    "apps/api/src/modules/ai/ai.service.ts": {
+      "bytes": 60797,
+      "sha256": "c43f03217726a9b82acb243cc3d10b3db2667699ec4038d8c4ec7e3e9efe19dc",
+      "gzipSha256": "faebab808bfdf282da857cd69bb89245251c5deb1f75bac1650f725a4efe348f"
+    },
+    "apps/api/src/modules/ai/ai.module.ts": {
+      "bytes": 2030,
+      "sha256": "17c81975cf68f0a78fafde5b0ee5632f2a5c8dc96aa47b9bd8c0125045db2215",
+      "gzipSha256": "817b733a03449f883f0c12753d8bc045acfef22b6eab0d5475bbfae56195a1c9"
+    },
+    "tests/e2e/synthetic-family.ts": {
+      "bytes": 415,
+      "sha256": "82e7599db340a7c990ba90b0c6e801982b86ec5b78deb461e58e48cf66032818",
+      "gzipSha256": "b677ff3707bb14c381b21accf7f7638bef07755ae462e4f150c69a05154eba25"
+    },
+    "tests/e2e/learning-home.spec.ts": {
+      "bytes": 10903,
+      "sha256": "a991123def49b784c1295b4d48efbb9dbf8192024872998e79eb4d593182618c",
+      "gzipSha256": "63c5e68ae9ef632abb90cc503210094fe733f39438f67a937c415dd471f1c959"
+    },
+    "tests/e2e/product-smoke.spec.ts": {
+      "bytes": 12667,
+      "sha256": "813ab33f4071eec83cc4c05ea85d4ab674a4f628d2df402de167578acbe86e8f",
+      "gzipSha256": "82aad32c91ff23d3063c8346b64280cc6dd7e129366b9b9e1ecc60776833ac1e"
+    },
+    "data/qa/run-registration-pressure-browser.cjs": {
+      "bytes": 10112,
+      "sha256": "6d826df9cf334b8809d37dd338d2fb717ea702e4fef2f8d1de336adc41e0ce8c",
+      "gzipSha256": "66979f1b29c429a9f5eaebb8e0ed6e2772f6830b6438467be551a2cc157c6fb9"
+    },
+    "data/qa/registration-pressure-setup.cjs": {
+      "bytes": 1152,
+      "sha256": "de5f4bb1eedf880114002915a68f47d973ccecc2428c90d7fd4f14bc19d51b37",
+      "gzipSha256": "1e99055b1a0fad00fec5e487b9fe7fba397ad311d21638a8915d225ae9e6d3c3"
+    },
+    "data/qa/registration-pressure.config.ts": {
+      "bytes": 396,
+      "sha256": "ad0b1d927170dd715e5999658077393c87df97554b1c04128afe799b20d668c8",
+      "gzipSha256": "1850256013899e22eaa4b00ae98a4ca1e72ce488379be1a660779cca7ebb53f2"
+    },
+    "data/qa/run-artifact143-source-postgres.cjs": {
+      "bytes": 1291,
+      "sha256": "218b86ccfa742e79760861b36419104338eab1626345495cf0c81633cf20719c",
+      "gzipSha256": "8b4c76aff53156027a3fb70099e1ada256826bb4279afee1a89b9e532b5a9dd1"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "passed": false,
+  "base": "d4d5ba980c45de17585c79e2a879d7fc67b5c813",
+  "uncommittedImplementation": true,
+  "tests": {
+    "numTotalTests": 6,
+    "numPassedTests": 5,
+    "numFailedTests": 1,
+    "numPendingTests": 0
+  },
+  "finding": "Actual learning-code actor receives403 from the existing route whitelist before the new source preflight can enforce the planned assessment409. Preserve this result; only explicitly permit the exact new POST route and recheck owner/assessment boundaries.",
+  "scope": "Owned synthetic SQLite and saved-message fixtures. No real model calls, new stored artifact or product completion.",
+  "files": {
+    "data/qa/artifact143-source-sqlite-first.json": {
+      "bytes": 4397,
+      "sha256": "ef74cb2c664f5825df94b75d4f9805d49ba6959a94a6d6218f9f7692d26d708c",
+      "gzipSha256": "0bb10035cea3f142099bd3def79375fdedec953e08a37a59e536bddc89053f76"
+    },
+    "data/qa/artifact143-source-sqlite-first.log": {
+      "bytes": 2882,
+      "sha256": "dca40592fbde56d020b92b3028101dd35118e9a5092d116582b8db59bf8a8779",
+      "gzipSha256": "b722966410976f5216905e47396d07d5019e81678431c4e61959bc7a52f26ff7"
+    },
+    "packages/contracts/src/assistant-artifact.ts": {
+      "bytes": 2332,
+      "sha256": "3fcbe04d2d9c583d2df789795e91b2f768823bc92c7810fdfcf8a25044031f13",
+      "gzipSha256": "e8ec0b8378f715c714a5e7db82b7dec6e39d67e994e2e5636ed729bee6cc1a80"
+    },
+    "apps/api/src/modules/ai/assistant-artifact.service.ts": {
+      "bytes": 5855,
+      "sha256": "76480b4ceb98a44ee875a59b2f45ab642a200ab7ef787f20b34b59d3a68b8116",
+      "gzipSha256": "74a5aee6b1a1a3fd368e9e51578c9778e7939e91cd567f04b54ca859933ebadf"
+    },
+    "apps/api/src/modules/ai/assistant-artifact.controller.ts": {
+      "bytes": 660,
+      "sha256": "b8072aebdd6065e404cdeed8d75ea72fa121e18c2669151c04c718aa46996f45",
+      "gzipSha256": "16cc446271b1f21f601f6a97916bf8e3340a78714455e8e276da09693e062361"
+    },
+    "apps/api/src/modules/ai/assistant-artifact.integration.test.ts": {
+      "bytes": 15161,
+      "sha256": "50f5103a234f0ceff8a614947c61610f6fdfbeaf36f91e73aa3ad3c3f9d4dbbf",
+      "gzipSha256": "451078dae4d7b4fe42c8297c28f2218c326c8f21c6a059477b211e13f152f8bb"
+    },
+    "apps/api/src/modules/ai/ai.module.ts": {
+      "bytes": 2030,
+      "sha256": "17c81975cf68f0a78fafde5b0ee5632f2a5c8dc96aa47b9bd8c0125045db2215",
+      "gzipSha256": "817b733a03449f883f0c12753d8bc045acfef22b6eab0d5475bbfae56195a1c9"
+    },
+    "apps/api/src/modules/ai/ai.service.ts": {
+      "bytes": 60797,
+      "sha256": "c43f03217726a9b82acb243cc3d10b3db2667699ec4038d8c4ec7e3e9efe19dc",
+      "gzipSha256": "faebab808bfdf282da857cd69bb89245251c5deb1f75bac1650f725a4efe348f"
+    },
+    "apps/api/src/common/auth.guard.ts": {
+      "bytes": 9685,
+      "sha256": "52b5c56909f2ef4f13865ee3e981ccac829a5f2deb02b81fde515ebb496e8c17",
+      "gzipSha256": "6445031cfb4d72d836b1bf2adfc5557ed588dce1a1b6530e7839b3645d6139a1"
+    }
+  }
+}

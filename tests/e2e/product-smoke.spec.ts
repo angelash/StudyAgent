@@ -1,5 +1,6 @@
 import { browserEvidence } from './evidence';
 import { expect, test } from '@playwright/test';
+import { syntheticFamilyHeaders } from './synthetic-family';
 
 const apiUrl = `http://localhost:${process.env.E2E_API_PORT ?? '4107'}`;
 const webUrl = `http://localhost:${process.env.E2E_WEB_PORT ?? '3107'}`;
@@ -54,7 +55,7 @@ test('a parent can create a learning profile and complete an evidence-limited as
   const credential = `Browser-only-${suffix}`;
   const registration = await fetch(`${apiUrl}/api/auth/register`, {
     method: 'POST',
-    headers: { 'content-type': 'application/json' },
+    headers: syntheticFamilyHeaders(),
     body: JSON.stringify({ principal, credential }),
   });
   expect(registration.status, 'synthetic parent registration').toBe(201);
@@ -130,7 +131,7 @@ test('an approved fraction teaching card renders a safe step-by-step visual', as
   test.setTimeout(120_000);
   const suffix = `${Date.now()}${Math.floor(Math.random() * 10_000)}`;
   const principal = `fraction-${suffix}@local.test`, credential = `Fraction-only-${suffix}`;
-  expect((await fetch(`${apiUrl}/api/auth/register`, { method: 'POST', headers: { 'content-type': 'application/json' },
+  expect((await fetch(`${apiUrl}/api/auth/register`, { method: 'POST', headers: syntheticFamilyHeaders(),
     body: JSON.stringify({ principal, credential }) })).status).toBe(201);
   await page.goto('/parent/login');
   await page.getByLabel('登录账号').fill(principal);

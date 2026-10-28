@@ -382,6 +382,15 @@ export class AiService {
     return { ...summarizeAssistantCourse(retained.snapshot, retained.current), canSend: retained.current && !block, ...(block ? { blocked: block } : {}) };
   }
 
+  assistantArtifactTeachingScope(session: AssistantSession): import('@study-agent/contracts').AssistantArtifactTeachingScope | undefined {
+    const course = this.courseSnapshot(session, false), lecture = this.lectureSnapshot(session, false);
+    const teaching = course?.snapshot.teaching ?? (lecture?.snapshot.protocol === 'classroom-lecture-v2' ? lecture.snapshot.teaching : undefined);
+    if (!teaching) return undefined;
+    return { grade: teaching.grade ?? null, term: teaching.term ?? null, scopeVersion: teaching.scopeVersion ?? null,
+      textbookVersion: teaching.textbookVersion ?? null, courseVersion: teaching.courseVersion, teachingFingerprint: teaching.fingerprint,
+      selection: structuredClone(teaching.selection), coverage: structuredClone(teaching.coverage) };
+  }
+
   sourcePreview(user: InMemoryUserAccount, sessionId: string, sourceKey: string) {
     const key = validate(z.string().min(1).max(100), sourceKey), session = this.assertSessionOwner(sessionId, user, false);
     const course = this.courseSnapshot(session, false), lecture = this.lectureSnapshot(session, false);

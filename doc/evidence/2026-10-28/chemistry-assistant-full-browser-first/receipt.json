@@ -1,0 +1,1576 @@
+{
+  "applicationRevision": "c7283e65a7e938e2aa3bf7480b8d06847cbfafa2",
+  "publicationEquivalentRevision": "6181d45ca56435ce398b430e1606d90907abd327",
+  "passed": false,
+  "stats": {
+    "startTime": "2026-10-28T10:24:54.662Z",
+    "duration": 2616416.0239999997,
+    "expected": 460,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  },
+  "totalTests": 464,
+  "originalAttempts": 464,
+  "retries": 0,
+  "failedAttempts": 4,
+  "controls": {
+    "checked": 3101,
+    "changed": []
+  },
+  "webBuildId": "ttOaitWINp_1WOWn2t9Oq",
+  "finding": "Four learning-home cases fail at shared-address synthetic registration with429. All460 other tests pass. No local complete green claim; later corrected fixture/pressure acceptance is independent.",
+  "scope": "Complete original merged chemistry/C2 browser attempt, prior to143 A. Synthetic isolated records and deterministic providers. Original ZIPs remain local; publication copies redact authentication in all UTF8 entries including network bodies.",
+  "redactions": {
+    "test-results/browser-product-acceptance/learning-home-parent-selec-e85cc-ofile-recovery-keep-context/trace.zip": {
+      "originalSha256": "d5cde48901ac1eed3bf31d45291e49be39b5ebbf5935c42511eed7b45586515a",
+      "publishedSha256": "e4967495588e304e161fec749f5fdcde2df9ebe3f87ab46f9e08eb9f4679b58a",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 2
+    },
+    "test-results/browser-product-acceptance/learning-home-a-delayed-ol-3f66a-t-replace-the-current-child/trace.zip": {
+      "originalSha256": "93f14d3523eed09f739b73654aa740cf85c5e7dc94113ca23e0bf14352e78fa4",
+      "publishedSha256": "9243d9e75c2e17156123639d9123ef06566297b095ad5ad953a427691913161d",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 2
+    },
+    "test-results/browser-product-acceptance/learning-home-corrupt-or-d-30cda-nnot-select-another-profile/trace.zip": {
+      "originalSha256": "9a481aa95556b4180e4385c01a8d9b63b22ac514ad22146db4eda033c50ede59",
+      "publishedSha256": "4503a54b3b8a0bbdbece815429fe3ac09d754d49ecee0c55c5dca95a6238318c",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 2
+    },
+    "test-results/browser-product-acceptance/learning-home-a-student-re-0fb6d-and-sees-only-their-profile/trace.zip": {
+      "originalSha256": "ed519f0c8e343b006e8720b36c440b26cd5d2bea1a054c038810ba54bed992fb",
+      "publishedSha256": "14a0c9fecf7e3101ae532e11a784f8d8de0494a5cdcef564b40ecfe1829e2e16",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 2
+    }
+  },
+  "files": {
+    "data/qa/chemistry-assistant-full-browser-first.json": {
+      "bytes": 536408,
+      "sha256": "a2a9cff83376af9fbed7505cbb00eba4f811f3361e087115aa501de97a045d0e",
+      "gzipSha256": "f21ac57985bb65bed6927ace92b3beb3894ad95ea03a57b80d3964efef383e83"
+    },
+    "data/qa/chemistry-assistant-full-browser-first.log": {
+      "bytes": 87922,
+      "sha256": "9569441895554558b72c35a0c6d6dd7cf33d30a4d0900996d1524862a0cfb6ba",
+      "gzipSha256": "2f1468dc3fe0b7f0c8327339deb3872b14ef3bdbdd7767058efbe12d50495c78"
+    },
+    "data/qa/chemistry-assistant-full-first-inputs.json": {
+      "bytes": 604502,
+      "sha256": "0c684a5bbd67c04bda04a72739c4eb40bc0e2304fba8e836fce695a010a887ce",
+      "gzipSha256": "eabffbb3a613b0f37d942dabf07e505e7cb9691596843a10296eabf52195e7ab"
+    },
+    "data/qa/chemistry-assistant-full-first-inputs-verification.log": {
+      "bytes": 34,
+      "sha256": "120fb53c93999acad8aa0a5760827440350a870a035177412000943f0b679b60",
+      "gzipSha256": "d587ed5e88284ceb8c6542527feac8dc7163dee72369c6f44c2b283657cc1b5f"
+    },
+    "data/qa/experience-web/.next/BUILD_ID": {
+      "bytes": 21,
+      "sha256": "0ddd927fa19d1fb826f3d3f0fa4a305610af9909147480e743f53a2c8167ff92",
+      "gzipSha256": "64d08b832aeaa43a6835774d943c2fb79239b2277d4156cee485467e3fe896f2"
+    },
+    "test-results/browser-product-acceptance/learning-home-parent-selec-e85cc-ofile-recovery-keep-context/test-failed-1.png": {
+      "bytes": 4254,
+      "sha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401",
+      "gzipSha256": "57c491c47ae425154379567124f7ec5020dff2efae1c19985b54d34021eb054d"
+    },
+    "test-results/browser-product-acceptance/learning-home-parent-selec-e85cc-ofile-recovery-keep-context/error-context.md": {
+      "bytes": 9096,
+      "sha256": "f3b29168a60ea0c1c6a7240c13579713f431a03fd02b74efb557df1e874278e3",
+      "gzipSha256": "00324b9c114d656c94bd9b24971226c26618d0e2195d93f84df8fe95a8eba03e"
+    },
+    "test-results/browser-product-acceptance/learning-home-parent-selec-e85cc-ofile-recovery-keep-context/trace.zip": {
+      "bytes": 10510,
+      "sha256": "e4967495588e304e161fec749f5fdcde2df9ebe3f87ab46f9e08eb9f4679b58a",
+      "gzipSha256": "ff34512c1754e0a456262703a4693024b76d15c8aa639fefeb31f8ebf3fce821"
+    },
+    "test-results/browser-product-acceptance/learning-home-a-delayed-ol-3f66a-t-replace-the-current-child/test-failed-1.png": {
+      "bytes": 4254,
+      "sha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401",
+      "gzipSha256": "57c491c47ae425154379567124f7ec5020dff2efae1c19985b54d34021eb054d"
+    },
+    "test-results/browser-product-acceptance/learning-home-a-delayed-ol-3f66a-t-replace-the-current-child/error-context.md": {
+      "bytes": 9085,
+      "sha256": "3d267cb494667d701f06b9bc0e9d21af858763509f31067a1a34b492e925cda1",
+      "gzipSha256": "b7404c4fef9ebfcec5ad835976be0ec6b2c7f31c10a5467f060124df2c51c167"
+    },
+    "test-results/browser-product-acceptance/learning-home-a-delayed-ol-3f66a-t-replace-the-current-child/trace.zip": {
+      "bytes": 10538,
+      "sha256": "9243d9e75c2e17156123639d9123ef06566297b095ad5ad953a427691913161d",
+      "gzipSha256": "5e2d67cc65b779362467b76cbadf1771a6782da38f17bc4c8a8483a970f257ba"
+    },
+    "test-results/browser-product-acceptance/learning-home-corrupt-or-d-30cda-nnot-select-another-profile/test-failed-1.png": {
+      "bytes": 4254,
+      "sha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401",
+      "gzipSha256": "57c491c47ae425154379567124f7ec5020dff2efae1c19985b54d34021eb054d"
+    },
+    "test-results/browser-product-acceptance/learning-home-corrupt-or-d-30cda-nnot-select-another-profile/error-context.md": {
+      "bytes": 9082,
+      "sha256": "0dfd5dcc4ee2d95f127be444622ce6278986c5416be4d60d549ece19d93e9be8",
+      "gzipSha256": "d1c2b38bc2919ef038fec8a3c0be68865c542e6bac0c5bc2339a4ec840bd9421"
+    },
+    "test-results/browser-product-acceptance/learning-home-corrupt-or-d-30cda-nnot-select-another-profile/trace.zip": {
+      "bytes": 10579,
+      "sha256": "4503a54b3b8a0bbdbece815429fe3ac09d754d49ecee0c55c5dca95a6238318c",
+      "gzipSha256": "b2cd1c6d34fc7acd4d3d52a36d4bb175f72d3dd2ecb83cf2bd47f187061a9a14"
+    },
+    "test-results/browser-product-acceptance/learning-home-a-student-re-0fb6d-and-sees-only-their-profile/test-failed-1.png": {
+      "bytes": 4254,
+      "sha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401",
+      "gzipSha256": "57c491c47ae425154379567124f7ec5020dff2efae1c19985b54d34021eb054d"
+    },
+    "test-results/browser-product-acceptance/learning-home-a-student-re-0fb6d-and-sees-only-their-profile/error-context.md": {
+      "bytes": 9081,
+      "sha256": "236738598289c5db070c1c02e61157338fc3ca5e8ad6b92744ac8fff9a62d3f8",
+      "gzipSha256": "e3469aaf486a74293937347b921b7975189232283017cbc92dbe40baaa9742ce"
+    },
+    "test-results/browser-product-acceptance/learning-home-a-student-re-0fb6d-and-sees-only-their-profile/trace.zip": {
+      "bytes": 10580,
+      "sha256": "14a0c9fecf7e3101ae532e11a784f8d8de0494a5cdcef564b40ecfe1829e2e16",
+      "gzipSha256": "4ccf09aee9ea8691e7e0fa44d664aafeb9d3175529a238b5f8af5478d851f7fe"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/assistant-conversations/actual-default-model-1280.png": {
+      "bytes": 86061,
+      "sha256": "0b131f93d081c49fb27dc7fac2671a6244623f1fc6e681995c4babda093582cd",
+      "gzipSha256": "70cd9d28ff8902afcc536ec70b28bdaac6888f4c143e17e6be417310595774ee"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/assistant-conversations/actual-default-model-390.png": {
+      "bytes": 39214,
+      "sha256": "21e8619b167bcdb422703fdabbe7574e8c4d2f1fac9d4f1bb64ffedfe5d4e2df",
+      "gzipSha256": "ed4369a88a9a9aa1c11c72428d62eaa477f57314e98d106083a7982c3fe42c1f"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/assistant-conversations/actual-default-model-768.png": {
+      "bytes": 78019,
+      "sha256": "e74dff53308e176c2cd71a411b7675c228b95e1e71781f062429e96c95bb9fc3",
+      "gzipSha256": "f7fd55cacf4a025623af82129f36fe7fa141f54c116f5d7d866f202d27fc1100"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/assistant-conversations/diagnostic-history-readonly.png": {
+      "bytes": 59232,
+      "sha256": "9e1d2e87305e8cad041e3b3faf30697a0ddd42172e3ac81850c0d7801c1d765d",
+      "gzipSha256": "b80474bdff87bb916246c809aa1d8ba79ab2cddb232f741bf0861d80e5319e21"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/assistant-conversations/history-old-message-768.png": {
+      "bytes": 79722,
+      "sha256": "effdf03a4490056ad08d5face7794626b04ebb71149e6dfe1f061715394b9a0c",
+      "gzipSha256": "c2e6b88aa2de0e7cb07e0546e10f487150160fa3dc375c43068a23b4fd0389f4"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/assistant-conversations/model-check-failed-1280.png": {
+      "bytes": 91958,
+      "sha256": "fdb5099d2aed274416c887dc10c93d5b43b74b105cf78151c5472cbda2ec69ca",
+      "gzipSha256": "2754f088c7199a5a3c1a8656473ee325d41b3f25ee98a4129c2cc2efb11bbf28"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/assistant-conversations/model-check-failed-390.png": {
+      "bytes": 44391,
+      "sha256": "d0bf96d8ed50118fe4e5b175427ce8acd351e4972345fd0a6b69fc9c6e0d8457",
+      "gzipSha256": "e8d95d54d9b738bd3bd0ed17fd8099989375a7dff161649ef6722bbb45b2cada"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/assistant-conversations/model-check-failed-768.png": {
+      "bytes": 83754,
+      "sha256": "88142787670cfa4e171fbd8a5c999c1061937eecfcbd422fe363017372c62c51",
+      "gzipSha256": "d28d495412703f5fe9b7b8a53cf0725e3604302502fc9db170ffdbe6c13cd308"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/assistant-conversations/retry-original-model.png": {
+      "bytes": 92475,
+      "sha256": "26ea94e62f475c8b0941a7b5b06383f7e055c5f9d5f3980b0f725f8b69271290",
+      "gzipSha256": "8256cc3537f9d436523b44528e2a1d36294db5f7228080b1a6482afb4c06b7bf"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/assistant-conversations/saved-conversation-1440.png": {
+      "bytes": 97915,
+      "sha256": "fe210de88df61d1a21cb6f06b90fbf540e0d239b5cb48a7fe119420fd8492255",
+      "gzipSha256": "eb89836b6a5749a4c785a87d4abb94128c7d3d248f198e5907b1c2a4041a543b"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/assistant-conversations/saved-conversation-390.png": {
+      "bytes": 44285,
+      "sha256": "8f8c5cb1fc6ddfc64923b53c5ccf392a676caf4412d55d4a3c7c4fb65b4c0d47",
+      "gzipSha256": "4f4c5ad241586882b7fcf32736dae3e981b25e55817ce8fc6b43ccf8f38216d2"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/assistant-conversations/saved-conversation-768.png": {
+      "bytes": 85472,
+      "sha256": "5773dc51c35d9814aa530ac08b63affd79ea97737c9544693b6b0e7939fa0ab1",
+      "gzipSha256": "83d62b4e517e0bb6052cad8066805310651fb6aec7d4c59230f765a17a51b896"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom/classroom-ai-board.png": {
+      "bytes": 143816,
+      "sha256": "8edfee9e800513e10faa003ad7a4ef0387285daaabd021e6f4348fb5fd855880",
+      "gzipSha256": "2414392a5ff0286aa5d2daba2b79895a1999b18beed72462ffc925e2e5abaebf"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom/classroom-board-reference-scale-v2.png": {
+      "bytes": 366789,
+      "sha256": "a081c4c1ab787ad1f12366a8adc418b31bdbc4b2f2f527adf430e0941df6d6c8",
+      "gzipSha256": "a6ca7a8c08d9eb09486d66745af183c9c99d080b6c6a3d1ac65882837b442b63"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom/classroom-board.png": {
+      "bytes": 111810,
+      "sha256": "87434aa173cc17d8d6b293a4756b5f1df09262d2e050119453f306cc880951dc",
+      "gzipSha256": "f8073906f7f79706ba788097af84420eeb36fb710a8277b0f9fd8db304b0ccb1"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom/classroom-course.png": {
+      "bytes": 177000,
+      "sha256": "a2aa36864d584eafb28e4340cac2172b8cd74e57aa441ce4ac7f478d6ae55cb3",
+      "gzipSha256": "eb20a577c51cefa8b79a43c92b1647faaac47841fb81bbe4862e70668459cae1"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom/classroom-mobile.png": {
+      "bytes": 70121,
+      "sha256": "68489f1a103f177096f6f8fea81002b6a7841cedeb6a4cf8b76d3219ac236d76",
+      "gzipSha256": "ab9b1357905bcad614631e7b09a79f8d419afaedebf6c275490a296d62271a8a"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom/classroom-practice-phone-v2.png": {
+      "bytes": 50905,
+      "sha256": "3f16f1d05fba9570aec9dc4d035269033d100772ab6f9e6b9ccfb984755a1704",
+      "gzipSha256": "82ba6e17fedbcc60e06c0ab6d2d1affe981ecbe6ae3541b402f3e943d6b9f83d"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom/classroom-practice-reference-scale-v2.png": {
+      "bytes": 187261,
+      "sha256": "c3840a5bb7d2609774645b6b23d1d6203c4b488d452f7889dbc7e3b3c4d3df88",
+      "gzipSha256": "a8935d501da18e078a95247c96d0ddf247205780c597575cc94f01d23671035c"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom/classroom-practice-v2.png": {
+      "bytes": 148938,
+      "sha256": "3da35c1aad3bfc0403d60ef60cab5a9f6d91fc3155b7fc1277ed1b6d2a32a12b",
+      "gzipSha256": "9b272dc9c682f6fd4f920fdbfac765c79a6357e7990860149ecd9085b7b140a8"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom/classroom-settings.png": {
+      "bytes": 195445,
+      "sha256": "5d8bd5fc2bc29de8d10abb843e9a9bcb483d604a55a51d84e12790ef78ccffa3",
+      "gzipSha256": "d5cbc4062502e714e9794c39d532be01ed3b73d821b4c47e322b6db16b7abc10"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom/classroom-table-reference-scale-v2.png": {
+      "bytes": 443544,
+      "sha256": "77471c6711524ee1d89191538ca19864455716d9e1f50f42afe37aa0a6acee2d",
+      "gzipSha256": "116ccc58e9f303aa454dbce95295b2a294f954b70eb94005e2f0dc65d9141392"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-boards/comparison-1440.png": {
+      "bytes": 141137,
+      "sha256": "eac8f62c3a35eb66bb31f7e5261285d5e5177b51ebdf97ea68f106631695f287",
+      "gzipSha256": "3962ea650d48f2b4bcc7c9095ff5655d92a02c5d9f08d4d95c7671ad1d39911b"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-boards/comparison-390.png": {
+      "bytes": 65939,
+      "sha256": "262dcdf2e29c1ea508c8d59abdf24752bb22674ed65380023a91e9e6b1105ba3",
+      "gzipSha256": "580aee8419d4610ae745bc6bff33a776ec2f9a5d16bace2541390f25baf4a6a7"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-boards/comparison-768.png": {
+      "bytes": 131245,
+      "sha256": "027a75596209b629f20b5bef5335e51717d23765046a907a6d1d0ae331fc8c78",
+      "gzipSha256": "f078c60bc505f20be596fb39717b94ad0e82932f0a79cbd929cf0fd4dc6f0f1e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-boards/comparison-print.png": {
+      "bytes": 263250,
+      "sha256": "ee58fec2e219fa1f34bed1fdfd67f61a755d6c76bb4ea91a63bcbbb871ac0ff1",
+      "gzipSha256": "1bc81cf5da27042f0e22fd08e06d6b4f55719a32db9b2874813e935926b9f6c1"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-boards/offline-notes-1793183570522.html": {
+      "bytes": 2666,
+      "sha256": "a1f6d03543fa14bddb8d5a9e8b8fe4f928340eb568421173a6995e85c66c37be",
+      "gzipSha256": "9712572b1dd4d11be9a17309ead276e826dbe4041cce1dda41e5c37b96a8be72"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-captions/english-1440.png": {
+      "bytes": 74388,
+      "sha256": "7bb9856f75ccf8ec8041e0c7e49ba48acf8a53f287198f2bfe6cf40849ea8cd7",
+      "gzipSha256": "3384b22c81b2d04eea576c9afb9c8bc0c9e536d01f84ed87f68ab84ec4267038"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-captions/english-390.png": {
+      "bytes": 27370,
+      "sha256": "97183767e86fb5fbd42b28b95aa8a15a76062a80efaebb18dcce8078c28fba31",
+      "gzipSha256": "762f3023cadf109315adaf0824c9d058405ae1059741ce14250fe072c080c821"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-captions/english-768.png": {
+      "bytes": 67108,
+      "sha256": "16b24dc8eab1e84fe957bb572d8164e4d76628b00e747e4652f464075f24f253",
+      "gzipSha256": "ce1b8b46c4816ebd6c93a6aca32f606730a53d533b0bf29fe917e72a81b488c4"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-captions/legacy-confirm.png": {
+      "bytes": 126813,
+      "sha256": "ac12b0c7870d54e4914900e2f72a4fa6f76f9352d5a682368c337bc895b882bd",
+      "gzipSha256": "7ed31b2c3a5d10b4ba492d829b6fa4c594d25182ed8b711ab893799f53608e27"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-captions/long-token-1440.png": {
+      "bytes": 103650,
+      "sha256": "25a3294ce9640cfa346ef63fd5a8a1a7f13a3098942a964aae1b4d67a4bd2e2f",
+      "gzipSha256": "c02665f2fca8b85ea428f2c9d10d4883d7c19f827fd6476ad7afd9ef9de4e77a"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-captions/long-token-390.png": {
+      "bytes": 33761,
+      "sha256": "eed4d1250c55ff3e2564ebac7da5954ebed972f6f94f114083f7c1538a9e21b0",
+      "gzipSha256": "52d4a8a561dfddba755520abfdbc2e789ec890a0b9daac72f4ef7fb13721fb3b"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-captions/long-token-768.png": {
+      "bytes": 93509,
+      "sha256": "06cbe794db6fd0ce89e09044570269e4e9b1d40a6f3c133e02d92730e1a41b44",
+      "gzipSha256": "0202dea2b2f3a991793ad3d8938b782cd42be5d95bde5cea00ba800908c05556"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-choice/assistant-1440.png": {
+      "bytes": 102247,
+      "sha256": "8ef6bf13c74ba7ecd1b6c2e1c7a41c66fe142e130e2b58de77b7690527080a72",
+      "gzipSha256": "dc318ee517c90d5dcc2f76dfefe0d3a148accbfe5a470c4a0fbd342992c5e926"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-choice/assistant-390.png": {
+      "bytes": 28682,
+      "sha256": "44a33fe5b3fb581a4fa2805adc33822ec28b80cd7e5a64db134646cfe8aba100",
+      "gzipSha256": "d64627e4ac464fd07cd6460c5b48641d880aa72a792d9a4063a72d2cd47961bb"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-choice/assistant-768.png": {
+      "bytes": 31533,
+      "sha256": "d349adc6c34bb531937fac3cbc47f39a531c5ee5d103bcccc98c6899ca9fce35",
+      "gzipSha256": "cda5837855629a57ff02aeb93fec67b39806673e13da1f2882467b557ec8a23f"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-choice/multiple-1440.png": {
+      "bytes": 79063,
+      "sha256": "c395c9064f3aa3eea0650aee8aa0301c11d59265ee84095b0f15eb3a0a786402",
+      "gzipSha256": "28a137196800bbbae7723587af4ecfe81781ed34a9a742af40d664b97d9c9b73"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-choice/multiple-390.png": {
+      "bytes": 70390,
+      "sha256": "61c115edeb36c46d1a0813fa0be8f3744933d22588ad1d2dfb149724312088f4",
+      "gzipSha256": "b61c24da1a461d8739db433a1f7d457a6d38078ebbd6bc7d118a446f737e9bb2"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-choice/multiple-768.png": {
+      "bytes": 73789,
+      "sha256": "9d3652196d3b726a3368fe61e5b1931987c2cc593bf47a176a4c6e8daafb9388",
+      "gzipSha256": "6df45d8658ddd1dbc1431cf0829bb3e005e90de5427d561a4e3d969f19a41212"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-code/editor-1440.png": {
+      "bytes": 109635,
+      "sha256": "7a615751c234c7fefc1e4aa579e2d0f9be45555e155ed031351ac1b211b65a47",
+      "gzipSha256": "0e79357f9b018dadc6e70d1f993ce8cdd98e1863d982b3d5dfd7f1f9f030b9db"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-code/editor-390.png": {
+      "bytes": 52384,
+      "sha256": "16aeb8bb3362c1b732981169dc1a3863ed1bf3033b6096699155284074c748dd",
+      "gzipSha256": "adff7d0df5f33d874f9f665b508f587695d5fc1b84074089751da700b13e7cca"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-code/editor-768.png": {
+      "bytes": 100930,
+      "sha256": "f0c08179686f6e0f27dc36055897cc063a94f6d276fad58c50731be883239028",
+      "gzipSha256": "99e66c63dde239d79c4007afd96a62611163cb379b86fa0cbaa7fd1540682367"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-tools/controlled-figure-1440.png": {
+      "bytes": 98776,
+      "sha256": "be11b86d826a21b825dfa1b1551a1daba988ef2db436453adc4935fd34c83fbe",
+      "gzipSha256": "cf2d4a17474c4299f9cc42db7fb9419a878720b5c679ba75363b69fdd8bf523d"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-tools/curriculum-image-390.png": {
+      "bytes": 132861,
+      "sha256": "ec47ca9732dfa002ad764b299fd81ca94a5d32da713f40261c477464d8640c05",
+      "gzipSha256": "27fe4515798bdb816cf1c9c05656687f4f45baa12491cfa06a96302456d463aa"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-tools/tour-history-1440.png": {
+      "bytes": 86465,
+      "sha256": "4d164d7b356b2f0745e988b3c58433d960863ba2666f717c4263e4956233b553",
+      "gzipSha256": "bb1cde3f5462151e679077e7701bb154cc0dfe11351893c9fe6f858176532157"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-tools/tour-microphone-390.png": {
+      "bytes": 50952,
+      "sha256": "b299769dec84c3cb2ca0870f4b1c6ce2c9efb53809d85551c11d4796e31e4fe5",
+      "gzipSha256": "f764f7236b771634d7ed7dbc8e12a485e6a2a5d7bdeae746985c8cd829f99114"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-tools/tour-settings-880.png": {
+      "bytes": 82112,
+      "sha256": "777260b1a9d0fa9d33b221242c887de72b7da69d4e1beb9d7a3f07126619c7b6",
+      "gzipSha256": "d3fb5a5c5c04e6dad78f907121ab4824b851b3d5c161b758ffcc7f9adef8686a"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-tools/tour-sound-768.png": {
+      "bytes": 86302,
+      "sha256": "8e9ab1732bdd7f9a73a99bad217ec7185ba5de63ededce66c25fdf13b271b1cc",
+      "gzipSha256": "a12285d62411515b9713ad7b688e60d644d72a149dc48969f1547ba6806f0726"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-tools/voice-settings-390.png": {
+      "bytes": 49315,
+      "sha256": "c9999dbba90601b9414f4e1417d4ac451e0d0408dbd8200d200a870db15c12b8",
+      "gzipSha256": "21802ffc3aa386895ad01372787b4c387fdc5ca1a2dbef5365c1e3849cf001ff"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-tools/voice-settings-768.png": {
+      "bytes": 104700,
+      "sha256": "26a10ce8f19287031966f963d7b87fa0202fd6764c68d3506e5ab723045b2486",
+      "gzipSha256": "d6585407e92ebecf001a05a7519b2d8fdfb6a33570ac59bb280c756fddee2a26"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-tools/voice-settings-880.png": {
+      "bytes": 116143,
+      "sha256": "c9923baa7c239b8ffd8d08d7842c6c913efad06f83c6614888eb4fb8fadb7c0d",
+      "gzipSha256": "71c713a0084b00c198591f00684273d178a250a605e1e57ad8d7d246501d687d"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-turns/recovered-1440.png": {
+      "bytes": 261169,
+      "sha256": "96d08bda65fa52c389b5f9326606229932e7136631c71bea6645801c96aa6f0a",
+      "gzipSha256": "56bf3f3d75a195ff8e57fdc89aa0196a3681f6b21194b0badeca10fcb8d0a9eb"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-turns/recovered-390.png": {
+      "bytes": 51947,
+      "sha256": "8f5b84a4a0ce0df295aa6dd145a9ad5daca9f8c1302d4afb8c20b584a3d960e7",
+      "gzipSha256": "c72f531079f827278feb9bf668bfd6280317e5a766757411d2ceeb3a1838d2eb"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-turns/recovered-768.png": {
+      "bytes": 197005,
+      "sha256": "5ade8388ec95beb21f92a4703fca2cd7f09fa949e230a1114551c6b0cf337fc8",
+      "gzipSha256": "c07adae4a7564baf5199a72c545cfffc0cd411de7dc072d588226ae22dd125ef"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-turns/teaching-modes.png": {
+      "bytes": 215393,
+      "sha256": "f3f6034519e87cc0feb9e9083ba0e173420b85a6aeeac6d98916ee2024fc0800",
+      "gzipSha256": "40e364521ab4f62e5c1e38d25c1c26a41a63d1e8e66abd1e30ea23354746538f"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-visual/candidate-1440.png": {
+      "bytes": 162627,
+      "sha256": "f5fa264a05b28939fbe0f92eaf25307496976d48e6dfabe5bea9144c2af1cbab",
+      "gzipSha256": "41546baffcb40784d93a09bbeb3b7e68aac9ad1acef1c4eda26f1025f5ffe737"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-visual/candidate-390.png": {
+      "bytes": 33965,
+      "sha256": "aa6c1cceca466f88c20b6d872497592f2107b536c9b7bb454e2e6ba28d08ac3c",
+      "gzipSha256": "4c10b9104519ebf3bb6d6187d0ec325605a963b5bebcd8f0f7082e9897ea99a4"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-visual/candidate-768.png": {
+      "bytes": 47888,
+      "sha256": "a366e0e4014cb513f453b2a63c8b039d3e6602c0f897467a1109df7e7b8adde5",
+      "gzipSha256": "f8feb2a7101714d793365612f50220e9eb06d48799a38b30b0709373fde7d8b9"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-visual/candidate-actions-1440.png": {
+      "bytes": 162725,
+      "sha256": "d0d415ad929c2d117d1e587fda1c352c53b4065af911f0378f14dffd4cee0ded",
+      "gzipSha256": "a86c2940dac743e671572bb1c17710b2f43ca93f0e771744c7a4d87910af3b2e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-visual/candidate-actions-390.png": {
+      "bytes": 34294,
+      "sha256": "21e99cd3666bf103327a48c6e3eb37b9540f661c140a3f5b0f8a2c636e7d174c",
+      "gzipSha256": "4b62a4a5483ba158b96f9d2622a215d3c4a0232bc8307502aa303a6402dfd445"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-visual/candidate-actions-768.png": {
+      "bytes": 47883,
+      "sha256": "84c14c43b5397f02318e9f70428df0d818064413e461ba0e10d4b57ebe169036",
+      "gzipSha256": "d5d26943eb0de71b8ee1dee8b7ad444552255b06c33e8817966bce5efa02b9a8"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/classroom-visual/selected-mobile.png": {
+      "bytes": 49621,
+      "sha256": "e5b3ea135989af904efd1192f2ef0460e0ddf3ca3cb8a27556c85a63012bf163",
+      "gzipSha256": "a30d5fe0252369a600e78a696b53390d97cfe9c4a6d48dba4f34da7ad861b0db"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-assistant/material-entry-1440.png": {
+      "bytes": 82793,
+      "sha256": "38d8e1349ab867dcbe7fcab5ed3d1a525781ba75f27088cde26f3859c585be3c",
+      "gzipSha256": "25307d3bd915186c9423086dd190075551bf334e58801fc73c1453e9a96226db"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-assistant/material-entry-390.png": {
+      "bytes": 49170,
+      "sha256": "239c36f4cdf888051b3861d06189f932c1cbf809cc22f2abb188e36e64ad2e45",
+      "gzipSha256": "9fb1f0b97d0c6f65b0406ed94ff5e098bd42ebc027c3c0cf4d0380676048af1d"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-assistant/material-entry-768.png": {
+      "bytes": 54172,
+      "sha256": "1f6d34681fdd1d097ad38aa513be68ce6f599facd348fe99206bd7ecbfd41dee",
+      "gzipSha256": "921408a87c7de1094a74c42a91cae775127dd08a067f1b127640a804bcc7c31a"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-assistant/material-entry-880.png": {
+      "bytes": 55207,
+      "sha256": "9ad9cdf64d9470516319bebe3ab9efb4d0b4d78b02aa7c9af795a20a529f1af5",
+      "gzipSha256": "dd5bd983810043c2c410b71d13b34361f4d9a2e7a1004fd40ce02277c2336d1e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-assistant/primary-entry-1440.png": {
+      "bytes": 120363,
+      "sha256": "f6735b94fb6ae3e3b9f4ea43349840e2c66a59fe04050f691fdf3059e22a5b6b",
+      "gzipSha256": "c9ce9d691a68256bc19b929be0c910a88514acef6aed392993c69946a537cf76"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-assistant/primary-entry-390.png": {
+      "bytes": 81372,
+      "sha256": "c126e11aaa3b57e19f514b2f517161c1a1f4be095ed5537f30e21f5e640f9ea4",
+      "gzipSha256": "289b90f72a428cd9f8a67fab59f8c5365f22b7cbbf7cbc9cd19e49b33888f450"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-assistant/primary-entry-768.png": {
+      "bytes": 89252,
+      "sha256": "f37f619746d5e072fe7ece56814550d7e60e86cf19634248ed0151e59f253d4b",
+      "gzipSha256": "9c691b480b9a788ffd8ac513bf5c0f466f3131ce5505f97e7d76055ad72896a7"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-assistant/primary-entry-880.png": {
+      "bytes": 90372,
+      "sha256": "da04477a8444de9e4d6118a3b1c4f53006feace189f6895d1fb988ac988cdde8",
+      "gzipSha256": "1fbf174fa6e04f55a45a473e8fa0f3234d3401b2c4dbcc692e78e18f560b2717"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-assistant/source-code-390.png": {
+      "bytes": 98859,
+      "sha256": "5930d2858dc0b80f03edeb26e423ea133e8c0d9a28403f201c171bb036156b53",
+      "gzipSha256": "3b76e0a885d00a8c45cd342499117b50055948ac44baf1737d9231f0710ec415"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-assistant/source-direct.png": {
+      "bytes": 75637,
+      "sha256": "b000be10a86b8bf6c99885fb469b82a48e7856189abe7cfefc9126011a2c4955",
+      "gzipSha256": "2eae3ee7e0896a7fe7b1121cfafc6200c4a9a3593e3d1af775aa918061fe43c8"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-assistant/source-table-390.png": {
+      "bytes": 94590,
+      "sha256": "0a4e98f3deaa94833eeedd3531ccaf7fb0667060dbc1e10522200eccdc76f788",
+      "gzipSha256": "82de9ff2fa7605b164a67427d389c6044e12894e16236671d5de0f5b973ed4a2"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-lifecycle/impact-1440.png": {
+      "bytes": 277922,
+      "sha256": "4e25f3e43ec94dbed4eb75d49657433046dca1bcee65d2f110fd2bcb5132a119",
+      "gzipSha256": "caebcadea3de718e44fd80db999aa7a8f57cecb8420419c4f67f4af3516af14e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-lifecycle/impact-390.png": {
+      "bytes": 195339,
+      "sha256": "c0ac8efcd30ab6b2f39d5c4b792c58d620529cac707b27ae0b4dd94e0d325527",
+      "gzipSha256": "4b9eafbbe29555f0a7bdfdfd5f932b1492fd0d768b598702d1418cbdb735c14d"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-lifecycle/impact-768.png": {
+      "bytes": 227021,
+      "sha256": "2926057bed8bafee4b603fa7007b3b768fe408de74d648b5ca1799ad56851823",
+      "gzipSha256": "a131256947837687fab15c83b5e8c5228dc84a9262c50b50db7446ceb7c7149f"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-panels/activities-1280.png": {
+      "bytes": 170904,
+      "sha256": "1444eb40af7acd1b0d0d370b0708d94693f28b8cea2c0a6a0791f04638167a58",
+      "gzipSha256": "7461c206390fa45527b54721738488d40b7bd9146fb8af0aa4cbdc562bc4af11"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-panels/activities-1440.png": {
+      "bytes": 177046,
+      "sha256": "ccae910490e694e42f4aa6e71bfc87bcb4c697d4c34f611e9490336fd2b5035e",
+      "gzipSha256": "6fe4c7493c9ac6946c4a9dbe1f53f1e06868cbdbdd8d861f7767f494fb2ca35f"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-panels/activities-390.png": {
+      "bytes": 175257,
+      "sha256": "d9441cbae545667cfe44ab9bcdf13a141c9d5a50d66ff09e8c0ac096f4be5e30",
+      "gzipSha256": "37a83e89c9646df5113b3b035473dd7772a0dd9607bcb3b51b065a21a3392b67"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/course-panels/activities-768.png": {
+      "bytes": 193662,
+      "sha256": "7ee4e4b76a8da95412c52d7ca7e1aae4bb4fbc6d57b6b1663684620b28f31e3c",
+      "gzipSha256": "ff08c96c0f9c80f42853ce034ec19fa2ae495151a1e258e50f8429c6780bb685"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/guidance-model/comparison-1440.png": {
+      "bytes": 230979,
+      "sha256": "674ea81e36742c782283bb672dd09b4148a6207630e74f07cc99d7c16544f0bd",
+      "gzipSha256": "d43a735f02e027865a83395e0630682e3b7a778a698a623a94d6b3fabfcd498e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/guidance-model/comparison-390.png": {
+      "bytes": 187697,
+      "sha256": "6d25634440525eb709612c376751ee9d7a0d50d0ab48ae3c895d8884bec8b8f9",
+      "gzipSha256": "08f27140df2f4eef091c0a2d613306d2c8730093f1485b27fd3114f2757b0b45"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/guidance-model/comparison-768.png": {
+      "bytes": 220547,
+      "sha256": "62809fd2a760afb0006fd28a2c585651e2324af6c6286c1437142ae9abb68186",
+      "gzipSha256": "fe7b2487446c4cd8995012f0ad790f6031b9a4d963b568b53bb79e0715811926"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/knowledge-report/actual-active-guidance-schedule.png": {
+      "bytes": 249760,
+      "sha256": "3a04742b1c7e9819438c5583e0a75739f31405ba3d4a86ae8a4a8a741221fdc2",
+      "gzipSha256": "1b6d226abeb3d861d4053c8720f2a56ebfb35920bae1f1e22deb6e66727dea7d"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/knowledge-report/actual-pending-review-report.json": {
+      "bytes": 10614,
+      "sha256": "4fe4349042ea084e374333ac337ba18b5a8195719f3c390c2e7e3d4e718199a1",
+      "gzipSha256": "03aca52471fb404181cdd0b9d04a313d01cc8e2e07c5413034f98ba8bfefef28"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/knowledge-report/actual-report-original.json": {
+      "bytes": 22034,
+      "sha256": "5502aafcf4b85cea4e1e9aa257b42745c7968ec68086b84cf91b78b4aa233780",
+      "gzipSha256": "38636446b2503b276b275f5208236c540aae1cc65a2c637c01ef233390c52286"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/knowledge-report/controlled-cause-history-projection.json": {
+      "bytes": 24363,
+      "sha256": "c7fae35e61c0bce6d60d74949704c6c67154cb14040bb42d863c1c694fdcb2bb",
+      "gzipSha256": "6becae66cc84173e83fd3baf3c0ec003af71d4247ca88e5acee4e9e4bd317e80"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/knowledge-report/point-1280.png": {
+      "bytes": 352348,
+      "sha256": "360a2e1fad2fe8cdf4e95ee959e137359665a4e3b6da49c8886096c153979035",
+      "gzipSha256": "f9a085aaab203c6560ef72ff02370a86385d0e7599ab25e9032669f40ee7e0d6"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/knowledge-report/point-1440.png": {
+      "bytes": 356249,
+      "sha256": "2ee3f91e0d5b4a1a9fbf37a0b4ed7425dea0857f73d5ef0d4ba0290d8ccc93db",
+      "gzipSha256": "4a5565f52558bc1623a0744c6e131719a0500cce95f95bb7d3528dd099f5471f"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/knowledge-report/point-390.png": {
+      "bytes": 289669,
+      "sha256": "ab0e69bf90b2cb0e19e5c652125a16a6db3387156cf9c8abb6d14a5c19dd5de4",
+      "gzipSha256": "6762ed8f23ffa83e03222377c4a066e1053bfed2c34a68234b35776367725f19"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/knowledge-report/point-768.png": {
+      "bytes": 319763,
+      "sha256": "81bbed3dc3d76c817915e128a6f0e4a0be4076323df548d53caa8079ce9b79cf",
+      "gzipSha256": "a80cde2af4dbb88479aa3b95926b5b4e3cb2c0152cfb83dfee55ad18e15edd77"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/knowledge-report/report-current.png": {
+      "bytes": 220239,
+      "sha256": "8cc47fc27c38094b3da5627c0896e075c520212800f1511f37ea5f202ebd64a3",
+      "gzipSha256": "3020e72aeeaf966644ab39d9c0c54bbc711d188ccc38af6b084569b83b1cc0bf"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/knowledge-report/report-first-workspace.png": {
+      "bytes": 195807,
+      "sha256": "f5837d708c69e89b1d53b0974d7a12803958d8a586a844b85ddba970669ca021",
+      "gzipSha256": "91c9ff2b7fda143ba6f73a06c3ff7d183101a2f3fda8115a57ea1284abf61826"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/long-pdf/checkpoint.png": {
+      "bytes": 178116,
+      "sha256": "f4bb4b5812f4f0b1162bad1a5f00820c1e3f646fe6e01ef38ad9e30fc0ea170c",
+      "gzipSha256": "f508d52324c5e14a824d26c62850718913f9d764b8929a12f372cd1dab108297"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/long-pdf/file-check-1440.png": {
+      "bytes": 204961,
+      "sha256": "f3e2467f256ee7821acbb35d1cfff56bbb99b97283164db83d4cc85608de1ef0",
+      "gzipSha256": "8ccb2e374ab0be69c744897915fc9424e2e7887f609c1de74ce3675d0cc2098b"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/long-pdf/file-check-390.png": {
+      "bytes": 171288,
+      "sha256": "33f8260455f53477ddf4d1ca8e3332f7b0c7ebe5893fd8291d629ee23ac1cfd8",
+      "gzipSha256": "a40e13c9b7627e01baf8a541220d3ca42f6e5177a58f47b7d0cfdefc2c28409d"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/long-pdf/original-repair-1440.png": {
+      "bytes": 226285,
+      "sha256": "fb2e487454a159e94d76786bd4d4e98d4c5c30052c9f744149372d8eb63c3360",
+      "gzipSha256": "683f55f00aa9b79644247965bcf80783f576de57b2e74006a1f445a4e8c261a2"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/long-pdf/original-repair-390.png": {
+      "bytes": 192662,
+      "sha256": "ab4f367b2211ca02d0aabe33d5594aac0e8cc479e1797877f4790e00ac097f59",
+      "gzipSha256": "083d2455bea23d0eafec2486a59e61939284705181c90d00eb64bb9599281606"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/long-pdf/original-repair-768.png": {
+      "bytes": 197342,
+      "sha256": "12017cfc2a6ef53ec2ec268ba53a39b3899b673e56f0d3968b989213a3b84d5b",
+      "gzipSha256": "e92ca38accac1ece27fa664ebe8cb783044f24ea42881f6f55bd77674e84625f"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/long-pdf/original-workbench-repaired.png": {
+      "bytes": 189236,
+      "sha256": "6e4b36547484efafe5a050dd352e5059916783d7c8ff4c8de4ee1be008f5e67f",
+      "gzipSha256": "0a2fa8bb1567774d2d9e851a3fd23c0a8183636be8ea62db0264e0677f9dc096"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/long-pdf/source-1440.png": {
+      "bytes": 212027,
+      "sha256": "e17058a182b8d442c0e588547c568a64b430fbe830ab43e8fa2fbb3761efff9d",
+      "gzipSha256": "f37a907a62b376a3f5d4bce2d2972d0c32767d94d0973f68a45ca8c91445e767"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/long-pdf/source-390.png": {
+      "bytes": 180108,
+      "sha256": "355454e78dbdd5e0adcf56edddfad580a8e399a99ecde47116939f37e161c8e3",
+      "gzipSha256": "2ffc450f1ff8b693b5055e7cc00a91dca0cc807ce185561e9246ab570f120463"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/long-pdf/source-768.png": {
+      "bytes": 184253,
+      "sha256": "b6682c1224355aecc3765eaec8eaad80f6fe10bd6069d2f23a6d1873ce621948",
+      "gzipSha256": "375cb3bd8f7e84faed564b0fb5b1923b8215540aff8b503b27dc32333466590f"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/long-pdf/workbench.png": {
+      "bytes": 159644,
+      "sha256": "a34b7ff061611cd3c7f96c1553b9edb2780c0afc635d110b09c1156025f2bffa",
+      "gzipSha256": "cba310d7b82f0ae37eea15fd4e59b1f58d51fe65d5a95b4f0f4f98cc0a29665e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/neutral-voices/settings-1440.png": {
+      "bytes": 157588,
+      "sha256": "bc13f6f771b39e31e0794719d679bf7cbf47e69647741586c1173eeb9aa735ea",
+      "gzipSha256": "1d991aea2aae0abe98e6fa020fd46a5e71f109b4292e24ca343de7bb7c68ccd2"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/neutral-voices/settings-390.png": {
+      "bytes": 59957,
+      "sha256": "8bb9fd169b009e083daa27fa7e90661c6fd8572dd0c4d31d93bdfb293c492e9f",
+      "gzipSha256": "696401a5052ae79c6ad3e6cc99616032d0bf87161504b7771a1ad49fea535c62"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/neutral-voices/settings-768.png": {
+      "bytes": 86488,
+      "sha256": "73191a89f43d362a98fd85fb1540fd4b6d56a07b2123c601bbaba40893060743",
+      "gzipSha256": "3460f5ae76accfc1c0142204659ad2f749ef6be622fd8cae29bf655f8116b70e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/original-math-font-isolation/actual-math-editor-fonts.json": {
+      "bytes": 5228,
+      "sha256": "22db7a6ba3af8d6945076a76da99571f9d0f1682d749cd87487b744dc70b024f",
+      "gzipSha256": "fbcff73a90036657a10d6f2b989a0bc21be227c89ae018193cedd8a0e44a427a"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/original-math-font-isolation/actual-tall-formula.png": {
+      "bytes": 4574,
+      "sha256": "a52dbee463f0de322b963b033a742ec23b5d2a53cc5e37116cfca5a52419665e",
+      "gzipSha256": "b90a24e82c5888a0f80c1ea8cd11f67311aa039b1e081d02a66670f6eb9ef145"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/original-teaching-fonts/actual-board-fonts.png": {
+      "bytes": 130140,
+      "sha256": "0ce78b7d1e942b71b36262b6ca60b79e0631afe8251bdcc59fa46845fae23138",
+      "gzipSha256": "c3068acb8d4120c9a8d25c7c77acb7943284f6c0c512a36b96333243a3879d80"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/original-teaching-fonts/actual-loaded-fonts.json": {
+      "bytes": 7285,
+      "sha256": "e122265786076aae99172fad2bbe0fd2d757f379a1d1fa8a385cf7a39c63d930",
+      "gzipSha256": "aacf61a110efaa1af8568656e447252db52bcdea84ae0b58c09b5012b61ac9f9"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/original-teaching-fonts/single-registry-before-assistant.json": {
+      "bytes": 41,
+      "sha256": "5256a0f8210b459cf6d3b2fd4d60a19848f2d473eff7e8170886749701b921c3",
+      "gzipSha256": "74ed8a18c7b987f21796b6129eec9b9a2a27fe83cb68ef46b9c425fca0f01bd9"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/original-teaching-frames/cumulative-second-scene.png": {
+      "bytes": 129393,
+      "sha256": "71063f2f5d3806dbde11e6316448fd468ee9214263539fbb6886079962af0b22",
+      "gzipSha256": "0595740d3452ad1263a6d4ac97ba7d267fbf9b9d886c01ce22a55e76a08e4c45"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/original-teaching-frames/original-shell-1280.png": {
+      "bytes": 118293,
+      "sha256": "16828b73b3b24dbcd9e2b6257043413fcc95693d03451a44350a90b7077d168f",
+      "gzipSha256": "62b7b54b6e420c151fe04303c0bfe75ca3145d637cdc0debbd291503e922b551"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/original-teaching-frames/original-shell-390.png": {
+      "bytes": 45689,
+      "sha256": "74651ded9e2565c9f25458c51f41bd45c8f33cf6a4e2e868cf6bf8b92d3223e1",
+      "gzipSha256": "c23bd342c0674ef08e2217520ad5d1fff44b11f1c76bd2b3d7e1643f750c0086"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/original-teaching-frames/original-shell-768.png": {
+      "bytes": 57135,
+      "sha256": "4a99467b8b3ebe912021ab531273e09c9eb385cca796aa940e7d014cca33fc91",
+      "gzipSha256": "a2899e9e31925686adbeb70eb5ab41a5061538962852d1e1b8525da453dd1e67"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/paper-practice/actual-completed-review.png": {
+      "bytes": 172768,
+      "sha256": "fb688e3707c91a807b848120ae22f791d11bb913daf95883e7508bf4725423f2",
+      "gzipSha256": "b5a5563096ed33a5376a01ca199146f35370902d06a40ecdbf019f255f3c54ab"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/paper-practice/actual-first-answer-and-correction.json": {
+      "bytes": 1458,
+      "sha256": "118e2926944fffd45715e563c4359b348e1456ae51bbe3d9ed2a20b69b0d726b",
+      "gzipSha256": "b86ce13a2c19503d47139534f69090c3a09c0f639743ca46f76208dd6b6c4e81"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/paper-practice/question-image-1440.png": {
+      "bytes": 162408,
+      "sha256": "606bd801e6ddeeb667ddaec9b37791f394c8a5157bdd3b96a00b97442a64924f",
+      "gzipSha256": "7917de98707f367c7096fe218050a34f1426dc56df83b318f1a9d30e658e27b4"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/paper-practice/question-image-390.png": {
+      "bytes": 143910,
+      "sha256": "eb1af7aad5e6f1fa8a01da34a66fc9e3ca8c1c99ebf50132defa16aa554e0407",
+      "gzipSha256": "71b9f947432febc27aafdb7dcde07b814d11f38c5995cb5068d2cedcbbc5ec77"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/paper-practice/question-image-768.png": {
+      "bytes": 149674,
+      "sha256": "af98e97cf252ff684db8823d6c059af969cf8585e73d912b2b4c1ef818d23be6",
+      "gzipSha256": "904a3eb79b889fad30cac5533baef1fc82939f2663e7b002ebb9dc85674f6b12"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/paper-practice/review-workspace-1440.png": {
+      "bytes": 75485,
+      "sha256": "b313b996c2974c1157808a7a4ad81029756632a47a8ca03d593662be99d4604d",
+      "gzipSha256": "2b4d66529e4cd9386cf0defde43be36b9b373e0572ac4d9c2ab13f76cb3453d3"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/paper-practice/review-workspace-390.png": {
+      "bytes": 63151,
+      "sha256": "a90dc9b0ea158812906edc211c84764f4a55c408b4c0c55ee753b124e795427d",
+      "gzipSha256": "7f5e080a2112c98788c8e265c81c58547c54e742839ae108f778066bc3aefbdc"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/paper-practice/review-workspace-768.png": {
+      "bytes": 70537,
+      "sha256": "681223027d0f3e3698f293fdc35a19fa596b92aa1d7bd1a53a856696e48249b7",
+      "gzipSha256": "59c850d2a5fafb8ba2dfd79bf941847b7ad96e8f7769133d5b624b2bfcdfe2ee"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/paper-practice/unified-calendar-1440.png": {
+      "bytes": 128328,
+      "sha256": "a9d3ab2b9ff9a9b2899c31d73b4ac24c05d06e1d02719b4e07660031b73f9dbe",
+      "gzipSha256": "0cebf16b220306b01268a2a6de2e708a038f73f27e63f89290514dc371c9eaac"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/paper-practice/unified-calendar-390.png": {
+      "bytes": 78355,
+      "sha256": "1c79c83a977baab0e8a0cd2e5d230c8850ec6597ca93e0900faefe0f79c21e6b",
+      "gzipSha256": "7f08c036eaba196e6b2a0978300fb0d1e327075951402bce3e4533a9c6a0b5d6"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/paper-practice/unified-calendar-768.png": {
+      "bytes": 92418,
+      "sha256": "8cd5324d3b101e101d015a555b111305b6084097e32fd404295b0706c8e4a9df",
+      "gzipSha256": "2d02518c0c819ff5dc2025e559d0800d8f3812ffe5a536e578e562d30b533f82"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/practice-reference/actual-desktop-layout.json": {
+      "bytes": 958,
+      "sha256": "379cd23d6da1716976e03243fa7b1a012ea2a710961680ad20f1f01dad2abf17",
+      "gzipSha256": "18223907fbb48a758aa0ed37d0a04cba097d2534e36eac24793dd2b442b83214"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/practice-reference/assistant-1280.png": {
+      "bytes": 103376,
+      "sha256": "9d487f163ce30e9ca5db7cb41f529d87a46ca41b01b76b4cd16e862c1d2b470a",
+      "gzipSha256": "dfbf8745ee07b221ed2e783405379202711fdf9fadba0b3317909c787bb3865d"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/practice-reference/assistant-1440.png": {
+      "bytes": 105063,
+      "sha256": "2efc560db286a0937659c60680603c72d78b6e1fa6807371eebcbf07a5290c24",
+      "gzipSha256": "7de91793dfa73b38c713c23a61b87fc4def3c38bc620257f79c195c16a5f1a1e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/practice-reference/assistant-390.png": {
+      "bytes": 38025,
+      "sha256": "8d90516de817f489be9e55b411c1ed2a069580bc160531d8c0e66f5f265a7c02",
+      "gzipSha256": "7e01d67adb3ddbf6f3acab9feb1a96e5d9ba69f91d41010da2a53a67306f47e7"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/practice-reference/assistant-768.png": {
+      "bytes": 38248,
+      "sha256": "22b6cfb08ceeffc8fa540d45fc1d2f2912807cf9bf07d7cc4ca31f3643c5b2ff",
+      "gzipSha256": "7abaab059c8961353824e40a1bcb06f655159e00213f4df9c850cc43f2521688"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/practice-reference/multiple-selected-1280.png": {
+      "bytes": 72348,
+      "sha256": "69cd40cfd9c07b29483fcd654618aabf1e00cec5215a7e6bfcc3925448d7588e",
+      "gzipSha256": "42ff3f5b2c91f680535b5d0ab60d8424dba8dd5d2d4fc544593c5245b7ef443e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/practice-reference/multiple-selected-1440.png": {
+      "bytes": 73466,
+      "sha256": "420d82001bd3131e0b2ea8e7eecdcbf4f0b5757fb0779d6838978c81a47c2c9a",
+      "gzipSha256": "5bc1f4d6efa74997ce013dd66da526766340a363edb724cf10a3ac39dbdc68d7"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/practice-reference/multiple-selected-390.png": {
+      "bytes": 60492,
+      "sha256": "955008ab4a7c711c7c9cb2d8ecc2072f81478da453f63ce2a79456da0b1949f2",
+      "gzipSha256": "59b693fb86758a10960426520013a6642303e04abf061bd902f0816b35b95e86"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/practice-reference/multiple-selected-768.png": {
+      "bytes": 69871,
+      "sha256": "a43820d478d7e7c09668ebde5c2a1c3d79926833e13552d908f019934d9a57b2",
+      "gzipSha256": "1aeadc26ba584597f088ef7a04f0992ed7aa54fde2e26718ba723ea014e4bd0b"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/practice-reference/single-answer-details-1280.png": {
+      "bytes": 170035,
+      "sha256": "eb933ee4646142cf7652fc21cd05c4180a9c14a810af35a26aa9ab3243679798",
+      "gzipSha256": "362a13c71a04c3049ab652c3ce9cb5659bc053fc1aaf8d72c301bc4065a09ad7"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/practice-reference/single-answered-1280.png": {
+      "bytes": 155511,
+      "sha256": "f02831d41817cfbb91dff7e96dd4a39f057bd83cf7dfa8152db57fddf029d363",
+      "gzipSha256": "50b1103ec13934e668d8f21d6935246dc14e0b9d293ae782e4d7f2014f683cfa"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/project-teaching/field-1440.png": {
+      "bytes": 31158,
+      "sha256": "c9e8d9d01c92d556256fc3522b9bb89232793e9b2233f749660814f94dd295ee",
+      "gzipSha256": "0665dad02fd24406f66a3c807d454cccfa622aef61239600af8419c89ffe5236"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/project-teaching/field-390.png": {
+      "bytes": 25962,
+      "sha256": "cf00e00d8dfa40d25eb274e74f5aaa9bea02ef8603cabcc1cd1e29254faa8e98",
+      "gzipSha256": "bf626db7ef2943ec1d61ab6ae5160954f13de1610da66608bc798fcb72611944"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/project-teaching/field-768.png": {
+      "bytes": 27726,
+      "sha256": "ca395276ae657f7e0278508ff056f0e0a4d3158aaf993f9ada07da44d4aad84d",
+      "gzipSha256": "1fadfccd36e73514d177ae529dd07c15d6d0154dfd5357f4442e58f86392ea69"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/reference-navigation/navigation-1280.png": {
+      "bytes": 160732,
+      "sha256": "cc8e830e90374664062d035831f990d16eac72c1d961ac554bad29b424d27d68",
+      "gzipSha256": "401f07f93b39841d9aadfb56454c3cc307f6e3918a68c38de34db26af7320b7f"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/reference-navigation/navigation-1440.png": {
+      "bytes": 169023,
+      "sha256": "43b26b7b61354afef7ccb87ee0e9d2e89730e59f6273887241243af7a6416fe3",
+      "gzipSha256": "3cdf03d083da1821a305e4acfb788aec7ccf14140a7e17acb70e367d03d6fc76"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/reference-navigation/navigation-390.png": {
+      "bytes": 129640,
+      "sha256": "be3db9485925a7664051bd42eccae24c772c202ccea068b71b30622eb28a7513",
+      "gzipSha256": "50d3ce12261ea1333a8035c96993aa39374d48252a69a964e4e3905e5d90c625"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/reference-navigation/navigation-768.png": {
+      "bytes": 148982,
+      "sha256": "17e023a77559f77b79192b004c5a17ebf3499bc616fbd6d7cc1416306cce8016",
+      "gzipSha256": "8d44466b99f2236d1fe0d74ec56457d89179bcedd9a93352e26230f78f936cb2"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-check/authoring-readable-original.png": {
+      "bytes": 135977,
+      "sha256": "d7d378f0723695fc794efb0a190796de80893d1aca80115a56419932ec018a24",
+      "gzipSha256": "7e233e89b1d9ad9bb9a1df95f140a9719265f6fa9caf76ef5e1808ed8fbf2b2a"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-check/candidates-1440.png": {
+      "bytes": 286753,
+      "sha256": "9c261ffc4b180e92a0c49a0c40b2375f6b21e15e3b94b31c8c06f70e04145626",
+      "gzipSha256": "26d2a23356e1c0152d270b01ccc14a1b6e04fe99bdf50b5390733660bf9a0273"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-check/candidates-390.png": {
+      "bytes": 244368,
+      "sha256": "9ae0af1c17ff0477296498379251a7e4ad690d4c4db2f79e60ae74d269994530",
+      "gzipSha256": "87acb32d2ee5a59d4f1a67d8ec8e589cf4b43e63599694d2419d55a21cf18c97"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-check/candidates-768.png": {
+      "bytes": 255018,
+      "sha256": "fff01dcc1efc81cd454e45676ec109adfd582b492afc56515f347c84f7a5f96a",
+      "gzipSha256": "12dd66f2651e51d24522982dffdc61180ffc11abf96ce2be2306e55afa1c7b45"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-check/frozen-source-1440.png": {
+      "bytes": 122746,
+      "sha256": "288901eeef19a1cf0ffe8d86397c6d625b82ca563ccbaec0aec24d2a5b95dff4",
+      "gzipSha256": "662c2fcd4b8ce66f723940168ed1f99943db0ee0fb45f1e92dbd9a35d1546d46"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-check/frozen-source-390.png": {
+      "bytes": 94998,
+      "sha256": "bdf92651574d00cc705c89e9834a1ac83bad13f2e801bc67904064eaaa8bdccf",
+      "gzipSha256": "74af6d0f2a0a1e6fee7cbdcd729611c04ef6a4cf8acf1242abebac6c91fd3f60"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-check/frozen-source-768.png": {
+      "bytes": 104727,
+      "sha256": "2cf00fcfd8a044109c128e28c30e5732d090d899f14b72457dc5644a9689559e",
+      "gzipSha256": "37bae49a2c5285ed7d3c2097d3b7a7e6a2c984b155e4ce8ef22900daf57ab092"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-check/review-1440.png": {
+      "bytes": 86135,
+      "sha256": "1cc7a0b982435508cd2ec2236b01ef32001fa3821a8dae3a2bbd5e2f5a089910",
+      "gzipSha256": "6837793d93c79aeb6876bfbb74fc44861c24218243f4b28bfad10ecdb1fff8f7"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-check/review-390.png": {
+      "bytes": 70637,
+      "sha256": "4cb3fb8ec61b20b8f4291e2c188e2037acab0fd8d965e04bb3a4e2c6dd1e2b1d",
+      "gzipSha256": "61ffac3979fc1123018ed1235732f422a244341923d83d3a9327c039b7b978fb"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-check/review-768.png": {
+      "bytes": 81707,
+      "sha256": "453f26fd79e56ff7ee9a900fa5b5e148011b0b3f67af3ced55e1300be1389563",
+      "gzipSha256": "31f3655fc4fedf68b86735ff024d2c937c6c0f0055da0fd673e45c72311528ef"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course/course-1440.png": {
+      "bytes": 22555,
+      "sha256": "351345455a2a8150a5641b5755913c4fbfe7c2ee7d1a0f67b8e23ada9690bf48",
+      "gzipSha256": "1cde54fb1e343f7b1492a8b4ec9d8643ec871053eed45741150c068de0377809"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course/course-390.png": {
+      "bytes": 221971,
+      "sha256": "088ba270f2f29d99b3b2893695ef7f597e20dda832985051d040d217080dc0ed",
+      "gzipSha256": "b8d0132b1483a7c59934569c52816d6b1ebd2ecff1126cec9a76d0541ea08d57"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course/course-768.png": {
+      "bytes": 16830,
+      "sha256": "3da7631eed0735626feb4f75e97800aba7ba4afe75777f3a205c7050433af681",
+      "gzipSha256": "5fbd594b8ade6dd03d298be14a0e485230b62a9ab01c3ad20c0dfa795cd6afcc"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course/create-1440.png": {
+      "bytes": 171131,
+      "sha256": "336d61247cc26cad45424589812a2824dabebd336fb3dbb3172f6045582787c6",
+      "gzipSha256": "a7a107b7dbc6932512ea4e73eb4fd9ef5cc322603538107d4bbc9d88695f5bae"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course/create-390.png": {
+      "bytes": 139319,
+      "sha256": "63a4a2c0e95d970d2265732b7aba22666444f3e5b223bdda3b443ce1c7444c8c",
+      "gzipSha256": "55544718ce79045976506f9f2afb49916839f2cb0715ad6803d2be2714378f90"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course/create-768.png": {
+      "bytes": 144739,
+      "sha256": "a104755ab63ab8b03ac4740c13efda96ebc52b4d351b460a3e40ed09ed271cdd",
+      "gzipSha256": "b126f4530b19695fdf94df43c2a8633a64b9c14bc4b82f79161ff143ffc86e88"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course/editor-1440.png": {
+      "bytes": 239828,
+      "sha256": "eee98ae744a721edc0d5cc7ed388678c15ee5a884f815685152a573b7d1211a0",
+      "gzipSha256": "2539363123102ce95c7296687d60463d9087ebd4a945ca10e4f4c34d45f15ac5"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course/editor-390.png": {
+      "bytes": 202380,
+      "sha256": "0fe16db83eb01f564fd0b53851168c5a6c0f9faa0fcea042c12ea06ffa020f14",
+      "gzipSha256": "233ecbe32f5155d8a615f224c39355350f6607312b093c61ac17190fc1dd4cbc"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course/editor-768.png": {
+      "bytes": 206182,
+      "sha256": "e2a93e7d4651b4a6876b6dd2296ffea0e79ca55a00463356995202142495ed89",
+      "gzipSha256": "42f388766c249ee3c66219ce360b0bafbf9a4db95413b88f1b8f7a3fbe930f76"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course/pdf-original.png": {
+      "bytes": 188228,
+      "sha256": "5ad47506e2ac3f3598b5f8e286483555ac452e818665a71f7a3829d715915e34",
+      "gzipSha256": "901f1bf6b1c6530b3d09e7cfdad9780600d84e22ca162e214a6999b2a704d800"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course/pipeline-failed.png": {
+      "bytes": 114583,
+      "sha256": "559b7c71d580813b7164e4beaf8e5d39753ccd3d56718c2761b0a36e69b24f4b",
+      "gzipSha256": "695f96c301d55a4f7c60ad2744aa14a27ec013fd2ef39028adb41a13ecef53e8"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course/pipeline-progress.png": {
+      "bytes": 108253,
+      "sha256": "64622c48607ed78acdfbeb775f6a71bb435c13a5f46ff90b5b0684e8adfbceda",
+      "gzipSha256": "1cb48e77df0e50d4469b97c8f2d8e6ac2211d629b37d97f8eb2a36f1896098f3"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course/pipeline-review-1440.png": {
+      "bytes": 448392,
+      "sha256": "2841cc5c038a92b925856f03a8e93969313137d1656270740fe0780fe0002669",
+      "gzipSha256": "75153d7fe23d744a8a3a11dcf1b3f0efaed892a39e22cee3b73042a50ce821fe"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course/pipeline-review-390.png": {
+      "bytes": 392331,
+      "sha256": "bc939d0fba635ae9450b4cae9b7f197b489cee9910cd4ca327b232f5e8e6be36",
+      "gzipSha256": "b90a676f5dff65234da7fa190f55436565c1c93d20b299d79f629489aa02a77f"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course/pipeline-review-768.png": {
+      "bytes": 408173,
+      "sha256": "3e3f9cf8fea5114124de570ab6864732776a028303f0d0b02025df3dba2aa9e0",
+      "gzipSha256": "45ee1b1fe39f019a5895154c4c88c23cdd6127ef271e6f0609847ac31d149f8f"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course-long/coverage-1440.png": {
+      "bytes": 661677,
+      "sha256": "b2bdeffe2f9ae2ab089ea6123ad3a776252bc9e82444d28126f86a0ecbc1c848",
+      "gzipSha256": "3ce4c5f82d2a14de20eff9a4feca3c68a58d7511b8ef993b3bf8b7f4c762e986"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course-long/coverage-390.png": {
+      "bytes": 560696,
+      "sha256": "504dcb4c15f5eae1f4854f6dd357003107b7c31cee9be891a5909022dab6cc70",
+      "gzipSha256": "46ab459adafdb9b856f68cc9784f5d5852a12aef4f1fe43b574e9382cbc8bd1c"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course-long/coverage-768.png": {
+      "bytes": 666995,
+      "sha256": "9a2a5cf02aa8a61b209062ca6378c66ebdf9d26e6bb42f0e7957c5e1fdce47c5",
+      "gzipSha256": "e1cc0d1d14adbe783c1314db792146bb92d12ec8eed37dc300e4771827b974e7"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-course-long/resume-failed.png": {
+      "bytes": 115135,
+      "sha256": "fd902fe4d74a645b05fff268c1cd56ee8529d7973624a44f1974fbb3115260fe",
+      "gzipSha256": "1913d6092a72d376e25f5f84898a1beca4382edd5e13ca69670acfaef9d89e4d"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-project/source-project-1440.png": {
+      "bytes": 173140,
+      "sha256": "cc62d4728b284ce5ea5403fbd0c041720c63d5bf78dbf7e120f9a7eadce346e4",
+      "gzipSha256": "15953f52673a9ea0c6b694414f24da635060de64c1a2f88b444269ba30896c9a"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-project/source-project-390.png": {
+      "bytes": 136654,
+      "sha256": "2ae255dcf5ff3ccacf4420050ee270ca81e60b475b5d11a418f7a243bb4866c1",
+      "gzipSha256": "4f17860077ff1fa76b67a6745268ade341b78ab35b1f74037222ae5fa0584ceb"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/source-project/source-project-768.png": {
+      "bytes": 160553,
+      "sha256": "cc0b87681ba4137264849f26f4d3a99cb9b469c34f5072f05d955bde58619dea",
+      "gzipSha256": "9379f0a5800607c80be18c8511e63d7b3f442dfd96129cc5a994185e444ba3a0"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio/studio-calendar-polished.png": {
+      "bytes": 392523,
+      "sha256": "616f90c397ea836da491eb04bf9c5b4909e22bbf02a559675b2b86c0de351446",
+      "gzipSha256": "e305a2ff25c73438f4d404fe9d469c6d4da223409f32c0998146fb38257f5d2e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio/studio-course-polished.png": {
+      "bytes": 192124,
+      "sha256": "7fee57119d76d7b9e338304565cc8c42f7cae41d600871b8287a6cda25406c02",
+      "gzipSha256": "5d2025bed8da0126539538b424725036521c9e7890ee1fa239213aa1a9e7d43b"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio/studio-home-polished.png": {
+      "bytes": 164064,
+      "sha256": "83e8bdc501a98f8021c1ae543c8e58f261761ad59945e628e6bede165a9e1db4",
+      "gzipSha256": "84bd7c8960385870020b330fc84439e22ff5135f42015a1b7c6360d1fc9a6dfc"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio/studio-materials-and-pack.png": {
+      "bytes": 129055,
+      "sha256": "341d50c3d888b845c0d38e1e9067f9a5edc3288a6a63d02272148e301631dc10",
+      "gzipSha256": "2c1d356f7309ca655bb19f2febe4f2342a88273bb1f3e7be89e5d262969e5683"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio/studio-model-selector.png": {
+      "bytes": 324400,
+      "sha256": "457285495783b6ea0a1715ef6caedd64d706e1ff269e8801decb3f07b280b512",
+      "gzipSha256": "d6114643e50a6cc4af8acedd5ebf4d2fe52bf82ca73534dfcf2d4d9f644914c9"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio/studio-pdf-structure-review.png": {
+      "bytes": 171521,
+      "sha256": "c0de65ba6f1242b8aa07c382d5e0ef13fc77af8b1d9b45c6db5d2b6275644c37",
+      "gzipSha256": "a4ab051fa7934ef1533a14d39816db8cabd5a29cdb5b05aa722fcfb16c24776e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio/studio-whiteboard-player.png": {
+      "bytes": 13800,
+      "sha256": "70df835381fbe178740bd24a7482107b182d011b9a0969290c35b0d0656ffc96",
+      "gzipSha256": "8b5784dbb73b447ed4581561cf8cf6af276759bb7dd27792dfbb03c35f6c5806"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio/studio-whiteboard-preview.png": {
+      "bytes": 153794,
+      "sha256": "d028749cb0826490c4730155e86530f9dc18192a978f983736ad29e2b189c364",
+      "gzipSha256": "888f32c8cce6294469d8b5658b3e3af79b6910f846a5092505353e996529b282"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/cancel-retry-original-lecture.png": {
+      "bytes": 117908,
+      "sha256": "08946619813a34595f886f0419f61adfef0fd704c9e3369ed934a56b8cf6808b",
+      "gzipSha256": "3ceb3b11700b3787d47001b15a214afa3efed3a5d496c5bedd4ad6a6aa7b0c89"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/directory-state.json": {
+      "bytes": 240,
+      "sha256": "ca042c32ad34847f1bcc4a907e668786a10bdca47ceacab59931a718a0bf505e",
+      "gzipSha256": "f28204529f59b8cf155045c499b26aa31738911227cbe22ea304c6ff13921e07"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/directory-state.png": {
+      "bytes": 79968,
+      "sha256": "1ee52604a182a882e53f23671d1bf762160fb3f1e36dbce04e26aea487dd0679",
+      "gzipSha256": "ff2f39854081462e1ccf70a3b717f5d3b396427caf306d83e036e6f574b20c75"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/entry-1440-layout.json": {
+      "bytes": 960,
+      "sha256": "817cbc508c57c14aaa1e35f73431d983e28782f253e0c7b482715757732cf650",
+      "gzipSha256": "9e519ec511f06637ccc954c05e8f59cba890e2bb199cbc4d02c1f41593ac1f2a"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/entry-1440.png": {
+      "bytes": 84035,
+      "sha256": "f2308c7d62d7b1a234fb799b4dfd5c4dd7eb2d5323e643eb3505572470b84343",
+      "gzipSha256": "e829630c308d988dd228324ae75f311cf4382f872b730169fcf223f74f39421c"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/entry-390-layout.json": {
+      "bytes": 860,
+      "sha256": "28dbdeabd2d4a502aec22fc99f44f1114c529cafc8f92e52c2e149cc36f02936",
+      "gzipSha256": "6e58c76553c5f9257a8eed105ecec07762c77de10b28ab3c1a32bf853a45d95e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/entry-390.png": {
+      "bytes": 51724,
+      "sha256": "eb69d272e611cd444000b1c95f0796693d466273bde08ac387c1415c901d8dcb",
+      "gzipSha256": "d6543b282b41930e699fb0e6449f55ec1f33cbf0c409cb3a26a2a03246e4b1d3"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/entry-768-layout.json": {
+      "bytes": 860,
+      "sha256": "f860368c9b4e2f83130bc43c5972fbe2edc04f3cdf05b0a1262d5d6c7316bd68",
+      "gzipSha256": "0563dfd1b3eff22a244764ef5385512063ca33cade5618b3ceb66118d9c529a2"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/entry-768.png": {
+      "bytes": 55715,
+      "sha256": "79c90d4d0d9fa9dc47ed050e7167760f19cbecce1d2f3f7e31761f86cbc21f40",
+      "gzipSha256": "471c35f58941060828d2c9d7b6f3d04c3833038bad5d9b5e648b2533f7e04033"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/entry-880-layout.json": {
+      "bytes": 862,
+      "sha256": "f68cd29aaf9c59e5ded1fc12ff0868e146673ecb6c172331b2138c99c2f881b1",
+      "gzipSha256": "91dc6a3440565e365f7d05cad03d80b7406c712270cb8ad4db02a60637058fd4"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/entry-880.png": {
+      "bytes": 56615,
+      "sha256": "7868f58225c6d05a1156deca25661e3f5c0b9cec38baa1d950ea2c07431a3358",
+      "gzipSha256": "770067879e29a054f6ec539d899c6d4ae93ca723c809c67a51ebd1e3b18cf25f"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/navigation-retained-independent.png": {
+      "bytes": 74691,
+      "sha256": "dc1f4176b13f50bd4b767032e9404e12a24daee71ad30ecbffc0025cd433fd1b",
+      "gzipSha256": "00e94f196d6ab826eda8596ea948c3f46f51d31c73156fc35f6fa93a01edcb7e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/navigation-retained-lecture.png": {
+      "bytes": 83530,
+      "sha256": "8354ae9e088a50faa2c8b6af9abd9b21725d20c96b75cb59b483030f81af8831",
+      "gzipSha256": "fe9330c280d61ea524807d3cdd16bf1123220592a57b27cff2abd22a2ba4dc95"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/readonly-pending-and-history.png": {
+      "bytes": 123277,
+      "sha256": "fbb0cde3a4711317dad872c614852b879d7a9f91614d8a2c45601d9b281da723",
+      "gzipSha256": "f44ab1c930bcc656e714128e942eda7eee653e8a7f9d7768ca8aad6d0f28bee4"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/recovered-original-request.png": {
+      "bytes": 113400,
+      "sha256": "cf5d071572382dd63693b77ed98f9ecfe77aeed63c3204c5b8fa019f25be76e9",
+      "gzipSha256": "13463d79adc7be4c9d4557dfa0371047b2d1140a08b5d967dd61d01909adbdad"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/retained-original-readonly.png": {
+      "bytes": 89763,
+      "sha256": "2c9510d2748b2fe6fa2d6dc797dc37df560bd34204a663f31780763139dfe191",
+      "gzipSha256": "395a7ce889525fed43979fe0657b04881323f7b3095ebfc6811b2e22b4a55e16"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/saved-original-model.png": {
+      "bytes": 114575,
+      "sha256": "884e9f03c2e876067926526480a5b92e80050facabb614ae4ff6c47bf306f8ba",
+      "gzipSha256": "8cd2e1d75eef528422ac48e41bae1bc34b7bff97336acadf047b7084c5c3343f"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/studio-assistant/separate-drafts.png": {
+      "bytes": 73848,
+      "sha256": "9646a933fa0213727a5b38f81806ad33f1822b8005484dd0d6536ae5ae63a976",
+      "gzipSha256": "316c4d1a26d04220f0b69b940172d9f988a965239a0231f5f9f2ea0602c5cffa"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/teaching-tools/analysis-1280.png": {
+      "bytes": 173928,
+      "sha256": "8ce79d92d4a22d698d1bf0dd1c517f096dcf3fc2f4a153ac14e32c5e0e0f09f0",
+      "gzipSha256": "5f465b1fd64b697100a4c49316cd8aed80531c1ca915ffe9df71476fa31f3d0a"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/teaching-tools/analysis-390.png": {
+      "bytes": 151646,
+      "sha256": "9781b82d08fd8d999b6d88a2ed5293582f9050d22203ea203800e68a9fd65b77",
+      "gzipSha256": "039b0b70c541514dcf18ea8056bbe7462cf32be08279be853e681af1b3695592"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/teaching-tools/analysis-768.png": {
+      "bytes": 163278,
+      "sha256": "2cfb97f58c3e266b13341c9a3db1b7061c4f0c19911906d0f55284ee6d3003f4",
+      "gzipSha256": "6c0eafc277df32251422a3f63b1b417affeeda1b8ce187521196a26800d08427"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/adult-complete-player.png": {
+      "bytes": 140222,
+      "sha256": "4033bb6631748041eef1720cbdac24eafdea7d7ea68ee86ae30accb16061f081",
+      "gzipSha256": "48bf4d7276abab428db8383e8448de19dd5c8fb763aa6b04d64e9da92ad539e8"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/child-editor-1440.png": {
+      "bytes": 288218,
+      "sha256": "d0e70b1a003602081a56e2b0ef210cf62dc880aa46df2666ac443a2687f67240",
+      "gzipSha256": "36191179f9b9da7f4d1d69030fe77dfc487863316807dbcae2346ae15f1a15cc"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/child-editor-390.png": {
+      "bytes": 247262,
+      "sha256": "15ffbe97d2b5a13c3a18063decb01c24d97f1e981fe8bf843e9d9c7afc105e92",
+      "gzipSha256": "eb881e115f838ed4d9444716cc48b0560e38f641d61beaa41e1e3aea8801144d"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/child-editor-768.png": {
+      "bytes": 258733,
+      "sha256": "b62f5917c3a90301fd90f81152e1a47fa4046a4dc99880dcc2c7fda7d9fc9502",
+      "gzipSha256": "20f619a8f03956b527d5cad34d5307dad59c2d80c98b25b10c5386298f6a7079"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-figure-reader-1440.png": {
+      "bytes": 249815,
+      "sha256": "13e50dd41444f567cae9304ff7e0672766632b3ec30cb91aee2d6e84fb952f8d",
+      "gzipSha256": "fe2973eeaaf98f695a7418ad35905307c3e86defc693aeb7130b9f189902498e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-figure-reader-390.png": {
+      "bytes": 68767,
+      "sha256": "9d6bebf65452fb6dd049f4f2bc542c66f665543f7baf84f1f7fecf482c228e87",
+      "gzipSha256": "44c42dd368d3a28e20d1379b3cb3de406b833519cba3a4ea24dfe1df7b7b7a33"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-figure-reader-768.png": {
+      "bytes": 144478,
+      "sha256": "182a98aef6e9aaecc427c39ff639f8a94b58e046c0676ddd6946fee9d6e27b54",
+      "gzipSha256": "f29acd9240c2989acfdb6a6571456e99993642ffd9c141e1b8594854138f0289"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-figure-saved-player.png": {
+      "bytes": 149838,
+      "sha256": "ae2745fda448702c325ecb82d4927b0ad252edf87312fd1e952b4b027020e825",
+      "gzipSha256": "3277f57fb9dba682df3eee5435ead3d44043eab8d1df37cfe68818dce984fced"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-figure-video-first-frame.png": {
+      "bytes": 181248,
+      "sha256": "1c57f083159a6872eadaa4ec36b572349ee778b633290aa0e27fb53d8e367b77",
+      "gzipSha256": "c858c23ae984619e12cee3ff35211f5db939bfe3bd170ddb04e523b30e7660b9"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-figure-video-probe.json": {
+      "bytes": 3318,
+      "sha256": "c5c34da466a73813e995056f77cb3a9a18837c9878b20c5e60bbaa967408899e",
+      "gzipSha256": "1f955306905253dc499b33399e65a6b53e136111d32880000a6957899ad8f4c3"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-figure-video.srt": {
+      "bytes": 521,
+      "sha256": "2d2f189311f99d1b69c730f70c7e38c4ee5a73f3b38cde8096b44a1ad7e721da",
+      "gzipSha256": "1391877d8373d23bf5db3f7ee89f9a63212d8fb6a48d046eb543b35b8dddb2fa"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-figure-video.webm": {
+      "bytes": 1422858,
+      "sha256": "56fbb4eab6d4cd8e38b88d0b1a586c36a99a56d6cca47dd0c07abbc31cd8eb2d",
+      "gzipSha256": "012c5abb71a9e9b259e2919f0baee83ce7a6612c27cf554e8abbb2a68a4e9703"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-formula-frame-measurements.json": {
+      "bytes": 1019,
+      "sha256": "ce194ab9740dd60f51e08fe9b5c9ff6f43b5aa088246acd498577d13959946d6",
+      "gzipSha256": "4ff95cc66b88aa5d172bea0382b72732f324f4b45ce0374b0a637615c2c8a97a"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-formula-readable-video-crops.json": {
+      "bytes": 998791,
+      "sha256": "e1571b7cc0eced8aa3fe191dbf50246ca9210274736d374386f61e3ac66a9d6d",
+      "gzipSha256": "51a8c56beedc4f79d84b2730d4a97d69ee5d6cc9ccb7abd67b42a81332fc6917"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-formula-reader-1440.png": {
+      "bytes": 147868,
+      "sha256": "8431643c9ef0a0563e3cec80795fdedfb33dce5f57086cf30a11b7cdc2185565",
+      "gzipSha256": "c1396d45cb672903b8bf3d121209804332241bec0bd4e98949810ba3ea40e8fe"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-formula-reader-390.png": {
+      "bytes": 59478,
+      "sha256": "6914f6ce387e3fd89b7646e37f1f25de4c93eb62459bc2a3857fefd79c2e3350",
+      "gzipSha256": "9a9d200ba6003231cefd3666bcfd2fe3de1d6c7c9eaaae20584c955ce25fc60f"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-formula-reader-768.png": {
+      "bytes": 67037,
+      "sha256": "37a45c0a15cde0deadba3278ad8cd9211ebcd01be802ae5f0f6e02b43be3aead",
+      "gzipSha256": "c8a974677115627eba03502d413b6530e88169da6650d46edfa46f85c96f1e6e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-formula-video-aligned.png": {
+      "bytes": 232374,
+      "sha256": "45756fc82f046b03b514675e740fce2db22f015e22dab61fd94d26eb9332a510",
+      "gzipSha256": "2efef7c28ed9af472d76a8097b3076b3bd90a52af80b4227879cbf05fa97c1ce"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-formula-video-first.png": {
+      "bytes": 183551,
+      "sha256": "47e1a67595d42715eb7442eb4b80417f9de0fbd88d0bd2da71217f59f1ff4b32",
+      "gzipSha256": "baba3b785ceee950ead43c413a42be3c78e0e3122c06a80c3b1ee62c8ca568ff"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-formula-video-last.png": {
+      "bytes": 235816,
+      "sha256": "bac5e33e945873a0597a81bb8589acafd515e419e94908bf903e91e9282e85d2",
+      "gzipSha256": "f9418751e37d635224976db6b4a2d82a8a927748e4adbdb1fea4fce616b6d621"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-formula-video-probe.json": {
+      "bytes": 4387,
+      "sha256": "c712c878ef1d87f3f1fe6dbcdee03cdd39a4037d476640b31c87bcaeab77c3f7",
+      "gzipSha256": "24bbc6128d63f7669a749cc5bf05a88c7d466c80e75fac7460a464869f930934"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-formula-video.srt": {
+      "bytes": 455,
+      "sha256": "76b3f2986c382d9428dcd72b3b905890d0c0982504ecaf839041730adbdd3cf9",
+      "gzipSha256": "eb0c5631d9f5a3c1842ffde674981bf470aafa586d5142abca4333b86e0ace07"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/topic-whiteboard/topic-formula-video.webm": {
+      "bytes": 2165049,
+      "sha256": "94d0d3e18068f65e063a165210c40168b4941f1709931713ba5e04e1abe6b379",
+      "gzipSha256": "815b8b2e6f1fb85bfb35fc330ec87fe3719f1ad166a3b15158c92dc0dc06c919"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-continuity/adjacent-transfer.json": {
+      "bytes": 1416,
+      "sha256": "7aadabebca94957e60710ef8f9d7a866abb5d0312dc0f921423bffb228f918ac",
+      "gzipSha256": "b6d507d468b1d061e49c2eea0760cacba1f04965ae92f4032c790008f7145f69"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-continuity/adult-topic-transfer.json": {
+      "bytes": 1627,
+      "sha256": "16de40b614965d2e666bf47d1065b3b2fdc613903d0587479c511f7f9a66495d",
+      "gzipSha256": "95e2c0adcfae9b89b4065e291ffd41b7e97155469ad4440446e67f3dd060d778"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-continuity/close-pending.json": {
+      "bytes": 751,
+      "sha256": "29ce0597085de2737029c073fb15118d53998fd9737993ddfc55470217891382",
+      "gzipSha256": "755141d136b17012eefcc7fad1d257d2873a418ce694b01d386739dfb37b2311"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-continuity/manual-next.json": {
+      "bytes": 1178,
+      "sha256": "10838f03a71c9d56d1d43b4bdca7436d5d12756f6abe582c0ffb0c569d0fe374",
+      "gzipSha256": "f98a93f3f28b9d55dba25822b17cce3123bdb2649ab5b0ae3184f612717fe1f7"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-continuity/revoked-prepared.json": {
+      "bytes": 1089,
+      "sha256": "f850377f2686ece34862cfbfa257ebf310e0aff7b93c2a5f50078d81e9719552",
+      "gzipSha256": "3f1284bfb49a3d5d083ecaf308c5ac6736a989e5f88bb529434cf6d953c070bb"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-continuity/revoked-session.json": {
+      "bytes": 1134,
+      "sha256": "810ea33df9ee2a2e2614d9eca91ce6991a26d08eac131f899992cf9ab5c20d63",
+      "gzipSha256": "aff99ce038c247457ae638635dda949c70082b1cfaa1681bc010062d93a6f792"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-continuity/slow-cancel.json": {
+      "bytes": 977,
+      "sha256": "d444620979f2f042dd4ce073bf792da52e1ecedfb844253246217912baf5a31f",
+      "gzipSha256": "ce2af0f15c7ec40fb453f391a6badcd50d2f85a8af07c02096c02b104e489c95"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-continuity/three-complete-with-speed.json": {
+      "bytes": 3120,
+      "sha256": "c6ee1218703f362381bd69382eb265fa8fdeb8a3aa393389649632a14cc34134",
+      "gzipSha256": "50e0b97f17f0c976657d002a33b104dc279a848bcbaeccd0cb5c4f41f92bf3de"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-continuity/voice-change.json": {
+      "bytes": 1401,
+      "sha256": "5b19350b5833791659ea463ce240c8db02fe00f05678fcce1dd58cf6510f4af2",
+      "gzipSha256": "f9aaa709954cead102217f4ebedfa0d19c3c0ba83784033b9217a9ce29486d73"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-media/decoded-fixture.srt": {
+      "bytes": 297,
+      "sha256": "8f939f00bc90c727e212e01e8d2d4def8014e71a9c8e5499712ba740f452719d",
+      "gzipSha256": "3215ff400a87de098d331b25d90e3def45b88e4d8e3b13f5467d3d47b8dce352"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-media/decoded-fixture.webm": {
+      "bytes": 320219,
+      "sha256": "4b1d75f46ceb9dbc87c04e3718f1a1a6a82fe2926b3dc8f45510e286e3d89878",
+      "gzipSha256": "9a2fe99467f72c64bac02627978684ed20d4464f8ebb1a9490d15e63aada0e9a"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-media/decoder.json": {
+      "bytes": 384,
+      "sha256": "69f227a9ea98acfca74c05fd7cf026e7ac073f774eba2de3ab1bc526a31e531e",
+      "gzipSha256": "4dc11962447ae7c58d281038394d427165da991a8bec2f98ea795410472ea527"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-media/independent-opus-control.webm": {
+      "bytes": 10715,
+      "sha256": "c7276a364ec8ae4a01b86b56902e58085a91899452b92cc284083c535fcd02b4",
+      "gzipSha256": "3760eaca5f4e440562270d1d37c052cec03986ab9ad2b8e848261bf1347cf1ba"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-question-figures/adopted-2x.webm": {
+      "bytes": 455166,
+      "sha256": "5736892b8a25b8e90deef2d4814191d985edd093fdb574b23dc645d06e827dbe",
+      "gzipSha256": "fc12daadb8b5548c167257ae1d48978f7631c2f4022c2a9bf1d2d9d7c3e803df"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-question-figures/adopted-mobile-390.png": {
+      "bytes": 68021,
+      "sha256": "823859accae07704dde24764fe568a7fab9b4cf1867aa9f388a3d2f17be67c5f",
+      "gzipSha256": "271200ae388d2b87d3210733673bb21b91fc2b220d9d1358538722da33f66f1d"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-question-figures/adopted-mobile-768.png": {
+      "bytes": 75737,
+      "sha256": "d2a7655a43ed2e7d14facd207c302f31d3dc859b4b19e192a9e55d7bec7df163",
+      "gzipSha256": "3595eca3a10435fec25b83c2675bf36da993e6ce827e86574902db9f6ba70539"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-question-figures/adopted-version.png": {
+      "bytes": 132333,
+      "sha256": "bf2ef0d1bf99df1e47aac2a0e8b0cb9ba9b53a4f1082b8da2fa12db4e3b17adf",
+      "gzipSha256": "5c7a3d46154265efbc3605c9ff7f6ff5e554a55b521c27b9f94c4ca5c887d63b"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-question-figures/full-input-1280.png": {
+      "bytes": 121903,
+      "sha256": "6cd2a2f3efdc27df365b2719d9c4700e8644bbec08e97da26409e65eff7fa0fc",
+      "gzipSha256": "1d4fb223b334d38d22693d101ad0f85332af8aa7213bb682f57226293d52aa7d"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-question-figures/full-input-390.png": {
+      "bytes": 57006,
+      "sha256": "738b079aa9273da822adc2e5606e57f50542a5438590ee92a533e596207d422a",
+      "gzipSha256": "2934d29146d91fc5366488c15c3b631851358242a8dd549d8d4d03e866f8de83"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-question-figures/full-input-768.png": {
+      "bytes": 70662,
+      "sha256": "68e6e8a6dc7833893e71099ab63e7525236489ba42583790ce71c3b174904f86",
+      "gzipSha256": "16806db3d257e49bc807dfc9db9bc241abb3f7cfd85851ae53e46525c17a2ccf"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-question-figures/image-reader-390.png": {
+      "bytes": 70627,
+      "sha256": "338add4e7f1c97e00eb2dccd2ca0f744c03d1a96faafde402981e050684809c4",
+      "gzipSha256": "7d37150c795532116aad3cd86ae14e32bb3de02c009218b0beaf21ea6d4d13b0"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-question-figures/image-reader-768.png": {
+      "bytes": 142857,
+      "sha256": "ba0873ec9630c582e2f2dd9b50ee6e73e8d1307705afbef56cddb915a5d2af59",
+      "gzipSha256": "af5a5017b0a5006be87a91c19fad28a246982395d743ad53365f0a14b372ec04"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-questions/complete-notes.json": {
+      "bytes": 47533,
+      "sha256": "1baced50bd94f000ad6f8e0b64200360bb2946270777777c1703f28398340018",
+      "gzipSha256": "ce802e067817042730e3db44df6da1ee12dbe6620c2542fd9bd783047c22ec3d"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-questions/complete-notes.md": {
+      "bytes": 7522,
+      "sha256": "37fc7554f9d6d9a53f51c214f10f1b59ac70e49d6f725ae34909c316e82fb0a0",
+      "gzipSha256": "164b58e7a99e979fb34577439195b051eee787d270af7c62ed70d8df5f49f0d4"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-questions/original-sentence-command.json": {
+      "bytes": 874,
+      "sha256": "1d08b509a20c8087cf640216167628e2b57952d45325398f063bc62592a49a49",
+      "gzipSha256": "f6f36c3cd7c8d94a93d1c0f28fd95415f3371b688c74145faf69c24d9213fcad"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-questions/question-panel-1280.png": {
+      "bytes": 111607,
+      "sha256": "f322dd4fefd360b087efb3603818bd49c5450961d69e01675b96314c69058b6a",
+      "gzipSha256": "dc66ddebd754be79ee68c383e65e6c4a255489a5c823783735fa7d99eaaf65f7"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-questions/question-panel-390.png": {
+      "bytes": 61326,
+      "sha256": "ce62c5225096f9f3b40543227de2112680d1f9b99ff30a243fab8bb010c3a2c7",
+      "gzipSha256": "9d542d1a2edc00b11e4b9cf8765272aac4c09b7cd1da6edd0ffdbfc7ddef52e1"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-questions/question-panel-768.png": {
+      "bytes": 66387,
+      "sha256": "5edcb3a1e7994c62c1f88d492424e602c126f6aa2452c75d925166bdfe8a3d76",
+      "gzipSha256": "cc38660ed5dff9d2e161c698155375c53bef81643a6be9a416b98c4c7440c459"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-questions/supplement-2x-probe.json": {
+      "bytes": 3001,
+      "sha256": "9101a18dc1fab04e662d9d9e9a726b0681a4ceef605aa1e42d5c8b24a256ed76",
+      "gzipSha256": "b8901cfc9a274d720e2bf1d2fce1b3771bc63a5851c25b268e482ece2752f039"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-questions/supplement-2x.srt": {
+      "bytes": 295,
+      "sha256": "de7d649225b7399a91cb69163dcf5ca723293f8952f4f1357a86e1f1c69ba439",
+      "gzipSha256": "bb3616489aca69e479d9e68a08e5e468f0ea4e52e4390a72664a8ecf9f8d97ee"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-questions/supplement-2x.webm": {
+      "bytes": 819486,
+      "sha256": "148d3c5d992ec621eef9abb11ea18492b136b50dde6052fd18ee21edb2682165",
+      "gzipSha256": "1ee0734a22e85ea3ab37d41239d06e9b96b4dfb5401bc4c417bf954bcf40e1d4"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-questions/supplement-return-adult.png": {
+      "bytes": 110641,
+      "sha256": "f0be8318b9ec4e6ceaf37fe5661c67c4c79a427ff9068b04fad4ce222eb44a69",
+      "gzipSha256": "1e37dbec4d52e38d8d46b273a2d489bcb60e11dbd7f424e1a0f4e8ddcf5b3efb"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-questions/supplement-return-child.png": {
+      "bytes": 109038,
+      "sha256": "93417f86e1e0c47b94f27e0765a84598a43dd16c3492347e19dc769e8afb032c",
+      "gzipSha256": "fb8b16aed295db7baadeda9aa4969f98a71c78234c4b3f36ee045e71b0036e64"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-settings/actual-current-view.png": {
+      "bytes": 71029,
+      "sha256": "4f9dd7c6708f5aba50d191e8cabfbbddca948d5478225ec994d5fe15efad416a",
+      "gzipSha256": "8789a1a215413ddc59b7d3f343ca7e78036477b9ff13c6d09067c9cd82b4b64e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-settings/actual-neutral-clip-decode.json": {
+      "bytes": 628,
+      "sha256": "c08bd1d241344a7947bb80b37ebe4bff5f73115a8094c9f1ee21cad79da278de",
+      "gzipSha256": "428bd8077732bba9018ae71f3e7ac8972167dea809707dd9aeec93465fdd5d94"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-settings/current-view-pixel-check.json": {
+      "bytes": 602,
+      "sha256": "9c275fee42bdcf4af24e9b29a2520c9c30879e17f24a3326757f822346ea64d2",
+      "gzipSha256": "4cb8e768a1f371f96722dfb9c4defb0a853d8be897cf9df321a97641fe49c039"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-settings/double-rate-probe.json": {
+      "bytes": 3001,
+      "sha256": "8307668bc1d3e683f666f6b52b3cd649c01aaa4bb865fb20d61c155d9c10baa9",
+      "gzipSha256": "1195d4ac3c893e9cbe198b44afa9a21755b3de523d07c068c287323c62e3b13e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-settings/double-rate.srt": {
+      "bytes": 297,
+      "sha256": "b7f29469dbbf2658df2eb248e1c2d27fa0aaa9123df5bddf4979d0604cc680d9",
+      "gzipSha256": "5129967536563357bdf89089027db440ed38522a8b761f6792744ccd9d7bb675"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-settings/double-rate.webm": {
+      "bytes": 183716,
+      "sha256": "934c20465ae88e9e4c36b281d3322d49895f7d2f6bb742fda839d61f7bff1fec",
+      "gzipSha256": "c5bdb1c5361986997f43713b3a940dae9882d032dc3593be7e6ac9d50476b119"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-settings/original-settings-1280.png": {
+      "bytes": 158650,
+      "sha256": "c5ac4421b365081888d3501648cb0c2d8df573b7bdf077ebe266af2bfdb70fb4",
+      "gzipSha256": "2ea2ff216fab2910203995b93c00292fd73c753e316570de977309163a695e1e"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-settings/reading-panel-1440.png": {
+      "bytes": 111516,
+      "sha256": "df47f3cecb82ee533e8c88ae2498d985f3eb92e9782de0a44bcfcf0cf12b0b6b",
+      "gzipSha256": "c9c24512e714d1c8acc3db9e429b69089d183a193e65bf340557b6c9e772fac5"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-settings/reading-panel-390.png": {
+      "bytes": 46526,
+      "sha256": "0d49cc1a7537948363d24b31595bff13d4a746721b7e50dffb776a1ec4fe05c9",
+      "gzipSha256": "98a77cd240b83e9c4176ac27b1bdb0967b6695000c683a5b6456279443763e59"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-settings/reading-panel-768.png": {
+      "bytes": 48835,
+      "sha256": "eba37c5e6c994fd709623b8e793a288c56a51ad29b6602c95764cf429703207a",
+      "gzipSha256": "0974d8b4eaea1a8f5d2aeae6c76bf491f1533cd9813c2937f5933c90879ebd42"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-settings/share-toolbar-1280.png": {
+      "bytes": 119166,
+      "sha256": "51cc9796ce066f9c306c7cfb9ca70ce0e3264c987885dd771fa3caae8518248a",
+      "gzipSha256": "d62e61df385d002bde27b7599afb447415d9c40f36379ddc1ff616fe15913583"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-settings/share-toolbar-390.png": {
+      "bytes": 51248,
+      "sha256": "0cc311be960696df25c76279fc44d8a0c1dde67e16dafa51789b921458f2e496",
+      "gzipSha256": "2e24e41a381ffee74ecf3f4ac33b74f6dc684a8e5fafda0a76e6f0d27c246be2"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/whiteboard-settings/share-toolbar-768.png": {
+      "bytes": 65555,
+      "sha256": "9f8980be49e4cff44f6bbe440c3dcf17ccd2965763a5adb4a2e654e41c29c4a2",
+      "gzipSha256": "4cb32bfc3e2041c881cc00da205e4fd6e13cda3c45b538fc2cd8b2d6ac1b6447"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/workspace/workspace-calendar-empty-desktop.png": {
+      "bytes": 118801,
+      "sha256": "8e84fef31c27642ad9df3d14b892b880e04acc1ade9d2b3cc0dcfcc5c2cce315",
+      "gzipSha256": "66aca937e30fe9ba23ff60a7ea657c5b279739b067a006cafbf56c3c19252a24"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/workspace/workspace-calendar-mobile.png": {
+      "bytes": 67350,
+      "sha256": "ac0460c763043106d5b24236388406c1d471d728a5ce396a5a734e7803359b92",
+      "gzipSha256": "ffaeda0fbc03a6fd06deda213b0f7598ee97ee97bb12f493123f38ae47d72c9a"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/workspace/workspace-calendar-tasks-desktop.png": {
+      "bytes": 117653,
+      "sha256": "adf96d9595af4002099205ee6c99705a34720cdef6fa8c564f5540b34196c509",
+      "gzipSha256": "1237ebbef17a26e1bf8f4b97372b37d18e57e71a3436b7804044276e8eef5137"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/workspace/workspace-courses-desktop.png": {
+      "bytes": 135981,
+      "sha256": "0670c77668ac8f22a46e5f42b1f3ed1e4ea1c11ea0f5290bc89d63dc49b69066",
+      "gzipSha256": "6b65a9714827d4721cbc65bad7af7fe64cd39dc2653072491192fe4afbccd0b5"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/workspace/workspace-courses-mobile.png": {
+      "bytes": 94770,
+      "sha256": "4c10593ab8c8192519f5d36c1e48631291cba0d436a62e6f1d689b35f7ff9808",
+      "gzipSha256": "1b16f35f38de9cc28875d204e505e94bb9793cdf3d1c84930d4d1eacde33f532"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/workspace/workspace-outline-desktop.png": {
+      "bytes": 177127,
+      "sha256": "82cfa9ab8fc4035015e282452dee8e96e7e59687bca571cae9c840e3886b83dc",
+      "gzipSha256": "789deb8d2a109a973ccccdeac297ecaab01e8335ef04cc564e58fff27dd33d55"
+    },
+    "data/qa/browser-evidence/chemistry-assistant-full-browser-first-1c3e3cc020/workspace/workspace-outline-mobile.png": {
+      "bytes": 159440,
+      "sha256": "29926d88ef51a59a728ab4ef8a2145d0091fb831ab7ca059d83f43475ac129ea",
+      "gzipSha256": "7537fe9e88aea6e0b1d442a56d084404e044b634e981d40e73c631041aa3aa99"
+    },
+    "scripts/qa/run-source-course-browser.cjs": {
+      "bytes": 10061,
+      "sha256": "a4ef4449515911f9fa446fc8f99ea6876329cb1d40c0e09a538ffe474717d45c",
+      "gzipSha256": "5aac9301a982c1e348384b301a06c24162750c925255a0d24b58c2152463ed0b"
+    },
+    "tests/e2e/learning-home.spec.ts": {
+      "bytes": 10855,
+      "sha256": "c167675d4de10b5865ae76d42bda578e15b095540c85ca61bac331f9201a11af",
+      "gzipSha256": "22c084f4bb0b64799a93130a4bc9c113552cd590a8a6c37a4037f048b93303a2"
+    },
+    "tests/e2e/product-smoke.spec.ts": {
+      "bytes": 12633,
+      "sha256": "83a76aadc8364a664142b0b66eb535555bc670265017ec8f251db75a849eea82",
+      "gzipSha256": "f5d6d81c0a62291c6ffc4cd35f2dff53c24826115a41f0df743ebb5299474c22"
+    },
+    "scripts/qa/source-course-test-api.cjs": {
+      "bytes": 9171,
+      "sha256": "c1628c82fe85cb54dc7dfc42edfa6dd3239353051b2b089ce84be50462a9231d",
+      "gzipSha256": "9b9756fa2d9985a14e741462a293fabe2a1876396c3e96f4b38fbc92e87f1d92"
+    }
+  }
+}

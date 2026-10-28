@@ -766,3 +766,4 @@ export * from './whiteboard-question';
 export * from './whiteboard-question-visual';
 
 export * from './ai-teaching-tools';
+export * from './assistant-artifact';

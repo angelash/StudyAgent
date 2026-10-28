@@ -1,0 +1,156 @@
+{
+  "supersedes": "doc/evidence/2026-10-28/chemistry-publication-redaction.json",
+  "policy": "Final publication copies are derived from exact private originals. Inspect every UTF8 ZIP entry, extensionless network body and nested JSON; remove credentials, tokens, cookies and relevant one-time learning codes. Binary images and assertions unchanged. Previously recorded SHA receipts continue to identify their private originals. All unpublished ancestors containing superseded copies must stay off the published history.",
+  "traces": [
+    {
+      "path": "doc/evidence/2026-10-28/chemistry-assistant-browser-first/test-results/browser-product-acceptance/chemistry-chemistry-assist-218d5-to-its-original-unit-at-390/trace.zip.gz",
+      "originalPrivateSha256": "8e7e9d0e4eec36960c73dbc731cbe0beb3b3c9117bd164ef63a7f3735c7c789c",
+      "publishedSha256": "32eeb54e8ec3138a89f86fccfcc995cb6fafd1e927e6b913eab56b33614809e1",
+      "originalPayloadSha256": "8033d8abb9635df6c4a76953972fd26ba8cd91fa4cff0671a26560634857e9b7",
+      "publishedPayloadSha256": "c49e6125658e97ec6f50ed5f0706b5e9eb20d8e2861b0879938c289a235bae19",
+      "redactedValues": 5,
+      "changedEntries": [
+        "test.trace",
+        "1-trace.trace",
+        "1-trace.network",
+        "resources/4d6c7938a3a05187934d101757baede6975dec85.json",
+        "resources/bb98c8bf4a8caf07a5cf08579a77f2475c42c1f0.json"
+      ],
+      "unchangedBinaryEntries": 132
+    },
+    {
+      "path": "doc/evidence/2026-10-28/chemistry-assistant-browser-first/test-results/browser-product-acceptance/chemistry-chemistry-assist-6bc22-o-its-original-unit-at-1440/trace.zip.gz",
+      "originalPrivateSha256": "d58dced9f1a793f69abe7d23ef00b46ea0e0920517b9a734ed074b3c748f2bb4",
+      "publishedSha256": "3f0573cb0eeae5b98e894e519fc1184f1c6109cb64a9d9a9cd71a4df130ad74a",
+      "originalPayloadSha256": "81653525ce10da8a3dff0fc37aa150c179e59a25d3d961e88b6bd2852dc6c04f",
+      "publishedPayloadSha256": "6b12c4604592badd318d14854bdd2edb971888e7581dbdefa1bdf5f842b1dd31",
+      "redactedValues": 5,
+      "changedEntries": [
+        "test.trace",
+        "1-trace.trace",
+        "1-trace.network",
+        "resources/f969cfa317a434197ef72e685cb4cbf9ddd18ac0.json",
+        "resources/c53ef1bea6107913f0b617df2395fbc1d81b28b1.json"
+      ],
+      "unchangedBinaryEntries": 134
+    },
+    {
+      "path": "doc/evidence/2026-10-28/chemistry-content-correction-first/chemistry-chemistry-a-chem-4f30e-not-override-course-content/trace.zip",
+      "originalPrivateSha256": "8e5592d8d675f42494b99387c34d4997a4cd7d23dcd0fd4535ef87d3c2fe6db3",
+      "publishedSha256": "ff1ca08f6d95819ccb475edf10cfb65c14613e9cb85e20960d149fc5310f6859",
+      "originalPayloadSha256": "8e5592d8d675f42494b99387c34d4997a4cd7d23dcd0fd4535ef87d3c2fe6db3",
+      "publishedPayloadSha256": "ff1ca08f6d95819ccb475edf10cfb65c14613e9cb85e20960d149fc5310f6859",
+      "redactedValues": 5,
+      "changedEntries": [
+        "test.trace",
+        "1-trace.trace",
+        "1-trace.network",
+        "resources/e2f00a51b949cd44f2f7790dbc921eea649a0aca.json",
+        "resources/06bafea77b3b45cc023abeea01d480069d7a7b55.json"
+      ],
+      "unchangedBinaryEntries": 68
+    },
+    {
+      "path": "doc/evidence/2026-10-28/chemistry-content-correction-first/chemistry-chemistry-each-u-7de90-s-in-the-rendered-classroom/trace.zip",
+      "originalPrivateSha256": "84e48f63258f9efbe8e0a15143929e71167bfe2cd2e5c124122fde8df64f66b8",
+      "publishedSha256": "1d215d8df4db4d3503f598c65fc199eeb34e81125d1aa7f76a87313f6755f0e0",
+      "originalPayloadSha256": "84e48f63258f9efbe8e0a15143929e71167bfe2cd2e5c124122fde8df64f66b8",
+      "publishedPayloadSha256": "1d215d8df4db4d3503f598c65fc199eeb34e81125d1aa7f76a87313f6755f0e0",
+      "redactedValues": 5,
+      "changedEntries": [
+        "test.trace",
+        "1-trace.trace",
+        "1-trace.network",
+        "resources/28140e48ccaf07c7291b8061571dd1b66e60ab27.json",
+        "resources/d91807c992780a55cd938bcc5feec45dfdfe9cf6.json"
+      ],
+      "unchangedBinaryEntries": 104
+    },
+    {
+      "path": "doc/evidence/2026-10-28/chemistry-content-correction-first/chromium-buffer-failure/trace.zip",
+      "originalPrivateSha256": "2fedcb0f000c241b7c70ec64a59e0cfcce87560c7d7f883df80e09dde99280f1",
+      "publishedSha256": "04340de83a7538e7884be8afc900d329046060ae27e40e7ceb8d616da5d991fa",
+      "originalPayloadSha256": "2fedcb0f000c241b7c70ec64a59e0cfcce87560c7d7f883df80e09dde99280f1",
+      "publishedPayloadSha256": "04340de83a7538e7884be8afc900d329046060ae27e40e7ceb8d616da5d991fa",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 5
+    },
+    {
+      "path": "doc/evidence/2026-10-28/chemistry-content-correction-first/mobile-navigation-failure/trace.zip",
+      "originalPrivateSha256": "ba2c39c37389b3bd2b28d7315a12cd450aab79b2f49b7ee7ed52348dfb9c0054",
+      "publishedSha256": "bc7a4b0cc958168c6dfd4b24debe8825525c38df075d64b7d1282202a454f508",
+      "originalPayloadSha256": "ba2c39c37389b3bd2b28d7315a12cd450aab79b2f49b7ee7ed52348dfb9c0054",
+      "publishedPayloadSha256": "bc7a4b0cc958168c6dfd4b24debe8825525c38df075d64b7d1282202a454f508",
+      "redactedValues": 5,
+      "changedEntries": [
+        "test.trace",
+        "1-trace.trace",
+        "1-trace.network",
+        "resources/a57478c7d68e3d526b51ffe0e7e4762809211158.json",
+        "resources/0e8e3388ac7a67d1a2956345e779575895e51485.json"
+      ],
+      "unchangedBinaryEntries": 272
+    },
+    {
+      "path": "doc/evidence/2026-10-28/chemistry-course-library-first/browser-product-acceptance/chemistry-chemistry-family-ad663-d-old-links-keep-their-unit/trace.zip",
+      "originalPrivateSha256": "c4f5c08c5d1ed555df0e28a20a33421fe16dd58ac2a410958cbb61a583abb6b7",
+      "publishedSha256": "41bd24660744b065d046c7df161f17ef61f94945fd9eebfa2a8b80445bdef015",
+      "originalPayloadSha256": "c4f5c08c5d1ed555df0e28a20a33421fe16dd58ac2a410958cbb61a583abb6b7",
+      "publishedPayloadSha256": "41bd24660744b065d046c7df161f17ef61f94945fd9eebfa2a8b80445bdef015",
+      "redactedValues": 5,
+      "changedEntries": [
+        "test.trace",
+        "1-trace.trace",
+        "1-trace.network",
+        "resources/c965b6e35a4c11fadaee6edf84cb3dd8fc8e0e39.json",
+        "resources/fad60fdd23553f3ff7815eadb1e41e53b582a37e.json"
+      ],
+      "unchangedBinaryEntries": 66
+    },
+    {
+      "path": "doc/evidence/2026-10-28/chemistry-first-browser/3-trace.zip",
+      "originalPrivateSha256": "9721969ead51768d33552b7f7f2a974925af3e6972be56460ab130c4a20a0929",
+      "publishedSha256": "4a094edadb77d8a216d838bbd2df14688b5f6788208221253813fbdfa533f7a5",
+      "originalPayloadSha256": "9721969ead51768d33552b7f7f2a974925af3e6972be56460ab130c4a20a0929",
+      "publishedPayloadSha256": "4a094edadb77d8a216d838bbd2df14688b5f6788208221253813fbdfa533f7a5",
+      "redactedValues": 5,
+      "changedEntries": [
+        "test.trace",
+        "1-trace.trace",
+        "1-trace.network",
+        "resources/f7835331adec3fb0b4094c36c4c7809b53b27c92.json",
+        "resources/1f34377fe59ba06454e5d9ae4d7e04af9bfb800e.json"
+      ],
+      "unchangedBinaryEntries": 16
+    },
+    {
+      "path": "doc/evidence/2026-10-28/chemistry-first-browser/6-trace.zip",
+      "originalPrivateSha256": "e6ac9c3cec0d7051c0e7d8ed96251ecd354e44b8e730a1fa5952addc565f33e7",
+      "publishedSha256": "df45f6d8d61451ab5c1379f30458b8f1f53802e844d0f73613531de84f427090",
+      "originalPayloadSha256": "e6ac9c3cec0d7051c0e7d8ed96251ecd354e44b8e730a1fa5952addc565f33e7",
+      "publishedPayloadSha256": "df45f6d8d61451ab5c1379f30458b8f1f53802e844d0f73613531de84f427090",
+      "redactedValues": 5,
+      "changedEntries": [
+        "test.trace",
+        "1-trace.trace",
+        "1-trace.network",
+        "resources/8f107d7912717d29150a7eb72234383836453b91.json",
+        "resources/38e9829a2186dd5a7cab7bed9fbe9fec1cc52480.json"
+      ],
+      "unchangedBinaryEntries": 14
+    }
+  ],
+  "publicationCommitMap": {
+    "09526c357164e897967b1a0174a627d698d15d2a": "7682b72bade868e866742d237cc203f79f1bb49e",
+    "e1b0fc592521ffc27c26610f84d5e6148cdee159": "9d028e1d12c373aa0c00d2422862966f16b6048f",
+    "6181d45ca56435ce398b430e1606d90907abd327": "fe3dd0207e8b7205943c1743e1c41ff161bb0d3a",
+    "4088d1fe5dfc0e0d36a0dfcb07c2a1a60d48c92f": "6d6bbb8c56e4a7795ed887c1c23b77f5d40c1464",
+    "d4d5ba980c45de17585c79e2a879d7fc67b5c813": "cb5e824b00cd6678910fed92c732ffd09d3bb257"
+  },
+  "originalSourceEquivalents": {
+    "ff267f4bd58ade1ed487f42a992d779f11dde030": "7682b72bade868e866742d237cc203f79f1bb49e",
+    "2b1a0471ddf1bef152f601f53d57148c4e188151": "9d028e1d12c373aa0c00d2422862966f16b6048f",
+    "c7283e65a7e938e2aa3bf7480b8d06847cbfafa2": "fe3dd0207e8b7205943c1743e1c41ff161bb0d3a"
+  }
+}
