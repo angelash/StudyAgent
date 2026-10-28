@@ -50,7 +50,7 @@
 - POST `/ai/assistant/sessions/:sessionId/artifacts/whiteboards`：事务内重新预检并比对指纹，创建一个来源白板draft及一个原任务意图，返回可恢复的原prepare回执。
 - GET `/ai/assistant/sessions/:sessionId/artifacts/whiteboards/requests/:key`：本人原创建结果；丢响应先读此接口，查无回执后仅能重试同一原payload/key。
 - GET `/ai/assistant/sessions/:sessionId/artifacts/whiteboards`：本人该原会话的有界摘要/游标，不返回全文私聊。
-- GET `/learning/topic-whiteboard-drafts/:id/source`：本人完整冻结来源、原消息位置及逐幕映射；路径须以实际现有控制器前缀核对后固定，不能仅凭本说明假设可调用。
+- GET `/learning/studio/topic-whiteboards/drafts/:id/source`：本人完整冻结来源、原消息位置及逐幕映射；已核对现有TopicWhiteboardController的`learning/studio/topic-whiteboards`前缀，新路径仍待实现。
 
 现有draft读回、cancel/retry、edit、confirm、history及原命令receipt继续复用。来源分支的DTO和验证按协议严格区分，普通v1请求不得夹带新来源字段。新创建键与原draft/任务/来源同事务保存，相同键异内容409；两实例同时重放不能生成两个候选。
 
