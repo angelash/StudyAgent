@@ -1,0 +1,143 @@
+{
+  "at": "2026-10-28T22:00:30.880109+00:00",
+  "passed": true,
+  "designBeforeImplementation": "b436ebb197b62c5764997818aad2e851aa6c6bb5",
+  "run": {
+    "at": "2026-10-28T21:59:30.447Z",
+    "passed": true,
+    "exitCode": 0,
+    "error": null,
+    "inputs": 8,
+    "compiled": 2,
+    "changed": [],
+    "changedCompiled": [],
+    "tests": {
+      "total": 10,
+      "passed": 10,
+      "failed": 0,
+      "pending": 0
+    },
+    "limits": [
+      "Offline joint question allocation only; caller must supply actual eligible/canonical/exposure identities and recheck live authority.",
+      "No new API, schema24, persistence, learner evidence, actual provider or whole-product acceptance."
+    ]
+  },
+  "finalInputCheck": {
+    "checked": 8,
+    "changed": []
+  },
+  "builds": {
+    "api": "passed",
+    "allApiTypes": "passed"
+  },
+  "implemented": [
+    "At most6 residual augmentations jointly allocate two distinct canonical families per atom and globally unique original questions.",
+    "Ambiguous same-question mappings, original seen questions/families and whole-group coverage gaps are preserved explicitly.",
+    "Stable exact mappings across input order; full candidate/exposure/seed identity fingerprint; no partial artifact published."
+  ],
+  "countsNotCombinedWithPrior62": true,
+  "secretScanFindings": [],
+  "limits": [
+    "Offline joint question allocation only; caller must supply actual eligible/canonical/exposure identities and recheck live authority.",
+    "No new API, schema24, persistence, learner evidence, actual provider or whole-product acceptance.",
+    "Native bank render/answer snapshots, persistent artifacts/assignments, actual learner start/answering and schema24 remain to implement after schema23 delivery."
+  ],
+  "files": [
+    {
+      "source": "data/qa/assistant-practice-bank-selection/first/inputs-before.json",
+      "archive": "data/qa/assistant-practice-bank-selection/first/inputs-before.json.gz",
+      "bytes": 1726,
+      "sha256": "6ee86d8f8d8e654745de018e4eeda46854c65fed4e1ac44f530e53114def1d94"
+    },
+    {
+      "source": "data/qa/assistant-practice-bank-selection/first/receipt.json",
+      "archive": "data/qa/assistant-practice-bank-selection/first/receipt.json.gz",
+      "bytes": 515,
+      "sha256": "4bce0717c546f9f4e65a25035da7d2939acba0029dde5a8f722a7dea95270a2b"
+    },
+    {
+      "source": "data/qa/assistant-practice-bank-selection/first/source/apps/api/package.json",
+      "archive": "data/qa/assistant-practice-bank-selection/first/source/apps/api/package.json.gz",
+      "bytes": 1733,
+      "sha256": "b8ea895fdf599543359dcf4f706f9063d478d2ec5928cf874989359e8e4bd991"
+    },
+    {
+      "source": "data/qa/assistant-practice-bank-selection/first/source/apps/api/src/modules/learning/assistant-practice-bank-selection.test.ts",
+      "archive": "data/qa/assistant-practice-bank-selection/first/source/apps/api/src/modules/learning/assistant-practice-bank-selection.test.ts.gz",
+      "bytes": 6363,
+      "sha256": "c89036f1dd63fac7e58278c48aae9e4e4eaaf4cf1f39f28b5237ba9473f2e821"
+    },
+    {
+      "source": "data/qa/assistant-practice-bank-selection/first/source/apps/api/src/modules/learning/assistant-practice-bank-selection.ts",
+      "archive": "data/qa/assistant-practice-bank-selection/first/source/apps/api/src/modules/learning/assistant-practice-bank-selection.ts.gz",
+      "bytes": 7312,
+      "sha256": "bc9a63370bf769c5ed1664ee1c537a516010fd9bb79f47aa6026f1794cc833fd"
+    },
+    {
+      "source": "data/qa/assistant-practice-bank-selection/first/source/apps/api/src/modules/learning/topic-whiteboard-digest.ts",
+      "archive": "data/qa/assistant-practice-bank-selection/first/source/apps/api/src/modules/learning/topic-whiteboard-digest.ts.gz",
+      "bytes": 667,
+      "sha256": "addb802487b24c50ebb2a02b543e4384bc364eff6ef9de4012eda363214121f0"
+    },
+    {
+      "source": "data/qa/assistant-practice-bank-selection/first/source/apps/api/tsconfig.json",
+      "archive": "data/qa/assistant-practice-bank-selection/first/source/apps/api/tsconfig.json.gz",
+      "bytes": 187,
+      "sha256": "952254ec3b0727db9fc71dccc214726d39026c06de3f34376991b12063788fca"
+    },
+    {
+      "source": "data/qa/assistant-practice-bank-selection/first/source/apps/api/vitest.config.ts",
+      "archive": "data/qa/assistant-practice-bank-selection/first/source/apps/api/vitest.config.ts.gz",
+      "bytes": 685,
+      "sha256": "ee16715f15fcfa88d875d99c03e467a1131416cc23996bdadae267cef7cae373"
+    },
+    {
+      "source": "data/qa/assistant-practice-bank-selection/first/source/package-lock.json",
+      "archive": "data/qa/assistant-practice-bank-selection/first/source/package-lock.json.gz",
+      "bytes": 231291,
+      "sha256": "8b13158bd636abcb1e4255d00c4975824a5765d050c0c898e702fb21e0543cf7"
+    },
+    {
+      "source": "data/qa/assistant-practice-bank-selection/first/source/scripts/qa/run-assistant-practice-bank-selection.cjs",
+      "archive": "data/qa/assistant-practice-bank-selection/first/source/scripts/qa/run-assistant-practice-bank-selection.cjs.gz",
+      "bytes": 3504,
+      "sha256": "29ee4e94f954c00fe20cf3f13bce8f1f9896a0fac070c3fa4cc390b54a9b3bff"
+    },
+    {
+      "source": "data/qa/assistant-practice-bank-selection/first/stderr.log",
+      "archive": "data/qa/assistant-practice-bank-selection/first/stderr.log.gz",
+      "bytes": 375,
+      "sha256": "b4acd4f819050212c4fe3b3ed8416421330f7ff8c72cb9bb667c335f3e24a94e"
+    },
+    {
+      "source": "data/qa/assistant-practice-bank-selection/first/stdout.log",
+      "archive": "data/qa/assistant-practice-bank-selection/first/stdout.log.gz",
+      "bytes": 456,
+      "sha256": "f950b877e20885aafcb050ed6cf839b773b98f4312c90b7df4c6a57823d1ef83"
+    },
+    {
+      "source": "data/qa/assistant-practice-bank-selection/first/vitest.json",
+      "archive": "data/qa/assistant-practice-bank-selection/first/vitest.json.gz",
+      "bytes": 5082,
+      "sha256": "5151a1dcd0640042e69119b43b7bc29debc2a4de12070f765d5501593186181d"
+    },
+    {
+      "source": "data/qa/practice-bank-selection-first/api-build-first.log",
+      "archive": "data/qa/practice-bank-selection-first/api-build-first.log.gz",
+      "bytes": 66,
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424"
+    },
+    {
+      "source": "data/qa/practice-bank-selection-first/api-types-first.log",
+      "archive": "data/qa/practice-bank-selection-first/api-types-first.log.gz",
+      "bytes": 68,
+      "sha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387"
+    },
+    {
+      "source": "data/qa/practice-bank-selection-first/test-first.log",
+      "archive": "data/qa/practice-bank-selection-first/test-first.log.gz",
+      "bytes": 435,
+      "sha256": "65c01ef69759bc4d6ec1e797ea262d09f26c43d1ebf6e9a9a27b5d3817870046"
+    }
+  ]
+}

@@ -215,3 +215,9 @@ PracticeSession新增origin=assistant_artifact与assistantAssignmentId/assistant
 未达到2×目标点数时整体返回覆盖缺口，不返回可误采用的半份题组；成功逐atom返回两个确切mapping/question/family。selectionFingerprint绑定算法版本、全部候选身份（不只最终入选）、完整曝光身份、目标顺序、seed和最终分组；题量不变但审核映射替换/曝光变化也失效。service提供的原预检SHA还必须绑定完整题干/答案/定义/范围，选择器自身不能证明题目正文或审核合法。
 
 后续开始第2/3组时按该组当前题目/定义/范围/权限重新核对；已由同一assignment真实开始的其他组曝光保留，不因第一组合法开始就对整份D1 canPrepare重跑并封死后续组。当前组自己新增的外部曝光仍需明确重新核对，不能静默换题。离线验收包括可重分配的争用、每点足量但联合不足、同点family唯一、全局题目唯一、原曝光/歧义排除、种子及重排稳定、未入选候选改变指纹和无输入突变；不替代实际SQLite/PG、真实学习码或端到端产品旅程。
+
+## 20. 审核题联合选择的离线结果
+
+b436ebb1先提交具体协议与原生bank题型边界，再实现最多6次残量增广的联合选题。每点两种不同canonicalFamily、全局questionId唯一；歧义映射及真实已见题/同点结构排除；同键同输入的候选重排保持结果，未入选映射替换或曝光身份变化也改变指纹。联合覆盖不足只返回明确缺口，不发布半份题组。
+
+首轮10/10专项、零失败/跳过/重试；8源码和2编译输入前后SHA保持，API构建与全类型通过。原D2b正文62独立留证，不把两轮相加成单轮72。见[联合选题原件](../evidence/2026-10-29/assistant-practice-bank-selection-first/receipt.json)。本层不新增API、数据库集合、任务、schema24或正式学习证据；调用方仍须从当前真实eligibleMeasurements/canonicalFamily/曝光重建输入并重读授权。原生题目/评分快照、候选/assignment及真实学习码开始/作答继续在schema23实际交付后实施。
