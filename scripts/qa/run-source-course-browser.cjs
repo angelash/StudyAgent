@@ -22,6 +22,12 @@ if(resultIndex>=0){
  if(fs.existsSync(path.join(root,'data/qa/browser-evidence',evidenceRun)))throw Error('Original screenshot attempt already exists; choose a new result file');
 }
 const apiPort=process.env.E2E_API_PORT||'4107',webPort=process.env.E2E_WEB_PORT||'3107';
+if(skipBuild){
+ const contextFile=path.join(webDirectory,'.build-context.json');
+ if(!fs.existsSync(contextFile))throw Error('Isolated Web build context missing; rebuild with the intended E2E_API_PORT before --skip-build');
+ const context=JSON.parse(fs.readFileSync(contextFile,'utf8'));
+ if(context.apiPort!==Number(apiPort)||context.buildId!==fs.readFileSync(path.join(webDirectory,'.next/BUILD_ID'),'utf8').trim())throw Error('Isolated Web build API port or BUILD_ID mismatch; rebuild with E2E_API_PORT='+apiPort);
+}
 const env={...process.env,E2E_OUTPUT_DIR:process.env.E2E_OUTPUT_DIR||path.join(directory,'browser-output'),NODE_ENV:'development',NEXT_TELEMETRY_DISABLED:'1',STUDY_STORAGE:'sqlite',STUDY_DATA_DIR:directory,E2E_DATA_DIR:directory,
  STUDY_SEED_FOUNDATION:'true',STUDY_WORKER_ENABLED:'true',STUDY_PDF_STRUCTURE_MODEL:'false',OPENAI_API_KEY:'',MINIMAX_API_KEY:'',XIAOJIU_CHAT_ENABLED:'false',CODEX_MODEL:'',
  XIAOJIU_MODEL_QUALIFICATION:path.join(directory,'no-published-model-check.json'),

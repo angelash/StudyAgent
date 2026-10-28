@@ -1,0 +1,1049 @@
+{
+  "passed": false,
+  "status": "interrupted-without-final-report",
+  "sourceRevision": "e5b773da98f529432f919f23483edc01f41009dd",
+  "observedPassedLines": 223,
+  "lastObservedOrdinal": 225,
+  "controls": {
+    "checked": 3150,
+    "changed": []
+  },
+  "evidence": "Original handle missing and original runner PID58012/Web PID84616 absent from actual Win32_Process; original log stopped at ordinal225 and no final JSON. Two failures are separately preserved: long-note fill waited for an editable textarea; classroom test login input stayed disabled. Their cause and process interruption cause are not established.",
+  "nextAction": "A new full attempt in a separately managed QA process, same unchanged build/source, new report and screenshot directories. Never restart the old request or overwrite its evidence.",
+  "files": {
+    "data/qa/note-full-browser-first.log": {
+      "sha256": "e35434785d13212293d2a1e30dd7960a7b24634535d64531f2c179edff74b03a",
+      "bytes": 36788,
+      "gzipSha256": "0241b095fc5f957e539bdeeeeb02434af18a36f0e460a10df372a614e716cd1b"
+    },
+    "data/qa/note-full-browser-first-inputs.json": {
+      "sha256": "647e530482a2560690b9cd359c2f38934fda9d6f367a31f31a09a2e7bcae1c01",
+      "bytes": 611421,
+      "gzipSha256": "ab474f12088b27bceb751acd7a09477988f2fc430fd5c5a51d27949dfb10ea7a"
+    },
+    "data/qa/note-full-browser-first-interruption-inputs.log": {
+      "sha256": "2c6f64f86172f5d0c39be4b9302c8b530693e6bf7cb4b1c1f452be5a62271c1e",
+      "bytes": 34,
+      "gzipSha256": "e77034adc91124a613b2eccec4da2e2c3fd9052b793e832a2fed2a8478e21818"
+    },
+    "data/qa/freeze-note-full-browser-first.py": {
+      "sha256": "703231781423a2e068751ecd8abfc93c802adcca5c0fdfe4a6adc21de0a3b9f0",
+      "bytes": 1406,
+      "gzipSha256": "ad683088abd8db9bfc29fee892244e584bb02e30d091df852ce28c4b877bc96a"
+    },
+    "data/qa/experience-web/.runtime-lock.json": {
+      "sha256": "23b09bd549f7040d26a34c7a1f112c6149e801b7dbd5da299d878efb2cdfaed6",
+      "bytes": 46,
+      "gzipSha256": "bd62c4461059a4e59978dc5b5b67b36b38a67c0cf6a60a23d549aea62cc86cb1"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-conversations/actual-default-model-1280.png": {
+      "sha256": "e2cb1e6def43feefe9e8e2d2814cc034a36b066563e4d41f02c0e865e20a625b",
+      "bytes": 86789,
+      "gzipSha256": "a85f853189c8c7ea0eb32d0a3d5de6b47b0ae27e65956ebd6b41d316f7326fed"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-conversations/actual-default-model-390.png": {
+      "sha256": "4dae0059f2e45bff46633f0ce0d84d7f389fbc8a6d652b75e7819c264d7e0d0b",
+      "bytes": 39837,
+      "gzipSha256": "3d22f0ceec7e41bab820ed6bf1c9e98feb4f3f4d0826a577dbab5d4f69cbeaf7"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-conversations/actual-default-model-768.png": {
+      "sha256": "e86f959aeacc586f2fe15ad03a35aafbe00d4fab0ee8b53b780044bcc6c939f9",
+      "bytes": 78929,
+      "gzipSha256": "3ad21e04b966d671e704b98f383089c9d455130e66c5e09d432b0e7844f77814"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-conversations/diagnostic-history-readonly.png": {
+      "sha256": "14394737390c834cc7411a9261cb874279ef8c72c72571fb507fac356f1539be",
+      "bytes": 59231,
+      "gzipSha256": "9d897c3a4112bef557f9f479dc02892914fd644f420941f381364dce95a8a232"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-conversations/history-old-message-768.png": {
+      "sha256": "ba3b9f7e62fdf63d3bf3e208f3f29d8f8db414807f0e72c7f54d76d331e9a25b",
+      "bytes": 80548,
+      "gzipSha256": "84ace3d29fce371d0a35a63017a48e049498949b86c5b4645efca46377048d85"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-conversations/model-check-failed-1280.png": {
+      "sha256": "48f60babf05b6fbd4245f8533257ea5cbfa3e4bad1bb2b744c02eaffefc5478a",
+      "bytes": 92799,
+      "gzipSha256": "4d1ace21ae53d92cf2c907ac99c186814242edbad07ead7fe3a375735f23fc75"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-conversations/model-check-failed-390.png": {
+      "sha256": "5472cea804be4d973731c16494063d1a6ab8f40674cbeb8813dcd02de54c6a44",
+      "bytes": 45078,
+      "gzipSha256": "a1b137efd11fb379b630c4b6b6cc2bde2d897a63ed98cc026d18af0d991ae4ae"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-conversations/model-check-failed-768.png": {
+      "sha256": "30d9658aee79e05d008198fff1c9cd1e1f8a3ac23e1656827f210ac46d83ca23",
+      "bytes": 84526,
+      "gzipSha256": "5cda47b98371163f27c1d65d8010a6b7f0e47f4ffb6303a1b8618e1e25cb3837"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-conversations/retry-original-model.png": {
+      "sha256": "ae03ac59e9228a2726d0941e2626d9c251ebc368e489073fdca49f57cace04e0",
+      "bytes": 89773,
+      "gzipSha256": "a872873003f687362b96c03c83e411a8c554dd953ec33cab3a8798381b269b54"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-conversations/saved-conversation-1440.png": {
+      "sha256": "51474c8d4531e907170f3510805f5c9fe104d252684ef28f1d3140994f62b212",
+      "bytes": 95724,
+      "gzipSha256": "e8d0b6fc8479d3903f46b7c509da0117d8df796128f2d506a575031910900f82"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-conversations/saved-conversation-390.png": {
+      "sha256": "24797e567b4451c05a96e47d3f65b806e607c3a253e55ab7e42040371818f85f",
+      "bytes": 43520,
+      "gzipSha256": "df8aa86f69b7ecca3a127aceefe925165db99d5e33078c7984af2cc08ec12a05"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-conversations/saved-conversation-768.png": {
+      "sha256": "8d10f727ffc87e4e53966a14b59f8876ad26c3861c48e1c63e6ad53b8d8dd37b",
+      "bytes": 83379,
+      "gzipSha256": "2559246710e47a49f6530c7a05741c8e05d852b41fdf08c192a29162b46d5393"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-notes/confirmed-1440.png": {
+      "sha256": "2bb27cba9a915945f79b5127e4692f4c696cc417483a993b2a496e5bd9c4478d",
+      "bytes": 131150,
+      "gzipSha256": "51824bf0e83d67ac624592ace4304151ec9a4065f87fa9d5ac4823698b90a11f"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-notes/confirmed-390.png": {
+      "sha256": "b21135279a81a6029dc6b0c8ae99b7d153be3ee8c532add6af9b58e53aa755fa",
+      "bytes": 75201,
+      "gzipSha256": "5bb17adf26507acfe063de4ccb2fde910beedeba694ad95f54dc86d14a4e7393"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-notes/confirmed-768.png": {
+      "sha256": "9a920da8338bd3f9f761904ddc97417618962ce6ab6b18c479974d29ea166c70",
+      "bytes": 90874,
+      "gzipSha256": "44b5b6c4df90ca645048a5d7e1f5d8df9fabe4df78d13c1e9218c4e8c6d3c858"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-notes/confirmed-880.png": {
+      "sha256": "58abca6b0022f117e26861bda87f80800ab8f03230faf169e6fedb02e79303f3",
+      "bytes": 91718,
+      "gzipSha256": "4a069ae4a03b1e0b8f7ff0a786c77968d6bb33c701020a91249a49ae1327d747"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-notes/local-draft-and-adopted-server.png": {
+      "sha256": "60a53a08ef54dc81ce095fc5e8989838a14bb657152213503e44e3ccc227e674",
+      "bytes": 99223,
+      "gzipSha256": "0cab58bb3278b5d0077eb8739732b88b70546a6ce74030515a6dca8b0101e88e"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/assistant-notes/original-request-recovered.png": {
+      "sha256": "0489ef14749117b5c8b5edf2c5bc1d8958f784034c857fdf7d8fa7df79ad840b",
+      "bytes": 118777,
+      "gzipSha256": "f52f9868abd4b0cf51ff32e98375465c20e8ce6cb889503c49a297c498114950"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom/classroom-ai-board.png": {
+      "sha256": "49ae989d528ef8cd5c6db95d9a8813d571c52c828afeb1886485b0a1388e8480",
+      "bytes": 143691,
+      "gzipSha256": "ca20fa6a3fb3250576104e06c56300ad5b2154968cbe56ae632e5db48ceef226"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom/classroom-board-reference-scale-v2.png": {
+      "sha256": "c4c5223f48434f5c32dbcc0414835c73c2524bbfd6bcf8665dd10eb2278e906b",
+      "bytes": 366653,
+      "gzipSha256": "4cfc8310b97ba192cc77461b5774df7c003a9cec1493f8840019735e810fbeef"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom/classroom-board.png": {
+      "sha256": "81c60fdb993fd73c55b3fe99da282a6b09eddfa6002208476e46e9c1c480725a",
+      "bytes": 109708,
+      "gzipSha256": "7e84b5207a5eb7e2385a8fc9edb883ca351b58a23e2cfb046d37878fdf315942"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom/classroom-course.png": {
+      "sha256": "a2aa36864d584eafb28e4340cac2172b8cd74e57aa441ce4ac7f478d6ae55cb3",
+      "bytes": 177000,
+      "gzipSha256": "eb20a577c51cefa8b79a43c92b1647faaac47841fb81bbe4862e70668459cae1"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom/classroom-mobile.png": {
+      "sha256": "30ac8604ab9ec7eee04d5ec09b5b2ad4f234185ee8d9ccf6e00c3000130afab8",
+      "bytes": 92863,
+      "gzipSha256": "053ac450602b37358dfff53c43d719d6fd8cfa86e586f72c53919ef6bca8ec75"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom/classroom-practice-phone-v2.png": {
+      "sha256": "080632d9ae3cf1b5178381b3b259f88f2cd635fb4b944fb6a5da5d6bc12f638d",
+      "bytes": 51127,
+      "gzipSha256": "17410a93138c29168128d7164dff42538baa3ee3fe52a53253456dc62974837b"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom/classroom-practice-reference-scale-v2.png": {
+      "sha256": "c3840a5bb7d2609774645b6b23d1d6203c4b488d452f7889dbc7e3b3c4d3df88",
+      "bytes": 187261,
+      "gzipSha256": "a8935d501da18e078a95247c96d0ddf247205780c597575cc94f01d23671035c"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom/classroom-practice-v2.png": {
+      "sha256": "3da35c1aad3bfc0403d60ef60cab5a9f6d91fc3155b7fc1277ed1b6d2a32a12b",
+      "bytes": 148938,
+      "gzipSha256": "9b272dc9c682f6fd4f920fdbfac765c79a6357e7990860149ecd9085b7b140a8"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom/classroom-settings.png": {
+      "sha256": "564ff61328484a87f220dfae4c4e1250077bfbf65794aa39cc05cf69fd5f99a1",
+      "bytes": 189807,
+      "gzipSha256": "21069b56f177e812371815c55b40d0adf1f0a8a8be3172f4f5a9cedd5d726c95"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom/classroom-table-reference-scale-v2.png": {
+      "sha256": "77471c6711524ee1d89191538ca19864455716d9e1f50f42afe37aa0a6acee2d",
+      "bytes": 443544,
+      "gzipSha256": "116ccc58e9f303aa454dbce95295b2a294f954b70eb94005e2f0dc65d9141392"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-boards/comparison-1440.png": {
+      "sha256": "1f89c77b0ce92884db64d472410d43c685aca88bdad0c16e33035ceb0d0285c9",
+      "bytes": 139117,
+      "gzipSha256": "3deb5322ea7c9f3b20e7f6752ce11d347e9e0c744c8a0281b7fc6dcb5c518b2b"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-boards/comparison-390.png": {
+      "sha256": "af133227bb278e6d2af58e21ab6d58640d50b4bc01e03624853b57ca04edf6ae",
+      "bytes": 68275,
+      "gzipSha256": "2d957ac4b25f877ee80d40d1771d55c692eae58bee785118db53db780e7af6de"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-boards/comparison-768.png": {
+      "sha256": "3f085f2e6ea0834257fa3642125821c91b99509fec3d57cef5317d32597f3761",
+      "bytes": 130385,
+      "gzipSha256": "a9db697294de9dd6f9bc6e3c2b90eaf9b903ab66406505e005a315c49eb48b51"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-boards/comparison-print.png": {
+      "sha256": "ee58fec2e219fa1f34bed1fdfd67f61a755d6c76bb4ea91a63bcbbb871ac0ff1",
+      "bytes": 263250,
+      "gzipSha256": "1bc81cf5da27042f0e22fd08e06d6b4f55719a32db9b2874813e935926b9f6c1"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-captions/english-1440.png": {
+      "sha256": "cfcf4b3902880c22231a5b614233b7c6d11189b1d35109b62e98bb9dfa4b8f00",
+      "bytes": 74435,
+      "gzipSha256": "231dac5a9e886b69aefad310fbb7af1692dbda0c9fa8e5b26b6ea269cab46db1"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-captions/english-390.png": {
+      "sha256": "97183767e86fb5fbd42b28b95aa8a15a76062a80efaebb18dcce8078c28fba31",
+      "bytes": 27370,
+      "gzipSha256": "762f3023cadf109315adaf0824c9d058405ae1059741ce14250fe072c080c821"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-captions/english-768.png": {
+      "sha256": "264f58d9b858001c7d628ac05b8c3245a793633fb316f6efd6ddb7239d456499",
+      "bytes": 67148,
+      "gzipSha256": "a4b30713b611871b830bb9be416852e6f6c1bbd21ba5251c59f32fdc0d2fbc68"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-captions/legacy-confirm.png": {
+      "sha256": "4501897ac7ac63539e88b5fa9ffe595d15f8ca7a3f484f8dba9d2b132f87b34e",
+      "bytes": 126511,
+      "gzipSha256": "b8c6e4834b7121c78b8bb34c7a08bfb9956d17ab99a2875e7d4cb9a678433619"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-captions/long-token-1440.png": {
+      "sha256": "a4f3471821c7ac69df53e50d9d78ec456cac3f3a6b31fd9c0801306dae2265f7",
+      "bytes": 103733,
+      "gzipSha256": "aec7cca5cbcdbb4de37670f32b12d8c9359c4330bdd1952ae21c7c7428ef0493"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-captions/long-token-390.png": {
+      "sha256": "eca7ce2c1133bb9f6d9a935e745467b40a617287fee42693ba74b3f465284b8e",
+      "bytes": 33570,
+      "gzipSha256": "c9fcaec31745d6366bae17f9d9658e6221312b953b6897eb9c36471c0826eae0"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-captions/long-token-768.png": {
+      "sha256": "2c7f5b1c1296b29b89c3a9f23d838590b8098c4a8d683a5763cd3707d96c2a3e",
+      "bytes": 93546,
+      "gzipSha256": "623fcb80da720d7a9736582c825b64544093dcace805e08df8cefba5f495244c"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-choice/assistant-1440.png": {
+      "sha256": "2be21c572885eb2a81bedf8fdba2a5a7d89bdd2003190a4bd48bfc1eb58144c6",
+      "bytes": 102251,
+      "gzipSha256": "a730e9b2631ad21e753ac819c971c3d0b7cbbf958e8991ddec644bc6d550f73f"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-choice/assistant-390.png": {
+      "sha256": "9763f667c18d27c066987886ad78c6934bc3be752f250602552c8972e447e6dd",
+      "bytes": 28363,
+      "gzipSha256": "741bab4d4546601c7ab14fd5c1a33b6befd7293c49fe859c8045f908b83181ce"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-choice/assistant-768.png": {
+      "sha256": "d349adc6c34bb531937fac3cbc47f39a531c5ee5d103bcccc98c6899ca9fce35",
+      "bytes": 31533,
+      "gzipSha256": "cda5837855629a57ff02aeb93fec67b39806673e13da1f2882467b557ec8a23f"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-choice/multiple-1440.png": {
+      "sha256": "3c392f946a9f05dfe4cd6c8ec6ee63b52c164e39b2c8fab95585224e83773a5a",
+      "bytes": 77622,
+      "gzipSha256": "26bc9aa9834a7a1d695b9631ef693918b1f93b1ee36e36cb91fdf69f4cf17d39"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-choice/multiple-390.png": {
+      "sha256": "d2c32dc0e64f960cbc776b0771f4e278c9232adf39631af28c3da5c231f61f89",
+      "bytes": 69579,
+      "gzipSha256": "1aa0cde52b76f96c73ebd6319ba22e829d9466d9abc9ef6f55e0e5370805e2ec"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-choice/multiple-768.png": {
+      "sha256": "7a140f0106b9c18fcb656137af9f6baf0208ef8d6760eff5ae0b780606798fd2",
+      "bytes": 72871,
+      "gzipSha256": "5b931e14f8787fcb738c505ca8009e491addbcc1e834c8043683bfc34962fcf5"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-code/editor-1440.png": {
+      "sha256": "7a615751c234c7fefc1e4aa579e2d0f9be45555e155ed031351ac1b211b65a47",
+      "bytes": 109635,
+      "gzipSha256": "0e79357f9b018dadc6e70d1f993ce8cdd98e1863d982b3d5dfd7f1f9f030b9db"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-code/editor-390.png": {
+      "sha256": "16aeb8bb3362c1b732981169dc1a3863ed1bf3033b6096699155284074c748dd",
+      "bytes": 52384,
+      "gzipSha256": "adff7d0df5f33d874f9f665b508f587695d5fc1b84074089751da700b13e7cca"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-code/editor-768.png": {
+      "sha256": "f0c08179686f6e0f27dc36055897cc063a94f6d276fad58c50731be883239028",
+      "bytes": 100930,
+      "gzipSha256": "99e66c63dde239d79c4007afd96a62611163cb379b86fa0cbaa7fd1540682367"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-tools/controlled-figure-1440.png": {
+      "sha256": "6e8f3288c0c1907ea68d03f435241e12fc6b18ba9757dea1ebea249547c89a25",
+      "bytes": 98806,
+      "gzipSha256": "566046e60fcd8776091521d19ffcccbf93d4995a6d96ef61b40034eb880436be"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-tools/curriculum-image-390.png": {
+      "sha256": "ec47ca9732dfa002ad764b299fd81ca94a5d32da713f40261c477464d8640c05",
+      "bytes": 132861,
+      "gzipSha256": "27fe4515798bdb816cf1c9c05656687f4f45baa12491cfa06a96302456d463aa"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-tools/tour-history-1440.png": {
+      "sha256": "4d164d7b356b2f0745e988b3c58433d960863ba2666f717c4263e4956233b553",
+      "bytes": 86465,
+      "gzipSha256": "bb1cde3f5462151e679077e7701bb154cc0dfe11351893c9fe6f858176532157"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-tools/tour-microphone-390.png": {
+      "sha256": "b299769dec84c3cb2ca0870f4b1c6ce2c9efb53809d85551c11d4796e31e4fe5",
+      "bytes": 50952,
+      "gzipSha256": "f764f7236b771634d7ed7dbc8e12a485e6a2a5d7bdeae746985c8cd829f99114"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-tools/tour-settings-880.png": {
+      "sha256": "777260b1a9d0fa9d33b221242c887de72b7da69d4e1beb9d7a3f07126619c7b6",
+      "bytes": 82112,
+      "gzipSha256": "d3fb5a5c5c04e6dad78f907121ab4824b851b3d5c161b758ffcc7f9adef8686a"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-tools/tour-sound-768.png": {
+      "sha256": "8e9ab1732bdd7f9a73a99bad217ec7185ba5de63ededce66c25fdf13b271b1cc",
+      "bytes": 86302,
+      "gzipSha256": "a12285d62411515b9713ad7b688e60d644d72a149dc48969f1547ba6806f0726"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-tools/voice-settings-390.png": {
+      "sha256": "c9999dbba90601b9414f4e1417d4ac451e0d0408dbd8200d200a870db15c12b8",
+      "bytes": 49315,
+      "gzipSha256": "21802ffc3aa386895ad01372787b4c387fdc5ca1a2dbef5365c1e3849cf001ff"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-tools/voice-settings-768.png": {
+      "sha256": "26a10ce8f19287031966f963d7b87fa0202fd6764c68d3506e5ab723045b2486",
+      "bytes": 104700,
+      "gzipSha256": "d6585407e92ebecf001a05a7519b2d8fdfb6a33570ac59bb280c756fddee2a26"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-tools/voice-settings-880.png": {
+      "sha256": "358a427645272a7f3bdad53f6ef24ac30eb282f0e3ca2482442f796024f721fc",
+      "bytes": 115917,
+      "gzipSha256": "8c0cb5c789fc7571716ae5e8aab7813fb976e43d8d6107bee66f92e0d9850766"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-turns/recovered-1440.png": {
+      "sha256": "408036c7f740363d2e0e56115ca52299f2310432de5ed7c1bd1b68f29c52f167",
+      "bytes": 258558,
+      "gzipSha256": "1f930d411f6129658b03f918cc2b67f90e97decc1fdbd9a90f1f2c0067192a53"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-turns/recovered-390.png": {
+      "sha256": "7c533adbb8851932d81a03f59e6baaab242a5fbd37c05b8356d907068bcd5d48",
+      "bytes": 51969,
+      "gzipSha256": "e2a67962c97049bcba96597ad25ee043e4767adc4a2dc707b2e7993fc3b8d460"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-turns/recovered-768.png": {
+      "sha256": "4436aefea4667762a6c3db0181416fedffc7a1a3a882a7198ed82e2de1caa0bd",
+      "bytes": 191137,
+      "gzipSha256": "00a6566bc94049a3ef362ba7962aed32adddab42ff66730d154e1e32fb5d79cd"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-turns/teaching-modes.png": {
+      "sha256": "f3f6034519e87cc0feb9e9083ba0e173420b85a6aeeac6d98916ee2024fc0800",
+      "bytes": 215393,
+      "gzipSha256": "40e364521ab4f62e5c1e38d25c1c26a41a63d1e8e66abd1e30ea23354746538f"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-visual/candidate-1440.png": {
+      "sha256": "0b6e3d3b5fb6876bf044f51b5490bbeb1858590020629fa06634d523b8cf1c7f",
+      "bytes": 162531,
+      "gzipSha256": "49c192a82145dc958ca606818f0b55d76470f7e3805220669f8f87c09f976796"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-visual/candidate-390.png": {
+      "sha256": "a68ec7714beab06e69237d64c8ed68910408d5dfd2d66761eefbd4fdb10e8666",
+      "bytes": 33743,
+      "gzipSha256": "346c977fd589905cbcd82327189e8d1fff09faba3648b8a58891df1eb4527fa1"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-visual/candidate-768.png": {
+      "sha256": "5110c27d19b17c5b7a07633f7ba1aa62a2c2a1887d9fd29f344a115ab7adc014",
+      "bytes": 47765,
+      "gzipSha256": "306fbbaa1c15b98ac63dd121c7276cc1e5dffa095d939d92dbe75efdd69fde8e"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-visual/candidate-actions-1440.png": {
+      "sha256": "76997d6f377264d241c3a8f2bc8c4847a19e17b56fdd2ede9d760566c5f8d711",
+      "bytes": 162596,
+      "gzipSha256": "cc4877fb264e41fa73842405ecf37a14083f775134c70ece470a61b49ff8ae4b"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-visual/candidate-actions-390.png": {
+      "sha256": "d9bfdce1db13e1fc08a973b16b38bb19538ca3eadde079fbefe753d874a7ea3a",
+      "bytes": 34071,
+      "gzipSha256": "4fef536fc32157e3df447ea0c6fabcc65e66bff41b29c745a6cca3be9304f7b7"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-visual/candidate-actions-768.png": {
+      "sha256": "796d65bd254d855339529451027aa2325cea8e7a255c996a88d732b67bd9325d",
+      "bytes": 47760,
+      "gzipSha256": "49aad81a3b2db83611d7a1476d5a51a5fe3bddcee81cea85cc0f6544b867a8ec"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/classroom-visual/selected-mobile.png": {
+      "sha256": "a4b837e154745496ede5681bf481159b9fef0a8400f6ddcfed710fd61384bbf9",
+      "bytes": 48168,
+      "gzipSha256": "3ceeda0c1581dbc7b26f6620168785f5dcf45e9d053048b498d5ec932e2d4db1"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/course-assistant/material-entry-1440.png": {
+      "sha256": "eee694dff67bcd4637dbb87fe34500f982bb558d6c611696778769e5af9dca41",
+      "bytes": 83592,
+      "gzipSha256": "9bd7bad66f346e49b442d6ae2ea67985d007eeb91821033135f5a0cdeae7f5d1"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/course-assistant/material-entry-390.png": {
+      "sha256": "6ba086c7174d3aeb7a0141bf28fec9f2111db5759882bd016b07ac8d27d32b62",
+      "bytes": 49921,
+      "gzipSha256": "04f8518da2003d4783f0e5b8bcc2c8807281e6d05c30b775f2e45b26f1ff052c"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/course-assistant/material-entry-768.png": {
+      "sha256": "e7cae1ec9810c14d93b6613f33d310e508e98dd07f65aed6a2d203274531ce0e",
+      "bytes": 54860,
+      "gzipSha256": "c6e7b7168e62760d3e8bb53b6202e5b86304cd528f5cba03cd2191cfd44edcef"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/course-assistant/material-entry-880.png": {
+      "sha256": "549c4f0988dc190ee0db39dd58d6b0f251112d59cfc3affaec406e852681c92a",
+      "bytes": 56135,
+      "gzipSha256": "4b131ec02b13b0fa6d0b76894b508ab03642043d750737f10ee396005b339bb1"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/course-assistant/primary-entry-1440.png": {
+      "sha256": "ba16fce72f2e6472d1bcef874fcfc2c0022fa754ba2225ea6726a53e7c37d427",
+      "bytes": 125262,
+      "gzipSha256": "1729b336d30ada7190f2821371b89d4d0666922680eca69c6aaac2c1f5ea0496"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/course-assistant/primary-entry-390.png": {
+      "sha256": "0fa5a9ec039373e54b2bd95b87fe120d05bc7d37c2674d4401efbd7830c48978",
+      "bytes": 85810,
+      "gzipSha256": "e03152e7f61d7e9f1914b6d88c212dab6c4bbb6779b3a86aac1c34ae82477584"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/course-assistant/primary-entry-768.png": {
+      "sha256": "d44941cb69239cd3a7eeb95a1872ce2caa98304f71fa9f3915915477588a72f8",
+      "bytes": 93898,
+      "gzipSha256": "40bc107ff02075b997e39a1166c39a9c9582c3d83606e2ba494ff3a7faf7f76d"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/course-assistant/primary-entry-880.png": {
+      "sha256": "dce1bf3c7b9f2848a5159b1471c9afe047b35a071f5455f359d25de0c192be14",
+      "bytes": 94862,
+      "gzipSha256": "74f4b9ffb678fb1707d6ec0b61e88224a1646ee559b1a7d739fa017fa565cdda"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/course-assistant/source-code-390.png": {
+      "sha256": "5930d2858dc0b80f03edeb26e423ea133e8c0d9a28403f201c171bb036156b53",
+      "bytes": 98859,
+      "gzipSha256": "3b76e0a885d00a8c45cd342499117b50055948ac44baf1737d9231f0710ec415"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/course-assistant/source-direct.png": {
+      "sha256": "2b6944ec970be4de9a3b507b3423bc6877d651565ca2a97e3afac1c818a7c502",
+      "bytes": 75641,
+      "gzipSha256": "fe08f97ae115a3a3e71212a84a2d8fe0d725f7f8c7f5d4f0c0c4d45f89b81f69"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/course-assistant/source-table-390.png": {
+      "sha256": "4a8624c15ae650cae4d53c0d334e25fd6aaad1400142613599a9c89b661ec7c1",
+      "bytes": 94621,
+      "gzipSha256": "e70bdf72c550a4ac5f5b5ebca75a6cc1aed781ef182c37b5ed1cf83b3979d4b0"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/course-panels/activities-1280.png": {
+      "sha256": "1444eb40af7acd1b0d0d370b0708d94693f28b8cea2c0a6a0791f04638167a58",
+      "bytes": 170904,
+      "gzipSha256": "7461c206390fa45527b54721738488d40b7bd9146fb8af0aa4cbdc562bc4af11"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/course-panels/activities-1440.png": {
+      "sha256": "ccae910490e694e42f4aa6e71bfc87bcb4c697d4c34f611e9490336fd2b5035e",
+      "bytes": 177046,
+      "gzipSha256": "6fe4c7493c9ac6946c4a9dbe1f53f1e06868cbdbdd8d861f7767f494fb2ca35f"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/course-panels/activities-390.png": {
+      "sha256": "d9441cbae545667cfe44ab9bcdf13a141c9d5a50d66ff09e8c0ac096f4be5e30",
+      "bytes": 175257,
+      "gzipSha256": "37a83e89c9646df5113b3b035473dd7772a0dd9607bcb3b51b065a21a3392b67"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/course-panels/activities-768.png": {
+      "sha256": "7ee4e4b76a8da95412c52d7ca7e1aae4bb4fbc6d57b6b1663684620b28f31e3c",
+      "bytes": 193662,
+      "gzipSha256": "ff08c96c0f9c80f42853ce034ec19fa2ae495151a1e258e50f8429c6780bb685"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/guidance-model/comparison-1440.png": {
+      "sha256": "2c56d26abf4ae61842546445b0fdbd317ddbff879fb976c55dbd739f7614a3c2",
+      "bytes": 230979,
+      "gzipSha256": "652484e9fa53333739f8710aa335a9d80d727a37da9b3d4e4806259c09abaa1d"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/guidance-model/comparison-390.png": {
+      "sha256": "a68b1e535de11c362642bfc87af1e2239a41ee6fb1c49772ba2c5c06645be430",
+      "bytes": 187700,
+      "gzipSha256": "f92ec4c39fec0232c93ee00fd32073b47411f5120112898cba64d73a32356cf2"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/guidance-model/comparison-768.png": {
+      "sha256": "77afc47c57f08d8e862d3e18c719504efda13b59cc37c116c04fd944d22b324a",
+      "bytes": 220558,
+      "gzipSha256": "7147aad6305c8f15bd3adf0f78d01e83179c1b86236605b127e0f55f677c4def"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/knowledge-report/actual-active-guidance-schedule.png": {
+      "sha256": "c6cbec439db5082070e0afc29f1734e013a0daf606857dc91e18f4699cfdb7d5",
+      "bytes": 250875,
+      "gzipSha256": "ff7015488b2f9b8e5b086bb4fea9f09f54d27c477738f0cbcb76cc460f76b0e9"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/knowledge-report/point-1280.png": {
+      "sha256": "f2d1ebbbb711dcb7839780d2b3ad36009d01500fdd8c7d7099ad7f74d8da5f12",
+      "bytes": 350197,
+      "gzipSha256": "d3550e4520bfecfe1935b62cab866a5e767cf3881c3d34e110f001b5d38444cc"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/knowledge-report/point-1440.png": {
+      "sha256": "bc7609cb227e9574064d841da98521978882ef12527033f7360ec5eb0cbf9433",
+      "bytes": 357546,
+      "gzipSha256": "b94730d2816ca639c5838b8188519ec591467297b9785e9c4a2286252d6aaf7c"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/knowledge-report/point-390.png": {
+      "sha256": "8d2eefc9d9d07ce067a985d0c186503a4c5824543687e1479c7a5ddaeb598f2d",
+      "bytes": 272850,
+      "gzipSha256": "9e1c2b1f7498118d11a56cf86ade4f864216c63489d9d78e81813f1c3b1f1573"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/knowledge-report/point-768.png": {
+      "sha256": "54c42ca787517e403405874281d153477bc3916deaaa4c42cb5a26f3122b8ed6",
+      "bytes": 316587,
+      "gzipSha256": "9e1a555ad033eef0a3d837f4705aa5055c2016fbe846337b48d92a0f12824c0e"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/knowledge-report/report-current.png": {
+      "sha256": "d1a77017ee7c29bb6c2f18501d14ca60a1ddb28d0d9a327a43d5400da2ef0d14",
+      "bytes": 219875,
+      "gzipSha256": "5d4082718635b6e89c7768c50c65150dae067c8661afeade0bf2e0262ae060f5"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/knowledge-report/report-first-workspace.png": {
+      "sha256": "b269adb0372d5c15da58fc0504a74dc962e153f50f86f13f8d46c48a92568930",
+      "bytes": 195651,
+      "gzipSha256": "abef4c02fcec92636dd5b528cac3436ad5fdda8c1ff9397009e4e04e3b410c3e"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/neutral-voices/settings-1440.png": {
+      "sha256": "bc13f6f771b39e31e0794719d679bf7cbf47e69647741586c1173eeb9aa735ea",
+      "bytes": 157588,
+      "gzipSha256": "1d991aea2aae0abe98e6fa020fd46a5e71f109b4292e24ca343de7bb7c68ccd2"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/neutral-voices/settings-390.png": {
+      "sha256": "8bb9fd169b009e083daa27fa7e90661c6fd8572dd0c4d31d93bdfb293c492e9f",
+      "bytes": 59957,
+      "gzipSha256": "696401a5052ae79c6ad3e6cc99616032d0bf87161504b7771a1ad49fea535c62"
+    },
+    "data/qa/browser-evidence/note-full-browser-first-cde17a1f63/neutral-voices/settings-768.png": {
+      "sha256": "73191a89f43d362a98fd85fb1540fd4b6d56a07b2123c601bbaba40893060743",
+      "bytes": 86488,
+      "gzipSha256": "3460f5ae76accfc1c0142204659ad2f749ef6be622fd8cae29bf655f8116b70e"
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/01ec37ebfda57b578ffe1f268e3c2925.png": {
+      "originalSha256": "8c5d6641539857fa70f42738a7a1ec85db8f33f4c4fe4fc2b116f3462686e4d7",
+      "publishedSha256": "8c5d6641539857fa70f42738a7a1ec85db8f33f4c4fe4fc2b116f3462686e4d7",
+      "gzipSha256": "13289b0dbb6f052a8e8d23ca802fb64512c8ed415ad5e6c5cff162dfabb3687c",
+      "bytes": 79467
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/05e39b022550eebf1e50e517d3b8fe49.png": {
+      "originalSha256": "e17dad29ac8bce019ae4388d3b764cbc5772de524e41bba8bbf26cc7af71754d",
+      "publishedSha256": "e17dad29ac8bce019ae4388d3b764cbc5772de524e41bba8bbf26cc7af71754d",
+      "gzipSha256": "7382fb399b1fd3888302e6b0e4b510e1e39de9c7fbb75ccfa288007618a80b20",
+      "bytes": 75459
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/07c30b307e18b80b37ed9602f8070130.png": {
+      "originalSha256": "28736f55c6eb46cfe19e35e60130cd0be619600859cd4187317b65b6292f2d74",
+      "publishedSha256": "28736f55c6eb46cfe19e35e60130cd0be619600859cd4187317b65b6292f2d74",
+      "gzipSha256": "82754a87ee468db21250fddf231f8dfd565ef1f5c9537c4bff11663ecfefe05e",
+      "bytes": 98097
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/0887ff69e50acd67d25c98cd60eba079.png": {
+      "originalSha256": "fa6246813c82362e69fcdeb8b1c6348ce7d8cf6d44b18afd214523b497294ad3",
+      "publishedSha256": "fa6246813c82362e69fcdeb8b1c6348ce7d8cf6d44b18afd214523b497294ad3",
+      "gzipSha256": "478379e2f708330f8b5b8acfeaa0c28e26c4b7f7ba7997ca0d2b80ea21ebb9ec",
+      "bytes": 73501
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/0b515da18ce5c40c51874564b41d7354.png": {
+      "originalSha256": "47e138e3e4eb7789ad706c871fe79b3a651328008ec00d5130d7c13e72f8d244",
+      "publishedSha256": "47e138e3e4eb7789ad706c871fe79b3a651328008ec00d5130d7c13e72f8d244",
+      "gzipSha256": "066f2ba68d5c2900ee7ef447de70fa914434ca7fedfca8f9a4857a90faf4e6eb",
+      "bytes": 103517
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/0dc179cd4f03e09097ee8fc64a294d9a.png": {
+      "originalSha256": "8e7e2b5f21cacc005e8f4715632979d83c017f38249089d64516139d0d47efe4",
+      "publishedSha256": "8e7e2b5f21cacc005e8f4715632979d83c017f38249089d64516139d0d47efe4",
+      "gzipSha256": "9989c51308c85d38c8ad6de59431b20ecb3915c5978e40f52f96f4f4629e01b4",
+      "bytes": 79859
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/153c70bd06c76a038c02ea44d412f541.png": {
+      "originalSha256": "f8554a49f00e5e79af193a9b77b2aca7d3854e1bb00d16bee98fac6bfa93a520",
+      "publishedSha256": "f8554a49f00e5e79af193a9b77b2aca7d3854e1bb00d16bee98fac6bfa93a520",
+      "gzipSha256": "d1d25c3a0b501799f43835bbc46c032ec4e3c665a48b99b264b47e3021c6d256",
+      "bytes": 70939
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/18dd6f83cb7819ce904e87f711b22fe6.png": {
+      "originalSha256": "54c8dcd24340a64689188423dc10f9fe516d6b1f4b044c40a11bdb90b93ad29c",
+      "publishedSha256": "54c8dcd24340a64689188423dc10f9fe516d6b1f4b044c40a11bdb90b93ad29c",
+      "gzipSha256": "c1d9169ba3071d1f3c010802ac5e10d6bfdb8bb96d004d3deaa3febc6b980342",
+      "bytes": 156023
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/19a128def721b8cc74194a4008e0ee0e.png": {
+      "originalSha256": "1958e7bec69b9b3b097c7daec274c2812ce805e257e3ffd34a8d6de0ce30906b",
+      "publishedSha256": "1958e7bec69b9b3b097c7daec274c2812ce805e257e3ffd34a8d6de0ce30906b",
+      "gzipSha256": "e0162b3924a43f5f1923eab68f7f512c2cd1045ea04f1d6582a714fc31959ec6",
+      "bytes": 88833
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/1da286ca4ef8154ef71bed09d3c5fb8e.png": {
+      "originalSha256": "c06537092042a3a2ab0a517980ad0878e5c76185a64531f60eecae3a9ec60ca4",
+      "publishedSha256": "c06537092042a3a2ab0a517980ad0878e5c76185a64531f60eecae3a9ec60ca4",
+      "gzipSha256": "e97c681d1b5201dc53f81a6c6743617e52262dacc692d86adbf4668ef44ed286",
+      "bytes": 66276
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/1df7a0cc8d6831e04c73d3c95cdae31a.png": {
+      "originalSha256": "e4c48970947ab4a6b3faf6b2a37f0e0527dacb07d4b477817946e523f6208a8a",
+      "publishedSha256": "e4c48970947ab4a6b3faf6b2a37f0e0527dacb07d4b477817946e523f6208a8a",
+      "gzipSha256": "4551d8f6364c11fdeb37aa37d3449884bbd876ed4e6fc904da013d5d8ea17ced",
+      "bytes": 54854
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/1ed4164c1858c1e7e3157a19d5718cb5.png": {
+      "originalSha256": "88278ba0671f5ca51f1294a379d2de459f255e89555b91746531db0b26604629",
+      "publishedSha256": "88278ba0671f5ca51f1294a379d2de459f255e89555b91746531db0b26604629",
+      "gzipSha256": "eb01a348cd2b0c12267b81c22993223c2697bfd2cf45406a31c511fc4930a1c8",
+      "bytes": 70342
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/207a83dcb34c2005cdd2e3610f639623.png": {
+      "originalSha256": "4c6cf6a5fdbd1061551460df0dab7e24667e61bea87d2511bcdf219385db35aa",
+      "publishedSha256": "4c6cf6a5fdbd1061551460df0dab7e24667e61bea87d2511bcdf219385db35aa",
+      "gzipSha256": "87ff5da0a446922cc75d2658a8704709c2a2cbad41bd92f69e3976316ce0c375",
+      "bytes": 75028
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/26ff8b93ecb6712075b930e721d0bdcb.png": {
+      "originalSha256": "d3b3428216d8b2f6bb9a3e3c310c32c5c2190833ce031833e7f0912bb650f685",
+      "publishedSha256": "d3b3428216d8b2f6bb9a3e3c310c32c5c2190833ce031833e7f0912bb650f685",
+      "gzipSha256": "77bf87887939c4a66a4e6f7bc82a8282207b1e4eff8fd51dcb71354cda5ae9bd",
+      "bytes": 58141
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/3050018e5ccfcfa2521f2e39d8322003.png": {
+      "originalSha256": "8db38acf3b42b64a06b74e3805cdb929ca3bea9c301e643e98513531103d40e2",
+      "publishedSha256": "8db38acf3b42b64a06b74e3805cdb929ca3bea9c301e643e98513531103d40e2",
+      "gzipSha256": "c59b689a1dd7c83131d7237d6a2f9438e695905aff058b2813a22cb4399c3670",
+      "bytes": 83594
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/322e915e7090f533cb37a0d2b5cc2e12.png": {
+      "originalSha256": "37fe7edfde258d68a1edabbe5503fc7fb6829799529fdb42601426699b017d8e",
+      "publishedSha256": "37fe7edfde258d68a1edabbe5503fc7fb6829799529fdb42601426699b017d8e",
+      "gzipSha256": "7aeedb3d3addec336de0322848eb3366747c9f23cd9faf235ffcffdf6c6982de",
+      "bytes": 78652
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/3763b36cffbf727e8b7930e90097d1be.png": {
+      "originalSha256": "7222192f81758eca64796f093fe7fe8065112e3eed912c4c2d09a9ceb1be1a03",
+      "publishedSha256": "7222192f81758eca64796f093fe7fe8065112e3eed912c4c2d09a9ceb1be1a03",
+      "gzipSha256": "67a070cb87826cc88934590312c6a8a0f474390186b81ba41a46ddbcfade7041",
+      "bytes": 73435
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/3c548e4f74e8ed524f348a7aeedc85b7.png": {
+      "originalSha256": "1c1f0b39060fb8be2dbea5f94b5443d18c02af7a6c73a6395fd7edb9177d1232",
+      "publishedSha256": "1c1f0b39060fb8be2dbea5f94b5443d18c02af7a6c73a6395fd7edb9177d1232",
+      "gzipSha256": "7616afb660325122b0433e05417216a1a28ec3a804faa4f0a4418ea1751f5f47",
+      "bytes": 80027
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/3dd56082539631dcafef2b031716187d.png": {
+      "originalSha256": "f8e13c4185184cf20614bbc2a6ef435b835fab840c574ff216f4e290417decda",
+      "publishedSha256": "f8e13c4185184cf20614bbc2a6ef435b835fab840c574ff216f4e290417decda",
+      "gzipSha256": "c00be591d9da0c765c2b95e326276bbdf536aa9a4cc88a7cd7ed535903d33a5b",
+      "bytes": 76296
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/433aed59359c4ba8e0b73179d5aecbf3.png": {
+      "originalSha256": "6353b10e70d6e470415a3e935902198cbc92914cb7102aa3a92b3bf2f14fcf4e",
+      "publishedSha256": "6353b10e70d6e470415a3e935902198cbc92914cb7102aa3a92b3bf2f14fcf4e",
+      "gzipSha256": "26d4ad4261e79703a74d9906a91d94205f7ebf1726a26f34fdccf372c8218fbe",
+      "bytes": 56130
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/43afaad048636f4e5529790e8a152240.png": {
+      "originalSha256": "81ef8c9a82109deb32e868b399a889189abc29e7723f5fb8b1594314ddc04af0",
+      "publishedSha256": "81ef8c9a82109deb32e868b399a889189abc29e7723f5fb8b1594314ddc04af0",
+      "gzipSha256": "f1aa26e6325af89ad3b1cca977bbb66cf92abeab1081839872f9110bc18e3c06",
+      "bytes": 81241
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/441b47f6fe7e69d9ef362785719cb715.png": {
+      "originalSha256": "b9108b218baa7634af8a5bc327d6ea4420751db4693e5d6334c49a8881dda2cc",
+      "publishedSha256": "b9108b218baa7634af8a5bc327d6ea4420751db4693e5d6334c49a8881dda2cc",
+      "gzipSha256": "df2beff0b5debcfc36859d769f81948088fa884e1fe8c07a6cc271a72385f2f6",
+      "bytes": 103486
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/4abdb4f179760558bff3927b8813882e.png": {
+      "originalSha256": "b264a829ae638ae3f91513971e1c541d5a85b058f2f05226035dee0f036f7f5b",
+      "publishedSha256": "b264a829ae638ae3f91513971e1c541d5a85b058f2f05226035dee0f036f7f5b",
+      "gzipSha256": "36717168240cb3821793cd871f6e3a305b1e486ee2f8905777f00a9769e526cc",
+      "bytes": 62426
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/4c09b64e1be76720b456a3ea62c36cf1.png": {
+      "originalSha256": "71cf28ed25f2206f3ee2beea4adabf1cd1f80a46854e5b7b8dce888397fe7969",
+      "publishedSha256": "71cf28ed25f2206f3ee2beea4adabf1cd1f80a46854e5b7b8dce888397fe7969",
+      "gzipSha256": "0fc76a643b9c12ea7b3ae049d0af5d2f5d5c626c160ac3ba2e0e05c8c9376564",
+      "bytes": 84298
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/4f6912568471f717f3ae8300468579c1.png": {
+      "originalSha256": "7c7587a63249835b10c697b5f15d4272da9387d5b30667bffd53f66c94c6796a",
+      "publishedSha256": "7c7587a63249835b10c697b5f15d4272da9387d5b30667bffd53f66c94c6796a",
+      "gzipSha256": "9f2ccf2cc4e067951be55a5d33f71aa151a0633a37e2e2d5d917f8ac22176fe3",
+      "bytes": 78442
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/5ab4c37f92792073f872a3888f53676a.png": {
+      "originalSha256": "8c506caf4df70b14fcaff1c62e7f9159c7b126dc3fc8af072f83b271a9704d4b",
+      "publishedSha256": "8c506caf4df70b14fcaff1c62e7f9159c7b126dc3fc8af072f83b271a9704d4b",
+      "gzipSha256": "52a6386a1528fa498758100ad6eb89a12569582e20ff6cc7abd5861cc9e95871",
+      "bytes": 82323
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/5b468e8e134e70d56968450de5817fe5.png": {
+      "originalSha256": "13b1760538eb55bcd41f0c89bee31fb1b4c5dc0d83f92d4d63a918e914fce78b",
+      "publishedSha256": "13b1760538eb55bcd41f0c89bee31fb1b4c5dc0d83f92d4d63a918e914fce78b",
+      "gzipSha256": "c32a366683713115c24a0d85e3b64acf9914572d64896ac38167689b05ac7174",
+      "bytes": 85956
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/5c5186c822f07d06bec8c44c9bb7fa4b.png": {
+      "originalSha256": "e3538a0c66895e793300dbd8518a0b3ad291be4d79aa7b203d8aeeb9d8e3996a",
+      "publishedSha256": "e3538a0c66895e793300dbd8518a0b3ad291be4d79aa7b203d8aeeb9d8e3996a",
+      "gzipSha256": "b67bcf8c34d4a92f63ed05afd86e0a10aeab3e61778e237a0f9b1c2c4b73fdbf",
+      "bytes": 74213
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/5f1bea3900143056fb1a4b3271a77ecf.png": {
+      "originalSha256": "d16f94d3711a0a7d90112044cf3af678b3f8aa9b43263fa0e3400c4e6c150dee",
+      "publishedSha256": "d16f94d3711a0a7d90112044cf3af678b3f8aa9b43263fa0e3400c4e6c150dee",
+      "gzipSha256": "fa0aabd7ddd84540d6672b9f5423d86d85aa696256eefe5cda2f87e8125510d1",
+      "bytes": 84258
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/5fc31c4fab956349a39485eecb9af734.png": {
+      "originalSha256": "418e1eca837253e7101ec451ab13dbd5bb23d5a1f5e78587aa8926c568a91a3c",
+      "publishedSha256": "418e1eca837253e7101ec451ab13dbd5bb23d5a1f5e78587aa8926c568a91a3c",
+      "gzipSha256": "8aa7932bdc73a50055e421ecc54a4d961dffd851d9816b97ac30a02dbde2eb83",
+      "bytes": 79983
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/679d6c0ac958833f452f68e8fddb526d.png": {
+      "originalSha256": "a2f83a86d224d237830b6fbd7c951cb1ccaf789b1384e30cd9700865feac2bce",
+      "publishedSha256": "a2f83a86d224d237830b6fbd7c951cb1ccaf789b1384e30cd9700865feac2bce",
+      "gzipSha256": "64ef6ff394028be2bb0e15ecdd3a47e662cdfeb8abd08c31e1a62568003ee437",
+      "bytes": 74242
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/6e7706a2db04cc7a55070b9300ff0b7d.png": {
+      "originalSha256": "168f47aaad03c6cce960103dfe778e37f56c9caf029ca47dd28b23126107cd19",
+      "publishedSha256": "168f47aaad03c6cce960103dfe778e37f56c9caf029ca47dd28b23126107cd19",
+      "gzipSha256": "87ea61867902995ccbd8c61e58f5c80ffc5eedeb4684a7a761facfaa58b45b8a",
+      "bytes": 164780
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/7089ff5029f0ae5b75a0be9aa669f5c8.png": {
+      "originalSha256": "6a6e6ef28053958cb3814ad609adf6e802ef2297eb16ac759868f9d97ad7d6a2",
+      "publishedSha256": "6a6e6ef28053958cb3814ad609adf6e802ef2297eb16ac759868f9d97ad7d6a2",
+      "gzipSha256": "e0fe1ef3388cc3caaaac60d40942212ac2c8996fededf5d941d6f3c63bbbb97e",
+      "bytes": 82666
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/7629e954645afd45cc9f7e1f441ff119.png": {
+      "originalSha256": "db2c0e55a887a88ae867b4bce1953c8383589536d4e6297688a6223208902d58",
+      "publishedSha256": "db2c0e55a887a88ae867b4bce1953c8383589536d4e6297688a6223208902d58",
+      "gzipSha256": "155ad3c3443d638cee98cf20ab44b437bcad2c26922d0e8d2e855bf2937a699b",
+      "bytes": 58761
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/779795a303c470d74489a3e5a94cb527.png": {
+      "originalSha256": "58f244b5c447ce1099e187fd436e3f2051b0646f8b82dd76f69ec3309b59f6bf",
+      "publishedSha256": "58f244b5c447ce1099e187fd436e3f2051b0646f8b82dd76f69ec3309b59f6bf",
+      "gzipSha256": "df7f3f3d2699686138da47c79cd3e458dc4e0f01c63457a77536ac07058f2730",
+      "bytes": 106869
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/796e163151b4d0ea111220e1897994ce.png": {
+      "originalSha256": "89eb94a0cbe8fd0d53f087833a2850abba9eee3bcab95efc2d4de9848f67dd1a",
+      "publishedSha256": "89eb94a0cbe8fd0d53f087833a2850abba9eee3bcab95efc2d4de9848f67dd1a",
+      "gzipSha256": "fc049374c26af0637d7cc23c160db5036278bc061576f5e444dcfc960f256cac",
+      "bytes": 117979
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/83a3c404d3f6cad45f81c3e98936d2aa.png": {
+      "originalSha256": "793236c81f908dccba26451faee769349ef3e426a50658f27f3e1b67edee2f35",
+      "publishedSha256": "793236c81f908dccba26451faee769349ef3e426a50658f27f3e1b67edee2f35",
+      "gzipSha256": "c06dacc755ce990592b66f2be1ebd63fc2173fe559b4e21f9afa1a9090973ed4",
+      "bytes": 78893
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/8460be2c232d6659b577c97e955c08b1.png": {
+      "originalSha256": "84daa3720c907b33a009d95e886f9e28a1caac3615425acb1dfc015026c81f67",
+      "publishedSha256": "84daa3720c907b33a009d95e886f9e28a1caac3615425acb1dfc015026c81f67",
+      "gzipSha256": "92fbd3ae7c392ae6f18a5879eeac000805faeb4b02331cee414ab0187001d75c",
+      "bytes": 108775
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/84bd13270aa4427bee9a5981c3f4ad56.png": {
+      "originalSha256": "62c84f6e17d995a0936a8378be32173f7995cba166e832321980d6e4a84ecf3c",
+      "publishedSha256": "62c84f6e17d995a0936a8378be32173f7995cba166e832321980d6e4a84ecf3c",
+      "gzipSha256": "1206b426a014a57f9f188f7aa0230dae10017d28979934c1c3241a48d1b47217",
+      "bytes": 111092
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/8901d57bd7b7fa401fe0eea914ea7e8b.png": {
+      "originalSha256": "437235f6ad43167af647c105f4ee56f74fac5605f8848ce7155f3e24bf276477",
+      "publishedSha256": "437235f6ad43167af647c105f4ee56f74fac5605f8848ce7155f3e24bf276477",
+      "gzipSha256": "8491fb81c1318cb4baf07d9f1fe62f9741e115cd5ec4a635edf54a42279e334b",
+      "bytes": 39799
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/9149fc3cb2c4dc607f0c1de967387b25.png": {
+      "originalSha256": "d42fe6febc3aafaea2386306b019e73878837a81f272d01df71f0e5a9833ff59",
+      "publishedSha256": "d42fe6febc3aafaea2386306b019e73878837a81f272d01df71f0e5a9833ff59",
+      "gzipSha256": "5dbd8df0ae5b6b04acd0806c00fb827618d9f8b911307561f182a429cabca70d",
+      "bytes": 64606
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/96b1d5e0b7997e96687fcdc6fca1ea5e.png": {
+      "originalSha256": "cd8521f7d12e4c9decfe6d3187b6c1c72f6a2d6685bcb0e9464456183741954d",
+      "publishedSha256": "cd8521f7d12e4c9decfe6d3187b6c1c72f6a2d6685bcb0e9464456183741954d",
+      "gzipSha256": "eedd819a7a4d092a876513c420c77f2b69f0c3747c06654ba1a85845e583723a",
+      "bytes": 22666
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/98a651557d2ae1f9ed32d734c86e3faa.png": {
+      "originalSha256": "437235f6ad43167af647c105f4ee56f74fac5605f8848ce7155f3e24bf276477",
+      "publishedSha256": "437235f6ad43167af647c105f4ee56f74fac5605f8848ce7155f3e24bf276477",
+      "gzipSha256": "8491fb81c1318cb4baf07d9f1fe62f9741e115cd5ec4a635edf54a42279e334b",
+      "bytes": 39799
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/9a1a96a5794f347ecbcd75b757095d4b.png": {
+      "originalSha256": "77471c6711524ee1d89191538ca19864455716d9e1f50f42afe37aa0a6acee2d",
+      "publishedSha256": "77471c6711524ee1d89191538ca19864455716d9e1f50f42afe37aa0a6acee2d",
+      "gzipSha256": "116ccc58e9f303aa454dbce95295b2a294f954b70eb94005e2f0dc65d9141392",
+      "bytes": 443544
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/9afe234eff39a2651bb2851d82817843.png": {
+      "originalSha256": "0823fcaacaf1834245aa4c715c9f7a5aa1c29ee96e6998f809eeb57d1b4cd8ef",
+      "publishedSha256": "0823fcaacaf1834245aa4c715c9f7a5aa1c29ee96e6998f809eeb57d1b4cd8ef",
+      "gzipSha256": "a641925029e11cacf08a5cdf6d7c9c656942112f558daaa65ea6454b11dcb366",
+      "bytes": 150153
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/9f3c8901417dd14616be3a571bce3140.png": {
+      "originalSha256": "95a0c3e682cfff0e7b6631f6c0c9a50447df0b786cb8cf47e364277b17294891",
+      "publishedSha256": "95a0c3e682cfff0e7b6631f6c0c9a50447df0b786cb8cf47e364277b17294891",
+      "gzipSha256": "1958868a7f2cd650f0a373cd98836ade8e404e61f239f62525182014c5e6a8e8",
+      "bytes": 78487
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/a019b1a110cc266139f7cdc3ea6bf85b.png": {
+      "originalSha256": "f1bab75fcd8256de7795a84482cf94437f4ea901deb25b3a8ab2a0623c74cba2",
+      "publishedSha256": "f1bab75fcd8256de7795a84482cf94437f4ea901deb25b3a8ab2a0623c74cba2",
+      "gzipSha256": "83b3846fe92a9455174b067552a5cd6c769ae0192690cfa138448eab1d36afc1",
+      "bytes": 66403
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/a0750e62a35be692bedba688f300667c.png": {
+      "originalSha256": "ba216e71f7fa1a74b2e663c29f5880d91fbc9c9438735c41160bcc3e0586e22a",
+      "publishedSha256": "ba216e71f7fa1a74b2e663c29f5880d91fbc9c9438735c41160bcc3e0586e22a",
+      "gzipSha256": "392f278bed2683f0bd954f41e2315c0eb610d2ef77c5be88f2be16ebebe4c582",
+      "bytes": 85781
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/a58edc07aca7cb9ef397ab25a93335af.png": {
+      "originalSha256": "3d02f7a1b39776255b739ea84b6a6bf460915452ad2ab55d9bada03f4b203055",
+      "publishedSha256": "3d02f7a1b39776255b739ea84b6a6bf460915452ad2ab55d9bada03f4b203055",
+      "gzipSha256": "afa4e1eb7bb7636690ba3cb5488d9368cdd44b611c4c7e2be6da0360e8e597ed",
+      "bytes": 165511
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/a78e74bb12fc28b03da09203f12d545b.png": {
+      "originalSha256": "4e2d7bc33d47cd08de9c39410d1a71ca4795501f458a3711a6b8bbf695046eaf",
+      "publishedSha256": "4e2d7bc33d47cd08de9c39410d1a71ca4795501f458a3711a6b8bbf695046eaf",
+      "gzipSha256": "4bc2394e787cabaee6d88374372061245207b2138879694b30c3258c025f6f63",
+      "bytes": 29325
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/a86bb0ab6ff0703939a4f91eec6a3b2a.png": {
+      "originalSha256": "4cc73faa239b1a56de7808fecb818095faae14f00bc2a14e27d67838167c2c78",
+      "publishedSha256": "4cc73faa239b1a56de7808fecb818095faae14f00bc2a14e27d67838167c2c78",
+      "gzipSha256": "3ef77b94102442feb154b17f570ac3aec53f108bfa6160fb6051b04d7c770f63",
+      "bytes": 67288
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/a8fe701a934fa38db3266957dffb03d9.png": {
+      "originalSha256": "db5825e93fa5bcf043434b62d3d93583cb31b6463559725671ee5013e10c3329",
+      "publishedSha256": "db5825e93fa5bcf043434b62d3d93583cb31b6463559725671ee5013e10c3329",
+      "gzipSha256": "84a323fb3c7aa185a4319cde226a7f04c63a6a5a3114a4d888ed9ce0ac990379",
+      "bytes": 140317
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/adca994b6039b5f28a8f299acf099ce0.png": {
+      "originalSha256": "06e036620ace9887d8cd223589c438df322924ae642d78d217723552fe5ee8be",
+      "publishedSha256": "06e036620ace9887d8cd223589c438df322924ae642d78d217723552fe5ee8be",
+      "gzipSha256": "cdad84051504c8c5cac7cdcbac36974719ef0b84abc43ea60a909944f901d7a2",
+      "bytes": 98954
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/aef4d0a69312db1d0793299da0771765.png": {
+      "originalSha256": "1af10d8a17d698a56e8365ccdeeb8c017dc4e381122d4eabe47b8fa5628204ac",
+      "publishedSha256": "1af10d8a17d698a56e8365ccdeeb8c017dc4e381122d4eabe47b8fa5628204ac",
+      "gzipSha256": "463c1badc96eed9e12d82aae3a88a8b6994b6e0efe8b84d1cbb44cc3ce130434",
+      "bytes": 75039
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/b759b20e04be7ed875ad87872f57a10b.png": {
+      "originalSha256": "051d6adde7f81404f8950a4d193fb64fb72f40f0f5c9323cef3a72b437832372",
+      "publishedSha256": "051d6adde7f81404f8950a4d193fb64fb72f40f0f5c9323cef3a72b437832372",
+      "gzipSha256": "50379e3aa4542f8f12a56ccbce2c303b4f52ec3f6fffafe27a779aaacd1b8979",
+      "bytes": 49889
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/b7f0a92f7e017d8c28752883a1cb26f6.png": {
+      "originalSha256": "d684e54e02ec7e6b0389bd03acf7d6dbfe0fdff28e55f09458498246f4d9852f",
+      "publishedSha256": "d684e54e02ec7e6b0389bd03acf7d6dbfe0fdff28e55f09458498246f4d9852f",
+      "gzipSha256": "f1d08e2ce4afe28d45b944b286e324aa22e7f2f02d32d8ab95a37df14bc34ae8",
+      "bytes": 74294
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/b99ef82464a9df465e874191923c259c.png": {
+      "originalSha256": "210e1fc65a988fe54fc362ec5312d08cb908d6217483015755ba1576d5d33b64",
+      "publishedSha256": "210e1fc65a988fe54fc362ec5312d08cb908d6217483015755ba1576d5d33b64",
+      "gzipSha256": "8b45f05d9aa8187986a50a1710da479c5624cc0c8a60078c53f4860a1c2809da",
+      "bytes": 89777
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/bdb18bd8fc197f4da1dbb6dd9412966d.png": {
+      "originalSha256": "af57af0496b76429451b0a2db60495863a28683b3dbc16ca73529743289b16f6",
+      "publishedSha256": "af57af0496b76429451b0a2db60495863a28683b3dbc16ca73529743289b16f6",
+      "gzipSha256": "ad841fb4b7ff46d880b48af09264b7ec82628fbf04fcb69739659f82b8d31a60",
+      "bytes": 67391
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/be37caf2838b6fb28687fbefae6eddf5.png": {
+      "originalSha256": "b1b6001da78e9fe93fab5ab4838a281c4d854f1692fa720e2b04e1b33e1e1f21",
+      "publishedSha256": "b1b6001da78e9fe93fab5ab4838a281c4d854f1692fa720e2b04e1b33e1e1f21",
+      "gzipSha256": "2e97e0f6433310b85db98a2e9cfac806682a78a7c09b13c467eb70cb80deaaca",
+      "bytes": 75031
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/c4e44312c5ef96dc3ceb6f24c2c338d9.png": {
+      "originalSha256": "c2832436c75ce90abc589d18b8c5ccb2bc7b6cb92f19676b50453bbcceba2d04",
+      "publishedSha256": "c2832436c75ce90abc589d18b8c5ccb2bc7b6cb92f19676b50453bbcceba2d04",
+      "gzipSha256": "d2894882899efd8ea726c972f845496ce1bac296055191aa8edc9204ff073093",
+      "bytes": 74264
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/c5672eb6732d703c3b283db9925b6c4b.png": {
+      "originalSha256": "2cd8e7cb6fb2a51a36465116eb338dc54aa65998b0115ca13061eed8d51f19b8",
+      "publishedSha256": "2cd8e7cb6fb2a51a36465116eb338dc54aa65998b0115ca13061eed8d51f19b8",
+      "gzipSha256": "1b57a470a49524764d89adef1090d53108428faf8ba58ce15c111d1c45be08de",
+      "bytes": 61475
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/c5905435ac0251d0f6fb0242fa118df2.png": {
+      "originalSha256": "502462d475911fd4c9f3aabd949516d29f5fcf50b385c5b535f4140b51757633",
+      "publishedSha256": "502462d475911fd4c9f3aabd949516d29f5fcf50b385c5b535f4140b51757633",
+      "gzipSha256": "6c1b10d9b945281052f4378e1a3fc889fd61a8157410e8fb7047240018940b8c",
+      "bytes": 50702
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/c89e0f8071c9f0c60a5acf8d0a5a7a5c.png": {
+      "originalSha256": "127dfbd4ec4c8d64c47592d7d9bc2cf750b505c13deb5c9b60d919fe400b5c7e",
+      "publishedSha256": "127dfbd4ec4c8d64c47592d7d9bc2cf750b505c13deb5c9b60d919fe400b5c7e",
+      "gzipSha256": "8b6b97e91835ae005896fd143b3f579a25e7b51567af14423ccc4c2e544428e6",
+      "bytes": 83462
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/c9b01af4da041f459e31b88eb0839aad.png": {
+      "originalSha256": "7a2fcbde6906798b3f0a88e65b9af14a9b7c71c1632aeecae3caf56d89cfd922",
+      "publishedSha256": "7a2fcbde6906798b3f0a88e65b9af14a9b7c71c1632aeecae3caf56d89cfd922",
+      "gzipSha256": "e0235d54ec42c1f5a5180c05313d15ad341dbdac7c0295ea11f14210f4a71923",
+      "bytes": 62361
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/d1c0581baa43f2c66228a09bfeb7f63b.png": {
+      "originalSha256": "e46b581c7b84833d799315f3c97da2f984f336cd7d5f187c6d14194a0346fd17",
+      "publishedSha256": "e46b581c7b84833d799315f3c97da2f984f336cd7d5f187c6d14194a0346fd17",
+      "gzipSha256": "9a29b77c556f63b689510868df33a64f93d2afbb7e6cc26e8d90b6565600a134",
+      "bytes": 41606
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/d40152950336365098cdda9010f61b27.png": {
+      "originalSha256": "4b4cb9c413f486d487a331656663f8dca4ae1341e67ce1aec4bd684c1186a02a",
+      "publishedSha256": "4b4cb9c413f486d487a331656663f8dca4ae1341e67ce1aec4bd684c1186a02a",
+      "gzipSha256": "938e0df87a992eec53ceba1fe0469d56a49f314747f7732db51fac2901a47559",
+      "bytes": 126822
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/da5baa92e326a9b70f97a36e0853a389.png": {
+      "originalSha256": "aa89c1eafcc63bf86c95a781fe5f28f5e89ce50ffbc469f934b0c9d432aeee87",
+      "publishedSha256": "aa89c1eafcc63bf86c95a781fe5f28f5e89ce50ffbc469f934b0c9d432aeee87",
+      "gzipSha256": "6e4e07ff032b411f3f0d205e73f48dfe9ac1f18d5b07af5aa366b4f45c46d384",
+      "bytes": 72734
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/dc3c24d4fee23a4c58af9de1b9952a01.png": {
+      "originalSha256": "f3c737aef60113be66a528fd706cde73a0076a95d7644bf40d87607a0effc65f",
+      "publishedSha256": "f3c737aef60113be66a528fd706cde73a0076a95d7644bf40d87607a0effc65f",
+      "gzipSha256": "5ea47825efa0fb9ecb40f31629375a8a4684926c1b9c6ec5032deab5c6eba2fa",
+      "bytes": 71630
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/e2c7323a2c6ce8ae2ff4355d559c46c3.png": {
+      "originalSha256": "8f6760a1cb2e7beeef04bf6d9242525e4a7d5d7be261ee2bacd812ff0b41528a",
+      "publishedSha256": "8f6760a1cb2e7beeef04bf6d9242525e4a7d5d7be261ee2bacd812ff0b41528a",
+      "gzipSha256": "43a9e9ee813fb1128bf8f73d708568ddaa8fb89324cfed197d7ee502879a361a",
+      "bytes": 73142
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/e7ce775caf7e470bfc2db38e8ca032bd.png": {
+      "originalSha256": "d47413d1fd43c4908a48337da51ba10662115aafc7644156f50bd6bad6c7a1c1",
+      "publishedSha256": "d47413d1fd43c4908a48337da51ba10662115aafc7644156f50bd6bad6c7a1c1",
+      "gzipSha256": "ce522a0f0d769f970b51da021939c58029e8bafae3d47706a1777d10992edcef",
+      "bytes": 72884
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/edac580b6dea9f4a0afcf89808887582.png": {
+      "originalSha256": "70c654136d38d166fc25f543c4cf1cee16225068eb5e360eeec0470b1879edd3",
+      "publishedSha256": "70c654136d38d166fc25f543c4cf1cee16225068eb5e360eeec0470b1879edd3",
+      "gzipSha256": "eb30ee59c8e0600f2af7df4f68981c03d4ea73547698c71f6b57ef721eb6d6e6",
+      "bytes": 72757
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/ef681d2d2b2a7418f12184454413a4eb.png": {
+      "originalSha256": "85a7fd1efcb7047e850032501d55186f7254864bfe7c5c9bd451d91faadbd6e4",
+      "publishedSha256": "85a7fd1efcb7047e850032501d55186f7254864bfe7c5c9bd451d91faadbd6e4",
+      "gzipSha256": "2df76c66192bdbdf63d6b0a3260a1ec4b66860ddecfd735ead287126d9ea7153",
+      "bytes": 75611
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/f1b8a8937ea1558e0da5a5a8730e0c7c.png": {
+      "originalSha256": "89b2d395b8a427f856b283faeba1ca2399c1235488df848951a5dd83a23edc75",
+      "publishedSha256": "89b2d395b8a427f856b283faeba1ca2399c1235488df848951a5dd83a23edc75",
+      "gzipSha256": "3848f30aa5cf1fbd3f482c1cb39e1ccaa4cc39ebe9562d3f219429b40cf21b2b",
+      "bytes": 40157
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/f872f97b4a14bc1ade3205e9ce58a7d2.png": {
+      "originalSha256": "3ea9ac792ef7b7cd1d9d664531088aa3e3de7a0e64d995d2bd93c1ddb084d522",
+      "publishedSha256": "3ea9ac792ef7b7cd1d9d664531088aa3e3de7a0e64d995d2bd93c1ddb084d522",
+      "gzipSha256": "6bfe841ec2eec8413d8d235c1d11886acf4605c5291de7ae4550a4284788bc4a",
+      "bytes": 80992
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/f9a85c53ae3e5d655ebd6bf9368938f1.png": {
+      "originalSha256": "4efaa3be5d6449725028c090d936d24cc5de0d88fd6ba0beb95fe2b72fc93118",
+      "publishedSha256": "4efaa3be5d6449725028c090d936d24cc5de0d88fd6ba0beb95fe2b72fc93118",
+      "gzipSha256": "14802463e44ab0e3e56b7a016dc16a8143acd665e02df7eef5eb4486c4ca2f45",
+      "bytes": 171567
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/fa52264e6ad6e11414cd0e3de08c400b.png": {
+      "originalSha256": "02181d002f68b7dad48ce6714a8e2dc0e2885ce1d99a229c0a66a3c4ec86ba7b",
+      "publishedSha256": "02181d002f68b7dad48ce6714a8e2dc0e2885ce1d99a229c0a66a3c4ec86ba7b",
+      "gzipSha256": "4d1ec3becac94214e9b1ba5039ea7cd5b3aad946b439bcc6bc5978b95cc46d19",
+      "bytes": 71764
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/fee8831788f7634ad80cfce194775328.png": {
+      "originalSha256": "1ef7e44caa24275590315b7f7c2c7c35418c43f02bb6e37929e35375be9ff633",
+      "publishedSha256": "1ef7e44caa24275590315b7f7c2c7c35418c43f02bb6e37929e35375be9ff633",
+      "gzipSha256": "cf618f2af7803feb440fdf1ad134ed5a05e545902bd53fee658395c3a541334f",
+      "bytes": 101071
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/.playwright-artifacts-2/traces/resources/2a763f686a05cfbaf4a6648e0ef8cd8ed8075295.png": {
+      "originalSha256": "0d1a9474634ee5938c6daee8de8c0b24e713f566fc9c6434a28cb4fe83cc0b8b",
+      "publishedSha256": "0d1a9474634ee5938c6daee8de8c0b24e713f566fc9c6434a28cb4fe83cc0b8b",
+      "gzipSha256": "8aae9809aec1b3ac8baf2adce23799e5b5cfcd5e8c38e1cf720ed9cafd9a0011",
+      "bytes": 3581
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/assistant-notes-assistant--664b4-rver-writes-remain-disabled/error-context.md": {
+      "originalSha256": "fc2e608108b8e66a1d76cb57ba501fc1fd0b20dc1b054bda744ae223dd399376",
+      "publishedSha256": "fc2e608108b8e66a1d76cb57ba501fc1fd0b20dc1b054bda744ae223dd399376",
+      "gzipSha256": "8c9950791fd518c93602d4f099326852e5f1c8a51d25b836ae28ff0bb250306b",
+      "bytes": 302435
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/assistant-notes-assistant--664b4-rver-writes-remain-disabled/test-failed-1.png": {
+      "originalSha256": "daa253609ffb8d4aac7545da8bb1a616174bc717a9b156ebaac29f1061ddb51b",
+      "publishedSha256": "daa253609ffb8d4aac7545da8bb1a616174bc717a9b156ebaac29f1061ddb51b",
+      "gzipSha256": "97c5295872777946a299bfa8ef20b015d7e8eea9747bd920b74d46a58f100950",
+      "bytes": 107100
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/assistant-notes-assistant--664b4-rver-writes-remain-disabled/trace.zip": {
+      "originalSha256": "eee5e3fd1277426fca13fc20c586c2142692d180de1c8290fd7afc03320a0e3c",
+      "publishedSha256": "17ba47ec58bc9f8f5dbc4907b480ce514c9d79544b5ff7840694ac53e677ae50",
+      "gzipSha256": "5fda5f9379907d3321ee830799800347933a6a5ffc7893378bafdf9d4b4ac8a0",
+      "bytes": 1802976
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/classroom-board-notes-reve-e7a0f--spoken-sentence-boundaries/error-context.md": {
+      "originalSha256": "7f04b0c33e89fca94763cf8da3fb62df7de76569d6897c20928da350e64dc6bd",
+      "publishedSha256": "7f04b0c33e89fca94763cf8da3fb62df7de76569d6897c20928da350e64dc6bd",
+      "gzipSha256": "df2b54024433813665e48ed5de5047f5bb84cbda4d09e571bd8c47ae9ae3344d",
+      "bytes": 14142
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/classroom-board-notes-reve-e7a0f--spoken-sentence-boundaries/test-failed-1.png": {
+      "originalSha256": "890810de37dce9f60f1ad43afe9259ad829ef828d94eaf151dddb71d15af20ef",
+      "publishedSha256": "890810de37dce9f60f1ad43afe9259ad829ef828d94eaf151dddb71d15af20ef",
+      "gzipSha256": "e5f356387fffb69f11314553444abe9ae2ee03576d2c81f9ef8ecbe851566c8d",
+      "bytes": 56853
+    },
+    "data/qa/source-course-browser-1793202387958-58012/browser-output/classroom-board-notes-reve-e7a0f--spoken-sentence-boundaries/trace.zip": {
+      "originalSha256": "d734bd7b6da9acdeca9004d4c9ae11acd2bf6bf399f3da0fa6ce1ad6379296fa",
+      "publishedSha256": "f20f8eb642270cbedd33f74e8a0e66e90af8899a121ba2d7a5dcdea2d92a857c",
+      "gzipSha256": "5c4c7967748323de562f4fdee64cb337e3867480f3f9f59d93dd63c26a0964fc",
+      "bytes": 157916
+    }
+  },
+  "initialObservationReceiptSha256": "e6cc3edbf565a79a60d96047ab35539711f44fe45c100676fc73998591f11da2",
+  "observedFailedLines": 2,
+  "correction": "225 was the last execution ordinal, not the number of passed tests. Original log contains223 passed lines and2 timeout lines; full run then stopped without a final report. Initial process-only observation receipt is retained separately.",
+  "tracePublication": [
+    {
+      "path": "data/qa/source-course-browser-1793202387958-58012/browser-output/assistant-notes-assistant--664b4-rver-writes-remain-disabled/trace.zip",
+      "originalSha256": "eee5e3fd1277426fca13fc20c586c2142692d180de1c8290fd7afc03320a0e3c",
+      "redactedValues": 5,
+      "changedEntries": [
+        "test.trace",
+        "1-trace.trace",
+        "1-trace.network",
+        "resources/3521fd1a5a422b411a6404061d7aa6ccc5fa0a0c.json",
+        "resources/f0feb155f3458e956d319ff62e9097f1f56a46af.json"
+      ],
+      "unchangedBinaryEntries": 59
+    },
+    {
+      "path": "data/qa/source-course-browser-1793202387958-58012/browser-output/classroom-board-notes-reve-e7a0f--spoken-sentence-boundaries/trace.zip",
+      "originalSha256": "d734bd7b6da9acdeca9004d4c9ae11acd2bf6bf399f3da0fa6ce1ad6379296fa",
+      "redactedValues": 0,
+      "changedEntries": [],
+      "unchangedBinaryEntries": 5
+    }
+  ]
+}

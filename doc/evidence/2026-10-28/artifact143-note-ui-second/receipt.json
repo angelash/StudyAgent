@@ -1,0 +1,126 @@
+{
+  "passed": true,
+  "phase": "B2-reading-and13-original-journeys",
+  "sourceParent": "59c7ba58b5f819c537fa6daf95ac3b8725561c80",
+  "scope": "Owned real HTTP/browser fixtures; new note reading formats actual tables, untrusted-TeX MathML and nonexecuted code while original Markdown stays exact. No new live provider call.",
+  "buildId": "AsPqrMOs_hD8JR4HSjdMl",
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-28T14:34:33.668Z",
+      "duration": 78705.959,
+      "expected": 13,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "originalAttempts": 13,
+    "retries": 0
+  },
+  "controls": {
+    "checked": 3077,
+    "changed": []
+  },
+  "verified": [
+    "Initial8 journeys retained across390/768/880/1440.",
+    "Actual lost edit and confirmation replies recover by original request, without another mutation.",
+    "Never-arrived create retries the same preserved original payload/key after a real404 receipt.",
+    "Separate selected messages preserve independent unsaved drafts; export failure is a read retry and leaves the saved note unchanged.",
+    "Closing a pending private read and switching real test accounts prevents its late body or old private editor from appearing."
+  ],
+  "limits": [
+    "Student assessment UI, overlong local editor and concurrent editing UX remain additional B2 checks.",
+    "No complete product or production delivery claim. Remaining whole API/browser/CI/handbook/runtime gates apply."
+  ],
+  "files": {
+    "data/qa/note-b2-browser-second.json": {
+      "bytes": 17264,
+      "sha256": "6888583f240cafcde61eea9662d653375bbeedbc7fc798b9175339f82d22b8c1",
+      "gzipSha256": "513c669363a15fb158f20e96ba84266478f28858278b648e40778fc04c2ab14b"
+    },
+    "data/qa/note-b2-browser-second.log": {
+      "bytes": 2787,
+      "sha256": "6c0004901cc82d37fd93d3dcebf24dc32f82d37f23cf570ee980a1024b3e9107",
+      "gzipSha256": "8111d87b697fc2ea643aa3002f0223405858f186cd6553ebf218a82ff7a54029"
+    },
+    "data/qa/note-b2-browser-second-inputs.json": {
+      "bytes": 591183,
+      "sha256": "bb6ee7cb676a15e48db2fea49599477e56dbcef9fae78132d1195911898d79b1",
+      "gzipSha256": "f3aad097a4eb1158b100c9cd9e4d29cc0510551120541a29e3d75bef52a110b9"
+    },
+    "data/qa/note-b2-browser-second-inputs-verification.log": {
+      "bytes": 34,
+      "sha256": "b1742c7fa7f6b68a78318bf44f74ec227827b8ea079c9563ee644314279a1a61",
+      "gzipSha256": "1b6ddc226b250cccf7eb6265e325726377c3771d1788b779e60e365ce30277c8"
+    },
+    "data/qa/note-b2-web-types-fourth.log": {
+      "bytes": 68,
+      "sha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc",
+      "gzipSha256": "280feefa43a1a2d6b5ebb62618a6d36d932de3e009b707d14976e55a78dd4326"
+    },
+    "data/qa/note-b2-web-build-third.log": {
+      "bytes": 1559,
+      "sha256": "83b6a0718d5e0a97ba70f6d06dcced064224c0119b7aa994185367fa90de4669",
+      "gzipSha256": "69dbab8793efef76c5b04e8b2fadb50a284e81a375b498eb3e4f603da5219113"
+    },
+    "data/qa/experience-web/.next/BUILD_ID": {
+      "bytes": 21,
+      "sha256": "f58f2121c630e95441150fa8c201f3336d43d2c92ef281565e9343ee27adf697",
+      "gzipSha256": "14dbd9206f531d611949209ee39e621b8452aac38447f241c347f35c88e5a6e0"
+    },
+    "apps/web/components/assistant-notes.tsx": {
+      "bytes": 26819,
+      "sha256": "d45aeb25deee10d6c5686950e1b00027139179a59378c9a3aa6d14a03fd394f5",
+      "gzipSha256": "a6242208ab3d2e32092f3454d3f2569fd513bf8c197914cce35cce7b2623befe"
+    },
+    "apps/web/components/assistant-note-reading.tsx": {
+      "bytes": 4226,
+      "sha256": "3131b3b88df6fc4b3a128aee47532570deb57993545ff8c3a111fca505c6793d",
+      "gzipSha256": "797b6fd5c4d9cf2db9957a8f8083add89cbcc343cae4211c23bd2fa9078182eb"
+    },
+    "apps/web/components/assistant-notes.css": {
+      "bytes": 6072,
+      "sha256": "1aa9c3d1b8750f58f84735efaa71e9c097f5dd3e4517a40fcb97cb8d044f5315",
+      "gzipSha256": "46a18ae005ac9ad684ddf084ad6a92da32e4901931b221fd2021c8a649ec93bd"
+    },
+    "apps/web/components/assistant-widget.tsx": {
+      "bytes": 18270,
+      "sha256": "b889fe5113e1eca6b2b8d5ec39c2a16abf1a9676ec0a787d8282e43b26db89c0",
+      "gzipSha256": "423d40e51fef2a63fe9296bcf510c0ca8276a16bff43c7ac3610d02a33093f2b"
+    },
+    "apps/web/lib/assistant-conversation.tsx": {
+      "bytes": 21409,
+      "sha256": "e9cf5e06d007741dd4675f8dc6569085690c18e0c964978c7c6755a61a9e4501",
+      "gzipSha256": "4d9dffa248c5131c816657aec1d9f2eed2a06bfc5fbc3dacbc318290942679a1"
+    },
+    "tests/e2e/assistant-notes.spec.ts": {
+      "bytes": 20189,
+      "sha256": "ba1ddc72d6b674aa53a3df17508db9e6daa8961274d6beb6f267e437b830887f",
+      "gzipSha256": "aa76ff34e067d1251d2950afbbc9fb88963948f48d7fc1299eb5b9e599a77e54"
+    },
+    "data/qa/browser-evidence/note-b2-browser-second-335370d2e0/assistant-notes/confirmed-1440.png": {
+      "bytes": 117160,
+      "sha256": "e5eeff324fd7761184a239b7019af73ee3c4d5c7e502f6b32ddad261430f791b",
+      "gzipSha256": "b70e4acab42de39c48a10f4e225e531dcf2b02f6c7db20399f1112c3cf276e0a"
+    },
+    "data/qa/browser-evidence/note-b2-browser-second-335370d2e0/assistant-notes/confirmed-390.png": {
+      "bytes": 68795,
+      "sha256": "ed67961c83b0c2a09b169b27de270188eb7205563f523544e2b18bc9fb0f74ac",
+      "gzipSha256": "bdf21f5831ff2a88107197f99d1fec93202254c7d4a109f70eef2d3ab7df44b5"
+    },
+    "data/qa/browser-evidence/note-b2-browser-second-335370d2e0/assistant-notes/confirmed-768.png": {
+      "bytes": 77154,
+      "sha256": "c02e7d5687a40aa38566a52c426079e5621c099766042f8743cf20b874d2149e",
+      "gzipSha256": "64bee7c64ab299f1912e505c554a44e6e8e1ab23afd9113867b93e1ab241adde"
+    },
+    "data/qa/browser-evidence/note-b2-browser-second-335370d2e0/assistant-notes/confirmed-880.png": {
+      "bytes": 77943,
+      "sha256": "299753b8b3890f10970b05a5044540de5eac033f810764c951879a558bfbf028",
+      "gzipSha256": "c75adb55159f183907710d1d3e21c4480a413579a7b7ab1923d645c19bf882e7"
+    },
+    "data/qa/browser-evidence/note-b2-browser-second-335370d2e0/assistant-notes/original-request-recovered.png": {
+      "bytes": 96060,
+      "sha256": "b9fd4ddcdbd5d6683d7900c3119252febb23a652ba8ff5bb53ca58c6199b5db9",
+      "gzipSha256": "28cba043be6a8542e7b73bf6f4963de3fe795c96e82e77338703eb2a64dbf18c"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "passed": true,
+  "designBeforeImplementation": [
+    "86a3bd908baf7b84a65092dc695d488abfff4a82",
+    "2ba9d988"
+  ],
+  "scope": "Notes17 original browser journeys in own schema23/ports4129,3129. Complete31011-character actual native paste,reopen,download,no server writes,full reading content bounded scrolling and keyboard tested. No retries or changed timeout.",
+  "stats": {
+    "startTime": "2026-10-28T16:49:20.011Z",
+    "duration": 106192.522,
+    "expected": 17,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "build": {
+    "version": 1,
+    "apiPort": 4129,
+    "buildId": "Vt5Ppyeu65GJhqxA7AJfU"
+  },
+  "productSourcesIdenticalToTypeCheckedBuiltFirstAttempt": {
+    "apps/web/components/assistant-notes.tsx": true,
+    "apps/web/components/assistant-notes.css": true
+  },
+  "attempts": {
+    "first": "16 pass,1 fill timeout retained separately",
+    "second": "0 tests selected because focused runner defaulted to source-course; original error retained",
+    "third": "17 pass,0 failed/skipped/flaky/retry"
+  },
+  "limits": [
+    "Not a complete whole-product browser pass or schema22 note candidate verification.",
+    "No production deployment,pixel parity,live provider or real learning effect claim."
+  ],
+  "files": {
+    "apps/web/components/assistant-notes.tsx": {
+      "bytes": 30205,
+      "sha256": "1397835f82a70d317423ba7059b5e11be278663b25799565139fb454bd0deba9"
+    },
+    "apps/web/components/assistant-notes.css": {
+      "bytes": 6223,
+      "sha256": "a66a7dad23ca18eb84444b0df7d58c9626e50502c54fd80cf89aca1b3f548fe3"
+    },
+    "tests/e2e/assistant-notes.spec.ts": {
+      "bytes": 32382,
+      "sha256": "4ee5bf26bdf773df0f1d75deaea7a118eadb6a9957e447dab60c0736bc7c286c"
+    },
+    "data/qa/note-reading-scroll-browser-third.json": {
+      "bytes": 21782,
+      "sha256": "ecc29fb7330203e590feddf333ae00d2530e26f183f134c20709f983a31dc7ca"
+    },
+    "data/qa/note-reading-scroll-browser-third.log": {
+      "bytes": 3505,
+      "sha256": "261323ca02866b70b4247bf1133bae6288f0f93bce1928cf4f66e45d7a837fdb"
+    },
+    "data/qa/note-reading-scroll-types-first.log": {
+      "bytes": 68,
+      "sha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc"
+    },
+    "data/qa/note-reading-scroll-build-first.log": {
+      "bytes": 1561,
+      "sha256": "aefa22b57af52cf01d5e93829776772bef9a4ee02715f86dbb5ce5fcc82de3ea"
+    },
+    "data/qa/note-reading-scroll-browser-second.json": {
+      "bytes": 3256,
+      "sha256": "150af3a236851102899eb5ca9a7b73d9e700f893616a5355f1a4c2329885090d"
+    },
+    "data/qa/note-reading-scroll-browser-second.log": {
+      "bytes": 606,
+      "sha256": "fa256c3bcf672fe5a1a9c2b05f606403ad52e280c64b98b66c18af63e397affa"
+    },
+    "screenshots/complete-overlong-reading-scroll.png": {
+      "bytes": 113120,
+      "sha256": "52f1ebf2ece2ab0325649080f453358831cafb9696e65aa49fe9320ede073029"
+    },
+    "screenshots/confirmed-1440.png": {
+      "bytes": 131150,
+      "sha256": "2bb27cba9a915945f79b5127e4692f4c696cc417483a993b2a496e5bd9c4478d"
+    },
+    "screenshots/confirmed-390.png": {
+      "bytes": 75201,
+      "sha256": "b21135279a81a6029dc6b0c8ae99b7d153be3ee8c532add6af9b58e53aa755fa"
+    },
+    "screenshots/confirmed-768.png": {
+      "bytes": 90874,
+      "sha256": "c5abd34dab7c942eff435af4ad7aa86a45bccebf9bf0ba61d8a15982cd82c8b8"
+    },
+    "screenshots/confirmed-880.png": {
+      "bytes": 91725,
+      "sha256": "5670d1e60ed9a2b984449eda70a9a9244794ec5fa3817d92e0e15e4389689a49"
+    },
+    "screenshots/local-draft-and-adopted-server.png": {
+      "bytes": 99223,
+      "sha256": "60a53a08ef54dc81ce095fc5e8989838a14bb657152213503e44e3ccc227e674"
+    },
+    "screenshots/original-request-recovered.png": {
+      "bytes": 118777,
+      "sha256": "0489ef14749117b5c8b5edf2c5bc1d8958f784034c857fdf7d8fa7df79ad840b"
+    }
+  }
+}

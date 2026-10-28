@@ -1,0 +1,95 @@
+{
+  "passed": false,
+  "sourceCommit": "e5b773da98f529432f919f23483edc01f41009dd",
+  "stats": {
+    "startTime": "2026-10-28T16:12:37.941Z",
+    "duration": 2692675.242,
+    "expected": 482,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "originalAttempts": 483,
+  "retryCount": 0,
+  "frozenInputs": {
+    "checked": 3168,
+    "changed": []
+  },
+  "process": {
+    "at": "2026-10-28T16:57:31.933Z",
+    "testExit": 1,
+    "verificationExit": 0,
+    "reportPresent": true
+  },
+  "failed": [
+    "assistant notes: overlong pasted text stays complete through reopening and download while server writes remain disabled"
+  ],
+  "scope": "Complete retained e5b773 schema22 browser run.482 passed,1 long-note fill timeout; no skipped/flaky/retry. Managed process terminated normally with test exit1 and3168 frozen inputs unchanged.",
+  "limits": [
+    "This original failed run stays failed. The separately passing17-case schema23 fix must still be applied and verified in schema22,then a fresh full run.",
+    "No live provider,production or complete product acceptance claim."
+  ],
+  "files": {
+    "data/qa/note-full-browser-second.json": {
+      "bytes": 992386,
+      "sha256": "7566c64bad0769bb0e3efb1aa262713a72df994dafff9e31733ec7195c99c19c"
+    },
+    "data/qa/note-full-browser-second-process-result.json": {
+      "bytes": 106,
+      "sha256": "ba960f0e83f9020a8ec5bd50fa13b94715de09fca23e6e375132ea38c228d2f7"
+    },
+    "data/qa/note-full-browser-second-inputs.json": {
+      "bytes": 616523,
+      "sha256": "c6d8b6ffee3326b247c76d70ee7280ec12e2dda7dd120b81f8c5483d0042f49d"
+    },
+    "data/qa/run-managed-note-full-browser.cjs": {
+      "bytes": 1524,
+      "sha256": "3d0c68993b1e476841a46f9a438badbe2017454ffc4999493ca9acf63b8d850a"
+    },
+    "data/qa/freeze-note-full-browser-second.py": {
+      "bytes": 1407,
+      "sha256": "adc5b34ebc8508f975eefca27d5ebb1ff73c50efff105ef9a4c23726fd62da4b"
+    },
+    "apps/web/components/assistant-notes.tsx": {
+      "bytes": 29987,
+      "sha256": "0c4d3290cc66c02c8b4455ff750e13a0476aa60658caabbf3ffafafa371205c5"
+    },
+    "apps/web/components/assistant-notes.css": {
+      "bytes": 6072,
+      "sha256": "1aa9c3d1b8750f58f84735efaa71e9c097f5dd3e4517a40fcb97cb8d044f5315"
+    },
+    "tests/e2e/assistant-notes.spec.ts": {
+      "bytes": 30863,
+      "sha256": "bfc19bc5d3c4a7a302e7b1d2f6cd11379ed488fbafdcdcee2fbc8f9b5469b914"
+    },
+    "note-full-browser-second.log.gz": {
+      "sha256": "35055f085ea19a37dd2c03241b7cf9a0171993eed373ae5f0a711bfa92072835",
+      "originalSha256": "6c1b97a77d02d125f35ec8e7f5c9734236fa77f8a656131c32f45b56e269f216",
+      "originalBytes": 181873
+    },
+    "note-full-browser-second-inputs-verification.log.gz": {
+      "sha256": "293d59a8c9a5431b8501b59b5cfa80d5e7ce5f2dec77481475dbc3843c43143a",
+      "originalSha256": "6636e9528b4778cfbf7ad3d6905ca9bed739dfcc569ec3005d80b5cf615f61a3",
+      "originalBytes": 34
+    },
+    "failure.png": {
+      "bytes": 107100,
+      "sha256": "daa253609ffb8d4aac7545da8bb1a616174bc717a9b156ebaac29f1061ddb51b"
+    },
+    "failure-trace-sanitized.zip": {
+      "sha256": "57825bf0f875cd0c88f34a9df9a1703b764bc540d5501cd76ec21b1277a8d995",
+      "originalSha256": "30c744cf4d5d2d226cf5996421fff38a34d40fca1fe7986e1f68de2a94594433",
+      "sanitization": {
+        "redactedValues": 5,
+        "changedEntries": [
+          "test.trace",
+          "1-trace.trace",
+          "1-trace.network",
+          "resources/0f98434d574607838d9506d824efa95797c124af.json",
+          "resources/e7713e971aedc7685b638e237e2ec74c2923d016.json"
+        ],
+        "unchangedBinaryEntries": 59
+      }
+    }
+  }
+}

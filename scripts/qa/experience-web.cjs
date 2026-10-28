@@ -8,9 +8,16 @@ if (!target.startsWith(path.join(root, 'data/qa') + path.sep)) throw new Error('
 const next = path.join(root, 'node_modules/next/dist/bin/next');
 const command = process.argv[2] ?? 'build';
 const runtimeLock = path.join(target, '.runtime-lock.json');
+const buildContext = path.join(target, '.build-context.json');
 const apiPort = Number(process.env.E2E_API_PORT || '4107');
 if (!Number.isInteger(apiPort) || apiPort < 1 || apiPort > 65535) throw new Error('Invalid isolated API port');
 if (!['build', 'start'].includes(command)) throw new Error('Use build or start');
+if (command === 'start') {
+  if (!fs.existsSync(buildContext)) throw new Error('QA Web build context missing; rebuild this isolated Web before starting');
+  const context = JSON.parse(fs.readFileSync(buildContext, 'utf8'));
+  const buildId = fs.readFileSync(path.join(target, '.next/BUILD_ID'), 'utf8').trim();
+  if (context.apiPort !== apiPort || context.buildId !== buildId) throw new Error('QA Web build API port or BUILD_ID mismatch; rebuild with E2E_API_PORT=' + apiPort);
+}
 // Never replace a .next directory while browser acceptance is serving it.
 if (fs.existsSync(runtimeLock)) {
   if (fs.lstatSync(runtimeLock).isSymbolicLink()) throw new Error('Linked QA runtime lock refused');
@@ -41,4 +48,7 @@ try {
   if (command === 'start' && fs.existsSync(runtimeLock) && JSON.parse(fs.readFileSync(runtimeLock, 'utf8')).pid === process.pid) fs.unlinkSync(runtimeLock);
 }
 if (result.error) throw result.error;
+if (command === 'build' && result.status === 0) {
+  fs.writeFileSync(buildContext, JSON.stringify({ version: 1, apiPort, buildId: fs.readFileSync(path.join(target, '.next/BUILD_ID'), 'utf8').trim() }) + '\n');
+}
 process.exit(result.status ?? 1);

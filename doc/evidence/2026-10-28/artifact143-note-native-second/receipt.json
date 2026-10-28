@@ -1,0 +1,31 @@
+{
+  "passed": false,
+  "counts": {
+    "numPassedTests": 17,
+    "numFailedTests": 1,
+    "numPendingTests": 1
+  },
+  "actualFailure": "After earlier22 metadata assertion was corrected, the paper recovery future-version case inserts22, now a current migration, causing UNIQUE constraint before its unsupported-future-version assertion. Must insert23 and keep original rejection assertion.",
+  "files": {
+    "data/qa/note-native-schema-second.json": {
+      "sha256": "5b8e4524a8c64abf83e99c6b12e10fee466e08d441734145312217b2f111996f",
+      "bytes": 10852
+    },
+    "data/qa/note-native-schema-second.log": {
+      "sha256": "afeccc6c2bc30fa68af1d04841d142d125e7e1ede7f027553df85df5241193ea",
+      "bytes": 487
+    },
+    "apps/api/src/modules/learning/topic-whiteboard-visual-files.test.ts": {
+      "sha256": "9458666e348779a920e0f71ee577a8f2c91b85edd7772afe55f007a7816ea9a5",
+      "bytes": 6657
+    },
+    "apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts": {
+      "sha256": "d27a4a00eb169b2b5a3be088d87df0a6b42a0df71c2294defcf79db7fe53bc9d",
+      "bytes": 25739
+    },
+    "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts": {
+      "sha256": "8629e6bc3c4d259e1bc66a968a893df443d1bf5118eb9dc2f0a25afe44870a79",
+      "bytes": 19068
+    }
+  }
+}

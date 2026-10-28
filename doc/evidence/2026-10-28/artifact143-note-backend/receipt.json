@@ -1,0 +1,286 @@
+{
+  "passed": true,
+  "phase": "B1-backend-local-only",
+  "designCommittedBeforeImplementation": "b4a985abf72306b7cc6e763d3cfc68622c08938d",
+  "sourceParent": "7fc9adc82400c14992ae8e9014d4ab6a87d95c25",
+  "scope": "Private verbatim note persistence, complete original sources/export, original create/edit/confirm command receipts, strict current authority and native deletion-aware recovery. No frontend entry or note adoption UI delivered yet.",
+  "reports": {
+    "note-b1-http-first": {
+      "success": false,
+      "numPassedTests": 20,
+      "numFailedTests": 1,
+      "numPendingTests": 4
+    },
+    "note-b1-http-second": {
+      "success": true,
+      "numPassedTests": 25,
+      "numFailedTests": 0,
+      "numPendingTests": 8
+    },
+    "note-b1-postgres-first": {
+      "success": true,
+      "numPassedTests": 13,
+      "numFailedTests": 0,
+      "numPendingTests": 0
+    },
+    "note-b1-compatibility-first": {
+      "success": true,
+      "numPassedTests": 47,
+      "numFailedTests": 0,
+      "numPendingTests": 18
+    }
+  },
+  "overlappingScopesNotSummed": true,
+  "schemaVersion": 22,
+  "verified": [
+    "Original HTTP create404 captured before B1 implementation; original message unchanged and model calls zero.",
+    "Complete75-message source order, linked question, exact table/formula/code/whitespace; edited body does not overwrite the original snapshot.",
+    "Original create/edit/confirm receipts survive new revisions, simultaneous actual API instances, lost-response GET recovery and cold API restart.",
+    "Another guardian with the same child cannot read private notes. Actual learning-code student reads saved notes but cannot create/edit/confirm during paused or active assessment.",
+    "Actual old chemistry sources retain grade9 while the learner remains grade4; no mastery/plan/calendar writes from notes.",
+    "SQLite and PostgreSQL schema21-to22 upgrade, exact records, duplicate-key rollback and different-owner keys tested.",
+    "Both native SQLite and pg_dump/restore keep original confirmed notes and receipts, invalidate old logins and apply newer account/child deletion ledgers without reviving private notes; unrelated account note survives.",
+    "Current API and tests typecheck passed. Existing changed schema/backup and privacy suites pass in explicit16-file compatibility scope."
+  ],
+  "historicalFailures": [
+    "First API compile rejected duplicate kind property in command digest; fixed to explicit operation. Original compiler log retained; no complete pre-fix source snapshot claimed.",
+    "First25-case run had20passes/1failure/4environment-skips: the old future-schema test inserted22 after22 became current. It now inserts23 and still requires unsupported-schema rejection. Original report/log retained."
+  ],
+  "limits": [
+    "B2 selection/editor/confirmation/export/old-message-return UI not implemented in this batch; no complete143 B or product claim.",
+    "No full new-note API/browser/remote CI or actual main daemon delivery yet; local overlapping suites are not a single all-product acceptance.",
+    "No new live model/TTS call, standardized measurement, teacher approval, full教材 or pixel/audio/real learner claim."
+  ],
+  "files": {
+    ".github/workflows/verify.yml": {
+      "sha256": "a0833ba1a387e39cc56977ad11d30b1b60deb3a2db687e03a97ad46d6d7665f0",
+      "bytes": 31439,
+      "gzipSha256": "82f4d6ff40d8e507712df46325a7ef10fa27eec6c36c5241cbf263c3069e513d"
+    },
+    "apps/api/dist/apps/api/src/infrastructure/domain-database.js": {
+      "sha256": "c28c0dd3f8e495bb30ee137df71e4025b63f42cad65b38bc56876d1ced286bd5",
+      "bytes": 35217,
+      "gzipSha256": "f5e2e6513dbe81d92b2b48912e91a66611c17b4241af76c95123aea94e46d299"
+    },
+    "apps/api/dist/apps/api/src/modules/ai/assistant-note.controller.js": {
+      "sha256": "c2de737e17ff533cb5f7b373e5ecf7361e56bf0be8c6aac5bddc5faca6ab4e75",
+      "bytes": 5659,
+      "gzipSha256": "2fbff6609859de48dd30c712b4f3a769c3f2789ce9f62f1ee045595ec6d23ddf"
+    },
+    "apps/api/dist/apps/api/src/modules/ai/assistant-note.service.js": {
+      "sha256": "e1fd3e4686c5e38f0bf699b01c062ab53e84d4d858537bcdbf0a2d11f116d774",
+      "bytes": 14619,
+      "gzipSha256": "484f830e304b6f813ca0e5cb5257213fc683912ec3edbb2fbce2126d6f659ca9"
+    },
+    "apps/api/dist/apps/api/src/modules/privacy/privacy-records.js": {
+      "sha256": "6bee7a70631f561e8d6600992ed662be63e799ca29d23a41f57843e834014877",
+      "bytes": 28026,
+      "gzipSha256": "b04ed0ec0e1877231da5bee77d694f06bd75185313fbb554be90dce38fe9b443"
+    },
+    "apps/api/src/common/auth.guard.ts": {
+      "sha256": "7a63bbac193cd77a97961dd260687e9b0c5bb834635e4f131618d00d8b9d168d",
+      "bytes": 9892,
+      "gzipSha256": "da2160117f0a6a5bb5b2d167869504f1741a398216943e5ec7d1766ce9a9ae31"
+    },
+    "apps/api/src/infrastructure/assistant-note-recovery.integration.test.ts": {
+      "sha256": "b46e287018dbe2921cdc7de3084ece18b6bc659907c021ce31cd3259a780227c",
+      "bytes": 12638,
+      "gzipSha256": "ea23327ad642024ba2cc8448968724bd53628016450e7cc6e40117cbdb841f19"
+    },
+    "apps/api/src/infrastructure/assistant-note-storage.integration.test.ts": {
+      "sha256": "88ab7afeb5921312a764fca423ac2040ac24c6f800b072b5907c4f2148af080e",
+      "bytes": 5739,
+      "gzipSha256": "6add123bde856980956ed160ff3492531f9a4ee8c73ecb1d35a099a67235e885"
+    },
+    "apps/api/src/infrastructure/backup.integration.test.ts": {
+      "sha256": "476d7a319f51bbd5a84876fcfd5464c78b8d422de402060a2b4f36336db872f1",
+      "bytes": 13083,
+      "gzipSha256": "a65838e8f7cadbb65376e97a28dd043a7c2412e13cb96ccedd29951042b25993"
+    },
+    "apps/api/src/infrastructure/domain-database.ts": {
+      "sha256": "923097ec8b28853223b4f169b47cddca5ae1a9d87fa03d69913c0a588a9245ba",
+      "bytes": 33092,
+      "gzipSha256": "35f3f268b482547fa11b4737d98c3620ef678fbe7ba9ccc8624460ef848ff3a9"
+    },
+    "apps/api/src/infrastructure/in-memory-store.service.ts": {
+      "sha256": "88167540f4ba6935c6b236223c9504e8372cf509178adfa427b5b981297ee979",
+      "bytes": 28325,
+      "gzipSha256": "712d463311ec8df666f9b73eabac5c47cfc8e63a836aa98b5a6d49ccfe9fecab"
+    },
+    "apps/api/src/infrastructure/paper-practice-migration.test.ts": {
+      "sha256": "420935a0cc46cb6d5abff9b20f974b1a66f5767b729e2fb56c098c1f0d96ba7a",
+      "bytes": 4599,
+      "gzipSha256": "eb4e2b2fcb0cf879e3c40d3955ff2599c7f5e998acd7417ba3b1b439cd588716"
+    },
+    "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts": {
+      "sha256": "dd7f635c10668b036e273daf53fc063bee648a27e953974123ed33b4a3470739",
+      "bytes": 6886,
+      "gzipSha256": "bbb0d5f4c31b59937eac00e1196273f6ccafcfa46ee1741d5006b4b8302442c8"
+    },
+    "apps/api/src/infrastructure/topic-whiteboard-postgres.integration.test.ts": {
+      "sha256": "2067e54aa55f12b64094146d27257dae0ac17a8a209a5b23973ff2ef9222d206",
+      "bytes": 4293,
+      "gzipSha256": "54f55942b11d1d6a9da1ffbdc8b715950086338b5e621fd8add4fc1d00cac645"
+    },
+    "apps/api/src/infrastructure/topic-whiteboard-storage.integration.test.ts": {
+      "sha256": "4a7cb250d16d89c9fc6afdc793ca43ee8e558f430210c2e75f3ce034d08d28cd",
+      "bytes": 7554,
+      "gzipSha256": "a91707cb96f6d981ed907d196d913e28c5679822fbd5c69d3b1d237da4712532"
+    },
+    "apps/api/src/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts": {
+      "sha256": "00b05680388658ef0d9b273793caea3e472a65f1c46a4da8d0a95aa6a081371e",
+      "bytes": 3075,
+      "gzipSha256": "67df1b2f8b7a71c727b46dec96d83859b27be232c616d64e128904fc61f6cbb5"
+    },
+    "apps/api/src/infrastructure/topic-whiteboard-visual-storage.integration.test.ts": {
+      "sha256": "1add4414a5bab8739bc3bfcaad9edb4f3a5f76bf0d5653d024d8d34121d804a0",
+      "bytes": 4388,
+      "gzipSha256": "635a1829f74108d2a7b1c85223577eb7b3e3f3c315293036fb855e3c83283e5d"
+    },
+    "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts": {
+      "sha256": "1f8d8cf818fd0b0326d7ffb5b52835dbfe019f7110b4686e29806994400f2357",
+      "bytes": 5552,
+      "gzipSha256": "aa708038594ca2eb4e8fb1cb49c9da5432fe0d1baf026015126137f868434b45"
+    },
+    "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts": {
+      "sha256": "494bcd6062194f592c7ee6e673e3198b808899f4612208205341bc017eb0bc88",
+      "bytes": 4813,
+      "gzipSha256": "b9febf8fe6e9455fef4908523d135f45c8eb7a205dcf0ba3520976936146b4b3"
+    },
+    "apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts": {
+      "sha256": "8fec877317dbe69ab2b3058230fc6cc9412acac7314a99dd6443d3b535026777",
+      "bytes": 6283,
+      "gzipSha256": "bd74ecd08372ac9556c8932e0962ffb2e39f7d3bd2c1e4c75ebd97da8015783b"
+    },
+    "apps/api/src/modules/ai/ai.module.ts": {
+      "sha256": "d6dd36c82b69312abed504490d142178c293b0fe4a700cd038d3fce89614a4b5",
+      "bytes": 2213,
+      "gzipSha256": "5e69be217599a89892254b6f0021c6cc94be09ddc1e1337a18e86fd0734c6d99"
+    },
+    "apps/api/src/modules/ai/assistant-note-record.ts": {
+      "sha256": "cb99eeafb23ef6b5c1c37f08900805153ffa187110d1f290bc6bcfd55093e9ec",
+      "bytes": 331,
+      "gzipSha256": "29b74e01ccec145dafa12917210f5f9decdac1133b769f714fd5e514fe94ea6a"
+    },
+    "apps/api/src/modules/ai/assistant-note.controller.ts": {
+      "sha256": "6b8a332766783b10272e893b08fca2272b44560c83d73fdd2214aa1b6f22852e",
+      "bytes": 1964,
+      "gzipSha256": "0ac8c0ae31a0bd7d0523339ee5490a81a508783141696fd1388319e5b4d6b4ea"
+    },
+    "apps/api/src/modules/ai/assistant-note.integration.test.ts": {
+      "sha256": "210bd551af042fd7df5a821722bdb57221c48ab0b1c9ecc4abe93b79036cb6ee",
+      "bytes": 17772,
+      "gzipSha256": "b8acba01236223b87b801a8dd3293ca54bff5d7d2eb12afc3be5c19a2d1fa343"
+    },
+    "apps/api/src/modules/ai/assistant-note.service.ts": {
+      "sha256": "179a02a7320c627408725bd1e7e71c4b4229f128f0579692ad95f6763f7da126",
+      "bytes": 13344,
+      "gzipSha256": "6b293de9d3b494a6e7711958b16a229d2190153c11bb045b5b3c6e41e47bd32d"
+    },
+    "apps/api/src/modules/privacy/privacy-records.ts": {
+      "sha256": "92908633d655fe8d6a3c25debad10cdfdb2bc604c185c12ce9e21bc10c9e7bed",
+      "bytes": 26491,
+      "gzipSha256": "2def6ba187213da90b1991421a8172fcdab66bfb43fafd0dc79d539c00c2a3cf"
+    },
+    "data/qa/note-b1-api-first.log": {
+      "sha256": "d70552c80fcb53384fdfb1a46b70efa8827174d6862074a212f6ff3b3e56213e",
+      "bytes": 573,
+      "gzipSha256": "d069c37aab19d67b1043fdfedcf4217849dce83765c45f439405725f48eb1264"
+    },
+    "data/qa/note-b1-api-second.log": {
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "bytes": 66,
+      "gzipSha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c"
+    },
+    "data/qa/note-b1-api-types-first.log": {
+      "sha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "bytes": 68,
+      "gzipSha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec"
+    },
+    "data/qa/note-b1-before.cjs": {
+      "sha256": "48bae648a75a7a30e2e1e3cd2deab1d6424f0755e1b74a617235e4e0c1c020b9",
+      "bytes": 3164,
+      "gzipSha256": "4be99068e5510d0824172ddbbcf1688e08773afc5bde17d3c7976041ca10094c"
+    },
+    "data/qa/note-b1-before.json": {
+      "sha256": "8a1ef99306300eb8a68b3ef3c584c610a4f4c38dbca1423f6e2ba92603eefdb2",
+      "bytes": 297,
+      "gzipSha256": "a3197cafac7430467d6f05da306d91803d13140c47b155aac45b5f6c8a62dffb"
+    },
+    "data/qa/note-b1-before.log": {
+      "sha256": "57004f6398ab97161357328a8c1aa3a7b6cfcb805819c22182101bf50690e5ce",
+      "bytes": 71,
+      "gzipSha256": "cc3ea97832e80e325382970ea00f0b1775bca45a0f58f0cc896ee55367ebb822"
+    },
+    "data/qa/note-b1-compatibility-first.json": {
+      "sha256": "6b9f59d2dd7f55d3be0bb0b1df7a274e1e8886c575a47f72b75610ae4d3535e3",
+      "bytes": 33683,
+      "gzipSha256": "365803c41575d541fc45ffcacebd08fd8eff50b538929e869a3122391796307e"
+    },
+    "data/qa/note-b1-compatibility-first.log": {
+      "sha256": "d552f983724b6fda414474634605728623ac187273aaa86b5b2fc38e2a9cfa85",
+      "bytes": 3871,
+      "gzipSha256": "4dea931994f654c9f3db9f91e1a006db37e6211e0eb754a5c5504113a446cc26"
+    },
+    "data/qa/note-b1-compatibility-scope.txt": {
+      "sha256": "263ec1a2463afa65d0c4c2f13848e049bb5ba99a79ef3717c1ea6ff4cdcc849b",
+      "bytes": 992,
+      "gzipSha256": "845b485ffeb1da127bc32a1f44e5592365e67f696eb17da6efcf4287663c7daf"
+    },
+    "data/qa/note-b1-contracts-first.log": {
+      "sha256": "6b42b95d41e0e34a22bba3079c305f63cde72ffa1bf594145e7e1a1b2d6bd89a",
+      "bytes": 485,
+      "gzipSha256": "ae547c90f4ef48b54d95d20fb3815c059ed16ebd458e1a610f681e849bf8b660"
+    },
+    "data/qa/note-b1-http-first.json": {
+      "sha256": "f421a2cc65fdfe08dcf2f705a581914be6f304de2d8dc2201eeb0c6447e86704",
+      "bytes": 13262,
+      "gzipSha256": "e8935ae6a136c6b2f56f2b0b893ef8bf26a0071e6a8ed9e32a868c204a81a730"
+    },
+    "data/qa/note-b1-http-first.log": {
+      "sha256": "994c77ac7b8ee131f3ba7ab78ee71952777d0a47fa4a9a335fc403e2b853cafb",
+      "bytes": 2968,
+      "gzipSha256": "40097912ce2c98bc52b2f843bd1f789f790650e3fc5b0db76375f34af2c4d14d"
+    },
+    "data/qa/note-b1-http-second.json": {
+      "sha256": "9c0eb6069a5e8ddfb49737cb57b1bbf67838c9e0d9ad1a40b49f8cc9c4ac2f3c",
+      "bytes": 16824,
+      "gzipSha256": "b3c9e4a5690790e947e777c0a84c169bdd8dfb56bfab92078479e142e1a5567d"
+    },
+    "data/qa/note-b1-http-second.log": {
+      "sha256": "9897134dbbd27d8d9de11606eb0b747f0737baee7828b2f526f3964fd2811024",
+      "bytes": 2181,
+      "gzipSha256": "412fc43c0aa58db087741435adee10798f57799bed18261887dbfcd01e20518b"
+    },
+    "data/qa/note-b1-postgres-first.json": {
+      "sha256": "772a5bca78dd1a21fd9e388edcf493f1e4b64952d5a7adc44dfb474e24aff840",
+      "bytes": 7150,
+      "gzipSha256": "963832d18ac54b301d813c3f90c00455493c280b1b42a75ed3ef7aba387c0688"
+    },
+    "data/qa/note-b1-postgres-first.log": {
+      "sha256": "74ae577920614d7a125863d69a39bc7b007b795d54ec8aad5d91e1b545e080ec",
+      "bytes": 1719,
+      "gzipSha256": "59098c6436aef046a73552e9ee82cce4c325885cef7318fd3385172a5ee11667"
+    },
+    "packages/contracts/src/assistant-artifact.ts": {
+      "sha256": "695ee474a735cd7311fcf5f79569af5045fcc5b6221e3fb0dacdb32edaf8a337",
+      "bytes": 4182,
+      "gzipSha256": "dcdc933a74934cb617081c13b604e19f97f5dc348e3c8ee143cb03279c5af4e2"
+    },
+    "scripts/operations/backup.cjs": {
+      "sha256": "fddc027fcc12ba30bfaf6134c748c94582d67120c62ff60476b71966f8811839",
+      "bytes": 19974,
+      "gzipSha256": "ba7e6a1f3c6de5f6bae6204418a3231a9e9094f677f76da9448f07bc5efee1fe"
+    },
+    "scripts/operations/postgres-backup.cjs": {
+      "sha256": "14584352dccea2524201b0ee6a26ecd15c4d04be3452c3de0e817b001b047e35",
+      "bytes": 8988,
+      "gzipSha256": "2259a9167608a420c45f71266f25c60f0ebbfad35a1559141f6c37d33eef84fb"
+    },
+    "scripts/qa/run-assistant-notes-postgres.cjs": {
+      "sha256": "1f78c9fb3f2278132165a764b631fd47751c3f8c492dd8b9df935c52bf7b2bbc",
+      "bytes": 2065,
+      "gzipSha256": "cc66bf3eb1d8e18d56adff7c350f87af2e554b95cb920b5d4afb3a5a84ade87d"
+    }
+  }
+}

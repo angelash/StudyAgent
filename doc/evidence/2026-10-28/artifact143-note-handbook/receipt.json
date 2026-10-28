@@ -1,0 +1,64 @@
+{
+  "passed": true,
+  "sourceRevision": "2186cc8cc8a674876ef75ff6279b60f064a53dca",
+  "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
+  "features": {
+    "areas": 14,
+    "features": 131,
+    "activeNormalApiRoutes": 438,
+    "coveredApiRoutes": 438
+  },
+  "sourceReferences": 648,
+  "markdownLinks": 4075,
+  "viewerChecks": 10,
+  "applicationBaselineEvidence": {
+    "newlyRunByThisScript": false,
+    "receipt": "../evidence/2026-10-28/artifact143-note-ui-fourth/receipt.json",
+    "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
+  },
+  "limits": [
+    "Handbook source mapping only; does not replace full API/browser/CI/production gates or imply complete product."
+  ],
+  "files": {
+    "data/qa/note-handbook-authored-audit-first.log": {
+      "bytes": 119,
+      "sha256": "6b1528278f408783f3b30fee14e1c16e49a7466b6de730bc3102d2a0fe481792",
+      "gzipSha256": "277b6eab73778039ce7ed1c8687c8904d9872c3fabf3e4f87a311b7c743b8033"
+    },
+    "data/qa/project-design-authored-audit-notes-first.json": {
+      "bytes": 861290,
+      "sha256": "28af7f3c769cf2787f61629b92479f5eae3fbb802ab157e2bd97522c0de3d7ae",
+      "gzipSha256": "2af7e00ee2589f6b724c7a08e8d34c5575b313adad0e14db7e0221194e022315"
+    },
+    "data/qa/note-handbook-inventory-first.log": {
+      "bytes": 487,
+      "sha256": "4a6708df9c1222cb17b13a9befad977665112280585f21810c06558a3606a09d",
+      "gzipSha256": "9461e171597a4cfe0e05aac8537a16cea33d6f47c7716895f7fe874eb1c60f4e"
+    },
+    "data/qa/note-handbook-build-first.log": {
+      "bytes": 102,
+      "sha256": "15d8805c637a7f7e0aea0366a1213525b92e5a082a8f9367d7c3b9393b60cd5d",
+      "gzipSha256": "5010736d7b64794acd9b155542745ce1ff84bd962a0c2969cc4ddf7b64fbbff1"
+    },
+    "data/qa/note-handbook-content-first.log": {
+      "bytes": 2612,
+      "sha256": "c3a5efa19a654a5aa570cadcba467910d051b5a4d1250a149cb6452c1eb9a8e7",
+      "gzipSha256": "c155bbd53fb78744dc1177e2a024998c667ec32514b4dc331075c6ef4ac7e403"
+    },
+    "data/qa/note-handbook-validation-first.log": {
+      "bytes": 281,
+      "sha256": "05673ab40c9998caf049c09eb93eef97fb724369bc3f78f0c1befc13389f4f4a",
+      "gzipSha256": "c795bcde950a9ae5c9a4ffc6fabfd7fa47c27d9d116961c4dbd0f2fb2042be96"
+    },
+    "doc/design/generated/design-validation.json": {
+      "bytes": 86400,
+      "sha256": "aca68eb8301ed3d196dd989fc1be0d9c7628869594c241bb90c2e569abc78db7",
+      "gzipSha256": "1a5f66795f5270c27003402ae7773d7afa20950eff079f7f49ebf76bf1daeebb"
+    },
+    "scripts/architecture/project-feature-definitions.cjs": {
+      "bytes": 146360,
+      "sha256": "2957f116cf84c8b9f4aea3bff18192142daf02b616090386307af65235cfd6c2",
+      "gzipSha256": "0c518eb2a77f817aa079d662d966ba10e059f56c7aa5a4f79772d938cf9e88ab"
+    }
+  }
+}

@@ -151,10 +151,17 @@ export function useAssistantConversation({open,ownerId,scope,context,readOnly=fa
   async function searchMessages(query:string){const revision=epoch.current;setBusy(true);setError('');try{activeQuery.current=query;await page(viewSessionId,null,query,true);}catch(e){if(revision===epoch.current)setError((e as Error).message);}finally{if(revision===epoch.current)setBusy(false);}}
   async function resetMessages(){const revision=epoch.current;activeQuery.current='';setMessageAnchor(null);setError('');if(window.location.hash.startsWith('#assistant-message-'))window.history.replaceState(window.history.state,'',window.location.pathname+window.location.search);try{await refresh(viewSessionId,true);}catch(e){if(revision===epoch.current)setError((e as Error).message);}}
   async function moreTurns(){if(!turns?.hasMore||busy)return;const revision=epoch.current;setBusy(true);try{const next=await call<AssistantTurnList>('/ai/assistant/sessions/'+viewSessionId+'/turns?page='+String(turns.page+1));if(revision===epoch.current)setTurns(old=>old?{...next,turns:[...new Map([...old.turns,...next.turns].map(t=>[t.id,t])).values()]}:next);}catch(e){if(revision===epoch.current)setError((e as Error).message);}finally{if(revision===epoch.current)setBusy(false);}}
+  async function locateMessage(id:string){
+    if(!viewSessionId||!id||id.length>180)return;const revision=epoch.current;setBusy(true);setError('');
+    try{const value=await call<AssistantHistoryPage>('/ai/assistant/sessions/'+viewSessionId+'/messages/page?pageSize=25&anchor='+encodeURIComponent(id));
+      if(revision!==epoch.current)return;if(value.location.sessionId!==viewSessionId||!value.messages.some(message=>message.id===id))throw Error('原消息与当前会话不一致，请保留笔记后重新核对。');
+      activeQuery.current='';setMessages(value.messages.sort(order));setCursor(value.nextCursor);setLocation(value.location);setMessageAnchor(id);
+    }catch(e){if(revision===epoch.current)setError((e as Error).message);}finally{if(revision===epoch.current)setBusy(false);}
+  }
   function download(){const value=draft.current;if(!value)return;const href=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=href;a.download='学习提问副本.json';a.click();setTimeout(()=>URL.revokeObjectURL(href),1000);}
   function newScope(){download();if(readOnly){setNotice('原讲座只读。原稿已保留，请打开当前讲座版本后重新提问。');return;}write({sessionId,pending:null,lastTurnId:null});setPending(null);setMismatch(false);mismatchRef.current=false;setError('');setNotice('已发起原提问副本下载，当前文字可在新上下文中重新发送。');}
   function editOriginal(){if(!turn||pending||historical||readOnly||active(turn))return;if(input&&input.trim()!==turn.message){download();setNotice('已发起当前草稿副本下载，原问题已放入输入框。');}change(turn.message);}
   function browse(id:string|null,target:string|null=null,anchor:string|null=null){setHistorical(id);setHistoryTarget(target);setMessageAnchor(anchor);setSelectionRevision(n=>n+1);}
   return {input,change,messages,turn,turns,pending,sessionId,viewSessionId,historical,browse,messageAnchor,matches,loading,busy,suspended,error,storageNotice,notice,cursor,location,currentCourse,mismatch,newScope,readOnly,
-    waiting:active(turn)||!!turns?.turns.some(active),submit,control,stopWaiting,resume,older,searchMessages,resetMessages,moreTurns,download,editOriginal,selectTurn:(value:AssistantTurnView)=>{accept(value,!historical);setSuspended(false);}};
+    waiting:active(turn)||!!turns?.turns.some(active),locateMessage,submit,control,stopWaiting,resume,older,searchMessages,resetMessages,moreTurns,download,editOriginal,selectTurn:(value:AssistantTurnView)=>{accept(value,!historical);setSuspended(false);}};
 }
