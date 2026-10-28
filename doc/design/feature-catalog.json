@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "2186cc8cc8a674876ef75ff6279b60f064a53dca",
+  "sourceRevision": "e092d0985aca132ef540eb5049df011024cdac01",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 131,
-    "activeNormalApiRoutes": 438,
-    "coveredApiRoutes": 438
+    "features": 132,
+    "activeNormalApiRoutes": 443,
+    "coveredApiRoutes": 443
   },
   "areas": [
     {
@@ -5245,7 +5245,7 @@
             "assistantMessages",
             "assistantArtifactDrafts"
           ],
-          "limits": "不调用模型，不写正式掌握/评测/计划/日历；另一共享监护人也不能读取私人笔记。笔记不是能力证据；C白板与D练习/指导计划继续，完整整站/精确CI/主目录交付和教师/像素/长期效果各自验收。",
+          "limits": "不调用模型，不写正式掌握/评测/计划/日历；另一共享监护人也不能读取私人笔记。笔记不是能力证据；C白板见AI-12，D练习/指导计划继续，完整整站/精确CI/主目录交付和教师/像素/长期效果各自验收。",
           "endpoints": [
             {
               "verb": "POST",
@@ -5385,6 +5385,133 @@
             "tests/e2e/assistant-notes.spec.ts",
             "scripts/qa/run-assistant-notes-postgres.cjs",
             "doc/product/143-assistant-messages-to-learning-artifacts.md"
+          ],
+          "tests": [
+            "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
+            "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
+            "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+            "apps/api/src/modules/ai/speech.service.test.ts",
+            "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
+            "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
+            "apps/api/src/common/terminate-child-process.integration.test.ts",
+            "tests/e2e/assistant-conversations.spec.ts",
+            "apps/api/src/modules/ai/teaching-tool.integration.test.ts",
+            "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+            "tests/e2e/teaching-tools.spec.ts"
+          ]
+        },
+        {
+          "id": "AI-12",
+          "title": "原对话生成私有教学白板与逐幕来源",
+          "area": "ai",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生、教研",
+          "pages": [
+            "/studio",
+            "/studio/classroom",
+            "/student/assessment",
+            "/student/today",
+            "/admin/ai-tools"
+          ],
+          "inputs": "本人原会话/所选消息和关联问题、完整来源/目标/模型预检、原请求键、逐幕来源说明及明确采用",
+          "implementation": "完整来源保存在assistant-topic-whiteboard-v1冻结Prepared，独立3至8幕严格schema和sourceMap约束引用归属、空正式目标和完整预算；原子草稿/任务/回执及原模型写作/复核checkpoint，全部当前授权、图片和旁白复核同一来源适配器。schema23最低读取器保护及双库语义校验拒绝损坏/跨作者关联；私人采用、原始稿/人工稿/历史和最新删除账本防复活。原助教提供来源选择、常规模型选型、原键恢复、逐幕映射编辑、既有配图/原PNG编辑/采用和逐句播放器。当前评测和来源变化通过安全预检核查，阻断后明确恢复；失败改稿命令独立不可覆盖保存，本机输入与服务器稿分别保留。",
+          "outputs": "本人来源白板候选、固定原模型/来源/回执、逐幕原文支持或新增解释、私有采用及播放器/原文往返",
+          "collections": [
+            "assistantSessions",
+            "assistantMessages",
+            "studioTopicWhiteboardDrafts",
+            "studioTopicWhiteboardVisuals",
+            "studioTopicWhiteboards"
+          ],
+          "limits": "现有完整API1790门禁、PG114/2与SQLite23及来源8/25/原v1浏览器24分别留证，当前扩展12旅程及DTO恢复专项另行归档，不能拼接测试数。新来源界面还需完整495、精确CI与主目录schema23交付；D层练习/指导计划/日历、多份本机来源草稿、原站逐像素/听感和真人效果继续。生成/观看不是正式掌握证据，另一监护人不得读取私人来源。",
+          "endpoints": [
+            {
+              "verb": "POST",
+              "path": "/api/ai/assistant/sessions/:sessionId/artifacts/whiteboards/preflight",
+              "controller": "AssistantWhiteboardController",
+              "method": "preflight",
+              "file": "apps/api/src/modules/learning/assistant-whiteboard.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "POST",
+              "path": "/api/ai/assistant/sessions/:sessionId/artifacts/whiteboards",
+              "controller": "AssistantWhiteboardController",
+              "method": "prepare",
+              "file": "apps/api/src/modules/learning/assistant-whiteboard.controller.ts",
+              "line": 15
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/assistant/sessions/:sessionId/artifacts/whiteboards",
+              "controller": "AssistantWhiteboardController",
+              "method": "list",
+              "file": "apps/api/src/modules/learning/assistant-whiteboard.controller.ts",
+              "line": 19
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/assistant/sessions/:sessionId/artifacts/whiteboards/requests/:key",
+              "controller": "AssistantWhiteboardController",
+              "method": "receipt",
+              "file": "apps/api/src/modules/learning/assistant-whiteboard.controller.ts",
+              "line": 23
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/topic-whiteboards/drafts/:id/source",
+              "controller": "TopicWhiteboardController",
+              "method": "source",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+              "line": 18
+            }
+          ],
+          "implementations": [
+            {
+              "name": "AssistantWhiteboardService.preflight",
+              "file": "apps/api/src/modules/learning/assistant-whiteboard.service.ts",
+              "line": 20
+            },
+            {
+              "name": "TopicWhiteboardService.prepareSource",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+              "line": 96
+            },
+            {
+              "name": "TopicWhiteboardService.sourceList",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+              "line": 151
+            },
+            {
+              "name": "TopicWhiteboardService.sourceReceipt",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+              "line": 142
+            },
+            {
+              "name": "TopicWhiteboardService.sourceView",
+              "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+              "line": 132
+            }
+          ],
+          "sourceFiles": [
+            "packages/contracts/src/assistant-whiteboard.ts",
+            "apps/api/src/modules/learning/assistant-whiteboard.controller.ts",
+            "apps/api/src/modules/learning/assistant-whiteboard.service.ts",
+            "apps/api/src/modules/learning/assistant-whiteboard-source.ts",
+            "apps/api/src/modules/learning/assistant-whiteboard-content.ts",
+            "apps/api/src/modules/learning/assistant-whiteboard-integrity.ts",
+            "apps/api/src/modules/learning/topic-whiteboard-source-access.ts",
+            "apps/api/src/modules/learning/assistant-whiteboard-lifecycle.integration.test.ts",
+            "apps/api/src/infrastructure/assistant-whiteboard-reader.integration.test.ts",
+            "apps/api/src/infrastructure/assistant-whiteboard-recovery.integration.test.ts",
+            "apps/web/components/assistant-whiteboards.tsx",
+            "apps/web/components/assistant-whiteboards.css",
+            "apps/web/app/studio/whiteboards/assistant-source.tsx",
+            "apps/web/app/studio/whiteboards/source-write-guard.tsx",
+            "apps/web/app/studio/whiteboards/rejected-edits.ts",
+            "tests/e2e/assistant-whiteboards.spec.ts",
+            "doc/product/146-conversation-sourced-whiteboard-teaching.md",
+            "apps/api/src/modules/learning/topic-whiteboard.service.ts"
           ],
           "tests": [
             "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
@@ -8792,7 +8919,7 @@
               "controller": "TopicWhiteboardController",
               "method": "cancel",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 18
+              "line": 19
             },
             {
               "verb": "POST",
@@ -8800,7 +8927,7 @@
               "controller": "TopicWhiteboardController",
               "method": "retry",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 19
+              "line": 20
             },
             {
               "verb": "PATCH",
@@ -8808,7 +8935,7 @@
               "controller": "TopicWhiteboardController",
               "method": "edit",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 20
+              "line": 21
             },
             {
               "verb": "POST",
@@ -8816,7 +8943,7 @@
               "controller": "TopicWhiteboardController",
               "method": "confirm",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 21
+              "line": 22
             },
             {
               "verb": "GET",
@@ -8824,7 +8951,7 @@
               "controller": "TopicWhiteboardController",
               "method": "list",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 22
+              "line": 23
             },
             {
               "verb": "GET",
@@ -8832,7 +8959,7 @@
               "controller": "TopicWhiteboardController",
               "method": "get",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 23
+              "line": 24
             },
             {
               "verb": "POST",
@@ -8840,69 +8967,69 @@
               "controller": "TopicWhiteboardController",
               "method": "speak",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 32
+              "line": 33
             }
           ],
           "implementations": [
             {
               "name": "TopicWhiteboardService.preflight",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 56
+              "line": 58
             },
             {
               "name": "TopicWhiteboardService.prepare",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 64
+              "line": 66
             },
             {
               "name": "TopicWhiteboardService.list",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 98
+              "line": 176
             },
             {
               "name": "TopicWhiteboardService.get",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 93
+              "line": 131
             },
             {
               "name": "TopicWhiteboardService.receipt",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 94
+              "line": 172
             },
             {
               "name": "TopicWhiteboardService.history",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 170
+              "line": 249
             },
             {
               "name": "TopicWhiteboardService.control",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 117
+              "line": 195
             },
             {
               "name": "TopicWhiteboardService.edit",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 150
+              "line": 228
             },
             {
               "name": "TopicWhiteboardService.confirm",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 176
+              "line": 255
             },
             {
               "name": "TopicWhiteboardService.listPublished",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 210
+              "line": 309
             },
             {
               "name": "TopicWhiteboardService.getPublished",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 201
+              "line": 299
             },
             {
               "name": "TopicWhiteboardNarrationService.synthesize",
               "file": "apps/api/src/modules/learning/topic-whiteboard-narration.service.ts",
-              "line": 23
+              "line": 21
             }
           ],
           "sourceFiles": [
@@ -9071,7 +9198,7 @@
               "controller": "TopicWhiteboardController",
               "method": "figure",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 24
+              "line": 25
             },
             {
               "verb": "GET",
@@ -9079,54 +9206,54 @@
               "controller": "TopicWhiteboardController",
               "method": "originalFigure",
               "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-              "line": 28
+              "line": 29
             }
           ],
           "implementations": [
             {
               "name": "TopicWhiteboardVisualService.capabilities",
               "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
-              "line": 25
+              "line": 26
             },
             {
               "name": "TopicWhiteboardVisualService.preflight",
               "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
-              "line": 45
+              "line": 46
             },
             {
               "name": "TopicWhiteboardVisualService.prepare",
               "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
-              "line": 69
+              "line": 73
             },
             {
               "name": "TopicWhiteboardVisualService.list",
               "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
-              "line": 109
+              "line": 113
             },
             {
               "name": "TopicWhiteboardVisualService.receipt",
               "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
-              "line": 103
+              "line": 107
             },
             {
               "name": "TopicWhiteboardVisualService.get",
               "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
-              "line": 102
+              "line": 106
             },
             {
               "name": "TopicWhiteboardVisualService.control",
               "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
-              "line": 121
+              "line": 125
             },
             {
               "name": "TopicWhiteboardVisualService.file",
               "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
-              "line": 116
+              "line": 120
             },
             {
               "name": "TopicWhiteboardService.publishedFigure",
               "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-              "line": 202
+              "line": 300
             }
           ],
           "sourceFiles": [

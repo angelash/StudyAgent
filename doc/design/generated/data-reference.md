@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`2186cc8cc8a674876ef75ff6279b60f064a53dca`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`e092d0985aca132ef540eb5049df011024cdac01`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -183,6 +183,17 @@
 - `AssistantHistoryPage`：[packages/contracts/src/assistant-turn.ts:43](../../../packages/contracts/src/assistant-turn.ts#L43)；字段：`messages`、`nextCursor`、`location`。
 - `AssistantTurnList`：[packages/contracts/src/assistant-turn.ts:44](../../../packages/contracts/src/assistant-turn.ts#L44)；字段：`turns`、`hasMore`、`page`、`pageSize`。
 - `AssistantHistorySearch`：[packages/contracts/src/assistant-turn.ts:45](../../../packages/contracts/src/assistant-turn.ts#L45)；字段：`sessions`、`total`、`page`、`pageSize`。
+
+### packages/contracts/src/assistant-whiteboard.ts
+
+- `AssistantWhiteboardPreflightInput`：[packages/contracts/src/assistant-whiteboard.ts:12](../../../packages/contracts/src/assistant-whiteboard.ts#L12)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantWhiteboardAudience`：[packages/contracts/src/assistant-whiteboard.ts:17](../../../packages/contracts/src/assistant-whiteboard.ts#L17)；字段：`kind`、`actorRole`、`studentId`、`subject`、`sourceKind`、`courseGrade`、`profileGrade`。
+- `AssistantWhiteboardPreflight`：[packages/contracts/src/assistant-whiteboard.ts:22](../../../packages/contracts/src/assistant-whiteboard.ts#L22)；字段：`protocol`、`origin`、`audience`、`objective`、`modelId`、`modelName`、`available`、`sourceFingerprint`、`fingerprint`、`contextCharacters`、`maxContextCharacters`、`fits`、`historical`、`canGenerate`、`blocked?`。
+- `AssistantWhiteboardSummary`：[packages/contracts/src/assistant-whiteboard.ts:29](../../../packages/contracts/src/assistant-whiteboard.ts#L29)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantWhiteboardPage`：[packages/contracts/src/assistant-whiteboard.ts:30](../../../packages/contracts/src/assistant-whiteboard.ts#L30)；字段：`items`、`nextCursor`。
+- `AssistantWhiteboardSourceView`：[packages/contracts/src/assistant-whiteboard.ts:31](../../../packages/contracts/src/assistant-whiteboard.ts#L31)；字段：`protocol`、`draftId`、`sourceFingerprint`、`origin`、`selection`、`acknowledgeHistoricalSource`、`mappings`。
+- `AssistantWhiteboardSourceMap`：[packages/contracts/src/assistant-whiteboard.ts:53](../../../packages/contracts/src/assistant-whiteboard.ts#L53)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantWhiteboardContent`：[packages/contracts/src/assistant-whiteboard.ts:54](../../../packages/contracts/src/assistant-whiteboard.ts#L54)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 
 ### packages/contracts/src/chemistry.ts
 
@@ -619,13 +630,13 @@
 
 ### packages/contracts/src/topic-whiteboard.ts
 
-- `TopicWhiteboardAudience`：[packages/contracts/src/topic-whiteboard.ts:44](../../../packages/contracts/src/topic-whiteboard.ts#L44)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `TopicWhiteboardInput`：[packages/contracts/src/topic-whiteboard.ts:45](../../../packages/contracts/src/topic-whiteboard.ts#L45)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `TopicWhiteboardContent`：[packages/contracts/src/topic-whiteboard.ts:46](../../../packages/contracts/src/topic-whiteboard.ts#L46)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `TopicWhiteboardReview`：[packages/contracts/src/topic-whiteboard.ts:47](../../../packages/contracts/src/topic-whiteboard.ts#L47)；字段：`decision`、`issues`、`modelId`、`inputFingerprint`、`outputFingerprint`、`at`、`current`。
-- `TopicWhiteboardDraftStatus`：[packages/contracts/src/topic-whiteboard.ts:49](../../../packages/contracts/src/topic-whiteboard.ts#L49)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `TopicWhiteboardDraftView`：[packages/contracts/src/topic-whiteboard.ts:50](../../../packages/contracts/src/topic-whiteboard.ts#L50)；字段：`id`、`audience`、`studentId`、`subject`、`prompt`、`objective`、`modelId`、`modelName`、`status`、`stage`、`revision`、`generation`、`task`、`originalContent`、`content`、`contentFingerprint`、`review`、`whiteboardId`、`teacherReviewStatus`、`formalMeasurementEligible`、`createdAt`、`updatedAt`、`receipt?`。
-- `StudioTopicWhiteboard`：[packages/contracts/src/topic-whiteboard.ts:61](../../../packages/contracts/src/topic-whiteboard.ts#L61)；字段：`id`、`kind`、`studentId`、`subject`、`title`、`prompt`、`scenes`、`durationMs`、`width`、`height`、`fingerprint`、`createdAt`、`updatedAt`、`origin`。
+- `TopicWhiteboardAudience`：[packages/contracts/src/topic-whiteboard.ts:45](../../../packages/contracts/src/topic-whiteboard.ts#L45)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TopicWhiteboardInput`：[packages/contracts/src/topic-whiteboard.ts:46](../../../packages/contracts/src/topic-whiteboard.ts#L46)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TopicWhiteboardContent`：[packages/contracts/src/topic-whiteboard.ts:47](../../../packages/contracts/src/topic-whiteboard.ts#L47)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TopicWhiteboardReview`：[packages/contracts/src/topic-whiteboard.ts:48](../../../packages/contracts/src/topic-whiteboard.ts#L48)；字段：`decision`、`issues`、`modelId`、`inputFingerprint`、`outputFingerprint`、`at`、`current`。
+- `TopicWhiteboardDraftStatus`：[packages/contracts/src/topic-whiteboard.ts:50](../../../packages/contracts/src/topic-whiteboard.ts#L50)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TopicWhiteboardDraftView`：[packages/contracts/src/topic-whiteboard.ts:51](../../../packages/contracts/src/topic-whiteboard.ts#L51)；字段：`id`、`audience`、`studentId`、`subject`、`prompt`、`objective`、`modelId`、`modelName`、`status`、`stage`、`revision`、`generation`、`task`、`originalContent`、`content`、`contentFingerprint`、`review`、`whiteboardId`、`teacherReviewStatus`、`formalMeasurementEligible`、`createdAt`、`updatedAt`、`receipt?`。
+- `StudioTopicWhiteboard`：[packages/contracts/src/topic-whiteboard.ts:62](../../../packages/contracts/src/topic-whiteboard.ts#L62)；字段：`id`、`kind`、`studentId`、`subject`、`title`、`prompt`、`scenes`、`durationMs`、`width`、`height`、`fingerprint`、`createdAt`、`updatedAt`、`origin`。
 
 ### packages/contracts/src/whiteboard-question-visual.ts
 

@@ -1,0 +1,64 @@
+{
+  "passed": true,
+  "sourceRevision": "e092d0985aca132ef540eb5049df011024cdac01",
+  "features": 132,
+  "areas": 14,
+  "routesCovered": 443,
+  "sourceFiles": 665,
+  "markdownLinks": 4136,
+  "offlineViewerChecks": 10,
+  "applicationEvidence": "../assistant-whiteboard-source-write-guard-first/receipt.json",
+  "scope": "Current implementation handbook and offline UI; no family database read or new complete app acceptance. Previous current handbook originals remain in localdata/qa/source-guard-handbook-before; versioned original remains inGit.",
+  "files": {
+    "doc/design/generated/design-validation.json.gz": {
+      "sha256": "7c267021bd3955f192caae39b2572eb28818b63d7d195f560a595158700176f5",
+      "originalSha256": "b1fbf4b27acfe0c9d8cd51b698143790d539ccc9e56cffe9880af8ec254d7e15",
+      "originalBytes": 88738
+    },
+    "doc/design/generated/coverage.json.gz": {
+      "sha256": "6bc56899026b875b54847f54dcc456e47f77f3bd61bc77b3a3e2b7add0c37fde",
+      "originalSha256": "9a14fc1c8aa86f052ff7defa1015aee5f954b2574a752bf85d596127829c74eb",
+      "originalBytes": 3026
+    },
+    "doc/design/generated/source-inventory.json.gz": {
+      "sha256": "cf51e59e50277e56e1554bd2384c012ebb5c4c74ea02fde5cffd3b8d0069ef54",
+      "originalSha256": "1d65fe7e2ac28cf61152e876a9b22009d355fced19b9b3ddd8536a51481ed292",
+      "originalBytes": 1644599
+    },
+    "doc/design/generated/content-snapshot.json.gz": {
+      "sha256": "bbe10fa2589517f54f917732d08be3a912f0fa1f257687d35bb1ad68353a75c4",
+      "originalSha256": "b9d0f987c5df8bd8cf9fcdd8abe6a950322dba1ff5afc5a5de6fcd70d1ca64ff",
+      "originalBytes": 39623
+    },
+    "data/qa/project-design-authored-audit.json.gz": {
+      "sha256": "70d1b23c8a89412039cecd81e51a6870cf6ba2f0e036442d37489c161235881a",
+      "originalSha256": "c353f7a355c6eded7d70dfa8898d2b87631db2b60f25b696d226847b4aad3eb3",
+      "originalBytes": 861290
+    },
+    "data/qa/source-guard-handbook-authored-first.log.gz": {
+      "sha256": "277b6eab73778039ce7ed1c8687c8904d9872c3fabf3e4f87a311b7c743b8033",
+      "originalSha256": "6b1528278f408783f3b30fee14e1c16e49a7466b6de730bc3102d2a0fe481792",
+      "originalBytes": 119
+    },
+    "data/qa/source-guard-handbook-build-first.log.gz": {
+      "sha256": "6e909b1ba77e8474e54b78f1ac6c2f5a09886ed73c3b489332039b856dd39c6d",
+      "originalSha256": "8de702fa2463e6f52b719746177281b038197e8bf71c5fc22f37e4550cfce6f1",
+      "originalBytes": 102
+    },
+    "data/qa/source-guard-handbook-content-first.log.gz": {
+      "sha256": "c155bbd53fb78744dc1177e2a024998c667ec32514b4dc331075c6ef4ac7e403",
+      "originalSha256": "c3a5efa19a654a5aa570cadcba467910d051b5a4d1250a149cb6452c1eb9a8e7",
+      "originalBytes": 2612
+    },
+    "data/qa/source-guard-handbook-inventory-first.log.gz": {
+      "sha256": "4e82626f414904c53579c94c3dbce17f7cfd2c83c8556061dd4f35ab1f9ebe4e",
+      "originalSha256": "a50b1bdf23c03662b554a7190b8592e043c1f0926ac95f602738791ad5188fe6",
+      "originalBytes": 487
+    },
+    "data/qa/source-guard-handbook-validation-first.log.gz": {
+      "sha256": "bd08be8563ac7aab14fe78f2e509715357e46ec1af2c0fe7203281a91948c6d1",
+      "originalSha256": "e583eba01768480700e91bea432f1ad712b119b0e61ec3958e82d810b6a7f841",
+      "originalBytes": 281
+    }
+  }
+}

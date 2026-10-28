@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`2186cc8cc8a674876ef75ff6279b60f064a53dca`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`e092d0985aca132ef540eb5049df011024cdac01`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`、`/studio/whiteboards`。
 
@@ -1124,28 +1124,28 @@
 - `GET /api/learning/studio/topic-whiteboards/drafts/:id` → `TopicWhiteboardController.draft`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:15](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L15)。
 - `GET /api/learning/studio/topic-whiteboards/drafts/:id/requests/:key` → `TopicWhiteboardController.receipt`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:16](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L16)。
 - `GET /api/learning/studio/topic-whiteboards/drafts/:id/history` → `TopicWhiteboardController.history`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:17](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L17)。
-- `POST /api/learning/studio/topic-whiteboards/drafts/:id/cancel` → `TopicWhiteboardController.cancel`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:18](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L18)。
-- `POST /api/learning/studio/topic-whiteboards/drafts/:id/retry` → `TopicWhiteboardController.retry`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:19](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L19)。
-- `PATCH /api/learning/studio/topic-whiteboards/drafts/:id/content` → `TopicWhiteboardController.edit`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:20](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L20)。
-- `POST /api/learning/studio/topic-whiteboards/drafts/:id/confirm` → `TopicWhiteboardController.confirm`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:21](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L21)。
-- `GET /api/learning/studio/topic-whiteboards` → `TopicWhiteboardController.list`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:22](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L22)。
-- `GET /api/learning/studio/topic-whiteboards/:id` → `TopicWhiteboardController.get`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:23](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L23)。
-- `POST /api/learning/studio/topic-whiteboards/:id/narration/:sceneId` → `TopicWhiteboardController.speak`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:32](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L32)。
+- `POST /api/learning/studio/topic-whiteboards/drafts/:id/cancel` → `TopicWhiteboardController.cancel`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:19](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L19)。
+- `POST /api/learning/studio/topic-whiteboards/drafts/:id/retry` → `TopicWhiteboardController.retry`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:20](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L20)。
+- `PATCH /api/learning/studio/topic-whiteboards/drafts/:id/content` → `TopicWhiteboardController.edit`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:21](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L21)。
+- `POST /api/learning/studio/topic-whiteboards/drafts/:id/confirm` → `TopicWhiteboardController.confirm`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:22](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L22)。
+- `GET /api/learning/studio/topic-whiteboards` → `TopicWhiteboardController.list`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:23](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L23)。
+- `GET /api/learning/studio/topic-whiteboards/:id` → `TopicWhiteboardController.get`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:24](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L24)。
+- `POST /api/learning/studio/topic-whiteboards/:id/narration/:sceneId` → `TopicWhiteboardController.speak`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:33](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L33)。
 
 **服务方法**：
 
-- `TopicWhiteboardService.preflight`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:56](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L56)。
-- `TopicWhiteboardService.prepare`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:64](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L64)。
-- `TopicWhiteboardService.list`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:98](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L98)。
-- `TopicWhiteboardService.get`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:93](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L93)。
-- `TopicWhiteboardService.receipt`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:94](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L94)。
-- `TopicWhiteboardService.history`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:170](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L170)。
-- `TopicWhiteboardService.control`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:117](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L117)。
-- `TopicWhiteboardService.edit`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:150](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L150)。
-- `TopicWhiteboardService.confirm`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:176](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L176)。
-- `TopicWhiteboardService.listPublished`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:210](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L210)。
-- `TopicWhiteboardService.getPublished`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:201](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L201)。
-- `TopicWhiteboardNarrationService.synthesize`；[apps/api/src/modules/learning/topic-whiteboard-narration.service.ts:23](../../../apps/api/src/modules/learning/topic-whiteboard-narration.service.ts#L23)。
+- `TopicWhiteboardService.preflight`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:58](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L58)。
+- `TopicWhiteboardService.prepare`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:66](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L66)。
+- `TopicWhiteboardService.list`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:176](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L176)。
+- `TopicWhiteboardService.get`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:131](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L131)。
+- `TopicWhiteboardService.receipt`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:172](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L172)。
+- `TopicWhiteboardService.history`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:249](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L249)。
+- `TopicWhiteboardService.control`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:195](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L195)。
+- `TopicWhiteboardService.edit`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:228](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L228)。
+- `TopicWhiteboardService.confirm`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:255](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L255)。
+- `TopicWhiteboardService.listPublished`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:309](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L309)。
+- `TopicWhiteboardService.getPublished`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:299](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L299)。
+- `TopicWhiteboardNarrationService.synthesize`；[apps/api/src/modules/learning/topic-whiteboard-narration.service.ts:21](../../../apps/api/src/modules/learning/topic-whiteboard-narration.service.ts#L21)。
 
 **补充实现文件**：
 
@@ -1189,20 +1189,20 @@
 - `POST /api/learning/studio/topic-whiteboard-visuals/:id/edits` → `TopicWhiteboardVisualController.edit`；[apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts:20](../../../apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts#L20)。
 - `GET /api/learning/studio/topic-whiteboard-visuals/:id/image` → `TopicWhiteboardVisualController.image`；[apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts:21](../../../apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts#L21)。
 - `GET /api/learning/studio/topic-whiteboard-visuals/:id/original` → `TopicWhiteboardVisualController.originalImage`；[apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts:24](../../../apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts#L24)。
-- `GET /api/learning/studio/topic-whiteboards/:id/figures/:sceneId/image` → `TopicWhiteboardController.figure`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:24](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L24)。
-- `GET /api/learning/studio/topic-whiteboards/:id/figures/:sceneId/original` → `TopicWhiteboardController.originalFigure`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:28](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L28)。
+- `GET /api/learning/studio/topic-whiteboards/:id/figures/:sceneId/image` → `TopicWhiteboardController.figure`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:25](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L25)。
+- `GET /api/learning/studio/topic-whiteboards/:id/figures/:sceneId/original` → `TopicWhiteboardController.originalFigure`；[apps/api/src/modules/learning/topic-whiteboard.controller.ts:29](../../../apps/api/src/modules/learning/topic-whiteboard.controller.ts#L29)。
 
 **服务方法**：
 
-- `TopicWhiteboardVisualService.capabilities`；[apps/api/src/modules/learning/topic-whiteboard-visual.service.ts:25](../../../apps/api/src/modules/learning/topic-whiteboard-visual.service.ts#L25)。
-- `TopicWhiteboardVisualService.preflight`；[apps/api/src/modules/learning/topic-whiteboard-visual.service.ts:45](../../../apps/api/src/modules/learning/topic-whiteboard-visual.service.ts#L45)。
-- `TopicWhiteboardVisualService.prepare`；[apps/api/src/modules/learning/topic-whiteboard-visual.service.ts:69](../../../apps/api/src/modules/learning/topic-whiteboard-visual.service.ts#L69)。
-- `TopicWhiteboardVisualService.list`；[apps/api/src/modules/learning/topic-whiteboard-visual.service.ts:109](../../../apps/api/src/modules/learning/topic-whiteboard-visual.service.ts#L109)。
-- `TopicWhiteboardVisualService.receipt`；[apps/api/src/modules/learning/topic-whiteboard-visual.service.ts:103](../../../apps/api/src/modules/learning/topic-whiteboard-visual.service.ts#L103)。
-- `TopicWhiteboardVisualService.get`；[apps/api/src/modules/learning/topic-whiteboard-visual.service.ts:102](../../../apps/api/src/modules/learning/topic-whiteboard-visual.service.ts#L102)。
-- `TopicWhiteboardVisualService.control`；[apps/api/src/modules/learning/topic-whiteboard-visual.service.ts:121](../../../apps/api/src/modules/learning/topic-whiteboard-visual.service.ts#L121)。
-- `TopicWhiteboardVisualService.file`；[apps/api/src/modules/learning/topic-whiteboard-visual.service.ts:116](../../../apps/api/src/modules/learning/topic-whiteboard-visual.service.ts#L116)。
-- `TopicWhiteboardService.publishedFigure`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:202](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L202)。
+- `TopicWhiteboardVisualService.capabilities`；[apps/api/src/modules/learning/topic-whiteboard-visual.service.ts:26](../../../apps/api/src/modules/learning/topic-whiteboard-visual.service.ts#L26)。
+- `TopicWhiteboardVisualService.preflight`；[apps/api/src/modules/learning/topic-whiteboard-visual.service.ts:46](../../../apps/api/src/modules/learning/topic-whiteboard-visual.service.ts#L46)。
+- `TopicWhiteboardVisualService.prepare`；[apps/api/src/modules/learning/topic-whiteboard-visual.service.ts:73](../../../apps/api/src/modules/learning/topic-whiteboard-visual.service.ts#L73)。
+- `TopicWhiteboardVisualService.list`；[apps/api/src/modules/learning/topic-whiteboard-visual.service.ts:113](../../../apps/api/src/modules/learning/topic-whiteboard-visual.service.ts#L113)。
+- `TopicWhiteboardVisualService.receipt`；[apps/api/src/modules/learning/topic-whiteboard-visual.service.ts:107](../../../apps/api/src/modules/learning/topic-whiteboard-visual.service.ts#L107)。
+- `TopicWhiteboardVisualService.get`；[apps/api/src/modules/learning/topic-whiteboard-visual.service.ts:106](../../../apps/api/src/modules/learning/topic-whiteboard-visual.service.ts#L106)。
+- `TopicWhiteboardVisualService.control`；[apps/api/src/modules/learning/topic-whiteboard-visual.service.ts:125](../../../apps/api/src/modules/learning/topic-whiteboard-visual.service.ts#L125)。
+- `TopicWhiteboardVisualService.file`；[apps/api/src/modules/learning/topic-whiteboard-visual.service.ts:120](../../../apps/api/src/modules/learning/topic-whiteboard-visual.service.ts#L120)。
+- `TopicWhiteboardService.publishedFigure`；[apps/api/src/modules/learning/topic-whiteboard.service.ts:300](../../../apps/api/src/modules/learning/topic-whiteboard.service.ts#L300)。
 
 **补充实现文件**：
 

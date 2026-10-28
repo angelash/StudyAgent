@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "2186cc8cc8a674876ef75ff6279b60f064a53dca",
+  "sourceRevision": "e092d0985aca132ef540eb5049df011024cdac01",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
-    "declaredHttpRoutes": 459,
-    "activeHttpRoutes": 446,
-    "activeBusinessHttpRoutes": 438,
+    "declaredHttpRoutes": 464,
+    "activeHttpRoutes": 451,
+    "activeBusinessHttpRoutes": 443,
     "retiredHttpRoutes": 8,
     "activeModules": 19,
-    "activeControllers": 47,
-    "apiClasses": 169,
-    "apiFunctions": 524,
+    "activeControllers": 48,
+    "apiClasses": 171,
+    "apiFunctions": 533,
     "domainCollections": 104,
-    "contractTypes": 409,
+    "contractTypes": 417,
     "webPages": 31,
     "webRouteHandlers": 1,
-    "apiTestFiles": 202,
-    "browserTestFiles": 44
+    "apiTestFiles": 207,
+    "browserTestFiles": 45
   },
   "modules": [
     {
@@ -105,7 +105,8 @@
         "SpeechService",
         "CodexPdfStructureService",
         "XiaojiuModelsService",
-        "XiaojiuChatService"
+        "XiaojiuChatService",
+        "AssistantArtifactService"
       ],
       "active": true
     },
@@ -224,6 +225,7 @@
         "AiModule"
       ],
       "controllers": [
+        "AssistantWhiteboardController",
         "ChemistryController",
         "WhiteboardQuestionVisualController",
         "WhiteboardQuestionTeachingVersionController",
@@ -248,6 +250,7 @@
         "ClassroomVisualController"
       ],
       "providers": [
+        "AssistantWhiteboardService",
         "ChemistryService",
         "WhiteboardQuestionVisualService",
         "WhiteboardQuestionVisualWorkerService",
@@ -5120,6 +5123,145 @@
       ],
       "calls": [
         "this.gesp.document"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/ai/assistant/sessions/:sessionId/artifacts/whiteboards/preflight",
+      "controller": "AssistantWhiteboardController",
+      "method": "preflight",
+      "file": "apps/api/src/modules/learning/assistant-whiteboard.controller.ts",
+      "line": 10,
+      "signature": "preflight(@Req() request: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Body() body: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [
+        {
+          "name": "HttpCode",
+          "args": [
+            "200"
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "boards",
+          "type": "AssistantWhiteboardService"
+        },
+        {
+          "name": "drafts",
+          "type": "TopicWhiteboardService"
+        }
+      ],
+      "calls": [
+        "this.boards.preflight"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/ai/assistant/sessions/:sessionId/artifacts/whiteboards",
+      "controller": "AssistantWhiteboardController",
+      "method": "prepare",
+      "file": "apps/api/src/modules/learning/assistant-whiteboard.controller.ts",
+      "line": 15,
+      "signature": "prepare(@Req() request: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Body() body: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "boards",
+          "type": "AssistantWhiteboardService"
+        },
+        {
+          "name": "drafts",
+          "type": "TopicWhiteboardService"
+        }
+      ],
+      "calls": [
+        "this.drafts.prepareSource"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/ai/assistant/sessions/:sessionId/artifacts/whiteboards",
+      "controller": "AssistantWhiteboardController",
+      "method": "list",
+      "file": "apps/api/src/modules/learning/assistant-whiteboard.controller.ts",
+      "line": 19,
+      "signature": "list(@Req() request: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Query() query: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "boards",
+          "type": "AssistantWhiteboardService"
+        },
+        {
+          "name": "drafts",
+          "type": "TopicWhiteboardService"
+        }
+      ],
+      "calls": [
+        "this.drafts.sourceList"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/ai/assistant/sessions/:sessionId/artifacts/whiteboards/requests/:key",
+      "controller": "AssistantWhiteboardController",
+      "method": "receipt",
+      "file": "apps/api/src/modules/learning/assistant-whiteboard.controller.ts",
+      "line": 23,
+      "signature": "receipt(@Req() request: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Param('key') key: string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "boards",
+          "type": "AssistantWhiteboardService"
+        },
+        {
+          "name": "drafts",
+          "type": "TopicWhiteboardService"
+        }
+      ],
+      "calls": [
+        "this.drafts.sourceReceipt"
       ],
       "active": true,
       "retired": false
@@ -10356,12 +10498,45 @@
       "retired": false
     },
     {
+      "verb": "GET",
+      "path": "/api/learning/studio/topic-whiteboards/drafts/:id/source",
+      "controller": "TopicWhiteboardController",
+      "method": "source",
+      "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
+      "line": 18,
+      "signature": "source(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "boards",
+          "type": "TopicWhiteboardService"
+        },
+        {
+          "name": "narration",
+          "type": "TopicWhiteboardNarrationService"
+        }
+      ],
+      "calls": [
+        "this.boards.sourceView"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
       "verb": "POST",
       "path": "/api/learning/studio/topic-whiteboards/drafts/:id/cancel",
       "controller": "TopicWhiteboardController",
       "method": "cancel",
       "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-      "line": 18,
+      "line": 19,
       "signature": "cancel(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -10394,7 +10569,7 @@
       "controller": "TopicWhiteboardController",
       "method": "retry",
       "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-      "line": 19,
+      "line": 20,
       "signature": "retry(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -10427,7 +10602,7 @@
       "controller": "TopicWhiteboardController",
       "method": "edit",
       "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-      "line": 20,
+      "line": 21,
       "signature": "edit(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -10460,7 +10635,7 @@
       "controller": "TopicWhiteboardController",
       "method": "confirm",
       "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-      "line": 21,
+      "line": 22,
       "signature": "confirm(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
       "classDecorators": [
         {
@@ -10493,7 +10668,7 @@
       "controller": "TopicWhiteboardController",
       "method": "list",
       "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-      "line": 22,
+      "line": 23,
       "signature": "list(@Req() req: AuthenticatedRequest, @Query() input: unknown)",
       "classDecorators": [
         {
@@ -10526,7 +10701,7 @@
       "controller": "TopicWhiteboardController",
       "method": "get",
       "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-      "line": 23,
+      "line": 24,
       "signature": "get(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
       "classDecorators": [
         {
@@ -10559,7 +10734,7 @@
       "controller": "TopicWhiteboardController",
       "method": "figure",
       "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-      "line": 24,
+      "line": 25,
       "signature": "figure(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('sceneId') sceneId: string, @Res({ passthrough: true }) response: Response)",
       "classDecorators": [
         {
@@ -10592,7 +10767,7 @@
       "controller": "TopicWhiteboardController",
       "method": "originalFigure",
       "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-      "line": 28,
+      "line": 29,
       "signature": "originalFigure(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('sceneId') sceneId: string, @Res({ passthrough: true }) response: Response)",
       "classDecorators": [
         {
@@ -10625,7 +10800,7 @@
       "controller": "TopicWhiteboardController",
       "method": "speak",
       "file": "apps/api/src/modules/learning/topic-whiteboard.controller.ts",
-      "line": 32,
+      "line": 33,
       "signature": "speak(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('sceneId') sceneId: string, @Body() input: unknown, @Res({ passthrough: true }) response: Response)",
       "classDecorators": [
         {
@@ -15250,7 +15425,7 @@
     {
       "name": "AuthGuard",
       "file": "apps/api/src/common/auth.guard.ts",
-      "line": 85,
+      "line": 90,
       "decorators": [
         {
           "name": "Injectable",
@@ -15270,7 +15445,7 @@
       "methods": [
         {
           "name": "canActivate",
-          "line": 89,
+          "line": 94,
           "signature": "canActivate(context: ExecutionContext): Promise<boolean>",
           "access": "public",
           "decorators": [],
@@ -15333,7 +15508,7 @@
     {
       "name": "DomainDatabase",
       "file": "apps/api/src/infrastructure/domain-database.ts",
-      "line": 88,
+      "line": 89,
       "decorators": [],
       "dependencies": [
         {
@@ -15348,7 +15523,7 @@
       "methods": [
         {
           "name": "open",
-          "line": 101,
+          "line": 102,
           "signature": "open()",
           "access": "public",
           "decorators": [],
@@ -15359,7 +15534,7 @@
         },
         {
           "name": "initialize",
-          "line": 108,
+          "line": 109,
           "signature": "initialize()",
           "access": "private",
           "decorators": [],
@@ -15368,12 +15543,13 @@
             "this.sqlite.exec",
             "this.postgres.connect",
             "this.migrateConstraints",
+            "this.sqlite.prepare",
             "this.tasks.open"
           ]
         },
         {
           "name": "assertRestoreReady",
-          "line": 213,
+          "line": 220,
           "signature": "assertRestoreReady()",
           "access": "private",
           "decorators": [],
@@ -15383,7 +15559,7 @@
         },
         {
           "name": "migrateConstraints",
-          "line": 223,
+          "line": 239,
           "signature": "migrateConstraints(version: number, constraints: Array<{ name: string; collection: string; fields: string[]; pending?: boolean }>, extraSql = '')",
           "access": "private",
           "decorators": [],
@@ -15394,7 +15570,7 @@
         },
         {
           "name": "read",
-          "line": 252,
+          "line": 268,
           "signature": "read(): Promise<StateSnapshot>",
           "access": "public",
           "decorators": [],
@@ -15404,7 +15580,7 @@
         },
         {
           "name": "readImmutable",
-          "line": 257,
+          "line": 273,
           "signature": "readImmutable(): Promise<StateSnapshot>",
           "access": "public",
           "decorators": [],
@@ -15415,7 +15591,7 @@
         },
         {
           "name": "snapshotAt",
-          "line": 261,
+          "line": 277,
           "signature": "snapshotAt(revision: number): StateSnapshot | undefined",
           "access": "public",
           "decorators": [],
@@ -15423,7 +15599,7 @@
         },
         {
           "name": "remember",
-          "line": 267,
+          "line": 283,
           "signature": "remember(snapshot: StateSnapshot, loadedRows: number, partial = false): StateSnapshot",
           "access": "private",
           "decorators": [],
@@ -15431,7 +15607,7 @@
         },
         {
           "name": "rememberCommit",
-          "line": 274,
+          "line": 290,
           "signature": "rememberCommit(beforeRevision: number, revision: number, changes: Change[])",
           "access": "private",
           "decorators": [],
@@ -15439,7 +15615,7 @@
         },
         {
           "name": "readSnapshot",
-          "line": 295,
+          "line": 311,
           "signature": "readSnapshot(): Promise<StateSnapshot>",
           "access": "private",
           "decorators": [],
@@ -15451,7 +15627,7 @@
         },
         {
           "name": "commit",
-          "line": 333,
+          "line": 349,
           "signature": "commit(before: StateSnapshot, after: DomainState, options: CommitOptions = {}): Promise<number>",
           "access": "public",
           "decorators": [],
@@ -15462,7 +15638,7 @@
         },
         {
           "name": "commitSnapshot",
-          "line": 337,
+          "line": 353,
           "signature": "commitSnapshot(before: StateSnapshot, after: DomainState, options: CommitOptions): Promise<number>",
           "access": "private",
           "decorators": [],
@@ -15479,7 +15655,7 @@
         },
         {
           "name": "assertDependencies",
-          "line": 398,
+          "line": 414,
           "signature": "assertDependencies(before: StateSnapshot, changes: Change[], dependencies: ReadDependency[], query: (collection: string, where?: DomainSelector) => Promise<unknown[]>, conflict: () => Error, version: (collection: string) => Promise<number>)",
           "access": "private",
           "decorators": [],
@@ -15487,7 +15663,7 @@
         },
         {
           "name": "rebaseAppends",
-          "line": 428,
+          "line": 444,
           "signature": "rebaseAppends(before: StateSnapshot, changes: Change[], options: CommitOptions, maximum: (collection: string) => number)",
           "access": "private",
           "decorators": [],
@@ -15495,7 +15671,7 @@
         },
         {
           "name": "close",
-          "line": 440,
+          "line": 456,
           "signature": "close()",
           "access": "public",
           "decorators": [],
@@ -16655,7 +16831,7 @@
         {
           "name": "Module",
           "args": [
-            "{\r\n  imports: [StudentsModule],\r\n  controllers: [AiController,AssistantTurnController,TeachingToolController,AssistantArtifactController,AssistantNoteController],\r\n  providers: [AssistantNoteService,AssistantArtifactService,TeachingToolCompatibilityService,TeachingToolService,TeachingToolWorkerService,{provide:teachingToolWorkerPort,useExisting:TeachingToolWorkerService},AiService, SpeechService, CodexPdfStructureService, XiaojiuModelsService, XiaojiuChatService,AssistantTurnService,AssistantTurnWorkerService,\r\n    {provide:assistantTurnPort,useExisting:AssistantTurnService},{provide:assistantWorkerPort,useExisting:AssistantTurnWorkerService}],\r\n  exports: [AiService, SpeechService, CodexPdfStructureService, XiaojiuModelsService, XiaojiuChatService],\r\n}"
+            "{\r\n  imports: [StudentsModule],\r\n  controllers: [AiController,AssistantTurnController,TeachingToolController,AssistantArtifactController,AssistantNoteController],\r\n  providers: [AssistantNoteService,AssistantArtifactService,TeachingToolCompatibilityService,TeachingToolService,TeachingToolWorkerService,{provide:teachingToolWorkerPort,useExisting:TeachingToolWorkerService},AiService, SpeechService, CodexPdfStructureService, XiaojiuModelsService, XiaojiuChatService,AssistantTurnService,AssistantTurnWorkerService,\r\n    {provide:assistantTurnPort,useExisting:AssistantTurnService},{provide:assistantWorkerPort,useExisting:AssistantTurnWorkerService}],\r\n  exports: [AiService, SpeechService, CodexPdfStructureService, XiaojiuModelsService, XiaojiuChatService, AssistantArtifactService],\r\n}"
           ]
         }
       ],
@@ -17178,6 +17354,38 @@
           "line": 16,
           "signature": "preflight(user: InMemoryUserAccount, sessionId: string, input: unknown): AssistantArtifactPreflight",
           "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.build"
+          ]
+        },
+        {
+          "name": "readSource",
+          "line": 21,
+          "signature": "readSource(user: InMemoryUserAccount, sessionId: string, input: unknown): AssistantArtifactPreflight",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.build"
+          ]
+        },
+        {
+          "name": "assertReadableSession",
+          "line": 24,
+          "signature": "assertReadableSession(user: InMemoryUserAccount, sessionId: string)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.ai.assertSessionOwner",
+            "this.ai.assistantCourseSummary",
+            "this.ai.assistantLectureSummary"
+          ]
+        },
+        {
+          "name": "build",
+          "line": 29,
+          "signature": "build(user: InMemoryUserAccount, sessionId: string, input: unknown, writing: boolean): AssistantArtifactPreflight",
+          "access": "private",
           "decorators": [],
           "calls": [
             "this.ai.assertSessionOwner",
@@ -24132,6 +24340,204 @@
       ]
     },
     {
+      "name": "AssistantWhiteboardController",
+      "file": "apps/api/src/modules/learning/assistant-whiteboard.controller.ts",
+      "line": 6,
+      "decorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        },
+        {
+          "name": "Controller",
+          "args": [
+            "'ai/assistant/sessions/:sessionId/artifacts/whiteboards'"
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "boards",
+          "type": "AssistantWhiteboardService"
+        },
+        {
+          "name": "drafts",
+          "type": "TopicWhiteboardService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "preflight",
+          "line": 10,
+          "signature": "preflight(@Req() request: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Body() body: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "'preflight'"
+              ]
+            },
+            {
+              "name": "HttpCode",
+              "args": [
+                "200"
+              ]
+            }
+          ],
+          "calls": [
+            "this.boards.preflight"
+          ]
+        },
+        {
+          "name": "prepare",
+          "line": 15,
+          "signature": "prepare(@Req() request: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Body() body: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": []
+            }
+          ],
+          "calls": [
+            "this.drafts.prepareSource"
+          ]
+        },
+        {
+          "name": "list",
+          "line": 19,
+          "signature": "list(@Req() request: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Query() query: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": []
+            }
+          ],
+          "calls": [
+            "this.drafts.sourceList"
+          ]
+        },
+        {
+          "name": "receipt",
+          "line": 23,
+          "signature": "receipt(@Req() request: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Param('key') key: string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'requests/:key'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.drafts.sourceReceipt"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "AssistantWhiteboardService",
+      "file": "apps/api/src/modules/learning/assistant-whiteboard.service.ts",
+      "line": 15,
+      "decorators": [
+        {
+          "name": "Injectable",
+          "args": []
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "store",
+          "type": "InMemoryStoreService"
+        },
+        {
+          "name": "artifacts",
+          "type": "AssistantArtifactService"
+        },
+        {
+          "name": "models",
+          "type": "XiaojiuModelsService"
+        },
+        {
+          "name": "chat",
+          "type": "XiaojiuChatService"
+        },
+        {
+          "name": "students",
+          "type": "StudentsService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "preflight",
+          "line": 20,
+          "signature": "preflight(user: InMemoryUserAccount, sessionId: string, input: unknown)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.artifacts.preflight",
+            "this.models.resolve",
+            "this.store.find"
+          ]
+        },
+        {
+          "name": "prepare",
+          "line": 33,
+          "signature": "prepare(user: InMemoryUserAccount, sessionId: string, input: unknown): PreparedAssistantWhiteboard",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.preflight"
+          ]
+        },
+        {
+          "name": "capture",
+          "line": 43,
+          "signature": "capture(user: InMemoryUserAccount, prepared: PreparedAssistantWhiteboard, session: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.read"
+          ]
+        },
+        {
+          "name": "captureSession",
+          "line": 53,
+          "signature": "captureSession(user: InMemoryUserAccount, sessionId: string, session: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.artifacts.assertReadableSession"
+          ]
+        },
+        {
+          "name": "read",
+          "line": 58,
+          "signature": "read(user: InMemoryUserAccount, prepared: PreparedAssistantWhiteboard)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.artifacts.readSource"
+          ]
+        },
+        {
+          "name": "assertCurrent",
+          "line": 63,
+          "signature": "assertCurrent(user: InMemoryUserAccount, prepared: PreparedAssistantWhiteboard)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.read"
+          ]
+        }
+      ]
+    },
+    {
       "name": "ChemistryController",
       "file": "apps/api/src/modules/learning/chemistry.controller.ts",
       "line": 5,
@@ -26707,12 +27113,12 @@
     {
       "name": "LearningModule",
       "file": "apps/api/src/modules/learning/learning.module.ts",
-      "line": 63,
+      "line": 65,
       "decorators": [
         {
           "name": "Module",
           "args": [
-            "{ imports: [ProjectFileModule,StudioMaterialMaintenanceModule,StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [ChemistryController,WhiteboardQuestionVisualController,WhiteboardQuestionTeachingVersionController,GuidanceWhiteboardQuestionController,TopicWhiteboardQuestionController,TopicWhiteboardVisualController,TopicWhiteboardController,SourceCourseCheckController,ProjectTeachingController,SourceCourseLifecycleController, ClassroomCodeController,ClassroomTurnController,StudioOriginalRepairController,StudioMaterialUploadController, LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [ChemistryService,WhiteboardQuestionVisualService,WhiteboardQuestionVisualWorkerService,WhiteboardQuestionService,WhiteboardQuestionNarrationService,WhiteboardQuestionWorkerService,TopicWhiteboardVisualService,TopicWhiteboardVisualWorkerService,TopicWhiteboardService,TopicWhiteboardWorkerService,TopicWhiteboardNarrationService,SourceCourseCheckService,SourceCourseCheckWorkerService,ProjectTeachingService,SourceCourseLifecycleService, ClassroomCodeService,ClassroomTurnService,ClassroomTurnWorkerService,StudioOriginalRepairService,StudioOriginalRepairWorkerService,StudioMaterialIntegrityService,StudioMaterialUploadService, LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, SourceCourseCompilerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] }"
+            "{ imports: [ProjectFileModule,StudioMaterialMaintenanceModule,StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [AssistantWhiteboardController,ChemistryController,WhiteboardQuestionVisualController,WhiteboardQuestionTeachingVersionController,GuidanceWhiteboardQuestionController,TopicWhiteboardQuestionController,TopicWhiteboardVisualController,TopicWhiteboardController,SourceCourseCheckController,ProjectTeachingController,SourceCourseLifecycleController, ClassroomCodeController,ClassroomTurnController,StudioOriginalRepairController,StudioMaterialUploadController, LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [AssistantWhiteboardService,ChemistryService,WhiteboardQuestionVisualService,WhiteboardQuestionVisualWorkerService,WhiteboardQuestionService,WhiteboardQuestionNarrationService,WhiteboardQuestionWorkerService,TopicWhiteboardVisualService,TopicWhiteboardVisualWorkerService,TopicWhiteboardService,TopicWhiteboardWorkerService,TopicWhiteboardNarrationService,SourceCourseCheckService,SourceCourseCheckWorkerService,ProjectTeachingService,SourceCourseLifecycleService, ClassroomCodeService,ClassroomTurnService,ClassroomTurnWorkerService,StudioOriginalRepairService,StudioOriginalRepairWorkerService,StudioMaterialIntegrityService,StudioMaterialUploadService, LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, SourceCourseCompilerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] }"
           ]
         }
       ],
@@ -31221,12 +31627,13 @@
           "access": "private",
           "decorators": [],
           "calls": [
-            "this.boards.publishedRecord"
+            "this.boards.publishedRecord",
+            "this.boards.publishedAuthorization"
           ]
         },
         {
           "name": "synthesize",
-          "line": 23,
+          "line": 21,
           "signature": "synthesize(user: InMemoryUserAccount, id: string, sceneId: string, input: unknown, session: InMemoryAuthSession, signal: AbortSignal)",
           "access": "public",
           "decorators": [],
@@ -31241,7 +31648,7 @@
     {
       "name": "TopicWhiteboardVisualWorkerService",
       "file": "apps/api/src/modules/learning/topic-whiteboard-visual-worker.service.ts",
-      "line": 12,
+      "line": 13,
       "decorators": [
         {
           "name": "Injectable",
@@ -31260,12 +31667,16 @@
         {
           "name": "images",
           "type": "ClassroomImageService"
+        },
+        {
+          "name": "source",
+          "type": "AssistantWhiteboardService"
         }
       ],
       "methods": [
         {
           "name": "onApplicationBootstrap",
-          "line": 17,
+          "line": 18,
           "signature": "onApplicationBootstrap()",
           "access": "public",
           "decorators": [],
@@ -31277,7 +31688,7 @@
         },
         {
           "name": "onModuleDestroy",
-          "line": 21,
+          "line": 22,
           "signature": "onModuleDestroy()",
           "access": "public",
           "decorators": [],
@@ -31285,7 +31696,7 @@
         },
         {
           "name": "runNext",
-          "line": 22,
+          "line": 23,
           "signature": "runNext(): Promise<boolean>",
           "access": "public",
           "decorators": [],
@@ -31295,7 +31706,7 @@
         },
         {
           "name": "settle",
-          "line": 26,
+          "line": 27,
           "signature": "settle()",
           "access": "private",
           "decorators": [],
@@ -31308,7 +31719,7 @@
         },
         {
           "name": "row",
-          "line": 44,
+          "line": 45,
           "signature": "row(task: TaskRow, signal: AbortSignal)",
           "access": "private",
           "decorators": [],
@@ -31318,7 +31729,7 @@
         },
         {
           "name": "persist",
-          "line": 51,
+          "line": 52,
           "signature": "persist(task: TaskRow, signal: AbortSignal, change: (row: TopicVisualRecord) => void, complete = false)",
           "access": "private",
           "decorators": [],
@@ -31329,7 +31740,7 @@
         },
         {
           "name": "execute",
-          "line": 60,
+          "line": 61,
           "signature": "execute()",
           "access": "private",
           "decorators": [],
@@ -31581,7 +31992,7 @@
     {
       "name": "TopicWhiteboardVisualService",
       "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
-      "line": 22,
+      "line": 23,
       "decorators": [
         {
           "name": "Injectable",
@@ -31600,12 +32011,16 @@
         {
           "name": "images",
           "type": "ClassroomImageService"
+        },
+        {
+          "name": "source",
+          "type": "AssistantWhiteboardService"
         }
       ],
       "methods": [
         {
           "name": "capabilities",
-          "line": 25,
+          "line": 26,
           "signature": "capabilities()",
           "access": "public",
           "decorators": [],
@@ -31615,7 +32030,7 @@
         },
         {
           "name": "record",
-          "line": 26,
+          "line": 27,
           "signature": "record(user: InMemoryUserAccount, id: string, session: InMemoryAuthSession)",
           "access": "private",
           "decorators": [],
@@ -31625,7 +32040,7 @@
         },
         {
           "name": "context",
-          "line": 31,
+          "line": 32,
           "signature": "context(user: InMemoryUserAccount, input: TopicVisualPreflightInput, session: InMemoryAuthSession)",
           "access": "private",
           "decorators": [],
@@ -31633,18 +32048,19 @@
         },
         {
           "name": "preflight",
-          "line": 45,
+          "line": 46,
           "signature": "preflight(user: InMemoryUserAccount, input: unknown, session: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
           "calls": [
             "this.context",
-            "this.capabilities"
+            "this.capabilities",
+            "this.store.transaction"
           ]
         },
         {
           "name": "view",
-          "line": 51,
+          "line": 55,
           "signature": "view(row: TopicVisualRecord, taskOverride?: TaskRow, receipt?: TopicVisualCommand): Promise<TopicVisualView>",
           "access": "public",
           "decorators": [],
@@ -31655,7 +32071,7 @@
         },
         {
           "name": "prepare",
-          "line": 69,
+          "line": 73,
           "signature": "prepare(user: InMemoryUserAccount, input: unknown, session: InMemoryAuthSession, parentId?: string)",
           "access": "public",
           "decorators": [],
@@ -31673,7 +32089,7 @@
         },
         {
           "name": "get",
-          "line": 102,
+          "line": 106,
           "signature": "get(user: InMemoryUserAccount, id: string, session: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -31684,7 +32100,7 @@
         },
         {
           "name": "receipt",
-          "line": 103,
+          "line": 107,
           "signature": "receipt(user: InMemoryUserAccount, id: string | null, key: string, session: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -31696,7 +32112,7 @@
         },
         {
           "name": "list",
-          "line": 109,
+          "line": 113,
           "signature": "list(user: InMemoryUserAccount, input: unknown, session: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -31707,7 +32123,7 @@
         },
         {
           "name": "file",
-          "line": 116,
+          "line": 120,
           "signature": "file(user: InMemoryUserAccount, id: string, session: InMemoryAuthSession, part: 'image' | 'original')",
           "access": "public",
           "decorators": [],
@@ -31717,7 +32133,7 @@
         },
         {
           "name": "control",
-          "line": 121,
+          "line": 125,
           "signature": "control(user: InMemoryUserAccount, id: string, action: 'cancel' | 'retry', input: unknown, session: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -31735,7 +32151,7 @@
     {
       "name": "TopicWhiteboardWorkerService",
       "file": "apps/api/src/modules/learning/topic-whiteboard-worker.service.ts",
-      "line": 13,
+      "line": 15,
       "decorators": [
         {
           "name": "Injectable",
@@ -31754,12 +32170,16 @@
         {
           "name": "chat",
           "type": "XiaojiuChatService"
+        },
+        {
+          "name": "source",
+          "type": "AssistantWhiteboardService"
         }
       ],
       "methods": [
         {
           "name": "onApplicationBootstrap",
-          "line": 18,
+          "line": 20,
           "signature": "onApplicationBootstrap()",
           "access": "public",
           "decorators": [],
@@ -31771,7 +32191,7 @@
         },
         {
           "name": "onModuleDestroy",
-          "line": 22,
+          "line": 24,
           "signature": "onModuleDestroy()",
           "access": "public",
           "decorators": [],
@@ -31779,7 +32199,7 @@
         },
         {
           "name": "runNext",
-          "line": 23,
+          "line": 25,
           "signature": "runNext(): Promise<boolean>",
           "access": "public",
           "decorators": [],
@@ -31789,7 +32209,7 @@
         },
         {
           "name": "settle",
-          "line": 27,
+          "line": 29,
           "signature": "settle()",
           "access": "private",
           "decorators": [],
@@ -31801,7 +32221,7 @@
         },
         {
           "name": "persist",
-          "line": 37,
+          "line": 39,
           "signature": "persist(task: TaskRow, signal: AbortSignal, change: (row: TopicWhiteboardDraftRecord) => void, complete = false)",
           "access": "private",
           "decorators": [],
@@ -31812,7 +32232,7 @@
         },
         {
           "name": "request",
-          "line": 53,
+          "line": 55,
           "signature": "request(row: TopicWhiteboardDraftRecord, signal: AbortSignal, message: object)",
           "access": "private",
           "decorators": [],
@@ -31820,7 +32240,7 @@
         },
         {
           "name": "execute",
-          "line": 59,
+          "line": 63,
           "signature": "execute()",
           "access": "private",
           "decorators": [],
@@ -31971,8 +32391,25 @@
           ]
         },
         {
-          "name": "cancel",
+          "name": "source",
           "line": 18,
+          "signature": "source(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'drafts/:id/source'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.boards.sourceView"
+          ]
+        },
+        {
+          "name": "cancel",
+          "line": 19,
           "signature": "cancel(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -31989,7 +32426,7 @@
         },
         {
           "name": "retry",
-          "line": 19,
+          "line": 20,
           "signature": "retry(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -32006,7 +32443,7 @@
         },
         {
           "name": "edit",
-          "line": 20,
+          "line": 21,
           "signature": "edit(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -32023,7 +32460,7 @@
         },
         {
           "name": "confirm",
-          "line": 21,
+          "line": 22,
           "signature": "confirm(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
@@ -32040,7 +32477,7 @@
         },
         {
           "name": "list",
-          "line": 22,
+          "line": 23,
           "signature": "list(@Req() req: AuthenticatedRequest, @Query() input: unknown)",
           "access": "public",
           "decorators": [
@@ -32055,7 +32492,7 @@
         },
         {
           "name": "get",
-          "line": 23,
+          "line": 24,
           "signature": "get(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
           "access": "public",
           "decorators": [
@@ -32072,7 +32509,7 @@
         },
         {
           "name": "figure",
-          "line": 24,
+          "line": 25,
           "signature": "figure(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('sceneId') sceneId: string, @Res({ passthrough: true }) response: Response)",
           "access": "public",
           "decorators": [
@@ -32089,7 +32526,7 @@
         },
         {
           "name": "originalFigure",
-          "line": 28,
+          "line": 29,
           "signature": "originalFigure(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('sceneId') sceneId: string, @Res({ passthrough: true }) response: Response)",
           "access": "public",
           "decorators": [
@@ -32106,7 +32543,7 @@
         },
         {
           "name": "speak",
-          "line": 32,
+          "line": 33,
           "signature": "speak(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('sceneId') sceneId: string, @Body() input: unknown, @Res({ passthrough: true }) response: Response)",
           "access": "public",
           "decorators": [
@@ -32126,7 +32563,7 @@
     {
       "name": "TopicWhiteboardService",
       "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
-      "line": 27,
+      "line": 29,
       "decorators": [
         {
           "name": "Injectable",
@@ -32149,12 +32586,16 @@
         {
           "name": "chat",
           "type": "XiaojiuChatService"
+        },
+        {
+          "name": "source",
+          "type": "AssistantWhiteboardService"
         }
       ],
       "methods": [
         {
           "name": "modelAvailable",
-          "line": 31,
+          "line": 33,
           "signature": "modelAvailable()",
           "access": "public",
           "decorators": [],
@@ -32162,7 +32603,7 @@
         },
         {
           "name": "record",
-          "line": 33,
+          "line": 35,
           "signature": "record(user: InMemoryUserAccount, id: string, session: InMemoryAuthSession)",
           "access": "private",
           "decorators": [],
@@ -32172,7 +32613,7 @@
         },
         {
           "name": "view",
-          "line": 39,
+          "line": 41,
           "signature": "view(row: TopicWhiteboardDraftRecord, taskOverride?: TaskRow, receipt?: TopicWhiteboardCommand): Promise<TopicWhiteboardDraftView>",
           "access": "public",
           "decorators": [],
@@ -32182,7 +32623,7 @@
         },
         {
           "name": "preflight",
-          "line": 56,
+          "line": 58,
           "signature": "preflight(user: InMemoryUserAccount, input: unknown, session: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -32193,7 +32634,7 @@
         },
         {
           "name": "prepare",
-          "line": 64,
+          "line": 66,
           "signature": "prepare(user: InMemoryUserAccount, input: unknown, session: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -32210,41 +32651,107 @@
           ]
         },
         {
-          "name": "get",
-          "line": 93,
-          "signature": "get(user: InMemoryUserAccount, id: string, session: InMemoryAuthSession)",
+          "name": "prepareSource",
+          "line": 96,
+          "signature": "prepareSource(user: InMemoryUserAccount, sessionId: string, input: unknown, session: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
           "calls": [
+            "this.store.transaction",
+            "this.store.find",
+            "this.record",
             "this.view",
+            "this.source.prepare",
+            "this.source.assertCurrent",
+            "this.store.nextId",
+            "this.store.append",
+            "this.store.enqueueTask"
+          ]
+        },
+        {
+          "name": "readableView",
+          "line": 126,
+          "signature": "readableView(user: InMemoryUserAccount, row: TopicWhiteboardDraftRecord, session: InMemoryAuthSession, receipt?: TopicWhiteboardCommand)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.view",
+            "this.store.transaction",
             "this.record"
           ]
         },
         {
+          "name": "get",
+          "line": 131,
+          "signature": "get(user: InMemoryUserAccount, id: string, session: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.readableView",
+            "this.record"
+          ]
+        },
+        {
+          "name": "sourceView",
+          "line": 132,
+          "signature": "sourceView(user: InMemoryUserAccount, id: string, session: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.record"
+          ]
+        },
+        {
+          "name": "sourceReceipt",
+          "line": 142,
+          "signature": "sourceReceipt(user: InMemoryUserAccount, sessionId: string, key: string, session: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.source.captureSession",
+            "this.store.find",
+            "this.record",
+            "this.readableView"
+          ]
+        },
+        {
+          "name": "sourceList",
+          "line": 151,
+          "signature": "sourceList(user: InMemoryUserAccount, sessionId: string, input: unknown, session: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.source.captureSession",
+            "this.store.select",
+            "this.record",
+            "this.readableView"
+          ]
+        },
+        {
           "name": "receipt",
-          "line": 94,
+          "line": 172,
           "signature": "receipt(user: InMemoryUserAccount, id: string, key: string, session: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
           "calls": [
             "this.record",
-            "this.view"
+            "this.readableView"
           ]
         },
         {
           "name": "list",
-          "line": 98,
+          "line": 176,
           "signature": "list(user: InMemoryUserAccount, input: unknown, session: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
           "calls": [
             "this.store.select",
-            "this.view"
+            "this.readableView"
           ]
         },
         {
           "name": "prior",
-          "line": 106,
+          "line": 184,
           "signature": "prior(row: TopicWhiteboardDraftRecord, key: string, kind: TopicWhiteboardCommand['kind'], hash: string)",
           "access": "private",
           "decorators": [],
@@ -32252,7 +32759,7 @@
         },
         {
           "name": "command",
-          "line": 111,
+          "line": 189,
           "signature": "command(row: TopicWhiteboardDraftRecord, user: InMemoryUserAccount, key: string, kind: TopicWhiteboardCommand['kind'], hash: string, detail: Partial<Pick<TopicWhiteboardCommand, 'contentFingerprint' | 'whiteboardId'>> = {})",
           "access": "private",
           "decorators": [],
@@ -32260,7 +32767,7 @@
         },
         {
           "name": "control",
-          "line": 117,
+          "line": 195,
           "signature": "control(user: InMemoryUserAccount, id: string, action: 'cancel' | 'retry', input: unknown, session: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -32277,7 +32784,7 @@
         },
         {
           "name": "edit",
-          "line": 150,
+          "line": 228,
           "signature": "edit(user: InMemoryUserAccount, id: string, input: unknown, session: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -32291,7 +32798,7 @@
         },
         {
           "name": "history",
-          "line": 170,
+          "line": 249,
           "signature": "history(user: InMemoryUserAccount, id: string, input: unknown, session: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -32301,7 +32808,7 @@
         },
         {
           "name": "confirm",
-          "line": 176,
+          "line": 255,
           "signature": "confirm(user: InMemoryUserAccount, id: string, input: unknown, session: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -32318,17 +32825,29 @@
         },
         {
           "name": "publishedRecord",
-          "line": 195,
-          "signature": "publishedRecord(user: InMemoryUserAccount, id: string, session: InMemoryAuthSession): TopicWhiteboardRecord",
+          "line": 274,
+          "signature": "publishedRecord(user: InMemoryUserAccount, id: string, session: InMemoryAuthSession, writing = false): TopicWhiteboardRecord",
           "access": "public",
           "decorators": [],
           "calls": [
-            "this.store.find"
+            "this.store.find",
+            "this.record"
+          ]
+        },
+        {
+          "name": "publishedAuthorization",
+          "line": 290,
+          "signature": "publishedAuthorization(user: InMemoryUserAccount, id: string, session: InMemoryAuthSession, writing = false)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.publishedRecord",
+            "this.record"
           ]
         },
         {
           "name": "getPublished",
-          "line": 201,
+          "line": 299,
           "signature": "getPublished(user: InMemoryUserAccount, id: string, session: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -32338,7 +32857,7 @@
         },
         {
           "name": "publishedFigure",
-          "line": 202,
+          "line": 300,
           "signature": "publishedFigure(user: InMemoryUserAccount, id: string, sceneId: string, session: InMemoryAuthSession, part: 'image' | 'original')",
           "access": "public",
           "decorators": [],
@@ -32348,7 +32867,7 @@
         },
         {
           "name": "listPublished",
-          "line": 210,
+          "line": 309,
           "signature": "listPublished(user: InMemoryUserAccount, input: unknown, session: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -39744,13 +40263,13 @@
     {
       "file": "apps/api/src/infrastructure/domain-database.ts",
       "name": "differences",
-      "line": 35,
+      "line": 36,
       "signature": "differences(before: DomainState, after: DomainState, reads?: ReadDependency[], writeHints?: Record<string, number[]>): Change[]"
     },
     {
       "file": "apps/api/src/infrastructure/domain-database.ts",
       "name": "freezeJson",
-      "line": 79,
+      "line": 80,
       "signature": "freezeJson(value: T): T"
     },
     {
@@ -41296,6 +41815,48 @@
       "signature": "knowledgeMaterialCoverage(atom: KnowledgeAtom, candidates: MeasurementItem[]): KnowledgeMaterialCoverage"
     },
     {
+      "file": "apps/api/src/modules/learning/assistant-whiteboard-content.ts",
+      "name": "validateAssistantWhiteboardContent",
+      "line": 7,
+      "signature": "validateAssistantWhiteboardContent(prepared: PreparedAssistantWhiteboard, value: unknown, options: { allowFigures?: boolean } = {}): AssistantWhiteboardContent"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-whiteboard-content.ts",
+      "name": "validateAssistantWhiteboardReview",
+      "line": 31,
+      "signature": "validateAssistantWhiteboardReview(prepared: PreparedAssistantWhiteboard, original: unknown, value: unknown)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-whiteboard-integrity.ts",
+      "name": "assertAssistantWhiteboardRecords",
+      "line": 12,
+      "signature": "assertAssistantWhiteboardRecords(rows: SavedRow[])"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-whiteboard-source.ts",
+      "name": "stableAssistantWhiteboardOrigin",
+      "line": 7,
+      "signature": "stableAssistantWhiteboardOrigin(origin: AssistantArtifactOrigin): AssistantArtifactOrigin"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-whiteboard-source.ts",
+      "name": "prepareAssistantWhiteboardSource",
+      "line": 13,
+      "signature": "prepareAssistantWhiteboardSource(origin: AssistantArtifactOrigin, input: AssistantWhiteboardPreflightInput, audience: AssistantWhiteboardAudience, model: { id: string; label: string }, available: boolean)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-whiteboard-source.ts",
+      "name": "prepareAssistantTopicWhiteboard",
+      "line": 40,
+      "signature": "prepareAssistantTopicWhiteboard(origin: AssistantArtifactOrigin, input: AssistantWhiteboardPreflightInput, audience: AssistantWhiteboardAudience, model: { id: string; label: string }, available: boolean): PreparedAssistantWhiteboard"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-whiteboard-source.ts",
+      "name": "assertPreparedAssistantWhiteboard",
+      "line": 55,
+      "signature": "assertPreparedAssistantWhiteboard(prepared: PreparedAssistantWhiteboard)"
+    },
+    {
       "file": "apps/api/src/modules/learning/chemistry-course-correction.ts",
       "name": "correctChemistryCourse",
       "line": 8,
@@ -42300,50 +42861,62 @@
     {
       "file": "apps/api/src/modules/learning/topic-whiteboard-access.ts",
       "name": "captureTopicWhiteboardAuthorization",
-      "line": 10,
-      "signature": "captureTopicWhiteboardAuthorization(store: InMemoryStoreService, students: StudentsService, user: InMemoryUserAccount, audience: TopicWhiteboardAudience, session: InMemoryAuthSession): TopicWhiteboardAuthorization"
+      "line": 11,
+      "signature": "captureTopicWhiteboardAuthorization(store: InMemoryStoreService, students: StudentsService, user: InMemoryUserAccount, audience: TopicWhiteboardAudience | AssistantWhiteboardAudience, session: InMemoryAuthSession, prepared?: PreparedTopicWhiteboard, source?: TopicWhiteboardSourceAccess): TopicWhiteboardAuthorization"
+    },
+    {
+      "file": "apps/api/src/modules/learning/topic-whiteboard-access.ts",
+      "name": "captureWhiteboardActorAuthorization",
+      "line": 24,
+      "signature": "captureWhiteboardActorAuthorization(store: InMemoryStoreService, students: StudentsService, user: InMemoryUserAccount, studentId: string | null, session: InMemoryAuthSession): TopicWhiteboardAuthorization"
     },
     {
       "file": "apps/api/src/modules/learning/topic-whiteboard-access.ts",
       "name": "prepareTopicWhiteboard",
-      "line": 41,
-      "signature": "prepareTopicWhiteboard(store: InMemoryStoreService, students: StudentsService, user: InMemoryUserAccount, input: TopicWhiteboardInput, model: { id: string; label: string }): PreparedTopicWhiteboard"
+      "line": 55,
+      "signature": "prepareTopicWhiteboard(store: InMemoryStoreService, students: StudentsService, user: InMemoryUserAccount, input: TopicWhiteboardInput, model: { id: string; label: string }): PreparedFreeTopicWhiteboard"
     },
     {
       "file": "apps/api/src/modules/learning/topic-whiteboard-access.ts",
       "name": "assertTopicWhiteboardInputCurrent",
-      "line": 74,
-      "signature": "assertTopicWhiteboardInputCurrent(store: InMemoryStoreService, students: StudentsService, user: InMemoryUserAccount, prepared: PreparedTopicWhiteboard)"
+      "line": 88,
+      "signature": "assertTopicWhiteboardInputCurrent(store: InMemoryStoreService, students: StudentsService, user: InMemoryUserAccount, prepared: PreparedTopicWhiteboard, source?: TopicWhiteboardSourceAccess)"
     },
     {
       "file": "apps/api/src/modules/learning/topic-whiteboard-access.ts",
       "name": "topicWhiteboardAuthority",
-      "line": 82,
-      "signature": "topicWhiteboardAuthority(store: InMemoryStoreService, students: StudentsService, row: TopicWhiteboardDraftRecord)"
-    },
-    {
-      "file": "apps/api/src/modules/learning/topic-whiteboard-content.ts",
-      "name": "canonical",
-      "line": 14,
-      "signature": "canonical(value: unknown): unknown"
-    },
-    {
-      "file": "apps/api/src/modules/learning/topic-whiteboard-content.ts",
-      "name": "topicWhiteboardDigest",
-      "line": 20,
-      "signature": "topicWhiteboardDigest(value: unknown): string"
+      "line": 101,
+      "signature": "topicWhiteboardAuthority(store: InMemoryStoreService, students: StudentsService, row: TopicWhiteboardDraftRecord, source?: TopicWhiteboardSourceAccess)"
     },
     {
       "file": "apps/api/src/modules/learning/topic-whiteboard-content.ts",
       "name": "validateTopicWhiteboardContent",
-      "line": 23,
-      "signature": "validateTopicWhiteboardContent(prepared: Pick<PreparedTopicWhiteboard, 'input' | 'targets'>, value: unknown, options: { allowFigures?: boolean } = {}): TopicWhiteboardContent"
+      "line": 20,
+      "signature": "validateTopicWhiteboardContent(prepared: ContentPrepared, value: unknown, options: { allowFigures?: boolean } = {}): TopicWhiteboardContent"
     },
     {
       "file": "apps/api/src/modules/learning/topic-whiteboard-content.ts",
       "name": "validateTopicWhiteboardReview",
       "line": 46,
-      "signature": "validateTopicWhiteboardReview(prepared: Pick<PreparedTopicWhiteboard, 'input' | 'targets'>, original: TopicWhiteboardContent, value: unknown)"
+      "signature": "validateTopicWhiteboardReview(prepared: ContentPrepared, original: TopicWhiteboardContent, value: unknown)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/topic-whiteboard-digest.ts",
+      "name": "canonical",
+      "line": 3,
+      "signature": "canonical(value: unknown): unknown"
+    },
+    {
+      "file": "apps/api/src/modules/learning/topic-whiteboard-digest.ts",
+      "name": "topicWhiteboardDigest",
+      "line": 9,
+      "signature": "topicWhiteboardDigest(value: unknown): string"
+    },
+    {
+      "file": "apps/api/src/modules/learning/topic-whiteboard-digest.ts",
+      "name": "topicWhiteboardSerialize",
+      "line": 12,
+      "signature": "topicWhiteboardSerialize(value: unknown): string"
     },
     {
       "file": "apps/api/src/modules/learning/topic-whiteboard-figures.ts",
@@ -42372,26 +42945,26 @@
     {
       "file": "apps/api/src/modules/learning/topic-whiteboard-projection.ts",
       "name": "publicTopicWhiteboard",
-      "line": 33,
+      "line": 35,
       "signature": "publicTopicWhiteboard(row: TopicWhiteboardRecord, actorId: string): StudioTopicWhiteboard"
     },
     {
       "file": "apps/api/src/modules/learning/topic-whiteboard-visual-access.ts",
       "name": "topicVisualDraft",
-      "line": 13,
-      "signature": "topicVisualDraft(store: InMemoryStoreService, students: StudentsService, user: InMemoryUserAccount, draftId: string, session: InMemoryAuthSession)"
+      "line": 14,
+      "signature": "topicVisualDraft(store: InMemoryStoreService, students: StudentsService, user: InMemoryUserAccount, draftId: string, session: InMemoryAuthSession, source?: TopicWhiteboardSourceAccess)"
     },
     {
       "file": "apps/api/src/modules/learning/topic-whiteboard-visual-access.ts",
       "name": "topicVisualParent",
-      "line": 19,
+      "line": 22,
       "signature": "topicVisualParent(store: InMemoryStoreService, row: Pick<TopicVisualRecord, 'ownerUserId' | 'draftId' | 'sceneIndex' | 'sceneTeachingFingerprint'>, parentId: string)"
     },
     {
       "file": "apps/api/src/modules/learning/topic-whiteboard-visual-access.ts",
       "name": "topicVisualAuthority",
-      "line": 28,
-      "signature": "topicVisualAuthority(store: InMemoryStoreService, students: StudentsService, row: TopicVisualRecord)"
+      "line": 31,
+      "signature": "topicVisualAuthority(store: InMemoryStoreService, students: StudentsService, row: TopicVisualRecord, source?: TopicWhiteboardSourceAccess)"
     },
     {
       "file": "apps/api/src/modules/learning/topic-whiteboard-visual-context.ts",
@@ -42420,13 +42993,13 @@
     {
       "file": "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
       "name": "reconcileTopicVisual",
-      "line": 17,
+      "line": 18,
       "signature": "reconcileTopicVisual(row: TopicVisualRecord, task: TaskRow | null | undefined)"
     },
     {
       "file": "apps/api/src/modules/learning/topic-whiteboard.service.ts",
       "name": "reconcileTopicWhiteboard",
-      "line": 21,
+      "line": 23,
       "signature": "reconcileTopicWhiteboard(row: TopicWhiteboardDraftRecord, task: TaskRow | null | undefined)"
     },
     {
@@ -42654,43 +43227,43 @@
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "mergeSelections",
-      "line": 107,
+      "line": 108,
       "signature": "mergeSelections(...selections: Selection[]): Selection"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "selectionCounts",
-      "line": 114,
+      "line": 115,
       "signature": "selectionCounts(selected: Selection): PrivacyCounts"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "selectionFingerprint",
-      "line": 121,
+      "line": 122,
       "signature": "selectionFingerprint(selection: Selection, context: unknown)"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "removeSelected",
-      "line": 124,
+      "line": 125,
       "signature": "removeSelected(store: InMemoryStoreService, selection: Selection)"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "scrub",
-      "line": 138,
+      "line": 139,
       "signature": "scrub(value: unknown): unknown"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "portableRecords",
-      "line": 143,
+      "line": 144,
       "signature": "portableRecords(selected: Selection, actorId: string): Record<string, unknown[]>"
     },
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "anonymizeSharedAttribution",
-      "line": 217,
+      "line": 220,
       "signature": "anonymizeSharedAttribution(store: InMemoryStoreService, studentIds: string[], actorId: string)"
     },
     {
@@ -45222,6 +45795,221 @@
           "type": "number"
         }
       ]
+    },
+    {
+      "name": "AssistantWhiteboardPreflightInput",
+      "file": "packages/contracts/src/assistant-whiteboard.ts",
+      "line": 12,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "AssistantWhiteboardAudience",
+      "file": "packages/contracts/src/assistant-whiteboard.ts",
+      "line": 17,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "kind",
+          "optional": false,
+          "type": "'assistant'"
+        },
+        {
+          "name": "actorRole",
+          "optional": false,
+          "type": "UserRole"
+        },
+        {
+          "name": "studentId",
+          "optional": false,
+          "type": "string | null"
+        },
+        {
+          "name": "subject",
+          "optional": false,
+          "type": "string | null"
+        },
+        {
+          "name": "sourceKind",
+          "optional": false,
+          "type": "'independent' | 'classroom_lecture' | 'primary_unit' | 'material_lesson'"
+        },
+        {
+          "name": "courseGrade",
+          "optional": false,
+          "type": "number | null"
+        },
+        {
+          "name": "profileGrade",
+          "optional": false,
+          "type": "number | null"
+        }
+      ]
+    },
+    {
+      "name": "AssistantWhiteboardPreflight",
+      "file": "packages/contracts/src/assistant-whiteboard.ts",
+      "line": 22,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "protocol",
+          "optional": false,
+          "type": "'assistant-topic-whiteboard-v1'"
+        },
+        {
+          "name": "origin",
+          "optional": false,
+          "type": "AssistantArtifactOrigin"
+        },
+        {
+          "name": "audience",
+          "optional": false,
+          "type": "AssistantWhiteboardAudience"
+        },
+        {
+          "name": "objective",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "modelId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "modelName",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "available",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "sourceFingerprint",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "fingerprint",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "contextCharacters",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "maxContextCharacters",
+          "optional": false,
+          "type": "18000"
+        },
+        {
+          "name": "fits",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "historical",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "canGenerate",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "blocked",
+          "optional": true,
+          "type": "{ code: 'source_budget_exceeded' | 'historical_source_confirmation_required' | 'model_unavailable'; message: string }"
+        }
+      ]
+    },
+    {
+      "name": "AssistantWhiteboardSummary",
+      "file": "packages/contracts/src/assistant-whiteboard.ts",
+      "line": 29,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "AssistantWhiteboardPage",
+      "file": "packages/contracts/src/assistant-whiteboard.ts",
+      "line": 30,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "items",
+          "optional": false,
+          "type": "AssistantWhiteboardSummary[]"
+        },
+        {
+          "name": "nextCursor",
+          "optional": false,
+          "type": "string | null"
+        }
+      ]
+    },
+    {
+      "name": "AssistantWhiteboardSourceView",
+      "file": "packages/contracts/src/assistant-whiteboard.ts",
+      "line": 31,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "protocol",
+          "optional": false,
+          "type": "'assistant-topic-whiteboard-v1'"
+        },
+        {
+          "name": "draftId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "sourceFingerprint",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "origin",
+          "optional": false,
+          "type": "AssistantArtifactOrigin"
+        },
+        {
+          "name": "selection",
+          "optional": false,
+          "type": "AssistantWhiteboardPreflightInput['selection']"
+        },
+        {
+          "name": "acknowledgeHistoricalSource",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "mappings",
+          "optional": false,
+          "type": "{ original: Array<AssistantWhiteboardSourceMap & { sceneIndex: number }>; current: Array<AssistantWhiteboardSourceMap & { sceneIndex: number }> }"
+        }
+      ]
+    },
+    {
+      "name": "AssistantWhiteboardSourceMap",
+      "file": "packages/contracts/src/assistant-whiteboard.ts",
+      "line": 53,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "AssistantWhiteboardContent",
+      "file": "packages/contracts/src/assistant-whiteboard.ts",
+      "line": 54,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
     },
     {
       "name": "ChemistryCheckpoint",
@@ -57074,28 +57862,28 @@
     {
       "name": "TopicWhiteboardAudience",
       "file": "packages/contracts/src/topic-whiteboard.ts",
-      "line": 44,
+      "line": 45,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "TopicWhiteboardInput",
       "file": "packages/contracts/src/topic-whiteboard.ts",
-      "line": 45,
+      "line": 46,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "TopicWhiteboardContent",
       "file": "packages/contracts/src/topic-whiteboard.ts",
-      "line": 46,
+      "line": 47,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "TopicWhiteboardReview",
       "file": "packages/contracts/src/topic-whiteboard.ts",
-      "line": 47,
+      "line": 48,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -57138,14 +57926,14 @@
     {
       "name": "TopicWhiteboardDraftStatus",
       "file": "packages/contracts/src/topic-whiteboard.ts",
-      "line": 49,
+      "line": 50,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "TopicWhiteboardDraftView",
       "file": "packages/contracts/src/topic-whiteboard.ts",
-      "line": 50,
+      "line": 51,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -57156,7 +57944,7 @@
         {
           "name": "audience",
           "optional": false,
-          "type": "TopicWhiteboardAudience"
+          "type": "TopicWhiteboardAudience | AssistantWhiteboardAudience"
         },
         {
           "name": "studentId",
@@ -57216,12 +58004,12 @@
         {
           "name": "originalContent",
           "optional": false,
-          "type": "TopicWhiteboardContent | null"
+          "type": "TopicWhiteboardContent | AssistantWhiteboardContent | null"
         },
         {
           "name": "content",
           "optional": false,
-          "type": "TopicWhiteboardContent | null"
+          "type": "TopicWhiteboardContent | AssistantWhiteboardContent | null"
         },
         {
           "name": "contentFingerprint",
@@ -57268,7 +58056,7 @@
     {
       "name": "StudioTopicWhiteboard",
       "file": "packages/contracts/src/topic-whiteboard.ts",
-      "line": 61,
+      "line": 62,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -58167,6 +58955,8 @@
     "apps/api/src/durability.integration.test.ts",
     "apps/api/src/infrastructure/assistant-note-recovery.integration.test.ts",
     "apps/api/src/infrastructure/assistant-note-storage.integration.test.ts",
+    "apps/api/src/infrastructure/assistant-whiteboard-reader.integration.test.ts",
+    "apps/api/src/infrastructure/assistant-whiteboard-recovery.integration.test.ts",
     "apps/api/src/infrastructure/backup.integration.test.ts",
     "apps/api/src/infrastructure/domain-database.test.ts",
     "apps/api/src/infrastructure/operations.integration.test.ts",
@@ -58289,6 +59079,9 @@
     "apps/api/src/modules/gesp/gesp.integration.test.ts",
     "apps/api/src/modules/gesp/isolated-runner.test.ts",
     "apps/api/src/modules/gesp/student-curriculum.test.ts",
+    "apps/api/src/modules/learning/assistant-whiteboard-content.test.ts",
+    "apps/api/src/modules/learning/assistant-whiteboard-lifecycle.integration.test.ts",
+    "apps/api/src/modules/learning/assistant-whiteboard.integration.test.ts",
     "apps/api/src/modules/learning/chemistry-course-correction.integration.test.ts",
     "apps/api/src/modules/learning/chemistry-tutorial.integration.test.ts",
     "apps/api/src/modules/learning/chemistry.integration.test.ts",
@@ -58367,6 +59160,7 @@
     "tests/e2e/answer-journeys.spec.ts",
     "tests/e2e/assistant-conversations.spec.ts",
     "tests/e2e/assistant-notes.spec.ts",
+    "tests/e2e/assistant-whiteboards.spec.ts",
     "tests/e2e/chemistry.spec.ts",
     "tests/e2e/classroom-boards.spec.ts",
     "tests/e2e/classroom-captions.spec.ts",
