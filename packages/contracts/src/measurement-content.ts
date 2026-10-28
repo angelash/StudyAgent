@@ -4,7 +4,7 @@ import { dimensionSchema } from './diagnostics';
 
 const id = z.string().trim().min(1).max(180);
 export const createMeasurementDraftSchema = (subject: typeof subjectSchema, block: typeof questionBlockSchema, answerSchema: typeof questionAnswerSchemaSchema) => z.object({
-  subject, grade: z.number().int().min(1).max(6),
+  subject, grade: z.number().int().min(1).max(9),
   stem: z.string().trim().min(3).max(12000), analysis: z.string().trim().min(5).max(8000),
   blocks: z.array(block).max(40), answer: z.unknown(),
   answerSchema: answerSchema.omit({ questionId: true }).strict(),

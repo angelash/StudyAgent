@@ -79,7 +79,7 @@ export class NotebookService {
   }
   list(user: InMemoryUserAccount, studentId: string, input: unknown) {
     this.students.assertCanAccessStudent(user, studentId);
-    const query = validate(z.object({ subject: z.enum(['math', 'chinese', 'english']), q: z.string().trim().max(100).optional(),
+    const query = validate(z.object({ subject: z.enum(['math', 'chinese', 'english', 'chemistry']), q: z.string().trim().max(100).optional(),
       atomId: z.string().max(180).optional(), tag: z.string().trim().max(30).optional(), favorite: z.enum(['true', 'false']).optional(),
       state: z.enum(['active', 'removed', 'all']).default('active'), reviewState: z.enum(['open', 'reviewed']).optional(),
       page: z.coerce.number().int().min(1).max(100000).default(1), pageSize: z.coerce.number().int().min(1).max(40).default(20) }).strict(), input);

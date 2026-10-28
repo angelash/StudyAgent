@@ -20,6 +20,7 @@ const gradeMap: Record<string, number> = {
   四: 4,
   五: 5,
   六: 6,
+  七: 7, 八: 8, 九: 9,
 };
 
 const subjectImportConfig: Record<
@@ -29,6 +30,7 @@ const subjectImportConfig: Record<
     displayName: string;
   }
 > = {
+  chemistry: { directoryName: '化学', displayName: '化学' },
   chinese: {
     directoryName: '语文',
     displayName: '语文',
@@ -61,11 +63,11 @@ export class ContentService {
     this.assertAdmin(requestUser);
 
     const imported: TextbookVolume[] = [];
-    const subjects = subject ? [subject] : (['chinese', 'math', 'english'] as const);
+    const subjects = subject ? [subject] : (['chinese', 'math', 'english', 'chemistry'] as const);
 
     for (const currentSubject of subjects) {
       const config = subjectImportConfig[currentSubject];
-      const baseDir = path.join(this.env.TEXTBOOK_BASE_PATH, '小学', config.directoryName);
+      const baseDir = path.join(this.env.TEXTBOOK_BASE_PATH, currentSubject === 'chemistry' ? '初中' : '小学', config.directoryName);
       if (!fs.existsSync(baseDir)) {
         continue;
       }
@@ -125,7 +127,7 @@ export class ContentService {
 
     if (subject && imported.length === 0) {
       const config = subjectImportConfig[subject];
-      throw new BadRequestException(`未在 ${path.join(this.env.TEXTBOOK_BASE_PATH, '小学', config.directoryName)} 下找到可导入教材`);
+      throw new BadRequestException(`未在 ${path.join(this.env.TEXTBOOK_BASE_PATH, subject === 'chemistry' ? '初中' : '小学', config.directoryName)} 下找到可导入教材`);
     }
 
     return {

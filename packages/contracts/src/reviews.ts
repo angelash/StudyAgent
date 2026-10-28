@@ -27,7 +27,7 @@ export const evidenceFeedbackInputSchema = z.object({
 }).strict();
 export type EvidenceFeedback = {
   id: string; kind: EvidenceKind; responseId: string; studentId: string;
-  subject: 'math' | 'chinese' | 'english'; createdBy: string;
+  subject: 'math' | 'chinese' | 'english' | 'chemistry'; createdBy: string;
   category: z.infer<typeof evidenceFeedbackInputSchema>['category']; message: string;
   status: 'open' | 'investigating' | 'resolved' | 'dismissed';
   version: number; requestKey: string; createdAt: string; updatedAt: string;

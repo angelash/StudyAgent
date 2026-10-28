@@ -9,7 +9,7 @@ export type PracticeAttempt = {
   requestHash?: string;
 };
 export type PracticeSession = {
-  id: string; studentId: string; subject: 'math' | 'chinese' | 'english'; planId: string | null; actionId: string;
+  id: string; studentId: string; subject: 'math' | 'chinese' | 'english' | 'chemistry'; planId: string | null; actionId: string;
   atomId: string; day: string; status: 'in_progress' | 'completed'; questionIds: string[];
   snapshots: DiagnosticSession['questionSnapshots']; createdAt: string; completedAt: string | null;
   drafts?: Record<string, { answer: unknown; savedAt: string } & AnswerDraftMetadata>;
@@ -22,7 +22,7 @@ export type PracticeHint = { id: string; sessionId: string; questionId: string; 
 
 export type LearningMemory = {
   generatedAt: string; revision: string; student: { id: string; nickname: string; grade: number; preferredSessionMinutes: number };
-  subject: 'math' | 'chinese' | 'english'; consent: 'derived_evidence_only'; summary: string;
+  subject: 'math' | 'chinese' | 'english' | 'chemistry'; consent: 'derived_evidence_only'; summary: string;
   facts: Array<{ id: string; kind: string; text: string; provenance: string }>;
   unknowns: Array<{ atomId: string; atomName: string; status: string; reason: string }>;
   openHypotheses: Array<{ id: string; title: string; status: string; observation: string; explanation: string; nextAction: string }>;
@@ -32,7 +32,7 @@ export type LearningMemory = {
 
 export type NotebookMetadata = { tags: string[]; favorite: boolean; removed: boolean; errorSteps: string[]; reflection: string; reviewState: 'open' | 'reviewed' };
 export type MistakeNotebookEntry = {
-  id: string; studentId: string; subject: 'math' | 'chinese' | 'english'; kind: 'diagnostic' | 'practice'; responseId: string;
+  id: string; studentId: string; subject: 'math' | 'chinese' | 'english' | 'chemistry'; kind: 'diagnostic' | 'practice'; responseId: string;
   questionId: string; atomId: string; version: number; metadata: NotebookMetadata; createdAt: string; updatedAt: string;
   redoSessionIds: string[]; verificationBlueprintIds: string[];
   history: Array<{ version: number; actorId: string; at: string; action: 'organized' | 'redo_started' | 'verification_previewed';

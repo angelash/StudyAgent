@@ -11,7 +11,7 @@ export class ProgressController {
   getMasteryHeatmap(
     @Req() req: AuthenticatedRequest,
     @Query('studentId') studentId: string,
-    @Query('subject') subject?: 'math' | 'chinese' | 'english',
+    @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry',
   ) {
     if (req.user.role !== 'admin') throw new ForbiddenException();
     return { historical: true, notice: '原型历史统计，仅供迁移核对，不是当前能力评价。', data: this.progressService.getMasteryHeatmap(req.user, studentId, subject ?? 'math') };
@@ -21,7 +21,7 @@ export class ProgressController {
   getStudentKnowledgeMap(
     @Req() req: AuthenticatedRequest,
     @Param('studentId') studentId: string,
-    @Query('subject') subject?: 'math' | 'chinese' | 'english',
+    @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry',
   ) {
     if (req.user.role !== 'admin') throw new ForbiddenException();
     return { historical: true, notice: '原型课程结构与历史统计，仅供内容迁移核对。', data: this.progressService.getStudentKnowledgeMap(req.user, studentId, subject ?? 'math') };
@@ -31,7 +31,7 @@ export class ProgressController {
   getWeeklyReport(
     @Req() req: AuthenticatedRequest,
     @Query('studentId') studentId: string,
-    @Query('subject') subject?: 'math' | 'chinese' | 'english',
+    @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry',
     @Query('weekStartDate') weekStartDate?: string,
   ) {
     if (req.user.role !== 'admin') throw new ForbiddenException();
@@ -43,7 +43,7 @@ export class ProgressController {
     @Req() req: AuthenticatedRequest,
     @Param('parentId') parentId: string,
     @Query('studentId') studentId: string,
-    @Query('subject') subject?: 'math' | 'chinese' | 'english',
+    @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry',
   ) {
     if (req.user.role !== 'admin') {
       throw new ForbiddenException('Cannot read another parent alerts');

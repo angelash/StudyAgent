@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { answerDraftFenceSchema } from './answer-draft';
 
-const subject = z.enum(['chinese', 'math', 'english']);
+const subject = z.enum(['chinese', 'math', 'english', 'chemistry']);
 const id = z.string().min(1).max(180);
 export const dimensionSchema = z.enum(['understanding', 'procedure', 'transfer', 'retention']);
 export type MeasurementDimension = z.infer<typeof dimensionSchema>;
@@ -54,7 +54,7 @@ export type AtomTeaching = z.infer<typeof atomTeachingSchema>;
 
 export const knowledgeAtomSchema = z.object({
   id, subject, name: z.string().min(1).max(120), strand: z.string().min(1).max(120),
-  grade: z.number().int().min(1).max(6), term: z.enum(['upper', 'lower', 'both']),
+  grade: z.number().int().min(1).max(9), term: z.enum(['upper', 'lower', 'both']),
   objective: z.string().min(5).max(1000), successCriterion: z.string().min(5).max(1000),
   prerequisiteIds: z.array(id).max(30), curriculumVersion: z.string().min(1).max(120),
   status: z.enum(['draft', 'published', 'retired']), version: z.number().int().positive(),
@@ -64,7 +64,7 @@ export const knowledgeAtomSchema = z.object({
 export type KnowledgeAtom = z.infer<typeof knowledgeAtomSchema>;
 
 export const learningScopeInputSchema = z.object({
-  subject, grade: z.number().int().min(1).max(6), term: z.enum(['upper', 'lower']),
+  subject, grade: z.number().int().min(1).max(9), term: z.enum(['upper', 'lower']),
   textbookVolumeId: id.nullable(), textbookVersion: z.string().min(1).max(150),
   learnedAtomIds: z.array(id).min(1).max(1000), currentAtomId: id.nullable(),
   minutesPerSession: z.number().int().min(5).max(60),

@@ -11,7 +11,7 @@ export class ContentController {
   ) {}
 
   @Get('textbooks')
-  listTextbooks(@Query('subject') subject?: 'math' | 'chinese' | 'english') {
+  listTextbooks(@Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry') {
     return this.contentService.listTextbooks(subject);
   }
 
@@ -21,13 +21,13 @@ export class ContentController {
   }
 
   @Get('knowledge-points')
-  listKnowledgePoints(@Query('subject') subject?: 'math' | 'chinese' | 'english') {
+  listKnowledgePoints(@Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry') {
     return this.contentService.listKnowledgePoints(subject ?? 'math');
   }
 
   @UseGuards(AuthGuard)
   @Get('questions')
-  listQuestions(@Req() req: AuthenticatedRequest, @Query('subject') subject?: 'math' | 'chinese' | 'english') {
+  listQuestions(@Req() req: AuthenticatedRequest, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry') {
     const questions = this.contentService.listQuestions(subject ?? 'math');
     if (req.user.role === 'admin') return questions;
     return questions.filter((item) => item.status === 'published').map(({ answer, analysis, ...question }) => question);
@@ -37,7 +37,7 @@ export class ContentController {
   @Post('admin/textbooks/import')
   importTextbooks(
     @Req() req: AuthenticatedRequest,
-    @Body() body: { subject?: 'math' | 'chinese' | 'english'; publisherVersion?: string },
+    @Body() body: { subject?: 'math' | 'chinese' | 'english' | 'chemistry'; publisherVersion?: string },
   ) {
     return this.contentService.importTextbooks(req.user, body.subject, body.publisherVersion);
   }
@@ -48,7 +48,7 @@ export class ContentController {
     @Req() req: AuthenticatedRequest,
     @Body()
     body: {
-      subject: 'math' | 'chinese' | 'english';
+      subject: 'math' | 'chinese' | 'english' | 'chemistry';
       name: string;
       parentId: string | null;
       gradeBand: string;
@@ -82,7 +82,7 @@ export class ContentController {
     @Req() req: AuthenticatedRequest,
     @Body()
     body: {
-      subject: 'math' | 'chinese' | 'english';
+      subject: 'math' | 'chinese' | 'english' | 'chemistry';
       type: 'objective' | 'subjective' | 'stepwise' | 'oral';
       stem: string;
       answer: unknown;
@@ -125,7 +125,7 @@ export class ContentController {
   @Get('admin/question-coverage/summary')
   getQuestionCoverageSummary(
     @Req() req: AuthenticatedRequest,
-    @Query('subject') subject?: 'math' | 'chinese' | 'english',
+    @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry',
     @Query('minQuestionsPerKnowledgePoint') minQuestionsPerKnowledgePoint?: string,
   ) {
     return this.questionCoverageService.getCoverageSummary(
@@ -141,7 +141,7 @@ export class ContentController {
     @Req() req: AuthenticatedRequest,
     @Body()
     body: {
-      subject?: 'math' | 'chinese' | 'english';
+      subject?: 'math' | 'chinese' | 'english' | 'chemistry';
       minQuestionsPerKnowledgePoint?: number;
       importTextbookCandidates?: boolean;
       candidateVolumeLimit?: number | null;

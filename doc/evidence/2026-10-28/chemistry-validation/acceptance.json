@@ -1,0 +1,485 @@
+{
+  "at": "2026-10-28T05:10:58.979Z",
+  "version": "guangzhou-pep-chemistry-9-upper-v1",
+  "status": "locally_deployed",
+  "entry": "https://study-agent.iepose.cn/chemistry",
+  "webBuildId": "YVswxVnzqUaitxW_FFbpU",
+  "course": {
+    "units": 7,
+    "targets": 28,
+    "uniqueQuestions": 2016,
+    "checkpoints": 19
+  },
+  "validation": {
+    "fullApi": {
+      "passed": 1624,
+      "skipped": 65,
+      "failed": 0,
+      "scope": "Before final context fallback; overlapping final affected regression follows"
+    },
+    "finalChemistry": {
+      "passed": 10,
+      "failed": 0
+    },
+    "browser": {
+      "startTime": "2026-10-28T04:54:16.742Z",
+      "duration": 67309.776,
+      "expected": 13,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "runtime": {
+    "at": "2026-10-28T05:06:20.364Z",
+    "webBuildId": "YVswxVnzqUaitxW_FFbpU",
+    "observations": [
+      {
+        "name": "local-course",
+        "url": "http://127.0.0.1:3217/chemistry",
+        "status": 200,
+        "expected": 200,
+        "ok": true,
+        "courseMarkup": true
+      },
+      {
+        "name": "local-login",
+        "url": "http://127.0.0.1:3217/parent/login",
+        "status": 200,
+        "expected": 200,
+        "ok": true
+      },
+      {
+        "name": "local-ready",
+        "url": "http://127.0.0.1:3217/api/ready",
+        "status": 200,
+        "expected": 200,
+        "ok": true
+      },
+      {
+        "name": "local-private-catalog",
+        "url": "http://127.0.0.1:3217/api/chemistry/catalog",
+        "status": 401,
+        "expected": 401,
+        "ok": true
+      },
+      {
+        "name": "public-course",
+        "url": "https://study-agent.iepose.cn/chemistry",
+        "status": 200,
+        "expected": 200,
+        "ok": true,
+        "courseMarkup": true
+      },
+      {
+        "name": "public-private-catalog",
+        "url": "https://study-agent.iepose.cn/api/chemistry/catalog",
+        "status": 401,
+        "expected": 401,
+        "ok": true
+      }
+    ]
+  },
+  "mainContent": {
+    "at": "2026-10-28T05:06:19.853Z",
+    "storage": "main SQLite",
+    "chemistryAtoms": 28,
+    "chemistryQuestions": 2016,
+    "chemistryMappings": 2016,
+    "integrity": {
+      "quick_check": "ok"
+    }
+  },
+  "sources": [
+    {
+      "file": "apps/api/src/common/auth.guard.ts",
+      "sha256": "bf7553ef709100c3a94f4fc93fcce3aa99748eb831548a939fe90697de451814"
+    },
+    {
+      "file": "apps/api/src/modules/ai/ai.controller.ts",
+      "sha256": "a9da0d2200de21dc4596fa18b9aa1d78fdebc71c0939990d494784b9ff86f581"
+    },
+    {
+      "file": "apps/api/src/modules/ai/ai.service.ts",
+      "sha256": "fa9e35ca42c713c5c926359bf39f08ad2065f1a7a71184cf34d7010bdd512b47"
+    },
+    {
+      "file": "apps/api/src/modules/ai/teaching-tool-compatibility.service.ts",
+      "sha256": "b44afa7925bda99d9119dae2da5449cc87222090cf9fba3bcc72e66ce4b22375"
+    },
+    {
+      "file": "apps/api/src/modules/assessments/assessments.controller.ts",
+      "sha256": "50b9b7d0fb716ab64b059e55d4e194b0b4f1ff193ac18ddb59977e5d9e74fab2"
+    },
+    {
+      "file": "apps/api/src/modules/assessments/assessments.service.ts",
+      "sha256": "1fe97451e0db3d376c16a1c44cb8b6039a5b55ca1e5a8fb8f1b8f88ab84ec9c6"
+    },
+    {
+      "file": "apps/api/src/modules/content/content.controller.ts",
+      "sha256": "52441232caa1e65ae9f64ec51c1c838a8deedba89fb961b94ea3018e47b05c69"
+    },
+    {
+      "file": "apps/api/src/modules/content/content.service.ts",
+      "sha256": "02f682ad8f33faa7f93790007267e867d21006ddd4fbe3b3280e17a59305beb9"
+    },
+    {
+      "file": "apps/api/src/modules/content/curriculum-scaffold.ts",
+      "sha256": "486ccc324e6c7aac6428940d69ba592965bf4db0d94d70543522307160f88208"
+    },
+    {
+      "file": "apps/api/src/modules/content/open-resource-registry.ts",
+      "sha256": "af8c871ef2138f3d02efc0a04d5d1e374e185f173b797156df4a75fd5e587286"
+    },
+    {
+      "file": "apps/api/src/modules/content/question-coverage.service.ts",
+      "sha256": "c812873eb684bafee40a8b6833bc2e92891e61f64ce9252548a1960b9d208d10"
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/assessment-blueprint.ts",
+      "sha256": "c1d2d931830b14024fe0a2abc716fd004511534a14090ba999ee41f6dd313618"
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/curriculum.service.ts",
+      "sha256": "0bdb92fb011ce86ffdbe263e2915601d804b0b8dea47010a5410d8c1c4b020af"
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
+      "sha256": "01b494fdc5f2648c0d13839509bf4b14b6b95c8d9936008fabad0aaa551a447e"
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/foundation-curriculum.ts",
+      "sha256": "4f19849d196851aabe909b8015ca973247b0059543aede1c1a1fe219f65a5e2e"
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/foundation-seed.service.ts",
+      "sha256": "8346b0db77e7fdb226fed8a0e5c8202f48b80343291017c26f527d24e6628e97"
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/textbook-registry.service.ts",
+      "sha256": "f2bc43884e6124e2a08c709cb5704786728254d307baca06d1151efb3c1d6c48"
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/verification-materials.integration.test.ts",
+      "sha256": "7294cc8223d3f3dec4bd253c11d043d9f0992d26413f1b028643274456269565"
+    },
+    {
+      "file": "apps/api/src/modules/learning/learning.module.ts",
+      "sha256": "b56d74a3995c6f7047b7a2c01952cd54639eccdee6754bc284d12755e9ab1da9"
+    },
+    {
+      "file": "apps/api/src/modules/learning/learning.service.ts",
+      "sha256": "7f2b438b2b4af7badd47a287bb0df867ca66fc101d8b3c6d7520955a0d31ebfc"
+    },
+    {
+      "file": "apps/api/src/modules/learning/notebook.service.ts",
+      "sha256": "9a0a777a6b1f0bcdeac606e66f66b601f5671c7a300d9738c229f7c27ada8695"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course-selection.ts",
+      "sha256": "187ad6d481204415d01fbddc1ddd992ef69553f9466014fc7c105b0bb47e44bf"
+    },
+    {
+      "file": "apps/api/src/modules/learning/source-course.service.ts",
+      "sha256": "658bd3850a8336e9661a18d2bb36c0b76d7b6f77a547934f3ca672048cef1289"
+    },
+    {
+      "file": "apps/api/src/modules/learning/studio-course.ts",
+      "sha256": "31fd274f93c2b299d1e6bc5f6995410c4e69ebb18f54589bd0b729a41de3f1a6"
+    },
+    {
+      "file": "apps/api/src/modules/learning/studio-integration.service.ts",
+      "sha256": "a3580b3f5b9771627491cc790cc0d6dd4796b8b2581873ba24b96b9cde934d82"
+    },
+    {
+      "file": "apps/api/src/modules/learning/studio-material-upload.service.ts",
+      "sha256": "f586d28b10f5bcd799e3c4be00dab4e37463649013dfa70a0e4b019632d49de8"
+    },
+    {
+      "file": "apps/api/src/modules/learning/studio-study-plan.ts",
+      "sha256": "6474d87d8dae0d5319e3ee7e7028d414dd494d36f5e0124b6215a6319b2bdef5"
+    },
+    {
+      "file": "apps/api/src/modules/missions/missions.controller.ts",
+      "sha256": "300214d10974849669450a9e81758e977da1f7535baaf1d3daceafbdaae1c838"
+    },
+    {
+      "file": "apps/api/src/modules/missions/missions.service.ts",
+      "sha256": "94d881c983dd2e0f1221472e5a89d3b838b5d546040afc9fdc2f17b19fb0b084"
+    },
+    {
+      "file": "apps/api/src/modules/plans/plans.controller.ts",
+      "sha256": "9a81817813c7f03f811222d5884be15067e644acd9cfbc1666bc90b8d3ed5e91"
+    },
+    {
+      "file": "apps/api/src/modules/progress/progress.controller.ts",
+      "sha256": "8f70ab91fac73cd5c1146eea13cccbb178575bd9c95799f75f065607fdcd5649"
+    },
+    {
+      "file": "apps/api/src/modules/question-workspace/question-import.service.ts",
+      "sha256": "758a86cf1a12821a3941c1ea62e0971757eb5841c0fb4916c32560040abeac1a"
+    },
+    {
+      "file": "apps/api/src/modules/question-workspace/question-import.utils.ts",
+      "sha256": "1bd707179895fbb3f7e457e991830415b6f4519eada03726aea993b8694a2a4c"
+    },
+    {
+      "file": "apps/api/src/modules/reviews/reviews.service.ts",
+      "sha256": "df066b6655f0090d5e8a44b9ea56d57deaee3140e33862014def7d339580c19c"
+    },
+    {
+      "file": "apps/api/src/modules/students/students.service.ts",
+      "sha256": "d763a56f66b24995e9df456fc920bc7fa2e1ebda1f27c4c30cabc2ef23a9b093"
+    },
+    {
+      "file": "apps/web/app/admin/ai-tools/tool-draft.ts",
+      "sha256": "cb7d0ee004ce71e96a84863608d8542ce7a472c72900093be2f67e198ce669ce"
+    },
+    {
+      "file": "apps/web/app/admin/content/page.tsx",
+      "sha256": "e5841238575bb958e4ac1732e4f8a6bbcb638ff86cd5adf033ea0696ca10022d"
+    },
+    {
+      "file": "apps/web/app/admin/curriculum/page.tsx",
+      "sha256": "58fc70dfdcd8961d2840ad920fce921cd4f5ead4d2e04d2c6aae438c7042fc59"
+    },
+    {
+      "file": "apps/web/app/admin/measurement/page.tsx",
+      "sha256": "c4d03d818e4770941a7a31210d7837778569fe70714a8ca4b38edc24bf25628c"
+    },
+    {
+      "file": "apps/web/app/learn/screen.tsx",
+      "sha256": "8ad0a55713012995c9996fdf0bf2b08ee4ed0e23c7ae6e85eb17660c90abedd5"
+    },
+    {
+      "file": "apps/web/app/parent/dashboard/studio.tsx",
+      "sha256": "8fae11f61aa610f518ad4fcd4dbdd893bf88d3842eded260e37303c48d5fe75a"
+    },
+    {
+      "file": "apps/web/app/student/assessment/studio.tsx",
+      "sha256": "7dd9668c0b0a7d940e069b92cc8a1f05c06c90ec8c9fd9792a7b7349d2c70814"
+    },
+    {
+      "file": "apps/web/app/student/knowledge/student-knowledge-client.tsx",
+      "sha256": "8b83c3078087cbb0f3d264767936e15147ccc12c6bdb10070c5592cab70f39ff"
+    },
+    {
+      "file": "apps/web/app/student/mission/student-mission-client.tsx",
+      "sha256": "c30123b427efe5893dfa734880c95770e85074fccf745cddd12e6c6da575d866"
+    },
+    {
+      "file": "apps/web/app/studio/course-builder.tsx",
+      "sha256": "17174d6e061104e8bc42e462ad96ca8e5320f6ca6b0138c003423e36a362fb89"
+    },
+    {
+      "file": "apps/web/app/studio/course-library-state.ts",
+      "sha256": "1b4ef8d93c654c20c1f4205c904045a150a865a1f52af6ce2297e45640bc18e0"
+    },
+    {
+      "file": "apps/web/app/studio/integration-calendar.tsx",
+      "sha256": "c297afce1f4c174bd443b81df3223d4bbcbaa3c18e7b8a166e535e1f3bc6abdb"
+    },
+    {
+      "file": "apps/web/app/studio/my-courses.tsx",
+      "sha256": "43a1573623646847faf43e5281ac6568c323316fcf48b7db76e5059b598fbe28"
+    },
+    {
+      "file": "apps/web/app/studio/source-courses/workbench.tsx",
+      "sha256": "c236328da7c52ba638760a3b2c0537c21b43f9b821dfd2d0841cc889743438d4"
+    },
+    {
+      "file": "apps/web/app/studio/studio.tsx",
+      "sha256": "f02664292622dda2ec26c8c6e55484a6c1e3bbbad3fb7e736baad4cf7e8199f1"
+    },
+    {
+      "file": "apps/web/app/studio/study-planner.tsx",
+      "sha256": "07684af3f38ddba2ec6a1b15a381ec29b2ae585e35dd01fd737044a5de6324da"
+    },
+    {
+      "file": "apps/web/components/assistant-widget.tsx",
+      "sha256": "2d67bd4727f543b9a31428c55f90953b4689176cbfc9ad3f7145b4492b6c04c8"
+    },
+    {
+      "file": "apps/web/components/study-nav.tsx",
+      "sha256": "4379dbac48d9d07f88aeccddcd8dcf892b137509f44cc39c1ab69b642986e213"
+    },
+    {
+      "file": "apps/web/lib/learning-context.ts",
+      "sha256": "dc8d73ab77ed9b1c84c8b77031f5c649740443dcc658fb87f229dd1444c3cd37"
+    },
+    {
+      "file": "apps/web/lib/learning.ts",
+      "sha256": "e43b00281f0b46ed6cf71dbcfc6c3e3856d9c82a69750660cc93bc0dd4ac3299"
+    },
+    {
+      "file": "apps/web/lib/paper-review-navigation.ts",
+      "sha256": "33e89b4743bb72b37aeb60da91a2c428f3a32d2d7cc89c20bb4fe342d7e8746c"
+    },
+    {
+      "file": "packages/contracts/src/curriculum.ts",
+      "sha256": "a3dc46958640ef2c944fac82839feebdbefc937d2875ea67b97549de703bc47d"
+    },
+    {
+      "file": "packages/contracts/src/diagnostics.ts",
+      "sha256": "36121d7c96717ddd0f9e6cb59e19cbd021b4dcfeed26a57695984feb16bb2f33"
+    },
+    {
+      "file": "packages/contracts/src/index.ts",
+      "sha256": "e1324956f6d036b9b2872558da3a33d2f1ae07cad4489dcd466d279a36f50b0d"
+    },
+    {
+      "file": "packages/contracts/src/learning.ts",
+      "sha256": "0cc69b0d680094e7b75e064cbee8270bb6172d9878f906588fedd8fe604bff0e"
+    },
+    {
+      "file": "packages/contracts/src/measurement-content.ts",
+      "sha256": "52e7300b6602af4bd1d62d7f4277a9ef982c2d0625a95dd5c7726469f640e2fa"
+    },
+    {
+      "file": "packages/contracts/src/paper-review.ts",
+      "sha256": "ebf986d42557ba57a1884b625c5dcc0a8d3ef5e6d7228b235b47f19db7f0aa48"
+    },
+    {
+      "file": "packages/contracts/src/reviews.ts",
+      "sha256": "fb29dc81453566d52ea71e2a2616167a41afea011d5ec027a9d77d522164bb63"
+    },
+    {
+      "file": "packages/contracts/src/studio.ts",
+      "sha256": "05ebcede2e6ce89359715f490e709ae5e4e5e224a6b3099b221c1842d38b53a5"
+    },
+    {
+      "file": "packages/contracts/src/topic-whiteboard.ts",
+      "sha256": "c7979c749d71a118c67c492869ad213252261422c39947db599a3891c6484384"
+    },
+    {
+      "file": "scripts/qa/run-source-course-browser.cjs",
+      "sha256": "5f714152d6f505470726e1387a241702c44e2feb81038117689df443423a5eca"
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/chemistry-curriculum.test.ts",
+      "sha256": "c34388a0ba81a14f9ba89b4634eb75c64cb1524e58f6f8e5cca74224add2cadd"
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/chemistry-curriculum.ts",
+      "sha256": "10336870bd2e857a87bdc90e766ead80d92ec8973c6212c7cca4758690d67371"
+    },
+    {
+      "file": "apps/api/src/modules/learning/chemistry.controller.ts",
+      "sha256": "a9281669ec32c2d34bcb8b18d3e365fd905990ca68741e0333c7ef68d4fc4fc7"
+    },
+    {
+      "file": "apps/api/src/modules/learning/chemistry.integration.test.ts",
+      "sha256": "46de6a70a1bf99331445c4046f71ac28e53cade6fe5327275ede5a2a650f5fe5"
+    },
+    {
+      "file": "apps/api/src/modules/learning/chemistry.service.ts",
+      "sha256": "5f3b9bd02d2287cc1e39edf35e4e120584134e045adc890174b83f1b3ed74d3c"
+    },
+    {
+      "file": "apps/web/app/chemistry/chemistry.css",
+      "sha256": "13bcc91acbcdf9a7836dccabf5e8c2e6117171d3a4d3c7c20fba7263de76902d"
+    },
+    {
+      "file": "apps/web/app/chemistry/page.tsx",
+      "sha256": "3fb3139b26b8dbf8b3027f755d71e59970043743811334dec9c13080dcb39bbe"
+    },
+    {
+      "file": "apps/web/app/chemistry/workbench.tsx",
+      "sha256": "ab7fa5cf4438c7d957f7ab7c11bf1766bc287d995f2df23310a2cf317baf33d2"
+    },
+    {
+      "file": "packages/contracts/src/chemistry.ts",
+      "sha256": "3858068d4705bcf9a7ab1dcac0f1f22efa7a27d987ac2aaa6f74e0fd4fd0e068"
+    },
+    {
+      "file": "scripts/qa/audit-chemistry-curriculum.cjs",
+      "sha256": "6723e1036edad527107bcd3aec3bf54bf3284c5b65079ed6b7b95f260b0afb47"
+    },
+    {
+      "file": "tests/e2e/chemistry.spec.ts",
+      "sha256": "7806ec42e705ad1cee7f4e42e3b5db818a5a811e8149de08b5ed38e3d6ea1d57"
+    }
+  ],
+  "artifacts": [
+    {
+      "source": "data/qa/chemistry-browser-final.json",
+      "file": "chemistry-browser-final.json",
+      "bytes": 18961,
+      "sha256": "974cfde129c727eef282e6df075e74b649b435ad4e9b72463d02081d3c7b42e2"
+    },
+    {
+      "source": "data/qa/chemistry-browser-final.log",
+      "file": "chemistry-browser-final.log",
+      "bytes": 5494,
+      "sha256": "aabe17ca59062b06d075f4a823e5d97b157cd35e1dfecf44d9314359af13f181"
+    },
+    {
+      "source": "data/qa/chemistry-browser-acceptance.json",
+      "file": "chemistry-browser-acceptance.json",
+      "bytes": 17537,
+      "sha256": "d60b101415e0fdfcb9f8defa5463e86414a7b6acc5b458451ee8d3bd4f7d6d39"
+    },
+    {
+      "source": "data/qa/chemistry-browser-acceptance.log",
+      "file": "chemistry-browser-acceptance.log",
+      "bytes": 2860,
+      "sha256": "18bf14f3a6ae20436def9dda9ee96c85d568162adbe9400c86be4e29bef65210"
+    },
+    {
+      "source": "data/qa/chemistry-web-acceptance-build.log",
+      "file": "chemistry-web-acceptance-build.log",
+      "bytes": 1558,
+      "sha256": "d1d806943cb50472206d32445665858254e7bcfaf01d38b29efa116a859361b9"
+    },
+    {
+      "source": "data/qa/chemistry-main-web-build.log",
+      "file": "chemistry-main-web-build.log",
+      "bytes": 1728,
+      "sha256": "b7c72b289c406755de5fdb74e7750ca989aaf4416c854981da3f597db7d2c936"
+    },
+    {
+      "source": "data/qa/chemistry-web-final-lint.log",
+      "file": "chemistry-web-final-lint.log",
+      "bytes": 68,
+      "sha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc"
+    },
+    {
+      "source": "data/qa/chemistry-runtime.json",
+      "file": "chemistry-runtime.json",
+      "bytes": 1132,
+      "sha256": "5d2577960eb9d3e912211a333f47e0ad8bdb799291bbca81c77ddfbef2d8b755"
+    },
+    {
+      "source": "data/qa/chemistry-main-content.json",
+      "file": "chemistry-main-content.json",
+      "bytes": 195,
+      "sha256": "626f12d88f6b22d58ff0458ed6fa7506494b205ec2454d415ab0db2cfed8c235"
+    },
+    {
+      "source": "data/qa/chemistry-deploy-backup.json",
+      "file": "chemistry-deploy-backup.json",
+      "bytes": 499,
+      "sha256": "81c57e08749223f5508ec40ac091c71b70d1cdabcbca14464e68ed7a01b3eb4e"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\chemistry-chemistry-browser-acceptance-76e012ad1e\\course-1440.png",
+      "file": "course-1440.png",
+      "sha256": "484732fd66a4fc3bbc11dff99064322ac096c91e87c58add800fcf7869f92cf4"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\chemistry-chemistry-browser-acceptance-76e012ad1e\\course-390.png",
+      "file": "course-390.png",
+      "sha256": "5af64f403f94d90574431215ae21ccaa0ed688609fc0a76385390a642c3404df"
+    },
+    {
+      "source": "data\\qa\\browser-evidence\\chemistry-chemistry-browser-acceptance-76e012ad1e\\course-768.png",
+      "file": "course-768.png",
+      "sha256": "71d799fc162bc73884245daf78d856a13ff6ebb31b0d33afb1c99f3cf87fc429"
+    }
+  ],
+  "boundaries": [
+    "User chooses a ninth-grade profile to instantiate their personal course; no real-child answers were created.",
+    "Teacher/edition mapping, physical experiment skills and real delayed learning outcomes remain unverified.",
+    "Nine original reference papers retain existing publication and grading review gates."
+  ]
+}

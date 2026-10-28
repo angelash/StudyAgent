@@ -8,7 +8,7 @@ export function paperCalendarReturn(value: string | null): string | null {
   const params = new URLSearchParams({ view: 'calendar' });
   for (const key of ['student', 'subject', 'date', 'mode', 'tasks', 'reviewScope']) {
     const input = url.searchParams.get(key); if (!input) continue;
-    if (key === 'student' && input.length <= 180 || key === 'subject' && ['math', 'chinese', 'english'].includes(input) ||
+    if (key === 'student' && input.length <= 180 || key === 'subject' && ['math', 'chinese', 'english', 'chemistry'].includes(input) ||
       key === 'date' && isPaperReviewDate(input) || key === 'mode' && ['week', 'month'].includes(input) ||
       key === 'tasks' && ['confirmed', 'pending'].includes(input) || key === 'reviewScope' && ['mine', 'learner'].includes(input)) params.set(key, input);
   }

@@ -148,6 +148,7 @@ const subjectMeta: Record<
     importCopy: string;
   }
 > = {
+  chemistry: { label: '化学', importPath: '', prepCopy: '广州人教版九上原创课程与考核已独立提供。', importCopy: '补充原卷前需核对来源、正文及答案。' },
   chinese: {
     label: '语文',
     importPath: 'E:\\ChinaTextbook\\小学\\语文\\统编版\\义务教育教科书·语文三年级上册.pdf',
@@ -1162,7 +1163,7 @@ export default function AdminContentPage() {
             <div style={{ color: '#64748b' }}>切换学科后，教材、知识点、题库、导入任务和助教模板都会同步切换。</div>
           </div>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-            {(['chinese', 'math', 'english'] as Subject[]).map((subject) => {
+            {(['chinese', 'math', 'english', 'chemistry'] as Subject[]).map((subject) => {
               const selected = subject === selectedSubject;
               return (
                 <button

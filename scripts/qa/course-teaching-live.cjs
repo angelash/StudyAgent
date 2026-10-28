@@ -5,10 +5,12 @@ const { createHash, randomUUID } = require('node:crypto'), { execFileSync } = re
 const { NestFactory } = require('@nestjs/core'), request = require('supertest');
 const root = path.resolve(__dirname, '../..'), arg = process.argv.indexOf('--output');
 const primarySourceOnly = process.argv.includes('--primary-source-only');
+const chemistrySourceOnly = process.argv.includes('--chemistry-source-only');
+if(primarySourceOnly&&chemistrySourceOnly)throw Error('Choose one explicit source sample');
 if (arg < 0 || !process.argv[arg + 1]) throw Error('Explicit fresh --output required');
 const directory = path.resolve(root, process.argv[arg + 1]);
 if (!directory.startsWith(path.join(root, 'data/qa') + path.sep) || fs.existsSync(directory)) throw Error('Fresh owned QA directory required');
-const relevant = ['apps/api/src/modules/ai', 'packages/contracts/src', 'scripts/qa/course-teaching-live.cjs'];
+const relevant = ['apps/api/src/modules/ai', 'packages/contracts/src', 'scripts/qa/course-teaching-live.cjs', ...(chemistrySourceOnly?['apps/api/src/modules/diagnostics/chemistry-curriculum.ts','apps/api/src/modules/learning/chemistry-course.ts','apps/api/src/modules/learning/studio-course.ts']:[])];
 if (execFileSync('git', ['status', '--porcelain', '--', ...relevant], { cwd: root, encoding: 'utf8', windowsHide: true }).trim()) throw Error('Commit fixed teaching sources and runner before real samples');
 Object.assign(process.env, { NODE_ENV: 'development', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: path.join(directory, 'private-runtime'),
   STUDY_WORKER_ENABLED: 'false', STUDY_SEED_FOUNDATION: 'false', XIAOJIU_CHAT_ENABLED: 'true', XIAOJIU_CHAT_TIMEOUT_MS: '60000', OPENAI_API_KEY: '', MINIMAX_API_KEY: '' });
@@ -20,9 +22,11 @@ function captureTree(dir) { for (const entry of fs.readdirSync(path.join(root, d
 } }
 for (const dir of ['apps/api/src/modules/ai', 'apps/api/dist', 'packages/contracts/src', 'packages/contracts/dist', 'packages/config/src', 'packages/config/dist']) captureTree(dir);
 capture('scripts/qa/course-teaching-live.cjs');
+if(chemistrySourceOnly)for(const file of ['apps/api/src/modules/diagnostics/chemistry-curriculum.ts','apps/api/src/modules/learning/chemistry-course.ts','apps/api/src/modules/learning/studio-course.ts'])capture(file);
 const receipt = { version: 1, revision: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8', windowsHide: true }).trim(),
   startedAt: new Date().toISOString(), passed: false, status: 'running', sourceAndCompiledSha256: inputs, cases: [],
-  scope: 'Three anonymous adult lecture, primary unit and material lesson samples through real HTTP, durable worker and default Xiaojiu CLI. Synthetic course records only. No model-output substitution. Does not establish full-model, teacher, child-outcome, audio or pixel acceptance.' };
+  scope: (chemistrySourceOnly?'One anonymous actual chemistry course sample under a retained younger learner profile. ':primarySourceOnly?'One anonymous explicit primary teaching paragraph sample. ':'Three anonymous adult lecture, primary unit and material lesson samples. ')+
+    'Real HTTP, durable worker and default Xiaojiu CLI; synthetic owned records only, no model-output substitution. Does not establish full-model, teacher, child-outcome, audio or pixel acceptance.' };
 fs.mkdirSync(directory, { recursive: true });
 const save = () => fs.writeFileSync(path.join(directory, 'progress.json'), JSON.stringify(receipt, null, 2) + '\n');
 let app, observed;
@@ -38,6 +42,7 @@ async function main() {
     const context = JSON.parse(input.context), teaching = context.course?.teaching ?? context.lecture?.teaching;
     observed.sent = { system: input.system, message: input.message, context, contextCharacters: input.context.length, courseSources: input.courseSources };
     assert.equal(input.courseSources, true); assert(teaching); assert.deepEqual(teaching, observed.expectedTeaching);
+    if(chemistrySourceOnly){assert.equal(teaching.subject,'chemistry');assert.equal(teaching.grade,9);assert(input.system.includes('学生化学课程学习助教'));assert(!input.system.includes('小学化学'));}
     assert.equal(input.context.length, observed.selectedCharacters);
     assert(context.report === null && context.plan === null && context.scope === null && context.currentQuestion === null);
     assert.deepEqual(context.evidenceIds, []); assert(!/PRIVATE_|studentId|ownerUserId|withheldAnswer|scoring/.test(input.context));
@@ -51,7 +56,7 @@ async function main() {
     const response = await q; assert.equal(response.status, method === 'post' ? 201 : 200, 'Anonymous course HTTP ' + route + ': ' + response.status); return response.body.data;
   }
   actor = await call('post', '/auth/register', { principal: 'course-live-' + randomUUID() + '@local.test', credential: 'Synthetic-Course-' + randomUUID() });
-  const student = (await call('post', '/students', { nickname: '匿名课程学习者', grade: 3, preferredSessionMinutes: 15, defaultVersionMap: { math: '', chinese: '', english: '' } })).profile;
+  const student = (await call('post', '/students', { nickname: '匿名课程学习者', grade: chemistrySourceOnly?4:3, preferredSessionMinutes: 15, defaultVersionMap: { math: '', chinese: '', english: '' } })).profile;
   const now = new Date().toISOString(), primaryId = 'primary-live-' + randomUUID(), materialId = 'material-live-' + randomUUID();
   const teaching = { reviewStatus: 'approved', explanation: primarySourceOnly ? '比较同一条纸带两部分的长度时，可以先把这条纸带分成大小相等的份，再比较各部分占了几份；每份大小相同，份数多的部分就更长。比较不同纸带时，不能只比较所占份数，还应核对每份的实际长度。' : '比较两个量时，先检查它们是否来自同一个整体，再核对单位。',
     example: { prompt: '比较同一条纸带中两部分的长度。', steps: ['确认同一个整体', '将每份的大小统一'], conclusion: '相同单位下才能直接比较数量。' },
@@ -75,10 +80,14 @@ async function main() {
       originalResult: null, edits: [], fingerprint: 'PRIVATE_GENERATION_HASH', modelName: 'Synthetic authored material', confirmedAt: now, createdAt: now, updatedAt: now, requests: [],
       versioning: { familyId: materialId, parentCourseId: null, number: 1, state: 'published', events: [] } });
   });
-  const collections = ['classroomSessions', 'diagnosticResponses', 'practiceAttempts', 'diagnosticPlans', 'diagnosticHypotheses', 'scoringRevisions', 'masteryEstimates', 'studioCourses', 'sourceCourses'];
+  let chemicalCourse;
+  if(chemistrySourceOnly){const atoms=load('modules/diagnostics/chemistry-curriculum').buildChemistryCurriculum().map(d=>d.atom);
+    chemicalCourse=load('modules/learning/chemistry-course').buildChemistryCourse(student.id,atoms);
+    await store.transaction(()=>{for(const atom of atoms)store.append('knowledgeAtoms',atom);store.append('studioCourses',chemicalCourse);});}
+  const collections = ['students','learningScopes','classroomSessions', 'diagnosticResponses', 'practiceAttempts', 'diagnosticPlans', 'diagnosticHypotheses', 'scoringRevisions', 'masteryEstimates', 'studioCourses', 'sourceCourses'];
   const formal = () => store.requestContext(() => sha(Buffer.from(JSON.stringify(collections.map(n => store.select(n, {}))))));
   receipt.formalBeforeSha256 = await formal();
-  for (const mode of primarySourceOnly ? ['primary_unit'] : ['lecture', 'primary_unit', 'material_lesson']) {
+  for (const mode of chemistrySourceOnly ? ['chemistry_unit'] : primarySourceOnly ? ['primary_unit'] : ['lecture', 'primary_unit', 'material_lesson']) {
     const row = { mode, requestedModelId: 'auto', status: 'running', attempts: [], startedAt: new Date().toISOString() }; receipt.cases.push(row); observed = row; save(); const start = Date.now();
     try {
       assert.equal((await call('get', '/ai/models')).defaultModel, 'deepseek-v4-flash');
@@ -88,15 +97,17 @@ async function main() {
         descriptor = await call('get', '/ai/assistant/lecture-context?' + new URLSearchParams({ courseId: course.id, lectureId: course.units[0].lectures[0].id }));
         command = { userRole: 'parent', studentId: null, subject: null, pageContext: 'classroom', contextRefType: 'classroom_lecture', contextRefId: descriptor.referenceId, contextItemId: descriptor.lectureId };
       } else {
-        descriptor = await call('get', '/ai/assistant/course-context?' + new URLSearchParams({ kind: mode, courseId: mode === 'primary_unit' ? primaryId : materialId, itemId: mode === 'primary_unit' ? 'unit-1' : 'source:' + materialId + ':1' }));
-        command = { userRole: 'parent', studentId: descriptor.studentId, subject: descriptor.subject, pageContext: 'course', contextRefType: mode, contextRefId: descriptor.referenceId, contextItemId: descriptor.itemId, contextSelection: descriptor.selection };
+        const kind=mode==='chemistry_unit'?'primary_unit':mode;
+        descriptor = await call('get', '/ai/assistant/course-context?' + new URLSearchParams({ kind, courseId: mode==='chemistry_unit'?chemicalCourse.id:mode === 'primary_unit' ? primaryId : materialId, itemId: mode==='chemistry_unit'?chemicalCourse.units[0].id:mode === 'primary_unit' ? 'unit-1' : 'source:' + materialId + ':1' }));
+        command = { userRole: 'parent', studentId: descriptor.studentId, subject: descriptor.subject, pageContext: 'course', contextRefType: kind, contextRefId: descriptor.referenceId, contextItemId: descriptor.itemId, contextSelection: descriptor.selection };
       }
       const session = await call('post', '/ai/assistant/sessions', command), base = '/ai/assistant/sessions/' + session.id;
       const frozen = await store.requestContext(() => store.find('assistantSessions', { id: session.id }));
       row.expectedTeaching = JSON.parse(JSON.stringify((frozen.lectureSnapshot ?? frozen.courseSnapshot).teaching));
       row.selectedCharacters = mode === 'lecture' ? JSON.stringify({ lecture: frozen.lectureSnapshot, scope: null, report: null, plan: null,
         memory: null, definitionNotice: null, currentQuestion: null, evidenceIds: [] }).length : descriptor.selectedCharacters;
-      const message = primarySourceOnly ? '请逐句解释本课“统一单位”这一段教学：' + teaching.explanation +
+      const message = chemistrySourceOnly?'请依据本课“物理变化与化学变化”的原文逐句解释判断条件：'+row.expectedTeaching.parts[0].blocks[0].text+
+        ' 请给一个匿名对照例子，区分可观察现象与是否生成新物质的证据；在输出JSON的sourceKeys数组引用实际教学来源'+row.expectedTeaching.sources[0].key+'。不要评定学习者能力或把普通现象当成充分证据。':primarySourceOnly ? '请逐句解释本课“统一单位”这一段教学：' + teaching.explanation +
         ' 请说明比较同一条纸带和比较不同纸带时，需要核对什么。解释依据的是本次教学来源' + row.expectedTeaching.sources[0].key +
         '，请在输出JSON的sourceKeys数组中填写这个实际来源key，并给一个符合原文条件的匿名例子。不要给学习者作能力评定。' :
         mode === 'lecture' ? '请依据本讲正文解释个人困扰与公共议题的区别，给一个匿名例子和反例。请通过sourceKeys引用实际支持解释的本讲来源，不评定学习者能力。' :

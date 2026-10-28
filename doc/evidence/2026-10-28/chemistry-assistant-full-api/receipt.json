@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "testsPassed": 1709,
+  "testsFailed": 0,
+  "environmentSkipped": 66,
+  "sourceAndApiControls": {
+    "checked": 2501,
+    "changed": []
+  },
+  "inputCaptureNote": "Controls captured during initial isolated Web build, before this complete API run began; includes source/API/assets but not complete Web runtime or every environment input. Current baseline is d075dfe plus retained chemistry snapshot and course integration corrections; business code not yet committed at execution.",
+  "realModelCalls": 0,
+  "productionChanges": false,
+  "files": {
+    "data/qa/chemistry-assistant-full-api-first.json": {
+      "bytes": 858864,
+      "sha256": "1515b50c43e7a565799c38da5ef90050ff788f36c1cd4b0dd572631c828e3450",
+      "gzipSha256": "806485ed57df354df3289e9f9dc76f24c82a72a879ccfa8b36243342b38d48d3"
+    },
+    "data/qa/chemistry-assistant-full-api-first.log": {
+      "bytes": 71671,
+      "sha256": "93db550afe42c557d39fd69b67c65f641c7eede27ec4e87595e583c485f1db92",
+      "gzipSha256": "0b81eb70f41529517de2d81677dc4940328cdd4140cd7856a45f3f1c3a3a99c9"
+    },
+    "data/qa/chemistry-assistant-browser-source-first.json": {
+      "bytes": 479771,
+      "sha256": "19ab2f41367e65a0556c6724e61e1b59d9b5f7bcea9c521a12642b0660d0f5de",
+      "gzipSha256": "cb1ff2af271dec6a8aa50517d988f269740583b46969a06f4a81f3965b1b26c0"
+    },
+    "apps/api/src/modules/ai/assistant-teaching-content.ts": {
+      "bytes": 19142,
+      "sha256": "1f7f12f7d3b0458f645eea1e6568b33bca0467478b3fa904e8fb5f4355b95112",
+      "gzipSha256": "c5d3a38f393dd6b3bd840fb099312137888f852ed0da5be9abf7a472ce809d2c"
+    },
+    "apps/api/src/modules/ai/assistant-course-context.ts": {
+      "bytes": 10535,
+      "sha256": "fc7ae413431100c6ebb5bdff78e2861cfe22b5a466a9fa79877f8695af6382ef",
+      "gzipSha256": "3fa81647a771c054fcf395822dbc39bad33e6a0682306b1cb22e9fd4d3742874"
+    },
+    "apps/api/src/modules/ai/assistant-teaching-instructions.ts": {
+      "bytes": 3809,
+      "sha256": "1685a7f03d4b39c5e7abd87f033150f6c627baee7bc3ca2d7853c526a50d8802",
+      "gzipSha256": "68f8ab6c5e0715508870586008b9a27c947b68114ba1e1b2b6fea8e674fa6733"
+    },
+    "apps/api/src/modules/ai/assistant-chemistry.integration.test.ts": {
+      "bytes": 10561,
+      "sha256": "f36b5aeac1afa4a84af5012d6b7c627eea7b6c4a8230a20e955820b4c885d53b",
+      "gzipSha256": "63df061d716fb5fd3fd051b6bb273dc451f041edbb83fc7edb8d7c52158465af"
+    }
+  }
+}

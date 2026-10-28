@@ -119,8 +119,8 @@ export class CurriculumService {
     private readonly events: DomainEventBusService, readonly textbooks: TextbookRegistryService) {}
 
   list(subject: Subject, grade?: number, term?: string) {
-    validate(z.enum(['math', 'chinese', 'english']), subject);
-    if (grade !== undefined) validate(z.number().int().min(1).max(6), grade);
+    validate(z.enum(['math', 'chinese', 'english', 'chemistry']), subject);
+    if (grade !== undefined) validate(z.number().int().min(1).max(9), grade);
     if (term !== undefined) validate(z.enum(['upper', 'lower']), term);
     return this.store.inspect('knowledgeAtoms').filter((atom) => atom.subject === subject && atom.status === 'published' &&
       (!grade || atom.grade <= grade) && (!term || !grade || atom.grade < grade || atom.term === 'both' || atom.term === term))
@@ -317,7 +317,7 @@ export class CurriculumService {
 
   textbookMappingWorklist(user: InMemoryUserAccount, input: unknown) {
     this.assertEditor(user);
-    const query = validate(z.object({ subject: z.enum(['math', 'chinese', 'english']).optional(), grade: z.coerce.number().int().min(1).max(6).optional(),
+    const query = validate(z.object({ subject: z.enum(['math', 'chinese', 'english', 'chemistry']).optional(), grade: z.coerce.number().int().min(1).max(9).optional(),
       term: z.enum(['upper', 'lower']).optional(), status: z.enum(['all', 'unmapped', 'candidate', 'approved', 'rejected', 'stale']).default('all'),
       candidate: z.enum(['all', 'with', 'without']).default('all'), source: z.enum(['all', 'matched', 'unavailable']).default('all'),
       page: z.coerce.number().int().min(1).max(10000).default(1), pageSize: z.coerce.number().int().min(1).max(100).default(40) }).strict(), input);
@@ -375,7 +375,7 @@ export class CurriculumService {
 
   overview(user: InMemoryUserAccount, subject?: Subject, grade?: number) {
     this.assertEditor(user);
-    if (grade !== undefined) validate(z.number().int().min(1).max(6), grade);
+    if (grade !== undefined) validate(z.number().int().min(1).max(9), grade);
     const definitions = this.store.inspect('knowledgeAtoms').filter((a) => (!subject || a.subject === subject) && (!grade || a.grade === grade));
     const eligible = eligibleMeasurements(this.store, subject || grade ? definitions.map(atom => atom.id) : undefined), counts = new Map<string, MeasurementItem[]>();
     for (const item of eligible) { const items = counts.get(item.atomId) ?? []; items.push(item); counts.set(item.atomId, items); }
@@ -395,9 +395,9 @@ export class CurriculumService {
         interactionGaps: new Set(mappings.filter(i => i.reviewStatus === 'approved' && !availableInteractions.has(i.questionId)).map(i => i.questionId)).size,
         draftMappings: mappings.filter(i => i.reviewStatus === 'draft').length };
     });
-    const cells = (['math', 'chinese', 'english'] as Subject[]).flatMap((s) => Array.from({ length: 6 }, (_, i) => {
-      const subset = atoms.filter((a) => a.subject === s && a.grade === i + 1 && a.status === 'published');
-      return { subject: s, grade: i + 1, atoms: subset.length, withQuestions: subset.filter((a) => a.approvedQuestions > 0).length,
+    const cells = (['math', 'chinese', 'english', 'chemistry'] as Subject[]).flatMap((s) => (s === 'chemistry' ? [9] : [1, 2, 3, 4, 5, 6]).map((grade) => {
+      const subset = atoms.filter((a) => a.subject === s && a.grade === grade && a.status === 'published');
+      return { subject: s, grade, atoms: subset.length, withQuestions: subset.filter((a) => a.approvedQuestions > 0).length,
         withTransfer: subset.filter((a) => a.dimensions.includes('transfer')).length,
         withMultipleFamilies: subset.filter((a) => a.families >= 2).length,
         withVerificationMaterials: subset.filter(a => a.materialCoverage.ready).length,

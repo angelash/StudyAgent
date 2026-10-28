@@ -1,0 +1,29 @@
+{
+  "passed": false,
+  "testsPassed": 78,
+  "testsFailed": 1,
+  "knownFailure": "All7 real unit projections succeeded, but a new fixture inspected a transaction-scoped store outside requestContext and read undefined at the final grade assertion. Fix only that fixture read; production store isolation remains.",
+  "realProviderCalls": 0,
+  "files": {
+    "data/qa/chemistry-assistant-combined-second.json": {
+      "bytes": 36555,
+      "sha256": "750c61b49ef77c8160d6e996211179d383e67a1ef0f4da08bbd8327cf3c207d5",
+      "gzipSha256": "62c5deca5f13cb984fcd989fe93eaf13bd0ce7262a71c778c55dcd83a0721748"
+    },
+    "data/qa/chemistry-assistant-combined-second.log": {
+      "bytes": 3985,
+      "sha256": "14cf6ad31db43a3a58ab3157f6449c9cefc9ee1a3d7b6e20295278bf0b4918c4",
+      "gzipSha256": "770de43b0927b59721ebca4181bac14e9d1526f525f92dbae699334a00af78d0"
+    },
+    "apps/api/src/modules/ai/assistant-chemistry.integration.test.ts": {
+      "bytes": 10527,
+      "sha256": "f589f4cc6b6cb6a83d0871bb2d0c739434059d249c1f332bfc9bb0a1f27e2836",
+      "gzipSha256": "ea9021da46120d686902b6f483cc12187f80761b206281e63360f8df62fca9dc"
+    },
+    "apps/api/src/modules/ai/assistant-teaching-content.ts": {
+      "bytes": 19142,
+      "sha256": "1f7f12f7d3b0458f645eea1e6568b33bca0467478b3fa904e8fb5f4355b95112",
+      "gzipSha256": "c5d3a38f393dd6b3bd840fb099312137888f852ed0da5be9abf7a472ce809d2c"
+    }
+  }
+}

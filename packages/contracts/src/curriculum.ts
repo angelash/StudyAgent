@@ -15,7 +15,7 @@ export type CurriculumChapter = {
   pageBasis?: 'printed_heading' | 'first_entry'; syntheticHeading?: boolean;
 };
 export type CurriculumBook = {
-  id: string; subject: 'math' | 'chinese' | 'english'; grade: number; term: 'upper' | 'lower';
+  id: string; subject: 'math' | 'chinese' | 'english' | 'chemistry'; grade: number; term: 'upper' | 'lower';
   edition: string; title: string; version: string; source: 'archive' | 'public_catalog' | 'original';
   sourceRef: string; sourceSha256: string; chapterState: 'available' | 'missing';
   chapters: CurriculumChapter[];

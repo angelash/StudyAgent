@@ -30,13 +30,13 @@ export function StudioNavigation({ active, recent, onNavigate, onCreate, context
     update(); query.addEventListener('change', update); return () => query.removeEventListener('change', update);
   }, []);
   React.useEffect(() => {
-    setMobile(false);
     let saved = false; try { saved = localStorage.getItem('studyagent.navigation.compact.' + (user?.id ?? 'guest')) === 'true'; } catch { /* Current controls remain usable. */ }
     setCollapsed(saved);
     if (!user) { setHomeHref('/learn'); return; }
     const selected = context?.studentId ? context : readLearningContext(user.id, window.location.search);
     setHomeHref(learningContextHref('/learn', selected)); saveLearningContext(user.id, selected);
   }, [user?.id, context?.studentId, context?.subject]);
+  React.useEffect(() => { setMobile(false); }, [user?.id]);
   React.useEffect(() => {
     const value = narrow ? 'mobile' : collapsed ? 'compact' : 'expanded'; document.body.dataset.studyNavigation = value;
     return () => { if (document.body.dataset.studyNavigation === value) delete document.body.dataset.studyNavigation; };

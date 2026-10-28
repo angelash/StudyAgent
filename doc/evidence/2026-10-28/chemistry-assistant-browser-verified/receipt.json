@@ -1,0 +1,132 @@
+{
+  "passed": true,
+  "stats": {
+    "startTime": "2026-10-28T09:44:47.222Z",
+    "duration": 338249.306,
+    "expected": 61,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "originalAttempts": 61,
+  "retries": 0,
+  "controls": {
+    "checked": 3011,
+    "changed": []
+  },
+  "webBuildId": "01vY1umSqUEj1i8NWqAlU",
+  "scope": "Actual merged chemistry teaching, assistant sources/drafts, original unit return at390/1440 plus prior course assistant, lecture navigation, library and calendar. Providers mocked. First59/2 fixture failures and initial chemistry-label problem preserved separately. Full merged browser, exact CI, chemistry live CLI and main deployment still required.",
+  "files": {
+    "data/qa/chemistry-assistant-browser-second.json": {
+      "bytes": 70997,
+      "sha256": "d90d264af53b1d3646f9e68ce26987232d6e15d78cdd5820e7307b926b0e8c62",
+      "gzipSha256": "753813a7a3ab7b013d7a9ebe0e4ec7ac29bd01f2aa79c6ff712c6861906e7fc7"
+    },
+    "data/qa/chemistry-assistant-browser-second.log": {
+      "bytes": 10785,
+      "sha256": "8239006ceee4d0a5a0c32bd80807c01d38ec9f470bf2f579876256a036415d6d",
+      "gzipSha256": "e9e69c16aa5a39ff4c79d1264504f3144ad3d1de00620a3b4b05dc3e9b41a065"
+    },
+    "data/qa/chemistry-assistant-browser-second-controls.log": {
+      "bytes": 34,
+      "sha256": "b4bff29765ecfc0345b144b294439c4ea1d66901098877ad22099d281f47f29e",
+      "gzipSha256": "18819075c5f5c371568064d02768b3ef43ac4851d4e48bcb41902f96b730fde9"
+    },
+    "data/qa/chemistry-assistant-fixed-inputs.json": {
+      "bytes": 579326,
+      "sha256": "d478843fef4c26cf08d1ea3cdebc7af503d2c2d0039aa9ebc4c4bd1022d80d84",
+      "gzipSha256": "fd4411eab0fc08ab4040c9a66216c0fae8db0938e7c0786d71c89be283ce9ed6"
+    },
+    "data/qa/chemistry-assistant-web-build-second.log": {
+      "bytes": 1559,
+      "sha256": "3e88658736c9707e23a6801871757211631853d889bbc963e15461e7a2fab61d",
+      "gzipSha256": "24f28d94539679c9b01dbc220bef8be7aaf165dc500aee9194ff3d12cf8155ba"
+    },
+    "data/qa/experience-web/.next/BUILD_ID": {
+      "bytes": 21,
+      "sha256": "8acc401befb77dc513d8d4e8853be60f748fe619b3e4229d8e3058583c5a9e47",
+      "gzipSha256": "19fbb11ce95e3be38da2b81a9d5226e61620472e5c9846ba508c1d80b0bb1ded"
+    },
+    "apps/web/app/studio/studio.tsx": {
+      "bytes": 34980,
+      "sha256": "8a806febff46553e513cba6763d9253f80130867018d17fdacbba722988da6f7",
+      "gzipSha256": "5f944c319501154acb321f81ec9ad0dad87c8eeec2a857bd14828892fadcb4a6"
+    },
+    "apps/web/app/studio/studio-course-assistant.tsx": {
+      "bytes": 20494,
+      "sha256": "10bf8de22c3dc137e4f11e7e7eb41442628b1f7425b635eca85240acdf3d96fc",
+      "gzipSha256": "fb7215caf1fc883b3ed8f70f10b018843ba47bb789c49341f6d63c435d615932"
+    },
+    "tests/e2e/chemistry.spec.ts": {
+      "bytes": 20694,
+      "sha256": "b5abcbd25d5f4a7c72ec1b892fba0235fa1254ef9d2a779e228c0cd0945c97ad",
+      "gzipSha256": "3bd1c51c69eca792215011597e5eecb50160a30168e9faeda5235ca3d27277c7"
+    },
+    "data/qa/browser-evidence/chemistry-chemistry-assistant-browser-second-c32ccea676/actual-chemistry-body-unit-1.png": {
+      "bytes": 106463,
+      "sha256": "ab77ec2923073b2bf93fa0e5f4b15bbc467d0012bdf6db8ae046d206babd6921",
+      "gzipSha256": "57b473bb375407a9869a8949d40535fd160a0e592c81829a2585037d9b70c17a"
+    },
+    "data/qa/browser-evidence/chemistry-chemistry-assistant-browser-second-c32ccea676/actual-chemistry-body-unit-5.png": {
+      "bytes": 109719,
+      "sha256": "fc5abbe7ed52010a3bdb4a6a5bbbcf0b55f1abe8eb4b74d9545583443d52ac0f",
+      "gzipSha256": "d9a3df29667ffd459e83dceac64b575179a363d638d8953a186dbf06121864d7"
+    },
+    "data/qa/browser-evidence/chemistry-chemistry-assistant-browser-second-c32ccea676/actual-chemistry-body-unit-7.png": {
+      "bytes": 113097,
+      "sha256": "9c18972c07c25baa0162a060a970116786cffd3decdad2bd7dbbf98484ab00af",
+      "gzipSha256": "fa67430c8d40eb753674030a3cd49250ca6325e13bf9dd833209cb0713320ca8"
+    },
+    "data/qa/browser-evidence/chemistry-chemistry-assistant-browser-second-c32ccea676/assistant-source-1440.png": {
+      "bytes": 232776,
+      "sha256": "bdd8a17f211c555a98311442c5746ebcd830e805c10b440cc561cb7cba7b1340",
+      "gzipSha256": "46caf77622271e732cab49ac4c0803fd274175c6ed57fbde52b9e55f3aa904e0"
+    },
+    "data/qa/browser-evidence/chemistry-chemistry-assistant-browser-second-c32ccea676/assistant-source-390.png": {
+      "bytes": 182816,
+      "sha256": "9211196879a7e32a737d98a465a03197a21d11f3cc27b96151c7647c2936282c",
+      "gzipSha256": "69037232258fa13b379277fd5f62de8ee040559c6d13bb7ffaa1a714a90f9e7c"
+    },
+    "data/qa/browser-evidence/chemistry-chemistry-assistant-browser-second-c32ccea676/checks-1440.png": {
+      "bytes": 284184,
+      "sha256": "c13452e62ed3fd3cbb135d4dc231b1372ee994deb368849bcb5545ae5ce99314",
+      "gzipSha256": "75851b650274035096cd1dbf5ae869c3830a14a7c342d4b376af03018452c86b"
+    },
+    "data/qa/browser-evidence/chemistry-chemistry-assistant-browser-second-c32ccea676/library-1440.png": {
+      "bytes": 176366,
+      "sha256": "39e291fa29072ffde0cc00b39e98042091ec30859b82d6bc0384b75127e53fe2",
+      "gzipSha256": "5c2749c653cb7eb30109567d77060b564e03573ea08140bb235f538f43716197"
+    },
+    "data/qa/browser-evidence/chemistry-chemistry-assistant-browser-second-c32ccea676/library-390.png": {
+      "bytes": 127212,
+      "sha256": "f887b3f86a6f05ae7d0b986217238b1c0b3e5d3c71d7fecc904c8522c308b0c6",
+      "gzipSha256": "ad6b090a0f97c35deed831169954be4aa66e1c4afb99ba9646689bd6cc0fe396"
+    },
+    "data/qa/browser-evidence/chemistry-chemistry-assistant-browser-second-c32ccea676/library-768.png": {
+      "bytes": 146758,
+      "sha256": "d271ee353c867317284ad9e8bf79c34f74d8da89c11207a2b1948220907e538b",
+      "gzipSha256": "199cdf9fba6889e53ed8301274b986543737a085303d729994c52fd364b649d7"
+    },
+    "data/qa/browser-evidence/chemistry-chemistry-assistant-browser-second-c32ccea676/outline-1440.png": {
+      "bytes": 240112,
+      "sha256": "3eb407aee89d3d6cf1e70f2a9f49bcb8048dc7f9f2cbd3822997441d3dfbcb5c",
+      "gzipSha256": "5b2b46e9ee204ccdaf28d7e19e71781bedaacf8b65231b83f5b2f3f3df2d81b6"
+    },
+    "data/qa/browser-evidence/chemistry-chemistry-assistant-browser-second-c32ccea676/outline-390.png": {
+      "bytes": 157028,
+      "sha256": "4d623d8342e531af336aa161fc75ffd8f264ce5ef41c71382a0f6ffb0c4dba8c",
+      "gzipSha256": "a851292857693e0202f2fc27b2a032f7c44d98d2f1339c0ccb6e2df6c0c8ec16"
+    },
+    "data/qa/browser-evidence/chemistry-chemistry-assistant-browser-second-c32ccea676/outline-768.png": {
+      "bytes": 192579,
+      "sha256": "169cc96105d4cbf92a2640e0383067c6554f5b83d52fe58a939a00931053828b",
+      "gzipSha256": "c74a059852e6b4670c27086a4b3cfa7efbee575dba755b634472e9d2de7fd94f"
+    },
+    "data/qa/browser-evidence/chemistry-chemistry-assistant-browser-second-c32ccea676/reject-math-scope.png": {
+      "bytes": 169486,
+      "sha256": "758caa70db8e8bdaa23daa4e85139fa4272123662884f984408b2e1aec08df0f",
+      "gzipSha256": "3720378ba8950463aa290f04168ec97786d0909bc69f37278789930c411a5569"
+    }
+  },
+  "additionalVisualFinding": "After the61 passing cases, inspecting original390 source screenshot revealed the header subject select still showed math while actual authorized chemistry source text was correct. Those cases did not assert the header subject. Fix authoritative missing scope canonicalization and test it; retain this original screenshot and61 report unchanged."
+}

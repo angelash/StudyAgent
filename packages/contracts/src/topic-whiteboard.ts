@@ -6,7 +6,7 @@ const id = z.string().min(1).max(180), digest = z.string().regex(/^[a-f0-9]{64}$
 const requestKey = z.string().min(8).max(180);
 export const topicWhiteboardAudienceSchema = z.discriminatedUnion('kind', [
   z.object({ kind: z.literal('adult') }).strict(),
-  z.object({ kind: z.literal('student'), studentId: id, subject: z.enum(['math', 'chinese', 'english']),
+  z.object({ kind: z.literal('student'), studentId: id, subject: z.enum(['math', 'chinese', 'english', 'chemistry']),
     atomIds: z.array(id).min(1).max(6).refine(values => new Set(values).size === values.length, '不能重复选择目标') }).strict(),
 ]);
 export const topicWhiteboardInputSchema = z.object({

@@ -1,0 +1,867 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/chemistry.spec.ts",
+      "tests/e2e/workspace.spec.ts",
+      "tests/e2e/reference-navigation.spec.ts",
+      "tests/e2e/course-library.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3117",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/chemistry-content-correction-browser-isolated.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "chemistry.spec.ts",
+      "file": "chemistry.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "chemistry: normal course cards, seven-unit outline and native classroom preserve the library on three viewports",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7757,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:15:28.160Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4acd24e14e7fe1282527-e92f2a2f1d73a5f8ae0c",
+          "file": "chemistry.spec.ts",
+          "line": 38,
+          "column": 5
+        },
+        {
+          "title": "chemistry: course assessments unlock independent checks and preserve first answers after reopening",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7296,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:15:36.504Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4acd24e14e7fe1282527-7a11502557de67c610e2",
+          "file": "chemistry.spec.ts",
+          "line": 93,
+          "column": 5
+        },
+        {
+          "title": "chemistry: family-created ninth-grade profile reaches the standard library and old links keep their unit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4539,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:15:43.808Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4acd24e14e7fe1282527-d718f931a58b49430767",
+          "file": "chemistry.spec.ts",
+          "line": 120,
+          "column": 5
+        },
+        {
+          "title": "chemistry: viewing a course preserves an explicit primary profile until the parent changes it",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3771,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:15:48.355Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4acd24e14e7fe1282527-f25a9ba3b32d1a084737",
+          "file": "chemistry.spec.ts",
+          "line": 137,
+          "column": 5
+        },
+        {
+          "title": "chemistry: a chemical course request cannot reuse mathematics and old subject parameters cannot override course content",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 18192,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: '广州人教版九上化学 · 学习与验证', exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: '广州人教版九上化学 · 学习与验证', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: '广州人教版九上化学 · 学习与验证', exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: '广州人教版九上化学 · 学习与验证', exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: '广州人教版九上化学 · 学习与验证', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: '广州人教版九上化学 · 学习与验证', exact: true })\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts:168:79",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts",
+                      "column": 79,
+                      "line": 168
+                    },
+                    "snippet": "  166 |   expect((await call('/learning/studio/overview?' + new URLSearchParams({ studentId: primaryId, subject: 'math' }))).courses).toHaveLength(0);\n  167 |   await dialog.getByRole('link', { name: '打开九上化学课程与考核 →', exact: true }).click();\n> 168 |   await expect(page.getByRole('heading', { name: courseTitle, exact: true })).toBeVisible();\n      |                                                                               ^\n  169 |   await expect(page.locator('.cl-microlessons')).toContainText('物理变化与化学变化');\n  170 |   await expect(page.locator('.cl-outline')).not.toContainText('两位数乘两位数');\n  171 |   await page.getByLabel('学习档案', { exact: true }).selectOption(studentId); await enroll(page);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts",
+                        "column": 79,
+                        "line": 168
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: '广州人教版九上化学 · 学习与验证', exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: '广州人教版九上化学 · 学习与验证', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: '广州人教版九上化学 · 学习与验证', exact: true })\u001b[22m\n\n\n  166 |   expect((await call('/learning/studio/overview?' + new URLSearchParams({ studentId: primaryId, subject: 'math' }))).courses).toHaveLength(0);\n  167 |   await dialog.getByRole('link', { name: '打开九上化学课程与考核 →', exact: true }).click();\n> 168 |   await expect(page.getByRole('heading', { name: courseTitle, exact: true })).toBeVisible();\n      |                                                                               ^\n  169 |   await expect(page.locator('.cl-microlessons')).toContainText('物理变化与化学变化');\n  170 |   await expect(page.locator('.cl-outline')).not.toContainText('两位数乘两位数');\n  171 |   await page.getByLabel('学习档案', { exact: true }).selectOption(studentId); await enroll(page);\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts:168:79"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:15:52.135Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\chemistry-chemistry-a-chem-4f30e-not-override-course-content\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\chemistry-chemistry-a-chem-4f30e-not-override-course-content\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\chemistry-chemistry-a-chem-4f30e-not-override-course-content\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts",
+                    "column": 79,
+                    "line": 168
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4acd24e14e7fe1282527-e31f39c4bab760de760b",
+          "file": "chemistry.spec.ts",
+          "line": 151,
+          "column": 5
+        },
+        {
+          "title": "chemistry: each unit opens actual chemical concepts and worked examples in the rendered classroom",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 20045,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-board-paper')\nExpected substring: \u001b[32m\"\u001b[7m判断变化先找物质种类有没有改变。形状、大小和状态改变通常不能单独证明发生化学变化；发光、放热、气泡也只是线索，需要核对生成了什么。化学变化中常伴随物理变化\u001b[27m。\"\u001b[39m\nReceived string:    \u001b[31m\"\u001b[7m01 / orient本节课导航概念是什么？怎样解释生活？用什么证据核查？02 / concept物理变化与化学变化物理变化与化学变化注意适用条件与易混概念03 / example比较蜡烛熔化与蜡烛燃烧。熔化后的蜡仍是原来的蜡，变化的是状态。燃烧时蜡与氧气反应，生成二氧化碳和水等物质。把“有没有新物质”作为两种变化共同的判断标准\u001b[27m。\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-board-paper') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-board-paper')\u001b[22m\n\u001b[2m    - locator resolved to <div class=\"cl-board-paper\" data-handwriting=\"true\">…</div>\u001b[22m\n\u001b[2m    - unexpected value \"01 / orient本节课导航概念是什么？怎样解释生活？用什么证据核查？02 / concept物理变化与化学变化物理变化与化学变化注意适用条件与易混概念\"\u001b[22m\n\u001b[2m    32 × locator resolved to <div class=\"cl-board-paper\" data-handwriting=\"true\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"01 / orient本节课导航概念是什么？怎样解释生活？用什么证据核查？02 / concept物理变化与化学变化物理变化与化学变化注意适用条件与易混概念03 / example比较蜡烛熔化与蜡烛燃烧。熔化后的蜡仍是原来的蜡，变化的是状态。燃烧时蜡与氧气反应，生成二氧化碳和水等物质。把“有没有新物质”作为两种变化共同的判断标准。\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-board-paper')\nExpected substring: \u001b[32m\"\u001b[7m判断变化先找物质种类有没有改变。形状、大小和状态改变通常不能单独证明发生化学变化；发光、放热、气泡也只是线索，需要核对生成了什么。化学变化中常伴随物理变化\u001b[27m。\"\u001b[39m\nReceived string:    \u001b[31m\"\u001b[7m01 / orient本节课导航概念是什么？怎样解释生活？用什么证据核查？02 / concept物理变化与化学变化物理变化与化学变化注意适用条件与易混概念03 / example比较蜡烛熔化与蜡烛燃烧。熔化后的蜡仍是原来的蜡，变化的是状态。燃烧时蜡与氧气反应，生成二氧化碳和水等物质。把“有没有新物质”作为两种变化共同的判断标准\u001b[27m。\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-board-paper') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-board-paper')\u001b[22m\n\u001b[2m    - locator resolved to <div class=\"cl-board-paper\" data-handwriting=\"true\">…</div>\u001b[22m\n\u001b[2m    - unexpected value \"01 / orient本节课导航概念是什么？怎样解释生活？用什么证据核查？02 / concept物理变化与化学变化物理变化与化学变化注意适用条件与易混概念\"\u001b[22m\n\u001b[2m    32 × locator resolved to <div class=\"cl-board-paper\" data-handwriting=\"true\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"01 / orient本节课导航概念是什么？怎样解释生活？用什么证据核查？02 / concept物理变化与化学变化物理变化与化学变化注意适用条件与易混概念03 / example比较蜡烛熔化与蜡烛燃烧。熔化后的蜡仍是原来的蜡，变化的是状态。燃烧时蜡与氧气反应，生成二氧化碳和水等物质。把“有没有新物质”作为两种变化共同的判断标准。\"\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts:189:51",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts",
+                      "column": 51,
+                      "line": 189
+                    },
+                    "snippet": "  187 |     await page.getByRole('button', { name: '下一步 ›', exact: true }).click();\n  188 |     await page.getByRole('button', { name: '下一步 ›', exact: true }).click();\n> 189 |     await expect(page.locator('.cl-board-paper')).toContainText(expected.teaching.explanation);\n      |                                                   ^\n  190 |     await expect(page.locator('.cl-board-paper')).toContainText(expected.teaching.example.prompt);\n  191 |     await expect(page.locator('.cl-board-paper')).toContainText(expected.teaching.example.conclusion);\n  192 |     await expect(page.locator('.cl-room')).not.toContainText(/两位数乘两位数|余数与除数|长方形面积|异分母|通分/);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts",
+                        "column": 51,
+                        "line": 189
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cl-board-paper')\nExpected substring: \u001b[32m\"\u001b[7m判断变化先找物质种类有没有改变。形状、大小和状态改变通常不能单独证明发生化学变化；发光、放热、气泡也只是线索，需要核对生成了什么。化学变化中常伴随物理变化\u001b[27m。\"\u001b[39m\nReceived string:    \u001b[31m\"\u001b[7m01 / orient本节课导航概念是什么？怎样解释生活？用什么证据核查？02 / concept物理变化与化学变化物理变化与化学变化注意适用条件与易混概念03 / example比较蜡烛熔化与蜡烛燃烧。熔化后的蜡仍是原来的蜡，变化的是状态。燃烧时蜡与氧气反应，生成二氧化碳和水等物质。把“有没有新物质”作为两种变化共同的判断标准\u001b[27m。\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.cl-board-paper') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-board-paper')\u001b[22m\n\u001b[2m    - locator resolved to <div class=\"cl-board-paper\" data-handwriting=\"true\">…</div>\u001b[22m\n\u001b[2m    - unexpected value \"01 / orient本节课导航概念是什么？怎样解释生活？用什么证据核查？02 / concept物理变化与化学变化物理变化与化学变化注意适用条件与易混概念\"\u001b[22m\n\u001b[2m    32 × locator resolved to <div class=\"cl-board-paper\" data-handwriting=\"true\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"01 / orient本节课导航概念是什么？怎样解释生活？用什么证据核查？02 / concept物理变化与化学变化物理变化与化学变化注意适用条件与易混概念03 / example比较蜡烛熔化与蜡烛燃烧。熔化后的蜡仍是原来的蜡，变化的是状态。燃烧时蜡与氧气反应，生成二氧化碳和水等物质。把“有没有新物质”作为两种变化共同的判断标准。\"\u001b[22m\n\n\n  187 |     await page.getByRole('button', { name: '下一步 ›', exact: true }).click();\n  188 |     await page.getByRole('button', { name: '下一步 ›', exact: true }).click();\n> 189 |     await expect(page.locator('.cl-board-paper')).toContainText(expected.teaching.explanation);\n      |                                                   ^\n  190 |     await expect(page.locator('.cl-board-paper')).toContainText(expected.teaching.example.prompt);\n  191 |     await expect(page.locator('.cl-board-paper')).toContainText(expected.teaching.example.conclusion);\n  192 |     await expect(page.locator('.cl-room')).not.toContainText(/两位数乘两位数|余数与除数|长方形面积|异分母|通分/);\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts:189:51"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:16:12.224Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\chemistry-chemistry-each-u-7de90-s-in-the-rendered-classroom\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\chemistry-chemistry-each-u-7de90-s-in-the-rendered-classroom\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\chemistry-chemistry-each-u-7de90-s-in-the-rendered-classroom\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts",
+                    "column": 51,
+                    "line": 189
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4acd24e14e7fe1282527-848a895fbca6296e3a48",
+          "file": "chemistry.spec.ts",
+          "line": 179,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "course-library.spec.ts",
+      "file": "course-library.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "course filters use actual reading states, combine and restore through reload and browser history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4426,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:16:34.400Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "482cd32fe65bc4a728fe-16f1bb094b5bab554b4f",
+          "file": "course-library.spec.ts",
+          "line": 41,
+          "column": 5
+        },
+        {
+          "title": "adult outline, unit controls and classroom exit retain course-library conditions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3371,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:16:39.295Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "482cd32fe65bc4a728fe-6a72e5b15c5d657af57d",
+          "file": "course-library.spec.ts",
+          "line": 66,
+          "column": 5
+        },
+        {
+          "title": "primary course and approved classroom return to the original filtered course and unit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3803,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:16:42.678Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "482cd32fe65bc4a728fe-cae9e98962708aa548e2",
+          "file": "course-library.spec.ts",
+          "line": 79,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "reference-navigation.spec.ts",
+      "file": "reference-navigation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2767,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:16:46.510Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-05ae90e6c406886adbed",
+          "file": "reference-navigation.spec.ts",
+          "line": 18,
+          "column": 49
+        },
+        {
+          "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2928,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:16:49.290Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-507092b920d9cdc66ee9",
+          "file": "reference-navigation.spec.ts",
+          "line": 18,
+          "column": 49
+        },
+        {
+          "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1280",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3403,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:16:52.228Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-63d8469320787683247e",
+          "file": "reference-navigation.spec.ts",
+          "line": 18,
+          "column": 49
+        },
+        {
+          "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3874,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:16:55.640Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-7260473487ac8a254a1a",
+          "file": "reference-navigation.spec.ts",
+          "line": 18,
+          "column": 49
+        },
+        {
+          "title": "reference navigation: a real saved classroom opens the exact original session and position from the course library",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3264,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:16:59.524Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-b700b5ee2a8414019696",
+          "file": "reference-navigation.spec.ts",
+          "line": 47,
+          "column": 5
+        },
+        {
+          "title": "reference navigation: resizing an open drawer restores usable desktop controls and releases the original background",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2551,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:17:02.798Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-4c12fc588e3014c0250a",
+          "file": "reference-navigation.spec.ts",
+          "line": 56,
+          "column": 5
+        },
+        {
+          "title": "reference navigation: blocked preference storage keeps current controls usable without inventing a saved preference",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3677,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:17:05.359Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-95a9a00c2a2425581f35",
+          "file": "reference-navigation.spec.ts",
+          "line": 65,
+          "column": 5
+        },
+        {
+          "title": "reference navigation: a mobile drawer hands focus to the real course blueprint and returns to its menu trigger after closing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4158,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:17:09.046Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-66be3a745b22484be6c4",
+          "file": "reference-navigation.spec.ts",
+          "line": 77,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "workspace.spec.ts",
+      "file": "workspace.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "course library and outline preserve navigation, panels, help and classroom back/forward",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 100000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6283,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:17:13.225Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-785678de6c7d7376d94f",
+          "file": "workspace.spec.ts",
+          "line": 25,
+          "column": 5
+        },
+        {
+          "title": "calendar supports real date navigation, edit, confirmation, completion, export and batch lifecycle",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7198,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:17:19.518Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b163ed09f68681248ada-0fc832b1b7c65de9271a",
+          "file": "workspace.spec.ts",
+          "line": 55,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T08:15:16.976Z",
+    "duration": 132724.209,
+    "expected": 17,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

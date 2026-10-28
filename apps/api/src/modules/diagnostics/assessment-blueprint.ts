@@ -22,6 +22,12 @@ const policies: Record<DiagnosticStart['intent'], { title: string; focus: string
 };
 export function blueprintPolicy(command: DiagnosticStart, minutes: number, grade: number) {
   const policy = policies[command.intent];
+  // The chemistry path defines an explicit, bounded unit/semester range. Keep
+  // cause probes and scheduled retests on their original smaller budgets.
+  if (command.subject === 'chemistry' && grade === 9 && !command.hypothesisId && !command.planId && !command.reviewTaskId &&
+      ['baseline', 'unit', 'phase', 'verification'].includes(command.intent)) {
+    return { ...policy, itemLimit: Math.min(command.maxItems ?? policy.items, 30), minutesLimit: Math.min(minutes, 60), groupSize: 3 };
+  }
   return { ...policy, itemLimit: Math.min(command.maxItems ?? policy.items, policy.cap), minutesLimit: Math.min(minutes, policy.minutes), groupSize: grade <= 2 ? 2 : 3 };
 }
 

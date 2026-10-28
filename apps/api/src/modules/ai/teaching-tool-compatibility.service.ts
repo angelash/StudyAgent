@@ -8,7 +8,7 @@ import { TeachingToolService } from './teaching-tool.service';
 import { prepareTeachingSnapshot } from './teaching-tool-protocol';
 import { teachingToolDigest } from './teaching-tool-record';
 
-const question = z.object({ id: z.string().trim().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+const question = z.object({ id: z.string().trim().min(1).max(180), subject: z.enum(['math', 'chinese', 'english', 'chemistry']),
   stem: z.string().min(1).max(6000), answer: z.unknown(), analysis: z.string().max(6000).default(''), type: z.string().max(100).optional() });
 const common = { question, modelId: z.string().trim().min(1).max(180).default('auto'), requestKey: z.string().trim().min(8).max(180).optional() };
 const analysis = z.object({ ...common, answer: z.unknown() }).strict();

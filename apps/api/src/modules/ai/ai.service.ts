@@ -204,7 +204,7 @@ export class AiService {
     contextSelection?: AssistantTeachingSelection;
   }, user: InMemoryUserAccount): AssistantSession {
     command = validate(z.object({ userRole: z.enum(['student', 'parent']), studentId: z.string().min(1).max(180).nullable(),
-      subject: z.enum(['math', 'chinese', 'english']).nullable().optional(),
+      subject: z.enum(['math', 'chinese', 'english', 'chemistry']).nullable().optional(),
       pageContext: z.enum(['student_home', 'assessment', 'mission', 'review', 'weekly_report', 'classroom', 'studio', 'course']),
       contextRefType: z.enum(['diagnostic', 'practice', 'plan', 'classroom_lecture', 'primary_unit', 'material_lesson']).nullable().optional(), contextRefId: z.string().min(1).max(400).nullable().optional(),
       contextItemId: z.string().min(1).max(180).nullable().optional(),
@@ -808,6 +808,8 @@ export class AiService {
 
   private getSubjectLabel(subject: Subject | null | undefined) {
     switch (subject) {
+      case 'chemistry':
+        return '化学';
       case 'chinese':
         return '语文';
       case 'english':

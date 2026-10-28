@@ -20,7 +20,7 @@ export class MissionsService {
     private readonly eventBus: DomainEventBusService,
   ) {}
 
-  getTodayMission(requestUser: InMemoryUserAccount, studentId: string, subject: 'math' | 'chinese' | 'english') {
+  getTodayMission(requestUser: InMemoryUserAccount, studentId: string, subject: 'math' | 'chinese' | 'english' | 'chemistry') {
     this.studentsService.assertCanAccessStudent(requestUser, studentId);
     const today = this.formatDateKey(new Date());
     const existing = this.store.missions.find(
@@ -278,8 +278,8 @@ export class MissionsService {
     return question;
   }
 
-  private resolveMissionTitle(type: MissionType, subject: 'math' | 'chinese' | 'english') {
-    const subjectName = subject === 'math' ? '数学' : subject === 'chinese' ? '语文' : '英语';
+  private resolveMissionTitle(type: MissionType, subject: 'math' | 'chinese' | 'english' | 'chemistry') {
+    const subjectName = subject === 'math' ? '数学' : subject === 'chinese' ? '语文' : subject === 'chemistry' ? '化学' : '英语';
     switch (type) {
       case 'retry':
         return `${subjectName}薄弱点巩固任务`;

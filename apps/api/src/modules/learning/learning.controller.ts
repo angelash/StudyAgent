@@ -17,8 +17,8 @@ export class LearningController {
   }
   @Get('overview') overview(@Req() req: AuthenticatedRequest) { return this.learning.overview(req.user); }
   @Get('studio/overview') studioOverview(@Req() req: AuthenticatedRequest, @Query('studentId') studentId?: string,
-    @Query('subject') subject?: string,@Query('materialView') materialView?:string) {
-    return this.learning.studioOverview(req.user, studentId, validate(subjectSchema, subject ?? 'math'),materialView==='catalog');
+    @Query('subject') subject?: string,@Query('materialView') materialView?:string,@Query('courseId') courseId?:string) {
+    return this.learning.studioOverview(req.user, studentId, validate(subjectSchema, subject ?? 'math'),materialView==='catalog',courseId);
   }
   @Post('studio/courses/preview') studioCoursePreview(@Req() req: AuthenticatedRequest, @Body() input: unknown) {
     return this.learning.previewStudioCourse(req.user, input);

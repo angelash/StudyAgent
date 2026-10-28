@@ -69,7 +69,7 @@ type CoverageSubjectSummary = {
   belowTargetKnowledgePointCount: number;
 };
 
-const supportedSubjects: Subject[] = ['chinese', 'math', 'english'];
+const supportedSubjects: Subject[] = ['chinese', 'math', 'english', 'chemistry'];
 
 @Injectable()
 export class QuestionCoverageService {
