@@ -1,0 +1,86 @@
+{
+  "at": "2026-10-28T20:30:29.300094+00:00",
+  "passed": true,
+  "sourceImplementation": "c9cf9282",
+  "sourceCandidateDocsHead": "dfd796ff1c1a75ffa92227ad083e43835b55d288",
+  "scope": "Current integrated source-whiteboard C2/C3 plus released notes and independent local-draft recovery; excludes isolated D1 practice implementation.",
+  "api": {
+    "numTotalTests": 1864,
+    "numPassedTests": 1790,
+    "numFailedTests": 0,
+    "numPendingTests": 74,
+    "success": true
+  },
+  "process": {
+    "at": "2026-10-28T20:28:24.769Z",
+    "testExit": 0,
+    "verificationExit": 0,
+    "reportPresent": true
+  },
+  "inputCheck": {
+    "checked": 2627,
+    "changed": []
+  },
+  "retries": 0,
+  "limitations": [
+    "74environment pending cases are not passes; actual PG114/2 and SQLite23/23 earlier specialist evidence remain separate.",
+    "501 browser gate still running; source exact CI and schema23 production delivery pending.",
+    "No new real model/image/TTS calls or real student learning evidence; whole105/M1-M7/original72 active."
+  ],
+  "files": [
+    {
+      "source": "data/qa/source-ui-complete-api-first.json",
+      "archive": "data/qa/source-ui-complete-api-first.json.gz",
+      "sha256": "074a12f1b96a5056f588a0db00b6b1b611479838d12c9f884d552a0cac6aae5e",
+      "bytes": 900201
+    },
+    {
+      "source": "data/qa/source-ui-complete-api-first.log",
+      "archive": "data/qa/source-ui-complete-api-first.log.gz",
+      "sha256": "375084e62052c6b66bb5c7c19acc12e10ef0abb1b83f3a1af35061b1923666c0",
+      "bytes": 79952
+    },
+    {
+      "source": "data/qa/source-ui-complete-api-first-inputs.json",
+      "archive": "data/qa/source-ui-complete-api-first-inputs.json.gz",
+      "sha256": "93d8f7a3edd38e49e3cc5524f84b989461dbec4403955814e18c1746f5aef41d",
+      "bytes": 501973
+    },
+    {
+      "source": "data/qa/source-ui-complete-api-first-inputs-verification.log",
+      "archive": "data/qa/source-ui-complete-api-first-inputs-verification.log.gz",
+      "sha256": "5fe880fb1b17ac6703f9717a8901604f253b1199122d16ef006de6736d2750fa",
+      "bytes": 34
+    },
+    {
+      "source": "data/qa/source-ui-complete-api-first-process-result.json",
+      "archive": "data/qa/source-ui-complete-api-first-process-result.json.gz",
+      "sha256": "341c9eb052fc0d13dee6545fc36f826550e798d58189a452cb8f7ffa861d4edd",
+      "bytes": 106
+    },
+    {
+      "source": "data/qa/source-ui-complete-api-first-managed-out.log",
+      "archive": "data/qa/source-ui-complete-api-first-managed-out.log.gz",
+      "sha256": "a13116d63a0b4e65495556a29080fda6882f56380f6f86856f16927da11acaa7",
+      "bytes": 155
+    },
+    {
+      "source": "data/qa/source-ui-complete-api-first-managed-error.log",
+      "archive": "data/qa/source-ui-complete-api-first-managed-error.log.gz",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "data/qa/run-managed-source-ui-complete-api-first.cjs",
+      "archive": "data/qa/run-managed-source-ui-complete-api-first.cjs.gz",
+      "sha256": "4f631cd7ed8c365ad1a7e7120a21c0c5b6f57aed6915e97863f9bbf5528d5ddd",
+      "bytes": 1640
+    },
+    {
+      "source": "data/qa/freeze-source-ui-complete-api-first.py",
+      "archive": "data/qa/freeze-source-ui-complete-api-first.py.gz",
+      "sha256": "43ff1a0e0cd59dc3d28d7d62d5a66838cb76061be268431835e70ffbd7a08b14",
+      "bytes": 1244
+    }
+  ]
+}

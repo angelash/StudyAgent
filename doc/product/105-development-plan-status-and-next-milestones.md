@@ -483,3 +483,8 @@ M1后即开始可用课程的设备与真人试用；真实1/3/7/14日复测与�
 
 
 2026-10-29 147 D1完整API终态：1802通过/0失败/74环境跳过，2613输入SHA保持，测试/校验退出0；[原件](../evidence/2026-10-29/assistant-practice-preflight-full-api-first/receipt.json)。CUI501来自较旧API的独立候选，完整整合后的精确CI及schema23交付仍待，不混用门禁。D2～D4及整体active。
+
+2026-10-29 146当前集成完整API终态：重新实际执行1790通过/0失败/74环境跳过、2627冻结输入SHA保持，进程/验证退出0，见[本次完整原件](../evidence/2026-10-29/assistant-whiteboard-ui-complete-api-first/receipt.json)。501整站浏览器仍运行，147 D1仅在新独立工作区开发，不混入本轮门禁。精确来源CI/schema23发布与D后续继续，正式schema22及原72/M1～M7整体active。
+
+
+2026-10-29 146 CUI完整浏览器终态：45文件501旅程/501原始尝试全过，零失败/跳过/flaky/重试，3183输入SHA保持，测试/校验退出0，[原件](../evidence/2026-10-29/assistant-whiteboard-ui-complete-browser-first/receipt.json)。本轮API不包含新D1，不直接复用为D1浏览器结论；D1独立完整1802/74及双库20已经留证。下一步整合/核对代码并重新运行精确远端全站/PG，schema23正式交付仍待，原72/M1～M7及D2～D4整体active。

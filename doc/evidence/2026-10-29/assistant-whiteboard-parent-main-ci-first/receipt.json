@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-28T20:46:14.033413+00:00",
+  "passed": true,
+  "run": 40758625872,
+  "headSha": "d456a546b07110a9a873a508e32dd149beec44f5",
+  "jobs": [
+    {
+      "name": "postgres",
+      "conclusion": "success"
+    },
+    {
+      "name": "browser",
+      "conclusion": "success"
+    },
+    {
+      "name": "application",
+      "conclusion": "success"
+    }
+  ],
+  "metadataSha256": "d1dc90236cb2a131cbde0d8eb71a655a8adca31b54ab798de646c9302dfe357e",
+  "scope": "Released schema22 parent main branch exact CI only. This is not source CUI/schema23 or isolated D1 CI; detailed test counts/logs not inferred from job status."
+}
