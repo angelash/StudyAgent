@@ -471,3 +471,6 @@ M1后即开始可用课程的设备与真人试用；真实1/3/7/14日复测与�
 
 
 2026-10-29 146 C3本机多稿补齐：先提交3e2b336d，后实现每document独立键、复制标签页/刷新、旧v1字节保持、完整多稿及pending明确切换/原键核对；配额失败先下载完整命令再明确重试。第二轮18/18浏览器全过/零重试，两轮各10输入SHA保持，原17/1回执读取测试错误独立保留。桌面及390px截图已查看，本人Web类型/新构建通过。当前已冻结完整API2627输入及501浏览器3183输入并受管运行，精确来源CI/schema23正式交付继续；正式笔记仍schema22，不把局部通过提升为整体完成。见[146本层](146-conversation-sourced-whiteboard-teaching.md#27-c3多份本机来源稿的本地结果)及[原件](../evidence/2026-10-29/assistant-whiteboard-local-copies-first/receipt.json)。D练习/深原因探针/指导/日历、105/M1～M7及原72仍active。
+
+
+2026-10-29 143 D实施前接续：已基于实际来源、eligibleMeasurements、诊断蓝图、PracticeSession、GuidanceService及内部日历代码归档[147具体方案](147-conversation-practice-guidance-and-review.md)，分D1只读预检、D2教学候选/首答曝光、D3真实报告指导和D4冲突排期/到期复测。当前尚未实现新端点/schema24，不增加443接口或原72完成数；正在运行的来源候选源码/编译继续冻结。
