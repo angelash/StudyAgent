@@ -23,8 +23,9 @@ const boardFile = 'apps/api/src/modules/learning/classroom-board-notes.ts';
 const checksFile = 'apps/api/src/modules/learning/classroom-unit-checks.ts';
 const choiceFile = 'apps/api/src/modules/learning/classroom-choice-content.ts', choiceHelper = 'packages/contracts/src/classroom-choice.ts';
 const projectsFile = 'apps/api/src/modules/learning/course-project-content.ts';
+const chemistryFile = 'apps/api/src/modules/diagnostics/chemistry-curriculum.ts';
 const practiceFiles = ['content', 'model', 'u1', 'u2', 'u3', 'u4', 'u5'].map(name => 'apps/api/src/modules/learning/classroom-practice-' + name + '.ts');
-const allowed = new Set([classroomFile, boardFile, checksFile, projectsFile, choiceFile, choiceHelper, ...practiceFiles]), cache = new Map();
+const allowed = new Set([classroomFile, boardFile, checksFile, projectsFile, chemistryFile, choiceFile, choiceHelper, ...practiceFiles]), cache = new Map();
 function loadContent(file) {
   assert(allowed.has(file), 'Unexpected classroom module: ' + file);
   if (cache.has(file)) return cache.get(file).exports;
@@ -41,6 +42,7 @@ function loadContent(file) {
 }
 const classroom = loadContent(classroomFile), course = classroom.classroomCourse();
 const projects = loadContent(projectsFile).adultProjectDefinitions();
+const chemistry = loadContent(chemistryFile), chemicalDefinitions = chemistry.buildChemistryCurriculum();
 const lectures = course.units.flatMap(unit => unit.lectures), lessons = lectures.flatMap(lecture => lecture.lessons);
 const practiceQuestions = lessons.flatMap(lesson => classroom.classroomLesson(lesson.id).questions);
 const questionIds = practiceQuestions.map(question => question.id);
@@ -61,8 +63,13 @@ const snapshot = {
     localAuditArtifact: auditPath, localAuditSha256: hash(auditPath), passed: audit.passed,
     familyIdentityVersion: audit.familyIdentityVersion, materialCoverageVersion: audit.materialCoverageVersion,
     totals: audit.totals, cells: audit.cells, sourceSha256: audit.sourceSha256,
-    interpretation: 'Structural completeness of currently authored points and material budgets only. Not full textbook coverage or standardized measurement validity.'
+    interpretation: 'Primary-school foundation math, Chinese and English structural audit only. Chemistry is inventoried separately. Not full textbook coverage or standardized measurement validity.'
   },
+  chemistry: { version: chemistry.CHEMISTRY_VERSION, grade: 9, term: 'upper', units: chemistry.chemistryUnits.length,
+    authoredPoints: chemicalDefinitions.length, teachingCards: chemicalDefinitions.filter(d => d.atom.teaching).length,
+    originalRuleExercises: chemicalDefinitions.reduce((sum, d) => sum + d.exercises.length, 0),
+    sourceSha256: { [chemistryFile]: hash(chemistryFile) },
+    interpretation: 'Separate original chemistry course counts. Exercise count is not independent family count, a standardized norm, teacher approval, publisher textbook coverage or real learner retention evidence.' },
   registry: { textbooks: { records: json(textbooksPath).books.length, source: textbooksPath, sha256: hash(textbooksPath), interpretation: 'Registration records are not approved full-content teaching coverage.' } },
   gesp: {
     candidateKnowledgePoints: json(gespKnowledgePath).atoms.length,
