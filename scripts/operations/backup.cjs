@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { createHash, randomUUID } = require('node:crypto');
 const { DatabaseSync, backup } = require('node:sqlite');
+const readerGuard = require('./database-reader-guard.cjs');
 const FORMAT = 'study-agent-backup-v1';
 const fail = code => { throw new Error(code); };
 function noLinks(input) {
@@ -45,11 +46,11 @@ function copyVerified(source, target, expected) {
 }
 function openRead(file) { return new DatabaseSync(file, { readOnly: true }); }
 function summary(db) {
-  if (db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='study_restore_guard'").get() &&
-    db.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state !== 'ready') fail('source_database_restore_incomplete');
+  const guard = db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='study_restore_guard'").get()
+    ? db.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state ?? 'missing' : undefined;
   if (db.prepare('PRAGMA integrity_check').get().integrity_check !== 'ok') fail('database_integrity_failed');
   const versions = db.prepare('SELECT version FROM schema_migrations ORDER BY version').all().map(r => r.version);
-  if (!versions.length || versions.at(-1) > 22) fail('unsupported_database_schema');
+  readerGuard.assertReady(guard, versions);
   return { schemaVersions: versions, revision: db.prepare('SELECT revision FROM store_meta WHERE id=1').get().revision,
     collections: db.prepare('SELECT collection,COUNT(*) AS count FROM domain_records GROUP BY collection ORDER BY collection').all().map(r => ({ ...r })),
     tasks: db.prepare('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state').all().map(r => ({ ...r })) };

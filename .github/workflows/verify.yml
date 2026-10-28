@@ -441,6 +441,12 @@ jobs:
           STUDY_TEST_ASSISTANT_WHITEBOARD_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
         run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/modules/learning/assistant-whiteboard.integration.test.ts --maxWorkers=1
 
+      - name: Actual legacy reader refusal and schema23 migration on PostgreSQL
+        working-directory: apps/api
+        env:
+          STUDY_TEST_ASSISTANT_WHITEBOARD_STORAGE_POSTGRES_URL: postgresql://study_agent_app:local_ci_app_only@127.0.0.1:5432/study_agent_qa
+        run: node --env-file=../../.env ../../node_modules/vitest/vitest.mjs run src/infrastructure/assistant-whiteboard-reader.integration.test.ts --maxWorkers=1
+
       - name: Measurement v3, immutable reports, concurrent reanalysis and native privacy recovery on PostgreSQL
         working-directory: apps/api
         env:

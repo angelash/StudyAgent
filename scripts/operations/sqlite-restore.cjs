@@ -1,6 +1,7 @@
 const fs=require('node:fs');
 const {DatabaseSync}=require('node:sqlite');
 const {createHash}=require('node:crypto');
+const {readyState}=require('./database-reader-guard.cjs');
 const {createRestoreContext,readRestoreContext,assertRestoreContextMatches}=require('./restore-context.cjs');
 const {acquireRestoreOperation,copyRestoreFile,publishRestoreReceipt,verifyFile,exists}=require('./restore-files.cjs');
 const {readLedger,applyDeletionLedger,purgeRestoredMedia}=require('./privacy-ledger.cjs');
@@ -19,7 +20,7 @@ function dataDigest(db){
 function state(db,context){
   const row=db.prepare('SELECT * FROM study_restore_runtime WHERE id=1').get(),guard=db.prepare('SELECT * FROM study_restore_guard WHERE id=1').get();
   if(row?.context_id!==context.restoreId||row.context_hash!==context.bindingHash||guard?.backup_id!==context.backupId)fail('restore_database_identity_mismatch');
-  if(row.receipt){if(guard.state!=='ready')fail('restore_completion_guard_mismatch');return{receipt:JSON.parse(row.receipt),files:JSON.parse(row.final_files)};}
+  if(row.receipt){if(guard.state!==readyState(db.prepare('SELECT version FROM schema_migrations ORDER BY version').all().map(row=>row.version)))fail('restore_completion_guard_mismatch');return{receipt:JSON.parse(row.receipt),files:JSON.parse(row.final_files)};}
   if(guard.state!=='restoring'||row.data_digest!==dataDigest(db))fail('restore_imported_database_changed');
   return null;
 }
@@ -101,7 +102,8 @@ async function restoreSqlite({bundle,destination,deletionLedger,resume=false,aft
         finalFiles.push({path:relative,sha256:file.sha256,size:file.size,present});
       }
       db.prepare('UPDATE study_restore_runtime SET receipt=?,final_files=? WHERE id=1 AND context_id=? AND context_hash=?').run(JSON.stringify(receipt),JSON.stringify(finalFiles),context.restoreId,context.bindingHash);
-      if(Number(db.prepare("UPDATE study_restore_guard SET state='ready',updated_at=? WHERE id=1 AND backup_id=? AND state='restoring'").run(access.restoredAt,context.backupId).changes)!==1)fail('restore_guard_changed');
+      const stateReady=readyState(db.prepare('SELECT version FROM schema_migrations ORDER BY version').all().map(row=>row.version));
+      if(Number(db.prepare("UPDATE study_restore_guard SET state=?,updated_at=? WHERE id=1 AND backup_id=? AND state='restoring'").run(stateReady,access.restoredAt,context.backupId).changes)!==1)fail('restore_guard_changed');
       await afterPhase?.('before_commit');db.exec('COMMIT');
     }catch(error){try{db.exec('ROLLBACK');}catch{}throw error;}
     db.close();db=undefined;await afterPhase?.('sql_committed');

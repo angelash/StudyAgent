@@ -205,19 +205,31 @@ export class DomainDatabase {
     await this.migrateConstraints(22, [
       { name: 'assistant_note_creation_request', collection: 'assistantArtifactDrafts', fields: ['ownerUserId', 'requestKey'] },
     ]);
+    // Existing v22 readers only accept `ready`, so the marker also fences an
+    // accidental downgrade before any private conversation whiteboard is read.
+    await this.migrateConstraints(23, [], `UPDATE study_restore_guard SET state='ready-schema23',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready';`);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now, this.sqlite && sqliteQueueKey(this.location));
     await this.tasks.open();
     this.limits = new RateLimitRepository(this.tasks, this.sqlite, this.postgres, this.now);
   }
 
   private async assertRestoreReady() {
+    let state: string | undefined, version = 0;
     if (this.sqlite) {
       const table = this.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='study_restore_guard'").get();
-      if (table && (this.sqlite.prepare('SELECT state FROM study_restore_guard WHERE id=1').get() as { state?: string } | undefined)?.state !== 'ready') throw new Error('Database restoration is incomplete');
+      if (table) state = (this.sqlite.prepare('SELECT state FROM study_restore_guard WHERE id=1').get() as { state?: string } | undefined)?.state ?? 'missing';
+      if (state !== undefined && !['ready', 'ready-schema23'].includes(state)) throw new Error('Database restoration is incomplete');
+      if (this.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='schema_migrations'").get())
+        version = Number((this.sqlite.prepare('SELECT MAX(version) version FROM schema_migrations').get() as { version?: number }).version ?? 0);
     } else {
-      if ((await this.postgres!.query("SELECT to_regclass('study_restore_guard') AS name")).rows[0].name &&
-        (await this.postgres!.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state !== 'ready') throw new Error('Database restoration is incomplete');
+      if ((await this.postgres!.query("SELECT to_regclass('study_restore_guard') AS name")).rows[0].name)
+        state = (await this.postgres!.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state ?? 'missing';
+      if (state !== undefined && !['ready', 'ready-schema23'].includes(state)) throw new Error('Database restoration is incomplete');
+      if ((await this.postgres!.query("SELECT to_regclass('schema_migrations') AS name")).rows[0].name)
+        version = Number((await this.postgres!.query('SELECT MAX(version) version FROM schema_migrations')).rows[0]?.version ?? 0);
     }
+    if (version > 23) throw new Error('unsupported_database_schema');
+    if (version === 23 && state !== 'ready-schema23' || version < 23 && state === 'ready-schema23') throw new Error('minimum_reader_guard_mismatch');
   }
 
   private async migrateConstraints(version: number, constraints: Array<{ name: string; collection: string; fields: string[]; pending?: boolean }>, extraSql = '') {

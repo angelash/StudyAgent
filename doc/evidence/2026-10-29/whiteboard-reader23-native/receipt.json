@@ -1,0 +1,145 @@
+{
+  "passed": true,
+  "designBeforeImplementation": "78aa1bf550ac1a5a6816efe3470a04c4a1f0902d",
+  "scope": "C2 minimum reader compatibility foundation only. Owned actual schema22 compiled reader and backup originals retained by416-file hashes, actual22-to23 SQL migration and transaction rollback, future24/mismatched marker refusal; new-schema operations and native note recovery verified in SQLite and actual PostgreSQL. No source-whiteboard generation/adoption implementation claim.",
+  "reports": {
+    "source-whiteboard-reader23-sqlite-first": {
+      "success": true,
+      "numPassedTests": 4,
+      "numFailedTests": 0,
+      "numPendingTests": 3
+    },
+    "source-whiteboard-reader23-postgres-first": {
+      "success": true,
+      "numPassedTests": 15,
+      "numFailedTests": 0,
+      "numPendingTests": 0
+    },
+    "source-whiteboard-reader23-native-second": {
+      "success": true,
+      "numPassedTests": 17,
+      "numFailedTests": 0,
+      "numPendingTests": 0
+    }
+  },
+  "overlappingScopesNotSummed": true,
+  "currentSchemaVersion": 23,
+  "legacyArtifact": {
+    "path": "resources/compatibility/domain-reader-schema22-v1.json.gz",
+    "sha256": "2019f46dd2bd506429c84d6f75d71009878c06c7e93144c7e0f1cb7687328464"
+  },
+  "proved": [
+    "The saved old22 reader actually refuses23 databases without rewriting original rows or schema.",
+    "Injected actual guard-write failure leaves22/ready and original records unchanged, and old22 remains usable; retry advances23 atomically.",
+    "Old22 backup restores to old-ready, current startup upgrades it, and legal later work survives restoration resume. New23 backup/restore retains the23 marker; old22 cannot open the restored copy.",
+    "Original confirmed private notes/receipts survive both SQLite and PG native restores; the latest parent/child deletion ledger removes private notes without resurrecting them or erasing another owner.",
+    "Current C1 source/grade9-profile4/shared-guardian/real-student-assessment behavior still passes in the actual PG matrix."
+  ],
+  "limits": [
+    "No full new23 API/browser/CI/runtime claim; existing current-version assertions require scoped compatibility updates.",
+    "Whiteboard create/worker/sourceMap/adoption/player andC3 still pending.",
+    "No live provider or production data mutation; actual note browser remains another managed workspace."
+  ],
+  "files": {
+    "data/qa/source-whiteboard-reader23-sqlite-first.json": {
+      "bytes": 3925,
+      "sha256": "7d9280005e1b885004fe6b96f0fd33a4d6f610adcd84b7f7ad3997a412d9e9d5",
+      "gzipSha256": "6fa80c78281bc9ae0f700ca7183700b9c27340b1a33e853a7a2c392fdaa1bf85"
+    },
+    "data/qa/source-whiteboard-reader23-sqlite-first.log": {
+      "bytes": 508,
+      "sha256": "3cad879d6255b41a60db26bf2537e5ab3598fe774063d62f0f0cd4dc6b88631c",
+      "gzipSha256": "c02c88b11a5e49d47f52920b0dfc083f181eac38ce393f0ac25ed5f3ffa13534"
+    },
+    "data/qa/source-whiteboard-reader23-postgres-first.json": {
+      "bytes": 8290,
+      "sha256": "3b8ef6bc95eaaaeb1be513c91a34d415830c24368276dcf95b91060a38f4c419",
+      "gzipSha256": "24ba12e2c1eba778e6c2adc089cbe58057f2fa76e36830587335b7597db50985"
+    },
+    "data/qa/source-whiteboard-reader23-postgres-first.log": {
+      "bytes": 1402,
+      "sha256": "ebc2d03da51b32ae21640a5753017e992393c84fe514e77a32a8484faced393d",
+      "gzipSha256": "0193207ba351f2b101ebcc2534955f7c2982e4518822222305981533749099b0"
+    },
+    "data/qa/source-whiteboard-reader23-native-second.json": {
+      "bytes": 9534,
+      "sha256": "1ad6a12b40b6c50e3cf96de068222ca4886859094e468b4371cdb1dfe1effb42",
+      "gzipSha256": "6485a18a3b0e81b87c9cf40f052eb8eef89001c242c4955dcd5f8a580c2c9fa8"
+    },
+    "data/qa/source-whiteboard-reader23-native-second.log": {
+      "bytes": 1771,
+      "sha256": "84b80ce599bb80373b9cd099b76a4cb9d061630acd200cf12ff4ce440e624208",
+      "gzipSha256": "301dec918acbb4a6998f4fc22474745ff28d6544454b4bac232ed82e2134f5c0"
+    },
+    "data/qa/source-whiteboard-reader23-types-first.log": {
+      "bytes": 68,
+      "sha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "gzipSha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec"
+    },
+    "data/qa/source-whiteboard-reader23-api-first.log": {
+      "bytes": 66,
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "gzipSha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c"
+    },
+    "apps/api/src/infrastructure/domain-database.ts": {
+      "bytes": 34374,
+      "sha256": "8c2299ec2c09c3ef8268739ec1ba3244838465818014149222968485ad98346b",
+      "gzipSha256": "5c3dbcf05f7cd9c5e93164cb9333584d66dcbd3214216181d4438d8e4587899c"
+    },
+    "apps/api/src/infrastructure/assistant-whiteboard-reader.integration.test.ts": {
+      "bytes": 11108,
+      "sha256": "b755e52df621ca96f4f4a0325e0007eed708eca9087f127c01c67b0f906b0a0d",
+      "gzipSha256": "d3993ed34a901505d8801c08eac095525b14b439adce2279d1951e028ed54387"
+    },
+    "apps/api/src/infrastructure/assistant-note-recovery.integration.test.ts": {
+      "bytes": 12740,
+      "sha256": "4ec466cf817a1b35c06a0b8758824b1a67eea8915bd1bb386006470176f55623",
+      "gzipSha256": "c07b205a91120c30f73276d1a29b215fda77a142a2484dc4314fe79cbf272a09"
+    },
+    "apps/api/dist/apps/api/src/infrastructure/domain-database.js": {
+      "bytes": 36543,
+      "sha256": "a4cf3d49db76cc80a19ea019c8c44224d31c3f9aaa82c18716c37df766e43806",
+      "gzipSha256": "b03833dd71addadc73a68ad04aa8f43d58735d28f7cf0a6ed76010bace569937"
+    },
+    "scripts/operations/database-reader-guard.cjs": {
+      "bytes": 912,
+      "sha256": "fbfd0d50d665be49961d8d692ce7f5e3c020fdf5b4203e9a2c3c74de25bf730a",
+      "gzipSha256": "5d5e514463b7ced5ee99ccb760457a00b2e13b24a9b0a822958250bbfd66164f"
+    },
+    "scripts/operations/backup.cjs": {
+      "bytes": 20211,
+      "sha256": "1631a1c84386216179e672d38b6310e4d581579323c6eb7482f24e67b0829d37",
+      "gzipSha256": "4e3ee6cb018076b1ee41046fc9185c9a1b04cd75155b5e9df5830c488e24b3f3"
+    },
+    "scripts/operations/postgres-backup.cjs": {
+      "bytes": 9192,
+      "sha256": "e7d9add9be6e83a55f9d22548bcc090753836aecde572cae076eed2a96997bfa",
+      "gzipSha256": "ad3bec1191ad9464762b1b17197799a3b9775c1035c56e4d697d5234cf89af70"
+    },
+    "scripts/operations/sqlite-restore.cjs": {
+      "bytes": 8828,
+      "sha256": "a19dfb0eb30ff812c8eba187399682f6c16fb52dbfefe85eaed9f4fb5ed7ce85",
+      "gzipSha256": "925d2b38fbd9cc278d3aebfc55297168237fe1d660413c20bca1f28c9ab969d1"
+    },
+    "scripts/operations/postgres-restore.cjs": {
+      "bytes": 9291,
+      "sha256": "a71c581206ff4fa88bc9b086a4fce53f3216e2610d9e0e4f6b3ba8c7e954e960",
+      "gzipSha256": "d70f993d4f87031e6340abc85bee65cbf8e463bbbf83b2654322c12b5cc1a11c"
+    },
+    "scripts/qa/run-assistant-whiteboard-postgres.cjs": {
+      "bytes": 2115,
+      "sha256": "024fa0cf85c2f4f0e29e4e826cf0d7a6501e3ce40c3527d933647cebf5b67778",
+      "gzipSha256": "d46c1d7a531259877c752e6f8dbaa8ee5f45e2ce8f1ee64a2015ae8fdb80f27e"
+    },
+    ".github/workflows/verify.yml": {
+      "bytes": 32306,
+      "sha256": "855a267e2db5572a7df49352079e9d5b317c50463316f2e2bde71281a64baa2c",
+      "gzipSha256": "ae9677f5a6451df00bbbe24abfee1148ec03db5b8370a1bab9b09501bf837fdd"
+    },
+    "resources/compatibility/domain-reader-schema22-v1.receipt.json": {
+      "bytes": 80005,
+      "sha256": "ced9170eaccc38d7c227efae37204d8c935cb0531fcfc28d2df5fecdf0016c38",
+      "gzipSha256": "1060ad2bd49b2e28d30d3c9f4142ffefcac7fe1f144d1948a46c696ca6664cd6"
+    }
+  }
+}

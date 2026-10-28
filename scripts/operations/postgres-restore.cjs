@@ -1,6 +1,7 @@
 const fs=require('node:fs');
 const {createHash}=require('node:crypto');
 const {Pool}=require('pg');
+const {readyState}=require('./database-reader-guard.cjs');
 const {createRestoreContext,readRestoreContext,assertRestoreContextMatches}=require('./restore-context.cjs');
 const {acquireRestoreOperation,copyRestoreFile,publishRestoreReceipt,verifyFile,exists}=require('./restore-files.cjs');
 const {connectionEnvironment,lockRestoreController,initializeImport,reserveImportEpoch,importedState,contentDigestSql,runFencedImport}=require('./postgres-restore-import.cjs');
@@ -30,7 +31,8 @@ async function restorePostgres({bundle,destination,connectionString,pgBin,deleti
     const guard=(await client.query('SELECT state,backup_id FROM study_restore_guard WHERE id=1')).rows[0];
     if(guard?.backup_id!==context.backupId)fail('restore_database_identity_mismatch');
     if(imported.final_receipt){
-      if(guard.state!=='ready'||imported.phase!=='imported'||!Array.isArray(imported.final_files))fail('restore_completion_guard_mismatch');
+      const expectedReady=readyState((await client.query('SELECT version FROM schema_migrations ORDER BY version')).rows.map(row=>row.version));
+      if(guard.state!==expectedReady||imported.phase!=='imported'||!Array.isArray(imported.final_files))fail('restore_completion_guard_mismatch');
       if(!exists(marker)){
         const bytes=Buffer.from(JSON.stringify(imported.final_receipt,null,2)+'\n');
         verifyFile(within(root,'restore-receipt.json'),{size:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')});return imported.final_receipt;
@@ -78,7 +80,8 @@ async function restorePostgres({bundle,destination,connectionString,pgBin,deleti
       // JSONB canonicalizes object keys. Persist and return that same canonical representation.
       const saved=(await client.query('UPDATE study_restore_runtime.imports SET final_receipt=$1::jsonb,final_files=$2::jsonb WHERE context_id=$3 AND phase=\'imported\' AND final_receipt IS NULL RETURNING final_receipt',[JSON.stringify(receipt),JSON.stringify(finalFiles),context.restoreId])).rows[0];
       if(!saved)fail('restore_completion_changed');receipt=saved.final_receipt;
-      if((await client.query("UPDATE study_restore_guard SET state='ready',updated_at=$1 WHERE id=1 AND backup_id=$2 AND state='restoring'",[access.restoredAt,context.backupId])).rowCount!==1)fail('restore_guard_changed');
+      const stateReady=readyState((await client.query('SELECT version FROM schema_migrations ORDER BY version')).rows.map(row=>row.version));
+      if((await client.query("UPDATE study_restore_guard SET state=$3,updated_at=$1 WHERE id=1 AND backup_id=$2 AND state='restoring'",[access.restoredAt,context.backupId,stateReady])).rowCount!==1)fail('restore_guard_changed');
       await afterPhase?.('before_commit');await client.query('COMMIT');
     }catch(error){await client.query('ROLLBACK').catch(()=>{});throw error;}
     await afterPhase?.('sql_committed');return await publishRestoreReceipt({root,context,receipt,afterPhase});

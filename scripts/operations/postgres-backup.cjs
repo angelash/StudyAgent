@@ -4,6 +4,7 @@ const path = require('node:path');
 const { randomUUID } = require('node:crypto');
 const { spawn } = require('node:child_process');
 const { Pool } = require('pg');
+const readerGuard = require('./database-reader-guard.cjs');
 const { files: { noLinks, within, freshDestination, digest, copyVerified, referencesFromRecords, walk } } = require('./backup.cjs');
 const { connectionEnvironment:config } = require('./postgres-restore-import.cjs');
 const FORMAT = 'study-agent-postgres-backup-v1';
@@ -18,7 +19,7 @@ function native(name, args, pgBin, connectionString) {
 }
 async function summary(client) {
   const versions = (await client.query('SELECT version FROM schema_migrations ORDER BY version')).rows.map(r => r.version);
-  if (!versions.length || versions.at(-1) > 22) fail('unsupported_database_schema');
+  readerGuard.readyState(versions);
   return { schemaVersions: versions, revision: Number((await client.query('SELECT revision FROM store_meta WHERE id=1')).rows[0].revision),
     collections: (await client.query('SELECT collection,COUNT(*) AS count FROM domain_records GROUP BY collection ORDER BY collection')).rows.map(r => ({ collection: r.collection, count: Number(r.count) })),
     tasks: (await client.query('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state')).rows.map(r => ({ state: r.state, count: Number(r.count) })) };
@@ -29,9 +30,10 @@ async function createPostgresBundle({ connectionString, pgBin, dataDir, destinat
   let root, database, refs;
   try {
     await client.query('BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY');
-    if ((await client.query("SELECT to_regclass('study_restore_guard') AS name")).rows[0].name &&
-      (await client.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state !== 'ready') fail('source_database_restore_incomplete');
+    const guard = (await client.query("SELECT to_regclass('study_restore_guard') AS name")).rows[0].name
+      ? (await client.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state ?? 'missing' : undefined;
     database = await summary(client);
+    readerGuard.assertReady(guard, database.schemaVersions);
     refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioTopicWhiteboardVisuals','studioTopicWhiteboards','whiteboardQuestionVisuals','whiteboardQuestionTurns','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions','studioMaterialAssets')")).rows);
     if (refs.size && !dataDir) fail('data_dir_required_for_referenced_files');
     root = freshDestination(destination, [dataDir, assets]);
@@ -62,6 +64,7 @@ async function verifyPostgresBundle({ bundle, pgBin, incomplete = false }) {
   const manifestPath = within(root, 'manifest.json'); if (fs.statSync(manifestPath).size > 256 * 1024 * 1024) fail('manifest_too_large');
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
   if (manifest.format !== FORMAT || !Array.isArray(manifest.files) || manifest.files.length > 1_000_000 || !Array.isArray(manifest.references) || typeof manifest.assetsIncluded !== 'boolean' || typeof manifest.id !== 'string') fail('unsupported_backup_format');
+  readerGuard.readyState(manifest.database?.schemaVersions);
   const paths = new Map(), portable = new Set();
   for (const file of manifest.files) {
     if (!/^(database\/postgres\.dump|data\/(?:processing|student-media|classroom-visuals|topic-whiteboard-visuals|whiteboard-question-visuals|studio-materials|studio-uploads|project-assets|project-uploads)\/.+|assets\/.+)$/.test(file.path) || portable.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
