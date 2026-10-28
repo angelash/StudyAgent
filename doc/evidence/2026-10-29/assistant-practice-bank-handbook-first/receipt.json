@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-28T22:01:43.451376+00:00",
+  "passed": true,
+  "sourceRevision": "77d9cd5c891f99b1d8624b313293e180c1bdfe40",
+  "features": {
+    "areas": 14,
+    "features": 133,
+    "activeNormalApiRoutes": 444,
+    "coveredApiRoutes": 444
+  },
+  "sourceFiles": 679,
+  "markdownLinks": 4215,
+  "offlineViewerChecks": 10,
+  "scope": "Static design/source mapping and offline viewer only; does not rerun application CI or prove completed D2.",
+  "files": [
+    {
+      "source": "data/qa/practice-bank-selection-first/handbook-build-first.log",
+      "archive": "data/qa/practice-bank-selection-first/handbook-build-first.log.gz",
+      "sha256": "3a558e46c2732702b865ff9ccca13eaea48e33cf523b62d80b2087464c42f0a2",
+      "bytes": 102
+    },
+    {
+      "source": "data/qa/practice-bank-selection-first/handbook-content-first.log",
+      "archive": "data/qa/practice-bank-selection-first/handbook-content-first.log.gz",
+      "sha256": "c3a5efa19a654a5aa570cadcba467910d051b5a4d1250a149cb6452c1eb9a8e7",
+      "bytes": 2612
+    },
+    {
+      "source": "data/qa/practice-bank-selection-first/handbook-inventory-first.log",
+      "archive": "data/qa/practice-bank-selection-first/handbook-inventory-first.log.gz",
+      "sha256": "108ec1ea9eee1b6d6bfc6f886827f6189f7e1d9f83c8a3228a39ab625653b1b9",
+      "bytes": 487
+    },
+    {
+      "source": "data/qa/practice-bank-selection-first/handbook-validation-first.log",
+      "archive": "data/qa/practice-bank-selection-first/handbook-validation-first.log.gz",
+      "sha256": "c6f85379401bf65e5ba3cd20aaf0455ba4e91622f04ac4afea42aef5809d72b4",
+      "bytes": 281
+    },
+    {
+      "source": "doc/design/generated/design-validation.json",
+      "archive": "doc/design/generated/design-validation.json.gz",
+      "sha256": "539c76a53ca78c75802b327a427ff286a847015e22676b54d73c8568221b6282",
+      "bytes": 90660
+    }
+  ]
+}

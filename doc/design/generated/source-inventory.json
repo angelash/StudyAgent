@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "5551b003d6519919661a66a2be6044fd14bd6668",
+  "sourceRevision": "77d9cd5c891f99b1d8624b313293e180c1bdfe40",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 465,
@@ -10,12 +10,12 @@
     "activeModules": 19,
     "activeControllers": 49,
     "apiClasses": 173,
-    "apiFunctions": 540,
+    "apiFunctions": 541,
     "domainCollections": 104,
     "contractTypes": 425,
     "webPages": 31,
     "webRouteHandlers": 1,
-    "apiTestFiles": 209,
+    "apiTestFiles": 210,
     "browserTestFiles": 45
   },
   "modules": [
@@ -41950,6 +41950,12 @@
       "signature": "knowledgeMaterialCoverage(atom: KnowledgeAtom, candidates: MeasurementItem[]): KnowledgeMaterialCoverage"
     },
     {
+      "file": "apps/api/src/modules/learning/assistant-practice-bank-selection.ts",
+      "name": "selectAssistantPracticeBankQuestions",
+      "line": 23,
+      "signature": "selectAssistantPracticeBankQuestions(value: AssistantPracticeBankSelectionInput): AssistantPracticeBankSelection"
+    },
+    {
       "file": "apps/api/src/modules/learning/assistant-practice-content.ts",
       "name": "validateAssistantPracticeContent",
       "line": 6,
@@ -59439,6 +59445,7 @@
     "apps/api/src/modules/gesp/gesp.integration.test.ts",
     "apps/api/src/modules/gesp/isolated-runner.test.ts",
     "apps/api/src/modules/gesp/student-curriculum.test.ts",
+    "apps/api/src/modules/learning/assistant-practice-bank-selection.test.ts",
     "apps/api/src/modules/learning/assistant-practice-content.test.ts",
     "apps/api/src/modules/learning/assistant-practice-preflight.integration.test.ts",
     "apps/api/src/modules/learning/assistant-whiteboard-content.test.ts",
