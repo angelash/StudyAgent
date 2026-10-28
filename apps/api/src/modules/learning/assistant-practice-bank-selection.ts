@@ -3,11 +3,11 @@ import { topicWhiteboardDigest as digest } from './topic-whiteboard-digest';
 
 const id = z.string().min(1).max(180), family = z.string().min(1).max(600);
 const candidateSchema = z.object({ atomId: id, questionId: id, family, mappingId: id }).strict();
-const inputSchema = z.object({ targetAtomIds: z.array(id).min(1).max(3), seed: z.string().regex(/^[a-f0-9]{64}$/),
+export const assistantPracticeBankSelectionInputSchema = z.object({ targetAtomIds: z.array(id).min(1).max(3), seed: z.string().regex(/^[a-f0-9]{64}$/),
   candidates: z.array(candidateSchema).max(50000), seenQuestionIds: z.array(id).max(50000),
   seenFamilies: z.array(z.object({ atomId: id, family }).strict()).max(50000),
 }).strict();
-export type AssistantPracticeBankSelectionInput = z.infer<typeof inputSchema>;
+export type AssistantPracticeBankSelectionInput = z.infer<typeof assistantPracticeBankSelectionInputSchema>;
 export type AssistantPracticeBankCandidate = z.infer<typeof candidateSchema>;
 export const ASSISTANT_PRACTICE_BANK_SELECTION_VERSION = 'assistant-practice-joint-bank-selection-v1' as const;
 export type AssistantPracticeBankSelection = {
@@ -21,7 +21,7 @@ const pair = (atomId: string, value: string) => JSON.stringify([atomId, value]);
 
 /** Caller supplies current eligibleMeasurements/canonicalFamily/exposure. This is no authorization or approval credential. */
 export function selectAssistantPracticeBankQuestions(value: AssistantPracticeBankSelectionInput): AssistantPracticeBankSelection {
-  const input = inputSchema.parse(value), targets = new Set(input.targetAtomIds);
+  const input = assistantPracticeBankSelectionInputSchema.parse(value), targets = new Set(input.targetAtomIds);
   if (targets.size !== input.targetAtomIds.length) throw Error('assistant_practice_duplicate_target');
   const uniqueMappings = new Map<string, AssistantPracticeBankCandidate>();
   for (const item of input.candidates) {

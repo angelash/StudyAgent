@@ -4,16 +4,16 @@ import type { DiagnosticResponse, DiagnosticSession, KnowledgeAtom, MeasurementI
 import type { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
 import { blueprintContentHash } from './assessment-blueprint';
 
-type QuestionContentPacket = { question: Question | null; document: QuestionDocument | null;
+export type QuestionContentPacket = { question: Question | null; document: QuestionDocument | null;
   answerSchema: QuestionAnswerSchema | null; source: QuestionSourceRecord | null };
 
-function packetContentFingerprint(packet: QuestionContentPacket) {
+export function questionPacketContentFingerprint(packet: QuestionContentPacket) {
   return blueprintContentHash({ format: 'reviewed-question-content-v1', ...packet });
 }
 
 /** Binds a new approval to the full rendered and scored content, including source eligibility. */
 export function questionContentFingerprint(store: InMemoryStoreService, questionId: string) {
-  return packetContentFingerprint({
+  return questionPacketContentFingerprint({
     question: store.find('questions', { id: questionId }) ?? null,
     document: store.find('questionDocuments', { questionId }) ?? null,
     answerSchema: store.find('questionAnswerSchemas', { questionId }) ?? null,
@@ -24,7 +24,7 @@ export function measurementContentMatches(store: InMemoryStoreService, mapping: 
   knownPacket?: QuestionContentPacket) {
   const candidate = knownCandidate === undefined ? store.find('measurementCandidates', { questionId: mapping.questionId }) : knownCandidate;
   if (!mapping.contentFingerprint && !candidate) return true;
-  const fingerprint = knownPacket ? packetContentFingerprint(knownPacket) : questionContentFingerprint(store, mapping.questionId);
+  const fingerprint = knownPacket ? questionPacketContentFingerprint(knownPacket) : questionContentFingerprint(store, mapping.questionId);
   return (!mapping.contentFingerprint || mapping.contentFingerprint === fingerprint) &&
     (!candidate || candidate.status === 'published' && candidate.publishedHash === fingerprint);
 }

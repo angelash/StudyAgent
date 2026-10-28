@@ -65,6 +65,7 @@ async function restorePostgres({bundle,destination,connectionString,pgBin,deleti
       if(refs.size!==verified.manifest.referencedFileCount)fail('restored_file_reference_mismatch');
       const query=async(sql,params=[])=>{let index=0;return(await client.query(sql.replace(/\?/g,()=>'$'+(++index)),params)).rows;};
       const before=await captureMaterialKeys(query),{removedMediaIds,topicVisualRetentions,...privacy}=await applyDeletionLedger(query,ledger);
+      const practiceIntegrity=require('./assistant-practice-integrity.cjs');practiceIntegrity.validate(await query(practiceIntegrity.sql));
       await afterPhase?.('ledger_applied');
       const access=await fenceRestoredState(query,context.backupId,verified.manifest.database.revision),deleted=new Set();
       const materials=await cleanupRestoredMaterials({root,query,manifest:verified.manifest,before,restoreContext:context,afterPhase:async(phase,relative)=>{if(phase==='material_file_deleted')deleted.add(relative);await afterPhase?.(phase,relative);}});

@@ -48,6 +48,8 @@ function openRead(file) { return new DatabaseSync(file, { readOnly: true }); }
 function summary(db) {
   const sourceIntegrity = require('./whiteboard-source-integrity.cjs');
   sourceIntegrity.validate(db.prepare(sourceIntegrity.sql).all());
+  const practiceIntegrity = require('./assistant-practice-integrity.cjs');
+  practiceIntegrity.validate(db.prepare(practiceIntegrity.sql).all());
   const guard = db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='study_restore_guard'").get()
     ? db.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state ?? 'missing' : undefined;
   if (db.prepare('PRAGMA integrity_check').get().integrity_check !== 'ok') fail('database_integrity_failed');

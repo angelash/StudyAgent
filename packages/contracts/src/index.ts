@@ -772,3 +772,4 @@ export * from './assistant-whiteboard';
 
 export * from './assistant-practice';
 export * from './assistant-practice-content';
+export * from './assistant-reviewed-practice';

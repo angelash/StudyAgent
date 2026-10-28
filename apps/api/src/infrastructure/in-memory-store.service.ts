@@ -1,4 +1,5 @@
 import type { TeachingToolRunRecord } from '../modules/ai/teaching-tool-record';
+import type { AssistantPracticeArtifactRecord } from '../modules/learning/assistant-practice-record';
 import type { ProjectUploadRecord,ProjectAssetRecord } from '../modules/learning/project-file-record';
 import type { SourceCourseCheckRecord,SourceCourseCheckPublication } from '../modules/learning/source-course-check-record';
 import type { TopicWhiteboardDraftRecord, TopicWhiteboardRecord } from '../modules/learning/topic-whiteboard-record';
@@ -408,6 +409,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   assistantSessions: Array<AssistantSession & { ownerUserId: string; scopeKey?: string; lectureSnapshot?: AssistantLectureSnapshot; courseSnapshot?: AssistantCourseSnapshot }> = [];
   assistantMessages: AssistantMessage[] = [];
   assistantArtifactDrafts: AssistantNoteRecord[] = [];
+  assistantPracticeArtifacts: AssistantPracticeArtifactRecord[] = [];
   assistantTurns: AssistantTurnRecord[] = [];
   guidanceModelSuggestions: GuidanceModelSuggestionRecord[] = [];
   teachingToolRuns: TeachingToolRunRecord[] = [];
@@ -518,6 +520,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.assistantSessions = [];
     this.assistantMessages = [];
     this.assistantArtifactDrafts = [];
+    this.assistantPracticeArtifacts = [];
     this.assistantTurns = [];
     this.guidanceModelSuggestions = [];
     this.teachingToolRuns = [];

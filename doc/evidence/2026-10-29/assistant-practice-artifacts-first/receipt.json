@@ -1,0 +1,124 @@
+{
+  "at": "2026-10-28T23:27:31.300733+00:00",
+  "passed": true,
+  "designBeforeImplementation": "41713d79932925cb47647147971844a27aa5e204",
+  "runs": {
+    "sqlite-first": {
+      "engine": "sqlite",
+      "passed": false,
+      "tests": {
+        "total": 17,
+        "passed": 14,
+        "failed": 3,
+        "pending": 0
+      },
+      "sourceInputs": 673,
+      "compiledInputs": 409
+    },
+    "sqlite-second": {
+      "engine": "sqlite",
+      "passed": true,
+      "tests": {
+        "total": 17,
+        "passed": 17,
+        "failed": 0,
+        "pending": 0
+      },
+      "sourceInputs": 673,
+      "compiledInputs": 409
+    },
+    "sqlite-third": {
+      "engine": "sqlite",
+      "passed": true,
+      "tests": {
+        "total": 17,
+        "passed": 17,
+        "failed": 0,
+        "pending": 0
+      },
+      "sourceInputs": 673,
+      "compiledInputs": 409
+    },
+    "postgres-first": {
+      "engine": "postgres",
+      "passed": false,
+      "tests": {
+        "total": 17,
+        "passed": 16,
+        "failed": 1,
+        "pending": 0
+      },
+      "sourceInputs": 673,
+      "compiledInputs": 409
+    },
+    "sqlite-fourth": {
+      "engine": "sqlite",
+      "passed": true,
+      "tests": {
+        "total": 17,
+        "passed": 17,
+        "failed": 0,
+        "pending": 0
+      },
+      "sourceInputs": 681,
+      "compiledInputs": 418
+    },
+    "postgres-second": {
+      "engine": "postgres",
+      "passed": true,
+      "tests": {
+        "total": 17,
+        "passed": 17,
+        "failed": 0,
+        "pending": 0
+      },
+      "sourceInputs": 681,
+      "compiledInputs": 418
+    }
+  },
+  "finalInputChecks": [
+    {
+      "attempt": "sqlite-fourth",
+      "sourceInputs": 681,
+      "compiledInputs": 418,
+      "sourceChanged": [],
+      "compiledChanged": [],
+      "fullBuildCopiesVerified": true
+    },
+    {
+      "attempt": "postgres-second",
+      "sourceInputs": 681,
+      "compiledInputs": 418,
+      "sourceChanged": [],
+      "compiledChanged": [],
+      "fullBuildCopiesVerified": true
+    }
+  ],
+  "implemented": [
+    "Private reviewed-bank candidate creation/list/original receipts/owner reads/teaching-note edits over actual HTTP.",
+    "Full original source, explicit student atomic targets, frozen native formula/table/question/answer/approval packets, no learner exposure or evidence write.",
+    "Actual two-instance create/edit idempotency in both engines; typed optimistic-store conflict retry preserves source/version/business conflicts.",
+    "Actual learning-code grade9 chemistry and grade4 profile separation; paused assessment fences, other guardian private-origin exclusion and safe preview/export.",
+    "Schema24 minimum reader, saved exact real schema23 reader refusal, native SQLite/PG restore, author/child deletion ledger replay and corruption rejection after recomputed packet/bundle identities."
+  ],
+  "failuresRetained": [
+    "SQLite first14passed/3failed: fixture read records outside a fresh transaction; corrected to actual durable snapshots. Backend code unchanged for SQLite second/third17pass.",
+    "PostgreSQL first16passed/1failed: simultaneous same-key peer creation returned an optimistic-store409. Added DomainWriteConflict subtype and bounded fresh-transaction retries for create/edit; business conflicts are not retried. Both final engines17passed."
+  ],
+  "archive": {
+    "fileIndex": "files.json.gz",
+    "fileEntries": 4934,
+    "uniqueObjects": 1113,
+    "sourceBytesPreserved": true,
+    "finalFullBuildsPreserved": true,
+    "earlierBuildLimit": "Earlier409 compiled inputs retained as original SHA manifests and frozen source; separate original binary copies were not captured before rebuild. Final418 full build files are copied and verified."
+  },
+  "redaction": "Frozen source/build bytes are exact; public logs/reports strip ANSI and local Windows checkout/user paths. Raw originals remain local; no QA credential files or real student data included.",
+  "secretScanFindings": [],
+  "limits": [
+    "SQLite17 and actualPG17 are distinct overlapping engine runs, not a single34-case run; earlier attempts not added.",
+    "No actual provider/TTS/image call, original learner identity or real student evidence.",
+    "No assignment/learner start/answering UI or full schema24 delivery. Production remains delivered schema23.",
+    "Full API/browser/precise feature CI and remaining schema24 migration assertions are still required; complete product remains active."
+  ]
+}

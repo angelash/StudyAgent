@@ -7,6 +7,7 @@ import { compilationView } from '../learning/source-course-compilation';
 import { studioMaterialView } from '../learning/studio-material-access';
 import { publicTopicWhiteboard } from '../learning/topic-whiteboard-projection';
 import { publicQuestionTeachingVersion } from '../learning/whiteboard-question-teaching-versions';
+import { reviewedPracticePortableView, type AssistantPracticeArtifactRecord } from '../learning/assistant-practice-record';
 
 type Row = Record<string, any>;
 export type Selection = Record<string, Row[]>;
@@ -56,6 +57,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   const assistants = ids(result, 'assistantSessions'); add(result, store, 'assistantMessages', row => assistants.has(row.sessionId));
   add(result, store, 'assistantTurns', row => assistants.has(row.sessionId));
   add(result, store, 'assistantArtifactDrafts', row => row.studentId === studentId || assistants.has(row.sessionId));
+  add(result, store, 'assistantPracticeArtifacts', row => row.studentId === studentId || assistants.has(row.sourceSessionId));
   add(result, store, 'aiInsights', row => row.studentId === studentId || assistants.has(row.sourceId) || assessments.has(row.sourceId) || missions.has(row.sourceId));
   const allIds = new Set(Object.values(result).flat().map(recordId).filter(Boolean));
   add(result, store, 'events', row => hasReference(row.payload, allIds));
@@ -98,6 +100,7 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   const sessions = ids(result, 'assistantSessions'); add(result, store, 'assistantMessages', row => sessions.has(row.sessionId));
   add(result, store, 'assistantTurns', row => sessions.has(row.sessionId));
   add(result, store, 'assistantArtifactDrafts', row => row.ownerUserId === actorId || sessions.has(row.sessionId));
+  add(result, store, 'assistantPracticeArtifacts', row => row.ownerUserId === actorId || sessions.has(row.sourceSessionId));
   add(result, store, 'guidanceModelSuggestions', row => row.ownerUserId === actorId);
   add(result, store, 'teachingToolRuns', row => row.ownerUserId === actorId);
   add(result, store, 'aiInsights', row => sessions.has(row.sourceId));
@@ -165,6 +168,9 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if (name === 'assistantMessages') result[name] = records.filter(row => allowedAssistants.has(row.sessionId));
     else if (name === 'assistantArtifactDrafts') result[name] = records.filter(row => allowedAssistants.has(row.sessionId))
       .map(({ ownerUserId: _owner, sessionId: _session, studentId: _student, requestKey: _key, requestHash: _hash, commands: _commands, ...row }) => row);
+    else if (name === 'assistantPracticeArtifacts') result[name] = records.filter(row => row.ownerUserId === actorId ||
+      (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student'))
+      .map(row => reviewedPracticePortableView(row as AssistantPracticeArtifactRecord));
     else if (name === 'assistantTurns') result[name] = records.filter(row => allowedAssistants.has(row.sessionId))
       .map(({prepared:_prepared,authorization:_auth,inputHash:_hash,commandHash:_command,taskId:_task,...row})=>row);
     else if (name === 'teachingToolRuns') result[name] = records.filter(row => row.ownerUserId === actorId)

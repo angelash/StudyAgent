@@ -16,7 +16,7 @@ const sameIds = (a: string[], b: string[]) => a.length === new Set(a).size && b.
 function fail(reason: string): never { throw Error('assistant_practice_' + reason); }
 
 /** Offline consistency only. The caller must recheck live ownership, scope, withdrawal and assessment at every write. */
-function sourceIdentity(origin: AssistantArtifactOrigin, input: AssistantPracticeContentInput, targetScope: AssistantPracticeTargetScope) {
+export function assistantPracticeSourceIdentity(origin: AssistantArtifactOrigin, input: AssistantPracticeContentInput, targetScope: AssistantPracticeTargetScope) {
   if (origin?.protocol !== 'assistant-artifact-origin-v1' || !origin.sessionId || !Array.isArray(origin.messages)
     || origin.messages.length < 1 || origin.messages.length > 20 || !origin.selection || !origin.location
     || origin.location.sessionId !== origin.sessionId || origin.location.studentId !== origin.studentId || origin.location.subject !== origin.subject)
@@ -77,7 +77,7 @@ export function prepareAssistantTeachingPractice(origin: AssistantArtifactOrigin
   const input = assistantPracticeContentInputSchema.parse(value), targetScope = assistantPracticeTargetScopeSchema.parse(scopeValue);
   if (typeof model.id !== 'string' || !model.id.trim() || model.id.length > 180 || typeof model.label !== 'string' || !model.label.trim()
     || model.label.length > 200 || input.modelId !== undefined && input.modelId !== model.id) fail('model_mismatch');
-  const source = sourceIdentity(origin, input, targetScope);
+  const source = assistantPracticeSourceIdentity(origin, input, targetScope);
   const context = serialize({ protocol: ASSISTANT_PRACTICE_CONTENT_PROTOCOL, input,
     origin: stableAssistantWhiteboardOrigin(origin), targetScope, modelId: model.id, modelName: model.label });
   if (context.length > ASSISTANT_PRACTICE_SOURCE_BUDGET) fail('source_budget_exceeded');
