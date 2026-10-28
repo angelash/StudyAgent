@@ -1,0 +1,127 @@
+{
+  "passed": true,
+  "before": {
+    "runId": 40670818351,
+    "head": "b5b214bf1d2dcc740aba2163b9f8bb0b7dcf2c0b",
+    "jobId": 122756814232,
+    "failure": "Actual global atoms286 compared with legacy primary-only258",
+    "scope": "Original main CI job, not this follow-up exact CI."
+  },
+  "sqlite": {
+    "result": {
+      "scope": "Primary math/chinese/english foundation; chemistry is separately reported.",
+      "points": 258,
+      "cells": 18,
+      "readyMaterials": 258,
+      "needingMaterials": 0,
+      "allSubjectPoints": 286,
+      "allSubjectCells": 19,
+      "currentEligibilityAndBudget": true,
+      "formalTeacherGrantAndRevocation": true,
+      "parentLearnerAndAnonymousDenied": true,
+      "reviewedWithdrawalAndRestoration": 12,
+      "withdrawnStateSurvivesRestart": true,
+      "restoredStateSurvivesRestart": true,
+      "nonemptyStudentHistoryAndPreviewUnchanged": true,
+      "allBusinessRecordHashesUnchangedByReads": true,
+      "restarts": 2
+    },
+    "chemistry": {
+      "points": 28,
+      "cells": 1,
+      "grade": 9,
+      "withVerificationMaterials": 28,
+      "needingVerificationMaterials": 0,
+      "scope": "Current eligible material structure only; not teacher approval, textbook completeness, calibration or actual learner mastery."
+    },
+    "performance": {
+      "scope": "12 warm sequential production HTTP overview reads on owned local database; excludes startup and hash verification",
+      "samples": 12,
+      "p50Ms": 151.77,
+      "p95Ms": 172.08,
+      "maxMs": 172.08,
+      "referenceTargetMs": 500
+    }
+  },
+  "postgres": {
+    "result": {
+      "scope": "Primary math/chinese/english foundation; chemistry is separately reported.",
+      "points": 258,
+      "cells": 18,
+      "readyMaterials": 258,
+      "needingMaterials": 0,
+      "allSubjectPoints": 286,
+      "allSubjectCells": 19,
+      "currentEligibilityAndBudget": true,
+      "formalTeacherGrantAndRevocation": true,
+      "parentLearnerAndAnonymousDenied": true,
+      "reviewedWithdrawalAndRestoration": 12,
+      "withdrawnStateSurvivesRestart": true,
+      "restoredStateSurvivesRestart": true,
+      "nonemptyStudentHistoryAndPreviewUnchanged": true,
+      "allBusinessRecordHashesUnchangedByReads": true,
+      "restarts": 2
+    },
+    "chemistry": {
+      "points": 28,
+      "cells": 1,
+      "grade": 9,
+      "withVerificationMaterials": 28,
+      "needingVerificationMaterials": 0,
+      "scope": "Current eligible material structure only; not teacher approval, textbook completeness, calibration or actual learner mastery."
+    },
+    "performance": {
+      "scope": "12 warm sequential production HTTP overview reads on owned local database; excludes startup and hash verification",
+      "samples": 12,
+      "p50Ms": 164.94,
+      "p95Ms": 186.97,
+      "maxMs": 186.97,
+      "referenceTargetMs": 500
+    }
+  },
+  "sameFinalScriptAndSourceInputs": true,
+  "overlappingScopesNotAdded": true,
+  "scope": "Isolated synthetic records, actual HTTP and owned persistent stores; complete teacher grant/revocation, reviewed withdrawal/restoration, two restarts and business hashes. No real student answers, textbook/teacher/calibration or complete product claim.",
+  "files": {
+    "data/qa/chemistry-primary-material-coverage-first.json": {
+      "bytes": 18582,
+      "sha256": "bda380b686146c8c21b67c0424cde4edaf0e3f668b2880dcbeb202b43c2722bd",
+      "gzipSha256": "f0785926bf67c65b64c73b7288e47bfad93968d8062a399289c03d62986c494e"
+    },
+    "data/qa/chemistry-primary-material-coverage-first.log": {
+      "bytes": 796,
+      "sha256": "2e5ecc4e845600f9b9b18a41059dd63ef520a06761be18a785fec40c831d6856",
+      "gzipSha256": "2b5647518676c49ec4a6a9ee79642ffc403194ec1a2a2e6460fa79a4c35db5c9"
+    },
+    "data/qa/chemistry-primary-material-coverage-final-sqlite.json": {
+      "bytes": 18582,
+      "sha256": "8b7e21885cb531f23c00a2af502ec41a9f72aefac20756b6f938f55a692ab58b",
+      "gzipSha256": "de7e6d3cbff7dae4b78a4b12ff79b57500869ad817fc0db5bb672bdcf5309417"
+    },
+    "data/qa/chemistry-primary-material-coverage-final-sqlite.log": {
+      "bytes": 796,
+      "sha256": "0f94d41c583938e9bf695e47b121dd812783f7551b84ac8174ebccec0d9bd662",
+      "gzipSha256": "e0c890abaa00ba92214cdfe07ea483d7833a79de48f5900fdeac571e8615dd20"
+    },
+    "data/qa/chemistry-primary-material-coverage-postgres-first.json": {
+      "bytes": 18584,
+      "sha256": "54a948011475e0b7b8e50c1e5cea8f2adcd49f3fb2a12b81c34ad59533e74f68",
+      "gzipSha256": "713caaa60951f8ed76dfeee19d74b93136bca2574381a4a2cf16c18f23551e33"
+    },
+    "data/qa/chemistry-primary-material-coverage-postgres-first.log": {
+      "bytes": 798,
+      "sha256": "9013ab233f95b60d06a4e8d0733e2be0b9a448c75443a26ff7ec85fe79532646",
+      "gzipSha256": "5999919376d715f1cd6312b5b4585ea4cf23f8063de25b1ff947cf867acab18d"
+    },
+    "scripts/qa/verify-material-coverage.cjs": {
+      "bytes": 23009,
+      "sha256": "95a41f6d1544f35946b717a997b5f7f5b35fd190254a51f26bc02d3881370e91",
+      "gzipSha256": "b2921679a0c2273c3eab9a1b49422b888e8e4dccd7171ea8f4a49832d417fa19"
+    },
+    "data/qa/chemistry-main-b5-application-failed.log": {
+      "bytes": 215940,
+      "sha256": "dd2a97d43ad56181ccbc2f4d568953ce0ed7cf5713c4473f4676279d294efc13",
+      "gzipSha256": "ba1d4541abb250c37efa518fa0a0909fed4ea35949311c3c136cf233021f067a"
+    }
+  }
+}

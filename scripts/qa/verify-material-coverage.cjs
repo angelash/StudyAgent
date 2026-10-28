@@ -55,6 +55,7 @@ const files = ['packages/contracts/src/curriculum.ts', 'apps/api/src/modules/dia
     'scripts/assets/test_chinatextbook_primary_sources.py', 'scripts/assets/test_chinatextbook_source_metadata.py', 'resources/curriculum/chinatextbook-primary-v1.json',
   'scripts/assets/test_textbook_mapping_candidates.py', 'scripts/content/export-foundation-atoms.cjs',
   'apps/api/src/modules/diagnostics/foundation-curriculum.ts', 'apps/api/src/modules/diagnostics/foundation-seed.service.ts',
+  'apps/api/src/modules/diagnostics/chemistry-curriculum.ts',
   'apps/api/src/modules/question-workspace/question-workspace.service.ts',
   'resources/curriculum/authored-task-baseline-6686-v1.json',
   'apps/web/app/admin/curriculum/material-coverage.tsx', 'apps/web/app/admin/curriculum/curriculum.css',
@@ -83,9 +84,18 @@ const fingerprint = () => store.transaction(() => Object.fromEntries(collections
   return [collection, { records: rows.length, sha256: blueprintContentHash(rows) }];
 })));
 async function verifyPublishedCounts() {
-  const result = await overview(); assert.equal(result.atoms.length, 258); assert.equal(result.cells.length, 18);
-  assert.equal(result.atoms.filter(row => row.materialCoverage.ready).length, 258);
-  assert.equal(result.cells.reduce((sum, cell) => sum + cell.needingVerificationMaterials, 0), 0);
+  const result = await overview(), primarySubjects = new Set(['math', 'chinese', 'english']);
+  const primaryAtoms = result.atoms.filter(row => primarySubjects.has(row.subject));
+  const primaryCells = result.cells.filter(cell => primarySubjects.has(cell.subject));
+  const chemistryAtoms = result.atoms.filter(row => row.subject === 'chemistry');
+  const chemistryCells = result.cells.filter(cell => cell.subject === 'chemistry');
+  assert.equal(primaryAtoms.length, 258); assert.equal(primaryCells.length, 18);
+  assert.equal(primaryAtoms.filter(row => row.materialCoverage.ready).length, 258);
+  assert.equal(primaryCells.reduce((sum, cell) => sum + cell.needingVerificationMaterials, 0), 0);
+  assert.equal(chemistryAtoms.length, 28); assert.equal(chemistryCells.length, 1);
+  assert(chemistryAtoms.every(row => row.grade === 9)); assert.equal(chemistryCells[0].grade, 9);
+  assert.equal(result.atoms.length, primaryAtoms.length + chemistryAtoms.length);
+  assert.equal(result.cells.length, primaryCells.length + chemistryCells.length);
   assert(result.cells.every(cell => cell.withVerificationMaterials + cell.needingVerificationMaterials === cell.atoms));
   assert(result.atoms.every(row => row.materialCoverage.version === 'verification-materials-v1'));
   for (const [subject, count, ready, gap] of [['math', 19, 19, 0], ['chinese', 13, 13, 0], ['english', 13, 13, 0]]) {
@@ -93,6 +103,12 @@ async function verifyPublishedCounts() {
     assert.equal(filtered.atoms.length, count); assert.equal(filtered.cells.length, 1);
     assert.equal(filtered.cells[0].withVerificationMaterials, ready); assert.equal(filtered.cells[0].needingVerificationMaterials, gap);
   }
+  const chemistry = await overview('?subject=chemistry&grade=9');
+  assert.deepEqual(chemistry.atoms, chemistryAtoms); assert.deepEqual(chemistry.cells, chemistryCells);
+  evidence.separateChemistry = { points: chemistryAtoms.length, cells: chemistryCells.length, grade: 9,
+    withVerificationMaterials: chemistryCells[0].withVerificationMaterials,
+    needingVerificationMaterials: chemistryCells[0].needingVerificationMaterials,
+    scope: 'Current eligible material structure only; not teacher approval, textbook completeness, calibration or actual learner mastery.' };
   const teacher = await overview('', 'teacher'); assert.deepEqual(teacher.atoms, result.atoms); assert.deepEqual(teacher.cells, result.cells);
   return result;
 }
@@ -100,8 +116,9 @@ async function verifyDenied() {
   for (const [actor, status] of [['parent', 403], ['learner', 403], ['anonymous', 401]]) await call('GET', '/admin/curriculum/overview', undefined, actor, status);
 }
 async function setupPostgres() {
-  const config = JSON.parse(fs.readFileSync(path.join(root, 'data/qa/postgres/credentials.json'), 'utf8'));
+  const config = JSON.parse(fs.readFileSync(path.resolve(process.argv[4] ?? path.join(root, 'data/qa/postgres/credentials.json')), 'utf8'));
   assert.equal(config.purpose, 'StudyAgent isolated QA cluster'); assert.equal(config.port, 15439); assert.equal(config.appUser, 'study_agent_app');
+  assert.equal(config.database, 'study_agent_qa'); assert.equal(config.adminUser, 'study_qa_admin');
   adminPool = new Pool({ host: '127.0.0.1', port: config.port, database: 'postgres', user: config.adminUser, password: config.adminPassword });
   qaDatabase = 'study_materials_' + randomUUID().replaceAll('-', ''); await adminPool.query(`CREATE DATABASE ${qaDatabase}`);
   const setup = new Pool({ host: '127.0.0.1', port: config.port, database: qaDatabase, user: config.adminUser, password: config.adminPassword });
@@ -188,7 +205,8 @@ async function main() {
     samples: samples.length, p50Ms: +sorted[Math.ceil(sorted.length * .5) - 1].toFixed(2), p95Ms: +p95Ms.toFixed(2), maxMs: +sorted.at(-1).toFixed(2), referenceTargetMs: 500 };
   assert(p95Ms < 500, `Warm material overview p95 ${p95Ms.toFixed(2)}ms exceeded local 500ms reference`);
   assert.deepEqual(await fingerprint(), revisedState);
-  evidence.result = { points: 258, cells: 18, readyMaterials: 258, needingMaterials: 0, currentEligibilityAndBudget: true,
+  evidence.result = { scope: 'Primary math/chinese/english foundation; chemistry is separately reported.',
+    points: 258, cells: 18, readyMaterials: 258, needingMaterials: 0, allSubjectPoints: 286, allSubjectCells: 19, currentEligibilityAndBudget: true,
     formalTeacherGrantAndRevocation: true, parentLearnerAndAnonymousDenied: true, reviewedWithdrawalAndRestoration: mappings.length,
     withdrawnStateSurvivesRestart: true, restoredStateSurvivesRestart: true, nonemptyStudentHistoryAndPreviewUnchanged: true,
     allBusinessRecordHashesUnchangedByReads: true, restarts: 2 };
