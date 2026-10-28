@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "sourceRevision": "de682517ca00f09d2c82af210a4f477d5ddbb63c",
+  "mode": "primary_unit",
+  "scenario": "Explicit explanation of one selected original teaching paragraph and its actual source key; same-whole condition is scoped to same-paper-strip fractions, not all quantities.",
+  "realCliStarts": 1,
+  "elapsedMs": 12989,
+  "trustedReferences": 1,
+  "completeContextMatchesOriginal": true,
+  "originalRequestReplayedWithoutNewCli": true,
+  "formalRecordsUnchanged": true,
+  "fixedInputCount": 479,
+  "priorFailure": "../course-teaching-live-first/receipt.json",
+  "note": "One changed anonymous source-specific scenario passed; this does not replace the original failed general citation scenario or establish stable model or teacher quality. No production source changes.",
+  "files": {
+    "data/qa/course-primary-source-live-second/receipt.json": {
+      "bytes": 88118,
+      "sha256": "58041aa234a9f032665c2bafe18923ef266188ccef88214cba0e0560f68b53c1",
+      "gzipSha256": "93c6f65f78c43c090e75ddecb1a4cb371f0eb980471ae6ce0df34f092af5a77e"
+    },
+    "data/qa/course-primary-source-live-second/progress.json": {
+      "bytes": 88118,
+      "sha256": "58041aa234a9f032665c2bafe18923ef266188ccef88214cba0e0560f68b53c1",
+      "gzipSha256": "93c6f65f78c43c090e75ddecb1a4cb371f0eb980471ae6ce0df34f092af5a77e"
+    },
+    "data/qa/course-primary-source-live-second/primary_unit.json": {
+      "bytes": 12172,
+      "sha256": "90aeead4bad6f0d815c2114e18d46fe6e24020d6a0a024a810e56fa45eb4a1b5",
+      "gzipSha256": "f77c34b90307743d2b598844f3f5ac335b2b878714386172ac074aa3b22da071"
+    },
+    "data/qa/course-primary-source-live-second.log": {
+      "bytes": 147,
+      "sha256": "29a50aef45cdae1a07fc679971ebb72ac3eb4e625a4442753be61c1f3c265fa8",
+      "gzipSha256": "f8a840103001582b83935697c272b1d4d2502e777ae295be69a5c1c282769acd"
+    },
+    "scripts/qa/course-teaching-live.cjs": {
+      "bytes": 16576,
+      "sha256": "62ec11cb2c072aa234cfa7251260daa4681a7eff9408bce3c03e814cc7deac3e",
+      "gzipSha256": "d96a99187347817109ffa78d6c29dff7e8a622ef72548fa63ca3ea7f671a1161"
+    }
+  }
+}

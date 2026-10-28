@@ -1,0 +1,62 @@
+{
+  "runId": 40654860294,
+  "head": "a92c3c59f556c2b4e12bb652bfb1e60e051d5441",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "application",
+      "conclusion": "success"
+    },
+    {
+      "name": "browser",
+      "conclusion": "success"
+    },
+    {
+      "name": "postgres",
+      "conclusion": "success"
+    }
+  ],
+  "browser": {
+    "startTime": "2026-10-28T08:12:22.440Z",
+    "duration": 2136331.336,
+    "expected": 456,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "originalAttempts": 456,
+    "retries": 0,
+    "failedAttempts": 0
+  },
+  "originalTestSummaries": [
+    "application\tRun npm test\t2026-10-28T08:21:49.3322138Z ^[[2m      Tests ^[[22m ^[[1m^[[32m1682 passed^[[39m^[[22m^[[2m | ^[[22m^[[33m74 skipped^[[39m^[[90m (1756)^[[39m",
+    "postgres\tAuthorized primary and material course assistant scopes on PostgreSQL\t2026-10-28T08:17:25.2727293Z ^[[2m      Tests ^[[22m ^[[1m^[[32m25 passed^[[39m^[[22m^[[90m (25)^[[39m"
+  ],
+  "note": "Exact C2 course entry, selection, source scope and independent drafts. Full actual456 browser with mock providers. Real CLI first samples are separate and primary citation failed. No main chemistry merge or production142 delivery.",
+  "files": {
+    "data/qa/course-c2-ci-terminal.json": {
+      "bytes": 21586,
+      "sha256": "bc9460394364c05958bc37e6ed36291661f8c3004c6f45fcdb9e4d663a84edb4",
+      "gzipSha256": "f080d1a383ad06fa5ff8bc3466c1a106c19c5b5338bdfdea653a1766bbf464a7"
+    },
+    "data/qa/course-c2-ci-terminal.log": {
+      "bytes": 1093004,
+      "sha256": "9b79d4f5f1d3a07ef7a2e2418a8bcaa51ab6db628c8d85556a6bb547612316f8",
+      "gzipSha256": "61363bfb3dde33c035f3e604fa65ae573e8b926b7a65d7a7c329be7714aebd60"
+    },
+    "data/qa/course-c2-ci-artifacts/data/qa/source-course-full-browser.json": {
+      "bytes": 511836,
+      "sha256": "a0567a5a6cc84f328e1a059261789314bcaec56091ecedd52116e7308aa8dee2",
+      "gzipSha256": "187ce0c84af2835e3a4763bac81d9363e8f74bba0a34bc97e86bba025e62d407"
+    },
+    "data/qa/course-c2-before-push.json": {
+      "bytes": 133,
+      "sha256": "b4fa3a84b757c111929b36703b1d5cf2657f15b998c9d15c3461feebe03feabf",
+      "gzipSha256": "d01632ae4df11819016356f4709a0b756989bc5915c725a144ca9ca92a586da3"
+    },
+    "data/qa/course-c2-exact-source.tar": {
+      "bytes": 44707840,
+      "sha256": "4a96b01fa135c427b327e1599b0bf9bb037657f7f5b1929f407e5aee3adea536",
+      "gzipSha256": "0759a24337d1fdc184ece8f30f1f4baca8c483edb9bfa5be12d4927969a7075d"
+    }
+  }
+}

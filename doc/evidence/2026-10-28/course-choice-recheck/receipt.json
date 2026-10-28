@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "applicationRevision": "a92c3c59f556c2b4e12bb652bfb1e60e051d5441",
+  "webBuildId": "tFuILN_vmOeroJihJ_1zf",
+  "stats": {
+    "startTime": "2026-10-28T08:56:13.296Z",
+    "duration": 53988.799,
+    "expected": 14,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "originalAttempts": 14,
+  "retries": 0,
+  "controls": {
+    "checked": 3073,
+    "changed": []
+  },
+  "priorFullLocalRun": "../course-full-browser-first/receipt.json",
+  "fullFailureCause": "Original trace records GET login chunk5570 failed with net::ERR_NO_BUFFER_SPACE. Login form remained disabled and no choice command had been attempted. Product code and tests unchanged for focused recheck.",
+  "note": "Focused14 passes do not replace the first local455/456 full report. Independent exact remote456 original browser attempts passed. Only the separate real-model runner changed outside these browser inputs; full input snapshot records its actual current bytes.",
+  "files": {
+    "data/qa/course-choice-second.json": {
+      "bytes": 18027,
+      "sha256": "56bf64ac5c2ff67d96868e6fda0373781eaab1ff74aaa5bbe7fc23c611f0ce4f",
+      "gzipSha256": "bb83ee94cf59ae43b86683d5b7c5f876d64114bbbce77cd9bf1a834f55f094e5"
+    },
+    "data/qa/course-choice-second.log": {
+      "bytes": 2643,
+      "sha256": "44bce79ef2c6e652082fd06bc9504d9836effd629ed66eaada5c83bc01de4b72",
+      "gzipSha256": "e7a6e3fc5a407aa976d94aca4790a3c1a7a30ee7ae89fc23bdfe13d7a02b36a1"
+    },
+    "data/qa/course-choice-inputs-second.json": {
+      "bytes": 599377,
+      "sha256": "c7ec41b5ba4486b5ac19c99ed2d73fed3ce3ad2e4869c4444480ff446adc2d9d",
+      "gzipSha256": "84bf8c863e5b397dabf0b1bcdb95847c1db489e0f3625111592d2387c1aed77a"
+    },
+    "data/qa/course-choice-inputs-second-verification.log": {
+      "bytes": 34,
+      "sha256": "7950bfcc92628fe2c370af0834972ca57f65061fb99a7cdba77f284b5a3d66fd",
+      "gzipSha256": "5b1eb1b6a2690b122d534c035e82a4268f25f563580470f1b877a31add10091c"
+    },
+    "data/qa/course-full-first-trace-analysis.log": {
+      "bytes": 2336,
+      "sha256": "476ceb97bf670ce0cc7f2e739bb159a1c6437bad482898dd936347d0445ab862",
+      "gzipSha256": "7232a759e5251732786ba81922da3a3fa799515386b56a4317938ae4c014d4fb"
+    },
+    "tests/e2e/classroom-choice.spec.ts": {
+      "bytes": 15358,
+      "sha256": "49767acbd4ae3561aeaba009405e3681fff346b44a8c70e66bf8eb49b3616212",
+      "gzipSha256": "3991f25934145d8e4e0e2f60c27a9940cfb7be400c0d16fd2fc53f1f1eb8b962"
+    }
+  }
+}
