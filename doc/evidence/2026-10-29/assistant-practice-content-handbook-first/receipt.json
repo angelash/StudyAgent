@@ -1,0 +1,90 @@
+{
+  "at": "2026-10-28T21:43:58.449019+00:00",
+  "passed": true,
+  "sourceRevision": "c58bdb6bac51f49f936f7c85ceeecba0da34896d",
+  "scope": "Static design mapping, pure authored audit and offline handbook only; no new application test run.",
+  "features": {
+    "areas": 14,
+    "features": 133,
+    "activeNormalApiRoutes": 444,
+    "coveredApiRoutes": 444
+  },
+  "sourceFiles": 676,
+  "markdownLinks": 4208,
+  "offlineViewerChecks": 10,
+  "failuresRetained": [
+    "First handbook check rejected stale content-snapshot baseline0e7f versus new implementationc58b. Original failure kept; reran existing pure authored audit and snapshot generator, then passed the unchanged validator."
+  ],
+  "secretScan": {
+    "artifacts": "all three new content evidence directories",
+    "findings": []
+  },
+  "files": [
+    {
+      "source": "data/qa/practice-content-first/handbook-build-first.log",
+      "archive": "data/qa/practice-content-first/handbook-build-first.log.gz",
+      "sha256": "3a558e46c2732702b865ff9ccca13eaea48e33cf523b62d80b2087464c42f0a2",
+      "bytes": 102
+    },
+    {
+      "source": "data/qa/practice-content-first/handbook-content-audit-first.log",
+      "archive": "data/qa/practice-content-first/handbook-content-audit-first.log.gz",
+      "sha256": "6b1528278f408783f3b30fee14e1c16e49a7466b6de730bc3102d2a0fe481792",
+      "bytes": 119
+    },
+    {
+      "source": "data/qa/practice-content-first/handbook-content-snapshot-first.log",
+      "archive": "data/qa/practice-content-first/handbook-content-snapshot-first.log.gz",
+      "sha256": "c3a5efa19a654a5aa570cadcba467910d051b5a4d1250a149cb6452c1eb9a8e7",
+      "bytes": 2612
+    },
+    {
+      "source": "data/qa/practice-content-first/handbook-inventory-first.log",
+      "archive": "data/qa/practice-content-first/handbook-inventory-first.log.gz",
+      "sha256": "ba9995414e0128daefd6a5037ff2a4368616bb9badccac12a9516b7a19e0393e",
+      "bytes": 487
+    },
+    {
+      "source": "data/qa/practice-content-first/handbook-validation-first-receipt.json",
+      "archive": "data/qa/practice-content-first/handbook-validation-first-receipt.json.gz",
+      "sha256": "87fed78ec30ef16ec022f903b095e7436722913a82a42e756eb8779aeafb1f21",
+      "bytes": 181
+    },
+    {
+      "source": "data/qa/practice-content-first/handbook-validation-first.log",
+      "archive": "data/qa/practice-content-first/handbook-validation-first.log.gz",
+      "sha256": "1cb42cef63c742791716245f6823a9ce48becdad35f3b61624a0b4b95b63327d",
+      "bytes": 1054
+    },
+    {
+      "source": "data/qa/practice-content-first/handbook-validation-second.log",
+      "archive": "data/qa/practice-content-first/handbook-validation-second.log.gz",
+      "sha256": "4b67924067db4fde22c97dbde3b0f0b73d8826c8fc30563ca88384d2d874cbc1",
+      "bytes": 281
+    },
+    {
+      "source": "data/qa/project-design-authored-audit.json",
+      "archive": "data/qa/project-design-authored-audit.json.gz",
+      "sha256": "d243e36bf9fefa8e100739551512b7f207816c8ca54ffb343d9be355a3bc458c",
+      "bytes": 861290
+    },
+    {
+      "source": "doc/design/feature-catalog.json",
+      "archive": "doc/design/feature-catalog.json.gz",
+      "sha256": "e56f1c34377a5496f828cf3e7a2972ab55256dd3f93537460e008fb033484168",
+      "bytes": 559630
+    },
+    {
+      "source": "doc/design/generated/content-snapshot.json",
+      "archive": "doc/design/generated/content-snapshot.json.gz",
+      "sha256": "108ff23d38fdf545c94bea16863af0d6afd55a3c1e65500859dbe7205515d1cd",
+      "bytes": 39623
+    },
+    {
+      "source": "doc/design/generated/design-validation.json",
+      "archive": "doc/design/generated/design-validation.json.gz",
+      "sha256": "0c8028675ac88e58bfc4bc7465116d790a274d06283ce384d7e14d2adf13a6bf",
+      "bytes": 90237
+    }
+  ]
+}

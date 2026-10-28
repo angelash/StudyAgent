@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "0e7f3c349c2d3fd2b217dd84e285d4399967f7fd",
+  "sourceRevision": "c58bdb6bac51f49f936f7c85ceeecba0da34896d",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 465,
@@ -10,12 +10,12 @@
     "activeModules": 19,
     "activeControllers": 49,
     "apiClasses": 173,
-    "apiFunctions": 533,
+    "apiFunctions": 540,
     "domainCollections": 104,
-    "contractTypes": 420,
+    "contractTypes": 425,
     "webPages": 31,
     "webRouteHandlers": 1,
-    "apiTestFiles": 208,
+    "apiTestFiles": 209,
     "browserTestFiles": 45
   },
   "modules": [
@@ -41950,6 +41950,48 @@
       "signature": "knowledgeMaterialCoverage(atom: KnowledgeAtom, candidates: MeasurementItem[]): KnowledgeMaterialCoverage"
     },
     {
+      "file": "apps/api/src/modules/learning/assistant-practice-content.ts",
+      "name": "validateAssistantPracticeContent",
+      "line": 6,
+      "signature": "validateAssistantPracticeContent(prepared: PreparedAssistantPractice, value: unknown): AssistantPracticeContent"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-content.ts",
+      "name": "validateAssistantPracticeReview",
+      "line": 26,
+      "signature": "validateAssistantPracticeReview(prepared: PreparedAssistantPractice, original: unknown, value: unknown)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-content.ts",
+      "name": "projectAssistantPracticeForLearner",
+      "line": 33,
+      "signature": "projectAssistantPracticeForLearner(prepared: PreparedAssistantPractice, value: unknown): AssistantPracticeLearnerProjection"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-source.ts",
+      "name": "fail",
+      "line": 16,
+      "signature": "fail(reason: string): never"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-source.ts",
+      "name": "sourceIdentity",
+      "line": 19,
+      "signature": "sourceIdentity(origin: AssistantArtifactOrigin, input: AssistantPracticeContentInput, targetScope: AssistantPracticeTargetScope)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-source.ts",
+      "name": "prepareAssistantTeachingPractice",
+      "line": 75,
+      "signature": "prepareAssistantTeachingPractice(origin: AssistantArtifactOrigin, value: AssistantPracticeContentInput, scopeValue: AssistantPracticeTargetScope, model: { id: string; label: string }, available: boolean): PreparedAssistantPractice"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-source.ts",
+      "name": "assertPreparedAssistantPractice",
+      "line": 90,
+      "signature": "assertPreparedAssistantPractice(prepared: PreparedAssistantPractice)"
+    },
+    {
       "file": "apps/api/src/modules/learning/assistant-whiteboard-content.ts",
       "name": "validateAssistantWhiteboardContent",
       "line": 7,
@@ -45162,6 +45204,41 @@
       ]
     },
     {
+      "name": "AssistantPracticeContent",
+      "file": "packages/contracts/src/assistant-practice-content.ts",
+      "line": 38,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "AssistantPracticeQuestion",
+      "file": "packages/contracts/src/assistant-practice-content.ts",
+      "line": 39,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "AssistantPracticeContentInput",
+      "file": "packages/contracts/src/assistant-practice-content.ts",
+      "line": 53,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "AssistantPracticeTargetScope",
+      "file": "packages/contracts/src/assistant-practice-content.ts",
+      "line": 65,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "AssistantPracticeLearnerProjection",
+      "file": "packages/contracts/src/assistant-practice-content.ts",
+      "line": 68,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
       "name": "AssistantPracticePreflightInput",
       "file": "packages/contracts/src/assistant-practice.ts",
       "line": 14,
@@ -45260,7 +45337,7 @@
         {
           "name": "audience",
           "optional": false,
-          "type": "{ kind: 'adult' | 'student'; studentId: string | null; subject: string | null;\n    sourceGrade: number | null; profileGrade: number | null; scopeGrade: number | null; scopeVersion: number | null;\n    scopeFingerprint: string | null; scopeHref: string | null }"
+          "type": "{ kind: 'adult' | 'student'; studentId: string | null; subject: string | null;\r\n    sourceGrade: number | null; profileGrade: number | null; scopeGrade: number | null; scopeVersion: number | null;\r\n    scopeFingerprint: string | null; scopeHref: string | null }"
         },
         {
           "name": "coverage",
@@ -45305,7 +45382,7 @@
         {
           "name": "blocked",
           "optional": true,
-          "type": "{ code: 'source_budget_exceeded' | 'historical_source_confirmation_required' | 'audience_transfer_confirmation_required'\n    | 'learning_scope_required' | 'source_target_grade_mismatch' | 'source_target_subject_mismatch' | 'practice_coverage_gap'; message: string }"
+          "type": "{ code: 'source_budget_exceeded' | 'historical_source_confirmation_required' | 'audience_transfer_confirmation_required'\r\n    | 'learning_scope_required' | 'source_target_grade_mismatch' | 'source_target_subject_mismatch' | 'practice_coverage_gap'; message: string }"
         }
       ]
     },
@@ -52202,7 +52279,7 @@
         {
           "name": "meta",
           "optional": false,
-          "type": "{\n    requestId: string;\n    timestamp: string;\n  }"
+          "type": "{\r\n    requestId: string;\r\n    timestamp: string;\r\n  }"
         }
       ]
     },
@@ -59362,6 +59439,7 @@
     "apps/api/src/modules/gesp/gesp.integration.test.ts",
     "apps/api/src/modules/gesp/isolated-runner.test.ts",
     "apps/api/src/modules/gesp/student-curriculum.test.ts",
+    "apps/api/src/modules/learning/assistant-practice-content.test.ts",
     "apps/api/src/modules/learning/assistant-practice-preflight.integration.test.ts",
     "apps/api/src/modules/learning/assistant-whiteboard-content.test.ts",
     "apps/api/src/modules/learning/assistant-whiteboard-lifecycle.integration.test.ts",

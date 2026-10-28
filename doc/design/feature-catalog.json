@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "0e7f3c349c2d3fd2b217dd84e285d4399967f7fd",
+  "sourceRevision": "c58bdb6bac51f49f936f7c85ceeecba0da34896d",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -5541,7 +5541,7 @@
             "/admin/ai-tools"
           ],
           "inputs": "本人完整来源及明确受众、目标孩子/学科/1至3原子点、旧源及跨受众确认",
-          "implementation": "只读重建完整来源，分开原课程/档案/当前scope年级；同孩子同学科约束、监护权限与当前评测保护。eligibleMeasurements及canonicalFamily计算审核题量、曝光及未曝光结构，原诊断/训练/原卷曝光保留；整体指纹绑定scope、定义、全部候选内容/映射和曝光身份，不输出候选答案。18000完整预算不截断，未知字段和范围冲突拒绝。",
+          "implementation": "只读重建完整来源，分开原课程/档案/当前scope年级；同孩子同学科约束、监护权限与当前评测保护。eligibleMeasurements及canonicalFamily计算审核题量、曝光及未曝光结构，原诊断/训练/原卷曝光保留；整体指纹绑定scope、定义、全部候选内容/映射和曝光身份，不输出候选答案。18000完整预算不截断，未知字段和范围冲突拒绝。 D2b纯协议冻结完整来源/明确目标及固定模型，2至6题分类+理由或开放表达、逐题sourceMap/单点覆盖、18000来源与22000正文预算及独立严格复核；初始作答投影排除参考答案、提示及私聊。Prepared只证明内部一致，实时权限/范围/评测由未来service另行核查。",
           "outputs": "完整原文、明确范围/原子目标、审核覆盖摘要、原定义/来源指纹与阻断原因",
           "collections": [
             "assistantSessions",
@@ -5553,7 +5553,7 @@
             "practiceSessions",
             "paperPracticeSessions"
           ],
-          "limits": "D1只读预检已实际SQLite/PG各20通过、零队列/业务写入及完整API1802/74留证；无创建/采用/答题UI、schema24/正式证据/指导/日历写入。整合候选精确CI重新运行全站/PG，实际交付仍待。D2学生分点assignment及成人/家长私有自练、D3真实报告指导和D4冲突排期继续，旧501不冒充D1整站。",
+          "limits": "D1实际SQLite/PG各20、完整API1802/74独立留证；D2b纯正文/原白板兼容最终61/61及15源码/3编译SHA通过，复用现有知识原子名称/both学期约束。无新端点、创建/采用/答题UI、schema24或正式证据；当前schema23整合精确CI及实际交付仍待。D2持久候选/assignment/成人自练、D3真实报告指导和D4冲突排期继续；纯协议与测试数不替代教学效果。",
           "endpoints": [
             {
               "verb": "POST",
@@ -5577,7 +5577,12 @@
             "apps/api/src/modules/learning/assistant-practice-preflight.service.ts",
             "apps/api/src/modules/learning/assistant-practice-preflight.integration.test.ts",
             "scripts/qa/run-assistant-practice-preflight.cjs",
-            "doc/product/147-conversation-practice-guidance-and-review.md"
+            "doc/product/147-conversation-practice-guidance-and-review.md",
+            "packages/contracts/src/assistant-practice-content.ts",
+            "apps/api/src/modules/learning/assistant-practice-source.ts",
+            "apps/api/src/modules/learning/assistant-practice-content.ts",
+            "apps/api/src/modules/learning/assistant-practice-content.test.ts",
+            "scripts/qa/run-assistant-practice-content.cjs"
           ],
           "tests": [
             "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",

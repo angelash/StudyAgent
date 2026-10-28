@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`0e7f3c349c2d3fd2b217dd84e285d4399967f7fd`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`c58bdb6bac51f49f936f7c85ceeecba0da34896d`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -160,6 +160,14 @@
 - `AssistantNote`：[packages/contracts/src/assistant-artifact.ts:65](../../../packages/contracts/src/assistant-artifact.ts#L65)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 - `AssistantNotePage`：[packages/contracts/src/assistant-artifact.ts:69](../../../packages/contracts/src/assistant-artifact.ts#L69)；字段：`items`、`nextCursor`。
 - `AssistantNoteExport`：[packages/contracts/src/assistant-artifact.ts:70](../../../packages/contracts/src/assistant-artifact.ts#L70)；字段：`filename`、`mime`、`content`。
+
+### packages/contracts/src/assistant-practice-content.ts
+
+- `AssistantPracticeContent`：[packages/contracts/src/assistant-practice-content.ts:38](../../../packages/contracts/src/assistant-practice-content.ts#L38)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantPracticeQuestion`：[packages/contracts/src/assistant-practice-content.ts:39](../../../packages/contracts/src/assistant-practice-content.ts#L39)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantPracticeContentInput`：[packages/contracts/src/assistant-practice-content.ts:53](../../../packages/contracts/src/assistant-practice-content.ts#L53)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantPracticeTargetScope`：[packages/contracts/src/assistant-practice-content.ts:65](../../../packages/contracts/src/assistant-practice-content.ts#L65)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantPracticeLearnerProjection`：[packages/contracts/src/assistant-practice-content.ts:68](../../../packages/contracts/src/assistant-practice-content.ts#L68)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 
 ### packages/contracts/src/assistant-practice.ts
 
