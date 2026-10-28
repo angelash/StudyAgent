@@ -4,6 +4,7 @@ const fs = require('node:fs'), path = require('node:path'), assert = require('no
 const { createHash, randomUUID } = require('node:crypto'), { execFileSync } = require('node:child_process');
 const { NestFactory } = require('@nestjs/core'), request = require('supertest');
 const root = path.resolve(__dirname, '../..'), arg = process.argv.indexOf('--output');
+const primarySourceOnly = process.argv.includes('--primary-source-only');
 if (arg < 0 || !process.argv[arg + 1]) throw Error('Explicit fresh --output required');
 const directory = path.resolve(root, process.argv[arg + 1]);
 if (!directory.startsWith(path.join(root, 'data/qa') + path.sep) || fs.existsSync(directory)) throw Error('Fresh owned QA directory required');
@@ -41,7 +42,8 @@ async function main() {
     assert(context.report === null && context.plan === null && context.scope === null && context.currentQuestion === null);
     assert.deepEqual(context.evidenceIds, []); assert(!/PRIVATE_|studentId|ownerUserId|withheldAnswer|scoring/.test(input.context));
     save();
-    return structured(input, schema, check, custom, event => { observed.attempts.push(event); save(); });
+    return structured(input, schema, value => { (observed.originalStructuredOutputs ??= []).push(JSON.parse(JSON.stringify(value))); save(); return check(value); }, custom,
+      event => { observed.attempts.push(event); save(); });
   };
   let actor;
   async function call(method, route, body) {
@@ -51,7 +53,7 @@ async function main() {
   actor = await call('post', '/auth/register', { principal: 'course-live-' + randomUUID() + '@local.test', credential: 'Synthetic-Course-' + randomUUID() });
   const student = (await call('post', '/students', { nickname: '匿名课程学习者', grade: 3, preferredSessionMinutes: 15, defaultVersionMap: { math: '', chinese: '', english: '' } })).profile;
   const now = new Date().toISOString(), primaryId = 'primary-live-' + randomUUID(), materialId = 'material-live-' + randomUUID();
-  const teaching = { reviewStatus: 'approved', explanation: '比较两个量时，先检查它们是否来自同一个整体，再核对单位。',
+  const teaching = { reviewStatus: 'approved', explanation: primarySourceOnly ? '比较同一条纸带两部分的长度时，可以先把这条纸带分成大小相等的份，再比较各部分占了几份；每份大小相同，份数多的部分就更长。比较不同纸带时，不能只比较所占份数，还应核对每份的实际长度。' : '比较两个量时，先检查它们是否来自同一个整体，再核对单位。',
     example: { prompt: '比较同一条纸带中两部分的长度。', steps: ['确认同一个整体', '将每份的大小统一'], conclusion: '相同单位下才能直接比较数量。' },
     commonErrors: [{ code: 'unit', observation: '只看数字大小，没有先检查单位。', alternativeExplanations: ['可能没有辨清同一整体。'], verification: '换一条新的纸带，再解释比较条件。' }],
     verification: { understanding: '说明为什么比较前要检查整体和单位。', procedure: '解释一次统一单位的完整步骤。', transfer: '换一个生活情境说明关系。', retention: '间隔一段时间，再用独立新题核对。' } };
@@ -76,7 +78,7 @@ async function main() {
   const collections = ['classroomSessions', 'diagnosticResponses', 'practiceAttempts', 'diagnosticPlans', 'diagnosticHypotheses', 'scoringRevisions', 'masteryEstimates', 'studioCourses', 'sourceCourses'];
   const formal = () => store.requestContext(() => sha(Buffer.from(JSON.stringify(collections.map(n => store.select(n, {}))))));
   receipt.formalBeforeSha256 = await formal();
-  for (const mode of ['lecture', 'primary_unit', 'material_lesson']) {
+  for (const mode of primarySourceOnly ? ['primary_unit'] : ['lecture', 'primary_unit', 'material_lesson']) {
     const row = { mode, requestedModelId: 'auto', status: 'running', attempts: [], startedAt: new Date().toISOString() }; receipt.cases.push(row); observed = row; save(); const start = Date.now();
     try {
       assert.equal((await call('get', '/ai/models')).defaultModel, 'deepseek-v4-flash');
@@ -94,7 +96,10 @@ async function main() {
       row.expectedTeaching = JSON.parse(JSON.stringify((frozen.lectureSnapshot ?? frozen.courseSnapshot).teaching));
       row.selectedCharacters = mode === 'lecture' ? JSON.stringify({ lecture: frozen.lectureSnapshot, scope: null, report: null, plan: null,
         memory: null, definitionNotice: null, currentQuestion: null, evidenceIds: [] }).length : descriptor.selectedCharacters;
-      const message = mode === 'lecture' ? '请依据本讲正文解释个人困扰与公共议题的区别，给一个匿名例子和反例。请通过sourceKeys引用实际支持解释的本讲来源，不评定学习者能力。' :
+      const message = primarySourceOnly ? '请逐句解释本课“统一单位”这一段教学：' + teaching.explanation +
+        ' 请说明比较同一条纸带和比较不同纸带时，需要核对什么。解释依据的是本次教学来源' + row.expectedTeaching.sources[0].key +
+        '，请在输出JSON的sourceKeys数组中填写这个实际来源key，并给一个符合原文条件的匿名例子。不要给学习者作能力评定。' :
+        mode === 'lecture' ? '请依据本讲正文解释个人困扰与公共议题的区别，给一个匿名例子和反例。请通过sourceKeys引用实际支持解释的本讲来源，不评定学习者能力。' :
         '请依据所选教学解释为什么比较数量前要核对整体与单位，给一个匿名例子和反例。请通过sourceKeys引用实际支持解释的本课来源，不评定学习者能力。';
       const context = await call('get', base + '/context'), turnCommand = { requestKey: randomUUID(), message, modelId: 'auto', contextVersion: context.contextVersion };
       const created = await call('post', base + '/turns', turnCommand); row.turnId = created.id; row.modelId = created.modelId; assert.equal(created.modelId, 'deepseek-v4-flash');
