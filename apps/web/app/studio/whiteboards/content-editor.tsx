@@ -5,6 +5,8 @@ import { ApiRequestError, apiRequest } from '../../../lib/api';
 import { WhiteboardExhibit } from '../whiteboard-exhibit';
 import { editableAssistantContentSchema, editableTopicContentSchema } from './content-draft';
 import { AssistantWhiteboardOrigin, TopicSourceMapEditor, useWhiteboardSource } from './assistant-source';
+import { useSourceWriteGuard } from './source-write-guard';
+import { readRejectedTopicEdits, rememberRejectedTopicEdit, type RejectedTopicEdit } from './rejected-edits';
 import { TopicManuscript } from './manuscript';
 import { topicCopies, topicStorage } from './local-copies';
 import { topicCommandMatches } from './command-digest';
@@ -18,6 +20,8 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange: re
   onDirtyChange: (value: boolean) => void;
 }) {
   const [content, setContent] = React.useState<TopicWhiteboardContent>(() => structuredClone(row.content!));
+  const writeGuard = useSourceWriteGuard();
+  const [failedEdits, setFailedEdits] = React.useState<RejectedTopicEdit[]>([]), [unretainedFailure, setUnretainedFailure] = React.useState(false);
   const isSource = row.audience.kind === 'assistant', source = useWhiteboardSource(row.id, isSource);
   const savedSchema = isSource ? assistantWhiteboardContentSchema : topicWhiteboardContentSchema;
   const localSchema = isSource ? editableAssistantContentSchema : editableTopicContentSchema;
@@ -46,6 +50,7 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange: re
   React.useEffect(() => { onDirtyChange(!ready || dirty || changedOnServer || Boolean(pending) || figurePending); }, [ready, dirty, changedOnServer, pending, figurePending, onDirtyChange]);
   React.useEffect(() => {
     try {
+      setFailedEdits(readRejectedTopicEdits(ownerId, row.id));
       for (const candidate of storage.restoreKeys) {
         const raw = localStorage.getItem(candidate); if (!raw || raw.length > 256000) continue;
         const saved = decode(raw);
@@ -88,21 +93,25 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange: re
         const original = await apiRequest<TopicWhiteboardDraftView>(path + '/requests/' + encodeURIComponent(command.requestKey), { signal: operation.signal });
         if (await topicCommandMatches('edit', command, original.receipt?.commandFingerprint)) result = original;
       } catch (error) { if (!(error instanceof ApiRequestError) || error.status !== 404) throw error; }
+      if (!result && (writeGuard.blocked || writeGuard.checking)) { setNotice('当前写入资格尚未恢复。原修改请求和完整本机稿继续保留，请先重新核对权限。'); return; }
       result ??= await apiRequest<TopicWhiteboardDraftView>(path + '/content', { method: 'PATCH', body: JSON.stringify(command), signal: operation.signal });
       if (operation.signal.aborted) return;
       if (result.receipt?.key !== command.requestKey || result.receipt.kind !== 'edit') throw Error('原修改回执尚未确认，请保留原命令后继续定位。');
       setPending(null); onSaved(result);
       if (result.content && result.contentFingerprint === result.receipt.contentFingerprint) {
         setBaseline({ fingerprint: result.contentFingerprint!, revision: result.revision, content: result.content });
-        const currentContent = topicWhiteboardContentSchema.safeParse(latest.current);
-        if (start === sequence.current && currentContent.success && JSON.stringify(currentContent.data) === JSON.stringify(topicWhiteboardContentSchema.parse(command.content))) {
+        const currentContent = savedSchema.safeParse(latest.current);
+        if (start === sequence.current && currentContent.success && JSON.stringify(currentContent.data) === JSON.stringify(savedSchema.parse(command.content))) {
           setContent(result.content); latest.current = result.content;
         }
         setNotice('完整改稿已保存；原AI复核继续保留，修改后的内容需要重新核对。');
       } else setNotice('原修改已保存过，但服务器还有较新版本。本机全文继续保留，请比较后选择基线。');
     } catch (error) {
       if (operation.signal.aborted) return;
-      if (error instanceof ApiRequestError && [400, 409].includes(error.status)) setPending(null);
+      writeGuard.capture(error);
+      if (error instanceof ApiRequestError && [400, 409].includes(error.status)) try {
+        const copy = rememberRejectedTopicEdit(ownerId, row.id, command); setFailedEdits(old => [copy, ...old.filter(item => item.command.requestKey !== copy.command.requestKey)]); setUnretainedFailure(false); setPending(null);
+      } catch { setStorageError(true); setUnretainedFailure(true); onCanLeaveChange(false); }
       setNotice((error as Error).message + ' 本机全文仍保留。');
       if (error instanceof ApiRequestError && error.status === 409) try {
         const current = await apiRequest<TopicWhiteboardDraftView>('/learning/studio/topic-whiteboards/drafts/' + row.id, { signal: operation.signal });
@@ -120,7 +129,9 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange: re
     {isSource && <aside className="tw-source-context"><h3>来自本人对话的教学草稿</h3><p>原教学年级：{row.audience.kind === 'assistant' ? row.audience.courseGrade ?? '未指定' : ''} · 学生档案年级：{row.audience.kind === 'assistant' ? row.audience.profileGrade ?? '未指定' : ''}</p>
       {source.error ? <p role="alert">{source.error}。本机改稿仍保留。</p> : source.value ? <AssistantWhiteboardOrigin origin={source.value.origin}/> : <p role="status">正在核对原对话来源…</p>}</aside>}
     <header><div><h2>完整教学稿</h2><p>{dirty ? '有本机修改' : '与所用基线一致'} · {storageError ? '本机存储不可用' : '本机草稿已保留'}</p></div>
-      <button type="button" onClick={() => { downloadTopicJson({ content, baseline, pending }, 'whiteboard-edit.json'); setDownloadedRevision(sequence.current); onCanLeaveChange(true); }}>下载完整改稿</button></header>
+      <button type="button" onClick={() => { downloadTopicJson({ content, baseline, pending, failedEdits }, 'whiteboard-edit.json'); setDownloadedRevision(sequence.current); onCanLeaveChange(true); }}>下载完整改稿</button></header>
+    {unretainedFailure && <aside className="tw-notice"><p>失败原请求尚未另存到本机，完整命令仍在当前页。请先下载完整改稿，再明确继续对照。</p><button disabled={downloadedRevision !== sequence.current} onClick={() => { setPending(null); setUnretainedFailure(false); }}>已下载完整副本，继续对照</button></aside>}
+    {!!failedEdits.length && <details className="tw-rejected-edits"><summary>已保留的失败原修改请求（{failedEdits.length}）</summary>{failedEdits.map(item => <article key={item.command.requestKey}><p>原基线版本 {item.command.expectedRevision} · {new Date(item.at).toLocaleString()}</p><button onClick={() => downloadTopicJson(item, 'whiteboard-rejected-edit-' + item.command.requestKey + '.json')}>下载完整原修改请求</button></article>)}</details>}
     {notice && <p className="tw-notice" role="status">{notice}</p>}
     <details className="tw-local-copies"><summary onClick={() => { try { setCopies(topicCopies(storage, decode, 256000)); } catch { setNotice('暂时无法读取其他本机副本，当前全文仍保留。'); } }}>查看其他本机改稿</summary>
       {copies.length ? copies.map(copy => <article key={copy.key}><b>{copy.value.content.title || '未填写标题的改稿'}</b><p>{copy.value.content.description}</p>
@@ -166,7 +177,7 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange: re
       onFigure={(index, figure) => {
         change({ ...content, scenes: content.scenes.map((scene, current) => { if (current !== index) return scene; const { figure: _previous, ...teaching } = scene; return figure ? { ...teaching, figure } : teaching; }) });
       }} onCanLeaveChange={figureCanLeaveChange} onPendingChange={figurePendingChange}/>
-    <footer><button className="tw-primary" disabled={busy || !ready || row.status !== 'ready' || changedOnServer && !pending || !dirty && !pending}
+    <footer><button className="tw-primary" disabled={busy || !ready || row.status !== 'ready' || (writeGuard.blocked || writeGuard.checking) && !pending || changedOnServer && !pending || !dirty && !pending}
       onClick={() => void save()}>{busy ? '正在核对保存回执…' : pending ? '恢复原修改请求' : '保存完整改稿'}</button></footer>
   </section>;
 }

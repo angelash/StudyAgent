@@ -1,0 +1,554 @@
+{
+  "passed": true,
+  "designBeforeImplementation": "6e389de8",
+  "runs": {
+    "source-guard-browser-first": {
+      "startTime": "2026-10-28T19:28:45.732Z",
+      "duration": 109332.965,
+      "expected": 10,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "source-guard-browser-second": {
+      "startTime": "2026-10-28T19:33:47.561Z",
+      "duration": 99262.707,
+      "expected": 11,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "source-guard-browser-third": {
+      "startTime": "2026-10-28T19:37:30.189Z",
+      "duration": 90693.90299999999,
+      "expected": 12,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "source-guard-native-postgres-first": {
+      "numPassedTests": 114,
+      "numFailedTests": 0,
+      "numPendingTests": 2
+    },
+    "source-guard-sqlite-first": {
+      "numPassedTests": 23,
+      "numFailedTests": 0,
+      "numPendingTests": 0
+    }
+  },
+  "retries": 0,
+  "changedInputHashes": {
+    "checked": 9,
+    "changed": []
+  },
+  "backendRuntimeChangedFrom1790Gate": [
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard.service.js"
+  ],
+  "implemented": [
+    "Source view returns original selection and historical-source acknowledgement for safe current preflight; no permissions or task credentials exposed.",
+    "Shared source write boundary checks current eligibility without generation, fences editing/images/adoption/retry and keeps read/cancel/local text available; paused learner resumes only after explicit recheck.",
+    "Protocol-specific normalization updates only unchanged local content; actual409 full mapped edit payload persists immutably by owner/draft/original key and survives reload/download.",
+    "Actual private PNG generation/original editing/adoption/reader and protected audio201 response; only upstream availability/owned sample output controlled, no live providers."
+  ],
+  "retainedFailures": [
+    "First12:10passed/2test fixture failures,missing required pause reason and text-only narration capability.",
+    "Second12:11passed/1test expectation failure:actual protected POST audio status is201,not200.",
+    "Third12:allpassed with the exact201 and audio content-type checks; no timeouts/retries/product limits weakened."
+  ],
+  "rawTracesLocalOnly": [
+    {
+      "path": "data/qa/source-course-browser-1793215655368-42548/browser-output/assistant-whiteboards-sour-b16a2-echecks-before-saving-again/trace.zip",
+      "sha256": "c79112ee6d04180e836550ebdad1f6ad03251bd6c98ee075b6f67ac8ae0f6c24",
+      "published": false
+    },
+    {
+      "path": "data/qa/source-course-browser-1793215655368-42548/browser-output/assistant-whiteboards-sour-4e339--use-the-existing-classroom/trace.zip",
+      "sha256": "8ddadf87144f700d90c82e0e787e2e39431378c9ddc34956ee27de66a85a539c",
+      "published": false
+    },
+    {
+      "path": "data/qa/source-course-browser-1793216017408-51932/browser-output/assistant-whiteboards-sour-4e339--use-the-existing-classroom/trace.zip",
+      "sha256": "ff5bd2e38da1a251554ac920373225f55ffb21aff500969f307b41ff89dc8e9a",
+      "published": false
+    }
+  ],
+  "limits": [
+    "One production backend projection changed; prior397-file equality belongs to the earlier core batch. New actualPG114/2 and SQLite23/23 validate the current DTO independently.",
+    "Counts overlap;12browser/114PG/23SQLite are separate runs,not summed.",
+    "Complete495 browser,new full API/exactCI/source schema23 main delivery remain required.",
+    "More local source drafts,two-tab recovery,budget/private late-response and other planned143D flows remain open;no whole-product,pixel/audio/teacher or real learning-outcome claim."
+  ],
+  "files": {
+    "data/qa/source-guard-api-types-first.log.gz": {
+      "sha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec",
+      "originalSha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "originalBytes": 68
+    },
+    "data/qa/source-guard-browser-first-inputs/apps/api/src/modules/learning/topic-whiteboard.service.ts.gz": {
+      "sha256": "b43643ceec3c467f18ab9b037cc2a92442786b9019d469f06ff9d7ae7617a4f0",
+      "originalSha256": "0173a4fd391890f18c699a9219857e7e307f9ac53b1f00ff0d2a424b6c01a94f",
+      "originalBytes": 30086
+    },
+    "data/qa/source-guard-browser-first-inputs/apps/web/app/studio/whiteboards/content-editor.tsx.gz": {
+      "sha256": "70261ca87c15d7195cc1ab53958fb829375aa69a2248bfc5d7db1347cfeafbcf",
+      "originalSha256": "b4262fb959dd1f936b03135f9a2b440d02be677ee79f0dab5d0932f124dd4dfd",
+      "originalBytes": 22062
+    },
+    "data/qa/source-guard-browser-first-inputs/apps/web/app/studio/whiteboards/figure-workbench.tsx.gz": {
+      "sha256": "7dfaea0ba4e260cfebfb02ed9b69ffdf35d930afff13b58d34f44b38541a0b94",
+      "originalSha256": "893a03fd291f9fdcf25535292a3e3c739e5ba49f70eb56d8d49c907e345dd06f",
+      "originalBytes": 25729
+    },
+    "data/qa/source-guard-browser-first-inputs/apps/web/app/studio/whiteboards/rejected-edits.ts.gz": {
+      "sha256": "3f3ee945faca1821eca3fb9f7691cee3b7a7a01531530ce467e0207491e5ee98",
+      "originalSha256": "3b0caca620200b76a1d05234b6ff229bccb7393f2838a244eb5100f3e7219dd3",
+      "originalBytes": 2142
+    },
+    "data/qa/source-guard-browser-first-inputs/apps/web/app/studio/whiteboards/source-write-guard.tsx.gz": {
+      "sha256": "9d24250dac1be7b319909f14c76b80e398040f009230a02de878565df913b811",
+      "originalSha256": "05ab1f3bf028b8fa6cb92ee86438c4578d90a731a1cf12e940db644ce6cd476b",
+      "originalBytes": 4202
+    },
+    "data/qa/source-guard-browser-first-inputs/apps/web/app/studio/whiteboards/workbench.tsx.gz": {
+      "sha256": "f63a629e905d812d33cc6d20c4b585b11964c32b8af4afe82f1b1381c212b793",
+      "originalSha256": "93b34bea499e4213a3ac9a6bc412eb1b24b95df8077bfb34c76d7df6da0e766c",
+      "originalBytes": 39525
+    },
+    "data/qa/source-guard-browser-first-inputs/apps/web/components/assistant-whiteboards.css.gz": {
+      "sha256": "ba5ea6a445d8118cc9e93044043360955580736f3d67d00a31f275b3c1147507",
+      "originalSha256": "fd5a89c5a9926b6a5c337b791b35fc1ee5df5bc6a796385581c53de579fcfdff",
+      "originalBytes": 2310
+    },
+    "data/qa/source-guard-browser-first-inputs/manifest.json.gz": {
+      "sha256": "2d660a7dbab6ad81f44c4b28bf358eb861bb6bfb5a17091c0886ac44733e2964",
+      "originalSha256": "195c02e1fc1a5ad2396fa3ab877a2930658988007066be437b76818c6d9bda51",
+      "originalBytes": 1117
+    },
+    "data/qa/source-guard-browser-first-inputs/packages/contracts/src/assistant-whiteboard.ts.gz": {
+      "sha256": "3e6d08311f73875542786c625c852ef51cc8ff31d7c5c1bdfcd327bd8d80879e",
+      "originalSha256": "83fc1fb1e6e0c6cb62e29ac2236c3298dc8d192e34e41c80f60356efe82ea553",
+      "originalBytes": 4227
+    },
+    "data/qa/source-guard-browser-first-inputs/tests/e2e/assistant-whiteboards.spec.ts.gz": {
+      "sha256": "99f419e78fb69acee5f08cc08f0148326aa4996603799ab735caed91f59935f4",
+      "originalSha256": "625029ad36614701197c0876bb19d1c24d981d0af8588404a0f3da784c1b4139",
+      "originalBytes": 24458
+    },
+    "data/qa/source-guard-browser-first.json.gz": {
+      "sha256": "dae98ccbf14390bd5c9d7d397e16b21999dce8314cdea239b6519534b1206542",
+      "originalSha256": "ac0dba591115d4a6f72e4474886eb9a2ea3e5756310365765ba061437069974c",
+      "originalBytes": 26394
+    },
+    "data/qa/source-guard-browser-first.log.gz": {
+      "sha256": "89e3406abd27182206b8dfb431b9e781f799f6a07774068314c6f900afdbbf78",
+      "originalSha256": "57fadd694c23ec0cc93da9f3d7758448a3a76d8f53e554f8749a7e608d408240",
+      "originalBytes": 12423
+    },
+    "data/qa/source-guard-browser-second.json.gz": {
+      "sha256": "f52b40caff919a3c9c74aec87591325012647ca8d160c00926c441f195a8b34c",
+      "originalSha256": "02d73def23a45e94372c5e88251d297741fc244aa510073a82fc393774e6c566",
+      "originalBytes": 21920
+    },
+    "data/qa/source-guard-browser-second.log.gz": {
+      "sha256": "05a5b057c14c05677bf4b29a3fc0da1fc881b8d48e5a115c5f9c9e96f0ba726e",
+      "originalSha256": "f40a4bdb27ed1c3f21d3bb0f19b9b9432b0b8a7f30dc0d6e850a7a63df4e272c",
+      "originalBytes": 6547
+    },
+    "data/qa/source-guard-browser-third.json.gz": {
+      "sha256": "2c9f6df26054b5169f77f741e34cb43808e67924d063bd99c60a3353a19ba592",
+      "originalSha256": "be388c8d8325d6499bf49c2dfa5477a82e190508124bcba216d4a6f85d2be6aa",
+      "originalBytes": 16310
+    },
+    "data/qa/source-guard-browser-third.log.gz": {
+      "sha256": "5eb84cc002fe2ecbab72a129cc86ffbba5825dc60b0d9ba952b7f141d6415f4a",
+      "originalSha256": "24d258dc442c250e095604ef6f864ffa5252c1652a6c534df41b5c23e8fccefa",
+      "originalBytes": 2808
+    },
+    "data/qa/source-guard-contracts-first.log.gz": {
+      "sha256": "521084c35c5e69a58e45089727c8237e9a0ff532d4093f7db94cac60e3e7f8f7",
+      "originalSha256": "37507ec299bfdbff8577690ca43771d39cd6c0270d4ec1b45e1ab09305f1e48f",
+      "originalBytes": 485
+    },
+    "data/qa/source-guard-native-postgres-first.json.gz": {
+      "sha256": "67cbd54cd34db46d8e3d5e8a4f89bd0e1f4878e9844c27cec60b9bad098ebea9",
+      "originalSha256": "03086c220090012b6ddbdcb38731def9cd4f3ae45d0e417490e59aa9f72120cd",
+      "originalBytes": 58670
+    },
+    "data/qa/source-guard-native-postgres-first.log.gz": {
+      "sha256": "fc6ea45c997e8e01126de924083b617c539bc85949f877342dc05c2a54be8b15",
+      "originalSha256": "61f6e61e9a457a99753e266216e76a47a953afa8497d762939f6e433c82d8f47",
+      "originalBytes": 9371
+    },
+    "data/qa/source-guard-second-inputs/apps/api/src/modules/learning/topic-whiteboard.service.ts.gz": {
+      "sha256": "b43643ceec3c467f18ab9b037cc2a92442786b9019d469f06ff9d7ae7617a4f0",
+      "originalSha256": "0173a4fd391890f18c699a9219857e7e307f9ac53b1f00ff0d2a424b6c01a94f",
+      "originalBytes": 30086
+    },
+    "data/qa/source-guard-second-inputs/apps/web/app/studio/whiteboards/content-editor.tsx.gz": {
+      "sha256": "70261ca87c15d7195cc1ab53958fb829375aa69a2248bfc5d7db1347cfeafbcf",
+      "originalSha256": "b4262fb959dd1f936b03135f9a2b440d02be677ee79f0dab5d0932f124dd4dfd",
+      "originalBytes": 22062
+    },
+    "data/qa/source-guard-second-inputs/apps/web/app/studio/whiteboards/figure-workbench.tsx.gz": {
+      "sha256": "7dfaea0ba4e260cfebfb02ed9b69ffdf35d930afff13b58d34f44b38541a0b94",
+      "originalSha256": "893a03fd291f9fdcf25535292a3e3c739e5ba49f70eb56d8d49c907e345dd06f",
+      "originalBytes": 25729
+    },
+    "data/qa/source-guard-second-inputs/apps/web/app/studio/whiteboards/rejected-edits.ts.gz": {
+      "sha256": "3f3ee945faca1821eca3fb9f7691cee3b7a7a01531530ce467e0207491e5ee98",
+      "originalSha256": "3b0caca620200b76a1d05234b6ff229bccb7393f2838a244eb5100f3e7219dd3",
+      "originalBytes": 2142
+    },
+    "data/qa/source-guard-second-inputs/apps/web/app/studio/whiteboards/source-write-guard.tsx.gz": {
+      "sha256": "9d24250dac1be7b319909f14c76b80e398040f009230a02de878565df913b811",
+      "originalSha256": "05ab1f3bf028b8fa6cb92ee86438c4578d90a731a1cf12e940db644ce6cd476b",
+      "originalBytes": 4202
+    },
+    "data/qa/source-guard-second-inputs/apps/web/app/studio/whiteboards/workbench.tsx.gz": {
+      "sha256": "f63a629e905d812d33cc6d20c4b585b11964c32b8af4afe82f1b1381c212b793",
+      "originalSha256": "93b34bea499e4213a3ac9a6bc412eb1b24b95df8077bfb34c76d7df6da0e766c",
+      "originalBytes": 39525
+    },
+    "data/qa/source-guard-second-inputs/apps/web/components/assistant-whiteboards.css.gz": {
+      "sha256": "ba5ea6a445d8118cc9e93044043360955580736f3d67d00a31f275b3c1147507",
+      "originalSha256": "fd5a89c5a9926b6a5c337b791b35fc1ee5df5bc6a796385581c53de579fcfdff",
+      "originalBytes": 2310
+    },
+    "data/qa/source-guard-second-inputs/manifest.json.gz": {
+      "sha256": "fb579abaaa52e322dd0140049297ce1929c43ced641443b3b86a1a8d29fed393",
+      "originalSha256": "dbacaa85db02910f82574a56db621fa1f1fa295788121f77af2d8baa264a1ce1",
+      "originalBytes": 1117
+    },
+    "data/qa/source-guard-second-inputs/packages/contracts/src/assistant-whiteboard.ts.gz": {
+      "sha256": "3e6d08311f73875542786c625c852ef51cc8ff31d7c5c1bdfcd327bd8d80879e",
+      "originalSha256": "83fc1fb1e6e0c6cb62e29ac2236c3298dc8d192e34e41c80f60356efe82ea553",
+      "originalBytes": 4227
+    },
+    "data/qa/source-guard-second-inputs/tests/e2e/assistant-whiteboards.spec.ts.gz": {
+      "sha256": "971a5822e86935223526ad58e3cddd8f28d492d5b78fddc5fed4d5be317e5908",
+      "originalSha256": "c96ddb452300be0c6fd4f4702d702ad5c0686dbaaa812628d2668c51f81ecc6e",
+      "originalBytes": 24997
+    },
+    "data/qa/source-guard-sqlite-first.json.gz": {
+      "sha256": "84f82daa949a241bb11ba46f90b75a823fc8a2ad0839135f38e309711755a444",
+      "originalSha256": "167bf4ca5a39b50733131db5516e3c11e9e165941642b5599be516a7b7f730ec",
+      "originalBytes": 11813
+    },
+    "data/qa/source-guard-sqlite-first.log.gz": {
+      "sha256": "4f33eecfc9f22418f02ff12c05846ba15aa535edd9984791e2bf3c7c949e74cf",
+      "originalSha256": "6895c161db54c7dbce397d36dedc1f1a1adcb5eb900874591b8c0979bb5cee8e",
+      "originalBytes": 3532
+    },
+    "data/qa/source-guard-third-inputs/apps/api/src/modules/learning/topic-whiteboard.service.ts.gz": {
+      "sha256": "b43643ceec3c467f18ab9b037cc2a92442786b9019d469f06ff9d7ae7617a4f0",
+      "originalSha256": "0173a4fd391890f18c699a9219857e7e307f9ac53b1f00ff0d2a424b6c01a94f",
+      "originalBytes": 30086
+    },
+    "data/qa/source-guard-third-inputs/apps/web/app/studio/whiteboards/content-editor.tsx.gz": {
+      "sha256": "70261ca87c15d7195cc1ab53958fb829375aa69a2248bfc5d7db1347cfeafbcf",
+      "originalSha256": "b4262fb959dd1f936b03135f9a2b440d02be677ee79f0dab5d0932f124dd4dfd",
+      "originalBytes": 22062
+    },
+    "data/qa/source-guard-third-inputs/apps/web/app/studio/whiteboards/figure-workbench.tsx.gz": {
+      "sha256": "7dfaea0ba4e260cfebfb02ed9b69ffdf35d930afff13b58d34f44b38541a0b94",
+      "originalSha256": "893a03fd291f9fdcf25535292a3e3c739e5ba49f70eb56d8d49c907e345dd06f",
+      "originalBytes": 25729
+    },
+    "data/qa/source-guard-third-inputs/apps/web/app/studio/whiteboards/rejected-edits.ts.gz": {
+      "sha256": "3f3ee945faca1821eca3fb9f7691cee3b7a7a01531530ce467e0207491e5ee98",
+      "originalSha256": "3b0caca620200b76a1d05234b6ff229bccb7393f2838a244eb5100f3e7219dd3",
+      "originalBytes": 2142
+    },
+    "data/qa/source-guard-third-inputs/apps/web/app/studio/whiteboards/source-write-guard.tsx.gz": {
+      "sha256": "9d24250dac1be7b319909f14c76b80e398040f009230a02de878565df913b811",
+      "originalSha256": "05ab1f3bf028b8fa6cb92ee86438c4578d90a731a1cf12e940db644ce6cd476b",
+      "originalBytes": 4202
+    },
+    "data/qa/source-guard-third-inputs/apps/web/app/studio/whiteboards/workbench.tsx.gz": {
+      "sha256": "f63a629e905d812d33cc6d20c4b585b11964c32b8af4afe82f1b1381c212b793",
+      "originalSha256": "93b34bea499e4213a3ac9a6bc412eb1b24b95df8077bfb34c76d7df6da0e766c",
+      "originalBytes": 39525
+    },
+    "data/qa/source-guard-third-inputs/apps/web/components/assistant-whiteboards.css.gz": {
+      "sha256": "ba5ea6a445d8118cc9e93044043360955580736f3d67d00a31f275b3c1147507",
+      "originalSha256": "fd5a89c5a9926b6a5c337b791b35fc1ee5df5bc6a796385581c53de579fcfdff",
+      "originalBytes": 2310
+    },
+    "data/qa/source-guard-third-inputs/manifest.json.gz": {
+      "sha256": "de7fd28abefe467828f3f51030911ae53b35b120ba7ce037a4a88cb6c936ea07",
+      "originalSha256": "b2e9887cdb00685b85f26f14c457c37c33e359844d363950c455b9eceedd7f83",
+      "originalBytes": 1117
+    },
+    "data/qa/source-guard-third-inputs/packages/contracts/src/assistant-whiteboard.ts.gz": {
+      "sha256": "3e6d08311f73875542786c625c852ef51cc8ff31d7c5c1bdfcd327bd8d80879e",
+      "originalSha256": "83fc1fb1e6e0c6cb62e29ac2236c3298dc8d192e34e41c80f60356efe82ea553",
+      "originalBytes": 4227
+    },
+    "data/qa/source-guard-third-inputs/tests/e2e/assistant-whiteboards.spec.ts.gz": {
+      "sha256": "bb3e9de7681a393f1f89850df366ee28233c7925f8a2ffd174f2bac62982d9af",
+      "originalSha256": "428c9b6bc49b149496feb522918240e88fc7ce6e221b050ee289f8765f8dfd1e",
+      "originalBytes": 25077
+    },
+    "data/qa/source-guard-web-types-first.log.gz": {
+      "sha256": "280feefa43a1a2d6b5ebb62618a6d36d932de3e009b707d14976e55a78dd4326",
+      "originalSha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc",
+      "originalBytes": 68
+    },
+    "data/qa/source-course-browser-1793215655368-42548/browser-output/assistant-whiteboards-sour-b16a2-echecks-before-saving-again/test-failed-1.png": {
+      "sha256": "45c19fa06b347f90d42973ff8b357b97750693413fd69bf118116aa0e8050cf7",
+      "originalSha256": "45c19fa06b347f90d42973ff8b357b97750693413fd69bf118116aa0e8050cf7",
+      "originalBytes": 94651
+    },
+    "data/qa/source-course-browser-1793215655368-42548/browser-output/assistant-whiteboards-sour-4e339--use-the-existing-classroom/test-failed-1.png": {
+      "sha256": "227e3f8ea50c9e3a05b84f5a40803f98eb32583ef35b5e49572fe6470143dc42",
+      "originalSha256": "227e3f8ea50c9e3a05b84f5a40803f98eb32583ef35b5e49572fe6470143dc42",
+      "originalBytes": 123537
+    },
+    "data/qa/source-course-browser-1793216017408-51932/browser-output/assistant-whiteboards-sour-4e339--use-the-existing-classroom/test-failed-1.png": {
+      "sha256": "6a7bd79844b2f9c96e3208d822d4787f84a8ed90baafa837158fe5f79ebac7dd",
+      "originalSha256": "6a7bd79844b2f9c96e3208d822d4787f84a8ed90baafa837158fe5f79ebac7dd",
+      "originalBytes": 147935
+    },
+    "data/qa/browser-evidence/source-guard-browser-first-953abb2efa/assistant-whiteboards/adopted-player-1440.png": {
+      "sha256": "16dfd868860413a9353c5032a57784ffba6b39c295ed4310d8edea2b36e96c69",
+      "originalSha256": "16dfd868860413a9353c5032a57784ffba6b39c295ed4310d8edea2b36e96c69",
+      "originalBytes": 129243
+    },
+    "data/qa/browser-evidence/source-guard-browser-first-953abb2efa/assistant-whiteboards/adopted-player-390.png": {
+      "sha256": "204f97b962cada75510836933a7b62e8ae2a4efc20a3a9dc02d58ea191ebbfa1",
+      "originalSha256": "204f97b962cada75510836933a7b62e8ae2a4efc20a3a9dc02d58ea191ebbfa1",
+      "originalBytes": 41711
+    },
+    "data/qa/browser-evidence/source-guard-browser-first-953abb2efa/assistant-whiteboards/adopted-player-768.png": {
+      "sha256": "38f98c81007cc40952d00ba5f06baf4c2c22a05793297c4c37f545dd68ef9409",
+      "originalSha256": "38f98c81007cc40952d00ba5f06baf4c2c22a05793297c4c37f545dd68ef9409",
+      "originalBytes": 51469
+    },
+    "data/qa/browser-evidence/source-guard-browser-first-953abb2efa/assistant-whiteboards/adopted-player-880.png": {
+      "sha256": "02c0e4e0d99f727108d41eb6303d8dc4d0fb49d2190ed0f55505d49ab305f9b5",
+      "originalSha256": "02c0e4e0d99f727108d41eb6303d8dc4d0fb49d2190ed0f55505d49ab305f9b5",
+      "originalBytes": 56330
+    },
+    "data/qa/browser-evidence/source-guard-browser-first-953abb2efa/assistant-whiteboards/original-create-recovered.png": {
+      "sha256": "ec77db4f58eca968e8b9d669188c86a297c5b782e485da55bc1ec9a4b45c8119",
+      "originalSha256": "ec77db4f58eca968e8b9d669188c86a297c5b782e485da55bc1ec9a4b45c8119",
+      "originalBytes": 100229
+    },
+    "data/qa/browser-evidence/source-guard-browser-first-953abb2efa/assistant-whiteboards/original-review-resumed.png": {
+      "sha256": "b08c601376d619ed999f9c57108e907566033636786e3523c8c7045ddab9a9e8",
+      "originalSha256": "b08c601376d619ed999f9c57108e907566033636786e3523c8c7045ddab9a9e8",
+      "originalBytes": 112729
+    },
+    "data/qa/browser-evidence/source-guard-browser-first-953abb2efa/assistant-whiteboards/source-selection-1440.png": {
+      "sha256": "537e224b712e9d6313c7855cd27758e59a6df1a366588e37952df44571fb6aef",
+      "originalSha256": "537e224b712e9d6313c7855cd27758e59a6df1a366588e37952df44571fb6aef",
+      "originalBytes": 138474
+    },
+    "data/qa/browser-evidence/source-guard-browser-first-953abb2efa/assistant-whiteboards/source-selection-390.png": {
+      "sha256": "de91bebc9b3fd32e8061bdef3d88e35d1298cb84de275062fa0f51cf550bc3e7",
+      "originalSha256": "de91bebc9b3fd32e8061bdef3d88e35d1298cb84de275062fa0f51cf550bc3e7",
+      "originalBytes": 85768
+    },
+    "data/qa/browser-evidence/source-guard-browser-first-953abb2efa/assistant-whiteboards/source-selection-768.png": {
+      "sha256": "6b89594d38ecbcfcc683c81529b00cb913c941d743c37b634fa7a7bc2dcd29f0",
+      "originalSha256": "6b89594d38ecbcfcc683c81529b00cb913c941d743c37b634fa7a7bc2dcd29f0",
+      "originalBytes": 95757
+    },
+    "data/qa/browser-evidence/source-guard-browser-first-953abb2efa/assistant-whiteboards/source-selection-880.png": {
+      "sha256": "06ac677cd89cc50f08e34e6d3b10e5eb9b1b4e66162c056761f06bee3af703ca",
+      "originalSha256": "06ac677cd89cc50f08e34e6d3b10e5eb9b1b4e66162c056761f06bee3af703ca",
+      "originalBytes": 96707
+    },
+    "data/qa/browser-evidence/source-guard-browser-first-953abb2efa/assistant-whiteboards/source409-original-command.png": {
+      "sha256": "b0161a796f5d42c74b8d586544c705742ad70b5836e3861e28c3602ae412a6a4",
+      "originalSha256": "b0161a796f5d42c74b8d586544c705742ad70b5836e3861e28c3602ae412a6a4",
+      "originalBytes": 117958
+    },
+    "data/qa/browser-evidence/source-guard-browser-second-d4ef31fe22/assistant-whiteboards/adopted-player-1440.png": {
+      "sha256": "07765757da225ce12cdc5587762e2e4eb9b548ea6bf0e1d63ab943e0ac91cd96",
+      "originalSha256": "07765757da225ce12cdc5587762e2e4eb9b548ea6bf0e1d63ab943e0ac91cd96",
+      "originalBytes": 129243
+    },
+    "data/qa/browser-evidence/source-guard-browser-second-d4ef31fe22/assistant-whiteboards/adopted-player-390.png": {
+      "sha256": "204f97b962cada75510836933a7b62e8ae2a4efc20a3a9dc02d58ea191ebbfa1",
+      "originalSha256": "204f97b962cada75510836933a7b62e8ae2a4efc20a3a9dc02d58ea191ebbfa1",
+      "originalBytes": 41711
+    },
+    "data/qa/browser-evidence/source-guard-browser-second-d4ef31fe22/assistant-whiteboards/adopted-player-768.png": {
+      "sha256": "38f98c81007cc40952d00ba5f06baf4c2c22a05793297c4c37f545dd68ef9409",
+      "originalSha256": "38f98c81007cc40952d00ba5f06baf4c2c22a05793297c4c37f545dd68ef9409",
+      "originalBytes": 51469
+    },
+    "data/qa/browser-evidence/source-guard-browser-second-d4ef31fe22/assistant-whiteboards/adopted-player-880.png": {
+      "sha256": "02c0e4e0d99f727108d41eb6303d8dc4d0fb49d2190ed0f55505d49ab305f9b5",
+      "originalSha256": "02c0e4e0d99f727108d41eb6303d8dc4d0fb49d2190ed0f55505d49ab305f9b5",
+      "originalBytes": 56330
+    },
+    "data/qa/browser-evidence/source-guard-browser-second-d4ef31fe22/assistant-whiteboards/original-create-recovered.png": {
+      "sha256": "bb0520b20b8e0361b2843b838a4f4fb875153db9fff272f0d3535cfb02c221c4",
+      "originalSha256": "bb0520b20b8e0361b2843b838a4f4fb875153db9fff272f0d3535cfb02c221c4",
+      "originalBytes": 100232
+    },
+    "data/qa/browser-evidence/source-guard-browser-second-d4ef31fe22/assistant-whiteboards/original-review-resumed.png": {
+      "sha256": "b08c601376d619ed999f9c57108e907566033636786e3523c8c7045ddab9a9e8",
+      "originalSha256": "b08c601376d619ed999f9c57108e907566033636786e3523c8c7045ddab9a9e8",
+      "originalBytes": 112729
+    },
+    "data/qa/browser-evidence/source-guard-browser-second-d4ef31fe22/assistant-whiteboards/paused-source-guard-resumed.png": {
+      "sha256": "8f39569ce6904d2370849c61bda26ce2c0500b2a5c7d4b889aad84662be40907",
+      "originalSha256": "8f39569ce6904d2370849c61bda26ce2c0500b2a5c7d4b889aad84662be40907",
+      "originalBytes": 67034
+    },
+    "data/qa/browser-evidence/source-guard-browser-second-d4ef31fe22/assistant-whiteboards/source-selection-1440.png": {
+      "sha256": "2ced3a704b4220575196cf786811bd26a7b6941bcb583274ec1a0ee9019ccbd2",
+      "originalSha256": "2ced3a704b4220575196cf786811bd26a7b6941bcb583274ec1a0ee9019ccbd2",
+      "originalBytes": 138483
+    },
+    "data/qa/browser-evidence/source-guard-browser-second-d4ef31fe22/assistant-whiteboards/source-selection-390.png": {
+      "sha256": "de91bebc9b3fd32e8061bdef3d88e35d1298cb84de275062fa0f51cf550bc3e7",
+      "originalSha256": "de91bebc9b3fd32e8061bdef3d88e35d1298cb84de275062fa0f51cf550bc3e7",
+      "originalBytes": 85768
+    },
+    "data/qa/browser-evidence/source-guard-browser-second-d4ef31fe22/assistant-whiteboards/source-selection-768.png": {
+      "sha256": "be61365965fb03751204e924b1021e095e11c039ef635f2f3b9ba0fed601da57",
+      "originalSha256": "be61365965fb03751204e924b1021e095e11c039ef635f2f3b9ba0fed601da57",
+      "originalBytes": 95762
+    },
+    "data/qa/browser-evidence/source-guard-browser-second-d4ef31fe22/assistant-whiteboards/source-selection-880.png": {
+      "sha256": "06ac677cd89cc50f08e34e6d3b10e5eb9b1b4e66162c056761f06bee3af703ca",
+      "originalSha256": "06ac677cd89cc50f08e34e6d3b10e5eb9b1b4e66162c056761f06bee3af703ca",
+      "originalBytes": 96707
+    },
+    "data/qa/browser-evidence/source-guard-browser-second-d4ef31fe22/assistant-whiteboards/source409-original-command.png": {
+      "sha256": "b0161a796f5d42c74b8d586544c705742ad70b5836e3861e28c3602ae412a6a4",
+      "originalSha256": "b0161a796f5d42c74b8d586544c705742ad70b5836e3861e28c3602ae412a6a4",
+      "originalBytes": 117958
+    },
+    "data/qa/browser-evidence/source-guard-browser-third-b5fb674144/assistant-whiteboards/adopted-player-1440.png": {
+      "sha256": "16dfd868860413a9353c5032a57784ffba6b39c295ed4310d8edea2b36e96c69",
+      "originalSha256": "16dfd868860413a9353c5032a57784ffba6b39c295ed4310d8edea2b36e96c69",
+      "originalBytes": 129243
+    },
+    "data/qa/browser-evidence/source-guard-browser-third-b5fb674144/assistant-whiteboards/adopted-player-390.png": {
+      "sha256": "204f97b962cada75510836933a7b62e8ae2a4efc20a3a9dc02d58ea191ebbfa1",
+      "originalSha256": "204f97b962cada75510836933a7b62e8ae2a4efc20a3a9dc02d58ea191ebbfa1",
+      "originalBytes": 41711
+    },
+    "data/qa/browser-evidence/source-guard-browser-third-b5fb674144/assistant-whiteboards/adopted-player-768.png": {
+      "sha256": "38f98c81007cc40952d00ba5f06baf4c2c22a05793297c4c37f545dd68ef9409",
+      "originalSha256": "38f98c81007cc40952d00ba5f06baf4c2c22a05793297c4c37f545dd68ef9409",
+      "originalBytes": 51469
+    },
+    "data/qa/browser-evidence/source-guard-browser-third-b5fb674144/assistant-whiteboards/adopted-player-880.png": {
+      "sha256": "02c0e4e0d99f727108d41eb6303d8dc4d0fb49d2190ed0f55505d49ab305f9b5",
+      "originalSha256": "02c0e4e0d99f727108d41eb6303d8dc4d0fb49d2190ed0f55505d49ab305f9b5",
+      "originalBytes": 56330
+    },
+    "data/qa/browser-evidence/source-guard-browser-third-b5fb674144/assistant-whiteboards/original-create-recovered.png": {
+      "sha256": "ec77db4f58eca968e8b9d669188c86a297c5b782e485da55bc1ec9a4b45c8119",
+      "originalSha256": "ec77db4f58eca968e8b9d669188c86a297c5b782e485da55bc1ec9a4b45c8119",
+      "originalBytes": 100229
+    },
+    "data/qa/browser-evidence/source-guard-browser-third-b5fb674144/assistant-whiteboards/original-review-resumed.png": {
+      "sha256": "b08c601376d619ed999f9c57108e907566033636786e3523c8c7045ddab9a9e8",
+      "originalSha256": "b08c601376d619ed999f9c57108e907566033636786e3523c8c7045ddab9a9e8",
+      "originalBytes": 112729
+    },
+    "data/qa/browser-evidence/source-guard-browser-third-b5fb674144/assistant-whiteboards/paused-source-guard-resumed.png": {
+      "sha256": "8f39569ce6904d2370849c61bda26ce2c0500b2a5c7d4b889aad84662be40907",
+      "originalSha256": "8f39569ce6904d2370849c61bda26ce2c0500b2a5c7d4b889aad84662be40907",
+      "originalBytes": 67034
+    },
+    "data/qa/browser-evidence/source-guard-browser-third-b5fb674144/assistant-whiteboards/private-source-image-and-narration.png": {
+      "sha256": "a862aca1eb6733b6dce3cb607d9326764f32649a85c2db91042cadd6df562f28",
+      "originalSha256": "a862aca1eb6733b6dce3cb607d9326764f32649a85c2db91042cadd6df562f28",
+      "originalBytes": 148018
+    },
+    "data/qa/browser-evidence/source-guard-browser-third-b5fb674144/assistant-whiteboards/source-selection-1440.png": {
+      "sha256": "2ced3a704b4220575196cf786811bd26a7b6941bcb583274ec1a0ee9019ccbd2",
+      "originalSha256": "2ced3a704b4220575196cf786811bd26a7b6941bcb583274ec1a0ee9019ccbd2",
+      "originalBytes": 138483
+    },
+    "data/qa/browser-evidence/source-guard-browser-third-b5fb674144/assistant-whiteboards/source-selection-390.png": {
+      "sha256": "de91bebc9b3fd32e8061bdef3d88e35d1298cb84de275062fa0f51cf550bc3e7",
+      "originalSha256": "de91bebc9b3fd32e8061bdef3d88e35d1298cb84de275062fa0f51cf550bc3e7",
+      "originalBytes": 85768
+    },
+    "data/qa/browser-evidence/source-guard-browser-third-b5fb674144/assistant-whiteboards/source-selection-768.png": {
+      "sha256": "be61365965fb03751204e924b1021e095e11c039ef635f2f3b9ba0fed601da57",
+      "originalSha256": "be61365965fb03751204e924b1021e095e11c039ef635f2f3b9ba0fed601da57",
+      "originalBytes": 95762
+    },
+    "data/qa/browser-evidence/source-guard-browser-third-b5fb674144/assistant-whiteboards/source-selection-880.png": {
+      "sha256": "06ac677cd89cc50f08e34e6d3b10e5eb9b1b4e66162c056761f06bee3af703ca",
+      "originalSha256": "06ac677cd89cc50f08e34e6d3b10e5eb9b1b4e66162c056761f06bee3af703ca",
+      "originalBytes": 96707
+    },
+    "data/qa/browser-evidence/source-guard-browser-third-b5fb674144/assistant-whiteboards/source409-original-command.png": {
+      "sha256": "b0161a796f5d42c74b8d586544c705742ad70b5836e3861e28c3602ae412a6a4",
+      "originalSha256": "b0161a796f5d42c74b8d586544c705742ad70b5836e3861e28c3602ae412a6a4",
+      "originalBytes": 117958
+    },
+    "final-inputs/apps/api/src/modules/learning/topic-whiteboard.service.ts.gz": {
+      "sha256": "b43643ceec3c467f18ab9b037cc2a92442786b9019d469f06ff9d7ae7617a4f0",
+      "originalSha256": "0173a4fd391890f18c699a9219857e7e307f9ac53b1f00ff0d2a424b6c01a94f",
+      "originalBytes": 30086
+    },
+    "final-inputs/apps/web/app/studio/whiteboards/content-editor.tsx.gz": {
+      "sha256": "70261ca87c15d7195cc1ab53958fb829375aa69a2248bfc5d7db1347cfeafbcf",
+      "originalSha256": "b4262fb959dd1f936b03135f9a2b440d02be677ee79f0dab5d0932f124dd4dfd",
+      "originalBytes": 22062
+    },
+    "final-inputs/apps/web/app/studio/whiteboards/figure-workbench.tsx.gz": {
+      "sha256": "7dfaea0ba4e260cfebfb02ed9b69ffdf35d930afff13b58d34f44b38541a0b94",
+      "originalSha256": "893a03fd291f9fdcf25535292a3e3c739e5ba49f70eb56d8d49c907e345dd06f",
+      "originalBytes": 25729
+    },
+    "final-inputs/apps/web/app/studio/whiteboards/rejected-edits.ts.gz": {
+      "sha256": "3f3ee945faca1821eca3fb9f7691cee3b7a7a01531530ce467e0207491e5ee98",
+      "originalSha256": "3b0caca620200b76a1d05234b6ff229bccb7393f2838a244eb5100f3e7219dd3",
+      "originalBytes": 2142
+    },
+    "final-inputs/apps/web/app/studio/whiteboards/source-write-guard.tsx.gz": {
+      "sha256": "9d24250dac1be7b319909f14c76b80e398040f009230a02de878565df913b811",
+      "originalSha256": "05ab1f3bf028b8fa6cb92ee86438c4578d90a731a1cf12e940db644ce6cd476b",
+      "originalBytes": 4202
+    },
+    "final-inputs/apps/web/app/studio/whiteboards/workbench.tsx.gz": {
+      "sha256": "f63a629e905d812d33cc6d20c4b585b11964c32b8af4afe82f1b1381c212b793",
+      "originalSha256": "93b34bea499e4213a3ac9a6bc412eb1b24b95df8077bfb34c76d7df6da0e766c",
+      "originalBytes": 39525
+    },
+    "final-inputs/apps/web/components/assistant-whiteboards.css.gz": {
+      "sha256": "ba5ea6a445d8118cc9e93044043360955580736f3d67d00a31f275b3c1147507",
+      "originalSha256": "fd5a89c5a9926b6a5c337b791b35fc1ee5df5bc6a796385581c53de579fcfdff",
+      "originalBytes": 2310
+    },
+    "final-inputs/packages/contracts/src/assistant-whiteboard.ts.gz": {
+      "sha256": "3e6d08311f73875542786c625c852ef51cc8ff31d7c5c1bdfcd327bd8d80879e",
+      "originalSha256": "83fc1fb1e6e0c6cb62e29ac2236c3298dc8d192e34e41c80f60356efe82ea553",
+      "originalBytes": 4227
+    },
+    "final-inputs/scripts/architecture/project-feature-definitions.cjs.gz": {
+      "sha256": "543b966d3065e276e00eface002881821afc03987dbb82c3638aa836d3779fa6",
+      "originalSha256": "bf4e7dabc2e29c2f6a876d44a721262a8f74f285a5304106dc39c9c80accc8a3",
+      "originalBytes": 149259
+    },
+    "final-inputs/tests/e2e/assistant-whiteboards.spec.ts.gz": {
+      "sha256": "bb3e9de7681a393f1f89850df366ee28233c7925f8a2ffd174f2bac62982d9af",
+      "originalSha256": "428c9b6bc49b149496feb522918240e88fc7ce6e221b050ee289f8765f8dfd1e",
+      "originalBytes": 25077
+    },
+    "data/qa/source-ui-web-third/.build-context.json.gz": {
+      "sha256": "f9af2cc15245f3f8c9b4281db360bfbcc11e22cdc25a470bd95ed3abe2d53abe",
+      "originalSha256": "ff0d43210972bf5a5f3db98e0b7efe303ef5768e7d9c209dd0eaf8c5828ded75",
+      "originalBytes": 63
+    },
+    "data/qa/source-ui-web-third/.next/BUILD_ID.gz": {
+      "sha256": "7e84e051a7c629141e962c9b618d571454e8dbabd20800737c99e2d214fef72d",
+      "originalSha256": "d3d751d98f67a1e4a849202e0445b277a79a57003fdf009d4938ce66e33da4f7",
+      "originalBytes": 21
+    }
+  }
+}

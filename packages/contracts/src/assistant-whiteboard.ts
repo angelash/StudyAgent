@@ -30,6 +30,7 @@ export type AssistantWhiteboardSummary = Pick<TopicWhiteboardDraftView, 'id' | '
 export type AssistantWhiteboardPage = { items: AssistantWhiteboardSummary[]; nextCursor: string | null };
 export type AssistantWhiteboardSourceView = {
   protocol: 'assistant-topic-whiteboard-v1'; draftId: string; sourceFingerprint: string; origin: AssistantArtifactOrigin;
+  selection: AssistantWhiteboardPreflightInput['selection']; acknowledgeHistoricalSource: boolean;
   mappings: { original: Array<AssistantWhiteboardSourceMap & { sceneIndex: number }>; current: Array<AssistantWhiteboardSourceMap & { sceneIndex: number }> };
 };
 

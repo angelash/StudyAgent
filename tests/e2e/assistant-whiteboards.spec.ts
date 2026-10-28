@@ -1,9 +1,10 @@
 import { test, expect, type Page } from '@playwright/test';
+import { readFile } from 'node:fs/promises';
 import { syntheticFamilyHeaders } from './synthetic-family';
 import { browserEvidence } from './evidence';
 const api = 'http://localhost:' + (process.env.E2E_API_PORT ?? '4107') + '/api', evidence = browserEvidence('assistant-whiteboards');
-async function call(actor: any, path: string, body?: unknown) {
-  const response = await fetch(api + path, { method: body === undefined ? 'GET' : 'POST', headers: { 'content-type': 'application/json', Authorization: 'Bearer ' + actor.token }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
+async function call(actor: any, path: string, body?: unknown, method = body === undefined ? 'GET' : 'POST') {
+  const response = await fetch(api + path, { method, headers: { 'content-type': 'application/json', Authorization: 'Bearer ' + actor.token }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
   const value = await response.json(); expect(response.ok, JSON.stringify(value.error)).toBe(true); return value.data;
 }
 async function fixture(page: Page) {
@@ -86,4 +87,65 @@ test('source whiteboard: an interrupted review resumes the original draft and fi
   await page.getByRole('button', { name: '用原模型重试', exact: true }).click(); await expect(page.locator('.tw-generation-state')).toHaveText('待你核对', { timeout: 30000 });
   const resumed = await call(f.actor, '/learning/studio/topic-whiteboards/drafts/' + id); expect(resumed.originalContent).toEqual(first.originalContent); expect(resumed.modelId).toBe(first.modelId);
   await page.screenshot({ path: evidence + '/original-review-resumed.png' });
+});
+test('source whiteboard: normalized mapped edits settle cleanly and an actual409 retains the complete original command across reload', async ({ page }) => {
+  test.setTimeout(150000); const f = await fixture(page); await enter(page, f.message); await create(page); await panel(page).getByRole('link', { name: '打开教学草稿 →', exact: true }).click();
+  await expect(page.locator('.tw-generation-state')).toHaveText('待你核对'); const id = new URL(page.url()).searchParams.get('draft'), path = '/learning/studio/topic-whiteboards/drafts/' + id;
+  const explanation = page.locator('.tw-scene-editor').first().getByLabel('来源或新增解释的说明'); await explanation.fill('  保留完整原文，明确核查这一幕的条件。  '); await page.getByRole('button', { name: '保存完整改稿', exact: true }).click();
+  await expect(explanation).toHaveValue('保留完整原文，明确核查这一幕的条件。'); await expect(page.getByRole('button', { name: '保存完整改稿', exact: true })).toBeDisabled();
+  const saved = await call(f.actor, path), serverContent = structuredClone(saved.content); serverContent.description = '另一设备的完整来源说明。';
+  await call(f.actor, path + '/content', { expectedRevision: saved.revision, contentFingerprint: saved.contentFingerprint, content: serverContent, requestKey: crypto.randomUUID() }, 'PATCH');
+  const local = '本机仍保留的完整说明_' + crypto.randomUUID(); await page.getByLabel('讲解概要').fill(local); await page.getByRole('button', { name: '保存完整改稿', exact: true }).click();
+  await expect(page.locator('.tw-conflict')).toContainText('服务器稿已变化'); await expect(page.getByLabel('讲解概要')).toHaveValue(local);
+  await page.locator('.tw-rejected-edits>summary').click(); const download = page.waitForEvent('download'); await page.getByRole('button', { name: '下载完整原修改请求', exact: true }).click();
+  const file = await download, copy = JSON.parse(await readFile((await file.path())!, 'utf8')); expect(copy.command.expectedRevision).toBe(saved.revision); expect(copy.command.content.description).toBe(local); expect(copy.command.content.scenes[0].sourceMap).toEqual(saved.content.scenes[0].sourceMap);
+  await page.reload(); await expect(page.getByLabel('讲解概要')).toHaveValue(local); await expect(page.locator('.tw-rejected-edits>summary')).toHaveText('已保留的失败原修改请求（1）');
+  await page.screenshot({ path: evidence + '/source409-original-command.png' });
+});
+test('source whiteboard: a real learner preserves local mapped edits during paused assessment and explicitly rechecks before saving again', async ({ page }) => {
+  test.setTimeout(180000); const f = await fixture(page), student = (await call(f.actor, '/students', { nickname: '匿名来源白板学习者', grade: 4, preferredSessionMinutes: 10, defaultVersionMap: { math: '', chinese: '', english: '' } })).profile;
+  const course = await call(f.actor, '/qa/assistant/course', { kind: 'primary_unit', studentId: student.id });
+  await call(f.actor, '/students/' + student.id + '/learning-scope', { subject: 'math', grade: 4, term: 'upper', textbookVolumeId: null, textbookVersion: '匿名已学范围', learnedAtomIds: ['atomic:math:averagecount'], currentAtomId: 'atomic:math:averagecount', minutesPerSession: 10 }, 'PUT');
+  const access = await call(f.actor, '/students/' + student.id + '/learning-access', { enabled: true, expectedVersion: 0, requestKey: crypto.randomUUID(), reason: '隔离来源白板评测保护' }), code = await call(f.actor, '/students/' + student.id + '/learning-access/codes', { expectedVersion: access.version, requestKey: crypto.randomUUID() });
+  await page.goto('/student/login'); await page.getByLabel('一次性学习码').fill(code.code); const login = page.waitForResponse(r => r.url().endsWith('/api/auth/learning-code') && r.request().method() === 'POST'); await page.getByRole('button', { name: '进入我的学习 →', exact: true }).click(); const learner = (await (await login).json()).data; await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  const open = page.waitForResponse(r => r.url().endsWith('/api/ai/assistant/sessions') && r.request().method() === 'POST'); await page.goto(course.href); const session = (await (await open).json()).data;
+  const context = await call(learner, '/ai/assistant/sessions/' + session.id + '/context'), turn = await call(learner, '/ai/assistant/sessions/' + session.id + '/turns', { requestKey: crypto.randomUUID(), message: '[cite-course] 保留比较条件和检查依据。', modelId: 'deepseek-v4-flash', contextVersion: context.contextVersion });
+  await expect.poll(async () => (await call(learner, '/ai/assistant/sessions/' + session.id + '/turns/' + turn.id)).status, { timeout: 45000 }).toBe('completed'); const message = (await call(learner, '/ai/assistant/sessions/' + session.id + '/messages/page')).messages.find((m: any) => m.sender === 'assistant');
+  await page.reload(); await enter(page, message); await create(page); await panel(page).getByRole('link', { name: '打开教学草稿 →', exact: true }).click(); await expect(page.locator('.tw-generation-state')).toHaveText('待你核对');
+  const id = new URL(page.url()).searchParams.get('draft'), path = '/learning/studio/topic-whiteboards/drafts/' + id, before = await call(learner, path), local = '暂停评测前保留的完整本机说明。'; await page.getByLabel('讲解概要').fill(local);
+  const formal = await call(f.actor, '/diagnostics/sessions', { studentId: student.id, subject: 'math', intent: 'baseline', targetAtomIds: ['atomic:math:averagecount'], includePrerequisites: false, maxItems: 4 });
+  const active = await call(f.actor, '/diagnostics/sessions/' + formal.id); await call(f.actor, '/diagnostics/sessions/' + formal.id + '/state', { action: 'pause', expectedRevision: active.revision, requestKey: crypto.randomUUID(), reason: '暂停匿名来源白板保护检查，不产生测量结论' });
+  await page.getByRole('button', { name: '保存完整改稿', exact: true }).click(); const block = page.getByRole('complementary', { name: '当前评测保护' }); await expect(block.getByRole('link', { name: '进入原评测', exact: true })).toHaveAttribute('href', '/student/assessment?session=' + formal.id);
+  await expect(page.getByRole('button', { name: '保存完整改稿', exact: true })).toBeDisabled(); await expect(page.getByLabel('讲解概要')).toHaveValue(local); expect((await call(learner, path)).revision).toBe(before.revision);
+  const paused = await call(f.actor, '/diagnostics/sessions/' + formal.id); await call(f.actor, '/diagnostics/sessions/' + formal.id + '/state', { action: 'abort', expectedRevision: paused.revision, requestKey: crypto.randomUUID(), reason: '结束隔离保护检查，不形成测量结果' });
+  await expect(page.getByRole('button', { name: '保存完整改稿', exact: true })).toBeDisabled(); await block.getByRole('button', { name: '重新核对白板权限', exact: true }).click(); await expect(block).toHaveCount(0);
+  expect((await call(learner, path)).revision).toBe(before.revision); await page.getByRole('button', { name: '保存完整改稿', exact: true }).click();
+  await expect.poll(async () => (await call(learner, path)).content.description).toBe(local); await page.screenshot({ path: evidence + '/paused-source-guard-resumed.png' });
+});
+test('source whiteboard: actual private PNG generation, original editing, adoption and sentence narration use the existing classroom', async ({ page }) => {
+  test.setTimeout(180000); const f = await fixture(page);
+  await page.route('**/api/learning/studio/overview?*', async route => {
+    const response = await route.fetch(); if (!response.ok()) return route.fulfill({ response });
+    const payload = await response.json(); payload.data.narrationAvailable = true; payload.data.speech = { available: true, provider: 'minimax', defaultVoice: 'fixture-a', voices: [{ id: 'fixture-a', label: '受控匿名音轨' }] };
+    await route.fulfill({ response, json: payload });
+  });
+  await enter(page, f.message); await create(page); await panel(page).getByRole('link', { name: '打开教学草稿 →', exact: true }).click(); await expect(page.locator('.tw-generation-state')).toHaveText('待你核对');
+  const pane = page.getByRole('region', { name: '白板配图工作区' }); await pane.getByLabel('希望图片说明什么').fill('用两个有交集的圆说明整体与单位的比较关系。');
+  await pane.getByRole('button', { name: '预检配图范围', exact: true }).click(); await expect(pane).toContainText('本人原对话 · 原教学年级：未指定'); await pane.getByRole('button', { name: '生成参考图', exact: true }).click();
+  const reader = pane.getByRole('button', { name: '放大参考图：明确整体', exact: true }); await expect(reader).toBeVisible({ timeout: 30000 }); await reader.click(); await expect(page.locator('.cl-figure-reader-sheet img')).toBeVisible(); await page.keyboard.press('Escape');
+  await pane.getByRole('button', { name: '以原图继续修订', exact: true }).click(); await pane.getByLabel('具体修改').fill('保留两个圆，去掉顶部标题并保留完整标签。'); await pane.getByRole('button', { name: '预检配图范围', exact: true }).click(); await pane.getByRole('button', { name: '生成修订图片', exact: true }).click();
+  await expect(reader).toBeVisible({ timeout: 30000 }); await pane.getByRole('checkbox', { name: '我已阅读图片，并核对本次要使用的标签和关系。' }).check(); await pane.getByRole('button', { name: '选入当前完整稿', exact: true }).click(); await page.getByRole('button', { name: '保存完整改稿', exact: true }).click();
+  await page.getByRole('checkbox', { name: '我已阅读未确定问题或手工改稿，知晓仍需内容核对' }).check(); await page.getByRole('button', { name: '确认并保存这份白板', exact: true }).click(); await page.getByRole('button', { name: '打开已保存白板', exact: true }).click();
+  const player = page.getByRole('dialog', { name: '白板视频' }); await expect(player.getByRole('button', { name: '放大参考图：明确整体', exact: true }).first()).toBeVisible();
+  const speech = page.waitForResponse(r => /\/topic-whiteboards\/[^/]+\/narration\//.test(r.url())); await player.getByRole('button', { name: '播放', exact: true }).click(); const audio = await speech; expect(audio.status()).toBe(201); expect(audio.headers()['content-type']).toMatch(/^audio\//); await player.getByRole('button', { name: '暂停', exact: true }).click();
+  await page.screenshot({ path: evidence + '/private-source-image-and-narration.png' });
+});
+test('source whiteboard: a creation that never reached the server retries only the complete original command', async ({ page }) => {
+  test.setTimeout(150000); const f = await fixture(page); let first: any, second: any;
+  await page.route('**/api/ai/assistant/sessions/*/artifacts/whiteboards', async route => { if (route.request().method() !== 'POST') return route.continue(); first = route.request().postDataJSON(); await route.abort('failed'); });
+  await enter(page, f.message); await panel(page).getByRole('button', { name: '核对完整来源', exact: true }).click(); await expect(panel(page).getByRole('button', { name: '生成教学草稿', exact: true })).toBeEnabled(); await panel(page).getByRole('button', { name: '生成教学草稿', exact: true }).click(); await expect(panel(page).getByRole('alert')).toBeVisible();
+  expect((await call(f.actor, f.base)).items).toHaveLength(0); await page.unroute('**/api/ai/assistant/sessions/*/artifacts/whiteboards');
+  page.on('request', r => { if (r.method() === 'POST' && new URL(r.url()).pathname.endsWith('/artifacts/whiteboards')) second = r.postDataJSON(); });
+  await panel(page).getByRole('button', { name: '核对原请求', exact: true }).click(); await expect(panel(page).getByRole('button', { name: '用原请求重试', exact: true })).toBeEnabled();
+  await panel(page).getByRole('button', { name: '用原请求重试', exact: true }).click(); await expect(panel(page).getByRole('link', { name: '打开教学草稿 →', exact: true })).toBeVisible(); expect(second).toEqual(first); expect((await call(f.actor, f.base)).items).toHaveLength(1);
 });

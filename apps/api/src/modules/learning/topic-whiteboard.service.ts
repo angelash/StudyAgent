@@ -135,7 +135,9 @@ export class TopicWhiteboardService {
     const maps = (content: typeof row.content) => content?.scenes.map((scene, index) => ({ sceneIndex: index,
       ...structuredClone((scene as typeof scene & { sourceMap: unknown }).sourceMap as object) })) ?? [];
     return { protocol: row.prepared.version, draftId: row.id, sourceFingerprint: row.prepared.source.sourceFingerprint,
-      origin: structuredClone(row.prepared.source.origin), mappings: { original: maps(row.originalContent), current: maps(row.content) } };
+      origin: structuredClone(row.prepared.source.origin), selection: structuredClone(row.prepared.source.selection),
+      acknowledgeHistoricalSource: row.prepared.source.acknowledgeHistoricalSource,
+      mappings: { original: maps(row.originalContent), current: maps(row.content) } };
   }
   async sourceReceipt(user: InMemoryUserAccount, sessionId: string, key: string, session: InMemoryAuthSession) {
     if (!this.source) throw new ForbiddenException('原对话白板需要完整来源授权');

@@ -13,6 +13,7 @@ import { TopicContentEditor, downloadTopicJson } from './content-editor';
 import { TopicManuscript } from './manuscript';
 import { topicCopies, topicStorage } from './local-copies';
 import { topicCommandMatches } from './command-digest';
+import { SourceWriteBoundary, useSourceWriteGuard } from './source-write-guard';
 import '../studio.css';
 import '../workspace.css';
 import './whiteboards.css';
@@ -229,10 +230,12 @@ function TopicComposer({ ownerId, scope, overview, models, onCreated, onCanLeave
   </section>;
 }
 
-function TopicCandidate({ row, ownerId, onChanged, onCanLeaveChange, onOpen }: { row: TopicWhiteboardDraftView; ownerId: string;
+function TopicCandidate(props: React.ComponentProps<typeof TopicCandidateBody>) { return <SourceWriteBoundary row={props.row}><TopicCandidateBody {...props}/></SourceWriteBoundary>; }
+function TopicCandidateBody({ row, ownerId, onChanged, onCanLeaveChange, onOpen }: { row: TopicWhiteboardDraftView; ownerId: string;
   onChanged: (row: TopicWhiteboardDraftView) => void; onCanLeaveChange: (value: boolean) => void; onOpen: (id: string) => void }) {
   const [busy, setBusy] = React.useState(false), [notice, setNotice] = React.useState(''), [acknowledge, setAcknowledge] = React.useState(false);
   const [editingDirty, setEditingDirty] = React.useState(true);
+  const writeGuard = useSourceWriteGuard();
   const heading = React.useRef<HTMLHeadingElement>(null);
   React.useEffect(() => { const frame = requestAnimationFrame(() => { heading.current?.focus({ preventScroll: true }); heading.current?.scrollIntoView({ block: 'start' }); }); return () => cancelAnimationFrame(frame); }, [row.id]);
   const dirtyChanged = React.useCallback((value: boolean) => setEditingDirty(value), []);
@@ -280,12 +283,14 @@ function TopicCandidate({ row, ownerId, onChanged, onCanLeaveChange, onOpen }: {
       if (pending) try { result = await apiRequest<TopicWhiteboardDraftView>(base + '/drafts/' + row.id + '/requests/' + encodeURIComponent(body.requestKey), { signal: request.signal }); }
       catch (error) { if (!(error instanceof ApiRequestError) || error.status !== 404) throw error; }
       if (result && !await topicCommandMatches(original.action, body, result.receipt?.commandFingerprint)) result = null;
+      if (!result && original.action !== 'cancel' && (writeGuard.blocked || writeGuard.checking)) { setNotice('当前写入资格尚未恢复，原操作继续保留。请先重新核对白板权限。'); return; }
       result ??= await apiRequest<TopicWhiteboardDraftView>(base + '/drafts/' + row.id + '/' + original.action, { method: 'POST', body: JSON.stringify(body), signal: request.signal });
       if (request.signal.aborted) return;
       if (result.receipt?.key !== body.requestKey || result.receipt.kind !== original.action) throw Error('原操作回执尚未确认。');
       setPending(null); try { localStorage.setItem(key, JSON.stringify({ ownerId, id: row.id, resolved: true, at: Date.now() })); } catch { /* The known receipt remains readable from the server. */ }
       onChanged(result); setNotice(result.receipt.generation !== result.generation ? '已找到原操作；当前已有后续生成，请按页面状态继续。' : original.action === 'confirm' ? '白板已保存，仍标记为AI生成、待内容核对。' : original.action === 'cancel' ? '已提交取消，请以任务实际状态为准。' : '已用原输入和原模型重新排队。');
     } catch (error) { if (!request.signal.aborted) {
+      writeGuard.capture(error);
       if (error instanceof ApiRequestError && [400, 409].includes(error.status)) { setRejected(original); setPending(null); try { localStorage.setItem(key, JSON.stringify({ ownerId, id: row.id, resolved: true, rejected: original, at: Date.now() })); } catch {} }
       setNotice((error as Error).message + ' 原稿仍保留，可下载副本。');
       if (error instanceof ApiRequestError && error.status === 409) try {
@@ -303,7 +308,7 @@ function TopicCandidate({ row, ownerId, onChanged, onCanLeaveChange, onOpen }: {
     <div className="tw-generation-state" role="status">{active.has(row.status) ? row.status === 'cancelling' ? '正在停止原生成进程…' : row.stage === 'reviewing' ? '教学初稿已保留，正在复核…' : '正在编写完整教学稿…' : statusLabel[row.status]}</div>
     {row.status === 'failed' && <p className="tw-notice">生成未完成，已保存的阶段继续保留。你可以用原模型重试，或下载现有稿件。</p>}
     <div className="tw-actions">{['queued', 'generating'].includes(row.status) && <button disabled={busy || Boolean(pending)} onClick={() => void perform('cancel')}>取消生成</button>}
-      {['failed', 'cancelled'].includes(row.status) && <button disabled={busy || Boolean(pending)} onClick={() => void perform('retry')}>用原模型重试</button>}
+      {['failed', 'cancelled'].includes(row.status) && <button disabled={busy || Boolean(pending) || writeGuard.blocked || writeGuard.checking} onClick={() => void perform('retry')}>用原模型重试</button>}
       {pending && <button disabled={busy} onClick={() => void perform(pending.action)}>恢复原{pending.action === 'confirm' ? '确认' : pending.action === 'cancel' ? '取消' : '重试'}请求</button>}
       {row.whiteboardId && <button className="tw-primary" onClick={() => onOpen(row.whiteboardId!)}>打开已保存白板</button>}
       <button onClick={() => { downloadTopicJson({ row, pending, rejected }, 'whiteboard-manuscript.json'); setDownloadedCommand(commandSignature); }}>下载原稿与请求</button></div>
@@ -320,6 +325,6 @@ function TopicCandidate({ row, ownerId, onChanged, onCanLeaveChange, onOpen }: {
       <div className="tw-pagination"><button disabled={history.page <= 1} onClick={() => void loadHistory(history.page - 1)}>上一组历史</button><span>{history.total}个旧版本</span><button disabled={history.page * history.limit >= history.total} onClick={() => void loadHistory(history.page + 1)}>下一组历史</button></div></>}</section>}
     {row.status === 'ready' && <footer className="tw-confirm"><p>保存后保持AI生成、待内容核对；不会写入能力或评测结果。</p>{warning && <label><input type="checkbox" checked={acknowledge} onChange={event => setAcknowledge(event.target.checked)}/>我已阅读未确定问题或手工改稿，知晓仍需内容核对</label>}
       {editingDirty && <p>请先保存完整改稿，并比较服务器版本后再确认。</p>}
-      <button className="tw-primary" disabled={busy || Boolean(pending) || editingDirty || warning && !acknowledge} onClick={() => void perform('confirm')}>确认并保存这份白板</button></footer>}
+      <button className="tw-primary" disabled={busy || Boolean(pending) || writeGuard.blocked || writeGuard.checking || editingDirty || warning && !acknowledge} onClick={() => void perform('confirm')}>确认并保存这份白板</button></footer>}
   </article>;
 }
