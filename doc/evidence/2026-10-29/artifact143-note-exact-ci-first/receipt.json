@@ -1,0 +1,68 @@
+{
+  "passed": true,
+  "ciRun": 40740862184,
+  "ciHead": "820f91930de8be1a775a8eb84da253af0450e35f",
+  "url": "https://github.com/angelash/StudyAgent/actions/runs/40740862184",
+  "jobs": [
+    {
+      "name": "application",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "browser": {
+    "expected": 483,
+    "originalAttempts": 483,
+    "unexpected": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0
+  },
+  "linuxApi": {
+    "passed": 1729,
+    "skipped": 78,
+    "failed": 0
+  },
+  "postgresPrivateNoteSuite": {
+    "passed": 13,
+    "failed": 0
+  },
+  "scope": "Exact remote schema22 note candidate. Full original logs and native browser report archived; independent local fullAPI1737/70 and browser483 retained without merging counts.",
+  "limits": [
+    "Not source-whiteboard C1/C2/schema23/C3 acceptance.",
+    "Main integration,consistent rollback backup,actual main build and production authenticated/runtime readback remain pending.",
+    "No full pixel/audio/teacher or real learning-outcome conclusion."
+  ],
+  "files": {
+    "data/qa/note-exact-ci-first-metadata.json.gz": {
+      "sha256": "46c5862e3ec2239f649ed6b12f593a60477673613bab72010130854335b596b6",
+      "originalSha256": "3c5d858025055f990ba7ea76fb6e579fb8026f06ad15853370f583829be09fda",
+      "originalBytes": 21863
+    },
+    "data/qa/note-exact-ci-first-all-jobs.log.gz": {
+      "sha256": "da5a3bf35b15b1455ef05a915ac389b755cec8b6efc494e44a47ce49f6a62f94",
+      "originalSha256": "93d7a24fcd3ee50ebae27c50ab53b8d0fb9668f7a3a41ae57e4e6490307050cc",
+      "originalBytes": 1101279
+    },
+    "data/qa/note-exact-ci-first-artifacts.json.gz": {
+      "sha256": "d95fd83740443f9a9d5fae2713d2568e346bc3633edff69db2b7158b5b9f293a",
+      "originalSha256": "512fe45f6dec250540825757594c9291fd29099a831327e8e090cfc7c8ef9f8a",
+      "originalBytes": 751
+    },
+    "data/qa/note-exact-ci-first-artifacts/browser-verification-evidence/data/qa/source-course-full-browser.json.gz": {
+      "sha256": "434f3fc30af65d74bc984a9476ae2fa11fba22c64086976cabfa80b32fc129a9",
+      "originalSha256": "7de72e1979b1e324556d7027229032de0e795fb25ec9c5ef8875076e0233ff16",
+      "originalBytes": 541649
+    }
+  }
+}
