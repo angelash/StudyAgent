@@ -4,6 +4,7 @@ import { conceptNotes } from './classroom-board-notes';
 import { UNIT_CHECK_VERSION, unitChecks } from './classroom-unit-checks';
 import { CLASSROOM_PRACTICE_VERSION, practiceVariations } from './classroom-practice-content';
 import { freezeMultipleChoice, microChoices, unitChoice } from './classroom-choice-content';
+import { supplementChemistryLesson } from './chemistry-tutorial';
 
 // Independently authored teaching material. Topic structure follows the observed syllabus;
 // no third-party narration, artwork, personal history or generated session code is embedded.
@@ -292,5 +293,5 @@ export function curriculumClassroomLesson(studioCourse: StudioCourse, source: St
   ];
   if (studioCourse.subject === 'chemistry') for (const item of steps)
     item.blocks.splice(1, 0, { id: item.id + ':explanation', kind: 'text', text: item.narration });
-  return { id, title: source.title, objective: source.objective, lectureId: studioCourse.id, steps, questions: [], verificationHref: source.href };
+  return supplementChemistryLesson(studioCourse, source, { id, title: source.title, objective: source.objective, lectureId: studioCourse.id, steps, questions: [], verificationHref: source.href });
 }

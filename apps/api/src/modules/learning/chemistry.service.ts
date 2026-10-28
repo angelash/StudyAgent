@@ -10,6 +10,7 @@ import { DiagnosticsService } from '../diagnostics/diagnostics.service';
 import { eligibleMeasurements } from '../diagnostics/curriculum.service';
 import { CHEMISTRY_VERSION, CHEMISTRY_BOOK_ID, chemistryAtomId, chemistryUnits } from '../diagnostics/chemistry-curriculum';
 import { buildChemistryCourse, chemistryCourseHref, chemistryScope, isChemistrySemesterCourse, CHEMISTRY_COURSE_TITLE } from './chemistry-course';
+import { chemistryTextbookBasis } from './chemistry-tutorial';
 
 const digest = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const enrollSchema = z.object({ studentId: z.string().min(1).max(180), version: z.string(), requestKey: z.string().min(8).max(180) }).strict();
@@ -117,7 +118,8 @@ export class ChemistryService {
       references: [{ id: 'pep-catalog', title: '人教社九年级化学官方教材入口', href: 'https://jc.pep.com.cn/?filed=%E5%88%9D%E4%B8%AD&subject=%E5%8C%96%E5%AD%A6', status: 'reference' },
         ...paperReferences.map(([id, paperTitle]) => ({ id, title: paperTitle, href: '/library?' + new URLSearchParams({ paper: id, subject: 'chemistry', ...(selected ? { studentId: selected } : {}) }),
           status: this.store.find('paperPublications', { paperId: id, status: 'published' }) ? 'published' as const : 'reference' as const }))],
-      notices: ['这是按人教版九上常见内容组织的原创课程；现用教材版次及逐课对应仍须核对。',
+      textbookBasis: chemistryTextbookBasis(),
+      notices: ['28节课已对照七单元参考本的相关课题；学校现用教材版次未确认，不能直接套用参考本页码。讲解、28张图示和10种模型均为原创。',
         '建立课程只确认计划范围，不表示已经学会；课堂阅读、练习与独立考核分别记录。',
         '原卷资料按现有审核状态开放，未审核原题不会自动进入能力评分。',
         '阶段考核分场覆盖全部单元；1、3、7、14天复测必须真实到期，当前通过不代表已经验证长期保持。'] };

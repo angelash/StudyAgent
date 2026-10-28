@@ -15,7 +15,9 @@ const compiled = name => require(path.join(root, 'apps/api/dist/apps/api/src', n
   try {
     const store = app.get(compiled('infrastructure/in-memory-store.service').InMemoryStoreService);
     if (!store.persistence.durable) throw Error('Correction requires durable storage');
-    const result = await compiled('modules/learning/chemistry-course-correction').correctChemistryCourse(store, courseId, fingerprint, args.includes('--apply'));
+    const reviseTutorial = args.includes('--tutorial');
+    const operation = reviseTutorial ? compiled('modules/learning/chemistry-tutorial-revision').reviseChemistryTutorial : compiled('modules/learning/chemistry-course-correction').correctChemistryCourse;
+    const result = await operation(store, courseId, fingerprint, args.includes('--apply'));
     const receipt = { at: new Date().toISOString(), ...result };
     fs.mkdirSync(path.dirname(destination), { recursive: true });
     fs.writeFileSync(destination, JSON.stringify(receipt, null, 2) + '\n', { flag: 'wx' });

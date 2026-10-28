@@ -45,6 +45,7 @@ export type StudioCourse = {
   scopeVersion: number;
   textbookVersion: string;
   curriculumVersion?: string;
+  teachingVersion?: string;
   focusAtomIds: string[];
   units: StudioUnit[];
   materials: Array<{ id: string; title: string; detail: string; status: 'available' | 'needs_review' }>;

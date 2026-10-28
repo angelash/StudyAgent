@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-28T11:01:11.603Z",
+  "processes": [
+    {
+      "name": "study-agent-api",
+      "status": "online",
+      "pid": 64292,
+      "uptime": 1793184987183,
+      "restarts": 1166
+    },
+    {
+      "name": "study-agent-web",
+      "status": "online",
+      "pid": 4008,
+      "uptime": 1793184987308,
+      "restarts": 3
+    },
+    {
+      "name": "study-agent-health",
+      "status": "online",
+      "pid": 51436,
+      "uptime": 1793184987424,
+      "restarts": 1
+    }
+  ]
+}

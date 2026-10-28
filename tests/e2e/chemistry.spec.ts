@@ -233,3 +233,91 @@ for (const width of [390, 1440]) test('chemistry assistant: actual course teachi
   await expect(page.getByRole('navigation', { name: '课程单元' }).getByRole('button').last()).toHaveAttribute('data-active', 'true');
   await page.reload(); await expect(page.locator('.cl-unit-heading')).toContainText(actualUnit.title);
 });
+
+test('chemistry tutorial: ten scientific models respond to conditions and fit a phone classroom', async ({ page }) => {
+  test.setTimeout(180000);
+  const errors: string[] = []; page.on('pageerror', error => errors.push(error.message));
+  const { studentId, call } = await fixture(page); await enroll(page);
+  const catalog = await call('/chemistry/catalog?studentId=' + studentId), lessons = catalog.units.flatMap((unit: any) => unit.lessons);
+  const models = [['changes', 'particle-change'], ['air', 'air-mixture'], ['catalyst', 'catalysis'], ['ions', 'atom-ion'],
+    ['purification', 'filtration'], ['water', 'water-electrolysis'], ['conservation', 'mass-conservation'], ['balance', 'balance-water'],
+    ['carbon-dioxide', 'co2-test'], ['combustion', 'combustion']];
+  for (const [code, kind] of models) {
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    const lesson = lessons.find((item: any) => item.id === 'chemistry:9-upper:' + code);
+    await page.goto(lesson.classroomHref); await expect(page.locator('.cl-room')).toBeVisible();
+    await page.getByRole('button', { name: '下一步 ›', exact: true }).click();
+    await page.getByRole('button', { name: '下一步 ›', exact: true }).click();
+    const picture = page.locator('.cl-board-paper .cl-lesson-image img').first();
+    await expect.poll(() => picture.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
+    const model = page.locator(`.cl-board-paper [data-experiment="${kind}"]`);
+    await expect(model.getByRole('button', { name: '观察变化', exact: true })).toBeDisabled();
+    await model.getByRole('radio').nth(kind === 'balance-water' ? 0 : 1).check();
+    await model.getByRole('button', { name: '观察变化', exact: true }).click();
+    const result = model.locator('.cl-chem-result');
+    if (kind === 'particle-change') {
+      await model.getByLabel('选择变化').selectOption('chemical'); await expect(result).toContainText('分子种类改变'); await expect(result).toContainText('4个H原子、2个O原子');
+      await model.getByLabel('选择变化').selectOption('physical'); await expect(result).toContainText('分子种类不变');
+    } else if (kind === 'air-mixture') {
+      await model.getByRole('slider').press('Home'); await model.getByRole('slider').press('ArrowRight'); await model.getByRole('slider').press('ArrowRight');
+      await expect(result).toContainText('O₂约42 mL');
+    } else if (kind === 'catalysis') {
+      await expect(result).toContainText('产气量：30'); await model.getByLabel('使用适当催化剂').check(); await expect(result).toContainText('产气量：100');
+      await model.getByRole('slider').press('End'); await model.getByLabel('使用适当催化剂').uncheck(); await expect(result).toContainText('产气量：100');
+    } else if (kind === 'atom-ion') {
+      await model.getByLabel('失去1个核外电子').check(); await expect(result).toContainText('核外电子10个'); await expect(result).toContainText('净电荷+1');
+    } else if (kind === 'filtration') {
+      await model.getByLabel('观察过滤后').check(); await expect(result).toContainText('滤液仍含溶解物');
+    } else if (kind === 'water-electrolysis') {
+      await model.getByRole('slider').press('End'); await expect(model.getByRole('img')).toHaveAttribute('aria-label', /氢气40mL，阳极氧气20mL/);
+      await expect(result).toContainText('质量比为1∶8');
+    } else if (kind === 'mass-conservation') {
+      await model.getByLabel('开口：允许CO₂逸出').check(); await expect(result).toContainText('22 g + 22 g = 44 g');
+      await model.getByRole('slider').press('End'); await expect(result).toContainText('0 g + 44 g = 44 g');
+      await model.getByLabel('开口：允许CO₂逸出').uncheck(); await expect(result).toContainText('44 g + 0 g = 44 g');
+    } else if (kind === 'balance-water') {
+      await model.getByLabel('H₂系数', { exact: true }).selectOption('2'); await model.getByLabel('H₂O系数', { exact: true }).selectOption('2');
+      await expect(result).toHaveAttribute('data-balanced', 'true'); await expect(result).toContainText('最简整数比2∶1∶2');
+      await model.getByLabel('H₂系数', { exact: true }).selectOption('4'); await expect(result).toHaveAttribute('data-balanced', 'false');
+    } else if (kind === 'co2-test') {
+      await model.getByLabel('检验条件').selectOption('wet'); await expect(result).toContainText('湿润石蕊变红');
+      await model.getByLabel('检验条件').selectOption('lime'); await expect(result).toContainText('CaCO₃↓');
+      await model.getByLabel('检验条件').selectOption('physical'); await expect(result).toContainText('干燥石蕊不变红');
+    } else {
+      for (let mask = 0; mask < 8; mask++) {
+        for (const [index, label] of ['有可燃物', '接触氧气', '达到着火点'].entries()) await model.getByLabel(label, { exact: true }).setChecked(Boolean(mask & (1 << index)));
+        await expect(result).toContainText(mask === 7 ? '三个条件同时成立' : '缺少：');
+      }
+    }
+    await page.setViewportSize({ width: 390, height: 844 }); await page.getByRole('button', { name: '白板', exact: true }).click();
+    await expect(model).toBeVisible(); expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+    if (kind === 'balance-water') {
+      await model.getByLabel('H₂系数', { exact: true }).selectOption('2'); await expect(result).toHaveAttribute('data-balanced', 'true');
+      expect(await model.locator('table').evaluate(table => table.scrollWidth <= table.parentElement!.clientWidth + 1)).toBe(true);
+    }
+    if (kind === 'combustion') { await model.getByLabel('达到着火点', { exact: true }).uncheck(); await expect(result).toContainText('缺少：'); }
+    await result.scrollIntoViewIfNeeded();
+    if (['filtration', 'balance-water', 'combustion'].includes(kind)) await screenshot(page, 'tutorial-' + kind + '-390');
+  }
+  expect(errors).toEqual([]);
+});
+
+test('chemistry tutorial: topic mapping, original figure and first classroom check survive reopening', async ({ page }) => {
+  const { call } = await fixture(page); await enroll(page);
+  await page.getByRole('tab', { name: '资料', exact: true }).click();
+  await page.getByText('查看28节课的教材课题对照', { exact: true }).click();
+  await expect(page.locator('.cl-textbook-basis tbody tr')).toHaveCount(28); await expect(page.locator('.cl-textbook-basis')).toContainText('版权页未注明版次');
+  await page.getByRole('tab', { name: '单元', exact: true }).click(); await page.locator('.cl-learn').first().click();
+  await page.getByRole('button', { name: '下一步 ›', exact: true }).click(); await page.getByRole('button', { name: '下一步 ›', exact: true }).click();
+  await page.locator('.cl-board-paper').getByRole('button', { name: /放大图片：/ }).click();
+  await expect(page.getByRole('dialog')).toBeVisible(); await expect(page.getByRole('dialog').locator('img')).toHaveAttribute('src', /chemistry-v2\/changes.svg/);
+  await page.keyboard.press('Escape');
+  await page.getByRole('tab', { name: '课堂练习', exact: true }).click(); await expect(page.locator('.practice-question-title')).toContainText('冰变成液态水');
+  await page.locator('.cl-practice-options input').nth(1).check(); await page.getByRole('button', { name: 'Check →', exact: true }).click();
+  await expect(page.getByRole('region', { name: '课堂练习复盘' })).toBeVisible(); await page.getByRole('button', { name: '第1题', exact: true }).click();
+  await expect(page.locator('.cl-answer-feedback')).toContainText('这次区分正确');
+  const id = new URL(page.url()).searchParams.get('session')!, first = (await call('/learning/classroom/sessions/' + id)).answers;
+  await page.reload(); await page.getByRole('tab', { name: '课堂练习', exact: true }).click();
+  await page.getByRole('button', { name: '第1题', exact: true }).click();
+  await expect(page.locator('.cl-answer-feedback')).toContainText('这次区分正确'); expect((await call('/learning/classroom/sessions/' + id)).answers).toEqual(first);
+});

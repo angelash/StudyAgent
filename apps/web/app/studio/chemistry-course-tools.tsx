@@ -76,6 +76,11 @@ export function ChemistryCheckpoints({ catalog, unitId, kind }: { catalog: Chemi
 
 export function ChemistryReferences({ catalog }: { catalog: ChemistryCatalog }) {
   return <section className="cl-card cl-course-references"><h2>教材与广州原卷</h2><p>按现有审核状态开放，可用于综合练习与人工核对。</p>
+    <details className="cl-textbook-basis"><summary>查看28节课的教材课题对照</summary><p>{catalog.textbookBasis.title}</p><p>{catalog.textbookBasis.editionNotice}</p>
+      <p>图示、模型和随堂题为原创；纯度及氢能定量部分标为拓展。参考本页码用于查阅，不代表学校当前进度。</p>
+      <div className="cl-table-wrap"><table><thead><tr><th>本课图示主题</th><th>参考本课题</th><th>印刷页</th></tr></thead><tbody>{catalog.textbookBasis.mappings.map(item => <tr key={item.atomId}>
+        <td>{item.lesson}</td><td>{item.topic}</td><td>{item.printedPages[0]}–{item.printedPages[1]}</td></tr>)}</tbody></table></div>
+      <a href={catalog.textbookBasis.href} target="_blank" rel="noreferrer">查看参考本来源 ↗</a></details>
     <ul>{catalog.references.map(reference => <li key={reference.id}><a href={reference.href}
       {...(reference.href.startsWith('https:') ? { target: '_blank', rel: 'noreferrer' } : {})}>{reference.title} ↗</a><small>{reference.status === 'published' ? '已开放' : '参考资料'}</small></li>)}</ul>
     <details><summary>课程范围与使用说明</summary>{catalog.notices.map(notice => <p key={notice}>{notice}</p>)}</details>

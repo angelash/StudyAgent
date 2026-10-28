@@ -6,6 +6,7 @@ export * from './reviews';
 export * from './learning';
 export * from './studio';
 export * from './chemistry';
+export * from './classroom-experiment';
 export * from './studio-course-request';
 
 export const subjectSchema = z.enum(['chinese', 'math', 'english', 'chemistry']);

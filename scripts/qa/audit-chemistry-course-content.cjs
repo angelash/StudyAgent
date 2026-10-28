@@ -7,6 +7,7 @@ const { chemistryUnits, chemistryAtomId, buildChemistryCurriculum } = compiled('
 const { curriculumClassroomLesson } = compiled('learning/classroom-curriculum');
 const { foundationQuestionId } = compiled('diagnostics/foundation-curriculum');
 const { isChemistrySemesterCourse, chemistryCourseFingerprint } = compiled('learning/chemistry-course');
+const { CHEMISTRY_TUTORIAL_VERSION, chemistryTutorialForAtom, chemistryExperiments, chemistryReference } = compiled('learning/chemistry-tutorial-content');
 const db = new DatabaseSync(path.join(process.env.STUDY_DATA_DIR || path.join(root, 'data'), 'study-agent.sqlite3'), { readOnly: true });
 const rows = collection => db.prepare('SELECT body FROM domain_records WHERE collection=?').all(collection).map(row => JSON.parse(row.body));
 const hash = value => crypto.createHash('sha256').update(JSON.stringify(value)).digest('hex');
@@ -23,15 +24,28 @@ try {
   assert(!wrongContent.test(JSON.stringify(course)), 'Mathematics content remains in the chemical course');
   const mappings = rows('measurementItems').filter(item => course.focusAtomIds.includes(item.atomId) && item.reviewStatus === 'approved');
   const questionMap = new Map(rows('questions').map(question => [question.id, question]));
+  const models = new Set(); let figures = 0, classroomChecks = 0;
   const audit = lessons.map(lesson => {
     const atom = expected.get(lesson.atomId); assert(atom, 'Lesson target is outside chemistry');
     assert.equal(lesson.title, atom.name); assert.deepEqual(lesson.teaching.teaching, atom.teaching);
     const classroom = curriculumClassroomLesson(course, lesson); assert(classroom);
-    assert.equal(classroom.steps.find(step => step.phase === 'concept').narration, atom.teaching.explanation);
+    assert(classroom.steps.find(step => step.phase === 'concept').narration.startsWith(atom.teaching.explanation));
     assert(classroom.steps.find(step => step.phase === 'concept').blocks.some(block => block.kind === 'text' && block.text === atom.teaching.explanation));
     const example = classroom.steps.find(step => step.phase === 'example');
     assert.equal(example.title, atom.teaching.example.prompt); assert(example.narration.includes(atom.teaching.example.conclusion));
     assert(!wrongContent.test(JSON.stringify(classroom)));
+    if (course.teachingVersion === CHEMISTRY_TUTORIAL_VERSION) {
+      const tutorial = chemistryTutorialForAtom(atom.id); assert(tutorial);
+      const blocks = classroom.steps.flatMap(step => step.blocks), image = blocks.find(block => block.kind === 'image');
+      assert(image && image.image.src === `/classroom/chemistry-v2/${tutorial.code}.svg`);
+      assert(fs.existsSync(path.join(root, 'apps/web/public', image.image.src))); figures++;
+      assert.equal(classroom.questions.length, 1); assert.equal(classroom.questions[0].prompt, tutorial.check.prompt); classroomChecks++;
+      assert.equal(classroom.sourceReferences[0].sourceKey, 'pep-chemistry-reference:' + chemistryReference.sha256);
+      assert.equal(classroom.sourceReferences[0].page, tutorial.pages[0] + 5);
+      for (const block of blocks.filter(block => block.kind === 'experiment')) {
+        assert.deepEqual(block.experiment, chemistryExperiments[block.experiment.kind]); models.add(block.experiment.kind);
+      }
+    }
     const practice = course.units.flatMap(unit => unit.lessons).find(item => item.kind === 'practice' && item.atomId === atom.id);
     const url = new URL(practice.href, 'http://local');
     assert.equal(url.searchParams.get('subject'), 'chemistry'); assert.equal(url.searchParams.get('studentId'), course.studentId);
@@ -50,9 +64,11 @@ try {
   });
   const required = chemistryUnits.flatMap(unit => unit.codes.map(chemistryAtomId));
   assert.deepEqual(lessons.map(lesson => lesson.atomId), required);
+  if (course.teachingVersion === CHEMISTRY_TUTORIAL_VERSION) { assert.equal(figures, 28); assert.equal(classroomChecks, 28); assert.equal(models.size, 10); }
   const report = { at: new Date().toISOString(), courseId, title: course.title, subject: course.subject, grade: course.grade,
     fingerprint: course.fingerprint, units: course.units.length, lessons: audit,
     questions: new Set(mappings.map(item => item.questionId)).size, mathematicalContentMismatch: false,
+    teachingVersion: course.teachingVersion ?? 'v1', figures, classroomChecks, experimentKinds: [...models],
     boundary: 'Read-only audit of the saved course, its generated classroom bodies and linked question subjects. No learner responses created.' };
   fs.mkdirSync(path.dirname(destination), { recursive: true }); fs.writeFileSync(destination, JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify({ courseId, verifiedLessons: audit.length, questions: report.questions, mathematicalContentMismatch: false, report: destination }));
