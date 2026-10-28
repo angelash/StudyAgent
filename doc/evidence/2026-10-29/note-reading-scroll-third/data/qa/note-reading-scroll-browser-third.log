@@ -1,0 +1,29 @@
+Administrator created. Sign in through the application.
+[WebServer] (node:84304) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:30984) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 17 tests using 1 worker
+
+(node:5172) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\e2e\assistant-notes.spec.ts:30:48 › assistant notes: original source, explicit editing/adoption/export and original-message return at390 (5.2s)
+  ok  2 tests\e2e\assistant-notes.spec.ts:30:48 › assistant notes: original source, explicit editing/adoption/export and original-message return at768 (5.4s)
+  ok  3 tests\e2e\assistant-notes.spec.ts:30:48 › assistant notes: original source, explicit editing/adoption/export and original-message return at880 (4.9s)
+  ok  4 tests\e2e\assistant-notes.spec.ts:30:48 › assistant notes: original source, explicit editing/adoption/export and original-message return at1440 (5.8s)
+  ok  5 tests\e2e\assistant-notes.spec.ts:49:5 › assistant notes: a committed create with a lost HTTP reply survives refresh and recovers without another create (6.0s)
+  ok  6 tests\e2e\assistant-notes.spec.ts:59:5 › assistant notes: offline local editing, independent draft and Escape focus survive leaving and reopening (4.9s)
+  ok  7 tests\e2e\assistant-notes.spec.ts:67:5 › assistant notes: corrupt or different-account cached content stays hidden and its original bytes are preserved (3.4s)
+  ok  8 tests\e2e\assistant-notes.spec.ts:74:5 › assistant notes: a source outside70 later messages returns by a read-only anchor without opening another conversation (5.9s)
+  ok  9 tests\e2e\assistant-notes.spec.ts:82:5 › assistant notes: a request that never reached the server retries only its preserved original command (3.7s)
+  ok 10 tests\e2e\assistant-notes.spec.ts:94:5 › assistant notes: lost edit and adoption replies recover their original results without publishing another command (6.9s)
+  ok 11 tests\e2e\assistant-notes.spec.ts:105:5 › assistant notes: another selected message keeps the first unsubmitted editing draft intact (4.5s)
+  ok 12 tests\e2e\assistant-notes.spec.ts:111:5 › assistant notes: an export read failure preserves the full saved note and a retry only downloads it (4.7s)
+  ok 13 tests\e2e\assistant-notes.spec.ts:118:5 › assistant notes: closing a pending private read and switching accounts hides its late response (7.7s)
+  ok 14 tests\e2e\assistant-notes.spec.ts:127:5 › assistant notes: overlong pasted text stays complete through reopening and download while server writes remain disabled (4.9s)
+  ok 15 tests\e2e\assistant-notes.spec.ts:153:5 › assistant notes: an actual stale revision preserves original409 command and local text before explicit server selection (5.2s)
+  ok 16 tests\e2e\assistant-notes.spec.ts:166:5 › assistant notes: another device adopting the server note does not mark a different local draft adopted (4.8s)
+  ok 17 tests\e2e\assistant-notes.spec.ts:175:5 › assistant notes: real learning-code student keeps notes readable during assessment and resumes only after an explicit permission check (7.3s)
+
+  17 passed (1.8m)
