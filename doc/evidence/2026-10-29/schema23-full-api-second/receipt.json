@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "sourceCommit": "836d83584c1c339ad3bcbe5ebb88cc5ba1798abf",
+  "stats": {
+    "numPassedTests": 1749,
+    "numFailedTests": 0,
+    "numPendingTests": 73
+  },
+  "frozenInputs": {
+    "checked": 2605,
+    "changed": []
+  },
+  "process": {
+    "at": "2026-10-28T17:38:50.663Z",
+    "testExit": 0,
+    "verificationExit": 0,
+    "reportPresent": true
+  },
+  "configuration": {
+    "STUDY_SEED_FOUNDATION": "true",
+    "STUDY_WORKER_ENABLED": "false",
+    "XIAOJIU_CHAT_ENABLED": "false"
+  },
+  "scope": "Complete schema23 API second run:1749 passed,0 failed,73 environmental skips. Frozen inputs unchanged. Includes ordinaryv1 and note/source preflight compatibility; no source generation/adoption implementation beyond this source branch.",
+  "limits": [
+    "New source generation workspace is separate and not included.",
+    "Full new browser/exact remoteCI/production delivery remain separate gates.",
+    "No live-provider,complete-content,teacher,pixel/audio or real-learning-outcome claim."
+  ],
+  "files": {
+    "data/qa/schema23-full-api-second.json": {
+      "bytes": 883243,
+      "sha256": "b182e6f0db82668852cb37bcb3cac223c3dbb29a272e82247382201bdab85855"
+    },
+    "data/qa/schema23-full-api-second-inputs.json": {
+      "bytes": 497896,
+      "sha256": "6981bfb76cd126ffce4bbd5891d193497ded2c4c090ae1c1eacc814d1df29092"
+    },
+    "data/qa/schema23-full-api-second-process-result.json": {
+      "bytes": 106,
+      "sha256": "e5d18a2e8f348e8758b33e0b0c40e5fbc7e5aaba889f783d1567ab8d360697da"
+    },
+    "data/qa/run-managed-schema23-full-api-second.cjs": {
+      "bytes": 1575,
+      "sha256": "9087b8f423803a653ad79037210b199a43539176ee9e19cdfaaf5aed01f2f654"
+    },
+    "data/qa/freeze-schema23-full-api-second.py": {
+      "bytes": 1252,
+      "sha256": "6c2713f16f571615b186341e6f64a395f178702db590236fb5eaf36bc94b0e10"
+    },
+    "schema23-full-api-second.log.gz": {
+      "sha256": "a3bbfe066059bec79f98f978930cbb12447d80329dc14c2bf94914a83486d16f",
+      "originalSha256": "1851703a1567dd8209f1d9a0213d9f204c529fad4356b8a3dcf805f396684fd9",
+      "originalBytes": 77407
+    },
+    "schema23-full-api-second-inputs-verification.log.gz": {
+      "sha256": "c5b64dee82428730a6db79dfaa3ee8127ef0094bafa38d6ad3018b1171149fa3",
+      "originalSha256": "7d199b0661dcf7363d1493f5d2e4123f93c34fb67c108866abb78fe3112e785c",
+      "originalBytes": 34
+    }
+  }
+}
