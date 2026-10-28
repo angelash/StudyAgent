@@ -1,0 +1,196 @@
+{
+  "at": "2026-10-28T22:16:04.446573+00:00",
+  "passed": true,
+  "sourceRevision": "02a350b596666ac1cc4481a7953988ca07059de0",
+  "webBuildId": "-mvGyipv2z3fkD4qMxb4x",
+  "ciRun": 40770689153,
+  "ciReceipt": "../source-teaching-exact-ci-first/receipt.json",
+  "originalRecordCount": 89858,
+  "protectedCollections": 32,
+  "compiledRuntimeFiles": 400,
+  "httpChecks": 56,
+  "figures": 28,
+  "course": {
+    "id": "studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+    "grade": 9,
+    "profileGrade": 4,
+    "units": 7
+  },
+  "unitTeaching": [
+    {
+      "parts": 32,
+      "figures": 4
+    },
+    {
+      "parts": 32,
+      "figures": 4
+    },
+    {
+      "parts": 32,
+      "figures": 4
+    },
+    {
+      "parts": 32,
+      "figures": 4
+    },
+    {
+      "parts": 32,
+      "figures": 4
+    },
+    {
+      "parts": 32,
+      "figures": 4
+    },
+    {
+      "parts": 32,
+      "figures": 4
+    }
+  ],
+  "syntheticAuth": {
+    "passed": true,
+    "accountDeleted": true,
+    "privateNotesList": true,
+    "privateSourceWhiteboardList": true,
+    "invalidAndUnavailableSourceRejected": true,
+    "createdLearnerEvidence": false,
+    "providerCalls": 0
+  },
+  "originalRecordsAfterCleanupUnchanged": true,
+  "guardianObservations": 3,
+  "privateConfigurationUnchanged": true,
+  "backup": {
+    "at": "2026-10-28T22:08:38.904Z",
+    "verifiedFiles": 1,
+    "compiledFiles": 1073,
+    "schemaVersion": 22,
+    "assetsIncluded": false,
+    "scope": "Stopped consistent SQLite plus every database-referenced runtime file, original compiled runtime and private config. No complete research archive or full recovery rehearsal."
+  },
+  "redaction": "Raw originals remain local. Published text strips ANSI, local Windows username and production checkout path. Private environment/config copies, original record-ID hashes and database remain excluded.",
+  "secretScanFindings": [],
+  "limits": [
+    "Synthetic auth/owner lists/input rejection/deletion only; no original user credential login or live generation.",
+    "Original persisted records, grade9 course vs profile4, seven32-part units and28 figure hashes preserved.",
+    "Stopped consistent database plus referenced runtime files/compiled/config backup only; no full research archive or full restore rehearsal.",
+    "Schema23/source whiteboard and D1 preflight delivery only; D2-D4, exact pixels/DPR, actual audio, teacher and long-term learner outcomes remain separate."
+  ],
+  "files": [
+    {
+      "source": "output/daemon/release-backups/source-teaching-20261029-1793222659913/runtime-source-teaching-first.json",
+      "archive": "output/daemon/release-backups/source-teaching-20261029-1793222659913/runtime-source-teaching-first.json.gz",
+      "originalSha256": "2476961b98af5aa3d5907e65df782b91e9a1e6fd1259701b03128adcde224da6",
+      "originalBytes": 91050,
+      "publishedSha256": "2476961b98af5aa3d5907e65df782b91e9a1e6fd1259701b03128adcde224da6",
+      "publishedBytes": 91050,
+      "redacted": false
+    },
+    {
+      "source": "output/daemon/release-backups/source-teaching-20261029-1793222659913/backup-verified.json",
+      "archive": "output/daemon/release-backups/source-teaching-20261029-1793222659913/backup-verified.json.gz",
+      "originalSha256": "4a2c66684d96f4d7c2443ab896fd0665b7d8e6f49260d24da01ef0c24aa161f3",
+      "originalBytes": 324,
+      "publishedSha256": "4a2c66684d96f4d7c2443ab896fd0665b7d8e6f49260d24da01ef0c24aa161f3",
+      "publishedBytes": 324,
+      "redacted": false
+    },
+    {
+      "source": "output/daemon/release-backups/source-teaching-20261029-1793222659913/build-files.json",
+      "archive": "output/daemon/release-backups/source-teaching-20261029-1793222659913/build-files.json.gz",
+      "originalSha256": "7ff84ac8f9125d9c62dcb8bcb4e7aa0ba251da67de953adc678d3812e0b80ce8",
+      "originalBytes": 199538,
+      "publishedSha256": "7ff84ac8f9125d9c62dcb8bcb4e7aa0ba251da67de953adc678d3812e0b80ce8",
+      "publishedBytes": 199538,
+      "redacted": false
+    },
+    {
+      "source": "output/daemon/release-backups/source-teaching-20261029-1793222659913/deployment-target.json",
+      "archive": "output/daemon/release-backups/source-teaching-20261029-1793222659913/deployment-target.json.gz",
+      "originalSha256": "7c54043d27179480b7e85e6fbe2328403faeb0614cf66206b621a9a1d2065787",
+      "originalBytes": 158,
+      "publishedSha256": "7c54043d27179480b7e85e6fbe2328403faeb0614cf66206b621a9a1d2065787",
+      "publishedBytes": 158,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/source-teaching-release-verify-only-first.log",
+      "archive": "data/qa/source-teaching-release-verify-only-first.log.gz",
+      "originalSha256": "6d0e50478f4c985d51133b81a283345c23d6fd76fbc8aa1626b346c6c3de9ac3",
+      "originalBytes": 808,
+      "publishedSha256": "6d0e50478f4c985d51133b81a283345c23d6fd76fbc8aa1626b346c6c3de9ac3",
+      "publishedBytes": 808,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/source-teaching-release-stop-backup-merge-first.log",
+      "archive": "data/qa/source-teaching-release-stop-backup-merge-first.log.gz",
+      "originalSha256": "d61ccdcba80be2799e0975ba5a92e28a960d80cc4214695f5f7136456526bcef",
+      "originalBytes": 804,
+      "publishedSha256": "d61ccdcba80be2799e0975ba5a92e28a960d80cc4214695f5f7136456526bcef",
+      "publishedBytes": 804,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/source-teaching-main-build-first.log",
+      "archive": "data/qa/source-teaching-main-build-first.log.gz",
+      "originalSha256": "719850459e1ec0299141b4cb25ec2771fbf09796c7703eb57a39f042e5be89e0",
+      "originalBytes": 2983,
+      "publishedSha256": "719850459e1ec0299141b4cb25ec2771fbf09796c7703eb57a39f042e5be89e0",
+      "publishedBytes": 2983,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/source-teaching-main-start-first.log",
+      "archive": "data/qa/source-teaching-main-start-first.log.gz",
+      "originalSha256": "79cfbc19ef50ce41968a01111d46f3a262b5c5663d89b8e5c9a3ab9189fcb682",
+      "originalBytes": 9146,
+      "publishedSha256": "a78def7e90211ab92608b3f27cf16547217dccc518d912b353a1d3a4064a5ef8",
+      "publishedBytes": 9152,
+      "redacted": true
+    },
+    {
+      "source": "data/qa/source-teaching-runtime-first.log",
+      "archive": "data/qa/source-teaching-runtime-first.log.gz",
+      "originalSha256": "ef56d6c13deb96b0e9f7f55b600217361114899b160ab78099c8942024f52e51",
+      "originalBytes": 350,
+      "publishedSha256": "ef56d6c13deb96b0e9f7f55b600217361114899b160ab78099c8942024f52e51",
+      "publishedBytes": 350,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/source-teaching-reference-compiled-first.json",
+      "archive": "data/qa/source-teaching-reference-compiled-first.json.gz",
+      "originalSha256": "3080beaad9c9bbeefc84146588b7448fb06ab4a4480e268580fb4cb0cb9983d8",
+      "originalBytes": 75414,
+      "publishedSha256": "3080beaad9c9bbeefc84146588b7448fb06ab4a4480e268580fb4cb0cb9983d8",
+      "publishedBytes": 75414,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/deliver-source-teaching-prepare.cjs",
+      "archive": "data/qa/deliver-source-teaching-prepare.cjs.gz",
+      "originalSha256": "322a1e9a302cc2a279850a98d55506b7dd136b853d95f2063728fb9b0d8da75a",
+      "originalBytes": 7410,
+      "publishedSha256": "322a1e9a302cc2a279850a98d55506b7dd136b853d95f2063728fb9b0d8da75a",
+      "publishedBytes": 7410,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/verify-source-teaching-runtime-first.cjs",
+      "archive": "data/qa/verify-source-teaching-runtime-first.cjs.gz",
+      "originalSha256": "930fcb1abfe37bb07b5dab64d2318f6f9718c1efd7b1eeb2b18ca08f330b4d33",
+      "originalBytes": 12982,
+      "publishedSha256": "930fcb1abfe37bb07b5dab64d2318f6f9718c1efd7b1eeb2b18ca08f330b4d33",
+      "publishedBytes": 12982,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/rollback-source-teaching-before-migration.cjs",
+      "archive": "data/qa/rollback-source-teaching-before-migration.cjs.gz",
+      "originalSha256": "5d135836c7baa461c584c4d06795fee2d67416fb159650ddbe1ea572ffa44c0f",
+      "originalBytes": 3782,
+      "publishedSha256": "5d135836c7baa461c584c4d06795fee2d67416fb159650ddbe1ea572ffa44c0f",
+      "publishedBytes": 3782,
+      "redacted": false
+    }
+  ]
+}

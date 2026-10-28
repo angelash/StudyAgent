@@ -491,3 +491,5 @@ M1后即开始可用课程的设备与真人试用；真实1/3/7/14日复测与�
 
 
 2026-10-29来源教学整合候选：release/source-teaching-20261029以0e7f3c34合并CUI白板与D1预检，两处文档冲突保留双方历史。D1完整1802/74的2613输入在合并后逐SHA不变；320份Web/端到端源的Git内容及规范化字节等于CUI501，6处checkout行尾差异单列；7处API运行JS差异明确，因此不把旧501当新API整站。新独立Web构建4ij4zlQ8IfL5uTVx9PcZu、Web类型和同新API的35条来源/笔记实际浏览器旅程全过，零失败/跳过/重试；3191补充输入保持，清楚标注该补充清单在专项启动后采集。14领域/133功能/444接口、671源码/4192链接/10离线页通过。见[整合原件](../evidence/2026-10-29/source-teaching-integrated-local-first/receipt.json)。下一步精确远端CI重新全站501/完整API/PG并可回退schema23交付；正式仍schema22，D2～D4和原72/M1～M7整体active。
+
+2026-10-29 来源白板及D1正式交付：02a350b5/40770689153精确三组CI全部success，远端当前整合501/501原始浏览器尝试全过/零重试，Linux完整API1794/82环境跳过。主目录实际新鲜停服一致备份与1073旧编译保留后，构建-mvGyipv2z3fkD4qMxb4x/schema23、400运行JS同候选、56 HTTP检查通过；32原集合89858原记录、原九年级课与四年级档案、7单元各32条目/4图及28图SHA保持；合成账号权限/删除清理和三次30秒守护稳定。见[精确CI](../evidence/2026-10-29/source-teaching-exact-ci-first/receipt.json)及[实际交付](../evidence/2026-10-29/source-teaching-main-delivery-first/receipt.json)。D2持久练习/真实本人作答、D3原因指导与D4排期、全教材/像素/听感/教师/长期验证继续；无真实供应商调用或正式学生虚假证据，原72仍11 implemented/50 in_progress/11 planned/0 verified，M1～M7整体active。

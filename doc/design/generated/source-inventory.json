@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "0e7f3c349c2d3fd2b217dd84e285d4399967f7fd",
+  "sourceRevision": "02a350b596666ac1cc4481a7953988ca07059de0",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 465,
@@ -45260,7 +45260,7 @@
         {
           "name": "audience",
           "optional": false,
-          "type": "{ kind: 'adult' | 'student'; studentId: string | null; subject: string | null;\n    sourceGrade: number | null; profileGrade: number | null; scopeGrade: number | null; scopeVersion: number | null;\n    scopeFingerprint: string | null; scopeHref: string | null }"
+          "type": "{ kind: 'adult' | 'student'; studentId: string | null; subject: string | null;\r\n    sourceGrade: number | null; profileGrade: number | null; scopeGrade: number | null; scopeVersion: number | null;\r\n    scopeFingerprint: string | null; scopeHref: string | null }"
         },
         {
           "name": "coverage",
@@ -45305,7 +45305,7 @@
         {
           "name": "blocked",
           "optional": true,
-          "type": "{ code: 'source_budget_exceeded' | 'historical_source_confirmation_required' | 'audience_transfer_confirmation_required'\n    | 'learning_scope_required' | 'source_target_grade_mismatch' | 'source_target_subject_mismatch' | 'practice_coverage_gap'; message: string }"
+          "type": "{ code: 'source_budget_exceeded' | 'historical_source_confirmation_required' | 'audience_transfer_confirmation_required'\r\n    | 'learning_scope_required' | 'source_target_grade_mismatch' | 'source_target_subject_mismatch' | 'practice_coverage_gap'; message: string }"
         }
       ]
     },
@@ -46416,7 +46416,7 @@
         {
           "name": "units",
           "optional": false,
-          "type": "Array<{ id: string; title: string; lessons: Array<{ id: string; title: string; objective: string;\r\n    teaching: AtomTeaching | null; classroomHref: string | null; practiceHref: string | null }> }>"
+          "type": "Array<{ id: string; title: string; lessons: Array<{ id: string; title: string; objective: string;\n    teaching: AtomTeaching | null; classroomHref: string | null; practiceHref: string | null }> }>"
         },
         {
           "name": "checkpoints",
@@ -46436,7 +46436,7 @@
         {
           "name": "textbookBasis",
           "optional": false,
-          "type": "{\r\n    title: string; editionNotice: string; href: string; tutorialVersion: string;\r\n    mappings: Array<{ atomId: string; lesson: string; topic: string; printedPages: [number, number] }>;\r\n  }"
+          "type": "{\n    title: string; editionNotice: string; href: string; tutorialVersion: string;\n    mappings: Array<{ atomId: string; lesson: string; topic: string; printedPages: [number, number] }>;\n  }"
         }
       ]
     },
@@ -48847,7 +48847,7 @@
         {
           "name": "chapterEvidence",
           "optional": true,
-          "type": "{\r\n    reviewId: string; method: 'agent_visual_review'; reviewedAt: string; idScheme: 'local_toc_ids';\r\n    sourceManifestSha256: string; metadataSha256: string; tocPageSha256s: string[]; mappingReview: 'not_reviewed';\r\n  }"
+          "type": "{\n    reviewId: string; method: 'agent_visual_review'; reviewedAt: string; idScheme: 'local_toc_ids';\n    sourceManifestSha256: string; metadataSha256: string; tocPageSha256s: string[]; mappingReview: 'not_reviewed';\n  }"
         }
       ]
     },
@@ -48972,7 +48972,7 @@
         {
           "name": "changes",
           "optional": false,
-          "type": "Array<{ id: string; name: string; kind: 'added' | 'changed' | 'unchanged';\r\n    previousVersion: number; nextVersion: number; fields: Array<{ field: string; before: unknown; after: unknown }> }>"
+          "type": "Array<{ id: string; name: string; kind: 'added' | 'changed' | 'unchanged';\n    previousVersion: number; nextVersion: number; fields: Array<{ field: string; before: unknown; after: unknown }> }>"
         }
       ]
     },
@@ -49065,7 +49065,7 @@
         {
           "name": "sample",
           "optional": false,
-          "type": "{ ready: boolean; ruleVersion: string; itemLimit: number; secondsLimit: number; items: number; expectedSeconds: number;\r\n    groups: Array<{ purpose: string; availableFamilies: number; selectedFamilies: number; requiredFamilies: number; gap?: string }> }"
+          "type": "{ ready: boolean; ruleVersion: string; itemLimit: number; secondsLimit: number; items: number; expectedSeconds: number;\n    groups: Array<{ purpose: string; availableFamilies: number; selectedFamilies: number; requiredFamilies: number; gap?: string }> }"
         }
       ]
     },
@@ -49189,7 +49189,7 @@
         {
           "name": "groups",
           "optional": false,
-          "type": "Array<{ id: string; atomId: string; atomName?: string; dimensions: MeasurementDimension[]; purpose: string; minIndependentFamilies: number;\r\n    availableFamilies: number; selectedFamilies: string[]; itemIds: string[]; gap?: string }>"
+          "type": "Array<{ id: string; atomId: string; atomName?: string; dimensions: MeasurementDimension[]; purpose: string; minIndependentFamilies: number;\n    availableFamilies: number; selectedFamilies: string[]; itemIds: string[]; gap?: string }>"
         }
       ]
     },
@@ -49222,7 +49222,7 @@
         {
           "name": "groups",
           "optional": false,
-          "type": "Array<{ groupId: string; evidenceIds: string[]; independentEvidenceIds: string[]; independentFamilies: number;\r\n    passedFamilies: number; belowStandardFamilies: number; awaitingReview: number; assistedOrExposed: number; selfReportedOrSkipped: number }>"
+          "type": "Array<{ groupId: string; evidenceIds: string[]; independentEvidenceIds: string[]; independentFamilies: number;\n    passedFamilies: number; belowStandardFamilies: number; awaitingReview: number; assistedOrExposed: number; selfReportedOrSkipped: number }>"
         },
         {
           "name": "notice",
@@ -49506,7 +49506,7 @@
         {
           "name": "stateHistory",
           "optional": true,
-          "type": "Array<{ action: 'pause' | 'resume' | 'abort'; at: string; actorId: string; reason: string;\r\n    requestKey: string; requestHash: string; revision: number }>"
+          "type": "Array<{ action: 'pause' | 'resume' | 'abort'; at: string; actorId: string; reason: string;\n    requestKey: string; requestHash: string; revision: number }>"
         },
         {
           "name": "atomSnapshots",
@@ -49531,7 +49531,7 @@
         {
           "name": "questionSnapshots",
           "optional": false,
-          "type": "Array<{ id: string; stem: string; answer: unknown; analysis: string;\r\n    document: unknown; answerSchema: unknown; renderPayload: unknown; questionType: string }>"
+          "type": "Array<{ id: string; stem: string; answer: unknown; analysis: string;\n    document: unknown; answerSchema: unknown; renderPayload: unknown; questionType: string }>"
         },
         {
           "name": "coverage",
@@ -49624,7 +49624,7 @@
         {
           "name": "rule",
           "optional": false,
-          "type": "'initial_anchor' | 'prerequisite_probe' | 'representation_contrast' |\r\n    'same_point_contrast' | 'return_to_target' | 'transfer_probe' | 'uncertain_followup' | 'coverage'"
+          "type": "'initial_anchor' | 'prerequisite_probe' | 'representation_contrast' |\n    'same_point_contrast' | 'return_to_target' | 'transfer_probe' | 'uncertain_followup' | 'coverage'"
         },
         {
           "name": "reason",
@@ -49639,7 +49639,7 @@
         {
           "name": "basis",
           "optional": false,
-          "type": "Array<{ responseId: string; itemId: string; status: string; score: number | null;\r\n    correct: boolean | null; disposition: string; hintLevel: number; priorExposure: boolean }>"
+          "type": "Array<{ responseId: string; itemId: string; status: string; score: number | null;\n    correct: boolean | null; disposition: string; hintLevel: number; priorExposure: boolean }>"
         }
       ]
     },
@@ -50215,7 +50215,7 @@
         {
           "name": "verification",
           "optional": true,
-          "type": "{ supportCondition: string; counterCondition: string; undecidedCondition: string;\r\n    groups: Array<{ atomIds: string[]; dimensions: MeasurementDimension[]; minIndependentFamilies: number; purpose: string }> }"
+          "type": "{ supportCondition: string; counterCondition: string; undecidedCondition: string;\n    groups: Array<{ atomIds: string[]; dimensions: MeasurementDimension[]; minIndependentFamilies: number; purpose: string }> }"
         },
         {
           "name": "nextAction",
@@ -50652,7 +50652,7 @@
         {
           "name": "scheduleHistory",
           "optional": true,
-          "type": "Array<{ revision: number; previousDueAt: string; dueAt: string; reason: string;\r\n    at: string; actorId: string; requestKey: string; inputHash: string }>"
+          "type": "Array<{ revision: number; previousDueAt: string; dueAt: string; reason: string;\n    at: string; actorId: string; requestKey: string; inputHash: string }>"
         }
       ]
     },
@@ -50795,7 +50795,7 @@
         {
           "name": "definitionContext",
           "optional": true,
-          "type": "{ origin: 'started' | 'unavailable';\r\n    atoms: Array<{ id: string; name: string; version: number; objective: string; successCriterion: string; fingerprint: string | null }>;\r\n    incompatibleEvidenceIds: string[]; unverifiedEvidenceIds: string[] }"
+          "type": "{ origin: 'started' | 'unavailable';\n    atoms: Array<{ id: string; name: string; version: number; objective: string; successCriterion: string; fingerprint: string | null }>;\n    incompatibleEvidenceIds: string[]; unverifiedEvidenceIds: string[] }"
         }
       ]
     },
@@ -52202,7 +52202,7 @@
         {
           "name": "meta",
           "optional": false,
-          "type": "{\n    requestId: string;\n    timestamp: string;\n  }"
+          "type": "{\r\n    requestId: string;\r\n    timestamp: string;\r\n  }"
         }
       ]
     },
@@ -52995,7 +52995,7 @@
         {
           "name": "feed",
           "optional": false,
-          "type": "Array<{ id: string; kind: string; priority: number; title: string; reason: string;\r\n    target: 'today' | 'assessment' | 'plan' | 'scope'; sessionId?: string; planId?: string }>"
+          "type": "Array<{ id: string; kind: string; priority: number; title: string; reason: string;\n    target: 'today' | 'assessment' | 'plan' | 'scope'; sessionId?: string; planId?: string }>"
         }
       ]
     },
@@ -53111,7 +53111,7 @@
         {
           "name": "history",
           "optional": false,
-          "type": "Array<{ version: number; actorId: string; at: string; action: 'organized' | 'redo_started' | 'verification_previewed';\r\n    reason: string; requestKey: string; inputHash: string; metadata?: NotebookMetadata; referenceId?: string }>"
+          "type": "Array<{ version: number; actorId: string; at: string; action: 'organized' | 'redo_started' | 'verification_previewed';\n    reason: string; requestKey: string; inputHash: string; metadata?: NotebookMetadata; referenceId?: string }>"
         }
       ]
     },
@@ -53223,12 +53223,12 @@
         {
           "name": "reviews",
           "optional": false,
-          "type": "Partial<Record<MeasurementContentGate, { decision: 'approved' | 'rejected'; draftHash: string;\r\n    actorId: string; at: string; reason: string }>>"
+          "type": "Partial<Record<MeasurementContentGate, { decision: 'approved' | 'rejected'; draftHash: string;\n    actorId: string; at: string; reason: string }>>"
         },
         {
           "name": "history",
           "optional": false,
-          "type": "Array<{ version: number; action: string; actorId: string; at: string; reason: string;\r\n    requestKey: string; inputHash: string; draft?: MeasurementDraft; draftHash?: string | null }>"
+          "type": "Array<{ version: number; action: string; actorId: string; at: string; reason: string;\n    requestKey: string; inputHash: string; draft?: MeasurementDraft; draftHash?: string | null }>"
         },
         {
           "name": "questionId",
@@ -57921,7 +57921,7 @@
         {
           "name": "selected",
           "optional": false,
-          "type": "{\r\n    id: string; nickname: string; grade: number; subject: StudioSubject;\r\n    scope: LearningScope | null;\r\n    atoms: Array<Pick<KnowledgeAtom, 'id' | 'name' | 'strand' | 'objective' | 'grade'> & { teaching?: AtomTeaching }>;\r\n    estimates: MasteryEstimate[];\r\n  } | null"
+          "type": "{\n    id: string; nickname: string; grade: number; subject: StudioSubject;\n    scope: LearningScope | null;\n    atoms: Array<Pick<KnowledgeAtom, 'id' | 'name' | 'strand' | 'objective' | 'grade'> & { teaching?: AtomTeaching }>;\n    estimates: MasteryEstimate[];\n  } | null"
         },
         {
           "name": "courses",

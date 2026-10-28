@@ -1,0 +1,133 @@
+{
+  "at": "2026-10-28T22:10:30.344045+00:00",
+  "passed": true,
+  "sourceRevision": "02a350b596666ac1cc4481a7953988ca07059de0",
+  "runId": 40770689153,
+  "url": "https://github.com/angelash/StudyAgent/actions/runs/40770689153",
+  "jobs": [
+    {
+      "id": 123106730503,
+      "name": "postgres",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 123106730850,
+      "name": "application",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 123106730852,
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "fullApi": {
+    "passed": 1794,
+    "failed": 0,
+    "environmentSkipped": 82,
+    "total": 1876,
+    "source": "original application job log"
+  },
+  "browser": {
+    "expected": 501,
+    "unexpected": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "rawAttempts": 501,
+    "retries": 0,
+    "reportStats": {
+      "startTime": "2026-10-28T21:20:21.226Z",
+      "duration": 2701124.861,
+      "expected": 501,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "postgres": {
+    "job": "success",
+    "scope": "Original complete PostgreSQL job and individual suite logs retained; overlapping suite counts not summed."
+  },
+  "logRetrieval": "First PostgreSQL log request was refused by gh terminal escape protection, with empty first output. Explicit allow-escape-sequences downloads retained; separate clean copies strip ANSI only. No CI cancellation/retry.",
+  "secretScanFindings": [],
+  "limits": [
+    "Exact integrated CUI+D1 source candidate only; D2b pure content and joint bank selector are separate later commits.",
+    "No production deployment, actual provider/voice/teacher or long-term learning outcome claimed by this CI receipt.",
+    "Local1802/74 and remote1794/82 are independent environment-specific results, not combined."
+  ],
+  "files": [
+    {
+      "source": "data/qa/source-teaching-exact-ci-application-clean-first.log",
+      "archive": "data/qa/source-teaching-exact-ci-application-clean-first.log.gz",
+      "bytes": 242450,
+      "sha256": "6c4dbff77533b1132326a6b7afcffed307446a06f6837216acf2eb4a1d2dc789",
+      "archiveSha256": "91fec24f03b9fb065d233b8863a26a3e9873dc8b2420beeae1f18584b6595135"
+    },
+    {
+      "source": "data/qa/source-teaching-exact-ci-application-second.log",
+      "archive": "data/qa/source-teaching-exact-ci-application-second.log.gz",
+      "bytes": 269262,
+      "sha256": "8c5b18ef9b107e4fcd26676e5fe8741e4ee34628e5fd8f265b8a7a704162a7f0",
+      "archiveSha256": "d8c0090f96c48849aa825723239d01774d8c562010ab7d070494f3b9dbdc0f72"
+    },
+    {
+      "source": "data/qa/source-teaching-exact-ci-browser-clean-first.log",
+      "archive": "data/qa/source-teaching-exact-ci-browser-clean-first.log.gz",
+      "bytes": 219668,
+      "sha256": "b2916bd85d77b8ec7118d61c9f87bc9bdfccbfb4ec3196c72a72ded6afceffb7",
+      "archiveSha256": "eb90f5f7c59b9734517bb80f69a7296a205da8edf3f13e71503130f6ac0a96b8"
+    },
+    {
+      "source": "data/qa/source-teaching-exact-ci-browser-first.log",
+      "archive": "data/qa/source-teaching-exact-ci-browser-first.log.gz",
+      "bytes": 218324,
+      "sha256": "5fbc0498d914acc251723212147e41edad1f5ade511524a32f2c0beb36a03281",
+      "archiveSha256": "c3850a6d87182586b1163b14d28163cd960587d3e9c17db07b7899663ad16dc1"
+    },
+    {
+      "source": "data/qa/source-teaching-exact-ci-final-first-metadata.json",
+      "archive": "data/qa/source-teaching-exact-ci-final-first-metadata.json.gz",
+      "bytes": 22675,
+      "sha256": "796026220dbcd64fe4611e8f703575ff1a94d23028c4f855e93ce3fc3df8b4fe",
+      "archiveSha256": "d12845f29f11ee4c5835b4b059feb4bfa8e83ae74a2ce14d080daf28cadae13d"
+    },
+    {
+      "source": "data/qa/source-teaching-exact-ci-first-artifacts/data/qa/source-course-full-browser.json",
+      "archive": "data/qa/source-teaching-exact-ci-first-artifacts/data/qa/source-course-full-browser.json.gz",
+      "bytes": 561910,
+      "sha256": "132a57566737a72f827ad5d823803080de87ce4fa906ec2613349adfe5f642fb",
+      "archiveSha256": "e42118baf6a306557ebb172a1c02cef3e4361d981e382af4582e7f71078b5702"
+    },
+    {
+      "source": "data/qa/source-teaching-exact-ci-first-artifacts-metadata.json",
+      "archive": "data/qa/source-teaching-exact-ci-first-artifacts-metadata.json.gz",
+      "bytes": 754,
+      "sha256": "2355e1179f990ab573eaf950f3b636a80ad480c3e21a3f1b0b1ec1479a4d97b2",
+      "archiveSha256": "940d8b0039c59b004f4bd67a179fd601114732111fee0f721086125503b5bd32"
+    },
+    {
+      "source": "data/qa/source-teaching-exact-ci-postgres-clean-first.log",
+      "archive": "data/qa/source-teaching-exact-ci-postgres-clean-first.log.gz",
+      "bytes": 295903,
+      "sha256": "4f9b762e55f0a600c386ab294ace89f36b5f596ecfe9e35806d71c889eee8788",
+      "archiveSha256": "c93a614d5a94414c815282e5ce7ee95d7bc1fa63a2e6e2f9154a01a8fb423e98"
+    },
+    {
+      "source": "data/qa/source-teaching-exact-ci-postgres-first.log",
+      "archive": "data/qa/source-teaching-exact-ci-postgres-first.log.gz",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archiveSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "source": "data/qa/source-teaching-exact-ci-postgres-second.log",
+      "archive": "data/qa/source-teaching-exact-ci-postgres-second.log.gz",
+      "bytes": 309042,
+      "sha256": "1ddcfb4f9c3ad50b7f063a8ff6f7408a8a6b395052a03b15f66df6c249079d40",
+      "archiveSha256": "1c32426d7d1249729089c9f1c87e85662f517d222f278385c622c7457fe4375f"
+    }
+  ]
+}

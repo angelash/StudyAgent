@@ -149,3 +149,11 @@ schema24预计新增私有artifact、本人教学会话、学生assignment三类
 ## 15. 白板/笔记与D1的正式整合候选
 
 0e7f3c34保留当前1802完整API输入，并整合已过CUI501及正式父分支CI的白板/笔记。新Web构建/类型与新API的来源18+笔记17共35专项全过，零失败/跳过/重试；320份Web/e2e Git内容一致，6处行尾规范化差异和7处API运行差异原样留证。3191补充输入保持，但该清单在专项启动后采集，不补称预先冻结。见[整合原件](../evidence/2026-10-29/source-teaching-integrated-local-first/receipt.json)。当前进入整合精确远端CI，不把专项或旧API的501冒充当前整站；正式schema22未变，D2～D4及整体继续。
+
+## 15.1. 整合精确远端终态
+
+02a350b5/40770689153的application/browser/postgres均success。Linux完整API1794通过/82环境跳过、零失败；当前整合API对应的浏览器JSON501原始尝试全部通过，零跳过/flaky/重试，已替代此前只能作兼容线索的旧API501。PG各实际专项原日志完整保留，范围不累加。见[精确CI原件](../evidence/2026-10-29/source-teaching-exact-ci-first/receipt.json)。
+
+## 15.2. D1与来源白板的实际交付
+
+主目录真实构建-mvGyipv2z3fkD4qMxb4x/schema23，400运行JS匹配候选，32原集合89858原记录逐ID/SHA保持。56 HTTP检查、本机/外网/新BUILD、合成自有账户原来源拒绝/私有空列表/删除及三次30秒守护观察通过；原九年级课程、四年级档案、7×32教学条目和28原图保留。1073旧运行文件及停止后一致数据库已备份，私有配置保持。见[实际交付](../evidence/2026-10-29/source-teaching-main-delivery-first/receipt.json)。本层仍是D1预检和来源白板，未开放D2练习创建/作答或schema24；D2～D4及全部产品继续。
