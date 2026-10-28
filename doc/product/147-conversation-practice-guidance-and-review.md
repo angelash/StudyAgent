@@ -85,3 +85,18 @@ D3：对话线索→真实兼容报告→现有正式指导/模型建议→明�
 每层先提交具体schema/端点/实际代码落点，再动实现；新代码进入独立worktree，不修改当前正在完整回归的冻结候选。每层保留首轮失败、源码/构建/截图/trace哈希，并执行相称类型、完整API、整站浏览器、双库、精确CI及可回退主目录交付。推送前所有此前CI须终态，不取消正在运行的CI。
 
 功能通过、内容正确、教师审核、逐像素/DPR、真实声音/实机及长期真人学习分别验收。本文不增加原72的implemented/verified数，M1～M7及105整体active；没有新端点、schema24迁移、真实供应商调用或正式学生学习写入。
+
+
+## 10. D1首层的具体接口与代码落点
+
+本层只新增POST practice/preflight，HTTP200；请求audience严格区分{kind:adult}与{kind:student,studentId,subject,targetAtomIds}，学生点数1～3且唯一。另有完整selection/objective、acknowledgeHistoricalSource和acknowledgeAudienceTransfer两个默认false确认。拒绝正文、任意模型/证据/分数、重复点及未知字段；没有创建/采用接口或新持久集合。
+
+新AssistantPracticePreflightService/Controller位于LearningModule，复用AssistantArtifactService.readSource与stableAssistantWhiteboardOrigin，不改变原笔记kind、指纹或存储。学生只放行精确新POST预检路径。成人受众只允许成人未绑定孩子的原会话；学生绑定原会话不得转另一孩子/学科，成人null来源到孩子必须本人监护权限并明确transfer确认。先核对本人来源，再读目标权限，避免外人借目标ID探查私聊。
+
+学生目标必须存在于当前已确认scope，定义学科/年级/学期符合原范围；课程学科或课程年级与scope冲突则阻断，原profile年级独立显示且不修改。精确当前学生评测保护对家长目标也生效，原来源/历史读取不改。scope缺失给范围确认入口，不默认数学或默认档案年级。旧源确认不恢复旧对话发送资格。
+
+每点只返回当前定义SHA及教学目标、审核可用题数、已曝光题数、未曝光题数和未曝光题族数。曝光复用正式诊断快照、训练题ID及originalPaperExposure；题族用canonicalFamily/FAMILY_IDENTITY_VERSION，不把同题族别题当独立结构。所有题目取eligibleMeasurements，响应不带题ID/题干/答案/候选正文或真实evidenceId。缺少两个可用未曝光结构时明确覆盖缺口，不补题冒充已审核。
+
+sourceFingerprint基于完整稳定origin，整体fingerprint另绑定原输入、当前scope完整SHA、选中定义和全部候选映射/题目内容身份/题族/曝光身份；即使题量不变但题目或定义替换也会变化。18000预算核对完整来源及目标摘要，不裁切；D1不向模型发送任何内容。返回形式明确isTeachingOnly=true、formalEvidenceCreated=false、creationAvailable=false；可用预检只表示当前范围已核对，不显示假生成能力。
+
+实际SQLite/PG用同一组HTTP测试，验证匿名来源、成人到孩子确认、同孩子跨监护私聊、超限全文、范围/9与4年级冲突、严格输入、当前原子及候选替换指纹、实际学习码暂停评测、无正文泄露及全部业务集合SHA不变。测试生成匿名已审核小题包；模型reply/structured均spy零调用。失败逐轮保留。D1不发布schema24，不将其冒充D2完整练习或正式测量。
