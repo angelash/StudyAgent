@@ -1,5 +1,7 @@
 # 数据与状态设计
 
+141候选只在既有AI insight结构化元数据添加outputPolicyVersion，规则提示不标注为模型检查；旧消息/insight不回填，不改变正式能力、会话/任务协议或schema21。正式仍140，新候选范围见[141](../product/141-normal-teaching-and-evidence-output-boundaries.md)。
+
 当前140源码候选保持schema21与103集合，讲座安全快照放在既有assistantSessions文档，公开结果不返回私有快照；旧版只读、新发/重试/worker发布要求当前版本，成人独立会话不带孩子资料。140已正式运行交付、schema21保持；新双库原生恢复与当前门禁分别见[140](../product/140-lecture-context-and-studio-assistant.md)。以下较早schema说明是各批实现沿革。
 
 138候选新增`teachingToolRuns`，候选schema21，共103个领域集合。按`ownerUserId + requestKey`唯一索引防重，冻结用途、完整输入、模型、题源与原授权会话；控制命令保存独立键/版本/代次，迟到worker需通过租约及权限栅栏。未知/媒体限制、未完成与待复核明确记录，教研建议不进入正式评分或掌握证据。管理员本人导出/删除和双库原生旧备份加最新删除账本恢复覆盖该集合；admin有有效孩子绑定时删除阻断。具体实现和运行边界见[138](../product/138-internal-teaching-tools-unified-models.md)。

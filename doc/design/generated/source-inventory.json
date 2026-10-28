@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "971eb06aa06062757b5abaa652b9dab7d56a8302",
+  "sourceRevision": "ef7466b508847dd70320cf2bd8521574789b1cdb",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 445,
@@ -10,12 +10,12 @@
     "activeModules": 19,
     "activeControllers": 44,
     "apiClasses": 163,
-    "apiFunctions": 475,
+    "apiFunctions": 479,
     "domainCollections": 103,
     "contractTypes": 387,
     "webPages": 30,
     "webRouteHandlers": 1,
-    "apiTestFiles": 183,
+    "apiTestFiles": 185,
     "browserTestFiles": 41
   },
   "modules": [
@@ -16204,7 +16204,7 @@
     {
       "name": "AiService",
       "file": "apps/api/src/modules/ai/ai.service.ts",
-      "line": 53,
+      "line": 54,
       "decorators": [
         {
           "name": "Injectable",
@@ -16240,7 +16240,7 @@
       "methods": [
         {
           "name": "modelCatalog",
-          "line": 74,
+          "line": 75,
           "signature": "modelCatalog()",
           "access": "public",
           "decorators": [],
@@ -16250,7 +16250,7 @@
         },
         {
           "name": "assistantModelAvailable",
-          "line": 82,
+          "line": 83,
           "signature": "assistantModelAvailable()",
           "access": "public",
           "decorators": [],
@@ -16258,7 +16258,7 @@
         },
         {
           "name": "analyzeAssessment",
-          "line": 84,
+          "line": 85,
           "signature": "analyzeAssessment(command: AnalyzeAssessmentCommand): Promise<AIAnalysisResponse>",
           "access": "public",
           "decorators": [],
@@ -16272,7 +16272,7 @@
         },
         {
           "name": "generateHint",
-          "line": 135,
+          "line": 136,
           "signature": "generateHint(command: GenerateHintCommand)",
           "access": "public",
           "decorators": [],
@@ -16283,7 +16283,7 @@
         },
         {
           "name": "openAssistantSession",
-          "line": 189,
+          "line": 190,
           "signature": "openAssistantSession(command: { userRole: 'student' | 'parent'; studentId: string | null; subject?: Subject | null; pageContext: 'student_home' | 'assessment' | 'mission' | 'review' | 'weekly_report' | 'classroom' | 'studio'; contextRefType?: string | null; contextRefId?: string | null; contextItemId?: string | null; }, user: InMemoryUserAccount): AssistantSession",
           "access": "public",
           "decorators": [],
@@ -16299,7 +16299,7 @@
         },
         {
           "name": "openDurableAssistantSession",
-          "line": 253,
+          "line": 254,
           "signature": "openDurableAssistantSession(command: Parameters<AiService['openAssistantSession']>[0], user: InMemoryUserAccount, authSession?: InMemoryAuthSession): Promise<AssistantSession>",
           "access": "public",
           "decorators": [],
@@ -16311,7 +16311,7 @@
         },
         {
           "name": "publicAssistantSession",
-          "line": 268,
+          "line": 269,
           "signature": "publicAssistantSession(session: AssistantSession): AssistantSession",
           "access": "private",
           "decorators": [],
@@ -16319,7 +16319,7 @@
         },
         {
           "name": "lectureDescriptor",
-          "line": 274,
+          "line": 275,
           "signature": "lectureDescriptor(user: InMemoryUserAccount, input: unknown): AssistantLectureDescriptor",
           "access": "public",
           "decorators": [],
@@ -16330,7 +16330,7 @@
         },
         {
           "name": "lectureSnapshot",
-          "line": 292,
+          "line": 293,
           "signature": "lectureSnapshot(session: AssistantSession, requireCurrent: boolean)",
           "access": "private",
           "decorators": [],
@@ -16338,7 +16338,7 @@
         },
         {
           "name": "assistantLectureSummary",
-          "line": 302,
+          "line": 303,
           "signature": "assistantLectureSummary(session: AssistantSession, requireCurrent = false)",
           "access": "public",
           "decorators": [],
@@ -16348,7 +16348,7 @@
         },
         {
           "name": "independentStudioContext",
-          "line": 307,
+          "line": 308,
           "signature": "independentStudioContext(session: AssistantSession)",
           "access": "private",
           "decorators": [],
@@ -16356,7 +16356,7 @@
         },
         {
           "name": "assertSessionOwner",
-          "line": 314,
+          "line": 315,
           "signature": "assertSessionOwner(sessionId: string, user: InMemoryUserAccount, requireCurrentContext = true)",
           "access": "public",
           "decorators": [],
@@ -16368,7 +16368,7 @@
         },
         {
           "name": "resolveQuestionContext",
-          "line": 323,
+          "line": 324,
           "signature": "resolveQuestionContext(session: AssistantSession)",
           "access": "private",
           "decorators": [],
@@ -16384,7 +16384,7 @@
         },
         {
           "name": "assistantContext",
-          "line": 365,
+          "line": 366,
           "signature": "assistantContext(session: AssistantSession, requireCurrentLecture = true)",
           "access": "private",
           "decorators": [],
@@ -16402,7 +16402,7 @@
         },
         {
           "name": "recordAssistance",
-          "line": 423,
+          "line": 424,
           "signature": "recordAssistance(context: ReturnType<AiService['assistantContext']>, messageId: string, studentId: string | null)",
           "access": "private",
           "decorators": [],
@@ -16413,7 +16413,7 @@
         },
         {
           "name": "chat",
-          "line": 434,
+          "line": 435,
           "signature": "chat(command: AssistantChatCommand): Promise<AssistantLegacyResult>",
           "access": "public",
           "decorators": [],
@@ -16423,7 +16423,7 @@
         },
         {
           "name": "assistantSnapshot",
-          "line": 438,
+          "line": 439,
           "signature": "assistantSnapshot(session: AssistantSession, requireCurrentLecture = true)",
           "access": "public",
           "decorators": [],
@@ -16434,7 +16434,7 @@
         },
         {
           "name": "prepareAssistant",
-          "line": 450,
+          "line": 451,
           "signature": "prepareAssistant(sessionId: string, message: string, requestedModelId?: string): AssistantPreparation",
           "access": "public",
           "decorators": [],
@@ -16448,7 +16448,7 @@
         },
         {
           "name": "renderAssistant",
-          "line": 468,
+          "line": 469,
           "signature": "renderAssistant(prepared: AssistantPreparation, signal?: AbortSignal): Promise<AssistantReply>",
           "access": "public",
           "decorators": [],
@@ -16460,7 +16460,7 @@
         },
         {
           "name": "publishAssistant",
-          "line": 531,
+          "line": 532,
           "signature": "publishAssistant(prepared: AssistantPreparation, result: AssistantReply, requestKey: string)",
           "access": "public",
           "decorators": [],
@@ -16473,7 +16473,7 @@
         },
         {
           "name": "listMessages",
-          "line": 550,
+          "line": 552,
           "signature": "listMessages(sessionId: string)",
           "access": "public",
           "decorators": [],
@@ -16483,7 +16483,7 @@
         },
         {
           "name": "structureImportRecord",
-          "line": 554,
+          "line": 556,
           "signature": "structureImportRecord(command: StructureImportRecordCommand): Promise<QuestionImportAiSuggestion>",
           "access": "public",
           "decorators": [],
@@ -16496,7 +16496,7 @@
         },
         {
           "name": "enrichDiagnosticPlan",
-          "line": 603,
+          "line": 605,
           "signature": "enrichDiagnosticPlan(plan: DiagnosticGuidancePlan, context: unknown): Promise<{\r\n    status: 'available' | 'unavailable' | 'rejected';\r\n    value?: { summary: string; activities: Array<{ actionId: string; activity: string; evidenceIds: string[] }> };\r\n  }>",
           "access": "public",
           "decorators": [],
@@ -16507,7 +16507,7 @@
         },
         {
           "name": "requireClient",
-          "line": 630,
+          "line": 632,
           "signature": "requireClient(scene: string)",
           "access": "private",
           "decorators": [],
@@ -16515,7 +16515,7 @@
         },
         {
           "name": "parseAnalysisResponse",
-          "line": 638,
+          "line": 640,
           "signature": "parseAnalysisResponse(rawValue: string): Omit<AIAnalysisResponse, 'source'>",
           "access": "private",
           "decorators": [],
@@ -16525,7 +16525,7 @@
         },
         {
           "name": "parseQuestionImportSuggestion",
-          "line": 654,
+          "line": 656,
           "signature": "parseQuestionImportSuggestion(rawValue: string): QuestionImportAiSuggestion",
           "access": "private",
           "decorators": [],
@@ -16536,7 +16536,7 @@
         },
         {
           "name": "extractStructuredContent",
-          "line": 674,
+          "line": 676,
           "signature": "extractStructuredContent(content: string)",
           "access": "private",
           "decorators": [],
@@ -16544,7 +16544,7 @@
         },
         {
           "name": "wrapAiError",
-          "line": 684,
+          "line": 686,
           "signature": "wrapAiError(scene: string, error: unknown)",
           "access": "private",
           "decorators": [],
@@ -16552,7 +16552,7 @@
         },
         {
           "name": "getSubjectLabel",
-          "line": 696,
+          "line": 698,
           "signature": "getSubjectLabel(subject: Subject | null | undefined)",
           "access": "private",
           "decorators": [],
@@ -16560,7 +16560,7 @@
         },
         {
           "name": "isQuestionAnswerMode",
-          "line": 709,
+          "line": 711,
           "signature": "isQuestionAnswerMode(value: unknown): value is QuestionImportAiSuggestion['suggestedAnswerMode']",
           "access": "private",
           "decorators": [],
@@ -16568,7 +16568,7 @@
         },
         {
           "name": "recordInsight",
-          "line": 731,
+          "line": 733,
           "signature": "recordInsight(sourceType: AIInsightRecord['sourceType'], sourceId: string, studentId: string | null, summary: string, payload: AIAnalysisResponse)",
           "access": "private",
           "decorators": [],
@@ -38947,6 +38947,30 @@
       "signature": "decodeMiniMaxSse(input: string)"
     },
     {
+      "file": "apps/api/src/modules/ai/teaching-output-policy.ts",
+      "name": "denied",
+      "line": 24,
+      "signature": "denied(prefix: string, medicalLabel: boolean): boolean"
+    },
+    {
+      "file": "apps/api/src/modules/ai/teaching-output-policy.ts",
+      "name": "technicalTerm",
+      "line": 34,
+      "signature": "technicalTerm(clause: string, start: number): boolean"
+    },
+    {
+      "file": "apps/api/src/modules/ai/teaching-output-policy.ts",
+      "name": "neutralMedicalTerm",
+      "line": 43,
+      "signature": "neutralMedicalTerm(clause: string): boolean"
+    },
+    {
+      "file": "apps/api/src/modules/ai/teaching-output-policy.ts",
+      "name": "inspectTeachingOutput",
+      "line": 50,
+      "signature": "inspectTeachingOutput(text: string): TeachingOutputInspection"
+    },
+    {
       "file": "apps/api/src/modules/ai/teaching-tool-protocol.ts",
       "name": "canonical",
       "line": 36,
@@ -55809,6 +55833,8 @@
     "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
     "apps/api/src/modules/ai/openai-compatibility.test.ts",
     "apps/api/src/modules/ai/speech.service.test.ts",
+    "apps/api/src/modules/ai/teaching-output-caller.test.ts",
+    "apps/api/src/modules/ai/teaching-output-policy.test.ts",
     "apps/api/src/modules/ai/teaching-tool-protocol.test.ts",
     "apps/api/src/modules/ai/teaching-tool.integration.test.ts",
     "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",

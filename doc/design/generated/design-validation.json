@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-28T00:09:51.385Z",
-  "sourceRevision": "971eb06aa06062757b5abaa652b9dab7d56a8302",
+  "at": "2026-10-28T00:43:22.042Z",
+  "sourceRevision": "ef7466b508847dd70320cf2bd8521574789b1cdb",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -12,12 +12,12 @@
     "activeModules": 19,
     "activeControllers": 44,
     "apiClasses": 163,
-    "apiFunctions": 475,
+    "apiFunctions": 479,
     "domainCollections": 103,
     "contractTypes": 387,
     "webPages": 30,
     "webRouteHandlers": 1,
-    "apiTestFiles": 183,
+    "apiTestFiles": 185,
     "browserTestFiles": 41
   },
   "features": {
@@ -27,7 +27,7 @@
     "coveredApiRoutes": 424
   },
   "sourceReferences": {
-    "uniqueFiles": 594,
+    "uniqueFiles": 598,
     "problems": [],
     "sha256": {
       ".github/apt-ci.conf": "0ef559790ebaac3de1306f899a306ba2c7b76ba55b554e06634b0545b4878827",
@@ -75,10 +75,10 @@
       "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts": "a45cc71e71a53176c0022ab9ea02f02585fb90cb8e4d3ae446ca0497d0563ffc",
       "apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts": "16e408820df53f2473a478caa947b4912eccb3f7f4e15bcc9000a6619f27a523",
       "apps/api/src/modules/ai/ai.controller.ts": "1b37dfea1f41dc53809cbce92ed3ceeb4dca19d1f3b51e61e2b1b33928d119fd",
-      "apps/api/src/modules/ai/ai.service.ts": "83676bdbcf19da6a564d445690505918baf7c1bcca2d9241157e70744aa6f8b4",
+      "apps/api/src/modules/ai/ai.service.ts": "40ed4304c96b6ac729d42c8fb5c461774b2600a6a0a7df6862797a60c16e67dd",
       "apps/api/src/modules/ai/assistant-lecture-context.ts": "b20f0ca21ff3d3c74334f37f0face448d396d565295f82bcaa8c2bcb4545a292",
       "apps/api/src/modules/ai/assistant-lecture-recovery.integration.test.ts": "8b96141269e549a6e45b0d16e48e016e1e47fba0db827986d8a7a75b53d912c2",
-      "apps/api/src/modules/ai/assistant-lecture.integration.test.ts": "9d67c0866b2b09e247a53565190fae6ad43bc4835c1889974122197a50987c9a",
+      "apps/api/src/modules/ai/assistant-lecture.integration.test.ts": "a349c2e7cc4935fddd8112c849324f0200265930dcbf650453f79375bbcc401f",
       "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts": "7843d76789028f180b7220d5ca634b14623e4d31d41ff20f77d49bff37b5cd07",
       "apps/api/src/modules/ai/assistant-turn-worker.service.ts": "fb70fefc517012c92f47435baac5d82577a0ee353a99a57d9bd42750bb82e68e",
       "apps/api/src/modules/ai/assistant-turn.controller.ts": "c10d4bad7d8e9097d5e8f03af40ef93c2eec7cb86e80f05c971a2381e72c3187",
@@ -94,6 +94,9 @@
       "apps/api/src/modules/ai/neutral-voice-samples.ts": "14d09ff27ae20a0dfed51e7f22621fc53ccf363e6b3262d7ddab0eb797cdcf5f",
       "apps/api/src/modules/ai/speech.service.test.ts": "444d6ca4673fcd8e4603106980cf53121d57edc97e173310f50da633f0b3748b",
       "apps/api/src/modules/ai/speech.service.ts": "33be573a2c4d5bfac57124ba59c10098d28dced4901840e3d1640990f0155c7e",
+      "apps/api/src/modules/ai/teaching-output-caller.test.ts": "eb8dcd1e443a4c81ce194ab6df8e85ec29faab54255e3c57b0e202865f9f7ea1",
+      "apps/api/src/modules/ai/teaching-output-policy.test.ts": "56505f5db0a72ab128b4123443862271cc65445c851880d5ff6a9d321b03b8be",
+      "apps/api/src/modules/ai/teaching-output-policy.ts": "7adc55430bcb9fd272ac5badc7b16fceeae32fc64f5ad5e123ce9fe45383946b",
       "apps/api/src/modules/ai/teaching-tool-compatibility.service.ts": "46216c22d49c1dfa7d0d7d53d4d7161af0ddc488462f571330b77c3833d33038",
       "apps/api/src/modules/ai/teaching-tool-protocol.ts": "c679a76b103ec877b29d9e09066e635964794920196c60bbe70e4e1cc10160aa",
       "apps/api/src/modules/ai/teaching-tool-record.ts": "4b74b707d7a417b44d4245ba1f084cf5e555cdf51d778350dd4f2d081fd73f37",
@@ -494,8 +497,9 @@
       "doc/product/124-topic-whiteboard-figures-and-visual-manuscripts.md": "91a58844d773a0bd0c32bb49034372980ba91f507d9caf94485af6c364111c2e",
       "doc/product/125-whiteboard-continuous-narration-and-bounded-preparation.md": "18083c59ec9c5401e478c213bf5adf7611db1a0deef025d54cbdeb93bc377792",
       "doc/product/126-knowledge-report-workspace-and-evidence-paths.md": "9c49a70f91ce6c5e494cfc37ee6c82d70f56636e0a5a5c2e01aee9d562228cec",
-      "doc/product/129-hyperknow-original-assets-and-teaching-shell.md": "b6d04d9f6b8ed1f49a13ab575c68468e5f0be5fbd7e236506c0168f106884b1e",
-      "doc/product/139-self-reported-difficulty-and-measurement-versioning.md": "0e23a075155edf1cff5f714432e77fedd800ed637e8a3246766a1d2db5a817db",
+      "doc/product/129-hyperknow-original-assets-and-teaching-shell.md": "711495da13d498950ca42c4f130944b28d50f193d1df2a3b398ed9c401043401",
+      "doc/product/139-self-reported-difficulty-and-measurement-versioning.md": "ce029e783126d6176b27d5712793129ed1a80787f849bc8c42ddf730b3eccd7b",
+      "doc/product/141-normal-teaching-and-evidence-output-boundaries.md": "27a1332f7a472105be0e609b322cc1bd9f039bfdffa3891c01de8489db781fe9",
       "packages/contracts/src/ai-models.ts": "c27640b994c433be31aa6f048e727446f86e68252d695732740f5dd652b0df63",
       "packages/contracts/src/ai-teaching-tools.ts": "5063a057c70360db1e3f122ca68cb4632b621e58a2b9163e3c864b71475ed005",
       "packages/contracts/src/answer-draft.ts": "226653dad8a598fb1d4b27fe76e804f63e49a06d1884b586569facbaec8682dd",
@@ -542,7 +546,7 @@
       "resources/gesp/student-curriculum-v2.json": "cdae4abec0af8fcad4d83b9503867d0eedd244808280e027f8a1e4533262bb9a",
       "scripts/ci/configure-ubuntu-packages.cjs": "96d8d65f1893e68a05e5ef0589bd140f92671dd1b3da43c0f3fd1747ecbbf577",
       "scripts/ci/configure-ubuntu-packages.test.cjs": "f969103ea4303100c879434e39ebd7641eccd17502da089c601c5f9fb2ec3e76",
-      "scripts/gesp/backup_archive.py": "e3dd4c70a3e2aa4d645755f1990f375a4129a448d0640f9142b4ee23a13fcad7",
+      "scripts/gesp/backup_archive.py": "60fa56fb900da4d6df134489065a55b038d5e3e59c4d72c29660a3d40956ce6f",
       "scripts/gesp/run_submission.cjs": "f871584f56f298e2dcc308f7fa436188c66ea0f213a65161e6af33c3ceb07571",
       "scripts/operations/backup.cjs": "7fba758e38449d9baa3be3ba06631fe36191c557d7b830c53f4797ea02622ccc",
       "scripts/operations/material-audit.cjs": "861749578b343e8dfdd5a8999dea7ae94b24909671a8612d1dfb7d9ae2e9dca8",
@@ -557,11 +561,11 @@
       "scripts/operations/restored-materials.cjs": "95740ba4c36cb17b0efd6a3f246c4ce08c7a3148009cf5ccbe9435a4e7f90e08",
       "scripts/operations/setup-imagegen.cjs": "2309f53d9bc7b1aeee6c0f6deef202958dbaf59d18d599088e435f11f4e22dfa",
       "scripts/operations/sqlite-restore.cjs": "c78a363f44224f700c4fcd33442fe67d7833f1f729ca95cf6a70844ad207b186",
-      "scripts/operations/start-daemon.ps1": "d27f62b3f0846fbaa532c055861823ae31b0489da8bb7177af2a94cfa83b054f",
+      "scripts/operations/start-daemon.ps1": "929b62cd8b6ecc7e6778b196e44d852992a8a2197c651b04ba3f686c567ce2c5",
       "scripts/processing/file_leases.py": "653083a38468330f7d7992b9924b2ab0cb6e9b4d3ed9a91ab87633a146c74f12",
       "scripts/processing/process_document.py": "bba985f55173996145a80cd16557974c18991f25d6626948700047c887aeb270",
       "scripts/processing/project_file_preview.py": "174dc8a1ff4b0269ca9ff993e867149de54a4430da8661f01395e784708150b6",
-      "scripts/processing/requirements-imagegen.txt": "0b273d32822f361cd2f58f1b4f0ba13e130665f52d8e23fb24cbb7e272016456",
+      "scripts/processing/requirements-imagegen.txt": "e58941612ba4560fd888182684d3404684ed6643b86e3c4ad61d7233840ff2bf",
       "scripts/qa/classroom-caption-live.cjs": "2f17e3cfea19ff626ffdadc2f8f8c6edf8c82ec12e0087a5fc04964d5b3175f2",
       "scripts/qa/classroom-image-live.cjs": "af1bbf8d168ed9f26ad959e2bd81e9c07c05489f4e97ffdb1ee0e791320846b1",
       "scripts/qa/fixtures/original-repair-child.cjs": "28e62d808c08638acb57fc97d5806bfbe0538175fdf4c0090254c8eacf5fe1dc",
@@ -632,12 +636,12 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 3805,
+    "checked": 3819,
     "missing": []
   },
   "staticContent": {
     "receipt": "content-snapshot.json",
-    "authoredAuditAt": "2026-10-28T00:09:45.691Z",
+    "authoredAuditAt": "2026-10-27T22:19:31.601Z",
     "totals": {
       "points": 258,
       "teaching": 258,

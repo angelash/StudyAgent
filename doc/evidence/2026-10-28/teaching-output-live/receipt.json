@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "sourceRevision": "ef7466b508847dd70320cf2bd8521574789b1cdb",
+  "actualDefaultModel": "deepseek-v4-flash",
+  "cases": [
+    {
+      "mode": "lecture",
+      "elapsedMs": 20506,
+      "cliStarts": 1,
+      "policyVersion": "teaching-output-policy-v1",
+      "containsFormerlyBlockedPhrase": false
+    },
+    {
+      "mode": "independent",
+      "elapsedMs": 17543,
+      "cliStarts": 1,
+      "policyVersion": "teaching-output-policy-v1",
+      "containsFormerlyBlockedPhrase": true
+    }
+  ],
+  "formalRecordsUnchanged": true,
+  "originalRequestReplayVerified": true,
+  "fullModelMatrixRequalified": false,
+  "scope": "Two anonymous default-model samples through actual HTTP, durable worker and configured Xiaojiu CLI. Optional teaching-output mode asks for normal qualified/definitional explanations and verifies their recorded output-policy version. No fixtures, model matrix requalification, teacher validation, pixel/audio parity or stable success-rate claim.",
+  "files": {
+    "data/qa/teaching-output-live-first/receipt.json": {
+      "sha256": "10d6c702d4981afa869e1b967437f6c36e5e0929149002f2db0675feb848aee5",
+      "gzipSha256": "556a41d3a430904f1132d763ae9591e9ea10522bb68c0ceb5d33636b1bfecdd2",
+      "bytes": 6088
+    },
+    "data/qa/teaching-output-live-first/progress.json": {
+      "sha256": "10d6c702d4981afa869e1b967437f6c36e5e0929149002f2db0675feb848aee5",
+      "gzipSha256": "556a41d3a430904f1132d763ae9591e9ea10522bb68c0ceb5d33636b1bfecdd2",
+      "bytes": 6088
+    },
+    "data/qa/teaching-output-live-first/lecture.json": {
+      "sha256": "e0d52abb25d95f187429f06b74cdc0757f7b43cae1b892be3fc47d46d46873c6",
+      "gzipSha256": "78cd41c85e6e1ef4058867e41466fb8134570c4e726c5b46971ebcaba3210a08",
+      "bytes": 7933
+    },
+    "data/qa/teaching-output-live-first/independent.json": {
+      "sha256": "26d5d8f78191f081833971e789af61805d886640fd7fbcd4798e13ea2bc7be4c",
+      "gzipSha256": "59b9ff7d6ca0cc8c9220ded3d6eb62638e7e5c8a18d44f8749d68c6e2b0828b0",
+      "bytes": 5041
+    },
+    "data/qa/teaching-output-live-first.log": {
+      "sha256": "a1e029b1fe0a76f80dfcd0b5e6330d313b0c5f8c6e9a5464e80a1f23ba943d5b",
+      "gzipSha256": "6ac5653ebb34ae8d2b2ef1eff239b5c2a45f94f3eac5f98c02c0ac28f88c0420",
+      "bytes": 204
+    },
+    "scripts/qa/lecture-assistant-live.cjs": {
+      "sha256": "1ee72f6d0c4f61d06791d815a037154fdb565f821fa9a34d011c0c83f6f29cd6",
+      "gzipSha256": "3d14018da37633f9d5163d9ad029330223ab5cb6119bf23f3ab9c390b9cc40ca",
+      "bytes": 9675
+    }
+  }
+}

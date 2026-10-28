@@ -55,3 +55,9 @@ ai.service.ts在Xiaojiu助教、OpenAI兼容助教、旧可选指导润色三个
 最新SQLite/策略/旧助教组合108项全部通过、PG组合16项通过（14 HTTP、1 PG原生、1 SQLite对照），API及测试类型检查通过。范围重叠，不能相加作覆盖率。主目录373编译与本工作区contracts/config四产物共377输入仍原SHA一致，正式继续140/NkfAGfS0FLw-vibTZyptB，没有141真实模型调用或正式数据写入。见[当前专项](../evidence/2026-10-28/teaching-output-focused/receipt.json)、[原caller失败](../evidence/2026-10-28/teaching-output-caller-before/receipt.json)、[原HTTP测试失败](../evidence/2026-10-28/teaching-output-http-first/receipt.json)及[五条语义范围反例](../evidence/2026-10-28/teaching-output-scope-before/receipt.json)。
 
 接续真实默认模型的普通否定/定义讲解、完整API/433浏览器、精确远端及新鲜可回退交付。模型文字资格仍继承140的21/22，旧Opus5当前两次复查失败不变；不以本批mock声称全模型或教师质量通过。有限局部语义规则不等于完备事实核查，旧消息不重判、正式掌握/原因仍由已有独立证据协议决定。完整M1～M7及72项继续。
+
+## 8. 真实默认模型与完整门禁准备
+
+实际当前小九CLI/HTTP/持久worker分别完成讲座与独立数学解释，Auto解析deepseek-v4-flash，20506ms和17543ms、各1次CLI启动。两者insight均记录teaching-output-policy-v1，消息角色、回执ID/inReplyTo、原请求重放无新增模型调用及正式记录原SHA保持均核对。数学原回答实际含“每个正方形一定是长方形”与“长方形不一定是正方形”，现可按正常知识解释发布；讲座样本采用另一种否定表述，不强制其生成固定词串。见[真实样本与原文](../evidence/2026-10-28/teaching-output-live/receipt.json)。这些是两条实际文字通路样本，不是完整22模型重测、教学认可或稳定率。
+
+当前源设计14领域/128功能/424常规接口，598引用文件与10离线查看器检查通过；普通教学策略归入AI-02，未新增业务路由或集合。接着固定当前API源/编译及实际QA Web，完整API与433浏览器并行回归。正式继续140；精确新CI及141可回退运行仍待。主目录最新cb30e43归档CI仍在独立远端执行，不取消，也不在其终态前推送新提交。

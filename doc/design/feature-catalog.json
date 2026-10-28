@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "971eb06aa06062757b5abaa652b9dab7d56a8302",
+  "sourceRevision": "ef7466b508847dd70320cf2bd8521574789b1cdb",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
@@ -4483,7 +4483,7 @@
             {
               "name": "AiService.modelCatalog",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 74
+              "line": 75
             }
           ],
           "sourceFiles": [
@@ -4517,7 +4517,7 @@
             "/admin/ai-tools"
           ],
           "inputs": "角色、学生、学科、页面上下文、完整原问题、原modelId、requestKey与contextVersion",
-          "implementation": "普通提问和旧同步入口共用持久队列；冻结实际模型、内部授权/题目指纹，事务核对首答/订正与租约后一次发布消息对和辅助事实；排队/生成/检查/失败/取消由服务端版本化轮询恢复；停止等待与取消生成分开；原任务显式重试保留模型。成人讲座按课程/讲座/完整内容指纹冻结安全目标，不绑定孩子；移除讲座进入独立studio会话；首页复用同一持久组件；工具往返与刷新保留mode/audience及原讲座标识，恢复各自原稿。并发首次open在有限事务中重新鉴权并复用原会话。",
+          "implementation": "普通提问和旧同步入口共用持久队列；冻结实际模型、内部授权/题目指纹，事务核对首答/订正与租约后一次发布消息对和辅助事实；排队/生成/检查/失败/取消由服务端版本化轮询恢复；停止等待与取消生成分开；原任务显式重试保留模型。成人讲座按课程/讲座/完整内容指纹冻结安全目标，不绑定孩子；移除讲座进入独立studio会话；首页复用同一持久组件；工具往返与刷新保留mode/audience及原讲座标识，恢复各自原稿。并发首次open在有限事务中重新鉴权并复用原会话。 三个旧模型回答入口共用teaching-output-policy-v1，允许数学断言、局部否定及明确技术术语；学习者标签/确定根因仍拒绝，不能用跨句免责声明或双重否定放行；ID和引用按原结构验证，AI insight记录策略版本，规则提示不伪称模型检查。",
           "outputs": "可恢复原提问、真实任务状态、已校验消息和辅助事实",
           "collections": [
             "assistantSessions",
@@ -4612,27 +4612,27 @@
             {
               "name": "AiService.lectureDescriptor",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 274
+              "line": 275
             },
             {
               "name": "AiService.openDurableAssistantSession",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 253
+              "line": 254
             },
             {
               "name": "AiService.assertSessionOwner",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 314
+              "line": 315
             },
             {
               "name": "AiService.chat",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 434
+              "line": 435
             },
             {
               "name": "AiService.listMessages",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 550
+              "line": 552
             },
             {
               "name": "AssistantTurnService.context",
@@ -4671,6 +4671,10 @@
             "apps/web/app/studio/studio-instant-assistant.tsx",
             "apps/web/app/studio/studio-instant-assistant.css",
             "tests/e2e/studio-assistant.spec.ts",
+            "apps/api/src/modules/ai/teaching-output-policy.ts",
+            "apps/api/src/modules/ai/teaching-output-policy.test.ts",
+            "apps/api/src/modules/ai/teaching-output-caller.test.ts",
+            "doc/product/141-normal-teaching-and-evidence-output-boundaries.md",
             "apps/api/src/modules/ai/ai.service.ts"
           ],
           "tests": [

@@ -1,0 +1,40 @@
+{
+  "passed": false,
+  "phase": "full-api-and-browser-pending",
+  "sourceRevision": "ef7466b508847dd70320cf2bd8521574789b1cdb",
+  "scope": "141 normal teaching and local learner-claim inspection only. Complete M1-M7/original72 remains active.",
+  "focused": {
+    "passed": 108,
+    "receipt": "teaching-output-focused/receipt.json"
+  },
+  "postgres": {
+    "passed": 16,
+    "overlapsFocused": true,
+    "receipt": "teaching-output-focused/receipt.json"
+  },
+  "realDefaultModel": {
+    "passed": 2,
+    "cliStarts": 2,
+    "modelId": "deepseek-v4-flash",
+    "formalRecordsUnchanged": true,
+    "receipt": "teaching-output-live/receipt.json"
+  },
+  "fullApi": null,
+  "fullBrowser": null,
+  "exactCi": null,
+  "runtime": null,
+  "productionUpgradePerformed": false,
+  "productionStill140": true,
+  "requirements": {
+    "implemented": 11,
+    "inProgress": 50,
+    "planned": 11,
+    "verified": 0
+  },
+  "limits": [
+    "Finite local text rules are not a complete semantic or factual classifier.",
+    "Original answer/reference and formal measurement protocols remain separate.",
+    "Historical full text matrix remains21/22; current old Opus5 failure unchanged.",
+    "No complete product, teacher, pixel/DPR/audio, all-content or long-term claim."
+  ]
+}
