@@ -480,3 +480,6 @@ M1后即开始可用课程的设备与真人试用；真实1/3/7/14日复测与�
 
 
 2026-10-29 147 D1范围复查：已学范围变化保留档案年级/指纹失效、撤回原子拒绝与实际durable_tasks=0补证通过，SQLite/PG各20/20、零跳过，8输入SHA保持。14领域/133功能/444接口、671源码引用/4182链接/10离线页通过；见[补充原件](../evidence/2026-10-29/assistant-practice-preflight-current-state-first/receipt.json)。本D1完整API已冻结运行，独立CUI501仍继续；没有将两轮结果或不同候选合并计数，整体active。
+
+
+2026-10-29 147 D1完整API终态：1802通过/0失败/74环境跳过，2613输入SHA保持，测试/校验退出0；[原件](../evidence/2026-10-29/assistant-practice-preflight-full-api-first/receipt.json)。CUI501来自较旧API的独立候选，完整整合后的精确CI及schema23交付仍待，不混用门禁。D2～D4及整体active。

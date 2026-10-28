@@ -1,0 +1,87 @@
+{
+  "at": "2026-10-28T21:02:38.658545+00:00",
+  "passed": true,
+  "runtimeImplementation": "95715abf",
+  "reviewedTests": "d61789f2",
+  "docsHeadAtArchive": "a214a22e85cf19b3341b112b46e64263e8070835",
+  "scope": "Source-whiteboard/notes baseline plus D1 read-only practice preflight and current scope/actor guards; no D2 generation or schema24.",
+  "api": {
+    "numTotalTests": 1876,
+    "numPassedTests": 1802,
+    "numFailedTests": 0,
+    "numPendingTests": 74,
+    "success": true
+  },
+  "process": {
+    "at": "2026-10-28T20:59:19.921Z",
+    "testExit": 0,
+    "verificationExit": 0,
+    "reportPresent": true
+  },
+  "inputCheck": {
+    "checked": 2613,
+    "changed": []
+  },
+  "retries": 0,
+  "files": [
+    {
+      "source": "data/qa/practice-preflight-complete-api-first.json",
+      "archive": "data/qa/practice-preflight-complete-api-first.json.gz",
+      "bytes": 908386,
+      "sha256": "09089b008ec4cc2ebdd1ba93d29310ab71aa5d0b66b38175a6f99f631eeef40b"
+    },
+    {
+      "source": "data/qa/practice-preflight-complete-api-first.log",
+      "archive": "data/qa/practice-preflight-complete-api-first.log.gz",
+      "bytes": 81800,
+      "sha256": "4a05300b93721d86210609f89f6759f29341d7d8d71dadacac920fb61569e5fb"
+    },
+    {
+      "source": "data/qa/practice-preflight-complete-api-first-inputs.json",
+      "archive": "data/qa/practice-preflight-complete-api-first-inputs.json.gz",
+      "bytes": 499384,
+      "sha256": "15e4ee9c0fdf4531a87b269729256660fae2bdbc53459eb269570ebe1b6482cd"
+    },
+    {
+      "source": "data/qa/practice-preflight-complete-api-first-inputs-verification.log",
+      "archive": "data/qa/practice-preflight-complete-api-first-inputs-verification.log.gz",
+      "bytes": 34,
+      "sha256": "f052959d42316fd048527b978ceb2634b3340aedf2c675f284a163426d42d7e8"
+    },
+    {
+      "source": "data/qa/practice-preflight-complete-api-first-process-result.json",
+      "archive": "data/qa/practice-preflight-complete-api-first-process-result.json.gz",
+      "bytes": 106,
+      "sha256": "15b0740f8ab39c839677a1521c586e332b43f6a88d8e4970815430edbf2be0b3"
+    },
+    {
+      "source": "data/qa/practice-preflight-complete-api-first-managed-out.log",
+      "archive": "data/qa/practice-preflight-complete-api-first-managed-out.log.gz",
+      "bytes": 155,
+      "sha256": "183709d793fa946bd55d3c763da2fc87ea256e5c56a643654288db49c6749357"
+    },
+    {
+      "source": "data/qa/practice-preflight-complete-api-first-managed-error.log",
+      "archive": "data/qa/practice-preflight-complete-api-first-managed-error.log.gz",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "data/qa/run-managed-practice-preflight-complete-api-first.cjs",
+      "archive": "data/qa/run-managed-practice-preflight-complete-api-first.cjs.gz",
+      "bytes": 1667,
+      "sha256": "0d3fc8452c5b3e3e088c4b62d9f351ac97067801203e2d85c05c57293b725edc"
+    },
+    {
+      "source": "data/qa/freeze-practice-preflight-complete-api-first.py",
+      "archive": "data/qa/freeze-practice-preflight-complete-api-first.py.gz",
+      "bytes": 1253,
+      "sha256": "61e6c7b99016ee9fff8b0ff7e277fede4d569744630c3d0844a032fae77bf574"
+    }
+  ],
+  "limitations": [
+    "74environment pending are not passes. ActualPG20 andSQLite20 are separate overlapping specialist runs.",
+    "CUI501 browser uses a separate older API build and is not declared a D1 browser gate.",
+    "Merged exact remote CI and actual schema23 production delivery still pending; whole product remains active."
+  ]
+}

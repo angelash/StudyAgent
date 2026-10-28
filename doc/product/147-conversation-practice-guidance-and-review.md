@@ -139,3 +139,8 @@ D2b纯正文生成先定义独立assistant-teaching-practice-content-v1：2至6�
 schema24预计新增私有artifact、本人教学会话、学生assignment三类关系，扩展现有PracticeSession来源和新来源Attempt的明确actor；先完成schema23交付后再落迁移/公开创建。双库实际恢复须验证父artifact→assignment→每组实践会话/原子→原开始及作答回执，作者删除清除本人origin/自练，孩子删除清除assignment/实践；最新删除账本重放不得复活。另一个有权监护人仍不读作者私聊。
 
 专项验收至少包括成人null受众完整自练、家长预览/陪练不写孩子集合或曝光、真实学习码本人开始、同组同键多实例单一训练、多个目标分组不串点、家长伪造child draftFence仍拒绝、不同实际作答者不复用原请求、首答与理由不覆盖、先看答案/提示/示范的资格区别、原来源/范围/权限变化、暂停评测、双库隐私和原生恢复。先交审核bank学生路径，再接AI未审核候选和成人完整教学；任何一层不能用当前D1只读20/20或CUI1790/501替代。
+
+
+## 14. D1完整API终态
+
+包含来源白板/笔记共同基线与D1只读预检的首次受管完整API1876项中1802通过/0失败/74环境跳过，2613冻结输入逐SHA保持，测试/验证均退出0，见[完整API原件](../evidence/2026-10-29/assistant-practice-preflight-full-api-first/receipt.json)。实际PG20与SQLite20分别作为专项，不合并计数。没有D2生成/采用/作答或schema24。独立CUI501的Web源码相同但API较旧，不冒充D1完整浏览器；后续整合候选在精确远端CI重新运行全站与PG，本地主目录仍schema22。完整产品退出条件继续active。
