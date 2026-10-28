@@ -13,7 +13,7 @@ export class AssessmentsController {
     @Body()
     body: {
       studentId: string;
-      subject: 'math' | 'chinese' | 'english';
+      subject: 'math' | 'chinese' | 'english' | 'chemistry';
       assessmentType: 'initial' | 'unit' | 'stage' | 'micro' | 'retry';
     },
   ) {

@@ -31,7 +31,7 @@ export class DiagnosticsController {
   }
   @Get('diagnostics/textbooks')
   textbooks(@Query('subject') subject?: string, @Query('grade') grade?: string, @Query('term') term?: string) {
-    return this.curriculum.textbooks.list(parseSubject(subject), validate(z.number().int().min(1).max(6), Number(grade)),
+    return this.curriculum.textbooks.list(parseSubject(subject), validate(z.number().int().min(1).max(9), Number(grade)),
       validate(z.enum(['upper', 'lower']), term));
   }
   @Get('diagnostics/textbooks/:bookId')

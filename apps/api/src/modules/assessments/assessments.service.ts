@@ -9,7 +9,7 @@ import { QuestionWorkspaceService } from '../question-workspace/question-workspa
 
 type StartAssessmentCommand = {
   studentId: string;
-  subject: 'math' | 'chinese' | 'english';
+  subject: 'math' | 'chinese' | 'english' | 'chemistry';
   assessmentType: 'initial' | 'unit' | 'stage' | 'micro' | 'retry';
 };
 
@@ -232,7 +232,7 @@ export class AssessmentsService {
     return result;
   }
 
-  getLatestResult(studentId: string, subject: 'math' | 'chinese' | 'english') {
+  getLatestResult(studentId: string, subject: 'math' | 'chinese' | 'english' | 'chemistry') {
     const sessions = this.store.assessments
       .filter((item) => item.studentId === studentId && item.subject === subject && item.status === 'completed')
       .sort((a, b) => new Date(b.completedAt ?? 0).getTime() - new Date(a.completedAt ?? 0).getTime());

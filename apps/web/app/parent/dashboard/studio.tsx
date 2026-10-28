@@ -39,7 +39,7 @@ export function FamilyStudio() {
     event.preventDefault(); setBusy(true); setError('');
     try {
       const created = await apiRequest<{ profile: { id: string } }>('/students', { method: 'POST', body: JSON.stringify({ nickname, grade, preferredSessionMinutes: 15,
-        defaultVersionMap: { math: 'common', chinese: 'common', english: 'common' } }) });
+        defaultVersionMap: { math: grade <= 6 ? 'common' : '', chinese: grade <= 6 ? 'common' : '', english: grade <= 6 ? 'common' : '', ...(grade === 9 ? { chemistry: 'guangzhou-pep-chemistry-9-upper-v1' } : {}) } }) });
       setOverview(await apiRequest<FamilyOverview>('/learning/overview')); setStudentId(created.profile.id); setNickname(''); setShowCreate(false);
     } catch (caught) { setError(caught instanceof Error ? caught.message : '建档未完成，请重试'); } finally { setBusy(false); }
   }
@@ -51,7 +51,7 @@ export function FamilyStudio() {
     <section className="studio-main" aria-busy={loading || busy}>
       {error && <div className="studio-error" role="alert">{error}<button aria-label="关闭提示" onClick={() => setError('')}>×</button></div>}
       {loading ? <div className="studio-empty" role="status">正在整理学习记录…</div> : !overview ? <div className="studio-empty"><h2>孩子的成长，从这里留下。</h2><p>登录后，查看学习范围、具体证据、指导计划与复测。</p><Link className="studio-primary" href="/parent/login">登录或创建账号 ↗</Link></div> : <>
-        {(showCreate || !overview.children.length) && <form className="family-create" onSubmit={createChild}><h2>建立孩子的学习档案</h2><p>先确认当前年级，再逐科勾选已经学习的内容。</p><div><label>孩子昵称<input required maxLength={50} value={nickname} onChange={(e) => setNickname(e.target.value)} placeholder="怎么称呼孩子" /></label><label>当前年级<select value={grade} onChange={(e) => setGrade(Number(e.target.value))}>{[1, 2, 3, 4, 5, 6].map((n) => <option key={n} value={n}>{n}年级</option>)}</select></label><button className="studio-primary" disabled={busy || !nickname.trim()}>{busy ? '正在保存…' : '保存档案 ↗'}</button></div></form>}
+        {(showCreate || !overview.children.length) && <form className="family-create" onSubmit={createChild}><h2>建立孩子的学习档案</h2><p>先确认当前年级，再逐科勾选已经学习的内容。</p><div><label>孩子昵称<input required maxLength={50} value={nickname} onChange={(e) => setNickname(e.target.value)} placeholder="怎么称呼孩子" /></label><label>当前年级<select value={grade} onChange={(e) => setGrade(Number(e.target.value))}>{[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => <option key={n} value={n}>{n}年级</option>)}</select></label><button className="studio-primary" disabled={busy || !nickname.trim()}>{busy ? '正在保存…' : '保存档案 ↗'}</button></div></form>}
         {child && data && <>
           <div className="studio-section-head"><span className="studio-eyebrow">{overview.day} / 学习观察</span><h2>{child.nickname}的每一步，<br />都有迹可循。</h2><p>当前 {child.grade} 年级。先看学过什么，再看有哪些证据，最后决定下一步。</p></div>
           <div className="studio-subjects">{Object.entries(subjectNames).map(([key, name]) => <button key={key} aria-pressed={subject === key} onClick={() => { setSubject(key as Subject); setExpanded(''); }}>{name}</button>)}</div>

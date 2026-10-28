@@ -6,7 +6,7 @@ import { CurriculumBook, Subject, TextbookAtomMapping } from '@study-agent/contr
 import { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
 import { studyAssetRoot, workspaceRoot } from '../../infrastructure/workspace-paths';
 
-const names = { math: '数学', chinese: '语文', english: '英语' };
+const names = { math: '数学', chinese: '语文', english: '英语', chemistry: '化学' };
 type SourceDocument = { id: string; subject: Subject; grade: number; term: 'upper' | 'lower'; title: string; edition: string;
   assetPath: string; sha256: string; pages: number };
 type SourcePageRange = { start: number; end: number };
@@ -29,7 +29,7 @@ export class TextbookRegistryService {
       this.imported = existsSync(file) ? (JSON.parse(readFileSync(file, 'utf8')) as { books: CurriculumBook[] }).books : [];
     }
     const original: CurriculumBook[] = [];
-    for (const subject of ['math', 'chinese', 'english'] as Subject[]) for (let grade = 1; grade <= 6; grade++) {
+    for (const subject of ['math', 'chinese', 'english', 'chemistry'] as Subject[]) for (const grade of subject === 'chemistry' ? [9] : [1, 2, 3, 4, 5, 6]) {
       for (const term of ['upper', 'lower'] as const) {
         const atoms = this.store.knowledgeAtoms.filter((a) => a.subject === subject && a.grade === grade && a.status === 'published' && (a.term === 'both' || a.term === term));
         if (!atoms.length) continue;

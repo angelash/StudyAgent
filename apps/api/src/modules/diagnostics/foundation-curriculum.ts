@@ -6,6 +6,7 @@ import { addAuthoredTeaching } from './authored-teaching';
 import { addAuthoredProbes } from './authored-probes';
 import { addAuthoredRelationRelease } from './authored-relation-release';
 import { buildAtomicMathDefinitions } from './authored-atomic-curriculum';
+import { buildChemistryCurriculum } from './chemistry-curriculum';
 
 export type Exercise = { stem: string; answer: unknown; dimension: MeasurementDimension; family: string; mode?: QuestionAnswerMode; options?: string[];
   analysis?: string;
@@ -172,6 +173,11 @@ export function buildFoundationCurriculum(): FoundationDefinition[] {
     }, 32);
   }
   return addAuthoredRelationRelease(addAuthoredTeaching(addAuthoredProbes(addStructuredExercises([...result, ...buildCoreCurriculum(), ...buildAtomicMathDefinitions()]))));
+}
+
+/** Preserve the versioned primary baseline while enrolling additional subject tracks. */
+export function buildActiveCurriculum(): FoundationDefinition[] {
+  return [...buildFoundationCurriculum(), ...buildChemistryCurriculum()];
 }
 
 export function foundationQuestionId(atomId: string, item: Exercise) {

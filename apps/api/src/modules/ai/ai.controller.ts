@@ -49,7 +49,7 @@ export class AiController {
     body: {
       userRole: 'student' | 'parent';
       studentId: string | null;
-      subject?: 'math' | 'chinese' | 'english' | null;
+      subject?: 'math' | 'chinese' | 'english' | 'chemistry' | null;
       pageContext: AssistantSession['pageContext'];
       contextRefType?: string | null;
       contextRefId?: string | null;

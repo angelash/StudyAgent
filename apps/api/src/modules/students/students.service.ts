@@ -19,6 +19,7 @@ type CreateStudentCommand = {
     chinese: string;
     math: string;
     english: string;
+    chemistry?: string;
   };
 };
 
@@ -30,9 +31,9 @@ export class StudentsService {
   ) {}
 
   createStudent(parentUser: InMemoryUserAccount, command: CreateStudentCommand) {
-    command = validate(z.object({ nickname: z.string().trim().min(1).max(50), grade: z.number().int().min(1).max(6),
+    command = validate(z.object({ nickname: z.string().trim().min(1).max(50), grade: z.number().int().min(1).max(9),
       preferredSessionMinutes: z.number().int().min(5).max(90), defaultVersionMap: z.object({
-        chinese: z.string().max(150), math: z.string().max(150), english: z.string().max(150),
+        chinese: z.string().max(150), math: z.string().max(150), english: z.string().max(150), chemistry: z.string().max(150).optional(),
       }).strict() }).strict(), command);
     if (!['parent', 'admin'].includes(parentUser.role)) {
       throw new ForbiddenException('Only parent or admin can create student profile');
@@ -49,12 +50,12 @@ export class StudentsService {
 
     this.store.append('students', profile);
 
-    const enrollments: SubjectEnrollment[] = (['chinese', 'math', 'english'] as const).map((subject) => ({
+    const enrollments: SubjectEnrollment[] = (['chinese', 'math', 'english', ...(command.defaultVersionMap.chemistry ? ['chemistry' as const] : [])] as const).map((subject) => ({
       id: this.store.nextId('enroll'),
       studentId: profile.id,
       subject,
       enabled: Boolean(command.defaultVersionMap[subject]),
-      textbookVersionId: command.defaultVersionMap[subject],
+      textbookVersionId: command.defaultVersionMap[subject] ?? '',
     }));
     this.store.append('subjectEnrollments', ...enrollments);
 

@@ -10,7 +10,7 @@ import { internalAssistantHref } from '../lib/assistant-course-navigation';
 import './assistant-widget.css';
 
 export type AssistantComposerContext={conversation:ReturnType<typeof useAssistantConversation>;models:ReturnType<typeof useXiaojiuModels>;blocked:boolean};
-type AssistantWidgetProps={userRole:'student'|'parent';studentId:string|null;subject?:'math'|'chinese'|'english'|null;
+type AssistantWidgetProps={userRole:'student'|'parent';studentId:string|null;subject?:'math'|'chinese'|'english'|'chemistry'|null;
   pageContext:'student_home'|'assessment'|'mission'|'review'|'weekly_report'|'classroom'|'studio'|'course';contextRefType?:'practice'|'diagnostic'|'plan'|'classroom_lecture'|'primary_unit'|'material_lesson'|null;
   contextRefId?:string|null;contextItemId?:string|null;title:string;subtitle:string;inline?:boolean;readOnly?:boolean;frozenLectureSessionId?:string;
   contextSelection?:AssistantTeachingSelection;deferSession?:boolean;readOnlyMessage?:string;renderComposer?:(context:AssistantComposerContext)=>React.ReactNode};

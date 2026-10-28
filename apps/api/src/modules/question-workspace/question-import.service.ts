@@ -93,7 +93,7 @@ export class QuestionImportService {
 
   async createJob(requestUser: InMemoryUserAccount, input: CreateQuestionImportJobCommand) {
     this.assertAdmin(requestUser);
-    const command = validate(z.object({ importType: z.literal('textbook_pdf'), subject: z.enum(['math', 'chinese', 'english']),
+    const command = validate(z.object({ importType: z.literal('textbook_pdf'), subject: z.enum(['math', 'chinese', 'english', 'chemistry']),
       sourcePathOrUrl: z.string().trim().max(1000).optional(), fileIds: z.array(z.string().min(1).max(100)).min(1).max(10).optional(),
       requestKey: z.string().trim().min(8).max(100).optional(), includePreviewImage: z.boolean().optional(),
       sourcePolicy: z.object({ sourceType: z.enum(['internal_authoring', 'internal_textbook', 'open_content', 'public_reference', 'partner']),

@@ -290,5 +290,7 @@ export function curriculumClassroomLesson(studioCourse: StudioCourse, source: St
     step(id + ':check', 'check', '用新题检查', teaching.verification.understanding + '。' + teaching.verification.procedure),
     step(id + ':transfer', 'transfer', '迁移与复测', teaching.verification.transfer + '。' + teaching.verification.retention),
   ];
+  if (studioCourse.subject === 'chemistry') for (const item of steps)
+    item.blocks.splice(1, 0, { id: item.id + ':explanation', kind: 'text', text: item.narration });
   return { id, title: source.title, objective: source.objective, lectureId: studioCourse.id, steps, questions: [], verificationHref: source.href };
 }

@@ -25,7 +25,7 @@ type BookSummary = Omit<CurriculumBook, 'chapters'> & { lessonCount: number; map
 type Detail = Omit<CurriculumBook, 'chapters'> & { sourceDocument: SourceDocument | null; sourceAvailability: SourceAvailability; chapters: Array<Omit<CurriculumChapter, 'lessons'> & { lessons: Array<CurriculumLesson & { sourcePageRange?: SourcePageRange; atomIds: string[]; mappingState: string; mapping: TextbookAtomMapping | null }> }> };
 type Item = { mapping: MeasurementItem; question: Question; answerSchema: QuestionAnswerSchema; source: unknown; eligible: boolean; inputIssue: string; definitionIssue: string | null; contentIssue: string | null; componentIssue: string | null };
 const req = <T,>(path: string, body?: unknown) => apiRequest<T>(path, body === undefined ? {} : { method: 'POST', body: JSON.stringify(body) }, getAuthToken());
-const subjects = { math: '数学', chinese: '语文', english: '英语' };
+const subjects = { math: '数学', chinese: '语文', english: '英语', chemistry: '化学' };
 const dimensions = { understanding: '理解', procedure: '执行', transfer: '迁移', retention: '保持' };
 
 export default function CurriculumPage() {
@@ -99,7 +99,7 @@ export default function CurriculumPage() {
           <details><summary>编辑定义与先修关系</summary><div className="admin-form">
             <label className="wide">稳定标识<input value={atom.id} disabled={data.atoms.some(a => a.id === atom.id)} onChange={e => setAtom({ ...atom, id: e.target.value })} maxLength={180} /></label>
             <label>名称<input value={atom.name} onChange={e => setAtom({ ...atom, name: e.target.value })} maxLength={120} /></label><label>领域<input value={atom.strand} onChange={e => setAtom({ ...atom, strand: e.target.value })} maxLength={120} /></label>
-            <label>建议年级<select value={atom.grade} onChange={e => setAtom({ ...atom, grade: Number(e.target.value) })}>{[1,2,3,4,5,6].map(g => <option key={g} value={g}>{g}年级</option>)}</select></label>
+            <label>建议年级<select value={atom.grade} onChange={e => setAtom({ ...atom, grade: Number(e.target.value) })}>{[1,2,3,4,5,6,9].map(g => <option key={g} value={g}>{g}年级</option>)}</select></label>
             <label>状态<select value={atom.status} onChange={e => setAtom({ ...atom, status: e.target.value as KnowledgeAtom['status'] })}><option value="draft">草稿</option><option value="published">发布</option><option value="retired">停用</option></select></label>
             <label className="wide">可观察目标<textarea value={atom.objective} onChange={e => setAtom({ ...atom, objective: e.target.value })} rows={3} maxLength={1000} /></label>
             <label className="wide">成功标准<textarea value={atom.successCriterion} onChange={e => setAtom({ ...atom, successCriterion: e.target.value })} rows={3} maxLength={1000} /></label>

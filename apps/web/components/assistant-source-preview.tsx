@@ -38,6 +38,15 @@ export function AssistantSourcePreviewPanel({ ownerId, search }: Props) {
         const q=new URLSearchParams(search);q.delete('studentId');if(l.studentId)q.set('student',l.studentId);else q.delete('student');if(l.subject)q.set('subject',l.subject);else q.delete('subject');
         setRead({identity,error:'当前学习档案或学科与这条出处不一致。',switchHref:'/studio?'+q});return;
       }
+      if(l.pageContext==='course'){
+        const current=new URLSearchParams(window.location.search);
+        if(current.get('assistantSourceSession')!==id||current.get('assistantSourceKey')!==sourceKey)return;
+        let changed=false;
+        if(!current.has('student')&&!current.has('studentId')&&l.studentId){current.set('student',l.studentId);changed=true;}
+        if(!current.has('subject')&&l.subject){current.set('subject',l.subject);changed=true;}
+        if(!l.studentId&&current.get('courseScope')!=='adult'){current.set('courseScope','adult');changed=true;}
+        if(changed){window.history.replaceState(null,'','/studio?'+current+window.location.hash);window.dispatchEvent(new PopStateEvent('popstate'));}
+      }
       setRead({ identity, value,location:l });
     }).catch(error => { if (!controller.signal.aborted) setRead({ identity, error: error instanceof ApiRequestError && [403, 404].includes(error.status)
       ? '当前账号无法读取这条出处。请从自己的已保存回答重新打开。' : error.message }); });

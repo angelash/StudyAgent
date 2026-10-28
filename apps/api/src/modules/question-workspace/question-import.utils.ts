@@ -46,6 +46,7 @@ const subjectDetectionConfig: Record<
     featureMatcher: (lines: string[], joinedText: string) => boolean;
   }
 > = {
+  chemistry: { exerciseTitlePattern: /(练习|复习|检测|化学)/, sectionCuePattern: /(实验|方程式|选择题|计算题|填空题)/, instructionCuePattern: /(写出|计算|判断|解释|配平|选择|填空)/, featureReason: '检测到化学概念或反应特征', featureMatcher: (_lines, text) => /(氧气|分子|原子|化学式|化学方程式)/.test(text) },
   math: {
     exerciseTitlePattern: /(练习[一二三四五六七八九十百0-9]+|整理和复习|总复习)/,
     sectionCuePattern: /(做一做|想一想|算一算|填一填|练一练|选一选|说一说|画一画|量一量|连一连|估一估|解决问题|判断对错|看图列式)/,

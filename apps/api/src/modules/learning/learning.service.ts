@@ -7,7 +7,7 @@ import { z } from 'zod';
 import type { LearningMemory, PracticeAttempt, PracticeSession, QuestionAnswerSchema, QuestionRenderPayload, StudioActivity,
   StudioCourse, StudioLearningPack, StudioLearningPackPreview, StudioOverview, StudioSourceMaterial, StudioStudyPlan,
   StudioStudyPlanPreview, StudioWhiteboard, Subject } from '@study-agent/contracts';
-import { answerProtocolIssue, answerDraftFenceSchema, answerDraftSaveSchema, whiteboardPresentation, WHITEBOARD_SPEECH_VERSION } from '@study-agent/contracts';
+import { answerProtocolIssue, answerDraftFenceSchema, answerDraftSaveSchema, whiteboardPresentation, WHITEBOARD_SPEECH_VERSION, studioCourseRequestIssue } from '@study-agent/contracts';
 import { answerIdentity, answerDraftState, prepareAnswerDraft, assertAnswerDraftFence, sameAnswer } from '../../common/answer-draft';
 import { InMemoryStoreService, InMemoryUserAccount,type InMemoryAuthSession } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
@@ -48,7 +48,7 @@ function uploadFilename(value: string) {
 const answerSchema = z.object({ questionId: z.string().min(1).max(180), requestKey: z.string().min(1).max(180),
   answer: z.unknown().optional(), disposition: z.enum(['answered', 'skip']).default('answered'), elapsedMs: z.number().int().min(0).max(3600000),
   draftFence: answerDraftFenceSchema.optional() }).strict();
-const studioCourseDraftSchema = z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+const studioCourseDraftSchema = z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english', 'chemistry']),
   focusAtomIds: z.array(z.string().min(1).max(180)).min(1).max(30).optional(), title: z.string().trim().min(3).max(180).optional(),
   objective: z.string().trim().min(5).max(1000).optional(), minutesPerSession: z.number().int().min(5).max(60).optional() }).strict();
 
@@ -64,7 +64,14 @@ export class LearningService {
       .map(({ id, nickname, grade }) => ({ id, nickname, grade }));
   }
 
-  studioOverview(user: InMemoryUserAccount, studentId: string | undefined, subject: Subject,catalog=false): StudioOverview {
+  studioOverview(user: InMemoryUserAccount, studentId: string | undefined, subject: Subject,catalog=false, courseId?: string): StudioOverview {
+    if (courseId) {
+      const requested = this.store.find('studioCourses', { id: courseId });
+      if (!requested) throw new NotFoundException('课程不存在，请返回我的课程重新选择');
+      this.students.assertCanAccessStudent(user, requested.studentId);
+      if (studentId && studentId !== requested.studentId) throw new ConflictException('课程与所选学习档案不一致，请返回课程库');
+      studentId = requested.studentId; subject = requested.subject;
+    }
     const children = this.studentProfiles(user);
     if (studentId) this.students.assertCanAccessStudent(user, studentId);
     const selected = children.find(child => child.id === studentId) ?? children[0];
@@ -116,7 +123,7 @@ export class LearningService {
   }
 
   previewStudioStudyPlan(user: InMemoryUserAccount, input: unknown): StudioStudyPlanPreview {
-    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english', 'chemistry']),
       title: z.string().trim().min(3).max(180).optional(), goal: z.string().trim().min(5).max(1000),
       targetDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), firstSessionAt: z.string().datetime({ offset: true }),
       minutesPerDay: z.number().int().min(10).max(60) }).strict(), input);
@@ -132,7 +139,7 @@ export class LearningService {
   }
 
   createStudioStudyPlan(user: InMemoryUserAccount, input: unknown) {
-    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english', 'chemistry']),
       title: z.string().trim().min(3).max(180).optional(), goal: z.string().trim().min(5).max(1000),
       targetDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), firstSessionAt: z.string().datetime({ offset: true }),
       minutesPerDay: z.number().int().min(10).max(60), fingerprint: z.string().regex(/^[a-f0-9]{64}$/),
@@ -213,7 +220,7 @@ export class LearningService {
   }
 
   previewStudioWhiteboard(user: InMemoryUserAccount, input: unknown) {
-    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english', 'chemistry']),
       prompt: z.string().trim().min(3).max(2000), atomId: z.string().min(1).max(180).optional() }).strict(), input);
     const { atoms } = this.studioScope(user, command.studentId, command.subject);
     const atom = command.atomId ? atoms.find(item => item.id === command.atomId) : atoms
@@ -225,7 +232,7 @@ export class LearningService {
   }
 
   createStudioWhiteboard(user: InMemoryUserAccount, input: unknown) {
-    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english', 'chemistry']),
       prompt: z.string().trim().min(3).max(2000), atomId: z.string().min(1).max(180).optional(),
       fingerprint: z.string().regex(/^[a-f0-9]{64}$/), requestKey: z.string().min(8).max(180) }).strict(), input);
     this.students.assertCanAccessStudent(user, command.studentId);
@@ -261,7 +268,7 @@ export class LearningService {
     if (!file || !Buffer.isBuffer(file.buffer) || file.size <= 0) throw new BadRequestException('请选择 PDF 文件');
     if (file.size > 10 * 1024 * 1024) throw new BadRequestException('PDF 不能超过 10MB');
     if (file.mimetype !== 'application/pdf' || file.buffer.subarray(0, 5).toString('ascii') !== '%PDF-') throw new BadRequestException('只接受有效的 PDF 文件');
-    const command = validate(z.object({ studentId: z.string().min(1).max(180).optional(), subject: z.enum(['math', 'chinese', 'english']).optional(),
+    const command = validate(z.object({ studentId: z.string().min(1).max(180).optional(), subject: z.enum(['math', 'chinese', 'english', 'chemistry']).optional(),
       requestKey: z.string().min(8).max(180) }).strict().refine(value => Boolean(value.studentId) === Boolean(value.subject), '档案和学科需要同时选择'), input);
     if (command.studentId) this.students.assertCanAccessStudent(user, command.studentId);
     else if (user.role === 'student') throw new BadRequestException('请从自己的学习档案上传资料');
@@ -451,7 +458,7 @@ export class LearningService {
   }
 
   previewStudioLearningPack(user: InMemoryUserAccount, input: unknown): StudioLearningPackPreview {
-    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english', 'chemistry']),
       title: z.string().trim().min(3).max(180).optional(), focusAtomIds: z.array(z.string().min(1).max(180)).min(1).max(4).optional(),
       sourceMaterialId: z.string().min(1).max(180).optional() }).strict(), input);
     const { atoms } = this.studioScope(user, command.studentId, command.subject);
@@ -472,7 +479,7 @@ export class LearningService {
   }
 
   createStudioLearningPack(user: InMemoryUserAccount, input: unknown) {
-    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english', 'chemistry']),
       title: z.string().trim().min(3).max(180).optional(), focusAtomIds: z.array(z.string().min(1).max(180)).min(1).max(4).optional(),
       sourceMaterialId: z.string().min(1).max(180).optional(), fingerprint: z.string().regex(/^[a-f0-9]{64}$/),
       requestKey: z.string().min(8).max(180) }).strict(), input);
@@ -525,6 +532,8 @@ export class LearningService {
   previewStudioCourse(user: InMemoryUserAccount, input: unknown) {
     const command = validate(studioCourseDraftSchema, input);
     const { scope, atoms } = this.studioScope(user, command.studentId, command.subject);
+    const issue = studioCourseRequestIssue(command.title, command.subject, scope.grade);
+    if (issue) throw new BadRequestException(issue);
     const focusAtomIds = [...new Set(command.focusAtomIds?.length ? command.focusAtomIds : atoms.map(atom => atom.id))];
     const allowed = new Set(atoms.map(atom => atom.id));
     if (!focusAtomIds.length) throw new BadRequestException('当前学习范围没有可生成课程的知识点，请先确认学习进度');
@@ -589,7 +598,7 @@ export class LearningService {
     const scope = this.diagnostics.profile(user, studentId, subject).scope;
     if (!scope) throw new BadRequestException('请先确认孩子的年级、教材和已学范围');
     const learned = new Set(scope.learnedAtomIds);
-    const atoms = this.store.inspect('knowledgeAtoms').filter(atom => atom.status === 'published' && learned.has(atom.id));
+    const atoms = this.store.inspect('knowledgeAtoms').filter(atom => atom.status === 'published' && atom.subject === subject && learned.has(atom.id));
     return { scope, atoms };
   }
 
@@ -880,7 +889,7 @@ export class LearningService {
   overview(user: InMemoryUserAccount) {
     const children = this.store.students.filter((child) => user.role === 'admin' || Boolean(this.store.find('bindings', { parentUserId: user.id, studentId: child.id, status: 'active' })));
     return { generatedAt: new Date().toISOString(), day: studyDay(), children: children.map((child) => ({ id: child.id, nickname: child.nickname,
-      grade: child.grade, subjects: (['math', 'chinese', 'english'] as Subject[]).map((subject) => {
+      grade: child.grade, subjects: (['math', 'chinese', 'english', 'chemistry'] as Subject[]).map((subject) => {
         const profile = this.diagnostics.profile(user, child.id, subject), today = this.today(user, child.id, subject);
         const sessions = this.diagnostics.listSessions(user, child.id, subject), last = sessions.find((item) => item.status === 'completed');
         const learned = new Set(profile.scope?.learnedAtomIds ?? []), estimates = profile.estimates.filter((item) => learned.has(item.atomId));

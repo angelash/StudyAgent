@@ -41,7 +41,7 @@ export class ReviewsService {
 
   queue(user: InMemoryUserAccount, input: unknown) {
     this.assertReviewer(user);
-    const query = validate(z.object({ subject: z.enum(['math', 'chinese', 'english']).optional(),
+    const query = validate(z.object({ subject: z.enum(['math', 'chinese', 'english', 'chemistry']).optional(),
       state: z.enum(['pending', 'reviewed', 'all']).default('pending'), kind: evidenceKindSchema.optional(),
       page: z.coerce.number().int().min(1).max(100000).default(1), pageSize: z.coerce.number().int().min(1).max(100).default(25) }).strict(), input);
     const rows: Array<{ kind: EvidenceKind; responseId: string; studentId: string; nickname: string; subject: string; atomName: string;

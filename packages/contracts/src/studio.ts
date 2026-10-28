@@ -1,6 +1,6 @@
 import type { AtomTeaching, KnowledgeAtom, LearningScope, MasteryEstimate, TeachingVisual } from './diagnostics';
 
-export type StudioSubject = 'chinese' | 'math' | 'english';
+export type StudioSubject = 'chinese' | 'math' | 'english' | 'chemistry';
 export type StudioLessonKind = 'learn' | 'practice' | 'project' | 'exam';
 export type StudioLessonState = 'not_started' | 'attempted' | 'familiar' | 'proficient' | 'mastered';
 
@@ -44,6 +44,7 @@ export type StudioCourse = {
   source: 'studyagent_curriculum';
   scopeVersion: number;
   textbookVersion: string;
+  curriculumVersion?: string;
   focusAtomIds: string[];
   units: StudioUnit[];
   materials: Array<{ id: string; title: string; detail: string; status: 'available' | 'needs_review' }>;

@@ -10,12 +10,12 @@ import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/
 import { StudentsService } from '../students/students.service';
 import { parseIcs, renderIcs } from './ics-calendar';
 
-const connectSchema = z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+const connectSchema = z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english', 'chemistry']),
   kind: z.enum(['lms_ics', 'calendar_ics']), label: z.string().trim().min(2).max(120),
   feedUrl: z.string().url().max(2000).optional(), icsText: z.string().max(2_500_000).optional(),
   requestKey: z.string().min(8).max(180) }).strict()
   .refine(value => Boolean(value.feedUrl) !== Boolean(value.icsText), { message: '请选择 ICS 链接或 ICS 内容中的一种' });
-const studyEventSchema = z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english']),
+const studyEventSchema = z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english', 'chemistry']),
   title: z.string().trim().min(2).max(160), description: z.string().trim().max(1500).default(''),
   startsAt: z.string().datetime({ offset: true }), endsAt: z.string().datetime({ offset: true }),
   requestKey: z.string().min(8).max(180) }).strict().refine(value => {

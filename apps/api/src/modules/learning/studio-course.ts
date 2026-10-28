@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import type { KnowledgeAtom, LearningScope, StudioCourse, StudioCoursePace, StudioLesson, StudioUnit } from '@study-agent/contracts';
+import { studioCourseRequestIssue } from '@study-agent/contracts';
 
 type StudioCourseInput = {
   id: string;
@@ -14,7 +15,7 @@ type StudioCourseInput = {
   now?: string;
 };
 
-const subjectNames = { math: '数学', chinese: '语文', english: '英语' } as const;
+const subjectNames = { math: '数学', chinese: '语文', english: '英语', chemistry: '化学' } as const;
 
 function courseTitle(subject: StudioCourse['subject'], grade: number, focus: KnowledgeAtom[], custom?: string) {
   if (custom?.trim()) return custom.trim();
@@ -41,8 +42,12 @@ function createLesson(atom: KnowledgeAtom, kind: 'learn' | 'practice'): StudioLe
 }
 
 export function buildStudioCourse(input: StudioCourseInput): StudioCourse {
+  const issue = studioCourseRequestIssue(input.title, input.subject, input.scope.grade);
+  if (issue) throw new Error(issue);
+  if (input.scope.subject !== input.subject) throw new Error('课程学科与学习范围不一致');
   const byId = new Map(input.atoms.map(atom => [atom.id, atom]));
   const focus = [...new Set(input.focusAtomIds)].map(id => byId.get(id)).filter((atom): atom is KnowledgeAtom => Boolean(atom));
+  if (focus.some(atom => atom.subject !== input.subject)) throw new Error('课程知识点的学科与所选范围不一致');
   const grouped = new Map<string, KnowledgeAtom[]>();
   for (const atom of focus) grouped.set(atom.strand, [...(grouped.get(atom.strand) ?? []), atom]);
 

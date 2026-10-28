@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-28T05:06:20.364Z",
+  "webBuildId": "YVswxVnzqUaitxW_FFbpU",
+  "observations": [
+    {
+      "name": "local-course",
+      "url": "http://127.0.0.1:3217/chemistry",
+      "status": 200,
+      "expected": 200,
+      "ok": true,
+      "courseMarkup": true
+    },
+    {
+      "name": "local-login",
+      "url": "http://127.0.0.1:3217/parent/login",
+      "status": 200,
+      "expected": 200,
+      "ok": true
+    },
+    {
+      "name": "local-ready",
+      "url": "http://127.0.0.1:3217/api/ready",
+      "status": 200,
+      "expected": 200,
+      "ok": true
+    },
+    {
+      "name": "local-private-catalog",
+      "url": "http://127.0.0.1:3217/api/chemistry/catalog",
+      "status": 401,
+      "expected": 401,
+      "ok": true
+    },
+    {
+      "name": "public-course",
+      "url": "https://study-agent.iepose.cn/chemistry",
+      "status": 200,
+      "expected": 200,
+      "ok": true,
+      "courseMarkup": true
+    },
+    {
+      "name": "public-private-catalog",
+      "url": "https://study-agent.iepose.cn/api/chemistry/catalog",
+      "status": 401,
+      "expected": 401,
+      "ok": true
+    }
+  ]
+}
