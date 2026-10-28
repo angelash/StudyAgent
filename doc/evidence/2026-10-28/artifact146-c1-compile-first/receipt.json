@@ -1,0 +1,26 @@
+{
+  "passed": false,
+  "scope": "First C1 compile rejects incomplete actorRole union: existing contracts also allow teacher/operator. Preserve actual compiler log and listed sources before correcting to existing UserRole; no complete project snapshot claim.",
+  "files": {
+    "data/qa/conversation-whiteboard-c1-api-first.log": {
+      "sha256": "77a848d1d78997bef8f77a87d653e5c92ed44d38e8e9be9dd3fdb72cfba1f7a0",
+      "bytes": 732
+    },
+    "packages/contracts/src/assistant-whiteboard.ts": {
+      "sha256": "afbe68c53d9583863029dfca71c9324b57a26b4065d792bd6038fed2110cea7d",
+      "bytes": 1361
+    },
+    "apps/api/src/modules/learning/assistant-whiteboard-source.ts": {
+      "sha256": "a8f2c113a0e869083c296be54ab3f54948402b53986496cc90f42b95b4771b31",
+      "bytes": 2674
+    },
+    "apps/api/src/modules/learning/assistant-whiteboard.service.ts": {
+      "sha256": "cbb03d004b2bc9ebe62018f8d840ff71cfea4156a3a74cc700c5e2e5b20418da",
+      "bytes": 1902
+    },
+    "apps/api/src/modules/learning/assistant-whiteboard.controller.ts": {
+      "sha256": "19210a4e18909dda9abdef51bc78ad4b2b4b9bf0e2e6bba501d94a4c365e058a",
+      "bytes": 678
+    }
+  }
+}

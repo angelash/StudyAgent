@@ -1,0 +1,21 @@
+{
+  "passed": false,
+  "passedTests": 5,
+  "failedTests": 1,
+  "skippedTests": 0,
+  "actualFailure": "One fixture requests unsupported pageContext dashboard and gets400 before cross-conversation assertions. Five other actual HTTP journeys pass, including old-source stable identity and real student assessment. Preserve first result and source; use actual authorized course session for the foreign message test.",
+  "files": {
+    "data/qa/conversation-whiteboard-c1-http-first.json": {
+      "sha256": "9ffb27423bcb4a6c8314bd6fbc0c1d4c0836c0de5e1e670c62ef8b5f740d9e1e",
+      "bytes": 4674
+    },
+    "data/qa/conversation-whiteboard-c1-http-first.log": {
+      "sha256": "6e8ce4496af869569b9142b1a40b910d3506bc536a49b383669abe0a888d228b",
+      "bytes": 506
+    },
+    "apps/api/src/modules/learning/assistant-whiteboard.integration.test.ts": {
+      "sha256": "30e64f1e6b79d045a180288bd883b26310d570ee45c6c3bf02ae160ba32bb3ac",
+      "bytes": 12840
+    }
+  }
+}

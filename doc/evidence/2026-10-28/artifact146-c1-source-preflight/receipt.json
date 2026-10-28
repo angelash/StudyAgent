@@ -1,0 +1,161 @@
+{
+  "passed": true,
+  "designBeforeImplementation": "1a6897276af7e0a976d64efb3377eb15efa85a53",
+  "scope": "C1 read-only source preflight only, current schema22. Own contracts/config/API and original installed dependencies; no model/TTS invocation or production modification.",
+  "reports": {
+    "conversation-whiteboard-c1-http-second": {
+      "success": true,
+      "numPassedTests": 6,
+      "numFailedTests": 0,
+      "numPendingTests": 0
+    },
+    "conversation-whiteboard-c1-postgres-second": {
+      "success": true,
+      "numPassedTests": 8,
+      "numFailedTests": 0,
+      "numPendingTests": 0
+    },
+    "conversation-whiteboard-c1-http-third": {
+      "success": true,
+      "numPassedTests": 21,
+      "numFailedTests": 0,
+      "numPendingTests": 0
+    }
+  },
+  "overlappingScopesNotSummed": true,
+  "actualBehavior": [
+    "Full ordered messages, linked question, model, trusted lecture reference and original location retained.",
+    "Complete over-budget text returned and generation blocked; no2000-character prompt truncation.",
+    "Catalog model affects candidate fingerprint, source identity stays the same.",
+    "Original grade9 course and grade4 profile kept separate; old source content identity is stable but requires explicit historical-source acknowledgment.",
+    "Actual same-learner other guardian cannot read private explanation. Real learning-code student denied during paused/in-progress assessment; after assessment only read-only preflight allowed.",
+    "Original create/list/request-receipt routes remain404; no candidate/task/schema23 implementation claim."
+  ],
+  "historicalFailures": [
+    "First compile omitted existing teacher/operator roles; fixed by referencing UserRole.",
+    "First HTTP5/1: fixture used unsupported dashboard context; corrected to actual authorized course session.",
+    "First PG7/1: fixture used nonexistent GET/students/:id; corrected to actual course-context authorization."
+  ],
+  "limits": [
+    "No C2 generation/worker/adoption/player/source UI yet; no complete146 or143 C claim.",
+    "No new full API/browser/remote CI/main delivery for this source branch.",
+    "Current exact-source snapshots are listed; no whole environment frozen-input claim for C1."
+  ],
+  "files": {
+    "data/qa/conversation-whiteboard-c1-http-second.json": {
+      "bytes": 3790,
+      "sha256": "c0bc6dcff97910252558041c18312745ecd9f0a7ea774c098448e23785f7232d",
+      "gzipSha256": "08a18f5f7be20354a3944c5175b338dfb8ddbb116c0b6fa80a25757e6454559b"
+    },
+    "data/qa/conversation-whiteboard-c1-http-second.log": {
+      "bytes": 507,
+      "sha256": "44eebccadb9a1a33a244dd3ae10a1081f03f8d9c02b98e07db8ecfa82f261c07",
+      "gzipSha256": "8aa605be45c9da9db83166b6149bb91ef27e82ee913d0cac2581fe66575cdedb"
+    },
+    "data/qa/conversation-whiteboard-c1-postgres-second.json": {
+      "bytes": 4775,
+      "sha256": "d5fbf2046024b64c22e37777d6a6a78436f8a99112c2a456201d5ef1faeb494a",
+      "gzipSha256": "7c74721c2be5a5a28ae07879a9bdbe48cb478e5bfac115b7b452ae54d5ebf157"
+    },
+    "data/qa/conversation-whiteboard-c1-postgres-second.log": {
+      "bytes": 850,
+      "sha256": "b994ca490b2b4bdd405a7ddfc501534449a1c57f8d6ef49b685b5fcb4325e4f6",
+      "gzipSha256": "8b5217c6079f4b444bf4bf29faa8aba9e2d4e8314503e49d28e4055ccfcc4f27"
+    },
+    "data/qa/conversation-whiteboard-c1-http-third.json": {
+      "bytes": 11657,
+      "sha256": "8604dd360a0cbf8c175cb08fd4be7dee04cef20a29330604a16a4331a20d1521",
+      "gzipSha256": "837286281fe560f4a4762ed6d1472afcfeb9c9262679e1617722e4a7d82c0d8d"
+    },
+    "data/qa/conversation-whiteboard-c1-http-third.log": {
+      "bytes": 506,
+      "sha256": "e9368d3978845bc98b8207f75f563e6eb0676a56526ecb8a1c40a4f71be8a747",
+      "gzipSha256": "75f3987591d64ca57831210cdb61a3c21784cad50055a1c43ecabf3eaa104fbb"
+    },
+    "data/qa/conversation-whiteboard-c1-contracts-second.log": {
+      "bytes": 485,
+      "sha256": "1baee689cdb20ee2ff70b2859da034f727c067c5c863a631e250dea40e3bc411",
+      "gzipSha256": "de854da93439a5a8c18b11d4f1bdd17a3d405d194da9ca07cd8b6f9b9130a0e8"
+    },
+    "data/qa/conversation-whiteboard-c1-api-second.log": {
+      "bytes": 66,
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "gzipSha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c"
+    },
+    "data/qa/conversation-whiteboard-c1-types-first.log": {
+      "bytes": 68,
+      "sha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "gzipSha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec"
+    },
+    "packages/contracts/src/assistant-whiteboard.ts": {
+      "bytes": 1380,
+      "sha256": "ba782ba4da4aebfda3c8a396374d9fee868c6c21ce6b4581784038edb9ad391b",
+      "gzipSha256": "09a4e035d50342db975496b28530910fe04a3cca11774ac461861c7a44b79573"
+    },
+    "packages/contracts/src/index.ts": {
+      "bytes": 25863,
+      "sha256": "1cb0109abfecc5840139517fdb6210f10c9460bdc4a2a9efb35e64c4dd789d8b",
+      "gzipSha256": "b76e023431f152f190a4c548bd0a1cd4454beb7dd0cf1fad9da6c3da645b6a35"
+    },
+    "apps/api/src/common/auth.guard.ts": {
+      "bytes": 10087,
+      "sha256": "1e6000c05fa4eadd8c42bd9b1c3ac4fc53133648bcca6b27dcd78e2afe90afc7",
+      "gzipSha256": "e1586a893170480890596ff97c34dabf4854b404e1d2cb97cedc05db694d0080"
+    },
+    "apps/api/src/modules/ai/ai.module.ts": {
+      "bytes": 2239,
+      "sha256": "96e69a054c522d0820d2762d3e39d03f0b9f6390dda1abcd958a5a1dab40f35d",
+      "gzipSha256": "05650d492424d854f3ad3d69cf47e2b94bcefa177b67a459100d4e4f71eb6cc8"
+    },
+    "apps/api/src/modules/learning/learning.module.ts": {
+      "bytes": 6775,
+      "sha256": "59e81f6405f7962f0668fe8104c01dc61244d46040252cd474d9238f04eada89",
+      "gzipSha256": "20be12b48918f9183787a7a27f6ce77982d67cf21b9f9764b2062206c9b19171"
+    },
+    "apps/api/src/modules/learning/assistant-whiteboard-source.ts": {
+      "bytes": 2674,
+      "sha256": "a8f2c113a0e869083c296be54ab3f54948402b53986496cc90f42b95b4771b31",
+      "gzipSha256": "793007b9d4fe2a527c6627bb9a445b3c089097a183dc8df0153fd87a44e59b01"
+    },
+    "apps/api/src/modules/learning/assistant-whiteboard.service.ts": {
+      "bytes": 1902,
+      "sha256": "cbb03d004b2bc9ebe62018f8d840ff71cfea4156a3a74cc700c5e2e5b20418da",
+      "gzipSha256": "e3f3aa20c0c3b4f1dc6a6998b2ad1728482d7ee47907d5a4b4f6414f4709433c"
+    },
+    "apps/api/src/modules/learning/assistant-whiteboard.controller.ts": {
+      "bytes": 678,
+      "sha256": "19210a4e18909dda9abdef51bc78ad4b2b4b9bf0e2e6bba501d94a4c365e058a",
+      "gzipSha256": "3553cc34f5972f1ef5b1039795c62fd7aebf7cb418b2f26e60f39a02c34d50e1"
+    },
+    "apps/api/src/modules/learning/assistant-whiteboard.integration.test.ts": {
+      "bytes": 15027,
+      "sha256": "3d5a5c0a6b852afdcd02311c33061a7ff4aefabce8bc1d7ec978a1295c1d572d",
+      "gzipSha256": "f4efd0f2a32de4db7be3821c16196fdaa9ac3e7905beb1d6b8c7b131ad46b1e3"
+    },
+    "scripts/qa/run-assistant-whiteboard-postgres.cjs": {
+      "bytes": 1582,
+      "sha256": "1980ca4fecff6fa924d5ee88c0c75e4c3917b0e09dfe15c87c718af5b1eaaf5e",
+      "gzipSha256": "cc9d32f9ca79f35623264147a65374c75a9ae7fac1653823639bad3632308307"
+    },
+    ".github/workflows/verify.yml": {
+      "bytes": 31866,
+      "sha256": "b455af586ee179718b7c50c77493380650d3454f4c1d43f2d1a750bcdc469e46",
+      "gzipSha256": "4596645b5590255596e8e9e3fa2ca16e3e985d7ca9f85becb6cbfcbe7bba44f8"
+    },
+    "apps/api/dist/apps/api/src/modules/learning/assistant-whiteboard.service.js": {
+      "bytes": 3235,
+      "sha256": "43292f7c9e8acb5c5ecb42a380f25562b679767783e3031071f14c94c7a71514",
+      "gzipSha256": "3bc1c7b100ab7afa49838c75acb77ec8b82a409835045400056e698ca646c53a"
+    },
+    "apps/api/dist/apps/api/src/modules/learning/assistant-whiteboard-source.js": {
+      "bytes": 2545,
+      "sha256": "7f372a0731386172db81249209609d41a893f4157c8a419321a42b50bd05854b",
+      "gzipSha256": "3ea942f05ec71bcb26509429e9541c5c065c8c72b78b5cab0237108757343c7c"
+    },
+    "packages/contracts/dist/index.js": {
+      "bytes": 107171,
+      "sha256": "5ef4170a60ddec4a5572775ebb4f1bd6d6812d01760ec79587bb38369d2f9282",
+      "gzipSha256": "3ea671345bf30b474df27d90a4bb837bf47baf24faaffe85785ee6c1e9cbf238"
+    }
+  }
+}

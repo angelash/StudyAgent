@@ -1,0 +1,20 @@
+{
+  "passed": false,
+  "passedTests": 7,
+  "failedTests": 1,
+  "actualFailure": "The same-learner guardian fixture tries GET/students/:id, which has no route and returns404. Its intended private-source assertions were not reached. Use actual course-context authorization for that guardian, retaining source404 expectation.",
+  "files": {
+    "data/qa/conversation-whiteboard-c1-postgres-first.json": {
+      "sha256": "c881a3409558c826162b4df80257a1fdbbb2c63653ea861c08cc986e224d5e10",
+      "bytes": 5486
+    },
+    "data/qa/conversation-whiteboard-c1-postgres-first.log": {
+      "sha256": "99c42bcab19c1a9a253ca5883bdc932cf9830e4a0509305991717f635f78302d",
+      "bytes": 3164
+    },
+    "apps/api/src/modules/learning/assistant-whiteboard.integration.test.ts": {
+      "sha256": "279b962d6bcd5605d6ed41c1cf5c34012d3dd71c780ee9afc4d986711559c251",
+      "bytes": 15023
+    }
+  }
+}

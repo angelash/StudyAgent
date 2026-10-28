@@ -768,3 +768,4 @@ export * from './whiteboard-question-visual';
 
 export * from './ai-teaching-tools';
 export * from './assistant-artifact';
+export * from './assistant-whiteboard';

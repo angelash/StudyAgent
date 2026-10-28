@@ -25,6 +25,6 @@ import { AssistantNoteController } from './assistant-note.controller';
   controllers: [AiController,AssistantTurnController,TeachingToolController,AssistantArtifactController,AssistantNoteController],
   providers: [AssistantNoteService,AssistantArtifactService,TeachingToolCompatibilityService,TeachingToolService,TeachingToolWorkerService,{provide:teachingToolWorkerPort,useExisting:TeachingToolWorkerService},AiService, SpeechService, CodexPdfStructureService, XiaojiuModelsService, XiaojiuChatService,AssistantTurnService,AssistantTurnWorkerService,
     {provide:assistantTurnPort,useExisting:AssistantTurnService},{provide:assistantWorkerPort,useExisting:AssistantTurnWorkerService}],
-  exports: [AiService, SpeechService, CodexPdfStructureService, XiaojiuModelsService, XiaojiuChatService],
+  exports: [AiService, SpeechService, CodexPdfStructureService, XiaojiuModelsService, XiaojiuChatService, AssistantArtifactService],
 })
 export class AiModule {}
