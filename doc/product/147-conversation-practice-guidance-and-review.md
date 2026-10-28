@@ -175,3 +175,29 @@ Prepared冻结完整origin、原selection和objective、两项确认、完整受
 随后核对实际knowledgeAtomSchema发现，原子允许单字名称和both学期，而新纯协议自行定义的字段过窄；改为直接复用现有原子与scope字段，不复制一套不一致约束。新增“角/both”合约兼容案例，第三次准备61/61（44新正文+17原白板）通过，零失败/跳过/重试，15源码与3编译SHA保持；本人contracts/API构建与全API类型通过。此前60及原失败保留，不能累加为121。见[合约兼容原件](../evidence/2026-10-29/assistant-practice-content-contracts-first/receipt.json)。
 
 本批没有持久候选、实际模型调用、本人自练、孩子assignment/作答、正式证据、指导/排期或主目录交付；D2a/D2b后续service须重新核对当前来源/权限/学习码/范围/定义与评测。schema23正式交付后才接schema24。新接口、双库原生恢复、完整API/浏览器/精确CI与实际产品验收仍分别推进，105/M1～M7/原72整体active。
+
+## 18. D2a持久候选与本人作答的下一层具体落点
+
+本节是下一层实施前设计。schema23实际发布并读回后才修改迁移/公开端点。先接已审核bank学生训练的完整可用旅程，再接成人及缺口AI教学候选；D2b纯正文基础不改变这个交付顺序。使用新的AssistantPracticeArtifactService/Controller与assistant-practice-record.ts，保留现有D1只读端点和来源服务，不把canPrepare或浏览器缓存当资格。
+
+schema24新增assistantPracticeArtifacts、assistantPracticeAssignments、assistantTeachingPracticeSessions三类业务集合。artifact仅作者可读完整origin，固定protocol/contentMode/ownerUserId/sourceSessionId/原input/受众/scope与目标定义、正文及逐题映射、候选题库版本快照、revision/contentFingerprint/status和有界原请求回执。已审核bank模式不伪造modelId或模型复核成功；AI模式另存固定模型与原生成/复核checkpoint、失败及完整原稿。列表只返回摘要和游标，不带全文/答案。现有来源白板与笔记集合/协议不改变。
+
+同一来源下新增POST artifacts/practice/candidates，仅接contentMode=reviewed_bank、D1原完整输入、preflightFingerprint、requestKey；服务重新读本人原来源、当前监护/学习码、目标scope、审核定义、eligibleMeasurements、题目内容、题族和所有原曝光。按用户1至3点各固定两题、每组两个未曝光canonicalFamily，合计2至6题；无覆盖明确拒绝，不调用模型补齐。每题保存审核mapping/atom/question/content/definition/family身份及原renderPayload完整快照。题库补充的sourceMap标明supplementary，不把题库知识冒充聊天原出处。请求键在ownerUserId范围唯一，同键异内容409，同键重放只回原候选。
+
+GET artifacts/practice/candidates与GET artifacts/practice/requests/:key按本人来源分页/查原回执；GET /learning/assistant-practice/artifacts/:id返回作者完整预览和当前资格；PATCH该id以expectedRevision/contentFingerprint/requestKey完整编辑教学说明，不允许借编辑改题库题干/答案/atom映射而仍称审核bank。要修改题目须另起未审核AI教学候选。原快照和编辑历史不覆盖。所有创建/编辑/采用分别重读资格，历史读取不恢复写入。
+
+POST /learning/assistant-practice/artifacts/:id/assignments含原revision/fingerprint、acknowledgePreview=true、目标孩子及requestKey；只有已核对的学生bank候选可发布。assignment冻结教学投影、每atom两题的实际bank快照、原范围/定义/题族身份、发布者及原artifact引用，绝不拷贝私聊origin/内部prompt/sourceMap引用正文。确认仅安排，不创建practiceSession/曝光/分数。作者和其他有权监护人可读合法孩子assignment摘要及任务，但其他监护人不能顺着artifact引用读取作者私聊。
+
+GET /learning/assistant-practice/assignments支持本人孩子授权过滤；GET assignment/:id返回适合当前角色的投影。孩子POST assignment/:id/groups/:atomId/start以requestKey/assignmentFingerprint确认开始，由当前有效学习码用户执行；必须authSession.studentId=assignment.studentId且user.role=student。事务重新核对assignment/当前scope/原子定义/审核版本/评测和当前曝光，每atom只创建一次原PracticeSession；先于事务的候选快照不能抵消后来已曝光，新增曝光则要求重新核对，不静默换题。同键原回执可恢复，多实例同时开始只产生一个原session。起始题目曝光从孩子本人开始起保守排除；监护人预览和自练不写孩子曝光。
+
+PracticeSession新增origin=assistant_artifact与assistantAssignmentId/assistantArtifactId/sourceGroupId、固定atomSnapshot及合法actionSnapshot；planId保持null，不制造空诊断计划。需要在LearningService.practiceDraftState、assertActive、view/render/draft/submit/hint/complete及controller逐一接入来源活动规则，不能只绕过其中一个plan检查。source训练由assignment状态/当前资格决定可写，旧guidance/notebook分支保持原判断。所有新来源写入显式传req.authSession，并在读回原请求前先核对实际学生身份，拒绝家长伪造draftFence或复用孩子键。
+
+新来源PracticeAttempt显式保存actorId/actorRole=student/actorStudentId，不猜测补写旧历史。新来源hint/答案展开/示范/首答及后续修订分别记录，来源解释曝光、审核题训练与正式测量资格分别显示。view.summary和feedback为新来源展示教学首答/使用帮助情况，不沿用旧“首答正确即独立完成”的文案或指标；不写MasteryEstimate/DiagnosticResponse。既有来源缺actor继续保留未知，不批量改写。正式诊断继续独立新题与原曝光排除。
+
+成人和家长自练的后续POST artifact/:id/self-sessions仅创建本人assistantTeachingPracticeSessions，学生不能借成人模式绕开范围。该集合固定正文作答投影和原题/参考快照、明确actor/受众、每题首次回答+理由、草稿版本、提示/答案展开时间、后续回答及原回执；不要求studentId/planId。GET读取、PATCH question/:id/draft、POST question/:id/answers/hints/solution与POST complete分别有版本/身份/原键保护，完整未提交内容可下载，刷新/双标签/断网/丢响应不覆盖首答。AI题参考始终为待核对教学解释，不编确定性分；理由反馈服务及UI另按完整生成/复核/采用规格接入后才开放。
+
+数据库约束至少包括artifact(ownerUserId,requestKey)、assignment(publisherUserId,requestKey)和每assignment/atom唯一真实训练；每类原命令使用独立actor+key身份和内容hash，避免在不同实际作答者之间复用回执。SQLite/PG同批增加schema24最低reader marker，旧23实际拒绝24；所有新关联进入domain集合注册、隐私导出/作者与孩子删除、最新删除账本、原生备份清单及独立restore verifier。恢复核对artifact→assignment→group→practice/attempt/原命令双向身份；AI来源完整正文/消息SHA/目标/投影均重新验证，不仅依赖bundle哈希。
+
+界面优先复用助教原消息选择和现有白板/笔记弹层，增加明确“给孩子的练习”入口：选择孩子/学科/已学原子点→完整来源与原课程/档案/当前范围分开核对→覆盖/阻断→候选逐组预览→明确安排。孩子从今日任务与原assignment链接进入本组，实际沿现有StructuredAnswerInput作答；题干、理由、提示/参考答案和反馈按明确动作逐步出现，手机保持原位置/未提交内容。新入口不展示未接通的生成按钮；成人自练完整链路未接好前保持明确未开放。
+
+退出验收覆盖SQLite与真实PG的本人来源/监护/当前评测保护、同键异内容/丢响应/双实例、家长预览零孩子写入、真实学习码分atom开始与actor记录、参考答案曝光和首答不覆盖、范围/定义/审核题变更、另一监护人私聊隔离、作者/孩子删除及原生恢复/旧reader拒绝。浏览器验收至少包含完整桌面/手机开始作答、刷新与双标签、原键恢复及改权限/评测后保留输入。完整API/整站/精确CI与正式schema24可回退交付分别留证，不以纯正文61或D1双库20替代。
