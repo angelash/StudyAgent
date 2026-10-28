@@ -18,6 +18,8 @@ function native(name, args, pgBin, connectionString) {
   });
 }
 async function summary(client) {
+  const sourceIntegrity = require('./whiteboard-source-integrity.cjs');
+  sourceIntegrity.validate((await client.query(sourceIntegrity.sql)).rows);
   const versions = (await client.query('SELECT version FROM schema_migrations ORDER BY version')).rows.map(r => r.version);
   readerGuard.readyState(versions);
   return { schemaVersions: versions, revision: Number((await client.query('SELECT revision FROM store_meta WHERE id=1')).rows[0].revision),

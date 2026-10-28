@@ -1,7 +1,8 @@
 import { z } from 'zod';
 import { assistantWhiteboardContentSchema, type AssistantWhiteboardContent } from '@study-agent/contracts';
 import { assertPreparedAssistantWhiteboard, type PreparedAssistantWhiteboard } from './assistant-whiteboard-source';
-import { topicWhiteboardDigest, topicWhiteboardJsonSchema, topicWhiteboardReviewJsonSchema } from './topic-whiteboard-content';
+import { topicWhiteboardDigest } from './topic-whiteboard-digest';
+import { topicWhiteboardJsonSchema, topicWhiteboardReviewJsonSchema } from './topic-whiteboard-schema';
 
 export function validateAssistantWhiteboardContent(prepared: PreparedAssistantWhiteboard, value: unknown,
   options: { allowFigures?: boolean } = {}): AssistantWhiteboardContent {

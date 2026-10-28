@@ -1,4 +1,5 @@
-import { ConflictException, Injectable, NotFoundException, ServiceUnavailableException } from '@nestjs/common';
+import { AssistantWhiteboardService } from './assistant-whiteboard.service';
+import { ConflictException, Injectable, Optional, NotFoundException, ServiceUnavailableException } from '@nestjs/common';
 import { topicVisualPreflightSchema, topicVisualGenerateSchema, topicVisualEditSchema, topicVisualControlSchema, topicVisualListSchema,
   type TopicVisualPreflightInput, type TopicVisualView } from '@study-agent/contracts';
 import { validate } from '../../common/validation';
@@ -21,16 +22,16 @@ export function reconcileTopicVisual(row: TopicVisualRecord, task: TaskRow | nul
 }
 @Injectable()
 export class TopicWhiteboardVisualService {
-  constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService, private readonly images: ClassroomImageService) {}
+  constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService, private readonly images: ClassroomImageService, @Optional() private readonly source?: AssistantWhiteboardService) {}
   capabilities() { return this.images.figureCapabilities(); }
   private record(user: InMemoryUserAccount, id: string, session: InMemoryAuthSession) {
     const row = this.store.find('studioTopicWhiteboardVisuals', { id, ownerUserId: user.id });
     if (!row || row.status === 'deleted') throw new NotFoundException('图片候选不存在');
-    topicVisualDraft(this.store, this.students, user, row.draftId, session); return row;
+    topicVisualDraft(this.store, this.students, user, row.draftId, session, this.source); return row;
   }
   private context(user: InMemoryUserAccount, input: TopicVisualPreflightInput, session: InMemoryAuthSession) {
-    const draft = topicVisualDraft(this.store, this.students, user, input.draftId, session);
-    assertTopicWhiteboardInputCurrent(this.store, this.students, user, draft.prepared);
+    const draft = topicVisualDraft(this.store, this.students, user, input.draftId, session, this.source);
+    assertTopicWhiteboardInputCurrent(this.store, this.students, user, draft.prepared, this.source);
     if (draft.status !== 'ready' || draft.revision !== input.expectedRevision || draft.contentFingerprint !== input.contentFingerprint)
       throw new ConflictException('请先保存并比较当前完整稿，再为这一幕配图');
     let frozen;
@@ -44,6 +45,9 @@ export class TopicWhiteboardVisualService {
   }
   async preflight(user: InMemoryUserAccount, input: unknown, session: InMemoryAuthSession) {
     const command = validate(topicVisualPreflightSchema, input), context = this.context(user, command, session), capabilities = await this.capabilities();
+    if (context.draft.prepared.version === 'assistant-topic-whiteboard-v1') await this.store.transaction(() => {
+      if (this.context(user, command, session).fingerprint !== context.fingerprint) throw new ConflictException('原来源白板或图片要求已变化');
+    });
     return { valid: true, available: capabilities.available && (command.operation !== 'edit' || capabilities.editAvailable), capabilities,
       fingerprint: context.fingerprint, sceneTeachingFingerprint: context.frozen.sceneTeachingFingerprint, context: context.frozen,
       prompt: topicVisualPrompt(context.frozen, command), contextCharacters: JSON.stringify(context.frozen).length, maxContextCharacters: 18000 };
@@ -87,7 +91,7 @@ export class TopicWhiteboardVisualService {
         frozenContext: context.frozen, operation: command.operation, parentVisualId: command.operation === 'edit' ? command.parentVisualId : null,
         parentOriginal: context.parentOriginal, purpose: command.purpose, requirements: command.requirements, changes: command.operation === 'edit' ? command.changes : null,
         modelId: 'gpt-image-2', size: '1536x1024', requestKey, requestHash: hash, preflightFingerprint, input: structuredClone(command),
-        authorization: captureTopicWhiteboardAuthorization(this.store, this.students, user, context.draft.prepared.input.audience, session),
+        authorization: captureTopicWhiteboardAuthorization(this.store, this.students, user, context.draft.prepared.input.audience, session, context.draft.prepared, this.source),
         promptVersion: 'topic-whiteboard-image-v1', prompt: topicVisualPrompt(context.frozen, selection), taskId: this.store.nextId('task'),
         generation: 1, revision: 0, status: 'queued', files: null, width: null, height: null, commands: [], createdAt: now, updatedAt: now };
       const receipt: TopicVisualCommand = { key: requestKey, kind: 'prepare', hash, effectiveRevision: 0, generation: 1, actorUserId: user.id, at: now };
@@ -107,7 +111,7 @@ export class TopicWhiteboardVisualService {
     if (!receipt) throw new NotFoundException('原图片操作回执不存在'); return this.view(row, undefined, receipt);
   }
   async list(user: InMemoryUserAccount, input: unknown, session: InMemoryAuthSession) {
-    const query = validate(topicVisualListSchema, input ?? {}); topicVisualDraft(this.store, this.students, user, query.draftId, session);
+    const query = validate(topicVisualListSchema, input ?? {}); topicVisualDraft(this.store, this.students, user, query.draftId, session, this.source);
     const rows = this.store.select('studioTopicWhiteboardVisuals', { ownerUserId: user.id, draftId: query.draftId, sceneIndex: query.sceneIndex })
       .filter(row => row.status !== 'deleted' && (!query.search || [row.requirements, row.changes ?? ''].some(text => text.toLocaleLowerCase().includes(query.search.toLocaleLowerCase()))))
       .sort((a, b) => b.createdAt.localeCompare(a.createdAt) || b.id.localeCompare(a.id));
@@ -136,8 +140,8 @@ export class TopicWhiteboardVisualService {
       row.generation = task.generation;
       if (action === 'retry') {
         if (!['failed', 'cancelled'].includes(task.state)) throw new ConflictException('原图片任务还未结束');
-        const draft = topicVisualDraft(this.store, this.students, user, row.draftId, session);
-        assertTopicWhiteboardInputCurrent(this.store, this.students, user, draft.prepared);
+        const draft = topicVisualDraft(this.store, this.students, user, row.draftId, session, this.source);
+        assertTopicWhiteboardInputCurrent(this.store, this.students, user, draft.prepared, this.source);
         let fingerprint: string | null = null;
         try { fingerprint = freezeTopicVisualContext(draft, row.sceneIndex).sceneTeachingFingerprint; } catch {}
         if (fingerprint !== row.sceneTeachingFingerprint) throw new ConflictException('原教学内容已变化，请另行准备当前配图');
@@ -147,7 +151,7 @@ export class TopicWhiteboardVisualService {
         }
         const capabilities = await this.capabilities();
         if (!capabilities.available || row.operation === 'edit' && !capabilities.editAvailable) throw new ServiceUnavailableException(capabilities.message);
-        row.authorization = captureTopicWhiteboardAuthorization(this.store, this.students, user, draft.prepared.input.audience, session);
+        row.authorization = captureTopicWhiteboardAuthorization(this.store, this.students, user, draft.prepared.input.audience, session, draft.prepared, this.source);
         row.status = 'queued'; row.generation++;
       } else {
         if (!active.has(task.state) || row.status === 'cancel_requested' || task.state === 'cancel_requested') throw new ConflictException('原任务已结束或正在取消');

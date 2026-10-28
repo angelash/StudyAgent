@@ -7,6 +7,7 @@ import { TaskFence, TaskIntent, TaskOperation, TaskRepository } from './task-rep
 import { RateLimitRepository } from './rate-limit-repository';
 import { DomainSelector, ReadDependency, identity as recordId, compileSelector, indexedPositions, sameRecords, selectionSql } from './domain-selection';
 import { serializeSqlite, sqliteQueueKey } from './sqlite-serialization';
+import { assertAssistantWhiteboardRecords } from '../modules/learning/assistant-whiteboard-integrity';
 
 export type DomainState = Record<string, unknown[]>;
 export type StateSnapshot = { revision: number; state: DomainState; collectionRevisions?: Record<string, number> };
@@ -208,6 +209,9 @@ export class DomainDatabase {
     // Existing v22 readers only accept `ready`, so the marker also fences an
     // accidental downgrade before any private conversation whiteboard is read.
     await this.migrateConstraints(23, [], `UPDATE study_restore_guard SET state='ready-schema23',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready';`);
+    const sourceRowsSql = "SELECT collection,record_id,body FROM domain_records WHERE collection IN ('assistantSessions','studioTopicWhiteboardDrafts','studioTopicWhiteboards')";
+    const sourceRows = this.sqlite ? this.sqlite.prepare(sourceRowsSql).all() : (await this.postgres!.query(sourceRowsSql)).rows;
+    assertAssistantWhiteboardRecords(sourceRows as Array<{ collection: string; record_id: string; body: unknown }>);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now, this.sqlite && sqliteQueueKey(this.location));
     await this.tasks.open();
     this.limits = new RateLimitRepository(this.tasks, this.sqlite, this.postgres, this.now);

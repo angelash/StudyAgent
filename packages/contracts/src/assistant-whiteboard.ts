@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import type { UserRole } from './index';
-import { assistantArtifactSelectionSchema, type AssistantArtifactOrigin } from './assistant-artifact';
+import { assistantArtifactSelectionSchema, assistantNoteListSchema, type AssistantArtifactOrigin } from './assistant-artifact';
 import { topicWhiteboardContentSchema } from './topic-whiteboard';
 
 export const assistantWhiteboardPreflightSchema = z.object({
@@ -10,6 +10,10 @@ export const assistantWhiteboardPreflightSchema = z.object({
   acknowledgeHistoricalSource: z.boolean().default(false),
 }).strict();
 export type AssistantWhiteboardPreflightInput = z.infer<typeof assistantWhiteboardPreflightSchema>;
+export const assistantWhiteboardCreateSchema = assistantWhiteboardPreflightSchema.extend({
+  preflightFingerprint: z.string().regex(/^[a-f0-9]{64}$/), requestKey: z.string().min(8).max(180),
+}).strict();
+export const assistantWhiteboardListSchema = assistantNoteListSchema;
 export type AssistantWhiteboardAudience = {
   kind: 'assistant'; actorRole: UserRole; studentId: string | null; subject: string | null;
   sourceKind: 'independent' | 'classroom_lecture' | 'primary_unit' | 'material_lesson';
@@ -41,3 +45,6 @@ export const assistantWhiteboardContentSchema = topicWhiteboardContentSchema.saf
 });
 export type AssistantWhiteboardSourceMap = z.infer<typeof assistantWhiteboardSourceMapSchema>;
 export type AssistantWhiteboardContent = z.infer<typeof assistantWhiteboardContentSchema>;
+export const assistantWhiteboardEditSchema = z.object({ expectedRevision: z.number().int().nonnegative(),
+  contentFingerprint: z.string().regex(/^[a-f0-9]{64}$/), content: assistantWhiteboardContentSchema,
+  requestKey: z.string().min(8).max(180) }).strict();

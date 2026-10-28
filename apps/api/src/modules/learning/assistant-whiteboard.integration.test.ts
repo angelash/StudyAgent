@@ -59,7 +59,8 @@ describe('complete original conversation whiteboard source preflight over actual
     expect(result.origin.messages.map((m: any) => m.id)).toEqual([question.id, answer.id]); expect(result.origin.messages[1].content).toBe(answer.content);
     expect(result).toMatchObject({ modelId: 'deepseek-v4-flash', audience: { kind: 'assistant', studentId: null, profileGrade: null, courseGrade: null }, fits: true, available: false, canGenerate: false, blocked: { code: 'model_unavailable' } });
     expect((await preflight(independent, [answer.id], input)).fingerprint).toBe(result.fingerprint); expect(await fingerprint()).toBe(before);
-    await call('post', root(independent), { ...input, requestKey: randomUUID() }, owner, 404); await call('get', root(independent), undefined, owner, 404);
+    await call('post', root(independent), { ...input, requestKey: randomUUID() }, owner, 400);
+    expect((await call('get', root(independent), undefined, owner)).items).toEqual([]);
   });
   it('retains over-budget original text and reports the complete JSON size instead of truncating into a short prompt', async () => {
     const [message] = await save(independent, [{ content: '保留所有行\n'.repeat(3200) + '完整末尾' }]), before = await fingerprint(), result = await preflight(independent, [message.id]);

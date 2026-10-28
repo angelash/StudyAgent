@@ -5,7 +5,7 @@ import { topicWhiteboardDigest } from './topic-whiteboard-content';
 type Scene = TopicWhiteboardContent['scenes'][number];
 export type FrozenTopicVisualContext = {
   version: 'topic-whiteboard-figure-v1'; draftId: string; sceneIndex: number; preparedFingerprint: string;
-  sceneTeachingFingerprint: string; audience: 'adult' | 'student'; grade: number | null;
+  sceneTeachingFingerprint: string; audience: 'adult' | 'student' | 'assistant'; grade: number | null;
   topic: string; objective: string; scene: Scene;
   targets: TopicWhiteboardDraftRecord['prepared']['targets'];
 };

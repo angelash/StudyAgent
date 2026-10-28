@@ -1,0 +1,1460 @@
+{
+  "passed": true,
+  "designBeforeImplementation": [
+    "3e53a7bd8288eb567f08c3ff7e6ff22383fba1a4",
+    "cbeae243"
+  ],
+  "attempts": {
+    "source-authority-first": {
+      "numPassedTests": 52,
+      "numFailedTests": 2,
+      "numPendingTests": 0
+    },
+    "source-authority-second": {
+      "numPassedTests": 54,
+      "numFailedTests": 0,
+      "numPendingTests": 0
+    },
+    "source-authority-third": {
+      "numPassedTests": 54,
+      "numFailedTests": 0,
+      "numPendingTests": 0
+    },
+    "source-authority-postgres-first": {
+      "numPassedTests": 101,
+      "numFailedTests": 1,
+      "numPendingTests": 2
+    },
+    "source-authority-postgres-second": {
+      "numPassedTests": 102,
+      "numFailedTests": 0,
+      "numPendingTests": 2
+    },
+    "source-native-postgres-first": {
+      "numPassedTests": 104,
+      "numFailedTests": 0,
+      "numPendingTests": 2
+    },
+    "source-media-postgres-first": {
+      "numPassedTests": 114,
+      "numFailedTests": 0,
+      "numPendingTests": 2
+    },
+    "source-media-sqlite-first": {
+      "numPassedTests": 23,
+      "numFailedTests": 0,
+      "numPendingTests": 0
+    }
+  },
+  "finalFrozenChangedInputs": {
+    "checked": 35,
+    "changed": []
+  },
+  "scope": "Actual local PostgreSQL 17-file matrix:114passed/2 deliberately SQLite-only v1 cases skipped. Separate actual SQLite source lifecycle:23/23passed. Counts overlap and are not summed.",
+  "implemented": [
+    "Atomic source draft/task/creation receipts; original model writing/review checkpoint, explicit cancel/retry, strict mapped editing and private adoption.",
+    "Original login/current source/student assessment fencing for text,image generation/edit/adoption and narration; late result rejection after logout/source change/binding/assessment.",
+    "Actual learner image generation/edit/adoption and private PNG reads; image prompt excludes raw origin and scene mappings; two actual application instances retain one source draft/task/adopted board.",
+    "Shared semantic startup/native validation refuses unknown protocols,cross-owner publication,missing private marker and changed manuscript,including recomputed malicious bundle manifests.",
+    "Actual SQLite/PostgreSQL stopped backup,cold restore,relogin,original creation/adoption receipts and source/player readback; latest author/child deletion ledgers prevent private source resurrection while another author board remains."
+  ],
+  "retainedFailures": [
+    "Authority first52/2:synthetic independent child context invalid; repaired with real grade9 course and unchanged grade4 profile.",
+    "PGfirst101/1/2:the supposed second session reused the same independent scope; fixture-only real distinct lecture session repaired,PGsecond102/0/2.",
+    "Initial type diagnostics retained separately; native first prepared-union diagnostics and media first mocked image type diagnostics have their exact relevant source copies. No business budgets,timeouts or retries weakened."
+  ],
+  "limits": [
+    "Intermediate authority-second54-pass complete input snapshot was not frozen; do not claim it was.",
+    "Archived snapshots cover changed source/tests,not every historical transitive build dependency; current complete API/browser frozen gate remains required.",
+    "Native PG offline verification proves dump/file bytes and TOC; semantic refusal is exercised after actual native import while target remains guarded.",
+    "Providers are controlled synthetic fixtures with existing owned PNG/audio bytes; no new live model,image,TTS or production learning evidence.",
+    "C3 specification committed62a9840a but actual front-end source selection/mapping remains pending; full API/browser/exactCI/main delivery not established for this candidate.",
+    "Overall105/M1-M7/original72 remains active; no pixel/audio/teacher or real learning outcome completion claim."
+  ],
+  "files": {
+    "data/qa/source-authority-api-fifth.log.gz": {
+      "sha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "originalBytes": 66
+    },
+    "data/qa/source-authority-api-first.log.gz": {
+      "sha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "originalBytes": 66
+    },
+    "data/qa/source-authority-api-fourth.log.gz": {
+      "sha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "originalBytes": 66
+    },
+    "data/qa/source-authority-api-third.log.gz": {
+      "sha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "originalBytes": 66
+    },
+    "data/qa/source-authority-contracts-first.log.gz": {
+      "sha256": "e9e8fe040fbe56e35a316feddabfa4412dc49e1600be647c6dec824e7f2b769d",
+      "originalSha256": "b982c188cd2ca20df2ebbaf9d724c2e5395c9020c9570c192cf5f8c976ac0dde",
+      "originalBytes": 485
+    },
+    "data/qa/source-authority-contracts-second.log.gz": {
+      "sha256": "b7b318660ab00b04f82fa264e5964b6f23669e0e6664ffdf51bde4ca243e8c89",
+      "originalSha256": "72f177894d82aece56dc757d4b48bc411b8529ae056cc130241ffb34d3d3885a",
+      "originalBytes": 485
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/ai/assistant-artifact.service.ts.gz": {
+      "sha256": "ecc8aab766233f3be1e0341adf3c2931f36fd799da67447301039fef584a1f1b",
+      "originalSha256": "3c5b3c4b199dc7dbb185e511fa883637dcd65b40c75f67b96cb999f0746e2b34",
+      "originalBytes": 6391
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/assistant-whiteboard-content.ts.gz": {
+      "sha256": "f40c6ab10021ed184d909457d987844dc3b261bb9967164ae6b9021feeb2f55b",
+      "originalSha256": "fcd60e46605729460c943c84b62a148a3f8114e49ba9a1e9d02281344f3b1ca7",
+      "originalBytes": 4192
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/assistant-whiteboard-lifecycle.integration.test.ts.gz": {
+      "sha256": "d61258b37b0608f08e11330fa4443474350cd69d631dbacc4194c93f7403c2b3",
+      "originalSha256": "13868437ada67ec92070e3672f7d5d0f25988f91d866f1c7530a5c99f5d8f9c2",
+      "originalBytes": 19690
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/assistant-whiteboard-source.ts.gz": {
+      "sha256": "b78d6a1de43d5d1bd2be841399f1a790b044357e9a230ad765aae767116a49b3",
+      "originalSha256": "14cea7a7d2f5e6b93d52995b2fc39ca18f26ba89751348ef1ef80ea9105e7c60",
+      "originalBytes": 7425
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/assistant-whiteboard.service.ts.gz": {
+      "sha256": "3e285517eb9db67100651f4bdcb3f66f955dbeb0697c1a143fd1cd6e88b2a6cf",
+      "originalSha256": "ff789bc1907eb4d6473100d12279238e1d11da7a3025596acf214c8a7c2315ce",
+      "originalBytes": 5423
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/topic-whiteboard-access.ts.gz": {
+      "sha256": "b3aa5d566ad89b08a74080a8ac3dce26c360381243ce2ed5737a79cf00fe545a",
+      "originalSha256": "82e80ee82a0becbcebe2248daa2877ef9ccac1615a0859c9271cba92859071a1",
+      "originalBytes": 8528
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/topic-whiteboard-content.ts.gz": {
+      "sha256": "1aafd04d1ff169e6f0e7079fab1fc48ff4b51535441cc029051ee975df97e7a6",
+      "originalSha256": "b12cde34085601fde8a21569455a06cc8fa2ab264332d3e1d010b055534a7ebf",
+      "originalBytes": 4541
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/topic-whiteboard-digest.ts.gz": {
+      "sha256": "6ee5de8076cec4bad745a5552a5c251e846f272ad79d53fbdb83e7bb7fd3fab0",
+      "originalSha256": "e8ffd6577647223f8eeca62f3266cb9e73de241962fac78e1292b8e381493fd9",
+      "originalBytes": 557
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/topic-whiteboard-narration.service.ts.gz": {
+      "sha256": "2dbdbc9ef5069e99607bc0d3e0dc5624e242d34c41a383e92fa4be83ed1a0e7c",
+      "originalSha256": "6e31c501b233fb91fb8c451ddd19975946367525004f1a3133eb62b23e9f00c1",
+      "originalBytes": 3109
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/topic-whiteboard-projection.ts.gz": {
+      "sha256": "b5ce8623b4bedea41f9ee71aa21a4e9d190d8e5619cd92480653d2b4e2025fc8",
+      "originalSha256": "2f7b9d8ecfb48eafcd556f7d48a6d43add9302a6ccf993ba2d01cae188d61924",
+      "originalBytes": 4140
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/topic-whiteboard-record.ts.gz": {
+      "sha256": "d680ea60cf174d3550090b39d1bb085f67d6c86301e6df47f08458bfdede3616",
+      "originalSha256": "0dae52484ebf9bbaf717b5426515e9faeb1db196a08cdf41d52df829ac48cc4a",
+      "originalBytes": 2237
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/topic-whiteboard-schema.ts.gz": {
+      "sha256": "785d56d425cb25245b9e0e5f833e91619d455eac53c846b65a0f7bc3b841916e",
+      "originalSha256": "4177aed45bb78b9b4d83f749a5b4f5f44f9834e5cc9bceb13f898df715475ca7",
+      "originalBytes": 1254
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/topic-whiteboard-source-access.ts.gz": {
+      "sha256": "3fff00165201407714b83465379029647e6a386692c25055f09112dda920aadb",
+      "originalSha256": "886891e788b8b0dea2d9493125be8ce0dbf6f8fecce7fc7f9d1f59cbd2c6ab2e",
+      "originalBytes": 644
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-access.ts.gz": {
+      "sha256": "7832b031c41afe3eddf826e27e96bb050a061b873f0cbb06528009787b08d9f6",
+      "originalSha256": "59ff80e1352ea73d91ce3c639e6f301f3b324bb600ac3315660d1b1e84c8ccb0",
+      "originalBytes": 3959
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-context.ts.gz": {
+      "sha256": "7265ca42106ff779d649e6a44eed2c0ba8e748dfbc899c1956e4fe3207fdfed2",
+      "originalSha256": "f2587d270727e978f98ab79fb0fab8db43c0549fd1eb4c9137a102025a1aa6ae",
+      "originalBytes": 3503
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-worker.service.ts.gz": {
+      "sha256": "7b6922d7ac206a117b29808e9ff1e9ba644a747cb3aaa5c6103510301257bf73",
+      "originalSha256": "7741c69ce878846a95c1e974fe214628477d3a28027b2d426d5fa0a946c8c72d",
+      "originalBytes": 8953
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/topic-whiteboard-visual.service.ts.gz": {
+      "sha256": "f46f1bd0aa72c12ee223a489ee956d10b5e238a8ba51d2f61e3c675f7d22eaa6",
+      "originalSha256": "bbd82ac6df324acf7a42622b5a9168578f6416597a8a9ece41c809f95b97977a",
+      "originalBytes": 16445
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/topic-whiteboard-worker.service.ts.gz": {
+      "sha256": "78811c0c35a9d3be72ab3ba6fa0390041addf54496a1cf6c9b2fdaa4de0cf3a8",
+      "originalSha256": "a099886ae4edfc877dc556e71da9ac248546c3ecb8065d6eec9f4ca5939760d4",
+      "originalBytes": 10487
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/learning/topic-whiteboard.service.ts.gz": {
+      "sha256": "e8a1dfd7d0572a54b48083a213d8b22f87f8d2ed6a039e47e1f3d9b7e8a3e06d",
+      "originalSha256": "3a7e3b5923ecaa23907601896ba9381fc7a8cbc81437c370209ff85d58f3d10d",
+      "originalBytes": 26018
+    },
+    "data/qa/source-authority-first-inputs/apps/api/src/modules/privacy/privacy-records.ts.gz": {
+      "sha256": "bbcde04754bbfc21b51fac8c028681d83dff392d80130c59d0731d906fd5dbee",
+      "originalSha256": "166ac805c3d0096d29c2fc970f2dd2bcb953c813a473b93377eb8e0f92243353",
+      "originalBytes": 27261
+    },
+    "data/qa/source-authority-first-inputs/manifest.json.gz": {
+      "sha256": "829d12229f1e58e6066de9005a6c167ce2623487b0efa28ef01949a3a47d431c",
+      "originalSha256": "9a833212a9cb8ea27f93425ee6e797af1c0e0113b06ce7e8aae7ba80ed063d9e",
+      "originalBytes": 2959
+    },
+    "data/qa/source-authority-first-inputs/packages/contracts/src/assistant-whiteboard.ts.gz": {
+      "sha256": "75047ffe14ba37d81fd75266196dce711d03227d2b3f26fbf9e560628f260630",
+      "originalSha256": "3e9c0d43dc5b8052e5754568a7466171248e3fd54b22f86d69489a539c87c30a",
+      "originalBytes": 3326
+    },
+    "data/qa/source-authority-first-inputs/packages/contracts/src/topic-whiteboard.ts.gz": {
+      "sha256": "38c9b67ce9c37b7a66ba07e00beb537a069dc6776bd00c454d21e3bb143a6f55",
+      "originalSha256": "818c646503be69d84df78fda9489a04c8da92cd322613c40b6ea03143ae0e4b6",
+      "originalBytes": 5772
+    },
+    "data/qa/source-authority-first.json.gz": {
+      "sha256": "1e7a864bbe6c00e752a54a011fa0852e73ab07bbb39cfbd2265c00732063b88c",
+      "originalSha256": "607865918c141f9f248a5f2703983d1128e247822d4af92aeb152a4fe598395c",
+      "originalBytes": 28652
+    },
+    "data/qa/source-authority-first.log.gz": {
+      "sha256": "b9d4fd5c457a96fc07ee29c9fd0d3a92e653482638a7039faf40da2615af6a51",
+      "originalSha256": "46d1ee5065d67a13f74674b69a97f15dae9597920b8dc33bb505fa86a99d87ca",
+      "originalBytes": 5219
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/common/auth.guard.ts.gz": {
+      "sha256": "3555dd209e397848cfbeb13b5bd85b244b907513376db756c39a3280feaa663b",
+      "originalSha256": "b9896b079c9909cc0e6be3b7f8caa9bedd7d931e2b90590ce598d441d2dac6ba",
+      "originalBytes": 10497
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/ai/assistant-artifact.service.ts.gz": {
+      "sha256": "b1bffb98685fc52390f0bd7b6f6521b688236f4b1c1630c755cb6f0e3e0cb693",
+      "originalSha256": "682a0fbf71d5b57bd5361b7009a0dd7b40f17ab13808931124b4df7bc5a3773f",
+      "originalBytes": 6660
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard-content.test.ts.gz": {
+      "sha256": "6632919f6d0c53cfcd109aff1ba8a9d85463e50baac5e5a7c02983dd34a38be5",
+      "originalSha256": "f9f9df8ea130b112cdbee7876f446da34ba0dba030038002cdbad1afc4a175fe",
+      "originalBytes": 15534
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard-content.ts.gz": {
+      "sha256": "f40c6ab10021ed184d909457d987844dc3b261bb9967164ae6b9021feeb2f55b",
+      "originalSha256": "fcd60e46605729460c943c84b62a148a3f8114e49ba9a1e9d02281344f3b1ca7",
+      "originalBytes": 4192
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard-lifecycle.integration.test.ts.gz": {
+      "sha256": "37a33617fa13308ab601e9290c895f957af1ab0c9c97ba45cd1800a6493ac96e",
+      "originalSha256": "0f1236032fd531c20037cb9a7e7b140c6d0ed18181d505df2bbec8d3748e980f",
+      "originalBytes": 25636
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard-source.ts.gz": {
+      "sha256": "4b5cad601f87b2371e073ad4d3bf3a9e4077d4686faaf43363d92b1606870745",
+      "originalSha256": "f10e049e3d59cdc14a076a4f4b594fcc1c8520dd19543c8a619df3839c0a1991",
+      "originalBytes": 7461
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard.controller.ts.gz": {
+      "sha256": "324acfc37d8af013e2bbbb385330a92e1618806f2602886066c2ee274adc71cc",
+      "originalSha256": "94d1f76ba0527959712f159f933a33ede747a58655a1db789e6b0bea3335a33a",
+      "originalBytes": 1496
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard.integration.test.ts.gz": {
+      "sha256": "d0a929b364e6f2a5adcc28ec7df9957f814381dbfa7306b77fd7f8c91f379806",
+      "originalSha256": "25cae684c7b3138fb36683ec592e0e5d0ef6a133eb0624a4ba7835017c3d6b7c",
+      "originalBytes": 15055
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard.service.ts.gz": {
+      "sha256": "22f5e41eee4d0fb52ede1a3f4a3656faebe8211f7af66540ca8c611ddb60aba7",
+      "originalSha256": "17d6d7120a0eda7abae8daf2ef0068439f5b202fac4bea07140ec3d06d064cb0",
+      "originalBytes": 5714
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-access.ts.gz": {
+      "sha256": "54afab85e80b6b201af3143064505016efabcb7bea0a7c7a7f321e0e8da17d90",
+      "originalSha256": "6c15f9d1e5872661b44dec0c1378240812340f12b71b63d41a652d42ba22804c",
+      "originalBytes": 8694
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-content.ts.gz": {
+      "sha256": "1aafd04d1ff169e6f0e7079fab1fc48ff4b51535441cc029051ee975df97e7a6",
+      "originalSha256": "b12cde34085601fde8a21569455a06cc8fa2ab264332d3e1d010b055534a7ebf",
+      "originalBytes": 4541
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-digest.ts.gz": {
+      "sha256": "95797f28e1186c9b0c1900e04e32cd784b0c41b400cdff1d4f5b8ca15ea9c60c",
+      "originalSha256": "addb802487b24c50ebb2a02b543e4384bc364eff6ef9de4012eda363214121f0",
+      "originalBytes": 667
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-narration.service.ts.gz": {
+      "sha256": "2dbdbc9ef5069e99607bc0d3e0dc5624e242d34c41a383e92fa4be83ed1a0e7c",
+      "originalSha256": "6e31c501b233fb91fb8c451ddd19975946367525004f1a3133eb62b23e9f00c1",
+      "originalBytes": 3109
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-projection.ts.gz": {
+      "sha256": "b5ce8623b4bedea41f9ee71aa21a4e9d190d8e5619cd92480653d2b4e2025fc8",
+      "originalSha256": "2f7b9d8ecfb48eafcd556f7d48a6d43add9302a6ccf993ba2d01cae188d61924",
+      "originalBytes": 4140
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-record.ts.gz": {
+      "sha256": "d680ea60cf174d3550090b39d1bb085f67d6c86301e6df47f08458bfdede3616",
+      "originalSha256": "0dae52484ebf9bbaf717b5426515e9faeb1db196a08cdf41d52df829ac48cc4a",
+      "originalBytes": 2237
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-schema.ts.gz": {
+      "sha256": "785d56d425cb25245b9e0e5f833e91619d455eac53c846b65a0f7bc3b841916e",
+      "originalSha256": "4177aed45bb78b9b4d83f749a5b4f5f44f9834e5cc9bceb13f898df715475ca7",
+      "originalBytes": 1254
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-source-access.ts.gz": {
+      "sha256": "3fff00165201407714b83465379029647e6a386692c25055f09112dda920aadb",
+      "originalSha256": "886891e788b8b0dea2d9493125be8ce0dbf6f8fecce7fc7f9d1f59cbd2c6ab2e",
+      "originalBytes": 644
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-access.ts.gz": {
+      "sha256": "34183d46a28f8eb0898581c1f94d16125bc2c79e337add5a38accd85d72cedca",
+      "originalSha256": "0d46b7f101682c644826a8231d754042245047e33415521773619cc2675b52d3",
+      "originalBytes": 4140
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-context.ts.gz": {
+      "sha256": "7265ca42106ff779d649e6a44eed2c0ba8e748dfbc899c1956e4fe3207fdfed2",
+      "originalSha256": "f2587d270727e978f98ab79fb0fab8db43c0549fd1eb4c9137a102025a1aa6ae",
+      "originalBytes": 3503
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-worker.service.ts.gz": {
+      "sha256": "7b6922d7ac206a117b29808e9ff1e9ba644a747cb3aaa5c6103510301257bf73",
+      "originalSha256": "7741c69ce878846a95c1e974fe214628477d3a28027b2d426d5fa0a946c8c72d",
+      "originalBytes": 8953
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-visual.service.ts.gz": {
+      "sha256": "f46f1bd0aa72c12ee223a489ee956d10b5e238a8ba51d2f61e3c675f7d22eaa6",
+      "originalSha256": "bbd82ac6df324acf7a42622b5a9168578f6416597a8a9ece41c809f95b97977a",
+      "originalBytes": 16445
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-worker.service.ts.gz": {
+      "sha256": "78811c0c35a9d3be72ab3ba6fa0390041addf54496a1cf6c9b2fdaa4de0cf3a8",
+      "originalSha256": "a099886ae4edfc877dc556e71da9ac248546c3ecb8065d6eec9f4ca5939760d4",
+      "originalBytes": 10487
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard.controller.ts.gz": {
+      "sha256": "cd20fa3bed2ec5caece1dbf36e50dd80bef6826c95d019b46c12ef12086c499d",
+      "originalSha256": "878a88398d203c36dae9c9d34a34792e6421cd799248f46153a044fec5e8e88d",
+      "originalBytes": 4676
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard.service.ts.gz": {
+      "sha256": "3a1f465f5d68d6742dcbfa5b24091be09e2c8ce832f76609bb3d87f0a7dff9f3",
+      "originalSha256": "f29ed6e237ac36b8350d45abcf87e52f6450fee814f59cf468905e42bbf439f0",
+      "originalBytes": 29935
+    },
+    "data/qa/source-authority-postgres-first-inputs/apps/api/src/modules/privacy/privacy-records.ts.gz": {
+      "sha256": "bbcde04754bbfc21b51fac8c028681d83dff392d80130c59d0731d906fd5dbee",
+      "originalSha256": "166ac805c3d0096d29c2fc970f2dd2bcb953c813a473b93377eb8e0f92243353",
+      "originalBytes": 27261
+    },
+    "data/qa/source-authority-postgres-first-inputs/manifest.json.gz": {
+      "sha256": "d71c3195268c8dc429a128f548b347310deb67a2d51a48a24f1222fc761c522f",
+      "originalSha256": "6def9a495551c8473dee79ae4d2c9bd6f40bba741a8efe3d030efe4fa92c4886",
+      "originalBytes": 3758
+    },
+    "data/qa/source-authority-postgres-first-inputs/packages/contracts/src/assistant-whiteboard.ts.gz": {
+      "sha256": "9d2d460e937a5536ff5b437a9629c3025d276068b29681a3237eed90bd1dac0d",
+      "originalSha256": "b882ddffbc66a72b4741d34ffef34411dd4d253b636b7eed1074374afe0d0f1b",
+      "originalBytes": 3422
+    },
+    "data/qa/source-authority-postgres-first-inputs/packages/contracts/src/topic-whiteboard.ts.gz": {
+      "sha256": "38c9b67ce9c37b7a66ba07e00beb537a069dc6776bd00c454d21e3bb143a6f55",
+      "originalSha256": "818c646503be69d84df78fda9489a04c8da92cd322613c40b6ea03143ae0e4b6",
+      "originalBytes": 5772
+    },
+    "data/qa/source-authority-postgres-first-inputs/scripts/qa/run-assistant-whiteboard-source-lifecycle.cjs.gz": {
+      "sha256": "78bc95d3e50acfeffca258f2b78e37cc06e771163ee394d09e89fa21eda93f28",
+      "originalSha256": "855c7e245da010e33f3bffef7a744d009d1b9ed1b6eed504195089f06017e36c",
+      "originalBytes": 3009
+    },
+    "data/qa/source-authority-postgres-first.json.gz": {
+      "sha256": "1c0727eda3236e24c60c9e8bf1effbd851dc8eee757ed89d791d9ba1ebe2ab69",
+      "originalSha256": "8053a1ed7876ab862cac207030d48e7e8789d1946bc5874d36d7ca3710f1968d",
+      "originalBytes": 53316
+    },
+    "data/qa/source-authority-postgres-first.log.gz": {
+      "sha256": "1eef3f5cd508c22c90a76850d3b8b7ceddff94ed5c645706f98288a7fa52b8c5",
+      "originalSha256": "53e14aecc36e81a007b221980393b77afe8d9c7a9582f5029273dcbe3d6a7760",
+      "originalBytes": 8562
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/common/auth.guard.ts.gz": {
+      "sha256": "3555dd209e397848cfbeb13b5bd85b244b907513376db756c39a3280feaa663b",
+      "originalSha256": "b9896b079c9909cc0e6be3b7f8caa9bedd7d931e2b90590ce598d441d2dac6ba",
+      "originalBytes": 10497
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/ai/assistant-artifact.service.ts.gz": {
+      "sha256": "b1bffb98685fc52390f0bd7b6f6521b688236f4b1c1630c755cb6f0e3e0cb693",
+      "originalSha256": "682a0fbf71d5b57bd5361b7009a0dd7b40f17ab13808931124b4df7bc5a3773f",
+      "originalBytes": 6660
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/assistant-whiteboard-content.test.ts.gz": {
+      "sha256": "6632919f6d0c53cfcd109aff1ba8a9d85463e50baac5e5a7c02983dd34a38be5",
+      "originalSha256": "f9f9df8ea130b112cdbee7876f446da34ba0dba030038002cdbad1afc4a175fe",
+      "originalBytes": 15534
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/assistant-whiteboard-content.ts.gz": {
+      "sha256": "f40c6ab10021ed184d909457d987844dc3b261bb9967164ae6b9021feeb2f55b",
+      "originalSha256": "fcd60e46605729460c943c84b62a148a3f8114e49ba9a1e9d02281344f3b1ca7",
+      "originalBytes": 4192
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/assistant-whiteboard-lifecycle.integration.test.ts.gz": {
+      "sha256": "8643e4e95e06c9a3e44cc93cb08e043ecd79193b712c3e6f3b145d87498c4e5e",
+      "originalSha256": "7671d73c51c0611a37fbd9bedc100d1479d8ec3dda002b18df0d006c37509e71",
+      "originalBytes": 26108
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/assistant-whiteboard-source.ts.gz": {
+      "sha256": "4b5cad601f87b2371e073ad4d3bf3a9e4077d4686faaf43363d92b1606870745",
+      "originalSha256": "f10e049e3d59cdc14a076a4f4b594fcc1c8520dd19543c8a619df3839c0a1991",
+      "originalBytes": 7461
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/assistant-whiteboard.controller.ts.gz": {
+      "sha256": "324acfc37d8af013e2bbbb385330a92e1618806f2602886066c2ee274adc71cc",
+      "originalSha256": "94d1f76ba0527959712f159f933a33ede747a58655a1db789e6b0bea3335a33a",
+      "originalBytes": 1496
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/assistant-whiteboard.integration.test.ts.gz": {
+      "sha256": "d0a929b364e6f2a5adcc28ec7df9957f814381dbfa7306b77fd7f8c91f379806",
+      "originalSha256": "25cae684c7b3138fb36683ec592e0e5d0ef6a133eb0624a4ba7835017c3d6b7c",
+      "originalBytes": 15055
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/assistant-whiteboard.service.ts.gz": {
+      "sha256": "22f5e41eee4d0fb52ede1a3f4a3656faebe8211f7af66540ca8c611ddb60aba7",
+      "originalSha256": "17d6d7120a0eda7abae8daf2ef0068439f5b202fac4bea07140ec3d06d064cb0",
+      "originalBytes": 5714
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/topic-whiteboard-access.ts.gz": {
+      "sha256": "54afab85e80b6b201af3143064505016efabcb7bea0a7c7a7f321e0e8da17d90",
+      "originalSha256": "6c15f9d1e5872661b44dec0c1378240812340f12b71b63d41a652d42ba22804c",
+      "originalBytes": 8694
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/topic-whiteboard-content.ts.gz": {
+      "sha256": "1aafd04d1ff169e6f0e7079fab1fc48ff4b51535441cc029051ee975df97e7a6",
+      "originalSha256": "b12cde34085601fde8a21569455a06cc8fa2ab264332d3e1d010b055534a7ebf",
+      "originalBytes": 4541
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/topic-whiteboard-digest.ts.gz": {
+      "sha256": "95797f28e1186c9b0c1900e04e32cd784b0c41b400cdff1d4f5b8ca15ea9c60c",
+      "originalSha256": "addb802487b24c50ebb2a02b543e4384bc364eff6ef9de4012eda363214121f0",
+      "originalBytes": 667
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/topic-whiteboard-narration.service.ts.gz": {
+      "sha256": "2dbdbc9ef5069e99607bc0d3e0dc5624e242d34c41a383e92fa4be83ed1a0e7c",
+      "originalSha256": "6e31c501b233fb91fb8c451ddd19975946367525004f1a3133eb62b23e9f00c1",
+      "originalBytes": 3109
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/topic-whiteboard-projection.ts.gz": {
+      "sha256": "b5ce8623b4bedea41f9ee71aa21a4e9d190d8e5619cd92480653d2b4e2025fc8",
+      "originalSha256": "2f7b9d8ecfb48eafcd556f7d48a6d43add9302a6ccf993ba2d01cae188d61924",
+      "originalBytes": 4140
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/topic-whiteboard-record.ts.gz": {
+      "sha256": "d680ea60cf174d3550090b39d1bb085f67d6c86301e6df47f08458bfdede3616",
+      "originalSha256": "0dae52484ebf9bbaf717b5426515e9faeb1db196a08cdf41d52df829ac48cc4a",
+      "originalBytes": 2237
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/topic-whiteboard-schema.ts.gz": {
+      "sha256": "785d56d425cb25245b9e0e5f833e91619d455eac53c846b65a0f7bc3b841916e",
+      "originalSha256": "4177aed45bb78b9b4d83f749a5b4f5f44f9834e5cc9bceb13f898df715475ca7",
+      "originalBytes": 1254
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/topic-whiteboard-source-access.ts.gz": {
+      "sha256": "3fff00165201407714b83465379029647e6a386692c25055f09112dda920aadb",
+      "originalSha256": "886891e788b8b0dea2d9493125be8ce0dbf6f8fecce7fc7f9d1f59cbd2c6ab2e",
+      "originalBytes": 644
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-access.ts.gz": {
+      "sha256": "34183d46a28f8eb0898581c1f94d16125bc2c79e337add5a38accd85d72cedca",
+      "originalSha256": "0d46b7f101682c644826a8231d754042245047e33415521773619cc2675b52d3",
+      "originalBytes": 4140
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-context.ts.gz": {
+      "sha256": "7265ca42106ff779d649e6a44eed2c0ba8e748dfbc899c1956e4fe3207fdfed2",
+      "originalSha256": "f2587d270727e978f98ab79fb0fab8db43c0549fd1eb4c9137a102025a1aa6ae",
+      "originalBytes": 3503
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-worker.service.ts.gz": {
+      "sha256": "7b6922d7ac206a117b29808e9ff1e9ba644a747cb3aaa5c6103510301257bf73",
+      "originalSha256": "7741c69ce878846a95c1e974fe214628477d3a28027b2d426d5fa0a946c8c72d",
+      "originalBytes": 8953
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/topic-whiteboard-visual.service.ts.gz": {
+      "sha256": "f46f1bd0aa72c12ee223a489ee956d10b5e238a8ba51d2f61e3c675f7d22eaa6",
+      "originalSha256": "bbd82ac6df324acf7a42622b5a9168578f6416597a8a9ece41c809f95b97977a",
+      "originalBytes": 16445
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/topic-whiteboard-worker.service.ts.gz": {
+      "sha256": "78811c0c35a9d3be72ab3ba6fa0390041addf54496a1cf6c9b2fdaa4de0cf3a8",
+      "originalSha256": "a099886ae4edfc877dc556e71da9ac248546c3ecb8065d6eec9f4ca5939760d4",
+      "originalBytes": 10487
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/topic-whiteboard.controller.ts.gz": {
+      "sha256": "cd20fa3bed2ec5caece1dbf36e50dd80bef6826c95d019b46c12ef12086c499d",
+      "originalSha256": "878a88398d203c36dae9c9d34a34792e6421cd799248f46153a044fec5e8e88d",
+      "originalBytes": 4676
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/learning/topic-whiteboard.service.ts.gz": {
+      "sha256": "3a1f465f5d68d6742dcbfa5b24091be09e2c8ce832f76609bb3d87f0a7dff9f3",
+      "originalSha256": "f29ed6e237ac36b8350d45abcf87e52f6450fee814f59cf468905e42bbf439f0",
+      "originalBytes": 29935
+    },
+    "data/qa/source-authority-postgres-second-inputs/apps/api/src/modules/privacy/privacy-records.ts.gz": {
+      "sha256": "bbcde04754bbfc21b51fac8c028681d83dff392d80130c59d0731d906fd5dbee",
+      "originalSha256": "166ac805c3d0096d29c2fc970f2dd2bcb953c813a473b93377eb8e0f92243353",
+      "originalBytes": 27261
+    },
+    "data/qa/source-authority-postgres-second-inputs/manifest.json.gz": {
+      "sha256": "414af9b651179539fed69654c04e36164a51b19981b7b82d2c992533161ce8a3",
+      "originalSha256": "e3711fc0993802806840179a8614e21b1078525c25318fdb7f0b038ccc8535ad",
+      "originalBytes": 3758
+    },
+    "data/qa/source-authority-postgres-second-inputs/packages/contracts/src/assistant-whiteboard.ts.gz": {
+      "sha256": "9d2d460e937a5536ff5b437a9629c3025d276068b29681a3237eed90bd1dac0d",
+      "originalSha256": "b882ddffbc66a72b4741d34ffef34411dd4d253b636b7eed1074374afe0d0f1b",
+      "originalBytes": 3422
+    },
+    "data/qa/source-authority-postgres-second-inputs/packages/contracts/src/topic-whiteboard.ts.gz": {
+      "sha256": "38c9b67ce9c37b7a66ba07e00beb537a069dc6776bd00c454d21e3bb143a6f55",
+      "originalSha256": "818c646503be69d84df78fda9489a04c8da92cd322613c40b6ea03143ae0e4b6",
+      "originalBytes": 5772
+    },
+    "data/qa/source-authority-postgres-second-inputs/scripts/qa/run-assistant-whiteboard-source-lifecycle.cjs.gz": {
+      "sha256": "78bc95d3e50acfeffca258f2b78e37cc06e771163ee394d09e89fa21eda93f28",
+      "originalSha256": "855c7e245da010e33f3bffef7a744d009d1b9ed1b6eed504195089f06017e36c",
+      "originalBytes": 3009
+    },
+    "data/qa/source-authority-postgres-second.json.gz": {
+      "sha256": "573f1c7ff7e7f6bf8894ffc670afb719e94861601ca88badfcd11ca9fda0c365",
+      "originalSha256": "fe0cfdba3cada4e5f6008b4150b79c8ac9c7e33ebd0246d54f3078b4e5ebe593",
+      "originalBytes": 52786
+    },
+    "data/qa/source-authority-postgres-second.log.gz": {
+      "sha256": "cf232c3de68a0daac64e593417598214ef3de2591afbd5df601acd809056f308",
+      "originalSha256": "746220ae88a5a54219a87d8ddb29eb6ec3dff74223ca32fb53dc2d8af31d0afc",
+      "originalBytes": 7538
+    },
+    "data/qa/source-authority-second.json.gz": {
+      "sha256": "f21ee5902916d6a6d31eb94dc1fa563bcf2e7a288c6c3fd0e056ab4d72818939",
+      "originalSha256": "595f76aef6d9ff5c30b0361c2b1b3698fb8c5f4073106622a5d20101983cdc5e",
+      "originalBytes": 27087
+    },
+    "data/qa/source-authority-second.log.gz": {
+      "sha256": "730df265178cb050745d1d81dda8de2448c35170852d0c1f3d38b2fd412b14df",
+      "originalSha256": "1298af738f715d5b06275f67c3e768a94e8594ea1d8694ed0f0e1db2a2af6766",
+      "originalBytes": 3453
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/common/auth.guard.ts.gz": {
+      "sha256": "3555dd209e397848cfbeb13b5bd85b244b907513376db756c39a3280feaa663b",
+      "originalSha256": "b9896b079c9909cc0e6be3b7f8caa9bedd7d931e2b90590ce598d441d2dac6ba",
+      "originalBytes": 10497
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/ai/assistant-artifact.service.ts.gz": {
+      "sha256": "b1bffb98685fc52390f0bd7b6f6521b688236f4b1c1630c755cb6f0e3e0cb693",
+      "originalSha256": "682a0fbf71d5b57bd5361b7009a0dd7b40f17ab13808931124b4df7bc5a3773f",
+      "originalBytes": 6660
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/assistant-whiteboard-content.ts.gz": {
+      "sha256": "f40c6ab10021ed184d909457d987844dc3b261bb9967164ae6b9021feeb2f55b",
+      "originalSha256": "fcd60e46605729460c943c84b62a148a3f8114e49ba9a1e9d02281344f3b1ca7",
+      "originalBytes": 4192
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/assistant-whiteboard-lifecycle.integration.test.ts.gz": {
+      "sha256": "493019c951cc600fb1ec91f2202a50d9c0267f2548c20c78ffa3f44cbea09eb7",
+      "originalSha256": "6ad065599c66a6f3365c65067732d9584e70700358f9200ae7dca284260e5ade",
+      "originalBytes": 22761
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/assistant-whiteboard-source.ts.gz": {
+      "sha256": "b78d6a1de43d5d1bd2be841399f1a790b044357e9a230ad765aae767116a49b3",
+      "originalSha256": "14cea7a7d2f5e6b93d52995b2fc39ca18f26ba89751348ef1ef80ea9105e7c60",
+      "originalBytes": 7425
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/assistant-whiteboard.controller.ts.gz": {
+      "sha256": "324acfc37d8af013e2bbbb385330a92e1618806f2602886066c2ee274adc71cc",
+      "originalSha256": "94d1f76ba0527959712f159f933a33ede747a58655a1db789e6b0bea3335a33a",
+      "originalBytes": 1496
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/assistant-whiteboard.integration.test.ts.gz": {
+      "sha256": "d0a929b364e6f2a5adcc28ec7df9957f814381dbfa7306b77fd7f8c91f379806",
+      "originalSha256": "25cae684c7b3138fb36683ec592e0e5d0ef6a133eb0624a4ba7835017c3d6b7c",
+      "originalBytes": 15055
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/assistant-whiteboard.service.ts.gz": {
+      "sha256": "22f5e41eee4d0fb52ede1a3f4a3656faebe8211f7af66540ca8c611ddb60aba7",
+      "originalSha256": "17d6d7120a0eda7abae8daf2ef0068439f5b202fac4bea07140ec3d06d064cb0",
+      "originalBytes": 5714
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/topic-whiteboard-access.ts.gz": {
+      "sha256": "b3aa5d566ad89b08a74080a8ac3dce26c360381243ce2ed5737a79cf00fe545a",
+      "originalSha256": "82e80ee82a0becbcebe2248daa2877ef9ccac1615a0859c9271cba92859071a1",
+      "originalBytes": 8528
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/topic-whiteboard-content.ts.gz": {
+      "sha256": "1aafd04d1ff169e6f0e7079fab1fc48ff4b51535441cc029051ee975df97e7a6",
+      "originalSha256": "b12cde34085601fde8a21569455a06cc8fa2ab264332d3e1d010b055534a7ebf",
+      "originalBytes": 4541
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/topic-whiteboard-digest.ts.gz": {
+      "sha256": "6ee5de8076cec4bad745a5552a5c251e846f272ad79d53fbdb83e7bb7fd3fab0",
+      "originalSha256": "e8ffd6577647223f8eeca62f3266cb9e73de241962fac78e1292b8e381493fd9",
+      "originalBytes": 557
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/topic-whiteboard-narration.service.ts.gz": {
+      "sha256": "2dbdbc9ef5069e99607bc0d3e0dc5624e242d34c41a383e92fa4be83ed1a0e7c",
+      "originalSha256": "6e31c501b233fb91fb8c451ddd19975946367525004f1a3133eb62b23e9f00c1",
+      "originalBytes": 3109
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/topic-whiteboard-projection.ts.gz": {
+      "sha256": "b5ce8623b4bedea41f9ee71aa21a4e9d190d8e5619cd92480653d2b4e2025fc8",
+      "originalSha256": "2f7b9d8ecfb48eafcd556f7d48a6d43add9302a6ccf993ba2d01cae188d61924",
+      "originalBytes": 4140
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/topic-whiteboard-record.ts.gz": {
+      "sha256": "d680ea60cf174d3550090b39d1bb085f67d6c86301e6df47f08458bfdede3616",
+      "originalSha256": "0dae52484ebf9bbaf717b5426515e9faeb1db196a08cdf41d52df829ac48cc4a",
+      "originalBytes": 2237
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/topic-whiteboard-schema.ts.gz": {
+      "sha256": "785d56d425cb25245b9e0e5f833e91619d455eac53c846b65a0f7bc3b841916e",
+      "originalSha256": "4177aed45bb78b9b4d83f749a5b4f5f44f9834e5cc9bceb13f898df715475ca7",
+      "originalBytes": 1254
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/topic-whiteboard-source-access.ts.gz": {
+      "sha256": "3fff00165201407714b83465379029647e6a386692c25055f09112dda920aadb",
+      "originalSha256": "886891e788b8b0dea2d9493125be8ce0dbf6f8fecce7fc7f9d1f59cbd2c6ab2e",
+      "originalBytes": 644
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-access.ts.gz": {
+      "sha256": "34183d46a28f8eb0898581c1f94d16125bc2c79e337add5a38accd85d72cedca",
+      "originalSha256": "0d46b7f101682c644826a8231d754042245047e33415521773619cc2675b52d3",
+      "originalBytes": 4140
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-context.ts.gz": {
+      "sha256": "7265ca42106ff779d649e6a44eed2c0ba8e748dfbc899c1956e4fe3207fdfed2",
+      "originalSha256": "f2587d270727e978f98ab79fb0fab8db43c0549fd1eb4c9137a102025a1aa6ae",
+      "originalBytes": 3503
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-worker.service.ts.gz": {
+      "sha256": "7b6922d7ac206a117b29808e9ff1e9ba644a747cb3aaa5c6103510301257bf73",
+      "originalSha256": "7741c69ce878846a95c1e974fe214628477d3a28027b2d426d5fa0a946c8c72d",
+      "originalBytes": 8953
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/topic-whiteboard-visual.service.ts.gz": {
+      "sha256": "f46f1bd0aa72c12ee223a489ee956d10b5e238a8ba51d2f61e3c675f7d22eaa6",
+      "originalSha256": "bbd82ac6df324acf7a42622b5a9168578f6416597a8a9ece41c809f95b97977a",
+      "originalBytes": 16445
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/topic-whiteboard-worker.service.ts.gz": {
+      "sha256": "78811c0c35a9d3be72ab3ba6fa0390041addf54496a1cf6c9b2fdaa4de0cf3a8",
+      "originalSha256": "a099886ae4edfc877dc556e71da9ac248546c3ecb8065d6eec9f4ca5939760d4",
+      "originalBytes": 10487
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/topic-whiteboard.controller.ts.gz": {
+      "sha256": "cd20fa3bed2ec5caece1dbf36e50dd80bef6826c95d019b46c12ef12086c499d",
+      "originalSha256": "878a88398d203c36dae9c9d34a34792e6421cd799248f46153a044fec5e8e88d",
+      "originalBytes": 4676
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/learning/topic-whiteboard.service.ts.gz": {
+      "sha256": "ae9b509384b8bf5ec60691e0af4f309e077945f2294eb9e520a69d246fed3380",
+      "originalSha256": "c823a13d1a13107a7a8bb296598da01d6888603f9e992bdeb4f2057962448869",
+      "originalBytes": 29747
+    },
+    "data/qa/source-authority-third-inputs/apps/api/src/modules/privacy/privacy-records.ts.gz": {
+      "sha256": "bbcde04754bbfc21b51fac8c028681d83dff392d80130c59d0731d906fd5dbee",
+      "originalSha256": "166ac805c3d0096d29c2fc970f2dd2bcb953c813a473b93377eb8e0f92243353",
+      "originalBytes": 27261
+    },
+    "data/qa/source-authority-third-inputs/manifest.json.gz": {
+      "sha256": "3b6f3b3c09ccd105f481d5585360d85de1f4172c3db357750c50689c3ce89002",
+      "originalSha256": "9ac16f696e8931ba91f79e040d57b522f24afcf5cedf46df8200b8568634ba32",
+      "originalBytes": 3486
+    },
+    "data/qa/source-authority-third-inputs/packages/contracts/src/assistant-whiteboard.ts.gz": {
+      "sha256": "9d2d460e937a5536ff5b437a9629c3025d276068b29681a3237eed90bd1dac0d",
+      "originalSha256": "b882ddffbc66a72b4741d34ffef34411dd4d253b636b7eed1074374afe0d0f1b",
+      "originalBytes": 3422
+    },
+    "data/qa/source-authority-third-inputs/packages/contracts/src/topic-whiteboard.ts.gz": {
+      "sha256": "38c9b67ce9c37b7a66ba07e00beb537a069dc6776bd00c454d21e3bb143a6f55",
+      "originalSha256": "818c646503be69d84df78fda9489a04c8da92cd322613c40b6ea03143ae0e4b6",
+      "originalBytes": 5772
+    },
+    "data/qa/source-authority-third.json.gz": {
+      "sha256": "8149249a84135a615bf6b7a26d486f553df7a6c5058ca90cf47e1d9730ecd378",
+      "originalSha256": "bf73cd2c3d03cf1112d7d336fdbdd335e3a2f20a06ecf659e1901d755f8a6cba",
+      "originalBytes": 27083
+    },
+    "data/qa/source-authority-third.log.gz": {
+      "sha256": "72a4acab0d81f7118a4c4bac5afb21c1c2600c1de737d09979a32dedef8fd47c",
+      "originalSha256": "56656282d3c842ca1fb41e3a02e8eb2165a16b36bb165a5c7ec58980d2bb40c2",
+      "originalBytes": 3452
+    },
+    "data/qa/source-authority-types-fifth.log.gz": {
+      "sha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec",
+      "originalSha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "originalBytes": 68
+    },
+    "data/qa/source-authority-types-first.log.gz": {
+      "sha256": "d3e90dafa1d157b3ed26e46d7ddf704bdbb31e8fc295b70f7af018340b631635",
+      "originalSha256": "00742f5dee00958599e29d91af905e618e05080ea36028de2dd28116c7c54021",
+      "originalBytes": 1236
+    },
+    "data/qa/source-authority-types-fourth.log.gz": {
+      "sha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec",
+      "originalSha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "originalBytes": 68
+    },
+    "data/qa/source-authority-types-second.log.gz": {
+      "sha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec",
+      "originalSha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "originalBytes": 68
+    },
+    "data/qa/source-authority-types-third.log.gz": {
+      "sha256": "0cd9abfb98de7462eb409074f5e3d9f582ff2647c6f16920ff3f5af2569b300f",
+      "originalSha256": "6e3b1817e5b10317ca4027aa165f2fd7be4d38630b781e4d8c21fc061748b686",
+      "originalBytes": 1098
+    },
+    "data/qa/source-authority-web-types-first.log.gz": {
+      "sha256": "280feefa43a1a2d6b5ebb62618a6d36d932de3e009b707d14976e55a78dd4326",
+      "originalSha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc",
+      "originalBytes": 68
+    },
+    "data/qa/source-native-api-first.log.gz": {
+      "sha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "originalBytes": 66
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/common/auth.guard.ts.gz": {
+      "sha256": "3555dd209e397848cfbeb13b5bd85b244b907513376db756c39a3280feaa663b",
+      "originalSha256": "b9896b079c9909cc0e6be3b7f8caa9bedd7d931e2b90590ce598d441d2dac6ba",
+      "originalBytes": 10497
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/infrastructure/assistant-whiteboard-recovery.integration.test.ts.gz": {
+      "sha256": "cca4dda68c26d94202a5a12d5b17e013e41f5a88bb8f8ad800d88d6b4faaf358",
+      "originalSha256": "9e9ad860a52bff11b38231f53257f9255ccb3fec08da5ada1adfb70f75d07d63",
+      "originalBytes": 19275
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/infrastructure/domain-database.ts.gz": {
+      "sha256": "68f8e6c476665a93a05408e59ce39357a40e6acdd0b9edd7e56bfad11dfa3cba",
+      "originalSha256": "d35ff258bbaa6efdcd87fba5173e4981708084d90c61fa142ec636272fe7e294",
+      "originalBytes": 34907
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/ai/assistant-artifact.service.ts.gz": {
+      "sha256": "b1bffb98685fc52390f0bd7b6f6521b688236f4b1c1630c755cb6f0e3e0cb693",
+      "originalSha256": "682a0fbf71d5b57bd5361b7009a0dd7b40f17ab13808931124b4df7bc5a3773f",
+      "originalBytes": 6660
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard-content.test.ts.gz": {
+      "sha256": "6632919f6d0c53cfcd109aff1ba8a9d85463e50baac5e5a7c02983dd34a38be5",
+      "originalSha256": "f9f9df8ea130b112cdbee7876f446da34ba0dba030038002cdbad1afc4a175fe",
+      "originalBytes": 15534
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard-content.ts.gz": {
+      "sha256": "f40c6ab10021ed184d909457d987844dc3b261bb9967164ae6b9021feeb2f55b",
+      "originalSha256": "fcd60e46605729460c943c84b62a148a3f8114e49ba9a1e9d02281344f3b1ca7",
+      "originalBytes": 4192
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard-integrity.ts.gz": {
+      "sha256": "4e319da9c039689d660f8573c9324db08f6304d7f8377d2b465d1f1b3e105fbc",
+      "originalSha256": "2d8b34cab4f6cee62f8d9b13db913ce97c2e590abd191e1f58f5dfd05d39e43a",
+      "originalBytes": 4531
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard-lifecycle.integration.test.ts.gz": {
+      "sha256": "8643e4e95e06c9a3e44cc93cb08e043ecd79193b712c3e6f3b145d87498c4e5e",
+      "originalSha256": "7671d73c51c0611a37fbd9bedc100d1479d8ec3dda002b18df0d006c37509e71",
+      "originalBytes": 26108
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard-source.ts.gz": {
+      "sha256": "4b5cad601f87b2371e073ad4d3bf3a9e4077d4686faaf43363d92b1606870745",
+      "originalSha256": "f10e049e3d59cdc14a076a4f4b594fcc1c8520dd19543c8a619df3839c0a1991",
+      "originalBytes": 7461
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard.controller.ts.gz": {
+      "sha256": "324acfc37d8af013e2bbbb385330a92e1618806f2602886066c2ee274adc71cc",
+      "originalSha256": "94d1f76ba0527959712f159f933a33ede747a58655a1db789e6b0bea3335a33a",
+      "originalBytes": 1496
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard.integration.test.ts.gz": {
+      "sha256": "d0a929b364e6f2a5adcc28ec7df9957f814381dbfa7306b77fd7f8c91f379806",
+      "originalSha256": "25cae684c7b3138fb36683ec592e0e5d0ef6a133eb0624a4ba7835017c3d6b7c",
+      "originalBytes": 15055
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard.service.ts.gz": {
+      "sha256": "22f5e41eee4d0fb52ede1a3f4a3656faebe8211f7af66540ca8c611ddb60aba7",
+      "originalSha256": "17d6d7120a0eda7abae8daf2ef0068439f5b202fac4bea07140ec3d06d064cb0",
+      "originalBytes": 5714
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-access.ts.gz": {
+      "sha256": "54afab85e80b6b201af3143064505016efabcb7bea0a7c7a7f321e0e8da17d90",
+      "originalSha256": "6c15f9d1e5872661b44dec0c1378240812340f12b71b63d41a652d42ba22804c",
+      "originalBytes": 8694
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-content.ts.gz": {
+      "sha256": "1aafd04d1ff169e6f0e7079fab1fc48ff4b51535441cc029051ee975df97e7a6",
+      "originalSha256": "b12cde34085601fde8a21569455a06cc8fa2ab264332d3e1d010b055534a7ebf",
+      "originalBytes": 4541
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-digest.ts.gz": {
+      "sha256": "95797f28e1186c9b0c1900e04e32cd784b0c41b400cdff1d4f5b8ca15ea9c60c",
+      "originalSha256": "addb802487b24c50ebb2a02b543e4384bc364eff6ef9de4012eda363214121f0",
+      "originalBytes": 667
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-narration.service.ts.gz": {
+      "sha256": "2dbdbc9ef5069e99607bc0d3e0dc5624e242d34c41a383e92fa4be83ed1a0e7c",
+      "originalSha256": "6e31c501b233fb91fb8c451ddd19975946367525004f1a3133eb62b23e9f00c1",
+      "originalBytes": 3109
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-projection.ts.gz": {
+      "sha256": "b5ce8623b4bedea41f9ee71aa21a4e9d190d8e5619cd92480653d2b4e2025fc8",
+      "originalSha256": "2f7b9d8ecfb48eafcd556f7d48a6d43add9302a6ccf993ba2d01cae188d61924",
+      "originalBytes": 4140
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-record.ts.gz": {
+      "sha256": "d680ea60cf174d3550090b39d1bb085f67d6c86301e6df47f08458bfdede3616",
+      "originalSha256": "0dae52484ebf9bbaf717b5426515e9faeb1db196a08cdf41d52df829ac48cc4a",
+      "originalBytes": 2237
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-schema.ts.gz": {
+      "sha256": "785d56d425cb25245b9e0e5f833e91619d455eac53c846b65a0f7bc3b841916e",
+      "originalSha256": "4177aed45bb78b9b4d83f749a5b4f5f44f9834e5cc9bceb13f898df715475ca7",
+      "originalBytes": 1254
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-source-access.ts.gz": {
+      "sha256": "3fff00165201407714b83465379029647e6a386692c25055f09112dda920aadb",
+      "originalSha256": "886891e788b8b0dea2d9493125be8ce0dbf6f8fecce7fc7f9d1f59cbd2c6ab2e",
+      "originalBytes": 644
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-access.ts.gz": {
+      "sha256": "34183d46a28f8eb0898581c1f94d16125bc2c79e337add5a38accd85d72cedca",
+      "originalSha256": "0d46b7f101682c644826a8231d754042245047e33415521773619cc2675b52d3",
+      "originalBytes": 4140
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-context.ts.gz": {
+      "sha256": "7265ca42106ff779d649e6a44eed2c0ba8e748dfbc899c1956e4fe3207fdfed2",
+      "originalSha256": "f2587d270727e978f98ab79fb0fab8db43c0549fd1eb4c9137a102025a1aa6ae",
+      "originalBytes": 3503
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-worker.service.ts.gz": {
+      "sha256": "7b6922d7ac206a117b29808e9ff1e9ba644a747cb3aaa5c6103510301257bf73",
+      "originalSha256": "7741c69ce878846a95c1e974fe214628477d3a28027b2d426d5fa0a946c8c72d",
+      "originalBytes": 8953
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-visual.service.ts.gz": {
+      "sha256": "f46f1bd0aa72c12ee223a489ee956d10b5e238a8ba51d2f61e3c675f7d22eaa6",
+      "originalSha256": "bbd82ac6df324acf7a42622b5a9168578f6416597a8a9ece41c809f95b97977a",
+      "originalBytes": 16445
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-worker.service.ts.gz": {
+      "sha256": "78811c0c35a9d3be72ab3ba6fa0390041addf54496a1cf6c9b2fdaa4de0cf3a8",
+      "originalSha256": "a099886ae4edfc877dc556e71da9ac248546c3ecb8065d6eec9f4ca5939760d4",
+      "originalBytes": 10487
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard.controller.ts.gz": {
+      "sha256": "cd20fa3bed2ec5caece1dbf36e50dd80bef6826c95d019b46c12ef12086c499d",
+      "originalSha256": "878a88398d203c36dae9c9d34a34792e6421cd799248f46153a044fec5e8e88d",
+      "originalBytes": 4676
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard.service.ts.gz": {
+      "sha256": "3a1f465f5d68d6742dcbfa5b24091be09e2c8ce832f76609bb3d87f0a7dff9f3",
+      "originalSha256": "f29ed6e237ac36b8350d45abcf87e52f6450fee814f59cf468905e42bbf439f0",
+      "originalBytes": 29935
+    },
+    "data/qa/source-native-postgres-first-inputs/apps/api/src/modules/privacy/privacy-records.ts.gz": {
+      "sha256": "bbcde04754bbfc21b51fac8c028681d83dff392d80130c59d0731d906fd5dbee",
+      "originalSha256": "166ac805c3d0096d29c2fc970f2dd2bcb953c813a473b93377eb8e0f92243353",
+      "originalBytes": 27261
+    },
+    "data/qa/source-native-postgres-first-inputs/manifest.json.gz": {
+      "sha256": "8091552977bd05846757d23acc3ca84488f28c36d685950795eb4a7b926b4734",
+      "originalSha256": "04114c86f0192d789fdf62c02713b03133e05300cc46b1a99d7a8c458b20daaa",
+      "originalBytes": 4623
+    },
+    "data/qa/source-native-postgres-first-inputs/packages/contracts/src/assistant-whiteboard.ts.gz": {
+      "sha256": "9d2d460e937a5536ff5b437a9629c3025d276068b29681a3237eed90bd1dac0d",
+      "originalSha256": "b882ddffbc66a72b4741d34ffef34411dd4d253b636b7eed1074374afe0d0f1b",
+      "originalBytes": 3422
+    },
+    "data/qa/source-native-postgres-first-inputs/packages/contracts/src/topic-whiteboard.ts.gz": {
+      "sha256": "38c9b67ce9c37b7a66ba07e00beb537a069dc6776bd00c454d21e3bb143a6f55",
+      "originalSha256": "818c646503be69d84df78fda9489a04c8da92cd322613c40b6ea03143ae0e4b6",
+      "originalBytes": 5772
+    },
+    "data/qa/source-native-postgres-first-inputs/scripts/operations/backup.cjs.gz": {
+      "sha256": "028f41e280d598b1a7e84add5438183e49f2186be3a68b06760bdd5f06795844",
+      "originalSha256": "ecd7e6a4ed03b9ab82575ed763ba8558acd6462025a0b5fb94715df6cf64d2a8",
+      "originalBytes": 20352
+    },
+    "data/qa/source-native-postgres-first-inputs/scripts/operations/postgres-backup.cjs.gz": {
+      "sha256": "56f65c9676c3bb99ba1cd1d44b85013e02cfc0bafb04d33a25d616c1f68ccf60",
+      "originalSha256": "ccf3c3e3903172722cf6153b39914fcfcc3d9031cdff7ef72194fd8e457c77df",
+      "originalBytes": 9342
+    },
+    "data/qa/source-native-postgres-first-inputs/scripts/operations/sqlite-restore.cjs.gz": {
+      "sha256": "b38e4414286792bcf024f3c5fbdbbc86c5d849ab6233feeb0adb61e0f95e796b",
+      "originalSha256": "c37642d027977ef511673ba4aad29732448412555ab310e9d35484483837fff4",
+      "originalBytes": 8962
+    },
+    "data/qa/source-native-postgres-first-inputs/scripts/operations/whiteboard-source-integrity.cjs.gz": {
+      "sha256": "94b5779fab07fe42bebd4a23bd0dc9092e8d4e87c7af7a0a092e5c5f3b6090df",
+      "originalSha256": "febce2f424a02c62d8ad0c66aa8ac7b44de81b2e7fa8f216f736d67ffd7ad603",
+      "originalBytes": 1198
+    },
+    "data/qa/source-native-postgres-first-inputs/scripts/qa/run-assistant-whiteboard-source-lifecycle.cjs.gz": {
+      "sha256": "48a1c49cf3f32a25e7241ac6fd1b027ccdeb77cd706fc89d32709f3f7007ab8a",
+      "originalSha256": "4c46d5b0fe6d4f100e1c35bc1a725f8ef67643625c0673a073ce3ecb47245cb4",
+      "originalBytes": 3078
+    },
+    "data/qa/source-native-postgres-first.json.gz": {
+      "sha256": "356b35aabd3a248170a55ce16b1fdb90a5718a3e0250b46d3f433ecf25afbea3",
+      "originalSha256": "f05d660220e9e54643ef2e545bc04d586542768e2af6dc618afc4b79c93fd6c1",
+      "originalBytes": 54198
+    },
+    "data/qa/source-native-postgres-first.log.gz": {
+      "sha256": "940ca2bcc3494feb626e1f98f0dcbd06bc73800c38dead76247b9ff727bb1114",
+      "originalSha256": "0ea9cd9006ca9cb62e29b7f7aeb6e514e08ec68804900ba10fb46372cdc0beb8",
+      "originalBytes": 8201
+    },
+    "data/qa/source-native-types-first-inputs/assistant-whiteboard-integrity.ts.gz": {
+      "sha256": "5b457d8d37278c1f7a1cbfaaa771dab2386aedc45cc52eb313214f5e678b8e3d",
+      "originalSha256": "2598fa25cdbfad2a6cbdc110d9012f81768e0fc0a2f09b8276c25c1dd4e40acb",
+      "originalBytes": 4447
+    },
+    "data/qa/source-native-types-first-inputs/domain-database.ts.gz": {
+      "sha256": "5a12614854a614d8fae7002f90fe9d041ffc96d43a2b3d1e74663e51526a2ee1",
+      "originalSha256": "6fe902414ffd2b7cffc9cf61f7625142da3684e302377c660525a8d0eacc924a",
+      "originalBytes": 34798
+    },
+    "data/qa/source-native-types-first.log.gz": {
+      "sha256": "0d20d07c3e6c30532d9cfb03b5111ac316137519e5d974e73a82756765ae6319",
+      "originalSha256": "f67cb4d018a7bf8482afd50e065e1a28de4793ccc3a14b0d9a1cadb4b610267a",
+      "originalBytes": 1598
+    },
+    "data/qa/source-native-types-second.log.gz": {
+      "sha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec",
+      "originalSha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "originalBytes": 68
+    },
+    "data/qa/source-native-types-third.log.gz": {
+      "sha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec",
+      "originalSha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "originalBytes": 68
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/common/auth.guard.ts.gz": {
+      "sha256": "3555dd209e397848cfbeb13b5bd85b244b907513376db756c39a3280feaa663b",
+      "originalSha256": "b9896b079c9909cc0e6be3b7f8caa9bedd7d931e2b90590ce598d441d2dac6ba",
+      "originalBytes": 10497
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/infrastructure/assistant-whiteboard-recovery.integration.test.ts.gz": {
+      "sha256": "cca4dda68c26d94202a5a12d5b17e013e41f5a88bb8f8ad800d88d6b4faaf358",
+      "originalSha256": "9e9ad860a52bff11b38231f53257f9255ccb3fec08da5ada1adfb70f75d07d63",
+      "originalBytes": 19275
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/infrastructure/domain-database.ts.gz": {
+      "sha256": "68f8e6c476665a93a05408e59ce39357a40e6acdd0b9edd7e56bfad11dfa3cba",
+      "originalSha256": "d35ff258bbaa6efdcd87fba5173e4981708084d90c61fa142ec636272fe7e294",
+      "originalBytes": 34907
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/ai/assistant-artifact.service.ts.gz": {
+      "sha256": "b1bffb98685fc52390f0bd7b6f6521b688236f4b1c1630c755cb6f0e3e0cb693",
+      "originalSha256": "682a0fbf71d5b57bd5361b7009a0dd7b40f17ab13808931124b4df7bc5a3773f",
+      "originalBytes": 6660
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard-content.test.ts.gz": {
+      "sha256": "6632919f6d0c53cfcd109aff1ba8a9d85463e50baac5e5a7c02983dd34a38be5",
+      "originalSha256": "f9f9df8ea130b112cdbee7876f446da34ba0dba030038002cdbad1afc4a175fe",
+      "originalBytes": 15534
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard-content.ts.gz": {
+      "sha256": "f40c6ab10021ed184d909457d987844dc3b261bb9967164ae6b9021feeb2f55b",
+      "originalSha256": "fcd60e46605729460c943c84b62a148a3f8114e49ba9a1e9d02281344f3b1ca7",
+      "originalBytes": 4192
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard-integrity.ts.gz": {
+      "sha256": "4e319da9c039689d660f8573c9324db08f6304d7f8377d2b465d1f1b3e105fbc",
+      "originalSha256": "2d8b34cab4f6cee62f8d9b13db913ce97c2e590abd191e1f58f5dfd05d39e43a",
+      "originalBytes": 4531
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard-lifecycle.integration.test.ts.gz": {
+      "sha256": "07a266d5858275c1f04f1e73480e307a805f1db8a4641038052308dd2105d6c9",
+      "originalSha256": "047dbc4734d747a1c39f38d38e157513f30f495ed5ce2f74447dbb6a1d7ee9c7",
+      "originalBytes": 36432
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard-source.ts.gz": {
+      "sha256": "4b5cad601f87b2371e073ad4d3bf3a9e4077d4686faaf43363d92b1606870745",
+      "originalSha256": "f10e049e3d59cdc14a076a4f4b594fcc1c8520dd19543c8a619df3839c0a1991",
+      "originalBytes": 7461
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard.controller.ts.gz": {
+      "sha256": "324acfc37d8af013e2bbbb385330a92e1618806f2602886066c2ee274adc71cc",
+      "originalSha256": "94d1f76ba0527959712f159f933a33ede747a58655a1db789e6b0bea3335a33a",
+      "originalBytes": 1496
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard.integration.test.ts.gz": {
+      "sha256": "d0a929b364e6f2a5adcc28ec7df9957f814381dbfa7306b77fd7f8c91f379806",
+      "originalSha256": "25cae684c7b3138fb36683ec592e0e5d0ef6a133eb0624a4ba7835017c3d6b7c",
+      "originalBytes": 15055
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/assistant-whiteboard.service.ts.gz": {
+      "sha256": "22f5e41eee4d0fb52ede1a3f4a3656faebe8211f7af66540ca8c611ddb60aba7",
+      "originalSha256": "17d6d7120a0eda7abae8daf2ef0068439f5b202fac4bea07140ec3d06d064cb0",
+      "originalBytes": 5714
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-access.ts.gz": {
+      "sha256": "54afab85e80b6b201af3143064505016efabcb7bea0a7c7a7f321e0e8da17d90",
+      "originalSha256": "6c15f9d1e5872661b44dec0c1378240812340f12b71b63d41a652d42ba22804c",
+      "originalBytes": 8694
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-content.ts.gz": {
+      "sha256": "1aafd04d1ff169e6f0e7079fab1fc48ff4b51535441cc029051ee975df97e7a6",
+      "originalSha256": "b12cde34085601fde8a21569455a06cc8fa2ab264332d3e1d010b055534a7ebf",
+      "originalBytes": 4541
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-digest.ts.gz": {
+      "sha256": "95797f28e1186c9b0c1900e04e32cd784b0c41b400cdff1d4f5b8ca15ea9c60c",
+      "originalSha256": "addb802487b24c50ebb2a02b543e4384bc364eff6ef9de4012eda363214121f0",
+      "originalBytes": 667
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-narration.service.ts.gz": {
+      "sha256": "2dbdbc9ef5069e99607bc0d3e0dc5624e242d34c41a383e92fa4be83ed1a0e7c",
+      "originalSha256": "6e31c501b233fb91fb8c451ddd19975946367525004f1a3133eb62b23e9f00c1",
+      "originalBytes": 3109
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-projection.ts.gz": {
+      "sha256": "b5ce8623b4bedea41f9ee71aa21a4e9d190d8e5619cd92480653d2b4e2025fc8",
+      "originalSha256": "2f7b9d8ecfb48eafcd556f7d48a6d43add9302a6ccf993ba2d01cae188d61924",
+      "originalBytes": 4140
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-record.ts.gz": {
+      "sha256": "d680ea60cf174d3550090b39d1bb085f67d6c86301e6df47f08458bfdede3616",
+      "originalSha256": "0dae52484ebf9bbaf717b5426515e9faeb1db196a08cdf41d52df829ac48cc4a",
+      "originalBytes": 2237
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-schema.ts.gz": {
+      "sha256": "785d56d425cb25245b9e0e5f833e91619d455eac53c846b65a0f7bc3b841916e",
+      "originalSha256": "4177aed45bb78b9b4d83f749a5b4f5f44f9834e5cc9bceb13f898df715475ca7",
+      "originalBytes": 1254
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-source-access.ts.gz": {
+      "sha256": "3fff00165201407714b83465379029647e6a386692c25055f09112dda920aadb",
+      "originalSha256": "886891e788b8b0dea2d9493125be8ce0dbf6f8fecce7fc7f9d1f59cbd2c6ab2e",
+      "originalBytes": 644
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-access.ts.gz": {
+      "sha256": "34183d46a28f8eb0898581c1f94d16125bc2c79e337add5a38accd85d72cedca",
+      "originalSha256": "0d46b7f101682c644826a8231d754042245047e33415521773619cc2675b52d3",
+      "originalBytes": 4140
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-context.ts.gz": {
+      "sha256": "7265ca42106ff779d649e6a44eed2c0ba8e748dfbc899c1956e4fe3207fdfed2",
+      "originalSha256": "f2587d270727e978f98ab79fb0fab8db43c0549fd1eb4c9137a102025a1aa6ae",
+      "originalBytes": 3503
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-worker.service.ts.gz": {
+      "sha256": "7b6922d7ac206a117b29808e9ff1e9ba644a747cb3aaa5c6103510301257bf73",
+      "originalSha256": "7741c69ce878846a95c1e974fe214628477d3a28027b2d426d5fa0a946c8c72d",
+      "originalBytes": 8953
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-visual.service.ts.gz": {
+      "sha256": "f46f1bd0aa72c12ee223a489ee956d10b5e238a8ba51d2f61e3c675f7d22eaa6",
+      "originalSha256": "bbd82ac6df324acf7a42622b5a9168578f6416597a8a9ece41c809f95b97977a",
+      "originalBytes": 16445
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard-worker.service.ts.gz": {
+      "sha256": "78811c0c35a9d3be72ab3ba6fa0390041addf54496a1cf6c9b2fdaa4de0cf3a8",
+      "originalSha256": "a099886ae4edfc877dc556e71da9ac248546c3ecb8065d6eec9f4ca5939760d4",
+      "originalBytes": 10487
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard.controller.ts.gz": {
+      "sha256": "cd20fa3bed2ec5caece1dbf36e50dd80bef6826c95d019b46c12ef12086c499d",
+      "originalSha256": "878a88398d203c36dae9c9d34a34792e6421cd799248f46153a044fec5e8e88d",
+      "originalBytes": 4676
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/learning/topic-whiteboard.service.ts.gz": {
+      "sha256": "3a1f465f5d68d6742dcbfa5b24091be09e2c8ce832f76609bb3d87f0a7dff9f3",
+      "originalSha256": "f29ed6e237ac36b8350d45abcf87e52f6450fee814f59cf468905e42bbf439f0",
+      "originalBytes": 29935
+    },
+    "data/qa/source-media-postgres-first-inputs/apps/api/src/modules/privacy/privacy-records.ts.gz": {
+      "sha256": "bbcde04754bbfc21b51fac8c028681d83dff392d80130c59d0731d906fd5dbee",
+      "originalSha256": "166ac805c3d0096d29c2fc970f2dd2bcb953c813a473b93377eb8e0f92243353",
+      "originalBytes": 27261
+    },
+    "data/qa/source-media-postgres-first-inputs/manifest.json.gz": {
+      "sha256": "3be699ab4232150de446552da3a2a14bf9455563a14a0dc17bed0501ea88020a",
+      "originalSha256": "24fbe80f7fa14f800b5729cce5b7477b82c8873439a97c28ea96c39685f423c2",
+      "originalBytes": 4623
+    },
+    "data/qa/source-media-postgres-first-inputs/packages/contracts/src/assistant-whiteboard.ts.gz": {
+      "sha256": "9d2d460e937a5536ff5b437a9629c3025d276068b29681a3237eed90bd1dac0d",
+      "originalSha256": "b882ddffbc66a72b4741d34ffef34411dd4d253b636b7eed1074374afe0d0f1b",
+      "originalBytes": 3422
+    },
+    "data/qa/source-media-postgres-first-inputs/packages/contracts/src/topic-whiteboard.ts.gz": {
+      "sha256": "38c9b67ce9c37b7a66ba07e00beb537a069dc6776bd00c454d21e3bb143a6f55",
+      "originalSha256": "818c646503be69d84df78fda9489a04c8da92cd322613c40b6ea03143ae0e4b6",
+      "originalBytes": 5772
+    },
+    "data/qa/source-media-postgres-first-inputs/scripts/operations/backup.cjs.gz": {
+      "sha256": "028f41e280d598b1a7e84add5438183e49f2186be3a68b06760bdd5f06795844",
+      "originalSha256": "ecd7e6a4ed03b9ab82575ed763ba8558acd6462025a0b5fb94715df6cf64d2a8",
+      "originalBytes": 20352
+    },
+    "data/qa/source-media-postgres-first-inputs/scripts/operations/postgres-backup.cjs.gz": {
+      "sha256": "56f65c9676c3bb99ba1cd1d44b85013e02cfc0bafb04d33a25d616c1f68ccf60",
+      "originalSha256": "ccf3c3e3903172722cf6153b39914fcfcc3d9031cdff7ef72194fd8e457c77df",
+      "originalBytes": 9342
+    },
+    "data/qa/source-media-postgres-first-inputs/scripts/operations/sqlite-restore.cjs.gz": {
+      "sha256": "b38e4414286792bcf024f3c5fbdbbc86c5d849ab6233feeb0adb61e0f95e796b",
+      "originalSha256": "c37642d027977ef511673ba4aad29732448412555ab310e9d35484483837fff4",
+      "originalBytes": 8962
+    },
+    "data/qa/source-media-postgres-first-inputs/scripts/operations/whiteboard-source-integrity.cjs.gz": {
+      "sha256": "94b5779fab07fe42bebd4a23bd0dc9092e8d4e87c7af7a0a092e5c5f3b6090df",
+      "originalSha256": "febce2f424a02c62d8ad0c66aa8ac7b44de81b2e7fa8f216f736d67ffd7ad603",
+      "originalBytes": 1198
+    },
+    "data/qa/source-media-postgres-first-inputs/scripts/qa/run-assistant-whiteboard-source-lifecycle.cjs.gz": {
+      "sha256": "48a1c49cf3f32a25e7241ac6fd1b027ccdeb77cd706fc89d32709f3f7007ab8a",
+      "originalSha256": "4c46d5b0fe6d4f100e1c35bc1a725f8ef67643625c0673a073ce3ecb47245cb4",
+      "originalBytes": 3078
+    },
+    "data/qa/source-media-postgres-first.json.gz": {
+      "sha256": "4cf5f1302315724de275bc404a34e854790e2b6d4a1ee7db6020fada170da2b5",
+      "originalSha256": "af879400d577ec090441c602aca46968957a18379ba557f121adbeaabe6ae802",
+      "originalBytes": 58645
+    },
+    "data/qa/source-media-postgres-first.log.gz": {
+      "sha256": "448e2ade38a63ea45f393a5594352f7f0de9e000b2a69ebda57feef06e9ff75c",
+      "originalSha256": "6c513a37108fdfb6b466f800322305b5debc5dc6bbf378edb3876dee6991fc44",
+      "originalBytes": 9223
+    },
+    "data/qa/source-media-sqlite-first.json.gz": {
+      "sha256": "5c0e4518c899c33849deef8e0e04cd09115c78edeb1792a08f521223385542e0",
+      "originalSha256": "03f29d0489d68226cca547786bf316a07f66c8e8e9d100306ee352e7b8d9c500",
+      "originalBytes": 11829
+    },
+    "data/qa/source-media-sqlite-first.log.gz": {
+      "sha256": "9d07929446f0b14865bb3166e84f0b2924128adf63ef1399923ed9c3bec621f9",
+      "originalSha256": "65bffc822ef039c7124e343c5d29a0dba9aeaeff19e92000253425d9dcedd47d",
+      "originalBytes": 3532
+    },
+    "data/qa/source-media-types-first-input.ts.gz": {
+      "sha256": "9f93337f2789d5cc2f98c174802931e793c8002d592bdd28e22ab30b19d856e5",
+      "originalSha256": "1c97d501b445f648f29b015ca45e67e33102f758016dbf7292ff2743b8c472e7",
+      "originalBytes": 36330
+    },
+    "data/qa/source-media-types-first.log.gz": {
+      "sha256": "ef292c30f72fe0710ce55617f795a2dac1e98072a3a6a1d84dbf6c36c380fb43",
+      "originalSha256": "ce6689f77ed3efc7dc9b18dcf93c93d1ea512c6e325d652dca7797ee59630f74",
+      "originalBytes": 1697
+    },
+    "data/qa/source-media-types-second.log.gz": {
+      "sha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec",
+      "originalSha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "originalBytes": 68
+    },
+    "final-inputs/.github/workflows/verify.yml.gz": {
+      "sha256": "155f31039d39292148b21fa27691c7d3888d00ac546033d658622145b2c0023c",
+      "originalSha256": "fd5e349a9c2b66f6559f0bdba13a66a17ff390af1b6616694c9026b48b8becf4",
+      "originalBytes": 33163
+    },
+    "final-inputs/apps/api/src/common/auth.guard.ts.gz": {
+      "sha256": "3555dd209e397848cfbeb13b5bd85b244b907513376db756c39a3280feaa663b",
+      "originalSha256": "b9896b079c9909cc0e6be3b7f8caa9bedd7d931e2b90590ce598d441d2dac6ba",
+      "originalBytes": 10497
+    },
+    "final-inputs/apps/api/src/infrastructure/assistant-whiteboard-recovery.integration.test.ts.gz": {
+      "sha256": "cca4dda68c26d94202a5a12d5b17e013e41f5a88bb8f8ad800d88d6b4faaf358",
+      "originalSha256": "9e9ad860a52bff11b38231f53257f9255ccb3fec08da5ada1adfb70f75d07d63",
+      "originalBytes": 19275
+    },
+    "final-inputs/apps/api/src/infrastructure/domain-database.ts.gz": {
+      "sha256": "68f8e6c476665a93a05408e59ce39357a40e6acdd0b9edd7e56bfad11dfa3cba",
+      "originalSha256": "d35ff258bbaa6efdcd87fba5173e4981708084d90c61fa142ec636272fe7e294",
+      "originalBytes": 34907
+    },
+    "final-inputs/apps/api/src/modules/ai/assistant-artifact.service.ts.gz": {
+      "sha256": "b1bffb98685fc52390f0bd7b6f6521b688236f4b1c1630c755cb6f0e3e0cb693",
+      "originalSha256": "682a0fbf71d5b57bd5361b7009a0dd7b40f17ab13808931124b4df7bc5a3773f",
+      "originalBytes": 6660
+    },
+    "final-inputs/apps/api/src/modules/learning/assistant-whiteboard-content.test.ts.gz": {
+      "sha256": "6632919f6d0c53cfcd109aff1ba8a9d85463e50baac5e5a7c02983dd34a38be5",
+      "originalSha256": "f9f9df8ea130b112cdbee7876f446da34ba0dba030038002cdbad1afc4a175fe",
+      "originalBytes": 15534
+    },
+    "final-inputs/apps/api/src/modules/learning/assistant-whiteboard-content.ts.gz": {
+      "sha256": "f40c6ab10021ed184d909457d987844dc3b261bb9967164ae6b9021feeb2f55b",
+      "originalSha256": "fcd60e46605729460c943c84b62a148a3f8114e49ba9a1e9d02281344f3b1ca7",
+      "originalBytes": 4192
+    },
+    "final-inputs/apps/api/src/modules/learning/assistant-whiteboard-integrity.ts.gz": {
+      "sha256": "4e319da9c039689d660f8573c9324db08f6304d7f8377d2b465d1f1b3e105fbc",
+      "originalSha256": "2d8b34cab4f6cee62f8d9b13db913ce97c2e590abd191e1f58f5dfd05d39e43a",
+      "originalBytes": 4531
+    },
+    "final-inputs/apps/api/src/modules/learning/assistant-whiteboard-lifecycle.integration.test.ts.gz": {
+      "sha256": "07a266d5858275c1f04f1e73480e307a805f1db8a4641038052308dd2105d6c9",
+      "originalSha256": "047dbc4734d747a1c39f38d38e157513f30f495ed5ce2f74447dbb6a1d7ee9c7",
+      "originalBytes": 36432
+    },
+    "final-inputs/apps/api/src/modules/learning/assistant-whiteboard-source.ts.gz": {
+      "sha256": "4b5cad601f87b2371e073ad4d3bf3a9e4077d4686faaf43363d92b1606870745",
+      "originalSha256": "f10e049e3d59cdc14a076a4f4b594fcc1c8520dd19543c8a619df3839c0a1991",
+      "originalBytes": 7461
+    },
+    "final-inputs/apps/api/src/modules/learning/assistant-whiteboard.controller.ts.gz": {
+      "sha256": "324acfc37d8af013e2bbbb385330a92e1618806f2602886066c2ee274adc71cc",
+      "originalSha256": "94d1f76ba0527959712f159f933a33ede747a58655a1db789e6b0bea3335a33a",
+      "originalBytes": 1496
+    },
+    "final-inputs/apps/api/src/modules/learning/assistant-whiteboard.integration.test.ts.gz": {
+      "sha256": "d0a929b364e6f2a5adcc28ec7df9957f814381dbfa7306b77fd7f8c91f379806",
+      "originalSha256": "25cae684c7b3138fb36683ec592e0e5d0ef6a133eb0624a4ba7835017c3d6b7c",
+      "originalBytes": 15055
+    },
+    "final-inputs/apps/api/src/modules/learning/assistant-whiteboard.service.ts.gz": {
+      "sha256": "22f5e41eee4d0fb52ede1a3f4a3656faebe8211f7af66540ca8c611ddb60aba7",
+      "originalSha256": "17d6d7120a0eda7abae8daf2ef0068439f5b202fac4bea07140ec3d06d064cb0",
+      "originalBytes": 5714
+    },
+    "final-inputs/apps/api/src/modules/learning/topic-whiteboard-access.ts.gz": {
+      "sha256": "54afab85e80b6b201af3143064505016efabcb7bea0a7c7a7f321e0e8da17d90",
+      "originalSha256": "6c15f9d1e5872661b44dec0c1378240812340f12b71b63d41a652d42ba22804c",
+      "originalBytes": 8694
+    },
+    "final-inputs/apps/api/src/modules/learning/topic-whiteboard-content.ts.gz": {
+      "sha256": "1aafd04d1ff169e6f0e7079fab1fc48ff4b51535441cc029051ee975df97e7a6",
+      "originalSha256": "b12cde34085601fde8a21569455a06cc8fa2ab264332d3e1d010b055534a7ebf",
+      "originalBytes": 4541
+    },
+    "final-inputs/apps/api/src/modules/learning/topic-whiteboard-digest.ts.gz": {
+      "sha256": "95797f28e1186c9b0c1900e04e32cd784b0c41b400cdff1d4f5b8ca15ea9c60c",
+      "originalSha256": "addb802487b24c50ebb2a02b543e4384bc364eff6ef9de4012eda363214121f0",
+      "originalBytes": 667
+    },
+    "final-inputs/apps/api/src/modules/learning/topic-whiteboard-narration.service.ts.gz": {
+      "sha256": "2dbdbc9ef5069e99607bc0d3e0dc5624e242d34c41a383e92fa4be83ed1a0e7c",
+      "originalSha256": "6e31c501b233fb91fb8c451ddd19975946367525004f1a3133eb62b23e9f00c1",
+      "originalBytes": 3109
+    },
+    "final-inputs/apps/api/src/modules/learning/topic-whiteboard-projection.ts.gz": {
+      "sha256": "b5ce8623b4bedea41f9ee71aa21a4e9d190d8e5619cd92480653d2b4e2025fc8",
+      "originalSha256": "2f7b9d8ecfb48eafcd556f7d48a6d43add9302a6ccf993ba2d01cae188d61924",
+      "originalBytes": 4140
+    },
+    "final-inputs/apps/api/src/modules/learning/topic-whiteboard-record.ts.gz": {
+      "sha256": "d680ea60cf174d3550090b39d1bb085f67d6c86301e6df47f08458bfdede3616",
+      "originalSha256": "0dae52484ebf9bbaf717b5426515e9faeb1db196a08cdf41d52df829ac48cc4a",
+      "originalBytes": 2237
+    },
+    "final-inputs/apps/api/src/modules/learning/topic-whiteboard-schema.ts.gz": {
+      "sha256": "785d56d425cb25245b9e0e5f833e91619d455eac53c846b65a0f7bc3b841916e",
+      "originalSha256": "4177aed45bb78b9b4d83f749a5b4f5f44f9834e5cc9bceb13f898df715475ca7",
+      "originalBytes": 1254
+    },
+    "final-inputs/apps/api/src/modules/learning/topic-whiteboard-source-access.ts.gz": {
+      "sha256": "3fff00165201407714b83465379029647e6a386692c25055f09112dda920aadb",
+      "originalSha256": "886891e788b8b0dea2d9493125be8ce0dbf6f8fecce7fc7f9d1f59cbd2c6ab2e",
+      "originalBytes": 644
+    },
+    "final-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-access.ts.gz": {
+      "sha256": "34183d46a28f8eb0898581c1f94d16125bc2c79e337add5a38accd85d72cedca",
+      "originalSha256": "0d46b7f101682c644826a8231d754042245047e33415521773619cc2675b52d3",
+      "originalBytes": 4140
+    },
+    "final-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-context.ts.gz": {
+      "sha256": "7265ca42106ff779d649e6a44eed2c0ba8e748dfbc899c1956e4fe3207fdfed2",
+      "originalSha256": "f2587d270727e978f98ab79fb0fab8db43c0549fd1eb4c9137a102025a1aa6ae",
+      "originalBytes": 3503
+    },
+    "final-inputs/apps/api/src/modules/learning/topic-whiteboard-visual-worker.service.ts.gz": {
+      "sha256": "7b6922d7ac206a117b29808e9ff1e9ba644a747cb3aaa5c6103510301257bf73",
+      "originalSha256": "7741c69ce878846a95c1e974fe214628477d3a28027b2d426d5fa0a946c8c72d",
+      "originalBytes": 8953
+    },
+    "final-inputs/apps/api/src/modules/learning/topic-whiteboard-visual.service.ts.gz": {
+      "sha256": "f46f1bd0aa72c12ee223a489ee956d10b5e238a8ba51d2f61e3c675f7d22eaa6",
+      "originalSha256": "bbd82ac6df324acf7a42622b5a9168578f6416597a8a9ece41c809f95b97977a",
+      "originalBytes": 16445
+    },
+    "final-inputs/apps/api/src/modules/learning/topic-whiteboard-worker.service.ts.gz": {
+      "sha256": "78811c0c35a9d3be72ab3ba6fa0390041addf54496a1cf6c9b2fdaa4de0cf3a8",
+      "originalSha256": "a099886ae4edfc877dc556e71da9ac248546c3ecb8065d6eec9f4ca5939760d4",
+      "originalBytes": 10487
+    },
+    "final-inputs/apps/api/src/modules/learning/topic-whiteboard.controller.ts.gz": {
+      "sha256": "cd20fa3bed2ec5caece1dbf36e50dd80bef6826c95d019b46c12ef12086c499d",
+      "originalSha256": "878a88398d203c36dae9c9d34a34792e6421cd799248f46153a044fec5e8e88d",
+      "originalBytes": 4676
+    },
+    "final-inputs/apps/api/src/modules/learning/topic-whiteboard.service.ts.gz": {
+      "sha256": "3a1f465f5d68d6742dcbfa5b24091be09e2c8ce832f76609bb3d87f0a7dff9f3",
+      "originalSha256": "f29ed6e237ac36b8350d45abcf87e52f6450fee814f59cf468905e42bbf439f0",
+      "originalBytes": 29935
+    },
+    "final-inputs/apps/api/src/modules/privacy/privacy-records.ts.gz": {
+      "sha256": "bbcde04754bbfc21b51fac8c028681d83dff392d80130c59d0731d906fd5dbee",
+      "originalSha256": "166ac805c3d0096d29c2fc970f2dd2bcb953c813a473b93377eb8e0f92243353",
+      "originalBytes": 27261
+    },
+    "final-inputs/packages/contracts/src/assistant-whiteboard.ts.gz": {
+      "sha256": "9d2d460e937a5536ff5b437a9629c3025d276068b29681a3237eed90bd1dac0d",
+      "originalSha256": "b882ddffbc66a72b4741d34ffef34411dd4d253b636b7eed1074374afe0d0f1b",
+      "originalBytes": 3422
+    },
+    "final-inputs/packages/contracts/src/topic-whiteboard.ts.gz": {
+      "sha256": "38c9b67ce9c37b7a66ba07e00beb537a069dc6776bd00c454d21e3bb143a6f55",
+      "originalSha256": "818c646503be69d84df78fda9489a04c8da92cd322613c40b6ea03143ae0e4b6",
+      "originalBytes": 5772
+    },
+    "final-inputs/scripts/operations/backup.cjs.gz": {
+      "sha256": "028f41e280d598b1a7e84add5438183e49f2186be3a68b06760bdd5f06795844",
+      "originalSha256": "ecd7e6a4ed03b9ab82575ed763ba8558acd6462025a0b5fb94715df6cf64d2a8",
+      "originalBytes": 20352
+    },
+    "final-inputs/scripts/operations/postgres-backup.cjs.gz": {
+      "sha256": "56f65c9676c3bb99ba1cd1d44b85013e02cfc0bafb04d33a25d616c1f68ccf60",
+      "originalSha256": "ccf3c3e3903172722cf6153b39914fcfcc3d9031cdff7ef72194fd8e457c77df",
+      "originalBytes": 9342
+    },
+    "final-inputs/scripts/operations/sqlite-restore.cjs.gz": {
+      "sha256": "b38e4414286792bcf024f3c5fbdbbc86c5d849ab6233feeb0adb61e0f95e796b",
+      "originalSha256": "c37642d027977ef511673ba4aad29732448412555ab310e9d35484483837fff4",
+      "originalBytes": 8962
+    },
+    "final-inputs/scripts/operations/whiteboard-source-integrity.cjs.gz": {
+      "sha256": "94b5779fab07fe42bebd4a23bd0dc9092e8d4e87c7af7a0a092e5c5f3b6090df",
+      "originalSha256": "febce2f424a02c62d8ad0c66aa8ac7b44de81b2e7fa8f216f736d67ffd7ad603",
+      "originalBytes": 1198
+    },
+    "final-inputs/scripts/qa/run-assistant-whiteboard-source-lifecycle.cjs.gz": {
+      "sha256": "48a1c49cf3f32a25e7241ac6fd1b027ccdeb77cd706fc89d32709f3f7007ab8a",
+      "originalSha256": "4c46d5b0fe6d4f100e1c35bc1a725f8ef67643625c0673a073ce3ecb47245cb4",
+      "originalBytes": 3078
+    },
+    "final-tests/modules/learning/assistant-whiteboard-lifecycle.integration.test.ts.gz": {
+      "sha256": "07a266d5858275c1f04f1e73480e307a805f1db8a4641038052308dd2105d6c9",
+      "originalSha256": "047dbc4734d747a1c39f38d38e157513f30f495ed5ce2f74447dbb6a1d7ee9c7",
+      "originalBytes": 36432
+    },
+    "final-tests/modules/learning/assistant-whiteboard-content.test.ts.gz": {
+      "sha256": "6632919f6d0c53cfcd109aff1ba8a9d85463e50baac5e5a7c02983dd34a38be5",
+      "originalSha256": "f9f9df8ea130b112cdbee7876f446da34ba0dba030038002cdbad1afc4a175fe",
+      "originalBytes": 15534
+    },
+    "final-tests/modules/learning/assistant-whiteboard.integration.test.ts.gz": {
+      "sha256": "d0a929b364e6f2a5adcc28ec7df9957f814381dbfa7306b77fd7f8c91f379806",
+      "originalSha256": "25cae684c7b3138fb36683ec592e0e5d0ef6a133eb0624a4ba7835017c3d6b7c",
+      "originalBytes": 15055
+    },
+    "final-tests/modules/learning/topic-whiteboard-content.test.ts.gz": {
+      "sha256": "312b46afe323ef88f2aefad22fb86c4457246f046be416211486bec9b84ce43a",
+      "originalSha256": "ffe3fc7e3f8be102028bf5396a94b509c809014a7823d8e97998506a17460fc4",
+      "originalBytes": 5220
+    },
+    "final-tests/modules/learning/topic-whiteboard-access.test.ts.gz": {
+      "sha256": "e5d9a4fc47a673def8cc6869693f37d2d05aded73b1422034bbe86c367b981c9",
+      "originalSha256": "c2296c0b9f2058dc4f21146a53f122b7eafe6db1d46ccadf8b315101eda292ef",
+      "originalBytes": 8353
+    },
+    "final-tests/modules/learning/topic-whiteboard.integration.test.ts.gz": {
+      "sha256": "e9e98ec12978aea4733d31b0e02885122b9bc3c8ba6a9bdb27b206b811537c16",
+      "originalSha256": "f7b7ceac7b967d697c11048f64a041e070923089da33caedae29a27316cdf348",
+      "originalBytes": 26648
+    },
+    "final-tests/modules/learning/topic-whiteboard-visual.integration.test.ts.gz": {
+      "sha256": "d760ce0f8f930d9038974a7d85d1674fdaf7782d79a6d98e5a9954f76c9e47e9",
+      "originalSha256": "2754499b129f051a4fb611e959d6bfae084a26e1bee6fa8c7b3c087c5752e612",
+      "originalBytes": 35604
+    },
+    "final-tests/modules/learning/topic-whiteboard-visual-context.test.ts.gz": {
+      "sha256": "669cd1ca909e44ec6426349407a99b106f451ab66f4bff28050ee76635ef1abd",
+      "originalSha256": "ddab1dc80949ea0db7de2284156bfcdcdf1d7eb5b02d24de149f3a8e6f5e1d2d",
+      "originalBytes": 4576
+    },
+    "final-tests/modules/learning/topic-whiteboard-visual-files.test.ts.gz": {
+      "sha256": "bf7fe15b58ee60456f58c6a71ae4b4b645dd66089f4c3dc23dcdb78548a889de",
+      "originalSha256": "896e2e51b7b96af9d0381930ef0739f2b3358684f867c080e7cd7278d3f7c98d",
+      "originalBytes": 6657
+    },
+    "final-tests/infrastructure/topic-whiteboard-storage.integration.test.ts.gz": {
+      "sha256": "5154e1c684c96044e46e86f5d259a95a3b2268c2c4848fe371b94a1868d21e1c",
+      "originalSha256": "3100ab24c13815bf9fab7a34aa3688bd5e06831e0a1275e8026e90db03a75584",
+      "originalBytes": 7750
+    },
+    "final-tests/infrastructure/topic-whiteboard-visual-storage.integration.test.ts.gz": {
+      "sha256": "ce1f5d06595a62c4faba878e7fc85f4d8d9e15aab75a4934092260172d65d3f7",
+      "originalSha256": "83af4253b1f7e35bbf4329d7269dd45c4cc5c9452717a5fc307f76c482a9ac95",
+      "originalBytes": 4681
+    },
+    "final-tests/infrastructure/topic-whiteboard-postgres.integration.test.ts.gz": {
+      "sha256": "fe6c7293f21db7687395fe6393bc275f2bed0563f9c47706bb5dd193ea07e0f4",
+      "originalSha256": "a01a8588529a263368463664516f9b152ac37ae0e261016e747963418ff74f9e",
+      "originalBytes": 4343
+    },
+    "final-tests/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts.gz": {
+      "sha256": "57b2890b32314213e419bb35b42fb1d03b496e7fd3daa9c56690e17e5d2bba26",
+      "originalSha256": "77d8fe8d2820e389fad6f20a4957e95cbc6bc9e82bea3461843233cdff905a83",
+      "originalBytes": 3114
+    },
+    "final-tests/infrastructure/topic-whiteboard-visual-recovery.integration.test.ts.gz": {
+      "sha256": "4ddfed946c55ddde3024c7baa8cffdf8ce0aa3aeb49e0a458350a7194ceb26bd",
+      "originalSha256": "1580335f0ca7c93bc5d32bf49355feb148192f6bc73e462d59afb305e75360d2",
+      "originalBytes": 16147
+    },
+    "final-tests/infrastructure/assistant-whiteboard-reader.integration.test.ts.gz": {
+      "sha256": "2e287d7514fc2c206e4b12a89aa49a4b7e22fa50cf74874ded0576fa9bebfc14",
+      "originalSha256": "d32a566b0ecc11bc9385704219d59dd7c4c081978c26ab64dd44f84f4e2d3fe4",
+      "originalBytes": 11207
+    },
+    "final-tests/infrastructure/assistant-note-recovery.integration.test.ts.gz": {
+      "sha256": "c07b205a91120c30f73276d1a29b215fda77a142a2484dc4314fe79cbf272a09",
+      "originalSha256": "4ec466cf817a1b35c06a0b8758824b1a67eea8915bd1bb386006470176f55623",
+      "originalBytes": 12740
+    },
+    "final-tests/infrastructure/assistant-whiteboard-recovery.integration.test.ts.gz": {
+      "sha256": "cca4dda68c26d94202a5a12d5b17e013e41f5a88bb8f8ad800d88d6b4faaf358",
+      "originalSha256": "9e9ad860a52bff11b38231f53257f9255ccb3fec08da5ada1adfb70f75d07d63",
+      "originalBytes": 19275
+    },
+    "archive-script.py.gz": {
+      "sha256": "467f0618814dc025b75693557b3490d7130a0d0d03a6c8a9482850797d8c5ec7",
+      "originalSha256": "44abacee544340607262ddf3afc2ff2a91914951cefeb4878b0f256c49b58e57",
+      "originalBytes": 5331
+    },
+    "post-checks/data/qa/source-lifecycle-web-types-second.log.gz": {
+      "sha256": "280feefa43a1a2d6b5ebb62618a6d36d932de3e009b707d14976e55a78dd4326",
+      "originalSha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc",
+      "originalBytes": 68
+    },
+    "post-checks/data/qa/source-lifecycle-doc-links-first.log.gz": {
+      "sha256": "db78df6235e26572fc5df4de4db6bcebed7b8bd15e573c8346dd5c901a63c296",
+      "originalSha256": "98c2c0944d958b52792e752fc65a851f007abba66cd4300632a5fd15623dc3ac",
+      "originalBytes": 43
+    },
+    "post-checks/apps/api/src/modules/learning/topic-whiteboard-content.ts.gz": {
+      "sha256": "59c5c33d8db03441a90f4504098eaa53f2ac3936729e373b6733d9118252297d",
+      "originalSha256": "391f4f1b92595adfdb6785e4eed428ee8768fb368a2e916b6efed8b32e014ba2",
+      "originalBytes": 4539
+    }
+  },
+  "postGateWhitespaceRepair": {
+    "path": "apps/api/src/modules/learning/topic-whiteboard-content.ts",
+    "beforeSha256": "b12cde34085601fde8a21569455a06cc8fa2ab264332d3e1d010b055534a7ebf",
+    "afterSha256": "391f4f1b92595adfdb6785e4eed428ee8768fb368a2e916b6efed8b32e014ba2",
+    "onlyTrailingNewlineChanged": true
+  },
+  "additionalChecks": {
+    "webTypes": "passed",
+    "documentationLinks": {
+      "checked": 4091,
+      "missing": []
+    },
+    "diffWhitespace": "passed after removing one extra trailing blank line"
+  }
+}

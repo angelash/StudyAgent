@@ -14,10 +14,8 @@ export class TopicWhiteboardNarrationService {
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
     private readonly boards: TopicWhiteboardService, private readonly speech: SpeechService) {}
   private context(user: InMemoryUserAccount, id: string, session: InMemoryAuthSession) {
-    const row = this.boards.publishedRecord(user, id, session);
-    const audience = row.studentId === null ? { kind: 'adult' as const } :
-      { kind: 'student' as const, studentId: row.studentId, subject: row.subject!, atomIds: [] };
-    const authority = captureTopicWhiteboardAuthorization(this.store, this.students, user, audience, session);
+    const row = this.boards.publishedRecord(user, id, session, true);
+    const authority = this.boards.publishedAuthorization(user, id, session, true);
     return { board: structuredClone(row), definition: topicWhiteboardDigest(row), authority: topicWhiteboardDigest(authority) };
   }
   async synthesize(user: InMemoryUserAccount, id: string, sceneId: string, input: unknown, session: InMemoryAuthSession, signal: AbortSignal) {

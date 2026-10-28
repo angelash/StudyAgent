@@ -18,4 +18,5 @@ export type TopicWhiteboardDraftRecord = {
 };
 export type TopicWhiteboardFigureSnapshot = { sceneId: string; visualId: string; original: ClassroomVisualFile; image: ClassroomVisualFile;
   width: number; height: number; alt: string; caption: string };
-export type TopicWhiteboardRecord = StudioTopicWhiteboard & { ownerUserId: string; sourceDraftId: string; figureSnapshots?: TopicWhiteboardFigureSnapshot[] };
+export type TopicWhiteboardRecord = StudioTopicWhiteboard & { ownerUserId: string; sourceDraftId: string; figureSnapshots?: TopicWhiteboardFigureSnapshot[];
+  privateToCreator?: true; sourceProtocol?: 'assistant-topic-whiteboard-v1' };

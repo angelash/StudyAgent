@@ -14,10 +14,23 @@ export class AssistantArtifactService {
   constructor(private readonly store: InMemoryStoreService, private readonly ai: AiService, private readonly turns: AssistantTurnService) {}
 
   preflight(user: InMemoryUserAccount, sessionId: string, input: unknown): AssistantArtifactPreflight {
+    return this.build(user, sessionId, input, true);
+  }
+
+  /** Internal source reads retain assessment protection on all public preflight/write paths. */
+  readSource(user: InMemoryUserAccount, sessionId: string, input: unknown): AssistantArtifactPreflight {
+    return this.build(user, sessionId, input, false);
+  }
+  assertReadableSession(user: InMemoryUserAccount, sessionId: string) {
+    const session = this.ai.assertSessionOwner(sessionId, user, false);
+    this.ai.assistantCourseSummary(session, false); this.ai.assistantLectureSummary(session, false); return session;
+  }
+
+  private build(user: InMemoryUserAccount, sessionId: string, input: unknown, writing: boolean): AssistantArtifactPreflight {
     const command = validate(assistantArtifactPreflightSchema, input);
     // A readable historical scope does not grant another guardian access to this private conversation.
     const session = this.ai.assertSessionOwner(sessionId, user, false);
-    if (user.role === 'student') assertCourseAssessmentAvailable(this.store, session.studentId, 'student');
+    if (writing && user.role === 'student') assertCourseAssessmentAvailable(this.store, session.studentId, 'student');
     const rows = this.store.select('assistantMessages', { sessionId });
     if (rows.length > 10000) throw new BadRequestException('原会话超过当前检索预算，请保留原选择；没有截断消息');
     const byId = new Map(rows.map((message, sequence) => [message.id, { message, sequence }]));

@@ -89,7 +89,8 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   const sourceCourseIds=ids(result,'sourceCourses');add(result,store,'sourceCourseStages',row=>sourceCourseIds.has(row.courseId));
   add(result,store,'sourceCourseChecks',row=>sourceCourseIds.has(row.courseId)||row.ownerUserId===actorId&&(!row.studentId||!['published','superseded','withdrawn'].includes(row.status)));
   add(result,store,'studioTopicWhiteboardDrafts',row=>row.ownerUserId===actorId);
-  add(result,store,'studioTopicWhiteboards',row=>row.ownerUserId===actorId&&!row.studentId);
+  add(result,store,'studioTopicWhiteboards',row=>row.ownerUserId===actorId&&(!row.studentId||row.privateToCreator||row.sourceProtocol==='assistant-topic-whiteboard-v1'
+    ||rows(store,'studioTopicWhiteboardDrafts').some(draft=>draft.id===row.sourceDraftId&&draft.prepared?.version==='assistant-topic-whiteboard-v1')));
   const sourceCheckIds=ids(result,'sourceCourseChecks');add(result,store,'sourceCourseCheckPublications',row=>sourceCourseIds.has(row.courseId)||sourceCheckIds.has(row.checkId)||row.ownerUserId===actorId&&!row.studentId);
   add(result, store, 'studioMaterialUploads', row => row.ownerUserId === actorId && (!row.studentId || row.status !== 'completed'));
   add(result,store,'studioOriginalRepairs',row=>row.ownerUserId===actorId);
@@ -204,9 +205,11 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
       .map(({prepared,authorization:_auth,commands:_commands,taskId:_task,requestHash:_hash,...row})=>{
         const withoutFigures=(content:Row|null)=>content&&Array.isArray(content.scenes)?{...content,scenes:content.scenes.map(({figure:_figure,...scene}:Row)=>scene)}:content;
         return {...row,content:withoutFigures(row.content),originalContent:withoutFigures(row.originalContent),
-          ...(row.history?{history:row.history.map((item:Row)=>({...item,content:withoutFigures(item.content)}))}:{}),prompt:prepared.input.prompt,objective:prepared.input.objective,modelId:prepared.modelId};
+          ...(row.history?{history:row.history.map((item:Row)=>({...item,content:withoutFigures(item.content)}))}:{}),prompt:prepared.input.prompt,objective:prepared.input.objective,modelId:prepared.modelId,
+          ...(prepared.version==='assistant-topic-whiteboard-v1'?{source:{protocol:prepared.version,origin:prepared.source.origin,sourceFingerprint:prepared.source.sourceFingerprint}}:{})};
       });
-    else if(name==='studioTopicWhiteboards')result[name]=records.map(row=>publicTopicWhiteboard(row as any,actorId));
+    else if(name==='studioTopicWhiteboards')result[name]=records.filter(row=>row.ownerUserId===actorId||!(row.privateToCreator||row.sourceProtocol==='assistant-topic-whiteboard-v1'
+      ||(selected.studioTopicWhiteboardDrafts??[]).some(draft=>draft.id===row.sourceDraftId&&draft.prepared?.version==='assistant-topic-whiteboard-v1'))).map(row=>publicTopicWhiteboard(row as any,actorId));
     else if (name === 'aiInsights') result[name] = records.filter(row => row.sourceType !== 'assistant' || allowedAssistants.has(row.sourceId) || (selected.diagnosticPlans ?? []).some(plan => plan.id === row.sourceId));
     else result[name] = records;
   }
@@ -233,7 +236,7 @@ export function anonymizeSharedAttribution(store: InMemoryStoreService, studentI
       if (name === 'studentMedia' && row.ownerUserId === actorId) anonymous.ownerUserId = `deleted-account:${row.id}`;
       if (name === 'sourceCourseChecks' && row.ownerUserId === actorId) anonymous.ownerUserId = `deleted-account:${row.id}`;
       if (name === 'sourceCourseChecks' && row.authorization?.guardianId === actorId) anonymous.authorization.guardianId='deleted-account';
-      if (name === 'studioTopicWhiteboards' && row.ownerUserId === actorId) anonymous.ownerUserId=`deleted-account:${row.id}`;
+      if (name === 'studioTopicWhiteboards' && row.ownerUserId === actorId && !row.privateToCreator && row.sourceProtocol!=='assistant-topic-whiteboard-v1') anonymous.ownerUserId=`deleted-account:${row.id}`;
       if (['studioTopicWhiteboardDrafts','studioTopicWhiteboardVisuals'].includes(name) && row.authorization?.guardianId === actorId) anonymous.authorization.guardianId='deleted-account';
       if(['projectAssets','projectAssetUploads'].includes(name)&&row.authorization?.guardianId===actorId)anonymous.authorization.guardianId='deleted-account';
       if(name==='studioConnectors'&&row.createdBy===actorId){anonymous.status='revoked';anonymous.encryptedFeedUrl='';anonymous.version=(Number(row.version)||0)+1;anonymous.lastError=null;}

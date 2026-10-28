@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import type { StudioSubject, StudioWhiteboardScene } from './studio';
 import { topicWhiteboardFigureSchema } from './topic-whiteboard-visual';
+import type { AssistantWhiteboardAudience, AssistantWhiteboardContent } from './assistant-whiteboard';
 
 const id = z.string().min(1).max(180), digest = z.string().regex(/^[a-f0-9]{64}$/);
 const requestKey = z.string().min(8).max(180);
@@ -48,11 +49,11 @@ export type TopicWhiteboardReview = { decision: 'pass' | 'revised' | 'uncertain'
   inputFingerprint: string; outputFingerprint: string; at: string; current: boolean };
 export type TopicWhiteboardDraftStatus = 'queued' | 'generating' | 'ready' | 'failed' | 'cancelling' | 'cancelled' | 'confirmed';
 export type TopicWhiteboardDraftView = {
-  id: string; audience: TopicWhiteboardAudience; studentId: string | null; subject: StudioSubject | null;
+  id: string; audience: TopicWhiteboardAudience | AssistantWhiteboardAudience; studentId: string | null; subject: StudioSubject | null;
   prompt: string; objective: string; modelId: string; modelName: string | null;
   status: TopicWhiteboardDraftStatus; stage: 'writing' | 'reviewing' | 'completed'; revision: number; generation: number;
   task: { id: string; version: number; state: string; errorCode: string | null } | null;
-  originalContent: TopicWhiteboardContent | null; content: TopicWhiteboardContent | null;
+  originalContent: TopicWhiteboardContent | AssistantWhiteboardContent | null; content: TopicWhiteboardContent | AssistantWhiteboardContent | null;
   contentFingerprint: string | null; review: TopicWhiteboardReview | null; whiteboardId: string | null;
   teacherReviewStatus: 'pending'; formalMeasurementEligible: false; createdAt: string; updatedAt: string;
   receipt?: { key: string; kind: 'prepare' | 'cancel' | 'retry' | 'edit' | 'confirm'; effectiveRevision: number;

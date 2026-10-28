@@ -1,27 +1,27 @@
-import { createHash } from 'node:crypto';
+import { topicWhiteboardDigest } from './topic-whiteboard-digest';
+export { topicWhiteboardDigest } from './topic-whiteboard-digest';
+export { topicWhiteboardJsonSchema, topicWhiteboardReviewJsonSchema } from './topic-whiteboard-schema';
 import { z } from 'zod';
 import { topicWhiteboardContentSchema, type TopicWhiteboardContent, type TopicWhiteboardInput } from '@study-agent/contracts';
+import type { PreparedAssistantWhiteboard } from './assistant-whiteboard-source';
+import { validateAssistantWhiteboardContent, validateAssistantWhiteboardReview } from './assistant-whiteboard-content';
 
 export const topicWhiteboardVersion = 'topic-whiteboard-v1' as const;
 export const topicWhiteboardTaskKind = 'studio.topic-whiteboard.generate';
 export type TopicWhiteboardTarget = { id: string; name: string; objective: string; definitionFingerprint: string;
   teaching?: { explanation: string; example: { prompt: string; steps: string[]; conclusion: string } } };
-export type PreparedTopicWhiteboard = {
+export type PreparedFreeTopicWhiteboard = {
   version: typeof topicWhiteboardVersion; input: TopicWhiteboardInput; modelId: string; modelName: string;
   grade: number | null; scopeFingerprint: string | null; targets: TopicWhiteboardTarget[];
   context: string; fingerprint: string;
 };
-function canonical(value: unknown): unknown {
-  if (Array.isArray(value)) return value.map(canonical);
-  if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).filter(([, item]) => item !== undefined)
-    .sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0).map(([key, item]) => [key, canonical(item)]));
-  return value;
-}
-export function topicWhiteboardDigest(value: unknown): string {
-  return createHash('sha256').update(JSON.stringify(canonical(value))).digest('hex');
-}
-export function validateTopicWhiteboardContent(prepared: Pick<PreparedTopicWhiteboard, 'input' | 'targets'>, value: unknown,
+export type PreparedTopicWhiteboard = PreparedFreeTopicWhiteboard | PreparedAssistantWhiteboard;
+type ContentPrepared = Pick<PreparedFreeTopicWhiteboard, 'input' | 'targets'> | PreparedAssistantWhiteboard;
+export function validateTopicWhiteboardContent(prepared: ContentPrepared, value: unknown,
   options: { allowFigures?: boolean } = {}): TopicWhiteboardContent {
+  if ('version' in prepared && prepared.version === 'assistant-topic-whiteboard-v1') return validateAssistantWhiteboardContent(prepared, value, options);
+  if (prepared.input.audience.kind === 'assistant' || 'version' in prepared && String(prepared.version) !== topicWhiteboardVersion)
+    throw Error('topic_whiteboard_unknown_protocol');
   const content = topicWhiteboardContentSchema.parse(value), expected = new Set(prepared.targets.map(target => target.id));
   if (!options.allowFigures && content.scenes.some(scene => scene.figure)) throw Error('topic_whiteboard_model_figure_forbidden');
   if (prepared.input.audience.kind === 'adult') {
@@ -43,23 +43,9 @@ export const topicWhiteboardReviewSchema = z.object({ decision: z.enum(['pass', 
   if (value.decision === 'revised' && (!value.issues.length || !value.revisedContent)) context.addIssue({ code: 'custom', message: '修订需说明具体问题并给出完整结果' });
   if (value.decision === 'uncertain' && (!value.issues.length || value.revisedContent)) context.addIssue({ code: 'custom', message: '不确定需列具体问题并保留原稿' });
 });
-export function validateTopicWhiteboardReview(prepared: Pick<PreparedTopicWhiteboard, 'input' | 'targets'>, original: TopicWhiteboardContent, value: unknown) {
+export function validateTopicWhiteboardReview(prepared: ContentPrepared, original: TopicWhiteboardContent, value: unknown) {
+  if ('version' in prepared && prepared.version === 'assistant-topic-whiteboard-v1') return validateAssistantWhiteboardReview(prepared, original, value);
   const review = topicWhiteboardReviewSchema.parse(value), content = validateTopicWhiteboardContent(prepared, review.revisedContent ?? original);
   if (review.decision === 'revised' && topicWhiteboardDigest(content) === topicWhiteboardDigest(original)) throw new Error('topic_whiteboard_empty_revision');
   return { decision: review.decision, issues: review.issues, content };
 }
-
-const text = (maxLength: number, minLength = 1) => ({ type: 'string', minLength, maxLength });
-const object = (properties: Record<string, unknown>) => ({ type: 'object', additionalProperties: false, properties, required: Object.keys(properties) });
-const array = (items: unknown, minItems: number, maxItems: number) => ({ type: 'array', items, minItems, maxItems });
-export const topicWhiteboardJsonSchema = object({
-  title: text(120), description: text(600, 3), scenes: array(object({
-    kind: { type: 'string', enum: ['title', 'concept', 'steps', 'check'] }, title: text(120),
-    narration: text(1800, 3), body: text(1000, 0), bullets: array(text(240), 0, 6), targetAtomIds: array(text(180), 0, 6),
-    exhibit: { anyOf: [object({ kind: { const: 'table', type: 'string' }, headers: array(text(120), 2, 5), rows: array(array(text(240), 2, 5), 1, 12) }),
-      object({ kind: { const: 'formula', type: 'string' }, latex: text(600), explanation: text(1000) }), { type: 'null' }] },
-  }), 3, 8),
-});
-export const topicWhiteboardReviewJsonSchema = object({ decision: { type: 'string', enum: ['pass', 'revised', 'uncertain'] },
-  issues: array(text(600), 0, 12), revisedContent: { anyOf: [topicWhiteboardJsonSchema, { type: 'null' }] },
-});

@@ -15,6 +15,7 @@ export class TopicWhiteboardController {
   @Get('drafts/:id') draft(@Req() req: AuthenticatedRequest, @Param('id') id: string) { return this.boards.get(req.user, id, req.authSession); }
   @Get('drafts/:id/requests/:key') receipt(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('key') key: string) { return this.boards.receipt(req.user, id, key, req.authSession); }
   @Get('drafts/:id/history') history(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Query() input: unknown) { return this.boards.history(req.user, id, input, req.authSession); }
+  @Get('drafts/:id/source') source(@Req() req: AuthenticatedRequest, @Param('id') id: string) { return this.boards.sourceView(req.user, id, req.authSession); }
   @Post('drafts/:id/cancel') cancel(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) { return this.boards.control(req.user, id, 'cancel', input, req.authSession); }
   @Post('drafts/:id/retry') retry(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) { return this.boards.control(req.user, id, 'retry', input, req.authSession); }
   @Patch('drafts/:id/content') edit(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) { return this.boards.edit(req.user, id, input, req.authSession); }

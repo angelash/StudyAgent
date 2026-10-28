@@ -93,6 +93,17 @@ describe('assistant whiteboard complete source and scene mapping boundary', () =
     expect(schema.properties.scenes.items.required).toContain('sourceMap'); expect(old.properties.scenes.items.properties).not.toHaveProperty('sourceMap');
     expect((assistantWhiteboardReviewJsonSchema as any).properties.revisedContent.anyOf[0]).toEqual(schema);
   });
+  it('retains frozen context and fingerprints when JSONB changes nested object key order without changing original arrays or text', () => {
+    function reorder(value: any): any {
+      if (Array.isArray(value)) return value.map(reorder);
+      if (value && typeof value === 'object') return Object.fromEntries(Object.keys(value).sort().reverse().map(key => [key, reorder(value[key])]));
+      return value;
+    }
+    const prepared = fixture().prepare(), stored = JSON.parse(JSON.stringify(reorder(prepared)));
+    expect(Object.keys(stored.source.origin)).not.toEqual(Object.keys(prepared.source.origin));
+    expect(() => assertPreparedAssistantWhiteboard(stored)).not.toThrow();
+    expect(stored.context).toBe(prepared.context); expect(validateAssistantWhiteboardContent(stored, content())).toEqual(content());
+  });
   it.each(['unknown-message', 'borrowed-reference', 'unknown-reference', 'duplicate-message', 'duplicate-reference', 'missing-map', 'forged-field'])(
     'rejects invalid scene mapping: %s', kind => {
       const f = fixture(), value: any = content(), map = value.scenes[1].sourceMap;

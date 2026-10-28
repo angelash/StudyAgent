@@ -84,6 +84,7 @@ async function restoreSqlite({bundle,destination,deletionLedger,resume=false,aft
     try{
       state(db,context);
       const query=(sql,params=[])=>db.prepare(sql).all(...params);
+      const sourceIntegrity=require('./whiteboard-source-integrity.cjs');sourceIntegrity.validate(await query(sourceIntegrity.sql));
       const before=await captureMaterialKeys(query);
       const{removedMediaIds,topicVisualRetentions,...privacy}=await applyDeletionLedger(query,ledger);
       await afterPhase?.('ledger_applied');

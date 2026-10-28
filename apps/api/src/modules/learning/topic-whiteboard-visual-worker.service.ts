@@ -1,4 +1,5 @@
-import { ConflictException, Injectable, Logger, type OnApplicationBootstrap, type OnModuleDestroy } from '@nestjs/common';
+import { AssistantWhiteboardService } from './assistant-whiteboard.service';
+import { ConflictException, Injectable, Optional, Logger, type OnApplicationBootstrap, type OnModuleDestroy } from '@nestjs/common';
 import { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
 import type { TaskRow } from '../../infrastructure/task-repository';
 import { StudentsService } from '../students/students.service';
@@ -13,7 +14,7 @@ import type { TopicVisualRecord } from './topic-whiteboard-visual-record';
 export class TopicWhiteboardVisualWorkerService implements OnApplicationBootstrap, OnModuleDestroy {
   private timer?: ReturnType<typeof setInterval>; private current?: Promise<boolean>; private abort?: AbortController; private stopping = false;
   private sweptAt = 0; private readonly logger = new Logger(TopicWhiteboardVisualWorkerService.name);
-  constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService, private readonly images: ClassroomImageService) {}
+  constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService, private readonly images: ClassroomImageService, @Optional() private readonly source?: AssistantWhiteboardService) {}
   onApplicationBootstrap() {
     if (process.env.STUDY_WORKER_ENABLED === 'false' || !this.store.persistence.durable) return;
     this.timer = setInterval(() => void this.runNext().catch(() => this.logger.warn('Topic figure task retained')), 1500); this.timer.unref();
@@ -46,7 +47,7 @@ export class TopicWhiteboardVisualWorkerService implements OnApplicationBootstra
     const row = this.store.find('studioTopicWhiteboardVisuals', { id: String(task.payload.visualId), ownerUserId: task.ownerUserId, taskId: task.id });
     if (!row || row.requestHash !== task.payloadHash || row.generation !== task.generation || !['queued', 'generating'].includes(row.status))
       throw Error('topic_figure_no_longer_available');
-    topicVisualAuthority(this.store, this.students, row); return row;
+    topicVisualAuthority(this.store, this.students, row, this.source); return row;
   }
   private async persist(task: TaskRow, signal: AbortSignal, change: (row: TopicVisualRecord) => void, complete = false) {
     for (let attempt = 0; attempt < 4; attempt++) try {
