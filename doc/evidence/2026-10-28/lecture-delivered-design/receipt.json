@@ -1,0 +1,106 @@
+{
+  "passed": true,
+  "sourceRevision": "971eb06aa06062757b5abaa652b9dab7d56a8302",
+  "areas": 14,
+  "features": 128,
+  "normalRoutes": 424,
+  "coveredRoutes": 424,
+  "sourceFiles": 594,
+  "markdownLinks": 3805,
+  "viewerChecks": 10,
+  "applicationBaselineEvidence": {
+    "newlyRunByThisScript": false,
+    "receipt": "../evidence/2026-10-28/lecture-assistant-acceptance.json",
+    "revision": "b62ef293b0001b6ddf743bc02846e5f2739ba031",
+    "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
+  },
+  "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
+  "auditNote": "Old main static-source audit mismatched current store source and was retained; attempted reuse was rejected for14 script raw line-ending differences. A fresh audit of actual main source passed without editing those scripts or application behavior.",
+  "files": {
+    "doc/design/generated/design-validation.json": {
+      "sha256": "fa3efaf21666c8e3fceb7324aa5bfe5edeb9df5d03d9d1ae3d1ccdfdf15209db",
+      "gzipSha256": "d1260be5a5ca1378341a33fc0e1313f0c29ca55a9d5b67c3b8986b43c01fe97c",
+      "bytes": 79439
+    },
+    "doc/design/generated/source-inventory.json": {
+      "sha256": "c76219e212860ce8758ab917a09199faa8d345212b932905b2db6dba54ed18ca",
+      "gzipSha256": "8166c063554bb9713793c9081d28ab01c1ce5dca796351e4b85f00983c16393a",
+      "bytes": 1550458
+    },
+    "doc/design/generated/content-snapshot.json": {
+      "sha256": "c3c1f44f37e5c1ae4d23e00c162bc94527e073910e1598d9ee0cca139c5eaff6",
+      "gzipSha256": "c6ad4dfd54d6cba5fcc8441ea5088b3cc9b4698138353de4c9c40f2f3bcafd02",
+      "bytes": 38128
+    },
+    "doc/design/feature-catalog.json": {
+      "sha256": "e078ac8dee40d0c59c576a135f939360ec37fb9b466a581209117b4b89fd06fa",
+      "gzipSha256": "b08d46bb9103494d0e55257cdea2d3c22e23b4f7c8ba460861a63f3c355df380",
+      "bytes": 526771
+    },
+    "doc/design/README.md": {
+      "sha256": "d603f809f62d6ced8aa8794e9b49b3ada056c248ad30a4b33d2ecc107f02385a",
+      "gzipSha256": "0ec59bd6b131cd5ef377eed1c1c6c2d4c8599e00f0d80050a0c5f33b556ecc61",
+      "bytes": 19222
+    },
+    "doc/design/04-data-and-state-design.md": {
+      "sha256": "d73f389e35f2c9f05eaeb83ee79e3e3c53f85f3b42e1cfb92f9c53bb1f50beea",
+      "gzipSha256": "362bfed23385fdb094b1392b1d12faed1b1a65d3bac5845fe66dac3a375e9d04",
+      "bytes": 24249
+    },
+    "doc/design/06-boundaries-and-follow-ups.md": {
+      "sha256": "024b4e2c23b6725b4ee2fd7bd0cdc549807fa60df0ebffe8e44ba25560a507e7",
+      "gzipSha256": "79ac67d3f565071d759a93c78d2615ecd4b44b2998d110ae8dbbf393dc9b58da",
+      "bytes": 15529
+    },
+    "data/qa/lecture-delivered-design-inventory.log": {
+      "sha256": "aefc9d594c65c4d34d3a39b2f60a2da58fb436452d2a7a7d2ba23852f8367fac",
+      "gzipSha256": "3ceac79293e732828beeb54737422c0bbe4e541e658483051112b152923701d1",
+      "bytes": 487
+    },
+    "data/qa/lecture-delivered-design-content.log": {
+      "sha256": "91af89eb365f7c77fdf5398f0b9d0cc50d36d7a2f29d021fbe88e04fda60d660",
+      "gzipSha256": "bf90e20b3ae6d857846e1a284bff73406555a75e9322488843d75642b9246008",
+      "bytes": 1201
+    },
+    "data/qa/lecture-delivered-design-content-second.log": {
+      "sha256": "e95820dbe556ead23a88d9955c3175503e6a1a4d5963d954ad8832ccfb7b2ec6",
+      "gzipSha256": "62432f8f9e674f9adfa1af43b09161197ea0a253d7af4bd6abaa8f2ebd4d1456",
+      "bytes": 2612
+    },
+    "data/qa/lecture-delivered-design-build.log": {
+      "sha256": "312c8509bacf03ca16e708ef6ca8591d8d4e67ce4a6abb8ed76734614dff1ca9",
+      "gzipSha256": "c013933456a5e58b3d314ff19db7e248d1972ce8a1eced0cb078b68ee92dc6d3",
+      "bytes": 102
+    },
+    "data/qa/lecture-delivered-design-validation.log": {
+      "sha256": "9465ca78c32e8f4d91f6b058b6079f430096a5338a3ab8d936db1747964ab055",
+      "gzipSha256": "ea6265948243536cf0285a3ae151ef74894306f363e625c729364da74190fb0e",
+      "bytes": 281
+    },
+    "data/qa/lecture-delivered-authored-audit.log": {
+      "sha256": "6b1528278f408783f3b30fee14e1c16e49a7466b6de730bc3102d2a0fe481792",
+      "gzipSha256": "277b6eab73778039ce7ed1c8687c8904d9872c3fabf3e4f87a311b7c743b8033",
+      "bytes": 119
+    },
+    "data/qa/project-design-authored-audit.json": {
+      "sha256": "ff5e367ac0dde228dd97c0e35172883e7cfd06d5960f10c301730c0f6db57fed",
+      "gzipSha256": "fbf40e8e259f491521a637b666820b7da45b5db4f2f572df8f94597254d033de",
+      "bytes": 861187
+    },
+    "data/qa/project-design-authored-audit-139-before-lecture.json": {
+      "sha256": "5ed14a584fdbc592d957f2dc5913d5fd65165449f2efd31307762347b1377bb5",
+      "gzipSha256": "ddb9ed6d0bed35bc1dd55ed205ae9b0f5b66e01cbef1da0635e20db8f962d817",
+      "bytes": 861187
+    },
+    "data/qa/project-design-viewer/desktop.png": {
+      "sha256": "1493cad3955c3ade9c4ed0056b8fc00b8bcc5eafd0c371e025ef20123c9bd316",
+      "gzipSha256": "6be77921999f11085249ebc23620f71781b87e8c7ff8e007ebf9c15836262f7e",
+      "bytes": 188492
+    },
+    "data/qa/project-design-viewer/mobile.png": {
+      "sha256": "4523f8bbe0461e60da8a2c9ddf6c3f9d652d5b22730f3493b1ab70bdce57e230",
+      "gzipSha256": "f65b3c0b33ce95445c79948ae432debae60e2244965e0aa614b3336d5c60faf4",
+      "bytes": 127181
+    }
+  }
+}

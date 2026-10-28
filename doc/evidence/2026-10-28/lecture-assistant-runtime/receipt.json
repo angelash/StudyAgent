@@ -1,0 +1,157 @@
+{
+  "passed": true,
+  "status": "runtime-delivered",
+  "revision": "971eb06aa06062757b5abaa652b9dab7d56a8302",
+  "applicationRevision": "b62ef293b0001b6ddf743bc02846e5f2739ba031",
+  "ciHead": "b62ef293b0001b6ddf743bc02846e5f2739ba031",
+  "ciRun": 40601241878,
+  "webBuildId": "NkfAGfS0FLw-vibTZyptB",
+  "schemaVersion": 21,
+  "httpChecks": 1296,
+  "compiledFiles": 373,
+  "originalAssets": 960,
+  "voiceSamples": 6,
+  "stableObservations": 3,
+  "observedIntervalMs": 111163,
+  "protectedFiles": {
+    ".env.example": true,
+    "apps/web/next.config.ts": true,
+    "doc/product/87-local-windows-daemon.md": true,
+    "ecosystem.config.cjs": true,
+    "scripts/operations/start-daemon.ps1": true
+  },
+  "localEnvironmentPreserved": true,
+  "oldCompiledRollbackFiles": 997,
+  "consistentBackup": {
+    "path": "F:\\workspace\\github\\StudyAgent\\output\\daemon\\release-backups\\2026-10-28-lecture-assistant-1793140462402",
+    "bundle": "data-bundle-final",
+    "verifiedFiles": 1,
+    "assetsIncluded": false,
+    "buildCopy": {
+      "at": "2026-10-27T22:34:38.520Z",
+      "passed": true,
+      "files": 997,
+      "bytes": 18573817,
+      "scope": "Existing immutable compiled builds excluding cache, and private configuration copies. No stopped-service database backup has been made yet."
+    },
+    "scope": "Fresh stopped-service consistent database and referenced runtime files plus SHA-verified139 compiled builds and private config. No independent research-asset archive or full restore rehearsal."
+  },
+  "scope": "Actual production compiled/source/served assets and HTTP checks plus three stable PM2 observations. No authenticated production mutation, complete research-asset backup, full recovery rehearsal or complete product/teacher/pixel/audio/all-content claim.",
+  "files": {
+    "runtime.json": {
+      "sha256": "52d62e46f7564aa52903a697b7d13c647755402419a5e8b69e8f168910668c21",
+      "gzipSha256": "e8e644e992f41d38fb7f930b586d229974a2b7e2384c1a9cb029846b20dfade7",
+      "bytes": 536331
+    },
+    "runtime-before-stability.json": {
+      "sha256": "72107766dba2d3cb9c11adbd52117abb60d3e359d0dc92ccff5bac2657594017",
+      "gzipSha256": "db67064bd562bc25b281cba4e8b326e5cbe059d09dc441009fe6abbc4ee44b24",
+      "bytes": 534118
+    },
+    "deployment-before.json": {
+      "sha256": "6dc132d64bb5df34a0d037b4474d57acce51f8c3971d4760f12fe774e03ceef3",
+      "gzipSha256": "63a90d42ddfbe966637792fbe234e21ec8a73e0e4773a23b262273c30403645a",
+      "bytes": 1358
+    },
+    "deployment-target.json": {
+      "sha256": "53eca7ec8a6fab4e161866b2db2a95ab1b9ccd75b3382ab96afeac58d7192b0a",
+      "gzipSha256": "dc73d5c6f1d8631d6037b55a79407ebfe3fa113ef4b0007e6ba05eb3aed0b792",
+      "bytes": 152
+    },
+    "candidate.json": {
+      "sha256": "0dab4a8eda7401199a3df63bc02fec436f7fc8be438dc60b8b0a04538c83368e",
+      "gzipSha256": "3065c0e294423422bbb232ca7437b28adaa97da29d53ae8b2d45c6639956543c",
+      "bytes": 57778
+    },
+    "backup-verified.json": {
+      "sha256": "be02e91ae1508376fa936ca6bdb53602408df3126c26c380225c5dbd1d652d10",
+      "gzipSha256": "f7cd2a7c2a6e5d96313555e42da1dc4283ce2969cbe3da63149acda04703c88b",
+      "bytes": 452
+    },
+    "build-backup-verification.json": {
+      "sha256": "f6fdc81abaa405d6d88fefe416f83f1fc5b909d0b01338e2b3b5392acb27b89e",
+      "gzipSha256": "1ad999377bf96db0504a8730266e358d30c522dd043787dc8d2ae5dc21b1fdfa",
+      "bytes": 248
+    },
+    "build-files.json": {
+      "sha256": "1d54e9bca8ceec7f5ec8d178082e260c1d04d988ab3bdfb8839a0c712bb73080",
+      "gzipSha256": "c099615a7755af04dd7386833ba2156ec8a80bafd9a3d231da5f0a12209bbdeb",
+      "bytes": 191326
+    },
+    "stop-transitions.json": {
+      "sha256": "cd05499e55fc5ec27930ea786dbcd43847e8fa04d5b864a40c646eba3f6d7400",
+      "gzipSha256": "7e464ee174e55dc08f3e617d2e3001712819372115b0d5d3498b46b2cec98f33",
+      "bytes": 389
+    },
+    "data/qa/lecture-assistant-production-source-alignment.json": {
+      "sha256": "70836fe87b1a6fb02a4bc21e433f895e3ccae7c3f19643778d29a694c5ca4026",
+      "gzipSha256": "d667f367e5b7b38e2c3816581124daa17d47a432a741d8ea6f08969f3d97929c",
+      "bytes": 192963
+    },
+    "data/qa/lecture-assistant-observation-1.json": {
+      "sha256": "08c2ebec084c35728ed4afba342b68e527c6937214e78e1913633955846109a5",
+      "gzipSha256": "58f0a253f1f12279f6fe9391cb8c68a0e70c7bf90000c829020ac7f5b94c1937",
+      "bytes": 603
+    },
+    "data/qa/lecture-assistant-observation-2.json": {
+      "sha256": "55180e9a357975d1ffc7e74eb2d39ea5b6a5d32224a2a2a326be34ef349c41a4",
+      "gzipSha256": "daa797e24a8962793fadee5f78a88e4b9ebfdeb20cdbd19ac5ec583bd6a2c6cb",
+      "bytes": 603
+    },
+    "data/qa/lecture-assistant-observation-3.json": {
+      "sha256": "b5c10b2dac12f0321878ba779b7450b3e6cb908d0f91849bddbee76b3807d77d",
+      "gzipSha256": "644d3ca580eaf14247d8ce2c50e6856f886ab221b7984c76169c8c729258b762",
+      "bytes": 603
+    },
+    "data/qa/lecture-assistant-production-build.log": {
+      "sha256": "af439f45401028bba2bbd8e61e82c1be1f7c281ce7895efaffba5e5420de1a38",
+      "gzipSha256": "363af6445fcbdcb9395e60c621c8f46873c63acf3af13dd6bd2750deb419e908",
+      "bytes": 2962
+    },
+    "data/qa/lecture-assistant-production-start.log": {
+      "sha256": "b2add8ba16f992749391a519ff1fa5045033b1cb716811e92ea164ae68c9ef81",
+      "gzipSha256": "1f3262dae766497bf0263c00a054a33ddbce21c99a95b99f2bc438b7bf8e7165",
+      "bytes": 2369
+    },
+    "data/qa/lecture-assistant-production-save.log": {
+      "sha256": "5e85106e5e1eab4842d5aadc5adb31c8c149c52182917c2634d99b27bd4f2978",
+      "gzipSha256": "7ece84780d45f34e6a6da40e4a128f78a95a6ace7c144685fdd4cd3599cfae19",
+      "bytes": 97
+    },
+    "data/qa/prepare-lecture-assistant-release.cjs": {
+      "sha256": "befc5474115a487a89f981d37aa35862fec9bc6017cd6f70794a124d897279d0",
+      "gzipSha256": "748ee43351458527bd63b300e491aa34a9fe2fde9fa150fd4ed09c9adadad963",
+      "bytes": 4411
+    },
+    "data/qa/prepare-lecture-assistant-candidate.py": {
+      "sha256": "3f3466c233816eb0e2e5700688c7833e5e31fff8225722847f3abf9b7ebf085f",
+      "gzipSha256": "c7c5194cd7aa7f6de5b77f45798d8350633cfb63cdcc3919fb8e24bd936dd485",
+      "bytes": 6159
+    },
+    "data/qa/deploy-lecture-assistant-prepare.cjs": {
+      "sha256": "7a43f33f17eff48ec5ebefcb451a254239b10f5f0af30b4ee730c7f75c037341",
+      "gzipSha256": "353b1bad9369dfead86974319a5d7e13d8c248bb77025c06626f6519d6adaa85",
+      "bytes": 8780
+    },
+    "data/qa/align-lecture-assistant-source.cjs": {
+      "sha256": "34d1f711ca03beca25ce9ca0bf730dd32fbbdd28e3c2f67362a999edaa294f2c",
+      "gzipSha256": "c9a98f404c852f740e22f080231b19a1671fa601b6855c1e623c146254f0913d",
+      "bytes": 3647
+    },
+    "data/qa/check-lecture-assistant-release.cjs": {
+      "sha256": "56c2f6dfc6e81306e8caad42d60ec5357d20040687b08b42abf68e60d43dfbc2",
+      "gzipSha256": "848e9358fc5499c5231327345d6e0b73b3ed2993a570f01d9c079cfa6ff7188a",
+      "bytes": 27228
+    },
+    "data/qa/observe-lecture-assistant.cjs": {
+      "sha256": "0ec8f8454587bf2a34f645fb25609d8135140119fb7d42f1d5cf5e4dd040f20f",
+      "gzipSha256": "8a204390fa02ddccfe83e21006c6823330168e25623241f7919640d641bbd035",
+      "bytes": 1375
+    },
+    "data/qa/rollback-lecture-assistant-compiled.cjs": {
+      "sha256": "625b98bf92769ff4119a601900f7789f2d95b920e7a4c82ec2762f5f88891f47",
+      "gzipSha256": "728964d1d44d65ab79e83c94874997333cc9b21b2a670ec89524a1b6a1765f7f",
+      "bytes": 4570
+    }
+  }
+}

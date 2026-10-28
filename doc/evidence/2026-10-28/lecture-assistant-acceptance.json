@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "sourceRevision": "b62ef293b0001b6ddf743bc02846e5f2739ba031",
-  "passed": false,
-  "phase": "ready-for-consistent-backup-and-production-build",
+  "passed": true,
+  "phase": "runtime-delivered",
   "scope": "140 adult authored lecture and independent persistent assistant. Complete M1-M7 and original72 goal remain active.",
   "api": {
     "passed": 1539,
@@ -70,11 +70,12 @@
     "normalRoutes": 424,
     "coveredRoutes": 424,
     "sourceFiles": 594,
-    "markdownLinks": 3800,
+    "markdownLinks": 3805,
     "viewerChecks": 10,
-    "applicationBaseline": "measurement-v3-acceptance.json",
-    "baselineIsCurrent140Acceptance": false,
-    "receipt": "lecture-release-design/receipt.json"
+    "applicationBaseline": "lecture-assistant-acceptance.json",
+    "baselineIsCurrent140Acceptance": true,
+    "receipt": "lecture-delivered-design/receipt.json",
+    "sourceRevision": "971eb06aa06062757b5abaa652b9dab7d56a8302"
   },
   "requirements": {
     "implemented": 11,
@@ -109,8 +110,41 @@
     "scope": "Actual exact-head terminal jobs, original full browser JSON and all three job logs. Browser attempts/retries parsed directly, Linux API summary read from its log, lecture PG step includes its SQLite native control. Scopes overlap and are not summed. Production/runtime remains separate.",
     "receipt": "lecture-exact-ci/receipt.json"
   },
-  "runtime": null,
-  "productionUpgradePerformed": false,
+  "runtime": {
+    "passed": true,
+    "status": "runtime-delivered",
+    "revision": "971eb06aa06062757b5abaa652b9dab7d56a8302",
+    "applicationRevision": "b62ef293b0001b6ddf743bc02846e5f2739ba031",
+    "ciHead": "b62ef293b0001b6ddf743bc02846e5f2739ba031",
+    "ciRun": 40601241878,
+    "webBuildId": "NkfAGfS0FLw-vibTZyptB",
+    "schemaVersion": 21,
+    "httpChecks": 1296,
+    "compiledFiles": 373,
+    "originalAssets": 960,
+    "voiceSamples": 6,
+    "stableObservations": 3,
+    "observedIntervalMs": 111163,
+    "localEnvironmentPreserved": true,
+    "oldCompiledRollbackFiles": 997,
+    "consistentBackup": {
+      "path": "F:\\workspace\\github\\StudyAgent\\output\\daemon\\release-backups\\2026-10-28-lecture-assistant-1793140462402",
+      "bundle": "data-bundle-final",
+      "verifiedFiles": 1,
+      "assetsIncluded": false,
+      "buildCopy": {
+        "at": "2026-10-27T22:34:38.520Z",
+        "passed": true,
+        "files": 997,
+        "bytes": 18573817,
+        "scope": "Existing immutable compiled builds excluding cache, and private configuration copies. No stopped-service database backup has been made yet."
+      },
+      "scope": "Fresh stopped-service consistent database and referenced runtime files plus SHA-verified139 compiled builds and private config. No independent research-asset archive or full restore rehearsal."
+    },
+    "scope": "Actual production compiled/source/served assets and HTTP checks plus three stable PM2 observations. No authenticated production mutation, complete research-asset backup, full recovery rehearsal or complete product/teacher/pixel/audio/all-content claim.",
+    "receipt": "lecture-assistant-runtime/receipt.json"
+  },
+  "productionUpgradePerformed": true,
   "limits": [
     "Adult authored lecture source only; primary/material-course context remains subsequent work.",
     "Conversation-to-artifact source/confirmation chain remains subsequent work.",
@@ -133,5 +167,7 @@
     "total": 6,
     "lectureAndIndependent": 4,
     "failedOpusRecheck": 2
-  }
+  },
+  "deliveryRevision": "971eb06aa06062757b5abaa652b9dab7d56a8302",
+  "productionBuildId": "NkfAGfS0FLw-vibTZyptB"
 }

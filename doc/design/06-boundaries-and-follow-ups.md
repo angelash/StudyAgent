@@ -1,6 +1,6 @@
 # 完成边界与待完善项
 
-本册当前源码基线为 `b62ef293b0001b6ddf743bc02846e5f2739ba031`，正式服务仍139/schema21；140完整本地433及精确40601241878远端433均单次全过，三组success；实际生产交付仍待。原始72项仍11 implemented/50 in_progress/11 planned/0 verified，完整M1～M7保持。接口覆盖、内容结构和自动化测试分别回答不同问题，不能互相替代。功能级边界见 [14个领域的详细设计](01-functional-framework.md)，可复算的内容数量见 [内容快照](generated/content-snapshot.json)。
+本册当前源码基线为 `b62ef293b0001b6ddf743bc02846e5f2739ba031`，140已正式运行交付/schema21；140完整本地433及精确40601241878远端433均单次全过，三组success；生产构建NkfAGfS0FLw-vibTZyptB及111163ms三次守护稳定观察通过。原始72项仍11 implemented/50 in_progress/11 planned/0 verified，完整M1～M7保持。接口覆盖、内容结构和自动化测试分别回答不同问题，不能互相替代。功能级边界见 [14个领域的详细设计](01-functional-framework.md)，可复算的内容数量见 [内容快照](generated/content-snapshot.json)。
 
 2026-10-24状态修订：以上为本文初始叙述基线，后续长资料、双语字幕、长PDF、原件回收与双库续恢复已继续实现；最新整体状态及交付顺序以[计划核对105](../product/105-development-plan-status-and-next-milestones.md)和[需求账本](../product/experience/requirements.md)为准。原件修复仍仅文件协议基础，未接入产品；开发分支未切生产。下列早期观察或历史收据不作为当前渠道在线、完整产品或真人验收结论。
 
