@@ -149,3 +149,19 @@ schema24预计新增私有artifact、本人教学会话、学生assignment三类
 ## 15. 白板/笔记与D1的正式整合候选
 
 0e7f3c34保留当前1802完整API输入，并整合已过CUI501及正式父分支CI的白板/笔记。新Web构建/类型与新API的来源18+笔记17共35专项全过，零失败/跳过/重试；320份Web/e2e Git内容一致，6处行尾规范化差异和7处API运行差异原样留证。3191补充输入保持，但该清单在专项启动后采集，不补称预先冻结。见[整合原件](../evidence/2026-10-29/source-teaching-integrated-local-first/receipt.json)。当前进入整合精确远端CI，不把专项或旧API的501冒充当前整站；正式schema22未变，D2～D4及整体继续。
+
+## 16. D2b纯正文协议的实施规格
+
+本批在独立practice-content工作区实施纯函数，不增加端点、任务、数据库集合或schema24，不调用模型、语音或生图。schema23整合候选保持冻结，正式交付和后续持久化分别验收。落点为contracts/assistant-practice-content.ts与learning/assistant-practice-source.ts、assistant-practice-content.ts及独立测试；旧D1预检保持原行为。内容协议固定assistant-teaching-practice-content-v1，任何通过结果都只是待核对教学候选，不能成为已审核题库或正式测量。
+
+正文含标题、目标与2至6题，每题唯一ID、分类或开放表达、完整题干、理由提问、参考解释、适用条件、理由核查标准、1至3层提示和一个对照情境。分类题有2至6项，ID和trim/NFKC/空白归一/小写后的标签分别唯一，referenceOptionId必须属于本题；开放表达选项为空、referenceOptionId为null。题干与解释保留完整代码、表格、公式及换行；只裁掉字段边缘空白，不裁切正文。完整规范化JSON最多22000字符，2至6题不能仅靠逐字段上限绕过总预算。模型输出拒绝额外字段，尤其approval、score、evidence、figure/图片地址；不将对照情境声明为正式独立题族。
+
+每题复用白板sourceMap协议，原消息必须属于此次完整已选来源，referenceKeys必须来自本题映射消息；supplementary不能带原引用。成人每题targetAtomIds为空；学生每题恰好一个已选原子点，整份题目覆盖全部明确选择的1至3点，不接受额外点、重复点或漏点。这里的点只标注教学意图，不产生掌握值。用户选择的目标定义冻结完整id/name/objective/definitionFingerprint，并与明确受众、当前scopeFingerprint及年级分开保存。
+
+Prepared冻结完整origin、原selection和objective、两项确认、完整受众、目标定义与指纹、固定modelId/modelName及完整context。来源预算18000与正文预算22000独立；origin消息正文SHA、选择/自动带入的关联问题、来源学生/学科、目标集、定义集与scope关系均须交叉核对。输入身份包含原请求所有字段及固定模型，外层digest不能替代内部关联校验；重算外层hash也不能把未知消息、错位目标或改写context变成合法prepared。完整原文/指纹和初始输入保留，禁止在显示prompt里截掉上下文。
+
+准备函数仅核查可离线证明的来源一致性、明确受众转换确认、历史确认、scope/目标定义及预算。它不接受D1 canPrepare作为授权，不让practice_coverage_gap遮盖成人转孩子确认；模型不可用即拒绝。Prepared及其校验器不是当前权限凭据，也不证明定义已被教师审核；后续service必须在创建、worker前后、编辑/采用和实际作答时独立重读当前用户/学习码/来源/权限/范围/评测并核对指纹。当前学生评测、撤回来源及实时权限不能用纯对象验证替代。
+
+生成和复核提供独立严格JSON Schema。复核pass必须无问题且无修改；revised必须列具体问题并返回完整正文，重跑全部来源/目标/预算验证且canonical digest有实际变化；uncertain必须有问题、无修改，保留初稿。无效修订整次拒绝，不悄悄采用部分内容。复核只代表模型意见，不改变候选待核对性质。
+
+作答投影仅含协议、标题、目标和每题id/kind/prompt/options/reasonPrompt；不带参考选项、解释、适用条件、理由标准、提示、对照答案、完整私聊、sourceMap或内部模型prompt。提示和答案以后通过明确动作读取，当前不新增该能力。纯协议专项覆盖完整长来源、代码/公式/表格、源与正文超限、引用越权、重复规范化标签、目标错位/漏点、伪造审核/图片字段、历史与转受众确认、外层重算篡改、projection泄露及无变化复核。使用匿名纯logic与现有来源逻辑兼容测试，保留首次失败及源码/编译哈希；不以本批通过代替D2端到端练习或整体完成。
