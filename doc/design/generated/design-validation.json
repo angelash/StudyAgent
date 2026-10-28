@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-28T22:01:27.193Z",
-  "sourceRevision": "77d9cd5c891f99b1d8624b313293e180c1bdfe40",
+  "at": "2026-10-28T22:22:21.191Z",
+  "sourceRevision": "a2504f83c3c28bbdf01429199b4ffa1acff72bcb",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -565,8 +565,8 @@
       "doc/product/142-guangzhou-chemistry-teaching-validation.md": "9eefaaa8f0de89bccdae4ed6fcaf5bb23bd2a1163d67caaacebd80c90da8372d",
       "doc/product/143-assistant-messages-to-learning-artifacts.md": "3bb667ecbf945226d55191b3e7a719c7fedfd3f86a5bb4babb130711ee6957d0",
       "doc/product/143-chemistry-course-content-correction.md": "8d8a449f7b7e2fded2f29c257740cb8773775400c350372575cdc7a9261c9966",
-      "doc/product/146-conversation-sourced-whiteboard-teaching.md": "18029c8bef2a72fb21cdd9a260371be5ff7c612b80aa2280edf76f784d6e1eab",
-      "doc/product/147-conversation-practice-guidance-and-review.md": "098061744e9947db863601f1283b506aa44c7fc9294e191af7cf813e769ea37a",
+      "doc/product/146-conversation-sourced-whiteboard-teaching.md": "17a986e152a8624f6abcc85601d66227b2f72267a138b6cbb20bdf9c80ddb549",
+      "doc/product/147-conversation-practice-guidance-and-review.md": "fc4d6a96800d0560dc85184322bd0508ed532c5ccc801167ee5bb1ed14b80ad7",
       "packages/contracts/src/ai-models.ts": "c27640b994c433be31aa6f048e727446f86e68252d695732740f5dd652b0df63",
       "packages/contracts/src/ai-teaching-tools.ts": "5063a057c70360db1e3f122ca68cb4632b621e58a2b9163e3c864b71475ed005",
       "packages/contracts/src/answer-draft.ts": "226653dad8a598fb1d4b27fe76e804f63e49a06d1884b586569facbaec8682dd",
@@ -717,7 +717,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 4215,
+    "checked": 4221,
     "missing": []
   },
   "staticContent": {
@@ -788,7 +788,8 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-29/source-teaching-integrated-local-first/receipt.json",
+    "receipt": "../evidence/2026-10-29/source-teaching-main-delivery-first/receipt.json",
+    "revision": "02a350b596666ac1cc4481a7953988ca07059de0",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

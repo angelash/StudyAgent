@@ -1,6 +1,6 @@
 # 04 掌握量化、原子观察与深层原因 — 详细设计
 
-源码基线：`77d9cd5c891f99b1d8624b313293e180c1bdfe40`。角色：学生、家长、教研。
+源码基线：`a2504f83c3c28bbdf01429199b4ffa1acff72bcb`。角色：学生、家长、教研。
 
 产品入口：`/student/assessment`、`/parent/dashboard`、`/admin/curriculum`。
 

@@ -1,0 +1,127 @@
+{
+  "at": "2026-10-28T22:23:42.227479+00:00",
+  "passed": true,
+  "practiceParent": "a2504f83c3c28bbdf01429199b4ffa1acff72bcb",
+  "deliveredMain": "5e9bea1320bc5056c5a1937b119cc2dcf8e83862",
+  "productionCode": "02a350b596666ac1cc4481a7953988ca07059de0",
+  "productionBuild": "-mvGyipv2z3fkD4qMxb4x",
+  "productionSchema": 23,
+  "currentMainCi": 40779065252,
+  "currentMainCiCompleted": false,
+  "mergeResolution": {
+    "conflicts": 26,
+    "authoredProductHistories": 2,
+    "allOriginalParagraphsPreserved": true,
+    "featureMappings": [
+      "AI-12",
+      "AI-13"
+    ],
+    "generatedDesignRebuilt": true
+  },
+  "inputChecks": [
+    {
+      "manifest": "data/qa/assistant-practice-content/fourth/inputs-before.json",
+      "inputs": 15,
+      "compiled": 3,
+      "changed": [],
+      "changedCompiled": []
+    },
+    {
+      "manifest": "data/qa/assistant-practice-bank-selection/first/inputs-before.json",
+      "inputs": 8,
+      "compiled": 2,
+      "changed": [],
+      "changedCompiled": []
+    }
+  ],
+  "design": {
+    "features": {
+      "areas": 14,
+      "features": 133,
+      "activeNormalApiRoutes": 444,
+      "coveredApiRoutes": 444
+    },
+    "sourceFiles": 679,
+    "markdownLinks": 4221,
+    "offlineViewerChecks": 10
+  },
+  "limits": [
+    "Pure content62 and bank allocation10 unchanged; not a new combined run.",
+    "New main documentation commitCI40779065252 remains separate from completed exact sourceCI40770689153.",
+    "No schema24, persistent D2 candidate or answering capability yet; full goal active."
+  ],
+  "files": [
+    {
+      "source": "data/qa/practice-delivered-handbook-build-first.log",
+      "archive": "data/qa/practice-delivered-handbook-build-first.log.gz",
+      "originalSha256": "3a558e46c2732702b865ff9ccca13eaea48e33cf523b62d80b2087464c42f0a2",
+      "publishedSha256": "3a558e46c2732702b865ff9ccca13eaea48e33cf523b62d80b2087464c42f0a2",
+      "bytes": 102,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/practice-delivered-handbook-content-first.log",
+      "archive": "data/qa/practice-delivered-handbook-content-first.log.gz",
+      "originalSha256": "c3a5efa19a654a5aa570cadcba467910d051b5a4d1250a149cb6452c1eb9a8e7",
+      "publishedSha256": "c3a5efa19a654a5aa570cadcba467910d051b5a4d1250a149cb6452c1eb9a8e7",
+      "bytes": 2612,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/practice-delivered-handbook-inventory-first.log",
+      "archive": "data/qa/practice-delivered-handbook-inventory-first.log.gz",
+      "originalSha256": "18711de81fbcf7085178c9a42cef0bc55af80c40c13a539f8132e06b292c39d9",
+      "publishedSha256": "18711de81fbcf7085178c9a42cef0bc55af80c40c13a539f8132e06b292c39d9",
+      "bytes": 487,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/practice-delivered-handbook-validation-first.log",
+      "archive": "data/qa/practice-delivered-handbook-validation-first.log.gz",
+      "originalSha256": "3f22221765c366316197b3cf29c101c23446a82e86f157136ac0169e465bb9c5",
+      "publishedSha256": "3f22221765c366316197b3cf29c101c23446a82e86f157136ac0169e465bb9c5",
+      "bytes": 281,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/source-teaching-delivery-merge-first.log",
+      "archive": "data/qa/source-teaching-delivery-merge-first.log.gz",
+      "originalSha256": "edd4f79aa4405c6340be911553b176ab39b1615cefc2a1a6f46950d0393057d3",
+      "publishedSha256": "edd4f79aa4405c6340be911553b176ab39b1615cefc2a1a6f46950d0393057d3",
+      "bytes": 4336,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/practice-delivery-merge-input-check-first.json",
+      "archive": "data/qa/practice-delivery-merge-input-check-first.json.gz",
+      "originalSha256": "2881a42db3f4ed65b56003bee98028381594e9012242442af0cea383bcc920e2",
+      "publishedSha256": "2881a42db3f4ed65b56003bee98028381594e9012242442af0cea383bcc920e2",
+      "bytes": 366,
+      "redacted": false
+    },
+    {
+      "source": "doc/design/generated/design-validation.json",
+      "archive": "doc/design/generated/design-validation.json.gz",
+      "originalSha256": "8a1760ae878d1e364ff922d7f4bc8b424ea56b58faf9da259fbb00b769a5a5e7",
+      "publishedSha256": "8a1760ae878d1e364ff922d7f4bc8b424ea56b58faf9da259fbb00b769a5a5e7",
+      "bytes": 90717,
+      "redacted": false
+    },
+    {
+      "source": "main/data/qa/source-teaching-main-push-first-receipt.json",
+      "archive": "main/data/qa/source-teaching-main-push-first-receipt.json.gz",
+      "originalSha256": "ca00aaf2badc4a1b26237a7e8a0c6047bcdef0b17da6140edc0cbbeb495a5880",
+      "publishedSha256": "ca00aaf2badc4a1b26237a7e8a0c6047bcdef0b17da6140edc0cbbeb495a5880",
+      "bytes": 237,
+      "redacted": false
+    },
+    {
+      "source": "main/data/qa/source-teaching-main-exact-ci-first-metadata.json",
+      "archive": "main/data/qa/source-teaching-main-exact-ci-first-metadata.json.gz",
+      "originalSha256": "7e6bb870eee236b0ec704cfd07e9940bf8831353ab2515369edd76879a4336d6",
+      "publishedSha256": "7e6bb870eee236b0ec704cfd07e9940bf8831353ab2515369edd76879a4336d6",
+      "bytes": 193,
+      "redacted": false
+    }
+  ]
+}

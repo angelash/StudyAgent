@@ -1,0 +1,111 @@
+{
+  "at": "2026-10-28T22:18:39.796012+00:00",
+  "passed": true,
+  "sourceRevision": "02a350b596666ac1cc4481a7953988ca07059de0",
+  "features": {
+    "areas": 14,
+    "features": 133,
+    "activeNormalApiRoutes": 444,
+    "coveredApiRoutes": 444
+  },
+  "sourceFiles": 671,
+  "markdownLinks": 4200,
+  "offlineViewerChecks": 10,
+  "scope": "Current delivered schema23 source design, pure authored audit and offline viewer only; runtime and CI receipts remain separate.",
+  "failuresRetained": [
+    "First content snapshot rejected the old main authored audit due to11 stale input SHAs. Original audit and failed output retained; fresh audit then snapshot and unchanged validator passed."
+  ],
+  "redaction": "Local Windows username/checkout paths and ANSI removed in public text; raw originals retained.",
+  "files": [
+    {
+      "source": "data/qa/source-teaching-handbook-authored-audit-first.log",
+      "archive": "data/qa/source-teaching-handbook-authored-audit-first.log.gz",
+      "originalSha256": "6b1528278f408783f3b30fee14e1c16e49a7466b6de730bc3102d2a0fe481792",
+      "publishedSha256": "6b1528278f408783f3b30fee14e1c16e49a7466b6de730bc3102d2a0fe481792",
+      "originalBytes": 119,
+      "publishedBytes": 119,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/source-teaching-handbook-build-first.log",
+      "archive": "data/qa/source-teaching-handbook-build-first.log.gz",
+      "originalSha256": "3a558e46c2732702b865ff9ccca13eaea48e33cf523b62d80b2087464c42f0a2",
+      "publishedSha256": "3a558e46c2732702b865ff9ccca13eaea48e33cf523b62d80b2087464c42f0a2",
+      "originalBytes": 102,
+      "publishedBytes": 102,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/source-teaching-handbook-content-first.log",
+      "archive": "data/qa/source-teaching-handbook-content-first.log.gz",
+      "originalSha256": "a3a942b84d62631034dba164fc7897f27b41a6517cc22d01d6f67ef84635c65f",
+      "publishedSha256": "bf1e9bcf60d928e2a389db09d68866c221e82272dbbe1b06ffb30be9b4aed03d",
+      "originalBytes": 1204,
+      "publishedBytes": 1195,
+      "redacted": true
+    },
+    {
+      "source": "data/qa/source-teaching-handbook-content-second.log",
+      "archive": "data/qa/source-teaching-handbook-content-second.log.gz",
+      "originalSha256": "c3a5efa19a654a5aa570cadcba467910d051b5a4d1250a149cb6452c1eb9a8e7",
+      "publishedSha256": "c3a5efa19a654a5aa570cadcba467910d051b5a4d1250a149cb6452c1eb9a8e7",
+      "originalBytes": 2612,
+      "publishedBytes": 2612,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/source-teaching-handbook-inventory-first.log",
+      "archive": "data/qa/source-teaching-handbook-inventory-first.log.gz",
+      "originalSha256": "8f47e0f13c6acda0aafb9cbc0490b42e49779dca7a34a90e5243937cafdd1c9e",
+      "publishedSha256": "8f47e0f13c6acda0aafb9cbc0490b42e49779dca7a34a90e5243937cafdd1c9e",
+      "originalBytes": 487,
+      "publishedBytes": 487,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/source-teaching-handbook-validation-second.log",
+      "archive": "data/qa/source-teaching-handbook-validation-second.log.gz",
+      "originalSha256": "ac1dc9004b408e9c6098bff9c23a6264ded456e4bd047f90a17b5cb6c7ccd958",
+      "publishedSha256": "ac1dc9004b408e9c6098bff9c23a6264ded456e4bd047f90a17b5cb6c7ccd958",
+      "originalBytes": 281,
+      "publishedBytes": 281,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/source-teaching-handbook-previous-authored-audit-first.json",
+      "archive": "data/qa/source-teaching-handbook-previous-authored-audit-first.json.gz",
+      "originalSha256": "ff5e367ac0dde228dd97c0e35172883e7cfd06d5960f10c301730c0f6db57fed",
+      "publishedSha256": "ff5e367ac0dde228dd97c0e35172883e7cfd06d5960f10c301730c0f6db57fed",
+      "originalBytes": 861187,
+      "publishedBytes": 861187,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/project-design-authored-audit.json",
+      "archive": "data/qa/project-design-authored-audit.json.gz",
+      "originalSha256": "0d42deeae996ba11249c07478a74472727a3a221c7038affb26fda0da3481937",
+      "publishedSha256": "0d42deeae996ba11249c07478a74472727a3a221c7038affb26fda0da3481937",
+      "originalBytes": 861290,
+      "publishedBytes": 861290,
+      "redacted": false
+    },
+    {
+      "source": "doc/design/generated/design-validation.json",
+      "archive": "doc/design/generated/design-validation.json.gz",
+      "originalSha256": "a35e39621471e388fd9fb42d20ef84e895cae41ce07b8cf342a927f8383bccce",
+      "publishedSha256": "a35e39621471e388fd9fb42d20ef84e895cae41ce07b8cf342a927f8383bccce",
+      "originalBytes": 89626,
+      "publishedBytes": 89626,
+      "redacted": false
+    },
+    {
+      "source": "data/qa/archive-source-teaching-delivery-first.py",
+      "archive": "data/qa/archive-source-teaching-delivery-first.py.gz",
+      "originalSha256": "3ee81367d1b1f997c8457e642b67f4d1e642074894ce8746c5538b522969f57f",
+      "publishedSha256": "e9107250e053382991a36a9bfdb9e3f2ee48c01ac50cc5001d383eea106dc2ae",
+      "originalBytes": 4287,
+      "publishedBytes": 4284,
+      "redacted": true
+    }
+  ]
+}
