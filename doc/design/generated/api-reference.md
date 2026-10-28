@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`fa8328b0a5a6cab67e0b9a923c0f3a7a6bb0452d`。共 447 个 HTTP 路由声明，当前 AppModule 可达 426 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`2b1a0471ddf1bef152f601f53d57148c4e188151`。共 450 个 HTTP 路由声明，当前 AppModule 可达 429 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -95,7 +95,7 @@
 
 实现：[apps/api/src/modules/ai/ai.controller.ts:45](../../../apps/api/src/modules/ai/ai.controller.ts#L45)，方法 `openSession`。
 
-- 签名：`openSession(@Req() req: AuthenticatedRequest, @Body() body: { userRole: 'student' | 'parent'; studentId: string | null; subject?: 'math' | 'chinese' | 'english' | null; pageContext: AssistantSession['pageContext']; contextRefType?: string | null; contextRefId?: string | null; contextItemId?: string | null; contextSelection?: AssistantTeachingSelection; })`
+- 签名：`openSession(@Req() req: AuthenticatedRequest, @Body() body: { userRole: 'student' | 'parent'; studentId: string | null; subject?: 'math' | 'chinese' | 'english' | 'chemistry' | null; pageContext: AssistantSession['pageContext']; contextRefType?: string | null; contextRefId?: string | null; contextItemId?: string | null; contextSelection?: AssistantTeachingSelection; })`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.aiService.openDurableAssistantSession`
@@ -263,7 +263,7 @@
 
 实现：[apps/api/src/modules/assessments/assessments.controller.ts:10](../../../apps/api/src/modules/assessments/assessments.controller.ts#L10)，方法 `start`。
 
-- 签名：`start(@Req() req: AuthenticatedRequest, @Body() body: { studentId: string; subject: 'math' | 'chinese' | 'english'; assessmentType: 'initial' | 'unit' | 'stage' | 'micro' | 'retry'; })`
+- 签名：`start(@Req() req: AuthenticatedRequest, @Body() body: { studentId: string; subject: 'math' | 'chinese' | 'english' | 'chemistry'; assessmentType: 'initial' | 'unit' | 'stage' | 'micro' | 'retry'; })`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.assessmentsService.start`
@@ -377,7 +377,7 @@
 
 实现：[apps/api/src/modules/content/content.controller.ts:13](../../../apps/api/src/modules/content/content.controller.ts#L13)，方法 `listTextbooks`。
 
-- 签名：`listTextbooks(@Query('subject') subject?: 'math' | 'chinese' | 'english')`
+- 签名：`listTextbooks(@Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry')`
 - 控制器装饰器：`[]`
 - 方法装饰器：`[]`
 - 调用：`this.contentService.listTextbooks`
@@ -395,7 +395,7 @@
 
 实现：[apps/api/src/modules/content/content.controller.ts:23](../../../apps/api/src/modules/content/content.controller.ts#L23)，方法 `listKnowledgePoints`。
 
-- 签名：`listKnowledgePoints(@Query('subject') subject?: 'math' | 'chinese' | 'english')`
+- 签名：`listKnowledgePoints(@Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry')`
 - 控制器装饰器：`[]`
 - 方法装饰器：`[]`
 - 调用：`this.contentService.listKnowledgePoints`
@@ -404,7 +404,7 @@
 
 实现：[apps/api/src/modules/content/content.controller.ts:28](../../../apps/api/src/modules/content/content.controller.ts#L28)，方法 `listQuestions`。
 
-- 签名：`listQuestions(@Req() req: AuthenticatedRequest, @Query('subject') subject?: 'math' | 'chinese' | 'english')`
+- 签名：`listQuestions(@Req() req: AuthenticatedRequest, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry')`
 - 控制器装饰器：`[]`
 - 方法装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 调用：`this.contentService.listQuestions`
@@ -413,7 +413,7 @@
 
 实现：[apps/api/src/modules/content/content.controller.ts:36](../../../apps/api/src/modules/content/content.controller.ts#L36)，方法 `importTextbooks`。
 
-- 签名：`importTextbooks(@Req() req: AuthenticatedRequest, @Body() body: { subject?: 'math' | 'chinese' | 'english'; publisherVersion?: string })`
+- 签名：`importTextbooks(@Req() req: AuthenticatedRequest, @Body() body: { subject?: 'math' | 'chinese' | 'english' | 'chemistry'; publisherVersion?: string })`
 - 控制器装饰器：`[]`
 - 方法装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 调用：`this.contentService.importTextbooks`
@@ -422,7 +422,7 @@
 
 实现：[apps/api/src/modules/content/content.controller.ts:45](../../../apps/api/src/modules/content/content.controller.ts#L45)，方法 `createKnowledgePoint`。
 
-- 签名：`createKnowledgePoint(@Req() req: AuthenticatedRequest, @Body() body: { subject: 'math' | 'chinese' | 'english'; name: string; parentId: string | null; gradeBand: string; difficultyLevel: number; lessonId: string | null; status?: 'draft' | 'published'; })`
+- 签名：`createKnowledgePoint(@Req() req: AuthenticatedRequest, @Body() body: { subject: 'math' | 'chinese' | 'english' | 'chemistry'; name: string; parentId: string | null; gradeBand: string; difficultyLevel: number; lessonId: string | null; status?: 'draft' | 'published'; })`
 - 控制器装饰器：`[]`
 - 方法装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 调用：`this.contentService.createKnowledgePoint`
@@ -440,7 +440,7 @@
 
 实现：[apps/api/src/modules/content/content.controller.ts:79](../../../apps/api/src/modules/content/content.controller.ts#L79)，方法 `createQuestion`。
 
-- 签名：`createQuestion(@Req() req: AuthenticatedRequest, @Body() body: { subject: 'math' | 'chinese' | 'english'; type: 'objective' | 'subjective' | 'stepwise' | 'oral'; stem: string; answer: unknown; analysis: string; difficultyLevel: number; knowledgePointIds?: string[]; status?: 'draft' | 'published'; })`
+- 签名：`createQuestion(@Req() req: AuthenticatedRequest, @Body() body: { subject: 'math' | 'chinese' | 'english' | 'chemistry'; type: 'objective' | 'subjective' | 'stepwise' | 'oral'; stem: string; answer: unknown; analysis: string; difficultyLevel: number; knowledgePointIds?: string[]; status?: 'draft' | 'published'; })`
 - 控制器装饰器：`[]`
 - 方法装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 调用：`this.contentService.createQuestion`
@@ -476,7 +476,7 @@
 
 实现：[apps/api/src/modules/content/content.controller.ts:124](../../../apps/api/src/modules/content/content.controller.ts#L124)，方法 `getQuestionCoverageSummary`。
 
-- 签名：`getQuestionCoverageSummary(@Req() req: AuthenticatedRequest, @Query('subject') subject?: 'math' | 'chinese' | 'english', @Query('minQuestionsPerKnowledgePoint') minQuestionsPerKnowledgePoint?: string)`
+- 签名：`getQuestionCoverageSummary(@Req() req: AuthenticatedRequest, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry', @Query('minQuestionsPerKnowledgePoint') minQuestionsPerKnowledgePoint?: string)`
 - 控制器装饰器：`[]`
 - 方法装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 调用：`this.questionCoverageService.getCoverageSummary`
@@ -485,7 +485,7 @@
 
 实现：[apps/api/src/modules/content/content.controller.ts:138](../../../apps/api/src/modules/content/content.controller.ts#L138)，方法 `backfillQuestionCoverage`。
 
-- 签名：`backfillQuestionCoverage(@Req() req: AuthenticatedRequest, @Body() body: { subject?: 'math' | 'chinese' | 'english'; minQuestionsPerKnowledgePoint?: number; importTextbookCandidates?: boolean; candidateVolumeLimit?: number | null; autoCreateDraftsFromCandidates?: boolean; })`
+- 签名：`backfillQuestionCoverage(@Req() req: AuthenticatedRequest, @Body() body: { subject?: 'math' | 'chinese' | 'english' | 'chemistry'; minQuestionsPerKnowledgePoint?: number; importTextbookCandidates?: boolean; candidateVolumeLimit?: number | null; autoCreateDraftsFromCandidates?: boolean; })`
 - 控制器装饰器：`[]`
 - 方法装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 调用：`this.questionCoverageService.backfillQuestionCoverage`
@@ -1162,6 +1162,35 @@
 - 方法装饰器：`[]`
 - 调用：`this.gesp.document`
 
+## ChemistryController — 当前接入
+
+### GET /api/chemistry/catalog
+
+实现：[apps/api/src/modules/learning/chemistry.controller.ts:9](../../../apps/api/src/modules/learning/chemistry.controller.ts#L9)，方法 `catalog`。
+
+- 签名：`catalog(@Req() req: AuthenticatedRequest, @Query('studentId') studentId?: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.chemistry.catalog`
+
+### POST /api/chemistry/enroll
+
+实现：[apps/api/src/modules/learning/chemistry.controller.ts:10](../../../apps/api/src/modules/learning/chemistry.controller.ts#L10)，方法 `enroll`。
+
+- 签名：`enroll(@Req() req: AuthenticatedRequest, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.chemistry.enroll`
+
+### POST /api/chemistry/checkpoints/start
+
+实现：[apps/api/src/modules/learning/chemistry.controller.ts:11](../../../apps/api/src/modules/learning/chemistry.controller.ts#L11)，方法 `start`。
+
+- 签名：`start(@Req() req: AuthenticatedRequest, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.chemistry.start`
+
 ## ClassroomCodeController — 当前接入
 
 ### GET /api/learning/classroom/sessions/:sessionId/code-drafts/:stepId/:blockId
@@ -1495,7 +1524,7 @@
 
 实现：[apps/api/src/modules/learning/learning.controller.ts:19](../../../apps/api/src/modules/learning/learning.controller.ts#L19)，方法 `studioOverview`。
 
-- 签名：`studioOverview(@Req() req: AuthenticatedRequest, @Query('studentId') studentId?: string, @Query('subject') subject?: string, @Query('materialView') materialView?:string)`
+- 签名：`studioOverview(@Req() req: AuthenticatedRequest, @Query('studentId') studentId?: string, @Query('subject') subject?: string, @Query('materialView') materialView?:string, @Query('courseId') courseId?:string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.learning.studioOverview`
@@ -3396,7 +3425,7 @@
 
 实现：[apps/api/src/modules/missions/missions.controller.ts:10](../../../apps/api/src/modules/missions/missions.controller.ts#L10)，方法 `getTodayMission`。
 
-- 签名：`getTodayMission(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english')`
+- 签名：`getTodayMission(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry')`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.missionsService.getTodayMission`
@@ -3452,7 +3481,7 @@
 
 实现：[apps/api/src/modules/plans/plans.controller.ts:10](../../../apps/api/src/modules/plans/plans.controller.ts#L10)，方法 `getWeeklyPlan`。
 
-- 签名：`getWeeklyPlan(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english', @Query('weekStartDate') weekStartDate?: string)`
+- 签名：`getWeeklyPlan(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry', @Query('weekStartDate') weekStartDate?: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.plansService.getWeeklyPlan`
@@ -3461,7 +3490,7 @@
 
 实现：[apps/api/src/modules/plans/plans.controller.ts:20](../../../apps/api/src/modules/plans/plans.controller.ts#L20)，方法 `generateWeeklyPlan`。
 
-- 签名：`generateWeeklyPlan(@Req() req: AuthenticatedRequest, @Body() body: { studentId: string; subject?: 'math' | 'chinese' | 'english'; weekStartDate?: string; availableMinutesPerDay?: number; })`
+- 签名：`generateWeeklyPlan(@Req() req: AuthenticatedRequest, @Body() body: { studentId: string; subject?: 'math' | 'chinese' | 'english' | 'chemistry'; weekStartDate?: string; availableMinutesPerDay?: number; })`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.plansService.generateWeeklyPlan`
@@ -3712,7 +3741,7 @@
 
 实现：[apps/api/src/modules/progress/progress.controller.ts:10](../../../apps/api/src/modules/progress/progress.controller.ts#L10)，方法 `getMasteryHeatmap`。
 
-- 签名：`getMasteryHeatmap(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english')`
+- 签名：`getMasteryHeatmap(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry')`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.progressService.getMasteryHeatmap`
@@ -3721,7 +3750,7 @@
 
 实现：[apps/api/src/modules/progress/progress.controller.ts:20](../../../apps/api/src/modules/progress/progress.controller.ts#L20)，方法 `getStudentKnowledgeMap`。
 
-- 签名：`getStudentKnowledgeMap(@Req() req: AuthenticatedRequest, @Param('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english')`
+- 签名：`getStudentKnowledgeMap(@Req() req: AuthenticatedRequest, @Param('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry')`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.progressService.getStudentKnowledgeMap`
@@ -3730,7 +3759,7 @@
 
 实现：[apps/api/src/modules/progress/progress.controller.ts:30](../../../apps/api/src/modules/progress/progress.controller.ts#L30)，方法 `getWeeklyReport`。
 
-- 签名：`getWeeklyReport(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english', @Query('weekStartDate') weekStartDate?: string)`
+- 签名：`getWeeklyReport(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry', @Query('weekStartDate') weekStartDate?: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.progressService.getWeeklyReport`
@@ -3739,7 +3768,7 @@
 
 实现：[apps/api/src/modules/progress/progress.controller.ts:41](../../../apps/api/src/modules/progress/progress.controller.ts#L41)，方法 `getParentAlerts`。
 
-- 签名：`getParentAlerts(@Req() req: AuthenticatedRequest, @Param('parentId') parentId: string, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english')`
+- 签名：`getParentAlerts(@Req() req: AuthenticatedRequest, @Param('parentId') parentId: string, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry')`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.progressService.getParentAlerts`

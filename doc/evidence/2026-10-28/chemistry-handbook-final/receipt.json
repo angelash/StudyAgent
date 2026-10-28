@@ -1,0 +1,117 @@
+{
+  "passed": true,
+  "sourceRevision": "2b1a0471ddf1bef152f601f53d57148c4e188151",
+  "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
+  "features": {
+    "areas": 14,
+    "features": 130,
+    "activeNormalApiRoutes": 429,
+    "coveredApiRoutes": 429
+  },
+  "coverage": {
+    "activeNormalApiRoutes": 429,
+    "coveredApiRoutes": 429,
+    "uncovered": []
+  },
+  "applicationBaselineEvidence": {
+    "newlyRunByThisScript": false,
+    "receipt": "../evidence/2026-10-28/teaching-output-acceptance.json",
+    "revision": "ef7466b508847dd70320cf2bd8521574789b1cdb",
+    "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
+  },
+  "sourceFiles": 630,
+  "markdownLinks": 3958,
+  "viewerChecks": 10,
+  "primaryFoundation": {
+    "points": 258,
+    "teaching": 258,
+    "missingTeaching": 0,
+    "originalExercises": 15758,
+    "pointsNeedingMoreMeasurementMaterials": 0
+  },
+  "separateChemistry": {
+    "version": "guangzhou-pep-chemistry-9-upper-v1",
+    "grade": 9,
+    "term": "upper",
+    "units": 7,
+    "authoredPoints": 28,
+    "teachingCards": 28,
+    "originalRuleExercises": 2016,
+    "sourceSha256": {
+      "apps/api/src/modules/diagnostics/chemistry-curriculum.ts": "10336870bd2e857a87bdc90e766ead80d92ec8973c6212c7cca4758690d67371"
+    },
+    "interpretation": "Separate original chemistry course counts. Exercise count is not independent family count, a standardized norm, teacher approval, publisher textbook coverage or real learner retention evidence."
+  },
+  "files": {
+    "doc/design/generated/source-inventory.json": {
+      "bytes": 1587567,
+      "sha256": "8b2ad0f33052828301621128d21bf3c63627ecccc73e9e773d426864ee898e39",
+      "gzipSha256": "9aea29823ae249c448f079db0f565cea7422237184be476961e971b471669f38"
+    },
+    "doc/design/generated/coverage.json": {
+      "bytes": 3026,
+      "sha256": "309b065c48476c4e6a8cfc9c7d009bae3f73f1de25e631b41aa093a4d98b1889",
+      "gzipSha256": "872286f46232f0aba9c9064d7b2157e3380a243996f7a8e59a1552f3d58d95f5"
+    },
+    "doc/design/generated/content-snapshot.json": {
+      "bytes": 38754,
+      "sha256": "f7817c1e59a61f9acaf38282fd4b9bd1eceaf5edb76d3d7cdb4de6d9ba79b49a",
+      "gzipSha256": "be83b06e12cd9caa08d6d8018c9f79e4635bd62e2749d0ffa28669fe4f3de305"
+    },
+    "doc/design/generated/design-validation.json": {
+      "bytes": 84145,
+      "sha256": "3a74de5329ba90e83ea185f65e6ab3ca449ffb855f347e8c583ebfccb61174c1",
+      "gzipSha256": "2a71faf954298abf949f7fcf96c24d4bc993f816850a3e8eb296b31b78d72cd9"
+    },
+    "doc/design/feature-catalog.json": {
+      "bytes": 538540,
+      "sha256": "20b2459625b221f371998fa5ece6f01d4cd211fa3009d631c00a27b407164427",
+      "gzipSha256": "ae753b0de67b22593d8ec42f6f71e3dae75d07b0083505c82ab6bbe355a075b9"
+    },
+    "doc/design/index.html": {
+      "bytes": 400256,
+      "sha256": "81ff7627f7cda314e26c4b7fa19ce4d3430d61df5e506518c65fa11cde16f93c",
+      "gzipSha256": "a5627466bf6dee69694ae72d1e66b64346f1a3a7f731c5df89b7146769411e92"
+    },
+    "data/qa/chemistry-handbook-final-inventory.log": {
+      "bytes": 487,
+      "sha256": "5835bd4d83fe23a360d4f0d8b1ec003c983cfa6cb8a00e5af7c478d6776c5abf",
+      "gzipSha256": "e394424ecbed7c889a1e313bdd8e71bfdfc9f44a9da78ce6bfe2289677cb126d"
+    },
+    "data/qa/chemistry-handbook-final-curriculum.log": {
+      "bytes": 119,
+      "sha256": "6b1528278f408783f3b30fee14e1c16e49a7466b6de730bc3102d2a0fe481792",
+      "gzipSha256": "277b6eab73778039ce7ed1c8687c8904d9872c3fabf3e4f87a311b7c743b8033"
+    },
+    "data/qa/chemistry-handbook-final-content.log": {
+      "bytes": 2612,
+      "sha256": "6468caf4b979248bf1e1f68b3e1544fb9f78991561765251856969ff9f5ca1eb",
+      "gzipSha256": "5b481fa36a33a40be4046d6a531d223fb083f9f8c95d6c738a9bcb02684aacb5"
+    },
+    "data/qa/chemistry-handbook-final-build.log": {
+      "bytes": 102,
+      "sha256": "5af1a1b898823c3f9e6dbbe07ca1c7c0d89be9df41698331b9d80eececc4b39c",
+      "gzipSha256": "a5e8e3ccd38c0afcb884bf99df950358facc80ab715e2da72a47a06abcae14d2"
+    },
+    "data/qa/chemistry-handbook-final-validate.log": {
+      "bytes": 281,
+      "sha256": "04664a93ab9beeb690dddaeb86c20cdf1f1f5b4ed75b3fc70edd20444a2db596",
+      "gzipSha256": "1908ca1fa837006c7aad32f4d1093009fbac4dac385565323dc9964aba1fc123"
+    },
+    "data/qa/project-design-viewer/desktop.png": {
+      "bytes": 188927,
+      "sha256": "8297fb8422e32273230115ebf739b2bc1a452ba0733520045442eedce468770b",
+      "gzipSha256": "28744acbe8053f7d7e4e3187e557c2e4f210d3898ff542b9618ee0cccebf7a86"
+    },
+    "data/qa/project-design-viewer/mobile.png": {
+      "bytes": 127145,
+      "sha256": "8e7f3d92b4ab4d5e85232d431a95dd210f0c2c2736fba97d403e352c51482c82",
+      "gzipSha256": "7be899086c58feaa05cf946f428a69067e3b31cd06d6f251bfbe95a71677aa3a"
+    },
+    "data/qa/chemistry-assistant-index-verification.json": {
+      "bytes": 1340,
+      "sha256": "4a1687fe7d051c9ab3a20262a3c065d286b7ca0dfb2ee63c9756530c9d94f5bc",
+      "gzipSha256": "2a33bd8921b98c3644ae2a3b127870b7ecfe3fa0d7457e15f6f5ceafce6c5055"
+    }
+  }
+}

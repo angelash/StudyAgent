@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "fa8328b0a5a6cab67e0b9a923c0f3a7a6bb0452d",
+  "sourceRevision": "2b1a0471ddf1bef152f601f53d57148c4e188151",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 129,
-    "activeNormalApiRoutes": 426,
-    "coveredApiRoutes": 426
+    "features": 130,
+    "activeNormalApiRoutes": 429,
+    "coveredApiRoutes": 429
   },
   "areas": [
     {
@@ -331,17 +331,17 @@
             {
               "name": "StudentsService.createStudent",
               "file": "apps/api/src/modules/students/students.service.ts",
-              "line": 32
+              "line": 33
             },
             {
               "name": "StudentsService.getProfile",
               "file": "apps/api/src/modules/students/students.service.ts",
-              "line": 133
+              "line": 134
             },
             {
               "name": "StudentsService.listChildren",
               "file": "apps/api/src/modules/students/students.service.ts",
-              "line": 148
+              "line": 149
             },
             {
               "name": "LearningService.studentProfiles",
@@ -400,12 +400,12 @@
             {
               "name": "StudentsService.createInvitation",
               "file": "apps/api/src/modules/students/students.service.ts",
-              "line": 93
+              "line": 94
             },
             {
               "name": "StudentsService.bindStudent",
               "file": "apps/api/src/modules/students/students.service.ts",
-              "line": 105
+              "line": 106
             }
           ],
           "sourceFiles": [
@@ -466,17 +466,17 @@
             {
               "name": "StudentsService.reviewerAssignments",
               "file": "apps/api/src/modules/students/students.service.ts",
-              "line": 167
+              "line": 168
             },
             {
               "name": "StudentsService.grantReviewer",
               "file": "apps/api/src/modules/students/students.service.ts",
-              "line": 175
+              "line": 176
             },
             {
               "name": "StudentsService.revokeReviewer",
               "file": "apps/api/src/modules/students/students.service.ts",
-              "line": 189
+              "line": 190
             }
           ],
           "sourceFiles": [
@@ -2624,12 +2624,12 @@
             {
               "name": "LearningService.overview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 880
+              "line": 889
             },
             {
               "name": "LearningService.memory",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 596
+              "line": 605
             }
           ],
           "sourceFiles": [
@@ -2687,12 +2687,12 @@
             {
               "name": "LearningService.today",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 656
+              "line": 665
             },
             {
               "name": "LearningService.start",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 670
+              "line": 679
             }
           ],
           "sourceFiles": [
@@ -2783,32 +2783,32 @@
             {
               "name": "LearningService.view",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 712
+              "line": 721
             },
             {
               "name": "LearningService.render",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 730
+              "line": 739
             },
             {
               "name": "LearningService.draft",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 748
+              "line": 757
             },
             {
               "name": "LearningService.submit",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 768
+              "line": 777
             },
             {
               "name": "LearningService.hint",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 829
+              "line": 838
             },
             {
               "name": "LearningService.complete",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 840
+              "line": 849
             }
           ],
           "sourceFiles": [
@@ -2858,7 +2858,7 @@
             {
               "name": "LearningService.mistakes",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 850
+              "line": 859
             }
           ],
           "sourceFiles": [
@@ -3213,52 +3213,52 @@
             {
               "name": "ContentService.listTextbooks",
               "file": "apps/api/src/modules/content/content.service.ts",
-              "line": 56
+              "line": 58
             },
             {
               "name": "ContentService.getVolumeTree",
               "file": "apps/api/src/modules/content/content.service.ts",
-              "line": 137
+              "line": 139
             },
             {
               "name": "ContentService.listKnowledgePoints",
               "file": "apps/api/src/modules/content/content.service.ts",
-              "line": 170
+              "line": 172
             },
             {
               "name": "ContentService.listQuestions",
               "file": "apps/api/src/modules/content/content.service.ts",
-              "line": 237
+              "line": 239
             },
             {
               "name": "ContentService.importTextbooks",
               "file": "apps/api/src/modules/content/content.service.ts",
-              "line": 60
+              "line": 62
             },
             {
               "name": "ContentService.createKnowledgePoint",
               "file": "apps/api/src/modules/content/content.service.ts",
-              "line": 182
+              "line": 184
             },
             {
               "name": "ContentService.updateKnowledgePoint",
               "file": "apps/api/src/modules/content/content.service.ts",
-              "line": 202
+              "line": 204
             },
             {
               "name": "ContentService.createQuestion",
               "file": "apps/api/src/modules/content/content.service.ts",
-              "line": 241
+              "line": 243
             },
             {
               "name": "ContentService.mapQuestionKnowledge",
               "file": "apps/api/src/modules/content/content.service.ts",
-              "line": 267
+              "line": 269
             },
             {
               "name": "ContentService.replaceQuestionKnowledge",
               "file": "apps/api/src/modules/content/content.service.ts",
-              "line": 282
+              "line": 284
             }
           ],
           "sourceFiles": [
@@ -4049,7 +4049,7 @@
             {
               "name": "ContentService.scaffoldVolumeQuestions",
               "file": "apps/api/src/modules/content/content.service.ts",
-              "line": 297
+              "line": 299
             },
             {
               "name": "QuestionCoverageService.getCoverageSummary",
@@ -4064,7 +4064,7 @@
             {
               "name": "ContentService.publishQuestion",
               "file": "apps/api/src/modules/content/content.service.ts",
-              "line": 315
+              "line": 317
             }
           ],
           "sourceFiles": [
@@ -5274,6 +5274,116 @@
       ],
       "features": [
         {
+          "id": "STUDIO-36",
+          "title": "九上化学课程、真实学科与独立核查",
+          "area": "studio",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
+          "pages": [
+            "/studio",
+            "/studio/classroom",
+            "/studio/projects",
+            "/studio/source-courses",
+            "/studio/whiteboards"
+          ],
+          "inputs": "本人档案、实际化学课程身份、单元/学期核查、原请求与课程版本",
+          "implementation": "课程库提供七单元28目标的原创九上化学教学路径，预览不建课，显式添加保留范围与原请求。真实课程决定subject/grade，旧数学参数不能覆盖化学正文；标题请求与所选学科/年级不符时拒绝，旧错误课程可按原指纹预检和精确修正，保留学生档案、原数学课程与作答。原生课堂、配套练习、独立核查、证据报告、原因核查、指导及到期复测沿现有流程。课程助教带实际化学原文/目标/来源，区分四年级档案与九年级课程，正式评测保护与原出处页头身份同调。",
+          "outputs": "可恢复原生课程与化学考核、独立作答记录、保留原版本的教学问答和来源",
+          "collections": [
+            "studioCourses",
+            "learningScopes",
+            "diagnosticSessions",
+            "diagnosticResponses",
+            "diagnosticPlans",
+            "reviewTasks"
+          ],
+          "limits": "2016配套规则题的数量不等于2016独立题族或常模；原创路径不是现行教材逐页恢复，参考目录/PDF不自动获教学资格。看过讲解、提示后作答、独立首答与模拟时钟结果分开；真实保持、教师审核、全模型与像素听感仍需证据。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/chemistry/catalog",
+              "controller": "ChemistryController",
+              "method": "catalog",
+              "file": "apps/api/src/modules/learning/chemistry.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "POST",
+              "path": "/api/chemistry/enroll",
+              "controller": "ChemistryController",
+              "method": "enroll",
+              "file": "apps/api/src/modules/learning/chemistry.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "POST",
+              "path": "/api/chemistry/checkpoints/start",
+              "controller": "ChemistryController",
+              "method": "start",
+              "file": "apps/api/src/modules/learning/chemistry.controller.ts",
+              "line": 11
+            }
+          ],
+          "implementations": [
+            {
+              "name": "ChemistryService.catalog",
+              "file": "apps/api/src/modules/learning/chemistry.service.ts",
+              "line": 96
+            },
+            {
+              "name": "ChemistryService.enroll",
+              "file": "apps/api/src/modules/learning/chemistry.service.ts",
+              "line": 125
+            },
+            {
+              "name": "ChemistryService.start",
+              "file": "apps/api/src/modules/learning/chemistry.service.ts",
+              "line": 151
+            }
+          ],
+          "sourceFiles": [
+            "apps/api/src/modules/diagnostics/chemistry-curriculum.ts",
+            "apps/api/src/modules/diagnostics/chemistry-curriculum.test.ts",
+            "apps/api/src/modules/learning/chemistry.controller.ts",
+            "apps/api/src/modules/learning/chemistry.service.ts",
+            "apps/api/src/modules/learning/chemistry-course.ts",
+            "apps/api/src/modules/learning/chemistry-course-correction.ts",
+            "apps/api/src/modules/learning/chemistry.integration.test.ts",
+            "apps/api/src/modules/learning/chemistry-course-correction.integration.test.ts",
+            "apps/api/src/modules/ai/assistant-chemistry.integration.test.ts",
+            "packages/contracts/src/chemistry.ts",
+            "packages/contracts/src/studio-course-request.ts",
+            "apps/web/app/studio/chemistry-course-tools.tsx",
+            "apps/web/app/studio/course-assessments.css",
+            "tests/e2e/chemistry.spec.ts",
+            "doc/product/142-guangzhou-chemistry-teaching-validation.md",
+            "doc/product/143-chemistry-course-content-correction.md"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
+            "apps/api/src/modules/learning/studio-course.test.ts",
+            "apps/api/src/modules/learning/studio.integration.test.ts",
+            "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+            "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
+            "tests/e2e/studio.spec.ts",
+            "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/classroom-practice.spec.ts",
+            "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
+            "tests/e2e/workspace.spec.ts"
+          ]
+        },
+        {
           "id": "STUDIO-01",
           "title": "统一工作台、课程筛选与连续学习",
           "area": "studio",
@@ -5392,17 +5502,17 @@
             {
               "name": "LearningService.previewStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 525
+              "line": 532
             },
             {
               "name": "LearningService.createStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 541
+              "line": 550
             },
             {
               "name": "LearningService.startStudioLesson",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 570
+              "line": 579
             }
           ],
           "sourceFiles": [
@@ -6041,12 +6151,12 @@
             {
               "name": "LearningService.previewStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 215
+              "line": 222
             },
             {
               "name": "LearningService.createStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 227
+              "line": 234
             }
           ],
           "sourceFiles": [
@@ -6111,7 +6221,7 @@
             {
               "name": "LearningService.studioWhiteboardNarration",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 501
+              "line": 508
             }
           ],
           "sourceFiles": [
@@ -6217,17 +6327,17 @@
             {
               "name": "LearningService.uploadStudioPdf",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 259
+              "line": 266
             },
             {
               "name": "LearningService.studioPdfPageImage",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 320
+              "line": 327
             },
             {
               "name": "LearningService.studioPdfOriginal",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 330
+              "line": 337
             }
           ],
           "sourceFiles": [
@@ -6351,12 +6461,12 @@
             {
               "name": "LearningService.reviewStudioPdfStructure",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 345
+              "line": 352
             },
             {
               "name": "LearningService.retryStudioPdfProcessing",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 373
+              "line": 380
             }
           ],
           "sourceFiles": [
@@ -6429,12 +6539,12 @@
             {
               "name": "LearningService.previewStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 408
+              "line": 415
             },
             {
               "name": "LearningService.createStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 423
+              "line": 430
             }
           ],
           "sourceFiles": [
@@ -6508,12 +6618,12 @@
             {
               "name": "LearningService.previewStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 453
+              "line": 460
             },
             {
               "name": "LearningService.createStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 474
+              "line": 481
             }
           ],
           "sourceFiles": [
@@ -6596,17 +6706,17 @@
             {
               "name": "LearningService.previewStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 118
+              "line": 125
             },
             {
               "name": "LearningService.createStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 134
+              "line": 141
             },
             {
               "name": "LearningService.updateStudioPlanSession",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 172
+              "line": 179
             }
           ],
           "sourceFiles": [

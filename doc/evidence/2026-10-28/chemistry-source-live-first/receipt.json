@@ -1,0 +1,62 @@
+{
+  "passed": false,
+  "sourceRevision": "ff267f4bd58ade1ed487f42a992d779f11dde030",
+  "mode": "chemistry_unit",
+  "realCliStarts": 2,
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "started",
+      "elapsedMs": 0
+    },
+    {
+      "attempt": 1,
+      "status": "failed",
+      "elapsedMs": 4336,
+      "failureKind": "provider-error"
+    },
+    {
+      "attempt": 2,
+      "status": "started",
+      "elapsedMs": 0
+    },
+    {
+      "attempt": 2,
+      "status": "failed",
+      "elapsedMs": 3648,
+      "failureKind": "provider-error"
+    }
+  ],
+  "elapsedMs": 8261,
+  "taskStatus": "failed",
+  "originalStructuredOutputs": null,
+  "formalRecordsUnchanged": true,
+  "failure": "Two actual CLI attempts classified provider-error before any original structured output. Durable task failed and no assistant answer was published. Exact upstream reason not retained by this runner; no conclusion about chemistry teaching or model schema validity.",
+  "files": {
+    "data/qa/chemistry-source-live-first/receipt.json": {
+      "bytes": 119044,
+      "sha256": "9da422072f1d2af157e53caec2711eb8802145d06b798030b7755c071725533d",
+      "gzipSha256": "a309177af275ccf2340f48853bc02afff5fb0ff379f2e670f63ba1bb6bc630fe"
+    },
+    "data/qa/chemistry-source-live-first/progress.json": {
+      "bytes": 119044,
+      "sha256": "9da422072f1d2af157e53caec2711eb8802145d06b798030b7755c071725533d",
+      "gzipSha256": "a309177af275ccf2340f48853bc02afff5fb0ff379f2e670f63ba1bb6bc630fe"
+    },
+    "data/qa/chemistry-source-live-first/chemistry_unit.json": {
+      "bytes": 14657,
+      "sha256": "d5eaddc5f06ed2900b912f21512f0e8e06c5be165e9507cb505c20a5a8a7b4bf",
+      "gzipSha256": "109dc38d30e43c7df2c641b27558ccdea8ba055edb54c86777e65a91d6b4eabf"
+    },
+    "data/qa/chemistry-source-live-first.log": {
+      "bytes": 164,
+      "sha256": "e3e296aada8653da15905a5ec00dc63ce959ceae885525cf66af71f64f57c876",
+      "gzipSha256": "8d73f19244426b7b5ecd6431813f39168a1fca5de2e3210a06591b652ef39af3"
+    },
+    "scripts/qa/course-teaching-live.cjs": {
+      "bytes": 18620,
+      "sha256": "cff5d9679ac8034dba3941ca1f8dfafc4278c0aacf8179afc189ac7c2e9379d4",
+      "gzipSha256": "f9663340b04bcc963cf5801f1a06cbee9867ed2454908ca571fb4b28d15eb0a6"
+    }
+  }
+}
