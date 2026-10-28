@@ -1,0 +1,125 @@
+{
+  "passed": true,
+  "sourceRevision": "b4a985abf72306b7cc6e763d3cfc68622c08938d",
+  "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
+  "features": {
+    "areas": 14,
+    "features": 131,
+    "activeNormalApiRoutes": 430,
+    "coveredApiRoutes": 430
+  },
+  "sourceReferences": 639,
+  "markdownLinks": 4017,
+  "viewerChecks": 10,
+  "historicalFailures": [
+    "Stale authored audit rejected after AuthGuard route update; original audit preserved and fresh current audit run.",
+    "Actual classroom now imports two pure chemistry tutorial modules missing from strict VM allowlist; only those exact modules added.",
+    "Duplicate AI-08 feature ID rejected; new artifact preflight assigned AI-11, source/image references retained on AI-10."
+  ],
+  "applicationBaselineEvidence": {
+    "newlyRunByThisScript": false,
+    "receipt": "../evidence/2026-10-28/chemistry-v2-source-alignment/receipt.json",
+    "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
+  },
+  "limits": [
+    "Source mapping and offline UI only; not full API/browser/remote CI/runtime/teacher or complete product verification.",
+    "This handbook separately inventories actual28 chemistry original figures,10 model kinds,13 lessons using models and28 guided checks; these are not independent measurement results."
+  ],
+  "files": {
+    "doc/design/generated/source-inventory.json": {
+      "sha256": "48d691bf0362494b59f513dafd6828440202066aa776435505b0c3b72c64f860",
+      "bytes": 1600931,
+      "gzipSha256": "131a92a78f795e4fe4eafb552fb6f313852b1c198c3df8c3c4c63b9e8526afa8"
+    },
+    "doc/design/generated/content-snapshot.json": {
+      "sha256": "c358a09c20f2cc60cfb246d9c3212791b17cb1450e50e998ff2c8fca13bd0f06",
+      "bytes": 39623,
+      "gzipSha256": "defe486779945a2b5cb7229fb1d9c0d042e636183347ad32af55ae3612356e59"
+    },
+    "doc/design/generated/design-validation.json": {
+      "sha256": "dcafeaba5943c93cca0745ab3041ffaeb188c308c66e9d88e83230b6c5e6068b",
+      "bytes": 85294,
+      "gzipSha256": "2464c670b88cdc47de1bdc69b23ba34998fdf5aeaa77dd593ebcabcc755087dd"
+    },
+    "doc/design/feature-catalog.json": {
+      "sha256": "cab689335fa61290dd3183c2cdcf7f4aa77bdacc749e110317eabefb1207f5ed",
+      "bytes": 541954,
+      "gzipSha256": "1eb4528c45e942a18d78d4c46a57eb4e1ee1213f423e77e1e657eb6c768b637f"
+    },
+    "doc/design/generated/coverage.json": {
+      "sha256": "93ab4e387cf81c13edd28bd6865ff2b06f8473a421fdcee8e9faf837dfb9544c",
+      "bytes": 3026,
+      "gzipSha256": "fb2b84a182be75c535a6ca25789c090b5036a8907905f37b20d41371c7ca6dd1"
+    },
+    "data/qa/chemistry-v2-handbook-inventory-final.log": {
+      "sha256": "42210e5533f8c8c8e01e7acbc12840a4c1f2e5d387d6fcc50dcdd3442353c3f9",
+      "bytes": 487,
+      "gzipSha256": "da6efb64234566db08ea42ca6e36290f8e6b1938cbeeb154e19e97263d22df4a"
+    },
+    "data/qa/chemistry-v2-handbook-content-final.log": {
+      "sha256": "c3a5efa19a654a5aa570cadcba467910d051b5a4d1250a149cb6452c1eb9a8e7",
+      "bytes": 2612,
+      "gzipSha256": "c155bbd53fb78744dc1177e2a024998c667ec32514b4dc331075c6ef4ac7e403"
+    },
+    "data/qa/chemistry-v2-handbook-build-final.log": {
+      "sha256": "a33b641c42f4f1df102e56e01116e1a5a79dd048e717e541895dd2304958a231",
+      "bytes": 102,
+      "gzipSha256": "1e627860b61dc59571b539180fad38da81e6a8e78ab5782483807b29909c0ac4"
+    },
+    "data/qa/chemistry-v2-handbook-validation-final.log": {
+      "sha256": "1579d3bbc75791fd5c2ca09e81f2e258a0da1e5d78ff4e7b28fc53e92ae6dd34",
+      "bytes": 281,
+      "gzipSha256": "33e32b5abc75d3d6e030f2e7c5beacc0ee4c715864f936dead4bb677213ad820"
+    },
+    "data/qa/chemistry-v2-handbook-content.log": {
+      "sha256": "ae0e8735279a21bae1c3956def3a051bbdf7e4dc478ca16c581a8a31d3f385c5",
+      "bytes": 1200,
+      "gzipSha256": "adec9716e9cf2dfa80df44cb36e3f224b0f1f3c3c8fb4bad079d0001ec1a6711"
+    },
+    "data/qa/chemistry-v2-handbook-content-second.log": {
+      "sha256": "bf3a9f35cffee4c61e89c3e9632fab055defb98b78ff55d113aa4d5c69a10707",
+      "bytes": 1183,
+      "gzipSha256": "68c7b44f55cf509abcabe5bced0020d221d3163e1ad1d17ce14cb5123648e85c"
+    },
+    "data/qa/chemistry-v2-handbook-build.log": {
+      "sha256": "58eebabc154409cbd245d33fd077ae7a72639af97c8809053fc232424147ce5a",
+      "bytes": 22,
+      "gzipSha256": "48fb829ceff44e4a18ba4060981c4bf968f352d55eb20908203e96d1430d4c6c"
+    },
+    "data/qa/chemistry-v2-handbook-authored-audit.log": {
+      "sha256": "6b1528278f408783f3b30fee14e1c16e49a7466b6de730bc3102d2a0fe481792",
+      "bytes": 119,
+      "gzipSha256": "277b6eab73778039ce7ed1c8687c8904d9872c3fabf3e4f87a311b7c743b8033"
+    },
+    "data/qa/project-design-authored-audit-before-896457e.json": {
+      "sha256": "f8a6007e5c109c1a0c900ff027279eca1af6e305d2a9f6ef4f0ec25e60536a61",
+      "bytes": 861290,
+      "gzipSha256": "72464b5ae8eb5fb2d0ede8cc4ab7f8a24899ef82d208a975476032e3897b8932"
+    },
+    "data/qa/project-design-authored-audit.json": {
+      "sha256": "28c5376a11d06f179fd1548701e3f9654b30af6665f83196ba544883fec3246b",
+      "bytes": 861290,
+      "gzipSha256": "1d0345c69c482cadce498e11518b8e92fae2d06ce1e22a7160650e9b03bb5c99"
+    },
+    "scripts/architecture/project-content-snapshot.cjs": {
+      "sha256": "eb596cc14954048295e0ee5b3afcb4ff6754c1adf30c2fbc202a6709a58d88f0",
+      "bytes": 10626,
+      "gzipSha256": "07077aa09cbb97bd5f8232f103e629e125032691c6bcc5619132fd3f6fe529d3"
+    },
+    "scripts/architecture/project-feature-definitions.cjs": {
+      "sha256": "0f3b638e15d1e09cf559a1e86752991960625d98d5db818adb4257d1b7c529b4",
+      "bytes": 144595,
+      "gzipSha256": "e6aa8e40cf4ef5708df9eedb769541812e0377a4bd819294fc70604318be3627"
+    },
+    "data/qa/project-design-viewer/desktop.png": {
+      "sha256": "35fe47ad30dba7272eb884a22a1cbb04a05a4fb32f778f61377c51552d155314",
+      "bytes": 188314,
+      "gzipSha256": "b35cf8ecbbcff01dd005dee68ac299c062c3d47f352b3250f25ca23f153c65f1"
+    },
+    "data/qa/project-design-viewer/mobile.png": {
+      "sha256": "6957a79002e8a836ea4a5cddfb48abb27328cca604abe38fcdaa3a148ffd0d34",
+      "bytes": 126925,
+      "gzipSha256": "384964ed1642238671c075119019455e92568481047962d097d0ae681196e701"
+    }
+  }
+}

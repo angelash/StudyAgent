@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "2b1a0471ddf1bef152f601f53d57148c4e188151",
+  "sourceRevision": "b4a985abf72306b7cc6e763d3cfc68622c08938d",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 130,
-    "activeNormalApiRoutes": 429,
-    "coveredApiRoutes": 429
+    "features": 131,
+    "activeNormalApiRoutes": 430,
+    "coveredApiRoutes": 430
   },
   "areas": [
     {
@@ -4622,17 +4622,17 @@
             {
               "name": "AiService.assertSessionOwner",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 414
+              "line": 423
             },
             {
               "name": "AiService.chat",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 536
+              "line": 545
             },
             {
               "name": "AiService.listMessages",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 663
+              "line": 672
             },
             {
               "name": "AssistantTurnService.context",
@@ -4783,7 +4783,7 @@
             "assistantMessages",
             "aiInsights"
           ],
-          "limits": "课程来源不是作答证据；助教解释不形成掌握/诊断/计划。18000完整JSON超预算明确拒绝，不静默裁切或降级。图片仅带文字描述；资料页短摘不能证明全部讲解逐段来自原页。当前代码专项与整站/真实模型/生产交付/教师和像素门禁分别按142原件核对，目录/测试存在不表示全部范围已验收。",
+          "limits": "课程来源不是作答证据；助教解释不形成掌握/诊断/计划。18000完整JSON超预算明确拒绝，不静默裁切或降级。模型只带图片完整文字说明；出处页可显示按发布清单及SHA核对的原创图，原图更换或丢失只保留说明；实际课堂补充讲述/模型安全投影和teachingVersion纳入指纹，旧会话只读。资料页短摘不能证明全部讲解逐段来自原页。当前代码专项与整站/真实模型/生产交付/教师和像素门禁分别按142原件核对，目录/测试存在不表示全部范围已验收。",
           "endpoints": [
             {
               "verb": "GET",
@@ -4811,7 +4811,7 @@
             {
               "name": "AiService.sourcePreview",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 385
+              "line": 394
             }
           ],
           "sourceFiles": [
@@ -4822,6 +4822,10 @@
             "apps/api/src/modules/ai/assistant-course.integration.test.ts",
             "apps/api/src/modules/ai/assistant-course-recovery.integration.test.ts",
             "apps/api/src/modules/ai/assistant-source-references.test.ts",
+            "apps/api/src/modules/ai/assistant-controlled-figure.ts",
+            "apps/api/src/modules/ai/assistant-controlled-figure.test.ts",
+            "apps/api/src/modules/ai/assistant-chemistry-tutorial.test.ts",
+            "apps/web/app/studio/classroom/classroom-image.tsx",
             "apps/api/src/modules/ai/assistant-teaching-provider-context.test.ts",
             "apps/web/app/studio/studio-course-assistant.tsx",
             "apps/web/app/studio/studio-course-assistant.css",
@@ -5112,7 +5116,7 @@
             {
               "name": "ClassroomService.voicePreview",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 305
+              "line": 307
             }
           ],
           "sourceFiles": [
@@ -5205,6 +5209,66 @@
             "scripts/operations/setup-imagegen.cjs",
             "scripts/processing/requirements-imagegen.txt",
             "scripts/qa/classroom-image-live.cjs"
+          ],
+          "tests": [
+            "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
+            "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
+            "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+            "apps/api/src/modules/ai/speech.service.test.ts",
+            "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
+            "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
+            "apps/api/src/common/terminate-child-process.integration.test.ts",
+            "tests/e2e/assistant-conversations.spec.ts",
+            "apps/api/src/modules/ai/teaching-tool.integration.test.ts",
+            "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+            "tests/e2e/teaching-tools.spec.ts"
+          ]
+        },
+        {
+          "id": "AI-11",
+          "title": "已保存对话的完整笔记来源预检",
+          "area": "ai",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生、教研",
+          "pages": [
+            "/studio",
+            "/studio/classroom",
+            "/student/assessment",
+            "/student/today",
+            "/admin/ai-tools"
+          ],
+          "inputs": "原会话、最多20条消息ID、明确关联问题及目标",
+          "implementation": "本人鉴权后按原顺序读完整消息和原模型；从原冻结课程或讲座核对可信引用、年级和范围；完整JSON核对18000预算，超限保留原文；学生正式评测期间拒绝。",
+          "outputs": "只读来源、完整预算和稳定指纹",
+          "collections": [
+            "assistantSessions",
+            "assistantMessages"
+          ],
+          "limits": "没有创建笔记、调用模型、采用、前端入口或正式掌握写入；后续143 B/C/D继续。",
+          "endpoints": [
+            {
+              "verb": "POST",
+              "path": "/api/ai/assistant/sessions/:sessionId/artifacts/preflight",
+              "controller": "AssistantArtifactController",
+              "method": "preflight",
+              "file": "apps/api/src/modules/ai/assistant-artifact.controller.ts",
+              "line": 10
+            }
+          ],
+          "implementations": [
+            {
+              "name": "AssistantArtifactService.preflight",
+              "file": "apps/api/src/modules/ai/assistant-artifact.service.ts",
+              "line": 16
+            }
+          ],
+          "sourceFiles": [
+            "packages/contracts/src/assistant-artifact.ts",
+            "apps/api/src/modules/ai/assistant-artifact.controller.ts",
+            "apps/api/src/modules/ai/assistant-artifact.service.ts",
+            "apps/api/src/modules/ai/assistant-artifact.integration.test.ts",
+            "apps/api/src/common/auth.guard.ts",
+            "doc/product/143-assistant-messages-to-learning-artifacts.md"
           ],
           "tests": [
             "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
@@ -5328,17 +5392,17 @@
             {
               "name": "ChemistryService.catalog",
               "file": "apps/api/src/modules/learning/chemistry.service.ts",
-              "line": 96
+              "line": 97
             },
             {
               "name": "ChemistryService.enroll",
               "file": "apps/api/src/modules/learning/chemistry.service.ts",
-              "line": 125
+              "line": 127
             },
             {
               "name": "ChemistryService.start",
               "file": "apps/api/src/modules/learning/chemistry.service.ts",
-              "line": 151
+              "line": 153
             }
           ],
           "sourceFiles": [
@@ -5579,7 +5643,7 @@
             {
               "name": "ClassroomService.catalog",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 31
+              "line": 32
             }
           ],
           "sourceFiles": [
@@ -5675,27 +5739,27 @@
             {
               "name": "ClassroomService.open",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 100
+              "line": 101
             },
             {
               "name": "ClassroomService.get",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 90
+              "line": 91
             },
             {
               "name": "ClassroomService.progress",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 152
+              "line": 154
             },
             {
               "name": "ClassroomService.narration",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 313
+              "line": 315
             },
             {
               "name": "ClassroomService.upgradePresentation",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 177
+              "line": 179
             }
           ],
           "sourceFiles": [
@@ -5808,7 +5872,7 @@
             {
               "name": "ClassroomService.ask",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 269
+              "line": 271
             },
             {
               "name": "ClassroomTurnService.list",
@@ -5918,12 +5982,12 @@
             {
               "name": "ClassroomService.answer",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 195
+              "line": 197
             },
             {
               "name": "ClassroomService.hint",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 244
+              "line": 246
             }
           ],
           "sourceFiles": [
@@ -7554,7 +7618,7 @@
             {
               "name": "ClassroomService.catalog",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 31
+              "line": 32
             },
             {
               "name": "SourceCourseService.get",
@@ -7780,7 +7844,7 @@
             {
               "name": "ClassroomService.source",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 91
+              "line": 92
             }
           ],
           "sourceFiles": [

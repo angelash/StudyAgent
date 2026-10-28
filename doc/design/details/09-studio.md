@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`2b1a0471ddf1bef152f601f53d57148c4e188151`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`b4a985abf72306b7cc6e763d3cfc68622c08938d`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`、`/studio/whiteboards`。
 
@@ -68,9 +68,9 @@
 
 **服务方法**：
 
-- `ChemistryService.catalog`；[apps/api/src/modules/learning/chemistry.service.ts:96](../../../apps/api/src/modules/learning/chemistry.service.ts#L96)。
-- `ChemistryService.enroll`；[apps/api/src/modules/learning/chemistry.service.ts:125](../../../apps/api/src/modules/learning/chemistry.service.ts#L125)。
-- `ChemistryService.start`；[apps/api/src/modules/learning/chemistry.service.ts:151](../../../apps/api/src/modules/learning/chemistry.service.ts#L151)。
+- `ChemistryService.catalog`；[apps/api/src/modules/learning/chemistry.service.ts:97](../../../apps/api/src/modules/learning/chemistry.service.ts#L97)。
+- `ChemistryService.enroll`；[apps/api/src/modules/learning/chemistry.service.ts:127](../../../apps/api/src/modules/learning/chemistry.service.ts#L127)。
+- `ChemistryService.start`；[apps/api/src/modules/learning/chemistry.service.ts:153](../../../apps/api/src/modules/learning/chemistry.service.ts#L153)。
 
 **补充实现文件**：
 
@@ -163,7 +163,7 @@
 
 **服务方法**：
 
-- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:31](../../../apps/api/src/modules/learning/classroom.service.ts#L31)。
+- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:32](../../../apps/api/src/modules/learning/classroom.service.ts#L32)。
 
 ## STUDIO-04 课堂会话、冻结双语字幕与旧断点升级
 
@@ -187,11 +187,11 @@
 
 **服务方法**：
 
-- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:100](../../../apps/api/src/modules/learning/classroom.service.ts#L100)。
-- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:90](../../../apps/api/src/modules/learning/classroom.service.ts#L90)。
-- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:152](../../../apps/api/src/modules/learning/classroom.service.ts#L152)。
-- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:313](../../../apps/api/src/modules/learning/classroom.service.ts#L313)。
-- `ClassroomService.upgradePresentation`；[apps/api/src/modules/learning/classroom.service.ts:177](../../../apps/api/src/modules/learning/classroom.service.ts#L177)。
+- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:101](../../../apps/api/src/modules/learning/classroom.service.ts#L101)。
+- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:91](../../../apps/api/src/modules/learning/classroom.service.ts#L91)。
+- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:154](../../../apps/api/src/modules/learning/classroom.service.ts#L154)。
+- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:315](../../../apps/api/src/modules/learning/classroom.service.ts#L315)。
+- `ClassroomService.upgradePresentation`；[apps/api/src/modules/learning/classroom.service.ts:179](../../../apps/api/src/modules/learning/classroom.service.ts#L179)。
 
 **补充实现文件**：
 
@@ -227,7 +227,7 @@
 
 **服务方法**：
 
-- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:269](../../../apps/api/src/modules/learning/classroom.service.ts#L269)。
+- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:271](../../../apps/api/src/modules/learning/classroom.service.ts#L271)。
 - `ClassroomTurnService.list`；[apps/api/src/modules/learning/classroom-turn.service.ts:64](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L64)。
 - `ClassroomTurnService.get`；[apps/api/src/modules/learning/classroom-turn.service.ts:68](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L68)。
 - `ClassroomTurnService.create`；[apps/api/src/modules/learning/classroom-turn.service.ts:70](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L70)。
@@ -272,8 +272,8 @@
 
 **服务方法**：
 
-- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:195](../../../apps/api/src/modules/learning/classroom.service.ts#L195)。
-- `ClassroomService.hint`；[apps/api/src/modules/learning/classroom.service.ts:244](../../../apps/api/src/modules/learning/classroom.service.ts#L244)。
+- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:197](../../../apps/api/src/modules/learning/classroom.service.ts#L197)。
+- `ClassroomService.hint`；[apps/api/src/modules/learning/classroom.service.ts:246](../../../apps/api/src/modules/learning/classroom.service.ts#L246)。
 
 **补充实现文件**：
 
@@ -807,7 +807,7 @@
 
 - `CourseProjectService.catalog`；[apps/api/src/modules/learning/course-project.service.ts:66](../../../apps/api/src/modules/learning/course-project.service.ts#L66)。
 - `CourseProjectService.open`；[apps/api/src/modules/learning/course-project.service.ts:77](../../../apps/api/src/modules/learning/course-project.service.ts#L77)。
-- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:31](../../../apps/api/src/modules/learning/classroom.service.ts#L31)。
+- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:32](../../../apps/api/src/modules/learning/classroom.service.ts#L32)。
 - `SourceCourseService.get`；[apps/api/src/modules/learning/source-course.service.ts:87](../../../apps/api/src/modules/learning/source-course.service.ts#L87)。
 
 **补充实现文件**：
@@ -865,7 +865,7 @@
 - `SourceCourseCheckService.edit`；[apps/api/src/modules/learning/source-course-check.service.ts:116](../../../apps/api/src/modules/learning/source-course-check.service.ts#L116)。
 - `SourceCourseCheckService.publish`；[apps/api/src/modules/learning/source-course-check.service.ts:125](../../../apps/api/src/modules/learning/source-course-check.service.ts#L125)。
 - `SourceCourseCheckService.withdraw`；[apps/api/src/modules/learning/source-course-check.service.ts:137](../../../apps/api/src/modules/learning/source-course-check.service.ts#L137)。
-- `ClassroomService.source`；[apps/api/src/modules/learning/classroom.service.ts:91](../../../apps/api/src/modules/learning/classroom.service.ts#L91)。
+- `ClassroomService.source`；[apps/api/src/modules/learning/classroom.service.ts:92](../../../apps/api/src/modules/learning/classroom.service.ts#L92)。
 
 **补充实现文件**：
 

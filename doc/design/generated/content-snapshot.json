@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "2b1a0471ddf1bef152f601f53d57148c4e188151",
+  "sourceRevision": "b4a985abf72306b7cc6e763d3cfc68622c08938d",
   "scope": "Static versioned curriculum and registry counts. No real family database, full raw-asset byte inventory, runtime model calls, textbook coverage review or human validity study.",
   "authored": {
-    "auditAt": "2026-10-28T10:15:13.362Z",
+    "auditAt": "2026-10-28T13:15:22.912Z",
     "auditCommand": "node scripts/qa/audit-authored-curriculum.cjs data/qa/project-design-authored-audit.json",
     "localAuditArtifact": "data/qa/project-design-authored-audit.json",
-    "localAuditSha256": "f8a6007e5c109c1a0c900ff027279eca1af6e305d2a9f6ef4f0ec25e60536a61",
+    "localAuditSha256": "28c5376a11d06f179fd1548701e3f9654b30af6665f83196ba544883fec3246b",
     "passed": true,
     "familyIdentityVersion": "authored-family-identity-v1",
     "materialCoverageVersion": "verification-materials-v1",
@@ -251,7 +251,7 @@
       "apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts": "e3af27d7b9042dd0feead644259ba6be43850332eeb8ab14a3bf21576bb4a022",
       "apps/api/src/infrastructure/in-memory-store.service.ts": "ce648465c2b2fc27247e102c1a48c2aa6961f7e89d39956042dd1109e721bb0d",
       "apps/api/src/infrastructure/domain-database.ts": "fab175f122447097ac5b927d257f97eace1a6bda5be86d1b499b09a5501b1ef5",
-      "apps/api/src/common/auth.guard.ts": "52b5c56909f2ef4f13865ee3e981ccac829a5f2deb02b81fde515ebb496e8c17",
+      "apps/api/src/common/auth.guard.ts": "066b164065144d042e7b52e75b30fad4b3bd3ba7e40baa601540b1ebce0a01b8",
       "apps/web/app/admin/gesp/page.tsx": "4d2d3f74e8a5d3a6d424b68f4ab07e52e409755ae18be4bc040403b17c8e2ebf",
       "apps/web/app/admin/gesp/gesp.css": "49aa3d48ce34e2e3479cd2871806df0f067fce96a853ab77d6c8ad82c827ddcd",
       "apps/api/src/modules/privacy/privacy-records.ts": "da5bb417ed517a2b114b290e74c7dc8e4a9357637f5a230d367624a1863d240a",
@@ -383,8 +383,20 @@
     "authoredPoints": 28,
     "teachingCards": 28,
     "originalRuleExercises": 2016,
+    "tutorial": {
+      "version": "chemistry-tutorial-2026-10-28-v2",
+      "originalFigures": 28,
+      "interactionModelKinds": 10,
+      "lessonsWithModel": 13,
+      "classroomChecks": 28,
+      "textbookBasis": "人教版《化学 九年级 上册》七单元参考本",
+      "editionNotice": "已核对七单元参考本的目录与相关正文；版权页未注明版次，PDF制作于2022年。与你在用教材的课题顺序、页码可能不同。"
+    },
     "sourceSha256": {
-      "apps/api/src/modules/diagnostics/chemistry-curriculum.ts": "10336870bd2e857a87bdc90e766ead80d92ec8973c6212c7cca4758690d67371"
+      "apps/api/src/modules/diagnostics/chemistry-curriculum.ts": "10336870bd2e857a87bdc90e766ead80d92ec8973c6212c7cca4758690d67371",
+      "apps/api/src/modules/learning/chemistry-tutorial.ts": "2775b8b5eec21ce938c375684da555d11ae727963e9f1866b56076ea70529f00",
+      "apps/api/src/modules/learning/chemistry-tutorial-content.ts": "cf981b88b9c948c80750ccfd42d0b204f594452d2e335e6d70b2805f095358fc",
+      "resources/curriculum/chemistry-tutorial-figures-v2.json": "a786b1723ab6ba04052e6c14d51abdf067e442c1d3b0fa8c545e9530c4a1b76d"
     },
     "interpretation": "Separate original chemistry course counts. Exercise count is not independent family count, a standardized norm, teacher approval, publisher textbook coverage or real learner retention evidence."
   },
@@ -433,7 +445,7 @@
     "multipleChoiceUnitChecks": 1,
     "hintLevels": 490,
     "sourceSha256": {
-      "apps/api/src/modules/learning/classroom-curriculum.ts": "3ea7a9ca76205ed74688c8060dc7a8069c87a4fe74c3a092a7feca0611a6f84d",
+      "apps/api/src/modules/learning/classroom-curriculum.ts": "2089a8c24f2938d4c2bbcc2983322bd8d90734f282b11a7d86ee01653bfe097d",
       "apps/api/src/modules/learning/classroom-board-notes.ts": "516a04a5ed971e481c6d8b0c44373c522d512394bf1b3d2dec1c04a2a103c24b",
       "apps/api/src/modules/learning/classroom-unit-checks.ts": "d7d0a955650dc6a0c49debda3568f08be789ed10e624252858af6f343cbde0e6",
       "apps/api/src/modules/learning/classroom-choice-content.ts": "71343c977df47a9f5526eaedd9ae553da8a42c36df1821e85dcc2488f5b39168",
