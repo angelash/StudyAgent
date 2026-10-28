@@ -77,6 +77,7 @@ type KnowledgeMap = {
 };
 
 const subjectMeta: Record<Subject, { label: string; assistantTitle: string; assistantSubtitle: string }> = {
+  chemistry: { label: '化学', assistantTitle: '化学学习助教', assistantSubtitle: '先核对物质、条件和证据，再解释现象。' },
   chinese: {
     label: '语文',
     assistantTitle: '语文知识助教',
@@ -95,7 +96,7 @@ const subjectMeta: Record<Subject, { label: string; assistantTitle: string; assi
 };
 
 function parseSubject(value: string | null): Subject {
-  return value === 'chinese' || value === 'english' || value === 'math' ? value : 'math';
+  return value === 'chinese' || value === 'english' || value === 'math' || value === 'chemistry' ? value : 'math';
 }
 
 function getMasteryLabel(status: KnowledgePointNode['masteryStatus']) {

@@ -1,0 +1,543 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/chemistry.spec.ts",
+      "tests/e2e/reference-navigation.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/chemistry-browser-first.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "chemistry.spec.ts",
+      "file": "chemistry.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "chemistry: enrollment, all seven readable units and actual native classroom work on three viewports",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3249,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('化学学习档案', { exact: true })\nExpected: \u001b[32m\"student_ca89e661-28e7-4ab0-91e9-76c1be8e7c3a\"\u001b[39m\nError: strict mode violation: getByLabel('化学学习档案', { exact: true }) resolved to 2 elements:\n    1) <section aria-label=\"化学学习档案\" class=\"chem-enrollment\">…</section> aka getByRole('region', { name: '化学学习档案' })\n    2) <select aria-label=\"化学学习档案\">…</select> aka getByRole('region', { name: '化学学习档案' }).getByLabel('化学学习档案')\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('化学学习档案', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('化学学习档案', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('化学学习档案', { exact: true })\nExpected: \u001b[32m\"student_ca89e661-28e7-4ab0-91e9-76c1be8e7c3a\"\u001b[39m\nError: strict mode violation: getByLabel('化学学习档案', { exact: true }) resolved to 2 elements:\n    1) <section aria-label=\"化学学习档案\" class=\"chem-enrollment\">…</section> aka getByRole('region', { name: '化学学习档案' })\n    2) <select aria-label=\"化学学习档案\">…</select> aka getByRole('region', { name: '化学学习档案' }).getByLabel('化学学习档案')\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('化学学习档案', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('化学学习档案', { exact: true })\u001b[22m\n\n    at fixture (F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts:15:114)\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts:26:31",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts",
+                      "column": 114,
+                      "line": 15
+                    },
+                    "snippet": "  13 |   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);\n  14 |   await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n> 15 |   await page.goto('/chemistry?studentId=' + studentId); await expect(page.getByLabel('化学学习档案', { exact: true })).toHaveValue(studentId);\n     |                                                                                                                  ^\n  16 |   const call = async (path: string) => { const response = await fetch(api + path, { headers }); expect(response.status).toBe(200); return (await response.json()).data; };\n  17 |   return { studentId, call };\n  18 | }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts",
+                        "column": 114,
+                        "line": 15
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('化学学习档案', { exact: true })\nExpected: \u001b[32m\"student_ca89e661-28e7-4ab0-91e9-76c1be8e7c3a\"\u001b[39m\nError: strict mode violation: getByLabel('化学学习档案', { exact: true }) resolved to 2 elements:\n    1) <section aria-label=\"化学学习档案\" class=\"chem-enrollment\">…</section> aka getByRole('region', { name: '化学学习档案' })\n    2) <select aria-label=\"化学学习档案\">…</select> aka getByRole('region', { name: '化学学习档案' }).getByLabel('化学学习档案')\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('化学学习档案', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('化学学习档案', { exact: true })\u001b[22m\n\n\n  13 |   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);\n  14 |   await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n> 15 |   await page.goto('/chemistry?studentId=' + studentId); await expect(page.getByLabel('化学学习档案', { exact: true })).toHaveValue(studentId);\n     |                                                                                                                  ^\n  16 |   const call = async (path: string) => { const response = await fetch(api + path, { headers }); expect(response.status).toBe(200); return (await response.json()).data; };\n  17 |   return { studentId, call };\n  18 | }\n    at fixture (F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts:15:114)\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts:26:31"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:02:24.828Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\chemistry-chemistry-enroll-efead-oom-work-on-three-viewports\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\chemistry-chemistry-enroll-efead-oom-work-on-three-viewports\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\chemistry-chemistry-enroll-efead-oom-work-on-three-viewports\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts",
+                    "column": 114,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4acd24e14e7fe1282527-f7b89c8b8d45e5c2c96a",
+          "file": "chemistry.spec.ts",
+          "line": 24,
+          "column": 5
+        },
+        {
+          "title": "chemistry: a completed baseline unlocks an independent check and keeps original answers after reopening",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2777,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('化学学习档案', { exact: true })\nExpected: \u001b[32m\"student_b476123c-7961-4e0c-9717-def8aa6a9222\"\u001b[39m\nError: strict mode violation: getByLabel('化学学习档案', { exact: true }) resolved to 2 elements:\n    1) <section aria-label=\"化学学习档案\" class=\"chem-enrollment\">…</section> aka getByRole('region', { name: '化学学习档案' })\n    2) <select aria-label=\"化学学习档案\">…</select> aka getByRole('region', { name: '化学学习档案' }).getByLabel('化学学习档案')\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('化学学习档案', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('化学学习档案', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('化学学习档案', { exact: true })\nExpected: \u001b[32m\"student_b476123c-7961-4e0c-9717-def8aa6a9222\"\u001b[39m\nError: strict mode violation: getByLabel('化学学习档案', { exact: true }) resolved to 2 elements:\n    1) <section aria-label=\"化学学习档案\" class=\"chem-enrollment\">…</section> aka getByRole('region', { name: '化学学习档案' })\n    2) <select aria-label=\"化学学习档案\">…</select> aka getByRole('region', { name: '化学学习档案' }).getByLabel('化学学习档案')\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('化学学习档案', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('化学学习档案', { exact: true })\u001b[22m\n\n    at fixture (F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts:15:114)\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts:53:31",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts",
+                      "column": 114,
+                      "line": 15
+                    },
+                    "snippet": "  13 |   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);\n  14 |   await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n> 15 |   await page.goto('/chemistry?studentId=' + studentId); await expect(page.getByLabel('化学学习档案', { exact: true })).toHaveValue(studentId);\n     |                                                                                                                  ^\n  16 |   const call = async (path: string) => { const response = await fetch(api + path, { headers }); expect(response.status).toBe(200); return (await response.json()).data; };\n  17 |   return { studentId, call };\n  18 | }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts",
+                        "column": 114,
+                        "line": 15
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('化学学习档案', { exact: true })\nExpected: \u001b[32m\"student_b476123c-7961-4e0c-9717-def8aa6a9222\"\u001b[39m\nError: strict mode violation: getByLabel('化学学习档案', { exact: true }) resolved to 2 elements:\n    1) <section aria-label=\"化学学习档案\" class=\"chem-enrollment\">…</section> aka getByRole('region', { name: '化学学习档案' })\n    2) <select aria-label=\"化学学习档案\">…</select> aka getByRole('region', { name: '化学学习档案' }).getByLabel('化学学习档案')\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('化学学习档案', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('化学学习档案', { exact: true })\u001b[22m\n\n\n  13 |   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);\n  14 |   await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\\/learn(?:\\?|$)/);\n> 15 |   await page.goto('/chemistry?studentId=' + studentId); await expect(page.getByLabel('化学学习档案', { exact: true })).toHaveValue(studentId);\n     |                                                                                                                  ^\n  16 |   const call = async (path: string) => { const response = await fetch(api + path, { headers }); expect(response.status).toBe(200); return (await response.json()).data; };\n  17 |   return { studentId, call };\n  18 | }\n    at fixture (F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts:15:114)\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts:53:31"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:02:29.871Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\chemistry-chemistry-a-comp-a24d7-nal-answers-after-reopening\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\chemistry-chemistry-a-comp-a24d7-nal-answers-after-reopening\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\chemistry-chemistry-a-comp-a24d7-nal-answers-after-reopening\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts",
+                    "column": 114,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4acd24e14e7fe1282527-e5d5f5781cac12b363ad",
+          "file": "chemistry.spec.ts",
+          "line": 52,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "reference-navigation.spec.ts",
+      "file": "reference-navigation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2326,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:02:34.364Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-05ae90e6c406886adbed",
+          "file": "reference-navigation.spec.ts",
+          "line": 18,
+          "column": 49
+        },
+        {
+          "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2253,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:02:37.105Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-507092b920d9cdc66ee9",
+          "file": "reference-navigation.spec.ts",
+          "line": 18,
+          "column": 49
+        },
+        {
+          "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1280",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2726,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:02:39.368Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-63d8469320787683247e",
+          "file": "reference-navigation.spec.ts",
+          "line": 18,
+          "column": 49
+        },
+        {
+          "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3180,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:02:42.103Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-7260473487ac8a254a1a",
+          "file": "reference-navigation.spec.ts",
+          "line": 18,
+          "column": 49
+        },
+        {
+          "title": "reference navigation: a real saved classroom opens the exact original session and position from the course library",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2559,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:02:45.290Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-b700b5ee2a8414019696",
+          "file": "reference-navigation.spec.ts",
+          "line": 47,
+          "column": 5
+        },
+        {
+          "title": "reference navigation: resizing an open drawer restores usable desktop controls and releases the original background",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1812,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:02:47.856Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-4c12fc588e3014c0250a",
+          "file": "reference-navigation.spec.ts",
+          "line": 56,
+          "column": 5
+        },
+        {
+          "title": "reference navigation: blocked preference storage keeps current controls usable without inventing a saved preference",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2710,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:02:49.675Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-95a9a00c2a2425581f35",
+          "file": "reference-navigation.spec.ts",
+          "line": 65,
+          "column": 5
+        },
+        {
+          "title": "reference navigation: a mobile drawer hands focus to the real course blueprint and returns to its menu trigger after closing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1921,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:02:52.394Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-66be3a745b22484be6c4",
+          "file": "reference-navigation.spec.ts",
+          "line": 77,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T04:02:14.197Z",
+    "duration": 42237.318,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

@@ -97,7 +97,7 @@ function CourseComposer({ conversation, models, blocked, ownerId, descriptor: d,
     {questionCopy && <aside className="assistant-notice" role="status"><p>新范围已有草稿。待采用的原问题副本：</p><pre>{questionCopy}</pre><button onClick={() => { conversation.download(); conversation.change(questionCopy); finishTransfer(); }}>下载当前问题并采用副本</button><button onClick={finishTransfer}>放弃副本</button></aside>}
     <form className="input-box" onSubmit={event => { event.preventDefault(); if (!sendBlocked) void conversation.submit(models.modelId); }}>
       <section className="lecture-context-chip" role="region" aria-label="当前课程上下文"><span className="lecture-context-chip-icon" aria-hidden="true">▣</span><div className="lecture-context-chip-info">
-        <strong className="lecture-context-chip-title">{d.itemTitle}</strong><div className="lecture-context-chip-meta"><span>{d.kind === 'primary_unit' ? '小学单元' : '资料课'} · {d.accessMode === 'authoring' ? '待核对教案' : '已确认课程'}</span><span>{d.courseTitle}</span></div>
+        <strong className="lecture-context-chip-title">{d.itemTitle}</strong><div className="lecture-context-chip-meta"><span>{d.kind === 'primary_unit' ? d.subject === 'chemistry' ? '化学单元' : '小学单元' : '资料课'} · {d.accessMode === 'authoring' ? '待核对教案' : '已确认课程'}</span><span>{d.courseTitle}</span></div>
       </div><button className="lecture-context-chip-remove" type="button" aria-label="移除课程上下文" onClick={remove}>×</button></section>
       <a className="sa-lecture-return" href={d.href}>返回本课 ↗</a>
       <div className="sa-course-range"><span>{d.selection.mode === 'complete' ? '完整正文' : d.selection.mode === 'overview' ? '课程目标概览' : '自选教学条目'} · {d.coverage.includedTargets}/{d.coverage.totalTargets} 知识目标 · {d.coverage.includedParts}/{d.coverage.totalParts} 教学条目</span>

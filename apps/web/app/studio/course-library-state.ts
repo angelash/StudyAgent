@@ -34,7 +34,7 @@ export function courseLibraryHref(search: string) {
   const source = new URLSearchParams(search), params = copyCourseFilters(search, new URLSearchParams({ view: 'courses' }));
   const student = source.get('returnStudent') || source.get('student'), subject = source.get('returnSubject') || source.get('subject');
   if (student) params.set('student', student);
-  if (subject && ['math', 'chinese', 'english'].includes(subject)) params.set('subject', subject);
+  if (subject && ['math', 'chinese', 'english', 'chemistry'].includes(subject)) params.set('subject', subject);
   return '/studio?' + params;
 }
 

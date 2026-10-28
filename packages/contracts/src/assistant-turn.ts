@@ -1,4 +1,5 @@
 import type { ClassroomDiagram } from './classroom';
+import type { StudioSubject } from './studio';
 
 export type AssistantReplySource = 'rules' | 'openai' | 'xiaojiu';
 export type AssistantCourseKind = 'primary_unit' | 'material_lesson';
@@ -24,7 +25,7 @@ export type AssistantLectureSummary = { courseId: string; courseVersion: string;
   fingerprint: string; referenceId: string; current: boolean; href: string };
 export type AssistantLectureDescriptor = AssistantLectureSummary & { sessionId?: string };
 export type AssistantCourseSummary = { kind: AssistantCourseKind; courseId: string; courseTitle: string; itemId: string; itemTitle: string;
-  studentId: string | null; subject: 'math' | 'chinese' | 'english' | null; accessMode: 'published' | 'authoring';
+  studentId: string | null; subject: StudioSubject | null; accessMode: 'published' | 'authoring';
   fingerprint: string; referenceId: string; current: boolean; href: string; selection: AssistantTeachingSelection; coverage: AssistantTeachingCoverage;
   canSend?: boolean; blocked?: { code: 'assessment_in_progress'; message: string; href: string } };
 export type AssistantCourseDescriptor = AssistantCourseSummary & { sessionId?: string; maximumCharacters?: number; completeCharacters?: number;

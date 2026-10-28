@@ -1,0 +1,98 @@
+{
+  "passed": true,
+  "sqliteCombination": 79,
+  "postgresCombination": 29,
+  "overlappingScopesNotSummed": true,
+  "coverage": [
+    "Actual7 chemistry unit catalogs from28 real authored targets",
+    "Grade9 chemistry course under retained grade4 profile",
+    "Oldmath overview query resolves actual chemistry course; forged assistant subject rejects",
+    "Durable real HTTP reply with mocked provider receives original chemistry teaching and trusted citations",
+    "Student paused assessment fences free assistant commands",
+    "Existing23 course authority and native recovery controls"
+  ],
+  "mainPreserved": {
+    "businessFiles": 174,
+    "compiledFiles": 999,
+    "protectedConfigurations": 6
+  },
+  "realProviderCalls": 0,
+  "limitations": "Full merged API still running. First scoped61 browser has59 pass/2 new exact-name fixture failures plus a chemical context label to correct. No main runtime or configuration mutations. PG first invocation used a missing default credential path and never started tests; corrected invocation reads the existing main QA configuration without copying credentials.",
+  "files": {
+    "data/qa/chemistry-assistant-combined-third.json": {
+      "bytes": 36157,
+      "sha256": "867610b0ddbe42e5cb454d7631cd83f66d76673f8b808926fd8e405b252f078c",
+      "gzipSha256": "f283e59b3a87e6e492a1664cd5de2fd853b5af0a8962aab96ec4dd5d62ecf739"
+    },
+    "data/qa/chemistry-assistant-combined-third.log": {
+      "bytes": 2867,
+      "sha256": "843de3a3f1678767fb7a9152bd983d5663a53128ed0ead8db404adf668651ed2",
+      "gzipSha256": "22829c50ac6eef94e8d26142393d1623cf2a46369e6761eb2f964e00768252d2"
+    },
+    "data/qa/chemistry-assistant-postgres-second.json": {
+      "bytes": 14082,
+      "sha256": "aa6d4199f8b705a4c53d85c7ea323cc2d7b1044005aa5029e32c2d43b51b00f0",
+      "gzipSha256": "818d6b2f4ca59bf51ce44ea9ec1b3f2b63b1ac353cfb2ba2d2d9a3719b72df27"
+    },
+    "data/qa/chemistry-assistant-postgres-second.log": {
+      "bytes": 1726,
+      "sha256": "1a2b9687c9d0642ca26ba0cba37c6483a50b076549b42708bfd4b4abc2e3ffe7",
+      "gzipSha256": "59792a45b50dab6097a0b377094032058ac84634c5e19a7c8d3ce7188ef3b210"
+    },
+    "data/qa/chemistry-assistant-postgres-first.log": {
+      "bytes": 1060,
+      "sha256": "0f39dfa4034e093484faed0054b625006207812fe8d6d09d677a42b673f46b05",
+      "gzipSha256": "7bdf4a6b64f6f32ff88142d3d5075d2067c735cd0341bddbd0245036e9cdccdb"
+    },
+    "data/qa/chemistry-main-snapshot/manifest.json": {
+      "bytes": 180208,
+      "sha256": "5eda7a8942f77f65a64e3e59ce32422c51147eb4dedc0a22265ddd45482a8acd",
+      "gzipSha256": "22816107297d20460d423b6176c34a1ed4b98a99fe24770d4f11c57a76f9f3ca"
+    },
+    "data/qa/chemistry-main-preservation-first.json": {
+      "bytes": 155,
+      "sha256": "f8ab58c204d37612c2206499b57d8c80ce64fe9f1b368d7e5069879ee7d73e32",
+      "gzipSha256": "fc574f631c25050c162f14cca94e63aebb3a2176963555314df8c3703c837039"
+    },
+    "data/qa/chemistry-assistant-api-build-third.log": {
+      "bytes": 66,
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "gzipSha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c"
+    },
+    "data/qa/chemistry-assistant-api-typecheck-third.log": {
+      "bytes": 68,
+      "sha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "gzipSha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec"
+    },
+    "apps/api/src/modules/ai/assistant-chemistry.integration.test.ts": {
+      "bytes": 10561,
+      "sha256": "f36b5aeac1afa4a84af5012d6b7c627eea7b6c4a8230a20e955820b4c885d53b",
+      "gzipSha256": "63df061d716fb5fd3fd051b6bb273dc451f041edbb83fc7edb8d7c52158465af"
+    },
+    "apps/api/src/modules/ai/assistant-teaching-content.ts": {
+      "bytes": 19142,
+      "sha256": "1f7f12f7d3b0458f645eea1e6568b33bca0467478b3fa904e8fb5f4355b95112",
+      "gzipSha256": "c5d3a38f393dd6b3bd840fb099312137888f852ed0da5be9abf7a472ce809d2c"
+    },
+    "apps/api/src/modules/ai/assistant-course-context.ts": {
+      "bytes": 10535,
+      "sha256": "fc7ae413431100c6ebb5bdff78e2861cfe22b5a466a9fa79877f8695af6382ef",
+      "gzipSha256": "3fa81647a771c054fcf395822dbc39bad33e6a0682306b1cb22e9fd4d3742874"
+    },
+    "apps/api/src/modules/ai/assistant-teaching-instructions.ts": {
+      "bytes": 3809,
+      "sha256": "1685a7f03d4b39c5e7abd87f033150f6c627baee7bc3ca2d7853c526a50d8802",
+      "gzipSha256": "68f8ab6c5e0715508870586008b9a27c947b68114ba1e1b2b6fea8e674fa6733"
+    },
+    "packages/contracts/src/assistant-turn.ts": {
+      "bytes": 5206,
+      "sha256": "aef16374e48261139880429e4d4ca31e08c8db2d7218e089352374ce47ed3fca",
+      "gzipSha256": "fa7c2cf9567800ea3a9e341f8d01f4f5556fccbcec3e83066b87fee06e32c698"
+    },
+    "scripts/qa/run-course-assistant-postgres.cjs": {
+      "bytes": 1981,
+      "sha256": "a4bc42f8b31bf4f0ff77ae633f2e6c1c63b1ac19fbb6112b3fac20ffadaa1b9b",
+      "gzipSha256": "f4c31cb02d422d05b082c81a5a35f351db6e2bc4698fdeecc37fb7f21b132616"
+    }
+  }
+}

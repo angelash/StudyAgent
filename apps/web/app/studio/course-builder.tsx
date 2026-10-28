@@ -2,6 +2,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import type { StudioCourse, StudioCoursePreview, StudioOverview, StudioSubject } from '@study-agent/contracts';
+import { studioCourseRequest, studioCourseRequestIssue, studioSubjectNames } from '@study-agent/contracts';
 import { apiRequest } from '../../lib/api';
 import { WorkspaceDialog } from './workspace-dialog';
 import './course-builder.css';
@@ -30,11 +31,13 @@ export function CourseBuilder({ studentId, subject, selected, initialTitle, onCl
   }, [studentId, subject, selected?.scope?.version, source]);
   React.useEffect(() => () => controller.current?.abort(), []);
   const creating = phase === 'creating', waiting = phase === 'previewing', locked = creating || waiting;
+  const request = studioCourseRequest(title), scopeIssue = selected ? studioCourseRequestIssue(title, subject, selected.scope?.grade ?? selected.grade) : null;
   const shown = atoms.filter(atom => [atom.name, atom.objective, atom.strand].some(text => text.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase())));
   function close() { if (creating) return; controller.current?.abort(); onClose(); }
   function edit() { controller.current?.abort(); setPhase('editing'); setPreview(null); setError(''); key.current = ''; }
   async function generate(event: React.FormEvent) {
     event.preventDefault(); if (!studentId || !ids.length || locked) return;
+    if (scopeIssue) { setError(scopeIssue); return; }
     controller.current?.abort(); const request = new AbortController(); controller.current = request;
     setPhase('previewing'); setError(''); setPreview(null); key.current = '';
     try {
@@ -59,9 +62,11 @@ export function CourseBuilder({ studentId, subject, selected, initialTitle, onCl
     <header><div><small>COURSE BLUEPRINT</small><h2>{preview ? '审阅课程蓝图' : '设计这次学习'}</h2></div><button type="button" aria-label="关闭课程蓝图" disabled={creating} onClick={close}>×</button></header>
     <ol className="ws-blueprint-steps" aria-label="创建课程步骤"><li aria-current={!preview ? 'step' : undefined}>1 · 目标与范围</li><li aria-current={preview ? 'step' : undefined}>2 · 审阅后确认</li></ol>
     {!preview&&<p className="ws-source-course-entry"><Link href={'/studio/source-courses?'+new URLSearchParams({new:'1',...(studentId?{studentId,subject}:{})})}>用自己的 PDF 或文字资料创建课程 →</Link></p>}
+    {!preview&&<p className="ws-blueprint-context">当前内容范围：{selected?.scope?.grade ?? selected?.grade ?? '—'}年级 · {studioSubjectNames[subject]}。课程内容取自下面选中的知识点。</p>}
+    {scopeIssue&&<div className="ws-builder-error" role="alert"><p>{scopeIssue}</p>{request.subject==='chemistry'&&<Link href={'/studio?'+new URLSearchParams({view:'courses',subject:'chemistry',course:'chemistry',...(studentId?{student:studentId}:{})})}>打开九上化学课程与考核 →</Link>}</div>}
     {error && <div className="ws-builder-error" role="alert"><p>{error}</p>{preview && <small>尚未取得确认回执。重试会沿用同一确认标识；也可以返回修改并重新预览。</small>}<button type="button" disabled={locked} onClick={() => { edit(); void onRefresh(); }}>重新核对学习范围</button></div>}
     {preview ? <>
-      <div className="ws-blueprint-summary"><small>{preview.grade}年级 · { { math: '数学', chinese: '语文', english: '英语' }[preview.subject]} · {selected?.nickname}</small><h3>{preview.title}</h3><p>{preview.objective}</p>
+      <div className="ws-blueprint-summary"><small>{preview.grade}年级 · { { math: '数学', chinese: '语文', english: '英语', chemistry: '化学' }[preview.subject]} · {selected?.nickname}</small><h3>{preview.title}</h3><p>{preview.objective}</p>
         <dl><div><dt>知识点</dt><dd>{preview.focusAtomIds.length}</dd></div><div><dt>单元</dt><dd>{preview.units.length}</dd></div><div><dt>学习时段</dt><dd>{preview.pace?.sessions.length ?? '—'}</dd></div><div><dt>每次预算</dt><dd>{preview.pace?.minutesPerSession ?? '—'} <small>分钟</small></dd></div></dl>
       </div>
       <section className="ws-blueprint-sources"><h3>来源与需要核对的内容</h3>{preview.materials.map(material => <article key={material.id}><b>{material.title}</b><span>{material.status === 'available' ? '范围已确认' : '需要核对'}</span><p>{material.detail}</p></article>)}
@@ -71,7 +76,7 @@ export function CourseBuilder({ studentId, subject, selected, initialTitle, onCl
       <footer><button type="button" disabled={creating} onClick={edit}>返回修改</button><button type="button" disabled={creating || !preview.canCreate} onClick={() => void create()}>{creating ? '正在确认并保存…' : '确认并创建'}</button></footer>
     </> : <form onSubmit={event => void generate(event)}>
       <div className="ws-blueprint-fields"><label>课程名称<input aria-label="课程名称" value={title} minLength={3} maxLength={180} placeholder="可留空，按所选知识点命名" disabled={locked} onChange={event => setTitle(event.target.value)}/></label>
-        <label>希望解决什么问题<textarea aria-label="课程学习目标" value={objective} minLength={5} maxLength={1000} rows={3} placeholder="例如：先理解共同单位，再独立完成陌生情境中的分数加法" disabled={locked} onChange={event => setObjective(event.target.value)}/></label>
+        <label>希望解决什么问题<textarea aria-label="课程学习目标" value={objective} minLength={5} maxLength={1000} rows={3} placeholder={{math:'例如：理解共同单位，再独立完成新情境中的分数加法',chemistry:'例如：用是否生成新物质区分物理变化与化学变化',chinese:'例如：结合原文证据说明人物的想法与变化',english:'例如：区分不同情境中的时态并独立表达'}[subject]} disabled={locked} onChange={event => setObjective(event.target.value)}/></label>
         <div className="ws-blueprint-prefs"><label>每次学习预算<select aria-label="每次学习预算" value={minutes} disabled={locked} onChange={event => setMinutes(Number(event.target.value))}>{[...new Set([5,10,15,20,25,30,45,60,minutes])].sort((a,b)=>a-b).map(value => <option key={value} value={value}>{value} 分钟</option>)}</select></label><div><span>教学语言</span><b>沿用已审核材料</b><small>保留材料中的原语言和英文例句。</small></div></div>
       </div>
       <fieldset disabled={locked || !selected?.scope}><legend>选择本次知识点 <span>已选 {ids.length} / {atoms.length}</span></legend><p>{selected ? `${selected.nickname} · ${selected.grade}年级 · ${selected.scope?.textbookVersion ?? '尚未确认范围'}` : '先选择学习档案，再确认学习范围。'}</p>
@@ -81,7 +86,7 @@ export function CourseBuilder({ studentId, subject, selected, initialTitle, onCl
       </fieldset>
       {!selected && <p><Link href="/parent/dashboard">先创建学习档案 →</Link></p>}{selected && !atoms.length && <p><Link href={'/student/assessment?' + new URLSearchParams({studentId,subject})}>先确认学习范围 →</Link></p>}
       {waiting && <p role="status">正在核对范围、讲解资格和课程结构…</p>}
-      <footer><button type="button" onClick={close}>取消</button><button disabled={locked || !selected?.scope || !ids.length}>{waiting ? '正在预览…' : '预览课程蓝图'}</button></footer>
+      <footer><button type="button" onClick={close}>取消</button><button disabled={locked || !selected?.scope || !ids.length || Boolean(scopeIssue)}>{waiting ? '正在预览…' : '预览课程蓝图'}</button></footer>
     </form>}
   </section></WorkspaceDialog>;
 }

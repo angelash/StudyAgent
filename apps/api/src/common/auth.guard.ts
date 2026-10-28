@@ -20,7 +20,7 @@ export type AuthenticatedRequest = RequestWithContext & {
 // still verify the child, session, response and plan on every allowed route.
 const learningRoutes: Record<string, RegExp[]> = {
   // Explicitly allowed learning operations; object authorization remains in the service.
-  GET: [/^learning\/project-files$/, /^learning\/project-files\/(uploads\/[^/]+|assets\/[^/]+(\/integrity|\/files\/(original|display|page-\d+))?)$/, /^learning\/material-uploads(\/[^/]+)?$/, /^learning\/source-courses\/materials\/[^/]+(\/progress|\/pages\/\d+)?$/, /^auth\/me$/, /^learning\/home$/, /^learning\/students$/, /^learning\/students\/[^/]+\/(today|mistakes)$/,
+  GET: [/^chemistry\/catalog$/, /^learning\/project-files$/, /^learning\/project-files\/(uploads\/[^/]+|assets\/[^/]+(\/integrity|\/files\/(original|display|page-\d+))?)$/, /^learning\/material-uploads(\/[^/]+)?$/, /^learning\/source-courses\/materials\/[^/]+(\/progress|\/pages\/\d+)?$/, /^auth\/me$/, /^learning\/home$/, /^learning\/students$/, /^learning\/students\/[^/]+\/(today|mistakes)$/,
     /^learning\/source-courses\/materials\/[^/]+\/(files|repairs(\/[^/]+)?)$/,
     /^learning\/classroom\/sessions\/[^/]+$/,
     /^learning\/classroom\/sessions\/[^/]+\/turns(\/[^/]+)?$/,
@@ -50,7 +50,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^library\/practice\/sessions\/[^/]+\/items\/[^/]+\/next-options$/,
     /^library\/practice\/sessions\/[^/]+\/items\/[^/]+\/verification-requests\/[^/]+$/,
     /^library\/practice\/requests\/[^/]+$/, /^library\/practice\/sessions(\/[^/]+(\/(items|commands)\/[^/]+)?)?$/],
-  POST: [/^learning\/project-files\/uploads(\/[^/]+\/(complete|cancel))?$/, /^learning\/project-files\/assets\/[^/]+\/(cancel|retry|delete)$/, /^learning\/material-uploads(\/[^/]+\/(complete|cancel))?$/, /^learning\/source-courses\/materials\/[^/]+\/process\/cancel$/, /^auth\/logout$/, /^students\/[^/]+\/progress-proposals$/, /^diagnostics\/sessions$/,
+  POST: [/^chemistry\/checkpoints\/start$/, /^learning\/project-files\/uploads(\/[^/]+\/(complete|cancel))?$/, /^learning\/project-files\/assets\/[^/]+\/(cancel|retry|delete)$/, /^learning\/material-uploads(\/[^/]+\/(complete|cancel))?$/, /^learning\/source-courses\/materials\/[^/]+\/process\/cancel$/, /^auth\/logout$/, /^students\/[^/]+\/progress-proposals$/, /^diagnostics\/sessions$/,
     /^learning\/source-courses\/materials\/[^/]+\/(files\/check|repairs(\/[^/]+\/(cancel|retry))?)$/,
     /^learning\/classroom\/sessions\/[^/]+\/turns(\/[^/]+\/(cancel|retry))?$/,
     /^learning\/classroom\/sessions(\/[^/]+\/(answers|hints|messages|presentation|voice-preview|narration\/[^/]+))?$/,

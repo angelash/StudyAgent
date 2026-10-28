@@ -36,7 +36,7 @@ type Session = { id: string; status: 'in_progress' | 'paused' | 'completed' | 'a
 type Review = ReviewTask & { atomName: string; due: boolean };
 type Retrospective = { fingerprint: string; reviewed: boolean; followupSessionIds: string[]; measurementContext?: { notice: string };
   comparisons: Array<{ atomId: string; atomName: string; outcome: string; note: string; retentionSamples: number }> };
-const subjects: Array<[Subject, string]> = [['math', '数学'], ['chinese', '语文'], ['english', '英语']];
+const subjects: Array<[Subject, string]> = [['math', '数学'], ['chinese', '语文'], ['english', '英语'], ['chemistry', '化学']];
 const outcomeNames: Record<string, string> = { awaiting_retest: '等待复测', different_definitions: '知识定义待核对，暂不比较', different_dimensions: '测量维度或量规不同', insufficient: '证据待补充', uncertain: '变化尚不确定', improved: '观察到改善', declined: '需要重新指导' };
 const request = <T,>(path: string, body?: unknown, method = 'POST') => apiRequest<T>(path, body === undefined ? {} : { method, body: JSON.stringify(body) }, getAuthToken());
 const previewStorageKey = (studentId: string, subject: string) => `study-blueprint:${studentId}:${subject}`;
@@ -360,7 +360,7 @@ export function AssessmentStudio() {
             <div className="studio-config">
               {children.length > 0 ? <label>孩子<select value={studentId} onChange={(event) => { setStudentId(event.target.value); setSession(null); setReport(null); }}>
                 {children.map((item) => <option key={item.id} value={item.id}>{item.nickname}</option>)}</select></label> : <label>孩子的昵称<input value={nickname} onChange={(event) => setNickname(event.target.value)} placeholder="例如：小禾" maxLength={50} /></label>}
-              <label>当前年级<select value={grade} onChange={(event) => { setGrade(Number(event.target.value)); setProgress({ bookId: '', mode: 'knowledge', lessonIds: [] }); setLearned([]); }}>{[1, 2, 3, 4, 5, 6].map((value) => <option key={value} value={value}>{value}年级</option>)}</select></label>
+              <label>当前年级<select value={grade} onChange={(event) => { setGrade(Number(event.target.value)); setProgress({ bookId: '', mode: 'knowledge', lessonIds: [] }); setLearned([]); }}>{(subject === 'chemistry' ? [9] : [1, 2, 3, 4, 5, 6]).map((value) => <option key={value} value={value}>{value}年级</option>)}</select></label>
               <label>学期<select value={term} onChange={(event) => { setTerm(event.target.value as 'upper' | 'lower'); setProgress({ bookId: '', mode: 'knowledge', lessonIds: [] }); setLearned([]); }}><option value="upper">上学期</option><option value="lower">下学期</option></select></label>
               <label>每次时间<select value={minutes} onChange={(event) => setMinutes(Number(event.target.value))}>{[5, 10, 15, 20, 30].map((value) => <option key={value} value={value}>{value}分钟</option>)}</select></label>
             </div>
@@ -369,7 +369,7 @@ export function AssessmentStudio() {
               <LearningProgressSelector subject={subject} grade={grade} term={term} selection={progress} onChange={setProgress}
                 version={textbookVersion} onVersion={setTextbookVersion} onLearned={setLearned} />
               <div className="studio-point-heading"><h3>{progress.mode === 'textbook' ? '已学课时对应的知识点' : '勾选已经学过的知识点'}</h3>{progress.mode === 'knowledge' && <button className="studio-text-button" onClick={() => setLearned(atoms.filter((atom) => atom.grade === grade).map((atom) => atom.id))}>选择本年级能力点</button>}</div>
-              <div className="studio-points">{[1, 2, 3, 4, 5, 6].filter((value) => atoms.some((atom) => atom.grade === value)).map((value) => <fieldset key={value}>
+              <div className="studio-points">{[...new Set(atoms.map(atom => atom.grade))].sort((a, b) => a - b).map((value) => <fieldset key={value}>
                 <legend>{value}年级{value < grade ? ' · 前期基础' : ''}</legend>{atoms.filter((atom) => atom.grade === value).map((atom) => <label key={atom.id}>
                   <input type="checkbox" disabled={progress.mode === 'textbook'} checked={learned.includes(atom.id)} onChange={(event) => setLearned((items) => event.target.checked ? [...items, atom.id] : items.filter((id) => id !== atom.id))} />
                   <span><strong>{atom.name}</strong><small>{atom.objective}</small></span></label>)}</fieldset>)}</div>

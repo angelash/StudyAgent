@@ -1,0 +1,537 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/chemistry.spec.ts",
+      "tests/e2e/reference-navigation.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent/test-results/browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:3107",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "data/qa/chemistry-browser-final.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "chemistry.spec.ts",
+      "file": "chemistry.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "chemistry: enrollment, all seven readable units and actual native classroom work on three viewports",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5897,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:41:47.950Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4acd24e14e7fe1282527-f7b89c8b8d45e5c2c96a",
+          "file": "chemistry.spec.ts",
+          "line": 24,
+          "column": 5
+        },
+        {
+          "title": "chemistry: a completed baseline unlocks an independent check and keeps original answers after reopening",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7579,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:41:54.529Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4acd24e14e7fe1282527-e5d5f5781cac12b363ad",
+          "file": "chemistry.spec.ts",
+          "line": 52,
+          "column": 5
+        },
+        {
+          "title": "chemistry: a parent can create a ninth-grade profile in the existing family flow and keep it through enrollment",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 18231,
+                  "error": {
+                    "message": "TimeoutError: locator.selectOption: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('当前年级', { exact: true })\u001b[22m\n",
+                    "stack": "TimeoutError: locator.selectOption: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('当前年级', { exact: true })\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts:85:50",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts",
+                      "column": 50,
+                      "line": 85
+                    },
+                    "snippet": "  83 |   await page.getByRole('button', { name: '＋ 添加孩子档案', exact: true }).click();\n  84 |   await page.getByPlaceholder('怎么称呼孩子').fill('新建九上化学档案');\n> 85 |   await page.getByLabel('当前年级', { exact: true }).selectOption('9');\n     |                                                  ^\n  86 |   await page.getByRole('button', { name: '保存档案 ↗', exact: true }).click();\n  87 |   const selected = page.getByLabel('选择学生', { exact: true });\n  88 |   await expect(selected.locator('option:checked')).toContainText('新建九上化学档案');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts",
+                        "column": 50,
+                        "line": 85
+                      },
+                      "message": "TimeoutError: locator.selectOption: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('当前年级', { exact: true })\u001b[22m\n\n\n  83 |   await page.getByRole('button', { name: '＋ 添加孩子档案', exact: true }).click();\n  84 |   await page.getByPlaceholder('怎么称呼孩子').fill('新建九上化学档案');\n> 85 |   await page.getByLabel('当前年级', { exact: true }).selectOption('9');\n     |                                                  ^\n  86 |   await page.getByRole('button', { name: '保存档案 ↗', exact: true }).click();\n  87 |   const selected = page.getByLabel('选择学生', { exact: true });\n  88 |   await expect(selected.locator('option:checked')).toContainText('新建九上化学档案');\n    at F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts:85:50"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:42:02.122Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\chemistry-chemistry-a-pare-eade8--keep-it-through-enrollment\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\chemistry-chemistry-a-pare-eade8--keep-it-through-enrollment\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent\\test-results\\browser-product-acceptance\\chemistry-chemistry-a-pare-eade8--keep-it-through-enrollment\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent\\tests\\e2e\\chemistry.spec.ts",
+                    "column": 50,
+                    "line": 85
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4acd24e14e7fe1282527-6bfcff924b383182f66f",
+          "file": "chemistry.spec.ts",
+          "line": 80,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "reference-navigation.spec.ts",
+      "file": "reference-navigation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2812,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:42:21.998Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-05ae90e6c406886adbed",
+          "file": "reference-navigation.spec.ts",
+          "line": 18,
+          "column": 49
+        },
+        {
+          "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2652,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:42:25.245Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-507092b920d9cdc66ee9",
+          "file": "reference-navigation.spec.ts",
+          "line": 18,
+          "column": 49
+        },
+        {
+          "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1280",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2685,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:42:27.907Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-63d8469320787683247e",
+          "file": "reference-navigation.spec.ts",
+          "line": 18,
+          "column": 49
+        },
+        {
+          "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3689,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:42:30.603Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-7260473487ac8a254a1a",
+          "file": "reference-navigation.spec.ts",
+          "line": 18,
+          "column": 49
+        },
+        {
+          "title": "reference navigation: a real saved classroom opens the exact original session and position from the course library",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2741,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:42:34.302Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-b700b5ee2a8414019696",
+          "file": "reference-navigation.spec.ts",
+          "line": 47,
+          "column": 5
+        },
+        {
+          "title": "reference navigation: resizing an open drawer restores usable desktop controls and releases the original background",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2239,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:42:37.053Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-4c12fc588e3014c0250a",
+          "file": "reference-navigation.spec.ts",
+          "line": 56,
+          "column": 5
+        },
+        {
+          "title": "reference navigation: blocked preference storage keeps current controls usable without inventing a saved preference",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3140,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:42:39.302Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-95a9a00c2a2425581f35",
+          "file": "reference-navigation.spec.ts",
+          "line": 65,
+          "column": 5
+        },
+        {
+          "title": "reference navigation: a mobile drawer hands focus to the real course blueprint and returns to its menu trigger after closing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2000,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:42:42.452Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a2d810d70c0bcdef190-66be3a745b22484be6c4",
+          "file": "reference-navigation.spec.ts",
+          "line": 77,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T04:41:36.287Z",
+    "duration": 70684.958,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

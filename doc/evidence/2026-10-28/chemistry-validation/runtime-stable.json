@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-28T05:13:03.072Z",
+  "checks": [
+    {
+      "url": "http://127.0.0.1:3217/chemistry",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3217/api/ready",
+      "status": 200
+    },
+    {
+      "url": "https://study-agent.iepose.cn/chemistry",
+      "status": 200
+    }
+  ],
+  "processes": [
+    {
+      "name": "study-agent-api",
+      "status": "online",
+      "pid": 3276,
+      "restarts": 1165
+    },
+    {
+      "name": "study-agent-web",
+      "status": "online",
+      "pid": 82024,
+      "restarts": 3
+    },
+    {
+      "name": "study-agent-health",
+      "status": "online",
+      "pid": 58800,
+      "restarts": 1
+    }
+  ]
+}

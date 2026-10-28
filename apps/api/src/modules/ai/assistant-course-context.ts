@@ -10,7 +10,7 @@ import { describeTeachingContent, materialLessonTeachingCatalog, primaryUnitTeac
   type TeachingCatalog, type TeachingContentSelection, type TeachingContentSnapshot } from './assistant-teaching-content';
 
 const id = z.string().min(1).max(180), kindSchema = z.enum(['primary_unit', 'material_lesson']);
-const subjectSchema = z.enum(['math', 'chinese', 'english']).nullable();
+const subjectSchema = z.enum(['math', 'chinese', 'english', 'chemistry']).nullable();
 const snapshotSchema = z.object({ protocol: z.literal('assistant-course-v1'), kind: kindSchema,
   studentId: id.nullable(), subject: subjectSchema, accessMode: z.enum(['published', 'authoring']),
   teaching: teachingContentSnapshotSchema, fingerprint: z.string().regex(/^[a-f0-9]{64}$/),

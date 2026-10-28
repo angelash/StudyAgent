@@ -16,7 +16,7 @@ export function readTeachingSelection(value: string | null): AssistantTeachingSe
 export function validCourseDescriptor(v: AssistantCourseDescriptor, kind: AssistantCourseKind, courseId: string, itemId: string) {
   if (!v || v.kind !== kind || v.courseId !== courseId || v.itemId !== itemId || !/^[a-f0-9]{64}$/.test(v.fingerprint) || v.referenceId !== courseId + '@' + v.fingerprint ||
     typeof v.current !== 'boolean' || !['published', 'authoring'].includes(v.accessMode) || !id(v.courseTitle, 6000) || !id(v.itemTitle, 6000) ||
-    !(v.studentId === null || id(v.studentId)) || !(v.subject === null || ['math', 'chinese', 'english'].includes(v.subject)) || Boolean(v.studentId) !== Boolean(v.subject) ||
+    !(v.studentId === null || id(v.studentId)) || !(v.subject === null || ['math', 'chinese', 'english', 'chemistry'].includes(v.subject)) || Boolean(v.studentId) !== Boolean(v.subject) ||
     kind === 'primary_unit' && !v.studentId || !Array.isArray(v.targets) || !v.targets.length || v.targets.length > 200 ||
     !v.targets.every(t => id(t.id) && id(t.title, 6000) && typeof t.objective === 'string') || !Array.isArray(v.parts) || v.parts.length > 2000 ||
     !v.parts.every(p => id(p.key, 100) && id(p.title, 6000) && v.targets.some(t => t.id === p.targetId)) ||

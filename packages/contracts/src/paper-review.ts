@@ -33,6 +33,6 @@ export type PaperReviewCalendarEvent = {
 };
 export type PaperReviewNextOptions = {
   redo: { available: boolean; reason: string; href: string | null };
-  knowledge: { available: boolean; reason: string; atoms: Array<{ id: string; name: string; subject: 'math' | 'chinese' | 'english'; grade: number }> };
+  knowledge: { available: boolean; reason: string; atoms: Array<{ id: string; name: string; subject: 'math' | 'chinese' | 'english' | 'chemistry'; grade: number }> };
   activities: Array<{ id: string; kind: 'original_redo' | 'verification_preview' | 'verification'; at: string; href: string; label: string }>;
 };

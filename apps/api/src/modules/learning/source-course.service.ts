@@ -29,7 +29,7 @@ export class SourceCourseService {
   constructor(private readonly store:InMemoryStoreService,private readonly students:StudentsService){}
   private record(user:InMemoryUserAccount,courseId:string,editing=false){const row=this.store.find('sourceCourses',{id:courseId});if(!row)throw new NotFoundException('资料课程不存在');assertSourceCourseAccess(user,row,this.students,editing);return row;}
   async materials(user:InMemoryUserAccount,input:unknown){
-    const query=validate(z.object({studentId:id.optional(),subject:z.enum(['math','chinese','english']).optional(),view:z.literal('catalog').optional()}).strict(),input);
+    const query=validate(z.object({studentId:id.optional(),subject:z.enum(['math','chinese','english','chemistry']).optional(),view:z.literal('catalog').optional()}).strict(),input);
     if(query.studentId)this.students.assertCanAccessStudent(user,query.studentId);
     if(user.role==='student'&&!query.studentId)throw new BadRequestException('请先选择自己的学习档案');
     const rows=[...(query.studentId?this.store.select('studioSourceMaterials',{studentId:query.studentId,...(query.subject?{subject:query.subject}:{})}):[]),
@@ -38,7 +38,7 @@ export class SourceCourseService {
   }
   addText(user:InMemoryUserAccount,input:unknown){
     const command=validate(z.object({title:z.string().trim().min(1).max(180),sections:z.array(z.string().trim().min(20).max(8000)).min(1).max(8),
-      studentId:id.optional(),subject:z.enum(['math','chinese','english']).optional(),requestKey:key}).strict().refine(value=>Boolean(value.studentId)===Boolean(value.subject),'档案和学科需要同时选择'),input);
+      studentId:id.optional(),subject:z.enum(['math','chinese','english','chemistry']).optional(),requestKey:key}).strict().refine(value=>Boolean(value.studentId)===Boolean(value.subject),'档案和学科需要同时选择'),input);
     if(command.studentId)this.students.assertCanAccessStudent(user,command.studentId);else if(user.role==='student')throw new ForbiddenException('请从自己的学习档案添加资料');
     const hash=sourceDigest({title:command.title,sections:command.sections,studentId:command.studentId??null,subject:command.subject??null});
     const previous=this.store.select('studioSourceMaterials',{ownerUserId:user.id}).find(row=>(row as any).requestKey===command.requestKey) as any;
@@ -51,7 +51,7 @@ export class SourceCourseService {
   }
   async addTextFile(user:InMemoryUserAccount,file:Express.Multer.File|undefined,input:unknown){
     if(!file||!Buffer.isBuffer(file.buffer)||file.size<20||file.size>1024*1024||!/\.(txt|md)$/iu.test(file.originalname))throw new BadRequestException('请选择1MB以内的UTF-8 TXT或Markdown文件');
-    const command=validate(z.object({title:z.string().trim().min(1).max(180),studentId:id.optional(),subject:z.enum(['math','chinese','english']).optional(),requestKey:key}).strict().refine(value=>Boolean(value.studentId)===Boolean(value.subject),'档案和学科需要同时选择'),input);
+    const command=validate(z.object({title:z.string().trim().min(1).max(180),studentId:id.optional(),subject:z.enum(['math','chinese','english','chemistry']).optional(),requestKey:key}).strict().refine(value=>Boolean(value.studentId)===Boolean(value.subject),'档案和学科需要同时选择'),input);
     if(command.studentId)this.students.assertCanAccessStudent(user,command.studentId);else if(user.role==='student')throw new ForbiddenException('请从自己的学习档案添加资料');
     let text:string;try{text=new TextDecoder('utf-8',{fatal:true,ignoreBOM:true}).decode(file.buffer);}catch{throw new BadRequestException('文字文件需要使用UTF-8编码；原文件不会被改写');}
     if(text.trim().length<20||text.length>180000||text.includes('\u0000'))throw new BadRequestException('正文需要20至180000字，且不能包含二进制空字符');
@@ -88,7 +88,7 @@ export class SourceCourseService {
   async progress(user:InMemoryUserAccount,courseId:string){return this.view(this.record(user,courseId),undefined,user.id,true);}
   source(user:InMemoryUserAccount,courseId:string,sourceKey:string){const row=this.record(user,courseId),source=row.sources.find(source=>source.key===sourceKey)??courseCitationSources(row).find(source=>source.key===sourceKey);if(!source)throw new NotFoundException('原文范围不存在');return structuredClone(source);}
   async list(user:InMemoryUserAccount,input:unknown):Promise<SourceCourseSummary[]>{
-    const query=validate(z.object({studentId:id.optional(),subject:z.enum(['math','chinese','english']).optional()}).strict(),input);
+    const query=validate(z.object({studentId:id.optional(),subject:z.enum(['math','chinese','english','chemistry']).optional()}).strict(),input);
     if(query.studentId)this.students.assertCanAccessStudent(user,query.studentId);
     const candidates=[...(query.studentId?this.store.select('sourceCourses',{studentId:query.studentId}):[]),...(user.role!=='student'?this.store.select('sourceCourses',{ownerUserId:user.id,studentId:null}):[])];
     const rows=[...new Map(candidates.map(row=>[row.id,row])).values()].filter(row=>query.studentId?row.studentId===query.studentId&&(!query.subject||row.subject===query.subject)||user.role!=='student'&&!row.studentId:!row.studentId&&user.role!=='student')

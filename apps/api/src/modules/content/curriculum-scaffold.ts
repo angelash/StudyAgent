@@ -27,6 +27,7 @@ type KnowledgePointRule = {
 };
 
 const subjectFallbackScaffold: Record<Subject, CurriculumScaffold> = {
+  chemistry: { units: [] },
   chinese: {
     units: [
       {
@@ -95,7 +96,7 @@ const subjectFallbackScaffold: Record<Subject, CurriculumScaffold> = {
   },
 };
 
-const curriculumScaffolds: Record<Subject, Record<`${GradeBand}:${TextbookVolume['term']}`, CurriculumScaffold>> = {
+const curriculumScaffolds: Partial<Record<Subject, Record<`${GradeBand}:${TextbookVolume['term']}`, CurriculumScaffold>>> = {
   chinese: {
     'lower:first': {
       units: [
@@ -645,6 +646,7 @@ const curriculumScaffolds: Record<Subject, Record<`${GradeBand}:${TextbookVolume
 };
 
 const knowledgePointRules: Record<Subject, KnowledgePointRule[]> = {
+  chemistry: [],
   chinese: [
     { keywords: ['诗', '古诗', '下一句', '名句'], targetIncludes: ['古诗', '文言'] },
     { keywords: ['阅读', '短文', '文章', '比喻', '理解', '概括', '说明'], targetIncludes: ['阅读', '概括'] },
@@ -684,7 +686,7 @@ function resolveGradeBand(grade: number): GradeBand {
 
 export function getCurriculumScaffold(subject: Subject, grade: number, term: TextbookVolume['term']): CurriculumScaffold {
   const gradeBand = resolveGradeBand(grade);
-  return curriculumScaffolds[subject][`${gradeBand}:${term}`] ?? subjectFallbackScaffold[subject];
+  return curriculumScaffolds[subject]?.[`${gradeBand}:${term}`] ?? subjectFallbackScaffold[subject];
 }
 
 export function pickBestKnowledgePointId(

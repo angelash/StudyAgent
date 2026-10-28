@@ -32,7 +32,7 @@ const localHtml = (value: string) => value.replace(/src="\/api\/library\/media\?
 const readValue = (value: string): unknown => { try { return JSON.parse(value); } catch { return value; } };
 
 function initialDraft(row: Detail): MeasurementDraft {
-  const subject = row.sourceSubject === '语文' ? 'chinese' : row.sourceSubject === '英语' ? 'english' : 'math';
+  const subject = row.sourceSubject === '语文' ? 'chinese' : row.sourceSubject === '英语' ? 'english' : row.sourceSubject === '化学' ? 'chemistry' : 'math';
   const number = '一二三四五六'.indexOf(row.sourceGrade.match(/[一二三四五六]/)?.[0] ?? '') + 1;
   return { subject, grade: number || 3, stem: row.suggestion.stem, analysis: row.suggestion.analysis,
     answer: readValue(row.suggestion.answer), blocks: [],

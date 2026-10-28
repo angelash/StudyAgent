@@ -1,0 +1,52 @@
+{
+  "passed": false,
+  "testsPassed": 0,
+  "testsFailed": 4,
+  "firstTypecheckFailed": true,
+  "mergedSubjectTypecheckLaterPassed": true,
+  "knownFailure": "Actual HTTP409: teaching catalog still restricts subject to three primary subjects and grade<=6. Real chemistry course is grade9. Snapshot subject and transport fixes alone are insufficient.",
+  "realProviderCalls": 0,
+  "productionChanges": false,
+  "files": {
+    "data/qa/chemistry-assistant-http-first.json": {
+      "bytes": 6038,
+      "sha256": "256b31bd3f4f510b1b96053baa385217a136f0c6bea652e3e51891e0e6608790",
+      "gzipSha256": "add57f4dae29cb9ffe9b06a69c13cc6737e31b1a48faee6e45ddfe51b5eef374"
+    },
+    "data/qa/chemistry-assistant-http-first.log": {
+      "bytes": 497,
+      "sha256": "e9c300c29c5e6759a95f0c9903b6fe09054ebf5b6800d32cb060deec6c8ca8d1",
+      "gzipSha256": "8b3fae23151136fd2b6b88228fb8c6fce8f98e5998ca5e774e6bdf548b6224c7"
+    },
+    "data/qa/chemistry-assistant-api-typecheck-first.log": {
+      "bytes": 945,
+      "sha256": "795c0ece0a7e76078172073d311fdd0eac50167468a6ae7d36bb9ff97305673a",
+      "gzipSha256": "c245d53ad73799eddf7eb5bcbc3e257e5f0dc6cd43805df4ca57455dc6ddb8bf"
+    },
+    "data/qa/chemistry-assistant-api-typecheck-second.log": {
+      "bytes": 68,
+      "sha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "gzipSha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec"
+    },
+    "data/qa/chemistry-assistant-web-typecheck-first.log": {
+      "bytes": 68,
+      "sha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc",
+      "gzipSha256": "280feefa43a1a2d6b5ebb62618a6d36d932de3e009b707d14976e55a78dd4326"
+    },
+    "apps/api/src/modules/ai/assistant-teaching-content.ts": {
+      "bytes": 19129,
+      "sha256": "ca1e56e2629276e050ac0585154136041f696fb70fdf290e16207f65085a2adc",
+      "gzipSha256": "7e61ab30d20e78e19d4699771fd287da6544ae02dc0da61281d66693c134905a"
+    },
+    "apps/api/src/modules/ai/assistant-course-context.ts": {
+      "bytes": 10535,
+      "sha256": "fc7ae413431100c6ebb5bdff78e2861cfe22b5a466a9fa79877f8695af6382ef",
+      "gzipSha256": "3fa81647a771c054fcf395822dbc39bad33e6a0682306b1cb22e9fd4d3742874"
+    },
+    "apps/api/src/modules/ai/assistant-chemistry.integration.test.ts": {
+      "bytes": 10527,
+      "sha256": "f589f4cc6b6cb6a83d0871bb2d0c739434059d249c1f332bfc9bb0a1f27e2836",
+      "gzipSha256": "ea9021da46120d686902b6f483cc12187f80761b206281e63360f8df62fca9dc"
+    }
+  }
+}

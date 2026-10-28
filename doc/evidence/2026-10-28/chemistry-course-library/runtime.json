@@ -1,0 +1,66 @@
+{
+  "at": "2026-10-28T06:54:34.224Z",
+  "buildId": "Xvt7wlzSz8SrT9Zgy8uL9",
+  "checks": [
+    {
+      "url": "http://127.0.0.1:3217/studio?view=courses&subject=chemistry",
+      "status": 200,
+      "location": null,
+      "sha256": "22595cc4a278de4fb93de3d9009ea02309b54f74922b9578c208312a52b4af61"
+    },
+    {
+      "url": "http://127.0.0.1:3217/api/ready",
+      "status": 200,
+      "location": null
+    },
+    {
+      "url": "http://127.0.0.1:4217/api/ready",
+      "status": 200,
+      "location": null
+    },
+    {
+      "url": "https://study-agent.iepose.cn/studio?view=courses&subject=chemistry",
+      "status": 200,
+      "location": null,
+      "sha256": "22595cc4a278de4fb93de3d9009ea02309b54f74922b9578c208312a52b4af61"
+    },
+    {
+      "url": "https://study-agent.iepose.cn/api/ready",
+      "status": 200,
+      "location": null
+    },
+    {
+      "url": "https://study-agent.iepose.cn/learn",
+      "status": 200,
+      "location": null,
+      "dedicatedChemistryNav": false
+    },
+    {
+      "url": "http://127.0.0.1:3217/chemistry?studentId=compat-check&unit=u7",
+      "status": 307,
+      "location": "/studio?view=courses&subject=chemistry&course=chemistry&student=compat-check&unit=u7"
+    },
+    {
+      "url": "https://study-agent.iepose.cn/chemistry?studentId=compat-check&unit=u7",
+      "status": 307,
+      "location": "/studio?view=courses&subject=chemistry&course=chemistry&student=compat-check&unit=u7"
+    },
+    {
+      "url": "https://study-agent.iepose.cn/api/chemistry/catalog",
+      "status": 401,
+      "location": null
+    }
+  ],
+  "configUnchanged": true,
+  "database": {
+    "quickCheck": {
+      "quick_check": "ok"
+    },
+    "chemistryAtoms": {
+      "count": 28
+    },
+    "chemistryQuestions": {
+      "count": 2016
+    }
+  }
+}

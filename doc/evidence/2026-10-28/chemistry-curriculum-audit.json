@@ -1,0 +1,1427 @@
+{
+  "at": "2026-10-28T04:22:08.760Z",
+  "version": "guangzhou-pep-chemistry-9-upper-v1",
+  "units": [
+    {
+      "id": "u1",
+      "title": "走进化学世界",
+      "codes": [
+        "changes",
+        "properties",
+        "lab",
+        "variables"
+      ]
+    },
+    {
+      "id": "u2",
+      "title": "空气与氧气",
+      "codes": [
+        "air",
+        "oxygen",
+        "oxygen-preparation",
+        "catalyst"
+      ]
+    },
+    {
+      "id": "u3",
+      "title": "物质构成的奥秘",
+      "codes": [
+        "particles",
+        "atoms",
+        "ions",
+        "elements"
+      ]
+    },
+    {
+      "id": "u4",
+      "title": "自然界的水与物质组成",
+      "codes": [
+        "purification",
+        "water",
+        "valence",
+        "formula-mass"
+      ]
+    },
+    {
+      "id": "u5",
+      "title": "化学方程式与定量关系",
+      "codes": [
+        "conservation",
+        "balance",
+        "stoichiometry",
+        "purity"
+      ]
+    },
+    {
+      "id": "u6",
+      "title": "碳和碳的氧化物",
+      "codes": [
+        "carbon",
+        "carbon-dioxide-preparation",
+        "carbon-dioxide",
+        "carbon-monoxide"
+      ]
+    },
+    {
+      "id": "u7",
+      "title": "燃料、能源与环境",
+      "codes": [
+        "combustion",
+        "extinguishing",
+        "environment",
+        "hydrogen"
+      ]
+    }
+  ],
+  "points": [
+    {
+      "id": "chemistry:9-upper:changes",
+      "name": "物理变化与化学变化",
+      "unit": "走进化学世界",
+      "tasks": 72,
+      "definitionSha256": "17b9f7f122755596cbd515da953dc34cede991e9ed68bb32e3fd7216657175a0",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 6,
+          "understandingFamilies": 2,
+          "procedureFamilies": 2,
+          "basicFamilies": 4,
+          "transferFamilies": 2,
+          "contrastFamilies": 6,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 2,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:properties",
+      "name": "物质性质与用途",
+      "unit": "走进化学世界",
+      "tasks": 72,
+      "definitionSha256": "5ca756d528da7dac9642039586501abcc8e0643022441b76c9fdce20dab3ee0c",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 6,
+          "understandingFamilies": 2,
+          "procedureFamilies": 2,
+          "basicFamilies": 4,
+          "transferFamilies": 2,
+          "contrastFamilies": 6,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 2,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:lab",
+      "name": "基本实验操作与安全",
+      "unit": "走进化学世界",
+      "tasks": 72,
+      "definitionSha256": "f794344d14050bd90cf7628584b178afca5583060a857d1848f79ce0f7e56f4b",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 6,
+          "understandingFamilies": 2,
+          "procedureFamilies": 2,
+          "basicFamilies": 4,
+          "transferFamilies": 2,
+          "contrastFamilies": 6,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 2,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:variables",
+      "name": "对照实验与变量控制",
+      "unit": "走进化学世界",
+      "tasks": 72,
+      "definitionSha256": "316ec94a7712b2312d8576b4fd9fdedb18f49363d5c3ebfae019d3333b5d1308",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 9,
+          "understandingFamilies": 4,
+          "procedureFamilies": 2,
+          "basicFamilies": 6,
+          "transferFamilies": 3,
+          "contrastFamilies": 9,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 245,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 6,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 3,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:air",
+      "name": "空气组成与氧气体积分数",
+      "unit": "空气与氧气",
+      "tasks": 72,
+      "definitionSha256": "bfb28857760a01a78e84e347944ff4e3122bacd8800d14880e8d68c2f0b0c068",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 8,
+          "understandingFamilies": 4,
+          "procedureFamilies": 4,
+          "basicFamilies": 6,
+          "transferFamilies": 4,
+          "contrastFamilies": 8,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 6,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:oxygen",
+      "name": "氧气性质与检验",
+      "unit": "空气与氧气",
+      "tasks": 72,
+      "definitionSha256": "7e52784857130c2d565edab435ab6e094a75d09bd3bdf1fe7d76dcf093b7e60d",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 6,
+          "understandingFamilies": 2,
+          "procedureFamilies": 2,
+          "basicFamilies": 4,
+          "transferFamilies": 2,
+          "contrastFamilies": 6,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 2,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:oxygen-preparation",
+      "name": "氧气制取与装置分析",
+      "unit": "空气与氧气",
+      "tasks": 72,
+      "definitionSha256": "5d28c21aa7ddf23f2c67f9211903bde64c36c2467fe22422632d786bd7c35ec7",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 6,
+          "understandingFamilies": 2,
+          "procedureFamilies": 2,
+          "basicFamilies": 4,
+          "transferFamilies": 2,
+          "contrastFamilies": 6,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 2,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:catalyst",
+      "name": "催化作用与证据",
+      "unit": "空气与氧气",
+      "tasks": 72,
+      "definitionSha256": "d140adc7794ed4183078d4049c226077521c1a7a43d630812c567d67bfef0a1a",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 6,
+          "understandingFamilies": 2,
+          "procedureFamilies": 2,
+          "basicFamilies": 4,
+          "transferFamilies": 2,
+          "contrastFamilies": 6,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 2,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:particles",
+      "name": "分子、原子与微观解释",
+      "unit": "物质构成的奥秘",
+      "tasks": 72,
+      "definitionSha256": "2a69a17f522fd3f9f7577490de3de414ab32f33e10a5a79c817f2896f75b28cf",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 6,
+          "understandingFamilies": 2,
+          "procedureFamilies": 2,
+          "basicFamilies": 4,
+          "transferFamilies": 2,
+          "contrastFamilies": 6,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 2,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:atoms",
+      "name": "原子结构与电性",
+      "unit": "物质构成的奥秘",
+      "tasks": 72,
+      "definitionSha256": "d9847d1b4e2ca7b42be6099004b5a77ca24249a1b50e35c618fc628043405616",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 7,
+          "understandingFamilies": 3,
+          "procedureFamilies": 3,
+          "basicFamilies": 5,
+          "transferFamilies": 3,
+          "contrastFamilies": 7,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 5,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 3,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:ions",
+      "name": "离子形成与电荷",
+      "unit": "物质构成的奥秘",
+      "tasks": 72,
+      "definitionSha256": "86510b553c0e016a8cd832a9c8341841110ed7020cc1b2c1b244554f5f52bcac",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 8,
+          "understandingFamilies": 4,
+          "procedureFamilies": 4,
+          "basicFamilies": 6,
+          "transferFamilies": 4,
+          "contrastFamilies": 8,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 6,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:elements",
+      "name": "元素、符号与物质分类",
+      "unit": "物质构成的奥秘",
+      "tasks": 72,
+      "definitionSha256": "cf11806301bc18457b492823e83880eb1b4ecd654b9d70d36a329d99c401c712",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 6,
+          "understandingFamilies": 2,
+          "procedureFamilies": 2,
+          "basicFamilies": 4,
+          "transferFamilies": 2,
+          "contrastFamilies": 6,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 2,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:purification",
+      "name": "水的净化与资源保护",
+      "unit": "自然界的水与物质组成",
+      "tasks": 72,
+      "definitionSha256": "207d145a6ae4f5837f5df48c91ea18e66879405bd8a6f071c7480cca79c3ab8b",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 6,
+          "understandingFamilies": 2,
+          "procedureFamilies": 2,
+          "basicFamilies": 4,
+          "transferFamilies": 2,
+          "contrastFamilies": 6,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 2,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:water",
+      "name": "水的组成与电解证据",
+      "unit": "自然界的水与物质组成",
+      "tasks": 72,
+      "definitionSha256": "ef9ae79bdf8b52a4076a2ee149ac55826029731342b302ed2b14f3e46f66256c",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 8,
+          "understandingFamilies": 4,
+          "procedureFamilies": 4,
+          "basicFamilies": 6,
+          "transferFamilies": 4,
+          "contrastFamilies": 8,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 6,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:valence",
+      "name": "化学式、化合价与原子个数",
+      "unit": "自然界的水与物质组成",
+      "tasks": 72,
+      "definitionSha256": "f03b1c2ff1a9e196ac0016335ea0818cab04046ca94eec5bea1afd6e9878b4fa",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 10,
+          "understandingFamilies": 6,
+          "procedureFamilies": 6,
+          "basicFamilies": 8,
+          "transferFamilies": 6,
+          "contrastFamilies": 10,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 8,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 6,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:formula-mass",
+      "name": "相对分子质量与元素质量",
+      "unit": "自然界的水与物质组成",
+      "tasks": 72,
+      "definitionSha256": "23031eae619b2d439eaa21729bc771ec6deee7d00d0f14d49491f1427e7e6f27",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 10,
+          "understandingFamilies": 6,
+          "procedureFamilies": 6,
+          "basicFamilies": 8,
+          "transferFamilies": 6,
+          "contrastFamilies": 10,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 8,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 6,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:conservation",
+      "name": "质量守恒与开放装置",
+      "unit": "化学方程式与定量关系",
+      "tasks": 72,
+      "definitionSha256": "50203138caefc3a0d496e215fb9ade2869275d21d29615c1beddcf434598103e",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 8,
+          "understandingFamilies": 4,
+          "procedureFamilies": 4,
+          "basicFamilies": 6,
+          "transferFamilies": 4,
+          "contrastFamilies": 8,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 6,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:balance",
+      "name": "化学方程式配平",
+      "unit": "化学方程式与定量关系",
+      "tasks": 72,
+      "definitionSha256": "6ecfa2abd5653bbd3886f02251ffe4d9c01661b86b0fb141b5af9c1d89c529a2",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 10,
+          "understandingFamilies": 6,
+          "procedureFamilies": 6,
+          "basicFamilies": 8,
+          "transferFamilies": 6,
+          "contrastFamilies": 10,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 8,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 6,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:stoichiometry",
+      "name": "依据方程式计算",
+      "unit": "化学方程式与定量关系",
+      "tasks": 72,
+      "definitionSha256": "f7e70dbc1c5ded6d32a9cd69fb20f16c400608bc9cf7bb20df9806e78db6022d",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 8,
+          "understandingFamilies": 4,
+          "procedureFamilies": 4,
+          "basicFamilies": 6,
+          "transferFamilies": 4,
+          "contrastFamilies": 8,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 6,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:purity",
+      "name": "纯度、剩余量与计算条件",
+      "unit": "化学方程式与定量关系",
+      "tasks": 72,
+      "definitionSha256": "d098db8a29d3b25e316357cb2154a772cf1471de1c91b409f0eb62bb8dd6da3c",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 7,
+          "understandingFamilies": 3,
+          "procedureFamilies": 3,
+          "basicFamilies": 5,
+          "transferFamilies": 3,
+          "contrastFamilies": 7,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 5,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 3,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:carbon",
+      "name": "碳单质的结构、性质与用途",
+      "unit": "碳和碳的氧化物",
+      "tasks": 72,
+      "definitionSha256": "1697b08816d14211da171ba367fd321e851b5ae905ea244f25a63e6c574de4f0",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 6,
+          "understandingFamilies": 2,
+          "procedureFamilies": 2,
+          "basicFamilies": 4,
+          "transferFamilies": 2,
+          "contrastFamilies": 6,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 2,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:carbon-dioxide-preparation",
+      "name": "二氧化碳制取与计量",
+      "unit": "碳和碳的氧化物",
+      "tasks": 72,
+      "definitionSha256": "9485343687f786408bce39ae754c587a071f050e4e73fa0859835e36858ff675",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 7,
+          "understandingFamilies": 3,
+          "procedureFamilies": 3,
+          "basicFamilies": 5,
+          "transferFamilies": 3,
+          "contrastFamilies": 7,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 5,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 3,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:carbon-dioxide",
+      "name": "二氧化碳性质与证据",
+      "unit": "碳和碳的氧化物",
+      "tasks": 72,
+      "definitionSha256": "11b24fd40088ab091fd966a9897caf011c67442ce590c5e7753a10a6afa54fd4",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 6,
+          "understandingFamilies": 2,
+          "procedureFamilies": 2,
+          "basicFamilies": 4,
+          "transferFamilies": 2,
+          "contrastFamilies": 6,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 2,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:carbon-monoxide",
+      "name": "一氧化碳与二氧化碳对照",
+      "unit": "碳和碳的氧化物",
+      "tasks": 72,
+      "definitionSha256": "9bc97b297dc00b5d4cd825211b27e32a59bad860b596599702417a25ad5af270",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 6,
+          "understandingFamilies": 2,
+          "procedureFamilies": 2,
+          "basicFamilies": 4,
+          "transferFamilies": 2,
+          "contrastFamilies": 6,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 2,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:combustion",
+      "name": "燃烧条件与充分燃烧",
+      "unit": "燃料、能源与环境",
+      "tasks": 72,
+      "definitionSha256": "044dc69ed9ba959b0bf14401bea10e36b0edfa0898510aaf94395aa0b5aee25f",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 6,
+          "understandingFamilies": 2,
+          "procedureFamilies": 2,
+          "basicFamilies": 4,
+          "transferFamilies": 2,
+          "contrastFamilies": 6,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 2,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:extinguishing",
+      "name": "灭火原理与安全决策",
+      "unit": "燃料、能源与环境",
+      "tasks": 72,
+      "definitionSha256": "f453e374e0228c934d7f33adaddcc6c35232571b9203c193ad8cdbf87de0089b",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 6,
+          "understandingFamilies": 2,
+          "procedureFamilies": 2,
+          "basicFamilies": 4,
+          "transferFamilies": 2,
+          "contrastFamilies": 6,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 2,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:environment",
+      "name": "能源利用与环境评价",
+      "unit": "燃料、能源与环境",
+      "tasks": 72,
+      "definitionSha256": "0d9bb758ded0bd14eeb474742490589141396fa2df7ccd871e459a19edb2c0e2",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 6,
+          "understandingFamilies": 2,
+          "procedureFamilies": 2,
+          "basicFamilies": 4,
+          "transferFamilies": 2,
+          "contrastFamilies": 6,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 2,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "chemistry:9-upper:hydrogen",
+      "name": "氢能源的反应与定量验证",
+      "unit": "燃料、能源与环境",
+      "tasks": 72,
+      "definitionSha256": "e3db547271e60e9a9acc2c5ef824e8f3825989fb9d60aa1a6609377e34eb6cb3",
+      "materialCoverage": {
+        "version": "verification-materials-v1",
+        "ready": true,
+        "structure": {
+          "version": "verification-materials-v1",
+          "familyIdentityVersion": "authored-family-identity-v1",
+          "families": 8,
+          "understandingFamilies": 4,
+          "procedureFamilies": 4,
+          "basicFamilies": 6,
+          "transferFamilies": 4,
+          "contrastFamilies": 8,
+          "ready": true,
+          "gaps": []
+        },
+        "sample": {
+          "ready": true,
+          "ruleVersion": "diagnosis-rules-v6",
+          "itemLimit": 4,
+          "secondsLimit": 600,
+          "items": 4,
+          "expectedSeconds": 260,
+          "groups": [
+            {
+              "purpose": "减少阅读或表示负担，核查基础行为",
+              "availableFamilies": 6,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            },
+            {
+              "purpose": "换表示与情境观察迁移",
+              "availableFamilies": 4,
+              "selectedFamilies": 2,
+              "requiredFamilies": 2
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "uniqueQuestions": 2016,
+  "materialReady": 28,
+  "primaryBaseline": {
+    "atoms": 258,
+    "uniqueQuestions": 15758
+  },
+  "sourceReferences": {
+    "publisherCatalog": "https://jc.pep.com.cn/?filed=%E5%88%9D%E4%B8%AD&subject=%E5%8C%96%E5%AD%A6",
+    "textbookFullTextVerified": false,
+    "chapterMapping": "original course organization; current edition lesson mapping pending review",
+    "papers": [
+      {
+        "id": "3:R-fe81e950f5d12a9f2996a1a3ebb4940a",
+        "title": "广东省广州中学2025-2026学年九年级上学期期中考试化学试卷",
+        "localAsset": "shijuanbao/media/e95aaab8bb033dc706a591eba9e4e5d180d5cee3d2ba09e7af96003d12f16583.pdf",
+        "sha256": "798dc7e1b7ecf04debe8f32b0476aa0f2edf44950b93e5456e5ea4401c755cca",
+        "verified": true,
+        "publication": "preserve existing library qualification; not auto-published or auto-scored"
+      },
+      {
+        "id": "3:R-1d32e790aaa9ea9ed66339887ef3cef4",
+        "title": "广东省广州市从化区2025-2026学年九年级上学期期末考试化学试卷（B）",
+        "localAsset": "shijuanbao/media/9999a26158ebba05bb4f38cd2b587b5b3e9196b0bc274ce4e9b023e03cd1f753.pdf",
+        "sha256": "366a20ed2566ebadf081e753c2df6ddc863d8eecb75749de9943e061e468879b",
+        "verified": true,
+        "publication": "preserve existing library qualification; not auto-published or auto-scored"
+      },
+      {
+        "id": "3:R-176269d79593f53cc879e0be28d6b918",
+        "title": "广东省广州市广东实验中学2025-2026学年九年级上学期期中考试化学试卷",
+        "localAsset": "shijuanbao/media/2a789713ba0febaa4c36e5c46c1c256ff174272726a7fbc663cdfe0c4a4769d7.pdf",
+        "sha256": "2345a25987dc136d661dfaf9f18e7fec1fbfdf73db7197a8f201eaf08b00c55c",
+        "verified": true,
+        "publication": "preserve existing library qualification; not auto-published or auto-scored"
+      },
+      {
+        "id": "3:R-8dae1e8f1a7d716a44ceb2791d91d1e4",
+        "title": "广东省广州市海珠区2025-2026学年九年级上学期期末质量监测化学试题",
+        "localAsset": "shijuanbao/media/e2f121e3d4f026c014653d3a9f7ba028ee3d8518c614bdf1cbf57b31d099e1b6.pdf",
+        "sha256": "7fe0241f7df98dea375dfc235f57c1ad6e3d5e26593b6a4e3fb51d0458da6942",
+        "verified": true,
+        "publication": "preserve existing library qualification; not auto-published or auto-scored"
+      },
+      {
+        "id": "3:R-40cbb5af8c5748d9c2b24c58cc081efd",
+        "title": "广东省广州市白云区2025-2026学年九年级上学期期末考试化学试卷",
+        "localAsset": "shijuanbao/media/a7e5a1809f11f1cb89418487cac01749fc021393f52d1083ce4f17c434c5e1d1.pdf",
+        "sha256": "73d32e202468da201f4e0ddc436c4aa77af346760c7c329e5779e16aaed62687",
+        "verified": true,
+        "publication": "preserve existing library qualification; not auto-published or auto-scored"
+      },
+      {
+        "id": "3:R-753c0f9ed3232ffdad0ebfd21ad40a57",
+        "title": "广东省广州市第二中学2025-2026学年九年级上学期期中考试化学试卷",
+        "localAsset": "shijuanbao/media/3a337a7fbf75e64187f32db2fd669bab74d410e9744edd4be679bde28a79c14f.pdf",
+        "sha256": "5e9412a51b6731e38bd4fd5ccb9a97aae9c6f1b66e3afd102b760332ab86c4dc",
+        "verified": true,
+        "publication": "preserve existing library qualification; not auto-published or auto-scored"
+      },
+      {
+        "id": "3:R-fbfc19bcead8fe55f574cbe8bbc4af6b",
+        "title": "广东省广州市第四中学2025-2026学年九年级上学期期中考化学试题",
+        "localAsset": "shijuanbao/media/d80718cb7991c0b4db691a6a6741243fcde5bab8eac8d6a3903c7031f61c8926.pdf",
+        "sha256": "be03f4ea8d012a95fb8d0fc31263f5442eb3b5254811d00a8208c4a9d1ccb869",
+        "verified": true,
+        "publication": "preserve existing library qualification; not auto-published or auto-scored"
+      },
+      {
+        "id": "3:R-bed39aed06147794989490551aed5356",
+        "title": "广东省广州市花都区2025-2026学年九年级上学期期末考试化学试题",
+        "localAsset": "shijuanbao/media/541e1f533909d7cea2a7bba52229ffaad875891148d551703c617086d1b9cc6a.pdf",
+        "sha256": "3a118d8557a5f9a58aa22d75894927a57fd427420e097b2ab6009892542e1a7f",
+        "verified": true,
+        "publication": "preserve existing library qualification; not auto-published or auto-scored"
+      },
+      {
+        "id": "3:R-7a7575520a8951f2dd34c5bd7b10e526",
+        "title": "广东省广州市荔湾区广东广雅中学2025-2026学年九年级上学期期中考试化学试题",
+        "localAsset": "shijuanbao/media/b82e79db2dbcdb6c85f9b38a6829579c9c61880b4120b5098f7eccf18d665079.pdf",
+        "sha256": "ff92c8746793a0a555a0f7ab0f58e2ea4450964f851b858784f698f809dac824",
+        "verified": true,
+        "publication": "preserve existing library qualification; not auto-published or auto-scored"
+      }
+    ]
+  },
+  "boundaries": [
+    "Original authored teaching and rule-scored tasks; not publisher course reproduction.",
+    "Material coverage and automated checks do not prove teacher approval, norms, physical experiment skill or real student retention."
+  ]
+}

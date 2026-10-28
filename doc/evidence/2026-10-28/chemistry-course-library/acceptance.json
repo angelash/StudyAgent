@@ -1,0 +1,139 @@
+{
+  "at": "2026-10-28T06:57:45.176Z",
+  "change": "Chemistry is a course in the existing My Courses library. Native course outline, classroom, materials, practice and assessment panels replace its separate top-level page.",
+  "entry": "https://study-agent.iepose.cn/studio?view=courses&subject=chemistry",
+  "buildId": "Xvt7wlzSz8SrT9Zgy8uL9",
+  "api": {
+    "passed": 10,
+    "failed": 0
+  },
+  "browser": {
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0
+  },
+  "verified": [
+    "Course card visible before enrollment alongside existing courses",
+    "Read-only course preview creates no personal course or response",
+    "Idempotent enrollment creates one native course",
+    "Explicit student context is preserved",
+    "Native classroom returns to the same course and library filters",
+    "Unit and semester checks preserve prerequisite gates and original answers",
+    "Old /chemistry links redirect with student and unit",
+    "1440, 768 and 390 pixel layouts checked",
+    "Existing library, navigation and workspace journeys pass"
+  ],
+  "runtime": {
+    "at": "2026-10-28T06:54:34.224Z",
+    "buildId": "Xvt7wlzSz8SrT9Zgy8uL9",
+    "checks": [
+      {
+        "url": "http://127.0.0.1:3217/studio?view=courses&subject=chemistry",
+        "status": 200,
+        "location": null,
+        "sha256": "22595cc4a278de4fb93de3d9009ea02309b54f74922b9578c208312a52b4af61"
+      },
+      {
+        "url": "http://127.0.0.1:3217/api/ready",
+        "status": 200,
+        "location": null
+      },
+      {
+        "url": "http://127.0.0.1:4217/api/ready",
+        "status": 200,
+        "location": null
+      },
+      {
+        "url": "https://study-agent.iepose.cn/studio?view=courses&subject=chemistry",
+        "status": 200,
+        "location": null,
+        "sha256": "22595cc4a278de4fb93de3d9009ea02309b54f74922b9578c208312a52b4af61"
+      },
+      {
+        "url": "https://study-agent.iepose.cn/api/ready",
+        "status": 200,
+        "location": null
+      },
+      {
+        "url": "https://study-agent.iepose.cn/learn",
+        "status": 200,
+        "location": null,
+        "dedicatedChemistryNav": false
+      },
+      {
+        "url": "http://127.0.0.1:3217/chemistry?studentId=compat-check&unit=u7",
+        "status": 307,
+        "location": "/studio?view=courses&subject=chemistry&course=chemistry&student=compat-check&unit=u7"
+      },
+      {
+        "url": "https://study-agent.iepose.cn/chemistry?studentId=compat-check&unit=u7",
+        "status": 307,
+        "location": "/studio?view=courses&subject=chemistry&course=chemistry&student=compat-check&unit=u7"
+      },
+      {
+        "url": "https://study-agent.iepose.cn/api/chemistry/catalog",
+        "status": 401,
+        "location": null
+      }
+    ],
+    "configUnchanged": true,
+    "database": {
+      "quickCheck": {
+        "quick_check": "ok"
+      },
+      "chemistryAtoms": {
+        "count": 28
+      },
+      "chemistryQuestions": {
+        "count": 2016
+      }
+    }
+  },
+  "processes": [
+    {
+      "name": "study-agent-api",
+      "status": "online",
+      "pid": 79060,
+      "restarts": 1166
+    },
+    {
+      "name": "study-agent-web",
+      "status": "online",
+      "pid": 7832,
+      "restarts": 3
+    },
+    {
+      "name": "study-agent-health",
+      "status": "online",
+      "pid": 41272,
+      "restarts": 1
+    }
+  ],
+  "backup": "deploy-backup.json",
+  "screenshots": [
+    "checks-1440.png",
+    "library-1440.png",
+    "library-390.png",
+    "library-768.png",
+    "outline-1440.png",
+    "outline-390.png",
+    "outline-768.png"
+  ],
+  "previousAttempt": "../chemistry-course-library-first/chemistry-course-library-browser-first.json",
+  "verificationBoundary": "Authenticated journeys, responses and simulated retests use isolated QA storage. Production checks are read-only HTTP and SQLite inspection. Existing configuration hashes match the pre-deployment backup.",
+  "sourceHashes": {
+    "apps/web/components/study-nav.tsx": "a92e753f5a82f74c3a96c3c359d1b237244e24cd7bd58bfe02121c568de28e3a",
+    "apps/web/app/chemistry/page.tsx": "a7d5c1322f93c23b8ab6daa40ddba755968ed9c652a3067b96ace9e439059de0",
+    "apps/web/app/studio/studio.tsx": "45deab2015cc4b87c0d41e5515411399604891736d90a277a0ff341c9f880bfb",
+    "apps/web/app/studio/my-courses.tsx": "e569d16ee3fbda45720ddb64985896d542ff71bbef5f4e2c18b4e4ae3e34e044",
+    "apps/web/app/studio/chemistry-course-tools.tsx": "917c6df339e595c2dbf7a464dcc3a339cc70efc0fa0a3a9d353829f682c67317",
+    "apps/web/app/studio/course-assessments.css": "85ad7f861705b62752a2776a66a02ed0ad935833a3aacda05a72e4dde99a5edf",
+    "apps/api/src/modules/learning/chemistry.service.ts": "2b9acd8d8855ea9d3360945f1de7aab02858d4a5566f4edef53e1e68113afa84",
+    "apps/api/src/modules/learning/chemistry.integration.test.ts": "c90cbb2df92052e59f9095630a64ae9251197f36e59fe43aecfc4d0d45d95078",
+    "packages/contracts/src/chemistry.ts": "da19385a00e9724a1ca78ecc878b03df12e30b12635ac5a1298a7e075589d547",
+    "tests/e2e/chemistry.spec.ts": "5641b6401029a2a2ec9aa375468d94727f2745d8aeaa412c1a4f9aa0127ce22b",
+    "scripts/qa/run-source-course-browser.cjs": "126c481aaa16f51946498a9484a22edc4b0d353bb2d1170def5a9e3a8c958bf4"
+  }
+}

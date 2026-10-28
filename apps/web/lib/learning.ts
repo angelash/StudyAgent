@@ -1,5 +1,5 @@
 import type { ComponentObservation, GuidancePlanView, DiagnosticHypothesis, GuidanceAction, LearningMemory, LearningScope, MasteryEstimate, PracticeAttempt, Subject } from '@study-agent/contracts';
-export const subjectNames: Record<Subject, string> = { math: '数学', chinese: '语文', english: '英语' };
+export const subjectNames: Record<Subject, string> = { math: '数学', chinese: '语文', english: '英语', chemistry: '化学' };
 export const masteryNames: Record<MasteryEstimate['status'], string> = { unknown: '尚未测量', insufficient: '证据待补充', learning: '继续巩固', fragile: '还需验证', secure: '稳定掌握' };
 export type Child = { id: string; nickname: string; grade: number };
 export type DailyLearning = {

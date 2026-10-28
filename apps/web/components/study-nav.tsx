@@ -13,7 +13,7 @@ export function StudyNav({ current, context }: { current?: 'home' | 'studio' | '
     const restore = () => {
       const value = context?.studentId ? context : readLearningContext(user.id, window.location.search);
       setRestored({ actorId: user.id, context: value });
-      if (['math', 'chinese', 'english'].includes(value.subject)) saveLearningContext(user.id, value);
+      if (['math', 'chinese', 'english', 'chemistry'].includes(value.subject)) saveLearningContext(user.id, value);
     };
     restore(); window.addEventListener('popstate', restore);
     return () => window.removeEventListener('popstate', restore);

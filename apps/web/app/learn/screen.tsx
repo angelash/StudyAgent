@@ -9,7 +9,7 @@ import { StudyNav } from '../../components/study-nav';
 import '../student/assessment/studio.css';
 import './home.css';
 
-const subjects: Array<[Subject, string]> = [['math', '数学'], ['chinese', '语文'], ['english', '英语']];
+const subjects: Array<[Subject, string]> = [['math', '数学'], ['chinese', '语文'], ['english', '英语'], ['chemistry', '化学']];
 
 function Action({ action, primary = false }: { action: LearningHomeAction; primary?: boolean }) {
   return <article className={primary ? 'learn-next' : 'learn-action'} data-action={action.kind}>

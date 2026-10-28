@@ -1,0 +1,174 @@
+{
+  "at": "2026-10-28T08:41:25.025Z",
+  "courseId": "studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+  "title": "广东初三化学上学期",
+  "entry": "https://study-agent.iepose.cn/studio?view=courses&subject=chemistry&course=studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+  "problem": "The existing chemistry-titled course was saved with fourth-grade mathematics scope and lessons. Previous navigation acceptance did not inspect this actual course.",
+  "correction": {
+    "at": "2026-10-28T08:36:58.570Z",
+    "applied": true,
+    "alreadyCorrected": false,
+    "courseId": "studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+    "studentId": "student_ebaa9d50-c277-4162-80ec-e585f0719e11",
+    "previousSubject": "math",
+    "previousGrade": 4,
+    "subject": "chemistry",
+    "grade": 9,
+    "previousFingerprint": "a8c5bac37104ed07a1ab6896e84d0bf59d86b6365d24afacf7c862b9dbb75083",
+    "fingerprint": "dbe42b46892caa665984070c4611edb588b15e76ebde99b25ee74bcc075fa2dc",
+    "units": 7,
+    "lessons": 28
+  },
+  "api": {
+    "passed": 45,
+    "failed": 0
+  },
+  "browser": {
+    "distinctJourneysValidated": 20,
+    "fullRun": {
+      "startTime": "2026-10-28T08:28:50.476Z",
+      "duration": 217119.71,
+      "expected": 19,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "focusedNavigationRecheck": {
+      "startTime": "2026-10-28T08:35:45.352Z",
+      "duration": 22801.884,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "environmentFailure": "Chromium net::ERR_NO_BUFFER_SPACE prevented its webpack chunk from loading before login in one navigation test. Focused recheck passed without source changes."
+  },
+  "contentAudit": {
+    "verifiedLessons": 28,
+    "verifiedQuestions": 2016,
+    "wrongMathContentFound": false
+  },
+  "readback": {
+    "at": "2026-10-28T08:40:36.487Z",
+    "courseId": "studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+    "title": "广东初三化学上学期",
+    "oldMathContextResolvesTo": "chemistry",
+    "courseGrade": 9,
+    "studentProfileGrade": 4,
+    "scopeSubject": "chemistry",
+    "scopeGrade": 9,
+    "libraryContainsOriginalCourse": true,
+    "chemistryCatalogCourseId": "studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+    "units": 7,
+    "lessons": 28,
+    "questions": 2016,
+    "firstLesson": "物理变化与化学变化",
+    "lastLesson": "氢能源的反应与定量验证",
+    "studyEvidenceCreated": false
+  },
+  "preservation": {
+    "at": "2026-10-28T08:37:49.466Z",
+    "unchanged": {
+      "students": true,
+      "classroomSessions": true,
+      "diagnosticResponses": true,
+      "diagnosticSessions": true,
+      "courseProjects": true,
+      "otherCourses": true,
+      "mathScopes": true
+    },
+    "configUnchanged": true,
+    "quickCheck": {
+      "quick_check": "ok"
+    }
+  },
+  "runtime": {
+    "at": "2026-10-28T08:39:34.894Z",
+    "buildId": "LBCvtgizX3fdu8huuRgDZ",
+    "checks": [
+      {
+        "url": "http://127.0.0.1:4217/api/ready",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:3217/api/ready",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:3217/studio?view=courses&subject=chemistry&course=studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+        "status": 200
+      },
+      {
+        "url": "https://study-agent.iepose.cn/api/ready",
+        "status": 200
+      },
+      {
+        "url": "https://study-agent.iepose.cn/studio?view=courses&subject=chemistry&course=studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+        "status": 200
+      },
+      {
+        "url": "https://study-agent.iepose.cn/api/chemistry/catalog",
+        "status": 401
+      }
+    ]
+  },
+  "processes": [
+    {
+      "name": "study-agent-api",
+      "status": "online",
+      "pid": 87868,
+      "restarts": 1166
+    },
+    {
+      "name": "study-agent-web",
+      "status": "online",
+      "pid": 71440,
+      "restarts": 3
+    },
+    {
+      "name": "study-agent-health",
+      "status": "online",
+      "pid": 75044,
+      "restarts": 1
+    }
+  ],
+  "screenshots": [
+    "actual-chemistry-body-unit-1.png",
+    "actual-chemistry-body-unit-5.png",
+    "actual-chemistry-body-unit-7.png",
+    "checks-1440.png",
+    "library-1440.png",
+    "library-390.png",
+    "library-768.png",
+    "outline-1440.png",
+    "outline-390.png",
+    "outline-768.png",
+    "reject-math-scope.png"
+  ],
+  "previousFailures": "../chemistry-content-correction-first/",
+  "boundaries": [
+    "Production correction was limited to one exact course, plus its chemistry study scope and audit/activity receipt. Other course and learner evidence hashes match.",
+    "Authenticated browser learning and correction tests ran on isolated databases; production checks read saved content, service output and live HTTP only.",
+    "Content consistency is not a claim of current textbook edition mapping, teacher validation or real learner long-term effects."
+  ],
+  "sourceHashes": {
+    "packages/contracts/src/studio-course-request.ts": "519a834a2e34c81f190b11ca986fb62d51594dfc544ef973a05ae22d21e9d671",
+    "packages/contracts/src/studio.ts": "7ac5e1093c88d67250dbe70c8fb8a3964521472d66f8170281b7c71a2542003e",
+    "packages/contracts/src/index.ts": "a2b46547eed2e43175794f8aa7ccd3b3be00ae5d786244cb541b77ebc5fcd0b1",
+    "apps/api/src/modules/learning/chemistry-course.ts": "ca8231766997acd013d784fea38e402ed3dbb2fde72a43653ae0a786db07c7bd",
+    "apps/api/src/modules/learning/chemistry-course-correction.ts": "97a6116a6adca3b81c88fb54616fdb4dd8298baacf311cde9479e2291886ae3b",
+    "apps/api/src/modules/learning/chemistry.service.ts": "0e3714c46e9f1be4ae4ef28f3b262b9b00fa564a029363f50ae9fe39ef60dc35",
+    "apps/api/src/modules/learning/learning.service.ts": "51b43a63e88b51cb76f5caac4ea2381381c716a5f62957d78bb1560f997c91ef",
+    "apps/api/src/modules/learning/learning.controller.ts": "c2fe22ac5a50ace9cca99f0d02219ae02b8a120d03007836677c3c320eb7e679",
+    "apps/api/src/modules/learning/studio-course.ts": "7bfcc1089dc64322f9831d3155b2a929a7bf18f7072d36d7b6c34145be0179b1",
+    "apps/api/src/modules/learning/classroom-curriculum.ts": "3ea7a9ca76205ed74688c8060dc7a8069c87a4fe74c3a092a7feca0611a6f84d",
+    "apps/web/app/studio/studio.tsx": "80ff101acc8c00cfd3137de34c97fa98180aa6bee61e1acc81d1e6a82d0b1b40",
+    "apps/web/app/studio/page.tsx": "93a58b7e9af8b0ee6eb58942e79f2928bb8669e2759fe989ac53ce271fff7d9c",
+    "apps/web/app/studio/course-builder.tsx": "e8d8662920a52b2973042ec839f0b0853576358a321659b0c325b7b2114ab7cb",
+    "apps/web/app/studio/studio-navigation.tsx": "64d3cbe33439209d80c5bd9df845ed3eab5e156d39ce4f0662f27759adfeaf7a",
+    "scripts/operations/correct-chemistry-course.cjs": "d5ec41d3324ce2f6775abe98bea1b0ebae27937ee42d342d57fe7ca65279500f",
+    "scripts/qa/audit-chemistry-course-content.cjs": "be2814bcfffa41c58ca16b8368b87270b274c0da861d7cba1cd59f0c68008716",
+    "tests/e2e/chemistry.spec.ts": "d67a04ec4505605de93a6e474fe2487178b011dd5a13105fb63fd22dad2bb4ff",
+    "apps/api/src/modules/learning/chemistry-course-correction.integration.test.ts": "d894f5d5bb35657bbbe401be60f908f7de77735b56e14892fa60d25d95bb5815"
+  }
+}

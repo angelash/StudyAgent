@@ -11,7 +11,7 @@ import { generationDigest } from './source-course-pipeline';
 
 const id=z.string().min(1).max(180);
 export const courseSelectionShape={title:z.string().trim().min(1).max(180),goal:z.string().trim().min(5).max(1000),language:z.enum(['source','zh-CN','en']),minutesPerSession:z.number().int().min(5).max(60),
-  modelId:z.string().min(1).max(180).default('auto'),targetAtomIds:z.array(id).max(30).default([]),studentId:id.optional(),subject:z.enum(['math','chinese','english']).optional(),
+  modelId:z.string().min(1).max(180).default('auto'),targetAtomIds:z.array(id).max(30).default([]),studentId:id.optional(),subject:z.enum(['math','chinese','english','chemistry']).optional(),
   selections:z.array(z.object({materialId:id,version:z.string().regex(/^[a-f0-9]{64}$/),pages:z.array(z.number().int().min(1).max(500)).min(1).max(sourceCompilationLimits.pages)}).strict()).min(1).max(5)};
 export const courseSelectionSchema=z.object(courseSelectionShape).strict().refine(value=>Boolean(value.studentId)===Boolean(value.subject),'档案和学科需要同时选择');
 export type CourseSelection=z.infer<typeof courseSelectionSchema>;

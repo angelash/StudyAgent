@@ -1,0 +1,48 @@
+{
+  "runId": 40661058856,
+  "head": "d075dfee01ad2301cee876cb541b299cc45f87c0",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "application",
+      "conclusion": "success"
+    },
+    {
+      "name": "postgres",
+      "conclusion": "success"
+    },
+    {
+      "name": "browser",
+      "conclusion": "success"
+    }
+  ],
+  "browser": {
+    "startTime": "2026-10-28T09:03:53.246Z",
+    "duration": 1782700.858,
+    "expected": 456,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "originalAttempts": 456,
+    "retries": 0,
+    "failedAttempts": 0
+  },
+  "scope": "Final independently pushed142 source and evidence only; excludes current uncommitted chemistry integration, new4 chemistry HTTP controls, new2 browser paths and new source schema/labels. Current integration requires its own exact gates and deployment.",
+  "files": {
+    "data/qa/course-d075-ci-terminal.json": {
+      "bytes": 21586,
+      "sha256": "26f94276fd16a897e16470820454075815fd226a1fbdbc68bf85f09fdc4934a0",
+      "gzipSha256": "5c0fea1ca2f85827644ff8bce5e52951ba019bb28af8fc546a54b832dae6794c"
+    },
+    "data/qa/course-d075-ci-terminal.log": {
+      "bytes": 1100447,
+      "sha256": "3149fd854286ca7e5b435d5a5db781940a46d2109573ce625ce69d21a835fe01",
+      "gzipSha256": "1b1ea905445d658286a24490373b69da4de52a81723b710b812634593da2ef9e"
+    },
+    "data/qa/course-d075-ci-artifacts/data/qa/source-course-full-browser.json": {
+      "bytes": 511821,
+      "sha256": "7b0b8c2351334ea9da52884ed49c44a10ffe0e1af6565df84659ae73d45e0601",
+      "gzipSha256": "aa3e27b469804e4bae0539404cb94a8ff972077e808201b4dbf79d2830e2c81a"
+    }
+  }
+}

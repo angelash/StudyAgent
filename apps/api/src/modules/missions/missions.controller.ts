@@ -11,7 +11,7 @@ export class MissionsController {
   getTodayMission(
     @Req() req: AuthenticatedRequest,
     @Query('studentId') studentId: string,
-    @Query('subject') subject?: 'math' | 'chinese' | 'english',
+    @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry',
   ) {
     return this.missionsService.getTodayMission(req.user, studentId, subject ?? 'math');
   }

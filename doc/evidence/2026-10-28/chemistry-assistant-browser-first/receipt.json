@@ -1,0 +1,92 @@
+{
+  "passed": false,
+  "stats": {
+    "startTime": "2026-10-28T09:17:12.771Z",
+    "duration": 376953.72500000003,
+    "expected": 59,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  },
+  "originalAttempts": 61,
+  "retries": 0,
+  "sourceAndApiInputs": {
+    "checked": 2501,
+    "changed": []
+  },
+  "inputCaptureNote": "Source/API/assets snapshot while the isolated Web build was running, before targeted browser test output. Web runtime hashes were not frozen here; no complete runtime before/after claim for this initial scoped attempt.",
+  "webBuildId": "BGWqJURd768fyHl20UliU",
+  "knownFailures": "Two new chemistry source-return tests requested the exact accessible name 返回本课 while the rendered link is 返回本课 ↗. Both already reached saved cited replies, actual chemical source and original draft recovery. Screenshot also reveals a product label 小学单元 for chemistry which will be corrected.",
+  "files": {
+    "apps/web/app/studio/studio-course-assistant.tsx": {
+      "bytes": 20449,
+      "sha256": "1fd4125cac378b53cb5f0611b5701e543a576d9fb34ebc59b85cc1af6eb1efa7",
+      "gzipSha256": "456e9160439433b44b790aa9564a3c1569457a70745daef106d4129d030c2e27"
+    },
+    "apps/web/app/studio/studio.tsx": {
+      "bytes": 34980,
+      "sha256": "8a806febff46553e513cba6763d9253f80130867018d17fdacbba722988da6f7",
+      "gzipSha256": "5f944c319501154acb321f81ec9ad0dad87c8eeec2a857bd14828892fadcb4a6"
+    },
+    "data/qa/chemistry-assistant-browser-first.json": {
+      "bytes": 79413,
+      "sha256": "3d6c5f9f6f6cef9def5c9f45cc40f1edaa921556e97f68d0ee22ff47887fbf1d",
+      "gzipSha256": "55a757f917afba1515729f859c7e14eeab1268f3341f6f33c0d97a748365cf82"
+    },
+    "data/qa/chemistry-assistant-browser-first.log": {
+      "bytes": 16882,
+      "sha256": "e2db88c4e8728795586a28e41c90eeeecba264b23228e939c1bf84fb4d0ed2ac",
+      "gzipSha256": "6b953850cc267fc09ec64f850bcb244aee4f0d94e164f66c3bd8a182b540b354"
+    },
+    "data/qa/chemistry-assistant-browser-source-first.json": {
+      "bytes": 479771,
+      "sha256": "19ab2f41367e65a0556c6724e61e1b59d9b5f7bcea9c521a12642b0660d0f5de",
+      "gzipSha256": "cb1ff2af271dec6a8aa50517d988f269740583b46969a06f4a81f3965b1b26c0"
+    },
+    "data/qa/chemistry-assistant-web-build-first.log": {
+      "bytes": 1562,
+      "sha256": "87e1a92aff826d9188c7a0baff7ac11a673e828c96ca88bab45120d2e82ba8e1",
+      "gzipSha256": "52d53a1a1b81777a65367f74f3084d2ece9a7a3d8ff430160349959ea2ca2422"
+    },
+    "data/qa/experience-web/.next/BUILD_ID": {
+      "bytes": 21,
+      "sha256": "2086aa8088e8c0884111a55babb3d2fa10a2fdf47ff63c8f4dd8c9ea6c4b8ccf",
+      "gzipSha256": "0b34054dc278f56b84911f607a74a76b6d38b37121578522744f5887c1c96478"
+    },
+    "test-results/browser-product-acceptance/chemistry-chemistry-assist-218d5-to-its-original-unit-at-390/error-context.md": {
+      "bytes": 18853,
+      "sha256": "660b3428ceeb50083008eaffa87cd3f9ea602560324923c496167ed009d09eab",
+      "gzipSha256": "8437a773d290bd154cca6feaf5a646bee209eca446821a8dcb4f4f4f6f5890e1"
+    },
+    "test-results/browser-product-acceptance/chemistry-chemistry-assist-218d5-to-its-original-unit-at-390/test-failed-1.png": {
+      "bytes": 74730,
+      "sha256": "658bd506267564a98dff6c6d4a7a8fff4c5716b1706b4dc1aae5aff01723e16c",
+      "gzipSha256": "2c72649b53246c1a92e1e3d6af0231c9a1cf2f857294a873c784df047ca9e4d7"
+    },
+    "test-results/browser-product-acceptance/chemistry-chemistry-assist-218d5-to-its-original-unit-at-390/trace.zip": {
+      "bytes": 2846498,
+      "sha256": "8033d8abb9635df6c4a76953972fd26ba8cd91fa4cff0671a26560634857e9b7",
+      "gzipSha256": "8e7e9d0e4eec36960c73dbc731cbe0beb3b3c9117bd164ef63a7f3735c7c789c"
+    },
+    "test-results/browser-product-acceptance/chemistry-chemistry-assist-6bc22-o-its-original-unit-at-1440/error-context.md": {
+      "bytes": 21037,
+      "sha256": "8a3faa97a3757902fbd2acb253a021aaaa1863734485a995861a764fbe2fadca",
+      "gzipSha256": "a6d68dba50ff5d31fc617307e2995a70ebad2fee2f8c546828e1577cc55ce828"
+    },
+    "test-results/browser-product-acceptance/chemistry-chemistry-assist-6bc22-o-its-original-unit-at-1440/test-failed-1.png": {
+      "bytes": 115764,
+      "sha256": "023f6754dd2ebe5f84ef70cb3059296ad2106e6bc4dfad12b891cc3daf504c6b",
+      "gzipSha256": "4d683ed6b86b2dad95c551e4ec2a9a804841d9002d9d21dbf9a831bcfc46f9be"
+    },
+    "test-results/browser-product-acceptance/chemistry-chemistry-assist-6bc22-o-its-original-unit-at-1440/trace.zip": {
+      "bytes": 3574962,
+      "sha256": "81653525ce10da8a3dff0fc37aa150c179e59a25d3d961e88b6bd2852dc6c04f",
+      "gzipSha256": "d58dced9f1a793f69abe7d23ef00b46ea0e0920517b9a734ed074b3c748f2bb4"
+    },
+    "tests/e2e/chemistry.spec.ts": {
+      "bytes": 20488,
+      "sha256": "c1f1fd1382a607529fb1330e8a6af995d74dce844e9dc60f571fa6bcdca611ca",
+      "gzipSha256": "a610686c8ffbbbce02f2ab45490a195d240747a677f33fbcc4a1440c9bf1c42e"
+    }
+  }
+}

@@ -11,7 +11,7 @@ export class PlansController {
   getWeeklyPlan(
     @Req() req: AuthenticatedRequest,
     @Query('studentId') studentId: string,
-    @Query('subject') subject?: 'math' | 'chinese' | 'english',
+    @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry',
     @Query('weekStartDate') weekStartDate?: string,
   ) {
     return this.plansService.getWeeklyPlan(req.user, studentId, subject ?? 'math', weekStartDate);
@@ -23,7 +23,7 @@ export class PlansController {
     @Body()
     body: {
       studentId: string;
-      subject?: 'math' | 'chinese' | 'english';
+      subject?: 'math' | 'chinese' | 'english' | 'chemistry';
       weekStartDate?: string;
       availableMinutesPerDay?: number;
     },

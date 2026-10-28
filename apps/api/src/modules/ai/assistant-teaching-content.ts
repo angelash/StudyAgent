@@ -31,7 +31,7 @@ const catalogSchema = z.object({
   protocol: z.enum(['classroom-lecture-v2', 'primary-unit-v1', 'material-lesson-v1']),
   courseId: id, courseTitle: title, itemId: id, itemTitle: title, description: text,
   courseVersion: title, unitPosition: z.number().int().positive().optional(), lecturePosition: z.number().int().positive().optional(),
-  subject: z.enum(['math', 'chinese', 'english']).optional(), grade: z.number().int().min(1).max(6).optional(),
+  subject: z.enum(['math', 'chinese', 'english', 'chemistry']).optional(), grade: z.number().int().min(1).max(9).optional(),
   term: z.enum(['upper', 'lower']).optional(), scopeVersion: z.number().int().positive().optional(), textbookVersion: title.optional(),
   targets: z.array(targetSchema).min(1).max(200), parts: z.array(partSchema).min(1).max(2000), sources: z.array(sourceSchema).max(2000),
 }).strict();
