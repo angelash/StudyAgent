@@ -1,0 +1,82 @@
+{
+  "at": "2026-10-28T20:54:39.042874+00:00",
+  "source": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0/sessions/whiteboard/ed43f6c4-fb26-4603-8645-8e2599424343",
+  "state": "Session settings opened, read and closed; no setting selection, sample click, message, answer or download action.",
+  "visibleControls": {
+    "voices": [
+      [
+        "Warm",
+        "Like a patient teacher, close and natural"
+      ],
+      [
+        "Calm",
+        "Low and steady, easy on long listens"
+      ],
+      [
+        "Bright",
+        "Clear and energetic, key points pop"
+      ],
+      [
+        "Gentle",
+        "Soft-spoken and unhurried"
+      ],
+      [
+        "Professional",
+        "Crisp and clear, like a lecture hall"
+      ],
+      [
+        "Lively",
+        "Quick-paced and full of energy"
+      ]
+    ],
+    "voiceGridColumns": 2,
+    "speedTicks": [
+      0.5,
+      0.75,
+      1,
+      1.25,
+      1.5,
+      2
+    ],
+    "fonts": [
+      "Handwriting",
+      "Standard"
+    ],
+    "other": [
+      "Background dots",
+      "Replay the tour"
+    ]
+  },
+  "preexistingSelection": {
+    "voice": "Calm",
+    "speed": 1,
+    "font": "Handwriting",
+    "backgroundDots": true
+  },
+  "observedImagePixels": [
+    1600,
+    1000
+  ],
+  "dpr": "not separately observed",
+  "image": {
+    "file": "modal-only.png",
+    "sha256": "ba93430b37f5702cd939c0abddffad5c03a17b3b7df25454713e2bb152aa541a",
+    "cropRect": [
+      512,
+      30,
+      1088,
+      970
+    ]
+  },
+  "originalScreenshot": {
+    "sha256": "62499f1ada828da4e11defd3511381ebc9c7fc8d4ff72ec2181f6942e45672ad",
+    "published": false,
+    "reason": "Account/history background excluded; original remains at the Runtime-provided local screenshot path."
+  },
+  "implementationMatch": "Existing whiteboard-settings.tsx has these six preset names/descriptions, separate sample buttons, discrete index0..5 speed ticks, both font modes, dots and tour. No source change made while full browser acceptance is frozen.",
+  "limitations": [
+    "Visible controls and screenshot only, not new source CSS extraction or100percent pixel/DPR equivalence.",
+    "No sound-listening verification or new provider request intentionally triggered by the agent.",
+    "Other application states and full learning outcomes remain separate."
+  ]
+}

@@ -306,3 +306,8 @@ API源码未改；397个生产API/contracts/config运行JS与5cb3b0be/1790完整
 ## 29. 正式父分支CI终态
 
 d456a546 / 40758625872的application、postgres与browser三组均终态success，元数据与精确head匹配，见[父分支收据](../evidence/2026-10-29/assistant-whiteboard-parent-main-ci-first/receipt.json)。这只确认当前正式schema22父分支CI，不是本来源CUI/schema23或新D1的CI，不从任务状态推断未下载的具体用例数。当前来源501浏览器仍运行，完整API1790原件独立；下一次push前仍须即时刷新全部旧run终态，不取消CI。
+
+
+## 30. 已登录原站设置面板复查
+
+在用户指定IAB原课程打开/读取/关闭Session settings，核对六种音色名称及描述、两列卡片、独立试听、六档离散语速、两字体、点阵及重播导览；当前原有Calm/1×/Handwriting/点阵保持，未切换、试听、发送、作答或下载。当前1600×1000截图实际查看后，只归档不含账号/历史背景的设置面板裁剪，原图本地保留哈希，见[复查原件](../evidence/2026-10-29/hyperknow-settings-recheck-first/receipt.json)。既有whiteboard-settings.tsx已包含同组preset/描述、index0至5语速和字体/点阵/导览控件，因此本次不在冻结回归中改源码。没有重新提取新CSS、未单独观测DPR或验证听感，不据此声称100%像素/声音等同。
