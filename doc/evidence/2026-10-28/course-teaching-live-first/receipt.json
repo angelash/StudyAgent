@@ -1,0 +1,69 @@
+{
+  "passed": false,
+  "sourceRevision": "a92c3c59f556c2b4e12bb652bfb1e60e051d5441",
+  "realCliStarts": 3,
+  "completedAnswers": 3,
+  "fullyPassedCases": 2,
+  "cases": [
+    {
+      "mode": "lecture",
+      "status": "passed",
+      "taskStatus": "completed",
+      "failure": null,
+      "elapsedMs": 22175
+    },
+    {
+      "mode": "primary_unit",
+      "status": "failed",
+      "taskStatus": "completed",
+      "failure": "Model did not cite selected teaching",
+      "elapsedMs": 14933
+    },
+    {
+      "mode": "material_lesson",
+      "status": "passed",
+      "taskStatus": "completed",
+      "failure": null,
+      "elapsedMs": 22295
+    }
+  ],
+  "formalRecordsUnchanged": true,
+  "note": "Primary answer completed but omitted optional sourceKeys despite an explicit reference request. The citation acceptance remains failed; no fabricated or server-added citation and no automatic retry. Adult and material citations plus original command replay passed. No production data or whole142 acceptance.",
+  "files": {
+    "data/qa/course-teaching-live-first/receipt.json": {
+      "bytes": 194867,
+      "sha256": "34cee0827ec3b62cc907bd57d93250614c2a9b906d07983f539539eb08419964",
+      "gzipSha256": "1ba8c94c31125d4d97258986aecd77aba8f384c6c5fd9943a47b0405ffb887fb"
+    },
+    "data/qa/course-teaching-live-first/progress.json": {
+      "bytes": 194867,
+      "sha256": "34cee0827ec3b62cc907bd57d93250614c2a9b906d07983f539539eb08419964",
+      "gzipSha256": "1ba8c94c31125d4d97258986aecd77aba8f384c6c5fd9943a47b0405ffb887fb"
+    },
+    "data/qa/course-teaching-live-first/lecture.json": {
+      "bytes": 10888,
+      "sha256": "a021dcd4c37480acb9163ae9d4e7ede745e65d32a6566a43af099343f302903f",
+      "gzipSha256": "e4400a7e622b1e765895428f231460f68367cba7e67ee938f3fe85e4a6665e97"
+    },
+    "data/qa/course-teaching-live-first/primary_unit.json": {
+      "bytes": 9917,
+      "sha256": "1020792ce64b1e91f8aa2e2474d5e331f2899bad46af6e45d16b2d7eca596e3e",
+      "gzipSha256": "94b28a790cbb58c7355cdfa626f204030c4bf371918d0dcce1bfe1e9f88ef69b"
+    },
+    "data/qa/course-teaching-live-first/material_lesson.json": {
+      "bytes": 11368,
+      "sha256": "dd601dbd34444822f1ecec147d1971d92a0b1a3d9a9f3b1c48c032b54179e657",
+      "gzipSha256": "7e9922236f21142239e033eaf94ada0fd7713d9b0cd62aa91ab03ec1e54532ba"
+    },
+    "data/qa/course-teaching-live-first.log": {
+      "bytes": 439,
+      "sha256": "85523b1273c785fe2ca51352a83a7a394ec93da9c007f9bdd972e63fdff7d3ae",
+      "gzipSha256": "aaf82571889e909afee0983737a773e270470772f54441bce72787989d855c89"
+    },
+    "scripts/qa/course-teaching-live.cjs": {
+      "bytes": 15594,
+      "sha256": "f210a618937555c1298bd47645e313bd6eae9e6f0e0fe2268b8184dc3b8aa6d7",
+      "gzipSha256": "2ad59eda2d02d5626469d9978ef14d2a8c0972dd47fd92e422612e8e7ba6393f"
+    }
+  }
+}
