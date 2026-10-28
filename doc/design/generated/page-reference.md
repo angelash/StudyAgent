@@ -56,6 +56,12 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 - 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../lib/learning`、`../../../components/question-renderer`、`../../../components/answer-evidence-view`、`../../../components/study-nav`、`../../student/assessment/studio.css`、`../workbench.css`、`./reviews.css`
 
+## /chemistry
+
+类型：页面。实现：[apps/web/app/chemistry/page.tsx](../../../apps/web/app/chemistry/page.tsx)。
+
+- 直接引用：`next/navigation`
+
 ## /learn
 
 类型：页面。实现：[apps/web/app/learn/page.tsx](../../../apps/web/app/learn/page.tsx)。
@@ -168,7 +174,7 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/studio/page.tsx](../../../apps/web/app/studio/page.tsx)。
 
-- 直接引用：`./studio`
+- 直接引用：`./studio`、`react`
 
 ## /studio/projects
 

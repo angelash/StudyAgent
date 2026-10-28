@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "sourceRevision": "2b1a0471ddf1bef152f601f53d57148c4e188151",
+  "realCliStarts": 2,
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "started",
+      "elapsedMs": 0
+    },
+    {
+      "attempt": 1,
+      "status": "failed",
+      "elapsedMs": 3791,
+      "failureKind": "provider-error"
+    },
+    {
+      "attempt": 2,
+      "status": "started",
+      "elapsedMs": 0
+    },
+    {
+      "attempt": 2,
+      "status": "succeeded",
+      "elapsedMs": 15923
+    }
+  ],
+  "elapsedMs": 20160,
+  "completeGrade9ChemistryContextMatched": true,
+  "retainedProfileGrade": 4,
+  "trustedSources": 1,
+  "originalRequestReplayedWithoutNewCli": true,
+  "formalRecordsUnchanged": true,
+  "fixedInputCount": 492,
+  "scope": "One anonymous actual chemistry course sample under a retained younger learner profile. Real HTTP, durable worker and default Xiaojiu CLI; synthetic owned records only, no model-output substitution. Does not establish full-model, teacher, child-outcome, audio or pixel acceptance.",
+  "priorFailure": "../chemistry-source-live-first/receipt.json",
+  "note": "One completed chemical source-specific scenario after a separate failed run. First attempt here also provider-error, second succeeded. Four actual CLI starts across the two runs with three provider-error attempts, no stable success-rate, provider root-cause or teacher-quality claim.",
+  "files": {
+    "data/qa/chemistry-source-live-second/receipt.json": {
+      "bytes": 127487,
+      "sha256": "76e16cc5be12e7ef5542c6806f671a5cff29ff331d5ca65fc894b057b5c5e6af",
+      "gzipSha256": "a0807a5af130b46458db79dd22da1f1a366744d71df77b8c398573d09600e1de"
+    },
+    "data/qa/chemistry-source-live-second/progress.json": {
+      "bytes": 127487,
+      "sha256": "76e16cc5be12e7ef5542c6806f671a5cff29ff331d5ca65fc894b057b5c5e6af",
+      "gzipSha256": "a0807a5af130b46458db79dd22da1f1a366744d71df77b8c398573d09600e1de"
+    },
+    "data/qa/chemistry-source-live-second/chemistry_unit.json": {
+      "bytes": 19418,
+      "sha256": "68311812e4215ba1cb8d1ded3e2a32814e79674d3712f5848d52d82bdea19e16",
+      "gzipSha256": "42daca65a41390c44ce3e3204d6a8e86d7e15106c1a069f4a030e9d4a91d8100"
+    },
+    "data/qa/chemistry-source-live-second.log": {
+      "bytes": 149,
+      "sha256": "bde88140f36ae7c094bfae03219bdd560a6565485ec1dd846c27c05c88be8f91",
+      "gzipSha256": "a128c6d2103814f857bb21b9ce96592e6207ff67e610cc84f98701a291232340"
+    },
+    "scripts/qa/course-teaching-live.cjs": {
+      "bytes": 19234,
+      "sha256": "3ee9e9875789b86ca28a45b8d5592661b41f080a7b0df128c16c6701a4bb69fb",
+      "gzipSha256": "5501eeff227dc653ac65826a64acfae5f74a35c8dceb5cd168abada9488ead3f"
+    }
+  }
+}

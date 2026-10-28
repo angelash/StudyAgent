@@ -1,6 +1,6 @@
 # 07 题卷资产、内容编辑、导入与发布 — 详细设计
 
-源码基线：`fa8328b0a5a6cab67e0b9a923c0f3a7a6bb0452d`。角色：教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习。
+源码基线：`2b1a0471ddf1bef152f601f53d57148c4e188151`。角色：教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习。
 
 产品入口：`/library`、`/library/practice`、`/admin/content`、`/admin/imports`、`/admin/measurement`。
 
@@ -58,16 +58,16 @@
 
 **服务方法**：
 
-- `ContentService.listTextbooks`；[apps/api/src/modules/content/content.service.ts:56](../../../apps/api/src/modules/content/content.service.ts#L56)。
-- `ContentService.getVolumeTree`；[apps/api/src/modules/content/content.service.ts:137](../../../apps/api/src/modules/content/content.service.ts#L137)。
-- `ContentService.listKnowledgePoints`；[apps/api/src/modules/content/content.service.ts:170](../../../apps/api/src/modules/content/content.service.ts#L170)。
-- `ContentService.listQuestions`；[apps/api/src/modules/content/content.service.ts:237](../../../apps/api/src/modules/content/content.service.ts#L237)。
-- `ContentService.importTextbooks`；[apps/api/src/modules/content/content.service.ts:60](../../../apps/api/src/modules/content/content.service.ts#L60)。
-- `ContentService.createKnowledgePoint`；[apps/api/src/modules/content/content.service.ts:182](../../../apps/api/src/modules/content/content.service.ts#L182)。
-- `ContentService.updateKnowledgePoint`；[apps/api/src/modules/content/content.service.ts:202](../../../apps/api/src/modules/content/content.service.ts#L202)。
-- `ContentService.createQuestion`；[apps/api/src/modules/content/content.service.ts:241](../../../apps/api/src/modules/content/content.service.ts#L241)。
-- `ContentService.mapQuestionKnowledge`；[apps/api/src/modules/content/content.service.ts:267](../../../apps/api/src/modules/content/content.service.ts#L267)。
-- `ContentService.replaceQuestionKnowledge`；[apps/api/src/modules/content/content.service.ts:282](../../../apps/api/src/modules/content/content.service.ts#L282)。
+- `ContentService.listTextbooks`；[apps/api/src/modules/content/content.service.ts:58](../../../apps/api/src/modules/content/content.service.ts#L58)。
+- `ContentService.getVolumeTree`；[apps/api/src/modules/content/content.service.ts:139](../../../apps/api/src/modules/content/content.service.ts#L139)。
+- `ContentService.listKnowledgePoints`；[apps/api/src/modules/content/content.service.ts:172](../../../apps/api/src/modules/content/content.service.ts#L172)。
+- `ContentService.listQuestions`；[apps/api/src/modules/content/content.service.ts:239](../../../apps/api/src/modules/content/content.service.ts#L239)。
+- `ContentService.importTextbooks`；[apps/api/src/modules/content/content.service.ts:62](../../../apps/api/src/modules/content/content.service.ts#L62)。
+- `ContentService.createKnowledgePoint`；[apps/api/src/modules/content/content.service.ts:184](../../../apps/api/src/modules/content/content.service.ts#L184)。
+- `ContentService.updateKnowledgePoint`；[apps/api/src/modules/content/content.service.ts:204](../../../apps/api/src/modules/content/content.service.ts#L204)。
+- `ContentService.createQuestion`；[apps/api/src/modules/content/content.service.ts:243](../../../apps/api/src/modules/content/content.service.ts#L243)。
+- `ContentService.mapQuestionKnowledge`；[apps/api/src/modules/content/content.service.ts:269](../../../apps/api/src/modules/content/content.service.ts#L269)。
+- `ContentService.replaceQuestionKnowledge`；[apps/api/src/modules/content/content.service.ts:284](../../../apps/api/src/modules/content/content.service.ts#L284)。
 
 ## CONTENT-02 题面文档、作答Schema与来源三件套
 
@@ -308,10 +308,10 @@
 
 **服务方法**：
 
-- `ContentService.scaffoldVolumeQuestions`；[apps/api/src/modules/content/content.service.ts:297](../../../apps/api/src/modules/content/content.service.ts#L297)。
+- `ContentService.scaffoldVolumeQuestions`；[apps/api/src/modules/content/content.service.ts:299](../../../apps/api/src/modules/content/content.service.ts#L299)。
 - `QuestionCoverageService.getCoverageSummary`；[apps/api/src/modules/content/question-coverage.service.ts:116](../../../apps/api/src/modules/content/question-coverage.service.ts#L116)。
 - `QuestionCoverageService.backfillQuestionCoverage`；[apps/api/src/modules/content/question-coverage.service.ts:83](../../../apps/api/src/modules/content/question-coverage.service.ts#L83)。
-- `ContentService.publishQuestion`；[apps/api/src/modules/content/content.service.ts:315](../../../apps/api/src/modules/content/content.service.ts#L315)。
+- `ContentService.publishQuestion`；[apps/api/src/modules/content/content.service.ts:317](../../../apps/api/src/modules/content/content.service.ts#L317)。
 
 ## CONTENT-12 原卷整卷/跨卷练习与原答订正复盘
 

@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`fa8328b0a5a6cab67e0b9a923c0f3a7a6bb0452d`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`2b1a0471ddf1bef152f601f53d57148c4e188151`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -149,26 +149,31 @@
 
 ### packages/contracts/src/assistant-turn.ts
 
-- `AssistantReplySource`：[packages/contracts/src/assistant-turn.ts:3](../../../packages/contracts/src/assistant-turn.ts#L3)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AssistantCourseKind`：[packages/contracts/src/assistant-turn.ts:4](../../../packages/contracts/src/assistant-turn.ts#L4)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AssistantTeachingSelection`：[packages/contracts/src/assistant-turn.ts:5](../../../packages/contracts/src/assistant-turn.ts#L5)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AssistantTeachingCoverage`：[packages/contracts/src/assistant-turn.ts:6](../../../packages/contracts/src/assistant-turn.ts#L6)；字段：`totalParts`、`includedParts`、`totalTargets`、`includedTargets`、`complete`。
-- `AssistantSourceReference`：[packages/contracts/src/assistant-turn.ts:7](../../../packages/contracts/src/assistant-turn.ts#L7)；字段：`key`、`kind`、`courseId`、`itemId`、`title`、`href`、`contextFingerprint`、`originHref?`、`page?`、`quote?`、`sourceVersion?`。
-- `AssistantTeachingBlock`：[packages/contracts/src/assistant-turn.ts:9](../../../packages/contracts/src/assistant-turn.ts#L9)；字段：`kind`、`text`、`items?`、`code?`、`table?`、`diagram?`、`figure?`。
-- `AssistantSourcePreview`：[packages/contracts/src/assistant-turn.ts:11](../../../packages/contracts/src/assistant-turn.ts#L11)；字段：`reference`、`current`、`scope`、`accessMode?`、`selection`、`coverage`、`targets`、`sections`。
-- `AssistantReply`：[packages/contracts/src/assistant-turn.ts:15](../../../packages/contracts/src/assistant-turn.ts#L15)；字段：`reply`、`source`、`evidenceIds`、`modelId`、`modelName`、`sourceReferences?`。
-- `AssistantHistoryMessage`：[packages/contracts/src/assistant-turn.ts:17](../../../packages/contracts/src/assistant-turn.ts#L17)；字段：`id`、`sessionId`、`sender`、`content`、`createdAt`、`sequence?`、`source?`、`modelId?`、`modelName?`、`evidenceIds?`、`assistanceRecorded?`、`inReplyTo?`、`sourceReferences?`。
-- `AssistantLocation`：[packages/contracts/src/assistant-turn.ts:20](../../../packages/contracts/src/assistant-turn.ts#L20)；字段：`sessionId`、`pageContext`、`studentId`、`subject`、`contextRefType`、`contextRefId`、`contextItemId`、`href`。
-- `AssistantLectureSummary`：[packages/contracts/src/assistant-turn.ts:22](../../../packages/contracts/src/assistant-turn.ts#L22)；字段：`courseId`、`courseVersion`、`courseTitle`、`unitId`、`unitTitle`、`unitPosition`、`lectureId`、`lectureTitle`、`lecturePosition`、`fingerprint`、`referenceId`、`current`、`href`。
-- `AssistantLectureDescriptor`：[packages/contracts/src/assistant-turn.ts:25](../../../packages/contracts/src/assistant-turn.ts#L25)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AssistantCourseSummary`：[packages/contracts/src/assistant-turn.ts:26](../../../packages/contracts/src/assistant-turn.ts#L26)；字段：`kind`、`courseId`、`courseTitle`、`itemId`、`itemTitle`、`studentId`、`subject`、`accessMode`、`fingerprint`、`referenceId`、`current`、`href`、`selection`、`coverage`、`canSend?`、`blocked?`。
-- `AssistantCourseDescriptor`：[packages/contracts/src/assistant-turn.ts:30](../../../packages/contracts/src/assistant-turn.ts#L30)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AssistantContextView`：[packages/contracts/src/assistant-turn.ts:34](../../../packages/contracts/src/assistant-turn.ts#L34)；字段：`contextVersion`、`location`、`lecture?`、`course?`。
-- `AssistantTurnCommand`：[packages/contracts/src/assistant-turn.ts:35](../../../packages/contracts/src/assistant-turn.ts#L35)；字段：`requestKey`、`message`、`modelId`、`contextVersion`。
-- `AssistantTurnView`：[packages/contracts/src/assistant-turn.ts:36](../../../packages/contracts/src/assistant-turn.ts#L36)；字段：`id`、`sessionId`、`requestKey`、`message`、`requestedModelId`、`modelId`、`modelName`、`source`、`contextVersion`、`location`、`status`、`revision`、`createdAt`、`updatedAt`、`userMessageId?`、`assistantMessageId?`、`task`。
-- `AssistantHistoryPage`：[packages/contracts/src/assistant-turn.ts:41](../../../packages/contracts/src/assistant-turn.ts#L41)；字段：`messages`、`nextCursor`、`location`。
-- `AssistantTurnList`：[packages/contracts/src/assistant-turn.ts:42](../../../packages/contracts/src/assistant-turn.ts#L42)；字段：`turns`、`hasMore`、`page`、`pageSize`。
-- `AssistantHistorySearch`：[packages/contracts/src/assistant-turn.ts:43](../../../packages/contracts/src/assistant-turn.ts#L43)；字段：`sessions`、`total`、`page`、`pageSize`。
+- `AssistantReplySource`：[packages/contracts/src/assistant-turn.ts:4](../../../packages/contracts/src/assistant-turn.ts#L4)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantCourseKind`：[packages/contracts/src/assistant-turn.ts:5](../../../packages/contracts/src/assistant-turn.ts#L5)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantTeachingSelection`：[packages/contracts/src/assistant-turn.ts:6](../../../packages/contracts/src/assistant-turn.ts#L6)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantTeachingCoverage`：[packages/contracts/src/assistant-turn.ts:7](../../../packages/contracts/src/assistant-turn.ts#L7)；字段：`totalParts`、`includedParts`、`totalTargets`、`includedTargets`、`complete`。
+- `AssistantSourceReference`：[packages/contracts/src/assistant-turn.ts:8](../../../packages/contracts/src/assistant-turn.ts#L8)；字段：`key`、`kind`、`courseId`、`itemId`、`title`、`href`、`contextFingerprint`、`originHref?`、`page?`、`quote?`、`sourceVersion?`。
+- `AssistantTeachingBlock`：[packages/contracts/src/assistant-turn.ts:10](../../../packages/contracts/src/assistant-turn.ts#L10)；字段：`kind`、`text`、`items?`、`code?`、`table?`、`diagram?`、`figure?`。
+- `AssistantSourcePreview`：[packages/contracts/src/assistant-turn.ts:12](../../../packages/contracts/src/assistant-turn.ts#L12)；字段：`reference`、`current`、`scope`、`accessMode?`、`selection`、`coverage`、`targets`、`sections`。
+- `AssistantReply`：[packages/contracts/src/assistant-turn.ts:16](../../../packages/contracts/src/assistant-turn.ts#L16)；字段：`reply`、`source`、`evidenceIds`、`modelId`、`modelName`、`sourceReferences?`。
+- `AssistantHistoryMessage`：[packages/contracts/src/assistant-turn.ts:18](../../../packages/contracts/src/assistant-turn.ts#L18)；字段：`id`、`sessionId`、`sender`、`content`、`createdAt`、`sequence?`、`source?`、`modelId?`、`modelName?`、`evidenceIds?`、`assistanceRecorded?`、`inReplyTo?`、`sourceReferences?`。
+- `AssistantLocation`：[packages/contracts/src/assistant-turn.ts:21](../../../packages/contracts/src/assistant-turn.ts#L21)；字段：`sessionId`、`pageContext`、`studentId`、`subject`、`contextRefType`、`contextRefId`、`contextItemId`、`href`。
+- `AssistantLectureSummary`：[packages/contracts/src/assistant-turn.ts:23](../../../packages/contracts/src/assistant-turn.ts#L23)；字段：`courseId`、`courseVersion`、`courseTitle`、`unitId`、`unitTitle`、`unitPosition`、`lectureId`、`lectureTitle`、`lecturePosition`、`fingerprint`、`referenceId`、`current`、`href`。
+- `AssistantLectureDescriptor`：[packages/contracts/src/assistant-turn.ts:26](../../../packages/contracts/src/assistant-turn.ts#L26)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantCourseSummary`：[packages/contracts/src/assistant-turn.ts:27](../../../packages/contracts/src/assistant-turn.ts#L27)；字段：`kind`、`courseId`、`courseTitle`、`itemId`、`itemTitle`、`studentId`、`subject`、`accessMode`、`fingerprint`、`referenceId`、`current`、`href`、`selection`、`coverage`、`canSend?`、`blocked?`。
+- `AssistantCourseDescriptor`：[packages/contracts/src/assistant-turn.ts:31](../../../packages/contracts/src/assistant-turn.ts#L31)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantContextView`：[packages/contracts/src/assistant-turn.ts:35](../../../packages/contracts/src/assistant-turn.ts#L35)；字段：`contextVersion`、`location`、`lecture?`、`course?`。
+- `AssistantTurnCommand`：[packages/contracts/src/assistant-turn.ts:36](../../../packages/contracts/src/assistant-turn.ts#L36)；字段：`requestKey`、`message`、`modelId`、`contextVersion`。
+- `AssistantTurnView`：[packages/contracts/src/assistant-turn.ts:37](../../../packages/contracts/src/assistant-turn.ts#L37)；字段：`id`、`sessionId`、`requestKey`、`message`、`requestedModelId`、`modelId`、`modelName`、`source`、`contextVersion`、`location`、`status`、`revision`、`createdAt`、`updatedAt`、`userMessageId?`、`assistantMessageId?`、`task`。
+- `AssistantHistoryPage`：[packages/contracts/src/assistant-turn.ts:42](../../../packages/contracts/src/assistant-turn.ts#L42)；字段：`messages`、`nextCursor`、`location`。
+- `AssistantTurnList`：[packages/contracts/src/assistant-turn.ts:43](../../../packages/contracts/src/assistant-turn.ts#L43)；字段：`turns`、`hasMore`、`page`、`pageSize`。
+- `AssistantHistorySearch`：[packages/contracts/src/assistant-turn.ts:44](../../../packages/contracts/src/assistant-turn.ts#L44)；字段：`sessions`、`total`、`page`、`pageSize`。
+
+### packages/contracts/src/chemistry.ts
+
+- `ChemistryCheckpoint`：[packages/contracts/src/chemistry.ts:4](../../../packages/contracts/src/chemistry.ts#L4)；字段：`id`、`title`、`kind`、`unitIds`、`targetAtomIds`、`itemLimit`、`minutes`、`ready`、`reason`、`lastSessionId`、`status`。
+- `ChemistryCatalog`：[packages/contracts/src/chemistry.ts:10](../../../packages/contracts/src/chemistry.ts#L10)；字段：`version`、`title`、`description`、`pointCount`、`questionCount`、`studentId`、`courseId`、`canEnroll`、`course`、`children`、`units`、`checkpoints`、`references`、`notices`。
 
 ### packages/contracts/src/classroom-board.ts
 
@@ -339,62 +344,62 @@
 
 ### packages/contracts/src/index.ts
 
-- `Subject`：[packages/contracts/src/index.ts:10](../../../packages/contracts/src/index.ts#L10)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `UserRole`：[packages/contracts/src/index.ts:13](../../../packages/contracts/src/index.ts#L13)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `ApiError`：[packages/contracts/src/index.ts:21](../../../packages/contracts/src/index.ts#L21)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `ApiResponse`：[packages/contracts/src/index.ts:23](../../../packages/contracts/src/index.ts#L23)；字段：`data`、`error`、`meta`。
-- `DomainEventEnvelope`：[packages/contracts/src/index.ts:40](../../../packages/contracts/src/index.ts#L40)；字段：`eventName`、`eventVersion`、`eventId`、`occurredAt`、`payload`。
-- `StudentProfile`：[packages/contracts/src/index.ts:61](../../../packages/contracts/src/index.ts#L61)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `SubjectEnrollment`：[packages/contracts/src/index.ts:71](../../../packages/contracts/src/index.ts#L71)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `TextbookVolume`：[packages/contracts/src/index.ts:84](../../../packages/contracts/src/index.ts#L84)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `KnowledgePoint`：[packages/contracts/src/index.ts:97](../../../packages/contracts/src/index.ts#L97)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `Question`：[packages/contracts/src/index.ts:111](../../../packages/contracts/src/index.ts#L111)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionRuntimeSummary`：[packages/contracts/src/index.ts:121](../../../packages/contracts/src/index.ts#L121)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionBlockType`：[packages/contracts/src/index.ts:138](../../../packages/contracts/src/index.ts#L138)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionBlock`：[packages/contracts/src/index.ts:186](../../../packages/contracts/src/index.ts#L186)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionAttachment`：[packages/contracts/src/index.ts:200](../../../packages/contracts/src/index.ts#L200)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionLayoutMode`：[packages/contracts/src/index.ts:203](../../../packages/contracts/src/index.ts#L203)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionDocument`：[packages/contracts/src/index.ts:215](../../../packages/contracts/src/index.ts#L215)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionAnswerMode`：[packages/contracts/src/index.ts:237](../../../packages/contracts/src/index.ts#L237)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionOption`：[packages/contracts/src/index.ts:246](../../../packages/contracts/src/index.ts#L246)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionAnswerSchema`：[packages/contracts/src/index.ts:258](../../../packages/contracts/src/index.ts#L258)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionSourceType`：[packages/contracts/src/index.ts:268](../../../packages/contracts/src/index.ts#L268)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionLicenseClass`：[packages/contracts/src/index.ts:277](../../../packages/contracts/src/index.ts#L277)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionSourceRecord`：[packages/contracts/src/index.ts:291](../../../packages/contracts/src/index.ts#L291)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionImportType`：[packages/contracts/src/index.ts:294](../../../packages/contracts/src/index.ts#L294)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionImportJobStatus`：[packages/contracts/src/index.ts:297](../../../packages/contracts/src/index.ts#L297)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionImportReviewStatus`：[packages/contracts/src/index.ts:300](../../../packages/contracts/src/index.ts#L300)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionImportSplitMode`：[packages/contracts/src/index.ts:303](../../../packages/contracts/src/index.ts#L303)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionImportQualityLevel`：[packages/contracts/src/index.ts:306](../../../packages/contracts/src/index.ts#L306)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionImportAiSuggestion`：[packages/contracts/src/index.ts:322](../../../packages/contracts/src/index.ts#L322)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionImportSourcePolicy`：[packages/contracts/src/index.ts:330](../../../packages/contracts/src/index.ts#L330)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionImportJob`：[packages/contracts/src/index.ts:353](../../../packages/contracts/src/index.ts#L353)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionImportRecord`：[packages/contracts/src/index.ts:388](../../../packages/contracts/src/index.ts#L388)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `QuestionRenderPayload`：[packages/contracts/src/index.ts:398](../../../packages/contracts/src/index.ts#L398)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudentAnswerPayload`：[packages/contracts/src/index.ts:413](../../../packages/contracts/src/index.ts#L413)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AnswerValidationFieldError`：[packages/contracts/src/index.ts:420](../../../packages/contracts/src/index.ts#L420)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AnswerValidationResult`：[packages/contracts/src/index.ts:429](../../../packages/contracts/src/index.ts#L429)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AssessmentSession`：[packages/contracts/src/index.ts:442](../../../packages/contracts/src/index.ts#L442)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AssessmentResult`：[packages/contracts/src/index.ts:462](../../../packages/contracts/src/index.ts#L462)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AssessmentProgressItem`：[packages/contracts/src/index.ts:475](../../../packages/contracts/src/index.ts#L475)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AssessmentProgressView`：[packages/contracts/src/index.ts:488](../../../packages/contracts/src/index.ts#L488)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `MissionType`：[packages/contracts/src/index.ts:491](../../../packages/contracts/src/index.ts#L491)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `DailyMission`：[packages/contracts/src/index.ts:505](../../../packages/contracts/src/index.ts#L505)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `MissionResultItem`：[packages/contracts/src/index.ts:517](../../../packages/contracts/src/index.ts#L517)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `MissionResultView`：[packages/contracts/src/index.ts:537](../../../packages/contracts/src/index.ts#L537)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudyPlanDay`：[packages/contracts/src/index.ts:549](../../../packages/contracts/src/index.ts#L549)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudyPlan`：[packages/contracts/src/index.ts:567](../../../packages/contracts/src/index.ts#L567)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `GenerateWeeklyPlanRequest`：[packages/contracts/src/index.ts:576](../../../packages/contracts/src/index.ts#L576)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `MasteryStatus`：[packages/contracts/src/index.ts:579](../../../packages/contracts/src/index.ts#L579)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudentMasterySnapshot`：[packages/contracts/src/index.ts:592](../../../packages/contracts/src/index.ts#L592)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `MasteryHeatmapView`：[packages/contracts/src/index.ts:607](../../../packages/contracts/src/index.ts#L607)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `RiskSignal`：[packages/contracts/src/index.ts:621](../../../packages/contracts/src/index.ts#L621)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `WeeklyReport`：[packages/contracts/src/index.ts:649](../../../packages/contracts/src/index.ts#L649)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AnalyticsOverview`：[packages/contracts/src/index.ts:663](../../../packages/contracts/src/index.ts#L663)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AIInsightSummary`：[packages/contracts/src/index.ts:676](../../../packages/contracts/src/index.ts#L676)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AIQualityOverview`：[packages/contracts/src/index.ts:696](../../../packages/contracts/src/index.ts#L696)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AIAnalysisResponse`：[packages/contracts/src/index.ts:706](../../../packages/contracts/src/index.ts#L706)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AssistantSession`：[packages/contracts/src/index.ts:720](../../../packages/contracts/src/index.ts#L720)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `Subject`：[packages/contracts/src/index.ts:12](../../../packages/contracts/src/index.ts#L12)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `UserRole`：[packages/contracts/src/index.ts:15](../../../packages/contracts/src/index.ts#L15)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ApiError`：[packages/contracts/src/index.ts:23](../../../packages/contracts/src/index.ts#L23)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ApiResponse`：[packages/contracts/src/index.ts:25](../../../packages/contracts/src/index.ts#L25)；字段：`data`、`error`、`meta`。
+- `DomainEventEnvelope`：[packages/contracts/src/index.ts:42](../../../packages/contracts/src/index.ts#L42)；字段：`eventName`、`eventVersion`、`eventId`、`occurredAt`、`payload`。
+- `StudentProfile`：[packages/contracts/src/index.ts:64](../../../packages/contracts/src/index.ts#L64)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `SubjectEnrollment`：[packages/contracts/src/index.ts:74](../../../packages/contracts/src/index.ts#L74)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookVolume`：[packages/contracts/src/index.ts:87](../../../packages/contracts/src/index.ts#L87)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `KnowledgePoint`：[packages/contracts/src/index.ts:100](../../../packages/contracts/src/index.ts#L100)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `Question`：[packages/contracts/src/index.ts:114](../../../packages/contracts/src/index.ts#L114)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionRuntimeSummary`：[packages/contracts/src/index.ts:124](../../../packages/contracts/src/index.ts#L124)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionBlockType`：[packages/contracts/src/index.ts:141](../../../packages/contracts/src/index.ts#L141)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionBlock`：[packages/contracts/src/index.ts:189](../../../packages/contracts/src/index.ts#L189)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionAttachment`：[packages/contracts/src/index.ts:203](../../../packages/contracts/src/index.ts#L203)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionLayoutMode`：[packages/contracts/src/index.ts:206](../../../packages/contracts/src/index.ts#L206)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionDocument`：[packages/contracts/src/index.ts:218](../../../packages/contracts/src/index.ts#L218)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionAnswerMode`：[packages/contracts/src/index.ts:240](../../../packages/contracts/src/index.ts#L240)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionOption`：[packages/contracts/src/index.ts:249](../../../packages/contracts/src/index.ts#L249)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionAnswerSchema`：[packages/contracts/src/index.ts:261](../../../packages/contracts/src/index.ts#L261)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionSourceType`：[packages/contracts/src/index.ts:271](../../../packages/contracts/src/index.ts#L271)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionLicenseClass`：[packages/contracts/src/index.ts:280](../../../packages/contracts/src/index.ts#L280)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionSourceRecord`：[packages/contracts/src/index.ts:294](../../../packages/contracts/src/index.ts#L294)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionImportType`：[packages/contracts/src/index.ts:297](../../../packages/contracts/src/index.ts#L297)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionImportJobStatus`：[packages/contracts/src/index.ts:300](../../../packages/contracts/src/index.ts#L300)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionImportReviewStatus`：[packages/contracts/src/index.ts:303](../../../packages/contracts/src/index.ts#L303)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionImportSplitMode`：[packages/contracts/src/index.ts:306](../../../packages/contracts/src/index.ts#L306)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionImportQualityLevel`：[packages/contracts/src/index.ts:309](../../../packages/contracts/src/index.ts#L309)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionImportAiSuggestion`：[packages/contracts/src/index.ts:325](../../../packages/contracts/src/index.ts#L325)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionImportSourcePolicy`：[packages/contracts/src/index.ts:333](../../../packages/contracts/src/index.ts#L333)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionImportJob`：[packages/contracts/src/index.ts:356](../../../packages/contracts/src/index.ts#L356)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionImportRecord`：[packages/contracts/src/index.ts:391](../../../packages/contracts/src/index.ts#L391)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `QuestionRenderPayload`：[packages/contracts/src/index.ts:401](../../../packages/contracts/src/index.ts#L401)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudentAnswerPayload`：[packages/contracts/src/index.ts:416](../../../packages/contracts/src/index.ts#L416)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AnswerValidationFieldError`：[packages/contracts/src/index.ts:423](../../../packages/contracts/src/index.ts#L423)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AnswerValidationResult`：[packages/contracts/src/index.ts:432](../../../packages/contracts/src/index.ts#L432)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssessmentSession`：[packages/contracts/src/index.ts:445](../../../packages/contracts/src/index.ts#L445)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssessmentResult`：[packages/contracts/src/index.ts:465](../../../packages/contracts/src/index.ts#L465)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssessmentProgressItem`：[packages/contracts/src/index.ts:478](../../../packages/contracts/src/index.ts#L478)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssessmentProgressView`：[packages/contracts/src/index.ts:491](../../../packages/contracts/src/index.ts#L491)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `MissionType`：[packages/contracts/src/index.ts:494](../../../packages/contracts/src/index.ts#L494)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `DailyMission`：[packages/contracts/src/index.ts:508](../../../packages/contracts/src/index.ts#L508)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `MissionResultItem`：[packages/contracts/src/index.ts:520](../../../packages/contracts/src/index.ts#L520)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `MissionResultView`：[packages/contracts/src/index.ts:540](../../../packages/contracts/src/index.ts#L540)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudyPlanDay`：[packages/contracts/src/index.ts:552](../../../packages/contracts/src/index.ts#L552)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudyPlan`：[packages/contracts/src/index.ts:570](../../../packages/contracts/src/index.ts#L570)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `GenerateWeeklyPlanRequest`：[packages/contracts/src/index.ts:579](../../../packages/contracts/src/index.ts#L579)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `MasteryStatus`：[packages/contracts/src/index.ts:582](../../../packages/contracts/src/index.ts#L582)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudentMasterySnapshot`：[packages/contracts/src/index.ts:595](../../../packages/contracts/src/index.ts#L595)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `MasteryHeatmapView`：[packages/contracts/src/index.ts:610](../../../packages/contracts/src/index.ts#L610)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `RiskSignal`：[packages/contracts/src/index.ts:624](../../../packages/contracts/src/index.ts#L624)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `WeeklyReport`：[packages/contracts/src/index.ts:652](../../../packages/contracts/src/index.ts#L652)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AnalyticsOverview`：[packages/contracts/src/index.ts:666](../../../packages/contracts/src/index.ts#L666)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AIInsightSummary`：[packages/contracts/src/index.ts:679](../../../packages/contracts/src/index.ts#L679)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AIQualityOverview`：[packages/contracts/src/index.ts:699](../../../packages/contracts/src/index.ts#L699)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AIAnalysisResponse`：[packages/contracts/src/index.ts:709](../../../packages/contracts/src/index.ts#L709)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantSession`：[packages/contracts/src/index.ts:723](../../../packages/contracts/src/index.ts#L723)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 
 ### packages/contracts/src/learning-home.ts
 
@@ -554,36 +559,36 @@
 - `StudioLesson`：[packages/contracts/src/studio.ts:7](../../../packages/contracts/src/studio.ts#L7)；字段：`id`、`atomId`、`title`、`objective`、`kind`、`state`、`href`、`teaching?`。
 - `StudioUnit`：[packages/contracts/src/studio.ts:18](../../../packages/contracts/src/studio.ts#L18)；字段：`id`、`title`、`objective`、`lessons`。
 - `StudioCoursePace`：[packages/contracts/src/studio.ts:25](../../../packages/contracts/src/studio.ts#L25)；字段：`version`、`minutesPerSession`、`teachingLanguage`、`estimatedMinutes`、`notice`、`sessions`。
-- `StudioCourse`：[packages/contracts/src/studio.ts:34](../../../packages/contracts/src/studio.ts#L34)；字段：`id`、`studentId`、`subject`、`grade`、`term`、`title`、`description`、`objective`、`status`、`source`、`scopeVersion`、`textbookVersion`、`focusAtomIds`、`units`、`materials`、`fingerprint`、`createdAt`、`updatedAt`、`learningProgress?`、`pace?`。
-- `StudioCoursePreview`：[packages/contracts/src/studio.ts:57](../../../packages/contracts/src/studio.ts#L57)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioActivity`：[packages/contracts/src/studio.ts:59](../../../packages/contracts/src/studio.ts#L59)；字段：`id`、`studentId`、`subject`、`kind`、`title`、`detail`、`href`、`at`、`status`、`requestKey?`、`referenceId?`、`actorId?`、`requestHash?`。
-- `StudioPlanSessionKind`：[packages/contracts/src/studio.ts:75](../../../packages/contracts/src/studio.ts#L75)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioPlanSession`：[packages/contracts/src/studio.ts:76](../../../packages/contracts/src/studio.ts#L76)；字段：`id`、`index`、`title`、`kind`、`atomIds`、`objective`、`successCriterion`、`startsAt`、`endsAt`、`status`、`calendarEventId`、`evidenceBasis`、`reviewForSessionId?`、`reviewOffsetDays?`。
-- `StudioStudyPlan`：[packages/contracts/src/studio.ts:93](../../../packages/contracts/src/studio.ts#L93)；字段：`id`、`studentId`、`subject`、`title`、`goal`、`targetDate`、`minutesPerDay`、`status`、`sessions`、`fingerprint`、`createdAt`、`updatedAt`、`revision`。
-- `StudioStudyPlanPreview`：[packages/contracts/src/studio.ts:109](../../../packages/contracts/src/studio.ts#L109)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioPdfBBox`：[packages/contracts/src/studio.ts:114](../../../packages/contracts/src/studio.ts#L114)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioPdfStructureBlock`：[packages/contracts/src/studio.ts:116](../../../packages/contracts/src/studio.ts#L116)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioSourcePage`：[packages/contracts/src/studio.ts:121](../../../packages/contracts/src/studio.ts#L121)；字段：`page`、`text`、`textCharacters?`、`method?`、`confidence?`、`blocks?`、`warnings?`。
-- `StudioMaterialStructure`：[packages/contracts/src/studio.ts:131](../../../packages/contracts/src/studio.ts#L131)；字段：`modelReviewedPages?`、`method`、`ocrPageCount`、`tableCount`、`formulaCount`、`confidence`、`reviewRequired`、`modelAssisted`、`modelSource`、`modelId?`、`reviewedAt?`、`warnings`。
-- `StudioSourceMaterial`：[packages/contracts/src/studio.ts:146](../../../packages/contracts/src/studio.ts#L146)；字段：`contentVersion?`、`id`、`studentId`、`subject`、`ownerUserId?`、`kind?`、`originalFormat?`、`filename`、`title`、`pageCount`、`pages`、`sha256`、`byteSize`、`hasPageImages?`、`status?`、`structure?`、`processingTaskId?`、`error?`、`createdAt`、`updatedAt?`。
-- `StudioLearningCitation`：[packages/contracts/src/studio.ts:169](../../../packages/contracts/src/studio.ts#L169)；字段：`atomId`、`atomName`、`materialId?`、`page?`、`label`。
-- `StudioLearningSection`：[packages/contracts/src/studio.ts:177](../../../packages/contracts/src/studio.ts#L177)；字段：`id`、`kind`、`title`、`body`、`bullets`、`citations`。
-- `StudioFlashcard`：[packages/contracts/src/studio.ts:186](../../../packages/contracts/src/studio.ts#L186)；字段：`id`、`prompt`、`answer`、`hint`、`citations`。
-- `StudioLearningPack`：[packages/contracts/src/studio.ts:194](../../../packages/contracts/src/studio.ts#L194)；字段：`id`、`studentId`、`subject`、`title`、`atomIds`、`sourceMaterialId`、`sections`、`flashcards`、`practiceSteps`、`reviewDays`、`fingerprint`、`createdAt`、`updatedAt`。
-- `StudioLearningPackPreview`：[packages/contracts/src/studio.ts:210](../../../packages/contracts/src/studio.ts#L210)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioFeedItem`：[packages/contracts/src/studio.ts:212](../../../packages/contracts/src/studio.ts#L212)；字段：`id`、`kind`、`priority`、`title`、`reason`、`href`。
-- `StudioWhiteboardExhibit`：[packages/contracts/src/studio.ts:221](../../../packages/contracts/src/studio.ts#L221)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioWhiteboardFigure`：[packages/contracts/src/studio.ts:223](../../../packages/contracts/src/studio.ts#L223)；字段：`snapshotId`、`sha256`、`originalSha256`、`width`、`height`、`alt`、`caption`、`imageUrl`、`originalUrl`。
-- `StudioWhiteboardReveal`：[packages/contracts/src/studio.ts:225](../../../packages/contracts/src/studio.ts#L225)；字段：`version`、`sourceText`、`bulletEnds`、`exhibits`、`diagramAt?`。
-- `StudioWhiteboardScene`：[packages/contracts/src/studio.ts:227](../../../packages/contracts/src/studio.ts#L227)；字段：`id`、`kind`、`title`、`narration`、`body?`、`bullets?`、`visual?`、`exhibit?`、`exhibits?`、`diagram?`、`reveal?`、`figure?`、`targetAtomIds?`、`source?`、`durationMs`。
-- `StudioWhiteboard`：[packages/contracts/src/studio.ts:245](../../../packages/contracts/src/studio.ts#L245)；字段：`id`、`studentId`、`subject`、`atomId`、`sourceMaterialId?`、`title`、`prompt`、`scenes`、`durationMs`、`width`、`height`、`fingerprint`、`createdAt`、`updatedAt`。
-- `StudioConnectorKind`：[packages/contracts/src/studio.ts:262](../../../packages/contracts/src/studio.ts#L262)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioConnector`：[packages/contracts/src/studio.ts:263](../../../packages/contracts/src/studio.ts#L263)；字段：`id`、`studentId`、`subject`、`kind`、`label`、`sourceHost`、`status`、`lastSyncedAt`、`eventCount`、`lastError`、`version`、`createdAt`。
-- `StudioScheduleEvent`：[packages/contracts/src/studio.ts:278](../../../packages/contracts/src/studio.ts#L278)；字段：`id`、`connectorId`、`studentId`、`subject`、`title`、`description`、`startsAt`、`endsAt`、`allDay`、`externalUid`、`source`、`createdAt`、`requestKey?`、`planId?`、`planSessionId?`、`status?`、`confirmed?`、`revision?`。
-- `StudioIntegrationOverview`：[packages/contracts/src/studio.ts:299](../../../packages/contracts/src/studio.ts#L299)；字段：`connectors`、`events`。
-- `StudioSpeechVoice`：[packages/contracts/src/studio.ts:304](../../../packages/contracts/src/studio.ts#L304)；字段：`id`、`label`、`description?`、`language?`、`classroomPreset?`。
-- `StudioSpeechCapabilities`：[packages/contracts/src/studio.ts:306](../../../packages/contracts/src/studio.ts#L306)；字段：`available`、`provider`、`voices`、`preview?`、`defaultVoice`。
-- `StudioOverview`：[packages/contracts/src/studio.ts:314](../../../packages/contracts/src/studio.ts#L314)；字段：`generatedAt`、`day`、`narrationAvailable`、`speech`、`children`、`selected`、`courses`、`feed`、`activities`、`plans`、`materials`、`studyPacks`、`whiteboards`、`integrations`。
+- `StudioCourse`：[packages/contracts/src/studio.ts:34](../../../packages/contracts/src/studio.ts#L34)；字段：`id`、`studentId`、`subject`、`grade`、`term`、`title`、`description`、`objective`、`status`、`source`、`scopeVersion`、`textbookVersion`、`curriculumVersion?`、`focusAtomIds`、`units`、`materials`、`fingerprint`、`createdAt`、`updatedAt`、`learningProgress?`、`pace?`。
+- `StudioCoursePreview`：[packages/contracts/src/studio.ts:58](../../../packages/contracts/src/studio.ts#L58)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioActivity`：[packages/contracts/src/studio.ts:60](../../../packages/contracts/src/studio.ts#L60)；字段：`id`、`studentId`、`subject`、`kind`、`title`、`detail`、`href`、`at`、`status`、`requestKey?`、`referenceId?`、`actorId?`、`requestHash?`。
+- `StudioPlanSessionKind`：[packages/contracts/src/studio.ts:76](../../../packages/contracts/src/studio.ts#L76)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioPlanSession`：[packages/contracts/src/studio.ts:77](../../../packages/contracts/src/studio.ts#L77)；字段：`id`、`index`、`title`、`kind`、`atomIds`、`objective`、`successCriterion`、`startsAt`、`endsAt`、`status`、`calendarEventId`、`evidenceBasis`、`reviewForSessionId?`、`reviewOffsetDays?`。
+- `StudioStudyPlan`：[packages/contracts/src/studio.ts:94](../../../packages/contracts/src/studio.ts#L94)；字段：`id`、`studentId`、`subject`、`title`、`goal`、`targetDate`、`minutesPerDay`、`status`、`sessions`、`fingerprint`、`createdAt`、`updatedAt`、`revision`。
+- `StudioStudyPlanPreview`：[packages/contracts/src/studio.ts:110](../../../packages/contracts/src/studio.ts#L110)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioPdfBBox`：[packages/contracts/src/studio.ts:115](../../../packages/contracts/src/studio.ts#L115)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioPdfStructureBlock`：[packages/contracts/src/studio.ts:117](../../../packages/contracts/src/studio.ts#L117)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioSourcePage`：[packages/contracts/src/studio.ts:122](../../../packages/contracts/src/studio.ts#L122)；字段：`page`、`text`、`textCharacters?`、`method?`、`confidence?`、`blocks?`、`warnings?`。
+- `StudioMaterialStructure`：[packages/contracts/src/studio.ts:132](../../../packages/contracts/src/studio.ts#L132)；字段：`modelReviewedPages?`、`method`、`ocrPageCount`、`tableCount`、`formulaCount`、`confidence`、`reviewRequired`、`modelAssisted`、`modelSource`、`modelId?`、`reviewedAt?`、`warnings`。
+- `StudioSourceMaterial`：[packages/contracts/src/studio.ts:147](../../../packages/contracts/src/studio.ts#L147)；字段：`contentVersion?`、`id`、`studentId`、`subject`、`ownerUserId?`、`kind?`、`originalFormat?`、`filename`、`title`、`pageCount`、`pages`、`sha256`、`byteSize`、`hasPageImages?`、`status?`、`structure?`、`processingTaskId?`、`error?`、`createdAt`、`updatedAt?`。
+- `StudioLearningCitation`：[packages/contracts/src/studio.ts:170](../../../packages/contracts/src/studio.ts#L170)；字段：`atomId`、`atomName`、`materialId?`、`page?`、`label`。
+- `StudioLearningSection`：[packages/contracts/src/studio.ts:178](../../../packages/contracts/src/studio.ts#L178)；字段：`id`、`kind`、`title`、`body`、`bullets`、`citations`。
+- `StudioFlashcard`：[packages/contracts/src/studio.ts:187](../../../packages/contracts/src/studio.ts#L187)；字段：`id`、`prompt`、`answer`、`hint`、`citations`。
+- `StudioLearningPack`：[packages/contracts/src/studio.ts:195](../../../packages/contracts/src/studio.ts#L195)；字段：`id`、`studentId`、`subject`、`title`、`atomIds`、`sourceMaterialId`、`sections`、`flashcards`、`practiceSteps`、`reviewDays`、`fingerprint`、`createdAt`、`updatedAt`。
+- `StudioLearningPackPreview`：[packages/contracts/src/studio.ts:211](../../../packages/contracts/src/studio.ts#L211)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioFeedItem`：[packages/contracts/src/studio.ts:213](../../../packages/contracts/src/studio.ts#L213)；字段：`id`、`kind`、`priority`、`title`、`reason`、`href`。
+- `StudioWhiteboardExhibit`：[packages/contracts/src/studio.ts:222](../../../packages/contracts/src/studio.ts#L222)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioWhiteboardFigure`：[packages/contracts/src/studio.ts:224](../../../packages/contracts/src/studio.ts#L224)；字段：`snapshotId`、`sha256`、`originalSha256`、`width`、`height`、`alt`、`caption`、`imageUrl`、`originalUrl`。
+- `StudioWhiteboardReveal`：[packages/contracts/src/studio.ts:226](../../../packages/contracts/src/studio.ts#L226)；字段：`version`、`sourceText`、`bulletEnds`、`exhibits`、`diagramAt?`。
+- `StudioWhiteboardScene`：[packages/contracts/src/studio.ts:228](../../../packages/contracts/src/studio.ts#L228)；字段：`id`、`kind`、`title`、`narration`、`body?`、`bullets?`、`visual?`、`exhibit?`、`exhibits?`、`diagram?`、`reveal?`、`figure?`、`targetAtomIds?`、`source?`、`durationMs`。
+- `StudioWhiteboard`：[packages/contracts/src/studio.ts:246](../../../packages/contracts/src/studio.ts#L246)；字段：`id`、`studentId`、`subject`、`atomId`、`sourceMaterialId?`、`title`、`prompt`、`scenes`、`durationMs`、`width`、`height`、`fingerprint`、`createdAt`、`updatedAt`。
+- `StudioConnectorKind`：[packages/contracts/src/studio.ts:263](../../../packages/contracts/src/studio.ts#L263)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioConnector`：[packages/contracts/src/studio.ts:264](../../../packages/contracts/src/studio.ts#L264)；字段：`id`、`studentId`、`subject`、`kind`、`label`、`sourceHost`、`status`、`lastSyncedAt`、`eventCount`、`lastError`、`version`、`createdAt`。
+- `StudioScheduleEvent`：[packages/contracts/src/studio.ts:279](../../../packages/contracts/src/studio.ts#L279)；字段：`id`、`connectorId`、`studentId`、`subject`、`title`、`description`、`startsAt`、`endsAt`、`allDay`、`externalUid`、`source`、`createdAt`、`requestKey?`、`planId?`、`planSessionId?`、`status?`、`confirmed?`、`revision?`。
+- `StudioIntegrationOverview`：[packages/contracts/src/studio.ts:300](../../../packages/contracts/src/studio.ts#L300)；字段：`connectors`、`events`。
+- `StudioSpeechVoice`：[packages/contracts/src/studio.ts:305](../../../packages/contracts/src/studio.ts#L305)；字段：`id`、`label`、`description?`、`language?`、`classroomPreset?`。
+- `StudioSpeechCapabilities`：[packages/contracts/src/studio.ts:307](../../../packages/contracts/src/studio.ts#L307)；字段：`available`、`provider`、`voices`、`preview?`、`defaultVoice`。
+- `StudioOverview`：[packages/contracts/src/studio.ts:315](../../../packages/contracts/src/studio.ts#L315)；字段：`generatedAt`、`day`、`narrationAvailable`、`speech`、`children`、`selected`、`courses`、`feed`、`activities`、`plans`、`materials`、`studyPacks`、`whiteboards`、`integrations`。
 
 ### packages/contracts/src/topic-whiteboard-visual.ts
 

@@ -1,6 +1,6 @@
 # 01 身份、家庭与学习权限 — 详细设计
 
-源码基线：`fa8328b0a5a6cab67e0b9a923c0f3a7a6bb0452d`。角色：家长、学生、管理员、授权教师。
+源码基线：`2b1a0471ddf1bef152f601f53d57148c4e188151`。角色：家长、学生、管理员、授权教师。
 
 产品入口：`/parent/login`、`/student/login`、`/parent/access`、`/admin/accounts`。
 
@@ -129,9 +129,9 @@
 
 **服务方法**：
 
-- `StudentsService.createStudent`；[apps/api/src/modules/students/students.service.ts:32](../../../apps/api/src/modules/students/students.service.ts#L32)。
-- `StudentsService.getProfile`；[apps/api/src/modules/students/students.service.ts:133](../../../apps/api/src/modules/students/students.service.ts#L133)。
-- `StudentsService.listChildren`；[apps/api/src/modules/students/students.service.ts:148](../../../apps/api/src/modules/students/students.service.ts#L148)。
+- `StudentsService.createStudent`；[apps/api/src/modules/students/students.service.ts:33](../../../apps/api/src/modules/students/students.service.ts#L33)。
+- `StudentsService.getProfile`；[apps/api/src/modules/students/students.service.ts:134](../../../apps/api/src/modules/students/students.service.ts#L134)。
+- `StudentsService.listChildren`；[apps/api/src/modules/students/students.service.ts:149](../../../apps/api/src/modules/students/students.service.ts#L149)。
 - `LearningService.studentProfiles`；[apps/api/src/modules/learning/learning.service.ts:62](../../../apps/api/src/modules/learning/learning.service.ts#L62)。
 
 ## AUTH-05 邀请与共同监护绑定
@@ -153,8 +153,8 @@
 
 **服务方法**：
 
-- `StudentsService.createInvitation`；[apps/api/src/modules/students/students.service.ts:93](../../../apps/api/src/modules/students/students.service.ts#L93)。
-- `StudentsService.bindStudent`；[apps/api/src/modules/students/students.service.ts:105](../../../apps/api/src/modules/students/students.service.ts#L105)。
+- `StudentsService.createInvitation`；[apps/api/src/modules/students/students.service.ts:94](../../../apps/api/src/modules/students/students.service.ts#L94)。
+- `StudentsService.bindStudent`；[apps/api/src/modules/students/students.service.ts:106](../../../apps/api/src/modules/students/students.service.ts#L106)。
 
 ## AUTH-06 教师复核授权及撤销
 
@@ -176,9 +176,9 @@
 
 **服务方法**：
 
-- `StudentsService.reviewerAssignments`；[apps/api/src/modules/students/students.service.ts:167](../../../apps/api/src/modules/students/students.service.ts#L167)。
-- `StudentsService.grantReviewer`；[apps/api/src/modules/students/students.service.ts:175](../../../apps/api/src/modules/students/students.service.ts#L175)。
-- `StudentsService.revokeReviewer`；[apps/api/src/modules/students/students.service.ts:189](../../../apps/api/src/modules/students/students.service.ts#L189)。
+- `StudentsService.reviewerAssignments`；[apps/api/src/modules/students/students.service.ts:168](../../../apps/api/src/modules/students/students.service.ts#L168)。
+- `StudentsService.grantReviewer`；[apps/api/src/modules/students/students.service.ts:176](../../../apps/api/src/modules/students/students.service.ts#L176)。
+- `StudentsService.revokeReviewer`；[apps/api/src/modules/students/students.service.ts:190](../../../apps/api/src/modules/students/students.service.ts#L190)。
 
 ## AUTH-07 管理员账号与角色维护
 
