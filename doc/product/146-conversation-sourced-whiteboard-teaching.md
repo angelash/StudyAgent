@@ -157,3 +157,13 @@ SQLite初轮4通过/3 PG环境跳过；实际PG配置的来源/双库读取器�
 各旧准备器现在恢复对应旧版本的ready标记并移除后续笔记索引，原schema14/15/16/17/18/19/20/21的冲突回滚目标及全部原记录相等断言保持。当前版本明确23，future测试明确24，备份的restoring/文件标记拒绝及正确ready-schema23恢复分别验证。第二轮同14文件67通过/0失败/1有意跳过；跳过项是PG分支中的SQLite专用备份案例，双库原生恢复由另外实际案例覆盖，不把跳过报告为通过。API类型检查通过，见[第二轮](../evidence/2026-10-29/schema23-existing-native-second/receipt.json)。另外主题图片文件用例同步当前版本，但不在此14文件范围，后续完整API必须覆盖。
 
 该修正仅使既有兼容验收准确对应真实schema23。第14节实际旧22读取器和原记录拒绝测试未改；来源生成、复核、逐幕映射、私有采用及C3仍待。新完整API/浏览器/精确CI/主目录交付继续，整体目标active。
+
+## 17. C2来源正文基础的具体实施协议
+
+现有两个完整门禁在原笔记与原白板工作区保持冻结；本层在独立生成工作区实施，不改它们的源码、编译、依赖或报告。外部已安装依赖只读复用，contracts/config/API/Web都解析到本工作区自己的包与输出。
+
+先独立实现`PreparedAssistantWhiteboard`和来源正文验证器，再在下一层把它们接入既有Prepared联合、统一权限、持久任务和全部图片/声音路径；本层不新开创建接口或产生可采用对象。Prepared版本明确为assistant-topic-whiteboard-v1，保留完整origin、原selection、来源指纹与旧来源确认；显示prompt直接使用不超过500字符的原objective，不裁切消息塞入2000字符prompt。context使用C1完整原文预算，grade取原课程年级、profileGrade单独保留，targets固定为空。原C1指纹与本层完整Prepared指纹分别记录。
+
+来源内容用独立严格schema扩展现有3～8幕正文，并继承全文22000、表格/公式、完整要点出自讲述等限制。每幕sourceMap的messageIds最多20、referenceKeys最多40、两者各不重复，status为sourced/supplementary，explanation为3～600字符。sourced至少一条已选消息；引用必须同时存在于该幕映射的原消息中，不能从别幕或未选消息借引用。supplementary的引用为空，明确新增解释，不将来源ID存在视为事实审核。来源稿所有targetAtomIds为空，模型输出不接受figure；之后人工采用既有真实图片时才能显式allowFigures。
+
+生成与复核各有独立来源JSON Schema。复核pass需要空issues/无修订，revised需要问题和完整新稿且内容指纹确实变化，uncertain保留原稿并给具体问题。所有修订都重新检查逐幕映射；错误不能退回普通v1解析。普通v1仍严格拒绝sourceMap。以完整代码/表格/公式、九年级来源与四年级档案分离、未知/重复/跨消息引用、伪造知识点、隐式图片、错协议/预算、原文变更和三类复核验证本层；不调用真实模型，不声称已完成C2持久链路或C3界面。
