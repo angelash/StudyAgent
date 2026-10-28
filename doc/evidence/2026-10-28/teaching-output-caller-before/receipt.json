@@ -1,0 +1,38 @@
+{
+  "passed": false,
+  "status": "existing-rejection-reproduced-by-caller-regression",
+  "baseRevision": "9869ef2110f2436a9da181c82196544f6a359942",
+  "testCases": 12,
+  "failedTests": 7,
+  "passedTests": 5,
+  "realModelCalls": 0,
+  "productionChanged": false,
+  "scope": "Compiled current Xiaojiu/OpenAI assistant and optional guidance callers. Seven valid teaching/opaque-ID cases reproduce the problem; five reference/held-answer/unsupported-label controls already pass. No database or real provider.",
+  "files": {
+    "data/qa/teaching-output-caller-before.json": {
+      "sha256": "009cd28043ec96f52a7412c1c409699ad97b3ef3ecae9fdbdbc4065f24bf9d23",
+      "gzipSha256": "431ea241deb21578512f34e2e778a03d1bddf1c5b6ffbe5504ee547225ad0099",
+      "bytes": 12911
+    },
+    "data/qa/teaching-output-caller-before.log": {
+      "sha256": "9e6943476861664e8602e59ad6738a7b1f15c93b42867a90907852c3ef7d2313",
+      "gzipSha256": "d41b6f32ebc47896aec96c4ce300520c40acaaac1cf78281093aa3b3f863f9b9",
+      "bytes": 496
+    },
+    "apps/api/src/modules/ai/teaching-output-caller.test.ts": {
+      "sha256": "eb8dcd1e443a4c81ce194ab6df8e85ec29faab54255e3c57b0e202865f9f7ea1",
+      "gzipSha256": "2a672e54c5f84938a2123ddc64009ac9aa175c6a856b0d432d07e63fe17b27b4",
+      "bytes": 4371
+    },
+    "apps/api/src/modules/ai/ai.service.ts": {
+      "sha256": "83676bdbcf19da6a564d445690505918baf7c1bcca2d9241157e70744aa6f8b4",
+      "gzipSha256": "b294c1924cd1e729202fbacd74a54cd94ab42d3fdda2bf63a3c085324f68ef12",
+      "bytes": 49835
+    },
+    "apps/api/dist/apps/api/src/modules/ai/ai.service.js": {
+      "sha256": "2c2ad96ac1dd35e3b0908c8d5546df9a07477b3492311c3552543a5e42e7e75f",
+      "gzipSha256": "a8598cea5edcdb3744c2bbb45edb181ebc6ff43bbd2280a36b810744d520acdd",
+      "bytes": 53336
+    }
+  }
+}
