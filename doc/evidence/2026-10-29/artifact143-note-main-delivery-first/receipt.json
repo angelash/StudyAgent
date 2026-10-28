@@ -1,0 +1,213 @@
+{
+  "passed": true,
+  "sourceRevision": "2818c61aaada941ca2d6c247340835cce62753a5",
+  "ciRun": 40749214100,
+  "ciUrl": "https://github.com/angelash/StudyAgent/actions/runs/40749214100",
+  "ciAllJobs": "success",
+  "ciBrowser": {
+    "startTime": "2026-10-28T18:56:08.211Z",
+    "duration": 2657199.678,
+    "expected": 483,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "production": {
+    "schemaVersion": 22,
+    "webBuildId": "OxuRoup2TiuaiKi72Ni-V",
+    "protectedCollections": 16,
+    "figures": 28,
+    "compiledReferenceFiles": 7,
+    "checks": 51,
+    "guardianSamples": [
+      {
+        "at": "2026-10-28T19:48:03.874Z",
+        "processes": [
+          {
+            "name": "study-agent-api",
+            "pid": 79096,
+            "restarts": 1166
+          },
+          {
+            "name": "study-agent-health",
+            "pid": 83388,
+            "restarts": 1
+          },
+          {
+            "name": "study-agent-web",
+            "pid": 64024,
+            "restarts": 3
+          }
+        ]
+      },
+      {
+        "at": "2026-10-28T19:48:34.514Z",
+        "processes": [
+          {
+            "name": "study-agent-api",
+            "pid": 79096,
+            "restarts": 1166
+          },
+          {
+            "name": "study-agent-health",
+            "pid": 83388,
+            "restarts": 1
+          },
+          {
+            "name": "study-agent-web",
+            "pid": 64024,
+            "restarts": 3
+          }
+        ]
+      },
+      {
+        "at": "2026-10-28T19:49:05.197Z",
+        "processes": [
+          {
+            "name": "study-agent-api",
+            "pid": 79096,
+            "restarts": 1166
+          },
+          {
+            "name": "study-agent-health",
+            "pid": 83388,
+            "restarts": 1
+          },
+          {
+            "name": "study-agent-web",
+            "pid": 64024,
+            "restarts": 3
+          }
+        ]
+      }
+    ],
+    "syntheticAuth": {
+      "passed": true,
+      "accountDeleted": true,
+      "createdLearnerEvidence": false,
+      "providerCalls": 0,
+      "scope": "Owned generated account only; original user credentials were not used."
+    },
+    "originalRecordsAfterAuthCleanupUnchanged": true
+  },
+  "rollback": {
+    "directory": "output/daemon/release-backups/assistant-notes-20261029-1793214409539",
+    "compiledFiles": 1067,
+    "bundleVerifiedFiles": 1,
+    "scope": "Stopped consistent database and all referenced files,original compiled runtime,private configuration. Private data/config bundle contents are deliberately not published. Not a whole asset archive or full restore rehearsal.",
+    "compiledOnlyRollback": "Explicitly refuses after schema22 migration; current data must be preserved and read with a compatible runtime or separately controlled full restoration."
+  },
+  "limits": [
+    "Verified generated synthetic account registration/login/owner-scoped note list/deletion; no original user credential login or real learner write.",
+    "Original grade9 chemistry vs profile4,seven persisted units,28 figures,protected records and new notes modules preserved.",
+    "Stopped consistent database/referenced-file/compiled backup only; no complete asset archive or full restore rehearsal.",
+    "This is notes/schema22 delivery; source-whiteboard schema23/C3 and whole product/pixel/audio/teacher outcomes remain separate."
+  ],
+  "files": {
+    "release/deployment-before.json.gz": {
+      "sha256": "e2b7f8c4c1bdb10608d455bdaf9b2d1b1feda71295e1e57c7be0aaaa7cbe6d95",
+      "originalSha256": "5d283369973e49280a1675cf50d6e14b9b2b75b35ff6025aba085dfa878f1a45",
+      "originalBytes": 812
+    },
+    "release/deployment-target.json.gz": {
+      "sha256": "19b3ea6fe47a593d0551527c8d80e20eef58e8c9666cc4512127ab411e1bc788",
+      "originalSha256": "2835177bf584ae29c1b710ded2deb984a5b1eb25728df67c123f4afd7ff2adf2",
+      "originalBytes": 148
+    },
+    "release/protected-records-before.json.gz": {
+      "sha256": "f322fc9a3cc259a9e26e498c907d9352d03a7383b1a4beeb18175ec00e51be17",
+      "originalSha256": "bcf42e45579373f1d05bb2545fd9048ebd00a42e5478ea6140a904e18f8b2cb0",
+      "originalBytes": 2195
+    },
+    "release/build-files.json.gz": {
+      "sha256": "ff27705e9ccfa0513d19f8296d7e9236c885cb6935739a7db8b3c1fa297131c3",
+      "originalSha256": "61167e4c843703de5843587acad5a6254c9ae930cf62952ece47a5ec7a964051",
+      "originalBytes": 198425
+    },
+    "release/backup-verified.json.gz": {
+      "sha256": "aa53534b9273793f82c8badeec3f37576b40f4674de4542c3e35b7303989db79",
+      "originalSha256": "42aaff1b5efa2a04c2b2ea7fd67b69de4547ac788992e6cca102fe81770cf963",
+      "originalBytes": 324
+    },
+    "release/runtime-notes-first.json.gz": {
+      "sha256": "ac0f04f1cd630de55e9e1359b44140519508e007b14f745624e8a9d8f5750317",
+      "originalSha256": "a4befb93ece407840a9e6891e9ac5b660cc3def5831f669a45c1ae330995ad97",
+      "originalBytes": 15661
+    },
+    "data/qa/prepare-assistant-notes-rollback.cjs.gz": {
+      "sha256": "a009d82cf3cf3d8744a847b8cac4e0497e615978db9ca8748b03a168c7760ee8",
+      "originalSha256": "fc61a3f8a9fbe544becd0822d5feb46d016f5c15e97c11a696375a67e3ef9907",
+      "originalBytes": 2382
+    },
+    "data/qa/deliver-assistant-notes-prepare.cjs.gz": {
+      "sha256": "93ba472201197c562b8ee7bd26bff9046cf09c2d500ab46dacfb54b9140684a6",
+      "originalSha256": "cd65b426f0c997c2cd3d458fe5ae29d58f237e488c1c95359155aca64c073481",
+      "originalBytes": 7302
+    },
+    "data/qa/rollback-assistant-notes-before-migration.cjs.gz": {
+      "sha256": "fa6c06078e14976d1251c7f45746b4cf6fb92cf776e2ffc6fa0e88ee0599d8c8",
+      "originalSha256": "86481976bc8130a2babea7b49a3842f81d10f8ef0c694dee2fe7185637154728",
+      "originalBytes": 3797
+    },
+    "data/qa/verify-assistant-notes-runtime-first.cjs.gz": {
+      "sha256": "3597a646a6ee863fc3fbe6d544e3f675df6d8e6bfd0e7e8f659c9049bba6f134",
+      "originalSha256": "0a57a001811f729330ac276979f431083b3d6569ec889e61ee4c427f3c9679af",
+      "originalBytes": 10254
+    },
+    "data/qa/assistant-notes-reference-compiled-first.json.gz": {
+      "sha256": "e3b114ffee706d0a84a1d805195a2476c185e43e7ca789c03c8d890c36e94767",
+      "originalSha256": "9a0416cf18763a8bc8f3efbd6285ef2c7223efabef09f0e94c4f9fec37b66c15",
+      "originalBytes": 1401
+    },
+    "data/qa/assistant-notes-release-prepare-first.log.gz": {
+      "sha256": "853e385bc7a48e4d215066aade362144e7e91d099bf1b9ffce790c6e0cc15a40",
+      "originalSha256": "c9c2666afc25a933f7efe5c9723b2f66b545482e94767b2a459694ded6c4683c",
+      "originalBytes": 846
+    },
+    "data/qa/assistant-notes-release-verify-only-first.log.gz": {
+      "sha256": "2b90f511a48f81cef2e7dc231b69f4e0d1a2fe9f69a37727ab93c87a54de2ce5",
+      "originalSha256": "873614e1de9e465c5440280339eda54b45ff91e7d7120bcd7db504044a7b896c",
+      "originalBytes": 808
+    },
+    "data/qa/assistant-notes-release-stop-backup-merge-first.log.gz": {
+      "sha256": "332e742618776d7019a5e619509060c31db53ea3a78e92323a4e677aa6bc6f36",
+      "originalSha256": "8e91e66e80ce74975374e174b104c3916cde742cac319055cb4fd9180feb5ea9",
+      "originalBytes": 804
+    },
+    "data/qa/assistant-notes-main-build-first.log.gz": {
+      "sha256": "4191ff6a3356af24ed9cd2c8946e5edf07c029c858edc33dea7090f1fe0ad178",
+      "originalSha256": "3d930c238cdc2a6770d7af376c369f34411d80ca98df467ceb1c6b571c9641a1",
+      "originalBytes": 2982
+    },
+    "data/qa/assistant-notes-main-start-first.log.gz": {
+      "sha256": "476e073a5a8aa1fdfe5079ce2a1de1891babd99793750d29cc7ea2f1bd8c1a02",
+      "originalSha256": "6a8faa0b29241c20c740bd7d5d895732fa9d1f1eaec2cd71b0ff38eda09f1e3a",
+      "originalBytes": 7710
+    },
+    "data/qa/assistant-notes-runtime-first.log.gz": {
+      "sha256": "75d4e2a2938d84ac66ecd851f72a0276048932663af5b27eecd9b7cc54be04a5",
+      "originalSha256": "6f2ff4c0c7f2637ca14fbede4274be7b15cb2bc89b3fd90852b7914fb0b40e01",
+      "originalBytes": 312
+    },
+    "ci/note-integrated-ci-first-metadata.json.gz": {
+      "sha256": "d1ffd6dbaef292368f2d21f48f725ae08f805d4f41269d2eba6c77c3b176398f",
+      "originalSha256": "38dedcac8fc9fa1991bd58100697755ed46d792ed58ff97198e68413ab419c86",
+      "originalBytes": 21863
+    },
+    "ci/note-integrated-ci-first-all-jobs.log.gz": {
+      "sha256": "04b6bc229d16b05dbe29af0aac701c8a9e9c86d3448da6c8bcdb53cbac92cec5",
+      "originalSha256": "61a802490e2fcaf2031f1fe0c37b682707f1036d36a863a684d201c860d00ddc",
+      "originalBytes": 1095675
+    },
+    "ci/note-integrated-ci-first-artifacts.json.gz": {
+      "sha256": "d058ca396ae487a470eaa2ea6b4351168a906da712b33ecec4dc9ee5a7b41b1d",
+      "originalSha256": "ce3d4cd4dbd76ac0d484d0277cacb8cebc7d7c7c060de88129017d22ee2da485",
+      "originalBytes": 754
+    },
+    "ci/source-course-full-browser.json.gz": {
+      "sha256": "3ceae395d81c37cb3446646b1de5d77084938ad07ebbb84e20706945f0e8d97c",
+      "originalSha256": "8b85f3887642749be4ef3e940eeb063bc83440292e941d92ab7db4a32180bc58",
+      "originalBytes": 541686
+    }
+  }
+}

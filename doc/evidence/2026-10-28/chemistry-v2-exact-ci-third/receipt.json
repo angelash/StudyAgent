@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "runId": 40712644000,
+  "sourceRevision": "517cd7c165841e0a13f575dbdbfb5c7f186fe5cb",
+  "jobs": {
+    "postgres": "success",
+    "application": "success",
+    "browser": "success"
+  },
+  "browser": {
+    "startTime": "2026-10-28T15:09:24.755Z",
+    "duration": 2463161.406,
+    "expected": 466,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "originalAttempts": 466,
+    "retries": 0
+  },
+  "fullApiSummaries": [
+    "application\tRun npm test\t2026-10-28T15:19:16.3321509Z ^[[2m      Tests ^[[22m ^[[1m^[[32m1720 passed^[[39m^[[22m^[[2m | ^[[22m^[[33m74 skipped^[[39m^[[90m (1794)^[[39m"
+  ],
+  "scope": "Exact source/schema21 candidate, excludes note/schema22 and new conversation whiteboards. Full PG workflow succeeds after the bounded native recovery budget correction. No live provider, teacher, pixel or whole-product completeness claim.",
+  "files": {
+    "data/qa/chemistry-v2-exact-ci-third-metadata.json": {
+      "bytes": 21658,
+      "sha256": "ab1850345f0e32e5c565bed9a7908564b7b9d6b8bd5a236c318eea53c7fce517",
+      "gzipSha256": "a40578adbb2a4d2df7b465fc066d73afbd294b600c499fa285b4f274099bf230"
+    },
+    "data/qa/chemistry-v2-exact-ci-third-all-jobs.log": {
+      "bytes": 1104975,
+      "sha256": "05fc5c186aa1cd19098666f1c2a623ba9cffbcdf68b153f7dedfab49a356cf28",
+      "gzipSha256": "8434eb2816ba60d80328cee8cb576d5d9d186537a22531d28458e7b3c066faaa"
+    },
+    "data/qa/chemistry-v2-exact-ci-third-browser-artifact/data/qa/source-course-full-browser.json": {
+      "bytes": 522820,
+      "sha256": "0e64bc8845044ad582c9bd586d39a12a4ae1195bbc1867bc658217eb20e0d48d",
+      "gzipSha256": "f807f0dfbe405a4fb42ef0fb5aadf0254228a9e03c31af84a3c6fa040d0e017b"
+    }
+  }
+}
