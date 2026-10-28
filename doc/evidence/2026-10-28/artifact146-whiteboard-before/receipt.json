@@ -1,0 +1,66 @@
+{
+  "at": "2026-10-28T15:27:45.547Z",
+  "scope": "Actual HTTP before source-whiteboard implementation; owned synthetic independent conversation,4 missing routes only.",
+  "sourceRevision": "60b388bad8f5ff9ce83aef359da2f5a177ed21a7",
+  "routes": [
+    {
+      "method": "POST",
+      "url": "/ai/assistant/sessions/:owned-session/artifacts/whiteboards/preflight",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "url": "/ai/assistant/sessions/:owned-session/artifacts/whiteboards",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "url": "/ai/assistant/sessions/:owned-session/artifacts/whiteboards",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "url": "/ai/assistant/sessions/:owned-session/artifacts/whiteboards/requests/original-gap-request",
+      "status": 404
+    }
+  ],
+  "originalMessageSha256": "b0ad1b9243e905485fa496c7f321a89bbea9be9a5d7d7cb11436326ea0bf4a13",
+  "recordsBefore": "d507a43a1653527e663d00d438412ad7b15ee16fbb5e49cd7084a5ce9e93ee06",
+  "recordsAfter": "d507a43a1653527e663d00d438412ad7b15ee16fbb5e49cd7084a5ce9e93ee06",
+  "modelCalls": 0,
+  "limits": [
+    "Not implementation or full permission/teaching verification. No production learner or live provider data."
+  ],
+  "files": {
+    "data/qa/inspect-conversation-whiteboard-gap.cjs": {
+      "sha256": "a787a90ceb1748bcb28d6c49ff6be2a1281089cae35cddc3fa18b8e3301d196e",
+      "bytes": 4390,
+      "gzipSha256": "643943f81cf479bf7bb208ed3f65e56ca49033cc2ba60e777eb5bb8387883da9"
+    },
+    "data/qa/conversation-whiteboard-before.json": {
+      "sha256": "4c3da63ba3657daec2705d3cc4607f9818dd58c74463bc651b214a4806abf2f8",
+      "bytes": 1240,
+      "gzipSha256": "b05082b165ca7ad40acb7e104696bac78f1d4b88e94ecd58a759126476f654c1"
+    },
+    "data/qa/conversation-whiteboard-before.log": {
+      "sha256": "f06783a22c7719c22111b3d35545ed4cd0410cfd9a95f9ce443d6e1c70dab9f2",
+      "bytes": 1057,
+      "gzipSha256": "d18afca8ddf9377f20a88923971b34ba54f43ae92bde9c92050d402974d01d7c"
+    },
+    "data/qa/conversation-whiteboard-contracts-baseline-build.log": {
+      "sha256": "7c33a0f5969ab33f519cd53afa34b1f3b973550c91d49a16421bd12043e452e8",
+      "bytes": 486,
+      "gzipSha256": "a49400d05da721ccfef430c81c03d0a09d74b84f96a73766995a47901e05a37b"
+    },
+    "data/qa/conversation-whiteboard-config-baseline-build.log": {
+      "sha256": "0771e52d9b8e9b2b338549143399a7e50c406a65045c4cfaf3fe7dbaaba9b27c",
+      "bytes": 478,
+      "gzipSha256": "633678ab3aba71cb9c817099b9c591919769c85d1acba546169b059ea254f83c"
+    },
+    "data/qa/conversation-whiteboard-api-baseline-build.log": {
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "bytes": 66,
+      "gzipSha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c"
+    }
+  }
+}
