@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`b4a985abf72306b7cc6e763d3cfc68622c08938d`。共 451 个 HTTP 路由声明，当前 AppModule 可达 430 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`2186cc8cc8a674876ef75ff6279b60f064a53dca`。共 459 个 HTTP 路由声明，当前 AppModule 可达 438 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -128,6 +128,80 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[{"name":"HttpCode","args":["200"]}]`
 - 调用：`this.artifacts.preflight`
+
+## AssistantNoteController — 当前接入
+
+### POST /api/ai/assistant/sessions/:sessionId/artifacts/notes
+
+实现：[apps/api/src/modules/ai/assistant-note.controller.ts:9](../../../apps/api/src/modules/ai/assistant-note.controller.ts#L9)，方法 `create`。
+
+- 签名：`create(@Req() r: AuthenticatedRequest, @Param('sessionId') s: string, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.notes.create`
+
+### GET /api/ai/assistant/sessions/:sessionId/artifacts/notes
+
+实现：[apps/api/src/modules/ai/assistant-note.controller.ts:10](../../../apps/api/src/modules/ai/assistant-note.controller.ts#L10)，方法 `list`。
+
+- 签名：`list(@Req() r: AuthenticatedRequest, @Param('sessionId') s: string, @Query() query: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.notes.list`
+
+### GET /api/ai/assistant/sessions/:sessionId/artifacts/notes/requests/:key
+
+实现：[apps/api/src/modules/ai/assistant-note.controller.ts:11](../../../apps/api/src/modules/ai/assistant-note.controller.ts#L11)，方法 `creationReceipt`。
+
+- 签名：`creationReceipt(@Req() r: AuthenticatedRequest, @Param('sessionId') s: string, @Param('key') key: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.notes.creationReceipt`
+
+### GET /api/ai/assistant/sessions/:sessionId/artifacts/notes/:id/requests/:key
+
+实现：[apps/api/src/modules/ai/assistant-note.controller.ts:12](../../../apps/api/src/modules/ai/assistant-note.controller.ts#L12)，方法 `receipt`。
+
+- 签名：`receipt(@Req() r: AuthenticatedRequest, @Param('sessionId') s: string, @Param('id') id: string, @Param('key') key: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.notes.receipt`
+
+### GET /api/ai/assistant/sessions/:sessionId/artifacts/notes/:id/export
+
+实现：[apps/api/src/modules/ai/assistant-note.controller.ts:13](../../../apps/api/src/modules/ai/assistant-note.controller.ts#L13)，方法 `export`。
+
+- 签名：`export(@Req() r: AuthenticatedRequest, @Param('sessionId') s: string, @Param('id') id: string, @Query() query: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.notes.export`
+
+### GET /api/ai/assistant/sessions/:sessionId/artifacts/notes/:id
+
+实现：[apps/api/src/modules/ai/assistant-note.controller.ts:14](../../../apps/api/src/modules/ai/assistant-note.controller.ts#L14)，方法 `get`。
+
+- 签名：`get(@Req() r: AuthenticatedRequest, @Param('sessionId') s: string, @Param('id') id: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.notes.get`
+
+### PATCH /api/ai/assistant/sessions/:sessionId/artifacts/notes/:id/content
+
+实现：[apps/api/src/modules/ai/assistant-note.controller.ts:15](../../../apps/api/src/modules/ai/assistant-note.controller.ts#L15)，方法 `edit`。
+
+- 签名：`edit(@Req() r: AuthenticatedRequest, @Param('sessionId') s: string, @Param('id') id: string, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.notes.edit`
+
+### POST /api/ai/assistant/sessions/:sessionId/artifacts/notes/:id/confirm
+
+实现：[apps/api/src/modules/ai/assistant-note.controller.ts:16](../../../apps/api/src/modules/ai/assistant-note.controller.ts#L16)，方法 `confirm`。
+
+- 签名：`confirm(@Req() r: AuthenticatedRequest, @Param('sessionId') s: string, @Param('id') id: string, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.notes.confirm`
 
 ## AssistantTurnController — 当前接入
 

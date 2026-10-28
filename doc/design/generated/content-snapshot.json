@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "b4a985abf72306b7cc6e763d3cfc68622c08938d",
+  "sourceRevision": "2186cc8cc8a674876ef75ff6279b60f064a53dca",
   "scope": "Static versioned curriculum and registry counts. No real family database, full raw-asset byte inventory, runtime model calls, textbook coverage review or human validity study.",
   "authored": {
-    "auditAt": "2026-10-28T13:15:22.912Z",
+    "auditAt": "2026-10-28T15:15:56.589Z",
     "auditCommand": "node scripts/qa/audit-authored-curriculum.cjs data/qa/project-design-authored-audit.json",
     "localAuditArtifact": "data/qa/project-design-authored-audit.json",
-    "localAuditSha256": "28c5376a11d06f179fd1548701e3f9654b30af6665f83196ba544883fec3246b",
+    "localAuditSha256": "28af7f3c769cf2787f61629b92479f5eae3fbb802ab157e2bd97522c0de3d7ae",
     "passed": true,
     "familyIdentityVersion": "authored-family-identity-v1",
     "materialCoverageVersion": "verification-materials-v1",
@@ -249,12 +249,12 @@
       "apps/api/src/modules/gesp/student-curriculum.test.ts": "13f7671e6db95c16287137cfb4565400be510516561ea2a1f5507f900a6905e1",
       "apps/api/src/modules/gesp/gesp-learning-loop.test.ts": "b1262f5aefcf318a6f6abe2579680fb91a6a69f88387a678379e952ca74c2549",
       "apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts": "e3af27d7b9042dd0feead644259ba6be43850332eeb8ab14a3bf21576bb4a022",
-      "apps/api/src/infrastructure/in-memory-store.service.ts": "ce648465c2b2fc27247e102c1a48c2aa6961f7e89d39956042dd1109e721bb0d",
-      "apps/api/src/infrastructure/domain-database.ts": "fab175f122447097ac5b927d257f97eace1a6bda5be86d1b499b09a5501b1ef5",
-      "apps/api/src/common/auth.guard.ts": "066b164065144d042e7b52e75b30fad4b3bd3ba7e40baa601540b1ebce0a01b8",
+      "apps/api/src/infrastructure/in-memory-store.service.ts": "88167540f4ba6935c6b236223c9504e8372cf509178adfa427b5b981297ee979",
+      "apps/api/src/infrastructure/domain-database.ts": "923097ec8b28853223b4f169b47cddca5ae1a9d87fa03d69913c0a588a9245ba",
+      "apps/api/src/common/auth.guard.ts": "7a63bbac193cd77a97961dd260687e9b0c5bb834635e4f131618d00d8b9d168d",
       "apps/web/app/admin/gesp/page.tsx": "4d2d3f74e8a5d3a6d424b68f4ab07e52e409755ae18be4bc040403b17c8e2ebf",
       "apps/web/app/admin/gesp/gesp.css": "49aa3d48ce34e2e3479cd2871806df0f067fce96a853ab77d6c8ad82c827ddcd",
-      "apps/api/src/modules/privacy/privacy-records.ts": "da5bb417ed517a2b114b290e74c7dc8e4a9357637f5a230d367624a1863d240a",
+      "apps/api/src/modules/privacy/privacy-records.ts": "92908633d655fe8d6a3c25debad10cdfdb2bc604c185c12ce9e21bc10c9e7bed",
       "apps/api/src/modules/privacy/privacy.integration.test.ts": "edf2c64b70a57cf67dfd378df3f5fbaea048408483e54c5d25364c692728ccaa",
       "scripts/qa/verify-gesp-learning-loop.cjs": "203acdaed808b2ab129be2555894bf18c57e7eed4bd90729be9940c0d74154a8",
       "apps/web/app/parent/gesp/page.tsx": "38de7080669268e2f73697ecb1a9c7ec341d2aa682466bd5276f20899d8a5ce4",
@@ -393,7 +393,7 @@
       "editionNotice": "已核对七单元参考本的目录与相关正文；版权页未注明版次，PDF制作于2022年。与你在用教材的课题顺序、页码可能不同。"
     },
     "sourceSha256": {
-      "apps/api/src/modules/diagnostics/chemistry-curriculum.ts": "10336870bd2e857a87bdc90e766ead80d92ec8973c6212c7cca4758690d67371",
+      "apps/api/src/modules/diagnostics/chemistry-curriculum.ts": "ce195e55b78c6f08539f23f15e3a801861a6b32fcaa001179249589304aa31bd",
       "apps/api/src/modules/learning/chemistry-tutorial.ts": "2775b8b5eec21ce938c375684da555d11ae727963e9f1866b56076ea70529f00",
       "apps/api/src/modules/learning/chemistry-tutorial-content.ts": "cf981b88b9c948c80750ccfd42d0b204f594452d2e335e6d70b2805f095358fc",
       "resources/curriculum/chemistry-tutorial-figures-v2.json": "a786b1723ab6ba04052e6c14d51abdf067e442c1d3b0fa8c545e9530c4a1b76d"

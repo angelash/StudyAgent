@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "b4a985abf72306b7cc6e763d3cfc68622c08938d",
+  "sourceRevision": "2186cc8cc8a674876ef75ff6279b60f064a53dca",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
     "features": 131,
-    "activeNormalApiRoutes": 430,
-    "coveredApiRoutes": 430
+    "activeNormalApiRoutes": 438,
+    "coveredApiRoutes": 438
   },
   "areas": [
     {
@@ -5226,7 +5226,7 @@
         },
         {
           "id": "AI-11",
-          "title": "已保存对话的完整笔记来源预检",
+          "title": "原对话完整来源与可恢复的私人学习笔记",
           "area": "ai",
           "status": "current-implementation-with-stated-limits",
           "actors": "家长、学生、教研",
@@ -5237,14 +5237,15 @@
             "/student/today",
             "/admin/ai-tools"
           ],
-          "inputs": "原会话、最多20条消息ID、明确关联问题及目标",
-          "implementation": "本人鉴权后按原顺序读完整消息和原模型；从原冻结课程或讲座核对可信引用、年级和范围；完整JSON核对18000预算，超限保留原文；学生正式评测期间拒绝。",
-          "outputs": "只读来源、完整预算和稳定指纹",
+          "inputs": "本人原会话、最多20条消息ID、明确关联问题与目标、完整来源指纹、独立编辑稿及明确核对采用",
+          "implementation": "服务器按原顺序重建全文、原模型、可信引用及课程/讲座范围，完整JSON核对18000预算；创建重新核对指纹，原文与最多30000字符编辑稿分存，显式采用后不可变。revision与原命令回执同事务，原键重放/并发/冷重开可恢复；schema22双库升级、隐私导出删除及原生恢复防复活。原助教提供选取/搜索/预检、我的笔记、表格公式代码阅读、全文下载与只读原消息锚点；本机独立草稿完整保留，超长不截断，409先保存原文字和原请求副本再明确选择服务器版本。学生评测中禁止写入但保留已存笔记读取及精确返回，结束后明确重新核对。",
+          "outputs": "完整私有来源、独立笔记候选/采用、原回执、JSON/Markdown及原对话往返",
           "collections": [
             "assistantSessions",
-            "assistantMessages"
+            "assistantMessages",
+            "assistantArtifactDrafts"
           ],
-          "limits": "没有创建笔记、调用模型、采用、前端入口或正式掌握写入；后续143 B/C/D继续。",
+          "limits": "不调用模型，不写正式掌握/评测/计划/日历；另一共享监护人也不能读取私人笔记。笔记不是能力证据；C白板与D练习/指导计划继续，完整整站/精确CI/主目录交付和教师/像素/长期效果各自验收。",
           "endpoints": [
             {
               "verb": "POST",
@@ -5253,6 +5254,70 @@
               "method": "preflight",
               "file": "apps/api/src/modules/ai/assistant-artifact.controller.ts",
               "line": 10
+            },
+            {
+              "verb": "POST",
+              "path": "/api/ai/assistant/sessions/:sessionId/artifacts/notes",
+              "controller": "AssistantNoteController",
+              "method": "create",
+              "file": "apps/api/src/modules/ai/assistant-note.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/assistant/sessions/:sessionId/artifacts/notes",
+              "controller": "AssistantNoteController",
+              "method": "list",
+              "file": "apps/api/src/modules/ai/assistant-note.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/assistant/sessions/:sessionId/artifacts/notes/requests/:key",
+              "controller": "AssistantNoteController",
+              "method": "creationReceipt",
+              "file": "apps/api/src/modules/ai/assistant-note.controller.ts",
+              "line": 11
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/assistant/sessions/:sessionId/artifacts/notes/:id/requests/:key",
+              "controller": "AssistantNoteController",
+              "method": "receipt",
+              "file": "apps/api/src/modules/ai/assistant-note.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/assistant/sessions/:sessionId/artifacts/notes/:id/export",
+              "controller": "AssistantNoteController",
+              "method": "export",
+              "file": "apps/api/src/modules/ai/assistant-note.controller.ts",
+              "line": 13
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/assistant/sessions/:sessionId/artifacts/notes/:id",
+              "controller": "AssistantNoteController",
+              "method": "get",
+              "file": "apps/api/src/modules/ai/assistant-note.controller.ts",
+              "line": 14
+            },
+            {
+              "verb": "PATCH",
+              "path": "/api/ai/assistant/sessions/:sessionId/artifacts/notes/:id/content",
+              "controller": "AssistantNoteController",
+              "method": "edit",
+              "file": "apps/api/src/modules/ai/assistant-note.controller.ts",
+              "line": 15
+            },
+            {
+              "verb": "POST",
+              "path": "/api/ai/assistant/sessions/:sessionId/artifacts/notes/:id/confirm",
+              "controller": "AssistantNoteController",
+              "method": "confirm",
+              "file": "apps/api/src/modules/ai/assistant-note.controller.ts",
+              "line": 16
             }
           ],
           "implementations": [
@@ -5260,6 +5325,46 @@
               "name": "AssistantArtifactService.preflight",
               "file": "apps/api/src/modules/ai/assistant-artifact.service.ts",
               "line": 16
+            },
+            {
+              "name": "AssistantNoteService.create",
+              "file": "apps/api/src/modules/ai/assistant-note.service.ts",
+              "line": 68
+            },
+            {
+              "name": "AssistantNoteService.list",
+              "file": "apps/api/src/modules/ai/assistant-note.service.ts",
+              "line": 94
+            },
+            {
+              "name": "AssistantNoteService.creationReceipt",
+              "file": "apps/api/src/modules/ai/assistant-note.service.ts",
+              "line": 110
+            },
+            {
+              "name": "AssistantNoteService.receipt",
+              "file": "apps/api/src/modules/ai/assistant-note.service.ts",
+              "line": 115
+            },
+            {
+              "name": "AssistantNoteService.export",
+              "file": "apps/api/src/modules/ai/assistant-note.service.ts",
+              "line": 141
+            },
+            {
+              "name": "AssistantNoteService.get",
+              "file": "apps/api/src/modules/ai/assistant-note.service.ts",
+              "line": 93
+            },
+            {
+              "name": "AssistantNoteService.edit",
+              "file": "apps/api/src/modules/ai/assistant-note.service.ts",
+              "line": 120
+            },
+            {
+              "name": "AssistantNoteService.confirm",
+              "file": "apps/api/src/modules/ai/assistant-note.service.ts",
+              "line": 130
             }
           ],
           "sourceFiles": [
@@ -5267,7 +5372,18 @@
             "apps/api/src/modules/ai/assistant-artifact.controller.ts",
             "apps/api/src/modules/ai/assistant-artifact.service.ts",
             "apps/api/src/modules/ai/assistant-artifact.integration.test.ts",
+            "apps/api/src/modules/ai/assistant-note.controller.ts",
+            "apps/api/src/modules/ai/assistant-note.service.ts",
+            "apps/api/src/modules/ai/assistant-note-record.ts",
+            "apps/api/src/modules/ai/assistant-note.integration.test.ts",
             "apps/api/src/common/auth.guard.ts",
+            "apps/web/components/assistant-notes.tsx",
+            "apps/web/components/assistant-notes.css",
+            "apps/web/components/assistant-note-reading.tsx",
+            "apps/web/components/assistant-widget.tsx",
+            "apps/web/lib/assistant-conversation.tsx",
+            "tests/e2e/assistant-notes.spec.ts",
+            "scripts/qa/run-assistant-notes-postgres.cjs",
             "doc/product/143-assistant-messages-to-learning-artifacts.md"
           ],
           "tests": [
@@ -11137,7 +11253,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 352
+              "line": 353
             },
             {
               "name": "DomainEventBusService.publish",
@@ -11147,7 +11263,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 250
+              "line": 251
             }
           ],
           "sourceFiles": [
@@ -11340,7 +11456,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 250
+              "line": 251
             }
           ],
           "sourceFiles": [
@@ -11417,7 +11533,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 234
+              "line": 235
             },
             {
               "name": "RuntimeMetricsService.snapshot",
