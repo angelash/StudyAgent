@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "sourceCommit": "7061fb62ae6acb2166733bf30deaecb46454f7ba",
+  "stats": {
+    "startTime": "2026-10-28T17:02:12.056Z",
+    "duration": 110856.036,
+    "expected": 17,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "scope": "Actual notes schema22 independent Web build and type check,17 original browser journeys with0 retry. Native complete31011-character paste,reading scroll,keyboard,reopen,download,no server writes and authority/recovery journeys pass.",
+  "unchangedApiContractsConfigQaFromFullApiCommit": "e5b773da98f529432f919f23483edc01f41009dd",
+  "inheritedFullApi": "1737 passed,0 failed,70 environmental skips; separately archived,not rerun by this UI batch.",
+  "limits": [
+    "New full483 browser gate and exactCI remain required.",
+    "No production deployment,source-whiteboardC2/C3 completion,pixel/audio parity or real learning outcome claim."
+  ],
+  "files": {
+    "apps/web/components/assistant-notes.tsx": {
+      "bytes": 30205,
+      "sha256": "1397835f82a70d317423ba7059b5e11be278663b25799565139fb454bd0deba9"
+    },
+    "apps/web/components/assistant-notes.css": {
+      "bytes": 6223,
+      "sha256": "a66a7dad23ca18eb84444b0df7d58c9626e50502c54fd80cf89aca1b3f548fe3"
+    },
+    "tests/e2e/assistant-notes.spec.ts": {
+      "bytes": 32382,
+      "sha256": "4ee5bf26bdf773df0f1d75deaea7a118eadb6a9957e447dab60c0736bc7c286c"
+    },
+    "data/qa/note-reading-schema22-browser-first.json": {
+      "bytes": 21728,
+      "sha256": "1dcc1afa4e33f3e7c7d9a58d7fcbb44875108c82b54dfd0dc5ca8c256a20c514"
+    },
+    "data/qa/experience-web/.build-context.json": {
+      "bytes": 63,
+      "sha256": "e1751710c417c4bc3d819f9a4f7d22e759c481e1a97ed78fbcdf529efd82981f"
+    },
+    "note-reading-schema22-browser-first.log.gz": {
+      "sha256": "6ca9aa12b05095bd86d5b6098218b43d292ca9b443f667d83246f8fa5866fc47",
+      "originalSha256": "ef2811dcb111f8517537f599cffff5f2d06f9744d6aa0db6362b75108d0a45c1",
+      "originalBytes": 3506
+    },
+    "note-reading-schema22-build-first.log.gz": {
+      "sha256": "712e0b7be97be32159ca622d2c391a419d2e33578d441ac2cb232974fc08a607",
+      "originalSha256": "9b99fd090189dc67daa413d8ab5c65678cacabb89c3c2c39d823b4c36a6723cb",
+      "originalBytes": 1561
+    },
+    "note-reading-schema22-types-first.log.gz": {
+      "sha256": "280feefa43a1a2d6b5ebb62618a6d36d932de3e009b707d14976e55a78dd4326",
+      "originalSha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc",
+      "originalBytes": 68
+    },
+    "screenshots/complete-overlong-reading-scroll.png": {
+      "bytes": 113120,
+      "sha256": "52f1ebf2ece2ab0325649080f453358831cafb9696e65aa49fe9320ede073029"
+    },
+    "screenshots/confirmed-1440.png": {
+      "bytes": 131150,
+      "sha256": "2bb27cba9a915945f79b5127e4692f4c696cc417483a993b2a496e5bd9c4478d"
+    },
+    "screenshots/confirmed-390.png": {
+      "bytes": 75201,
+      "sha256": "b21135279a81a6029dc6b0c8ae99b7d153be3ee8c532add6af9b58e53aa755fa"
+    },
+    "screenshots/confirmed-768.png": {
+      "bytes": 90874,
+      "sha256": "c5abd34dab7c942eff435af4ad7aa86a45bccebf9bf0ba61d8a15982cd82c8b8"
+    },
+    "screenshots/confirmed-880.png": {
+      "bytes": 91721,
+      "sha256": "b888ce9c2bb37ea73152d617084ee695a86289e3fc7951d059f977f57eb9a6eb"
+    },
+    "screenshots/local-draft-and-adopted-server.png": {
+      "bytes": 99223,
+      "sha256": "60a53a08ef54dc81ce095fc5e8989838a14bb657152213503e44e3ccc227e674"
+    },
+    "screenshots/original-request-recovered.png": {
+      "bytes": 118777,
+      "sha256": "0489ef14749117b5c8b5edf2c5bc1d8958f784034c857fdf7d8fa7df79ad840b"
+    }
+  }
+}

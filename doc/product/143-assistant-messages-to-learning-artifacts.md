@@ -193,3 +193,9 @@ B2实现d09d6aca与后续实际接口映射已提交。设计总册按提交后�
 第一轮16/1的原报告、对应源码和失败截图/脱敏trace留在[首轮原件](../evidence/2026-10-29/note-reading-scroll-first/receipt.json)。第二次命令漏选完整测试集合，runner默认source-course文件导致0 tests found；原零用例错误另存于第三轮档案，不计通过。第三次显式完整集合加assistant notes筛选才执行17项。未更改测试时限或增加重试。
 
 本轮修正尚未移入schema22笔记候选，候选原完整回归仍在另一工作区运行；不得把17项专项等同整站全绿、远端CI或正式发布。C2持久来源白板与C3界面继续待实现。
+
+### 18.3 schema22候选整合与新的完整门禁
+
+原完整第二轮已正常终态，483次原始尝试实际482通过/1个长文本fill超时，零跳过/flaky/重试；3168冻结输入逐SHA保持。完整原报告、进程终态、输入清单与失败截图/脱敏trace留在[完整第二轮](../evidence/2026-10-29/artifact143-note-full-browser-second/receipt.json)，原失败不改成通过。此前完整API第二轮1737通过/0失败/70环境跳过另见[API原件](../evidence/2026-10-28/artifact143-note-full-api-second/receipt.json)。
+
+停下原运行后才移入阅读区与真实粘贴修正；schema22新独立Web构建和类型检查通过，4127/3127的17项原始旅程再次全通过、零重试，见[schema22专项](../evidence/2026-10-29/note-reading-schema22-first/receipt.json)。实际API/契约/配置/QA脚本源码相对e5b773d无差异，所以沿用该完整API原件，不能说本轮重跑了API。新的整站第三轮采用新结果名、受管单次进程和新输入冻结；终态前保持源码/构建，不覆盖前两轮。精确远端CI与主目录可回退交付仍待，整体目标active。
