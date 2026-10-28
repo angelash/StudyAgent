@@ -1,0 +1,91 @@
+{
+  "passed": true,
+  "phase": "pure-projection-only-not-integrated",
+  "designRevision": "6620cbf1d6f533e22096d38241718ba9a9c2a988",
+  "focusedPassed": 84,
+  "newProjectionCases": 19,
+  "overlappingOldLectureAndPolicyControls": 65,
+  "previousCombinationPassed": 82,
+  "firstFailuresRetained": 3,
+  "typecheckPassed": true,
+  "ownApiBuildPassed": true,
+  "unchangedMainAndDependencyCompiled": 378,
+  "compiledAdultCensus": {
+    "lectures": 15,
+    "lessons": 60,
+    "allCompleteSnapshotsFit": true,
+    "minimumCharacters": 11394,
+    "maximumCharacters": 13167
+  },
+  "newModelCalls": 0,
+  "formalRecordsWritten": 0,
+  "productionStill141": true,
+  "scope": "142 phaseA pure teaching projections, explicit scope/budget and historical snapshot checks. No course HTTP/authorization/worker/source-key publication or frontend142 integration yet. Complete assistant-context JSON budget still must be checked at actual preparation. Complete M1-M7/original72 remains active.",
+  "files": {
+    "data/qa/course-teaching-content-second.json": {
+      "sha256": "132c6663fbdc6920a20687061a236688320a6de98557a6e5bb18f24e76354ab7",
+      "gzipSha256": "3107f9c7f4f3ca99ff365955220e5a69ab83df4d773b8d1ab090354948e6f99f",
+      "bytes": 30048
+    },
+    "data/qa/course-teaching-content-second.log": {
+      "sha256": "38e0c0bd2ebe5b7b59479ab71fd11145fe908994a46167355a5a5d06e96ca03d",
+      "gzipSha256": "a1f1a633ec62b3a888b3ed2c4d70867e99742f51d10c7b511f6777b456f11aec",
+      "bytes": 963
+    },
+    "data/qa/course-teaching-content-third.json": {
+      "sha256": "e435f62396ad060d8b955d52453a964738fd4c468800d0764dfbad720828222b",
+      "gzipSha256": "c46bf58e3643d7456ddfa08bc08bcb1559a8b335bb2061e217a5e0bf7fb318ed",
+      "bytes": 30885
+    },
+    "data/qa/course-teaching-content-third.log": {
+      "sha256": "81567f1cfdbe7777c2c21938e4a1b80e46adf3b446c11c2920d3c0f43f13f51b",
+      "gzipSha256": "88d33189c9689b343a0f615aa67f8447c85ee46ac7b7e9c177aab010c9b29734",
+      "bytes": 962
+    },
+    "data/qa/course-teaching-content-typecheck.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "bytes": 0
+    },
+    "data/qa/course-teaching-content-api-build.log": {
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "gzipSha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "bytes": 66
+    },
+    "data/qa/course-teaching-content-typecheck-third.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "bytes": 0
+    },
+    "data/qa/course-teaching-content-api-build-third.log": {
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "gzipSha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "bytes": 66
+    },
+    "data/qa/course-teaching-content-controls.json": {
+      "sha256": "67d7a0075e0f2071a51913b326431da73ad75915e323af6467ee9b4521e5b00a",
+      "gzipSha256": "2de2b11d4dbf3557e0c717b180446c781e241a03f24dc3d3c474244abf31fdfd",
+      "bytes": 56217
+    },
+    "data/qa/course-teaching-content-compiled-census.json": {
+      "sha256": "2759725fa2b96ccc4911eca9c8f24dc000073d285b21dbc040e5ce95f81bd9c1",
+      "gzipSha256": "5ba0c2e3d69faf10a15575de1a9e7a0e89a37c05862c0069e27c7856226aa993",
+      "bytes": 3560
+    },
+    "apps/api/src/modules/ai/assistant-teaching-content.ts": {
+      "sha256": "a9340839e52f44f69116bf1601f5222a8d0d83ae9fd0e4f666f9412535435ce6",
+      "gzipSha256": "58eb7ca150e17f92cbb28f87306b40a6d368127c0a41b2d3279adde6f98897fa",
+      "bytes": 18732
+    },
+    "apps/api/src/modules/ai/assistant-teaching-content.test.ts": {
+      "sha256": "3ee9491742bcc3d25f53a98140c474674eb3e20ede93a4d3092334ce0f9005fe",
+      "gzipSha256": "7bcf306854ed3ac12951f09adbd9203af3ba520bdfdeed52c341ed809e760058",
+      "bytes": 20370
+    },
+    "apps/api/dist/apps/api/src/modules/ai/assistant-teaching-content.js": {
+      "sha256": "2ba1c2174fac33440854df413491ab50c9328037a23b00d29160cf61eb826c51",
+      "gzipSha256": "f30bf4a22207dc49a3f6307921fb9c7dfdf84c37e5fbd92cfa5bdca24169ec6f",
+      "bytes": 19455
+    }
+  }
+}

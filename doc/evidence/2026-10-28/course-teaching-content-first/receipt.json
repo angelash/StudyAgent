@@ -1,0 +1,35 @@
+{
+  "passed": false,
+  "phase": "pure-content-projection-first",
+  "passedTests": 14,
+  "failedTests": 3,
+  "knownFailures": [
+    "Overview snapshot incorrectly inherits a minimum of one teaching part (two affected tests).",
+    "An old detail selection removed from the current catalog incorrectly prevents reading its valid historical snapshot."
+  ],
+  "newModelCalls": 0,
+  "productionStill141": true,
+  "scope": "New142 pure projections and budget/history tests only; no HTTP, worker, frontend or production142 integration. Originals retained before correcting the two implementation defects.",
+  "files": {
+    "data/qa/course-teaching-content-first.json": {
+      "sha256": "dd0c5446d44c24159a6eb36e5f805c2e455c76eadb09c25f96f83ccc1d7f26d4",
+      "gzipSha256": "704243406a2202ad6b61900276ea778cc3d42d9937173877f2a8404aa2e79085",
+      "bytes": 11784
+    },
+    "data/qa/course-teaching-content-first.log": {
+      "sha256": "c5a17a1f92c2661f324a0390c231cbd7d6bb51631cd42f2bc025242210f76eae",
+      "gzipSha256": "4d0ee8d78040ba8a90ad7b6f9a71abe69edcab8e02c2f1064694e28764bad679",
+      "bytes": 5638
+    },
+    "apps/api/src/modules/ai/assistant-teaching-content.ts": {
+      "sha256": "9bf6ffef687c4d0be29e237ed586440065d370ca90704ac386ea8244396c81db",
+      "gzipSha256": "3299d28234be2f106190979743192152f08cf1f85b593f3b556b49165d4a597a",
+      "bytes": 17196
+    },
+    "apps/api/src/modules/ai/assistant-teaching-content.test.ts": {
+      "sha256": "71824654fc4355babac886ba0c56ae1276ed73eb3f3a918cbe552d6ffbd20dad",
+      "gzipSha256": "432284b09cfd9713b6a50451fcff11d8886f5b19823af73977912d0546514e8f",
+      "bytes": 18354
+    }
+  }
+}

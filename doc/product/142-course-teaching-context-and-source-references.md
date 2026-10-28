@@ -97,3 +97,13 @@ courseSnapshot是既有assistantSessions中的可选安全JSON，不新增集合
 输出格式扩展为reply/evidenceIds及可选sourceKeys；不要求旧响应或规则输出虚构课程来源。输入sourceKeys只取已冻结可见片段的短稳定键，服务端转换为`sourceReferences`可信对象，拒绝未知键、模型自造URL/标题/页码或把课程键塞入evidenceIds。模型响应schema、最终AssistantReply schema、落库消息、worker结果、insight及导出必须同步更新，不能只在前端显示假出处。原始题目/报告的evidenceIds约束继续，course解释没有正式作答证据时evidenceIds仍为空。
 
 成人引用按所选微课/教学step定位，图片只含公开描述而不伪称模型看过图；小学引用按已审核教学卡和atomVersion定位；资料课引用按原safe citation/sourceKey、页码和短摘定位。原快照已有引用就从原快照还原，不允许从当前课程补造旧出处。历史分页及返回链接须覆盖引用对象，公开会话仍不暴露完整snapshot/prompt/owner/scopeKey。
+
+## 14. A层实际实现与边界
+
+独立模块`assistant-teaching-content.ts`已完成三种安全投影、严格持久快照/全教学目录指纹、完整/概览/细选范围及确切JSON预算检查。讲座读取实际steps/逐块白名单，保留图表/代码及图片描述，不读取图片像素；小学只取approved learn卡，保留所有误区与四个核对维度；资料课逐字段取教学正文/短摘和原页版本/范围，不读取questions、原上传text、input提示词或originalResult。该层假定调用方已经授权，不能作为鉴权器独立开放。
+
+完整/概览带全部目标；细选只带所选条目的完整目标，coverage明确记录总/已选知识点与条目，避免全部目标本身超限时连一张完整卡也无法使用。目录指纹仍覆盖本课全部安全教学，未选正文变化也使原版本只读。进度、status、updatedAt、revision及旧混合draft hash不作为教学版本。来源绑定目标/段落，拒绝不一致、重复标识与丢失引用；资料引用的真实性仍承接原课程审核，不假称此层重新读取整页验证。
+
+首轮17项中14过/3失败：概览继承parts至少1条导致两个用例失败，已删细选条目阻止读取有效旧快照导致一例失败。原源/测试/JSON/日志在修复前保留。修复组合82通过；补齐目标本身超限、阶段变化及引用串绑后84通过（19新增投影、5旧讲座、60输出策略），API/测试类型检查与独立API真实编译通过。主目录374编译及本工作区四份contracts/config编译共378控制保持原SHA，没有重建共享依赖、调用模型或正式计量写入。见[原始失败](../evidence/2026-10-28/course-teaching-content-first/receipt.json)与[A层验证](../evidence/2026-10-28/course-teaching-content-verified/receipt.json)。
+
+实际新编译遍历15讲/60微课，全部完整教学快照在18000内，含来源/身份/选择元数据后的最小11394、最大13167字符；这不等于加上其余assistant context后的完整输入已验证。现有v1讲座和正式服务141保持；B层HTTP授权、v1/v2衔接、上下文/worker双栅栏、可信出处发布与隐私恢复，C层前端与D层完整门禁/运行尚待。本批不能记作142可用入口或上线。
