@@ -1,0 +1,172 @@
+{
+  "passed": true,
+  "status": "runtime-delivered",
+  "revision": "c2a2000f84abec33d8e8a22ad0639d5c8547c9b9",
+  "applicationRevision": "ef7466b508847dd70320cf2bd8521574789b1cdb",
+  "ciHead": "53520212ddf5ed96c4af3cc9bbc275356725d9a8",
+  "ciRun": 40612050297,
+  "webBuildId": "Fr2r2Kk2ddHCxQhccI7rC",
+  "schemaVersion": 21,
+  "httpChecks": 1296,
+  "compiledFiles": 374,
+  "originalAssets": 960,
+  "voiceSamples": 6,
+  "stableObservations": 3,
+  "observedIntervalMs": 82394,
+  "protectedFiles": {
+    ".env.example": true,
+    "apps/web/next.config.ts": true,
+    "doc/product/87-local-windows-daemon.md": true,
+    "ecosystem.config.cjs": true,
+    "scripts/operations/start-daemon.ps1": true
+  },
+  "localEnvironmentPreserved": true,
+  "oldCompiledRollbackFiles": 1034,
+  "consistentBackup": {
+    "path": "F:\\workspace\\github\\StudyAgent\\output\\daemon\\release-backups\\2026-10-28-teaching-output-1793148565210",
+    "bundle": "data-bundle-final",
+    "verifiedFiles": 1,
+    "assetsIncluded": false,
+    "buildCopy": {
+      "at": "2026-10-28T00:49:41.885Z",
+      "passed": true,
+      "files": 1034,
+      "bytes": 18720744,
+      "scope": "Existing immutable compiled builds excluding cache, and private configuration copies. No stopped-service database backup has been made yet."
+    },
+    "scope": "Fresh stopped-service consistent database and referenced runtime files plus SHA-verified140 compiled builds and private config. No independent research-asset archive or full restore rehearsal."
+  },
+  "scope": "Actual production compiled/source/served assets and HTTP checks plus three stable PM2 observations. No authenticated production mutation, complete research-asset backup, full recovery rehearsal or complete product/teacher/pixel/audio/all-content claim.",
+  "files": {
+    "runtime.json": {
+      "sha256": "35469dd0aced40e53d4bd26e390ff9854dac0bf7728c2abdaf539a9a08e2693d",
+      "gzipSha256": "60c2340f8f1ab5e9f76b40d5f33fc3a925592628616e58666ae64aebbc4163a5",
+      "bytes": 536757
+    },
+    "runtime-before-stability.json": {
+      "sha256": "e21f752f6947428a276cc9b294814b7f3c74ecf20e6ddad056ae4f8a75036fb8",
+      "gzipSha256": "57f1b583376f9b924e8a7559ca7274797548a25e503629c8f93a0df080bf89e0",
+      "bytes": 534548
+    },
+    "deployment-before.json": {
+      "sha256": "1b086c1b720a58d3c445beacd9cf4c0d222f64fea9887d7c48c4d75795d8a6c6",
+      "gzipSha256": "7871ebb16189fc768570fff8e8b9c339de5e9b59209ff0f99f806e4c82323c35",
+      "bytes": 1362
+    },
+    "deployment-target.json": {
+      "sha256": "99a2221ab81e8197e6ba7f36ce306860b40952ad6d6040cfa28c4c65046ac3df",
+      "gzipSha256": "5f43a9766eab7ad251b5958e8fde88204222b623217503f9f83bc8449b95494d",
+      "bytes": 152
+    },
+    "candidate.json": {
+      "sha256": "933a13ce00467ae72283539c0d09506a7376aab1693d654ca4c668fe58d0a1f2",
+      "gzipSha256": "e33a194a33834bf97a2a5c073d9ecd163c4ba57a83aee744b10155a25b3a0dd6",
+      "bytes": 57904
+    },
+    "backup-verified.json": {
+      "sha256": "109f2a4d617b93da373db7b07e6219f82d4d68cf1fc291579cb3f6cd5c9d8d69",
+      "gzipSha256": "06bc846730b94dc951c947990d9551b8e5cc5d505229a94d6679e720434d9993",
+      "bytes": 452
+    },
+    "build-backup-verification.json": {
+      "sha256": "5310ef637837e19cda0bf378ad644b7e527e719f61621fb2eb36be5c80df6df7",
+      "gzipSha256": "104d15b5fbeb961259d17c4345ab5459c55900543b3f19ec45faf4ab21eba5ac",
+      "bytes": 249
+    },
+    "build-files.json": {
+      "sha256": "18389894908fff1c151580664a24c2c47165c151d6b7a0ff4339ab1ea72468f2",
+      "gzipSha256": "98df39e5c22b3e9e83baf96081ece97617c2566608f62386d60c253483d6b32b",
+      "bytes": 200533
+    },
+    "stop-transitions.json": {
+      "sha256": "10ffbca052101f15d1d55fb6fb8ce1ff9cce0426086bb6abfc27ca4993f99060",
+      "gzipSha256": "2d91aae0bc480e0e19c979a29cc8503a3d1978cff1d8af1fc32bd22c702af0ac",
+      "bytes": 389
+    },
+    "data/qa/build-teaching-output-production.ps1": {
+      "sha256": "877f2dfbfd2dd2264433685a6f76d67db8e746c4417e1d3fa953e3ca4f8416c0",
+      "gzipSha256": "4fdfad08b907e54f99578167c33704fa13775def2fd025bedf42d589ab0e60bd",
+      "bytes": 907
+    },
+    "data/qa/check-teaching-output-built-bytes.cjs": {
+      "sha256": "184752d031156a4abc360e33d77b79504b9a4d639cd0729fdcbbdad12bc151cb",
+      "gzipSha256": "43580fd7a53aee27fcf01f9dc8add76f5a954d040c9362c7d3db6ad5bc35af8c",
+      "bytes": 569
+    },
+    "data/qa/teaching-output-production-built-byte-check.log": {
+      "sha256": "7dbe453e1a07bcb35d639f765b3f4b72b9ecfbf8d752afe8db52333f469995ea",
+      "gzipSha256": "15e9368ae6564df58a693bcb596be7e2b4d845b26b65954e766f9863757193c9",
+      "bytes": 47
+    },
+    "data/qa/teaching-output-production-source-alignment.json": {
+      "sha256": "cb49556914656bf09a245d1e01d037a3e857cdf1fadc0bd585db96cba3840e47",
+      "gzipSha256": "cf6eeec6676c105e8c0a694d5472a455f2b936d22df957f8a803006e0a6d5ae1",
+      "bytes": 194515
+    },
+    "data/qa/teaching-output-observation-1.json": {
+      "sha256": "dc206ea7d8d120a3c835d84aef707792fc5ae919e654ad3abc4c2490657c44b1",
+      "gzipSha256": "4aeea1c09f83bec5fe76b32be471f124ae7451488e458caeab921a9278775a87",
+      "bytes": 602
+    },
+    "data/qa/teaching-output-observation-2.json": {
+      "sha256": "1d1db71c90ea9877631144b1e9127297464b1fb7ee834394df343fa085a0168f",
+      "gzipSha256": "9653fe86b0194e182a78135d8fe156d9096a745ba4411d97c58aa28c4c90379a",
+      "bytes": 602
+    },
+    "data/qa/teaching-output-observation-3.json": {
+      "sha256": "8e6f5e4a587a998762fcffbebf7917163f34f4a48909c8f8d78c3012702395e9",
+      "gzipSha256": "1e38d32052a2acf52e926d2b07f1e430ed56289677499588fa9650e0d868f3b1",
+      "bytes": 602
+    },
+    "data/qa/teaching-output-production-build.log": {
+      "sha256": "5c77e387b2857f5a5f5f46623dfa772e4fea25c45cb6f349c707569f221535fe",
+      "gzipSha256": "386e7079745d751343dc41203a485f55ddf01f8a26ebafaf191bfb888b5300e8",
+      "bytes": 1774
+    },
+    "data/qa/teaching-output-production-start.log": {
+      "sha256": "8ea84f363ed05f8cd05d3dc3d34f011dfd381643af1215ec05446eb09be104f0",
+      "gzipSha256": "2d4a694abb29cf99a733afc4fa00b05c662b6a1e0429f4bc1b4f7d470be449df",
+      "bytes": 4550
+    },
+    "data/qa/teaching-output-production-save.log": {
+      "sha256": "5e85106e5e1eab4842d5aadc5adb31c8c149c52182917c2634d99b27bd4f2978",
+      "gzipSha256": "7ece84780d45f34e6a6da40e4a128f78a95a6ace7c144685fdd4cd3599cfae19",
+      "bytes": 97
+    },
+    "data/qa/prepare-teaching-output-release.cjs": {
+      "sha256": "a8edb6ef240fc2cc6d8d7b921e9158cc22f35a9f10767ff0249fd541b1d8a8c0",
+      "gzipSha256": "1a1a9d6a326f7a350810a4be7b462655e9a59ca1233e1bbc497ffddb682c050a",
+      "bytes": 4410
+    },
+    "data/qa/prepare-teaching-output-candidate.py": {
+      "sha256": "e6167c2d588d34cd11b937c3a7b76881513d4b3e0fdb6a7ef5f66e2e72a5bf65",
+      "gzipSha256": "ddca4d66891fd6cfdd254e8af3f04b8696e5cf58c168af6e6ced5737c419ee1b",
+      "bytes": 6444
+    },
+    "data/qa/deploy-teaching-output-prepare.cjs": {
+      "sha256": "7f163ac871542306c3d84a6df55e22fbf27fff49ab84495791369c0c1ae2f673",
+      "gzipSha256": "add93257c4eea69b24bc8666ec3cb15f45fbba86ebb3337489d74354600734dc",
+      "bytes": 8855
+    },
+    "data/qa/align-teaching-output-source.cjs": {
+      "sha256": "a57e167869e23dd48c5a26ceb2f240fadfac0416f2317acf7303956ea9b3a839",
+      "gzipSha256": "d19faaf8d5a592763e8bdccb99605da266a8a740de000c55bbf5000aaf6dd124",
+      "bytes": 3693
+    },
+    "data/qa/check-teaching-output-release.cjs": {
+      "sha256": "8abf76a5a274ae4bd63937c1252e32da246e885f2ca7a193b16e273193a2fa81",
+      "gzipSha256": "c20196234d243a520c576e3e4c29ac4bd693cb1d0e780bfafc0c922b1cb242b5",
+      "bytes": 28439
+    },
+    "data/qa/observe-teaching-output.cjs": {
+      "sha256": "49149d7261dc6af9f5e0e27ec14c249df42bcf0c9d5329d5d155007b75deffb4",
+      "gzipSha256": "0780ed39d816c079d0afeefc6b17d9d0bbddd5162237c386b3d6b1fb905f420e",
+      "bytes": 1373
+    },
+    "data/qa/rollback-teaching-output-compiled.cjs": {
+      "sha256": "16d0836f907a277cd8f6e3427703db93ef38d37b6bc5b9bf7215021e30860cce",
+      "gzipSha256": "dd89349c3f1396ba660657ed27450f434a9cdf4848a3c5494775939b141f3882",
+      "bytes": 4591
+    }
+  }
+}

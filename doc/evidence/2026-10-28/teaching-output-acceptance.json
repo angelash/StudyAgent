@@ -1,6 +1,6 @@
 {
-  "passed": false,
-  "phase": "full-gates-passed-runtime-pending",
+  "passed": true,
+  "phase": "runtime-delivered",
   "sourceRevision": "ef7466b508847dd70320cf2bd8521574789b1cdb",
   "scope": "141 normal teaching and local learner-claim inspection only. Complete M1-M7/original72 remains active.",
   "focused": {
@@ -65,9 +65,42 @@
     "lecturePostgresStepPassed": 16,
     "receipt": "teaching-output-exact-ci/receipt.json"
   },
-  "runtime": null,
-  "productionUpgradePerformed": false,
-  "productionStill140": true,
+  "runtime": {
+    "passed": true,
+    "status": "runtime-delivered",
+    "revision": "c2a2000f84abec33d8e8a22ad0639d5c8547c9b9",
+    "applicationRevision": "ef7466b508847dd70320cf2bd8521574789b1cdb",
+    "ciHead": "53520212ddf5ed96c4af3cc9bbc275356725d9a8",
+    "ciRun": 40612050297,
+    "webBuildId": "Fr2r2Kk2ddHCxQhccI7rC",
+    "schemaVersion": 21,
+    "httpChecks": 1296,
+    "compiledFiles": 374,
+    "originalAssets": 960,
+    "voiceSamples": 6,
+    "stableObservations": 3,
+    "observedIntervalMs": 82394,
+    "localEnvironmentPreserved": true,
+    "oldCompiledRollbackFiles": 1034,
+    "consistentBackup": {
+      "path": "F:\\workspace\\github\\StudyAgent\\output\\daemon\\release-backups\\2026-10-28-teaching-output-1793148565210",
+      "bundle": "data-bundle-final",
+      "verifiedFiles": 1,
+      "assetsIncluded": false,
+      "buildCopy": {
+        "at": "2026-10-28T00:49:41.885Z",
+        "passed": true,
+        "files": 1034,
+        "bytes": 18720744,
+        "scope": "Existing immutable compiled builds excluding cache, and private configuration copies. No stopped-service database backup has been made yet."
+      },
+      "scope": "Fresh stopped-service consistent database and referenced runtime files plus SHA-verified140 compiled builds and private config. No independent research-asset archive or full restore rehearsal."
+    },
+    "scope": "Actual production compiled/source/served assets and HTTP checks plus three stable PM2 observations. No authenticated production mutation, complete research-asset backup, full recovery rehearsal or complete product/teacher/pixel/audio/all-content claim.",
+    "receipt": "teaching-output-runtime/receipt.json"
+  },
+  "productionUpgradePerformed": true,
+  "productionStill140": false,
   "requirements": {
     "implemented": 11,
     "inProgress": 50,
@@ -79,5 +112,7 @@
     "Original answer/reference and formal measurement protocols remain separate.",
     "Historical full text matrix remains21/22; current old Opus5 failure unchanged.",
     "No complete product, teacher, pixel/DPR/audio, all-content or long-term claim."
-  ]
+  ],
+  "deliveryRevision": "c2a2000f84abec33d8e8a22ad0639d5c8547c9b9",
+  "productionBuildId": "Fr2r2Kk2ddHCxQhccI7rC"
 }

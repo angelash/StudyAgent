@@ -1,5 +1,7 @@
 # StudyAgent 当前功能与设计总册
 
+2026-10-28 141现已实际守护交付：buildId Fr2r2Kk2ddHCxQhccI7rC、schema21；正常教学输出策略详见[141当前设计与原件](../product/141-normal-teaching-and-evidence-output-boundaries.md)。完整API/本地及远端433浏览器/真实两条默认模型和三次稳定观察通过；旧矩阵21/22及全项目剩余范围保持。下方独立候选与140段落为阶段历史，静态源码覆盖未新增路由/集合。
+
 2026-10-28 141独立源码候选：ef7466b接入teaching-output-policy-v1，三个模型回答入口共用局部标签/因果检查，正常数学断言与明确否定不再按字串拒绝。108项SQLite/策略/助教组合、16项PG组合及类型检查通过，范围重叠；真实默认模型与完整门禁继续。正式服务保持140/NkfAGfS0FLw-vibTZyptB，未部署141，见[具体设计与原失败](../product/141-normal-teaching-and-evidence-output-boundaries.md)。以下140是已交付基线。
 
 2026-10-28当前结构：源码基线b62ef293b0001b6ddf743bc02846e5f2739ba031，14领域/128项功能/424个常规HTTP路由、103个领域集合、387个共享契约定义、30个Web页。140已接入成人讲座目标快照、独立持久助教、原上下文导航及统一字体注册；字体修复专项28项、完整本地433及精确40601241878远端433均零重试通过，应用/PG/浏览器三组success。140现已实际生产构建并守护交付，schema21、buildId NkfAGfS0FLw-vibTZyptB，1296运行检查及111163ms三次稳定观察通过；原子能力计量与版本化指导沿139保持，运行原件与静态设计分别记录。默认DeepSeek V4.1 Flash，历史模型文字资格21/22、旧Opus5失败；本批另有两条完整默认模型样本。完整产品、教师/设备/原声/像素与长期验证继续，见[140具体范围](../product/140-lecture-context-and-studio-assistant.md)、[139正式验收](../evidence/2026-10-28/measurement-v3-acceptance.json)及[完整计划105](../product/105-development-plan-status-and-next-milestones.md)。以下较早统计是分批历史。

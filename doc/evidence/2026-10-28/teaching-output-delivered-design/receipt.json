@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "sourceRevision": "ef7466b508847dd70320cf2bd8521574789b1cdb",
+  "applicationReceipt": "../evidence/2026-10-28/teaching-output-acceptance.json",
+  "sourceFiles": 598,
+  "markdownLinks": 3829,
+  "viewerChecks": 10,
+  "scope": "Current source-backed handbook and offline viewer, linked to delivered141. Does not rerun application/browser/model acceptance.",
+  "files": {
+    "doc/design/generated/design-validation.json": {
+      "sha256": "4337388097bf9682c812f557bbe6aeb3688dca365b1d986ab725e5d460954fb3",
+      "gzipSha256": "ec59559241cc074443bb1a6811ccee5d8caf941622ba29258563fe3afdfd90a0",
+      "bytes": 79971
+    },
+    "doc/design/README.md": {
+      "sha256": "b8b23889a564264e0ec1b283e82f1b44af8d9a56a1f37cef982bb4e5c26cef20",
+      "gzipSha256": "c5ca5ee875443571d7c55172ad67d642d8d34cfed19c8ce670fe064e535f85bd",
+      "bytes": 20174
+    },
+    "data/qa/teaching-output-delivered-design-validation.log": {
+      "sha256": "427b1785bda34d0c192f3b342ea1d31251acd42a28bbf788af70533bba8be58f",
+      "gzipSha256": "e33893bb394107714b82ecc965991990d9a54dd6ca6d75a4b1b418569fa9d719",
+      "bytes": 281
+    },
+    "data/qa/project-design-viewer/desktop.png": {
+      "sha256": "689eae8cfb2f89d7951c5926a5030a58da0aa59649519907fd1eb6ea0d777927",
+      "gzipSha256": "d9749d2589aa84f7b4b1747ebe7d3c9c87cba76d5e075c2a832eb99ee88d6115",
+      "bytes": 188484
+    },
+    "data/qa/project-design-viewer/mobile.png": {
+      "sha256": "f740f35b21520df8c643bc3f0dcf110b7902e37c34fe2c093abc6e57e9ed0e09",
+      "gzipSha256": "2b237147c44c8503efa209b27b61360268deff1ec3f23eb224b214b506700248",
+      "bytes": 127227
+    }
+  }
+}

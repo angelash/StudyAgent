@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-28T00:43:22.042Z",
+  "at": "2026-10-28T01:49:27.346Z",
   "sourceRevision": "ef7466b508847dd70320cf2bd8521574789b1cdb",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
@@ -497,9 +497,9 @@
       "doc/product/124-topic-whiteboard-figures-and-visual-manuscripts.md": "91a58844d773a0bd0c32bb49034372980ba91f507d9caf94485af6c364111c2e",
       "doc/product/125-whiteboard-continuous-narration-and-bounded-preparation.md": "18083c59ec9c5401e478c213bf5adf7611db1a0deef025d54cbdeb93bc377792",
       "doc/product/126-knowledge-report-workspace-and-evidence-paths.md": "9c49a70f91ce6c5e494cfc37ee6c82d70f56636e0a5a5c2e01aee9d562228cec",
-      "doc/product/129-hyperknow-original-assets-and-teaching-shell.md": "711495da13d498950ca42c4f130944b28d50f193d1df2a3b398ed9c401043401",
-      "doc/product/139-self-reported-difficulty-and-measurement-versioning.md": "ce029e783126d6176b27d5712793129ed1a80787f849bc8c42ddf730b3eccd7b",
-      "doc/product/141-normal-teaching-and-evidence-output-boundaries.md": "27a1332f7a472105be0e609b322cc1bd9f039bfdffa3891c01de8489db781fe9",
+      "doc/product/129-hyperknow-original-assets-and-teaching-shell.md": "b6d04d9f6b8ed1f49a13ab575c68468e5f0be5fbd7e236506c0168f106884b1e",
+      "doc/product/139-self-reported-difficulty-and-measurement-versioning.md": "0e23a075155edf1cff5f714432e77fedd800ed637e8a3246766a1d2db5a817db",
+      "doc/product/141-normal-teaching-and-evidence-output-boundaries.md": "dc8ef2077ba64dadb989f1a15be4107d6fa329df9a0126861e66f9f878aa4549",
       "packages/contracts/src/ai-models.ts": "c27640b994c433be31aa6f048e727446f86e68252d695732740f5dd652b0df63",
       "packages/contracts/src/ai-teaching-tools.ts": "5063a057c70360db1e3f122ca68cb4632b621e58a2b9163e3c864b71475ed005",
       "packages/contracts/src/answer-draft.ts": "226653dad8a598fb1d4b27fe76e804f63e49a06d1884b586569facbaec8682dd",
@@ -546,7 +546,7 @@
       "resources/gesp/student-curriculum-v2.json": "cdae4abec0af8fcad4d83b9503867d0eedd244808280e027f8a1e4533262bb9a",
       "scripts/ci/configure-ubuntu-packages.cjs": "96d8d65f1893e68a05e5ef0589bd140f92671dd1b3da43c0f3fd1747ecbbf577",
       "scripts/ci/configure-ubuntu-packages.test.cjs": "f969103ea4303100c879434e39ebd7641eccd17502da089c601c5f9fb2ec3e76",
-      "scripts/gesp/backup_archive.py": "60fa56fb900da4d6df134489065a55b038d5e3e59c4d72c29660a3d40956ce6f",
+      "scripts/gesp/backup_archive.py": "e3dd4c70a3e2aa4d645755f1990f375a4129a448d0640f9142b4ee23a13fcad7",
       "scripts/gesp/run_submission.cjs": "f871584f56f298e2dcc308f7fa436188c66ea0f213a65161e6af33c3ceb07571",
       "scripts/operations/backup.cjs": "7fba758e38449d9baa3be3ba06631fe36191c557d7b830c53f4797ea02622ccc",
       "scripts/operations/material-audit.cjs": "861749578b343e8dfdd5a8999dea7ae94b24909671a8612d1dfb7d9ae2e9dca8",
@@ -561,11 +561,11 @@
       "scripts/operations/restored-materials.cjs": "95740ba4c36cb17b0efd6a3f246c4ce08c7a3148009cf5ccbe9435a4e7f90e08",
       "scripts/operations/setup-imagegen.cjs": "2309f53d9bc7b1aeee6c0f6deef202958dbaf59d18d599088e435f11f4e22dfa",
       "scripts/operations/sqlite-restore.cjs": "c78a363f44224f700c4fcd33442fe67d7833f1f729ca95cf6a70844ad207b186",
-      "scripts/operations/start-daemon.ps1": "929b62cd8b6ecc7e6778b196e44d852992a8a2197c651b04ba3f686c567ce2c5",
+      "scripts/operations/start-daemon.ps1": "d27f62b3f0846fbaa532c055861823ae31b0489da8bb7177af2a94cfa83b054f",
       "scripts/processing/file_leases.py": "653083a38468330f7d7992b9924b2ab0cb6e9b4d3ed9a91ab87633a146c74f12",
       "scripts/processing/process_document.py": "bba985f55173996145a80cd16557974c18991f25d6626948700047c887aeb270",
       "scripts/processing/project_file_preview.py": "174dc8a1ff4b0269ca9ff993e867149de54a4430da8661f01395e784708150b6",
-      "scripts/processing/requirements-imagegen.txt": "e58941612ba4560fd888182684d3404684ed6643b86e3c4ad61d7233840ff2bf",
+      "scripts/processing/requirements-imagegen.txt": "0b273d32822f361cd2f58f1b4f0ba13e130665f52d8e23fb24cbb7e272016456",
       "scripts/qa/classroom-caption-live.cjs": "2f17e3cfea19ff626ffdadc2f8f8c6edf8c82ec12e0087a5fc04964d5b3175f2",
       "scripts/qa/classroom-image-live.cjs": "af1bbf8d168ed9f26ad959e2bd81e9c07c05489f4e97ffdb1ee0e791320846b1",
       "scripts/qa/fixtures/original-repair-child.cjs": "28e62d808c08638acb57fc97d5806bfbe0538175fdf4c0090254c8eacf5fe1dc",
@@ -636,7 +636,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 3819,
+    "checked": 3829,
     "missing": []
   },
   "staticContent": {
@@ -707,8 +707,8 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-28/lecture-assistant-acceptance.json",
-    "revision": "b62ef293b0001b6ddf743bc02846e5f2739ba031",
+    "receipt": "../evidence/2026-10-28/teaching-output-acceptance.json",
+    "revision": "ef7466b508847dd70320cf2bd8521574789b1cdb",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }
