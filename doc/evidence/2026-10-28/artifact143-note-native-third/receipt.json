@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "counts": {
+    "numPassedTests": 23,
+    "numFailedTests": 0,
+    "numPendingTests": 0
+  },
+  "scope": "Actual paper practice23-case SQLite+PostgreSQL matrix, including both native restores and future23 refusal after current22. Prior image recovery cases passed in separate17/1/1-skip run; scopes are not summed. Full new API run remains required.",
+  "files": {
+    "data/qa/note-native-paper-postgres-third.json": {
+      "sha256": "5ea699f1e00fec2dc0ce63e15654411fb7a0d6df6f53cd830c54beeeecb00ff6",
+      "bytes": 13001
+    },
+    "data/qa/note-native-paper-postgres-third.log": {
+      "sha256": "34ee513cdeb0d3293e4c7eae10f69d0e64933f59fa8da11e90ac9f58699112de",
+      "bytes": 2046
+    },
+    "apps/api/src/modules/learning/topic-whiteboard-visual-files.test.ts": {
+      "sha256": "9458666e348779a920e0f71ee577a8f2c91b85edd7772afe55f007a7816ea9a5",
+      "bytes": 6657
+    },
+    "apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts": {
+      "sha256": "d27a4a00eb169b2b5a3be088d87df0a6b42a0df71c2294defcf79db7fe53bc9d",
+      "bytes": 25739
+    },
+    "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts": {
+      "sha256": "1e04bbfab1e282caff2c16e192ebe5fe640e3a080d89f04b77df9b9b0b669790",
+      "bytes": 19068
+    }
+  }
+}
