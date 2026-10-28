@@ -1,0 +1,50 @@
+{
+  "passed": 21,
+  "failed": 1,
+  "attempts": 22,
+  "retries": 0,
+  "webBuildId": "4xbVlZqQUG5E6U91_G_tF",
+  "controls": {
+    "checked": 820,
+    "changed": 0
+  },
+  "note": "Return/draft/focus and390 table/code pass. Foreign-owner check expected Chinese and selected both source error and Next route announcer. Actual server error was404 English session not found. Retain original; localize source403/404 and give source error an accessible name, then assert actual404 plus no content/POST.",
+  "files": {
+    "data/qa/course-source-ui-second.json": {
+      "bytes": 33592,
+      "sha256": "c75aa8d2fc80f9a3582e22b919d002dd1f038fd5a9d7771f7c5a84b1cd78a5bd"
+    },
+    "data/qa/course-source-ui-second.log": {
+      "bytes": 7782,
+      "sha256": "8190e377d55d9cf1cdf920d0e0a3c6de8e5bd4b835ec28d49b8d89f3833dbac3"
+    },
+    "data/qa/course-source-ui-inputs-second.json": {
+      "bytes": 149014,
+      "sha256": "c4b4375a667105af67fba469197b7c9c7fc7354a28c8e7e69abc4697fe6d79ee"
+    },
+    "data/qa/course-source-ui-build-third.log": {
+      "bytes": 1538,
+      "sha256": "51e1c7885a908d29d2de35f546ec8b934d4c369da159b7adcb4da68702d633e0"
+    },
+    "apps/web/components/assistant-source-preview.tsx": {
+      "bytes": 6825,
+      "sha256": "a93ca41b95a17cc23be5964c7b58b781711112f3b9b5ca3450bedf8f69d225db"
+    },
+    "tests/e2e/course-assistant.spec.ts": {
+      "bytes": 7303,
+      "sha256": "4e0bb5e449b19fede4f6467b0fe72d37c27b0781ceabe93309c64707ba00babf"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-53dde-r-cause-a-conversation-post/test-failed-1.png": {
+      "bytes": 58896,
+      "sha256": "b0eaf38151e91ef95fe69ad7283472b1d8a3cec6e5cf3e1f4a094c889eba22d4"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-53dde-r-cause-a-conversation-post/error-context.md": {
+      "bytes": 12461,
+      "sha256": "0e3518967922d8d72bb881b7407987cf184292136e40d19b1c4412ed7fe36fdf"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-53dde-r-cause-a-conversation-post/trace.zip": {
+      "bytes": 2096660,
+      "sha256": "c221308d5b141ff0d6ce4d3b627e3ee5d032aa2116c41a208fed2735dfb4fb7b"
+    }
+  }
+}

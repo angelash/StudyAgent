@@ -1,0 +1,54 @@
+{
+  "passed": 22,
+  "failed": 0,
+  "attempts": 22,
+  "retries": 0,
+  "webBuildId": "tq3XIT0AVZY9OTVbNOWCi",
+  "controls": {
+    "checked": 820,
+    "changed": 0
+  },
+  "note": "Complete font coverage with ready checks, current source return/draft/focus, exact code,390 tables and foreign404. Older than25-message source return remains to be tested separately, no fullC/142 claim.",
+  "files": {
+    "data/qa/course-source-ui-final.json": {
+      "bytes": 27344,
+      "sha256": "951093176adec17d705c9c939ca72bdc41e941d0d9c21b348c4bed709c421554"
+    },
+    "data/qa/course-source-ui-final.log": {
+      "bytes": 4286,
+      "sha256": "b37a335c2166e4c33b55a40f4682c6907d823f61c03045755d4f77781b244a61"
+    },
+    "data/qa/course-source-ui-inputs-final.json": {
+      "bytes": 149014,
+      "sha256": "cad77699e0e15b64be09242aecf589a95d4ec38f6a4d2c30383d3bf6ea6a19f5"
+    },
+    "data/qa/course-source-ui-build-seventh.log": {
+      "bytes": 1540,
+      "sha256": "da8682dca08b081df7932465cf1508d2e93e14c6483f03ec35b8671e54ba9ba0"
+    },
+    "apps/web/components/assistant-source-preview.tsx": {
+      "bytes": 7873,
+      "sha256": "6989938af701aa08340b4f01ee5e783f4d903c1cce7496d9587e718524ee1873"
+    },
+    "apps/web/lib/assistant-conversation.tsx": {
+      "bytes": 19387,
+      "sha256": "c357ec9f29f5ffe4d61a6598adda27ce8cde7eb3fe9b987f9d90fc4436cd6216"
+    },
+    "tests/e2e/course-assistant.spec.ts": {
+      "bytes": 7979,
+      "sha256": "d1f3653fe71d907cb1b41b4564e3865eb9478e0d52d111c19b0fd52c12dc60c2"
+    },
+    "data/qa/browser-evidence/course-source-ui-final-db32697c8a/course-assistant/source-code-390.png": {
+      "bytes": 98887,
+      "sha256": "c4b3355c31a42ffe90e9e3e8a394816893aaf1cde16a29e4b3163ca722d37681"
+    },
+    "data/qa/browser-evidence/course-source-ui-final-db32697c8a/course-assistant/source-direct.png": {
+      "bytes": 75637,
+      "sha256": "b000be10a86b8bf6c99885fb469b82a48e7856189abe7cfefc9126011a2c4955"
+    },
+    "data/qa/browser-evidence/course-source-ui-final-db32697c8a/course-assistant/source-table-390.png": {
+      "bytes": 94590,
+      "sha256": "0a4e98f3deaa94833eeedd3531ccaf7fb0667060dbc1e10522200eccdc76f788"
+    }
+  }
+}

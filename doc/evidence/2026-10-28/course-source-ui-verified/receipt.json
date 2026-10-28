@@ -1,0 +1,164 @@
+{
+  "baseHead": "9659abd",
+  "scope": "C1 actual lecture source links, frozen preview, original draft/message return and source navigation foundations; full primary/material entry and selection UI remains C2",
+  "webBuildId": "Jcr_j0P3x9ZXlBAYuOW7D",
+  "browser": {
+    "startTime": "2026-10-28T06:37:16.581Z",
+    "duration": 106968.717,
+    "expected": 23,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "originalAttempts": 23,
+    "retries": 0,
+    "failedAttempts": 0
+  },
+  "controls": {
+    "checked": 820,
+    "changed": 0
+  },
+  "webTypecheck": "passed",
+  "isolatedProductionBuild": "passed",
+  "completeBrowserDiscovery": {
+    "tests": 439,
+    "files": 42,
+    "executed": false
+  },
+  "apiBusinessUnchangedFrom": "9c61928359f7f0ebcb74a8c736d8b9ebdca6ba16",
+  "inheritedFullApi": {
+    "localPassed": 1690,
+    "localEnvironmentSkipped": 66,
+    "exactCiRun": 40638340785,
+    "linuxPassed": 1682,
+    "linuxEnvironmentSkipped": 74
+  },
+  "liveCliStarts": 0,
+  "productionUpgrade": false,
+  "note": "Includes original managed font readiness,390 full cells/exact code/no execution, direct/reload no assistant POST, real foreign404/no content/no original-chat action, original draft/focus and a cited message older than70 other messages with explicit recent/refresh. Retains all18 lecture controls. No primary/material selection browser, fullC/D, whole439 execution, real teacher/pixel/audio or production claim.",
+  "files": {
+    "data/qa/course-source-ui-anchor.json": {
+      "bytes": 28427,
+      "sha256": "869426c1d62d4f9f1ed216f626a6d57a7f5cc3b634d9f6f4b67cc3b52dfa9569",
+      "gzipSha256": "02822591a5ea16233985777defc42a65bdd9dfe8d00516eda4470cdeedfa36af"
+    },
+    "data/qa/course-source-ui-anchor.log": {
+      "bytes": 4435,
+      "sha256": "5471740a08d2e412ac85193cb46a5b84dcf0a14ec1781d4164d8fb8ea57f5a32",
+      "gzipSha256": "aae892a4893c863171d50f0e44e729abb78aac671d352a39d706c37e84aaf5cc"
+    },
+    "data/qa/course-source-ui-inputs-anchor.json": {
+      "bytes": 149014,
+      "sha256": "648e2013785b8682f020ee9069ec695a9088aa98e35267d5341913301bbf7362",
+      "gzipSha256": "d28f468ec9677f85115fa8de7c39cb4de2c48b9cb3da90aeed693d0707955ffa"
+    },
+    "data/qa/course-source-ui-build-anchor.log": {
+      "bytes": 1538,
+      "sha256": "bd60545f263475cf3719bf1a1069e9d4fc9bee1d8ef8327e8e4013b83e93f3ad",
+      "gzipSha256": "50a8697d299e01444f8aedc1cda42e221a2d2d16c21772a3823234fc109b9c70"
+    },
+    "data/qa/course-source-ui-build-second.log": {
+      "bytes": 1540,
+      "sha256": "1d27e2722335efe88eeae406ca004ca8e441f694e69199bce64f58d3180d42dd",
+      "gzipSha256": "e0553b17b05fcd22ae654c831c07d729160a4ab73272079397e8c678cfd0f034"
+    },
+    "data/qa/course-source-ui-build-fourth.log": {
+      "bytes": 1538,
+      "sha256": "a329b36fa937db8cf8ae19cd638993ce407a1e43f51d787fe3db13410060f0d0",
+      "gzipSha256": "03a2177ed056e08f3b3d6e36c4f0c71c5c132af42f73a53bd22d4bbe041d36c8"
+    },
+    "data/qa/course-source-ui-build-sixth.log": {
+      "bytes": 1538,
+      "sha256": "d4fc1c7d939790d7622e3ac812c3ed4622a4e18421041cdef959120fc55b7ec5",
+      "gzipSha256": "5d0a6f08b91022e569bf9fdff061d1af0bd98f8d04b0dcf7a08949b7bfe35387"
+    },
+    "data/qa/course-source-ui-typecheck-final.log": {
+      "bytes": 68,
+      "sha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc",
+      "gzipSha256": "d4246619e9b8b4b09138abbb0ce2bfceac93cd7569f485b9095890e33b50fdb3"
+    },
+    "data/qa/course-source-ui-discovery.log": {
+      "bytes": 59921,
+      "sha256": "95fcbed09fffd1e7817bdc15c61d32fb752364b540efdb99aff474bf1d9b77e5",
+      "gzipSha256": "216bb3f3a5c53a684698e82b9e2e4724d43734cb80b25c135ab98506dcee61b1"
+    },
+    "apps/web/components/assistant-source-preview.tsx": {
+      "bytes": 7873,
+      "sha256": "6989938af701aa08340b4f01ee5e783f4d903c1cce7496d9587e718524ee1873",
+      "gzipSha256": "0649de931b2a4b5a6d77c615cf15252053d64acde3d46273ffa072f0b821a0f6"
+    },
+    "apps/web/components/assistant-source-preview.css": {
+      "bytes": 2397,
+      "sha256": "37e8df7fd7b446fe8757dacb581dff6f32079bfd7f94b9b3d9a251be578ffc32",
+      "gzipSha256": "07ba70c2d6b82f9dc99555343bed7477c7b04bb379b2074bd137bb422627562f"
+    },
+    "apps/web/components/assistant-widget.tsx": {
+      "bytes": 17065,
+      "sha256": "671b0586a20c13f48abaf35473d419ed1c51e8a37573f00eab802b9428e0f0e7",
+      "gzipSha256": "cf9e23795e2777d4bd3d46197e5bd7ad2152a14e270eef01de399780ee7dd459"
+    },
+    "apps/web/components/assistant-widget.css": {
+      "bytes": 5715,
+      "sha256": "4929ebd1a13db7b8852fb138edbcee4b67b672c2b4c799286798c8d7a75e2209",
+      "gzipSha256": "c725f94eafa25109a5c7a67a29364ab0d1881a267fac50ffa60d5b54832459de"
+    },
+    "apps/web/lib/assistant-conversation.tsx": {
+      "bytes": 20108,
+      "sha256": "db6fa467c2eac6633e883b2c8d84d846bac2eff8507cea8a6e0b459ddabc7c13",
+      "gzipSha256": "fd724fb243c27f6e79413793333d2c67305383407646cf7aaa65c8ae9b44901c"
+    },
+    "apps/web/lib/assistant-course-navigation.ts": {
+      "bytes": 1624,
+      "sha256": "f71ec7f4fc5e1d770336ec0c182becf807b5ffbe60cef471b65ee0d545227da1",
+      "gzipSha256": "8afc96d2ea5e98a864c15dd6ef636e1db585784baf56162dd85a40a24c165e35"
+    },
+    "apps/web/app/studio/studio.tsx": {
+      "bytes": 30261,
+      "sha256": "4c5203d27d215cc72c12a6bf5f02a24f7d2e76ca7f3cfc75921e89e8e9593c15",
+      "gzipSha256": "d0989f04f1a3a2043b961ad560a662bad07e661f80bc15f69b871473a8806483"
+    },
+    "apps/web/app/studio/studio-instant-assistant.tsx": {
+      "bytes": 14670,
+      "sha256": "3984b7354a9586b239eb9a1273df05a56ebd76656223e6d25c88df54932d1a1f",
+      "gzipSha256": "186329ad66db684121413701232d46e7b98a8ce3eece13895782b589f5ff67ee"
+    },
+    "scripts/qa/assistant-turn-fixture.cjs": {
+      "bytes": 8156,
+      "sha256": "85c583da02524b64a945a4ece3ec068104f5bad936107e86a6bd48b49fb8d3a9",
+      "gzipSha256": "a8297cdc01cfaad410c2a0075f8745be0d4926e90e38c81caff7b4dc794de9c1"
+    },
+    "scripts/qa/run-source-course-browser.cjs": {
+      "bytes": 9353,
+      "sha256": "41caf1126e34c251e68544f755cb2897336c87cccd7512d3878098a6e29df690",
+      "gzipSha256": "494aa7fa0ae2a496075cbf48b47803dd91b749d2958ece59d6eafb237485e718"
+    },
+    "tests/e2e/course-assistant.spec.ts": {
+      "bytes": 9396,
+      "sha256": "30f1d7cbc356fc20edfc46e50e38dadfd478f83d8e0e037cbb7e6b671e67c9bf",
+      "gzipSha256": "85ed70ad7a8bf6949e5ccc05f476571b09aef1140fa94bdd70f4d263b600f82b"
+    },
+    "data/qa/browser-evidence/course-source-ui-anchor-d6e1f101f5/course-assistant/source-code-390.png": {
+      "bytes": 98887,
+      "sha256": "c4b3355c31a42ffe90e9e3e8a394816893aaf1cde16a29e4b3163ca722d37681",
+      "gzipSha256": "43e46939ec089e5753cd8d906b97177c4b24518bf7df1b527c4681aae6093a92"
+    },
+    "data/qa/browser-evidence/course-source-ui-anchor-d6e1f101f5/course-assistant/source-direct.png": {
+      "bytes": 75637,
+      "sha256": "b000be10a86b8bf6c99885fb469b82a48e7856189abe7cfefc9126011a2c4955",
+      "gzipSha256": "1fe38641e8049e2ac6c3bc224e6fe1c76643d9cbd125bf2c606cc2d78d0ab840"
+    },
+    "data/qa/browser-evidence/course-source-ui-anchor-d6e1f101f5/course-assistant/source-table-390.png": {
+      "bytes": 94621,
+      "sha256": "4a8624c15ae650cae4d53c0d334e25fd6aaad1400142613599a9c89b661ec7c1",
+      "gzipSha256": "f4e8705deda338a705cba9b6b4117d2ace71a586d590e9aead9bec497d686734"
+    },
+    "data/qa/course-source-ui-doc-links-final.log": {
+      "bytes": 116,
+      "sha256": "3ff88bd80282bc8a43c84552af7fb8700ac2adc654fce1ee201bb28ea5568b42",
+      "gzipSha256": "aeaf05be4056c6735c25963c1dfc062507b0dcc94cdebcd207cb76d6566e3857"
+    }
+  },
+  "documentationLinks": {
+    "checked": 3865,
+    "missing": 0
+  }
+}

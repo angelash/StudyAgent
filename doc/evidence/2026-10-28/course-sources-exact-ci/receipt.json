@@ -1,0 +1,67 @@
+{
+  "runId": 40638340785,
+  "head": "9c61928359f7f0ebcb74a8c736d8b9ebdca6ba16",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "application",
+      "conclusion": "success"
+    },
+    {
+      "name": "postgres",
+      "conclusion": "success"
+    },
+    {
+      "name": "browser",
+      "conclusion": "success"
+    }
+  ],
+  "browser": {
+    "startTime": "2026-10-28T05:32:43.915Z",
+    "duration": 2228190.846,
+    "expected": 434,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "originalAttempts": 434,
+    "retries": 0,
+    "failedAttempts": 0
+  },
+  "originalTestSummaries": [
+    "application\tRun npm test\t2026-10-28T05:42:02.3700623Z ^[[2m      Tests ^[[22m ^[[1m^[[32m1682 passed^[[39m^[[22m^[[2m | ^[[22m^[[33m74 skipped^[[39m^[[90m (1756)^[[39m",
+    "postgres\tAuthorized primary and material course assistant scopes on PostgreSQL\t2026-10-28T05:35:30.1030522Z ^[[2m      Tests ^[[22m ^[[1m^[[32m25 passed^[[39m^[[22m^[[90m (25)^[[39m"
+  ],
+  "note": "Exact B2b sources/native recovery code; source preview Web/C1 was not yet included. Does not prove production continuity or full142 completion.",
+  "files": {
+    "data/qa/course-sources-exact-ci-terminal.json": {
+      "bytes": 21562,
+      "sha256": "4ba4c28479a23fafb4c9d4e21f2602118a1122cb3c3223401cc8cb8ffc517eac",
+      "gzipSha256": "fecfb87e7d292823dede308b42cba0f8ce8a4ebae2d0036f7950b98188da3080"
+    },
+    "data/qa/course-sources-exact-ci-terminal.log": {
+      "bytes": 1069693,
+      "sha256": "bddf6c81f953b4d6423072170e65f86825e1ad2ae47232518ba3b8f7526409e4",
+      "gzipSha256": "f1f9bbdec8dbda64ea1c8d791746937c736b616a0dd6a795f19629d5a2afb3cc"
+    },
+    "data/qa/course-sources-exact-ci-source.tar": {
+      "bytes": 686080,
+      "sha256": "fede45dda70da1c1ffc93a84e221899b12d001347546cfb48357013c289944ac",
+      "gzipSha256": "ffa60ad899bc23c634ebcd1c4ee4c0041ad51914d438fb72cdf5dd316b5fe65b"
+    },
+    "data/qa/course-sources-exact-ci-artifacts/data/qa/source-course-full-browser.json": {
+      "bytes": 487411,
+      "sha256": "395c881f3d9805dd5ccfcaf725cc889b4dcd2218e399c01475d8f5806f3db14b",
+      "gzipSha256": "784b86cd189b68f8f39121c3822447e8b5a4b5c3583d1a8ed9d514a1dc8c7901"
+    }
+  },
+  "application": {
+    "passed": 1682,
+    "failed": 0,
+    "environmentSkipped": 74
+  },
+  "coursePostgres": {
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0
+  }
+}

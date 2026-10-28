@@ -1,0 +1,63 @@
+{
+  "passed": 0,
+  "failed": 2,
+  "attempts": 2,
+  "retries": 0,
+  "webBuildId": "07EJTat-vlUXvvAcBPNV4",
+  "apiBusiness": "9c61928",
+  "note": "Actual retained pre-C production Web, synthetic real HTTP/worker citations. Missing source page and answer reference links reproduced. Local C source foundation had not been built into this Web. No real CLI, production writes or full course UI claim.",
+  "files": {
+    "data/qa/course-page-before.json": {
+      "bytes": 16975,
+      "sha256": "de0374d3baab3e1800d39291ce4b5de86dff2eca7ce3553167adb4ef84764b7e"
+    },
+    "data/qa/course-page-before.log": {
+      "bytes": 8024,
+      "sha256": "b703d368b83cbc90506cf28798175440a2cac700e452addda32773020df536bd"
+    },
+    "tests/e2e/course-assistant.spec.ts": {
+      "bytes": 4643,
+      "sha256": "98949ecd264beb1b50abeedcf344f6e7a0cc1e6ede638b39f029615d64c7b1f7"
+    },
+    "scripts/qa/assistant-turn-fixture.cjs": {
+      "bytes": 7737,
+      "sha256": "92bcab53b96965fc5136035c26c2f881e0262ce9261170d957e2072be836f4d3"
+    },
+    "scripts/qa/run-source-course-browser.cjs": {
+      "bytes": 9353,
+      "sha256": "41caf1126e34c251e68544f755cb2897336c87cccd7512d3878098a6e29df690"
+    },
+    "data/qa/experience-web/.next/BUILD_ID": {
+      "bytes": 21,
+      "sha256": "3b6fd158fa3b3e15a66be2a0826a278b4b7ee8b89265d4512ebf43536110de5b"
+    },
+    "data/qa/experience-web/app/studio/studio-instant-assistant.tsx": {
+      "bytes": 14181,
+      "sha256": "8d6adda64133068bb09a85ded6e61286a18c84fcce83662d2184734854c65de1"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-0a4ab-ation-or-sending-a-question/test-failed-1.png": {
+      "bytes": 68776,
+      "sha256": "e66cd60d7f295764d6efab61d9aeca31a35230e051870ba9cbd1dca6ba1f7d03"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-0a4ab-ation-or-sending-a-question/error-context.md": {
+      "bytes": 8055,
+      "sha256": "8c910b1a21b1241990581696b5886576430ce3969cb143ed384805313b8de74f"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-0a4ab-ation-or-sending-a-question/trace.zip": {
+      "bytes": 1510778,
+      "sha256": "1e112337bbcf083673bc69e8a8cb9332439c66056cf50ecad75c03f4a0217848"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-aaec2--draft-and-original-message/test-failed-1.png": {
+      "bytes": 82057,
+      "sha256": "520260fe55a27283161502a92e24cede66e554ce27400ed7b65c9ec9ea7981a8"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-aaec2--draft-and-original-message/error-context.md": {
+      "bytes": 9028,
+      "sha256": "5610dc956737337278dbd9ad4fcd09e8fa08dedc7c40f95a7d104dab0ab7c508"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-aaec2--draft-and-original-message/trace.zip": {
+      "bytes": 2918505,
+      "sha256": "7ba39581f77db9c2a65d66810e1cf544538e930598b3646912aef37778453079"
+    }
+  }
+}

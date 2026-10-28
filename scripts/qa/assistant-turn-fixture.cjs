@@ -14,6 +14,7 @@ exports.installAssistantTurnFixture=function(app){
       if(!user)throw Error('unauthorized');const sessionId=String(req.body?.sessionId??''),session=ai.assertSessionOwner(sessionId,user,false),count=Number(req.body?.count??75),marker=String(req.body?.marker??'EARLY_HISTORY_MARKER');
       if(!Number.isInteger(count)||count<1||count>150||marker.length>60)throw Error('invalid fixture');
       const ids=[];for(let index=0;index<count;index++){const id=store.nextId('assistant_message');ids.push(id);store.append('assistantMessages',{id,sessionId:session.id,sender:index%2?'assistant':'user',content:index===0||index===count-10?marker+' · 匿名历史第'+index+'条':'合成历史第'+index+'条，核对条件再解释。',createdAt:new Date(Date.UTC(2026,0,1,10,0,index)).toISOString(),...(index%2?{source:'rules'}:{})});}
+      if(req.body?.makeSourceOld===true){const source=store.select('assistantMessages',{sessionId:session.id}).find(m=>m.sender==='assistant'&&m.sourceReferences?.length);if(!source)throw Error('Expected own cited fixture');source.createdAt='2025-12-30T10:00:01.000Z';const question=store.find('assistantMessages',{id:source.inReplyTo,sessionId:session.id});if(question)question.createdAt='2025-12-30T10:00:00.000Z';}
       return {ids,count};});res.status(201).json({data,error:null,meta:{fixture:true}});
     }catch{res.status(403).json({data:null,error:{code:'fixture_denied',message:'Synthetic assistant fixture rejected'},meta:{fixture:true}});}
   });
@@ -59,7 +60,9 @@ exports.installAssistantTurnFixture=function(app){
       const timer=setTimeout(()=>{input.signal?.removeEventListener('abort',abort);resolve();},input.message.includes('[assistant-hold]')?30000:8000);
       if(input.signal?.aborted)abort();else input.signal?.addEventListener('abort',abort,{once:true});
     });
+    const context=JSON.parse(input.context),teaching=context.course?.teaching??context.lecture?.teaching;
     return {reply:'先列出已有条件，再说明卡住的一步。用一个独立新例子核查，不凭一次表现确定原因。',
+      ...(input.message.includes('[cite-course]')&&input.courseSources?{sourceKeys:teaching?.parts[0]?.referenceKeys??[]}:{}),
       evidenceIds:input.message.includes('[assistant-invalid-once]')&&n===1?['synthetic-unsupported-evidence']:[],modelId:input.modelId,modelName:'Synthetic assistant · '+input.modelId};
   };
 };

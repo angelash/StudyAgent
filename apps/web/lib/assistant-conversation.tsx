@@ -26,8 +26,15 @@ export function useAssistantConversation({open,ownerId,scope,context,readOnly=fa
   const [cursor,setCursor]=React.useState<string|null>(null),[location,setLocation]=React.useState<AssistantLocation|null>(null);
   const epoch=React.useRef(0),controllers=React.useRef(new Set<AbortController>()),memory=React.useRef(new Map<string,Draft>()),draft=React.useRef<Draft|null>(null),draftKey=React.useRef('');
   const lastScope=React.useRef('');
+  const sourceFocus=React.useRef('');
   const key=ownerId?'studyagent.assistant.v1.'+encodeURIComponent(ownerId)+'.'+encodeURIComponent(scope):'';
   const matches=ownerScope===key&&!!ownerId;
+  React.useEffect(()=>{
+    const hash=window.location.hash, prefix='#assistant-message-';if(!matches||loading||!hash.startsWith(prefix))return;
+    let id:string;try{id=decodeURIComponent(hash.slice(prefix.length));}catch{return;}
+    const focusKey=JSON.stringify([key,viewSessionId,hash]);if(sourceFocus.current===focusKey||!messages.some(m=>m.id===id))return;
+    const target=document.getElementById('assistant-message-'+id);if(target){sourceFocus.current=focusKey;target.focus({preventScroll:true});target.scrollIntoView({block:'center',behavior:'instant'});}
+  },[matches,loading,messages.length,viewSessionId]);
   const write=React.useCallback((patch:Partial<Draft>)=>{
     const value=draft.current;if(!value)return;const next={...value,...patch};draft.current=next;memory.current.set(draftKey.current,next);
     try{localStorage.setItem(draftKey.current,JSON.stringify(next));}catch{setStorageNotice('本机未能暂存提问。当前文字仍在，可下载副本；刷新后会读取服务端已保存的任务。');}
@@ -69,9 +76,10 @@ export function useAssistantConversation({open,ownerId,scope,context,readOnly=fa
         if(!frozenLectureSessionId)throw Error('原讲座版本无法读取。本机草稿仍保留，可下载后打开当前版本。');
         const command=JSON.parse(context),retained=await call<AssistantContextView>('/ai/assistant/sessions/'+frozenLectureSessionId+'/context');
         const location=retained.location;
-        if(command.pageContext!=='classroom'||command.contextRefType!=='classroom_lecture'||location.pageContext!==command.pageContext||
-          location.contextRefType!==command.contextRefType||location.contextRefId!==command.contextRefId||location.contextItemId!==command.contextItemId||location.studentId!==null||location.subject!==null)
-          throw Error('原讲座会话与当前学习位置不匹配，已保留本机草稿。');
+        const lecture=command.pageContext==='classroom'&&command.contextRefType==='classroom_lecture',course=command.pageContext==='course'&&['primary_unit','material_lesson'].includes(command.contextRefType);
+        if((!lecture&&!course)||location.pageContext!==command.pageContext||location.contextRefType!==command.contextRefType||
+          location.contextRefId!==command.contextRefId||location.contextItemId!==command.contextItemId||location.studentId!==(command.studentId??null)||location.subject!==(command.subject??null))
+          throw Error('原会话与当前学习位置不匹配，已保留本机草稿。');
         s={id:frozenLectureSessionId};
         }
       }else s=await call<{id:string}>('/ai/assistant/sessions',{method:'POST',body:context});
@@ -79,10 +87,12 @@ export function useAssistantConversation({open,ownerId,scope,context,readOnly=fa
       setSessionId(s.id);if(!readOnly){if(draft.current!.sessionId&&draft.current!.sessionId!==s.id){setError('本机提问对应另一份学习上下文，原问题与命令仍保留，可下载后转为新提问。');setMismatch(true);mismatchRef.current=true;}else write({sessionId:s.id});}
       const id=historical??s.id;setViewSessionId(id);
       activeQuery.current='';
-      const [p,list]=await Promise.all([call<AssistantHistoryPage>('/ai/assistant/sessions/'+id+'/messages/page?pageSize=25'+(historical&&messageAnchor?'&anchor='+encodeURIComponent(messageAnchor):'')),call<AssistantTurnList>('/ai/assistant/sessions/'+id+'/turns?pageSize=25')]);
-      if(epoch.current!==revision)return;setMessages(p.messages.sort(order));setCursor(p.nextCursor);setLocation(p.location);setTurns(list);
+      let sourceAnchor:string|null=null;try{if(window.location.hash.startsWith('#assistant-message-')){const value=decodeURIComponent(window.location.hash.slice('#assistant-message-'.length));if(value&&value.length<=180)sourceAnchor=value;}}catch{/* Ignore an incomplete fragment, retaining the original draft. */}
+      const readAnchor=historical?messageAnchor:sourceAnchor;
+      const [p,list]=await Promise.all([call<AssistantHistoryPage>('/ai/assistant/sessions/'+id+'/messages/page?pageSize=25'+(readAnchor?'&anchor='+encodeURIComponent(readAnchor):'')),call<AssistantTurnList>('/ai/assistant/sessions/'+id+'/turns?pageSize=25')]);
+      if(epoch.current!==revision)return;setMessages(p.messages.sort(order));setCursor(p.nextCursor);setLocation(p.location);setTurns(list);if(!historical)setMessageAnchor(sourceAnchor);
       // Message and task reads can straddle publication. A completed task is terminal, so polling cannot repair a stale message page.
-      async function recoverPublished(next:AssistantTurnView){if(next.status==='completed'&&next.assistantMessageId&&!p.messages.some(message=>message.id===next.assistantMessageId)&&!(historical&&messageAnchor))await page(id,null,'',true);}
+      async function recoverPublished(next:AssistantTurnView){if(next.status==='completed'&&next.assistantMessageId&&!p.messages.some(message=>message.id===next.assistantMessageId)&&!readAnchor)await page(id,null,'',true);}
       const local=draft.current!,pendingCommand=!historical&&!readOnly&&!mismatchRef.current?local.pending:null;
       if(pendingCommand){const probe=await call<AssistantTurnList>('/ai/assistant/sessions/'+s.id+'/turns?requestKey='+encodeURIComponent(pendingCommand.requestKey));if(epoch.current!==revision)return;
         const found=probe.turns[0];if(found){accept(found);await recoverPublished(found);}else setNotice('原发送结果尚未确认；核对会继续使用同一个请求。');
@@ -135,7 +145,7 @@ export function useAssistantConversation({open,ownerId,scope,context,readOnly=fa
   async function resume(){const revision=epoch.current;setError('');setSuspended(false);try{const list=await refresh();if(list&&revision===epoch.current){let current=list.turns.find(t=>t.id===turn?.id);if(!current&&turn)current=await call<AssistantTurnView>('/ai/assistant/sessions/'+viewSessionId+'/turns/'+turn.id);if(revision!==epoch.current)return;current??=list.turns.find(active)??list.turns[0];if(current)accept(current,!historical);}}catch(e){if(revision===epoch.current)setError((e as Error).message);}}
   async function older(){if(!viewSessionId||!cursor)return;const revision=epoch.current;setBusy(true);try{await page(viewSessionId,cursor,activeQuery.current);}catch(e){if(revision===epoch.current)setError((e as Error).message);}finally{if(revision===epoch.current)setBusy(false);}}
   async function searchMessages(query:string){const revision=epoch.current;setBusy(true);setError('');try{activeQuery.current=query;await page(viewSessionId,null,query,true);}catch(e){if(revision===epoch.current)setError((e as Error).message);}finally{if(revision===epoch.current)setBusy(false);}}
-  async function resetMessages(){const revision=epoch.current;activeQuery.current='';setMessageAnchor(null);setError('');try{await refresh(viewSessionId,true);}catch(e){if(revision===epoch.current)setError((e as Error).message);}}
+  async function resetMessages(){const revision=epoch.current;activeQuery.current='';setMessageAnchor(null);setError('');if(window.location.hash.startsWith('#assistant-message-'))window.history.replaceState(window.history.state,'',window.location.pathname+window.location.search);try{await refresh(viewSessionId,true);}catch(e){if(revision===epoch.current)setError((e as Error).message);}}
   async function moreTurns(){if(!turns?.hasMore||busy)return;const revision=epoch.current;setBusy(true);try{const next=await call<AssistantTurnList>('/ai/assistant/sessions/'+viewSessionId+'/turns?page='+String(turns.page+1));if(revision===epoch.current)setTurns(old=>old?{...next,turns:[...new Map([...old.turns,...next.turns].map(t=>[t.id,t])).values()]}:next);}catch(e){if(revision===epoch.current)setError((e as Error).message);}finally{if(revision===epoch.current)setBusy(false);}}
   function download(){const value=draft.current;if(!value)return;const href=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=href;a.download='学习提问副本.json';a.click();setTimeout(()=>URL.revokeObjectURL(href),1000);}
   function newScope(){download();if(readOnly){setNotice('原讲座只读。原稿已保留，请打开当前讲座版本后重新提问。');return;}write({sessionId,pending:null,lastTurnId:null});setPending(null);setMismatch(false);mismatchRef.current=false;setError('');setNotice('已发起原提问副本下载，当前文字可在新上下文中重新发送。');}

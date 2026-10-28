@@ -1,0 +1,50 @@
+{
+  "passed": 22,
+  "failed": 0,
+  "attempts": 22,
+  "retries": 0,
+  "webBuildId": "ON8cGxJUTgqgcfQh1MU6S",
+  "controls": {
+    "checked": 820,
+    "changed": 0
+  },
+  "note": "All source and18 lecture cases passed. Includes exact code text,390 table/code, actual404 and no original-chat return for foreign owner. Font text coverage then broadened for all static source labels and error text; final rerun still required.",
+  "files": {
+    "data/qa/course-source-ui-third.json": {
+      "bytes": 27343,
+      "sha256": "331f27a7690aa8b16ca9eddee907af3f59f54f7e30fc37d8cf67341eaa99d5d3"
+    },
+    "data/qa/course-source-ui-third.log": {
+      "bytes": 4286,
+      "sha256": "ae14a0454d6290cccf8f9a7b974f5dbc9f893927736a3611c0381d190630c752"
+    },
+    "data/qa/course-source-ui-inputs-third.json": {
+      "bytes": 149014,
+      "sha256": "ede157be8654e4dea95d0f24804a3b978fff974d0395c1952a163af143c90580"
+    },
+    "data/qa/course-source-ui-build-fifth.log": {
+      "bytes": 1538,
+      "sha256": "36245e3eeb8c1d69c62723ed40b8ef0f214dd7d8c8c01cc6f1abe7853980884b"
+    },
+    "apps/web/components/assistant-source-preview.tsx": {
+      "bytes": 7172,
+      "sha256": "178190aacbcf4e85870739942a8146544d2cbfbfcdd64a7984e43eb938ffc383"
+    },
+    "tests/e2e/course-assistant.spec.ts": {
+      "bytes": 7669,
+      "sha256": "055187d74a9f7389f50148d7b770c75be0a7ae5dbcb441d1f7ecd1ffff84e330"
+    },
+    "data/qa/browser-evidence/course-source-ui-third-ceb5da992a/course-assistant/source-code-390.png": {
+      "bytes": 98887,
+      "sha256": "c4b3355c31a42ffe90e9e3e8a394816893aaf1cde16a29e4b3163ca722d37681"
+    },
+    "data/qa/browser-evidence/course-source-ui-third-ceb5da992a/course-assistant/source-direct.png": {
+      "bytes": 75637,
+      "sha256": "b000be10a86b8bf6c99885fb469b82a48e7856189abe7cfefc9126011a2c4955"
+    },
+    "data/qa/browser-evidence/course-source-ui-third-ceb5da992a/course-assistant/source-table-390.png": {
+      "bytes": 94621,
+      "sha256": "4a8624c15ae650cae4d53c0d334e25fd6aaad1400142613599a9c89b661ec7c1"
+    }
+  }
+}

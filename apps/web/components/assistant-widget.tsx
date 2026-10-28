@@ -1,18 +1,19 @@
 'use client';
 import * as React from 'react';
 import { AssistantDock } from '@study-agent/ui';
-import type { AssistantHistorySearch,AssistantTurnView } from '@study-agent/contracts';
+import type { AssistantHistorySearch,AssistantTurnView,AssistantTeachingSelection } from '@study-agent/contracts';
 import { apiRequest } from '../lib/api';
 import { useSessionUser } from '../lib/session-user';
 import { useAssistantConversation } from '../lib/assistant-conversation';
 import { XiaojiuModelPicker,useXiaojiuModels } from './xiaojiu-model-picker';
+import { internalAssistantHref } from '../lib/assistant-course-navigation';
 import './assistant-widget.css';
 
 export type AssistantComposerContext={conversation:ReturnType<typeof useAssistantConversation>;models:ReturnType<typeof useXiaojiuModels>;blocked:boolean};
 type AssistantWidgetProps={userRole:'student'|'parent';studentId:string|null;subject?:'math'|'chinese'|'english'|null;
-  pageContext:'student_home'|'assessment'|'mission'|'review'|'weekly_report'|'classroom'|'studio';contextRefType?:'practice'|'diagnostic'|'plan'|'classroom_lecture'|null;
+  pageContext:'student_home'|'assessment'|'mission'|'review'|'weekly_report'|'classroom'|'studio'|'course';contextRefType?:'practice'|'diagnostic'|'plan'|'classroom_lecture'|'primary_unit'|'material_lesson'|null;
   contextRefId?:string|null;contextItemId?:string|null;title:string;subtitle:string;inline?:boolean;readOnly?:boolean;frozenLectureSessionId?:string;
-  renderComposer?:(context:AssistantComposerContext)=>React.ReactNode};
+  contextSelection?:AssistantTeachingSelection;renderComposer?:(context:AssistantComposerContext)=>React.ReactNode};
 const labels={queued:'已排队',running:'正在生成',validating:'正在检查回答',completed:'回答已保存',failed:'本次未完成',cancelled:'已取消',cancelling:'正在取消'};
 const status=(turn:AssistantTurnView)=>turn.task?.state==='retry_wait'?'等待恢复':labels[turn.status];
 function InlineAssistantFrame(props:React.ComponentProps<typeof AssistantDock>){return <section className="sa-inline-assistant" aria-label={props.title}>{props.children}</section>;}
@@ -25,7 +26,7 @@ export function AssistantWidget(props:AssistantWidgetProps){
   const currentIdentity=React.useRef(identity?.id);currentIdentity.current=identity?.id;
   const locateEpoch=React.useRef(0);
   const context=JSON.stringify({userRole:props.userRole,studentId:props.studentId,subject:props.subject??null,pageContext:props.pageContext,
-    contextRefType:props.contextRefType??null,contextRefId:props.contextRefId??null,contextItemId:props.contextItemId??null});
+    contextRefType:props.contextRefType??null,contextRefId:props.contextRefId??null,contextItemId:props.contextItemId??null,...(props.contextSelection?{contextSelection:props.contextSelection}:{})});
   const conversation=useAssistantConversation({open,ownerId:identity?.id??null,scope:context,context,readOnly:props.readOnly,frozenLectureSessionId:props.frozenLectureSessionId});
   const models=useXiaojiuModels(open&&!!identity),{catalog,modelId,setModelId,error:modelError,reload:reloadModels}=models;
   const locationSessionId=conversation.historical??conversation.viewSessionId;
@@ -47,7 +48,7 @@ export function AssistantWidget(props:AssistantWidgetProps){
   async function locate(){
     if(!locationSessionId)return;setHistoryError('');const owner=identity?.id,revision=++locateEpoch.current,boundary=locationBoundary.current.version;
     try{const page=await apiRequest<{location:{href:string|null}}>('/ai/assistant/sessions/'+locationSessionId+'/messages/page?pageSize=1');
-      const href=page.location.href;if(owner!==currentIdentity.current||revision!==locateEpoch.current||boundary!==locationBoundary.current.version)return;if(href&&(/^\/(student|parent)\//.test(href)||/^\/studio(?:\/classroom)?(?:\?|$)/.test(href)))window.location.assign(href);else setHistoryError('这段对话没有可直接打开的学习活动。');
+      const href=internalAssistantHref(page.location.href);if(owner!==currentIdentity.current||revision!==locateEpoch.current||boundary!==locationBoundary.current.version)return;if(href)window.location.assign(href);else setHistoryError('这段对话没有可直接打开的学习活动。');
     }catch(e){if(owner===currentIdentity.current&&revision===locateEpoch.current&&boundary===locationBoundary.current.version)setHistoryError((e as Error).message);}
   }
   const t=conversation.turn,canCancel=!!t&&['queued','running','validating'].includes(t.status),canRetry=!props.readOnly&&!!t&&['failed','cancelled'].includes(t.status)&&t.task?.errorCode!=='assistant_context_changed';
@@ -68,7 +69,7 @@ export function AssistantWidget(props:AssistantWidgetProps){
       </section>}
       {conversation.historical?<aside className="assistant-history-banner"><p>正在回看已保存的提问和回答。</p><div><button onClick={()=>{follow.current=true;conversation.browse(null);setMessageQuery('');}}>返回当前学习对话</button><button onClick={()=>void locate()}>回到相关学习位置</button></div></aside>:
         <p className="assistant-intro">{props.pageContext==='classroom'||props.pageContext==='studio'?'围绕具体问题讲解，用例子、反例和新情境核对理解。':props.contextItemId?'围绕当前题目理清下一步；得到帮助后的表现会单独记录。':props.userRole==='student'?'告诉我卡住的一步，我们一起理清思路。':'根据已有学习证据，一起商量怎样陪伴。'}</p>}
-      {props.readOnly&&!conversation.historical&&<p className="assistant-notice" role="status">正在只读原讲座版本。原问题与草稿保留，请打开当前版本后再提问。</p>}
+      {props.readOnly&&!conversation.historical&&<p className="assistant-notice" role="status">正在只读原{props.pageContext==='course'?'课程':'讲座'}版本。原问题与草稿保留，请打开当前版本后再提问。</p>}
       {historyError&&!historyOpen&&<p role="alert" className="assistant-error">{historyError}</p>}
       {conversation.loading&&<p role="status">正在取回对话与提问状态…</p>}
       {(conversation.messages.length>0||messageQuery||conversation.messageAnchor)&&<form className="assistant-message-search" onSubmit={e=>{e.preventDefault();follow.current=false;void conversation.searchMessages(messageQuery);}}>
@@ -77,7 +78,13 @@ export function AssistantWidget(props:AssistantWidgetProps){
       </form>}
       <div ref={log} className="assistant-history" role="log" aria-live="polite" aria-label="当前学习对话" onScroll={e=>{const el=e.currentTarget;follow.current=el.scrollHeight-el.scrollTop-el.clientHeight<40;}}>
         {conversation.cursor&&<button className="assistant-load-older" disabled={conversation.busy} onClick={()=>{follow.current=false;void conversation.older();}}>更早的消息</button>}
-        {conversation.messages.map(m=><article className={'assistant-message from-'+m.sender} key={m.id} data-message-id={m.id}><strong>{m.sender==='assistant'?'学习助教':'我'}</strong><p>{m.content}</p>
+        {conversation.messages.map(m=><article className={'assistant-message from-'+m.sender} key={m.id} data-message-id={m.id} id={'assistant-message-'+m.id} tabIndex={-1}><strong>{m.sender==='assistant'?'学习助教':'我'}</strong><p>{m.content}</p>
+          {m.sender==='assistant'&&!!m.sourceReferences?.length&&<nav className="assistant-source-references" aria-label="本次回答的教学出处">{m.sourceReferences.map(ref=>{
+            const href=internalAssistantHref(ref.href);if(!href)return null;const url=new URL(href,'https://study.invalid');
+            if(url.pathname!=='/studio'||url.searchParams.get('assistantSourceSession')!==m.sessionId||url.searchParams.get('assistantSourceKey')!==ref.key)return null;
+            url.searchParams.set('assistantSourceMessage',m.id);
+            return <a key={ref.key} href={url.pathname+url.search}><span aria-hidden="true">↗</span> {ref.title}{ref.page?' · 第'+ref.page+'页':''}</a>;
+          })}</nav>}
           {m.sender==='assistant'&&<small>{m.source==='xiaojiu'?(m.modelName??m.modelId??'小九AI模型')+' · 小九AI建议':m.source==='openai'?'AI建议，请结合具体表现核对':m.source==='rules'?'根据学习记录给出的引导':'已保存的对话'}{m.evidenceIds?.length?' · 引用 '+m.evidenceIds.length+' 条学习证据':''}{m.assistanceRecorded&&<span>本题已记录使用助教提示。</span>}</small>}</article>)}
         {!conversation.loading&&!conversation.messages.length&&<p className="assistant-empty">{conversation.pending?'原提问已在本机保留，发送结果仍需核对。':conversation.historical?'这段会话暂无已保存回答，可以查看下方提问记录。':'可以先写下卡住的一步，再一起核对已有证据。'}</p>}
       </div>

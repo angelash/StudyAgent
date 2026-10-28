@@ -18,6 +18,7 @@ import './workspace.css';
 import { CourseBuilder } from './course-builder';
 import { copyCourseFilters } from './course-library-state';
 import { StudioInstantAssistant } from './studio-instant-assistant';
+import { copyAssistantContext, assistantNavigationKeys } from '../../lib/assistant-course-navigation';
 
 type View = 'home' | 'courses' | 'feed' | 'calendar' | 'materials' | 'history';
 type Mode = 'craft' | 'instant';
@@ -51,7 +52,7 @@ function LearningStudioWorkspace({identity}:{identity:ReturnType<typeof useSessi
   const whiteboardRequestKey = React.useRef('');
   const [plannerRequest,setPlannerRequest] = React.useState(0);
   const [materialsTab,setMaterialsTab] = React.useState<'files'|'packs'>('files');
-  function navigate(next:View, course?:StudioCourse) { setView(next);setActive(course??null);const query=new URLSearchParams(window.location.search),params=copyCourseFilters(window.location.search,new URLSearchParams({view:next,subject,mode}));for(const key of ['audience','lectureCourse','lecture','lectureVersion'])if(query.has(key))params.set(key,query.get(key)??'');if(studentId)params.set('student',studentId);if(course)params.set('course',course.id);window.history.pushState(null,'','/studio?'+params); }
+  function navigate(next:View, course?:StudioCourse) { setView(next);setActive(course??null);const query=new URLSearchParams(window.location.search),params=copyAssistantContext(query,copyCourseFilters(window.location.search,new URLSearchParams({view:next,subject,mode})));if(studentId)params.set('student',studentId);if(course)params.set('course',course.id);window.history.pushState(null,'','/studio?'+params); }
   function changeScope(id:string, nextSubject:StudioSubject) { const requestedView=new URLSearchParams(window.location.search).get('view');const nextView=Object.keys(labels).includes(requestedView??'')?requestedView as View:view;setView(nextView);if(id!==studentId||nextSubject!==subject){loadGeneration.current++;setOverview(null);setActive(null);setVisual(null);}setStudentId(id);setSubject(nextSubject);setShowBuilder(false);setError('');const params=new URLSearchParams({view:nextView,subject:nextSubject,mode});if(id)params.set('student',id);window.history.replaceState(null,'','/studio?'+params);setLocationVersion(value=>value+1); }
   React.useEffect(()=>{const params=new URLSearchParams(window.location.search);setMode(params.get('mode')==='instant'?'instant':'craft');const initialView=params.get('view');if(Object.keys(labels).includes(initialView??''))setView(initialView as View);const selectedSubject=params.get('subject');if(subjects.some(([value])=>value===selectedSubject))setSubject(selectedSubject as StudioSubject);if(params.get('student'))setStudentId(params.get('student')!);},[]);
   React.useEffect(()=>{const changed=()=>{const params=new URLSearchParams(window.location.search);const nextView=params.get('view');setView(Object.keys(labels).includes(nextView??'')?nextView as View:'home');setMode(params.get('mode')==='instant'?'instant':'craft');const nextSubject=params.get('subject');if(subjects.some(([value])=>value===nextSubject))setSubject(nextSubject as StudioSubject);if(params.get('student'))setStudentId(params.get('student')!);setLocationVersion(value=>value+1);};window.addEventListener('popstate',changed);return()=>window.removeEventListener('popstate',changed);},[]);
@@ -70,7 +71,7 @@ function LearningStudioWorkspace({identity}:{identity:ReturnType<typeof useSessi
     const params=new URLSearchParams(window.location.search), courseId=params.get('course'), whiteboardId=params.get('whiteboard'), requestedView=params.get('view');
     const course=overview.courses.find(item=>item.id===courseId);
     const whiteboard=overview.whiteboards.find(item=>item.id===whiteboardId);
-    if(course){setActive(course);setView('courses');}
+    if(course&&!(requestedView==='home'&&params.get('mode')==='instant')){setActive(course);setView('courses');}
     else if(whiteboard)setActiveWhiteboard(whiteboard);
     else if(['home','courses','feed','calendar','materials','history'].includes(requestedView??'')){setView(requestedView as View);setActive(null);}
     if(requestedView==='materials'&&params.get('tab')==='packs')setMaterialsTab('packs');
@@ -102,7 +103,7 @@ function LearningStudioWorkspace({identity}:{identity:ReturnType<typeof useSessi
     catch (caught) { setError((caught as Error).message); } finally { setBusy(false); }
   }
   function submit(e:React.FormEvent){e.preventDefault();setShowBuilder(true);}
-  function changeMode(next:Mode){setMode(next);setView('home');const params=new URLSearchParams(window.location.search);params.set('view','home');params.set('mode',next);if(next==='craft')for(const key of ['lectureCourse','lecture','lectureVersion','audience'])params.delete(key);window.history.pushState(null,'','/studio?'+params);setLocationVersion(value=>value+1);}
+  function changeMode(next:Mode){setMode(next);setView('home');const params=new URLSearchParams(window.location.search);params.set('view','home');params.set('mode',next);if(next==='craft')for(const key of assistantNavigationKeys)params.delete(key);window.history.pushState(null,'','/studio?'+params);setLocationVersion(value=>value+1);}
 
   if(identity===undefined)return <div className="sa-loading"><Mark/>正在打开学习工作台…</div>;
   if(!identity)return <div className="sa-gate"><Mark/><h1>登录后进入 StudyAgent 学习工作台</h1><Link href="/parent/login">登录 / 创建家长账号</Link><Link href="/">返回学习观察室</Link></div>;

@@ -1,0 +1,58 @@
+{
+  "passed": 19,
+  "failed": 1,
+  "attempts": 20,
+  "retries": 0,
+  "webBuildId": "yGP-7mHHF1gV94ljYHqAP",
+  "controls": {
+    "checked": 820,
+    "changed": 0
+  },
+  "note": "Direct frozen preview and all18 original lecture controls pass; return through a Next Link changes the URL but leaves local Studio state on the source branch. Preserve trace, then use a full original-route navigation so draft and message focus are actually restored.",
+  "files": {
+    "data/qa/course-source-ui-first.json": {
+      "bytes": 30541,
+      "sha256": "ade00c2058b25d18014c667a6122ca74c0928e20fbe578dc4d993b1a3c5ac145"
+    },
+    "data/qa/course-source-ui-first.log": {
+      "bytes": 7279,
+      "sha256": "153077ec7a82206b75756b79291285631c8ffb753a686a5d6095a7859b6d1d74"
+    },
+    "data/qa/course-source-ui-inputs-first.json": {
+      "bytes": 149014,
+      "sha256": "d0431a8575b57af998c6311ce08d32054d63ed450c91c57ebf879cbc77982321"
+    },
+    "data/qa/course-source-ui-typecheck-first.log": {
+      "bytes": 68,
+      "sha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc"
+    },
+    "data/qa/course-source-ui-build-first.log": {
+      "bytes": 1539,
+      "sha256": "8a505c5a155b1b181aaffab6ba506d846fe26a59dd1a2e3b964c0c77416e5e8f"
+    },
+    "apps/web/components/assistant-source-preview.tsx": {
+      "bytes": 6749,
+      "sha256": "4699213f05779146fb6828c533490238fbb2935f2ba98be97bf3885222cf798b"
+    },
+    "apps/web/lib/assistant-conversation.tsx": {
+      "bytes": 19387,
+      "sha256": "c357ec9f29f5ffe4d61a6598adda27ce8cde7eb3fe9b987f9d90fc4436cd6216"
+    },
+    "apps/web/app/studio/studio-instant-assistant.tsx": {
+      "bytes": 14670,
+      "sha256": "3984b7354a9586b239eb9a1273df05a56ebd76656223e6d25c88df54932d1a1f"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-aaec2--draft-and-original-message/test-failed-1.png": {
+      "bytes": 97729,
+      "sha256": "ce508fd07f2edec6650bc0269eb61ec683b794362801a26782f423f9b57e5bba"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-aaec2--draft-and-original-message/error-context.md": {
+      "bytes": 8520,
+      "sha256": "fe9b4a0d90906f138bb47f79cd74b3185dd3349e1bdcf9ced11d72b3af813ee3"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-aaec2--draft-and-original-message/trace.zip": {
+      "bytes": 2035282,
+      "sha256": "7382b36d4a42cbbc7ba65f35c095aa8c889714b87e0b77683d84fa2b79fd3498"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "passed": 4,
+  "failed": 1,
+  "attempts": 5,
+  "retries": 0,
+  "webBuildId": "tq3XIT0AVZY9OTVbNOWCi",
+  "note": "Actual original cited answer older than70 other persisted messages is absent from newest25. Returning with hash alone fails to load or focus it. Previous four source controls remain passed. Repair must query the original message anchor and keep an explicit route back to recent messages.",
+  "files": {
+    "data/qa/course-source-old-anchor-before.json": {
+      "bytes": 13802,
+      "sha256": "a9cead08e575bf671bc5959057c7173414c7b9f83bed590a94576a4b4bf540fb"
+    },
+    "data/qa/course-source-old-anchor-before.log": {
+      "bytes": 4573,
+      "sha256": "62d2784bb9762117f7dd853b7b6b2e20dc96c09526769193e2916280f731b124"
+    },
+    "tests/e2e/course-assistant.spec.ts": {
+      "bytes": 8974,
+      "sha256": "2a78131041288deefab3f36ea9122770c9b9feb8edee44fdad44f444a5bc21b9"
+    },
+    "scripts/qa/assistant-turn-fixture.cjs": {
+      "bytes": 8156,
+      "sha256": "85c583da02524b64a945a4ece3ec068104f5bad936107e86a6bd48b49fb8d3a9"
+    },
+    "apps/web/lib/assistant-conversation.tsx": {
+      "bytes": 19387,
+      "sha256": "c357ec9f29f5ffe4d61a6598adda27ce8cde7eb3fe9b987f9d90fc4436cd6216"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-a5bf0-tside-the-newest25-messages/test-failed-1.png": {
+      "bytes": 84937,
+      "sha256": "08944383ba66fc3dbf43dda72d6056e7308d4594540ca8b01ca22a6a0c675ec2"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-a5bf0-tside-the-newest25-messages/error-context.md": {
+      "bytes": 16643,
+      "sha256": "bc53bdb76e0284475781074ba1208865658cd7290849ed33e72a6eee259612e6"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-a5bf0-tside-the-newest25-messages/trace.zip": {
+      "bytes": 2160272,
+      "sha256": "acad05a46f640174e8f230dd590cd4f89c5612d3f7a58b248474e76baa712feb"
+    }
+  }
+}
