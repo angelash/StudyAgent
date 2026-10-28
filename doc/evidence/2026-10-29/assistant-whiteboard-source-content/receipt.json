@@ -1,0 +1,122 @@
+{
+  "passed": true,
+  "designBeforeImplementation": "602a45bda6a7f27cfc5312ea32078d0c4c12558f",
+  "stats": {
+    "numPassedTests": 29,
+    "numFailedTests": 0,
+    "numPendingTests": 0
+  },
+  "scope": "16 new pure source-content cases,5 ordinaryv1 content cases,8 existing actualSQLite source-preflight HTTP cases;29 original checks passed. No live provider calls, no new persistence routes.",
+  "implemented": [
+    "Separate strict source-content and review schemas with per-scene mapping and unchanged ordinaryv1 rejection.",
+    "Complete frozen source outside a short display prompt,source/model fingerprints,original grade9 vs profile4 separation,and zero formal atom targets.",
+    "Mapped references must belong to the same selected original messages; borrowed/unknown/duplicate IDs and disguised supplementary citations are rejected.",
+    "Whole content/table/formula/spoken-note budgets,figure mode,prepared integrity and revision/uncertain review boundaries."
+  ],
+  "attempts": {
+    "typeFirst": "JSON Schema structural type diagnostic retained; original complete pre-cast source snapshot was not frozen.",
+    "typeSecondAndThird": "Passed,own contracts/config/API build passed.",
+    "commandFirst": "Output path error before build/test,retained separately.",
+    "second": "28 passed,1 test fixture failure: supposed oversize content was21733 characters,below22000. Exact inputs retained.",
+    "third": "29 passed,0 failed/skipped after enlarging only the synthetic boundary fixture; product limit remains22000."
+  },
+  "limits": [
+    "Prepared type and validators are an isolated foundation; not yet joined to existing genericPrepared,task lifecycle or authorization adapter.",
+    "Create/list/request/source routes beyond existingpreflight still not enabled; no generation/adoption/playerC3 acceptance.",
+    "No new actualPG persistence,full candidate API/browser/CI/production,pixel/audio or learning-outcome claim."
+  ],
+  "files": {
+    "apps/api/src/modules/learning/assistant-whiteboard-source.ts": {
+      "bytes": 7426,
+      "sha256": "c2126c523e2b4c64ae6686893ae06e649b0ac6b2059655622f11d768c86d331b"
+    },
+    "apps/api/src/modules/learning/assistant-whiteboard-content.ts": {
+      "bytes": 4100,
+      "sha256": "3f3fa977353f31991f6836cb1af0d306e695e97efd940f5f4fa1ed677440874b"
+    },
+    "apps/api/src/modules/learning/assistant-whiteboard-content.test.ts": {
+      "bytes": 14712,
+      "sha256": "6d44ef928f86ce64669c8fc178872f7c56419918a38a9ac1f6952991790fca0c"
+    },
+    "packages/contracts/src/assistant-whiteboard.ts": {
+      "bytes": 2855,
+      "sha256": "91ab0004442706255529f8e63992782ef95230a31a30556cce9dfe0136ef839c"
+    },
+    "apps/api/src/modules/learning/topic-whiteboard-content.test.ts": {
+      "bytes": 5220,
+      "sha256": "ffe3fc7e3f8be102028bf5396a94b509c809014a7823d8e97998506a17460fc4"
+    },
+    "apps/api/src/modules/learning/assistant-whiteboard.integration.test.ts": {
+      "bytes": 15027,
+      "sha256": "3d5a5c0a6b852afdcd02311c33061a7ff4aefabce8bc1d7ec978a1295c1d572d"
+    },
+    "data/qa/source-content-second.json": {
+      "bytes": 15092,
+      "sha256": "94b602e2177fb5a164df9243a49ac812ccd5fe3a0ad7275684ca8418be8e62d0"
+    },
+    "data/qa/source-content-third.json": {
+      "bytes": 14076,
+      "sha256": "9b80f3c5d79c370c0de475ef2cbaed0d5d34b3c32ea2bb30d1e9158a2a03cc06"
+    },
+    "data/qa/source-content-first-command.json": {
+      "bytes": 275,
+      "sha256": "1b36e4636061a7072b0d6e75d6fde53b4ae3b5d355f3ca4fa62c8e9e76a9995a"
+    },
+    "second-attempt-inputs/apps/api/src/modules/learning/assistant-whiteboard-content.test.ts": {
+      "bytes": 14712,
+      "sha256": "90ea18b7d0238d67b6d0e5742120920ac7eff68640e58807b450099325611a7a"
+    },
+    "second-attempt-inputs/apps/api/src/modules/learning/assistant-whiteboard-content.ts": {
+      "bytes": 4100,
+      "sha256": "3f3fa977353f31991f6836cb1af0d306e695e97efd940f5f4fa1ed677440874b"
+    },
+    "second-attempt-inputs/apps/api/src/modules/learning/assistant-whiteboard-source.ts": {
+      "bytes": 7426,
+      "sha256": "c2126c523e2b4c64ae6686893ae06e649b0ac6b2059655622f11d768c86d331b"
+    },
+    "second-attempt-inputs/packages/contracts/src/assistant-whiteboard.ts": {
+      "bytes": 2855,
+      "sha256": "91ab0004442706255529f8e63992782ef95230a31a30556cce9dfe0136ef839c"
+    },
+    "source-content-contracts-first.log.gz": {
+      "sha256": "f28028b2fc882a968c077a2feb0aeaeb10e9c2c364928ea5038bc6df4b894790",
+      "originalSha256": "ab2f10e0374d2e6fadd5635c39452bbf40eda064c3121fb38e10c1dddcd74bc2",
+      "originalBytes": 486
+    },
+    "source-content-config-first.log.gz": {
+      "sha256": "b2489de479b14dca7483ecff1b478ede68605cb1b18883b4ef2a47c5295fc4f2",
+      "originalSha256": "9c83916b84101f2628fecc7eb0d37326e7a6694efd9addadbf8cf69c6631dd6e",
+      "originalBytes": 478
+    },
+    "source-content-types-first.log.gz": {
+      "sha256": "645d381b34f2374e03be253f459288c4072d1dcbe43f30152940b185f462ff2a",
+      "originalSha256": "55daf5579b3d89ba4afefbd29eeac38dd2fef6bb33e71778f908c73b6a6ead43",
+      "originalBytes": 1402
+    },
+    "source-content-types-second.log.gz": {
+      "sha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec",
+      "originalSha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "originalBytes": 68
+    },
+    "source-content-types-third.log.gz": {
+      "sha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec",
+      "originalSha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "originalBytes": 68
+    },
+    "source-content-api-second.log.gz": {
+      "sha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "originalBytes": 66
+    },
+    "source-content-second.log.gz": {
+      "sha256": "b87aa83cd9728120af17fc0099867f14881de575ce1b33f4c1d1a58bec1bfef1",
+      "originalSha256": "968b51bcb9aabd9fa4bd86d64f89ba49e513285be0606d0dbbe5464c51548c1c",
+      "originalBytes": 3421
+    },
+    "source-content-third.log.gz": {
+      "sha256": "a628174cab815e392ee67c5df3c56d7d19cce8c84b70826f7b308fa591896a97",
+      "originalSha256": "523f3907f113493d24c842f70c52355dfa5f5550ba1e6e79850c5d770069cb0c",
+      "originalBytes": 956
+    }
+  }
+}

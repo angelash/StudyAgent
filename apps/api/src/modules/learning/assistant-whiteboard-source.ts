@@ -1,4 +1,6 @@
 import type { AssistantArtifactOrigin, AssistantWhiteboardAudience, AssistantWhiteboardPreflight, AssistantWhiteboardPreflightInput } from '@study-agent/contracts';
+import { assistantWhiteboardPreflightSchema } from '@study-agent/contracts';
+import { createHash } from 'node:crypto';
 import { topicWhiteboardDigest } from './topic-whiteboard-content';
 
 /** Source identity excludes current permission labels. Callers must independently check current authority. */
@@ -23,4 +25,57 @@ export function prepareAssistantWhiteboardSource(origin: AssistantArtifactOrigin
     objective: input.objective, modelId: model.id, modelName: model.label, available, sourceFingerprint, fingerprint,
     contextCharacters: context.length, maxContextCharacters: 18000, fits, historical, canGenerate: !blocked, ...(blocked ? { blocked } : {}) };
   return { view, context };
+}
+
+export type PreparedAssistantWhiteboard = {
+  version: 'assistant-topic-whiteboard-v1';
+  input: { audience: AssistantWhiteboardAudience; prompt: string; objective: string; modelId: string };
+  modelId: string; modelName: string; grade: number | null; scopeFingerprint: string; targets: [];
+  context: string; fingerprint: string;
+  source: { sessionId: string; origin: AssistantArtifactOrigin; selection: AssistantWhiteboardPreflightInput['selection'];
+    sourceFingerprint: string; preflightFingerprint: string; acknowledgeHistoricalSource: boolean };
+};
+
+/** Internal only. Ownership and current write authority must be checked before persistence. */
+export function prepareAssistantTopicWhiteboard(origin: AssistantArtifactOrigin, input: AssistantWhiteboardPreflightInput,
+  audience: AssistantWhiteboardAudience, model: { id: string; label: string }, available: boolean): PreparedAssistantWhiteboard {
+  input = assistantWhiteboardPreflightSchema.parse(input);
+  const { view, context } = prepareAssistantWhiteboardSource(origin, input, audience, model, available);
+  if (!view.canGenerate) throw Error('assistant_whiteboard_' + view.blocked!.code);
+  const identity = { version: view.protocol,
+    input: { audience: structuredClone(audience), prompt: input.objective, objective: input.objective, modelId: model.id },
+    modelId: model.id, modelName: model.label, grade: audience.courseGrade, scopeFingerprint: view.sourceFingerprint, targets: [] as [], context,
+    source: { sessionId: origin.sessionId, origin: structuredClone(origin), selection: structuredClone(input.selection),
+      sourceFingerprint: view.sourceFingerprint, preflightFingerprint: view.fingerprint, acknowledgeHistoricalSource: input.acknowledgeHistoricalSource } };
+  const prepared = { ...identity, fingerprint: topicWhiteboardDigest(identity) };
+  assertPreparedAssistantWhiteboard(prepared); return prepared;
+}
+
+/** Validate saved bytes without upgrading their source or inventing current access. */
+export function assertPreparedAssistantWhiteboard(prepared: PreparedAssistantWhiteboard) {
+  if (prepared?.version !== 'assistant-topic-whiteboard-v1' || !prepared.source || !prepared.input || !Array.isArray(prepared.targets))
+    throw Error('assistant_whiteboard_prepared_protocol');
+  const { fingerprint, ...identity } = prepared;
+  if (topicWhiteboardDigest(identity) !== fingerprint) throw Error('assistant_whiteboard_prepared_changed');
+  const { origin, selection } = prepared.source, audience = prepared.input.audience;
+  const input = assistantWhiteboardPreflightSchema.parse({ selection, objective: prepared.input.objective,
+    modelId: prepared.modelId, acknowledgeHistoricalSource: prepared.source.acknowledgeHistoricalSource });
+  const messageIds = origin.messages.map(message => message.id);
+  if (origin.protocol !== 'assistant-artifact-origin-v1' || audience.kind !== 'assistant' || audience.studentId !== origin.studentId || audience.subject !== origin.subject
+    || audience.courseGrade !== (origin.teachingScope?.grade ?? null)
+    || audience.sourceKind !== (origin.course?.kind ?? (origin.lecture ? 'classroom_lecture' : 'independent'))
+    || origin.studentId === null && audience.profileGrade !== null
+    || prepared.grade !== audience.courseGrade || prepared.source.sessionId !== origin.sessionId || prepared.targets.length
+    || prepared.input.prompt !== prepared.input.objective || prepared.input.modelId !== prepared.modelId
+    || origin.messages.some(message => createHash('sha256').update(message.content).digest('hex') !== message.contentSha256)
+    || selection.includeLinkedQuestions !== origin.selection.includeLinkedQuestions
+    || new Set(messageIds).size !== messageIds.length || topicWhiteboardDigest(messageIds) !== topicWhiteboardDigest(origin.selection.messageIds)
+    || selection.messageIds.some(id => !messageIds.includes(id))
+    || topicWhiteboardDigest([...selection.messageIds].sort()) !== topicWhiteboardDigest([...origin.selection.requestedMessageIds].sort()))
+    throw Error('assistant_whiteboard_prepared_source_mismatch');
+  const source = prepareAssistantWhiteboardSource(origin, input, audience,
+  { id: prepared.modelId, label: prepared.modelName }, true);
+  if (!source.view.canGenerate || prepared.context !== source.context || prepared.scopeFingerprint !== source.view.sourceFingerprint
+    || prepared.source.sourceFingerprint !== source.view.sourceFingerprint || prepared.source.preflightFingerprint !== source.view.fingerprint)
+    throw Error('assistant_whiteboard_prepared_source_changed');
 }
