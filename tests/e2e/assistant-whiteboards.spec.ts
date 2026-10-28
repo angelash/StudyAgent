@@ -29,6 +29,9 @@ async function create(page: Page) {
   const dialog = panel(page); await dialog.getByRole('button', { name: '核对完整来源', exact: true }).click(); await expect(dialog.getByRole('button', { name: '生成教学草稿', exact: true })).toBeEnabled();
   await dialog.getByRole('button', { name: '生成教学草稿', exact: true }).click(); await expect(dialog.getByRole('link', { name: '打开教学草稿 →', exact: true })).toBeVisible();
 }
+async function localCache(page: Page, base: string) {
+  return page.evaluate(key => JSON.parse(localStorage.getItem(key + '.' + sessionStorage.getItem('studyagent.topic-whiteboard.document-slot'))!), base);
+}
 for (const width of [390, 768, 880, 1440]) test('source whiteboard: complete original selection, mapped edit, adoption and player return at ' + width, async ({ page }) => {
   test.setTimeout(150000); await page.setViewportSize({ width, height: 980 }); const f = await fixture(page);
   await enter(page, f.message); const dialog = panel(page); await dialog.getByLabel('同时包含回答关联的原问题').check();
@@ -58,7 +61,7 @@ test('source whiteboard: a lost committed creation reply is recovered with the e
   await page.route('**/api/ai/assistant/sessions/*/artifacts/whiteboards', async route => { if (route.request().method() !== 'POST') return route.continue(); posts++; const response = await route.fetch(); expect(response.status()).toBe(201); await route.abort('failed'); });
   await enter(page, f.message); const dialog = panel(page); await dialog.getByRole('button', { name: '核对完整来源', exact: true }).click(); await expect(dialog.getByRole('button', { name: '生成教学草稿', exact: true })).toBeEnabled();
   await dialog.getByRole('button', { name: '生成教学草稿', exact: true }).click(); await expect(dialog.getByRole('complementary', { name: '白板原创建操作' })).toBeVisible(); await expect(dialog.getByRole('alert')).toBeVisible();
-  const before = JSON.parse((await page.evaluate(key => localStorage.getItem(key), f.key))!); expect(before.pending.requestKey).toBeTruthy();
+  const before = await localCache(page, f.key); expect(before.pending.requestKey).toBeTruthy();
   await page.reload(); await expect(page.getByLabel('想一起看看什么', { exact: true })).toBeEnabled(); await enter(page, f.message);
   await dialog.getByRole('button', { name: '核对原请求', exact: true }).click(); await expect(dialog.getByRole('link', { name: '打开教学草稿 →', exact: true })).toBeVisible();
   await expect(dialog.getByRole('complementary', { name: '白板原创建操作' })).toHaveCount(0); expect(posts).toBe(1); expect((await call(f.actor, f.base)).items).toHaveLength(1);
@@ -148,4 +151,85 @@ test('source whiteboard: a creation that never reached the server retries only t
   page.on('request', r => { if (r.method() === 'POST' && new URL(r.url()).pathname.endsWith('/artifacts/whiteboards')) second = r.postDataJSON(); });
   await panel(page).getByRole('button', { name: '核对原请求', exact: true }).click(); await expect(panel(page).getByRole('button', { name: '用原请求重试', exact: true })).toBeEnabled();
   await panel(page).getByRole('button', { name: '用原请求重试', exact: true }).click(); await expect(panel(page).getByRole('link', { name: '打开教学草稿 →', exact: true })).toBeVisible(); expect(second).toEqual(first); expect((await call(f.actor, f.base)).items).toHaveLength(1);
+});
+
+
+test('source whiteboard: two duplicated documents retain independent full selections across reload', async ({ page }) => {
+  test.setTimeout(180000); const f = await fixture(page); await enter(page, f.message);
+  await panel(page).getByLabel('白板教学目标').fill('甲页保留全部条件与反例。');
+  const firstSlot = await page.evaluate(() => sessionStorage.getItem('studyagent.topic-whiteboard.document-slot'));
+  const inherited = await page.evaluate(() => Object.fromEntries(Object.entries(sessionStorage))), other = await page.context().newPage();
+  await other.addInitScript(values => { if (!sessionStorage.getItem('source-copy-test-initialized')) { for (const [key, value] of Object.entries(values)) sessionStorage.setItem(key, value); sessionStorage.setItem('source-copy-test-initialized', 'yes'); } }, inherited);
+  try {
+    await other.goto(f.href); await expect(other.getByLabel('想一起看看什么', { exact: true })).toBeEnabled(); await enter(other, f.message);
+    await expect(panel(other).getByLabel('白板教学目标')).toHaveValue('甲页保留全部条件与反例。');
+    const otherSlot = await other.evaluate(() => sessionStorage.getItem('studyagent.topic-whiteboard.document-slot')); expect(otherSlot).not.toBe(firstSlot);
+    await panel(other).getByLabel('白板教学目标').fill('乙页独立核查，原甲页不覆盖。');
+    await panel(page).getByLabel('白板教学目标').fill('甲页更新后的完整原稿。');
+    expect((await localCache(other, f.key)).form.objective).toBe('乙页独立核查，原甲页不覆盖。');
+    await page.reload(); await enter(page, f.message); await expect(panel(page).getByLabel('白板教学目标')).toHaveValue('甲页更新后的完整原稿。');
+    await other.reload(); await enter(other, f.message); await expect(panel(other).getByLabel('白板教学目标')).toHaveValue('乙页独立核查，原甲页不覆盖。');
+    await panel(page).locator('.assistant-whiteboard-local-copies>summary').click(); await panel(page).getByRole('button', { name: '读取最新本机草稿', exact: true }).click();
+    await expect(panel(page).locator('.assistant-whiteboard-local-copies')).toContainText('乙页独立核查，原甲页不覆盖。');
+    await page.screenshot({ path: evidence + '/independent-document-copies.png' }); expect((await call(f.actor, f.base)).items).toHaveLength(0);
+  } finally { await other.close(); }
+});
+
+test('source whiteboard: multiple unfinished drafts keep an original pending creation when switching explicitly', async ({ page }) => {
+  test.setTimeout(150000); const f = await fixture(page); await enter(page, f.message); const dialog = panel(page);
+  await dialog.getByLabel('白板教学目标').fill('原请求的完整教学目标。');
+  await page.route('**/api/ai/assistant/sessions/*/artifacts/whiteboards', async route => route.request().method() === 'POST' ? route.abort('failed') : route.continue());
+  await dialog.getByRole('button', { name: '核对完整来源', exact: true }).click(); await expect(dialog.getByRole('button', { name: '生成教学草稿', exact: true })).toBeEnabled(); await dialog.getByRole('button', { name: '生成教学草稿', exact: true }).click(); await expect(dialog.getByRole('alert')).toBeVisible();
+  const original = await localCache(page, f.key); expect(original.pending).toBeTruthy();
+  await dialog.locator('.assistant-whiteboard-local-copies>summary').click(); await dialog.getByRole('button', { name: '另起一份白板草稿', exact: true }).click();
+  await dialog.getByLabel('白板教学目标').fill('第二份尚未完成的目标。');
+  const copies = dialog.locator('.assistant-whiteboard-local-copies'); await copies.getByRole('button', { name: /原请求的完整教学目标/ }).click();
+  await expect(dialog.getByLabel('白板教学目标')).toHaveValue('原请求的完整教学目标。'); expect((await localCache(page, f.key)).pending).toEqual(original.pending);
+  await expect(dialog.getByRole('button', { name: '用原请求重试', exact: true })).toHaveCount(0); expect((await call(f.actor, f.base)).items).toHaveLength(0);
+  await page.unroute('**/api/ai/assistant/sessions/*/artifacts/whiteboards'); await dialog.getByRole('button', { name: '核对原请求', exact: true }).click(); await dialog.getByRole('button', { name: '用原请求重试', exact: true }).click();
+  await expect(dialog.getByRole('link', { name: '打开教学草稿 →', exact: true })).toBeVisible();
+  await copies.getByRole('button', { name: /第二份尚未完成的目标/ }).click(); await expect(dialog.getByLabel('白板教学目标')).toHaveValue('第二份尚未完成的目标。'); expect((await call(f.actor, f.base)).items).toHaveLength(1);
+});
+
+test('source whiteboard: a valid legacy source cache is restored without changing its original bytes', async ({ page }) => {
+  test.setTimeout(120000); const f = await fixture(page);
+  const legacy = { version: 1, ownerId: f.actor.user.id, sessionId: f.session.id, form: { selection: { messageIds: [f.message.id], includeLinkedQuestions: true }, objective: '旧版完整目标与确认分别保留。', modelId: 'deepseek-v4-flash', acknowledgeHistoricalSource: true }, pending: null, archived: [], draftId: null }, raw = JSON.stringify(legacy);
+  await page.evaluate(({ key, raw }) => localStorage.setItem(key, raw), { key: f.key, raw }); await enter(page, f.message);
+  await expect(panel(page).getByLabel('白板教学目标')).toHaveValue(legacy.form.objective); await expect(panel(page).getByLabel('我已核对原教学版本，允许使用旧来源')).toBeChecked();
+  await panel(page).getByLabel('白板教学目标').fill('只修改本页独立副本。'); expect(await page.evaluate(key => localStorage.getItem(key), f.key)).toBe(raw);
+  await page.reload(); await enter(page, f.message); await expect(panel(page).getByLabel('白板教学目标')).toHaveValue('只修改本页独立副本。'); expect(await page.evaluate(key => localStorage.getItem(key), f.key)).toBe(raw);
+});
+
+test('source whiteboard: unavailable storage blocks unsaved switching and creation until the complete original command is downloaded', async ({ page }) => {
+  test.setTimeout(150000); const f = await fixture(page); await enter(page, f.message); const dialog = panel(page);
+  await page.evaluate(() => { const original = Storage.prototype.setItem; Storage.prototype.setItem = function(key, value) { if (key.startsWith('studyagent.assistant.whiteboards.v1.')) throw new DOMException('Owned QA full storage', 'QuotaExceededError'); return original.call(this, key, value); }; });
+  await dialog.getByLabel('白板教学目标').fill('存储失败也必须完整保留的目标。'); await dialog.locator('.assistant-whiteboard-local-copies>summary').click(); await dialog.getByRole('button', { name: '另起一份白板草稿', exact: true }).click(); await expect(dialog.getByLabel('白板教学目标')).toHaveValue('存储失败也必须完整保留的目标。');
+  let posts = 0; page.on('request', r => { if (r.method() === 'POST' && new URL(r.url()).pathname.endsWith('/artifacts/whiteboards')) posts++; });
+  await dialog.getByRole('button', { name: '核对完整来源', exact: true }).click(); await expect(dialog.getByRole('button', { name: '生成教学草稿', exact: true })).toBeEnabled(); await dialog.getByRole('button', { name: '生成教学草稿', exact: true }).click();
+  await expect(dialog).toContainText('完整原请求尚未写入本机'); expect(posts).toBe(0);
+  await dialog.getByRole('button', { name: '核对原请求', exact: true }).click(); const download = page.waitForEvent('download'); await dialog.getByRole('button', { name: '下载完整本机草稿', exact: true }).click();
+  const file = await download, copy = JSON.parse(await readFile((await file.path())!, 'utf8')); expect(copy.pending.requestKey).toBeTruthy(); expect(copy.form.objective).toBe('存储失败也必须完整保留的目标。');
+  await dialog.getByRole('button', { name: '用原请求重试', exact: true }).click(); await expect(dialog.getByRole('link', { name: '打开教学草稿 →', exact: true })).toBeVisible(); expect(posts).toBe(1);
+  const saved = (await call(f.actor, f.base)).items; expect(saved).toHaveLength(1); const receipt = await call(f.actor, f.base + '/requests/' + encodeURIComponent(copy.pending.requestKey)); expect(receipt.id).toBe(saved[0].id); expect(receipt.receipt.key).toBe(copy.pending.requestKey);
+});
+
+test('source whiteboard: the complete over-budget source stays visible and reducing the selection requires a new preflight', async ({ page }) => {
+  test.setTimeout(150000); const f = await fixture(page), seeded = await call(f.actor, '/qa/assistant/seed-history', { sessionId: f.session.id, count: 6, marker: '完整预算末尾_MARKER', longSource: true });
+  await page.reload(); await enter(page, f.message); const dialog = panel(page);
+  for (const id of seeded.ids) await dialog.locator('.assistant-notes-message').filter({ has: page.locator('input') }).filter({ hasText: '匿名历史第' + seeded.ids.indexOf(id) + '条' }).getByRole('checkbox').check();
+  await dialog.getByRole('button', { name: '核对完整来源', exact: true }).click(); await expect(dialog.locator('.tw-source-context')).toContainText('完整预算末尾_MARKER'); await expect(dialog.getByRole('button', { name: '生成教学草稿', exact: true })).toBeDisabled();
+  const before = await localCache(page, f.key); expect(before.form.selection.messageIds).toHaveLength(7); await dialog.locator('.tw-source-original>summary').click(); await expect(dialog.locator('.tw-source-original section')).toHaveCount(7);
+  for (let index = 0; index < seeded.ids.length; index++) await dialog.locator('.assistant-notes-message').filter({ hasText: '匿名历史第' + index + '条' }).getByRole('checkbox').uncheck();
+  await expect(dialog.locator('.tw-source-context')).toHaveCount(0); await expect(dialog.getByRole('button', { name: '生成教学草稿', exact: true })).toBeDisabled(); await dialog.getByRole('button', { name: '核对完整来源', exact: true }).click(); await expect(dialog.getByRole('button', { name: '生成教学草稿', exact: true })).toBeEnabled(); expect((await call(f.actor, f.base)).items).toHaveLength(0);
+});
+
+test('source whiteboard: closing during a late original preflight cannot populate the reopened selection', async ({ page }) => {
+  test.setTimeout(150000); const f = await fixture(page); let release!: () => void, entered!: () => void;
+  const held = new Promise<void>(resolve => { release = resolve; }), ready = new Promise<void>(resolve => { entered = resolve; });
+  await page.route('**/api/ai/assistant/sessions/*/artifacts/whiteboards/preflight', async route => { const response = await route.fetch(); entered(); await held; try { await route.fulfill({ response }); } catch { /* Closed panel aborted its private response. */ } });
+  try {
+    await enter(page, f.message); await panel(page).getByRole('button', { name: '核对完整来源', exact: true }).click(); await ready; await page.keyboard.press('Escape'); await expect(panel(page)).toHaveCount(0); await enter(page, f.message); await panel(page).getByLabel('白板教学目标').fill('重新打开后自己的新目标。'); release();
+    await page.unroute('**/api/ai/assistant/sessions/*/artifacts/whiteboards/preflight'); await expect(panel(page).locator('.tw-source-context')).toHaveCount(0); await expect(panel(page).getByRole('button', { name: '生成教学草稿', exact: true })).toBeDisabled();
+    await panel(page).getByRole('button', { name: '核对完整来源', exact: true }).click(); await expect(panel(page).getByRole('button', { name: '生成教学草稿', exact: true })).toBeEnabled(); expect((await call(f.actor, f.base)).items).toHaveLength(0);
+  } finally { release?.(); }
 });
