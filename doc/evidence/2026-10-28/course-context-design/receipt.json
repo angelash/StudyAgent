@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "phase": "design-only-not-implemented",
+  "baseline": "411aa3911a223055b023518a27e6889357fcfe46",
+  "currentProductionBuildId": "Fr2r2Kk2ddHCxQhccI7rC",
+  "lectures": 15,
+  "lessons": 60,
+  "projectedTeachingCharacters": {
+    "minimum": 8703,
+    "maximum": 10185
+  },
+  "newModelCalls": 0,
+  "formalRecordsWritten": 0,
+  "scope": "Read-only initial teaching-field budget census and reviewed implementation design. Does not implement142 or prove complete assistant JSON fits18000. Actual prior141 frozen source/compiled bytes retained.",
+  "files": {
+    "data/qa/142-adult-teaching-budget-preliminary.json": {
+      "sha256": "a8883898f491ac7730f71859009b69913acf9902df34233f66b81170520da2b0",
+      "gzipSha256": "eedeaf586cf9a532a4f602974dc5ee3b50ee9ddcd210d446805e1e8b6fb72fa6",
+      "bytes": 2201
+    },
+    "apps/api/src/modules/learning/classroom-curriculum.ts": {
+      "sha256": "2b5a13b8dabee036270ff668ba75540a621a493e53d4caf5555aa97c81a3aeef",
+      "gzipSha256": "46e189b01eeb412b47c2d0e17d443b11c1813d54e3a5cf8e077a8826937f5052",
+      "bytes": 46925
+    },
+    "apps/api/dist/apps/api/src/modules/learning/classroom-curriculum.js": {
+      "sha256": "b5d8bb677c95951aed790ce67b4e90a9f32f3b891b4827b6e8e7fd500a5a967d",
+      "gzipSha256": "7896eb261be84596e2bd93884481e5e535d61e951a22aadee99bfe5b063d888e",
+      "bytes": 48874
+    }
+  }
+}
