@@ -1,0 +1,41 @@
+{
+  "observedAt": "2026-10-29",
+  "source": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0/sessions/whiteboard/ed43f6c4-fb26-4603-8645-8e2599424343",
+  "authenticated": true,
+  "observed": [
+    "Retained course keeps concept notes, a3-column comparison table, a Venn diagram and an anonymous classification question with a request for reasoning. Board text is condensed while conversation text explains it.",
+    "Session settings expose6 named voice options,6 speed positions, Handwriting/Standard,background dots and tour replay. Settings were read without changes.",
+    "Replay opens with a loading state,then19 positions. Automatic playback was observed at3/19 and5/19. Pause exposesPlay;Next advances5/19 to6/19 and replaces the current complete sentence.",
+    "Closing replay restores the retained course. View larger opens the same Venn figure over a dark full-page overlay withClose andDownload. Close is separate from the embedded figure download."
+  ],
+  "actions": [
+    "Read retained course and settings",
+    "Open recording,pause,advance one position and close",
+    "Open original figure enlargement"
+  ],
+  "publication": "Only the cropped board and enlarged conceptual figure are archived; unrelated account/conversation data is excluded.",
+  "limits": [
+    "No new messages,answers,uploads,downloads or code execution.",
+    "No original audio waveform or listening validation; replay sentence changes do not prove audio synchronization.",
+    "No source/CSS retrieval from this observation; no100percent pixel,DPR or complete-course coverage claim.",
+    "This reference receipt is separate from local implementation acceptance."
+  ],
+  "files": {
+    "concept-table-board-crop.png": {
+      "bytes": 184267,
+      "sha256": "40eec5c9193ecf02d2434655edb13babeec41a86f84725e70a51b3582db42b10",
+      "size": [
+        1120,
+        795
+      ]
+    },
+    "figure-enlarged.png": {
+      "bytes": 88780,
+      "sha256": "5572b32a78bbc7bdd4f592cb6964855dae738d7bb7062dc6a6fd6752c3a0da2c",
+      "size": [
+        1600,
+        1000
+      ]
+    }
+  }
+}
