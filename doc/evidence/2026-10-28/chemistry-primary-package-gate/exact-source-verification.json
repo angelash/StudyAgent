@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "sourceRevision": "7fc9adc82400c14992ae8e9014d4ab6a87d95c25",
+  "scope": "Actual source-only shared candidate after complete466 browser termination; schema21, no B1 note business or schema22 compiled here.",
+  "primary": 258,
+  "chemistry": {
+    "points": 28,
+    "definitionSha256Before": "f3eddfd0cf0c976ca334bc7b0c08994d0547a5024e2573cf23032f01bb0a07c6",
+    "interpretation": "Preserved separately; not part of the original primary foundation seed-enrichment gate.",
+    "definitionSha256After": "f3eddfd0cf0c976ca334bc7b0c08994d0547a5024e2573cf23032f01bb0a07c6"
+  },
+  "migration": {
+    "upgraded": 252,
+    "customDefinitionPreserved": true,
+    "newerVersionPreserved": true,
+    "draftPreserved": true,
+    "originalAndEnrichedRevisions": true,
+    "releasedDefinitionsPreserved": [
+      {
+        "id": "foundation:math:divisiondigits",
+        "version": 2
+      },
+      {
+        "id": "core:math:mixedorder",
+        "version": 2
+      },
+      {
+        "id": "core:math:average",
+        "version": 2
+      }
+    ]
+  },
+  "packagePersistence": {
+    "fileSha256": "cae80566e8c7bf0e6f8eff3921e62e17422a44aeaec2a646b523c8e4b844cb5e",
+    "applied": 2,
+    "receiptSurvivesRestart": true,
+    "tokenSurvivesRestart": true,
+    "retryDoesNotIncrementVersions": true,
+    "seedDoesNotIncrementAgain": true,
+    "concurrentSameKeyStatuses": [
+      201,
+      409
+    ]
+  },
+  "files": {
+    "data/qa/chemistry-v2-curriculum-packages-fixed-exact.json": {
+      "bytes": 8840,
+      "sha256": "a98fc89c8b53171c7d7c56d303a7cc544217d02ac9bb0b1114ab4934f67e8d02",
+      "gzipSha256": "45d9dac4eb92f48b5d9b3d4751668342b081ecc3ba436b37c264531d5dc70583"
+    },
+    "data/qa/chemistry-v2-curriculum-packages-fixed-exact.log": {
+      "bytes": 98,
+      "sha256": "1c421459825da6d6e17af0a9aba7560c34a00b73dc9dcbeb1068a56e0a5c838e",
+      "gzipSha256": "9544953233aed0df928eb3936c1f8d2c84f0edf7766262fad8a54c1ebdd4452c"
+    }
+  }
+}

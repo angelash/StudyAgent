@@ -116,9 +116,9 @@ jobs:
 
   browser:
     runs-on: ubuntu-24.04
-    # Includes complete source-course and adult-unit journeys in addition to
-    # the existing full suite, fresh browser dependencies and production build.
-    timeout-minutes: 45
+    # The466 original journeys alone take about42 minutes on a fresh runner.
+    # Leave time for dependency preparation, production build and evidence upload.
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
