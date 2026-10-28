@@ -301,3 +301,8 @@ API源码未改；397个生产API/contracts/config运行JS与5cb3b0be/1790完整
 当前包含已发布笔记、C2/C3及多稿保护的候选完整API首次受管运行1790通过/0失败/74环境跳过；2627冻结输入逐SHA保持，测试和校验均退出0。不是把原5cb3b0be的1790继承到新代码；这是新的全量实际执行，原报告/日志/输入清单/运行器及终态见[完整API原件](../evidence/2026-10-29/assistant-whiteboard-ui-complete-api-first/receipt.json)。此前PG114/2、SQLite23/23及最新18浏览器分别留证，范围重叠不相加。
 
 当前501浏览器完整回归仍在运行，源码/编译继续冻结；147 D1已转到独立新工作区，不能把其新增预检包含在本1790结论。精确来源CI、schema23主目录实际构建/可回退交付及D后续仍待。正式服务保持笔记schema22，整体目标active。
+
+
+## 29. 正式父分支CI终态
+
+d456a546 / 40758625872的application、postgres与browser三组均终态success，元数据与精确head匹配，见[父分支收据](../evidence/2026-10-29/assistant-whiteboard-parent-main-ci-first/receipt.json)。这只确认当前正式schema22父分支CI，不是本来源CUI/schema23或新D1的CI，不从任务状态推断未下载的具体用例数。当前来源501浏览器仍运行，完整API1790原件独立；下一次push前仍须即时刷新全部旧run终态，不取消CI。
