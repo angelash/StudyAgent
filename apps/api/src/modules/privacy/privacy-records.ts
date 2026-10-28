@@ -55,6 +55,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   add(result, store, 'assistantSessions', row => row.studentId === studentId || learnerIds.has(row.ownerUserId));
   const assistants = ids(result, 'assistantSessions'); add(result, store, 'assistantMessages', row => assistants.has(row.sessionId));
   add(result, store, 'assistantTurns', row => assistants.has(row.sessionId));
+  add(result, store, 'assistantArtifactDrafts', row => row.studentId === studentId || assistants.has(row.sessionId));
   add(result, store, 'aiInsights', row => row.studentId === studentId || assistants.has(row.sourceId) || assessments.has(row.sourceId) || missions.has(row.sourceId));
   const allIds = new Set(Object.values(result).flat().map(recordId).filter(Boolean));
   add(result, store, 'events', row => hasReference(row.payload, allIds));
@@ -95,6 +96,7 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'studioSourceMaterials', row => row.ownerUserId === actorId && !row.studentId);
   const sessions = ids(result, 'assistantSessions'); add(result, store, 'assistantMessages', row => sessions.has(row.sessionId));
   add(result, store, 'assistantTurns', row => sessions.has(row.sessionId));
+  add(result, store, 'assistantArtifactDrafts', row => row.ownerUserId === actorId || sessions.has(row.sessionId));
   add(result, store, 'guidanceModelSuggestions', row => row.ownerUserId === actorId);
   add(result, store, 'teachingToolRuns', row => row.ownerUserId === actorId);
   add(result, store, 'aiInsights', row => sessions.has(row.sourceId));
@@ -160,6 +162,8 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if (name === 'paperPracticeCommands') result[name] = records.filter(row => allowedPaperPractice.has(row.sessionId) && paperOwners.has(row.ownerUserId));
     else if (name === 'assistantSessions') result[name] = records.filter(row => allowedAssistants.has(row.id));
     else if (name === 'assistantMessages') result[name] = records.filter(row => allowedAssistants.has(row.sessionId));
+    else if (name === 'assistantArtifactDrafts') result[name] = records.filter(row => allowedAssistants.has(row.sessionId))
+      .map(({ ownerUserId: _owner, sessionId: _session, studentId: _student, requestKey: _key, requestHash: _hash, commands: _commands, ...row }) => row);
     else if (name === 'assistantTurns') result[name] = records.filter(row => allowedAssistants.has(row.sessionId))
       .map(({prepared:_prepared,authorization:_auth,inputHash:_hash,commandHash:_command,taskId:_task,...row})=>row);
     else if (name === 'teachingToolRuns') result[name] = records.filter(row => row.ownerUserId === actorId)

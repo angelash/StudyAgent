@@ -29,7 +29,7 @@ describe.skipIf(!connection)('native PostgreSQL original whiteboard questions an
     const { schema, url } = await scoped(); await legacy(url);
     for (let reopen = 0; reopen < 2; reopen++) { const db = new DomainDatabase(url); await db.open(); try { expect((await db.read()).state).toEqual(original()); } finally { await db.close(); } }
     const raw = new Pool({ connectionString: url }); try {
-      expect(Number((await raw.query('SELECT MAX(version) AS version FROM schema_migrations')).rows[0].version)).toBe(21);
+      expect(Number((await raw.query('SELECT MAX(version) AS version FROM schema_migrations')).rows[0].version)).toBe(22);
       expect((await raw.query('SELECT indexname FROM pg_indexes WHERE schemaname=$1 AND indexname=$2', [schema, 'whiteboard_question_request'])).rowCount).toBe(1);
     } finally { await raw.end(); }
   });

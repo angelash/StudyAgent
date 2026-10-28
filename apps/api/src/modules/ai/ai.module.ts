@@ -17,11 +17,13 @@ import { AssistantTurnController } from './assistant-turn.controller';
 import { assistantTurnPort, assistantWorkerPort } from './assistant-turn-record';
 import { AssistantArtifactController } from './assistant-artifact.controller';
 import { AssistantArtifactService } from './assistant-artifact.service';
+import { AssistantNoteService } from './assistant-note.service';
+import { AssistantNoteController } from './assistant-note.controller';
 
 @Module({
   imports: [StudentsModule],
-  controllers: [AiController,AssistantTurnController,TeachingToolController,AssistantArtifactController],
-  providers: [AssistantArtifactService,TeachingToolCompatibilityService,TeachingToolService,TeachingToolWorkerService,{provide:teachingToolWorkerPort,useExisting:TeachingToolWorkerService},AiService, SpeechService, CodexPdfStructureService, XiaojiuModelsService, XiaojiuChatService,AssistantTurnService,AssistantTurnWorkerService,
+  controllers: [AiController,AssistantTurnController,TeachingToolController,AssistantArtifactController,AssistantNoteController],
+  providers: [AssistantNoteService,AssistantArtifactService,TeachingToolCompatibilityService,TeachingToolService,TeachingToolWorkerService,{provide:teachingToolWorkerPort,useExisting:TeachingToolWorkerService},AiService, SpeechService, CodexPdfStructureService, XiaojiuModelsService, XiaojiuChatService,AssistantTurnService,AssistantTurnWorkerService,
     {provide:assistantTurnPort,useExisting:AssistantTurnService},{provide:assistantWorkerPort,useExisting:AssistantTurnWorkerService}],
   exports: [AiService, SpeechService, CodexPdfStructureService, XiaojiuModelsService, XiaojiuChatService],
 })

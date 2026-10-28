@@ -67,7 +67,7 @@ for (const engine of ['sqlite', 'postgres'] as const) describe.skipIf(engine ===
       const db = new DomainDatabase(url); await db.open();
       try { expect((await db.read()).state).toEqual(initial()); } finally { await db.close(); }
     }
-    await raw(url, async sql => { expect(Number((await sql('SELECT MAX(version) AS version FROM schema_migrations'))[0].version)).toBe(21); });
+    await raw(url, async sql => { expect(Number((await sql('SELECT MAX(version) AS version FROM schema_migrations'))[0].version)).toBe(22); });
   });
   it('rolls back duplicate legacy owner/request keys atomically, retaining both records and schema19', async () => {
     const url = await scope(); await legacy(url);

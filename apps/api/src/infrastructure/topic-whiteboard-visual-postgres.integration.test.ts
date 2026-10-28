@@ -21,7 +21,7 @@ describe.skipIf(!connection)('native PostgreSQL topic figure identities', () => 
     let db = new DomainDatabase(url); await db.open();
     try { await db.commit(await db.read(), initial); await db.close(); db = new DomainDatabase(url); await db.open();
       expect((await db.read()).state).toEqual(initial);
-      expect((await pool.query('SELECT MAX(version) AS version FROM "' + schema + '".schema_migrations')).rows[0].version).toBe(21);
+      expect((await pool.query('SELECT MAX(version) AS version FROM "' + schema + '".schema_migrations')).rows[0].version).toBe(22);
       const state = await db.read(); await expect(db.commit(state, { studioTopicWhiteboardVisuals: [...state.state.studioTopicWhiteboardVisuals,
         { id: 'changed', ownerUserId: 'owner', requestKey: 'key', operation: 'edit' }] })).rejects.toThrow('duplicate');
       expect((await db.read()).state).toEqual(initial);

@@ -12,6 +12,7 @@ import type { QuestionVisualRecord } from '../modules/learning/whiteboard-questi
 import type { AssistantTurnRecord } from '../modules/ai/assistant-turn-record';
 import type { AssistantLectureSnapshot } from '../modules/ai/assistant-lecture-context';
 import type { AssistantCourseSnapshot } from '../modules/ai/assistant-course-context';
+import type { AssistantNoteRecord } from '../modules/ai/assistant-note-record';
 import type { AssistantSourceReference } from '@study-agent/contracts';
 import type { GuidanceModelSuggestionRecord } from '../modules/diagnostics/guidance-model-record';
 import { Injectable, OnModuleInit, OnApplicationBootstrap, OnModuleDestroy } from '@nestjs/common';
@@ -406,6 +407,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   missionAnswers: MissionAnswerRecord[] = [];
   assistantSessions: Array<AssistantSession & { ownerUserId: string; scopeKey?: string; lectureSnapshot?: AssistantLectureSnapshot; courseSnapshot?: AssistantCourseSnapshot }> = [];
   assistantMessages: AssistantMessage[] = [];
+  assistantArtifactDrafts: AssistantNoteRecord[] = [];
   assistantTurns: AssistantTurnRecord[] = [];
   guidanceModelSuggestions: GuidanceModelSuggestionRecord[] = [];
   teachingToolRuns: TeachingToolRunRecord[] = [];
@@ -515,6 +517,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.missionAnswers = [];
     this.assistantSessions = [];
     this.assistantMessages = [];
+    this.assistantArtifactDrafts = [];
     this.assistantTurns = [];
     this.guidanceModelSuggestions = [];
     this.teachingToolRuns = [];
