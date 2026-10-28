@@ -1,0 +1,137 @@
+{
+  "passed": true,
+  "phase": "B2-initial8-owned-browser-journeys",
+  "sourceParent": "59c7ba58b5f819c537fa6daf95ac3b8725561c80",
+  "scope": "New note panel inside the existing assistant, preserving the original composer, original source and model commands. Real owned HTTP and fixture answer; no live model.",
+  "buildId": "QgE3fwYCdzUK5uUwfRpxh",
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-28T14:15:24.492Z",
+      "duration": 49439.721000000005,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "originalAttempts": 8,
+    "retries": 0
+  },
+  "controls": {
+    "checked": 3076,
+    "changed": []
+  },
+  "verified": [
+    "390/768/880/1440 original selection/linking/preflight, separate verbatim editor, explicit reviewed confirmation and full JSON/Markdown real downloads.",
+    "Actual response lost after committed create, refresh and original-receipt GET recover one note without another create.",
+    "Offline local editor survives close/reopen and Escape restores focus; invalid other-account cache stays hidden and exact cached bytes are not overwritten.",
+    "Original message outside70 newer messages is located with an authorized GET, preserves the composer and does not post another model command or create a conversation.",
+    "Raw HTML/code in an edited note is plain text and does not execute."
+  ],
+  "historicalFailure": "First UI type check used title instead of courseTitle in the actual shared course summary; original compiler log retained.",
+  "limits": [
+    "This is8 bounded browser journeys, not complete B2/product acceptance. Account-switch/late replies, additional original-command failure branches and final full gates remain.",
+    "No teacher, pixel/DPR/audio, full textbook, new live model or actual production note delivery claim."
+  ],
+  "files": {
+    "data/qa/note-b2-browser-first.json": {
+      "bytes": 11807,
+      "sha256": "5fbf62d531084e05eaab7e0ad0e4cfa51bef124577b3af72b103d34eae24749a",
+      "gzipSha256": "286374a17359ea5483d36c7068fc879b4d06f8cfc8a3abef793bea4c66d385ca"
+    },
+    "data/qa/note-b2-browser-first.log": {
+      "bytes": 1980,
+      "sha256": "e95592590ce4b0be821e85712c96b4f624e62114a0472a3b13595d3d135d3f0e",
+      "gzipSha256": "7b016eb9eee46f1962d0d0b9b7ad49d43ee90a7a796fd86e624b15468365af11"
+    },
+    "data/qa/note-b2-browser-first-inputs.json": {
+      "bytes": 591012,
+      "sha256": "d9d21b8b0887a4d429afb112daf7384cc9f0fe03d1cede555efd8644f06ba0e5",
+      "gzipSha256": "32e597b5b8d246ed156e91f17b437a94e49c2a38b3aa2b40301266ce06a79102"
+    },
+    "data/qa/note-b2-browser-first-inputs-verification.log": {
+      "bytes": 34,
+      "sha256": "f102457b4c83e90f4f39f0767c5c0b736193b1a0b768f10d736898c41cb4553f",
+      "gzipSha256": "b9f109d4ee687ac8cc23ee82b845c46bb22d986d71c7175328e0b157d0c6a389"
+    },
+    "data/qa/note-b2-web-types-first.log": {
+      "bytes": 564,
+      "sha256": "e906960e4461d06f8d4d489ebbf88c03302f266fb357983fa4c9d7ab20a8cdfb",
+      "gzipSha256": "717bc0aa013e799c617c2f787f33461c39512ed8b5032eea851a3a81392d5e37"
+    },
+    "data/qa/note-b2-web-types-second.log": {
+      "bytes": 68,
+      "sha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc",
+      "gzipSha256": "280feefa43a1a2d6b5ebb62618a6d36d932de3e009b707d14976e55a78dd4326"
+    },
+    "data/qa/note-b2-web-types-third.log": {
+      "bytes": 68,
+      "sha256": "9a8a4388539f99c3abb1d59a37c20b5c26f6849db820024732c9e0fa6f840cdc",
+      "gzipSha256": "280feefa43a1a2d6b5ebb62618a6d36d932de3e009b707d14976e55a78dd4326"
+    },
+    "data/qa/note-b2-web-build-first.log": {
+      "bytes": 1561,
+      "sha256": "5ed2e97720583d4c9a0984fb8b5b28ad234d269b4a66cfffa7159698e205806c",
+      "gzipSha256": "889fd345f60cdd15fd53a2c558fc3517291df7b4155b5693849a91b3861fda93"
+    },
+    "data/qa/note-b2-web-build-second.log": {
+      "bytes": 1559,
+      "sha256": "ea15dc818c4f0200497b2249c605c0482c409937e92ccdfff9aa316b34f3125e",
+      "gzipSha256": "6587129a31825aa6364152fa077bdf1eabe86d8673c32392c5846bcb084e055d"
+    },
+    "data/qa/experience-web/.next/BUILD_ID": {
+      "bytes": 21,
+      "sha256": "9c08e72a610f9a35ae217960df64d94794222937861b7936de733029e2e0c4d4",
+      "gzipSha256": "ca1d33b71b147717e90395ffb72970d98a115e5831099ede238b7a4fc2441815"
+    },
+    "apps/web/components/assistant-notes.tsx": {
+      "bytes": 26418,
+      "sha256": "1e75d8c2428df556131334c8d814499445bd2842fc554b54b4e7d54a8df15a8c",
+      "gzipSha256": "c9d434aebb9381d0c03a8f00b1819c5ed800d49cce17612d0dec1b97c4b8945f"
+    },
+    "apps/web/components/assistant-notes.css": {
+      "bytes": 4803,
+      "sha256": "1de3206c5543cc28f69a83db952597dde841350e85cc98d6b8921a14d5dbab21",
+      "gzipSha256": "bf84d74f7ea083e5886410836b78f4acc925b59bc639d18124f767d60d340802"
+    },
+    "apps/web/components/assistant-widget.tsx": {
+      "bytes": 18270,
+      "sha256": "b889fe5113e1eca6b2b8d5ec39c2a16abf1a9676ec0a787d8282e43b26db89c0",
+      "gzipSha256": "423d40e51fef2a63fe9296bcf510c0ca8276a16bff43c7ac3610d02a33093f2b"
+    },
+    "apps/web/lib/assistant-conversation.tsx": {
+      "bytes": 21409,
+      "sha256": "e9cf5e06d007741dd4675f8dc6569085690c18e0c964978c7c6755a61a9e4501",
+      "gzipSha256": "4d9dffa248c5131c816657aec1d9f2eed2a06bfc5fbc3dacbc318290942679a1"
+    },
+    "tests/e2e/assistant-notes.spec.ts": {
+      "bytes": 12623,
+      "sha256": "a6ad9e088b1c5e75a5853d3a080a862323735b6e5ed2441cb2293ef8e3cf4c76",
+      "gzipSha256": "0ba759ead504a59d78bcf0a227d056f2919a9f2326a6642629a2c6532c41c848"
+    },
+    "data/qa/browser-evidence/note-b2-browser-first-614654b9d0/assistant-notes/confirmed-1440.png": {
+      "bytes": 114921,
+      "sha256": "629218b183c399a50305b9ec4bf4c5d14d77f5df0e88d69fd23fe6ff5d1530ec",
+      "gzipSha256": "e9e1de0e4d84ca52543331f6e97331bd96266a83c2eab87acdd05d28b5dba0a5"
+    },
+    "data/qa/browser-evidence/note-b2-browser-first-614654b9d0/assistant-notes/confirmed-390.png": {
+      "bytes": 69078,
+      "sha256": "2ed1d112d120797e003352c7d1219a66a8cf502303253ee706aaa481a20a00c2",
+      "gzipSha256": "7dc10a69f0e89f283800ca8ea814adbb1d7169a5f9925a1d08b7bf0cbb445051"
+    },
+    "data/qa/browser-evidence/note-b2-browser-first-614654b9d0/assistant-notes/confirmed-768.png": {
+      "bytes": 75097,
+      "sha256": "0ecf5c022b7bd70ce77c848b28f1c1f98f63caab6b214d3e49678e5d3803c02f",
+      "gzipSha256": "9095b92bce097a09cb702c0597248089859e45bdf6d9b2a4552b95e896570fd1"
+    },
+    "data/qa/browser-evidence/note-b2-browser-first-614654b9d0/assistant-notes/confirmed-880.png": {
+      "bytes": 75825,
+      "sha256": "b2452e0a3720173223f382ac0386d29536fa8d0c92709331717d3f0cf78bd39d",
+      "gzipSha256": "ec3d7f7ffe0acb21881aef516222f8fd98084ed19e26db192883d5bace845534"
+    },
+    "data/qa/browser-evidence/note-b2-browser-first-614654b9d0/assistant-notes/original-request-recovered.png": {
+      "bytes": 96056,
+      "sha256": "25424d986af136ac05830c8a777ee439161eb6833372688544e213a0c6d406e7",
+      "gzipSha256": "776d54a128a8219fe0b80ef634be962e88d62b510eabd89f4d12c99ada9f13eb"
+    }
+  }
+}
