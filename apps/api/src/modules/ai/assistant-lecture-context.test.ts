@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { classroomCourse } from '../learning/classroom-curriculum';
+import { classroomCourse, classroomLesson } from '../learning/classroom-curriculum';
 import { assistantLectureReference, assistantLectureSummary, freezeAssistantLecture, readAssistantLecture } from './assistant-lecture-context';
 
 describe('frozen adult lecture context', () => {
@@ -29,7 +29,10 @@ describe('frozen adult lecture context', () => {
     lecture.lessons[0].objective += ' A new teaching objective.';
     expect(readAssistantLecture(snapshot, reference, lecture.id, false, course)).toEqual({ snapshot, current: false });
     expect(() => readAssistantLecture(snapshot, reference, lecture.id, true, course)).toThrow('讲座内容已更新');
-    expect(assistantLectureReference(freezeAssistantLecture(course.id, lecture.id, course))).not.toBe(reference);
+    expect(() => freezeAssistantLecture(course.id, lecture.id, course)).toThrow('目录与教学正文不一致');
+    expect(assistantLectureReference(freezeAssistantLecture(course.id, lecture.id, course, { mode: 'complete' }, id => {
+      const lesson = classroomLesson(id)!; lesson.objective = lecture.lessons.find(item => item.id === id)!.objective; return lesson;
+    }))).not.toBe(reference);
   });
   it('does not reconstruct a missing or corrupt original from the current curriculum', () => {
     const { course, lecture } = source(); const snapshot = freezeAssistantLecture(course.id, lecture.id, course), reference = assistantLectureReference(snapshot);

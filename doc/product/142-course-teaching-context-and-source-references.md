@@ -107,3 +107,15 @@ courseSnapshot是既有assistantSessions中的可选安全JSON，不新增集合
 首轮17项中14过/3失败：概览继承parts至少1条导致两个用例失败，已删细选条目阻止读取有效旧快照导致一例失败。原源/测试/JSON/日志在修复前保留。修复组合82通过；补齐目标本身超限、阶段变化及引用串绑后84通过（19新增投影、5旧讲座、60输出策略），API/测试类型检查与独立API真实编译通过。主目录374编译及本工作区四份contracts/config编译共378控制保持原SHA，没有重建共享依赖、调用模型或正式计量写入。见[原始失败](../evidence/2026-10-28/course-teaching-content-first/receipt.json)与[A层验证](../evidence/2026-10-28/course-teaching-content-verified/receipt.json)。
 
 实际新编译遍历15讲/60微课，全部完整教学快照在18000内，含来源/身份/选择元数据后的最小11394、最大13167字符；这不等于加上其余assistant context后的完整输入已验证。现有v1讲座和正式服务141保持；B层HTTP授权、v1/v2衔接、上下文/worker双栅栏、可信出处发布与隐私恢复，C层前端与D层完整门禁/运行尚待。本批不能记作142可用入口或上线。
+
+## 15. B1成人正文接线、旧v1及双通道指令
+
+独立API代码的新讲座会话已默认冻结classroom-lecture-v2；原有课程/单元/微课概要与完整安全teaching快照共同冻结，外层与内层指纹/身份/目标范围均核对。读取原classroom-lecture-v1仍按其严格旧schema和原摘要原样返回，始终是旧版只读；不会重建或补进当前正文，新发送必须明确打开当前版本。原scope/hash/worker绑定随实际教学内容改变，纯讲稿变更即使课程版本和目标相同，也阻止排队回答发布。当前源正文不一致时可保留有效旧历史，但不能创建不完整的新教学快照。
+
+新增共享`assistant-teaching-instructions.ts`，Xiaojiu与OpenAI兼容通道都按成人正文/成人旧目标/独立学习/学生或家长证据教练选择同一教学指令。普通概念直接讲解、匿名例子/反例/新情境和课程观点/通常学科知识边界保持；成人不再被旧OpenAI小学提示词覆盖。响应此时仍是原reply/evidenceIds，课程sourceKeys/可信出处链仍待B2，不能声称已显示课程来源。
+
+真实编译的AiService.assistantSnapshot遍历15讲/60微课，完整contextJson12266～14050字符，全部在18000内且无题目/答案键；它是匿名结构调用而非认证/供应商测试，实际HTTP另证。最终SQLite/策略/投影/调用组合124全过，PG组合18全过（16HTTP/1PG原生/1SQLite对照），范围重叠。测试包括持久旧v1历史可读而新发/重开409、其他账号404、正文独立变化时worker不调用模型且不发布、原模型/回执/冷重开/原生删除账本恢复。类型检查与独立API编译通过，378控制未变，没有真实模型调用、正式计量写入或生产142升级。
+
+旧行为4失败/2保护、旧双通道指令3失败/3保护原件均保留。首轮组合29/1源目录与例子fixture不一致已保留并提供一致resolver；两次新增测试的类型标注错误也保留。PG首次因默认本工作区不存在凭据文件而在测试前退出，不计测试失败/跳过，第二次使用既有15439隔离QA配置运行，没有复制凭据。见[旧正文/协议失败](../evidence/2026-10-28/lecture-teaching-migration-before/receipt.json)、[首轮fixture](../evidence/2026-10-28/lecture-teaching-migration-first/receipt.json)、[旧双通道失败](../evidence/2026-10-28/teaching-provider-context-before/receipt.json)及[B1完整原件](../evidence/2026-10-28/lecture-teaching-b1-verified/receipt.json)。
+
+正式运行仍141/Fr2r2Kk2ddHCxQhccI7rC。接续B2小学/资料课受鉴权上下文、条件长引用、评测中保护/当前权限/发布与worker栅栏、可信来源键与隐私恢复；C入口/选择/草稿/历史/学生返回，D真实默认样本/完整两端门禁/精确CI/可回退交付保持。B1不能记作完整142或全产品交付。

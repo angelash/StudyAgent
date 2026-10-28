@@ -1,0 +1,178 @@
+{
+  "passed": true,
+  "phase": "lecture-body-B1-only-not-delivered",
+  "baseRevision": "695a335912805c5222344b543cddc5ac639bd12a",
+  "focusedPassed": 124,
+  "httpPassed": 16,
+  "postgresCombinationPassed": 18,
+  "postgresHttp": 16,
+  "postgresNative": 1,
+  "sqliteNativeControl": 1,
+  "scopesOverlap": true,
+  "typecheckPassed": true,
+  "ownApiBuildPassed": true,
+  "protectedCompiledUnchanged": 378,
+  "compiledActualContextCensus": {
+    "lectures": 15,
+    "lessons": 60,
+    "minimumCharacters": 12266,
+    "maximumCharacters": 14050
+  },
+  "originalMissingContentFailures": 4,
+  "originalProviderInstructionFailures": 3,
+  "fixtureErrorsRetained": [
+    "Goal metadata fixture needed a matching teaching resolver.",
+    "CJS spy callback argument typing and an untyped lesson-map callback."
+  ],
+  "postgresFirstAttempt": "Runner setup failed before tests because default integration credential path was absent; second used existing owned15439 QA config, without copying credentials.",
+  "newModelCalls": 0,
+  "productionStill141": true,
+  "scope": "B1 adult actual teaching with readable legacy v1 and shared instructions across both provider callers. Real anonymous SQLite/PG HTTP and native recovery, no actual provider starts. Primary/material course authorization, course source-key publication, selections/UI and complete142 gates remain pending.",
+  "files": {
+    "data/qa/lecture-teaching-b1-build-first.log": {
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "gzipSha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "bytes": 66
+    },
+    "data/qa/lecture-teaching-b1-build-second.log": {
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "gzipSha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c",
+      "bytes": 66
+    },
+    "data/qa/lecture-teaching-b1-typecheck-first.log": {
+      "sha256": "f3ecbb4fbecc0c608c281de9ac8d5c992379eeed64e1655bc2f9db5126f2a632",
+      "gzipSha256": "9383a06697b49d6b2f3ffb0046c0d5d662d02de57dbbf3f61425865f0f8b006b",
+      "bytes": 484
+    },
+    "data/qa/lecture-teaching-b1-typecheck-second.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "bytes": 0
+    },
+    "data/qa/lecture-teaching-b1-typecheck-third.log": {
+      "sha256": "cf93d2b6d9f46e2852958e19bdc946d625a2a09f5258757f6a88b99fe0ae36d0",
+      "gzipSha256": "48f1e76783cec92ad14e70f83831a8d2f7046283f8487e47cd747cf900c35267",
+      "bytes": 124
+    },
+    "data/qa/lecture-teaching-b1-typecheck-final.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "bytes": 0
+    },
+    "data/qa/lecture-teaching-b1-focused-first.json": {
+      "sha256": "e568602ec77ba55f9c715cf34e4e56341be9f279059c31184295166d7c1d82fd",
+      "gzipSha256": "4af34921c8b34d4b3e587b687e7fc35114b3800d46c6edeb5968eaf7defe2935",
+      "bytes": 46826
+    },
+    "data/qa/lecture-teaching-b1-focused-first.log": {
+      "sha256": "060873369fb8efd241dc74f8d10b67d371874f0237ca6bf58404cedb2745a8b2",
+      "gzipSha256": "1c65d50d5b316d58dd0c63954aa8292552a108ab7c064423fc8bc3e9a80fb233",
+      "bytes": 1823
+    },
+    "data/qa/lecture-teaching-b1-focused-second.json": {
+      "sha256": "cb9d295c5e3a149efab83d5e391900f6cd66d932d488094e539bb2cd48c304db",
+      "gzipSha256": "f155da9476816598cbd4da36c73e376f648897b5162ecbf533e1f7433fc96ad9",
+      "bytes": 47639
+    },
+    "data/qa/lecture-teaching-b1-focused-second.log": {
+      "sha256": "b29940bd12e54c3a29222ab74c71e714ff55356fa09ec87424e72e231961634f",
+      "gzipSha256": "6d1c0466806283f8bbfa401b36b8ad4c07f8aac292d4e537a3b8242551f99fe7",
+      "bytes": 1824
+    },
+    "data/qa/lecture-teaching-b1-focused-final.json": {
+      "sha256": "932c96ceb70483ccd4d1121933db879dfc15e7e214e67dd48db57f7a2563cd04",
+      "gzipSha256": "67d8ac87fdb8195d2ff2fc2b6ce45e8d8b573a4ba6db3e85453220d0fdc7eb8f",
+      "bytes": 47645
+    },
+    "data/qa/lecture-teaching-b1-focused-final.log": {
+      "sha256": "c5f1562d3032b0a96dadb52a569888609742cff5022c075204643044b7f3aa95",
+      "gzipSha256": "172ec8e9047d86812dc31240e3b139e21d14522ab757abf64b99a7a732315023",
+      "bytes": 1824
+    },
+    "data/qa/lecture-teaching-b1-postgres-first.log": {
+      "sha256": "2fce1869a7b23cfd3a792e426f41fd7f612542e19008a0827fc0281c5ffabd70",
+      "gzipSha256": "bfadf432e98c91cd1ebc653738fd513b622ea86fb210deb3cb0d94843fe248e8",
+      "bytes": 1061
+    },
+    "data/qa/lecture-teaching-b1-postgres-second.json": {
+      "sha256": "0698baf295fdc69896c6fed732ca9a640aa4505d4caf8debb96b39bd58c3f891",
+      "gzipSha256": "a8c96ce4e7121083230552f11e6fca36cb37f9e23a7703c8c72bd16b0daabf53",
+      "bytes": 8869
+    },
+    "data/qa/lecture-teaching-b1-postgres-second.log": {
+      "sha256": "6249ee8b703e21078c7aaf8c343c35c32fcfe079b3ad98834a4426e3d2c75a5f",
+      "gzipSha256": "75b0078738476cf20e467103f3bd656ddb73e84ab364aeabced13b9731fbd698",
+      "bytes": 1649
+    },
+    "data/qa/lecture-teaching-b1-compiled-context.json": {
+      "sha256": "eae70e7a1d41cb3cf8ea31ed97da1eaf68d466f2c1b7a67fdaa824562a2d596b",
+      "gzipSha256": "87d6dfc3cfa95372bd496defcf283e3569e27ac871f9656648501249e9593b49",
+      "bytes": 3576
+    },
+    "data/qa/course-teaching-content-controls.json": {
+      "sha256": "67d7a0075e0f2071a51913b326431da73ad75915e323af6467ee9b4521e5b00a",
+      "gzipSha256": "2de2b11d4dbf3557e0c717b180446c781e241a03f24dc3d3c474244abf31fdfd",
+      "bytes": 56217
+    },
+    "apps/api/src/modules/ai/assistant-teaching-content.ts": {
+      "sha256": "d2167fda53d0b9d4139ea3d75f5a6186581f5b0cd4115040072dfce869cb0f93",
+      "gzipSha256": "d211e578f28f2b0b2c92f2265cc478e36f56e4dfa173c5c41111c38c955c96d9",
+      "bytes": 18793
+    },
+    "apps/api/src/modules/ai/assistant-teaching-instructions.ts": {
+      "sha256": "06d8223cd07514e4d42a7bfaa456637fb9a28b0b95f3391af183f746ac2b519e",
+      "gzipSha256": "afa5973fd1210e5c709f0d305d02705d6354836ce2db343cd932ea1bcad35432",
+      "bytes": 2494
+    },
+    "apps/api/src/modules/ai/assistant-lecture-context.ts": {
+      "sha256": "da38137077cb4c572d79adb3a9397fffabaa35538b6b69897ba4fd05c25e6822",
+      "gzipSha256": "606c48f3ae5d13f7ea91cd84797f406a92ac14c14ed0ef3ab76709c075638462",
+      "bytes": 6419
+    },
+    "apps/api/src/modules/ai/ai.service.ts": {
+      "sha256": "7981c837bdf8079d21764b24c45b95752896ec0bc77eae9020ee84d42157238f",
+      "gzipSha256": "5546694d6abdf2929da6d2b6ea5fc812c4412d26a4dc1fe9a75a94621306bfb2",
+      "bytes": 48756
+    },
+    "apps/api/src/modules/ai/assistant-lecture-context.test.ts": {
+      "sha256": "2833900c6a9fab6c7aaefdd3c5ed80c8d612b672933a8e847ef418fbc156ca34",
+      "gzipSha256": "1c2d465d09e18735c1236b9036087a5595049177a58fcce5c264c78054d19651",
+      "bytes": 4542
+    },
+    "apps/api/src/modules/ai/assistant-lecture-content-migration.test.ts": {
+      "sha256": "0c99f14b443473b71935e8fecb213cb74fa029b16ee37e106ddaf6b96b5cdd62",
+      "gzipSha256": "29b0367656545d863e23a2de06d06052c5fa69d9f619dccefdd8dc16a1e03a4b",
+      "bytes": 2959
+    },
+    "apps/api/src/modules/ai/assistant-teaching-provider-context.test.ts": {
+      "sha256": "25eea870183d80111144eb55b82fcbb22d46ffededdbaf9445f3836c009afbc6",
+      "gzipSha256": "69ac69dea156526e64a0debc492b76209cd6924af35dcf8fbeb9458bbc440665",
+      "bytes": 2951
+    },
+    "apps/api/src/modules/ai/assistant-lecture.integration.test.ts": {
+      "sha256": "bab1467f3e5b7ce68da7ba267792347ff97a7d0dc79ca3aed7b65699a8115418",
+      "gzipSha256": "c8a9af854250e77108ef27a56cfdeed3e7a57129c2487cde0a09059ea3364b62",
+      "bytes": 29301
+    },
+    "apps/api/dist/apps/api/src/modules/ai/assistant-teaching-content.js": {
+      "sha256": "a5e5102e182b4d200e51d10f8dae511fbfb1c95bdc5d6f64cc428a032fc53f8e",
+      "gzipSha256": "08cd9d8bbc3763677b7359254af3a3ab6c928a1c925fcad8e7ec623d2199bffd",
+      "bytes": 19551
+    },
+    "apps/api/dist/apps/api/src/modules/ai/assistant-teaching-instructions.js": {
+      "sha256": "fcdff24f272efdf5f353badea48b151a9ee792eacc0eff30494622ad12c6e28f",
+      "gzipSha256": "6fb2380587cdb2320a21f6e6211a68df7add5e1100604f0b7e7678b73fdcce69",
+      "bytes": 2568
+    },
+    "apps/api/dist/apps/api/src/modules/ai/assistant-lecture-context.js": {
+      "sha256": "1bc2f531054b8459d4acfd01c252a7e47c708338059f17c59ef7c38efbd1c3c4",
+      "gzipSha256": "0d736394df8ff3d779484c84e4df3ccfa2aab15af0f9ac529cee1247f855b03d",
+      "bytes": 6816
+    },
+    "apps/api/dist/apps/api/src/modules/ai/ai.service.js": {
+      "sha256": "eca4fc261759d74f17d799738a3d5d5fb9be97cdf2bf6981a9a47beb360df9ce",
+      "gzipSha256": "e9cf3eb93fd758e9757d3339ab65db656b6c6c20458f1636b2c88b72d2114d11",
+      "bytes": 52432
+    }
+  }
+}

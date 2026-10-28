@@ -1,0 +1,33 @@
+{
+  "passed": false,
+  "passedTests": 2,
+  "failedTests": 4,
+  "scope": "Actual old goal-only lecture behavior before142 B1. Four missing teaching/protocol/version transitions and two existing protection controls retained. No live provider or production mutation.",
+  "files": {
+    "data/qa/lecture-teaching-migration-before.json": {
+      "sha256": "ae79157674aa7d52e25aece59a8b15c10879f98d6d07bab1a8f34c4d1eb09ff1",
+      "gzipSha256": "d6d8aca6ec830ca1c8d966d583f8670e8d9024248380988698f4683f9be1a792",
+      "bytes": 7415
+    },
+    "data/qa/lecture-teaching-migration-before.log": {
+      "sha256": "3e62ef706328dd6337b00ace65a5637e2357db86b4c5170179a1c585edc1dd8e",
+      "gzipSha256": "1b279bd75427fc927c134f43af01added357db93099f9026457105107553561d",
+      "bytes": 6472
+    },
+    "apps/api/src/modules/ai/assistant-lecture-context.ts": {
+      "sha256": "b20f0ca21ff3d3c74334f37f0face448d396d565295f82bcaa8c2bcb4545a292",
+      "gzipSha256": "54be995936e81ccd9177b7c10af3aa5291525e7c73b0692e1013e90d9316bf74",
+      "bytes": 4395
+    },
+    "apps/api/src/modules/ai/assistant-lecture-content-migration.test.ts": {
+      "sha256": "0c99f14b443473b71935e8fecb213cb74fa029b16ee37e106ddaf6b96b5cdd62",
+      "gzipSha256": "29b0367656545d863e23a2de06d06052c5fa69d9f619dccefdd8dc16a1e03a4b",
+      "bytes": 2959
+    },
+    "apps/api/dist/apps/api/src/modules/ai/assistant-lecture-context.js": {
+      "sha256": "743deffcca30aa1219e83c7e9f56df1f4bdf02d3616fb41b3353b79cb6cbb2e9",
+      "gzipSha256": "612f5434d63dba0c83f59d4fe8a1866fee833a8907fe3924ec9a0fdc5ea6ab84",
+      "bytes": 4707
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "passed": false,
+  "passedTests": 29,
+  "failedTests": 1,
+  "scope": "Original goal-edit fixture changed catalog metadata without changing actual lesson objective. New projection correctly rejects the inconsistent catalog. Preserve and update the fixture to provide a coherent teaching resolver, retaining original version/change assertions.",
+  "files": {
+    "data/qa/lecture-teaching-migration-first.json": {
+      "sha256": "4faaa7df7cf5b5073b5f9af05a276728bb0d34bd5f931cf3e58866023ecf34b8",
+      "gzipSha256": "85f53ccd2d132d17673bbad2870bef9ffee3e33df3cbcef3ae596058a08c89bc",
+      "bytes": 14692
+    },
+    "data/qa/lecture-teaching-migration-first.log": {
+      "sha256": "792caf7f4e99b277a801158f91cccc2390455aef7ae3a9500ff5c1618e3bfff6",
+      "gzipSha256": "d7877d8bf94ae1d9673e85d5fcbe36190c913316f7e12edfaac75172a53cd879",
+      "bytes": 2578
+    },
+    "apps/api/src/modules/ai/assistant-lecture-context.ts": {
+      "sha256": "da38137077cb4c572d79adb3a9397fffabaa35538b6b69897ba4fd05c25e6822",
+      "gzipSha256": "606c48f3ae5d13f7ea91cd84797f406a92ac14c14ed0ef3ab76709c075638462",
+      "bytes": 6419
+    },
+    "apps/api/src/modules/ai/assistant-lecture-context.test.ts": {
+      "sha256": "240007746daec6cea6aee2e8978dd5fadd99f0991b63335e5e67ced7f173963c",
+      "gzipSha256": "c62afd29b7c969a6ae2be8a61a86de0313000db238e4881218350235b03a1862",
+      "bytes": 4236
+    }
+  }
+}

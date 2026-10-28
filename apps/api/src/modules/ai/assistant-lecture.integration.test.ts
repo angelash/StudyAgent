@@ -8,6 +8,7 @@ import { join, resolve, dirname, basename } from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
 import { Pool } from 'pg';
 import type { XiaojiuChatService } from './xiaojiu-chat.service';
+import type { ClassroomCourse } from '@study-agent/contracts';
 
 describe('adult lecture assistant HTTP and frozen task boundaries', () => {
   const directory = mkdtempSync(join(tmpdir(), 'study-lecture-assistant-'));
@@ -16,7 +17,7 @@ describe('adult lecture assistant HTTP and frozen task boundaries', () => {
   let app: any, store: any, ai: any, worker: any, parent: any, other: any, pg: Pool | undefined, schema: string | undefined;
   let chat: XiaojiuChatService;
   const curriculum = require('../../../dist/apps/api/src/modules/learning/classroom-curriculum.js');
-  const course = curriculum.classroomCourse(), lecture = course.units[0].lectures[0];
+  const course: ClassroomCourse = curriculum.classroomCourse(), lecture = course.units[0].lectures[0];
   const descriptorPath = '/ai/assistant/lecture-context?' + new URLSearchParams({ courseId: course.id, lectureId: lecture.id });
   const base = (id: string) => '/ai/assistant/sessions/' + id;
   async function call(method: 'get' | 'post', path: string, body?: unknown, actor = parent, status = method === 'post' ? 201 : 200) {
@@ -112,6 +113,10 @@ describe('adult lecture assistant HTTP and frozen task boundaries', () => {
     const rendered = reply.mock.calls[0][0], context = JSON.parse(rendered.context);
     expect(rendered.system).toContain('成人'); expect(rendered.system).not.toContain('小学');
     expect(context.lecture.lessons).toHaveLength(4);
+    expect(context.lecture.protocol).toBe('classroom-lecture-v2');
+    expect(context.lecture.teaching.parts.length).toBeGreaterThan(20);
+    expect(context.lecture.teaching.parts[0].blocks[0].text).toBe(curriculum.classroomLesson(lecture.lessons[0].id).steps[0].narration);
+    expect(rendered.context.length).toBeLessThanOrEqual(18_000);
     expect(context).toMatchObject({ scope: null, report: null, plan: null, memory: null, currentQuestion: null, evidenceIds: [] });
     expect(JSON.stringify(context)).not.toMatch(/answerKeys|gradingConfig|studentId|PRIVATE_/);
     const page = await call('get', base(session.id) + '/messages/page'); expect(page.messages).toHaveLength(2);
@@ -126,7 +131,12 @@ describe('adult lecture assistant HTTP and frozen task boundaries', () => {
     await worker.runNext(); expect((await call('get', base(session.id) + '/turns/' + initial.id)).status).toBe('completed');
     reply.mockClear(); const turn = await call('post', base(session.id) + '/turns', await input(session.id));
     const changed = structuredClone(course); changed.units[0].lectures[0].lessons[0].objective += ' Updated teaching boundary.';
+    const originalLesson = curriculum.classroomLesson;
     vi.spyOn(curriculum, 'classroomCourse').mockReturnValue(changed);
+    vi.spyOn(curriculum, 'classroomLesson').mockImplementation((...args: unknown[]) => {
+      const id = args[0]; if (typeof id !== 'string') throw Error('Expected a synthetic lesson ID');
+      const row = originalLesson(id); if (row?.id === lecture.lessons[0].id) row.objective = changed.units[0].lectures[0].lessons[0].objective; return row;
+    });
     const context = await call('get', base(session.id) + '/context'); expect(context.lecture.current).toBe(false);
     await worker.runNext(); expect(reply).not.toHaveBeenCalled();
     const failed = await call('get', base(session.id) + '/turns/' + turn.id);
@@ -135,6 +145,50 @@ describe('adult lecture assistant HTTP and frozen task boundaries', () => {
     await call('post', base(session.id) + '/turns', { ...await input(session.id), requestKey: randomUUID() }, parent, 409);
     expect((await call('get', base(session.id) + '/messages/page')).messages.length).toBeGreaterThanOrEqual(2);
     const next = await open(); expect(next.session.id).not.toBe(session.id);
+  });
+
+  it('keeps persisted v1 goals and messages readable while requiring a new scope for teaching', async () => {
+    const { session: current } = await open(), unit = course.units[0];
+    const legacy = await store.transaction(() => {
+      const safe = { protocol: 'classroom-lecture-v1', courseId: course.id, courseVersion: course.version, courseTitle: course.title,
+        unitId: unit.id, unitTitle: unit.title, unitPosition: 1, lectureId: lecture.id, lectureTitle: lecture.title,
+        description: lecture.description, lecturePosition: 1, lessons: lecture.lessons.map(item => ({ id: item.id, title: item.title, objective: item.objective })) };
+      const snapshot = { ...safe, fingerprint: require('../../../dist/apps/api/src/modules/ai/assistant-turn-record.js').assistantDigest(safe) };
+      const row = { ...structuredClone(store.find('assistantSessions', { id: current.id })), id: store.nextId('assistant_session'),
+        contextRefId: course.id + '@' + snapshot.fingerprint, lectureSnapshot: snapshot };
+      row.scopeKey = createHash('sha256').update(JSON.stringify([row.ownerUserId, row.userRole, row.studentId, row.subject,
+        row.pageContext, row.contextRefType, row.contextRefId, row.contextItemId])).digest('hex');
+      store.append('assistantSessions', row);
+      store.append('assistantMessages', { id: store.nextId('assistant_message'), sessionId: row.id, sender: 'user',
+        content: '原目标快照中的旧问题。', sequence: 1, createdAt: new Date().toISOString() });
+      return row;
+    });
+    const original = JSON.stringify(legacy.lectureSnapshot), context = await call('get', base(legacy.id) + '/context');
+    expect(context.lecture.current).toBe(false);
+    expect((await call('get', base(legacy.id) + '/messages/page')).messages[0].content).toBe('原目标快照中的旧问题。');
+    expect(await call('get', descriptorPath + '&fingerprint=' + legacy.lectureSnapshot.fingerprint)).toMatchObject({ sessionId: legacy.id, current: false });
+    await call('post', base(legacy.id) + '/turns', await input(legacy.id), parent, 409);
+    await call('post', '/ai/assistant/sessions', { ...command({ referenceId: legacy.contextRefId, lectureId: lecture.id }) }, parent, 409);
+    await call('get', base(legacy.id) + '/context', undefined, other, 404);
+    expect(await store.requestContext(() => JSON.stringify(store.find('assistantSessions', { id: legacy.id }).lectureSnapshot))).toBe(original);
+    expect((await open()).session.id).toBe(current.id);
+  });
+
+  it('fences a queued answer when only narrated teaching changes, without a goal or version change', async () => {
+    const { session, descriptor } = await open(), reply = model();
+    const count = await store.requestContext(() => store.select('assistantMessages', { sessionId: session.id }).length);
+    const turn = await call('post', base(session.id) + '/turns', await input(session.id)), originalLesson = curriculum.classroomLesson;
+    vi.spyOn(curriculum, 'classroomLesson').mockImplementation((...args: unknown[]) => {
+      const id = args[0]; if (typeof id !== 'string') throw Error('Expected a synthetic lesson ID');
+      const row = originalLesson(id); if (row?.id === lecture.lessons[0].id) row.steps[0].narration += ' 这是新的教学正文。'; return row;
+    });
+    expect((await call('get', base(session.id) + '/context')).lecture.current).toBe(false);
+    await worker.runNext();
+    expect(reply).not.toHaveBeenCalled();
+    expect(await call('get', base(session.id) + '/turns/' + turn.id)).toMatchObject({ status: 'failed', task: { errorCode: 'assistant_context_changed' } });
+    expect(await store.requestContext(() => store.select('assistantMessages', { sessionId: session.id }).length)).toBe(count);
+    const next = await open(); expect(next.descriptor.fingerprint).not.toBe(descriptor.fingerprint); expect(next.session.id).not.toBe(session.id);
+    expect(next.descriptor.courseVersion).toBe(descriptor.courseVersion);
   });
 
   it('reopens the same frozen session and exact receipt after a cold restart', async () => {

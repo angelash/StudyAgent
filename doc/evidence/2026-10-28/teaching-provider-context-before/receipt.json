@@ -1,0 +1,43 @@
+{
+  "passed": false,
+  "passedTests": 3,
+  "failedTests": 3,
+  "knownFailures": [
+    "Xiaojiu lecture instruction still speaks only of goals after body was added.",
+    "OpenAI compatibility caller gives both adult modes elementary-school instructions."
+  ],
+  "typecheckFixtureErrorRetained": "New untyped CJS curriculum spy callback used a narrower string parameter than Vitest unknown argument signature.",
+  "scope": "Actual compiled B1 caller baseline before sharing teaching instructions. Anonymous provider mocks, no real CLI starts or production change.",
+  "files": {
+    "data/qa/teaching-provider-context-before.json": {
+      "sha256": "f2e914791dbf26bec9d96f8bc21e75eaf73e45923ff849999f824f7370d84fa5",
+      "gzipSha256": "548da584151d19004a2f1ef853d02d1272f6bb99f803deb54c7ca2bd40502e7c",
+      "bytes": 4300
+    },
+    "data/qa/teaching-provider-context-before.log": {
+      "sha256": "541b4cfe664341004bcd172c9fb20dec85e1c8200cac044473944e0d9e8415c3",
+      "gzipSha256": "1bbe5d8ecb796b883a3434693c452f21cd244e51ecca885e7782268fe0cc0af1",
+      "bytes": 4202
+    },
+    "data/qa/lecture-teaching-b1-typecheck-first.log": {
+      "sha256": "f3ecbb4fbecc0c608c281de9ac8d5c992379eeed64e1655bc2f9db5126f2a632",
+      "gzipSha256": "9383a06697b49d6b2f3ffb0046c0d5d662d02de57dbbf3f61425865f0f8b006b",
+      "bytes": 484
+    },
+    "apps/api/src/modules/ai/ai.service.ts": {
+      "sha256": "ad4b7829034074fe8094812bf39183a5ccb8d24824f12b3ecedc3b6fcf3eec50",
+      "gzipSha256": "e040e1327edd3c27861f68b1b2ae9d43ca6f53499a6e1022fa0eef64f8aaa659",
+      "bytes": 50112
+    },
+    "apps/api/dist/apps/api/src/modules/ai/ai.service.js": {
+      "sha256": "b18d8a2de35eb930d9bafa52eea73c27714bfd11e740afc2ef6a9a0b980930b3",
+      "gzipSha256": "8453dce9b0159de8df3c829c0753abbce3b63ecde7de50fe98b8f34a4810338e",
+      "bytes": 53770
+    },
+    "apps/api/src/modules/ai/assistant-teaching-provider-context.test.ts": {
+      "sha256": "25eea870183d80111144eb55b82fcbb22d46ffededdbaf9445f3836c009afbc6",
+      "gzipSha256": "69ac69dea156526e64a0debc492b76209cd6924af35dcf8fbeb9458bbc440665",
+      "bytes": 2951
+    }
+  }
+}

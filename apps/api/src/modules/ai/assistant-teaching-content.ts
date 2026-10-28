@@ -44,6 +44,7 @@ const snapshotSchema = catalogSchema.extend({ parts: z.array(partSchema).max(200
     totalTargets: z.number().int().positive(), includedTargets: z.number().int().positive(),
     complete: z.boolean() }).strict(), fingerprint: z.string().regex(/^[a-f0-9]{64}$/),
 }).strict();
+export const teachingContentSnapshotSchema = snapshotSchema;
 
 export type TeachingCatalog = z.infer<typeof catalogSchema>;
 export type TeachingContentSnapshot = z.infer<typeof snapshotSchema>;
