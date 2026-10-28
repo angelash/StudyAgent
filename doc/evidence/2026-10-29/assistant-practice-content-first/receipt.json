@@ -1,0 +1,374 @@
+{
+  "at": "2026-10-28T21:39:15.016987+00:00",
+  "passed": true,
+  "designBeforeImplementation": "2c8d003c24cd63763a714df40a2114b1b334a143",
+  "suiteResults": [
+    {
+      "file": "assistant-practice-content.test.ts",
+      "passed": 43,
+      "failed": 0
+    },
+    {
+      "file": "assistant-whiteboard-content.test.ts",
+      "passed": 17,
+      "failed": 0
+    }
+  ],
+  "finalRun": {
+    "at": "2026-10-28T21:36:36.711Z",
+    "passed": true,
+    "exitCode": 0,
+    "error": null,
+    "inputs": 14,
+    "compiled": 3,
+    "changed": [],
+    "changedCompiled": [],
+    "tests": {
+      "total": 60,
+      "passed": 60,
+      "failed": 0,
+      "pending": 0
+    },
+    "limits": [
+      "Pure protocol plus existing source-content compatibility only; no database, endpoint, persistence, actual model or learner evidence.",
+      "Prepared content is neither current authorization nor formally reviewed measurement; complete D2-D4 and product remain in progress."
+    ]
+  },
+  "finalInputCheck": {
+    "checked": 14,
+    "changed": []
+  },
+  "builds": {
+    "contracts": "passed",
+    "config": "passed",
+    "api": "second build passed; first build failed TS18048 and original source retained",
+    "allApiTypes": "passed"
+  },
+  "failuresRetained": [
+    "API first compile: TypeScript narrowing of never-returning arrow helper; changed to an explicitly declared never function. Original source and output retained.",
+    "Runner first preparation: expected individual contracts output instead of existing bundled index.js; zero tests. Original runner/source and preparation failure retained. Second preparation executed 60/60 with no retry."
+  ],
+  "limits": [
+    "Pure protocol plus existing source-content compatibility only; no database, endpoint, persistence, actual model or learner evidence.",
+    "Prepared content is neither current authorization nor formally reviewed measurement; complete D2-D4 and product remain in progress.",
+    "No new endpoint, database collection, schema24, practice assignment or production deployment.",
+    "No actual provider, teacher review, exact pixels or real learner outcomes. Complete goal remains active."
+  ],
+  "files": [
+    {
+      "source": "data/qa/practice-content-first/api-build-second.log",
+      "archive": "data/qa/practice-content-first/api-build-second.log.gz",
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "bytes": 66,
+      "archiveSha256": "8e3f09a8bcdbdfa64dc8ceb40b69b0086c64ca0f49dc908f09fe20c76e5a811c"
+    },
+    {
+      "source": "data/qa/practice-content-first/api-build.log",
+      "archive": "data/qa/practice-content-first/api-build.log.gz",
+      "sha256": "083f45f076a233a63c1b1b682d56a3f8ca06e773146d57a1772338e05c91d181",
+      "bytes": 658,
+      "archiveSha256": "9f8ac937468759c911b08d1c07e0363ad39da4858bc47d3d303b5f52a380c5a3"
+    },
+    {
+      "source": "data/qa/practice-content-first/api-types-first.log",
+      "archive": "data/qa/practice-content-first/api-types-first.log.gz",
+      "sha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "bytes": 68,
+      "archiveSha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec"
+    },
+    {
+      "source": "data/qa/practice-content-first/build-failure-source/apps/api/src/modules/learning/assistant-practice-content.test.ts",
+      "archive": "data/qa/practice-content-first/build-failure-source/apps/api/src/modules/learning/assistant-practice-content.test.ts.gz",
+      "sha256": "216591bc23862cfc24323dfef4543b9f4737034cd4fc78cb08f1c15ef34acea2",
+      "bytes": 21474,
+      "archiveSha256": "7f4b1d008a77616293491e271760abe965100b0ad03047d50c90d056692d1c30"
+    },
+    {
+      "source": "data/qa/practice-content-first/build-failure-source/apps/api/src/modules/learning/assistant-practice-content.ts",
+      "archive": "data/qa/practice-content-first/build-failure-source/apps/api/src/modules/learning/assistant-practice-content.ts.gz",
+      "sha256": "7511020bd021307c8d730efe9e975ed073280a3126f2b98466d964723240d856",
+      "bytes": 4835,
+      "archiveSha256": "c67c62133953f6b6c76094bc50b5f0b664a2fcb40653d57bfe8add8364c03540"
+    },
+    {
+      "source": "data/qa/practice-content-first/build-failure-source/apps/api/src/modules/learning/assistant-practice-source.ts",
+      "archive": "data/qa/practice-content-first/build-failure-source/apps/api/src/modules/learning/assistant-practice-source.ts.gz",
+      "sha256": "e0e651c042acd7864f8e2e6e71c6e8dcf0d1d6208c5e3a8315aca54e7ac50d0c",
+      "bytes": 7643,
+      "archiveSha256": "2f8882b1e4f0519dd3c86d0ccf176cb10b836b274b7cb510471e485c2e6dade7"
+    },
+    {
+      "source": "data/qa/practice-content-first/build-failure-source/packages/contracts/src/assistant-practice-content.ts",
+      "archive": "data/qa/practice-content-first/build-failure-source/packages/contracts/src/assistant-practice-content.ts.gz",
+      "sha256": "d1cf9c3710019abcee7fcb01931be67f291de38198d43c17629c5c99fa40d51b",
+      "bytes": 5302,
+      "archiveSha256": "5431fbaabc4c337e031deeadd8c031b433a4a6f9bed4b3462be756580f4b2e7c"
+    },
+    {
+      "source": "data/qa/practice-content-first/config-build.log",
+      "archive": "data/qa/practice-content-first/config-build.log.gz",
+      "sha256": "f36cc414aabcf7ec55d32ae2e2a6cf81f4acf64ce2b0336f03a754acec450b03",
+      "bytes": 478,
+      "archiveSha256": "aba6f191e41fb0efd095491b5620a31b32ae200b3bccf72e3520bbb32648dcab"
+    },
+    {
+      "source": "data/qa/practice-content-first/contracts-build.log",
+      "archive": "data/qa/practice-content-first/contracts-build.log.gz",
+      "sha256": "36ec5d375fefc3d3d9859a2dbd493910d6ccb73d4d9303262a105ae58fffad30",
+      "bytes": 486,
+      "archiveSha256": "a12206f4b2b87dcf2f97f24f6781a42df398dc3582dbc40104766ef1ee8763d4"
+    },
+    {
+      "source": "data/qa/practice-content-first/doc-links-first.log",
+      "archive": "data/qa/practice-content-first/doc-links-first.log.gz",
+      "sha256": "a580cd68082995eeb3d6f73635426d3b96ee71077f91a1e6ee16ec77f7aa55ce",
+      "bytes": 43,
+      "archiveSha256": "9ff498b904147c33b03570fec04dce0d0dad6ff55602da7151b1682fb5fb6aac"
+    },
+    {
+      "source": "data/qa/practice-content-first/test-second.log",
+      "archive": "data/qa/practice-content-first/test-second.log.gz",
+      "sha256": "8e464113edca73b44adfdb976758a31c7fa3a71b52839f008c5e1bbb12b1b468",
+      "bytes": 470,
+      "archiveSha256": "c926209fdcf6c0e2f141a7308e69b7269cf3c63a39b03d87145830ffd1a2fa1a"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/first/preparation-failure.json",
+      "archive": "data/qa/assistant-practice-content/first/preparation-failure.json.gz",
+      "sha256": "db57a077c1bef88c28c50f381ce5170477d880875ffc7f56d4b452564227aaa4",
+      "bytes": 254,
+      "archiveSha256": "2ae22fd9fed0fd9b0e69b85c559fe7a3119bd71150e9e45bb0d2af52f9b34062"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/first/source/apps/api/src/modules/learning/assistant-practice-content.test.ts",
+      "archive": "data/qa/assistant-practice-content/first/source/apps/api/src/modules/learning/assistant-practice-content.test.ts.gz",
+      "sha256": "216591bc23862cfc24323dfef4543b9f4737034cd4fc78cb08f1c15ef34acea2",
+      "bytes": 21474,
+      "archiveSha256": "7f4b1d008a77616293491e271760abe965100b0ad03047d50c90d056692d1c30"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/first/source/apps/api/src/modules/learning/assistant-practice-content.ts",
+      "archive": "data/qa/assistant-practice-content/first/source/apps/api/src/modules/learning/assistant-practice-content.ts.gz",
+      "sha256": "866a17f926faa1aa5ab50e495df4f4996dd24de09cc9e37d0b0341152d5bbcfe",
+      "bytes": 4848,
+      "archiveSha256": "c4da1769af248533c5a214d0fa94b1c1fa601a2c0a8d30d811f985678ce3b51c"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/first/source/apps/api/src/modules/learning/assistant-practice-source.ts",
+      "archive": "data/qa/assistant-practice-content/first/source/apps/api/src/modules/learning/assistant-practice-source.ts.gz",
+      "sha256": "6446d9ea8f5abfa18501b6ffe9ce9eeffcfa50348d66413f3c1be83f285f0568",
+      "bytes": 7639,
+      "archiveSha256": "a51e02eebfa1b115bdadf2c358cf60c11685b597c79942c8a29a20e9acf72523"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/first/source/apps/api/src/modules/learning/assistant-whiteboard-content.test.ts",
+      "archive": "data/qa/assistant-practice-content/first/source/apps/api/src/modules/learning/assistant-whiteboard-content.test.ts.gz",
+      "sha256": "07de8fbc35e0060e5fb2d79627d1dbeafca38b317611f433c9f04f92e79c91bb",
+      "bytes": 15685,
+      "archiveSha256": "2e5c2445c1fff5abd8877540a986c7e360f1c53c8735f27ca16c3dd789cebecc"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/first/source/apps/api/src/modules/learning/assistant-whiteboard-content.ts",
+      "archive": "data/qa/assistant-practice-content/first/source/apps/api/src/modules/learning/assistant-whiteboard-content.ts.gz",
+      "sha256": "fcd60e46605729460c943c84b62a148a3f8114e49ba9a1e9d02281344f3b1ca7",
+      "bytes": 4192,
+      "archiveSha256": "f40c6ab10021ed184d909457d987844dc3b261bb9967164ae6b9021feeb2f55b"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/first/source/apps/api/src/modules/learning/assistant-whiteboard-source.ts",
+      "archive": "data/qa/assistant-practice-content/first/source/apps/api/src/modules/learning/assistant-whiteboard-source.ts.gz",
+      "sha256": "f10e049e3d59cdc14a076a4f4b594fcc1c8520dd19543c8a619df3839c0a1991",
+      "bytes": 7461,
+      "archiveSha256": "4b5cad601f87b2371e073ad4d3bf3a9e4077d4686faaf43363d92b1606870745"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/first/source/apps/api/src/modules/learning/topic-whiteboard-digest.ts",
+      "archive": "data/qa/assistant-practice-content/first/source/apps/api/src/modules/learning/topic-whiteboard-digest.ts.gz",
+      "sha256": "addb802487b24c50ebb2a02b543e4384bc364eff6ef9de4012eda363214121f0",
+      "bytes": 667,
+      "archiveSha256": "95797f28e1186c9b0c1900e04e32cd784b0c41b400cdff1d4f5b8ca15ea9c60c"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/first/source/apps/api/vitest.config.ts",
+      "archive": "data/qa/assistant-practice-content/first/source/apps/api/vitest.config.ts.gz",
+      "sha256": "ee16715f15fcfa88d875d99c03e467a1131416cc23996bdadae267cef7cae373",
+      "bytes": 685,
+      "archiveSha256": "ae5cc210c7f0c6df0dfe76e33a537e21defba3eaacb5e2faaa4d61bfd5fb889d"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/first/source/packages/contracts/src/assistant-artifact.ts",
+      "archive": "data/qa/assistant-practice-content/first/source/packages/contracts/src/assistant-artifact.ts.gz",
+      "sha256": "695ee474a735cd7311fcf5f79569af5045fcc5b6221e3fb0dacdb32edaf8a337",
+      "bytes": 4182,
+      "archiveSha256": "dcdc933a74934cb617081c13b604e19f97f5dc348e3c8ee143cb03279c5af4e2"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/first/source/packages/contracts/src/assistant-practice-content.ts",
+      "archive": "data/qa/assistant-practice-content/first/source/packages/contracts/src/assistant-practice-content.ts.gz",
+      "sha256": "d1cf9c3710019abcee7fcb01931be67f291de38198d43c17629c5c99fa40d51b",
+      "bytes": 5302,
+      "archiveSha256": "5431fbaabc4c337e031deeadd8c031b433a4a6f9bed4b3462be756580f4b2e7c"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/first/source/packages/contracts/src/assistant-practice.ts",
+      "archive": "data/qa/assistant-practice-content/first/source/packages/contracts/src/assistant-practice.ts.gz",
+      "sha256": "262d96d2df29508cdac9bbc28fe851330b263753da900567954ac4cd476060b8",
+      "bytes": 2210,
+      "archiveSha256": "2ca1bf2fa82f422721f04cb3b3910cdf815e3ec9db7947b6e1d40331923790f5"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/first/source/packages/contracts/src/assistant-whiteboard.ts",
+      "archive": "data/qa/assistant-practice-content/first/source/packages/contracts/src/assistant-whiteboard.ts.gz",
+      "sha256": "83fc1fb1e6e0c6cb62e29ac2236c3298dc8d192e34e41c80f60356efe82ea553",
+      "bytes": 4227,
+      "archiveSha256": "3e6d08311f73875542786c625c852ef51cc8ff31d7c5c1bdfcd327bd8d80879e"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/first/source/packages/contracts/src/index.ts",
+      "archive": "data/qa/assistant-practice-content/first/source/packages/contracts/src/index.ts.gz",
+      "sha256": "0b9ce3fabdaa9562df0c9963689e7e8b56cebbe6c2a27ec1e8b94daef6e86868",
+      "bytes": 25951,
+      "archiveSha256": "d2c0c379c160c583745d92ab37c5a247fdc5ae6637f54ff588ad53d80d84c187"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/first/source/scripts/qa/run-assistant-practice-content.cjs",
+      "archive": "data/qa/assistant-practice-content/first/source/scripts/qa/run-assistant-practice-content.cjs.gz",
+      "sha256": "b0147793c378624c676fc5d3a8b8a87dadc857eb98bb4053d69e8f921720738d",
+      "bytes": 4433,
+      "archiveSha256": "d8056a669dcae9ad050f2caca59390201e8ae89e62b301cbff12b5f5edcae29d"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/inputs-before.json",
+      "archive": "data/qa/assistant-practice-content/second/inputs-before.json.gz",
+      "sha256": "aa1c0f564a160342c50e6391c9c5d7ba737acafc5d62290a1a5a80cc58649d03",
+      "bytes": 3027,
+      "archiveSha256": "0418a021c36856d0691c959620013509497f65deba46ccd8c895bdb9be2b2773"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/receipt.json",
+      "archive": "data/qa/assistant-practice-content/second/receipt.json.gz",
+      "sha256": "5f72feffa8e91d9c68b68675e22ecbc0e03926a57a4c5a59b05b937f92ad4eab",
+      "bytes": 550,
+      "archiveSha256": "8ec7711e68060e791b3244e5db25297c9ee8e37f63accf4bc8fc7861bc518d6e"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/source/apps/api/src/modules/learning/assistant-practice-content.test.ts",
+      "archive": "data/qa/assistant-practice-content/second/source/apps/api/src/modules/learning/assistant-practice-content.test.ts.gz",
+      "sha256": "216591bc23862cfc24323dfef4543b9f4737034cd4fc78cb08f1c15ef34acea2",
+      "bytes": 21474,
+      "archiveSha256": "7f4b1d008a77616293491e271760abe965100b0ad03047d50c90d056692d1c30"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/source/apps/api/src/modules/learning/assistant-practice-content.ts",
+      "archive": "data/qa/assistant-practice-content/second/source/apps/api/src/modules/learning/assistant-practice-content.ts.gz",
+      "sha256": "866a17f926faa1aa5ab50e495df4f4996dd24de09cc9e37d0b0341152d5bbcfe",
+      "bytes": 4848,
+      "archiveSha256": "c4da1769af248533c5a214d0fa94b1c1fa601a2c0a8d30d811f985678ce3b51c"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/source/apps/api/src/modules/learning/assistant-practice-source.ts",
+      "archive": "data/qa/assistant-practice-content/second/source/apps/api/src/modules/learning/assistant-practice-source.ts.gz",
+      "sha256": "6446d9ea8f5abfa18501b6ffe9ce9eeffcfa50348d66413f3c1be83f285f0568",
+      "bytes": 7639,
+      "archiveSha256": "a51e02eebfa1b115bdadf2c358cf60c11685b597c79942c8a29a20e9acf72523"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/source/apps/api/src/modules/learning/assistant-whiteboard-content.test.ts",
+      "archive": "data/qa/assistant-practice-content/second/source/apps/api/src/modules/learning/assistant-whiteboard-content.test.ts.gz",
+      "sha256": "07de8fbc35e0060e5fb2d79627d1dbeafca38b317611f433c9f04f92e79c91bb",
+      "bytes": 15685,
+      "archiveSha256": "2e5c2445c1fff5abd8877540a986c7e360f1c53c8735f27ca16c3dd789cebecc"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/source/apps/api/src/modules/learning/assistant-whiteboard-content.ts",
+      "archive": "data/qa/assistant-practice-content/second/source/apps/api/src/modules/learning/assistant-whiteboard-content.ts.gz",
+      "sha256": "fcd60e46605729460c943c84b62a148a3f8114e49ba9a1e9d02281344f3b1ca7",
+      "bytes": 4192,
+      "archiveSha256": "f40c6ab10021ed184d909457d987844dc3b261bb9967164ae6b9021feeb2f55b"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/source/apps/api/src/modules/learning/assistant-whiteboard-source.ts",
+      "archive": "data/qa/assistant-practice-content/second/source/apps/api/src/modules/learning/assistant-whiteboard-source.ts.gz",
+      "sha256": "f10e049e3d59cdc14a076a4f4b594fcc1c8520dd19543c8a619df3839c0a1991",
+      "bytes": 7461,
+      "archiveSha256": "4b5cad601f87b2371e073ad4d3bf3a9e4077d4686faaf43363d92b1606870745"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/source/apps/api/src/modules/learning/topic-whiteboard-digest.ts",
+      "archive": "data/qa/assistant-practice-content/second/source/apps/api/src/modules/learning/topic-whiteboard-digest.ts.gz",
+      "sha256": "addb802487b24c50ebb2a02b543e4384bc364eff6ef9de4012eda363214121f0",
+      "bytes": 667,
+      "archiveSha256": "95797f28e1186c9b0c1900e04e32cd784b0c41b400cdff1d4f5b8ca15ea9c60c"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/source/apps/api/vitest.config.ts",
+      "archive": "data/qa/assistant-practice-content/second/source/apps/api/vitest.config.ts.gz",
+      "sha256": "ee16715f15fcfa88d875d99c03e467a1131416cc23996bdadae267cef7cae373",
+      "bytes": 685,
+      "archiveSha256": "ae5cc210c7f0c6df0dfe76e33a537e21defba3eaacb5e2faaa4d61bfd5fb889d"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/source/packages/contracts/src/assistant-artifact.ts",
+      "archive": "data/qa/assistant-practice-content/second/source/packages/contracts/src/assistant-artifact.ts.gz",
+      "sha256": "695ee474a735cd7311fcf5f79569af5045fcc5b6221e3fb0dacdb32edaf8a337",
+      "bytes": 4182,
+      "archiveSha256": "dcdc933a74934cb617081c13b604e19f97f5dc348e3c8ee143cb03279c5af4e2"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/source/packages/contracts/src/assistant-practice-content.ts",
+      "archive": "data/qa/assistant-practice-content/second/source/packages/contracts/src/assistant-practice-content.ts.gz",
+      "sha256": "d1cf9c3710019abcee7fcb01931be67f291de38198d43c17629c5c99fa40d51b",
+      "bytes": 5302,
+      "archiveSha256": "5431fbaabc4c337e031deeadd8c031b433a4a6f9bed4b3462be756580f4b2e7c"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/source/packages/contracts/src/assistant-practice.ts",
+      "archive": "data/qa/assistant-practice-content/second/source/packages/contracts/src/assistant-practice.ts.gz",
+      "sha256": "262d96d2df29508cdac9bbc28fe851330b263753da900567954ac4cd476060b8",
+      "bytes": 2210,
+      "archiveSha256": "2ca1bf2fa82f422721f04cb3b3910cdf815e3ec9db7947b6e1d40331923790f5"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/source/packages/contracts/src/assistant-whiteboard.ts",
+      "archive": "data/qa/assistant-practice-content/second/source/packages/contracts/src/assistant-whiteboard.ts.gz",
+      "sha256": "83fc1fb1e6e0c6cb62e29ac2236c3298dc8d192e34e41c80f60356efe82ea553",
+      "bytes": 4227,
+      "archiveSha256": "3e6d08311f73875542786c625c852ef51cc8ff31d7c5c1bdfcd327bd8d80879e"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/source/packages/contracts/src/index.ts",
+      "archive": "data/qa/assistant-practice-content/second/source/packages/contracts/src/index.ts.gz",
+      "sha256": "0b9ce3fabdaa9562df0c9963689e7e8b56cebbe6c2a27ec1e8b94daef6e86868",
+      "bytes": 25951,
+      "archiveSha256": "d2c0c379c160c583745d92ab37c5a247fdc5ae6637f54ff588ad53d80d84c187"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/source/scripts/qa/run-assistant-practice-content.cjs",
+      "archive": "data/qa/assistant-practice-content/second/source/scripts/qa/run-assistant-practice-content.cjs.gz",
+      "sha256": "f83450ad999d13cd86990e8bcda477eec51b9b448c2f341fd1667e182328f429",
+      "bytes": 4412,
+      "archiveSha256": "d7bef504354bf356e1020479239642aae2a8ae6bcaff1e2cf7ec07874e3494df"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/stderr.log",
+      "archive": "data/qa/assistant-practice-content/second/stderr.log.gz",
+      "sha256": "b4acd4f819050212c4fe3b3ed8416421330f7ff8c72cb9bb667c335f3e24a94e",
+      "bytes": 375,
+      "archiveSha256": "699fe53a17919b23add5da4cce2678e20fa823ed5e9fe5d1566d5ff6bf2e8941"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/stdout.log",
+      "archive": "data/qa/assistant-practice-content/second/stdout.log.gz",
+      "sha256": "1d88c76d3da315c33f6097fe3e9d155e51b8244ba18529ffbf426f80a68dcd39",
+      "bytes": 524,
+      "archiveSha256": "f1a3fe152c5793c5e68728bdab0f4aacf10487bb9cede707a3618e6242c297f1"
+    },
+    {
+      "source": "data/qa/assistant-practice-content/second/vitest.json",
+      "archive": "data/qa/assistant-practice-content/second/vitest.json.gz",
+      "sha256": "b96c83637b1d3587eecb79345a00e306a95f685f09529331fe0ab2b1099f2bd7",
+      "bytes": 24023,
+      "archiveSha256": "4f4dc7fe05823a7e3cff6aa508a1c3ece26d5de6caf35a58f173e596963481c1"
+    }
+  ]
+}
