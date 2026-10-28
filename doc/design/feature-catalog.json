@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "a2504f83c3c28bbdf01429199b4ffa1acff72bcb",
+  "sourceRevision": "f8289f6eaa837fb0f99aa21c8904d635b4a8e550",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
     "features": 133,
-    "activeNormalApiRoutes": 444,
-    "coveredApiRoutes": 444
+    "activeNormalApiRoutes": 449,
+    "coveredApiRoutes": 449
   },
   "areas": [
     {
@@ -5529,7 +5529,7 @@
         },
         {
           "id": "AI-13",
-          "title": "从原解释核对练习范围与原子覆盖",
+          "title": "从原解释核对范围并保存私人审核题练习候选",
           "area": "ai",
           "status": "current-implementation-with-stated-limits",
           "actors": "家长、学生、教研",
@@ -5541,8 +5541,8 @@
             "/admin/ai-tools"
           ],
           "inputs": "本人完整来源及明确受众、目标孩子/学科/1至3原子点、旧源及跨受众确认",
-          "implementation": "只读重建完整来源，分开原课程/档案/当前scope年级；同孩子同学科约束、监护权限与当前评测保护。eligibleMeasurements及canonicalFamily计算审核题量、曝光及未曝光结构，原诊断/训练/原卷曝光保留；整体指纹绑定scope、定义、全部候选内容/映射和曝光身份，不输出候选答案。18000完整预算不截断，未知字段和范围冲突拒绝。 D2b纯协议冻结完整来源/明确目标及固定模型，2至6题分类+理由或开放表达、逐题sourceMap/单点覆盖、18000来源与22000正文预算及独立严格复核；初始作答投影排除参考答案、提示及私聊。Prepared只证明内部一致，实时权限/范围/评测由未来service另行核查。 审核bank保持原生题型；离线联合流分配每点两种结构且全局原题不重复，歧义/曝光排除，完整候选与曝光身份绑定指纹，联合不足不返回半份题组。",
-          "outputs": "完整原文、明确范围/原子目标、审核覆盖摘要、原定义/来源指纹与阻断原因",
+          "implementation": "只读重建完整来源，分开原课程/档案/当前scope年级；同孩子同学科约束、监护权限与当前评测保护。eligibleMeasurements及canonicalFamily计算审核题量、曝光及未曝光结构，原诊断/训练/原卷曝光保留；整体指纹绑定scope、定义、全部候选内容/映射和曝光身份，不输出候选答案。18000完整预算不截断，未知字段和范围冲突拒绝。 D2b纯协议冻结完整来源/明确目标及固定模型，2至6题分类+理由或开放表达、逐题sourceMap/单点覆盖、18000来源与22000正文预算及独立严格复核；初始作答投影排除参考答案、提示及私聊。Prepared只证明内部一致，实时权限/范围/评测由未来service另行核查。 审核bank保持原生题型；离线联合流分配每点两种结构且全局原题不重复，歧义/曝光排除，完整候选与曝光身份绑定指纹，联合不足不返回半份题组。 候选在当前来源/权限/scope/定义/审核题包/曝光事务核对后创建，原生题型/表格公式和答案完整冻结；只编辑教学说明，100命令回执与完整历史。DomainWriteConflict仅对存储乐观冲突有界新事务重试。另一监护人不可读origin，预览/导出过滤内部评分与来源路径；没有训练/曝光/正式response写入。schema24独立最低reader及启动/backup/restore语义核对，不允许尚未实现的assignment/self-session持久记录。",
+          "outputs": "完整原文、明确范围/原子目标、审核覆盖摘要、私人原生题候选/分页/原回执/逐版本教学说明、当前资格与阻断原因",
           "collections": [
             "assistantSessions",
             "assistantMessages",
@@ -5551,9 +5551,10 @@
             "measurementItems",
             "diagnosticSessions",
             "practiceSessions",
-            "paperPracticeSessions"
+            "paperPracticeSessions",
+            "assistantPracticeArtifacts"
           ],
-          "limits": "D1只读预检已实际SQLite/PG各20、零队列/业务写入及本地完整1802/74留证，现随02a350b5/schema23正式交付。精确远端三组success、当前整合501原始尝试全过、Linux完整1794/82；56实际HTTP/原记录保持检查通过。没有D2创建/采用/作答UI、schema24/正式证据或新指导/日历写入。D2学生分点assignment及成人自练、D3真实报告指导和D4冲突排期继续。 D2b纯正文最终62/62及联合审核选题10/10分别通过，均为离线基础且不相加；复用原子/学期/成人学科契约。持久候选、assignment、实际学习码分点作答和schema24仍未实现。",
+          "limits": "D1只读预检已实际SQLite/PG各20、零队列/业务写入及本地完整1802/74留证，现随02a350b5/schema23正式交付。精确远端三组success、当前整合501原始尝试全过、Linux完整1794/82；56实际HTTP/原记录保持检查通过。D2候选五接口与隔离schema24已实现，正式服务仍schema23；没有安排/作答UI、正式证据或新指导/日历写入。D2学生分点assignment及成人自练、D3真实报告指导和D4冲突排期继续。 D2b纯正文最终62/62及联合审核选题10/10分别通过，均为离线基础且不相加；复用原子/学期/成人学科契约。私人候选实际SQLite17/17与PG17/17分别通过，681源码/418构建保持；原失败、真实双实例并发修复、实际旧23reader拒绝24、原生双库恢复/损坏关联拒绝/最新作者孩子删除账本留证。assignment、本人分点开始/作答、成人自练、完整UI及schema24完整门禁/发布仍待。",
           "endpoints": [
             {
               "verb": "POST",
@@ -5562,6 +5563,46 @@
               "method": "preflight",
               "file": "apps/api/src/modules/learning/assistant-practice-preflight.controller.ts",
               "line": 9
+            },
+            {
+              "verb": "POST",
+              "path": "/api/ai/assistant/sessions/:sessionId/artifacts/practice/candidates",
+              "controller": "AssistantPracticeCandidateController",
+              "method": "create",
+              "file": "apps/api/src/modules/learning/assistant-practice-artifact.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/assistant/sessions/:sessionId/artifacts/practice/candidates",
+              "controller": "AssistantPracticeCandidateController",
+              "method": "list",
+              "file": "apps/api/src/modules/learning/assistant-practice-artifact.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/assistant/sessions/:sessionId/artifacts/practice/requests/:key",
+              "controller": "AssistantPracticeCandidateController",
+              "method": "receipt",
+              "file": "apps/api/src/modules/learning/assistant-practice-artifact.controller.ts",
+              "line": 15
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/assistant-practice/artifacts/:id",
+              "controller": "AssistantPracticeArtifactController",
+              "method": "get",
+              "file": "apps/api/src/modules/learning/assistant-practice-artifact.controller.ts",
+              "line": 23
+            },
+            {
+              "verb": "PATCH",
+              "path": "/api/learning/assistant-practice/artifacts/:id",
+              "controller": "AssistantPracticeArtifactController",
+              "method": "edit",
+              "file": "apps/api/src/modules/learning/assistant-practice-artifact.controller.ts",
+              "line": 24
             }
           ],
           "implementations": [
@@ -5569,6 +5610,31 @@
               "name": "AssistantPracticePreflightService.preflight",
               "file": "apps/api/src/modules/learning/assistant-practice-preflight.service.ts",
               "line": 21
+            },
+            {
+              "name": "AssistantPracticeArtifactService.create",
+              "file": "apps/api/src/modules/learning/assistant-practice-artifact.service.ts",
+              "line": 159
+            },
+            {
+              "name": "AssistantPracticeArtifactService.list",
+              "file": "apps/api/src/modules/learning/assistant-practice-artifact.service.ts",
+              "line": 136
+            },
+            {
+              "name": "AssistantPracticeArtifactService.creationReceipt",
+              "file": "apps/api/src/modules/learning/assistant-practice-artifact.service.ts",
+              "line": 153
+            },
+            {
+              "name": "AssistantPracticeArtifactService.get",
+              "file": "apps/api/src/modules/learning/assistant-practice-artifact.service.ts",
+              "line": 129
+            },
+            {
+              "name": "AssistantPracticeArtifactService.edit",
+              "file": "apps/api/src/modules/learning/assistant-practice-artifact.service.ts",
+              "line": 182
             }
           ],
           "sourceFiles": [
@@ -5585,7 +5651,17 @@
             "scripts/qa/run-assistant-practice-content.cjs",
             "apps/api/src/modules/learning/assistant-practice-bank-selection.ts",
             "apps/api/src/modules/learning/assistant-practice-bank-selection.test.ts",
-            "scripts/qa/run-assistant-practice-bank-selection.cjs"
+            "scripts/qa/run-assistant-practice-bank-selection.cjs",
+            "packages/contracts/src/assistant-reviewed-practice.ts",
+            "apps/api/src/modules/learning/assistant-practice-artifact.controller.ts",
+            "apps/api/src/modules/learning/assistant-practice-artifact.service.ts",
+            "apps/api/src/modules/learning/assistant-practice-record.ts",
+            "apps/api/src/modules/learning/assistant-practice-integrity.ts",
+            "apps/api/src/modules/learning/assistant-practice-artifact.integration.test.ts",
+            "apps/api/src/infrastructure/domain-write-conflict.ts",
+            "scripts/operations/assistant-practice-integrity.cjs",
+            "scripts/qa/run-assistant-practice-artifacts.cjs",
+            "resources/qa/legacy-readers/domain-database-schema23.json"
           ],
           "tests": [
             "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
@@ -11454,7 +11530,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 353
+              "line": 354
             },
             {
               "name": "DomainEventBusService.publish",
@@ -11464,7 +11540,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 251
+              "line": 252
             }
           ],
           "sourceFiles": [
@@ -11657,7 +11733,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 251
+              "line": 252
             }
           ],
           "sourceFiles": [
@@ -11734,7 +11810,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 235
+              "line": 236
             },
             {
               "name": "RuntimeMetricsService.snapshot",

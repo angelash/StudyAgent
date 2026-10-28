@@ -244,6 +244,56 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
     expect(result.view.source.origin.teachingScope.grade).toBe(9); expect(await protectedState()).toBe(before);
     await call('get', artifactRoot(result.receipt.artifactId), undefined, owner, 404);
   });
+  it('persists all three explicit atomic groups over HTTP without duplicate native questions or learner side effects', async () => {
+    const targets = [atomId, 'qa-condition-second', 'qa-condition-third'];
+    const definitions = load('modules/diagnostics/measurement-definition');
+    await store.transaction(() => {
+      const baseAtom = store.find('knowledgeAtoms', { id: atomId });
+      const template = store.find('measurementItems', { id: 'qa-practice-mapping-0' });
+      for (const [index, target] of targets.slice(1).entries()) {
+        const atom = { ...structuredClone(baseAtom), id: target, name: '条件核对' + (index + 2) };
+        store.append('knowledgeAtoms', atom);
+        for (let questionIndex = 0; questionIndex < 2; questionIndex++) {
+          const id = target + '-question-' + questionIndex;
+          const question = { ...structuredClone(store.find('questions', { id: template.questionId })), id };
+          const document = { ...structuredClone(store.find('questionDocuments', { questionId: template.questionId })), questionId: id };
+          const answerSchema = { ...structuredClone(store.find('questionAnswerSchemas', { questionId: template.questionId })), questionId: id };
+          const sourceRecord = { ...structuredClone(store.find('questionSources', { questionId: template.questionId })), id: id + '-source', questionId: id };
+          store.append('questions', question); store.append('questionDocuments', document);
+          store.append('questionAnswerSchemas', answerSchema); store.append('questionSources', sourceRecord);
+          store.append('measurementItems', { ...structuredClone(template), id: id + '-mapping', atomId: target, questionId: id,
+            family: target + '-family-' + questionIndex, atomDefinitionFingerprint: definitions.atomDefinitionFingerprint(atom),
+            contentFingerprint: definitions.questionContentFingerprint(store, id) });
+        }
+      }
+    });
+    await call('put', '/students/' + student.id + '/learning-scope', { subject: 'math', grade: 4, term: 'upper', textbookVolumeId: null,
+      textbookVersion: '匿名三点教学范围', learnedAtomIds: targets, currentAtomId: atomId, minutesPerSession: 15 });
+    try {
+      const body = { selection: { messageIds: [messageId], includeLinkedQuestions: false }, objective: '逐点核对三个明确条件并解释适用范围',
+        audience: { kind: 'student', studentId: student.id, subject: 'math', targetAtomIds: targets },
+        acknowledgeHistoricalSource: false, acknowledgeAudienceTransfer: true };
+      const before = await protectedState(), preflight = await call('post', sourceRoot() + '/preflight', body, owner, 200);
+      expect(preflight.canPrepareTeachingPractice).toBe(true);
+      const result = await create({ ...body, contentMode: 'reviewed_bank', preflightFingerprint: preflight.fingerprint, requestKey: randomUUID() });
+      expect(result.view.groups.map((group: any) => group.atomSnapshot.id)).toEqual(targets);
+      expect(result.view.questionCount).toBe(6); expect(result.view.editable).toBe(true);
+      const questions = result.view.groups.flatMap((group: any) => {
+        expect(group.questions).toHaveLength(2);
+        expect(new Set(group.questions.map((item: any) => item.mapping.family)).size).toBe(2);
+        for (const item of group.questions) {
+          expect(item.mapping.atomId).toBe(group.atomSnapshot.id);
+          expect(item.payload.document.questionId).toBe(item.question.id);
+          expect(item.payload.document.blocks.some((block: any) => block.type === 'table')).toBe(true);
+        }
+        return group.questions.map((item: any) => item.question.id);
+      });
+      expect(new Set(questions).size).toBe(6); expect(await protectedState()).toBe(before);
+      const record = await saved('assistantPracticeArtifacts', result.receipt.artifactId);
+      expect(() => load('modules/learning/assistant-practice-record').assertAssistantPracticeArtifact(record)).not.toThrow();
+      expect(await call('post', sourceRoot() + '/candidates', record.createInput)).toEqual(result.receipt);
+    } finally { await scope(); }
+  });
   it('exports owner-native teaching while excluding another guardian private origin and internal storage/scoring data', async () => {
     const own = await call('post', '/privacy/account/export', { credential: owner.credential, requestKey: randomUUID() });
     expect(JSON.stringify(own)).toContain(marker); expect(JSON.stringify(own)).not.toContain('PRIVATE_FIXTURE_SOURCE_NOTES');

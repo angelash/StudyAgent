@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "phase": "secret-pattern-scan",
+  "reason": "Scanner matched the literal Python f-string placeholder {password}, not a concrete credential, in the already versioned isolated Linux deployment verifier. Original partial objects are kept locally; next named attempt adds only this exact source placeholder to the reviewed allowlist.",
+  "source": "scripts/qa/verify-linux-deployment.py:58",
+  "actualCredentialRead": false
+}

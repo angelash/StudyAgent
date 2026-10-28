@@ -29,7 +29,7 @@ describe.skipIf(!connection)('native PostgreSQL AI whiteboard original identitie
       ] })).rejects.toThrow();
       await db.close(); db = new DomainDatabase(url); await db.open(); expect((await db.read()).state).toEqual(initial);
       const probe = new Pool({ connectionString: url });
-      try { expect(Number((await probe.query('SELECT MAX(version) AS version FROM schema_migrations')).rows[0].version)).toBe(23);
+      try { expect(Number((await probe.query('SELECT MAX(version) AS version FROM schema_migrations')).rows[0].version)).toBe(24);
         expect((await probe.query('SELECT indexname FROM pg_indexes WHERE schemaname=$1 AND indexname LIKE $2 ORDER BY indexname', [schema, 'topic_whiteboard_%'])).rows.map(row => row.indexname))
           .toEqual(['topic_whiteboard_prepare_request', 'topic_whiteboard_publication_draft']);
       } finally { await probe.end(); }

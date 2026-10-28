@@ -1,0 +1,192 @@
+{
+  "at": "2026-10-28T23:48:53.659174+00:00",
+  "passed": true,
+  "runs": [
+    {
+      "attempt": "sqlite-multipoint-first",
+      "family": "assistant-practice-artifacts",
+      "receipt": {
+        "at": "2026-10-28T23:36:16.988Z",
+        "engine": "sqlite",
+        "passed": true,
+        "exitCode": 0,
+        "error": null,
+        "sourceInputs": 681,
+        "compiledInputs": 418,
+        "changed": [],
+        "changedCompiled": [],
+        "tests": {
+          "total": 18,
+          "passed": 18,
+          "failed": 0,
+          "pending": 0
+        },
+        "limits": [
+          "Owned generated learners/content only. No actual provider or original student evidence.",
+          "Private candidate phase only; assignment/answering UI and complete schema24 production acceptance remain separate."
+        ]
+      },
+      "copiedSourceVerified": 681,
+      "copiedBuildVerified": 418
+    },
+    {
+      "attempt": "postgres-multipoint-first",
+      "family": "assistant-practice-artifacts",
+      "receipt": {
+        "at": "2026-10-28T23:37:29.197Z",
+        "engine": "postgres",
+        "passed": true,
+        "exitCode": 0,
+        "error": null,
+        "sourceInputs": 681,
+        "compiledInputs": 418,
+        "changed": [],
+        "changedCompiled": [],
+        "tests": {
+          "total": 18,
+          "passed": 18,
+          "failed": 0,
+          "pending": 0
+        },
+        "limits": [
+          "Owned generated learners/content only. No actual provider or original student evidence.",
+          "Private candidate phase only; assignment/answering UI and complete schema24 production acceptance remain separate."
+        ]
+      },
+      "copiedSourceVerified": 681,
+      "copiedBuildVerified": 418
+    },
+    {
+      "attempt": "sqlite-first",
+      "family": "practice-compatibility",
+      "receipt": {
+        "at": "2026-10-28T23:38:44.827Z",
+        "suite": "compatibility",
+        "engine": "sqlite",
+        "passed": false,
+        "exitCode": 1,
+        "error": null,
+        "sourceInputs": 885,
+        "compiledInputs": 418,
+        "changed": [],
+        "changedBuild": [],
+        "tests": {
+          "total": 162,
+          "passed": 140,
+          "failed": 1,
+          "pending": 21
+        },
+        "limits": [
+          "Generated users/content and owned isolated stores only; no actual model/TTS/image provider or real learner evidence.",
+          "Compatibility/full API results are distinct from browser, precise remote CI, schema24 delivery and complete product acceptance."
+        ]
+      },
+      "copiedSourceVerified": 885,
+      "copiedBuildVerified": 418
+    },
+    {
+      "attempt": "postgres-first",
+      "family": "practice-compatibility",
+      "receipt": {
+        "at": "2026-10-28T23:40:17.890Z",
+        "suite": "compatibility",
+        "engine": "postgres",
+        "passed": false,
+        "exitCode": 1,
+        "error": null,
+        "sourceInputs": 885,
+        "compiledInputs": 418,
+        "changed": [],
+        "changedBuild": [],
+        "tests": {
+          "total": 162,
+          "passed": 159,
+          "failed": 1,
+          "pending": 2
+        },
+        "limits": [
+          "Generated users/content and owned isolated stores only; no actual model/TTS/image provider or real learner evidence.",
+          "Compatibility/full API results are distinct from browser, precise remote CI, schema24 delivery and complete product acceptance."
+        ]
+      },
+      "copiedSourceVerified": 885,
+      "copiedBuildVerified": 418
+    },
+    {
+      "attempt": "sqlite-second",
+      "family": "practice-compatibility",
+      "receipt": {
+        "at": "2026-10-28T23:42:39.239Z",
+        "suite": "compatibility",
+        "engine": "sqlite",
+        "passed": true,
+        "exitCode": 0,
+        "error": null,
+        "sourceInputs": 885,
+        "compiledInputs": 418,
+        "changed": [],
+        "changedBuild": [],
+        "tests": {
+          "total": 162,
+          "passed": 141,
+          "failed": 0,
+          "pending": 21
+        },
+        "limits": [
+          "Generated users/content and owned isolated stores only; no actual model/TTS/image provider or real learner evidence.",
+          "Compatibility/full API results are distinct from browser, precise remote CI, schema24 delivery and complete product acceptance."
+        ]
+      },
+      "copiedSourceVerified": 885,
+      "copiedBuildVerified": 418
+    },
+    {
+      "attempt": "postgres-second",
+      "family": "practice-compatibility",
+      "receipt": {
+        "at": "2026-10-28T23:43:39.022Z",
+        "suite": "compatibility",
+        "engine": "postgres",
+        "passed": true,
+        "exitCode": 0,
+        "error": null,
+        "sourceInputs": 885,
+        "compiledInputs": 418,
+        "changed": [],
+        "changedBuild": [],
+        "tests": {
+          "total": 162,
+          "passed": 161,
+          "failed": 0,
+          "pending": 1
+        },
+        "limits": [
+          "Generated users/content and owned isolated stores only; no actual model/TTS/image provider or real learner evidence.",
+          "Compatibility/full API results are distinct from browser, precise remote CI, schema24 delivery and complete product acceptance."
+        ]
+      },
+      "copiedSourceVerified": 885,
+      "copiedBuildVerified": 418
+    }
+  ],
+  "failuresRetained": [
+    "SQLite first140pass/1fail/21environment skips and PostgreSQL first159pass/1fail/2skips both found the same outdated future24 INSERT after24 became supported. Only this fixture moved to unsupported25; actual23 marker interruption and exact legacy readers remain unchanged.",
+    "PostgreSQL second also enables actual native paper recovery in the owned PG cluster; one existing teaching-tool native restore case remains intentionally SQLite-only."
+  ],
+  "archive": {
+    "fileIndex": "files.json.gz",
+    "fileEntries": 7440,
+    "uniqueObjects": 1303,
+    "allFrozenSourceAndBuildCopiesVerified": true,
+    "firstArchiveFailure": "../assistant-practice-compatibility-first/archive-failure.json"
+  },
+  "secretScan": {
+    "findings": [],
+    "reviewedDefaultOrTestOrLiteralTemplateURLMatches": 34
+  },
+  "limits": [
+    "The two18-case artifact runs, two162-case final compatibility runs and earlier failed runs overlap and are not added together.",
+    "Full API is running separately; full browser, precise remote CI, assignment/answering UI and schema24 production delivery remain outstanding.",
+    "No actual model/TTS/image provider calls or original learner evidence. Production remains delivered schema23."
+  ]
+}

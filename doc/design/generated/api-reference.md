@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`a2504f83c3c28bbdf01429199b4ffa1acff72bcb`。共 465 个 HTTP 路由声明，当前 AppModule 可达 444 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`f8289f6eaa837fb0f99aa21c8904d635b4a8e550`。共 470 个 HTTP 路由声明，当前 AppModule 可达 449 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -1246,6 +1246,55 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.gesp.document`
+
+## AssistantPracticeCandidateController — 当前接入
+
+### POST /api/ai/assistant/sessions/:sessionId/artifacts/practice/candidates
+
+实现：[apps/api/src/modules/learning/assistant-practice-artifact.controller.ts:9](../../../apps/api/src/modules/learning/assistant-practice-artifact.controller.ts#L9)，方法 `create`。
+
+- 签名：`create(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.create`
+
+### GET /api/ai/assistant/sessions/:sessionId/artifacts/practice/candidates
+
+实现：[apps/api/src/modules/learning/assistant-practice-artifact.controller.ts:12](../../../apps/api/src/modules/learning/assistant-practice-artifact.controller.ts#L12)，方法 `list`。
+
+- 签名：`list(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Query() query: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.list`
+
+### GET /api/ai/assistant/sessions/:sessionId/artifacts/practice/requests/:key
+
+实现：[apps/api/src/modules/learning/assistant-practice-artifact.controller.ts:15](../../../apps/api/src/modules/learning/assistant-practice-artifact.controller.ts#L15)，方法 `receipt`。
+
+- 签名：`receipt(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Param('key') key: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.creationReceipt`
+
+## AssistantPracticeArtifactController — 当前接入
+
+### GET /api/learning/assistant-practice/artifacts/:id
+
+实现：[apps/api/src/modules/learning/assistant-practice-artifact.controller.ts:23](../../../apps/api/src/modules/learning/assistant-practice-artifact.controller.ts#L23)，方法 `get`。
+
+- 签名：`get(@Req() req: AuthenticatedRequest, @Param('id') id: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.get`
+
+### PATCH /api/learning/assistant-practice/artifacts/:id
+
+实现：[apps/api/src/modules/learning/assistant-practice-artifact.controller.ts:24](../../../apps/api/src/modules/learning/assistant-practice-artifact.controller.ts#L24)，方法 `edit`。
+
+- 签名：`edit(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.practice.edit`
 
 ## AssistantPracticePreflightController — 当前接入
 

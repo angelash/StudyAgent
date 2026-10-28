@@ -30,7 +30,7 @@ for (const engine of ['sqlite', 'postgres'] as const) describe.skipIf(engine ===
   it('migrates a real schema20 store and cold reopens all exact draft, table/formula and formal records', async () => {
     const url = await scope(); await legacy(url);
     for (let index = 0; index < 2; index++) { const db = new DomainDatabase(url); await db.open(); try { expect((await db.read()).state).toEqual(original()); } finally { await db.close(); } }
-    await raw(url, async sql => { expect(Number((await sql('SELECT MAX(version) version FROM schema_migrations'))[0].version)).toBe(23); });
+    await raw(url, async sql => { expect(Number((await sql('SELECT MAX(version) version FROM schema_migrations'))[0].version)).toBe(24); });
   });
   it('rolls a duplicate legacy request back to schema20 with both originals intact', async () => {
     const url = await scope(); await legacy(url);
@@ -50,7 +50,7 @@ for (const engine of ['sqlite', 'postgres'] as const) describe.skipIf(engine ===
   it.skipIf(engine !== 'sqlite')('backs up and cold restores native current schema23 with complete drafts and original first answers', async () => {
     const file = await scope(), source = resolve(file, '..'), bundle = resolve(source, '../bundle'), destination = resolve(source, '../restored');
     const database = new DomainDatabase(file); await database.open(); try { await database.commit(await database.read(), original()); } finally { await database.close(); }
-    await backup.createBundle({ dataDir: source, destination: bundle }); expect((await backup.verifyBundle({ bundle })).database.schemaVersions.at(-1)).toBe(23);
+    await backup.createBundle({ dataDir: source, destination: bundle }); expect((await backup.verifyBundle({ bundle })).database.schemaVersions.at(-1)).toBe(24);
     await backup.restoreBundle({ bundle, destination }); const restored = new DomainDatabase(join(destination, 'study-agent.sqlite3')); await restored.open();
     try { expect((await restored.read()).state).toEqual({ ...original(), events: [expect.objectContaining({ eventName: 'operations.restored', payload: expect.objectContaining({ channel: 'local-cli' }) })] }); }
     finally { await restored.close(); }

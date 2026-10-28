@@ -35,7 +35,7 @@ for (const engine of ['sqlite', 'postgres'] as const) describe.skipIf(engine ===
   it('cold migrates and reopens exact complete original notes and existing formal evidence', async () => {
     const url = await scope(); await legacy(url);
     for (let index = 0; index < 2; index++) { const database = new DomainDatabase(url); await database.open(); try { expect((await database.read()).state).toEqual(original()); } finally { await database.close(); } }
-    await raw(url, async sql => { expect(Number((await sql('SELECT MAX(version) version FROM schema_migrations'))[0].version)).toBe(23); });
+    await raw(url, async sql => { expect(Number((await sql('SELECT MAX(version) version FROM schema_migrations'))[0].version)).toBe(24); });
   });
   it('keeps both conflicting originals and schema21 intact when the new uniqueness migration fails', async () => {
     const url = await scope(); await legacy(url);

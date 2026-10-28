@@ -257,3 +257,59 @@ SQLite/PG迁移24增加assistantPracticeArtifacts(ownerUserId,requestKey)唯一�
 schema24最低reader、实际保存的精确旧23编译读取器拒绝、双库原生备份恢复、重算题包/bundle身份后仍拒绝错位关联、作者/孩子最新删除账本重放均实际执行。旧23原件SHA为0ef4fb2915d3fed93f16f91f96d21378bba6fe5335269ae866f03447a4e3584b，未改写其源码。原始失败记录与最终源码/构建通过内容寻址归档，4934条文件索引/1113个去重对象；早期409构建输入只保留原SHA与冻结源码，未在重建前另存原二进制，不能补称完整旧构建已保存。见[六轮完整原件](../evidence/2026-10-29/assistant-practice-artifacts-first/receipt.json)。
 
 当前仍是隔离开发，正式主目录继续schema23。多点实际HTTP、安排/真实学习码分组开始/实际作答身份/首答及理由/提示曝光、成人自练与AI待核对题、完整UI尚待；现有迁移兼容测试当前版本断言、源码总册、完整API/浏览器/精确CI和schema24可回退交付仍需完成。无真实模型/TTS/生图调用，不产生正式学生虚假证据。105/M1～M7/原72整体继续active。
+
+## 23. 多点HTTP、旧数据兼容及当前参考页面补证
+
+新增实际三原子点/六道原生题HTTP案例，SQLite与真实PG各18/18、零失败/跳过；每点两种结构、整份原题不重复、原题表格/映射保持、原键重放和零训练/曝光/正式写入均有断言。该两轮独立于此前17项，不相加。API全类型通过。
+
+当前兼容专项含20文件162项，SQLite第二轮141通过/21外部PG环境跳过；配置实际PG后第二轮161通过/1有意SQLite专用跳过、零失败，885源码/418构建输入逐SHA保持且全原件复制。21跳过对应真实PG迁移/旧reader/原生恢复等，PG轮实际执行了其中20项；剩余一项是原teaching-tool原生恢复案例自身仅运行SQLite，不能称双库162全过。两个首轮分别140/1/21与159/1/2：原卷恢复测试仍插入“未来24”，24已成为当前版本导致唯一键冲突；仅改成未支持25，实际23 marker失败注入和精确旧22/23读取器保持。第二PG轮另开启真实PG原卷恢复，范围变化明确留证。见[完整原件](../evidence/2026-10-29/assistant-practice-compatibility-second/receipt.json)。完整API已独立冻结启动，未完成前不改该工作区源/构建/用例。
+
+源码总册现为14领域/133功能/449接口全映射，离线总册、源码引用及链接验证通过；五候选接口已纳入AI-13，PG精确CI增加实际候选/双实例/schema24/原生删除账本恢复步骤。完整API、浏览器、精确远端CI及实际schema24交付仍分别等待，正式仍schema23。
+
+用户指定HyperKnow课堂已实际确认登录，当前恢复状态显示概念摘要、三列比较表、韦恩图和“情境分类+判断理由”的匿名练习；没有在该画面看到标准化能力分。设置弹层含六种说明清楚的音色及逐项试听、0.5至2倍速、手写/标准字体、点阵背景和引导重播。只打开关闭设置并截图，未发送新消息/作答、改变权限/偏好、下载资产或产生新供应商请求。截图为1600×1000，未独立量出CSS视口/DPR/原字体资产，当前静态画面不证明音画时序或完整课程像素一致。见[当前参考原件](../evidence/2026-10-29/hyperknow-resumed-readonly-first/receipt.json)。后续保留“概念摘要和分类理由”的体验，同时通过反例/新题核验原因，不能把一次分类判断直接冒充能力量化。
+
+## 24. 下一批安排、本人分组开始与首答的具体设计
+
+本节在当前候选完整API冻结期间仅归档设计；实现进入独立worktree，自有contracts/config/API构建，不安装或重建共享依赖。正式schema24仍不发布。按实际LearningService核对，新增来源必须同时覆盖view/render/practiceDraftState/assertActive/draft/submit/hint/complete、controller传递authSession、反馈和错题投影，不能仅给origin增加一个枚举就绕过原计划判断。
+
+### 24.1 共享安排与私人候选分开
+
+新增assistant-practice-assignment.ts契约、assistant-practice-assignment-record.ts和AssistantPracticeAssignmentService/Controller。POST artifact/:id/assignments以expectedRevision/contentFingerprint、studentId、acknowledgePreview=true和requestKey明确确认。服务在事务内通过本人候选当前来源/目标/scope/审核题包/曝光及当前评测核查后冻结共享教学投影；同owner/key异内容409，重放返回原安排回执。家长给孩子安排和实际学生给本人安排均保留明确publisherRole；学生不得替其他孩子安排，也不能借成人模式绕过授权。
+
+assistant-practice-assignment-v1保存studentId/subject、已确认title/instructions/objective、scope/profileGrade、familyIdentityVersion和每点完整atom/definition/两题原生审核题包。共享题包不包含origin、聊天正文/引用、模型prompt、原sourceMap或全候选selectionInput。不能直接把含origin的reviewedPracticePortableView当共享投影。原题/答案/评分原件只在后端固定，孩子初始投影移除答案/analysis/评分配置和内部来源路径；监护人明确教学预览可以查看参考，但不写孩子曝光。另一监护人有权管理孩子教学安排，仍无权读取作者私聊。
+
+共享记录保留不可变publisherFingerprint、artifactIdentityHash、原候选revision/contentFingerprint、payloadFingerprint和原创建回执；命令hash从这些固定身份与完整安排输入重算，不因将来删除私人origin而破坏回执。私人关联独立privateOrigin={artifactId,publisherUserId}，不输出给另一监护人或孩子。当前publisherUserId可在账号删除时移除，不能在共享命令中另藏完整私有createInput。无新formal response、mastery、reviewTask或practiceSession；确认仅安排。
+
+GET /learning/assistant-practice/assignments按明确studentId/subject、当前学习码或监护授权有界分页；GET /assignments/:id给角色适合的教学投影。未开始组显示目标/数量/预计时长，不给孩子整组答案；已开始组链接真实session，历史来源失效显示保留原因。采用与本人开始各自有原键回执，不把本机缓存当服务端状态。
+
+### 24.2 开始与后续组的当前核查
+
+POST assignment/:id/groups/:atomId/start包含assignmentFingerprint/requestKey，仅接受role=student且authSession.studentId匹配目标的当前学习码会话；作者/其他监护人的访问权不能替代实际作答者。先验证当前身份，再查询原键，避免家长复用孩子命令。一次事务内核对assignment及当前组完整packet/definition/scope/题族/未曝光、当前评测、合法来源状态，固定两题快照并创建一个PracticeSession；每assignment+atom唯一，两个实际应用实例同键/异键并发最多一个组session。
+
+不重新执行整份D1 canPrepare或联合重选；第一组开始产生的合法曝光不能封死第二/三组。当前组只接受自己确认的两题及版本，外部新曝光、审核撤回/改题、范围/原子定义变化拒绝尚未开始的组，保留原安排并要求重新核对，不自动换题。当前授权和原来源完整性在后端检查，不向孩子回传私聊正文，不伪造作者authSession或要求作者一直在线。
+
+新PracticeSession.origin=assistant_artifact、assistantAssignmentId/sourceGroupId、atomSnapshot/actionSnapshot及固定两题快照；planId=null，actionId是确定性组ID，不制造诊断计划。开始回执只含assignment/atom/session ID和固定指纹。可读共享历史与当前可写资格分别处理。授权仍在的孩子已经合法开始后使用原快照完成教学，后续题库更新不换题、不宣称当前审核或正式测量；当前评测继续阻断教学写入。手动撤回安排或孩子权限失效时只读保留输入，任何返回原回执也先核对实际身份。
+
+### 24.3 首答、理由和帮助分别记录
+
+LearningController现有练习view/render/draft/submit/hint/complete向LearningService传入req.authSession，新来源每次写入显式校验真实孩子。原guidance/notebook分支及旧记录保持兼容；新来源的旧协议提交不能省略actor验证。PracticeAttempt新增可选actorId/actorRole/actorStudentId及learnerExplanation，新来源强制非空实际student；旧记录缺actor保留未知。learnerExplanation独立于现有grader生成的reason，不覆盖同题第一次回答和第一次理由；后续订正另存attempt。
+
+新来源专用严格draft/response协议同时携带答案、理由、原版本/身份/请求键，不能把理由悄悄塞进StructuredAnswer而改变评分。复用现有原生StructuredAnswerInput和确定性grader；首答的题干/评分依据来自冻结快照。答案协议支持的语音/图片仍按实际资源授权/原件SHA验证，不能凭URL当附件已恢复。
+
+新增有界幂等帮助事件（hint/solution/guardian_demonstration），保存actual actor、question、时间、原键；reference answer/analysis只在实际答后反馈或明确solution动作出现。查看参考、使用提示、监护示范与首次作答分开记录；render本身不默认展开答案。session创建即保守进入现有正式排题曝光排除，之后逐题动作仍保存真实帮助记录。家长预览/陪练不写孩子Attempt；家长自己练习走后续本人teachingSession。
+
+新来源feedback明确为教学练习，summary提供teachingFirstPass及帮助情况，原independentFirstPass不为此来源计数；不沿用“首答正确即独立完成”文案，不写MasteryEstimate/DiagnosticResponse。错题本可记录该教学首答与冻结atom，但来源/理由/帮助必须明确；不能据此自动生成标准化能力结论。完成要求每题有本人回答或明确跳过，保持首次证据与原完成回执。
+
+### 24.4 删除、恢复与独立校验
+
+孩子删除通过studentRecords清除共享assignment、组session、attempt、help及相关命令；作者删除仍清除全部私人artifact/origin。若孩子由另一监护人保留，合法共享题包和已开始真实训练保留，privateOrigin移除、publisher身份匿名化，未开始组标记source_unavailable并阻断新开始；已开始组按固定快照继续本人教学，不依赖已删除私人artifact。完整共享说明曾由作者明确确认给孩子及合法监护人，不在这里复活原私聊。
+
+冷恢复不能要求每份共享安排永远有私人artifact。active关联必须核对实际artifact/作者/目标/内容；detached关联必须有匹配account_delete隐私回执及该孩子retainedStudentHash，且已无privateOrigin，不能只改一个布尔标志绕过验证。原不可变publisherFingerprint/原artifact内容身份及共享payload/command哈希继续可重算；用户删除重放使用同一个removeSelected/anonymizeSharedAttribution路径，恢复前后都不能复活私人关联。最新child删除同样清除旧备份中的共享历史。
+
+schema24尚未发布，下一批同一开发迁移补assignment创建键、assignment+atom唯一关联、帮助请求键与完整关联注册。SQLite/PG启动及原生backup/restore核对器增加assignment、practiceSessions/attempts/hints/help、privacyRequests，并逐组双向验证固定题包/目标/session/actual actor/首答顺序/原命令；未实现的成人teachingSession仍显式拒绝。损坏关联即使重算内部及bundle哈希也拒绝；真正旧23读取器继续保持原始字节并实际拒绝24。
+
+### 24.5 界面与退出验收
+
+复用助教来源弹层，接“练习”入口、孩子/学科/1至3已学点选择、完整来源核对、覆盖缺口、逐点两题原生预览、教学说明编辑、明确安排和原请求恢复。孩子今日任务/安排页明确每组“开始”，完成当前组后保留第二/三组入口；题干、理由、帮助/参考与反馈逐步呈现，手机不堆满参考答案。原画面HyperKnow的“情境+判断+理由”用于未审核教学题体验，审核bank保持真实原题类型；不把两套内容互相冒充。
+
+验收包含实际SQLite/PG三点分组HTTP与两个应用实例、学生/监护人/其他孩子/另一个监护人、开始前零孩子曝光、第二三组不误阻断、真实学习码、家长伪造draftFence仍拒绝、首答及理由不覆盖、提示/参考/示范区别、原生表格公式及真实图片/语音附件原生恢复、旧schema23拒绝、重算损坏关联和最新删除账本。浏览器需桌面/390px完整安排与本人作答、刷新/断网/双标签/丢响应和当前评测/权限变化保留输入。完整API/整站501及精确CI/可回退schema24交付分别执行；D2b成人/AI、D3原因指导、D4日历和105剩余范围继续，整体不标完成。

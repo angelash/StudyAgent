@@ -1,0 +1,39 @@
+{
+  "observedAt": "2026-10-28T23:40:22Z",
+  "url": "https://agent.hyperknow.io/course/35b173b3-d501-4c0c-a6cf-ecac581431d0/sessions/whiteboard/ed43f6c4-fb26-4603-8645-8e2599424343",
+  "method": "Existing authorized user IAB; current snapshot and local Runtime screenshots; opened and closed Session settings only.",
+  "files": [
+    {
+      "file": "whiteboard.png",
+      "sha256": "222c29c1f372b5727315a8c620b23574a208fca89f7456d0538cd3d177c808e5",
+      "bytes": 204700,
+      "sizePixels": [
+        1600,
+        1000
+      ]
+    },
+    {
+      "file": "session-settings.png",
+      "sha256": "62499f1ada828da4e11defd3511381ebc9c7fc8d4ff72ec2181f6942e45672ad",
+      "bytes": 242697,
+      "sizePixels": [
+        1600,
+        1000
+      ]
+    }
+  ],
+  "observations": [
+    "Logged-in resumed whiteboard keeps the existing lesson, concept navigation, diagram, comparison table and anonymous classification-plus-reason task on one canvas.",
+    "Board notes summarize concepts, contrast conditions and task; the longer sentence-by-sentence teaching history is separate.",
+    "Comparison table is three columns (concept, scope, cause); the exercise asks a classification and an explanation, with no visible standardized ability score.",
+    "Settings show six descriptive voice cards with individual sample buttons, voice-speed stops0.5/0.75/1/1.25/1.5/2, handwriting/standard font, background-dot switch and replay-tour entry.",
+    "The current screenshot shows a persistent bilingual resume notice and an idle pause button; it does not prove active animation or audio timing."
+  ],
+  "limits": [
+    "No browser storage/CDP/arbitrary script inspection, file download, permission change, external message, answer submission or new provider request.",
+    "No voice sample played or voice/font/speed preference changed; settings closed after observation.",
+    "Screenshot pixel size is known; CSS viewport/device pixel ratio and exact font/CSS assets were not independently measured.",
+    "This is one resumed session state. Dynamic row/subtitle/audio timing, grading feedback, mobile states and complete-course parity are not established.",
+    "Full snapshots contain account-specific greeting text and are not published; evidence uses screenshots without that greeting and anonymous observations only."
+  ]
+}
