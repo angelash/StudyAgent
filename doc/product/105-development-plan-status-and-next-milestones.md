@@ -477,3 +477,6 @@ M1后即开始可用课程的设备与真人试用；真实1/3/7/14日复测与�
 
 
 2026-10-29 147 D1本地预检：7cf76c56具体设计后，新只读practice/preflight接通；SQLite与实际PG各18通过/零跳过，10新预检+8原来源兼容不累加，8输入SHA保持，全业务集合前后SHA与零模型调用验证通过。首轮9/1独立会话测试准备错误和零测试快照cwd错误原件保留。已接AI-13及PG CI步骤，完整门禁/远端/正式交付仍待；无D2出题/作答UI、无schema24/正式证据/计划/日历写入。见[147本层](147-conversation-practice-guidance-and-review.md#11-d1只读预检的本地结果)及[原件](../evidence/2026-10-29/assistant-practice-preflight-first/receipt.json)。独立CUI完整门禁不包含本D1，整体active。
+
+
+2026-10-29 147 D1范围复查：已学范围变化保留档案年级/指纹失效、撤回原子拒绝与实际durable_tasks=0补证通过，SQLite/PG各20/20、零跳过，8输入SHA保持。14领域/133功能/444接口、671源码引用/4182链接/10离线页通过；见[补充原件](../evidence/2026-10-29/assistant-practice-preflight-current-state-first/receipt.json)。本D1完整API已冻结运行，独立CUI501仍继续；没有将两轮结果或不同候选合并计数，整体active。

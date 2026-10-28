@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "e092d0985aca132ef540eb5049df011024cdac01",
+  "sourceRevision": "95715abf997e4d3356cf8f6593238f84e565c6ea",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
-    "declaredHttpRoutes": 464,
-    "activeHttpRoutes": 451,
-    "activeBusinessHttpRoutes": 443,
+    "declaredHttpRoutes": 465,
+    "activeHttpRoutes": 452,
+    "activeBusinessHttpRoutes": 444,
     "retiredHttpRoutes": 8,
     "activeModules": 19,
-    "activeControllers": 48,
-    "apiClasses": 171,
+    "activeControllers": 49,
+    "apiClasses": 173,
     "apiFunctions": 533,
     "domainCollections": 104,
-    "contractTypes": 417,
+    "contractTypes": 420,
     "webPages": 31,
     "webRouteHandlers": 1,
-    "apiTestFiles": 207,
+    "apiTestFiles": 208,
     "browserTestFiles": 45
   },
   "modules": [
@@ -225,6 +225,7 @@
         "AiModule"
       ],
       "controllers": [
+        "AssistantPracticePreflightController",
         "AssistantWhiteboardController",
         "ChemistryController",
         "WhiteboardQuestionVisualController",
@@ -250,6 +251,7 @@
         "ClassroomVisualController"
       ],
       "providers": [
+        "AssistantPracticePreflightService",
         "AssistantWhiteboardService",
         "ChemistryService",
         "WhiteboardQuestionVisualService",
@@ -5123,6 +5125,42 @@
       ],
       "calls": [
         "this.gesp.document"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/ai/assistant/sessions/:sessionId/artifacts/practice/preflight",
+      "controller": "AssistantPracticePreflightController",
+      "method": "preflight",
+      "file": "apps/api/src/modules/learning/assistant-practice-preflight.controller.ts",
+      "line": 9,
+      "signature": "preflight(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Body() body: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [
+        {
+          "name": "HttpCode",
+          "args": [
+            "200"
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "practice",
+          "type": "AssistantPracticePreflightService"
+        }
+      ],
+      "calls": [
+        "this.practice.preflight"
       ],
       "active": true,
       "retired": false
@@ -15425,7 +15463,7 @@
     {
       "name": "AuthGuard",
       "file": "apps/api/src/common/auth.guard.ts",
-      "line": 90,
+      "line": 91,
       "decorators": [
         {
           "name": "Injectable",
@@ -15445,7 +15483,7 @@
       "methods": [
         {
           "name": "canActivate",
-          "line": 94,
+          "line": 95,
           "signature": "canActivate(context: ExecutionContext): Promise<boolean>",
           "access": "public",
           "decorators": [],
@@ -24340,6 +24378,103 @@
       ]
     },
     {
+      "name": "AssistantPracticePreflightController",
+      "file": "apps/api/src/modules/learning/assistant-practice-preflight.controller.ts",
+      "line": 5,
+      "decorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        },
+        {
+          "name": "Controller",
+          "args": [
+            "'ai/assistant/sessions/:sessionId/artifacts/practice'"
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "practice",
+          "type": "AssistantPracticePreflightService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "preflight",
+          "line": 9,
+          "signature": "preflight(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Body() body: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "'preflight'"
+              ]
+            },
+            {
+              "name": "HttpCode",
+              "args": [
+                "200"
+              ]
+            }
+          ],
+          "calls": [
+            "this.practice.preflight"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "AssistantPracticePreflightService",
+      "file": "apps/api/src/modules/learning/assistant-practice-preflight.service.ts",
+      "line": 16,
+      "decorators": [
+        {
+          "name": "Injectable",
+          "args": []
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "store",
+          "type": "InMemoryStoreService"
+        },
+        {
+          "name": "artifacts",
+          "type": "AssistantArtifactService"
+        },
+        {
+          "name": "curriculum",
+          "type": "CurriculumService"
+        },
+        {
+          "name": "students",
+          "type": "StudentsService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "preflight",
+          "line": 21,
+          "signature": "preflight(user: InMemoryUserAccount, sessionId: string, input: unknown): AssistantPracticePreflight",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.artifacts.readSource",
+            "this.students.assertCanAccessStudent",
+            "this.students.assertGuardian",
+            "this.students.getProfile",
+            "this.curriculum.getScope",
+            "this.store.find",
+            "this.store.select"
+          ]
+        }
+      ]
+    },
+    {
       "name": "AssistantWhiteboardController",
       "file": "apps/api/src/modules/learning/assistant-whiteboard.controller.ts",
       "line": 6,
@@ -27113,12 +27248,12 @@
     {
       "name": "LearningModule",
       "file": "apps/api/src/modules/learning/learning.module.ts",
-      "line": 65,
+      "line": 67,
       "decorators": [
         {
           "name": "Module",
           "args": [
-            "{ imports: [ProjectFileModule,StudioMaterialMaintenanceModule,StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [AssistantWhiteboardController,ChemistryController,WhiteboardQuestionVisualController,WhiteboardQuestionTeachingVersionController,GuidanceWhiteboardQuestionController,TopicWhiteboardQuestionController,TopicWhiteboardVisualController,TopicWhiteboardController,SourceCourseCheckController,ProjectTeachingController,SourceCourseLifecycleController, ClassroomCodeController,ClassroomTurnController,StudioOriginalRepairController,StudioMaterialUploadController, LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [AssistantWhiteboardService,ChemistryService,WhiteboardQuestionVisualService,WhiteboardQuestionVisualWorkerService,WhiteboardQuestionService,WhiteboardQuestionNarrationService,WhiteboardQuestionWorkerService,TopicWhiteboardVisualService,TopicWhiteboardVisualWorkerService,TopicWhiteboardService,TopicWhiteboardWorkerService,TopicWhiteboardNarrationService,SourceCourseCheckService,SourceCourseCheckWorkerService,ProjectTeachingService,SourceCourseLifecycleService, ClassroomCodeService,ClassroomTurnService,ClassroomTurnWorkerService,StudioOriginalRepairService,StudioOriginalRepairWorkerService,StudioMaterialIntegrityService,StudioMaterialUploadService, LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, SourceCourseCompilerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] }"
+            "{ imports: [ProjectFileModule,StudioMaterialMaintenanceModule,StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [AssistantPracticePreflightController,AssistantWhiteboardController,ChemistryController,WhiteboardQuestionVisualController,WhiteboardQuestionTeachingVersionController,GuidanceWhiteboardQuestionController,TopicWhiteboardQuestionController,TopicWhiteboardVisualController,TopicWhiteboardController,SourceCourseCheckController,ProjectTeachingController,SourceCourseLifecycleController, ClassroomCodeController,ClassroomTurnController,StudioOriginalRepairController,StudioMaterialUploadController, LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [AssistantPracticePreflightService,AssistantWhiteboardService,ChemistryService,WhiteboardQuestionVisualService,WhiteboardQuestionVisualWorkerService,WhiteboardQuestionService,WhiteboardQuestionNarrationService,WhiteboardQuestionWorkerService,TopicWhiteboardVisualService,TopicWhiteboardVisualWorkerService,TopicWhiteboardService,TopicWhiteboardWorkerService,TopicWhiteboardNarrationService,SourceCourseCheckService,SourceCourseCheckWorkerService,ProjectTeachingService,SourceCourseLifecycleService, ClassroomCodeService,ClassroomTurnService,ClassroomTurnWorkerService,StudioOriginalRepairService,StudioOriginalRepairWorkerService,StudioMaterialIntegrityService,StudioMaterialUploadService, LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, SourceCourseCompilerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] }"
           ]
         }
       ],
@@ -45027,6 +45162,154 @@
       ]
     },
     {
+      "name": "AssistantPracticePreflightInput",
+      "file": "packages/contracts/src/assistant-practice.ts",
+      "line": 14,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "AssistantPracticeCoverage",
+      "file": "packages/contracts/src/assistant-practice.ts",
+      "line": 15,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "atomId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "objective",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "definitionFingerprint",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "eligibleQuestionCount",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "seenQuestionCount",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "unseenQuestionCount",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "unseenFamilyCount",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "ambiguousQuestionCount",
+          "optional": false,
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "AssistantPracticePreflight",
+      "file": "packages/contracts/src/assistant-practice.ts",
+      "line": 20,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "protocol",
+          "optional": false,
+          "type": "'assistant-practice-preflight-v1'"
+        },
+        {
+          "name": "origin",
+          "optional": false,
+          "type": "AssistantArtifactOrigin"
+        },
+        {
+          "name": "objective",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "sourceFingerprint",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "fingerprint",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "historical",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "audience",
+          "optional": false,
+          "type": "{ kind: 'adult' | 'student'; studentId: string | null; subject: string | null;\n    sourceGrade: number | null; profileGrade: number | null; scopeGrade: number | null; scopeVersion: number | null;\n    scopeFingerprint: string | null; scopeHref: string | null }"
+        },
+        {
+          "name": "coverage",
+          "optional": false,
+          "type": "AssistantPracticeCoverage[]"
+        },
+        {
+          "name": "contextCharacters",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "maxContextCharacters",
+          "optional": false,
+          "type": "18000"
+        },
+        {
+          "name": "fits",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "canPrepareTeachingPractice",
+          "optional": false,
+          "type": "boolean"
+        },
+        {
+          "name": "isTeachingOnly",
+          "optional": false,
+          "type": "true"
+        },
+        {
+          "name": "formalEvidenceCreated",
+          "optional": false,
+          "type": "false"
+        },
+        {
+          "name": "creationAvailable",
+          "optional": false,
+          "type": "false"
+        },
+        {
+          "name": "blocked",
+          "optional": true,
+          "type": "{ code: 'source_budget_exceeded' | 'historical_source_confirmation_required' | 'audience_transfer_confirmation_required'\n    | 'learning_scope_required' | 'source_target_grade_mismatch' | 'source_target_subject_mismatch' | 'practice_coverage_gap'; message: string }"
+        }
+      ]
+    },
+    {
       "name": "AssistantReplySource",
       "file": "packages/contracts/src/assistant-turn.ts",
       "line": 4,
@@ -51919,7 +52202,7 @@
         {
           "name": "meta",
           "optional": false,
-          "type": "{\r\n    requestId: string;\r\n    timestamp: string;\r\n  }"
+          "type": "{\n    requestId: string;\n    timestamp: string;\n  }"
         }
       ]
     },
@@ -59079,6 +59362,7 @@
     "apps/api/src/modules/gesp/gesp.integration.test.ts",
     "apps/api/src/modules/gesp/isolated-runner.test.ts",
     "apps/api/src/modules/gesp/student-curriculum.test.ts",
+    "apps/api/src/modules/learning/assistant-practice-preflight.integration.test.ts",
     "apps/api/src/modules/learning/assistant-whiteboard-content.test.ts",
     "apps/api/src/modules/learning/assistant-whiteboard-lifecycle.integration.test.ts",
     "apps/api/src/modules/learning/assistant-whiteboard.integration.test.ts",

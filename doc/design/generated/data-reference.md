@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`e092d0985aca132ef540eb5049df011024cdac01`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`95715abf997e4d3356cf8f6593238f84e565c6ea`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -160,6 +160,12 @@
 - `AssistantNote`：[packages/contracts/src/assistant-artifact.ts:65](../../../packages/contracts/src/assistant-artifact.ts#L65)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 - `AssistantNotePage`：[packages/contracts/src/assistant-artifact.ts:69](../../../packages/contracts/src/assistant-artifact.ts#L69)；字段：`items`、`nextCursor`。
 - `AssistantNoteExport`：[packages/contracts/src/assistant-artifact.ts:70](../../../packages/contracts/src/assistant-artifact.ts#L70)；字段：`filename`、`mime`、`content`。
+
+### packages/contracts/src/assistant-practice.ts
+
+- `AssistantPracticePreflightInput`：[packages/contracts/src/assistant-practice.ts:14](../../../packages/contracts/src/assistant-practice.ts#L14)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantPracticeCoverage`：[packages/contracts/src/assistant-practice.ts:15](../../../packages/contracts/src/assistant-practice.ts#L15)；字段：`atomId`、`name`、`objective`、`definitionFingerprint`、`eligibleQuestionCount`、`seenQuestionCount`、`unseenQuestionCount`、`unseenFamilyCount`、`ambiguousQuestionCount`。
+- `AssistantPracticePreflight`：[packages/contracts/src/assistant-practice.ts:20](../../../packages/contracts/src/assistant-practice.ts#L20)；字段：`protocol`、`origin`、`objective`、`sourceFingerprint`、`fingerprint`、`historical`、`audience`、`coverage`、`contextCharacters`、`maxContextCharacters`、`fits`、`canPrepareTeachingPractice`、`isTeachingOnly`、`formalEvidenceCreated`、`creationAvailable`、`blocked?`。
 
 ### packages/contracts/src/assistant-turn.ts
 

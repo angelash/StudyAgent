@@ -16,7 +16,7 @@ describe('read-only source practice and atomic coverage over actual HTTP', () =>
   const atomId = 'atomic:math:averagecount', providers: any[] = [];
   let app: any, store: any, owner: any, other: any, independent: any, student: any, second: any, chemistry: any, chemicalAtom: string, pg: Pool | undefined, schema = '';
   const digest = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
-  const fingerprint = async () => digest((await store.database.read()).state);
+  const fingerprint = async () => { const state = (await store.database.read()).state, tasks = await store.database.tasks.list(); expect(tasks.total).toBe(0); return digest({ state, durableTasks: tasks }); };
   async function call(method: 'get' | 'post' | 'put', path: string, body?: unknown, actor = owner, status = method === 'post' ? 201 : 200) {
     let query = request(app.getHttpServer())[method]('/api' + path); if (actor) query = query.set('Authorization', 'Bearer ' + actor.token); if (body) query = query.send(body as object);
     const response = await query; expect(response.status, path + ':' + JSON.stringify(response.body.error)).toBe(status); return response.body.data;
@@ -124,6 +124,16 @@ describe('read-only source practice and atomic coverage over actual HTTP', () =>
       const before = await fingerprint(), old = await preflight(session, [message.id], input); expect(old).toMatchObject({ historical: true, blocked: { code: 'historical_source_confirmation_required' } }); expect(old.sourceFingerprint).toBe(first.sourceFingerprint);
       const acknowledged = await preflight(session, [message.id], { ...input, acknowledgeHistoricalSource: true }); expect(acknowledged.blocked?.code).not.toBe('historical_source_confirmation_required'); expect(await fingerprint()).toBe(before);
     } finally { await store.transaction(() => { store.find('studioCourses', { id: chemistry.id }).units[0].lessons.find((row: any) => row.kind === 'learn').teaching.teaching.explanation = original; }); }
+  });
+  it('invalidates the current scope fingerprint while preserving an intentionally different profile grade', async () => {
+    const [message] = await save(independent, [{}]), input = { audience: audience(), acknowledgeAudienceTransfer: true }, first = await preflight(independent, [message.id], input);
+    try { await scope(5); const before = await fingerprint(), result = await preflight(independent, [message.id], input); expect(result.audience).toMatchObject({ profileGrade: 4, scopeGrade: 5 }); expect(result.fingerprint).not.toBe(first.fingerprint); expect(result.sourceFingerprint).toBe(first.sourceFingerprint); expect(await fingerprint()).toBe(before); }
+    finally { await scope(4); }
+  });
+  it('refuses a withdrawn atomic definition still present in an old learned-scope snapshot', async () => {
+    const [message] = await save(independent, [{}]);
+    try { await store.transaction(() => { store.find('knowledgeAtoms', { id: atomId }).status = 'draft'; }); const before = await fingerprint(); await preflight(independent, [message.id], { audience: audience(), acknowledgeAudienceTransfer: true }, owner, 400); expect(await fingerprint()).toBe(before); }
+    finally { await store.transaction(() => { store.find('knowledgeAtoms', { id: atomId }).status = 'published'; }); }
   });
   it('uses actual learning-code identity and blocks both learner and guardian source preflight throughout a paused assessment', async () => {
     const access = await call('post', '/students/' + student.id + '/learning-access', { enabled: true, expectedVersion: 0, requestKey: randomUUID(), reason: '隔离练习来源身份核对' }), code = await call('post', '/students/' + student.id + '/learning-access/codes', { expectedVersion: access.version, requestKey: randomUUID() });

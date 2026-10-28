@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`e092d0985aca132ef540eb5049df011024cdac01`。共 464 个 HTTP 路由声明，当前 AppModule 可达 443 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`95715abf997e4d3356cf8f6593238f84e565c6ea`。共 465 个 HTTP 路由声明，当前 AppModule 可达 444 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -1246,6 +1246,17 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.gesp.document`
+
+## AssistantPracticePreflightController — 当前接入
+
+### POST /api/ai/assistant/sessions/:sessionId/artifacts/practice/preflight
+
+实现：[apps/api/src/modules/learning/assistant-practice-preflight.controller.ts:9](../../../apps/api/src/modules/learning/assistant-practice-preflight.controller.ts#L9)，方法 `preflight`。
+
+- 签名：`preflight(@Req() req: AuthenticatedRequest, @Param('sessionId') id: string, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[{"name":"HttpCode","args":["200"]}]`
+- 调用：`this.practice.preflight`
 
 ## AssistantWhiteboardController — 当前接入
 
