@@ -59,7 +59,7 @@ for (const engine of ['sqlite', 'postgres'] as const) describe.skipIf(engine ===
   async function legacy(url: string) {
     const db = new DomainDatabase(url); await db.open();
     try { await db.commit(await db.read(), initial()); } finally { await db.close(); }
-    await raw(url, async sql => { await sql('DROP INDEX question_visual_prepare_request'); await sql('DROP INDEX teaching_tool_creation_request'); await sql('DELETE FROM schema_migrations WHERE version>=20'); });
+    await raw(url, async sql => { await sql('DROP INDEX question_visual_prepare_request'); await sql('DROP INDEX teaching_tool_creation_request'); await sql('DELETE FROM schema_migrations WHERE version>=20'); await sql('DROP INDEX IF EXISTS assistant_note_creation_request'); await sql("UPDATE study_restore_guard SET state='ready' WHERE id=1"); });
   }
   it('migrates and cold reopens actual schema19 without rewriting original questions, version snapshots, long prompts or first answers', async () => {
     const url = await scope(); await legacy(url);
@@ -67,7 +67,7 @@ for (const engine of ['sqlite', 'postgres'] as const) describe.skipIf(engine ===
       const db = new DomainDatabase(url); await db.open();
       try { expect((await db.read()).state).toEqual(initial()); } finally { await db.close(); }
     }
-    await raw(url, async sql => { expect(Number((await sql('SELECT MAX(version) AS version FROM schema_migrations'))[0].version)).toBe(22); });
+    await raw(url, async sql => { expect(Number((await sql('SELECT MAX(version) AS version FROM schema_migrations'))[0].version)).toBe(23); });
   });
   it('rolls back duplicate legacy owner/request keys atomically, retaining both records and schema19', async () => {
     const url = await scope(); await legacy(url);

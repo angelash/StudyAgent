@@ -118,25 +118,25 @@ describe('verified backup and isolated recovery', () => {
       await database.close();
       const guard = new DatabaseSync(location);
       try {
-        expect(guard.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(22);
-        expect(guard.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state).toBe('ready');
+        expect(guard.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(23);
+        expect(guard.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state).toBe('ready-schema23');
         guard.exec("UPDATE study_restore_guard SET state='restoring'");
       } finally { guard.close(); }
       const refused = new DomainDatabase(location);
       await expect(refused.open()).rejects.toThrow('restoration is incomplete');
       await expect(createBundle({ dataDir: directory, destination: join(directory + '-backup') })).rejects.toThrow('source_database_restore_incomplete');
-      const unblock = new DatabaseSync(location); unblock.exec("UPDATE study_restore_guard SET state='ready'"); unblock.close();
+      const unblock = new DatabaseSync(location); unblock.exec("UPDATE study_restore_guard SET state='ready-schema23'"); unblock.close();
       writeFileSync(join(directory, '.study-restore-incomplete'), 'pending receipt');
       await expect(createBundle({ dataDir: directory, destination: join(directory + '-marker') })).rejects.toThrow('source_database_restore_incomplete');
     } finally { await database.close(); rmSync(directory, { recursive: true, force: true }); rmSync(directory + '-backup', { recursive: true, force: true }); }
   });
 
-  it('rejects future schema23 without publishing a backup success manifest', async () => {
+  it('rejects future schema24 without publishing a backup success manifest', async () => {
     const directory = mkdtempSync(join(tmpdir(), 'study-backup-future-')), source = join(directory, 'source'), bundle = join(directory, 'bundle');
     mkdirSync(source); const db = new DomainDatabase(join(source, 'study-agent.sqlite3')); await db.open(); await db.close();
     try {
       const future = new DatabaseSync(join(source, 'study-agent.sqlite3'));
-      try { future.prepare('INSERT INTO schema_migrations VALUES(23,?)').run(new Date().toISOString()); } finally { future.close(); }
+      try { future.prepare('INSERT INTO schema_migrations VALUES(24,?)').run(new Date().toISOString()); } finally { future.close(); }
       await expect(createBundle({ dataDir: source, destination: bundle })).rejects.toThrow('unsupported_database_schema');
       expect(existsSync(join(bundle, 'manifest.json'))).toBe(false);
       expect(existsSync(join(bundle, '.study-backup-incomplete'))).toBe(true);

@@ -1,0 +1,99 @@
+{
+  "passed": true,
+  "scope": "14 existing suites,SQLite and actual ownedPostgreSQL.67 passed,0 failed,1 deliberate PostgreSQL skip of SQLite-only backup case. Old schemas and rollback targets retained; current schema23 and future24 are distinct.",
+  "stats": {
+    "numPassedTests": 67,
+    "numFailedTests": 0,
+    "numPendingTests": 1
+  },
+  "pending": [],
+  "limits": [
+    "No new persistent source-whiteboard flow orC3 UI implemented.",
+    "Additional topic image-file current-version test updated but not in this14-file matrix; full API gate still required.",
+    "No full browser/remoteCI/production or real learning outcome acceptance."
+  ],
+  "files": {
+    "apps/api/src/infrastructure/assistant-note-storage.integration.test.ts": {
+      "bytes": 5810,
+      "sha256": "b587bcfab5241307907d8ba522b27f6eeb83847217c6b948dbc27ed6752f652a"
+    },
+    "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts": {
+      "bytes": 7023,
+      "sha256": "1e7924b7233b1284535d2aa402f4001beb94abdc86b39ce27871b8789dd6efc5"
+    },
+    "apps/api/src/infrastructure/backup.integration.test.ts": {
+      "bytes": 13101,
+      "sha256": "13d1f48ade356bce0325fc58498059e62a7d2458e793912e61fac48f4a7cb7f8"
+    },
+    "apps/api/src/infrastructure/paper-practice-migration.test.ts": {
+      "bytes": 4722,
+      "sha256": "9cb3b57a1c95922115c4264ef0e4ea2d76e37ad1c200d4f55a65a82b49274e52"
+    },
+    "apps/api/src/infrastructure/source-course-check-storage.integration.test.ts": {
+      "bytes": 12904,
+      "sha256": "de144f3e1c2538bad91cf408dfbe10595a2fe16708328dc76bf65209174eff54"
+    },
+    "apps/api/src/infrastructure/topic-whiteboard-postgres.integration.test.ts": {
+      "bytes": 4293,
+      "sha256": "1d26b30ff1c8d5d1be7caeaccee68bde1f12e807389b59a8fbd06c79d2bcc0af"
+    },
+    "apps/api/src/infrastructure/topic-whiteboard-storage.integration.test.ts": {
+      "bytes": 7677,
+      "sha256": "82129d2e4173048785164596c99eddc6461370326283f8ae0abd19f423a63333"
+    },
+    "apps/api/src/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts": {
+      "bytes": 3075,
+      "sha256": "20bb3f8d45e57a13ade28e814cb7ddc1067c2bd1ab60a33690d37ec3879d247b"
+    },
+    "apps/api/src/infrastructure/topic-whiteboard-visual-storage.integration.test.ts": {
+      "bytes": 4634,
+      "sha256": "456c622267f36c54df8eec09dedf7b94190012d91487133145425e63f5ed30e0"
+    },
+    "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts": {
+      "bytes": 5701,
+      "sha256": "3900712bb2164dba971dbd093084274e4d90ec31d6dc57ed9643f9a0eb0d9bca"
+    },
+    "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts": {
+      "bytes": 4944,
+      "sha256": "b1c5ede03779cd99c1cf6ca9cc7bb33beafd81f604ee636bebeddefac462106f"
+    },
+    "apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts": {
+      "bytes": 6420,
+      "sha256": "733bb98184b411e91123fdc1c6e3020b9daa754cd943596c72e87a822fa56805"
+    },
+    "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts": {
+      "bytes": 18923,
+      "sha256": "11e4b4db670d584e01a66377e07ce5bebd8c1501366b5d78fa246be7401c465e"
+    },
+    "apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts": {
+      "bytes": 25513,
+      "sha256": "b4d989568cd52efaab78323997850e527ced0f6d44b011668303aa771e3acde0"
+    },
+    "data/qa/schema23-existing-native-second.json": {
+      "bytes": 34994,
+      "sha256": "eb598c6ce4df59bca2f8fd21becb75edd96eb11ecc14c942240752bf9bee8833"
+    },
+    "data/qa/run-schema23-existing-native-matrix.cjs": {
+      "bytes": 2521,
+      "sha256": "7bbda88e7ade7931b4fa65f5f4fd06e97cf03d81e176b96b062359f04366ba0d"
+    },
+    "data/qa/update-schema23-existing-fixtures.py": {
+      "bytes": 3895,
+      "sha256": "c6305de152a4e5d374ed0dc016e1dc600ae07f079bc873607203df17bb189d30"
+    },
+    "apps/api/src/modules/learning/topic-whiteboard-visual-files.test.ts": {
+      "bytes": 6584,
+      "sha256": "a99ac4b1b3b56aee3147b10efca2eb7f00e22929795f6b00df2378ae3305aa60"
+    },
+    "schema23-existing-native-second.log.gz": {
+      "sha256": "cea5e5043affb587efed869b743c6b30f8c86b082d23b25fb82091891181370e",
+      "originalSha256": "3fb8aaccc030fcdbe19de717dda2540223b4249853c94323269691dd9321a06d",
+      "originalBytes": 6403
+    },
+    "schema23-existing-types-first.log.gz": {
+      "sha256": "18cf2e3bde783a9f4069c65e9f606876fa9eae33de8f581a73e88b403bad0dec",
+      "originalSha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "originalBytes": 68
+    }
+  }
+}

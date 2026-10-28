@@ -190,7 +190,7 @@ describe('actual original-answer image HTTP tasks, byte identity and adoption ve
       if (sourceLocation) await native.createPostgresBundle({ connectionString: sourceLocation, dataDir: directory, destination: bundle, pgBin: process.env.STUDY_TEST_PG_BIN });
       else await backup.createBundle({ dataDir: directory, destination: bundle });
       const verified = sourceLocation ? await native.verifyPostgresBundle({ bundle, pgBin: process.env.STUDY_TEST_PG_BIN }) : await backup.verifyBundle({ bundle });
-      expect(verified.manifest.database.schemaVersions.at(-1)).toBe(22);
+      expect(verified.manifest.database.schemaVersions.at(-1)).toBe(23);
       expect(verified.manifest.files.some((file: any) => file.path.startsWith('data/whiteboard-question-visuals/' + candidate.view.id + '/'))).toBe(true);
       const firstLocation = await database();
       if (firstLocation) { await native.restorePostgresBundle({ bundle, connectionString: firstLocation, destination: first, pgBin: process.env.STUDY_TEST_PG_BIN }); process.env.DATABASE_URL = firstLocation; }

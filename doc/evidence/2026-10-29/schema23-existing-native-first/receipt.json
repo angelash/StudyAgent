@@ -1,0 +1,186 @@
+{
+  "passed": false,
+  "scope": "Original unchanged old fixtures run against schema23,SQLite and actual ownedPostgreSQL. No production changes.",
+  "stats": {
+    "numPassedTests": 42,
+    "numFailedTests": 25,
+    "numPendingTests": 1
+  },
+  "failures": [
+    {
+      "name": "sqlite atomic note schema21 to22 migration cold migrates and reopens exact complete original notes and existing formal evidence",
+      "error": "AssertionError: expected 23 to be 21 // Object.is equality"
+    },
+    {
+      "name": "sqlite atomic note schema21 to22 migration keeps both conflicting originals and schema21 intact when the new uniqueness migration fails",
+      "error": "AssertionError: expected 23 to be 21 // Object.is equality"
+    },
+    {
+      "name": "postgres atomic note schema21 to22 migration cold migrates and reopens exact complete original notes and existing formal evidence",
+      "error": "AssertionError: expected 23 to be 21 // Object.is equality"
+    },
+    {
+      "name": "postgres atomic note schema21 to22 migration keeps both conflicting originals and schema21 intact when the new uniqueness migration fails",
+      "error": "AssertionError: expected 23 to be 21 // Object.is equality"
+    },
+    {
+      "name": "verified backup and isolated recovery migrates a version-three database without changing evidence and refuses incomplete source restores even without the file marker",
+      "error": "AssertionError: expected 23 to be 22 // Object.is equality"
+    },
+    {
+      "name": "verified backup and isolated recovery rejects future schema23 without publishing a backup success manifest",
+      "error": "Error: UNIQUE constraint failed: schema_migrations.version"
+    },
+    {
+      "name": "paper practice schema18 migrations and durable replay constraints upgrades a real schema17 store without changing original answers, correction history or replay receipts",
+      "error": "Error: minimum_reader_guard_mismatch"
+    },
+    {
+      "name": "source check transactional publication upgrades a real schema14 database and preserves old definitions; invalid duplicate pointers stop migration15 without deleting evidence",
+      "error": "Error: minimum_reader_guard_mismatch"
+    },
+    {
+      "name": "sqlite teaching schema20 to21 original drafts and atomic owner keys migrates a real schema20 store and cold reopens all exact draft, table/formula and formal records",
+      "error": "Error: minimum_reader_guard_mismatch"
+    },
+    {
+      "name": "sqlite teaching schema20 to21 original drafts and atomic owner keys backs up and cold restores native current schema22 with complete drafts and original first answers",
+      "error": "AssertionError: expected 23 to be 22 // Object.is equality"
+    },
+    {
+      "name": "postgres teaching schema20 to21 original drafts and atomic owner keys migrates a real schema20 store and cold reopens all exact draft, table/formula and formal records",
+      "error": "Error: minimum_reader_guard_mismatch"
+    },
+    {
+      "name": "native PostgreSQL AI whiteboard original identities opens current schema20, enforces prepare and publication identities, and retains original records after native reopen",
+      "error": "AssertionError: expected 23 to be 22 // Object.is equality"
+    },
+    {
+      "name": "AI topic whiteboard schema and private original records upgrades a real schema15 database while retaining original legacy whiteboards and adds the two intended constraints",
+      "error": "Error: minimum_reader_guard_mismatch"
+    },
+    {
+      "name": "AI topic whiteboard schema and private original records backs up, verifies and cold restores current schema20 original topic records without modifying them",
+      "error": "AssertionError: expected 23 to be 22 // Object.is equality"
+    },
+    {
+      "name": "native PostgreSQL topic figure identities opens current schema20 and retains exact original figure requests through a native reopen",
+      "error": "AssertionError: expected 23 to be 22 // Object.is equality"
+    },
+    {
+      "name": "topic figure durable original request identities upgrades an actual schema16 file without changing its original whiteboard or manuscript",
+      "error": "Error: minimum_reader_guard_mismatch"
+    },
+    {
+      "name": "topic figure durable original request identities stops migration17 on duplicate legacy keys without deleting their original rows or recording a successful upgrade",
+      "error": "Error: expected [Function] to throw error including 'UNIQUE' but got 'minimum_reader_guard_mismatch'"
+    },
+    {
+      "name": "native PostgreSQL original whiteboard questions and schema19 migrates actual schema18 and cold reopens the complete answer, long formula, speech, camera and first diagnostic response",
+      "error": "Error: minimum_reader_guard_mismatch"
+    },
+    {
+      "name": "native schema19 whiteboard question durability migrates a real schema18 file, preserving the full original question, bookmark, answer and first diagnostic response",
+      "error": "Error: minimum_reader_guard_mismatch"
+    },
+    {
+      "name": "native schema19 whiteboard question durability backs up schema19 and cold restores exact question data without replacing the first diagnostic answer",
+      "error": "AssertionError: expected 23 to be 22 // Object.is equality"
+    },
+    {
+      "name": "sqlite native question-image schema19 to schema20 migrates and cold reopens actual schema19 without rewriting original questions, version snapshots, long prompts or first answers",
+      "error": "Error: minimum_reader_guard_mismatch"
+    },
+    {
+      "name": "postgres native question-image schema19 to schema20 migrates and cold reopens actual schema19 without rewriting original questions, version snapshots, long prompts or first answers",
+      "error": "Error: minimum_reader_guard_mismatch"
+    },
+    {
+      "name": "actual original-answer image HTTP tasks, byte identity and adoption versions on PostgreSQL cold restores actual version PNGs, then applies a newer deletion ledger without resurrecting private images or erasing another owner",
+      "error": "AssertionError: expected 23 to be 22 // Object.is equality"
+    },
+    {
+      "name": "sqlite original paper practice native recovery cold restores exact first answers, corrections and request receipts with original media, and applies newer child and account deletion receipts",
+      "error": "AssertionError: expected 23 to be 22 // Object.is equality"
+    },
+    {
+      "name": "postgres original paper practice native recovery cold restores exact first answers, corrections and request receipts with original media, and applies newer child and account deletion receipts",
+      "error": "AssertionError: expected 23 to be 22 // Object.is equality"
+    }
+  ],
+  "files": {
+    "apps/api/src/infrastructure/assistant-note-storage.integration.test.ts": {
+      "bytes": 5797,
+      "sha256": "935d52a1b78f34fda233c80bd8b64e95da1b0b99019fb36d59e8e394c9104bd5"
+    },
+    "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts": {
+      "bytes": 6944,
+      "sha256": "762efb5c7dc2f507717b1f0ff99a2b75155d1cfb62c327ce8d6f71cb17fed7d7"
+    },
+    "apps/api/src/infrastructure/backup.integration.test.ts": {
+      "bytes": 13228,
+      "sha256": "0d7f06d6e1607d20f0ff227c078e8a5ba0a5170912c88d1955230e3863b49906"
+    },
+    "apps/api/src/infrastructure/paper-practice-migration.test.ts": {
+      "bytes": 4649,
+      "sha256": "56b8edfd8ce26e3e3f4a5bff0bebb6828ff581bf00f487dca9632b48526e7acb"
+    },
+    "apps/api/src/infrastructure/source-course-check-storage.integration.test.ts": {
+      "bytes": 12730,
+      "sha256": "e42a3ee9ca4cae8e9823ec6ff60ead03555feb1371b0f1ba83aa290493026b40"
+    },
+    "apps/api/src/infrastructure/topic-whiteboard-postgres.integration.test.ts": {
+      "bytes": 4343,
+      "sha256": "6ebb330065e3174c2c837ee67445e0f98379db7b819b3483ffb12f5ad4143af6"
+    },
+    "apps/api/src/infrastructure/topic-whiteboard-storage.integration.test.ts": {
+      "bytes": 7627,
+      "sha256": "342efe9b02cda9fae95ae241a1807eecfec899d9ae21a8bc87cb294be4591a13"
+    },
+    "apps/api/src/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts": {
+      "bytes": 3114,
+      "sha256": "580681fe1bfc4c1c3c9625b6d30c812f3663cd0258f30ba32d9769f71264ed44"
+    },
+    "apps/api/src/infrastructure/topic-whiteboard-visual-storage.integration.test.ts": {
+      "bytes": 4435,
+      "sha256": "d7e714049f3f4f74c2343c14808740895a81a2b737308faaffed3c503753f041"
+    },
+    "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts": {
+      "bytes": 5610,
+      "sha256": "c29d3968fcbc274665112a95fd6d46fe15cd5e609853bd123daf6cbc0703c196"
+    },
+    "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts": {
+      "bytes": 4868,
+      "sha256": "049feb9d779e3f61acec0c2ddb613d074e246f963e169dc62398f795a10e34da"
+    },
+    "apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts": {
+      "bytes": 6378,
+      "sha256": "a78056b250207831388599e06e904776c5e61597f91d257aaeae52fcc6d4f3f2"
+    },
+    "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts": {
+      "bytes": 19068,
+      "sha256": "1e04bbfab1e282caff2c16e192ebe5fe640e3a080d89f04b77df9b9b0b669790"
+    },
+    "apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts": {
+      "bytes": 25739,
+      "sha256": "d27a4a00eb169b2b5a3be088d87df0a6b42a0df71c2294defcf79db7fe53bc9d"
+    },
+    "data/qa/schema23-existing-native-first.json": {
+      "bytes": 48716,
+      "sha256": "766450e03a955ade8d28e670753ea51112f91417fa2f9583ade348f722d573a3"
+    },
+    "data/qa/run-schema23-existing-native-matrix.cjs": {
+      "bytes": 2521,
+      "sha256": "7bbda88e7ade7931b4fa65f5f4fd06e97cf03d81e176b96b062359f04366ba0d"
+    },
+    "apps/api/src/infrastructure/domain-database.ts": {
+      "bytes": 34374,
+      "sha256": "8c2299ec2c09c3ef8268739ec1ba3244838465818014149222968485ad98346b"
+    },
+    "original.log.gz": {
+      "sha256": "9974272fc8c595e7667077d18e55e6e3271ea0867372c545c44d4078a850efbf",
+      "originalSha256": "b0305232576f158a6b19d0584e98f9cc891dc64a94c772aea6abca17f4a43d0d",
+      "originalBytes": 28004
+    }
+  }
+}

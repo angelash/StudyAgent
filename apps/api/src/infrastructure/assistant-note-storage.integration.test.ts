@@ -30,12 +30,12 @@ for (const engine of ['sqlite', 'postgres'] as const) describe.skipIf(engine ===
   }
   async function legacy(url: string) {
     const database = new DomainDatabase(url); await database.open(); try { await database.commit(await database.read(), original()); } finally { await database.close(); }
-    await raw(url, async sql => { await sql('DROP INDEX assistant_note_creation_request'); await sql('DELETE FROM schema_migrations WHERE version=22'); expect(Number((await sql('SELECT MAX(version) version FROM schema_migrations'))[0].version)).toBe(21); });
+    await raw(url, async sql => { await sql('DROP INDEX assistant_note_creation_request'); await sql('DELETE FROM schema_migrations WHERE version>=22'); await sql("UPDATE study_restore_guard SET state='ready' WHERE id=1"); expect(Number((await sql('SELECT MAX(version) version FROM schema_migrations'))[0].version)).toBe(21); });
   }
   it('cold migrates and reopens exact complete original notes and existing formal evidence', async () => {
     const url = await scope(); await legacy(url);
     for (let index = 0; index < 2; index++) { const database = new DomainDatabase(url); await database.open(); try { expect((await database.read()).state).toEqual(original()); } finally { await database.close(); } }
-    await raw(url, async sql => { expect(Number((await sql('SELECT MAX(version) version FROM schema_migrations'))[0].version)).toBe(22); });
+    await raw(url, async sql => { expect(Number((await sql('SELECT MAX(version) version FROM schema_migrations'))[0].version)).toBe(23); });
   });
   it('keeps both conflicting originals and schema21 intact when the new uniqueness migration fails', async () => {
     const url = await scope(); await legacy(url);

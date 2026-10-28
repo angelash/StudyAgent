@@ -13,9 +13,9 @@ describe('topic figure durable original request identities', () => {
     let db: DomainDatabase | undefined;
     try {
       db = new DomainDatabase(file); await db.open(); await db.commit(await db.read(), legacy); await db.close(); db = undefined;
-      const old = new DatabaseSync(file); old.exec('DROP INDEX topic_visual_prepare_request;DROP INDEX paper_practice_creation_request;DROP INDEX paper_practice_command_request;DROP INDEX IF EXISTS teaching_tool_creation_request;DELETE FROM schema_migrations WHERE version>=17;'); old.close();
+      const old = new DatabaseSync(file); old.exec('DROP INDEX topic_visual_prepare_request;DROP INDEX paper_practice_creation_request;DROP INDEX paper_practice_command_request;DROP INDEX IF EXISTS teaching_tool_creation_request;DELETE FROM schema_migrations WHERE version>=17;'); old.exec("DROP INDEX IF EXISTS assistant_note_creation_request;UPDATE study_restore_guard SET state='ready' WHERE id=1;"); old.close();
       db = new DomainDatabase(file); await db.open(); expect((await db.read()).state).toEqual(legacy); await db.close(); db = undefined;
-      const verified = new DatabaseSync(file, { readOnly: true }); try { expect(verified.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(22); } finally { verified.close(); }
+      const verified = new DatabaseSync(file, { readOnly: true }); try { expect(verified.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(23); } finally { verified.close(); }
     } finally { await db?.close(); rmSync(directory, { recursive: true, force: true }); }
   });
   it('rejects reuse of one owner original key for a different draft and retains the original record atomically', async () => {
@@ -34,7 +34,7 @@ describe('topic figure durable original request identities', () => {
     const directory = mkdtempSync(join(tmpdir(), 'study-topic-figure-duplicates-')), file = join(directory, 'original.sqlite3'); let db: DomainDatabase | undefined;
     try {
       db = new DomainDatabase(file); await db.open(); await db.close(); db = undefined;
-      const old = new DatabaseSync(file); old.exec('DROP INDEX topic_visual_prepare_request;DROP INDEX paper_practice_creation_request;DROP INDEX paper_practice_command_request;DROP INDEX IF EXISTS teaching_tool_creation_request;DELETE FROM schema_migrations WHERE version>=17;');
+      const old = new DatabaseSync(file); old.exec('DROP INDEX topic_visual_prepare_request;DROP INDEX paper_practice_creation_request;DROP INDEX paper_practice_command_request;DROP INDEX IF EXISTS teaching_tool_creation_request;DELETE FROM schema_migrations WHERE version>=17;'); old.exec("DROP INDEX IF EXISTS assistant_note_creation_request;UPDATE study_restore_guard SET state='ready' WHERE id=1;");
       const insert = old.prepare('INSERT INTO domain_records(collection,record_id,body,position) VALUES(?,?,?,?)');
       for (const [position, id] of ['first', 'second'].entries()) insert.run('studioTopicWhiteboardVisuals', id, JSON.stringify({ id, ownerUserId: 'owner', requestKey: 'duplicate' }), position);
       old.close(); db = new DomainDatabase(file); await expect(db.open()).rejects.toThrow('UNIQUE'); await db.close(); db = undefined;

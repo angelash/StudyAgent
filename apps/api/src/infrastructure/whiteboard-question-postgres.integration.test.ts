@@ -23,13 +23,13 @@ describe.skipIf(!connection)('native PostgreSQL original whiteboard questions an
   }
   async function legacy(url: string) {
     const db = new DomainDatabase(url); await db.open(); try { await db.commit(await db.read(), original()); } finally { await db.close(); }
-    const raw = new Pool({ connectionString: url }); try { await raw.query('DROP INDEX whiteboard_question_request'); await raw.query('DROP INDEX IF EXISTS question_visual_prepare_request'); await raw.query('DROP INDEX IF EXISTS teaching_tool_creation_request'); await raw.query('DELETE FROM schema_migrations WHERE version>=19'); } finally { await raw.end(); }
+    const raw = new Pool({ connectionString: url }); try { await raw.query('DROP INDEX whiteboard_question_request'); await raw.query('DROP INDEX IF EXISTS question_visual_prepare_request'); await raw.query('DROP INDEX IF EXISTS teaching_tool_creation_request'); await raw.query('DELETE FROM schema_migrations WHERE version>=19'); await raw.query('DROP INDEX IF EXISTS assistant_note_creation_request'); await raw.query("UPDATE study_restore_guard SET state='ready' WHERE id=1"); } finally { await raw.end(); }
   }
   it('migrates actual schema18 and cold reopens the complete answer, long formula, speech, camera and first diagnostic response', async () => {
     const { schema, url } = await scoped(); await legacy(url);
     for (let reopen = 0; reopen < 2; reopen++) { const db = new DomainDatabase(url); await db.open(); try { expect((await db.read()).state).toEqual(original()); } finally { await db.close(); } }
     const raw = new Pool({ connectionString: url }); try {
-      expect(Number((await raw.query('SELECT MAX(version) AS version FROM schema_migrations')).rows[0].version)).toBe(22);
+      expect(Number((await raw.query('SELECT MAX(version) AS version FROM schema_migrations')).rows[0].version)).toBe(23);
       expect((await raw.query('SELECT indexname FROM pg_indexes WHERE schemaname=$1 AND indexname=$2', [schema, 'whiteboard_question_request'])).rowCount).toBe(1);
     } finally { await raw.end(); }
   });
