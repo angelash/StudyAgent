@@ -24,8 +24,9 @@ const checksFile = 'apps/api/src/modules/learning/classroom-unit-checks.ts';
 const choiceFile = 'apps/api/src/modules/learning/classroom-choice-content.ts', choiceHelper = 'packages/contracts/src/classroom-choice.ts';
 const projectsFile = 'apps/api/src/modules/learning/course-project-content.ts';
 const chemistryFile = 'apps/api/src/modules/diagnostics/chemistry-curriculum.ts';
+const chemistryTutorialFiles = ['chemistry-tutorial', 'chemistry-tutorial-content'].map(name => 'apps/api/src/modules/learning/' + name + '.ts');
 const practiceFiles = ['content', 'model', 'u1', 'u2', 'u3', 'u4', 'u5'].map(name => 'apps/api/src/modules/learning/classroom-practice-' + name + '.ts');
-const allowed = new Set([classroomFile, boardFile, checksFile, projectsFile, chemistryFile, choiceFile, choiceHelper, ...practiceFiles]), cache = new Map();
+const allowed = new Set([classroomFile, boardFile, checksFile, projectsFile, chemistryFile, choiceFile, choiceHelper, ...practiceFiles, ...chemistryTutorialFiles]), cache = new Map();
 function loadContent(file) {
   assert(allowed.has(file), 'Unexpected classroom module: ' + file);
   if (cache.has(file)) return cache.get(file).exports;
@@ -43,6 +44,14 @@ function loadContent(file) {
 const classroom = loadContent(classroomFile), course = classroom.classroomCourse();
 const projects = loadContent(projectsFile).adultProjectDefinitions();
 const chemistry = loadContent(chemistryFile), chemicalDefinitions = chemistry.buildChemistryCurriculum();
+const chemistryTutorial = loadContent(chemistryTutorialFiles[1]);
+const chemistryFigureManifest = 'resources/curriculum/chemistry-tutorial-figures-v2.json';
+const chemistryFigures = json(chemistryFigureManifest).figures;
+assert.equal(chemistryFigures.length, chemistryTutorial.chemistryTutorials.length, 'Each chemistry tutorial needs its original figure');
+for (const figure of chemistryFigures) {
+  assert(/^\/classroom\/chemistry-v2\/[a-z][a-z0-9-]*\.svg$/.test(figure.href), 'Unexpected chemistry figure path');
+  assert.equal(hash('apps/web/public' + figure.href), figure.sha256, 'Chemistry original figure hash mismatch');
+}
 const lectures = course.units.flatMap(unit => unit.lectures), lessons = lectures.flatMap(lecture => lecture.lessons);
 const practiceQuestions = lessons.flatMap(lesson => classroom.classroomLesson(lesson.id).questions);
 const questionIds = practiceQuestions.map(question => question.id);
@@ -68,7 +77,12 @@ const snapshot = {
   chemistry: { version: chemistry.CHEMISTRY_VERSION, grade: 9, term: 'upper', units: chemistry.chemistryUnits.length,
     authoredPoints: chemicalDefinitions.length, teachingCards: chemicalDefinitions.filter(d => d.atom.teaching).length,
     originalRuleExercises: chemicalDefinitions.reduce((sum, d) => sum + d.exercises.length, 0),
-    sourceSha256: { [chemistryFile]: hash(chemistryFile) },
+    tutorial: { version: chemistryTutorial.CHEMISTRY_TUTORIAL_VERSION, originalFigures: chemistryFigures.length,
+      interactionModelKinds: Object.keys(chemistryTutorial.chemistryExperiments).length,
+      lessonsWithModel: chemistryTutorial.chemistryTutorials.filter(item => item.experiment).length,
+      classroomChecks: chemistryTutorial.chemistryTutorials.filter(item => item.check).length,
+      textbookBasis: chemistryTutorial.chemistryReference.title, editionNotice: chemistryTutorial.chemistryReference.editionNotice },
+    sourceSha256: Object.fromEntries([chemistryFile, ...chemistryTutorialFiles, chemistryFigureManifest].map(file => [file, hash(file)])),
     interpretation: 'Separate original chemistry course counts. Exercise count is not independent family count, a standardized norm, teacher approval, publisher textbook coverage or real learner retention evidence.' },
   registry: { textbooks: { records: json(textbooksPath).books.length, source: textbooksPath, sha256: hash(textbooksPath), interpretation: 'Registration records are not approved full-content teaching coverage.' } },
   gesp: {

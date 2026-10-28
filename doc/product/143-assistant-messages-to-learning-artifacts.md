@@ -109,3 +109,23 @@ B层笔记持久保存/完整导出/原命令恢复与采用、前端选取/原�
 第10节所述完整压力运行已终态：446通过/18失败，464原始尝试、零跳过/flaky/重试，3062输入终态保持；18处全部是匿名注册201预期却收到429，未进入其课堂/几何断言。新发现的四类旧准备器与原两类共同修复，保留生产限流并在fixture中为每个匿名家庭指定独立测试地址，注册和浏览器登录保持一致。原报告、日志、截图与脱敏trace完整留在[压力首轮](../evidence/2026-10-28/artifact143-full-pressure-first/receipt.json)，不覆盖失败。
 
 共同源合入主目录已提交c457340教程后，按142预提交规格补齐实际新讲述、28原图、13模型和版本指纹；原私聊/143 A/评测保护保留。最新SQLite62/PG38和新32浏览器压力专项均零失败，范围重叠不相加；3109新输入保持，独立Web构建与类型通过。真实共享地址前30次201、第31次429保持。见[新版来源与专项](../evidence/2026-10-28/chemistry-v2-source-alignment/receipt.json)和[142第36节](142-course-teaching-context-and-source-references.md#36-新版原课堂来源与限流专项的实际结果)。这不是完整464全绿或正式交付，B的持久笔记/完整导出/UI仍待。
+
+## 12. B层逐字笔记的具体持久协议（实施前）
+
+本节只扩展kind=verbatim_note；不提前接受白板、练习或计划kind。笔记全程零模型调用，采用后仍是本人私有学习材料，没有掌握分、诊断或日历写入。B1完成真实持久接口、隐私与双库恢复；B2接完整选择/编辑/采用/导出/原消息返回界面，两层分别验收，B1不能报可用界面完成。
+
+新增`assistantArtifactDrafts`集合，统一保存id、protocol、kind、ownerUserId、studentId、sessionId、原preflight指纹、完整origin快照、目标、title、markdown、status=ready/confirmed、revision、createdAt/updatedAt/confirmedAt及原命令回执。origin直接由A服务重建，客户端只能传选择/目标/标题/原指纹，不传原文、档案、模型或引用。确认沿同一对象原子冻结编辑稿；不需要异步任务或外部服务，不建立空转worker。C需要生成任务时再扩展独立kind协议。
+
+全部接口位于`ai/assistant/sessions/:sessionId/artifacts/notes`，复用当前AuthGuard和本人原会话鉴权。POST根路径创建ready候选，输入原A选择/目标、title（1～160）、preflightFingerprint与requestKey（8～180）。服务端在可提交事务内重新A预检，fits必须true且完整指纹相同，再保存完整逐字稿。标题不从长原文静默截取；原稿按原消息顺序呈现，正文字符保持不变。创建键按ownerUserId+requestKey唯一，schema22在SQLite/PG均加同一唯一索引；原键不同session/内容409，其他账号不能读回原件。
+
+GET根路径只列本人此会话笔记的有界摘要，pageSize默认20/最多50；游标绑定本人、会话与上次原保存位置，同毫秒按实际保存顺序稳定翻页，不把全部origin塞进列表。GET `requests/:key`返回本人原创建回执；GET `:noteId`返回完整本人稿与origin。PATCH `:noteId/content`输入expectedRevision、title、markdown、requestKey，只有ready可编辑；原文不被编辑稿覆盖，markdown以原字符串保存，最多30000字符，超限显式拒绝。POST `:noteId/confirm`需expectedRevision、contentFingerprint、requestKey及明确核对确认；确认后不可原地改写，另存副本需显式新创建。
+
+GET `:noteId/requests/:key`返回该对象原编辑/确认回执，回执含当次revision、状态与内容指纹；原键同内容先返回原回执，不受随后revision增长影响，原键异内容409。正文和回执同事务保存，进程重启、丢HTTP响应和两实例竞争均不能产生第二份采用。最多100条原命令后明确提示另存新笔记，不丢弃旧回执。原状态与当前稿分别读取，不能把最新编辑结果伪装成旧命令结果。
+
+GET `:noteId/export?format=json|markdown`返回完整可携带内容及建议文件名，由前端显式下载。JSON保留原消息、原模型、实际出处/课程版本、编辑稿、原内容SHA及采用状态；Markdown保留全部原消息、原稿/编辑稿分隔、来源和版本说明，不裁切表格/LaTeX/代码或补造页码。原HTML/脚本只作文字呈现，不能执行。请求键、身份凭据、内部授权、任务prepared和其他监护人私聊不导出。页面下载失败保留全文、原稿和重试，不重新创建。
+
+保存前核对本人私聊与当前孩子授权；学生in_progress/paused正式评测拒绝创建/编辑/确认，已有合法笔记只读沿原规则。原课程成为旧版只允许显式保存原历史，不能恢复原会话发问资格；读取笔记检查本人和原课程/资料可读权限，不用新教材重新解释已保存origin。已撤回授权、另一监护人、其他档案/会话及源已删除均拒绝；前端身份切换卸载全文并隔离本机草稿。
+
+集合在store声明与reset同步注册；schema22旧库升级失败不得记成功。`studentRecords`按studentId和原session关系清除；`actorRecords`清除本人全部私有笔记，不能因课程发布而留下原聊天副本。`portableRecords`仅导出本人的笔记及合法学生本人材料，继承原私聊筛选。隐私删除账本包含新集合/ID，SQLite文件恢复和PG原生恢复叠加最新账本，旧备份中的笔记和原命令不能复活。无新增实体图片副本，笔记图片只保留原受控引用和说明，不迁移私有上传。
+
+B1先保留真实POST缺口，再验证旧70条/关联问题/同毫秒顺序、完整表格公式代码、创建与编辑/确认原键重放、指纹/版本/超限冲突、另账号与共享孩子的另一监护人、真实学习码评测阻断、关API冷重开、两实例竞争和SQLite/PG原生恢复。所有模型调用为零，正式记录前后SHA保持。B2复用原助教消息与历史分页，不新造聊天壳；支持逐条勾选、关联问题、预检全文、独立编辑稿、显式采用、我的笔记入口、完整导出和原消息锚点。390/768/880/1440验证刷新/返回/离线/迟到身份、已有草稿冲突和焦点；正式采用不会发送新助教问题或记能力证据。两层完整通过后才更新B完成状态，后续C/D及72项/M1～M7保持。
