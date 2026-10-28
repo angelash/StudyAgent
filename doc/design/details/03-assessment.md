@@ -1,6 +1,6 @@
 # 03 评测组题、作答与评分 — 详细设计
 
-源码基线：`c58bdb6bac51f49f936f7c85ceeecba0da34896d`。角色：学生、监护家长、授权教师。
+源码基线：`5551b003d6519919661a66a2be6044fd14bd6668`。角色：学生、监护家长、授权教师。
 
 产品入口：`/student/assessment`、`/parent/dashboard`。
 

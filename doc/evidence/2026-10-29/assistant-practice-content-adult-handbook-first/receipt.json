@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-28T21:51:21.654436+00:00",
+  "passed": true,
+  "sourceRevision": "5551b003d6519919661a66a2be6044fd14bd6668",
+  "features": {
+    "areas": 14,
+    "features": 133,
+    "activeNormalApiRoutes": 444,
+    "coveredApiRoutes": 444
+  },
+  "sourceFiles": 676,
+  "markdownLinks": 4209,
+  "offlineViewerChecks": 10,
+  "scope": "Updated pure-protocol design mapping and offline handbook only. No new application/CI/production or content learning-outcome validation.",
+  "files": [
+    {
+      "source": "data/qa/practice-content-first/handbook-build-adult-first.log",
+      "archive": "data/qa/practice-content-first/handbook-build-adult-first.log.gz",
+      "bytes": 102,
+      "sha256": "3a558e46c2732702b865ff9ccca13eaea48e33cf523b62d80b2087464c42f0a2"
+    },
+    {
+      "source": "data/qa/practice-content-first/handbook-content-adult-first.log",
+      "archive": "data/qa/practice-content-first/handbook-content-adult-first.log.gz",
+      "bytes": 2612,
+      "sha256": "c3a5efa19a654a5aa570cadcba467910d051b5a4d1250a149cb6452c1eb9a8e7"
+    },
+    {
+      "source": "data/qa/practice-content-first/handbook-inventory-adult-first.log",
+      "archive": "data/qa/practice-content-first/handbook-inventory-adult-first.log.gz",
+      "bytes": 487,
+      "sha256": "ecf170b9b5a872faf5afcb2b731b3e83cd851d843abf5fc18dc673608c17885e"
+    },
+    {
+      "source": "data/qa/practice-content-first/handbook-validation-adult-first.log",
+      "archive": "data/qa/practice-content-first/handbook-validation-adult-first.log.gz",
+      "bytes": 281,
+      "sha256": "7e4d1388bd307b5fa1125106507244b961ad79f414d227964b5c6f5256ac807b"
+    },
+    {
+      "source": "doc/design/generated/design-validation.json",
+      "archive": "doc/design/generated/design-validation.json.gz",
+      "bytes": 90237,
+      "sha256": "1c39775379e294a5905ce3fe5285fd0c1edde6ea480208cd6b30e25a8550c9bb"
+    }
+  ]
+}

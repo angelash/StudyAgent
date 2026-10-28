@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-28T21:42:47.916Z",
-  "sourceRevision": "c58bdb6bac51f49f936f7c85ceeecba0da34896d",
+  "at": "2026-10-28T21:51:01.195Z",
+  "sourceRevision": "5551b003d6519919661a66a2be6044fd14bd6668",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -187,12 +187,12 @@
       "apps/api/src/modules/gesp/gesp.integration.test.ts": "c49031bb4907484e4abaed7c20e5ef6bd48545d42b42faec9515f7b004a5695b",
       "apps/api/src/modules/gesp/gesp.service.ts": "a9a6756f4846ee492f0d0dfc6ca62378472488b48a3ecb51d5d0732e273a48be",
       "apps/api/src/modules/gesp/isolated-runner.test.ts": "d647c78cf278e02505ed65e3ab54734d7aa4c1717fd5a053a120888e6548a635",
-      "apps/api/src/modules/learning/assistant-practice-content.test.ts": "2a50adc19f31c222e733b5bb50677e2a701c33abde7b93afdad4d50e3128476a",
+      "apps/api/src/modules/learning/assistant-practice-content.test.ts": "a3f1536833792dc736a734e322b372924c5f7e9a5d583abbf3898aa6a3a4707e",
       "apps/api/src/modules/learning/assistant-practice-content.ts": "866a17f926faa1aa5ab50e495df4f4996dd24de09cc9e37d0b0341152d5bbcfe",
       "apps/api/src/modules/learning/assistant-practice-preflight.controller.ts": "b4394de0a351195c0a9506863915827c3bc5f5f06ca841a00a8ce15a0ecf2ad4",
       "apps/api/src/modules/learning/assistant-practice-preflight.integration.test.ts": "4a548e2f70cf75c729efb9bf17c8d62da178a6a81cbea3026035c2bcc265d899",
       "apps/api/src/modules/learning/assistant-practice-preflight.service.ts": "5ea16a459216c41c4ffedbadae9e2aeed9412e019998c59f176ea9d74064df61",
-      "apps/api/src/modules/learning/assistant-practice-source.ts": "6446d9ea8f5abfa18501b6ffe9ce9eeffcfa50348d66413f3c1be83f285f0568",
+      "apps/api/src/modules/learning/assistant-practice-source.ts": "ffaeee3986b914ba3aac1f8c2d45575fdd35803ce07e2a0f2f151e7e717a9512",
       "apps/api/src/modules/learning/assistant-whiteboard-content.ts": "fcd60e46605729460c943c84b62a148a3f8114e49ba9a1e9d02281344f3b1ca7",
       "apps/api/src/modules/learning/assistant-whiteboard-integrity.ts": "3e5aa5ff374c028744762c4afab4b62e54d6807d9889cb4c433c8af8f631cd7e",
       "apps/api/src/modules/learning/assistant-whiteboard-lifecycle.integration.test.ts": "d8a0428082b4f3663875c1c1a133861fe933d2bc5c5c3de1cbf5d240003393bc",
@@ -564,7 +564,7 @@
       "doc/product/143-assistant-messages-to-learning-artifacts.md": "3bb667ecbf945226d55191b3e7a719c7fedfd3f86a5bb4babb130711ee6957d0",
       "doc/product/143-chemistry-course-content-correction.md": "8d8a449f7b7e2fded2f29c257740cb8773775400c350372575cdc7a9261c9966",
       "doc/product/146-conversation-sourced-whiteboard-teaching.md": "18029c8bef2a72fb21cdd9a260371be5ff7c612b80aa2280edf76f784d6e1eab",
-      "doc/product/147-conversation-practice-guidance-and-review.md": "c78b734f280e56419bd000c516e1a7a865c8ed0bd7e0833b3a34da0c0a6d16f2",
+      "doc/product/147-conversation-practice-guidance-and-review.md": "3171d34c75a949560cd5f707d3a714dc2d421a7994b6ae5968a417ddefa0fcff",
       "packages/contracts/src/ai-models.ts": "c27640b994c433be31aa6f048e727446f86e68252d695732740f5dd652b0df63",
       "packages/contracts/src/ai-teaching-tools.ts": "5063a057c70360db1e3f122ca68cb4632b621e58a2b9163e3c864b71475ed005",
       "packages/contracts/src/answer-draft.ts": "226653dad8a598fb1d4b27fe76e804f63e49a06d1884b586569facbaec8682dd",
@@ -714,7 +714,7 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 4208,
+    "checked": 4209,
     "missing": []
   },
   "staticContent": {
