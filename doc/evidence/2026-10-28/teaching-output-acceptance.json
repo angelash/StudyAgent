@@ -1,6 +1,6 @@
 {
   "passed": false,
-  "phase": "full-api-and-browser-pending",
+  "phase": "full-gates-passed-runtime-pending",
   "sourceRevision": "ef7466b508847dd70320cf2bd8521574789b1cdb",
   "scope": "141 normal teaching and local learner-claim inspection only. Complete M1-M7/original72 remains active.",
   "focused": {
@@ -19,9 +19,52 @@
     "formalRecordsUnchanged": true,
     "receipt": "teaching-output-live/receipt.json"
   },
-  "fullApi": null,
-  "fullBrowser": null,
-  "exactCi": null,
+  "fullApi": {
+    "passedTests": 1614,
+    "failedTests": 0,
+    "environmentSkipped": 65,
+    "fixedInputs": 923,
+    "beforeAfterRawShaUnchanged": true,
+    "maxWorkers": 1,
+    "receipt": "teaching-output-full-api-second/receipt.json",
+    "firstFailureReceipt": "teaching-output-full-api-first/receipt.json"
+  },
+  "fullBrowser": {
+    "passedTests": 433,
+    "failedTests": 0,
+    "originalAttempts": 433,
+    "retries": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "fixedInputCount": 4454,
+    "beforeAfterShaUnchanged": true,
+    "actualQaBuildId": "07EJTat-vlUXvvAcBPNV4",
+    "receipt": "teaching-output-full-browser/receipt.json"
+  },
+  "exactCi": {
+    "head": "53520212ddf5ed96c4af3cc9bbc275356725d9a8",
+    "ciRun": 40612050297,
+    "jobs": {
+      "application": "success",
+      "postgres": "success",
+      "browser": "success"
+    },
+    "browser": {
+      "passedTests": 433,
+      "failedTests": 0,
+      "originalAttempts": 433,
+      "retries": 0,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "api": {
+      "passed": 1606,
+      "failed": 0,
+      "environmentSkipped": 73
+    },
+    "lecturePostgresStepPassed": 16,
+    "receipt": "teaching-output-exact-ci/receipt.json"
+  },
   "runtime": null,
   "productionUpgradePerformed": false,
   "productionStill140": true,

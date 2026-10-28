@@ -61,3 +61,13 @@ ai.service.ts在Xiaojiu助教、OpenAI兼容助教、旧可选指导润色三个
 实际当前小九CLI/HTTP/持久worker分别完成讲座与独立数学解释，Auto解析deepseek-v4-flash，20506ms和17543ms、各1次CLI启动。两者insight均记录teaching-output-policy-v1，消息角色、回执ID/inReplyTo、原请求重放无新增模型调用及正式记录原SHA保持均核对。数学原回答实际含“每个正方形一定是长方形”与“长方形不一定是正方形”，现可按正常知识解释发布；讲座样本采用另一种否定表述，不强制其生成固定词串。见[真实样本与原文](../evidence/2026-10-28/teaching-output-live/receipt.json)。这些是两条实际文字通路样本，不是完整22模型重测、教学认可或稳定率。
 
 当前源设计14领域/128功能/424常规接口，598引用文件与10离线查看器检查通过；普通教学策略归入AI-02，未新增业务路由或集合。接着固定当前API源/编译及实际QA Web，完整API与433浏览器并行回归。正式继续140；精确新CI及141可回退运行仍待。主目录最新cb30e43归档CI仍在独立远端执行，不取消，也不在其终态前推送新提交。
+
+## 9. 完整本地与精确远端门禁
+
+固定53520212ddf5ed96c4af3cc9bbc275356725d9a8、应用ef7466b的实际本地433浏览器/433原始尝试全部通过，零失败/跳过/flaky/重试；4454份输入原SHA前后保持，实际QA buildId为07EJTat-vlUXvvAcBPNV4。本批没有前端/E2E Git改动，复用原b62的真实QA Web并配合新141 API，未将旧Web构建伪称新构建。原报告、截图/trace、实际QA源码均见[完整浏览器](../evidence/2026-10-28/teaching-output-full-browser/receipt.json)。
+
+首轮完整API与本地浏览器同时运行，1601通过/13失败/65环境跳过，923输入保持；首个失败为assistant-turn的loopback connect ENOBUFS，后续409等失败原件完整保留。故障后的TIME_WAIT观察不能证明峰值耗尽，也不把所有失败自动归类为环境。浏览器结束后以maxWorkers=1运行整个未改API：1614通过/0失败/65环境跳过，923输入前后原SHA保持，断言/超时/业务代码均未放宽；首轮出错的整个22项持久助教组也通过。见[首轮原失败](../evidence/2026-10-28/teaching-output-full-api-first/receipt.json)及[完整串行重跑](../evidence/2026-10-28/teaching-output-full-api-second/receipt.json)。
+
+精确CI 40612050297，head5352021，application/PostgreSQL/browser三组全部终态success；下载原始浏览器报告逐次解析433通过/433原始尝试、零失败/跳过/flaky/重试。Linux完整API1606通过/73环境跳过，讲座原生PG步骤16通过，含14HTTP/1PG原生/1SQLite对照，范围重叠不相加。全部三组原日志、原始报告及artifact保留，见[精确CI](../evidence/2026-10-28/teaching-output-exact-ci/receipt.json)。
+
+此时正式运行仍140，141可回退主目录构建/一致数据库备份与稳定守护观察待执行。真实默认两条通过、继承全模型21/22及旧Opus5失败保持；不宣称全模型、教师、全内容、像素/DPR/原声或完整M1～M7完成。下一步按已验候选进行主目录交付，随后再归档142安全课程正文设计。

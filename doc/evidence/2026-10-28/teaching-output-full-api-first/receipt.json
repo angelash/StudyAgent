@@ -1,0 +1,60 @@
+{
+  "passed": false,
+  "sourceRevision": "53520212ddf5ed96c4af3cc9bbc275356725d9a8",
+  "applicationRevision": "ef7466b508847dd70320cf2bd8521574789b1cdb",
+  "passedTests": 1601,
+  "failedTests": 13,
+  "environmentSkipped": 65,
+  "fixedInputs": 923,
+  "beforeAfterRawShaUnchanged": true,
+  "failureSignatures": {
+    "ENOBUFS": 1,
+    "HTTP409": 9,
+    "other": 3
+  },
+  "parallelLocalBrowserWasRunning": true,
+  "nextVerification": "Keep browser source/build/report untouched until terminal, then repeat the whole API serially without changing production or global Windows settings.",
+  "scope": "Full original API attempt. First assistant-suite failure is a loopback connect ENOBUFS; remaining failures are preserved rather than inferred away. Independent focused108 and PG16 are separate evidence, not a replacement for a complete passing API run.",
+  "files": {
+    "data/qa/teaching-output-full-api-first.json": {
+      "sha256": "a285fa31e30b8622601022c808d37b834e557d565bcb088dca09fcb358fe1a30",
+      "gzipSha256": "6f45c9cdacf8093eb0ba03350c7b006a8269cf947c239fa3df11f1b1b20fa968",
+      "bytes": 833233
+    },
+    "data/qa/teaching-output-full-api-first.log": {
+      "sha256": "b5e479aed122521cf3f4b24e710649ac314652d3a218657aedd7604ef6549bfb",
+      "gzipSha256": "c8aecd87998a8159e080170fcc237b1e4b3ccd40819e0af288f34600d23c2c52",
+      "bytes": 86725
+    },
+    "data/qa/teaching-output-full-api-inputs.json": {
+      "sha256": "1305d06b5189e492c900b0a3398c609346cf18f41041d58a63758e5a71b4e4bc",
+      "gzipSha256": "95968d7243d9b9f41ae5afce2aa9212116aa28a4a506352bcf0cd6425ede3d9e",
+      "bytes": 127488
+    },
+    "apps/api/src/modules/ai/assistant-turn.integration.test.ts": {
+      "sha256": "328a910db41e227303c448ff937c3c0ddd9703c3bbcf005ffc4eacee739591c7",
+      "gzipSha256": "381d12dd6331f567fe212bc63c7bb7c0cfd7da20ebfd14455127aabfb4f37b05",
+      "bytes": 30086
+    },
+    "apps/api/src/modules/ai/ai.service.ts": {
+      "sha256": "40ed4304c96b6ac729d42c8fb5c461774b2600a6a0a7df6862797a60c16e67dd",
+      "gzipSha256": "1c73936571163e38af734fc48b0e0fe8872a19232b6dc97c0c0c840391ac19fa",
+      "bytes": 50074
+    },
+    "apps/api/src/modules/ai/teaching-output-policy.ts": {
+      "sha256": "7adc55430bcb9fd272ac5badc7b16fceeae32fc64f5ad5e123ce9fe45383946b",
+      "gzipSha256": "75795ddb60911a1e34a2626c2b3b5e99d6912cc4de6a79506a417acc11bd6416",
+      "bytes": 5581
+    },
+    "apps/api/dist/apps/api/src/modules/ai/ai.service.js": {
+      "sha256": "a399bc151e8d8b3380ef301f659b1317e75f4948b3b3f4ccb859ca1aeb42060f",
+      "gzipSha256": "25d996291ea7123a2ac11e12ce6bf6228109dc71cf438a5a30259dea4816c564",
+      "bytes": 53723
+    },
+    "apps/api/dist/apps/api/src/modules/ai/teaching-output-policy.js": {
+      "sha256": "3f3eae2a7e023a479cec305f473509a49d1ebe9ed84e1731cacd2bb78e044e12",
+      "gzipSha256": "e19ffd5a52580919e5130a7e6cdd2af96d5d577b2ee612c747746728b73381e2",
+      "bytes": 5716
+    }
+  }
+}
