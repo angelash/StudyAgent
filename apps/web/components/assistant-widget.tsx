@@ -13,7 +13,7 @@ export type AssistantComposerContext={conversation:ReturnType<typeof useAssistan
 type AssistantWidgetProps={userRole:'student'|'parent';studentId:string|null;subject?:'math'|'chinese'|'english'|null;
   pageContext:'student_home'|'assessment'|'mission'|'review'|'weekly_report'|'classroom'|'studio'|'course';contextRefType?:'practice'|'diagnostic'|'plan'|'classroom_lecture'|'primary_unit'|'material_lesson'|null;
   contextRefId?:string|null;contextItemId?:string|null;title:string;subtitle:string;inline?:boolean;readOnly?:boolean;frozenLectureSessionId?:string;
-  contextSelection?:AssistantTeachingSelection;renderComposer?:(context:AssistantComposerContext)=>React.ReactNode};
+  contextSelection?:AssistantTeachingSelection;deferSession?:boolean;readOnlyMessage?:string;renderComposer?:(context:AssistantComposerContext)=>React.ReactNode};
 const labels={queued:'已排队',running:'正在生成',validating:'正在检查回答',completed:'回答已保存',failed:'本次未完成',cancelled:'已取消',cancelling:'正在取消'};
 const status=(turn:AssistantTurnView)=>turn.task?.state==='retry_wait'?'等待恢复':labels[turn.status];
 function InlineAssistantFrame(props:React.ComponentProps<typeof AssistantDock>){return <section className="sa-inline-assistant" aria-label={props.title}>{props.children}</section>;}
@@ -27,7 +27,7 @@ export function AssistantWidget(props:AssistantWidgetProps){
   const locateEpoch=React.useRef(0);
   const context=JSON.stringify({userRole:props.userRole,studentId:props.studentId,subject:props.subject??null,pageContext:props.pageContext,
     contextRefType:props.contextRefType??null,contextRefId:props.contextRefId??null,contextItemId:props.contextItemId??null,...(props.contextSelection?{contextSelection:props.contextSelection}:{})});
-  const conversation=useAssistantConversation({open,ownerId:identity?.id??null,scope:context,context,readOnly:props.readOnly,frozenLectureSessionId:props.frozenLectureSessionId});
+  const conversation=useAssistantConversation({open,ownerId:identity?.id??null,scope:context,context,readOnly:props.readOnly,frozenLectureSessionId:props.frozenLectureSessionId,deferSession:props.deferSession});
   const models=useXiaojiuModels(open&&!!identity),{catalog,modelId,setModelId,error:modelError,reload:reloadModels}=models;
   const locationSessionId=conversation.historical??conversation.viewSessionId;
   const locationKey=JSON.stringify([identity?.id,context,conversation.historical,locationSessionId,open]);
@@ -51,8 +51,8 @@ export function AssistantWidget(props:AssistantWidgetProps){
       const href=internalAssistantHref(page.location.href);if(owner!==currentIdentity.current||revision!==locateEpoch.current||boundary!==locationBoundary.current.version)return;if(href)window.location.assign(href);else setHistoryError('这段对话没有可直接打开的学习活动。');
     }catch(e){if(owner===currentIdentity.current&&revision===locateEpoch.current&&boundary===locationBoundary.current.version)setHistoryError((e as Error).message);}
   }
-  const t=conversation.turn,canCancel=!!t&&['queued','running','validating'].includes(t.status),canRetry=!props.readOnly&&!!t&&['failed','cancelled'].includes(t.status)&&t.task?.errorCode!=='assistant_context_changed';
-  const blocked=conversation.loading||conversation.busy||conversation.waiting||!!conversation.pending||!!conversation.historical||conversation.mismatch||!conversation.sessionId||Boolean(props.readOnly);
+  const t=conversation.turn,canCancel=!!t&&['queued','running','validating'].includes(t.status),canRetry=!props.readOnly&&conversation.currentCourse?.canSend!==false&&!!t&&['failed','cancelled'].includes(t.status)&&t.task?.errorCode!=='assistant_context_changed';
+  const blocked=conversation.loading||conversation.busy||conversation.waiting||!!conversation.pending||!!conversation.historical||conversation.mismatch||!conversation.sessionId||Boolean(props.readOnly)||conversation.currentCourse?.canSend===false;
   const Frame=props.inline?InlineAssistantFrame:AssistantDock;
   return <Frame title={props.title} subtitle={props.subtitle} open={open} compact onToggle={()=>setOpen(v=>!v)}>
     {!identity?<p role="status">{identity===undefined?'正在确认学习身份…':'请先进入学习或登录家长账号，再使用助教。'}</p>:!conversation.matches?<p role="status">正在切换到当前学习对话…</p>:
@@ -69,7 +69,7 @@ export function AssistantWidget(props:AssistantWidgetProps){
       </section>}
       {conversation.historical?<aside className="assistant-history-banner"><p>正在回看已保存的提问和回答。</p><div><button onClick={()=>{follow.current=true;conversation.browse(null);setMessageQuery('');}}>返回当前学习对话</button><button onClick={()=>void locate()}>回到相关学习位置</button></div></aside>:
         <p className="assistant-intro">{props.pageContext==='classroom'||props.pageContext==='studio'?'围绕具体问题讲解，用例子、反例和新情境核对理解。':props.contextItemId?'围绕当前题目理清下一步；得到帮助后的表现会单独记录。':props.userRole==='student'?'告诉我卡住的一步，我们一起理清思路。':'根据已有学习证据，一起商量怎样陪伴。'}</p>}
-      {props.readOnly&&!conversation.historical&&<p className="assistant-notice" role="status">正在只读原{props.pageContext==='course'?'课程':'讲座'}版本。原问题与草稿保留，请打开当前版本后再提问。</p>}
+      {props.readOnly&&!conversation.historical&&<p className="assistant-notice" role="status">{props.readOnlyMessage??<>正在只读原{props.pageContext==='course'?'课程':'讲座'}版本。原问题与草稿保留，请打开当前版本后再提问。</>}</p>}
       {historyError&&!historyOpen&&<p role="alert" className="assistant-error">{historyError}</p>}
       {conversation.loading&&<p role="status">正在取回对话与提问状态…</p>}
       {(conversation.messages.length>0||messageQuery||conversation.messageAnchor)&&<form className="assistant-message-search" onSubmit={e=>{e.preventDefault();follow.current=false;void conversation.searchMessages(messageQuery);}}>

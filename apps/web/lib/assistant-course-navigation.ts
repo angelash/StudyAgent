@@ -1,7 +1,7 @@
 import type { AssistantCourseKind, AssistantTeachingSelection, StudioSubject } from '@study-agent/contracts';
 
 export const assistantNavigationKeys = ['audience', 'lectureCourse', 'lecture', 'lectureVersion', 'courseKind', 'courseId', 'courseItem', 'courseVersion',
-  'courseSelection', 'assistantSourceSession', 'assistantSourceKey', 'assistantSourceMessage', 'courseScope'] as const;
+  'courseSelection', 'assistantSourceSession', 'assistantSourceKey', 'assistantSourceMessage', 'courseScope', 'assistantCarry'] as const;
 
 export function copyAssistantContext(from: URLSearchParams, to: URLSearchParams) {
   for (const key of assistantNavigationKeys) if (from.has(key)) to.set(key, from.get(key)!);

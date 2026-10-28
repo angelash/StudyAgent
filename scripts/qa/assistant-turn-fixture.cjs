@@ -6,6 +6,7 @@ exports.installAssistantTurnFixture=function(app){
   const store=app.get(require('../../apps/api/dist/apps/api/src/infrastructure/in-memory-store.service.js').InMemoryStoreService);
   const ai=app.get(require('../../apps/api/dist/apps/api/src/modules/ai/ai.service.js').AiService);
   ai.assistantModelAvailable=()=>true;
+  require('./course-assistant-fixture.cjs').installCourseAssistantFixture(app);
   const attempts=new Map();
   app.getHttpAdapter().getInstance().post('/api/qa/assistant/seed-history',async(req,res)=>{
     try{const data=await store.transaction(()=>{

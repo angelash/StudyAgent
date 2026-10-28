@@ -13,7 +13,7 @@ function decode(raw:string,ownerId:string,scope:string):Draft|null {
   if(v.pending){const p=v.pending;if(typeof p.requestKey!=='string'||p.requestKey.length<8||p.requestKey.length>180||typeof p.message!=='string'||!p.message.trim()||p.message.length>3000||typeof p.modelId!=='string'||!p.modelId||p.modelId.length>180||!/^[a-f0-9]{64}$/.test(p.contextVersion))return null;}
   return v;
 }
-export function useAssistantConversation({open,ownerId,scope,context,readOnly=false,frozenLectureSessionId}:{open:boolean;ownerId:string|null;scope:string;context:string;readOnly?:boolean;frozenLectureSessionId?:string}){
+export function useAssistantConversation({open,ownerId,scope,context,readOnly=false,frozenLectureSessionId,deferSession=false}:{open:boolean;ownerId:string|null;scope:string;context:string;readOnly?:boolean;frozenLectureSessionId?:string;deferSession?:boolean}){
   const [input,setInputState]=React.useState(''),[messages,setMessages]=React.useState<AssistantHistoryMessage[]>([]),[turn,setTurn]=React.useState<AssistantTurnView|null>(null);
   const [turns,setTurns]=React.useState<AssistantTurnList|null>(null),[pending,setPending]=React.useState<AssistantTurnCommand|null>(null);
   const [sessionId,setSessionId]=React.useState(''),[viewSessionId,setViewSessionId]=React.useState(''),[historical,setHistorical]=React.useState<string|null>(null);
@@ -24,6 +24,7 @@ export function useAssistantConversation({open,ownerId,scope,context,readOnly=fa
   const [ownerScope,setOwnerScope]=React.useState(''),[loading,setLoading]=React.useState(false),[busy,setBusy]=React.useState(false),[suspended,setSuspended]=React.useState(false);
   const [error,setError]=React.useState(''),[storageNotice,setStorageNotice]=React.useState(''),[notice,setNotice]=React.useState('');
   const [cursor,setCursor]=React.useState<string|null>(null),[location,setLocation]=React.useState<AssistantLocation|null>(null);
+  const [currentCourse,setCurrentCourse]=React.useState<AssistantContextView['course']>();
   const epoch=React.useRef(0),controllers=React.useRef(new Set<AbortController>()),memory=React.useRef(new Map<string,Draft>()),draft=React.useRef<Draft|null>(null),draftKey=React.useRef('');
   const lastScope=React.useRef('');
   const sourceFocus=React.useRef('');
@@ -63,24 +64,26 @@ export function useAssistantConversation({open,ownerId,scope,context,readOnly=fa
     const revision=++epoch.current;stopRequests();setError('');setNotice('');setBusy(false);setSuspended(false);setSessionId('');
     if(!open||!ownerId){setLoading(false);return;}
     if(lastScope.current!==key){lastScope.current=key;if(historical){setHistorical(null);setHistoryTarget(null);setMessageAnchor(null);setLoading(true);return;}}
-    setLoading(true);setMessages([]);setTurn(null);setTurns(null);setCursor(null);setLocation(null);setViewSessionId('');setStorageNotice('');setMismatch(false);mismatchRef.current=false;
+    setLoading(true);setMessages([]);setTurn(null);setTurns(null);setCursor(null);setLocation(null);setCurrentCourse(undefined);setViewSessionId('');setStorageNotice('');setMismatch(false);mismatchRef.current=false;
     let restored=memory.current.get(key)??null;
     if(!restored)try{const raw=localStorage.getItem(key);if(raw){restored=decode(raw,ownerId,scope);if(!restored)setStorageNotice('本机缓存与当前账号或学习位置不匹配，已保留缓存并忽略恢复。');}}catch{setStorageNotice('本机缓存不可用，当前提问仍可编辑和下载副本。');}
     draftKey.current=key;draft.current=restored??{version:1,ownerId,scope,sessionId:'',input:'',pending:null,lastTurnId:null};
     setOwnerScope(key);setInputState(draft.current.input);setPending(draft.current.pending);
+    if(deferSession&&!historical){setLoading(false);return()=>{epoch.current++;stopRequests();};}
     (async()=>{try{
       let s:{id:string};
       if(readOnly){
         if(historical)s={id:''}; // The selected owner's history is authorized by its read endpoints, independently of an unavailable base lecture.
         else {
-        if(!frozenLectureSessionId)throw Error('原讲座版本无法读取。本机草稿仍保留，可下载后打开当前版本。');
-        const command=JSON.parse(context),retained=await call<AssistantContextView>('/ai/assistant/sessions/'+frozenLectureSessionId+'/context');
+        const command=JSON.parse(context),retainedId=frozenLectureSessionId??(command.pageContext==='course'?draft.current?.sessionId:undefined);
+        if(!retainedId)throw Error('原教学会话暂不可读取。本机草稿仍保留，可下载后核对当前版本。');
+        const retained=await call<AssistantContextView>('/ai/assistant/sessions/'+retainedId+'/context');
         const location=retained.location;
         const lecture=command.pageContext==='classroom'&&command.contextRefType==='classroom_lecture',course=command.pageContext==='course'&&['primary_unit','material_lesson'].includes(command.contextRefType);
         if((!lecture&&!course)||location.pageContext!==command.pageContext||location.contextRefType!==command.contextRefType||
           location.contextRefId!==command.contextRefId||location.contextItemId!==command.contextItemId||location.studentId!==(command.studentId??null)||location.subject!==(command.subject??null))
           throw Error('原会话与当前学习位置不匹配，已保留本机草稿。');
-        s={id:frozenLectureSessionId};
+        s={id:retainedId};if(epoch.current===revision)setCurrentCourse(retained.course);
         }
       }else s=await call<{id:string}>('/ai/assistant/sessions',{method:'POST',body:context});
       if(epoch.current!==revision)return;
@@ -102,7 +105,7 @@ export function useAssistantConversation({open,ownerId,scope,context,readOnly=fa
         if(epoch.current!==revision)return;latest??=list.turns.find(active)??list.turns[0];if(latest){accept(latest,!historical);await recoverPublished(latest);}}
     }catch(e){if(epoch.current===revision&&(e as Error).name!=='AbortError')setError((e as Error).message);}finally{if(epoch.current===revision)setLoading(false);}})();
     return()=>{epoch.current++;stopRequests();};
-  },[open,ownerId,scope,historical,historyTarget,selectionRevision,readOnly,frozenLectureSessionId]); // Clearing a search highlight does not reopen or resend a conversation.
+  },[open,ownerId,scope,historical,historyTarget,selectionRevision,readOnly,frozenLectureSessionId,deferSession]); // Clearing a search highlight does not reopen or resend a conversation.
   const pollingTurn=active(turn)?turn:turns?.turns.find(active)??null;
   React.useEffect(()=>{
     if(!open||!matches||suspended||!pollingTurn||!viewSessionId)return;
@@ -120,6 +123,7 @@ export function useAssistantConversation({open,ownerId,scope,context,readOnly=fa
     try{
       let command=recover?draft.current?.pending:null;
       if(!command){if(!input.trim())return;const current=await call<AssistantContextView>('/ai/assistant/sessions/'+sessionId+'/context');if(revision!==epoch.current)return;
+        setCurrentCourse(current.course);if(current.course?.canSend===false)throw Error(current.course.blocked?.message??'课程教学或发布语境已变化，请保留问题并重新核对当前版本。');
         command={requestKey:crypto.randomUUID(),message:input.trim(),modelId,contextVersion:current.contextVersion};write({pending:command});setPending(command);}
       const result=await call<AssistantTurnView>('/ai/assistant/sessions/'+sessionId+'/turns',{method:'POST',body:JSON.stringify(command)});if(revision!==epoch.current)return;
       accept(result);if(result.status==='completed')await refresh();
@@ -151,6 +155,6 @@ export function useAssistantConversation({open,ownerId,scope,context,readOnly=fa
   function newScope(){download();if(readOnly){setNotice('原讲座只读。原稿已保留，请打开当前讲座版本后重新提问。');return;}write({sessionId,pending:null,lastTurnId:null});setPending(null);setMismatch(false);mismatchRef.current=false;setError('');setNotice('已发起原提问副本下载，当前文字可在新上下文中重新发送。');}
   function editOriginal(){if(!turn||pending||historical||readOnly||active(turn))return;if(input&&input.trim()!==turn.message){download();setNotice('已发起当前草稿副本下载，原问题已放入输入框。');}change(turn.message);}
   function browse(id:string|null,target:string|null=null,anchor:string|null=null){setHistorical(id);setHistoryTarget(target);setMessageAnchor(anchor);setSelectionRevision(n=>n+1);}
-  return {input,change,messages,turn,turns,pending,sessionId,viewSessionId,historical,browse,messageAnchor,matches,loading,busy,suspended,error,storageNotice,notice,cursor,location,mismatch,newScope,readOnly,
+  return {input,change,messages,turn,turns,pending,sessionId,viewSessionId,historical,browse,messageAnchor,matches,loading,busy,suspended,error,storageNotice,notice,cursor,location,currentCourse,mismatch,newScope,readOnly,
     waiting:active(turn)||!!turns?.turns.some(active),submit,control,stopWaiting,resume,older,searchMessages,resetMessages,moreTurns,download,editOriginal,selectTurn:(value:AssistantTurnView)=>{accept(value,!historical);setSuspended(false);}};
 }

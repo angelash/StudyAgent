@@ -1,0 +1,84 @@
+{
+  "passed": 35,
+  "failed": 2,
+  "attempts": 37,
+  "retries": 0,
+  "webBuildId": "aM28S9SRi03B6ghhZqsXo",
+  "controls": {
+    "checked": 824,
+    "changed": 0
+  },
+  "note": "Actual student and formal assessment send fence/return preserve question. After abort, latest context no longer blocked while descriptor is still readonly, hiding its recheck button; fix persistent recheck. Tool-return test wrongly asks for Home link whereas this embedded navigation is an actual Home button; fix semantic target only. Both original failures retained.",
+  "files": {
+    "data/qa/course-entry-second.json": {
+      "bytes": 55313,
+      "sha256": "7ddbf1177d73d8d3589277a54a02d6e1ca78ffe91e77d7983a9e5decd039bbdf",
+      "gzipSha256": "2e0b96cdfec572ef999e02d0f1616a68ee582a3587cbe967c6a3ec249982a0bd"
+    },
+    "data/qa/course-entry-second.log": {
+      "bytes": 14348,
+      "sha256": "e0f2a315a0e898a5fb52a11c5fbcbdc0f74e9ec268b485a7710b372a64db06b9",
+      "gzipSha256": "92729e85745384930aaee2cdeac6e42124c37f4a6d4f9643fb4ac5fc8eedcd75"
+    },
+    "data/qa/course-entry-inputs-second.json": {
+      "bytes": 149672,
+      "sha256": "54a01816de31223706aa18c69de9853d017c86f11351631fcf11fc67a32c3c8e",
+      "gzipSha256": "21692ed3a2119c7fb0689b860a6c588c9865d5e119ecd0c3863e1fd5c71fb716"
+    },
+    "data/qa/course-entry-build-second.log": {
+      "bytes": 1540,
+      "sha256": "07a588a2f2d6c7fbe29bf8a26f38f047d09299b22083182f13ab515a35b77b0d",
+      "gzipSha256": "7fd1671acffc22c2f1b4b84d342f1dd6887b728a47c4ab86337b354b017d5294"
+    },
+    "apps/web/app/studio/studio-course-assistant.tsx": {
+      "bytes": 19619,
+      "sha256": "86614796229a20a4adf503755defe1b941810adcf048da1a7893483d2a44e214",
+      "gzipSha256": "772198e88edce086c3a9654dde9a2415d70358149482814a2db997573b92f4e3"
+    },
+    "apps/web/components/assistant-widget.tsx": {
+      "bytes": 17209,
+      "sha256": "0f9220ad49a454ef435c63e53cce3b56896730c5944c71253a67fd739f3baac2",
+      "gzipSha256": "57eba4945ba2688e0ea9b2b372912ae531d9d5266d175d60a2765000f0d7bf66"
+    },
+    "apps/web/lib/assistant-conversation.tsx": {
+      "bytes": 20754,
+      "sha256": "819fd884d139baeae2c1fdfb5fd3f3ed499ccde5bfbc9bd3ef0e0f8872879599",
+      "gzipSha256": "b82799ebc902c42aa5ff48ef14600608bb8c34396f389786c7b84650eba7a32d"
+    },
+    "tests/e2e/course-assistant.spec.ts": {
+      "bytes": 29425,
+      "sha256": "8ea2570875c3c48f2a86e633464ec77b85866e9df8f1f0cfcc116204a29e3d92",
+      "gzipSha256": "b24019134a7f128482f7405217f97b449f247f0de27644f94f02c8c69efb763b"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-b449c-e-original-student-question/test-failed-1.png": {
+      "bytes": 82260,
+      "sha256": "8d66a96cbd822835fe4c3bbb6278f56cd57bab6614b04d1896969298c5d3409a",
+      "gzipSha256": "2d65adc866b55a0d4571e255e7651e522371cca769089103e228a5003c6f4328"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-b449c-e-original-student-question/error-context.md": {
+      "bytes": 29016,
+      "sha256": "5fe55864914b08e4170c3b743d8c621e7227b605d9ce2bd20f02c7e759803248",
+      "gzipSha256": "7cf53d4563fc110b6cdd524d4b06d75a681c4ef9f84d881c07e62a7a58761685"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-b449c-e-original-student-question/trace.zip": {
+      "bytes": 2835038,
+      "sha256": "d870bd0935190ef8645cb34f43eb5d9aa0fd3fbbfd3e0f5a12756b0c0d48ed1b",
+      "gzipSha256": "5d65345a5001cbae9c027e866e8c5c27ae0e274f960ca9fcedefd128441b6b9a"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-62d74--refresh-and-planner-return/test-failed-1.png": {
+      "bytes": 98798,
+      "sha256": "5a5963509cac2e780954f21474202393cc290e4e195b9808314c237be04a8e96",
+      "gzipSha256": "debe3647418133396a02084c14c07b5cc71ebce281bfd17bb73ce589e9512ce5"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-62d74--refresh-and-planner-return/error-context.md": {
+      "bytes": 25486,
+      "sha256": "af4734a1fe1c99d457dcab0c4145f484efc4c76efd7807b001b6f5607913e2ad",
+      "gzipSha256": "453de7688d2cb7805c6f0a588939281c309089de7a56d938d06ef038d1bdefec"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-62d74--refresh-and-planner-return/trace.zip": {
+      "bytes": 2253396,
+      "sha256": "ef936c358c4ad3fa5c5a52bbd2fa01bbb67de94a7b3ff7e03f5160c68b846176",
+      "gzipSha256": "a45f99cd4f4ebac097f0889ce8421a35115fdaa8d7af554d7542707c97d56bfe"
+    }
+  }
+}

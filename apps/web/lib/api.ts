@@ -41,7 +41,7 @@ export function getCurrentUser<T>() {
 }
 
 export class ApiRequestError extends Error {
-  constructor(message: string, readonly status: number,readonly code?:string) { super(message); this.name = 'ApiRequestError'; }
+  constructor(message: string, readonly status: number,readonly code?:string,readonly details?:Record<string,unknown>) { super(message); this.name = 'ApiRequestError'; }
 }
 
 export async function apiRequest<T>(path: string, options: RequestInit = {}, token?: string | null): Promise<T> {
@@ -65,21 +65,23 @@ export async function apiRequest<T>(path: string, options: RequestInit = {}, tok
   let payload:
     | {
         data: T;
-        error: { code: string; message: string } | null;
+        error: { code: string; message: string; details?:Record<string,unknown> } | null;
       }
     | null = null;
 
   try {
     payload = (await response.json()) as {
       data: T;
-      error: { code: string; message: string } | null;
+      error: { code: string; message: string; details?:Record<string,unknown> } | null;
     };
   } catch {
     payload = null;
   }
 
   if (!response.ok || payload?.error) {
-    throw new ApiRequestError(payload?.error?.message ?? `Request failed: ${response.status}`, response.status,payload?.error?.code);
+    const details=payload?.error?.details;
+    throw new ApiRequestError(payload?.error?.message ?? `Request failed: ${response.status}`, response.status,payload?.error?.code,
+      details&&typeof details==='object'&&!Array.isArray(details)?details:undefined);
   }
 
   if (!payload) {

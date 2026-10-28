@@ -10,6 +10,7 @@ import { useOriginalTeachingFonts } from '../../lib/original-teaching-fonts';
 import './reference-assistant.generated.css';
 import './studio-instant-assistant.css';
 import { AssistantSourcePreviewPanel } from '../../components/assistant-source-preview';
+import { StudioCourseAssistant } from './studio-course-assistant';
 
 function localNavigate(query: URLSearchParams) {
   window.history.pushState(null, '', '/studio?' + query); window.dispatchEvent(new PopStateEvent('popstate'));
@@ -30,6 +31,7 @@ type Props = { identity: SessionUser; studentId: string; subject: StudioSubject;
 export function StudioInstantAssistant(props: Props) {
   const search = typeof window === 'undefined' ? '' : window.location.search, query = new URLSearchParams(search);
   if (query.has('assistantSourceSession') || query.has('assistantSourceKey')) return <AssistantSourcePreviewPanel key={props.identity.id} ownerId={props.identity.id} search={search}/>;
+  if (query.get('audience') === 'course' || ['courseKind','courseId','courseItem','courseVersion','courseSelection'].some(key => query.has(key))) return <StudioCourseAssistant {...props}/>;
   return <LectureInstantAssistant {...props}/>;
 }
 

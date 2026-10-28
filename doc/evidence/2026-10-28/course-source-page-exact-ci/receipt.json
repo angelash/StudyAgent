@@ -1,0 +1,67 @@
+{
+  "runId": 40647352222,
+  "head": "cc9a3d5a0e9008db6d68ce1a8bf56c7b64dcc00f",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "application",
+      "conclusion": "success"
+    },
+    {
+      "name": "postgres",
+      "conclusion": "success"
+    },
+    {
+      "name": "browser",
+      "conclusion": "success"
+    }
+  ],
+  "browser": {
+    "startTime": "2026-10-28T07:03:42.165Z",
+    "duration": 2302021.5470000003,
+    "expected": 439,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "originalAttempts": 439,
+    "retries": 0,
+    "failedAttempts": 0
+  },
+  "originalTestSummaries": [
+    "application\tRun npm test\t2026-10-28T07:12:10.9874945Z ^[[2m      Tests ^[[22m ^[[1m^[[32m1682 passed^[[39m^[[22m^[[2m | ^[[22m^[[33m74 skipped^[[39m^[[90m (1756)^[[39m",
+    "postgres\tAuthorized primary and material course assistant scopes on PostgreSQL\t2026-10-28T07:08:25.6794385Z ^[[2m      Tests ^[[22m ^[[1m^[[32m25 passed^[[39m^[[22m^[[90m (25)^[[39m"
+  ],
+  "note": "Exact C1 source page/links and original-message recovery, full439 browser. Does not include the new C2 course entry/selection implementation or prove production continuity/full142 completion.",
+  "files": {
+    "data/qa/course-source-page-ci-terminal.json": {
+      "bytes": 21562,
+      "sha256": "ba7ef77d2c254598e97f09ff7f3569c0b13af70224dc40cabeca0af3219c78b6",
+      "gzipSha256": "1c5203036576c90e415871a643f68c1118fe8d5185884e07b182f4aa6905dc20"
+    },
+    "data/qa/course-source-page-ci-terminal.log": {
+      "bytes": 1086123,
+      "sha256": "8877b7350c1e581a67790cc0126547f3f7204b38eedb4527937161a40b3d1dac",
+      "gzipSha256": "37994b086b571df465175d7aa407345783f45be3e378f17118f54a5e0a445e52"
+    },
+    "data/qa/course-source-page-ci-source.tar": {
+      "bytes": 133120,
+      "sha256": "c9287a2e40888dd7a63b6b1513074712020304f838322eeb46028d43588400c9",
+      "gzipSha256": "847b59ac20ae4139f9e53af9817dbe1dfe2e1d24f300c8a66517f02e0d495b11"
+    },
+    "data/qa/course-source-page-ci-artifacts/data/qa/source-course-full-browser.json": {
+      "bytes": 493055,
+      "sha256": "583764559d2fe788c92cfe69451c1f0351df2cf3d8cb7204373225ca9051e1d4",
+      "gzipSha256": "129c2e465e23c8999d81480bdc565c017dadbf4a75afe3a3013327e00197ee7d"
+    }
+  },
+  "application": {
+    "passed": 1682,
+    "failed": 0,
+    "environmentSkipped": 74
+  },
+  "coursePostgres": {
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0
+  }
+}

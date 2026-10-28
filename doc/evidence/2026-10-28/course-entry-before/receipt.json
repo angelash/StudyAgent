@@ -1,0 +1,58 @@
+{
+  "passed": 5,
+  "failed": 2,
+  "attempts": 7,
+  "retries": 0,
+  "webBuildId": "Jcr_j0P3x9ZXlBAYuOW7D",
+  "note": "Actual C1 production Web with owned anonymous primary/material persisted teaching and real authentication. Existing five source journeys pass; primary/material pages exist but lack assistant entry links. No real CLI or formal measurement.",
+  "files": {
+    "data/qa/course-entry-before.json": {
+      "bytes": 18966,
+      "sha256": "ec55979009ece37b4714af1c081165f8dc2e4ac6b712f2cf671f05020cf9bb3b"
+    },
+    "data/qa/course-entry-before.log": {
+      "bytes": 7687,
+      "sha256": "68de0aed232b3427321e448eb64f0aa998f272287cba042e85200a70397b9f41"
+    },
+    "scripts/qa/course-assistant-fixture.cjs": {
+      "bytes": 7435,
+      "sha256": "4d5bf314f1ff9bab49cd6fb0c800bc11330510594548d8b45bd747586d84a399"
+    },
+    "scripts/qa/assistant-turn-fixture.cjs": {
+      "bytes": 8237,
+      "sha256": "4da6be4130f4e833e516c655efb1237d3d280c691d3397e8a77ee16ddc5c1bf7"
+    },
+    "tests/e2e/course-assistant.spec.ts": {
+      "bytes": 11630,
+      "sha256": "600c89a67447353b168e4ef40faee5cbf468415615d176a5e65bad595a3a1d44"
+    },
+    "data/qa/experience-web/.next/BUILD_ID": {
+      "bytes": 21,
+      "sha256": "8c3e05d7186305437e065a9dbde3622e4a36e55df613028adc54733d88591222"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-2a334-without-a-classroom-session/test-failed-1.png": {
+      "bytes": 114606,
+      "sha256": "0c316a5c0ade319b05bcf585d133081a5608e8d647bda7d634ea475ed46dc1e0"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-2a334-without-a-classroom-session/error-context.md": {
+      "bytes": 18761,
+      "sha256": "0482b26d550e19c351de2e6f4a5842c8f93674543941c00fb319017d376216ea"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-2a334-without-a-classroom-session/trace.zip": {
+      "bytes": 1511422,
+      "sha256": "ca5b7941a25b2ba7ef259e1e5506b03544cc3de880b6b76d34389dde2b4cb99c"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-b1b11-uthoring-or-published-scope/test-failed-1.png": {
+      "bytes": 87080,
+      "sha256": "c682b267e658acc6e68a0967ee87e516da3160024ac6bd90accf9edd2b33104a"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-b1b11-uthoring-or-published-scope/error-context.md": {
+      "bytes": 19770,
+      "sha256": "ff1688ade7a455374d25da595578c58f17362879dc7948e58dcd2c7f3dfc2841"
+    },
+    "test-results/browser-product-acceptance/course-assistant-course-as-b1b11-uthoring-or-published-scope/trace.zip": {
+      "bytes": 1402699,
+      "sha256": "06e3bb5f4e1461e781da3986163f08d3520b4790482dccb1a028d1205c01f9b7"
+    }
+  }
+}
