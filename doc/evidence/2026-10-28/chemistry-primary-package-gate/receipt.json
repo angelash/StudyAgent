@@ -1,0 +1,357 @@
+{
+  "passed": true,
+  "scope": "Fix the original primary seed-enrichment gate after chemistry entered the shared catalog; no production business or seed changes.",
+  "remoteFailure": {
+    "runId": 40694625161,
+    "jobId": 122837987871,
+    "head": "896457e1680a366729f315c858f35f9f2b5961a6",
+    "failedStep": "Curriculum package persistence and safe seed enrichment",
+    "actual": "286 !== 258"
+  },
+  "localBefore": {
+    "passed": false,
+    "runtime": "Fixed original lecture-integration candidate, schema21; source and browser inputs unchanged."
+  },
+  "localAfter": {
+    "passed": true,
+    "runtime": "Independent note-artifacts candidate with private note registration/schema22; the three curriculum implementations are exact compiled-byte matches to the original candidate. No notes created by this gate. Exact schema21 candidate rerun remains after its full browser finishes.",
+    "original": {
+      "atoms": 286,
+      "questions": 17774,
+      "allQuestionsIncludingLegacyFixtures": 17789,
+      "primaryAtoms": 258,
+      "approvedTeaching": 258,
+      "missingTeaching": 0,
+      "cells": [
+        {
+          "subject": "math",
+          "grade": 1,
+          "atoms": 16,
+          "withQuestions": 16,
+          "withTransfer": 16,
+          "withMultipleFamilies": 16,
+          "withVerificationMaterials": 16,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 16,
+          "draftTeaching": 0,
+          "withRelations": 0
+        },
+        {
+          "subject": "math",
+          "grade": 2,
+          "atoms": 15,
+          "withQuestions": 15,
+          "withTransfer": 15,
+          "withMultipleFamilies": 15,
+          "withVerificationMaterials": 15,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 15,
+          "draftTeaching": 0,
+          "withRelations": 0
+        },
+        {
+          "subject": "math",
+          "grade": 3,
+          "atoms": 17,
+          "withQuestions": 17,
+          "withTransfer": 17,
+          "withMultipleFamilies": 17,
+          "withVerificationMaterials": 17,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 17,
+          "draftTeaching": 0,
+          "withRelations": 1
+        },
+        {
+          "subject": "math",
+          "grade": 4,
+          "atoms": 16,
+          "withQuestions": 16,
+          "withTransfer": 16,
+          "withMultipleFamilies": 16,
+          "withVerificationMaterials": 16,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 16,
+          "draftTeaching": 0,
+          "withRelations": 1
+        },
+        {
+          "subject": "math",
+          "grade": 5,
+          "atoms": 19,
+          "withQuestions": 19,
+          "withTransfer": 19,
+          "withMultipleFamilies": 19,
+          "withVerificationMaterials": 19,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 19,
+          "draftTeaching": 0,
+          "withRelations": 0
+        },
+        {
+          "subject": "math",
+          "grade": 6,
+          "atoms": 19,
+          "withQuestions": 19,
+          "withTransfer": 19,
+          "withMultipleFamilies": 19,
+          "withVerificationMaterials": 19,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 19,
+          "draftTeaching": 0,
+          "withRelations": 0
+        },
+        {
+          "subject": "chinese",
+          "grade": 1,
+          "atoms": 13,
+          "withQuestions": 13,
+          "withTransfer": 13,
+          "withMultipleFamilies": 13,
+          "withVerificationMaterials": 13,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 13,
+          "draftTeaching": 0,
+          "withRelations": 0
+        },
+        {
+          "subject": "chinese",
+          "grade": 2,
+          "atoms": 13,
+          "withQuestions": 13,
+          "withTransfer": 13,
+          "withMultipleFamilies": 13,
+          "withVerificationMaterials": 13,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 13,
+          "draftTeaching": 0,
+          "withRelations": 0
+        },
+        {
+          "subject": "chinese",
+          "grade": 3,
+          "atoms": 13,
+          "withQuestions": 13,
+          "withTransfer": 13,
+          "withMultipleFamilies": 13,
+          "withVerificationMaterials": 13,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 13,
+          "draftTeaching": 0,
+          "withRelations": 0
+        },
+        {
+          "subject": "chinese",
+          "grade": 4,
+          "atoms": 13,
+          "withQuestions": 13,
+          "withTransfer": 13,
+          "withMultipleFamilies": 13,
+          "withVerificationMaterials": 13,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 13,
+          "draftTeaching": 0,
+          "withRelations": 0
+        },
+        {
+          "subject": "chinese",
+          "grade": 5,
+          "atoms": 13,
+          "withQuestions": 13,
+          "withTransfer": 13,
+          "withMultipleFamilies": 13,
+          "withVerificationMaterials": 13,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 13,
+          "draftTeaching": 0,
+          "withRelations": 0
+        },
+        {
+          "subject": "chinese",
+          "grade": 6,
+          "atoms": 13,
+          "withQuestions": 13,
+          "withTransfer": 13,
+          "withMultipleFamilies": 13,
+          "withVerificationMaterials": 13,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 13,
+          "draftTeaching": 0,
+          "withRelations": 0
+        },
+        {
+          "subject": "english",
+          "grade": 1,
+          "atoms": 13,
+          "withQuestions": 13,
+          "withTransfer": 13,
+          "withMultipleFamilies": 13,
+          "withVerificationMaterials": 13,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 13,
+          "draftTeaching": 0,
+          "withRelations": 0
+        },
+        {
+          "subject": "english",
+          "grade": 2,
+          "atoms": 13,
+          "withQuestions": 13,
+          "withTransfer": 13,
+          "withMultipleFamilies": 13,
+          "withVerificationMaterials": 13,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 13,
+          "draftTeaching": 0,
+          "withRelations": 0
+        },
+        {
+          "subject": "english",
+          "grade": 3,
+          "atoms": 13,
+          "withQuestions": 13,
+          "withTransfer": 13,
+          "withMultipleFamilies": 13,
+          "withVerificationMaterials": 13,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 13,
+          "draftTeaching": 0,
+          "withRelations": 0
+        },
+        {
+          "subject": "english",
+          "grade": 4,
+          "atoms": 13,
+          "withQuestions": 13,
+          "withTransfer": 13,
+          "withMultipleFamilies": 13,
+          "withVerificationMaterials": 13,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 13,
+          "draftTeaching": 0,
+          "withRelations": 0
+        },
+        {
+          "subject": "english",
+          "grade": 5,
+          "atoms": 13,
+          "withQuestions": 13,
+          "withTransfer": 13,
+          "withMultipleFamilies": 13,
+          "withVerificationMaterials": 13,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 13,
+          "draftTeaching": 0,
+          "withRelations": 0
+        },
+        {
+          "subject": "english",
+          "grade": 6,
+          "atoms": 13,
+          "withQuestions": 13,
+          "withTransfer": 13,
+          "withMultipleFamilies": 13,
+          "withVerificationMaterials": 13,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 13,
+          "draftTeaching": 0,
+          "withRelations": 0
+        },
+        {
+          "subject": "chemistry",
+          "grade": 9,
+          "atoms": 28,
+          "withQuestions": 28,
+          "withTransfer": 28,
+          "withMultipleFamilies": 28,
+          "withVerificationMaterials": 28,
+          "needingVerificationMaterials": 0,
+          "withTeaching": 28,
+          "draftTeaching": 0,
+          "withRelations": 0
+        }
+      ]
+    },
+    "migration": {
+      "upgraded": 252,
+      "customDefinitionPreserved": true,
+      "newerVersionPreserved": true,
+      "draftPreserved": true,
+      "originalAndEnrichedRevisions": true,
+      "releasedDefinitionsPreserved": [
+        {
+          "id": "foundation:math:divisiondigits",
+          "version": 2
+        },
+        {
+          "id": "core:math:mixedorder",
+          "version": 2
+        },
+        {
+          "id": "core:math:average",
+          "version": 2
+        }
+      ]
+    },
+    "packagePersistence": {
+      "fileSha256": "cae80566e8c7bf0e6f8eff3921e62e17422a44aeaec2a646b523c8e4b844cb5e",
+      "applied": 2,
+      "receiptSurvivesRestart": true,
+      "tokenSurvivesRestart": true,
+      "retryDoesNotIncrementVersions": true,
+      "seedDoesNotIncrementAgain": true,
+      "concurrentSameKeyStatuses": [
+        201,
+        409
+      ]
+    },
+    "separateChemistry": {
+      "points": 28,
+      "definitionSha256Before": "f3eddfd0cf0c976ca334bc7b0c08994d0547a5024e2573cf23032f01bb0a07c6",
+      "interpretation": "Preserved separately; not part of the original primary foundation seed-enrichment gate.",
+      "definitionSha256After": "f3eddfd0cf0c976ca334bc7b0c08994d0547a5024e2573cf23032f01bb0a07c6"
+    },
+    "schemaVersion": 22
+  },
+  "unchangedCompiledCurriculum": {
+    "apps/api/dist/apps/api/src/modules/diagnostics/foundation-seed.service.js": "46cb001a8734f5de588ecc41e344990d73d8e210a945284e4488fd3243301087",
+    "apps/api/dist/apps/api/src/modules/diagnostics/authored-relation-release.js": "22e459937f52e7ac67aabc8859490d6ba787324641e7b6994580202f534d8717",
+    "apps/api/dist/apps/api/src/modules/diagnostics/curriculum.service.js": "2fbf010d5f363699ae1cac475c1051336c2ce22c9e5740c69ab1d18a54565c3b"
+  },
+  "limits": [
+    "Failed run browser is still running; no cancellation or new push.",
+    "Strict258 original primary cards and28 separate chemical atoms; both restarts preserve chemistry SHA. Not textbook completeness or teacher/measurement approval."
+  ],
+  "files": {
+    "data/qa/chemistry-v2-exact-ci-first-application-job-raw.log": {
+      "bytes": 236848,
+      "sha256": "a3fa542608f013db0531949d8a5cfdcd53f605752d2fc5ff17b4e518c20599e8",
+      "gzipSha256": "7e621b6142830d7fe10ac5b1383c0824caa2b2dd374691cb3701b1943e49c764"
+    },
+    "data/qa/chemistry-v2-curriculum-packages-before.json": {
+      "bytes": 900,
+      "sha256": "70d6773c5e7aa896537770b856003cdaf47107d2a4521a67291a80fcdf0abbeb",
+      "gzipSha256": "eb861833fa82624ae14b9f1b0b1351d6cf4f8a3e7e3cefab0cab28d59dca6ee1"
+    },
+    "data/qa/chemistry-v2-curriculum-packages-before.log": {
+      "bytes": 83,
+      "sha256": "6d70fcc2b1fc2adf24da1032fa6b97d0bcc29eb40b9fe75a973cc1b20b57cec5",
+      "gzipSha256": "3af071dd387074798ebc96efd330535b09dc6e62fd70c7541ca88c54dbe08bb1"
+    },
+    "data/qa/chemistry-curriculum-primary-fixed-first.json": {
+      "bytes": 8840,
+      "sha256": "1df4e72299a38ff21d13e2314f8c3048050cbcb07d97895c507fca9e3f862342",
+      "gzipSha256": "cbec323044ad27de68ee4ffe30f6d963ce9dd6f97e11ab7fc1729d700bdaf5b4"
+    },
+    "data/qa/chemistry-curriculum-primary-fixed-first.log": {
+      "bytes": 98,
+      "sha256": "1c421459825da6d6e17af0a9aba7560c34a00b73dc9dcbeb1068a56e0a5c838e",
+      "gzipSha256": "9544953233aed0df928eb3936c1f8d2c84f0edf7766262fad8a54c1ebdd4452c"
+    },
+    "scripts/qa/verify-curriculum-packages.cjs": {
+      "bytes": 13203,
+      "sha256": "c23d03b5c39f9f7fc25f30ff6566d7f6f9c7ad30bd3e978577d0d28e5df37df7",
+      "gzipSha256": "2e23e236c710982675fe9c5efd2b3b842bf7cdf6e30b78dbb56eb12c8d92054f"
+    }
+  }
+}

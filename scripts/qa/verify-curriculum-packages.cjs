@@ -51,11 +51,16 @@ async function main() {
   assert.equal(bootstrap.status, 0, 'Formal administrator bootstrap');
   await start(); token = (await call('POST', '/auth/login', { principal: 'qa-curriculum-runtime', credential })).token;
   const original = await store.transaction(() => structuredClone(store.inspect('knowledgeAtoms')));
-  const cards = original.filter(atom => atom.teaching); assert.equal(cards.length, 258);
+  const primarySubjects = new Set(['math', 'chinese', 'english']);
+  const primary = original.filter(atom => primarySubjects.has(atom.subject)), chemical = original.filter(atom => atom.subject === 'chemistry');
+  assert.equal(primary.length, 258); assert.equal(chemical.length, 28); assert.equal(original.length, primary.length + chemical.length);
+  const cards = primary.filter(atom => atom.teaching); assert.equal(cards.length, 258);
+  const chemistryBefore = createHash('sha256').update(JSON.stringify(chemical)).digest('hex');
+  evidence.separateChemistry = { points: chemical.length, definitionSha256Before: chemistryBefore, interpretation: 'Preserved separately; not part of the original primary foundation seed-enrichment gate.' };
   evidence.original = { atoms: original.length,
     questions: await store.transaction(() => store.inspect('questions').filter(question => question.id.startsWith('foundation_q_')).length),
     allQuestionsIncludingLegacyFixtures: await store.transaction(() => store.inspect('questions').length),
-    approvedTeaching: cards.length, missingTeaching: original.length - cards.length,
+    primaryAtoms: primary.length, approvedTeaching: cards.length, missingTeaching: primary.length - cards.length,
     cells: (await call('GET', '/admin/curriculum/overview')).cells };
   // Model an owned older database: leave changed definitions, newer versions and drafts intact.
   await store.transaction(() => {
@@ -117,6 +122,9 @@ async function main() {
     const pool = new Pool({ connectionString: process.env.DATABASE_URL });
     try { evidence.schemaVersion = (await pool.query('SELECT MAX(version) AS version FROM schema_migrations')).rows[0].version; } finally { await pool.end(); }
   }
+  const retainedChemistry = await store.transaction(() => structuredClone(store.inspect('knowledgeAtoms').filter(atom => atom.subject === 'chemistry')));
+  evidence.separateChemistry.definitionSha256After = createHash('sha256').update(JSON.stringify(retainedChemistry)).digest('hex');
+  assert.equal(evidence.separateChemistry.definitionSha256After, chemistryBefore, 'Separate chemistry definitions must remain exact across primary enrichment and both restarts');
   evidence.passed = true;
 }
 main().catch(error => { evidence.error = error.message; process.exitCode = 1; }).finally(async () => {
