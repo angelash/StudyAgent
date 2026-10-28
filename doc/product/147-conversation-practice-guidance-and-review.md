@@ -174,6 +174,8 @@ Prepared冻结完整origin、原selection和objective、两项确认、完整受
 
 随后核对实际knowledgeAtomSchema发现，原子允许单字名称和both学期，而新纯协议自行定义的字段过窄；改为直接复用现有原子与scope字段，不复制一套不一致约束。新增“角/both”合约兼容案例，第三次准备61/61（44新正文+17原白板）通过，零失败/跳过/重试，15源码与3编译SHA保持；本人contracts/API构建与全API类型通过。此前60及原失败保留，不能累加为121。见[合约兼容原件](../evidence/2026-10-29/assistant-practice-content-contracts-first/receipt.json)。
 
+再按实际AssistantCourseSnapshot与D1成人分支核对：未绑定孩子的成人资料课仍可有明确subject。纯协议保留该学科而不凭空创建孩子/正式目标；带孩子来源仍拒绝转成人。新增成人数学资料课案例，第四次准备62/62（45新正文+17原白板）通过，零失败/跳过/重试，15源码及3编译SHA保持，API构建和全类型通过；此前61单独保留。见[成人资料课兼容原件](../evidence/2026-10-29/assistant-practice-content-adult-first/receipt.json)。
+
 本批没有持久候选、实际模型调用、本人自练、孩子assignment/作答、正式证据、指导/排期或主目录交付；D2a/D2b后续service须重新核对当前来源/权限/学习码/范围/定义与评测。schema23正式交付后才接schema24。新接口、双库原生恢复、完整API/浏览器/精确CI与实际产品验收仍分别推进，105/M1～M7/原72整体active。
 
 ## 18. D2a持久候选与本人作答的下一层具体落点

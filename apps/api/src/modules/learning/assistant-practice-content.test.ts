@@ -112,6 +112,16 @@ describe('source-bound teaching practice pure protocol', () => {
     expect(() => prepareAssistantTeachingPractice(fixture().origin, fixture().input, f.scope, model, true)).toThrow('target_scope_mismatch');
   });
 
+  it('retains a named subject for an adult course without inventing a child or formal targets', () => {
+    const f = fixture(); f.origin.subject = 'math'; f.origin.location.subject = 'math';
+    f.origin.course = { kind: 'material_lesson', courseId: 'anonymous-adult-course', courseTitle: '成人数学资料课', itemId: 'anonymous-lesson',
+      itemTitle: '比较条件', studentId: null, subject: 'math', accessMode: 'published', fingerprint: 'e'.repeat(64), referenceId: 'anonymous-source',
+      current: true, href: '/studio?view=courses', selection: { mode: 'complete' },
+      coverage: { totalParts: 1, includedParts: 1, totalTargets: 0, includedTargets: 0, complete: true } };
+    const prepared = f.prepare(); expect(prepared.targetScope).toEqual({ kind: 'adult' }); expect(prepared.source.origin.subject).toBe('math');
+    expect(validateAssistantPracticeContent(prepared, content()).questions.every(question => question.targetAtomIds.length === 0)).toBe(true);
+  });
+
   it('rejects duplicate/withdrawn-like target mismatches and out-of-scope grade or term definitions', () => {
     const f = fixture(), scope = f.student(); if (scope.kind !== 'student') throw Error('fixture');
     scope.targets[1].atomId = 'not-selected'; expect(() => f.prepare()).toThrow('target_definition_mismatch'); scope.targets[1].atomId = 'atom-two';

@@ -56,7 +56,7 @@ function sourceIdentity(origin: AssistantArtifactOrigin, input: AssistantPractic
   if (historical && !input.acknowledgeHistoricalSource) fail('historical_source_confirmation_required');
   if (input.audience.kind !== targetScope.kind) fail('target_scope_mismatch');
   if (targetScope.kind === 'adult') {
-    if (origin.studentId !== null || origin.subject !== null) fail('adult_source_mismatch');
+    if (origin.studentId !== null) fail('adult_source_mismatch');
   } else {
     if (input.audience.kind !== 'student' || input.audience.studentId !== targetScope.studentId || input.audience.subject !== targetScope.subject
       || origin.studentId !== null && origin.studentId !== targetScope.studentId
