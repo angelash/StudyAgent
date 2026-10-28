@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import type { KnowledgeAtom, LearningScope, StudioCourse } from '@study-agent/contracts';
 import { CHEMISTRY_BOOK_ID, CHEMISTRY_VERSION, chemistryUnits, chemistryAtomId } from '../diagnostics/chemistry-curriculum';
 import { buildStudioCourse } from './studio-course';
+import { withChemistryTutorial } from './chemistry-tutorial';
 
 export const CHEMISTRY_COURSE_TITLE = '广州人教版九上化学 · 学习与验证';
 export const CHEMISTRY_TEXTBOOK = '广州人教版九上化学 · 原创教学验证路径';
@@ -30,10 +31,10 @@ export function buildChemistryCourse(studentId: string, atoms: KnowledgeAtom[], 
     throw new Error('化学课程必须使用完整的九上化学知识点');
   const id = options.id ?? `chemistry-course:${studentId}:${CHEMISTRY_VERSION}`;
   const scope = chemistryScope(studentId, atomIds, `chemistry-plan:${studentId}:${CHEMISTRY_VERSION}`, 25);
-  const course: StudioCourse = { ...buildStudioCourse({ id, studentId, subject: 'chemistry', scope, atoms, focusAtomIds: atomIds,
+  const course: StudioCourse = withChemistryTutorial({ ...buildStudioCourse({ id, studentId, subject: 'chemistry', scope, atoms, focusAtomIds: atomIds,
     title: options.title ?? CHEMISTRY_COURSE_TITLE, objective: '从概念证据出发，完成课前诊断、讲解、练习、独立考核与真实间隔复测。', minutesPerSession: 25 }),
     status: options.status ?? 'active', curriculumVersion: CHEMISTRY_VERSION,
-    description: '广州 · 人教版 · 九年级上学期。七个单元、28节讲解，配套课前诊断、练习、单元与学期考核。' };
+    description: '广州 · 人教版 · 九年级上学期。七个单元、28节讲解，配套课前诊断、练习、单元与学期考核。' });
   if (options.createdAt) course.createdAt = options.createdAt;
   for (const unit of course.units) for (const lesson of unit.lessons) {
     if (lesson.kind === 'exam') lesson.href = chemistryCourseHref(studentId, id, unit.id, 'checks');

@@ -1,0 +1,436 @@
+{
+  "version": "chemistry-tutorial-2026-10-28-v2",
+  "observedAt": "2026-10-28",
+  "source": {
+    "title": "人教版《化学 九年级 上册》七单元参考本",
+    "editionNotice": "已核对七单元参考本的目录与相关正文；版权页未注明版次，PDF制作于2022年。与你在用教材的课题顺序、页码可能不同。",
+    "sha256": "49a90f62a568bc1763838ddf3c0f25ef3c15958c0e1919fae6a3c2bbf9b35941",
+    "href": "https://github.com/TapXWorld/ChinaTextbook/blob/5a80345f2043ba6f8db8d7be9cf3db82725ff1f7/初中/化学/人教版-人民教育出版社/九年级/义务教育教科书·化学九年级上册.pdf"
+  },
+  "pdfPages": 162,
+  "reviewedCoverage": "Directory and relevant topic sections; not a claim that every page and exercise was reviewed.",
+  "publication": "Only original teaching text, scientific SVGs, bounded models and formative checks are released; no publisher PDF or page image is redistributed.",
+  "schoolEditionStatus": "unconfirmed",
+  "mappings": [
+    {
+      "atomId": "chemistry:9-upper:changes",
+      "topic": "第一单元 · 课题1 物质的变化和性质",
+      "printedPages": [
+        6,
+        10
+      ],
+      "pdfPages": [
+        11,
+        15
+      ],
+      "figure": "/classroom/chemistry-v2/changes.svg",
+      "experiment": "particle-change",
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:properties",
+      "topic": "第一单元 · 课题1 物质的变化和性质",
+      "printedPages": [
+        6,
+        10
+      ],
+      "pdfPages": [
+        11,
+        15
+      ],
+      "figure": "/classroom/chemistry-v2/properties.svg",
+      "experiment": null,
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:lab",
+      "topic": "第一单元 · 课题3 走进化学实验室",
+      "printedPages": [
+        17,
+        24
+      ],
+      "pdfPages": [
+        22,
+        29
+      ],
+      "figure": "/classroom/chemistry-v2/lab.svg",
+      "experiment": null,
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:variables",
+      "topic": "第一单元 · 课题2 化学是一门以实验为基础的科学",
+      "printedPages": [
+        11,
+        16
+      ],
+      "pdfPages": [
+        16,
+        21
+      ],
+      "figure": "/classroom/chemistry-v2/variables.svg",
+      "experiment": null,
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:air",
+      "topic": "第二单元 · 课题1 空气",
+      "printedPages": [
+        26,
+        32
+      ],
+      "pdfPages": [
+        31,
+        37
+      ],
+      "figure": "/classroom/chemistry-v2/air.svg",
+      "experiment": "air-mixture",
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:oxygen",
+      "topic": "第二单元 · 课题2 氧气",
+      "printedPages": [
+        33,
+        36
+      ],
+      "pdfPages": [
+        38,
+        41
+      ],
+      "figure": "/classroom/chemistry-v2/oxygen.svg",
+      "experiment": null,
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:oxygen-preparation",
+      "topic": "第二单元 · 课题3 制取氧气；实验活动1",
+      "printedPages": [
+        37,
+        46
+      ],
+      "pdfPages": [
+        42,
+        51
+      ],
+      "figure": "/classroom/chemistry-v2/oxygen-preparation.svg",
+      "experiment": null,
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:catalyst",
+      "topic": "第二单元 · 课题3 制取氧气",
+      "printedPages": [
+        37,
+        41
+      ],
+      "pdfPages": [
+        42,
+        46
+      ],
+      "figure": "/classroom/chemistry-v2/catalyst.svg",
+      "experiment": "catalysis",
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:particles",
+      "topic": "第三单元 · 课题1 分子和原子",
+      "printedPages": [
+        48,
+        52
+      ],
+      "pdfPages": [
+        53,
+        57
+      ],
+      "figure": "/classroom/chemistry-v2/particles.svg",
+      "experiment": "particle-change",
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:atoms",
+      "topic": "第三单元 · 课题2 原子的结构",
+      "printedPages": [
+        53,
+        58
+      ],
+      "pdfPages": [
+        58,
+        63
+      ],
+      "figure": "/classroom/chemistry-v2/atoms.svg",
+      "experiment": null,
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:ions",
+      "topic": "第三单元 · 课题2 原子的结构",
+      "printedPages": [
+        53,
+        58
+      ],
+      "pdfPages": [
+        58,
+        63
+      ],
+      "figure": "/classroom/chemistry-v2/ions.svg",
+      "experiment": "atom-ion",
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:elements",
+      "topic": "第三单元 · 课题3 元素",
+      "printedPages": [
+        59,
+        65
+      ],
+      "pdfPages": [
+        64,
+        70
+      ],
+      "figure": "/classroom/chemistry-v2/elements.svg",
+      "experiment": null,
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:purification",
+      "topic": "第四单元 · 课题2 水的净化",
+      "printedPages": [
+        74,
+        78
+      ],
+      "pdfPages": [
+        79,
+        83
+      ],
+      "figure": "/classroom/chemistry-v2/purification.svg",
+      "experiment": "filtration",
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:water",
+      "topic": "第四单元 · 课题3 水的组成",
+      "printedPages": [
+        79,
+        82
+      ],
+      "pdfPages": [
+        84,
+        87
+      ],
+      "figure": "/classroom/chemistry-v2/water.svg",
+      "experiment": "water-electrolysis",
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:valence",
+      "topic": "第四单元 · 课题4 化学式与化合价",
+      "printedPages": [
+        83,
+        90
+      ],
+      "pdfPages": [
+        88,
+        95
+      ],
+      "figure": "/classroom/chemistry-v2/valence.svg",
+      "experiment": null,
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:formula-mass",
+      "topic": "第四单元 · 课题4 化学式与化合价",
+      "printedPages": [
+        83,
+        90
+      ],
+      "pdfPages": [
+        88,
+        95
+      ],
+      "figure": "/classroom/chemistry-v2/formula-mass.svg",
+      "experiment": null,
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:conservation",
+      "topic": "第五单元 · 课题1 质量守恒定律",
+      "printedPages": [
+        92,
+        98
+      ],
+      "pdfPages": [
+        97,
+        103
+      ],
+      "figure": "/classroom/chemistry-v2/conservation.svg",
+      "experiment": "mass-conservation",
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:balance",
+      "topic": "第五单元 · 课题2 如何正确书写化学方程式",
+      "printedPages": [
+        99,
+        101
+      ],
+      "pdfPages": [
+        104,
+        106
+      ],
+      "figure": "/classroom/chemistry-v2/balance.svg",
+      "experiment": "balance-water",
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:stoichiometry",
+      "topic": "第五单元 · 课题3 利用化学方程式的简单计算",
+      "printedPages": [
+        102,
+        104
+      ],
+      "pdfPages": [
+        107,
+        109
+      ],
+      "figure": "/classroom/chemistry-v2/stoichiometry.svg",
+      "experiment": "balance-water",
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:purity",
+      "topic": "第五单元 · 课题3 简单计算（纯度为本课拓展）",
+      "printedPages": [
+        102,
+        104
+      ],
+      "pdfPages": [
+        107,
+        109
+      ],
+      "figure": "/classroom/chemistry-v2/purity.svg",
+      "experiment": null,
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:carbon",
+      "topic": "第六单元 · 课题1 金刚石、石墨和C₆₀",
+      "printedPages": [
+        106,
+        112
+      ],
+      "pdfPages": [
+        111,
+        117
+      ],
+      "figure": "/classroom/chemistry-v2/carbon.svg",
+      "experiment": null,
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:carbon-dioxide-preparation",
+      "topic": "第六单元 · 课题2 二氧化碳制取的研究",
+      "printedPages": [
+        113,
+        116
+      ],
+      "pdfPages": [
+        118,
+        121
+      ],
+      "figure": "/classroom/chemistry-v2/carbon-dioxide-preparation.svg",
+      "experiment": null,
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:carbon-dioxide",
+      "topic": "第六单元 · 课题3 二氧化碳和一氧化碳",
+      "printedPages": [
+        117,
+        124
+      ],
+      "pdfPages": [
+        122,
+        129
+      ],
+      "figure": "/classroom/chemistry-v2/carbon-dioxide.svg",
+      "experiment": "co2-test",
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:carbon-monoxide",
+      "topic": "第六单元 · 课题3 二氧化碳和一氧化碳",
+      "printedPages": [
+        117,
+        124
+      ],
+      "pdfPages": [
+        122,
+        129
+      ],
+      "figure": "/classroom/chemistry-v2/carbon-monoxide.svg",
+      "experiment": null,
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:combustion",
+      "topic": "第七单元 · 课题1 燃烧和灭火；实验活动3",
+      "printedPages": [
+        128,
+        135
+      ],
+      "pdfPages": [
+        133,
+        140
+      ],
+      "figure": "/classroom/chemistry-v2/combustion.svg",
+      "experiment": "combustion",
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:extinguishing",
+      "topic": "第七单元 · 课题1 燃烧和灭火",
+      "printedPages": [
+        128,
+        135
+      ],
+      "pdfPages": [
+        133,
+        140
+      ],
+      "figure": "/classroom/chemistry-v2/extinguishing.svg",
+      "experiment": "combustion",
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:environment",
+      "topic": "第七单元 · 课题2 燃料的合理利用与开发",
+      "printedPages": [
+        136,
+        149
+      ],
+      "pdfPages": [
+        141,
+        154
+      ],
+      "figure": "/classroom/chemistry-v2/environment.svg",
+      "experiment": null,
+      "formativeCheckCount": 1
+    },
+    {
+      "atomId": "chemistry:9-upper:hydrogen",
+      "topic": "第七单元 · 课题2 燃料的合理利用与开发（定量为本课拓展）",
+      "printedPages": [
+        136,
+        149
+      ],
+      "pdfPages": [
+        141,
+        154
+      ],
+      "figure": "/classroom/chemistry-v2/hydrogen.svg",
+      "experiment": null,
+      "formativeCheckCount": 1
+    }
+  ]
+}

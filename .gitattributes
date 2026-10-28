@@ -67,3 +67,6 @@ apps/web/app/studio/reference-navigation-source.json text eol=lf
 # Chemistry acceptance artifacts retain exact original bytes.
 doc/evidence/2026-10-28/chemistry* -text -whitespace
 doc/evidence/2026-10-28/chemistry*/** -text -whitespace
+apps/web/public/classroom/chemistry-v2/*.svg text eol=lf
+resources/curriculum/chemistry-tutorial-figures-v2.json text eol=lf
+resources/curriculum/chemistry-tutorial-source-map-v2.json text eol=lf

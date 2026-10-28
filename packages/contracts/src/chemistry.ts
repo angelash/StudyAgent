@@ -17,4 +17,8 @@ export type ChemistryCatalog = {
   checkpoints: ChemistryCheckpoint[];
   references: Array<{ id: string; title: string; href: string; status: 'reference' | 'published' }>;
   notices: string[];
+  textbookBasis: {
+    title: string; editionNotice: string; href: string; tutorialVersion: string;
+    mappings: Array<{ atomId: string; lesson: string; topic: string; printedPages: [number, number] }>;
+  };
 };

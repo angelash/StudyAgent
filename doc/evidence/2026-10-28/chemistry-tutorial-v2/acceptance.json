@@ -1,0 +1,190 @@
+{
+  "at": "2026-10-28T10:59:33.211017+00:00",
+  "rulesCommitPushed": "b5b214bf1d2dcc740aba2163b9f8bb0b7dcf2c0b",
+  "courseId": "studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+  "entry": "https://study-agent.iepose.cn/studio?view=courses&subject=chemistry&course=studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+  "teachingVersion": "chemistry-tutorial-2026-10-28-v2",
+  "content": {
+    "actualLessons": 28,
+    "mappedLessons": 28,
+    "figures": 28,
+    "modelKinds": 10,
+    "modelPlacements": 13,
+    "classroomChecks": 28,
+    "independentBankQuestions": 2016
+  },
+  "upgrade": {
+    "at": "2026-10-28T10:55:57.869Z",
+    "applied": true,
+    "alreadyRevised": false,
+    "courseId": "studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+    "previousFingerprint": "dbe42b46892caa665984070c4611edb588b15e76ebde99b25ee74bcc075fa2dc",
+    "fingerprint": "3837facd906c61cc2538af16c9080b08fce6b80aea763c2bde6d4c7ea8228de7",
+    "teachingVersion": "chemistry-tutorial-2026-10-28-v2",
+    "lessons": 28,
+    "figures": 28,
+    "experimentKinds": 10,
+    "classroomChecks": 28
+  },
+  "api": {
+    "numPassedTests": 49,
+    "numFailedTests": 0,
+    "numPendingTests": 0
+  },
+  "browser": {
+    "fullRun": {
+      "startTime": "2026-10-28T10:40:57.488Z",
+      "duration": 211477.868,
+      "expected": 22,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "firstStyleRecheck": {
+      "startTime": "2026-10-28T10:47:51.400Z",
+      "duration": 66834.037,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "finalPhoneTableRecheck": {
+      "startTime": "2026-10-28T10:52:22.725Z",
+      "duration": 41664.460999999996,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "note": "These runs overlap and are not added together. Final scoped CSS makes all four atom-count columns visible at 390px; final two journeys exercise all ten models and source/formative checks."
+  },
+  "preservation": {
+    "unchanged": {
+      "students": true,
+      "learningScopes": true,
+      "classroomSessions": true,
+      "diagnosticResponses": true,
+      "diagnosticSessions": true,
+      "courseProjects": true,
+      "knowledgeAtoms": true,
+      "questions": true,
+      "measurementItems": true,
+      "otherCourses": true,
+      "courseUnits": true
+    },
+    "quickCheck": {
+      "quick_check": "ok"
+    }
+  },
+  "readback": {
+    "at": "2026-10-28T10:56:03.719Z",
+    "courseId": "studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+    "title": "广东初三化学上学期",
+    "teachingVersion": "chemistry-tutorial-2026-10-28-v2",
+    "courseGrade": 9,
+    "studentProfileGrade": 4,
+    "catalogCourseId": "studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+    "courseIdsMatch": true,
+    "mappedLessons": 28,
+    "actualLessons": 28,
+    "figures": 28,
+    "modelPlacements": 13,
+    "modelKinds": 10,
+    "classroomChecks": 28,
+    "independentBankQuestions": 2016,
+    "existingClassrooms": [
+      {
+        "id": "classroom_142079ae-ed07-4683-8fbe-9d7c961c5828",
+        "contentStatus": "archived"
+      }
+    ],
+    "firstLesson": "物理变化与化学变化",
+    "lastLesson": "氢能源的反应与定量验证",
+    "studyEvidenceCreated": false,
+    "schoolEditionStatus": "unconfirmed"
+  },
+  "runtime": {
+    "buildId": "KmriwQzSQFxKCp480_3ep",
+    "publicFiguresVerified": 28,
+    "checks": [
+      {
+        "url": "http://127.0.0.1:4217/api/ready",
+        "status": 200,
+        "sha256": "9fe320e01fa3564a1bb0b5f996b462bc117b9c9a838ba29a6610bce7943e5875",
+        "location": null
+      },
+      {
+        "url": "http://127.0.0.1:3217/api/ready",
+        "status": 200,
+        "sha256": "d65fc85a208ae334708f2231317f697ddb6f9aa3517ad3d802e1e68b4c2bd08b",
+        "location": null
+      },
+      {
+        "url": "http://127.0.0.1:3217/studio?view=courses&subject=chemistry&course=studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+        "status": 200,
+        "sha256": "38415a946f43fb8f295a65e8dd54ae44297634b3c76c9aab5dd2f73e5bbb9c75",
+        "location": null
+      },
+      {
+        "url": "https://study-agent.iepose.cn/api/ready",
+        "status": 200,
+        "sha256": "d59c64390cd2d44d9e89b0222d3c52435a1a037c3acd83070e5b06e3db40a858",
+        "location": null
+      },
+      {
+        "url": "https://study-agent.iepose.cn/studio?view=courses&subject=chemistry&course=studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+        "status": 200,
+        "sha256": "38415a946f43fb8f295a65e8dd54ae44297634b3c76c9aab5dd2f73e5bbb9c75",
+        "location": null
+      },
+      {
+        "url": "https://study-agent.iepose.cn/api/chemistry/catalog",
+        "status": 401,
+        "sha256": "378957f2452cdd42812d6fd1c86a74d9ce9657ab0a27f7b0bd8c3a17298d1612",
+        "location": null
+      },
+      {
+        "url": "https://study-agent.iepose.cn/chemistry",
+        "status": 307,
+        "sha256": "925cf0cedf6c0ea4d1170626b8f5c60982f2c9431418d53beef769c8f19cf68a",
+        "location": "/studio?view=courses&subject=chemistry&course=chemistry"
+      }
+    ]
+  },
+  "sourceByteHashes": {
+    ".gitattributes": "d762c2e1c1dd528c873e1a20d0fbf98b448f02697be22086206cc006a8e9b4c4",
+    "README.md": "c26c4221d0cac65988f92abe74a8dc2e36295fb7fa1a98bd532c7e20339155d1",
+    "packages/contracts/src/classroom-experiment.ts": "48d82048756bfcbfc52ce12e81ee4d792b44614c6ec8c14ef8d56d03a3d5e331",
+    "packages/contracts/src/classroom.ts": "d874652b73413f285977d7d698e23564c2533cffca267769b0493e4ff5d79e27",
+    "packages/contracts/src/chemistry.ts": "616280e1ccf1337fcc2ea5ca33df3c9b6cd9e6f7fdaa0fe162e8991d78f0c597",
+    "packages/contracts/src/studio.ts": "283d12d9e2171f59bd16213a141ebe9a5d9111ef9c91a93883110575c010a079",
+    "packages/contracts/src/index.ts": "7e79cf2b97de0ab26f0989b73f6f508e719b2af302d4724363c9fa9d0c83d246",
+    "apps/api/src/modules/learning/chemistry-tutorial-content.ts": "1c2f0cc7292c9f703b71b1bb7205dedb9a83cca07c7410cbbaf325d8055bad6c",
+    "apps/api/src/modules/learning/chemistry-tutorial.ts": "9cbc1914587f0c30869b87ca8c2046f2e3ebef14679da4b437b9ffc6f0c7acea",
+    "apps/api/src/modules/learning/chemistry-tutorial-revision.ts": "f5561c0accc270610d5c9274bf69a189358f1bedbe7b8ef62072584c06137c84",
+    "apps/api/src/modules/learning/chemistry-tutorial.integration.test.ts": "c3f81b81ceca8614736b13b5393bc7228b2d56701e3e9e4db09dac6a741b1c3b",
+    "apps/api/src/modules/learning/chemistry-course.ts": "12e629d156351eee1116ee3a89fcbcbcaabec1475fc7665658b1ff7aa4d1bb0d",
+    "apps/api/src/modules/learning/chemistry.service.ts": "1815432326d255b8c0b9d21faa291115decd5ff33807d9ee0cdd84ec8b321fe0",
+    "apps/api/src/modules/learning/classroom-curriculum.ts": "2089a8c24f2938d4c2bbcc2983322bd8d90734f282b11a7d86ee01653bfe097d",
+    "apps/api/src/modules/learning/classroom.service.ts": "8a6df5e6579716d631fc14bfe1fc016ddc7eaf9e40be03cb1dfa51427d0ed7cf",
+    "apps/web/app/studio/classroom/chemistry-experiment.tsx": "0625cea89bf4fefce833c5578a442be9dd3e7de36327734c4b428f6bc793e759",
+    "apps/web/app/studio/classroom/chemistry-experiment.css": "9b5fd62ef2a0b6f87ebbbf5324db02302d5968cd1b1cbd719b1ca4c800efc5ba",
+    "apps/web/app/studio/classroom/board-step.tsx": "5b0a6a00d4f5764e4b20bee285c890d037f1759790650f399ac147be84f44692",
+    "apps/web/app/studio/classroom/workbench.tsx": "86b281bb71c606c1dc222d6b1cf96ee3eaf0e4305083157f06c66e966b5f22c1",
+    "apps/web/app/studio/chemistry-course-tools.tsx": "36f7442647625a74644d288e21f04d1978241df67db1c9d472695f1fd5073646",
+    "resources/curriculum/chemistry-tutorial-source-map-v2.json": "6bbed51fe34e7fd657b009301afa83a17a9fe0e855b30d1bb93bacf70e37f681",
+    "resources/curriculum/chemistry-tutorial-figures-v2.json": "a786b1723ab6ba04052e6c14d51abdf067e442c1d3b0fa8c545e9530c4a1b76d",
+    "scripts/operations/build-chemistry-tutorial-figures.cjs": "7a846c0a8be1ff78d29105ec0bbd9f15ea3a1b9114a7a4174eb6bb01e764f111",
+    "scripts/operations/correct-chemistry-course.cjs": "69e64a8fc527cd4c880873e2e453a248771dd26066d0114559940aec610d998f",
+    "scripts/qa/audit-chemistry-course-content.cjs": "d6c56eb6848b12bf80850a764b373ea275a685da264119a385c46dcef6b1d2eb",
+    "tests/e2e/chemistry.spec.ts": "ba39478003468f0c8f0adaba2b86466e2d728cdaa5a517486f3bd6349f7dd77a"
+  },
+  "boundaries": [
+    "The reference PDF has a seven-unit directory but no edition year on the copyright page. Its 2022 PDF creation metadata is not a textbook edition. The school current edition and progress are unconfirmed.",
+    "All released teaching figures, explanations, models and formative checks are original. The publisher PDF and page images remain local reference material.",
+    "Only the exact original course metadata was revised. All protected data hashes match; original classroom snapshots remain available as archived and can explicitly switch to current teaching.",
+    "Teaching resources and formative feedback do not claim teacher approval, calibrated mastery, real experimental skill or real learner long-term retention.",
+    "Authenticated browser interactions and simulated responses ran only on isolated databases; production verification read persisted course content and existing sessions, with no synthetic learner responses.",
+    "Initial API failure was a stale test object after transaction commit; the test now reads the saved object and all49 focused cases pass. Original report retained."
+  ]
+}

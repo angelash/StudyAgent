@@ -1,0 +1,219 @@
+{
+  "at": "2026-10-28T10:57:23.002Z",
+  "buildId": "KmriwQzSQFxKCp480_3ep",
+  "checks": [
+    {
+      "url": "http://127.0.0.1:4217/api/ready",
+      "status": 200,
+      "sha256": "9fe320e01fa3564a1bb0b5f996b462bc117b9c9a838ba29a6610bce7943e5875",
+      "location": null
+    },
+    {
+      "url": "http://127.0.0.1:3217/api/ready",
+      "status": 200,
+      "sha256": "d65fc85a208ae334708f2231317f697ddb6f9aa3517ad3d802e1e68b4c2bd08b",
+      "location": null
+    },
+    {
+      "url": "http://127.0.0.1:3217/studio?view=courses&subject=chemistry&course=studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+      "status": 200,
+      "sha256": "38415a946f43fb8f295a65e8dd54ae44297634b3c76c9aab5dd2f73e5bbb9c75",
+      "location": null
+    },
+    {
+      "url": "https://study-agent.iepose.cn/api/ready",
+      "status": 200,
+      "sha256": "d59c64390cd2d44d9e89b0222d3c52435a1a037c3acd83070e5b06e3db40a858",
+      "location": null
+    },
+    {
+      "url": "https://study-agent.iepose.cn/studio?view=courses&subject=chemistry&course=studio_course_b898dd14-1862-4051-b1af-fd35ee63a030",
+      "status": 200,
+      "sha256": "38415a946f43fb8f295a65e8dd54ae44297634b3c76c9aab5dd2f73e5bbb9c75",
+      "location": null
+    },
+    {
+      "url": "https://study-agent.iepose.cn/api/chemistry/catalog",
+      "status": 401,
+      "sha256": "378957f2452cdd42812d6fd1c86a74d9ce9657ab0a27f7b0bd8c3a17298d1612",
+      "location": null
+    },
+    {
+      "url": "https://study-agent.iepose.cn/chemistry",
+      "status": 307,
+      "sha256": "925cf0cedf6c0ea4d1170626b8f5c60982f2c9431418d53beef769c8f19cf68a",
+      "location": "/studio?view=courses&subject=chemistry&course=chemistry"
+    }
+  ],
+  "publicFiguresVerified": 28,
+  "figures": [
+    {
+      "href": "/classroom/chemistry-v2/changes.svg",
+      "status": 200,
+      "sha256": "7a53d5921769fb96c0d3fe6083e39d6604a24f447aa461ddf269ebfb69c3660b",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/properties.svg",
+      "status": 200,
+      "sha256": "4656d2f95d1aae66c413b3bcaa7126d564acd56e9b53d4636706acf65b4ac899",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/lab.svg",
+      "status": 200,
+      "sha256": "21899376ca9631708d2a697e5f378fa14fac7323129e6148fd2dcddc8d07769d",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/variables.svg",
+      "status": 200,
+      "sha256": "36ca6393d3b33fbd678ccba184f0b1e6fb7ffe80264c2811ff5db17d25a5ac8c",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/air.svg",
+      "status": 200,
+      "sha256": "a53af48c6cbd545096b7192180356626094ec7d8273a5995852f54542ab6c653",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/oxygen.svg",
+      "status": 200,
+      "sha256": "c9eb31a09b0692a64f88001f9bbfefb5ccc9dd25f95c867c1016ab0e7dadec32",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/oxygen-preparation.svg",
+      "status": 200,
+      "sha256": "5bb82ad9b6baba0cd5d5d5edc3aceeec8a2a354ee8d13f8ad0030a3c483a65d0",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/catalyst.svg",
+      "status": 200,
+      "sha256": "bfac187061ce87917f2ae601a7e6a20dceca34c4bd928abb3a382fc495972abe",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/particles.svg",
+      "status": 200,
+      "sha256": "cd598b237b5b94d7de7803519d090052fb86e451da6f0d56c3b4319e9feb1f4c",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/atoms.svg",
+      "status": 200,
+      "sha256": "d341e07ccd51c5e81fca4d07c32e5ec39376b6fdb7ef31de4e38c22bd7a9eb91",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/ions.svg",
+      "status": 200,
+      "sha256": "8dcb440aeb1f65b7a02c8609a2110c3c601f056776c8819e31ed099a6232e972",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/elements.svg",
+      "status": 200,
+      "sha256": "f27ee38f67607dc30dd0d911752f39f1b66747ecc4a56358f98c3a7f7c31292a",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/purification.svg",
+      "status": 200,
+      "sha256": "0b84883cf6e9bf75879c80af8dbfc7ac2c014b31ed66e529520a6455dc328dbe",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/water.svg",
+      "status": 200,
+      "sha256": "0bfa183bd169402e92b98fdb673f13280dd18100ccae90803f7fabc36a40a02f",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/valence.svg",
+      "status": 200,
+      "sha256": "9a98753fe805adf37580fc0d747484ab3966a3020dd2ee229c7ca47b52275b9e",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/formula-mass.svg",
+      "status": 200,
+      "sha256": "7421c9feeb28c3aa541b03301b926e5d1ef7c1c44ae2c870c347bd201f118f3e",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/conservation.svg",
+      "status": 200,
+      "sha256": "4b12e8b59e42c7d8046f70b8f1140414c310a38acaf291339aafe57866c6e444",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/balance.svg",
+      "status": 200,
+      "sha256": "d5121b2cb0a6b2ba09f12ed41b2e6793dc6f8f09b3b551aa67d7828614200afb",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/stoichiometry.svg",
+      "status": 200,
+      "sha256": "32cee47c70c2b785f7b08c09de87d8362368605db5ea212ef437586a1e83ef93",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/purity.svg",
+      "status": 200,
+      "sha256": "3e7b760d10efa39c9da68d6724ec9d6439afd8cd4432d114fd1fd47ab86f8df1",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/carbon.svg",
+      "status": 200,
+      "sha256": "e3a27e8aa4a39eccee43fa0250d0bf0f90ad4c9cee5e7ee73b6d4d1cb3a465ec",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/carbon-dioxide-preparation.svg",
+      "status": 200,
+      "sha256": "795216d42abc8536439216aba8df9f251ed16949fe5b5177daba1b585de39b74",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/carbon-dioxide.svg",
+      "status": 200,
+      "sha256": "e02f1aa12b4a6adb0b7a9cb9b4fc1a3eb24f3465f23337efc206765694b37dbc",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/carbon-monoxide.svg",
+      "status": 200,
+      "sha256": "83921191a9479804f28c8005b4a39bd254ecdaba4a9f5434752d13989932fad5",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/combustion.svg",
+      "status": 200,
+      "sha256": "ca81e02722beb50397e7c3b2937a049457adaf0b9c5b2aa31721ffc1f1c0bf62",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/extinguishing.svg",
+      "status": 200,
+      "sha256": "3810ffedd02dda30ca36285be2fac126d02ed43ec4221efc9a102a62aadcff15",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/environment.svg",
+      "status": 200,
+      "sha256": "5be4cb47fdef9b66966b0d829eed3a53647f6638e7283b937a0a3fc2ceca1fbe",
+      "matches": true
+    },
+    {
+      "href": "/classroom/chemistry-v2/hydrogen.svg",
+      "status": 200,
+      "sha256": "f5ff30621046d5f5a58f42d3204d0c9b9ce3bc146990f6c5646aa6e8b43ca009",
+      "matches": true
+    }
+  ]
+}

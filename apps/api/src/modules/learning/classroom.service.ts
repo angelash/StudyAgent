@@ -10,6 +10,7 @@ import { SpeechService } from '../ai/speech.service';
 import { XiaojiuChatService } from '../ai/xiaojiu-chat.service';
 import { classroomAnswerKey, classroomCourse, classroomFingerprint, classroomHintKeys, classroomLesson, classroomTeachingFingerprint, curriculumClassroomLesson } from './classroom-curriculum';
 import { sourceCourseLesson, sourceCourseAnswerKeys } from './source-course-content';
+import { chemistryTutorialKeys } from './chemistry-tutorial';
 import { assertSourceCourseAccess } from './source-course.service';
 import { freezeClassroomPresentation, freezeSpeechTrack, sessionPresentation, verifySpeechTrack } from './classroom-presentation';
 import { lessonActivity,projectActivities } from './course-journey';
@@ -110,6 +111,7 @@ export class ClassroomService {
       this.students.assertCanAccessStudent(user, course.studentId);
       const source = course.units.flatMap(unit => unit.lessons).find(item => item.id === command.lessonId);
       lesson = source && curriculumClassroomLesson(course, source);
+      if (lesson) generatedKeys = chemistryTutorialKeys(lesson);
       courseId = course.id; studentId = course.studentId;
       if (!lesson) throw new BadRequestException('该活动没有已审核的教学讲解，请使用独立练习入口');
     } else if(command.sourceCourseId){const course=this.store.find('sourceCourses',{id:command.sourceCourseId});if(!course)throw new NotFoundException('资料课程不存在');assertSourceCourseAccess(user,course,this.students);
