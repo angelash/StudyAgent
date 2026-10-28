@@ -474,3 +474,6 @@ M1后即开始可用课程的设备与真人试用；真实1/3/7/14日复测与�
 
 
 2026-10-29 143 D实施前接续：已基于实际来源、eligibleMeasurements、诊断蓝图、PracticeSession、GuidanceService及内部日历代码归档[147具体方案](147-conversation-practice-guidance-and-review.md)，分D1只读预检、D2教学候选/首答曝光、D3真实报告指导和D4冲突排期/到期复测。当前尚未实现新端点/schema24，不增加443接口或原72完成数；正在运行的来源候选源码/编译继续冻结。
+
+
+2026-10-29 146当前集成完整API终态：重新实际执行1790通过/0失败/74环境跳过、2627冻结输入SHA保持，进程/验证退出0，见[本次完整原件](../evidence/2026-10-29/assistant-whiteboard-ui-complete-api-first/receipt.json)。501整站浏览器仍运行，147 D1仅在新独立工作区开发，不混入本轮门禁。精确来源CI/schema23发布与D后续继续，正式schema22及原72/M1～M7整体active。
