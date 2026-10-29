@@ -126,12 +126,16 @@ export class AssistantPracticeArtifactService {
       studentId: row.studentId, subject: row.subject, revision: row.revision, contentFingerprint: row.contentFingerprint,
       groupCount: row.bank.groups.length, questionCount: row.bank.groups.reduce((sum, group) => sum + group.questions.length, 0), createdAt: row.createdAt, updatedAt: row.updatedAt };
   }
+  /** Internal sharing boundary. It grants no HTTP access to the publisher's private source. */
+  assignmentSource(user: InMemoryUserAccount, id: string, auth: InMemoryAuthSession, requireCurrent: boolean) {
+    const row = this.record(user, id, auth); if (requireCurrent) this.assertCurrent(user, row); return row;
+  }
   get(user: InMemoryUserAccount, id: string, auth: InMemoryAuthSession) {
     const row = this.record(user, id, auth); let editable = true;
     try { this.assertCurrent(user, row); } catch { editable = false; }
     return { ...this.summary(row), ...reviewedPracticePortableView(row),
       editable, blocked: editable ? null : { code: 'current_context_changed', message: '原来源、范围、审核或当前评测状态需要重新核对；原稿和历史仍保留。' },
-      isTeachingOnly: true, formalEvidenceCreated: false, assignmentAvailable: false, solvingAvailable: false };
+      isTeachingOnly: true, formalEvidenceCreated: false, assignmentAvailable: editable, solvingAvailable: false };
   }
   list(user: InMemoryUserAccount, sessionId: string, value: unknown, auth: InMemoryAuthSession): AssistantReviewedPracticePage {
     this.sources.assertReadableSession(user, sessionId);

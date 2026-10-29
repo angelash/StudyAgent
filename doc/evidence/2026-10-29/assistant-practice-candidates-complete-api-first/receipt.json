@@ -1,0 +1,52 @@
+{
+  "at": "2026-10-29T00:12:38.544704+00:00",
+  "runs": [
+    {
+      "attempt": "complete-api-first",
+      "family": "practice-compatibility",
+      "receipt": {
+        "at": "2026-10-29T00:09:07.184Z",
+        "suite": "complete-api",
+        "engine": "sqlite",
+        "passed": true,
+        "exitCode": 0,
+        "error": null,
+        "sourceInputs": 885,
+        "compiledInputs": 418,
+        "changed": [],
+        "changedBuild": [],
+        "tests": {
+          "total": 1949,
+          "passed": 1875,
+          "failed": 0,
+          "pending": 74
+        },
+        "limits": [
+          "Generated users/content and owned isolated stores only; no actual model/TTS/image provider or real learner evidence.",
+          "Compatibility/full API results are distinct from browser, precise remote CI, schema24 delivery and complete product acceptance."
+        ]
+      },
+      "copiedSourceVerified": 885,
+      "copiedBuildVerified": 418,
+      "capturedGitRevision": "f8289f6eaa837fb0f99aa21c8904d635b4a8e550"
+    }
+  ],
+  "archive": {
+    "fileIndex": "files.json.gz",
+    "fileEntries": 1308,
+    "uniqueObjects": 1280,
+    "frozenSourceAndBuildCopiesVerified": true
+  },
+  "secretScan": {
+    "findings": [],
+    "reviewedDefaultFixtureOrLiteralTemplateMatches": 6
+  },
+  "passed": true,
+  "candidateCommit": "83af7e159612b80e95df97564083b057519ffcb1",
+  "revisionBoundary": "Runner captured f8289f6e before later source/test/docs commit83af7e15. All885 frozen working-source and418 build bytes remained unchanged through the run. This is the private-candidate version, not the later assignment checkout.",
+  "limits": [
+    "1949 total:1875pass/74environment skips/0fail. Actual PG compatibility and18 artifacts are separate overlapping runs, not added.",
+    "Does not include the new assignment API or the privacy-ledger cloning fix from the independent assignment checkout.",
+    "Full browser/precise remote40790308484 are still independently running; production remains schema23. No actual provider or original student evidence."
+  ]
+}

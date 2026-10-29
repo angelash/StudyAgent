@@ -21,6 +21,7 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
   const atomId = 'qa:practice:conditions', marker = 'OWNED_PRIVATE_SOURCE_END_' + randomUUID(), providers: any[] = [], databases: string[] = [];
   let app: any, store: any, owner: any, other: any, learner: any, student: any, source: any, otherSource: any, messageId: string;
   let chemistry: any, chemicalAtom: string, learnerSource: any, learnerMessageId: string, primaryArtifact: string, primaryInput: any;
+  let primaryAssignment: string, assignmentArtifact: string, assignmentCommand: any, assignmentReceipt: any;
   let sourceUrl = '', currentUrl = '', currentData = '', admin: Pool | undefined, backupPath = '';
   const fingerprint = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
   async function call(method: 'get' | 'post' | 'patch' | 'put', path: string, body?: unknown, actor = owner, expected = method === 'post' ? 201 : 200) {
@@ -47,8 +48,9 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
       vi.spyOn(chat, 'structured').mockRejectedValue(Error('No actual provider in reviewed-practice artifact QA')));
   }
   async function close() { await app?.close(); app = undefined; }
-  async function protectedState() {
+  async function protectedState(excludeAssignments = false) {
     const state = structuredClone((await store.database.read()).state); delete state.assistantPracticeArtifacts;
+    if (excludeAssignments) delete state.assistantPracticeAssignments;
     const tasks = await store.database.tasks.list(); expect(tasks.total).toBe(0); return fingerprint(state);
   }
   async function saved(collection: string, id: string) { return (await store.database.read()).state[collection].find((row: any) => row.id === id); }
@@ -165,7 +167,7 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
       expect(item.payload.answerSchema.gradingConfig).toEqual({}); expect(item.payload.source.sourcePathOrUrl).toBe(''); expect(item.payload.source.notes).toBeNull();
       expect(item.provenance).toBe('reviewed_bank_supplement');
     }
-    expect(result.view).toMatchObject({ editable: true, isTeachingOnly: true, formalEvidenceCreated: false, assignmentAvailable: false, solvingAvailable: false });
+    expect(result.view).toMatchObject({ editable: true, isTeachingOnly: true, formalEvidenceCreated: false, assignmentAvailable: true, solvingAvailable: false });
   });
   it('replays original create keys and rejects changed input or forged approval fields', async () => {
     const before = await protectedState(); const receipt = await call('post', sourceRoot() + '/candidates', primaryInput);
@@ -294,18 +296,111 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
       expect(await call('post', sourceRoot() + '/candidates', record.createInput)).toEqual(result.receipt);
     } finally { await scope(); }
   });
+  it('confirms a shared native teaching assignment without writing learner sessions, exposure, tasks or measurements', async () => {
+    const candidate = await create(); assignmentArtifact = candidate.receipt.artifactId;
+    assignmentCommand = { studentId: student.id, expectedRevision: candidate.view.revision, contentFingerprint: candidate.view.contentFingerprint,
+      acknowledgePreview: true, requestKey: randomUUID() };
+    const before = await protectedState(true);
+    await call('post', artifactRoot(assignmentArtifact) + '/assignments', { ...assignmentCommand, acknowledgePreview: false }, owner, 400);
+    await call('post', artifactRoot(assignmentArtifact) + '/assignments', { ...assignmentCommand, formalEvidenceCreated: true }, owner, 400);
+    assignmentReceipt = await call('post', artifactRoot(assignmentArtifact) + '/assignments', assignmentCommand);
+    primaryAssignment = assignmentReceipt.assignmentId;
+    const shared = await call('get', '/learning/assistant-practice/assignments/' + primaryAssignment);
+    expect(shared).toMatchObject({ questionCount: 2, isTeachingOnly: true, formalEvidenceCreated: false, startingAvailable: false });
+    expect(shared.groups[0].questions[0].payload.document.blocks.some((block: any) => block.type === 'table')).toBe(true);
+    expect(JSON.stringify(shared)).not.toContain(marker); expect(shared.privateOrigin).toBeUndefined();
+    expect(shared.groups[0].questions[0].payload.answerSchema.gradingConfig).toEqual({});
+    expect(await protectedState(true)).toBe(before);
+  });
+  it('shares confirmed teaching with the other guardian while keeping private origin and unstarted learner questions hidden', async () => {
+    await call('post', artifactRoot(assignmentArtifact) + '/assignments', assignmentCommand, other, 404);
+    const before = await protectedState(), shared = await call('get', '/learning/assistant-practice/assignments/' + primaryAssignment, undefined, other);
+    expect(shared.groups[0].questions).toHaveLength(2); expect(JSON.stringify(shared)).not.toContain(marker);
+    expect(JSON.stringify(shared)).not.toContain(assignmentArtifact); expect(JSON.stringify(shared)).not.toContain('PRIVATE_FIXTURE_SOURCE_NOTES');
+    const learnerView = await call('get', '/learning/assistant-practice/assignments/' + primaryAssignment, undefined, learner);
+    expect(learnerView.groups[0].questions).toBeUndefined(); expect(JSON.stringify(learnerView)).not.toContain('referenceAnswer');
+    expect(JSON.stringify(learnerView)).not.toContain(assignmentArtifact);
+    const page = await call('get', '/learning/assistant-practice/assignments?studentId=' + student.id + '&subject=math', undefined, learner);
+    expect(page.items.some((item: any) => item.id === primaryAssignment)).toBe(true); expect(await protectedState()).toBe(before);
+  });
+  it('replays original shared assignment requests across two actual instances without another child record', async () => {
+    const command = { ...assignmentCommand, requestKey: randomUUID() }, before = await protectedState(true);
+    process.env.STUDY_SEED_FOUNDATION = 'false';
+    const peer = await NestFactory.create(load('app.module').AppModule, { logger: false }); peer.setGlobalPrefix('api'); await peer.init();
+    try {
+      const [one, two] = await Promise.all([call('post', artifactRoot(assignmentArtifact) + '/assignments', command),
+        request(peer.getHttpServer()).post('/api' + artifactRoot(assignmentArtifact) + '/assignments').set('Authorization', 'Bearer ' + owner.token).send(command)]);
+      expect(two.status, JSON.stringify(two.body.error)).toBe(201); expect(two.body.data).toEqual(one);
+      const state = (await store.database.read()).state;
+      expect(state.assistantPracticeAssignments.filter((row: any) => row.requestKey === command.requestKey)).toHaveLength(1);
+      expect(await call('post', artifactRoot(assignmentArtifact) + '/assignments', command)).toEqual(one);
+      await call('post', artifactRoot(assignmentArtifact) + '/assignments', { ...command, expectedRevision: 1 }, owner, 409);
+      expect(await protectedState(true)).toBe(before);
+    } finally { await peer.close(); }
+  }, 120000);
+  it('rejects stale previews and other target children, and binds shared cursors to the current viewer', async () => {
+    const another = (await call('post', '/students', { nickname: '另一匿名安排者', grade: 4, preferredSessionMinutes: 15,
+      defaultVersionMap: { math: '', chinese: '', english: '' } })).profile;
+    const before = await protectedState(true);
+    await call('post', artifactRoot(assignmentArtifact) + '/assignments', { ...assignmentCommand, requestKey: randomUUID(), expectedRevision: 99 }, owner, 409);
+    await call('post', artifactRoot(assignmentArtifact) + '/assignments', { ...assignmentCommand, requestKey: randomUUID(), studentId: another.id }, owner, 409);
+    await call('get', '/learning/assistant-practice/assignments?studentId=' + another.id + '&subject=math', undefined, learner, 403);
+    const page = await call('get', '/learning/assistant-practice/assignments?studentId=' + student.id + '&subject=math&pageSize=1');
+    expect(page.nextCursor).toBeTruthy();
+    await call('get', '/learning/assistant-practice/assignments?studentId=' + student.id + '&subject=math&cursor=' + page.nextCursor, undefined, other, 400);
+    expect(await protectedState(true)).toBe(before);
+  });
+  it('keeps the published instructions and receipt unchanged after a later private candidate edit', async () => {
+    const old = await call('get', '/learning/assistant-practice/assignments/' + primaryAssignment), candidate = await call('get', artifactRoot(assignmentArtifact));
+    await call('patch', artifactRoot(assignmentArtifact), { expectedRevision: candidate.revision, contentFingerprint: candidate.contentFingerprint,
+      title: '仅修改私有下一版说明', instructions: '后续私人说明不应覆盖先前已明确安排给孩子的版本。', requestKey: randomUUID() });
+    expect(await call('get', '/learning/assistant-practice/assignments/' + primaryAssignment)).toEqual(old);
+    expect(await call('post', artifactRoot(assignmentArtifact) + '/assignments', assignmentCommand)).toEqual(assignmentReceipt);
+  });
+  it('rejects a rehashed foreign private link or a detached assignment without a matching account deletion receipt', async () => {
+    const state = (await store.database.read()).state, original = state.assistantPracticeAssignments.find((row: any) => row.id === primaryAssignment);
+    const records = load('modules/learning/assistant-practice-assignment-record');
+    for (const mode of ['foreign', 'detached']) {
+      const changed = structuredClone(original);
+      if (mode === 'foreign') {
+        changed.privateOrigin.artifactId = 'missing-original-artifact'; changed.artifactIdentityHash = records.assignmentArtifactIdentity(changed.privateOrigin.artifactId);
+        changed.requestHash = records.assignmentRequestHash(changed.publisherFingerprint, changed.artifactIdentityHash, changed.createInput);
+      } else { changed.publisherUserId = null; changed.privateOrigin = null; changed.sourceState = 'account_deleted'; }
+      expect(() => records.assertAssistantPracticeAssignment(changed)).not.toThrow();
+      const rows = ['users', 'students', 'assistantSessions', 'assistantPracticeArtifacts', 'assistantPracticeAssignments', 'privacyRequests']
+        .flatMap(collection => (state[collection] ?? []).map((value: any) => ({ collection, record_id: value.id,
+          body: collection === 'assistantPracticeAssignments' && value.id === primaryAssignment ? changed : value })));
+      expect(() => load('modules/learning/assistant-practice-integrity').assertAssistantPracticeRecords(rows)).toThrow('assistant_practice_saved_integrity_failed');
+    }
+  });
+  it('allows the actual learning-code child to arrange a private grade9 teaching candidate for themself without changing grade4 profile', async () => {
+    const command = await input('核对化学模型的条件并说明解释理由', learner, learnerSource, learnerMessageId, 'chemistry', chemicalAtom);
+    const candidate = await create(command, learner, learnerSource), before = await protectedState(true);
+    const receipt = await call('post', artifactRoot(candidate.receipt.artifactId) + '/assignments', { studentId: student.id,
+      expectedRevision: candidate.view.revision, contentFingerprint: candidate.view.contentFingerprint, acknowledgePreview: true, requestKey: randomUUID() }, learner);
+    const shared = await call('get', '/learning/assistant-practice/assignments/' + receipt.assignmentId, undefined, learner);
+    expect(shared.scopeSnapshot.grade).toBe(9); expect(shared.profileGrade).toBe(4); expect(shared.groups[0].questions).toBeUndefined();
+    await call('get', artifactRoot(candidate.receipt.artifactId), undefined, owner, 404);
+    expect((await call('get', '/learning/assistant-practice/assignments/' + receipt.assignmentId)).groups[0].questions).toHaveLength(2);
+    expect(await protectedState(true)).toBe(before);
+  });
   it('exports owner-native teaching while excluding another guardian private origin and internal storage/scoring data', async () => {
     const own = await call('post', '/privacy/account/export', { credential: owner.credential, requestKey: randomUUID() });
     expect(JSON.stringify(own)).toContain(marker); expect(JSON.stringify(own)).not.toContain('PRIVATE_FIXTURE_SOURCE_NOTES');
     const child = await call('post', '/privacy/students/' + student.id + '/export', { credential: other.credential, requestKey: randomUUID() }, other);
     expect(JSON.stringify(child)).not.toContain(marker);
+    expect(JSON.stringify(child)).toContain(primaryAssignment); expect(JSON.stringify(child)).not.toContain(assignmentArtifact);
+    expect(JSON.stringify(child)).not.toContain('PRIVATE_FIXTURE_SOURCE_NOTES');
   });
   it('protects both learner and guardian candidates throughout an actual paused assessment, and replays existing receipts without writing', async () => {
+    const sharedCandidate = await create();
     const parentCommand = await input(), childCommand = await input('核对匿名化学条件', learner, learnerSource, learnerMessageId, 'chemistry', chemicalAtom);
     const formal = await call('post', '/diagnostics/sessions', { studentId: student.id, subject: 'math', intent: 'micro', targetAtomIds: [atomId], includePrerequisites: false, maxItems: 4 });
     const active = await call('get', '/diagnostics/sessions/' + formal.id);
     await call('post', '/diagnostics/sessions/' + formal.id + '/state', { action: 'pause', expectedRevision: active.revision, requestKey: randomUUID(), reason: '仅验证隔离暂停保护' });
     try { const before = await protectedState(); await call('post', sourceRoot() + '/candidates', parentCommand, owner, 409);
+      await call('post', artifactRoot(sharedCandidate.receipt.artifactId) + '/assignments', { studentId: student.id, expectedRevision: sharedCandidate.view.revision,
+        contentFingerprint: sharedCandidate.view.contentFingerprint, acknowledgePreview: true, requestKey: randomUUID() }, owner, 409);
       await call('post', sourceRoot(learnerSource.id) + '/candidates', childCommand, learner, 409);
       expect((await call('post', sourceRoot() + '/candidates', primaryInput)).artifactId).toBe(primaryArtifact); expect(await protectedState()).toBe(before);
     } finally { const paused = await call('get', '/diagnostics/sessions/' + formal.id); await call('post', '/diagnostics/sessions/' + formal.id + '/state', { action: 'abort', expectedRevision: paused.revision, requestKey: randomUUID(), reason: '结束隔离暂停保护，不提交作答' }); }
@@ -324,6 +419,8 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
     const before = await protectedState(), view = await call('get', artifactRoot(primaryArtifact)); expect(view.source.origin.messages[0].content).toContain(marker);
     expect(view.groups[0].questions[0].payload.document.blocks.some((block: any) => block.type === 'table')).toBe(true);
     expect((await call('post', sourceRoot() + '/candidates', primaryInput)).artifactId).toBe(primaryArtifact); expect(await protectedState()).toBe(before);
+    expect((await call('get', '/learning/assistant-practice/assignments/' + primaryAssignment)).groups[0].questions).toHaveLength(2);
+    expect(await call('post', artifactRoot(assignmentArtifact) + '/assignments', assignmentCommand)).toEqual(assignmentReceipt);
   }, 180000);
   it('rejects a damaged frozen packet despite recomputing the bundle database hash', async () => {
     if (engine === 'postgres') {
@@ -368,6 +465,10 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
     await close(); await restore('restored-author-deleted', ledger);
     expect(store.inspect('assistantPracticeArtifacts').some((row: any) => row.ownerUserId === owner.user.id)).toBe(false);
     expect(store.inspect('students').some((row: any) => row.id === student.id)).toBe(true);
+    const shared = store.inspect('assistantPracticeAssignments').find((row: any) => row.id === primaryAssignment);
+    expect(shared).toMatchObject({ publisherUserId: null, privateOrigin: null, sourceState: 'account_deleted' });
+    expect(shared.receipt).toEqual(assignmentReceipt); expect(shared.payload.groups[0].questions).toHaveLength(2);
+    await login(other); expect((await call('get', '/learning/assistant-practice/assignments/' + primaryAssignment, undefined, other)).sourceState).toBe('account_deleted');
   }, 180000);
   it('replays the latest child deletion ledger including adult-source transferred candidates', async () => {
     await close(); await boot(sourceUrl, sourceData); await login(other);
@@ -377,5 +478,6 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
     await close(); await restore('restored-child-deleted', ledger);
     expect(store.inspect('assistantPracticeArtifacts').some((row: any) => row.studentId === student.id)).toBe(false);
     expect(store.inspect('students').some((row: any) => row.id === student.id)).toBe(false);
+    expect(store.inspect('assistantPracticeAssignments').some((row: any) => row.studentId === student.id)).toBe(false);
   }, 180000);
 });

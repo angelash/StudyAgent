@@ -1,3 +1,4 @@
+import type { AssistantPracticeAssignmentRecord } from '../modules/learning/assistant-practice-assignment-record';
 import type { TeachingToolRunRecord } from '../modules/ai/teaching-tool-record';
 import type { AssistantPracticeArtifactRecord } from '../modules/learning/assistant-practice-record';
 import type { ProjectUploadRecord,ProjectAssetRecord } from '../modules/learning/project-file-record';
@@ -410,6 +411,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   assistantMessages: AssistantMessage[] = [];
   assistantArtifactDrafts: AssistantNoteRecord[] = [];
   assistantPracticeArtifacts: AssistantPracticeArtifactRecord[] = [];
+  assistantPracticeAssignments: AssistantPracticeAssignmentRecord[] = [];
   assistantTurns: AssistantTurnRecord[] = [];
   guidanceModelSuggestions: GuidanceModelSuggestionRecord[] = [];
   teachingToolRuns: TeachingToolRunRecord[] = [];
@@ -521,6 +523,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.assistantMessages = [];
     this.assistantArtifactDrafts = [];
     this.assistantPracticeArtifacts = [];
+    this.assistantPracticeAssignments = [];
     this.assistantTurns = [];
     this.guidanceModelSuggestions = [];
     this.teachingToolRuns = [];

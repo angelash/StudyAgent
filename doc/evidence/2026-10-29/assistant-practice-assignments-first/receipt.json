@@ -1,0 +1,146 @@
+{
+  "at": "2026-10-29T00:12:25.085557+00:00",
+  "runs": [
+    {
+      "attempt": "sqlite-assignment-first",
+      "family": "assistant-practice-artifacts",
+      "receipt": {
+        "at": "2026-10-29T00:02:42.593Z",
+        "engine": "sqlite",
+        "passed": false,
+        "exitCode": 1,
+        "error": null,
+        "sourceInputs": 685,
+        "compiledInputs": 422,
+        "changed": [],
+        "changedCompiled": [],
+        "tests": {
+          "total": 24,
+          "passed": 23,
+          "failed": 1,
+          "pending": 0
+        },
+        "limits": [
+          "Owned generated learners/content only. No actual provider or original student evidence.",
+          "Private candidate phase only; assignment/answering UI and complete schema24 production acceptance remain separate."
+        ]
+      },
+      "copiedSourceVerified": 685,
+      "copiedBuildVerified": 422,
+      "capturedGitRevision": null
+    },
+    {
+      "attempt": "postgres-assignment-first",
+      "family": "assistant-practice-artifacts",
+      "receipt": {
+        "at": "2026-10-29T00:04:20.841Z",
+        "engine": "postgres",
+        "passed": false,
+        "exitCode": 1,
+        "error": null,
+        "sourceInputs": 685,
+        "compiledInputs": 422,
+        "changed": [],
+        "changedCompiled": [],
+        "tests": {
+          "total": 24,
+          "passed": 22,
+          "failed": 2,
+          "pending": 0
+        },
+        "limits": [
+          "Owned generated learners/content only. No actual provider or original student evidence.",
+          "Private candidate phase only; assignment/answering UI and complete schema24 production acceptance remain separate."
+        ]
+      },
+      "copiedSourceVerified": 685,
+      "copiedBuildVerified": 422,
+      "capturedGitRevision": null
+    },
+    {
+      "attempt": "sqlite-assignment-second",
+      "family": "assistant-practice-artifacts",
+      "receipt": {
+        "at": "2026-10-29T00:08:54.980Z",
+        "engine": "sqlite",
+        "passed": true,
+        "exitCode": 0,
+        "error": null,
+        "sourceInputs": 685,
+        "compiledInputs": 422,
+        "changed": [],
+        "changedCompiled": [],
+        "tests": {
+          "total": 25,
+          "passed": 25,
+          "failed": 0,
+          "pending": 0
+        },
+        "limits": [
+          "Owned generated learners/content only. No actual provider or original student evidence.",
+          "Reviewed candidate and shared arrangement APIs only; learner start/answering UI and complete schema24 delivery remain separate."
+        ]
+      },
+      "copiedSourceVerified": 685,
+      "copiedBuildVerified": 422,
+      "capturedGitRevision": null
+    },
+    {
+      "attempt": "postgres-assignment-second",
+      "family": "assistant-practice-artifacts",
+      "receipt": {
+        "at": "2026-10-29T00:09:41.699Z",
+        "engine": "postgres",
+        "passed": true,
+        "exitCode": 0,
+        "error": null,
+        "sourceInputs": 685,
+        "compiledInputs": 422,
+        "changed": [],
+        "changedCompiled": [],
+        "tests": {
+          "total": 25,
+          "passed": 25,
+          "failed": 0,
+          "pending": 0
+        },
+        "limits": [
+          "Owned generated learners/content only. No actual provider or original student evidence.",
+          "Reviewed candidate and shared arrangement APIs only; learner start/answering UI and complete schema24 delivery remain separate."
+        ]
+      },
+      "copiedSourceVerified": 685,
+      "copiedBuildVerified": 422,
+      "capturedGitRevision": null
+    }
+  ],
+  "archive": {
+    "fileIndex": "files.json.gz",
+    "fileEntries": 4448,
+    "uniqueObjects": 1103,
+    "frozenSourceAndBuildCopiesVerified": true
+  },
+  "secretScan": {
+    "findings": [],
+    "reviewedDefaultFixtureOrLiteralTemplateMatches": 20
+  },
+  "passed": true,
+  "designBeforeImplementation": "83af7e159612b80e95df97564083b057519ffcb1 doc/product/147 section24",
+  "failuresRetained": [
+    "SQLite first23passed/1fixture failure: absent empty privacyRequests array in synthetic integrity input. PostgreSQL first22passed/2failed: same fixture plus actual native ledger restore failed after shared-author removal.",
+    "Native PG returns parsed JSON objects. applyDeletionLedger aliased those original comparison objects into its mutable store; in-place private-origin removal could compare equal and skip writing the tombstone. Working bodies are now cloned before deletion/anonymization; actual native PG author/child restore and retained child/receipt pass in final25.",
+    "First TypeScript role-union error log retained locally; no separate complete pre-fix source/build snapshot was captured for that compiler failure. Both HTTP failures and both final runs have exact full source/build snapshots."
+  ],
+  "implemented": [
+    "Explicit confirmed shared arrangement creation, bounded child/subject list and role-specific reads over actual HTTP.",
+    "Private conversation excluded; unstarted learners see goals/counts, guardians see confirmed native teaching; no child practice/exposure/measurement/task write.",
+    "Two actual application instances use one original shared request receipt; later private edits keep original published instructions.",
+    "Actual learning-code grade9 chemical self-arrangement keeps grade4 profile; paused assessments reject new arrangements.",
+    "SQLite/PG native restore keeps original shared packets/receipts; author deletion removes private linkage while retaining the shared child; latest child deletion clears arrangements; rehashed foreign link or unsupported detach rejected."
+  ],
+  "limits": [
+    "Final SQLite25 and actualPG25 are distinct overlapping runs; earlier attempts are not added.",
+    "No group-start/learner-answer/hints/complete UI or formal measurement; original reader23 remains exact and refuses24. Adult/AI/D3/D4 and product completion remain active.",
+    "No actual provider calls or original learner evidence. Production remains schema23; assignment complete API/browser/exact CI/schema24 delivery still required."
+  ]
+}

@@ -8,6 +8,7 @@ import { studioMaterialView } from '../learning/studio-material-access';
 import { publicTopicWhiteboard } from '../learning/topic-whiteboard-projection';
 import { publicQuestionTeachingVersion } from '../learning/whiteboard-question-teaching-versions';
 import { reviewedPracticePortableView, type AssistantPracticeArtifactRecord } from '../learning/assistant-practice-record';
+import { assignmentView, type AssistantPracticeAssignmentRecord } from '../learning/assistant-practice-assignment-record';
 
 type Row = Record<string, any>;
 export type Selection = Record<string, Row[]>;
@@ -29,7 +30,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   add(result, store, 'students', row => row.id === studentId);
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'diagnosticResponses', 'diagnosticHypotheses',
-    'diagnosticPlans', 'guidanceModelSuggestions', 'reviewTasks', 'practiceSessions', 'paperPracticeSessions', 'paperPracticeCommands', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
+    'diagnosticPlans', 'guidanceModelSuggestions', 'reviewTasks', 'practiceSessions', 'assistantPracticeAssignments', 'paperPracticeSessions', 'paperPracticeCommands', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
     'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomTurns', 'whiteboardQuestionTurns', 'whiteboardQuestionVisuals', 'classroomCodeDrafts', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','studioOriginalRepairs','sourceCourses','sourceCourseStages','sourceCourseChecks',
     'projectAssetUploads','projectAssets','studioCourses','studioActivities','studioStudyPlans','studioLearningPacks','studioWhiteboards','studioTopicWhiteboardDrafts','studioTopicWhiteboards','studioTopicWhiteboardVisuals','studioConnectors','studioScheduleEvents']) {
     add(result, store, name, row => row.studentId === studentId);
@@ -119,7 +120,7 @@ export function selectionCounts(selected: Selection): PrivacyCounts {
   const count = (...names: string[]) => names.reduce((sum, name) => sum + (selected[name]?.length ?? 0), 0);
   return { records: Object.values(selected).reduce((sum, records) => sum + records.length, 0),
     observations: count('diagnosticResponses', 'practiceAttempts', 'assessmentAnswers', 'missionAnswers'),
-    activities: count('diagnosticSessions', 'practiceSessions', 'assessments', 'missions'), plans: count('diagnosticPlans', 'studyPlans', 'reviewTasks', 'guidancePlanRevisions', 'guidanceModelSuggestions', 'gespGuidancePlans', 'gespGuidancePlanRevisions', 'gespReviewTasks'),
+    activities: count('diagnosticSessions', 'practiceSessions', 'assistantPracticeAssignments', 'assessments', 'missions'), plans: count('diagnosticPlans', 'studyPlans', 'reviewTasks', 'guidancePlanRevisions', 'guidanceModelSuggestions', 'gespGuidancePlans', 'gespGuidancePlanRevisions', 'gespReviewTasks'),
     conversations: count('assistantMessages', 'assistantTurns', 'whiteboardQuestionTurns', 'teachingToolRuns'), accessRecords: count('users', 'sessions', 'bindings', 'studentLearningAccess', 'studentLearningCodes', 'studentInvitations', 'teacherAssignments') };
 }
 export function selectionFingerprint(selection: Selection, context: unknown) {
@@ -127,9 +128,15 @@ export function selectionFingerprint(selection: Selection, context: unknown) {
 }
 export function removeSelected(store: InMemoryStoreService, selection: Selection) {
   const removedPaperPractice = ids(selection, 'paperPracticeSessions');
+  const removedUsers = ids(selection, 'users');
   for (const [name, selected] of Object.entries(selection)) {
     const remove = new Set(selected.map(recordId));
     (store as unknown as Record<string, Row[]>)[name] = rows(store, name).filter(row => !remove.has(recordId(row)));
+  }
+  // Shared confirmed teaching survives a retained child; all private linkage is removed.
+  // The matching account-deletion receipt is checked by the cold semantic validator.
+  for (const row of rows(store, 'assistantPracticeAssignments')) if (removedUsers.has(row.publisherUserId)) {
+    row.publisherUserId = null; row.privateOrigin = null; row.sourceState = 'account_deleted';
   }
   if (removedPaperPractice.size) {
     for (const row of rows(store, 'paperPracticeSessions')) if (row.origin && removedPaperPractice.has(row.origin.sessionId)) delete row.origin;
@@ -168,6 +175,7 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if (name === 'assistantMessages') result[name] = records.filter(row => allowedAssistants.has(row.sessionId));
     else if (name === 'assistantArtifactDrafts') result[name] = records.filter(row => allowedAssistants.has(row.sessionId))
       .map(({ ownerUserId: _owner, sessionId: _session, studentId: _student, requestKey: _key, requestHash: _hash, commands: _commands, ...row }) => row);
+    else if (name === 'assistantPracticeAssignments') result[name] = records.map(row => assignmentView(row as AssistantPracticeAssignmentRecord, true));
     else if (name === 'assistantPracticeArtifacts') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student'))
       .map(row => reviewedPracticePortableView(row as AssistantPracticeArtifactRecord));
@@ -236,6 +244,7 @@ export function anonymizeSharedAttribution(store: InMemoryStoreService, studentI
     const affected = new Set(records.map(recordId));
     (store as unknown as Record<string, Row[]>)[name] = rows(store, name).map(row => {
       if (!affected.has(recordId(row))) return row;
+      if (name === 'assistantPracticeAssignments') return row;
       const anonymous = replace(row) as Row;
       // Different closed upload owners can have used the same request key.
       // A per-file anonymous owner preserves uniqueness without retaining identity.

@@ -313,3 +313,25 @@ schema24尚未发布，下一批同一开发迁移补assignment创建键、assig
 复用助教来源弹层，接“练习”入口、孩子/学科/1至3已学点选择、完整来源核对、覆盖缺口、逐点两题原生预览、教学说明编辑、明确安排和原请求恢复。孩子今日任务/安排页明确每组“开始”，完成当前组后保留第二/三组入口；题干、理由、帮助/参考与反馈逐步呈现，手机不堆满参考答案。原画面HyperKnow的“情境+判断+理由”用于未审核教学题体验，审核bank保持真实原题类型；不把两套内容互相冒充。
 
 验收包含实际SQLite/PG三点分组HTTP与两个应用实例、学生/监护人/其他孩子/另一个监护人、开始前零孩子曝光、第二三组不误阻断、真实学习码、家长伪造draftFence仍拒绝、首答及理由不覆盖、提示/参考/示范区别、原生表格公式及真实图片/语音附件原生恢复、旧schema23拒绝、重算损坏关联和最新删除账本。浏览器需桌面/390px完整安排与本人作答、刷新/断网/双标签/丢响应和当前评测/权限变化保留输入。完整API/整站501及精确CI/可回退schema24交付分别执行；D2b成人/AI、D3原因指导、D4日历和105剩余范围继续，整体不标完成。
+
+## 25. 共享安排首个持久批次的范围补充
+
+第24节设计已随83af7e15先行提交推送，下一批实际代码在独立StudyAgent-pa/feat/assistant-practice-assignment-20261029实施，未混入正在冻结的候选完整API或远端40790308484。工作区首建因Windows历史证据长路径失败，原日志保留；新短路径以单次Git core.longpaths参数重建，285外部依赖只读引用，自有3个workspace包独立构建，没有安装或重建共享依赖。
+
+本批先接明确安排、按孩子/学科有界列表及角色适合的读取三个接口；学生的初始安排读取只给目标与题量，不给题干/参考答案，监护人预览保留原生题型和表格公式。没有分组开始/作答空壳，startingAvailable=false；后续真实本人开始/首答/理由/帮助、今日任务与完整UI按24.2至24.5继续。安排创建仅parent/student/admin，teacher/operator不能凭角色名直接创建。完整来源、当前范围/定义/审核/曝光/评测保护仍由原候选在事务内重建；新安排不新建学习会话/曝光/正式证据。
+
+共享payload与原始命令身份独立于可移除的privateOrigin；作者删除在removeSelected移除私人候选时统一断开存活安排的publisherUserId/privateOrigin，并保留不可变共享题包和回执。anonymizeSharedAttribution不递归改写共享packet，否则会破坏冻结哈希。一般监护人删除后，冷恢复必须匹配account_delete及该孩子retainedStudentHash；内部admin本来无绑定孩子且其既有删除回执不列retained children，此时允许匹配其原publisherFingerprint的account_delete、孩子仍存在且未列入erasedStudentHashes，不伪造额外保留名单。学生发布者随孩子删除则整份安排清除。该例外不恢复私有origin或未开始资格。
+
+启动和SQLite/PG原生backup/restore将privacyRequests纳入同一个关联核对：linked必须匹配实际私人artifact、原作者/角色/目标及原revision说明的完整共享payload；account_deleted必须已无私人关联且有相符合法删除回执。即使重算关联哈希/外部bundle哈希，凭空缺失artifact或假detach也不能获准恢复。尚未实现的成人teachingSession仍显式拒绝。当前schema24未发布，不把此持久安排批次当完整D2。
+
+## 26. 私人候选完整API与共享安排的双库结果
+
+83af7e15私人候选版本的完整API1949项中1875通过/74环境跳过、零失败，885源码和418构建输入前后SHA保持并保存原件；见[完整API原件](../evidence/2026-10-29/assistant-practice-candidates-complete-api-first/receipt.json)。冻结时Git基线是f8289f6e及当时未提交的兼容测试，随后83af7e15归档提交，运行前后实际885输入未变；该轮不包含独立共享安排和后续privacy-ledger修复。远端83af7e15/40790308484的application/browser/postgres仍分别执行，未推送新提交取消它们。
+
+共享安排在83af7e15第24节设计之后实现三个HTTP接口、严格共享payload/原回执、角色投影、双实例原请求、当前评测阻断、schema24唯一约束、隐私导出/删除和双库冷恢复。审核原题/表格公式/映射保持，未开始孩子只看到目标和题量；另一监护人能查看共享教学但不能读私聊。新的实际学习码案例允许本人安排九年级化学教学、保留四年级档案；没有创建PracticeSession、掌握、正式response或曝光。
+
+最终SQLite第二轮25/25与实际PostgreSQL第二轮25/25分别通过、零失败/跳过，685源码/422构建输入逐SHA保持并复制完整原件。首SQLite23通过/1失败是测试构造冷核对输入时未将不存在的空privacyRequests当空数组；首PG22通过/2失败另发现真实原生删除账本写回问题。PG读取的原始body对象被直接放入可变工作store，移除privateOrigin时同步改变了用于比较的原件，导致SQL写回可能被错误略过；privacy-ledger现将对象body先structuredClone。最终实际PG作者/孩子账本恢复验证共享孩子、原题/原回执保留、私人关联去除和孩子删除，修复不是只放宽冷验证条件。凭空缺artifact和假detach在重算内部哈希后仍拒绝。
+
+首类型构建的role union错误日志保留，未在修正前单独保存完整源码/构建快照；不能补称该编译失败也有完整二进制。两次HTTP失败与两次最终25轮均有完整冻结源码/构建，原件扫描及归档见[共享安排四轮原件](../evidence/2026-10-29/assistant-practice-assignments-first/receipt.json)。所有轮次不累加，无真实模型/TTS/生图或正式学生虚假学习证据。
+
+本批仍没有孩子分组开始/答案草稿/首答理由/提示示范/完成与今日任务UI，startingAvailable=false；未实现的成人自练集合继续显式拒绝。共享安排和privacy-ledger改动还须自身完整API、旧原生恢复兼容、整站/精确CI及完整schema24交付，不能复用上一候选1875作为新安排的完整门禁。正式schema23保持，24.2至24.5、D2b成人/AI、D3原因指导、D4日历和105/M1～M7/原72继续active。

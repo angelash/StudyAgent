@@ -32,5 +32,5 @@ const report=fs.existsSync(path.join(output,'vitest.json'))?JSON.parse(fs.readFi
 const receipt={at:new Date().toISOString(),engine,passed:run.status===0&&report?.success===true&&!changed.length&&!changedCompiled.length,exitCode:run.status,error:run.error?.message??null,
  sourceInputs:inputs.length,compiledInputs:Object.keys(compiled).length,changed,changedCompiled,
  tests:report?{total:report.numTotalTests,passed:report.numPassedTests,failed:report.numFailedTests,pending:report.numPendingTests}:null,
- limits:['Owned generated learners/content only. No actual provider or original student evidence.','Private candidate phase only; assignment/answering UI and complete schema24 production acceptance remain separate.']};
+ limits:['Owned generated learners/content only. No actual provider or original student evidence.','Reviewed candidate and shared arrangement APIs only; learner start/answering UI and complete schema24 delivery remain separate.']};
 fs.writeFileSync(path.join(output,'receipt.json'),JSON.stringify(receipt,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(receipt));if(!receipt.passed)process.exitCode=1;

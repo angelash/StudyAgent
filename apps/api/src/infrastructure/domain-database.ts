@@ -216,8 +216,9 @@ export class DomainDatabase {
     assertAssistantWhiteboardRecords(sourceRows as Array<{ collection: string; record_id: string; body: unknown }>);
     await this.migrateConstraints(24, [
       { name: 'assistant_practice_candidate_request', collection: 'assistantPracticeArtifacts', fields: ['ownerUserId', 'requestKey'] },
+      { name: 'assistant_practice_assignment_request', collection: 'assistantPracticeAssignments', fields: ['publisherFingerprint', 'requestKey'] },
     ], `UPDATE study_restore_guard SET state='ready-schema24',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema23';`);
-    const practiceSql = "SELECT collection,record_id,body FROM domain_records WHERE collection IN ('assistantSessions','students','users','assistantPracticeArtifacts','assistantPracticeAssignments','assistantTeachingPracticeSessions')";
+    const practiceSql = "SELECT collection,record_id,body FROM domain_records WHERE collection IN ('assistantSessions','students','users','privacyRequests','assistantPracticeArtifacts','assistantPracticeAssignments','assistantTeachingPracticeSessions')";
     const practiceRows = this.sqlite ? this.sqlite.prepare(practiceSql).all() : (await this.postgres!.query(practiceSql)).rows;
     assertAssistantPracticeRecords(practiceRows as Array<{ collection: string; record_id: string; body: unknown }>);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now, this.sqlite && sqliteQueueKey(this.location));

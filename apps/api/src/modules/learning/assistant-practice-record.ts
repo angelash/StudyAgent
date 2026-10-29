@@ -82,6 +82,15 @@ export function assertReviewedPracticeBank(bank: AssistantPracticeBank, createIn
     if (atom.status !== 'published' || atomDefinitionFingerprint(atom) !== group.definitionFingerprint) fail();
     if (digest(selection.groups[index].questions) !== digest(group.questions.map(row => ({ atomId: row.mapping.atomId, questionId: row.mapping.questionId,
       family: canonicalFamily(row.mapping), mappingId: row.mapping.id })))) fail();
+    assertReviewedPracticeGroup(group);
+  }
+  const { bankFingerprint, ...identity } = bank; if (digest(identity) !== bankFingerprint) fail();
+}
+
+/** Shared lessons keep native packets but never need a private conversation origin. */
+export function assertReviewedPracticeGroup(group: AssistantPracticeBank['groups'][number]) {
+  const atom = group.atomSnapshot;
+  if (atom.status !== 'published' || atomDefinitionFingerprint(atom) !== group.definitionFingerprint) fail();
     for (const row of group.questions) {
       const { mapping, question, payload } = row;
       if (mapping.atomId !== atom.id || mapping.questionId !== question.id || mapping.reviewStatus !== 'approved'
@@ -101,8 +110,6 @@ export function assertReviewedPracticeBank(bank: AssistantPracticeBank, createIn
       if (content !== row.contentFingerprint || mapping.contentFingerprint && mapping.contentFingerprint !== content
         || row.publication && (row.publication.questionId !== question.id || row.publication.publishedHash !== content)) fail();
     }
-  }
-  const { bankFingerprint, ...identity } = bank; if (digest(identity) !== bankFingerprint) fail();
 }
 
 export function assertAssistantPracticeArtifact(value: unknown): AssistantPracticeArtifactRecord {

@@ -53,7 +53,9 @@ async function applyDeletionLedger(query, ledger) {
   if (!ledger) return { appliedDeletionReceipts: 0, privacyRowsRemoved: 0 };
   const helpers = require('../../apps/api/dist/apps/api/src/modules/privacy/privacy-records.js');
   const records = await query('SELECT collection,record_id,body,position FROM domain_records ORDER BY collection,position'), store = {};
-  for (const row of records) (store[row.collection] ??= []).push(typeof row.body === 'string' ? JSON.parse(row.body) : row.body);
+  // Native PostgreSQL returns object bodies. Keep original comparison rows immutable
+  // while relation removal/anonymization edits the working copy in place.
+  for (const row of records) (store[row.collection] ??= []).push(typeof row.body === 'string' ? JSON.parse(row.body) : structuredClone(row.body));
   store.privacyRequests ??= [];
   for (const receipt of ledger.entries) {
     const erased = (store.students ?? []).filter(child => receipt.erasedStudentHashes.includes(helpers.privacyHash({ id: child.id })));
