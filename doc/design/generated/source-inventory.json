@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "663088c0a6cac9a3d661c32234076e9e1c78b0c0",
+  "sourceRevision": "e84f0f451e9caf58109e8442cef641cb4f680b5a",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
-    "declaredHttpRoutes": 473,
-    "activeHttpRoutes": 460,
-    "activeBusinessHttpRoutes": 452,
+    "declaredHttpRoutes": 480,
+    "activeHttpRoutes": 467,
+    "activeBusinessHttpRoutes": 459,
     "retiredHttpRoutes": 8,
     "activeModules": 19,
-    "activeControllers": 52,
-    "apiClasses": 179,
-    "apiFunctions": 556,
-    "domainCollections": 106,
-    "contractTypes": 433,
+    "activeControllers": 53,
+    "apiClasses": 181,
+    "apiFunctions": 573,
+    "domainCollections": 107,
+    "contractTypes": 437,
     "webPages": 31,
     "webRouteHandlers": 1,
     "apiTestFiles": 211,
@@ -225,6 +225,7 @@
         "AiModule"
       ],
       "controllers": [
+        "AssistantPracticeLearnerController",
         "AssistantPracticeAssignmentController",
         "AssistantPracticeCandidateController",
         "AssistantPracticeArtifactController",
@@ -254,6 +255,7 @@
         "ClassroomVisualController"
       ],
       "providers": [
+        "AssistantPracticeLearnerService",
         "AssistantPracticeAssignmentService",
         "AssistantPracticeArtifactService",
         "AssistantPracticePreflightService",
@@ -5368,6 +5370,209 @@
     },
     {
       "verb": "POST",
+      "path": "/api/learning/assistant-practice/assignments/:id/groups/:atomId/start",
+      "controller": "AssistantPracticeLearnerController",
+      "method": "start",
+      "file": "apps/api/src/modules/learning/assistant-practice-learner.controller.ts",
+      "line": 9,
+      "signature": "start(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('atomId') atomId: string, @Body() body: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "learners",
+          "type": "AssistantPracticeLearnerService"
+        }
+      ],
+      "calls": [
+        "this.learners.start"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/assistant-practice/sessions/:id",
+      "controller": "AssistantPracticeLearnerController",
+      "method": "view",
+      "file": "apps/api/src/modules/learning/assistant-practice-learner.controller.ts",
+      "line": 12,
+      "signature": "view(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "learners",
+          "type": "AssistantPracticeLearnerService"
+        }
+      ],
+      "calls": [
+        "this.learners.view"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
+      "path": "/api/learning/assistant-practice/sessions/:id/questions/:qid",
+      "controller": "AssistantPracticeLearnerController",
+      "method": "render",
+      "file": "apps/api/src/modules/learning/assistant-practice-learner.controller.ts",
+      "line": 13,
+      "signature": "render(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('qid') qid: string)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "learners",
+          "type": "AssistantPracticeLearnerService"
+        }
+      ],
+      "calls": [
+        "this.learners.render"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "PATCH",
+      "path": "/api/learning/assistant-practice/sessions/:id/questions/:qid/draft",
+      "controller": "AssistantPracticeLearnerController",
+      "method": "draft",
+      "file": "apps/api/src/modules/learning/assistant-practice-learner.controller.ts",
+      "line": 14,
+      "signature": "draft(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('qid') qid: string, @Body() body: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "learners",
+          "type": "AssistantPracticeLearnerService"
+        }
+      ],
+      "calls": [
+        "this.learners.draft"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/assistant-practice/sessions/:id/responses",
+      "controller": "AssistantPracticeLearnerController",
+      "method": "submit",
+      "file": "apps/api/src/modules/learning/assistant-practice-learner.controller.ts",
+      "line": 15,
+      "signature": "submit(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() body: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "learners",
+          "type": "AssistantPracticeLearnerService"
+        }
+      ],
+      "calls": [
+        "this.learners.submit"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/assistant-practice/sessions/:id/questions/:qid/help",
+      "controller": "AssistantPracticeLearnerController",
+      "method": "help",
+      "file": "apps/api/src/modules/learning/assistant-practice-learner.controller.ts",
+      "line": 16,
+      "signature": "help(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('qid') qid: string, @Body() body: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "learners",
+          "type": "AssistantPracticeLearnerService"
+        }
+      ],
+      "calls": [
+        "this.learners.help"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
+      "path": "/api/learning/assistant-practice/sessions/:id/complete",
+      "controller": "AssistantPracticeLearnerController",
+      "method": "complete",
+      "file": "apps/api/src/modules/learning/assistant-practice-learner.controller.ts",
+      "line": 17,
+      "signature": "complete(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() body: unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "learners",
+          "type": "AssistantPracticeLearnerService"
+        }
+      ],
+      "calls": [
+        "this.learners.complete"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "POST",
       "path": "/api/ai/assistant/sessions/:sessionId/artifacts/practice/preflight",
       "controller": "AssistantPracticePreflightController",
       "method": "preflight",
@@ -7791,7 +7996,7 @@
       "method": "hint",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
       "line": 129,
-      "signature": "hint(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string)",
+      "signature": "hint(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string, @Body() input: unknown)",
       "classDecorators": [
         {
           "name": "UseGuards",
@@ -7824,7 +8029,7 @@
       "method": "complete",
       "file": "apps/api/src/modules/learning/learning.controller.ts",
       "line": 130,
-      "signature": "complete(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
+      "signature": "complete(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
       "classDecorators": [
         {
           "name": "UseGuards",
@@ -15700,7 +15905,7 @@
     {
       "name": "AuthGuard",
       "file": "apps/api/src/common/auth.guard.ts",
-      "line": 95,
+      "line": 98,
       "decorators": [
         {
           "name": "Injectable",
@@ -15720,7 +15925,7 @@
       "methods": [
         {
           "name": "canActivate",
-          "line": 99,
+          "line": 102,
           "signature": "canActivate(context: ExecutionContext): Promise<boolean>",
           "access": "public",
           "decorators": [],
@@ -15824,7 +16029,7 @@
         },
         {
           "name": "assertRestoreReady",
-          "line": 229,
+          "line": 231,
           "signature": "assertRestoreReady()",
           "access": "private",
           "decorators": [],
@@ -15834,7 +16039,7 @@
         },
         {
           "name": "migrateConstraints",
-          "line": 249,
+          "line": 251,
           "signature": "migrateConstraints(version: number, constraints: Array<{ name: string; collection: string; fields: string[]; pending?: boolean }>, extraSql = '')",
           "access": "private",
           "decorators": [],
@@ -15845,7 +16050,7 @@
         },
         {
           "name": "read",
-          "line": 278,
+          "line": 280,
           "signature": "read(): Promise<StateSnapshot>",
           "access": "public",
           "decorators": [],
@@ -15855,7 +16060,7 @@
         },
         {
           "name": "readImmutable",
-          "line": 283,
+          "line": 285,
           "signature": "readImmutable(): Promise<StateSnapshot>",
           "access": "public",
           "decorators": [],
@@ -15866,7 +16071,7 @@
         },
         {
           "name": "snapshotAt",
-          "line": 287,
+          "line": 289,
           "signature": "snapshotAt(revision: number): StateSnapshot | undefined",
           "access": "public",
           "decorators": [],
@@ -15874,7 +16079,7 @@
         },
         {
           "name": "remember",
-          "line": 293,
+          "line": 295,
           "signature": "remember(snapshot: StateSnapshot, loadedRows: number, partial = false): StateSnapshot",
           "access": "private",
           "decorators": [],
@@ -15882,7 +16087,7 @@
         },
         {
           "name": "rememberCommit",
-          "line": 300,
+          "line": 302,
           "signature": "rememberCommit(beforeRevision: number, revision: number, changes: Change[])",
           "access": "private",
           "decorators": [],
@@ -15890,7 +16095,7 @@
         },
         {
           "name": "readSnapshot",
-          "line": 321,
+          "line": 323,
           "signature": "readSnapshot(): Promise<StateSnapshot>",
           "access": "private",
           "decorators": [],
@@ -15902,7 +16107,7 @@
         },
         {
           "name": "commit",
-          "line": 359,
+          "line": 361,
           "signature": "commit(before: StateSnapshot, after: DomainState, options: CommitOptions = {}): Promise<number>",
           "access": "public",
           "decorators": [],
@@ -15913,7 +16118,7 @@
         },
         {
           "name": "commitSnapshot",
-          "line": 363,
+          "line": 365,
           "signature": "commitSnapshot(before: StateSnapshot, after: DomainState, options: CommitOptions): Promise<number>",
           "access": "private",
           "decorators": [],
@@ -15930,7 +16135,7 @@
         },
         {
           "name": "assertDependencies",
-          "line": 424,
+          "line": 426,
           "signature": "assertDependencies(before: StateSnapshot, changes: Change[], dependencies: ReadDependency[], query: (collection: string, where?: DomainSelector) => Promise<unknown[]>, conflict: () => Error, version: (collection: string) => Promise<number>)",
           "access": "private",
           "decorators": [],
@@ -15938,7 +16143,7 @@
         },
         {
           "name": "rebaseAppends",
-          "line": 454,
+          "line": 456,
           "signature": "rebaseAppends(before: StateSnapshot, changes: Change[], options: CommitOptions, maximum: (collection: string) => number)",
           "access": "private",
           "decorators": [],
@@ -15946,7 +16151,7 @@
         },
         {
           "name": "close",
-          "line": 466,
+          "line": 468,
           "signature": "close()",
           "access": "public",
           "decorators": [],
@@ -16053,7 +16258,7 @@
     {
       "name": "InMemoryStoreService",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 184,
+      "line": 185,
       "decorators": [
         {
           "name": "Injectable",
@@ -16064,7 +16269,7 @@
       "methods": [
         {
           "name": "recordRead",
-          "line": 212,
+          "line": 213,
           "signature": "recordRead(collection: string, where?: DomainSelector)",
           "access": "private",
           "decorators": [],
@@ -16074,7 +16279,7 @@
         },
         {
           "name": "mutableCollection",
-          "line": 222,
+          "line": 223,
           "signature": "mutableCollection(collection: string, allRecords: boolean): unknown[]",
           "access": "private",
           "decorators": [],
@@ -16084,7 +16289,7 @@
         },
         {
           "name": "select",
-          "line": 237,
+          "line": 238,
           "signature": "select(collection: K, where: DomainSelector): Array<StoreRecord<K>>",
           "access": "public",
           "decorators": [],
@@ -16096,7 +16301,7 @@
         },
         {
           "name": "find",
-          "line": 253,
+          "line": 254,
           "signature": "find(collection: K, where: DomainSelector): StoreRecord<K> | undefined",
           "access": "public",
           "decorators": [],
@@ -16106,7 +16311,7 @@
         },
         {
           "name": "inspect",
-          "line": 256,
+          "line": 257,
           "signature": "inspect(collection: K): ReadonlyArray<StoreRecord<K>>",
           "access": "public",
           "decorators": [],
@@ -16117,7 +16322,7 @@
         },
         {
           "name": "append",
-          "line": 269,
+          "line": 270,
           "signature": "append(collection: K, ...records: Array<StoreRecord<K>>)",
           "access": "public",
           "decorators": [],
@@ -16128,7 +16333,7 @@
         },
         {
           "name": "remove",
-          "line": 275,
+          "line": 276,
           "signature": "remove(collection: K, where: DomainSelector)",
           "access": "public",
           "decorators": [],
@@ -16140,7 +16345,7 @@
         },
         {
           "name": "onModuleInit",
-          "line": 283,
+          "line": 284,
           "signature": "onModuleInit()",
           "access": "public",
           "decorators": [],
@@ -16152,7 +16357,7 @@
         },
         {
           "name": "onApplicationBootstrap",
-          "line": 301,
+          "line": 302,
           "signature": "onApplicationBootstrap()",
           "access": "public",
           "decorators": [],
@@ -16162,7 +16367,7 @@
         },
         {
           "name": "requestContext",
-          "line": 308,
+          "line": 309,
           "signature": "requestContext(fn: () => T): Promise<T>",
           "access": "public",
           "decorators": [],
@@ -16173,7 +16378,7 @@
         },
         {
           "name": "commitRequest",
-          "line": 317,
+          "line": 318,
           "signature": "commitRequest(fence?: TaskFence)",
           "access": "public",
           "decorators": [],
@@ -16186,7 +16391,7 @@
         },
         {
           "name": "transaction",
-          "line": 337,
+          "line": 338,
           "signature": "transaction(fn: () => T | Promise<T>, fence?: TaskFence): Promise<T>",
           "access": "public",
           "decorators": [],
@@ -16198,7 +16403,7 @@
         },
         {
           "name": "enqueueTask",
-          "line": 349,
+          "line": 350,
           "signature": "enqueueTask(intent: TaskIntent)",
           "access": "public",
           "decorators": [],
@@ -16210,7 +16415,7 @@
         },
         {
           "name": "controlTask",
-          "line": 355,
+          "line": 356,
           "signature": "controlTask(operation: TaskOperation)",
           "access": "public",
           "decorators": [],
@@ -16222,7 +16427,7 @@
         },
         {
           "name": "onModuleDestroy",
-          "line": 367,
+          "line": 368,
           "signature": "onModuleDestroy()",
           "access": "public",
           "decorators": [],
@@ -16230,7 +16435,7 @@
         },
         {
           "name": "nextId",
-          "line": 476,
+          "line": 478,
           "signature": "nextId(prefix: string): string",
           "access": "public",
           "decorators": [],
@@ -16238,7 +16443,7 @@
         },
         {
           "name": "reset",
-          "line": 480,
+          "line": 482,
           "signature": "reset()",
           "access": "public",
           "decorators": [],
@@ -24850,7 +25055,7 @@
         },
         {
           "name": "assertCurrent",
-          "line": 116,
+          "line": 117,
           "signature": "assertCurrent(user: InMemoryUserAccount, row: AssistantPracticeArtifactRecord)",
           "access": "private",
           "decorators": [],
@@ -24861,7 +25066,7 @@
         },
         {
           "name": "summary",
-          "line": 124,
+          "line": 125,
           "signature": "summary(row: AssistantPracticeArtifactRecord): AssistantReviewedPracticeSummary",
           "access": "private",
           "decorators": [],
@@ -24869,7 +25074,7 @@
         },
         {
           "name": "assignmentSource",
-          "line": 130,
+          "line": 131,
           "signature": "assignmentSource(user: InMemoryUserAccount, id: string, auth: InMemoryAuthSession, requireCurrent: boolean)",
           "access": "public",
           "decorators": [],
@@ -24880,7 +25085,7 @@
         },
         {
           "name": "get",
-          "line": 133,
+          "line": 134,
           "signature": "get(user: InMemoryUserAccount, id: string, auth: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -24892,7 +25097,7 @@
         },
         {
           "name": "list",
-          "line": 140,
+          "line": 141,
           "signature": "list(user: InMemoryUserAccount, sessionId: string, value: unknown, auth: InMemoryAuthSession): AssistantReviewedPracticePage",
           "access": "public",
           "decorators": [],
@@ -24905,7 +25110,7 @@
         },
         {
           "name": "creationReceipt",
-          "line": 157,
+          "line": 158,
           "signature": "creationReceipt(user: InMemoryUserAccount, sessionId: string, key: string, auth: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -24917,7 +25122,7 @@
         },
         {
           "name": "create",
-          "line": 163,
+          "line": 164,
           "signature": "create(user: InMemoryUserAccount, sessionId: string, value: unknown, auth: InMemoryAuthSession): Promise<AssistantReviewedPracticeReceipt>",
           "access": "public",
           "decorators": [],
@@ -24933,7 +25138,7 @@
         },
         {
           "name": "edit",
-          "line": 186,
+          "line": 187,
           "signature": "edit(user: InMemoryUserAccount, id: string, value: unknown, auth: InMemoryAuthSession): Promise<AssistantReviewedPracticeReceipt>",
           "access": "public",
           "decorators": [],
@@ -25026,7 +25231,7 @@
     {
       "name": "AssistantPracticeAssignmentService",
       "file": "apps/api/src/modules/learning/assistant-practice-assignment.service.ts",
-      "line": 14,
+      "line": 15,
       "decorators": [
         {
           "name": "Injectable",
@@ -25045,12 +25250,16 @@
         {
           "name": "artifacts",
           "type": "AssistantPracticeArtifactService"
+        },
+        {
+          "name": "learners",
+          "type": "AssistantPracticeLearnerService"
         }
       ],
       "methods": [
         {
           "name": "authority",
-          "line": 18,
+          "line": 19,
           "signature": "authority(user: InMemoryUserAccount, studentId: string, auth: InMemoryAuthSession)",
           "access": "private",
           "decorators": [],
@@ -25058,7 +25267,7 @@
         },
         {
           "name": "write",
-          "line": 21,
+          "line": 22,
           "signature": "write(operation: () => T | Promise<T>): Promise<T>",
           "access": "private",
           "decorators": [],
@@ -25068,7 +25277,7 @@
         },
         {
           "name": "assign",
-          "line": 28,
+          "line": 29,
           "signature": "assign(user: InMemoryUserAccount, artifactId: string, value: unknown, auth: InMemoryAuthSession): Promise<AssistantPracticeAssignmentReceipt>",
           "access": "public",
           "decorators": [],
@@ -25083,7 +25292,7 @@
         },
         {
           "name": "list",
-          "line": 56,
+          "line": 57,
           "signature": "list(user: InMemoryUserAccount, value: unknown, auth: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -25094,13 +25303,349 @@
         },
         {
           "name": "get",
-          "line": 75,
+          "line": 76,
           "signature": "get(user: InMemoryUserAccount, id: string, auth: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
           "calls": [
             "this.store.find",
-            "this.authority"
+            "this.authority",
+            "this.learners.eligibility"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "AssistantPracticeLearnerController",
+      "file": "apps/api/src/modules/learning/assistant-practice-learner.controller.ts",
+      "line": 5,
+      "decorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        },
+        {
+          "name": "Controller",
+          "args": [
+            "'learning/assistant-practice'"
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "learners",
+          "type": "AssistantPracticeLearnerService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "start",
+          "line": 9,
+          "signature": "start(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('atomId') atomId: string, @Body() body: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "'assignments/:id/groups/:atomId/start'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.learners.start"
+          ]
+        },
+        {
+          "name": "view",
+          "line": 12,
+          "signature": "view(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'sessions/:id'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.learners.view"
+          ]
+        },
+        {
+          "name": "render",
+          "line": 13,
+          "signature": "render(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('qid') qid: string)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'sessions/:id/questions/:qid'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.learners.render"
+          ]
+        },
+        {
+          "name": "draft",
+          "line": 14,
+          "signature": "draft(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('qid') qid: string, @Body() body: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Patch",
+              "args": [
+                "'sessions/:id/questions/:qid/draft'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.learners.draft"
+          ]
+        },
+        {
+          "name": "submit",
+          "line": 15,
+          "signature": "submit(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() body: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "'sessions/:id/responses'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.learners.submit"
+          ]
+        },
+        {
+          "name": "help",
+          "line": 16,
+          "signature": "help(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('qid') qid: string, @Body() body: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "'sessions/:id/questions/:qid/help'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.learners.help"
+          ]
+        },
+        {
+          "name": "complete",
+          "line": 17,
+          "signature": "complete(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() body: unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Post",
+              "args": [
+                "'sessions/:id/complete'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.learners.complete"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "AssistantPracticeLearnerService",
+      "file": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
+      "line": 22,
+      "decorators": [
+        {
+          "name": "Injectable",
+          "args": []
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "store",
+          "type": "InMemoryStoreService"
+        },
+        {
+          "name": "students",
+          "type": "StudentsService"
+        },
+        {
+          "name": "sources",
+          "type": "AssistantArtifactService"
+        },
+        {
+          "name": "curriculum",
+          "type": "CurriculumService"
+        },
+        {
+          "name": "learning",
+          "type": "LearningService"
+        }
+      ],
+      "methods": [
+        {
+          "name": "write",
+          "line": 26,
+          "signature": "write(operation: () => T | Promise<T>): Promise<T>",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.transaction"
+          ]
+        },
+        {
+          "name": "assignment",
+          "line": 33,
+          "signature": "assignment(id: string)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.find"
+          ]
+        },
+        {
+          "name": "assertSourceCurrent",
+          "line": 38,
+          "signature": "assertSourceCurrent(assignment: AssistantPracticeAssignmentRecord)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.find",
+            "this.students.assertCanAccessStudent",
+            "this.sources.readSource"
+          ]
+        },
+        {
+          "name": "assertGroupCurrent",
+          "line": 53,
+          "signature": "assertGroupCurrent(user: InMemoryUserAccount, assignment: AssistantPracticeAssignmentRecord, atomId: string)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.curriculum.getScope",
+            "this.store.find",
+            "this.store.select"
+          ]
+        },
+        {
+          "name": "start",
+          "line": 84,
+          "signature": "start(user: InMemoryUserAccount, assignmentId: string, atomId: string, value: unknown, auth: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.write",
+            "this.assignment",
+            "this.store.find",
+            "this.assertSourceCurrent",
+            "this.assertGroupCurrent",
+            "this.store.nextId",
+            "this.store.append"
+          ]
+        },
+        {
+          "name": "eligibility",
+          "line": 114,
+          "signature": "eligibility(user: InMemoryUserAccount, assignment: AssistantPracticeAssignmentRecord, auth: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.students.assertCanAccessStudent",
+            "this.store.find",
+            "this.assertSourceCurrent",
+            "this.assertGroupCurrent"
+          ]
+        },
+        {
+          "name": "sourceSession",
+          "line": 137,
+          "signature": "sourceSession(user: InMemoryUserAccount, id: string)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.find",
+            "this.students.assertCanAccessStudent"
+          ]
+        },
+        {
+          "name": "view",
+          "line": 142,
+          "signature": "view(user: InMemoryUserAccount, id: string, auth: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.sourceSession",
+            "this.learning.view"
+          ]
+        },
+        {
+          "name": "render",
+          "line": 143,
+          "signature": "render(user: InMemoryUserAccount, id: string, questionId: string, auth: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.sourceSession",
+            "this.learning.render"
+          ]
+        },
+        {
+          "name": "draft",
+          "line": 144,
+          "signature": "draft(user: InMemoryUserAccount, id: string, questionId: string, value: unknown, auth: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.write",
+            "this.sourceSession",
+            "this.learning.draft"
+          ]
+        },
+        {
+          "name": "submit",
+          "line": 145,
+          "signature": "submit(user: InMemoryUserAccount, id: string, value: unknown, auth: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.write",
+            "this.sourceSession",
+            "this.learning.submit"
+          ]
+        },
+        {
+          "name": "help",
+          "line": 146,
+          "signature": "help(user: InMemoryUserAccount, id: string, questionId: string, value: unknown, auth: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.write",
+            "this.sourceSession",
+            "this.learning.assistantPracticeHelp"
+          ]
+        },
+        {
+          "name": "complete",
+          "line": 147,
+          "signature": "complete(user: InMemoryUserAccount, id: string, value: unknown, auth: InMemoryAuthSession)",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.write",
+            "this.sourceSession",
+            "this.learning.complete"
           ]
         }
       ]
@@ -27940,7 +28485,7 @@
         {
           "name": "hint",
           "line": 129,
-          "signature": "hint(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string)",
+          "signature": "hint(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
             {
@@ -27957,7 +28502,7 @@
         {
           "name": "complete",
           "line": 130,
-          "signature": "complete(@Req() req: AuthenticatedRequest, @Param('id') id: string)",
+          "signature": "complete(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)",
           "access": "public",
           "decorators": [
             {
@@ -27976,12 +28521,12 @@
     {
       "name": "LearningModule",
       "file": "apps/api/src/modules/learning/learning.module.ts",
-      "line": 71,
+      "line": 73,
       "decorators": [
         {
           "name": "Module",
           "args": [
-            "{ imports: [ProjectFileModule,StudioMaterialMaintenanceModule,StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [AssistantPracticeAssignmentController,AssistantPracticeCandidateController,AssistantPracticeArtifactController,AssistantPracticePreflightController,AssistantWhiteboardController,ChemistryController,WhiteboardQuestionVisualController,WhiteboardQuestionTeachingVersionController,GuidanceWhiteboardQuestionController,TopicWhiteboardQuestionController,TopicWhiteboardVisualController,TopicWhiteboardController,SourceCourseCheckController,ProjectTeachingController,SourceCourseLifecycleController, ClassroomCodeController,ClassroomTurnController,StudioOriginalRepairController,StudioMaterialUploadController, LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [AssistantPracticeAssignmentService,AssistantPracticeArtifactService,AssistantPracticePreflightService,AssistantWhiteboardService,ChemistryService,WhiteboardQuestionVisualService,WhiteboardQuestionVisualWorkerService,WhiteboardQuestionService,WhiteboardQuestionNarrationService,WhiteboardQuestionWorkerService,TopicWhiteboardVisualService,TopicWhiteboardVisualWorkerService,TopicWhiteboardService,TopicWhiteboardWorkerService,TopicWhiteboardNarrationService,SourceCourseCheckService,SourceCourseCheckWorkerService,ProjectTeachingService,SourceCourseLifecycleService, ClassroomCodeService,ClassroomTurnService,ClassroomTurnWorkerService,StudioOriginalRepairService,StudioOriginalRepairWorkerService,StudioMaterialIntegrityService,StudioMaterialUploadService, LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, SourceCourseCompilerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] }"
+            "{ imports: [ProjectFileModule,StudioMaterialMaintenanceModule,StudentsModule, DiagnosticsModule, QuestionWorkspaceModule, StudentMediaModule, AiModule], controllers: [AssistantPracticeLearnerController,AssistantPracticeAssignmentController,AssistantPracticeCandidateController,AssistantPracticeArtifactController,AssistantPracticePreflightController,AssistantWhiteboardController,ChemistryController,WhiteboardQuestionVisualController,WhiteboardQuestionTeachingVersionController,GuidanceWhiteboardQuestionController,TopicWhiteboardQuestionController,TopicWhiteboardVisualController,TopicWhiteboardController,SourceCourseCheckController,ProjectTeachingController,SourceCourseLifecycleController, ClassroomCodeController,ClassroomTurnController,StudioOriginalRepairController,StudioMaterialUploadController, LearningController, RetiredLearningController, NotebookController, ClassroomController, LearningHomeController, CourseProjectController, SourceCourseController, ClassroomVisualController], providers: [AssistantPracticeLearnerService,AssistantPracticeAssignmentService,AssistantPracticeArtifactService,AssistantPracticePreflightService,AssistantWhiteboardService,ChemistryService,WhiteboardQuestionVisualService,WhiteboardQuestionVisualWorkerService,WhiteboardQuestionService,WhiteboardQuestionNarrationService,WhiteboardQuestionWorkerService,TopicWhiteboardVisualService,TopicWhiteboardVisualWorkerService,TopicWhiteboardService,TopicWhiteboardWorkerService,TopicWhiteboardNarrationService,SourceCourseCheckService,SourceCourseCheckWorkerService,ProjectTeachingService,SourceCourseLifecycleService, ClassroomCodeService,ClassroomTurnService,ClassroomTurnWorkerService,StudioOriginalRepairService,StudioOriginalRepairWorkerService,StudioMaterialIntegrityService,StudioMaterialUploadService, LearningService, NotebookService, StudioIntegrationService, ClassroomService, LearningHomeService, CourseProjectService, SourceCourseService, SourceCourseWorkerService, SourceCourseCompilerService, ClassroomVisualService, ClassroomVisualWorkerService, ClassroomImageService], exports: [LearningService, StudioIntegrationService] }"
           ]
         }
       ],
@@ -27991,7 +28536,7 @@
     {
       "name": "LearningService",
       "file": "apps/api/src/modules/learning/learning.service.ts",
-      "line": 55,
+      "line": 61,
       "decorators": [
         {
           "name": "Injectable",
@@ -28039,7 +28584,7 @@
       "methods": [
         {
           "name": "studentProfiles",
-          "line": 62,
+          "line": 68,
           "signature": "studentProfiles(user: InMemoryUserAccount)",
           "access": "public",
           "decorators": [],
@@ -28050,7 +28595,7 @@
         },
         {
           "name": "studioOverview",
-          "line": 67,
+          "line": 73,
           "signature": "studioOverview(user: InMemoryUserAccount, studentId: string | undefined, subject: Subject, catalog=false, courseId?: string): StudioOverview",
           "access": "public",
           "decorators": [],
@@ -28068,7 +28613,7 @@
         },
         {
           "name": "previewStudioStudyPlan",
-          "line": 125,
+          "line": 131,
           "signature": "previewStudioStudyPlan(user: InMemoryUserAccount, input: unknown): StudioStudyPlanPreview",
           "access": "public",
           "decorators": [],
@@ -28080,7 +28625,7 @@
         },
         {
           "name": "createStudioStudyPlan",
-          "line": 141,
+          "line": 147,
           "signature": "createStudioStudyPlan(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -28094,7 +28639,7 @@
         },
         {
           "name": "updateStudioPlanSession",
-          "line": 179,
+          "line": 185,
           "signature": "updateStudioPlanSession(user: InMemoryUserAccount, planId: string, sessionId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -28107,7 +28652,7 @@
         },
         {
           "name": "previewStudioWhiteboard",
-          "line": 222,
+          "line": 228,
           "signature": "previewStudioWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -28117,7 +28662,7 @@
         },
         {
           "name": "createStudioWhiteboard",
-          "line": 234,
+          "line": 240,
           "signature": "createStudioWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -28133,7 +28678,7 @@
         },
         {
           "name": "uploadStudioPdf",
-          "line": 266,
+          "line": 272,
           "signature": "uploadStudioPdf(user: InMemoryUserAccount, file: { originalname: string; mimetype: string; size: number; buffer: Buffer } | undefined, input: { studentId?: string; subject?: string; requestKey?: string }, session?:InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -28148,7 +28693,7 @@
         },
         {
           "name": "studioPdfPageImage",
-          "line": 327,
+          "line": 333,
           "signature": "studioPdfPageImage(user: InMemoryUserAccount, materialId: string, pageNumber: number)",
           "access": "public",
           "decorators": [],
@@ -28158,7 +28703,7 @@
         },
         {
           "name": "studioPdfOriginal",
-          "line": 337,
+          "line": 343,
           "signature": "studioPdfOriginal(user: InMemoryUserAccount, materialId: string)",
           "access": "public",
           "decorators": [],
@@ -28168,7 +28713,7 @@
         },
         {
           "name": "reviewStudioPdfStructure",
-          "line": 352,
+          "line": 358,
           "signature": "reviewStudioPdfStructure(user: InMemoryUserAccount, materialId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -28180,7 +28725,7 @@
         },
         {
           "name": "retryStudioPdfProcessing",
-          "line": 380,
+          "line": 386,
           "signature": "retryStudioPdfProcessing(user: InMemoryUserAccount, materialId: string, input: unknown, session?:InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -28194,7 +28739,7 @@
         },
         {
           "name": "previewStudioPdfWhiteboard",
-          "line": 415,
+          "line": 421,
           "signature": "previewStudioPdfWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -28206,7 +28751,7 @@
         },
         {
           "name": "createStudioPdfWhiteboard",
-          "line": 430,
+          "line": 436,
           "signature": "createStudioPdfWhiteboard(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -28220,7 +28765,7 @@
         },
         {
           "name": "previewStudioLearningPack",
-          "line": 460,
+          "line": 466,
           "signature": "previewStudioLearningPack(user: InMemoryUserAccount, input: unknown): StudioLearningPackPreview",
           "access": "public",
           "decorators": [],
@@ -28232,7 +28777,7 @@
         },
         {
           "name": "createStudioLearningPack",
-          "line": 481,
+          "line": 487,
           "signature": "createStudioLearningPack(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -28247,7 +28792,7 @@
         },
         {
           "name": "studioWhiteboardNarration",
-          "line": 508,
+          "line": 514,
           "signature": "studioWhiteboardNarration(user: InMemoryUserAccount, id: string, sceneId: string, input: unknown, session: InMemoryAuthSession, signal: AbortSignal)",
           "access": "public",
           "decorators": [],
@@ -28258,7 +28803,7 @@
         },
         {
           "name": "previewStudioCourse",
-          "line": 532,
+          "line": 538,
           "signature": "previewStudioCourse(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -28268,7 +28813,7 @@
         },
         {
           "name": "createStudioCourse",
-          "line": 550,
+          "line": 556,
           "signature": "createStudioCourse(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -28284,7 +28829,7 @@
         },
         {
           "name": "startStudioLesson",
-          "line": 579,
+          "line": 585,
           "signature": "startStudioLesson(user: InMemoryUserAccount, courseId: string, lessonId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -28297,7 +28842,7 @@
         },
         {
           "name": "studioScope",
-          "line": 596,
+          "line": 602,
           "signature": "studioScope(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "private",
           "decorators": [],
@@ -28309,7 +28854,7 @@
         },
         {
           "name": "memory",
-          "line": 605,
+          "line": 611,
           "signature": "memory(user: InMemoryUserAccount, studentId: string, subject: Subject): LearningMemory",
           "access": "public",
           "decorators": [],
@@ -28323,7 +28868,7 @@
         },
         {
           "name": "today",
-          "line": 665,
+          "line": 671,
           "signature": "today(user: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "public",
           "decorators": [],
@@ -28338,7 +28883,7 @@
         },
         {
           "name": "start",
-          "line": 679,
+          "line": 685,
           "signature": "start(user: InMemoryUserAccount, planId: string, actionId: string)",
           "access": "public",
           "decorators": [],
@@ -28357,7 +28902,7 @@
         },
         {
           "name": "requireSession",
-          "line": 716,
+          "line": 722,
           "signature": "requireSession(user: InMemoryUserAccount, id: string)",
           "access": "private",
           "decorators": [],
@@ -28368,60 +28913,126 @@
         },
         {
           "name": "view",
-          "line": 721,
-          "signature": "view(user: InMemoryUserAccount, id: string)",
+          "line": 727,
+          "signature": "view(user: InMemoryUserAccount, id: string, auth?: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
           "calls": [
             "this.requireSession",
-            "this.store.select",
+            "this.orderedPracticeAttempts",
             "this.effectiveAttempt",
             "this.store.find",
+            "this.assistantPracticeCanWrite",
             "this.publicAttempt"
           ]
         },
         {
           "name": "render",
-          "line": 739,
-          "signature": "render(user: InMemoryUserAccount, id: string, questionId: string)",
+          "line": 752,
+          "signature": "render(user: InMemoryUserAccount, id: string, questionId: string, auth?: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
           "calls": [
             "this.requireSession",
-            "this.store.select",
+            "this.orderedPracticeAttempts",
             "this.practiceDraftState",
             "this.feedback"
           ]
         },
         {
           "name": "practiceDraftState",
-          "line": 750,
-          "signature": "practiceDraftState(session: PracticeSession, questionId: string, actorId: string)",
+          "line": 764,
+          "signature": "practiceDraftState(session: PracticeSession, questionId: string, actorId: string, auth?: InMemoryAuthSession)",
           "access": "private",
           "decorators": [],
           "calls": [
             "this.store.select",
+            "this.assistantPracticeCanWrite",
             "this.store.find"
           ]
         },
         {
+          "name": "orderedPracticeAttempts",
+          "line": 772,
+          "signature": "orderedPracticeAttempts(session: PracticeSession, questionId?: string)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.select"
+          ]
+        },
+        {
           "name": "draft",
-          "line": 757,
-          "signature": "draft(user: InMemoryUserAccount, id: string, questionId: string, input: unknown)",
+          "line": 777,
+          "signature": "draft(user: InMemoryUserAccount, id: string, questionId: string, input: unknown, auth?: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
           "calls": [
             "this.requireSession",
             "this.assertActive",
+            "this.assistantPracticeDraft",
             "this.media.assertAnswer",
             "this.practiceDraftState",
             "this.store.select"
           ]
         },
         {
+          "name": "assistantPracticeCanWrite",
+          "line": 794,
+          "signature": "assistantPracticeCanWrite(user: InMemoryUserAccount | undefined, session: PracticeSession, auth?: InMemoryAuthSession)",
+          "access": "private",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "assistantPracticeDraft",
+          "line": 797,
+          "signature": "assistantPracticeDraft(user: InMemoryUserAccount, session: PracticeSession, questionId: string, input: unknown, auth?: InMemoryAuthSession)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.media.assertAnswer",
+            "this.practiceDraftState"
+          ]
+        },
+        {
+          "name": "assistantPracticeRecordCommand",
+          "line": 813,
+          "signature": "assistantPracticeRecordCommand(start: AssistantPracticeGroupStartRecord, kind: AssistantPracticeLearnerCommand['kind'], actorId: string, questionId: string | null, input: AssistantPracticeLearnerCommand['input'], key: string, receipt: Record<string, unknown>, providedAt = new Date().toISOString())",
+          "access": "private",
+          "decorators": [],
+          "calls": []
+        },
+        {
+          "name": "assistantPracticeHelp",
+          "line": 820,
+          "signature": "assistantPracticeHelp(user: InMemoryUserAccount, id: string, questionId: string, value: unknown, auth?: InMemoryAuthSession): Record<string, unknown>",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.requireSession",
+            "this.practiceDraftState",
+            "this.store.nextId",
+            "this.store.append",
+            "this.assistantPracticeRecordCommand"
+          ]
+        },
+        {
+          "name": "assistantPracticeComplete",
+          "line": 843,
+          "signature": "assistantPracticeComplete(user: InMemoryUserAccount, session: PracticeSession, value: unknown, auth?: InMemoryAuthSession)",
+          "access": "private",
+          "decorators": [],
+          "calls": [
+            "this.store.select",
+            "this.assistantPracticeRecordCommand",
+            "this.events.publish"
+          ]
+        },
+        {
           "name": "assertActive",
-          "line": 773,
-          "signature": "assertActive(session: PracticeSession)",
+          "line": 860,
+          "signature": "assertActive(session: PracticeSession, user?: InMemoryUserAccount, auth?: InMemoryAuthSession)",
           "access": "private",
           "decorators": [],
           "calls": [
@@ -28430,8 +29041,8 @@
         },
         {
           "name": "submit",
-          "line": 777,
-          "signature": "submit(user: InMemoryUserAccount, id: string, input: unknown)",
+          "line": 868,
+          "signature": "submit(user: InMemoryUserAccount, id: string, input: unknown, auth?: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
           "calls": [
@@ -28445,24 +29056,25 @@
             "this.store.nextId",
             "this.store.append",
             "this.media.bind",
+            "this.assistantPracticeRecordCommand",
             "this.events.publish"
           ]
         },
         {
           "name": "feedback",
-          "line": 807,
+          "line": 913,
           "signature": "feedback(session: PracticeSession, attempt: PracticeAttempt)",
           "access": "private",
           "decorators": [],
           "calls": [
             "this.effectiveAttempt",
-            "this.publicAttempt",
-            "this.store.select"
+            "this.store.select",
+            "this.publicAttempt"
           ]
         },
         {
           "name": "publicAttempt",
-          "line": 816,
+          "line": 924,
           "signature": "publicAttempt(attempt: PracticeAttempt)",
           "access": "private",
           "decorators": [],
@@ -28470,7 +29082,7 @@
         },
         {
           "name": "effectiveAttempt",
-          "line": 818,
+          "line": 926,
           "signature": "effectiveAttempt(attempt: PracticeAttempt): PracticeAttempt",
           "access": "public",
           "decorators": [],
@@ -28480,7 +29092,7 @@
         },
         {
           "name": "reviewScore",
-          "line": 823,
+          "line": 931,
           "signature": "reviewScore(user: InMemoryUserAccount, responseId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -28495,12 +29107,13 @@
         },
         {
           "name": "hint",
-          "line": 838,
-          "signature": "hint(user: InMemoryUserAccount, id: string, questionId: string)",
+          "line": 946,
+          "signature": "hint(user: InMemoryUserAccount, id: string, questionId: string, input?: unknown, auth?: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
           "calls": [
             "this.requireSession",
+            "this.assistantPracticeHelp",
             "this.assertActive",
             "this.store.find",
             "this.store.select",
@@ -28510,12 +29123,13 @@
         },
         {
           "name": "complete",
-          "line": 849,
-          "signature": "complete(user: InMemoryUserAccount, id: string)",
+          "line": 963,
+          "signature": "complete(user: InMemoryUserAccount, id: string, input?: unknown, auth?: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
           "calls": [
             "this.requireSession",
+            "this.assistantPracticeComplete",
             "this.view",
             "this.assertActive",
             "this.events.publish"
@@ -28523,7 +29137,7 @@
         },
         {
           "name": "mistakes",
-          "line": 859,
+          "line": 975,
           "signature": "mistakes(user: InMemoryUserAccount, studentId: string, subject: Subject, all = false)",
           "access": "public",
           "decorators": [],
@@ -28532,12 +29146,13 @@
             "this.store.select",
             "this.diagnostics.effectiveResponses",
             "this.store.find",
+            "this.orderedPracticeAttempts",
             "this.effectiveAttempt"
           ]
         },
         {
           "name": "overview",
-          "line": 889,
+          "line": 1006,
           "signature": "overview(user: InMemoryUserAccount)",
           "access": "public",
           "decorators": [],
@@ -40215,7 +40830,7 @@
     {
       "name": "StudentMediaService",
       "file": "apps/api/src/modules/student-media/student-media.service.ts",
-      "line": 17,
+      "line": 18,
       "decorators": [
         {
           "name": "Injectable",
@@ -40239,7 +40854,7 @@
       "methods": [
         {
           "name": "onModuleInit",
-          "line": 21,
+          "line": 22,
           "signature": "onModuleInit()",
           "access": "public",
           "decorators": [],
@@ -40247,7 +40862,7 @@
         },
         {
           "name": "capabilities",
-          "line": 22,
+          "line": 23,
           "signature": "capabilities()",
           "access": "public",
           "decorators": [],
@@ -40255,8 +40870,8 @@
         },
         {
           "name": "target",
-          "line": 24,
-          "signature": "target(user: InMemoryUserAccount, target: StudentMediaTarget, writing = false)",
+          "line": 25,
+          "signature": "target(user: InMemoryUserAccount, target: StudentMediaTarget, writing = false, auth?: InMemoryAuthSession)",
           "access": "private",
           "decorators": [],
           "calls": [
@@ -40268,7 +40883,7 @@
         },
         {
           "name": "require",
-          "line": 44,
+          "line": 47,
           "signature": "require(id: string)",
           "access": "private",
           "decorators": [],
@@ -40278,7 +40893,7 @@
         },
         {
           "name": "assertRead",
-          "line": 45,
+          "line": 48,
           "signature": "assertRead(user: InMemoryUserAccount, media: StudentMedia)",
           "access": "private",
           "decorators": [],
@@ -40290,7 +40905,7 @@
         },
         {
           "name": "view",
-          "line": 53,
+          "line": 56,
           "signature": "view(media: StudentMedia): StudentMediaView",
           "access": "private",
           "decorators": [],
@@ -40298,7 +40913,7 @@
         },
         {
           "name": "get",
-          "line": 57,
+          "line": 60,
           "signature": "get(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -40310,8 +40925,8 @@
         },
         {
           "name": "start",
-          "line": 59,
-          "signature": "start(user: InMemoryUserAccount, input: unknown)",
+          "line": 62,
+          "signature": "start(user: InMemoryUserAccount, input: unknown, auth?: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
           "calls": [
@@ -40326,8 +40941,8 @@
         },
         {
           "name": "writable",
-          "line": 82,
-          "signature": "writable(user: InMemoryUserAccount, id: string)",
+          "line": 85,
+          "signature": "writable(user: InMemoryUserAccount, id: string, auth?: InMemoryAuthSession)",
           "access": "private",
           "decorators": [],
           "calls": [
@@ -40337,8 +40952,8 @@
         },
         {
           "name": "chunk",
-          "line": 88,
-          "signature": "chunk(user: InMemoryUserAccount, id: string, index: number, bytes: unknown)",
+          "line": 91,
+          "signature": "chunk(user: InMemoryUserAccount, id: string, index: number, bytes: unknown, auth?: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
           "calls": [
@@ -40349,8 +40964,8 @@
         },
         {
           "name": "complete",
-          "line": 98,
-          "signature": "complete(user: InMemoryUserAccount, id: string)",
+          "line": 102,
+          "signature": "complete(user: InMemoryUserAccount, id: string, auth?: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
           "calls": [
@@ -40367,8 +40982,8 @@
         },
         {
           "name": "assertAnswer",
-          "line": 128,
-          "signature": "assertAnswer(user: InMemoryUserAccount, target: StudentMediaTarget, answer: unknown, partial = false)",
+          "line": 134,
+          "signature": "assertAnswer(user: InMemoryUserAccount, target: StudentMediaTarget, answer: unknown, partial = false, auth?: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
           "calls": [
@@ -40378,7 +40993,7 @@
         },
         {
           "name": "bind",
-          "line": 145,
+          "line": 151,
           "signature": "bind(mediaIds: string[], responseId: string)",
           "access": "public",
           "decorators": [],
@@ -40388,7 +41003,7 @@
         },
         {
           "name": "content",
-          "line": 146,
+          "line": 152,
           "signature": "content(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -40400,7 +41015,7 @@
         },
         {
           "name": "verifiedContent",
-          "line": 147,
+          "line": 153,
           "signature": "verifiedContent(media: StudentMedia)",
           "access": "public",
           "decorators": [],
@@ -40410,7 +41025,7 @@
         },
         {
           "name": "path",
-          "line": 155,
+          "line": 161,
           "signature": "path(id: string, relative = '')",
           "access": "public",
           "decorators": [],
@@ -40420,7 +41035,7 @@
         },
         {
           "name": "noLinks",
-          "line": 162,
+          "line": 168,
           "signature": "noLinks(path: string)",
           "access": "private",
           "decorators": [],
@@ -40428,7 +41043,7 @@
         },
         {
           "name": "purge",
-          "line": 168,
+          "line": 174,
           "signature": "purge(id: string)",
           "access": "public",
           "decorators": [],
@@ -40441,7 +41056,7 @@
         },
         {
           "name": "removeDirectory",
-          "line": 178,
+          "line": 184,
           "signature": "removeDirectory(id: string)",
           "access": "private",
           "decorators": [],
@@ -40451,7 +41066,7 @@
         },
         {
           "name": "schedulePurge",
-          "line": 185,
+          "line": 191,
           "signature": "schedulePurge(ids: string[], actorId: string, receiptId: string)",
           "access": "public",
           "decorators": [],
@@ -40461,7 +41076,7 @@
         },
         {
           "name": "prune",
-          "line": 193,
+          "line": 199,
           "signature": "prune(id: string)",
           "access": "public",
           "decorators": [],
@@ -40473,7 +41088,7 @@
         },
         {
           "name": "erasurePath",
-          "line": 203,
+          "line": 209,
           "signature": "erasurePath(id: string)",
           "access": "private",
           "decorators": [],
@@ -40484,7 +41099,7 @@
         },
         {
           "name": "assertNotErased",
-          "line": 204,
+          "line": 210,
           "signature": "assertNotErased(id: string)",
           "access": "private",
           "decorators": [],
@@ -40494,7 +41109,7 @@
         },
         {
           "name": "immutableWrite",
-          "line": 205,
+          "line": 211,
           "signature": "immutableWrite(id: string, relative: string, bytes: Buffer)",
           "access": "private",
           "decorators": [],
@@ -40508,7 +41123,7 @@
         },
         {
           "name": "usedByDraft",
-          "line": 217,
+          "line": 223,
           "signature": "usedByDraft(media: StudentMedia)",
           "access": "private",
           "decorators": [],
@@ -40518,13 +41133,15 @@
         },
         {
           "name": "cancel",
-          "line": 223,
-          "signature": "cancel(user: InMemoryUserAccount, id: string)",
+          "line": 229,
+          "signature": "cancel(user: InMemoryUserAccount, id: string, auth?: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
           "calls": [
             "this.require",
             "this.students.assertCanAccessStudent",
+            "this.store.find",
+            "this.target",
             "this.usedByDraft",
             "this.schedulePurge",
             "this.events.publish",
@@ -40533,7 +41150,7 @@
         },
         {
           "name": "expireUnused",
-          "line": 234,
+          "line": 241,
           "signature": "expireUnused(now = Date.now())",
           "access": "public",
           "decorators": [],
@@ -42740,8 +43357,110 @@
     {
       "file": "apps/api/src/modules/learning/assistant-practice-integrity.ts",
       "name": "assertAssistantPracticeRecords",
-      "line": 7,
+      "line": 8,
       "signature": "assertAssistantPracticeRecords(rows: Row[])"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-learner-integrity.ts",
+      "name": "fail",
+      "line": 27,
+      "signature": "fail(): never"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-learner-integrity.ts",
+      "name": "exact",
+      "line": 28,
+      "signature": "exact(schema: z.ZodType, value: unknown)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-learner-integrity.ts",
+      "name": "assertAssistantPracticeLearnerRecords",
+      "line": 31,
+      "signature": "assertAssistantPracticeLearnerRecords(rows: Decoded[])"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-learner-policy.ts",
+      "name": "assertAssistantPracticeLearner",
+      "line": 11,
+      "signature": "assertAssistantPracticeLearner(store: InMemoryStoreService, students: StudentsService, user: InMemoryUserAccount, studentId: string, auth: InMemoryAuthSession | undefined)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-learner-policy.ts",
+      "name": "assistantPracticeSessionRelation",
+      "line": 17,
+      "signature": "assistantPracticeSessionRelation(store: InMemoryStoreService, session: PracticeSession)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-learner-policy.ts",
+      "name": "assertAssistantPracticeWriter",
+      "line": 28,
+      "signature": "assertAssistantPracticeWriter(store: InMemoryStoreService, students: StudentsService, user: InMemoryUserAccount, session: PracticeSession, auth: InMemoryAuthSession | undefined, requireActive = true)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-learner-record.ts",
+      "name": "assistantPracticeStartHash",
+      "line": 23,
+      "signature": "assistantPracticeStartHash(actorId: string, assignmentId: string, atomId: string, input: AssistantPracticeGroupStartInput)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-learner-record.ts",
+      "name": "assistantPracticeCommandHash",
+      "line": 26,
+      "signature": "assistantPracticeCommandHash(groupId: string, actorId: string, kind: AssistantPracticeLearnerCommand['kind'], questionId: string | null, value: unknown)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-learner-record.ts",
+      "name": "assertAssistantPracticeGroupStart",
+      "line": 30,
+      "signature": "assertAssistantPracticeGroupStart(value: unknown): AssistantPracticeGroupStartRecord"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-learner-record.ts",
+      "name": "assistantPracticeQuestionBaseHash",
+      "line": 53,
+      "signature": "assistantPracticeQuestionBaseHash(session: PracticeSession, questionId: string, count: number)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-learner-record.ts",
+      "name": "assistantPracticeCompletionFingerprint",
+      "line": 58,
+      "signature": "assistantPracticeCompletionFingerprint(session: PracticeSession, attempts: PracticeAttempt[])"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-learner-record.ts",
+      "name": "assistantPracticeHint",
+      "line": 62,
+      "signature": "assistantPracticeHint(atom: KnowledgeAtom, level: number)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-learner-record.ts",
+      "name": "assistantPracticePublicAttempt",
+      "line": 68,
+      "signature": "assistantPracticePublicAttempt(attempt: PracticeAttempt)"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-learner-record.ts",
+      "name": "assistantPracticeFeedback",
+      "line": 72,
+      "signature": "assistantPracticeFeedback(session: PracticeSession, attempt: PracticeAttempt, reviewHistory: unknown[] = [])"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-learner-record.ts",
+      "name": "assistantPracticeSnapshots",
+      "line": 80,
+      "signature": "assistantPracticeSnapshots(group: AssistantPracticeAssignmentRecord['payload']['groups'][number]): PracticeSession['snapshots']"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-learner-record.ts",
+      "name": "assistantPracticeAction",
+      "line": 85,
+      "signature": "assistantPracticeAction(assignment: AssistantPracticeAssignmentRecord, atomId: string, groupId: string): NonNullable<PracticeSession['actionSnapshot']>"
+    },
+    {
+      "file": "apps/api/src/modules/learning/assistant-practice-learner-record.ts",
+      "name": "assertAssistantPracticeSessionLink",
+      "line": 91,
+      "signature": "assertAssistantPracticeSessionLink(start: AssistantPracticeGroupStartRecord, assignment: AssistantPracticeAssignmentRecord, session: PracticeSession)"
     },
     {
       "file": "apps/api/src/modules/learning/assistant-practice-record.ts",
@@ -43154,19 +43873,19 @@
     {
       "file": "apps/api/src/modules/learning/learning.service.ts",
       "name": "studyDay",
-      "line": 38,
+      "line": 44,
       "signature": "studyDay(at = new Date())"
     },
     {
       "file": "apps/api/src/modules/learning/learning.service.ts",
       "name": "uploadFilename",
-      "line": 41,
+      "line": 47,
       "signature": "uploadFilename(value: string)"
     },
     {
       "file": "apps/api/src/modules/learning/learning.service.ts",
       "name": "promptAtomScore",
-      "line": 919,
+      "line": 1036,
       "signature": "promptAtomScore(prompt: string, name: string)"
     },
     {
@@ -44264,7 +44983,7 @@
     {
       "file": "apps/api/src/modules/privacy/privacy-records.ts",
       "name": "anonymizeSharedAttribution",
-      "line": 234,
+      "line": 238,
       "signature": "anonymizeSharedAttribution(store: InMemoryStoreService, studentIds: string[], actorId: string)"
     },
     {
@@ -44387,637 +45106,643 @@
       "name": "users",
       "type": "InMemoryUserAccount",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 368
+      "line": 369
     },
     {
       "name": "paperPublications",
       "type": "PaperPublication",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 369
+      "line": 370
     },
     {
       "name": "libraryBookmarks",
       "type": "LibraryBookmark",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 370
+      "line": 371
     },
     {
       "name": "paperPracticeSessions",
       "type": "PaperPracticeSessionRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 371
+      "line": 372
     },
     {
       "name": "paperPracticeCommands",
       "type": "PaperPracticeCommandRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 372
+      "line": 373
     },
     {
       "name": "practiceSessions",
       "type": "PracticeSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 373
+      "line": 374
     },
     {
       "name": "practiceAttempts",
       "type": "PracticeAttempt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 374
+      "line": 375
     },
     {
       "name": "practiceHints",
       "type": "PracticeHint",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 375
+      "line": 376
     },
     {
       "name": "practiceScoringRevisions",
       "type": "ScoringRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 376
+      "line": 377
     },
     {
       "name": "teacherAssignments",
       "type": "TeacherStudentAssignment",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 377
+      "line": 378
     },
     {
       "name": "evidenceFeedback",
       "type": "EvidenceFeedback",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 378
+      "line": 379
     },
     {
       "name": "importFiles",
       "type": "ImportFile",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 379
+      "line": 380
     },
     {
       "name": "processingArtifacts",
       "type": "ProcessingArtifact",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 380
+      "line": 381
     },
     {
       "name": "importPages",
       "type": "ImportPageEvidenceRef",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 381
+      "line": 382
     },
     {
       "name": "guidancePlanRevisions",
       "type": "GuidancePlanRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 382
+      "line": 383
     },
     {
       "name": "studentLearningAccess",
       "type": "StudentLearningAccess",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 383
+      "line": 384
     },
     {
       "name": "studentLearningCodes",
       "type": "StudentLearningCode",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 384
+      "line": 385
     },
     {
       "name": "studentAccessRevisions",
       "type": "StudentAccessRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 385
+      "line": 386
     },
     {
       "name": "studentProgressProposals",
       "type": "StudentProgressProposal",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 386
+      "line": 387
     },
     {
       "name": "privacyRequests",
       "type": "PrivacyReceipt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 387
+      "line": 388
     },
     {
       "name": "studentMedia",
       "type": "StudentMedia",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 388
+      "line": 389
     },
     {
       "name": "sessions",
       "type": "InMemoryAuthSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 389
+      "line": 390
     },
     {
       "name": "students",
       "type": "StudentProfile",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 390
+      "line": 391
     },
     {
       "name": "bindings",
       "type": "ParentStudentBinding",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 391
+      "line": 392
     },
     {
       "name": "studentInvitations",
       "type": "StudentInvitation",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 392
+      "line": 393
     },
     {
       "name": "subjectEnrollments",
       "type": "SubjectEnrollment",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 393
+      "line": 394
     },
     {
       "name": "textbookVolumes",
       "type": "TextbookVolume",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 394
+      "line": 395
     },
     {
       "name": "textbookUnits",
       "type": "TextbookUnit",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 395
+      "line": 396
     },
     {
       "name": "textbookLessons",
       "type": "TextbookLesson",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 396
+      "line": 397
     },
     {
       "name": "knowledgePoints",
       "type": "KnowledgePoint",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 397
+      "line": 398
     },
     {
       "name": "questions",
       "type": "Question",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 398
+      "line": 399
     },
     {
       "name": "questionDocuments",
       "type": "QuestionDocument",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 399
+      "line": 400
     },
     {
       "name": "questionAnswerSchemas",
       "type": "QuestionAnswerSchema",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 400
+      "line": 401
     },
     {
       "name": "questionSources",
       "type": "QuestionSourceRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 401
+      "line": 402
     },
     {
       "name": "questionImportJobs",
       "type": "QuestionImportJob",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 402
+      "line": 403
     },
     {
       "name": "questionImportRecords",
       "type": "QuestionImportRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 403
+      "line": 404
     },
     {
       "name": "assessments",
       "type": "AssessmentSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 404
+      "line": 405
     },
     {
       "name": "assessmentAnswers",
       "type": "AssessmentAnswerRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 405
+      "line": 406
     },
     {
       "name": "assessmentResults",
       "type": "AssessmentResult",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 406
+      "line": 407
     },
     {
       "name": "studyPlans",
       "type": "StudyPlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 407
+      "line": 408
     },
     {
       "name": "missions",
       "type": "DailyMissionInternal",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 408
+      "line": 409
     },
     {
       "name": "missionAnswers",
       "type": "MissionAnswerRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 409
+      "line": 410
     },
     {
       "name": "assistantSessions",
       "type": "AssistantSession & { ownerUserId: string; scopeKey?: string; lectureSnapshot?: AssistantLectureSnapshot; courseSnapshot?: AssistantCourseSnapshot }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 410
+      "line": 411
     },
     {
       "name": "assistantMessages",
       "type": "AssistantMessage",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 411
+      "line": 412
     },
     {
       "name": "assistantArtifactDrafts",
       "type": "AssistantNoteRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 412
+      "line": 413
     },
     {
       "name": "assistantPracticeArtifacts",
       "type": "AssistantPracticeArtifactRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 413
+      "line": 414
     },
     {
       "name": "assistantPracticeAssignments",
       "type": "AssistantPracticeAssignmentRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 414
+      "line": 415
+    },
+    {
+      "name": "assistantPracticeGroupStarts",
+      "type": "AssistantPracticeGroupStartRecord",
+      "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
+      "line": 416
     },
     {
       "name": "assistantTurns",
       "type": "AssistantTurnRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 415
+      "line": 417
     },
     {
       "name": "guidanceModelSuggestions",
       "type": "GuidanceModelSuggestionRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 416
+      "line": 418
     },
     {
       "name": "teachingToolRuns",
       "type": "TeachingToolRunRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 417
+      "line": 419
     },
     {
       "name": "aiInsights",
       "type": "AIInsightRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 418
+      "line": 420
     },
     {
       "name": "events",
       "type": "Record<string, unknown>",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 419
+      "line": 421
     },
     {
       "name": "knowledgeAtoms",
       "type": "KnowledgeAtom",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 420
+      "line": 422
     },
     {
       "name": "learningScopes",
       "type": "LearningScope",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 421
+      "line": 423
     },
     {
       "name": "measurementItems",
       "type": "MeasurementItem",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 422
+      "line": 424
     },
     {
       "name": "measurementCandidates",
       "type": "MeasurementContentCandidate",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 423
+      "line": 425
     },
     {
       "name": "mistakeNotebookEntries",
       "type": "MistakeNotebookEntry",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 424
+      "line": 426
     },
     {
       "name": "textbookAtomMappings",
       "type": "TextbookAtomMapping",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 425
+      "line": 427
     },
     {
       "name": "curriculumRevisions",
       "type": "CurriculumRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 426
+      "line": 428
     },
     {
       "name": "diagnosticSessions",
       "type": "DiagnosticSession",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 427
+      "line": 429
     },
     {
       "name": "diagnosticBlueprints",
       "type": "DiagnosticBlueprintReservation",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 428
+      "line": 430
     },
     {
       "name": "diagnosticResponses",
       "type": "DiagnosticResponse",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 429
+      "line": 431
     },
     {
       "name": "diagnosticHypotheses",
       "type": "DiagnosticHypothesis",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 430
+      "line": 432
     },
     {
       "name": "diagnosticPlans",
       "type": "DiagnosticGuidancePlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 431
+      "line": 433
     },
     {
       "name": "reviewTasks",
       "type": "ReviewTask",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 432
+      "line": 434
     },
     {
       "name": "scoringRevisions",
       "type": "ScoringRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 433
+      "line": 435
     },
     {
       "name": "diagnosticHints",
       "type": "{ id: string; sessionId: string; itemId: string; level: number; at: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 434
+      "line": 436
     },
     {
       "name": "diagnosticReports",
       "type": "{ id: string; sessionId: string; version: number; createdAt: string; report: DiagnosticReport; reanalysis?: { actorId: string; requestKey: string; inputHash: string } }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 435
+      "line": 437
     },
     {
       "name": "diagnosticDrafts",
       "type": "{ id: string; sessionId: string; itemId: string; answer: unknown; updatedAt: string } & AnswerDraftMetadata",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 437
+      "line": 439
     },
     {
       "name": "gespLearningScopes",
       "type": "GespLearningScope",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 438
+      "line": 440
     },
     {
       "name": "gespLearningScopeRevisions",
       "type": "GespLearningScopeRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 439
+      "line": 441
     },
     {
       "name": "gespCodeSubmissions",
       "type": "GespCodeSubmissionReceipt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 440
+      "line": 442
     },
     {
       "name": "gespProbeSubmissions",
       "type": "GespProbeSubmissionReceipt",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 441
+      "line": 443
     },
     {
       "name": "gespHintEvents",
       "type": "GespHintEvent",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 442
+      "line": 444
     },
     {
       "name": "gespGuidancePlans",
       "type": "GespGuidancePlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 443
+      "line": 445
     },
     {
       "name": "gespGuidancePlanRevisions",
       "type": "GespGuidancePlanRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 444
+      "line": 446
     },
     {
       "name": "gespReviewTasks",
       "type": "GespReviewTask",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 445
+      "line": 447
     },
     {
       "name": "gespTaskReviews",
       "type": "GespTaskReview",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 446
+      "line": 448
     },
     {
       "name": "gespTaskReviewRevisions",
       "type": "GespTaskReviewRevision",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 447
+      "line": 449
     },
     {
       "name": "studioCourses",
       "type": "StudioCourse",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 448
+      "line": 450
     },
     {
       "name": "classroomSessions",
       "type": "ClassroomSessionRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 449
+      "line": 451
     },
     {
       "name": "classroomTurns",
       "type": "ClassroomTurnRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 450
+      "line": 452
     },
     {
       "name": "whiteboardQuestionTurns",
       "type": "WhiteboardQuestionRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 451
+      "line": 453
     },
     {
       "name": "whiteboardQuestionVisuals",
       "type": "QuestionVisualRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 452
+      "line": 454
     },
     {
       "name": "classroomCodeDrafts",
       "type": "ClassroomCodeDraftRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 453
+      "line": 455
     },
     {
       "name": "classroomVisuals",
       "type": "ClassroomVisualRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 454
+      "line": 456
     },
     {
       "name": "courseProjects",
       "type": "CourseProjectRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 455
+      "line": 457
     },
     {
       "name": "projectAssetUploads",
       "type": "ProjectUploadRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 456
+      "line": 458
     },
     {
       "name": "projectAssets",
       "type": "ProjectAssetRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 457
+      "line": 459
     },
     {
       "name": "sourceCourses",
       "type": "SourceCourseRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 458
+      "line": 460
     },
     {
       "name": "sourceCourseChecks",
       "type": "SourceCourseCheckRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 459
+      "line": 461
     },
     {
       "name": "sourceCourseCheckPublications",
       "type": "SourceCourseCheckPublication",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 460
+      "line": 462
     },
     {
       "name": "studioTopicWhiteboardDrafts",
       "type": "TopicWhiteboardDraftRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 461
+      "line": 463
     },
     {
       "name": "studioTopicWhiteboards",
       "type": "TopicWhiteboardRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 462
+      "line": 464
     },
     {
       "name": "studioTopicWhiteboardVisuals",
       "type": "TopicVisualRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 463
+      "line": 465
     },
     {
       "name": "sourceCourseStages",
       "type": "SourceCourseStageRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 464
+      "line": 466
     },
     {
       "name": "studioActivities",
       "type": "StudioActivity",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 465
+      "line": 467
     },
     {
       "name": "studioStudyPlans",
       "type": "StudioStudyPlan",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 466
+      "line": 468
     },
     {
       "name": "studioSourceMaterials",
       "type": "StudioSourceMaterial",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 467
+      "line": 469
     },
     {
       "name": "studioMaterialUploads",
       "type": "StudioMaterialUploadRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 468
+      "line": 470
     },
     {
       "name": "studioMaterialAssets",
       "type": "StudioMaterialAssetRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 469
+      "line": 471
     },
     {
       "name": "studioOriginalRepairs",
       "type": "StudioOriginalRepairRecord",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 470
+      "line": 472
     },
     {
       "name": "studioLearningPacks",
       "type": "StudioLearningPack",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 471
+      "line": 473
     },
     {
       "name": "studioWhiteboards",
       "type": "StudioWhiteboard",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 472
+      "line": 474
     },
     {
       "name": "studioConnectors",
       "type": "StudioConnector & { encryptedFeedUrl: string; requestKey?: string; requestHash?: string; createdBy?: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 473
+      "line": 475
     },
     {
       "name": "studioScheduleEvents",
       "type": "StudioScheduleEvent & { createdBy?: string; requestHash?: string }",
       "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-      "line": 474
+      "line": 476
     }
   ],
   "contractTypes": [
@@ -46101,6 +46826,34 @@
       "name": "AssistantPracticeLearnerProjection",
       "file": "packages/contracts/src/assistant-practice-content.ts",
       "line": 68,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "AssistantPracticeHelpInput",
+      "file": "packages/contracts/src/assistant-practice-learner.ts",
+      "line": 26,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "AssistantPracticeCompleteInput",
+      "file": "packages/contracts/src/assistant-practice-learner.ts",
+      "line": 27,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "AssistantPracticeGroupStartInput",
+      "file": "packages/contracts/src/assistant-practice-learner.ts",
+      "line": 28,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
+    {
+      "name": "AssistantPracticeLearnerResponseInput",
+      "file": "packages/contracts/src/assistant-practice-learner.ts",
+      "line": 29,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
@@ -53814,7 +54567,7 @@
     {
       "name": "PracticeAttempt",
       "file": "packages/contracts/src/learning.ts",
-      "line": 4,
+      "line": 5,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -53893,16 +54646,51 @@
           "type": "string"
         },
         {
+          "name": "scoreDetails",
+          "optional": true,
+          "type": "ResponseScoreDetail[]"
+        },
+        {
           "name": "requestHash",
           "optional": true,
           "type": "string"
+        },
+        {
+          "name": "actorId",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "actorRole",
+          "optional": true,
+          "type": "'student'"
+        },
+        {
+          "name": "actorStudentId",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "learnerExplanation",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "assistantInput",
+          "optional": true,
+          "type": "AssistantPracticeLearnerResponseInput"
+        },
+        {
+          "name": "assistantHelpSequence",
+          "optional": true,
+          "type": "number"
         }
       ]
     },
     {
       "name": "PracticeSession",
       "file": "packages/contracts/src/learning.ts",
-      "line": 11,
+      "line": 16,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -53968,7 +54756,7 @@
         {
           "name": "drafts",
           "optional": true,
-          "type": "Record<string, { answer: unknown; savedAt: string } & AnswerDraftMetadata>"
+          "type": "Record<string, { answer: unknown; savedAt: string; learnerExplanation?: string } & AnswerDraftMetadata>"
         },
         {
           "name": "actionSnapshot",
@@ -53988,7 +54776,7 @@
         {
           "name": "origin",
           "optional": true,
-          "type": "'guidance' | 'notebook'"
+          "type": "'guidance' | 'notebook' | 'assistant_artifact'"
         },
         {
           "name": "notebookEntryId",
@@ -54001,6 +54789,26 @@
           "type": "KnowledgeAtom"
         },
         {
+          "name": "assistantAssignmentId",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "sourceGroupId",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "itemSnapshots",
+          "optional": true,
+          "type": "MeasurementItem[]"
+        },
+        {
+          "name": "familyIdentityVersion",
+          "optional": true,
+          "type": "string"
+        },
+        {
           "name": "sourceAssessmentId",
           "optional": true,
           "type": "string"
@@ -54010,7 +54818,7 @@
     {
       "name": "PracticeHint",
       "file": "packages/contracts/src/learning.ts",
-      "line": 21,
+      "line": 28,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -54037,13 +54845,33 @@
           "name": "at",
           "optional": false,
           "type": "string"
+        },
+        {
+          "name": "actorId",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "actorStudentId",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "sourceGroupId",
+          "optional": true,
+          "type": "string"
+        },
+        {
+          "name": "requestKey",
+          "optional": true,
+          "type": "string"
         }
       ]
     },
     {
       "name": "LearningMemory",
       "file": "packages/contracts/src/learning.ts",
-      "line": 23,
+      "line": 31,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -54101,7 +54929,7 @@
     {
       "name": "NotebookMetadata",
       "file": "packages/contracts/src/learning.ts",
-      "line": 33,
+      "line": 41,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -54139,7 +54967,7 @@
     {
       "name": "MistakeNotebookEntry",
       "file": "packages/contracts/src/learning.ts",
-      "line": 34,
+      "line": 42,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {

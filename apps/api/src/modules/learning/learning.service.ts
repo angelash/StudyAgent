@@ -1,3 +1,9 @@
+import { ASSISTANT_PRACTICE_ANSWER_PROTOCOL, assistantPracticeLearnerDraftSchema, assistantPracticeLearnerResponseSchema,
+  assistantPracticeHelpSchema, assistantPracticeCompleteSchema, type AssistantPracticeLearnerResponseInput } from '@study-agent/contracts';
+import { assertAssistantPracticeWriter, assistantPracticeSessionRelation } from './assistant-practice-learner-policy';
+import { assistantPracticeCommandHash, assistantPracticeCompletionFingerprint, assistantPracticeFeedback, assistantPracticeHint,
+  assistantPracticePublicAttempt, ASSISTANT_DEMONSTRATION_NOTICE, assertAssistantPracticeGroupStart,
+  type AssistantPracticeGroupStartRecord, type AssistantPracticeLearnerCommand } from './assistant-practice-learner-record';
 import { canRegenerateStudioPages,readVerifiedStudioPage } from './studio-material-integrity.service';
 import { BadRequestException, ConflictException, Injectable, NotFoundException, StreamableFile } from '@nestjs/common';
 import { createHash } from 'node:crypto';
@@ -718,51 +724,66 @@ export class LearningService {
     if (!session) throw new NotFoundException('训练不存在');
     this.students.assertCanAccessStudent(user, session.studentId); return session;
   }
-  view(user: InMemoryUserAccount, id: string) {
-    const session = this.requireSession(user, id), attempts = this.store.select('practiceAttempts', { sessionId: id }).map((item) => this.effectiveAttempt(item));
+  view(user: InMemoryUserAccount, id: string, auth?: InMemoryAuthSession) {
+    const session = this.requireSession(user, id), attempts = this.orderedPracticeAttempts(session).map((item) => this.effectiveAttempt(item));
     const plan = session.planId ? this.store.find('diagnosticPlans', { id: session.planId }) : undefined, action = session.actionSnapshot ?? plan?.actions.find((item) => item.id === session.actionId);
     const latest = session.questionIds.map((questionId) => [...attempts].reverse().find((item) => item.questionId === questionId));
     return { id, studentId: session.studentId, subject: session.subject, atomId: session.atomId, planId: session.planId,
       actionId: session.actionId, day: session.day, status: session.status, action, completedAt: session.completedAt,
-      planRevision: session.planRevision ?? 1, currentPlanRevision: session.origin === 'notebook' ? session.planRevision ?? 1 : plan?.revision ?? 1,
+      planRevision: session.planRevision ?? 1, currentPlanRevision: session.origin === 'notebook' || session.origin === 'assistant_artifact' ? session.planRevision ?? 1 : plan?.revision ?? 1,
       snapshotOrigin: session.snapshotOrigin ?? 'legacy_capture',
       origin: session.origin ?? 'guidance', notebookEntryId: session.notebookEntryId ?? null,
+      ...(session.origin === 'assistant_artifact' ? { assistantAssignmentId: session.assistantAssignmentId, sourceGroupId: session.sourceGroupId,
+        answerProtocol: ASSISTANT_PRACTICE_ANSWER_PROTOCOL, requiresLearnerExplanation: true, isTeachingOnly: true, formalEvidenceCreated: false,
+        completionFingerprint: assistantPracticeCompletionFingerprint(session, attempts),
+        writable: this.assistantPracticeCanWrite(user, session, auth),
+        helpHistory: structuredClone(assistantPracticeSessionRelation(this.store, session).start.commands.filter(item => item.kind !== 'complete').map(({ kind, questionId, providedAt, sequence }) => ({ kind, questionId, providedAt, sequence }))) } : {}),
       questions: session.questionIds.map((questionId, index) => ({ id: questionId, attempted: Boolean(latest[index]),
         latest: latest[index] ? this.publicAttempt(latest[index]!) : null, attempts: attempts.filter((item) => item.questionId === questionId).length })),
       summary: { attempted: latest.filter(Boolean).length, total: session.questionIds.length,
         answered: latest.filter((item) => item?.disposition === 'answered').length,
         skipped: latest.filter((item) => item?.disposition === 'skip').length,
-        independentFirstPass: session.questionIds.filter((questionId) => {
+        teachingFirstPass: session.origin === 'assistant_artifact' ? session.questionIds.filter(questionId => attempts.find(item => item.questionId === questionId)?.correct).length : 0,
+        assistedQuestions: session.origin === 'assistant_artifact' ? session.questionIds.filter(questionId => { const first = attempts.find(item => item.questionId === questionId); return first && (first.hintLevel > 0 || first.solutionExposedBefore); }).length : 0,
+        independentFirstPass: session.origin === 'assistant_artifact' ? 0 : session.questionIds.filter((questionId) => {
           const first = attempts.find((item) => item.questionId === questionId); return first?.correct && !first.hintLevel && !first.solutionExposedBefore;
         }).length, pendingReview: latest.filter((item) => item?.status === 'pending_review').length } };
   }
-  render(user: InMemoryUserAccount, id: string, questionId: string) {
+  render(user: InMemoryUserAccount, id: string, questionId: string, auth?: InMemoryAuthSession) {
     const session = this.requireSession(user, id), snapshot = session.snapshots.find((item) => item.id === questionId);
     if (!snapshot) throw new NotFoundException('题目不属于当前训练');
     const payload = structuredClone(snapshot.renderPayload) as QuestionRenderPayload;
     payload.answerSchema.gradingConfig = {}; payload.source.sourcePathOrUrl = ''; payload.source.notes = null; payload.source.importJobId = null;
     payload.inputAvailability = { supported: mediaModeAvailable(payload.answerSchema.mode), reason: mediaModeAvailable(payload.answerSchema.mode) ? '' : '本次音频作答暂时不可用，请先跳过并反馈给老师。' };
-    const attempt = this.store.select('practiceAttempts', { sessionId: id, questionId }).reverse()[0];
-    const row = session.drafts?.[questionId], draftState = this.practiceDraftState(session, questionId, user.id);
+    const attempt = this.orderedPracticeAttempts(session, questionId).at(-1);
+    const row = session.drafts?.[questionId], draftState = this.practiceDraftState(session, questionId, user.id, auth);
     return { payload, feedback: attempt ? this.feedback(session, attempt) : null,
-      draft: row && (row.protocol !== 'answer-draft-v2' || row.draftAttempt === draftState.attempt) ? { answer: row.answer, savedAt: row.savedAt } : null, draftState };
+      draft: row && (row.protocol !== 'answer-draft-v2' || row.draftAttempt === draftState.attempt) ? { answer: row.answer, savedAt: row.savedAt, ...(session.origin === 'assistant_artifact' ? { learnerExplanation: row.learnerExplanation ?? '' } : {}) } : null, draftState,
+      ...(session.origin === 'assistant_artifact' ? { answerProtocol: ASSISTANT_PRACTICE_ANSWER_PROTOCOL, isTeachingOnly: true, formalEvidenceCreated: false } : {}) };
   }
-  private practiceDraftState(session: PracticeSession, questionId: string, actorId: string) {
+  private practiceDraftState(session: PracticeSession, questionId: string, actorId: string, auth?: InMemoryAuthSession) {
     const snapshot = session.snapshots.find(item => item.id === questionId)!, schema = snapshot.answerSchema as QuestionAnswerSchema;
     const count = this.store.select('practiceAttempts', { sessionId: session.id, questionId }).length;
     const baseHash = answerIdentity(['practice', session.id, questionId, snapshot.document, schema.mode, schema.responseShape, schema.options, count]);
-    const active = session.status === 'in_progress' && (session.origin === 'notebook' || !!this.store.find('diagnosticPlans', { id: session.planId, status: 'active' }));
+    const active = session.origin === 'assistant_artifact' ? this.assistantPracticeCanWrite(this.store.find('users', { id: actorId }), session, auth)
+      : session.status === 'in_progress' && (session.origin === 'notebook' || !!this.store.find('diagnosticPlans', { id: session.planId, status: 'active' }));
     return answerDraftState(session.drafts?.[questionId], baseHash, count, active && count < 5, count > 0, actorId);
   }
-  draft(user: InMemoryUserAccount, id: string, questionId: string, input: unknown) {
+  private orderedPracticeAttempts(session: PracticeSession, questionId?: string) {
+    const attempts = this.store.select('practiceAttempts', { sessionId: session.id, ...(questionId ? { questionId } : {}) });
+    // Native storage row order is unrelated to the child's first response or correction sequence.
+    return session.origin === 'assistant_artifact' ? attempts.sort((a, b) => a.attempt - b.attempt) : attempts;
+  }
+  draft(user: InMemoryUserAccount, id: string, questionId: string, input: unknown, auth?: InMemoryAuthSession) {
     const session = this.requireSession(user, id);
-    this.assertActive(session);
+    this.assertActive(session, user, auth);
+    if (session.origin === 'assistant_artifact') return this.assistantPracticeDraft(user, session, questionId, input, auth);
     if (!session.questionIds.includes(questionId)) throw new NotFoundException('题目不属于当前训练');
     const command = validate(answerDraftSaveSchema, input), { answer } = command;
     const snapshot = session.snapshots.find(item => item.id === questionId)!;
     const issue = answerProtocolIssue(snapshot.answerSchema as QuestionAnswerSchema, answer, true); if (issue) throw new BadRequestException(issue);
-    this.media.assertAnswer(user, { kind: 'practice', sessionId: id, itemId: questionId }, answer, true);
-    const state = this.practiceDraftState(session, questionId, user.id);
+    this.media.assertAnswer(user, { kind: 'practice', sessionId: id, itemId: questionId }, answer, true, auth);
+    const state = this.practiceDraftState(session, questionId, user.id, auth);
     if (!state.editable) throw new BadRequestException('本题不能继续保存，请保留作答并用新题验证');
     const upgraded = session.drafts?.[questionId]?.protocol === 'answer-draft-v2' || this.store.select('practiceAttempts', { sessionId: id, questionId }).some(row => !!row.requestHash);
     if (upgraded && !('protocol' in command)) throw new ConflictException('这份作答已升级，请刷新后再继续订正');
@@ -770,50 +791,137 @@ export class LearningService {
     if (prepared.metadata) { session.drafts ??= {}; session.drafts[questionId] = { answer, savedAt: prepared.receipt.savedAt, ...prepared.metadata }; }
     return prepared.receipt;
   }
-  private assertActive(session: PracticeSession) {
+  private assistantPracticeCanWrite(user: InMemoryUserAccount | undefined, session: PracticeSession, auth?: InMemoryAuthSession) {
+    try { if (!user) return false; assertAssistantPracticeWriter(this.store, this.students, user, session, auth); return true; } catch { return false; }
+  }
+  private assistantPracticeDraft(user: InMemoryUserAccount, session: PracticeSession, questionId: string, input: unknown, auth?: InMemoryAuthSession) {
+    assertAssistantPracticeWriter(this.store, this.students, user, session, auth);
+    const command = validate(assistantPracticeLearnerDraftSchema, input), snapshot = session.snapshots.find(item => item.id === questionId);
+    if (!snapshot) throw new NotFoundException('题目不属于当前教学训练');
+    const issue = answerProtocolIssue(snapshot.answerSchema as QuestionAnswerSchema, command.answer, true); if (issue) throw new BadRequestException(issue);
+    this.media.assertAnswer(user, { kind: 'practice', sessionId: session.id, itemId: questionId }, command.answer, true, auth);
+    const state = this.practiceDraftState(session, questionId, user.id, auth);
+    if (!state.editable) throw new ConflictException('本题不能继续保存，请保留答案和理由并核对当前训练');
+    const envelope = { answer: command.answer, learnerExplanation: command.learnerExplanation };
+    const prepared = prepareAnswerDraft(session.drafts?.[questionId], state, { ...command, protocol: 'answer-draft-v2', answer: envelope }, user.id);
+    if (prepared.metadata) {
+      session.drafts ??= {};
+      session.drafts[questionId] = { answer: structuredClone(command.answer), learnerExplanation: command.learnerExplanation, savedAt: prepared.receipt.savedAt, ...prepared.metadata };
+    }
+    return prepared.receipt;
+  }
+  private assistantPracticeRecordCommand(start: AssistantPracticeGroupStartRecord, kind: AssistantPracticeLearnerCommand['kind'], actorId: string,
+    questionId: string | null, input: AssistantPracticeLearnerCommand['input'], key: string, receipt: Record<string, unknown>, providedAt = new Date().toISOString()) {
+    if (start.commands.length >= 128) throw new ConflictException('本组原操作回执已满，请保留输入和原记录后核对新的教学安排');
+    start.commands.push({ kind, actorId, questionId, input: structuredClone(input), key, receipt: structuredClone(receipt), providedAt,
+      requestHash: assistantPracticeCommandHash(start.id, actorId, kind, questionId, input), sequence: start.commands.length + 1 });
+    assertAssistantPracticeGroupStart(start); return structuredClone(receipt);
+  }
+  assistantPracticeHelp(user: InMemoryUserAccount, id: string, questionId: string, value: unknown, auth?: InMemoryAuthSession): Record<string, unknown> {
+    const session = this.requireSession(user, id), { start, group } = assertAssistantPracticeWriter(this.store, this.students, user, session, auth, false);
+    const command = validate(assistantPracticeHelpSchema, value), requestHash = assistantPracticeCommandHash(start.id, user.id, command.kind, questionId, command);
+    const original = start.commands.find(item => item.key === command.requestKey);
+    if (original) {
+      if (original.requestHash !== requestHash) throw new ConflictException('原帮助请求已用于不同题目、动作或版本');
+      return structuredClone(original.receipt);
+    }
+    assertAssistantPracticeWriter(this.store, this.students, user, session, auth);
+    const snapshot = session.snapshots.find(item => item.id === questionId); if (!snapshot) throw new NotFoundException('题目不属于当前教学训练');
+    const state = this.practiceDraftState(session, questionId, user.id, auth);
+    if (state.attempt !== command.expectedAttempt || state.baseHash !== command.baseHash) throw new ConflictException('本题作答版本已变化，请保留输入并核对当前题目');
+    if (start.commands.filter(item => ['hint', 'solution', 'guardian_demonstration'].includes(item.kind)).length >= 100)
+      throw new ConflictException('已保留100次帮助操作，请先完成本组或保留原记录后核对新的安排');
+    const at = new Date().toISOString(); let receipt: Record<string, unknown>;
+    if (command.kind === 'hint') {
+      const level = Math.min(3, start.commands.filter(item => item.questionId === questionId && item.kind === 'hint').length + 1), hintId = this.store.nextId('practice-hint');
+      this.store.append('practiceHints', { id: hintId, sessionId: id, questionId, level, at, actorId: user.id, actorStudentId: session.studentId, sourceGroupId: start.id, requestKey: command.requestKey });
+      receipt = { kind: 'hint', hintId, level, hint: assistantPracticeHint(group.atomSnapshot, level), providedAt: at };
+    } else if (command.kind === 'solution') receipt = { kind: 'solution', referenceAnswer: structuredClone(snapshot.answer), analysis: snapshot.analysis, providedAt: at };
+    else receipt = { kind: 'guardian_demonstration', notice: ASSISTANT_DEMONSTRATION_NOTICE, providedAt: at };
+    return this.assistantPracticeRecordCommand(start, command.kind, user.id, questionId, command, command.requestKey, receipt, at);
+  }
+  private assistantPracticeComplete(user: InMemoryUserAccount, session: PracticeSession, value: unknown, auth?: InMemoryAuthSession) {
+    const { start } = assertAssistantPracticeWriter(this.store, this.students, user, session, auth, false), command = validate(assistantPracticeCompleteSchema, value);
+    const requestHash = assistantPracticeCommandHash(start.id, user.id, 'complete', null, command), previous = start.commands.find(item => item.key === command.requestKey);
+    if (previous) {
+      if (previous.requestHash !== requestHash) throw new ConflictException('原完成请求已用于不同内容');
+      return structuredClone(previous.receipt);
+    }
+    assertAssistantPracticeWriter(this.store, this.students, user, session, auth);
+    const attempts = this.store.select('practiceAttempts', { sessionId: session.id });
+    if (command.completionFingerprint !== assistantPracticeCompletionFingerprint(session, attempts)) throw new ConflictException('本组答案状态已变化，请核对完整作答后结束');
+    if (session.questionIds.some(questionId => !attempts.some(item => item.questionId === questionId))) throw new BadRequestException('每道题都需本人回答或明确跳过，才能结束本组');
+    const at = new Date().toISOString(); session.status = 'completed'; session.completedAt = at;
+    const receipt = { kind: 'complete', sessionId: session.id, status: 'completed', completedAt: at, completionFingerprint: command.completionFingerprint };
+    this.assistantPracticeRecordCommand(start, 'complete', user.id, null, command, command.requestKey, receipt, at);
+    this.events.publish('learning.practice_completed', { studentId: session.studentId, sessionId: session.id, planId: null, actionId: session.actionId, origin: 'assistant_artifact' });
+    return receipt;
+  }
+  private assertActive(session: PracticeSession, user?: InMemoryUserAccount, auth?: InMemoryAuthSession) {
+    if (session.origin === 'assistant_artifact') {
+      if (!user) throw new ConflictException('请核对本人的学习入口');
+      assertAssistantPracticeWriter(this.store, this.students, user, session, auth); return;
+    }
     if (session.status !== 'in_progress') throw new BadRequestException('训练已结束；请使用新题验证');
     if (session.origin !== 'notebook' && !Boolean(this.store.find('diagnosticPlans', { id: session.planId, status: 'active' }))) throw new BadRequestException('计划已暂停，请先恢复计划');
   }
-  submit(user: InMemoryUserAccount, id: string, input: unknown) {
-    const session = this.requireSession(user, id), command = validate(answerSchema, input);
+  submit(user: InMemoryUserAccount, id: string, input: unknown, auth?: InMemoryAuthSession) {
+    const session = this.requireSession(user, id);
+    const relation = session.origin === 'assistant_artifact' ? assertAssistantPracticeWriter(this.store, this.students, user, session, auth, false) : null;
+    const assistantCommand = relation ? validate(assistantPracticeLearnerResponseSchema, input) : null;
+    const command = assistantCommand ?? validate(answerSchema, input);
     if (command.draftFence && command.draftFence.actorId !== user.id) throw new ConflictException('提交所属的登录身份已变化，请读取当前账号的活动');
     const commandHash = command.draftFence ? answerIdentity(command) : undefined;
     const priorKey = this.store.find('practiceAttempts', { sessionId: id, requestKey: command.requestKey });
     if (priorKey) {
       if (priorKey.questionId !== command.questionId || priorKey.disposition !== command.disposition || !sameAnswer(priorKey.answer, command.answer ?? null) || priorKey.requestHash && priorKey.requestHash !== commandHash) throw new ConflictException('请求标识已用于不同的作答');
+      if (relation) {
+        const offered = relation.start.commands.find(item => item.kind === 'feedback_offered' && 'responseId' in item.input && item.input.responseId === priorKey.id);
+        if (!offered?.receipt.feedback) throw new ConflictException('原教学反馈回执不完整，请保留作答并核对原记录');
+        return structuredClone(offered.receipt.feedback);
+      }
       return this.feedback(session, priorKey);
     }
-    this.assertActive(session);
+    this.assertActive(session, user, auth);
     const snapshot = session.snapshots.find((item) => item.id === command.questionId);
     if (!snapshot) throw new BadRequestException('题目不属于当前训练');
     const previous = this.store.select('practiceAttempts', { sessionId: id, questionId: command.questionId });
     const draft = session.drafts?.[command.questionId];
-    assertAnswerDraftFence(this.practiceDraftState(session, command.questionId, user.id), command.draftFence,
+    assertAnswerDraftFence(this.practiceDraftState(session, command.questionId, user.id, auth), command.draftFence,
       draft?.protocol === 'answer-draft-v2' || previous.some(row => !!row.requestHash));
     if (previous.length >= 5) throw new BadRequestException('本题已练习五次，先查看指导后换一题');
-    const mediaIds = command.disposition === 'answered' ? this.media.assertAnswer(user, { kind: 'practice', sessionId: id, itemId: command.questionId }, command.answer) : [];
+    const mediaIds = command.disposition === 'answered' ? this.media.assertAnswer(user, { kind: 'practice', sessionId: id, itemId: command.questionId }, command.answer, false, auth) : [];
     const grade = command.disposition === 'skip' ? { score: null, correct: null, status: 'skipped' as const, reason: '本题跳过，不计为错误。' } :
       gradeResponse(snapshot.answerSchema as QuestionAnswerSchema, snapshot.answer, command.answer);
     const attempt: PracticeAttempt = { id: this.store.nextId('practice-attempt'), sessionId: id, questionId: command.questionId,
       requestKey: command.requestKey, ...(commandHash ? { requestHash: commandHash } : {}), answer: command.answer ?? null, disposition: command.disposition, ...grade,
       hintLevel: Math.max(0, ...this.store.select('practiceHints', { sessionId: id, questionId: command.questionId }).map((item) => item.level)),
-      attempt: previous.length + 1, solutionExposedBefore: session.origin === 'notebook' || previous.length > 0, elapsedMs: command.elapsedMs, submittedAt: new Date().toISOString() };
+      attempt: previous.length + 1, solutionExposedBefore: session.origin === 'notebook' || previous.length > 0 || Boolean(relation?.start.commands.some(item => item.questionId === command.questionId && ['solution', 'guardian_demonstration'].includes(item.kind))),
+      elapsedMs: command.elapsedMs, submittedAt: new Date().toISOString(), ...(relation && assistantCommand ? { actorId: user.id, actorRole: 'student' as const,
+        actorStudentId: session.studentId, learnerExplanation: assistantCommand.learnerExplanation, assistantInput: structuredClone(assistantCommand), assistantHelpSequence: relation.start.commands.length } : {}) };
     this.store.append('practiceAttempts', attempt);
     this.media.bind(mediaIds, attempt.id);
     if (session.drafts && draft?.protocol !== 'answer-draft-v2') delete session.drafts[command.questionId];
+    if (relation) {
+      const feedback = assistantPracticeFeedback(session, attempt);
+      this.assistantPracticeRecordCommand(relation.start, 'feedback_offered', user.id, command.questionId, { responseId: attempt.id },
+        'feedback:' + attempt.id, { kind: 'feedback_offered', responseId: attempt.id, providedAt: attempt.submittedAt, feedback }, attempt.submittedAt);
+    }
     this.events.publish('learning.practice_response', { studentId: session.studentId, sessionId: id, attemptId: attempt.id, questionId: command.questionId });
     return this.feedback(session, attempt);
   }
   private feedback(session: PracticeSession, attempt: PracticeAttempt) {
     attempt = this.effectiveAttempt(attempt);
     const snapshot = session.snapshots.find((item) => item.id === attempt.questionId)!;
+    if (session.origin === 'assistant_artifact') return assistantPracticeFeedback(session, attempt,
+      this.store.select('practiceScoringRevisions', { responseId: attempt.id }).map(({ requestHash: _hash, ...item }) => item));
     return { attempt: this.publicAttempt(attempt), analysis: snapshot.analysis, referenceAnswer: snapshot.answer,
       reviewHistory: this.store.select('practiceScoringRevisions', { responseId: attempt.id }).map(({ requestHash: _hash, ...item }) => item),
       notice: attempt.status === 'pending_review' ? '已保存表达，等待按量规复核。' : attempt.correct ?
         attempt.attempt === 1 && !attempt.hintLevel && !attempt.solutionExposedBefore ? '这道题已独立完成。稍后用新题看看是否能迁移。' : '这次订正有进展，再用独立新题验证。' : '先看看卡住的步骤，可以查看指导、重试或换一题。' };
   }
 
-  private publicAttempt(attempt: PracticeAttempt) { const { requestHash: _hash, ...view } = attempt; return view; }
+  private publicAttempt(attempt: PracticeAttempt) { return assistantPracticePublicAttempt(attempt); }
 
   effectiveAttempt(attempt: PracticeAttempt): PracticeAttempt {
     const revision = this.store.select('practiceScoringRevisions', { responseId: attempt.id }).sort((a, b) => b.version - a.version)[0];
@@ -835,9 +943,15 @@ export class LearningService {
     this.events.publish('learning.score_reviewed', { responseId, revisionId: revision.id, studentId: session.studentId, actorId: user.id });
     return revision;
   }
-  hint(user: InMemoryUserAccount, id: string, questionId: string) {
+  hint(user: InMemoryUserAccount, id: string, questionId: string, input?: unknown, auth?: InMemoryAuthSession) {
     const session = this.requireSession(user, id);
-    this.assertActive(session);
+    if (session.origin === 'assistant_artifact') {
+      assertAssistantPracticeWriter(this.store, this.students, user, session, auth, false);
+      const command = validate(assistantPracticeHelpSchema, input); if (command.kind !== 'hint') throw new BadRequestException('此入口只接收明确的提示请求');
+      const result = this.assistantPracticeHelp(user, id, questionId, command, auth);
+      return { level: result.level as number, hint: result.hint as string };
+    }
+    this.assertActive(session, user, auth);
     if (session.status !== 'in_progress' || !session.questionIds.includes(questionId)) throw new BadRequestException('当前题目不可获取提示');
     const plan = session.planId ? this.store.find('diagnosticPlans', { id: session.planId }) : undefined;
     const atom = session.atomSnapshot ?? this.store.find('diagnosticSessions', { id: plan?.baselineSessionId })?.atomSnapshots?.find(atom => atom.id === session.atomId);
@@ -846,9 +960,11 @@ export class LearningService {
     return { level, hint: level === 1 ? `先说说题目让你做什么，再想想“${atom?.name ?? '当前任务'}”的关键条件。` : level === 2 ?
       `把思路拆开：${atom?.objective ?? '先列出已知条件和需要解决的目标'}。每做一步，核对一次条件。` : `可以请家长示范“${atom?.name ?? '当前任务'}”中的一个关键步骤，再自己解释并完成剩余部分。提示后的表现会单独记录。` };
   }
-  complete(user: InMemoryUserAccount, id: string) {
-    const session = this.requireSession(user, id), view = this.view(user, id);
-    if (session.status !== 'completed') this.assertActive(session);
+  complete(user: InMemoryUserAccount, id: string, input?: unknown, auth?: InMemoryAuthSession) {
+    const session = this.requireSession(user, id);
+    if (session.origin === 'assistant_artifact') return this.assistantPracticeComplete(user, session, input, auth);
+    const view = this.view(user, id);
+    if (session.status !== 'completed') this.assertActive(session, user, auth);
     if (view.summary.attempted !== view.summary.total) throw new BadRequestException('每一道不同的题都需作答或明确跳过，才能结束活动');
     if (session.status !== 'completed') {
       session.status = 'completed'; session.completedAt = new Date().toISOString();
@@ -870,12 +986,13 @@ export class LearningService {
     for (const session of this.store.select('practiceSessions', { studentId: studentId, subject: subject })) {
       if (session.origin === 'notebook') continue;
       for (const questionId of session.questionIds) {
-        const original = this.store.find('practiceAttempts', { sessionId: session.id, questionId: questionId });
+        const original = session.origin === 'assistant_artifact' ? this.orderedPracticeAttempts(session, questionId)[0]
+          : this.store.find('practiceAttempts', { sessionId: session.id, questionId: questionId });
         const first = original ? this.effectiveAttempt(original) : null;
         if (!first || (first.correct !== false && first.status !== 'pending_review')) continue;
         const plan = session.planId ? this.store.find('diagnosticPlans', { id: session.planId }) : undefined;
         rows.push({ id: first.id, kind: 'practice', atomId: session.atomId, questionId, reason: first.reason, status: first.status,
-          atomSnapshot: this.store.find('diagnosticSessions', { id: plan?.baselineSessionId })?.atomSnapshots?.find(atom => atom.id === session.atomId),
+          atomSnapshot: session.atomSnapshot ?? this.store.find('diagnosticSessions', { id: plan?.baselineSessionId })?.atomSnapshots?.find(atom => atom.id === session.atomId),
           answer: first.answer, at: first.submittedAt, snapshot: session.snapshots.find((item) => item.id === questionId) });
       }
     }

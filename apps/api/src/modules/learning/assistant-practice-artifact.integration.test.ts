@@ -10,6 +10,8 @@ import { DatabaseSync } from 'node:sqlite';
 import { Pool } from 'pg';
 import Module from 'node:module';
 import { gunzipSync } from 'node:zlib';
+import { execFileSync } from 'node:child_process';
+import sharp from 'sharp';
 
 describe('private reviewed-practice artifact HTTP and native durability', () => {
   const root = resolve(process.cwd(), '../..'), folder = mkdtempSync(join(tmpdir(), 'study-practice-artifacts-'));
@@ -22,6 +24,10 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
   let app: any, store: any, owner: any, other: any, learner: any, student: any, source: any, otherSource: any, messageId: string;
   let chemistry: any, chemicalAtom: string, learnerSource: any, learnerMessageId: string, primaryArtifact: string, primaryInput: any;
   let primaryAssignment: string, assignmentArtifact: string, assignmentCommand: any, assignmentReceipt: any;
+  let trainingAssignment: string, deferredAssignment: string, trainingPreview: any, trainingInput: any, firstStart: any, firstStartInput: any, secondStart: any, secondStartInput: any, thirdStart: any;
+  const mediaAnswers = new Map<string, any>(), mediaHashes = new Map<string, string>();
+  let firstAnswerCommand: any, firstAnswerReceipt: any, completedCommand: any, completedReceipt: any, pausedDraftCommand: any;
+  const trainingTargets = ['qa:learner:conditions', 'qa:learner:second', 'qa:learner:third'];
   let sourceUrl = '', currentUrl = '', currentData = '', admin: Pool | undefined, backupPath = '';
   const fingerprint = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
   async function call(method: 'get' | 'post' | 'patch' | 'put', path: string, body?: unknown, actor = owner, expected = method === 'post' ? 201 : 200) {
@@ -51,9 +57,46 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
   async function protectedState(excludeAssignments = false) {
     const state = structuredClone((await store.database.read()).state); delete state.assistantPracticeArtifacts;
     if (excludeAssignments) delete state.assistantPracticeAssignments;
-    const tasks = await store.database.tasks.list(); expect(tasks.total).toBe(0); return fingerprint(state);
+    await assertOnlyMediaMaintenance(); return fingerprint(state);
   }
   async function saved(collection: string, id: string) { return (await store.database.read()).state[collection].find((row: any) => row.id === id); }
+  async function nonTeachingState() {
+    const state = structuredClone((await store.database.read()).state);
+    for (const name of ['assistantPracticeArtifacts', 'assistantPracticeAssignments', 'assistantPracticeGroupStarts', 'practiceSessions', 'practiceAttempts', 'practiceHints', 'studentMedia', 'events']) delete state[name];
+    await assertOnlyMediaMaintenance(); return fingerprint(state);
+  }
+  async function assertOnlyMediaMaintenance() {
+    const tasks = await store.database.tasks.list();
+    expect(tasks.rows.every((item: any) => ['student.media.prune', 'student.media.purge'].includes(item.kind))).toBe(true);
+    expect(tasks.total).toBe(tasks.rows.length);
+  }
+  const learnerRoot = (id: string) => '/learning/assistant-practice/sessions/' + id;
+  const groupRoot = (atom: string, assignment = trainingAssignment) => '/learning/assistant-practice/assignments/' + assignment + '/groups/' + encodeURIComponent(atom) + '/start';
+  function nativeAnswer(packet: any) {
+    const schema = packet.payload.answerSchema, value = structuredClone(packet.question.answer);
+    const response = ['multiple_choice', 'sorting'].includes(schema.mode) ? { values: value }
+      : schema.mode === 'multi_blank' ? { entries: value }
+      : ['table_fill', 'drag_drop', 'matching', 'image_upload', 'audio_record'].includes(schema.mode) ? value
+      : ['numeric_blank', 'text_blank', 'formula_blank', 'short_answer'].includes(schema.mode) ? { value: String(value) } : { value };
+    return { questionId: packet.question.id, mode: schema.mode, response };
+  }
+  function draftCommand(render: any, answer: unknown, explanation: string) {
+    const state = render.draftState;
+    return { protocol: 'assistant-practice-answer-v1', actorId: state.actorId, expectedRevision: state.revision,
+      baseHash: state.baseHash, attempt: state.attempt, answer, learnerExplanation: explanation, requestKey: randomUUID() };
+  }
+  function responseCommand(render: any, questionId: string, answer?: unknown, disposition = 'answered', explanation = '我先核对题目的整体、数量与单位，再写出结果。') {
+    const { actorId, revision, baseHash, attempt } = render.draftState;
+    return { protocol: 'assistant-practice-answer-v1', questionId, answer, learnerExplanation: explanation, disposition,
+      elapsedMs: 1240, requestKey: randomUUID(), draftFence: { actorId, revision, baseHash, attempt } };
+  }
+  async function refreshLearner(parent = owner) {
+    let access = await call('get', '/students/' + student.id + '/learning-access', undefined, parent);
+    if (access.status !== 'enabled') access = await call('post', '/students/' + student.id + '/learning-access', { enabled: true, expectedVersion: access.version,
+      requestKey: randomUUID(), reason: '隔离恢复后由合法监护人重新确认本人入口' }, parent);
+    const code = await call('post', '/students/' + student.id + '/learning-access/codes', { expectedVersion: access.version, requestKey: randomUUID() }, parent);
+    learner = await call('post', '/auth/learning-code', { code: code.code }, null);
+  }
   function damagedRecord(original: any, mode: 'packet' | 'owner') {
     const row = structuredClone(original), records = load('modules/learning/assistant-practice-record'), digest = load('modules/learning/topic-whiteboard-digest').topicWhiteboardDigest;
     if (mode === 'packet') {
@@ -405,6 +448,245 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
       expect((await call('post', sourceRoot() + '/candidates', primaryInput)).artifactId).toBe(primaryArtifact); expect(await protectedState()).toBe(before);
     } finally { const paused = await call('get', '/diagnostics/sessions/' + formal.id); await call('post', '/diagnostics/sessions/' + formal.id + '/state', { action: 'abort', expectedRevision: paused.revision, requestKey: randomUUID(), reason: '结束隔离暂停保护，不提交作答' }); }
   });
+  it('previews a complete three-point shared arrangement without creating child sessions, attempts or exposure', async () => {
+    const definitions = load('modules/diagnostics/measurement-definition');
+    await store.transaction(() => {
+      const originalAtom = store.find('knowledgeAtoms', { id: atomId }), template = store.find('measurementItems', { id: 'qa-practice-mapping-0' });
+      for (const [index, target] of trainingTargets.entries()) {
+        const atom = { ...structuredClone(originalAtom), id: target, name: '本人条件核对' + (index + 1) }; store.append('knowledgeAtoms', atom);
+        for (let number = 0; number < 2; number++) {
+          const id = target + '-question-' + number;
+          const question = { ...structuredClone(store.find('questions', { id: template.questionId })), id };
+          const document = { ...structuredClone(store.find('questionDocuments', { questionId: template.questionId })), questionId: id };
+          const answerSchema = { ...structuredClone(store.find('questionAnswerSchemas', { questionId: template.questionId })), questionId: id };
+          if (index === 1) {
+            question.type = 'objective'; answerSchema.options = [];
+            if (number === 0) {
+              question.stem = '记录两组的数量：甲组6个，乙组2个。把数量填入对应单元格。';
+              question.answer = { cells: { 'a:n': '6', 'b:n': '2' } };
+              question.analysis = '甲组对应6，乙组对应2；先核对行标签，再填入数量。';
+              answerSchema.mode = 'table_fill'; answerSchema.responseShape = {
+                rows: [{ id: 'a', label: '甲组' }, { id: 'b', label: '乙组' }], columns: [{ id: 'n', label: '数量' }] };
+            } else {
+              question.stem = '甲组6个，乙组2个。两组共（合计）个，甲组比乙组多（差量）个。';
+              question.answer = [{ key: 'sum', value: '8' }, { key: 'difference', value: '4' }];
+              question.analysis = '合计是6+2=8，差量是6-2=4；两个空位分别核对。';
+              answerSchema.mode = 'multi_blank'; answerSchema.responseShape = { entries: [{ key: 'sum', label: '合计' }, { key: 'difference', label: '差量' }] };
+            }
+            document.blocks[0].text = question.stem;
+          } else if (index === 2) {
+            question.type = number === 0 ? 'subjective' : 'oral';
+            question.stem = number === 0 ? '用图示解释甲组6个、乙组2个的数量关系。' : '口头解释两组数量合计与差量的区别。';
+            question.answer = '由教师核对是否明确数量、整体及比较条件。'; question.analysis = '先明确两个组的数量，再解释合计或比较关系。';
+            document.blocks[0].text = question.stem;
+            answerSchema.mode = number === 0 ? 'image_upload' : 'audio_record'; answerSchema.options = [];
+            answerSchema.responseShape = { mediaPolicy: 'student-media-v1' };
+          }
+          const sourceRecord = { ...structuredClone(store.find('questionSources', { questionId: template.questionId })), id: id + '-source', questionId: id };
+          store.append('questions', question); store.append('questionDocuments', document); store.append('questionAnswerSchemas', answerSchema); store.append('questionSources', sourceRecord);
+          store.append('measurementItems', { ...structuredClone(template), id: id + '-mapping', questionId: id, atomId: target, family: target + '-family-' + number,
+            atomDefinitionFingerprint: definitions.atomDefinitionFingerprint(atom), contentFingerprint: definitions.questionContentFingerprint(store, id) });
+        }
+      }
+    });
+    await call('put', '/students/' + student.id + '/learning-scope', { subject: 'math', grade: 4, term: 'upper', textbookVolumeId: null,
+      textbookVersion: '匿名本人三点作答范围', learnedAtomIds: trainingTargets, currentAtomId: trainingTargets[0], minutesPerSession: 15 });
+    const body = { selection: { messageIds: [messageId], includeLinkedQuestions: false }, objective: '逐点解释数量判断的条件并以理由核对答案',
+      audience: { kind: 'student', studentId: student.id, subject: 'math', targetAtomIds: trainingTargets }, acknowledgeHistoricalSource: false, acknowledgeAudienceTransfer: true };
+    const preflight = await call('post', sourceRoot() + '/preflight', body, owner, 200);
+    const candidate = await create({ ...body, contentMode: 'reviewed_bank', preflightFingerprint: preflight.fingerprint, requestKey: randomUUID() });
+    trainingPreview = candidate.view; trainingInput = candidate.command;
+    const before = await nonTeachingState(), counts = (await store.database.read()).state.practiceSessions?.length ?? 0;
+    const receipt = await call('post', artifactRoot(candidate.receipt.artifactId) + '/assignments', { studentId: student.id, expectedRevision: candidate.view.revision,
+      contentFingerprint: candidate.view.contentFingerprint, acknowledgePreview: true, requestKey: randomUUID() });
+    trainingAssignment = receipt.assignmentId;
+    deferredAssignment = (await call('post', artifactRoot(candidate.receipt.artifactId) + '/assignments', { studentId: student.id, expectedRevision: candidate.view.revision,
+      contentFingerprint: candidate.view.contentFingerprint, acknowledgePreview: true, requestKey: randomUUID() })).assignmentId;
+    const shared = await call('get', '/learning/assistant-practice/assignments/' + trainingAssignment, undefined, learner);
+    expect(shared.startingAvailable).toBe(true); expect(shared.groupActivities).toHaveLength(3); expect(shared.groupActivities.every((item: any) => item.canStart)).toBe(true);
+    expect(shared.groups.every((group: any) => group.questions === undefined)).toBe(true);
+    await call('get', '/learning/assistant-practice/assignments/' + trainingAssignment, undefined, other);
+    expect((await store.database.read()).state.practiceSessions?.length ?? 0).toBe(counts); expect(await nonTeachingState()).toBe(before);
+  });
+  it('starts only from the actual child identity and preserves the single original start receipt', async () => {
+    const shared = await call('get', '/learning/assistant-practice/assignments/' + trainingAssignment, undefined, learner);
+    firstStartInput = { assignmentFingerprint: shared.payloadFingerprint, requestKey: randomUUID() };
+    const before = await nonTeachingState();
+    await call('post', groupRoot(trainingTargets[0]), firstStartInput, owner, 403); await call('post', groupRoot(trainingTargets[0]), firstStartInput, other, 403);
+    firstStart = await call('post', groupRoot(trainingTargets[0]), firstStartInput, learner);
+    expect(await call('post', groupRoot(trainingTargets[0]), firstStartInput, learner)).toEqual(firstStart);
+    await call('post', groupRoot(trainingTargets[0]), { ...firstStartInput, requestKey: randomUUID() }, learner, 409);
+    await call('post', groupRoot(trainingTargets[1]), firstStartInput, learner, 409);
+    const session = await call('get', learnerRoot(firstStart.sessionId), undefined, learner);
+    expect(session).toMatchObject({ origin: 'assistant_artifact', isTeachingOnly: true, formalEvidenceCreated: false, writable: true, planId: null, planRevision: 0, currentPlanRevision: 0 });
+    expect(session.questions).toHaveLength(2); expect(session.summary.independentFirstPass).toBe(0);
+    expect((await store.database.read()).state.assistantPracticeGroupStarts.filter((row: any) => row.assignmentId === trainingAssignment)).toHaveLength(1);
+    expect(await nonTeachingState()).toBe(before);
+  });
+  it('saves native answers plus independent learner explanations, fences concurrent drafts and blocks guardian writes on both route families', async () => {
+    const packet = trainingPreview.groups[0].questions[0], qid = packet.question.id, answer = nativeAnswer(packet), before = await nonTeachingState();
+    let rendered = await call('get', learnerRoot(firstStart.sessionId) + '/questions/' + qid, undefined, learner);
+    expect(rendered.feedback).toBeNull(); expect(JSON.stringify(rendered)).not.toContain('referenceAnswer'); expect(JSON.stringify(rendered)).not.toContain(marker);
+    expect(rendered.payload.document.blocks.some((block: any) => block.type === 'table')).toBe(true);
+    const draft = draftCommand(rendered, answer, '首稿理由：先明确同一个整体，再核对数量与单位。');
+    await call('patch', learnerRoot(firstStart.sessionId) + '/questions/' + qid + '/draft', draft, owner, 403);
+    await call('patch', '/learning/practice/' + firstStart.sessionId + '/questions/' + qid + '/draft', draft, owner, 403);
+    const receipt = await call('patch', learnerRoot(firstStart.sessionId) + '/questions/' + qid + '/draft', draft, learner);
+    expect(await call('patch', learnerRoot(firstStart.sessionId) + '/questions/' + qid + '/draft', draft, learner)).toEqual(receipt);
+    await call('patch', learnerRoot(firstStart.sessionId) + '/questions/' + qid + '/draft', { ...draft, learnerExplanation: '同键换了另一个理由。' }, learner, 409);
+    await call('patch', learnerRoot(firstStart.sessionId) + '/questions/' + qid + '/draft', { answer }, learner, 400);
+    await call('patch', learnerRoot(firstStart.sessionId) + '/questions/' + qid + '/draft', { ...draft, requestKey: randomUUID() }, learner, 409);
+    rendered = await call('get', learnerRoot(firstStart.sessionId) + '/questions/' + qid, undefined, learner);
+    expect(rendered.draft.learnerExplanation).toBe(draft.learnerExplanation); expect(rendered.draft.answer).toEqual(answer);
+    expect((await call('get', '/learning/practice/' + firstStart.sessionId + '/questions/' + qid)).draftState.editable).toBe(false);
+    firstAnswerCommand = responseCommand(rendered, qid, answer, 'answered', draft.learnerExplanation);
+    await call('post', learnerRoot(firstStart.sessionId) + '/responses', firstAnswerCommand, owner, 403);
+    await call('post', '/learning/practice/' + firstStart.sessionId + '/responses', firstAnswerCommand, owner, 403);
+    firstAnswerReceipt = await call('post', learnerRoot(firstStart.sessionId) + '/responses', firstAnswerCommand, learner);
+    expect(firstAnswerReceipt.attempt).toMatchObject({ actorId: learner.user.id, actorRole: 'student', actorStudentId: student.id,
+      learnerExplanation: draft.learnerExplanation, attempt: 1, hintLevel: 0, solutionExposedBefore: false, explanationReviewStatus: 'unreviewed' });
+    expect(firstAnswerReceipt.attempt.correct).toBe(true); expect(firstAnswerReceipt.notice).not.toContain('独立完成');
+    expect(await call('post', learnerRoot(firstStart.sessionId) + '/responses', firstAnswerCommand, learner)).toEqual(firstAnswerReceipt);
+    await call('post', learnerRoot(firstStart.sessionId) + '/responses', { ...firstAnswerCommand, learnerExplanation: '同键试图覆盖首答的理由。' }, learner, 409);
+    rendered = await call('get', learnerRoot(firstStart.sessionId) + '/questions/' + qid, undefined, learner);
+    await call('post', learnerRoot(firstStart.sessionId) + '/responses', responseCommand(rendered, qid, answer, 'answered', '订正理由另存，不能覆盖首答理由。'), learner);
+    const original = (await store.database.read()).state.practiceAttempts.filter((row: any) => row.sessionId === firstStart.sessionId && row.questionId === qid);
+    expect(original).toHaveLength(2); expect(original[0].learnerExplanation).toBe(draft.learnerExplanation); expect(original[1].solutionExposedBefore).toBe(true);
+    expect(await nonTeachingState()).toBe(before);
+  });
+  it('rejects another actual learning-code child on the original group and practice routes', async () => {
+    const child = (await call('post', '/students', { nickname: '隔离另一学习者', grade: 4, preferredSessionMinutes: 15, defaultVersionMap: { math: '', chinese: '', english: '' } })).profile;
+    const access = await call('post', '/students/' + child.id + '/learning-access', { enabled: true, expectedVersion: 0, requestKey: randomUUID(), reason: '隔离跨孩子权限核查' });
+    const code = await call('post', '/students/' + child.id + '/learning-access/codes', { expectedVersion: access.version, requestKey: randomUUID() });
+    const otherChild = await call('post', '/auth/learning-code', { code: code.code }, null);
+    const before = await nonTeachingState();
+    await call('post', groupRoot(trainingTargets[0]), firstStartInput, otherChild, 403);
+    await call('get', learnerRoot(firstStart.sessionId), undefined, otherChild, 403);
+    await call('get', '/learning/practice/' + firstStart.sessionId, undefined, otherChild, 403);
+    await call('post', learnerRoot(firstStart.sessionId) + '/responses', firstAnswerCommand, otherChild, 403);
+    expect(await nonTeachingState()).toBe(before);
+  });
+  it('records explicit hints, solutions and reported guardian demonstrations separately from the first response', async () => {
+    const packet = trainingPreview.groups[0].questions[1], qid = packet.question.id, before = await nonTeachingState();
+    let rendered = await call('get', learnerRoot(firstStart.sessionId) + '/questions/' + qid, undefined, learner);
+    const base = { protocol: 'assistant-practice-answer-v1', expectedAttempt: rendered.draftState.attempt, baseHash: rendered.draftState.baseHash };
+    const hint = { ...base, kind: 'hint', requestKey: randomUUID() };
+    const hintReceipt = await call('post', learnerRoot(firstStart.sessionId) + '/questions/' + qid + '/help', hint, learner);
+    expect(hintReceipt.level).toBe(1); expect(hintReceipt.hint).toBeTruthy();
+    expect(await call('post', learnerRoot(firstStart.sessionId) + '/questions/' + qid + '/help', hint, learner)).toEqual(hintReceipt);
+    await call('post', learnerRoot(firstStart.sessionId) + '/questions/' + qid + '/help', { ...hint, kind: 'solution' }, learner, 409);
+    await call('post', '/learning/practice/' + firstStart.sessionId + '/questions/' + qid + '/hint', hint, owner, 403);
+    const solution = await call('post', learnerRoot(firstStart.sessionId) + '/questions/' + qid + '/help', { ...base, kind: 'solution', requestKey: randomUUID() }, learner);
+    expect(solution.referenceAnswer).toEqual(packet.question.answer);
+    await call('post', learnerRoot(firstStart.sessionId) + '/questions/' + qid + '/help', { ...base, kind: 'guardian_demonstration', requestKey: randomUUID() }, learner);
+    const skip = await call('post', learnerRoot(firstStart.sessionId) + '/responses', responseCommand(rendered, qid, undefined, 'skip', '暂时不能解释，先看参考。'), learner);
+    expect(skip.attempt).toMatchObject({ status: 'skipped', correct: null, score: null, hintLevel: 1, solutionExposedBefore: true });
+    rendered = await call('get', learnerRoot(firstStart.sessionId) + '/questions/' + qid, undefined, learner);
+    await call('post', learnerRoot(firstStart.sessionId) + '/responses', responseCommand(rendered, qid, nativeAnswer(packet), 'answered', '看过参考后重新核对，作为有帮助的订正。'), learner);
+    const view = await call('get', learnerRoot(firstStart.sessionId), undefined, learner);
+    expect(view.helpHistory.map((item: any) => item.kind)).toEqual(expect.arrayContaining(['hint', 'solution', 'guardian_demonstration', 'feedback_offered']));
+    expect(view.summary.independentFirstPass).toBe(0); expect(view.summary.assistedQuestions).toBe(1); expect(await nonTeachingState()).toBe(before);
+  });
+  it('completes the actual child group once and keeps the original completion and response receipts', async () => {
+    const before = await nonTeachingState(), view = await call('get', learnerRoot(firstStart.sessionId), undefined, learner);
+    completedCommand = { protocol: 'assistant-practice-answer-v1', completionFingerprint: view.completionFingerprint, requestKey: randomUUID() };
+    await call('post', learnerRoot(firstStart.sessionId) + '/complete', completedCommand, owner, 403);
+    await call('post', '/learning/practice/' + firstStart.sessionId + '/complete', completedCommand, owner, 403);
+    completedReceipt = await call('post', learnerRoot(firstStart.sessionId) + '/complete', completedCommand, learner);
+    expect(completedReceipt.status).toBe('completed'); expect(await call('post', learnerRoot(firstStart.sessionId) + '/complete', completedCommand, learner)).toEqual(completedReceipt);
+    expect(await call('post', learnerRoot(firstStart.sessionId) + '/responses', firstAnswerCommand, learner)).toEqual(firstAnswerReceipt);
+    expect((await call('get', learnerRoot(firstStart.sessionId), undefined, learner)).writable).toBe(false);
+    expect(await nonTeachingState()).toBe(before);
+  });
+  it('checks exact native SQL actor, feedback, assistance and draft records before another process opens them', async () => {
+    const sql = operations('assistant-practice-integrity').sql;
+    let rows: any[];
+    if (engine === 'sqlite') { const db = new DatabaseSync(join(currentData, 'study-agent.sqlite3')); try { rows = db.prepare(sql).all(); } finally { db.close(); } }
+    else { const client = new Pool({ connectionString: currentUrl }); try { rows = (await client.query(sql)).rows; } finally { await client.end(); } }
+    try {
+      const integrity = load('modules/learning/assistant-practice-integrity');
+      integrity.assertAssistantPracticeRecords(rows); integrity.assertAssistantPracticeRecords([...rows].reverse());
+    }
+    catch (error) {
+      writeFileSync(join(root, 'data/qa/learner-first/cold-' + randomUUID() + '-private.json'), JSON.stringify(rows), { flag: 'wx' });
+      const messages: string[] = []; let current: any = error;
+      while (current) { messages.push(String(current.message)); current = current.cause; }
+      throw new Error(messages.join(' -> '));
+    }
+  });
+  it('starts the second planned group through two actual instances even though the whole original preflight now contains exposure', async () => {
+    const { contentMode: _mode, preflightFingerprint: _fingerprint, requestKey: _key, ...body } = trainingInput;
+    expect((await call('post', sourceRoot() + '/preflight', body, owner, 200)).canPrepareTeachingPractice).toBe(false);
+    const shared = await call('get', '/learning/assistant-practice/assignments/' + trainingAssignment, undefined, learner);
+    expect(shared.groupActivities.find((item: any) => item.atomId === trainingTargets[1]).canStart).toBe(true);
+    secondStartInput = { assignmentFingerprint: shared.payloadFingerprint, requestKey: randomUUID() };
+    const before = await nonTeachingState(); process.env.STUDY_SEED_FOUNDATION = 'false';
+    const peer = await NestFactory.create(load('app.module').AppModule, { logger: false }); peer.setGlobalPrefix('api'); await peer.init();
+    try {
+      const reopened = await request(peer.getHttpServer()).get('/api' + learnerRoot(firstStart.sessionId)).set('Authorization', 'Bearer ' + learner.token);
+      expect(reopened.status).toBe(200); expect(reopened.body.data.summary).toMatchObject({ teachingFirstPass: 1, assistedQuestions: 1, independentFirstPass: 0 });
+      expect(reopened.body.data.questions.every((item: any) => item.latest.attempt === 2)).toBe(true);
+      const reopenedQuestion = await request(peer.getHttpServer()).get('/api' + learnerRoot(firstStart.sessionId) + '/questions/' + trainingPreview.groups[0].questions[0].question.id).set('Authorization', 'Bearer ' + learner.token);
+      expect(reopenedQuestion.status).toBe(200); expect(reopenedQuestion.body.data.feedback.attempt.attempt).toBe(2);
+      const [one, two] = await Promise.all([call('post', groupRoot(trainingTargets[1]), secondStartInput, learner),
+        request(peer.getHttpServer()).post('/api' + groupRoot(trainingTargets[1])).set('Authorization', 'Bearer ' + learner.token).send(secondStartInput)]);
+      expect(two.status, JSON.stringify(two.body.error)).toBe(201); expect(two.body.data).toEqual(one); secondStart = one;
+      expect((await store.database.read()).state.assistantPracticeGroupStarts.filter((row: any) => row.assignmentId === trainingAssignment && row.atomId === trainingTargets[1])).toHaveLength(1);
+    } finally { await peer.close(); }
+    expect(await nonTeachingState()).toBe(before);
+  }, 120000);
+  it('preserves the second group draft throughout an actual paused assessment and rejects all new teaching writes', async () => {
+    const packet = trainingPreview.groups[1].questions[0], qid = packet.question.id;
+    const rendered = await call('get', learnerRoot(secondStart.sessionId) + '/questions/' + qid, undefined, learner);
+    pausedDraftCommand = draftCommand(rendered, nativeAnswer(packet), '暂停前的完整答案与理由应在恢复后保留。');
+    await call('patch', learnerRoot(secondStart.sessionId) + '/questions/' + qid + '/draft', pausedDraftCommand, learner);
+    const formal = await call('post', '/diagnostics/sessions', { studentId: student.id, subject: 'chemistry', intent: 'micro', targetAtomIds: [chemicalAtom], includePrerequisites: false, maxItems: 4 });
+    const current = await call('get', '/diagnostics/sessions/' + formal.id);
+    await call('post', '/diagnostics/sessions/' + formal.id + '/state', { action: 'pause', expectedRevision: current.revision, requestKey: randomUUID(), reason: '隔离本人教学暂停保护' });
+    try {
+      const before = await nonTeachingState(), latest = await call('get', learnerRoot(secondStart.sessionId) + '/questions/' + qid, undefined, learner);
+      expect(latest.draftState.editable).toBe(false); expect(latest.draft.learnerExplanation).toBe(pausedDraftCommand.learnerExplanation);
+      await call('patch', learnerRoot(secondStart.sessionId) + '/questions/' + qid + '/draft', { ...pausedDraftCommand, requestKey: randomUUID() }, learner, 409);
+      await call('post', learnerRoot(secondStart.sessionId) + '/responses', responseCommand(latest, qid, nativeAnswer(packet)), learner, 409);
+      await call('post', groupRoot(trainingTargets[2]), { assignmentFingerprint: trainingPreview ? (await call('get', '/learning/assistant-practice/assignments/' + trainingAssignment, undefined, learner)).payloadFingerprint : '', requestKey: randomUUID() }, learner, 409);
+      expect(await nonTeachingState()).toBe(before);
+    } finally { const paused = await call('get', '/diagnostics/sessions/' + formal.id); await call('post', '/diagnostics/sessions/' + formal.id + '/state', { action: 'abort', expectedRevision: paused.revision, requestKey: randomUUID(), reason: '结束隔离暂停保护，不提交正式答案' }); }
+  });
+  it('blocks an unstarted group when original source changes but preserves completed group receipts', async () => {
+    const original = (await saved('assistantMessages', messageId)).content, shared = await call('get', '/learning/assistant-practice/assignments/' + trainingAssignment, undefined, learner);
+    await store.transaction(() => { store.find('assistantMessages', { id: messageId }).content += '\n匿名来源已有新的版本。'; });
+    try {
+      const before = await nonTeachingState();
+      await call('post', groupRoot(trainingTargets[2]), { assignmentFingerprint: shared.payloadFingerprint, requestKey: randomUUID() }, learner, 409);
+      expect(await call('post', groupRoot(trainingTargets[0]), firstStartInput, learner)).toEqual(firstStart);
+      expect((await call('get', learnerRoot(secondStart.sessionId) + '/questions/' + trainingPreview.groups[1].questions[0].question.id, undefined, learner)).draft.learnerExplanation).toBe(pausedDraftCommand.learnerExplanation);
+      expect(await nonTeachingState()).toBe(before);
+    } finally { await store.transaction(() => { store.find('assistantMessages', { id: messageId }).content = original; }); }
+  });
+  it('uploads real image and audio bytes only from the original learner and saves native media drafts before backup', async () => {
+    const shared = await call('get', '/learning/assistant-practice/assignments/' + trainingAssignment, undefined, learner);
+    thirdStart = await call('post', groupRoot(trainingTargets[2]), { assignmentFingerprint: shared.payloadFingerprint, requestKey: randomUUID() }, learner);
+    const png = await sharp({ create: { width: 120, height: 80, channels: 3, background: '#d8e4f0' } }).png().toBuffer();
+    const wav = execFileSync(process.env.STUDY_FFMPEG ?? 'ffmpeg', ['-v', 'error', '-f', 'lavfi', '-i', 'sine=frequency=440:duration=0.4', '-ac', '1', '-ar', '16000', '-f', 'wav', 'pipe:1'], { windowsHide: true, timeout: 10000 });
+    for (const packet of trainingPreview.groups[2].questions) {
+      const image = packet.payload.answerSchema.mode === 'image_upload', bytes = image ? png : wav, qid = packet.question.id;
+      const input = { kind: 'practice', sessionId: thirdStart.sessionId, itemId: qid, name: image ? '匿名图示.png' : '合成测试音.wav',
+        mediaType: image ? 'image/png' : 'audio/wav', size: bytes.length, requestKey: randomUUID() };
+      await call('post', '/learning/media', input, owner, 403);
+      const file = await call('post', '/learning/media', input, learner);
+      await request(app.getHttpServer()).put('/api/learning/media/' + file.id + '/chunks/0').set('Authorization', 'Bearer ' + owner.token).set('Content-Type', 'application/octet-stream').send(bytes).expect(403);
+      await request(app.getHttpServer()).put('/api/learning/media/' + file.id + '/chunks/0').set('Authorization', 'Bearer ' + learner.token).set('Content-Type', 'application/octet-stream').send(bytes).expect(200);
+      const ready = await call('post', '/learning/media/' + file.id + '/complete', {}, learner);
+      expect(ready.status).toBe('ready'); if (!image) expect(ready.durationMs).toBe(400);
+      const content = await request(app.getHttpServer()).get('/api/learning/media/' + file.id + '/content').set('Authorization', 'Bearer ' + learner.token).expect(200);
+      expect(createHash('sha256').update(content.body).digest('hex')).toBe(ready.sha256); mediaHashes.set(file.id, ready.sha256);
+      const answer = { questionId: qid, mode: packet.payload.answerSchema.mode, response: { mediaIds: [file.id], description: '这是隔离文件流程测试；图片与正弦音不作为真实教学或能力证据。' } };
+      mediaAnswers.set(qid, answer);
+      const render = await call('get', learnerRoot(thirdStart.sessionId) + '/questions/' + qid, undefined, learner);
+      await call('patch', learnerRoot(thirdStart.sessionId) + '/questions/' + qid + '/draft', draftCommand(render, answer, '媒体与理由分别保存，须进一步人工核对。'), learner);
+    }
+    expect((await store.database.read()).state.diagnosticResponses?.length ?? 0).toBe(0);
+  }, 60000);
   it('makes the saved actual schema23 reader refuse schema24 before writing any domain data', async () => {
     const before = await protectedState(), fixture = join(root, 'resources/qa/legacy-readers/domain-database-schema23.cjs.gz'), raw = gunzipSync(readFileSync(fixture)).toString('utf8');
     expect(createHash('sha256').update(raw).digest('hex')).toBe('0ef4fb2915d3fed93f16f91f96d21378bba6fe5335269ae866f03447a4e3584b');
@@ -422,6 +704,70 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
     expect((await call('get', '/learning/assistant-practice/assignments/' + primaryAssignment)).groups[0].questions).toHaveLength(2);
     expect(await call('post', artifactRoot(assignmentArtifact) + '/assignments', assignmentCommand)).toEqual(assignmentReceipt);
   }, 180000);
+  it('restores the actual learner entry, original first-response receipts and draft before completing all three groups with native composite inputs', async () => {
+    await call('get', '/auth/me', undefined, learner, 401); await refreshLearner();
+    expect(await call('post', groupRoot(trainingTargets[0]), firstStartInput, learner)).toEqual(firstStart);
+    expect(await call('post', learnerRoot(firstStart.sessionId) + '/responses', firstAnswerCommand, learner)).toEqual(firstAnswerReceipt);
+    expect(await call('post', learnerRoot(firstStart.sessionId) + '/complete', completedCommand, learner)).toEqual(completedReceipt);
+    const initial = await call('get', learnerRoot(secondStart.sessionId) + '/questions/' + trainingPreview.groups[1].questions[0].question.id, undefined, learner);
+    expect(initial.draft.learnerExplanation).toBe(pausedDraftCommand.learnerExplanation);
+    const before = await nonTeachingState();
+    for (const [index, target] of trainingTargets.entries()) {
+      if (index === 0) continue;
+      const shared = await call('get', '/learning/assistant-practice/assignments/' + trainingAssignment, undefined, learner);
+      const started = index === 1 ? secondStart : thirdStart;
+      for (const packet of trainingPreview.groups[index].questions) {
+        let render = await call('get', learnerRoot(started.sessionId) + '/questions/' + packet.question.id, undefined, learner);
+        const answer = index === 2 ? mediaAnswers.get(packet.question.id) : nativeAnswer(packet);
+        if (index === 2) {
+          expect(render.draft.answer).toEqual(answer);
+          for (const id of answer.response.mediaIds) {
+            const content = await request(app.getHttpServer()).get('/api/learning/media/' + id + '/content').set('Authorization', 'Bearer ' + learner.token).expect(200);
+            expect(createHash('sha256').update(content.body).digest('hex')).toBe(mediaHashes.get(id));
+          }
+        }
+        if (index === 1) {
+          const partial = structuredClone(answer);
+          if (partial.mode === 'table_fill') partial.response.cells['b:n'] = '999'; else partial.response.entries[1].value = '999';
+          const first = await call('post', learnerRoot(started.sessionId) + '/responses', responseCommand(render, packet.question.id, partial), learner);
+          expect(first.attempt.score).toBe(0.5); expect(first.attempt.scoreDetails.map((detail: any) => detail.score)).toEqual([1, 0]);
+          render = await call('get', learnerRoot(started.sessionId) + '/questions/' + packet.question.id, undefined, learner);
+        }
+        const feedback = await call('post', learnerRoot(started.sessionId) + '/responses', responseCommand(render, packet.question.id, answer), learner);
+        if (index === 2) expect(feedback.attempt).toMatchObject({ status: 'pending_review', correct: null, score: null });
+        else expect(feedback.attempt.correct).toBe(true);
+        if (index === 1) { expect(feedback.attempt.scoreDetails).toHaveLength(2); expect(feedback.attempt.attempt).toBe(2); }
+      }
+      const view = await call('get', learnerRoot(started.sessionId), undefined, learner);
+      await call('post', learnerRoot(started.sessionId) + '/complete', { protocol: 'assistant-practice-answer-v1', completionFingerprint: view.completionFingerprint, requestKey: randomUUID() }, learner);
+    }
+    const shared = await call('get', '/learning/assistant-practice/assignments/' + trainingAssignment, undefined, learner);
+    expect(shared.groupActivities.map((item: any) => item.status)).toEqual(['completed', 'completed', 'completed']);
+    expect(await nonTeachingState()).toBe(before);
+    await close(); await boot(currentUrl, currentData); // Native cold validation must also accept partial-credit details.
+    expect((await call('get', '/learning/assistant-practice/assignments/' + trainingAssignment, undefined, learner)).groupActivities.every((item: any) => item.status === 'completed')).toBe(true);
+  }, 120000);
+  it('rejects rehashed foreign actors, cross-group links and altered native scoring details at the cold boundary', async () => {
+    const state = (await store.database.read()).state;
+    const original = Object.entries(state).flatMap(([collection, items]) => (items as any[]).map(body => ({ collection, record_id: body.id, body: structuredClone(body) })));
+    const integrity = load('modules/learning/assistant-practice-integrity'), records = load('modules/learning/assistant-practice-learner-record');
+    integrity.assertAssistantPracticeRecords(original);
+    for (const mode of ['actor', 'group', 'score'] as const) {
+      const rows = structuredClone(original), group = rows.find(row => row.collection === 'assistantPracticeGroupStarts' && row.body.practiceSessionId === firstStart.sessionId)!.body;
+      if (mode === 'actor') {
+        group.actorId = owner.user.id; group.requestHash = records.assistantPracticeStartHash(group.actorId, group.assignmentId, group.atomId, group.input);
+        for (const command of group.commands) { command.actorId = group.actorId; command.requestHash = records.assistantPracticeCommandHash(group.id, group.actorId, command.kind, command.questionId, command.input); }
+        expect(() => records.assertAssistantPracticeGroupStart(group)).not.toThrow();
+      } else if (mode === 'group') {
+        group.practiceSessionId = secondStart.sessionId; group.receipt.sessionId = secondStart.sessionId;
+        expect(() => records.assertAssistantPracticeGroupStart(group)).not.toThrow();
+      } else {
+        const attempt = rows.find(row => row.collection === 'practiceAttempts' && row.body.sessionId === secondStart.sessionId && row.body.attempt === 1)!.body;
+        attempt.scoreDetails[0].score = 0;
+      }
+      expect(() => integrity.assertAssistantPracticeRecords(rows)).toThrow('assistant_practice_saved_integrity_failed');
+    }
+  });
   it('rejects a damaged frozen packet despite recomputing the bundle database hash', async () => {
     if (engine === 'postgres') {
       const state = (await store.database.read()).state, original = state.assistantPracticeArtifacts.find((row: any) => row.id === primaryArtifact);
@@ -469,6 +815,11 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
     expect(shared).toMatchObject({ publisherUserId: null, privateOrigin: null, sourceState: 'account_deleted' });
     expect(shared.receipt).toEqual(assignmentReceipt); expect(shared.payload.groups[0].questions).toHaveLength(2);
     await login(other); expect((await call('get', '/learning/assistant-practice/assignments/' + primaryAssignment, undefined, other)).sourceState).toBe('account_deleted');
+    await refreshLearner(other);
+    const unavailable = await call('get', '/learning/assistant-practice/assignments/' + deferredAssignment, undefined, learner);
+    await call('post', groupRoot(trainingTargets[0], deferredAssignment), { assignmentFingerprint: unavailable.payloadFingerprint, requestKey: randomUUID() }, learner, 409);
+    const packet = trainingPreview.groups[1].questions[0], render = await call('get', learnerRoot(secondStart.sessionId) + '/questions/' + packet.question.id, undefined, learner);
+    expect((await call('post', learnerRoot(secondStart.sessionId) + '/responses', responseCommand(render, packet.question.id, nativeAnswer(packet)), learner)).attempt.correct).toBe(true);
   }, 180000);
   it('replays the latest child deletion ledger including adult-source transferred candidates', async () => {
     await close(); await boot(sourceUrl, sourceData); await login(other);
@@ -479,5 +830,8 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
     expect(store.inspect('assistantPracticeArtifacts').some((row: any) => row.studentId === student.id)).toBe(false);
     expect(store.inspect('students').some((row: any) => row.id === student.id)).toBe(false);
     expect(store.inspect('assistantPracticeAssignments').some((row: any) => row.studentId === student.id)).toBe(false);
+    expect(store.inspect('assistantPracticeGroupStarts').some((row: any) => row.studentId === student.id)).toBe(false);
+    expect(store.inspect('practiceSessions').some((row: any) => row.studentId === student.id)).toBe(false);
+    expect(store.inspect('studentMedia').some((row: any) => row.studentId === student.id)).toBe(false);
   }, 180000);
 });

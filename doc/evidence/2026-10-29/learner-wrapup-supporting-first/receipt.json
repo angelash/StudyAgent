@@ -1,0 +1,71 @@
+{
+  "at": "2026-10-29T01:50:38.906Z",
+  "files": 18,
+  "objects": 18,
+  "readbackHashesVerified": true,
+  "credentialPatternScan": "no matches",
+  "candidate": {
+    "sha": "83af7e159612b80e95df97564083b057519ffcb1",
+    "run": 40790308484,
+    "jobs": "3 success",
+    "api": {
+      "passed": 1867,
+      "skipped": 82,
+      "failed": 0,
+      "total": 1949
+    },
+    "browser": {
+      "firstPassed": 500,
+      "firstFailed": 1,
+      "retryPassed": 1,
+      "retryFailed": 0,
+      "logicalTests": 501,
+      "totalAttempts": 502
+    }
+  },
+  "assignment": {
+    "sha": "58024326113da32618c3e5c647bf241ac0f9ad23",
+    "run": 40796325938,
+    "jobs": {
+      "application": "success",
+      "postgres": "success",
+      "browser": "failure"
+    },
+    "browser": {
+      "firstPassed": 500,
+      "firstFailed": 1,
+      "retryFailed": 1,
+      "logicalTests": 501,
+      "totalAttempts": 502
+    },
+    "localCompleteApi": {
+      "passed": 1882,
+      "skipped": 74,
+      "failed": 0,
+      "total": 1956
+    },
+    "localPostgresCompatibility": {
+      "passed": 161,
+      "skipped": 1,
+      "total": 162
+    }
+  },
+  "current": {
+    "browserFix": {
+      "first": 4,
+      "second": 5,
+      "failed": 0,
+      "retries": 0
+    },
+    "existingMediaRegression": {
+      "passed": 10,
+      "failed": 0,
+      "files": 3
+    }
+  },
+  "limits": [
+    "Browser fixture source was archived after successful focused runs and matched the final worktree copy; no complete before/after source freeze was captured for those focused browser runs.",
+    "These old candidate/assignment full-suite results do not certify the learner implementation. Current learner full API, complete browser, precise new remote CI and production schema24 delivery remain outstanding.",
+    "All local generated accounts/media are synthetic. Raw failure logs and original archives remain local; public copies remove ANSI and workspace paths."
+  ]
+}

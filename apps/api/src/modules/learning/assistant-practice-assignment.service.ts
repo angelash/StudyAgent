@@ -6,6 +6,7 @@ import { InMemoryStoreService, type InMemoryAuthSession, type InMemoryUserAccoun
 import { StudentsService } from '../students/students.service';
 import { captureWhiteboardActorAuthorization } from './topic-whiteboard-access';
 import { AssistantPracticeArtifactService } from './assistant-practice-artifact.service';
+import { AssistantPracticeLearnerService } from './assistant-practice-learner.service';
 import { topicWhiteboardDigest as digest } from './topic-whiteboard-digest';
 import { assignmentArtifactIdentity, assignmentPayload, assignmentPublisherFingerprint, assignmentRequestHash, assignmentSummary, assignmentView,
   assertAssistantPracticeAssignment, type AssistantPracticeAssignmentRecord } from './assistant-practice-assignment-record';
@@ -14,7 +15,7 @@ const compare = (a: string, b: string) => a < b ? -1 : a > b ? 1 : 0;
 @Injectable()
 export class AssistantPracticeAssignmentService {
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
-    private readonly artifacts: AssistantPracticeArtifactService) {}
+    private readonly artifacts: AssistantPracticeArtifactService, private readonly learners: AssistantPracticeLearnerService) {}
   private authority(user: InMemoryUserAccount, studentId: string, auth: InMemoryAuthSession) {
     return captureWhiteboardActorAuthorization(this.store, this.students, user, studentId, auth);
   }
@@ -76,6 +77,6 @@ export class AssistantPracticeAssignmentService {
     const row = this.store.find('assistantPracticeAssignments', { id });
     if (!row) throw new NotFoundException('这份教学安排不存在或当前账号无法访问');
     this.authority(user, row.studentId, auth); assertAssistantPracticeAssignment(row);
-    return assignmentView(row, user.role !== 'student');
+    return { ...assignmentView(row, user.role !== 'student'), ...this.learners.eligibility(user, row, auth) };
   }
 }

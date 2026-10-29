@@ -369,3 +369,11 @@ POST /learning/assistant-practice/assignments/:id/groups/:atomId/start严格接a
 验收用独立PNG与实际PCM WAV，不调用生图或TTS：第三个预定知识点两题使用原生image_upload/audio_record协议，学习码身份分块上传、归一化、草稿/理由、pending_review回答与完成；恢复前保存媒体hash及原回执，原生备份/还原后通过授权HTTP读取完整媒体并核对hash。图片/录音人工评分保持pending_review，不把文件可读取当作教学正确或能力掌握。当前评测、跨孩子、家长上传与原actor变化均拒绝；账户删除保留共享孩子时可重开真实学习入口继续已开始组，未开始组仍拒绝；孩子最新删除账本清除GroupStart/实践/媒体关联。重算命令/包hash的跨actor、跨组、草稿或评分明细篡改继续拒绝。
 
 共享安排58024326远端40796325938的application/PG成功，browser失败需单独修复：原卷保护文件竞态断言匹配两个role=status；第一次失败后的同纸测试重试误编辑已发布候选。修复断言定位及测试候选合法撤回后重建，保存原失败与重试证据，不隐藏或取消原CI。私人候选83af7e15/40790308484虽三job成功，完整浏览器原件显示500首次通过、1首次失败后重试通过，总502尝试；不能报告501首次全绿。正式仍schema23，本人完整UI/撤回/成人自练/AI教学/D3/D4与105全部范围继续active。
+
+## 29. 本人作答当前收尾与验证结果
+
+按用户“收尾当前工作，归档进度和情况，提交推送”收口。本人7接口、GroupStart唯一关联、当前实际学习码、首答/理由、单独订正、提示/示范/反馈/完成原回执、分组续接、原生评分、图片录音及作者/孩子删除恢复均已实现。原生SQL冷失败的直接原因是attempt行顺序2、1与内存写入顺序不同；显式attempt排序后保持严格语义校验。复合题scoreDetails跟随冻结grader核对，真实PNG和合成PCM WAV经过既有媒体服务上传、草稿、pending_review、双库原生备份还原及HTTP hash核对。没有新增真实模型/TTS/生图调用或真人学习证据。
+
+最终SQLite第八轮38/38与实际PG第二轮38/38各自通过、零失败/跳过；691源/428构建在各轮SHA保持并归档，先前SQL冷失败、非法fixture类型、媒体fixture顺序错误与编译失败均保留。原媒体3文件10/10通过，原卷浏览器修复第二轮5/5首次通过；测试范围不相加，也不替代完整产品回归。详见[所有本人轮次原件](../evidence/2026-10-29/assistant-practice-learner-second/receipt.json)与[辅助验证和旧CI](../evidence/2026-10-29/learner-wrapup-supporting-first/receipt.json)。
+
+私人候选83af7e15/40790308484已三job成功但浏览器有1次首次失败后重试；共享安排58024326/40796325938的application/PG成功、browser500通过/1失败且重试失败，现专项修复两处验收问题。原失败不取消、不覆盖。本次尚未完成完整API/整站/精确新CI或正式schema24发布；完整练习UI、撤回、成人/AI教学持久链路、D3/D4和M1～M7全部范围继续在计划中，正式schema23与原72状态保持。后续从[148续接清单](148-current-work-checkpoint-and-remaining-scope.md)恢复开发。

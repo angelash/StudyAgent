@@ -1,24 +1,32 @@
-import type { DiagnosticSession, GuidanceAction } from './diagnostics';
-import type { KnowledgeAtom } from './diagnostics';
+import type { DiagnosticSession, GuidanceAction, ResponseScoreDetail } from './diagnostics';
+import type { KnowledgeAtom, MeasurementItem } from './diagnostics';
 import type { AnswerDraftMetadata } from './answer-draft';
+import type { AssistantPracticeLearnerResponseInput } from './assistant-practice-learner';
 export type PracticeAttempt = {
   id: string; sessionId: string; questionId: string; requestKey: string; answer: unknown;
   disposition: 'answered' | 'skip'; score: number | null; correct: boolean | null;
   status: 'scored' | 'pending_review' | 'skipped'; hintLevel: number; attempt: number;
   solutionExposedBefore: boolean; elapsedMs: number; reason: string; submittedAt: string;
+  scoreDetails?: ResponseScoreDetail[];
   requestHash?: string;
+  actorId?: string; actorRole?: 'student'; actorStudentId?: string; learnerExplanation?: string;
+  assistantInput?: AssistantPracticeLearnerResponseInput;
+  assistantHelpSequence?: number;
 };
 export type PracticeSession = {
   id: string; studentId: string; subject: 'math' | 'chinese' | 'english' | 'chemistry'; planId: string | null; actionId: string;
   atomId: string; day: string; status: 'in_progress' | 'completed'; questionIds: string[];
   snapshots: DiagnosticSession['questionSnapshots']; createdAt: string; completedAt: string | null;
-  drafts?: Record<string, { answer: unknown; savedAt: string } & AnswerDraftMetadata>;
+  drafts?: Record<string, { answer: unknown; savedAt: string; learnerExplanation?: string } & AnswerDraftMetadata>;
   actionSnapshot?: GuidanceAction; planRevision?: number;
   snapshotOrigin?: 'started' | 'legacy_capture';
-  origin?: 'guidance' | 'notebook'; notebookEntryId?: string; atomSnapshot?: KnowledgeAtom;
+  origin?: 'guidance' | 'notebook' | 'assistant_artifact'; notebookEntryId?: string; atomSnapshot?: KnowledgeAtom;
+  assistantAssignmentId?: string; sourceGroupId?: string;
+  itemSnapshots?: MeasurementItem[]; familyIdentityVersion?: string;
   sourceAssessmentId?: string;
 };
-export type PracticeHint = { id: string; sessionId: string; questionId: string; level: number; at: string };
+export type PracticeHint = { id: string; sessionId: string; questionId: string; level: number; at: string;
+  actorId?: string; actorStudentId?: string; sourceGroupId?: string; requestKey?: string };
 
 export type LearningMemory = {
   generatedAt: string; revision: string; student: { id: string; nickname: string; grade: number; preferredSessionMinutes: number };

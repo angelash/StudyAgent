@@ -1,0 +1,285 @@
+{
+  "at": "2026-10-29T01:54:57.907Z",
+  "designBeforeImplementation": [
+    "318272bf section27",
+    "e84f0f45 section28"
+  ],
+  "runs": [
+    {
+      "attempt": "sqlite-learner-first",
+      "receipt": {
+        "at": "2026-10-29T01:08:33.413Z",
+        "engine": "sqlite",
+        "passed": false,
+        "exitCode": 1,
+        "error": null,
+        "sourceInputs": 691,
+        "compiledInputs": 428,
+        "changed": [],
+        "changedCompiled": [],
+        "tests": {
+          "total": 33,
+          "passed": 26,
+          "failed": 7,
+          "pending": 0
+        },
+        "limits": [
+          "Owned generated learners/content only. No actual provider or original student evidence.",
+          "Reviewed candidate and shared arrangement APIs only; learner start/answering UI and complete schema24 delivery remain separate."
+        ]
+      },
+      "copiedSourceVerified": 691,
+      "copiedBuildVerified": 428
+    },
+    {
+      "attempt": "sqlite-learner-second",
+      "receipt": {
+        "at": "2026-10-29T01:16:05.090Z",
+        "engine": "sqlite",
+        "passed": false,
+        "exitCode": 1,
+        "error": null,
+        "sourceInputs": 691,
+        "compiledInputs": 428,
+        "changed": [],
+        "changedCompiled": [],
+        "tests": {
+          "total": 34,
+          "passed": 27,
+          "failed": 7,
+          "pending": 0
+        },
+        "limits": [
+          "Owned generated learners/content only. No actual provider or original student evidence.",
+          "Reviewed candidate and shared arrangement APIs only; learner start/answering UI and complete schema24 delivery remain separate."
+        ]
+      },
+      "copiedSourceVerified": 691,
+      "copiedBuildVerified": 428
+    },
+    {
+      "attempt": "sqlite-learner-third",
+      "receipt": {
+        "at": "2026-10-29T01:20:07.179Z",
+        "engine": "sqlite",
+        "passed": false,
+        "exitCode": 1,
+        "error": null,
+        "sourceInputs": 691,
+        "compiledInputs": 428,
+        "changed": [],
+        "changedCompiled": [],
+        "tests": {
+          "total": 34,
+          "passed": 27,
+          "failed": 7,
+          "pending": 0
+        },
+        "limits": [
+          "Owned generated learners/content only. No actual provider or original student evidence.",
+          "Reviewed candidate and shared arrangement APIs only; learner start/answering UI and complete schema24 delivery remain separate."
+        ]
+      },
+      "copiedSourceVerified": 691,
+      "copiedBuildVerified": 428
+    },
+    {
+      "attempt": "sqlite-learner-fourth",
+      "receipt": {
+        "at": "2026-10-29T01:23:40.492Z",
+        "engine": "sqlite",
+        "passed": false,
+        "exitCode": 1,
+        "error": null,
+        "sourceInputs": 691,
+        "compiledInputs": 428,
+        "changed": [],
+        "changedCompiled": [],
+        "tests": {
+          "total": 34,
+          "passed": 26,
+          "failed": 8,
+          "pending": 0
+        },
+        "limits": [
+          "Owned generated learners/content only. No actual provider or original student evidence.",
+          "Reviewed candidate and shared arrangement APIs only; learner start/answering UI and complete schema24 delivery remain separate."
+        ]
+      },
+      "copiedSourceVerified": 691,
+      "copiedBuildVerified": 428
+    },
+    {
+      "attempt": "sqlite-learner-fifth",
+      "receipt": {
+        "at": "2026-10-29T01:33:13.340Z",
+        "engine": "sqlite",
+        "passed": false,
+        "exitCode": 1,
+        "error": null,
+        "sourceInputs": 691,
+        "compiledInputs": 428,
+        "changed": [],
+        "changedCompiled": [],
+        "tests": {
+          "total": 35,
+          "passed": 26,
+          "failed": 9,
+          "pending": 0
+        },
+        "limits": [
+          "Owned generated learners/content only. No actual provider or original student evidence.",
+          "Reviewed candidate and shared arrangement APIs only; learner start/answering UI and complete schema24 delivery remain separate."
+        ]
+      },
+      "copiedSourceVerified": 691,
+      "copiedBuildVerified": 428
+    },
+    {
+      "attempt": "sqlite-learner-sixth",
+      "receipt": {
+        "at": "2026-10-29T01:35:41.857Z",
+        "engine": "sqlite",
+        "passed": true,
+        "exitCode": 0,
+        "error": null,
+        "sourceInputs": 691,
+        "compiledInputs": 428,
+        "changed": [],
+        "changedCompiled": [],
+        "tests": {
+          "total": 35,
+          "passed": 35,
+          "failed": 0,
+          "pending": 0
+        },
+        "limits": [
+          "Owned generated learners/content only. No actual provider or original student evidence.",
+          "Reviewed candidate and shared arrangement APIs only; learner start/answering UI and complete schema24 delivery remain separate."
+        ]
+      },
+      "copiedSourceVerified": 691,
+      "copiedBuildVerified": 428
+    },
+    {
+      "attempt": "postgres-learner-first",
+      "receipt": {
+        "at": "2026-10-29T01:39:09.485Z",
+        "engine": "postgres",
+        "passed": true,
+        "exitCode": 0,
+        "error": null,
+        "sourceInputs": 691,
+        "compiledInputs": 428,
+        "changed": [],
+        "changedCompiled": [],
+        "tests": {
+          "total": 35,
+          "passed": 35,
+          "failed": 0,
+          "pending": 0
+        },
+        "limits": [
+          "Owned generated learners/content only. No actual provider or original student evidence.",
+          "Reviewed candidate and shared arrangement APIs only; learner start/answering UI and complete schema24 delivery remain separate."
+        ]
+      },
+      "copiedSourceVerified": 691,
+      "copiedBuildVerified": 428
+    },
+    {
+      "attempt": "sqlite-learner-seventh",
+      "receipt": {
+        "at": "2026-10-29T01:43:27.899Z",
+        "engine": "sqlite",
+        "passed": false,
+        "exitCode": 1,
+        "error": null,
+        "sourceInputs": 691,
+        "compiledInputs": 428,
+        "changed": [],
+        "changedCompiled": [],
+        "tests": {
+          "total": 37,
+          "passed": 35,
+          "failed": 2,
+          "pending": 0
+        },
+        "limits": [
+          "Owned generated learners/content only. No actual provider or original student evidence.",
+          "Reviewed candidate and shared arrangement APIs only; learner start/answering UI and complete schema24 delivery remain separate."
+        ]
+      },
+      "copiedSourceVerified": 691,
+      "copiedBuildVerified": 428
+    },
+    {
+      "attempt": "sqlite-learner-eighth",
+      "receipt": {
+        "at": "2026-10-29T01:46:56.197Z",
+        "engine": "sqlite",
+        "passed": true,
+        "exitCode": 0,
+        "error": null,
+        "sourceInputs": 691,
+        "compiledInputs": 428,
+        "changed": [],
+        "changedCompiled": [],
+        "tests": {
+          "total": 38,
+          "passed": 38,
+          "failed": 0,
+          "pending": 0
+        },
+        "limits": [
+          "Owned generated learners/content only. No actual provider or original student evidence.",
+          "Reviewed candidate and shared arrangement APIs only; learner start/answering UI and complete schema24 delivery remain separate."
+        ]
+      },
+      "copiedSourceVerified": 691,
+      "copiedBuildVerified": 428
+    },
+    {
+      "attempt": "postgres-learner-second",
+      "receipt": {
+        "at": "2026-10-29T01:50:58.950Z",
+        "engine": "postgres",
+        "passed": true,
+        "exitCode": 0,
+        "error": null,
+        "sourceInputs": 691,
+        "compiledInputs": 428,
+        "changed": [],
+        "changedCompiled": [],
+        "tests": {
+          "total": 38,
+          "passed": 38,
+          "failed": 0,
+          "pending": 0
+        },
+        "limits": [
+          "Owned generated learners/content only. No actual provider or original student evidence.",
+          "Reviewed candidate and shared arrangement APIs only; learner start/answering UI and complete schema24 delivery remain separate."
+        ]
+      },
+      "copiedSourceVerified": 691,
+      "copiedBuildVerified": 428
+    }
+  ],
+  "archive": {
+    "fileIndex": "files.json.gz",
+    "fileEntries": 11240,
+    "uniqueObjects": 1163,
+    "frozenSourceAndBuildCopiesVerified": true
+  },
+  "secretScan": {
+    "knownPrivateValueScan": true,
+    "credentialPatternFindings": [],
+    "reviewedExistingPublicDefaultLiteralMatches": 40
+  },
+  "limits": [
+    "Synthetic QA users and content only; no real learner or supplier evidence.",
+    "Each attempt remains distinct. Failed runs are preserved; counts are not combined.",
+    "No complete UI, full regression, exact remote CI or production schema24 release proven by this archive."
+  ]
+}

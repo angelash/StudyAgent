@@ -9,13 +9,13 @@ import { StudentMediaService } from './student-media.service';
 export class StudentMediaController {
   constructor(private readonly media: StudentMediaService) {}
   @Get('capabilities') capabilities() { return this.media.capabilities(); }
-  @Post() start(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.media.start(req.user, body); }
+  @Post() start(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.media.start(req.user, body, req.authSession); }
   @Get(':id') get(@Req() req: AuthenticatedRequest, @Param('id') id: string) { return this.media.get(req.user, id); }
   @Put(':id/chunks/:index') chunk(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('index') index: string, @Body() body: unknown) {
-    if (!/^\d+$/.test(index)) throw new BadRequestException('附件分块序号不正确'); return this.media.chunk(req.user, id, Number(index), body);
+    if (!/^\d+$/.test(index)) throw new BadRequestException('附件分块序号不正确'); return this.media.chunk(req.user, id, Number(index), body, req.authSession);
   }
-  @Post(':id/complete') complete(@Req() req: AuthenticatedRequest, @Param('id') id: string) { return this.media.complete(req.user, id); }
-  @Post(':id/cancel') cancel(@Req() req: AuthenticatedRequest, @Param('id') id: string) { return this.media.cancel(req.user, id); }
+  @Post(':id/complete') complete(@Req() req: AuthenticatedRequest, @Param('id') id: string) { return this.media.complete(req.user, id, req.authSession); }
+  @Post(':id/cancel') cancel(@Req() req: AuthenticatedRequest, @Param('id') id: string) { return this.media.cancel(req.user, id, req.authSession); }
   @Get(':id/content') async content(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Headers('range') range: string | undefined, @Res({ passthrough: true }) response: Response) {
     return streamFile(await this.media.content(req.user, id), range, response);
   }

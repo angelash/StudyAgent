@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "663088c0a6cac9a3d661c32234076e9e1c78b0c0",
+  "sourceRevision": "e84f0f451e9caf58109e8442cef641cb4f680b5a",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
     "features": 133,
-    "activeNormalApiRoutes": 452,
-    "coveredApiRoutes": 452
+    "activeNormalApiRoutes": 459,
+    "coveredApiRoutes": 459
   },
   "areas": [
     {
@@ -346,7 +346,7 @@
             {
               "name": "LearningService.studentProfiles",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 62
+              "line": 68
             }
           ],
           "sourceFiles": [
@@ -2624,12 +2624,12 @@
             {
               "name": "LearningService.overview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 889
+              "line": 1006
             },
             {
               "name": "LearningService.memory",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 605
+              "line": 611
             }
           ],
           "sourceFiles": [
@@ -2687,12 +2687,12 @@
             {
               "name": "LearningService.today",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 665
+              "line": 671
             },
             {
               "name": "LearningService.start",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 679
+              "line": 685
             }
           ],
           "sourceFiles": [
@@ -2783,32 +2783,32 @@
             {
               "name": "LearningService.view",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 721
+              "line": 727
             },
             {
               "name": "LearningService.render",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 739
+              "line": 752
             },
             {
               "name": "LearningService.draft",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 757
+              "line": 777
             },
             {
               "name": "LearningService.submit",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 777
+              "line": 868
             },
             {
               "name": "LearningService.hint",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 838
+              "line": 946
             },
             {
               "name": "LearningService.complete",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 849
+              "line": 963
             }
           ],
           "sourceFiles": [
@@ -2858,7 +2858,7 @@
             {
               "name": "LearningService.mistakes",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 859
+              "line": 975
             }
           ],
           "sourceFiles": [
@@ -5529,7 +5529,7 @@
         },
         {
           "id": "AI-13",
-          "title": "从原解释核对范围并保存私人审核题练习候选",
+          "title": "原解释到审核题安排与本人分组作答",
           "area": "ai",
           "status": "current-implementation-with-stated-limits",
           "actors": "家长、学生、教研",
@@ -5541,8 +5541,8 @@
             "/admin/ai-tools"
           ],
           "inputs": "本人完整来源及明确受众、目标孩子/学科/1至3原子点、旧源及跨受众确认",
-          "implementation": "只读重建完整来源，分开原课程/档案/当前scope年级；同孩子同学科约束、监护权限与当前评测保护。eligibleMeasurements及canonicalFamily计算审核题量、曝光及未曝光结构，原诊断/训练/原卷曝光保留；整体指纹绑定scope、定义、全部候选内容/映射和曝光身份，不输出候选答案。18000完整预算不截断，未知字段和范围冲突拒绝。 D2b纯协议冻结完整来源/明确目标及固定模型，2至6题分类+理由或开放表达、逐题sourceMap/单点覆盖、18000来源与22000正文预算及独立严格复核；初始作答投影排除参考答案、提示及私聊。Prepared只证明内部一致，实时权限/范围/评测由未来service另行核查。 审核bank保持原生题型；离线联合流分配每点两种结构且全局原题不重复，歧义/曝光排除，完整候选与曝光身份绑定指纹，联合不足不返回半份题组。 候选在当前来源/权限/scope/定义/审核题包/曝光事务核对后创建，原生题型/表格公式和答案完整冻结；只编辑教学说明，100命令回执与完整历史。DomainWriteConflict仅对存储乐观冲突有界新事务重试。另一监护人不可读origin，预览/导出过滤内部评分与来源路径；没有训练/曝光/正式response写入。schema24独立最低reader及启动/backup/restore语义核对，共享安排冻结不含聊天的教学payload/原命令和可移除私人关联；监护人看教学预览，未开始孩子只见目标和题量。按明确孩子/学科分页且游标绑定本人；另一监护人不读origin。作者删除保留合法共享孩子/题包/原回执并去除私人关联，孩子删除清除安排，冷恢复核对原artifact版本或匹配删除回执。PG删除账本先克隆工作body，避免原始比较对象被同时修改而漏写关联解除。成人self-session仍显式拒绝。",
-          "outputs": "完整原文、明确范围/原子目标、审核覆盖摘要、私人原生题候选/分页/原回执/逐版本教学说明、当前资格与阻断原因",
+          "implementation": "只读重建完整来源，分开原课程/档案/当前scope年级；同孩子同学科约束、监护权限与当前评测保护。eligibleMeasurements及canonicalFamily计算审核题量、曝光及未曝光结构，原诊断/训练/原卷曝光保留；整体指纹绑定scope、定义、全部候选内容/映射和曝光身份，不输出候选答案。18000完整预算不截断，未知字段和范围冲突拒绝。 D2b纯协议冻结完整来源/明确目标及固定模型，2至6题分类+理由或开放表达、逐题sourceMap/单点覆盖、18000来源与22000正文预算及独立严格复核；初始作答投影排除参考答案、提示及私聊。Prepared只证明内部一致，实时权限/范围/评测由未来service另行核查。 审核bank保持原生题型；离线联合流分配每点两种结构且全局原题不重复，歧义/曝光排除，完整候选与曝光身份绑定指纹，联合不足不返回半份题组。 候选在当前来源/权限/scope/定义/审核题包/曝光事务核对后创建，原生题型/表格公式和答案完整冻结；只编辑教学说明，100命令回执与完整历史。DomainWriteConflict仅对存储乐观冲突有界新事务重试。另一监护人不可读origin，预览/导出过滤内部评分与来源路径；私人候选与安排预览不写训练/曝光/正式response。schema24独立最低reader及启动/backup/restore语义核对，共享安排冻结不含聊天的教学payload/原命令和可移除私人关联；监护人看教学预览，未开始孩子只见目标和题量。按明确孩子/学科分页且游标绑定本人；另一监护人不读origin。作者删除保留合法共享孩子/题包/原回执并去除私人关联，孩子删除清除安排，冷恢复核对原artifact版本或匹配删除回执。PG删除账本先克隆工作body，避免原始比较对象被同时修改而漏写关联解除。成人self-session仍显式拒绝。 本人学习码分组开始时核对实际actor、当前学习权限、固定来源/范围/审核/外部曝光，assignment+atom及actor+原key唯一。已开始组保留原生快照并可在合法作者删除后继续；第2/3组逐组检查。答案和理由分别保存，草稿hash同时绑定两者，首答与订正分存，帮助/反馈/完成保存原命令回执。按显式attempt序号计算首答/最新及完成指纹，不依赖原生SQL行顺序。复合题逐格分数与原grader核对；原冷恢复验证actor/组/命令/草稿/原回执并拒绝重算hash的错位。媒体写入传当前auth，家长只读，真实PNG/WAV分块、归一化与原生备份还原hash核对。teachingFirstPass与assistedQuestions分列，independentFirstPass为0，不写掌握或正式诊断证据。",
+          "outputs": "原生教学安排、逐组真实本人练习、草稿与理由、首答及订正、帮助/反馈/完成原回执与角色适合的共享历史",
           "collections": [
             "assistantSessions",
             "assistantMessages",
@@ -5553,9 +5553,13 @@
             "practiceSessions",
             "paperPracticeSessions",
             "assistantPracticeArtifacts",
-            "assistantPracticeAssignments"
+            "assistantPracticeAssignments",
+            "assistantPracticeGroupStarts",
+            "practiceAttempts",
+            "practiceHints",
+            "studentMedia"
           ],
-          "limits": "D1只读预检已实际SQLite/PG各20、零队列/业务写入及本地完整1802/74留证，现随02a350b5/schema23正式交付。精确远端三组success、当前整合501原始尝试全过、Linux完整1794/82；56实际HTTP/原记录保持检查通过。D2候选五接口与隔离schema24已实现，正式服务仍schema23；共享安排三接口已在独立候选接通，没有本人分组开始/作答UI、正式证据或新指导/日历写入。D2学生分点assignment及成人自练、D3真实报告指导和D4冲突排期继续。 D2b纯正文最终62/62及联合审核选题10/10分别通过，均为离线基础且不相加；复用原子/学期/成人学科契约。私人候选实际SQLite17/17与PG17/17分别通过，681源码/418构建保持；原失败、真实双实例并发修复、实际旧23reader拒绝24、原生双库恢复/损坏关联拒绝/最新作者孩子删除账本留证。私人候选当前本地完整API1875/74环境跳过已通过；83af7e15/40790308484精确CI仍执行。独立共享安排SQLite25/25、PG25/25分别通过，685源/422构建保持；两首轮和PG实际恢复问题及修复留证。共享安排自身完整门禁、本人分点开始/作答、成人自练、完整UI及schema24发布仍待。",
+          "limits": "正式保持schema23。本批隔离schema24的本人七接口已实现，SQLite与实际PostgreSQL最终各38/38通过，原媒体3文件10/10兼容通过；各轮独立、不复用先前双库35结果。共享安排完整API1882通过/74环境跳过；58024326精确CI的application/PG成功而browser500通过/1失败（重试也失败）；原卷定位与已发布fixture重试问题已修复，专项浏览器5/5首次通过。私人候选83af7e15三job成功，浏览器实际500首次通过、1首次失败后重试通过，不能称501首次全绿。当前没有完整本人作答UI、人工撤回、成人/AI教学持久链路、D3原因指导或D4排期；完整API/整站/本提交精确CI及生产schema24交付待验收，原72与M1至M7整体未完成。",
           "endpoints": [
             {
               "verb": "POST",
@@ -5628,6 +5632,62 @@
               "method": "get",
               "file": "apps/api/src/modules/learning/assistant-practice-assignment.controller.ts",
               "line": 13
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/assistant-practice/assignments/:id/groups/:atomId/start",
+              "controller": "AssistantPracticeLearnerController",
+              "method": "start",
+              "file": "apps/api/src/modules/learning/assistant-practice-learner.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/assistant-practice/sessions/:id",
+              "controller": "AssistantPracticeLearnerController",
+              "method": "view",
+              "file": "apps/api/src/modules/learning/assistant-practice-learner.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/assistant-practice/sessions/:id/questions/:qid",
+              "controller": "AssistantPracticeLearnerController",
+              "method": "render",
+              "file": "apps/api/src/modules/learning/assistant-practice-learner.controller.ts",
+              "line": 13
+            },
+            {
+              "verb": "PATCH",
+              "path": "/api/learning/assistant-practice/sessions/:id/questions/:qid/draft",
+              "controller": "AssistantPracticeLearnerController",
+              "method": "draft",
+              "file": "apps/api/src/modules/learning/assistant-practice-learner.controller.ts",
+              "line": 14
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/assistant-practice/sessions/:id/responses",
+              "controller": "AssistantPracticeLearnerController",
+              "method": "submit",
+              "file": "apps/api/src/modules/learning/assistant-practice-learner.controller.ts",
+              "line": 15
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/assistant-practice/sessions/:id/questions/:qid/help",
+              "controller": "AssistantPracticeLearnerController",
+              "method": "help",
+              "file": "apps/api/src/modules/learning/assistant-practice-learner.controller.ts",
+              "line": 16
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/assistant-practice/sessions/:id/complete",
+              "controller": "AssistantPracticeLearnerController",
+              "method": "complete",
+              "file": "apps/api/src/modules/learning/assistant-practice-learner.controller.ts",
+              "line": 17
             }
           ],
           "implementations": [
@@ -5639,42 +5699,77 @@
             {
               "name": "AssistantPracticeArtifactService.create",
               "file": "apps/api/src/modules/learning/assistant-practice-artifact.service.ts",
-              "line": 163
+              "line": 164
             },
             {
               "name": "AssistantPracticeArtifactService.list",
               "file": "apps/api/src/modules/learning/assistant-practice-artifact.service.ts",
-              "line": 140
+              "line": 141
             },
             {
               "name": "AssistantPracticeArtifactService.creationReceipt",
               "file": "apps/api/src/modules/learning/assistant-practice-artifact.service.ts",
-              "line": 157
+              "line": 158
             },
             {
               "name": "AssistantPracticeArtifactService.get",
               "file": "apps/api/src/modules/learning/assistant-practice-artifact.service.ts",
-              "line": 133
+              "line": 134
             },
             {
               "name": "AssistantPracticeArtifactService.edit",
               "file": "apps/api/src/modules/learning/assistant-practice-artifact.service.ts",
-              "line": 186
+              "line": 187
             },
             {
               "name": "AssistantPracticeAssignmentService.assign",
               "file": "apps/api/src/modules/learning/assistant-practice-assignment.service.ts",
-              "line": 28
+              "line": 29
             },
             {
               "name": "AssistantPracticeAssignmentService.list",
               "file": "apps/api/src/modules/learning/assistant-practice-assignment.service.ts",
-              "line": 56
+              "line": 57
             },
             {
               "name": "AssistantPracticeAssignmentService.get",
               "file": "apps/api/src/modules/learning/assistant-practice-assignment.service.ts",
-              "line": 75
+              "line": 76
+            },
+            {
+              "name": "AssistantPracticeLearnerService.start",
+              "file": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
+              "line": 84
+            },
+            {
+              "name": "AssistantPracticeLearnerService.view",
+              "file": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
+              "line": 142
+            },
+            {
+              "name": "AssistantPracticeLearnerService.render",
+              "file": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
+              "line": 143
+            },
+            {
+              "name": "AssistantPracticeLearnerService.draft",
+              "file": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
+              "line": 144
+            },
+            {
+              "name": "AssistantPracticeLearnerService.submit",
+              "file": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
+              "line": 145
+            },
+            {
+              "name": "AssistantPracticeLearnerService.help",
+              "file": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
+              "line": 146
+            },
+            {
+              "name": "AssistantPracticeLearnerService.complete",
+              "file": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
+              "line": 147
             }
           ],
           "sourceFiles": [
@@ -5707,7 +5802,16 @@
             "apps/api/src/modules/learning/assistant-practice-assignment.service.ts",
             "apps/api/src/modules/learning/assistant-practice-assignment-record.ts",
             "apps/api/src/modules/privacy/privacy-records.ts",
-            "scripts/operations/privacy-ledger.cjs"
+            "scripts/operations/privacy-ledger.cjs",
+            "packages/contracts/src/assistant-practice-learner.ts",
+            "apps/api/src/modules/learning/assistant-practice-learner.controller.ts",
+            "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
+            "apps/api/src/modules/learning/assistant-practice-learner-policy.ts",
+            "apps/api/src/modules/learning/assistant-practice-learner-record.ts",
+            "apps/api/src/modules/learning/assistant-practice-learner-integrity.ts",
+            "apps/api/src/modules/student-media/student-media.service.ts",
+            "apps/api/src/modules/student-media/student-media.controller.ts",
+            "tests/e2e/paper-practice.spec.ts"
           ],
           "tests": [
             "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
@@ -5922,7 +6026,7 @@
             {
               "name": "LearningService.studioOverview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 67
+              "line": 73
             }
           ],
           "sourceFiles": [
@@ -6005,17 +6109,17 @@
             {
               "name": "LearningService.previewStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 532
+              "line": 538
             },
             {
               "name": "LearningService.createStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 550
+              "line": 556
             },
             {
               "name": "LearningService.startStudioLesson",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 579
+              "line": 585
             }
           ],
           "sourceFiles": [
@@ -6654,12 +6758,12 @@
             {
               "name": "LearningService.previewStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 222
+              "line": 228
             },
             {
               "name": "LearningService.createStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 234
+              "line": 240
             }
           ],
           "sourceFiles": [
@@ -6724,7 +6828,7 @@
             {
               "name": "LearningService.studioWhiteboardNarration",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 508
+              "line": 514
             }
           ],
           "sourceFiles": [
@@ -6830,17 +6934,17 @@
             {
               "name": "LearningService.uploadStudioPdf",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 266
+              "line": 272
             },
             {
               "name": "LearningService.studioPdfPageImage",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 327
+              "line": 333
             },
             {
               "name": "LearningService.studioPdfOriginal",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 337
+              "line": 343
             }
           ],
           "sourceFiles": [
@@ -6964,12 +7068,12 @@
             {
               "name": "LearningService.reviewStudioPdfStructure",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 352
+              "line": 358
             },
             {
               "name": "LearningService.retryStudioPdfProcessing",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 380
+              "line": 386
             }
           ],
           "sourceFiles": [
@@ -7042,12 +7146,12 @@
             {
               "name": "LearningService.previewStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 415
+              "line": 421
             },
             {
               "name": "LearningService.createStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 430
+              "line": 436
             }
           ],
           "sourceFiles": [
@@ -7121,12 +7225,12 @@
             {
               "name": "LearningService.previewStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 460
+              "line": 466
             },
             {
               "name": "LearningService.createStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 481
+              "line": 487
             }
           ],
           "sourceFiles": [
@@ -7209,17 +7313,17 @@
             {
               "name": "LearningService.previewStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 125
+              "line": 131
             },
             {
               "name": "LearningService.createStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 141
+              "line": 147
             },
             {
               "name": "LearningService.updateStudioPlanSession",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 179
+              "line": 185
             }
           ],
           "sourceFiles": [
@@ -11051,32 +11155,32 @@
             {
               "name": "StudentMediaService.capabilities",
               "file": "apps/api/src/modules/student-media/student-media.service.ts",
-              "line": 22
+              "line": 23
             },
             {
               "name": "StudentMediaService.start",
               "file": "apps/api/src/modules/student-media/student-media.service.ts",
-              "line": 59
+              "line": 62
             },
             {
               "name": "StudentMediaService.get",
               "file": "apps/api/src/modules/student-media/student-media.service.ts",
-              "line": 57
+              "line": 60
             },
             {
               "name": "StudentMediaService.chunk",
               "file": "apps/api/src/modules/student-media/student-media.service.ts",
-              "line": 88
+              "line": 91
             },
             {
               "name": "StudentMediaService.complete",
               "file": "apps/api/src/modules/student-media/student-media.service.ts",
-              "line": 98
+              "line": 102
             },
             {
               "name": "StudentMediaService.cancel",
               "file": "apps/api/src/modules/student-media/student-media.service.ts",
-              "line": 223
+              "line": 229
             }
           ],
           "sourceFiles": [
@@ -11149,7 +11253,7 @@
             {
               "name": "StudentMediaService.content",
               "file": "apps/api/src/modules/student-media/student-media.service.ts",
-              "line": 146
+              "line": 152
             }
           ],
           "sourceFiles": [
@@ -11576,7 +11680,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 355
+              "line": 356
             },
             {
               "name": "DomainEventBusService.publish",
@@ -11586,7 +11690,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 253
+              "line": 254
             }
           ],
           "sourceFiles": [
@@ -11779,7 +11883,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 253
+              "line": 254
             }
           ],
           "sourceFiles": [
@@ -11856,7 +11960,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 237
+              "line": 238
             },
             {
               "name": "RuntimeMetricsService.snapshot",

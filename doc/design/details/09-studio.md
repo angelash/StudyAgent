@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`663088c0a6cac9a3d661c32234076e9e1c78b0c0`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`e84f0f451e9caf58109e8442cef641cb4f680b5a`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`、`/studio/whiteboards`。
 
@@ -108,7 +108,7 @@
 
 **服务方法**：
 
-- `LearningService.studioOverview`；[apps/api/src/modules/learning/learning.service.ts:67](../../../apps/api/src/modules/learning/learning.service.ts#L67)。
+- `LearningService.studioOverview`；[apps/api/src/modules/learning/learning.service.ts:73](../../../apps/api/src/modules/learning/learning.service.ts#L73)。
 
 **补充实现文件**：
 
@@ -135,9 +135,9 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:532](../../../apps/api/src/modules/learning/learning.service.ts#L532)。
-- `LearningService.createStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:550](../../../apps/api/src/modules/learning/learning.service.ts#L550)。
-- `LearningService.startStudioLesson`；[apps/api/src/modules/learning/learning.service.ts:579](../../../apps/api/src/modules/learning/learning.service.ts#L579)。
+- `LearningService.previewStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:538](../../../apps/api/src/modules/learning/learning.service.ts#L538)。
+- `LearningService.createStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:556](../../../apps/api/src/modules/learning/learning.service.ts#L556)。
+- `LearningService.startStudioLesson`；[apps/api/src/modules/learning/learning.service.ts:585](../../../apps/api/src/modules/learning/learning.service.ts#L585)。
 
 **补充实现文件**：
 
@@ -368,8 +368,8 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:222](../../../apps/api/src/modules/learning/learning.service.ts#L222)。
-- `LearningService.createStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:234](../../../apps/api/src/modules/learning/learning.service.ts#L234)。
+- `LearningService.previewStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:228](../../../apps/api/src/modules/learning/learning.service.ts#L228)。
+- `LearningService.createStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:240](../../../apps/api/src/modules/learning/learning.service.ts#L240)。
 
 **补充实现文件**：
 
@@ -393,7 +393,7 @@
 
 **服务方法**：
 
-- `LearningService.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.service.ts:508](../../../apps/api/src/modules/learning/learning.service.ts#L508)。
+- `LearningService.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.service.ts:514](../../../apps/api/src/modules/learning/learning.service.ts#L514)。
 
 **补充实现文件**：
 
@@ -442,9 +442,9 @@
 
 **服务方法**：
 
-- `LearningService.uploadStudioPdf`；[apps/api/src/modules/learning/learning.service.ts:266](../../../apps/api/src/modules/learning/learning.service.ts#L266)。
-- `LearningService.studioPdfPageImage`；[apps/api/src/modules/learning/learning.service.ts:327](../../../apps/api/src/modules/learning/learning.service.ts#L327)。
-- `LearningService.studioPdfOriginal`；[apps/api/src/modules/learning/learning.service.ts:337](../../../apps/api/src/modules/learning/learning.service.ts#L337)。
+- `LearningService.uploadStudioPdf`；[apps/api/src/modules/learning/learning.service.ts:272](../../../apps/api/src/modules/learning/learning.service.ts#L272)。
+- `LearningService.studioPdfPageImage`；[apps/api/src/modules/learning/learning.service.ts:333](../../../apps/api/src/modules/learning/learning.service.ts#L333)。
+- `LearningService.studioPdfOriginal`；[apps/api/src/modules/learning/learning.service.ts:343](../../../apps/api/src/modules/learning/learning.service.ts#L343)。
 
 **补充实现文件**：
 
@@ -488,8 +488,8 @@
 
 **服务方法**：
 
-- `LearningService.reviewStudioPdfStructure`；[apps/api/src/modules/learning/learning.service.ts:352](../../../apps/api/src/modules/learning/learning.service.ts#L352)。
-- `LearningService.retryStudioPdfProcessing`；[apps/api/src/modules/learning/learning.service.ts:380](../../../apps/api/src/modules/learning/learning.service.ts#L380)。
+- `LearningService.reviewStudioPdfStructure`；[apps/api/src/modules/learning/learning.service.ts:358](../../../apps/api/src/modules/learning/learning.service.ts#L358)。
+- `LearningService.retryStudioPdfProcessing`；[apps/api/src/modules/learning/learning.service.ts:386](../../../apps/api/src/modules/learning/learning.service.ts#L386)。
 
 ## STUDIO-14 PDF页级白板
 
@@ -510,8 +510,8 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:415](../../../apps/api/src/modules/learning/learning.service.ts#L415)。
-- `LearningService.createStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:430](../../../apps/api/src/modules/learning/learning.service.ts#L430)。
+- `LearningService.previewStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:421](../../../apps/api/src/modules/learning/learning.service.ts#L421)。
+- `LearningService.createStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:436](../../../apps/api/src/modules/learning/learning.service.ts#L436)。
 
 **补充实现文件**：
 
@@ -536,8 +536,8 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:460](../../../apps/api/src/modules/learning/learning.service.ts#L460)。
-- `LearningService.createStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:481](../../../apps/api/src/modules/learning/learning.service.ts#L481)。
+- `LearningService.previewStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:466](../../../apps/api/src/modules/learning/learning.service.ts#L466)。
+- `LearningService.createStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:487](../../../apps/api/src/modules/learning/learning.service.ts#L487)。
 
 **补充实现文件**：
 
@@ -563,9 +563,9 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:125](../../../apps/api/src/modules/learning/learning.service.ts#L125)。
-- `LearningService.createStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:141](../../../apps/api/src/modules/learning/learning.service.ts#L141)。
-- `LearningService.updateStudioPlanSession`；[apps/api/src/modules/learning/learning.service.ts:179](../../../apps/api/src/modules/learning/learning.service.ts#L179)。
+- `LearningService.previewStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:131](../../../apps/api/src/modules/learning/learning.service.ts#L131)。
+- `LearningService.createStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:147](../../../apps/api/src/modules/learning/learning.service.ts#L147)。
+- `LearningService.updateStudioPlanSession`；[apps/api/src/modules/learning/learning.service.ts:185](../../../apps/api/src/modules/learning/learning.service.ts#L185)。
 
 **补充实现文件**：
 

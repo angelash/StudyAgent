@@ -492,6 +492,8 @@ async function reviewVerificationFixture(f: Awaited<ReturnType<typeof fixture>>)
   const staged = await f.call('/measurement-content/candidates', { paperId: f.papers.complete, positions: [1] }, administrator);
   let candidate = await f.call('/measurement-content/candidates/' + encodeURIComponent(staged.items[0].id), undefined, administrator);
   const command = () => ({ expectedVersion: candidate.version, requestKey: randomUUID(), reason: '合成恢复文件和原请求核对' });
+  // Retries use the same owned source paper. Withdraw its published test candidate before editing a new version.
+  if (candidate.status === 'published') candidate = await f.call('/measurement-content/candidates/' + encodeURIComponent(candidate.id) + '/withdraw', command(), administrator);
   const draft = { subject: 'math', grade: 3, stem: '合成独立核对：3个球和2个球合起来一共多少个？', answer: 5, analysis: '把两部分3和2合并得到5。', blocks: [],
     answerSchema: { mode: 'numeric_blank', responseShape: { value: 'number' }, validationRules: {}, gradingConfig: {} },
     mapping: { primaryAtomId: atom.id, prerequisiteAtomIds: [], secondaryAtomIds: [], dimension: 'procedure', family: 'qa:browser-review:' + f.papers.complete, probeRole: 'anchor', expectedSeconds: 40, difficulty: 1, observationCode: 'part_whole_mismatch', observedSteps: ['确认两组数量并合并得到总量'], rationale: '只依据合成原题的合并数量过程，不猜测反思', familyRationale: '受控数量合并任务，仅用于恢复流程核对' },
@@ -515,10 +517,18 @@ test('paper review next: a late recovery-file read cannot replace the subsequent
   await next.getByLabel('我已核对这位孩子的当前年级、教材和已学范围').check(); await next.getByRole('button', { name: '预览独立新题蓝图', exact: true }).click();
   await expect(next.getByRole('link', { name: '打开原蓝图，确认后开始 ↗' })).toBeVisible();
   await page.evaluate(() => (window as unknown as { releasePaperFile: () => void }).releasePaperFile());
-  await expect(next.getByRole('status')).toContainText('文件读取期间当前操作已变化');
+  await expect(next.getByRole('status').filter({ hasText: '文件读取期间当前操作已变化' })).toHaveText('文件读取期间当前操作已变化，原结果保持；请核对后重新选择保护文件。');
   await expect(next.getByRole('region', { name: '独立新题原预览恢复' })).toHaveCount(0);
   expect(await f.call('/library/practice/sessions/' + data.row.id + '/items/' + data.itemId + '/verification-requests/' + data.saved.body.requestKey)).toBeNull();
   const options = await f.call('/library/practice/sessions/' + data.row.id + '/items/' + data.itemId + '/next-options'); expect(options.activities.filter((activity: any) => activity.kind === 'verification_preview')).toHaveLength(1);
+});
+
+test('paper review next: repeating the owned fixture withdraws the previous published candidate before creating its next reviewed version', async ({ page }) => {
+  const f = await fixture(page, 37);
+  const first = await reviewVerificationFixture(f), second = await reviewVerificationFixture(f);
+  expect(second.child).not.toBe(first.child); expect(second.row.id).not.toBe(first.row.id);
+  const staged = await f.call('/measurement-content/candidates', { paperId: f.papers.complete, positions: [1] }, administrator);
+  expect((await f.call('/measurement-content/candidates/' + encodeURIComponent(staged.items[0].id), undefined, administrator)).status).toBe('published');
 });
 
 test('paper review next: denied storage requires a real original file and rejects another owner before explicit exact-key preview recovery', async ({ page }) => {

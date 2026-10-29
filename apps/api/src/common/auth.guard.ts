@@ -51,6 +51,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^ai\/assistant\/sessions\/[^/]+\/artifacts\/practice\/(candidates|requests\/[^/]+)$/,
     /^learning\/assistant-practice\/artifacts\/[^/]+$/,
     /^learning\/assistant-practice\/assignments(\/[^/]+)?$/,
+    /^learning\/assistant-practice\/sessions\/[^/]+(\/questions\/[^/]+)?$/,
     /^measurement-content\/candidates\/[^/]+\/media\/\d+$/,
     /^library\/(overview|facets|papers|media)$/, /^library\/papers\/[^/]+$/,
     /^library\/practice\/reviews(\/calendar(\/export)?)?$/,
@@ -83,13 +84,15 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^learning\/feedback$/, /^ai\/assistant\/sessions(\/[^/]+\/(messages|turns(\/[^/]+\/(cancel|retry))?))?$/, /^learning\/media(\/[^/]+\/(complete|cancel))?$/, /^gesp\/(code|probe)-submissions$/, /^gesp\/hints$/,
     /^ai\/assistant\/sessions\/[^/]+\/artifacts\/preflight$/,
     /^learning\/assistant-practice\/artifacts\/[^/]+\/assignments$/,
+    /^learning\/assistant-practice\/assignments\/[^/]+\/groups\/[^/]+\/start$/,
+    /^learning\/assistant-practice\/sessions\/[^/]+\/(responses|complete|questions\/[^/]+\/help)$/,
     /^ai\/assistant\/sessions\/[^/]+\/artifacts\/practice\/(preflight|candidates)$/,
     /^ai\/assistant\/sessions\/[^/]+\/artifacts\/whiteboards(\/preflight)?$/,
     /^ai\/assistant\/sessions\/[^/]+\/artifacts\/notes(\/[^/]+\/confirm)?$/,
     /^library\/practice\/sessions\/[^/]+\/items\/[^/]+\/verification-preview$/,
     /^library\/practice\/(preview|sessions)$/, /^library\/practice\/sessions\/[^/]+\/commands$/],
   PUT: [/^learning\/project-files\/uploads\/[^/]+\/chunks\/\d+$/, /^learning\/material-uploads\/[^/]+\/chunks\/\d+$/, /^learning\/media\/[^/]+\/chunks\/\d+$/],
-  PATCH: [/^learning\/assistant-practice\/artifacts\/[^/]+$/,/^ai\/assistant\/sessions\/[^/]+\/artifacts\/notes\/[^/]+\/content$/,/^learning\/studio\/topic-whiteboards\/drafts\/[^/]+\/content$/,/^learning\/source-courses\/[^/]+\/checks\/[^/]+\/content$/,/^learning\/classroom\/sessions\/[^/]+\/code-drafts\/[^/]+\/[^/]+$/,/^learning\/source-courses\/[^/]+$/, /^learning\/projects\/[^/]+$/, /^learning\/classroom\/sessions\/[^/]+$/, /^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/draft$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/draft$/],
+  PATCH: [/^learning\/assistant-practice\/sessions\/[^/]+\/questions\/[^/]+\/draft$/,/^learning\/assistant-practice\/artifacts\/[^/]+$/,/^ai\/assistant\/sessions\/[^/]+\/artifacts\/notes\/[^/]+\/content$/,/^learning\/studio\/topic-whiteboards\/drafts\/[^/]+\/content$/,/^learning\/source-courses\/[^/]+\/checks\/[^/]+\/content$/,/^learning\/classroom\/sessions\/[^/]+\/code-drafts\/[^/]+\/[^/]+$/,/^learning\/source-courses\/[^/]+$/, /^learning\/projects\/[^/]+$/, /^learning\/classroom\/sessions\/[^/]+$/, /^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/draft$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/draft$/],
 };
 
 @Injectable()

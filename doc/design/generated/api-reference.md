@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`663088c0a6cac9a3d661c32234076e9e1c78b0c0`。共 473 个 HTTP 路由声明，当前 AppModule 可达 452 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`e84f0f451e9caf58109e8442cef641cb4f680b5a`。共 480 个 HTTP 路由声明，当前 AppModule 可达 459 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -1325,6 +1325,71 @@
 - 方法装饰器：`[]`
 - 调用：`this.assignments.get`
 
+## AssistantPracticeLearnerController — 当前接入
+
+### POST /api/learning/assistant-practice/assignments/:id/groups/:atomId/start
+
+实现：[apps/api/src/modules/learning/assistant-practice-learner.controller.ts:9](../../../apps/api/src/modules/learning/assistant-practice-learner.controller.ts#L9)，方法 `start`。
+
+- 签名：`start(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('atomId') atomId: string, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.learners.start`
+
+### GET /api/learning/assistant-practice/sessions/:id
+
+实现：[apps/api/src/modules/learning/assistant-practice-learner.controller.ts:12](../../../apps/api/src/modules/learning/assistant-practice-learner.controller.ts#L12)，方法 `view`。
+
+- 签名：`view(@Req() req: AuthenticatedRequest, @Param('id') id: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.learners.view`
+
+### GET /api/learning/assistant-practice/sessions/:id/questions/:qid
+
+实现：[apps/api/src/modules/learning/assistant-practice-learner.controller.ts:13](../../../apps/api/src/modules/learning/assistant-practice-learner.controller.ts#L13)，方法 `render`。
+
+- 签名：`render(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('qid') qid: string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.learners.render`
+
+### PATCH /api/learning/assistant-practice/sessions/:id/questions/:qid/draft
+
+实现：[apps/api/src/modules/learning/assistant-practice-learner.controller.ts:14](../../../apps/api/src/modules/learning/assistant-practice-learner.controller.ts#L14)，方法 `draft`。
+
+- 签名：`draft(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('qid') qid: string, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.learners.draft`
+
+### POST /api/learning/assistant-practice/sessions/:id/responses
+
+实现：[apps/api/src/modules/learning/assistant-practice-learner.controller.ts:15](../../../apps/api/src/modules/learning/assistant-practice-learner.controller.ts#L15)，方法 `submit`。
+
+- 签名：`submit(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.learners.submit`
+
+### POST /api/learning/assistant-practice/sessions/:id/questions/:qid/help
+
+实现：[apps/api/src/modules/learning/assistant-practice-learner.controller.ts:16](../../../apps/api/src/modules/learning/assistant-practice-learner.controller.ts#L16)，方法 `help`。
+
+- 签名：`help(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('qid') qid: string, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.learners.help`
+
+### POST /api/learning/assistant-practice/sessions/:id/complete
+
+实现：[apps/api/src/modules/learning/assistant-practice-learner.controller.ts:17](../../../apps/api/src/modules/learning/assistant-practice-learner.controller.ts#L17)，方法 `complete`。
+
+- 签名：`complete(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.learners.complete`
+
 ## AssistantPracticePreflightController — 当前接入
 
 ### POST /api/ai/assistant/sessions/:sessionId/artifacts/practice/preflight
@@ -2042,7 +2107,7 @@
 
 实现：[apps/api/src/modules/learning/learning.controller.ts:129](../../../apps/api/src/modules/learning/learning.controller.ts#L129)，方法 `hint`。
 
-- 签名：`hint(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string)`
+- 签名：`hint(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string, @Body() input: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.learning.hint`
@@ -2051,7 +2116,7 @@
 
 实现：[apps/api/src/modules/learning/learning.controller.ts:130](../../../apps/api/src/modules/learning/learning.controller.ts#L130)，方法 `complete`。
 
-- 签名：`complete(@Req() req: AuthenticatedRequest, @Param('id') id: string)`
+- 签名：`complete(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.learning.complete`

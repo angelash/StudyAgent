@@ -65,8 +65,10 @@ export class AssistantPracticePreflightService {
           }
           const historicalItems = this.store.select('diagnosticSessions', { studentId: target.studentId })
             .flatMap(row => row.itemSnapshots ?? []).filter(item => item.atomId === atom.id && seen.has(item.questionId));
+          const practiceItems = this.store.select('practiceSessions', { studentId: target.studentId })
+            .flatMap(row => row.itemSnapshots ?? []).filter(item => item.atomId === atom.id && seen.has(item.questionId));
           // Withdrawal/replacement does not erase a structure the learner already saw.
-          const seenFamilies = new Set([...this.store.select('measurementItems', { atomId: atom.id }), ...historicalItems]
+          const seenFamilies = new Set([...this.store.select('measurementItems', { atomId: atom.id }), ...historicalItems, ...practiceItems]
             .filter(item => seen.has(item.questionId)).map(canonicalFamily));
           const unambiguous = [...families].filter(([, values]) => values.size === 1);
           const unseen = unambiguous.filter(([id]) => !seen.has(id));

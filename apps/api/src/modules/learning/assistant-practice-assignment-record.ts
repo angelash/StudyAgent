@@ -70,7 +70,7 @@ export function assignmentSummary(row: AssistantPracticeAssignmentRecord) {
   return { id: row.id, protocol: row.protocol, studentId: row.studentId, subject: row.subject, title: row.payload.title,
     objective: row.payload.objective, groupCount: row.payload.groups.length, questionCount: row.payload.groups.length * 2,
     payloadFingerprint: row.payloadFingerprint, sourceState: row.sourceState, createdAt: row.createdAt,
-    isTeachingOnly: true, formalEvidenceCreated: false, startingAvailable: false };
+    isTeachingOnly: true, formalEvidenceCreated: false, startingAvailable: false, eligibilityChecked: false };
 }
 export function assignmentView(row: AssistantPracticeAssignmentRecord, guardianPreview: boolean) {
   return { ...assignmentSummary(row), instructions: row.payload.instructions, scopeSnapshot: structuredClone(row.payload.scopeSnapshot),

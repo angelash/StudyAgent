@@ -1,0 +1,182 @@
+[
+  {
+    "label": "candidate-exact-ci",
+    "originalBasename": "exact-ci-40790308484-final-first.json",
+    "originalSha256": "8260546aa9dae4c4fa0e805b6ad6d315007a1ea9fdceff579cf81f737489c41d",
+    "publishedSha256": "8260546aa9dae4c4fa0e805b6ad6d315007a1ea9fdceff579cf81f737489c41d",
+    "archive": "objects/82/8260546aa9dae4c4fa0e805b6ad6d315007a1ea9fdceff579cf81f737489c41d.gz",
+    "bytes": 22914,
+    "publishedBytes": 22914,
+    "redacted": false
+  },
+  {
+    "label": "candidate-application",
+    "originalBasename": "exact-ci-40790308484-application-fourth.log",
+    "originalSha256": "2945fd2260e81c571b79989480f08f86f8253d1b3696d715f94e5e96f2277568",
+    "publishedSha256": "700dbc59f92af52d1f25748cad284273ad4cdcf6e3d8625ddb6a150d8b81a3d5",
+    "archive": "objects/70/700dbc59f92af52d1f25748cad284273ad4cdcf6e3d8625ddb6a150d8b81a3d5.gz",
+    "bytes": 275306,
+    "publishedBytes": 245491,
+    "redacted": true
+  },
+  {
+    "label": "candidate-postgres",
+    "originalBasename": "exact-ci-40790308484-postgres-first.log",
+    "originalSha256": "0dc23e2a00648e083a1b254cb4e9aba05247fa87c2238d9d698e5f83e06664af",
+    "publishedSha256": "0dc23e2a00648e083a1b254cb4e9aba05247fa87c2238d9d698e5f83e06664af",
+    "archive": "objects/0d/0dc23e2a00648e083a1b254cb4e9aba05247fa87c2238d9d698e5f83e06664af.gz",
+    "bytes": 395907,
+    "publishedBytes": 395907,
+    "redacted": false
+  },
+  {
+    "label": "candidate-browser",
+    "originalBasename": "source-course-full-browser.json",
+    "originalSha256": "94476f75b1c5037c3a7e5c8ecc7e2e04d2dfa36a840cb318bdeb93225255f327",
+    "publishedSha256": "72521c2373b15086911b662ca537d710d968689e512383a818aed8f689e03b70",
+    "archive": "objects/72/72521c2373b15086911b662ca537d710d968689e512383a818aed8f689e03b70.gz",
+    "bytes": 573515,
+    "publishedBytes": 569829,
+    "redacted": true
+  },
+  {
+    "label": "assignment-exact-ci",
+    "originalBasename": "exact-ci-40796325938-second.json",
+    "originalSha256": "b66adb6ccaa17cc6c4e835f47f495cbfadbb5380e4c10e782000dbdcfe87271e",
+    "publishedSha256": "b66adb6ccaa17cc6c4e835f47f495cbfadbb5380e4c10e782000dbdcfe87271e",
+    "archive": "objects/b6/b66adb6ccaa17cc6c4e835f47f495cbfadbb5380e4c10e782000dbdcfe87271e.gz",
+    "bytes": 22842,
+    "publishedBytes": 22842,
+    "redacted": false
+  },
+  {
+    "label": "assignment-browser-log",
+    "originalBasename": "exact-ci-40796325938-browser-first.log",
+    "originalSha256": "db03fb28b0e4dea6d7bda794548b2386e7906d821d83e2b2b6c1c3dc8e02c003",
+    "publishedSha256": "aae2da47e4f8c5859174ca69a541f180cadb9e5452369503dd4c3847e540d4e5",
+    "archive": "objects/aa/aae2da47e4f8c5859174ca69a541f180cadb9e5452369503dd4c3847e540d4e5.gz",
+    "bytes": 227900,
+    "publishedBytes": 227432,
+    "redacted": true
+  },
+  {
+    "label": "assignment-browser",
+    "originalBasename": "source-course-full-browser.json",
+    "originalSha256": "505c11f0ba4223ac2e6ecf740208ba932a5d3feb5d8dde6099f684cb09f51b9c",
+    "publishedSha256": "d3738096f7aae0121d61634c6e69bbca78ba2c0eb412f6bc849c6536b3e06fb1",
+    "archive": "objects/d3/d3738096f7aae0121d61634c6e69bbca78ba2c0eb412f6bc849c6536b3e06fb1.gz",
+    "bytes": 579293,
+    "publishedBytes": 574651,
+    "redacted": true
+  },
+  {
+    "label": "assignment-complete-api",
+    "originalBasename": "receipt.json",
+    "originalSha256": "5811eefebbb54a3f9c18f6145bbc1a6d76b333a2851722a20ce0376996d129bf",
+    "publishedSha256": "5811eefebbb54a3f9c18f6145bbc1a6d76b333a2851722a20ce0376996d129bf",
+    "archive": "objects/58/5811eefebbb54a3f9c18f6145bbc1a6d76b333a2851722a20ce0376996d129bf.gz",
+    "bytes": 596,
+    "publishedBytes": 596,
+    "redacted": false
+  },
+  {
+    "label": "assignment-complete-api-results",
+    "originalBasename": "vitest.json",
+    "originalSha256": "2f9970f5886480f4ebeef0fe3a8c89b0740adad3b2be19607a349f31e732b554",
+    "publishedSha256": "9df0101e921bde6f142a41f206106970b0513f9d38021eb1ef29fba58e2394f8",
+    "archive": "objects/9d/9df0101e921bde6f142a41f206106970b0513f9d38021eb1ef29fba58e2394f8.gz",
+    "bytes": 938722,
+    "publishedBytes": 934080,
+    "redacted": true
+  },
+  {
+    "label": "assignment-postgres-compatibility",
+    "originalBasename": "receipt.json",
+    "originalSha256": "d7cc3591e6fd948da3d404d95524e9fb1bc6ed1748d9796992e6c10f998162b7",
+    "publishedSha256": "d7cc3591e6fd948da3d404d95524e9fb1bc6ed1748d9796992e6c10f998162b7",
+    "archive": "objects/d7/d7cc3591e6fd948da3d404d95524e9fb1bc6ed1748d9796992e6c10f998162b7.gz",
+    "bytes": 596,
+    "publishedBytes": 596,
+    "redacted": false
+  },
+  {
+    "label": "browser-fix-first",
+    "originalBasename": "paper-review-next-browser-first.json",
+    "originalSha256": "5fd70a04ea95631ab8aa60b04510d49f066e8c5e23b0a3277bea801710efc231",
+    "publishedSha256": "bb3a7560898e0363e948b87edf76496f8b16e74488ac764c4af52dd0ae79a1d6",
+    "archive": "objects/bb/bb3a7560898e0363e948b87edf76496f8b16e74488ac764c4af52dd0ae79a1d6.gz",
+    "bytes": 7419,
+    "publishedBytes": 7228,
+    "redacted": true
+  },
+  {
+    "label": "browser-fix-second",
+    "originalBasename": "paper-review-next-browser-second.json",
+    "originalSha256": "d9fa78f4026bcd1b9c6159960a1d95a6967e6e6fdfe318de3fbfe0b797eb577d",
+    "publishedSha256": "0519868ebe2eba5064cf20a09f9a0d1240187985cd297d6c9d1ff25c29bef3a2",
+    "archive": "objects/05/0519868ebe2eba5064cf20a09f9a0d1240187985cd297d6c9d1ff25c29bef3a2.gz",
+    "bytes": 8543,
+    "publishedBytes": 8352,
+    "redacted": true
+  },
+  {
+    "label": "browser-source",
+    "originalBasename": "paper-practice.spec.ts",
+    "originalSha256": "6a1d8d945df5a80266c943587d8debc1cf1416f8efa59d7b5796e3f37c49fecb",
+    "publishedSha256": "6a1d8d945df5a80266c943587d8debc1cf1416f8efa59d7b5796e3f37c49fecb",
+    "archive": "objects/6a/6a1d8d945df5a80266c943587d8debc1cf1416f8efa59d7b5796e3f37c49fecb.gz",
+    "bytes": 78035,
+    "publishedBytes": 78035,
+    "redacted": false
+  },
+  {
+    "label": "media-regression",
+    "originalBasename": "existing-media-regression-first.json",
+    "originalSha256": "354f3050ed2f99a5e5d7da0bbd7eccb913fab8e7f6a08e1b54b0dfb3a00cad5c",
+    "publishedSha256": "438609417ee3fb8f0ac265223b6841395efe91d8877b069c5fb22be608c3b64d",
+    "archive": "objects/43/438609417ee3fb8f0ac265223b6841395efe91d8877b069c5fb22be608c3b64d.gz",
+    "bytes": 5761,
+    "publishedBytes": 5695,
+    "redacted": true
+  },
+  {
+    "label": "media-regression-log",
+    "originalBasename": "existing-media-regression-first.log",
+    "originalSha256": "8efeff3d3b7d53f9e8b6467e6dfcf4604ebc13f083f9487d3fb4c2879ff26fd4",
+    "publishedSha256": "aa7bded197803abd4f8409c7fd7969ce76acc1d1003b4e45d5fcd19a5520b140",
+    "archive": "objects/aa/aa7bded197803abd4f8409c7fd7969ce76acc1d1003b4e45d5fcd19a5520b140.gz",
+    "bytes": 1998,
+    "publishedBytes": 1954,
+    "redacted": true
+  },
+  {
+    "label": "final-api-types",
+    "originalBasename": "api-types-ninth.log",
+    "originalSha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+    "publishedSha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+    "archive": "objects/eb/ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387.gz",
+    "bytes": 68,
+    "publishedBytes": 68,
+    "redacted": false
+  },
+  {
+    "label": "api-build",
+    "originalBasename": "api-build-eighth.log",
+    "originalSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+    "publishedSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+    "archive": "objects/1a/1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424.gz",
+    "bytes": 66,
+    "publishedBytes": 66,
+    "redacted": false
+  },
+  {
+    "label": "compile-failure-sixth",
+    "originalBasename": "api-types-sixth.log",
+    "originalSha256": "0304f83c5e8eb3b8387b308e4cea42a7bb814808d88105f97123409f4407bf0b",
+    "publishedSha256": "b10d483032841b23b9e6f4a604244513901c3762cb332663c79f675cf55fdc72",
+    "archive": "objects/b1/b10d483032841b23b9e6f4a604244513901c3762cb332663c79f675cf55fdc72.gz",
+    "bytes": 578,
+    "publishedBytes": 534,
+    "redacted": true
+  }
+]

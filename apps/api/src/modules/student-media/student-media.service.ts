@@ -4,7 +4,8 @@ import { createReadStream, existsSync, lstatSync, promises as fs } from 'node:fs
 import { basename, dirname, resolve, sep } from 'node:path';
 import { StudentMedia, StudentMediaTarget, StudentMediaView, QuestionAnswerSchema, studentMediaStartSchema, answerProtocolIssue } from '@study-agent/contracts';
 import { validate } from '../../common/validation';
-import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
+import { InMemoryStoreService, InMemoryUserAccount, type InMemoryAuthSession } from '../../infrastructure/in-memory-store.service';
+import { assertAssistantPracticeWriter } from '../learning/assistant-practice-learner-policy';
 import { studyDataRoot } from '../../infrastructure/workspace-paths';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { StudentsService } from '../students/students.service';
@@ -21,7 +22,7 @@ export class StudentMediaService implements OnModuleInit {
   async onModuleInit() { await initializeMediaTools(); }
   capabilities() { return { image: true, audio: mediaModeAvailable('audio_record'), maxUploadBytes: 12 * 1024 * 1024, maxAudioSeconds: 180 }; }
 
-  private target(user: InMemoryUserAccount, target: StudentMediaTarget, writing = false) {
+  private target(user: InMemoryUserAccount, target: StudentMediaTarget, writing = false, auth?: InMemoryAuthSession) {
     const session = target.kind === 'diagnostic' ? this.store.find('diagnosticSessions', { id: target.sessionId }) : this.store.find('practiceSessions', { id: target.sessionId });
     if (!session) throw new NotFoundException('学习活动不存在');
     const snapshot = target.kind === 'diagnostic' ? this.store.find('diagnosticSessions', { id: target.sessionId })!.questionSnapshots.find(s =>
@@ -29,6 +30,8 @@ export class StudentMediaService implements OnModuleInit {
       this.store.find('practiceSessions', { id: target.sessionId })!.snapshots.find(s => s.id === target.itemId);
     if (!snapshot) throw new NotFoundException('题目不属于当前学习活动');
     if (writing) {
+      if (target.kind === 'practice' && 'origin' in session && session.origin === 'assistant_artifact')
+        assertAssistantPracticeWriter(this.store, this.students, user, this.store.find('practiceSessions', { id: session.id })!, auth);
       if (!['parent', 'admin', 'student'].includes(user.role)) throw new ForbiddenException('请使用孩子或监护人的学习身份作答');
       this.students.assertCanAccessStudent(user, session.studentId);
       if (target.kind === 'diagnostic') {
@@ -36,7 +39,7 @@ export class StudentMediaService implements OnModuleInit {
         if (routing && routing.currentItemId !== target.itemId) throw new ConflictException('请在本组当前核查题中上传作答附件');
       }
       if (session.status !== 'in_progress' || target.kind === 'diagnostic' && Boolean(this.store.find('diagnosticResponses', { sessionId: target.sessionId, itemId: target.itemId }))) throw new ConflictException('这道题已提交，请用新题继续验证');
-      if (target.kind === 'practice' && (this.store.find('practiceSessions', { id: target.sessionId })!.origin !== 'notebook' && !this.store.diagnosticPlans.some(p => p.id === this.store.find('practiceSessions', { id: target.sessionId })!.planId && p.status === 'active') ||
+      if (target.kind === 'practice' && (!['notebook', 'assistant_artifact'].includes(this.store.find('practiceSessions', { id: target.sessionId })!.origin ?? 'guidance') && !this.store.diagnosticPlans.some(p => p.id === this.store.find('practiceSessions', { id: target.sessionId })!.planId && p.status === 'active') ||
         this.store.select('practiceAttempts', { sessionId: target.sessionId, questionId: target.itemId }).length >= 5)) throw new ConflictException('训练已暂停或本题练习次数已满');
     }
     return { session, snapshot, schema: snapshot.answerSchema as QuestionAnswerSchema };
@@ -56,8 +59,8 @@ export class StudentMediaService implements OnModuleInit {
   }
   get(user: InMemoryUserAccount, id: string) { const media = this.require(id); this.assertRead(user, media); return this.view(media); }
 
-  start(user: InMemoryUserAccount, input: unknown) {
-    const command = validate(studentMediaStartSchema, input), { session, snapshot, schema } = this.target(user, command, true);
+  start(user: InMemoryUserAccount, input: unknown, auth?: InMemoryAuthSession) {
+    const command = validate(studentMediaStartSchema, input), { session, snapshot, schema } = this.target(user, command, true, auth);
     if (!['image_upload', 'audio_record'].includes(schema.mode) || schema.responseShape.mediaPolicy !== 'student-media-v1' ||
       command.mediaType.startsWith('image/') !== (schema.mode === 'image_upload')) throw new BadRequestException('附件类型与本题作答要求不一致');
     if (!mediaModeAvailable(schema.mode)) throw new ServiceUnavailableException('本次音频处理暂不可用，请先跳过并反馈给老师');
@@ -79,24 +82,25 @@ export class StudentMediaService implements OnModuleInit {
     return this.view(media);
   }
 
-  private writable(user: InMemoryUserAccount, id: string) {
-    const media = this.require(id); this.target(user, media, true);
+  private writable(user: InMemoryUserAccount, id: string, auth?: InMemoryAuthSession) {
+    const media = this.require(id); this.target(user, media, true, auth);
     if (media.ownerUserId !== user.id) throw new ForbiddenException('请用开始上传时的学习身份继续');
     if (media.status === 'cancelled' || media.status === 'expired') throw new ConflictException('这次上传已结束，请重新选择文件开始上传');
     return media;
   }
-  async chunk(user: InMemoryUserAccount, id: string, index: number, bytes: unknown) {
-    const media = this.writable(user, id);
+  async chunk(user: InMemoryUserAccount, id: string, index: number, bytes: unknown, auth?: InMemoryAuthSession) {
+    const media = this.writable(user, id, auth);
     if (!Number.isSafeInteger(index) || index < 0 || index >= Math.ceil(media.size / media.chunkSize) || !Buffer.isBuffer(bytes) || bytes.length !== Math.min(media.chunkSize, media.size - index * media.chunkSize)) throw new BadRequestException('作答附件分块大小或序号不正确');
     const sha256 = digest(bytes), previous = media.chunks.find(c => c.index === index);
     if (previous) { if (previous.sha256 !== sha256) throw new ConflictException('这个分块已保存了不同内容，请重新选择文件'); return this.view(media); }
     if (media.status !== 'uploading') throw new ConflictException('此附件已完成上传');
     await this.immutableWrite(id, `chunks/${index}-${sha256}`, bytes);
+    this.writable(user, id, auth);
     media.chunks.push({ index, size: bytes.length, sha256 }); media.chunks.sort((a, b) => a.index - b.index);
     return this.view(media);
   }
-  async complete(user: InMemoryUserAccount, id: string) {
-    const media = this.writable(user, id); if (media.status === 'ready') return this.view(media);
+  async complete(user: InMemoryUserAccount, id: string, auth?: InMemoryAuthSession) {
+    const media = this.writable(user, id, auth); if (media.status === 'ready') return this.view(media);
     if (media.chunks.length !== Math.ceil(media.size / media.chunkSize)) throw new BadRequestException('附件尚未传完，请继续上传后再完成');
     const buffers: Buffer[] = [];
     for (const chunk of media.chunks) { const bytes = await fs.readFile(this.path(id, `chunks/${chunk.index}-${chunk.sha256}`)); if (bytes.length !== chunk.size || digest(bytes) !== chunk.sha256) throw new BadRequestException('附件分块校验失败，请重新上传'); buffers.push(bytes); }
@@ -114,7 +118,9 @@ export class StudentMediaService implements OnModuleInit {
         });
       } catch (error) { if (error instanceof ServiceUnavailableException) throw error; throw new BadRequestException('附件无法完整读取，或不符合图片、三分钟以内音频的要求，请重新选择文件'); }
       const sha256 = digest(result.bytes);
+      this.writable(user, id, auth);
       await this.immutableWrite(id, `ready/${sha256}`, result.bytes);
+      this.writable(user, id, auth);
       Object.assign(media, { status: 'ready', sha256, receivedSha256: digest(input), storedSize: result.bytes.length, storedType: result.type,
         width: result.width, height: result.height, durationMs: result.durationMs, normalizationVersion: 'student-media-v1', completedAt: new Date().toISOString() });
       this.events.publish('student_media.upload_ready', { mediaId: id, studentId: media.studentId, sha256, actorId: user.id });
@@ -125,10 +131,10 @@ export class StudentMediaService implements OnModuleInit {
     } finally { await fs.rm(temporary, { recursive: true, force: true }); }
   }
 
-  assertAnswer(user: InMemoryUserAccount, target: StudentMediaTarget, answer: unknown, partial = false) {
+  assertAnswer(user: InMemoryUserAccount, target: StudentMediaTarget, answer: unknown, partial = false, auth?: InMemoryAuthSession) {
     const { schema, session } = this.target(user, target);
     if (!['image_upload', 'audio_record'].includes(schema.mode)) return [];
-    this.target(user, target, true);
+    this.target(user, target, true, auth);
     if (schema.responseShape.mediaPolicy !== 'student-media-v1') throw new BadRequestException('本题尚未配置完整的作答附件协议，请先跳过');
     if (!mediaModeAvailable(schema.mode)) throw new BadRequestException('本次音频作答暂时不可用，请先跳过');
     const response = answer && typeof answer === 'object' && 'response' in answer ? (answer as { response: unknown }).response : answer;
@@ -220,8 +226,9 @@ export class StudentMediaService implements OnModuleInit {
     const value = answer && typeof answer === 'object' && 'response' in answer ? (answer as { response: unknown }).response : answer;
     return !!value && typeof value === 'object' && Array.isArray((value as { mediaIds?: unknown }).mediaIds) && (value as { mediaIds: string[] }).mediaIds.includes(media.id);
   }
-  async cancel(user: InMemoryUserAccount, id: string) {
+  async cancel(user: InMemoryUserAccount, id: string, auth?: InMemoryAuthSession) {
     const media = this.require(id); this.students.assertCanAccessStudent(user, media.studentId);
+    if (media.kind === 'practice' && this.store.find('practiceSessions', { id: media.sessionId })?.origin === 'assistant_artifact') this.target(user, media, true, auth);
     if (media.ownerUserId !== user.id || !['parent', 'student', 'admin'].includes(user.role)) throw new ForbiddenException('请用开始上传时的学习身份取消');
     if (media.references.length || this.usedByDraft(media)) throw new ConflictException('附件仍属于已保存的作答，请先保留学习证据');
     if (!['cancelled', 'expired'].includes(media.status)) {

@@ -122,10 +122,10 @@ export class LearningController {
     return this.learning.mistakes(req.user, id, validate(subjectSchema, subject ?? 'math'));
   }
   @Post('plans/:id/actions/:action/start') start(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('action') action: string) { return this.learning.start(req.user, id, action); }
-  @Get('practice/:id') view(@Req() req: AuthenticatedRequest, @Param('id') id: string) { return this.learning.view(req.user, id); }
-  @Get('practice/:id/questions/:question') render(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string) { return this.learning.render(req.user, id, question); }
-  @Post('practice/:id/responses') submit(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) { return this.learning.submit(req.user, id, input); }
-  @Patch('practice/:id/questions/:question/draft') draft(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string, @Body() input: unknown) { return this.learning.draft(req.user, id, question, input); }
-  @Post('practice/:id/questions/:question/hint') hint(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string) { return this.learning.hint(req.user, id, question); }
-  @Post('practice/:id/complete') complete(@Req() req: AuthenticatedRequest, @Param('id') id: string) { return this.learning.complete(req.user, id); }
+  @Get('practice/:id') view(@Req() req: AuthenticatedRequest, @Param('id') id: string) { return this.learning.view(req.user, id, req.authSession); }
+  @Get('practice/:id/questions/:question') render(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string) { return this.learning.render(req.user, id, question, req.authSession); }
+  @Post('practice/:id/responses') submit(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) { return this.learning.submit(req.user, id, input, req.authSession); }
+  @Patch('practice/:id/questions/:question/draft') draft(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string, @Body() input: unknown) { return this.learning.draft(req.user, id, question, input, req.authSession); }
+  @Post('practice/:id/questions/:question/hint') hint(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('question') question: string, @Body() input: unknown) { return this.learning.hint(req.user, id, question, input, req.authSession); }
+  @Post('practice/:id/complete') complete(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) { return this.learning.complete(req.user, id, input, req.authSession); }
 }

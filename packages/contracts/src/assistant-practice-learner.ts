@@ -26,3 +26,4 @@ export const assistantPracticeCompleteSchema = z.object({ protocol: z.literal(AS
 export type AssistantPracticeHelpInput = z.infer<typeof assistantPracticeHelpSchema>;
 export type AssistantPracticeCompleteInput = z.infer<typeof assistantPracticeCompleteSchema>;
 export type AssistantPracticeGroupStartInput = z.infer<typeof assistantPracticeGroupStartSchema>;
+export type AssistantPracticeLearnerResponseInput = z.infer<typeof assistantPracticeLearnerResponseSchema>;

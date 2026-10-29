@@ -91,7 +91,8 @@ export class AssistantPracticeArtifactService {
       ...this.store.select('practiceSessions', { studentId: audience.studentId }).flatMap(row => row.questionIds), ...originalPaperExposure(this.store, audience.studentId)])];
     const seen = new Set(seenQuestionIds);
     const originalMappings = [...this.store.select('measurementItems', { atomId: audience.targetAtomIds }),
-      ...diagnostic.flatMap(row => row.itemSnapshots ?? []).filter(item => audience.targetAtomIds.includes(item.atomId))];
+      ...diagnostic.flatMap(row => row.itemSnapshots ?? []).filter(item => audience.targetAtomIds.includes(item.atomId)),
+      ...this.store.select('practiceSessions', { studentId: audience.studentId }).flatMap(row => row.itemSnapshots ?? []).filter(item => audience.targetAtomIds.includes(item.atomId))];
     const selectionInput: AssistantPracticeBankSelectionInput = { targetAtomIds: [...audience.targetAtomIds], seed: preview.fingerprint,
       candidates: mappings.filter(item => packets.get(item.questionId)).map(item => ({ atomId: item.atomId, questionId: item.questionId,
         family: canonicalFamily(item), mappingId: item.id })), seenQuestionIds,
@@ -135,7 +136,7 @@ export class AssistantPracticeArtifactService {
     try { this.assertCurrent(user, row); } catch { editable = false; }
     return { ...this.summary(row), ...reviewedPracticePortableView(row),
       editable, blocked: editable ? null : { code: 'current_context_changed', message: '原来源、范围、审核或当前评测状态需要重新核对；原稿和历史仍保留。' },
-      isTeachingOnly: true, formalEvidenceCreated: false, assignmentAvailable: editable, solvingAvailable: false };
+      isTeachingOnly: true, formalEvidenceCreated: false, assignmentAvailable: editable && ['parent', 'student', 'admin'].includes(user.role), solvingAvailable: false };
   }
   list(user: InMemoryUserAccount, sessionId: string, value: unknown, auth: InMemoryAuthSession): AssistantReviewedPracticePage {
     this.sources.assertReadableSession(user, sessionId);
