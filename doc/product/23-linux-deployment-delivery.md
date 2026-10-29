@@ -7,7 +7,7 @@
 - `scripts/operations/package-source.py`：生成私有源码包、逐文件 SHA-256 清单及外部回执。排除真实 `.env`、业务数据、恢复资产、依赖和构建缓存；拒绝链接、路径逃逸和覆盖既有输出。资产按独立备份恢复，源码包不依赖原型工程路径。
 - `scripts/qa/verify-linux-release.py`：先独立核对包和全部文件，再在新的 Linux 应用目录安装依赖、审计、构建、类型检查、运行测试、验证 SQLite 管理员引导/重启/故障和 Next 生产 HTTP 资源。每步保留日志和失败状态。
 - `scripts/qa/verify-linux-deployment.py`：创建自己拥有的 PostgreSQL 集群与非超级用户应用账号；启动独立 API / worker / Web / nginx，验证 TLS Cookie、学习闭环、4MiB 分块、Range、任务与草稿重启、真实迁入原卷及 OCR。结束后停止自建进程和集群。使用一天的本地 QA 证书，只给验证客户端信任，不改主机证书库。
-- `scripts/qa/verify-processing-models.py`：在指定 Python 环境实际运行已迁入的手写预览和离线审阅模型，独立核对输出文件与人工审核标记；不将模型能运行等同于教学准确。
+- 去手写通过可选的 `STUDY_HANDWRITING_PROCESSOR` 外部处理器提供，模型与恢复工具归 `F:/workspace/rogue-prototype-lab/prototypes/`。应用只验证标准输入输出和人工复核标记；未配置时不创建预览任务。原 `scripts/qa/verify-processing-models.py` 已作为历史工具交接，不能再按主项目内置模型调用。2026-10-29 已停用 Qwen 离线审阅，不再要求 PyTorch／Transformers。
 - `resources/deployment/`：生产环境样例、三个 systemd 服务和 nginx 配置。API 默认只绑定 `127.0.0.1`；确需局域网直连时显式设置 `API_HOST`。端口拒绝空值、0、非整数和超范围值。
 
 生产模板不包含可用账号、证书或数据库密码。源码包明确记录 Git 基点、未提交文件和逐文件内容指纹；本次候选包含用户原有教研页面改动，以验证实际工作区，但不把该用户文件纳入本任务提交。
@@ -16,13 +16,12 @@
 
 以下为可审阅的部署命令，未在当前主机安装全局服务。推荐 Ubuntu 24.04、Node 24.13+ 的 24 系列、npm 11、PostgreSQL 16+ 和 Python 3.10+。运行记录中的确切版本见 `doc/evidence/2026-10-20/linux-native-dependencies.json`。
 
-1. 创建专用系统用户 `studyagent`。把核验的源码解压到 `/opt/studyagent/current`，Node 放在 `/opt/studyagent/node`，独立资产恢复到 `/srv/studyagent/assets`。应用进程只读源码和资产，业务库及处理输出写入 `/var/lib/studyagent`。不要将原始研究资产映射为 nginx 静态目录。
+1. 创建专用系统用户 `studyagent`。把核验的源码解压到 `/opt/studyagent/current`，Node 放在 `/opt/studyagent/node`，独立资产恢复到 `/srv/studyagent/assets`。ChinaTextbook 原库单独挂载到 `TEXTBOOK_BASE_PATH`（样例 `/srv/studyagent/ChinaTextbook`）；教材原 PDF 按相对路径和固定哈希读取，应用资产中只保留抽取与索引。应用进程只读源码和资产，业务库及处理输出写入 `/var/lib/studyagent`。不要将原始研究资产映射为 nginx 静态目录。
 2. 安装系统 `python3-venv`、`ffmpeg`、`nginx` 和 PostgreSQL 客户端；部署自己的 PostgreSQL 服务或连接已有授权数据库。以管理员建立独立、非超级用户且拥有自己数据库的应用角色。不要给应用创建其他数据库或管理其他角色的权限。
-3. 创建 Python venv 并安装处理依赖。CPU 环境先装 CPU torch，可避免拉入无用的 CUDA 依赖：
+3. 创建 Python venv 并安装 PDF、OCR 与 ONNX 处理依赖：
 
    ```sh
    python3 -m venv /opt/studyagent/venv
-   /opt/studyagent/venv/bin/python -m pip install --index-url https://download.pytorch.org/whl/cpu 'torch>=2.6,<3'
    /opt/studyagent/venv/bin/python -m pip install -r /opt/studyagent/current/scripts/processing/requirements.txt
    ```
 

@@ -2,11 +2,11 @@ import { ConflictException, Injectable, Logger, OnApplicationBootstrap, OnModule
 import { spawn } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { promises as fs } from 'node:fs';
-import { relative, resolve } from 'node:path';
+import { isAbsolute, relative, resolve } from 'node:path';
 import type { ImportPageEvidence, ImportPageEvidenceRef, ProcessingArtifact, QuestionImportRecord } from '@study-agent/contracts';
 import { InMemoryStoreService,type InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { TaskRow } from '../../infrastructure/task-repository';
-import { studyAssetRoot, workspaceRoot } from '../../infrastructure/workspace-paths';
+import { workspaceRoot } from '../../infrastructure/workspace-paths';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { ImportFilesService } from './import-files.service';
 import { QuestionImportService } from '../question-workspace/question-import.service';
@@ -85,6 +85,7 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
   }
 
   private async prepare(task: TaskRow, signal: AbortSignal, progress: (data: Record<string, unknown>) => void): Promise<{ apply: () => void; result: Record<string, unknown> }> {
+    if (task.kind === 'question.local_explain') throw new ProcessingError('feature_retired');
     const runRoot = this.files.withinRoot(`runs/${task.id}/${task.leaseToken}`); await fs.mkdir(runRoot, { recursive: true });
     if (task.kind === 'studio.material.process') {
       const materialId = String(task.payload.materialId ?? '');
@@ -186,34 +187,26 @@ export class ProcessingWorkerService implements OnApplicationBootstrap, OnModule
       const { file, path } = await this.store.transaction(() => this.files.readyPath(String(task.payload.fileId)));
       if (!['image/png', 'image/jpeg'].includes(file.mediaType)) throw new ProcessingError('unsupported_image');
       const output = resolve(runRoot, 'handwriting.json');
-      const result = await this.process({ mode: 'handwriting', input: path, assets: studyAssetRoot(), output }, runRoot, 'handwriting', signal, progress);
+      const result = await this.process({ mode: 'handwriting', input: path, sha256: file.sha256, output }, runRoot, 'handwriting', signal, progress);
       const artifact = await this.makeArtifact(task.id, file.id, result.imagePath, result.imageSha256, 'handwriting_preview');
       return { result: { fileId: file.id, artifactId: artifact.id, originalPreserved: true, reviewRequired: true, verifiedCorrect: false },
         apply: () => { if (!Boolean(this.store.find('processingArtifacts', { id: artifact.id }))) this.store.append('processingArtifacts', artifact); } };
     }
-    const record = await this.store.transaction(() => structuredClone(this.requireRecord(String(task.payload.recordId))));
-    if ((record.reviewVersion ?? 0) !== task.payload.reviewVersion) throw new ProcessingError('candidate_changed');
-    const output = resolve(runRoot, 'explanation.json');
-    const result = await this.process({ mode: 'local_explain', text: record.excerpt, assets: studyAssetRoot(), output }, runRoot, 'explanation', signal, progress);
-    if (typeof result.text !== 'string' || !result.text.trim()) throw new ProcessingError('empty_model_output');
-    return { result: { recordId: record.id, model: String(result.model), source: String(result.source), promptVersion: String(result.promptVersion ?? 'legacy-explain'), reviewRequired: true, verifiedCorrect: false }, apply: () => {
-      const current = this.requireRecord(record.id);
-      if (current.reviewVersion !== record.reviewVersion || current.excerpt !== record.excerpt) throw new ProcessingError('candidate_changed');
-      current.aiSuggestion = { suggestedStem: current.candidateStem, suggestedSectionLabel: current.sectionLabel, suggestedAnswerMode: null,
-        reviewAdvice: result.text.slice(0, 5000), actionablePoints: ['对照原页核实文字、公式和配图', '补充评分量规与知识映射，独立核实来源许可'], confidenceLevel: 'low', reviewRequired: true,
-        model: String(result.model), source: String(result.source), promptVersion: String(result.promptVersion ?? 'legacy-explain'), taskId: task.id };
-      current.aiSuggestedAt = new Date().toISOString();
-    } };
+    throw new ProcessingError('unsupported_task_kind');
   }
 
   private async process(config: Record<string, unknown>, runRoot: string, name: string, signal: AbortSignal, progress: (data: Record<string, unknown>) => void,onPage?:(data:Record<string,unknown>)=>Promise<void>) {
+    const processor = config.mode === 'handwriting' ? process.env.STUDY_HANDWRITING_PROCESSOR?.trim()
+      : resolve(workspaceRoot(), 'scripts/processing/process_document.py');
+    if (!processor || !isAbsolute(processor) || !(await fs.stat(processor).catch(() => undefined))?.isFile())
+      throw new ProcessingError('external_processor_unavailable');
     const configPath = resolve(runRoot, `${name}-config.json`); await fs.writeFile(configPath, JSON.stringify(config), { flag: 'wx' });
     let failureCode = 'processor_failed',checkpointPending=Promise.resolve(),checkpointError:unknown,processingError:unknown;
     try{await new Promise<void>((done, reject) => {
       const python = process.env.STUDY_PYTHON ?? (process.platform === 'win32' ? 'python' : 'python3');
       const childEnv = Object.fromEntries(['PATH', 'Path', 'SystemRoot', 'WINDIR', 'USERPROFILE', 'APPDATA', 'LOCALAPPDATA', 'TEMP', 'TMP', 'HOME', 'PYTHONPATH', 'LD_LIBRARY_PATH']
         .filter(key => process.env[key] !== undefined).map(key => [key, process.env[key]!]));
-      const child = spawn(python, ['-X', 'utf8', resolve(workspaceRoot(), 'scripts/processing/process_document.py'), configPath],
+      const child = spawn(python, ['-X', 'utf8', processor, configPath],
         { cwd: workspaceRoot(), shell: false, windowsHide: true, signal, stdio: ['ignore', 'pipe', 'pipe'], env: { ...childEnv, PYTHONIOENCODING: 'utf-8', HF_HUB_OFFLINE: '1', TRANSFORMERS_OFFLINE: '1' } });
       const timeout = setTimeout(() => { failureCode = 'processor_timeout'; child.kill(); }, 15 * 60_000); timeout.unref();
       let pending = '', totalBytes = 0;

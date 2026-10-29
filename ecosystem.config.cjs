@@ -37,6 +37,9 @@ module.exports = {
         NODE_ENV: 'production',
         API_HOST: process.env.API_HOST || '127.0.0.1',
         API_PORT: String(apiPort),
+        CORS_ORIGINS: process.env.CORS_ORIGINS || `http://127.0.0.1:${webPort},http://localhost:${webPort}`,
+        TEXTBOOK_BASE_PATH: process.env.TEXTBOOK_BASE_PATH,
+        STUDY_HANDWRITING_PROCESSOR: process.env.STUDY_HANDWRITING_PROCESSOR,
       },
     },
     {
@@ -57,6 +60,7 @@ module.exports = {
       env: {
         NODE_ENV: 'production',
         PORT: String(webPort),
+        NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL ?? '',
       },
     },
     {

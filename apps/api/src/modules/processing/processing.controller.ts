@@ -1,5 +1,6 @@
 import { streamFile } from '../../common/stream-file';
-import { BadRequestException, Body, ConflictException, Controller, Get, Headers, Param, Post, Put, Query, Req, Res, StreamableFile, UseGuards } from '@nestjs/common';
+import { BadRequestException, Body, ConflictException, Controller, Get, GoneException, Headers, Param, Post, Put, Query, Req, Res, ServiceUnavailableException, StreamableFile, UseGuards } from '@nestjs/common';
+import { isAbsolute } from 'node:path';
 import { createHash } from 'node:crypto';
 import type { Response } from 'express';
 import { z } from 'zod';
@@ -58,6 +59,8 @@ export class ProcessingController {
   @Post('tasks/:id/retry') async retry(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() body: unknown) {
     assertImportAdmin(req.user); const data = validate(z.object({ expectedVersion: z.number().int().positive() }).strict(), body);
     const previous = await this.requireTask(id);
+    if (previous.kind === 'question.local_explain') throw new GoneException('本地辅助审阅已停用，请对照原页人工审阅');
+    if (previous.kind === 'image.handwriting.preview') this.requireHandwritingProcessor();
     const owner = this.store.find('users', { id: previous.ownerUserId });
     if (!owner || owner.status !== 'active' || owner.role !== 'admin') throw new BadRequestException('原任务发起人的权限已变化，请重新发起任务');
     if (previous.version !== data.expectedVersion || !['failed', 'cancelled'].includes(previous.state)) throw new ConflictException('只有已失败或已取消的任务可以重试，请刷新状态');
@@ -67,19 +70,21 @@ export class ProcessingController {
     this.events.publish('processing.retry_requested', { taskId: id, actorId: req.user.id, generation: task.generation }); return taskView(task);
   }
   @Post('handwriting-preview') async handwriting(@Req() req: AuthenticatedRequest, @Body() body: unknown) {
-    assertImportAdmin(req.user); const data = validate(z.object({ fileId: z.string().max(100), requestKey: z.string().min(8).max(100) }).strict(), body);
+    assertImportAdmin(req.user); this.requireHandwritingProcessor();
+    const data = validate(z.object({ fileId: z.string().max(100), requestKey: z.string().min(8).max(100) }).strict(), body);
     const file = this.files.get(req.user, data.fileId);
     if (file.status !== 'ready' || !['image/png', 'image/jpeg'].includes(file.mediaType)) throw new BadRequestException('请选择已上传完成的 PNG 或 JPEG 图片');
     return this.enqueue(req, 'image.handwriting.preview', data.requestKey, { fileId: file.id, sha256: file.sha256 });
   }
-  @Post('local-explain') async explain(@Req() req: AuthenticatedRequest, @Body() body: unknown) {
-    assertImportAdmin(req.user); const data = validate(z.object({ recordId: z.string().max(250), requestKey: z.string().min(8).max(100) }).strict(), body);
-    const record = this.store.find('questionImportRecords', { id: data.recordId });
-    if (!record) throw new BadRequestException('导入候选记录不存在');
-    return this.enqueue(req, 'question.local_explain', data.requestKey, { recordId: record.id, reviewVersion: record.reviewVersion ?? 0,
-      excerptHash: createHash('sha256').update(record.excerpt).digest('hex') });
+  @Post('local-explain') async explain(@Req() req: AuthenticatedRequest) {
+    assertImportAdmin(req.user);
+    throw new GoneException('本地辅助审阅已停用，请对照原页人工审阅');
   }
   private async requireTask(id: string) { const task = await this.store.tasks.get(id); if (!task) throw new BadRequestException('任务不存在'); return task; }
+  private requireHandwritingProcessor() {
+    const processor = process.env.STUDY_HANDWRITING_PROCESSOR?.trim();
+    if (!processor || !isAbsolute(processor)) throw new ServiceUnavailableException('去手写处理工具未配置，请联系管理员');
+  }
   private async enqueue(req: AuthenticatedRequest, kind: string, requestKey: string, payload: Record<string, unknown>) {
     const payloadHash = createHash('sha256').update(JSON.stringify(payload)).digest('hex');
     const previous = await this.store.tasks.find(req.user.id, kind, requestKey);

@@ -100,7 +100,7 @@ def main(args):
 
     try:
         run('tool_versions', [node, '-e', "if(process.versions.node.split('.')[0]!=='24')process.exit(1); console.log(process.version)"])
-        run('native_python', [env['STUDY_PYTHON'], '-c', "import sys,fitz,PIL,onnxruntime,rapidocr_onnxruntime,torch,transformers,safetensors; print(sys.executable); print('torch',torch.__version__); print('transformers',transformers.__version__)"])
+        run('native_python', [env['STUDY_PYTHON'], '-c', "import sys,fitz,PIL,onnxruntime,rapidocr_onnxruntime; print(sys.executable); print('onnxruntime',onnxruntime.__version__)"])
         run('ffmpeg_version', [env['STUDY_FFMPEG'], '-version'])
         run('ffprobe_version', [env['STUDY_FFPROBE'], '-version'])
         run('npm_ci', [npm, 'ci', '--no-audit'])
