@@ -337,3 +337,23 @@ schema24尚未发布，下一批同一开发迁移补assignment创建键、assig
 本批仍没有孩子分组开始/答案草稿/首答理由/提示示范/完成与今日任务UI，startingAvailable=false；未实现的成人自练集合继续显式拒绝。共享安排和privacy-ledger改动还须自身完整API、旧原生恢复兼容、整站/精确CI及完整schema24交付，不能复用上一候选1875作为新安排的完整门禁。正式schema23保持，24.2至24.5、D2b成人/AI、D3原因指导、D4日历和105/M1～M7/原72继续active。
 
 本批代码已本地提交663088c0，源设计总册同步14领域/133功能/452业务接口全部映射，693源码引用/4282链接/10离线页通过；来源仍按当前实现及缺口描述。83af7e15远端40790308484的PG job现已success，application及browser尚未终态，继续等待且不取消/再推送。后续共享安排完整API及旧恢复专项在本工作区冻结，真正分组开始转入独立工作区。
+
+## 27. 真实本人分组作答的实施前协议补齐
+
+58024326共享安排已本地提交并在StudyAgent-pa冻结完整API/PG兼容；本节在新StudyAgent-ps分支先提交，之后才实施。实际common/answer-draft.ts只将answer纳入草稿原键hash，LearningService当前同步方法依靠requestContext及最终commitRequest持久化，因此不能只额外保存一段理由而沿用不含理由的幂等身份，也不能仅在controller隐藏家长按钮。
+
+新增assistantPracticeGroupStarts/assistant-practice-group-start-v1，每assignment+atom一个真实session，另以actual actorId+requestKey唯一。固定assignmentId/studentId/subject/atomId/actual student actor、assignmentPayloadFingerprint/groupFingerprint、原开始输入/请求SHA、PracticeSession ID、原开始回执、createdAt，并保存最多128条帮助/完成命令及原回执。PracticeSession仅带assistantAssignmentId/sourceGroupId与origin=assistant_artifact，不拷贝私有artifact ID；planId=null，actionSnapshot是明确教学活动且evidenceIds为空，不制造正式诊断计划。保留两题完整native snapshots及atom，不把审核题改成AI分类题。
+
+POST /learning/assistant-practice/assignments/:id/groups/:atomId/start严格接assignmentFingerprint/requestKey；先验证当前role=student、authSession.studentId及原学习码/监护绑定，再查原actor/key。原键重放仅返回旧receipt且不创建曝光；异内容/异组/异实际actor拒绝。另一键碰到已开始组明确返回已有活动冲突，不另建。新开始在事务内核对当前scope/定义、逐题当前审核mapping/原件/发布SHA及外部曝光、当前评测；从已确认assignment复制本组两题，原子创建PracticeSession和GroupStart。最多三次只重试DomainWriteConflict。第2/3组不重跑整份D1或联合重选；曝光从诊断/原卷和其他assignment训练分别合并，保留同assignment已开始组的正式排题排除，但不把它们本身当作阻断后续预定组的外部曝光。外部记录若也包含这些题仍独立计入，不粗暴从合并Set删题。
+
+原来源的当前检查可由服务内部以保存的publisher账号调用现有只读readSource并核对稳定origin SHA、当前发布者对该孩子的合法权限；这是已确认安排的来源完整性核查，不伪造作者authSession、不返回私聊给孩子，也不要求作者保持在线。原作者/来源/范围/审核失效时拒绝未开始组，原安排可读。已合法开始的组按固定快照完成教学，作者删除或后续bank更新不换题、不伪称当前审核；当前真实学习权限、当前评测保护及人工撤回仍控制写入。
+
+新增AssistantPracticeLearnerService/Controller作为带事务重试的写入适配器，复用LearningService原生render/grader/媒体/草稿。GET /learning/assistant-practice/sessions/:id、GET :id/questions/:qid、PATCH :id/questions/:qid/draft、POST :id/responses、POST :id/questions/:qid/help、POST :id/complete；已有/learning/practice各controller同时传req.authSession，新来源在LearningService本身也强制真实孩子，不能从旧端点绕过角色/新协议校验。新来源view/render给监护人只读draftState，学生的真实当前资格由服务端计算。
+
+新草稿协议assistant-practice-answer-v1包含现有answer-draft-v2的actorId/expectedRevision/baseHash/attempt/requestKey、answer与learnerExplanation。服务在调用prepareAnswerDraft时内部用{answer,learnerExplanation}作为hash envelope，落盘仍分别保存原生answer与learnerExplanation，渲染不把envelope交给旧评分器；同键改理由也409，旧协议不得无声覆盖已保存解释。首次response严格携带原draftFence、完整原生answer/明确skip、learnerExplanation、elapsedMs及原key，首答与首理由保存到同一PracticeAttempt，后续订正另存。Attempt新来源强制actorId/actorRole=student/actorStudentId，缺失这些字段的旧训练不猜测回填。
+
+帮助命令以hint/solution/guardian_demonstration分别保存actual actor、题目、原key/hash、序号与提供时间；同键原回执可恢复，异内容拒绝。明确solution动作才提供参考答案；提交后反馈所提供的参考按feedback_offered记录，文案不假称已被看到。首次答案之前的帮助、后续订正、来源教学与正式独立测量分开。任何新来源反馈均标记教学练习，summary用teachingFirstPass及帮助状态，independentFirstPass不计入此来源，不写MasteryEstimate/DiagnosticResponse。完成严格要求每题回答或明确跳过，以实际孩子+完整命令版本/原键保存原完成回执；家长预览/陪练不产生孩子Attempt。
+
+冷核对同批纳入GroupStarts、相关PracticeSession/Attempt/Hint及全部命令和privacyRequests，验证assignment→固定组→唯一真实session双向身份、两道native packet/答案/定义、actual child actor、草稿hash envelope/首答及订正顺序/帮助与完成回执；伪造角色、跨孩子/跨组或重算内部及bundle哈希后的错位关系拒绝。孩子删除清除GroupStart/实践/命令；作者删除对保留孩子的已开始组不要求私人artifact存在，仍须匹配合法共享安排/删除回执。SQLite/PG实际原生恢复和精确旧23 reader拒绝继续，成人self-session仍不放行。
+
+验收先走实际三点六题HTTP完整开始/回答理由/帮助/完成、第二三组继续、首答不覆盖、家长伪造child fence/跨孩子/当前评测拒绝、同键双实例/双标签恢复与作者/孩子最新账本，再接现有练习界面和助教来源入口。真实图片/音频附件读取与原生备份单列，不用表格/公式替代；完整API/浏览器/精确CI及schema24交付分别运行，不能套用当前25或旧1875。此时尚未新增这些接口/集合或真实学习写入，产品整体继续active。
