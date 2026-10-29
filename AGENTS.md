@@ -1,5 +1,7 @@
 # StudyAgent 工作规则
 
+版本管理遵守[单主干与工作目录规则](.cursor/rules/single-main.mdc)：开发保留 `main` 与主目录，验证使用主目录内的隔离环境。
+
 修改课程、教材、课堂或考核前，阅读并遵守：
 
 - [课程与教学验收规则](.cursor/rules/teaching-content.mdc)
