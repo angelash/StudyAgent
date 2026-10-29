@@ -1,0 +1,27 @@
+{
+  "at": "2026-10-29T17:16:59.530Z",
+  "applicationFiles": 1861,
+  "mismatches": [],
+  "resolution": {
+    "contracts": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-r1-fifth-20261030\\source\\packages\\contracts\\dist\\index.js",
+    "config": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-r1-fifth-20261030\\source\\packages\\config\\dist\\index.js"
+  },
+  "protectedFiles": [
+    {
+      "path": "apps/api/dist/apps/api/src/modules/learning/learning.service.js",
+      "sha256": "3c1f19e387fa959a6fa17f015c4c0109c1f957129934d45fe906c3a0f5f57cb1",
+      "lastWriteTime": "2026-10-29T14:51:25.646Z"
+    },
+    {
+      "path": "apps/web/.next/BUILD_ID",
+      "sha256": "e02197beeb39c5df02110ca05544c471b3bb892662bebdcb56449b27713e7fba",
+      "lastWriteTime": "2026-10-29T14:52:20.457Z"
+    },
+    {
+      "path": "packages/contracts/dist/index.js",
+      "sha256": "49df887dc03d3698d848a916c5e6b399a1c72d2247356bf0eb65d7f2deac4f70",
+      "lastWriteTime": "2026-10-29T14:51:02.127Z"
+    }
+  ],
+  "limits": "Current observation of protected runtime files; this is not a deployment or production functional acceptance."
+}

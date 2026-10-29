@@ -12,7 +12,7 @@ async function enter(page: Page, width = 1280) {
   expect(response.status).toBe(201); const actor = (await response.json()).data;
   await page.addInitScript(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
-  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   await page.goto('/studio/classroom?unit=0&panel=units');
   await expect(page.locator('.cl-lecture')).toHaveCount(5);
   const read = async (path: string) => { const response = await fetch(api + path, { headers: { Authorization: 'Bearer ' + actor.token, 'X-Forwarded-For': address } }); expect(response.ok).toBe(true); return (await response.json()).data; };

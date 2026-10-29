@@ -66,7 +66,7 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/learn/page.tsx](../../../apps/web/app/learn/page.tsx)。
 
-- 直接引用：`./screen`
+- 直接引用：`next/navigation`、`../../lib/workspace-navigation`
 
 ## /library
 
@@ -90,7 +90,7 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/page.tsx](../../../apps/web/app/page.tsx)。
 
-- 直接引用：`next/link`、`../components/study-nav`、`./student/assessment/studio.css`、`./student/today/today.css`、`./welcome.css`
+- 直接引用：`react`、`next/link`、`next/navigation`、`../lib/session-user`、`../lib/learning-context`、`../lib/workspace-navigation`、`../components/study-nav`、`./student/assessment/studio.css`、`./welcome.css`
 
 ## /parent/access
 
@@ -102,7 +102,7 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/parent/dashboard/page.tsx](../../../apps/web/app/parent/dashboard/page.tsx)。
 
-- 直接引用：`./studio`
+- 直接引用：`next/navigation`、`../../../lib/workspace-navigation`
 
 ## /parent/data
 
@@ -120,7 +120,7 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/parent/login/page.tsx](../../../apps/web/app/parent/login/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`next/navigation`、`../../../lib/api`、`../../../lib/session-user`、`../../../components/learning-login.css`
+- 直接引用：`react`、`next/link`、`next/navigation`、`../../../lib/api`、`../../../lib/session-user`、`../../../lib/workspace-navigation`、`../../../components/learning-login.css`
 
 ## /student/assessment
 
@@ -138,13 +138,13 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/student/knowledge/page.tsx](../../../apps/web/app/student/knowledge/page.tsx)。
 
-- 直接引用：`next/navigation`
+- 直接引用：`next/navigation`、`../../../lib/workspace-navigation`
 
 ## /student/login
 
 类型：页面。实现：[apps/web/app/student/login/page.tsx](../../../apps/web/app/student/login/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`next/navigation`、`../../../lib/api`、`../../../lib/session-user`、`../../../components/learning-login.css`
+- 直接引用：`react`、`next/link`、`next/navigation`、`../../../lib/api`、`../../../lib/session-user`、`../../../lib/workspace-navigation`、`../../../components/learning-login.css`
 
 ## /student/mission
 
@@ -157,6 +157,12 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 类型：页面。实现：[apps/web/app/student/today/page.tsx](../../../apps/web/app/student/today/page.tsx)。
 
 - 直接引用：`./studio`
+
+## /studio/assessment
+
+类型：页面。实现：[apps/web/app/studio/assessment/page.tsx](../../../apps/web/app/studio/assessment/page.tsx)。
+
+- 直接引用：`../../student/assessment/studio`
 
 ## /studio/classroom
 
@@ -176,17 +182,41 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 - 直接引用：`./studio`、`react`
 
+## /studio/profiles
+
+类型：页面。实现：[apps/web/app/studio/profiles/page.tsx](../../../apps/web/app/studio/profiles/page.tsx)。
+
+- 直接引用：`react`、`./profiles`
+
 ## /studio/projects
 
 类型：页面。实现：[apps/web/app/studio/projects/page.tsx](../../../apps/web/app/studio/projects/page.tsx)。
 
 - 直接引用：`./workbench`
 
+## /studio/reports
+
+类型：页面。实现：[apps/web/app/studio/reports/page.tsx](../../../apps/web/app/studio/reports/page.tsx)。
+
+- 直接引用：`react`、`./reports`
+
+## /studio/settings
+
+类型：页面。实现：[apps/web/app/studio/settings/page.tsx](../../../apps/web/app/studio/settings/page.tsx)。
+
+- 直接引用：`next/link`、`../studio-navigation`、`../../../lib/session-user`
+
 ## /studio/source-courses
 
 类型：页面。实现：[apps/web/app/studio/source-courses/page.tsx](../../../apps/web/app/studio/source-courses/page.tsx)。
 
 - 直接引用：`./workbench`
+
+## /studio/tasks
+
+类型：页面。实现：[apps/web/app/studio/tasks/page.tsx](../../../apps/web/app/studio/tasks/page.tsx)。
+
+- 直接引用：`react`、`./tasks`
 
 ## /studio/whiteboards
 

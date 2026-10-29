@@ -11,7 +11,7 @@ async function enter(page: Page, width: number) {
   expect(registered.status).toBe(201); const actor = (await registered.json()).data;
   await page.addInitScript(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
-  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   await page.goto('/studio/classroom'); await expect(page.getByRole('heading', { name: '社会学概论', exact: true })).toBeVisible();
   return actor;
 }

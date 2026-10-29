@@ -17,7 +17,7 @@ async function enter(page: Page, width = 1280, admin = true) {
   }
   const seeded = admin ? await call('/qa/teaching-tools/setup', {}) : null;
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
-  await page.getByRole('button', { name: '登录，查看学习记录 →', exact: true }).click(); await expect(page).toHaveURL(admin ? /\/admin\/analytics/ : /\/learn/);
+  await page.getByRole('button', { name: '登录，查看学习记录 →', exact: true }).click(); await expect(page).toHaveURL(/\/studio/);
   if (admin) await page.getByRole('link', { name: 'AI教研', exact: true }).click(); else await page.goto('/admin/ai-tools');
   if (admin) await expect(page.getByRole('heading', { name: '把一次作答，看得更清楚。', exact: true })).toBeVisible();
   return { actor, call, questionId: seeded?.questionId as string, principal, credential };

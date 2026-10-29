@@ -13,7 +13,7 @@ async function fixture(page: Page) {
     defaultVersionMap: { math: '', chinese: '', english: '', chemistry: 'guangzhou-pep-chemistry-9-upper-v1' } }) });
   expect(child.status).toBe(201); const studentId = (await child.json()).data.profile.id;
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
-  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   await page.evaluate(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
   await expect(page.getByRole('navigation', { name: '主要导航' }).getByRole('link', { name: '化学课程', exact: true })).toHaveCount(0);
   const library = '/studio?' + new URLSearchParams({ view: 'courses', student: studentId, subject: 'chemistry' });

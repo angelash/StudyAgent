@@ -5,7 +5,7 @@ const text='匿名阅览室观察：两个周末排队，两个工作日有空�
 let fixtureAddress=0;
 async function login(page:Page){const id=Date.now()+'-'+Math.floor(Math.random()*100000),principal='source-'+id+'@local.test',credential='Source-'+id;
  const response=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','x-forwarded-for':'127.21.0.'+(++fixtureAddress)},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;
- await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/learn(?:\?|$)/);await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));return actor;}
+ await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/studio(?:\?|$)/);await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));return actor;}
 async function source(page:Page,goal='区分观察与推断，并设计能比较替代解释的下一步。'){
  await page.goto('/studio/source-courses?new=1');await page.getByRole('button',{name:'粘贴文字',exact:true}).click();const dialog=page.getByRole('dialog',{name:'添加文字资料'});await dialog.getByLabel('资料名称').fill('匿名观察原文');await dialog.getByLabel('原始正文').fill(text);await dialog.getByRole('button',{name:'保存文字资料',exact:true}).click();await expect(dialog).toHaveCount(0);await expect(page.getByRole('checkbox')).toBeChecked();
  await page.getByLabel('课程名称',{exact:true}).fill('从观察到可以检验的解释');await page.getByLabel('学习目标',{exact:true}).fill(goal);return text;

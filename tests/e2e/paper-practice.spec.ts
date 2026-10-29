@@ -21,7 +21,7 @@ async function fixture(page: Page, slot: number) {
   const papers = { complete: 'qa:paper:' + slot + ':complete', partial: 'qa:paper:' + slot + ':partial', pdf: 'qa:paper:' + slot + ':pdf' };
   async function publish(id: string, status = 'published') { return call('/library/papers/' + encodeURIComponent(id) + '/publication', { status, reason: '浏览器合成原创资料逐项核对', licenseEvidence: '当前题干与媒体全部为独立测试构造', contentReviewed: true, mediaReviewed: true }, administrator); }
   for (const paper of Object.values(papers)) await publish(paper);
-  await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential); await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential); await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   async function begin(paper = papers.complete) { const selection = [{ paperId: paper }], preview = await call('/library/practice/preview', { selection }); return call('/library/practice/sessions', { selection, sourceHash: preview.sourceHash, requestKey: randomUUID() }); }
   return { call, actor, papers, publish, begin };
 }
@@ -251,7 +251,7 @@ test('paper practice: a real learning-code student writes only their own record 
   await f.call('/students/' + child + '/learning-access', { enabled: true, expectedVersion: 0, requestKey: randomUUID(), reason: '合成原卷练习权限核对' });
   const issued = await f.call('/students/' + child + '/learning-access/codes', { expectedVersion: 1, requestKey: randomUUID() });
   await context.clearCookies(); await page.goto('/student/login'); await page.getByLabel('一次性学习码').fill(issued.code); await page.getByRole('button', { name: '进入我的学习 →', exact: true }).click();
-  await expect(page).toHaveURL(/\/learn(?:\?|$)/); await page.goto('/library/practice?paper=' + encodeURIComponent(f.papers.complete));
+  await expect(page).toHaveURL(/\/studio(?:\?|$)/); await page.goto('/library/practice?paper=' + encodeURIComponent(f.papers.complete));
   await expect(page.getByLabel('这次练习记录给谁')).toHaveValue(child); await page.getByRole('button', { name: '预览这次练习', exact: true }).click();
   await page.getByRole('button', { name: '确认范围，开始练习 ↗' }).click(); await page.getByLabel('先写下自己的回答').fill('孩子自己的原答');
   await page.getByRole('button', { name: '提交本题回答', exact: true }).click(); await expect(page.getByRole('region', { name: '不可覆盖的首次回答' })).toContainText('孩子自己的原答');
@@ -268,7 +268,7 @@ test('paper practice: an actual login logout and another family cannot reuse a p
   await page.getByRole('button', { name: '核对本题参考答案', exact: true }).click(); await expect(page.getByRole('region', { name: '当前原题与首次回答' })).toHaveCount(0);
   const principal = 'paper-other-' + randomUUID(), credential = 'Synthetic-other-family-20261026', other = await f.call('/auth/register', { principal, credential }, '');
   await f.call('/library/practice/sessions/' + row.id, undefined, other.token, 403); await context.clearCookies(); await page.goto('/parent/login');
-  await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential); await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential); await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   await page.goto('/library/practice?session=' + row.id); await expect(page.locator('.pp-shell').getByRole('alert')).toBeVisible();
   await expect(page.getByText('属于原家庭的私人回答', { exact: true })).toHaveCount(0); await expect(page.getByLabel('先写下自己的回答')).toHaveCount(0);
 });
@@ -387,7 +387,7 @@ test('paper review next: a learner confirms scope, restores a lost independent p
   await f.call('/students/' + child + '/learning-scope', { subject: 'math', grade: 3, term: 'upper', textbookVolumeId: null, textbookVersion: '原创已学范围', learnedAtomIds: [atom.id], currentAtomId: atom.id, minutesPerSession: 15 }, f.actor.token, 200, 'PUT');
   await f.call('/students/' + child + '/learning-access', { enabled: true, expectedVersion: 0, requestKey: randomUUID(), reason: '独立原卷浏览器学生入口核对' });
   const issued = await f.call('/students/' + child + '/learning-access/codes', { expectedVersion: 1, requestKey: randomUUID() });
-  await context.clearCookies(); await page.goto('/student/login'); await page.getByLabel('一次性学习码').fill(issued.code); await page.getByRole('button', { name: '进入我的学习 →', exact: true }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await context.clearCookies(); await page.goto('/student/login'); await page.getByLabel('一次性学习码').fill(issued.code); await page.getByRole('button', { name: '进入我的学习 →', exact: true }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   await page.goto('/library/practice?paper=' + encodeURIComponent(f.papers.complete) + '&positions=1'); await page.getByRole('button', { name: '预览这次练习', exact: true }).click(); await page.getByRole('button', { name: '确认范围，开始练习 ↗' }).click();
   await page.getByRole('button', { name: '暂时不会', exact: true }).click(); await expect(page.getByRole('region', { name: '不可覆盖的首次回答' })).toContainText('暂时不会');
   const sourceSession = new URL(page.url()).searchParams.get('session')!, source = await f.call('/library/practice/sessions/' + sourceSession), sourceItem = source.items[0].id;

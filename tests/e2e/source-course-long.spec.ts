@@ -4,7 +4,7 @@ const api=`http://localhost:${process.env.E2E_API_PORT??'4107'}/api`;
 let address=0;
 async function login(page:Page){const id=Date.now()+'-'+Math.floor(Math.random()*100000),principal='long-source-'+id+'@local.test',credential='Long-source-'+id;
  const response=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','x-forwarded-for':'127.26.0.'+(++address)},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;
- await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/learn(?:\?|$)/);await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));return actor;}
+ await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/studio(?:\?|$)/);await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));return actor;}
 async function source(page:Page,goal='保留原始条件并逐课比较不同证据。'){
  await page.goto('/studio/source-courses?new=1');
  const text=('匿名阅览室观察。比较时段、开放条件和可能反例，不根据一次记录推断唯一原因。\n').repeat(1700);

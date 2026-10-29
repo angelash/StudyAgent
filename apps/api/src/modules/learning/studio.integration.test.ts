@@ -74,6 +74,24 @@ describe('whiteboard video and LMS calendar integrations', () => {
       'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
   }
 
+  it('keeps independent overview separate from all child business projections and preserves legacy selection', async () => {
+    const collections=['learningScopes','diagnosticSessions','practiceSessions','studioCourses','knowledgeAtoms'];
+    const before=JSON.stringify(collections.map(name=>store.inspect(name)));
+    const independent=await call('get','/learning/studio/overview?audience=independent');
+    expect(independent.selected).toBeNull();expect(independent.children.map((item:any)=>item.id)).toEqual(['child']);
+    for(const key of ['courses','feed','activities','plans','materials','studyPacks','whiteboards'])expect(independent[key]).toEqual([]);
+    expect(independent.integrations).toEqual({connectors:[],events:[]});
+    expect(independent.speech).toBeTruthy();
+    expect((await call('get','/learning/studio/overview?audience=independent',undefined,other)).children).toEqual([]);
+    expect(JSON.stringify(collections.map(name=>store.inspect(name)))).toBe(before);
+    const legacy=await call('get','/learning/studio/overview?subject=math');expect(legacy.selected.id).toBe('child');
+    await call('get','/learning/studio/overview?audience=independent',undefined,learner,403);
+    await call('get','/learning/studio/overview?audience=unknown',undefined,parent,400);
+    await call('get','/learning/studio/overview?audience=independent&studentId=child',undefined,parent,400);
+    await call('get','/learning/studio/overview?audience=independent&courseId=unavailable-child-course',undefined,parent,400);
+    await call('get','/learning/studio/overview?studentId=child',undefined,other,403);
+  });
+
   function textPdf() {
     const stream = 'BT /F1 18 Tf 72 700 Td (Fraction addition review sheet) Tj 0 -28 Td ' +
       '(First unify the unit. Then combine equal parts and check the result.) Tj ET';

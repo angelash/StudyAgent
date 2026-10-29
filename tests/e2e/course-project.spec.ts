@@ -4,7 +4,7 @@ const api=`http://localhost:${process.env.E2E_API_PORT??'4107'}/api`;
 async function login(page:Page) {
   const suffix=Date.now()+'-'+Math.floor(Math.random()*100000),principal='projects-'+suffix+'@local.test',credential='Projects-'+suffix;
   const response=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;
-  await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/learn(?:\?|$)/);return actor;
+  await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/studio(?:\?|$)/);return actor;
 }
 async function capture(page:Page,name:string){if(!process.env.E2E_PROJECT_SNAPSHOT)return;mkdirSync('data/qa/course-projects',{recursive:true});await page.evaluate(()=>window.scrollTo(0,0));await page.locator('.pj-dialog').evaluateAll(elements=>elements.forEach(element=>element.scrollTop=0));await page.screenshot({path:`data/qa/course-projects/${name}.png`,fullPage:true});}
 async function selfAssess(page:Page) {

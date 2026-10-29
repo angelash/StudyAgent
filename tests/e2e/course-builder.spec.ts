@@ -15,7 +15,7 @@ async function fixture(page: Page) {
   }
   async function courses() { const result = await fetch(api + '/learning/studio/overview?' + new URLSearchParams({ studentId, subject: 'math' }), { headers }); expect(result.status).toBe(200); return (await result.json()).data.courses; }
   await scope(); await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
-  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   await page.goto('/studio?' + new URLSearchParams({ view: 'courses', student: studentId, subject: 'math' }));
   await expect(page.getByLabel('学习档案')).toHaveValue(studentId); await page.locator('.ws-page-title>button').click();
   await expect(page.getByRole('dialog', { name: '课程蓝图' })).toBeVisible(); await expect(page.getByRole('checkbox')).toHaveCount(2);

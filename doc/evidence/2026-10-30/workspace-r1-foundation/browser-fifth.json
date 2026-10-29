@@ -1,0 +1,520 @@
+{
+  "kind": "browser",
+  "rawPath": "data/qa/workspace-r1-fifth-20261030/source/data/qa/workspace-shell-fifth.json",
+  "rawSha256": "f04b4fe713661fcd815c9b7b36ba245080fc69a2b996a5db5f5d971fddb0fcfd",
+  "stats": {
+    "startTime": "2026-10-29T17:16:21.458Z",
+    "duration": 221667.127,
+    "expected": 42,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "name": "assistant notes: corrupt or different-account cached content stays hidden and its original bytes are preserved",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5703,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: the actual frozen goals, original estimates and self-reports stay together when selecting a point",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5159,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: skipped evidence stays unknown and a point survives reload, back and forward",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5196,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: an older matching plan is found behind a newer unrelated report and opens its durable plan route",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6380,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: failed plan reads remain unknown until explicit retry returns the actual matching plan",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5086,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: a controlled missing plan hides its stale actions while the report remains readable and retry can recover",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4979,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: late proposed-plan reviews cannot erase the real schedule after activation and refresh",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5612,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: a controlled legacy definition and foreign point never create a current verification",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5338,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: the actual student role reads its report without management actions and grant revocation ends the private view",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5957,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: invalidating the actual browser login session ends the private report on its next read",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4180,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: actual submitted short-answer expressions awaiting review do not become scored failure or a zero estimate",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5156,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: a controlled cause timeline remains complete and terminal versus reopened actions stay with their point",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5131,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: complete point reading and keyboard controls fit 390",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4611,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: complete point reading and keyboard controls fit 768",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4847,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: complete point reading and keyboard controls fit 1280",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4803,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: complete point reading and keyboard controls fit 1440",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4587,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: a lost reanalysis receipt survives reload with the exact original command",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5525,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: a version conflict archives its original command before a read-only latest-report check",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6083,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "knowledge report: unavailable command storage prevents a new mutation while preserving the report",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4577,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "learning home offers clear entry and works on phone, tablet and desktop",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1801,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "adult can enter a course without creating a child and restore its classroom",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3633,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "parent selection, navigation, refresh, history and invalid profile recovery keep context",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6099,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "a delayed old selection and a failed request cannot replace the current child",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3465,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "corrupt or different-account cached choices cannot select another profile",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3843,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "a student resumes the exact saved assessment and sees only their profile",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3743,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 390",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3862,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 768",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4104,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1280",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4848,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1440",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4629,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "reference navigation: a real saved classroom opens the exact original session and position from the course library",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4480,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "reference navigation: resizing an open drawer restores usable desktop controls and releases the original background",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3570,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "reference navigation: blocked preference storage keeps current controls usable without inventing a saved preference",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4582,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "reference navigation: a mobile drawer hands focus to the real course blueprint and returns to its menu trigger after closing",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3664,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "workspace shell: one existing-style sidebar keeps the object across tasks reports and profiles",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4312,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "workspace shell: profiles read metadata only and new profiles keep the original creation contract",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3341,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "workspace shell: a learning-code student stays bound to their own profile and rejects self mode",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3896,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "workspace shell: completed reports and the old family URL preserve original records without writes",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8276,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "workspace shell: login returns to a local original activity and refuses an external return",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4738,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "workspace shell: parent self learning reads independent data instead of a cached child",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3326,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "workspace shell: contradictory old object aliases stop before reading a diagnostic or starting work",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2868,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "workspace shell: report detail refuses an unfinished session without becoming an answer screen",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2859,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "workspace shell: mobile navigation and compact preference work across legacy and new pages",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4315,
+          "retry": 0
+        }
+      ]
+    }
+  ],
+  "export": "No configuration, cookies, credentials, trace or request payloads exported."
+}

@@ -9,7 +9,7 @@ async function login(page: Page) {
   expect(response.status).toBe(201);
   await page.addInitScript(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
-  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
 }
 async function open(page: Page, lesson = 'soc-1-1-2') {
   await page.goto('/studio/classroom?lesson=' + lesson + '&tab=practice');

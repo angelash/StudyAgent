@@ -1,0 +1,117 @@
+{
+  "kind": "api",
+  "rawPath": "data/qa/workspace-r1-fourth-20261030/source/data/qa/r1-postgres-fourth.json",
+  "rawSha256": "9c09dcf8a05a96bd98b416f5272c35238aaddb4ac1fd72c66ad551810e5e3f42",
+  "passed": 0,
+  "failed": 0,
+  "pending": 21,
+  "passedSuites": 0,
+  "failedSuites": 2,
+  "cases": [
+    {
+      "name": "whiteboard video and LMS calendar integrations keeps independent overview separate from all child business projections and preserves legacy selection",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations keeps saved whiteboard creation replays behind current student access without duplicating activity",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations previews, saves and reads a uniquely grounded whiteboard with student access",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations binds whiteboard replay receipts to the original action, actor, command and saved board",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations synthesizes only an authorized frozen sentence, keeps legacy narration, and rejects identity tampering",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations inflight: refuses late legacy narration after a separately committed logout of its original login",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations inflight: rechecks a separately committed guardian revocation before returning a frozen sentence",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations inflight: refuses an old learner session when a newer enabled learning-access epoch replaces it during synthesis",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations does not substitute another child for an explicit inaccessible studio selection",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations previews selected goals and pace without persisting a course and rejects invalid confirmation targets",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations replays the original confirmation after scope changes and rejects changed commands with the same key",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations warns only for selected unapproved teaching and preserves every selected strand",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations opens an approved course lesson in the shared classroom without replacing independent measurement",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations previews, persists and executes an evidence-driven plan with delayed reviews",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations renders, saves and grounds page-level whiteboards from an uploaded PDF",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations OCRs an image-only PDF and returns reviewable page structures",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations recovers native table cells and formula candidates while preserving source coordinates",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations keeps connector creation idempotent, isolated, revocable and student read-only",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations creates, replays, removes and exports a StudyAgent calendar task",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations edits manual calendar tasks with revision checks and guardian isolation",
+      "status": "skipped",
+      "durationMs": null
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations validates every batch target before deleting and protects subscribed and plan events",
+      "status": "skipped",
+      "durationMs": null
+    }
+  ]
+}

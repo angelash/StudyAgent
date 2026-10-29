@@ -12,7 +12,7 @@ async function enter(page: Page) {
     await page.getByLabel('登录账号').fill(principal);
     await page.getByLabel('密码').fill(credential);
     await page.getByRole('button', { name: '登录，查看学习记录 →' }).click();
-    await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+    await expect(page).toHaveURL(/\/studio(?:\?|$)/);
     await page.goto('/studio/classroom?lesson=soc-1-1-1');
     await page.getByRole('button', { name: '下一步 ›', exact: true }).click();
     await expect(page.locator('.cl-session-navigation')).toContainText('2 / 8');

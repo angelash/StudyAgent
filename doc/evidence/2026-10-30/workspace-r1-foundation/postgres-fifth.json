@@ -1,0 +1,37 @@
+{
+  "kind": "api",
+  "rawPath": "data/qa/workspace-r1-fourth-20261030/source/data/qa/r1-postgres-fifth.json",
+  "rawSha256": "135a0db84ea28d6e96ec64e85096785e6f145b15638519b123dc25730fa71e85",
+  "passed": 5,
+  "failed": 0,
+  "pending": 0,
+  "passedSuites": 2,
+  "failedSuites": 0,
+  "cases": [
+    {
+      "name": "workspace overview with durable identity and read-only recovery uses the real durable driver and rejects unauthenticated or invalid audiences",
+      "status": "passed",
+      "durationMs": 52.36909999999989
+    },
+    {
+      "name": "workspace overview with durable identity and read-only recovery keeps two lawful profile metadata rows but no child business projections or writes in self mode",
+      "status": "passed",
+      "durationMs": 65.81079999999929
+    },
+    {
+      "name": "workspace overview with durable identity and read-only recovery rejects learner self mode, mixed intentions and another account without substituting a child",
+      "status": "passed",
+      "durationMs": 84.92469999999958
+    },
+    {
+      "name": "workspace overview with durable identity and read-only recovery restores original accounts, profiles and learner binding after reopening the durable application",
+      "status": "passed",
+      "durationMs": 1578.2443999999996
+    },
+    {
+      "name": "workspace overview with durable identity and read-only recovery ends the original learning-code identity after revocation and keeps guardian metadata lawful",
+      "status": "passed",
+      "durationMs": 65.72679999999855
+    }
+  ]
+}

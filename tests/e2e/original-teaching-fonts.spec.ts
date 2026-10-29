@@ -17,7 +17,7 @@ async function board(page: Page) {
   await call('/students/' + child + '/learning-scope', { subject: 'math', grade: 5, term: 'upper', textbookVolumeId: null, textbookVersion: '合成已学范围', learnedAtomIds: ['core:math:fractionadd'], currentAtomId: 'core:math:fractionadd', minutesPerSession: 15 }, actor.token, 'PUT');
   const command = { studentId: child, subject: 'math', prompt: '异分母分数加法：先理解单位，再通分。', atomId: 'core:math:fractionadd' }, preview = await call('/learning/studio/whiteboards/preview', command, actor.token);
   const saved = await call('/learning/studio/whiteboards', { ...command, fingerprint: preview.fingerprint, requestKey: randomUUID() }, actor.token);
-  await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential); await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential); await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   return '/studio?student=' + child + '&subject=math&whiteboard=' + saved.id;
 }
 
@@ -111,7 +111,7 @@ test('original fonts: captured math faces stay isolated and the real formula edi
   async function call(path:string,body:object,token?:string) { const response=await fetch(api+path,{method:'POST',headers:{'Content-Type':'application/json','X-Forwarded-For':address,...(token?{Authorization:'Bearer '+token}:{})},body:JSON.stringify(body)});expect(response.ok,path+' '+response.status).toBe(true);return(await response.json()).data; }
   const actor=await call('/auth/register',{principal,credential}),student=(await call('/students',{nickname:'匿名字体输入',grade:3,preferredSessionMinutes:15,defaultVersionMap:{math:'',chinese:'',english:''}},actor.token)).profile;
   const fixture=await call('/qa/answer-journeys',{studentId:student.id,mode:'formula_blank',kind:'diagnostic'},actor.token);
-  await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   const requests:Array<{url:string;status:number}>=[];
   page.on('response',response=>{const path=new URL(response.url()).pathname;if(path.startsWith('/vendor/mathlive/fonts/')||/\/_next\/static\/media\/KaTeX_.*\.woff2$/.test(path))requests.push({url:response.url(),status:response.status()});});
   await page.goto(fixture.href);const field=page.locator('math-field').first();await expect(field).toBeVisible();await field.click();

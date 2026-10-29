@@ -6,7 +6,7 @@ const api='http://localhost:'+(process.env.E2E_API_PORT??'4107')+'/api',evidence
 async function enter(page:Page){
   page.on('dialog',dialog=>void dialog.accept());const suffix=crypto.randomUUID(),principal='guided-project-'+suffix+'@local.test',credential='Guided-QA-'+suffix;
   const response=await fetch(api+'/auth/register',{method:'POST',headers:{'content-type':'application/json','X-Forwarded-For':'198.18.15.'+(++address)},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;
-  await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   await page.goto('/studio/projects?unitId=soc-u1');await page.getByRole('button',{name:'开始这个项目 →',exact:true}).click();await expect(page.getByRole('region',{name:'当前项目步骤'})).toContainText('STEP 1 OF 5');
   const id=new URL(page.url()).searchParams.get('project')!;
   async function current(){const r=await fetch(api+'/learning/projects/'+id,{headers:{authorization:'Bearer '+actor.token}});expect(r.status).toBe(200);return(await r.json()).data;}

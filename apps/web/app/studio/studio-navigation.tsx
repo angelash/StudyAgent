@@ -1,30 +1,34 @@
 'use client';
 import Link from 'next/link';
 import * as React from 'react';
+import { usePathname } from 'next/navigation';
 import { useSessionUser } from '../../lib/session-user';
-import { learningContextHref, readLearningContext, saveLearningContext, type LearningContext } from '../../lib/learning-context';
+import { learningContextIssue, readLearningContext, type LearningContext } from '../../lib/learning-context';
+import { WorkspaceShellContext } from '../../lib/workspace-shell-context';
+import { workspaceEntries, workspaceArea, workspaceHref, type WorkspaceNavigation, type WorkspaceArea } from '../../lib/workspace-navigation';
+import { SessionControl } from '../../components/session-control';
 import './workspace.css';
 import { WorkspaceDialog } from './workspace-dialog';
 import './reference-navigation.generated.css';
 import './reference-navigation.css';
 
-export type StudioView = 'home' | 'courses' | 'feed' | 'calendar' | 'materials' | 'history';
-const navigation: Array<[StudioView, string, string, string]> = [
-  ['home', '首页', 'Home', 'M3 10 12 3l9 7M5 9v12h14V9M9 21v-7h6v7'],
-  ['courses', '课程', 'Courses', 'm2 8 10-5 10 5-10 5Zm4 3v6q6 5 12 0v-6M22 8v9'],
-  ['calendar', '学习动态', 'Calendar', 'M4 5h16v16H4ZM4 10h16M8 3v4M16 3v4M8 14h3M8 17h7'],
-  ['history', '历史', 'History', 'M4 7a9 9 0 1 1-1 9M4 3v5h5M12 7v6l4 2'],
-  ['materials', '资料', 'Materials', 'M4 3h11l5 5v13H4ZM15 3v6h5M8 13h8M8 17h6'],
-];
+export type { StudioView } from '../../lib/workspace-navigation';
 export function StudioSymbol({ path, size = 20 }: { path: string; size?: number }) {
   return <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={path}/></svg>;
 }
-export function StudioNavigation({ active, recent, onNavigate, onCreate, context }: { active: StudioView | 'whiteboards';
-  recent?: Array<{ title: string; detail?: string; href: string }>; onNavigate?: (view: StudioView) => void; onCreate?: (returnFocus?: HTMLElement | null) => void; context?: LearningContext }) {
+export function StudioNavigation(props: WorkspaceNavigation) {
+  const host = React.useContext(WorkspaceShellContext), user = useSessionUser();
+  const token = React.useRef(Symbol('workspace-page'));
+  React.useLayoutEffect(() => { if (host && user) host.register(token.current, user.id, props); }, [host, user?.id, props]);
+  React.useLayoutEffect(() => { const key = token.current; return () => host?.unregister(key); }, [host]);
+  return host ? null : <WorkspaceSidebar {...props} />;
+}
+export function WorkspaceSidebar({ active, recent, onNavigate, onCreate, context }: WorkspaceNavigation) {
+  const pathname = usePathname();
   const [mobile, setMobile] = React.useState(false), [narrow, setNarrow] = React.useState(false), [collapsed, setCollapsed] = React.useState(false);
   const trigger = React.useRef<HTMLButtonElement>(null), sidebar = React.useRef<HTMLElement>(null), user = useSessionUser();
   const mobileOpen = React.useRef(false); mobileOpen.current = narrow && mobile;
-  const [homeHref, setHomeHref] = React.useState('/learn');
+  const [selectedContext, setSelectedContext] = React.useState<LearningContext | undefined>(context);
   React.useEffect(() => {
     const query = window.matchMedia('(max-width:1000px)'), update = () => { setNarrow(query.matches); if (!query.matches) setMobile(false); };
     update(); query.addEventListener('change', update); return () => query.removeEventListener('change', update);
@@ -32,10 +36,12 @@ export function StudioNavigation({ active, recent, onNavigate, onCreate, context
   React.useEffect(() => {
     let saved = false; try { saved = localStorage.getItem('studyagent.navigation.compact.' + (user?.id ?? 'guest')) === 'true'; } catch { /* Current controls remain usable. */ }
     setCollapsed(saved);
-    if (!user) { setHomeHref('/learn'); return; }
-    const selected = context?.studentId ? context : readLearningContext(user.id, window.location.search);
-    setHomeHref(learningContextHref('/learn', selected)); saveLearningContext(user.id, selected);
-  }, [user?.id, context?.studentId, context?.subject]);
+    if (!user) { setSelectedContext(undefined); return; }
+    if (learningContextIssue(window.location.search)) { setSelectedContext(user.role === 'student' ? { studentId: user.studentId, subject: 'math' } : undefined); return; }
+    const restored = context?.studentId || context?.audience === 'self' ? context : readLearningContext(user.id, window.location.search);
+    const selected = user.role === 'student' ? { studentId: user.studentId, subject: restored.subject } : restored;
+    setSelectedContext(selected);
+  }, [user?.id, context?.studentId, context?.subject, context?.audience, pathname]);
   React.useEffect(() => { setMobile(false); }, [user?.id]);
   React.useEffect(() => {
     const value = narrow ? 'mobile' : collapsed ? 'compact' : 'expanded'; document.body.dataset.studyNavigation = value;
@@ -61,6 +67,9 @@ export function StudioNavigation({ active, recent, onNavigate, onCreate, context
   }, [narrow, mobile]);
   function toggle() { const value = !collapsed; setCollapsed(value); try { localStorage.setItem('studyagent.navigation.compact.' + (user?.id ?? 'guest'), String(value)); } catch { /* Persistence is optional. */ } }
   const expanded = narrow || !collapsed, resume = recent?.[0], rootId = React.useId();
+  const current = workspaceArea(pathname, typeof window === 'undefined' ? '' : window.location.search, active === 'feed' ? 'home' : active);
+  const independent = user?.role !== 'student' && selectedContext?.audience === 'self';
+  const entries = workspaceEntries.filter(entry => !independent || !['assessment', 'reports'].includes(entry.id));
   function afterNavigate() { setMobile(false); }
   const body = <aside ref={sidebar} id={rootId} className={'ws-navigation ws-reference-navigation sidebar expanded' + (!expanded ? ' compact' : '')}
     data-open={mobile} data-narrow={narrow} aria-label="学习工作台导航" {...(narrow ? { role: 'dialog', 'aria-modal': true as const } : {})}>
@@ -71,17 +80,18 @@ export function StudioNavigation({ active, recent, onNavigate, onCreate, context
           aria-expanded={expanded} onClick={narrow ? afterNavigate : toggle}><StudioSymbol path={narrow ? 'M6 6l12 12M18 6 6 18' : collapsed ? 'm9 6 6 6-6 6' : 'm15 6-6 6 6 6'} size={16}/></button>
       </header>
       <div className="sidebar-body"><nav className="nav-icons-group" aria-label="工作台主要入口">
-        {navigation.map(([view, label, english, path]) => {
-          const className = 'nav-item' + (expanded ? ' expanded' : '') + (active === view ? ' active' : '');
-          const content = <><StudioSymbol path={path}/><span className="button-label">{label}</span></>;
-          return onNavigate ? <button key={view} type="button" className={className} title={!expanded ? label : undefined} aria-label={english}
-            aria-current={active === view ? 'page' : undefined} onClick={() => { afterNavigate(); onNavigate(view); }}>{content}</button> :
-            <Link key={view} className={className} href={'/studio?view=' + view} title={!expanded ? label : undefined} aria-label={english}
-              aria-current={active === view ? 'page' : undefined} onClick={afterNavigate}>{content}</Link>;
-        })}
-        <Link className={'nav-item' + (expanded ? ' expanded' : '') + (active === 'whiteboards' ? ' active' : '')} href="/studio/whiteboards"
-          aria-label="AI Whiteboards" title={!expanded ? 'AI白板' : undefined} aria-current={active === 'whiteboards' ? 'page' : undefined} onClick={afterNavigate}>
-          <StudioSymbol path="M4 4h16v13H4ZM8 21l4-4 4 4M8 8h8M8 12h5"/><span className="button-label">AI白板</span></Link>
+        {['学习', '学习观察', '资料与记录'].map(group => <div key={group} className="ws-navigation-group">
+          {expanded && <p className="ws-navigation-group-label">{group === '学习观察' && independent ? '时间安排' : group}</p>}
+          {entries.filter(entry => entry.group === group).map(entry => {
+            const className = 'nav-item' + (expanded ? ' expanded' : '') + (current === entry.id ? ' active' : '');
+            const content = <><StudioSymbol path={entry.path}/><span className="button-label">{entry.label}</span></>;
+            const label = ['tasks', 'assessment', 'reports'].includes(entry.id) ? entry.label : entry.english;
+            return onNavigate && entry.view ? <button key={entry.id} type="button" className={className} title={!expanded ? entry.label : undefined} aria-label={label}
+              aria-current={current === entry.id ? 'page' : undefined} onClick={() => { afterNavigate(); onNavigate(entry.view!); }}>{content}</button> :
+              <Link key={entry.id} className={className} href={workspaceHref(entry.id, selectedContext)} title={!expanded ? entry.label : undefined} aria-label={label}
+                aria-current={current === entry.id ? 'page' : undefined} onClick={afterNavigate}>{content}</Link>;
+          })}
+        </div>)}
       </nav>
       {onCreate && expanded && <button type="button" className="ws-reference-create" onClick={() => {
         const target = narrow ? trigger.current : document.activeElement as HTMLElement | null;
@@ -96,12 +106,19 @@ export function StudioNavigation({ active, recent, onNavigate, onCreate, context
         <div className="conversation-list">{recent?.length ? recent.slice(1, 4).map((item, index) => <Link className="conversation-item" href={item.href} key={index} title={item.title} onClick={afterNavigate}>
           <span className="conversation-title">{item.title}</span></Link>) : <p className="ws-reference-empty">开始学习后，活动会出现在这里。</p>}</div>
       </section></div>}
-      </div><footer className="sidebar-version-footer"><Link href={homeHref} title={!expanded ? '返回学习首页' : undefined} aria-label="返回学习首页" onClick={afterNavigate}>
-        {expanded ? '返回学习首页 →' : <StudioSymbol path="M3 12h18M9 6l-6 6 6 6" size={18}/>}</Link></footer>
+      </div><footer className="sidebar-version-footer">
+        {([
+          ...(['parent', 'admin'].includes(user?.role ?? '') ? [['profiles', '学习档案', 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-4M16 3a4 4 0 0 1 0 8']] : []),
+          ...(['teacher', 'admin'].includes(user?.role ?? '') ? [['admin', '教研与管理', 'M4 6h16M4 12h16M4 18h16M8 3v6M16 9v6M10 15v6']] : []),
+          ['settings', '账号与设置', 'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4'],
+        ] as Array<[WorkspaceArea, string, string]>).map(([id, label, path]) => <Link key={id} href={workspaceHref(id, selectedContext)} className={current === id ? 'active' : undefined}
+          aria-label={label} aria-current={current === id ? 'page' : undefined} title={!expanded ? label : undefined} onClick={afterNavigate}>
+          <StudioSymbol path={path}/><span className="button-label">{label}</span></Link>)}
+        {expanded && <SessionControl navigation={false} />}
+      </footer>
     </div>
   </aside>;
-  return <><link rel="stylesheet" href="/reference/hyperknow/font/Satoshi_Complete/Fonts/WEB/css/satoshi.css" precedence="studio-fonts"/>
-    <link rel="stylesheet" href="/reference/hyperknow/fonts/misans/misans.css" precedence="studio-fonts"/>
+  return <>
     <button ref={trigger} type="button" className="ws-reference-trigger" aria-label="打开学习导航" aria-expanded={mobile} aria-controls={rootId} onClick={() => setMobile(true)}><StudioSymbol path="M4 6h16M4 12h16M4 18h16"/></button>
     {narrow ? mobile && <WorkspaceDialog onClose={afterNavigate} returnFocus={trigger.current}><div className="ws-reference-backdrop" onClick={event => { if (event.target === event.currentTarget) afterNavigate(); }}>{body}</div></WorkspaceDialog> : body}
   </>;

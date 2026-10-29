@@ -14,12 +14,16 @@ import { EvidenceFeedbackForm } from '../../../components/evidence-feedback';
 import { TeachingGuide } from '../../../components/teaching-guide';
 import { useSessionUser } from '../../../lib/session-user';
 import { answerInputConfiguration } from '@study-agent/contracts';
+import { learningContextIssue } from '../../../lib/learning-context';
 import '../assessment/studio.css';
 import './today.css';
 
 const send = <T,>(path: string, body?: unknown, method = 'POST') => apiRequest<T>(path, body === undefined ? {} : { method, body: JSON.stringify(body) });
 export function DailyStudio() {
-  const studentMode = useSessionUser()?.role === 'student';
+  const identity=useSessionUser();
+  return <DailyWorkspace key={identity?identity.id+':'+identity.role:identity===undefined?'checking':'anonymous'} studentMode={identity?.role==='student'} />;
+}
+function DailyWorkspace({studentMode}:{studentMode:boolean}) {
   const [children, setChildren] = React.useState<Child[]>([]), [studentId, setStudentId] = React.useState(''), [subject, setSubject] = React.useState<Subject>('math');
   const [today, setToday] = React.useState<DailyLearning | null>(null), [practice, setPractice] = React.useState<Practice | null>(null);
   const [payload, setPayload] = React.useState<QuestionRenderPayload | null>(null), draft = useAnswerDraft(), answer = draft.answer;
@@ -44,9 +48,11 @@ export function DailyStudio() {
     let alive = true;
     (async () => {
       try {
+        const issue=learningContextIssue(window.location.search);if(issue)throw new Error(issue);
         const list = await send<Child[]>('/learning/students');
         if (!alive) return; setLoggedIn(true); setChildren(list);
-        const params = new URLSearchParams(window.location.search), selected = list.find((item) => item.id === params.get('studentId')) ?? list[0];
+        const params = new URLSearchParams(window.location.search),requested=params.get('studentId')??params.get('student'), selected = list.find((item) => item.id === requested) ?? (!requested?list[0]:undefined);
+        if(requested&&!selected)throw new Error('所选学习档案不可访问，请重新选择。');
         const selectedSubject = params.get('subject'); if (selectedSubject && selectedSubject in subjectNames) setSubject(selectedSubject as Subject);
         if (selected) setStudentId(selected.id);
         const id = params.get('practice');
@@ -105,7 +111,7 @@ export function DailyStudio() {
     window.location.href = `/student/assessment?studentId=${encodeURIComponent(command.studentId)}&subject=${command.subject}&blueprint=${encodeURIComponent(next.id)}`;
   }
   const assessmentHref = `/student/assessment?studentId=${studentId}&subject=${subject}`;
-  return <main className="learning-studio daily-studio"><StudyNav current="today" context={{ studentId: studentId || undefined, subject }} /><div className="daily-layout">
+  return <main className="learning-studio daily-studio"><StudyNav current="today" context={{ studentId: studentId || undefined, subject }} /><div className="daily-layout"><header className="workspace-page-heading"><h1>学习任务</h1></header>
     <aside className="daily-rail"><span className="studio-eyebrow">DAILY PRACTICE / 每日一小步</span><h1>把学会的，<br /><em>慢慢变稳。</em></h1><p>先理解，再练习。用之后的独立新题，看看这一步有没有留下来。</p>
       {!practice && <><label>正在陪伴<select aria-label="选择学生" value={studentId} onChange={(e) => setStudentId(e.target.value)}>{children.map((item) => <option key={item.id} value={item.id}>{item.nickname}</option>)}</select></label><div className="studio-subjects">{Object.entries(subjectNames).map(([key, name]) => <button key={key} aria-pressed={subject === key} onClick={() => setSubject(key as Subject)}>{name}</button>)}</div></>}
       {child && <p>{child.nickname} · {child.grade}年级 · {subjectNames[subject]}</p>}

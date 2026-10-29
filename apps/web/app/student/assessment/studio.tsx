@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import type { AnswerDraftState, GuidancePlanView, DiagnosticHypothesis, DiagnosticReport, KnowledgeAtom, LearningScope,
   AssessmentBlueprint, DiagnosticBlueprintView, DiagnosticRoutingDecision, DiagnosticStart, QuestionRenderPayload, ReviewTask, StudentAnswerPayload, Subject } from '@study-agent/contracts';
 import { apiRequest, ApiRequestError, getAuthToken } from '../../../lib/api';
@@ -25,6 +26,7 @@ import { AssessmentBlueprintCard } from '../../../components/assessment-blueprin
 import { VerificationObservationReport } from '../../../components/verification-observations';
 import { KnowledgeReportWorkspace } from '../../../components/knowledge-report-workspace';
 import type { ReportPlanRead } from '../../../components/report-plan-path';
+import { learningContextIssue, readLearningContext } from '../../../lib/learning-context';
 
 type Child = { id: string; nickname: string; grade: number };
 type Session = { id: string; status: 'in_progress' | 'paused' | 'completed' | 'aborted'; subject: Subject; scopeSnapshot: LearningScope;
@@ -41,8 +43,14 @@ const outcomeNames: Record<string, string> = { awaiting_retest: '等待复测', 
 const request = <T,>(path: string, body?: unknown, method = 'POST') => apiRequest<T>(path, body === undefined ? {} : { method, body: JSON.stringify(body) }, getAuthToken());
 const previewStorageKey = (studentId: string, subject: string) => `study-blueprint:${studentId}:${subject}`;
 
-export function AssessmentStudio() {
-  const identity = useSessionUser(), studentMode = identity?.role === 'student';
+export function AssessmentStudio({ reportOnly = false }: { reportOnly?: boolean } = {}) {
+  const identity=useSessionUser();
+  return <AssessmentWorkspace key={identity?identity.id+':'+identity.role:identity===undefined?'checking':'anonymous'} identity={identity} reportOnly={reportOnly} />;
+}
+function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof useSessionUser>;reportOnly:boolean}) {
+  const router = useRouter();
+  const [returnReport] = React.useState(() => { const id = typeof window === 'undefined' ? null : new URLSearchParams(window.location.search).get('returnReport'); return id && id.length <= 180 ? id : ''; });
+  const studentMode = identity?.role === 'student';
   const [confirmedScope, setConfirmedScope] = React.useState<LearningScope | null>(null);
   const [children, setChildren] = React.useState<Child[]>([]), [studentId, setStudentId] = React.useState('');
   const [subject, setSubject] = React.useState<Subject>('math'), [grade, setGrade] = React.useState(3), [term, setTerm] = React.useState<'upper' | 'lower'>('upper');
@@ -74,7 +82,7 @@ export function AssessmentStudio() {
   React.useEffect(() => () => { sessionReadGeneration.current++; }, []);
   const atomDeepLinkDone = React.useRef(false);
   const [locatedItem, setLocatedItem] = React.useState<{ id: string; payload: QuestionRenderPayload } | null>(null);
-  const planCreation=useGuidanceCreation(!studentMode?identity?.id??'':'',studentId,report?.sessionId??'',report?.version??1,screen==='report',value=>{setPlan(value);setReportPlans(rows=>[value,...rows.filter(row=>row.id!==value.id)]);setRetrospective(null);setScreen('plan');});
+  const planCreation=useGuidanceCreation(!studentMode?identity?.id??'':'',studentId,report?.sessionId??'',report?.version??1,screen==='report',value=>visitPlan(value));
   const current = session?.routing ? session.items.find(item => item.id === session.routing!.currentItemId && !item.answered) : session?.items.find((item) => !item.answered);
   const answerReady = !!payload && !!answer && draft.matches('diagnostic', session?.id ?? '', current?.id ?? '');
   const canAnswer = answerReady && payload ? answerInputConfiguration(payload.answerSchema).supported && payload.inputAvailability?.supported !== false && !mediaPending && !resourceBlocked && !draft.pendingSubmission && draft.phase !== 'conflict' : false;
@@ -85,6 +93,15 @@ export function AssessmentStudio() {
   React.useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }); }, [screen, current?.id]);
 
   function reportAccessLost() { window.location.replace('/learn?subject=' + encodeURIComponent(report?.subject ?? subject)); }
+  function visitPlan(value: GuidancePlanView) {
+    router.push('/studio/tasks?' + new URLSearchParams({ studentId: value.studentId, subject: value.subject, view: 'plan', planId: value.id, returnReport: report?.sessionId ?? value.baselineSessionId }));
+  }
+  function reportLocation(id: string, selectedStudent = studentId, selectedSubject = subject) {
+    const params = new URLSearchParams({ studentId: selectedStudent, subject: selectedSubject, session: id });
+    const previous = new URLSearchParams(window.location.search);
+    for (const key of ['item', 'reportAtom']) if (previous.get('session') === id && previous.get(key)) params.set(key, previous.get(key)!);
+    return '/studio/reports?' + params;
+  }
 
   async function execute(fn: () => Promise<void>) {
     setBusy(true); setError('');
@@ -93,16 +110,20 @@ export function AssessmentStudio() {
   }
   async function openSession(next: Session, recover = true, requestedItemId: string | null = null) {
     const generation = ++sessionReadGeneration.current;
-    if (recover) await recoverPendingAnswerSubmission('diagnostic', next.id);
+    if (recover && !reportOnly) await recoverPendingAnswerSubmission('diagnostic', next.id);
     if (generation !== sessionReadGeneration.current) return;
     next = await request<Session>(`/diagnostics/sessions/${next.id}`);
     if (generation !== sessionReadGeneration.current) return;
+    if (reportOnly && !['completed', 'aborted'].includes(next.status)) throw new Error('这组测评尚未形成报告，请从知识诊断继续原作答。');
+    if (!reportOnly && ['completed', 'aborted'].includes(next.status)) { router.replace(reportLocation(next.id, next.scopeSnapshot.studentId, next.subject)); return; }
+    if (!reportOnly && window.location.pathname === '/studio/tasks') { const params = new URLSearchParams({ studentId: next.scopeSnapshot.studentId, subject: next.subject, session: next.id });if (returnReport) params.set('returnReport', returnReport);router.push('/studio/assessment?' + params);return; }
     if (!recover) draft.confirmed();
     setStudentId(next.scopeSnapshot.studentId); setSubject(next.subject); setGrade(next.scopeSnapshot.grade); setTerm(next.scopeSnapshot.term);
     draft.reset(); setAnswerReadRevision(value => value + 1); setSession(next); setReport(null); setPayload(null); setHint(''); setBlueprint(null); setEndOpen(false); setLocatedItem(null);
     setSessions(rows => [next, ...rows.filter(row => row.id !== next.id)].sort((a, b) => b.startedAt.localeCompare(a.startedAt)));
     try { sessionStorage.removeItem(previewStorageKey(next.scopeSnapshot.studentId, next.subject)); } catch { /* Storage is optional; the server remains authoritative. */ }
     const location = new URLSearchParams({ studentId: next.scopeSnapshot.studentId, subject: next.subject, session: next.id });
+    if (returnReport) location.set('returnReport', returnReport);
     const previous = new URLSearchParams(window.location.search), reportAtom = previous.get('reportAtom');
     if (['completed', 'aborted'].includes(next.status) && previous.get('session') === next.id && reportAtom && reportAtom.length <= 180) location.set('reportAtom', reportAtom);
     window.history.replaceState({}, '', '?' + location.toString());
@@ -126,10 +147,12 @@ export function AssessmentStudio() {
     let alive = true;
     (async () => {
       try {
+        const issue=learningContextIssue(window.location.search);if(issue)throw new Error(issue);
+        if (identity && readLearningContext(identity.id, window.location.search).audience === 'self') throw new Error('知识诊断与儿童报告需要选择孩子档案，请返回工作台选择学习对象。');
         const list = await request<Child[]>('/learning/students');
         if (!alive) return;
         setLoggedIn(true); setChildren(list);
-        const params = new URLSearchParams(window.location.search), requested = params.get('studentId');
+        const params = new URLSearchParams(window.location.search), requested = params.get('studentId')??params.get('student');
         const requestedSubject = params.get('subject');
         if (subjects.some(([key]) => key === requestedSubject)) setSubject(requestedSubject as Subject);
         const selected = list.find((item) => item.id === requested) ?? list[0];
@@ -146,6 +169,7 @@ export function AssessmentStudio() {
         if (sessionId && selected) {
           const restored = await request<Session>(`/diagnostics/sessions/${encodeURIComponent(sessionId)}`);
           if (!alive) return;
+          if (requested && restored.scopeSnapshot.studentId !== requested || requestedSubject && restored.subject !== requestedSubject) throw new Error('原测评与链接中的学习档案或学科不一致，请从报告列表重新选择。');
           setSubject(restored.subject); await openSession(restored, true, params.get('item'));
         } else if (selected) {
           const selectedSubject = subjects.some(([key]) => key === requestedSubject) ? requestedSubject! : 'math';
@@ -274,17 +298,22 @@ export function AssessmentStudio() {
     const body = { ...configured, requestKey: previewRequest.current.key };
     try { sessionStorage.setItem(previewStorageKey(command.studentId, command.subject), JSON.stringify(body)); } catch { /* The response and URL also restore the preview. */ }
     const next = await request<DiagnosticBlueprintView>('/diagnostics/blueprints', body);
+    const params = new URLSearchParams({ studentId: command.studentId, subject: command.subject, blueprint: next.id });
+    if (reportOnly && report) params.set('returnReport', report.sessionId);
+    if (returnReport) params.set('returnReport', returnReport);
+    if (reportOnly || window.location.pathname === '/studio/tasks') { router.push('/studio/assessment?' + params);return; }
     setBlueprint(next); setScreen('preview');
-    window.history.replaceState({}, '', `?studentId=${encodeURIComponent(command.studentId)}&subject=${command.subject}&blueprint=${encodeURIComponent(next.id)}`);
+    window.history.replaceState({}, '', '?' + params);
   }
   async function leaveBlueprint() {
+    if (reportOnly || window.location.pathname === '/studio/tasks') { router.push('/studio/assessment?' + new URLSearchParams({ studentId, subject }));return; }
     if (screen === 'assessment' && answerReady && !await draft.prepareToLeave()) return;
     sessionReadGeneration.current++;
     draft.reset();
     previewRequest.current = { signature: '', key: '' }; setBlueprint(null); setLocatedItem(null); setScreen('setup');
     if (intent === 'verification' || intent === 'retest') { setIntent('baseline'); setMaxItems(12); }
     try { sessionStorage.removeItem(previewStorageKey(studentId, subject)); } catch { /* No local state is required. */ }
-    window.history.replaceState({}, '', `?studentId=${encodeURIComponent(studentId)}&subject=${subject}`);
+    const params = new URLSearchParams({ studentId, subject });if (returnReport) params.set('returnReport', returnReport);window.history.replaceState({}, '', '?' + params);
   }
   async function changeSessionState(action: 'pause' | 'resume' | 'abort') {
     if (!session) return;
@@ -298,7 +327,7 @@ export function AssessmentStudio() {
       const next = await request<Session>(`/diagnostics/sessions/${session.id}/state`, { action, expectedRevision: session.revision,
         requestKey: stateRequest.current.key, reason });
       setSession(next); setEndOpen(false); setSessions(rows => rows.map(row => row.id === next.id ? next : row));
-      if (action === 'abort') { setReport(await request<DiagnosticReport>(`/diagnostics/sessions/${session.id}/report`)); setScreen('report'); }
+      if (action === 'abort') router.replace(reportLocation(session.id));
     });
   }
   async function respond(disposition: 'answered' | 'dont_know' | 'skip') {
@@ -314,11 +343,8 @@ export function AssessmentStudio() {
     });
   }
   async function completeSession(id: string) {
-    const finished = await request<DiagnosticReport>(`/diagnostics/sessions/${id}/complete`, {});
-    setReport(finished); setScreen('report');
-    // The completed view contains the frozen selection history, hidden while answering.
-    const completed = await request<Session>(`/diagnostics/sessions/${id}`);
-    setSession(completed); setSessions(rows => [completed, ...rows.filter(row => row.id !== id)].sort((a, b) => b.startedAt.localeCompare(a.startedAt)));
+    await request<DiagnosticReport>(`/diagnostics/sessions/${id}/complete`, {});
+    router.replace(reportLocation(id));
   }
   async function verify(hypothesis?: DiagnosticHypothesis, atomId?: string) {
     await execute(() => showBlueprint({ studentId, subject, intent: 'verification', maxItems: 8,
@@ -341,9 +367,11 @@ export function AssessmentStudio() {
   }
 
   const paperReviewOrigin = blueprint?.paperReviewOrigin ?? session?.paperReviewOrigin;
+  if (reportOnly && !report) return <main className="learning-studio"><StudyNav current="reports" context={{ studentId: studentId || undefined, subject }} /><section className="workspace-page"><h1>原测评报告</h1>{loading ? <p role="status">正在读取原会话和报告…</p> : <p role={error ? 'alert' : 'status'}>{error || '还没有可读取的报告。'}</p>}<Link className="workspace-button" href={'/studio/reports?' + new URLSearchParams({ studentId, subject })}>返回报告列表</Link></section></main>;
   return <main className="learning-studio">
-    <StudyNav current="assessment" context={{ studentId: studentId || undefined, subject }} />
-    <div className="studio-layout">
+    <StudyNav current={reportOnly || screen === 'report' ? 'reports' : screen === 'plan' ? 'today' : 'assessment'} context={{ studentId: studentId || undefined, subject }} />
+    <div className="studio-layout"><header className="workspace-page-heading"><h1>{screen==='report'?'学习报告':screen==='plan'?'指导计划':'知识诊断'}</h1></header>
+      {(reportOnly || returnReport) && <div className="workspace-page-controls">{reportOnly && <Link className="workspace-button" href={'/studio/reports?' + new URLSearchParams({ studentId, subject })}>返回报告列表</Link>}{returnReport && <Link className="workspace-button" href={reportLocation(returnReport)}>返回来源报告</Link>}</div>}
       <aside className="studio-rail"><span className="studio-eyebrow">LEARNING / INSIGHT</span><h1>把知识<br /><em>学扎实。</em></h1>
         <p>从学到了哪里开始，找到卡住的那一步，再用新题看看是否真的掌握。</p>
         <ol className="studio-steps">{[['setup', '确认学习进度'], ['assessment', '完成一组评测'], ['report', '看懂知识与原因'], ['plan', '指导、复测与复盘']].map(([key, title], index) =>
@@ -385,7 +413,7 @@ export function AssessmentStudio() {
             </>}
             {sessions.length > 0 && <section className="studio-history"><h3>继续上一次，或回看报告</h3>{sessions.slice(0, 6).map((item) => <button key={item.id} onClick={() => execute(() => openSession(item))} disabled={busy}>
               <span>{new Date(item.startedAt).toLocaleDateString('zh-CN')} · {item.scopeSnapshot.grade}年级</span><strong>{item.status === 'completed' ? '查看报告' : item.status === 'aborted' ? '查看已答记录' : `${item.status === 'paused' ? '恢复评测' : '继续评测'} ${item.answeredCount}/${item.totalCount}`} ↗</strong></button>)}</section>}
-            {plan && <button className="studio-plan-shortcut" onClick={() => setScreen('plan')}>已有指导计划 · {plan.status === 'active' ? '正在执行' : '查看与确认'} <span>↗</span></button>}
+            {plan && <button className="studio-plan-shortcut" onClick={() => visitPlan(plan)}>已有指导计划 · {plan.status === 'active' ? '正在执行' : '查看与确认'} <span>↗</span></button>}
           </>}
           {screen === 'preview' && blueprint && <AssessmentBlueprintCard preview={blueprint} busy={busy} onBack={leaveBlueprint} onStart={() => execute(async () => openSession(await request<Session>(`/diagnostics/blueprints/${encodeURIComponent(blueprint.id)}/start`, {})))} />}
           {locatedItem && session && <section className="studio-question" aria-label="从历史对话定位的题目">
@@ -434,9 +462,9 @@ export function AssessmentStudio() {
             <KnowledgeReportWorkspace key={`${identity?.id}:${report.sessionId}:${report.version ?? 1}`} ownerId={identity?.id ?? ''} report={report}
               plans={reportPlans} currentPlan={plan} planRead={reportPlanRead} busy={busy} analysisNeedsUpdate={analysisNeedsUpdate}
               onRetryPlans={() => setPlanReadRevision(value => value + 1)} onVerify={(hypothesis, atomId) => { void verify(hypothesis, atomId); }}
-              onOpenPlan={!studentMode ? next => { const params = new URLSearchParams({ studentId: report.studentId, subject: report.subject, view: 'plan', planId: next.id }); window.location.assign('/student/assessment?' + params.toString()); } : undefined} onAccessLost={reportAccessLost} />
+              onOpenPlan={!studentMode ? next => visitPlan(next) : undefined} onAccessLost={reportAccessLost} />
             <VerificationObservationReport result={report.verification} names={new Map(report.estimates.map(estimate => [estimate.atomId, estimate.atomName]))} studentId={report.studentId} />
-            {report.status === 'aborted' || report.definitionContext?.origin === 'unavailable' ? <div className="studio-report-next"><div><h3>重新了解当前的知识掌握。</h3><p>{report.status === 'aborted' ? '这份记录保留了提前结束前的表现。完成一轮新评测后，再制定当前的指导计划。' : '这份历史报告未保存知识定义。先完成新评测，再制定当前的指导计划。'}</p></div><button className="studio-primary" disabled={busy} onClick={() => setScreen('setup')}>确认范围并重新评测 ↗</button></div> : !studentMode ? <div className="studio-report-next"><div><h3>让评测变成下一步行动。</h3><p>计划包含指导活动、成功标准与间隔复测。</p></div><button className="studio-primary" disabled={busy || analysisNeedsUpdate || planCreation.busy || !!planCreation.pending || !planCreation.ready} onClick={() => void planCreation.create(minutes)}>{planCreation.busy ? '正在保存规则计划…' : '制定指导计划'} ↗</button>
+            {report.status === 'aborted' || report.definitionContext?.origin === 'unavailable' ? <div className="studio-report-next"><div><h3>重新了解当前的知识掌握。</h3><p>{report.status === 'aborted' ? '这份记录保留了提前结束前的表现。完成一轮新评测后，再制定当前的指导计划。' : '这份历史报告未保存知识定义。先完成新评测，再制定当前的指导计划。'}</p></div><button className="studio-primary" disabled={busy} onClick={() => void leaveBlueprint()}>确认范围并重新评测 ↗</button></div> : !studentMode ? <div className="studio-report-next"><div><h3>让评测变成下一步行动。</h3><p>计划包含指导活动、成功标准与间隔复测。</p></div><button className="studio-primary" disabled={busy || analysisNeedsUpdate || planCreation.busy || !!planCreation.pending || !planCreation.ready} onClick={() => void planCreation.create(minutes)}>{planCreation.busy ? '正在保存规则计划…' : '制定指导计划'} ↗</button>
               <div className="guidance-create-recovery">{planCreation.error && <p className="studio-error" role="alert">{planCreation.error}</p>}{planCreation.storageNotice && <p role="status">{planCreation.storageNotice}</p>}
                 {planCreation.pending && <p>原请求预算{planCreation.pending.minutesPerDay}分钟，创建结果尚待确认。<button className="studio-secondary" disabled={planCreation.busy} onClick={() => void planCreation.create(minutes,true)}>读取原计划创建结果</button></p>}
                 {(planCreation.pending || planCreation.rejected || planCreation.storageNotice) && <button className="studio-text-button" onClick={planCreation.download}>下载原创建命令</button>}</div></div> : <div className="studio-hint"><strong>这次的观察已经保存。</strong><p>请家长查看报告，一起确认下一步指导；也可以继续完成新的验证任务。</p><Link className="studio-secondary" href="/student/today">回到今日学习 ↗</Link></div>}<p className="studio-footnote">{report.modelNotice}</p>

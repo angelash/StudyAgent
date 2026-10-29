@@ -8,7 +8,7 @@ async function login(page: Page) {
   const response = await fetch(api + '/auth/register', { method: 'POST', headers: await syntheticFamilyHeaders(page), body: JSON.stringify({principal,credential}) });
   expect(response.status).toBe(201); const actor = (await response.json()).data;
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
-  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   await page.addInitScript(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
   return actor;
 }

@@ -40,7 +40,7 @@ async function fixture(page: Page, speech = false, adult = false) {
     await page.addInitScript(()=>{const NativeAudio=window.Audio;(window as any).questionAudio=[];(window as any).Audio=function(src?:string){const audio=new NativeAudio(src);(window as any).questionAudio.push(audio);return audio;};});
   }
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
-  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   const href = adult ? '/studio/whiteboards?whiteboard=' + board.id : '/studio?student=' + child + '&subject=math&whiteboard=' + board.id; await page.goto(href);
   const player = page.getByRole('dialog', { name: '白板视频', exact: true }); await expect(player).toHaveAttribute('data-original-font-status', 'ready');
   const region = page.getByRole('region', { name: '原句提问', exact: true }), current = player.locator('.wb-current-sentence');

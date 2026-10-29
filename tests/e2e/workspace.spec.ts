@@ -16,7 +16,7 @@ async function account(page: Page, child = false) {
     expect(result.status).toBe(201); studentId = (await result.json()).data.profile.id;
   }
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
-  await page.getByRole('button', {name:'登录，查看学习记录 →'}).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.getByRole('button', {name:'登录，查看学习记录 →'}).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   await page.evaluate(() => localStorage.setItem('studyagent.classroom.tour','done'));
   return {studentId, headers};
 }

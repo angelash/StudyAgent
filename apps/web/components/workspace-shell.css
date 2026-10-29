@@ -1,0 +1,92 @@
+/* Shared host adapts former observation pages to the existing workspace surface. */
+body[data-study-navigation] { --workspace-sidebar:240px; --workspace-ink:#172031; --workspace-muted:#7d8799; --workspace-line:#e9ecf1; --workspace-blue:#4c6696; }
+body[data-study-navigation=compact] { --workspace-sidebar:60px; }
+body[data-study-navigation] .learning-studio { padding-left:var(--workspace-sidebar);background:#fafafa;color:var(--workspace-ink);font-family:"Satoshi-Regular",MiSans,sans-serif; }
+body[data-study-navigation] .learning-studio :is(button,input,select,textarea) { font-family:inherit; }
+body[data-study-navigation] .learning-studio :is(.studio-main,.daily-main,.privacy-main,.admin-workbench,.library-body) { min-width:0; }
+.ws-navigation-group { display:flex;flex-direction:column;gap:2px;width:100%; }
+.ws-navigation-group-label { margin:10px 12px 2px;color:#939dab;font:11px "Satoshi-Regular",MiSans,sans-serif; }
+.ws-reference-navigation .sidebar-version-footer { display:flex;flex-direction:column;align-items:stretch;border-top:1px solid #e9ecf1;padding:8px 12px;gap:2px; }
+.ws-reference-navigation .sidebar-version-footer>a { display:flex;align-items:center;gap:14px;min-height:33px;padding:7px 12px;border-radius:8px;color:#535960;font:13px "Satoshi-Medium",MiSans,sans-serif; }
+.ws-reference-navigation .sidebar-version-footer>a.active { background:var(--sidebar-active-bg);color:var(--sidebar-active-color); }
+.ws-reference-navigation .sidebar-version-footer>a:hover { background:var(--sidebar-hover-bg); }
+.ws-reference-navigation:not(.compact) .sidebar-version-footer .button-label { display:inline;opacity:1;visibility:visible;white-space:nowrap;transform:none;color:inherit; }
+.ws-reference-navigation .sidebar-version-footer>a>svg { flex:none; }
+.ws-reference-navigation .sidebar-version-footer .study-account { justify-content:flex-start;padding:5px 12px;font-size:12px; }
+.ws-reference-navigation.compact .ws-navigation-group-label,.ws-reference-navigation.compact .sidebar-version-footer .button-label { display:none; }
+.ws-reference-navigation.compact .sidebar-version-footer { padding:8px 4px; }
+.ws-reference-navigation.sidebar.compact .sidebar-version-footer { display:flex; }
+.ws-reference-navigation.compact .sidebar-version-footer>a { justify-content:center;padding:8px 0; }
+.workspace-page { max-width:1200px;margin:0 auto;padding:34px 38px 60px;min-width:0; }
+.workspace-page h1 { font:500 26px/1.4 "Satoshi-Medium",MiSans,sans-serif;margin:0 0 10px;letter-spacing:-.02em; }
+.workspace-page h2 { font:500 18px/1.5 "Satoshi-Medium",MiSans,sans-serif; }
+.workspace-page p { line-height:1.7; }
+.workspace-page-intro { color:var(--workspace-muted);font-size:14px;margin:0 0 24px; }
+.workspace-page-controls { display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:18px 0 24px; }
+.workspace-page-controls label { display:flex;align-items:center;gap:8px;font-size:13px;white-space:nowrap;min-width:0; }
+.workspace-page-controls label :is(input,select) { min-width:0; }
+.workspace-page :is(select,input) { border:1px solid var(--workspace-line);border-radius:8px;background:white;padding:8px 10px;font:inherit;max-width:100%; }
+body[data-study-navigation] .workspace-page :is(select,input) { border-color:#e9ecf1;background:#fff; }
+.workspace-page-row { display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--workspace-line);padding:18px 0; }
+.workspace-page-row>div { flex:1;min-width:180px; }
+.workspace-page-row h2 { font-size:15px;margin:0 0 5px; }
+.workspace-page-row p { margin:0;color:var(--workspace-muted);font-size:13px; }
+.workspace-page a { color:var(--workspace-blue); }
+.workspace-button { display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--workspace-line);border-radius:8px;background:white;color:var(--workspace-blue);padding:8px 12px;font:13px "Satoshi-Medium",MiSans,sans-serif;text-decoration:none; }
+body[data-study-navigation] .workspace-button { background:#fff;color:#4c6696;font:13px "Satoshi-Medium",MiSans,sans-serif; }
+.workspace-error { padding:16px;border:1px solid #d7b6af;border-radius:8px;background:#fff9f7; }
+.workspace-page :focus-visible { outline:2px solid var(--workspace-blue);outline-offset:3px; }
+.workspace-home-next { display:flex;align-items:center;gap:20px;margin:0 0 24px;padding:0 0 22px;border-bottom:1px solid #e9ecf1; }
+.workspace-home-next>div { flex:1;min-width:0; }
+.workspace-home-next small,.workspace-home-next span { color:#7d8799;font-size:12px; }
+.workspace-home-next h2 { font:500 17px/1.5 "Satoshi-Medium",MiSans,sans-serif;margin:6px 0; }
+.workspace-home-next p { font-size:13px;color:#7d8799;margin:0 0 5px;line-height:1.7; }
+.workspace-profile-create { margin-top:32px; }
+.workspace-tabs { display:flex;gap:22px;border-bottom:1px solid var(--workspace-line);margin:0 0 24px; }
+.workspace-tabs a { padding:10px 0;text-decoration:none;font-size:13px;color:var(--workspace-muted); }
+.workspace-tabs a[aria-current=page] { color:var(--workspace-ink);border-bottom:2px solid var(--workspace-blue); }
+.workspace-home-context { display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:#7d8799;margin:0 0 12px; }
+.workspace-home-context strong { font-weight:500;color:#535960; }
+.workspace-home-options { margin:-8px 0 24px;font-size:12px;color:#7d8799; }
+.workspace-home-options summary { cursor:pointer; }
+.workspace-home-options a { display:block;margin:12px 0;color:#4c6696; }
+.ws-app .sa-home { display:block;max-width:980px;padding:28px 38px 60px; }
+.ws-app .sa-hero { min-height:0;margin:30px auto 24px; }
+.ws-app .sa-hero::before { display:none; }
+.ws-app .sa-hero h1 { font:500 28px/1.5 "Satoshi-Medium",MiSans,sans-serif;color:#172031;letter-spacing:-.02em; }
+.ws-app .sa-hero p { color:#7d8799;font-size:13px; }
+.ws-app .sa-composer { background:#fff;border-color:#e9ecf1;box-shadow:0 4px 20px #17203105;border-radius:12px; }
+.ws-app :is(.sa-tabs,.sa-prompts button) { background:#f3f5f7;border-color:#e9ecf1; }
+.ws-app .sa-prompts button { border-radius:10px; }
+.ws-app .sa-section-head h2 { font:500 18px/1.5 "Satoshi-Medium",MiSans,sans-serif; }
+.ws-app .sa-cards button { background:white;border-color:#e9ecf1;border-radius:12px;box-shadow:none; }
+.ws-app .sa-cards h3 { font-family:"Satoshi-Medium",MiSans,sans-serif;font-size:17px; }
+.ws-app .sa-empty h3 { font:500 18px/1.5 "Satoshi-Medium",MiSans,sans-serif; }
+.workspace-entry { min-height:100dvh;display:grid;align-content:center;justify-items:start;gap:16px;max-width:560px;margin:0 auto;padding:40px 24px;font-family:"Satoshi-Regular",MiSans,sans-serif;color:#172031; }
+.workspace-entry h1 { font-size:28px;font-weight:500;margin:0; }
+.workspace-entry p { color:#7d8799;line-height:1.8; }
+.workspace-entry>a { text-decoration:none;color:#4c6696; }
+body[data-study-navigation] .learning-studio { --ink:#172031;--muted:#7d8799;--paper:#fafafa;--line:#e9ecf1;--accent:#4c6696; }
+body[data-study-navigation] .learning-studio :is(.studio-rail,.daily-rail,.family-rail,.privacy-intro) { position:static; }
+body[data-study-navigation] .learning-studio :is(.studio-rail,.daily-rail,.family-rail,.privacy-intro)>:is(h1,p,.studio-eyebrow,.family-support,.privacy-note) { display:none; }
+body[data-study-navigation] .learning-studio :is(.studio-layout,.daily-layout,.family-layout,.privacy-layout) { display:block;max-width:1200px;padding:30px 38px 60px;margin:auto; }
+body[data-study-navigation] .learning-studio :is(.studio-rail,.daily-rail,.family-rail) { display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:0 0 24px; }
+body[data-study-navigation] .learning-studio .studio-steps { display:flex;gap:16px;flex-wrap:wrap;order:-1;flex-basis:100%;padding:0 0 14px;margin:0; }
+body[data-study-navigation] .learning-studio .studio-steps li { padding:4px 0; }
+body[data-study-navigation] .learning-studio :is(.studio-section-head h2,.daily-complete h2,.family-next h3) { font:500 24px/1.4 "Satoshi-Medium",MiSans,sans-serif;letter-spacing:-.02em; }
+body[data-study-navigation] .learning-studio :is(.studio-eyebrow,.studio-child,.studio-steps li span) { font-family:inherit;letter-spacing:0; }
+body[data-study-navigation] .learning-studio :is(.studio-primary,.studio-secondary,.studio-text-button) { border-radius:8px;font-family:inherit; }
+body[data-study-navigation] .learning-studio .studio-primary { background:#e8f0f8;color:#4c6696;border-color:#e8f0f8; }
+body[data-study-navigation] .learning-studio :is(.family-next,.studio-panel,.privacy-panel,.daily-complete) { background:#fff;border-color:#e9ecf1;border-radius:12px;box-shadow:none; }
+body[data-study-navigation] .learning-studio .studio-main h1 { font:500 26px/1.4 "Satoshi-Medium",MiSans,sans-serif; }
+body[data-study-navigation] .learning-studio :is(.studio-line-title,.family-section-title h3,.family-week strong,.family-metrics strong,.studio-report-stats strong,.studio-hypotheses h4,.studio-action h3,.studio-report-next h3),body[data-study-navigation] .knowledge-report :is(h3,h4,h5) { font-family:"Satoshi-Medium",MiSans,sans-serif;font-weight:500; }
+@media(max-width:1000px){
+  body[data-study-navigation=mobile] { --workspace-sidebar:0px; }
+  body[data-study-navigation=mobile] .learning-studio { padding-left:0;padding-top:58px; }
+  .workspace-page { padding:22px 20px 40px; }
+  .ws-app .sa-home { padding:22px 20px 40px; }
+  body[data-study-navigation] .learning-studio :is(.studio-layout,.daily-layout,.family-layout,.privacy-layout) { padding:22px 20px 40px; }
+}
+@media(max-width:480px){.workspace-page-controls { align-items:stretch;flex-direction:column;gap:10px; }.workspace-page-controls label { justify-content:space-between; }.workspace-page-controls label :is(input,select) { width:68%; }.workspace-page select { font-size:16px; }.workspace-page-row { gap:12px; }.workspace-home-next { align-items:flex-start;flex-direction:column;gap:12px; }.ws-app .sa-hero h1 { font-size:23px; }}
+@media(pointer:coarse){.ws-reference-navigation nav .nav-item,.ws-reference-navigation.ws-navigation[data-narrow=true] nav .nav-item,.ws-reference-navigation .sidebar-version-footer>a { min-height:44px;height:auto; }.workspace-button { min-height:44px; }}
+@media print{.ws-reference-navigation,.ws-reference-trigger{display:none!important;}body[data-study-navigation] .learning-studio{padding:0!important;}}

@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-29T17:24:50.819717+00:00",
+  "sourceRevision": "a2f6204790e1029c824f588b77334ce037e70a3c",
+  "state": "workspace R1 foundation candidate; local delivery only",
+  "finalBrowser": {
+    "receipt": "browser-fifth.json",
+    "passed": 42,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "compatibilityBrowser": {
+    "receipt": "browser-compatibility-first.json",
+    "passed": 16,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "api": {
+    "receipt": "api-fifth.json",
+    "passed": 36,
+    "scope": "21 legacy memory fixtures; 6 durable SQLite home cases; 5 new durable SQLite workspace cases; 4 pure navigation cases"
+  },
+  "postgres": {
+    "receipt": "postgres-fifth.json",
+    "passed": 5,
+    "scope": "Same five new workspace cases using actual PostgreSQL 17.11 and a separate owned schema, including restart and revocation"
+  },
+  "builds": {
+    "contracts": true,
+    "config": true,
+    "api": true,
+    "isolatedProductionWeb": true,
+    "webBuildId": "eSgqYikYWK7EoiKC2zUlw"
+  },
+  "applicationInputComparison": {
+    "files": 1861,
+    "mismatches": [],
+    "receipt": "application-input-comparison.json"
+  },
+  "screenshots": {
+    "workspace-home-desktop.png": {
+      "sha256": "d695683b31dadf6f1d3bbccef34aa9fdfa17931785035a3f908b9d23e22fb1c5",
+      "kind": "Actual isolated application with generated non-user profiles; browser simulation."
+    },
+    "workspace-profiles-desktop.png": {
+      "sha256": "c5a86ad1044700bb8e0218f3c4ded936f23f344ad824785584430944cced809f",
+      "kind": "Actual isolated application with generated non-user profiles; browser simulation."
+    },
+    "workspace-reports-desktop.png": {
+      "sha256": "45e9b676b594896d5e181a834733c726b2a462d785b74749040d51e175f5c690",
+      "kind": "Actual isolated application with generated non-user profiles; browser simulation."
+    },
+    "workspace-reports-phone.png": {
+      "sha256": "b66ad26948f4c0d60b0950f28fa347f979b49c0519cb215591517315d8b4da53",
+      "kind": "Actual isolated application with generated non-user profiles; browser simulation."
+    }
+  },
+  "productionObservation": {
+    "readOnlySqlite": true,
+    "schemaVersion": 24,
+    "revision": 187,
+    "deployedApiAndWebBuilds": "Observed original 2026-10-29 artifacts; not rebuilt or deployed."
+  },
+  "earlierAttempts": {
+    "browserFirst": "11 passed, 2 locator failures",
+    "browserSecond": "13 passed; same earlier application build",
+    "apiFirst": "24 passed: legacy memory plus pure navigation; not durable SQLite or PostgreSQL acceptance",
+    "apiThird": "31 passed: legacy memory, SQLite home and pure navigation",
+    "browserThird": "39 passed, 3 failed: permission wording, exact label locator and persisted report metadata comparison",
+    "browserFourth": "40 passed, 2 failed: invalid selection cache recovery race and a diagnostic/practice button-name mix-up",
+    "apiFourth": "10 passed, 21 failed in memory-only reset fixture after incorrect durable adaptation; application unchanged",
+    "postgresFourth": "beforeAll timeout, 21 pending: inappropriate memory fixture/durable bootstrap; replaced by explicit HTTP durable fixture",
+    "postgresPreparation": "Attempted duplicate start failed; checked the exact existing owned QA server and real connection, reused it, preserved it running."
+  },
+  "limits": [
+    "Not a full application regression or verification of all 31 former pages.",
+    "Materials unification and all specialized/admin page cleanup remain R1 work.",
+    "No push, production deployment, new learning schema, teacher review, real-device proof or longitudinal learner outcome.",
+    "R2 through R8 and the original 72 plus WS12 acceptance conditions remain active.",
+    "Pass counts from different attempts and overlapping driver suites are not added."
+  ],
+  "artifacts": [
+    {
+      "path": "api-correction-inputs.json",
+      "sha256": "2cddddb747171d21c85e05efb4d9dd4ae7e019673b53dbcecce0ab1dcb280c38",
+      "bytes": 719
+    },
+    {
+      "path": "api-fifth.json",
+      "sha256": "87c1a82ffafea7b638cdaa8cb71f1ad1a18107dd95f6c9f269840ed58d7318d8",
+      "bytes": 8835
+    },
+    {
+      "path": "api-fourth.json",
+      "sha256": "6ce3a72e0aa96faea00f3ffa578aa914e3ee96b1c43d403ec2358bb92ab5019e",
+      "bytes": 7596
+    },
+    {
+      "path": "application-input-comparison.json",
+      "sha256": "d404541ec5056768a03ba954d3a3ccecf651bf155720e19c8c7de8931d88ccc8",
+      "bytes": 1142
+    },
+    {
+      "path": "browser-compatibility-first.json",
+      "sha256": "4ee70eaace8ab8a6a8019e1494be7d85b78d178b88eb396a088d64cc27c98105",
+      "bytes": 5810
+    },
+    {
+      "path": "browser-fifth.json",
+      "sha256": "b30322199f41d3c103c0de4eb4143ee3819703c4b5a67272321a97fbaa3f02cf",
+      "bytes": 14440
+    },
+    {
+      "path": "browser-first.json",
+      "sha256": "5684d22efbb399df7742169cebe6f2243cf5ac0c2c6877bd58d11a7901c8a903",
+      "bytes": 4906
+    },
+    {
+      "path": "browser-fourth.json",
+      "sha256": "132be56b5f8363029af8cda55251a93f27055c94b3bd722edc58db7821c0cf9f",
+      "bytes": 14448
+    },
+    {
+      "path": "browser-second.json",
+      "sha256": "d4a0f57870cd4af4de6eee0a57c0639f5e9be8880b0a4a89c2868193d9b03576",
+      "bytes": 4894
+    },
+    {
+      "path": "browser-third.json",
+      "sha256": "770ab87e2eda788b38c9f9ec773886ae8b88d077dbc635c5b6bada5582dc7d5d",
+      "bytes": 14448
+    },
+    {
+      "path": "changed-source-inputs.json",
+      "sha256": "f97d3bcf4d2632fd590957729f01bec5d6308138441142109d12e4ef0419b6eb",
+      "bytes": 12408
+    },
+    {
+      "path": "frozen-inputs.json",
+      "sha256": "f86c16ec192823a3fc0bbc37544066a48ce264948304256013327b5ced479244",
+      "bytes": 440431
+    },
+    {
+      "path": "postgres-fifth.json",
+      "sha256": "7e0e06c2f7aa34bede5c0a07b5226cdaa1786a58c6b1612257dfbd29d2a11de9",
+      "bytes": 1584
+    },
+    {
+      "path": "postgres-fourth.json",
+      "sha256": "92ea5d3178e7b0527523a3fba4573b58bf3514f9a0c21799cd3c0f7518a315d5",
+      "bytes": 4964
+    },
+    {
+      "path": "workspace-home-desktop.png",
+      "sha256": "d695683b31dadf6f1d3bbccef34aa9fdfa17931785035a3f908b9d23e22fb1c5",
+      "bytes": 128850
+    },
+    {
+      "path": "workspace-profiles-desktop.png",
+      "sha256": "c5a86ad1044700bb8e0218f3c4ded936f23f344ad824785584430944cced809f",
+      "bytes": 74620
+    },
+    {
+      "path": "workspace-reports-desktop.png",
+      "sha256": "45e9b676b594896d5e181a834733c726b2a462d785b74749040d51e175f5c690",
+      "bytes": 68305
+    },
+    {
+      "path": "workspace-reports-phone.png",
+      "sha256": "b66ad26948f4c0d60b0950f28fa347f979b49c0519cb215591517315d8b4da53",
+      "bytes": 39120
+    }
+  ]
+}

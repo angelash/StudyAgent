@@ -11,7 +11,7 @@ async function open(page: Page) {
   expect(registration.status).toBe(201); const actor = (await registration.json()).data;
   await page.addInitScript(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
-  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   await page.goto('/studio/classroom?lesson=soc-1-1-1'); await expect(page.getByLabel('向课堂老师提问')).toBeVisible();
   await page.getByRole('button', { name: '下一步 ›', exact: true }).click();
   await expect(page.locator('.cl-session-navigation')).toContainText('2 / 8');
@@ -93,7 +93,7 @@ test('a real learning-code user asks in their own approved course and resumes th
   const access = await call(`/students/${studentId}/learning-access`, { enabled: true, expectedVersion: 0, requestKey: crypto.randomUUID(), reason: '测试学生持久插问与原句恢复' });
   const code = await call(`/students/${studentId}/learning-access/codes`, { expectedVersion: access.version, requestKey: crypto.randomUUID() });
   await page.context().clearCookies(); await page.goto('/student/login'); await page.getByLabel('一次性学习码').fill(code.code);
-  await page.getByRole('button', { name: '进入我的学习 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.getByRole('button', { name: '进入我的学习 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   const lesson = course.units[0].lessons.find((lesson: { kind: string }) => lesson.kind === 'learn');
   await page.goto('/studio/classroom?' + new URLSearchParams({ studioCourseId: course.id, lesson: lesson.id }));
   await page.getByRole('button', { name: '说简单点', exact: true }).click(); await page.getByRole('button', { name: '发送课堂问题' }).click(); await done(page);

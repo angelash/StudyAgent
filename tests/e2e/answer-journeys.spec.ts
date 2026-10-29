@@ -104,7 +104,7 @@ async function setup(page: Page, kind: string, mode: string) {
   expect(response.status).toBe(201); const actor = (await response.json()).data;
   const child = (await call(actor, '/students', { nickname: '题型验收', grade: 3, preferredSessionMinutes: 15, defaultVersionMap: { math: '', chinese: '', english: '' } })).profile;
   const fixture = await call(actor, '/qa/answer-journeys', { studentId: child.id, mode, kind });
-  await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential); await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential); await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   await page.goto(fixture.href); await expect(page.locator('.studio-question fieldset').first()).toBeVisible();
   return { actor, ...fixture };
 }

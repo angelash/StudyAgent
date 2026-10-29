@@ -26,7 +26,7 @@ async function fixture(page: Page, withCourses = true) {
     await call('/learning/classroom/sessions', { studioCourseId: courses[1].id, lessonId: courses[1].units[0].lessons.find((lesson: any) => lesson.kind === 'learn').id });
   }
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
-  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   await page.evaluate(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
   await page.goto('/studio?' + new URLSearchParams({ view: 'courses', ...(studentId ? { student: studentId } : {}), subject: 'math' }));
   await expect(page.getByRole('link', { name: '打开课程：社会学概论' })).toBeVisible();

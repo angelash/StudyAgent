@@ -10,7 +10,7 @@ async function login(page: Page) {
   const response = await fetch(api + '/auth/register', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': '198.18.15.' + (++address) }, body: JSON.stringify({ principal, credential }) });
   expect(response.status).toBe(201); const actor = (await response.json()).data;
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
-  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   return actor;
 }
 async function call(actor: any, path: string, body?: unknown) {

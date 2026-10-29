@@ -8,7 +8,7 @@ async function open(page: Page) {
   const registered = await fetch(api + '/auth/register', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': '198.18.1.201' }, body: JSON.stringify({ principal, credential }) });
   expect(registered.status).toBe(201); await page.addInitScript(() => localStorage.setItem('studyagent.classroom.tour', 'done'));
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential); await page.getByRole('button', { name: '登录，查看学习记录 →' }).click();
-  await expect(page).toHaveURL(/\/learn(?:\?|$)/); await page.goto('/studio/classroom?lesson=soc-1-1-1');
+  await expect(page).toHaveURL(/\/studio(?:\?|$)/); await page.goto('/studio/classroom?lesson=soc-1-1-1');
   for (const position of ['2 / 8', '3 / 8']) { await page.getByRole('button', { name: '下一步 ›', exact: true }).click(); await expect(page.locator('.cl-session-navigation')).toContainText(position); }
   await expect(page.getByLabel('实验代码')).toBeVisible(); await expect(page.locator('.cl-code-save')).toContainText('草稿已保存');
 }

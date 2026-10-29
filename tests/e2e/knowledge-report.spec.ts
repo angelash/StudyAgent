@@ -27,7 +27,7 @@ async function fixture(page: Page, disposition: 'dont_know' | 'skip' = 'dont_kno
   for (const item of session.items) await call('/diagnostics/sessions/' + session.id + '/responses', { itemId: item.id, disposition, elapsedMs: 1000 });
   const report = await call('/diagnostics/sessions/' + session.id + '/complete', {});
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
-  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   const href = '/student/assessment?' + new URLSearchParams({ studentId, subject: 'math', session: session.id });
   await page.goto(href); await expect(page.getByRole('heading', { name: '从知识点看清下一步。' })).toBeVisible();
   return { call, report, session, studentId, atomIds, href };
@@ -165,20 +165,20 @@ test('knowledge report: the actual student role reads its report without managem
   await f.call('/students/' + f.studentId + '/learning-access', { enabled: true, expectedVersion: 0, requestKey: randomUUID(), reason: '合成报告权限测试' });
   const issued = await f.call('/students/' + f.studentId + '/learning-access/codes', { expectedVersion: 1, requestKey: randomUUID() });
   await page.goto('/student/login'); await page.getByLabel('一次性学习码').fill(issued.code); await page.getByRole('button', { name: '进入我的学习 →', exact: true }).click();
-  await expect(page).toHaveURL(/\/learn(?:\?|$)/); await page.goto(f.href);
+  await expect(page).toHaveURL(/\/studio(?:\?|$)/); await page.goto(f.href);
   const workspace = page.getByRole('region', { name: '知识点工作区' }); await expect(workspace).toBeVisible();
   await expect(workspace.getByRole('button', { name: '查看指导与复测 ↗', exact: true })).toHaveCount(0);
   await expect(page.getByRole('button', { name: /制定指导计划|确认并开始计划/ })).toHaveCount(0);
   await f.call('/students/' + f.studentId + '/learning-access', { enabled: false, expectedVersion: 1, requestKey: randomUUID(), reason: '合成报告撤权测试' });
   await workspace.getByRole('button', { name: '刷新指导记录', exact: true }).click(); await expect(workspace).toHaveCount(0);
-  await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await expect(page).toHaveURL(/\/studio(?:\?|$)/);
 });
 
 test('knowledge report: invalidating the actual browser login session ends the private report on its next read', async ({ page }) => {
   await fixture(page); const workspace = page.getByRole('region', { name: '知识点工作区' });
   expect(await page.evaluate(async base => (await fetch(base + '/auth/logout', { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: '{}' })).status, api)).toBe(201);
   await workspace.getByRole('button', { name: '刷新指导记录', exact: true }).click(); await expect(workspace).toHaveCount(0);
-  await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await expect(page).toHaveURL(/\/studio(?:\?|$)/);
 });
 
 test('knowledge report: actual submitted short-answer expressions awaiting review do not become scored failure or a zero estimate', async ({ page }) => {

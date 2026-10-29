@@ -57,7 +57,7 @@ async function fixture(page: Page, endedBoundary = false) {
     };
   }, { endedBoundary });
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
-  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   const href = '/studio?' + new URLSearchParams({ student: studentId, subject: 'math', whiteboard: board.id });
   await page.goto(href); await expect(page.locator('.wb-current-sentence')).toContainText('先统一单位');
   return { actor, board, studentId, href, call, current: page.locator('.wb-current-sentence') };

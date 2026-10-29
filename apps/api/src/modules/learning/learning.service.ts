@@ -5,7 +5,7 @@ import { assistantPracticeCommandHash, assistantPracticeCompletionFingerprint, a
   assistantPracticePublicAttempt, ASSISTANT_DEMONSTRATION_NOTICE, assertAssistantPracticeGroupStart,
   type AssistantPracticeGroupStartRecord, type AssistantPracticeLearnerCommand } from './assistant-practice-learner-record';
 import { canRegenerateStudioPages,readVerifiedStudioPage } from './studio-material-integrity.service';
-import { BadRequestException, ConflictException, Injectable, NotFoundException, StreamableFile } from '@nestjs/common';
+import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException, StreamableFile } from '@nestjs/common';
 import { createHash } from 'node:crypto';
 import { materialVersion } from './source-course-selection';
 import { readFile } from 'node:fs/promises';
@@ -70,7 +70,15 @@ export class LearningService {
       .map(({ id, nickname, grade }) => ({ id, nickname, grade }));
   }
 
-  studioOverview(user: InMemoryUserAccount, studentId: string | undefined, subject: Subject,catalog=false, courseId?: string): StudioOverview {
+  studioOverview(user: InMemoryUserAccount, studentId: string | undefined, subject: Subject,catalog=false, courseId?: string, independent=false): StudioOverview {
+    if (independent) {
+      if (user.role === 'student') throw new ForbiddenException('学生学习身份不能进入成人独立学习');
+      if (studentId || courseId) throw new BadRequestException('本人独立学习不能同时选择孩子或孩子课程');
+      const speech = this.speech.capabilities();
+      return { generatedAt: new Date().toISOString(), day: studyDay(), narrationAvailable: speech.available, speech,
+        children: this.studentProfiles(user), selected: null, courses: [], feed: [], activities: [], plans: [], materials: [], studyPacks: [], whiteboards: [],
+        integrations: { connectors: [], events: [] } };
+    }
     if (courseId) {
       const requested = this.store.find('studioCourses', { id: courseId });
       if (!requested) throw new NotFoundException('课程不存在，请返回我的课程重新选择');

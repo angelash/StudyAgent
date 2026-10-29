@@ -1,0 +1,172 @@
+{
+  "kind": "browser",
+  "rawPath": "data/qa/workspace-r1-20261030/source/data/qa/workspace-shell-second.json",
+  "rawSha256": "5e02c5041315da3316b17e243a5725994495a1616ebf1f969de1bea07ebb4c1b",
+  "stats": {
+    "startTime": "2026-10-29T16:31:45.347Z",
+    "duration": 53798.32,
+    "expected": 13,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "name": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 390",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3097,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 768",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2927,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1280",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3449,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1440",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3917,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "reference navigation: a real saved classroom opens the exact original session and position from the course library",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3265,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "reference navigation: resizing an open drawer restores usable desktop controls and releases the original background",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2616,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "reference navigation: blocked preference storage keeps current controls usable without inventing a saved preference",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3395,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "reference navigation: a mobile drawer hands focus to the real course blueprint and returns to its menu trigger after closing",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2657,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "workspace shell: one existing-style sidebar keeps the object across tasks reports and profiles",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3255,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "workspace shell: parent self learning reads independent data instead of a cached child",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2327,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "workspace shell: contradictory old object aliases stop before reading a diagnostic or starting work",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2092,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "workspace shell: report detail refuses an unfinished session without becoming an answer screen",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2126,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "workspace shell: mobile navigation and compact preference work across legacy and new pages",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3271,
+          "retry": 0
+        }
+      ]
+    }
+  ],
+  "export": "No configuration, cookies, credentials, trace or request payloads exported."
+}

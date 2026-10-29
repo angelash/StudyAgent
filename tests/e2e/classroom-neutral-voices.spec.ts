@@ -19,7 +19,7 @@ async function enter(page:Page){
         {id:'Chinese (Mandarin)_Soft_Girl',label:'柔和少女'},{id:'wumei_yujie',label:'妩媚御姐'}]};
     await route.fulfill({response,json:body});
   });
-  await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   await page.goto('/studio/classroom?lesson=soc-1-1-1');await expect(page.locator('.cl-room')).toBeVisible();await page.getByRole('button',{name:'课堂设置',exact:true}).click();
   return {actor,settings:page.getByRole('dialog',{name:'课堂设置'})};
 }

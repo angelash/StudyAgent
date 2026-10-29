@@ -1,0 +1,18 @@
+{
+  "reason": "Replace a memory-only reset fixture with a separate real durable workspace suite. Application inputs and Web build are unchanged.",
+  "originalInputs": "inputs.json",
+  "files": [
+    {
+      "path": "apps/api/src/modules/learning/studio.integration.test.ts",
+      "sha256": "f5c305e1f63bada9a0da8e163edd6604f3414e3a1c428e7e1eaeab35916209fb"
+    },
+    {
+      "path": "apps/api/src/modules/learning/workspace-overview.integration.test.ts",
+      "sha256": "be6542c68e670e7a0f176442ac5b79573e412833dc80cd9e84de335b1fff8eb8"
+    },
+    {
+      "path": "scripts/qa/run-workspace-postgres.cjs",
+      "sha256": "3b1d9819214b1b35b3f8de6473d6482d332f17c333bc23e253656772e51fed3d"
+    }
+  ]
+}

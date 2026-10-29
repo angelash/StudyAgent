@@ -34,7 +34,7 @@ async function fixture(page: Page, child = false) {
     await route.fulfill({ response, json: payload });
   });
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
-  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   await page.goto('/studio/whiteboards'); await expect(page.getByLabel('讲解主题')).toBeVisible();
   await expect(page.getByLabel('选择大模型')).toHaveValue('deepseek-v4-flash');
   return { actor, call, studentId };

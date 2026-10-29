@@ -1,0 +1,208 @@
+{
+  "kind": "browser",
+  "rawPath": "data/qa/workspace-r1-fifth-20261030/source/data/qa/workspace-compatibility-first.json",
+  "rawSha256": "de43e5e5eeedaef26e48dc7a26a53045e416b0b00482dc1ae72ce11212c50bc3",
+  "stats": {
+    "startTime": "2026-10-29T17:20:47.928Z",
+    "duration": 170621.959,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "name": "recovery: a late save receipt cannot mark a newer local answer saved or overwrite its queue",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5357,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "recovery: two real tabs retain conflicting input and explicitly download before keeping the local version",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7881,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "recovery: a lost diagnostic first-submit reply replays the frozen time and advances exactly one question after reload",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4386,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "recovery: practice correction drafts and their lost submit reply preserve the original first answer and the current question",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5043,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "recovery: leaving before debounce flushes the exact question, while offline navigation retains its local input",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3555,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "original fonts: real captured Latin and Chinese faces decode before a board is measured, played or exported",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4820,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "teaching shell: actual original chrome, font switch and return fit 390",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4835,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "teaching shell: actual original chrome, font switch and return fit 768",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4468,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "teaching shell: actual original chrome, font switch and return fit 1280",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4770,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "paper practice: actual original-paper entry keeps the first answer, explicit reference, correction and completed review",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6560,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "paper practice: an actual original PDF stays an unsplit document with its own persistent response",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3996,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "recovery: paper practice correction drafts stay with their own item through rapid review, navigation and a real reload",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7383,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "actual file versions remain frozen through submission, download, nested preview, editing and responsive layouts",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 14235,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "a parent can build and reopen an evidence-backed learning studio course",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 53612,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "course library and outline preserve navigation, panels, help and classroom back/forward",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7294,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "name": "calendar supports real date navigation, edit, confirmation, completion, export and batch lifecycle",
+      "status": "expected",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 9431,
+          "retry": 0
+        }
+      ]
+    }
+  ],
+  "export": "No configuration, cookies, credentials, trace or request payloads exported."
+}

@@ -1,6 +1,6 @@
 # 14 持久化、后台处理、监控、部署与质量 — 详细设计
 
-源码基线：`e84f0f451e9caf58109e8442cef641cb4f680b5a`。角色：运维、管理员、教研。
+源码基线：`a2f6204790e1029c824f588b77334ce037e70a3c`。角色：运维、管理员、教研。
 
 产品入口：`/admin/imports`、`/admin/analytics`。
 
@@ -77,17 +77,18 @@
 
 **关联接口**：
 
-- `GET /api/admin/processing/tasks` → `ProcessingController.list`；[apps/api/src/modules/processing/processing.controller.ts:41](../../../apps/api/src/modules/processing/processing.controller.ts#L41)。
-- `GET /api/admin/processing/tasks/:id` → `ProcessingController.get`；[apps/api/src/modules/processing/processing.controller.ts:47](../../../apps/api/src/modules/processing/processing.controller.ts#L47)。
-- `GET /api/admin/processing/tasks/:id/history` → `ProcessingController.history`；[apps/api/src/modules/processing/processing.controller.ts:48](../../../apps/api/src/modules/processing/processing.controller.ts#L48)。
-- `POST /api/admin/processing/tasks/:id/cancel` → `ProcessingController.cancel`；[apps/api/src/modules/processing/processing.controller.ts:49](../../../apps/api/src/modules/processing/processing.controller.ts#L49)。
-- `POST /api/admin/processing/tasks/:id/retry` → `ProcessingController.retry`；[apps/api/src/modules/processing/processing.controller.ts:58](../../../apps/api/src/modules/processing/processing.controller.ts#L58)。
+- `GET /api/admin/processing/tasks` → `ProcessingController.list`；[apps/api/src/modules/processing/processing.controller.ts:42](../../../apps/api/src/modules/processing/processing.controller.ts#L42)。
+- `GET /api/admin/processing/tasks/:id` → `ProcessingController.get`；[apps/api/src/modules/processing/processing.controller.ts:48](../../../apps/api/src/modules/processing/processing.controller.ts#L48)。
+- `GET /api/admin/processing/tasks/:id/history` → `ProcessingController.history`；[apps/api/src/modules/processing/processing.controller.ts:49](../../../apps/api/src/modules/processing/processing.controller.ts#L49)。
+- `POST /api/admin/processing/tasks/:id/cancel` → `ProcessingController.cancel`；[apps/api/src/modules/processing/processing.controller.ts:50](../../../apps/api/src/modules/processing/processing.controller.ts#L50)。
+- `POST /api/admin/processing/tasks/:id/retry` → `ProcessingController.retry`；[apps/api/src/modules/processing/processing.controller.ts:59](../../../apps/api/src/modules/processing/processing.controller.ts#L59)。
 
 **服务方法**：
 
-- `ProcessingController.requireTask`；[apps/api/src/modules/processing/processing.controller.ts:82](../../../apps/api/src/modules/processing/processing.controller.ts#L82)。
+- `ProcessingController.requireTask`；[apps/api/src/modules/processing/processing.controller.ts:83](../../../apps/api/src/modules/processing/processing.controller.ts#L83)。
 - `InMemoryStoreService.controlTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:356](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L356)。
 - `DomainEventBusService.publish`；[apps/api/src/infrastructure/domain-event-bus.service.ts:10](../../../apps/api/src/infrastructure/domain-event-bus.service.ts#L10)。
+- `ProcessingController.requireHandwritingProcessor`；[apps/api/src/modules/processing/processing.controller.ts:84](../../../apps/api/src/modules/processing/processing.controller.ts#L84)。
 - `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:254](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L254)。
 
 ## OPS-04 导入文件分块与处理产物
@@ -104,13 +105,13 @@
 
 **关联接口**：
 
-- `GET /api/admin/import-files` → `ImportFilesController.list`；[apps/api/src/modules/processing/processing.controller.ts:22](../../../apps/api/src/modules/processing/processing.controller.ts#L22)。
-- `POST /api/admin/import-files` → `ImportFilesController.start`；[apps/api/src/modules/processing/processing.controller.ts:23](../../../apps/api/src/modules/processing/processing.controller.ts#L23)。
-- `GET /api/admin/import-files/:id` → `ImportFilesController.get`；[apps/api/src/modules/processing/processing.controller.ts:24](../../../apps/api/src/modules/processing/processing.controller.ts#L24)。
-- `PUT /api/admin/import-files/:id/chunks/:index` → `ImportFilesController.chunk`；[apps/api/src/modules/processing/processing.controller.ts:25](../../../apps/api/src/modules/processing/processing.controller.ts#L25)。
-- `POST /api/admin/import-files/:id/complete` → `ImportFilesController.complete`；[apps/api/src/modules/processing/processing.controller.ts:28](../../../apps/api/src/modules/processing/processing.controller.ts#L28)。
-- `GET /api/admin/import-files/:id/content` → `ImportFilesController.content`；[apps/api/src/modules/processing/processing.controller.ts:29](../../../apps/api/src/modules/processing/processing.controller.ts#L29)。
-- `GET /api/admin/processing/artifacts/:id` → `ImportFilesController.artifact`；[apps/api/src/modules/processing/processing.controller.ts:32](../../../apps/api/src/modules/processing/processing.controller.ts#L32)。
+- `GET /api/admin/import-files` → `ImportFilesController.list`；[apps/api/src/modules/processing/processing.controller.ts:23](../../../apps/api/src/modules/processing/processing.controller.ts#L23)。
+- `POST /api/admin/import-files` → `ImportFilesController.start`；[apps/api/src/modules/processing/processing.controller.ts:24](../../../apps/api/src/modules/processing/processing.controller.ts#L24)。
+- `GET /api/admin/import-files/:id` → `ImportFilesController.get`；[apps/api/src/modules/processing/processing.controller.ts:25](../../../apps/api/src/modules/processing/processing.controller.ts#L25)。
+- `PUT /api/admin/import-files/:id/chunks/:index` → `ImportFilesController.chunk`；[apps/api/src/modules/processing/processing.controller.ts:26](../../../apps/api/src/modules/processing/processing.controller.ts#L26)。
+- `POST /api/admin/import-files/:id/complete` → `ImportFilesController.complete`；[apps/api/src/modules/processing/processing.controller.ts:29](../../../apps/api/src/modules/processing/processing.controller.ts#L29)。
+- `GET /api/admin/import-files/:id/content` → `ImportFilesController.content`；[apps/api/src/modules/processing/processing.controller.ts:30](../../../apps/api/src/modules/processing/processing.controller.ts#L30)。
+- `GET /api/admin/processing/artifacts/:id` → `ImportFilesController.artifact`；[apps/api/src/modules/processing/processing.controller.ts:33](../../../apps/api/src/modules/processing/processing.controller.ts#L33)。
 
 **服务方法**：
 
@@ -136,14 +137,14 @@
 
 **关联接口**：
 
-- `POST /api/admin/processing/handwriting-preview` → `ProcessingController.handwriting`；[apps/api/src/modules/processing/processing.controller.ts:69](../../../apps/api/src/modules/processing/processing.controller.ts#L69)。
-- `POST /api/admin/processing/local-explain` → `ProcessingController.explain`；[apps/api/src/modules/processing/processing.controller.ts:75](../../../apps/api/src/modules/processing/processing.controller.ts#L75)。
+- `POST /api/admin/processing/handwriting-preview` → `ProcessingController.handwriting`；[apps/api/src/modules/processing/processing.controller.ts:72](../../../apps/api/src/modules/processing/processing.controller.ts#L72)。
+- `POST /api/admin/processing/local-explain` → `ProcessingController.explain`；[apps/api/src/modules/processing/processing.controller.ts:79](../../../apps/api/src/modules/processing/processing.controller.ts#L79)。
 
 **服务方法**：
 
+- `ProcessingController.requireHandwritingProcessor`；[apps/api/src/modules/processing/processing.controller.ts:84](../../../apps/api/src/modules/processing/processing.controller.ts#L84)。
 - `ImportFilesService.get`；[apps/api/src/modules/processing/import-files.service.ts:25](../../../apps/api/src/modules/processing/import-files.service.ts#L25)。
-- `ProcessingController.enqueue`；[apps/api/src/modules/processing/processing.controller.ts:83](../../../apps/api/src/modules/processing/processing.controller.ts#L83)。
-- `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:254](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L254)。
+- `ProcessingController.enqueue`；[apps/api/src/modules/processing/processing.controller.ts:88](../../../apps/api/src/modules/processing/processing.controller.ts#L88)。
 
 ## OPS-06 健康、运行指标与质量看板
 

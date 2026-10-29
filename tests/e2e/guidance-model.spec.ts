@@ -10,7 +10,7 @@ async function setup(page:Page,makePlan=true) {
   const baseline=await call('/diagnostics/sessions',{studentId,subject:'math',intent:'baseline',targetAtomIds:[atom],includePrerequisites:false,maxItems:4});
   for(const item of baseline.items)await call('/diagnostics/sessions/'+baseline.id+'/responses',{itemId:item.id,disposition:'skip',elapsedMs:100});await call('/diagnostics/sessions/'+baseline.id+'/complete',{});
   const plan=makePlan?await call('/diagnostics/students/'+studentId+'/plans',{baselineSessionId:baseline.id,minutesPerDay:10,useAi:false,requestKey:crypto.randomUUID(),expectedReportVersion:1}):null;
-  await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/learn(?:\?|$)/);
+  await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   const href='/student/assessment?'+new URLSearchParams({studentId,subject:'math',...(plan?{view:'plan',planId:plan.id}:{session:baseline.id})});await page.goto(href);
   if(plan)await expect(page.getByRole('region',{name:'AI指导说明建议'})).toBeVisible();else await expect(page.getByRole('heading',{name:'从知识点看清下一步。'})).toBeVisible();
   return {actor,studentId,baseline,plan,call,href};

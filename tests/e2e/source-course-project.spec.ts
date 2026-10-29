@@ -8,7 +8,7 @@ async function course(actor:any){
 }
 async function enter(page:Page){
   page.on('dialog',dialog=>void dialog.accept());const suffix=crypto.randomUUID(),principal='source-project-'+suffix+'@local.test',credential='Source-project-'+suffix,response=await fetch(api+'/auth/register',{method:'POST',headers:{'Content-Type':'application/json','X-Forwarded-For':'198.18.22.'+(++address)},body:JSON.stringify({principal,credential})});expect(response.status).toBe(201);const actor=(await response.json()).data;
-  await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/learn(?:\?|$)/);const row=await course(actor);await page.goto('/studio/source-courses?course='+row.id);return{actor,row};
+  await page.addInitScript(()=>localStorage.setItem('studyagent.classroom.tour','done'));await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/studio(?:\?|$)/);const row=await course(actor);await page.goto('/studio/source-courses?course='+row.id);return{actor,row};
 }
 async function finishReading(page:Page,actor:any){
   await expect(page.locator('.cl-session-navigation')).toBeVisible();

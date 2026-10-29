@@ -10,7 +10,7 @@ async function login(page: Page) {
   const response = await fetch(api + '/auth/register', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': '198.18.17.' + (++address) }, body: JSON.stringify({ principal, credential }) });
   expect(response.status).toBe(201); const actor = (await response.json()).data;
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
-  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/learn(?:\?|$)/); return actor;
+  await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/); return actor;
 }
 async function call(actor: any, path: string, body?: unknown,method=body === undefined ? 'GET' : 'POST') {
   const response = await fetch(api + path, { method, headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + actor.token },
@@ -163,7 +163,7 @@ test('course assistant: current author draft becomes an original read-only scope
 });
 
 async function learningCode(page:Page,actor:any,studentId:string){const access=await call(actor,'/students/'+studentId+'/learning-access',{enabled:true,expectedVersion:0,requestKey:crypto.randomUUID(),reason:'匿名课程页面权限验收'});const code=await call(actor,'/students/'+studentId+'/learning-access/codes',{expectedVersion:access.version,requestKey:crypto.randomUUID()});
- await page.goto('/student/login');await page.getByLabel('一次性学习码').fill(code.code);const login=page.waitForResponse(r=>r.url().endsWith('/api/auth/learning-code')&&r.request().method()==='POST');await page.getByRole('button',{name:'进入我的学习 →',exact:true}).click();const user=(await(await login).json()).data;await expect(page).toHaveURL(/\/learn(?:\?|$)/);return user;
+ await page.goto('/student/login');await page.getByLabel('一次性学习码').fill(code.code);const login=page.waitForResponse(r=>r.url().endsWith('/api/auth/learning-code')&&r.request().method()==='POST');await page.getByRole('button',{name:'进入我的学习 →',exact:true}).click();const user=(await(await login).json()).data;await expect(page).toHaveURL(/\/studio(?:\?|$)/);return user;
 }
 
 test('course assistant: actual learning-code student opens published courses and exits to own learning with its draft intact',async({page})=>{

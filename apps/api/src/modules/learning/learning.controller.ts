@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Post, Query, Req, Res, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Param, Patch, Post, Query, Req, Res, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import type { Response } from 'express';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { memoryStorage } from 'multer';
@@ -17,8 +17,9 @@ export class LearningController {
   }
   @Get('overview') overview(@Req() req: AuthenticatedRequest) { return this.learning.overview(req.user); }
   @Get('studio/overview') studioOverview(@Req() req: AuthenticatedRequest, @Query('studentId') studentId?: string,
-    @Query('subject') subject?: string,@Query('materialView') materialView?:string,@Query('courseId') courseId?:string) {
-    return this.learning.studioOverview(req.user, studentId, validate(subjectSchema, subject ?? 'math'),materialView==='catalog',courseId);
+    @Query('subject') subject?: string,@Query('materialView') materialView?:string,@Query('courseId') courseId?:string,@Query('audience') audience?:string) {
+    if (audience !== undefined && !['student', 'independent'].includes(audience)) throw new BadRequestException('学习对象类型无效');
+    return this.learning.studioOverview(req.user, studentId, validate(subjectSchema, subject ?? 'math'),materialView==='catalog',courseId,audience==='independent');
   }
   @Post('studio/courses/preview') studioCoursePreview(@Req() req: AuthenticatedRequest, @Body() input: unknown) {
     return this.learning.previewStudioCourse(req.user, input);

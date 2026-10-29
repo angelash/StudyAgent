@@ -1,6 +1,7 @@
 'use client';
 import * as React from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import type { Subject } from '@study-agent/contracts';
 import { apiRequest } from '../../../lib/api';
 import { FamilyOverview, LearningMemory, masteryNames, subjectNames } from '../../../lib/learning';
@@ -9,19 +10,28 @@ import { useSessionUser } from '../../../lib/session-user';
 import { AssistantWidget } from '../../../components/assistant-widget';
 import { ComponentObservations } from '../../../components/diagnostic-evidence';
 import { LearningMemoryCard } from '../../../components/learning-memory';
+import { learningContextIssue, readLearningContext } from '../../../lib/learning-context';
+import { workspaceHref } from '../../../lib/workspace-navigation';
+import { ReportTabs } from '../../studio/reports/report-tabs';
 import '../../student/assessment/studio.css';
 import '../../student/today/today.css';
 import './family.css';
 
 export function FamilyStudio() {
-  const identity = useSessionUser();
-  React.useEffect(() => { if (identity?.role === 'student') window.location.replace('/student/today'); }, [identity]);
+  const identity = useSessionUser(), search = useSearchParams();
+  return <FamilyStudioWorkspace key={(identity ? identity.id+':'+identity.role : identity===undefined?'checking':'anonymous') + ':' + search.toString()} identity={identity} />;
+}
+function FamilyStudioWorkspace({identity}:{identity:ReturnType<typeof useSessionUser>}) {
+  const canManage = ['parent', 'admin'].includes(identity?.role ?? '');
   const [overview, setOverview] = React.useState<FamilyOverview | null>(null), [studentId, setStudentId] = React.useState('');
   const [memory, setMemory] = React.useState<LearningMemory | null>(null);
-  const [subject, setSubject] = React.useState<Subject>('math'), [nickname, setNickname] = React.useState(''), [grade, setGrade] = React.useState(3);
-  const [loading, setLoading] = React.useState(true), [busy, setBusy] = React.useState(false), [error, setError] = React.useState(''), [showCreate, setShowCreate] = React.useState(false), [expanded, setExpanded] = React.useState('');
+  const [subject, setSubject] = React.useState<Subject>('math');
+  const [loading, setLoading] = React.useState(true), [error, setError] = React.useState(''), [expanded, setExpanded] = React.useState('');
   React.useEffect(() => { let alive = true;
-    apiRequest<FamilyOverview>('/learning/overview').then((value) => { if (alive) { setOverview(value); const query = new URLSearchParams(window.location.search), requested = query.get('studentId'); const requestedSubject = query.get('subject'); if (requestedSubject && requestedSubject in subjectNames) setSubject(requestedSubject as Subject); setStudentId(value.children.find((child) => child.id === requested)?.id ?? value.children[0]?.id ?? ''); } })
+    if (!identity) { setLoading(false); return () => { alive = false; }; }
+    const issue=learningContextIssue(window.location.search);if(issue){setError(issue);setLoading(false);return()=>{alive=false;};}
+    if (readLearningContext(identity.id, window.location.search).audience === 'self') { setError('知识与周记录按孩子档案保存，请先选择学习对象。');setLoading(false);return()=>{alive=false;}; }
+    apiRequest<FamilyOverview>('/learning/overview').then((value) => { if (alive) { const selected = readLearningContext(identity.id, window.location.search), requested = selected.studentId;if(requested&&!value.children.some(child=>child.id===requested))throw new Error('所选学习档案不可访问，请重新选择。');setOverview(value);setSubject(selected.subject);setStudentId(value.children.find((child) => child.id === requested)?.id ?? value.children[0]?.id ?? ''); } })
       .catch((caught) => { if (alive) setError(caught.message); }).finally(() => { if (alive) setLoading(false); });
     return () => { alive = false; };
   }, []);
@@ -32,29 +42,23 @@ export function FamilyStudio() {
     return () => { alive = false; };
   }, [studentId, subject]);
   const child = overview?.children.find((item) => item.id === studentId), data = child?.subjects.find((item) => item.subject === subject);
-  const diagnosticsHref = `/student/assessment?studentId=${studentId}&subject=${subject}`, todayHref = `/student/today?studentId=${studentId}&subject=${subject}`;
+  const context = { studentId: studentId || undefined, subject };
+  const diagnosticsHref = workspaceHref('assessment', context), todayHref = workspaceHref('tasks', context);
+  function selectContext(id: string, nextSubject: Subject) { window.history.pushState(null, '', workspaceHref('reports', { studentId: id, subject: nextSubject }) + '&tab=knowledge'); }
   const due = data?.today.reviews.filter((item) => item.due && item.status !== 'completed') ?? [];
   const hypotheses = data?.hypotheses.filter((item) => !['resolved', 'contradicted', 'withdrawn'].includes(item.status)) ?? [];
-  async function createChild(event: React.FormEvent) {
-    event.preventDefault(); setBusy(true); setError('');
-    try {
-      const created = await apiRequest<{ profile: { id: string } }>('/students', { method: 'POST', body: JSON.stringify({ nickname, grade, preferredSessionMinutes: 15,
-        defaultVersionMap: { math: grade <= 6 ? 'common' : '', chinese: grade <= 6 ? 'common' : '', english: grade <= 6 ? 'common' : '', ...(grade === 9 ? { chemistry: 'guangzhou-pep-chemistry-9-upper-v1' } : {}) } }) });
-      setOverview(await apiRequest<FamilyOverview>('/learning/overview')); setStudentId(created.profile.id); setNickname(''); setShowCreate(false);
-    } catch (caught) { setError(caught instanceof Error ? caught.message : '建档未完成，请重试'); } finally { setBusy(false); }
-  }
-  return <main className="learning-studio family-studio"><StudyNav current="family" context={{ studentId: studentId || undefined, subject }} /><div className="family-layout">
+  return <main className="learning-studio family-studio"><StudyNav current="reports" context={context} /><div className="family-layout"><header className="workspace-page-heading"><h1>学习报告</h1><ReportTabs active="knowledge" context={context} /></header>
     <aside className="family-rail"><span className="studio-eyebrow">FAMILY JOURNAL / 看见每一步</span><h1>看见孩子，<br /><em>怎样学会。</em></h1><p>从具体知识点出发，陪孩子找到问题，试一试，再验证。</p>
-      {overview && <><label>孩子的学习档案<select value={studentId} onChange={(e) => { setStudentId(e.target.value); setExpanded(''); }} aria-label="选择学生">{overview.children.map((item) => <option key={item.id} value={item.id}>{item.nickname} · {item.grade}年级</option>)}</select></label><button className="studio-text-button" onClick={() => setShowCreate(!showCreate)}>{showCreate ? '收起建档' : '＋ 添加孩子档案'}</button></>}
+      {overview && <label>学习档案<select value={studentId} disabled={identity?.role === 'student'} onChange={e => selectContext(e.target.value, subject)} aria-label="选择学生">{overview.children.map((item) => <option key={item.id} value={item.id}>{item.nickname} · {item.grade}年级</option>)}</select></label>}
       <div className="family-support"><strong>陪伴小提醒</strong><p>先问“你是怎么想的”，再一起找卡住的步骤。一次表现只能告诉我们当时的情况。</p></div>
     </aside>
-    <section className="studio-main" aria-busy={loading || busy}>
+    <section className="studio-main" aria-busy={loading}>
       {error && <div className="studio-error" role="alert">{error}<button aria-label="关闭提示" onClick={() => setError('')}>×</button></div>}
       {loading ? <div className="studio-empty" role="status">正在整理学习记录…</div> : !overview ? <div className="studio-empty"><h2>孩子的成长，从这里留下。</h2><p>登录后，查看学习范围、具体证据、指导计划与复测。</p><Link className="studio-primary" href="/parent/login">登录或创建账号 ↗</Link></div> : <>
-        {(showCreate || !overview.children.length) && <form className="family-create" onSubmit={createChild}><h2>建立孩子的学习档案</h2><p>先确认当前年级，再逐科勾选已经学习的内容。</p><div><label>孩子昵称<input required maxLength={50} value={nickname} onChange={(e) => setNickname(e.target.value)} placeholder="怎么称呼孩子" /></label><label>当前年级<select value={grade} onChange={(e) => setGrade(Number(e.target.value))}>{[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => <option key={n} value={n}>{n}年级</option>)}</select></label><button className="studio-primary" disabled={busy || !nickname.trim()}>{busy ? '正在保存…' : '保存档案 ↗'}</button></div></form>}
+        {!overview.children.length && canManage && <div className="workspace-page-row"><div><h2>添加学习档案后查看孩子的报告</h2><p>档案、年级和授权统一在学习档案中管理。</p></div><Link className="workspace-button" href="/studio/profiles">管理学习档案</Link></div>}
         {child && data && <>
-          <div className="studio-section-head"><span className="studio-eyebrow">{overview.day} / 学习观察</span><h2>{child.nickname}的每一步，<br />都有迹可循。</h2><p>当前 {child.grade} 年级。先看学过什么，再看有哪些证据，最后决定下一步。</p></div>
-          <div className="studio-subjects">{Object.entries(subjectNames).map(([key, name]) => <button key={key} aria-pressed={subject === key} onClick={() => { setSubject(key as Subject); setExpanded(''); }}>{name}</button>)}</div>
+          <div className="studio-section-head"><h2>{child.nickname} · {subjectNames[subject]}</h2><p>{child.grade}年级 · {overview.day} · 知识掌握、具体依据与周记录</p></div>
+          <div className="studio-subjects">{Object.entries(subjectNames).map(([key, name]) => <button key={key} aria-pressed={subject === key} onClick={() => selectContext(studentId, key as Subject)}>{name}</button>)}</div>
           <div className="family-next"><div><span className="studio-eyebrow">NEXT SMALL STEP / 接下来</span><h3>{!data.scope ? '先确认当前学习进度' : due.length ? `${due.length} 组复测已经到期` : data.today.incompleteAssessments.length ? '继续上次保存的小测' : data.today.plan ? '按计划，练习一个具体知识点' : data.today.awaitingConfirmation ? '查看并确认指导计划' : '做一组适合当前进度的小测'}</h3><p>{!data.scope ? '选择教材与已学范围，让题目适合孩子当前的进度。' : data.today.plan?.summary ?? '用独立作答观察具体表现；证据不足时，先补充测量。'}</p></div><Link className="studio-primary" href={due.length || data.today.plan ? todayHref : diagnosticsHref}>{due.length ? '去复测' : data.today.plan ? '进入今日学习' : '进入知识诊断'} ↗</Link></div>
           {memory && <LearningMemoryCard memory={memory} studentId={studentId} diagnosticsHref={diagnosticsHref} todayHref={todayHref} />}
           {data.today.plan?.impact.needsReview && <div className="studio-hint" role="status"><strong>指导计划需要重新核对</strong><p>{data.today.plan.impact.message}</p><Link className="studio-secondary" href={`${diagnosticsHref}&view=plan&planId=${data.today.plan.id}`}>查看新依据并调整计划 ↗</Link></div>}<div className="family-metrics">{[[data.counts.selected, '已确认学习的知识点'], [data.estimates.filter((item) => item.scoredCount > 0).length, '已有观察证据'], [data.counts.secure, '通过迁移与保持验证'], [data.counts.unknown + data.counts.needsEvidence, '仍需补充测量']].map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
@@ -70,8 +74,8 @@ export function FamilyStudio() {
           <h3 className="studio-line-title">这一周，留下了什么。</h3><div className="family-week">{[[data.week.completedAssessments, '完成的评测'], [data.week.completedActivities, '完成的指导活动'], [data.week.observations, '保存的作答观察']].map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
           <p className="studio-muted">活动完成表示练习发生过。是否学得更稳，还需比较同一量规下的独立新题和延迟复测。</p>
           {data.trend.length > 0 && <div className="family-timeline">{data.trend.map((item) => <Link key={`${item.sessionId}:${item.at}`} href={`${diagnosticsHref}&session=${item.sessionId}`}><span>{new Date(item.at).toLocaleDateString('zh-CN')}</span><strong>观察了 {item.measuredPoints} 个知识点</strong><small>{item.sufficientPoints} 个点的证据量达到初步判断要求 ↗</small></Link>)}</div>}
-          <div className="family-bottom"><Link className="studio-secondary" href={todayHref}>查看今日安排与错题 ↗</Link>{data.today.plan && <Link className="studio-secondary" href={`${diagnosticsHref}&view=plan`}>指导计划与复盘 ↗</Link>}<Link className="studio-text-button" href={`/parent/gesp?studentId=${encodeURIComponent(studentId)}`}>确认GESP编程范围 ↗</Link><Link className="studio-text-button" href={`/parent/access?studentId=${studentId}`}>复核授权与反馈记录 ↗</Link><Link className="studio-text-button" href="/library">浏览题卷资料 ↗</Link></div>
+          <div className="family-bottom"><Link className="studio-secondary" href={todayHref}>查看今日安排与错题 ↗</Link>{data.today.plan && <Link className="studio-secondary" href={`${todayHref}&view=plan`}>指导计划与复盘 ↗</Link>}{canManage && <><Link className="studio-text-button" href={`/parent/gesp?studentId=${encodeURIComponent(studentId)}`}>确认GESP编程范围 ↗</Link><Link className="studio-text-button" href={`/parent/access?studentId=${studentId}`}>复核授权与反馈记录 ↗</Link></>}<Link className="studio-text-button" href="/library">浏览题卷资料 ↗</Link></div>
         </>}
       </>}
-    </section></div>{child && <AssistantWidget userRole="parent" studentId={studentId} subject={subject} pageContext="weekly_report" title="家长陪伴助教" subtitle="一起看看具体证据和下一步" />}</main>;
+    </section></div>{child && <AssistantWidget userRole={identity?.role === 'student' ? 'student' : 'parent'} studentId={studentId} subject={subject} pageContext="weekly_report" title="学习助教" subtitle="一起看看具体证据和下一步" />}</main>;
 }

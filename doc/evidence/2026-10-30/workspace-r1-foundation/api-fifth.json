@@ -1,0 +1,192 @@
+{
+  "kind": "api",
+  "rawPath": "data/qa/workspace-r1-fourth-20261030/source/data/qa/r1-api-fifth.json",
+  "rawSha256": "9d2b7fedbfcf1f4597113cd689d1f966abdf63d37f1967a570a959de6d677675",
+  "passed": 36,
+  "failed": 0,
+  "pending": 0,
+  "passedSuites": 8,
+  "failedSuites": 0,
+  "cases": [
+    {
+      "name": "workspace learning object and legacy navigation boundaries rejects contradictory aliases, mixed adult/child intent and unsupported subjects",
+      "status": "passed",
+      "durationMs": 3.197400000000016
+    },
+    {
+      "name": "workspace learning object and legacy navigation boundaries adapts old home and report URLs explicitly and rejects unsafe login destinations",
+      "status": "passed",
+      "durationMs": 2.0638000000000147
+    },
+    {
+      "name": "workspace learning object and legacy navigation boundaries does not restore a child into explicit or saved self learning, or another actor",
+      "status": "passed",
+      "durationMs": 2.2685000000000173
+    },
+    {
+      "name": "workspace learning object and legacy navigation boundaries preserves object intent when navigating and adapts historical areas",
+      "status": "passed",
+      "durationMs": 0.9343999999999824
+    },
+    {
+      "name": "unified learning home with real persistence and identity boundaries requires login and validates query shape",
+      "status": "passed",
+      "durationMs": 74.39279999999962
+    },
+    {
+      "name": "unified learning home with real persistence and identity boundaries lets adults learn without a child and restores only their own course",
+      "status": "passed",
+      "durationMs": 115.64699999999993
+    },
+    {
+      "name": "unified learning home with real persistence and identity boundaries projects only the explicit authorized child and never silently falls back",
+      "status": "passed",
+      "durationMs": 114.83960000000025
+    },
+    {
+      "name": "unified learning home with real persistence and identity boundaries does not create assessments, plans or practices when read repeatedly",
+      "status": "passed",
+      "durationMs": 55.55649999999969
+    },
+    {
+      "name": "unified learning home with real persistence and identity boundaries restricts the student identity to their own profile and revokes access immediately",
+      "status": "passed",
+      "durationMs": 163.0105999999996
+    },
+    {
+      "name": "unified learning home with real persistence and identity boundaries restores the same profile and course facts after an API restart",
+      "status": "passed",
+      "durationMs": 1473.1453000000001
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations keeps independent overview separate from all child business projections and preserves legacy selection",
+      "status": "passed",
+      "durationMs": 1181.9992000000002
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations keeps saved whiteboard creation replays behind current student access without duplicating activity",
+      "status": "passed",
+      "durationMs": 1104.2255000000005
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations previews, saves and reads a uniquely grounded whiteboard with student access",
+      "status": "passed",
+      "durationMs": 1088.3754999999983
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations binds whiteboard replay receipts to the original action, actor, command and saved board",
+      "status": "passed",
+      "durationMs": 1016.9226999999992
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations synthesizes only an authorized frozen sentence, keeps legacy narration, and rejects identity tampering",
+      "status": "passed",
+      "durationMs": 988.7752
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations inflight: refuses late legacy narration after a separately committed logout of its original login",
+      "status": "passed",
+      "durationMs": 989.0899999999983
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations inflight: rechecks a separately committed guardian revocation before returning a frozen sentence",
+      "status": "passed",
+      "durationMs": 906.1054999999997
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations inflight: refuses an old learner session when a newer enabled learning-access epoch replaces it during synthesis",
+      "status": "passed",
+      "durationMs": 1036.2309999999998
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations does not substitute another child for an explicit inaccessible studio selection",
+      "status": "passed",
+      "durationMs": 887.2832999999991
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations previews selected goals and pace without persisting a course and rejects invalid confirmation targets",
+      "status": "passed",
+      "durationMs": 959.1549999999988
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations replays the original confirmation after scope changes and rejects changed commands with the same key",
+      "status": "passed",
+      "durationMs": 1019.7276999999995
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations warns only for selected unapproved teaching and preserves every selected strand",
+      "status": "passed",
+      "durationMs": 1270.8032999999996
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations opens an approved course lesson in the shared classroom without replacing independent measurement",
+      "status": "passed",
+      "durationMs": 1047.182499999999
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations previews, persists and executes an evidence-driven plan with delayed reviews",
+      "status": "passed",
+      "durationMs": 986.1442999999999
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations renders, saves and grounds page-level whiteboards from an uploaded PDF",
+      "status": "passed",
+      "durationMs": 4382.200199999999
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations OCRs an image-only PDF and returns reviewable page structures",
+      "status": "passed",
+      "durationMs": 8201.596299999997
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations recovers native table cells and formula candidates while preserving source coordinates",
+      "status": "passed",
+      "durationMs": 3005.3977000000014
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations keeps connector creation idempotent, isolated, revocable and student read-only",
+      "status": "passed",
+      "durationMs": 1008.6918000000005
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations creates, replays, removes and exports a StudyAgent calendar task",
+      "status": "passed",
+      "durationMs": 971.2513999999937
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations edits manual calendar tasks with revision checks and guardian isolation",
+      "status": "passed",
+      "durationMs": 1067.7294000000038
+    },
+    {
+      "name": "whiteboard video and LMS calendar integrations validates every batch target before deleting and protects subscribed and plan events",
+      "status": "passed",
+      "durationMs": 968.1301000000021
+    },
+    {
+      "name": "workspace overview with durable identity and read-only recovery uses the real durable driver and rejects unauthenticated or invalid audiences",
+      "status": "passed",
+      "durationMs": 42.47229999999945
+    },
+    {
+      "name": "workspace overview with durable identity and read-only recovery keeps two lawful profile metadata rows but no child business projections or writes in self mode",
+      "status": "passed",
+      "durationMs": 63.29349999999977
+    },
+    {
+      "name": "workspace overview with durable identity and read-only recovery rejects learner self mode, mixed intentions and another account without substituting a child",
+      "status": "passed",
+      "durationMs": 92.74339999999938
+    },
+    {
+      "name": "workspace overview with durable identity and read-only recovery restores original accounts, profiles and learner binding after reopening the durable application",
+      "status": "passed",
+      "durationMs": 1349.5631000000012
+    },
+    {
+      "name": "workspace overview with durable identity and read-only recovery ends the original learning-code identity after revocation and keeps guardian metadata lawful",
+      "status": "passed",
+      "durationMs": 58.065200000000914
+    }
+  ]
+}
