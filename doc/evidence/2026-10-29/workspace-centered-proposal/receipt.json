@@ -1,0 +1,51 @@
+{
+  "kind": "approved interaction proposal; no application implementation claimed",
+  "date": "2026-10-29",
+  "codeBaseline": "e8604c19",
+  "prototype": {
+    "path": ".xiaojiu/visualizations/workspace-centered-proposal.html",
+    "sha256": "57f1a63ef050e8be49ddf992dcee00a6436b65aaace72db1c656ea5f215738f7",
+    "bytes": 153222,
+    "syntheticDataOnly": true,
+    "businessOrModelRequests": false
+  },
+  "finalPrototypeChecks": 31,
+  "mappedPageRoutes": 31,
+  "sourceVerificationSha256": "78378fe393d4ae3448322d06abfdf24ad1ce63c44e1df58f491ff31bd4716403",
+  "earlierPreparationFailures": [
+    {
+      "localOriginal": "data/qa/workspace-centered-proposal-20261029/first-verification-failure.json",
+      "sha256": "fed8a4ab253136a9c3ede9bb9b3df70fa039e98c4633b51a1441a503a8fdef5b"
+    },
+    {
+      "localOriginal": "data/qa/workspace-centered-proposal-20261029/verification-second.log",
+      "sha256": "65f2a0f1b4f3191d7c589f9cf3c8c2f1507d6487f9d8db95a4945972adb8dfe0"
+    },
+    {
+      "localOriginal": "data/qa/workspace-centered-proposal-20261029/verification-third.log",
+      "sha256": "8b1698ea1b5035590af5ddbc836c76772af255da31276c5f78ed6c81c81158e5"
+    },
+    {
+      "localOriginal": "data/qa/workspace-centered-proposal-20261029/verification-fourth.log",
+      "sha256": "90f3b05fac231897a36eeb1068306f64bee3a9c497f0fc62bd50d0f43bb217e7"
+    }
+  ],
+  "copiedFiles": [
+    {
+      "path": "doc/evidence/2026-10-29/workspace-centered-proposal/desktop-home.png",
+      "sha256": "ec93f47ca09c848cc2c09af2fe64b522fef20a4adca6a16e244d985c1f4639e8"
+    },
+    {
+      "path": "doc/evidence/2026-10-29/workspace-centered-proposal/desktop-reports.png",
+      "sha256": "1c5cdb051d14c0e1691a543bf0f2a6e00e6dafc814ffba6414126689680bbc75"
+    },
+    {
+      "path": "doc/evidence/2026-10-29/workspace-centered-proposal/mobile-navigation.png",
+      "sha256": "989f9b022f9b246334177194c4061fddb4f880e464c980cb9f41b6aa00dd4582"
+    },
+    {
+      "path": "doc/evidence/2026-10-29/workspace-centered-proposal/prototype-verification.json",
+      "sha256": "651b1ba8db4b21219d3e1033aeb08738173a173a2b2656ee0783adf503490ad5"
+    }
+  ]
+}

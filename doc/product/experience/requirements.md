@@ -2,6 +2,8 @@
 
 状态口径：planned待实施；in_progress开发中；implemented已接入但验收不足；verified当前证据满足本条全部要求；blocked存在具体外部依赖。下面状态针对本轮完整目标，已有部分基础不自动等于verified。实现与证据在[实施记录](implementation-log.md)持续追加。
 
+2026-10-29入口调整：[149工作台方案](../149-workspace-centered-interaction-restructuring-proposal.md)已采用并纳入[150完整执行计划](../150-integrated-delivery-plan-and-work-ledger.md)。原72编号、完整条件与11/50/11/0状态保持；旧learn/parent/student地址作为兼容验收，主载体统一为工作台。新增WS01～WS12单独列账，初始均planned，不混入72计数。先提交计划，再推进整改与全部余项。
+
 2026-10-27当前账本核对：72项为11 implemented、50 in_progress、11 planned、0 verified。131原句插问/独立补充板书声音/完整笔记已正式交付，见[本批验收](../../evidence/2026-10-27/whiteboard-question-acceptance.json)。132配图版本、完整参考体验与M1～M7继续，不能以专项或CI通过结案全部需求。以下旧核对保留历史。
 
 2026-10-24核对：11项implemented、46项in_progress、15项planned，尚无整条verified。26项planned→in_progress是纠正已有部分实现，不是本轮新增交付。各领域的当前基础、具体缺口、版本/运行边界和M0～M7顺序见[整体进度与里程碑105](../105-development-plan-status-and-next-milestones.md)；72项前后状态及源码/测试/历史证据映射见[核对数据](../../evidence/2026-10-24/development-plan-audit.json)。implemented和in_progress均须继续完成原条目的全部验收，不能换算为完成率。

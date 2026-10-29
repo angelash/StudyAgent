@@ -1,5 +1,7 @@
 # StudyAgent 产品建设档案
 
+当前入口为[150工作台整合与剩余全部开发](150-integrated-delivery-plan-and-work-ledger.md)：[149工作台方案](149-workspace-centered-interaction-restructuring-proposal.md)已采用，先提交计划，再从统一工作台推进所有余项。原72项及新增WS12项分别跟踪；以下日期与当时状态保留历史，不代替最新账本。
+
 本目录是 2026-10-19 用户授权的完整产品化建设基线。原有 `doc/module-design` 保留为实现历史；冲突时以本目录的新需求、测量规范和验收条件为准。
 
 当前代码的整体功能、概要设计与逐项实现统一见 [功能与设计总册](../design/README.md) 和 [离线功能浏览器](../design/index.html)。本目录继续保留需求与交付沿革；设计册按当前接入代码区分正常功能、历史只读与未接入声明。

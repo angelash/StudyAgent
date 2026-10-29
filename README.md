@@ -1,5 +1,7 @@
 # StudyAgent
 
+当前开发按[工作台整合与剩余全部开发计划](doc/product/150-integrated-delivery-plan-and-work-ledger.md)推进：[工作台交互整改](doc/product/149-workspace-centered-interaction-restructuring-proposal.md)已纳入计划，先本地提交计划，再统一工作台、接练习/原因指导/日历复测及其余完整范围。原72项与新增12项分开验收；下方日期交付与旧版本说明保留历史。
+
 新增[广州人教版九上化学教学验证链](doc/product/142-guangzhou-chemistry-teaching-validation.md)，在“我的课程”选择化学即可看到课程卡片（`/studio?view=courses&subject=chemistry`）：七个单元、28个原创教学目标、2016道规则题，配套课前诊断、单元与学期考核，复用课堂、报告、指导、补练与1/3/7/14日复测。家长在课程内为九年级档案添加课程；旧 `/chemistry` 链接转入现有课程页面。实际交付与使用边界见该文档。
 
 [化学图文教程第二版](doc/product/145-chemistry-tutorial-with-figures-and-models.md)补充参考本课题对照、28张原创科学图示、10类可操作模型及28道随堂题。教材参考本与学校现用版次分开说明，历史课堂可保留并主动打开新版。

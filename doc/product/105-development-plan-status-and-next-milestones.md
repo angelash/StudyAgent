@@ -1,5 +1,7 @@
 # 开发计划核对、整体进度与后续里程碑
 
+2026-10-29最新执行口径：[150完整执行计划](150-integrated-delivery-plan-and-work-ledger.md)为续接入口。149已采用，先提交计划，再按R1统一工作台和观察室功能，接R2本人练习/撤回/成人教学、R3原因指导、R4排期复测、R5～R8完整体验/内容/工程/真人最终验收。下文旧“当前”版本、worktree和schema23属于历史；现基线e8604c19，业务库只读schema24/revision187，新运行交付仍须另证。原72仍11 implemented/50 in_progress/11 planned/0 verified，新增WS12项均planned；原M1～M7与全部未完成范围继续active。
+
 当前核对（2026-10-29）：正式main为5e9bea13、实际业务02a350b5/schema23，来源白板及D1已交付。D2私人候选83af7e15已推送：本地完整API1875通过/74环境跳过、零失败，精确远端40790308484继续，见[完整原件](../evidence/2026-10-29/assistant-practice-candidates-complete-api-first/receipt.json)。新的共享安排在独立工作区SQLite/实际PG各25/25通过，尚无本人分组开始/首答理由/提示及完成UI；共享安排自身完整门禁及schema24交付未完成，见[四轮原件](../evidence/2026-10-29/assistant-practice-assignments-first/receipt.json)和[147第26节](147-conversation-practice-guidance-and-review.md#26-私人候选完整api与共享安排的双库结果)。下一步按147第24节接真实学习码分组作答，再成人/AI教学、D3深原因指导、D4排期及余下完整体验。原72仍11 implemented/50 in_progress/11 planned/0 verified，M1～M7整体active；不含计费、Marketplace和学校原生对接。下方保留历批历史，旧“当前”描述以本段及最新原件为准。
 
 
