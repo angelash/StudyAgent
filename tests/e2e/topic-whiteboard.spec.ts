@@ -58,7 +58,7 @@ test('continuity: a confirmed adult topic also overlaps its adjacent WAV and pre
   const timing = await installNarrationTiming(page); await fixture(page); await generate(page); await ready(page);
   await page.getByRole('button', { name: '确认并保存这份白板', exact: true }).click();
   await page.getByRole('button', { name: '打开已保存白板', exact: true }).click();
-  const player = page.getByRole('dialog', { name: '白板视频' });
+  const player = page.getByRole('main', { name: '白板视频' });
   try {
     await player.getByRole('button', { name: '播放', exact: true }).click();
     await expect.poll(async () => (await timing.read()).audio.some(row => row.index === 1 && row.event === 'playing'), { timeout: 10000 }).toBe(true);
@@ -91,7 +91,7 @@ async function formulaBoard(page: Page, expressions: string[], withFigure = fals
   await f.call(base + '/drafts/' + id + '/confirm', { expectedRevision: current.revision, contentFingerprint: current.contentFingerprint,
     acknowledgeAiGeneratedContent: true, acknowledgeUnreviewedChanges: true, requestKey: randomUUID() });
   await page.reload(); await page.getByRole('button', { name: '打开已保存白板', exact: true }).click();
-  const player = page.getByRole('dialog', { name: '白板视频' }); await expect(player).toBeVisible();
+  const player = page.getByRole('main', { name: '白板视频' }); await expect(player).toBeVisible();
   return { ...f, player };
 }
 
@@ -222,7 +222,7 @@ test('topic-figure: restores a lost original image prepare without duplicate wri
   const candidate = await f.call(figureBase + '/' + draft.content.scenes[0].figure.visualId, undefined, 'GET'); expect(candidate.operation).toBe('edit'); expect(candidate.parentVisualId).toBeTruthy();
   await page.getByRole('checkbox', { name: '我已阅读未确定问题或手工改稿，知晓仍需内容核对' }).check();
   await page.getByRole('button', { name: '确认并保存这份白板', exact: true }).click(); await page.getByRole('button', { name: '打开已保存白板', exact: true }).click();
-  const player = page.getByRole('dialog', { name: '白板视频' }); await expect(player).toBeVisible();
+  const player = page.getByRole('main', { name: '白板视频' }); await expect(player).toBeVisible();
   await expect(player.getByRole('button', { name: '放大参考图：先核对观察', exact: true }).first()).toBeVisible();
   await player.getByRole('button', { name: '播放', exact: true }).click();
   await player.getByRole('button', { name: '放大参考图：先核对观察', exact: true }).first().click();
@@ -352,7 +352,7 @@ test('adult original generation, lost edit and confirmation replies recover with
   });
   await page.getByRole('button', { name: '确认并保存这份白板', exact: true }).click(); await expect(page.getByRole('button', { name: '恢复原确认请求', exact: true })).toBeEnabled();
   await page.reload(); await page.getByRole('button', { name: '恢复原确认请求', exact: true }).click();
-  await page.getByRole('button', { name: '打开已保存白板', exact: true }).click(); await expect(page.getByRole('dialog', { name: '白板视频' })).toBeVisible();
+  await page.getByRole('button', { name: '打开已保存白板', exact: true }).click(); await expect(page.getByRole('main', { name: '白板视频' })).toBeVisible();
   expect(confirmationWrites).toBe(1);
   await expect(page.locator('.wb-ai-origin')).toContainText('AI生成');
   await page.getByLabel('完整讲稿与要点').locator('summary').filter({ hasText: /^再比较条件$/ }).click(); await expect(page.getByRole('table')).toContainText('完整尾行条件');

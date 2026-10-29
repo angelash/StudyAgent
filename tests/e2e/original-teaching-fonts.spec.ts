@@ -31,7 +31,7 @@ test('original fonts: real captured Latin and Chinese faces decode before a boar
       (window as unknown as { originalBoardFonts: string[] }).originalBoardFonts.push(this.font); return original.apply(this, args);
     };
   });
-  await page.goto(url); const dialog = page.getByRole('dialog', { name: '白板视频', exact: true });
+  await page.goto(url); const dialog = page.getByRole('main', { name: '白板视频', exact: true });
   await expect(dialog).toHaveAttribute('data-original-font-status', 'ready'); await expect(dialog.getByRole('button', { name: '播放', exact: true })).toBeEnabled();
   const loaded = await page.evaluate(() => [...new Set(Array.from(document.fonts).filter(face => face.status === 'loaded').map(face => face.family.replace(/^['"]|['"]$/g, '')))]);
   for (const family of ['Virgil', 'Xiaolai', 'Satoshi-Regular', 'Satoshi-Medium', 'Satoshi-Bold', 'MiSans']) expect(loaded).toContain(family);
@@ -49,7 +49,7 @@ test('original fonts: real captured Latin and Chinese faces decode before a boar
 test('original fonts: a failed captured glyph never starts playback and an explicit retry recovers the same board', async ({ page }) => {
   const url = await board(page); let blocked = false;
   await page.route('**/reference/hyperknow/assets/woff2/Xiaolai-*.woff2*', async route => { if (!blocked) { blocked = true; await route.abort('failed'); } else await route.continue(); });
-  await page.goto(url); const dialog = page.getByRole('dialog', { name: '白板视频', exact: true });
+  await page.goto(url); const dialog = page.getByRole('main', { name: '白板视频', exact: true });
   await expect(dialog).toHaveAttribute('data-original-font-status', 'error'); expect(blocked).toBe(true); await expect(dialog.getByRole('button', { name: '播放', exact: true })).toBeDisabled(); await expect(dialog.getByRole('button', { name: '导出视频', exact: true })).toBeDisabled();
   await page.unrouteAll({ behavior: 'wait' }); await dialog.getByRole('button', { name: '重新准备板书字体' }).click();
   await expect(dialog).toHaveAttribute('data-original-font-status', 'ready'); await expect(dialog.getByRole('button', { name: '播放', exact: true })).toBeEnabled();
@@ -64,7 +64,7 @@ test('teaching frame: moving to another scene retains already taught notes, excl
     CanvasRenderingContext2D.prototype.clearRect = function (...args: Parameters<CanvasRenderingContext2D['clearRect']>) { state.latestTeachingFrame = []; return clear.apply(this, args); };
     CanvasRenderingContext2D.prototype.fillText = function (...args: Parameters<CanvasRenderingContext2D['fillText']>) { state.latestTeachingFrame.push(args[0]); return fill.apply(this, args); };
   });
-  await page.goto(url); const dialog = page.getByRole('dialog', { name: '白板视频', exact: true });
+  await page.goto(url); const dialog = page.getByRole('main', { name: '白板视频', exact: true });
   await expect(dialog).toHaveAttribute('data-original-font-status', 'ready');
   const scenes = dialog.locator('.sa-scene-strip button'), title = async (index: number) => (await scenes.nth(index).innerText()).replace(/^\d+\s*/u, '').trim();
   const first = await title(0), second = await title(1), third = await title(2);
@@ -80,9 +80,10 @@ test('teaching frame: moving to another scene retains already taught notes, excl
 for (const width of [390, 768, 1280]) test('teaching shell: actual original chrome, font switch and return fit ' + width, async ({ page }) => {
   await page.setViewportSize({ width, height: 800 }); const url = await board(page);
   const styles = () => page.evaluate(() => { const style = getComputedStyle(document.body); return { font: style.fontFamily, color: style.color, background: style.backgroundColor }; });
-  const before = await styles(); await page.goto(url); const dialog = page.getByRole('dialog', { name: '白板视频', exact: true });
+  const before = await styles(); await page.goto(url); const dialog = page.getByRole('main', { name: '白板视频', exact: true });
   await expect(dialog).toHaveAttribute('data-original-font-status', 'ready');
-  expect(await dialog.evaluate(element => { const bounds = element.getBoundingClientRect(); return { x: bounds.x, y: bounds.y, width: bounds.width, height: bounds.height }; })).toEqual({ x: 0, y: 0, width, height: 800 });
+  const sidebar=width>1000?60:0;
+  expect(await dialog.evaluate(element => { const bounds = element.getBoundingClientRect(); return { x: bounds.x, y: bounds.y, width: bounds.width, height: bounds.height }; })).toEqual({ x: sidebar, y: 0, width:width-sidebar, height: 800 });
   const sentence = dialog.locator('.wb-current-sentence'), unit = await sentence.getAttribute('data-unit-id');
   await dialog.getByRole('combobox', { name: '板书字体', exact: true }).selectOption('standard');
   await expect(dialog).toHaveAttribute('data-original-font-status', 'ready'); await expect(sentence).toHaveAttribute('data-unit-id', unit!);
@@ -97,7 +98,7 @@ for (const width of [390, 768, 1280]) test('teaching shell: actual original chro
 test('original fonts: captured math faces stay isolated and the real formula editor decodes its own local font bytes after a board closes', async ({ page }) => {
   const oldFile='apps/web/public/reference/hyperknow/font-faces-873aea85d4e2b6ae.css',legacySha=createHash('sha256').update(readFileSync(join(process.cwd(),oldFile))).digest('hex');
   await page.addInitScript(({legacySha})=>document.addEventListener('DOMContentLoaded',()=>{if(!new URL(location.href).searchParams.has('whiteboard'))return;const link=document.createElement('link');link.rel='stylesheet';link.href='/reference/hyperknow/font-faces-873aea85d4e2b6ae.css';link.dataset.originalTeachingFonts=legacySha;document.head.append(link);}),{legacySha});
-  await page.goto(await board(page)); const dialog = page.getByRole('dialog', { name: '白板视频', exact: true });
+  await page.goto(await board(page)); const dialog = page.getByRole('main', { name: '白板视频', exact: true });
   await expect(dialog).toHaveAttribute('data-original-font-status', 'ready');
   const captured = await page.evaluate(() => {
     const link = document.querySelector<HTMLLinkElement>('link[data-original-teaching-fonts]');
@@ -132,7 +133,7 @@ test('original fonts: captured math faces stay isolated and the real formula edi
 test('original fonts: assistant shares the controlled registry without duplicate board faces and prepares its real UI fonts',async({page})=>{
   const registry=JSON.parse(readFileSync(join(process.cwd(),'apps/web/lib/original-teaching-fonts.json'),'utf8')),families=['Virgil','Xiaolai'],expected=registry.families.filter((row:{family:string})=>families.includes(row.family)).reduce((sum:number,row:{fontFaces:number})=>sum+row.fontFaces,0);
   const count=()=>page.evaluate(names=>Array.from(document.fonts).filter(face=>names.includes(face.family.replace(/^['"]|['"]$/g,''))).length,families);
-  await page.goto(await board(page));const dialog=page.getByRole('dialog',{name:'白板视频',exact:true});await expect(dialog).toHaveAttribute('data-original-font-status','ready');
+  await page.goto(await board(page));const dialog=page.getByRole('main',{name:'白板视频',exact:true});await expect(dialog).toHaveAttribute('data-original-font-status','ready');
   const declared=await count();writeFileSync(join(browserEvidence('original-teaching-fonts'),'single-registry-before-assistant.json'),JSON.stringify({expected,declared},null,2)+'\n');expect(declared).toBe(expected);
   await page.goto('/studio?view=home&mode=instant&audience=independent');await expect(page.locator('.sa-instant-workspace')).toHaveAttribute('data-original-font-status','ready');await expect(page.getByLabel('想一起看看什么',{exact:true})).toBeEnabled();
   expect(await count()).toBe(expected);const loaded=await page.evaluate(()=>Array.from(document.fonts).filter(face=>face.status==='loaded').map(face=>face.family.replace(/^['"]|['"]$/g,'')));

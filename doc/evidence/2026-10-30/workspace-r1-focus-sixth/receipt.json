@@ -1,0 +1,757 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-29T20:52:40.416466+00:00",
+  "sourceRevision": "9ec79f18ddcefa913bd6d351625d47cfb58dba4f",
+  "state": "Scoped focus/admin implementation candidate; local commit only; overall goal active",
+  "browser": {
+    "receipt": "browser-sixth.json",
+    "passed": 8,
+    "failed": 0,
+    "scope": "Focus context, 60/240 sidebar restoration, independent whiteboard, complete paper exit import, cookie identity, actual teacher revocation, nine admin modules and four widths, project edits, legacy history fallback, storage-denied classroom choices"
+  },
+  "compatibilityBrowser": {
+    "receipt": "browser-compatibility-sixth.json",
+    "passed": 168,
+    "failed": 0,
+    "scope": "Original fonts, paper practice/review/calendar, projects, source projects, sidebar, topic/formula/image whiteboards, actual WAV/MP3, audio/video/subtitles, question teaching, permissions, local recovery and share/export"
+  },
+  "unit": {
+    "receipt": "focus-unit-sixth.json",
+    "passed": 9
+  },
+  "sqlite": {
+    "receipt": "focus-api-sqlite-sixth.json",
+    "passed": 52,
+    "skipped": 1,
+    "skipReason": "The PostgreSQL variant in the driver-parameterized paper native recovery file is disabled in this SQLite-only batch."
+  },
+  "postgres": {
+    "receipt": "focus-recovery-postgres-sixth.json",
+    "passed": 11,
+    "skipped": 1,
+    "skipReason": "Source-project SQLite-only cold-backup case is skipped when the source-project suite uses PostgreSQL. It passed in the SQLite batch. The same PG batch also runs the SQLite paper native-recovery variant; these are not eleven PG-only cases.",
+    "postgresOnly": {
+      "sourceProject": 9,
+      "paperNativeRecovery": 1
+    },
+    "sqliteAlsoInBatch": 1
+  },
+  "builds": {
+    "receipt": "builds-sixth.json",
+    "webBuildId": "hBK-tLyFp6JyqXhi1BvtY"
+  },
+  "sourceComparison": "source-comparison.json",
+  "stagedBuildEquivalence": "staged-build-equivalence.json",
+  "screenshots": [
+    {
+      "path": "screenshots/original-shell-1280.png",
+      "sha256": "ec7380fb11343debbcedec7a9165330da565d3c60741116a1e22061ae2338f68",
+      "bytes": 123455,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/original-shell-390.png",
+      "sha256": "8321bac06c423d2cf684b4767fc5b8e2c7c67d36d1969f30909f50ad6e881afb",
+      "bytes": 45678,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/original-shell-768.png",
+      "sha256": "e965197a87d8b0d23e7b58a6fdd4f997d0de8efb6fedba3c5b792b7f5a96018c",
+      "bytes": 57148,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/question-panel-1280.png",
+      "sha256": "159517b3da2c37f288eae989c958e2abe468734d3916d9d1b8676e2afc9f7604",
+      "bytes": 116853,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/question-panel-390.png",
+      "sha256": "ce62c5225096f9f3b40543227de2112680d1f9b99ff30a243fab8bb010c3a2c7",
+      "bytes": 61326,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/actual-current-view.png",
+      "sha256": "352424a662eb8ffc7351c0befc99c2891ff4c9409537280eea3a06825b8ed738",
+      "bytes": 75818,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/reading-panel-1440.png",
+      "sha256": "561d24cbe75b7fe7c004abe9e08e5c156ee0cdb66d66cfbff54910f2e1c1f538",
+      "bytes": 116754,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-analytics-1440.png",
+      "sha256": "f07120c7074614d4fea3adafe2e709afb7038c60d6bdd4fdc793045120bc289c",
+      "bytes": 107824,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-analytics-320.png",
+      "sha256": "bdb7439773800c1a91acc3c87553d3a84e203b76d6808a452b026b1c4b4b1a7c",
+      "bytes": 26961,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-analytics-390.png",
+      "sha256": "b325d422fe7550123a5cc9fe4fda6946e7094fa093e3becab5a4032258556f84",
+      "bytes": 28639,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-analytics-768.png",
+      "sha256": "0cdc68938354e124d61b823f2b8b1e05d6dfb3037f5caac21ddde4e341bb4576",
+      "bytes": 51926,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-content-1440.png",
+      "sha256": "d0b67346988cb0c5858b6c0b8b4a66adf48a12d24a0fc177a68e11d58afdece8",
+      "bytes": 118212,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-content-320.png",
+      "sha256": "9fa69e1786cbab0ff9d2f215c38a11794319d776663211d62fa98f4b54536036",
+      "bytes": 37718,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-content-390.png",
+      "sha256": "1adffe65aff86b98e28a0041fa0b5dcbf9075f3bb2a1aa260e7cf84f5262d0cb",
+      "bytes": 46336,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-content-768.png",
+      "sha256": "929e251d1dba8868786c3666af13febac2af9b7ed04ca29b43a75aab3bd61846",
+      "bytes": 70036,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-content-desktop.png",
+      "sha256": "20a52d22cc72db9d8660ac481ccb12e61891ca1ad46a229d1275ab2fb05e4941",
+      "bytes": 108733,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-curriculum-1440.png",
+      "sha256": "b48a06bf3286536d85e4e84f48653f2632323c90fd1a4c268cdb90ea54cb12f2",
+      "bytes": 66798,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-curriculum-320.png",
+      "sha256": "027be311ab385188ba96967d3856c2240a1858556ff6c7b7abaa6692a038f3f4",
+      "bytes": 31337,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-curriculum-390.png",
+      "sha256": "9c9b87524a876087249440534687b780481f1c347e1618d1eeef0fac9579bf1b",
+      "bytes": 33157,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-curriculum-768.png",
+      "sha256": "3614425f8e515ffa20b99ba559a42a85f169d181a42d5ef300fb8de3cb855967",
+      "bytes": 38907,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-measurement-1440.png",
+      "sha256": "9cc371c3050c66921e4ef70d7ec85105bd51f5bc5f416497801251e5c7b168d3",
+      "bytes": 94095,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-measurement-320.png",
+      "sha256": "ef3b5ebff74e57ab37d39477ec543690ef6315f3083bbd32f25fcd89535939c9",
+      "bytes": 36133,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-measurement-390.png",
+      "sha256": "90e8229ec9d8b13fa521b36e894b7581b53ceaa998515006a1791f78ef1f01c9",
+      "bytes": 38542,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-measurement-768.png",
+      "sha256": "0dfaa7525f3af98739a56765f66d2376384eb619ae86e410904cb55f4130cda2",
+      "bytes": 44591,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-module-accounts.png",
+      "sha256": "cec48bfa7fc098c70f7546fe6ccd6357b3b9328356a01ab6dc5454fdf597dca1",
+      "bytes": 116470,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-module-ai-tools.png",
+      "sha256": "95bbc00420a944c1a8338c29ef1ba9d7fc4e067247293d63da10ef4d8dae65d1",
+      "bytes": 111214,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-module-analytics.png",
+      "sha256": "d9095ec2926817c1667485e10f900ab651fa4bb1df06aa9cca6e86c7c547ade1",
+      "bytes": 63630,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-module-content.png",
+      "sha256": "680108d176eb8627db6061c50f833f61a8bde6cf768bed613fdc881b555e4652",
+      "bytes": 108795,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-module-curriculum.png",
+      "sha256": "380b4db0eac937ea3f18c7f896d6018e0fd94530baa262381aa063c245c96b4c",
+      "bytes": 67990,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-module-gesp.png",
+      "sha256": "ac3350401d2f10fbdf1938e9536363e2d4f7e0d4c188a340dfc2dc6c149b733a",
+      "bytes": 131768,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-module-imports.png",
+      "sha256": "69e7202007eaac1636f2d171c914470ca979f6ff4affb6bfc2809e8e7da689fe",
+      "bytes": 110751,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-module-measurement.png",
+      "sha256": "7a747753a7526081982137dc96fbab367f110af734457da73be1f9a730459fcd",
+      "bytes": 93383,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/admin-module-reviews.png",
+      "sha256": "4fffacf9a9dcd736e7c09fe3dc70f67daa397264eb702ae39a9d83c9a085f897",
+      "bytes": 100140,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/adult-whiteboard-desktop.png",
+      "sha256": "34bc09921168edf3eb1d3aba64ed61512e505e3dc1fa4e15b9da008df0e6bcd5",
+      "bytes": 104230,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/adult-whiteboard-expanded-short.png",
+      "sha256": "7cd0a4bcaef7f4dc498be8b0fce0e707df3059e9c2920fea9094d88af7d83f9e",
+      "bytes": 76580,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/adult-whiteboard-mobile.png",
+      "sha256": "f8e20e6a3a38bf218528e829967f60aef1fcbdff0b265765047e9bef74d04d29",
+      "bytes": 37627,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/paper-exit-mobile.png",
+      "sha256": "44b91fc0cfd07e6bc057cc66df26e7148ae0015b296f2e5f946fc1c7001579c7",
+      "bytes": 43934,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/teacher-denied-1440.png",
+      "sha256": "5a66d75658f7d1e59846cd8c1e5148bfe2a58f45ab85646bb05213ec69391945",
+      "bytes": 62926,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/teacher-denied-320.png",
+      "sha256": "2b1dd335d3c0e74c4e45e6fa0628c133a03e820ff28263bc1f346fa7e3b6f936",
+      "bytes": 29708,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/teacher-denied-390.png",
+      "sha256": "3c5de964ce753533471eee193366d32b7ad375fd6bccdc72e2d249e6500da27e",
+      "bytes": 30177,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    },
+    {
+      "path": "screenshots/teacher-denied-768.png",
+      "sha256": "cb22565f86e95bb8c31310577338281afca68c737233aec84142a38c7b24c879",
+      "bytes": 32339,
+      "privacy": "Synthetic owned accounts, original QA inputs and licensed bundled UI samples only."
+    }
+  ],
+  "productionObservation": {
+    "readOnly": true,
+    "unchangedFromMaterialsDelivery": true,
+    "artifacts": [
+      {
+        "path": "apps/api/dist/apps/api/src/main.js",
+        "sha256": "5793c7090063d318c5e5c60bdb74350baa6f64c386639b94fbf4cd5605946c1a",
+        "mtimeUtc": "2026-10-29T14:51:26.120290+00:00"
+      },
+      {
+        "path": "apps/web/.next/BUILD_ID",
+        "sha256": "e02197beeb39c5df02110ca05544c471b3bb892662bebdcb56449b27713e7fba",
+        "mtimeUtc": "2026-10-29T14:52:20.456777+00:00"
+      }
+    ],
+    "schemaVersion": 24,
+    "revision": 187
+  },
+  "earlierAttempts": {
+    "first": "7 unit and 4 browser core activity cases; earlier application version",
+    "second": "First browser selection matched no cases. Retried 7 cases: 4 passed, 3 failed (whiteboard overlay, short synthetic evidence, fetch Response accessor). PG first replay lacked native-backup environment; retry passed. Original results preserved.",
+    "third": "7 new browser cases passed. Broad compatibility 163 passed and 5 failed: width/overflow, previous panel-width expectations and Escape after blur. Original failures preserved.",
+    "fourth": "7 passed, 1 failed on 320px admin content overflow. Layout diagnostic and first CSS proposal failed; second QA-only proposal passed. These probes do not count as final application acceptance.",
+    "fifth": "Five targeted layout/panel cases passed; Escape fix was added in sixth.",
+    "sixth": "Final focused and broad suites recorded separately; no sum of overlapping counts."
+  },
+  "limits": [
+    "No push or production deployment.",
+    "This scoped batch does not complete R1, the 31-route end-to-end ledger, GESP recovery, or R2-R8.",
+    "Navigation API absence is simulated in actual Chromium; no claim of testing real legacy browser binaries.",
+    "Human teacher, full textbook alignment, real devices and real learner 1/3/7/14-day evidence remain open.",
+    "Synthetic model fixtures and test accounts do not create production learner evidence.",
+    "No new HTTP endpoints, persisted schema or scoring rules in this batch."
+  ],
+  "artifacts": [
+    {
+      "path": "api-test-typecheck-equivalence.json",
+      "sha256": "5a10664a293cb266b4ebe5a1123e3b7689d6af4834767fa58a7d17b625d1f635",
+      "bytes": 191
+    },
+    {
+      "path": "authored-audit-preparation.json",
+      "sha256": "7a8b46480ace875a17647632ed5817520ada93a9f25b855e3c66432b1fb2561b",
+      "bytes": 240
+    },
+    {
+      "path": "authored-audit.json",
+      "sha256": "ef45e0d51d36136344ae94c903e3715d2c6b58d109e2570016b4b89a7b42056e",
+      "bytes": 881283
+    },
+    {
+      "path": "browser-compatibility-sixth.json",
+      "sha256": "a3b10500d4fa28b33e6480e016a43ffc59c4ee316029f83e51b3882250072dca",
+      "bytes": 51526
+    },
+    {
+      "path": "browser-compatibility-third.json",
+      "sha256": "86f49d95186acdb6c6a246aaf1a21a5523170b296bfc1ab52287f41798e93317",
+      "bytes": 51790
+    },
+    {
+      "path": "browser-fifth-targeted.json",
+      "sha256": "3d1a962509246e46e473122837c01d074b2325878f4599d4d5864f5c14b74c83",
+      "bytes": 1886
+    },
+    {
+      "path": "browser-first.json",
+      "sha256": "1ea2fc5a2c4ee8a0bf1597caf2a95fa2cf598fc8cb73da68ba9a8ce298a60d70",
+      "bytes": 1641
+    },
+    {
+      "path": "browser-fourth-layout-diagnostic.json",
+      "sha256": "8b8a65257765d1be944e25234b849873539564bf76dee79db69b395d4341dc6f",
+      "bytes": 1042
+    },
+    {
+      "path": "browser-fourth-layout-proposal-second.json",
+      "sha256": "7da2544e13f29a7f53037414e8c362ea4574f201b922648a5cbddbc90fa1f6e4",
+      "bytes": 639
+    },
+    {
+      "path": "browser-fourth-layout-proposal.json",
+      "sha256": "999a8dfee73be35a3e41ede87c31b825fdade7da9c7d1e6304fae46061a40ff8",
+      "bytes": 973
+    },
+    {
+      "path": "browser-fourth.json",
+      "sha256": "5db4d3a9f88e47f8768d4dd85c06b2a529bdad9d6f696b3a8b5a344940d6ad9b",
+      "bytes": 2890
+    },
+    {
+      "path": "browser-second-preparation.json",
+      "sha256": "6dc60217aec4f4967076ccd798bd9c0e5dbef092955d8e9023119c4830f443db",
+      "bytes": 369
+    },
+    {
+      "path": "browser-second-retry.json",
+      "sha256": "618784af508aa28b190d5b6389fa027a9a72292e1070307db4d53811147a2a40",
+      "bytes": 2896
+    },
+    {
+      "path": "browser-sixth.json",
+      "sha256": "b09a550eee9f2da6d4556ea83a9c90069e4dd5741feb880153a987c8d2edfa66",
+      "bytes": 2861
+    },
+    {
+      "path": "browser-third.json",
+      "sha256": "6e78b128f9f654714315c13197d20bb2a0f15fe4412440b4e51866516b7691e1",
+      "bytes": 2549
+    },
+    {
+      "path": "builds-fifth.json",
+      "sha256": "2608b533bedf799a110a35eb426237d9e54a64ce073d4dd29bf36a96d685cfdc",
+      "bytes": 622
+    },
+    {
+      "path": "builds-first.json",
+      "sha256": "ba515449286429e371d2965ebc9eb8de0cae1d28f7d5e5e1f9a9beb149464252",
+      "bytes": 622
+    },
+    {
+      "path": "builds-fourth.json",
+      "sha256": "9711cf51dc810ce3df45c0c0023ecaf7464f97e66f35f73a15dd4f9f84d2e613",
+      "bytes": 622
+    },
+    {
+      "path": "builds-second.json",
+      "sha256": "178044061931e7894bdb2209f1077f1a9bcf8bd44616e4111d278e548a135a51",
+      "bytes": 622
+    },
+    {
+      "path": "builds-sixth.json",
+      "sha256": "1f15fa552373efab3a703164f3a09247677a72b63c5d02cbd603fb5e003af1d4",
+      "bytes": 622
+    },
+    {
+      "path": "builds-third.json",
+      "sha256": "5cc597b2762ef4be0771686eeb94462fe7c684d72a3c499faa5eceb17c22ab20",
+      "bytes": 622
+    },
+    {
+      "path": "design-validation.json",
+      "sha256": "757e99fcf2a665ff58a7a8be87c467acbd078803f331b963277bad7a67b56cd2",
+      "bytes": 96526
+    },
+    {
+      "path": "focus-api-second.json",
+      "sha256": "588cec74f66de80834bfa744bc4a10c0e39b45f8be59d414d39ce7d8a80eead9",
+      "bytes": 8593
+    },
+    {
+      "path": "focus-api-sqlite-sixth.json",
+      "sha256": "6e4affde96b9c296491f370ed3803e9f3d99fda89784916df86f039db1f104c9",
+      "bytes": 16406
+    },
+    {
+      "path": "focus-paper-native-postgres-retry.json",
+      "sha256": "7d6a0b91f44932be1cac92fdc279ad25348663462a1377d06274e98a664ff37f",
+      "bytes": 917
+    },
+    {
+      "path": "focus-recovery-postgres-second.json",
+      "sha256": "9d559c7bb5ead1e5ef966a9b8990cbe986e585316d5bbb3fedd7bf5dbacd9e62",
+      "bytes": 3959
+    },
+    {
+      "path": "focus-recovery-postgres-sixth.json",
+      "sha256": "8dfaa0e750ef6ef15d92cb233cbae165d0e417f4b13371b0f45d679d268e319b",
+      "bytes": 3940
+    },
+    {
+      "path": "focus-recovery-sqlite-second.json",
+      "sha256": "d96106f0fcb6397451a9129ea49ecb9da142d4ffb900ba1fd7fd938cebc278d7",
+      "bytes": 10746
+    },
+    {
+      "path": "focus-unit-second.json",
+      "sha256": "d2a0876ce3d9073f677193f0657a9ac9a2e896fce13ceff02fa3479632017326",
+      "bytes": 2704
+    },
+    {
+      "path": "focus-unit-sixth.json",
+      "sha256": "ca02fff50af8663042ee04e87fe59627f8ee1769c3145827fb0a1922ccb70ddf",
+      "bytes": 2706
+    },
+    {
+      "path": "layout-test-overlay.json",
+      "sha256": "f0dbca5ed27d7f943a8a4a26f912d946bdf4b621def3cb5b64377334e4fddbdc",
+      "bytes": 306
+    },
+    {
+      "path": "navigation-test-overlay.json",
+      "sha256": "63e091613c4e10f09b5605741774bf2da3b4bfafcf6c5ade4ec427335e1381bd",
+      "bytes": 493
+    },
+    {
+      "path": "postgres-identity.json",
+      "sha256": "65aa3709cf921b2b4495361a4f6db1821f7e01be94582b9cb468dda397280a95",
+      "bytes": 207
+    },
+    {
+      "path": "qa-ports-after.json",
+      "sha256": "1ee72f319b58c14d88978939d3331d0c79607603627659a5eabdbcc6f0ccfd42",
+      "bytes": 803
+    },
+    {
+      "path": "reading-panel-test-overlay.json",
+      "sha256": "1536cec476bee674c022e8e6ae5eac16e3dccc49e479c1a7bdbc899c50f74698",
+      "bytes": 369
+    },
+    {
+      "path": "screenshots/actual-current-view.png",
+      "sha256": "352424a662eb8ffc7351c0befc99c2891ff4c9409537280eea3a06825b8ed738",
+      "bytes": 75818
+    },
+    {
+      "path": "screenshots/admin-analytics-1440.png",
+      "sha256": "f07120c7074614d4fea3adafe2e709afb7038c60d6bdd4fdc793045120bc289c",
+      "bytes": 107824
+    },
+    {
+      "path": "screenshots/admin-analytics-320.png",
+      "sha256": "bdb7439773800c1a91acc3c87553d3a84e203b76d6808a452b026b1c4b4b1a7c",
+      "bytes": 26961
+    },
+    {
+      "path": "screenshots/admin-analytics-390.png",
+      "sha256": "b325d422fe7550123a5cc9fe4fda6946e7094fa093e3becab5a4032258556f84",
+      "bytes": 28639
+    },
+    {
+      "path": "screenshots/admin-analytics-768.png",
+      "sha256": "0cdc68938354e124d61b823f2b8b1e05d6dfb3037f5caac21ddde4e341bb4576",
+      "bytes": 51926
+    },
+    {
+      "path": "screenshots/admin-content-1440.png",
+      "sha256": "d0b67346988cb0c5858b6c0b8b4a66adf48a12d24a0fc177a68e11d58afdece8",
+      "bytes": 118212
+    },
+    {
+      "path": "screenshots/admin-content-320.png",
+      "sha256": "9fa69e1786cbab0ff9d2f215c38a11794319d776663211d62fa98f4b54536036",
+      "bytes": 37718
+    },
+    {
+      "path": "screenshots/admin-content-390.png",
+      "sha256": "1adffe65aff86b98e28a0041fa0b5dcbf9075f3bb2a1aa260e7cf84f5262d0cb",
+      "bytes": 46336
+    },
+    {
+      "path": "screenshots/admin-content-768.png",
+      "sha256": "929e251d1dba8868786c3666af13febac2af9b7ed04ca29b43a75aab3bd61846",
+      "bytes": 70036
+    },
+    {
+      "path": "screenshots/admin-content-desktop.png",
+      "sha256": "20a52d22cc72db9d8660ac481ccb12e61891ca1ad46a229d1275ab2fb05e4941",
+      "bytes": 108733
+    },
+    {
+      "path": "screenshots/admin-curriculum-1440.png",
+      "sha256": "b48a06bf3286536d85e4e84f48653f2632323c90fd1a4c268cdb90ea54cb12f2",
+      "bytes": 66798
+    },
+    {
+      "path": "screenshots/admin-curriculum-320.png",
+      "sha256": "027be311ab385188ba96967d3856c2240a1858556ff6c7b7abaa6692a038f3f4",
+      "bytes": 31337
+    },
+    {
+      "path": "screenshots/admin-curriculum-390.png",
+      "sha256": "9c9b87524a876087249440534687b780481f1c347e1618d1eeef0fac9579bf1b",
+      "bytes": 33157
+    },
+    {
+      "path": "screenshots/admin-curriculum-768.png",
+      "sha256": "3614425f8e515ffa20b99ba559a42a85f169d181a42d5ef300fb8de3cb855967",
+      "bytes": 38907
+    },
+    {
+      "path": "screenshots/admin-measurement-1440.png",
+      "sha256": "9cc371c3050c66921e4ef70d7ec85105bd51f5bc5f416497801251e5c7b168d3",
+      "bytes": 94095
+    },
+    {
+      "path": "screenshots/admin-measurement-320.png",
+      "sha256": "ef3b5ebff74e57ab37d39477ec543690ef6315f3083bbd32f25fcd89535939c9",
+      "bytes": 36133
+    },
+    {
+      "path": "screenshots/admin-measurement-390.png",
+      "sha256": "90e8229ec9d8b13fa521b36e894b7581b53ceaa998515006a1791f78ef1f01c9",
+      "bytes": 38542
+    },
+    {
+      "path": "screenshots/admin-measurement-768.png",
+      "sha256": "0dfaa7525f3af98739a56765f66d2376384eb619ae86e410904cb55f4130cda2",
+      "bytes": 44591
+    },
+    {
+      "path": "screenshots/admin-module-accounts.png",
+      "sha256": "cec48bfa7fc098c70f7546fe6ccd6357b3b9328356a01ab6dc5454fdf597dca1",
+      "bytes": 116470
+    },
+    {
+      "path": "screenshots/admin-module-ai-tools.png",
+      "sha256": "95bbc00420a944c1a8338c29ef1ba9d7fc4e067247293d63da10ef4d8dae65d1",
+      "bytes": 111214
+    },
+    {
+      "path": "screenshots/admin-module-analytics.png",
+      "sha256": "d9095ec2926817c1667485e10f900ab651fa4bb1df06aa9cca6e86c7c547ade1",
+      "bytes": 63630
+    },
+    {
+      "path": "screenshots/admin-module-content.png",
+      "sha256": "680108d176eb8627db6061c50f833f61a8bde6cf768bed613fdc881b555e4652",
+      "bytes": 108795
+    },
+    {
+      "path": "screenshots/admin-module-curriculum.png",
+      "sha256": "380b4db0eac937ea3f18c7f896d6018e0fd94530baa262381aa063c245c96b4c",
+      "bytes": 67990
+    },
+    {
+      "path": "screenshots/admin-module-gesp.png",
+      "sha256": "ac3350401d2f10fbdf1938e9536363e2d4f7e0d4c188a340dfc2dc6c149b733a",
+      "bytes": 131768
+    },
+    {
+      "path": "screenshots/admin-module-imports.png",
+      "sha256": "69e7202007eaac1636f2d171c914470ca979f6ff4affb6bfc2809e8e7da689fe",
+      "bytes": 110751
+    },
+    {
+      "path": "screenshots/admin-module-measurement.png",
+      "sha256": "7a747753a7526081982137dc96fbab367f110af734457da73be1f9a730459fcd",
+      "bytes": 93383
+    },
+    {
+      "path": "screenshots/admin-module-reviews.png",
+      "sha256": "4fffacf9a9dcd736e7c09fe3dc70f67daa397264eb702ae39a9d83c9a085f897",
+      "bytes": 100140
+    },
+    {
+      "path": "screenshots/adult-whiteboard-desktop.png",
+      "sha256": "34bc09921168edf3eb1d3aba64ed61512e505e3dc1fa4e15b9da008df0e6bcd5",
+      "bytes": 104230
+    },
+    {
+      "path": "screenshots/adult-whiteboard-expanded-short.png",
+      "sha256": "7cd0a4bcaef7f4dc498be8b0fce0e707df3059e9c2920fea9094d88af7d83f9e",
+      "bytes": 76580
+    },
+    {
+      "path": "screenshots/adult-whiteboard-mobile.png",
+      "sha256": "f8e20e6a3a38bf218528e829967f60aef1fcbdff0b265765047e9bef74d04d29",
+      "bytes": 37627
+    },
+    {
+      "path": "screenshots/original-shell-1280.png",
+      "sha256": "ec7380fb11343debbcedec7a9165330da565d3c60741116a1e22061ae2338f68",
+      "bytes": 123455
+    },
+    {
+      "path": "screenshots/original-shell-390.png",
+      "sha256": "8321bac06c423d2cf684b4767fc5b8e2c7c67d36d1969f30909f50ad6e881afb",
+      "bytes": 45678
+    },
+    {
+      "path": "screenshots/original-shell-768.png",
+      "sha256": "e965197a87d8b0d23e7b58a6fdd4f997d0de8efb6fedba3c5b792b7f5a96018c",
+      "bytes": 57148
+    },
+    {
+      "path": "screenshots/paper-exit-mobile.png",
+      "sha256": "44b91fc0cfd07e6bc057cc66df26e7148ae0015b296f2e5f946fc1c7001579c7",
+      "bytes": 43934
+    },
+    {
+      "path": "screenshots/question-panel-1280.png",
+      "sha256": "159517b3da2c37f288eae989c958e2abe468734d3916d9d1b8676e2afc9f7604",
+      "bytes": 116853
+    },
+    {
+      "path": "screenshots/question-panel-390.png",
+      "sha256": "ce62c5225096f9f3b40543227de2112680d1f9b99ff30a243fab8bb010c3a2c7",
+      "bytes": 61326
+    },
+    {
+      "path": "screenshots/reading-panel-1440.png",
+      "sha256": "561d24cbe75b7fe7c004abe9e08e5c156ee0cdb66d66cfbff54910f2e1c1f538",
+      "bytes": 116754
+    },
+    {
+      "path": "screenshots/teacher-denied-1440.png",
+      "sha256": "5a66d75658f7d1e59846cd8c1e5148bfe2a58f45ab85646bb05213ec69391945",
+      "bytes": 62926
+    },
+    {
+      "path": "screenshots/teacher-denied-320.png",
+      "sha256": "2b1dd335d3c0e74c4e45e6fa0628c133a03e820ff28263bc1f346fa7e3b6f936",
+      "bytes": 29708
+    },
+    {
+      "path": "screenshots/teacher-denied-390.png",
+      "sha256": "3c5de964ce753533471eee193366d32b7ad375fd6bccdc72e2d249e6500da27e",
+      "bytes": 30177
+    },
+    {
+      "path": "screenshots/teacher-denied-768.png",
+      "sha256": "cb22565f86e95bb8c31310577338281afca68c737233aec84142a38c7b24c879",
+      "bytes": 32339
+    },
+    {
+      "path": "source-comparison.json",
+      "sha256": "c16228a89584fb1f69bbef003603f79d8da77d7b554490999f891855c724b890",
+      "bytes": 307
+    },
+    {
+      "path": "source-inputs.json",
+      "sha256": "e98f4ab4b2e8e3c3a79b75a4816df629bb85ea516759f4875c1422eeb547f188",
+      "bytes": 443752
+    },
+    {
+      "path": "staged-build-equivalence.json",
+      "sha256": "cb1095b20349aef2ccf41f742bd6cfdbf62edc1af25d02eed3c09b2fbfd0e78d",
+      "bytes": 1518
+    },
+    {
+      "path": "staged-inputs.json",
+      "sha256": "bedf47d156105ccbc6e28a3def65e31df24d74006726ae42bdb0a665dab66488",
+      "bytes": 10192
+    },
+    {
+      "path": "staged-review.json",
+      "sha256": "439a71f6b9c810e212c653f74f669774f317939bb30c2a205563308896273010",
+      "bytes": 267
+    }
+  ],
+  "apiTestTypecheck": "api-test-typecheck-equivalence.json",
+  "documentation": {
+    "receipt": "design-validation.json",
+    "passed": true,
+    "features": {
+      "areas": 14,
+      "features": 136,
+      "activeNormalApiRoutes": 459,
+      "coveredApiRoutes": 459
+    },
+    "coverage": {
+      "activeNormalApiRoutes": 459,
+      "coveredApiRoutes": 459,
+      "uncovered": []
+    },
+    "markdownLinks": {
+      "checked": 4487,
+      "missing": []
+    },
+    "offlineChecks": 10
+  },
+  "qaPortsAfterRun": "qa-ports-after.json",
+  "stagedReview": "staged-review.json"
+}

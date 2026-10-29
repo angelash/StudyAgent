@@ -29,6 +29,20 @@ describe('source-course projects, frozen objectives and original permissions',()
   const catalog=(id:string,actor=owner)=>call('get','/learning/projects/catalog?sourceCourseId='+id,undefined,actor);
   async function open(id:string,actor=owner){const list=await catalog(id,actor);return call('post','/learning/projects',{sourceCourseId:id,unitId:list.definitions[0].unitId},actor);}
   const ratings=(row:any)=>row.definition.rubric.map((criterion:any)=>({criterionId:criterion.id,level:1,evidence:'保留来源和自己的初步尝试。'}));
+  it('projects authorized chemistry and independent navigation without persisting presentation metadata',async()=>{
+    const studentId=(await call('post','/students',{nickname:'合成导航边界',grade:5,preferredSessionMinutes:10,defaultVersionMap:{math:'common',chinese:'common',english:'common'}})).profile.id;
+    const otherStudentId=(await call('post','/students',{nickname:'另一合成导航边界',grade:5,preferredSessionMinutes:10,defaultVersionMap:{math:'common',chinese:'common',english:'common'}})).profile.id;
+    const id=await source(studentId);await store.transaction(()=>{const course=store.find('sourceCourses',{id});course.subject='chemistry';for(const source of course.sources)store.find('studioSourceMaterials',{id:source.materialId}).subject='chemistry';});
+    const course=await call('get','/learning/source-courses/'+id),session=await call('post','/learning/classroom/sessions',{sourceCourseId:id,lessonId:course.lessons[0].id}),project=await open(id);
+    const expected={audience:'student',studentId,subject:'chemistry'};
+    const records=()=>store.requestContext(()=>structuredClone({session:store.find('classroomSessions',{id:session.id}),project:store.find('courseProjects',{id:project.id})}));
+    const before=await records();expect(before.session).not.toHaveProperty('navigationContext');expect(before.project).not.toHaveProperty('navigationContext');
+    expect(session.navigationContext).toEqual(expected);expect(project.navigationContext).toEqual(expected);expect((await catalog(id)).navigationContext).toEqual(expected);
+    for(let index=0;index<2;index++){expect((await call('get','/learning/classroom/sessions/'+session.id)).navigationContext).toEqual(expected);expect((await call('get','/learning/projects/'+project.id)).navigationContext).toEqual(expected);}
+    await call('get','/learning/projects/catalog?sourceCourseId='+id+'&studentId='+otherStudentId,undefined,owner,400);await call('get','/learning/classroom/sessions/'+session.id,undefined,other,403);await call('get','/learning/projects/'+project.id,undefined,other,403);
+    expect(await records()).toEqual(before);await app.close();await boot();expect(await records()).toEqual(before);expect((await call('get','/learning/projects/'+project.id)).navigationContext).toEqual(expected);
+    const adultId=await source();expect((await catalog(adultId)).navigationContext).toEqual({audience:'independent'});expect((await open(adultId)).navigationContext).toEqual({audience:'independent'});
+  });
   beforeAll(async()=>{
     const location=process.env.STUDY_TEST_SOURCE_PROJECT_POSTGRES_URL;if(location){pg=new Pool({connectionString:location});expect((await pg.query('SELECT current_database() name')).rows[0].name).toBe('study_agent_qa');schema='study_qa_source_projects_'+randomUUID().replace(/-/g,'');await pg.query('CREATE SCHEMA "'+schema+'"');const url=new URL(location);url.searchParams.set('options','-c search_path='+schema);process.env.DATABASE_URL=url.toString();}
     Object.assign(process.env,{NODE_ENV:'development',STUDY_STORAGE:location?'postgres':'sqlite',STUDY_DATA_DIR:directory,STUDY_WORKER_ENABLED:'false',STUDY_SEED_FOUNDATION:'false',XIAOJIU_CHAT_ENABLED:'false',MINIMAX_API_KEY:'synthetic-never-sent',OPENAI_API_KEY:''});await boot();owner=await register();other=await register();teacher=await register();

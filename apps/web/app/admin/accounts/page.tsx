@@ -2,7 +2,6 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { apiRequest } from '../../../lib/api';
-import { StudyNav } from '../../../components/study-nav';
 import '../../student/assessment/studio.css';
 import '../workbench.css';
 type Account = { id: string; principal: string; displayName: string; role: string; status: string; version: number };
@@ -23,7 +22,7 @@ export default function AccountWorkbench() {
       setSelected(account); setReason(''); setReload((n) => n + 1); setNotice('账号权限已更新并记录依据。身份或状态变化后，该账号需要重新登录。');
     } catch (e) { setError(e instanceof Error ? e.message : '变更未完成，请重试'); } finally { setCredential(''); setBusy(false); }
   }
-  return <main className="learning-studio"><StudyNav /><div className="admin-workbench"><nav className="admin-links"><Link href="/admin/curriculum">课程与覆盖</Link><Link href="/admin/reviews">作答复核与反馈</Link><Link href="/admin/accounts" aria-current="page">账号权限</Link></nav><span className="studio-eyebrow">ACCOUNT ACCESS / 明确每一份权限</span><h1>身份先核实，权限有依据。</h1><p>注册账号默认是家长。管理员核实后可授予教研或运营身份；教师查看孩子作答仍需监护人单独授权。</p>
+  return <main className="learning-studio"><div className="admin-workbench"><span className="studio-eyebrow">ACCOUNT ACCESS / 明确每一份权限</span><h1>账号权限</h1><p>注册账号默认是家长。管理员核实后可授予教研或运营身份；教师查看孩子作答仍需监护人单独授权。</p>
     {error && <div className="studio-error" role="alert">{error}</div>}{notice && <p role="status">{notice}</p>}
     <form className="admin-toolbar" onSubmit={(e) => { e.preventDefault(); setFilter(search.trim()); setPage(1); }}><label>搜索账号或显示名<input maxLength={254} value={search} onChange={(e) => setSearch(e.target.value)} placeholder="输入账号关键词" /></label><button className="studio-secondary" disabled={busy}>查找</button><span className="studio-muted">{loading ? '正在读取…' : `${total} 个账号`}</span></form>
     <div className="admin-columns"><section><div className="admin-atom-list">{rows.map((account) => <button key={account.id} disabled={busy} aria-pressed={selected?.id === account.id} onClick={() => select(account)}><strong>{account.displayName}</strong><span>{account.principal}</span><small>{roles[account.role]} · {account.status === 'active' ? '可用' : '已停用'} · v{account.version}</small></button>)}</div><div className="admin-toolbar"><button className="studio-secondary" disabled={page <= 1 || busy} onClick={() => setPage((n) => n - 1)}>上一页</button><span className="studio-muted">{page} / {Math.max(1, Math.ceil(total / 25))}</span><button className="studio-secondary" disabled={page * 25 >= total || busy} onClick={() => setPage((n) => n + 1)}>下一页</button></div></section>

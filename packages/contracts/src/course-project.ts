@@ -1,4 +1,5 @@
 import type { ProjectAttachmentRef, ProjectAttachmentSnapshot } from './project-assets';
+import type { ActivityNavigationContext } from './activity-navigation';
 export type ProjectStage = { id: string; title: string; objective: string;
   fields: Array<{ id: string; label: string; prompt: string }> };
 export type ProjectCriterion = { id: string; title: string; levels: [string, string, string, string] };
@@ -25,8 +26,9 @@ export type CourseProject = { id: string; ownerUserId: string; studentId: string
   advice: ProjectAdvice[]; legacyImports: Array<{ sessionId: string; text: string; at: string }>;
   createdAt: string; updatedAt: string };
 export type CourseProjectView = CourseProject & { contentStatus: 'current' | 'archived' | 'unavailable';
+  navigationContext?: ActivityNavigationContext;
   permissions: { edit: boolean; review: boolean;startCurrentVersion?:boolean } };
-export type CourseProjectCatalog = { definitions: CourseProjectDefinition[]; projects: CourseProjectView[];permissions?:{start:boolean} };
+export type CourseProjectCatalog = { definitions: CourseProjectDefinition[]; projects: CourseProjectView[]; navigationContext?: ActivityNavigationContext;permissions?:{start:boolean} };
 export type ProjectCommandReceipt = { requestKey:string;kind:'save'|'submit'|'review'|'advice'|'import';appliedRevision:number;at:string;
   submissionId?:string;reviewId?:string;project:CourseProjectView };
 

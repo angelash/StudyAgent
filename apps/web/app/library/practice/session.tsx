@@ -11,6 +11,7 @@ import { clearPaperRecovery, downloadPaperRecovery, firstPaperCopy, otherPaperCo
 import { RichMath } from '../../../components/rich-math';
 import { WorkspaceDialog } from '../../studio/workspace-dialog';
 import { materialPaperHref, materialsReturn, withMaterialsReturn } from '../../../lib/materials-navigation';
+import { ActivityWorkspaceNavigation } from '../../../components/activity-workspace-navigation';
 
 type Pending = { format: 'paper-practice-command-v1'; ownerId: string; sessionId: string; body: Record<string, unknown> };
 type Draft = { format: 'paper-practice-draft-v1'; ownerId: string; sessionId: string; itemId: string; text: string; baseText: string; purpose?: 'correction' };
@@ -31,6 +32,9 @@ export function PaperPracticeSession({ user, sessionId }: { user: SessionUser; s
   const focusAfter = React.useRef<{ itemId: string; target: string } | null>(null);
   const selectedRef = React.useRef(selected); selectedRef.current = selected;
   const correctionDrafts = React.useRef(new Map<string, string>());
+  const requestedCopy=React.useRef<Draft|null>(null);
+  const [leaving,setLeaving]=React.useState<{proceed:()=>void}|null>(null),[exported,setExported]=React.useState('');
+  const allowedUnload=React.useRef('');
   const [copies, setCopies] = React.useState<Array<{ kind: 'command' | 'draft'; value: Pending | Draft }>>([]);
   const pendingStorage = paperStorage('study.paper-practice.command:' + user.id + ':' + sessionId), pendingKey = pendingStorage.key;
   const draftStorage = (id: string) => paperStorage('study.paper-practice.draft:' + user.id + ':' + sessionId + ':' + id), draftKey = (id: string) => draftStorage(id).key;
@@ -101,6 +105,7 @@ export function PaperPracticeSession({ user, sessionId }: { user: SessionUser; s
         if (savedCorrection) { correcting = correctionDrafts.current.get(value.id) ?? savedCorrection.text; try { storePaperRecovery(correctionStorage(value.id).key, { ...savedCorrection, text: correcting }); } catch { setNotice('已读回订正，但本页恢复副本暂未保存，请下载保护后再离开。'); } if (correcting && row.status === 'completed') setNotice('本机还有未保存的订正草稿，已完成记录不再改写，可下载保留。'); }
       } catch { setNotice('本机草稿暂时无法核对，服务器原记录仍保留。'); }
       setText(editing); localText.current = editing; setCorrection(correcting);
+      if(requestedCopy.current?.itemId===value.id){setLocalConflict(requestedCopy.current);requestedCopy.current=null;}
     }).catch(caught => { if (current) { setItem(null); setError(paperPracticeFailure(caught)); if (caught instanceof ApiRequestError && [401, 403].includes(caught.status)) setRow(null); } });
     return () => { current = false; controller.abort(); };
   }, [selected, row?.version, row?.ownerUserId, sessionId, call, user.id, reload]);
@@ -111,10 +116,17 @@ export function PaperPracticeSession({ user, sessionId }: { user: SessionUser; s
     return () => window.cancelAnimationFrame(frame);
   }, [itemReady, item?.id, itemScope]);
   const dirty = !!row?.permissions.edit && !!item && !item.firstAnswer && text !== item.draft;
+  const exitCopies:Array<Pending|Draft>=[];
+  if(item&&row?.ownerUserId===user.id&&!item.firstAnswer)exitCopies.push({format:'paper-practice-draft-v1',ownerId:user.id,sessionId,itemId:item.id,text,baseText:item.draft});
+  for(const [itemId,value]of correctionDrafts.current)if(value)exitCopies.push({format:'paper-practice-draft-v1',ownerId:user.id,sessionId,itemId,text:value,baseText:item?.id===itemId?item.firstAnswer?.text??'':'',purpose:'correction'});
+  if(localConflict)exitCopies.push(localConflict);if(pending)exitCopies.push(pending);
+  for(const copy of copies)if(!exitCopies.some(value=>JSON.stringify(value)===JSON.stringify(copy.value)))exitCopies.push(copy.value);
+  const exitBundle={format:'paper-practice-exit-v1',ownerId:user.id,sessionId,copies:exitCopies},exitSignature=JSON.stringify(exitBundle);
+  const needsProtection=dirty||Boolean(pending||localConflict||correction.trim()||[...correctionDrafts.current.values()].some(value=>value.trim()));
   React.useEffect(() => {
-    const protect = (event: BeforeUnloadEvent) => { if (dirty || pending || correction.trim() || localConflict) { event.preventDefault(); event.returnValue = ''; } };
+    const protect = (event: BeforeUnloadEvent) => { if (needsProtection&&allowedUnload.current!==exitSignature) { event.preventDefault(); event.returnValue = ''; } };
     window.addEventListener('beforeunload', protect); return () => window.removeEventListener('beforeunload', protect);
-  }, [dirty, pending, correction, localConflict]);
+  }, [needsProtection,exitSignature]);
   React.useEffect(() => {
     const restore = () => { const requested = new URLSearchParams(window.location.search).get('item'); if (row?.items.some(item => item.id === requested)) setSelected(requested!); };
     window.addEventListener('popstate', restore); return () => window.removeEventListener('popstate', restore);
@@ -177,9 +189,21 @@ export function PaperPracticeSession({ user, sessionId }: { user: SessionUser; s
   async function restore(file: File | undefined) {
     if (!file || !row) return;
     try {
-      if (file.size > 256 * 1024) throw new Error('恢复文件过大，请使用原练习保护文件。'); const value = JSON.parse(await file.text());
+      if (file.size > 64 * 1024 * 1024) throw new Error('恢复文件过大，请使用原练习保护文件。'); const value = JSON.parse(await file.text());
       if (!alive.current) return; if (value.ownerId !== user.id || value.sessionId !== sessionId) throw new Error('恢复文件属于其他账号或练习。');
-      if (value.format === 'paper-practice-command-v1') { setPending(decodePending(value)); setProtectedLocally(true); setManualProtection(false); setNotice('已读取原操作文件，可核对原结果。'); }
+      if(value.format==='paper-practice-exit-v1'){
+        if(!Array.isArray(value.copies)||value.copies.length>10000)throw new Error('离开副本的记录数量无效。');
+        const decoded=value.copies.map((entry:Pending|Draft)=>{
+          if(entry.format==='paper-practice-command-v1'){
+            const command=decodePending(entry);if(typeof command.body.itemId==='string'&&!row.items.some(item=>item.id===command.body.itemId))throw new Error('离开副本含有不属于原练习的操作题位。');
+            return {kind:'command' as const,value:command};
+          }
+          if(entry.format!=='paper-practice-draft-v1'||!row.items.some(item=>item.id===entry.itemId))throw new Error('离开副本含有不属于原练习的题位。');
+          return {kind:'draft' as const,value:decodeDraft(entry,entry.itemId)};
+        });
+        setCopies(decoded);setNotice('已读取完整离开副本。请逐份核对；原首答与服务器记录保持。');
+      }
+      else if (value.format === 'paper-practice-command-v1') { setPending(decodePending(value)); setProtectedLocally(true); setManualProtection(false); setNotice('已读取原操作文件，可核对原结果。'); }
       else if (value.format === 'paper-practice-draft-v1' && itemReady && item) { const draft = decodeDraft(value, item.id); if (draft.purpose === 'correction' && !item.firstAnswer) throw new Error('订正草稿只能放回已提交首次回答的原题。'); setLocalConflict(draft); setNotice('已读取本机草稿，请和当前服务器记录核对后选择。'); }
       else throw new Error('文件与当前题位不匹配，请先打开原题。');
     } catch (caught) { setError(paperPracticeFailure(caught)); }
@@ -190,7 +214,9 @@ export function PaperPracticeSession({ user, sessionId }: { user: SessionUser; s
   return <div className="pp-shell"><header className="pp-session-heading">{returnTo && <a href={returnTo}>← 返回来源资料</a>}<a href={back('/library/practice')}>← 我的原卷练习</a><a href={back('/library/practice/review')}>待复习与反思 ↗</a><strong>{row?.status === 'completed' ? '原卷复盘' : row?.status === 'paused' ? '练习已暂停' : '原卷练习'}</strong><span role="status">{busy ? '正在核对与保存…' : pending ? '原操作等待确认' : dirty ? '本题有未提交草稿' : '原记录已读取'}</span></header>
     {row && <p className="pp-review-identity">{row.ownerUserId !== user.id ? '孩子学习账号作答 · 当前只读' : user.role === 'student' ? '孩子学习账号作答 · 本人记录' : row.studentId ? '本人陪练 · 不作为孩子的实际作答' : '本人练习记录'}</p>}
     {row?.origin && <section className="pp-source-warning" aria-label="原题再练来源"><p>这是同一道原题的再次练习，原来的首次回答与反思保持。重复正确仍需独立新题验证。</p>{row.origin.available ? <a href={back('/library/practice/review?' + new URLSearchParams({ session: row.origin.sessionId, item: row.origin.itemId }))}>查看原来的首答与反思 ↗</a> : <p>原练习已经移除或目前不可读取，这次自己的记录仍保留。</p>}</section>}
+    <ActivityWorkspaceNavigation active="materials" activityId={'paper:'+sessionId} pending={!row&&!error} context={row?(row.ownerUserId===user.id&&user.role!=='student'?{audience:'independent'}:{audience:'unavailable'}):undefined} onRequestNavigate={(_href,proceed)=>{if(busy){setNotice('正在核对原操作，请稍后再离开。');return;}if(needsProtection){setLeaving({proceed});return;}proceed();}}/>
     {error && <div className="pp-error" role="alert">{error}<button onClick={() => setReload(value => value + 1)}>读取最新记录</button></div>}{notice && <p className="pp-notice" role="status">{notice}</p>}
+    {leaving&&<WorkspaceDialog onClose={()=>setLeaving(null)}><div className="pp-dialog-backdrop"><section className="pp-finish-dialog" role="dialog" aria-modal="true" aria-label="保留原卷输入后离开"><h2>先保留完整输入</h2><p>副本包含未提交正文、各题订正、冲突原文及原请求。离开不会提交首答或标记完成。</p><button className="studio-secondary" onClick={()=>setLeaving(null)}>继续编辑</button><button className="studio-secondary" onClick={()=>{downloadPaperRecovery(exitBundle,'原卷练习完整离开副本.json');setExported(exitSignature);}}>下载完整离开副本</button><button className="studio-primary" disabled={busy||exported!==exitSignature} onClick={()=>{allowedUnload.current=exitSignature;const next=leaving;setLeaving(null);next.proceed();}}>已保留副本，继续离开</button></section></div></WorkspaceDialog>}
     {pending && <section className="pp-card pp-recovery" aria-label="原操作恢复"><h2>保留原操作，再继续。</h2><p>首次回答和操作标识仍保留，重试会先核对原结果。</p><button className="studio-secondary" onClick={() => { downloadPaperRecovery(pending, '原卷练习原操作.json'); setNotice('请确认浏览器已保存完整恢复文件，再继续核对原结果。'); }}>下载原操作保护文件</button>{manualProtection && <label><input type="checkbox" checked={protectedLocally} onChange={event => setProtectedLocally(event.target.checked)} />我已另外保留完整恢复文件</label>}<button className="studio-primary" disabled={busy || !protectedLocally} onClick={() => void run([pending.body], pending)}>核对或重试原操作</button>
       {commandConflict && <button className="studio-secondary" disabled={busy} onClick={() => { downloadPaperRecovery(pending, '原卷练习冲突记录.json'); clearPending(); setNotice('原操作文件已导出，请核对本机草稿与当前记录后继续。'); }}>保留冲突文件，核对最新版本</button>}</section>}
     {!row ? <section className="pp-empty"><p>{error ? '当前记录不可读取，请重新核对身份或返回原卷库。' : '正在读取这份练习…'}</p><a href="/learn">返回学习首页</a></section> : <>
@@ -219,7 +245,7 @@ export function PaperPracticeSession({ user, sessionId }: { user: SessionUser; s
       {finishOpen && <WorkspaceDialog onClose={() => setFinishOpen(false)} busy={busy}><div className="pp-dialog-backdrop"><section role="alertdialog" aria-modal="true" aria-labelledby="pp-finish-title" className="pp-finish-dialog"><h2 id="pp-finish-title">结束这份练习并保留原记录？</h2><p>还有 {row.counts.unanswered} 个未答记录。未答、跳过、不会和缺题会分别保留，不会补成错误分数。</p><button className="studio-secondary" disabled={busy} onClick={() => setFinishOpen(false)}>继续练习</button><button className="studio-primary" disabled={busy} onClick={() => { setFinishOpen(false); void run([...draftBefore(), { kind: 'complete', acknowledgeUnanswered: true }]); }}>确认结束，查看复盘</button></section></div></WorkspaceDialog>}
     </>}
     <button className="studio-text-button" disabled={busy} onClick={() => { try { const commands = otherPaperCopies(pendingStorage, decodePending).map(value => ({ kind: 'command' as const, value })), drafts = item ? [...otherPaperCopies(draftStorage(item.id), candidate => decodeDraft(candidate, item.id)), ...otherPaperCopies(correctionStorage(item.id), candidate => decodeDraft(candidate, item.id))].map(value => ({ kind: 'draft' as const, value })) : []; setCopies([...commands, ...drafts]); } catch { setNotice('其他本机副本暂不能读取，请使用自己的保护文件。'); } }}>查看其他本机草稿与原操作</button>
-    {copies.map((copy, index) => <button className="studio-secondary" key={index} disabled={!!pending || busy} onClick={() => { if (copy.kind === 'command') { setPending(copy.value as Pending); setProtectedLocally(false); setManualProtection(true); } else setLocalConflict(copy.value as Draft); }}>核对本机{copy.kind === 'command' ? '原操作' : '草稿'} {index + 1}</button>)}
+    {copies.map((copy, index) => <button className="studio-secondary" key={index} disabled={!!pending || busy || !!localConflict || !itemReady} onClick={() => { if (copy.kind === 'command') { setPending(copy.value as Pending); setProtectedLocally(false); setManualProtection(true); } else {const draft=copy.value as Draft;if(draft.itemId===item?.id)setLocalConflict(draft);else{requestedCopy.current=draft;void choose(draft.itemId);}} }}>核对本机{copy.kind === 'command' ? '原操作' : '草稿'} {index + 1}</button>)}
     <label className="pp-recovery-file">从本次练习保护文件恢复<input type="file" accept="application/json,.json" onChange={event => { void restore(event.target.files?.[0]); event.target.value = ''; }} /></label>
   </div>;
 }

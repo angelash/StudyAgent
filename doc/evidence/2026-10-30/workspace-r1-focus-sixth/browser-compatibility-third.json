@@ -1,0 +1,1861 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T20:16:10.282Z",
+    "duration": 989162.052,
+    "expected": 163,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "original fonts: real captured Latin and Chinese faces decode before a board is measured, played or exported",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3347,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "original fonts: a failed captured glyph never starts playback and an explicit retry recovers the same board",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3206,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "teaching frame: moving to another scene retains already taught notes, excludes future scenes and keeps one full caption",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3185,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "teaching shell: actual original chrome, font switch and return fit 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3381,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "teaching shell: actual original chrome, font switch and return fit 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3284,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "teaching shell: actual original chrome, font switch and return fit 1280",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 3495,
+          "error": "Error: expect(received).toEqual(expected) // deep equality"
+        }
+      ]
+    },
+    {
+      "title": "original fonts: captured math faces stay isolated and the real formula editor decodes its own local font bytes after a board closes",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4792,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "original fonts: assistant shares the controlled registry without duplicate board faces and prepares its real UI fonts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2936,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: actual original-paper entry keeps the first answer, explicit reference, correction and completed review",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4413,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: a lost first-answer receipt recovers the same command after actual refresh without submitting twice",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2914,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: a lost creation acknowledgment restores the original started session with read-only receipt checks",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3800,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "recovery: paper practice offline draft saving and a refresh retain the full original command until explicit retry",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5139,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: two actual pages preserve different local drafts and resolve a server conflict without overwriting the other copy",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4293,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: rejected local persistence sends no answer until a real recovery download and explicit protection acknowledgment",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3248,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: an actual original PDF stays an unsplit document with its own persistent response",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3521,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: actual publication withdrawal hides the frozen question and reference while retaining the learner response",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3365,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: completed review permits explicit reference reading without changing the original response or reopening correction",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3292,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3048,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3080,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 1440",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3797,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: selected positions from two actual papers remain in the cross-paper basket and return to their original anchor",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4780,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "recovery: paper practice correction drafts stay with their own item through rapid review, navigation and a real reload",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6655,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: delayed cross-item reads cannot replace the current question after actual browser back and forward",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3064,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: metadata refreshes keep the same original PDF frame through submit and explicit reference reading",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3128,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: recovery files from another account, session or item never replace the current private draft",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3050,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: a real learning-code student writes only their own record and loses the private workspace after grant revocation",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4093,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: an actual login logout and another family cannot reuse a private record or its visible answer",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4837,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: an expired original preview can be safely retained and previewed again without duplicating a started record",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3791,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "recovery: paper practice retains an uncommitted original start through three actual refreshes before one explicit retry",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4672,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review: a completed first answer leads through real reflection, actual review and the stable local-date calendar",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3980,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "recovery: paper review: a lost organization receipt is recovered after three reloads without duplicating history or clearing later reflection",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6594,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review: two real pages compare conflicting reflection drafts before saving a new command",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4253,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review: current item, full reflection and protected calendar fit 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2657,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review: current item, full reflection and protected calendar fit 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2697,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review: current item, full reflection and protected calendar fit 1440",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2844,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review next: an original redo retains its source and recovers the exact new attempt after a lost creation receipt",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4005,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review next: a learner confirms scope, restores a lost independent preview and starts only the frozen new group",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7467,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2636,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2750,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 1440",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2839,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper calendar: changing the actual actor scope fences a late private response and preserves an explicit read failure",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2895,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review next: a late recovery-file read cannot replace the subsequently confirmed original preview",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3127,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review next: repeating the owned fixture withdraws the previous published candidate before creating its next reviewed version",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3532,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review next: denied storage requires a real original file and rejects another owner before explicit exact-key preview recovery",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3634,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review: actual large history is refused before truncation and the complete earlier history remains downloadable",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 9174,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper calendar: an adult without a child keeps the actual all-day date, original review and calendar return through reloads",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4372,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper calendar: an adult without a child keeps the actual all-day date, original review and calendar return through reloads",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4376,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "guided original fields save before moving, keep the full work and submit one frozen stage",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3592,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "an unsaved local field survives reload and a different tab requires an explicit comparison before saving",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3843,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "independent unsaved tab copies survive reload even when a duplicated tab inherits sessionStorage",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3504,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "hard closing without beforeunload preserves the input effect and reopening offers an explicit copy preview",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3191,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "two pending original commands use separate slots and confirming one preserves the other",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3446,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "unavailable project storage keeps the live input and offers a full download",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2501,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "a mismatched owner draft is preserved but never restored or offered as another copy",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2638,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "observed denied teaching clears old project content and narration",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2370,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "observed denied narration clears old project content and narration",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2342,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "a lost save reply survives reload, reads the same actor receipt and preserves later local edits",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2830,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "a lost submission reply reloads its original receipt without creating a second frozen submission",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3315,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "an unavailable step link returns to the frozen stage introduction without writing progress",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2465,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "project teaching, original fields and controls fit at 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2320,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "project teaching, original fields and controls fit at 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2261,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "project teaching, original fields and controls fit at 1440",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2399,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "project audio decodes original samples, does not save progress and stops when the selected step changes",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2366,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2668,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2985,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1280",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3283,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1440",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3246,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reference navigation: a real saved classroom opens the exact original session and position from the course library",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3135,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reference navigation: resizing an open drawer restores usable desktop controls and releases the original background",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2537,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reference navigation: blocked preference storage keeps current controls usable without inventing a saved preference",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3445,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reference navigation: a mobile drawer hands focus to the real course blueprint and returns to its menu trigger after closing",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2623,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "a published source course opens one real project, completes all frozen stages and returns to its original course",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 10875,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "a project URL bound to another source course clears the old work instead of silently changing the course",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6741,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "source-course project entry and frozen objectives fit at 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3119,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "source-course project entry and frozen objectives fit at 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3116,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "source-course project entry and frozen objectives fit at 1440",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3110,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "source reading, assisted practice and project draft return to their exact saved objects in one continuous journey",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6762,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "returning from a course restores the personal project step and mode while an explicit URL takes priority",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6190,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "adult course journey keeps reading, unit check and project separate and resumes the same saved classroom",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3969,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "an entire adult unit retains every lesson, complete practice, unit check and all project submissions as separate facts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 31745,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "continuity: a confirmed adult topic also overlaps its adjacent WAV and preserves its frozen sentence identity",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 9306,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "topic-formula: complete vector fractions, aligned roots and Unicode fit narrow notes and preserve copyable source and safe fallback",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 9177,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "topic-formula: actual shared image and fraction/root/alignment vector video decodes with full audio and caption timeline",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 25549,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "login forms cannot submit before their client handlers are ready",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1052,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 24159,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "topic-figure: uncached complete image commands block leaving until their exact complete download",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4899,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "topic-figure: mismatched image bytes stay hidden and can be reread without creating another candidate",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6983,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "topic-figure: an explicit running cancellation and retry keep the same original candidate and advance its task generation",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 11530,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "topic-figure: two actual tabs retain separate full figure inputs and metadata across reloads",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5777,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "topic-figure: complete verified image and keyboard reader fit 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6929,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "topic-figure: complete verified image and keyboard reader fit 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7156,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "topic-figure: complete verified image and keyboard reader fit 1440",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7311,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "adult original generation, lost edit and confirmation replies recover without duplicates and reach a complete table/formula player",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5157,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "cancelled and failed review generations retain the original selected model through refresh and explicit retry",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 18492,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "incomplete local teaching edits survive reload and another saved draft cannot silently replace them",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5070,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "unavailable local storage keeps the full editable draft and requires a real downloaded copy before leaving",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4649,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "stale-topic: another real tab keeps the local manuscript and opens a comparison before any replacement save",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5779,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "uncached original topic cannot disappear on a scope change until its complete input is downloaded",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2695,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "another explicit local manuscript cannot replace uncached dirty input until the current complete copy is downloaded",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5392,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "recovery: an uncached original cancellation survives object changes until its exact command is downloaded",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2870,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "topic-slot: two real tabs keep their own complete incomplete edits after either tab reloads",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6596,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "explicit child goals, adult separation and complete edit controls fit at 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5361,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "explicit child goals, adult separation and complete edit controls fit at 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5431,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "explicit child goals, adult separation and complete edit controls fit at 1440",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5270,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "complete sentence, complete notes, paused text reading and explicit sentence navigation",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3416,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "real WAV ended drives cloud playback, pause retains audio time and late ended cannot move a new sentence",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5938,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "ended boundary: a queued previous audio frame cannot seek the next actual WAV to its end",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5622,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "continuity: adjacent actual WAV prepares during the current sentence and transfers once at its beginning",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6294,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "continuity: three complete actual WAVs remain ordered through a live speed change without duplicate preparation",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8679,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "continuity: an already prepared WAV cannot survive actual login-session revocation",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5462,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "continuity: a failed adjacent preparation preserves current playback and needs an explicit retry at its original sentence",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5557,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "continuity: closing during adjacent preparation aborts it and no late audio can play",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4291,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "continuity: an exact manual next keeps the prepared WAV paused and transfers it without another request",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5222,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "continuity: a prepared WAV cannot play after actual guardian revocation before handover",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5504,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "continuity: changing voice fences the old adjacent request and preserves an explicit fresh play",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7009,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "continuity: slow adjacent audio cannot advance early and can be paused while waiting",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 10337,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "voice switch fences delayed requests and an audio failure offers explicit retry or text reading",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5120,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reopening a paused cloud sentence restores its known audio time in the verified original board",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6340,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "scoped local resume and complete accessible notes fit phone, tablet and desktop",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6787,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "actual WebM has a decoded audio track and the same complete SRT timeline at the selected speed",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 12267,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "cancelling a recording releases it and never downloads a partial video",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3476,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "seeking cancels old audio and ignores its late completion at the new reading position",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3212,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "revoked student access closes the private player before another frozen sentence can be fetched",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3086,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "closing while export audio is pending aborts it and cannot download or reopen a late result",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4976,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "a recorder error releases resources, keeps the reading position and offers a retry without a partial download",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3001,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "whiteboard questions: selected model, exact sentence and pause bookmark survive a real queued answer and return",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4073,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "supplementary board: explicit audio, whole structured items, real video/SRT and original camera restoration",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 11545,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "supplementary board: a delayed authorized audio response cannot play after the original grant is revoked",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4340,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "teaching notes: full JSON and Markdown include twelve saved answers while only the last history page is loaded",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 24735,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "teaching notes: closing the whiteboard discards a late full-note response",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3137,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "mobile draft: closing and reopening the reading layer preserves blocked-storage input without remounting the composer",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2548,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "supplementary private link: restores its actual answer and original sentence for a child guidance board",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6103,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "supplementary private link: restores its actual answer and original sentence for an adult topic without a child",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7192,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "supplementary close: a late authorized sentence stays silent while the original board remains open",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4982,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "whiteboard questions: five intentions produce distinct original commands and retain completed history",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 10686,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "whiteboard questions: a failed answer has an explicit original-model retry and preserves the next unsent question",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5567,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "whiteboard questions: cancelling running work blocks the late answer and the same original can be retried",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8258,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "whiteboard questions: a lost create response is recovered after reload without a second write",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3432,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "whiteboard questions: unavailable local storage keeps the full input, protects closing and round trips the downloaded JSON",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3388,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "whiteboard questions: duplicated documents keep separate full drafts across independent reloads",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4877,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "whiteboard questions: the real composer, model selection and return controls remain usable at 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4475,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "whiteboard questions: the real composer, model selection and return controls remain usable at 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3999,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "whiteboard questions: the real composer, model selection and return controls remain usable at 1280",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 4875,
+          "error": "Error: expect(received).toBeLessThanOrEqual(expected)"
+        }
+      ]
+    },
+    {
+      "title": "question figures: exact PNG adoption binds voice, video, private links, complete notes and original-version review",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 18453,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "question figures: lost prepare and adoption receipts retain original commands through reload without duplicate images or versions",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6302,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "question figures: original PNG editing and two explicit adoptions preserve both prior teaching versions",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 10833,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "question figures: explicit cancel and original retry keep the same image requirement and target",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 18865,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "question figures: duplicated documents keep separate full inputs and a closed workbench discards late preflight",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6969,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "question figures: full input, storage failure, download and import remain usable at 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5034,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "question figures: full input, storage failure, download and import remain usable at 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4525,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "question figures: full input, storage failure, download and import remain usable at 1280",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 5305,
+          "error": "Error: expect(received).toBeLessThanOrEqual(expected)"
+        }
+      ]
+    },
+    {
+      "title": "question figures: a stale second tab preserves its full requirements and rechecks the current adoption before choosing again",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 9474,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "question figures: mobile adopted image layers contain keyboard focus and return to the actual original control at 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8193,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "question figures: mobile adopted image layers contain keyboard focus and return to the actual original control at 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7745,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "original settings: six actual neutral MP3s decode, previews preserve selection and closing releases audio",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6101,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "original settings: corrupt samples fail visibly, explicit retry works and a late closed sample never plays",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4669,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "original settings: half speed restores, double speed records real WAV and frozen captions at matching durations",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 10136,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "original settings: real seven-tool tour preserves position and focus at 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3865,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "original settings: real seven-tool tour preserves position and focus at 1280",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3426,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reading panel: original380 width, pointer and keyboard bounds, viewport cap and collapsed preference restore without teaching writes",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 18747,
+          "error": "Error: expect(locator).toHaveAttribute(expected) failed"
+        }
+      ]
+    },
+    {
+      "title": "reading panel: explicit mobile entry contains focus, returns to the same sentence and closes only its own layer at 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4134,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reading panel: explicit mobile entry contains focus, returns to the same sentence and closes only its own layer at 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3438,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reading panel: malformed or wrong-owner device preferences are rejected and blocked storage leaves resizing usable",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5031,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "share toolbar: a private link reopens the same board and a real PNG exactly decodes the visible frozen canvas",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 19153,
+          "error": "Error: expect(locator).toHaveCount(expected) failed"
+        }
+      ]
+    },
+    {
+      "title": "share toolbar: closing during original PNG authorization fences a late reply and never downloads",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4938,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "share toolbar: every visible playback and toolbar control stays inside the actual viewport at 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3222,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "share toolbar: every visible playback and toolbar control stays inside the actual viewport at 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3401,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "share toolbar: every visible playback and toolbar control stays inside the actual viewport at 1280",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3335,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "sanitization": "Titles, statuses, durations and bounded first-line errors only. Local traces, account data, cookies, environment, storage and response bodies are excluded."
+}

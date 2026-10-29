@@ -13,6 +13,7 @@ import { withStudioFileLease } from '../../infrastructure/studio-file-coordinati
 import { projectFileRoot, verifyProjectFile } from './project-file-storage';
 import { sourceProjectCourse } from './source-project-access';
 import { sourceCourseProjectDefinition } from './source-course-project';
+import { activityNavigationContext } from './activity-navigation';
 
 export type CourseProjectRecord = CourseProject & { requests: Array<{ key: string; hash: string; kind: string;actorId?:string;appliedRevision?:number;at?:string;submissionId?:string;reviewId?:string }> };
 const id = z.string().min(1).max(200), requestKey = z.string().min(8).max(180);
@@ -50,15 +51,17 @@ export class CourseProjectService {
   private record(user: InMemoryUserAccount, projectId: string, editing = false): CourseProjectRecord {return courseProjectRecord(this.store,this.students,user,projectId,editing);}
   private view(user: InMemoryUserAccount, row: CourseProjectRecord): CourseProjectView {
     const { requests: _requests, ...safe } = structuredClone(row);
+    const navigationCourse = row.sourceCourseId ? this.store.find('sourceCourses', { id: row.sourceCourseId }) : row.studioCourseId ? this.store.find('studioCourses', { id: row.studioCourseId }) : undefined;
+    const navigationContext = activityNavigationContext(row.studentId, navigationCourse);
     let current: CourseProjectDefinition | undefined;
     if(row.sourceCourseId){const course=sourceProjectCourse(this.store,this.students,user,row.sourceCourseId);current=sourceCourseProjectDefinition(course);
-      if(course.status==='archived'&&current?.fingerprint===row.definition.fingerprint)return{...safe,contentStatus:'archived',permissions:{edit:row.ownerUserId===user.id,review:Boolean(row.studentId&&row.ownerUserId!==user.id&&user.role!=='student'),startCurrentVersion:false}};
+      if(course.status==='archived'&&current?.fingerprint===row.definition.fingerprint)return{...safe,navigationContext,contentStatus:'archived',permissions:{edit:row.ownerUserId===user.id,review:Boolean(row.studentId&&row.ownerUserId!==user.id&&user.role!=='student'),startCurrentVersion:false}};
     }else if (row.studioCourseId) {
       const course = this.store.find('studioCourses', { id: row.studioCourseId });
       const unit = course?.units.find(unit => unit.id === row.definition.unitId);
       current = course && unit ? curriculumProjectDefinition(course, unit) : undefined;
     } else current = adultProjectDefinitions().find(definition => definition.id === row.definition.id);
-    return { ...safe, contentStatus: !current ? 'unavailable' : current.fingerprint === row.definition.fingerprint ? 'current' : 'archived',
+    return { ...safe, navigationContext, contentStatus: !current ? 'unavailable' : current.fingerprint === row.definition.fingerprint ? 'current' : 'archived',
       permissions: { edit: row.ownerUserId === user.id, review: Boolean(row.studentId && row.ownerUserId !== user.id && user.role !== 'student') } };
   }
   get(user: InMemoryUserAccount, projectId: string) { return this.view(user, this.record(user, projectId)); }
@@ -67,10 +70,13 @@ export class CourseProjectService {
     const query = validate(z.object({ studioCourseId: id.optional(),sourceCourseId:id.optional(), studentId: id.optional() }).strict().refine(value=>!value.studioCourseId||!value.sourceCourseId,'请选择一种课程上下文'), input);
     const definitions = this.definitions(user, query.studioCourseId,query.sourceCourseId);
     if (query.studentId) this.access(user, query.studentId);
+    const navigationCourse = query.sourceCourseId ? this.store.find('sourceCourses', { id: query.sourceCourseId }) : query.studioCourseId ? this.store.find('studioCourses', { id: query.studioCourseId }) : undefined;
+    if (navigationCourse && query.studentId && navigationCourse.studentId !== query.studentId) throw new BadRequestException('项目课程与链接中的学习档案不一致，请从原课程重新进入。');
+    const navigationContext = activityNavigationContext(navigationCourse?.studentId ?? null, navigationCourse);
     const courseId = query.sourceCourseId??query.studioCourseId ?? 'sociology-foundations';
     const rows = this.store.select('courseProjects', { ...(query.studentId ? { studentId: query.studentId } : { ownerUserId: user.id }), 'definition.courseId': courseId });
     const visible = rows.filter(row => row.ownerUserId === user.id || row.studentId && user.role !== 'student' && this.store.find('users', { id: row.ownerUserId, role: 'student' }));
-    return { definitions, projects: visible.sort((a,b) => b.updatedAt.localeCompare(a.updatedAt)).map(row => this.view(user, this.record(user, row.id))),
+    return { definitions, navigationContext, projects: visible.sort((a,b) => b.updatedAt.localeCompare(a.updatedAt)).map(row => this.view(user, this.record(user, row.id))),
       ...(query.sourceCourseId?{permissions:{start:sourceProjectCourse(this.store,this.students,user,query.sourceCourseId).status==='active'}}:{}) };
   }
 

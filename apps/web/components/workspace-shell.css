@@ -90,3 +90,32 @@ body[data-study-navigation] .learning-studio :is(.studio-line-title,.family-sect
 @media(max-width:480px){.workspace-page-controls { align-items:stretch;flex-direction:column;gap:10px; }.workspace-page-controls label { justify-content:space-between; }.workspace-page-controls label :is(input,select) { width:68%; }.workspace-page select { font-size:16px; }.workspace-page-row { gap:12px; }.workspace-home-next { align-items:flex-start;flex-direction:column;gap:12px; }.ws-app .sa-hero h1 { font-size:23px; }}
 @media(pointer:coarse){.ws-reference-navigation nav .nav-item,.ws-reference-navigation.ws-navigation[data-narrow=true] nav .nav-item,.ws-reference-navigation .sidebar-version-footer>a { min-height:44px;height:auto; }.workspace-button { min-height:44px; }}
 @media print{.ws-reference-navigation,.ws-reference-trigger{display:none!important;}body[data-study-navigation] .learning-studio{padding:0!important;}}
+.ws-navigation-context-state { margin:12px;font-size:12px;line-height:1.7;color:#7d8799; }
+.ws-reference-navigation nav .nav-item:disabled { opacity:.45;cursor:default; }
+.pj-shell.ws-activity-shell { margin-left:var(--workspace-sidebar,0px);font-family:"Satoshi-Regular",MiSans,sans-serif; }
+.cl-room.ws-activity-shell { left:var(--workspace-sidebar,0px); }
+body[data-workspace-layout=focus] .pj-shell .pj-teaching-toolbar { left:var(--workspace-sidebar,0px); }
+body[data-workspace-layout=focus] .pj-shell .pj-teaching-navigation { left:calc((100vw + var(--workspace-sidebar,0px))/2);max-width:calc(100vw - var(--workspace-sidebar,0px) - 24px); }
+@media(max-width:1000px){body[data-workspace-layout=focus] .pj-shell .pj-teaching-toolbar{padding-left:56px;}.cl-room.ws-activity-shell :is(.cl-titlebar,.cl-practice-top){padding-left:44px;}}
+.cl-room.ws-activity-shell:fullscreen { left:0; }
+.pj-shell.ws-activity-shell:fullscreen { margin-left:0; }
+.pj-shell.ws-activity-shell:fullscreen .pj-teaching-toolbar { left:0; }
+.pj-shell.ws-activity-shell:fullscreen .pj-teaching-navigation { left:50%; }
+.ws-dialog-layer:has(.cl-exit-dialog) { position:fixed;inset:0;z-index:200; }
+@media print{body[data-study-navigation]{--workspace-sidebar:0px;}.ws-activity-shell{margin-left:0!important;left:0!important;}}
+
+.pj-gate.ws-activity-shell{margin-left:var(--workspace-sidebar,0px);}
+.ws-whiteboard-focus.sa-whiteboard-modal,.ws-whiteboard-focus.sa-whiteboard-modal.hk-teaching { left:var(--workspace-sidebar,0px);right:0;width:calc(100vw - var(--workspace-sidebar,0px));max-width:none;box-sizing:border-box; }
+body[data-workspace-layout=focus] .ws-reference-trigger { z-index:70; }
+.wb-pending-navigation { padding:14px;border:1px solid #e9ecf1;border-radius:10px;background:#fff; }
+.wb-pending-navigation button { margin:6px 8px 0 0; }
+.ws-whiteboard-focus.sa-whiteboard-modal.hk-teaching:fullscreen { left:0;width:100vw; }
+@media(max-width:1000px){.ws-whiteboard-focus.hk-teaching.hk-teaching .whiteboard-session-header{left:62px;}}
+.ws-whiteboard-focus.hk-teaching[data-workspace-compact=true] .wb-reading-layout { display:block;height:100%;min-height:0;overflow:hidden; }
+.ws-whiteboard-focus.hk-teaching[data-workspace-compact=true] .whiteboard-main { min-height:0;height:100dvh;max-height:none; }
+.ws-whiteboard-focus.hk-teaching[data-workspace-compact=true] .hk-board-tools { right:24px; }
+.ws-whiteboard-focus.hk-teaching[data-workspace-compact=true] .whiteboard-session-header { right:300px; }
+.ws-whiteboard-focus.hk-teaching[data-workspace-compact=true] .hk-reading-dialog { position:fixed;inset:0;min-height:0;background:#fafafa;overflow:hidden; }
+.ws-whiteboard-focus.hk-teaching[data-workspace-compact=true] .hk-reading-panel[data-compact=true] { position:fixed;inset:0;z-index:40;background:#fafafa;height:auto; }
+.ws-whiteboard-focus.hk-teaching[data-workspace-compact=true] .hk-reading-panel[data-compact=true] .wb-reading-notes { height:calc(100% - 32px);max-height:none;margin:16px 12px;padding:18px;overflow:auto; }
+@media(max-width:600px){.ws-whiteboard-focus.hk-teaching[data-workspace-compact=true] .whiteboard-session-header,.ws-whiteboard-focus.hk-teaching[data-workspace-compact=true] .hk-board-tools{right:16px;}}

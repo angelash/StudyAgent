@@ -1,0 +1,5 @@
+{
+  "status": "preparation-failed-before-command",
+  "reason": "Initial shell redirection used a nonexistent relative output directory under the isolated source; corrected to an absolute QA output path.",
+  "productionWrites": false
+}

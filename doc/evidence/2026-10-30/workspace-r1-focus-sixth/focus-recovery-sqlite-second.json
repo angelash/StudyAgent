@@ -1,0 +1,195 @@
+{
+  "numTotalTests": 33,
+  "numPassedTests": 32,
+  "numFailedTests": 0,
+  "numPendingTests": 1,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "source-course-project.integration.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "source-course projects, frozen objectives and original permissions projects authorized chemistry and independent navigation without persisting presentation metadata",
+          "status": "passed",
+          "durationMs": 889.3891999999996
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions reads a published definition without creating a project or exposing authoring and answer payloads",
+          "status": "passed",
+          "durationMs": 38.08039999999983
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions creates once on explicit opening, binds a recoverable original save and survives actual storage restart",
+          "status": "passed",
+          "durationMs": 821.1853000000001
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions keeps frozen project objectives while a new definition requires an explicit version choice",
+          "status": "passed",
+          "durationMs": 83.17529999999988
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions blocks creation for an unconfirmed or archived source while retaining readable frozen project history",
+          "status": "passed",
+          "durationMs": 102.64549999999963
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions lets a real learning-code owner submit and an assigned teacher review only that frozen submission",
+          "status": "passed",
+          "durationMs": 157.8065999999999
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions refuses late narration when a shared source becomes private, without changing the frozen project",
+          "status": "passed",
+          "durationMs": 120.08269999999993
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions reads unstarted source and adult activity states without creating learning or project facts",
+          "status": "passed",
+          "durationMs": 51.970800000000054
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions restores actual source reading, assisted first answers and private project metadata without leaking them to another account",
+          "status": "passed",
+          "durationMs": 1136.6970000000001
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions cold restores the actual SQLite source-project binding, then applies the newer account deletion to the old backup",
+          "status": "passed",
+          "durationMs": 3686.4196
+        }
+      ]
+    },
+    {
+      "file": "paper-practice-recovery.integration.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "sqlite original paper practice native recovery cold restores exact first answers, corrections and request receipts with original media, and applies newer child and account deletion receipts",
+          "status": "passed",
+          "durationMs": 11921.094299999999
+        },
+        {
+          "title": "postgres original paper practice native recovery cold restores exact first answers, corrections and request receipts with original media, and applies newer child and account deletion receipts",
+          "status": "skipped",
+          "durationMs": null
+        }
+      ]
+    },
+    {
+      "file": "paper-practice.integration.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review previews real indexed selections without creating activity, preserves missing positions and refuses unreviewed family sources",
+          "status": "passed",
+          "durationMs": 45.202400000000125
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review replays the exact confirmed creation and rejects stale-source or same-key changed selection without leaking answer fields",
+          "status": "passed",
+          "durationMs": 110.78930000000037
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review keeps the immutable first answer, explicit reveal, self-review and appended correction separate under retries and old-page conflicts",
+          "status": "passed",
+          "durationMs": 220.53529999999955
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review preserves dont-know, skip, missing and absent-reference semantics without manufacturing a score",
+          "status": "passed",
+          "durationMs": 106.4377000000004
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review pauses, resumes, explicitly acknowledges holes and keeps a completed record readable without reopening writes",
+          "status": "passed",
+          "durationMs": 114.97069999999985
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review permits explicit reference reading after completion without reopening or overwriting the original answer",
+          "status": "passed",
+          "durationMs": 135.07690000000002
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review uses an actual original PDF as an unsplit document record with no fabricated questions or reference grade",
+          "status": "passed",
+          "durationMs": 598.3693000000003
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review blocks only withdrawn or changed sources while preserving personal answers and other selected papers",
+          "status": "passed",
+          "durationMs": 175.14879999999994
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review isolates families and guardian-owned drafts, lets a current guardian read a learner record, and enforces actual learning-grant revocation",
+          "status": "passed",
+          "durationMs": 146.93059999999969
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review persists original commands through storage restart and enforces database uniqueness without silently losing another session",
+          "status": "passed",
+          "durationMs": 796.9259000000002
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review serializes identical creation and submit commands across two actual app instances and refuses a competing stale answer",
+          "status": "passed",
+          "durationMs": 1276.5762999999997
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review requires formal teacher assignment for learner records and removes access immediately after actual assignment revocation",
+          "status": "passed",
+          "durationMs": 546.0079999999998
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review blocks a missing original figure without hiding another valid question and restores it only after the actual file returns",
+          "status": "passed",
+          "durationMs": 184.20700000000033
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review rejects a changed original fingerprint after preview and makes old content unavailable while preserving submitted text",
+          "status": "passed",
+          "durationMs": 113.50840000000062
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review exports a shared child learner record and only the requesting guardian private practice, including the matching command facts",
+          "status": "passed",
+          "durationMs": 934.5984000000008
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review organizes a completed withdrawn source while preserving the exact old first-answer receipt and append-only review history",
+          "status": "passed",
+          "durationMs": 201.28639999999905
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review projects stable local-date calendar events without writes, duplicating schedules or disclosing reflection text in ICS",
+          "status": "passed",
+          "durationMs": 167.5673000000006
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review records actual review and reopening separately from first answers and rejects a stale simultaneous edit",
+          "status": "passed",
+          "durationMs": 145.46680000000015
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review shares only learner organization with guardians while each guardian private review and calendar remain isolated",
+          "status": "passed",
+          "durationMs": 561.6882000000005
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review previews and replays an origin-bound original redo without changing any earlier answer or organization",
+          "status": "passed",
+          "durationMs": 137.73439999999937
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review keeps a repeated whole PDF as a document and refuses a changed publication instead of silently replacing the old original",
+          "status": "passed",
+          "durationMs": 141.10440000000017
+        }
+      ]
+    }
+  ]
+}

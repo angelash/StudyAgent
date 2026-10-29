@@ -4,13 +4,14 @@ import { WorkspaceDialog } from './workspace-dialog';
 import { ClassroomIcon } from './classroom/icons';
 
 const clampWidth = (value: number) => Math.round(Math.max(300, Math.min(560, value)));
-export function useWhiteboardReadingPanel(ownerId: string) {
+export function useWhiteboardReadingPanel(ownerId: string, workspaceFocus = false) {
   const [width, setWidth] = React.useState(380), [expanded, setExpanded] = React.useState(true);
   const [windowWidth, setWindowWidth] = React.useState(1280), [mobileOpen, setMobileOpen] = React.useState(false), [ready, setReady] = React.useState(false);
   const key = 'studyagent.whiteboard.layout.v1.' + encodeURIComponent(ownerId);
   React.useLayoutEffect(() => {
-    const measure = () => setWindowWidth(window.innerWidth);
+    const measure = () => setWindowWidth(window.innerWidth-(workspaceFocus?parseFloat(getComputedStyle(document.body).getPropertyValue('--workspace-sidebar'))||0:0));
     measure(); window.addEventListener('resize', measure);
+    const sidebar=new MutationObserver(measure);if(workspaceFocus)sidebar.observe(document.body,{attributes:true,attributeFilter:['data-study-navigation']});
     try {
       const raw = localStorage.getItem(key);
       if (raw && raw.length <= 512) {
@@ -21,8 +22,8 @@ export function useWhiteboardReadingPanel(ownerId: string) {
       }
     } catch { /* Device layout remains usable when storage is unavailable. */ }
     setReady(true);
-    return () => window.removeEventListener('resize', measure);
-  }, [key, ownerId]);
+    return () => {window.removeEventListener('resize', measure);sidebar.disconnect();};
+  }, [key, ownerId,workspaceFocus]);
   React.useEffect(() => {
     if (!ready) return;
     try { localStorage.setItem(key, JSON.stringify({ version: 1, ownerId, width, expanded })); } catch { /* Optional device preference. */ }

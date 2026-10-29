@@ -1,10 +1,15 @@
 import type { LearningContext } from './learning-context';
+import { adminWorkspaceEntries,allowedAdminWorkspace } from './admin-navigation';
 
 export type WorkspaceArea = 'home' | 'courses' | 'tasks' | 'assessment' | 'reports' | 'calendar' | 'history' | 'materials' | 'whiteboards' | 'profiles' | 'settings' | 'admin';
 export type StudioView = 'home' | 'courses' | 'feed' | 'calendar' | 'materials' | 'history';
 export type WorkspaceNavigation = {
   active: WorkspaceArea | 'feed';
   context?: LearningContext;
+  contextState?: 'ready' | 'pending' | 'unavailable';
+  layout?: 'default' | 'focus';
+  activityKey?: string;
+  onRequestNavigate?: (href: string, proceed: () => void) => void;
   recent?: Array<{ title: string; detail?: string; href: string }>;
   onNavigate?: (view: StudioView) => void;
   onCreate?: (returnFocus?: HTMLElement | null) => void;
@@ -39,14 +44,14 @@ export function workspaceHref(area: WorkspaceArea, context?: LearningContext) {
 export function workspaceArea(pathname: string, search: string, fallback: WorkspaceArea = 'home'): WorkspaceArea {
   const params = new URLSearchParams(search);
   if (pathname.startsWith('/admin/')) return 'admin';
-  if (pathname === '/studio/tasks' || pathname === '/student/today' || pathname === '/student/mission' || pathname === '/student/gesp') return 'tasks';
+  if (pathname === '/studio/tasks' || pathname === '/student/today' || pathname === '/student/mission') return 'tasks';
   if (pathname === '/studio/reports' || pathname === '/student/knowledge' || pathname === '/parent/dashboard') return 'reports';
   if (pathname === '/studio/assessment' || pathname === '/student/assessment') return params.get('view') === 'plan' ? 'tasks' : fallback === 'reports' ? 'reports' : 'assessment';
-  if (pathname === '/studio/profiles' || pathname === '/parent/access' || pathname === '/parent/gesp') return 'profiles';
+  if (pathname === '/studio/profiles' || pathname === '/parent/access') return 'profiles';
   if (pathname === '/studio/settings' || pathname === '/parent/data') return 'settings';
   if (pathname === '/studio/whiteboards') return 'whiteboards';
   if (pathname.startsWith('/library') || pathname === '/studio/source-courses') return 'materials';
-  if (pathname === '/studio/classroom' || pathname === '/studio/projects' || pathname === '/chemistry') return 'courses';
+  if (pathname === '/studio/classroom' || pathname === '/studio/projects' || pathname === '/chemistry' || pathname === '/parent/gesp' || pathname === '/student/gesp') return 'courses';
   if (pathname === '/studio') {
     const view = params.get('view');
     return workspaceEntries.some(entry => entry.id === view) ? view as WorkspaceArea : fallback;
@@ -65,13 +70,14 @@ export function legacyWorkspaceHref(area: 'home' | 'reports', source: Record<str
   return (area === 'home' ? '/studio' : '/studio/reports') + (params.size ? '?' + params : '');
 }
 
-const loginReturnPaths = new Set(['/studio', '/studio/tasks', '/studio/assessment', '/studio/reports', '/studio/profiles', '/studio/settings', '/studio/classroom', '/studio/projects', '/studio/whiteboards', '/studio/source-courses', '/student/assessment', '/student/today', '/student/gesp', '/library', '/library/practice', '/library/practice/review', '/parent/access', '/parent/data', '/parent/gesp']);
+const loginReturnPaths = new Set(['/studio', '/studio/tasks', '/studio/assessment', '/studio/reports', '/studio/profiles', '/studio/settings', '/studio/classroom', '/studio/projects', '/studio/whiteboards', '/studio/source-courses', '/student/assessment', '/student/today', '/student/gesp', '/library', '/library/practice', '/library/practice/review', '/parent/access', '/parent/data', '/parent/gesp',...adminWorkspaceEntries.map(entry=>entry.path)]);
 /** Login may return to an existing activity, never an external site or nested login. */
 export function workspaceLoginDestination(value: string | null, role: string) {
   if (!value || !value.startsWith('/') || value.startsWith('//') || /[\\\u0000-\u0020\u007f]/.test(value)) return '/studio';
   try {
     const url = new URL(value, 'https://workspace.invalid');
     if (url.origin !== 'https://workspace.invalid' || !loginReturnPaths.has(url.pathname) || role === 'student' && url.pathname.startsWith('/parent/') || role === 'student' && ['/studio/profiles', '/studio/source-courses'].includes(url.pathname)) return '/studio';
+    if(url.pathname.startsWith('/admin/')&&!allowedAdminWorkspace(role,url.pathname))return '/studio';
     if ([...url.searchParams.keys()].some(key => /token|credential|password|code|returnTo|next/i.test(key))) return '/studio';
     return url.pathname + url.search + url.hash;
   } catch { return '/studio'; }

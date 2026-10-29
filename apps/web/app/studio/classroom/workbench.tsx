@@ -30,6 +30,7 @@ import { usePracticeDraft } from './practice-draft';
 import { CourseLessonStatus,CourseProjectStatus } from '../course-activity';
 import { FrozenCheckSource } from './check-source';
 import { CoursePanels } from './course-panels';
+import { ActivityWorkspaceNavigation } from '../../../components/activity-workspace-navigation';
 import './course-panels.css';
 
 function Ring({ state = 'new' }: { state?: 'new' | 'started' | 'viewed' | 'correct' }) {
@@ -122,10 +123,11 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
   React.useEffect(() => { if (firstLecture) setExpanded([firstLecture]); }, [firstLecture]);
   function close() {
     setSession(null);
-    if(sourceCourse.current){const params=copyCourseFilters(window.location.search,new URLSearchParams({course:sourceCourse.current,...(session?.studentId?{studentId:session.studentId,subject:new URLSearchParams(window.location.search).get('returnSubject')??'math'}:{})}));window.location.assign(withMaterialsReturn('/studio/source-courses?'+params,materialsReturn(new URLSearchParams(window.location.search).get('materialsReturn'))));return;}
+    const actualSubject=session?.navigationContext?.audience==='student'?session.navigationContext.subject:undefined;
+    if(sourceCourse.current){const params=copyCourseFilters(window.location.search,new URLSearchParams({course:sourceCourse.current,...(session?.studentId?{studentId:session.studentId,...(actualSubject?{subject:actualSubject}:{})}:{})}));window.location.assign(withMaterialsReturn('/studio/source-courses?'+params,materialsReturn(new URLSearchParams(window.location.search).get('materialsReturn'))));return;}
     if (studio.current) {
       const params=new URLSearchParams(window.location.search), query=copyCourseFilters(window.location.search,new URLSearchParams({view:'courses',course:studio.current}));
-      if(session?.studentId)query.set('student',session.studentId);const subject=params.get('returnSubject')??new URL(session?.lesson.verificationHref??'/studio',window.location.origin).searchParams.get('subject');if(subject)query.set('subject',subject);
+      if(session?.studentId)query.set('student',session.studentId);if(actualSubject)query.set('subject',actualSubject);
       if(params.get('returnUnit'))query.set('unit',params.get('returnUnit')!);if(params.get('returnPanel'))query.set('panel',params.get('returnPanel')!);
       window.location.assign('/studio?'+query); return;
     }
@@ -149,7 +151,7 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
   const recent = [...readingProgress].filter(row => allLessons.some(lesson => lesson.id === row.lessonId)).sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt))[0];
   const next = allLessons.find(lesson => lesson.id === recent?.lessonId && !recent.completed) ?? allLessons.find(lesson => !reading.get(lesson.id)?.completed);
   return <main className="cl-shell ws-classroom-shell">
-    <StudioNavigation active="courses" recent={recent ? [{title:allLessons.find(lesson=>lesson.id===recent.lessonId)?.title ?? '继续原课堂',detail:course?.title,href:'/studio/classroom?'+new URLSearchParams({lesson:recent.lessonId,session:recent.sessionId})}] : []} />
+    <StudioNavigation active="courses" context={{subject:'math',audience:'self'}} recent={recent ? [{title:allLessons.find(lesson=>lesson.id===recent.lessonId)?.title ?? '继续原课堂',detail:course?.title,href:'/studio/classroom?'+new URLSearchParams({lesson:recent.lessonId,session:recent.sessionId})}] : []} />
     <div className="cl-course-layout cl-reference-directory"><aside className="cl-course-sidebar"><Link className="cl-exit-course" href={libraryHref}>× <span>退出课程</span></Link>
       <CourseCover /><div className="cl-curator"><span>S</span><div><small>策划自</small><b>StudyAgent Learning Studio</b></div></div>
       <h1>{course?.title ?? '教学课堂'}</h1><p>{course?.description}</p><details><summary>显示更多</summary><p>{course?.description}</p><p>{course?.provenance}</p><p>60 个微课 · 15 个讲座 · 5 个单元项目</p></details>
@@ -208,6 +210,8 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const [boardLocation, setBoardLocation] = React.useState<{id:string;page:number}|null>(null);
   const explicitBoard = React.useRef(false);
   const [settings, setSettings] = React.useState(false), [exit, setExit] = React.useState(false), [tourOpen, setTourOpen] = React.useState(false);
+  const exitAction=React.useRef<(()=>void)|null>(null),exitFocus=React.useRef<HTMLElement|null>(null),navigationAllowed=React.useRef(false);
+  const [practiceProtected,setPracticeProtected]=React.useState(false);
   const [standalonePractice, setStandalonePractice] = React.useState(initialTab === 'practice');
   const [tab, setTab] = React.useState<'history' | 'practice' | 'project'>(initialTab === 'practice' ? 'history' : initialTab), [question, setQuestion] = React.useState(assistance ? '我正在学习“' + initial.lesson.title + '”，请围绕“' + initial.lesson.objective + '”帮我梳理，并用一个新情境检查我的理解。' : ''), [operationBusy, setBusy] = React.useState(false), [notice, setNotice] = React.useState('');
   const [projectDraft, setProjectDraft] = React.useState(initial.projectDraft), [projectSaved, setProjectSaved] = React.useState(false);
@@ -245,6 +249,11 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const turns=useClassroomTurns({session,onSession:receive,onNotice:setNotice});
   const practiceDraft = usePracticeDraft(session, receive);
   const busy=operationBusy||captions.busy||turns.working||turns.active||practiceDraft.working;
+  const unprotectedPractice=Boolean(practiceDraft.storageNotice&&(Object.values(practiceDraft.choices).some(value=>value.length)||practiceDraft.pending||practiceDraft.rejected));
+  React.useEffect(()=>{setPracticeProtected(false);navigationAllowed.current=false;},[practiceDraft.choices,practiceDraft.pending,practiceDraft.rejected,projectDraft]);
+  React.useEffect(()=>{const warn=(event:BeforeUnloadEvent)=>{if(!navigationAllowed.current&&(projectDraft!==session.projectDraft||unprotectedPractice&&!practiceProtected)){event.preventDefault();event.returnValue='';}};window.addEventListener('beforeunload',warn);return()=>window.removeEventListener('beforeunload',warn);},[projectDraft,session.projectDraft,unprotectedPractice,practiceProtected]);
+  function requestExit(proceed?:()=>void){pause();exitAction.current=proceed??null;exitFocus.current=window.matchMedia('(max-width:1000px)').matches?document.querySelector<HTMLElement>('.ws-reference-trigger'):document.activeElement as HTMLElement|null;setExit(true);}
+  function cancelExit(){exitAction.current=null;setExit(false);}
   const voicePreview = useVoicePreview({ session, visible: settings, beforePlay: pause, speed });
   const primaryVoices=session.speech.voices.filter(item=>item.classroomPreset),visibleVoices=primaryVoices.length?primaryVoices:session.speech.voices;
   const extraVoices=primaryVoices.length?session.speech.voices.filter(item=>!item.classroomPreset):[];
@@ -543,13 +552,14 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     assessment={lesson.assessment} contentStatus={session.contentStatus} notice={standalone ? notice : undefined} onDismiss={() => setNotice('')} onCurrent={() => onNext(lesson.id, 'practice', true)} onLearn={id => onNext(id)}
     onHint={(id,level) => void hint(id,level)} onAnswer={disposition => void answer(disposition)}
     assistantOpen={showChat} assistantButtonRef={practiceAssistantButton} inactive={standalone && showChat && practiceNarrow}
-    onClose={() => setExit(true)} onAssistant={() => { if (showChat) closePracticeAssistant(); else { setShowChat(true); setTab('history'); } }}/>; }
+    onClose={() => requestExit()} onAssistant={() => { if (showChat) closePracticeAssistant(); else { setShowChat(true); setTab('history'); } }}/>; }
   const subtitle = replySubtitle || (session.revealed ? classroomStepUnits(session,current)[session.sentenceCursor ?? 0]?.text : '准备好后，点击 ▶ 开始。');
-  return <main className="cl-room" data-dots={dots} data-mobile={mobile} data-practice={standalonePractice} data-assistant={showChat} style={{ '--cl-chat-width': showChat ? chatWidth + 'px' : '0px' } as React.CSSProperties}>
+  return <main className="cl-room ws-activity-shell" data-dots={dots} data-mobile={mobile} data-practice={standalonePractice} data-assistant={showChat} style={{ '--cl-chat-width': showChat ? chatWidth + 'px' : '0px' } as React.CSSProperties}>
+    <ActivityWorkspaceNavigation context={session.navigationContext} activityId={session.id} onRequestNavigate={(_href,proceed)=>requestExit(proceed)}/>
     {standalonePractice && practice(true)}
     {checkSource&&<FrozenCheckSource sessionId={session.id} sourceKey={checkSource} onClose={()=>setCheckSource('')}/>}
     {visualOpen&&<VisualPanel session={session} visuals={visuals} onClose={()=>setVisualOpen(false)}/>}
-    <section className="cl-board-area" aria-label="教学白板"><div className="cl-titlebar"><button aria-label="离开课堂" onClick={() => { pause(); setExit(true); }}><ClassroomIcon name="close"/></button>
+    <section className="cl-board-area" aria-label="教学白板"><div className="cl-titlebar"><button aria-label="离开课堂" onClick={() => requestExit()}><ClassroomIcon name="close"/></button>
       <button className="cl-title" data-classroom-tour="connection" onClick={() => setTab('history')}>{lesson.title}<span className="cl-signal" title="断点已同步"><ClassroomIcon name="signal" size={22}/></span></button></div>
       <div className="cl-board-tools"><button aria-label="缩小白板" onClick={() => setZoom(Math.max(50, zoom - 10))}>−</button><button aria-label="重置缩放" onClick={() => setZoom(100)}>{zoom}%</button><button aria-label="放大白板" onClick={() => setZoom(Math.min(180, zoom + 10))}>＋</button><i/>
         <button aria-label="上一页白板" onClick={() => {pause();setPage(Math.max(0, page - 1));}} disabled={page === 0}>‹</button><span>{Math.min(page + 1, pageCount)} / {pageCount}</span><button aria-label="下一页白板" onClick={() => {pause();setPage(Math.min(pageCount - 1, page + 1));}} disabled={page + 1 >= pageCount}>›</button><i/>
@@ -633,7 +643,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
       <button className="cl-print" disabled={printBusy||captions.busy} onClick={()=>void printNotes()}>{printBusy?'正在准备参考图…':'打印 / 保存 PDF 笔记'}</button>{printBusy&&<p role="status">参考图完整读取后会打开打印。关闭设置可取消等待。</p>}<p className="cl-settings-note">音色在下一句生效，倍速同步当前音频。暂停后会从当前句开头继续。</p>
     </section></div></WorkspaceDialog>}
     {tourOpen && <ClassroomToolTour onClose={finishTour} onStep={tourStep}/>}
-    {exit && <div className="cl-modal-backdrop"><section className="cl-exit-dialog" role="dialog" aria-modal="true" aria-label="离开课堂确认"><h2>要暂时离开课堂吗？</h2><p>已读步骤与插问已保存。项目草稿也会在离开前保存。</p><footer><button autoFocus onClick={() => setExit(false)}>继续学习</button><button disabled={busy} onClick={() => { setBusy(true); void save({ projectDraft }).then(onClose).catch(error => { setNotice(error.message); setBusy(false); setExit(false); }); }}>保存并离开</button></footer></section></div>}
+    {exit && <WorkspaceDialog onClose={cancelExit} busy={busy} returnFocus={exitFocus.current}><div className="cl-modal-backdrop"><section className="cl-exit-dialog" role="dialog" aria-modal="true" aria-label="离开课堂确认"><h2>要暂时离开课堂吗？</h2><p>已读步骤与插问已保存。项目草稿也会在离开前保存；练习选择不会自动提交。</p>{unprotectedPractice&&!practiceProtected&&<p role="alert">本机暂不能保护完整练习草稿，请先下载副本后离开。</p>}<footer><button onClick={cancelExit}>继续学习</button>{unprotectedPractice&&<button disabled={busy} onClick={()=>{try{practiceDraft.download();setPracticeProtected(true);}catch{setNotice('副本尚未生成，请继续保留当前页面。');}}}>下载练习副本</button>}<button disabled={busy||unprotectedPractice&&!practiceProtected} onClick={() => { setBusy(true); void save({ projectDraft }).then(()=>{setBusy(false);navigationAllowed.current=true;const target=exitAction.current;exitAction.current=null;if(target)target();else onClose();}).catch(error => { setNotice(error.message); setBusy(false); setExit(false); }); }}>保存并离开</button></footer></section></div></WorkspaceDialog>}
     {award && <div className="cl-modal-backdrop"><section className="cl-award" role="dialog" aria-modal="true" aria-label="课堂学习里程碑"><span>✧</span><small>YOU FINISHED A LESSON</small><h2>{lesson.title}</h2><p>已走完这段概念路线。接下来用新的情境检查理解，看看哪些地方还需要回顾。</p><button autoFocus onClick={() => { setAward(false); setTab('practice'); }}>去检查理解 →</button><button onClick={() => setAward(false)}>稍后再做</button></section></div>}
     <article className="cl-print-notes"><h1>{lesson.title}</h1><p>{lesson.objective}</p>{lesson.steps.slice(0, session.revealed).map(step => <section key={step.id}><BoardStep step={step} sentence={0} full print/>{visuals.rows.filter(row=>row.selected&&row.stepId===step.id).map(row=><VisualImage key={row.id} row={row}/>)}</section>)}
       <h2>课堂插问</h2>{session.messages.map(message => <section key={message.id}><p><b>{message.role === 'user' ? '我：' : '老师：'}</b>{message.content}</p>{message.board && <ReplyBoard message={message} print/>}</section>)}<h2>项目草稿</h2><p>{projectDraft}</p></article>

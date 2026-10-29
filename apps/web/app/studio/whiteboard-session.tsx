@@ -21,6 +21,7 @@ import { WhiteboardReadingPanel, useWhiteboardReadingPanel } from './whiteboard-
 import { WhiteboardShareMenu } from './whiteboard-share-menu';
 import { WhiteboardQuestions } from './whiteboard-questions';
 import { ClassroomFigure } from './classroom/diagram';
+import { ActivityWorkspaceNavigation } from '../../components/activity-workspace-navigation';
 
 const whiteboardToolSteps: ToolTourStep[] = [
   { anchor: 'connection', location: '标题栏', title: '当前白板', text: '这里保留原白板标题。讲解位置按当前账号和白板保存，离开后可以继续。' },
@@ -34,19 +35,21 @@ const whiteboardToolSteps: ToolTourStep[] = [
 
 type Position = { ownerId: string; studentId: string | null; boardId: string; fingerprint: string; version: string; unitId: string;
   progress: number; audioTime: number | null; mode: 'text' | 'cloud'; voice: string; speed: number; at: number; teachingVersionId?: string };
-export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrationAvailable = false, speech, onClose, onAccessLost, onReturnToOriginal }:
-  WhiteboardPlayerProps & { ownerId: string; preview: boolean }) {
+export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrationAvailable = false, speech, onClose, onAccessLost, onReturnToOriginal, workspaceFocus = false }:
+  WhiteboardPlayerProps & { ownerId: string; preview: boolean; workspaceFocus?: boolean }) {
   const presentation = React.useMemo(() => whiteboardPresentation(board), [board]);
   const units = presentation.units;
   const [boardFont, setBoardFont] = React.useState<OriginalBoardFont>('handwriting'), [dots, setDots] = React.useState(true);
   const [settings, setSettings] = React.useState(false), [muted, setMuted] = React.useState(false), mutedRef = React.useRef(muted); mutedRef.current = muted;
   const [tour, setTour] = React.useState(false), tourOrigin = React.useRef(0);
-  const panel = useWhiteboardReadingPanel(ownerId), panelId = React.useId(), [tourPanel, setTourPanel] = React.useState(false);
+  const panel = useWhiteboardReadingPanel(ownerId,workspaceFocus), panelId = React.useId(), [tourPanel, setTourPanel] = React.useState(false);
   const [share, setShare] = React.useState(false);
   const [answerBoard, setAnswerBoard] = React.useState<StudioQuestionWhiteboard | null>(null), answerActive = React.useRef(false), answerTrigger = React.useRef<HTMLElement | null>(null);
   answerActive.current = answerBoard !== null;
   const questionCanLeave = React.useRef(true), userCloseRef = React.useRef<() => void>(() => {});
-  const questionLeaveChange = React.useCallback((value: boolean) => { questionCanLeave.current = value; }, []);
+  const [questionProtected,setQuestionProtected]=React.useState(true);
+  const [pendingNavigation,setPendingNavigation]=React.useState<{href:string;proceed:()=>void}|null>(null);
+  const questionLeaveChange = React.useCallback((value: boolean) => { questionCanLeave.current = value;setQuestionProtected(value); }, []);
   const fonts = useOriginalTeachingFonts(ownerId + ':' + board.id + ':' + board.fingerprint, JSON.stringify(board.scenes), boardFont);
   const [camera, setCamera] = React.useState<BoardCamera>({ zoom: 1, x: 0, y: 0, follow: true });
   const cameraRef = React.useRef(camera), drag = React.useRef<{ x: number; y: number; camera: BoardCamera } | null>(null);
@@ -206,12 +209,13 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     dialog.current?.querySelector<HTMLButtonElement>('[aria-label="关闭白板"]')?.focus();
     const key = (event: KeyboardEvent) => {
       if (event.defaultPrevented || answerActive.current || document.querySelector('.ws-dialog-layer')) return;
+      if(event.key==='Escape'&&dialog.current?.querySelector('[data-whiteboard-share]')){event.preventDefault();setShare(false);return;}
+      if(workspaceFocus&&!dialog.current?.contains(event.target as Node))return;
       if (event.key === 'Escape') {
         event.preventDefault();
-        if (dialog.current?.querySelector('[data-whiteboard-share]')) { setShare(false); return; }
         userCloseRef.current();
       }
-      if (event.key !== 'Tab') return;
+      if (event.key !== 'Tab' || workspaceFocus) return;
       const nodes = [...(dialog.current?.querySelectorAll<HTMLElement>('button:not(:disabled),select:not(:disabled),input:not(:disabled),textarea:not(:disabled),summary,[tabindex="0"]') ?? [])]
         .filter(node => node.getClientRects().length > 0);
       if (!nodes.length) return;
@@ -220,7 +224,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     };
     document.addEventListener('keydown', key);
     return () => { document.removeEventListener('keydown', key); generation.current++; releaseAudio(); narration.current?.dispose(); narration.current = null; exportRequest.current?.abort(); downloadUrls.current.forEach(url => URL.revokeObjectURL(url)); };
-  }, [releaseAudio]);
+  }, [releaseAudio,workspaceFocus]);
 
   React.useEffect(() => {
     if (!unit || !restored || !fonts.ready || exporting !== null) return;
@@ -400,7 +404,10 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
     return () => request.abort();
   }, [board, preview]);
 
-  return <div ref={dialog} className="sa-whiteboard-modal wb-sentence-player hk-teaching whiteboard-root" role="dialog" aria-modal="true" aria-label={isQuestionWhiteboard(board) ? 'AI补充讲解' : '白板视频'} style={{ fontFamily: originalUiFontFamily, '--hk-panel-space': (!panel.compact && (panel.expanded || tourPanel) ? panel.actualWidth : 0) + 'px' } as React.CSSProperties} data-original-font-status={fonts.ready ? 'ready' : fonts.error ? 'error' : 'loading'}>
+  return <div ref={dialog} className={'sa-whiteboard-modal wb-sentence-player hk-teaching whiteboard-root'+(workspaceFocus?' ws-whiteboard-focus':'')} data-workspace-compact={workspaceFocus&&panel.compact} role={workspaceFocus?'main':'dialog'} aria-modal={workspaceFocus?undefined:true} aria-label={isQuestionWhiteboard(board) ? 'AI补充讲解' : '白板视频'} style={{ fontFamily: originalUiFontFamily, '--hk-panel-space': (!panel.compact && (panel.expanded || tourPanel) ? panel.actualWidth : 0) + 'px' } as React.CSSProperties} data-original-font-status={fonts.ready ? 'ready' : fonts.error ? 'error' : 'loading'}>
+    {workspaceFocus&&<ActivityWorkspaceNavigation active="whiteboards" activityId={'whiteboard:'+board.id} context={board.studentId&&board.subject?{audience:'student',studentId:board.studentId,subject:board.subject}:!board.studentId?{audience:'independent'}:{audience:'unavailable'}} onRequestNavigate={(href,proceed)=>{
+      pausePlayback();if(!questionCanLeave.current){setPendingNavigation({href,proceed});userCloseRef.current();return;}proceed();
+    }}/>}
     <header className="whiteboard-session-header"><button className="whiteboard-exit-course-btn" aria-label="关闭白板" onClick={() => userCloseRef.current()}>×</button>
       {isQuestionWhiteboard(board) && onReturnToOriginal && <button className="whiteboard-exit-course-btn" aria-label="返回原讲解" onClick={() => onReturnToOriginal(board.originalPosition)}>↩</button>}
       <div className="whiteboard-session-title-pill" data-classroom-tour="connection"><h2 className="whiteboard-session-title-text">{board.title}</h2></div></header>
@@ -416,7 +423,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       <button type="button" className="whiteboard-icon-btn" data-panel-toggle aria-label={panel.compact ? '讲稿与笔记' : panel.expanded ? '收起讲稿与笔记' : '展开讲稿与笔记'} aria-controls={panelId} aria-expanded={panel.open} onClick={() => { if (panel.compact) panel.setMobileOpen(value => !value); else panel.setExpanded(value => !value); }}><img className="whiteboard-chat-toggle-icon" src="/reference/hyperknow-controls/chat.svg" width={20} height={20} alt="" aria-hidden="true"/></button></nav>
     <button type="button" className="whiteboard-icon-btn hk-whiteboard-mute" data-classroom-tour="sound" aria-label={muted ? '开启声音' : '静音'} aria-pressed={muted} onClick={() => setMuted(value => !value)}><ClassroomIcon name={muted ? 'muted' : 'volume'} size={18}/></button>
     {!fonts.ready && <p role={fonts.error ? 'alert' : 'status'}>{fonts.error || '正在准备板书字体…'}{fonts.error && <button onClick={fonts.retry}>重新准备板书字体</button>}</p>}
-    <div className="wb-reading-layout"><main className="whiteboard-main"><div className="sa-whiteboard-frame"><canvas ref={canvas} width={1280} height={viewport.height} tabIndex={0} aria-label={scene?.title ?? '白板'} style={{ visibility: fonts.ready ? 'visible' : 'hidden', touchAction: 'none' }}
+    <div className="wb-reading-layout"><section className="whiteboard-main" aria-label="白板画布与播放"><div className="sa-whiteboard-frame"><canvas ref={canvas} width={1280} height={viewport.height} tabIndex={0} aria-label={scene?.title ?? '白板'} style={{ visibility: fonts.ready ? 'visible' : 'hidden', touchAction: 'none' }}
       onKeyDown={event => { if (exporting !== null || !['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) return; event.preventDefault(); const current = cameraRef.current; setCamera({ ...current, follow: false, x: current.x + (event.key === 'ArrowLeft' ? -100 : event.key === 'ArrowRight' ? 100 : 0), y: current.y + (event.key === 'ArrowUp' ? -100 : event.key === 'ArrowDown' ? 100 : 0) }); }}
       onPointerDown={event => { if (exporting !== null || event.button !== 0) return; drag.current = { x: event.clientX, y: event.clientY, camera: cameraRef.current }; event.currentTarget.setPointerCapture(event.pointerId); }}
       onPointerMove={event => { const start = drag.current; if (!start) return; const ratio = 1280 / event.currentTarget.getBoundingClientRect().width / start.camera.zoom; setCamera({ ...start.camera, follow: false, x: start.camera.x - (event.clientX - start.x) * ratio, y: start.camera.y - (event.clientY - start.y) * ratio }); }}
@@ -459,7 +466,8 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
       <div className="sa-scene-strip">{board.scenes.map((item, index) => <button key={item.id} disabled={exporting !== null}
         data-active={item.id === scene?.id} onClick={() => { const next = units.findIndex(unit => unit.sceneId === item.id); if (next >= 0) go(next); }}>
         <span>{String(index + 1).padStart(2, '0')}</span>{item.title}</button>)}</div>
-    </main><WhiteboardReadingPanel panel={panel} tour={tourPanel} id={panelId} onClose={closePanel}>
+    </section><WhiteboardReadingPanel panel={panel} tour={tourPanel} id={panelId} onClose={closePanel}>
+      {pendingNavigation&&<section className="wb-pending-navigation" aria-label="保留白板输入后离开"><p role="status">先保存或下载插问中的完整输入，再继续前往所选页面。</p><button disabled={!questionProtected} onClick={()=>{const next=pendingNavigation;setPendingNavigation(null);next.proceed();}}>已保留输入，继续离开</button><button onClick={()=>setPendingNavigation(null)}>继续编辑</button></section>}
       {!preview && !isQuestionWhiteboard(board) && <WhiteboardQuestions board={board} ownerId={ownerId} disabled={exporting !== null} onCanLeaveChange={questionLeaveChange}
         onOpenTeaching={(value, trigger) => { answerTrigger.current = trigger; if (panel.compact) panel.setMobileOpen(false); setAnswerBoard(value); }}
         onUnavailable={() => accessLostRef.current?.()} capture={() => {

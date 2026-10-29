@@ -3,7 +3,6 @@ import * as React from 'react';
 import Link from 'next/link';
 import { MeasurementContentCandidate, MeasurementContentGate, MeasurementDraft, KnowledgeAtom, QuestionAnswerMode, StudentAnswerPayload, QuestionRenderPayload } from '@study-agent/contracts';
 import { apiBaseUrl, apiRequest } from '../../../lib/api';
-import { StudyNav } from '../../../components/study-nav';
 import { RichMath } from '../../../components/rich-math';
 import { QuestionRenderer, createEmptyAnswerPayload } from '../../../components/question-renderer';
 import '../../student/assessment/studio.css';
@@ -88,9 +87,9 @@ export default function MeasurementContentPage() {
   }
   const related = (field: 'prerequisiteAtomIds' | 'secondaryAtomIds') => <div className="measurement-related">{atoms.filter(atom => atom.id !== draft?.mapping.primaryAtomId).map(atom => <label key={atom.id}><input type="checkbox" disabled={!editable || busy} checked={draft!.mapping[field].includes(atom.id)} onChange={e => mapping({ [field]: e.target.checked ? [...draft!.mapping[field], atom.id] : draft!.mapping[field].filter(id => id !== atom.id) })} />{atom.name}</label>)}</div>;
 
-  return <main className="learning-studio"><StudyNav /><div className="admin-workbench measurement-workbench">
-    <nav className="admin-links" aria-label="教研导航"><Link href="/admin/curriculum">知识与覆盖</Link><Link href="/admin/measurement" aria-current="page">测量素材</Link><Link href="/admin/imports">资料导入</Link><Link href="/admin/reviews">评分复核</Link><Link href="/library">题卷审核</Link></nav>
-    <span className="studio-eyebrow">ORIGINAL → EVIDENCE</span><h1>让一道原题，成为可信的观察。</h1><p>保留原件，分别核对题面、评分与知识行为。一次综合作答只为主测点产生证据，先修和次测线索留给后续验证。</p>
+  return <main className="learning-studio"><div className="admin-workbench measurement-workbench">
+
+    <span className="studio-eyebrow">ORIGINAL → EVIDENCE</span><h1>测量素材</h1><p>保留原件，分别核对题面、评分与知识行为。一次综合作答只为主测点产生证据，先修和次测线索留给后续验证。</p>
     {error && <p className="studio-error" role="alert">{error}</p>}{notice && <p role="status">{notice}</p>}
     {!role && <p>{loading ? '正在核对教研权限…' : '请先登录教研账号。'} <Link href="/parent/login">登录</Link></p>}
     {role && !permitted && <p>测量素材审核需要管理员或教师身份。<Link href="/parent/dashboard">返回家长空间</Link></p>}

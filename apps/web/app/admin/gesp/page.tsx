@@ -5,7 +5,6 @@ import Link from 'next/link';
 import type { GespAtom, GespOverview, GespPilotTaskReviewView, GespQuestionDetail, GespSearchResult, GespTaskReviewHistoryItem } from '@study-agent/contracts';
 import { apiBaseUrl, apiRequest, getAuthToken } from '../../../lib/api';
 import { useSessionUser } from '../../../lib/session-user';
-import { StudyNav } from '../../../components/study-nav';
 import '../../student/assessment/studio.css';
 import '../workbench.css';
 import './gesp.css';
@@ -90,9 +89,9 @@ export default function GespWorkbench() {
     } catch (reason) { setError((reason as Error).message); } finally { setReviewBusy(false); }
   }
 
-  return <main className="learning-studio"><StudyNav /><div className="admin-workbench gesp-workbench">
-    <nav className="admin-links" aria-label="教研导航"><Link href="/admin/curriculum">知识与覆盖</Link><Link href="/admin/gesp" aria-current="page">GESP C++</Link><Link href="/admin/measurement">测量素材</Link><Link href="/library">题卷审核</Link></nav>
-    <header className="gesp-hero"><div><span className="studio-eyebrow">GESP / C++ · 教研资料</span><h1>从一行程序，<br />走向独立解题。</h1><p>按认证等级研究知识与题目，把看懂、会写和独立迁移分别观察。</p></div><div className="gesp-scope"><strong>01—04</strong><span>零基础优先研究</span><small>05—08 保留完整进阶框架</small></div></header>
+  return <main className="learning-studio"><div className="admin-workbench gesp-workbench">
+
+    <header className="gesp-hero"><div><span className="studio-eyebrow">GESP / C++ · 教研资料</span><h1>GESP教研</h1><p>按认证等级研究知识与题目，把看懂、会写和独立迁移分别观察。</p></div><div className="gesp-scope"><strong>01—04</strong><span>零基础优先研究</span><small>05—08 保留完整进阶框架</small></div></header>
     {user === undefined && <p role="status">正在核对教研权限…</p>}
     {user === null && <p>请先<Link href="/parent/login">登录</Link>教研账号。</p>}
     {user && !allowed && <p>此资料区需要教研权限。<Link href="/parent/dashboard">返回家长空间</Link></p>}

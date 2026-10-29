@@ -1,0 +1,305 @@
+{
+  "purpose": "Frozen focus/admin commit candidate; later edits must remain separately reviewable",
+  "blankLineCleanupAfterBuild": [
+    "apps/web/app/admin/ai-tools/workbench.tsx",
+    "apps/web/app/admin/curriculum/page.tsx",
+    "apps/web/app/admin/gesp/page.tsx",
+    "apps/web/app/admin/imports/page.tsx",
+    "apps/web/app/admin/measurement/page.tsx",
+    "apps/web/app/admin/reviews/page.tsx"
+  ],
+  "files": [
+    {
+      "path": "apps/api/src/infrastructure/admin-navigation.test.ts",
+      "gitBlob": "16a95c313c5ddf663dbc64b3f9a3b16fd14e0822"
+    },
+    {
+      "path": "apps/api/src/infrastructure/workspace-exit-guard.test.ts",
+      "gitBlob": "200f8252e5a70fa2f4c25db839bc503da0feac29"
+    },
+    {
+      "path": "apps/api/src/modules/learning/activity-navigation.test.ts",
+      "gitBlob": "4d3eb5e2c46925e0f0c9191bca1ecf1e34378b4b"
+    },
+    {
+      "path": "apps/api/src/modules/learning/activity-navigation.ts",
+      "gitBlob": "c2c6caef1b9a85626e778395d2b8a6ba5fe5f99f"
+    },
+    {
+      "path": "apps/api/src/modules/learning/classroom.service.ts",
+      "gitBlob": "e72e988039c59cf38d95c755df7647d09fade398"
+    },
+    {
+      "path": "apps/api/src/modules/learning/course-project.service.ts",
+      "gitBlob": "e9c48085ca36a4f804a5bae768067ae93da68ad7"
+    },
+    {
+      "path": "apps/api/src/modules/learning/source-course-project.integration.test.ts",
+      "gitBlob": "bb05994eb454121d0c0dbf5f3e83533acd8e64a1"
+    },
+    {
+      "path": "apps/web/app/admin/accounts/page.tsx",
+      "gitBlob": "9fef6e5657e1a232bd64873c2a59b5ae5445b203"
+    },
+    {
+      "path": "apps/web/app/admin/ai-tools/workbench.tsx",
+      "gitBlob": "3674c9cf3bf67b5f573acd7296c668ab27f3253e"
+    },
+    {
+      "path": "apps/web/app/admin/analytics/page.tsx",
+      "gitBlob": "b382c253ad5921e0b9b87a4422ffc2a138fac35f"
+    },
+    {
+      "path": "apps/web/app/admin/content/page.tsx",
+      "gitBlob": "5b6da2215066f993c1cc786bd66a31c2d1c3dab0"
+    },
+    {
+      "path": "apps/web/app/admin/curriculum/page.tsx",
+      "gitBlob": "375e702c0ba9ce7e21f087699fa5296544c792b4"
+    },
+    {
+      "path": "apps/web/app/admin/gesp/page.tsx",
+      "gitBlob": "38087893f445e4e5047acba24c8f840bdd7b0422"
+    },
+    {
+      "path": "apps/web/app/admin/imports/page.tsx",
+      "gitBlob": "ecc7f3f2048ffad92c6853ac920da41b13377241"
+    },
+    {
+      "path": "apps/web/app/admin/layout.tsx",
+      "gitBlob": "100879a7ba631f1b3b0b431e43d242247c6129a4"
+    },
+    {
+      "path": "apps/web/app/admin/measurement/page.tsx",
+      "gitBlob": "3f851062303e19984ec0d3c92481d7282c8c7d64"
+    },
+    {
+      "path": "apps/web/app/admin/reviews/page.tsx",
+      "gitBlob": "80bca64a0efb8a42bb16903103ee969a14b5c91a"
+    },
+    {
+      "path": "apps/web/app/admin/workspace-shell.css",
+      "gitBlob": "430552b6998d68a021d6540b5d1c31dd983e95ac"
+    },
+    {
+      "path": "apps/web/app/admin/workspace-shell.tsx",
+      "gitBlob": "7fa33380ce94f665515fc52324826e7c9e18c10d"
+    },
+    {
+      "path": "apps/web/app/library/practice/session.tsx",
+      "gitBlob": "c9ac69a23228ef723513af1591136ed1f826ca34"
+    },
+    {
+      "path": "apps/web/app/studio/classroom/workbench.tsx",
+      "gitBlob": "859db2d131532a5d772dfc3cfa4c480ac647a209"
+    },
+    {
+      "path": "apps/web/app/studio/personal-materials.tsx",
+      "gitBlob": "29923d9c47d5c66af265250317a3f96aced20fc6"
+    },
+    {
+      "path": "apps/web/app/studio/projects/workbench.tsx",
+      "gitBlob": "4847f08de5016ba8bb53cb64f7e093f389601ccd"
+    },
+    {
+      "path": "apps/web/app/studio/studio-navigation.tsx",
+      "gitBlob": "f81b475a5d3490c741cf3cd51714a045bb0127ea"
+    },
+    {
+      "path": "apps/web/app/studio/whiteboard-player.tsx",
+      "gitBlob": "f8c6fbf82dccb55ad014e10961df69e996c4e196"
+    },
+    {
+      "path": "apps/web/app/studio/whiteboard-reading-panel.tsx",
+      "gitBlob": "db2e0a10b860f80e201fcff761e2415774761cbb"
+    },
+    {
+      "path": "apps/web/app/studio/whiteboard-session.tsx",
+      "gitBlob": "f246e3207bae787e3066d62c16b46dd099c77566"
+    },
+    {
+      "path": "apps/web/app/studio/whiteboards/workbench.tsx",
+      "gitBlob": "644a091ecf860d4ea5a3f6ed4a32c9a992cd6fc0"
+    },
+    {
+      "path": "apps/web/components/activity-workspace-navigation.tsx",
+      "gitBlob": "f66547e024b25199cb8975a8b77d2a2c3f66e547"
+    },
+    {
+      "path": "apps/web/components/session-control.tsx",
+      "gitBlob": "b3c9da4694ae5ec4882cb17162ca283493c63c53"
+    },
+    {
+      "path": "apps/web/components/workspace-shell.css",
+      "gitBlob": "62ce38326b7c2f66d67adea9f6e8bc03d5f1a5c3"
+    },
+    {
+      "path": "apps/web/components/workspace-shell.tsx",
+      "gitBlob": "dd1208b1e5e9ee64709d4230c8be56c103afabb6"
+    },
+    {
+      "path": "apps/web/lib/admin-navigation.ts",
+      "gitBlob": "290bb86b1f6efddf2b49dc3ac043f810677ddf51"
+    },
+    {
+      "path": "apps/web/lib/use-workspace-exit-guard.ts",
+      "gitBlob": "c09ea475f4e04b1a6ab901369cc29f4faf1bea7d"
+    },
+    {
+      "path": "apps/web/lib/workspace-exit-guard.ts",
+      "gitBlob": "cca4cbac79204519e67ca682f7ef7306c5b22bd0"
+    },
+    {
+      "path": "apps/web/lib/workspace-navigation.ts",
+      "gitBlob": "6807c56aadc446ed7e4d0d733a8b8e44ef713c25"
+    },
+    {
+      "path": "apps/web/lib/workspace-shell-context.ts",
+      "gitBlob": "f6822e140950300cc3592074f05f346eeb66e1f0"
+    },
+    {
+      "path": "doc/design/01-functional-framework.md",
+      "gitBlob": "5137f357f673d81d9a2e323535440265b63ee172"
+    },
+    {
+      "path": "doc/design/details/01-identity.md",
+      "gitBlob": "4d37c3f05658d374384fd18bdda3991028c06f9f"
+    },
+    {
+      "path": "doc/design/details/02-curriculum.md",
+      "gitBlob": "dcbdc61910a9e9018e62402a1046d2bb375390c7"
+    },
+    {
+      "path": "doc/design/details/03-assessment.md",
+      "gitBlob": "fc569bd2a33f134d71e0bd36bdd298521f6c4709"
+    },
+    {
+      "path": "doc/design/details/04-measurement.md",
+      "gitBlob": "af8110c739dcefa4c380a4709dd8aa158b80ba54"
+    },
+    {
+      "path": "doc/design/details/05-guidance.md",
+      "gitBlob": "ec7ae841f9ce601d5a180aca7527b77e9d9c0443"
+    },
+    {
+      "path": "doc/design/details/06-learning.md",
+      "gitBlob": "4a08572798ee4b7e28a1eb87b88a1313b83a1cb1"
+    },
+    {
+      "path": "doc/design/details/07-content.md",
+      "gitBlob": "1edd1b1ca14c911b29b747dd404861d6637afb50"
+    },
+    {
+      "path": "doc/design/details/08-ai.md",
+      "gitBlob": "df3abd2d877acdc4623afcf746932caf7ac54096"
+    },
+    {
+      "path": "doc/design/details/09-studio.md",
+      "gitBlob": "090508c4d8c574cbcad49610ef88e9c6e83347d2"
+    },
+    {
+      "path": "doc/design/details/10-gesp.md",
+      "gitBlob": "5af9dc7e97397342a64259b6020fda808b5ae8d9"
+    },
+    {
+      "path": "doc/design/details/11-review.md",
+      "gitBlob": "461b33bbb21a2e7648d7b6ecdac71b040df017a7"
+    },
+    {
+      "path": "doc/design/details/12-media.md",
+      "gitBlob": "365ce1052ae0d3ef71fcbd71f84d3a9d6df37cf7"
+    },
+    {
+      "path": "doc/design/details/13-privacy.md",
+      "gitBlob": "ee0cbbda33a6bf95ab38836713f95e43f366539d"
+    },
+    {
+      "path": "doc/design/details/14-operations.md",
+      "gitBlob": "b7408b89d29efc2fda4744e768db142970916dc4"
+    },
+    {
+      "path": "doc/design/feature-catalog.json",
+      "gitBlob": "141472e8493f194d9db9f82da7f0fea4221a28ac"
+    },
+    {
+      "path": "doc/design/generated/api-reference.md",
+      "gitBlob": "a9747416a02889ed0333daa58f9dc1c169de02b4"
+    },
+    {
+      "path": "doc/design/generated/content-snapshot.json",
+      "gitBlob": "f97568eb17ea4ae1507816d548554c8e30b6e846"
+    },
+    {
+      "path": "doc/design/generated/coverage.json",
+      "gitBlob": "b79e446b4e662e1ed26f653f9622e4420ce94f35"
+    },
+    {
+      "path": "doc/design/generated/data-reference.md",
+      "gitBlob": "ee05259581eb094e0096e8aba2c10d267cfba7b8"
+    },
+    {
+      "path": "doc/design/generated/page-reference.md",
+      "gitBlob": "58f4e2a6e5f3e6ac7a7724c9a78ca9027cfcf45d"
+    },
+    {
+      "path": "doc/design/generated/source-inventory.json",
+      "gitBlob": "3afd47b400270f33c3a345bfdf97f2e9b84d6e83"
+    },
+    {
+      "path": "doc/design/index.html",
+      "gitBlob": "41ea8f5f535764e0a09bed89d1c447b7c27d74e1"
+    },
+    {
+      "path": "packages/contracts/src/activity-navigation.ts",
+      "gitBlob": "b3c09d2780daca47a9e5082164841d6e8c58448a"
+    },
+    {
+      "path": "packages/contracts/src/classroom.ts",
+      "gitBlob": "996814b2850c1f609344593cbbb4a33a53b2d977"
+    },
+    {
+      "path": "packages/contracts/src/course-project.ts",
+      "gitBlob": "ae7413634f345c0b460307d3f624d723e774a16f"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "gitBlob": "c178ea1d2f8c4f669674970a6faf85d6668c4fc0"
+    },
+    {
+      "path": "scripts/architecture/project-feature-definitions.cjs",
+      "gitBlob": "1be3baaa9d82c7addc114f3cb40684ab6ec81627"
+    },
+    {
+      "path": "tests/e2e/assistant-whiteboards.spec.ts",
+      "gitBlob": "00aadaebf3bd685863ab1f52b589bea2ffe278fe"
+    },
+    {
+      "path": "tests/e2e/original-teaching-fonts.spec.ts",
+      "gitBlob": "d2249679d2f1999ca478af3d2ceae8e853a7fcb4"
+    },
+    {
+      "path": "tests/e2e/studio.spec.ts",
+      "gitBlob": "1c2e41cd1f7f96991b83fb4d293f062e3aab1a80"
+    },
+    {
+      "path": "tests/e2e/topic-whiteboard.spec.ts",
+      "gitBlob": "a1e7c5ebcc190200c7ddab9afc9f3e062d5c6c1f"
+    },
+    {
+      "path": "tests/e2e/whiteboard-media.spec.ts",
+      "gitBlob": "2b2d2c84ed219b29754565945b980da0e3605686"
+    },
+    {
+      "path": "tests/e2e/whiteboard-questions.spec.ts",
+      "gitBlob": "cd6753b1967c48b28edc1f9b965457d46462457a"
+    },
+    {
+      "path": "tests/e2e/whiteboard-settings.spec.ts",
+      "gitBlob": "21f376df00815099d85aed37fd515b6dce03193c"
+    },
+    {
+      "path": "tests/e2e/workspace-focus.spec.ts",
+      "gitBlob": "5208823759e516ef9c329ae5dec5f2f0b571ca4b"
+    }
+  ]
+}

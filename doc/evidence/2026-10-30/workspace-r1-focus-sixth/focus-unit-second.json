@@ -1,0 +1,75 @@
+{
+  "numTotalTests": 9,
+  "numPassedTests": 9,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "admin-navigation.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "admin workspace navigation follows the existing service roles allows exactly the teacher modules and all nine administrator modules",
+          "status": "passed",
+          "durationMs": 7.104100000000017
+        },
+        {
+          "title": "admin workspace navigation follows the existing service roles returns login to an existing authorized module only",
+          "status": "passed",
+          "durationMs": 1.9406000000000176
+        }
+      ]
+    },
+    {
+      "file": "workspace-exit-guard.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "workspace activity exit boundaries keeps stage, step and presentation changes inside the same authorized activity",
+          "status": "passed",
+          "durationMs": 2.5118999999999687
+        },
+        {
+          "title": "workspace activity exit boundaries treats another object, subject, course, project or route as leaving",
+          "status": "passed",
+          "durationMs": 1.1259000000000015
+        },
+        {
+          "title": "workspace activity exit boundaries keeps an answer-item change in one session but protects switching the original session",
+          "status": "passed",
+          "durationMs": 0.5493000000000166
+        }
+      ]
+    },
+    {
+      "file": "activity-navigation.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "authorized activity navigation metadata keeps independent records independent and uses the actual chemistry course",
+          "status": "passed",
+          "durationMs": 3.755300000000034
+        },
+        {
+          "title": "authorized activity navigation metadata does not accept a current course belonging to a different object",
+          "status": "passed",
+          "durationMs": 0.6955000000000382
+        },
+        {
+          "title": "authorized activity navigation metadata recovers a matching frozen historical classroom scope without guessing a default",
+          "status": "passed",
+          "durationMs": 1.1480000000000246
+        },
+        {
+          "title": "authorized activity navigation metadata rejects external, ambiguous, mixed independent or unmatched historical destinations",
+          "status": "passed",
+          "durationMs": 1.629099999999994
+        }
+      ]
+    }
+  ]
+}

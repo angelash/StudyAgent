@@ -16,6 +16,7 @@ import { freezeClassroomPresentation, freezeSpeechTrack, sessionPresentation, ve
 import { lessonActivity,projectActivities } from './course-journey';
 import { adultProjectDefinitions } from './course-project-content';
 import { publishedSourceCheck,sourceCheckLesson,sourceCheckKeys,sourceCheckExposed } from './source-course-check-classroom';
+import { activityNavigationContext } from './activity-navigation';
 
 export type ClassroomSessionRecord = ClassroomSession & {
   answerKeys: Record<string, { answer: number | number[]; explanation: string; optionExplanations?: string[];sourceReferences?:Array<{sourceKey:string;quote:string}> }>;
@@ -83,7 +84,8 @@ export class ClassroomService {
     const projectUnit = row.studioCourseId ? this.store.find('studioCourses', { id: row.studioCourseId })?.units
       .find(unit => unit.lessons.some(lesson => lesson.id === row.lessonId) && unit.lessons.some(lesson => lesson.kind === 'project'))?.id :
       classroomCourse().units.find(unit => row.lessonId === 'unit-exam:' + unit.id || unit.lectures.some(lecture => lecture.lessons.some(lesson => lesson.id === row.lessonId)))?.id;
-    return { ...safe, speech: this.speech.capabilities(),
+    const navigationCourse = row.sourceCourseId ? this.store.find('sourceCourses', { id: row.sourceCourseId }) : row.studioCourseId ? this.store.find('studioCourses', { id: row.studioCourseId }) : undefined;
+    return { ...safe, navigationContext: activityNavigationContext(row.studentId, navigationCourse, row.lesson.verificationHref), speech: this.speech.capabilities(),
       ...(projectUnit ? { projectHref: '/studio/projects?' + new URLSearchParams({ unitId: projectUnit, legacy: row.id, ...(row.studioCourseId ? { studioCourseId: row.studioCourseId } : {}) }) } : {}),
       contentStatus: current ? classroomFingerprint(current) === row.contentFingerprint ? 'current' : 'archived' : 'unavailable' };
   }

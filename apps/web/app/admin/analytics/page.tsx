@@ -2,15 +2,10 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { apiRequest, getAuthToken, getCurrentUser } from '../../../lib/api';
+import { apiRequest, getAuthToken } from '../../../lib/api';
+import { useSessionUser } from '../../../lib/session-user';
 import type { OperationsOverview } from '@study-agent/contracts';
 
-type User = {
-  id: string;
-  role: string;
-  displayName: string;
-};
 
 type AnalyticsOverview = {
   studentCount: number;
@@ -53,9 +48,9 @@ type AIQualityOverview = {
 
 const panelStyle: React.CSSProperties = {
   padding: 20,
-  borderRadius: 20,
+  borderRadius: 12,
   background: '#fff',
-  border: '1px solid #e2e8f0',
+  border: '1px solid #e9ecf1',
 };
 
 function getConfidenceStyle(level: AIQualityOverview['recentInsights'][number]['confidenceLevel']) {
@@ -83,7 +78,7 @@ function getSourceLabel(sourceType: AIQualityOverview['recentInsights'][number][
 }
 
 export default function AdminAnalyticsPage() {
-  const router = useRouter();
+  const identity=useSessionUser();
   const [overview, setOverview] = React.useState<AnalyticsOverview | null>(null);
   const [aiQuality, setAiQuality] = React.useState<AIQualityOverview | null>(null);
   const [operations, setOperations] = React.useState<OperationsOverview | null>(null);
@@ -94,9 +89,8 @@ export default function AdminAnalyticsPage() {
     try {
       setError(null);
       setLoading(true);
-      const currentUser = getCurrentUser<User>();
+      const currentUser = identity;
       if (!currentUser) {
-        router.push('/parent/login');
         return;
       }
 
@@ -123,33 +117,21 @@ export default function AdminAnalyticsPage() {
 
   React.useEffect(() => {
     void loadData();
-  }, []);
+  }, [identity?.id,identity?.role]);
 
   return (
     <main style={{ padding: 'clamp(16px, 4vw, 40px)', maxWidth: 1180, minWidth: 0 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
         <div>
-          <h1>运营看板</h1>
+          <h1>运营分析</h1>
           <p style={{ color: '#475569', lineHeight: 1.7 }}>
-            这里查看内容供给、训练完成度和 AI 使用质量，方便判断系统当前是否在稳定输出学习价值。
+            查看内容供给、训练记录与 AI 质量；统计口径按各指标说明。
           </p>
         </div>
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-          <Link
-            href="/admin/ai-tools"
-            style={{ padding: '10px 14px', borderRadius: 12, background: '#fff', border: '1px solid #cbd5e1', color: '#0f172a' }}
-          >
-            AI教研
-          </Link>
-          <Link
-            href="/admin/content"
-            style={{ padding: '10px 14px', borderRadius: 12, background: '#fff', border: '1px solid #cbd5e1', color: '#0f172a' }}
-          >
-            进入内容后台
-          </Link>
           <button
             onClick={() => void loadData()}
-            style={{ border: 'none', borderRadius: 12, padding: '10px 14px', background: '#0f766e', color: '#fff' }}
+            style={{ border: 'none', borderRadius: 12, padding: '10px 14px', background: '#4c6696', color: '#fff' }}
           >
             刷新指标
           </button>
@@ -203,7 +185,7 @@ export default function AdminAnalyticsPage() {
               { label: '失败任务', value: operations.tasks.counts.failed },
               { label: '请求 / 服务错误', value: `${operations.requests.total} / ${operations.requests.serverErrors}` },
               { label: '限流拒绝', value: operations.rateLimits.rejected },
-            ].map(item => <div key={item.label} style={{ borderRadius: 14, padding: 14, background: '#f8fafc' }}>
+            ].map(item => <div key={item.label} style={{ borderRadius: 12, padding: 14, background: '#f8fafc' }}>
               <div style={{ color: '#475569', fontSize: 13 }}>{item.label}</div>
               <div style={{ fontSize: 25, fontWeight: 700, marginTop: 7 }}>{item.value}</div>
             </div>)}
@@ -241,7 +223,7 @@ export default function AdminAnalyticsPage() {
                 { label: '需人工复核', value: aiQuality.reviewRequiredCount },
                 { label: '历史检索记录', value: aiQuality.searchBackedAssistantCount },
               ].map((item) => (
-                <div key={item.label} style={{ padding: 14, borderRadius: 16, background: '#f8fafc', border: '1px solid #e2e8f0' }}>
+                <div key={item.label} style={{ padding: 14, borderRadius: 12, background: '#f8fafc', border: '1px solid #e9ecf1' }}>
                   <div style={{ fontSize: 12, color: '#64748b' }}>{item.label}</div>
                   <div style={{ marginTop: 8, fontSize: 24, fontWeight: 700 }}>{item.value}</div>
                 </div>
@@ -249,7 +231,7 @@ export default function AdminAnalyticsPage() {
             </div>
 
             <div style={{ display: 'grid', gap: 12, gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', marginTop: 20 }}>
-              <div style={{ padding: 16, borderRadius: 16, border: '1px solid #e2e8f0' }}>
+              <div style={{ padding: 16, borderRadius: 12, border: '1px solid #e9ecf1' }}>
                 <div style={{ fontWeight: 700 }}>置信度分布</div>
                 <div style={{ marginTop: 10, color: '#475569', lineHeight: 1.8 }}>
                   高置信：{aiQuality.confidenceBreakdown.high}
@@ -259,7 +241,7 @@ export default function AdminAnalyticsPage() {
                   低置信：{aiQuality.confidenceBreakdown.low}
                 </div>
               </div>
-              <div style={{ padding: 16, borderRadius: 16, border: '1px solid #e2e8f0' }}>
+              <div style={{ padding: 16, borderRadius: 12, border: '1px solid #e9ecf1' }}>
                 <div style={{ fontWeight: 700 }}>当前判断</div>
                 <div style={{ marginTop: 10, color: '#475569', lineHeight: 1.8 }}>
                   {aiQuality.totalInsightCount === 0
@@ -277,7 +259,7 @@ export default function AdminAnalyticsPage() {
                 aiQuality.recentInsights.map((insight) => (
                   <div
                     key={insight.id}
-                    style={{ padding: 16, borderRadius: 16, background: '#f8fafc', border: '1px solid #e2e8f0', display: 'grid', gap: 10 }}
+                    style={{ padding: 16, borderRadius: 12, background: '#f8fafc', border: '1px solid #e9ecf1', display: 'grid', gap: 10 }}
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
                       <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>

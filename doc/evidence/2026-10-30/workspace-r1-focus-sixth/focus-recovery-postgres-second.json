@@ -1,0 +1,83 @@
+{
+  "numTotalTests": 12,
+  "numPassedTests": 10,
+  "numFailedTests": 1,
+  "numPendingTests": 1,
+  "numFailedTestSuites": 2,
+  "suites": [
+    {
+      "file": "source-course-project.integration.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "source-course projects, frozen objectives and original permissions projects authorized chemistry and independent navigation without persisting presentation metadata",
+          "status": "passed",
+          "durationMs": 1034.9142000000002
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions reads a published definition without creating a project or exposing authoring and answer payloads",
+          "status": "passed",
+          "durationMs": 30.306300000000192
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions creates once on explicit opening, binds a recoverable original save and survives actual storage restart",
+          "status": "passed",
+          "durationMs": 1008.1279999999997
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions keeps frozen project objectives while a new definition requires an explicit version choice",
+          "status": "passed",
+          "durationMs": 71.29179999999997
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions blocks creation for an unconfirmed or archived source while retaining readable frozen project history",
+          "status": "passed",
+          "durationMs": 82.38310000000001
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions lets a real learning-code owner submit and an assigned teacher review only that frozen submission",
+          "status": "passed",
+          "durationMs": 189.23949999999968
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions refuses late narration when a shared source becomes private, without changing the frozen project",
+          "status": "passed",
+          "durationMs": 136.47179999999935
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions reads unstarted source and adult activity states without creating learning or project facts",
+          "status": "passed",
+          "durationMs": 41.92840000000069
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions restores actual source reading, assisted first answers and private project metadata without leaking them to another account",
+          "status": "passed",
+          "durationMs": 1374.6004000000003
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions cold restores the actual SQLite source-project binding, then applies the newer account deletion to the old backup",
+          "status": "skipped",
+          "durationMs": null
+        }
+      ]
+    },
+    {
+      "file": "paper-practice-recovery.integration.test.ts",
+      "status": "failed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "sqlite original paper practice native recovery cold restores exact first answers, corrections and request receipts with original media, and applies newer child and account deletion receipts",
+          "status": "passed",
+          "durationMs": 12532.638299999999
+        },
+        {
+          "title": "postgres original paper practice native recovery cold restores exact first answers, corrections and request receipts with original media, and applies newer child and account deletion receipts",
+          "status": "failed",
+          "durationMs": 3679.0635
+        }
+      ]
+    }
+  ]
+}

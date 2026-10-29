@@ -3,7 +3,6 @@ import * as React from 'react';
 import Link from 'next/link';
 import type { ImportFile, ProcessingTaskView, QuestionImportJob, QuestionImportRecord, Subject } from '@study-agent/contracts';
 import { apiBaseUrl, apiRequest } from '../../../lib/api';
-import { StudyNav } from '../../../components/study-nav';
 import '../../student/assessment/studio.css';
 import '../workbench.css';
 import './imports.css';
@@ -117,9 +116,9 @@ export default function ImportWorkbench() {
     }, decision === 'approved' ? '候选已确认，草稿已建立。来源、答案量规与知识映射仍需分别审核。' : '候选已驳回，原页及处理记录继续保留。');
   }
 
-  return <div className="learning-studio"><StudyNav /><main className="admin-workbench import-workbench">
-    <div className="admin-links"><Link href="/admin/curriculum">课程与知识图谱</Link><Link href="/admin/reviews">评分与反馈</Link><Link href="/admin/imports" aria-current="page">资料导入</Link><Link href="/admin/content">题目编辑</Link><Link href="/admin/accounts">账号权限</Link></div>
-    <div className="import-heading"><div><span className="studio-kicker">内容生产 · 原页与证据</span><h1>把一页资料，变成可核对的题。</h1><p>上传保留原件，提取与识别生成候选。逐页确认内容后建立草稿，再核实来源、评分和知识点映射。</p></div><span className="import-stamp">原件保留<br />人工确认后入库</span></div>
+  return <div className="learning-studio"><main className="admin-workbench import-workbench">
+
+    <div className="import-heading"><div><span className="studio-kicker">内容生产 · 原页与证据</span><h1>资料导入</h1><p>上传保留原件，提取与识别生成候选。逐页确认内容后建立草稿，再核实来源、评分和知识点映射。</p></div><span className="import-stamp">原件保留<br />人工确认后入库</span></div>
     {error && <div className="studio-error" role="alert">{error}<button onClick={() => setError('')} aria-label="关闭错误提示">×</button></div>}
     {notice && <p className="studio-notice" role="status">{notice}</p>}
     {loading ? <p role="status">正在读取已保存的文件和任务…</p> : <>

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "2cb124e840da01738db66090a5963371abe2c812",
+  "sourceRevision": "30b2b510991a04e136af82a98c587b5630552b6e",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 480,
@@ -10,13 +10,13 @@
     "activeModules": 19,
     "activeControllers": 53,
     "apiClasses": 181,
-    "apiFunctions": 573,
+    "apiFunctions": 574,
     "domainCollections": 107,
-    "contractTypes": 437,
+    "contractTypes": 438,
     "webPages": 36,
     "webRouteHandlers": 1,
-    "apiTestFiles": 216,
-    "browserTestFiles": 47
+    "apiTestFiles": 219,
+    "browserTestFiles": 48
   },
   "modules": [
     {
@@ -27105,7 +27105,7 @@
     {
       "name": "ClassroomService",
       "file": "apps/api/src/modules/learning/classroom.service.ts",
-      "line": 27,
+      "line": 28,
       "decorators": [
         {
           "name": "Injectable",
@@ -27133,7 +27133,7 @@
       "methods": [
         {
           "name": "catalog",
-          "line": 32,
+          "line": 33,
           "signature": "catalog(user: InMemoryUserAccount): ClassroomCatalog",
           "access": "public",
           "decorators": [],
@@ -27143,7 +27143,7 @@
         },
         {
           "name": "record",
-          "line": 57,
+          "line": 58,
           "signature": "record(user: InMemoryUserAccount, id: string)",
           "access": "private",
           "decorators": [],
@@ -27154,7 +27154,7 @@
         },
         {
           "name": "view",
-          "line": 65,
+          "line": 66,
           "signature": "view(row: ClassroomSessionRecord): ClassroomSessionView",
           "access": "private",
           "decorators": [],
@@ -27166,7 +27166,7 @@
         },
         {
           "name": "get",
-          "line": 91,
+          "line": 93,
           "signature": "get(user: InMemoryUserAccount, id: string)",
           "access": "public",
           "decorators": [],
@@ -27177,7 +27177,7 @@
         },
         {
           "name": "source",
-          "line": 92,
+          "line": 94,
           "signature": "source(user:InMemoryUserAccount, id:string, key:string)",
           "access": "public",
           "decorators": [],
@@ -27187,7 +27187,7 @@
         },
         {
           "name": "hintLevels",
-          "line": 94,
+          "line": 96,
           "signature": "hintLevels(row: ClassroomSessionRecord, questionId: string)",
           "access": "private",
           "decorators": [],
@@ -27195,7 +27195,7 @@
         },
         {
           "name": "open",
-          "line": 101,
+          "line": 103,
           "signature": "open(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -27210,7 +27210,7 @@
         },
         {
           "name": "progress",
-          "line": 154,
+          "line": 156,
           "signature": "progress(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -27221,7 +27221,7 @@
         },
         {
           "name": "upgradePresentation",
-          "line": 179,
+          "line": 181,
           "signature": "upgradePresentation(user:InMemoryUserAccount, id:string, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -27233,7 +27233,7 @@
         },
         {
           "name": "answer",
-          "line": 197,
+          "line": 199,
           "signature": "answer(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -27244,7 +27244,7 @@
         },
         {
           "name": "hint",
-          "line": 246,
+          "line": 248,
           "signature": "hint(user: InMemoryUserAccount, id: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -27256,7 +27256,7 @@
         },
         {
           "name": "ask",
-          "line": 271,
+          "line": 273,
           "signature": "ask(user: InMemoryUserAccount, id: string, input: unknown, signal?: AbortSignal)",
           "access": "public",
           "decorators": [],
@@ -27271,7 +27271,7 @@
         },
         {
           "name": "voicePreview",
-          "line": 307,
+          "line": 309,
           "signature": "voicePreview(user:InMemoryUserAccount, id:string, input:unknown, signal?:AbortSignal)",
           "access": "public",
           "decorators": [],
@@ -27282,7 +27282,7 @@
         },
         {
           "name": "narration",
-          "line": 315,
+          "line": 317,
           "signature": "narration(user: InMemoryUserAccount, id: string, stepId: string, input: unknown, signal?:AbortSignal)",
           "access": "public",
           "decorators": [],
@@ -27474,7 +27474,7 @@
     {
       "name": "CourseProjectService",
       "file": "apps/api/src/modules/learning/course-project.service.ts",
-      "line": 33,
+      "line": 34,
       "decorators": [
         {
           "name": "Injectable",
@@ -27498,7 +27498,7 @@
       "methods": [
         {
           "name": "access",
-          "line": 37,
+          "line": 38,
           "signature": "access(user: InMemoryUserAccount, studentId: string)",
           "access": "private",
           "decorators": [],
@@ -27506,7 +27506,7 @@
         },
         {
           "name": "definitions",
-          "line": 39,
+          "line": 40,
           "signature": "definitions(user: InMemoryUserAccount, studioCourseId?: string, sourceCourseId?:string): CourseProjectDefinition[]",
           "access": "private",
           "decorators": [],
@@ -27517,7 +27517,7 @@
         },
         {
           "name": "record",
-          "line": 50,
+          "line": 51,
           "signature": "record(user: InMemoryUserAccount, projectId: string, editing = false): CourseProjectRecord",
           "access": "private",
           "decorators": [],
@@ -27525,7 +27525,7 @@
         },
         {
           "name": "view",
-          "line": 51,
+          "line": 52,
           "signature": "view(user: InMemoryUserAccount, row: CourseProjectRecord): CourseProjectView",
           "access": "private",
           "decorators": [],
@@ -27535,7 +27535,7 @@
         },
         {
           "name": "get",
-          "line": 64,
+          "line": 67,
           "signature": "get(user: InMemoryUserAccount, projectId: string)",
           "access": "public",
           "decorators": [],
@@ -27546,22 +27546,22 @@
         },
         {
           "name": "catalog",
-          "line": 66,
+          "line": 69,
           "signature": "catalog(user: InMemoryUserAccount, input: unknown): CourseProjectCatalog",
           "access": "public",
           "decorators": [],
           "calls": [
             "this.definitions",
             "this.access",
-            "this.store.select",
             "this.store.find",
+            "this.store.select",
             "this.view",
             "this.record"
           ]
         },
         {
           "name": "open",
-          "line": 77,
+          "line": 83,
           "signature": "open(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -27576,7 +27576,7 @@
         },
         {
           "name": "request",
-          "line": 96,
+          "line": 102,
           "signature": "request(user:InMemoryUserAccount, projectId:string, key:string): ProjectCommandReceipt",
           "access": "public",
           "decorators": [],
@@ -27587,7 +27587,7 @@
         },
         {
           "name": "replay",
-          "line": 102,
+          "line": 108,
           "signature": "replay(row: CourseProjectRecord, command: { requestKey: string; expectedRevision: number }, kind: string, user:InMemoryUserAccount)",
           "access": "private",
           "decorators": [],
@@ -27595,7 +27595,7 @@
         },
         {
           "name": "finish",
-          "line": 113,
+          "line": 119,
           "signature": "finish(row: CourseProjectRecord, command: { requestKey: string }, kind: string, user:InMemoryUserAccount)",
           "access": "private",
           "decorators": [],
@@ -27603,7 +27603,7 @@
         },
         {
           "name": "stage",
-          "line": 119,
+          "line": 125,
           "signature": "stage(row: CourseProjectRecord, stageId: string)",
           "access": "private",
           "decorators": [],
@@ -27611,7 +27611,7 @@
         },
         {
           "name": "checkArtifact",
-          "line": 123,
+          "line": 129,
           "signature": "checkArtifact(row: CourseProjectRecord, stageId: string, artifact: ProjectArtifact, complete = false)",
           "access": "private",
           "decorators": [],
@@ -27622,7 +27622,7 @@
         },
         {
           "name": "checkRatings",
-          "line": 139,
+          "line": 145,
           "signature": "checkRatings(row: CourseProjectRecord, ratings: ProjectRating[])",
           "access": "private",
           "decorators": [],
@@ -27630,7 +27630,7 @@
         },
         {
           "name": "checkRatingFiles",
-          "line": 144,
+          "line": 150,
           "signature": "checkRatingFiles(ratings:ProjectRating[], allowed:string[])",
           "access": "private",
           "decorators": [],
@@ -27638,7 +27638,7 @@
         },
         {
           "name": "save",
-          "line": 145,
+          "line": 151,
           "signature": "save(user: InMemoryUserAccount, projectId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -27653,7 +27653,7 @@
         },
         {
           "name": "submit",
-          "line": 159,
+          "line": 165,
           "signature": "submit(user: InMemoryUserAccount, projectId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -27670,7 +27670,7 @@
         },
         {
           "name": "review",
-          "line": 177,
+          "line": 183,
           "signature": "review(user: InMemoryUserAccount, projectId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -27686,7 +27686,7 @@
         },
         {
           "name": "importLegacy",
-          "line": 194,
+          "line": 200,
           "signature": "importLegacy(user: InMemoryUserAccount, projectId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -27700,7 +27700,7 @@
         },
         {
           "name": "advise",
-          "line": 208,
+          "line": 214,
           "signature": "advise(user: InMemoryUserAccount, projectId: string, input: unknown, signal?: AbortSignal)",
           "access": "public",
           "decorators": [],
@@ -43300,6 +43300,12 @@
       "signature": "knowledgeMaterialCoverage(atom: KnowledgeAtom, candidates: MeasurementItem[]): KnowledgeMaterialCoverage"
     },
     {
+      "file": "apps/api/src/modules/learning/activity-navigation.ts",
+      "name": "activityNavigationContext",
+      "line": 7,
+      "signature": "activityNavigationContext(studentId: string | null, course?: CourseScope, frozenVerificationHref?: string): ActivityNavigationContext"
+    },
+    {
       "file": "apps/api/src/modules/learning/assistant-practice-assignment-record.ts",
       "name": "assignmentRequestHash",
       "line": 28,
@@ -45751,6 +45757,13 @@
     }
   ],
   "contractTypes": [
+    {
+      "name": "ActivityNavigationContext",
+      "file": "packages/contracts/src/activity-navigation.ts",
+      "line": 4,
+      "kind": "TypeAliasDeclaration",
+      "fields": []
+    },
     {
       "name": "XiaojiuTextCheckReason",
       "file": "packages/contracts/src/ai-models.ts",
@@ -49048,7 +49061,7 @@
     {
       "name": "ClassroomDiagram",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 7,
+      "line": 8,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49081,7 +49094,7 @@
     {
       "name": "ClassroomBlock",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 8,
+      "line": 9,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49139,7 +49152,7 @@
     {
       "name": "ClassroomStep",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 11,
+      "line": 12,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49177,21 +49190,21 @@
     {
       "name": "ClassroomSelectionMode",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 13,
+      "line": 14,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "ClassroomAnswerDisposition",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 14,
+      "line": 15,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "ClassroomQuestion",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 15,
+      "line": 16,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49259,7 +49272,7 @@
     {
       "name": "ClassroomLesson",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 21,
+      "line": 22,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49327,7 +49340,7 @@
     {
       "name": "ClassroomLecture",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 26,
+      "line": 27,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49355,7 +49368,7 @@
     {
       "name": "ClassroomUnit",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 27,
+      "line": 28,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49388,7 +49401,7 @@
     {
       "name": "ClassroomCourse",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 29,
+      "line": 30,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49436,7 +49449,7 @@
     {
       "name": "ClassroomAnswerReceipt",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 31,
+      "line": 32,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49514,7 +49527,7 @@
     {
       "name": "ClassroomHintReceipt",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 35,
+      "line": 36,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49542,7 +49555,7 @@
     {
       "name": "ClassroomChatMessage",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 36,
+      "line": 37,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49585,7 +49598,7 @@
     {
       "name": "ClassroomSession",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 39,
+      "line": 40,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49728,14 +49741,14 @@
     {
       "name": "ClassroomSessionView",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 50,
+      "line": 51,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "ClassroomCatalog",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 53,
+      "line": 55,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49773,7 +49786,7 @@
     {
       "name": "ClassroomPracticeSummary",
       "file": "packages/contracts/src/classroom.ts",
-      "line": 59,
+      "line": 61,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -49978,7 +49991,7 @@
     {
       "name": "ProjectStage",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 2,
+      "line": 3,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -50006,7 +50019,7 @@
     {
       "name": "ProjectCriterion",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 4,
+      "line": 5,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -50029,7 +50042,7 @@
     {
       "name": "CourseProjectDefinition",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 5,
+      "line": 6,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -50097,7 +50110,7 @@
     {
       "name": "ProjectEvidence",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 10,
+      "line": 11,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -50125,7 +50138,7 @@
     {
       "name": "ProjectArtifact",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 11,
+      "line": 12,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -50148,7 +50161,7 @@
     {
       "name": "ProjectRating",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 12,
+      "line": 13,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -50176,7 +50189,7 @@
     {
       "name": "ProjectSubmission",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 13,
+      "line": 14,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -50234,7 +50247,7 @@
     {
       "name": "ProjectHumanReview",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 15,
+      "line": 16,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -50287,7 +50300,7 @@
     {
       "name": "ProjectAdviceScope",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 18,
+      "line": 19,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -50310,7 +50323,7 @@
     {
       "name": "ProjectAdvice",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 19,
+      "line": 20,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -50353,7 +50366,7 @@
     {
       "name": "CourseProject",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 21,
+      "line": 22,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -50441,14 +50454,14 @@
     {
       "name": "CourseProjectView",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 27,
+      "line": 28,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "CourseProjectCatalog",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 29,
+      "line": 31,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -50462,6 +50475,11 @@
           "type": "CourseProjectView[]"
         },
         {
+          "name": "navigationContext",
+          "optional": true,
+          "type": "ActivityNavigationContext"
+        },
+        {
           "name": "permissions",
           "optional": true,
           "type": "{start:boolean}"
@@ -50471,7 +50489,7 @@
     {
       "name": "ProjectCommandReceipt",
       "file": "packages/contracts/src/course-project.ts",
-      "line": 30,
+      "line": 32,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -60813,7 +60831,6 @@
         "react",
         "next/link",
         "../../../lib/api",
-        "../../../components/study-nav",
         "../../student/assessment/studio.css",
         "../workbench.css"
       ]
@@ -60833,8 +60850,8 @@
       "imports": [
         "react",
         "next/link",
-        "next/navigation",
         "../../../lib/api",
+        "../../../lib/session-user",
         "@study-agent/contracts"
       ]
     },
@@ -60848,7 +60865,8 @@
         "@study-agent/contracts",
         "../../../components/formula-input",
         "../../../components/question-renderer",
-        "../../../lib/api"
+        "../../../lib/api",
+        "../../../lib/session-user"
       ]
     },
     {
@@ -60860,7 +60878,6 @@
         "next/link",
         "@study-agent/contracts",
         "../../../lib/api",
-        "../../../components/study-nav",
         "./package-panel",
         "./teaching-editor",
         "./component-binding-editor",
@@ -60881,7 +60898,6 @@
         "@study-agent/contracts",
         "../../../lib/api",
         "../../../lib/session-user",
-        "../../../components/study-nav",
         "../../student/assessment/studio.css",
         "../workbench.css",
         "./gesp.css"
@@ -60896,7 +60912,6 @@
         "next/link",
         "@study-agent/contracts",
         "../../../lib/api",
-        "../../../components/study-nav",
         "../../student/assessment/studio.css",
         "../workbench.css",
         "./imports.css"
@@ -60911,7 +60926,6 @@
         "next/link",
         "@study-agent/contracts",
         "../../../lib/api",
-        "../../../components/study-nav",
         "../../../components/rich-math",
         "../../../components/question-renderer",
         "../../student/assessment/studio.css",
@@ -60931,7 +60945,6 @@
         "../../../lib/learning",
         "../../../components/question-renderer",
         "../../../components/answer-evidence-view",
-        "../../../components/study-nav",
         "../../student/assessment/studio.css",
         "../workbench.css",
         "./reviews.css"
@@ -61223,6 +61236,7 @@
     "apps/api/src/common/terminate-child-process.integration.test.ts",
     "apps/api/src/common/validation.test.ts",
     "apps/api/src/durability.integration.test.ts",
+    "apps/api/src/infrastructure/admin-navigation.test.ts",
     "apps/api/src/infrastructure/assistant-note-recovery.integration.test.ts",
     "apps/api/src/infrastructure/assistant-note-storage.integration.test.ts",
     "apps/api/src/infrastructure/assistant-whiteboard-reader.integration.test.ts",
@@ -61258,6 +61272,7 @@
     "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts",
     "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts",
     "apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts",
+    "apps/api/src/infrastructure/workspace-exit-guard.test.ts",
     "apps/api/src/infrastructure/workspace-navigation.test.ts",
     "apps/api/src/modules/ai/assistant-artifact.integration.test.ts",
     "apps/api/src/modules/ai/assistant-chemistry-tutorial.test.ts",
@@ -61351,6 +61366,7 @@
     "apps/api/src/modules/gesp/gesp.integration.test.ts",
     "apps/api/src/modules/gesp/isolated-runner.test.ts",
     "apps/api/src/modules/gesp/student-curriculum.test.ts",
+    "apps/api/src/modules/learning/activity-navigation.test.ts",
     "apps/api/src/modules/learning/assistant-practice-artifact.integration.test.ts",
     "apps/api/src/modules/learning/assistant-practice-bank-selection.test.ts",
     "apps/api/src/modules/learning/assistant-practice-content.test.ts",
@@ -61480,6 +61496,7 @@
     "tests/e2e/whiteboard-media.spec.ts",
     "tests/e2e/whiteboard-questions.spec.ts",
     "tests/e2e/whiteboard-settings.spec.ts",
+    "tests/e2e/workspace-focus.spec.ts",
     "tests/e2e/workspace-materials.spec.ts",
     "tests/e2e/workspace-shell.spec.ts",
     "tests/e2e/workspace.spec.ts"

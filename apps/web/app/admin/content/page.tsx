@@ -14,13 +14,8 @@ import type {
 } from '@study-agent/contracts';
 import { FormulaInput } from '../../../components/formula-input';
 import { QuestionRenderer, createEmptyAnswerPayload } from '../../../components/question-renderer';
-import { apiRequest, getAuthToken, getCurrentUser } from '../../../lib/api';
-
-type User = {
-  id: string;
-  role: string;
-  displayName: string;
-};
+import { apiRequest, getAuthToken } from '../../../lib/api';
+import { useSessionUser } from '../../../lib/session-user';
 
 type Volume = {
   id: string;
@@ -282,6 +277,7 @@ function createSubjectPreset(subject: Subject) {
 }
 
 export default function AdminContentPage() {
+  const identity=useSessionUser();
   const [selectedSubject, setSelectedSubject] = React.useState<Subject>('math');
   const subjectProfile = React.useMemo(() => subjectMeta[selectedSubject], [selectedSubject]);
   const initialPreset = React.useMemo(() => createSubjectPreset(selectedSubject), [selectedSubject]);
@@ -338,7 +334,7 @@ export default function AdminContentPage() {
   const [message, setMessage] = React.useState<string | null>(null);
   const [error, setError] = React.useState<string | null>(null);
   const [adminWarning, setAdminWarning] = React.useState<string | null>(null);
-  const hasAdminSession = Boolean(getAuthToken() && getCurrentUser<User>()?.role === 'admin' && !adminWarning);
+  const hasAdminSession = Boolean(identity?.role === 'admin' && !adminWarning);
   const deferredQuestionBrowserSearch = React.useDeferredValue(questionBrowserSearch);
 
   async function reload() {
@@ -360,7 +356,7 @@ export default function AdminContentPage() {
       });
 
       setSelectedKnowledgePointId((current) => current || knowledgeResult[0]?.id || '');
-      const currentUser = getCurrentUser<User>();
+      const currentUser = identity;
       const token = getAuthToken();
 
       if (!currentUser || currentUser.role !== 'admin') {
@@ -1144,16 +1140,12 @@ export default function AdminContentPage() {
     <main style={{ padding: 40, maxWidth: 1320 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
         <div>
-          <h1 style={{ marginBottom: 8 }}>内容后台</h1>
+          <h1>内容与题目</h1>
           <p style={{ color: '#475569', lineHeight: 1.7, maxWidth: 760 }}>
-            当前页已经升级为结构化题目工作台。运营可以在语文、数学、英语之间切换，配置块级题面、答案协议、教材导入和运行时预览。
+            按学科管理题目、答案协议、教材资料与导入记录。
           </p>
         </div>
-        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-          <Link href="/admin/analytics" style={headerLinkStyle}>
-            查看运营看板
-          </Link>
-        </div>
+
       </div>
 
       <section style={sectionStyle}>
@@ -2691,52 +2683,52 @@ function createId(prefix: string) {
 const sectionStyle: React.CSSProperties = {
   marginTop: 24,
   padding: 24,
-  borderRadius: 24,
+  borderRadius: 12,
   background: '#ffffff',
-  border: '1px solid #e2e8f0',
-  boxShadow: '0 20px 50px rgba(15, 23, 42, 0.06)',
+  border: '1px solid #e9ecf1',
+  boxShadow: 'none',
 };
 
 const cardStyle: React.CSSProperties = {
   padding: 18,
-  borderRadius: 20,
+  borderRadius: 12,
   background: '#ffffff',
-  border: '1px solid #e2e8f0',
+  border: '1px solid #e9ecf1',
 };
 
 const blockCardStyle: React.CSSProperties = {
   padding: 16,
-  borderRadius: 18,
+  borderRadius: 12,
   background: '#f8fafc',
-  border: '1px solid #e2e8f0',
+  border: '1px solid #e9ecf1',
 };
 
 const importRecordCardStyle: React.CSSProperties = {
   padding: 18,
-  borderRadius: 18,
+  borderRadius: 12,
   background: '#f8fafc',
-  border: '1px solid #e2e8f0',
+  border: '1px solid #e9ecf1',
 };
 
 const detailCardStyle: React.CSSProperties = {
   padding: 14,
-  borderRadius: 16,
+  borderRadius: 12,
   background: '#ffffff',
-  border: '1px solid #e2e8f0',
+  border: '1px solid #e9ecf1',
 };
 
 const treeCardStyle: React.CSSProperties = {
   padding: 14,
-  borderRadius: 16,
+  borderRadius: 12,
   background: '#ffffff',
-  border: '1px solid #e2e8f0',
+  border: '1px solid #e9ecf1',
 };
 
 const lessonCardStyle: React.CSSProperties = {
   padding: 12,
-  borderRadius: 14,
+  borderRadius: 12,
   background: '#f8fafc',
-  border: '1px solid #e2e8f0',
+  border: '1px solid #e9ecf1',
 };
 
 const cardTitleStyle: React.CSSProperties = {
@@ -2754,8 +2746,8 @@ const subtleTitleStyle: React.CSSProperties = {
 };
 
 const metricValueStyle: React.CSSProperties = {
-  fontSize: 36,
-  fontWeight: 800,
+  fontSize: 28,
+  fontWeight: 500,
   marginTop: 12,
   marginBottom: 6,
 };
@@ -2773,15 +2765,15 @@ const labelStyle: React.CSSProperties = {
 };
 
 const hintStyle: React.CSSProperties = {
-  color: '#64748b',
+  color: '#7d8799',
   lineHeight: 1.5,
 };
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
   padding: '12px 14px',
-  borderRadius: 14,
-  border: '1px solid #cbd5e1',
+  borderRadius: 8,
+  border: '1px solid #e9ecf1',
   background: '#ffffff',
 };
 
@@ -2792,10 +2784,10 @@ const textareaStyle: React.CSSProperties = {
 
 const excerptStyle: React.CSSProperties = {
   padding: 12,
-  borderRadius: 14,
+  borderRadius: 12,
   background: '#ffffff',
-  border: '1px solid #e2e8f0',
-  color: '#0f172a',
+  border: '1px solid #e9ecf1',
+  color: '#172031',
   lineHeight: 1.7,
   whiteSpace: 'pre-wrap',
   wordBreak: 'break-word',
@@ -2807,7 +2799,7 @@ const miniBadgeStyle: React.CSSProperties = {
   padding: '4px 8px',
   borderRadius: 999,
   background: '#f8fafc',
-  border: '1px solid #cbd5e1',
+  border: '1px solid #e9ecf1',
   color: '#475569',
   fontSize: 12,
   fontWeight: 600,
@@ -2815,32 +2807,32 @@ const miniBadgeStyle: React.CSSProperties = {
 
 const headerLinkStyle: React.CSSProperties = {
   padding: '10px 14px',
-  borderRadius: 14,
-  background: '#0f172a',
+  borderRadius: 12,
+  background: '#172031',
   color: '#ffffff',
 };
 
 const primaryButtonStyle: React.CSSProperties = {
   border: 'none',
-  borderRadius: 14,
+  borderRadius: 8,
   padding: '12px 16px',
-  background: '#0f172a',
+  background: '#4c6696',
   color: '#ffffff',
   cursor: 'pointer',
 };
 
 const secondaryButtonStyle: React.CSSProperties = {
-  border: '1px solid #cbd5e1',
-  borderRadius: 14,
+  border: '1px solid #e9ecf1',
+  borderRadius: 8,
   padding: '10px 14px',
   background: '#ffffff',
-  color: '#0f172a',
+  color: '#172031',
   cursor: 'pointer',
 };
 
 const ghostButtonStyle: React.CSSProperties = {
-  border: '1px solid #cbd5e1',
-  borderRadius: 12,
+  border: '1px solid #e9ecf1',
+  borderRadius: 8,
   padding: '8px 12px',
   background: '#ffffff',
   color: '#334155',
@@ -2857,8 +2849,8 @@ const ghostDangerButtonStyle: React.CSSProperties = {
 const jobCardButtonStyle: React.CSSProperties = {
   width: '100%',
   padding: 16,
-  borderRadius: 16,
-  border: '1px solid #e2e8f0',
+  borderRadius: 12,
+  border: '1px solid #e9ecf1',
   background: '#ffffff',
   textAlign: 'left',
   cursor: 'pointer',

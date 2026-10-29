@@ -14,6 +14,7 @@ import { TopicManuscript } from './manuscript';
 import { topicCopies, topicStorage } from './local-copies';
 import { topicCommandMatches } from './command-digest';
 import { SourceWriteBoundary, useSourceWriteGuard } from './source-write-guard';
+import { useWorkspaceExitGuard } from '../../../lib/use-workspace-exit-guard';
 import '../studio.css';
 import '../workspace.css';
 import './whiteboards.css';
@@ -52,6 +53,7 @@ function TopicWorkspace({ identity }: { identity: NonNullable<ReturnType<typeof 
   const [selectionEpoch, setSelectionEpoch] = React.useState(0);
   const leaveAllowed = React.useRef(canLeave && formCanLeave), currentHref = React.useRef(''); leaveAllowed.current = canLeave && formCanLeave;
   const canLeaveChange = React.useCallback((value: boolean) => setCanLeave(value), []);
+  useWorkspaceExitGuard(identity.id,!canLeave||!formCanLeave,{request:()=>setNotice('请先保存或下载完整输入与原请求，再继续前往所选页面。')});
   React.useEffect(() => {
     currentHref.current = window.location.href; setSelection(readSelection()); const back = () => {
       if (!leaveAllowed.current) { window.history.pushState(null, '', currentHref.current); setNotice('请先保存或下载完整改稿，再离开当前候选。'); return; }
@@ -61,12 +63,12 @@ function TopicWorkspace({ identity }: { identity: NonNullable<ReturnType<typeof 
   }, []);
   React.useEffect(() => {
     const controller = new AbortController();
-    void apiRequest<StudioOverview['children']>('/learning/students', { signal: controller.signal }).then(setProfiles)
+    void apiRequest<StudioOverview['children']>('/learning/students', { signal: controller.signal }).then(value=>{if(!controller.signal.aborted)setProfiles(value);})
       .catch(error => { if (!controller.signal.aborted) setError(error.message); }); return () => controller.abort();
   }, []);
   React.useEffect(() => {
     setOverview(null); const controller = new AbortController(), params = new URLSearchParams({ subject: scope.subject });
-    if (scope.studentId) params.set('studentId', scope.studentId);
+    if (scope.studentId) params.set('studentId', scope.studentId);else params.set('audience','independent');
     void apiRequest<StudioOverview>('/learning/studio/overview?' + params, { signal: controller.signal }).then(value => { if (!controller.signal.aborted) setOverview(value); })
       .catch(error => { if (!controller.signal.aborted) setError(error.message); }); return () => controller.abort();
   }, [scope.studentId, scope.subject]);
@@ -120,13 +122,13 @@ function TopicWorkspace({ identity }: { identity: NonNullable<ReturnType<typeof 
     choose(null); setScope(next); setError('');
   }
   const list = tab === 'drafts' ? drafts : published;
-  return <main className="tw-shell"><StudioNavigation active="whiteboards"/><div className="tw-body">
+  return <main className="tw-shell"><StudioNavigation active="whiteboards" context={scope.studentId?{studentId:scope.studentId,subject:scope.subject}:{audience:'self',subject:'math'}} contextState={selection&&!row&&!board?(error?'unavailable':'pending'):'ready'} onRequestNavigate={(!canLeave||!formCanLeave)?()=>setNotice('请先保存或下载完整输入与原请求，再继续前往所选页面。'):undefined}/><div className="tw-body">
     <header className="tw-page-header"><div><span className="tw-eyebrow">WHITEBOARD STUDIO</span><h1>从一个问题开始，讲清每一步。</h1><p>先生成教学稿，完整核对后再保存。AI 讲解需要内容核对。</p></div><Link href="/studio">返回学习工作台 →</Link></header>
     {(error || notice || models.error) && <div className="tw-notice" role="status">{error || notice || models.error}<button onClick={() => { setError(''); setNotice(''); }}>收起提示</button></div>}
     <div className="tw-workspace"><aside className="tw-composer"><header><span className="tw-eyebrow">NEW BOARD</span><h2>这次想弄懂什么？</h2></header>
       <label>学习对象<select aria-label="白板学习对象" value={scope.studentId} onChange={event => changeScope({ ...scope, studentId: event.target.value })}>
-        {identity.role !== 'student' && <option value="">我自己 · 成人主题</option>}{profiles.map(profile => <option key={profile.id} value={profile.id}>{profile.nickname} · {profile.grade}年级</option>)}</select></label>
-      {scope.studentId && <label>学科<select value={scope.subject} onChange={event => changeScope({ ...scope, subject: event.target.value as StudioSubject })}><option value="math">数学</option><option value="chinese">语文</option><option value="english">英语</option></select></label>}
+        {identity.role !== 'student' && <option value="">我自己 · 成人主题</option>}{scope.studentId&&!profiles.some(profile=>profile.id===scope.studentId)&&<option value={scope.studentId}>原白板的授权学习档案</option>}{profiles.map(profile => <option key={profile.id} value={profile.id}>{profile.nickname} · {profile.grade}年级</option>)}</select></label>
+      {scope.studentId && <label>学科<select value={scope.subject} onChange={event => changeScope({ ...scope, subject: event.target.value as StudioSubject })}><option value="math">数学</option><option value="chinese">语文</option><option value="english">英语</option><option value="chemistry">化学</option></select></label>}
       <TopicComposer key={scope.studentId + ':' + scope.subject} ownerId={identity.id} scope={scope} overview={overview} models={models} onCanLeaveChange={formLeaveChange}
         onCreated={value => { setFormCanLeave(true); choose({ kind: 'draft', id: value.id }, true); setRefresh(value => value + 1); }}/>
     </aside><section className="tw-main" aria-label="白板工作区">

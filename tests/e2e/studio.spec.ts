@@ -93,7 +93,7 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await expect(page.getByText('WHITEBOARD SESSION', { exact: true })).toBeVisible();
   if (!process.env.CI) await page.screenshot({ path: browserEvidence('studio') + '/studio-whiteboard-preview.png', fullPage: true });
   await page.getByRole('button', { name: '保存到学习工作台' }).click();
-  await expect(page.getByRole('dialog', { name: '白板视频' })).toBeVisible();
+  await expect(page.getByRole('main', { name: '白板视频' })).toBeVisible();
   if (!process.env.CI) await page.screenshot({ path: browserEvidence('studio') + '/studio-whiteboard-player.png', fullPage: true });
   const videoDownload = page.waitForEvent('download', { timeout: 120_000 });
   await page.getByRole('button', { name: '导出视频' }).click();

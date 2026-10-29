@@ -1,0 +1,175 @@
+{
+  "numTotalTests": 29,
+  "numPassedTests": 29,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "classroom.integration.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "classroom teaching sessions and persistent isolation provides 60 unique micro-lessons and five unit checks with complete private answer keys",
+          "status": "passed",
+          "durationMs": 243.65680000000066
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation keeps first answers, hint flags and skip receipts immutable without creating mastery evidence",
+          "status": "passed",
+          "durationMs": 155.92079999999987
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation saves hints before submission and preserves assistance after refresh and restart",
+          "status": "passed",
+          "durationMs": 1297.9956000000002
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation grants sequential frozen hints once and keeps dont-know separate from skip and wrong",
+          "status": "passed",
+          "durationMs": 3480.147799999999
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation retains identical teaching progress while old practice and legacy hints remain frozen",
+          "status": "passed",
+          "durationMs": 1973.9290999999994
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation keeps old unit questions and scoring readable after a new check is published",
+          "status": "passed",
+          "durationMs": 1789.2497000000003
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation synthesizes one exact subtitle unit, rejects invalid indices and restores the sentence cursor",
+          "status": "passed",
+          "durationMs": 1757.7944000000025
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation persists supplemental board with its original page and keeps it private after restart",
+          "status": "passed",
+          "durationMs": 1499.6589999999997
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation rejects invalid or stale progress, then restores frozen content, answers and project text after restart",
+          "status": "passed",
+          "durationMs": 1478.1457999999984
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation restores edited calendar confirmation, time and completion after a SQLite restart",
+          "status": "passed",
+          "durationMs": 3100.185999999998
+        }
+      ]
+    },
+    {
+      "file": "course-project.integration.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "versioned course projects, artifacts, review and persistence catalog reads do not create facts; five original projects freeze three distinct phases and four-level rubrics",
+          "status": "passed",
+          "durationMs": 216.10289999999986
+        },
+        {
+          "title": "versioned course projects, artifacts, review and persistence saves unfinished artifacts and self-reflections, prevents stale overwrites and replays lost acknowledgments",
+          "status": "passed",
+          "durationMs": 181.1783000000014
+        },
+        {
+          "title": "versioned course projects, artifacts, review and persistence rejects incomplete submissions and unsafe or duplicate evidence without writing facts",
+          "status": "passed",
+          "durationMs": 167.7331000000013
+        },
+        {
+          "title": "versioned course projects, artifacts, review and persistence freezes each submission, requires revision notes and survives a storage restart",
+          "status": "passed",
+          "durationMs": 1713.8521999999994
+        },
+        {
+          "title": "versioned course projects, artifacts, review and persistence keeps changed project definitions archived and opens a new version only explicitly",
+          "status": "passed",
+          "durationMs": 117.56339999999909
+        },
+        {
+          "title": "versioned course projects, artifacts, review and persistence imports only owned same-course legacy drafts as references and preserves the original",
+          "status": "passed",
+          "durationMs": 200.48649999999907
+        },
+        {
+          "title": "versioned course projects, artifacts, review and persistence keeps authorized human reviews bound to a learner submission and denies changes after revocation",
+          "status": "passed",
+          "durationMs": 259.4469000000008
+        },
+        {
+          "title": "versioned course projects, artifacts, review and persistence labels AI advice as draft-specific suggestions, retries once and honors cancellation without a review",
+          "status": "passed",
+          "durationMs": 104.35850000000028
+        },
+        {
+          "title": "versioned course projects, artifacts, review and persistence reads only the original actor receipt, distinguishes later revisions and never invents metadata for legacy commands",
+          "status": "passed",
+          "durationMs": 152.40499999999884
+        },
+        {
+          "title": "versioned course projects, artifacts, review and persistence includes project artifacts in portable privacy records and removes only the selected owner",
+          "status": "passed",
+          "durationMs": 65.40819999999803
+        }
+      ]
+    },
+    {
+      "file": "source-course-project.integration.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "source-course projects, frozen objectives and original permissions reads a published definition without creating a project or exposing authoring and answer payloads",
+          "status": "passed",
+          "durationMs": 108.71450000000004
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions creates once on explicit opening, binds a recoverable original save and survives actual storage restart",
+          "status": "passed",
+          "durationMs": 1296.7493999999988
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions keeps frozen project objectives while a new definition requires an explicit version choice",
+          "status": "passed",
+          "durationMs": 110.1856000000007
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions blocks creation for an unconfirmed or archived source while retaining readable frozen project history",
+          "status": "passed",
+          "durationMs": 138.45379999999932
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions lets a real learning-code owner submit and an assigned teacher review only that frozen submission",
+          "status": "passed",
+          "durationMs": 244.5713999999989
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions refuses late narration when a shared source becomes private, without changing the frozen project",
+          "status": "passed",
+          "durationMs": 181.00470000000132
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions reads unstarted source and adult activity states without creating learning or project facts",
+          "status": "passed",
+          "durationMs": 83.80370000000039
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions restores actual source reading, assisted first answers and private project metadata without leaking them to another account",
+          "status": "passed",
+          "durationMs": 2123.8011000000006
+        },
+        {
+          "title": "source-course projects, frozen objectives and original permissions cold restores the actual SQLite source-project binding, then applies the newer account deletion to the old backup",
+          "status": "passed",
+          "durationMs": 7113.019100000001
+        }
+      ]
+    }
+  ]
+}

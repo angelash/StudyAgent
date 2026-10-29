@@ -1,0 +1,101 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T20:23:57.887Z",
+    "duration": 62231.216,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "workspace focus: a real classroom uses its authorized chemistry scope and restores the ordinary sidebar preference",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4627,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: adult whiteboard exposes one navigation and restores the original workspace and focus",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4128,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: paper exit preserves the full draft and imports it without writing a first answer",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4105,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: admin cookie identity exposes nine modules and a teacher is gated before private data reads",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7003,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: project navigation protects the complete local artifact before an explicit export and leave",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4318,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: all nine admin modules render in one shell and actual content fits phone, tablet and desktop",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 6570,
+          "error": "Error: module content width 320"
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: without Navigation API the persistent host keeps full unsaved material text during browser back",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8343,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: a classroom with disabled storage requires the full choice download and never submits it on exit",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3505,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "sanitization": "Titles, statuses, durations and bounded first-line errors only. Local traces, account data, cookies, environment, storage and response bodies are excluded."
+}

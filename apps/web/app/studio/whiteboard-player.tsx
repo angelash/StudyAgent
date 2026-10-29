@@ -1,8 +1,10 @@
 'use client';
 import * as React from 'react';
+import { createPortal } from 'react-dom';
 import type { StudioSpeechCapabilities, WhiteboardQuestionPosition } from '@study-agent/contracts';
 import { useSessionUser } from '../../lib/session-user';
 import { WhiteboardSession } from './whiteboard-session';
+import { ActivityWorkspaceNavigation } from '../../components/activity-workspace-navigation';
 import { isTopicWhiteboard, isQuestionWhiteboard, readWhiteboardOriginal, type PlayableWhiteboard } from './whiteboard-original';
 export { drawWhiteboardScene, WhiteboardScenePreview } from './whiteboard-canvas';
 
@@ -12,11 +14,16 @@ export function WhiteboardPlayer(props: WhiteboardPlayerProps) {
   const identity = useSessionUser(), board = props.whiteboard;
   const owner = React.useRef(identity?.id);
   const trigger = React.useRef<HTMLElement | null>(null);
+  const origin = React.useRef<HTMLSpanElement>(null);
+  const [mounted,setMounted]=React.useState(false);
   const [verified, setVerified] = React.useState<PlayableWhiteboard | null>(null), [error, setError] = React.useState('');
   const preview = !isTopicWhiteboard(board) && !isQuestionWhiteboard(board) && board.id.endsWith('_preview');
   React.useLayoutEffect(() => {
     trigger.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    return () => { if (trigger.current?.isConnected) trigger.current.focus(); };
+    const page=origin.current?.closest('main'),inert=page?.inert,hidden=page?.getAttribute('aria-hidden');
+    if(page){page.inert=true;page.setAttribute('aria-hidden','true');}
+    setMounted(true);
+    return () => { if(page){page.inert=inert??false;if(hidden===null||hidden===undefined)page.removeAttribute('aria-hidden');else page.setAttribute('aria-hidden',hidden);}if (trigger.current?.isConnected) trigger.current.focus(); };
   }, []);
   React.useEffect(() => {
     setVerified(null); setError('');
@@ -30,8 +37,10 @@ export function WhiteboardPlayer(props: WhiteboardPlayerProps) {
     return () => controller.abort();
   }, [identity?.id, board.id, board.fingerprint, preview]);
   if (!identity || identity.id !== owner.current) return null;
-  if (!verified) return <div className="sa-whiteboard-modal" role="dialog" aria-modal="true" aria-label="白板视频">
-    <p role="status">{error || '正在核对原白板与当前访问权限…'}</p><button autoFocus onClick={props.onClose}>关闭白板</button></div>;
-  return <WhiteboardSession key={identity.id + ':' + verified.id + ':' + verified.fingerprint} {...props}
-    whiteboard={verified} ownerId={identity.id} preview={preview} />;
+  const content=!verified?<div className="sa-whiteboard-modal ws-whiteboard-focus" role="main" aria-label="白板视频">
+    <ActivityWorkspaceNavigation active="whiteboards" activityId={'whiteboard:'+board.id} pending={!error}/>
+    <p role="status">{error || '正在核对原白板与当前访问权限…'}</p><button autoFocus onClick={props.onClose}>关闭白板</button></div>
+    :<WhiteboardSession key={identity.id + ':' + verified.id + ':' + verified.fingerprint} {...props}
+    whiteboard={verified} ownerId={identity.id} preview={preview} workspaceFocus />;
+  return <><span ref={origin} hidden/>{mounted&&createPortal(content,document.body)}</>;
 }

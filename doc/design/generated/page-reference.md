@@ -6,7 +6,7 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/admin/accounts/page.tsx](../../../apps/web/app/admin/accounts/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`../../../lib/api`、`../../../components/study-nav`、`../../student/assessment/studio.css`、`../workbench.css`
+- 直接引用：`react`、`next/link`、`../../../lib/api`、`../../student/assessment/studio.css`、`../workbench.css`
 
 ## /admin/ai-tools
 
@@ -18,43 +18,43 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/admin/analytics/page.tsx](../../../apps/web/app/admin/analytics/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`next/navigation`、`../../../lib/api`、`@study-agent/contracts`
+- 直接引用：`react`、`next/link`、`../../../lib/api`、`../../../lib/session-user`、`@study-agent/contracts`
 
 ## /admin/content
 
 类型：页面。实现：[apps/web/app/admin/content/page.tsx](../../../apps/web/app/admin/content/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../components/formula-input`、`../../../components/question-renderer`、`../../../lib/api`
+- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../components/formula-input`、`../../../components/question-renderer`、`../../../lib/api`、`../../../lib/session-user`
 
 ## /admin/curriculum
 
 类型：页面。实现：[apps/web/app/admin/curriculum/page.tsx](../../../apps/web/app/admin/curriculum/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../components/study-nav`、`./package-panel`、`./teaching-editor`、`./component-binding-editor`、`./material-coverage`、`./mapping-worklist`、`../../student/assessment/studio.css`、`../workbench.css`、`./curriculum.css`
+- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`./package-panel`、`./teaching-editor`、`./component-binding-editor`、`./material-coverage`、`./mapping-worklist`、`../../student/assessment/studio.css`、`../workbench.css`、`./curriculum.css`
 
 ## /admin/gesp
 
 类型：页面。实现：[apps/web/app/admin/gesp/page.tsx](../../../apps/web/app/admin/gesp/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../lib/session-user`、`../../../components/study-nav`、`../../student/assessment/studio.css`、`../workbench.css`、`./gesp.css`
+- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../lib/session-user`、`../../student/assessment/studio.css`、`../workbench.css`、`./gesp.css`
 
 ## /admin/imports
 
 类型：页面。实现：[apps/web/app/admin/imports/page.tsx](../../../apps/web/app/admin/imports/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../components/study-nav`、`../../student/assessment/studio.css`、`../workbench.css`、`./imports.css`
+- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../student/assessment/studio.css`、`../workbench.css`、`./imports.css`
 
 ## /admin/measurement
 
 类型：页面。实现：[apps/web/app/admin/measurement/page.tsx](../../../apps/web/app/admin/measurement/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../components/study-nav`、`../../../components/rich-math`、`../../../components/question-renderer`、`../../student/assessment/studio.css`、`../workbench.css`、`./measurement.css`
+- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../components/rich-math`、`../../../components/question-renderer`、`../../student/assessment/studio.css`、`../workbench.css`、`./measurement.css`
 
 ## /admin/reviews
 
 类型：页面。实现：[apps/web/app/admin/reviews/page.tsx](../../../apps/web/app/admin/reviews/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../lib/learning`、`../../../components/question-renderer`、`../../../components/answer-evidence-view`、`../../../components/study-nav`、`../../student/assessment/studio.css`、`../workbench.css`、`./reviews.css`
+- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../lib/learning`、`../../../components/question-renderer`、`../../../components/answer-evidence-view`、`../../student/assessment/studio.css`、`../workbench.css`、`./reviews.css`
 
 ## /chemistry
 

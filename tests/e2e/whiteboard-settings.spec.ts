@@ -18,7 +18,7 @@ async function fixture(page: Page) {
   await page.route('**/api/learning/studio/overview?*',async route=>{const response=await route.fetch(),payload=await response.json();payload.data.narrationAvailable=true;payload.data.speech={available:true,provider:'minimax',defaultVoice:manifest.voices[0].voiceId,voices:manifest.voices.map((voice:any)=>({id:voice.voiceId,label:voice.providerName,language:voice.language,classroomPreset:voice.preset}))};await route.fulfill({response,json:payload});});
   await page.addInitScript(()=>{const NativeAudio=window.Audio;(window as any).settingsAudio=[];(window as any).Audio=function(src?:string){const audio=new NativeAudio(src);(window as any).settingsAudio.push(audio);return audio;};});
   await page.goto('/parent/login');await page.getByLabel('登录账号').fill(principal);await page.getByLabel('密码').fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →'}).click();await expect(page).toHaveURL(/\/studio(?:\?|$)/);
-  const href='/studio?student='+child+'&subject=math&whiteboard='+board.id;await page.goto(href);const player=page.getByRole('dialog',{name:'白板视频',exact:true});await expect(player).toHaveAttribute('data-original-font-status','ready');
+  const href='/studio?student='+child+'&subject=math&whiteboard='+board.id;await page.goto(href);const player=page.getByRole('main',{name:'白板视频',exact:true});await expect(player).toHaveAttribute('data-original-font-status','ready');
   const current=player.locator('.wb-current-sentence');await expect(current).toContainText('先统一单位');return {player,current,href,board};
 }
 
@@ -78,7 +78,8 @@ test('reading panel: original380 width, pointer and keyboard bounds, viewport ca
   expect((await f.player.locator('.hk-reading-panel').boundingBox())!.width).toBe(380);
   const bounds=(await separator.boundingBox())!;await page.mouse.move(bounds.x+bounds.width/2,450);await page.mouse.down();await page.mouse.move(700,450,{steps:6});await page.mouse.up();
   await expect(separator).toHaveAttribute('aria-valuenow','560');await expect(f.current).toHaveAttribute('data-unit-id',unit!);
-  await page.setViewportSize({width:1200,height:900});await expect(separator).toHaveAttribute('aria-valuenow','504');expect((await f.player.locator('.hk-reading-panel').boundingBox())!.width).toBe(504);
+  const workspaceCap=Math.round((1200-60)*.42);
+  await page.setViewportSize({width:1200,height:900});await expect(separator).toHaveAttribute('aria-valuenow',String(workspaceCap));expect((await f.player.locator('.hk-reading-panel').boundingBox())!.width).toBe(workspaceCap);
   await page.setViewportSize({width:1440,height:900});await expect(separator).toHaveAttribute('aria-valuenow','560');
   await separator.focus();await page.keyboard.press('Home');await expect(separator).toHaveAttribute('aria-valuenow','300');await page.keyboard.press('End');await expect(separator).toHaveAttribute('aria-valuenow','560');await page.keyboard.press('ArrowRight');await expect(separator).toHaveAttribute('aria-valuenow','550');
   const toggle=f.player.locator('[data-panel-toggle]');await toggle.click();await expect(toggle).toHaveAttribute('aria-expanded','false');await expect(f.player.getByLabel('完整讲稿与要点')).toBeHidden();

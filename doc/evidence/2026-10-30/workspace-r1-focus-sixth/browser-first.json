@@ -1,0 +1,57 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T19:29:58.736Z",
+    "duration": 37125.768000000004,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "workspace focus: a real classroom uses its authorized chemistry scope and restores the ordinary sidebar preference",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5508,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: project navigation protects the complete local artifact before an explicit export and leave",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3770,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: without Navigation API the persistent host keeps full unsaved material text during browser back",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7192,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: a classroom with disabled storage requires the full choice download and never submits it on exit",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3060,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "sanitization": "Titles, statuses, durations and bounded first-line errors only. Local traces, account data, cookies, environment, storage and response bodies are excluded."
+}

@@ -1,0 +1,68 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T20:33:48.253Z",
+    "duration": 41930.032,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "teaching shell: actual original chrome, font switch and return fit 1280",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4013,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "whiteboard questions: the real composer, model selection and return controls remain usable at 1280",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4051,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "question figures: full input, storage failure, download and import remain usable at 1280",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5165,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reading panel: original380 width, pointer and keyboard bounds, viewport cap and collapsed preference restore without teaching writes",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4956,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: all nine admin modules render in one shell and actual content fits phone, tablet and desktop",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7503,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "sanitization": "Titles, statuses, durations and bounded first-line errors only. Local traces, account data, cookies, environment, storage and response bodies are excluded."
+}

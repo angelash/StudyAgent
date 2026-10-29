@@ -15,6 +15,7 @@ import { ProjectTeachingNavigator } from './project-teaching';
 import { useProjectRecovery,type ProjectLocalCopy } from './use-project-recovery';
 import { sameProjectValue,editorInProjectCommand,type ProjectOriginalCommand,type ProjectOperationKind } from './project-recovery';
 import { readProjectLocation,writeProjectLocation } from './project-location';
+import { ActivityWorkspaceNavigation } from '../../../components/activity-workspace-navigation';
 import '../workspace.css';
 import './projects.css';
 
@@ -69,6 +70,7 @@ function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof use
   const abort = React.useRef<AbortController | null>(null), mounted = React.useRef(true),loadGeneration=React.useRef(0);
   const recovery=useProjectRecovery(identity.id,row,stageId,editor);
   const displayedQuery = React.useRef('');
+  const navigationAllowed=React.useRef(false),leaveFocus=React.useRef<HTMLElement|null>(null);
   const baseline = row && stageId ? savedEditor(row, stageId) : blank();
   const dirty = Boolean(row?.permissions.edit && !sameProjectValue(editor,baseline));
   const dirtyRef = React.useRef(dirty); dirtyRef.current = dirty;
@@ -127,7 +129,8 @@ function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof use
     window.addEventListener('popstate', pop);
     return () => { mounted.current = false;loadGeneration.current++;controller.abort(); abort.current?.abort(); window.removeEventListener('popstate', pop); };
   }, [identity]);
-  React.useEffect(() => { const warn = (event: BeforeUnloadEvent) => { if (dirty||recovery.command&&recovery.storageNotice) { event.preventDefault(); event.returnValue = ''; } }; window.addEventListener('beforeunload', warn); return () => window.removeEventListener('beforeunload', warn); }, [dirty,recovery.command,recovery.storageNotice]);
+  React.useEffect(()=>{navigationAllowed.current=false;},[editor]);
+  React.useEffect(() => { const warn = (event: BeforeUnloadEvent) => { if (!navigationAllowed.current&&(dirty||recovery.command&&recovery.storageNotice)) { event.preventDefault(); event.returnValue = ''; } }; window.addEventListener('beforeunload', warn); return () => window.removeEventListener('beforeunload', warn); }, [dirty,recovery.command,recovery.storageNotice]);
   React.useEffect(()=>{if(row&&stageId&&teachingStep&&!writeProjectLocation(identity.id,row,stageId,teachingStep.id,guided?'guided':'complete'))setNotice('本机阅读位置无法暂存，地址栏仍保留当前步骤。');},[identity.id,row?.id,row?.definition.fingerprint,stageId,query]);
   React.useEffect(()=>{if(error){const regions=document.querySelectorAll('.pj-error');regions.item(regions.length-1)?.scrollIntoView({block:'center'});}},[error]);
 
@@ -201,9 +204,11 @@ function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof use
   function evidence(value: ProjectArtifact['evidence']) { setEditor(current => ({ ...current, artifact: { ...current.artifact, evidence: value } })); }
   function openHistory(value: ProjectSubmission) { setHistory(value); setReviewRatings([]); setReviewComment(''); setReviewDecision('needs_revision'); }
 
-  if (loading) return <main className="pj-gate" role="status">正在恢复课程项目…</main>;
+  const navigation=<ActivityWorkspaceNavigation activityId={row?.id??sourceCourseId??studioCourseId??'project-catalog'} context={loading?undefined:row?.navigationContext??catalog?.navigationContext} pending={loading} focus={Boolean(row&&guided)} onRequestNavigate={(_href,proceed)=>{leaveFocus.current=window.matchMedia('(max-width:1000px)').matches?document.querySelector<HTMLElement>('.ws-reference-trigger'):document.activeElement as HTMLElement|null;guarded(()=>{navigationAllowed.current=true;proceed();});}}/>;
+  if (loading) return <>{navigation}<main className="pj-gate ws-activity-shell" role="status">正在恢复课程项目…</main></>;
   if (!identity) return <main className="pj-gate"><h1>把理解变成自己的作品。</h1><p>登录后保存阶段草稿与提交记录。</p><Link href="/parent/login">登录学习工作台 →</Link></main>;
-  return <main className="pj-shell" data-teaching={guided} data-teaching-step={guided?teachingStep?.kind:undefined}>
+  return <main className="pj-shell ws-activity-shell" data-teaching={guided} data-teaching-step={guided?teachingStep?.kind:undefined}>
+    {navigation}
     <header className="pj-top"><a href={backHref} onClick={event => { event.preventDefault(); guarded(() => window.location.assign(backHref)); }}>‹ 返回课程</a><span>LEARNING STUDIO <i>/</i> PROJECT</span><button disabled={!row || Boolean(busy)} onClick={exportLocal}>导出项目</button></header>
     <div className="pj-layout"><aside className="pj-sidebar"><small>COURSE PROJECT</small><h1>{definition?.title ?? '课程项目'}</h1><p>{definition?.brief}</p>
       <div className="pj-route-label">分阶段完成作品 <span>{new Set(row?.submissions.map(item => item.stageId)).size}/{definition?.stages.length ?? 0}</span></div>
@@ -263,7 +268,7 @@ function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof use
     </aside></div>
     {localCopy&&row&&<WorkspaceDialog onClose={()=>setLocalCopy(null)}><section className="pj-dialog" role="dialog" aria-modal="true" aria-label="本机副本预览"><h2>核对这份本机副本</h2>{localCopy.draft&&<ProjectEditorPreview value={localCopy.draft.editor} row={row} stageId={stageId}/>}<p>{localCopy.command?'包含原操作，恢复后先核对回执。':'恢复到当前页面后仍需明确保存到服务器。'}</p><footer><button onClick={()=>setLocalCopy(null)}>保留当前稿</button><button onClick={()=>{try{download({current:editor,selected:localCopy},'项目本机副本对照.json');recovery.remember();setEditor(recovery.adopt(localCopy,row,stageId));setLocalCopy(null);setNotice('已恢复所选本机副本；原副本仍保留。');}catch(caught){setError((caught as Error).message);setLocalCopy(null);}}}>下载副本并恢复这份草稿</button></footer></section></WorkspaceDialog>}
     {incomplete&&<WorkspaceDialog onClose={stayIncomplete} busy={Boolean(busy)}><section className="pj-dialog" role="dialog" aria-modal="true" aria-label="当前步骤尚未完成"><h2>这一步还没有填写</h2><p>可以留在这里继续尝试，也可以先看看后面的步骤。继续浏览不会提交答案或标记完成。</p><footer><button onClick={stayIncomplete}>留在这一步</button><button disabled={Boolean(busy)} onClick={()=>void moveStep(incomplete,true)}>继续浏览</button></footer></section></WorkspaceDialog>}
-    {leave && <WorkspaceDialog onClose={() => setLeave(null)} busy={Boolean(busy)}><section className="pj-dialog" role="dialog" aria-modal="true" aria-label="保留项目修改"><h2>当前阶段还有未保存的修改</h2><p>可以先保存，也可以导出本地副本后离开。</p><footer><button onClick={() => setLeave(null)}>继续编辑</button><button disabled={Boolean(busy)} onClick={() => { exportLocal(); const action=leave;setLeave(null);action(); }}>导出副本并离开</button><button className="pj-primary" disabled={Boolean(busy)} onClick={() => void write('save',{stageId,...editor},'PATCH').then(result => {if(result){const action=leave;setLeave(null);action();}})}>保存并继续</button></footer></section></WorkspaceDialog>}
+    {leave && <WorkspaceDialog onClose={() => setLeave(null)} busy={Boolean(busy)} returnFocus={leaveFocus.current}><section className="pj-dialog" role="dialog" aria-modal="true" aria-label="保留项目修改"><h2>当前阶段还有未保存的修改</h2><p>可以先保存，也可以导出本地副本后离开。</p><footer><button onClick={() => setLeave(null)}>继续编辑</button><button disabled={Boolean(busy)} onClick={() => { exportLocal(); const action=leave;setLeave(null);action(); }}>导出副本并离开</button><button className="pj-primary" disabled={Boolean(busy)} onClick={() => void write('save',{stageId,...editor},'PATCH').then(result => {if(result){const action=leave;setLeave(null);action();}})}>保存并继续</button></footer></section></WorkspaceDialog>}
     {history && row && <WorkspaceDialog onClose={() => setHistory(null)} busy={Boolean(busy)}><section className="pj-dialog pj-history-dialog" role="dialog" aria-modal="true" aria-label="项目提交版本"><header><div><small>IMMUTABLE SUBMISSION</small><h2>{row.definition.stages.find(stage=>stage.id===history.stageId)?.title} · v{history.number}</h2></div><button onClick={()=>setHistory(null)} aria-label="关闭提交版本">×</button></header><p>{when(history.at)} · {history.revisionNote||'首次提交'}</p>
       {error&&<div className="pj-error" role="alert">{error}</div>}
       {Object.entries(history.artifact.values).map(([key,value])=><section key={key}><h3>{row.definition.stages.find(stage=>stage.id===history.stageId)?.fields.find(field=>field.id===key)?.label??key}</h3><p className="pj-pre">{value}</p></section>)}

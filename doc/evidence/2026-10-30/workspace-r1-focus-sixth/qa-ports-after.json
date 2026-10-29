@@ -1,0 +1,53 @@
+{
+  "ports": [
+    {
+      "port": 3198,
+      "reachable": false
+    },
+    {
+      "port": 4198,
+      "reachable": false
+    },
+    {
+      "port": 3199,
+      "reachable": false
+    },
+    {
+      "port": 4199,
+      "reachable": false
+    },
+    {
+      "port": 3200,
+      "reachable": false
+    },
+    {
+      "port": 4200,
+      "reachable": false
+    },
+    {
+      "port": 3201,
+      "reachable": false
+    },
+    {
+      "port": 4201,
+      "reachable": false
+    },
+    {
+      "port": 3202,
+      "reachable": false
+    },
+    {
+      "port": 4202,
+      "reachable": false
+    },
+    {
+      "port": 3203,
+      "reachable": false
+    },
+    {
+      "port": 4203,
+      "reachable": false
+    }
+  ],
+  "postgres": "Pre-existing owned QA cluster kept running; not stopped by this batch."
+}

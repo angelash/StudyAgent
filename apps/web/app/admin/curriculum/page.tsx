@@ -4,7 +4,6 @@ import * as React from 'react';
 import Link from 'next/link';
 import type { CurriculumBook, CurriculumChapter, CurriculumLesson, KnowledgeAtom, KnowledgeMaterialCoverage, MeasurementItem, Question, QuestionAnswerSchema, Subject, TextbookAtomMapping } from '@study-agent/contracts';
 import { apiBaseUrl, apiRequest, getAuthToken } from '../../../lib/api';
-import { StudyNav } from '../../../components/study-nav';
 import { CurriculumPackagePanel } from './package-panel';
 import { TeachingEditor } from './teaching-editor';
 import { ComponentBindingEditor } from './component-binding-editor';
@@ -72,9 +71,9 @@ export default function CurriculumPage() {
   function newAtom() { setAtom({ id: `authored:${subject}:${crypto.randomUUID()}`, subject, grade, term: 'both', name: '', strand: '', objective: '', successCriterion: '',
     prerequisiteIds: [], curriculumVersion: 'authored-v1', status: 'draft', version: 1 }); setItems([]); setMapping(null); setRevisions(null); }
 
-  return <main className="learning-studio"><StudyNav /><div className="admin-workbench">
-    <nav className="admin-links" aria-label="教研导航"><Link href="/admin/curriculum" aria-current="page">知识与覆盖</Link><Link href="/admin/measurement">测量素材</Link><Link href="/admin/reviews">评分复核</Link><Link href="/admin/imports">资料导入</Link><Link href="/admin/content">内容生产</Link><Link href="/library">题卷审核</Link><Link href="/admin/analytics">运营观察</Link></nav>
-    <span className="studio-eyebrow">CURRICULUM / EVIDENCE</span><h1>每一个点，都能追到依据。</h1><p>把知识定义、题目量规与教材进度分别审核。缺题、缺维度和缺映射会保留在覆盖视图中。</p>
+  return <main className="learning-studio"><div className="admin-workbench">
+
+    <span className="studio-eyebrow">CURRICULUM / EVIDENCE</span><h1>课程与覆盖</h1><p>把知识定义、题目量规与教材进度分别审核。缺题、缺维度和缺映射会保留在覆盖视图中。</p>
     <p><Link href="/admin/gesp">GESP C++ 独立教研轨道：认证等级、知识先修与历年原卷 →</Link></p>
     {error && <p className="studio-error" role="alert">{error}</p>}{notice && <p role="status">{notice}</p>}
     {!role && <p>正在核对教研权限… <Link href="/parent/login">登录</Link></p>}

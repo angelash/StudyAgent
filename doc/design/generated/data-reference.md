@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`2cb124e840da01738db66090a5963371abe2c812`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`30b2b510991a04e136af82a98c587b5630552b6e`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -113,6 +113,10 @@
 - `studioScheduleEvents` → `StudioScheduleEvent & { createdBy?: string; requestHash?: string }`；[apps/api/src/infrastructure/in-memory-store.service.ts:476](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L476)。
 
 ## 共享数据契约
+
+### packages/contracts/src/activity-navigation.ts
+
+- `ActivityNavigationContext`：[packages/contracts/src/activity-navigation.ts:4](../../../packages/contracts/src/activity-navigation.ts#L4)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 
 ### packages/contracts/src/ai-models.ts
 
@@ -283,23 +287,23 @@
 
 ### packages/contracts/src/classroom.ts
 
-- `ClassroomDiagram`：[packages/contracts/src/classroom.ts:7](../../../packages/contracts/src/classroom.ts#L7)；字段：`kind`、`title`、`labels`、`values?`、`captions?`。
-- `ClassroomBlock`：[packages/contracts/src/classroom.ts:8](../../../packages/contracts/src/classroom.ts#L8)；字段：`id`、`kind`、`text`、`atSentence?`、`items?`、`image?`、`diagram?`、`experiment?`、`code?`、`table?`。
-- `ClassroomStep`：[packages/contracts/src/classroom.ts:11](../../../packages/contracts/src/classroom.ts#L11)；字段：`id`、`title`、`narration`、`blocks`、`phase`、`durationMs`。
-- `ClassroomSelectionMode`：[packages/contracts/src/classroom.ts:13](../../../packages/contracts/src/classroom.ts#L13)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `ClassroomAnswerDisposition`：[packages/contracts/src/classroom.ts:14](../../../packages/contracts/src/classroom.ts#L14)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `ClassroomQuestion`：[packages/contracts/src/classroom.ts:15](../../../packages/contracts/src/classroom.ts#L15)；字段：`id`、`prompt`、`options`、`hint`、`image?`、`targetLessonIds?`、`selectionMode?`、`hintCount?`、`table?`、`diagram?`、`topic?`、`purpose?`。
-- `ClassroomLesson`：[packages/contracts/src/classroom.ts:21](../../../packages/contracts/src/classroom.ts#L21)；字段：`id`、`title`、`objective`、`lectureId`、`steps`、`generatedNotice?`、`nextLessonId?`、`sourceReferences?`、`questions`、`verificationHref?`、`practiceVersion?`、`assessment?`。
-- `ClassroomLecture`：[packages/contracts/src/classroom.ts:26](../../../packages/contracts/src/classroom.ts#L26)；字段：`id`、`title`、`description`、`lessons`。
-- `ClassroomUnit`：[packages/contracts/src/classroom.ts:27](../../../packages/contracts/src/classroom.ts#L27)；字段：`id`、`title`、`objective`、`lectures`、`project`。
-- `ClassroomCourse`：[packages/contracts/src/classroom.ts:29](../../../packages/contracts/src/classroom.ts#L29)；字段：`id`、`title`、`description`、`level`、`version`、`provenance`、`units`、`references`。
-- `ClassroomAnswerReceipt`：[packages/contracts/src/classroom.ts:31](../../../packages/contracts/src/classroom.ts#L31)；字段：`questionId`、`selectedIndex`、`correct`、`skipped`、`sourceReferences?`、`selectedIndices?`、`correctIndices?`、`optionExplanations?`、`explanation`、`hintUsed`、`at`、`disposition?`、`hintLevel?`、`answerExposure?`。
-- `ClassroomHintReceipt`：[packages/contracts/src/classroom.ts:35](../../../packages/contracts/src/classroom.ts#L35)；字段：`questionId`、`level`、`text`、`at`。
-- `ClassroomChatMessage`：[packages/contracts/src/classroom.ts:36](../../../packages/contracts/src/classroom.ts#L36)；字段：`id`、`role`、`content`、`at`、`modelName?`、`speech?`、`board?`。
-- `ClassroomSession`：[packages/contracts/src/classroom.ts:39](../../../packages/contracts/src/classroom.ts#L39)；字段：`id`、`ownerUserId`、`studentId`、`courseId`、`studioCourseId?`、`lessonId`、`contentFingerprint`、`lesson`、`sourceCourseId?`、`authoringAnswerExposure?`、`sourceCheckId?`、`sourceCheckFingerprint?`、`sourceCheckTargets?`、`presentation?`、`presentationRevisions?`、`cursor`、`revealed`、`sentenceCursor?`、`status`、`revision`、`messages`、`answers`、`projectDraft`、`hintedQuestionIds?`、`hintReceipts?`、`createdAt`、`updatedAt`。
-- `ClassroomSessionView`：[packages/contracts/src/classroom.ts:50](../../../packages/contracts/src/classroom.ts#L50)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `ClassroomCatalog`：[packages/contracts/src/classroom.ts:53](../../../packages/contracts/src/classroom.ts#L53)；字段：`course`、`progress`、`lessonActivities?`、`projectActivities?`、`readingProgress?`、`archivedSessions?`。
-- `ClassroomPracticeSummary`：[packages/contracts/src/classroom.ts:59](../../../packages/contracts/src/classroom.ts#L59)；字段：`total`、`answered`、`remaining`、`correct`、`incorrect`、`skipped`、`dontKnow`、`assisted`、`independentCorrect`、`complete`、`nextQuestionIndex`、`reviewQuestionIds`。
+- `ClassroomDiagram`：[packages/contracts/src/classroom.ts:8](../../../packages/contracts/src/classroom.ts#L8)；字段：`kind`、`title`、`labels`、`values?`、`captions?`。
+- `ClassroomBlock`：[packages/contracts/src/classroom.ts:9](../../../packages/contracts/src/classroom.ts#L9)；字段：`id`、`kind`、`text`、`atSentence?`、`items?`、`image?`、`diagram?`、`experiment?`、`code?`、`table?`。
+- `ClassroomStep`：[packages/contracts/src/classroom.ts:12](../../../packages/contracts/src/classroom.ts#L12)；字段：`id`、`title`、`narration`、`blocks`、`phase`、`durationMs`。
+- `ClassroomSelectionMode`：[packages/contracts/src/classroom.ts:14](../../../packages/contracts/src/classroom.ts#L14)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ClassroomAnswerDisposition`：[packages/contracts/src/classroom.ts:15](../../../packages/contracts/src/classroom.ts#L15)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ClassroomQuestion`：[packages/contracts/src/classroom.ts:16](../../../packages/contracts/src/classroom.ts#L16)；字段：`id`、`prompt`、`options`、`hint`、`image?`、`targetLessonIds?`、`selectionMode?`、`hintCount?`、`table?`、`diagram?`、`topic?`、`purpose?`。
+- `ClassroomLesson`：[packages/contracts/src/classroom.ts:22](../../../packages/contracts/src/classroom.ts#L22)；字段：`id`、`title`、`objective`、`lectureId`、`steps`、`generatedNotice?`、`nextLessonId?`、`sourceReferences?`、`questions`、`verificationHref?`、`practiceVersion?`、`assessment?`。
+- `ClassroomLecture`：[packages/contracts/src/classroom.ts:27](../../../packages/contracts/src/classroom.ts#L27)；字段：`id`、`title`、`description`、`lessons`。
+- `ClassroomUnit`：[packages/contracts/src/classroom.ts:28](../../../packages/contracts/src/classroom.ts#L28)；字段：`id`、`title`、`objective`、`lectures`、`project`。
+- `ClassroomCourse`：[packages/contracts/src/classroom.ts:30](../../../packages/contracts/src/classroom.ts#L30)；字段：`id`、`title`、`description`、`level`、`version`、`provenance`、`units`、`references`。
+- `ClassroomAnswerReceipt`：[packages/contracts/src/classroom.ts:32](../../../packages/contracts/src/classroom.ts#L32)；字段：`questionId`、`selectedIndex`、`correct`、`skipped`、`sourceReferences?`、`selectedIndices?`、`correctIndices?`、`optionExplanations?`、`explanation`、`hintUsed`、`at`、`disposition?`、`hintLevel?`、`answerExposure?`。
+- `ClassroomHintReceipt`：[packages/contracts/src/classroom.ts:36](../../../packages/contracts/src/classroom.ts#L36)；字段：`questionId`、`level`、`text`、`at`。
+- `ClassroomChatMessage`：[packages/contracts/src/classroom.ts:37](../../../packages/contracts/src/classroom.ts#L37)；字段：`id`、`role`、`content`、`at`、`modelName?`、`speech?`、`board?`。
+- `ClassroomSession`：[packages/contracts/src/classroom.ts:40](../../../packages/contracts/src/classroom.ts#L40)；字段：`id`、`ownerUserId`、`studentId`、`courseId`、`studioCourseId?`、`lessonId`、`contentFingerprint`、`lesson`、`sourceCourseId?`、`authoringAnswerExposure?`、`sourceCheckId?`、`sourceCheckFingerprint?`、`sourceCheckTargets?`、`presentation?`、`presentationRevisions?`、`cursor`、`revealed`、`sentenceCursor?`、`status`、`revision`、`messages`、`answers`、`projectDraft`、`hintedQuestionIds?`、`hintReceipts?`、`createdAt`、`updatedAt`。
+- `ClassroomSessionView`：[packages/contracts/src/classroom.ts:51](../../../packages/contracts/src/classroom.ts#L51)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ClassroomCatalog`：[packages/contracts/src/classroom.ts:55](../../../packages/contracts/src/classroom.ts#L55)；字段：`course`、`progress`、`lessonActivities?`、`projectActivities?`、`readingProgress?`、`archivedSessions?`。
+- `ClassroomPracticeSummary`：[packages/contracts/src/classroom.ts:61](../../../packages/contracts/src/classroom.ts#L61)；字段：`total`、`answered`、`remaining`、`correct`、`incorrect`、`skipped`、`dontKnow`、`assisted`、`independentCorrect`、`complete`、`nextQuestionIndex`、`reviewQuestionIds`。
 
 ### packages/contracts/src/course-journey.ts
 
@@ -310,20 +314,20 @@
 
 ### packages/contracts/src/course-project.ts
 
-- `ProjectStage`：[packages/contracts/src/course-project.ts:2](../../../packages/contracts/src/course-project.ts#L2)；字段：`id`、`title`、`objective`、`fields`。
-- `ProjectCriterion`：[packages/contracts/src/course-project.ts:4](../../../packages/contracts/src/course-project.ts#L4)；字段：`id`、`title`、`levels`。
-- `CourseProjectDefinition`：[packages/contracts/src/course-project.ts:5](../../../packages/contracts/src/course-project.ts#L5)；字段：`id`、`courseId`、`unitId`、`title`、`brief`、`version`、`fingerprint`、`contentReview`、`provenance`、`sourceCourse?`、`stages`、`rubric`。
-- `ProjectEvidence`：[packages/contracts/src/course-project.ts:10](../../../packages/contracts/src/course-project.ts#L10)；字段：`id`、`label`、`content`、`source`。
-- `ProjectArtifact`：[packages/contracts/src/course-project.ts:11](../../../packages/contracts/src/course-project.ts#L11)；字段：`values`、`evidence`、`attachments?`。
-- `ProjectRating`：[packages/contracts/src/course-project.ts:12](../../../packages/contracts/src/course-project.ts#L12)；字段：`criterionId`、`level`、`evidence`、`attachmentIds?`。
-- `ProjectSubmission`：[packages/contracts/src/course-project.ts:13](../../../packages/contracts/src/course-project.ts#L13)；字段：`id`、`stageId`、`number`、`artifact`、`selfRatings`、`attachmentManifest?`、`revisionNote`、`previousSubmissionId`、`rubricVersion`、`at`。
-- `ProjectHumanReview`：[packages/contracts/src/course-project.ts:15](../../../packages/contracts/src/course-project.ts#L15)；字段：`id`、`submissionId`、`reviewerId`、`reviewerRole`、`ratings`、`comment`、`decision`、`supersedesReviewId`、`at`。
-- `ProjectAdviceScope`：[packages/contracts/src/course-project.ts:18](../../../packages/contracts/src/course-project.ts#L18)；字段：`fieldIds`、`evidenceIds`、`attachmentIds`。
-- `ProjectAdvice`：[packages/contracts/src/course-project.ts:19](../../../packages/contracts/src/course-project.ts#L19)；字段：`id`、`stageId`、`artifactFingerprint`、`scope?`、`reply`、`modelName`、`at`。
-- `CourseProject`：[packages/contracts/src/course-project.ts:21](../../../packages/contracts/src/course-project.ts#L21)；字段：`id`、`ownerUserId`、`studentId`、`studioCourseId?`、`sourceCourseId?`、`definition`、`revision`、`currentStageId`、`drafts`、`submissions`、`reviews`、`draftReflections`、`advice`、`legacyImports`、`createdAt`、`updatedAt`。
-- `CourseProjectView`：[packages/contracts/src/course-project.ts:27](../../../packages/contracts/src/course-project.ts#L27)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `CourseProjectCatalog`：[packages/contracts/src/course-project.ts:29](../../../packages/contracts/src/course-project.ts#L29)；字段：`definitions`、`projects`、`permissions?`。
-- `ProjectCommandReceipt`：[packages/contracts/src/course-project.ts:30](../../../packages/contracts/src/course-project.ts#L30)；字段：`requestKey`、`kind`、`appliedRevision`、`at`、`submissionId?`、`reviewId?`、`project`。
+- `ProjectStage`：[packages/contracts/src/course-project.ts:3](../../../packages/contracts/src/course-project.ts#L3)；字段：`id`、`title`、`objective`、`fields`。
+- `ProjectCriterion`：[packages/contracts/src/course-project.ts:5](../../../packages/contracts/src/course-project.ts#L5)；字段：`id`、`title`、`levels`。
+- `CourseProjectDefinition`：[packages/contracts/src/course-project.ts:6](../../../packages/contracts/src/course-project.ts#L6)；字段：`id`、`courseId`、`unitId`、`title`、`brief`、`version`、`fingerprint`、`contentReview`、`provenance`、`sourceCourse?`、`stages`、`rubric`。
+- `ProjectEvidence`：[packages/contracts/src/course-project.ts:11](../../../packages/contracts/src/course-project.ts#L11)；字段：`id`、`label`、`content`、`source`。
+- `ProjectArtifact`：[packages/contracts/src/course-project.ts:12](../../../packages/contracts/src/course-project.ts#L12)；字段：`values`、`evidence`、`attachments?`。
+- `ProjectRating`：[packages/contracts/src/course-project.ts:13](../../../packages/contracts/src/course-project.ts#L13)；字段：`criterionId`、`level`、`evidence`、`attachmentIds?`。
+- `ProjectSubmission`：[packages/contracts/src/course-project.ts:14](../../../packages/contracts/src/course-project.ts#L14)；字段：`id`、`stageId`、`number`、`artifact`、`selfRatings`、`attachmentManifest?`、`revisionNote`、`previousSubmissionId`、`rubricVersion`、`at`。
+- `ProjectHumanReview`：[packages/contracts/src/course-project.ts:16](../../../packages/contracts/src/course-project.ts#L16)；字段：`id`、`submissionId`、`reviewerId`、`reviewerRole`、`ratings`、`comment`、`decision`、`supersedesReviewId`、`at`。
+- `ProjectAdviceScope`：[packages/contracts/src/course-project.ts:19](../../../packages/contracts/src/course-project.ts#L19)；字段：`fieldIds`、`evidenceIds`、`attachmentIds`。
+- `ProjectAdvice`：[packages/contracts/src/course-project.ts:20](../../../packages/contracts/src/course-project.ts#L20)；字段：`id`、`stageId`、`artifactFingerprint`、`scope?`、`reply`、`modelName`、`at`。
+- `CourseProject`：[packages/contracts/src/course-project.ts:22](../../../packages/contracts/src/course-project.ts#L22)；字段：`id`、`ownerUserId`、`studentId`、`studioCourseId?`、`sourceCourseId?`、`definition`、`revision`、`currentStageId`、`drafts`、`submissions`、`reviews`、`draftReflections`、`advice`、`legacyImports`、`createdAt`、`updatedAt`。
+- `CourseProjectView`：[packages/contracts/src/course-project.ts:28](../../../packages/contracts/src/course-project.ts#L28)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `CourseProjectCatalog`：[packages/contracts/src/course-project.ts:31](../../../packages/contracts/src/course-project.ts#L31)；字段：`definitions`、`projects`、`navigationContext?`、`permissions?`。
+- `ProjectCommandReceipt`：[packages/contracts/src/course-project.ts:32](../../../packages/contracts/src/course-project.ts#L32)；字段：`requestKey`、`kind`、`appliedRevision`、`at`、`submissionId?`、`reviewId?`、`project`。
 
 ### packages/contracts/src/curriculum.ts
 

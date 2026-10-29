@@ -74,7 +74,7 @@ test('complete sentence, complete notes, paused text reading and explicit senten
   await page.getByRole('button', { name: '下一句' }).click(); await expect(f.current).toContainText('再合并份数');
   await expect(page.locator('.wb-reading-notes [aria-current=step]')).toHaveText('[whiteboard-fixture] 再合并份数。');
   await page.getByRole('button', { name: '上一句' }).click(); await expect(f.current).toContainText('先统一单位');
-  await page.getByRole('button', { name: '关闭白板' }).click(); await expect(page.getByRole('dialog', { name: '白板视频' })).toHaveCount(0);
+  await page.getByRole('button', { name: '关闭白板' }).click(); await expect(page.getByRole('main', { name: '白板视频' })).toHaveCount(0);
 });
 
 test('real WAV ended drives cloud playback, pause retains audio time and late ended cannot move a new sentence', async ({ page }) => {
@@ -157,7 +157,7 @@ test('continuity: an already prepared WAV cannot survive actual login-session re
     expect(await page.evaluate(async base => (await fetch(base + '/api/auth/logout', {
       method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: '{}',
     })).status, api)).toBe(201);
-    await expect(page.getByRole('dialog', { name: '白板视频' })).toHaveCount(0);
+    await expect(page.getByRole('main', { name: '白板视频' })).toHaveCount(0);
     const result = await timing.save('revoked-session');
     expect(result.audio.filter(row => row.index === 1 && row.event === 'playing')).toEqual([]);
     expect(await page.evaluate(() => (window as any).__whiteboardAudio.every((audio: HTMLAudioElement) => audio.paused && !audio.getAttribute('src')))).toBe(true);
@@ -194,7 +194,7 @@ test('continuity: closing during adjacent preparation aborts it and no late audi
     const result = await timing.save('close-pending'); expect(result.requests[1].failure).toBeTruthy();
     expect(result.audio.filter(row => row.index > 0 && row.event === 'playing')).toEqual([]);
     expect(await page.evaluate(() => (window as any).__whiteboardAudio.every((audio: HTMLAudioElement) => audio.paused && !audio.getAttribute('src')))).toBe(true);
-    await expect(page.getByRole('dialog', { name: '白板视频' })).toHaveCount(0);
+    await expect(page.getByRole('main', { name: '白板视频' })).toHaveCount(0);
   } finally { timing.releaseAdjacent(); await page.unrouteAll({ behavior: 'wait' }); }
 });
 
@@ -219,7 +219,7 @@ test('continuity: a prepared WAV cannot play after actual guardian revocation be
     await page.getByRole('button', { name: '播放', exact: true }).click();
     await expect.poll(async () => (await timing.read()).audio.some(row => row.index === 1 && row.event === 'loadedmetadata')).toBe(true);
     await f.call('/qa/whiteboard-media', { boardId: f.board.id, revoke: true }, f.actor.token);
-    await expect(page.getByRole('dialog', { name: '白板视频' })).toHaveCount(0);
+    await expect(page.getByRole('main', { name: '白板视频' })).toHaveCount(0);
     const result = await timing.save('revoked-prepared'); expect(result.audio.filter(row => row.index === 1 && row.event === 'playing')).toEqual([]);
     expect(await page.evaluate(() => (window as any).__whiteboardAudio.every((audio: HTMLAudioElement) => audio.paused && !audio.getAttribute('src')))).toBe(true);
   } finally { await page.unrouteAll({ behavior: 'wait' }); }
@@ -375,7 +375,7 @@ test('revoked student access closes the private player before another frozen sen
   await expect.poll(() => page.evaluate(() => (window as any).__whiteboardAudio[0]?.currentTime ?? 0)).toBeGreaterThan(.1);
   await f.call('/qa/whiteboard-media', { boardId: f.board.id, revoke: true }, f.actor.token);
   await page.getByRole('button', { name: '下一句' }).click(); await page.getByRole('button', { name: '播放', exact: true }).click();
-  await expect(page.getByRole('dialog', { name: '白板视频' })).toHaveCount(0);
+  await expect(page.getByRole('main', { name: '白板视频' })).toHaveCount(0);
   expect(await page.evaluate(() => (window as any).__whiteboardAudio.every((audio: HTMLAudioElement) => audio.paused && !audio.getAttribute('src')))).toBe(true);
 });
 
@@ -383,7 +383,7 @@ test('closing while export audio is pending aborts it and cannot download or reo
   await fixture(page); const downloads: string[] = []; page.on('download', download => downloads.push(download.suggestedFilename()));
   await page.getByLabel('旁白音色').selectOption('fixture-delay'); await page.getByRole('button', { name: '导出视频' }).click();
   await expect(page.locator('.sa-whiteboard-notice')).toContainText('准备音轨'); await page.getByRole('button', { name: '关闭白板' }).click();
-  await page.waitForTimeout(2100); await expect(page.getByRole('dialog', { name: '白板视频' })).toHaveCount(0); expect(downloads).toEqual([]);
+  await page.waitForTimeout(2100); await expect(page.getByRole('main', { name: '白板视频' })).toHaveCount(0); expect(downloads).toEqual([]);
 });
 
 test('a recorder error releases resources, keeps the reading position and offers a retry without a partial download', async ({ page }) => {

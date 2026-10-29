@@ -2,6 +2,8 @@
 
 2026-10-29后续指令：149已采用，用户要求整合计划、先本地提交，再持续完成全部剩余开发。从[150执行计划](150-integrated-delivery-plan-and-work-ledger.md)接续：先统一工作台并迁入观察室功能，再接本人UI/撤回/成人/D3/D4及原全部验收。原分支、额外工作目录和schema23为历史；当前唯一main/主目录，业务库只读schema24/revision187，不以已迁移等同完整交付。
 
+2026-10-30续批：计划整合、工作台基础及资料已依次本地提交d054f5a2、440aad48、d3828ec6。[154专注与管理](154-workspace-focus-and-admin-integration.md)已完成本批隔离回归和[独立归档](../evidence/2026-10-30/workspace-r1-focus-sixth/receipt.json)；同一最终版本的兼容浏览器168/168、新增浏览器8/8、纯边界9/9、SQLite52通过/1跳过、PG批次11通过/1跳过已分别取得。下一步按已先提交9ec79f18的[155 GESP恢复](155-gesp-workspace-context-and-recovery.md)及[31旧入口账本](experience/workspace-legacy-entry-ledger.md)继续R1，再推进R2～R8全部范围。原72项仍11 implemented/50 in_progress/11 planned/0 verified；整体active，未推送或发布。
+
 本次按“收尾当前工作，归档进度和情况，提交推送”归档。提交范围是 `feat/assistant-practice-learner-20261029`，包含此前私人练习候选和共享安排的提交历史，以及本批真实本人分组作答。正式主目录仍运行schema23；本次不把隔离schema24候选发布到正式学生数据，也不把阶段收尾当成完整产品完成。
 
 ## 已实现并纳入本次提交

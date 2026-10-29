@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "2cb124e840da01738db66090a5963371abe2c812",
+  "sourceRevision": "30b2b510991a04e136af82a98c587b5630552b6e",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 135,
+    "features": 136,
     "activeNormalApiRoutes": 459,
     "coveredApiRoutes": 459
   },
@@ -5158,7 +5158,7 @@
             {
               "name": "ClassroomService.voicePreview",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 307
+              "line": 309
             }
           ],
           "sourceFiles": [
@@ -5928,6 +5928,75 @@
       ],
       "features": [
         {
+          "id": "STUDIO-39",
+          "title": "专注活动导航、完整离开副本与管理区域",
+          "area": "studio",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
+          "pages": [
+            "/studio",
+            "/studio/tasks",
+            "/studio/assessment",
+            "/studio/reports",
+            "/studio/profiles",
+            "/studio/settings",
+            "/studio/classroom",
+            "/studio/projects",
+            "/studio/source-courses",
+            "/studio/whiteboards"
+          ],
+          "inputs": "原活动授权范围、真实作答actor、当前管理身份与原请求键",
+          "implementation": "课堂和项目使用服务端只读导航投影，白板沿用原画布、语音、公式、导出和插问；专注侧栏临时收起，关闭后恢复原页面与焦点。持久宿主保护链接和旧浏览器历史离开，原卷完整副本逐项校验并明确核对。统一九个管理模块，教师限原四项；挂载前和窗口重获焦点时核对身份，实际撤权清除原内容。",
+          "outputs": "一个工作台宿主、可恢复的完整输入、原来源返回及授权管理正文",
+          "collections": [
+            "classroomSessions",
+            "courseProjects",
+            "paperPracticeSessions"
+          ],
+          "limits": "导航投影不进入持久记录、指纹、首答或成绩；本人陪练不冒充孩子作答。GESP对象/等级/题目恢复、31旧入口全面账本、实机和最终交付仍未完成。",
+          "endpoints": [],
+          "implementations": [],
+          "sourceFiles": [
+            "packages/contracts/src/activity-navigation.ts",
+            "apps/api/src/modules/learning/activity-navigation.ts",
+            "apps/api/src/modules/learning/activity-navigation.test.ts",
+            "apps/api/src/modules/learning/source-course-project.integration.test.ts",
+            "apps/web/components/activity-workspace-navigation.tsx",
+            "apps/web/components/workspace-shell.tsx",
+            "apps/web/lib/workspace-exit-guard.ts",
+            "apps/web/app/studio/whiteboard-player.tsx",
+            "apps/web/app/studio/whiteboard-session.tsx",
+            "apps/web/app/library/practice/session.tsx",
+            "apps/web/app/admin/workspace-shell.tsx",
+            "apps/web/app/admin/workspace-shell.css",
+            "apps/web/lib/admin-navigation.ts",
+            "tests/e2e/workspace-focus.spec.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
+            "apps/api/src/modules/learning/studio-course.test.ts",
+            "apps/api/src/modules/learning/studio.integration.test.ts",
+            "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+            "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
+            "tests/e2e/studio.spec.ts",
+            "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/classroom-practice.spec.ts",
+            "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
+            "tests/e2e/workspace.spec.ts"
+          ]
+        },
+        {
           "id": "STUDIO-38",
           "title": "工作台资料、题卷与来源返回",
           "area": "studio",
@@ -6392,7 +6461,7 @@
             {
               "name": "ClassroomService.catalog",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 32
+              "line": 33
             }
           ],
           "sourceFiles": [
@@ -6493,27 +6562,27 @@
             {
               "name": "ClassroomService.open",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 101
+              "line": 103
             },
             {
               "name": "ClassroomService.get",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 91
+              "line": 93
             },
             {
               "name": "ClassroomService.progress",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 154
+              "line": 156
             },
             {
               "name": "ClassroomService.narration",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 315
+              "line": 317
             },
             {
               "name": "ClassroomService.upgradePresentation",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 179
+              "line": 181
             }
           ],
           "sourceFiles": [
@@ -6631,7 +6700,7 @@
             {
               "name": "ClassroomService.ask",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 271
+              "line": 273
             },
             {
               "name": "ClassroomTurnService.list",
@@ -6746,12 +6815,12 @@
             {
               "name": "ClassroomService.answer",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 197
+              "line": 199
             },
             {
               "name": "ClassroomService.hint",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 246
+              "line": 248
             }
           ],
           "sourceFiles": [
@@ -8225,47 +8294,47 @@
             {
               "name": "CourseProjectService.catalog",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 66
+              "line": 69
             },
             {
               "name": "CourseProjectService.get",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 64
+              "line": 67
             },
             {
               "name": "CourseProjectService.request",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 96
+              "line": 102
             },
             {
               "name": "CourseProjectService.open",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 77
+              "line": 83
             },
             {
               "name": "CourseProjectService.save",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 145
+              "line": 151
             },
             {
               "name": "CourseProjectService.submit",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 159
+              "line": 165
             },
             {
               "name": "CourseProjectService.review",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 177
+              "line": 183
             },
             {
               "name": "CourseProjectService.importLegacy",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 194
+              "line": 200
             },
             {
               "name": "CourseProjectService.advise",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 208
+              "line": 214
             }
           ],
           "sourceFiles": [
@@ -8457,17 +8526,17 @@
             {
               "name": "CourseProjectService.catalog",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 66
+              "line": 69
             },
             {
               "name": "CourseProjectService.open",
               "file": "apps/api/src/modules/learning/course-project.service.ts",
-              "line": 77
+              "line": 83
             },
             {
               "name": "ClassroomService.catalog",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 32
+              "line": 33
             },
             {
               "name": "SourceCourseService.get",
@@ -8698,7 +8767,7 @@
             {
               "name": "ClassroomService.source",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 92
+              "line": 94
             }
           ],
           "sourceFiles": [

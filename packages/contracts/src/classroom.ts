@@ -3,6 +3,7 @@ import type { StudioSpeechCapabilities } from './studio';
 import type { ClassroomPresentation, ClassroomPresentationRevision, ClassroomSpeechTrack } from './classroom-speech';
 import type { CourseLessonActivity,CourseProjectActivity } from './course-journey';
 import type { ClassroomExperiment } from './classroom-experiment';
+import type { ActivityNavigationContext } from './activity-navigation';
 
 export type ClassroomDiagram = { kind: 'venn' | 'flow' | 'bars' | 'network'; title: string; labels: string[]; values?: number[]; captions?: string[] };
 export type ClassroomBlock = { id: string; kind: 'heading' | 'text' | 'points' | 'image' | 'diagram' | 'code' | 'table' | 'experiment'; text: string;
@@ -48,6 +49,7 @@ export type ClassroomSession = { id: string; ownerUserId: string; studentId: str
   hintReceipts?: ClassroomHintReceipt[];
   createdAt: string; updatedAt: string };
 export type ClassroomSessionView = ClassroomSession & { speech: StudioSpeechCapabilities;
+  navigationContext?: ActivityNavigationContext;
   projectHref?: string;
   contentStatus?: 'current' | 'archived' | 'unavailable' };
 export type ClassroomCatalog = { course: ClassroomCourse; progress: Array<{ lessonId: string; sessionId: string;

@@ -1,0 +1,24 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T20:26:17.542Z",
+    "duration": 23702.637000000002,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "workspace focus: all nine admin modules render in one shell and actual content fits phone, tablet and desktop",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 7332,
+          "error": "Error: module content width 320 [{\"tag\":\"ARTICLE\",\"className\":\"\",\"right\":453.546875,\"width\":408.546875,\"minWidth\":\"auto\",\"overflow\":\"visible\"},{\"tag\":\"ARTICLE\",\"className\":\"\",\"right\":453.546875,\"width\":408.546875,\"minWidth\":\"auto\",\"overflow\":\"visible\"},{\"tag\":\"ARTICLE\",\"className\":\"\",\"right\":453.546"
+        }
+      ]
+    }
+  ],
+  "sanitization": "Titles, statuses, durations and bounded first-line errors only. Local traces, account data, cookies, environment, storage and response bodies are excluded."
+}

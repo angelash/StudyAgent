@@ -5,7 +5,6 @@ import type { TeachingToolPurpose, TeachingToolRunsPage, TeachingToolRunView } f
 import { ApiRequestError, apiRequest } from '../../../lib/api';
 import { refreshSessionUser, useSessionStatus, useSessionUser } from '../../../lib/session-user';
 import { useXiaojiuModels } from '../../../components/xiaojiu-model-picker';
-import { StudyNav } from '../../../components/study-nav';
 import { TeachingComposer } from './composer';
 import { TeachingRunDetail, teachingStatus } from './run-detail';
 import { formFromSnapshot, type TeachingForm } from './tool-draft';
@@ -19,7 +18,7 @@ export function TeachingToolsWorkbench() {
   const user = useSessionUser(), session = useSessionStatus();
   if (user === undefined) return <main className="learning-studio tt-gate"><h1>教研工作台</h1><p role="status">{session.status === 'unavailable' ? '暂不能确认当前身份，原资料仍保留。' : '正在确认教研身份…'}</p>{session.status === 'unavailable' && <button type="button" onClick={() => void refreshSessionUser()}>重新确认登录</button>}</main>;
   if (!user) return <main className="learning-studio tt-gate"><h1>教研工作台</h1><p>登录后查看本人教研草稿。</p><Link href="/parent/login">登录工作台 →</Link></main>;
-  if (user.role !== 'admin') return <main className="learning-studio tt-gate"><StudyNav/><h1>这是一处内部教研工作区</h1><p>当前身份没有教研管理员权限。学习任务仍可从学习首页继续。</p><Link href="/learn">返回学习首页 →</Link></main>;
+  if (user.role !== 'admin') return <main className="learning-studio tt-gate"><h1>这是一处内部教研工作区</h1><p>当前身份没有教研管理员权限。学习任务仍可从学习首页继续。</p><Link href="/learn">返回学习首页 →</Link></main>;
   return <Workspace key={user.id + ':' + user.role} ownerId={user.id}/>;
 }
 function Workspace({ ownerId }: { ownerId: string }) {
@@ -69,8 +68,8 @@ function Workspace({ ownerId }: { ownerId: string }) {
     epoch.current++; setSelected(value.id); setRow(value); setDetailSafe(true); const params = new URLSearchParams(window.location.search); params.set('run', value.id); window.history.pushState(null, '', '/admin/ai-tools?' + params); href.current = window.location.href;
   }, []);
   function reuse() { if (!row || !safe.current) { retainMessage(); return; } setImportForm({ id: Date.now(), form: formFromSnapshot(row.snapshot, row.modelId) }); setPurpose(row.purpose); setFormSafe(true); epoch.current++; updateLocation(row.purpose, row.id); setNotice('将完整原输入复制到编辑区，原任务与结果保持。'); }
-  return <main className="learning-studio"><StudyNav/><div className="admin-workbench tt-workbench">
-    <nav className="admin-links" aria-label="教研导航"><Link href="/admin/curriculum">知识与覆盖</Link><Link href="/admin/ai-tools" aria-current="page">AI 教研草稿</Link><Link href="/admin/reviews">作答复核</Link><Link href="/admin/content">内容管理</Link></nav>
+  return <main className="learning-studio"><div className="admin-workbench tt-workbench">
+
     <header className="tt-page-head"><div><span className="tt-kicker">TEACHING STUDIO / PRIVATE DRAFTS</span><h1>把一次作答，看得更清楚。</h1><p>保留完整条件与推导，比较可能的解释，再用新证据核对。这里产生的是待复核建议。</p></div><aside><span>教研草稿</span><b>尚未人工核对</b><p>不会自动写入评分、能力判断或指导计划。</p></aside></header>
     {notice && <p className="tt-notice" role="status">{notice}</p>}{error && <div className="tt-error" role="alert"><p>{error}</p><button type="button" onClick={() => { setRefresh(value => value + 1); setReread(value => value + 1); }}>重新读取原记录</button></div>}
     <div className="tt-workspace"><div className="tt-editor-column"><div className="tt-purpose-tabs" role="tablist" aria-label="教研用途">{([['assessment_analysis', '答案分析建议'], ['hint_draft', '提示草稿']] as const).map(([value, label]) => <button type="button" role="tab" aria-selected={purpose === value} key={value} onClick={() => { if (!formSafe) { retainMessage(); return; } epoch.current++; setPurpose(value); setFormSafe(true); setImportForm(null); updateLocation(value, selected); }}>{label}</button>)}</div>

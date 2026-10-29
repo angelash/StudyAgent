@@ -50,7 +50,7 @@ for (const width of [390, 768, 880, 1440]) test('source whiteboard: complete ori
   const edited = await call(f.actor, '/learning/studio/topic-whiteboards/drafts/' + id); expect(edited.content.scenes[0].sourceMap.referenceKeys).toEqual([]); expect(edited.originalContent).toEqual(original.originalContent);
   await page.getByRole('checkbox', { name: '我已阅读未确定问题或手工改稿，知晓仍需内容核对' }).check();
   await page.getByRole('button', { name: '确认并保存这份白板', exact: true }).click(); await page.getByRole('button', { name: '打开已保存白板', exact: true }).click();
-  const player = page.getByRole('dialog', { name: '白板视频' }); await expect(player).toBeVisible(); await expect(player.getByRole('button', { name: '播放', exact: true })).toBeVisible();
+  const player = page.getByRole('main', { name: '白板视频' }); await expect(player).toBeVisible(); await expect(player.getByRole('button', { name: '播放', exact: true })).toBeVisible();
   const adopted = await call(f.actor, '/learning/studio/topic-whiteboards/drafts/' + id), board = await call(f.actor, '/learning/studio/topic-whiteboards/' + adopted.whiteboardId);
   expect(JSON.stringify(board)).not.toContain('sourceMap'); expect(JSON.stringify(board)).not.toContain(f.message.id);
   await page.screenshot({ path: evidence + '/adopted-player-' + width + '.png' }); await player.getByRole('button', { name: '关闭白板', exact: true }).click();
@@ -139,7 +139,7 @@ test('source whiteboard: actual private PNG generation, original editing, adopti
   await pane.getByRole('button', { name: '以原图继续修订', exact: true }).click(); await pane.getByLabel('具体修改').fill('保留两个圆，去掉顶部标题并保留完整标签。'); await pane.getByRole('button', { name: '预检配图范围', exact: true }).click(); await pane.getByRole('button', { name: '生成修订图片', exact: true }).click();
   await expect(reader).toBeVisible({ timeout: 30000 }); await pane.getByRole('checkbox', { name: '我已阅读图片，并核对本次要使用的标签和关系。' }).check(); await pane.getByRole('button', { name: '选入当前完整稿', exact: true }).click(); await page.getByRole('button', { name: '保存完整改稿', exact: true }).click();
   await page.getByRole('checkbox', { name: '我已阅读未确定问题或手工改稿，知晓仍需内容核对' }).check(); await page.getByRole('button', { name: '确认并保存这份白板', exact: true }).click(); await page.getByRole('button', { name: '打开已保存白板', exact: true }).click();
-  const player = page.getByRole('dialog', { name: '白板视频' }); await expect(player.getByRole('button', { name: '放大参考图：明确整体', exact: true }).first()).toBeVisible();
+  const player = page.getByRole('main', { name: '白板视频' }); await expect(player.getByRole('button', { name: '放大参考图：明确整体', exact: true }).first()).toBeVisible();
   const speech = page.waitForResponse(r => /\/topic-whiteboards\/[^/]+\/narration\//.test(r.url())); await player.getByRole('button', { name: '播放', exact: true }).click(); const audio = await speech; expect(audio.status()).toBe(201); expect(audio.headers()['content-type']).toMatch(/^audio\//); await player.getByRole('button', { name: '暂停', exact: true }).click();
   await page.screenshot({ path: evidence + '/private-source-image-and-narration.png' });
 });
