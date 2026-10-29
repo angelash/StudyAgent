@@ -359,3 +359,13 @@ POST /learning/assistant-practice/assignments/:id/groups/:atomId/start严格接a
 验收先走实际三点六题HTTP完整开始/回答理由/帮助/完成、第二三组继续、首答不覆盖、家长伪造child fence/跨孩子/当前评测拒绝、同键双实例/双标签恢复与作者/孩子最新账本，再接现有练习界面和助教来源入口。真实图片/音频附件读取与原生备份单列，不用表格/公式替代；完整API/浏览器/精确CI及schema24交付分别运行，不能套用当前25或旧1875。此时尚未新增这些接口/集合或真实学习写入，产品整体继续active。
 
 第27节设计318272bf先提交，严格开始/草稿/理由响应/帮助/完成契约已定义，独立contracts/config/API构建及API全类型通过；见[协议构建原件](../evidence/2026-10-29/learner-command-contracts-first/receipt.json)。本层只约束输入形状，尚无新GroupStart持久集合、对应HTTP或实际学生响应，不能当已完成本人身份验证/作答能力。接续按本节实现服务与双库恢复，再接界面；共享安排完整回归继续独立冻结。
+
+## 28. 原生顺序修复与本人媒体作答接续方案
+
+本轮核对SQLite原始SQL记录已证明：首答与订正的返回顺序是2、1，完成指纹因此与写入时不一致。以显式attempt序号排序计算完成指纹，并在本人教学来源的首次/最新作答、汇总与错题选择中使用同一顺序；冷验证仍核查每个序号、原命令、原评分与回执，不放宽内容或关系校验。复合题保留原grader的scoreDetails，并对逐空/逐格标签、得分、protocol来源与冻结题包重新评分结果逐项核对。SQLite第六轮35/35通过；此前五次HTTP失败原件与源码/构建保留，不能把编译失败补称完整冻结验收。PostgreSQL另行运行。
+
+实际StudentMediaService.target当前要求非notebook练习必须有active diagnosticPlan，这会错误拒绝planId=null的assistant_artifact。下一步仅对这个来源接既有assertAssistantPracticeWriter，媒体start/chunk/complete/cancel传当前authSession；LearningService在草稿/响应调用assertAnswer时同样传实际auth。每次分块、归一化完成后落盘之前再次核对当前学生身份、原actor、当前评测与活动状态；家长预览不允许创建孩子媒体。既有guidance/notebook/diagnostic权限规则保持其语义，媒体读取继续按原监护/教师授权检查。
+
+验收用独立PNG与实际PCM WAV，不调用生图或TTS：第三个预定知识点两题使用原生image_upload/audio_record协议，学习码身份分块上传、归一化、草稿/理由、pending_review回答与完成；恢复前保存媒体hash及原回执，原生备份/还原后通过授权HTTP读取完整媒体并核对hash。图片/录音人工评分保持pending_review，不把文件可读取当作教学正确或能力掌握。当前评测、跨孩子、家长上传与原actor变化均拒绝；账户删除保留共享孩子时可重开真实学习入口继续已开始组，未开始组仍拒绝；孩子最新删除账本清除GroupStart/实践/媒体关联。重算命令/包hash的跨actor、跨组、草稿或评分明细篡改继续拒绝。
+
+共享安排58024326远端40796325938的application/PG成功，browser失败需单独修复：原卷保护文件竞态断言匹配两个role=status；第一次失败后的同纸测试重试误编辑已发布候选。修复断言定位及测试候选合法撤回后重建，保存原失败与重试证据，不隐藏或取消原CI。私人候选83af7e15/40790308484虽三job成功，完整浏览器原件显示500首次通过、1首次失败后重试通过，总502尝试；不能报告501首次全绿。正式仍schema23，本人完整UI/撤回/成人自练/AI教学/D3/D4与105全部范围继续active。
