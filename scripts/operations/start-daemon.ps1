@@ -50,7 +50,6 @@ foreach ($target in @(@{ Name = 'Web'; Port = $webPort }, @{ Name = 'API'; Port 
 Push-Location $repositoryRoot
 try {
   New-Item -ItemType Directory -Force -Path $logDirectory | Out-Null
-  $env:NEXT_PUBLIC_API_BASE_URL = "http://127.0.0.1:$apiPort"
   $env:STUDYAGENT_WEB_URL = "http://127.0.0.1:$webPort/"
   $env:STUDYAGENT_API_URL = "http://127.0.0.1:$apiPort/api/ready"
 

@@ -1,0 +1,57 @@
+{
+  "updatedAt": "2026-10-29T10:57:39.996214+00:00",
+  "purpose": "The migration manifest remains the historical source/verification receipt. This overlay records authorized current retention and canonical locations.",
+  "canonicalModels": {},
+  "aliases": {
+    "models/re-shijuan-lite/local/apk/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/intranet-portable-check/115bc69af1f5/shijuan-intranet/prototypes/re-shijuan-lite/local/intranet-project/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/intranet-portable-check/115bc69af1f5/shijuan-intranet/prototypes/re-shijuan-lite/local/smali-project/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/intranet-portable-check/11d0a796ae33/shijuan-intranet/prototypes/re-shijuan-lite/local/intranet-project/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/intranet-portable-check/11d0a796ae33/shijuan-intranet/prototypes/re-shijuan-lite/local/smali-project/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/intranet-portable-check/b87d2087ea35/shijuan-intranet/prototypes/re-shijuan-lite/local/intranet-project/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/intranet-portable-check/b87d2087ea35/shijuan-intranet/prototypes/re-shijuan-lite/local/smali-project/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/intranet-portable-check/df67f521549a/shijuan-intranet/prototypes/re-shijuan-lite/local/intranet-project/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/intranet-portable-check/df67f521549a/shijuan-intranet/prototypes/re-shijuan-lite/local/smali-project/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/intranet-portable-check/fbfe77bedddc/shijuan-intranet/prototypes/re-shijuan-lite/local/intranet-project/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/intranet-portable-check/fbfe77bedddc/shijuan-intranet/prototypes/re-shijuan-lite/local/smali-project/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/intranet-project/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/jadx/resources/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/portable-check/final/rogue-prototype-lab/prototypes/re-shijuan-lite/local/apk/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/portable-check/final/rogue-prototype-lab/prototypes/re-shijuan-lite/local/jadx/resources/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/portable-check/final/rogue-prototype-lab/prototypes/re-shijuan-lite/local/smali-project/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/portable-check/re-shijuan-lite/local/apk/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/portable-check/re-shijuan-lite/local/jadx/resources/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/portable-check/re-shijuan-lite/local/smali-project/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/rebuilt-decoded/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuan-lite/local/smali-project/assets/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+    "models/re-shijuanbao-service/local/build/portable-smoke/local/models/handwriting-int8.onnx": "models/re-shijuanbao-service/local/models/handwriting-int8.onnx"
+  },
+  "retired": [
+    {
+      "prefix": "models/re-shijuanbao-service/local/models/Qwen2.5-1.5B-Instruct",
+      "reason": "Offline local review retired; route returns HTTP 410; weights intentionally deleted."
+    }
+  ],
+  "receipt": "data/maintenance/2026-10-29-authorized-cleanup/deletion-receipt.jsonl",
+  "previousCanonicalModels": {
+    "models/re-shijuanbao-service/local/models/handwriting-int8.onnx": "62b64eb24d0704d20163ce0c2959a83161a78f4d46ec478293633df7261edbdf"
+  },
+  "canonicalResearchModels": {
+    "handwriting-int8": {
+      "path": "F:/workspace/rogue-prototype-lab/prototypes/re-shijuanbao-service/studyagent-handoff/assets/models/re-shijuanbao-service/local/models/handwriting-int8.onnx",
+      "sha256": "62b64eb24d0704d20163ce0c2959a83161a78f4d46ec478293633df7261edbdf",
+      "owner": "external-research-project"
+    }
+  },
+  "aliasScope": "Historical pre-externalization paths; the application no longer loads recovered models or tools from its asset root.",
+  "externalizedPrefixes": [
+    "models/",
+    "research/",
+    "tools/"
+  ],
+  "pendingSourceRemoval": {
+    "reason": "completed after destination SHA-256 verification and exact source inventory checks",
+    "sourcesStillPresent": false,
+    "receipt": "data/maintenance/2026-10-29-cloud-archive/relocation-source-retirement.json"
+  }
+}

@@ -1,6 +1,6 @@
 # StudyAgent 工作目录、资料与大文件整理
 
-盘点日期：2026-10-29。范围为 `F:/workspace/github/StudyAgent` 及 Git 登记的 40 个同级 `StudyAgent-*` 工作目录。体积采用十进制 GB（1 GB = 1,000,000,000 字节）；文件数按路径计数，不代表独立内容或可教学题目数量。
+盘点日期：2026-10-29。范围为 `F:/workspace/github/StudyAgent` 及 Git 登记的 40 个同级 `StudyAgent-*` 工作目录。体积采用十进制 GB（1 GB = 1,000,000,000 字节）；文件数按路径计数，不代表独立内容或可教学题目数量。下文“整理前”和 108.39 GB 是工作目录合并阶段基线；其后云端归档与本地退役后的当前目录见[云端备份执行记录](2026-10-29-cloud-archive.md)。
 
 ## 整理前的整体情况
 
@@ -21,22 +21,19 @@
 
 ### 教材与研究材料
 
-- `data/assets/textbook-sources/chinatextbook-primary-v1` 约 5.62 GB。
-- `data/assets/textbook-sources/chinatextbook-chinese-v1` 约 0.16 GB。
-- `data/assets/textbook-sources/public-v1` 约 0.06 GB。
-- `data/assets/research/education-app-survey` 约 0.25 GB，保存教育应用研究材料。
+- `data/assets/textbook-sources/` 当前约 73.99 MB，保存教材提取文本与公开来源；307 份原 PDF 已绑定 `H:/ChinaTextbook`。整理前这里另有本地原 PDF 副本。
+- `data/assets/research/education-app-survey` 是历史位置，对应 0.25 GB 教育应用研究材料；2026-10-29 已迁至研究项目，不再属于 StudyAgent 资产。
 - `data/research` 约 0.06 GB，包含 Hyperknow 公开资料和化学教材参考。
 - `data/gesp` 约 0.19 GB，包含原始文件、抽取文本、题目和审阅资料；实际目录数据库记录 3,132 道题目、117 份文档。它们仍是研究与来源目录，不代表全部已通过答案/教学审核。
 
-工作区还挂载 `E:/ChinaTextbook`。实际核查显示它是指向 `H:/ColdArchive/2026-10-21/ChinaTextbook` 的 junction；仅检查路径存在会返回真，尝试列目录则失败。本次未扫描这个当前不可访问的外部资料库，保留其入口以及主目录已经保存的教材副本。不能把主目录内 5.8 GB 左右的副本描述为外部完整教材库。
+工作区还挂载过 `E:/ChinaTextbook`。核查时它指向已失效的 `H:/ColdArchive/2026-10-21/ChinaTextbook`；当前完整教材原库和解引用入口为 `H:/ChinaTextbook`，StudyAgent 的本地提取文本绑定该原库的仓库相对路径与 SHA-256。
 
 ### 模型与工具
 
-- `data/assets/models/re-shijuanbao-service` 约 3.19 GB，其中 `Qwen2.5-1.5B-Instruct/model.safetensors` 单文件约 3.09 GB。
-- `data/assets/models/re-shijuan-lite` 约 0.93 GB，主要是本地模型与推理资产。
+- `data/assets/models/re-shijuanbao-service` 和 `data/assets/models/re-shijuan-lite` 是整理前的历史模型位置；Qwen 已删，去手写模型和逆向工具已迁至 F 盘研究项目。
 - `data/tools` 约 1.38 GB，主要包含独立 PostgreSQL QA 工具及安装包。
 
-本次保留这些资产。它们是本地运行/研究依赖，不放入新的 Git 提交。
+这些数字保留为整理前基线；当前去手写、逆向研究和处理工具归 `F:/workspace/rogue-prototype-lab/prototypes/`，不属于 StudyAgent 运行目录。
 
 ### 验证证据、备份与运行产物
 
@@ -123,3 +120,9 @@ python scripts/operations/consolidate-workspace.py restore --origin StudyAgent-t
 本轮没有配置完整 PostgreSQL 环境重跑全部 PG 用例，没有执行完整整站浏览器或新的远端 CI，也没有进行真人学习效果与全教材覆盖验收。原本人练习前端与产品边界仍按 148 工作检查点续接。
 
 整理后唯一主目录实测约 **108.39 GB**、610,987 个文件路径，其中资料资产约 50.46 GB，本轮保留归档（含 bundle 和清单）约 25.44 GB，QA 目录约 15.75 GB。主目录比原来变大，是把旧工作目录的独有材料收拢到了主目录；全项目占用与磁盘可用空间则按上文结果减少。
+
+## 后续资产分类与已在 Git 中的旧副本清理
+
+以上为工作目录合并结束时的历史记录。用户随后授权清理已经保存在仓库中的旧内容，实际分类与结果见 [后续整理报告](2026-10-29-asset-organization.md)。原 `objects/<prefix>/<sha256>` 已按用途归类；原 `retained-*.jsonl` 保持，新增 `object-locations.jsonl` 将它们指向当前分类原件或经过原始字节回读的 Git blob。恢复命令已兼容两种来源。
+
+原始 Git bundle 在再次确认其中全部 head 可从 main 追溯、Git 连通性与需要的原件回读通过后删除。它曾在合并前存在并通过验证，当前不再额外存一份。旧迁移、删除与验证收据仍作为当时证据保留，不用后续状态覆盖。

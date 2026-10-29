@@ -1,7 +1,8 @@
 """Inventory and preserve StudyAgent worktrees before an explicitly authorized cleanup.
 
 This helper never deletes files or changes Git refs. Retained local files live in
-an ignored, content-addressed archive, with per-origin paths in JSONL manifests.
+an ignored, categorized archive, with per-origin paths in JSONL manifests. The
+object-locations ledger also resolves old copies now retained in main's Git history.
 """
 from __future__ import annotations
 
@@ -349,20 +350,55 @@ def predelete():
     write_json(ARCHIVE / "deletion-plan.json", plan)
 
 
+def restore_item(item: dict, target: Path):
+    if target.exists() or target.is_symlink():
+        raise RuntimeError("Restore refuses to overwrite an existing file")
+    location = None
+    index = ARCHIVE / "object-locations.jsonl"
+    if index.exists():
+        with index.open(encoding="utf-8") as source_index:
+            for line in source_index:
+                row = json.loads(line)
+                if row["sha256"] == item["sha256"]:
+                    if row["size"] != item["size"]:
+                        raise RuntimeError("Archive location size differs from the origin receipt")
+                    location = row
+                    break
+        if location is None:
+            raise RuntimeError("Origin object is missing from the archive location index")
+    # During an interrupted relocation, the immutable original may still exist.
+    if location and location["storage"] == "deleted":
+        raise RuntimeError("Historical QA object was intentionally deleted by the authorized cleanup; see its deletionReceipt")
+    old_source = ROOT / item["object"]
+    if old_source.is_file():
+        data = old_source.read_bytes()
+    elif location and location["storage"] == "git":
+        data = git("cat-file", "blob", location["gitBlob"], binary=True)
+    elif location and location["storage"] == "local":
+        data = (ROOT / location["object"]).read_bytes()
+    else:
+        raise FileNotFoundError(item["object"])
+    if len(data) != item["size"] or hashlib.sha256(data).hexdigest() != item["sha256"]:
+        raise RuntimeError("Restore source SHA-256 or size mismatch")
+    target.parent.mkdir(parents=True, exist_ok=True)
+    with target.open("xb") as output:
+        output.write(data)
+    if sha256(target) != item["sha256"]:
+        raise RuntimeError("Restore SHA-256 mismatch")
+
+
 def restore(origin: str, relative_path: str, destination: str):
+    if Path(origin).name != origin or "/" in origin or "\\" in origin:
+        raise ValueError("Origin must be one archived worktree name")
     manifest = ARCHIVE / f"retained-{origin}.jsonl"
-    for line in manifest.open(encoding="utf-8"):
-        item = json.loads(line)
-        if item["path"] == relative_path:
-            target = Path(destination).resolve()
-            if target.exists():
-                raise RuntimeError("Restore refuses to overwrite an existing file")
-            target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(ROOT / item["object"], target)
-            if sha256(target) != item["sha256"]:
-                raise RuntimeError("Restore SHA-256 mismatch")
-            print(str(target))
-            return
+    with manifest.open(encoding="utf-8") as source_manifest:
+        for line in source_manifest:
+            item = json.loads(line)
+            if item["path"] == relative_path:
+                target = Path(destination).resolve()
+                restore_item(item, target)
+                print(str(target))
+                return
     raise FileNotFoundError(relative_path)
 
 
@@ -373,6 +409,8 @@ if __name__ == "__main__":
     parser.add_argument("--path")
     parser.add_argument("--destination")
     args = parser.parse_args()
+    if (ARCHIVE / "object-locations.jsonl").exists() and args.action != "restore":
+        parser.error("This consolidation is complete and categorized; only restore is supported now")
     if args.action == "restore":
         if not all([args.origin, args.path, args.destination]):
             parser.error("restore requires --origin, --path and --destination")
