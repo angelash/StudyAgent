@@ -1,0 +1,288 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T21:41:50.520Z",
+    "duration": 103580.917,
+    "expected": 25,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2865,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2577,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1280",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3084,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1440",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3614,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reference navigation: a real saved classroom opens the exact original session and position from the course library",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2967,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reference navigation: resizing an open drawer restores usable desktop controls and releases the original background",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2301,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reference navigation: blocked preference storage keeps current controls usable without inventing a saved preference",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3346,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "reference navigation: a mobile drawer hands focus to the real course blueprint and returns to its menu trigger after closing",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2445,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: a real classroom uses its authorized chemistry scope and restores the ordinary sidebar preference",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5259,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: adult whiteboard exposes one navigation and restores the original workspace and focus",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3926,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: paper exit preserves the full draft and imports it without writing a first answer",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3531,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: admin cookie identity exposes nine modules and a teacher is gated before private data reads",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5990,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: project navigation protects the complete local artifact before an explicit export and leave",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4924,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: all nine admin modules render in one shell and actual content fits phone, tablet and desktop",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6748,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: without Navigation API the persistent host keeps full unsaved material text during browser back",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6158,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: a classroom with disabled storage requires the full choice download and never submits it on exit",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3529,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: one existing-style sidebar keeps the object across tasks reports and profiles",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2591,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: profiles read metadata only and new profiles keep the original creation contract",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2368,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: a learning-code student stays bound to their own profile and rejects self mode",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2514,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: completed reports and the old family URL preserve original records without writes",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5181,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: login returns to a local original activity and refuses an external return",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3308,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: parent self learning reads independent data instead of a cached child",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2191,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: contradictory old object aliases stop before reading a diagnostic or starting work",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2030,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: report detail refuses an unfinished session without becoming an answer screen",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2029,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: mobile navigation and compact preference work across legacy and new pages",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3025,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "sanitization": "Only test titles, status, duration and bounded first-line failures. Traces, cookies, account credentials, local storage and response bodies remain local."
+}

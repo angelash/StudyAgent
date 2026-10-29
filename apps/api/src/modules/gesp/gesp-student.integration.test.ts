@@ -1,12 +1,19 @@
 import 'reflect-metadata';
 import { randomBytes, randomUUID } from 'node:crypto';
+import { mkdtempSync,rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join,resolve,sep } from 'node:path';
 import { NestFactory } from '@nestjs/core';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import request from 'supertest';
 
 describe.skipIf(process.platform !== 'win32')('GESP isolated student programming loop', () => {
+  let directory='';const names=['NODE_ENV','STUDY_STORAGE','STUDY_DATA_DIR','STUDY_SEED_FOUNDATION','STUDY_WORKER_ENABLED','XIAOJIU_CHAT_ENABLED','OPENAI_API_KEY','MINIMAX_API_KEY'] as const;
+  const previous=Object.fromEntries(names.map(name=>[name,process.env[name]]));
   let app: any, base: any, parent: any, learner: any, studentId: string;
   beforeAll(async () => {
+    directory=mkdtempSync(join(tmpdir(),'study-gesp-native-'));
+    Object.assign(process.env,{NODE_ENV:'development',STUDY_STORAGE:'sqlite',STUDY_DATA_DIR:directory,STUDY_SEED_FOUNDATION:'false',STUDY_WORKER_ENABLED:'false',XIAOJIU_CHAT_ENABLED:'false',OPENAI_API_KEY:'',MINIMAX_API_KEY:''});
     const from = (file: string) => require(`../../../dist/apps/api/src/${file}.js`);
     app = await NestFactory.create(from('app.module').AppModule, { logger: false, abortOnError: false }); app.setGlobalPrefix('api'); await app.init();
     base = request(app.getHttpServer());
@@ -20,7 +27,7 @@ describe.skipIf(process.platform !== 'win32')('GESP isolated student programming
     await call('put', `/gesp/students/${studentId}/scope`, { level: 1, atomIds: ['gesp-cpp.l1.io', 'gesp-cpp.l1.division', 'gesp-cpp.l1.loop'],
       requestKey: randomUUID(), reason: '仅开放已完成的原创试点编程知识点' }, parent);
   });
-  afterAll(async () => { await app?.close(); });
+  afterAll(async () => { await app?.close();for(const[name,value]of Object.entries(previous)){if(value===undefined)delete process.env[name];else process.env[name]=value;}if(directory){if(!resolve(directory).startsWith(resolve(tmpdir())+sep))throw Error('Unsafe isolated GESP test directory');rmSync(directory,{recursive:true,force:true});} });
   async function call(method: 'get' | 'post' | 'put', route: string, body?: unknown, actor: any = parent, expected = method === 'post' ? 201 : 200) {
     let query = base[method]('/api' + route); if (actor?.token) query = query.set('Authorization', `Bearer ${actor.token}`);
     if (body !== undefined) query = query.send(body as object); const response = await query;

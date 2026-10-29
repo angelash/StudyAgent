@@ -1,6 +1,6 @@
 # 10 GESP研究、C++试点与独立保持 — 详细设计
 
-源码基线：`30b2b510991a04e136af82a98c587b5630552b6e`。角色：教研、监护家长、试点学生。
+源码基线：`099ed99a8f3fda10b4c1d382b4dfea47e0463aa4`。角色：教研、监护家长、试点学生。
 
 产品入口：`/admin/gesp`、`/parent/gesp`、`/student/gesp`。
 
@@ -23,6 +23,31 @@
 - [apps/api/src/modules/gesp/gesp-student.integration.test.ts](../../../apps/api/src/modules/gesp/gesp-student.integration.test.ts)
 - [apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts](../../../apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts)
 - [apps/api/src/modules/gesp/isolated-runner.test.ts](../../../apps/api/src/modules/gesp/isolated-runner.test.ts)
+
+## GESP-08 认证工作台、完整副本与原操作恢复
+
+**输入**：实际学习身份、认证等级、原题/复测、原范围版本与完整本机输入。
+
+**处理与实现**：GESP以独立认证轨道进入工作台课程，不构造小学学科；学习码本人保留完整代码、探针选择和原提交，切题/刷新/旧浏览器后退、存储失败、同题多标签和下载导入分别保护。家长按实际授权对象/等级恢复选择，迟到或断网读取保持当前完整草稿；版本化确认拒绝并发旧范围，原确认重放返回历史快照，当前版本另读。代码、提示与探针的原键包含原知识点一致性核对。
+
+**输出**：一个工作台导航、完整双向副本、原回执与当前范围的显式比较。
+
+**状态与持久化**：`gespLearningScopes`、`gespLearningScopeRevisions`、`gespCodeSubmissions`、`gespProbeSubmissions`、`gespHintEvents`、`gespGuidancePlans`
+
+**权限、失败与边界**：本人/家长输入不会因导航自动提交；代码通过、提示后实现和保持分别记录。49个原创试点不代表完整教材、教师审核或真实长期学习结果。
+
+**调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
+
+**补充实现文件**：
+
+- [apps/web/app/parent/gesp/workbench.tsx](../../../apps/web/app/parent/gesp/workbench.tsx)
+- [apps/web/app/student/gesp/workbench.tsx](../../../apps/web/app/student/gesp/workbench.tsx)
+- [apps/web/components/gesp-workspace-navigation.tsx](../../../apps/web/components/gesp-workspace-navigation.tsx)
+- [apps/web/lib/gesp-workspace.ts](../../../apps/web/lib/gesp-workspace.ts)
+- [apps/web/lib/gesp-workspace-storage.ts](../../../apps/web/lib/gesp-workspace-storage.ts)
+- [apps/web/lib/use-gesp-workspace-copy.ts](../../../apps/web/lib/use-gesp-workspace-copy.ts)
+- [apps/api/src/infrastructure/gesp-workspace.test.ts](../../../apps/api/src/infrastructure/gesp-workspace.test.ts)
+- [tests/e2e/workspace-gesp.spec.ts](../../../tests/e2e/workspace-gesp.spec.ts)
 
 ## GESP-01 研究索引、等级与知识先修
 
@@ -47,10 +72,10 @@
 **服务方法**：
 
 - `GespService.overview`；[apps/api/src/modules/gesp/gesp.service.ts:75](../../../apps/api/src/modules/gesp/gesp.service.ts#L75)。
-- `GespService.atoms`；[apps/api/src/modules/gesp/gesp.service.ts:437](../../../apps/api/src/modules/gesp/gesp.service.ts#L437)。
-- `GespService.search`；[apps/api/src/modules/gesp/gesp.service.ts:442](../../../apps/api/src/modules/gesp/gesp.service.ts#L442)。
-- `GespService.detail`；[apps/api/src/modules/gesp/gesp.service.ts:475](../../../apps/api/src/modules/gesp/gesp.service.ts#L475)。
-- `GespService.document`；[apps/api/src/modules/gesp/gesp.service.ts:494](../../../apps/api/src/modules/gesp/gesp.service.ts#L494)。
+- `GespService.atoms`；[apps/api/src/modules/gesp/gesp.service.ts:438](../../../apps/api/src/modules/gesp/gesp.service.ts#L438)。
+- `GespService.search`；[apps/api/src/modules/gesp/gesp.service.ts:443](../../../apps/api/src/modules/gesp/gesp.service.ts#L443)。
+- `GespService.detail`；[apps/api/src/modules/gesp/gesp.service.ts:476](../../../apps/api/src/modules/gesp/gesp.service.ts#L476)。
+- `GespService.document`；[apps/api/src/modules/gesp/gesp.service.ts:495](../../../apps/api/src/modules/gesp/gesp.service.ts#L495)。
 
 ## GESP-02 试点范围与学生工作区
 
@@ -72,7 +97,7 @@
 **服务方法**：
 
 - `GespService.setStudentScope`；[apps/api/src/modules/gesp/gesp.service.ts:128](../../../apps/api/src/modules/gesp/gesp.service.ts#L128)。
-- `GespService.studentWorkspace`；[apps/api/src/modules/gesp/gesp.service.ts:149](../../../apps/api/src/modules/gesp/gesp.service.ts#L149)。
+- `GespService.studentWorkspace`；[apps/api/src/modules/gesp/gesp.service.ts:150](../../../apps/api/src/modules/gesp/gesp.service.ts#L150)。
 
 ## GESP-03 概念与跟踪探针
 
@@ -92,7 +117,7 @@
 
 **服务方法**：
 
-- `GespService.submitProbe`；[apps/api/src/modules/gesp/gesp.service.ts:251](../../../apps/api/src/modules/gesp/gesp.service.ts#L251)。
+- `GespService.submitProbe`；[apps/api/src/modules/gesp/gesp.service.ts:252](../../../apps/api/src/modules/gesp/gesp.service.ts#L252)。
 
 ## GESP-04 隔离C++编译运行与隐藏测试
 
@@ -112,7 +137,7 @@
 
 **服务方法**：
 
-- `GespService.submitCode`；[apps/api/src/modules/gesp/gesp.service.ts:273](../../../apps/api/src/modules/gesp/gesp.service.ts#L273)。
+- `GespService.submitCode`；[apps/api/src/modules/gesp/gesp.service.ts:274](../../../apps/api/src/modules/gesp/gesp.service.ts#L274)。
 
 ## GESP-05 逐级提示与辅助实现记录
 
@@ -132,7 +157,7 @@
 
 **服务方法**：
 
-- `GespService.requestHint`；[apps/api/src/modules/gesp/gesp.service.ts:169](../../../apps/api/src/modules/gesp/gesp.service.ts#L169)。
+- `GespService.requestHint`；[apps/api/src/modules/gesp/gesp.service.ts:170](../../../apps/api/src/modules/gesp/gesp.service.ts#L170)。
 
 ## GESP-06 家长确认指导与四阶段保持
 
@@ -153,8 +178,8 @@
 
 **服务方法**：
 
-- `GespService.createGuidancePlan`；[apps/api/src/modules/gesp/gesp.service.ts:192](../../../apps/api/src/modules/gesp/gesp.service.ts#L192)。
-- `GespService.decideGuidancePlan`；[apps/api/src/modules/gesp/gesp.service.ts:235](../../../apps/api/src/modules/gesp/gesp.service.ts#L235)。
+- `GespService.createGuidancePlan`；[apps/api/src/modules/gesp/gesp.service.ts:193](../../../apps/api/src/modules/gesp/gesp.service.ts#L193)。
+- `GespService.decideGuidancePlan`；[apps/api/src/modules/gesp/gesp.service.ts:236](../../../apps/api/src/modules/gesp/gesp.service.ts#L236)。
 
 ## GESP-07 试点任务内容审核与版本历史
 

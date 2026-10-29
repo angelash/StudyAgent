@@ -1,0 +1,6 @@
+{
+  "reason": "Existing reviewer role fixture must write through an actual transaction for SQLite instead of mutating an out-of-context memory getter.",
+  "path": "apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts",
+  "before": "4ec7f1f20c88fc2cdcbec1e17b80e8ca2458ea6ea00e491ca913e1c033b4a2f6",
+  "after": "ea65c37f444e045a9616b80ff3efa01c15432d9404b39da7e33406c6cab4fd63"
+}

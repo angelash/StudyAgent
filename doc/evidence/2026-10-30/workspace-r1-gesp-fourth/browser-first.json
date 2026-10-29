@@ -1,0 +1,57 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T21:16:12.162Z",
+    "duration": 63679.106,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "GESP workspace: exact original task and complete independent code survive task changes, reloads and a second tab",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 20647,
+          "error": "TimeoutError: locator.selectOption: Timeout 15000ms exceeded."
+        }
+      ]
+    },
+    {
+      "title": "GESP workspace: disabled storage requires the complete code download before mobile navigation and explicit import",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7600,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "GESP workspace: a lost probe reply retains the original full command through reload and rejects another atom",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2098,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "GESP workspace: a changed parent scope keeps the original full code visible for export and blocks new writes",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 16575,
+          "error": "TimeoutError: locator.selectOption: Timeout 15000ms exceeded."
+        }
+      ]
+    }
+  ],
+  "sanitization": "Only test titles, status, duration and bounded first-line failures. Traces, cookies, account credentials, local storage and response bodies remain local."
+}

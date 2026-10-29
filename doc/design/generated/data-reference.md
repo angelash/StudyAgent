@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`30b2b510991a04e136af82a98c587b5630552b6e`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`099ed99a8f3fda10b4c1d382b4dfea47e0463aa4`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -387,22 +387,22 @@
 - `GespQuestionDetail`：[packages/contracts/src/gesp.ts:34](../../../packages/contracts/src/gesp.ts#L34)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 - `GespSearchResult`：[packages/contracts/src/gesp.ts:40](../../../packages/contracts/src/gesp.ts#L40)；字段：`items`、`total`、`page`、`pageSize`。
 - `GespOverview`：[packages/contracts/src/gesp.ts:41](../../../packages/contracts/src/gesp.ts#L41)；字段：`track`、`asOf`、`ready`、`notice`、`stats`、`levels`、`sessions`、`sourceGaps`、`quarantinedLinks`、`unrecoveredObjectiveAnswers`、`teachingPlan`。
-- `GespLearningScope`：[packages/contracts/src/gesp.ts:103](../../../packages/contracts/src/gesp.ts#L103)；字段：`id`、`studentId`、`level`、`atomIds`、`status`、`version`、`confirmedByUserId`、`confirmedAt`、`updatedAt`、`requestKey`、`reason`。
-- `GespLearningScopeRevision`：[packages/contracts/src/gesp.ts:108](../../../packages/contracts/src/gesp.ts#L108)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `GespStudentTask`：[packages/contracts/src/gesp.ts:110](../../../packages/contracts/src/gesp.ts#L110)；字段：`id`、`atomId`、`title`、`prompt`、`language`、`standard`、`timeLimitSeconds`、`memoryLimitMiB`、`reviewStatus`、`probes`、`contentReviewStatus`、`contentReviewVersion`。
-- `GespTaskProvenance`：[packages/contracts/src/gesp.ts:118](../../../packages/contracts/src/gesp.ts#L118)；字段：`taskContentSha256`、`testPackSha256`、`contentReviewVersion`、`contentReviewStatus`。
-- `GespTaskReviewGate`：[packages/contracts/src/gesp.ts:124](../../../packages/contracts/src/gesp.ts#L124)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `GespTaskReview`：[packages/contracts/src/gesp.ts:125](../../../packages/contracts/src/gesp.ts#L125)；字段：`id`、`taskId`、`atomId`、`taskContentSha256`、`gates`、`status`、`reviewerId`、`reviewedAt`、`version`、`rationale`、`requestKey`。
-- `GespTaskReviewRevision`：[packages/contracts/src/gesp.ts:130](../../../packages/contracts/src/gesp.ts#L130)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `GespTaskReviewHistoryItem`：[packages/contracts/src/gesp.ts:131](../../../packages/contracts/src/gesp.ts#L131)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `GespPilotTaskReviewView`：[packages/contracts/src/gesp.ts:132](../../../packages/contracts/src/gesp.ts#L132)；字段：`id`、`atomId`、`title`、`prompt`、`language`、`standard`、`timeLimitSeconds`、`memoryLimitMiB`、`contentSha256`、`probes`、`tests`、`review`。
-- `GespProbeSubmissionReceipt`：[packages/contracts/src/gesp.ts:140](../../../packages/contracts/src/gesp.ts#L140)；字段：`id`、`studentId`、`atomId`、`taskId`、`probeId`、`dimension`、`status`、`requestKey`、`answer`、`createdAt`、`analysis`、`provenance?`。
-- `GespCodeSubmissionReceipt`：[packages/contracts/src/gesp.ts:147](../../../packages/contracts/src/gesp.ts#L147)；字段：`id`、`studentId`、`atomId`、`taskId`、`sourceSha256`、`status`、`createdAt`、`toolchain`、`compilePassed`、`requestKey`、`source`、`compileDiagnostics`、`runtimeDiagnostics`、`tests`、`hintEventId`、`hintLevel`、`independent`、`reviewTaskId`、`provenance?`。
-- `GespHintEvent`：[packages/contracts/src/gesp.ts:156](../../../packages/contracts/src/gesp.ts#L156)；字段：`id`、`studentId`、`atomId`、`taskId`、`level`、`text`、`revealsAnswer`、`requestKey`、`createdAt`。
-- `GespGuidanceAction`：[packages/contracts/src/gesp.ts:161](../../../packages/contracts/src/gesp.ts#L161)；字段：`id`、`atomId`、`title`、`activity`、`successCriterion`、`dimensionGaps`、`evidenceIds`、`minutes`。
-- `GespGuidancePlan`：[packages/contracts/src/gesp.ts:166](../../../packages/contracts/src/gesp.ts#L166)；字段：`id`、`studentId`、`scopeVersion`、`evidenceFingerprint`、`source`、`status`、`version`、`minutesPerDay`、`requestKey`、`reason`、`createdAt`、`updatedAt`、`createdByUserId`、`decidedByUserId`、`decidedAt`、`actions`、`totalActionMinutes`、`deferredAtomIds`。
-- `GespGuidancePlanRevision`：[packages/contracts/src/gesp.ts:174](../../../packages/contracts/src/gesp.ts#L174)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `GespReviewTask`：[packages/contracts/src/gesp.ts:176](../../../packages/contracts/src/gesp.ts#L176)；字段：`id`、`studentId`、`atomId`、`taskId`、`sourceSubmissionId`、`stageDay`、`dueAt`、`createdAt`、`status`、`taskContentSha256?`、`testPackSha256`、`attemptCount`、`lastSubmissionId`、`lastStatus`、`completedSubmissionId`、`completedAt`。
+- `GespLearningScope`：[packages/contracts/src/gesp.ts:104](../../../packages/contracts/src/gesp.ts#L104)；字段：`id`、`studentId`、`level`、`atomIds`、`status`、`version`、`confirmedByUserId`、`confirmedAt`、`updatedAt`、`requestKey`、`reason`。
+- `GespLearningScopeRevision`：[packages/contracts/src/gesp.ts:109](../../../packages/contracts/src/gesp.ts#L109)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `GespStudentTask`：[packages/contracts/src/gesp.ts:111](../../../packages/contracts/src/gesp.ts#L111)；字段：`id`、`atomId`、`title`、`prompt`、`language`、`standard`、`timeLimitSeconds`、`memoryLimitMiB`、`reviewStatus`、`probes`、`contentReviewStatus`、`contentReviewVersion`。
+- `GespTaskProvenance`：[packages/contracts/src/gesp.ts:119](../../../packages/contracts/src/gesp.ts#L119)；字段：`taskContentSha256`、`testPackSha256`、`contentReviewVersion`、`contentReviewStatus`。
+- `GespTaskReviewGate`：[packages/contracts/src/gesp.ts:125](../../../packages/contracts/src/gesp.ts#L125)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `GespTaskReview`：[packages/contracts/src/gesp.ts:126](../../../packages/contracts/src/gesp.ts#L126)；字段：`id`、`taskId`、`atomId`、`taskContentSha256`、`gates`、`status`、`reviewerId`、`reviewedAt`、`version`、`rationale`、`requestKey`。
+- `GespTaskReviewRevision`：[packages/contracts/src/gesp.ts:131](../../../packages/contracts/src/gesp.ts#L131)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `GespTaskReviewHistoryItem`：[packages/contracts/src/gesp.ts:132](../../../packages/contracts/src/gesp.ts#L132)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `GespPilotTaskReviewView`：[packages/contracts/src/gesp.ts:133](../../../packages/contracts/src/gesp.ts#L133)；字段：`id`、`atomId`、`title`、`prompt`、`language`、`standard`、`timeLimitSeconds`、`memoryLimitMiB`、`contentSha256`、`probes`、`tests`、`review`。
+- `GespProbeSubmissionReceipt`：[packages/contracts/src/gesp.ts:141](../../../packages/contracts/src/gesp.ts#L141)；字段：`id`、`studentId`、`atomId`、`taskId`、`probeId`、`dimension`、`status`、`requestKey`、`answer`、`createdAt`、`analysis`、`provenance?`。
+- `GespCodeSubmissionReceipt`：[packages/contracts/src/gesp.ts:148](../../../packages/contracts/src/gesp.ts#L148)；字段：`id`、`studentId`、`atomId`、`taskId`、`sourceSha256`、`status`、`createdAt`、`toolchain`、`compilePassed`、`requestKey`、`source`、`compileDiagnostics`、`runtimeDiagnostics`、`tests`、`hintEventId`、`hintLevel`、`independent`、`reviewTaskId`、`provenance?`。
+- `GespHintEvent`：[packages/contracts/src/gesp.ts:157](../../../packages/contracts/src/gesp.ts#L157)；字段：`id`、`studentId`、`atomId`、`taskId`、`level`、`text`、`revealsAnswer`、`requestKey`、`createdAt`。
+- `GespGuidanceAction`：[packages/contracts/src/gesp.ts:162](../../../packages/contracts/src/gesp.ts#L162)；字段：`id`、`atomId`、`title`、`activity`、`successCriterion`、`dimensionGaps`、`evidenceIds`、`minutes`。
+- `GespGuidancePlan`：[packages/contracts/src/gesp.ts:167](../../../packages/contracts/src/gesp.ts#L167)；字段：`id`、`studentId`、`scopeVersion`、`evidenceFingerprint`、`source`、`status`、`version`、`minutesPerDay`、`requestKey`、`reason`、`createdAt`、`updatedAt`、`createdByUserId`、`decidedByUserId`、`decidedAt`、`actions`、`totalActionMinutes`、`deferredAtomIds`。
+- `GespGuidancePlanRevision`：[packages/contracts/src/gesp.ts:175](../../../packages/contracts/src/gesp.ts#L175)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `GespReviewTask`：[packages/contracts/src/gesp.ts:177](../../../packages/contracts/src/gesp.ts#L177)；字段：`id`、`studentId`、`atomId`、`taskId`、`sourceSubmissionId`、`stageDay`、`dueAt`、`createdAt`、`status`、`taskContentSha256?`、`testPackSha256`、`attemptCount`、`lastSubmissionId`、`lastStatus`、`completedSubmissionId`、`completedAt`。
 
 ### packages/contracts/src/guidance-model.ts
 

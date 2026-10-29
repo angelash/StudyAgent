@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "30b2b510991a04e136af82a98c587b5630552b6e",
+  "sourceRevision": "099ed99a8f3fda10b4c1d382b4dfea47e0463aa4",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 480,
@@ -15,8 +15,8 @@
     "contractTypes": 438,
     "webPages": 36,
     "webRouteHandlers": 1,
-    "apiTestFiles": 219,
-    "browserTestFiles": 48
+    "apiTestFiles": 220,
+    "browserTestFiles": 49
   },
   "modules": [
     {
@@ -24488,7 +24488,7 @@
         },
         {
           "name": "studentWorkspace",
-          "line": 149,
+          "line": 150,
           "signature": "studentWorkspace(user: InMemoryUserAccount, studentId: string)",
           "access": "public",
           "decorators": [],
@@ -24508,7 +24508,7 @@
         },
         {
           "name": "requestHint",
-          "line": 169,
+          "line": 170,
           "signature": "requestHint(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -24524,7 +24524,7 @@
         },
         {
           "name": "createGuidancePlan",
-          "line": 192,
+          "line": 193,
           "signature": "createGuidancePlan(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -24543,7 +24543,7 @@
         },
         {
           "name": "decideGuidancePlan",
-          "line": 235,
+          "line": 236,
           "signature": "decideGuidancePlan(user: InMemoryUserAccount, planId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -24558,7 +24558,7 @@
         },
         {
           "name": "submitProbe",
-          "line": 251,
+          "line": 252,
           "signature": "submitProbe(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -24574,7 +24574,7 @@
         },
         {
           "name": "submitCode",
-          "line": 273,
+          "line": 274,
           "signature": "submitCode(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -24596,7 +24596,7 @@
         },
         {
           "name": "scopeView",
-          "line": 325,
+          "line": 326,
           "signature": "scopeView(scope: any)",
           "access": "private",
           "decorators": [],
@@ -24604,7 +24604,7 @@
         },
         {
           "name": "publicHint",
-          "line": 326,
+          "line": 327,
           "signature": "publicHint(row: GespHintEvent)",
           "access": "private",
           "decorators": [],
@@ -24612,7 +24612,7 @@
         },
         {
           "name": "publicPlan",
-          "line": 327,
+          "line": 328,
           "signature": "publicPlan(row: GespGuidancePlan)",
           "access": "private",
           "decorators": [],
@@ -24620,7 +24620,7 @@
         },
         {
           "name": "publicPlanSnapshot",
-          "line": 332,
+          "line": 333,
           "signature": "publicPlanSnapshot(row: GespGuidancePlanRevision)",
           "access": "private",
           "decorators": [],
@@ -24630,7 +24630,7 @@
         },
         {
           "name": "publicTask",
-          "line": 333,
+          "line": 334,
           "signature": "publicTask(task: PilotTask): GespStudentTask",
           "access": "private",
           "decorators": [],
@@ -24640,7 +24640,7 @@
         },
         {
           "name": "publicTaskReview",
-          "line": 341,
+          "line": 342,
           "signature": "publicTaskReview(row: GespTaskReview, contentSha256: string)",
           "access": "private",
           "decorators": [],
@@ -24648,7 +24648,7 @@
         },
         {
           "name": "taskProvenance",
-          "line": 345,
+          "line": 346,
           "signature": "taskProvenance(task: PilotTask, tests?: Array<{ input: string; expected: string }>): GespTaskProvenance",
           "access": "private",
           "decorators": [],
@@ -24658,7 +24658,7 @@
         },
         {
           "name": "publicProbeSubmission",
-          "line": 351,
+          "line": 352,
           "signature": "publicProbeSubmission(row: GespProbeSubmissionReceipt)",
           "access": "private",
           "decorators": [],
@@ -24666,7 +24666,7 @@
         },
         {
           "name": "capabilities",
-          "line": 352,
+          "line": 353,
           "signature": "capabilities(atomIds: string[], probes: any[], submissions: any[], reviews: any[] = [])",
           "access": "private",
           "decorators": [],
@@ -24678,7 +24678,7 @@
         },
         {
           "name": "latestEvidenceIds",
-          "line": 389,
+          "line": 390,
           "signature": "latestEvidenceIds(atomId: string, probes: any[], submissions: any[])",
           "access": "private",
           "decorators": [],
@@ -24686,7 +24686,7 @@
         },
         {
           "name": "reviewTests",
-          "line": 394,
+          "line": 395,
           "signature": "reviewTests(task: PilotTask, stageDay: number)",
           "access": "private",
           "decorators": [],
@@ -24694,7 +24694,7 @@
         },
         {
           "name": "scheduleReviews",
-          "line": 400,
+          "line": 401,
           "signature": "scheduleReviews(studentId: string, atomId: string, taskId: string, sourceSubmissionId: string, now: string)",
           "access": "private",
           "decorators": [],
@@ -24707,7 +24707,7 @@
         },
         {
           "name": "appendGuidanceRevision",
-          "line": 412,
+          "line": 413,
           "signature": "appendGuidanceRevision(plan: GespGuidancePlan)",
           "access": "private",
           "decorators": [],
@@ -24718,7 +24718,7 @@
         },
         {
           "name": "safeDiagnostic",
-          "line": 416,
+          "line": 417,
           "signature": "safeDiagnostic(value: unknown)",
           "access": "private",
           "decorators": [],
@@ -24726,7 +24726,7 @@
         },
         {
           "name": "appendScopeRevision",
-          "line": 420,
+          "line": 421,
           "signature": "appendScopeRevision(scope: any)",
           "access": "private",
           "decorators": [],
@@ -24737,7 +24737,7 @@
         },
         {
           "name": "publicSubmission",
-          "line": 424,
+          "line": 425,
           "signature": "publicSubmission(row: GespCodeSubmissionReceipt)",
           "access": "private",
           "decorators": [],
@@ -24745,7 +24745,7 @@
         },
         {
           "name": "runCpp",
-          "line": 425,
+          "line": 426,
           "signature": "runCpp(source: string, tests: Array<{ input: string; expected: string }>)",
           "access": "private",
           "decorators": [],
@@ -24753,7 +24753,7 @@
         },
         {
           "name": "atoms",
-          "line": 437,
+          "line": 438,
           "signature": "atoms(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -24764,7 +24764,7 @@
         },
         {
           "name": "search",
-          "line": 442,
+          "line": 443,
           "signature": "search(user: InMemoryUserAccount, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -24777,7 +24777,7 @@
         },
         {
           "name": "publicQuestion",
-          "line": 459,
+          "line": 460,
           "signature": "publicQuestion(q: IndexedQuestion): GespQuestion",
           "access": "private",
           "decorators": [],
@@ -24785,7 +24785,7 @@
         },
         {
           "name": "archiveFile",
-          "line": 466,
+          "line": 467,
           "signature": "archiveFile(path: string): string | null",
           "access": "private",
           "decorators": [],
@@ -24793,7 +24793,7 @@
         },
         {
           "name": "detail",
-          "line": 475,
+          "line": 476,
           "signature": "detail(user: InMemoryUserAccount, id: string): GespQuestionDetail",
           "access": "public",
           "decorators": [],
@@ -24806,7 +24806,7 @@
         },
         {
           "name": "document",
-          "line": 494,
+          "line": 495,
           "signature": "document(user: InMemoryUserAccount, sha256: string)",
           "access": "public",
           "decorators": [],
@@ -24818,7 +24818,7 @@
         },
         {
           "name": "onModuleDestroy",
-          "line": 504,
+          "line": 505,
           "signature": "onModuleDestroy()",
           "access": "public",
           "decorators": [],
@@ -53037,7 +53037,7 @@
     {
       "name": "GespLearningScope",
       "file": "packages/contracts/src/gesp.ts",
-      "line": 103,
+      "line": 104,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -53100,14 +53100,14 @@
     {
       "name": "GespLearningScopeRevision",
       "file": "packages/contracts/src/gesp.ts",
-      "line": 108,
+      "line": 109,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "GespStudentTask",
       "file": "packages/contracts/src/gesp.ts",
-      "line": 110,
+      "line": 111,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -53175,7 +53175,7 @@
     {
       "name": "GespTaskProvenance",
       "file": "packages/contracts/src/gesp.ts",
-      "line": 118,
+      "line": 119,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -53203,14 +53203,14 @@
     {
       "name": "GespTaskReviewGate",
       "file": "packages/contracts/src/gesp.ts",
-      "line": 124,
+      "line": 125,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "GespTaskReview",
       "file": "packages/contracts/src/gesp.ts",
-      "line": 125,
+      "line": 126,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -53273,21 +53273,21 @@
     {
       "name": "GespTaskReviewRevision",
       "file": "packages/contracts/src/gesp.ts",
-      "line": 130,
+      "line": 131,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "GespTaskReviewHistoryItem",
       "file": "packages/contracts/src/gesp.ts",
-      "line": 131,
+      "line": 132,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "GespPilotTaskReviewView",
       "file": "packages/contracts/src/gesp.ts",
-      "line": 132,
+      "line": 133,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -53355,7 +53355,7 @@
     {
       "name": "GespProbeSubmissionReceipt",
       "file": "packages/contracts/src/gesp.ts",
-      "line": 140,
+      "line": 141,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -53423,7 +53423,7 @@
     {
       "name": "GespCodeSubmissionReceipt",
       "file": "packages/contracts/src/gesp.ts",
-      "line": 147,
+      "line": 148,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -53526,7 +53526,7 @@
     {
       "name": "GespHintEvent",
       "file": "packages/contracts/src/gesp.ts",
-      "line": 156,
+      "line": 157,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -53579,7 +53579,7 @@
     {
       "name": "GespGuidanceAction",
       "file": "packages/contracts/src/gesp.ts",
-      "line": 161,
+      "line": 162,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -53627,7 +53627,7 @@
     {
       "name": "GespGuidancePlan",
       "file": "packages/contracts/src/gesp.ts",
-      "line": 166,
+      "line": 167,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -53725,14 +53725,14 @@
     {
       "name": "GespGuidancePlanRevision",
       "file": "packages/contracts/src/gesp.ts",
-      "line": 174,
+      "line": 175,
       "kind": "TypeAliasDeclaration",
       "fields": []
     },
     {
       "name": "GespReviewTask",
       "file": "packages/contracts/src/gesp.ts",
-      "line": 176,
+      "line": 177,
       "kind": "TypeAliasDeclaration",
       "fields": [
         {
@@ -61055,11 +61055,10 @@
       "kind": "page",
       "file": "apps/web/app/parent/gesp/page.tsx",
       "imports": [
-        "react",
         "next/link",
-        "../../../components/study-nav",
-        "../../../lib/api",
         "../../../lib/session-user",
+        "../../../components/gesp-workspace-navigation",
+        "./workbench",
         "../../student/gesp/gesp-student.css"
       ]
     },
@@ -61090,11 +61089,10 @@
       "kind": "page",
       "file": "apps/web/app/student/gesp/page.tsx",
       "imports": [
-        "react",
-        "next/link",
-        "../../../components/study-nav",
-        "../../../lib/api",
         "../../../lib/session-user",
+        "../../../components/gesp-workspace-navigation",
+        "./workbench",
+        "next/link",
         "./gesp-student.css"
       ]
     },
@@ -61243,6 +61241,7 @@
     "apps/api/src/infrastructure/assistant-whiteboard-recovery.integration.test.ts",
     "apps/api/src/infrastructure/backup.integration.test.ts",
     "apps/api/src/infrastructure/domain-database.test.ts",
+    "apps/api/src/infrastructure/gesp-workspace.test.ts",
     "apps/api/src/infrastructure/materials-navigation.test.ts",
     "apps/api/src/infrastructure/operations.integration.test.ts",
     "apps/api/src/infrastructure/paper-practice-migration.test.ts",
@@ -61497,6 +61496,7 @@
     "tests/e2e/whiteboard-questions.spec.ts",
     "tests/e2e/whiteboard-settings.spec.ts",
     "tests/e2e/workspace-focus.spec.ts",
+    "tests/e2e/workspace-gesp.spec.ts",
     "tests/e2e/workspace-materials.spec.ts",
     "tests/e2e/workspace-shell.spec.ts",
     "tests/e2e/workspace.spec.ts"

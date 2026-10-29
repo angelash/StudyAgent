@@ -1,0 +1,24 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T21:49:53.128Z",
+    "duration": 17289.305,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "GESP workspace: a parent with disabled storage downloads the full selection before changing levels and restores it explicitly",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3921,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "sanitization": "Only test titles, status, duration and bounded first-line failures. Traces, cookies, account credentials, local storage and response bodies remain local."
+}

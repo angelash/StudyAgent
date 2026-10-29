@@ -1,0 +1,123 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T21:36:55.838Z",
+    "duration": 66626.076,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "GESP workspace: exact original task and complete independent code survive task changes, reloads and a second tab",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7629,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "GESP workspace: disabled storage requires the complete code download before mobile navigation and explicit import",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7822,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "GESP workspace: a lost probe reply retains the original full command through reload and rejects another atom",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2054,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "GESP workspace: a changed parent scope keeps the original full code visible for export and blocks new writes",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4202,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "GESP workspace: a parent restores the exact linked child and certification level while keeping each level draft separate",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2503,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "GESP workspace: a lost parent confirmation replays its original version while a later confirmed scope stays current",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2577,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "GESP workspace: a parent with disabled storage downloads the full selection before changing levels and restores it explicitly",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2776,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "GESP workspace: without Navigation API browser back preserves the full original-task code until its exact download",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4995,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "GESP workspace: actual isolated code execution recovers one lost receipt while preserving later complete code edits",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 13335,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "GESP workspace: delayed parent reads and a disconnected refresh cannot replace another child or erase its complete draft",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 2369,
+          "error": "Error: expect(locator).toBeVisible() failed"
+        }
+      ]
+    }
+  ],
+  "sanitization": "Only test titles, status, duration and bounded first-line failures. Traces, cookies, account credentials, local storage and response bodies remain local."
+}

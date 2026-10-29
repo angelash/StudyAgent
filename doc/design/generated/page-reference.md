@@ -114,7 +114,7 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/parent/gesp/page.tsx](../../../apps/web/app/parent/gesp/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`../../../components/study-nav`、`../../../lib/api`、`../../../lib/session-user`、`../../student/gesp/gesp-student.css`
+- 直接引用：`next/link`、`../../../lib/session-user`、`../../../components/gesp-workspace-navigation`、`./workbench`、`../../student/gesp/gesp-student.css`
 
 ## /parent/login
 
@@ -132,7 +132,7 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/student/gesp/page.tsx](../../../apps/web/app/student/gesp/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`../../../components/study-nav`、`../../../lib/api`、`../../../lib/session-user`、`./gesp-student.css`
+- 直接引用：`../../../lib/session-user`、`../../../components/gesp-workspace-navigation`、`./workbench`、`next/link`、`./gesp-student.css`
 
 ## /student/knowledge
 

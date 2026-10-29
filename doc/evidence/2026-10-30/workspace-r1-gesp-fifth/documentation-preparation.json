@@ -1,0 +1,9 @@
+{
+  "scope": "Recorded preparation failure from the current turn; this is a normalized explanation, not a claimed raw log archive.",
+  "firstContentSnapshot": {
+    "exitCode": 1,
+    "message": "Stale authored content audit: apps/api/src/modules/gesp/gesp-student.integration.test.ts",
+    "reason": "The native test temporary-directory allocation moved inside beforeAll after the third audit.",
+    "correction": "Ran authored audit against the final fifth isolated compiled API, refreshed only the local audit cache, then reran content snapshot and handbook validation successfully."
+  }
+}

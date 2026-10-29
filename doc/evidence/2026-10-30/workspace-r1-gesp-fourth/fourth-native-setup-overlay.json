@@ -1,0 +1,6 @@
+{
+  "path": "apps/api/src/modules/gesp/gesp-student.integration.test.ts",
+  "before": "26f78e54791baf14fef50ec19be25df003f8ab1b877f507885cad44cd03794fa",
+  "after": "438c70f06c6a6bd09217301d07b5f3869e4a79f8dba83e52cf20c7b5180e7cfe",
+  "reason": "Allocate the Windows-only native suite temporary directory inside beforeAll, so skipped platforms create no directories; no application behavior changed."
+}

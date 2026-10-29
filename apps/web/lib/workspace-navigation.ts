@@ -3,9 +3,11 @@ import { adminWorkspaceEntries,allowedAdminWorkspace } from './admin-navigation'
 
 export type WorkspaceArea = 'home' | 'courses' | 'tasks' | 'assessment' | 'reports' | 'calendar' | 'history' | 'materials' | 'whiteboards' | 'profiles' | 'settings' | 'admin';
 export type StudioView = 'home' | 'courses' | 'feed' | 'calendar' | 'materials' | 'history';
+export type WorkspaceTrackContext = {kind:'gesp';mode:'manage'|'learn';studentId?:string;level?:number};
 export type WorkspaceNavigation = {
   active: WorkspaceArea | 'feed';
   context?: LearningContext;
+  trackContext?: WorkspaceTrackContext;
   contextState?: 'ready' | 'pending' | 'unavailable';
   layout?: 'default' | 'focus';
   activityKey?: string;
@@ -30,7 +32,17 @@ const destinations: Partial<Record<WorkspaceArea, string>> = {
   tasks: '/studio/tasks', assessment: '/studio/assessment', reports: '/studio/reports',
   whiteboards: '/studio/whiteboards', profiles: '/studio/profiles', settings: '/studio/settings', admin: '/admin/curriculum',
 };
-export function workspaceHref(area: WorkspaceArea, context?: LearningContext) {
+export function workspaceHref(area: WorkspaceArea, context?: LearningContext, track?: WorkspaceTrackContext) {
+  if(track){
+    if(area==='courses'){
+      const params=new URLSearchParams();if(track.mode==='manage'&&track.studentId)params.set('studentId',track.studentId);if(track.level&&Number.isInteger(track.level)&&track.level>=1&&track.level<=4)params.set('level',String(track.level));
+      return (track.mode==='manage'?'/parent/gesp':'/student/gesp')+(params.size?'?'+params:'');
+    }
+    const route=destinations[area]??'/studio',params=new URLSearchParams();
+    if(!destinations[area]&&area!=='home')params.set('view',area);if(area==='materials')params.set('tab','personal');
+    if(track.studentId)params.set(route==='/studio'?'student':'studentId',track.studentId);
+    return route+(params.size?'?'+params:'');
+  }
   const route = destinations[area] ?? '/studio';
   const params = new URLSearchParams();
   if (!destinations[area] && area !== 'home') params.set('view', area);

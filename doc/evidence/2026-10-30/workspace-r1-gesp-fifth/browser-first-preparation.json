@@ -1,0 +1,6 @@
+{
+  "exitCode": 1,
+  "stage": "Before browser startup",
+  "reason": "Browser command was started while the web build was still running. The skip-build context check rejected missing completed build context. No browser cases ran. Original preparation log is retained in the local fifth QA directory.",
+  "correction": "The retry runner explicitly requires a successful completed web-build receipt before starting."
+}

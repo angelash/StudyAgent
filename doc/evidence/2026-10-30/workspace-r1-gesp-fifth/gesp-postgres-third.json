@@ -1,0 +1,46 @@
+{
+  "numTotalTests": 6,
+  "numPassedTests": 6,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "gesp-learning-loop.integration.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "GESP learning support HTTP boundaries recovers the exact code receipt but rejects a different atom with the same source and original request key",
+          "status": "passed",
+          "durationMs": 30.376000000000204
+        },
+        {
+          "title": "GESP learning support HTTP boundaries lets only the learner request progressive hints and replays the same request",
+          "status": "passed",
+          "durationMs": 30.692399999999907
+        },
+        {
+          "title": "GESP learning support HTTP boundaries creates a rule plan for parent confirmation and exposes it only after activation",
+          "status": "passed",
+          "durationMs": 50.58810000000085
+        },
+        {
+          "title": "GESP learning support HTTP boundaries shows hidden authored content only to reviewers and version-gates the publishing decision",
+          "status": "passed",
+          "durationMs": 32.137000000000626
+        },
+        {
+          "title": "GESP learning support HTTP boundaries returns the frozen scope receipt after later changes and rejects competing versioned confirmations",
+          "status": "passed",
+          "durationMs": 133.98749999999927
+        },
+        {
+          "title": "GESP learning support HTTP boundaries keeps unrelated guardians outside programming learning evidence",
+          "status": "passed",
+          "durationMs": 361.8203000000003
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "ports": [
+    {
+      "port": 3204,
+      "acceptingConnections": false
+    },
+    {
+      "port": 3205,
+      "acceptingConnections": false
+    },
+    {
+      "port": 3206,
+      "acceptingConnections": false
+    },
+    {
+      "port": 3207,
+      "acceptingConnections": false
+    },
+    {
+      "port": 3208,
+      "acceptingConnections": false
+    },
+    {
+      "port": 4204,
+      "acceptingConnections": false
+    },
+    {
+      "port": 4205,
+      "acceptingConnections": false
+    },
+    {
+      "port": 4206,
+      "acceptingConnections": false
+    },
+    {
+      "port": 4207,
+      "acceptingConnections": false
+    },
+    {
+      "port": 4208,
+      "acceptingConnections": false
+    }
+  ],
+  "preserved": "Existing owned PostgreSQL QA cluster on port 15439."
+}

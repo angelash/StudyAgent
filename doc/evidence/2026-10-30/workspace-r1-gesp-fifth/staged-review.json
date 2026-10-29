@@ -1,0 +1,14 @@
+{
+  "filesScanned": 131,
+  "credentialSignatureFindings": [],
+  "applicationMismatches": [],
+  "allowedWhitespaceOnly": [
+    {
+      "path": "apps/web/app/parent/gesp/workbench.tsx",
+      "reason": "Remove one trailing empty EOF line only; no tokens changed.",
+      "stagedSha256": "63bc4f3697c8e0cffd0619f30e387e0accfc05a775fb55766dfac8b16fa30159",
+      "frozenSha256": "6b0902f3a53e9f65364495d424356922cf5f60e802550745a19edf4ceb771fb6"
+    }
+  ],
+  "scanLimits": "Credential signature and application-build equivalence check; runtime databases, credentials, traces and logs are not staged."
+}

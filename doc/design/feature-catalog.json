@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "30b2b510991a04e136af82a98c587b5630552b6e",
+  "sourceRevision": "099ed99a8f3fda10b4c1d382b4dfea47e0463aa4",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 136,
+    "features": 137,
     "activeNormalApiRoutes": 459,
     "coveredApiRoutes": 459
   },
@@ -10900,6 +10900,48 @@
       ],
       "features": [
         {
+          "id": "GESP-08",
+          "title": "认证工作台、完整副本与原操作恢复",
+          "area": "gesp",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "教研、监护家长、试点学生",
+          "pages": [
+            "/admin/gesp",
+            "/parent/gesp",
+            "/student/gesp"
+          ],
+          "inputs": "实际学习身份、认证等级、原题/复测、原范围版本与完整本机输入",
+          "implementation": "GESP以独立认证轨道进入工作台课程，不构造小学学科；学习码本人保留完整代码、探针选择和原提交，切题/刷新/旧浏览器后退、存储失败、同题多标签和下载导入分别保护。家长按实际授权对象/等级恢复选择，迟到或断网读取保持当前完整草稿；版本化确认拒绝并发旧范围，原确认重放返回历史快照，当前版本另读。代码、提示与探针的原键包含原知识点一致性核对。",
+          "outputs": "一个工作台导航、完整双向副本、原回执与当前范围的显式比较",
+          "collections": [
+            "gespLearningScopes",
+            "gespLearningScopeRevisions",
+            "gespCodeSubmissions",
+            "gespProbeSubmissions",
+            "gespHintEvents",
+            "gespGuidancePlans"
+          ],
+          "limits": "本人/家长输入不会因导航自动提交；代码通过、提示后实现和保持分别记录。49个原创试点不代表完整教材、教师审核或真实长期学习结果。",
+          "endpoints": [],
+          "implementations": [],
+          "sourceFiles": [
+            "apps/web/app/parent/gesp/workbench.tsx",
+            "apps/web/app/student/gesp/workbench.tsx",
+            "apps/web/components/gesp-workspace-navigation.tsx",
+            "apps/web/lib/gesp-workspace.ts",
+            "apps/web/lib/gesp-workspace-storage.ts",
+            "apps/web/lib/use-gesp-workspace-copy.ts",
+            "apps/api/src/infrastructure/gesp-workspace.test.ts",
+            "tests/e2e/workspace-gesp.spec.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/gesp/gesp.integration.test.ts",
+            "apps/api/src/modules/gesp/gesp-student.integration.test.ts",
+            "apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts",
+            "apps/api/src/modules/gesp/isolated-runner.test.ts"
+          ]
+        },
+        {
           "id": "GESP-01",
           "title": "研究索引、等级与知识先修",
           "area": "gesp",
@@ -10966,22 +11008,22 @@
             {
               "name": "GespService.atoms",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 437
+              "line": 438
             },
             {
               "name": "GespService.search",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 442
+              "line": 443
             },
             {
               "name": "GespService.detail",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 475
+              "line": 476
             },
             {
               "name": "GespService.document",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 494
+              "line": 495
             }
           ],
           "sourceFiles": [
@@ -11040,7 +11082,7 @@
             {
               "name": "GespService.studentWorkspace",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 149
+              "line": 150
             }
           ],
           "sourceFiles": [
@@ -11085,7 +11127,7 @@
             {
               "name": "GespService.submitProbe",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 251
+              "line": 252
             }
           ],
           "sourceFiles": [
@@ -11130,7 +11172,7 @@
             {
               "name": "GespService.submitCode",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 273
+              "line": 274
             }
           ],
           "sourceFiles": [
@@ -11177,7 +11219,7 @@
             {
               "name": "GespService.requestHint",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 169
+              "line": 170
             }
           ],
           "sourceFiles": [
@@ -11232,12 +11274,12 @@
             {
               "name": "GespService.createGuidancePlan",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 192
+              "line": 193
             },
             {
               "name": "GespService.decideGuidancePlan",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 235
+              "line": 236
             }
           ],
           "sourceFiles": [

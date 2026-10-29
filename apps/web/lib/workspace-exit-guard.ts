@@ -3,7 +3,7 @@ import type { WorkspaceExitGuard } from './workspace-shell-context';
 const stateKey = '__studyWorkspaceHistoryIndex';
 type ActiveGuard = WorkspaceExitGuard & { token: symbol };
 type Position = { href: string; state: unknown; index: number | null };
-const identityKeys = ['student','studentId','subject','courseScope','audience','studioCourseId','sourceCourseId','lesson','session','project','whiteboard','draft','course'];
+const identityKeys = ['student','studentId','subject','courseScope','audience','studioCourseId','sourceCourseId','lesson','session','project','whiteboard','draft','course','task','reviewTask','level','track'];
 export function sameWorkspaceActivity(destination: string, current: string) {
   try {
     const next = new URL(destination, current), previous = new URL(current);

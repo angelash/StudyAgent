@@ -1,0 +1,6 @@
+{
+  "reason": "Each bootstrapped native GESP suite needs its own actual SQLite directory. The previous helper shared one mutable startup database across independent workers.",
+  "path": "apps/api/src/modules/gesp/gesp-student.integration.test.ts",
+  "before": "820e60550e7703213d0a19a7ea785b524be97eaa984704e9450a701ef62209f1",
+  "after": "26f78e54791baf14fef50ec19be25df003f8ab1b877f507885cad44cd03794fa"
+}

@@ -1,0 +1,104 @@
+'use client';
+import * as React from 'react';
+import Link from 'next/link';
+import { apiRequest,ApiRequestError } from '../../../lib/api';
+import type { SessionUser } from '../../../lib/session-user';
+import { GespWorkspaceNavigation } from '../../../components/gesp-workspace-navigation';
+import { WorkspaceDialog } from '../../studio/workspace-dialog';
+import { readGespLocation,gespLocationHref,type GespLocation,type GespPending } from '../../../lib/gesp-workspace';
+import { useGespWorkspaceCopy } from '../../../lib/use-gesp-workspace-copy';
+import '../assessment/studio.css';
+import './gesp-student.css';
+
+// Original task, result and runtime presentation contracts remain local to this page.
+type Probe = { id: string; dimension: 'understanding' | 'procedure'; prompt: string; options: string[] };
+type Task = { id: string; atomId: string; title: string; prompt: string; language: 'cpp'; standard: 'C++17'; timeLimitSeconds: number; memoryLimitMiB: number; probes: Probe[]; reviewStatus: 'original_authored_pilot' | 'instructional_approved' };
+type Receipt = { id: string; status: string; sourceSha256: string; createdAt: string; compilePassed: boolean;
+  compileDiagnostics: string[]; runtimeDiagnostics: Array<{ index: number; status: string; stderr: string }>;
+  tests: Array<{ index: number; status: string; passed: boolean; durationMs: number }>; hintLevel: number; independent: boolean; reviewTaskId: string | null;
+  provenance?: { contentReviewStatus: string; contentReviewVersion: number } };
+type Capability = { atomId: string; state: string; dimensions: Array<{ dimension: string; status: string; attempts: number }>; hypothesis: string; nextAction: string; invalidatedEvidenceIds: string[]; evidenceNotice: string };
+type Hint = { id: string; taskId: string; level: number; text: string; revealsAnswer: false; createdAt: string };
+type Review = { id: string; atomId: string; taskId: string; stageDay: number; dueAt: string; status: string; due: boolean; attemptCount: number };
+type Plan = { id: string; status: string; version: number; minutesPerDay: number; totalActionMinutes: number; deferredAtomIds: string[]; actions: Array<{ id: string; atomId: string; title: string; activity: string; successCriterion: string; dimensionGaps: string[] }> };
+type Workspace = { scope: null | { level: number; atomIds: string[]; version: number }; notice: string; tasks: Task[]; submissions: Receipt[];
+  probeSubmissions: Array<{ id: string; probeId: string; status: string; analysis: string }>; hintEvents: Hint[];
+  guidancePlans: Plan[]; reviewTasks: Review[]; capabilities: Capability[] };
+const starter = '#include <iostream>\nusing namespace std;\n\nint main() {\n    // 从标准输入读取数据，向标准输出写答案。\n    return 0;\n}\n';
+
+
+export function GespLearnerWorkspace({user}:{user:SessionUser}) {
+  const studentId=user.studentId!,[location,setLocation]=React.useState<GespLocation|null>(null),[locationError,setLocationError]=React.useState('');
+  const [workspace,setWorkspace]=React.useState<Workspace|null>(null),[error,setError]=React.useState(''),[reload,setReload]=React.useState(0);
+  const originals=React.useRef(new Map<string,Task>());
+  React.useEffect(()=>{const read=()=>{try{setLocation(readGespLocation(window.location.search,studentId));setLocationError('');}catch(reason){setLocation(null);setLocationError(reason instanceof Error?reason.message:'原GESP位置无效。');}};read();window.addEventListener('popstate',read);return()=>window.removeEventListener('popstate',read);},[studentId]);
+  React.useEffect(()=>{
+    if(!location||locationError)return;const request=new AbortController();setError('');
+    void apiRequest<Workspace>('/gesp/students/'+studentId+'/workspace',{signal:request.signal}).then(value=>{if(!request.signal.aborted)setWorkspace(value);}).catch(reason=>{if(request.signal.aborted)return;setError(reason instanceof Error?reason.message:'暂时无法读取GESP范围。');if(reason instanceof ApiRequestError&&[401,403,404].includes(reason.status)){setWorkspace(null);originals.current.clear();}});
+    return()=>request.abort();
+  },[studentId,Boolean(location),locationError,reload]);
+  React.useEffect(()=>{const refresh=()=>setReload(value=>value+1),timer=setInterval(refresh,15000);window.addEventListener('focus',refresh);return()=>{clearInterval(timer);window.removeEventListener('focus',refresh);};},[]);
+  React.useEffect(()=>{
+    if(!workspace||!location||location.taskId||!workspace.tasks.length)return;
+    const next={...location,taskId:workspace.tasks[0].id,level:location.level??workspace.scope?.level??null};window.history.replaceState(window.history.state,'',gespLocationHref('learn',next));setLocation(next);
+  },[workspace,location]);
+  for(const task of workspace?.tasks??[])if(!originals.current.has(task.id))originals.current.set(task.id,task);
+  function openTask(taskId:string,reviewTaskId:string|null=null){const next:GespLocation={studentId,level:workspace?.scope?.level??null,taskId,reviewTaskId:reviewTaskId??''};window.history.pushState(window.history.state,'',gespLocationHref('learn',next));setLocation(next);setLocationError('');}
+  const task=workspace&&location?workspace.tasks.find(task=>task.id===location.taskId)??originals.current.get(location.taskId):undefined;
+  if(!location||locationError||!workspace||!task)return <main className="learning-studio gesp-page"><GespWorkspaceNavigation mode="learn" studentId={studentId} level={workspace?.scope?.level} pending={!error&&!locationError&&!workspace} unavailable={!!locationError||!!error&&!workspace}/><div className="gesp-shell"><h1>GESP C++认证课程</h1><p role={error||locationError?'alert':'status'}>{locationError||error||(!workspace?'正在读取本人的认证范围…':!workspace.scope?'还没有确认GESP编程范围。请家长先核对范围。':'原题目前不可用，请选择当前范围内的题目。')}</p>{workspace?.tasks.map(task=><button className="studio-secondary" key={task.id} onClick={()=>openTask(task.id)}>{task.title}</button>)}<button className="studio-secondary" onClick={()=>setReload(value=>value+1)}>重新读取范围</button><Link className="studio-secondary" href="/studio?view=courses">返回课程</Link></div></main>;
+  const review=location.reviewTaskId?workspace.reviewTasks.find(row=>row.id===location.reviewTaskId&&row.taskId===task.id):undefined;
+  const authorized=Boolean(workspace.scope&&workspace.tasks.some(row=>row.id===task.id)&&(location.level===null||location.level===workspace.scope.level)&&(!location.reviewTaskId||review?.due&&review.status==='scheduled'));
+  return <GespTaskWorkbench key={task.id+':'+location.reviewTaskId} user={user} liveTask={task} workspace={workspace} rootError={error} authorized={authorized} reviewTaskId={location.reviewTaskId||null} onOpen={openTask} onRefresh={()=>setReload(value=>value+1)}/>;
+}
+
+function GespTaskWorkbench({user,liveTask,workspace,rootError,authorized,reviewTaskId,onOpen,onRefresh}:{user:SessionUser;liveTask:Task;workspace:Workspace;rootError:string;authorized:boolean;reviewTaskId:string|null;onOpen:(taskId:string,reviewTaskId?:string|null)=>void;onRefresh:()=>void}){
+  const studentId=user.studentId!,[task,setTask]=React.useState(liveTask),copy=useGespWorkspaceCopy({ownerId:user.id,studentId,task:liveTask,scopeVersion:workspace.scope?.version??1,reviewTaskId,starter});
+  const source=copy.copy?.source??'',probeAnswers=copy.copy?.probeAnswers??{},[receipt,setReceipt]=React.useState<Receipt|null>(null),[error,setError]=React.useState(''),[probeNotice,setProbeNotice]=React.useState(''),[busy,setBusy]=React.useState(false);
+  const request=React.useRef<AbortController|null>(null);React.useEffect(()=>()=>request.current?.abort(),[]);
+  const running=React.useRef(false),pendingCommand=React.useRef(copy.copy?.pending);pendingCommand.current=copy.copy?.pending;
+  const hints=workspace.hintEvents.filter(row=>row.taskId===task.id).sort((a,b)=>a.level-b.level),activeHint=hints.at(-1)??null,activePlan=workspace.guidancePlans.find(plan=>plan.status==='active'),dueReviews=workspace.reviewTasks.filter(row=>row.due);
+  const editable=copy.ready&&copy.current&&authorized&&!busy;
+  function openTask(id:string,review:string|null=null){if(busy){copy.setNotice('原操作还在核对，请稍后再切换。');return;}copy.request(()=>onOpen(id,review));}
+  async function run(pending:GespPending,protectedNow=false){
+    if(running.current||!copy.current||!authorized)return;if(copy.unsafe&&!protectedNow){copy.setNotice('先下载完整代码与原请求，再用原请求继续。');return;}
+    running.current=true;
+    const operation=new AbortController();request.current?.abort();request.current=operation;setBusy(true);setError('');
+    try{
+      const result=await apiRequest<any>('/gesp/'+({code:'code-submissions',hint:'hints',probe:'probe-submissions'} as const)[pending.kind],{method:'POST',body:JSON.stringify(pending.command),signal:operation.signal});
+      if(operation.signal.aborted)return;
+      if(result.studentId!==studentId||result.atomId!==task.atomId||result.taskId!==task.id)throw Error('原结果与当前GESP对象或题目不一致，请保留原请求核对。');
+      if(pending.kind==='code'){
+        const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(pending.command.source)))).map(byte=>byte.toString(16).padStart(2,'0')).join('');
+        if(operation.signal.aborted)return;if(result.sourceSha256!==hash)throw Error('原回执的完整源码身份不一致，当前输入和请求保持。');setReceipt(result);
+      }else if(pending.kind==='probe'){if(result.probeId!==pending.command.probeId)throw Error('探针回执不属于原题。');setProbeNotice(result.analysis);}
+      else if(result.level!==pending.command.level)throw Error('提示回执不属于原级别。');
+      pendingCommand.current=null;copy.change({pending:null});onRefresh();
+    }catch(reason){if(!operation.signal.aborted){setError(reason instanceof Error?reason.message:'原操作暂时未确认。');if(reason instanceof ApiRequestError&&[401,403].includes(reason.status))onRefresh();}}
+    finally{running.current=false;if(!operation.signal.aborted)setBusy(false);}
+  }
+  function prepare(value:GespPending){if(!editable||running.current)return;if(pendingCommand.current){copy.setNotice('先核对或保留原请求，再开始新的操作。');return;}pendingCommand.current=value;if(copy.protectPending(value))void run(value,true);}
+  function submit(){if(new TextEncoder().encode(source).length>65536){copy.setNotice('完整代码超过当前运行器的64KiB限制。输入保持，可以先下载副本再调整。');return;}prepare({kind:'code',command:{studentId,atomId:task.atomId,source,requestKey:crypto.randomUUID(),...(activeHint&&!reviewTaskId?{hintEventId:activeHint.id}:{}),...(reviewTaskId?{reviewTaskId}:{})}});}
+  function requestHint(level:number){prepare({kind:'hint',command:{studentId,atomId:task.atomId,taskId:task.id,level,requestKey:crypto.randomUUID()}});}
+  function submitProbe(probe:Probe){const answer=probeAnswers[probe.id];if(answer)prepare({kind:'probe',command:{studentId,atomId:task.atomId,probeId:probe.id,answer,requestKey:crypto.randomUUID()}});}
+  return <main className="learning-studio gesp-page"><GespWorkspaceNavigation mode="learn" studentId={studentId} level={workspace.scope?.level} onRequestNavigate={(_href,proceed)=>{if(busy){copy.setNotice('原操作正在核对，请稍后再离开。');return;}copy.request(proceed);}}/><div className="gesp-shell"><header><span className="studio-eyebrow">GESP C++ / ISOLATED PRACTICE</span><h1>先写清楚，<br /><em>再让隔离运行器核对。</em></h1><p>这里只显示家长已确认的原创试点范围。隐藏测试与期望输出不会出现在题目或结果里；编译失败、错误输出和超时分别记录。</p></header>
+    {(error||rootError) && <div className="studio-error" role="alert">{error||rootError}</div>}
+    {copy.notice&&<p className="studio-notice" role="status">{copy.notice}</p>}
+    {(!authorized||copy.ready&&!copy.current)&&<section className="studio-notice"><h2>原题或确认范围已变化</h2><p>完整代码与原结果保持。请先下载副本，核对当前范围后再开始新的提交。</p>{authorized&&<button className="studio-secondary" disabled={copy.unsafe||busy} onClick={()=>{if(copy.fresh())setTask(liveTask);}}>保留旧副本，使用当前题目</button>}<button className="studio-secondary" disabled={busy||!workspace.tasks.length} onClick={()=>openTask(workspace.tasks[0]?.id??liveTask.id)}>重新打开当前认证范围</button></section>}
+    <section className="gesp-recovery" aria-label="GESP完整输入恢复">{!copy.ready&&<button className="studio-secondary" onClick={copy.retry}>重新核对原题与副本</button>}<button className="studio-secondary" disabled={!copy.ready} onClick={copy.download}>下载完整学习副本</button><button className="studio-secondary" onClick={copy.inspect}>查看其他本机代码副本</button><label>从本次GESP完整副本恢复<input type="file" accept="application/json,.json" onChange={event=>{void copy.restore(event.target.files?.[0]);event.target.value='';}}/></label></section>
+    {copy.copy?.pending&&<section className="studio-notice" aria-label="GESP原操作恢复"><h2>原操作结果尚待确认</h2><p>完整输入与原提交仍保留。继续时沿用原操作，不会把后续编辑替换进去。</p><button className="studio-primary" disabled={busy||copy.unsafe||!copy.current||!authorized} onClick={()=>void run(copy.copy!.pending!)}>核对并继续原操作</button><button className="studio-secondary" onClick={copy.download}>下载完整学习副本与原操作</button></section>}
+    {copy.alternatives.map((value,index)=><button className="studio-secondary" key={index} onClick={()=>copy.setComparison(value)}>比较本机代码副本 {index+1}</button>)}
+    {copy.comparison&&<section className="gesp-comparison" aria-label="GESP代码副本比较"><h2>先核对两份完整代码</h2><label>当前代码<textarea readOnly value={source} rows={8}/></label><label>准备采用的代码<textarea readOnly value={copy.comparison.source} rows={8}/></label><p>副本范围 v{copy.comparison.scopeVersion}；{copy.comparison.pending?'包含尚待核对的原操作':'没有待核对操作'}。</p><button className="studio-secondary" disabled={copy.unsafe||busy} onClick={()=>copy.adopt(copy.comparison!)}>明确采用这份完整副本</button><button className="studio-secondary" onClick={()=>copy.setComparison(null)}>保留当前输入</button></section>}
+    {copy.waiting&&<WorkspaceDialog onClose={()=>copy.setWaiting(null)} returnFocus={typeof window!=='undefined'&&window.matchMedia('(max-width:1000px)').matches?document.querySelector<HTMLButtonElement>('.ws-reference-trigger'):undefined}><div className="gesp-exit-layer"><section className="gesp-panel" role="dialog" aria-modal="true" aria-label="保留GESP完整输入"><h2>先保留完整输入</h2><p>下载的副本包含完整代码、探针选择和原操作。保存后再继续离开或切换题目。</p><button className="studio-secondary" onClick={()=>copy.setWaiting(null)}>继续编辑</button><button className="studio-secondary" onClick={copy.download}>下载完整学习副本</button><button className="studio-primary" disabled={copy.unsafe||busy} onClick={()=>{const next=copy.waiting;copy.setWaiting(null);next?.proceed();}}>已保留副本，继续</button></section></div></WorkspaceDialog>}
+    <section className="gesp-panel"><div className="gesp-panel-head"><div><h2>{workspace.scope?.level??'原'}级原创试点</h2><p>{workspace.notice}</p></div><span className="studio-badge">范围 v{workspace.scope?.version??'—'}</span></div>
+      {activePlan && <section className="studio-hint" aria-label="已确认GESP指导计划"><strong>家长已确认 · 每日约 {activePlan.minutesPerDay} 分钟</strong><details><summary>查看本轮 {activePlan.actions.length} 个行动 · {activePlan.totalActionMinutes}/{activePlan.minutesPerDay} 分钟</summary>{activePlan.actions.map(action => <article key={action.id}><h3>{action.title}</h3><p>{action.activity}</p><p>成功标准：{action.successCriterion}</p></article>)}</details>{!!activePlan.deferredAtomIds.length && <p>另有 {activePlan.deferredAtomIds.length} 个知识点留到下一轮，当前任务不超出约定时长。</p>}</section>}
+      {!!dueReviews.length && <section className="gesp-probes" aria-label="到期间隔复测"><h3>到期复测</h3><p>复测使用与首次提交不同的隐藏边界；通过后只增加保持证据，不把原题重做称为陌生迁移。</p>{dueReviews.map(review => { const row = workspace.tasks.find(item => item.id === review.taskId); return <article key={review.id}><strong>第 {review.stageDay} 天 · {row?.title ?? review.atomId}</strong><button type="button" className="studio-secondary" disabled={busy || !row} onClick={() => row && openTask(row.id, review.id)}>打开独立复测 →</button></article>; })}</section>}
+      <div className="gesp-work-grid"><aside><label>本次任务<select value={task.id} disabled={busy} onChange={event => openTask(event.target.value)}>{!workspace.tasks.some(row=>row.id===task.id)&&<option value={task.id}>原题 · 当前范围不可用</option>}{workspace.tasks.map(row => <option key={row.id} value={row.id}>{row.title}</option>)}</select></label>{task && <article className="gesp-brief"><small>{task.atomId} · {task.standard} · {task.reviewStatus === 'instructional_approved' ? '教研内容已审核' : '原创试点 · 尚未内容审核'}{reviewTaskId ? ' · 延迟复测' : ''}</small><h3>{task.title}</h3><p>{task.prompt}</p><p>墙钟 {task.timeLimitSeconds} 秒 · 内存 {task.memoryLimitMiB} MiB · 隐藏测试最多40组</p></article>}
+        {task && <section className="gesp-probes" aria-label="渐进提示"><h3>需要时获取提示</h3><p>{reviewTaskId ? '间隔复测必须独立完成，因此本轮不开放提示。' : '提示必须逐级开启，不显示隐藏输入、期望输出或最终答案；有提示的提交会标为辅助证据。'}</p><div className="gesp-actions">{[1,2,3].map(level => <button key={level} type="button" className="studio-text-button" disabled={!editable || !!copy.copy?.pending || Boolean(reviewTaskId) || (level > 1 && !hints.some(hint => hint.level === level - 1))} onClick={() => void requestHint(level)}>获取第 {level} 级提示</button>)}</div>{activeHint && <p className="studio-notice" role="status">{activeHint.text}</p>}</section>}
+        {task && <section className="gesp-probes" aria-label="概念与跟踪探针"><h3>先核对概念，再预测程序状态</h3>{task.probes.map(probe => <fieldset key={probe.id}><legend>{probe.dimension === 'understanding' ? '理解' : '步骤跟踪'} · {probe.prompt}</legend>{probe.options.map(option => <label key={option}><input type="radio" name={probe.id} checked={probeAnswers[probe.id] === option} disabled={!editable||!!copy.copy?.pending} onChange={() => copy.change({probeAnswers:{...probeAnswers,[probe.id]:option}})} />{option}</label>)}<button type="button" className="studio-secondary" disabled={!editable || !!copy.copy?.pending || !probeAnswers[probe.id]} onClick={() => void submitProbe(probe)}>提交这个独立探针</button></fieldset>)}{probeNotice && <p className="studio-notice" role="status">{probeNotice}</p>}<p className="studio-muted">概念、跟踪和代码实现分别留证，不因一次代码结果把它们合并成一个能力分数。</p></section>}
+        <details><summary>运行边界</summary><p>程序在独立Linux命名空间中编译和运行，无法读取 Windows 盘符与用户目录，也没有网络。</p></details></aside>
+        <section className="gesp-editor"><label>源代码<textarea aria-label="GESP C++源代码" spellCheck={false} value={source} maxLength={65536} disabled={!copy.ready||!copy.current||!authorized} onChange={event => { copy.change({source:event.target.value}); setReceipt(null); }} /></label><div className="gesp-actions"><small>{reviewTaskId ? '这是到期保持复测，结果与首次实现分开保存。' : activeHint ? `本次包含第 ${activeHint.level} 级提示，将标记为辅助证据。` : '首次提交独立作答；相同提交键只保存一条记录。'}</small><button className="studio-primary" disabled={!editable || !!copy.copy?.pending || !source.trim()} onClick={() => void submit()}>{busy ? '隔离编译与测试中…' : reviewTaskId ? '提交到期复测 →' : '提交并运行 →'}</button></div></section></div>
+      {receipt && <section className={`gesp-result result-${receipt.status}`} aria-live="polite"><span className="studio-eyebrow">原提交回执</span><h2>{receipt.status === 'passed' ? '当前隐藏测试全部通过' : receipt.compilePassed ? '程序运行结果仍需修正' : '编译没有通过'}</h2><p>源码哈希 {receipt.sourceSha256.slice(0, 16)}… · {new Date(receipt.createdAt).toLocaleString('zh-CN')}</p><div className="gesp-test-grid">{receipt.tests.map(test => <span key={test.index} data-status={test.status}>测试 {test.index + 1}<strong>{test.status}</strong><small>{test.durationMs}ms</small></span>)}</div>{!!receipt.compileDiagnostics.length && <details className="gesp-diagnostics"><summary>查看编译器诊断</summary><pre>{receipt.compileDiagnostics.join('\n')}</pre></details>}{!!receipt.runtimeDiagnostics.length && <details className="gesp-diagnostics"><summary>查看运行期诊断</summary>{receipt.runtimeDiagnostics.map(item => <pre key={item.index}>测试 {item.index + 1} · {item.status}{'\n'}{item.stderr}</pre>)}</details>}<p>{receipt.reviewTaskId ? '本次到期复测已单独记录，用于保持证据。' : receipt.hintLevel ? `本次使用第 ${receipt.hintLevel} 级提示，属于辅助证据。` : '本次为无提示独立提交。'}通过当前测试集只证明这些边界；它不能单独证明陌生任务迁移或完整课程掌握。</p></section>}
+      {!!workspace.submissions.length && <section><h2>最近提交</h2><div className="gesp-history">{workspace.submissions.slice(0, 8).map(row => <article key={row.id}><span data-status={row.status}>{row.status}</span><div><strong>{row.tests.filter(test => test.passed).length} / {row.tests.length} 组通过</strong><small>{new Date(row.createdAt).toLocaleString('zh-CN')} · {row.sourceSha256.slice(0, 16)}… · 内容审核 {row.provenance?.contentReviewStatus ?? '旧记录未知'} v{row.provenance?.contentReviewVersion ?? '—'}</small></div></article>)}</div></section>}
+      <section className="gesp-capabilities"><h2>当前能证明什么</h2><p>每一项只反映当前范围的独立证据；三个维度没有测完时保持未知。</p>{workspace.capabilities.map(item => <article key={item.atomId} data-state={item.state}><strong>{item.atomId}</strong><span>{item.dimensions.map(dimension => <small key={dimension.dimension}>{({understanding:'理解',procedure:'跟踪',implementation:'实现'} as Record<string,string>)[dimension.dimension]}：{dimension.status} · {dimension.attempts}次</small>)}</span><p>{item.hypothesis}</p>{item.evidenceNotice && <small className="studio-warning">{item.evidenceNotice}</small>}<small>{item.nextAction}</small></article>)}</section>
+    </section></div></main>;
+}

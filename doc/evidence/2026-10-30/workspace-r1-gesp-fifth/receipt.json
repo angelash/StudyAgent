@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-29T21:56:05.350115+00:00",
+  "sourceRevision": "099ed99a8f3fda10b4c1d382b4dfea47e0463aa4",
+  "state": "Final scoped GESP workspace implementation candidate; local commit only; overall goal active",
+  "browser": {
+    "receipt": "browser-fifth.json",
+    "passed": 10,
+    "failed": 0,
+    "scope": "Original task/code copies; task/level/child restoration; storage failures and explicit import; lost probe and real compiled-code receipts; original versioned scope confirmation; scope changes; legacy history and delayed/disconnected reads."
+  },
+  "sqliteAndUnit": {
+    "receipt": "gesp-api-fourth.json",
+    "passed": 16,
+    "scope": "Six pure boundaries, six SQLite HTTP cases and four real WSL/g++ native SQLite cases; inherited unchanged application/test source."
+  },
+  "postgres": {
+    "receipt": "gesp-postgres-third.json",
+    "passed": 6,
+    "scope": "Real isolated PostgreSQL HTTP; inherited unchanged API and contracts, separate batch."
+  },
+  "compatibilityBrowser": {
+    "receipt": "browser-compatibility-third.json",
+    "passed": 25,
+    "scope": "Original workspace/focus/sidebar, third build. Final application differs only in GESP responsive CSS. Not a new full 168-case rerun."
+  },
+  "builds": {
+    "receipt": "build.json",
+    "webBuildId": "2ep1DHTY3mTxbufqHm1Iq"
+  },
+  "apiTestTypecheck": "fourth-api-test-typecheck.json",
+  "sourceComparison": "source-comparison.json",
+  "supportingEquivalence": "supporting-equivalence.json",
+  "previousAttempts": "previous-attempts.json",
+  "screenshots": [
+    {
+      "path": "screenshots/learner-1440.png",
+      "sha256": "70219eff51f8479103680936f6be699f83939111679b1d1557b0707bf9077d1a",
+      "bytes": 406770,
+      "privacy": "Owned synthetic QA accounts and original QA inputs; no real learners."
+    },
+    {
+      "path": "screenshots/learner-320.png",
+      "sha256": "6498cff555729975d9af7d50e183a6586690de6ff585c3a54cf8da134a0daa3a",
+      "bytes": 280095,
+      "privacy": "Owned synthetic QA accounts and original QA inputs; no real learners."
+    },
+    {
+      "path": "screenshots/learner-390.png",
+      "sha256": "9ea93182a3701aaa95e6925612361b6fa442d1e082ad3b16d5695c5552a36f0a",
+      "bytes": 280114,
+      "privacy": "Owned synthetic QA accounts and original QA inputs; no real learners."
+    },
+    {
+      "path": "screenshots/learner-768.png",
+      "sha256": "d12806fd2cda2d8aae3d058ec5e2453fb7431b94ab37c8c00cd25ebe546b0414",
+      "bytes": 358717,
+      "privacy": "Owned synthetic QA accounts and original QA inputs; no real learners."
+    },
+    {
+      "path": "screenshots/parent-1440.png",
+      "sha256": "e8598476d5595767925c447cf1fda06bffd62c426fc4982ecba6793db163a016",
+      "bytes": 415493,
+      "privacy": "Owned synthetic QA accounts and original QA inputs; no real learners."
+    },
+    {
+      "path": "screenshots/parent-320.png",
+      "sha256": "bb375d08f9e9fcaeb1f8b99c78374409afdf63babe552a3ea7b9bf5de2be9d78",
+      "bytes": 388479,
+      "privacy": "Owned synthetic QA accounts and original QA inputs; no real learners."
+    },
+    {
+      "path": "screenshots/parent-390.png",
+      "sha256": "ca145067d93b134e489c870b595ff99c485d6b31735f78b2cdc0e4062d837432",
+      "bytes": 389849,
+      "privacy": "Owned synthetic QA accounts and original QA inputs; no real learners."
+    },
+    {
+      "path": "screenshots/parent-768.png",
+      "sha256": "5b3e04c84b80756e19fe20e37ce8023f51dadb8edadcd41fa18f6f9968e71618",
+      "bytes": 339061,
+      "privacy": "Owned synthetic QA accounts and original QA inputs; no real learners."
+    },
+    {
+      "path": "screenshots/parent-exact-child-and-level.png",
+      "sha256": "f44c0638a5d732a1f18294e9088da15354005d45847d2d945825cb0d9ce4666f",
+      "bytes": 324963,
+      "privacy": "Owned synthetic QA accounts and original QA inputs; no real learners."
+    },
+    {
+      "path": "screenshots/parent-failed-refresh-keeps-current-draft.png",
+      "sha256": "ed412d42f67372f910c4910be7e2afc36c1e60f01662e07cd51678aa16ffd850",
+      "bytes": 403825,
+      "privacy": "Owned synthetic QA accounts and original QA inputs; no real learners."
+    },
+    {
+      "path": "screenshots/parent-original-receipt-and-current-scope.png",
+      "sha256": "14b583fba9059f9020097e89b42d7acf2d052ebd38130d1e138f36e9792f48a9",
+      "bytes": 415054,
+      "privacy": "Owned synthetic QA accounts and original QA inputs; no real learners."
+    },
+    {
+      "path": "screenshots/real-code-receipt-and-later-code.png",
+      "sha256": "1dfbf6273c1b460b5d396f5ca85d62fa1bb912383ce966ad7254f9a7b30a61a0",
+      "bytes": 304869,
+      "privacy": "Owned synthetic QA accounts and original QA inputs; no real learners."
+    }
+  ],
+  "productionObservation": {
+    "readOnly": true,
+    "unchangedFromMaterialsDelivery": true,
+    "artifacts": [
+      {
+        "path": "apps/api/dist/apps/api/src/main.js",
+        "sha256": "5793c7090063d318c5e5c60bdb74350baa6f64c386639b94fbf4cd5605946c1a",
+        "mtimeUtc": "2026-10-29T14:51:26.120290+00:00"
+      },
+      {
+        "path": "apps/web/.next/BUILD_ID",
+        "sha256": "e02197beeb39c5df02110ca05544c471b3bb892662bebdcb56449b27713e7fba",
+        "mtimeUtc": "2026-10-29T14:52:20.456777+00:00"
+      }
+    ],
+    "schemaVersion": 24,
+    "revision": 187
+  },
+  "limits": [
+    "No push or production deployment.",
+    "GESP remains original pilot content; full levels 1-4 review belongs to R6.",
+    "Original 72 and WS12 states are unchanged. R1 and R2-R8 need their own complete journeys.",
+    "Real devices, legacy browser binaries, teacher review and real learner 1/3/7/14-day evidence remain open.",
+    "No new routes, persisted schema, formal scores or learner mastery evidence.",
+    "The fifth initial browser command failed its build-preparation check; the subsequent completed-build retry is the recorded ten-case pass."
+  ],
+  "artifacts": [
+    {
+      "path": "authored-audit-final.json",
+      "sha256": "f6718e4a65de21f4c7c852eb6400d971efee376061cf80a8eb36fc50f89503b9",
+      "bytes": 861290
+    },
+    {
+      "path": "authored-audit.json",
+      "sha256": "e0e01b58d078705c17ad7c8bba34337c1c656f1d275fb634881bfb505b62ac7f",
+      "bytes": 881283
+    },
+    {
+      "path": "browser-compatibility-third.json",
+      "sha256": "c100d8390491ad571878763a3e93becceabc34b733d3127c7e56e3521da4d7dc",
+      "bytes": 8061
+    },
+    {
+      "path": "browser-fifth.json",
+      "sha256": "acec6610a67af10d29d6a7b962774fda6edf8fa3f86db05ace74113f1272af1e",
+      "bytes": 3229
+    },
+    {
+      "path": "browser-first-preparation.json",
+      "sha256": "002d6287832ec9a72f942300698dff04f612dfa9437b42ac4034e491145ced29",
+      "bytes": 422
+    },
+    {
+      "path": "build.json",
+      "sha256": "bf3ea34c0cff3be96eafceeae06beede285d858271e23d2f5bad51b4fccaa9b6",
+      "bytes": 622
+    },
+    {
+      "path": "design-validation.json",
+      "sha256": "4c115318efc8297b273ee9771d12f7f2c95b7d75cd2001b9a5d3ecb6d50001cc",
+      "bytes": 97464
+    },
+    {
+      "path": "documentation-preparation.json",
+      "sha256": "4f98bd32ec36c00030981bbbab7e1d07e3ed41ecf29dd77afba2e1519c8d6530",
+      "bytes": 602
+    },
+    {
+      "path": "fourth-api-test-typecheck.json",
+      "sha256": "a5a80ac47d1dae3ca50e0783b081089a1f5406a3fcba5deee81901e58a699db8",
+      "bytes": 178
+    },
+    {
+      "path": "full-page-test-overlay.json",
+      "sha256": "bdff9090b2b6e5eb5dbaa6c23b5d3ecc3fddcf2a0554806cc4317fcde3f6cc10",
+      "bytes": 353
+    },
+    {
+      "path": "gesp-api-fourth.json",
+      "sha256": "55e0b8a7126a0a7f904e84523c80bd2737477eadb0611d1e2e0d9ef763ba1b63",
+      "bytes": 4640
+    },
+    {
+      "path": "gesp-postgres-third.json",
+      "sha256": "8aa919b459e18a3585ac8969257b2711518eaa887f58a5984fc161564564cd2d",
+      "bytes": 1771
+    },
+    {
+      "path": "previous-attempts.json",
+      "sha256": "c8a4f29f2dde114cbbc064bb3547ab00c411a980e9cd6662075bba3e8a60a633",
+      "bytes": 470
+    },
+    {
+      "path": "qa-ports-after.json",
+      "sha256": "0b526713e2570ca07256933dd95ccecf7d3bf6f31acae4ddacc5f3aa3784efce",
+      "bytes": 825
+    },
+    {
+      "path": "screenshots/learner-1440.png",
+      "sha256": "70219eff51f8479103680936f6be699f83939111679b1d1557b0707bf9077d1a",
+      "bytes": 406770
+    },
+    {
+      "path": "screenshots/learner-320.png",
+      "sha256": "6498cff555729975d9af7d50e183a6586690de6ff585c3a54cf8da134a0daa3a",
+      "bytes": 280095
+    },
+    {
+      "path": "screenshots/learner-390.png",
+      "sha256": "9ea93182a3701aaa95e6925612361b6fa442d1e082ad3b16d5695c5552a36f0a",
+      "bytes": 280114
+    },
+    {
+      "path": "screenshots/learner-768.png",
+      "sha256": "d12806fd2cda2d8aae3d058ec5e2453fb7431b94ab37c8c00cd25ebe546b0414",
+      "bytes": 358717
+    },
+    {
+      "path": "screenshots/parent-1440.png",
+      "sha256": "e8598476d5595767925c447cf1fda06bffd62c426fc4982ecba6793db163a016",
+      "bytes": 415493
+    },
+    {
+      "path": "screenshots/parent-320.png",
+      "sha256": "bb375d08f9e9fcaeb1f8b99c78374409afdf63babe552a3ea7b9bf5de2be9d78",
+      "bytes": 388479
+    },
+    {
+      "path": "screenshots/parent-390.png",
+      "sha256": "ca145067d93b134e489c870b595ff99c485d6b31735f78b2cdc0e4062d837432",
+      "bytes": 389849
+    },
+    {
+      "path": "screenshots/parent-768.png",
+      "sha256": "5b3e04c84b80756e19fe20e37ce8023f51dadb8edadcd41fa18f6f9968e71618",
+      "bytes": 339061
+    },
+    {
+      "path": "screenshots/parent-exact-child-and-level.png",
+      "sha256": "f44c0638a5d732a1f18294e9088da15354005d45847d2d945825cb0d9ce4666f",
+      "bytes": 324963
+    },
+    {
+      "path": "screenshots/parent-failed-refresh-keeps-current-draft.png",
+      "sha256": "ed412d42f67372f910c4910be7e2afc36c1e60f01662e07cd51678aa16ffd850",
+      "bytes": 403825
+    },
+    {
+      "path": "screenshots/parent-original-receipt-and-current-scope.png",
+      "sha256": "14b583fba9059f9020097e89b42d7acf2d052ebd38130d1e138f36e9792f48a9",
+      "bytes": 415054
+    },
+    {
+      "path": "screenshots/real-code-receipt-and-later-code.png",
+      "sha256": "1dfbf6273c1b460b5d396f5ca85d62fa1bb912383ce966ad7254f9a7b30a61a0",
+      "bytes": 304869
+    },
+    {
+      "path": "source-comparison.json",
+      "sha256": "34d4ee5b50b457986ff2963253abf6e3c0fd601fcbd548a1924b745da1c59e21",
+      "bytes": 242
+    },
+    {
+      "path": "source-inputs.json",
+      "sha256": "5fc1aee711d78faf1f9fd8b54d0156ffaeceda30ad8b228b8151cac03c12c7e7",
+      "bytes": 445003
+    },
+    {
+      "path": "staged-inputs.json",
+      "sha256": "fd44515b4130399a20c9370c8a907774ff8c48f593e0235af29bc6fe7f54c5d9",
+      "bytes": 26331
+    },
+    {
+      "path": "staged-review.json",
+      "sha256": "e6822b1fa279a7a0ff3297caa4d44178243deca3b992d77fd9b4d4ac0f89bfaf",
+      "bytes": 613
+    },
+    {
+      "path": "supporting-equivalence.json",
+      "sha256": "bab5ad6623f3518015ea206b29c619c7fb63832eda95933408e696f6123739c2",
+      "bytes": 479
+    },
+    {
+      "path": "visual-issue-from-fourth.json",
+      "sha256": "eb8bb6c858b14852a600137e6ec62980c97c775d155b690f41effd046a74eef0",
+      "bytes": 568
+    }
+  ],
+  "documentation": {
+    "receipt": "design-validation.json",
+    "passed": true,
+    "features": {
+      "areas": 14,
+      "features": 137,
+      "activeNormalApiRoutes": 459,
+      "coveredApiRoutes": 459
+    },
+    "sourceFiles": 732,
+    "markdownLinks": 4504,
+    "offlineChecks": 10
+  },
+  "visualInspection": {
+    "viewports": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "scope": "Actual complete parent screenshots were inspected, with separate native-resolution crops checking the 320px heading/badge and capability prose. All text blocks now retain a readable line width. Real device and legacy browser testing remain open."
+  },
+  "stagedReview": "staged-review.json",
+  "stagedBuildEquivalence": "staged-review.json"
+}

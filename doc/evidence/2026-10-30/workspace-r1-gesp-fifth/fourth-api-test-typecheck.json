@@ -1,0 +1,6 @@
+{
+  "command": "tsc --project apps/api/tsconfig.json --noEmit --incremental false",
+  "cwd": "isolated fourth source",
+  "exitCode": 0,
+  "log": "api-test-typecheck.log"
+}

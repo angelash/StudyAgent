@@ -1,0 +1,657 @@
+[
+  {
+    "path": "apps/api/src/infrastructure/gesp-workspace.test.ts",
+    "gitBlobSha256": "cc030ae9ab1c9353c51557c4852d35fff597e2c6e9bbdb243357570ae08aa919",
+    "bytes": 2274
+  },
+  {
+    "path": "apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts",
+    "gitBlobSha256": "cce411d25ce8379cf6a4287addaabc2aea73237aa7d8903447a27e2e565c2f4f",
+    "bytes": 9785
+  },
+  {
+    "path": "apps/api/src/modules/gesp/gesp-student.integration.test.ts",
+    "gitBlobSha256": "99b4dac97595180a83024216169bac92edea7bb33484b44030ebb7828da55979",
+    "bytes": 9158
+  },
+  {
+    "path": "apps/api/src/modules/gesp/gesp.service.ts",
+    "gitBlobSha256": "86e1e2ec6621d347c783483a6677746bb0f9b7e36151e9fbf7146acb1b90be6c",
+    "bytes": 46580
+  },
+  {
+    "path": "apps/web/app/parent/gesp/page.tsx",
+    "gitBlobSha256": "731a44084adbf02acf4ea319ef5f0eb7c25e46e0dd9a1ec562cf117d3bf86a96",
+    "bytes": 925
+  },
+  {
+    "path": "apps/web/app/parent/gesp/workbench.tsx",
+    "gitBlobSha256": "63bc4f3697c8e0cffd0619f30e387e0accfc05a775fb55766dfac8b16fa30159",
+    "bytes": 22122
+  },
+  {
+    "path": "apps/web/app/student/gesp/gesp-student.css",
+    "gitBlobSha256": "c73859962aa55eeeb416cf0ca7433eaf0b3a8365cf6dfcc31a353a33df7ae8f4",
+    "bytes": 7070
+  },
+  {
+    "path": "apps/web/app/student/gesp/page.tsx",
+    "gitBlobSha256": "42fca876f4db4218656e978a6bb6e35fd84c0149c68708725a6f6af6ce1f6633",
+    "bytes": 908
+  },
+  {
+    "path": "apps/web/app/student/gesp/workbench.tsx",
+    "gitBlobSha256": "46d3b5bbc1a1f5442640b3bff21c891dd6623b6be52321ad93193e76e33fc8e5",
+    "bytes": 23397
+  },
+  {
+    "path": "apps/web/app/studio/studio-navigation.tsx",
+    "gitBlobSha256": "64f5d659c9cc52fe40e47dfadc4fe0854de7b51d0105745f175925d8ddc75ef7",
+    "bytes": 13999
+  },
+  {
+    "path": "apps/web/components/gesp-workspace-navigation.tsx",
+    "gitBlobSha256": "eeba69a40bbb0b9afd56ef43df4e698c92201d45a750553736bdc3dd584e4192",
+    "bytes": 995
+  },
+  {
+    "path": "apps/web/lib/gesp-workspace-storage.ts",
+    "gitBlobSha256": "f6549529f0bda78eb4b357e30b7a8ac4347e6ab65c91c1fa1c350bacbb8fb806",
+    "bytes": 3196
+  },
+  {
+    "path": "apps/web/lib/gesp-workspace.ts",
+    "gitBlobSha256": "4af774cd09fd2f72f19d151a34c58c771fde069a19d0461f588f8b00fecf5199",
+    "bytes": 6408
+  },
+  {
+    "path": "apps/web/lib/use-gesp-workspace-copy.ts",
+    "gitBlobSha256": "fe53fc6704034082858fe4068d9121c4e3677d615cd2a4a0b4717c53989470de",
+    "bytes": 6255
+  },
+  {
+    "path": "apps/web/lib/workspace-exit-guard.ts",
+    "gitBlobSha256": "680431e9d21bbf9a42dd1977827d5f06ee31fd143310656913e359a70465613f",
+    "bytes": 5046
+  },
+  {
+    "path": "apps/web/lib/workspace-navigation.ts",
+    "gitBlobSha256": "19641967f139386fa655b9a777515622d51b0d0bb8e802c0a5f523fc2e9c4f5c",
+    "bytes": 7812
+  },
+  {
+    "path": "doc/design/01-functional-framework.md",
+    "gitBlobSha256": "d045fb78a66077fd054989979b6df728f607cc2aec0efe922df34a8883af5405",
+    "bytes": 41265
+  },
+  {
+    "path": "doc/design/details/01-identity.md",
+    "gitBlobSha256": "99d026b76a592bca3210d1bac07c5dcfa6c6249fba8989d152d3f0ca893fee4b",
+    "bytes": 13472
+  },
+  {
+    "path": "doc/design/details/02-curriculum.md",
+    "gitBlobSha256": "98357470bb0e899a4b9cee8e9ef3983cd822ab4b3f300109f26f4641df4380fb",
+    "bytes": 16200
+  },
+  {
+    "path": "doc/design/details/03-assessment.md",
+    "gitBlobSha256": "b0c25ce37a391cbc05889c1b560c3fa81fe395132b2da79382cf8ca5a9c7da45",
+    "bytes": 19117
+  },
+  {
+    "path": "doc/design/details/04-measurement.md",
+    "gitBlobSha256": "941cd1fb421ce6a0772bec86b3af9bfa451a953efc9eab1811933e686cb92912",
+    "bytes": 7398
+  },
+  {
+    "path": "doc/design/details/05-guidance.md",
+    "gitBlobSha256": "35c532c3e9558eb4102b39da90e071df2d12ef2d8e61874c646917a127f3f718",
+    "bytes": 14462
+  },
+  {
+    "path": "doc/design/details/06-learning.md",
+    "gitBlobSha256": "bcf1ad112505ab83cf62fb94948401ae36f338f2ee91adef50c9fe14d11c90d8",
+    "bytes": 14522
+  },
+  {
+    "path": "doc/design/details/07-content.md",
+    "gitBlobSha256": "3085b659f8ba87b0e570587a0b0cd46044b148a804a09b1c3a547568f9dda24d",
+    "bytes": 38843
+  },
+  {
+    "path": "doc/design/details/08-ai.md",
+    "gitBlobSha256": "99b8a74898b2df0e979e800f5b552d3c1b7efa91f392b8ef25b86476f8ff8f8a",
+    "bytes": 59080
+  },
+  {
+    "path": "doc/design/details/09-studio.md",
+    "gitBlobSha256": "adb8d9e25373dc83f29163d7e2e36597048861d176895b894e1b3aedbd7cfa94",
+    "bytes": 167376
+  },
+  {
+    "path": "doc/design/details/10-gesp.md",
+    "gitBlobSha256": "a3770247bba7132d60c2ec414d41d8c870b95e42ca37888e2f11dcff189b76f2",
+    "bytes": 12356
+  },
+  {
+    "path": "doc/design/details/11-review.md",
+    "gitBlobSha256": "f8832b46949ab8728095251d08d4dbf178ddd63d5abb66c3e6e9840c4beb433b",
+    "bytes": 4425
+  },
+  {
+    "path": "doc/design/details/12-media.md",
+    "gitBlobSha256": "76b87c6dbacce9b39666f8d2be2cfa404268bd4c54e0e75a6779d6b7de93b0b1",
+    "bytes": 6171
+  },
+  {
+    "path": "doc/design/details/13-privacy.md",
+    "gitBlobSha256": "c41f98b9ef1a1d79b7426bfd1386333446c748449a2cf497ecd415948a275c56",
+    "bytes": 7629
+  },
+  {
+    "path": "doc/design/details/14-operations.md",
+    "gitBlobSha256": "41c6866d075ef8146818304f24055a8ddd6daf115a510caad6895ac3554b2f35",
+    "bytes": 22721
+  },
+  {
+    "path": "doc/design/feature-catalog.json",
+    "gitBlobSha256": "100cc4d3908bdb2fa93e08cfd43130d6297f947423128badbee35b0623499c2e",
+    "bytes": 594264
+  },
+  {
+    "path": "doc/design/generated/api-reference.md",
+    "gitBlobSha256": "ef6ef512cb5e03178d6d3234467d7d7b671004de8c2f30c23893705028726f8e",
+    "bytes": 228891
+  },
+  {
+    "path": "doc/design/generated/content-snapshot.json",
+    "gitBlobSha256": "16ba9023e5bbf9f2d3090ee7fc41fd522cde41b366abd625fbfa33c210aac46f",
+    "bytes": 39623
+  },
+  {
+    "path": "doc/design/generated/coverage.json",
+    "gitBlobSha256": "03f1d53e252d7d4b07d6fa0937dddc51fca5fcbbd94851bb542bff7e1fe396df",
+    "bytes": 3026
+  },
+  {
+    "path": "doc/design/generated/data-reference.md",
+    "gitBlobSha256": "bdaf5db7297b63b90b117bfa40b9e17c7cfe8a19ec1618945c599c12c8df6f56",
+    "bytes": 127230
+  },
+  {
+    "path": "doc/design/generated/design-validation.json",
+    "gitBlobSha256": "7c8e70a92406eff34771764d4fb39a340245bac2520e4c1ee43dd9a1f6171f8b",
+    "bytes": 97464
+  },
+  {
+    "path": "doc/design/generated/page-reference.md",
+    "gitBlobSha256": "22ef9a4e21d93aaa2c35a3a921f99158639bb9d505d94cafe93671c1986b0d8b",
+    "bytes": 9240
+  },
+  {
+    "path": "doc/design/generated/source-inventory.json",
+    "gitBlobSha256": "4ffeb0e003b666717960be280b3cdec323def97f58cf8336c763b846e199c33e",
+    "bytes": 1714861
+  },
+  {
+    "path": "doc/design/index.html",
+    "gitBlobSha256": "a070ebf3c7dbb33a8fd344d939e11d9a59a73cf8b5e7187a189322ce530bd2d0",
+    "bytes": 441205
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/authored-audit-final.json",
+    "gitBlobSha256": "f6718e4a65de21f4c7c852eb6400d971efee376061cf80a8eb36fc50f89503b9",
+    "bytes": 861290
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/authored-audit.json",
+    "gitBlobSha256": "0ace0b6e7239470bf17bc73d2a61790e0b421463f2352e6eee5729e855a53293",
+    "bytes": 861290
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/browser-compatibility-third.json",
+    "gitBlobSha256": "0b51343647faf8c193caf137d79885a10ad01c2a0b6b25757ed89e1d5b5108bc",
+    "bytes": 7773
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/browser-fifth.json",
+    "gitBlobSha256": "9c9c1ebb912d7c7e360c30797d86234f666a81da14de9e48b6194cc847e8f91d",
+    "bytes": 3116
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/browser-first-preparation.json",
+    "gitBlobSha256": "f2d146aaebaac17161f32abd1c9023c881fab46c1194bbfd0e71e7be4c18f3d8",
+    "bytes": 416
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/build.json",
+    "gitBlobSha256": "b65b34ac0f38b8a912a6b5da2cdf4b31f89aa5ffc80092586441516b1780c1ea",
+    "bytes": 592
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/design-validation.json",
+    "gitBlobSha256": "7c8e70a92406eff34771764d4fb39a340245bac2520e4c1ee43dd9a1f6171f8b",
+    "bytes": 97464
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/documentation-preparation.json",
+    "gitBlobSha256": "69038790e4f804b19117766d48c9279900827b54c3993869c17e5de3a11596bb",
+    "bytes": 593
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/fourth-api-test-typecheck.json",
+    "gitBlobSha256": "1a3e36263e76d7522e8df87f9df1f74cd4e3cad9ce0e63919287c791bdcf09e8",
+    "bytes": 172
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/full-page-test-overlay.json",
+    "gitBlobSha256": "4bc9baa49151f6dc867627c5dcd301a4c6e3272be9b0e3ac4960206f3b7c68f3",
+    "bytes": 347
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/gesp-api-fourth.json",
+    "gitBlobSha256": "65d512715779b1da484d6fd58c827ec8a18aa6d191fc7b59ae8f05844b23933e",
+    "bytes": 4523
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/gesp-postgres-third.json",
+    "gitBlobSha256": "a9a1c70cebd3d1ccafeb38876b5dd817ba744fbf2a1bb64c213967a2785dbba8",
+    "bytes": 1725
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/previous-attempts.json",
+    "gitBlobSha256": "476338614055fb2280fceda80a259c6c835cffff35d1fcb1b70b0ce9a82a6878",
+    "bytes": 464
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/qa-ports-after.json",
+    "gitBlobSha256": "099fe55985f9e8023c411f1439d3a63b27c85023c7c62622f94c9a647fd26640",
+    "bytes": 780
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/receipt.json",
+    "gitBlobSha256": "dd8457c559a5baa1802511c2417117d5a0a244032ea1127e27e5c8599ecab6f6",
+    "bytes": 11468
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/screenshots/learner-1440.png",
+    "gitBlobSha256": "70219eff51f8479103680936f6be699f83939111679b1d1557b0707bf9077d1a",
+    "bytes": 406770
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/screenshots/learner-320.png",
+    "gitBlobSha256": "6498cff555729975d9af7d50e183a6586690de6ff585c3a54cf8da134a0daa3a",
+    "bytes": 280095
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/screenshots/learner-390.png",
+    "gitBlobSha256": "9ea93182a3701aaa95e6925612361b6fa442d1e082ad3b16d5695c5552a36f0a",
+    "bytes": 280114
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/screenshots/learner-768.png",
+    "gitBlobSha256": "d12806fd2cda2d8aae3d058ec5e2453fb7431b94ab37c8c00cd25ebe546b0414",
+    "bytes": 358717
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/screenshots/parent-1440.png",
+    "gitBlobSha256": "e8598476d5595767925c447cf1fda06bffd62c426fc4982ecba6793db163a016",
+    "bytes": 415493
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/screenshots/parent-320.png",
+    "gitBlobSha256": "bb375d08f9e9fcaeb1f8b99c78374409afdf63babe552a3ea7b9bf5de2be9d78",
+    "bytes": 388479
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/screenshots/parent-390.png",
+    "gitBlobSha256": "ca145067d93b134e489c870b595ff99c485d6b31735f78b2cdc0e4062d837432",
+    "bytes": 389849
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/screenshots/parent-768.png",
+    "gitBlobSha256": "5b3e04c84b80756e19fe20e37ce8023f51dadb8edadcd41fa18f6f9968e71618",
+    "bytes": 339061
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/screenshots/parent-exact-child-and-level.png",
+    "gitBlobSha256": "f44c0638a5d732a1f18294e9088da15354005d45847d2d945825cb0d9ce4666f",
+    "bytes": 324963
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/screenshots/parent-failed-refresh-keeps-current-draft.png",
+    "gitBlobSha256": "ed412d42f67372f910c4910be7e2afc36c1e60f01662e07cd51678aa16ffd850",
+    "bytes": 403825
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/screenshots/parent-original-receipt-and-current-scope.png",
+    "gitBlobSha256": "14b583fba9059f9020097e89b42d7acf2d052ebd38130d1e138f36e9792f48a9",
+    "bytes": 415054
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/screenshots/real-code-receipt-and-later-code.png",
+    "gitBlobSha256": "1dfbf6273c1b460b5d396f5ca85d62fa1bb912383ce966ad7254f9a7b30a61a0",
+    "bytes": 304869
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/source-comparison.json",
+    "gitBlobSha256": "fd3849255e366e4b487d81f8cc809695b992257f1729c4b6f7571b5ed83be460",
+    "bytes": 236
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/source-inputs.json",
+    "gitBlobSha256": "68eaed173fcefde32fad450ea080d23a20c1e7904a77fa62411dba731d90afe6",
+    "bytes": 435192
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/supporting-equivalence.json",
+    "gitBlobSha256": "8ec4d58dbc61a8e17b9622b1849a606fc66c2e08c3e3e43e2793e322713d12ef",
+    "bytes": 471
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fifth/visual-issue-from-fourth.json",
+    "gitBlobSha256": "23df33c60a87292c3b8a234acde490dfba0aa8e39552c590cac2dc17dd2bde2f",
+    "bytes": 562
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/authored-audit-preparation.json",
+    "gitBlobSha256": "04c95121acb1c61aeaab052dbff1160c1856dcb36d87f58f8106a2ea9f87802e",
+    "bytes": 297
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/authored-audit.json",
+    "gitBlobSha256": "0ace0b6e7239470bf17bc73d2a61790e0b421463f2352e6eee5729e855a53293",
+    "bytes": 861290
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/browser-compatibility-third.json",
+    "gitBlobSha256": "0b51343647faf8c193caf137d79885a10ad01c2a0b6b25757ed89e1d5b5108bc",
+    "bytes": 7773
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/browser-first.json",
+    "gitBlobSha256": "4621e80ed462186a78acf2a953a6c712c029471a3689dd117d148c8bb3911a90",
+    "bytes": 1687
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/browser-fourth-visual.json",
+    "gitBlobSha256": "3018a777fcfebb4f21f0b8941d1e878a0612c07ff8620d56516bc7ec5e9c93c3",
+    "bytes": 675
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/browser-fourth.json",
+    "gitBlobSha256": "70f80b72f41c6fb0a80f47fb0dcf382849467573eb0de99024e45fb9059a10fd",
+    "bytes": 3430
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/browser-second.json",
+    "gitBlobSha256": "703322e2e4655c01ef18c85af7bbe3d0c4fafef9a5e7367155724cf235a7ac9b",
+    "bytes": 3162
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/browser-third-retry.json",
+    "gitBlobSha256": "11a3d0d9aa594db00b845ad496ab232df35282c119bfb3e3850b3f70d9f4a709",
+    "bytes": 3430
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/browser-third.json",
+    "gitBlobSha256": "2e4a08dc15611cfbc654c14a66eef61b9aec4615f5c2ee28a142d6f75e6f86ad",
+    "bytes": 3470
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/builds-first.json",
+    "gitBlobSha256": "7643fabaa9976c5c1416e077449c9c6c14ee6f6af3d01cc3f019ceb070053c8e",
+    "bytes": 592
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/builds-fourth.json",
+    "gitBlobSha256": "58677709bc8e28f7038ad9e59665fcb93f57a5b412c2c121bd1d23540aebe6fe",
+    "bytes": 592
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/builds-second.json",
+    "gitBlobSha256": "21d928676c66478f5565e5c674234dc0b669476f3c740871e6e0b095275535d3",
+    "bytes": 592
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/builds-third.json",
+    "gitBlobSha256": "359af8335cc74a3f1ecf7d02cc2747f664a7d5cd6a01062a318c3155e6ffa192",
+    "bytes": 592
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/first-browser-test-overlay.json",
+    "gitBlobSha256": "87c3f941d8da6c88e9bd9185c484a51abe05fe3ac676f399a634adc50539a298",
+    "bytes": 255
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/first-sqlite-test-fixture-overlay.json",
+    "gitBlobSha256": "6bcf43658dfb147cb06c2312d8181c808f41405da5b712d3964adbe3c77bdac3",
+    "bytes": 391
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/fourth-api-test-typecheck.json",
+    "gitBlobSha256": "1a3e36263e76d7522e8df87f9df1f74cd4e3cad9ce0e63919287c791bdcf09e8",
+    "bytes": 172
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/fourth-native-setup-overlay.json",
+    "gitBlobSha256": "8b3771c4046106867392d0ed5e6cb90c8e3734faceb89c596baf8789da81deca",
+    "bytes": 403
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/fourth-visual-capture-overlay.json",
+    "gitBlobSha256": "9e8bdd803cc080730451416d01c1f3218b346b773f018bb6af0a861d4f5da0a2",
+    "bytes": 359
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/fourth-visual-issue-from-third.json",
+    "gitBlobSha256": "3935d124f48b46af7b965fe1151a182d1ae43cdd025ba8f1688dda4c936a2eaf",
+    "bytes": 471
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/gesp-api-first-retry.json",
+    "gitBlobSha256": "d4304903c006e9104d2f27ed213280f5323316a00cc9d6f9ed498e9b87d0b3bd",
+    "bytes": 3226
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/gesp-api-first.json",
+    "gitBlobSha256": "0d94e8380f53bc6e0463da4281dcfe73e0e298b49faa426d6d9f82807e1bb189",
+    "bytes": 3167
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/gesp-api-fourth.json",
+    "gitBlobSha256": "65d512715779b1da484d6fd58c827ec8a18aa6d191fc7b59ae8f05844b23933e",
+    "bytes": 4523
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/gesp-api-second-retry.json",
+    "gitBlobSha256": "7b6cbd54605ccd71d950b07abbfdcac38a88cac1f2996ca27540bb3813ae37a9",
+    "bytes": 4516
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/gesp-api-second.json",
+    "gitBlobSha256": "6dceaba2353ad6e14615fada7fae8d68c482a3bf26ca16d9e0eb135fe6c2b7d0",
+    "bytes": 4482
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/gesp-postgres-third.json",
+    "gitBlobSha256": "a9a1c70cebd3d1ccafeb38876b5dd817ba744fbf2a1bb64c213967a2785dbba8",
+    "bytes": 1725
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/qa-ports-after.json",
+    "gitBlobSha256": "36177f7f85bd5eaffd2300f7b4157d9e4c530772f5bada3b0a080345f5f84fa6",
+    "bytes": 658
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/receipt.json",
+    "gitBlobSha256": "cf801e6d22ab61c0d4a397c0965e07a274a75c16f53e2ae9e80904375223ab12",
+    "bytes": 17247
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/screenshots/final/learner-1440.png",
+    "gitBlobSha256": "0e407d0f4839590d3b09a95f83b04188e28d910ab948d010a7599264f0f3daf6",
+    "bytes": 98861
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/screenshots/final/learner-320.png",
+    "gitBlobSha256": "52536bfac283f1cd8f37ded1c3f16cd3574012769c20c0c3f01e1e5c65fcfe08",
+    "bytes": 57016
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/screenshots/final/learner-390.png",
+    "gitBlobSha256": "d9a3b8b8e910a86dfcdff22413e2a682e720b91b0673f1c0f8243e645d7bf956",
+    "bytes": 65784
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/screenshots/final/learner-768.png",
+    "gitBlobSha256": "f1689a9afa855e52de0129d4a708d3b7b25beeef1897e65c742cd67a39a0c37b",
+    "bytes": 85375
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/screenshots/final/parent-1440.png",
+    "gitBlobSha256": "5246ff2e46fa210041c8ce2643009efa35388467ed0422a59a37c0b40f3af8bf",
+    "bytes": 151125
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/screenshots/final/parent-320.png",
+    "gitBlobSha256": "2c9cdf0f90426275361f127e9c3f2e80623d8feac3ae6776f7c3c6dcc6a669d6",
+    "bytes": 73177
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/screenshots/final/parent-390.png",
+    "gitBlobSha256": "df60906c900747b591ba27abc16d8e3ba3898ceab101c483b032a0aaa2912017",
+    "bytes": 75723
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/screenshots/final/parent-768.png",
+    "gitBlobSha256": "03a09fa8d778fafac25d5c426757b64db3b4b80b26af32d207af8bdf661fe91b",
+    "bytes": 92495
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/screenshots/final/parent-exact-child-and-level.png",
+    "gitBlobSha256": "688abfc714646f3a07005ee6eee3791d3995013855515392501496c24dd9dca9",
+    "bytes": 126517
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/screenshots/final/parent-failed-refresh-keeps-current-draft.png",
+    "gitBlobSha256": "04bf3b6f674e5e83e98f4f370bdce45ed2288ad12c4eb62028cfb662df97f886",
+    "bytes": 125149
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/screenshots/final/parent-original-receipt-and-current-scope.png",
+    "gitBlobSha256": "a4b191bad0ee33895df215be68a6d92a4e878080ecf996303c24c815aaa45c5a",
+    "bytes": 129491
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/screenshots/final/real-code-receipt-and-later-code.png",
+    "gitBlobSha256": "85c35573f534b83d023b35fd304437ccdb432acc34a70816ab6fa4d4b8fac52e",
+    "bytes": 107963
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/screenshots/visual/parent-1440.png",
+    "gitBlobSha256": "4ebc0d9db097a11bd41b9d7416b36b296618223f700e74a4dfa3cd49ac15b7f9",
+    "bytes": 415134
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/screenshots/visual/parent-320.png",
+    "gitBlobSha256": "f70fdb89a97eb1976451c43717e3b17da90ca12c1a58d1c205670e52ef77fe6c",
+    "bytes": 392704
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/screenshots/visual/parent-390.png",
+    "gitBlobSha256": "d9e17c388e3c8b10be8f3fdbd54d3684ac26a033446d5bea4c268139da696478",
+    "bytes": 394147
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/screenshots/visual/parent-768.png",
+    "gitBlobSha256": "69b4dc4026e2c323b5d25a5891f0ec9bbd93f0afa40a247f42ffa905d43bd64a",
+    "bytes": 356714
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/second-browser-test-overlay.json",
+    "gitBlobSha256": "359d1542ac1305e8513d31588ad135485e7ecf683596af3eced0229100778f71",
+    "bytes": 366
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/second-native-test-isolation-overlay.json",
+    "gitBlobSha256": "cfca70c4bd10904b97bde1703a7b373906ca7e6dcf864f154e39cc27999f1edc",
+    "bytes": 408
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/source-comparison.json",
+    "gitBlobSha256": "29168417788ca2dd1547fe6729afad4559068ee09030afabd64a124b5e48ae48",
+    "bytes": 320
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/source-inputs.json",
+    "gitBlobSha256": "e58549405317de6bf55cd9f99eaffea095fa7fe1ccfee5de47341c2f62ed6d01",
+    "bytes": 435225
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/third-application-delta-to-fourth.json",
+    "gitBlobSha256": "bcda3af026eda0d60a53d18bd3c5d72e0fdb67c3c77d919b61c1749b3be0d802",
+    "bytes": 310
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/third-browser-test-locator-overlay.json",
+    "gitBlobSha256": "cfd1e7c9802925a11ad9d6a1db7a03df99424e39a33cfdcef76c246f871b6125",
+    "bytes": 350
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/third-browser-test-overlay.json",
+    "gitBlobSha256": "c77de75063152ce0c2ffdddb2e94131f20c5501629f089cd8bffa70a4be7c493",
+    "bytes": 360
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/third-postgres-identity.json",
+    "gitBlobSha256": "4fdb817b9294610f8b23a886b016e6bf6f04cf7b9885696ca6fb28175a2c6d52",
+    "bytes": 194
+  },
+  {
+    "path": "doc/evidence/2026-10-30/workspace-r1-gesp-fourth/third-supporting-api-equivalence.json",
+    "gitBlobSha256": "02e4addd2bb8a625495d00ae791d5fe582205b07a61f833ee85fabc557da5b83",
+    "bytes": 162
+  },
+  {
+    "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+    "gitBlobSha256": "28c8c3c272962a46bfb1e8efed7d33c3603a8f82f4a904ac23e76ea38c349f68",
+    "bytes": 9863
+  },
+  {
+    "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+    "gitBlobSha256": "2a0abdf46b1088e9b6c46cf07379cca07e93b7a1440144800e0be73efe7d2540",
+    "bytes": 14430
+  },
+  {
+    "path": "doc/product/155-gesp-workspace-context-and-recovery.md",
+    "gitBlobSha256": "717d0cd5c8db947f4634d20808df336d57362b4c7b35baa6ee6e86a2aa678edb",
+    "bytes": 7507
+  },
+  {
+    "path": "doc/product/experience/implementation-log.md",
+    "gitBlobSha256": "0dadcd77dedbfa26d87a943b1954c586a99f20679a78c1e52a164a5cbe2f617b",
+    "bytes": 108535
+  },
+  {
+    "path": "doc/product/experience/workspace-legacy-entry-ledger.md",
+    "gitBlobSha256": "cf137fb42b199d51f25c1c3c6ee9fb750f530ee1b920af69ff636202a91fabf7",
+    "bytes": 6970
+  },
+  {
+    "path": "packages/contracts/src/gesp.ts",
+    "gitBlobSha256": "5bedcb0252c75a3f3920d673896f2aa3f148c22d8b6603f5dd5cb5e2b8e26d73",
+    "bytes": 10149
+  },
+  {
+    "path": "scripts/architecture/project-feature-definitions.cjs",
+    "gitBlobSha256": "8627d4afafad463fb3df7a4f724ac73efff14d38dd0fbe11f6bd7342c1dfd3ae",
+    "bytes": 162295
+  },
+  {
+    "path": "tests/e2e/workspace-gesp.spec.ts",
+    "gitBlobSha256": "5da79c821808b1b8989dadfa07ac2d315e2b834f26d09e5083e5583a489c8f50",
+    "bytes": 22550
+  }
+]

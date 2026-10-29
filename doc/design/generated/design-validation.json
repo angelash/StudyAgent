@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-29T20:53:04.533Z",
-  "sourceRevision": "30b2b510991a04e136af82a98c587b5630552b6e",
+  "at": "2026-10-29T21:57:36.669Z",
+  "sourceRevision": "099ed99a8f3fda10b4c1d382b4dfea47e0463aa4",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -17,17 +17,17 @@
     "contractTypes": 438,
     "webPages": 36,
     "webRouteHandlers": 1,
-    "apiTestFiles": 219,
-    "browserTestFiles": 48
+    "apiTestFiles": 220,
+    "browserTestFiles": 49
   },
   "features": {
     "areas": 14,
-    "features": 136,
+    "features": 137,
     "activeNormalApiRoutes": 459,
     "coveredApiRoutes": 459
   },
   "sourceReferences": {
-    "uniqueFiles": 724,
+    "uniqueFiles": 732,
     "problems": [],
     "sha256": {
       ".github/apt-ci.conf": "0ef559790ebaac3de1306f899a306ba2c7b76ba55b554e06634b0545b4878827",
@@ -46,6 +46,7 @@
       "apps/api/src/infrastructure/domain-database.ts": "3d93bfad256f12f352201037ddf6d5e42194a26b151bf8986182cafdf46085ae",
       "apps/api/src/infrastructure/domain-event-bus.service.ts": "eeefbcb6b43f2c08dc0b24b4aaa2cabfda68182c0b12715318f4107d02cc476b",
       "apps/api/src/infrastructure/domain-write-conflict.ts": "380a21e95f2cbe05c0f26926d8f699669642f7f558f3019f76933097c5701124",
+      "apps/api/src/infrastructure/gesp-workspace.test.ts": "cc030ae9ab1c9353c51557c4852d35fff597e2c6e9bbdb243357570ae08aa919",
       "apps/api/src/infrastructure/health.controller.ts": "48bdcf156d3df645b20c89fd122bf78223b81b47982930fabaef6ee40cd3d39e",
       "apps/api/src/infrastructure/in-memory-store.service.ts": "5f684c705d63a5e4909cf6bb603392b68ada67e362af5faf1db5d15cf5c1c60a",
       "apps/api/src/infrastructure/materials-navigation.test.ts": "acc9f236ab473ea3102eb6f89466b2d6e18ff018235e29743bcf6f932f18022e",
@@ -183,11 +184,11 @@
       "apps/api/src/modules/diagnostics/verification-blueprint.integration.test.ts": "a22ddce52ea8786fa50e6e2c2496cc59e5774732d3b8f3c745a52306c4f2cc49",
       "apps/api/src/modules/diagnostics/verification-blueprint.ts": "c2cd5f751219f214dd1cc023bf436432d3126e8745bece848ee18e3418aa5318",
       "apps/api/src/modules/diagnostics/verification-materials.ts": "26ec2bd5e089b591e67d0e25f708ca9b4b398bbfcbc8da8e4bca9c2e5e703462",
-      "apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts": "e3af27d7b9042dd0feead644259ba6be43850332eeb8ab14a3bf21576bb4a022",
-      "apps/api/src/modules/gesp/gesp-student.integration.test.ts": "820e60550e7703213d0a19a7ea785b524be97eaa984704e9450a701ef62209f1",
+      "apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts": "1cac84240d918bdf0a072e78705654f485a1aebb2b346179fe1be2d99ec45383",
+      "apps/api/src/modules/gesp/gesp-student.integration.test.ts": "438c70f06c6a6bd09217301d07b5f3869e4a79f8dba83e52cf20c7b5180e7cfe",
       "apps/api/src/modules/gesp/gesp.controller.ts": "f70bbae9b3c2ee8c61eecab93c7a1b373fce4568a28ebf6d983fb1b33ec15b90",
       "apps/api/src/modules/gesp/gesp.integration.test.ts": "c49031bb4907484e4abaed7c20e5ef6bd48545d42b42faec9515f7b004a5695b",
-      "apps/api/src/modules/gesp/gesp.service.ts": "a9a6756f4846ee492f0d0dfc6ca62378472488b48a3ecb51d5d0732e273a48be",
+      "apps/api/src/modules/gesp/gesp.service.ts": "c7a7cce624302b56bed3d1eba196e86092d0706b551a9ca42ac497cc2334bf9a",
       "apps/api/src/modules/gesp/isolated-runner.test.ts": "d647c78cf278e02505ed65e3ab54734d7aa4c1717fd5a053a120888e6548a635",
       "apps/api/src/modules/learning/activity-navigation.test.ts": "c13edffbf848590c3498b9e4d55f65f9f399f2df497816af0d28cb999afe7410",
       "apps/api/src/modules/learning/activity-navigation.ts": "f5077b46a18f99d27158095a46d87a9951fbf8e89c90dce5374a4321bf6e2f85",
@@ -430,8 +431,10 @@
       "apps/web/app/library/practice/studio.tsx": "3d39ef22ffe114d9378d106e4104bdc1634673c30fd5a586c15e7b1aa883078e",
       "apps/web/app/library/studio.tsx": "b79b74fb4d125cbd17cce4fffec6b323b994d9b9e78a8aeb97b6d90c6879654f",
       "apps/web/app/parent/dashboard/studio.tsx": "f2c6101d2e25caeb3f1055716baa3d995a02cedd2b5d5c7b09bb8f232f6ea7d8",
+      "apps/web/app/parent/gesp/workbench.tsx": "63bc4f3697c8e0cffd0619f30e387e0accfc05a775fb55766dfac8b16fa30159",
       "apps/web/app/parent/login/page.tsx": "df8ab8f1d29c5856ebb4d7a7854aea1d8b99fa6cc6f6cacfb33851abc21b3a13",
       "apps/web/app/student/assessment/studio.tsx": "322256e7a9f718748fa63be37ec55bb7abb3bfab9e2082dfb25b66ef0845f1c3",
+      "apps/web/app/student/gesp/workbench.tsx": "46d3b5bbc1a1f5442640b3bff21c891dd6623b6be52321ad93193e76e33fc8e5",
       "apps/web/app/student/login/page.tsx": "7496e59862b5ca91f2b48c0f408e2fccde6ed7a6ba663efd7f12722fbe67a8cf",
       "apps/web/app/studio/calendar-board.tsx": "429d4c03e7ead3d61eabf104505092b34209ee6f5ddca59fe152eef8e39aedac",
       "apps/web/app/studio/chemistry-course-tools.tsx": "36f7442647625a74644d288e21f04d1978241df67db1c9d472695f1fd5073646",
@@ -506,7 +509,7 @@
       "apps/web/app/studio/studio-course-assistant.tsx": "b2806146dc2482acf05510f65c2ade39c0aec04fdd34e500035837be08aa43e2",
       "apps/web/app/studio/studio-instant-assistant.css": "eb09675d8e6fda0f2aad7afccab4be6eac01308970818d472044cdc9a715e962",
       "apps/web/app/studio/studio-instant-assistant.tsx": "4943b034850b09453e0af96ebd3f767e40ffb1328e6552100ca503ef22eaf0f3",
-      "apps/web/app/studio/studio-navigation.tsx": "17ee60557f80a2b563463de28cb0a4b70f7cace6a8ed030da3416d07cd275b14",
+      "apps/web/app/studio/studio-navigation.tsx": "64f5d659c9cc52fe40e47dfadc4fe0854de7b51d0105745f175925d8ddc75ef7",
       "apps/web/app/studio/studio.tsx": "8fc6d41dd2ba0809ff576a252291ec52f98f4e24900a072ac83af8b21c6f4c39",
       "apps/web/app/studio/topic-figure-image.tsx": "c8d02ec17500c3e71d0c93d9782624ef751e392ee8b4fa47058f92392f6f3610",
       "apps/web/app/studio/whiteboard-canvas.tsx": "7d93a4925b900e7071c533872f4a7a6d0b6e44e0f41dc56a406507a25d2d84be",
@@ -547,6 +550,7 @@
       "apps/web/components/assistant-whiteboards.css": "770c747a9f38af975240bfee0a2dbf49bfad2d621c503caafe937d189e2332fb",
       "apps/web/components/assistant-whiteboards.tsx": "a3be48fc2ec50f5adf05838672e97b0ec9f322b4f13d74f7fcc7504df9f7f039",
       "apps/web/components/assistant-widget.tsx": "df0b6b516ba17f20109af3da5cd038ba93f06251c4bf98f1a60aa20c171e38e2",
+      "apps/web/components/gesp-workspace-navigation.tsx": "eeba69a40bbb0b9afd56ef43df4e698c92201d45a750553736bdc3dd584e4192",
       "apps/web/components/guidance-model-panel.tsx": "ac6d76ffb539e5ea4bc25f48c8d18d7d11086fa0eed9428952abcfe05568a007",
       "apps/web/components/knowledge-report-workspace.css": "35e689d45fb10da5455bba8b805db8b71a80a1c33213321e08241169d2ce4a7b",
       "apps/web/components/knowledge-report-workspace.tsx": "8ebab689607df42e6b43951dab3a4f3ff5b6216ff553ce5d3ff1ea13c9494284",
@@ -569,6 +573,8 @@
       "apps/web/lib/assistant-conversation.tsx": "6045ec99f225600c40b8c91091391a623f9f4951317bb4f8fb3f11b4268ebb3d",
       "apps/web/lib/assistant-course-client.ts": "4d1a2d964301d8eddcdca0ce1ce1f0320fb0dc80939e1bcbf4e7369492fd6bb4",
       "apps/web/lib/assistant-course-navigation.ts": "d9370c14bcaa0718f58772af4b8fc6c7cb9fe2e0f6c3bc789631d988f120ca75",
+      "apps/web/lib/gesp-workspace-storage.ts": "f6549529f0bda78eb4b357e30b7a8ac4347e6ab65c91c1fa1c350bacbb8fb806",
+      "apps/web/lib/gesp-workspace.ts": "4af774cd09fd2f72f19d151a34c58c771fde069a19d0461f588f8b00fecf5199",
       "apps/web/lib/guidance-creation.ts": "b1936c0d8da52ffb93f2167a2bf6a2734d7b8f114957746cfa5142bebe535a62",
       "apps/web/lib/learning-context.ts": "a1de67076d04e8f065765eac5c773561ce76688e115e1fce9ca01d7950cae732",
       "apps/web/lib/material-text-draft.ts": "9071c0000a429eb0df8b6033814f28bec0b6d625f3d3f3dd14957587b75d05e6",
@@ -580,8 +586,9 @@
       "apps/web/lib/paper-practice-local.ts": "134d5a7a6b8c0ed99b94444d1f08660409b638613df124518b8b6ea44e76af11",
       "apps/web/lib/paper-review-navigation.ts": "33e89b4743bb72b37aeb60da91a2c428f3a32d2d7cc89c20bb4fe342d7e8746c",
       "apps/web/lib/session-user.ts": "f62f9542eaa07b4198286cdbcd9ecbb415f31a2481d4f811e2e41d67b0b1c6ce",
-      "apps/web/lib/workspace-exit-guard.ts": "1a2416ab585fd54441279ab7fe652e16960c8535abe1b504f3385642269d7c83",
-      "apps/web/lib/workspace-navigation.ts": "5786d69ef409de2a720ac547bd19c9e8e6c0a987667e722137886b41f297d2fa",
+      "apps/web/lib/use-gesp-workspace-copy.ts": "fe53fc6704034082858fe4068d9121c4e3677d615cd2a4a0b4717c53989470de",
+      "apps/web/lib/workspace-exit-guard.ts": "680431e9d21bbf9a42dd1977827d5f06ee31fd143310656913e359a70465613f",
+      "apps/web/lib/workspace-navigation.ts": "19641967f139386fa655b9a777515622d51b0d0bb8e802c0a5f523fc2e9c4f5c",
       "apps/web/public/classroom-voice-samples/manifest.json": "9dfce4e8f3acb775e0c7d869987812286a335b0fcf3a1788ad60679fab9d0c5c",
       "doc/evidence/2026-10-26/knowledge-report-focused/receipt.json": "babaa746888d9582a9282c93beb4110dbd1bc360b3d05fdae5135f9e2b2c0739",
       "doc/evidence/2026-10-26/topic-figure-acceptance.json": "3e887de00ff06191e7ca08af307bc9ec8bd5ecaafe0ef8b8dca8ea8eba3c8484",
@@ -627,7 +634,7 @@
       "packages/contracts/src/course-project.ts": "95fc965a7958b24a34dc6ea96b29ff0ce928a15af243173825a8eaa499d68020",
       "packages/contracts/src/curriculum.ts": "a3dc46958640ef2c944fac82839feebdbefc937d2875ea67b97549de703bc47d",
       "packages/contracts/src/diagnostics.ts": "36121d7c96717ddd0f9e6cb59e19cbd021b4dcfeed26a57695984feb16bb2f33",
-      "packages/contracts/src/gesp.ts": "80e9e70bceb9ed4cd1fff10ceed91d2b84574e08a8e144c8cbf9ed94a1ad0fe3",
+      "packages/contracts/src/gesp.ts": "53786002bacff89fcdbc05f43c5570d87546d3d8a3f4436c883d31023ceda7cf",
       "packages/contracts/src/guidance-model.ts": "12e171ad5779c9029f4e1339af3e7316127d1f64c94ab913e3c682a88a2f5662",
       "packages/contracts/src/index.ts": "588cc297b81b75313b7214f3966284dfd3d919d7cc9fb6ae7422f9e178414913",
       "packages/contracts/src/learning-home.ts": "93a149be8a0424c2fa8390e0675bf8be73d1ef2cf1108713bc91ca9d8f06eaa4",
@@ -751,6 +758,7 @@
       "tests/e2e/whiteboard-questions.spec.ts": "55feb8c14d39f680ae62dfb835c12d4467735d0123251e7c8ee08895869392f9",
       "tests/e2e/whiteboard-timing.ts": "9ba4120b8ed6e684e0c918b6cec478320a4456115ccc52cdd321e7ab33f377b2",
       "tests/e2e/workspace-focus.spec.ts": "488c1e1aab2a8866f7bc82a8660f8cf225a2e81935296f2227bb93aef7ce51a4",
+      "tests/e2e/workspace-gesp.spec.ts": "5da79c821808b1b8989dadfa07ac2d315e2b834f26d09e5083e5583a489c8f50",
       "tests/e2e/workspace-materials.spec.ts": "cdc04bd0577ebb6ad926360b7cdecf6031cd99944a580984884a6cd4ec7dd466",
       "tests/e2e/workspace-shell.spec.ts": "c1988e1e499a3f9945c9476615f6f288e173d06d95a4657d17ecd6fe6bb1a99e",
       "tests/e2e/workspace.spec.ts": "fefc6881e4f6bae15f0de145af2c902d74a7aa98fd0edc1af5f3687dcf69a9f4"
@@ -762,12 +770,12 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 4487,
+    "checked": 4504,
     "missing": []
   },
   "staticContent": {
     "receipt": "content-snapshot.json",
-    "authoredAuditAt": "2026-10-29T20:24:25.604Z",
+    "authoredAuditAt": "2026-10-29T21:55:40.597Z",
     "totals": {
       "points": 258,
       "teaching": 258,
@@ -833,8 +841,8 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-30/workspace-r1-focus-sixth/receipt.json",
-    "revision": "9ec79f18ddcefa913bd6d351625d47cfb58dba4f",
+    "receipt": "../evidence/2026-10-30/workspace-r1-gesp-fifth/receipt.json",
+    "revision": "099ed99a8f3fda10b4c1d382b4dfea47e0463aa4",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

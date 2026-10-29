@@ -49,6 +49,7 @@ export type GespOverview = {
 
 export const gespLearningScopeSchema = z.object({
   level: z.number().int().min(1).max(4),
+  expectedVersion:z.number().int().nonnegative().optional(),
   atomIds: z.array(z.string().regex(/^gesp-cpp\.l[1-4]\.[a-z-]+$/)).min(1).max(49),
   requestKey: z.string().trim().min(8).max(120),
   reason: z.string().trim().min(8).max(500),

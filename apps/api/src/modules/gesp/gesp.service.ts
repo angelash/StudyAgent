@@ -132,11 +132,12 @@ export class GespService implements OnModuleDestroy {
     if (!command.atomIds.every(atomId => atomId.startsWith(`gesp-cpp.l${command.level}.`))) throw new BadRequestException('认证等级与知识点命名空间不一致');
     const replayed = this.store.find('gespLearningScopeRevisions', { studentId, requestKey: command.requestKey });
     if (replayed) {
-      if (replayed.level !== command.level || JSON.stringify([...replayed.atomIds].sort()) !== JSON.stringify([...new Set(command.atomIds)].sort()))
+      if (replayed.level !== command.level || replayed.reason!==command.reason || command.expectedVersion!==undefined&&command.expectedVersion!==replayed.version-1 || JSON.stringify([...replayed.atomIds].sort()) !== JSON.stringify([...new Set(command.atomIds)].sort()))
         throw new ConflictException('同一范围请求键不能改变范围内容');
-      return this.scopeView(this.store.find('gespLearningScopes', { studentId })!);
+      const {scopeId,...original}=replayed;return this.scopeView({...original,id:scopeId});
     }
     const previous = this.store.find('gespLearningScopes', { studentId }), now = new Date().toISOString();
+    if(command.expectedVersion!==undefined&&command.expectedVersion!==(previous?.version??0))throw new ConflictException('认证范围已由另一处修改，请保留完整选择并核对当前版本。');
     if (previous) {
       previous.level = command.level; previous.atomIds = [...new Set(command.atomIds)].sort(); previous.version++; previous.confirmedByUserId = user.id;
       previous.confirmedAt = now; previous.updatedAt = now; previous.requestKey = command.requestKey; previous.reason = command.reason;
@@ -171,7 +172,7 @@ export class GespService implements OnModuleDestroy {
     const command = validate(gespHintRequestSchema, input); this.students.assertCanAccessStudent(user, command.studentId);
     const previous = this.store.find('gespHintEvents', { studentId: command.studentId, requestKey: command.requestKey });
     if (previous) {
-      if (previous.taskId !== command.taskId || previous.level !== command.level) throw new ConflictException('同一提示请求键不能改变任务或提示级别');
+      if (previous.atomId !== command.atomId || previous.taskId !== command.taskId || previous.level !== command.level) throw new ConflictException('同一提示请求键不能改变知识点、任务或提示级别');
       return this.publicHint(previous);
     }
     const scope = this.store.find('gespLearningScopes', { studentId: command.studentId, status: 'active' });
@@ -253,7 +254,7 @@ export class GespService implements OnModuleDestroy {
     const command = validate(gespProbeSubmissionSchema, input); this.students.assertCanAccessStudent(user, command.studentId);
     const previous = this.store.find('gespProbeSubmissions', { studentId: command.studentId, requestKey: command.requestKey });
     if (previous) {
-      if (previous.probeId !== command.probeId || previous.answer !== command.answer) throw new ConflictException('同一请求键不能改变探针答案');
+      if (previous.atomId !== command.atomId || previous.probeId !== command.probeId || previous.answer !== command.answer) throw new ConflictException('同一请求键不能改变知识点、探针或答案');
       return this.publicProbeSubmission(previous);
     }
     const scope = this.store.find('gespLearningScopes', { studentId: command.studentId, status: 'active' });
@@ -275,8 +276,8 @@ export class GespService implements OnModuleDestroy {
     const command = validate(gespCodeSubmissionSchema, input); this.students.assertCanAccessStudent(user, command.studentId);
     const previous = this.store.find('gespCodeSubmissions', { studentId: command.studentId, requestKey: command.requestKey });
     if (previous) {
-      if (previous.sourceSha256 !== hash(command.source) || (previous.reviewTaskId ?? undefined) !== command.reviewTaskId ||
-        (previous.hintEventId ?? undefined) !== command.hintEventId) throw new ConflictException('同一提交请求键不能改变源代码、复测任务或提示引用');
+      if (previous.atomId !== command.atomId || previous.sourceSha256 !== hash(command.source) || (previous.reviewTaskId ?? undefined) !== command.reviewTaskId ||
+        (previous.hintEventId ?? undefined) !== command.hintEventId) throw new ConflictException('同一提交请求键不能改变知识点、源代码、复测任务或提示引用');
       return this.publicSubmission(previous);
     }
     const scope = this.store.find('gespLearningScopes', { studentId: command.studentId, status: 'active' });

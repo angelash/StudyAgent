@@ -1,0 +1,6 @@
+{
+  "reason": "Scope the offline error assertion to main content instead of also matching the Next.js route announcer. No application change.",
+  "path": "tests/e2e/workspace-gesp.spec.ts",
+  "before": "2b0f2280ef86cf40fef2b3572cdda1f0e1f44656b3507a64b97244d843fcb39b",
+  "after": "cf19cbb8b603b81fc975fa70d310016ac441ffd6d3f70aa0bc1a965368ba3af2"
+}

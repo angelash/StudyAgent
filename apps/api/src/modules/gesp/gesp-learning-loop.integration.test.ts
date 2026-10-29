@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { randomBytes, randomUUID } from 'node:crypto';
+import { randomBytes, randomUUID,createHash } from 'node:crypto';
 import { NestFactory } from '@nestjs/core';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import request from 'supertest';
@@ -20,7 +20,7 @@ describe('GESP learning support HTTP boundaries', () => {
     reviewer = await call('post', '/auth/register', { principal: `gesp-reviewer-${randomUUID()}`,
       credential: randomBytes(18).toString('hex') }, null);
     const { InMemoryStoreService } = require('../../../dist/apps/api/src/infrastructure/in-memory-store.service.js');
-    app.get(InMemoryStoreService).users.find((user: any) => user.id === reviewer.user.id).role = 'admin';
+    const store=app.get(InMemoryStoreService);await store.transaction(()=>{store.find('users',{id:reviewer.user.id}).role='admin';});
     await call('put', `/gesp/students/${studentId}/scope`, { level: 1, atomIds: ['gesp-cpp.l1.io'], requestKey: randomUUID(),
       reason: '家长确认一个一级原创编程试点范围' }, parent);
   });
@@ -32,10 +32,22 @@ describe('GESP learning support HTTP boundaries', () => {
     expect(response.status, `${method} ${route}: ${response.body.error?.message ?? ''}`).toBe(expected); return response.body.data;
   }
 
+  it('recovers the exact code receipt but rejects a different atom with the same source and original request key',async()=>{
+    const from=(file:string)=>require('../../../dist/apps/api/src/'+file+'.js'),store=app.get(from('infrastructure/in-memory-store.service').InMemoryStoreService);
+    const source='int main(){return 0;}',requestKey=randomUUID(),id=randomUUID(),sourceSha256=createHash('sha256').update(source).digest('hex');
+    await store.transaction(()=>store.append('gespCodeSubmissions',{id,studentId,atomId:'gesp-cpp.l1.io',taskId:'gesp-student-cpp-sum-two',source,sourceSha256,requestKey,status:'failed',createdAt:new Date().toISOString(),compilePassed:true,tests:[],compileDiagnostics:[],runtimeDiagnostics:[],hintLevel:0,independent:true,reviewTaskId:null}));
+    const before=await store.requestContext(()=>JSON.stringify(store.inspect('gespCodeSubmissions'))),command={studentId,atomId:'gesp-cpp.l1.io',source,requestKey};
+    const replay=await call('post','/gesp/code-submissions',command,learner);expect(replay.id).toBe(id);expect(replay.atomId).toBe(command.atomId);expect(replay).not.toHaveProperty('source');expect(replay).not.toHaveProperty('requestKey');
+    await call('post','/gesp/code-submissions',{...command,atomId:'gesp-cpp.l1.division'},learner,409);
+    await call('post','/gesp/code-submissions',{...command,source:source+'\n'},learner,409);
+    expect(await store.requestContext(()=>JSON.stringify(store.inspect('gespCodeSubmissions')))).toBe(before);
+  });
+
   it('lets only the learner request progressive hints and replays the same request', async () => {
     const requestKey = randomUUID(), body = { studentId, atomId: 'gesp-cpp.l1.io', taskId: 'gesp-student-cpp-sum-two', level: 1, requestKey };
     const first = await call('post', '/gesp/hints', body, learner); const replay = await call('post', '/gesp/hints', body, learner);
     expect(replay.id).toBe(first.id); expect(first).toMatchObject({ level: 1, revealsAnswer: false });
+    await call('post','/gesp/hints',{...body,atomId:'gesp-cpp.l1.loop'},learner,409);
     expect(JSON.stringify(first)).not.toContain('expected');
     await call('post', '/gesp/hints', body, parent, 403);
   });
@@ -66,6 +78,18 @@ describe('GESP learning support HTTP boundaries', () => {
     expect(history).toHaveLength(1); expect(history[0]).toMatchObject({ status: 'approved', version: 1, current: true });
     await call('post', '/gesp/student-content/reviews', { taskId: task.id, expectedVersion: 0, gates,
       rationale: '旧版本请求不能覆盖已经保存并生效的审核结论，必须先刷新最新内容审核版本。', requestKey: randomUUID() }, reviewer, 409);
+  });
+
+  it('returns the frozen scope receipt after later changes and rejects competing versioned confirmations',async()=>{
+    const child=(await call('post','/students',{nickname:'合成认证范围并发',grade:4,preferredSessionMinutes:15,defaultVersionMap:{math:'',chinese:'',english:''}})).profile.id;
+    const original={level:1,atomIds:['gesp-cpp.l1.io'],expectedVersion:0,requestKey:randomUUID(),reason:'合成家长确认原始范围并保留原始回执'};
+    const first=await call('put','/gesp/students/'+child+'/scope',original);expect(first.version).toBe(1);
+    const next=await call('put','/gesp/students/'+child+'/scope',{...original,atomIds:['gesp-cpp.l1.loop'],expectedVersion:1,requestKey:randomUUID()});expect(next.version).toBe(2);
+    expect(await call('put','/gesp/students/'+child+'/scope',original)).toEqual(first);
+    const current=await call('get','/gesp/students/'+child+'/workspace');expect(current.scope).toMatchObject({version:2,atomIds:['gesp-cpp.l1.loop']});expect(current.scopeHistory).toHaveLength(2);
+    await call('put','/gesp/students/'+child+'/scope',{...original,expectedVersion:1},parent,409);
+    const replies=await Promise.all(['gesp-cpp.l1.io','gesp-cpp.l1.division'].map(atomId=>base.put('/api/gesp/students/'+child+'/scope').set('Authorization','Bearer '+parent.token).send({...original,atomIds:[atomId],expectedVersion:2,requestKey:randomUUID()})));
+    expect(replies.map(row=>row.status).sort()).toEqual([200,409]);expect((await call('get','/gesp/students/'+child+'/workspace')).scopeHistory).toHaveLength(3);
   });
 
   it('keeps unrelated guardians outside programming learning evidence', async () => {

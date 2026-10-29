@@ -1,0 +1,117 @@
+{
+  "numTotalTests": 16,
+  "numPassedTests": 16,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "gesp-workspace.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "GESP certification location and original command recovery boundaries keeps actual certification levels outside academic subject and grade",
+          "status": "passed",
+          "durationMs": 3.681600000000003
+        },
+        {
+          "title": "GESP certification location and original command recovery boundaries rejects ambiguous aliases, mixed subjects, other learners and malformed original task links",
+          "status": "passed",
+          "durationMs": 1.5442000000000462
+        },
+        {
+          "title": "GESP certification location and original command recovery boundaries retains complete code and the original pending command separately and rejects another scope",
+          "status": "passed",
+          "durationMs": 6.5031999999999925
+        }
+      ]
+    },
+    {
+      "file": "workspace-exit-guard.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "workspace activity exit boundaries keeps stage, step and presentation changes inside the same authorized activity",
+          "status": "passed",
+          "durationMs": 1.5878000000000156
+        },
+        {
+          "title": "workspace activity exit boundaries treats another object, subject, course, project or route as leaving",
+          "status": "passed",
+          "durationMs": 0.5695999999999799
+        },
+        {
+          "title": "workspace activity exit boundaries keeps an answer-item change in one session but protects switching the original session",
+          "status": "passed",
+          "durationMs": 0.2370999999999981
+        }
+      ]
+    },
+    {
+      "file": "gesp-learning-loop.integration.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "GESP learning support HTTP boundaries recovers the exact code receipt but rejects a different atom with the same source and original request key",
+          "status": "passed",
+          "durationMs": 57.314400000000205
+        },
+        {
+          "title": "GESP learning support HTTP boundaries lets only the learner request progressive hints and replays the same request",
+          "status": "passed",
+          "durationMs": 53.093299999999545
+        },
+        {
+          "title": "GESP learning support HTTP boundaries creates a rule plan for parent confirmation and exposes it only after activation",
+          "status": "passed",
+          "durationMs": 76.5598
+        },
+        {
+          "title": "GESP learning support HTTP boundaries shows hidden authored content only to reviewers and version-gates the publishing decision",
+          "status": "passed",
+          "durationMs": 60.90729999999985
+        },
+        {
+          "title": "GESP learning support HTTP boundaries returns the frozen scope receipt after later changes and rejects competing versioned confirmations",
+          "status": "passed",
+          "durationMs": 122.70460000000003
+        },
+        {
+          "title": "GESP learning support HTTP boundaries keeps unrelated guardians outside programming learning evidence",
+          "status": "passed",
+          "durationMs": 356.72050000000036
+        }
+      ]
+    },
+    {
+      "file": "gesp-student.integration.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "GESP isolated student programming loop keeps hidden tests private and requires the parent-confirmed independent scope",
+          "status": "passed",
+          "durationMs": 82.33979999999974
+        },
+        {
+          "title": "GESP isolated student programming loop keeps concept and state-tracking evidence independent from code execution",
+          "status": "passed",
+          "durationMs": 79.76610000000073
+        },
+        {
+          "title": "GESP isolated student programming loop runs source with hidden tests and returns only sanitized evidence",
+          "status": "passed",
+          "durationMs": 26681.9235
+        },
+        {
+          "title": "GESP isolated student programming loop rejects points outside scope, parent code submission and unrelated guardians",
+          "status": "passed",
+          "durationMs": 310.1889999999985
+        }
+      ]
+    }
+  ]
+}
