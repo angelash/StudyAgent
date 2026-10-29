@@ -29,6 +29,7 @@ export function workspaceHref(area: WorkspaceArea, context?: LearningContext) {
   const route = destinations[area] ?? '/studio';
   const params = new URLSearchParams();
   if (!destinations[area] && area !== 'home') params.set('view', area);
+  if (area === 'materials') params.set('tab', 'personal');
   if (context?.studentId && context.audience !== 'self') params.set(route === '/studio' ? 'student' : 'studentId', context.studentId);
   if (context && context.audience !== 'self') params.set('subject', context.subject);
   if (context?.audience === 'self' && route === '/studio') params.set('courseScope', 'adult');

@@ -7,6 +7,7 @@ import { XiaojiuModelPicker,useXiaojiuModels } from '../../../components/xiaojiu
 import { WorkspaceDialog } from '../workspace-dialog';
 import { CourseLessonStatus } from '../course-activity';
 import { copyCourseFilters } from '../course-library-state';
+import { materialsReturn, withMaterialsReturn } from '../../../lib/materials-navigation';
 import { SourceCheckEditor } from './check-editor';
 import { CheckManuscript } from './check-manuscript';
 import { checkDocumentSlot,checkLocalPrefix,readCheckCopies,type CheckCommand,type CheckDraft } from './check-recovery';
@@ -55,7 +56,7 @@ export function SourceCourseCheckPanel({course,ownerId,query,onRefresh}:{course:
   function closeEditor(){if(busy)return;if(dirty){setCloseDraft(true);return;}setAuthor(null);setContent(null);setRecovery(null);}
   async function preflight(){if(previewing||busy)return;const operation=new AbortController();previewRequest.current?.abort();previewRequest.current=operation;setPreviewing(true);setError('');try{const value=await apiRequest<Preview>(base+'/preflight',{method:'POST',body:JSON.stringify({lessonIds:selection,modelId:models.modelId}),signal:operation.signal});if(alive.current&&!operation.signal.aborted)setPreview(value);}catch(error){if(!operation.signal.aborted)setError((error as Error).message);}finally{if(!operation.signal.aborted&&alive.current)setPreviewing(false);}}
   function invalidate(){previewRequest.current?.abort();setPreview(null);setPreviewing(false);}
-  function href(checkId:string,lessonId:string,sessionId?:string){return'/studio/classroom?'+copyCourseFilters(query,new URLSearchParams({sourceCourseId:course.id,sourceCheckId:checkId,lesson:lessonId,tab:'practice',...(sessionId?{session:sessionId}:{}),...(course.studentId?{returnStudent:course.studentId,returnSubject:course.subject??'math'}:{})}));}
+  function href(checkId:string,lessonId:string,sessionId?:string){return withMaterialsReturn('/studio/classroom?'+copyCourseFilters(query,new URLSearchParams({sourceCourseId:course.id,sourceCheckId:checkId,lesson:lessonId,tab:'practice',...(sessionId?{session:sessionId}:{}),...(course.studentId?{returnStudent:course.studentId,returnSubject:course.subject??'math'}:{})})),materialsReturn(new URLSearchParams(query).get('materialsReturn')));}
   const blocked=busy||commands.length>0;
   return <section ref={panelElement} className="sc-check-panel" aria-label="资料课程独立核查" id="source-course-unit-check">
     <header><div><small>INDEPENDENT CHECK</small><h2>换一个情境，看看理解到了哪里。</h2><p>逐题保留首答、帮助和反馈；AI生成题仍待内容审核。</p></div>{course.permissions.manage&&course.status==='active'&&<button type="button" disabled={blocked||active} onClick={()=>{invalidate();setPrepareOpen(true);}}>＋ 准备独立核查</button>}</header>

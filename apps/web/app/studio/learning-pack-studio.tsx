@@ -56,11 +56,11 @@ export function LearningPackStudio({ studentId, subject, atoms, estimates, mater
   }
 
   return <section className="sa-learning-pack-studio">
-    <header><div><span className="studio-kicker">PERSONAL STUDY PACK</span><h1>一份学案，四个证据环节。</h1>
+    <header><div><span className="studio-kicker">PERSONAL STUDY PACK</span><h2>个性化学案</h2>
       <p>从已审核知识定义、讲解、例子和易错点生成讲义、闪卡与微测清单；可选 PDF 页作为人工对照来源。</p></div>
       <button onClick={() => window.print()}>打印当前学案</button></header>
     <div className="sa-pack-layout">
-      <aside className="sa-pack-builder"><span className="studio-kicker">01 / SELECT FOCUS</span>
+      <aside className="sa-pack-builder"><span className="studio-kicker">选择知识点</span>
         <label>学案名称<input value={title} onChange={event => setTitle(event.target.value)} placeholder="留空则按知识点自动命名" maxLength={180} /></label>
         <div className="sa-pack-atoms">{orderedAtoms.map(atom => {
           const status = estimates.find(item => item.atomId === atom.id)?.status ?? 'unknown';
@@ -73,7 +73,7 @@ export function LearningPackStudio({ studentId, subject, atoms, estimates, mater
         <p>PDF 页面不会自动等同于知识点映射；系统只在能核对文本时保留页码，并明确标注待人工确认。</p>
         <button disabled={busy || !selectedAtoms.length} onClick={() => void generate()}>{busy ? '正在编排…' : '生成学案预览'}</button>
       </aside>
-      <main className="sa-pack-preview">{preview ? <>
+      <section className="sa-pack-preview" aria-label="学案预览">{preview ? <>
         <header><div><span className="studio-kicker">REVIEW BEFORE SAVING</span><h2>{preview.title}</h2></div>
           <div className="sa-pack-stats"><span><b>{preview.sections.length}</b> 讲解段</span><span><b>{preview.flashcards.length}</b> 闪卡</span><span><b>{preview.practiceSteps.length}</b> 任务</span></div></header>
         {preview.warnings.map(warning => <p className="sa-pack-warning" key={warning}>{warning}</p>)}
@@ -84,11 +84,11 @@ export function LearningPackStudio({ studentId, subject, atoms, estimates, mater
         <div className="sa-pack-cards">{preview.flashcards.map((card, index) => <details key={card.id}><summary><span>{String(index + 1).padStart(2, '0')}</span><b>{card.prompt}</b></summary>
           <p>{card.answer}</p><small>提示：{card.hint}</small></details>)}</div>
         <ol className="sa-pack-practice">{preview.practiceSteps.map(step => <li key={step.id}><span>{step.minutes} MIN</span><div><b>{step.title}</b><p>{step.detail}</p></div></li>)}</ol>
-        <footer><button onClick={() => setPreview(null)}>返回调整</button><button disabled={busy} onClick={() => void save()}>{busy ? '保存中…' : '保存到 Materials'}</button></footer>
-      </> : <div className="sa-pack-empty"><span className="studio-kicker">GROUNDED, NOT INVENTED</span><h2>讲义先解释，再用新题验证。</h2>
+        <footer><button onClick={() => setPreview(null)}>返回调整</button><button disabled={busy} onClick={() => void save()}>{busy ? '保存中…' : '保存学案'}</button></footer>
+      </> : <div className="sa-pack-empty"><h3>选择知识点，预览学案</h3>
         <p>选择 1–4 个知识点后预览。学案会区分知识定义、已审核例子、可验证易错假设与迁移任务；内容不足时明确停止。</p></div>}
-      </main>
-      <aside className="sa-pack-library"><span className="studio-kicker">SAVED PACKS</span>
+      </section>
+      <aside className="sa-pack-library"><span className="studio-kicker">已保存学案</span>
         {packs.length ? packs.map(pack => <button key={pack.id} data-active={selectedPack?.id === pack.id} onClick={() => setSelectedPackId(pack.id)}>
           <span>{pack.sections.length} 段 · {pack.flashcards.length} 卡</span><b>{pack.title}</b><small>{new Date(pack.updatedAt).toLocaleDateString('zh-CN')}</small></button>)
           : <p>还没有保存的个性化学案。</p>}

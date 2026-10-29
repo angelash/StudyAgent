@@ -7,6 +7,7 @@ import { StudyNav } from '../../../components/study-nav';
 import { paperPracticeFailure, usePaperPracticeApi } from '../../../lib/paper-practice-api';
 import { clearPaperRecovery, downloadPaperRecovery, firstPaperCopy, otherPaperCopies, paperBasketKey, paperPracticeInputHash, paperStorage, parsePaperSelection, storePaperRecovery } from '../../../lib/paper-practice-local';
 import { PaperPracticeSession } from './session';
+import { materialsReturn, withMaterialsReturn } from '../../../lib/materials-navigation';
 import '../../student/assessment/studio.css';
 import './practice.css';
 
@@ -31,6 +32,8 @@ function AuthorizedPractice({ user }: { user: SessionUser }) {
   return location.session ? <PaperPracticeSession key={location.session} user={user} sessionId={location.session} /> : <NewPaperPractice key={location.search} user={user} />;
 }
 function NewPaperPractice({ user }: { user: SessionUser }) {
+  const returnTo = typeof window === 'undefined' ? null : materialsReturn(new URLSearchParams(window.location.search).get('materialsReturn'));
+  const back = (href: string) => withMaterialsReturn(href, returnTo);
   const { call, alive } = usePaperPracticeApi();
   const [children, setChildren] = React.useState<Array<{ id: string; nickname: string }>>([]), [studentId, setStudentId] = React.useState(''), [ready, setReady] = React.useState(false);
   const [selection, setSelection] = React.useState<PaperPracticeSelection[]>([]), [preview, setPreview] = React.useState<PaperPracticePreview | null>(null), [history, setHistory] = React.useState<History[]>([]);
@@ -96,7 +99,7 @@ function NewPaperPractice({ user }: { user: SessionUser }) {
       const row = await call<PaperPracticeSessionView>('/library/practice/sessions', value.body);
       if (!alive.current) return;
       try { clearPaperRecovery(storage); } catch { /* The retained original key can still read the same record later. */ }
-      window.location.assign('/library/practice?session=' + encodeURIComponent(row.id));
+      window.location.assign(back('/library/practice?session=' + encodeURIComponent(row.id)));
     } catch (caught) { if (alive.current) { setError(paperPracticeFailure(caught)); if (confirmedMissing && caught instanceof ApiRequestError && [400, 409].includes(caught.status)) setExpiredStart(true); } } finally { if (alive.current) setBusy(false); }
   }
   async function repreview() {
@@ -129,7 +132,7 @@ function NewPaperPractice({ user }: { user: SessionUser }) {
       else throw new Error('这不是原卷练习的恢复文件。');
     } catch (caught) { if (alive.current) setError(paperPracticeFailure(caught)); }
   }
-  return <div className="pp-shell"><header className="pp-heading"><a href="/library">← 返回题卷库</a><span>PAPER PRACTICE / 原卷练习</span><h1>先留下思考，<br />再看清下一步。</h1><p>原题、首次回答与订正始终放在一起。这里的自评与练习记录，不自动成为知识点能力分数。</p></header>
+  return <div className="pp-shell"><header className="pp-heading"><a href={returnTo ?? '/library'}>← 返回题卷库</a><span>PAPER PRACTICE / 原卷练习</span><h1>先留下思考，<br />再看清下一步。</h1><p>原题、首次回答与订正始终放在一起。这里的自评与练习记录，不自动成为知识点能力分数。</p></header>
     {error && <div className="pp-error" role="alert">{error}<button onClick={() => setReload(value => value + 1)}>重新读取</button></div>}{notice && <p role="status">{notice}</p>}
     {pending ? <section className="pp-card" aria-label="原开始记录恢复"><h2>先核对上一次开始。</h2><p>原请求仍保留，读取或重试会沿用同一份选择。</p>{!protectedLocally && <p>本机尚未确认恢复信息已保存，请先保存恢复文件。</p>}
       <button className="studio-secondary" onClick={() => { downloadPaperRecovery(pending, '原卷练习开始记录.json'); setNotice('请确认浏览器已保存完整恢复文件，再继续开始。'); }}>下载开始记录保护文件</button>{manualProtection && <label><input type="checkbox" checked={protectedLocally} onChange={event => setProtectedLocally(event.target.checked)} />我已另外保留完整恢复文件</label>}
@@ -139,8 +142,8 @@ function NewPaperPractice({ user }: { user: SessionUser }) {
         <button className="studio-secondary" disabled={!ready || !selection.length || busy} onClick={() => void inspect()}>{busy ? '正在核对原卷…' : '预览这次练习'}</button>
         {preview && <div className="pp-preview"><ul>{preview.papers.map(paper => <li key={paper.id}><strong>{paper.title}</strong><span>{paper.selected} 个原题位 · {paper.publicationStatus === 'published' ? '已发布' : '教研原件'}</span><button className="studio-text-button" onClick={() => { const next = selection.filter(row => row.paperId !== paper.id); setSelection(next); setPreview(null); try { if (new URLSearchParams(window.location.search).get('basket') === '1') storePaperRecovery(paperBasketKey(user.id), next); } catch { setNotice('本次选择已调整，本机清单暂未保存。'); } }}>移除这份卷</button></li>)}</ul><p>{preview.answerable} 个可作答记录 · {preview.missing} 个缺题位 · {preview.unavailable} 个当前不可用 · {preview.withoutReference} 个缺少可核对答案</p>{preview.documents > 0 && <p>包含 {preview.documents} 份未逐题切分的 PDF，将保留整卷作答笔记，不虚构题号或分数。</p>}<button className="studio-primary" disabled={busy || !preview.answerable} onClick={() => void start()}>确认范围，开始练习 ↗</button><button className="studio-text-button" disabled={busy} onClick={() => setPreview(null)}>返回修改范围</button></div>}
       </section>}
-    {confirmedStart && <a className="studio-primary" href={'/library/practice?session=' + encodeURIComponent(confirmedStart)}>继续上次已保存的练习 ↗</a>}
-    <section className="pp-card" aria-label="我的原卷练习"><h2>02 / 接着上次的思考。</h2><a className="studio-secondary" href="/library/practice/review">跨练习整理待复习题 ↗</a>{history.length ? <div className="pp-history">{history.map(row => <a href={'/library/practice?session=' + encodeURIComponent(row.id)} key={row.id}><span>{statusNames[row.status]}</span><strong>{row.papers.map(paper => paper.title).join(' / ')}</strong><small>{row.submitted} / {row.total} 个记录已提交 · {new Date(row.updatedAt).toLocaleString('zh-CN')}</small></a>)}</div> : <p>{ready ? '这个范围还没有原卷练习记录。' : '正在读取当前范围…'}</p>}</section>
+    {confirmedStart && <a className="studio-primary" href={back('/library/practice?session=' + encodeURIComponent(confirmedStart))}>继续上次已保存的练习 ↗</a>}
+    <section className="pp-card" aria-label="我的原卷练习"><h2>02 / 接着上次的思考。</h2><a className="studio-secondary" href={back('/library/practice/review')}>跨练习整理待复习题 ↗</a>{history.length ? <div className="pp-history">{history.map(row => <a href={back('/library/practice?session=' + encodeURIComponent(row.id))} key={row.id}><span>{statusNames[row.status]}</span><strong>{row.papers.map(paper => paper.title).join(' / ')}</strong><small>{row.submitted} / {row.total} 个记录已提交 · {new Date(row.updatedAt).toLocaleString('zh-CN')}</small></a>)}</div> : <p>{ready ? '这个范围还没有原卷练习记录。' : '正在读取当前范围…'}</p>}</section>
     <button className="studio-text-button" onClick={() => { try { setCopies(otherPaperCopies(storage, decodeStart)); } catch { setNotice('其他本机记录暂时无法读取，请使用自己的保护文件。'); } }}>查看其他本机开始记录</button>{copies.map((copy, index) => <button className="studio-secondary" key={copy.body.requestKey + ':' + index} disabled={!!pending || busy} onClick={() => { setPending(copy); setProtectedLocally(false); setManualProtection(true); }}>核对开始记录 {index + 1} · {copy.body.selection.length} 份卷</button>)}
     <label className="pp-recovery-file">从保护文件恢复<input type="file" accept="application/json,.json" onChange={event => { void restore(event.target.files?.[0]); event.target.value = ''; }} /></label>
   </div>;

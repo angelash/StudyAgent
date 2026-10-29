@@ -1,0 +1,123 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T18:23:47.476Z",
+    "duration": 90779.47600000001,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "workspace materials final: adult documents and actor-bound text drafts work without a child",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5278,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials final: explicit object and subject never mix lawful parent-private documents",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5477,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials final: a lost text receipt and reload reuse the complete original command once",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4159,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials final: unavailable storage protects full text across browser back and restores focus",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 10992,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials final: real PDF pages, source course, classroom and project preserve the source return",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 12283,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials final: paper legacy links and URL filters survive details answers back forward and refresh",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4850,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials final: original-paper first answers keep identity and exact source return through review",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6997,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials final: student learning code reads only their own materials and no adult projection",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4289,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials final: existing-style tabs support keyboard navigation and narrow screens",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3684,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials final: a late catalog cannot replace a new object and list pagination restores from URL",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 9419,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "sanitization": "Exported titles/status/duration and bounded first-line errors only. No environment, cookies, storage, traces, accounts or HTTP bodies."
+}

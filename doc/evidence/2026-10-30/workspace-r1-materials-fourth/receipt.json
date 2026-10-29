@@ -1,0 +1,430 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-29T18:36:56.911119+00:00",
+  "sourceBaseline": "2cb124e840da01738db66090a5963371abe2c812",
+  "state": "R1 materials candidate; local commit only; overall work remains active",
+  "finalBrowser": {
+    "receipt": "browser-fourth.json",
+    "passed": 12,
+    "failed": 0,
+    "scope": "10 materials scenarios, real 41-page lazy PDF and original native course/PDF/pack journey"
+  },
+  "compatibilityBrowser": {
+    "receipt": "browser-compatibility-third.json",
+    "passed": 51,
+    "failed": 0,
+    "build": "third",
+    "scope": "Original paper answers/reviews/calendar, source lessons/checks/projects, legacy workspace; later fourth changes are scoped labels and materials styles"
+  },
+  "api": {
+    "receipt": "api-supporting-first.json",
+    "passed": 50,
+    "backend": "SQLite",
+    "scope": "23 source-course, 6 resumable PDF upload, 21 original-paper practice cases",
+    "runtimeEquivalence": "supporting-api-input-equivalence.json"
+  },
+  "unit": {
+    "receipt": "unit-third.json",
+    "passed": 11,
+    "scope": "7 new materials/draft boundaries and 4 original navigation cases"
+  },
+  "builds": {
+    "receipt": "builds-fourth.json",
+    "contracts": true,
+    "config": true,
+    "api": true,
+    "isolatedProductionWeb": true,
+    "webBuildId": "u2412gUq0Vs1sWKI_FBHM",
+    "apiTestTypecheck": "Third source full API type check passed; only scoped Web presentation and E2E fixture edits followed."
+  },
+  "sourceComparison": "source-comparison.json",
+  "screenshots": [
+    {
+      "path": "screenshots/workbench.png",
+      "sha256": "7c934cdae18e3dbcc55ef9dd51fb8fce4462bbcfff956259a8b2bc0231044df5",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/studio-materials-and-pack.png",
+      "sha256": "e830f5c6b76c3218f710f2fa9f1e1cb76d5b267950fee69e2e57f6a4c2895b99",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/studio-pdf-structure-review.png",
+      "sha256": "a1ed9c12185fa3ca48bb8cd27e9c19701e6a46ef0abe191fa51b73714f85b40a",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/pdf-page-2-1440.png",
+      "sha256": "658325b9058ef0d2f285b7e2ea7cf14f7e21ac629de7d7c96933be11f1c2af95",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/pdf-page-2-320.png",
+      "sha256": "8d6972e703c2e3aaf8f1b180e6081e358852b91c289f566a46af05014637446c",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/pdf-page-2-390.png",
+      "sha256": "af571c902339fbc2f6213921ac7effbd85d996ea626b6e1698163aeb974ed774",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-1440.png",
+      "sha256": "7159e6908487c07de4ef7cb2fb9b7f816b8aa72f37da3ee4e4cbff4437ebcd4f",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-320.png",
+      "sha256": "d2ffc7da262a8caec3babe5c3b5ac21ee3a69b2cba31d121cd4269acb7f5b845",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-390.png",
+      "sha256": "638583dda9cf7cc667e26ecf6a2dc8969212ca7c68d8092afb9ea96e2a126bcd",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-768.png",
+      "sha256": "3789e033d4fea797833cb7c9a8118496b065be0379927ff8feaafb98a218b785",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-tab-files-1440.png",
+      "sha256": "0ab4602fd405733657f59810842be49b3c8692496b4435433f6334354fe209aa",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-tab-files-320.png",
+      "sha256": "69b439619c6f5dc33016f719878608f68a06b76ace268dc18e8d9d0b82a384e0",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-tab-files-390.png",
+      "sha256": "049cb44c74a61976c6a9ca68ac33314c73fb98e17810da7220a74fb079e93a6d",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-tab-files-768.png",
+      "sha256": "95c0a875cd141c487be90db131cdcf5dcb0c350676eccebb5bfeafca7f613983",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-tab-packs-1440.png",
+      "sha256": "4fa949b8076b46bf9a4620e0ae561e56c19a546822798211f6b714cffd4df265",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-tab-packs-320.png",
+      "sha256": "1cecceef6aa3e81a8f7860742529b76a4dd63b3e6a10c396550d0570940e6cc5",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-tab-packs-390.png",
+      "sha256": "4db70cb283ad982b7ceb3fb34bf75656355e621f70d9191ca5ef571b6691e331",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-tab-packs-768.png",
+      "sha256": "173129886fe0aee28c6134b54eb864550354273018226a1c0996bb014b326b0b",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-tab-personal-1440.png",
+      "sha256": "330966a26beda3317d2b266bddc0b0c2fa2a707305450517fe41c7ad7cab422a",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-tab-personal-320.png",
+      "sha256": "b1701e278f9394e5d6d578cce58f13302df8ed8fe19cc4fb5b27921115262c25",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-tab-personal-390.png",
+      "sha256": "d68b365053bdd957930f131e1a337c8600773e58a50faf10658d409ecbb0cf6b",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-tab-personal-768.png",
+      "sha256": "67181a0ebacc27b99193aa3f652af42000d1b9a7a798434bd95ae7e759243a87",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-tab-papers-1440.png",
+      "sha256": "a585045a3012c0495301868ed2261a578f41281ba4957e9e034c19fe3681ef27",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-tab-papers-320.png",
+      "sha256": "e4ad55e2cff6318117c0437e23b1439021be55de74fe3ed8e325943651e028e5",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-tab-papers-390.png",
+      "sha256": "5a0f41c7abd83a10616a1766fb8530c6a2445aa8c13ede77ea956b54c5e8e28e",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    },
+    {
+      "path": "screenshots/materials-tab-papers-768.png",
+      "sha256": "ddee116ac7b42fd2afebcc8769e18ac40094084aa2fbb6e84867df7754655bc2",
+      "privacy": "Only owned synthetic browser profiles and original synthetic learning inputs."
+    }
+  ],
+  "productionObservation": {
+    "readOnly": true,
+    "schemaVersion": 24,
+    "revision": 187,
+    "artifacts": [
+      {
+        "path": "apps/api/dist/apps/api/src/main.js",
+        "sha256": "5793c7090063d318c5e5c60bdb74350baa6f64c386639b94fbf4cd5605946c1a",
+        "mtimeUtc": "2026-10-29T14:51:26.120290+00:00"
+      },
+      {
+        "path": "apps/web/.next/BUILD_ID",
+        "sha256": "e02197beeb39c5df02110ca05544c471b3bb892662bebdcb56449b27713e7fba",
+        "mtimeUtc": "2026-10-29T14:52:20.456777+00:00"
+      }
+    ]
+  },
+  "earlierAttempts": {
+    "browserFirst": "2 passed / 7 failed: stable textarea label, PDF view/body clearing and test navigation assumptions",
+    "browserSecond": "8 passed / 2 failed: unprotected history traversal and reading URL before route completion",
+    "browserThird": "8 passed / 2 failed: waiting for cancelled navigation and a closed mobile sidebar assertion",
+    "browserThirdFunctional": "10 passed before final scoped typography corrections; not the final visual build",
+    "unitFirst": "4 original cases passed; new suite failed to load due to test syntax; preserved",
+    "archiveFirst": "Expected synthetic QA .env difference stopped the first archive; partial sanitized reports remain in ../workspace-r1-materials/ with archive-attempt.json.",
+    "preparationFourth": "Initial inventory also captured one concurrently generated contracts dist artifact; original manifest retained and audited source-only manifest used."
+  },
+  "limits": [
+    "No push or production deployment.",
+    "This is scoped R1 evidence, not full 31-page or R2-R8 acceptance.",
+    "No new HTTP/schema/scoring/publication protocol. This batch did not rerun actual PostgreSQL.",
+    "History cancellation verified in bundled Chromium; older-browser fallback and real-device acceptance remain open.",
+    "Synthetic inputs and model fixtures do not establish textbook completeness, teacher approval or real 1/3/7/14-day learner outcomes.",
+    "Counts from earlier and overlapping suites are not summed."
+  ],
+  "artifacts": [
+    {
+      "path": "api-supporting-first.json",
+      "sha256": "f85a75be5e3f2c94d4e0de6ad13d4d496440cfca5e378b68d1817b512373d37e",
+      "bytes": 15642
+    },
+    {
+      "path": "authored-supporting.json",
+      "sha256": "50d3f1e61ee9303b91e3514aaa57b74915879e72cee4f5bcf5ede99a82109dde",
+      "bytes": 553
+    },
+    {
+      "path": "browser-compatibility-third.json",
+      "sha256": "7f54aa862420f19e8004717f0ffcb90acaf41dfcfe64be5b7871b1025aedc5fc",
+      "bytes": 16223
+    },
+    {
+      "path": "browser-first.json",
+      "sha256": "3f3193af5e13ea578f7b87ae744f8500f21ec0b42d309fe8f79bc637a0adddbd",
+      "bytes": 3394
+    },
+    {
+      "path": "browser-fourth.json",
+      "sha256": "9e684a88315012376e0c7180adc892d24b3cc71639ab90e473af3fcfd8697ab0",
+      "bytes": 3971
+    },
+    {
+      "path": "browser-second.json",
+      "sha256": "a041e4371d0cd44d6361c4a823d1dd8906c313c686e79e7737ed4980dccfbfb0",
+      "bytes": 3437
+    },
+    {
+      "path": "browser-third-functional.json",
+      "sha256": "1dc7051ea12656db6002b4100a2a9de5dfca725ef038f59827c7641468a9249e",
+      "bytes": 3409
+    },
+    {
+      "path": "browser-third.json",
+      "sha256": "a21fb31578349c7cf348464b8f0f7bbeb79616629d86f6891c62a9d9b9817932",
+      "bytes": 3424
+    },
+    {
+      "path": "builds-fourth.json",
+      "sha256": "635334825c01f6e6e56e788bd251485da6fae36eb286857cfaa782a8007ec402",
+      "bytes": 622
+    },
+    {
+      "path": "design-validation.json",
+      "sha256": "1db2990b24072be00595f01f0b760521782df51ce7438cd179dfa30e1518db31",
+      "bytes": 96276
+    },
+    {
+      "path": "screenshots/materials-1440.png",
+      "sha256": "7159e6908487c07de4ef7cb2fb9b7f816b8aa72f37da3ee4e4cbff4437ebcd4f",
+      "bytes": 103944
+    },
+    {
+      "path": "screenshots/materials-320.png",
+      "sha256": "d2ffc7da262a8caec3babe5c3b5ac21ee3a69b2cba31d121cd4269acb7f5b845",
+      "bytes": 66302
+    },
+    {
+      "path": "screenshots/materials-390.png",
+      "sha256": "638583dda9cf7cc667e26ecf6a2dc8969212ca7c68d8092afb9ea96e2a126bcd",
+      "bytes": 67988
+    },
+    {
+      "path": "screenshots/materials-768.png",
+      "sha256": "3789e033d4fea797833cb7c9a8118496b065be0379927ff8feaafb98a218b785",
+      "bytes": 68518
+    },
+    {
+      "path": "screenshots/materials-tab-files-1440.png",
+      "sha256": "0ab4602fd405733657f59810842be49b3c8692496b4435433f6334354fe209aa",
+      "bytes": 122779
+    },
+    {
+      "path": "screenshots/materials-tab-files-320.png",
+      "sha256": "69b439619c6f5dc33016f719878608f68a06b76ace268dc18e8d9d0b82a384e0",
+      "bytes": 75025
+    },
+    {
+      "path": "screenshots/materials-tab-files-390.png",
+      "sha256": "049cb44c74a61976c6a9ca68ac33314c73fb98e17810da7220a74fb079e93a6d",
+      "bytes": 76487
+    },
+    {
+      "path": "screenshots/materials-tab-files-768.png",
+      "sha256": "95c0a875cd141c487be90db131cdcf5dcb0c350676eccebb5bfeafca7f613983",
+      "bytes": 80472
+    },
+    {
+      "path": "screenshots/materials-tab-packs-1440.png",
+      "sha256": "4fa949b8076b46bf9a4620e0ae561e56c19a546822798211f6b714cffd4df265",
+      "bytes": 119559
+    },
+    {
+      "path": "screenshots/materials-tab-packs-320.png",
+      "sha256": "1cecceef6aa3e81a8f7860742529b76a4dd63b3e6a10c396550d0570940e6cc5",
+      "bytes": 79272
+    },
+    {
+      "path": "screenshots/materials-tab-packs-390.png",
+      "sha256": "4db70cb283ad982b7ceb3fb34bf75656355e621f70d9191ca5ef571b6691e331",
+      "bytes": 80141
+    },
+    {
+      "path": "screenshots/materials-tab-packs-768.png",
+      "sha256": "173129886fe0aee28c6134b54eb864550354273018226a1c0996bb014b326b0b",
+      "bytes": 83874
+    },
+    {
+      "path": "screenshots/materials-tab-papers-1440.png",
+      "sha256": "a585045a3012c0495301868ed2261a578f41281ba4957e9e034c19fe3681ef27",
+      "bytes": 173501
+    },
+    {
+      "path": "screenshots/materials-tab-papers-320.png",
+      "sha256": "e4ad55e2cff6318117c0437e23b1439021be55de74fe3ed8e325943651e028e5",
+      "bytes": 100496
+    },
+    {
+      "path": "screenshots/materials-tab-papers-390.png",
+      "sha256": "5a0f41c7abd83a10616a1766fb8530c6a2445aa8c13ede77ea956b54c5e8e28e",
+      "bytes": 102324
+    },
+    {
+      "path": "screenshots/materials-tab-papers-768.png",
+      "sha256": "ddee116ac7b42fd2afebcc8769e18ac40094084aa2fbb6e84867df7754655bc2",
+      "bytes": 133713
+    },
+    {
+      "path": "screenshots/materials-tab-personal-1440.png",
+      "sha256": "330966a26beda3317d2b266bddc0b0c2fa2a707305450517fe41c7ad7cab422a",
+      "bytes": 305818
+    },
+    {
+      "path": "screenshots/materials-tab-personal-320.png",
+      "sha256": "b1701e278f9394e5d6d578cce58f13302df8ed8fe19cc4fb5b27921115262c25",
+      "bytes": 253887
+    },
+    {
+      "path": "screenshots/materials-tab-personal-390.png",
+      "sha256": "d68b365053bdd957930f131e1a337c8600773e58a50faf10658d409ecbb0cf6b",
+      "bytes": 264505
+    },
+    {
+      "path": "screenshots/materials-tab-personal-768.png",
+      "sha256": "67181a0ebacc27b99193aa3f652af42000d1b9a7a798434bd95ae7e759243a87",
+      "bytes": 258839
+    },
+    {
+      "path": "screenshots/pdf-page-2-1440.png",
+      "sha256": "658325b9058ef0d2f285b7e2ea7cf14f7e21ac629de7d7c96933be11f1c2af95",
+      "bytes": 163894
+    },
+    {
+      "path": "screenshots/pdf-page-2-320.png",
+      "sha256": "8d6972e703c2e3aaf8f1b180e6081e358852b91c289f566a46af05014637446c",
+      "bytes": 114472
+    },
+    {
+      "path": "screenshots/pdf-page-2-390.png",
+      "sha256": "af571c902339fbc2f6213921ac7effbd85d996ea626b6e1698163aeb974ed774",
+      "bytes": 116800
+    },
+    {
+      "path": "screenshots/studio-materials-and-pack.png",
+      "sha256": "e830f5c6b76c3218f710f2fa9f1e1cb76d5b267950fee69e2e57f6a4c2895b99",
+      "bytes": 144592
+    },
+    {
+      "path": "screenshots/studio-pdf-structure-review.png",
+      "sha256": "a1ed9c12185fa3ca48bb8cd27e9c19701e6a46ef0abe191fa51b73714f85b40a",
+      "bytes": 189524
+    },
+    {
+      "path": "screenshots/workbench.png",
+      "sha256": "7c934cdae18e3dbcc55ef9dd51fb8fce4462bbcfff956259a8b2bc0231044df5",
+      "bytes": 168457
+    },
+    {
+      "path": "source-comparison.json",
+      "sha256": "0460e0516e0adf1d5dd28f2797ea9657117f99bbb0fb63deb4593d1514e7217b",
+      "bytes": 1460
+    },
+    {
+      "path": "supporting-api-input-equivalence.json",
+      "sha256": "a3f542991564d55ebc0c03b4c91873c687f0d1d088fde07e21e1b0ad9e5c87ce",
+      "bytes": 43
+    },
+    {
+      "path": "unit-first.json",
+      "sha256": "870990d09ba93b2f9bec28323804585ca82593e256bf315801c83bdfe8f31bdd",
+      "bytes": 1480
+    },
+    {
+      "path": "unit-second.json",
+      "sha256": "56e3cd3d0af47a62976d3ce3b167ca991fc8cc159382d68dda41c152e02988d9",
+      "bytes": 3251
+    },
+    {
+      "path": "unit-third.json",
+      "sha256": "a8bcddc7068d9b7ecd3681f71af2615a14683ef0d1f8bc4c79b2cee1780f3bac",
+      "bytes": 3251
+    }
+  ],
+  "sourceRevision": "2cb124e840da01738db66090a5963371abe2c812",
+  "documentationValidationPreparation": "First invocation supplied an output filename where the validator expects an application receipt and stopped with ENOENT; original local log retained. The corrected invocation passed.",
+  "documentation": {
+    "receipt": "design-validation.json",
+    "passed": true,
+    "features": 135,
+    "coveredBusinessHttpRoutes": 459,
+    "sourceReferences": 715,
+    "markdownLinks": 4446,
+    "offlineViewerChecks": 10,
+    "scope": "Documentation only; source/content counts do not prove textbooks, teacher review or real learner outcomes."
+  },
+  "qaPortsAfterRun": {
+    "3197": "closed",
+    "4197": "closed"
+  }
+}

@@ -1,0 +1,574 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T18:25:53.236Z",
+    "duration": 315535.13,
+    "expected": 51,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "paper practice: actual original-paper entry keeps the first answer, explicit reference, correction and completed review",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7315,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: a lost first-answer receipt recovers the same command after actual refresh without submitting twice",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3900,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: a lost creation acknowledgment restores the original started session with read-only receipt checks",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4292,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: two actual pages preserve different local drafts and resolve a server conflict without overwriting the other copy",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5233,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: rejected local persistence sends no answer until a real recovery download and explicit protection acknowledgment",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3784,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: an actual original PDF stays an unsplit document with its own persistent response",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3830,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: actual publication withdrawal hides the frozen question and reference while retaining the learner response",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4004,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: completed review permits explicit reference reading without changing the original response or reopening correction",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3553,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3372,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3814,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 1440",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3794,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: selected positions from two actual papers remain in the cross-paper basket and return to their original anchor",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5596,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: delayed cross-item reads cannot replace the current question after actual browser back and forward",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3723,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: metadata refreshes keep the same original PDF frame through submit and explicit reference reading",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3368,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: recovery files from another account, session or item never replace the current private draft",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3501,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: a real learning-code student writes only their own record and loses the private workspace after grant revocation",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4311,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: an actual login logout and another family cannot reuse a private record or its visible answer",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5588,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper practice: an expired original preview can be safely retained and previewed again without duplicating a started record",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4117,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review: a completed first answer leads through real reflection, actual review and the stable local-date calendar",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4413,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "recovery: paper review: a lost organization receipt is recovered after three reloads without duplicating history or clearing later reflection",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7431,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review: two real pages compare conflicting reflection drafts before saving a new command",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4835,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review: current item, full reflection and protected calendar fit 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3613,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review: current item, full reflection and protected calendar fit 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3763,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review: current item, full reflection and protected calendar fit 1440",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3983,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review next: an original redo retains its source and recovers the exact new attempt after a lost creation receipt",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5966,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review next: a learner confirms scope, restores a lost independent preview and starts only the frozen new group",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 11779,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 390",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3943,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 768",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4101,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 1440",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4204,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper calendar: changing the actual actor scope fences a late private response and preserves an explicit read failure",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3774,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review next: a late recovery-file read cannot replace the subsequently confirmed original preview",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3910,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review next: repeating the owned fixture withdraws the previous published candidate before creating its next reviewed version",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4608,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review next: denied storage requires a real original file and rejects another owner before explicit exact-key preview recovery",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4661,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper review: actual large history is refused before truncation and the complete earlier history remains downloadable",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 13763,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper calendar: an adult without a child keeps the actual all-day date, original review and calendar return through reloads",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6940,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "paper calendar: an adult without a child keeps the actual all-day date, original review and calendar return through reloads",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6959,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "the original PDF workbench repairs and cancels through the same persistent flow",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 22336,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "one confirmed lesson prepares one explicit target and restores its independent first answer and frozen source",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8441,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "a published source course opens one real project, completes all frozen stages and returns to its original course",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 11672,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "a project URL bound to another source course clears the old work instead of silently changing the course",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4867,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "source reading, assisted practice and project draft return to their exact saved objects in one continuous journey",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8572,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "adult source selection, blueprint editing, lost confirmation, classroom practice and source return form a real persisted route",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 16644,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: one existing-style sidebar keeps the object across tasks reports and profiles",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4066,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: profiles read metadata only and new profiles keep the original creation contract",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3456,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: a learning-code student stays bound to their own profile and rejects self mode",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3903,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: completed reports and the old family URL preserve original records without writes",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7688,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: login returns to a local original activity and refuses an external return",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4599,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: parent self learning reads independent data instead of a cached child",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3146,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: contradictory old object aliases stop before reading a diagnostic or starting work",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2769,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: report detail refuses an unfinished session without becoming an answer screen",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2897,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: mobile navigation and compact preference work across legacy and new pages",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4210,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "sanitization": "Exported titles/status/duration and bounded first-line errors only. No environment, cookies, storage, traces, accounts or HTTP bodies."
+}

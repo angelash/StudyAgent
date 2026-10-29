@@ -1,0 +1,78 @@
+{
+  "numTotalTests": 11,
+  "numPassedTests": 11,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "materials-navigation.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "materials navigation and full text recovery boundaries reconstructs only a local unambiguous materials destination",
+          "status": "passed",
+          "durationMs": 3.8625999999999863
+        },
+        {
+          "title": "materials navigation and full text recovery boundaries preserves independent or explicitly empty object intent instead of a cached child",
+          "status": "passed",
+          "durationMs": 0.5412999999999784
+        },
+        {
+          "title": "materials navigation and full text recovery boundaries clears concrete selections when changing object but keeps lawful list filters",
+          "status": "passed",
+          "durationMs": 0.49650000000008276
+        },
+        {
+          "title": "materials navigation and full text recovery boundaries adapts old paper filters without losing the original paper or confusing page and position",
+          "status": "passed",
+          "durationMs": 2.9202999999999975
+        },
+        {
+          "title": "materials navigation and full text recovery boundaries keeps the sanitized source on internal course and paper routes without changing activity IDs",
+          "status": "passed",
+          "durationMs": 1.6651000000000522
+        },
+        {
+          "title": "materials navigation and full text recovery boundaries accepts complete original text only under the matching actor, object and subject",
+          "status": "passed",
+          "durationMs": 1.098799999999983
+        },
+        {
+          "title": "materials navigation and full text recovery boundaries submits every valid section and rejects excessive input without truncation",
+          "status": "passed",
+          "durationMs": 2.398900000000026
+        }
+      ]
+    },
+    {
+      "file": "workspace-navigation.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "workspace learning object and legacy navigation boundaries rejects contradictory aliases, mixed adult/child intent and unsupported subjects",
+          "status": "passed",
+          "durationMs": 5.153500000000008
+        },
+        {
+          "title": "workspace learning object and legacy navigation boundaries adapts old home and report URLs explicitly and rejects unsafe login destinations",
+          "status": "passed",
+          "durationMs": 2.867500000000007
+        },
+        {
+          "title": "workspace learning object and legacy navigation boundaries does not restore a child into explicit or saved self learning, or another actor",
+          "status": "passed",
+          "durationMs": 2.683400000000006
+        },
+        {
+          "title": "workspace learning object and legacy navigation boundaries preserves object intent when navigating and adapts historical areas",
+          "status": "passed",
+          "durationMs": 1.1368999999999687
+        }
+      ]
+    }
+  ]
+}

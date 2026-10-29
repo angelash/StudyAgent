@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "a2f6204790e1029c824f588b77334ce037e70a3c",
+  "sourceRevision": "2cb124e840da01738db66090a5963371abe2c812",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 134,
+    "features": 135,
     "activeNormalApiRoutes": 459,
     "coveredApiRoutes": 459
   },
@@ -5928,6 +5928,72 @@
       ],
       "features": [
         {
+          "id": "STUDIO-38",
+          "title": "工作台资料、题卷与来源返回",
+          "area": "studio",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
+          "pages": [
+            "/studio",
+            "/studio/tasks",
+            "/studio/assessment",
+            "/studio/reports",
+            "/studio/profiles",
+            "/studio/settings",
+            "/studio/classroom",
+            "/studio/projects",
+            "/studio/source-courses",
+            "/studio/whiteboards"
+          ],
+          "inputs": "当前actor/对象/学科、四类页签、资料/题卷筛选分页、原页/原题位及受限materialsReturn",
+          "implementation": "个人资料精确限定对象与学科；成人私人材料不混入孩子。复用分块PDF、版本正文、原学案和原卷库，在单一侧栏中核对来源并建课/练习；URL恢复筛选页码和答案显隐；课程、课堂、项目、独立核查和原卷首答/复习回到原资料。文字草稿绑定身份与范围，完整规范化内容绑定稳定回执，存储不可用时先保护下载副本；原评分、题包、首答与授权不变。",
+          "outputs": "四类资料页签、原文核对、可恢复文字资料、原课程和练习的来源返回",
+          "collections": [
+            "studioSourceMaterials",
+            "sourceCourses",
+            "paperPracticeSessions",
+            "paperPublications"
+          ],
+          "limits": "本批Chromium、SQLite及原流程通过；未再跑实际PG，旧浏览器回退与实机仍待；来源可读不等于许可已核查、教材齐全或教师认可。",
+          "endpoints": [],
+          "implementations": [],
+          "sourceFiles": [
+            "apps/web/app/studio/materials-workspace.tsx",
+            "apps/web/app/studio/materials-workspace.css",
+            "apps/web/app/studio/personal-materials.tsx",
+            "apps/web/lib/materials-navigation.ts",
+            "apps/web/lib/material-text-draft.ts",
+            "apps/web/app/studio/source-courses/source-reader.tsx",
+            "apps/web/app/library/studio.tsx",
+            "apps/web/components/paper-practice-launcher.tsx",
+            "apps/api/src/infrastructure/materials-navigation.test.ts",
+            "tests/e2e/workspace-materials.spec.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
+            "apps/api/src/modules/learning/studio-course.test.ts",
+            "apps/api/src/modules/learning/studio.integration.test.ts",
+            "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+            "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
+            "tests/e2e/studio.spec.ts",
+            "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/classroom-practice.spec.ts",
+            "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
+            "tests/e2e/workspace.spec.ts"
+          ]
+        },
+        {
           "id": "STUDIO-37",
           "title": "工作台统一外壳、档案与报告任务归位",
           "area": "studio",
@@ -5949,7 +6015,7 @@
           "implementation": "共用原240/60侧栏、字体、弹窗和手机焦点；新增任务、诊断、报告、档案和设置入口；旧首页及家长看板转入工作台；独立概览不回传孩子业务；档案页只读元数据；来源报告、验证预览和同一指导计划相互定位。",
           "outputs": "一个导航宿主、规范入口和原记录深链",
           "collections": [],
-          "limits": "首批基础实现；31旧入口逐条验收、资料合并、所有专注布局与管理正文、完整回归和正式运行交付仍待继续；不代替R2至R8、教师或真人证据。",
+          "limits": "首批基础及资料续批已实现，资料见STUDIO-38；31旧入口逐条验收、所有专注布局与管理正文、完整回归和正式运行交付仍待继续；不代替R2至R8、教师或真人证据。",
           "endpoints": [
             {
               "verb": "GET",

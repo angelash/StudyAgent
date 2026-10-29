@@ -1,0 +1,280 @@
+{
+  "numTotalTests": 50,
+  "numPassedTests": 50,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "paper-practice.integration.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review previews real indexed selections without creating activity, preserves missing positions and refuses unreviewed family sources",
+          "status": "passed",
+          "durationMs": 50.552200000000084
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review replays the exact confirmed creation and rejects stale-source or same-key changed selection without leaking answer fields",
+          "status": "passed",
+          "durationMs": 104.1917999999996
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review keeps the immutable first answer, explicit reveal, self-review and appended correction separate under retries and old-page conflicts",
+          "status": "passed",
+          "durationMs": 239.79259999999977
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review preserves dont-know, skip, missing and absent-reference semantics without manufacturing a score",
+          "status": "passed",
+          "durationMs": 129.6193999999996
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review pauses, resumes, explicitly acknowledges holes and keeps a completed record readable without reopening writes",
+          "status": "passed",
+          "durationMs": 131.02620000000024
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review permits explicit reference reading after completion without reopening or overwriting the original answer",
+          "status": "passed",
+          "durationMs": 135.73260000000028
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review uses an actual original PDF as an unsplit document record with no fabricated questions or reference grade",
+          "status": "passed",
+          "durationMs": 765.5070999999998
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review blocks only withdrawn or changed sources while preserving personal answers and other selected papers",
+          "status": "passed",
+          "durationMs": 188.4289000000008
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review isolates families and guardian-owned drafts, lets a current guardian read a learner record, and enforces actual learning-grant revocation",
+          "status": "passed",
+          "durationMs": 143.98319999999967
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review persists original commands through storage restart and enforces database uniqueness without silently losing another session",
+          "status": "passed",
+          "durationMs": 823.5198
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review serializes identical creation and submit commands across two actual app instances and refuses a competing stale answer",
+          "status": "passed",
+          "durationMs": 751.0569999999989
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review requires formal teacher assignment for learner records and removes access immediately after actual assignment revocation",
+          "status": "passed",
+          "durationMs": 394.4490999999998
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review blocks a missing original figure without hiding another valid question and restores it only after the actual file returns",
+          "status": "passed",
+          "durationMs": 144.58429999999862
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review rejects a changed original fingerprint after preview and makes old content unavailable while preserving submitted text",
+          "status": "passed",
+          "durationMs": 106.96650000000045
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review exports a shared child learner record and only the requesting guardian private practice, including the matching command facts",
+          "status": "passed",
+          "durationMs": 893.8418000000001
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review organizes a completed withdrawn source while preserving the exact old first-answer receipt and append-only review history",
+          "status": "passed",
+          "durationMs": 168.29620000000068
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review projects stable local-date calendar events without writes, duplicating schedules or disclosing reflection text in ICS",
+          "status": "passed",
+          "durationMs": 158.23929999999928
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review records actual review and reopening separately from first answers and rejects a stale simultaneous edit",
+          "status": "passed",
+          "durationMs": 142.28050000000076
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review shares only learner organization with guardians while each guardian private review and calendar remain isolated",
+          "status": "passed",
+          "durationMs": 512.9526999999998
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review previews and replays an origin-bound original redo without changing any earlier answer or organization",
+          "status": "passed",
+          "durationMs": 128.75900000000001
+        },
+        {
+          "title": "original paper practice, immutable first answers and explicit reference review keeps a repeated whole PDF as a document and refuses a changed publication instead of silently replacing the old original",
+          "status": "passed",
+          "durationMs": 133.82320000000072
+        }
+      ]
+    },
+    {
+      "file": "source-course.integration.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence lets adults add private sources without a child, preserves retry receipts and refuses cross-account or unbounded selections",
+          "status": "passed",
+          "durationMs": 170.96939999999995
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence persists a queued task across restart and generates a complete candidate with verifiable quotations",
+          "status": "passed",
+          "durationMs": 727.5860000000002
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence keeps built-in teaching directions in English for an English course and an English source lesson",
+          "status": "passed",
+          "durationMs": 0.9768999999996595
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence rejects invented citations and repeated choices before publishing a candidate",
+          "status": "passed",
+          "durationMs": 63.619300000000294
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence edits a candidate, rejects stale confirmation and freezes a single active course on a lost confirmation response",
+          "status": "passed",
+          "durationMs": 209.8757000000005
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence invalidates a stale source preview while an active classroom retains its frozen original text",
+          "status": "passed",
+          "durationMs": 271.16219999999976
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence cancels queued and in-flight generation; the old task cannot publish after cancellation",
+          "status": "passed",
+          "durationMs": 178.0713999999998
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence lets a child learn a parent-confirmed course and denies publishing after guardian access is revoked",
+          "status": "passed",
+          "durationMs": 244.14469999999983
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence archives new course starts without breaking saved classroom sessions and exports no private keys",
+          "status": "passed",
+          "durationMs": 187.5059000000001
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence processes an adult PDF through the existing worker and includes its verified original in a family archive",
+          "status": "passed",
+          "durationMs": 1692.3783000000003
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence lets only the adult creator read and repair the complete candidate, preserving the original and freezing edited answers",
+          "status": "passed",
+          "durationMs": 255.8791000000001
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence rejects invalid content atomically and never uses a refreshed public revision to overwrite a stale editor",
+          "status": "passed",
+          "durationMs": 224.22179999999935
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence saves a complete six-lesson manuscript beyond 100KB but rejects unbounded bodies without partial writes",
+          "status": "passed",
+          "durationMs": 185.39170000000013
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence records direct editing as answer exposure for the author while a child keeps an independent first attempt",
+          "status": "passed",
+          "durationMs": 195.59670000000006
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence blocks complete editing after source changes or guardian revocation",
+          "status": "passed",
+          "durationMs": 294.34989999999925
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence preserves initial input and initial teaching when AI revises, while public review summaries hide answer details",
+          "status": "passed",
+          "durationMs": 166.45379999999932
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence keeps uncertain checks explicit and rejects fabricated review excerpts without releasing a partial course",
+          "status": "passed",
+          "durationMs": 209.32719999999972
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence applies individual question repairs without changing the first draft or accepting an unchanged repair",
+          "status": "passed",
+          "durationMs": 120.22470000000067
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence rejects internal source identifiers in teaching and refuses an incompatible cached retry",
+          "status": "passed",
+          "durationMs": 93.50200000000041
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence restarts after a later lesson fails, reuses completed checkpoints and keeps Auto pinned to the original model",
+          "status": "passed",
+          "durationMs": 1425.1491999999998
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence rejects an expired worker checkpoint while a new worker resumes the same unfinished lesson",
+          "status": "passed",
+          "durationMs": 154.28410000000076
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence handles six complete lessons and legacy provenance without inventing original inputs",
+          "status": "passed",
+          "durationMs": 323.7459999999992
+        },
+        {
+          "title": "source-backed courses, real durable tasks and frozen classroom evidence closing an account retains a shared child published course and prevents a deleted in-flight draft from reappearing",
+          "status": "passed",
+          "durationMs": 411.1370000000006
+        }
+      ]
+    },
+    {
+      "file": "studio-material-upload.integration.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "resumable private PDF uploads and durable page checkpoints binds upload commands to exact bytes and scope, keeps admin routes private and expires unfinished writes",
+          "status": "passed",
+          "durationMs": 183.83569999999963
+        },
+        {
+          "title": "resumable private PDF uploads and durable page checkpoints resumes immutable chunks after a real reopen and processes all 120 pages of an actual PDF over 10MiB",
+          "status": "passed",
+          "durationMs": 42970.3188
+        },
+        {
+          "title": "resumable private PDF uploads and durable page checkpoints refuses corrupt whole-file hashes and cancels without publishing a material or task",
+          "status": "passed",
+          "durationMs": 113.60740000000078
+        },
+        {
+          "title": "resumable private PDF uploads and durable page checkpoints keeps cancelled page work fenced, backs up its verified checkpoints and resumes missing pages after restoring to an empty root",
+          "status": "passed",
+          "durationMs": 26385.301700000004
+        },
+        {
+          "title": "resumable private PDF uploads and durable page checkpoints uses actual learning-code upload permissions and fences publication after guardian revocation",
+          "status": "passed",
+          "durationMs": 2135.1348
+        },
+        {
+          "title": "resumable private PDF uploads and durable page checkpoints audits the actual persisted source and checkpoint files without changing the database revision",
+          "status": "passed",
+          "durationMs": 1340.3684000000067
+        }
+      ]
+    }
+  ]
+}

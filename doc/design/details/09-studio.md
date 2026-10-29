@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`a2f6204790e1029c824f588b77334ce037e70a3c`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`2cb124e840da01738db66090a5963371abe2c812`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/tasks`、`/studio/assessment`、`/studio/reports`、`/studio/profiles`、`/studio/settings`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`、`/studio/whiteboards`。
 
@@ -48,6 +48,33 @@
 - [tests/e2e/course-builder.spec.ts](../../../tests/e2e/course-builder.spec.ts)
 - [tests/e2e/workspace.spec.ts](../../../tests/e2e/workspace.spec.ts)
 
+## STUDIO-38 工作台资料、题卷与来源返回
+
+**输入**：当前actor/对象/学科、四类页签、资料/题卷筛选分页、原页/原题位及受限materialsReturn。
+
+**处理与实现**：个人资料精确限定对象与学科；成人私人材料不混入孩子。复用分块PDF、版本正文、原学案和原卷库，在单一侧栏中核对来源并建课/练习；URL恢复筛选页码和答案显隐；课程、课堂、项目、独立核查和原卷首答/复习回到原资料。文字草稿绑定身份与范围，完整规范化内容绑定稳定回执，存储不可用时先保护下载副本；原评分、题包、首答与授权不变。
+
+**输出**：四类资料页签、原文核对、可恢复文字资料、原课程和练习的来源返回。
+
+**状态与持久化**：`studioSourceMaterials`、`sourceCourses`、`paperPracticeSessions`、`paperPublications`
+
+**权限、失败与边界**：本批Chromium、SQLite及原流程通过；未再跑实际PG，旧浏览器回退与实机仍待；来源可读不等于许可已核查、教材齐全或教师认可。
+
+**调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
+
+**补充实现文件**：
+
+- [apps/web/app/studio/materials-workspace.tsx](../../../apps/web/app/studio/materials-workspace.tsx)
+- [apps/web/app/studio/materials-workspace.css](../../../apps/web/app/studio/materials-workspace.css)
+- [apps/web/app/studio/personal-materials.tsx](../../../apps/web/app/studio/personal-materials.tsx)
+- [apps/web/lib/materials-navigation.ts](../../../apps/web/lib/materials-navigation.ts)
+- [apps/web/lib/material-text-draft.ts](../../../apps/web/lib/material-text-draft.ts)
+- [apps/web/app/studio/source-courses/source-reader.tsx](../../../apps/web/app/studio/source-courses/source-reader.tsx)
+- [apps/web/app/library/studio.tsx](../../../apps/web/app/library/studio.tsx)
+- [apps/web/components/paper-practice-launcher.tsx](../../../apps/web/components/paper-practice-launcher.tsx)
+- [apps/api/src/infrastructure/materials-navigation.test.ts](../../../apps/api/src/infrastructure/materials-navigation.test.ts)
+- [tests/e2e/workspace-materials.spec.ts](../../../tests/e2e/workspace-materials.spec.ts)
+
 ## STUDIO-37 工作台统一外壳、档案与报告任务归位
 
 **输入**：真实账号角色、student/studentId、subject及明确独立学习意图。
@@ -58,7 +85,7 @@
 
 **状态与持久化**：复用调用者上下文、独立索引、SQL任务表或文件资产；不另造业务集合。
 
-**权限、失败与边界**：首批基础实现；31旧入口逐条验收、资料合并、所有专注布局与管理正文、完整回归和正式运行交付仍待继续；不代替R2至R8、教师或真人证据。
+**权限、失败与边界**：首批基础及资料续批已实现，资料见STUDIO-38；31旧入口逐条验收、所有专注布局与管理正文、完整回归和正式运行交付仍待继续；不代替R2至R8、教师或真人证据。
 
 **关联接口**：
 

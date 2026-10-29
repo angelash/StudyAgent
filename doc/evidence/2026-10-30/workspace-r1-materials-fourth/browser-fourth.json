@@ -1,0 +1,145 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T18:31:58.002Z",
+    "duration": 161088.997,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "the PDF workbench uses the same long upload and loads current-page text and structures without fetching the whole book",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 12551,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "materials native compatibility: a parent can build and reopen an evidence-backed learning studio course",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 51634,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: adult documents and actor-bound text drafts work without a child",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4583,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: explicit object and subject never mix lawful parent-private documents",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4903,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: a lost text receipt and reload reuse the complete original command once",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4472,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: unavailable storage protects full text across browser back and restores focus",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 12665,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: real PDF pages, source course, classroom and project preserve the source return",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 13211,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: paper legacy links and URL filters survive details answers back forward and refresh",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4955,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: original-paper first answers keep identity and exact source return through review",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7889,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: student learning code reads only their own materials and no adult projection",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4622,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: existing-style tabs support keyboard navigation and narrow screens",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3877,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: a late catalog cannot replace a new object and list pagination restores from URL",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 9161,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "sanitization": "Exported titles/status/duration and bounded first-line errors only. No environment, cookies, storage, traces, accounts or HTTP bodies."
+}

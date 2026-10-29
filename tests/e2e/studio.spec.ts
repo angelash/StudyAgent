@@ -133,7 +133,8 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
 
   const pdf = writeTextPdf();
   await selectWorkspaceView(page, 'Materials');
-  await expect(page.getByRole('tab', { name: 'PDF 页级资料' })).toHaveAttribute('aria-selected', 'true');
+  await expect(page.getByRole('tab', { name: '学习资料', exact: true })).toHaveAttribute('aria-selected', 'true');
+  await page.getByRole('tab', { name: 'PDF页与结构', exact: true }).click();
   await page.locator('input[type=file]').setInputFiles(pdf.path);
   await expect(page.getByText('分数讲义', { exact: true }).first()).toBeVisible({ timeout: 30_000 });
   await page.waitForFunction(() => Boolean(document.querySelector('.sa-pdf-paper img') || document.querySelector('.sa-pdf-failed')),
@@ -154,7 +155,7 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await page.getByRole('tab', { name: '个性化学案' }).click();
   await page.getByRole('button', { name: '生成学案预览' }).click();
   await expect(page.getByText('REVIEW BEFORE SAVING')).toBeVisible();
-  await page.getByRole('button', { name: '保存到 Materials' }).click();
+  await page.getByRole('button', { name: '保存学案' }).click();
   await expect(page.locator('.sa-pack-library')).toContainText('个性化学案');
   if (!process.env.CI) await page.screenshot({ path: browserEvidence('studio') + '/studio-materials-and-pack.png', fullPage: true });
   pdf.cleanup();

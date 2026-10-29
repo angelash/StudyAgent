@@ -1,0 +1,27 @@
+{
+  "sourceFiles": 2430,
+  "applicationFiles": 2092,
+  "comparedFiles": 2427,
+  "mismatches": [],
+  "testOverlay": {
+    "reason": "Native studio test adapts the intentional personal-tab default; original frozen test remains intact.",
+    "mainFile": "tests/e2e/studio.spec.ts",
+    "mainSha256": "21593322238f1429eb68a5fdd875fe7472af65bd88142c2f89c902a72cf144a9",
+    "overlay": "tests/e2e/studio-materials-compat.spec.ts",
+    "overlaySha256": "ed8acef1973225026ba96063f0750ceeb13922790dfecd40a2633788f263b10f"
+  },
+  "frozenInputAudit": {
+    "originalManifest": "inputs.json",
+    "excludedBuildOutputs": [
+      "packages/contracts/dist/index.js"
+    ],
+    "reason": "Preparation completed while the first contracts build was producing dist/index.js. All original entries remain recorded; source-only comparison excludes the generated artifact."
+  },
+  "excludedQaConfiguration": ".env is an isolated synthetic placeholder. Production configuration was intentionally not copied or compared.",
+  "documentationToolUpdate": {
+    "path": "scripts/architecture/project-feature-definitions.cjs",
+    "frozenSha256": "35805e33bd0ee0a94c7b3a3c59d92110d1f9622fb8e2aa08821e5739f0c7102b",
+    "currentSha256": "b2747ce170bc28b4293bf13341ae53eb2839b9c61dc54edc7e46a07c3c5eeb69",
+    "reason": "After application verification, added STUDIO-38 documentation and updated the STUDIO-37 remaining scope. No application runtime change."
+  }
+}

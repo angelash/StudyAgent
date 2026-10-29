@@ -1,0 +1,42 @@
+{
+  "numTotalTests": 4,
+  "numPassedTests": 4,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 1,
+  "suites": [
+    {
+      "file": "materials-navigation.test.ts",
+      "status": "failed",
+      "loadError": "Transform failed with 1 error:",
+      "tests": []
+    },
+    {
+      "file": "workspace-navigation.test.ts",
+      "status": "passed",
+      "loadError": null,
+      "tests": [
+        {
+          "title": "workspace learning object and legacy navigation boundaries rejects contradictory aliases, mixed adult/child intent and unsupported subjects",
+          "status": "passed",
+          "durationMs": 1.822499999999991
+        },
+        {
+          "title": "workspace learning object and legacy navigation boundaries adapts old home and report URLs explicitly and rejects unsafe login destinations",
+          "status": "passed",
+          "durationMs": 1.02800000000002
+        },
+        {
+          "title": "workspace learning object and legacy navigation boundaries does not restore a child into explicit or saved self learning, or another actor",
+          "status": "passed",
+          "durationMs": 1.009300000000053
+        },
+        {
+          "title": "workspace learning object and legacy navigation boundaries preserves object intent when navigating and adapts historical areas",
+          "status": "passed",
+          "durationMs": 0.43859999999995125
+        }
+      ]
+    }
+  ]
+}

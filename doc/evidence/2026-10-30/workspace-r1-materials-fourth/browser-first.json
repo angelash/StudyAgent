@@ -1,0 +1,112 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T18:06:54.702Z",
+    "duration": 180417.48799999998,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 7,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "workspace materials: adult documents and actor-bound text drafts work without a child",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 19617,
+          "error": "Error: expect(locator).toHaveValue(expected) failed"
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: explicit object and subject never mix lawful parent-private documents",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4650,
+          "error": null
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: a lost text receipt and reload reuse the complete original command once",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 18515,
+          "error": "Error: expect(locator).toHaveValue(expected) failed"
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: unavailable storage protects full text across browser back and restores focus",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 21592,
+          "error": "Error: expect(locator).toHaveValue(expected) failed"
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: real PDF pages, source course, classroom and project preserve the source return",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 19921,
+          "error": "Error: expect(locator).toContainText(expected) failed"
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: paper legacy links and URL filters survive details answers back forward and refresh",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 24069,
+          "error": "Error: expect(page).toHaveURL(expected) failed"
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: original-paper first answers keep identity and exact source return through review",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 19406,
+          "error": "Error: expect(locator).toHaveAttribute(expected) failed"
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: student learning code reads only their own materials and no adult projection",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 18369,
+          "error": "Error: expect(locator).toHaveCount(expected) failed"
+        }
+      ]
+    },
+    {
+      "title": "workspace materials: existing-style tabs support keyboard navigation and narrow screens",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2959,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "sanitization": "Exported titles/status/duration and bounded first-line errors only. No environment, cookies, storage, traces, accounts or HTTP bodies."
+}

@@ -1,10 +1,12 @@
 'use client';
 import * as React from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import katex from 'katex';
 import {PdfMaterialUploader,PdfProcessingProgress} from './source-courses/pdf-material';
 import type { CourseSourceSnapshot, StudioSourcePage, StudioOverview, StudioPdfStructureBlock, StudioSourceMaterial, StudioSubject, StudioWhiteboard } from '@study-agent/contracts';
 import { apiBaseUrl, apiRequest, getAuthToken } from '../../lib/api';
+import { materialsReturn, withMaterialsReturn } from '../../lib/materials-navigation';
 
 type Props = {
   studentId: string;
@@ -66,27 +68,35 @@ function StructureBlock({ block }: { block: StudioPdfStructureBlock }) {
 }
 
 export function PdfMaterialLab({ studentId, subject, materials, atoms, onChanged, onOpenWhiteboard, onError }: Props) {
+  const params = useSearchParams();
   const scopeIdentity=studentId+':'+subject,scopeIdentityRef=React.useRef(scopeIdentity);scopeIdentityRef.current=scopeIdentity;
-  const [selectedId, setSelectedId] = React.useState(materials[0]?.id ?? '');
+  const selectedId = params.get('material') ?? materials[0]?.id ?? '';
   const [atomId, setAtomId] = React.useState(atoms.find(atom => atom.teaching)?.id ?? atoms[0]?.id ?? '');
-  const [page, setPage] = React.useState(1);
+  const page = Number(params.get('page') ?? 1);
   const [busy, setBusy] = React.useState(false);
   const [preview, setPreview] = React.useState<StudioWhiteboard | null>(null);
   const [pageImage, setPageImage] = React.useState('');
   const [pageImageError, setPageImageError] = React.useState('');
-  const [pageView, setPageView] = React.useState<'page' | 'text' | 'structure'>('page');
+  const pageView = ['page', 'text', 'structure'].includes(params.get('materialView') ?? '') ? params.get('materialView')! : 'page';
   const [pageData,setPageData]=React.useState<StudioSourcePage|null>(null),[pageLoading,setPageLoading]=React.useState(false),[pageFailure,setPageFailure]=React.useState(''),[pageAttempt,setPageAttempt]=React.useState(0);
-  const material = materials.find(item => item.id === selectedId) ?? materials[0];
-  const selectedPage = material?.pages.find(item => item.page === page) ?? material?.pages[0];
-  const current=pageData?.page===selectedPage?.page?pageData:selectedPage;
+  const material = materials.find(item => item.id === selectedId);
+  const selectedPage = material?.pages.find(item => item.page === page);
+  const pageIdentity = [material?.id, material?.contentVersion, selectedPage?.page].join(':');
+  const loadedIdentity = React.useRef('');
+  const current=loadedIdentity.current===pageIdentity?pageData??selectedPage:selectedPage;
+  const selectionIdentity=scopeIdentity+':'+selectedId, selectionRef=React.useRef(selectionIdentity);selectionRef.current=selectionIdentity;
   const status = material?.status ?? 'ready';
   const processing = status === 'queued' || status === 'processing';
 
-  React.useEffect(() => {
-    if (!materials.some(item => item.id === selectedId)) setSelectedId(materials[0]?.id ?? '');
-  }, [materials, selectedId]);
+  function select(patch: Record<string, string | null>) {
+    setPreview(null);
+    const next = new URLSearchParams(window.location.search);
+    for (const [key,value] of Object.entries(patch)) if (value === null) next.delete(key); else next.set(key,value);
+    window.history.pushState(null,'','/studio?'+next);
+  }
+  React.useEffect(()=>setPreview(null),[selectedId]);
 
-  React.useEffect(()=>{setPageData(null);setPageFailure('');if(!material?.contentVersion||selectedPage?.textCharacters===undefined){setPageLoading(false);return;}const controller=new AbortController();setPageLoading(true);void apiRequest<CourseSourceSnapshot>('/learning/source-courses/materials/'+material.id+'/pages/'+selectedPage.page+'?version='+material.contentVersion,{signal:controller.signal}).then(value=>{if(!controller.signal.aborted)setPageData({page:value.page,text:value.text,blocks:value.blocks,method:selectedPage.method,confidence:selectedPage.confidence,warnings:selectedPage.warnings});}).catch(caught=>{if(!controller.signal.aborted)setPageFailure(caught.message);}).finally(()=>{if(!controller.signal.aborted)setPageLoading(false);});return()=>controller.abort();},[material?.id,material?.contentVersion,selectedPage?.page,pageAttempt]);
+  React.useEffect(()=>{setPageData(null);setPageFailure('');if(!material?.contentVersion||selectedPage?.textCharacters===undefined){setPageLoading(false);return;}const controller=new AbortController();setPageLoading(true);void apiRequest<CourseSourceSnapshot>('/learning/source-courses/materials/'+material.id+'/pages/'+selectedPage.page+'?version='+material.contentVersion,{signal:controller.signal}).then(value=>{if(!controller.signal.aborted){loadedIdentity.current=pageIdentity;setPageData({page:value.page,text:value.text,blocks:value.blocks,method:selectedPage.method,confidence:selectedPage.confidence,warnings:selectedPage.warnings});}}).catch(caught=>{if(!controller.signal.aborted)setPageFailure(caught.message);}).finally(()=>{if(!controller.signal.aborted)setPageLoading(false);});return()=>controller.abort();},[material?.id,material?.contentVersion,selectedPage?.page,pageAttempt,pageIdentity]);
 
 
   React.useEffect(() => {
@@ -110,10 +120,12 @@ export function PdfMaterialLab({ studentId, subject, materials, atoms, onChanged
 
   async function makePreview() {
     if (!material) return;
+    const selection=selectionIdentity;
     setBusy(true);
     try {
-      setPreview(await apiRequest<StudioWhiteboard>('/learning/studio/materials/' + encodeURIComponent(material.id) +
-        '/whiteboard/preview', { method: 'POST', body: JSON.stringify({ ...(atomId ? { atomId } : {}) }) }));
+      const value=await apiRequest<StudioWhiteboard>('/learning/studio/materials/' + encodeURIComponent(material.id) +
+        '/whiteboard/preview', { method: 'POST', body: JSON.stringify({ ...(atomId ? { atomId } : {}) }) });
+      if(selectionRef.current===selection)setPreview(value);
     } catch (error) { onError((error as Error).message); }
     finally { setBusy(false); }
   }
@@ -158,18 +170,18 @@ export function PdfMaterialLab({ studentId, subject, materials, atoms, onChanged
 
   return <section className="sa-pdf-lab">
     <header className="sa-page-head sa-calendar-heading"><div><span className="studio-kicker">SOURCE MATERIALS</span>
-      <h1>把 PDF 变成逐页课堂。</h1><p>上传讲义或课件后，系统会识别文字层或扫描页，恢复段落、表格与公式候选，并保留原页供逐项核对。
+      <h2>PDF原页与识别结构</h2><p>上传讲义或课件后，系统会识别文字层或扫描页，恢复段落、表格与公式候选，并保留原页供逐项核对。
         <span className="sa-pdf-privacy">启用小九AI复核时，最多 8 页原图与 OCR 文字会交给当前 CLI 配置的模型服务。</span></p></div>
       </header>
-    <PdfMaterialUploader key={studentId+':'+subject} scope={{studentId,subject}} disabled={busy} onSaved={value=>{const selectedScope=scopeIdentity;void onChanged().then(()=>{if(scopeIdentityRef.current===selectedScope){setSelectedId(value.material.id);setPage(1);setPageView('page');}}).catch(caught=>{if(scopeIdentityRef.current===selectedScope)onError(caught.message);});}}/>
+    <PdfMaterialUploader key={studentId+':'+subject} scope={{studentId,subject}} disabled={busy} onSaved={value=>{const selectedScope=scopeIdentity;void onChanged().then(()=>{if(scopeIdentityRef.current===selectedScope)select({material:value.material.id,page:'1',materialView:'page'});}).catch(caught=>{if(scopeIdentityRef.current===selectedScope)onError(caught.message);});}}/>
     <div className="sa-pdf-workbench"><aside><span className="studio-kicker">YOUR FILES</span>
       {materials.length ? materials.map(item => {
         const itemStatus = item.status ?? 'ready';
         return <button key={item.id} data-active={item.id === material?.id} onClick={() => {
-          setSelectedId(item.id); setPage(item.pages[0]?.page ?? 1);
+          select({material:item.id,page:String(item.pages[0]?.page ?? 1)});
         }}><span>PDF</span><div><b>{item.title}</b><small>{item.pageCount} 页 · {statusNames[itemStatus]}</small></div></button>;
       }) : <div className="sa-pdf-empty"><b>还没有材料</b><p>上传50MB以内、最多120页的文字型或扫描型PDF。处理结果始终保留来源页与核对边界。</p></div>}
-    </aside><main>{material&&<PdfProcessingProgress material={material} onRefresh={()=>void onChanged().catch(caught=>onError(caught.message))}/>}{material&&processing?<div className="sa-pdf-processing"><h2>原件已保存，正在整理原页。</h2><p>已保存的页可在上方查看。全部处理完成后可以核对结构并创建课程。</p></div>:material&&['failed','cancelled'].includes(material.status??'')?<div className="sa-pdf-failed"><h2>这份PDF的处理已停止。</h2></div>
+    </aside><div className="sa-pdf-content">{material&&<PdfProcessingProgress material={material} onRefresh={()=>void onChanged().catch(caught=>onError(caught.message))}/>}{material&&processing?<div className="sa-pdf-processing"><h2>原件已保存，正在整理原页。</h2><p>已保存的页可在上方查看。全部处理完成后可以核对结构并创建课程。</p></div>:material&&['failed','cancelled'].includes(material.status??'')?<div className="sa-pdf-failed"><h2>这份PDF的处理已停止。</h2></div>
       : material && current ? <>
         <div className="sa-pdf-summary"><div><span className="studio-kicker">EXTRACTION</span>
           <b>{methodNames[material.structure?.method ?? (current.method === 'ocr' ? 'ocr' : 'native_text')]}</b>
@@ -187,15 +199,15 @@ export function PdfMaterialLab({ studentId, subject, materials, atoms, onChanged
         </div>
         <div className="sa-pdf-controls"><label>关联知识点<select value={atomId} onChange={event => setAtomId(event.target.value)}>
           {atoms.map(atom => <option key={atom.id} value={atom.id}>{atom.name}</option>)}</select></label>
-          <div className="sa-pdf-view-toggle"><button data-active={pageView === 'page'} onClick={() => setPageView('page')}>原版页面</button>
-            <button data-active={pageView === 'text'} onClick={() => setPageView('text')}>文字层</button>
-            <button data-active={pageView === 'structure'} onClick={() => setPageView('structure')}>结构恢复</button>
+          <div className="sa-pdf-view-toggle"><button data-active={pageView === 'page'} onClick={() => select({materialView:'page'})}>原版页面</button>
+            <button data-active={pageView === 'text'} onClick={() => select({materialView:'text'})}>文字层</button>
+            <button data-active={pageView === 'structure'} onClick={() => select({materialView:'structure'})}>结构恢复</button>
             <button disabled={busy || !atomId} onClick={() => void makePreview()}>生成页级白板</button></div></div>
         <div className="sa-pdf-pages">{material.pages.map(item => <button key={item.page} data-active={item.page === current.page}
-          onClick={() => setPage(item.page)}>{item.page}</button>)}</div>
+          onClick={() => select({page:String(item.page)})}>{item.page}</button>)}</div>
         <article className="sa-pdf-page"><header><div><span className="studio-kicker">PAGE {current.page}/{material.pageCount}</span>
           <h2>{material.title}</h2></div><small>{material.filename} · {Math.max(1, Math.ceil(material.byteSize / 1024))} KB</small></header>
-          <Link className="sc-material-create-link" href={'/studio/source-courses?'+new URLSearchParams({new:'1',studentId,subject,material:material.id,page:String(current.page)})}>从这一页创建完整资料课程 →</Link>
+          <Link className="sc-material-create-link" href={withMaterialsReturn('/studio/source-courses?'+new URLSearchParams({new:'1',studentId,subject,material:material.id,page:String(current.page)}), materialsReturn('/studio?'+params))}>从这一页创建完整资料课程 →</Link>
           <div className="sa-pdf-paper">{pageLoading?<p role="status">正在读取当前原页的正文和结构…</p>:pageFailure?<div role="alert"><p>{pageFailure}</p><button onClick={()=>setPageAttempt(value=>value+1)}>重新读取这一页</button></div>:pageView === 'page' ? (pageImage ? <img
             alt={material.title + ' 第 ' + current.page + ' 页原版预览'} src={pageImage} /> :
             <div className="sa-pdf-paper-loading">{pageImageError || (material.hasPageImages ? '正在打开原版页面…' : '该页未能生成原版预览；文字层仍可核对。')}</div>)
@@ -208,11 +220,11 @@ export function PdfMaterialLab({ studentId, subject, materials, atoms, onChanged
                   <span key={warning}>{warningNames[warning] ?? warning}</span>)}</div>}
               </div>}</div>
           <footer><span>页级来源 · SHA {material.sha256.slice(0, 12)}</span>
-            <button onClick={() => setPage(Math.max(material.pages[0]?.page ?? 1, current.page - 1))}>上一页</button>
-            <button onClick={() => setPage(Math.min(material.pages.at(-1)?.page ?? current.page, current.page + 1))}>下一页</button>
+            <button disabled={current.page===(material.pages[0]?.page??1)} onClick={() => select({page:String(material.pages.filter(item=>item.page<current.page).at(-1)?.page??current.page)})}>上一页</button>
+            <button disabled={current.page===material.pages.at(-1)?.page} onClick={() => select({page:String(material.pages.find(item=>item.page>current.page)?.page??current.page)})}>下一页</button>
             <button onClick={() => { window.location.href = apiBaseUrl + '/api/learning/studio/materials/' +
               encodeURIComponent(material.id) + '/original'; }}>下载原文件</button></footer></article>
-      </> : <div className="sa-pdf-empty"><b>选择一份材料</b><p>上传后可在原版页面、文字层和结构恢复之间来回核对。</p></div>}</main></div>
+      </> : <div className="sa-pdf-empty">{params.has('material')||params.has('page')?<><b role="alert">链接中的资料或页码在当前范围不可用。</b><p>请从左侧重新选择可访问的PDF。</p><button onClick={()=>select({material:null,page:null})}>回到当前资料</button></>:<><b>选择一份材料</b><p>上传后可在原版页面、文字层和结构恢复之间来回核对。</p></>}</div>}</div></div>
     {preview && <div className="sa-whiteboard-preview-modal"><button className="sa-scrim" onClick={() => setPreview(null)} />
       <section><header><div><span className="studio-kicker">PDF WHITEBOARD</span><h2>{preview.title}</h2></div>
         <button aria-label="关闭页级白板预览" onClick={() => setPreview(null)}>×</button></header>

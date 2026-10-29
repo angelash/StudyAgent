@@ -1,0 +1,6 @@
+{
+  "status": "failed-before-final-receipt",
+  "reason": "Synthetic isolated .env was compared to protected production .env. Expected config difference; no values exported.",
+  "preservation": "Partial sanitized reports retained; final archive is workspace-r1-materials-fourth.",
+  "finalSourceComparison": "Excludes the synthetic .env and records the explicit E2E overlay."
+}

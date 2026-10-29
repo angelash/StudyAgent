@@ -8,6 +8,7 @@ import { useSessionUser } from '../../../lib/session-user';
 import { XiaojiuModelPicker, useXiaojiuModels } from '../../../components/xiaojiu-model-picker';
 import { WorkspaceDialog } from '../workspace-dialog';
 import { copyCourseFilters } from '../course-library-state';
+import { materialsReturn, withMaterialsReturn } from '../../../lib/materials-navigation';
 import { ProjectFiles, FrozenProjectFiles } from './project-files';
 import { ProjectAdviceScopePicker } from './advice-scope';
 import { ProjectTeachingNavigator } from './project-teaching';
@@ -80,7 +81,8 @@ function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof use
   const backUnit = params.get('returnUnit') ?? (studioCourseId ? definition?.unitId : String(Math.max(0, catalog?.definitions.findIndex(item => item.unitId === definition?.unitId) ?? 0)));
   if (backUnit) backParams.set('unit', backUnit); if (params.get('returnPanel')) backParams.set('panel', params.get('returnPanel')!);
   const sourceBack=copyCourseFilters(query,new URLSearchParams(sourceCourseId?{course:sourceCourseId}:{}));
-  const backHref = sourceCourseId?'/studio/source-courses?'+sourceBack:studioCourseId ? '/studio?' + backParams : '/studio/classroom?' + backParams;
+  const materialBack=materialsReturn(params.get('materialsReturn'));
+  const backHref = sourceCourseId?withMaterialsReturn('/studio/source-courses?'+sourceBack,materialBack):studioCourseId ? '/studio?' + backParams : '/studio/classroom?' + backParams;
 
   function receive(value: CourseProjectView, target?: string) {
     const selected = target ?? (stageId || value.currentStageId);
@@ -252,7 +254,7 @@ function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof use
       </>}
     </section>
     <aside className="pj-reference"><small>PROJECT NOTEBOOK</small><h2>把学习连起来</h2><p>参考此前提交的产物，说明它与当前问题的联系。</p>
-      {definition?.sourceCourse&&<details open><summary>冻结课程目标与原文位置</summary>{definition.sourceCourse.objectives.map(item=><section key={item.lessonId}><b>{item.title}</b><p>{item.objective}</p></section>)}{definition.sourceCourse.references.map(reference=><p key={reference.key}><a href={'/studio/source-courses?'+new URLSearchParams({course:definition.sourceCourse!.id,source:reference.key})}>{reference.title} · 第{reference.page}页或段 ↗</a></p>)}</details>}
+      {definition?.sourceCourse&&<details open><summary>冻结课程目标与原文位置</summary>{definition.sourceCourse.objectives.map(item=><section key={item.lessonId}><b>{item.title}</b><p>{item.objective}</p></section>)}{definition.sourceCourse.references.map(reference=><p key={reference.key}><a href={withMaterialsReturn('/studio/source-courses?'+new URLSearchParams({course:definition.sourceCourse!.id,source:reference.key}),materialBack)}>{reference.title} · 第{reference.page}页或段 ↗</a></p>)}</details>}
       {catalog?.definitions.map((item,index) => { const projects = catalog.projects.filter(project => project.definition.id === item.id && project.id !== row?.id);
         return <details key={item.id}><summary><b>{String(index+1).padStart(2,'0')}</b>{item.title}</summary>{projects.flatMap(project => project.submissions.map(submission => <div className="pj-reference-version" key={submission.id}><p>{project.definition.stages.find(stage => stage.id === submission.stageId)?.title} · v{submission.number}</p><small>{when(submission.at)}</small><p>{Object.values(submission.artifact.values).join('\n').slice(0,240)}</p><button disabled={!editable || editor.artifact.evidence.length >= 20} onClick={() => evidence([...editor.artifact.evidence,{id:crypto.randomUUID(), label:item.title+' v'+submission.number+' 摘录', content:('提交标识：'+submission.id+'\n'+Object.entries(submission.artifact.values).map(([key,value])=>key+'：'+value).join('\n')).slice(0,5500), source:window.location.origin+'/studio/projects?'+new URLSearchParams({project:project.id,unitId:item.unitId,...(studioCourseId?{studioCourseId}:{}),...(sourceCourseId?{sourceCourseId}:{})})}])}>引用此版本摘录</button></div>))}{!projects.some(project => project.submissions.length) && <p>还没有可参考的提交。</p>}</details>; })}
       {row && legacySession && <button className="pj-import" disabled={!editable || dirty} onClick={() => void write('legacy',{sessionId:legacySession})}>带入这个课堂的旧草稿</button>}

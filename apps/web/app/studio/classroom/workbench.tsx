@@ -23,6 +23,7 @@ import { ReplyBoard } from './reply-board';
 import { waitForReplyReading, playReplyAudio } from './reply-reading';
 import { replyBoardMarkdown } from './reply-board-notes';
 import { copyCourseFilters, courseLibraryHref } from '../course-library-state';
+import { materialsReturn, withMaterialsReturn } from '../../../lib/materials-navigation';
 import { ClassroomToolTour } from './tool-tour';
 import { useVoicePreview } from './voice-preview';
 import { usePracticeDraft } from './practice-draft';
@@ -121,7 +122,7 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
   React.useEffect(() => { if (firstLecture) setExpanded([firstLecture]); }, [firstLecture]);
   function close() {
     setSession(null);
-    if(sourceCourse.current){const params=copyCourseFilters(window.location.search,new URLSearchParams({course:sourceCourse.current,...(session?.studentId?{studentId:session.studentId,subject:new URLSearchParams(window.location.search).get('returnSubject')??'math'}:{})}));window.location.assign('/studio/source-courses?'+params);return;}
+    if(sourceCourse.current){const params=copyCourseFilters(window.location.search,new URLSearchParams({course:sourceCourse.current,...(session?.studentId?{studentId:session.studentId,subject:new URLSearchParams(window.location.search).get('returnSubject')??'math'}:{})}));window.location.assign(withMaterialsReturn('/studio/source-courses?'+params,materialsReturn(new URLSearchParams(window.location.search).get('materialsReturn'))));return;}
     if (studio.current) {
       const params=new URLSearchParams(window.location.search), query=copyCourseFilters(window.location.search,new URLSearchParams({view:'courses',course:studio.current}));
       if(session?.studentId)query.set('student',session.studentId);const subject=params.get('returnSubject')??new URL(session?.lesson.verificationHref??'/studio',window.location.origin).searchParams.get('subject');if(subject)query.set('subject',subject);

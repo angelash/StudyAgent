@@ -1,6 +1,6 @@
 # 06 工作台首页、学习任务、报告与学习记忆 — 详细设计
 
-源码基线：`a2f6204790e1029c824f588b77334ce037e70a3c`。角色：学生、家长、授权教师。
+源码基线：`2cb124e840da01738db66090a5963371abe2c812`。角色：学生、家长、授权教师。
 
 产品入口：`/`、`/studio`、`/studio/tasks`、`/studio/reports`、`/studio/profiles`、`/studio/settings`、`/learn`、`/parent/dashboard`、`/student/today`。
 
