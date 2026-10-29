@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { createHash } from 'node:crypto';
-import { mkdirSync, mkdtempSync, rmSync, utimesSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, rmSync, symlinkSync, utimesSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import type { CurriculumBook } from '@study-agent/contracts';
@@ -9,7 +9,7 @@ import { TextbookRegistryService } from './textbook-registry.service';
 
 describe('verified textbook source documents', () => {
   let root = '', assets = '', registryPath = '', manifestPath = '', sourcePath = '', service: TextbookRegistryService;
-  let previous = { registry: process.env.STUDY_TEXTBOOK_REGISTRY, manifest: process.env.STUDY_TEXTBOOK_SOURCE_MANIFEST, assets: process.env.STUDY_ASSET_ROOT };
+  let previous = { registry: process.env.STUDY_TEXTBOOK_REGISTRY, manifest: process.env.STUDY_TEXTBOOK_SOURCE_MANIFEST, assets: process.env.STUDY_ASSET_ROOT, textbooks: process.env.TEXTBOOK_BASE_PATH };
   const bytes = Buffer.from('%PDF-1.4\nsynthetic textbook source\n%%EOF');
   const sha256 = createHash('sha256').update(bytes).digest('hex');
   const book: CurriculumBook = {
@@ -31,6 +31,7 @@ describe('verified textbook source documents', () => {
     if (previous.registry === undefined) delete process.env.STUDY_TEXTBOOK_REGISTRY; else process.env.STUDY_TEXTBOOK_REGISTRY = previous.registry;
     if (previous.manifest === undefined) delete process.env.STUDY_TEXTBOOK_SOURCE_MANIFEST; else process.env.STUDY_TEXTBOOK_SOURCE_MANIFEST = previous.manifest;
     if (previous.assets === undefined) delete process.env.STUDY_ASSET_ROOT; else process.env.STUDY_ASSET_ROOT = previous.assets;
+    if (previous.textbooks === undefined) delete process.env.TEXTBOOK_BASE_PATH; else process.env.TEXTBOOK_BASE_PATH = previous.textbooks;
     rmSync(root, { recursive: true, force: true });
   });
   it('publishes metadata without a local path and streams only a byte-verified source', async () => {
@@ -45,6 +46,35 @@ describe('verified textbook source documents', () => {
     writeFileSync(sourcePath, Buffer.from('%PDF-1.4\ntampered textbook source\n%%EOF'));
     const future = new Date(Date.now() + 2_000); utimesSync(sourcePath, future, future);
     await expect(service.document(book.id)).rejects.toThrow('字节校验失败');
+  });
+  function external(path = '小学/语文/book.pdf') {
+    process.env.TEXTBOOK_BASE_PATH = join(root, 'repository');
+    const target = join(process.env.TEXTBOOK_BASE_PATH, '小学/语文/book.pdf');
+    mkdirSync(join(target, '..'), { recursive: true }); writeFileSync(target, bytes);
+    writeFileSync(manifestPath, JSON.stringify({ books: [{ id: 'source:test', grade: 3, term: 'upper', edition: 'test', repositoryPath: path, sha256, pages: 12 }] }));
+    service = new TextbookRegistryService(new InMemoryStoreService());
+    return target;
+  }
+  it('reads hash-pinned repository originals after the application PDF copy is removed', async () => {
+    const target = external(); rmSync(sourcePath);
+    expect(await service.document(book.id)).toMatchObject({ path: target, sha256, size: bytes.length });
+    writeFileSync(target, 'changed external PDF');
+    await expect(service.document(book.id)).rejects.toThrow('字节校验失败');
+  });
+  it('reports an unavailable repository without falling back to a different local PDF', async () => {
+    external(); delete process.env.TEXTBOOK_BASE_PATH;
+    expect(service.documentMetadata(book)).toMatchObject({ available: false });
+    await expect(service.document(book.id)).rejects.toThrow('原卷未安装');
+  });
+  it.each(['../outside.pdf', '/outside.pdf', 'C:\\outside.pdf', '小学/../outside.pdf'])('rejects unsafe repository path %s', async path => {
+    external(path);
+    await expect(service.document(book.id)).rejects.toThrow('相对路径无效');
+  });
+  it('rejects repository links that escape the configured root', async () => {
+    external('linked/book.pdf');
+    const outside = join(root, 'outside'); mkdirSync(outside); writeFileSync(join(outside, 'book.pdf'), bytes);
+    symlinkSync(outside, join(process.env.TEXTBOOK_BASE_PATH!, 'linked'), process.platform === 'win32' ? 'junction' : 'dir');
+    await expect(service.document(book.id)).rejects.toThrow('链接越界');
   });
   it('never binds a year-labelled catalog edition to an undated or different-year source', () => {
     writeFileSync(registryPath, JSON.stringify({ books: [

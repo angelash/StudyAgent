@@ -8,7 +8,7 @@ import { studyAssetRoot, workspaceRoot } from '../../infrastructure/workspace-pa
 
 const names = { math: '数学', chinese: '语文', english: '英语', chemistry: '化学' };
 type SourceDocument = { id: string; subject: Subject; grade: number; term: 'upper' | 'lower'; title: string; edition: string;
-  assetPath: string; sha256: string; pages: number };
+  assetPath?: string; repositoryPath?: string; sha256: string; pages: number };
 type SourcePageRange = { start: number; end: number };
 type SourceAvailabilityStatus = 'matched' | 'original' | 'no_candidate' | 'ambiguous' | 'edition_unverified' | 'version_conflict';
 type SourceMatch = { status: SourceAvailabilityStatus; reason: string; document: SourceDocument | null };
@@ -90,7 +90,7 @@ export class TextbookRegistryService {
     const source = this.sourceMatch(book).document;
     if (!source) return null;
     try {
-      const path = this.resolveSourcePath(source.assetPath);
+      const path = this.resolveSourcePath(source);
       return { available: path ? existsSync(path) : false, pages: source.pages, sha256: source.sha256 };
     } catch { return { available: false, pages: source.pages, sha256: source.sha256 }; }
   }
@@ -102,7 +102,7 @@ export class TextbookRegistryService {
   async document(bookId: string) {
     const book = this.require(bookId), match = this.sourceMatch(book), source = match.document;
     if (!source) throw new NotFoundException(`此教材没有已迁入的同版内审原卷：${match.reason}`);
-    const path = this.resolveSourcePath(source.assetPath);
+    const path = this.resolveSourcePath(source);
     if (!path || !existsSync(path)) throw new NotFoundException('本地内审原卷未安装，请恢复教材源资产后重试');
     const stat = statSync(path);
     const cached = this.verifiedDocuments.get(path);
@@ -154,9 +154,9 @@ export class TextbookRegistryService {
       ];
       for (const manifest of manifests) if (existsSync(manifest.file)) {
         const document = JSON.parse(readFileSync(manifest.file, 'utf8')) as { books?: Array<{ id: string; subject?: Subject; grade: number;
-          term: 'upper' | 'lower'; title?: string; edition?: string; assetPath: string; sha256: string; pages: number }> };
+          term: 'upper' | 'lower'; title?: string; edition?: string; assetPath?: string; repositoryPath?: string; sha256: string; pages: number }> };
         sources.push(...(document.books ?? []).map(book => ({ id: book.id, subject: book.subject ?? manifest.subject!, grade: book.grade,
-          term: book.term, title: book.title ?? '', edition: book.edition ?? '', assetPath: book.assetPath,
+          term: book.term, title: book.title ?? '', edition: book.edition ?? '', assetPath: book.assetPath, repositoryPath: book.repositoryPath,
           sha256: book.sha256, pages: book.pages })));
       }
       this.sourceDocuments = sources;
@@ -231,14 +231,21 @@ export class TextbookRegistryService {
     return range && range.end <= source.pages ? range : undefined;
   }
 
-  private resolveSourcePath(assetPath: string) {
+  private resolveSourcePath(source: Pick<SourceDocument, 'assetPath' | 'repositoryPath'>) {
     const prefix = 'data/assets/';
-    if (!assetPath.startsWith(prefix)) throw new ServiceUnavailableException('教材源资产路径不在受控目录中');
-    const root = studyAssetRoot(), target = resolve(root, assetPath.slice(prefix.length));
+    const repository = source.repositoryPath !== undefined;
+    if (!repository && !source.assetPath?.startsWith(prefix)) throw new ServiceUnavailableException('教材源资产路径不在受控目录中');
+    const root = repository ? process.env.TEXTBOOK_BASE_PATH : studyAssetRoot();
+    if (!root) return null;
+    const path = repository ? source.repositoryPath! : source.assetPath!.slice(prefix.length);
+    if (/^[a-z]:|^[/\\]|[\x00-\x1f]/i.test(path) || path.replace(/\\/g, '/').split('/').some(part => !part || part === '.' || part === '..')) {
+      throw new ServiceUnavailableException('教材源资产相对路径无效');
+    }
+    const target = resolve(root, path);
     if (!existsSync(root) || !existsSync(target)) return null;
-    const inside = (candidate: string) => { const rel = relative(root, candidate); return rel !== '' && !isAbsolute(rel) && rel !== '..' && !rel.startsWith(`..${process.platform === 'win32' ? '\\' : '/'}`); };
     const realRoot = realpathSync(root), realTarget = realpathSync(target);
-    if (!inside(realTarget) || relative(realRoot, realTarget).startsWith('..')) throw new ServiceUnavailableException('教材源资产链接越界');
+    const rel = relative(realRoot, realTarget);
+    if (!rel || isAbsolute(rel) || rel === '..' || rel.startsWith(`..${process.platform === 'win32' ? '\\' : '/'}`)) throw new ServiceUnavailableException('教材源资产链接越界');
     return realTarget;
   }
 }

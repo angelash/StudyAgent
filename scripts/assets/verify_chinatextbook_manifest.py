@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 import fitz
+from textbook_source_paths import asset_path, source_path
 
 
 def digest(path: Path) -> str:
@@ -18,6 +19,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument('--manifest', type=Path, default=Path('resources/curriculum/chinatextbook-chinese-v1.json'))
     parser.add_argument('--asset-root', type=Path)
+    parser.add_argument('--textbook-root', type=Path)
     parser.add_argument('--without-extracted', action='store_true')
     parser.add_argument('--output', type=Path)
     args = parser.parse_args()
@@ -26,9 +28,7 @@ def main() -> None:
         raise ValueError('Expected twelve-book Chinese manifest')
     checked = []
     for book in manifest['books']:
-        path = (args.asset_root / book['assetPath']) if args.asset_root else Path(book['assetPath'])
-        if not path.is_absolute():
-            path = Path(__file__).resolve().parents[2] / path
+        path = source_path(book, args.asset_root, args.textbook_root)
         if not path.is_file() or path.stat().st_size != book['bytes'] or digest(path) != book['sha256']:
             raise ValueError('PDF bytes differ: ' + str(path))
         document = fitz.open(path)
@@ -36,9 +36,7 @@ def main() -> None:
             raise ValueError('PDF page count or password state differs: ' + str(path))
         document.close()
         if not args.without_extracted:
-            extracted = (args.asset_root / book['extractedPath']) if args.asset_root else Path(book['extractedPath'])
-            if not extracted.is_absolute():
-                extracted = Path(__file__).resolve().parents[2] / extracted
+            extracted = asset_path(book['extractedPath'], args.asset_root)
             if not extracted.is_file() or digest(extracted) != book['extractedSha256']:
                 raise ValueError('Extracted text differs: ' + str(extracted))
         checked.append({'id': book['id'], 'sha256': book['sha256'], 'bytes': book['bytes'], 'pages': book['pages']})

@@ -18,7 +18,7 @@ def run(root: Path, output: Path):
             path = (root / record['path']).resolve()
             if root.resolve() not in path.parents: raise ValueError('Unsafe catalogue path')
             actual = hashlib.sha256(path.read_bytes()).hexdigest()
-            expected = manifest.execute('select sha256 from files where path=?', (record['path'],)).fetchone()
+            expected = manifest.execute('select sha256 from files where path=?', (record.get('legacyPath', record['path']),)).fetchone()
             if not expected or actual != expected[0] or actual != record['sha256']: errors.append(record['path'])
             checked.append({'path': record['path'], 'sha256': actual})
         if total != baseline['checkedFiles'] + len(checked):

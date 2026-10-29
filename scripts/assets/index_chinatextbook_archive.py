@@ -11,8 +11,8 @@ from pathlib import Path
 from urllib.parse import quote
 
 FORMAT = 'chinatextbook-coldarchive-index-v1'
-DEFAULT_SOURCE = Path(r'H:\ColdArchive\2026-10-21\ChinaTextbook')
-DEFAULT_COMPARE = Path(r'E:\ChinaTextbook')
+DEFAULT_SOURCE = Path(r'H:\ChinaTextbook')
+DEFAULT_COMPARE = Path(r'H:\ChinaTextbook')
 DEFAULT_OUTPUT = Path('resources/curriculum/chinatextbook-coldarchive-index-v1.json')
 CHINESE_DIGITS = {'一': 1, '二': 2, '三': 3, '四': 4, '五': 5, '六': 6, '七': 7, '八': 8, '九': 9, '十': 10,
                   '十一': 11, '十二': 12}

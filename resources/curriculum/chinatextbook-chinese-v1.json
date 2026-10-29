@@ -1,7 +1,7 @@
 {
   "format": "chinatextbook-chinese-manifest-v1",
   "createdAt": "2026-10-20T19:57:00.178721+00:00",
-  "source": "Local ChinaTextbook collection; exact copies retained outside Git as local reference.",
+  "source": "Local ChinaTextbook repository originals; PDF bytes referenced by relative path and SHA-256, extracts retained locally.",
   "sourceUse": "Bibliographic and lesson-level internal review only. This import does not grant redistribution rights.",
   "books": [
     {
@@ -11,12 +11,13 @@
       "edition": "统编版",
       "title": "义务教育教科书·语文1年级下册",
       "sourceOriginal": "E:\\ChinaTextbook\\小学\\语文\\统编版\\义务教育教科书·语文一年级下册.pdf",
-      "assetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g1-lower.pdf",
       "extractedPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g1-lower.json",
       "bytes": 12372511,
       "sha256": "f258850beea340544d96c3f01c5ef023ec79fd516d5fec79736ea09565fca52e",
       "pages": 131,
-      "extractedSha256": "c1a3fe743bbc3a9ee05f7f213ec5b6d9ba79eb0d5f95203181a54bc83a8e5bd3"
+      "extractedSha256": "c1a3fe743bbc3a9ee05f7f213ec5b6d9ba79eb0d5f95203181a54bc83a8e5bd3",
+      "repositoryPath": "小学/语文/统编版/义务教育教科书·语文一年级下册.pdf",
+      "previousAssetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g1-lower.pdf"
     },
     {
       "id": "chinatextbook:chinese:g1:upper",
@@ -25,12 +26,13 @@
       "edition": "统编版",
       "title": "义务教育教科书·语文1年级上册",
       "sourceOriginal": "E:\\ChinaTextbook\\小学\\语文\\统编版\\义务教育教科书·语文一年级上册.pdf",
-      "assetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g1-upper.pdf",
       "extractedPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g1-upper.json",
       "bytes": 10926278,
       "sha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
       "pages": 127,
-      "extractedSha256": "6dae830e70696a636c29022d580bec4ddfeb357b8370df9539e4cab8b13526dc"
+      "extractedSha256": "6dae830e70696a636c29022d580bec4ddfeb357b8370df9539e4cab8b13526dc",
+      "repositoryPath": "小学/语文/统编版/义务教育教科书·语文一年级上册.pdf",
+      "previousAssetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g1-upper.pdf"
     },
     {
       "id": "chinatextbook:chinese:g2:lower",
@@ -39,12 +41,13 @@
       "edition": "统编版",
       "title": "义务教育教科书·语文2年级下册",
       "sourceOriginal": "E:\\ChinaTextbook\\小学\\语文\\统编版\\义务教育教科书·语文二年级下册.pdf",
-      "assetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g2-lower.pdf",
       "extractedPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g2-lower.json",
       "bytes": 13606986,
       "sha256": "db1ca598a2dea9072a8cb3f09977e77aa6e0d79545083f98c6c8a1c34c118019",
       "pages": 131,
-      "extractedSha256": "d512d7a6e35b74d3ac65ce76dc11640ae89692f70a6b9622a93942194dd2b7a5"
+      "extractedSha256": "d512d7a6e35b74d3ac65ce76dc11640ae89692f70a6b9622a93942194dd2b7a5",
+      "repositoryPath": "小学/语文/统编版/义务教育教科书·语文二年级下册.pdf",
+      "previousAssetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g2-lower.pdf"
     },
     {
       "id": "chinatextbook:chinese:g2:upper",
@@ -53,12 +56,13 @@
       "edition": "统编版",
       "title": "义务教育教科书·语文2年级上册",
       "sourceOriginal": "E:\\ChinaTextbook\\小学\\语文\\统编版\\义务教育教科书·语文二年级上册.pdf",
-      "assetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g2-upper.pdf",
       "extractedPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g2-upper.json",
       "bytes": 14038295,
       "sha256": "3b5a3fd64d4600563bca2dedc7e5b2c9e5eda7503ffb67d4e9da9461f9e86c71",
       "pages": 127,
-      "extractedSha256": "e7391b7ff71dcddb7fef5086a3c9d979febe3f477858d8b96d48fe0ad36f4be8"
+      "extractedSha256": "e7391b7ff71dcddb7fef5086a3c9d979febe3f477858d8b96d48fe0ad36f4be8",
+      "repositoryPath": "小学/语文/统编版/义务教育教科书·语文二年级上册.pdf",
+      "previousAssetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g2-upper.pdf"
     },
     {
       "id": "chinatextbook:chinese:g3:lower",
@@ -67,12 +71,13 @@
       "edition": "统编版",
       "title": "义务教育教科书·语文3年级下册",
       "sourceOriginal": "E:\\ChinaTextbook\\小学\\语文\\统编版\\义务教育教科书·语文三年级下册.pdf",
-      "assetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g3-lower.pdf",
       "extractedPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g3-lower.json",
       "bytes": 13725984,
       "sha256": "9878324d564f7cad317a052ef9a2178bba2f7cfe33c7abfba3f006a3cd7e4b35",
       "pages": 130,
-      "extractedSha256": "5d22928cd3e32c760c2a6c20e6a28489facfd00b18fe1febb7f5c34cff8d7a42"
+      "extractedSha256": "5d22928cd3e32c760c2a6c20e6a28489facfd00b18fe1febb7f5c34cff8d7a42",
+      "repositoryPath": "小学/语文/统编版/义务教育教科书·语文三年级下册.pdf",
+      "previousAssetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g3-lower.pdf"
     },
     {
       "id": "chinatextbook:chinese:g3:upper",
@@ -81,12 +86,13 @@
       "edition": "统编版",
       "title": "义务教育教科书·语文3年级上册",
       "sourceOriginal": "E:\\ChinaTextbook\\小学\\语文\\统编版\\义务教育教科书·语文三年级上册.pdf",
-      "assetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g3-upper.pdf",
       "extractedPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g3-upper.json",
       "bytes": 13264541,
       "sha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
       "pages": 130,
-      "extractedSha256": "96e8ffc8ca547a3dddfb40e8c8a98951f8a0d1d2a1a735fd988d1e091e76df63"
+      "extractedSha256": "96e8ffc8ca547a3dddfb40e8c8a98951f8a0d1d2a1a735fd988d1e091e76df63",
+      "repositoryPath": "小学/语文/统编版/义务教育教科书·语文三年级上册.pdf",
+      "previousAssetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g3-upper.pdf"
     },
     {
       "id": "chinatextbook:chinese:g4:lower",
@@ -95,12 +101,13 @@
       "edition": "统编版",
       "title": "义务教育教科书·语文4年级下册",
       "sourceOriginal": "E:\\ChinaTextbook\\小学\\语文\\统编版\\义务教育教科书·语文四年级下册.pdf",
-      "assetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g4-lower.pdf",
       "extractedPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g4-lower.json",
       "bytes": 12055004,
       "sha256": "91dba9d3159295266c958f6ab3e4470781738627f212f2d9d484a8b9ef4bea1c",
       "pages": 151,
-      "extractedSha256": "a7e220391a16c0fb59200acb8b125a3ee87c9fd020adc2f4f15d2e2af88e2b46"
+      "extractedSha256": "a7e220391a16c0fb59200acb8b125a3ee87c9fd020adc2f4f15d2e2af88e2b46",
+      "repositoryPath": "小学/语文/统编版/义务教育教科书·语文四年级下册.pdf",
+      "previousAssetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g4-lower.pdf"
     },
     {
       "id": "chinatextbook:chinese:g4:upper",
@@ -109,12 +116,13 @@
       "edition": "统编版",
       "title": "义务教育教科书·语文4年级上册",
       "sourceOriginal": "E:\\ChinaTextbook\\小学\\语文\\统编版\\义务教育教科书·语文四年级上册.pdf",
-      "assetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g4-upper.pdf",
       "extractedPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g4-upper.json",
       "bytes": 16760155,
       "sha256": "0836b8e6449b2467ef13e1a54e61c2f163667de6f5d143107277213a4795dc33",
       "pages": 138,
-      "extractedSha256": "93a57437626f153afd559d0519ace09d5218e4fe02b480317ae9dd3f356d0485"
+      "extractedSha256": "93a57437626f153afd559d0519ace09d5218e4fe02b480317ae9dd3f356d0485",
+      "repositoryPath": "小学/语文/统编版/义务教育教科书·语文四年级上册.pdf",
+      "previousAssetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g4-upper.pdf"
     },
     {
       "id": "chinatextbook:chinese:g5:lower",
@@ -123,12 +131,13 @@
       "edition": "统编版",
       "title": "义务教育教科书·语文5年级下册",
       "sourceOriginal": "E:\\ChinaTextbook\\小学\\语文\\统编版\\义务教育教科书·语文五年级下册.pdf",
-      "assetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g5-lower.pdf",
       "extractedPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g5-lower.json",
       "bytes": 16735209,
       "sha256": "3da72ca8f3e26934434a7283b45c5af22bcafaed2d4c91773435ce2266760e0b",
       "pages": 131,
-      "extractedSha256": "d60dbfff04a346fba54975d1dba474c1c7f490972ef9efa70bfe6b0320251ab5"
+      "extractedSha256": "d60dbfff04a346fba54975d1dba474c1c7f490972ef9efa70bfe6b0320251ab5",
+      "repositoryPath": "小学/语文/统编版/义务教育教科书·语文五年级下册.pdf",
+      "previousAssetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g5-lower.pdf"
     },
     {
       "id": "chinatextbook:chinese:g5:upper",
@@ -137,12 +146,13 @@
       "edition": "统编版",
       "title": "义务教育教科书·语文5年级上册",
       "sourceOriginal": "E:\\ChinaTextbook\\小学\\语文\\统编版\\义务教育教科书·语文五年级上册.pdf",
-      "assetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g5-upper.pdf",
       "extractedPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g5-upper.json",
       "bytes": 9713159,
       "sha256": "a63e3a6636e0b4cd77a1e6434d85229ee40f13230fc841cd5f0f056853db7a3d",
       "pages": 133,
-      "extractedSha256": "bb3704bce54781f8856bc01ff993635410164825917a97b28bc4980e88afa972"
+      "extractedSha256": "bb3704bce54781f8856bc01ff993635410164825917a97b28bc4980e88afa972",
+      "repositoryPath": "小学/语文/统编版/义务教育教科书·语文五年级上册.pdf",
+      "previousAssetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g5-upper.pdf"
     },
     {
       "id": "chinatextbook:chinese:g6:lower",
@@ -151,12 +161,13 @@
       "edition": "统编版",
       "title": "义务教育教科书·语文6年级下册",
       "sourceOriginal": "E:\\ChinaTextbook\\小学\\语文\\统编版\\义务教育教科书·语文六年级下册.pdf",
-      "assetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g6-lower.pdf",
       "extractedPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g6-lower.json",
       "bytes": 12860255,
       "sha256": "5600e1bb3397c18313c77fef9be5cb6504bad45865d62a4520f3c0c6fd71f368",
       "pages": 130,
-      "extractedSha256": "6b004452e7d599449dd8ae297cca79be1cc393a91a0e4a78868874c28af10f18"
+      "extractedSha256": "6b004452e7d599449dd8ae297cca79be1cc393a91a0e4a78868874c28af10f18",
+      "repositoryPath": "小学/语文/统编版/义务教育教科书·语文六年级下册.pdf",
+      "previousAssetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g6-lower.pdf"
     },
     {
       "id": "chinatextbook:chinese:g6:upper",
@@ -165,12 +176,13 @@
       "edition": "统编版",
       "title": "义务教育教科书·语文6年级上册",
       "sourceOriginal": "E:\\ChinaTextbook\\小学\\语文\\统编版\\义务教育教科书·语文六年级上册.pdf",
-      "assetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g6-upper.pdf",
       "extractedPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g6-upper.json",
       "bytes": 17014217,
       "sha256": "9916db7cc39a5f13df599a8e221399e6a92b7e28668b185ddb56673e94ea1192",
       "pages": 142,
-      "extractedSha256": "7292af60f3dd9113172068de10a950cf6a3030f06f1738300588c6f649d1a5a2"
+      "extractedSha256": "7292af60f3dd9113172068de10a950cf6a3030f06f1738300588c6f649d1a5a2",
+      "repositoryPath": "小学/语文/统编版/义务教育教科书·语文六年级上册.pdf",
+      "previousAssetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g6-upper.pdf"
     }
   ],
   "totalBytes": 163072594,

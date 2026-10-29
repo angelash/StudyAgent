@@ -15,22 +15,11 @@ def checksum(value):
     return hashlib.sha256(value.encode('utf-8')).hexdigest()
 
 
-def load_labels(target: Path, source: Path | None):
-    # Only these public tag fields are extracted from the old configuration.
-    labels = {}
-    def visit(node):
-        if isinstance(node, dict):
-            if node.get('tag_id') in [12, 13, 14, 15, 16, 17, 24, 25] and 'value' in node:
-                labels[str(node['tag_id'])] = node['value']
-            for v in node.values(): visit(v)
-        elif isinstance(node, list):
-            for v in node: visit(v)
+def load_labels(target: Path, source: Path | None = None):
     if source is not None:
-        config = source / 're-shijuanbao-service/local/data/web-anonymous-get_config.json'
-        visit(json.loads(config.read_text('utf-8')))
-    else:
-        saved = json.loads(target.read_text('utf-8')).get('tagEvidence', {})
-        labels = {key: saved[key] for key in ['12', '13', '14', '15', '16', '17', '24', '25'] if key in saved}
+        raise ValueError('Import a normalized tagEvidence registry; raw research projects are not application inputs')
+    saved = json.loads(target.read_text('utf-8')).get('tagEvidence', {})
+    labels = {key: saved[key] for key in ['12', '13', '14', '15', '16', '17', '24', '25'] if key in saved}
     grades = {f'{name}年级': i + 1 for i, name in enumerate('一二三四五六')}
     if labels.get('24') != '上学期' or labels.get('25') != '下学期' or any(labels.get(str(tag)) != name for tag, name in zip(range(12, 18), grades)):
         raise ValueError('Captured grade/term labels are missing or do not match the public tag IDs')
@@ -104,8 +93,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=Path('data/assets'))
     parser.add_argument('--target', type=Path, default=Path('resources/curriculum/textbooks-v1.json'))
-    parser.add_argument('--source', type=Path, help='Optional legacy source; by default reuse captured tagEvidence from the saved registry')
     parser.add_argument('--labels', type=Path, help='Saved registry whose tagEvidence supplies public grade and term labels')
     parser.add_argument('--reviewed', type=Path, default=Path('resources/curriculum/reviewed-textbook-chapters-v1.json'))
     args = parser.parse_args()
-    run(args.root, args.target, args.source, args.reviewed, args.labels)
+    run(args.root, args.target, reviewed=args.reviewed, labels_path=args.labels)

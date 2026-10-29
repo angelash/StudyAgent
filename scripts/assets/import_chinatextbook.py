@@ -1,4 +1,4 @@
-"""Copy local complete Chinese textbook PDFs into the approved asset area.
+"""Index local Chinese textbook originals and retain only extracted text locally.
 
 Raw PDFs stay outside Git. The versioned manifest records exact source bytes,
 page counts and text-extraction hashes for lesson-level review.
@@ -30,19 +30,19 @@ def digest(path: Path) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument('--source', type=Path, default=Path('E:/ChinaTextbook/小学/语文/统编版'))
+    parser.add_argument('--repository-root', type=Path, default=Path(os.environ.get('TEXTBOOK_BASE_PATH', 'H:/ChinaTextbook')))
+    parser.add_argument('--source', type=Path)
     parser.add_argument('--destination', type=Path, default=ROOT / 'data/assets/textbook-sources/chinatextbook-chinese-v1')
     parser.add_argument('--manifest', type=Path, default=ROOT / 'resources/curriculum/chinatextbook-chinese-v1.json')
     args = parser.parse_args()
-    source = args.source.resolve()
+    repository_root = args.repository_root.resolve()
+    source = (args.source or repository_root / '小学/语文/统编版').resolve()
     files = sorted(source.glob('*.pdf'))
     if len(files) != 12:
         raise ValueError(f'Expected 12 Chinese textbook PDFs, got {len(files)}')
     books: list[dict] = []
     destination = args.destination.resolve()
-    books_dir = destination / 'books'
     extracted_dir = destination / 'extracted'
-    books_dir.mkdir(parents=True, exist_ok=True)
     extracted_dir.mkdir(parents=True, exist_ok=True)
     for original in files:
         match = PATTERN.fullmatch(original.name)
@@ -51,14 +51,9 @@ def main() -> None:
         grade = NAMES[match.group('grade')]
         term = 'upper' if match.group('term') == '上' else 'lower'
         identity = f'chinatextbook:chinese:g{grade}:{term}'
-        target = books_dir / f'{identity.replace(":", "-")}.pdf'
+        target = original
+        repository_path = original.relative_to(repository_root).as_posix()
         expected = digest(original)
-        if target.exists() and (target.stat().st_size != original.stat().st_size or digest(target) != expected):
-            raise ValueError('Existing destination differs: ' + str(target))
-        if not target.exists():
-            target.write_bytes(original.read_bytes())
-        if digest(target) != expected:
-            raise ValueError('Copied PDF verification failed: ' + original.name)
         document = fitz.open(target)
         if document.needs_pass or not document.is_pdf or document.page_count < 50:
             raise ValueError('Unusable textbook PDF: ' + original.name)
@@ -69,7 +64,7 @@ def main() -> None:
         text_path.write_bytes(body)
         books.append({'id': identity, 'grade': grade, 'term': term, 'edition': '统编版',
           'title': f'义务教育教科书·语文{grade}年级{"上" if term == "upper" else "下"}册',
-          'sourceOriginal': str(original), 'assetPath': str(target.relative_to(ROOT)).replace(os.sep, '/'),
+          'sourceOriginal': str(original), 'repositoryPath': repository_path,
           'extractedPath': str(text_path.relative_to(ROOT)).replace(os.sep, '/'), 'bytes': target.stat().st_size,
           'sha256': expected, 'pages': document.page_count, 'extractedSha256': hashlib.sha256(body).hexdigest()})
         document.close()
@@ -78,7 +73,7 @@ def main() -> None:
     if {(book['grade'], book['term']) for book in books} != expected_pairs:
         raise ValueError('Textbook grade/term coverage is incomplete')
     manifest = {'format': 'chinatextbook-chinese-manifest-v1', 'createdAt': datetime.now(timezone.utc).isoformat(),
-      'source': 'Local ChinaTextbook collection; exact copies retained outside Git as local reference.',
+      'source': 'Local ChinaTextbook repository originals; PDF bytes referenced by relative path and SHA-256, extracts retained locally.',
       'sourceUse': 'Bibliographic and lesson-level internal review only. This import does not grant redistribution rights.',
       'books': books, 'totalBytes': sum(book['bytes'] for book in books), 'pages': sum(book['pages'] for book in books)}
     args.manifest.parent.mkdir(parents=True, exist_ok=True)

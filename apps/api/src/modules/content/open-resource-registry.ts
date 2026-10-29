@@ -89,7 +89,7 @@ const externalSourceRegistry: ExternalSourceReference[] = [
     sourcePathOrUrl: 'https://github.com/TapXWorld/ChinaTextbook',
     verifiedAt: '2026-10-21',
     allowedUsage: 'reference_only',
-    notes: 'H:\\ColdArchive\\2026-10-21\\ChinaTextbook 与 E:\\ChinaTextbook 为同一Git提交的教材冷/热副本；完整元数据索引在 resources/curriculum/chinatextbook-coldarchive-index-v1.json。未跟踪明确LICENSE，仅用于来源存在核查、人工教材映射候选和教研参考，不直接导入或发布。',
+    notes: '教材原件位于 H:\\ChinaTextbook；完整元数据索引在 resources/curriculum/chinatextbook-coldarchive-index-v1.json。历史 E: 入口失效，当前直接使用 H: 源库。未跟踪明确LICENSE，仅用于来源存在核查、人工教材映射候选和教研参考，不直接导入或发布。',
   },
 ];
 

@@ -1,4 +1,4 @@
-"""Copy complete local math/English textbook PDFs into the controlled reference area.
+"""Index local math/English textbook originals and retain text extracts locally.
 
 The source collection is retained byte-for-byte outside Git. The manifest stores
 bibliographic metadata, page count, source/target hashes and reproducible text
@@ -51,14 +51,15 @@ def safe_relative(path: Path, root: Path) -> Path:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument('--source-root', type=Path, default=Path('E:/ChinaTextbook/小学'))
+    parser.add_argument('--repository-root', type=Path, default=Path(os.environ.get('TEXTBOOK_BASE_PATH', 'H:/ChinaTextbook')))
+    parser.add_argument('--source-root', type=Path)
     parser.add_argument('--subjects', nargs='+', default=['数学', '英语'], choices=sorted(SUBJECTS))
     parser.add_argument('--destination', type=Path, default=ROOT / 'data/assets/textbook-sources/chinatextbook-primary-v1')
     parser.add_argument('--manifest', type=Path, default=ROOT / 'resources/curriculum/chinatextbook-primary-v1.json')
     args = parser.parse_args()
-    source_root = args.source_root.resolve()
+    repository_root = args.repository_root.resolve()
+    source_root = (args.source_root or repository_root / '小学').resolve()
     destination = args.destination.resolve()
-    books_dir = destination / 'books'
     extracted_dir = destination / 'extracted'
     records: list[dict] = []
     seen_paths: set[str] = set()
@@ -76,18 +77,8 @@ def main() -> None:
                 raise ValueError(f'Duplicate source path: {relative_text}')
             seen_paths.add(relative_text)
             source_sha256 = digest(original)
-            target = books_dir / subject / relative
-            target.parent.mkdir(parents=True, exist_ok=True)
-            if target.exists():
-                if target.stat().st_size != original.stat().st_size or digest(target) != source_sha256:
-                    raise ValueError(f'Existing destination differs: {target}')
-            else:
-                temporary = target.with_name(target.name + '.copying')
-                temporary.write_bytes(original.read_bytes())
-                if temporary.stat().st_size != original.stat().st_size or digest(temporary) != source_sha256:
-                    temporary.unlink(missing_ok=True)
-                    raise ValueError(f'Copied PDF verification failed: {relative_text}')
-                os.replace(temporary, target)
+            target = original
+            repository_path = safe_relative(original, repository_root).as_posix()
             document = fitz.open(target)
             try:
                 if document.needs_pass or not document.is_pdf or document.page_count < 1:
@@ -105,7 +96,7 @@ def main() -> None:
                   'title': original.stem, 'edition': original.parent.name,
                   'grade': grade_of(original.name), 'term': term_of(original.name),
                   'sourceOriginal': str(original), 'sourceRelative': f'{subject_cn}/{relative_text}',
-                  'assetPath': str(target.relative_to(ROOT)).replace(os.sep, '/'),
+                  'repositoryPath': repository_path,
                   'extractedPath': str(text_path.relative_to(ROOT)).replace(os.sep, '/'),
                   'bytes': target.stat().st_size, 'sha256': source_sha256,
                   'pages': document.page_count, 'extractedSha256': hashlib.sha256(body).hexdigest()})
@@ -116,7 +107,7 @@ def main() -> None:
         raise ValueError('Duplicate content identity is not allowed in one source collection')
     manifest = {'format': 'chinatextbook-primary-manifest-v1',
       'createdAt': datetime.now(timezone.utc).isoformat(),
-      'source': 'Local ChinaTextbook primary-school math and English collection; exact copies retained outside Git.',
+      'source': 'Local ChinaTextbook repository originals; PDF bytes referenced by relative path and SHA-256, extracts retained locally.',
       'sourceUse': 'Bibliographic and lesson-level internal review only. This import does not grant redistribution rights.',
       'books': records, 'totalBytes': sum(row['bytes'] for row in records),
       'pages': sum(row['pages'] for row in records)}

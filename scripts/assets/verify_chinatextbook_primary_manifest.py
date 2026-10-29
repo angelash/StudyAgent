@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 import fitz
+from textbook_source_paths import asset_path, source_path
 
 ROOT = Path(__file__).resolve().parents[2]
 PREFIX = 'data/assets/'
@@ -24,6 +25,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument('--manifest', type=Path, default=ROOT / 'resources/curriculum/chinatextbook-primary-v1.json')
     parser.add_argument('--asset-root', type=Path)
+    parser.add_argument('--textbook-root', type=Path)
     parser.add_argument('--without-extracted', action='store_true')
     parser.add_argument('--output', type=Path)
     args = parser.parse_args()
@@ -37,14 +39,10 @@ def main() -> None:
     paths: set[str] = set()
     checked = []
     for row in books:
-        asset_path = row['assetPath']
-        if not asset_path.startswith(PREFIX):
-            raise ValueError(f'Asset path is outside the controlled prefix: {asset_path}')
-        relative = asset_path[len(PREFIX):]
-        if relative in paths or '..' in Path(relative).parts:
-            raise ValueError(f'Duplicate or unsafe asset path: {relative}')
-        paths.add(relative)
-        pdf = (args.asset_root / relative) if args.asset_root else ROOT / asset_path
+        pdf = source_path(row, args.asset_root, args.textbook_root)
+        if str(pdf) in paths:
+            raise ValueError(f'Duplicate source path: {pdf}')
+        paths.add(str(pdf))
         if not pdf.is_file() or pdf.stat().st_size != row['bytes'] or digest(pdf) != row['sha256']:
             raise ValueError(f'PDF bytes differ: {pdf}')
         document = fitz.open(pdf)
@@ -54,8 +52,7 @@ def main() -> None:
         finally:
             document.close()
         if not args.without_extracted:
-            extracted_relative = row['extractedPath'][len(PREFIX):]
-            extracted = (args.asset_root / extracted_relative) if args.asset_root else ROOT / row['extractedPath']
+            extracted = asset_path(row['extractedPath'], args.asset_root)
             if not extracted.is_file() or digest(extracted) != row['extractedSha256']:
                 raise ValueError(f'Extracted text differs: {extracted}')
         checked.append({'id': row['id'], 'subject': row['subject'], 'sha256': row['sha256'],

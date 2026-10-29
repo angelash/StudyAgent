@@ -25,9 +25,9 @@ class PrimarySourceManifestTest(unittest.TestCase):
             self.assertIn(book['term'], {'upper', 'lower'})
             self.assertRegex(book['sha256'], r'^[a-f0-9]{64}$')
             self.assertRegex(book['extractedSha256'], r'^[a-f0-9]{64}$')
-            self.assertTrue(book['assetPath'].startswith('data/assets/textbook-sources/chinatextbook-primary-v1/'))
+            self.assertTrue(book['repositoryPath'].startswith('小学/'))
             self.assertTrue(book['extractedPath'].startswith('data/assets/textbook-sources/chinatextbook-primary-v1/'))
-            self.assertIsNone(re.search(r'(^|[\\/])\.\.([\\/]|$)', book['assetPath']))
+            self.assertIsNone(re.search(r'(^|[\\/])\.\.([\\/]|$)', book['repositoryPath']))
 
 
 if __name__ == '__main__':
