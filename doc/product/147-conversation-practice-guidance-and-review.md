@@ -357,3 +357,5 @@ POST /learning/assistant-practice/assignments/:id/groups/:atomId/start严格接a
 冷核对同批纳入GroupStarts、相关PracticeSession/Attempt/Hint及全部命令和privacyRequests，验证assignment→固定组→唯一真实session双向身份、两道native packet/答案/定义、actual child actor、草稿hash envelope/首答及订正顺序/帮助与完成回执；伪造角色、跨孩子/跨组或重算内部及bundle哈希后的错位关系拒绝。孩子删除清除GroupStart/实践/命令；作者删除对保留孩子的已开始组不要求私人artifact存在，仍须匹配合法共享安排/删除回执。SQLite/PG实际原生恢复和精确旧23 reader拒绝继续，成人self-session仍不放行。
 
 验收先走实际三点六题HTTP完整开始/回答理由/帮助/完成、第二三组继续、首答不覆盖、家长伪造child fence/跨孩子/当前评测拒绝、同键双实例/双标签恢复与作者/孩子最新账本，再接现有练习界面和助教来源入口。真实图片/音频附件读取与原生备份单列，不用表格/公式替代；完整API/浏览器/精确CI及schema24交付分别运行，不能套用当前25或旧1875。此时尚未新增这些接口/集合或真实学习写入，产品整体继续active。
+
+第27节设计318272bf先提交，严格开始/草稿/理由响应/帮助/完成契约已定义，独立contracts/config/API构建及API全类型通过；见[协议构建原件](../evidence/2026-10-29/learner-command-contracts-first/receipt.json)。本层只约束输入形状，尚无新GroupStart持久集合、对应HTTP或实际学生响应，不能当已完成本人身份验证/作答能力。接续按本节实现服务与双库恢复，再接界面；共享安排完整回归继续独立冻结。

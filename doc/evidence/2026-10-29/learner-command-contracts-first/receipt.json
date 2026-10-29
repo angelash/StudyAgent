@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "designBeforeImplementation": "318272bf doc/product/147 section27",
+  "scope": "Standalone strict start/draft/response/help/complete command contracts. Own contracts/config/API build and full API typecheck passed. No new endpoint, collection, group start, response or provider call. Runtime authorization, persistence, cold recovery and UI remain unimplemented in this layer.",
+  "files": [
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "e076c405b2fff4ee06d0c770eb991a3bf929073bcaf26c18e68d9675c47bbe3f",
+      "publishedSha256": "e076c405b2fff4ee06d0c770eb991a3bf929073bcaf26c18e68d9675c47bbe3f",
+      "bytes": 26096,
+      "archive": "packages/contracts/src/index.ts.gz"
+    },
+    {
+      "path": "packages/contracts/src/assistant-practice-learner.ts",
+      "sha256": "82887ea5e91375121e1a7da133a6f23b2baccdd34b454a18f0c747a68aa64b83",
+      "publishedSha256": "82887ea5e91375121e1a7da133a6f23b2baccdd34b454a18f0c747a68aa64b83",
+      "bytes": 2131,
+      "archive": "packages/contracts/src/assistant-practice-learner.ts.gz"
+    },
+    {
+      "path": "packages/contracts/dist/index.d.ts",
+      "sha256": "69a0715e99e5fb11ba8e1c75b3ae3bee75a804be686f62bf16416e476506ac28",
+      "publishedSha256": "69a0715e99e5fb11ba8e1c75b3ae3bee75a804be686f62bf16416e476506ac28",
+      "bytes": 254020,
+      "archive": "packages/contracts/dist/index.d.ts.gz"
+    },
+    {
+      "path": "packages/contracts/dist/index.js",
+      "sha256": "49df887dc03d3698d848a916c5e6b399a1c72d2247356bf0eb65d7f2deac4f70",
+      "publishedSha256": "49df887dc03d3698d848a916c5e6b399a1c72d2247356bf0eb65d7f2deac4f70",
+      "bytes": 122180,
+      "archive": "packages/contracts/dist/index.js.gz"
+    },
+    {
+      "path": "data/qa/learner-first/contracts-build-first.log",
+      "sha256": "a56b3705ab52966c1218f7c13931ec426648eacc5f08f141438fb381345456eb",
+      "publishedSha256": "a56b3705ab52966c1218f7c13931ec426648eacc5f08f141438fb381345456eb",
+      "bytes": 486,
+      "archive": "data/qa/learner-first/contracts-build-first.log.gz"
+    },
+    {
+      "path": "data/qa/learner-first/config-build-first.log",
+      "sha256": "a191ffa4e5e9b08721e7634cc5b4193dc4d0287feb7ddccfc4e49766f75bd20f",
+      "publishedSha256": "a191ffa4e5e9b08721e7634cc5b4193dc4d0287feb7ddccfc4e49766f75bd20f",
+      "bytes": 478,
+      "archive": "data/qa/learner-first/config-build-first.log.gz"
+    },
+    {
+      "path": "data/qa/learner-first/api-build-first.log",
+      "sha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "publishedSha256": "1a2d7b668583bbcb0ae1932471d6c335c3cbcbf084541af3a639a96121dcf424",
+      "bytes": 66,
+      "archive": "data/qa/learner-first/api-build-first.log.gz"
+    },
+    {
+      "path": "data/qa/learner-first/api-types-first.log",
+      "sha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "publishedSha256": "ebcfe59ff9b4bf4e61680fe9e50b5ad0b2290be18cf3c0ae3395d1c337dda387",
+      "bytes": 68,
+      "archive": "data/qa/learner-first/api-types-first.log.gz"
+    }
+  ]
+}
