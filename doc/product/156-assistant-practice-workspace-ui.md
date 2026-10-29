@@ -24,6 +24,8 @@ AssistantWidget每条已保存消息增加“安排练习”，工具栏增加�
 
 题面/输入复用QuestionRenderer、原17题型、公式、图表及现有真实图片/音频媒体目标。媒体上传未完成、题面资源损坏或输入工具不可用时阻断提交并保留全文，不把一个链接当成已恢复附件。教学首答、使用帮助、待复核与正式能力证据分开呈现；不能用首答正确率或完成勾选推断掌握。
 
+实际核对发现原活动view每题只给latest，现有界面不能在订正后展示首次理由。本批在同一GET活动投影内增加仅assistant_artifact使用的每题attemptHistory：按实际attempt升序，通过原publicAttempt脱敏输出；普通训练保持原DTO。界面可展开首次答案/首次理由及各次订正，不请求内部来源或原命令。权限继续由原活动读取断言控制；没有新HTTP地址、集合或迁移，正式评分与首答原件保持。双库冷恢复和浏览器需验证该投影顺序及两次理由均可读。
+
 ## 完整副本、命令与并发
 
 新增仅本机assistant-practice-workspace-copy-v1，绑定owner、实际对象/学科、原会话/候选/安排/组活动/题目。准备阶段保存完整选择、教学目标、目标点、标题说明与原pending创建/编辑/安排命令；作答阶段保存原答案、独立理由、server baseHash/revision/attempt及原pending草稿/回答/帮助/完成命令。二者不复用普通answer-draft-v2键，也不把理由塞入StructuredAnswer。
