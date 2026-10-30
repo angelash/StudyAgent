@@ -1,4 +1,7 @@
 import type { GuidanceIntentRecord } from '../modules/learning/assistant-guidance-record';
+import type { ControlledReviewRecord,ControlledReleaseRecord,ControlledEditorialCommand } from '../modules/diagnostics/controlled-editorial-workflow';
+import type { ControlledContrastPublication } from '../modules/diagnostics/controlled-contrast-publication';
+import type { ControlledPreviewRecord } from '../modules/diagnostics/controlled-preview-record';
 import type { RetentionExposureRecord } from '../modules/diagnostics/retention-native';
 import type { GuidanceCalendarRecord,StudioCalendarCommandRecord } from '../modules/learning/guidance-calendar-record';
 import type { AssistantPracticeGroupStartRecord } from '../modules/learning/assistant-practice-learner-record';
@@ -422,6 +425,12 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   assistantGuidanceIntents: GuidanceIntentRecord[] = [];
   guidanceCalendarArrangements: GuidanceCalendarRecord[] = [];
   retentionExposureEvents: RetentionExposureRecord[] = [];
+  // Native30 editorial storage. Controllers remain unregistered until privacy and child-session validation are complete.
+  controlledMaterialReviews: ControlledReviewRecord[] = [];
+  controlledContrastPublications: ControlledContrastPublication[] = [];
+  controlledContrastReleases: ControlledReleaseRecord[] = [];
+  controlledEditorialCommands: ControlledEditorialCommand[] = [];
+  controlledContrastPreviews: ControlledPreviewRecord[] = [];
   studioCalendarCommands: StudioCalendarCommandRecord[] = [];
   assistantTeachingPracticeDrafts: TeachingDraftRecord[] = [];
   assistantTeachingPractices: TeachingPracticeRecord[] = [];
@@ -544,6 +553,11 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.assistantGuidanceIntents = [];
     this.guidanceCalendarArrangements = [];
     this.retentionExposureEvents = [];
+    this.controlledMaterialReviews = [];
+    this.controlledContrastPublications = [];
+    this.controlledContrastReleases = [];
+    this.controlledEditorialCommands = [];
+    this.controlledContrastPreviews = [];
     this.studioCalendarCommands = [];
     this.assistantTeachingPracticeDrafts = [];
     this.assistantTeachingPractices = [];

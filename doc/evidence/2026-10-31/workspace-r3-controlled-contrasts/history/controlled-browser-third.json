@@ -1,0 +1,41 @@
+{
+  "stats": {
+    "startTime": "2026-10-30T16:43:04.410Z",
+    "duration": 52735.573,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "id": "6c12604276f29de87e24-948e09d3ff9dbcd35540",
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: actual editorial UI publishes reviewed originals, parent previews, child completes the original group and report keeps paired observations separate",
+      "status": "unexpected",
+      "attempts": [
+        {
+          "status": "failed",
+          "retry": 0,
+          "failure": true,
+          "errorClass": "other"
+        }
+      ]
+    },
+    {
+      "id": "6c12604276f29de87e24-991eb52e52ccbbb5878d",
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: a lost committed preview response recovers through the exact original copy without making another preview",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "failure": false,
+          "errorClass": null
+        }
+      ]
+    }
+  ]
+}

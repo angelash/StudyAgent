@@ -66,6 +66,7 @@ async function applyDeletionLedger(query, ledger) {
         actor.role === 'admin' && (receipt.erasedStudentHashes.length || receipt.retainedStudentHashes.length))) fail('privacy_ledger_account_identity_conflict');
     const selected = helpers.mergeSelections(...erased.map(child => helpers.studentRecords(store, child.id)),
       receipt.kind === 'account_delete' && actor ? helpers.accountRecords(store, actor.id, actor.principal) : {});
+    if (receipt.kind === 'account_delete') helpers.anonymizeControlledAttribution(store, receipt.actorId, receipt);
     helpers.removeSelected(store, selected);
     if (receipt.kind === 'account_delete') helpers.anonymizeSharedAttribution(store, retained.map(child => child.id), receipt.actorId);
     const previous = store.privacyRequests.find(row => row.id === receipt.id || row.actorId === receipt.actorId && row.requestKey === receipt.requestKey);

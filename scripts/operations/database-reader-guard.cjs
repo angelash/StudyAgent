@@ -1,11 +1,11 @@
 // The explicit ready marker is understood by current readers and refused by
 // the saved legacy reader. Restoring/unknown states never permit application startup.
-const SCHEMA_VERSION=29,READY_STATE='ready-schema29';
+const SCHEMA_VERSION=30,READY_STATE='ready-schema30';
 function readyState(versions){
   if(!Array.isArray(versions)||!versions.length)throw Error('unsupported_database_schema');
   const version=versions.at(-1);
   if(!Number.isSafeInteger(version)||version<1||version>SCHEMA_VERSION)throw Error('unsupported_database_schema');
-  return version===29?READY_STATE:version===28?'ready-schema28':version===27?'ready-schema27':version===26?'ready-schema26':version===25?'ready-schema25':version===24?'ready-schema24':version===23?'ready-schema23':'ready';
+  return version===30?READY_STATE:version===29?'ready-schema29':version===28?'ready-schema28':version===27?'ready-schema27':version===26?'ready-schema26':version===25?'ready-schema25':version===24?'ready-schema24':version===23?'ready-schema23':'ready';
 }
 function assertReady(state,versions){
   const expected=readyState(versions);

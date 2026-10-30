@@ -1,0 +1,101 @@
+{
+  "numTotalTests": 20,
+  "numPassedTests": 20,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "files": 2,
+  "results": [
+    {
+      "file": "schema30-reader.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "sqlite actual schema29 reader fence for schema30 migrates actual29 without rewriting business records and the unmodified old reader refuses30 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema29 reader fence for schema30 migrates an actual23 database through24,25,26,27,28,29 and30 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema29 reader fence for schema30 refuses an orphan controlled publication before advancing the actual29 minimum reader marker",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema29 reader fence for schema30 rolls back the30 marker and its migration together and leaves the29 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema29 reader fence for schema30 rejects unknown future31 and mismatched or incomplete30 markers without resetting them",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema29 reader fence for schema30 restores a native29 bundle with its old marker, upgrades explicitly and restores native30 with the new minimum reader",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema29 reader fence for schema30 migrates actual29 without rewriting business records and the unmodified old reader refuses30 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema29 reader fence for schema30 migrates an actual23 database through24,25,26,27,28,29 and30 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema29 reader fence for schema30 refuses an orphan controlled publication before advancing the actual29 minimum reader marker",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema29 reader fence for schema30 rolls back the30 marker and its migration together and leaves the29 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema29 reader fence for schema30 rejects unknown future31 and mismatched or incomplete30 markers without resetting them",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "controlled-storage.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "actual controlled editorial transactions, immutable originals and native recovery persists exact approvals/publication, replays their original receipts after a live source edit, and cold restores immutable originals",
+          "status": "passed"
+        },
+        {
+          "title": "actual controlled editorial transactions, immutable originals and native recovery cold reopens an actual anonymous replacement transaction only with its matching persisted deletion receipt",
+          "status": "passed"
+        },
+        {
+          "title": "actual controlled editorial transactions, immutable originals and native recovery refuses a new command or private replay after the actual editor role is revoked and preserves the published original",
+          "status": "passed"
+        },
+        {
+          "title": "actual controlled editorial transactions, immutable originals and native recovery rolls back an actual approval and its original command together when a native principal uniqueness constraint rejects the transaction",
+          "status": "passed"
+        },
+        {
+          "title": "actual controlled editorial transactions, immutable originals and native recovery uses actual authenticated account deletion and the latest native restore ledger to erase private editorial commands while preserving published originals",
+          "status": "passed"
+        },
+        {
+          "title": "actual controlled editorial transactions, immutable originals and native recovery keeps actual child first responses in their original order, withholds every paired score before ending and cold restores the completed original report without mastery double counting",
+          "status": "passed"
+        },
+        {
+          "title": "actual controlled editorial transactions, immutable originals and native recovery anonymizes an actual shared guardian preview, retains the original child task and removes its full links when a latest deletion ledger is applied to the old native backup",
+          "status": "passed"
+        },
+        {
+          "title": "actual controlled editorial transactions, immutable originals and native recovery serves actual authenticated editorial and child HTTP routes with private receipt ownership, original start recovery and live revocation",
+          "status": "passed"
+        },
+        {
+          "title": "actual controlled editorial transactions, immutable originals and native recovery links an ordinary independent baseline to the exact controlled report, records actual child teaching, closes on new counterpairs and reopens without replacing old reports",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

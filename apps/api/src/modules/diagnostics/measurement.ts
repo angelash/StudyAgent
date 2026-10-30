@@ -63,6 +63,7 @@ export function betaQuantile(probability: number, a: number, b: number) {
 export type WeightedEvidence = { evidence: DiagnosticResponse; weight: number };
 /** Raw task scores are retained separately; only observed answers can estimate ability. */
 export const measurableResponse = (response: DiagnosticResponse) => response.disposition === 'answered' &&
+  response.evidencePurpose !== 'controlled_cause_observation' &&
   !['not_independent','unknown_source'].includes(response.retentionEvidence?.status??'') &&
   response.status === 'scored' && typeof response.score === 'number' && Number.isFinite(response.score) &&
   response.score >= 0 && response.score <= 1 && !response.priorExposure && response.hintLevel < 3;

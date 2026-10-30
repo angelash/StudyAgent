@@ -1,7 +1,7 @@
 import { RetentionService } from './retention.service';
 import { RETENTION_PROTOCOL } from './retention-anchor';
 import { projectRetentionEvidence } from './retention-evidence-projection';
-import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { createHash, randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { DiagnosticHypothesis, DiagnosticReport, DiagnosticResponse, DiagnosticSession, DiagnosticStart, MeasurementItem,
@@ -29,12 +29,50 @@ import { verificationBlueprint, verificationResult } from './verification-bluepr
 import { FAMILY_IDENTITY_VERSION, canonicalFamily, familyIdentityAffectsAtom } from './family-identity';
 import { reportAnalysisCompatibility } from './measurement-compatibility';
 import { originalPaperExposure } from './paper-exposure';
+import { controlledSessionOf, type ControlledDiagnosticSession } from './controlled-session-origin';
+import { controlledResponseOrigin } from './controlled-response-origin';
+import { controlledFeedbackHeld, controlledSubmissionReceipt } from './controlled-contrast-disclosure';
+import { evaluateControlledContrasts } from './controlled-contrast-result';
+import { deriveControlledCause } from './controlled-cause-lifecycle';
+import { controlledActorIdentity } from './controlled-actor-identity';
+import { retentionDigest } from './retention-anchor';
 
 @Injectable()
 export class DiagnosticsService {
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
     private readonly curriculum: CurriculumService, private readonly workspace: QuestionWorkspaceService,
     private readonly events: DomainEventBusService, private readonly media: StudentMediaService,private readonly retention:RetentionService) {}
+
+  private controlledChild(user: InMemoryUserAccount, session: DiagnosticSession) {
+    if (!controlledSessionOf(session)) return;
+    const actual = this.store.find('users', { id: user.id, status: 'active', role: 'student' });
+    if (!actual || user.role !== 'student' || !this.store.find('students', { id: session.studentId, userId: actual.id })) throw new ForbiddenException('这组成对任务请由孩子本人通过学习码作答');
+  }
+  private controlledItem(session: DiagnosticSession, itemId: string) {
+    if (!controlledSessionOf(session)) return;
+    const answered = new Set(this.store.select('diagnosticResponses', { sessionId: session.id }).map(row => row.itemId));
+    if (!answered.has(itemId) && session.itemIds.find(id => !answered.has(id)) !== itemId) throw new ConflictException('请按原先确认的固定顺序完成当前任务');
+  }
+
+  private controlledAnalyses(studentId: string, subject: Subject, at: string) {
+    const observations = this.store.select('diagnosticSessions', { studentId, subject }).flatMap(source => {
+      const session = controlledSessionOf(source), endedAt = session?.completedAt ?? session?.endedAt;
+      if (!session || !['completed','aborted'].includes(session.status) || !endedAt || Date.parse(endedAt) > Date.parse(at)) return [];
+      const publication = this.store.find('controlledContrastPublications', { id: session.controlledOrigin.publicationId });
+      if (!publication) throw new ConflictException('原审核对照材料无法核对，请保留原学习记录');
+      return [{ sessionId: session.id, studentId, subject, status: session.status as 'completed'|'aborted', startedAt: session.startedAt, endedAt,
+        publication, blueprint: session.controlledContrast, responses: this.effectiveResponses(studentId, subject).filter(row => row.sessionId === session.id) }];
+    });
+    const groups = new Map(observations.map(row => [retentionDigest({atomId:row.blueprint.atomId,definitionFingerprint:row.blueprint.definitionFingerprint,cause:row.blueprint.cause}),row]));
+    const previous = this.store.select('diagnosticReports', { 'report.studentId': studentId, 'report.subject': subject })
+      .filter(row => Date.parse(row.createdAt) <= Date.parse(at)).sort((a,b) => a.createdAt.localeCompare(b.createdAt) || a.version-b.version || a.id.localeCompare(b.id))
+      .flatMap(row => row.report.controlledCauses ?? []);
+    return [...groups.entries()].sort(([a],[b])=>a.localeCompare(b)).map(([,row]) => {
+      const blueprint = row.blueprint, old = previous.filter(state => state.atomId === blueprint.atomId && state.definitionFingerprint === blueprint.definitionFingerprint && state.cause === blueprint.cause).at(-1);
+      return deriveControlledCause({studentId,subject,atomId:blueprint.atomId,definitionFingerprint:blueprint.definitionFingerprint,cause:blueprint.cause,
+        observations,records:this.retention.records(studentId),at,...(old?{previous:old}:{})}).state;
+    });
+  }
 
   start(user: InMemoryUserAccount, input: unknown, scopeOverride?: LearningScope) {
     return this.activateSession(user, this.prepareSession(user, input, scopeOverride));
@@ -245,7 +283,10 @@ export class DiagnosticsService {
     const responses = this.store.select('diagnosticResponses', { sessionId: id });
     const original = session.paperReviewOrigin ? this.store.find('paperPracticeSessions', { id: session.paperReviewOrigin.sessionId }) : null;
     const originVisible = original && (original.ownerUserId === user.id || original.studentId === session.studentId && this.store.find('users', { id: original.ownerUserId, role: 'student' }));
+    const controlled = controlledSessionOf(session);
     return { id: session.id, studentId: session.studentId, subject: session.subject, intent: session.intent,
+      ...(controlled ? { controlled: { protocol:'controlled-cause-session-v1', feedbackHeld:controlledFeedbackHeld(controlled),
+        evidencePurpose:'controlled_cause_observation', notice:'本组成对任务按原顺序完成，结束后再核对评分；两侧不增加普通掌握或保持样本。' } } : {}),
       ...(originVisible ? { paperReviewOrigin: session.paperReviewOrigin } : {}),
       status: session.status, scopeSnapshot: session.scopeSnapshot, coverage: session.coverage,
       startedAt: session.startedAt, completedAt: session.completedAt, endedAt: session.endedAt ?? null,
@@ -266,7 +307,8 @@ export class DiagnosticsService {
     const command = validate(z.object({ action: z.enum(['pause', 'resume', 'abort']), expectedRevision: z.number().int().positive(),
       requestKey: z.string().min(8).max(180), reason: z.string().trim().min(5).max(1000) }).strict(), input);
     const requestHash = createHash('sha256').update(JSON.stringify(command)).digest('hex');
-    const previous = session.stateHistory?.find(event => event.actorId === user.id && event.requestKey === command.requestKey);
+    const stateActor = controlledSessionOf(session) ? controlledActorIdentity(user.id) : user.id;
+    const previous = session.stateHistory?.find(event => event.actorId === stateActor && event.requestKey === command.requestKey);
     if (previous) {
       if (previous.requestHash !== requestHash) throw new ConflictException('请求键已用于另一项评测状态操作');
       return this.sessionView(user, sessionId);
@@ -278,7 +320,7 @@ export class DiagnosticsService {
     const at = new Date().toISOString();
     session.status = command.action === 'abort' ? 'aborted' : command.action === 'pause' ? 'paused' : 'in_progress';
     session.revision = (session.revision ?? 1) + 1;
-    (session.stateHistory ??= []).push({ ...command, actorId: user.id, at, requestHash, revision: session.revision });
+    (session.stateHistory ??= []).push({ ...command, actorId: stateActor, at, requestHash, revision: session.revision });
     if (session.status === 'aborted') {
       session.endedAt = at;
       if (session.reviewTaskId) {
@@ -303,6 +345,7 @@ export class DiagnosticsService {
 
   renderItem(user: InMemoryUserAccount, sessionId: string, itemId: string) {
     const session = this.requireSession(user, sessionId);
+    this.controlledItem(session, itemId);
     const mapping = session.itemSnapshots.find((item) => item.id === itemId);
     if (!mapping) throw new NotFoundException('题目不属于当前评测');
     if (!routedItemAvailable(session, itemId)) throw new ConflictException('请先完成当前核查题，后续题目按本次作答继续安排');
@@ -328,6 +371,7 @@ export class DiagnosticsService {
 
   saveDraft(user: InMemoryUserAccount, sessionId: string, itemId: string, input: unknown) {
     const session = this.requireSession(user, sessionId);
+    this.controlledChild(user, session); this.controlledItem(session, itemId);
     const command = validate(answerDraftSaveSchema, input);
     if (session.status !== 'in_progress' || !session.itemIds.includes(itemId) || session.routing && session.routing.currentItemId !== itemId || Boolean(this.store.find('diagnosticResponses', { sessionId: sessionId, itemId: itemId }))) {
       throw new BadRequestException('只能保存尚未提交的当前评测题目');
@@ -347,6 +391,9 @@ export class DiagnosticsService {
   submit(user: InMemoryUserAccount, sessionId: string, input: unknown) {
     const command = validate(diagnosticResponseInputSchema, input);
     const session = this.requireSession(user, sessionId);
+    this.controlledChild(user, session);
+    const controlled = controlledSessionOf(session);
+    if (controlled && (!command.requestKey || !command.draftFence || retentionDigest(command) !== retentionDigest(input))) throw new ConflictException('请保留完整的本人首答命令与原草稿身份');
     const mapping = session.itemSnapshots.find((item) => item.id === command.itemId);
     if (!mapping) throw new BadRequestException('题目不属于当前评测');
     if (command.draftFence && !command.requestKey) throw new BadRequestException('恢复作答需要完整的提交标识');
@@ -358,11 +405,12 @@ export class DiagnosticsService {
     if (previous) {
       if (previous.requestHash && (previous.requestKey !== command.requestKey || previous.requestHash !== commandHash)) throw new ConflictException('首次提交已经保存，请核对原提交，不能用新命令覆盖');
       if (previous.disposition === command.disposition && sameAnswer(previous.answer, command.answer ?? null)) {
-        return { saved: true, responseId: previous.id, idempotent: true, status: previous.status };
+        return controlled ? controlledSubmissionReceipt(controlled, previous, true) : { saved: true, responseId: previous.id, idempotent: true, status: previous.status };
       }
       throw new ConflictException('首次作答已保存；如需重新验证，请开始新评测');
     }
     if (session.status !== 'in_progress') throw new BadRequestException('评测已结束');
+    this.controlledItem(session, command.itemId);
     if (session.routing && session.routing.currentItemId !== command.itemId) throw new ConflictException('核查顺序已经变化，请刷新并完成当前题目');
     const question = session.questionSnapshots.find((item) => item.id === mapping.questionId)!;
     const draft = this.store.find('diagnosticDrafts', { sessionId, itemId: command.itemId });
@@ -395,6 +443,7 @@ export class DiagnosticsService {
       ...(atom && session.atomSnapshots ? { atomVersion: atom.version, atomDefinitionFingerprint: atomDefinitionFingerprint(atom) } : {}),
     };
     if(session.intent==='retest')Object.assign(response,projectRetentionEvidence(response,{records:this.retention.records(session.studentId),sessions:this.store.select('diagnosticSessions',{studentId:session.studentId}),responses:this.effectiveResponses(session.studentId,session.subject)}));
+    if(controlled)Object.assign(response,{evidencePurpose:'controlled_cause_observation',controlledOrigin:controlledResponseOrigin(controlled,mapping.id,user.id),controlledInput:structuredClone(command)});
     this.store.append('diagnosticResponses', response);
     this.media.bind(mediaIds, response.id);
     // Keep the v2 revision journal as a tombstone. A stale client cannot reopen or bypass it.
@@ -403,11 +452,12 @@ export class DiagnosticsService {
     if (session.routing) this.events.publish('diagnostic.routing_advanced', { sessionId, studentId: session.studentId, responseId: response.id,
       nextItemId: next?.itemId ?? null, rule: next?.rule ?? 'finished', routingVersion: session.routing.version });
     this.events.publish('diagnostic.response_saved', { sessionId, responseId: response.id, studentId: session.studentId });
-    return { saved: true, responseId: response.id, idempotent: false, status: response.status };
+    return controlled ? controlledSubmissionReceipt(controlled, response, false) : { saved: true, responseId: response.id, idempotent: false, status: response.status };
   }
 
   hint(user: InMemoryUserAccount, sessionId: string, itemId: string) {
     const session = this.requireSession(user, sessionId);
+    this.controlledChild(user, session); this.controlledItem(session, itemId);
     if (session.status !== 'in_progress' || session.routing && session.routing.currentItemId !== itemId || Boolean(this.store.find('diagnosticResponses', { sessionId: sessionId, itemId: itemId }))) throw new BadRequestException('只能获取尚未提交的当前核查题提示');
     const mapping = session.itemSnapshots.find((item) => item.id === itemId);
     if (!mapping) throw new NotFoundException('题目不存在');
@@ -422,6 +472,7 @@ export class DiagnosticsService {
 
   complete(user: InMemoryUserAccount, sessionId: string) {
     const session = this.requireSession(user, sessionId);
+    this.controlledChild(user, session);
     if (session.status === 'completed') return this.report(user, sessionId);
     if (session.status !== 'in_progress') throw new BadRequestException('请先恢复进行中的评测；已结束评测保留原始证据');
     const answered = new Set(this.store.select('diagnosticResponses', { sessionId: sessionId }).map((item) => item.itemId));
@@ -503,6 +554,7 @@ export class DiagnosticsService {
       hypotheses: deriveHypotheses(studentId, subject, atoms, compatibility.compatible, this.allMappings(studentId),
         this.store.select('diagnosticHypotheses', { studentId, subject }), new Date().toISOString()),
       definitionCompatibility: { incompatibleEvidenceIds: compatibility.incompatibleEvidenceIds, unverifiedEvidenceIds: compatibility.unverifiedEvidenceIds },
+      controlledCauses: this.controlledAnalyses(studentId, subject, new Date().toISOString()),
       modelVersion: MEASUREMENT_VERSION, familyIdentityVersion: FAMILY_IDENTITY_VERSION };
   }
 
@@ -543,7 +595,7 @@ export class DiagnosticsService {
     const session = this.requireSession(user, sessionId);
     this.students.assertGuardian(user, session.studentId);
     const command = validate(z.object({ requestKey: z.string().min(8).max(180), expectedReportVersion: z.number().int().positive(),
-      reason: z.string().trim().min(5).max(1000) }).strict(), input);
+      reason: z.string().trim().min(5).max(1000), reanalyzeControlledCauses:z.literal(true).optional() }).strict(), input);
     const inputHash = blueprintContentHash(command);
     const previousRequest = this.store.select('diagnosticReports', { sessionId }).find(row =>
       row.reanalysis?.actorId === user.id && row.reanalysis.requestKey === command.requestKey);
@@ -555,13 +607,14 @@ export class DiagnosticsService {
     if ((report.version ?? 1) !== command.expectedReportVersion) throw new ConflictException('报告已有新版本，请重新查看后再分析');
     if (!session.atomSnapshots) throw new ConflictException('历史评测缺少冻结知识定义，请保留原报告并完成新评测');
     const compatibility = this.analysisCompatibility(report);
-    if (!compatibility.requiresReanalysis) return report;
+    if(command.reanalyzeControlledCauses&&!report.controlledCauses?.length)throw new BadRequestException('这份原报告没有受控原因观察，请保留原报告。');
+    if (!compatibility.requiresReanalysis&&!command.reanalyzeControlledCauses) return report;
     if (!compatibility.originalsAvailable) throw new ConflictException('部分计量原件已不可用，请保留原报告，确认范围后完成新的独立评测');
     this.refreshHypotheses(session.studentId, session.subject);
     const version = (report.version ?? 1) + 1, createdAt = new Date().toISOString();
     this.store.append('diagnosticReports', { id: this.store.nextId('report'), sessionId, version, createdAt,
       reanalysis: { actorId: user.id, requestKey: command.requestKey, inputHash },
-      report: { ...this.buildReport(session), revisionReason: `能力或题族计量规则更新，依据保留的原始作答重新分析；数值变化不等同于学习改善。${command.reason}` } });
+      report: { ...this.buildReport(session), revisionReason: command.reanalyzeControlledCauses?`明确重新核对原受控配对、评分版本与支持和反证；没有新增学习作答，分析变化不表示学习改善。${command.reason}`:`能力或题族计量规则更新，依据保留的原始作答重新分析；数值变化不等同于学习改善。${command.reason}` } });
     this.events.publish('diagnostic.report_reanalyzed', { sessionId, studentId: session.studentId, actorId: user.id,
       previousVersion: report.version ?? 1, version, familyIdentityVersion: FAMILY_IDENTITY_VERSION, measurementVersion: MEASUREMENT_VERSION });
     return this.report(user, sessionId);
@@ -611,6 +664,9 @@ export class DiagnosticsService {
           status: latest.status as DiagnosticHypothesis['status'], updatedAt: latest.at, history }] : [];
       });
     return { sessionId: session.id, studentId: session.studentId, subject: session.subject, status: session.status,
+      ...(controlledSessionOf(session) ? { controlledContrast: evaluateControlledContrasts((session as ControlledDiagnosticSession).controlledContrast,evidence,session.id,
+        {sourceScope:'retained-platform-sources-v1',startedAt:session.startedAt,records:this.retention.records(session.studentId)}) } : {}),
+      controlledCauses: this.controlledAnalyses(session.studentId, session.subject, measuredAt),
       retentionProtocol: RETENTION_PROTOCOL,familyIdentityVersion: FAMILY_IDENTITY_VERSION, measurementVersion: MEASUREMENT_VERSION,
       answeredCount: evidence.length, totalCount: session.itemIds.length, scoredCount: scored.length, pendingReviewCount: pending,
       rawScore: scored.length ? Math.round(scored.reduce((sum, item) => sum + item.score!, 0) / scored.length * 100) : null,

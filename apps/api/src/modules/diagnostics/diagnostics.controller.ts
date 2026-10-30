@@ -121,6 +121,10 @@ export class DiagnosticsController {
   profile(@Req() req: AuthenticatedRequest, @Param('studentId') id: string, @Query('subject') subject?: string) { return this.diagnostics.profile(req.user, id, parseSubject(subject)); }
   @Post('diagnostics/students/:studentId/plans')
   plan(@Req() req: AuthenticatedRequest, @Param('studentId') id: string, @Body() body: unknown) { return this.guidance.create(req.user, id, body); }
+  @Get('diagnostics/students/:studentId/controlled-guidance-options')
+  controlledGuidanceOptions(@Req() req:AuthenticatedRequest,@Param('studentId') id:string,@Query('sessionId') sessionId:string,@Query('stateId') stateId:string){return this.guidance.controlledOptions(req.user,id,sessionId,stateId);}
+  @Get('diagnostics/students/:studentId/controlled-guidance-requests/:requestKey')
+  controlledGuidanceResult(@Req() req:AuthenticatedRequest,@Param('studentId') id:string,@Param('requestKey') requestKey:string){return this.guidance.controlledCreationResult(req.user,id,requestKey);}
   @Get('diagnostics/students/:studentId/plans')
   plans(@Req() req: AuthenticatedRequest, @Param('studentId') id: string, @Query('subject') subject?: string) { return this.guidance.list(req.user, id, parseSubject(subject)); }
   @Get('diagnostics/students/:studentId/plan-requests/:requestKey')

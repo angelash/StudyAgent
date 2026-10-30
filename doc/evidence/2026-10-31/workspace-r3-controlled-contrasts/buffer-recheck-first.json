@@ -1,0 +1,27 @@
+{
+  "stats": {
+    "startTime": "2026-10-30T18:36:10.861Z",
+    "duration": 27087.579999999998,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "id": "265f33044650abeb9091-52840d3b8738282c68e1",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 1440",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "failure": false,
+          "errorClass": null
+        }
+      ]
+    }
+  ]
+}

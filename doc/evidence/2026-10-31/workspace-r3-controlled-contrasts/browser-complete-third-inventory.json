@@ -1,0 +1,3769 @@
+{
+  "at": "2026-10-30T18:00:55.183Z",
+  "tests": 627,
+  "items": [
+    {
+      "id": "36ea6c80ae3cdcbe4c16-ab69b26d6b78ab2507cb",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: a late save receipt cannot mark a newer local answer saved or overwrite its queue"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-fcdcdeb324013fb1801e",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: a dropped save acknowledgment survives refresh with its original command and one server revision"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-5079cdadec43ab3829b3",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: two real tabs retain conflicting input and explicitly download before keeping the local version"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-ee9caac64bd9e1872e02",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: a lost diagnostic first-submit reply replays the frozen time and advances exactly one question after reload"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-425ec571b543239665ea",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: practice correction drafts and their lost submit reply preserve the original first answer and the current question"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-89b42fbd9cc5a49c1d15",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: leaving before debounce flushes the exact question, while offline navigation retains its local input"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-fd492b039152e5b6e822",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: unavailable browser storage keeps the full answer editable and offers a real downloaded copy"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-e3c071815b29ef13f8c7",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: attachment completion revalidates a conflict without another upload or a manufactured first answer"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-95c122a2d1393a43500a",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: a delayed old question read cannot reopen a practice after the learner has left"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-530031e221c8f6e3a5e1",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: an older tab keeps its original attempt binding after another page submits the first answer"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-ba6a1396604802c6877b",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic single_choice: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-4b58608e082b7eb3b8fa",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic multiple_choice: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-f256ae3f7d803a45265a",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic boolean: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-1c9a348c1825b8c1d983",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic numeric_blank: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-82a2d483e84c3f77348b",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic text_blank: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-cadc1143dfee524aa6e6",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic formula_blank: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-87862f647b58ea49eb88",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic multi_blank: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-3a0bec3581d040d3e84f",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic table_fill: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-ada18b180dc71f7a571c",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic matching: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-6621b1a16c06c2b28e54",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic sorting: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-06783c99ad729d28c39a",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic drag_drop: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-539bd4f3ffc55bd35e17",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic hotspot: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-8b6dfaa480778aa76817",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic geometry_draw: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-7ef3466fbe629bbea0b0",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic stepwise: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-3f4d1f386247ccb47148",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic image_upload: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-dfa8b3c137622af2cdc4",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic short_answer: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-99fe2aad293f55d7758f",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic audio_record: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-32b839d62807a5d972bf",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "practice single_choice: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-d94bf3e9e523f402c144",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "practice multiple_choice: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-868db070c757d9c6b4f2",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "practice boolean: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-832311d95301fdd72ca6",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "practice numeric_blank: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-0fa460ca50a1aa2ecf68",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "practice text_blank: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-6ee911e1b3fedcaf031d",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "practice formula_blank: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-7e28bbd64f3e694ba86d",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "practice multi_blank: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-12494dc9157335dd15e7",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "practice table_fill: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-9f34d11766a54818eb95",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "practice matching: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-24dd4da646c5cb55e0d8",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "practice sorting: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-bbc7d3d9d82b74d16be4",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "practice drag_drop: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-287959fab07e8792ee9e",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "practice hotspot: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-3f215c0ac4e54b7924c0",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "practice geometry_draw: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-afeff79ab800f83d48f2",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "practice stepwise: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-d8f6636e7a08e5195132",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "practice image_upload: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-f37ecea5126c676f917d",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "practice short_answer: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "36ea6c80ae3cdcbe4c16-f8406aa0b6f916fcf4b5",
+      "projectId": "",
+      "file": "answer-journeys.spec.ts",
+      "title": "practice audio_record: incomplete input, reload, continued editing, first submit and historical read"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-dc61ccc68e38331aeaf7",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "Auto names the actual platform default and a later composer choice preserves the original saved model"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-d5dae45e2ab609b00a51",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "model checks retain failure, historical scope and unknown states without generating an answer"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-a21b6782f46104d6c423",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "a failed model directory has an explicit retry that preserves the complete unsent question and chosen model"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-b7663954ced72587e7f0",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "a saved question survives collapse and refresh without duplicate creation or retroactive first-answer evidence"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-0502c53b6b5e65ca1b33",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "a lost creation receipt restores the same original command from server state without sending it again"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-56a582779042a9c5d099",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "running cancellation settles after refresh and retry retains the original model despite a new composer selection"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-4a4aeb2bae7822076e08",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "invalid model evidence remains a visible failure and an explicit retry publishes one validated answer"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-71087abf12d08578086c",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "history reads beyond fifty messages, locates an old search match and returns to its actual practice question"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-7bd672c038974e3556d4",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "unavailable local storage keeps the full question editable, exportable and recoverable once the server accepts it"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-40cf3dd2743e8977ac9e",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "a forged cache owned by another account is ignored without exposing or sending its text"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-a1977e0d661fd0ab66be",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "stopping local waiting leaves the real server task running until explicit cancellation"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-3657bfcd8d34007c9f35",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "conversation search pages beyond the first results and recovers from an empty result"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-35d85b62c8a3b0efafb4",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "identity recovery: one failed identity request retries without asking the signed-in learner to log in again"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-065b920675e7cca71491",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "identity recovery: a persistent connection failure offers a bounded manual retry and reuses the existing saved conversation"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-eb6ddd0be84d65b6fa46",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "identity recovery: an explicit unauthenticated response clears private identity without retrying or calling it a connection failure"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-548095506046a846a7b3",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "reviewing an earlier task preserves selection while the new task finishes in the background"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-33107f83a3565c1a0a16",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "diagnostic rules stay deterministic and history locates an answered frozen question without opening a future one"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-c4bb809b95bdf42f9836",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "history location: the first click uses the selected original conversation while its view is still loading"
+    },
+    {
+      "id": "0367f1bc5d7d59466eb7-64f2120c9b874292f504",
+      "projectId": "",
+      "file": "assistant-conversations.spec.ts",
+      "title": "history location: closing and reopening the same original conversation fences a late position reply"
+    },
+    {
+      "id": "265f33044650abeb9091-44212d90f12de01395a9",
+      "projectId": "",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 320"
+    },
+    {
+      "id": "265f33044650abeb9091-8c3ccf777f49eead1224",
+      "projectId": "",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 390"
+    },
+    {
+      "id": "265f33044650abeb9091-727e2a0c4f7ff9575ad3",
+      "projectId": "",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 768"
+    },
+    {
+      "id": "265f33044650abeb9091-52840d3b8738282c68e1",
+      "projectId": "",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 1440"
+    },
+    {
+      "id": "265f33044650abeb9091-116852c9aacd0479a11e",
+      "projectId": "",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: child real report remains separate and creates exactly one original proposed plan with native manager"
+    },
+    {
+      "id": "265f33044650abeb9091-4af986d44d6abd1ab48b",
+      "projectId": "",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: no completed report offers the native scope entry and never invents a plan"
+    },
+    {
+      "id": "265f33044650abeb9091-7da57b585003a38bc12f",
+      "projectId": "",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: lost committed creation uses its exact complete original receipt after reload without a second POST"
+    },
+    {
+      "id": "265f33044650abeb9091-9b8c455ab2e0411afe7f",
+      "projectId": "",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: two tabs preserve full losing observations after a real version conflict"
+    },
+    {
+      "id": "265f33044650abeb9091-e2dffb1c15006a118c19",
+      "projectId": "",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: unavailable storage requires a full original command download before saving"
+    },
+    {
+      "id": "265f33044650abeb9091-7f0759694cbd7ad77d95",
+      "projectId": "",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: a late source preflight cannot fill a reopened observation"
+    },
+    {
+      "id": "265f33044650abeb9091-e319fdbf0b0ac53c9ac8",
+      "projectId": "",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: complete original plan activities and reasons survive reload and a lost committed adjustment reply"
+    },
+    {
+      "id": "265f33044650abeb9091-c4a161a3839d9f79fd8c",
+      "projectId": "",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: two original plan editors preserve the losing full reason after a real version conflict"
+    },
+    {
+      "id": "265f33044650abeb9091-7333ae3c6fb93bce2fdf",
+      "projectId": "",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance operations: a lost original activation survives reload and creates the original four delayed tasks per action"
+    },
+    {
+      "id": "265f33044650abeb9091-5cc8a5424ada09f447a4",
+      "projectId": "",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance operations: the original paused receipt stays separate from a later active plan"
+    },
+    {
+      "id": "265f33044650abeb9091-3897320f7af1e3b15774",
+      "projectId": "",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance operations: two complete forms require both actual downloads before leaving with unavailable storage"
+    },
+    {
+      "id": "265f33044650abeb9091-4eecb280224a605d536c",
+      "projectId": "",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance operations: complete retrospective input restores and cannot be acknowledged without actual independent followup evidence"
+    },
+    {
+      "id": "265f33044650abeb9091-66e4bafe1b8a35c00c40",
+      "projectId": "",
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance operations: actual completed independent followup supports an exact lost retrospective command while uncertainty stays explicit"
+    },
+    {
+      "id": "3cdbd6fb098fe2a89e2e-042380a9a282ce35cf59",
+      "projectId": "",
+      "file": "assistant-notes.spec.ts",
+      "title": "assistant notes: original source, explicit editing/adoption/export and original-message return at390"
+    },
+    {
+      "id": "3cdbd6fb098fe2a89e2e-bc99cb201eb19576ff20",
+      "projectId": "",
+      "file": "assistant-notes.spec.ts",
+      "title": "assistant notes: original source, explicit editing/adoption/export and original-message return at768"
+    },
+    {
+      "id": "3cdbd6fb098fe2a89e2e-f5872c50323274516ae5",
+      "projectId": "",
+      "file": "assistant-notes.spec.ts",
+      "title": "assistant notes: original source, explicit editing/adoption/export and original-message return at880"
+    },
+    {
+      "id": "3cdbd6fb098fe2a89e2e-ddc275e23ea9562bd6c9",
+      "projectId": "",
+      "file": "assistant-notes.spec.ts",
+      "title": "assistant notes: original source, explicit editing/adoption/export and original-message return at1440"
+    },
+    {
+      "id": "3cdbd6fb098fe2a89e2e-2e1e75d3b5b6c11a3566",
+      "projectId": "",
+      "file": "assistant-notes.spec.ts",
+      "title": "assistant notes: a committed create with a lost HTTP reply survives refresh and recovers without another create"
+    },
+    {
+      "id": "3cdbd6fb098fe2a89e2e-6102175d7e4f03069684",
+      "projectId": "",
+      "file": "assistant-notes.spec.ts",
+      "title": "assistant notes: offline local editing, independent draft and Escape focus survive leaving and reopening"
+    },
+    {
+      "id": "3cdbd6fb098fe2a89e2e-7497f7d919c28a0bbb1c",
+      "projectId": "",
+      "file": "assistant-notes.spec.ts",
+      "title": "assistant notes: corrupt or different-account cached content stays hidden and its original bytes are preserved"
+    },
+    {
+      "id": "3cdbd6fb098fe2a89e2e-276646ad938cded6f5e6",
+      "projectId": "",
+      "file": "assistant-notes.spec.ts",
+      "title": "assistant notes: a source outside70 later messages returns by a read-only anchor without opening another conversation"
+    },
+    {
+      "id": "3cdbd6fb098fe2a89e2e-28aafdaeb4cf1ec2adf6",
+      "projectId": "",
+      "file": "assistant-notes.spec.ts",
+      "title": "assistant notes: a request that never reached the server retries only its preserved original command"
+    },
+    {
+      "id": "3cdbd6fb098fe2a89e2e-6dccb99bbf915ec2862a",
+      "projectId": "",
+      "file": "assistant-notes.spec.ts",
+      "title": "assistant notes: lost edit and adoption replies recover their original results without publishing another command"
+    },
+    {
+      "id": "3cdbd6fb098fe2a89e2e-716b306806fdc4e5cf1c",
+      "projectId": "",
+      "file": "assistant-notes.spec.ts",
+      "title": "assistant notes: another selected message keeps the first unsubmitted editing draft intact"
+    },
+    {
+      "id": "3cdbd6fb098fe2a89e2e-87cd0a9e5104b561539b",
+      "projectId": "",
+      "file": "assistant-notes.spec.ts",
+      "title": "assistant notes: an export read failure preserves the full saved note and a retry only downloads it"
+    },
+    {
+      "id": "3cdbd6fb098fe2a89e2e-e959abd60e97d4a53424",
+      "projectId": "",
+      "file": "assistant-notes.spec.ts",
+      "title": "assistant notes: closing a pending private read and switching accounts hides its late response"
+    },
+    {
+      "id": "3cdbd6fb098fe2a89e2e-8fdcdf551c34326091b4",
+      "projectId": "",
+      "file": "assistant-notes.spec.ts",
+      "title": "assistant notes: overlong pasted text stays complete through reopening and download while server writes remain disabled"
+    },
+    {
+      "id": "3cdbd6fb098fe2a89e2e-7490050f42b32b0b1fda",
+      "projectId": "",
+      "file": "assistant-notes.spec.ts",
+      "title": "assistant notes: an actual stale revision preserves original409 command and local text before explicit server selection"
+    },
+    {
+      "id": "3cdbd6fb098fe2a89e2e-6e4918bc05c4dafbd94d",
+      "projectId": "",
+      "file": "assistant-notes.spec.ts",
+      "title": "assistant notes: another device adopting the server note does not mark a different local draft adopted"
+    },
+    {
+      "id": "3cdbd6fb098fe2a89e2e-a58936480fea77d12ecd",
+      "projectId": "",
+      "file": "assistant-notes.spec.ts",
+      "title": "assistant notes: real learning-code student keeps notes readable during assessment and resumes only after an explicit permission check"
+    },
+    {
+      "id": "4112a538eb70aaf65352-f10068df79dd2f212933",
+      "projectId": "",
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "title": "practice withdrawal: explicit reason and two confirmations preserve all unstarted groups and keyboard focus"
+    },
+    {
+      "id": "4112a538eb70aaf65352-3b87a44a6bbe925db687",
+      "projectId": "",
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "title": "practice withdrawal: a lost committed acknowledgement resumes the exact original reason and key after reload"
+    },
+    {
+      "id": "4112a538eb70aaf65352-beb60bb1915ae66125c9",
+      "projectId": "",
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "title": "practice withdrawal: denied storage sends nothing until the complete reason and original command are downloaded"
+    },
+    {
+      "id": "4112a538eb70aaf65352-a7a814485deeb2337899",
+      "projectId": "",
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "title": "practice withdrawal: parent confirmation makes the actual learner history readonly while keeping a complete unsubmitted correction"
+    },
+    {
+      "id": "4112a538eb70aaf65352-46680ce9c58aeada71f3",
+      "projectId": "",
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "title": "practice withdrawal: two actual tabs retain separate explanations and the losing command never borrows another success"
+    },
+    {
+      "id": "4112a538eb70aaf65352-792b816ddb4be024ed78",
+      "projectId": "",
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "title": "practice withdrawal: actual saved PNG and PCM audio remain readable after withdrawal while new media writes are refused"
+    },
+    {
+      "id": "4112a538eb70aaf65352-2973dffa14eedfa5e1ed",
+      "projectId": "",
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "title": "practice withdrawal: a delayed pre-withdrawal activity projection cannot reenable learner writing"
+    },
+    {
+      "id": "13529459c42585c27ab3-954637b867acceec6666",
+      "projectId": "",
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: actual parent source, three groups and six learner answers retain original reasons and help"
+    },
+    {
+      "id": "13529459c42585c27ab3-4a12f1e513794037c726",
+      "projectId": "",
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: lost creation and arrangement replies keep exact original commands across reload"
+    },
+    {
+      "id": "13529459c42585c27ab3-97cc382b1eb379822627",
+      "projectId": "",
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: a lost learner answer keeps the original reason separate from later local edits"
+    },
+    {
+      "id": "13529459c42585c27ab3-59e6e834a6c3848be3f1",
+      "projectId": "",
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: denied storage requires a complete answer and reason download before switching questions"
+    },
+    {
+      "id": "13529459c42585c27ab3-9aa5174a995c4d5eb6ef",
+      "projectId": "",
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: progressive help and a correction keep the learner first answer and reason unchanged"
+    },
+    {
+      "id": "13529459c42585c27ab3-8c4f9ed9ae8202ff3671",
+      "projectId": "",
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: a second tab compares both complete drafts instead of overwriting the first save"
+    },
+    {
+      "id": "13529459c42585c27ab3-1a016c74b26c5aa157b7",
+      "projectId": "",
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: real image and PCM audio uploads stay attached to the original learner question and remain pending review"
+    },
+    {
+      "id": "13529459c42585c27ab3-a3a21e018efa660cfd14",
+      "projectId": "",
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: browser back without Navigation API preserves the complete current-question input"
+    },
+    {
+      "id": "13529459c42585c27ab3-15302bb4d09dab0a4f10",
+      "projectId": "",
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: a revoked learner entry clears server projection and rejects a conflicting child link"
+    },
+    {
+      "id": "98e0834ade5604b7e681-c56733a57d40c597a63d",
+      "projectId": "",
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: actual source, Auto model, full edit, rereview and adult first reasons at 320"
+    },
+    {
+      "id": "98e0834ade5604b7e681-dbb181c1582640475fe2",
+      "projectId": "",
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: actual source, Auto model, full edit, rereview and adult first reasons at 390"
+    },
+    {
+      "id": "98e0834ade5604b7e681-338e5445c8fbbc2f1993",
+      "projectId": "",
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: actual source, Auto model, full edit, rereview and adult first reasons at 768"
+    },
+    {
+      "id": "98e0834ade5604b7e681-df7b05f85f45f81d0e7a",
+      "projectId": "",
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: actual source, Auto model, full edit, rereview and adult first reasons at 1440"
+    },
+    {
+      "id": "98e0834ade5604b7e681-af598eda17b13d908d5c",
+      "projectId": "",
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: uncertain review preserves the original and blocks adoption until complete edits and new review"
+    },
+    {
+      "id": "98e0834ade5604b7e681-6d5976cec0f8f2e3edc7",
+      "projectId": "",
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: one lost generation acknowledgement is recovered with the same complete original command after reload"
+    },
+    {
+      "id": "98e0834ade5604b7e681-694b2e8bae74aee7d3bd",
+      "projectId": "",
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: denied storage sends no creation until the full original copy is downloaded"
+    },
+    {
+      "id": "98e0834ade5604b7e681-8f81a2eff55b2dbd5620",
+      "projectId": "",
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: the original adult response receipt survives reload without replacing the first reason"
+    },
+    {
+      "id": "98e0834ade5604b7e681-0f41d7070f6e6affd7e6",
+      "projectId": "",
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: two actual tabs keep both complete edit drafts and compare the saved version"
+    },
+    {
+      "id": "98e0834ade5604b7e681-fc6f56862d26552d0216",
+      "projectId": "",
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: an explicit source change keeps original adult history readable and blocks new writes"
+    },
+    {
+      "id": "98e0834ade5604b7e681-1ca2d9e3375898e129d3",
+      "projectId": "",
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: original adoption and adult-start acknowledgements restore without duplicate records"
+    },
+    {
+      "id": "98e0834ade5604b7e681-f354f5cbb329a90ad8e2",
+      "projectId": "",
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: explicit cancellation, original-model retry and Escape preserve source and restore focus"
+    },
+    {
+      "id": "98e0834ade5604b7e681-65cc07945f20a7421c51",
+      "projectId": "",
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: actual adult-answer tabs preserve conflicting complete reasons before explicit comparison"
+    },
+    {
+      "id": "814e3f6b1d3c51af7049-293afbd108d3fc27ebb3",
+      "projectId": "",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "title": "generated child teaching: explicit source and separate adoption and sharing preserve six actual learner reasons at 320"
+    },
+    {
+      "id": "814e3f6b1d3c51af7049-f5519047ec658db54bcb",
+      "projectId": "",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "title": "generated child teaching: explicit source and separate adoption and sharing preserve six actual learner reasons at 390"
+    },
+    {
+      "id": "814e3f6b1d3c51af7049-6067a8c0df46d8c894bd",
+      "projectId": "",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "title": "generated child teaching: explicit source and separate adoption and sharing preserve six actual learner reasons at 768"
+    },
+    {
+      "id": "814e3f6b1d3c51af7049-c36f6b48157299edcf51",
+      "projectId": "",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "title": "generated child teaching: explicit source and separate adoption and sharing preserve six actual learner reasons at 1440"
+    },
+    {
+      "id": "814e3f6b1d3c51af7049-544fa959059b1be6f816",
+      "projectId": "",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "title": "generated child teaching: a lost sharing acknowledgement retains the complete original instruction and key across reload"
+    },
+    {
+      "id": "814e3f6b1d3c51af7049-82974d1fcdd1c98ecf1b",
+      "projectId": "",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "title": "generated child teaching: guardian withdrawal keeps the actual first answer and full unsubmitted correction readonly"
+    },
+    {
+      "id": "814e3f6b1d3c51af7049-a42276878da27ff52964",
+      "projectId": "",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "title": "generated child teaching: disabled storage downloads the complete reason and original withdrawal before sending"
+    },
+    {
+      "id": "814e3f6b1d3c51af7049-467ec2759f15a9b093bc",
+      "projectId": "",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "title": "generated child teaching: the exact lost child-start receipt survives reload and creates only one original activity"
+    },
+    {
+      "id": "814e3f6b1d3c51af7049-7a65c615069a637a4f40",
+      "projectId": "",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "title": "generated child teaching: one lost first-answer receipt keeps the original reason separate from complete later edits"
+    },
+    {
+      "id": "814e3f6b1d3c51af7049-15233fe72f35936c09d5",
+      "projectId": "",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "title": "generated child teaching: a delayed pre-withdrawal activity read cannot restore write controls after the confirmed new state"
+    },
+    {
+      "id": "814e3f6b1d3c51af7049-9c24e48b8f7724277254",
+      "projectId": "",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "title": "generated child teaching: two actual guardian tabs keep the losing original complete withdrawal reason"
+    },
+    {
+      "id": "814e3f6b1d3c51af7049-eb8a73799a6f83448259",
+      "projectId": "",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "title": "generated child teaching: disabled storage protects a full unsent answer and reason before changing the original question"
+    },
+    {
+      "id": "814e3f6b1d3c51af7049-48bf39fa56b10a1604e8",
+      "projectId": "",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "title": "generated child teaching: conflicting object parameters and revoked learning identity stop reads and keep the prior complete copy private"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-102ceff8003f6cd70dd0",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: complete original selection, mapped edit, adoption and player return at 390"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-802ca463aef399129ff1",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: complete original selection, mapped edit, adoption and player return at 768"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-8eae9faa1e42183d3bf8",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: complete original selection, mapped edit, adoption and player return at 880"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-34b2d5b287dac2e7beaa",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: complete original selection, mapped edit, adoption and player return at 1440"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-b7eaeaf34878318de91e",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: a lost committed creation reply is recovered with the exact original key after refresh"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-5c6ce3ba7da89f0415c5",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: incomplete selection survives closing, restores focus and returns to the precise original message without changing the assistant draft"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-1c0cf3e445e14f05fdac",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: another owner cache remains byte-for-byte intact and is never rendered as the current selection"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-88e60a0f727ac825e6f7",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: an interrupted review resumes the original draft and fixed model through the actual workbench"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-01cbc859fbcfac29752c",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: normalized mapped edits settle cleanly and an actual409 retains the complete original command across reload"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-7b1020715f49a2ac0a50",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: a real learner preserves local mapped edits during paused assessment and explicitly rechecks before saving again"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-3060da2d61be7597836e",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: actual private PNG generation, original editing, adoption and sentence narration use the existing classroom"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-9d09ea19a047e5456a63",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: a creation that never reached the server retries only the complete original command"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-50c50d87d0bef23efe98",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: two duplicated documents retain independent full selections across reload"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-90dc15b7f288f00019c6",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: multiple unfinished drafts keep an original pending creation when switching explicitly"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-5b0042648ce89357bbf9",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: a valid legacy source cache is restored without changing its original bytes"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-ecbf0248cebc3da7a118",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: unavailable storage blocks unsaved switching and creation until the complete original command is downloaded"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-58105c764421aa209cf2",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: the complete over-budget source stays visible and reducing the selection requires a new preflight"
+    },
+    {
+      "id": "71648f6287c224a8b8f4-e0be51852c69db810f16",
+      "projectId": "",
+      "file": "assistant-whiteboards.spec.ts",
+      "title": "source whiteboard: closing during a late original preflight cannot populate the reopened selection"
+    },
+    {
+      "id": "cb8fd1c7d71bf8fdcbf1-043c1cd4f79d3c9b827f",
+      "projectId": "",
+      "file": "calendar-boundary.spec.ts",
+      "title": "legacy calendar boundary: all actual slots busy leaves zero confirmable sessions at 320"
+    },
+    {
+      "id": "cb8fd1c7d71bf8fdcbf1-ce1f032328977a55967f",
+      "projectId": "",
+      "file": "calendar-boundary.spec.ts",
+      "title": "legacy calendar boundary: all actual slots busy leaves zero confirmable sessions at 390"
+    },
+    {
+      "id": "cb8fd1c7d71bf8fdcbf1-e06c0ef75792d59a8487",
+      "projectId": "",
+      "file": "calendar-boundary.spec.ts",
+      "title": "legacy calendar boundary: all actual slots busy leaves zero confirmable sessions at 768"
+    },
+    {
+      "id": "cb8fd1c7d71bf8fdcbf1-8179cfad22d74486d9ec",
+      "projectId": "",
+      "file": "calendar-boundary.spec.ts",
+      "title": "legacy calendar boundary: all actual slots busy leaves zero confirmable sessions at 1440"
+    },
+    {
+      "id": "cb8fd1c7d71bf8fdcbf1-7c79222c7b1c16a3f385",
+      "projectId": "",
+      "file": "calendar-boundary.spec.ts",
+      "title": "legacy calendar boundary: a real late conflict keeps the complete input and confirmation never implicitly re-previews at 320"
+    },
+    {
+      "id": "cb8fd1c7d71bf8fdcbf1-802e2b090bc003edaee5",
+      "projectId": "",
+      "file": "calendar-boundary.spec.ts",
+      "title": "legacy calendar boundary: a real late conflict keeps the complete input and confirmation never implicitly re-previews at 1440"
+    },
+    {
+      "id": "4acd24e14e7fe1282527-e92f2a2f1d73a5f8ae0c",
+      "projectId": "",
+      "file": "chemistry.spec.ts",
+      "title": "chemistry: normal course cards, seven-unit outline and native classroom preserve the library on three viewports"
+    },
+    {
+      "id": "4acd24e14e7fe1282527-7a11502557de67c610e2",
+      "projectId": "",
+      "file": "chemistry.spec.ts",
+      "title": "chemistry: course assessments unlock independent checks and preserve first answers after reopening"
+    },
+    {
+      "id": "4acd24e14e7fe1282527-d718f931a58b49430767",
+      "projectId": "",
+      "file": "chemistry.spec.ts",
+      "title": "chemistry: family-created ninth-grade profile reaches the standard library and old links keep their unit"
+    },
+    {
+      "id": "4acd24e14e7fe1282527-f25a9ba3b32d1a084737",
+      "projectId": "",
+      "file": "chemistry.spec.ts",
+      "title": "chemistry: viewing a course preserves an explicit primary profile until the parent changes it"
+    },
+    {
+      "id": "4acd24e14e7fe1282527-e31f39c4bab760de760b",
+      "projectId": "",
+      "file": "chemistry.spec.ts",
+      "title": "chemistry: a chemical course request cannot reuse mathematics and old subject parameters cannot override course content"
+    },
+    {
+      "id": "4acd24e14e7fe1282527-848a895fbca6296e3a48",
+      "projectId": "",
+      "file": "chemistry.spec.ts",
+      "title": "chemistry: each unit opens actual chemical concepts and worked examples in the rendered classroom"
+    },
+    {
+      "id": "4acd24e14e7fe1282527-30a8396011afca78004c",
+      "projectId": "",
+      "file": "chemistry.spec.ts",
+      "title": "chemistry assistant: actual course teaching and cited sources return to its original unit at 390"
+    },
+    {
+      "id": "4acd24e14e7fe1282527-5c7648eeda681555abb9",
+      "projectId": "",
+      "file": "chemistry.spec.ts",
+      "title": "chemistry assistant: actual course teaching and cited sources return to its original unit at 1440"
+    },
+    {
+      "id": "4acd24e14e7fe1282527-8e1739eff30f1d09aaa7",
+      "projectId": "",
+      "file": "chemistry.spec.ts",
+      "title": "chemistry tutorial: ten scientific models respond to conditions and fit a phone classroom"
+    },
+    {
+      "id": "4acd24e14e7fe1282527-ff79b57aeeb3a97fec4e",
+      "projectId": "",
+      "file": "chemistry.spec.ts",
+      "title": "chemistry tutorial: topic mapping, original figure and first classroom check survive reopening"
+    },
+    {
+      "id": "858825c76415aeeb87cd-b6bdb1bea6a7d9fb8a7a",
+      "projectId": "",
+      "file": "classroom-boards.spec.ts",
+      "title": "text reading reveals whole points, rows and formulas; stop restores the original line and complete notes"
+    },
+    {
+      "id": "858825c76415aeeb87cd-1468b198db4bd543493d",
+      "projectId": "",
+      "file": "classroom-boards.spec.ts",
+      "title": "audio ended advances frozen units, abort settles a pending reader and a new reply rejects late audio"
+    },
+    {
+      "id": "858825c76415aeeb87cd-45c4d209d22e3e589a5e",
+      "projectId": "",
+      "file": "classroom-boards.spec.ts",
+      "title": "recovery: complete notes, cross-page reply navigation, keyboard activation and narrow layouts remain usable"
+    },
+    {
+      "id": "858825c76415aeeb87cd-292d56aa30ddc2fc4b2c",
+      "projectId": "",
+      "file": "classroom-boards.spec.ts",
+      "title": "untrusted table/formula text stays inert in the board, actual offline HTML, Markdown and print"
+    },
+    {
+      "id": "e93f975ff670161dd8c0-90d0a2d5c6565a5056a5",
+      "projectId": "",
+      "file": "classroom-captions.spec.ts",
+      "title": "frozen English sentences drive audio, table rows, resume, voice selection and reply playback"
+    },
+    {
+      "id": "e93f975ff670161dd8c0-f433034ae6fce815bbd9",
+      "projectId": "",
+      "file": "classroom-captions.spec.ts",
+      "title": "muted English reading follows the same frozen units without requesting audio"
+    },
+    {
+      "id": "e93f975ff670161dd8c0-82c41aa5cde583a1daef",
+      "projectId": "",
+      "file": "classroom-captions.spec.ts",
+      "title": "an explicit legacy upgrade cancels an old pending track and restores focus at the mapped sentence"
+    },
+    {
+      "id": "e93f975ff670161dd8c0-b0d5ad3e9b20a13279fb",
+      "projectId": "",
+      "file": "classroom-captions.spec.ts",
+      "title": "lost upgrade acknowledgements replay the same command and stale tabs can read the current frozen version"
+    },
+    {
+      "id": "e93f975ff670161dd8c0-85fe0d699e34939dea06",
+      "projectId": "",
+      "file": "classroom-captions.spec.ts",
+      "title": "closing confirmation sends nothing; cancelling an in-flight acknowledgement can read its committed state"
+    },
+    {
+      "id": "e93f975ff670161dd8c0-521043bca69aa8891512",
+      "projectId": "",
+      "file": "classroom-captions.spec.ts",
+      "title": "long protected tokens remain readable without widening the board or transcript on small screens"
+    },
+    {
+      "id": "0fa1fae31d50ac083663-9b744a22123c4904a700",
+      "projectId": "",
+      "file": "classroom-choice.spec.ts",
+      "title": "single and multiple choices retain drafts, lock original feedback and separate submitted option states"
+    },
+    {
+      "id": "0fa1fae31d50ac083663-17a1f4bfed812e01931f",
+      "projectId": "",
+      "file": "classroom-choice.spec.ts",
+      "title": "lost acknowledgement is resolved by reading the saved first answer without creating another request"
+    },
+    {
+      "id": "0fa1fae31d50ac083663-12103ed4a68f9b9327e4",
+      "projectId": "",
+      "file": "classroom-choice.spec.ts",
+      "title": "an undelivered command survives refresh and reuses its exact request key and choices"
+    },
+    {
+      "id": "0fa1fae31d50ac083663-ec9cbce281ea398b18d3",
+      "projectId": "",
+      "file": "classroom-choice.spec.ts",
+      "title": "a definitive rejected submission retains its command copy and permits a new checked selection"
+    },
+    {
+      "id": "0fa1fae31d50ac083663-686f9cc7d1592a5f7e88",
+      "projectId": "",
+      "file": "classroom-choice.spec.ts",
+      "title": "another account cannot restore prior selections or open its frozen classroom"
+    },
+    {
+      "id": "0fa1fae31d50ac083663-446520ee6fc5c84ad1df",
+      "projectId": "",
+      "file": "classroom-choice.spec.ts",
+      "title": "unit checks expose the new selection mode and retain first feedback after reopening"
+    },
+    {
+      "id": "0fa1fae31d50ac083663-74b9f028120a75b5d4de",
+      "projectId": "",
+      "file": "classroom-choice.spec.ts",
+      "title": "skip, unknown and actual hints remain separate immutable first-answer facts"
+    },
+    {
+      "id": "0fa1fae31d50ac083663-1f6aeadcb544e43134cd",
+      "projectId": "",
+      "file": "classroom-choice.spec.ts",
+      "title": "a complete correct set, assisted wrong answer, skip and unknown produce a usable first-answer review"
+    },
+    {
+      "id": "0fa1fae31d50ac083663-de7d679e8f6d3e8d0544",
+      "projectId": "",
+      "file": "classroom-choice.spec.ts",
+      "title": "keyboard selection stays in the question area and leaves assistant input isolated"
+    },
+    {
+      "id": "0fa1fae31d50ac083663-b80af45e7648f83c1a3c",
+      "projectId": "",
+      "file": "classroom-choice.spec.ts",
+      "title": "enlarged practice artwork restores focus and preserves the selection without submitting from its dialog"
+    },
+    {
+      "id": "0fa1fae31d50ac083663-52efe67cafae539c138b",
+      "projectId": "",
+      "file": "classroom-choice.spec.ts",
+      "title": "unavailable local storage keeps current choices and a downloadable command copy"
+    },
+    {
+      "id": "0fa1fae31d50ac083663-f52ad7fb3bf4a364edc9",
+      "projectId": "",
+      "file": "classroom-choice.spec.ts",
+      "title": "multiple-choice layout and assistant fit at 390"
+    },
+    {
+      "id": "0fa1fae31d50ac083663-1d71a0176028c59d9d3c",
+      "projectId": "",
+      "file": "classroom-choice.spec.ts",
+      "title": "multiple-choice layout and assistant fit at 768"
+    },
+    {
+      "id": "0fa1fae31d50ac083663-1b6e01ae993314fca039",
+      "projectId": "",
+      "file": "classroom-choice.spec.ts",
+      "title": "multiple-choice layout and assistant fit at 1440"
+    },
+    {
+      "id": "2651ae6d89c33d57e247-1026581312eef8452afc",
+      "projectId": "",
+      "file": "classroom-code.spec.ts",
+      "title": "code and input save, execute, survive whiteboard navigation and reload at three widths"
+    },
+    {
+      "id": "2651ae6d89c33d57e247-fccf3fc1def24148dee7",
+      "projectId": "",
+      "file": "classroom-code.spec.ts",
+      "title": "a lost save acknowledgment and offline refresh retain exact local edits until the same command can recover"
+    },
+    {
+      "id": "2651ae6d89c33d57e247-f133148b4cb5da56469d",
+      "projectId": "",
+      "file": "classroom-code.spec.ts",
+      "title": "concurrent pages preserve a conflicting buffer and require an explicit choice before replacement"
+    },
+    {
+      "id": "2651ae6d89c33d57e247-8b5592b65f5eb084a7ed",
+      "projectId": "",
+      "file": "classroom-code.spec.ts",
+      "title": "errors, timeouts, stop and oversize programs have explicit states without truncation or unwanted reset"
+    },
+    {
+      "id": "003ced086cecbeb6dc7e-859d4042186709136100",
+      "projectId": "",
+      "file": "classroom-neutral-voices.spec.ts",
+      "title": "a neutral sample decodes before the first lecture, changes no selection and sends only its fixed version"
+    },
+    {
+      "id": "003ced086cecbeb6dc7e-55ff84c8466799d34ed2",
+      "projectId": "",
+      "file": "classroom-neutral-voices.spec.ts",
+      "title": "closing the settings aborts an unfinished sample and its late audio cannot start"
+    },
+    {
+      "id": "003ced086cecbeb6dc7e-35289d439a9ebd3a3e84",
+      "projectId": "",
+      "file": "classroom-neutral-voices.spec.ts",
+      "title": "failed neutral playback keeps an explicit retry and cannot advance or reveal the lesson"
+    },
+    {
+      "id": "003ced086cecbeb6dc7e-3b0b844c900ec335a403",
+      "projectId": "",
+      "file": "classroom-neutral-voices.spec.ts",
+      "title": "a legacy voice can preview only the selected already-revealed frozen sentence"
+    },
+    {
+      "id": "003ced086cecbeb6dc7e-a47d1caf44c9cada8446",
+      "projectId": "",
+      "file": "classroom-neutral-voices.spec.ts",
+      "title": "six real voice cards and preview controls fit at 390"
+    },
+    {
+      "id": "003ced086cecbeb6dc7e-2ab8eb5997c77dee67ab",
+      "projectId": "",
+      "file": "classroom-neutral-voices.spec.ts",
+      "title": "six real voice cards and preview controls fit at 768"
+    },
+    {
+      "id": "003ced086cecbeb6dc7e-c5492174394af10dce41",
+      "projectId": "",
+      "file": "classroom-neutral-voices.spec.ts",
+      "title": "six real voice cards and preview controls fit at 1440"
+    },
+    {
+      "id": "c3d25dcb05e4f90c1b22-35dc860cc9b15735255e",
+      "projectId": "",
+      "file": "classroom-practice.spec.ts",
+      "title": "practice records dont-know, skip, sequential help and replay after a lost hint response"
+    },
+    {
+      "id": "c3d25dcb05e4f90c1b22-c8655ed5c9b6f57baa1a",
+      "projectId": "",
+      "file": "classroom-practice.spec.ts",
+      "title": "every unit has a readable data or diagram practice example at desktop, tablet and phone widths"
+    },
+    {
+      "id": "af5b9205fa8304ef6ed6-8b961b0632f5214a5234",
+      "projectId": "",
+      "file": "classroom-review.spec.ts",
+      "title": "unit check resumes holes, persists help and provides a faithful review with topic return"
+    },
+    {
+      "id": "af5b9205fa8304ef6ed6-141a2c91f6c877fd9c99",
+      "projectId": "",
+      "file": "classroom-review.spec.ts",
+      "title": "saved-session links restore the exact activity and reject a mismatched lesson"
+    },
+    {
+      "id": "c88bef0337b6cd7029a2-262b49a2c9bdb7ba243a",
+      "projectId": "",
+      "file": "classroom-tools.spec.ts",
+      "title": "anchored tour visits actual controls, resizes and returns without issuing learning or voice requests"
+    },
+    {
+      "id": "c88bef0337b6cd7029a2-d83feaee145b83681281",
+      "projectId": "",
+      "file": "classroom-tools.spec.ts",
+      "title": "phone tour exposes the real chat controls then restores the original board and survives unavailable storage"
+    },
+    {
+      "id": "c88bef0337b6cd7029a2-ee1f27604c1b86780901",
+      "projectId": "",
+      "file": "classroom-tools.spec.ts",
+      "title": "controlled figures and curriculum images retain their content, contain focus and support reading and printing"
+    },
+    {
+      "id": "c88bef0337b6cd7029a2-437eeab22b3f5d16d348",
+      "projectId": "",
+      "file": "classroom-tools.spec.ts",
+      "title": "a failed curriculum image still has a readable alternative and a keyboard exit"
+    },
+    {
+      "id": "c88bef0337b6cd7029a2-aa8a2e3dbe10aa18e4ec",
+      "projectId": "",
+      "file": "classroom-tools.spec.ts",
+      "title": "voice samples decode actual audio, keep the selected voice and original progress, and cannot play after settings closes"
+    },
+    {
+      "id": "1e6132ffd4cf4c64e726-df2951c2eb1f03dff0ce",
+      "projectId": "",
+      "file": "classroom-turns.spec.ts",
+      "title": "lost submission receipt, refresh and explicit return preserve a single turn and the original spoken line"
+    },
+    {
+      "id": "1e6132ffd4cf4c64e726-0da8bfc1cfae94017d96",
+      "projectId": "",
+      "file": "classroom-turns.spec.ts",
+      "title": "in-flight cancellation survives refresh and explicit retry creates only one saved answer"
+    },
+    {
+      "id": "1e6132ffd4cf4c64e726-03a506c28b9587a75899",
+      "projectId": "",
+      "file": "classroom-turns.spec.ts",
+      "title": "all teaching modes show an editable request and keep the conventional model picker"
+    },
+    {
+      "id": "1e6132ffd4cf4c64e726-2ae250932f26cf11ccbd",
+      "projectId": "",
+      "file": "classroom-turns.spec.ts",
+      "title": "provider errors remain visible and retry preserves the chosen question"
+    },
+    {
+      "id": "1e6132ffd4cf4c64e726-b00dc9fa5da6ce34f7e3",
+      "projectId": "",
+      "file": "classroom-turns.spec.ts",
+      "title": "a real learning-code user asks in their own approved course and resumes the same answer after refresh"
+    },
+    {
+      "id": "6ad185b43f986768acd5-aebec71b2b77572d60ef",
+      "projectId": "",
+      "file": "classroom-visual.spec.ts",
+      "title": "queued previous clicks use each confirmed position, first save succeeds"
+    },
+    {
+      "id": "6ad185b43f986768acd5-b34330a7c6bbbf3de7c8",
+      "projectId": "",
+      "file": "classroom-visual.spec.ts",
+      "title": "queued previous clicks use each confirmed position, first save fails"
+    },
+    {
+      "id": "6ad185b43f986768acd5-f154db3f67bed14c6e3a",
+      "projectId": "",
+      "file": "classroom-visual.spec.ts",
+      "title": "classroom image survives navigation, binds its original node, enlarges and exports offline notes at three widths"
+    },
+    {
+      "id": "6ad185b43f986768acd5-5f1c877622ceafa58509",
+      "projectId": "",
+      "file": "classroom-visual.spec.ts",
+      "title": "failed and cancelled classroom image tasks retry their saved version"
+    },
+    {
+      "id": "6ad185b43f986768acd5-8476db87b02cd02732a6",
+      "projectId": "",
+      "file": "classroom-visual.spec.ts",
+      "title": "lost image creation acknowledgement recovers the single saved task"
+    },
+    {
+      "id": "6ad185b43f986768acd5-94742f996dc270e59e1b",
+      "projectId": "",
+      "file": "classroom-visual.spec.ts",
+      "title": "PDF preparation waits for selected image bytes and closing settings cancels a pending print"
+    },
+    {
+      "id": "ee123a1e90c2c71e0969-cc7311318ba17478d17e",
+      "projectId": "",
+      "file": "classroom.spec.ts",
+      "title": "course classroom supports teaching, executable examples, learning checks and durable resume"
+    },
+    {
+      "id": "ee123a1e90c2c71e0969-1d2b231c99f680f32288",
+      "projectId": "",
+      "file": "classroom.spec.ts",
+      "title": "audio playback ends drive teaching progress and pause prevents later automatic advancement"
+    },
+    {
+      "id": "ee123a1e90c2c71e0969-1eac336599fede3fa4e2",
+      "projectId": "",
+      "file": "classroom.spec.ts",
+      "title": "question replies add safe board notes with page links, export and restored session rendering"
+    },
+    {
+      "id": "ee123a1e90c2c71e0969-2ca949facc19bdd43dd0",
+      "projectId": "",
+      "file": "classroom.spec.ts",
+      "title": "board notes reveal whole items and subtitle advances only at spoken sentence boundaries"
+    },
+    {
+      "id": "ee123a1e90c2c71e0969-8c5bcbbda27cafe1f899",
+      "projectId": "",
+      "file": "classroom.spec.ts",
+      "title": "independent practice matches four-option illustrated question flow on desktop and phone"
+    },
+    {
+      "id": "ee123a1e90c2c71e0969-3621181cebe072becbfc",
+      "projectId": "",
+      "file": "classroom.spec.ts",
+      "title": "practice geometry, whiteboard image and comparison table use the observed display scale"
+    },
+    {
+      "id": "6c12604276f29de87e24-edfe4e1dbca102f1c40f",
+      "projectId": "",
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: the isolated Web relative API route reaches the same actual QA service as the explicit client"
+    },
+    {
+      "id": "6c12604276f29de87e24-948e09d3ff9dbcd35540",
+      "projectId": "",
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: actual editorial UI publishes reviewed originals, parent previews, child completes the original group and report keeps paired observations separate"
+    },
+    {
+      "id": "6c12604276f29de87e24-991eb52e52ccbbb5878d",
+      "projectId": "",
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: a lost committed preview response recovers through the exact original copy without making another preview"
+    },
+    {
+      "id": "6c12604276f29de87e24-4a90e7ac5ac02d007e88",
+      "projectId": "",
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: an imported altered command cannot clear a committed original request and the exact downloaded input still recovers"
+    },
+    {
+      "id": "6c12604276f29de87e24-5c614b7ffe777b794ecc",
+      "projectId": "",
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: two tabs retain their own input and require an explicit read of the other complete copy"
+    },
+    {
+      "id": "6c12604276f29de87e24-61e746e37b77589d2288",
+      "projectId": "",
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: unavailable browser storage protects internal subject changes until the latest complete input is downloaded"
+    },
+    {
+      "id": "6c12604276f29de87e24-433553b86df3fccedaca",
+      "projectId": "",
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: the report creates a dual-source plan and the actual child opens teaching while the guardian keeps a read-only view"
+    },
+    {
+      "id": "c17899512a626414fa68-4ec260ee5d51c42734a5",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: opens the actual frozen source directly without creating a conversation or sending a question"
+    },
+    {
+      "id": "c17899512a626414fa68-335dc49562fc4115ba42",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: a cited answer exposes its source and returns to its complete draft and original message"
+    },
+    {
+      "id": "c17899512a626414fa68-e90a4004bf2ebf4ed791",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: narrow source views retain every table cell and original teaching code without running it"
+    },
+    {
+      "id": "c17899512a626414fa68-4be3d180a76f39d796b5",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: a different account cannot retain source content or cause a conversation post"
+    },
+    {
+      "id": "c17899512a626414fa68-c0298626a7a8ebd99029",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: source return locates an original answer outside the newest25 messages"
+    },
+    {
+      "id": "c17899512a626414fa68-6966bf4e927ee4d7bcca",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: primary unit entry opens its authorized teaching context without a classroom session at390"
+    },
+    {
+      "id": "c17899512a626414fa68-94f22f5f3fe02ed07149",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: primary unit entry opens its authorized teaching context without a classroom session at768"
+    },
+    {
+      "id": "c17899512a626414fa68-c2ba3bd9735b6447e264",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: primary unit entry opens its authorized teaching context without a classroom session at880"
+    },
+    {
+      "id": "c17899512a626414fa68-04cdd1fbca53da78a426",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: primary unit entry opens its authorized teaching context without a classroom session at1440"
+    },
+    {
+      "id": "c17899512a626414fa68-f5e9c184c982bf128d61",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: material lesson entry opens actual safe teaching and its published scope at390"
+    },
+    {
+      "id": "c17899512a626414fa68-1478417f389c68753449",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: material lesson entry opens actual safe teaching and its published scope at768"
+    },
+    {
+      "id": "c17899512a626414fa68-30149e41d3b10084437f",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: material lesson entry opens actual safe teaching and its published scope at880"
+    },
+    {
+      "id": "c17899512a626414fa68-3ae0d026886d848dc214",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: material lesson entry opens actual safe teaching and its published scope at1440"
+    },
+    {
+      "id": "c17899512a626414fa68-78469f7c00184861e4ad",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: oversized full teaching preserves the complete question and copies it only into explicitly selected detail"
+    },
+    {
+      "id": "c17899512a626414fa68-9d3c6d74e1a015d83d68",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: an existing range draft is preserved until the original question copy is explicitly adopted"
+    },
+    {
+      "id": "c17899512a626414fa68-4557b7c2e90d2fe70f9e",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: learner switching and source scope mismatch hide the original content until returning to its actual profile"
+    },
+    {
+      "id": "c17899512a626414fa68-b869ffc89d36766f5e2e",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: current author draft becomes an original read-only scope on publication and keeps its question"
+    },
+    {
+      "id": "c17899512a626414fa68-ff039df34864ecc35424",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: actual learning-code student opens published courses and exits to own learning with its draft intact"
+    },
+    {
+      "id": "c17899512a626414fa68-cd9214fc7f78ceb77b43",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: real assessment beginning after entry blocks a new model command and preserves the original student question"
+    },
+    {
+      "id": "c17899512a626414fa68-9286f6b84b5235fee8ff",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: no-fingerprint student entry during an existing assessment offers its exact return without opening a chat"
+    },
+    {
+      "id": "c17899512a626414fa68-534b396c6a2a630046cc",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: material tools preserve the authoritative scope and draft through refresh and planner return"
+    },
+    {
+      "id": "c17899512a626414fa68-35fef6a516352acf721c",
+      "projectId": "",
+      "file": "course-assistant.spec.ts",
+      "title": "course assistant: closing a pending range preflight ignores its late response and restores keyboard focus"
+    },
+    {
+      "id": "abda01872ccea40941f1-19506bf959544330abf1",
+      "projectId": "",
+      "file": "course-builder.spec.ts",
+      "title": "blueprint supports goal selection, review, edit and cancellation without creating a course"
+    },
+    {
+      "id": "abda01872ccea40941f1-bc18a86b2306d46ebb1b",
+      "projectId": "",
+      "file": "course-builder.spec.ts",
+      "title": "a lost confirmation response can be retried with the same receipt and saves the reviewed pace"
+    },
+    {
+      "id": "abda01872ccea40941f1-da5147f51d8d6b4eb717",
+      "projectId": "",
+      "file": "course-builder.spec.ts",
+      "title": "changed learning scope invalidates confirmation and can be refreshed without losing the goal"
+    },
+    {
+      "id": "482cd32fe65bc4a728fe-16f1bb094b5bab554b4f",
+      "projectId": "",
+      "file": "course-library.spec.ts",
+      "title": "course filters use actual reading states, combine and restore through reload and browser history"
+    },
+    {
+      "id": "482cd32fe65bc4a728fe-6a72e5b15c5d657af57d",
+      "projectId": "",
+      "file": "course-library.spec.ts",
+      "title": "adult outline, unit controls and classroom exit retain course-library conditions"
+    },
+    {
+      "id": "482cd32fe65bc4a728fe-cae9e98962708aa548e2",
+      "projectId": "",
+      "file": "course-library.spec.ts",
+      "title": "primary course and approved classroom return to the original filtered course and unit"
+    },
+    {
+      "id": "c9c2db0eb3badac57056-19117ac9ad88d5b24369",
+      "projectId": "",
+      "file": "course-panels.spec.ts",
+      "title": "course panels: references and all activities preserve the unit outline, complete titles and keyboard focus at 390"
+    },
+    {
+      "id": "c9c2db0eb3badac57056-77de9197fe80a6b1d6e1",
+      "projectId": "",
+      "file": "course-panels.spec.ts",
+      "title": "course panels: references and all activities preserve the unit outline, complete titles and keyboard focus at 768"
+    },
+    {
+      "id": "c9c2db0eb3badac57056-e60392b4ce18662814a2",
+      "projectId": "",
+      "file": "course-panels.spec.ts",
+      "title": "course panels: references and all activities preserve the unit outline, complete titles and keyboard focus at 1280"
+    },
+    {
+      "id": "c9c2db0eb3badac57056-20a8615a2735ec27b0d4",
+      "projectId": "",
+      "file": "course-panels.spec.ts",
+      "title": "course panels: references and all activities preserve the unit outline, complete titles and keyboard focus at 1440"
+    },
+    {
+      "id": "c9c2db0eb3badac57056-a5fff634d49fc3b18911",
+      "projectId": "",
+      "file": "course-panels.spec.ts",
+      "title": "course panels: a cross-unit practice returns to its original panel and reopens the exact first answer after refresh"
+    },
+    {
+      "id": "c9c2db0eb3badac57056-eb61f479836640f5162b",
+      "projectId": "",
+      "file": "course-panels.spec.ts",
+      "title": "course panels: the actual cross-unit project returns to the same course panel and target unit"
+    },
+    {
+      "id": "c9c2db0eb3badac57056-d6fcfb5447b7e4233552",
+      "projectId": "",
+      "file": "course-panels.spec.ts",
+      "title": "course panels: the actual cross-unit check keeps its unit, original session and unanswered return after refresh"
+    },
+    {
+      "id": "d7b1fb70b0897e20a4a5-ee0cb2e1ef59057936b0",
+      "projectId": "",
+      "file": "course-project.spec.ts",
+      "title": "project stages save artifacts, evidence and self-assessment; immutable submissions remain available after revisions"
+    },
+    {
+      "id": "d7b1fb70b0897e20a4a5-27e354f7780a912aad8e",
+      "projectId": "",
+      "file": "course-project.spec.ts",
+      "title": "a lost save response replays the same request; a stale page preserves local input and can recover"
+    },
+    {
+      "id": "d7b1fb70b0897e20a4a5-991e7226399f8994b0d9",
+      "projectId": "",
+      "file": "course-project.spec.ts",
+      "title": "unsaved-stage navigation asks to preserve work and unavailable AI leaves the saved artifact usable"
+    },
+    {
+      "id": "d7b1fb70b0897e20a4a5-855dee9416bbbbe03569",
+      "projectId": "",
+      "file": "course-project.spec.ts",
+      "title": "a guardian reviews a learner submission in the curriculum project workspace and the learner keeps its version"
+    },
+    {
+      "id": "d7b1fb70b0897e20a4a5-2d9a844a8beec047d452",
+      "projectId": "",
+      "file": "course-project.spec.ts",
+      "title": "all five adult projects complete their three stages and can cite earlier immutable artifacts"
+    },
+    {
+      "id": "be2077bf69e80aa3b3ad-904d39e0c722bce49f08",
+      "projectId": "",
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: original plan, explicit time and budget confirmation fit at 320"
+    },
+    {
+      "id": "be2077bf69e80aa3b3ad-cfac529d1da3cac99c5b",
+      "projectId": "",
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: original plan, explicit time and budget confirmation fit at 390"
+    },
+    {
+      "id": "be2077bf69e80aa3b3ad-87ab52781cd92bb3e6c5",
+      "projectId": "",
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: original plan, explicit time and budget confirmation fit at 768"
+    },
+    {
+      "id": "be2077bf69e80aa3b3ad-f59a3173a14e89e84478",
+      "projectId": "",
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: original plan, explicit time and budget confirmation fit at 1440"
+    },
+    {
+      "id": "be2077bf69e80aa3b3ad-43a670782d5c3df60630",
+      "projectId": "",
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: an unknown original confirmation restores its exact complete command after reload without another event"
+    },
+    {
+      "id": "be2077bf69e80aa3b3ad-59a77851b2edac8112d0",
+      "projectId": "",
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: actual other-subject occupied minutes block the day budget and a late overlap keeps the original selection"
+    },
+    {
+      "id": "be2077bf69e80aa3b3ad-36adafe0e8fbcc52789a",
+      "projectId": "",
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: unavailable storage downloads the entire schedule command before any confirmation"
+    },
+    {
+      "id": "be2077bf69e80aa3b3ad-e8dc06fea01b09090ee5",
+      "projectId": "",
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: two actual tabs keep separate full choices and a losing confirmation cannot borrow the winners original receipt"
+    },
+    {
+      "id": "be2077bf69e80aa3b3ad-8d30e0ac7509a100e324",
+      "projectId": "",
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: an actual missing DST minute is blocked and a repeated minute requires an explicit real offset"
+    },
+    {
+      "id": "3c0d3d14321d95f6e6bc-f47ffb03499c291ff045",
+      "projectId": "",
+      "file": "guidance-model.spec.ts",
+      "title": "the original rule plan stays usable and an explicitly reviewed model description changes only its text"
+    },
+    {
+      "id": "3c0d3d14321d95f6e6bc-0a434b1cf80ab5d60eeb",
+      "projectId": "",
+      "file": "guidance-model.spec.ts",
+      "title": "a dropped plan creation acknowledgement recovers the original request without making another plan"
+    },
+    {
+      "id": "3c0d3d14321d95f6e6bc-40a86449e63160c394f4",
+      "projectId": "",
+      "file": "guidance-model.spec.ts",
+      "title": "a dropped suggestion creation acknowledgement survives reload and restores the same saved task"
+    },
+    {
+      "id": "3c0d3d14321d95f6e6bc-fe3db73b17e47b12bc64",
+      "projectId": "",
+      "file": "guidance-model.spec.ts",
+      "title": "a dropped adoption acknowledgement replays its original command and leaves exactly one adopted revision"
+    },
+    {
+      "id": "3c0d3d14321d95f6e6bc-663544b4a5a271b2804d",
+      "projectId": "",
+      "file": "guidance-model.spec.ts",
+      "title": "cancel and retry preserve the original selected model and plan"
+    },
+    {
+      "id": "3c0d3d14321d95f6e6bc-8edd0a367aa1303601ba",
+      "projectId": "",
+      "file": "guidance-model.spec.ts",
+      "title": "invalid output cannot be adopted and a later explicit retry keeps the original evidence"
+    },
+    {
+      "id": "3c0d3d14321d95f6e6bc-5f6184790794e86de170",
+      "projectId": "",
+      "file": "guidance-model.spec.ts",
+      "title": "unavailable browser storage keeps the full original command downloadable"
+    },
+    {
+      "id": "3c0d3d14321d95f6e6bc-f5bf0ce8d0a8eaecb732",
+      "projectId": "",
+      "file": "guidance-model.spec.ts",
+      "title": "a manually changed plan refuses an older completed suggestion and preserves its original command"
+    },
+    {
+      "id": "3c0d3d14321d95f6e6bc-50abc5c900c140bc6f17",
+      "projectId": "",
+      "file": "guidance-model.spec.ts",
+      "title": "a cancelled local wait resumes the server record after navigating away and back"
+    },
+    {
+      "id": "3c0d3d14321d95f6e6bc-f511bd31b83ad1f01da3",
+      "projectId": "",
+      "file": "guidance-model.spec.ts",
+      "title": "forged cross-account cached commands are ignored and never replayed"
+    },
+    {
+      "id": "3c0d3d14321d95f6e6bc-cb3635a878e6888b4b27",
+      "projectId": "",
+      "file": "guidance-model.spec.ts",
+      "title": "another account cannot open or adopt the prior family guidance"
+    },
+    {
+      "id": "3c0d3d14321d95f6e6bc-ff497381d780845d494a",
+      "projectId": "",
+      "file": "guidance-model.spec.ts",
+      "title": "guidance comparisons and actions fit at 390"
+    },
+    {
+      "id": "3c0d3d14321d95f6e6bc-73cc69e6a2c030393526",
+      "projectId": "",
+      "file": "guidance-model.spec.ts",
+      "title": "guidance comparisons and actions fit at 768"
+    },
+    {
+      "id": "3c0d3d14321d95f6e6bc-aa51ae008984808d5406",
+      "projectId": "",
+      "file": "guidance-model.spec.ts",
+      "title": "guidance comparisons and actions fit at 1440"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-5d58335da9f7ed33ceaf",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: the actual frozen goals, original estimates and self-reports stay together when selecting a point"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-425a3d22df6395bda1cc",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: skipped evidence stays unknown and a point survives reload, back and forward"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-cb2845f4a9a123762e39",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: an older matching plan is found behind a newer unrelated report and opens its durable plan route"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-5cee916f83ecfd983644",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: failed plan reads remain unknown until explicit retry returns the actual matching plan"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-4e3065f45fc4bb0f07c9",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: a controlled missing plan hides its stale actions while the report remains readable and retry can recover"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-3172fce68f2816264b59",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: late proposed-plan reviews cannot erase the real schedule after activation and refresh"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-2dbe7c873d90b635f79a",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: a controlled legacy definition and foreign point never create a current verification"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-3dcf02e2d0acfdf12e33",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: the actual student role reads its report without management actions and grant revocation ends the private view"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-615968e787c9c1cb1f81",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: invalidating the actual browser login session ends the private report on its next read"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-f876c859c7f2332bbebf",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: actual submitted short-answer expressions awaiting review do not become scored failure or a zero estimate"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-6a06401ed35097127093",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: a controlled cause timeline remains complete and terminal versus reopened actions stay with their point"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-1b3707c471ae996dd79c",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: complete point reading and keyboard controls fit 390"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-d385056ceaa20b8e72e9",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: complete point reading and keyboard controls fit 768"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-b8f522b9b5d11d5e6432",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: complete point reading and keyboard controls fit 1280"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-a9048a31513ddfc7bee2",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: complete point reading and keyboard controls fit 1440"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-41d228d41eb8f5c63c5e",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: a lost reanalysis receipt survives reload with the exact original command"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-2a2a4c7bdfd6052bdd61",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: a version conflict archives its original command before a read-only latest-report check"
+    },
+    {
+      "id": "ab1da755d673683f3ee2-101ca9a308667086d705",
+      "projectId": "",
+      "file": "knowledge-report.spec.ts",
+      "title": "knowledge report: unavailable command storage prevents a new mutation while preserving the report"
+    },
+    {
+      "id": "33e947f354d0605fb8f9-e598dc5597e16df6e440",
+      "projectId": "",
+      "file": "learning-home.spec.ts",
+      "title": "learning home offers clear entry and works on phone, tablet and desktop"
+    },
+    {
+      "id": "33e947f354d0605fb8f9-9ce24100f93cda9ebdbe",
+      "projectId": "",
+      "file": "learning-home.spec.ts",
+      "title": "adult can enter a course without creating a child and restore its classroom"
+    },
+    {
+      "id": "33e947f354d0605fb8f9-ae3683f4363604ce443e",
+      "projectId": "",
+      "file": "learning-home.spec.ts",
+      "title": "parent selection, navigation, refresh, history and invalid profile recovery keep context"
+    },
+    {
+      "id": "33e947f354d0605fb8f9-6e5c69056e3d8af2ccf7",
+      "projectId": "",
+      "file": "learning-home.spec.ts",
+      "title": "a delayed old selection and a failed request cannot replace the current child"
+    },
+    {
+      "id": "33e947f354d0605fb8f9-23942754ffea441b3b9b",
+      "projectId": "",
+      "file": "learning-home.spec.ts",
+      "title": "corrupt or different-account cached choices cannot select another profile"
+    },
+    {
+      "id": "33e947f354d0605fb8f9-1019c124e4a8e0d2cfcf",
+      "projectId": "",
+      "file": "learning-home.spec.ts",
+      "title": "a student resumes the exact saved assessment and sees only their profile"
+    },
+    {
+      "id": "8380aeb01eb0e1b51ecf-a3d3fac28e911593a621",
+      "projectId": "",
+      "file": "original-teaching-fonts.spec.ts",
+      "title": "original fonts: real captured Latin and Chinese faces decode before a board is measured, played or exported"
+    },
+    {
+      "id": "8380aeb01eb0e1b51ecf-75665c0a7a92d36b1d89",
+      "projectId": "",
+      "file": "original-teaching-fonts.spec.ts",
+      "title": "original fonts: a failed captured glyph never starts playback and an explicit retry recovers the same board"
+    },
+    {
+      "id": "8380aeb01eb0e1b51ecf-577d5013df9ed2bf65b0",
+      "projectId": "",
+      "file": "original-teaching-fonts.spec.ts",
+      "title": "teaching frame: moving to another scene retains already taught notes, excludes future scenes and keeps one full caption"
+    },
+    {
+      "id": "8380aeb01eb0e1b51ecf-8603666e910f7e0f7d3a",
+      "projectId": "",
+      "file": "original-teaching-fonts.spec.ts",
+      "title": "teaching shell: actual original chrome, font switch and return fit 390"
+    },
+    {
+      "id": "8380aeb01eb0e1b51ecf-067b5d2f7f714941bb08",
+      "projectId": "",
+      "file": "original-teaching-fonts.spec.ts",
+      "title": "teaching shell: actual original chrome, font switch and return fit 768"
+    },
+    {
+      "id": "8380aeb01eb0e1b51ecf-5549cc0aa6895bc70821",
+      "projectId": "",
+      "file": "original-teaching-fonts.spec.ts",
+      "title": "teaching shell: actual original chrome, font switch and return fit 1280"
+    },
+    {
+      "id": "8380aeb01eb0e1b51ecf-42c781ac9449d3c64add",
+      "projectId": "",
+      "file": "original-teaching-fonts.spec.ts",
+      "title": "original fonts: captured math faces stay isolated and the real formula editor decodes its own local font bytes after a board closes"
+    },
+    {
+      "id": "8380aeb01eb0e1b51ecf-ba53d80f907a97bf62c1",
+      "projectId": "",
+      "file": "original-teaching-fonts.spec.ts",
+      "title": "original fonts: assistant shares the controlled registry without duplicate board faces and prepares its real UI fonts"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-a95b6894a03833eb5a08",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: actual original-paper entry keeps the first answer, explicit reference, correction and completed review"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-f2d79d835b5d4d62f45c",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: a lost first-answer receipt recovers the same command after actual refresh without submitting twice"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-0dca4094cda8adfed5f5",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: a lost creation acknowledgment restores the original started session with read-only receipt checks"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-f4ff7cd0fa4ce98b05ac",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "recovery: paper practice offline draft saving and a refresh retain the full original command until explicit retry"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-676800933f29efe0d2fb",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: two actual pages preserve different local drafts and resolve a server conflict without overwriting the other copy"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-12f4007736eeb7284f44",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: rejected local persistence sends no answer until a real recovery download and explicit protection acknowledgment"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-3ee5cc57be053dfc3b7f",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: an actual original PDF stays an unsplit document with its own persistent response"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-f82a30c183af610ae2fc",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: actual publication withdrawal hides the frozen question and reference while retaining the learner response"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-ff4364367f37ae0ac02f",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: completed review permits explicit reference reading without changing the original response or reopening correction"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-dd04e44038bc425bddbb",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 390"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-faeeba7e4c2c2dac8b4a",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 768"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-9b122ff6dc6d31673125",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 1440"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-cbf692c0749a27bbe9b7",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: selected positions from two actual papers remain in the cross-paper basket and return to their original anchor"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-4c2c7ad8f87fc86347d9",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "recovery: paper practice correction drafts stay with their own item through rapid review, navigation and a real reload"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-1f88c663cf56a24966f4",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: delayed cross-item reads cannot replace the current question after actual browser back and forward"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-d5be6cbbc721c26b2f4f",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: metadata refreshes keep the same original PDF frame through submit and explicit reference reading"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-98787ca76322a7417d6b",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: recovery files from another account, session or item never replace the current private draft"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-ead3c17f3fa628dc67c2",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: a real learning-code student writes only their own record and loses the private workspace after grant revocation"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-f5276899ceea877234f8",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: an actual login logout and another family cannot reuse a private record or its visible answer"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-72c1b795322a38517d4e",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: an expired original preview can be safely retained and previewed again without duplicating a started record"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-56ee185176588adc1a17",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "recovery: paper practice retains an uncommitted original start through three actual refreshes before one explicit retry"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-813baf6ab4983b3860f1",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: a completed first answer leads through real reflection, actual review and the stable local-date calendar"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-0410afcb11ed80c2ffc4",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "recovery: paper review: a lost organization receipt is recovered after three reloads without duplicating history or clearing later reflection"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-63773271fe730f2137cc",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: two real pages compare conflicting reflection drafts before saving a new command"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-f0233254c53b9b9f40a5",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: current item, full reflection and protected calendar fit 390"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-d9d6325ab58b2cd48236",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: current item, full reflection and protected calendar fit 768"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-a5befd9c22abe393ef10",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: current item, full reflection and protected calendar fit 1440"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-192e5463b536f8e37978",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review next: an original redo retains its source and recovers the exact new attempt after a lost creation receipt"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-869da8230954541368db",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review next: a learner confirms scope, restores a lost independent preview and starts only the frozen new group"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-320c828fa4cb406b7b58",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 390"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-baaf3f93edbed6e973e5",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 768"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-9402518b61ded0537d11",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 1440"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-2195418d4f50b21355a0",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: changing the actual actor scope fences a late private response and preserves an explicit read failure"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-2fb07ff27a30b7de70d3",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review next: a late recovery-file read cannot replace the subsequently confirmed original preview"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-0302fcdc8a49ae2bf477",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review next: repeating the owned fixture withdraws the previous published candidate before creating its next reviewed version"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-01d54efb592f751202cf",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review next: denied storage requires a real original file and rejects another owner before explicit exact-key preview recovery"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-835846768fd47488bafb",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: actual large history is refused before truncation and the complete earlier history remains downloadable"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-72aaa7f8697af7916df4",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: an adult without a child keeps the actual all-day date, original review and calendar return through reloads"
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-1d2219680bd0fd3913c4",
+      "projectId": "",
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: an adult without a child keeps the actual all-day date, original review and calendar return through reloads"
+    },
+    {
+      "id": "78dcf7253e3d2dad0433-6de9e5f12cfd5c892a52",
+      "projectId": "",
+      "file": "pdf-material.spec.ts",
+      "title": "interrupted PDF chunks survive reload, a lost completion acknowledgment recovers one material and its later pages load lazily"
+    },
+    {
+      "id": "78dcf7253e3d2dad0433-c568544b83fdb848af1a",
+      "projectId": "",
+      "file": "pdf-material.spec.ts",
+      "title": "page processing cancellation retains its checkpoint and retry restores the task instead of publishing the cancelled attempt"
+    },
+    {
+      "id": "78dcf7253e3d2dad0433-adce21d2d7e68868ca90",
+      "projectId": "",
+      "file": "pdf-material.spec.ts",
+      "title": "the PDF workbench uses the same long upload and loads current-page text and structures without fetching the whole book"
+    },
+    {
+      "id": "78dcf7253e3d2dad0433-17a56f46e7b93184a89a",
+      "projectId": "",
+      "file": "pdf-material.spec.ts",
+      "title": "file checks recover lost acknowledgments, regenerate missing pages and honestly report unavailable original bytes"
+    },
+    {
+      "id": "78dcf7253e3d2dad0433-9983f30504c5f48108ce",
+      "projectId": "",
+      "file": "pdf-material.spec.ts",
+      "title": "the original PDF workbench repairs and cancels through the same persistent flow"
+    },
+    {
+      "id": "7d8d40e543bd35bd8e59-ca5e3bf7617bce1e6882",
+      "projectId": "",
+      "file": "practice-reference.spec.ts",
+      "title": "reference practice: explicit frozen media, three-column answer, readable full feedback and no unrelated next-question image"
+    },
+    {
+      "id": "7d8d40e543bd35bd8e59-66be18c12c815b3d9c0b",
+      "projectId": "",
+      "file": "practice-reference.spec.ts",
+      "title": "reference practice: multiple choice and local assistant preserve complete input and selection at 390"
+    },
+    {
+      "id": "7d8d40e543bd35bd8e59-43419c05e1f994586702",
+      "projectId": "",
+      "file": "practice-reference.spec.ts",
+      "title": "reference practice: multiple choice and local assistant preserve complete input and selection at 768"
+    },
+    {
+      "id": "7d8d40e543bd35bd8e59-71fa6cfec53ae26107f8",
+      "projectId": "",
+      "file": "practice-reference.spec.ts",
+      "title": "reference practice: multiple choice and local assistant preserve complete input and selection at 1280"
+    },
+    {
+      "id": "7d8d40e543bd35bd8e59-09f2bf5c8e69fde7b323",
+      "projectId": "",
+      "file": "practice-reference.spec.ts",
+      "title": "reference practice: multiple choice and local assistant preserve complete input and selection at 1440"
+    },
+    {
+      "id": "3530775f769d4e233761-95572ea67c799a12702b",
+      "projectId": "",
+      "file": "product-smoke.spec.ts",
+      "title": "public product shell remains usable at phone, tablet and desktop widths"
+    },
+    {
+      "id": "3530775f769d4e233761-81825c55c5250f56124f",
+      "projectId": "",
+      "file": "product-smoke.spec.ts",
+      "title": "a touch and keyboard user can enter the family access flow"
+    },
+    {
+      "id": "3530775f769d4e233761-2d7276792832876c3ef3",
+      "projectId": "",
+      "file": "product-smoke.spec.ts",
+      "title": "a parent can create a learning profile and complete an evidence-limited assessment"
+    },
+    {
+      "id": "3530775f769d4e233761-ca37cf930cc8b6e5cde7",
+      "projectId": "",
+      "file": "product-smoke.spec.ts",
+      "title": "an approved fraction teaching card renders a safe step-by-step visual"
+    },
+    {
+      "id": "3530775f769d4e233761-84b77675197b4e6d1a69",
+      "projectId": "",
+      "file": "product-smoke.spec.ts",
+      "title": "an administrator can reach the curriculum review workbench"
+    },
+    {
+      "id": "c867b9a9c00d0fa73cdd-eb03604899bc5312807c",
+      "projectId": "",
+      "file": "project-files.spec.ts",
+      "title": "actual file versions remain frozen through submission, download, nested preview, editing and responsive layouts"
+    },
+    {
+      "id": "c867b9a9c00d0fa73cdd-cc37afc5c07ff088c87d",
+      "projectId": "",
+      "file": "project-files.spec.ts",
+      "title": "a dropped second chunk resumes the exact selected image after refresh and lost complete acknowledgments do not duplicate it"
+    },
+    {
+      "id": "c867b9a9c00d0fa73cdd-7884f473fc904e1444a4",
+      "projectId": "",
+      "file": "project-files.spec.ts",
+      "title": "real PDF previews turn individual pages and closing a playing recording releases its actual audio element"
+    },
+    {
+      "id": "c867b9a9c00d0fa73cdd-ea271979b824d84f7c85",
+      "projectId": "",
+      "file": "project-files.spec.ts",
+      "title": "an oversized saved project keeps its full text while the learner explicitly narrows the AI advice scope"
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-e7485a181ff5672fe9e2",
+      "projectId": "",
+      "file": "project-teaching.spec.ts",
+      "title": "guided original fields save before moving, keep the full work and submit one frozen stage"
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-cffae01eb681c8045d4c",
+      "projectId": "",
+      "file": "project-teaching.spec.ts",
+      "title": "an unsaved local field survives reload and a different tab requires an explicit comparison before saving"
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-b9c3c5bf3908bff995b3",
+      "projectId": "",
+      "file": "project-teaching.spec.ts",
+      "title": "independent unsaved tab copies survive reload even when a duplicated tab inherits sessionStorage"
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-d729d33dd77546ac9098",
+      "projectId": "",
+      "file": "project-teaching.spec.ts",
+      "title": "hard closing without beforeunload preserves the input effect and reopening offers an explicit copy preview"
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-e39101d58468f7d5c1b0",
+      "projectId": "",
+      "file": "project-teaching.spec.ts",
+      "title": "two pending original commands use separate slots and confirming one preserves the other"
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-cc7cc26cc8c0d3aed76f",
+      "projectId": "",
+      "file": "project-teaching.spec.ts",
+      "title": "unavailable project storage keeps the live input and offers a full download"
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-b640b460f43f5f723a3a",
+      "projectId": "",
+      "file": "project-teaching.spec.ts",
+      "title": "a mismatched owner draft is preserved but never restored or offered as another copy"
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-852f01ffec8fc961c376",
+      "projectId": "",
+      "file": "project-teaching.spec.ts",
+      "title": "observed denied teaching clears old project content and narration"
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-459196cf079d3becf9ad",
+      "projectId": "",
+      "file": "project-teaching.spec.ts",
+      "title": "observed denied narration clears old project content and narration"
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-45801a4d62561871a376",
+      "projectId": "",
+      "file": "project-teaching.spec.ts",
+      "title": "a lost save reply survives reload, reads the same actor receipt and preserves later local edits"
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-6195cd7a27d58c17415e",
+      "projectId": "",
+      "file": "project-teaching.spec.ts",
+      "title": "a lost submission reply reloads its original receipt without creating a second frozen submission"
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-c73e18b60048f06437ea",
+      "projectId": "",
+      "file": "project-teaching.spec.ts",
+      "title": "an unavailable step link returns to the frozen stage introduction without writing progress"
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-10f4978ee912be5b238a",
+      "projectId": "",
+      "file": "project-teaching.spec.ts",
+      "title": "project teaching, original fields and controls fit at 390"
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-c8256ef4b75579c7a4fa",
+      "projectId": "",
+      "file": "project-teaching.spec.ts",
+      "title": "project teaching, original fields and controls fit at 768"
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-e6d718da7cace552ca55",
+      "projectId": "",
+      "file": "project-teaching.spec.ts",
+      "title": "project teaching, original fields and controls fit at 1440"
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-8d681d1af0b9df7a25cc",
+      "projectId": "",
+      "file": "project-teaching.spec.ts",
+      "title": "project audio decodes original samples, does not save progress and stops when the selected step changes"
+    },
+    {
+      "id": "2a2d810d70c0bcdef190-05ae90e6c406886adbed",
+      "projectId": "",
+      "file": "reference-navigation.spec.ts",
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 390"
+    },
+    {
+      "id": "2a2d810d70c0bcdef190-507092b920d9cdc66ee9",
+      "projectId": "",
+      "file": "reference-navigation.spec.ts",
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 768"
+    },
+    {
+      "id": "2a2d810d70c0bcdef190-63d8469320787683247e",
+      "projectId": "",
+      "file": "reference-navigation.spec.ts",
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1280"
+    },
+    {
+      "id": "2a2d810d70c0bcdef190-7260473487ac8a254a1a",
+      "projectId": "",
+      "file": "reference-navigation.spec.ts",
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1440"
+    },
+    {
+      "id": "2a2d810d70c0bcdef190-b700b5ee2a8414019696",
+      "projectId": "",
+      "file": "reference-navigation.spec.ts",
+      "title": "reference navigation: a real saved classroom opens the exact original session and position from the course library"
+    },
+    {
+      "id": "2a2d810d70c0bcdef190-4c12fc588e3014c0250a",
+      "projectId": "",
+      "file": "reference-navigation.spec.ts",
+      "title": "reference navigation: resizing an open drawer restores usable desktop controls and releases the original background"
+    },
+    {
+      "id": "2a2d810d70c0bcdef190-95a9a00c2a2425581f35",
+      "projectId": "",
+      "file": "reference-navigation.spec.ts",
+      "title": "reference navigation: blocked preference storage keeps current controls usable without inventing a saved preference"
+    },
+    {
+      "id": "2a2d810d70c0bcdef190-66be3a745b22484be6c4",
+      "projectId": "",
+      "file": "reference-navigation.spec.ts",
+      "title": "reference navigation: a mobile drawer hands focus to the real course blueprint and returns to its menu trigger after closing"
+    },
+    {
+      "id": "14fb6c54150c984cbce0-d58d30394473ccf2a126",
+      "projectId": "",
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 320"
+    },
+    {
+      "id": "14fb6c54150c984cbce0-0ca4234a2330bc4a950e",
+      "projectId": "",
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 390"
+    },
+    {
+      "id": "14fb6c54150c984cbce0-a4fc41b1fa89d6d6b7f5",
+      "projectId": "",
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 768"
+    },
+    {
+      "id": "14fb6c54150c984cbce0-039f0e8dbc8fb5705266",
+      "projectId": "",
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 1440"
+    },
+    {
+      "id": "14fb6c54150c984cbce0-060b0b50bd28c8f9ff9c",
+      "projectId": "",
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: a lost exact original classroom time receipt survives reload and cannot move the original recorded time"
+    },
+    {
+      "id": "14fb6c54150c984cbce0-8c0d0e14c761832cbea5",
+      "projectId": "",
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: disabled storage preserves the exact classroom time command and requires its full downloaded copy before writing"
+    },
+    {
+      "id": "87dc6410287ba28c4727-e8d58d3cf7fa02961df5",
+      "projectId": "",
+      "file": "source-course-check.spec.ts",
+      "title": "one confirmed lesson prepares one explicit target and restores its independent first answer and frozen source"
+    },
+    {
+      "id": "87dc6410287ba28c4727-f3da16ee3ed57cce1fc8",
+      "projectId": "",
+      "file": "source-course-check.spec.ts",
+      "title": "source check keeps independent first answers, frozen sources and exact course return at 390"
+    },
+    {
+      "id": "87dc6410287ba28c4727-b2c58411dcb06caf3c7b",
+      "projectId": "",
+      "file": "source-course-check.spec.ts",
+      "title": "source check keeps independent first answers, frozen sources and exact course return at 768"
+    },
+    {
+      "id": "87dc6410287ba28c4727-a43c23a271f015d180a7",
+      "projectId": "",
+      "file": "source-course-check.spec.ts",
+      "title": "source check keeps independent first answers, frozen sources and exact course return at 1440"
+    },
+    {
+      "id": "87dc6410287ba28c4727-08bae9b8a98fccba6536",
+      "projectId": "",
+      "file": "source-course-check.spec.ts",
+      "title": "recovery: lost prepare and confirmation replies replay exact original commands after refresh without exposing answers"
+    },
+    {
+      "id": "87dc6410287ba28c4727-e9bfd11820992dba6275",
+      "projectId": "",
+      "file": "source-course-check.spec.ts",
+      "title": "recovery: explicit authoring keeps a dirty local copy and replays a lost edit without replacing the original request or review"
+    },
+    {
+      "id": "87dc6410287ba28c4727-90df4613a6821aee5a1d",
+      "projectId": "",
+      "file": "source-course-check.spec.ts",
+      "title": "uncertain review requires an explicit acknowledgement and cancellation retries only the original model"
+    },
+    {
+      "id": "87dc6410287ba28c4727-7d0fc63e124122b3642b",
+      "projectId": "",
+      "file": "source-course-check.spec.ts",
+      "title": "recovery: shared tabs block unknown commands while another device can edit before historical replay"
+    },
+    {
+      "id": "87dc6410287ba28c4727-4fe07803bb7cbfdd6cf5",
+      "projectId": "",
+      "file": "source-course-check.spec.ts",
+      "title": "an unavailable local draft store keeps the editor open and never promises a saved recoverable copy"
+    },
+    {
+      "id": "87dc6410287ba28c4727-ee25a3706d8e7f9da920",
+      "projectId": "",
+      "file": "source-course-check.spec.ts",
+      "title": "recovery: a rejected concurrent edit keeps both drafts until the user explicitly compares and rebases"
+    },
+    {
+      "id": "a4cae738131d1ae89e2b-f2175de9d306382cf3f9",
+      "projectId": "",
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "edit and publish a revision, then explicitly resume the old version at its frozen line"
+    },
+    {
+      "id": "a4cae738131d1ae89e2b-ff6aa44fc944e312c0fc",
+      "projectId": "",
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "lost revision creation receipts survive refresh and recover the same draft with the original command"
+    },
+    {
+      "id": "a4cae738131d1ae89e2b-48fcfc8299f84f4e1b24",
+      "projectId": "",
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "archive, withdrawal reasons, restore, keyboard cancellation and responsive impact previews use real saved states"
+    },
+    {
+      "id": "a4cae738131d1ae89e2b-88cc9d94feed552fe799",
+      "projectId": "",
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "a lost publication reply recovers after refresh without another publication or another lesson version"
+    },
+    {
+      "id": "a4cae738131d1ae89e2b-909ff358c5c88c1d7949",
+      "projectId": "",
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "a stale publication preview reads the actual saved version before a new explicit confirmation"
+    },
+    {
+      "id": "a4cae738131d1ae89e2b-e7638106fe30d28dedf0",
+      "projectId": "",
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "stopping a lost publication wait preserves the committed command and ignores its late reply"
+    },
+    {
+      "id": "cced6230ebf2a519dcfa-cd72f1e1a7d0a9823b34",
+      "projectId": "",
+      "file": "source-course-long.spec.ts",
+      "title": "long text import, cancellable preflight, lost acknowledgment, original coverage and single-lesson authoring reach the classroom"
+    },
+    {
+      "id": "cced6230ebf2a519dcfa-71e75a59e8b40f771c9f",
+      "projectId": "",
+      "file": "source-course-long.spec.ts",
+      "title": "a long-source failure resumes saved stages across page reload and retains exact progress"
+    },
+    {
+      "id": "ca3f281aa3d97832c646-309acd5dc044d4e1c6ef",
+      "projectId": "",
+      "file": "source-course-project.spec.ts",
+      "title": "a published source course opens one real project, completes all frozen stages and returns to its original course"
+    },
+    {
+      "id": "ca3f281aa3d97832c646-f40a602dd154b4fc040d",
+      "projectId": "",
+      "file": "source-course-project.spec.ts",
+      "title": "a project URL bound to another source course clears the old work instead of silently changing the course"
+    },
+    {
+      "id": "ca3f281aa3d97832c646-2b645b83846c9a0ef623",
+      "projectId": "",
+      "file": "source-course-project.spec.ts",
+      "title": "source-course project entry and frozen objectives fit at 390"
+    },
+    {
+      "id": "ca3f281aa3d97832c646-562107329a246dca6ce3",
+      "projectId": "",
+      "file": "source-course-project.spec.ts",
+      "title": "source-course project entry and frozen objectives fit at 768"
+    },
+    {
+      "id": "ca3f281aa3d97832c646-4b89730c824b7ba2785e",
+      "projectId": "",
+      "file": "source-course-project.spec.ts",
+      "title": "source-course project entry and frozen objectives fit at 1440"
+    },
+    {
+      "id": "ca3f281aa3d97832c646-125e270c91c4f4ffbfc3",
+      "projectId": "",
+      "file": "source-course-project.spec.ts",
+      "title": "source reading, assisted practice and project draft return to their exact saved objects in one continuous journey"
+    },
+    {
+      "id": "ca3f281aa3d97832c646-bb85ba6e737669f9f560",
+      "projectId": "",
+      "file": "source-course-project.spec.ts",
+      "title": "returning from a course restores the personal project step and mode while an explicit URL takes priority"
+    },
+    {
+      "id": "ca3f281aa3d97832c646-5cddbb821b35b4b9a520",
+      "projectId": "",
+      "file": "source-course-project.spec.ts",
+      "title": "adult course journey keeps reading, unit check and project separate and resumes the same saved classroom"
+    },
+    {
+      "id": "ca3f281aa3d97832c646-b003db869f0cd28d1322",
+      "projectId": "",
+      "file": "source-course-project.spec.ts",
+      "title": "an entire adult unit retains every lesson, complete practice, unit check and all project submissions as separate facts"
+    },
+    {
+      "id": "73d7dca569d7b10f6464-1139edb033e9fb5ec95e",
+      "projectId": "",
+      "file": "source-course.spec.ts",
+      "title": "adult source selection, blueprint editing, lost confirmation, classroom practice and source return form a real persisted route"
+    },
+    {
+      "id": "73d7dca569d7b10f6464-fe6a79da87e0b808372f",
+      "projectId": "",
+      "file": "source-course.spec.ts",
+      "title": "in-flight cancellation and retry survive reload and never publish the cancelled attempt"
+    },
+    {
+      "id": "73d7dca569d7b10f6464-d0ae88e36b1ba237be32",
+      "projectId": "",
+      "file": "source-course.spec.ts",
+      "title": "lost generation acknowledgment is replayed and stale blueprint edits preserve local input without overwriting another page"
+    },
+    {
+      "id": "73d7dca569d7b10f6464-311ae6ac8705201bcb26",
+      "projectId": "",
+      "file": "source-course.spec.ts",
+      "title": "an adult can upload a PDF, inspect its real page and preserve selected page and language through generation"
+    },
+    {
+      "id": "73d7dca569d7b10f6464-90560b77e8ec8c0f262b",
+      "projectId": "",
+      "file": "source-course.spec.ts",
+      "title": "complete teaching edits survive section switches and a lost save, then reach the classroom with private answers"
+    },
+    {
+      "id": "73d7dca569d7b10f6464-99fd7e9903893babf84e",
+      "projectId": "",
+      "file": "source-course.spec.ts",
+      "title": "staged generation retains reviewed work through failure, retry and manuscript correction"
+    },
+    {
+      "id": "73d7dca569d7b10f6464-5f16e640f898d12ee67e",
+      "projectId": "",
+      "file": "source-course.spec.ts",
+      "title": "uncertain model checks remain visible through confirmation and retain private review details"
+    },
+    {
+      "id": "73d7dca569d7b10f6464-e1b93c0241af7789bd20",
+      "projectId": "",
+      "file": "source-course.spec.ts",
+      "title": "stale full manuscripts stay local through a public reload and offer an export before browser back"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-4d121785716d89a20757",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: directory opens a whole lecture in the independent assistant without starting a micro lesson"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-b3ae56726ffa8ea10a78",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at390"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-f95d2ac1baaecf712bc4",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at768"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-f5991ccec4a37e464bcf",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at880"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-511904f37439fbb155cc",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at1440"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-e47bc53e16690991c8f3",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: lecture removal, back and reload preserve separate unsent drafts without sending"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-c6ac78f8124eafdcc683",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: durable pending turn resumes after refresh with its original model"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-e0f44c612a64059a4b1d",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: a lost receipt is recovered with the original request and no duplicate post"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-4086d4a5f1618383f83e",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: a retained original version opens from the server without creating or resending a session · classroom-lecture-v1"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-91833c79d6f109e00eca",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: a retained original version opens from the server without creating or resending a session · classroom-lecture-v2"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-f88e1ff873945f1b1cb9",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: failed initialization after a child change cannot retain the previous active session"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-1fe029d625926b0c4360",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: read-only recovery preserves a cached pending command and identifies separately selected history"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-d641a4ef47123186db7d",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: an unavailable original still allows owner-only history reads without a session post"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-2816accfe7509faad95c",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: another account cannot open a retained version or find its private messages"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-6ea61d4cbec1c46c56d1",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: explicit cancellation and retry preserve one lecture request and the original model"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-27f65c742ec468ff30a5",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: changing the selected learner fences a late whiteboard preview and releases the new composer"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-3c938a041758b8b13b9d",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-navigation: lecture tools retain the original scope and draft through material refresh and planner return"
+    },
+    {
+      "id": "c6379daf62f330c6b22f-82da1af4482514c611ea",
+      "projectId": "",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-navigation: independent tools retain the original scope and draft through material refresh and planner return"
+    },
+    {
+      "id": "64bdea7002f9c9cea9f4-627c2448d2639098bb7a",
+      "projectId": "",
+      "file": "studio.spec.ts",
+      "title": "a parent can build and reopen an evidence-backed learning studio course"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-40b1cddf1306451e75c0",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: complete analysis, original input and unreviewed result at 390"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-4eaa7e8dc94e99b48cba",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: complete analysis, original input and unreviewed result at 768"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-3cb97389490d333f4b38",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: complete analysis, original input and unreviewed result at 1280"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-fd8aa9a7cd932516022c",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: bank preflight shows actual table and formula, freezing the server original version and structured answer"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-5bd725a8a760f9899293",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: hint failure stays explicit and a retry uses the frozen original model after changing the composer"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-9275e43b07b060c708cc",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: lost creation acknowledgement restores the same original command after reload without duplicate generation"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-0e7a7d54cb00fda55e54",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: two tabs retain their own complete drafts and copying another preserves the current version"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-0a69b6327774e23acf58",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: failed local storage blocks navigation and logout until the complete original input is downloaded"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-064a75580f738b1663b6",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: a provider finishing after cancellation cannot publish its late result"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-bb4497e98f05d6350c77",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: cancellation acknowledgement loss recovers its original control key after reload"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-06cee0988e5a2a58c17a",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: a role revocation unloads private work and fences the late provider reply"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-b9b1217b9807dab88791",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: parent identity cannot read the admin workspace or load model generation controls"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-30c7bcf811b7e41ceedf",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: oversized original text is rejected without losing or truncating the form or making a provider call"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-8524a81a443e4840f4db",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: malformed structured work survives a reload and never gets silently converted into a score"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-25ceb77e3adfb213d6be",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: a stale cancellation preserves its command, reads the latest state explicitly and requires a new user action"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-9f7ae59e090cb93ddbd0",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: an unreadable original remains discoverable after two reloads and downloads byte for byte"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-c44125a59290a93b9908",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: an unknown control original remains discoverable across reloads and cannot execute as a command"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-5999f0b52d39f0dada7f",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: non-finite JSON in 待核对作答 stays original and cannot become an unknown null"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-05aa845626147e4c8033",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: non-finite JSON in 参考答案 stays original and cannot become an unknown null"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-c0f67782df04170e6aa9",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: non-finite JSON in 完整题目结构 JSON stays original and cannot become an unknown null"
+    },
+    {
+      "id": "31448ea25db9cfaf3694-bea078cf6ffef525fdad",
+      "projectId": "",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: non-finite JSON in 原答案结构 JSON stays original and cannot become an unknown null"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-1166db1cfa0f4e29f340",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "continuity: a confirmed adult topic also overlaps its adjacent WAV and preserves its frozen sentence identity"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-56daad4d31080019accb",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-formula: complete vector fractions, aligned roots and Unicode fit narrow notes and preserve copyable source and safe fallback"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-373879e8230dfe1d52b0",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-formula: actual shared image and fraction/root/alignment vector video decodes with full audio and caption timeline"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-f9987f084dfa9c0f93de",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "login forms cannot submit before their client handlers are ready"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-c9fc89af84b21cba2190",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-00fa17c62ef2f9a30be6",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-figure: uncached complete image commands block leaving until their exact complete download"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-737c95b10bc201f16ef7",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-figure: mismatched image bytes stay hidden and can be reread without creating another candidate"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-2943bf8bd83d04fa2c58",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-figure: an explicit running cancellation and retry keep the same original candidate and advance its task generation"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-62dd971c78e0180155a8",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-figure: two actual tabs retain separate full figure inputs and metadata across reloads"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-dc29a0f3951d7982ca46",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-figure: complete verified image and keyboard reader fit 390"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-d3c5db8500cd6d17d3fd",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-figure: complete verified image and keyboard reader fit 768"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-6e51b821646e6c71ef70",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-figure: complete verified image and keyboard reader fit 1440"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-cc5fb6bbf463525cd1fa",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "adult original generation, lost edit and confirmation replies recover without duplicates and reach a complete table/formula player"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-08adb2f21322eb11af0c",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "cancelled and failed review generations retain the original selected model through refresh and explicit retry"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-8cb1d37b7a0b896e38b0",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "incomplete local teaching edits survive reload and another saved draft cannot silently replace them"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-2db515c98ce4055960c8",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "unavailable local storage keeps the full editable draft and requires a real downloaded copy before leaving"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-6112ba6cc45b4fcf6508",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "stale-topic: another real tab keeps the local manuscript and opens a comparison before any replacement save"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-005f4c7ef7719a0a0bf6",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "uncached original topic cannot disappear on a scope change until its complete input is downloaded"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-30a6557ae1e7c4726a83",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "another explicit local manuscript cannot replace uncached dirty input until the current complete copy is downloaded"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-11b13ee3ffb486bd9f65",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "recovery: an uncached original cancellation survives object changes until its exact command is downloaded"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-b817f4c2c190b308c732",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-slot: two real tabs keep their own complete incomplete edits after either tab reloads"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-1b928351ddb87fe05b18",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "explicit child goals, adult separation and complete edit controls fit at 390"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-608c7ceb00f09af9ae8a",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "explicit child goals, adult separation and complete edit controls fit at 768"
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-eb298190669c5cc984ec",
+      "projectId": "",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "explicit child goals, adult separation and complete edit controls fit at 1440"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-bc7fcf39d7380703805e",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "complete sentence, complete notes, paused text reading and explicit sentence navigation"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-6231436059e5ab4cac1a",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "real WAV ended drives cloud playback, pause retains audio time and late ended cannot move a new sentence"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-8f44e2972629b5b4f421",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "ended boundary: a queued previous audio frame cannot seek the next actual WAV to its end"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-d3bbcfb7e920bc10358d",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: adjacent actual WAV prepares during the current sentence and transfers once at its beginning"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-0997bb961bb3a6c21ba3",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: three complete actual WAVs remain ordered through a live speed change without duplicate preparation"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-ef24875f594c2c0a4ca6",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: an already prepared WAV cannot survive actual login-session revocation"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-ae9bbf29e285dd05f56c",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: a failed adjacent preparation preserves current playback and needs an explicit retry at its original sentence"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-aa84a92123d7e37b8174",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: closing during adjacent preparation aborts it and no late audio can play"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-ee06fbb9e9b8f6a5b7f8",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: an exact manual next keeps the prepared WAV paused and transfers it without another request"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-519dd59d0656be299deb",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: a prepared WAV cannot play after actual guardian revocation before handover"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-797108f6e5fc36aac35c",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: changing voice fences the old adjacent request and preserves an explicit fresh play"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-4665b4cbb3717b787326",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: slow adjacent audio cannot advance early and can be paused while waiting"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-367305629a2286f541a1",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "voice switch fences delayed requests and an audio failure offers explicit retry or text reading"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-7aac6f08ec7bca02740f",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "reopening a paused cloud sentence restores its known audio time in the verified original board"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-39b1df6194b59dc7f2a8",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "scoped local resume and complete accessible notes fit phone, tablet and desktop"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-a3f399433c3bfe3876ec",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "actual WebM has a decoded audio track and the same complete SRT timeline at the selected speed"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-5089bc4b4e0a15aa7bb2",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "cancelling a recording releases it and never downloads a partial video"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-9fce2e8b4aa915004ae6",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "seeking cancels old audio and ignores its late completion at the new reading position"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-848caf2c5f8fd80094e2",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "revoked student access closes the private player before another frozen sentence can be fetched"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-c8f3b92e098e122e66d0",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "closing while export audio is pending aborts it and cannot download or reopen a late result"
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-21203581cb83a795e1c0",
+      "projectId": "",
+      "file": "whiteboard-media.spec.ts",
+      "title": "a recorder error releases resources, keeps the reading position and offers a retry without a partial download"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-f2243b70463a883772fc",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: selected model, exact sentence and pause bookmark survive a real queued answer and return"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-cc4aeb99a6dbb7f57fd7",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "supplementary board: explicit audio, whole structured items, real video/SRT and original camera restoration"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-3d5b2a50517dab345fe2",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "supplementary board: a delayed authorized audio response cannot play after the original grant is revoked"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-ff952e4d1e13be42499e",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "teaching notes: full JSON and Markdown include twelve saved answers while only the last history page is loaded"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-32ad73df4e3c16412f7f",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "teaching notes: closing the whiteboard discards a late full-note response"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-716df73040886f2da71d",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "mobile draft: closing and reopening the reading layer preserves blocked-storage input without remounting the composer"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-e83571e5a3d3b9644172",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "supplementary private link: restores its actual answer and original sentence for a child guidance board"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-b3dc4d0f54f5208d7b70",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "supplementary private link: restores its actual answer and original sentence for an adult topic without a child"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-702ae1632dff26796078",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "supplementary close: a late authorized sentence stays silent while the original board remains open"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-99f5d67ea25e1c8525bf",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: five intentions produce distinct original commands and retain completed history"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-c6d9193911490423e686",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: a failed answer has an explicit original-model retry and preserves the next unsent question"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-af799b9016a35a0c2c47",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: cancelling running work blocks the late answer and the same original can be retried"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-38eabaaa923a56e72037",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: a lost create response is recovered after reload without a second write"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-f8456f0a7261a85e2baa",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: unavailable local storage keeps the full input, protects closing and round trips the downloaded JSON"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-bfaa77f80069862f4c10",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: duplicated documents keep separate full drafts across independent reloads"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-4ff6cbd7f0500ca23bbb",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: the real composer, model selection and return controls remain usable at 390"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-6e2a575de959af73b31b",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: the real composer, model selection and return controls remain usable at 768"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-4f7d9fdb759e156ac658",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: the real composer, model selection and return controls remain usable at 1280"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-e223c0b9759638ecc4e2",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: exact PNG adoption binds voice, video, private links, complete notes and original-version review"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-d2506d655c5eebea2267",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: lost prepare and adoption receipts retain original commands through reload without duplicate images or versions"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-d6db0b6523a220345816",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: original PNG editing and two explicit adoptions preserve both prior teaching versions"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-07a0e5cf1404e721cc80",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: explicit cancel and original retry keep the same image requirement and target"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-2d16e0595c5f5c4d6ba5",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: duplicated documents keep separate full inputs and a closed workbench discards late preflight"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-34e53c84874e54da2111",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: full input, storage failure, download and import remain usable at 390"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-24f9d54bb0457650d1cd",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: full input, storage failure, download and import remain usable at 768"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-eeace06980b097ad3621",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: full input, storage failure, download and import remain usable at 1280"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-158251ef6fd31008cae5",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: a stale second tab preserves its full requirements and rechecks the current adoption before choosing again"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-14505ba97ef038968869",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: mobile adopted image layers contain keyboard focus and return to the actual original control at 390"
+    },
+    {
+      "id": "dae50bb9f64849b255e1-90be96abf30f6bef9374",
+      "projectId": "",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: mobile adopted image layers contain keyboard focus and return to the actual original control at 768"
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-37b390d3ed70412c6427",
+      "projectId": "",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "original settings: six actual neutral MP3s decode, previews preserve selection and closing releases audio"
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-d66534b68fb20b65c7b3",
+      "projectId": "",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "original settings: corrupt samples fail visibly, explicit retry works and a late closed sample never plays"
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-77cbd46a5558eb5b33a5",
+      "projectId": "",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "original settings: half speed restores, double speed records real WAV and frozen captions at matching durations"
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-d001ce15b27fb992744a",
+      "projectId": "",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "original settings: real seven-tool tour preserves position and focus at 390"
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-c1e6579fe7a4e3d5dfdf",
+      "projectId": "",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "original settings: real seven-tool tour preserves position and focus at 1280"
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-fa2be5252f29b6855cfa",
+      "projectId": "",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "reading panel: original380 width, pointer and keyboard bounds, viewport cap and collapsed preference restore without teaching writes"
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-5a74e42a4c6cfc6ede74",
+      "projectId": "",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "reading panel: explicit mobile entry contains focus, returns to the same sentence and closes only its own layer at 390"
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-a6ebcbd26bbaf7ae39e8",
+      "projectId": "",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "reading panel: explicit mobile entry contains focus, returns to the same sentence and closes only its own layer at 768"
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-d9b0d9757a8021a0539d",
+      "projectId": "",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "reading panel: malformed or wrong-owner device preferences are rejected and blocked storage leaves resizing usable"
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-facafe3b549321b2a207",
+      "projectId": "",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "share toolbar: a private link reopens the same board and a real PNG exactly decodes the visible frozen canvas"
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-f9d29d0bc80fb74d3376",
+      "projectId": "",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "share toolbar: closing during original PNG authorization fences a late reply and never downloads"
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-7a6f62eafd5cfe9d3048",
+      "projectId": "",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "share toolbar: every visible playback and toolbar control stays inside the actual viewport at 390"
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-772c9487ec9b530c429d",
+      "projectId": "",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "share toolbar: every visible playback and toolbar control stays inside the actual viewport at 768"
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-ba89ddec966a8a85078b",
+      "projectId": "",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "share toolbar: every visible playback and toolbar control stays inside the actual viewport at 1280"
+    },
+    {
+      "id": "e44b011520c0dba8f6f4-61b991892a6302d64b83",
+      "projectId": "",
+      "file": "workspace-focus.spec.ts",
+      "title": "workspace focus: a real classroom uses its authorized chemistry scope and restores the ordinary sidebar preference"
+    },
+    {
+      "id": "e44b011520c0dba8f6f4-eb64ade97c3faedd4650",
+      "projectId": "",
+      "file": "workspace-focus.spec.ts",
+      "title": "workspace focus: adult whiteboard exposes one navigation and restores the original workspace and focus"
+    },
+    {
+      "id": "e44b011520c0dba8f6f4-2f5a81b052382e4873dd",
+      "projectId": "",
+      "file": "workspace-focus.spec.ts",
+      "title": "workspace focus: paper exit preserves the full draft and imports it without writing a first answer"
+    },
+    {
+      "id": "e44b011520c0dba8f6f4-40dff7fb0425a9ab0de6",
+      "projectId": "",
+      "file": "workspace-focus.spec.ts",
+      "title": "workspace focus: admin cookie identity exposes nine modules and a teacher is gated before private data reads"
+    },
+    {
+      "id": "e44b011520c0dba8f6f4-2b964bfa6c38d9f0228b",
+      "projectId": "",
+      "file": "workspace-focus.spec.ts",
+      "title": "workspace focus: project navigation protects the complete local artifact before an explicit export and leave"
+    },
+    {
+      "id": "e44b011520c0dba8f6f4-92adc1be23b131a7e0b1",
+      "projectId": "",
+      "file": "workspace-focus.spec.ts",
+      "title": "workspace focus: all nine admin modules render in one shell and actual content fits phone, tablet and desktop"
+    },
+    {
+      "id": "e44b011520c0dba8f6f4-82eb8422ca5c604040b7",
+      "projectId": "",
+      "file": "workspace-focus.spec.ts",
+      "title": "workspace focus: without Navigation API the persistent host keeps full unsaved material text during browser back"
+    },
+    {
+      "id": "e44b011520c0dba8f6f4-97116f3497f36f9921e2",
+      "projectId": "",
+      "file": "workspace-focus.spec.ts",
+      "title": "workspace focus: a classroom with disabled storage requires the full choice download and never submits it on exit"
+    },
+    {
+      "id": "97026f51b463f27fab5a-6d94aeb1fb4b9f079ddd",
+      "projectId": "",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: exact original task and complete independent code survive task changes, reloads and a second tab"
+    },
+    {
+      "id": "97026f51b463f27fab5a-91e041b57d126e7b7328",
+      "projectId": "",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: disabled storage requires the complete code download before mobile navigation and explicit import"
+    },
+    {
+      "id": "97026f51b463f27fab5a-960f94c83787130ae2bc",
+      "projectId": "",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: a lost probe reply retains the original full command through reload and rejects another atom"
+    },
+    {
+      "id": "97026f51b463f27fab5a-6b126f20dc14d501196f",
+      "projectId": "",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: a changed parent scope keeps the original full code visible for export and blocks new writes"
+    },
+    {
+      "id": "97026f51b463f27fab5a-717e5a02973bc9320a61",
+      "projectId": "",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: a parent restores the exact linked child and certification level while keeping each level draft separate"
+    },
+    {
+      "id": "97026f51b463f27fab5a-c243105a8a9332911102",
+      "projectId": "",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: a lost parent confirmation replays its original version while a later confirmed scope stays current"
+    },
+    {
+      "id": "97026f51b463f27fab5a-f1742acc80ed98008912",
+      "projectId": "",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: a parent with disabled storage downloads the full selection before changing levels and restores it explicitly"
+    },
+    {
+      "id": "97026f51b463f27fab5a-112633f33e90029954d7",
+      "projectId": "",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: without Navigation API browser back preserves the full original-task code until its exact download"
+    },
+    {
+      "id": "97026f51b463f27fab5a-0e49218f6da1595792a8",
+      "projectId": "",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: actual isolated code execution recovers one lost receipt while preserving later complete code edits"
+    },
+    {
+      "id": "97026f51b463f27fab5a-f601d76c4c983d44ee14",
+      "projectId": "",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: delayed parent reads and a disconnected refresh cannot replace another child or erase its complete draft"
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-19cede8308095643dd6b",
+      "projectId": "",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: adult documents and actor-bound text drafts work without a child"
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-4de53151a261ae5bf93d",
+      "projectId": "",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: explicit object and subject never mix lawful parent-private documents"
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-c8f61a745faff0f6cae9",
+      "projectId": "",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: a lost text receipt and reload reuse the complete original command once"
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-01162ee9b7bc88165a30",
+      "projectId": "",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: unavailable storage protects full text across browser back and restores focus"
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-910ef0c1cf3cc5e78ef0",
+      "projectId": "",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: real PDF pages, source course, classroom and project preserve the source return"
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-aeae94ab22fd14566bcf",
+      "projectId": "",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: paper legacy links and URL filters survive details answers back forward and refresh"
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-e740ac4f763fa233c5b8",
+      "projectId": "",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: original-paper first answers keep identity and exact source return through review"
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-05e8088c00ff9c460292",
+      "projectId": "",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: student learning code reads only their own materials and no adult projection"
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-e0835de14dade3c83427",
+      "projectId": "",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: existing-style tabs support keyboard navigation and narrow screens"
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-22fb97356b113b6022fd",
+      "projectId": "",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: a late catalog cannot replace a new object and list pagination restores from URL"
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-a9125b77dcca6506703f",
+      "projectId": "",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: one existing-style sidebar keeps the object across tasks reports and profiles"
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-d8918e6e25bf4cb6c268",
+      "projectId": "",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: profiles read metadata only and new profiles keep the original creation contract"
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-6f2e3cff592f7da13f5e",
+      "projectId": "",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: a learning-code student stays bound to their own profile and rejects self mode"
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-0643b52b79248153679b",
+      "projectId": "",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: completed reports and the old family URL preserve original records without writes"
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-9638934483581e423a77",
+      "projectId": "",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: login returns to a local original activity and refuses an external return"
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-ff2772c720565e4ec517",
+      "projectId": "",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: parent self learning reads independent data instead of a cached child"
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-8d0210f420695c33a140",
+      "projectId": "",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: contradictory old object aliases stop before reading a diagnostic or starting work"
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-a8952908a35a092e4506",
+      "projectId": "",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: report detail refuses an unfinished session without becoming an answer screen"
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-ccc28ed74624763d791c",
+      "projectId": "",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: mobile navigation and compact preference work across legacy and new pages"
+    },
+    {
+      "id": "b163ed09f68681248ada-785678de6c7d7376d94f",
+      "projectId": "",
+      "file": "workspace.spec.ts",
+      "title": "course library and outline preserve navigation, panels, help and classroom back/forward"
+    },
+    {
+      "id": "b163ed09f68681248ada-38682a6ed88852160ee9",
+      "projectId": "",
+      "file": "workspace.spec.ts",
+      "title": "course library and outline preserve navigation, panels, help and classroom back/forward without Navigation API"
+    },
+    {
+      "id": "b163ed09f68681248ada-0fc832b1b7c65de9271a",
+      "projectId": "",
+      "file": "workspace.spec.ts",
+      "title": "calendar supports real date navigation, edit, confirmation, completion, export and batch lifecycle"
+    }
+  ],
+  "scope": "Full frozen Playwright discovery inventory. No tests executed by this list command."
+}

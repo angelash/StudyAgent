@@ -1,3 +1,4 @@
+import { assertControlledNativeRows } from '../modules/diagnostics/controlled-native';
 import { assertRetentionNativeRows } from '../modules/diagnostics/retention-integrity';
 import { assertGuidanceCalendarRecords } from '../modules/learning/guidance-calendar-record';
 import { assertAssistantGuidanceRecords } from '../modules/learning/assistant-guidance-integrity';
@@ -255,6 +256,10 @@ export class DomainDatabase {
     const retentionRows=this.sqlite?this.sqlite.prepare(retentionSql).all():(await this.postgres!.query(retentionSql)).rows;
     assertRetentionNativeRows(retentionRows as Array<{collection:string;record_id:string;body:unknown}>);
     await this.migrateConstraints(29,[{name:'retention_source_original_atom',collection:'retentionExposureEvents',fields:['sourceExposureId','studentId','atomId']}],`UPDATE study_restore_guard SET state='ready-schema29',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema28';`);
+    const controlledSql="SELECT collection,record_id,body FROM domain_records WHERE collection IN ('controlledMaterialReviews','controlledContrastPublications','controlledContrastReleases','controlledEditorialCommands','controlledContrastPreviews','privacyRequests','diagnosticSessions','diagnosticResponses','diagnosticHints','diagnosticDrafts','diagnosticReports','students','users','scoringRevisions','retentionExposureEvents','practiceSessions','practiceAttempts','practiceHints','assistantPracticeGroupStarts','assistantTeachingAssignments','assistantTeachingSessions','classroomSessions','studioCourses','sourceCourses','events','curriculumRevisions','knowledgeAtoms','diagnosticPlans','guidancePlanRevisions','reviewTasks')";
+    const controlledRows=this.sqlite?this.sqlite.prepare(controlledSql).all():(await this.postgres!.query(controlledSql)).rows;
+    assertControlledNativeRows(controlledRows as Array<{collection:string;record_id:string;body:unknown}>);
+    await this.migrateConstraints(30,[{name:'controlled_material_original_command',collection:'controlledMaterialReviews',fields:['actorId','commandId']},{name:'controlled_publication_revision',collection:'controlledContrastPublications',fields:['logicalId','revision']},{name:'controlled_release_identity',collection:'controlledContrastReleases',fields:['logicalId']},{name:'controlled_editorial_original_request',collection:'controlledEditorialCommands',fields:['actorId','requestKey']},{name:'controlled_preview_original_request',collection:'controlledContrastPreviews',fields:['arrangedBy','requestKey']}],`UPDATE study_restore_guard SET state='ready-schema30',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema29';`);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now, this.sqlite && sqliteQueueKey(this.location));
     await this.tasks.open();
     this.limits = new RateLimitRepository(this.tasks, this.sqlite, this.postgres, this.now);
@@ -265,18 +270,18 @@ export class DomainDatabase {
     if (this.sqlite) {
       const table = this.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='study_restore_guard'").get();
       if (table) state = (this.sqlite.prepare('SELECT state FROM study_restore_guard WHERE id=1').get() as { state?: string } | undefined)?.state ?? 'missing';
-      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27', 'ready-schema28', 'ready-schema29'].includes(state)) throw new Error('Database restoration is incomplete');
+      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27', 'ready-schema28', 'ready-schema29', 'ready-schema30'].includes(state)) throw new Error('Database restoration is incomplete');
       if (this.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='schema_migrations'").get())
         version = Number((this.sqlite.prepare('SELECT MAX(version) version FROM schema_migrations').get() as { version?: number }).version ?? 0);
     } else {
       if ((await this.postgres!.query("SELECT to_regclass('study_restore_guard') AS name")).rows[0].name)
         state = (await this.postgres!.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state ?? 'missing';
-      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27', 'ready-schema28', 'ready-schema29'].includes(state)) throw new Error('Database restoration is incomplete');
+      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27', 'ready-schema28', 'ready-schema29', 'ready-schema30'].includes(state)) throw new Error('Database restoration is incomplete');
       if ((await this.postgres!.query("SELECT to_regclass('schema_migrations') AS name")).rows[0].name)
         version = Number((await this.postgres!.query('SELECT MAX(version) version FROM schema_migrations')).rows[0]?.version ?? 0);
     }
-    if (version > 29) throw new Error('unsupported_database_schema');
-    const expected = version === 29 ? 'ready-schema29' : version === 28 ? 'ready-schema28' : version === 27 ? 'ready-schema27' : version === 26 ? 'ready-schema26' : version === 25 ? 'ready-schema25' : version === 24 ? 'ready-schema24' : version === 23 ? 'ready-schema23' : 'ready';
+    if (version > 30) throw new Error('unsupported_database_schema');
+    const expected = version === 30 ? 'ready-schema30' : version === 29 ? 'ready-schema29' : version === 28 ? 'ready-schema28' : version === 27 ? 'ready-schema27' : version === 26 ? 'ready-schema26' : version === 25 ? 'ready-schema25' : version === 24 ? 'ready-schema24' : version === 23 ? 'ready-schema23' : 'ready';
     if (state !== undefined && state !== expected || version >= 23 && state !== expected) throw new Error('minimum_reader_guard_mismatch');
   }
 

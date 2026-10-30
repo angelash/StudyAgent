@@ -784,3 +784,4 @@ export * from './assistant-guidance';
 export * from './guidance-calendar';
 
 export * from './retention';
+export * from './controlled-contrast';

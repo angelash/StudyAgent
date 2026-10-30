@@ -1,0 +1,117 @@
+{
+  "numTotalTests": 24,
+  "numPassedTests": 24,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "files": 2,
+  "results": [
+    {
+      "file": "controlled-contrast-materials.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "controlled material source and reviewed task controls rebuilds the complete packet from eligible actual question, scoring, source, definition and mapping records",
+          "status": "passed"
+        },
+        {
+          "title": "controlled material source and reviewed task controls refuses changed original question text, scoring, license, mapping revision, target definition and withdrawn approval",
+          "status": "passed"
+        },
+        {
+          "title": "controlled material source and reviewed task controls cannot replace the actual reviewer with a child, disabled account or nonexistent approval identity",
+          "status": "passed"
+        },
+        {
+          "title": "controlled material source and reviewed task controls keeps reviewed operation and necessary conditions bound to their original packet instead of trusting supplied fingerprints",
+          "status": "passed"
+        },
+        {
+          "title": "controlled material source and reviewed task controls invalidates an old upstream definition rather than silently using a changed prerequisite under its old control approval",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "controlled-contrast.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "strict reviewed controlled-condition protocol drafts requires exact original packets, two source conditions and independent structural units without changing the original input",
+          "status": "passed"
+        },
+        {
+          "title": "strict reviewed controlled-condition protocol drafts rejects a changed operation, hidden extra prerequisite, changed representation, different scoring or a reused question",
+          "status": "passed"
+        },
+        {
+          "title": "strict reviewed controlled-condition protocol drafts does not manufacture independent pairs from copied structures, another target or reference-only content",
+          "status": "passed"
+        },
+        {
+          "title": "strict reviewed controlled-condition protocol drafts rejects an approval after publication and a claimed comparison without source locators on both arms",
+          "status": "passed"
+        },
+        {
+          "title": "whole-pair deterministic selection rebuilds original protocol, exact paired packets and the frozen order from actual source identities",
+          "status": "passed"
+        },
+        {
+          "title": "whole-pair deterministic selection rejects a rehashed blueprint with an invented source unit, changed controls, another protocol revision or reversed arm order",
+          "status": "passed"
+        },
+        {
+          "title": "whole-pair deterministic selection rejects a rehashed frozen blueprint that claims a complete pair with the same condition twice or reuses a family",
+          "status": "passed"
+        },
+        {
+          "title": "whole-pair deterministic selection freezes original packets and balances the two orders across independent units without mutating source data",
+          "status": "passed"
+        },
+        {
+          "title": "whole-pair deterministic selection excludes an entire pair for either exposed arm, an exposed family or a withdrawn original packet",
+          "status": "passed"
+        },
+        {
+          "title": "whole-pair deterministic selection never fits half a pair to satisfy a task or time budget and retains the exact missing-coverage reason",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses holds unfinished paired scores from measurements and assistant summaries until the actual original group ends",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses returns only persistence fields in a paired first-answer receipt and cannot substitute another child or original item",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses excludes teaching between the two original answers even if both local hint flags remain zero, and preserves earlier completed pairs",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses retains an overlapping old classroom range as unknown while keeping actual other children and wholly earlier ranges outside this session",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses retains conflicting support and counterevidence as inconclusive instead of selecting only the desired direction",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses requires two independent matched units and separately retains reverse results and both-below observations",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses does not turn one missing, helped, skipped or unscored arm into an independent paired observation",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses keeps cross-child, another-session, another-definition and duplicate original responses out of pairing",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses preserves the exact original first answers and cannot count two arms as eight independent observations",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

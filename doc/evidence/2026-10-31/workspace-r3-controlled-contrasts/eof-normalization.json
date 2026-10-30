@@ -1,0 +1,72 @@
+{
+  "at": "2026-10-30T18:41:44.965Z",
+  "files": [
+    {
+      "path": "apps/api/src/infrastructure/schema26-reader.integration.test.ts",
+      "beforeSha256": "f7e4535d51559f76f9230c09693c3a7e676ef24a127a440dbc1006accb06a0cf",
+      "deliveredSha256": "4f6ed93102161e5dea4583580f8bdf52668f50e39038503d63723f8fc913fb49"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema27-reader.integration.test.ts",
+      "beforeSha256": "b85162caddf27dedfb90cf84b9c298c0f6d24fa89f666801e8714b2794ea09cd",
+      "deliveredSha256": "d34c972691458ec69fc51b9164b681211c240370191dda7cc23264097cc7da1c"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema28-reader.integration.test.ts",
+      "beforeSha256": "28478bf10a8964cf442c2da483a74514c805dd295d0a1129f248e4bef286db09",
+      "deliveredSha256": "8afab14eb52eb0252de781bc7d75967ce6e999ef4a4c277b89c570de19d343fb"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema29-reader.integration.test.ts",
+      "beforeSha256": "1146b03b1e5a344ac385a31cc025f4739fcc1f1bfa92b16325b77244f727941b",
+      "deliveredSha256": "1b9e08ba505f97ae8adad268c2e11421ec20153a85f47a74c083208a750e1803"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema30-reader.integration.test.ts",
+      "beforeSha256": "c68a16f9a43e21244f4f14a3273bf3669f929e51189b290d027d096d20882174",
+      "deliveredSha256": "81d86eb9492b4cf40315c40aed39bdb42b31889930653d768179e3f309d7268d"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/eligible-measurements.ts",
+      "beforeSha256": "68269dc97907b6c840bd0e9b9f30efcddd80313c40abd2858c4e66f4e9a6f978",
+      "deliveredSha256": "e13db577fcfd57b8bc9f6ef236e07d53aef3cb2afb1b6548ec3dc9a2cff939a4"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-guidance.integration.test.ts",
+      "beforeSha256": "46d549d8aed6613ed51b6fa3d817415353d2fd549b1c8f6ddc9cabc9b4fd3e41",
+      "deliveredSha256": "ea07b2633a06a3ad5dbdbee497c30b6321c871851e5020bda9f8fba56ab115f2"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-self-record.ts",
+      "beforeSha256": "073da9174c0f86f6d211bf97578acb7d367bac48bf09cd5dc40d3a2e6e817327",
+      "deliveredSha256": "72cb3f4226fb41e63981f995d0ee9286cf14a0ab1857c71b609f2f50aff98242"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-self.integration.test.ts",
+      "beforeSha256": "fa988fd9f2b1f838d064f62ac5d4eb45cce4d531c4ab93e4ca48dd1702acd52a",
+      "deliveredSha256": "b3d2e56e564be0eb102bf6593422dafabb42cea5f21c2b1f67a21817040beeb2"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-sharing.integration.test.ts",
+      "beforeSha256": "f29169d4edb784cf612f4829990ddd28a3d427abdcdca67a89ca93b3251ef92b",
+      "deliveredSha256": "fb311a3641e8432a832c066efae2c85b86b7945b8ee0a9521ac6e74ad26af2cd"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching.integration.test.ts",
+      "beforeSha256": "654c0bfdcad12bd35b3a33c218a690225ee2933b8f4cb9203f1869cd18ba73ac",
+      "deliveredSha256": "f0596ef4ee74bb9f9b3e1dc038103b058df00d7c47899be96470230fa0151a15"
+    },
+    {
+      "path": "apps/web/app/studio/tasks/student-teaching-practice.tsx",
+      "beforeSha256": "516c83c0b642ec8431206e758fb18b43c686716fa1c304296a654ef2d162da9d",
+      "deliveredSha256": "d589b020a6a2876092970ab217b2f1503db164b2c66cdef8c4969d5b41e033ab"
+    },
+    {
+      "path": "apps/web/app/studio/tasks/teaching-practice.tsx",
+      "beforeSha256": "38de7cc76dc8b4980be6aa20237e43d62345808419eb4d1577b4cc101e355f3e",
+      "deliveredSha256": "793a95cb3326ad9d852fb26b24bfe0fa9436e58317bd5a66d6a828b464134ea5"
+    }
+  ],
+  "exactTypeScriptTokensUnchanged": true,
+  "scope": "Remove only repeated trailing newline sequences. Original isolated source, tests, original failed stage check and frozen SHA manifest retained. No code tokens changed and no full-suite result replaced."
+}

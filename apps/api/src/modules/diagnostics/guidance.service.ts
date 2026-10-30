@@ -18,12 +18,18 @@ import { reportMeasurementVersion } from './measurement-compatibility';
 import { TextbookRegistryService } from './textbook-registry.service';
 import { textbookSourceCitations } from './learning-source-citation';
 import { guidanceModelPort, type GuidanceModelPort } from './guidance-model-record';
+import { controlledSessionOf } from './controlled-session-origin';
+import { controlledGuidanceBasis, controlledGuidanceBaseline, controlledGuidanceReportFingerprint } from './controlled-guidance-basis';
+import { atomDefinitionFingerprint } from './measurement-definition';
+
+const controlledSourceSchema=z.object({sessionId:z.string().min(1).max(180),expectedReportVersion:z.number().int().positive(),expectedReportFingerprint:z.string().regex(/^[a-f0-9]{64}$/),stateId:z.string().min(1).max(180),acknowledgeObservationOnly:z.literal(true)}).strict();
 
 const createPlanSchema = z.object({
   baselineSessionId: z.string().min(1).max(180), minutesPerDay: z.number().int().min(5).max(60),
   useAi: z.boolean().default(true),
   requestKey: z.string().min(8).max(180).optional(), modelId:z.string().trim().min(1).max(180).optional(),
   expectedReportVersion:z.number().int().positive().optional(),
+  controlledSource:controlledSourceSchema.optional(),
 }).strict();
 const versionedCommand = { expectedRevision: z.number().int().positive().optional(), requestKey: z.string().min(8).max(180).optional() };
 const reasonSchema = z.string().trim().min(5).max(1500);
@@ -45,6 +51,7 @@ export class GuidanceService {
 
   async create(user: InMemoryUserAccount, studentId: string, input: unknown) {
     const command = validate(createPlanSchema, input);
+    if(command.controlledSource&&(command.useAi||!command.requestKey||!command.expectedReportVersion))throw new BadRequestException('请先明确保存双来源规则计划、普通报告版本与原命令，再按需要请求模型说明。');
     if (!command.useAi && command.modelId) throw new BadRequestException('未请求AI建议时请勿指定模型');
     for (let attempt=0;attempt<2;attempt++) try { return await this.store.transaction(()=>this.createRulePlan(user,studentId,command)); }
     catch(error) { if (!(error instanceof ConflictException) || attempt===1) throw error; }
@@ -54,6 +61,7 @@ export class GuidanceService {
   createInCurrentTransaction(user:InMemoryUserAccount,studentId:string,value:unknown){const command=validate(createPlanSchema,value);if(command.useAi||command.modelId)throw new BadRequestException('来源指导先明确保存规则计划，再按原计划请求固定模型建议。');return this.createRulePlan(user,studentId,command);}
   private async createRulePlan(user: InMemoryUserAccount, studentId: string, command: z.infer<typeof createPlanSchema>) {
     this.students.assertGuardian(user, studentId);
+    if(command.controlledSource&&(command.useAi||!command.requestKey||!command.expectedReportVersion))throw new BadRequestException('请保存原双来源规则计划命令。');
     const creationHash=inputHash('create',{studentId,...command});
     if(command.requestKey) {
       const previous=this.store.find('guidancePlanRevisions',{actorId:user.id,requestKey:command.requestKey});
@@ -64,6 +72,7 @@ export class GuidanceService {
     }
     const session = this.diagnostics.requireSession(user, command.baselineSessionId);
     if (session.studentId !== studentId || session.status !== 'completed') throw new BadRequestException('请先完成当前孩子的评测');
+    if(controlledSessionOf(session))throw new BadRequestException('受控两侧只提供原因观察。指导计划还需要普通独立评测作为能力与保持基准。');
     const report = this.diagnostics.report(user, session.id);
     if(command.expectedReportVersion!==undefined&&command.expectedReportVersion!==(report.version??1))throw new ConflictException('原评测报告已修订，请核对当前版本后重新制定计划');
     if (this.diagnostics.analysisCompatibility(report).requiresReanalysis) throw new ConflictException('能力或题族计量方法已更新或原依据无法核对，请先重新分析原报告，再制定指导计划');
@@ -72,6 +81,8 @@ export class GuidanceService {
       throw new ConflictException('知识定义已调整，请按当前定义重新评测后建立计划');
     }
     const atomMap = new Map(this.store.inspect('knowledgeAtoms').map((atom) => [atom.id, atom]));
+    const controlled=command.controlledSource?this.controlledSource(user,studentId,command.controlledSource):null;
+    if(controlled){const original=this.store.find('diagnosticReports',{sessionId:session.id,version:report.version??1});if(!original)throw new ConflictException('普通独立原报告无法核对');try{controlledGuidanceBaseline(session,original,controlled.basis,this.store.select('diagnosticResponses',{studentId}));}catch{throw new ConflictException('请先完成同一目标与定义的普通独立评测；受控观察不能补成能力或保持基准。');}}
     const activeHypotheses = report.hypotheses.filter((item) => !['contradicted', 'resolved', 'withdrawn'].includes(item.status));
     const prioritized = [...report.estimates].sort((a, b) => {
       const rootA = activeHypotheses.some((hypothesis) => hypothesis.cause === 'prerequisite_gap' && hypothesis.status === 'supported' && hypothesis.probeAtomIds.includes(a.atomId));
@@ -79,6 +90,7 @@ export class GuidanceService {
       return Number(rootB) - Number(rootA) || (a.mastery ?? 0) - (b.mastery ?? 0);
     }).filter((item) => item.status !== 'secure').slice(0, Math.min(3, Math.max(1, Math.floor(command.minutesPerDay / 5))));
     if (!prioritized.length) prioritized.push(...report.estimates.slice(0, 1));
+    if(controlled){const target=report.estimates.find(estimate=>estimate.atomId===controlled.basis.atomId);if(!target)throw new ConflictException('普通基准没有这条受控观察的原目标。');prioritized.splice(0,prioritized.length,target);}
     const now = new Date();
     const perAction = Math.floor(command.minutesPerDay / Math.max(prioritized.length, 1));
     const effectiveResponses = new Map(this.diagnostics.effectiveResponses(studentId, session.subject).map(response => [response.id, response]));
@@ -95,7 +107,12 @@ export class GuidanceService {
         .map((item) => item.questionId).filter((id, position, all) => all.indexOf(id) === position &&
           Boolean(this.store.find('questions', { id: id, status: 'published' })) &&
           this.store.select('questionSources', { questionId: id, reviewStatus: 'approved' }).some(s => s.licenseClass !== 'C_PUBLIC_REFERENCE_ONLY')).slice(0, 4);
-      return { id: this.store.nextId('action'), atomId: atom.id, hypothesisId: hypothesis?.id ?? null,
+      const actionId=this.store.nextId('action');
+      if(controlled)return {id:actionId,atomId:atom.id,hypothesisId:null,evidenceIds:estimate.evidenceIds,title:controlled.basis.cause==='language_condition_gap'?`核对文字中的必要条件：${atom.name}`:`核对相关条件与无关信息：${atom.name}`,
+        activity:controlled.basis.cause==='language_condition_gap'?'让孩子先用自己的话复述题目要求，标出每个必要条件，把原句与简洁表达逐一对应；示范一次后减少帮助，让孩子独立解释条件怎样用于解题。同时保留知识、操作与评分等其他解释。':'让孩子说明每条信息是否参与解决目标，分别解释保留和排除的理由；示范一次后减少帮助，独立选择必要条件。不要把排除文字的技巧替代所需知识与操作。',
+        minutes:command.minutesPerDay,successCriterion:'能独立解释必要条件及其作用。实际教学后另用至少两个未曝光的独立配对同时核查支持与反证；活动完成不关闭原因，普通保持仍按真实间隔独立复测。',resourceQuestionIds,retestAt:new Date(now.getTime()+86_400_000).toISOString(),sourceCitations,
+        ...(atom.teaching?.reviewStatus==='approved'?{teachingSnapshot:{atomVersion:atom.version,teaching:structuredClone(atom.teaching),sourceCitations}}:{})};
+      return { id: actionId, atomId: atom.id, hypothesisId: hypothesis?.id ?? null,
         evidenceIds: estimate.evidenceIds, title: `${unknown ? '先补充证据' : '逐步巩固'}：${atom.name}`,
         activity: unknown ? `先做两个不同题族的独立小测，观察“${atom.objective}”。根据表现决定是否需要讲解。` :
           `先让孩子说清“${atom.objective}”，示范一个关键步骤，再完成新题。${hypothesis?.nextAction ?? '逐步减少提示，并让孩子说明为什么这样做。'}`,
@@ -114,6 +131,7 @@ export class GuidanceService {
       actions, evidenceIds: [...new Set(actions.flatMap((item) => item.evidenceIds))], createdAt: now.toISOString(), aiStatus: 'not_requested',
       revision: 1, baselineReportVersion: report.version ?? 1,
       baselineMeasurementVersion: reportMeasurementVersion(report), baselineFamilyIdentityVersion: report.familyIdentityVersion,
+      ...(controlled?{controlledBasis:controlledGuidanceBasis(controlled.row,controlled.basis.stateId,actions[0].id)}:{}),
     };
     this.store.append('diagnosticPlans', plan);
     const savedPlan=this.store.find('diagnosticPlans',{id:plan.id})!;
@@ -152,6 +170,33 @@ export class GuidanceService {
   }
 
   get(user: InMemoryUserAccount, planId: string) { return this.view(user, this.requirePlan(user, planId)); }
+  private controlledSource(user:InMemoryUserAccount,studentId:string,input:z.infer<typeof controlledSourceSchema>){
+    this.students.assertGuardian(user,studentId);const session=this.diagnostics.requireSession(user,input.sessionId);
+    if(session.studentId!==studentId||!['completed','aborted'].includes(session.status))throw new BadRequestException('请选择当前孩子已结束的原原因报告。');
+    const row=this.store.select('diagnosticReports',{sessionId:session.id}).sort((a,b)=>b.version-a.version)[0];
+    if(!row||row.version!==input.expectedReportVersion||controlledGuidanceReportFingerprint(row)!==input.expectedReportFingerprint)throw new ConflictException('原原因报告已有变化，请核对当前原版后再建立计划。');
+    let basis;try{basis=controlledGuidanceBasis(row,input.stateId,'controlled-preview-action');}catch{throw new ConflictException('这条观察尚无至少两个独立配对的支持，先保留反证与未知。');}
+    const atom=this.store.find('knowledgeAtoms',{id:basis.atomId,subject:session.subject,status:'published'});
+    if(!atom||atomDefinitionFingerprint(atom)!==basis.definitionFingerprint)throw new ConflictException('原原因目标定义已变化，请按当前目标重新取得独立依据。');
+    return{row,basis};
+  }
+  controlledOptions(user:InMemoryUserAccount,studentId:string,sessionId:string,stateId:string){
+    this.students.assertGuardian(user,studentId);const source=this.diagnostics.requireSession(user,sessionId);if(source.studentId!==studentId)throw new BadRequestException('原原因报告与孩子不一致。');
+    const row=this.store.select('diagnosticReports',{sessionId}).sort((a,b)=>b.version-a.version)[0];if(!row)throw new NotFoundException('原原因报告尚不存在');
+    const input=validate(controlledSourceSchema,{sessionId,expectedReportVersion:row.version,expectedReportFingerprint:controlledGuidanceReportFingerprint(row),stateId,acknowledgeObservationOnly:true});
+    const original=this.controlledSource(user,studentId,input),responses=this.store.select('diagnosticResponses',{studentId});
+    const baselines=this.store.select('diagnosticSessions',{studentId,subject:source.subject,status:'completed'}).flatMap(session=>{
+      const saved=this.store.select('diagnosticReports',{sessionId:session.id}).sort((a,b)=>b.version-a.version)[0];if(!saved)return[];
+      try{controlledGuidanceBaseline(session,saved,original.basis,responses);if(this.diagnostics.analysisCompatibility(saved.report).requiresReanalysis||this.diagnostics.changedPlanDefinitions(session,[original.basis.atomId]).length)return[];return[{sessionId:session.id,reportVersion:saved.version,completedAt:session.completedAt,rawScore:saved.report.rawScore}];}catch{return[];}
+    }).sort((a,b)=>(b.completedAt??'').localeCompare(a.completedAt??''));
+    return{source:input,state:row.report.controlledCauses!.find(state=>state.id===stateId),baselines,notice:'普通独立原报告用于能力与保持基准；这份受控原报告仅补充任务条件指导依据。没有普通独立基准时先补评测。'};
+  }
+  controlledCreationResult(user:InMemoryUserAccount,studentId:string,requestKey:string){
+    this.students.assertGuardian(user,studentId);validate(z.string().min(8).max(180),requestKey);const original=this.store.find('guidancePlanRevisions',{actorId:user.id,kind:'created',requestKey});
+    if(!original||original.snapshot.studentId!==studentId||!original.snapshot.controlledBasis)return{state:'unknown' as const};
+    const plan=original.snapshot,basis=plan.controlledBasis!,input={baselineSessionId:plan.baselineSessionId,minutesPerDay:plan.minutesPerDay,useAi:false,requestKey,expectedReportVersion:plan.baselineReportVersion,controlledSource:{sessionId:basis.sessionId,expectedReportVersion:basis.reportVersion,expectedReportFingerprint:basis.reportFingerprint,stateId:basis.stateId,acknowledgeObservationOnly:true}};
+    if(inputHash('create',{studentId,...validate(createPlanSchema,input)})!==original.inputHash)throw new ConflictException('原双来源计划命令无法完整核对。');return{state:'committed' as const,input,plan:this.get(user,plan.id)};
+  }
   creationResult(user:InMemoryUserAccount,studentId:string,requestKey:string) {
     this.students.assertGuardian(user,studentId);validate(z.string().min(8).max(180),requestKey);
     const receipt=this.store.find('guidancePlanRevisions',{actorId:user.id,kind:'created',requestKey});
@@ -179,12 +224,14 @@ export class GuidanceService {
     const definitionChangedActionIds = plan.actions.filter(action => this.diagnostics.changedPlanDefinitions(baseline, [action.atomId]).length).map(action => action.id);
     const definitionUnverifiedActionIds = baseline.atomSnapshots ? [] : plan.actions.map(action => action.id);
     const definitionIssues = [...definitionChangedActionIds, ...definitionUnverifiedActionIds];
+    const controlledOriginal=plan.controlledBasis?this.store.select('diagnosticReports',{sessionId:plan.controlledBasis.sessionId}).sort((a,b)=>b.version-a.version)[0]:null;
+    const controlledBasisChanged=!!plan.controlledBasis&&(!controlledOriginal||controlledOriginal.version!==plan.controlledBasis.reportVersion||controlledGuidanceReportFingerprint(controlledOriginal)!==plan.controlledBasis.reportFingerprint);
     return { ...plan, revision: plan.revision ?? 1, baselineReportVersion: version, impact: {
-      needsReview: changed || measurementRulesChanged || definitionIssues.length > 0, baselineReportVersion: version, currentReportVersion: report.version ?? 1,
+      needsReview: changed || measurementRulesChanged || definitionIssues.length > 0 || controlledBasisChanged, controlledBasisChanged, baselineReportVersion: version, currentReportVersion: report.version ?? 1,
       measurementRulesChanged, pendingReviewCount: report.pendingReviewCount,
-      affectedActionIds: changed || measurementRulesChanged ? plan.actions.map(a => a.id) : definitionIssues,
+      affectedActionIds: changed || measurementRulesChanged || controlledBasisChanged ? plan.actions.map(a => a.id) : definitionIssues,
       definitionChangedActionIds, definitionUnverifiedActionIds,
-      message: definitionUnverifiedActionIds.length ? '历史计划未保存知识定义，暂不能核对新旧证据。请重新评测后建立新计划；已开始的练习可继续回看。' :
+      message: controlledBasisChanged ? '作为条件指导依据的受控原报告已追加新版本。请核对支持与反证后另建计划，原版与已开始活动保留。' : definitionUnverifiedActionIds.length ? '历史计划未保存知识定义，暂不能核对新旧证据。请重新评测后建立新计划；已开始的练习可继续回看。' :
         definitionChangedActionIds.length ? '知识点的目标或测量条件已调整。请重新评测当前定义，再建立新指导计划；原计划和已开始练习保留。' :
         measurementRulesChanged ? '能力或题族计量方法已更新，或原依据无法核对。请先按保留的原始作答核对报告，再核对计划；方法变化不表示学习进步。' :
         changed ? '作为依据的评测已修订。请查看新证据，再确认或调整指导计划。' :
@@ -236,6 +283,7 @@ export class GuidanceService {
     const result=()=>{const original=this.store.find('guidancePlanRevisions',{planId:plan.id,actorId:user.id,requestKey:data.requestKey});if(!original||original.inputHash!==inputHash('adjust',data))throw new ConflictException('原计划调整回执无法核对');return{...this.view(user,plan),adjustmentReceipt:{requestKey:data.requestKey,revision:original.revision}};};
     if(command.replay)return result();
     const impact = this.view(user, plan).impact;
+    if(impact.controlledBasisChanged)throw new ConflictException('受控原因依据已变化，请核对新报告另建双来源计划；原依据不能被活动调整替换。');
     if (impact.definitionChangedActionIds?.length || impact.definitionUnverifiedActionIds?.length) throw new ConflictException('知识定义已变化或无法核对，修改活动不能替代重新评测，请建立新计划');
     if (impact.measurementRulesChanged) throw new ConflictException('请先重新分析原报告，再核对和调整指导活动');
 
@@ -253,7 +301,7 @@ export class GuidanceService {
       const old = plan.actions.find(a => a.id === edit.actionId)!;
       return { ...old, minutes: edit.minutes, activity: edit.activity,
         evidenceIds: report.estimates.find(e => e.atomId === old.atomId)?.evidenceIds ?? [],
-        hypothesisId: active.find(h => h.atomId === old.atomId || h.probeAtomIds.includes(old.atomId))?.id ?? null };
+        hypothesisId: plan.controlledBasis?.actionId===old.id?null:active.find(h => h.atomId === old.atomId || h.probeAtomIds.includes(old.atomId))?.id ?? null };
     });
     plan.evidenceIds = [...new Set(plan.actions.flatMap(a => a.evidenceIds))];
     plan.summary = `每天 ${data.minutesPerDay} 分钟，围绕 ${plan.actions.map(a => this.store.find('knowledgeAtoms', { id: a.atomId })?.name ?? a.title).join('、')} 执行已调整活动，并用独立新题复测验证。`;

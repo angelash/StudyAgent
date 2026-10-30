@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-30T18:33:03.221Z",
+  "removed": [
+    {
+      "path": "apps/api/src/modules/diagnostics/curriculum.service.ts",
+      "declarations": [
+        "function:availableMeasurementInput",
+        "function:measuredAgainstDefinition",
+        "function:eligibleMeasurements"
+      ]
+    }
+  ],
+  "scope": "Read-only structural check supplements manual diff review. Moved functions must be inspected; name equality alone is not semantic equality."
+}

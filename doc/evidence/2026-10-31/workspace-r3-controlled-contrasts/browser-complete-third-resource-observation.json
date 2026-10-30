@@ -1,0 +1,48 @@
+{
+  "nodeCount": 31,
+  "chromeWorkingSetBytes": null,
+  "chromeCount": 0,
+  "freePhysicalKiB": 28639692,
+  "at": "2026-10-30T18:14:47.9681340Z",
+  "nodeWorkingSetBytes": 4576256000.0,
+  "scope": "Read-only machine resource sample after one Chromium ERR_NO_BUFFER_SPACE; this sample does not establish resource state at the failure time.",
+  "totalPhysicalKiB": 66842488,
+  "tcpStates": [
+    {
+      "Name": "",
+      "Count": 308
+    },
+    {
+      "Name": "Closed",
+      "Count": 49
+    },
+    {
+      "Name": "Listen",
+      "Count": 24
+    },
+    {
+      "Name": "Established",
+      "Count": 212
+    },
+    {
+      "Name": "FinWait1",
+      "Count": 67
+    },
+    {
+      "Name": "FinWait2",
+      "Count": 1
+    },
+    {
+      "Name": "CloseWait",
+      "Count": 18
+    },
+    {
+      "Name": "TimeWait",
+      "Count": 431
+    },
+    {
+      "Name": "Bound",
+      "Count": 42
+    }
+  ]
+}

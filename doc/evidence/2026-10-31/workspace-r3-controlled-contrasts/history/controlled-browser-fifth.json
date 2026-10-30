@@ -1,0 +1,97 @@
+{
+  "stats": {
+    "startTime": "2026-10-30T17:01:20.248Z",
+    "duration": 59151.489,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "id": "6c12604276f29de87e24-948e09d3ff9dbcd35540",
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: actual editorial UI publishes reviewed originals, parent previews, child completes the original group and report keeps paired observations separate",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "failure": false,
+          "errorClass": null
+        }
+      ]
+    },
+    {
+      "id": "6c12604276f29de87e24-991eb52e52ccbbb5878d",
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: a lost committed preview response recovers through the exact original copy without making another preview",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "failure": false,
+          "errorClass": null
+        }
+      ]
+    },
+    {
+      "id": "6c12604276f29de87e24-4a90e7ac5ac02d007e88",
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: an imported altered command cannot clear a committed original request and the exact downloaded input still recovers",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "failure": false,
+          "errorClass": null
+        }
+      ]
+    },
+    {
+      "id": "6c12604276f29de87e24-5c614b7ffe777b794ecc",
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: two tabs retain their own input and require an explicit read of the other complete copy",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "failure": false,
+          "errorClass": null
+        }
+      ]
+    },
+    {
+      "id": "6c12604276f29de87e24-61e746e37b77589d2288",
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: unavailable browser storage protects internal subject changes until the latest complete input is downloaded",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "failure": false,
+          "errorClass": null
+        }
+      ]
+    },
+    {
+      "id": "6c12604276f29de87e24-433553b86df3fccedaca",
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: the report creates a dual-source plan and the actual child opens teaching while the guardian keeps a read-only view",
+      "status": "unexpected",
+      "attempts": [
+        {
+          "status": "failed",
+          "retry": 0,
+          "failure": true,
+          "errorClass": "other"
+        }
+      ]
+    }
+  ]
+}

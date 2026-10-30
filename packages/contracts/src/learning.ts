@@ -14,6 +14,7 @@ export type PracticeAttempt = {
   assistantHelpSequence?: number;
 };
 export type PracticeSession = {
+  controlledGuidanceOrigin?: {actorId:string;planId:string;planRevision:number;basisFingerprint:string};
   retentionProtocol?:'teaching-retention-v1';
   id: string; studentId: string; subject: 'math' | 'chinese' | 'english' | 'chemistry'; planId: string | null; actionId: string;
   atomId: string; day: string; status: 'in_progress' | 'completed'; questionIds: string[];

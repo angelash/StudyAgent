@@ -18,6 +18,7 @@ export function projectRetentionEvidence(response:DiagnosticResponse,context:Con
  const sessions=new Map(context.sessions.map(row=>[row.id,row])),fingerprint=atomDefinitionFingerprint(atom),review=(context.records.reviewTasks??[]).find(row=>row.id===session.reviewTaskId&&row.planId===session.planId&&row.studentId===response.studentId&&row.atomId===response.atomId),intervalDays=[1,3,7,14].includes(review?.intervalDays)?review!.intervalDays:1;
  const originalPlan=review?(context.records.diagnosticPlans??[]).find(row=>row.id===review.planId&&row.studentId===session.studentId):null;
  const baselines=context.responses.flatMap(original=>{
+  if(original.evidencePurpose==='controlled_cause_observation')return[];
   if(originalPlan&&original.sessionId!==originalPlan.baselineSessionId)return[];
   const source=sessions.get(original.sessionId);if(!source||source.subject!==session.subject||source.studentId!==session.studentId||original.atomId!==response.atomId)return[];
   return[{id:original.id,sessionId:original.sessionId,studentId:original.studentId,subject:source.subject as Subject,atomId:original.atomId,definitionFingerprint:responseDefinitionFingerprint(original,sessions)??'',submittedAt:original.submittedAt,correct:original.correct,status:original.status,disposition:original.disposition,hintLevel:original.hintLevel,priorExposure:!!original.priorExposure,

@@ -6,6 +6,10 @@ import { AnswerEvidenceView } from './answer-evidence-view';
 import { EvidenceFeedbackForm } from './evidence-feedback';
 import { ComponentObservations, DiagnosticEvidence, DiagnosticEvidenceReferences, ObservedPerformance } from './diagnostic-evidence';
 import { ReportPlanPath, type ReportPlanRead } from './report-plan-path';
+import { ControlledContrastEvidence } from './controlled-contrast-evidence';
+import { ControlledGuidancePanel } from './controlled-guidance-panel';
+import { ControlledContrastPlanner } from './controlled-contrast-planner';
+import { requestControlledCopyExit } from './controlled-copy-exit';
 import './knowledge-report-workspace.css';
 
 const statusLabels: Record<MasteryEstimate['status'], string> = { unknown: '尚未测量', insufficient: '证据待补充', learning: '继续巩固', fragile: '还需验证', secure: '证据较稳定' };
@@ -23,7 +27,7 @@ export function KnowledgeReportWorkspace({ ownerId, report, plans, currentPlan, 
     for (const estimate of report.estimates) rows.set(estimate.atomId, { id: estimate.atomId, name: estimate.atomName, estimate });
     for (const atom of report.definitionContext?.atoms ?? []) if (!rows.has(atom.id)) rows.set(atom.id, { id: atom.id, name: atom.name });
     for (const row of report.componentObservations ?? []) if (!rows.has(row.atomId)) rows.set(row.atomId, { id: row.atomId, name: row.atomName });
-    for (const id of [...report.unmeasuredAtomIds, ...report.hypotheses.map(row => row.atomId)]) if (!rows.has(id)) rows.set(id, { id, name: '历史目标 ' + (rows.size + 1) + '（名称待核对）' });
+    for (const id of [...report.unmeasuredAtomIds, ...report.hypotheses.map(row => row.atomId), ...(report.controlledCauses??[]).map(row=>row.atomId)]) if (!rows.has(id)) rows.set(id, { id, name: '历史目标 ' + (rows.size + 1) + '（名称待核对）' });
     return [...rows.values()];
   }, [report]);
   const [selected, setSelected] = React.useState(points[0]?.id ?? ''), [query, setQuery] = React.useState(''), [notice, setNotice] = React.useState('');
@@ -42,9 +46,11 @@ export function KnowledgeReportWorkspace({ ownerId, report, plans, currentPlan, 
   const point = points.find(row => row.id === selected) ?? points[0];
   function choose(id: string) {
     if (!points.some(row => row.id === id)) return;
+    requestControlledCopyExit(()=>{
     setSelected(id); setNotice('');
     const params = new URLSearchParams(window.location.search); params.set('studentId', report.studentId); params.set('subject', report.subject); params.set('session', report.sessionId); params.set('reportAtom', id);
     if (params.toString() !== new URLSearchParams(window.location.search).toString()) window.history.pushState({}, '', '?' + params.toString());
+    });
   }
   const canVerify = !busy && !analysisNeedsUpdate && report.status === 'completed' && report.definitionContext?.origin !== 'unavailable';
   const visible = points.filter(row => row.name.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()));
@@ -52,6 +58,7 @@ export function KnowledgeReportWorkspace({ ownerId, report, plans, currentPlan, 
   const mastery = percent(estimate?.mastery), lower = percent(estimate?.lower), upper = percent(estimate?.upper);
   const validRange = mastery !== null && lower !== null && upper !== null && lower <= mastery && mastery <= upper;
   const evidence = report.evidence.filter(row => row.atomId === point?.id), hypotheses = report.hypotheses.filter(row => row.atomId === point?.id);
+  const controlledCauses=(report.controlledCauses??[]).filter(row=>row.atomId===point?.id);
   const currentIds = new Set(report.evidence.map(row => row.id));
   const historicalIds = estimate?.evidenceIds.filter(id => !currentIds.has(id)) ?? [];
   const selfReports = evidence.filter(row => row.disposition === 'dont_know').length;
@@ -91,6 +98,9 @@ export function KnowledgeReportWorkspace({ ownerId, report, plans, currentPlan, 
         {analysisNeedsUpdate && <p>先完成报告依据核对，再开始验证。</p>}
         {!hypotheses.length && definition && report.status === 'completed' && report.definitionContext?.origin === 'started' && <button className="studio-secondary" disabled={!canVerify} onClick={() => onVerify(undefined, point.id)}>预览本点的独立题组 ↗</button>}
       </section>
+      {report.controlledContrast?.atomId===point.id&&<ControlledContrastEvidence result={report.controlledContrast} studentId={report.studentId} atomId={point.id}/>}
+      {!!controlledCauses.length&&<section aria-label="本点受控条件的原因观察"><h4>受控任务的支持与反证</h4>{controlledCauses.map(cause=><article className="kr-hypothesis" key={cause.id}><h5>{cause.cause==='language_condition_gap'?'文字条件需要单独核对':'相关条件的选择需要单独核对'}</h5><p>{({proposed:'独立配对仍不足，继续保留未知。',supported:'出现重复的任务差异，继续核查其他解释。',inconclusive:'支持与反证并存，暂不下结论。',contradicted:'已有独立配对形成反证。',resolved:'实际教学后的新独立配对形成反证，原原因已关闭。',reopened:'原关闭后的新独立配对再次出现差异，需要重新核查。'})[cause.status]}</p><p>支持方向 {cause.supportingUnits} 组 · 反证 {cause.counterUnits} 组。两侧共同形成一份原因观察，不计入普通掌握或保持样本。</p><DiagnosticEvidenceReferences studentId={report.studentId} ids={cause.supportingEvidenceIds} title="受控差异的原作答"/><DiagnosticEvidenceReferences studentId={report.studentId} ids={cause.counterEvidenceIds} title="受控反证的原作答"/><ControlledGuidancePanel ownerId={ownerId} report={report} cause={cause}/><details><summary>核对判断变化与实际依据</summary><ol className="kr-cause-history">{cause.history.map((row,index)=><li key={index}><p>{row.reason}</p><time>{new Date(row.at).toLocaleString('zh-CN')}</time></li>)}</ol></details></article>)}</section>}
+      <ControlledContrastPlanner ownerId={ownerId} studentId={report.studentId} subject={report.subject} atomId={point.id} disabled={busy||analysisNeedsUpdate}/>
       <ReportPlanPath ownerId={ownerId} report={report} atomId={point.id} plans={plans} currentPlan={currentPlan} read={planRead} onRetry={onRetryPlans} onOpenPlan={onOpenPlan} onAccessLost={onAccessLost} />
     </div></div>}
   </section>;

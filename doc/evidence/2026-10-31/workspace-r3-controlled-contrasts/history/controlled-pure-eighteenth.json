@@ -1,0 +1,205 @@
+{
+  "numTotalTests": 46,
+  "numPassedTests": 46,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "files": 2,
+  "results": [
+    {
+      "file": "controlled-contrast-materials.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "controlled material source and reviewed task controls renders the original text-only material with stable local block identities without mutating current source packets",
+          "status": "passed"
+        },
+        {
+          "title": "controlled material source and reviewed task controls keeps source preflight read-only and binds explicit human approval to the actual active editor and server time",
+          "status": "passed"
+        },
+        {
+          "title": "controlled material source and reviewed task controls refuses approval after the exact preflight original changes and refuses silently normalized full input",
+          "status": "passed"
+        },
+        {
+          "title": "controlled material source and reviewed task controls retains exact private grading originals after later live source withdrawal without returning account credentials or teaching text",
+          "status": "passed"
+        },
+        {
+          "title": "controlled material source and reviewed task controls refuses unrelated inserted original questions and altered retained scoring even after the outer snapshot fingerprint is recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "controlled material source and reviewed task controls rebuilds the complete packet from eligible actual question, scoring, source, definition and mapping records",
+          "status": "passed"
+        },
+        {
+          "title": "controlled material source and reviewed task controls refuses changed original question text, scoring, license, mapping revision, target definition and withdrawn approval",
+          "status": "passed"
+        },
+        {
+          "title": "controlled material source and reviewed task controls cannot replace the actual reviewer with a child, disabled account or nonexistent approval identity",
+          "status": "passed"
+        },
+        {
+          "title": "controlled material source and reviewed task controls keeps reviewed operation and necessary conditions bound to their original packet instead of trusting supplied fingerprints",
+          "status": "passed"
+        },
+        {
+          "title": "controlled material source and reviewed task controls invalidates an old upstream definition rather than silently using a changed prerequisite under its old control approval",
+          "status": "passed"
+        },
+        {
+          "title": "immutable controlled protocol publication originals and consecutive revisions freezes each actual material review and original scoring packet and retains the earlier edition unchanged after revision",
+          "status": "passed"
+        },
+        {
+          "title": "immutable controlled protocol publication originals and consecutive revisions rejects an invented review or removed original even after all public publication and content fingerprints are recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "immutable controlled protocol publication originals and consecutive revisions requires the real original predecessor instead of allowing a gap, duplicate revision or changed task cause under its old identity",
+          "status": "passed"
+        },
+        {
+          "title": "immutable controlled protocol publication originals and consecutive revisions cannot publish a protocol attributed to another editor or substitute a task reviewer whose original authority was never retained",
+          "status": "passed"
+        },
+        {
+          "title": "actual controlled-pair cause resolution and reopening rules keeps conflicting support and later counterpairs inconclusive when no actual intervention is retained",
+          "status": "passed"
+        },
+        {
+          "title": "actual controlled-pair cause resolution and reopening rules resolves only on new independent counterpairs after actual teaching and reopens on later independent same-direction pairs",
+          "status": "passed"
+        },
+        {
+          "title": "actual controlled-pair cause resolution and reopening rules cannot manufacture a new independent confirmation by repeating the same original structural families in a later session",
+          "status": "passed"
+        },
+        {
+          "title": "actual controlled-pair cause resolution and reopening rules does not call a method-version update a resolved learning problem or accept another child state as history",
+          "status": "passed"
+        },
+        {
+          "title": "explicit editorial publication, withdrawal and original complete command identity rebuilds actual original editorial history after source changes, withdrawal and a subsequent publication",
+          "status": "passed"
+        },
+        {
+          "title": "explicit editorial publication, withdrawal and original complete command identity requires the original standalone approval and its original command even when a publication carries another intact snapshot copy",
+          "status": "passed"
+        },
+        {
+          "title": "explicit editorial publication, withdrawal and original complete command identity rejects a changed full approval command despite recalculated public hashes",
+          "status": "passed"
+        },
+        {
+          "title": "explicit editorial publication, withdrawal and original complete command identity checks both the exact original result and reverse relations instead of accepting an orphan or borrowed release receipt",
+          "status": "passed"
+        },
+        {
+          "title": "explicit editorial publication, withdrawal and original complete command identity replays the exact original human approval after a live source edit without approving it again or changing the original time",
+          "status": "passed"
+        },
+        {
+          "title": "explicit editorial publication, withdrawal and original complete command identity publishes and explicitly withdraws the current edition while exact old publication replay returns its original success rather than the latest state",
+          "status": "passed"
+        },
+        {
+          "title": "explicit editorial publication, withdrawal and original complete command identity rejects a stale new publication or withdrawal and cannot replay a private receipt after the actual editor role is revoked",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "controlled-contrast.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "strict reviewed controlled-condition protocol drafts requires exact original packets, two source conditions and independent structural units without changing the original input",
+          "status": "passed"
+        },
+        {
+          "title": "strict reviewed controlled-condition protocol drafts rejects a changed operation, hidden extra prerequisite, changed representation, different scoring or a reused question",
+          "status": "passed"
+        },
+        {
+          "title": "strict reviewed controlled-condition protocol drafts does not manufacture independent pairs from copied structures, another target or reference-only content",
+          "status": "passed"
+        },
+        {
+          "title": "strict reviewed controlled-condition protocol drafts rejects an approval after publication and a claimed comparison without source locators on both arms",
+          "status": "passed"
+        },
+        {
+          "title": "whole-pair deterministic selection rebuilds original protocol, exact paired packets and the frozen order from actual source identities",
+          "status": "passed"
+        },
+        {
+          "title": "whole-pair deterministic selection rejects a rehashed blueprint with an invented source unit, changed controls, another protocol revision or reversed arm order",
+          "status": "passed"
+        },
+        {
+          "title": "whole-pair deterministic selection rejects a rehashed frozen blueprint that claims a complete pair with the same condition twice or reuses a family",
+          "status": "passed"
+        },
+        {
+          "title": "whole-pair deterministic selection freezes original packets and balances the two orders across independent units without mutating source data",
+          "status": "passed"
+        },
+        {
+          "title": "whole-pair deterministic selection excludes an entire pair for either exposed arm, an exposed family or a withdrawn original packet",
+          "status": "passed"
+        },
+        {
+          "title": "whole-pair deterministic selection never fits half a pair to satisfy a task or time budget and retains the exact missing-coverage reason",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses retains ended raw pair scores for cause observations without counting either arm as ordinary mastery samples",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses cannot replace the original controlled first answer with a later ordinary reuse whose exposure flag was omitted",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses holds unfinished paired scores from measurements and assistant summaries until the actual original group ends",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses returns only persistence fields in a paired first-answer receipt and cannot substitute another child or original item",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses excludes teaching between the two original answers even if both local hint flags remain zero, and preserves earlier completed pairs",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses retains an overlapping old classroom range as unknown while keeping actual other children and wholly earlier ranges outside this session",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses retains conflicting support and counterevidence as inconclusive instead of selecting only the desired direction",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses requires two independent matched units and separately retains reverse results and both-below observations",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses does not turn one missing, helped, skipped or unscored arm into an independent paired observation",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses keeps cross-child, another-session, another-definition and duplicate original responses out of pairing",
+          "status": "passed"
+        },
+        {
+          "title": "support, counterevidence, reverse and incomplete actual paired responses preserves the exact original first answers and cannot count two arms as eight independent observations",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

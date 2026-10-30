@@ -190,6 +190,7 @@ export const diagnosticResponseInputSchema = z.object({
 }).strict();
 export type DiagnosticResponseInput = z.infer<typeof diagnosticResponseInputSchema>;
 export type DiagnosticResponse = {
+  evidencePurpose?: 'controlled_cause_observation';
   id: string; sessionId: string; studentId: string; itemId: string; questionId: string; atomId: string;
   family: string; dimension: MeasurementDimension; questionVersion: number; mappingVersion: number;
   answer: unknown; score: number | null; correct: boolean | null;
@@ -275,6 +276,7 @@ export type GuidanceAction = {
   sourceCitations?: LearningSourceCitation[];
 };
 export type DiagnosticGuidancePlan = {
+  controlledBasis?: import('./controlled-contrast').ControlledGuidanceBasis;
   id: string; studentId: string; subject: z.infer<typeof subject>; baselineSessionId: string;
   version: number; source: 'rules' | 'ai' | 'human'; status: 'proposed' | 'active' | 'paused' | 'completed';
   minutesPerDay: number; summary: string; actions: GuidanceAction[]; evidenceIds: string[];
@@ -287,6 +289,7 @@ export type DiagnosticGuidancePlan = {
 export type GuidancePlanView = DiagnosticGuidancePlan & {
   modelRequest?: { status: 'not_requested' | 'queued' | 'unavailable'; suggestionId?: string; reason: string };
   impact: { needsReview: boolean; baselineReportVersion: number; currentReportVersion: number;
+    controlledBasisChanged?: boolean;
     measurementRulesChanged?: boolean;
     pendingReviewCount: number; affectedActionIds: string[]; message: string; definitionChangedActionIds?: string[];
     definitionUnverifiedActionIds?: string[] };
@@ -306,6 +309,8 @@ export type ReviewTask = {
 };
 
 export type DiagnosticReport = {
+  controlledContrast?: import('./controlled-contrast').ControlledContrastResult;
+  controlledCauses?: import('./controlled-contrast').ControlledCauseState[];
   retentionProtocol?: 'teaching-retention-v1';
   familyIdentityVersion?: string;
   measurementVersion?: string;

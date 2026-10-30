@@ -1,10 +1,11 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig,type ReporterDescription } from '@playwright/test';
 import { join } from 'node:path';
 
 const apiPort = Number(process.env.E2E_API_PORT ?? 4107);
 const webPort = Number(process.env.E2E_WEB_PORT ?? 3107);
 const apiUrl = `http://localhost:${apiPort}`;
 const webUrl = `http://localhost:${webPort}`;
+const blobReporter:ReporterDescription[]=process.env.E2E_BLOB_OUTPUT_DIR?[['blob',{outputDir:process.env.E2E_BLOB_OUTPUT_DIR}]]:[];
 const sharedEnvironment = {
   STUDY_STORAGE: 'sqlite',
   STUDY_DATA_DIR: process.env.E2E_DATA_DIR ?? join(process.cwd(), 'data', 'qa', `browser-product-${process.pid}`),
@@ -22,6 +23,7 @@ export default defineConfig({
   reporter: [
     ['list'],
     ['json', { outputFile: process.env.E2E_RESULT_FILE ?? 'data/qa/browser-product-acceptance.json' }],
+    ...blobReporter,
   ],
   outputDir: process.env.E2E_OUTPUT_DIR ?? 'test-results/browser-product-acceptance',
   use: {

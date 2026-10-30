@@ -6,7 +6,7 @@ import { ApiRequestError, apiRequest } from '../lib/api';
 type Props = { report: DiagnosticReport; studentMode: boolean; ownerId: string; ownerRole: string;
   onChange: (report: DiagnosticReport) => void; onRequiresUpdate: (required: boolean) => void };
 type Command = { schema: 1; ownerId: string; ownerRole: string; studentId: string; sessionId: string;
-  requestKey: string; expectedReportVersion: number; reason: string };
+  requestKey: string; expectedReportVersion: number; reason: string; reanalyzeControlledCauses?:true };
 type AnalysisEntry = { status?: DiagnosticReportAnalysisStatus; error?: string; promise?: Promise<DiagnosticReportAnalysisStatus> };
 const analysisCache = new Map<string, AnalysisEntry>();
 
@@ -26,7 +26,7 @@ export function ReportAnalysisUpdate({ report, studentMode, ownerId, ownerRole, 
         value.studentId !== report.studentId || value.sessionId !== report.sessionId ||
         typeof value.requestKey !== 'string' || value.requestKey.length < 8 || value.requestKey.length > 180 ||
         !Number.isSafeInteger(value.expectedReportVersion) || value.expectedReportVersion! < 1 ||
-        typeof value.reason !== 'string' || value.reason.length < 5 || value.reason.length > 1000) throw new Error('Unrecognised original');
+        typeof value.reason !== 'string' || value.reason.length < 5 || value.reason.length > 1000 || value.reanalyzeControlledCauses!==undefined&&value.reanalyzeControlledCauses!==true) throw new Error('Unrecognised original');
       setUnknownOriginal(null); return value as Command;
     } catch {
       setUnknownOriginal(raw); throw new Error('本机原核对操作无法识别，原文已保留。请下载原件，保留原报告并重新核查。');
@@ -74,7 +74,7 @@ export function ReportAnalysisUpdate({ report, studentMode, ownerId, ownerRole, 
     window.addEventListener('storage', storage);
     return () => { active = false; window.removeEventListener('storage', storage); };
   }, [reload, ownerId, slot, report.sessionId, report.version]);
-  async function update(newerReport: boolean) {
+  async function update(newerReport: boolean,controlled=false) {
     setBusy(true); setError('');
     const controller = new AbortController(); action.current = controller;
     try {
@@ -83,13 +83,13 @@ export function ReportAnalysisUpdate({ report, studentMode, ownerId, ownerRole, 
       if (!saved && !newerReport) {
         saved = { schema: 1, ownerId, ownerRole, studentId: report.studentId, sessionId: report.sessionId,
           requestKey: crypto.randomUUID(), expectedReportVersion: report.version ?? 1,
-          reason: '核对实际回答与自述的计量资格和题族方法，按保留的原作答更新报告' };
+          ...(controlled?{reanalyzeControlledCauses:true as const}:{}),reason: controlled?'明确核对原受控配对与评分版本，同时保留支持、反证及未知；没有新增学习作答。':'核对实际回答与自述的计量资格和题族方法，按保留的原作答更新报告' };
         const raw = JSON.stringify(saved); localStorage.setItem(slot, raw);
         if (localStorage.getItem(slot) !== raw) throw new Error('无法保存原核对操作，请恢复本机存储后重试。');
       }
       setCommand(saved); callbacks.current.onRequiresUpdate(true);
       const next = saved ? await apiRequest<DiagnosticReport>(`${route}/reanalyze`, { method: 'POST', signal: controller.signal,
-        body: JSON.stringify({ requestKey: saved.requestKey, expectedReportVersion: saved.expectedReportVersion, reason: saved.reason }) }) :
+        body: JSON.stringify({ requestKey: saved.requestKey, expectedReportVersion: saved.expectedReportVersion, reason: saved.reason,...(saved.reanalyzeControlledCauses?{reanalyzeControlledCauses:true}:{}) }) }) :
         await apiRequest<DiagnosticReport>(`${route}/report`, { signal: controller.signal });
       if (!live.current) return;
       if (saved) {
@@ -112,7 +112,7 @@ export function ReportAnalysisUpdate({ report, studentMode, ownerId, ownerRole, 
       const url = URL.createObjectURL(new Blob([copy.raw], { type: 'application/json' }));
       const link = document.createElement('a'); link.href = url; link.download = `report-analysis-command-${index + 1}.json`; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
     }}>下载原操作副本 {index + 1}</button>)}</details>;
-  if (!command && !status.requiresReanalysis && status.reportVersion === (report.version ?? 1)) return originalCopies || null;
+  if (!command && !status.requiresReanalysis && status.reportVersion === (report.version ?? 1)) return <>{!studentMode&&['parent','admin'].includes(ownerRole)&&status.canReanalyze&&!!report.controlledCauses?.length&&<section className="studio-hint" aria-label="明确重新核对原受控原因"><p>按原作答、原配对和当前评分另存一次原因核对。没有新增学习证据，分析变化不表示学习改善。</p>{error&&<p role="alert" className="studio-error">{error}</p>}<button className="studio-secondary" disabled={busy} onClick={()=>void update(false,true)}>按原作答重新核对受控原因</button></section>}{originalCopies}</>;
   const newerReport = status.reportVersion !== (report.version ?? 1);
   return <><section className="studio-hint" aria-label="重新核对报告依据">
     <strong>{command ? '上次核对的结果还需确认。' : newerReport ? '这份报告已有更新。' : '重新核对独立任务，保留当时的作答。'}</strong>

@@ -16,8 +16,12 @@ import { GuidanceModelService } from './guidance-model.service';
 import { GuidanceModelWorkerService } from './guidance-model-worker.service';
 import { GuidanceModelController } from './guidance-model.controller';
 import { guidanceModelPort } from './guidance-model-record';
+import { ControlledEditorialService } from './controlled-editorial.service';
+import { ControlledEditorialController } from './controlled-editorial.controller';
+import { ControlledDiagnosticsService } from './controlled-diagnostics.service';
+import { ControlledDiagnosticsController } from './controlled-diagnostics.controller';
 
-@Module({ imports: [StudentsModule, QuestionWorkspaceModule, AiModule, StudentMediaModule, ProcessingFilesModule], controllers: [DiagnosticsController,GuidanceModelController],
-  providers: [RetentionService,CurriculumService, CurriculumPackageService, DiagnosticsService, GuidanceService, FoundationSeedService, TextbookRegistryService,
+@Module({ imports: [StudentsModule, QuestionWorkspaceModule, AiModule, StudentMediaModule, ProcessingFilesModule], controllers: [DiagnosticsController,GuidanceModelController,ControlledEditorialController,ControlledDiagnosticsController],
+  providers: [ControlledEditorialService,ControlledDiagnosticsService,RetentionService,CurriculumService, CurriculumPackageService, DiagnosticsService, GuidanceService, FoundationSeedService, TextbookRegistryService,
     GuidanceModelService,GuidanceModelWorkerService,{provide:guidanceModelPort,useExisting:GuidanceModelService}], exports: [RetentionService,CurriculumService, DiagnosticsService, GuidanceService] })
 export class DiagnosticsModule {}

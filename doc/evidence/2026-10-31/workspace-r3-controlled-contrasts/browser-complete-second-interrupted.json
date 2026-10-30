@@ -1,0 +1,7 @@
+{
+  "scope": "Owned full browser run and its isolated child tree only. Preserve partial original evidence. API14 compiled service and complete API second continue unchanged.",
+  "state": "interrupted",
+  "pid": 61760,
+  "at": "2026-10-30T17:53:52.5378196Z",
+  "reason": "QA Web proxy rewrite used default API_PORT4000 while the actual isolated client uses4421. Bind build/start proxy to the exact QA API and verify the built routes before the final full run."
+}

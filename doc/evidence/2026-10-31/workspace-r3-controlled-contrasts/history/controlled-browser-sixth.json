@@ -1,0 +1,27 @@
+{
+  "stats": {
+    "startTime": "2026-10-30T17:04:49.250Z",
+    "duration": 25982.909,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "id": "6c12604276f29de87e24-433553b86df3fccedaca",
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: the report creates a dual-source plan and the actual child opens teaching while the guardian keeps a read-only view",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "failure": false,
+          "errorClass": null
+        }
+      ]
+    }
+  ]
+}

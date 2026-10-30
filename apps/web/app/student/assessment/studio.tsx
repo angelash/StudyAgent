@@ -29,9 +29,12 @@ import { VerificationObservationReport } from '../../../components/verification-
 import { KnowledgeReportWorkspace } from '../../../components/knowledge-report-workspace';
 import type { ReportPlanRead } from '../../../components/report-plan-path';
 import { learningContextIssue, readLearningContext } from '../../../lib/learning-context';
+import { ControlledContrastPlanner } from '../../../components/controlled-contrast-planner';
+import { requestControlledCopyExit } from '../../../components/controlled-copy-exit';
 
 type Child = { id: string; nickname: string; grade: number };
 type Session = { id: string; status: 'in_progress' | 'paused' | 'completed' | 'aborted'; subject: Subject; scopeSnapshot: LearningScope;
+  controlled?:{feedbackHeld:boolean;notice:string;evidencePurpose:'controlled_cause_observation'};
   revision: number; blueprint?: AssessmentBlueprint;
   paperReviewOrigin?: DiagnosticBlueprintView['paperReviewOrigin'];
   routing: { mode: 'adaptive'; currentItemId: string | null; notice: string; decisions?: DiagnosticRoutingDecision[] } | null;
@@ -54,6 +57,7 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
   const [returnReport] = React.useState(() => { const id = typeof window === 'undefined' ? null : new URLSearchParams(window.location.search).get('returnReport'); return id && id.length <= 180 ? id : ''; });
   const studentMode = identity?.role === 'student';
   const [confirmedScope, setConfirmedScope] = React.useState<LearningScope | null>(null);
+  const [controlledTarget,setControlledTarget]=React.useState('');
   const [children, setChildren] = React.useState<Child[]>([]), [studentId, setStudentId] = React.useState('');
   const [subject, setSubject] = React.useState<Subject>('math'), [grade, setGrade] = React.useState(3), [term, setTerm] = React.useState<'upper' | 'lower'>('upper');
   const [nickname, setNickname] = React.useState(''), [textbookVersion, setTextbookVersion] = React.useState('按已学知识点确认');
@@ -87,7 +91,7 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
   const planCreation=useGuidanceCreation(!studentMode?identity?.id??'':'',studentId,report?.sessionId??'',report?.version??1,screen==='report',value=>visitPlan(value));
   const current = session?.routing ? session.items.find(item => item.id === session.routing!.currentItemId && !item.answered) : session?.items.find((item) => !item.answered);
   const answerReady = !!payload && !!answer && draft.matches('diagnostic', session?.id ?? '', current?.id ?? '');
-  const canAnswer = answerReady && payload ? answerInputConfiguration(payload.answerSchema).supported && payload.inputAvailability?.supported !== false && !mediaPending && !resourceBlocked && !draft.pendingSubmission && draft.phase !== 'conflict' : false;
+  const canAnswer = answerReady && payload ? (!session?.controlled||studentMode)&&answerInputConfiguration(payload.answerSchema).supported && payload.inputAvailability?.supported !== false && !mediaPending && !resourceBlocked && !draft.pendingSubmission && draft.phase !== 'conflict' : false;
   const currentGroup = session?.routing ? `第 ${Math.floor(session.answeredCount / (session.blueprint?.groupSize ?? 3)) + 1} 小组` :
     session?.blueprint?.groups.find(group => group.itemIds.includes(current?.id ?? ''))?.title ?? `第 ${Math.floor((session?.answeredCount ?? 0) / 4) + 1} 小组`;
   const child = children.find((item) => item.id === studentId);
@@ -329,7 +333,7 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
       const reason = action === 'abort' ? endReason : action === 'pause' ? '暂时休息，保留原题组和已经写出的思路。' : '休息结束，按原范围与原题组继续独立作答。';
       const signature = JSON.stringify([session.id, session.revision, action, reason]);
       if (stateRequest.current.signature !== signature) {
-        if (session.status === 'in_progress' && current && answer) await draft.flush();
+        if (session.status === 'in_progress' && current && answer && (!session.controlled || studentMode)) await draft.flush();
         stateRequest.current = { signature, key: crypto.randomUUID() };
       }
       const next = await request<Session>(`/diagnostics/sessions/${session.id}/state`, { action, expectedRevision: session.revision,
@@ -340,6 +344,7 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
   }
   async function respond(disposition: 'answered' | 'dont_know' | 'skip') {
     if (!session || !current || !answerReady) return;
+    if(session.controlled&&!studentMode){setError('这组成对任务请由孩子本人通过学习码作答。');return;}
     const epoch = draft.epoch;
     await execute(async () => {
       await draft.submit(disposition);
@@ -394,14 +399,14 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
           {screen === 'setup' && <>
             <div className="studio-section-head"><span className="studio-eyebrow">01 / 学习起点</span><h2>先告诉我们，学到哪里了。</h2><p>只测已学内容。还没有测到的知识点，会保留为未知。</p></div>
             <div className="studio-config">
-              {children.length > 0 ? <label>孩子<select value={studentId} onChange={(event) => { setStudentId(event.target.value); setSession(null); setReport(null); }}>
+              {children.length > 0 ? <label>孩子<select value={studentId} onChange={(event) => { const next=event.target.value;requestControlledCopyExit(()=>{setStudentId(next);setSession(null);setReport(null);}); }}>
                 {children.map((item) => <option key={item.id} value={item.id}>{item.nickname}</option>)}</select></label> : <label>孩子的昵称<input value={nickname} onChange={(event) => setNickname(event.target.value)} placeholder="例如：小禾" maxLength={50} /></label>}
               <label>当前年级<select value={grade} onChange={(event) => { setGrade(Number(event.target.value)); setProgress({ bookId: '', mode: 'knowledge', lessonIds: [] }); setLearned([]); }}>{(subject === 'chemistry' ? [9] : [1, 2, 3, 4, 5, 6]).map((value) => <option key={value} value={value}>{value}年级</option>)}</select></label>
               <label>学期<select value={term} onChange={(event) => { setTerm(event.target.value as 'upper' | 'lower'); setProgress({ bookId: '', mode: 'knowledge', lessonIds: [] }); setLearned([]); }}><option value="upper">上学期</option><option value="lower">下学期</option></select></label>
               <label>每次时间<select value={minutes} onChange={(event) => setMinutes(Number(event.target.value))}>{[5, 10, 15, 20, 30].map((value) => <option key={value} value={value}>{value}分钟</option>)}</select></label>
             </div>
             {!children.length ? <button className="studio-primary" disabled={busy || !nickname.trim()} onClick={createChild}>建立学习档案</button> : <>
-              <div className="studio-subjects" role="group" aria-label="学科">{subjects.map(([key, title]) => <button key={key} aria-pressed={subject === key} onClick={() => { setSubject(key); setSession(null); setReport(null); }}>{title}</button>)}</div>
+              <div className="studio-subjects" role="group" aria-label="学科">{subjects.map(([key, title]) => <button key={key} aria-pressed={subject === key} onClick={() => requestControlledCopyExit(()=>{setSubject(key);setSession(null);setReport(null);})}>{title}</button>)}</div>
               <LearningProgressSelector subject={subject} grade={grade} term={term} selection={progress} onChange={setProgress}
                 version={textbookVersion} onVersion={setTextbookVersion} onLearned={setLearned} />
               <div className="studio-point-heading"><h3>{progress.mode === 'textbook' ? '已学课时对应的知识点' : '勾选已经学过的知识点'}</h3>{progress.mode === 'knowledge' && <button className="studio-text-button" onClick={() => setLearned(atoms.filter((atom) => atom.grade === grade).map((atom) => atom.id))}>选择本年级能力点</button>}</div>
@@ -419,9 +424,10 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
                 <button className="studio-primary" onClick={startAssessment} disabled={busy || !learned.length}>{busy ? '正在准备…' : studentMode ? '把这个进度告诉家长' : '确认进度，查看题组'} <span aria-hidden="true">↗</span></button></div>
               {studentMode && <><p role="status" className="studio-notice">{saved || '可以选择自己的年级和已学内容，请家长一起确认后，用新范围评测。'}</p>{confirmedScope && <button className="studio-primary" disabled={busy} onClick={() => execute(() => prepareBlueprint(confirmedScope!))}>按已确认的范围查看题组 →</button>}</>}<p className="studio-footnote">题量由时长和可用题目共同决定。基础题为规则估计材料，教材完整覆盖与标准化常模尚需独立验证。</p>
             </>}
-            {sessions.length > 0 && <section className="studio-history"><h3>继续上一次，或回看报告</h3>{sessions.slice(0, 6).map((item) => <button key={item.id} onClick={() => execute(() => openSession(item))} disabled={busy}>
+            {sessions.length > 0 && <section className="studio-history"><h3>继续上一次，或回看报告</h3>{sessions.slice(0, 6).map((item) => <button key={item.id} onClick={() => requestControlledCopyExit(()=>{void execute(() => openSession(item));})} disabled={busy}>
               <span>{new Date(item.startedAt).toLocaleDateString('zh-CN')} · {item.scopeSnapshot.grade}年级</span><strong>{item.status === 'completed' ? '查看报告' : item.status === 'aborted' ? '查看已答记录' : `${item.status === 'paused' ? '恢复评测' : '继续评测'} ${item.answeredCount}/${item.totalCount}`} ↗</strong></button>)}</section>}
             {plan && <button className="studio-plan-shortcut" onClick={() => visitPlan(plan)}>已有指导计划 · {plan.status === 'active' ? '正在执行' : '查看与确认'} <span>↗</span></button>}
+            {confirmedScope&&confirmedScope.studentId===studentId&&confirmedScope.subject===subject&&identity&&<details className="studio-report-scope"><summary>按已确认范围，单独核对任务条件</summary><label>核对目标<select value={confirmedScope.learnedAtomIds.includes(controlledTarget)?controlledTarget:confirmedScope.currentAtomId??confirmedScope.learnedAtomIds[0]} onChange={event=>{const next=event.target.value;requestControlledCopyExit(()=>setControlledTarget(next));}}>{confirmedScope.learnedAtomIds.map(id=><option key={id} value={id}>{atoms.find(atom=>atom.id===id)?.name??id}</option>)}</select></label><ControlledContrastPlanner ownerId={identity.id} studentId={studentId} subject={subject} atomId={confirmedScope.learnedAtomIds.includes(controlledTarget)?controlledTarget:confirmedScope.currentAtomId??confirmedScope.learnedAtomIds[0]} disabled={busy} onOpenSession={id=>void execute(async()=>openSession(await request<Session>(`/diagnostics/sessions/${encodeURIComponent(id)}`)))}/></details>}
           </>}
           {screen === 'preview' && blueprint && <AssessmentBlueprintCard preview={blueprint} busy={busy} onBack={leaveBlueprint} onStart={() => execute(async () => openSession(await request<Session>(`/diagnostics/blueprints/${encodeURIComponent(blueprint.id)}/start`, {})))} />}
           {locatedItem && session && <section className="studio-question" aria-label="从历史对话定位的题目">
@@ -431,19 +437,20 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
             <button className="studio-secondary" onClick={() => { setLocatedItem(null); const params = new URLSearchParams(window.location.search); params.delete('item'); params.set('studentId', studentId); params.set('subject', session.subject); params.set('session', session.id); window.history.replaceState({}, '', '?' + params.toString()); }}>{['completed', 'aborted'].includes(session.status) ? '回到本组报告与原作答' : '回到当前核查进度'}</button>
           </section>}
           {!locatedItem && screen === 'assessment' && session && <>
+            {session.controlled&&<p className="studio-notice" role="status">{session.controlled.notice}{!studentMode&&' 请孩子使用自己的学习码继续；家长可查看进度、暂停或保留已答记录后结束本组。'}</p>}
             <div className="studio-section-head"><span className="studio-eyebrow">02 / 一次只看一步</span><div className="studio-question-meta"><h2>{current?.atomName ?? '这一组已完成'}</h2><span>{session.answeredCount + (current ? 1 : 0)} / {session.totalCount}</span></div><p>先独立想一想。暂时不会也可以如实记录。</p></div>
             <div className="studio-progress" role="progressbar" aria-label="评测进度" aria-valuemin={0} aria-valuemax={session.totalCount} aria-valuenow={session.answeredCount}><span style={{ width: `${session.answeredCount / session.totalCount * 100}%` }} /></div>
             {session.status === 'in_progress' && current ? <div className="studio-question"><div className="studio-question-top"><span>{currentGroup}</span><small aria-live="polite">{draft.label}</small></div>
-              {answerReady && payload && answer ? <fieldset className="daily-answer-field" disabled={busy || draft.pendingSubmission}><legend className="visually-hidden">本题作答</legend><QuestionRenderer disabled={busy || draft.pendingSubmission} key={`${session.id}:${current.id}:${draft.state?.baseHash}`} renderPayload={payload} answer={answer} onChange={changeAnswer} mediaTarget={{ kind: 'diagnostic', sessionId: session.id, itemId: current!.id }} onPendingChange={setMediaPending} onDisplayIssueChange={setResourceBlocked} /></fieldset> : <p>正在打开题目…</p>}
+              {answerReady && payload && answer ? <fieldset className="daily-answer-field" disabled={busy || draft.pendingSubmission || !!session.controlled&&!studentMode}><legend className="visually-hidden">本题作答</legend><QuestionRenderer disabled={busy || draft.pendingSubmission || !!session.controlled&&!studentMode} key={`${session.id}:${current.id}:${draft.state?.baseHash}`} renderPayload={payload} answer={answer} onChange={changeAnswer} mediaTarget={{ kind: 'diagnostic', sessionId: session.id, itemId: current!.id }} onPendingChange={setMediaPending} onDisplayIssueChange={setResourceBlocked} /></fieldset> : <p>正在打开题目…</p>}
               <AnswerDraftStatus draft={draft} schema={payload?.answerSchema} onRecover={() => respond('answered')} onReadActivity={async () => { await openSession(session, false); }} />
               {hint && <div className="studio-hint" role="status">{hint}</div>}
-              <div className="studio-answer-actions"><button className="studio-text-button" disabled={busy || draft.pendingSubmission} onClick={() => execute(async () => {
+              <div className="studio-answer-actions"><button className="studio-text-button" disabled={busy || draft.pendingSubmission || !!session.controlled&&!studentMode} onClick={() => execute(async () => {
                 const epoch = draft.epoch, result = await request<{ hint: string }>(`/diagnostics/sessions/${session.id}/items/${encodeURIComponent(current.id)}/hint`, {}); if (draft.isCurrent(epoch)) setHint(result.hint);
               })}>给我一点提示</button><div><button className="studio-secondary" disabled={busy || !canAnswer} onClick={() => respond('dont_know')}>暂时不会</button><button className="studio-primary" disabled={busy || !answer || !canAnswer} onClick={() => respond('answered')}>{busy ? '保存中…' : '提交，下一步'} →</button></div></div>
-              <button className="studio-text-button studio-skip" disabled={busy || !answerReady || draft.pendingSubmission} onClick={() => respond('skip')}>题目显示不清或有问题，先跳过</button>
-            </div> : session.status === 'in_progress' ? <button className="studio-primary" disabled={busy} onClick={() => execute(() => completeSession(session.id))}>生成本次报告</button> : null}
+              <button className="studio-text-button studio-skip" disabled={busy || !answerReady || draft.pendingSubmission || !!session.controlled&&!studentMode} onClick={() => respond('skip')}>题目显示不清或有问题，先跳过</button>
+            </div> : session.status === 'in_progress' ? <button className="studio-primary" disabled={busy || !!session.controlled&&!studentMode} onClick={() => execute(() => completeSession(session.id))}>生成本次报告</button> : null}
             {session.status === 'paused' && <div className="assessment-paused"><span className="studio-eyebrow">先休息一下</span><h3>思路和进度都已保存。</h3><p>回来后继续同一组题目。暂停期间保留草稿、首次作答与提示记录。</p><button className="studio-primary" disabled={busy} onClick={() => changeSessionState('resume')}>准备好了，继续这一组 →</button></div>}
-            <div className="assessment-state-controls">{session.status === 'in_progress' && <button className="studio-secondary" disabled={busy || mediaPending} onClick={() => changeSessionState('pause')}>保存草稿，休息一下</button>}<button className="studio-text-button" disabled={busy || mediaPending} onClick={() => setEndOpen(!endOpen)}>提前结束本组</button><button className="studio-text-button" disabled={busy} onClick={() => execute(async () => { if (answerReady && !draft.pendingSubmission) await draft.flush(); await openSession(session); })}>刷新当前状态</button></div>
+            <div className="assessment-state-controls">{session.status === 'in_progress' && <button className="studio-secondary" disabled={busy || mediaPending} onClick={() => changeSessionState('pause')}>保存草稿，休息一下</button>}<button className="studio-text-button" disabled={busy || mediaPending} onClick={() => setEndOpen(!endOpen)}>提前结束本组</button><button className="studio-text-button" disabled={busy} onClick={() => execute(async () => { if (answerReady && !draft.pendingSubmission && (!session.controlled || studentMode)) await draft.flush(); await openSession(session); })}>刷新当前状态</button></div>
             {endOpen && <form className="assessment-stop" onSubmit={event => { event.preventDefault(); void changeSessionState('abort'); }}><h3>保留这次已经完成的部分。</h3><p>已提交的表现和草稿继续保存，未答题保持未知。本组结束后不能再续答，可从当前范围另开一组新题。</p><label>这次提前结束的原因<textarea required minLength={5} maxLength={1000} rows={3} value={endReason} onChange={event => setEndReason(event.target.value)} placeholder="例如：今天已经疲劳，休息后再用新题继续观察。" /></label><div><button className="studio-primary" disabled={busy || mediaPending || endReason.trim().length < 5}>保留已答记录，结束本组</button><button type="button" className="studio-text-button" disabled={busy} onClick={() => setEndOpen(false)}>继续这一组</button></div></form>}
             <p className="studio-footnote">首次提交会保留为测量证据；提示记录会单独计入。随时可以离开，回来继续。</p>
           </>}
@@ -454,8 +461,8 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
             <ReportAnalysisUpdate key={JSON.stringify([identity?.id, identity?.role, report.studentId, report.sessionId, report.version ?? 1,
               report.measurementVersion, report.familyIdentityVersion, report.estimates.map(row => row.algorithmVersion)])} report={report} studentMode={!!studentMode}
               ownerId={identity?.id ?? ''} ownerRole={identity?.role ?? ''}
-              onRequiresUpdate={setAnalysisNeedsUpdate} onChange={next => setReport(current =>
-                current?.sessionId === next.sessionId && (current.version ?? 1) <= (next.version ?? 1) ? next : current)} />
+              onRequiresUpdate={setAnalysisNeedsUpdate} onChange={next => requestControlledCopyExit(()=>setReport(current =>
+                current?.sessionId === next.sessionId && (current.version ?? 1) <= (next.version ?? 1) ? next : current))} />
             <ReportHistory key={`${report.sessionId}:${report.version ?? 1}`} sessionId={report.sessionId} />
             {session?.id === report.sessionId && !!session.routing?.decisions?.length && <details className="studio-report-scope"><summary>这组题怎样逐步核查</summary><p>每一步按当时的作答记录安排。选题理由帮助核对过程，不能单独证明深层原因；后续重评分保留原来的选题历史。</p><ol>{session.routing.decisions.map(decision => <li key={decision.sequence}><strong>{session.items.find(item => item.id === decision.itemId)?.atomName ?? '本组知识点'}</strong><p>{decision.reason}</p></li>)}</ol></details>}
             {report.definitionContext && <details className="studio-report-scope"><summary>{report.definitionContext.origin === 'started' ? '测量时采用的知识目标与标准' : '这份历史报告的知识定义尚无法核对'}</summary>

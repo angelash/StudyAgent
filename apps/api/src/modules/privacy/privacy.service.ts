@@ -6,7 +6,7 @@ import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { AuthService } from '../auth/auth.service';
 import { validate } from '../../common/validation';
-import { accountRecords, anonymizeSharedAttribution, mergeSelections, portableRecords, privacyHash, removeSelected, selectionCounts, selectionFingerprint, studentRecords, type Selection } from './privacy-records';
+import { accountRecords, anonymizeControlledAttribution, anonymizeSharedAttribution, mergeSelections, portableRecords, privacyHash, removeSelected, selectionCounts, selectionFingerprint, studentRecords, type Selection } from './privacy-records';
 import { StudentMediaService } from '../student-media/student-media.service';
 import { tarArchive } from './tar-archive';
 import { studioMaterialFile } from '../learning/studio-material-storage';
@@ -209,11 +209,12 @@ export class PrivacyService {
     if (!preview.canDelete) throw new ConflictException(preview.blockers.join(' '));
     if (preview.confirmation !== command.confirmation) throw new BadRequestException('输入的确认名称不一致');
     if (preview.fingerprint !== command.fingerprint) throw new ConflictException('资料或监护关系已变化，请重新查看删除范围后确认');
-    removeSelected(this.store, selection);
-    if (!studentId) anonymizeSharedAttribution(this.store, preview.retainedChildren.map(child => child.id), actor.id);
     const receipt = this.receipt(actor, kind, subjectId, command.requestKey, inputHash, preview.counts);
     receipt.erasedStudentHashes = preview.deletedChildren.map(child => privacyHash({ id: child.id }));
     receipt.retainedStudentHashes = preview.retainedChildren.map(child => privacyHash({ id: child.id }));
+    if (!studentId) anonymizeControlledAttribution(this.store, actor.id, receipt);
+    removeSelected(this.store, selection);
+    if (!studentId) anonymizeSharedAttribution(this.store, preview.retainedChildren.map(child => child.id), actor.id);
     const sourceHashes=new Set<string>();
     for(const draft of selection.teachingToolRuns??[]){
       const task=await this.store.tasks.get(String(draft.taskId));

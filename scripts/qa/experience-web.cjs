@@ -11,12 +11,19 @@ const runtimeLock = path.join(target, '.runtime-lock.json');
 const buildContext = path.join(target, '.build-context.json');
 const apiPort = Number(process.env.E2E_API_PORT || '4107');
 if (!Number.isInteger(apiPort) || apiPort < 1 || apiPort > 65535) throw new Error('Invalid isolated API port');
+function verifyApiProxy(){
+  const manifest=JSON.parse(fs.readFileSync(path.join(target,'.next/routes-manifest.json'),'utf8')),value=manifest.rewrites;
+  const rules=Array.isArray(value)?value:[...(value?.beforeFiles??[]),...(value?.afterFiles??[]),...(value?.fallback??[])];
+  const api=rules.filter(rule=>rule.source==='/api/:path*');
+  if(api.length!==1||api[0].destination!=='http://127.0.0.1:'+apiPort+'/api/:path*')throw Error('Isolated Web API proxy points outside the intended QA port; rebuild with the exact E2E_API_PORT');
+}
 if (!['build', 'start'].includes(command)) throw new Error('Use build or start');
 if (command === 'start') {
   if (!fs.existsSync(buildContext)) throw new Error('QA Web build context missing; rebuild this isolated Web before starting');
   const context = JSON.parse(fs.readFileSync(buildContext, 'utf8'));
   const buildId = fs.readFileSync(path.join(target, '.next/BUILD_ID'), 'utf8').trim();
-  if (context.apiPort !== apiPort || context.buildId !== buildId) throw new Error('QA Web build API port or BUILD_ID mismatch; rebuild with E2E_API_PORT=' + apiPort);
+  if (context.apiPort !== apiPort || context.proxyApiPort!==apiPort || context.buildId !== buildId) throw new Error('QA Web build API port, proxy or BUILD_ID mismatch; rebuild with E2E_API_PORT=' + apiPort);
+  verifyApiProxy();
 }
 // Never replace a .next directory while browser acceptance is serving it.
 if (fs.existsSync(runtimeLock)) {
@@ -43,12 +50,13 @@ if (command === 'start') fs.writeFileSync(runtimeLock, JSON.stringify({ pid: pro
 let result;
 try {
   result = spawnSync(process.execPath, [next, command, target, ...(command === 'build' ? ['--webpack'] : ['--hostname', '127.0.0.1', '--port', process.env.E2E_WEB_PORT || '3107'])],
-    { cwd: root, env: { ...process.env, NODE_ENV: 'production', NEXT_PUBLIC_API_BASE_URL: 'http://localhost:' + apiPort, NEXT_TELEMETRY_DISABLED: '1' }, stdio: 'inherit' });
+    { cwd: root, env: { ...process.env, NODE_ENV: 'production', API_PORT:String(apiPort), NEXT_PUBLIC_API_BASE_URL: 'http://localhost:' + apiPort, NEXT_TELEMETRY_DISABLED: '1' }, stdio: 'inherit' });
 } finally {
   if (command === 'start' && fs.existsSync(runtimeLock) && JSON.parse(fs.readFileSync(runtimeLock, 'utf8')).pid === process.pid) fs.unlinkSync(runtimeLock);
 }
 if (result.error) throw result.error;
 if (command === 'build' && result.status === 0) {
-  fs.writeFileSync(buildContext, JSON.stringify({ version: 1, apiPort, buildId: fs.readFileSync(path.join(target, '.next/BUILD_ID'), 'utf8').trim() }) + '\n');
+  verifyApiProxy();
+  fs.writeFileSync(buildContext, JSON.stringify({ version: 1, apiPort, proxyApiPort:apiPort, buildId: fs.readFileSync(path.join(target, '.next/BUILD_ID'), 'utf8').trim() }) + '\n');
 }
 process.exit(result.status ?? 1);

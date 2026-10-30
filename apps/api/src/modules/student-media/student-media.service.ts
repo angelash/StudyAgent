@@ -10,6 +10,7 @@ import { studyDataRoot } from '../../infrastructure/workspace-paths';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { StudentsService } from '../students/students.service';
 import { initializeMediaTools, mediaModeAvailable, normalizeAudio, normalizeImage, withMediaDecoder } from './media-normalization';
+import { controlledSessionOf } from '../diagnostics/controlled-session-origin';
 
 export const STUDENT_MEDIA_CHUNK_SIZE = 1024 * 1024;
 const digest = (bytes: Buffer | string) => createHash('sha256').update(bytes).digest('hex');
@@ -34,8 +35,16 @@ export class StudentMediaService implements OnModuleInit {
         assertAssistantPracticeWriter(this.store, this.students, user, this.store.find('practiceSessions', { id: session.id })!, auth);
       if (!['parent', 'admin', 'student'].includes(user.role)) throw new ForbiddenException('请使用孩子或监护人的学习身份作答');
       this.students.assertCanAccessStudent(user, session.studentId);
+      if(target.kind==='practice'&&'controlledGuidanceOrigin' in session&&session.controlledGuidanceOrigin&&(user.role!=='student'||!this.store.find('users',{id:user.id,role:'student',status:'active'})||!this.store.find('students',{id:session.studentId,userId:user.id})))throw new ForbiddenException('条件指导附件由孩子本人上传。');
+      if(target.kind==='practice'&&'controlledGuidanceOrigin' in session&&session.controlledGuidanceOrigin){const plan=this.store.find('diagnosticPlans',{id:session.controlledGuidanceOrigin.planId});const latest=(id:string)=>this.store.select('diagnosticReports',{sessionId:id}).sort((a,b)=>b.version-a.version)[0]?.version;if(!plan?.controlledBasis||latest(plan.controlledBasis.sessionId)!==plan.controlledBasis.reportVersion||latest(plan.baselineSessionId)!==plan.baselineReportVersion)throw new ConflictException('原指导报告已有修订，核对前保留活动回看。');}
       if (target.kind === 'diagnostic') {
-        const routing = this.store.find('diagnosticSessions', { id: target.sessionId })!.routing;
+        const diagnostic = this.store.find('diagnosticSessions', { id: target.sessionId })!, routing = diagnostic.routing;
+        if (controlledSessionOf(diagnostic)) {
+          if (user.role !== 'student' || !this.store.find('users', { id: user.id, status:'active', role:'student' }) ||
+              !this.store.find('students', { id: diagnostic.studentId, userId: user.id })) throw new ForbiddenException('这组成对任务的附件请由孩子本人上传');
+          const answered = new Set(this.store.select('diagnosticResponses', { sessionId: diagnostic.id }).map(row=>row.itemId));
+          if (diagnostic.itemIds.find(id=>!answered.has(id)) !== target.itemId) throw new ConflictException('请在原固定顺序的当前题上传附件');
+        }
         if (routing && routing.currentItemId !== target.itemId) throw new ConflictException('请在本组当前核查题中上传作答附件');
       }
       if (session.status !== 'in_progress' || target.kind === 'diagnostic' && Boolean(this.store.find('diagnosticResponses', { sessionId: target.sessionId, itemId: target.itemId }))) throw new ConflictException('这道题已提交，请用新题继续验证');

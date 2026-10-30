@@ -32,6 +32,7 @@ import { eligibleMeasurements } from '../diagnostics/curriculum.service';
 import { StudentMediaService } from '../student-media/student-media.service';
 import { mediaModeAvailable } from '../student-media/media-normalization';
 import { atomDefinitionFingerprint } from '../diagnostics/measurement-definition';
+import { retentionDigest } from '../diagnostics/retention-anchor';
 import { DIAGNOSIS_VERSION } from '../diagnostics/diagnosis';
 import { buildStudioCourse } from './studio-course';
 import { buildStudioWhiteboard } from './studio-whiteboard';
@@ -700,6 +701,7 @@ export class LearningService {
     const plan = this.store.find('diagnosticPlans', { id: planId });
     if (!plan) throw new NotFoundException('计划不存在');
     this.students.assertCanAccessStudent(user, plan.studentId);
+    if(plan.controlledBasis&&(!this.store.find('users',{id:user.id,role:'student',status:'active'})||!this.store.find('students',{id:plan.studentId,userId:user.id})||user.role!=='student'))throw new ForbiddenException('条件指导请由这个档案的孩子本人开始，家长可核对原计划与进度。');
     if (plan.status !== 'active') throw new BadRequestException('请先确认并启用指导计划');
     const action = plan.actions.find((item) => item.id === actionId);
     if (!action) throw new NotFoundException('活动不属于当前计划');
@@ -721,6 +723,7 @@ export class LearningService {
     }
     if (!ids.length) throw new BadRequestException('此活动暂缺审核通过的练习题，请在教研覆盖中补充');
     const session: PracticeSession = { id: this.store.nextId('practice'), studentId: plan.studentId, subject: plan.subject, planId, actionId,
+      ...(plan.controlledBasis?{controlledGuidanceOrigin:{actorId:user.id,planId,planRevision:plan.revision??1,basisFingerprint:retentionDigest(plan.controlledBasis)}}:{}),
       atomId: action.atomId, day, status: 'in_progress', questionIds: ids,
       actionSnapshot: structuredClone(action), planRevision: plan.revision ?? 1, snapshotOrigin: 'started',
       atomSnapshot: baseline.atomSnapshots?.find(atom => atom.id === action.atomId), sourceAssessmentId: baseline.id,
@@ -747,6 +750,8 @@ export class LearningService {
       actionId: session.actionId, day: session.day, status: session.status, action, completedAt: session.completedAt,
       planRevision: session.planRevision ?? 1, currentPlanRevision: session.origin === 'notebook' || session.origin === 'assistant_artifact' ? session.planRevision ?? 1 : plan?.revision ?? 1,
       snapshotOrigin: session.snapshotOrigin ?? 'legacy_capture',
+      ...(session.controlledGuidanceOrigin?{controlledGuidance:true}:{}),
+      ...(session.controlledGuidanceOrigin&&plan?{controlledGuidanceNeedsReview:this.guidance.get(user,plan.id).impact.needsReview}:{}),
       origin: session.origin ?? 'guidance', notebookEntryId: session.notebookEntryId ?? null,
       ...(session.origin === 'assistant_artifact' ? { assistantAssignmentId: session.assistantAssignmentId, sourceGroupId: session.sourceGroupId,
         ...assignmentStateView(this.store, assistantPracticeSessionRelation(this.store, session).assignment),
@@ -884,7 +889,10 @@ export class LearningService {
     this.events.publish('learning.practice_completed', { studentId: session.studentId, sessionId: session.id, planId: null, actionId: session.actionId, origin: 'assistant_artifact' });
     return receipt;
   }
+  private assertControlledGuidanceWriter(user:InMemoryUserAccount|undefined,session:PracticeSession){if(session.controlledGuidanceOrigin&&(!user||user.role!=='student'||!this.store.find('users',{id:user.id,role:'student',status:'active'})||!this.store.find('students',{id:session.studentId,userId:user.id})))throw new ForbiddenException('这份条件指导由孩子本人完成，家长可回看原记录。');}
   private assertActive(session: PracticeSession, user?: InMemoryUserAccount, auth?: InMemoryAuthSession) {
+    this.assertControlledGuidanceWriter(user,session);
+    if(session.controlledGuidanceOrigin&&user&&session.planId&&this.guidance.get(user,session.planId).impact.needsReview)throw new ConflictException('条件指导的原依据已修订，请先核对新报告；这次原活动保留回看。');
     if (session.origin === 'assistant_artifact') {
       if (!user) throw new ConflictException('请核对本人的学习入口');
       assertAssistantPracticeWriter(this.store, this.students, user, session, auth); return;
@@ -894,6 +902,7 @@ export class LearningService {
   }
   submit(user: InMemoryUserAccount, id: string, input: unknown, auth?: InMemoryAuthSession) {
     const session = this.requireSession(user, id);
+    this.assertControlledGuidanceWriter(user,session);
     const relation = session.origin === 'assistant_artifact' ? assertAssistantPracticeWriter(this.store, this.students, user, session, auth, false) : null;
     const assistantCommand = relation ? validate(assistantPracticeLearnerResponseSchema, input) : null;
     const command = assistantCommand ?? validate(answerSchema, input);
@@ -991,6 +1000,7 @@ export class LearningService {
   }
   complete(user: InMemoryUserAccount, id: string, input?: unknown, auth?: InMemoryAuthSession) {
     const session = this.requireSession(user, id);
+    this.assertControlledGuidanceWriter(user,session);
     if (session.origin === 'assistant_artifact') return this.assistantPracticeComplete(user, session, input, auth);
     const view = this.view(user, id);
     if (session.status !== 'completed') this.assertActive(session, user, auth);

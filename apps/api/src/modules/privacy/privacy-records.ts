@@ -1,6 +1,6 @@
 import { teachingAssignmentView,type TeachingAssignmentRecord } from '../learning/assistant-teaching-assignment-record';
 import { createHash } from 'node:crypto';
-import type { PrivacyCounts } from '@study-agent/contracts';
+import type { PrivacyCounts, PrivacyReceipt, DiagnosticSession } from '@study-agent/contracts';
 import type { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
 import { generationView } from '../learning/source-course-pipeline';
 import { sourceCourseVersioningView, sourceCourseLesson } from '../learning/source-course-content';
@@ -11,6 +11,10 @@ import { publicQuestionTeachingVersion } from '../learning/whiteboard-question-t
 import { reviewedPracticePortableView, type AssistantPracticeArtifactRecord } from '../learning/assistant-practice-record';
 import { assignmentView, type AssistantPracticeAssignmentRecord } from '../learning/assistant-practice-assignment-record';
 import { withdrawalView, type AssistantPracticeWithdrawalRecord } from '../learning/assistant-practice-withdrawal-record';
+import { anonymizeControlledEditorial } from '../diagnostics/controlled-editorial-privacy';
+import { anonymizeControlledPreviews } from '../diagnostics/controlled-preview-privacy';
+import { controlledSessionOf } from '../diagnostics/controlled-session-origin';
+import { controlledFeedbackHeld } from '../diagnostics/controlled-contrast-disclosure';
 
 type Row = Record<string, any>;
 export type Selection = Record<string, Row[]>;
@@ -31,7 +35,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   const result: Selection = {};
   add(result, store, 'students', row => row.id === studentId);
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
-    'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'diagnosticResponses', 'diagnosticHypotheses',
+    'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'controlledContrastPreviews', 'diagnosticResponses', 'diagnosticHypotheses',
     'retentionExposureEvents','diagnosticPlans', 'guidanceModelSuggestions', 'reviewTasks', 'practiceSessions', 'assistantPracticeAssignments', 'assistantPracticeAssignmentWithdrawals', 'assistantPracticeGroupStarts', 'paperPracticeSessions', 'paperPracticeCommands', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
     'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomTurns', 'whiteboardQuestionTurns', 'whiteboardQuestionVisuals', 'classroomCodeDrafts', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','studioOriginalRepairs','sourceCourses','sourceCourseStages','sourceCourseChecks',
     'projectAssetUploads','projectAssets','studioCourses','studioActivities','studioStudyPlans','studioLearningPacks','studioWhiteboards','studioTopicWhiteboardDrafts','studioTopicWhiteboards','studioTopicWhiteboardVisuals','studioConnectors','studioScheduleEvents','guidanceCalendarArrangements','studioCalendarCommands']) {
@@ -84,6 +88,10 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'paperPracticeSessions', row => row.ownerUserId === actorId);
   add(result, store, 'paperPracticeCommands', row => row.ownerUserId === actorId);
   add(result, store, 'diagnosticBlueprints', row => row.actorId === actorId);
+  const publishedControlledReviews = new Set(rows(store, 'controlledContrastPublications').flatMap(row => row.originals.map((original: Row) => original.review.id)));
+  add(result, store, 'controlledEditorialCommands', row => row.actorId === actorId);
+  add(result, store, 'controlledMaterialReviews', row => row.actorId === actorId && !publishedControlledReviews.has(row.id));
+  add(result, store, 'controlledContrastPreviews', row => row.arrangedBy === actorId && !row.sessionId);
   add(result, store, 'assistantSessions', row => row.ownerUserId === actorId);
   add(result, store, 'classroomSessions', row => row.ownerUserId === actorId);
   add(result, store, 'classroomTurns', row => row.ownerUserId === actorId);
@@ -161,6 +169,21 @@ export function removeSelected(store: InMemoryStoreService, selection: Selection
     for (const row of rows(store, 'diagnosticSessions')) if (row.paperReviewOrigin && removedPaperPractice.has(row.paperReviewOrigin.sessionId)) delete row.paperReviewOrigin;
   }
 }
+
+/** Called before relation removal in the same actual deletion/restore transaction.
+ * Shared originals remain byte-identical; only private links and commands go.
+ */
+export function anonymizeControlledAttribution(store: InMemoryStoreService, actorId: string, receipt: PrivacyReceipt) {
+  const repository = { reviews: store.controlledMaterialReviews ?? [], publications: store.controlledContrastPublications ?? [],
+    releases: store.controlledContrastReleases ?? [], commands: store.controlledEditorialCommands ?? [] };
+  if (Object.values(repository).some(records => records.length)) {
+    const result = anonymizeControlledEditorial(repository, actorId, receipt,
+      (store.privacyRequests ?? []).filter(row => row.id !== receipt.id));
+    store.controlledMaterialReviews = result.reviews; store.controlledContrastPublications = result.publications;
+    store.controlledContrastReleases = result.releases; store.controlledEditorialCommands = result.commands;
+  }
+  if (rows(store, 'controlledContrastPreviews').length) store.controlledContrastPreviews = anonymizeControlledPreviews(store.controlledContrastPreviews, actorId, receipt);
+}
 // Tokens, passwords, internal idempotency digests and other guardians' private chats are never exported.
 const secretFields = new Set(['passwordHash', 'credential', 'token', 'tokenHash', 'requestHash', 'inputHash', 'scopeKey', 'requestKey', 'decisionHash', 'draftCommands']);
 function scrub(value: unknown): unknown {
@@ -169,6 +192,10 @@ function scrub(value: unknown): unknown {
   return value;
 }
 export function portableRecords(selected: Selection, actorId: string): Record<string, unknown[]> {
+  const heldControlled = new Set((selected.diagnosticSessions ?? []).filter(row => {
+    const controlled = controlledSessionOf(row as DiagnosticSession); return controlled && controlledFeedbackHeld(controlled);
+  }).map(recordId));
+  const heldControlledResponses = new Set((selected.diagnosticResponses ?? []).filter(row => heldControlled.has(row.sessionId)).map(recordId));
   const paperOwners = new Set([actorId, ...(selected.users ?? []).filter(user => user.role === 'student').map(recordId)]);
   const allowedPaperPractice = new Set((selected.paperPracticeSessions ?? []).filter(row => paperOwners.has(row.ownerUserId)).map(recordId));
   const allowedAssistants = new Set((selected.assistantSessions ?? []).filter(row => row.ownerUserId === actorId ||
@@ -186,7 +213,20 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if (name === 'practiceSessions') result[name] = records.map(row => ({ ...row, ...(row.drafts ? { drafts: Object.fromEntries(Object.entries(row.drafts as Record<string, Row>)
       .filter(([questionId, draft]) => draft.protocol !== 'answer-draft-v2' || draft.draftAttempt === (practiceCounts.get(JSON.stringify([row.id, questionId])) ?? 0))) } : {}) }));
     else if (name === 'paperPracticeSessions') result[name] = records.filter(row => allowedPaperPractice.has(row.id)).map(row => { const { origin, ...rest } = row; return !origin || allowedPaperPractice.has(origin.sessionId) ? row : rest; });
-    else if (name === 'diagnosticBlueprints' || name === 'diagnosticSessions') result[name] = records.map(row => { const { paperReviewOrigin, ...rest } = row; return !paperReviewOrigin || allowedPaperPractice.has(paperReviewOrigin.sessionId) ? row : rest; });
+    else if (name === 'diagnosticSessions') result[name] = records.map(row => {
+      if (heldControlled.has(row.id)) return { id: row.id, studentId: row.studentId, subject: row.subject, intent: row.intent, status: row.status,
+        scopeSnapshot: row.scopeSnapshot, startedAt: row.startedAt, completedAt: row.completedAt, feedbackHeld: true,
+        notice: '本组成对任务结束后再导出原评分、参考答案和对照结果。' };
+      const { paperReviewOrigin, ...rest } = row; return !paperReviewOrigin || allowedPaperPractice.has(paperReviewOrigin.sessionId) ? row : rest;
+    });
+    else if (name === 'diagnosticResponses') result[name] = records.map(row => heldControlled.has(row.sessionId) ?
+      { id:row.id,sessionId:row.sessionId,studentId:row.studentId,itemId:row.itemId,questionId:row.questionId,answer:row.answer,
+        disposition:row.disposition,elapsedMs:row.elapsedMs,submittedAt:row.submittedAt,feedbackHeld:true } : row);
+    else if (name === 'scoringRevisions') result[name] = records.filter(row => !heldControlledResponses.has(row.responseId));
+    else if (name === 'diagnosticReports') result[name] = records.filter(row => !heldControlled.has(row.sessionId));
+    else if (name === 'controlledContrastPreviews') result[name] = records.map(({id,studentId,subject,publicationId,fingerprint,scopeSnapshot,createdAt,expiresAt,sessionId}) =>
+      ({id,studentId,subject,publicationId,fingerprint,scopeSnapshot,createdAt,expiresAt,sessionId}));
+    else if (name === 'diagnosticBlueprints') result[name] = records.map(row => { const { paperReviewOrigin, ...rest } = row; return !paperReviewOrigin || allowedPaperPractice.has(paperReviewOrigin.sessionId) ? row : rest; });
     else if (name === 'paperPracticeCommands') result[name] = records.filter(row => allowedPaperPractice.has(row.sessionId) && paperOwners.has(row.ownerUserId));
     else if (name === 'assistantSessions') result[name] = records.filter(row => allowedAssistants.has(row.id));
     else if (name === 'assistantMessages') result[name] = records.filter(row => allowedAssistants.has(row.sessionId));
@@ -274,6 +314,7 @@ export function anonymizeSharedAttribution(store: InMemoryStoreService, studentI
       if (!affected.has(recordId(row))) return row;
       if(name==='guidanceCalendarArrangements')return{...row,...(row.createdBy===actorId?{createdBy:null,creatorDeletionHash:privacyHash({id:actorId})}:{}),history:row.history.map((revision:Row)=>revision.actorId===actorId?{...revision,actorId:null,commandId:null,actorDeletionHash:privacyHash({id:actorId}),reason:'',input:{...revision.input,entries:revision.input.entries.map((entry:Row)=>entry.sourceKind==='review'?{...entry,rescheduleReason:''}:entry)},entries:revision.entries.map((entry:Row)=>({...entry,input:entry.input.sourceKind==='review'?{...entry.input,rescheduleReason:''}:entry.input}))}:revision)};
       if(name==='studioCalendarCommands')return row;
+      if(name==='controlledContrastPreviews')return row;
       if (name === 'assistantTeachingAssignments') return row;
       if (name === 'assistantPracticeAssignments') return row;
       if (name === 'assistantPracticeAssignmentWithdrawals') return row;

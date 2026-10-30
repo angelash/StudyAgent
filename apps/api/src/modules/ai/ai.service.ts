@@ -37,6 +37,8 @@ import { StudentsService } from '../students/students.service';
 import { atomDefinitionFingerprint } from '../diagnostics/measurement-definition';
 import { RetentionService } from '../diagnostics/retention.service';
 import { routedItemAvailable } from '../diagnostics/adaptive-routing';
+import { controlledSessionOf } from '../diagnostics/controlled-session-origin';
+import { controlledFeedbackHeld } from '../diagnostics/controlled-contrast-disclosure';
 import { XiaojiuChatService } from './xiaojiu-chat.service';
 import { codexHomeDirectory, XiaojiuModelsService } from './xiaojiu-models.service';
 import { modelConnectionFingerprint, readModelQualification } from './xiaojiu-model-qualification';
@@ -452,6 +454,8 @@ export class AiService {
     if (session.contextRefType === 'diagnostic') {
       const assessment = this.store.diagnosticSessions.find(s => s.id === session.contextRefId && matches(s.studentId, s.subject));
       if (!assessment) throw new NotFoundException('当前学习上下文不存在');
+      const controlled = controlledSessionOf(assessment);
+      if (controlled && controlledFeedbackHeld(controlled)) throw new ConflictException('这组成对任务结束后再打开助教解释和评分；需要暂停时请先保存当前作答');
       if (assessment.status === 'paused') throw new BadRequestException('评测已经暂停，请恢复评测后再获取当前题目的提示');
       if (!session.contextItemId && assessment.status === 'completed') return null;
       const item = assessment.itemSnapshots.find(i => i.id === session.contextItemId);

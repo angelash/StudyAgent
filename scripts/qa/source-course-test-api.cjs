@@ -17,6 +17,7 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
   const originalReply=provider.reply.bind(provider),turnAttempts=new Map();
   const ordinaryReply=require('./assistant-turn-fixture.cjs').installAssistantTurnFixture(app);
   require('./assistant-practice-fixture.cjs').installAssistantPracticeFixture(app);
+  require('./controlled-contrast-fixture.cjs').installControlledContrastFixture(app);
   const generatedTeachingReply=require('./assistant-teaching-fixture.cjs').installAssistantTeachingFixture(app);
   const guidanceReply=require('./guidance-model-fixture.cjs').installGuidanceModelFixture(app);
   const sourceCheckReply=require('./source-check-fixture.cjs').installSourceCheckFixture(app);

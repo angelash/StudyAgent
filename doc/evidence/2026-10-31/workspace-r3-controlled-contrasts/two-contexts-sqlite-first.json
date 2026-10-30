@@ -1,0 +1,19 @@
+{
+  "numTotalTests": 1,
+  "numPassedTests": 1,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "files": 1,
+  "results": [
+    {
+      "file": "controlled-contexts.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "controlled originals across two actual app instances, children and subjects shares one original concurrent child start while exact scope, private requests and exposure stay separate for two children in math, Chinese and English",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}
