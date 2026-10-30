@@ -32,7 +32,7 @@
 | R1 工作台整合 | 149 A～C；WS01～WS12；统一导航/外壳/品牌/上下文；首页、任务、诊断、报告、档案、资料、专注和管理布局，旧链接/草稿 | [152基础](152-workspace-foundation-delivery-checkpoint.md)、[153资料](153-workspace-materials-integration.md)、[154专注/管理](154-workspace-focus-and-admin-integration.md)及[155 GESP](155-gesp-workspace-context-and-recovery.md)已实现并分批隔离验证；31旧入口与完整角色旅程继续核对，未整体验收 |
 | R2 完整练习 | 147 D2；来源→预检→候选/安排→孩子任务→原生答案与理由/帮助/媒体→恢复/完成；撤回；成人/AI教学生成/复核/采用/本人作答 | in_progress；[156完整UI](156-assistant-practice-workspace-ui.md)已实现并完成第九轮整站隔离回归；[157撤回与25版读取栅栏](157-practice-assignment-withdrawal-and-schema25.md)已实现并完成第二轮整站隔离验证；成人/AI接[158持久生成与本人作答](158-generated-teaching-practice-persistence.md)；实际运行、撤回及成人/AI完整链仍待交付 |
 | R3 原因与指导 | 147 D3、XP-I02～I05、105 M3；可观察行为、深原因/替代解释/反证、真实报告、计划确认/修订/暂停/复核 | [159来源到证据指导](159-conversation-clues-to-evidence-guidance.md)先固定具体协议，待158最终候选；后续补更多原因的审核对照与反证。无证据不判因，原证据/版本可定位，教师核对单列 |
-| R4 排期与复测 | 147 D4、XP-I06/J05；日预算/冲突/时区/确认/ICS、真实到期复测、原因关闭/重开及报告复盘 | [160具体规格](160-guidance-calendar-conflicts-and-due-review.md)先提交；原计划恢复作用域、全冲突、预算/时区及真实到期分批实施，任务执行、日程完成、独立保持证据分别核对 |
+| R4 排期与复测 | 147 D4、XP-I06/J05；日预算/冲突/时区/确认/ICS、真实到期复测、原因关闭/重开及报告复盘 | [160具体规格](160-guidance-calendar-conflicts-and-due-review.md)已提交，[161持久与时区协议](161-guidance-calendar-persistence-and-timezone-protocol.md)先固定完整命令、预算/DST和原任务关联；旧计划作用域/零时段候选在隔离回归，任务执行、日程完成、独立保持证据分别核对 |
 | R5 学习与纸面完整流程 | XP-B～H、105 M1/M2/M5；全课堂状态/参考风格/声音/插问、课程修订/撤回、17题型/项目、采集/多页/OCR/题卷/错题/导出打印 | 按已有能力续补；代表性课程与纸面旅程通过，不缩减内容范围 |
 | R6 教材与GESP完整内容 | XP-F/L01、105 M4；三科六年级逐版本/学期/课时正文、映射、教学包、题族、评分与保持；GESP1～4完整目标和内容审核；化学原范围维护 | 逐目标实施；下载/索引/候选不等于人工审核，来源资格和教师结论分列 |
 | R7 工程与跨环境 | XP-J/K/L04、105 M6/M7；模型/记忆/历史、性能/长时/弱网、权限隐私、依赖、守护、双库/媒体/资产恢复、新环境安装 | 分项明确机器/版本/负载与失败，独立恢复和实际功能验收 |
