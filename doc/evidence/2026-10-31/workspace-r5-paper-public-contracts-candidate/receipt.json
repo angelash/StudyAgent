@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-30T22:42:26.375Z",
+  "state": "Isolated native31 public-contract/copy/persistence candidate; product capture UI is not yet connected and application source is not merged into main.",
+  "baseMain": "b29a3e97d274e5ad4fedbbf34fa73fa6db4c3b4b",
+  "archiveMain": "3a32d91aef5e0f49351ef591246a266cf03bef7a",
+  "sourceDelta": {
+    "files": 71,
+    "uncompressedSha256": "b5f07d2693f359d3c671365c7eb1ccd011deb1552ac0d1b9682879664aa43cf1",
+    "gzipSha256": "76b2535542e58297ece130a7f7b7369a39ede11ab7bf955ac5c78896e2b4d6c9"
+  },
+  "build": [
+    {
+      "name": "contracts",
+      "status": 0
+    },
+    {
+      "name": "config",
+      "status": 0
+    },
+    {
+      "name": "api-types",
+      "status": 0
+    },
+    {
+      "name": "api-build",
+      "status": 0
+    }
+  ],
+  "webTypes": {
+    "status": 0
+  },
+  "checks": [
+    {
+      "label": "public31-first",
+      "passed": 85,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "public31-postgres-first",
+      "passed": 41,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "public31-postgres-native-first",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "browserLocal": {
+    "passed": 6,
+    "failed": 0,
+    "browser": "156.0.8078.4",
+    "scope": "Isolated localhost harness with real headless Chromium, IndexedDB, tabs and WebCrypto. No product UI or physical device acceptance."
+  },
+  "batchBoundary": "SQLite85 includes40 HTTP/worker/native,1 recovery,40 pure and4 browser-codec interoperability cases. Standalone codec4 is supplemental and overlaps. PostgreSQL41 and native recovery1 are independent batches. Browser local6 uses an isolated harness, not product UI or physical devices.",
+  "earlierFailures": "The two meaningful privacy/retry failures are in the preceding derivation candidate. Original type18/19 failures are retained here; retry_wait needed explicit type narrowing and the response-check helper needed a generic return type.",
+  "production": {
+    "formalReadOnly": {
+      "schema": 24,
+      "revision": 187
+    },
+    "protectedFilesMatchPriorCheckpoint": true,
+    "mainApplicationSource": 30,
+    "noPushOrDeployment": true
+  },
+  "boundaries": {
+    "publicInputAndResponseContracts": true,
+    "browserCompleteCopy": true,
+    "actualIndexedDbPersistence": true,
+    "productCaptureUI": false,
+    "paperOriginalRepair": false,
+    "fullApiRegression": false,
+    "wholeBrowserRegression": false,
+    "teacherReview": false,
+    "physicalDevices": false,
+    "realLearnerIntervals": false,
+    "wholeGoal": "active",
+    "legacy72": "11 implemented / 50 in_progress / 11 planned / 0 verified"
+  },
+  "artifacts": [
+    {
+      "path": "actual-checks.json",
+      "sha256": "fec263c5f99bf0377a53ce2beb56a5c0d12f3d04fd05159830dd7be54da5263e"
+    },
+    {
+      "path": "checked-inputs.json.gz",
+      "sha256": "95bcc2455ffccbc1864604cb04e8532c2fdb549845656696ec3ba2dda267dcb1"
+    },
+    {
+      "path": "current-pdf-compatibility.json",
+      "sha256": "58865138bbcb6e7cae51ee7acb6b7b67465cacf0eea3bc61b23ba5381874d325"
+    },
+    {
+      "path": "local-browser-checks.json",
+      "sha256": "c59ee19efda63ce57fc96dd3ca0ea60ea766cac61d5d197a8f22a0d9a10283c6"
+    },
+    {
+      "path": "original-type-errors.json",
+      "sha256": "bc63f55b131c4699b260eab388a2436bfd0043154bcd576ef745600ffe9cfb25"
+    },
+    {
+      "path": "source-delta.json.gz",
+      "sha256": "76b2535542e58297ece130a7f7b7369a39ede11ab7bf955ac5c78896e2b4d6c9"
+    }
+  ]
+}

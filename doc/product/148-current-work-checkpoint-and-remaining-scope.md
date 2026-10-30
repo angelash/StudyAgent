@@ -1,6 +1,6 @@
 # 当前工作收尾、验证边界与续接位置
 
-2026-10-31最新续接：按[150总计划](150-integrated-delivery-plan-and-work-ledger.md)继续全部剩余开发。[164纸面采集](164-paper-capture-intents-pages-and-original-versions.md)已在隔离31接通持久PDF派生和原资料逐页OCR；最终SQLite/PG各41项通过，实际PG原生备份恢复另批1项、旧家庭资料另批6项、纯图像/副本另批40项，原失败与未归并源码见[候选证据](../evidence/2026-10-31/workspace-r5-paper-derivation-candidate/receipt.json)。原件修复、完整契约/工作台UI/副本退出保护、完整回归和R5～R8其余范围继续；不以本批工程验证代替全教材、教师、实机或真人1/3/7/14日证据。主干应用30、正式库24/revision187及原构建保持；未推送/部署，整体active。
+2026-10-31最新续接：按[150总计划](150-integrated-delivery-plan-and-work-ledger.md)继续全部剩余开发。[164纸面采集](164-paper-capture-intents-pages-and-original-versions.md)的持久PDF派生/OCR候选已本地归档3a32d91a；后续公共契约、浏览器完整副本和实际IndexedDB草稿已实现，见[独立候选](../evidence/2026-10-31/workspace-r5-paper-public-contracts-candidate/receipt.json)。最后SQLite85/0/0、PG41/0/0、完整PG原生恢复另批1/1、本机持久化浏览器另批6/6分别记账；浏览器副本互通4项已经包含在85中，不重复相加。原件核对/修复、工作台采集UI/退出保护、完整回归和R5～R8其余范围继续；本批未接产品UI，不替代全教材、教师、真实设备或真人1/3/7/14日证据。主干应用30、正式库24/revision187及原构建保持；未推送/部署，整体active。
 
 2026-10-29后续指令：149已采用，用户要求整合计划、先本地提交，再持续完成全部剩余开发。从[150执行计划](150-integrated-delivery-plan-and-work-ledger.md)接续：先统一工作台并迁入观察室功能，再接本人UI/撤回/成人/D3/D4及原全部验收。原分支、额外工作目录和schema23为历史；当前唯一main/主目录，业务库只读schema24/revision187，不以已迁移等同完整交付。
 

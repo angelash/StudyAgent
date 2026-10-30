@@ -15,7 +15,7 @@
 
 本次用户明确要求先做本地Git提交。推送与发布按已有或后续明确授权执行，不将本地提交表述为远端或运行交付。
 
-2026-10-31当前接续：163已本地提交671d2014，主干应用源码30、正式运行24/revision187及原构建保持，实际30读取器已封存。[164](164-paper-capture-intents-pages-and-original-versions.md)的隔离31候选已接真实图片上传、页/组历史、隐私归档、持久回收，以及确认冻结组版本后排持久PDF派生、双文件资产租约/代次、独立资料来源和原studio.material.process/Python逐页OCR。最终本轮SQLite与实际PG各41项通过，完整PG原生备份/最新账本/中断续跑另批1项、旧家庭资料回归另批6项及纯图像/副本另批40项通过，不混加计数；实际PDF另经独立渲染与目检。原上传/组候选见[先前证据](../evidence/2026-10-31/workspace-r5-paper-native-candidate/receipt.json)，派生源码、准确检查输入及两项隐私/共享重试缺陷的原失败和修正见[本轮候选证据](../evidence/2026-10-31/workspace-r5-paper-derivation-candidate/receipt.json)。下一步补原件核对/准确修复、完整公共契约、复用原工作台样式与WorkspaceDialog的采集界面、完整副本/退出保护，再做完整API/整站和最终双库验收；164尚未应用归并。全教材/GESP、R5其他流程、R7/R8、原72/WS和教师/设备/真人间隔全部余项继续，整体active。
+2026-10-31当前接续：163已本地提交671d2014，主干应用源码30、正式运行24/revision187及原构建保持，实际30读取器已封存。[164](164-paper-capture-intents-pages-and-original-versions.md)的隔离31候选已接图片上传/页组历史、隐私归档/持久回收、冻结组版本的持久PDF派生、独立资料来源及原Python逐页OCR；该批见[派生候选](../evidence/2026-10-31/workspace-r5-paper-derivation-candidate/receipt.json)。后续已把输入、公开视图、原回执、PDF映射与完整副本收拢到公共契约，补浏览器完整图片副本及实际IndexedDB本机草稿。最后本轮SQLite85/0/0（40接口/worker/native、1恢复、40纯函数、4浏览器副本互通）、实际PG41/0/0、完整PG原生恢复另批1/1；独立真实Chromium本机持久化6/6，不计为产品采集UI或实机验收。准确输入、71份未归并源码增量及类型首失败见[公共契约与副本候选](../evidence/2026-10-31/workspace-r5-paper-public-contracts-candidate/receipt.json)，不同批次不合计。下一步补原件核对/准确修复，并把公共接口、完整副本和本机草稿接到复用原工作台样式与WorkspaceDialog的完整采集界面/退出保护，再做完整API/整站和最终双库验收；164仍未应用归并。全教材/GESP、R5其他流程、R7/R8、原72/WS和教师/设备/真人间隔全部余项继续，整体active。
 
 ## 2. 本轮核对基线
 
