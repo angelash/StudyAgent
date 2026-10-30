@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-30T22:16:48.403Z",
+  "state": "Isolated native31 durable derivation/OCR candidate; application code is not merged into main or deployed.",
+  "baseMain": "b29a3e97d274e5ad4fedbbf34fa73fa6db4c3b4b",
+  "archiveMain": "2fecd248f7fba54b4a0601ff0df1c5032c71d109",
+  "sourceDelta": {
+    "files": 67,
+    "uncompressedSha256": "f4787de05ccf2636541520ac729ab001196b8241ae08ff546669eb4db1fe63ed",
+    "gzipSha256": "def5b6dddf68414fb71a6d04a65dee3820a5550998b1f51e135533c1dd37bdb6"
+  },
+  "build": [
+    {
+      "name": "contracts",
+      "status": 0
+    },
+    {
+      "name": "config",
+      "status": 0
+    },
+    {
+      "name": "api-types",
+      "status": 0
+    },
+    {
+      "name": "api-build",
+      "status": 0
+    }
+  ],
+  "checks": [
+    {
+      "label": "derivation31-third",
+      "passed": 41,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "derivation31-postgres-third",
+      "passed": 41,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "recovery31-derivation-postgres-native-third",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "privacy-regression-third",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "paper-pure-fourth",
+      "passed": 40,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "failures": "Both first recovery runs failed due to duplicate OCR cancellation in a single privacy transaction. The focused closed-material retry run failed because native checking incorrectly required a later guardian OCR retry to retain the original author. All original reports and exact failures are retained. Build12/13 type errors remain local.",
+  "batchBoundary": "Each batch is independent; do not add their counts or filtered skips as a single test result.",
+  "boundaries": {
+    "native31": true,
+    "durablePdfDerivation": true,
+    "originalPythonOcr": true,
+    "sqliteAndPostgres": true,
+    "nativePostgresRecovery": true,
+    "completeWorkspaceUI": false,
+    "paperOriginalRepair": false,
+    "fullApiRegression": false,
+    "wholeBrowserRegression": false,
+    "teacherReview": false,
+    "realDevice": false,
+    "realLearnerIntervals": false,
+    "mainApplicationSource": 30,
+    "wholeGoal": "active",
+    "legacy72": "11 implemented / 50 in_progress / 11 planned / 0 verified"
+  },
+  "artifacts": [
+    {
+      "path": "actual-checks.json",
+      "sha256": "2a7a3eb8c8946437b9a590ff77f3d14fbfa629d92c16ef3cfb09fda2e34ce7b9"
+    },
+    {
+      "path": "actual-ocr-source.png",
+      "sha256": "de4fb4c7969f36d6c26cf4fff644da9767a5e68f66eb7a0f6915c32fe3c1322e"
+    },
+    {
+      "path": "checked-inputs.json.gz",
+      "sha256": "f0754b2ed7f49686c67783f2c7eb858ad142bbe9b9957e489090d1b20e67c1b1"
+    },
+    {
+      "path": "production-observation.json",
+      "sha256": "e17bae188b85c0deb53de7a5d1137b0c2ed87b3123896c222c5008e8f6d31cb4"
+    },
+    {
+      "path": "render-audit.json",
+      "sha256": "51189a977070b84720081a98a32c8bf872bd8d63837a7f983c2eebc4263a5769"
+    },
+    {
+      "path": "source-delta.json.gz",
+      "sha256": "def5b6dddf68414fb71a6d04a65dee3820a5550998b1f51e135533c1dd37bdb6"
+    }
+  ]
+}

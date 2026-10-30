@@ -1,5 +1,7 @@
 # 当前工作收尾、验证边界与续接位置
 
+2026-10-31最新续接：按[150总计划](150-integrated-delivery-plan-and-work-ledger.md)继续全部剩余开发。[164纸面采集](164-paper-capture-intents-pages-and-original-versions.md)已在隔离31接通持久PDF派生和原资料逐页OCR；最终SQLite/PG各41项通过，实际PG原生备份恢复另批1项、旧家庭资料另批6项、纯图像/副本另批40项，原失败与未归并源码见[候选证据](../evidence/2026-10-31/workspace-r5-paper-derivation-candidate/receipt.json)。原件修复、完整契约/工作台UI/副本退出保护、完整回归和R5～R8其余范围继续；不以本批工程验证代替全教材、教师、实机或真人1/3/7/14日证据。主干应用30、正式库24/revision187及原构建保持；未推送/部署，整体active。
+
 2026-10-29后续指令：149已采用，用户要求整合计划、先本地提交，再持续完成全部剩余开发。从[150执行计划](150-integrated-delivery-plan-and-work-ledger.md)接续：先统一工作台并迁入观察室功能，再接本人UI/撤回/成人/D3/D4及原全部验收。原分支、额外工作目录和schema23为历史；当前唯一main/主目录，业务库只读schema24/revision187，不以已迁移等同完整交付。
 
 2026-10-30续批：计划整合、工作台基础及资料已依次本地提交d054f5a2、440aad48、d3828ec6。[154专注与管理](154-workspace-focus-and-admin-integration.md)已完成本批隔离回归和[独立归档](../evidence/2026-10-30/workspace-r1-focus-sixth/receipt.json)；同一最终版本的兼容浏览器168/168、新增浏览器8/8、纯边界9/9、SQLite52通过/1跳过、PG批次11通过/1跳过已分别取得。下一步按已先提交9ec79f18的[155 GESP恢复](155-gesp-workspace-context-and-recovery.md)及[31旧入口账本](experience/workspace-legacy-entry-ledger.md)继续R1，再推进R2～R8全部范围。原72项仍11 implemented/50 in_progress/11 planned/0 verified；整体active，未推送或发布。

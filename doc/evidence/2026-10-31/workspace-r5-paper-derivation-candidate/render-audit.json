@@ -1,0 +1,58 @@
+{
+  "scope": "Independent rendering of actual completed API14 first-batch PDFs; renderer bytes are unchanged in API16. No claim of real paper accuracy.",
+  "geometry": [
+    {
+      "source": "source\\data\\qa\\paper-http-0vHaj1\\actual-derived-two-page.pdf",
+      "pdfSha256": "45c552531622245c1cf1cda0183c36219fe61cd44eb05967411d7dc7f4602af7",
+      "renderer": "independent PyMuPDF",
+      "pages": [
+        {
+          "page": 1,
+          "mappedImageSamples": 5,
+          "whiteMarginSamples": 1,
+          "width": 842,
+          "height": 596,
+          "imageSha256": "cc1797f654c92ecef6c4c1396363ab43c00317b34126d791984f69d50b5baeac"
+        },
+        {
+          "page": 2,
+          "mappedImageSamples": 5,
+          "whiteMarginSamples": 1,
+          "width": 842,
+          "height": 596,
+          "imageSha256": "cc1797f654c92ecef6c4c1396363ab43c00317b34126d791984f69d50b5baeac"
+        }
+      ]
+    },
+    {
+      "source": "source\\data\\qa\\paper-http-oXMGb1\\actual-derived-two-page.pdf",
+      "pdfSha256": "45c552531622245c1cf1cda0183c36219fe61cd44eb05967411d7dc7f4602af7",
+      "renderer": "independent PyMuPDF",
+      "pages": [
+        {
+          "page": 1,
+          "mappedImageSamples": 5,
+          "whiteMarginSamples": 1,
+          "width": 842,
+          "height": 596,
+          "imageSha256": "cc1797f654c92ecef6c4c1396363ab43c00317b34126d791984f69d50b5baeac"
+        },
+        {
+          "page": 2,
+          "mappedImageSamples": 5,
+          "whiteMarginSamples": 1,
+          "width": 842,
+          "height": 596,
+          "imageSha256": "cc1797f654c92ecef6c4c1396363ab43c00317b34126d791984f69d50b5baeac"
+        }
+      ]
+    }
+  ],
+  "ocr": {
+    "source": "source\\data\\qa\\paper-http-lhnPcU\\paper-images\\pdf\\0fee67c17367963630231a30efedd30560f4535c1490d8971dc8f59367060062.pdf",
+    "sha256": "0fee67c17367963630231a30efedd30560f4535c1490d8971dc8f59367060062",
+    "pages": 1,
+    "renderSha256": "de4fb4c7969f36d6c26cf4fff644da9767a5e68f66eb7a0f6915c32fe3c1322e"
+  },
+  "visualInspection": "All four two-page sample PNGs and actual synthetic OCR worksheet PNG inspected."
+}
