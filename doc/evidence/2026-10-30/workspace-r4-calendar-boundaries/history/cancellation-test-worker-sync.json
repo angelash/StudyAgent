@@ -1,0 +1,6 @@
+{
+  "path": "tests/e2e/assistant-teaching-practice.spec.ts",
+  "beforeSha256": "f9bfd0a2e0ba63c3d59811e8f6619371b454fa6fd30fe4d0f430e48d215cc87e",
+  "afterSha256": "6cde94aaf3d5657dc78cc6d4d35b6faadb66722b73c5e3db1925f3f481fb23b1",
+  "reason": "Original running cancellation journey now waits for the actual worker-started heading before submitting its current-version cancellation; C third trace proved a queued-version versus worker-claim409 race. All cancellation terminal, exact original model, one draft, focus/Escape assertions retained. E original test passed in complete run; its freeze remains untouched."
+}

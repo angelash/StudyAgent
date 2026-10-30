@@ -1,0 +1,205 @@
+{
+  "numTotalTests": 46,
+  "numPassedTests": 9,
+  "numFailedTests": 0,
+  "numPendingTests": 37,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "assistant-guidance.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "private source observations, real reports and original guidance plans keeps preflight read-only and saves a full adult observation without child or invented formal evidence",
+          "status": "skipped"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans rejects cross-author source reads, another guardians private intent and a forged report without creating a plan",
+          "status": "skipped"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans links actual completed first-response evidence separately from a conversation clue and creates exactly one original proposed rule plan",
+          "status": "skipped"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans refuses an active report and a revised report version while preserving the original observation and exact report-link receipt",
+          "status": "skipped"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans commits only one complete observation edit across two actual applications and returns the original winner after later versions",
+          "status": "skipped"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans cold restores the actual report and created plan link without rewriting source or learning evidence and rejects a recomputed cross-report link",
+          "status": "skipped"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans rejects altered original message SHA, selection and linked-question claims after all private source and command hashes are recomputed",
+          "status": "skipped"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans rejects a different owner even with a self-consistent source and complete replayed command chain in native integrity validation",
+          "status": "skipped"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans exports observations only to their actual author and keeps another guardians shared reports free of private source identifiers",
+          "status": "skipped"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans deletes a child observation through the latest deletion ledger after restoring an actual older native backup",
+          "status": "skipped"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans removes an adult authors original observation and source through the newest deletion ledger without recreating formal learning evidence",
+          "status": "skipped"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans requires the actual immutable source message when internal origin hashes and the entire creation receipt are self-consistently recomputed",
+          "status": "skipped"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans keeps profile and teaching grades distinct and blocks fresh writes after an actual profile change while restoring the exact original receipt",
+          "status": "skipped"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans returns the original adjustment revision after later valid edits and definition changes without substituting the latest plan revision",
+          "status": "skipped"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans allows the actual learning-code author to preserve an own observation and report while denying guardian plan creation and another authors source",
+          "status": "skipped"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans keeps the exact original status revision and command after another valid state, including native cold restart and stable original due dates",
+          "status": "skipped"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans preserves the complete original retrospective reason and fingerprint after a later plan edit without adding another formal response",
+          "status": "skipped"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans keeps legacy study-plan request recovery inside the actual child and subject when two unrelated real accounts deliberately choose the same original key",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans legacy study-plan recovery reauthorizes the actual referenced child and refuses missing or mismatched saved references without another write",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans legacy study-plan recovery keeps two genuinely confirmed subjects distinct for the same child and random key",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans legacy study-plan session recovery never suppresses a real update in another actual saved plan",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans legacy study-plan all-conflict preview has zero confirmable sessions and cannot persist an overlapping fallback",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans legacy study-plan partial-conflict preview saves only actual free slots and refuses a newly occupied final slot at confirmation",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans legacy study-plan incomplete original activity refuses creation even when the current preview would otherwise be valid",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans legacy study-plan conflict preview covers this childs other subject without exposing or blocking on another familys private events",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "studio.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "whiteboard video and LMS calendar integrations keeps independent overview separate from all child business projections and preserves legacy selection",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations keeps saved whiteboard creation replays behind current student access without duplicating activity",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations previews, saves and reads a uniquely grounded whiteboard with student access",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations binds whiteboard replay receipts to the original action, actor, command and saved board",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations synthesizes only an authorized frozen sentence, keeps legacy narration, and rejects identity tampering",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations inflight: refuses late legacy narration after a separately committed logout of its original login",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations inflight: rechecks a separately committed guardian revocation before returning a frozen sentence",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations inflight: refuses an old learner session when a newer enabled learning-access epoch replaces it during synthesis",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations does not substitute another child for an explicit inaccessible studio selection",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations previews selected goals and pace without persisting a course and rejects invalid confirmation targets",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations replays the original confirmation after scope changes and rejects changed commands with the same key",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations warns only for selected unapproved teaching and preserves every selected strand",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations opens an approved course lesson in the shared classroom without replacing independent measurement",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations previews, persists and executes an evidence-driven plan with delayed reviews",
+          "status": "passed"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations renders, saves and grounds page-level whiteboards from an uploaded PDF",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations OCRs an image-only PDF and returns reviewable page structures",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations recovers native table cells and formula candidates while preserving source coordinates",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations keeps connector creation idempotent, isolated, revocable and student read-only",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations creates, replays, removes and exports a StudyAgent calendar task",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations edits manual calendar tasks with revision checks and guardian isolation",
+          "status": "skipped"
+        },
+        {
+          "title": "whiteboard video and LMS calendar integrations validates every batch target before deleting and protects subscribed and plan events",
+          "status": "skipped"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "stats": {
+    "startTime": "2026-10-30T05:54:09.832Z",
+    "duration": 95625.54900000001,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "legacy calendar boundary: all actual slots busy leaves zero confirmable sessions at 320",
+      "file": "calendar-boundary.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "legacy calendar boundary: all actual slots busy leaves zero confirmable sessions at 390",
+      "file": "calendar-boundary.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "legacy calendar boundary: all actual slots busy leaves zero confirmable sessions at 768",
+      "file": "calendar-boundary.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "legacy calendar boundary: all actual slots busy leaves zero confirmable sessions at 1440",
+      "file": "calendar-boundary.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "legacy calendar boundary: a real late conflict keeps the complete input and confirmation never implicitly re-previews at 320",
+      "file": "calendar-boundary.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "legacy calendar boundary: a real late conflict keeps the complete input and confirmation never implicitly re-previews at 1440",
+      "file": "calendar-boundary.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "a parent can build and reopen an evidence-backed learning studio course",
+      "file": "studio.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    }
+  ]
+}

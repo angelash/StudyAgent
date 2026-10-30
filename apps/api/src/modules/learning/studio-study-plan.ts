@@ -63,13 +63,6 @@ export function buildStudioStudyPlan(input: BuildPlanInput): StudioStudyPlanPrev
         ? `当前状态：${estimates.get(atom.id)!.status}；独立题族：${estimates.get(atom.id)!.independentFamilies}`
         : '来自已确认学习范围' });
   }
-  if (!sessions.length) {
-    const atom = selected[0], end = new Date(first.getTime() + minutes * 60_000);
-    sessions.push({ id: 'plan-session:1', index: 1, title: titleFor('learn', atom), kind: 'learn',
-      atomIds: [atom.id], objective: atom.objective, successCriterion: criterion('learn', atom),
-      startsAt: first.toISOString(), endsAt: end.toISOString(), status: 'scheduled', calendarEventId: '',
-      evidenceBasis: '目标时间内冲突较多，先保留一个明确起点' });
-  }
   const plan: StudioStudyPlan = { id: input.id, studentId: input.studentId, subject: input.subject,
     title: clean(input.title || `到 ${input.targetDate.slice(0, 10)} 的${input.subject === 'math' ? '数学' : input.subject === 'chinese' ? '语文' : input.subject === 'chemistry' ? '化学' : '英语'}学习计划`, 180),
     goal: clean(input.goal, 1000), targetDate: input.targetDate.slice(0, 10), minutesPerDay: minutes,
@@ -77,7 +70,8 @@ export function buildStudioStudyPlan(input: BuildPlanInput): StudioStudyPlanPrev
   plan.fingerprint = createHash('sha256').update(JSON.stringify({ studentId: input.studentId, subject: input.subject,
     goal: plan.goal, targetDate: plan.targetDate, minutesPerDay: minutes,
     atoms: selected.map(atom => [atom.id, atom.version]), sessions })).digest('hex');
-  return { ...plan, warnings: [...(input.existingEvents.length ? ['已跳过与现有日程冲突的时段。'] : []),
+  return { ...plan, warnings: [...(!sessions.length ? ['目标日期内没有可用时段，请调整首次开始或目标日期后重新预览。'] : []),
+    ...(input.existingEvents.length ? ['已避开这个学习对象各学科中有效的忙碌时段。'] : []),
     ...(input.atoms.length > selected.length ? [`本计划只聚焦 ${selected.length} 个优先点，其余已学点保留在后续评测中。`] : []),
     '计划完成只表示执行过任务；“掌握”仍需独立新题和延迟复测。'],
     evidence: selected.map(atom => ({ atomId: atom.id, atomName: atom.name, status: estimates.get(atom.id)?.status ?? 'unknown',

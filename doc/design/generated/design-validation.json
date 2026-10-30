@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "at": "2026-10-30T07:55:19.494Z",
-  "sourceRevision": "c5ae0f66b00096cc080b73eeb47f96a00c018b57",
+  "at": "2026-10-30T08:04:40.746Z",
+  "sourceRevision": "d372bda2a6bf1fa804418981d16d23ef5810d1d3",
   "passed": true,
   "scope": "Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.",
   "inventory": {
@@ -18,16 +18,16 @@
     "webPages": 36,
     "webRouteHandlers": 1,
     "apiTestFiles": 229,
-    "browserTestFiles": 54
+    "browserTestFiles": 55
   },
   "features": {
     "areas": 14,
-    "features": 140,
+    "features": 141,
     "activeNormalApiRoutes": 497,
     "coveredApiRoutes": 497
   },
   "sourceReferences": {
-    "uniqueFiles": 789,
+    "uniqueFiles": 792,
     "problems": [],
     "sha256": {
       ".github/apt-ci.conf": "0ef559790ebaac3de1306f899a306ba2c7b76ba55b554e06634b0545b4878827",
@@ -198,7 +198,7 @@
       "apps/api/src/modules/learning/assistant-guidance-integrity.ts": "8202f89dc5f8f55034a709342531e4a0156be2d51ebe0493d88b875e45856ff2",
       "apps/api/src/modules/learning/assistant-guidance-record.ts": "5f2e73ddbdd5fe656d2f7fe5fde075dd403d8e7ce8fec458a582b55d2421f019",
       "apps/api/src/modules/learning/assistant-guidance.controller.ts": "289fec2993bf8b54d49842d073a32ae73956b159cbeda4c508a9e8171b5fefbf",
-      "apps/api/src/modules/learning/assistant-guidance.integration.test.ts": "7f9690875271d9f2a8139aadcd4c52d39c1e0eadf1cd369c0dc804d20985ff3c",
+      "apps/api/src/modules/learning/assistant-guidance.integration.test.ts": "b7f0eff701990d798c1d0357fbfa890914a94fc4b9fda6c9608ee0f8b686ecb2",
       "apps/api/src/modules/learning/assistant-guidance.service.ts": "b5faa66df281ec0aa34df5fa8f70072f4638f21ed5e2f558e40fcccb11586437",
       "apps/api/src/modules/learning/assistant-practice-artifact.controller.ts": "ba14d289d0ac2b2d305eedc0af4b31a1ca4b98e24d069c2c87c7d8f495ab428b",
       "apps/api/src/modules/learning/assistant-practice-artifact.integration.test.ts": "95ab9f09aa0dd2b074f4648effe93da062573ae4607e3a9e75f2017128d0dc3b",
@@ -300,7 +300,7 @@
       "apps/api/src/modules/learning/learning-home.service.ts": "19a872b0bcae191aa91fd3fb3c60d664a0e56c740f2390719a2e9eff2be7a687",
       "apps/api/src/modules/learning/learning-home.test.ts": "db8263d60c805787e1edfce67b20b60f7ac565be5aecd13fb3cd82c1135450c6",
       "apps/api/src/modules/learning/learning.controller.ts": "383f39a025e789997943373b990c4ac2104d0419bf50f98f93aef2d0175deefb",
-      "apps/api/src/modules/learning/learning.service.ts": "5490790d2fc2f3f6cb8131ecb0d478793707cc7379771c21026fa81cbd8eba90",
+      "apps/api/src/modules/learning/learning.service.ts": "4b52752687856c04323341209a8d2f2b1b001492939d52c762bb448c83241971",
       "apps/api/src/modules/learning/notebook.controller.ts": "cf8588838792ff3da8c62566be17ac1b8f9c24b5a1150df030f7cb64d7367908",
       "apps/api/src/modules/learning/notebook.integration.test.ts": "21c874e166cfc565ad5a2a3acf548c01d08a51aa147ab94f40a584de7b9725c8",
       "apps/api/src/modules/learning/notebook.service.ts": "9a0a777a6b1f0bcdeac606e66f66b601f5671c7a300d9738c229f7c27ada8695",
@@ -359,7 +359,7 @@
       "apps/api/src/modules/learning/studio-original-repair.service.ts": "5d2bf50df7757be1bcf883a459cf83135cf893c1f0ce422ba0b73af7749c30e8",
       "apps/api/src/modules/learning/studio-pdf-structure.ts": "05d7cadd8ea4a2eb0af9b28231203b75842bbbfa671711eaf5862d54abbc82fc",
       "apps/api/src/modules/learning/studio-pdf-whiteboard.ts": "70ee09eb62cee1ebe130467776a87d6e5a0602a29b19342ce4da81a81c01d587",
-      "apps/api/src/modules/learning/studio-study-plan.ts": "6474d87d8dae0d5319e3ee7e7028d414dd494d36f5e0124b6215a6319b2bdef5",
+      "apps/api/src/modules/learning/studio-study-plan.ts": "1f0a28e0835d30c17c99f46c4fcf971a33c3ae724ae4892e73295fc158a87c36",
       "apps/api/src/modules/learning/studio-whiteboard-access.ts": "d24390331a7bb6c3ecdf2139ab5b67a6ba614cc9ef9805b6b313aa80d558158b",
       "apps/api/src/modules/learning/studio-whiteboard.ts": "38a7caa82029e08afb7a031e6c63074215f5ee0cc601f3f6eca7b573425586ed",
       "apps/api/src/modules/learning/studio.integration.test.ts": "f5c305e1f63bada9a0da8e163edd6604f3414e3a1c428e7e1eaeab35916209fb",
@@ -537,6 +537,7 @@
       "apps/web/app/studio/studio-instant-assistant.tsx": "4943b034850b09453e0af96ebd3f767e40ffb1328e6552100ca503ef22eaf0f3",
       "apps/web/app/studio/studio-navigation.tsx": "64f5d659c9cc52fe40e47dfadc4fe0854de7b51d0105745f175925d8ddc75ef7",
       "apps/web/app/studio/studio.tsx": "8fc6d41dd2ba0809ff576a252291ec52f98f4e24900a072ac83af8b21c6f4c39",
+      "apps/web/app/studio/study-planner.tsx": "acedb53fa55b0de8a7af52d6221cd492f70c91a0995c2a00d00ff8985cc284e6",
       "apps/web/app/studio/tasks/conversation-practice.css": "c5901256b2683fb1e52f2a8dae7ee389afc3704443da6afa7aec4f563cf59428",
       "apps/web/app/studio/tasks/conversation-practice.tsx": "1e1e42aee3bc0101b0cccd7abcb8def10817c16b70ab73125f79f8c6c9b30697",
       "apps/web/app/studio/tasks/guidance-observation.tsx": "d5a5ae8b0615db79e75e9b208b4c20f4f34cca2596dcf3e1041970ba4bd5e635",
@@ -652,11 +653,12 @@
       "doc/product/143-assistant-messages-to-learning-artifacts.md": "4e78aeee6c6a753acc69ccff085a509bfbbcf852f4560ca64002146b77ecdd09",
       "doc/product/143-chemistry-course-content-correction.md": "515dbf19c17a25d774b98e1de204b42ea243543908c16c12bb38b75e918f8358",
       "doc/product/146-conversation-sourced-whiteboard-teaching.md": "c012110f6357584c49551cc6457b50119cfe76726af2640f6e004869c629168b",
-      "doc/product/147-conversation-practice-guidance-and-review.md": "d6aeb76499f15e138774be7ecdff9846bccc250c8a8ab721d9828af37a285f64",
+      "doc/product/147-conversation-practice-guidance-and-review.md": "7d438f39ad75d70a1ebc1357036f154cf0214b4efc5d0953ae607e86cd6a9189",
       "doc/product/156-assistant-practice-workspace-ui.md": "bce39e592a6f04c4e348d5fb510dfc059c7fd4997611c1810d805296de14299d",
       "doc/product/157-practice-assignment-withdrawal-and-schema25.md": "9a3ff6baf2fa6a119c0162258767ed61d1e4dcfaa8a2ef33b584139538b82da8",
       "doc/product/158-generated-teaching-practice-persistence.md": "fde56650e565b83d4e4419976955dbd7ce252d8aa38fd846955d30bd3169d2c3",
       "doc/product/159-conversation-clues-to-evidence-guidance.md": "f3cc711d8e8e3d0fa2eac2b6531954c667d3130d5560791404677e86e114ab6f",
+      "doc/product/160-guidance-calendar-conflicts-and-due-review.md": "e236fab320c9157156a1b87acf557adbc9c83a72fb11cc3b9ca910d598b94fb1",
       "packages/contracts/src/activity-navigation.ts": "4e0639c3669a5d7b5c9c20457cf695c6621e824c5c29663015377ea2f90fee85",
       "packages/contracts/src/ai-models.ts": "c27640b994c433be31aa6f048e727446f86e68252d695732740f5dd652b0df63",
       "packages/contracts/src/ai-teaching-tools.ts": "5063a057c70360db1e3f122ca68cb4632b621e58a2b9163e3c864b71475ed005",
@@ -774,9 +776,10 @@
       "tests/e2e/assistant-notes.spec.ts": "09688b915df7e051b357ee6a65ceb72b06352e222c3fce70d673391d3cf012d4",
       "tests/e2e/assistant-practice-withdrawal.spec.ts": "97433a9404929877cd52851a3f266974e304b6d919fed3a63b0402f806f7a465",
       "tests/e2e/assistant-practice-workspace.spec.ts": "2da767e83a266b283b1a86c73a0bfc4af268b4c45630caf112ac560993665575",
-      "tests/e2e/assistant-teaching-practice.spec.ts": "f9bfd0a2e0ba63c3d59811e8f6619371b454fa6fd30fe4d0f430e48d215cc87e",
+      "tests/e2e/assistant-teaching-practice.spec.ts": "6cde94aaf3d5657dc78cc6d4d35b6faadb66722b73c5e3db1925f3f481fb23b1",
       "tests/e2e/assistant-teaching-sharing.spec.ts": "c48966154bab42a8354d4c0fba4c528a4212c144540f13c7d3f550f3c24298ea",
       "tests/e2e/assistant-whiteboards.spec.ts": "ef34f0a8c1752eaaa8c6c664d4e6579e676d126243a425f5633322881bb450d6",
+      "tests/e2e/calendar-boundary.spec.ts": "4f8fa40fd5fcd79253d7c5e4fffa8a5522e9bfa9bed6b3076ecbcdc22265fffe",
       "tests/e2e/chemistry.spec.ts": "dc51a3c13095f65f3525194a504c0a3edbb558aca76724c99f557ee81a060628",
       "tests/e2e/classroom-boards.spec.ts": "3fb1d3d4b28b7923e83c0ffbd1eea4ac6c1fcabbaae03603b9a9cc3f917e4f41",
       "tests/e2e/classroom-captions.spec.ts": "a2fa3848145681c8c1442fd58dc2b1223460c9a5a03017a5f24f77c14bfb3074",
@@ -827,12 +830,12 @@
     "uncovered": []
   },
   "markdownLinks": {
-    "checked": 4764,
+    "checked": 4796,
     "missing": []
   },
   "staticContent": {
     "receipt": "content-snapshot.json",
-    "authoredAuditAt": "2026-10-30T07:52:15.844Z",
+    "authoredAuditAt": "2026-10-30T08:04:33.250Z",
     "totals": {
       "points": 258,
       "teaching": 258,
@@ -898,8 +901,8 @@
   },
   "applicationBaselineEvidence": {
     "newlyRunByThisScript": false,
-    "receipt": "../evidence/2026-10-30/workspace-r2-r3-guidance-first/receipt.json",
-    "revision": "c5ae0f66b00096cc080b73eeb47f96a00c018b57",
+    "receipt": "../evidence/2026-10-30/workspace-r4-calendar-boundaries/receipt.json",
+    "revision": "d372bda2a6bf1fa804418981d16d23ef5810d1d3",
     "note": "Recorded application acceptance is a separate run. This documentation validation does not rerun or replace it, and does not assert a newer remote CI result."
   }
 }

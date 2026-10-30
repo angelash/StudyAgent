@@ -149,7 +149,7 @@ export class LearningService {
       return buildStudioStudyPlan({ id: 'studio_plan_preview', studentId: command.studentId, subject: command.subject,
         title: command.title, goal: command.goal, targetDate: command.targetDate, firstSessionAt: command.firstSessionAt,
         minutesPerDay: command.minutesPerDay, atoms, estimates: profile.estimates,
-        existingEvents: this.store.select('studioScheduleEvents', { studentId: command.studentId, subject: command.subject }) });
+        existingEvents: this.store.select('studioScheduleEvents', { studentId: command.studentId }).filter(event => event.status !== 'skipped') });
     } catch (error) { throw new BadRequestException(error instanceof Error ? error.message : '学习计划参数无效'); }
   }
 
@@ -160,10 +160,14 @@ export class LearningService {
       minutesPerDay: z.number().int().min(10).max(60), fingerprint: z.string().regex(/^[a-f0-9]{64}$/),
       requestKey: z.string().min(8).max(180) }).strict(), input);
     this.students.assertGuardian(user, command.studentId);
-    const existing = this.store.find('studioActivities', { requestKey: command.requestKey });
-    if (existing?.referenceId) {
+    const existing = this.store.find('studioActivities', { requestKey: command.requestKey, studentId: command.studentId, subject: command.subject, kind: 'plan' });
+    if (existing) {
+      if (!existing.referenceId) throw new ConflictException('原学习计划引用缺失，请保留完整输入再检查原记录');
       const plan = this.store.find('studioStudyPlans', { id: existing.referenceId });
-      if (plan) return plan;
+      if (!plan) throw new ConflictException('原学习计划已不可核对，请保留完整输入再检查原记录');
+      this.students.assertCanAccessStudent(user, plan.studentId);
+      if (plan.studentId !== command.studentId || plan.subject !== command.subject) throw new ConflictException('原请求与当前学习对象或学科不一致');
+      return plan;
     }
     const preview = this.previewStudioStudyPlan(user, {
       studentId: command.studentId,
@@ -175,6 +179,7 @@ export class LearningService {
       minutesPerDay: command.minutesPerDay,
     });
     if (preview.fingerprint !== command.fingerprint) throw new ConflictException('学习计划已变化，请重新预览并确认');
+    if (!preview.sessions.length) throw new ConflictException('目标日期内没有可用时段，请调整首次开始或目标日期后重新预览');
     const now = new Date().toISOString(), id = this.store.nextId('studio_plan');
     const { warnings: _warnings, evidence: _evidence, ...storedPreview } = preview;
     const plan: StudioStudyPlan = { ...storedPreview, id, revision: 1, createdAt: now, updatedAt: now,
@@ -198,7 +203,7 @@ export class LearningService {
     const command = validate(z.object({ action: z.enum(['complete', 'skip', 'reopen']), expectedRevision: z.number().int().positive(),
       requestKey: z.string().min(8).max(180) }).strict(), input);
     const session = plan.sessions.find(row => row.id === sessionId); if (!session) throw new NotFoundException('计划任务不存在');
-    const previous = this.store.find('studioActivities', { requestKey: command.requestKey });
+    const previous = this.store.find('studioActivities', { requestKey: command.requestKey, studentId: plan.studentId, subject: plan.subject, kind: 'plan', referenceId: plan.id });
     if (previous) return plan;
     if (plan.revision !== command.expectedRevision) throw new ConflictException('计划已更新，请刷新后再操作');
     const status = command.action === 'complete' ? 'completed' : command.action === 'skip' ? 'skipped' : 'scheduled';

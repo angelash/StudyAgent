@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-30T05:33:49.778Z",
+  "files": [
+    {
+      "path": "apps/api/src/modules/learning/learning.service.ts",
+      "parentSha256": "5490790d2fc2f3f6cb8131ecb0d478793707cc7379771c21026fa81cbd8eba90",
+      "candidateSha256": "4a393f2f14885b2fc98623587e4fd4769b256636c21c9486c80881713238878e"
+    },
+    {
+      "path": "apps/api/src/modules/learning/studio-study-plan.ts",
+      "parentSha256": "6474d87d8dae0d5319e3ee7e7028d414dd494d36f5e0124b6215a6319b2bdef5",
+      "candidateSha256": "1f0a28e0835d30c17c99f46c4fcf971a33c3ae724ae4892e73295fc158a87c36"
+    },
+    {
+      "path": "apps/web/app/studio/study-planner.tsx",
+      "parentSha256": "07684af3f38ddba2ec6a1b15a381ec29b2ae585e35dd01fd737044a5de6324da",
+      "candidateSha256": "acedb53fa55b0de8a7af52d6221cd492f70c91a0995c2a00d00ff8985cc284e6"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-guidance.integration.test.ts",
+      "parentSha256": "072eb0f4cb25fa546b6f4a6a953133728d3a1d3c85602833efcab368c7aa9e71",
+      "candidateSha256": "93ff1b26d18accf3211fd2390cddf94f7ddcda3e7ad78e8788b8d1d16f1e1dad"
+    }
+  ],
+  "changes": [
+    "Actual child/subject/kind/plan scopes and referenced-plan authorization for legacy recovery; missing original references refuse a new plan.",
+    "No forced overlapping session when every candidate conflicts. Zero-session preview remains read-only; service refuses confirmation and original workbench button is disabled.",
+    "Current childs effective busy intervals across subjects participate; other children and private titles do not enter preview.",
+    "Confirmation button uses type=button to avoid a second implicit form submission."
+  ],
+  "limits": [
+    "Legacy activities still do not bind author and complete command hashes; new strict persistence protocol remains required.",
+    "Timezone/local-date/DST, all-subject daily budget, exact immutable command receipts, real ReviewTask integration and generic review completion remain further160 scope.",
+    "Uses synthetic isolated accounts only. No production build/data or main application source changed yet."
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "at": "2026-10-30T08:03:16.854Z",
+  "base": "d372bda2a6bf1fa804418981d16d23ef5810d1d3",
+  "files": [
+    {
+      "path": "apps/api/src/modules/learning/assistant-guidance.integration.test.ts",
+      "mainSha256": "7f9690875271d9f2a8139aadcd4c52d39c1e0eadf1cd369c0dc804d20985ff3c",
+      "candidateSha256": "9f3411ee8b9315856976066ef2916420158e6cf6cb5d62096418d410c496364c",
+      "deliveryNormalization": "Only final newline sequence normalized; exact tested semantic text retained.",
+      "deliveredSha256": "b7f0eff701990d798c1d0357fbfa890914a94fc4b9fda6c9608ee0f8b686ecb2"
+    },
+    {
+      "path": "apps/api/src/modules/learning/learning.service.ts",
+      "mainSha256": "5490790d2fc2f3f6cb8131ecb0d478793707cc7379771c21026fa81cbd8eba90",
+      "candidateSha256": "4a393f2f14885b2fc98623587e4fd4769b256636c21c9486c80881713238878e",
+      "deliveryNormalization": "Only final newline sequence normalized; exact tested semantic text retained.",
+      "deliveredSha256": "4b52752687856c04323341209a8d2f2b1b001492939d52c762bb448c83241971"
+    },
+    {
+      "path": "apps/api/src/modules/learning/studio-study-plan.ts",
+      "mainSha256": "6474d87d8dae0d5319e3ee7e7028d414dd494d36f5e0124b6215a6319b2bdef5",
+      "candidateSha256": "1f0a28e0835d30c17c99f46c4fcf971a33c3ae724ae4892e73295fc158a87c36",
+      "deliveredSha256": "1f0a28e0835d30c17c99f46c4fcf971a33c3ae724ae4892e73295fc158a87c36"
+    },
+    {
+      "path": "apps/web/app/studio/study-planner.tsx",
+      "mainSha256": "07684af3f38ddba2ec6a1b15a381ec29b2ae585e35dd01fd737044a5de6324da",
+      "candidateSha256": "acedb53fa55b0de8a7af52d6221cd492f70c91a0995c2a00d00ff8985cc284e6",
+      "deliveredSha256": "acedb53fa55b0de8a7af52d6221cd492f70c91a0995c2a00d00ff8985cc284e6"
+    },
+    {
+      "path": "tests/e2e/assistant-teaching-practice.spec.ts",
+      "mainSha256": "f9bfd0a2e0ba63c3d59811e8f6619371b454fa6fd30fe4d0f430e48d215cc87e",
+      "candidateSha256": "6cde94aaf3d5657dc78cc6d4d35b6faadb66722b73c5e3db1925f3f481fb23b1",
+      "deliveredSha256": "6cde94aaf3d5657dc78cc6d4d35b6faadb66722b73c5e3db1925f3f481fb23b1"
+    },
+    {
+      "path": "tests/e2e/calendar-boundary.spec.ts",
+      "mainSha256": null,
+      "candidateSha256": "4f8fa40fd5fcd79253d7c5e4fffa8a5522e9bfa9bed6b3076ecbcdc22265fffe",
+      "deliveredSha256": "4f8fa40fd5fcd79253d7c5e4fffa8a5522e9bfa9bed6b3076ecbcdc22265fffe"
+    }
+  ],
+  "noProductionBuildOrDataChange": true
+}

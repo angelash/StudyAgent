@@ -58,3 +58,6 @@ ICS使用稳定UID、SEQUENCE及原确认版本，精确导出实际时间及可
 
 
 2026-10-30 输入接续：158/159共同27候选完成独立最终门禁并受控归并，以上25/候选描述保留历史；R4接[161持久与时区协议](161-guidance-calendar-persistence-and-timezone-protocol.md)。旧计划边界和零时段仅在独立副本验证，不计入本次599交付，正式仍24。
+
+
+2026-10-30 R4前置边界：[160](160-guidance-calendar-conflicts-and-due-review.md)原请求恢复增加实际孩子/学科/原计划授权和来源核对，缺失原引用拒绝自动创建；全冲突预览零时段并前后端拒绝确认，同一孩子其他学科的有效日程一起核对。原工作台确认按钮明确type=button，避免表单的隐式第二次提交。最终整站605/605零重试、聚焦14/14、完整API2015通过/0失败/86环境跳过、原HTTP批51/51和实际PG边界8/8分别通过，见[最终证据](../evidence/2026-10-30/workspace-r4-calendar-boundaries/receipt.json)。首轮完整API2013/2/86及首次整站主动中断、专项失败与复验均保留；短QA暂存路径、独立2001:db8合成注册地址和真实运行状态同步未放宽业务权限/速率/终态断言。该批不等于严格作者原命令、完整日预算/DST和原正式复测排期，它们接[161](161-guidance-calendar-persistence-and-timezone-protocol.md)。源码27，正式库只读schema24/revision187和原构建保持，仅本地提交；原72仍11 implemented/50 in_progress/11 planned/0 verified，WS状态不提升。R3更多原因、R4余项、R5～R8、全教材/教师/实机/真人1/3/7/14日继续，整体active。

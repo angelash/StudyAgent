@@ -1,0 +1,14 @@
+{
+  "features": [
+    "LEARN-11"
+  ],
+  "sources": [
+    "apps/api/src/modules/learning/learning.service.ts",
+    "apps/api/src/modules/learning/assistant-guidance.integration.test.ts",
+    "tests/e2e/calendar-boundary.spec.ts",
+    "doc/product/160-guidance-calendar-conflicts-and-due-review.md",
+    "apps/api/src/modules/learning/studio-study-plan.ts",
+    "apps/web/app/studio/study-planner.tsx"
+  ],
+  "preserved": "Keep LEARN-08/09/10 and all other current main definitions; never replace with isolated stale registry."
+}

@@ -1,0 +1,153 @@
+{
+  "stats": {
+    "startTime": "2026-10-30T06:52:27.913Z",
+    "duration": 148367.306,
+    "expected": 14,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "guidance operations: a lost original activation survives reload and creates the original four delayed tasks per action",
+      "file": "assistant-guidance.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: the original paused receipt stays separate from a later active plan",
+      "file": "assistant-guidance.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: two complete forms require both actual downloads before leaving with unavailable storage",
+      "file": "assistant-guidance.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: complete retrospective input restores and cannot be acknowledged without actual independent followup evidence",
+      "file": "assistant-guidance.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: actual completed independent followup supports an exact lost retrospective command while uncertainty stays explicit",
+      "file": "assistant-guidance.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated teaching workspace: explicit cancellation, original-model retry and Escape preserve source and restore focus",
+      "file": "assistant-teaching-practice.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "legacy calendar boundary: all actual slots busy leaves zero confirmable sessions at 320",
+      "file": "calendar-boundary.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "legacy calendar boundary: all actual slots busy leaves zero confirmable sessions at 390",
+      "file": "calendar-boundary.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "legacy calendar boundary: all actual slots busy leaves zero confirmable sessions at 768",
+      "file": "calendar-boundary.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "legacy calendar boundary: all actual slots busy leaves zero confirmable sessions at 1440",
+      "file": "calendar-boundary.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "legacy calendar boundary: a real late conflict keeps the complete input and confirmation never implicitly re-previews at 320",
+      "file": "calendar-boundary.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "legacy calendar boundary: a real late conflict keeps the complete input and confirmation never implicitly re-previews at 1440",
+      "file": "calendar-boundary.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: an older matching plan is found behind a newer unrelated report and opens its durable plan route",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "a parent can build and reopen an evidence-backed learning studio course",
+      "file": "studio.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-30T08:04:06.345597+00:00",
+  "sourceRevision": "d372bda2a6bf1fa804418981d16d23ef5810d1d3",
+  "state": "R4 legacy request scope/conflict boundaries implemented and isolated; main schema27, production24 unchanged, no push/deployment. Whole goal active.",
+  "completeBrowser": {
+    "tests": 605,
+    "retries": 0,
+    "stats": {
+      "startTime": "2026-10-30T06:56:26.682Z",
+      "duration": 3967494.719,
+      "expected": 605,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "focusedBrowser": {
+    "tests": 14
+  },
+  "completeApi": {
+    "passed": 2015,
+    "failed": 0,
+    "skipped": 86
+  },
+  "focusedHttp": {
+    "passed": 51,
+    "scope": "25 guidance +21 original studio +5 original native material restore"
+  },
+  "actualPostgres": {
+    "passed": 8,
+    "skippedUnselected": 17
+  },
+  "sourceComparison": "source-comparison.json",
+  "screenshots": [
+    {
+      "path": "screenshots/calendar-boundary/all-conflict-zero-confirmation-1440.png",
+      "sha256": "7636d9e78fb5f595e729f416a7e0ebcdadb0e8c907f0a24db9aa1d4de13b89e0",
+      "bytes": 216594
+    },
+    {
+      "path": "screenshots/calendar-boundary/all-conflict-zero-confirmation-320.png",
+      "sha256": "a5da8225b8e2604da770b579e61be488eed29f230602d2cf41b7b67e907e3033",
+      "bytes": 156037
+    },
+    {
+      "path": "screenshots/calendar-boundary/all-conflict-zero-confirmation-390.png",
+      "sha256": "ccde184448c049233ac9833ccfeedb6ad92e3e556b3484d6964774ac722d594f",
+      "bytes": 157934
+    },
+    {
+      "path": "screenshots/calendar-boundary/all-conflict-zero-confirmation-768.png",
+      "sha256": "110b126d559bb09236912105a36a5eece5af754babaf4a1e55f4f412273eb18e",
+      "bytes": 170970
+    },
+    {
+      "path": "screenshots/calendar-boundary/late-conflict-original-input-and-single-confirmation-1440.png",
+      "sha256": "5c97677086b2d42eaccbdd94da15327bd808c2f6bd644c0bb1699066c97d8715",
+      "bytes": 201638
+    },
+    {
+      "path": "screenshots/calendar-boundary/late-conflict-original-input-and-single-confirmation-320.png",
+      "sha256": "96799e0a85b5d201266ee205c5568b1bf0631bc1539d8b78d5438ce0d8ca8a27",
+      "bytes": 129312
+    },
+    {
+      "path": "screenshots/paper-practice/unified-calendar-1440.png",
+      "sha256": "45c22fcf74db378ad876e8bd56bb7f06c8e2fdb4efcffa70b3fc53186b2fc024",
+      "bytes": 139061
+    },
+    {
+      "path": "screenshots/paper-practice/unified-calendar-390.png",
+      "sha256": "ca3c639f6babe67cde6543f9d6865c2ce236c451257fea134bea1527dbe4ed13",
+      "bytes": 78006
+    },
+    {
+      "path": "screenshots/paper-practice/unified-calendar-768.png",
+      "sha256": "af2fa91f058363b89b6ebdf4495d2054687c36a79ecd8a88a956a84d94254348",
+      "bytes": 92006
+    },
+    {
+      "path": "screenshots/studio/studio-calendar-polished.png",
+      "sha256": "4a48fe4f617c74a3357aac4b5da6df63931820c504eacde2fd68be9a60e834b7",
+      "bytes": 404505
+    },
+    {
+      "path": "screenshots/workspace/workspace-calendar-empty-desktop.png",
+      "sha256": "6ee135eb5180b47e210e3e85f2d2af24c8756e3a538857ed5b28f2549bb4f3e4",
+      "bytes": 130329
+    },
+    {
+      "path": "screenshots/workspace/workspace-calendar-mobile.png",
+      "sha256": "b4b7f962e59151f607b4543b273fbcbbab68412382066184423d3f32b1eb6967",
+      "bytes": 67198
+    },
+    {
+      "path": "screenshots/workspace/workspace-calendar-tasks-desktop.png",
+      "sha256": "21008cc1b154018ac9dfc2155c1831fdcea1f6bfa577a8b6d032cf66835ce529",
+      "bytes": 129007
+    }
+  ],
+  "productionObservation": {
+    "readOnly": true,
+    "unchangedFromMaterialsDelivery": true,
+    "artifacts": [
+      {
+        "path": "apps/api/dist/apps/api/src/main.js",
+        "sha256": "5793c7090063d318c5e5c60bdb74350baa6f64c386639b94fbf4cd5605946c1a",
+        "mtimeUtc": "2026-10-29T14:51:26.120290+00:00"
+      },
+      {
+        "path": "apps/web/.next/BUILD_ID",
+        "sha256": "e02197beeb39c5df02110ca05544c471b3bb892662bebdcb56449b27713e7fba",
+        "mtimeUtc": "2026-10-29T14:52:20.456777+00:00"
+      }
+    ],
+    "schemaVersion": 24,
+    "revision": 187,
+    "recheckedAt": "2026-10-30T08:04:06.456879+00:00"
+  },
+  "limits": [
+    "161 full command/calendar persistence and all remaining R3/R4/R5-R8 continue.",
+    "72 remains11 implemented/50 in_progress/11 planned/0 verified; WS not promoted.",
+    "Teacher, devices, all content and real longitudinal evidence remain required."
+  ],
+  "artifacts": [
+    {
+      "path": "complete-api-second.json",
+      "sha256": "589188b1a6e30a86f02f474a52929eaceb75933e0972f4b5dba877105e6c97b4",
+      "bytes": 526954
+    },
+    {
+      "path": "complete-browser-second.json",
+      "sha256": "b18ecbe0f712b860a8b019829d7b8d3b6dc3fb76616ec78b290e147883b1abe1",
+      "bytes": 176326
+    },
+    {
+      "path": "failures-and-limits.json",
+      "sha256": "4cc145c9287aafcc3bb6ecdbf0fa7a1a04041c14c2b79899751c76904f476598",
+      "bytes": 948
+    },
+    {
+      "path": "focused-browser-fourth.json",
+      "sha256": "bdb8e63242845be96b03c4a9cc7a8e6dec7349da11542bde1068f89d37227086",
+      "bytes": 4364
+    },
+    {
+      "path": "history/browser-complete-first-interrupted.json",
+      "sha256": "01cb8963374fc2adfc1317286a6b87f84e789bf3d398fc2254d255e87fd0451e",
+      "bytes": 1381
+    },
+    {
+      "path": "history/browser-locator-correction.json",
+      "sha256": "e42e48368b74065e3efc62e2343b42ce08d43947ab835d3a9aa4dc35b78411a5",
+      "bytes": 630
+    },
+    {
+      "path": "history/calendar-boundary-http-fifth.json",
+      "sha256": "9b3f8c8ebad5f841547b8f0f62e28faf1df030116faca8c09061e076881e084d",
+      "bytes": 13140
+    },
+    {
+      "path": "history/calendar-boundary-http-first.json",
+      "sha256": "48c1ef18c6444c20f56b8ae73728c112f6d2f0ab5232a21fc592ccd68fbab423",
+      "bytes": 5284
+    },
+    {
+      "path": "history/calendar-boundary-http-fourth.json",
+      "sha256": "ce03ee5c5860c325a3fe4d42d5f0daf445936ab4bb38e8fc07c06d095658b8ed",
+      "bytes": 11694
+    },
+    {
+      "path": "history/calendar-boundary-http-second.json",
+      "sha256": "7dbfa89dde5bfc725bfc853476b083eb92c949fac353f41d7654d18ec1096bcc",
+      "bytes": 6599
+    },
+    {
+      "path": "history/calendar-boundary-http-third.json",
+      "sha256": "a4e6477ed21aeb2269e70b99e9ea0ea32a56515ffbe428e1478abb40257069b1",
+      "bytes": 7141
+    },
+    {
+      "path": "history/calendar-boundary-postgres-first.json",
+      "sha256": "439a343e766c112a2e9dd08967c74a8b810ebf8e4e91e180cbf742166543c5cd",
+      "bytes": 7141
+    },
+    {
+      "path": "history/calendar-conflict-boundary-overlay.json",
+      "sha256": "13b596fdcd4759001f83c39bb028676d7ded6674a577bfab8a889fb9b18a12a8",
+      "bytes": 2148
+    },
+    {
+      "path": "history/cancellation-test-worker-sync.json",
+      "sha256": "52449dde4689cd26a13b5eaef4d1cfbedef9f97feeb5c59148830a51833a0671",
+      "bytes": 623
+    },
+    {
+      "path": "history/complete-api-first.json",
+      "sha256": "16f6be03746908fe53618ea1ab22fcd4b79b393c7f87977da4328b5947315c67",
+      "bytes": 526954
+    },
+    {
+      "path": "history/complete-api-second.json",
+      "sha256": "589188b1a6e30a86f02f474a52929eaceb75933e0972f4b5dba877105e6c97b4",
+      "bytes": 526954
+    },
+    {
+      "path": "history/duration-locator-correction.json",
+      "sha256": "4680b08a18c718f872ea712274fed8c60aa8f666067fe5eb67cd19f45631e199",
+      "bytes": 429
+    },
+    {
+      "path": "history/guidance-browser-complete-second.json",
+      "sha256": "b18ecbe0f712b860a8b019829d7b8d3b6dc3fb76616ec78b290e147883b1abe1",
+      "bytes": 176326
+    },
+    {
+      "path": "history/guidance-browser-first.json",
+      "sha256": "f5ed4fde45bdd3d2c299f6643949e551c0b7ddc8042ad73f16b0441490d4dd90",
+      "bytes": 2200
+    },
+    {
+      "path": "history/guidance-browser-fourth.json",
+      "sha256": "bdb8e63242845be96b03c4a9cc7a8e6dec7349da11542bde1068f89d37227086",
+      "bytes": 4364
+    },
+    {
+      "path": "history/guidance-browser-second.json",
+      "sha256": "865cfe43abe452ade0764a1f6054537b652be4c7e5579e87f7f46b9751782d9c",
+      "bytes": 2200
+    },
+    {
+      "path": "history/guidance-browser-third.json",
+      "sha256": "db53660ed3619481803274f0c636cde4fc10a6f321c4237ab68890238a83421a",
+      "bytes": 2213
+    },
+    {
+      "path": "history/legacy-plan-boundary-overlay.json",
+      "sha256": "cc6e195b406c1bc8753a11ecdc87fbe1e553692335a91257eb805b0c6d9b5edc",
+      "bytes": 649
+    },
+    {
+      "path": "history/second-candidate-overlay.json",
+      "sha256": "c37fba23582baf2f929467a03045303fcc835e58d7ae0f24a49fa38715042038",
+      "bytes": 1037
+    },
+    {
+      "path": "history/stage-f-freeze-first.json",
+      "sha256": "c4ac4d1d53947f32b77b7acacffc6627012cebd5709b1cce58b5461c5abb15ce",
+      "bytes": 606073
+    },
+    {
+      "path": "history/stage-f-freeze-second.json",
+      "sha256": "9797a62427c88f8aea51d0c654e810f4a5bfc63e3bbe2ca4a0960fba12b65149",
+      "bytes": 606010
+    },
+    {
+      "path": "history/subject-conflict-test-correction.json",
+      "sha256": "a149b555d504a985835ce4481938dbc4161b437ae419967cbcbe4e4a5cd6f6a6",
+      "bytes": 574
+    },
+    {
+      "path": "http-fifth.json",
+      "sha256": "9b3f8c8ebad5f841547b8f0f62e28faf1df030116faca8c09061e076881e084d",
+      "bytes": 13140
+    },
+    {
+      "path": "integration-applied.json",
+      "sha256": "c03bf55febee38ee83077d2ea529c7c012b87d8ca716e804986a45d36bf91492",
+      "bytes": 2464
+    },
+    {
+      "path": "local-originals.json",
+      "sha256": "21645f0f434c411ec4f5199a52fe9498145048fae76d8e9bfa3851c35c5718dc",
+      "bytes": 12780
+    },
+    {
+      "path": "postgres-first.json",
+      "sha256": "439a343e766c112a2e9dd08967c74a8b810ebf8e4e91e180cbf742166543c5cd",
+      "bytes": 7141
+    },
+    {
+      "path": "screenshots/calendar-boundary/all-conflict-zero-confirmation-1440.png",
+      "sha256": "7636d9e78fb5f595e729f416a7e0ebcdadb0e8c907f0a24db9aa1d4de13b89e0",
+      "bytes": 216594
+    },
+    {
+      "path": "screenshots/calendar-boundary/all-conflict-zero-confirmation-320.png",
+      "sha256": "a5da8225b8e2604da770b579e61be488eed29f230602d2cf41b7b67e907e3033",
+      "bytes": 156037
+    },
+    {
+      "path": "screenshots/calendar-boundary/all-conflict-zero-confirmation-390.png",
+      "sha256": "ccde184448c049233ac9833ccfeedb6ad92e3e556b3484d6964774ac722d594f",
+      "bytes": 157934
+    },
+    {
+      "path": "screenshots/calendar-boundary/all-conflict-zero-confirmation-768.png",
+      "sha256": "110b126d559bb09236912105a36a5eece5af754babaf4a1e55f4f412273eb18e",
+      "bytes": 170970
+    },
+    {
+      "path": "screenshots/calendar-boundary/late-conflict-original-input-and-single-confirmation-1440.png",
+      "sha256": "5c97677086b2d42eaccbdd94da15327bd808c2f6bd644c0bb1699066c97d8715",
+      "bytes": 201638
+    },
+    {
+      "path": "screenshots/calendar-boundary/late-conflict-original-input-and-single-confirmation-320.png",
+      "sha256": "96799e0a85b5d201266ee205c5568b1bf0631bc1539d8b78d5438ce0d8ca8a27",
+      "bytes": 129312
+    },
+    {
+      "path": "screenshots/paper-practice/unified-calendar-1440.png",
+      "sha256": "45c22fcf74db378ad876e8bd56bb7f06c8e2fdb4efcffa70b3fc53186b2fc024",
+      "bytes": 139061
+    },
+    {
+      "path": "screenshots/paper-practice/unified-calendar-390.png",
+      "sha256": "ca3c639f6babe67cde6543f9d6865c2ce236c451257fea134bea1527dbe4ed13",
+      "bytes": 78006
+    },
+    {
+      "path": "screenshots/paper-practice/unified-calendar-768.png",
+      "sha256": "af2fa91f058363b89b6ebdf4495d2054687c36a79ecd8a88a956a84d94254348",
+      "bytes": 92006
+    },
+    {
+      "path": "screenshots/studio/studio-calendar-polished.png",
+      "sha256": "4a48fe4f617c74a3357aac4b5da6df63931820c504eacde2fd68be9a60e834b7",
+      "bytes": 404505
+    },
+    {
+      "path": "screenshots/workspace/workspace-calendar-empty-desktop.png",
+      "sha256": "6ee135eb5180b47e210e3e85f2d2af24c8756e3a538857ed5b28f2549bb4f3e4",
+      "bytes": 130329
+    },
+    {
+      "path": "screenshots/workspace/workspace-calendar-mobile.png",
+      "sha256": "b4b7f962e59151f607b4543b273fbcbbab68412382066184423d3f32b1eb6967",
+      "bytes": 67198
+    },
+    {
+      "path": "screenshots/workspace/workspace-calendar-tasks-desktop.png",
+      "sha256": "21008cc1b154018ac9dfc2155c1831fdcea1f6bfa577a8b6d032cf66835ce529",
+      "bytes": 129007
+    },
+    {
+      "path": "source-comparison.json",
+      "sha256": "8c603a813a5cb537e93522004472885845ec9a14628a637157a32e6b5ac95402",
+      "bytes": 700924
+    },
+    {
+      "path": "handbook-definition-overlay.json",
+      "sha256": "8ae7ba41765351594ef0129d212c7a5d6b455d1cdd69637c784a1ca753ccd7db",
+      "bytes": 528
+    },
+    {
+      "path": "handbook-validation.json",
+      "sha256": "11f270dd29d03bbe3d435ad499920b419912ddf3fb7cd6dfb641724a8b1a3ff4",
+      "bytes": 105441
+    },
+    {
+      "path": "delivery-checks.json",
+      "sha256": "73a9bef3fd390abebe3c29809b1bdc896b9a9199d63e3f1e1c059460ac18aee2",
+      "bytes": 324
+    }
+  ]
+}

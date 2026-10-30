@@ -46,3 +46,6 @@
 
 
 2026-10-30：158/159共同27候选补齐来源→成人/孩子AI教学与本人理由、私人观察→真实报告→原指导计划及全部表单退出恢复。最终599整站与2007 API等原件见[证据](../../evidence/2026-10-30/workspace-r2-r3-guidance-first/receipt.json)。31旧入口、WS与原72整体验收未提升，R4～R8及教师/实机/真人继续，正式24保持。
+
+
+2026-10-30 R4前置边界：[160](../160-guidance-calendar-conflicts-and-due-review.md)原请求恢复增加实际孩子/学科/原计划授权和来源核对，缺失原引用拒绝自动创建；全冲突预览零时段并前后端拒绝确认，同一孩子其他学科的有效日程一起核对。原工作台确认按钮明确type=button，避免表单的隐式第二次提交。最终整站605/605零重试、聚焦14/14、完整API2015通过/0失败/86环境跳过、原HTTP批51/51和实际PG边界8/8分别通过，见[最终证据](../../evidence/2026-10-30/workspace-r4-calendar-boundaries/receipt.json)。首轮完整API2013/2/86及首次整站主动中断、专项失败与复验均保留；短QA暂存路径、独立2001:db8合成注册地址和真实运行状态同步未放宽业务权限/速率/终态断言。该批不等于严格作者原命令、完整日预算/DST和原正式复测排期，它们接[161](../161-guidance-calendar-persistence-and-timezone-protocol.md)。源码27，正式库只读schema24/revision187和原构建保持，仅本地提交；原72仍11 implemented/50 in_progress/11 planned/0 verified，WS状态不提升。R3更多原因、R4余项、R5～R8、全教材/教师/实机/真人1/3/7/14日继续，整体active。

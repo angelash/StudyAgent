@@ -59,7 +59,7 @@ export function StudyPlanner({ studentId, subject, plans, atoms, canCreate, open
     });
   }
   async function save() {
-    if (!preview) return;
+    if (!preview || !preview.sessions.length) return;
     await run(async () => {
       await apiRequest('/learning/studio/study-plans', { method: 'POST', body: JSON.stringify({
         studentId, subject, ...(title.trim() ? { title: title.trim() } : {}), goal, targetDate,
@@ -111,7 +111,7 @@ export function StudyPlanner({ studentId, subject, plans, atoms, canCreate, open
           <span>{String(session.index).padStart(2, '0')} · {kindNames[session.kind]}</span><div><b>{session.title}</b><p>{session.objective}</p>
             <small>{new Intl.DateTimeFormat('zh-CN', { month: 'long', day: 'numeric', weekday: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(session.startsAt))} · {session.evidenceBasis}</small></div></article>)}</div>
         <p className="sa-plan-boundary">计划完成后仍需独立新题与延迟复测确认掌握；观看讲解、完成任务或勾选完成都不会直接提升掌握等级。</p>
-        <footer><button type="button" onClick={() => setPreview(null)}>返回修改</button><button disabled={busy} onClick={() => void save()}>{busy ? '正在写入…' : '确认并加入日历'}</button></footer>
+        <footer><button type="button" onClick={() => setPreview(null)}>返回修改</button><button type="button" disabled={busy || !preview.sessions.length} onClick={() => void save()}>{busy ? '正在写入…' : '确认并加入日历'}</button></footer>
       </>}
     </form>}
     <div className="sa-plan-list">{plans.length ? plans.map(plan => <article className="sa-plan-card" key={plan.id} data-status={plan.status}>

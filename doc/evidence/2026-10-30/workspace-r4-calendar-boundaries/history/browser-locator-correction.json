@@ -1,0 +1,7 @@
+{
+  "at": "2026-10-30T05:47:38.929Z",
+  "path": "tests/e2e/calendar-boundary.spec.ts",
+  "beforeSha256": "dda05ef1b21b32e5b1076e63a60e9cd6f857d8368b2762ed4522839764ed1897",
+  "afterSha256": "c0d4270eb37dce085979e256216a88c163e3d005ff17971bb9db67c5a9047cf6",
+  "reason": "First new six UI scenarios timed out at exact getByLabel, while the actual accessibility snapshot has textbox named exactly 计划目标 and the existing original studio journey passed. Use the actual textbox role/name. Keep all zero-slot, full-input, no-extra-request, cross-subject and final stored-state assertions. Product code/build unchanged."
+}
