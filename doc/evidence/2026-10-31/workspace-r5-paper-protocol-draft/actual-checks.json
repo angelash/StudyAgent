@@ -1,0 +1,164 @@
+{
+  "passed": 30,
+  "failed": 0,
+  "skipped": 0,
+  "files": [
+    {
+      "file": "paper-capture-attribution.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "private paper author and retained child source attribution preserves the exact shared source scope after deletion while native validation requires the matching actual receipt and absent author",
+          "status": "passed"
+        },
+        {
+          "title": "private paper author and retained child source attribution refuses another actor, a changed child, an earlier deletion and a fabricated retained-child declaration",
+          "status": "passed"
+        },
+        {
+          "title": "private paper author and retained child source attribution removes private personal and erased-child sources and never retains a contradictory erased/retained source",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "paper-capture-copy.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "complete paper capture copies contain actual original image bytes reads the exact raw original and ordered transformation back independently of the current browser file selection",
+          "status": "passed"
+        },
+        {
+          "title": "complete paper capture copies contain actual original image bytes refuses a metadata-only list and a page whose base64 bytes have been removed or changed even when its manifest hash is recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "complete paper capture copies contain actual original image bytes does not import another account, child or subject as the currently open private capture",
+          "status": "passed"
+        },
+        {
+          "title": "complete paper capture copies contain actual original image bytes rejects malformed transforms and noncanonical base64 without discarding the caller original file bytes",
+          "status": "passed"
+        },
+        {
+          "title": "complete paper capture copies contain actual original image bytes refuses oversized declared originals before attempting to decode their apparently valid base64",
+          "status": "passed"
+        },
+        {
+          "title": "complete paper capture copies contain actual original image bytes retains exact pending upload and rejected page-revision commands alongside real original bytes and refuses moving their scope",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "paper-capture-derived-pdf.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "actual derived PDF, frozen image page identities and original byte mapping creates reproducible portrait and landscape A4 pages while retaining duplicate original bytes as separate page identities",
+          "status": "passed"
+        },
+        {
+          "title": "actual derived PDF, frozen image page identities and original byte mapping keeps the old PDF unchanged after an explicit page reorder and refuses a rehashed mapping or an unrelated original file set",
+          "status": "passed"
+        },
+        {
+          "title": "actual derived PDF, frozen image page identities and original byte mapping maps the top left captured quadrant into PDF bottom left coordinates and rejects invalid or resource-heavy requests before decoding missing files",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "paper-capture-files.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "actual immutable paper original, baseline and derived file readback publishes and independently reads every original byte and sanitized processed version while replay reuses the same immutable files",
+          "status": "passed"
+        },
+        {
+          "title": "actual immutable paper original, baseline and derived file readback survives a separate-directory byte restore and refuses a later corrupted original without replacing it",
+          "status": "passed"
+        },
+        {
+          "title": "actual immutable paper original, baseline and derived file readback rejects a linked output folder before publishing bytes and keeps the external target empty",
+          "status": "passed"
+        },
+        {
+          "title": "actual immutable paper original, baseline and derived file readback does not publish a mismatched render or original even if the supplied source hash looks valid",
+          "status": "passed"
+        },
+        {
+          "title": "actual immutable paper original, baseline and derived file readback rejects an unrelated same-size processed PNG after both its filename and manifest hash have been replaced",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "paper-capture-group.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "paper capture intent, original identity and exact ordered revisions keeps distinct page identities when two pages have identical original bytes and never treats the hash as a page number",
+          "status": "passed"
+        },
+        {
+          "title": "paper capture intent, original identity and exact ordered revisions creates a new ordered revision while the earlier group and its original page references remain unchanged",
+          "status": "passed"
+        },
+        {
+          "title": "paper capture intent, original identity and exact ordered revisions refuses a stale original revision, another group, scope reassignment and a fabricated original hash",
+          "status": "passed"
+        },
+        {
+          "title": "paper capture intent, original identity and exact ordered revisions refuses another owners retained page, a missing source version and a duplicated page ID instead of silently substituting them",
+          "status": "passed"
+        },
+        {
+          "title": "paper capture intent, original identity and exact ordered revisions requires an explicit change from whole-page intent before accepting a multi-page collection and keeps the complete input canonical",
+          "status": "passed"
+        },
+        {
+          "title": "paper capture intent, original identity and exact ordered revisions rebuilds a frozen group from actual retained original versions and rejects changed byte totals even after its public hash is recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "paper capture intent, original identity and exact ordered revisions counts every selected original toward the group memory budget even when storage can deduplicate the bytes",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "paper-capture-image.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "stable original paper image coordinates and non-destructive rendering returns the exact known original rectangle after cropping and each right-angle rotation",
+          "status": "passed"
+        },
+        {
+          "title": "stable original paper image coordinates and non-destructive rendering retains separate page identities for duplicate original bytes and rejects a rehashed version attached to another original",
+          "status": "passed"
+        },
+        {
+          "title": "stable original paper image coordinates and non-destructive rendering rejects crops or OCR boxes outside the actual original version and never silently clips them",
+          "status": "passed"
+        },
+        {
+          "title": "stable original paper image coordinates and non-destructive rendering maps the complete derived page back to the exact original crop rather than its later displayed dimensions",
+          "status": "passed"
+        },
+        {
+          "title": "stable original paper image coordinates and non-destructive rendering uses actual decoded pixels to prove crop-before-rotation and preserves every original input byte",
+          "status": "passed"
+        },
+        {
+          "title": "stable original paper image coordinates and non-destructive rendering normalizes actual JPEG orientation and removes EXIF from the processed copy while preserving the raw original",
+          "status": "passed"
+        }
+      ]
+    }
+  ],
+  "apiTypes": 0
+}

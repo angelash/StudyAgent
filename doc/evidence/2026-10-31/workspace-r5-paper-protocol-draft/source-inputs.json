@@ -1,0 +1,71 @@
+{
+  "files": [
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-attribution.test.ts",
+      "sha256": "4f0f82b888905131f107ca93d0c43cf5ed48aecbda0e4411427ae3ace6490961"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-attribution.ts",
+      "sha256": "c122d2571f746aef2adbd1fa77284b592f1344f16382e2d6f5be1b852e99bc56"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-command.ts",
+      "sha256": "25eebfc62317a0748b9e1aa4341979f8fd274d73fa577c26e356334c354c26d6"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-copy.test.ts",
+      "sha256": "9f733313b852c744e26e6b92ecce3da4db0c9eeeb4e724c0ff3b7f62988ae2a9"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-copy.ts",
+      "sha256": "fde0efb5954677ad52d9d27eb3f72ca8364035d2542429ecbf0acd3b04983206"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-derived-pdf.test.ts",
+      "sha256": "117e14be007a7fe83278a9b837a53055357056091980e172b17e327255245fdf"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-derived-pdf.ts",
+      "sha256": "c8dab4398ff415a9a1d03512ade737576afcd4833d3e8578590447c45640fd2f"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-files.test.ts",
+      "sha256": "ede806f045894a0fd6b17afc2a8e4e590312520b9ba02e09ea34f5035536abac"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-files.ts",
+      "sha256": "35dc2fc2217262e953a8d23723d0914950e23bec4e4c923a37bb69a774300781"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-group.test.ts",
+      "sha256": "17f35c914f1b0209ddb60fa79224890979a6a50cc3c193e7b3316c1f2c65fa72"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-group.ts",
+      "sha256": "577f1f4081ce65a88455a04d652154e71b558947d888efbd4eb76a7c86a610cd"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-image.test.ts",
+      "sha256": "5d790944f96b8913c5210a987aefab6a96abbd6f135a7f3496191fcea0130a61"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-image.ts",
+      "sha256": "b482e1e152c1f1f6f4937f68c55d92d5e13ae3b3020ab00bc6af4281a638a248"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-scope.ts",
+      "sha256": "60ecbe7bd34f9715e9df955ba6f448a15eb25df4aba08c5d3790e6094b69dd7f"
+    }
+  ],
+  "privateDependency": "pdf-lib@1.17.1 in ignored QA only",
+  "originalReports": [
+    {
+      "path": "data/qa/workspace-paper-capture-first-20261030/derived-pdf-third.json",
+      "sha256": "ed8bda7ac5592f28282be4fc1ebcae00278d5b574ad1206d2054d8dde131544c"
+    },
+    {
+      "path": "data/qa/workspace-paper-capture-first-20261030/types-eighth.json",
+      "sha256": "60038c86fe1e4165291a5ddfc61bad91e1f8bc14b78e4d567f5e4cf60d32e013"
+    }
+  ]
+}
