@@ -1,0 +1,97 @@
+{
+  "stats": {
+    "startTime": "2026-10-30T03:09:26.434Z",
+    "duration": 128092.577,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "generated child teaching: explicit source and separate adoption and sharing preserve six actual learner reasons at 320",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 17209,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: explicit source and separate adoption and sharing preserve six actual learner reasons at 390",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 16917,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: explicit source and separate adoption and sharing preserve six actual learner reasons at 768",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 21732,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: explicit source and separate adoption and sharing preserve six actual learner reasons at 1440",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 21365,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: a lost sharing acknowledgement retains the complete original instruction and key across reload",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 9841,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: guardian withdrawal keeps the actual first answer and full unsubmitted correction readonly",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 14294,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: disabled storage downloads the complete reason and original withdrawal before sending",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 9261,
+          "failure": false
+        }
+      ]
+    }
+  ]
+}

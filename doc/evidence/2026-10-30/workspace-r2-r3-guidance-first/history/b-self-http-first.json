@@ -1,0 +1,36 @@
+{
+  "numTotalTests": 5,
+  "numPassedTests": 5,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "assistant-teaching-self.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "actual adult teaching self-session HTTP and native history starts the actual adult without a child, recovers the original start and reveals no teaching reference before explicit answering",
+          "status": "passed"
+        },
+        {
+          "title": "actual adult teaching self-session HTTP and native history preserves the first answer and full reason, records help and correction separately and completes only the original two-question activity",
+          "status": "passed"
+        },
+        {
+          "title": "actual adult teaching self-session HTTP and native history serializes original starts and conflicting full drafts across two actual application instances without borrowing a losing key",
+          "status": "passed"
+        },
+        {
+          "title": "actual adult teaching self-session HTTP and native history keeps frozen historical answers readable after original source changes while rejecting new writes and preserving exact successful acknowledgements",
+          "status": "passed"
+        },
+        {
+          "title": "actual adult teaching self-session HTTP and native history cold restores the actual first reason and original response, exports only owned teaching and deletes the adult session through the latest ledger",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

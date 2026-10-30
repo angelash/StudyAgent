@@ -31,3 +31,6 @@
 生产模式运行专项继续使用 `scripts/qa/verify-adaptive-routing.cjs`，增加未结束评分隔离、结束后证据、原分与新分的恢复核查。SQLite和PostgreSQL各以正式管理员引导、真实HTTP、并发请求和三次API重启通过；两份运行收据记录的源码哈希均与本候选一致。新证据单独保存在 `diagnostic-evidence-runtime.json` 和 `diagnostic-evidence-postgres-runtime.json`，不覆盖此前候选的运行收据。
 
 本轮没有完成教材全面对齐、全部点的独立迁移题族扩充、标准化标定或浏览器验收。全量资产恢复和最终52项逐项验收继续推进，不能把接口或测试通过视为总目标完成。
+
+
+2026-10-30 R2/R3共同候选：[158](158-generated-teaching-practice-persistence.md)成人与孩子AI生成/复核/采用/明确共享/本人原答案及理由、撤回和隐私恢复，以及[159](159-conversation-clues-to-evidence-guidance.md)来源观察→真实报告→原规则计划、完整调整/状态/复盘和全部退出保护已受控归并。最终整站599/599零重试、聚焦52/52、完整API2007通过/0失败/86环境跳过，实际指导PG17、教学PG批31及reader27批9分别按真实范围记账。[最终证据](../evidence/2026-10-30/workspace-r2-r3-guidance-first/receipt.json)保留A/B/C/D/E原失败、主动中断、完整截图、源码和正式保护核对；未把C581/582或D中断算通过。原72仍11 implemented /50 in_progress /11 planned /0 verified，WS和R1/R2整体验收不提升；更多原因与审核对照、R4排期/保持计量、R5～R8、全部教材/教师/实机/真人1/3/7/14日仍未完成。源码27，正式库只读24/revision187及构建保持，未推送或部署，整体active。R4旧计划作用域/零时段与跨学科冲突在独立副本继续，按[161协议](161-guidance-calendar-persistence-and-timezone-protocol.md)补完整命令、预算/DST与原复测关联。

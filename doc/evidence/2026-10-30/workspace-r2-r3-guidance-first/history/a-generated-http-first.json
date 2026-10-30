@@ -1,0 +1,48 @@
+{
+  "numTotalTests": 8,
+  "numPassedTests": 7,
+  "numFailedTests": 1,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 2,
+  "suites": [
+    {
+      "file": "assistant-teaching.integration.test.ts",
+      "status": "failed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery keeps adult preflight read-only with no student or atom and refuses unconfigured generation without inventing success",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery persists complete generated and reviewed originals, adopts once and replays the original creation after adoption",
+          "status": "failed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery retains the actual written checkpoint through review failure and retries only original-model review",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery blocks uncertain adoption and invalidates the old review after explicit complete editing before a new review",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery fences a late actual provider result after an explicit cancellation and retains the exact cancellation receipt",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery does not publish a provider finishing after a real logout and a fresh login by the same account",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery keeps one candidate for two actual application instances and refuses a reused key with different complete input",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery cold restores actual original and adopted teaching, rejects a cross-draft adoption link and preserves no formal learner evidence",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

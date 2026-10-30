@@ -1,0 +1,1222 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-30T07:51:47.303352+00:00",
+  "sourceRevision": "c5ae0f66b00096cc080b73eeb47f96a00c018b57",
+  "state": "Combined158 persistent adult/child generated teaching and159 private observations/real reports/original guidance commands implemented and isolated; whole goal active. No push/deployment.",
+  "completeBrowser": {
+    "receipt": "complete-browser-second.json",
+    "tests": 599,
+    "stats": {
+      "startTime": "2026-10-30T06:43:00.801Z",
+      "duration": 3961795.6550000003,
+      "expected": 599,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "retries": 0
+  },
+  "focusedBrowser": {
+    "receipt": "focused-browser-sixth.json",
+    "tests": 52
+  },
+  "completeApi": {
+    "receipt": "complete-api-second.json",
+    "passed": 2007,
+    "failed": 0,
+    "skipped": 86
+  },
+  "guidancePostgres": {
+    "receipt": "guidance-postgres-first.json",
+    "passed": 17
+  },
+  "teachingPostgres": {
+    "receipt": "teaching-postgres-first.json",
+    "passed": 31,
+    "scope": "22 actual PG business +4 PG reader +5 repeated SQLite reader"
+  },
+  "reader27Postgres": {
+    "receipt": "reader27-postgres-first.json",
+    "passed": 9,
+    "scope": "4 actual PG reader +5 repeated SQLite"
+  },
+  "readerResources": {
+    "25": "fdb8f0e10f48b89d369d59198a3e9f02c1043de9261b868df85bcd4cff6e0018",
+    "26": "c65f0d94de678361115f07ac327f6f0da37ba93a23f56fafac67532678d1a3e0"
+  },
+  "sourceComparison": "source-comparison.json",
+  "screenshots": [
+    {
+      "path": "screenshots/assistant-teaching-practice/adult-answer-two-tabs-complete-comparison.png",
+      "sha256": "d42109a901cc5ebe9a5b5149e19a1c1f421bbf9fbaccde013426c93ddac51f0b",
+      "bytes": 149702,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/adult-original-answer-receipt-recovered.png",
+      "sha256": "02675d1d487b55799d7a7bda9e1daba3f664998f3d03f4ac08fe45193338517a",
+      "bytes": 152732,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/cancel-retry-original-model-focus.png",
+      "sha256": "d880ffb42dfdc6a3208fc7461b29d75d807c6794627533da2e9693c7cb451f8a",
+      "bytes": 141832,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/completed-adult-own-reasons-1440.png",
+      "sha256": "c03dd7322c3d76cea89313db1d92a7d291b3445262ce27ff77997e36871c0a03",
+      "bytes": 161405,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/completed-adult-own-reasons-320.png",
+      "sha256": "b0a231a396b8b97647eefc5f2c5d7a571875eb523aa8b4a89519d1993e5c0d73",
+      "bytes": 150280,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/completed-adult-own-reasons-390.png",
+      "sha256": "d60418f478dcbf82938f542deddc0003aefa06aed50b7c66a7bbbdab96eacbd5",
+      "bytes": 148843,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/completed-adult-own-reasons-768.png",
+      "sha256": "5ea539d1219ecbc4dd49b89c8e5b081de7966b9de1b5907b4bac76db3901aaf1",
+      "bytes": 150054,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/generation-original-command-recovered.png",
+      "sha256": "2aa4b264bff6339babd313720bedc2caca8d6ba4fccdf265648af767af4fb4a3",
+      "bytes": 142471,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/original-adoption-and-start-receipts.png",
+      "sha256": "5095c1a54077c71e281edd1293d73967c19c7dff54994b96094a5672d29bee44",
+      "bytes": 111034,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/reviewed-complete-teaching-1440.png",
+      "sha256": "b10723b568d7805f4baa1ace6b8baac034aab9bc78f2491a5abf6ca2c9c6beee",
+      "bytes": 142977,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/reviewed-complete-teaching-320.png",
+      "sha256": "ec1dfd599eab9e0585d0a9b76113adfb7fff1b93f75afec4d644f4057ce57da7",
+      "bytes": 97089,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/reviewed-complete-teaching-390.png",
+      "sha256": "1cbb4913fb9dd3243b58c7285eaf114058259a259761737ec937004b2a13f0cf",
+      "bytes": 94445,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/reviewed-complete-teaching-768.png",
+      "sha256": "1230d8949489f5b9ab03c12d8611042a0cdef2901f9ba3234de922424d38d5d3",
+      "bytes": 104375,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/source-change-readonly-original-reason.png",
+      "sha256": "d6e0d192090a500d1e4a1f96d22d00648d6728fb1eef3e5ebaf23866a3c8d214",
+      "bytes": 159465,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/two-tabs-complete-teaching-drafts.png",
+      "sha256": "0b2a87aba23b1d0b789b632f8080f84fe59f2c0312448f54cd00602d4fe17d4c",
+      "bytes": 149989,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/unavailable-storage-full-copy-before-generation.png",
+      "sha256": "03672692984c96ae453a6f48c89e3888d9b973d154e72f3c9e1c481b074b24ad",
+      "bytes": 136734,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/uncertain-original-and-explicit-rereview.png",
+      "sha256": "85b6a0c937e51eeb045166b03c57db840edb4e106824ce6fe5b4f5bbd3c25b92",
+      "bytes": 136813,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/child-original-first-and-later-edit.png",
+      "sha256": "173ecde7dde36bc685be0a0b25796e57beaf91100b81908d673cd15ce7cb9f05",
+      "bytes": 152609,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/child-original-start-receipt.png",
+      "sha256": "bb511a8248bc24d7cc6a4b09407a296abc2b5406378b0201fbcc6cea4f70a892",
+      "bytes": 113413,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/complete-answer-download-before-question-change.png",
+      "sha256": "d74f5005ac9132620f3fec5e7273f3397922383023c2f4b9bc22be1f690986ac",
+      "bytes": 112885,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/explicit-generated-shared-arrangement-1440.png",
+      "sha256": "e7000aa1f6db81f34d7b97b5a87e1905fb5c74a63a1a3dfc149b17c0420ecb84",
+      "bytes": 177998,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/explicit-generated-shared-arrangement-320.png",
+      "sha256": "8535ed4904a4b7dd09c421f32ef11a2fe431d9cb827f9e1ac7c0affff0d9e9b8",
+      "bytes": 120088,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/explicit-generated-shared-arrangement-390.png",
+      "sha256": "01d74b4eeed967e7d3bd2654072fbf769a48bc8363e0e36b8b7fe26b5924dbac",
+      "bytes": 147289,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/explicit-generated-shared-arrangement-768.png",
+      "sha256": "9e102ba4ab513bb9a8ef43022b8ba4d4e7234819bfe846d76213a70f6ddd373c",
+      "bytes": 131821,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/late-pre-withdrawal-read-keeps-input.png",
+      "sha256": "4f3fc64a1ee0f4a006259934af6bb1e42b01d80d7e2d23c724dd30354125d2ec",
+      "bytes": 129916,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/original-sharing-receipt.png",
+      "sha256": "397b3b575d645cc6224b1876a7eb174dd2db9aac62320c255954cd21e31f47e9",
+      "bytes": 161157,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/six-own-reasons-completed-1440.png",
+      "sha256": "b332a9d05d6b9574dde8f5c0a29addd1cff5abd3eeb5b0b1595d867644a0085b",
+      "bytes": 164850,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/six-own-reasons-completed-320.png",
+      "sha256": "8dad3514059e3751b7c1ddabcecb9df030ac647817fe1241baa2b1dcb9869ffc",
+      "bytes": 157325,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/six-own-reasons-completed-390.png",
+      "sha256": "af8264257438a091b9c4c062957015002970a8c366c42132adc287277e6e5119",
+      "bytes": 153634,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/six-own-reasons-completed-768.png",
+      "sha256": "7d52541ac15795c65c86eddf4e35ff6d01c0744bc48e358f05ffb670d2a0149a",
+      "bytes": 152236,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/two-tabs-original-withdrawal-reasons.png",
+      "sha256": "5d53d78eddd48300de62eed810f9acd27ff519b5f8c9e853528aebd76d7b5d42",
+      "bytes": 193327,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/withdrawal-download-before-write.png",
+      "sha256": "e6590d4c410947d9fd832ed43d4c51c3218df82955a6235dfe2206406d86e334",
+      "bytes": 214686,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/withdrawn-child-own-first-and-correction.png",
+      "sha256": "c06c84b00c7c4d54054934097c9b4b99a2c169e0edeb7dded94d1d17c08405f7",
+      "bytes": 166498,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/adult-fixed-workspace-1440.png",
+      "sha256": "49fa33d71c51aa303746d8d6681f3d2f90fe46d3399f6d746f00c44141db55d4",
+      "bytes": 161185,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/adult-fixed-workspace-320.png",
+      "sha256": "8abe4216a7410bf146de4dfbeccde93fb35f56f76bffa091046c7e13139cee3a",
+      "bytes": 119114,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/adult-fixed-workspace-390.png",
+      "sha256": "82c17e2929a004140ddf048209b67d7992d780b518bc76e55f15edde41fd3086",
+      "bytes": 120484,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/adult-fixed-workspace-768.png",
+      "sha256": "007cc3edd24d996cdc5bd89d603e63f2b7e2e5269e0c7f95b48529600d42496d",
+      "bytes": 124178,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/adult-original-observation-1440.png",
+      "sha256": "d70537cf8cc288907935866913cfa45df03e1cb4809d85d7fd2da404ae91bd1a",
+      "bytes": 144258,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/adult-original-observation-320.png",
+      "sha256": "83a9b237d6f760599888a894ddb267b990c0aab2fdf723ddbccc5800acf84821",
+      "bytes": 91499,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/adult-original-observation-390.png",
+      "sha256": "a33520896e157135febea60c8800cd927f261fc3f024d6ccc5a3dc42c031df88",
+      "bytes": 97561,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/adult-original-observation-768.png",
+      "sha256": "68c5d2b9ad286e1c506a2dbcf761e52a0d15253b845ea698ef3040538303e015",
+      "bytes": 105569,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/child-observation-report-original-plan.png",
+      "sha256": "a368669bed68622f766377f3e109decf12505c8999d1b9b4caee3ad3d22bf60b",
+      "bytes": 161981,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/download-before-original-observation.png",
+      "sha256": "f9ed8fdf6b6ddac695e783b1e62a1a6f4b08f02708c1a2cc2256a87b034bd30b",
+      "bytes": 143128,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/full-retrospective-and-insufficient-independent-evidence.png",
+      "sha256": "4eb08a937e9c9307b1031501b3159b0551212fc5e21d369a347768cfb73e8727",
+      "bytes": 427875,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/late-preflight-isolated.png",
+      "sha256": "347cb01fda7a44eb092c79f31ea77940529f59c7122619af87af249ec241c71f",
+      "bytes": 135746,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/lost-original-create-recovered.png",
+      "sha256": "f9ed8fdf6b6ddac695e783b1e62a1a6f4b08f02708c1a2cc2256a87b034bd30b",
+      "bytes": 143128,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/no-report-native-next-step.png",
+      "sha256": "9c394098ef3fb8e7ebaeb379186e0c30b688a90f7b8c01cb6c209617833421da",
+      "bytes": 162460,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/original-activation-and-stable-due-dates.png",
+      "sha256": "86dc0e53083ec1078a142cfb83132f10e3b5fbc59ea2978a20e5c52a094d6221",
+      "bytes": 427644,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/original-complete-retrospective-command-recovered.png",
+      "sha256": "fdcd0ee79d27372bbdd26ccdf2bc822e4c81771f1225d48e42ac798f3f75f009",
+      "bytes": 371551,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/original-pause-current-active-plan.png",
+      "sha256": "079d8cd9323b28cbaa92b878f869140dfa816aab16c19b99210bdf6cf320fced",
+      "bytes": 427672,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/original-plan-manager.png",
+      "sha256": "ed584d972c45c2757e5cbc28a6512dc2bdfff68c29c31bf44dda25f7538a9581",
+      "bytes": 322653,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/plan-full-original-and-recovered-adjustment.png",
+      "sha256": "2e14e72f535c7620e77ffa01baa8c714acf6fc88bd4f632b125ac23d55f7e414",
+      "bytes": 348833,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/plan-two-tabs-losing-full-input.png",
+      "sha256": "8740246525b98e585c1bfe616a1c4df70ab376450ed37873ee3bdc21a576e5c8",
+      "bytes": 513382,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/two-complete-forms-download-before-leaving.png",
+      "sha256": "3697463158692b574e958909bc981f12ca131ce9daee2693b07229b8e756c028",
+      "bytes": 117810,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    },
+    {
+      "path": "screenshots/assistant-guidance/two-tabs-full-losing-observation.png",
+      "sha256": "1edffd3c565c78cf085fda1e28e018ff9d085e5dd37317be3fbce4f344576966",
+      "bytes": 220322,
+      "privacy": "Owned synthetic QA accounts and teaching/observation inputs."
+    }
+  ],
+  "productionObservation": {
+    "readOnly": true,
+    "unchangedFromMaterialsDelivery": true,
+    "artifacts": [
+      {
+        "path": "apps/api/dist/apps/api/src/main.js",
+        "sha256": "5793c7090063d318c5e5c60bdb74350baa6f64c386639b94fbf4cd5605946c1a",
+        "mtimeUtc": "2026-10-29T14:51:26.120290+00:00"
+      },
+      {
+        "path": "apps/web/.next/BUILD_ID",
+        "sha256": "e02197beeb39c5df02110ca05544c471b3bb892662bebdcb56449b27713e7fba",
+        "mtimeUtc": "2026-10-29T14:52:20.456777+00:00"
+      }
+    ],
+    "schemaVersion": 24,
+    "revision": 187,
+    "recheckedAt": "2026-10-30T07:51:47.418020+00:00"
+  },
+  "limits": [
+    "Original72 stays11 implemented/50 in_progress/11 planned/0 verified; WS not promoted.",
+    "More causes and reviewed counterevidence,R4 calendar/due review,R5-R8,all textbooks,teachers,devices and real longitudinal evidence remain open.",
+    "Source27 is not a production runtime delivery."
+  ],
+  "artifacts": [
+    {
+      "path": "complete-api-second.json",
+      "sha256": "8d46400524b2e651f7715e06eaf1481185db6966cc1c80287ee66575d1c82e2b",
+      "bytes": 531440
+    },
+    {
+      "path": "complete-browser-second.json",
+      "sha256": "6a7f742d0e7e4c9a80c40ca48d80181da4e99df89d513ea493aba0c4a3fe3974",
+      "bytes": 210619
+    },
+    {
+      "path": "failures-and-limits.json",
+      "sha256": "78b759381252cd6f542a9f51a713a66d2280e0a53e988d5bb06f371809eedfcf",
+      "bytes": 2203
+    },
+    {
+      "path": "focused-browser-sixth.json",
+      "sha256": "3af554c7b0c8a330716b9b13c8f72d5e35e0c01ddf62a36f42f5b43b31cf1951",
+      "bytes": 18585
+    },
+    {
+      "path": "guidance-postgres-first.json",
+      "sha256": "2eb9a04ac17c331d314065c9e08ae7a14162a89ead1dde9949cbae0694961e5c",
+      "bytes": 4998
+    },
+    {
+      "path": "history/a-generated-http-first.json",
+      "sha256": "96eccdf741ea4202c90208a800326bd1061e4307f3f19bd82f1d48bd31675743",
+      "bytes": 2320
+    },
+    {
+      "path": "history/a-generated-http-second.json",
+      "sha256": "d4af2c5619a4fa9567a259d634da32b71f8a6b3cfc092e29a27fa7a177b42fa1",
+      "bytes": 2320
+    },
+    {
+      "path": "history/a-generated-http-third.json",
+      "sha256": "293c486467c591d5345eb171c71b1af1013ba68a5d9007355e610d4b90dba1fe",
+      "bytes": 2865
+    },
+    {
+      "path": "history/a-generated-postgres-first.json",
+      "sha256": "b4dab1955dfb7244c07d6c2644a0c97360f6fa92d198409d1c9e6c6c8152e1a5",
+      "bytes": 2320
+    },
+    {
+      "path": "history/a-generated-postgres-second.json",
+      "sha256": "f11965d6899a39a0e669c917d18da7590d2f35f298b52b0ece343e6dc34fafa1",
+      "bytes": 4458
+    },
+    {
+      "path": "history/a-generated-postgres-third.json",
+      "sha256": "a0e197b8888d1c8ec53eb00703c11081e8bbc0c7b612f350c7ca7fcc565f34e7",
+      "bytes": 5001
+    },
+    {
+      "path": "history/a-reader25-preserved.json",
+      "sha256": "48dddf5110fe52d73e7e700bfd5d21d6f7abf63fe2985ce324a0f87b56ac4492",
+      "bytes": 106053
+    },
+    {
+      "path": "history/a-reader26-sqlite-first.json",
+      "sha256": "40f81e5f84e6e413f58b877ec0d746d5beeff50e084c48425759c0e8933fb5d3",
+      "bytes": 2290
+    },
+    {
+      "path": "history/a-registration-overlay.json",
+      "sha256": "bcd965c76048e20625774d0dd1b33f0fbbbdd0e837c8345b1df12835f702183d",
+      "bytes": 1048
+    },
+    {
+      "path": "history/b-auto-cold-consistency-overlay.json",
+      "sha256": "cd2883bcfeb80db37c86a60625059f43c2d11e1aa12b581bcab360bc21e805e8",
+      "bytes": 1470
+    },
+    {
+      "path": "history/b-auto-cold-http-first.json",
+      "sha256": "eb2408ddf28ba432a54585bee79a2998fd1397662a252e3b5d70721d83fee3d1",
+      "bytes": 13422
+    },
+    {
+      "path": "history/b-auto-cold-postgres-first.json",
+      "sha256": "b392dd2c1445b762ad0e64d6ffbd172bf24d0c1d1437356dd38c021e3437c364",
+      "bytes": 6519
+    },
+    {
+      "path": "history/b-auto-cold-pure-second.json",
+      "sha256": "83077273dbf499f4428a249eeb82e673115289b3453df0ea9eb51d2aa7979658",
+      "bytes": 9191
+    },
+    {
+      "path": "history/b-auto-pure-assertion-overlay.json",
+      "sha256": "fc14cc9fd0f94b1c63f4682788289056fafd00f9a0a32891f2efa1d19d9a9cb7",
+      "bytes": 594
+    },
+    {
+      "path": "history/b-parent-identity-and-transport-overlay.json",
+      "sha256": "e4e873c1700f86ec30855d467d8b64736e82d8accd6d42bc986c1431a4234b17",
+      "bytes": 1020
+    },
+    {
+      "path": "history/b-registration-overlay.json",
+      "sha256": "785586e765db1d62422b48f29f0886b496c4e92dd1144df20de679b2c96f2a2c",
+      "bytes": 1001
+    },
+    {
+      "path": "history/b-self-http-first.json",
+      "sha256": "37ff73d15d3cf736f0f5c31c6c014d8b4565e7e73a539959b0a4538c4dc97a0b",
+      "bytes": 1668
+    },
+    {
+      "path": "history/b-self-postgres-first.json",
+      "sha256": "c0501d00773ed34f397033b03ba97480191e44aadaf23848d1c5aceb144525f9",
+      "bytes": 3806
+    },
+    {
+      "path": "history/c-child-deletion-fixture-overlay.json",
+      "sha256": "f42463a74c70eda2e5bbd2a1824bcb149c7fee6c993dc6fb18c56b4aadaa5141",
+      "bytes": 556
+    },
+    {
+      "path": "history/c-client-directive-normalized-overlay.json",
+      "sha256": "3b4f62acc0688270ea40f1f73da28b95116a1688b1426b0463f7fd593aca189b",
+      "bytes": 789
+    },
+    {
+      "path": "history/c-client-directive-overlay.json",
+      "sha256": "82d72bbd65b1b2f7be6868f15d50d92b0e10c5ad8f4cb5a1c01608c5a083b509",
+      "bytes": 723
+    },
+    {
+      "path": "history/c-complete-api-first.json",
+      "sha256": "099e85209acdec8755baa2dce95eda5f9f68aa0c80a8dece171714b22b053f22",
+      "bytes": 524448
+    },
+    {
+      "path": "history/c-delivery-superseded-by-guidance.json",
+      "sha256": "96f486ad9ff4e47e06a01a1d633eafb5e07f0be1a2c26d83d8a107ee1f6dda92",
+      "bytes": 1118
+    },
+    {
+      "path": "history/c-generated-shared-browser-first.json",
+      "sha256": "d1fc8785b49ce1d9712ebb1560894c7fc251ed95f9b584e84fa4f9bdf3f676fb",
+      "bytes": 2856
+    },
+    {
+      "path": "history/c-generated-shared-browser-second-complete.json",
+      "sha256": "08e3704d66bdc27a0bfb365119883d643d8abc4f8c0f1fd7f8cf437860aa88af",
+      "bytes": 204460
+    },
+    {
+      "path": "history/c-generated-shared-browser-second-focused.json",
+      "sha256": "eba2e975020b00bab870788439afc95f941f29b9f085f7c8fef79ac0f2620157",
+      "bytes": 16048
+    },
+    {
+      "path": "history/c-generated-shared-browser-third-complete.json",
+      "sha256": "41bbe3c404f5fa41a63e2f22475b78bf7a6c7984672ebb6d611c7c1c3c1fccbf",
+      "bytes": 204460
+    },
+    {
+      "path": "history/c-generated-shared-browser-third-focused.json",
+      "sha256": "2a2de20bc90764b28f63dd28ac6cf3e50fa0ecca61fc93f620bcef4007a36c9b",
+      "bytes": 10697
+    },
+    {
+      "path": "history/c-registration-overlay.json",
+      "sha256": "3bc0e120048d71d4ec86060e0e5b1d9c4c5e661b339d5ee5849f7c0735451880",
+      "bytes": 1752
+    },
+    {
+      "path": "history/c-schema26-compatibility-first.json",
+      "sha256": "c526b62fac5017a5f56a8e45078dc9c60159158a4223b0d705c43869ef59d345",
+      "bytes": 23719
+    },
+    {
+      "path": "history/c-schema26-test-expectations-overlay.json",
+      "sha256": "7ef936b25b2ab07ed0402a34026cc1128279aac34a0312c995ba61b8fb99eea1",
+      "bytes": 5062
+    },
+    {
+      "path": "history/c-sharing-http-first.json",
+      "sha256": "368f77588dc8b6a00cc495bb74b1dddca571d1d997e5f84b4ad3b619577034a7",
+      "bytes": 1969
+    },
+    {
+      "path": "history/c-sharing-postgres-first.json",
+      "sha256": "730f64ce208f2b31d953ca0e00d45746f33b530d1508ecb1b86be897b59f85c7",
+      "bytes": 4107
+    },
+    {
+      "path": "history/c-sharing-postgres-second.json",
+      "sha256": "9cca3e955a865d4c615486d8dcad0900b47017346cd447213a5c83a187e4f05d",
+      "bytes": 4387
+    },
+    {
+      "path": "history/c-sharing-sqlite-deletion-second.json",
+      "sha256": "027e9c3e3d85e1dfbb283ba0f2ba8710cb1e7e0b0ef290e10256ad173d353bc4",
+      "bytes": 1974
+    },
+    {
+      "path": "history/c-stage-c-freeze-third.json",
+      "sha256": "28a71d3714e29f0ce1b2386cc17b91475f1cd1b3ea3e665f828ec4e35a760b25",
+      "bytes": 601678
+    },
+    {
+      "path": "history/c-teaching-capability-overlay.json",
+      "sha256": "386317e48677125ec025220e264a4cf0c1c4f4e29ef9fcefbb1f4f3f1e320527",
+      "bytes": 572
+    },
+    {
+      "path": "history/c-teaching-postgres-final.json",
+      "sha256": "e8e2fbd9a9d31335e6b47eb8615491e2c16c3f97aaa65ed69a457d029dd3e3ae",
+      "bytes": 8618
+    },
+    {
+      "path": "history/c-teaching-targeted-third.json",
+      "sha256": "edf6aa462b3069aca7c4c48bcdc0bf236197fbd8fb7c48b0eaaf25ebfb1c27dc",
+      "bytes": 15521
+    },
+    {
+      "path": "history/d-browser-complete-first-interrupted.json",
+      "sha256": "8904b1902376d43608e136093c000ed25b63416fe969be5f61e5edc9470c7f3d",
+      "bytes": 2466
+    },
+    {
+      "path": "history/d-complete-api-first.json",
+      "sha256": "d4db43761c0f396857976ac014462ebd5293081557f7f89ff13931bacdfbcaf6",
+      "bytes": 530876
+    },
+    {
+      "path": "history/d-complete-api-second.json",
+      "sha256": "454d3479cb9d7fbb2002ff356809facebfc5d0a2d74c46236932af4813175ba7",
+      "bytes": 530876
+    },
+    {
+      "path": "history/d-complete-first-corrections-overlay.json",
+      "sha256": "8ecaaf9c3b53cbd19161035e8efd41237d594f84b2a1759f56ac57de61f6cb81",
+      "bytes": 1340
+    },
+    {
+      "path": "history/d-guidance-browser-first.json",
+      "sha256": "e8d684294a16fd84562de3b2134baf4786d1f36e98957daa1af2f176c0e16cdb",
+      "bytes": 3797
+    },
+    {
+      "path": "history/d-guidance-browser-second.json",
+      "sha256": "27d42521505321591b4e2fdfb7b67dd8972a7a4b0434935f0ec102f21229ed67",
+      "bytes": 4543
+    },
+    {
+      "path": "history/d-guidance-browser-third.json",
+      "sha256": "9596045874bee70c8612beee137725e85fbf52f16b4972054d60f00782536f12",
+      "bytes": 4535
+    },
+    {
+      "path": "history/d-guidance-http-fifth.json",
+      "sha256": "8736039cfde17980f75afd3042c1c341c370d15c2f85a3917a652c5a138ea8c5",
+      "bytes": 13372
+    },
+    {
+      "path": "history/d-guidance-http-first.json",
+      "sha256": "bdb35fc27bbb2436eff3e98e48dcf17469d26f17eab12b3395bcab10b605a653",
+      "bytes": 1926
+    },
+    {
+      "path": "history/d-guidance-http-fourth.json",
+      "sha256": "dcb2e1f923392cc33eb7c3a014eb7e9b85994f68d1cf3c9ae6b9c5ff121705d7",
+      "bytes": 13373
+    },
+    {
+      "path": "history/d-guidance-http-second.json",
+      "sha256": "92b73a386935c8a2cc73ed0f8f34ebba3212aeb65a446b2d666f2bcab4c154ec",
+      "bytes": 2069
+    },
+    {
+      "path": "history/d-guidance-http-third.json",
+      "sha256": "61882b519f4491eadd38a00d2d844ceec88208ad55db49bb2cdfbeae51d7cfb8",
+      "bytes": 3292
+    },
+    {
+      "path": "history/d-guidance-postgres-first.json",
+      "sha256": "3605449639a8ec6fc44975055a453854575bc086f52912e7b08d62de5d7ae6b3",
+      "bytes": 4070
+    },
+    {
+      "path": "history/d-guidance-postgres-fourth.json",
+      "sha256": "392b1fddb675d93b93d9d3f63fd6b0af48e2eebfc1a8c7a3b7552f535cf234ce",
+      "bytes": 4143
+    },
+    {
+      "path": "history/d-guidance-postgres-second.json",
+      "sha256": "6fcef01167e6ee6acf835cfb0e95b9780025611b488e52da9d02d8512af485b6",
+      "bytes": 6286
+    },
+    {
+      "path": "history/d-guidance-postgres-third.json",
+      "sha256": "ef2c1b26d2a60b6671849ed2b07fb68f0483f6cf50be0b58f426ee799e9ca610",
+      "bytes": 6299
+    },
+    {
+      "path": "history/d-guidance-student-postgres-first.json",
+      "sha256": "547a76ebae701ba60e93c2029b58c60fc8f64a29729190ab094d7ce3ec92e2d8",
+      "bytes": 4448
+    },
+    {
+      "path": "history/d-pdf-guidance-corrected-first.json",
+      "sha256": "3a42b48a72d78a8ab4145ec4fdb17c12aaf69c03cfe644307471dd6477eabd50",
+      "bytes": 8721
+    },
+    {
+      "path": "history/d-reader-test-generation-overlay.json",
+      "sha256": "1c962dd8664f6e8240f5bc27f1847315f79405b76ee646355a9c80a10988d895",
+      "bytes": 439
+    },
+    {
+      "path": "history/d-reader26-preserved.json",
+      "sha256": "89d01fdcfcf787c26e865ff244916934067977fc227d5accf1c4993b8cf1116c",
+      "bytes": 107822
+    },
+    {
+      "path": "history/d-reader27-third.json",
+      "sha256": "9dd9a084e472d2242a2102e41cdcc303ecdc97cceb8566e219c175efc5dc9e1c",
+      "bytes": 2296
+    },
+    {
+      "path": "history/d-registration-overlay.json",
+      "sha256": "ca4c61347a1b4455cf3331e742a1739b8d1253c9bd4abb7bc3f2d9a5b10cc3c0",
+      "bytes": 2781
+    },
+    {
+      "path": "history/d-report-readback-test-overlay.json",
+      "sha256": "f1d8d0b1c5a3d7ac2e13075996b74b28fb4011129e3c0987d96cad124656d706",
+      "bytes": 528
+    },
+    {
+      "path": "history/d-schema27-compatibility-first.json",
+      "sha256": "8a4ac18acbb0e0be12e387993eef3a8aacb447381c65c3a523418fa57422faaa",
+      "bytes": 25865
+    },
+    {
+      "path": "history/d-schema27-test-expectations-overlay.json",
+      "sha256": "713da7be24bf2479a4af44cbba65427a4090346f3443ddcd3f3ccba195c60fca",
+      "bytes": 5207
+    },
+    {
+      "path": "history/d-stage-d-freeze-first.json",
+      "sha256": "11129a0d3c63dcc5a1f333cd230c38e16df0e82ff6a3a27d3d77582a6db791e7",
+      "bytes": 605495
+    },
+    {
+      "path": "history/d-strict-source-profile-overlay.json",
+      "sha256": "727ebff874728084be9f27d44377ce0b2003ab10c5a8aadf5b12722659b68eed",
+      "bytes": 886
+    },
+    {
+      "path": "history/e-complete-api-first.json",
+      "sha256": "ecfc5edc681d14fefae70c39d6a6cc263eaa3f7da588958030840705c565bdf8",
+      "bytes": 531440
+    },
+    {
+      "path": "history/e-complete-api-second.json",
+      "sha256": "8d46400524b2e651f7715e06eaf1481185db6966cc1c80287ee66575d1c82e2b",
+      "bytes": 531440
+    },
+    {
+      "path": "history/e-cross-document-history-overlay.json",
+      "sha256": "43d1210680301151f21d82741c9786d49b302c347d291e284eca944fa0ce63b0",
+      "bytes": 861
+    },
+    {
+      "path": "history/e-first-full-failures-preserved.json",
+      "sha256": "0935c8bd4df3ac12351fa6fd5daa1a23dadb8a2406c3817408c1b6f47a92f26b",
+      "bytes": 587
+    },
+    {
+      "path": "history/e-guidance-browser-fifth.json",
+      "sha256": "6add1038016fa2703ebf801b42b998726d2f712e43fb029bd46770f5ffd7cc52",
+      "bytes": 580
+    },
+    {
+      "path": "history/e-guidance-browser-first.json",
+      "sha256": "1d2ea26f6d75039af3fc3b5d88fff25f1c473b24bc347b557f1c59efc38510cd",
+      "bytes": 6364
+    },
+    {
+      "path": "history/e-guidance-browser-fourth.json",
+      "sha256": "6994264a2d41fb257e64b23ac399aa024d6db3fb70f322ce9fcafcbf0fea83e2",
+      "bytes": 2419
+    },
+    {
+      "path": "history/e-guidance-browser-second.json",
+      "sha256": "8470c86e7688d2bff73643b7cafc0ca4b8c4f2bab28287f704eab6a2cd9f505c",
+      "bytes": 6380
+    },
+    {
+      "path": "history/e-guidance-browser-sixth.json",
+      "sha256": "3af554c7b0c8a330716b9b13c8f72d5e35e0c01ddf62a36f42f5b43b31cf1951",
+      "bytes": 18585
+    },
+    {
+      "path": "history/e-guidance-browser-third.json",
+      "sha256": "d5b588af7becc7d4cd19af92c904bfbb694bb35b7e55f7f2ebc053dabe2d6a70",
+      "bytes": 6380
+    },
+    {
+      "path": "history/e-history-diagnostic-overlay.json",
+      "sha256": "f6b69092ee646e1e4b2e5144ec2b3cc88fed61d3ce3873639f45ec2673ee23af",
+      "bytes": 427
+    },
+    {
+      "path": "history/e-inherited-test-and-fixture-corrections.json",
+      "sha256": "8016fed3d7e5bc33c3a49a12d77a1b33ef90e1b05b2bd86df7a8fbea0f0df926",
+      "bytes": 652
+    },
+    {
+      "path": "history/e-operation-receipt-overlay.json",
+      "sha256": "bd0bd171a2fbd58d0567a6525d3575822adbcbb3c30a16273e669d7087ede23b",
+      "bytes": 489
+    },
+    {
+      "path": "history/e-operations-browser-complete-first.json",
+      "sha256": "65e53a08f3ace2661a1139d3e2933b8a3d1406df0527db83eca7aa1fc4184fdf",
+      "bytes": 210612
+    },
+    {
+      "path": "history/e-operations-browser-complete-second.json",
+      "sha256": "6a7f742d0e7e4c9a80c40ca48d80181da4e99df89d513ea493aba0c4a3fe3974",
+      "bytes": 210619
+    },
+    {
+      "path": "history/e-operations-http-first.json",
+      "sha256": "049deb499608c52588172e976133610c9ef3c72ccce7bd2bc555686119d4f868",
+      "bytes": 4998
+    },
+    {
+      "path": "history/e-operations-http-second.json",
+      "sha256": "2eb9a04ac17c331d314065c9e08ae7a14162a89ead1dde9949cbae0694961e5c",
+      "bytes": 4998
+    },
+    {
+      "path": "history/e-operations-postgres-first.json",
+      "sha256": "2eb9a04ac17c331d314065c9e08ae7a14162a89ead1dde9949cbae0694961e5c",
+      "bytes": 4998
+    },
+    {
+      "path": "history/e-reader27-postgres-first.json",
+      "sha256": "591c70f8043837ab20c427ee2135d97ad9912e4377bb8d6d9a9e887ab95d9f2c",
+      "bytes": 2292
+    },
+    {
+      "path": "history/e-restore-targeted-first.json",
+      "sha256": "b2e91107466b203149192008cfa27a24b27f1a546a61ca82fdf6f412f8203781",
+      "bytes": 1662
+    },
+    {
+      "path": "history/e-restore-targeted-second.json",
+      "sha256": "5118c3da31a7c2386417064b993642110702ff5ed0c69e0f4be35f09f0abb4f8",
+      "bytes": 1662
+    },
+    {
+      "path": "history/e-second-browser-setup-correction.json",
+      "sha256": "4f4616dffe18f55b4ef4bce0ca27683885493020983f329a12adfd4ab6547fc2",
+      "bytes": 371
+    },
+    {
+      "path": "history/e-stage-e-freeze-first.json",
+      "sha256": "5a494e15394fda398fd0c1aa63f8bbc42e537ae036ec6420892eb70dd01c3651",
+      "bytes": 605898
+    },
+    {
+      "path": "history/e-stage-e-freeze-second.json",
+      "sha256": "321cce32e85b562c1f5049c738756d6e8065ba15768bd9c2fdb75211982adf39",
+      "bytes": 605906
+    },
+    {
+      "path": "history/e-teaching-postgres-first.json",
+      "sha256": "4817ef0bad47e79e763f0b47c69db70f86695a7cd3771c46fedd9c5b65f96bae",
+      "bytes": 8618
+    },
+    {
+      "path": "history/e-web-first-superseded.json",
+      "sha256": "0496c8ec784a3347da232c5acb65a879036a9ce1731b1bdc6056434c9e69a7fc",
+      "bytes": 290
+    },
+    {
+      "path": "integration-applied.json",
+      "sha256": "7209f201e104811116735c13c09a01be6c2128cfe3845831aa82d9a0581e7a1f",
+      "bytes": 20911
+    },
+    {
+      "path": "local-originals.json",
+      "sha256": "e50bd46f3a0d8d0643a26b4b393bfc27e390873f8d691b50d9f93e0221978823",
+      "bytes": 49498
+    },
+    {
+      "path": "reader27-postgres-first.json",
+      "sha256": "591c70f8043837ab20c427ee2135d97ad9912e4377bb8d6d9a9e887ab95d9f2c",
+      "bytes": 2292
+    },
+    {
+      "path": "screenshots/assistant-guidance/adult-fixed-workspace-1440.png",
+      "sha256": "49fa33d71c51aa303746d8d6681f3d2f90fe46d3399f6d746f00c44141db55d4",
+      "bytes": 161185
+    },
+    {
+      "path": "screenshots/assistant-guidance/adult-fixed-workspace-320.png",
+      "sha256": "8abe4216a7410bf146de4dfbeccde93fb35f56f76bffa091046c7e13139cee3a",
+      "bytes": 119114
+    },
+    {
+      "path": "screenshots/assistant-guidance/adult-fixed-workspace-390.png",
+      "sha256": "82c17e2929a004140ddf048209b67d7992d780b518bc76e55f15edde41fd3086",
+      "bytes": 120484
+    },
+    {
+      "path": "screenshots/assistant-guidance/adult-fixed-workspace-768.png",
+      "sha256": "007cc3edd24d996cdc5bd89d603e63f2b7e2e5269e0c7f95b48529600d42496d",
+      "bytes": 124178
+    },
+    {
+      "path": "screenshots/assistant-guidance/adult-original-observation-1440.png",
+      "sha256": "d70537cf8cc288907935866913cfa45df03e1cb4809d85d7fd2da404ae91bd1a",
+      "bytes": 144258
+    },
+    {
+      "path": "screenshots/assistant-guidance/adult-original-observation-320.png",
+      "sha256": "83a9b237d6f760599888a894ddb267b990c0aab2fdf723ddbccc5800acf84821",
+      "bytes": 91499
+    },
+    {
+      "path": "screenshots/assistant-guidance/adult-original-observation-390.png",
+      "sha256": "a33520896e157135febea60c8800cd927f261fc3f024d6ccc5a3dc42c031df88",
+      "bytes": 97561
+    },
+    {
+      "path": "screenshots/assistant-guidance/adult-original-observation-768.png",
+      "sha256": "68c5d2b9ad286e1c506a2dbcf761e52a0d15253b845ea698ef3040538303e015",
+      "bytes": 105569
+    },
+    {
+      "path": "screenshots/assistant-guidance/child-observation-report-original-plan.png",
+      "sha256": "a368669bed68622f766377f3e109decf12505c8999d1b9b4caee3ad3d22bf60b",
+      "bytes": 161981
+    },
+    {
+      "path": "screenshots/assistant-guidance/download-before-original-observation.png",
+      "sha256": "f9ed8fdf6b6ddac695e783b1e62a1a6f4b08f02708c1a2cc2256a87b034bd30b",
+      "bytes": 143128
+    },
+    {
+      "path": "screenshots/assistant-guidance/full-retrospective-and-insufficient-independent-evidence.png",
+      "sha256": "4eb08a937e9c9307b1031501b3159b0551212fc5e21d369a347768cfb73e8727",
+      "bytes": 427875
+    },
+    {
+      "path": "screenshots/assistant-guidance/late-preflight-isolated.png",
+      "sha256": "347cb01fda7a44eb092c79f31ea77940529f59c7122619af87af249ec241c71f",
+      "bytes": 135746
+    },
+    {
+      "path": "screenshots/assistant-guidance/lost-original-create-recovered.png",
+      "sha256": "f9ed8fdf6b6ddac695e783b1e62a1a6f4b08f02708c1a2cc2256a87b034bd30b",
+      "bytes": 143128
+    },
+    {
+      "path": "screenshots/assistant-guidance/no-report-native-next-step.png",
+      "sha256": "9c394098ef3fb8e7ebaeb379186e0c30b688a90f7b8c01cb6c209617833421da",
+      "bytes": 162460
+    },
+    {
+      "path": "screenshots/assistant-guidance/original-activation-and-stable-due-dates.png",
+      "sha256": "86dc0e53083ec1078a142cfb83132f10e3b5fbc59ea2978a20e5c52a094d6221",
+      "bytes": 427644
+    },
+    {
+      "path": "screenshots/assistant-guidance/original-complete-retrospective-command-recovered.png",
+      "sha256": "fdcd0ee79d27372bbdd26ccdf2bc822e4c81771f1225d48e42ac798f3f75f009",
+      "bytes": 371551
+    },
+    {
+      "path": "screenshots/assistant-guidance/original-pause-current-active-plan.png",
+      "sha256": "079d8cd9323b28cbaa92b878f869140dfa816aab16c19b99210bdf6cf320fced",
+      "bytes": 427672
+    },
+    {
+      "path": "screenshots/assistant-guidance/original-plan-manager.png",
+      "sha256": "ed584d972c45c2757e5cbc28a6512dc2bdfff68c29c31bf44dda25f7538a9581",
+      "bytes": 322653
+    },
+    {
+      "path": "screenshots/assistant-guidance/plan-full-original-and-recovered-adjustment.png",
+      "sha256": "2e14e72f535c7620e77ffa01baa8c714acf6fc88bd4f632b125ac23d55f7e414",
+      "bytes": 348833
+    },
+    {
+      "path": "screenshots/assistant-guidance/plan-two-tabs-losing-full-input.png",
+      "sha256": "8740246525b98e585c1bfe616a1c4df70ab376450ed37873ee3bdc21a576e5c8",
+      "bytes": 513382
+    },
+    {
+      "path": "screenshots/assistant-guidance/two-complete-forms-download-before-leaving.png",
+      "sha256": "3697463158692b574e958909bc981f12ca131ce9daee2693b07229b8e756c028",
+      "bytes": 117810
+    },
+    {
+      "path": "screenshots/assistant-guidance/two-tabs-full-losing-observation.png",
+      "sha256": "1edffd3c565c78cf085fda1e28e018ff9d085e5dd37317be3fbce4f344576966",
+      "bytes": 220322
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/adult-answer-two-tabs-complete-comparison.png",
+      "sha256": "d42109a901cc5ebe9a5b5149e19a1c1f421bbf9fbaccde013426c93ddac51f0b",
+      "bytes": 149702
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/adult-original-answer-receipt-recovered.png",
+      "sha256": "02675d1d487b55799d7a7bda9e1daba3f664998f3d03f4ac08fe45193338517a",
+      "bytes": 152732
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/cancel-retry-original-model-focus.png",
+      "sha256": "d880ffb42dfdc6a3208fc7461b29d75d807c6794627533da2e9693c7cb451f8a",
+      "bytes": 141832
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/completed-adult-own-reasons-1440.png",
+      "sha256": "c03dd7322c3d76cea89313db1d92a7d291b3445262ce27ff77997e36871c0a03",
+      "bytes": 161405
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/completed-adult-own-reasons-320.png",
+      "sha256": "b0a231a396b8b97647eefc5f2c5d7a571875eb523aa8b4a89519d1993e5c0d73",
+      "bytes": 150280
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/completed-adult-own-reasons-390.png",
+      "sha256": "d60418f478dcbf82938f542deddc0003aefa06aed50b7c66a7bbbdab96eacbd5",
+      "bytes": 148843
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/completed-adult-own-reasons-768.png",
+      "sha256": "5ea539d1219ecbc4dd49b89c8e5b081de7966b9de1b5907b4bac76db3901aaf1",
+      "bytes": 150054
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/generation-original-command-recovered.png",
+      "sha256": "2aa4b264bff6339babd313720bedc2caca8d6ba4fccdf265648af767af4fb4a3",
+      "bytes": 142471
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/original-adoption-and-start-receipts.png",
+      "sha256": "5095c1a54077c71e281edd1293d73967c19c7dff54994b96094a5672d29bee44",
+      "bytes": 111034
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/reviewed-complete-teaching-1440.png",
+      "sha256": "b10723b568d7805f4baa1ace6b8baac034aab9bc78f2491a5abf6ca2c9c6beee",
+      "bytes": 142977
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/reviewed-complete-teaching-320.png",
+      "sha256": "ec1dfd599eab9e0585d0a9b76113adfb7fff1b93f75afec4d644f4057ce57da7",
+      "bytes": 97089
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/reviewed-complete-teaching-390.png",
+      "sha256": "1cbb4913fb9dd3243b58c7285eaf114058259a259761737ec937004b2a13f0cf",
+      "bytes": 94445
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/reviewed-complete-teaching-768.png",
+      "sha256": "1230d8949489f5b9ab03c12d8611042a0cdef2901f9ba3234de922424d38d5d3",
+      "bytes": 104375
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/source-change-readonly-original-reason.png",
+      "sha256": "d6e0d192090a500d1e4a1f96d22d00648d6728fb1eef3e5ebaf23866a3c8d214",
+      "bytes": 159465
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/two-tabs-complete-teaching-drafts.png",
+      "sha256": "0b2a87aba23b1d0b789b632f8080f84fe59f2c0312448f54cd00602d4fe17d4c",
+      "bytes": 149989
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/unavailable-storage-full-copy-before-generation.png",
+      "sha256": "03672692984c96ae453a6f48c89e3888d9b973d154e72f3c9e1c481b074b24ad",
+      "bytes": 136734
+    },
+    {
+      "path": "screenshots/assistant-teaching-practice/uncertain-original-and-explicit-rereview.png",
+      "sha256": "85b6a0c937e51eeb045166b03c57db840edb4e106824ce6fe5b4f5bbd3c25b92",
+      "bytes": 136813
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/child-original-first-and-later-edit.png",
+      "sha256": "173ecde7dde36bc685be0a0b25796e57beaf91100b81908d673cd15ce7cb9f05",
+      "bytes": 152609
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/child-original-start-receipt.png",
+      "sha256": "bb511a8248bc24d7cc6a4b09407a296abc2b5406378b0201fbcc6cea4f70a892",
+      "bytes": 113413
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/complete-answer-download-before-question-change.png",
+      "sha256": "d74f5005ac9132620f3fec5e7273f3397922383023c2f4b9bc22be1f690986ac",
+      "bytes": 112885
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/explicit-generated-shared-arrangement-1440.png",
+      "sha256": "e7000aa1f6db81f34d7b97b5a87e1905fb5c74a63a1a3dfc149b17c0420ecb84",
+      "bytes": 177998
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/explicit-generated-shared-arrangement-320.png",
+      "sha256": "8535ed4904a4b7dd09c421f32ef11a2fe431d9cb827f9e1ac7c0affff0d9e9b8",
+      "bytes": 120088
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/explicit-generated-shared-arrangement-390.png",
+      "sha256": "01d74b4eeed967e7d3bd2654072fbf769a48bc8363e0e36b8b7fe26b5924dbac",
+      "bytes": 147289
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/explicit-generated-shared-arrangement-768.png",
+      "sha256": "9e102ba4ab513bb9a8ef43022b8ba4d4e7234819bfe846d76213a70f6ddd373c",
+      "bytes": 131821
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/late-pre-withdrawal-read-keeps-input.png",
+      "sha256": "4f3fc64a1ee0f4a006259934af6bb1e42b01d80d7e2d23c724dd30354125d2ec",
+      "bytes": 129916
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/original-sharing-receipt.png",
+      "sha256": "397b3b575d645cc6224b1876a7eb174dd2db9aac62320c255954cd21e31f47e9",
+      "bytes": 161157
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/six-own-reasons-completed-1440.png",
+      "sha256": "b332a9d05d6b9574dde8f5c0a29addd1cff5abd3eeb5b0b1595d867644a0085b",
+      "bytes": 164850
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/six-own-reasons-completed-320.png",
+      "sha256": "8dad3514059e3751b7c1ddabcecb9df030ac647817fe1241baa2b1dcb9869ffc",
+      "bytes": 157325
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/six-own-reasons-completed-390.png",
+      "sha256": "af8264257438a091b9c4c062957015002970a8c366c42132adc287277e6e5119",
+      "bytes": 153634
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/six-own-reasons-completed-768.png",
+      "sha256": "7d52541ac15795c65c86eddf4e35ff6d01c0744bc48e358f05ffb670d2a0149a",
+      "bytes": 152236
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/two-tabs-original-withdrawal-reasons.png",
+      "sha256": "5d53d78eddd48300de62eed810f9acd27ff519b5f8c9e853528aebd76d7b5d42",
+      "bytes": 193327
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/withdrawal-download-before-write.png",
+      "sha256": "e6590d4c410947d9fd832ed43d4c51c3218df82955a6235dfe2206406d86e334",
+      "bytes": 214686
+    },
+    {
+      "path": "screenshots/assistant-teaching-sharing/withdrawn-child-own-first-and-correction.png",
+      "sha256": "c06c84b00c7c4d54054934097c9b4b99a2c169e0edeb7dded94d1d17c08405f7",
+      "bytes": 166498
+    },
+    {
+      "path": "source-comparison.json",
+      "sha256": "00dd7189408ce0612fb03c30c1bdcf1bef022fc87e871c89c6e6b345a53170c5",
+      "bytes": 914709
+    },
+    {
+      "path": "teaching-postgres-first.json",
+      "sha256": "4817ef0bad47e79e763f0b47c69db70f86695a7cd3771c46fedd9c5b65f96bae",
+      "bytes": 8618
+    },
+    {
+      "path": "handbook-definition-overlay.json",
+      "sha256": "df8ad9323e0cdf24a4b9af1c5494f9053e606321bdec5dd56100037bb49d04a4",
+      "bytes": 2864
+    },
+    {
+      "path": "handbook-validation.json",
+      "sha256": "66afe5d6b0ab8040cefa141d9581aed9ad2e56f6c5c7e7b7300eb420cb911d34",
+      "bytes": 105072
+    },
+    {
+      "path": "delivery-checks.json",
+      "sha256": "73a9bef3fd390abebe3c29809b1bdc896b9a9199d63e3f1e1c059460ac18aee2",
+      "bytes": 324
+    },
+    {
+      "path": "history/source-comparison-before-eof-normalization.json",
+      "sha256": "222e9e81fb7c4ab7823e70d555edebaeddfb9e253d6aa8f742f7a6b3acf56ce4",
+      "bytes": 928771
+    },
+    {
+      "path": "eof-normalization.json",
+      "sha256": "38fef0269b0c7e4232d47a17a7d8c67a2a4ed9c35d889b293fa707497e5f0d48",
+      "bytes": 3832
+    },
+    {
+      "path": "delivery-checks-second.json",
+      "sha256": "e460283532b7c03c4ad71b8debff694c7bf449432d37de29e22f598ae01dff21",
+      "bytes": 339
+    }
+  ],
+  "sourceComparisonScope": "CRLF to LF; nine exact final newline-only normalizations explicitly enumerated in eof-normalization.json. No substantive differences."
+}

@@ -1,0 +1,55 @@
+{
+  "files": [
+    {
+      "path": "packages/contracts/src/index.ts",
+      "beforeSha256": "791de165a9d06144600436ccbc021af4ccd8f477e83ae965664a28a8ef0221a2",
+      "afterSha256": "7691d6eca44bc181a40c2a55e8d783d68b8d15167d99c5291ad1a9e053756ef5"
+    },
+    {
+      "path": "apps/api/src/infrastructure/in-memory-store.service.ts",
+      "beforeSha256": "42c9f2fc4e1136281bebf25621307cc6b95fa093b0d57209a05e2d4cd83af71e",
+      "afterSha256": "9e96dfee0daf4b2bdffe9a615ec4b076c91f6d5b98502c459f49c202378aaf4a"
+    },
+    {
+      "path": "apps/api/src/modules/learning/learning.module.ts",
+      "beforeSha256": "4cc193af7b14393c6fdce314559a8cd3a1879738be6a806ab0cff7da03386eca",
+      "afterSha256": "919e134676cb21aca9e91f927e70bb837cd9127350cc272dc16f21a9583f2f42"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/guidance.service.ts",
+      "beforeSha256": "6ad8d92e9296fab120317d60a98833eb4855d9dba29cc6436fc79c3ec4481d54",
+      "afterSha256": "bba0ebf14559c69e6398cc7d7d9d62712b76b874197e4c789cc23fdbbf1246bd"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-guidance-integrity.ts",
+      "beforeSha256": "7db85601e0e2c9bcdc2d59eb62e845a03359abd2aaa2c4ba5210d77681f830ef",
+      "afterSha256": "805364167516309ef8672d3e6228fd6c06fcb4536a5412f83991a916398460b2"
+    },
+    {
+      "path": "apps/api/src/infrastructure/domain-database.ts",
+      "beforeSha256": "4c22f08b9dae68f1ccb485357a2a8b5e85450ff39656b1e346a1ab1dc967abeb",
+      "afterSha256": "d64cc172faba10fac9f38caf07bececd0b83c1596c10c446cbe23408caf18b3e"
+    },
+    {
+      "path": "scripts/operations/database-reader-guard.cjs",
+      "beforeSha256": "dcc4679eb2294e9cec0efcfc4ed88f23a4ee81678c8bdb8e2cb026ec654ffe9a",
+      "afterSha256": "16033fa08b8c387b5383728f144ee8ce1b217b180d9fc71863509a48e5d5164b"
+    },
+    {
+      "path": "scripts/operations/assistant-practice-integrity.cjs",
+      "beforeSha256": "19894a4d736a18d1b0b179acb9a9360e4fd35b081593c0c1c052210f022d9d7e",
+      "afterSha256": "e43efe29e69af10b8de7c3ef88c7ea80bd9b988cb688a4d9ae09648db9195ca2"
+    },
+    {
+      "path": "apps/api/src/common/auth.guard.ts",
+      "beforeSha256": "dc99865e53d74a8672a84b3db5b64cc2e61a4f486bbffa398a83a2806f873884",
+      "afterSha256": "b5d783871fa8853ad63f62c67444830c7e07c290816b0a0d0687860eede297b9"
+    },
+    {
+      "path": "apps/api/src/modules/privacy/privacy-records.ts",
+      "beforeSha256": "206803efab4b574e489e9d17a3258b948dee386f8e2f5a066c62c1baf9514b95",
+      "afterSha256": "ef6b9de9af8464b0ad945b27bd63f9b62e6adf51e4e729867d14497ecf099ae0"
+    }
+  ],
+  "scope": "Private guidance observation and exact real-report/plan links with an unpublished schema27 fence; actual26 baseline remains preserved."
+}

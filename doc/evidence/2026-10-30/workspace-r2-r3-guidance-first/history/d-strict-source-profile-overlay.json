@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-30T03:41:15.773Z",
+  "reason": "Reuse strict source selection, full original message SHA, linked-question and reference consistency in cold/native validation. Preserve profile and teaching scope separately; a changed profile grade requires explicit source recheck for new writes, original receipts remain recoverable.",
+  "changes": [
+    {
+      "path": "apps/api/src/modules/learning/assistant-guidance-record.ts",
+      "before": "9e7e618ebbbf9492e74bf30db3a28d95c0f635a27f790cb9e041e08081980aef",
+      "after": "5f2e73ddbdd5fe656d2f7fe5fde075dd403d8e7ce8fec458a582b55d2421f019"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-guidance.service.ts",
+      "before": "283438fcf6689936dfb312847b76a3aba38f46d6c7ad545472f56fa809797495",
+      "after": "e10d18982ddf708b7bf4f6b99582a825f6061ac3c00ffbff05d776c25a8edb6d"
+    }
+  ]
+}

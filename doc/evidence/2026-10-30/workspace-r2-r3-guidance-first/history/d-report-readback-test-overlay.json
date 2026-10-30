@@ -1,0 +1,6 @@
+{
+  "path": "apps/api/src/modules/learning/assistant-guidance.integration.test.ts",
+  "beforeSha256": "a287d7d6b75c4bee4f1e70687b05c86cbe5c014b2adb1d87bae7d7d4bce8a3ae",
+  "afterSha256": "f69a93476daca49a09cbe16ccb0a63651a42945370d0de8b49489201cf42b3f3",
+  "reason": "The original complete response does not attach version; actual GET report reads the persisted version. Tests now explicitly read it back before the strict report-link preflight. The application contract and expected-version requirement are unchanged."
+}

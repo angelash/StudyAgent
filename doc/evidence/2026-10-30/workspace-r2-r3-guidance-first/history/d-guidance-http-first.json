@@ -1,0 +1,40 @@
+{
+  "numTotalTests": 6,
+  "numPassedTests": 2,
+  "numFailedTests": 4,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 2,
+  "suites": [
+    {
+      "file": "assistant-guidance.integration.test.ts",
+      "status": "failed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "private source observations, real reports and original guidance plans keeps preflight read-only and saves a full adult observation without child or invented formal evidence",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans rejects cross-author source reads, another guardians private intent and a forged report without creating a plan",
+          "status": "failed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans links actual completed first-response evidence separately from a conversation clue and creates exactly one original proposed rule plan",
+          "status": "failed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans refuses an active report and a revised report version while preserving the original observation and exact report-link receipt",
+          "status": "failed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans commits only one complete observation edit across two actual applications and returns the original winner after later versions",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans cold restores the actual report and created plan link without rewriting source or learning evidence and rejects a recomputed cross-report link",
+          "status": "failed"
+        }
+      ]
+    }
+  ]
+}

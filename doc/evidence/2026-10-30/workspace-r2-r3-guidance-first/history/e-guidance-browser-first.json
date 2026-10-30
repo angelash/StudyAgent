@@ -1,0 +1,217 @@
+{
+  "stats": {
+    "startTime": "2026-10-30T04:58:15.887Z",
+    "duration": 145632.204,
+    "expected": 14,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 320",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5728,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 390",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4635,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 768",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4843,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 1440",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5930,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: child real report remains separate and creates exactly one original proposed plan with native manager",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7916,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: no completed report offers the native scope entry and never invents a plan",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4369,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: lost committed creation uses its exact complete original receipt after reload without a second POST",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5613,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: two tabs preserve full losing observations after a real version conflict",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6441,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: unavailable storage requires a full original command download before saving",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5001,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: a late source preflight cannot fill a reopened observation",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5406,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: complete original plan activities and reasons survive reload and a lost committed adjustment reply",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7274,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: two original plan editors preserve the losing full reason after a real version conflict",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7666,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: a lost original activation survives reload and creates only the original four delayed tasks",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 5909,
+          "failure": true
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: the original paused receipt stays separate from a later active plan",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7106,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: two complete forms require both actual downloads before leaving with unavailable storage",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 21364,
+          "failure": true
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: complete retrospective input restores and cannot be acknowledged without actual independent followup evidence",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7131,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: actual completed independent followup supports an exact lost retrospective command while uncertainty stays explicit",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 5273,
+          "failure": true
+        }
+      ]
+    }
+  ]
+}

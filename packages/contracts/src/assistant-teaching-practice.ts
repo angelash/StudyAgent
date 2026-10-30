@@ -1,0 +1,18 @@
+import { z } from 'zod';
+import { assistantPracticeContentInputSchema,assistantPracticeContentSchema,type AssistantPracticeContent,type AssistantPracticeTargetScope } from './assistant-practice-content';
+const id=z.string().trim().min(1).max(180),hash=z.string().regex(/^[a-f0-9]{64}$/);
+export const assistantTeachingCreateSchema=assistantPracticeContentInputSchema.extend({preflightFingerprint:hash,requestKey:id}).strict();
+export const assistantTeachingControlSchema=z.object({expectedRevision:z.number().int().nonnegative(),expectedTaskVersion:z.number().int().positive(),requestKey:id}).strict();
+export const assistantTeachingContentCommandSchema=z.object({expectedRevision:z.number().int().nonnegative(),contentFingerprint:hash,requestKey:id}).strict();
+export const assistantTeachingEditSchema=assistantTeachingContentCommandSchema.extend({content:assistantPracticeContentSchema}).strict();
+export const assistantTeachingListSchema=z.object({cursor:z.string().max(2000).optional(),pageSize:z.coerce.number().int().min(1).max(20).default(10)}).strict();
+export type AssistantTeachingCreateInput=z.infer<typeof assistantTeachingCreateSchema>;
+export type AssistantTeachingControlInput=z.infer<typeof assistantTeachingControlSchema>;
+export type AssistantTeachingContentCommandInput=z.infer<typeof assistantTeachingContentCommandSchema>;
+export type AssistantTeachingEditInput=z.infer<typeof assistantTeachingEditSchema>;
+export type AssistantTeachingDraftStatus='queued'|'generating'|'ready'|'edited'|'adopted'|'cancelling'|'cancelled'|'failed';
+export type AssistantTeachingReceipt={key:string;kind:'create'|'cancel'|'retry'|'edit'|'review'|'adopt';commandFingerprint:string;effectiveRevision:number;generation:number;at:string;practiceId?:string};
+export type AssistantTeachingReview={decision:'pass'|'revised'|'uncertain';issues:string[];inputFingerprint:string;outputFingerprint:string;modelId:string;modelName:string;at:string;current:boolean};
+export type AssistantTeachingDraftSummary={id:string;sourceSessionId:string;audience:AssistantPracticeTargetScope;title:string;objective:string;modelId:string;modelName:string;status:AssistantTeachingDraftStatus;revision:number;createdAt:string;updatedAt:string;isTeachingOnly:true;formalEvidenceCreated:false};
+export type AssistantTeachingDraftView=AssistantTeachingDraftSummary&{stage:'writing'|'reviewing'|'completed';generation:number;task:{id:string;version:number;state:string;errorCode:string|null}|null;originalContent:AssistantPracticeContent|null;content:AssistantPracticeContent|null;contentFingerprint:string|null;review:AssistantTeachingReview|null;contentVersion:number;practiceId:string|null;teacherReviewStatus:'pending';receipt?:AssistantTeachingReceipt};
+export type AssistantTeachingPracticeView={id:string;sourceDraftId:string;audience:AssistantPracticeTargetScope;content:AssistantPracticeContent;contentFingerprint:string;modelId:string;modelName:string;createdAt:string;teacherReviewStatus:'pending';isTeachingOnly:true;formalEvidenceCreated:false;independentFirstPass:0;selfSessionId:string|null};

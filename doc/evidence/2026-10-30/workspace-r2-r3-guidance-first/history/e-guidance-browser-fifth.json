@@ -1,0 +1,25 @@
+{
+  "stats": {
+    "startTime": "2026-10-30T06:32:51.998Z",
+    "duration": 39663.026,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "knowledge report: an older matching plan is found behind a newer unrelated report and opens its durable plan route",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 19342,
+          "failure": true
+        }
+      ]
+    }
+  ]
+}

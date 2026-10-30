@@ -1,0 +1,40 @@
+{
+  "numTotalTests": 6,
+  "numPassedTests": 5,
+  "numFailedTests": 1,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 2,
+  "suites": [
+    {
+      "file": "assistant-teaching-sharing.integration.test.ts",
+      "status": "failed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery shares three targets and six complete questions only after confirmation, keeps private origins out of legal guardian DTOs and records only the actual child reasons",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery commits only one real withdrawal across two application instances, keeps the losing complete reason and preserves exact prior child receipts",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery restores a native child teaching bundle with first reasons, withdrawal and original receipts while keeping all parent writes forbidden",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery rejects a cross-child actor even after the internal start command and receipt hashes are deliberately recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery keeps only explicit shared child teaching through author deletion and applies the latest deletion ledger to a real older native bundle",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery deletes a child teaching assignment and all actual learner sessions and prevents resurrection from a newer deletion ledger",
+          "status": "failed"
+        }
+      ]
+    }
+  ]
+}

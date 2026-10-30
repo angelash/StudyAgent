@@ -1,0 +1,200 @@
+{
+  "numTotalTests": 46,
+  "numPassedTests": 46,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "assistant-practice-content.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "source-bound teaching practice pure protocol preserves Auto as the original intent while freezing a real model for strict cold replay",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol keeps full selected source, code, formula and table separate from the short objective without mutating inputs",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol preserves complete question code, formula, table and newlines in the learner projection",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects complete source over budget and an unavailable or different fixed model",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol requires historical-source and adult-to-child confirmations independently of reviewed question coverage",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol keeps course/scope grade5 and profile grade4 separate, and refuses course/scope mismatch",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects cross-child, cross-subject, adult relabelling and unconfirmed audience scope",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol retains a named subject for an adult course without inventing a child or formal targets",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects duplicate/withdrawn-like target mismatches and out-of-scope grade or term definitions",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol accepts the existing curriculum contract with a one-character atom name and a both-term target",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol refuses saved context inconsistency even after outer digest recomputation",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol refuses saved sourceFingerprint inconsistency even after outer digest recomputation",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol refuses saved messageHash inconsistency even after outer digest recomputation",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol refuses saved selection inconsistency even after outer digest recomputation",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol refuses saved linkedQuestion inconsistency even after outer digest recomputation",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol refuses saved messageOrder inconsistency even after outer digest recomputation",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol refuses saved location inconsistency even after outer digest recomputation",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol refuses saved targetIdentity inconsistency even after outer digest recomputation",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects direct digest or protocol edits and invalid auto-linked source messages",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects duplicate source references and conflicting identity for the same reference key",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol validates classification plus reasons and open expression, with a source map per question",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects malformed question structure: duplicateId",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects malformed question structure: normalizedLabel",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects malformed question structure: missingReference",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects malformed question structure: openOptions",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects malformed question structure: openReference",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects malformed question structure: oneOption",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects malformed question structure: oneQuestion",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects malformed question structure: sevenQuestions",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol refuses unknown source messages, references from a different mapped message and supplementary false citations",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol refuses adult formal targets, unselected student targets and selected targets omitted from all questions",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects model-invented approved fields",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects model-invented score fields",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects model-invented evidenceId fields",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects model-invented figure fields",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects model-invented imageUrl fields",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol enforces the aggregate complete body budget independently of individually valid field lengths",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol projects only initial answer controls, with no answers, hints, source map, private source or model context",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol preserves initial content for pass or uncertainty, and validates a complete concrete revision",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects inconsistent reviewer decision 0",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects inconsistent reviewer decision 1",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects inconsistent reviewer decision 2",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects inconsistent reviewer decision 3",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects inconsistent reviewer decision 4",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol rejects a no-op or source-violating revision rather than silently adopting a partial correction",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound teaching practice pure protocol provides strict complete JSON generation and review schemas without formal approval or image fields",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

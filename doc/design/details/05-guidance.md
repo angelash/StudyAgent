@@ -1,6 +1,6 @@
 # 05 指导计划、训练编排与间隔复盘 — 详细设计
 
-源码基线：`2f9507bf6f26f4e56f85f2c957178a4cf5d4c4fa`。角色：监护家长、学生、授权教师。
+源码基线：`c5ae0f66b00096cc080b73eeb47f96a00c018b57`。角色：监护家长、学生、授权教师。
 
 产品入口：`/student/assessment`、`/student/today`、`/parent/dashboard`。
 
@@ -53,7 +53,7 @@
 **服务方法**：
 
 - `GuidanceService.create`；[apps/api/src/modules/diagnostics/guidance.service.ts:44](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L44)。
-- `GuidanceService.creationResult`；[apps/api/src/modules/diagnostics/guidance.service.ts:151](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L151)。
+- `GuidanceService.creationResult`；[apps/api/src/modules/diagnostics/guidance.service.ts:153](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L153)。
 
 **补充实现文件**：
 
@@ -85,11 +85,11 @@
 
 **服务方法**：
 
-- `GuidanceService.list`；[apps/api/src/modules/diagnostics/guidance.service.ts:144](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L144)。
-- `GuidanceService.get`；[apps/api/src/modules/diagnostics/guidance.service.ts:150](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L150)。
-- `GuidanceService.update`；[apps/api/src/modules/diagnostics/guidance.service.ts:259](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L259)。
-- `GuidanceService.adjust`；[apps/api/src/modules/diagnostics/guidance.service.ts:224](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L224)。
-- `GuidanceService.history`；[apps/api/src/modules/diagnostics/guidance.service.ts:157](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L157)。
+- `GuidanceService.list`；[apps/api/src/modules/diagnostics/guidance.service.ts:146](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L146)。
+- `GuidanceService.get`；[apps/api/src/modules/diagnostics/guidance.service.ts:152](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L152)。
+- `GuidanceService.update`；[apps/api/src/modules/diagnostics/guidance.service.ts:264](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L264)。
+- `GuidanceService.adjust`；[apps/api/src/modules/diagnostics/guidance.service.ts:226](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L226)。
+- `GuidanceService.history`；[apps/api/src/modules/diagnostics/guidance.service.ts:159](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L159)。
 
 ## PLAN-03 到期复测、改期与启动
 
@@ -112,10 +112,10 @@
 
 **服务方法**：
 
-- `GuidanceService.reviews`；[apps/api/src/modules/diagnostics/guidance.service.ts:293](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L293)。
-- `GuidanceService.planReviews`；[apps/api/src/modules/diagnostics/guidance.service.ts:299](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L299)。
-- `GuidanceService.reschedule`；[apps/api/src/modules/diagnostics/guidance.service.ts:310](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L310)。
-- `GuidanceService.startReview`；[apps/api/src/modules/diagnostics/guidance.service.ts:333](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L333)。
+- `GuidanceService.reviews`；[apps/api/src/modules/diagnostics/guidance.service.ts:300](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L300)。
+- `GuidanceService.planReviews`；[apps/api/src/modules/diagnostics/guidance.service.ts:306](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L306)。
+- `GuidanceService.reschedule`；[apps/api/src/modules/diagnostics/guidance.service.ts:317](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L317)。
+- `GuidanceService.startReview`；[apps/api/src/modules/diagnostics/guidance.service.ts:340](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L340)。
 
 ## PLAN-04 干预前后复盘与家长确认
 
@@ -136,8 +136,8 @@
 
 **服务方法**：
 
-- `GuidanceService.retrospective`；[apps/api/src/modules/diagnostics/guidance.service.ts:347](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L347)。
-- `GuidanceService.acknowledgeRetrospective`；[apps/api/src/modules/diagnostics/guidance.service.ts:408](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L408)。
+- `GuidanceService.retrospective`；[apps/api/src/modules/diagnostics/guidance.service.ts:354](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L354)。
+- `GuidanceService.acknowledgeRetrospective`；[apps/api/src/modules/diagnostics/guidance.service.ts:415](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L415)。
 
 ## PLAN-05 持久模型说明建议与明确采用
 

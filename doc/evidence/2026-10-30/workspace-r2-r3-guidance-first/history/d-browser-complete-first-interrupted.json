@@ -1,0 +1,85 @@
+{
+  "runner": 84872,
+  "reason": "Known global teaching-provider fixture leaks model availability into project advice. This local browser run is deliberately interrupted before unrelated late tests; original log and artifacts retained. It is not CI.",
+  "processes": [
+    {
+      "ProcessId": 84872,
+      "ParentProcessId": 91856,
+      "Name": "node.exe",
+      "CreationDate": "2026-10-30T12:16:42.482954+08:00"
+    },
+    {
+      "ProcessId": 74368,
+      "ParentProcessId": 84872,
+      "Name": "node.exe",
+      "CreationDate": "2026-10-30T12:17:00.476515+08:00"
+    },
+    {
+      "ProcessId": 79740,
+      "ParentProcessId": 74368,
+      "Name": "node.exe",
+      "CreationDate": "2026-10-30T12:17:32.090758+08:00"
+    },
+    {
+      "ProcessId": 73648,
+      "ParentProcessId": 79740,
+      "Name": "cmd.exe",
+      "CreationDate": "2026-10-30T12:17:36.671557+08:00"
+    },
+    {
+      "ProcessId": 77156,
+      "ParentProcessId": 73648,
+      "Name": "node.exe",
+      "CreationDate": "2026-10-30T12:17:36.769466+08:00"
+    },
+    {
+      "ProcessId": 35704,
+      "ParentProcessId": 79740,
+      "Name": "cmd.exe",
+      "CreationDate": "2026-10-30T12:17:54.843448+08:00"
+    },
+    {
+      "ProcessId": 70528,
+      "ParentProcessId": 35704,
+      "Name": "node.exe",
+      "CreationDate": "2026-10-30T12:17:54.950516+08:00"
+    },
+    {
+      "ProcessId": 40716,
+      "ParentProcessId": 70528,
+      "Name": "node.exe",
+      "CreationDate": "2026-10-30T12:17:55.336161+08:00"
+    },
+    {
+      "ProcessId": 86668,
+      "ParentProcessId": 79740,
+      "Name": "node.exe",
+      "CreationDate": "2026-10-30T12:18:22.174425+08:00"
+    },
+    {
+      "ProcessId": 93324,
+      "ParentProcessId": 86668,
+      "Name": "chrome-headless-shell.exe",
+      "CreationDate": "2026-10-30T12:18:23.600068+08:00"
+    },
+    {
+      "ProcessId": 76440,
+      "ParentProcessId": 93324,
+      "Name": "chrome-headless-shell.exe",
+      "CreationDate": "2026-10-30T12:18:24.467616+08:00"
+    },
+    {
+      "ProcessId": 79428,
+      "ParentProcessId": 93324,
+      "Name": "chrome-headless-shell.exe",
+      "CreationDate": "2026-10-30T12:18:24.788946+08:00"
+    },
+    {
+      "ProcessId": 68356,
+      "ParentProcessId": 93324,
+      "Name": "chrome-headless-shell.exe",
+      "CreationDate": "2026-10-30T12:33:15.90964+08:00"
+    }
+  ],
+  "at": "2026-10-30T04:33:29.7039212Z"
+}

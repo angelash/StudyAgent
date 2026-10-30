@@ -1,0 +1,7 @@
+{
+  "at": "2026-10-30T04:34:13.674Z",
+  "file": "scripts/qa/assistant-teaching-fixture.cjs",
+  "beforeSha256": "a52483aa1608394d6125fab00e0baa195448d52cbc1f893ffe5bc44fe138bc54",
+  "afterSha256": "8690a59d35b86efe9b272a2ad0b68577156b33c4d502ada2c945190414ea259d",
+  "reason": "Complete browser580/582 traced two original project requests to global provider.enabled override. Restrict synthetic capability to the two actual teaching services; production code and disabled shared provider remain unchanged. Original failures, traces and network metadata retained."
+}

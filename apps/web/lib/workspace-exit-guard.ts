@@ -3,7 +3,7 @@ import type { WorkspaceExitGuard } from './workspace-shell-context';
 const stateKey = '__studyWorkspaceHistoryIndex';
 type ActiveGuard = WorkspaceExitGuard & { token: symbol };
 type Position = { href: string; state: unknown; index: number | null };
-const identityKeys = ['student','studentId','subject','courseScope','audience','studioCourseId','sourceCourseId','lesson','session','project','whiteboard','draft','course','task','reviewTask','level','track','assistantAssignment','assistantPractice'];
+const identityKeys = ['student','studentId','subject','courseScope','audience','studioCourseId','sourceCourseId','lesson','session','project','whiteboard','draft','course','task','reviewTask','level','track','assistantAssignment','assistantPractice','teachingAssignment','teachingSession','teachingPractice'];
 export function sameWorkspaceActivity(destination: string, current: string) {
   try {
     const next = new URL(destination, current), previous = new URL(current);
@@ -31,17 +31,24 @@ export function installWorkspaceExitGuard(active: () => ActiveGuard | null) {
     window.dispatchEvent(new Event('studyagent:close-navigation'));
     guard.request(destination, () => { if(active()?.token!==guard.token)return;bypass=destination;if(resume)resume();else window.location.assign(destination); });
   }
-  const navigation = (window as unknown as { navigation?: EventTarget & { traverseTo?: (key: string) => { finished: Promise<unknown> } } }).navigation;
+  const navigation = (window as unknown as { navigation?: EventTarget & { currentEntry?: { index: number }; traverseTo?: (key: string) => { finished: Promise<unknown> } } }).navigation;
   function traverse(event: Event) {
-    const change=event as Event & { navigationType?: string; destination?: { url: string; key?: string } };
+    const change=event as Event & { navigationType?: string; destination?: { url: string; key?: string; index?: number } };
     if(change.navigationType!=='traverse'||!change.cancelable||!change.destination)return;
     if(bypass===change.destination.url)return;
     const guard=leaving(change.destination.url);if(!guard)return;
     change.preventDefault();change.stopImmediatePropagation();
-    const key=change.destination.key;
-    request(guard,change.destination.url,key&&navigation?.traverseTo?()=>{
-      try{void navigation.traverseTo!(key).finished.catch(()=>{bypass='';});}catch{bypass='';}
-    }:undefined);
+    const key=change.destination.key,destination=change.destination.url;
+    const fromIndex=navigation?.currentEntry?.index,toIndex=change.destination.index;
+    const delta=Number.isSafeInteger(fromIndex)&&Number.isSafeInteger(toIndex)?toIndex!-fromIndex!:0;
+    // After a document reload, a real history target may no longer be a key
+    // traversable by this Navigation object. Resume the original native history
+    // movement after every input guard, instead of silently abandoning Back.
+    const native=()=>{if(active()?.token!==guard.token){bypass='';return;}bypass=destination;
+      if(delta&&Number.isSafeInteger(delta))history.go(delta);else window.location.assign(destination);};
+    request(guard,destination,key&&navigation?.traverseTo?()=>{
+      try{void navigation.traverseTo!(key).finished.catch(native);}catch{native();}
+    }:native);
   }
   function click(event: MouseEvent) {
     if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;

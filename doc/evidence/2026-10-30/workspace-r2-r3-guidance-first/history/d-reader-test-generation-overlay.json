@@ -1,0 +1,5 @@
+{
+  "beforeSha256": "4d12913af8c33d99ee41ce420a11609557c3256c9a7aa8e4df20ca50fa8c42b0",
+  "afterSha256": "ce07d4ec96bc1ac3b51913a97a02e88b6aa4a24d40c7b2322e090b72da64da52",
+  "reason": "The first generated test accidentally replaced25 inside sha256. Version-token boundaries and protected64-character hashes preserve algorithm/property names and the exact original reader hashes; source readers and application code are unchanged."
+}

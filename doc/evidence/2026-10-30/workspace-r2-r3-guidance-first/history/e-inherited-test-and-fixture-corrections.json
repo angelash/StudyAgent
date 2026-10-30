@@ -1,0 +1,14 @@
+{
+  "reason": "Correct observed private-source404 and current27 teaching-backup expectations; scope synthetic capability to teaching only. Old original reports remain in parent QA.",
+  "files": [
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching.integration.test.ts",
+      "beforeSha256": "e22aa794fbb70a2b2990bfb18480a067e211fc833f0b549f15d5aeec05aa2b39",
+      "afterSha256": "a52615e646bde275f3b8257cc9c6ec3630ab4d4175b48274407645e4348f7f09"
+    },
+    {
+      "path": "scripts/qa/assistant-teaching-fixture.cjs",
+      "afterSha256": "8690a59d35b86efe9b272a2ad0b68577156b33c4d502ada2c945190414ea259d"
+    }
+  ]
+}

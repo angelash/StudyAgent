@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-30T06:34:34.396Z",
+  "path": "apps/web/lib/workspace-exit-guard.ts",
+  "beforeSha256": "be70a36eafaa96bb92dd89273c77ceb6920312d26d904d257c8d914ae1901bc5",
+  "afterSha256": "0fc60fc103897f104593d83920a69974729864acf5183a68b6da1c7e91ea12f0",
+  "evidence": "Original599 full598/599 and focused5/6 fail. Actual navigate diagnostic: saved/unchanged plan inputs pass both guards, Navigation.traverseTo rejects Invalid key after reload, prior implementation clears bypass and strands browser Back. Fall back to actual native history delta from destination/current indices, with actor/token and all guard checks preserved. Unknown delta uses explicit original destination.",
+  "tests": "Temporary original test instrumentation removed; archived original knowledge-report journey restored unchanged. Complete API business freeze unchanged."
+}

@@ -4,3 +4,4 @@
 .cp-workspace fieldset.cp-answer-fields{margin:0;border:0;padding:0;min-inline-size:0}
 .cp-workspace>.cp-eyebrow{display:block;margin:18px 0 6px}
 .cp-withdrawal-controls{margin:20px 0}.cp-withdrawal-dialog{width:min(640px,100%)}.cp-withdrawal-dialog h2{margin:0;flex:1}.cp-withdrawal-dialog textarea{width:100%}
+.cp-teaching-editor{display:grid;gap:16px;min-inline-size:0}.cp-teaching-editor details{border-top:1px solid #e5e8ef;padding-top:12px}.cp-teaching-editor details[open]{display:grid;gap:12px}.cp-teaching-editor label{display:grid;gap:6px}.cp-teaching-editor :is(input,textarea,select){box-sizing:border-box;width:100%;font:inherit;border:1px solid #dce2ec;border-radius:8px;padding:10px;color:#24314a;background:#fff}.cp-teaching-editor summary{cursor:pointer;color:#52688e}.cp-teaching-editor button{min-height:40px}.cp-teaching-editor :focus-visible{outline:2px solid #9bb1d8;outline-offset:3px}

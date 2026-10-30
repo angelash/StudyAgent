@@ -1,0 +1,83 @@
+{
+  "numTotalTests": 15,
+  "numPassedTests": 15,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "schema26-reader.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 migrates actual25 without rewriting business records and the unmodified old reader refuses26 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 migrates an actual23 database through24,25 and26 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 rolls back the26 marker and its migration together and leaves the25 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 rejects unknown future27 and mismatched or incomplete26 markers without resetting them",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 restores a native25 bundle with its old marker, upgrades explicitly and restores native26 with the new minimum reader",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 migrates actual25 without rewriting business records and the unmodified old reader refuses26 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 migrates an actual23 database through24,25 and26 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 rolls back the26 marker and its migration together and leaves the25 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 rejects unknown future27 and mismatched or incomplete26 markers without resetting them",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "assistant-teaching-sharing.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery shares three targets and six complete questions only after confirmation, keeps private origins out of legal guardian DTOs and records only the actual child reasons",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery commits only one real withdrawal across two application instances, keeps the losing complete reason and preserves exact prior child receipts",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery restores a native child teaching bundle with first reasons, withdrawal and original receipts while keeping all parent writes forbidden",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery rejects a cross-child actor even after the internal start command and receipt hashes are deliberately recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery keeps only explicit shared child teaching through author deletion and applies the latest deletion ledger to a real older native bundle",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery deletes a child teaching assignment and all actual learner sessions and prevents resurrection from a newer deletion ledger",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

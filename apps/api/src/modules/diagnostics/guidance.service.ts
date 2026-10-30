@@ -48,6 +48,8 @@ export class GuidanceService {
     catch(error) { if (!(error instanceof ConflictException) || attempt===1) throw error; }
     throw new ConflictException('请读取原计划创建结果后重试');
   }
+  /** Internal adapter: outer durable transaction commits the source link and original plan together. */
+  createInCurrentTransaction(user:InMemoryUserAccount,studentId:string,value:unknown){const command=validate(createPlanSchema,value);if(command.useAi||command.modelId)throw new BadRequestException('来源指导先明确保存规则计划，再按原计划请求固定模型建议。');return this.createRulePlan(user,studentId,command);}
   private async createRulePlan(user: InMemoryUserAccount, studentId: string, command: z.infer<typeof createPlanSchema>) {
     this.students.assertGuardian(user, studentId);
     const creationHash=inputHash('create',{studentId,...command});
@@ -224,14 +226,17 @@ export class GuidanceService {
   adjust(user: InMemoryUserAccount, planId: string, input: unknown) {
     const plan = this.requirePlan(user, planId);
     this.students.assertGuardian(user, plan.studentId);
-    const impact = this.view(user, plan).impact;
-    if (impact.definitionChangedActionIds?.length || impact.definitionUnverifiedActionIds?.length) throw new ConflictException('知识定义已变化或无法核对，修改活动不能替代重新评测，请建立新计划');
-    if (impact.measurementRulesChanged) throw new ConflictException('请先重新分析原报告，再核对和调整指导活动');
     const data = validate(z.object({ ...versionedCommand, requestKey: z.string().min(8).max(180), reason: reasonSchema,
       minutesPerDay: z.number().int().min(5).max(60), acknowledgeReportVersion: z.number().int().positive(),
       actions: z.array(z.object({ actionId: z.string().max(180), minutes: z.number().int().min(1).max(60),
         activity: z.string().trim().min(5).max(2500) }).strict()).min(1).max(3) }).strict(), input);
-    const command = this.command(user, plan, 'adjust', data); if (command.replay) return this.view(user, plan);
+    const command = this.command(user, plan, 'adjust', data);
+    const result=()=>{const original=this.store.find('guidancePlanRevisions',{planId:plan.id,actorId:user.id,requestKey:data.requestKey});if(!original||original.inputHash!==inputHash('adjust',data))throw new ConflictException('原计划调整回执无法核对');return{...this.view(user,plan),adjustmentReceipt:{requestKey:data.requestKey,revision:original.revision}};};
+    if(command.replay)return result();
+    const impact = this.view(user, plan).impact;
+    if (impact.definitionChangedActionIds?.length || impact.definitionUnverifiedActionIds?.length) throw new ConflictException('知识定义已变化或无法核对，修改活动不能替代重新评测，请建立新计划');
+    if (impact.measurementRulesChanged) throw new ConflictException('请先重新分析原报告，再核对和调整指导活动');
+
     if (plan.status === 'completed') throw new BadRequestException('已结束计划保留为历史，请根据新的评测另建计划');
     const report = this.diagnostics.report(user, plan.baselineSessionId);
     if (data.acknowledgeReportVersion !== (report.version ?? 1)) throw new ConflictException('评测依据已变化，请重新查看报告');
@@ -253,14 +258,16 @@ export class GuidanceService {
     delete plan.retrospectiveReview;
     this.bump(plan, user.id, 'adjusted', data.reason, command.receipt);
     this.events.publish('guidance.adjusted', { planId, revision: plan.revision, baselineReportVersion: plan.baselineReportVersion, actorId: user.id });
-    return this.view(user, plan);
+    return result();
   }
 
   update(user: InMemoryUserAccount, planId: string, input: unknown) {
     const plan = this.requirePlan(user, planId);
     this.students.assertGuardian(user, plan.studentId);
     const data = validate(z.object({ ...versionedCommand, status: z.enum(['active', 'paused', 'completed']) }).strict(), input);
-    const command = this.command(user, plan, 'status', data); if (command.replay) return this.view(user, plan);
+    const command=this.command(user,plan,'status',data);
+    const result=()=>{const view=this.view(user,plan);if(!data.requestKey)return view;const saved=this.store.find('guidancePlanRevisions',{planId:plan.id,actorId:user.id,requestKey:data.requestKey});if(!saved||saved.kind!=='status'||saved.inputHash!==command.receipt.inputHash)throw new ConflictException('原指导操作回执无法核对');return{...view,operationReceipt:{planId:plan.id,kind:'status' as const,requestKey:data.requestKey,revision:saved.revision,command:structuredClone(data),status:saved.snapshot.status}};};
+    if(command.replay)return result();
     const { status } = data;
     if (plan.status === 'completed') throw new BadRequestException('已结束计划不能重新启用，请根据新评测另建计划');
     if (status !== 'paused' && this.view(user, plan).impact.needsReview) throw new ConflictException('评测已修订，请先查看新依据并调整或确认计划');
@@ -287,7 +294,7 @@ export class GuidanceService {
     plan.status = status;
     this.bump(plan, user.id, 'status', { active: '确认并启用指导计划', paused: '暂停指导计划', completed: '确认复盘并结束指导计划' }[status], command.receipt);
     this.events.publish('guidance.status_changed', { planId, status, actorId: user.id });
-    return this.view(user, plan);
+    return result();
   }
 
   reviews(user: InMemoryUserAccount, studentId: string, subject: Subject) {
@@ -410,7 +417,9 @@ export class GuidanceService {
     this.students.assertGuardian(user, plan.studentId);
     const data = validate(z.object({ ...versionedCommand, requestKey: z.string().min(8).max(180),
       fingerprint: z.string().regex(/^[a-f0-9]{64}$/), reason: reasonSchema }).strict(), input);
-    const command = this.command(user, plan, 'retrospective', data); if (command.replay) return this.view(user, plan);
+    const command=this.command(user,plan,'retrospective',data);
+    const result=()=>{const view=this.view(user,plan);if(!data.requestKey)return view;const saved=this.store.find('guidancePlanRevisions',{planId:plan.id,actorId:user.id,requestKey:data.requestKey});if(!saved||saved.kind!=='retrospective'||saved.inputHash!==command.receipt.inputHash)throw new ConflictException('原指导操作回执无法核对');return{...view,operationReceipt:{planId:plan.id,kind:'retrospective' as const,requestKey:data.requestKey,revision:saved.revision,command:structuredClone(data),status:saved.snapshot.status}};};
+    if(command.replay)return result();
     if (plan.status === 'completed') throw new BadRequestException('已结束计划的复盘保留为历史');
     if (this.view(user, plan).impact.needsReview) throw new ConflictException('请先核对修订后的评测依据');
     const current = this.retrospective(user, planId);
@@ -420,6 +429,6 @@ export class GuidanceService {
     plan.retrospectiveReview = { fingerprint: current.fingerprint, reviewedAt: new Date().toISOString(), actorId: user.id, note: data.reason };
     this.bump(plan, user.id, 'retrospective', data.reason, command.receipt);
     this.events.publish('guidance.retrospective_reviewed', { planId, revision: plan.revision, fingerprint: current.fingerprint, actorId: user.id });
-    return this.view(user, plan);
+    return result();
   }
 }

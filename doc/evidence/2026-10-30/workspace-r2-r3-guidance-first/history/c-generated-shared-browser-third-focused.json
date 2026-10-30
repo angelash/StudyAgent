@@ -1,0 +1,349 @@
+{
+  "stats": {
+    "startTime": "2026-10-30T04:35:46.156Z",
+    "duration": 508054.957,
+    "expected": 28,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "generated teaching workspace: actual source, Auto model, full edit, rereview and adult first reasons at 320",
+      "file": "assistant-teaching-practice.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 15006,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated teaching workspace: actual source, Auto model, full edit, rereview and adult first reasons at 390",
+      "file": "assistant-teaching-practice.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 13154,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated teaching workspace: actual source, Auto model, full edit, rereview and adult first reasons at 768",
+      "file": "assistant-teaching-practice.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 14403,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated teaching workspace: actual source, Auto model, full edit, rereview and adult first reasons at 1440",
+      "file": "assistant-teaching-practice.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 14594,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated teaching workspace: uncertain review preserves the original and blocks adoption until complete edits and new review",
+      "file": "assistant-teaching-practice.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 10555,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated teaching workspace: one lost generation acknowledgement is recovered with the same complete original command after reload",
+      "file": "assistant-teaching-practice.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8765,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated teaching workspace: denied storage sends no creation until the full original copy is downloaded",
+      "file": "assistant-teaching-practice.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8277,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated teaching workspace: the original adult response receipt survives reload without replacing the first reason",
+      "file": "assistant-teaching-practice.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 11187,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated teaching workspace: two actual tabs keep both complete edit drafts and compare the saved version",
+      "file": "assistant-teaching-practice.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 12483,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated teaching workspace: an explicit source change keeps original adult history readable and blocks new writes",
+      "file": "assistant-teaching-practice.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 11401,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated teaching workspace: original adoption and adult-start acknowledgements restore without duplicate records",
+      "file": "assistant-teaching-practice.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 11773,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated teaching workspace: explicit cancellation, original-model retry and Escape preserve source and restore focus",
+      "file": "assistant-teaching-practice.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 21239,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated teaching workspace: actual adult-answer tabs preserve conflicting complete reasons before explicit comparison",
+      "file": "assistant-teaching-practice.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 11590,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: explicit source and separate adoption and sharing preserve six actual learner reasons at 320",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 33200,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: explicit source and separate adoption and sharing preserve six actual learner reasons at 390",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 32723,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: explicit source and separate adoption and sharing preserve six actual learner reasons at 768",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 35018,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: explicit source and separate adoption and sharing preserve six actual learner reasons at 1440",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 37009,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: a lost sharing acknowledgement retains the complete original instruction and key across reload",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 17954,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: guardian withdrawal keeps the actual first answer and full unsubmitted correction readonly",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 23225,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: disabled storage downloads the complete reason and original withdrawal before sending",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 15441,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: the exact lost child-start receipt survives reload and creates only one original activity",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 18281,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: one lost first-answer receipt keeps the original reason separate from complete later edits",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 20939,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: a delayed pre-withdrawal activity read cannot restore write controls after the confirmed new state",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 13514,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: two actual guardian tabs keep the losing original complete withdrawal reason",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 11659,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: disabled storage protects a full unsent answer and reason before changing the original question",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 12183,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "generated child teaching: conflicting object parameters and revoked learning identity stop reads and keep the prior complete copy private",
+      "file": "assistant-teaching-sharing.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 12394,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "unsaved-stage navigation asks to preserve work and unavailable AI leaves the saved artifact usable",
+      "file": "course-project.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3290,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "an oversized saved project keeps its full text while the learner explicitly narrows the AI advice scope",
+      "file": "project-files.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3341,
+          "failure": false
+        }
+      ]
+    }
+  ]
+}

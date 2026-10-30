@@ -1,4 +1,8 @@
+import type { GuidanceIntentRecord } from '../modules/learning/assistant-guidance-record';
 import type { AssistantPracticeGroupStartRecord } from '../modules/learning/assistant-practice-learner-record';
+import type { TeachingDraftRecord,TeachingPracticeRecord } from '../modules/learning/assistant-teaching-record';
+import type { TeachingSessionRecord } from '../modules/learning/assistant-teaching-student-record';
+import type { TeachingAssignmentRecord } from '../modules/learning/assistant-teaching-assignment-record';
 import type { AssistantPracticeWithdrawalRecord } from '../modules/learning/assistant-practice-withdrawal-record';
 import type { AssistantPracticeAssignmentRecord } from '../modules/learning/assistant-practice-assignment-record';
 import type { TeachingToolRunRecord } from '../modules/ai/teaching-tool-record';
@@ -413,6 +417,11 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   assistantMessages: AssistantMessage[] = [];
   assistantArtifactDrafts: AssistantNoteRecord[] = [];
   assistantPracticeArtifacts: AssistantPracticeArtifactRecord[] = [];
+  assistantGuidanceIntents: GuidanceIntentRecord[] = [];
+  assistantTeachingPracticeDrafts: TeachingDraftRecord[] = [];
+  assistantTeachingPractices: TeachingPracticeRecord[] = [];
+  assistantTeachingSessions: TeachingSessionRecord[] = [];
+  assistantTeachingAssignments: TeachingAssignmentRecord[] = [];
   assistantPracticeAssignments: AssistantPracticeAssignmentRecord[] = [];
   assistantPracticeAssignmentWithdrawals: AssistantPracticeWithdrawalRecord[] = [];
   assistantPracticeGroupStarts: AssistantPracticeGroupStartRecord[] = [];
@@ -527,6 +536,11 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.assistantMessages = [];
     this.assistantArtifactDrafts = [];
     this.assistantPracticeArtifacts = [];
+    this.assistantGuidanceIntents = [];
+    this.assistantTeachingPracticeDrafts = [];
+    this.assistantTeachingPractices = [];
+    this.assistantTeachingSessions = [];
+    this.assistantTeachingAssignments = [];
     this.assistantPracticeAssignments = [];
     this.assistantPracticeAssignmentWithdrawals = [];
     this.assistantPracticeGroupStarts = [];

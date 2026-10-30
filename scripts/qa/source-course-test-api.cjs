@@ -17,6 +17,7 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
   const originalReply=provider.reply.bind(provider),turnAttempts=new Map();
   const ordinaryReply=require('./assistant-turn-fixture.cjs').installAssistantTurnFixture(app);
   require('./assistant-practice-fixture.cjs').installAssistantPracticeFixture(app);
+  const generatedTeachingReply=require('./assistant-teaching-fixture.cjs').installAssistantTeachingFixture(app);
   const guidanceReply=require('./guidance-model-fixture.cjs').installGuidanceModelFixture(app);
   const sourceCheckReply=require('./source-check-fixture.cjs').installSourceCheckFixture(app);
   const topicReply=require('./topic-whiteboard-fixture.cjs').installTopicWhiteboardFixture(app);
@@ -39,6 +40,7 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
     return{...payload,modelId:input.modelId,modelName:'Synthetic classroom fixture'};
   };
   provider.structured=async(input,schema,check,custom=true)=>{
+    const generatedTeaching=await generatedTeachingReply(input,check);if(generatedTeaching)return generatedTeaching;
     const sourceWhiteboard=await assistantWhiteboardReply(input,check);if(sourceWhiteboard)return sourceWhiteboard;
     const teaching=await teachingReply(input,check);if(teaching)return teaching;
     const question=await whiteboardQuestionReply(input,check);if(question)return question;

@@ -1,3 +1,4 @@
+import { assertAssistantGuidanceRecords } from '../modules/learning/assistant-guidance-integrity';
 import { ConflictException } from '@nestjs/common';
 import { DatabaseSync } from 'node:sqlite';
 import { mkdirSync } from 'node:fs';
@@ -9,6 +10,7 @@ import { DomainSelector, ReadDependency, identity as recordId, compileSelector, 
 import { serializeSqlite, sqliteQueueKey } from './sqlite-serialization';
 import { assertAssistantWhiteboardRecords } from '../modules/learning/assistant-whiteboard-integrity';
 import { assertAssistantPracticeRecords } from '../modules/learning/assistant-practice-integrity';
+import { assertAssistantTeachingRecords } from '../modules/learning/assistant-teaching-integrity';
 import { DomainWriteConflict } from './domain-write-conflict';
 
 export type DomainState = Record<string, unknown[]>;
@@ -227,6 +229,22 @@ export class DomainDatabase {
       { name: 'assistant_practice_withdrawal_assignment', collection: 'assistantPracticeAssignmentWithdrawals', fields: ['assignmentId'] },
       { name: 'assistant_practice_withdrawal_request', collection: 'assistantPracticeAssignmentWithdrawals', fields: ['actorFingerprint', 'requestKey'] },
     ], `UPDATE study_restore_guard SET state='ready-schema25',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema24';`);
+    const teachingSql="SELECT collection,record_id,body FROM domain_records WHERE collection IN ('assistantSessions','users','students','privacyRequests','assistantTeachingPracticeDrafts','assistantTeachingPractices','assistantTeachingAssignments','assistantTeachingSessions')";
+    const teachingRows=this.sqlite?this.sqlite.prepare(teachingSql).all():(await this.postgres!.query(teachingSql)).rows;
+    assertAssistantTeachingRecords(teachingRows as Array<{collection:string;record_id:string;body:unknown}>);
+    await this.migrateConstraints(26,[
+      {name:'assistant_teaching_draft_request',collection:'assistantTeachingPracticeDrafts',fields:['ownerUserId','requestKey']},
+      {name:'assistant_teaching_adopted_draft',collection:'assistantTeachingPractices',fields:['sourceDraftId']},
+      {name:'assistant_teaching_self_unique',collection:'assistantTeachingSessions',fields:['ownerUserId','practiceId'],protocol:'assistant-generated-self-session-v1'},
+      {name:'assistant_teaching_student_assignment',collection:'assistantTeachingSessions',fields:['assignmentId'],protocol:'assistant-generated-student-session-v1'},
+      {name:'assistant_teaching_assignment_request',collection:'assistantTeachingAssignments',fields:['publisherFingerprint','requestKey']},
+      {name:'assistant_teaching_withdrawal_request',collection:'assistantTeachingAssignments',fields:['withdrawal.actorFingerprint','withdrawal.input.requestKey']},
+      {name:'assistant_teaching_self_request',collection:'assistantTeachingSessions',fields:['ownerUserId','requestKey']},
+    ],`UPDATE study_restore_guard SET state='ready-schema26',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema25';`);
+    const guidanceSql="SELECT collection,record_id,body FROM domain_records WHERE collection IN ('assistantGuidanceIntents','users','students','assistantSessions','assistantMessages','diagnosticSessions','diagnosticReports','diagnosticResponses','diagnosticPlans','guidancePlanRevisions')";
+    const guidanceRows=this.sqlite?this.sqlite.prepare(guidanceSql).all():(await this.postgres!.query(guidanceSql)).rows;
+    assertAssistantGuidanceRecords(guidanceRows as Array<{collection:string;record_id:string;body:unknown}>);
+    await this.migrateConstraints(27,[{name:'assistant_guidance_intent_request',collection:'assistantGuidanceIntents',fields:['ownerUserId','requestKey']}],`UPDATE study_restore_guard SET state='ready-schema27',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema26';`);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now, this.sqlite && sqliteQueueKey(this.location));
     await this.tasks.open();
     this.limits = new RateLimitRepository(this.tasks, this.sqlite, this.postgres, this.now);
@@ -237,26 +255,26 @@ export class DomainDatabase {
     if (this.sqlite) {
       const table = this.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='study_restore_guard'").get();
       if (table) state = (this.sqlite.prepare('SELECT state FROM study_restore_guard WHERE id=1').get() as { state?: string } | undefined)?.state ?? 'missing';
-      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25'].includes(state)) throw new Error('Database restoration is incomplete');
+      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27'].includes(state)) throw new Error('Database restoration is incomplete');
       if (this.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='schema_migrations'").get())
         version = Number((this.sqlite.prepare('SELECT MAX(version) version FROM schema_migrations').get() as { version?: number }).version ?? 0);
     } else {
       if ((await this.postgres!.query("SELECT to_regclass('study_restore_guard') AS name")).rows[0].name)
         state = (await this.postgres!.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state ?? 'missing';
-      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25'].includes(state)) throw new Error('Database restoration is incomplete');
+      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27'].includes(state)) throw new Error('Database restoration is incomplete');
       if ((await this.postgres!.query("SELECT to_regclass('schema_migrations') AS name")).rows[0].name)
         version = Number((await this.postgres!.query('SELECT MAX(version) version FROM schema_migrations')).rows[0]?.version ?? 0);
     }
-    if (version > 25) throw new Error('unsupported_database_schema');
-    const expected = version === 25 ? 'ready-schema25' : version === 24 ? 'ready-schema24' : version === 23 ? 'ready-schema23' : 'ready';
+    if (version > 27) throw new Error('unsupported_database_schema');
+    const expected = version === 27 ? 'ready-schema27' : version === 26 ? 'ready-schema26' : version === 25 ? 'ready-schema25' : version === 24 ? 'ready-schema24' : version === 23 ? 'ready-schema23' : 'ready';
     if (state !== undefined && state !== expected || version >= 23 && state !== expected) throw new Error('minimum_reader_guard_mismatch');
   }
 
-  private async migrateConstraints(version: number, constraints: Array<{ name: string; collection: string; fields: string[]; pending?: boolean }>, extraSql = '') {
+  private async migrateConstraints(version: number, constraints: Array<{ name: string; collection: string; fields: string[]; pending?: boolean; protocol?: 'assistant-generated-self-session-v1'|'assistant-generated-student-session-v1' }>, extraSql = '') {
     const indexes = (postgres: boolean) => constraints.map(index => {
       const extract = (field: string) => postgres ? `(body#>>'{${field.split('.').join(',')}}')` : `json_extract(body,'$.${field}')`;
       return `CREATE UNIQUE INDEX IF NOT EXISTS ${index.name} ON domain_records(${index.fields.map(extract).join(',')})
-        WHERE collection='${index.collection}'${index.pending ? ` AND ${extract('status')}='pending'` : ''}`;
+        WHERE collection='${index.collection}'${index.pending ? ` AND ${extract('status')}='pending'` : ''}${index.protocol ? ` AND ${extract('protocol')}='${index.protocol}'` : ''}`;
     }).join(';');
     if (this.sqlite) {
       this.sqlite.exec('BEGIN IMMEDIATE');

@@ -1,0 +1,85 @@
+{
+  "stats": {
+    "startTime": "2026-10-30T06:29:34.852Z",
+    "duration": 115138.878,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "guidance operations: a lost original activation survives reload and creates the original four delayed tasks per action",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7445,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: the original paused receipt stays separate from a later active plan",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6264,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: two complete forms require both actual downloads before leaving with unavailable storage",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6164,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: complete retrospective input restores and cannot be acknowledged without actual independent followup evidence",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6042,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: actual completed independent followup supports an exact lost retrospective command while uncertainty stays explicit",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6219,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: an older matching plan is found behind a newer unrelated report and opens its durable plan route",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "timedOut",
+          "durationMs": 60761,
+          "failure": true
+        }
+      ]
+    }
+  ]
+}

@@ -14,12 +14,18 @@ import { WorkspaceDialog } from '../app/studio/workspace-dialog';
 import { QuestionRenderer,createEmptyAnswerPayload } from './question-renderer';
 import { PracticeCopyControls } from './practice-copy-controls';
 import { useOriginalTeachingFonts } from '../lib/original-teaching-fonts';
+import { AssistantGeneratedPracticesPanel } from './assistant-generated-practices';
 import './assistant-notes.css';
 import '../app/studio/tasks/conversation-practice.css';
 
-type Props={ownerId:string;studentId:string|null;subject:Subject|null;sessionId:string;initialIds:string[];messages:AssistantHistoryMessage[];hasOlder:boolean;loadOlder:()=>Promise<void>;searchMessages:(query:string)=>Promise<void>;resetMessages:()=>Promise<void>;onClose:()=>void;onLocate:(id:string)=>void};
+export type AssistantPracticeSourceProps={ownerId:string;studentId:string|null;subject:Subject|null;sessionId:string;initialIds:string[];messages:AssistantHistoryMessage[];hasOlder:boolean;loadOlder:()=>Promise<void>;searchMessages:(query:string)=>Promise<void>;resetMessages:()=>Promise<void>;onClose:()=>void;onLocate:(id:string)=>void};
+type Props=AssistantPracticeSourceProps&{onSwitchAudience?:()=>void;onSwitchGenerated?:()=>void};
 type Pending=NonNullable<PreparationCopy['pending']>;
 export function AssistantPracticesPanel(props:Props){
+ const[mode,setMode]=React.useState<'adult'|'student'|'reviewed'>(props.studentId?'reviewed':'adult');
+ return mode!=='reviewed'?<AssistantGeneratedPracticesPanel {...props} audienceMode={mode} onSwitchAudience={()=>setMode('reviewed')}/>:<ReviewedPracticesPanel {...props} onSwitchGenerated={()=>setMode('student')} onSwitchAudience={!props.studentId?()=>setMode('adult'):undefined}/>;
+}
+function ReviewedPracticesPanel(props:Props){
  const source='/ai/assistant/sessions/'+encodeURIComponent(props.sessionId)+'/artifacts/practice',artifacts='/learning/assistant-practice/artifacts';
  const initial:PreparationCopy={format:'assistant-practice-workspace-copy-v1',phase:'prepare',ownerId:props.ownerId,sourceSessionId:props.sessionId,form:{messageIds:props.initialIds,includeLinkedQuestions:false,studentId:props.studentId??'',subject:props.subject??'math',atomIds:[],objective:'用原题练习关键条件，并说明判断理由',acknowledgeHistoricalSource:false,acknowledgeAudienceTransfer:false},title:'',instructions:'',artifactId:null,artifactRevision:null,artifactFingerprint:null,assignmentId:null,pending:null};
  const decode=(value:unknown)=>{const copy=preparationCopySchema.parse(value);if(copy.ownerId!==props.ownerId||copy.sourceSessionId!==props.sessionId||props.studentId&&copy.form.studentId!==props.studentId)throw Error('副本不属于当前账号、原对话或学习档案。');return copy;};
@@ -62,7 +68,7 @@ export function AssistantPracticesPanel(props:Props){
  if(!copy||!form)return null;
  const locked=busy||!!copy.pending,sourceLocked=locked||!!copy.artifactId,selected=form.messageIds;
  return createPortal(<WorkspaceDialog onClose={close}><div className="assistant-notes-overlay"><section role="dialog" aria-modal="true" aria-label="对话练习安排" className="assistant-notes-sheet cp-preparation-sheet" data-original-font-status={fonts.ready?'ready':fonts.error?'error':'loading'}>
- <header><div><small>EXPLAIN · PRACTICE · REASON</small><h2>把这次解释，练明白。</h2><p>核对来源与知识点，保留孩子自己的答案和理由。</p></div><button type="button" aria-label="关闭对话练习" onClick={close}>×</button></header>
+ <header><div><small>EXPLAIN · PRACTICE · REASON</small><h2>把这次解释，练明白。</h2><p>核对来源与知识点，保留孩子自己的答案和理由。</p>{props.onSwitchAudience&&<button disabled={busy} onClick={()=>local.request(props.onSwitchAudience!)}>切换为本人独立练习</button>}{props.onSwitchGenerated&&<button disabled={busy} onClick={()=>local.request(props.onSwitchGenerated!)}>改用AI教学稿</button>}</div><button type="button" aria-label="关闭对话练习" onClick={close}>×</button></header>
  <nav><button disabled={busy} aria-pressed={mode==='source'} onClick={()=>setMode('source')}>选择与安排</button><button disabled={busy} aria-pressed={mode==='list'} onClick={()=>{setMode('list');void loadList();}}>原会话练习</button><button disabled={busy} onClick={()=>{if(local.preserve()){local.update(initial);setArtifact(null);setPreview(null);setMode('source');}}}>另起一份练习</button></nav>
  <PracticeCopyControls local={local} busy={busy} renderCopy={value=><><p>{value.form.objective}</p><p>{value.form.messageIds.length}条来源 · {value.form.atomIds.join('、')}</p><p>{value.title}</p><p>{value.instructions}</p><p>{value.pending?'包含尚待确认的原操作':'没有待确认操作'}</p></>}/>
  {error&&<p className="assistant-notes-error" role="alert">{error}</p>}{copy.pending&&<aside className="assistant-notes-pending" aria-label="练习原安排操作"><h3>原操作结果尚待确认</h3><p>继续时保留原来源、目标、说明和版本。</p><button disabled={busy||local.unsafe} onClick={()=>void execute(copy.pending!)}>核对并继续原候选操作</button></aside>}

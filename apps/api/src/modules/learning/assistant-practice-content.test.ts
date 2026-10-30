@@ -58,6 +58,9 @@ function rehash(prepared: PreparedAssistantPractice) {
 function studentContent() { const value = content(); value.questions[0].targetAtomIds = ['atom-one']; value.questions[1].targetAtomIds = ['atom-two']; return value; }
 
 describe('source-bound teaching practice pure protocol', () => {
+  it('preserves Auto as the original intent while freezing a real model for strict cold replay', () => {
+    const f=fixture();f.input.modelId='auto';const prepared=f.prepare();expect(prepared.input.modelId).toBe('auto');expect(prepared.modelId).toBe(model.id);const stored=JSON.parse(JSON.stringify(prepared));expect(()=>assertPreparedAssistantPractice(stored)).not.toThrow();expect(stored).toEqual(prepared);
+  });
   it('keeps full selected source, code, formula and table separate from the short objective without mutating inputs', () => {
     const f = fixture(); f.origin.messages[1].content += '\n完整原文。'.repeat(500) + 'SOURCE_END_MARKER';
     f.origin.messages[1].contentSha256 = createHash('sha256').update(f.origin.messages[1].content).digest('hex');

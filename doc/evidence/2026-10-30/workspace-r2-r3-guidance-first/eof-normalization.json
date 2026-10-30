@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-30T07:54:44.317Z",
+  "failure": "Initial git diff --cached --check rejected nine newly added blank EOF lines; original staged-scope and credential scan retained.",
+  "changes": [
+    {
+      "path": "apps/api/src/infrastructure/schema26-reader.integration.test.ts",
+      "testedSha256": "c63a1f0397fc0dcc656044e2cf00afc0cdee04b3210bec666db0c4be1fed8060",
+      "mainSha256": "106873a82d10406c14ce3ad69ac1c2b182d56c8864d6cdaa153c71ff8c98149a",
+      "change": "Only final newline sequence normalized to one LF; source/tests and semantic text unchanged."
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema27-reader.integration.test.ts",
+      "testedSha256": "ce07d4ec96bc1ac3b51913a97a02e88b6aa4a24d40c7b2322e090b72da64da52",
+      "mainSha256": "ebb10401dc3a5509156d4f33a80c225afccfca0b724fcd3a6a56dd5416c59497",
+      "change": "Only final newline sequence normalized to one LF; source/tests and semantic text unchanged."
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-guidance.integration.test.ts",
+      "testedSha256": "072eb0f4cb25fa546b6f4a6a953133728d3a1d3c85602833efcab368c7aa9e71",
+      "mainSha256": "7f9690875271d9f2a8139aadcd4c52d39c1e0eadf1cd369c0dc804d20985ff3c",
+      "change": "Only final newline sequence normalized to one LF; source/tests and semantic text unchanged."
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-self-record.ts",
+      "testedSha256": "073da9174c0f86f6d211bf97578acb7d367bac48bf09cd5dc40d3a2e6e817327",
+      "mainSha256": "04b2fe5398d9d9752a8f741a400c2f4e5be5c27509efd4885730e4e05ff04190",
+      "change": "Only final newline sequence normalized to one LF; source/tests and semantic text unchanged."
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-self.integration.test.ts",
+      "testedSha256": "fa988fd9f2b1f838d064f62ac5d4eb45cce4d531c4ab93e4ca48dd1702acd52a",
+      "mainSha256": "0a5e9ea8f6d28d78499f5322189ac1a18734fd3cabc147d5e96eedaaea6c037e",
+      "change": "Only final newline sequence normalized to one LF; source/tests and semantic text unchanged."
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-sharing.integration.test.ts",
+      "testedSha256": "f29169d4edb784cf612f4829990ddd28a3d427abdcdca67a89ca93b3251ef92b",
+      "mainSha256": "fb311a3641e8432a832c066efae2c85b86b7945b8ee0a9521ac6e74ad26af2cd",
+      "change": "Only final newline sequence normalized to one LF; source/tests and semantic text unchanged."
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching.integration.test.ts",
+      "testedSha256": "a52615e646bde275f3b8257cc9c6ec3630ab4d4175b48274407645e4348f7f09",
+      "mainSha256": "cb4aebbe25ad7bf138db9367fda501d8d2dc98ba5248389b0245b9e883e0083a",
+      "change": "Only final newline sequence normalized to one LF; source/tests and semantic text unchanged."
+    },
+    {
+      "path": "apps/web/app/studio/tasks/student-teaching-practice.tsx",
+      "testedSha256": "516c83c0b642ec8431206e758fb18b43c686716fa1c304296a654ef2d162da9d",
+      "mainSha256": "d589b020a6a2876092970ab217b2f1503db164b2c66cdef8c4969d5b41e033ab",
+      "change": "Only final newline sequence normalized to one LF; source/tests and semantic text unchanged."
+    },
+    {
+      "path": "apps/web/app/studio/tasks/teaching-practice.tsx",
+      "testedSha256": "38de7cc76dc8b4980be6aa20237e43d62345808419eb4d1577b4cc101e355f3e",
+      "mainSha256": "0b6ebf622f390818c66c967e660a9fef5c8c3cc717843e8f0808e3d8a2b95e9c",
+      "change": "Only final newline sequence normalized to one LF; source/tests and semantic text unchanged."
+    }
+  ],
+  "limits": "Final frozen runtime sources remain untouched. No behavior, test assertion or substantive code was changed; full regression gates remain for that exact frozen source."
+}

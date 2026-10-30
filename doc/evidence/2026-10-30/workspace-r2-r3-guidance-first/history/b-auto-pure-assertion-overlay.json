@@ -1,0 +1,6 @@
+{
+  "path": "apps/api/src/modules/learning/assistant-practice-content.test.ts",
+  "beforeSha256": "bb1794a678208bec5d9dd8a4bf8b8745e795305ffb7e65f22391f93f989577b7",
+  "afterSha256": "b47f2ec626e8a49ae2a8fe548a1f9dbc3609b6bc062e6b982b168bf64cd971a9",
+  "reason": "The strict assertPrepared helper returns void after validation. The original new test compared its return to the prepared object. Validate a serialized object without throwing, then separately verify that the complete stored value remains equal. The15 actual generation/self HTTP cases already passed in the first batch."
+}

@@ -1,0 +1,15 @@
+{
+  "files": [
+    {
+      "path": "apps/web/app/studio/tasks/tasks.tsx",
+      "beforeSha256": "c108ba2ec0b60a1f0e2ef32b7550897ff361e460ebf272e4b8de6a51100e4181",
+      "afterSha256": "98b5d26d81a1679167d8e213902474c1e4c249d487a420e0a9386257ba72ae58"
+    },
+    {
+      "path": "apps/web/app/studio/tasks/conversation-practice.tsx",
+      "beforeSha256": "72cb3b5c69693f8878f56bb3605d9ba160c188c451f51d5e5daeaf6f2b1c528b",
+      "afterSha256": "f5316b618fe670e30c1fb848507a024848f9be6e74d9c5b302573e0b82e01ca5"
+    }
+  ],
+  "reason": "The new import must follow the use-client directive so the inherited interactive task components keep their client boundary. The original failed build log is preserved."
+}

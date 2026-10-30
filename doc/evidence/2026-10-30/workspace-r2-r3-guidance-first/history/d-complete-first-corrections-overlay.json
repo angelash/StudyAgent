@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-30T04:53:22.976Z",
+  "changes": [
+    {
+      "path": "apps/api/src/modules/learning/assistant-guidance.integration.test.ts",
+      "beforeSha256": "4652e846d4b64bab26825b57ac9c6e4f458b64d0b70e96f2d631c75ce8eae418",
+      "afterSha256": "3511ee84344bc98b521a849e6a363d4d5105b9cbf081f1fd49d7acdaeaba76e7"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching.integration.test.ts",
+      "beforeSha256": "e22aa794fbb70a2b2990bfb18480a067e211fc833f0b549f15d5aeec05aa2b39",
+      "afterSha256": "a52615e646bde275f3b8257cc9c6ec3630ab4d4175b48274407645e4348f7f09"
+    },
+    {
+      "path": "scripts/qa/assistant-teaching-fixture.cjs",
+      "beforeSha256": "a52483aa1608394d6125fab00e0baa195448d52cbc1f893ffe5bc44fe138bc54",
+      "afterSha256": "8690a59d35b86efe9b272a2ad0b68577156b33c4d502ada2c945190414ea259d"
+    }
+  ],
+  "reason": "Preserve first complete API1999/6/86. Correct current-schema27 assertion, isolate deliberately changed global definition before the next independent learning-code case, expect private404, and inherit the independently demonstrated scoped teaching browser capability. No production API behavior changes. The120-page timeout/cascading PDF cases require a fresh original test run and lower full-run concurrency, not a relaxed content assertion."
+}

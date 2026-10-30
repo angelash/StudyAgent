@@ -76,7 +76,7 @@ export function prepareAssistantTeachingPractice(origin: AssistantArtifactOrigin
   scopeValue: AssistantPracticeTargetScope, model: { id: string; label: string }, available: boolean): PreparedAssistantPractice {
   const input = assistantPracticeContentInputSchema.parse(value), targetScope = assistantPracticeTargetScopeSchema.parse(scopeValue);
   if (typeof model.id !== 'string' || !model.id.trim() || model.id.length > 180 || typeof model.label !== 'string' || !model.label.trim()
-    || model.label.length > 200 || input.modelId !== undefined && input.modelId !== model.id) fail('model_mismatch');
+    || model.label.length > 200 || input.modelId !== undefined && input.modelId !== 'auto' && input.modelId !== model.id) fail('model_mismatch');
   const source = assistantPracticeSourceIdentity(origin, input, targetScope);
   const context = serialize({ protocol: ASSISTANT_PRACTICE_CONTENT_PROTOCOL, input,
     origin: stableAssistantWhiteboardOrigin(origin), targetScope, modelId: model.id, modelName: model.label });

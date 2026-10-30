@@ -1,3 +1,4 @@
+import { teachingAssignmentView,type TeachingAssignmentRecord } from '../learning/assistant-teaching-assignment-record';
 import { createHash } from 'node:crypto';
 import type { PrivacyCounts } from '@study-agent/contracts';
 import type { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
@@ -60,6 +61,11 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   add(result, store, 'assistantTurns', row => assistants.has(row.sessionId));
   add(result, store, 'assistantArtifactDrafts', row => row.studentId === studentId || assistants.has(row.sessionId));
   add(result, store, 'assistantPracticeArtifacts', row => row.studentId === studentId || assistants.has(row.sourceSessionId));
+  add(result, store, 'assistantTeachingPracticeDrafts', row => row.studentId === studentId || assistants.has(row.sourceSessionId));
+  add(result, store, 'assistantGuidanceIntents', row => row.studentId===studentId||assistants.has(row.sourceSessionId));
+  add(result, store, 'assistantTeachingPractices', row => row.studentId === studentId);
+  add(result, store, 'assistantTeachingAssignments', row => row.studentId === studentId);
+  add(result, store, 'assistantTeachingSessions', row => row.studentId === studentId);
   add(result, store, 'aiInsights', row => row.studentId === studentId || assistants.has(row.sourceId) || assessments.has(row.sourceId) || missions.has(row.sourceId));
   const allIds = new Set(Object.values(result).flat().map(recordId).filter(Boolean));
   add(result, store, 'events', row => hasReference(row.payload, allIds));
@@ -103,6 +109,10 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'assistantTurns', row => sessions.has(row.sessionId));
   add(result, store, 'assistantArtifactDrafts', row => row.ownerUserId === actorId || sessions.has(row.sessionId));
   add(result, store, 'assistantPracticeArtifacts', row => row.ownerUserId === actorId || sessions.has(row.sourceSessionId));
+  add(result, store, 'assistantTeachingPracticeDrafts', row => row.ownerUserId === actorId || sessions.has(row.sourceSessionId));
+  add(result, store, 'assistantGuidanceIntents', row => row.ownerUserId===actorId||sessions.has(row.sourceSessionId));
+  add(result, store, 'assistantTeachingPractices', row => row.ownerUserId === actorId);
+  add(result, store, 'assistantTeachingSessions', row => row.ownerUserId === actorId);
   add(result, store, 'guidanceModelSuggestions', row => row.ownerUserId === actorId);
   add(result, store, 'teachingToolRuns', row => row.ownerUserId === actorId);
   add(result, store, 'aiInsights', row => sessions.has(row.sourceId));
@@ -121,7 +131,7 @@ export function selectionCounts(selected: Selection): PrivacyCounts {
   const count = (...names: string[]) => names.reduce((sum, name) => sum + (selected[name]?.length ?? 0), 0);
   return { records: Object.values(selected).reduce((sum, records) => sum + records.length, 0),
     observations: count('diagnosticResponses', 'practiceAttempts', 'assessmentAnswers', 'missionAnswers'),
-    activities: count('diagnosticSessions', 'practiceSessions', 'assistantPracticeAssignments', 'assessments', 'missions'), plans: count('diagnosticPlans', 'studyPlans', 'reviewTasks', 'guidancePlanRevisions', 'guidanceModelSuggestions', 'gespGuidancePlans', 'gespGuidancePlanRevisions', 'gespReviewTasks'),
+    activities: count('diagnosticSessions', 'practiceSessions', 'assistantTeachingAssignments', 'assistantTeachingSessions', 'assistantPracticeAssignments', 'assessments', 'missions'), plans: count('diagnosticPlans', 'studyPlans', 'reviewTasks', 'guidancePlanRevisions', 'guidanceModelSuggestions', 'gespGuidancePlans', 'gespGuidancePlanRevisions', 'gespReviewTasks'),
     conversations: count('assistantMessages', 'assistantTurns', 'whiteboardQuestionTurns', 'teachingToolRuns'), accessRecords: count('users', 'sessions', 'bindings', 'studentLearningAccess', 'studentLearningCodes', 'studentInvitations', 'teacherAssignments') };
 }
 export function selectionFingerprint(selection: Selection, context: unknown) {
@@ -140,6 +150,10 @@ export function removeSelected(store: InMemoryStoreService, selection: Selection
     row.publisherUserId = null; row.privateOrigin = null; row.sourceState = 'account_deleted';
   }
   for (const row of rows(store, 'assistantPracticeAssignmentWithdrawals')) if (removedUsers.has(row.actorUserId)) row.actorUserId = null;
+  for (const row of rows(store, 'assistantTeachingAssignments')) {
+    if (removedUsers.has(row.publisherUserId)) { row.publisherUserId=null; row.privateOrigin=null; }
+    if (row.withdrawal && removedUsers.has(row.withdrawal.actorUserId)) row.withdrawal.actorUserId=null;
+  }
   if (removedPaperPractice.size) {
     for (const row of rows(store, 'paperPracticeSessions')) if (row.origin && removedPaperPractice.has(row.origin.sessionId)) delete row.origin;
     for (const row of rows(store, 'diagnosticBlueprints')) if (row.paperReviewOrigin && removedPaperPractice.has(row.paperReviewOrigin.sessionId)) delete row.paperReviewOrigin;
@@ -186,6 +200,11 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if (name === 'assistantPracticeArtifacts') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student'))
       .map(row => reviewedPracticePortableView(row as AssistantPracticeArtifactRecord));
+    else if(name==='assistantGuidanceIntents')result[name]=records.filter(row=>row.ownerUserId===actorId||(selected.users??[]).some(user=>user.id===row.ownerUserId&&user.role==='student')).map(({id,sourceSessionId,studentId,subject,sourceInput,observation,report,plan,revision,createdAt,updatedAt})=>({id,sourceSessionId,studentId,subject,objective:sourceInput.objective,observation,reportSessionId:report?.sessionId??null,reportVersion:report?.reportVersion??null,planId:plan?.planId??null,revision,createdAt,updatedAt,isObservationOnly:true,formalEvidenceCreated:false}));
+    else if(name==='assistantTeachingPracticeDrafts')result[name]=records.filter(row=>row.ownerUserId===actorId||(selected.users??[]).some(user=>user.id===row.ownerUserId&&user.role==='student')).map(row=>({id:row.id,sourceSessionId:row.sourceSessionId,studentId:row.studentId,subject:row.subject,objective:row.prepared.input.objective,modelId:row.prepared.modelId,modelName:row.modelName,status:row.status,revision:row.revision,originalContent:row.originalContent,content:row.content,contentVersion:row.contentVersion,review:row.review,teacherReviewStatus:'pending',isTeachingOnly:true,formalEvidenceCreated:false,createdAt:row.createdAt,updatedAt:row.updatedAt}));
+    else if(name==='assistantTeachingPractices')result[name]=records.filter(row=>row.ownerUserId===actorId||(selected.users??[]).some(user=>user.id===row.ownerUserId&&user.role==='student')).map(({id,sourceDraftId,studentId,subject,content,contentFingerprint,targetScope,modelId,modelName,review,createdAt})=>({id,sourceDraftId,studentId,subject,content,contentFingerprint,targetScope,modelId,modelName,review,createdAt,teacherReviewStatus:'pending',isTeachingOnly:true,formalEvidenceCreated:false,independentFirstPass:0}));
+    else if(name==='assistantTeachingAssignments')result[name]=records.map(row=>teachingAssignmentView(row as TeachingAssignmentRecord));
+    else if(name==='assistantTeachingSessions')result[name]=records.filter(row=>row.ownerUserId===actorId||row.studentId&&(selected.students??[]).some(student=>student.id===row.studentId)).map(row=>{const {id,practiceId,status,contentSnapshot,contentFingerprint,drafts,attempts,helps,createdAt,updatedAt,completedAt}=row;if(row.protocol==='assistant-generated-student-session-v1')return{id,assignmentId:row.assignmentId,studentId:row.studentId,subject:row.subject,status,contentSnapshot:{protocol:contentSnapshot.protocol,title:contentSnapshot.title,objective:contentSnapshot.objective,questions:contentSnapshot.questions.map(({sourceMap:_sourceMap,...question}:any)=>question)},drafts,attempts,helps,createdAt,updatedAt,completedAt,isTeachingOnly:true,formalEvidenceCreated:false,independentFirstPass:0};return{id,practiceId,status,contentSnapshot,contentFingerprint,drafts,attempts,helps,createdAt,updatedAt,completedAt,isTeachingOnly:true,formalEvidenceCreated:false,independentFirstPass:0};});
     else if (name === 'assistantTurns') result[name] = records.filter(row => allowedAssistants.has(row.sessionId))
       .map(({prepared:_prepared,authorization:_auth,inputHash:_hash,commandHash:_command,taskId:_task,...row})=>row);
     else if (name === 'teachingToolRuns') result[name] = records.filter(row => row.ownerUserId === actorId)
@@ -251,6 +270,7 @@ export function anonymizeSharedAttribution(store: InMemoryStoreService, studentI
     const affected = new Set(records.map(recordId));
     (store as unknown as Record<string, Row[]>)[name] = rows(store, name).map(row => {
       if (!affected.has(recordId(row))) return row;
+      if (name === 'assistantTeachingAssignments') return row;
       if (name === 'assistantPracticeAssignments') return row;
       if (name === 'assistantPracticeAssignmentWithdrawals') return row;
       if (name === 'assistantPracticeGroupStarts' || name === 'practiceSessions' && row.origin === 'assistant_artifact'

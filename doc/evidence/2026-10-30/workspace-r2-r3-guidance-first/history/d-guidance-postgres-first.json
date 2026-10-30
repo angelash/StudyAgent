@@ -1,0 +1,83 @@
+{
+  "numTotalTests": 15,
+  "numPassedTests": 15,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "schema27-reader.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "sqlite actual schema26 reader fence for schema27 migrates actual26 without rewriting business records and the unmodified old reader refuses27 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema26 reader fence for schema27 migrates an actual23 database through24,25,26 and27 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema26 reader fence for schema27 rolls back the27 marker and its migration together and leaves the26 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema26 reader fence for schema27 rejects unknown future28 and mismatched or incomplete27 markers without resetting them",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema26 reader fence for schema27 restores a native26 bundle with its old marker, upgrades explicitly and restores native27 with the new minimum reader",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema26 reader fence for schema27 migrates actual26 without rewriting business records and the unmodified old reader refuses27 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema26 reader fence for schema27 migrates an actual23 database through24,25,26 and27 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema26 reader fence for schema27 rolls back the27 marker and its migration together and leaves the26 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema26 reader fence for schema27 rejects unknown future28 and mismatched or incomplete27 markers without resetting them",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "assistant-guidance.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "private source observations, real reports and original guidance plans keeps preflight read-only and saves a full adult observation without child or invented formal evidence",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans rejects cross-author source reads, another guardians private intent and a forged report without creating a plan",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans links actual completed first-response evidence separately from a conversation clue and creates exactly one original proposed rule plan",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans refuses an active report and a revised report version while preserving the original observation and exact report-link receipt",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans commits only one complete observation edit across two actual applications and returns the original winner after later versions",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans cold restores the actual report and created plan link without rewriting source or learning evidence and rejects a recomputed cross-report link",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

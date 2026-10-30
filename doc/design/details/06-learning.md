@@ -1,6 +1,6 @@
 # 06 工作台首页、学习任务、报告与学习记忆 — 详细设计
 
-源码基线：`2f9507bf6f26f4e56f85f2c957178a4cf5d4c4fa`。角色：学生、家长、授权教师。
+源码基线：`c5ae0f66b00096cc080b73eeb47f96a00c018b57`。角色：学生、家长、授权教师。
 
 产品入口：`/`、`/studio`、`/studio/tasks`、`/studio/reports`、`/studio/profiles`、`/studio/settings`、`/learn`、`/parent/dashboard`、`/student/today`。
 
@@ -82,6 +82,150 @@
 - [apps/web/components/practice-withdrawal.tsx](../../../apps/web/components/practice-withdrawal.tsx)
 - [apps/api/src/modules/learning/assistant-practice-withdrawal-record.ts](../../../apps/api/src/modules/learning/assistant-practice-withdrawal-record.ts)
 - [tests/e2e/assistant-practice-withdrawal.spec.ts](../../../tests/e2e/assistant-practice-withdrawal.spec.ts)
+
+## LEARN-09 成人与孩子AI教学的生成复核及本人活动
+
+**输入**：完整私人来源、原受众/范围/定义、固定模型和Auto意图、明确采用及另次共享、本人的完整答案和独立理由。
+
+**处理与实现**：持久任务分别保存生成/复核checkpoint，失败或取消保留原稿及固定模型；完整编辑使旧复核失效，uncertain不采用。成人与学习码本人分别写逐题首答/订正/帮助和完成；孩子共享移除原消息与引用键，档案和教学年级分开，三点六题逐目标保留。原命令恢复、并发、完整副本、撤回、作者匿名删除与最新账本恢复沿独立严格校验。
+
+**输出**：待核查的教学参考、明确共享内容、本人原理由与可定位历史。
+
+**状态与持久化**：`assistantTeachingPracticeDrafts`、`assistantTeachingPractices`、`assistantTeachingAssignments`、`assistantTeachingSessions`
+
+**权限、失败与边界**：所有生成题均isTeachingOnly。最终共同599整站、2007 API及当前PG分解通过；不生成正式分数或独立保持证据。源码27，正式24未部署，R3更多原因/R4～R8及完整72/WS继续。
+
+**关联接口**：
+
+- `POST /api/ai/assistant/sessions/:sessionId/artifacts/practice/generated/preflight` → `AssistantTeachingSourceController.preflight`；[apps/api/src/modules/learning/assistant-teaching.controller.ts:9](../../../apps/api/src/modules/learning/assistant-teaching.controller.ts#L9)。
+- `POST /api/ai/assistant/sessions/:sessionId/artifacts/practice/generated/drafts` → `AssistantTeachingSourceController.create`；[apps/api/src/modules/learning/assistant-teaching.controller.ts:10](../../../apps/api/src/modules/learning/assistant-teaching.controller.ts#L10)。
+- `GET /api/ai/assistant/sessions/:sessionId/artifacts/practice/generated/drafts` → `AssistantTeachingSourceController.list`；[apps/api/src/modules/learning/assistant-teaching.controller.ts:11](../../../apps/api/src/modules/learning/assistant-teaching.controller.ts#L11)。
+- `GET /api/ai/assistant/sessions/:sessionId/artifacts/practice/generated/requests/:key` → `AssistantTeachingSourceController.receipt`；[apps/api/src/modules/learning/assistant-teaching.controller.ts:12](../../../apps/api/src/modules/learning/assistant-teaching.controller.ts#L12)。
+- `GET /api/learning/teaching-practice/drafts/:id` → `AssistantTeachingController.get`；[apps/api/src/modules/learning/assistant-teaching.controller.ts:18](../../../apps/api/src/modules/learning/assistant-teaching.controller.ts#L18)。
+- `GET /api/learning/teaching-practice/drafts/:id/requests/:key` → `AssistantTeachingController.receipt`；[apps/api/src/modules/learning/assistant-teaching.controller.ts:20](../../../apps/api/src/modules/learning/assistant-teaching.controller.ts#L20)。
+- `GET /api/learning/teaching-practice/drafts/:id/source` → `AssistantTeachingController.source`；[apps/api/src/modules/learning/assistant-teaching.controller.ts:19](../../../apps/api/src/modules/learning/assistant-teaching.controller.ts#L19)。
+- `POST /api/learning/teaching-practice/drafts/:id/cancel` → `AssistantTeachingController.cancel`；[apps/api/src/modules/learning/assistant-teaching.controller.ts:22](../../../apps/api/src/modules/learning/assistant-teaching.controller.ts#L22)。
+- `POST /api/learning/teaching-practice/drafts/:id/retry` → `AssistantTeachingController.retry`；[apps/api/src/modules/learning/assistant-teaching.controller.ts:23](../../../apps/api/src/modules/learning/assistant-teaching.controller.ts#L23)。
+- `POST /api/learning/teaching-practice/drafts/:id/review` → `AssistantTeachingController.review`；[apps/api/src/modules/learning/assistant-teaching.controller.ts:24](../../../apps/api/src/modules/learning/assistant-teaching.controller.ts#L24)。
+- `GET /api/learning/teaching-practice/practices/:id` → `AssistantTeachingController.adopted`；[apps/api/src/modules/learning/assistant-teaching.controller.ts:26](../../../apps/api/src/modules/learning/assistant-teaching.controller.ts#L26)。
+- `PATCH /api/learning/teaching-practice/drafts/:id/content` → `AssistantTeachingController.edit`；[apps/api/src/modules/learning/assistant-teaching.controller.ts:21](../../../apps/api/src/modules/learning/assistant-teaching.controller.ts#L21)。
+- `POST /api/learning/teaching-practice/drafts/:id/adopt` → `AssistantTeachingController.adopt`；[apps/api/src/modules/learning/assistant-teaching.controller.ts:25](../../../apps/api/src/modules/learning/assistant-teaching.controller.ts#L25)。
+- `GET /api/learning/teaching-practice/sessions` → `AssistantTeachingSelfController.list`；[apps/api/src/modules/learning/assistant-teaching-self.controller.ts:11](../../../apps/api/src/modules/learning/assistant-teaching-self.controller.ts#L11)。
+- `POST /api/learning/teaching-practice/practices/:id/start` → `AssistantTeachingSelfController.start`；[apps/api/src/modules/learning/assistant-teaching-self.controller.ts:10](../../../apps/api/src/modules/learning/assistant-teaching-self.controller.ts#L10)。
+- `GET /api/learning/teaching-practice/sessions/:id` → `AssistantTeachingSelfController.get`；[apps/api/src/modules/learning/assistant-teaching-self.controller.ts:12](../../../apps/api/src/modules/learning/assistant-teaching-self.controller.ts#L12)。
+- `GET /api/learning/teaching-practice/sessions/:id/questions/:questionId` → `AssistantTeachingSelfController.question`；[apps/api/src/modules/learning/assistant-teaching-self.controller.ts:13](../../../apps/api/src/modules/learning/assistant-teaching-self.controller.ts#L13)。
+- `PATCH /api/learning/teaching-practice/sessions/:id/questions/:questionId/draft` → `AssistantTeachingSelfController.draft`；[apps/api/src/modules/learning/assistant-teaching-self.controller.ts:14](../../../apps/api/src/modules/learning/assistant-teaching-self.controller.ts#L14)。
+- `POST /api/learning/teaching-practice/sessions/:id/responses` → `AssistantTeachingSelfController.response`；[apps/api/src/modules/learning/assistant-teaching-self.controller.ts:15](../../../apps/api/src/modules/learning/assistant-teaching-self.controller.ts#L15)。
+- `POST /api/learning/teaching-practice/sessions/:id/questions/:questionId/help` → `AssistantTeachingSelfController.help`；[apps/api/src/modules/learning/assistant-teaching-self.controller.ts:16](../../../apps/api/src/modules/learning/assistant-teaching-self.controller.ts#L16)。
+- `POST /api/learning/teaching-practice/sessions/:id/complete` → `AssistantTeachingSelfController.complete`；[apps/api/src/modules/learning/assistant-teaching-self.controller.ts:17](../../../apps/api/src/modules/learning/assistant-teaching-self.controller.ts#L17)。
+- `POST /api/learning/teaching-practice/practices/:id/assignments` → `AssistantTeachingAssignmentController.assign`；[apps/api/src/modules/learning/assistant-teaching-assignment.controller.ts:9](../../../apps/api/src/modules/learning/assistant-teaching-assignment.controller.ts#L9)。
+- `GET /api/learning/teaching-practice/assignments` → `AssistantTeachingAssignmentController.list`；[apps/api/src/modules/learning/assistant-teaching-assignment.controller.ts:10](../../../apps/api/src/modules/learning/assistant-teaching-assignment.controller.ts#L10)。
+- `GET /api/learning/teaching-practice/assignments/:id` → `AssistantTeachingAssignmentController.get`；[apps/api/src/modules/learning/assistant-teaching-assignment.controller.ts:11](../../../apps/api/src/modules/learning/assistant-teaching-assignment.controller.ts#L11)。
+- `POST /api/learning/teaching-practice/assignments/:id/start` → `AssistantTeachingAssignmentController.start`；[apps/api/src/modules/learning/assistant-teaching-assignment.controller.ts:13](../../../apps/api/src/modules/learning/assistant-teaching-assignment.controller.ts#L13)。
+- `POST /api/learning/teaching-practice/assignments/:id/withdraw` → `AssistantTeachingAssignmentController.withdraw`；[apps/api/src/modules/learning/assistant-teaching-assignment.controller.ts:14](../../../apps/api/src/modules/learning/assistant-teaching-assignment.controller.ts#L14)。
+- `GET /api/learning/teaching-practice/assignments/:id/questions/:qid/reference` → `AssistantTeachingAssignmentController.reference`；[apps/api/src/modules/learning/assistant-teaching-assignment.controller.ts:12](../../../apps/api/src/modules/learning/assistant-teaching-assignment.controller.ts#L12)。
+
+**服务方法**：
+
+- `AssistantTeachingSourceService.preview`；[apps/api/src/modules/learning/assistant-teaching-source.service.ts:42](../../../apps/api/src/modules/learning/assistant-teaching-source.service.ts#L42)。
+- `AssistantTeachingService.create`；[apps/api/src/modules/learning/assistant-teaching.service.ts:29](../../../apps/api/src/modules/learning/assistant-teaching.service.ts#L29)。
+- `AssistantTeachingService.list`；[apps/api/src/modules/learning/assistant-teaching.service.ts:45](../../../apps/api/src/modules/learning/assistant-teaching.service.ts#L45)。
+- `AssistantTeachingService.creationReceipt`；[apps/api/src/modules/learning/assistant-teaching.service.ts:43](../../../apps/api/src/modules/learning/assistant-teaching.service.ts#L43)。
+- `AssistantTeachingService.get`；[apps/api/src/modules/learning/assistant-teaching.service.ts:42](../../../apps/api/src/modules/learning/assistant-teaching.service.ts#L42)。
+- `AssistantTeachingService.sourceView`；[apps/api/src/modules/learning/assistant-teaching.service.ts:44](../../../apps/api/src/modules/learning/assistant-teaching.service.ts#L44)。
+- `AssistantTeachingService.control`；[apps/api/src/modules/learning/assistant-teaching.service.ts:54](../../../apps/api/src/modules/learning/assistant-teaching.service.ts#L54)。
+- `AssistantTeachingService.review`；[apps/api/src/modules/learning/assistant-teaching.service.ts:70](../../../apps/api/src/modules/learning/assistant-teaching.service.ts#L70)。
+- `AssistantTeachingService.practice`；[apps/api/src/modules/learning/assistant-teaching.service.ts:81](../../../apps/api/src/modules/learning/assistant-teaching.service.ts#L81)。
+- `AssistantTeachingService.edit`；[apps/api/src/modules/learning/assistant-teaching.service.ts:65](../../../apps/api/src/modules/learning/assistant-teaching.service.ts#L65)。
+- `AssistantTeachingService.adopt`；[apps/api/src/modules/learning/assistant-teaching.service.ts:76](../../../apps/api/src/modules/learning/assistant-teaching.service.ts#L76)。
+- `AssistantTeachingSelfService.list`；[apps/api/src/modules/learning/assistant-teaching-self.service.ts:25](../../../apps/api/src/modules/learning/assistant-teaching-self.service.ts#L25)。
+- `AssistantTeachingSelfService.start`；[apps/api/src/modules/learning/assistant-teaching-self.service.ts:18](../../../apps/api/src/modules/learning/assistant-teaching-self.service.ts#L18)。
+- `AssistantTeachingSelfController.session`；[apps/api/src/modules/learning/assistant-teaching-self.controller.ts:9](../../../apps/api/src/modules/learning/assistant-teaching-self.controller.ts#L9)。
+- `AssistantTeachingAssignmentService.assign`；[apps/api/src/modules/learning/assistant-teaching-assignment.service.ts:29](../../../apps/api/src/modules/learning/assistant-teaching-assignment.service.ts#L29)。
+- `AssistantTeachingAssignmentService.list`；[apps/api/src/modules/learning/assistant-teaching-assignment.service.ts:42](../../../apps/api/src/modules/learning/assistant-teaching-assignment.service.ts#L42)。
+- `AssistantTeachingAssignmentService.get`；[apps/api/src/modules/learning/assistant-teaching-assignment.service.ts:41](../../../apps/api/src/modules/learning/assistant-teaching-assignment.service.ts#L41)。
+- `AssistantTeachingStudentService.start`；[apps/api/src/modules/learning/assistant-teaching-student.service.ts:22](../../../apps/api/src/modules/learning/assistant-teaching-student.service.ts#L22)。
+- `AssistantTeachingAssignmentService.withdraw`；[apps/api/src/modules/learning/assistant-teaching-assignment.service.ts:48](../../../apps/api/src/modules/learning/assistant-teaching-assignment.service.ts#L48)。
+- `AssistantTeachingAssignmentService.reference`；[apps/api/src/modules/learning/assistant-teaching-assignment.service.ts:54](../../../apps/api/src/modules/learning/assistant-teaching-assignment.service.ts#L54)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/learning/assistant-teaching-worker.service.ts](../../../apps/api/src/modules/learning/assistant-teaching-worker.service.ts)
+- [apps/api/src/modules/learning/assistant-teaching-record.ts](../../../apps/api/src/modules/learning/assistant-teaching-record.ts)
+- [apps/api/src/modules/learning/assistant-teaching-self-record.ts](../../../apps/api/src/modules/learning/assistant-teaching-self-record.ts)
+- [apps/api/src/modules/learning/assistant-teaching-assignment-record.ts](../../../apps/api/src/modules/learning/assistant-teaching-assignment-record.ts)
+- [apps/api/src/modules/learning/assistant-teaching-student-record.ts](../../../apps/api/src/modules/learning/assistant-teaching-student-record.ts)
+- [apps/api/src/modules/learning/assistant-teaching-integrity.ts](../../../apps/api/src/modules/learning/assistant-teaching-integrity.ts)
+- [apps/web/components/assistant-generated-practices.tsx](../../../apps/web/components/assistant-generated-practices.tsx)
+- [apps/web/app/studio/tasks/teaching-practice.tsx](../../../apps/web/app/studio/tasks/teaching-practice.tsx)
+- [apps/web/app/studio/tasks/student-teaching-practice.tsx](../../../apps/web/app/studio/tasks/student-teaching-practice.tsx)
+- [apps/web/lib/teaching-practice-workspace.ts](../../../apps/web/lib/teaching-practice-workspace.ts)
+- [packages/contracts/src/assistant-teaching-practice.ts](../../../packages/contracts/src/assistant-teaching-practice.ts)
+- [packages/contracts/src/assistant-teaching-learner.ts](../../../packages/contracts/src/assistant-teaching-learner.ts)
+- [packages/contracts/src/assistant-teaching-assignment.ts](../../../packages/contracts/src/assistant-teaching-assignment.ts)
+- [apps/api/src/modules/learning/assistant-teaching.integration.test.ts](../../../apps/api/src/modules/learning/assistant-teaching.integration.test.ts)
+- [apps/api/src/modules/learning/assistant-teaching-self.integration.test.ts](../../../apps/api/src/modules/learning/assistant-teaching-self.integration.test.ts)
+- [apps/api/src/modules/learning/assistant-teaching-sharing.integration.test.ts](../../../apps/api/src/modules/learning/assistant-teaching-sharing.integration.test.ts)
+- [apps/api/src/infrastructure/schema26-reader.integration.test.ts](../../../apps/api/src/infrastructure/schema26-reader.integration.test.ts)
+- [tests/e2e/assistant-teaching-practice.spec.ts](../../../tests/e2e/assistant-teaching-practice.spec.ts)
+- [tests/e2e/assistant-teaching-sharing.spec.ts](../../../tests/e2e/assistant-teaching-sharing.spec.ts)
+- [doc/product/158-generated-teaching-practice-persistence.md](../../../doc/product/158-generated-teaching-practice-persistence.md)
+
+## LEARN-10 完整来源观察、真实报告与原指导恢复
+
+**输入**：完整原来源/受众、行为/条件/替代解释、真实报告与版本、每日预算、原请求和完整复盘理由。
+
+**处理与实现**：严格核对实际原消息、范围/定义、报告完成和快照；明确关联后调用原规则计划。成人独立观察不借用孩子。状态、调整与复盘沿原服务和修订，当前投影与原操作回执分列，完整副本/双标签及全部退出保护逐项恢复。
+
+**输出**：私人观察、原报告和原计划固定入口、准确原命令修订及当前学习状态。
+
+**状态与持久化**：`assistantGuidanceIntents`、`diagnosticPlans`、`guidancePlanRevisions`、`reviewTasks`
+
+**权限、失败与边界**：观察和教学题不是正式证据，不凭缺失数据推断原因。共同599整站与2007 API、实际PG/原生恢复分列通过；源码27未部署，更多原因/日历/真实保持和完整72/WS仍待。
+
+**关联接口**：
+
+- `POST /api/ai/assistant/sessions/:sessionId/artifacts/guidance/preflight` → `AssistantGuidanceSourceController.preview`；[apps/api/src/modules/learning/assistant-guidance.controller.ts:8](../../../apps/api/src/modules/learning/assistant-guidance.controller.ts#L8)。
+- `POST /api/ai/assistant/sessions/:sessionId/artifacts/guidance/intents` → `AssistantGuidanceSourceController.create`；[apps/api/src/modules/learning/assistant-guidance.controller.ts:9](../../../apps/api/src/modules/learning/assistant-guidance.controller.ts#L9)。
+- `GET /api/ai/assistant/sessions/:sessionId/artifacts/guidance/intents` → `AssistantGuidanceSourceController.list`；[apps/api/src/modules/learning/assistant-guidance.controller.ts:10](../../../apps/api/src/modules/learning/assistant-guidance.controller.ts#L10)。
+- `GET /api/ai/assistant/sessions/:sessionId/artifacts/guidance/requests/:key` → `AssistantGuidanceSourceController.receipt`；[apps/api/src/modules/learning/assistant-guidance.controller.ts:11](../../../apps/api/src/modules/learning/assistant-guidance.controller.ts#L11)。
+- `GET /api/learning/assistant-guidance/intents/:id` → `AssistantGuidanceController.get`；[apps/api/src/modules/learning/assistant-guidance.controller.ts:17](../../../apps/api/src/modules/learning/assistant-guidance.controller.ts#L17)。
+- `GET /api/learning/assistant-guidance/intents/:id/requests/:key` → `AssistantGuidanceController.receipt`；[apps/api/src/modules/learning/assistant-guidance.controller.ts:18](../../../apps/api/src/modules/learning/assistant-guidance.controller.ts#L18)。
+- `PATCH /api/learning/assistant-guidance/intents/:id/observation` → `AssistantGuidanceController.edit`；[apps/api/src/modules/learning/assistant-guidance.controller.ts:19](../../../apps/api/src/modules/learning/assistant-guidance.controller.ts#L19)。
+- `POST /api/learning/assistant-guidance/intents/:id/report-preflight` → `AssistantGuidanceController.reportPreview`；[apps/api/src/modules/learning/assistant-guidance.controller.ts:20](../../../apps/api/src/modules/learning/assistant-guidance.controller.ts#L20)。
+- `POST /api/learning/assistant-guidance/intents/:id/report` → `AssistantGuidanceController.report`；[apps/api/src/modules/learning/assistant-guidance.controller.ts:21](../../../apps/api/src/modules/learning/assistant-guidance.controller.ts#L21)。
+- `POST /api/learning/assistant-guidance/intents/:id/plan` → `AssistantGuidanceController.plan`；[apps/api/src/modules/learning/assistant-guidance.controller.ts:22](../../../apps/api/src/modules/learning/assistant-guidance.controller.ts#L22)。
+
+**服务方法**：
+
+- `AssistantGuidanceService.preview`；[apps/api/src/modules/learning/assistant-guidance.service.ts:28](../../../apps/api/src/modules/learning/assistant-guidance.service.ts#L28)。
+- `AssistantGuidanceService.create`；[apps/api/src/modules/learning/assistant-guidance.service.ts:29](../../../apps/api/src/modules/learning/assistant-guidance.service.ts#L29)。
+- `AssistantGuidanceService.list`；[apps/api/src/modules/learning/assistant-guidance.service.ts:32](../../../apps/api/src/modules/learning/assistant-guidance.service.ts#L32)。
+- `AssistantGuidanceService.creationReceipt`；[apps/api/src/modules/learning/assistant-guidance.service.ts:31](../../../apps/api/src/modules/learning/assistant-guidance.service.ts#L31)。
+- `AssistantGuidanceService.get`；[apps/api/src/modules/learning/assistant-guidance.service.ts:30](../../../apps/api/src/modules/learning/assistant-guidance.service.ts#L30)。
+- `AssistantGuidanceService.edit`；[apps/api/src/modules/learning/assistant-guidance.service.ts:33](../../../apps/api/src/modules/learning/assistant-guidance.service.ts#L33)。
+- `AssistantGuidanceService.reportPreview`；[apps/api/src/modules/learning/assistant-guidance.service.ts:35](../../../apps/api/src/modules/learning/assistant-guidance.service.ts#L35)。
+- `AssistantGuidanceService.linkReport`；[apps/api/src/modules/learning/assistant-guidance.service.ts:36](../../../apps/api/src/modules/learning/assistant-guidance.service.ts#L36)。
+- `AssistantGuidanceService.createPlan`；[apps/api/src/modules/learning/assistant-guidance.service.ts:37](../../../apps/api/src/modules/learning/assistant-guidance.service.ts#L37)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/learning/assistant-guidance-record.ts](../../../apps/api/src/modules/learning/assistant-guidance-record.ts)
+- [apps/api/src/modules/learning/assistant-guidance-integrity.ts](../../../apps/api/src/modules/learning/assistant-guidance-integrity.ts)
+- [apps/api/src/modules/diagnostics/guidance.service.ts](../../../apps/api/src/modules/diagnostics/guidance.service.ts)
+- [apps/web/components/assistant-guidance.tsx](../../../apps/web/components/assistant-guidance.tsx)
+- [apps/web/app/studio/tasks/guidance-observation.tsx](../../../apps/web/app/studio/tasks/guidance-observation.tsx)
+- [apps/web/components/guidance-manager.tsx](../../../apps/web/components/guidance-manager.tsx)
+- [apps/web/components/guidance-plan-operations.tsx](../../../apps/web/components/guidance-plan-operations.tsx)
+- [apps/web/components/workspace-shell.tsx](../../../apps/web/components/workspace-shell.tsx)
+- [apps/web/lib/guidance-intent-workspace.ts](../../../apps/web/lib/guidance-intent-workspace.ts)
+- [apps/web/lib/guidance-plan-copy.ts](../../../apps/web/lib/guidance-plan-copy.ts)
+- [apps/web/lib/guidance-operations-copy.ts](../../../apps/web/lib/guidance-operations-copy.ts)
+- [packages/contracts/src/assistant-guidance.ts](../../../packages/contracts/src/assistant-guidance.ts)
+- [apps/api/src/modules/learning/assistant-guidance.integration.test.ts](../../../apps/api/src/modules/learning/assistant-guidance.integration.test.ts)
+- [apps/api/src/infrastructure/schema27-reader.integration.test.ts](../../../apps/api/src/infrastructure/schema27-reader.integration.test.ts)
+- [tests/e2e/assistant-guidance.spec.ts](../../../tests/e2e/assistant-guidance.spec.ts)
+- [doc/product/159-conversation-clues-to-evidence-guidance.md](../../../doc/product/159-conversation-clues-to-evidence-guidance.md)
 
 ## LEARN-01 家庭总览与证据化学习记忆
 

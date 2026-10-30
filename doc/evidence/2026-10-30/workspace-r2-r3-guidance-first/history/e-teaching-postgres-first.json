@@ -1,0 +1,161 @@
+{
+  "numTotalTests": 31,
+  "numPassedTests": 31,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "schema26-reader.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 migrates actual25 without rewriting business records and the unmodified old reader refuses26 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 migrates an actual23 database through24,25 and26 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 rolls back the26 marker and its migration together and leaves the25 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 rejects unknown future28 and mismatched or incomplete26 markers without resetting them",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 restores a native25 bundle with its old marker, upgrades explicitly and restores native26 with the new minimum reader",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 migrates actual25 without rewriting business records and the unmodified old reader refuses26 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 migrates an actual23 database through24,25 and26 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 rolls back the26 marker and its migration together and leaves the25 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 rejects unknown future28 and mismatched or incomplete26 markers without resetting them",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "assistant-teaching-self.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "actual adult teaching self-session HTTP and native history starts the actual adult without a child, recovers the original start and reveals no teaching reference before explicit answering",
+          "status": "passed"
+        },
+        {
+          "title": "actual adult teaching self-session HTTP and native history preserves the first answer and full reason, records help and correction separately and completes only the original two-question activity",
+          "status": "passed"
+        },
+        {
+          "title": "actual adult teaching self-session HTTP and native history serializes original starts and conflicting full drafts across two actual application instances without borrowing a losing key",
+          "status": "passed"
+        },
+        {
+          "title": "actual adult teaching self-session HTTP and native history keeps frozen historical answers readable after original source changes while rejecting new writes and preserving exact successful acknowledgements",
+          "status": "passed"
+        },
+        {
+          "title": "actual adult teaching self-session HTTP and native history cold restores the actual first reason and original response, exports only owned teaching and deletes the adult session through the latest ledger",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "assistant-teaching-sharing.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery shares three targets and six complete questions only after confirmation, keeps private origins out of legal guardian DTOs and records only the actual child reasons",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery commits only one real withdrawal across two application instances, keeps the losing complete reason and preserves exact prior child receipts",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery restores a native child teaching bundle with first reasons, withdrawal and original receipts while keeping all parent writes forbidden",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery rejects a cross-child actor even after the internal start command and receipt hashes are deliberately recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery keeps only explicit shared child teaching through author deletion and applies the latest deletion ledger to a real older native bundle",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery deletes a child teaching assignment and all actual learner sessions and prevents resurrection from a newer deletion ledger",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery keeps a real child authors private candidate private and records its prior reference offer without manufacturing an independent first pass",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "assistant-teaching.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery keeps adult preflight read-only with no student or atom and refuses unconfigured generation without inventing success",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery persists complete generated and reviewed originals, adopts once and replays the original creation after adoption",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery retains the actual written checkpoint through review failure and retries only original-model review",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery blocks uncertain adoption and invalidates the old review after explicit complete editing before a new review",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery fences a late actual provider result after an explicit cancellation and retains the exact cancellation receipt",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery does not publish a provider finishing after a real logout and a fresh login by the same account",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery keeps one candidate for two actual application instances and refuses a reused key with different complete input",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery cold restores actual original and adopted teaching, rejects a cross-draft adoption link and preserves no formal learner evidence",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery allows an explicitly transferred child teaching gap with its separate confirmed grade and rejects changed definitions without exposing the private draft",
+          "status": "passed"
+        },
+        {
+          "title": "generated teaching drafts, explicit adoption and native recovery exports only the author teaching data and applies a newer account deletion ledger to an actual older bundle",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

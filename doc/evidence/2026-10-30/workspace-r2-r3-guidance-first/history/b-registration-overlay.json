@@ -1,0 +1,20 @@
+{
+  "files": [
+    {
+      "path": "apps/api/src/modules/learning/learning.module.ts",
+      "beforeSha256": "e90540a7d5c225427ae6d73e52f4bc412f02e9a0f58fe8d0b4834308ba97f699",
+      "afterSha256": "e13f61bed47d7b9d4c0d615d4ee2e52de139e2aa43f4c726b9fbdce3e88d40e3"
+    },
+    {
+      "path": "packages/contracts/src/assistant-teaching-practice.ts",
+      "beforeSha256": "6666943461ad83ee6307415ed9707862f8d213818c6bb7a9b6aa90eca17d8c01",
+      "afterSha256": "66118c1b7a611e6c38f8a0db2070a75583234bd8e9deab047729becd36f9f8fd"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching.service.ts",
+      "beforeSha256": "43e88649e6a42ae0c69da63ce1855215261c972045453b8bc51c5a23b29955a9",
+      "afterSha256": "ebb533f52371f0b07ef0874b659aab496aff9797a7a625afbb54996eee0fb01b"
+    }
+  ],
+  "scope": "Actual adult self-session controllers/services and read-only original-session discovery. Student management allowlist is not widened for this adult-only stage."
+}

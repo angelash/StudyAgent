@@ -12,7 +12,7 @@ function storage(base:string){
  return {base,key:base+'.'+documentSlot.id,keys:[base+'.'+documentSlot.id,...documentSlot.previous.map(id=>base+'.'+id)]};
 }
 /** Only explicit buttons write business data. This hook protects complete local inputs. */
-export function usePracticeLocalCopy<T>({identity,initial,decode}:{identity:string;initial:T;decode:(value:unknown)=>T}){
+export function usePracticeLocalCopy<T>({identity,initial,decode,filename='对话练习完整副本.json'}:{identity:string;initial:T;decode:(value:unknown)=>T;filename?:string}){
  const local=React.useMemo(()=>storage('studyagent.practice.workspace.v1.'+identity),[identity]);
  const [value,setValue]=React.useState<T|null>(null),current=React.useRef<T|null>(null);current.current=value;
  const [saved,setSaved]=React.useState(''),[downloaded,setDownloaded]=React.useState(''),[notice,setNotice]=React.useState(''),[comparison,setComparison]=React.useState<T|null>(null),[alternatives,setAlternatives]=React.useState<T[]>([]),[waiting,setWaiting]=React.useState<{proceed:()=>void}|null>(null);
@@ -21,7 +21,7 @@ export function usePracticeLocalCopy<T>({identity,initial,decode}:{identity:stri
  React.useEffect(()=>{let found:T|null=null;for(const key of local.keys){try{const raw=localStorage.getItem(key);if(raw&&raw.length<=2*1024*1024){found=decode(JSON.parse(raw));break;}}catch{/* Unknown originals stay untouched. */}}update(found??initial);if(found)setNotice('已恢复此标签页的完整输入与原操作；不会自动提交。');},[identity]);
  const signature=value===null?'':copyBytes(value),unsafe=!!value&&signature!==initialSignature.current&&signature!==saved&&signature!==downloaded;
  React.useEffect(()=>{const protect=(event:BeforeUnloadEvent)=>{if(unsafe){event.preventDefault();event.returnValue='';}};window.addEventListener('beforeunload',protect);return()=>window.removeEventListener('beforeunload',protect);},[unsafe]);
- function download(){if(current.current===null)return;downloadTopicJson(current.current,'对话练习完整副本.json');setDownloaded(copyBytes(current.current));}
+ function download(){if(current.current===null)return;downloadTopicJson(current.current,filename);setDownloaded(copyBytes(current.current));}
  function request(proceed:()=>void){if(unsafe)setWaiting({proceed});else proceed();}
  function preserve(){if(current.current===null)return true;const raw=copyBytes(current.current);if(raw===initialSignature.current)return true;try{const key=local.base+'.'+crypto.randomUUID();localStorage.setItem(key,raw);if(localStorage.getItem(key)!==raw)throw Error();return true;}catch{if(raw===downloaded)return true;setNotice('请先下载当前完整输入，再换用另一份副本。');return false;}}
  async function restore(file:File|undefined){if(!file)return;try{if(file.size>2*1024*1024)throw Error('副本超过读取预算，请使用原下载文件。');setComparison(decode(JSON.parse(await file.text())));}catch(error){setNotice(error instanceof Error?error.message:'副本无法读取。');}}

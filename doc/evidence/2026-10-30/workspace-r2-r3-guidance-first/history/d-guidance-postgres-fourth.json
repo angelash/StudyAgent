@@ -1,0 +1,72 @@
+{
+  "numTotalTests": 14,
+  "numPassedTests": 14,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "assistant-guidance.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "private source observations, real reports and original guidance plans keeps preflight read-only and saves a full adult observation without child or invented formal evidence",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans rejects cross-author source reads, another guardians private intent and a forged report without creating a plan",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans links actual completed first-response evidence separately from a conversation clue and creates exactly one original proposed rule plan",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans refuses an active report and a revised report version while preserving the original observation and exact report-link receipt",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans commits only one complete observation edit across two actual applications and returns the original winner after later versions",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans cold restores the actual report and created plan link without rewriting source or learning evidence and rejects a recomputed cross-report link",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans rejects altered original message SHA, selection and linked-question claims after all private source and command hashes are recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans rejects a different owner even with a self-consistent source and complete replayed command chain in native integrity validation",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans exports observations only to their actual author and keeps another guardians shared reports free of private source identifiers",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans deletes a child observation through the latest deletion ledger after restoring an actual older native backup",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans removes an adult authors original observation and source through the newest deletion ledger without recreating formal learning evidence",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans requires the actual immutable source message when internal origin hashes and the entire creation receipt are self-consistently recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans keeps profile and teaching grades distinct and blocks fresh writes after an actual profile change while restoring the exact original receipt",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans returns the original adjustment revision after later valid edits and definition changes without substituting the latest plan revision",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

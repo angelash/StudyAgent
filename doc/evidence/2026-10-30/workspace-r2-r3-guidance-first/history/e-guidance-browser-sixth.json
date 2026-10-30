@@ -1,0 +1,637 @@
+{
+  "stats": {
+    "startTime": "2026-10-30T06:36:30.810Z",
+    "duration": 306625.375,
+    "expected": 52,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 320",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6098,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 390",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5349,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 768",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5753,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 1440",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7216,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: child real report remains separate and creates exactly one original proposed plan with native manager",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8520,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: no completed report offers the native scope entry and never invents a plan",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5277,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: lost committed creation uses its exact complete original receipt after reload without a second POST",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6415,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: two tabs preserve full losing observations after a real version conflict",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7398,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: unavailable storage requires a full original command download before saving",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5414,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: a late source preflight cannot fill a reopened observation",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5691,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: complete original plan activities and reasons survive reload and a lost committed adjustment reply",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7727,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance observations: two original plan editors preserve the losing full reason after a real version conflict",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8373,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: a lost original activation survives reload and creates the original four delayed tasks per action",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6601,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: the original paused receipt stays separate from a later active plan",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6919,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: two complete forms require both actual downloads before leaving with unavailable storage",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7026,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: complete retrospective input restores and cannot be acknowledged without actual independent followup evidence",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6431,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "guidance operations: actual completed independent followup supports an exact lost retrospective command while uncertainty stays explicit",
+      "file": "assistant-guidance.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7989,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: the actual frozen goals, original estimates and self-reports stay together when selecting a point",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4716,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: skipped evidence stays unknown and a point survives reload, back and forward",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4449,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: an older matching plan is found behind a newer unrelated report and opens its durable plan route",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6011,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: failed plan reads remain unknown until explicit retry returns the actual matching plan",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4515,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: a controlled missing plan hides its stale actions while the report remains readable and retry can recover",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4663,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: late proposed-plan reviews cannot erase the real schedule after activation and refresh",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5269,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: a controlled legacy definition and foreign point never create a current verification",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4504,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: the actual student role reads its report without management actions and grant revocation ends the private view",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5647,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: invalidating the actual browser login session ends the private report on its next read",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3778,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: actual submitted short-answer expressions awaiting review do not become scored failure or a zero estimate",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4491,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: a controlled cause timeline remains complete and terminal versus reopened actions stay with their point",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4242,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: complete point reading and keyboard controls fit 390",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4468,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: complete point reading and keyboard controls fit 768",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4799,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: complete point reading and keyboard controls fit 1280",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4412,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: complete point reading and keyboard controls fit 1440",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4280,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: a lost reanalysis receipt survives reload with the exact original command",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4853,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: a version conflict archives its original command before a read-only latest-report check",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4971,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: unavailable command storage prevents a new mutation while preserving the report",
+      "file": "knowledge-report.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3901,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: a real classroom uses its authorized chemistry scope and restores the ordinary sidebar preference",
+      "file": "workspace-focus.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4537,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: adult whiteboard exposes one navigation and restores the original workspace and focus",
+      "file": "workspace-focus.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5847,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: paper exit preserves the full draft and imports it without writing a first answer",
+      "file": "workspace-focus.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4546,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: admin cookie identity exposes nine modules and a teacher is gated before private data reads",
+      "file": "workspace-focus.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8703,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: project navigation protects the complete local artifact before an explicit export and leave",
+      "file": "workspace-focus.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4160,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: all nine admin modules render in one shell and actual content fits phone, tablet and desktop",
+      "file": "workspace-focus.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 10851,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: without Navigation API the persistent host keeps full unsaved material text during browser back",
+      "file": "workspace-focus.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8461,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "workspace focus: a classroom with disabled storage requires the full choice download and never submits it on exit",
+      "file": "workspace-focus.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4757,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: one existing-style sidebar keeps the object across tasks reports and profiles",
+      "file": "workspace-shell.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3410,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: profiles read metadata only and new profiles keep the original creation contract",
+      "file": "workspace-shell.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2790,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: a learning-code student stays bound to their own profile and rejects self mode",
+      "file": "workspace-shell.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3190,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: completed reports and the old family URL preserve original records without writes",
+      "file": "workspace-shell.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7355,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: login returns to a local original activity and refuses an external return",
+      "file": "workspace-shell.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4215,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: parent self learning reads independent data instead of a cached child",
+      "file": "workspace-shell.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2766,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: contradictory old object aliases stop before reading a diagnostic or starting work",
+      "file": "workspace-shell.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2399,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: report detail refuses an unfinished session without becoming an answer screen",
+      "file": "workspace-shell.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2534,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "workspace shell: mobile navigation and compact preference work across legacy and new pages",
+      "file": "workspace-shell.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3550,
+          "failure": false
+        }
+      ]
+    }
+  ]
+}

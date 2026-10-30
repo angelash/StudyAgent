@@ -776,3 +776,8 @@ export * from './assistant-reviewed-practice';
 export * from './assistant-practice-assignment';
 export * from './assistant-practice-learner';
 export * from './activity-navigation';
+export * from './assistant-teaching-practice';
+export * from './assistant-teaching-learner';
+export * from './assistant-teaching-assignment';
+
+export * from './assistant-guidance';

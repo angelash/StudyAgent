@@ -1,0 +1,234 @@
+{
+  "numTotalTests": 51,
+  "numPassedTests": 47,
+  "numFailedTests": 0,
+  "numPendingTests": 4,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "schema27-reader.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "sqlite actual schema26 reader fence for schema27 migrates actual26 without rewriting business records and the unmodified old reader refuses27 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema26 reader fence for schema27 migrates an actual23 database through24,25,26 and27 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema26 reader fence for schema27 rolls back the27 marker and its migration together and leaves the26 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema26 reader fence for schema27 rejects unknown future28 and mismatched or incomplete27 markers without resetting them",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema26 reader fence for schema27 restores a native26 bundle with its old marker, upgrades explicitly and restores native27 with the new minimum reader",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema26 reader fence for schema27 migrates actual26 without rewriting business records and the unmodified old reader refuses27 before any write",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema26 reader fence for schema27 migrates an actual23 database through24,25,26 and27 with its original business rows intact",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema26 reader fence for schema27 rolls back the27 marker and its migration together and leaves the26 reader usable",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema26 reader fence for schema27 rejects unknown future28 and mismatched or incomplete27 markers without resetting them",
+          "status": "skipped"
+        }
+      ]
+    },
+    {
+      "file": "diagnostics.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification builds a provenance-backed learning memory and next-action feed without treating unknown as weakness",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification isolates textbook terms and reviewed lesson maps, snapshots versions and keeps coverage gaps",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification serves all 12 source-reviewed Chinese TOCs without fabricating knowledge mappings or selectable combined parts",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification maps complete local math and English source books without inventing lesson page offsets",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification requires a separate lesson mapping review, keeps scope gaps and freezes the previous textbook edition",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification rejects cross-term lesson maps and excludes historical maps whose atom now falls outside the book term",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification keeps atom and measurement revisions and rejects cyclic or unpublishable dependencies",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification enforces progress, records coverage gaps and preserves question/scope snapshots and first submissions",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification verifies prerequisite hypotheses, produces budgeted plans without AI and schedules real delayed reviews",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification keeps subjective scoring pending and preserves review versions rather than overwriting evidence",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification previews six bounded purposes without exposing answers, creating observations or consuming fresh questions",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification starts exactly the previewed group once, restores preview receipts and enforces actor and scope boundaries",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification invalidates stale definitions, scopes and exposure while preserving previews with no usable coverage",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification expires unused blueprints without expiring a started assessment or losing its idempotent receipt",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification pauses and resumes with revisions, retains drafts, and aborts without counting unanswered work as failure",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification releases an aborted delayed task for a new probe without reusing exposed questions",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification freezes knowledge definitions through completion and score revision, and separates evidence after semantic changes",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification keeps labels and teaching revisions comparable while preserving historical names",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification blocks new guidance and verification after changed definitions while retaining started practice",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification preserves legacy reports without fabricating definition provenance or reusing unverifiable evidence",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification excludes different-definition linked followups and keeps unrelated assessments out of the review fingerprint",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification versions parent adjustments, enforces budgets and idempotency, and freezes started activities",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification excludes incomplete interaction configuration and never scores a frozen unusable item as a student failure",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification retains reschedule history and original intervals, blocks bypasses, and does not reset dates on resume",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification requires linked independent followups and current evidence acknowledgement before closing a real review cycle",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification persists practice drafts, counts unique questions and keeps hinted/retried training out of ability evidence",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification enforces practice ownership and pause, and leaves subjective practice pending for review",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification retires the prototype mutation and correctness-report APIs with an explicit upgrade response",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "assistant-guidance.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "private source observations, real reports and original guidance plans keeps preflight read-only and saves a full adult observation without child or invented formal evidence",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans rejects cross-author source reads, another guardians private intent and a forged report without creating a plan",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans links actual completed first-response evidence separately from a conversation clue and creates exactly one original proposed rule plan",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans refuses an active report and a revised report version while preserving the original observation and exact report-link receipt",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans commits only one complete observation edit across two actual applications and returns the original winner after later versions",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans cold restores the actual report and created plan link without rewriting source or learning evidence and rejects a recomputed cross-report link",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans rejects altered original message SHA, selection and linked-question claims after all private source and command hashes are recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans rejects a different owner even with a self-consistent source and complete replayed command chain in native integrity validation",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans exports observations only to their actual author and keeps another guardians shared reports free of private source identifiers",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans deletes a child observation through the latest deletion ledger after restoring an actual older native backup",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans removes an adult authors original observation and source through the newest deletion ledger without recreating formal learning evidence",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans requires the actual immutable source message when internal origin hashes and the entire creation receipt are self-consistently recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans keeps profile and teaching grades distinct and blocks fresh writes after an actual profile change while restoring the exact original receipt",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans returns the original adjustment revision after later valid edits and definition changes without substituting the latest plan revision",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

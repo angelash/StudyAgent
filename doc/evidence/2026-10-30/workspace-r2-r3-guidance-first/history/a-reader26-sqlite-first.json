@@ -1,0 +1,52 @@
+{
+  "numTotalTests": 9,
+  "numPassedTests": 5,
+  "numFailedTests": 0,
+  "numPendingTests": 4,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "schema26-reader.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 migrates actual24 without rewriting business records and the unmodified old reader refuses25 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 migrates an actual23 database through24,25 and26 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 rolls back the25 marker and its migration together and leaves the24 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 rejects unknown future26 and mismatched or incomplete25 markers without resetting them",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 restores a native24 bundle with its old marker, upgrades explicitly and restores native25 with the new minimum reader",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 migrates actual24 without rewriting business records and the unmodified old reader refuses25 before any write",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 migrates an actual23 database through24,25 and26 with its original business rows intact",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 rolls back the25 marker and its migration together and leaves the24 reader usable",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 rejects unknown future26 and mismatched or incomplete25 markers without resetting them",
+          "status": "skipped"
+        }
+      ]
+    }
+  ]
+}

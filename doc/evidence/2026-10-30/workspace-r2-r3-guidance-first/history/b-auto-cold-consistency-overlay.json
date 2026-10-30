@@ -1,0 +1,25 @@
+{
+  "files": [
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-source.service.ts",
+      "beforeSha256": "982be805fe43f860c0d8454fac5586bd92a24e6e300e29eb2b613f3f0362e501",
+      "afterSha256": "df0a29e0eb95f52ab08d6a52de9646b4eb4e01cb5b2b65f4448e84cb85e8af97"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-practice-source.ts",
+      "beforeSha256": "14f3beae2187079048f7e98eca13f92355282d18d5ee30c6c4833ba57284f1c7",
+      "afterSha256": "2891bf8c4fb4b090b3860b73324e4b60312cd2e36f4d040577027238447fedfa"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching.integration.test.ts",
+      "beforeSha256": "7a9c25d76997584e198377b336ce39b5855d510b2452e82f60550bdae3523007",
+      "afterSha256": "e22aa794fbb70a2b2990bfb18480a067e211fc833f0b549f15d5aeec05aa2b39"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-practice-content.test.ts",
+      "beforeSha256": "5cc49fbc0f2a7b4765816a1e2a8b0f9b1937b1787238a0a1bd8a835c08cf0779",
+      "afterSha256": "bb1794a678208bec5d9dd8a4bf8b8745e795305ffb7e65f22391f93f989577b7"
+    }
+  ],
+  "reason": "Actual first-browser Auto records retained a normalized prepared input different from the complete original create command. Preserve Auto in both inputs, freeze the actual model independently and retain strict concrete-model mismatch checks. Actual native SQLite/PostgreSQL backup tests now exercise Auto cold replay."
+}

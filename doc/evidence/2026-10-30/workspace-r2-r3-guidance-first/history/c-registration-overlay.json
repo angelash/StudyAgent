@@ -1,0 +1,35 @@
+{
+  "files": [
+    {
+      "path": "apps/api/src/modules/learning/learning.module.ts",
+      "beforeSha256": "e13f61bed47d7b9d4c0d615d4ee2e52de139e2aa43f4c726b9fbdce3e88d40e3",
+      "afterSha256": "4cc193af7b14393c6fdce314559a8cd3a1879738be6a806ab0cff7da03386eca"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-self.service.ts",
+      "beforeSha256": "51991b0b5d5bfbeb81abf017a347124a3f1f561c0f22b8d7ceb16f7475bd181d",
+      "afterSha256": "a0d918860ce633c8b1a5be477567c0655c5da6cbdb0987ffb8f8e6638b17c988"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching.service.ts",
+      "beforeSha256": "1992acc961d042141c4b8c48c089de10dde8489fcab8a1966553546dfea98d6e",
+      "afterSha256": "999ab82bf4e92f37035534cde53e34959c1d4ff248b2cad59ea5441a76e499fa"
+    },
+    {
+      "path": "apps/api/src/common/auth.guard.ts",
+      "beforeSha256": "12c91bfae511cd7ec66d8c9e00560ec53aaa252af2363c445eb2dd85b953a51f",
+      "afterSha256": "dc99865e53d74a8672a84b3db5b64cc2e61a4f486bbffa398a83a2806f873884"
+    },
+    {
+      "path": "apps/api/src/infrastructure/domain-database.ts",
+      "beforeSha256": "a9d49b08d2cba267b932d8926f8d7885c992cabda872d4a27fc4df18183ee7c3",
+      "afterSha256": "902b8b0c16d921fb3eed0a9041658b490e597a5e467f235df32607b13933ed5b"
+    },
+    {
+      "path": "scripts/operations/assistant-practice-integrity.cjs",
+      "beforeSha256": "ebabedd61f2652f8da4c19b1a3b4f5f1ddc4bee3e8431c4cb48482c20d164051",
+      "afterSha256": "19894a4d736a18d1b0b179acb9a9360e4fd35b081593c0c1c052210f022d9d7e"
+    }
+  ],
+  "scope": "Unpublished schema26 child generated-teaching registration; no production database, deployed build or main application changed."
+}

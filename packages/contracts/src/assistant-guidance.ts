@@ -1,0 +1,17 @@
+import { z } from 'zod';
+import { assistantPracticePreflightSchema } from './assistant-practice';
+const id=z.string().min(1).max(180),hash=z.string().regex(/^[a-f0-9]{64}$/),text=(max:number)=>z.string().min(3).max(max).refine(value=>value.trim().length>=3,'请保留完整且可观察的说明。');
+export const assistantGuidanceObservationSchema=z.object({observedBehaviour:text(3000),conditions:text(3000),question:text(1500),alternativeExplanations:z.array(text(800)).min(1).max(6)}).strict();
+export const assistantGuidancePreflightSchema=assistantPracticePreflightSchema.extend({observation:assistantGuidanceObservationSchema}).strict();
+export const assistantGuidanceCreateSchema=assistantGuidancePreflightSchema.extend({preflightFingerprint:hash,requestKey:id}).strict();
+export const assistantGuidanceEditSchema=z.object({expectedRevision:z.number().int().positive(),contentFingerprint:hash,observation:assistantGuidanceObservationSchema,requestKey:id}).strict();
+export const assistantGuidanceReportPreflightSchema=z.object({sessionId:id,reportVersion:z.number().int().positive()}).strict();
+export const assistantGuidanceReportLinkSchema=assistantGuidanceReportPreflightSchema.extend({expectedRevision:z.number().int().positive(),contentFingerprint:hash,reportFingerprint:hash,requestKey:id,acknowledgeEvidenceSeparation:z.literal(true)}).strict();
+export const assistantGuidancePlanSchema=z.object({expectedRevision:z.number().int().positive(),contentFingerprint:hash,reportFingerprint:hash,minutesPerDay:z.number().int().min(5).max(60),requestKey:id,acknowledgeProposedPlan:z.literal(true)}).strict();
+export const assistantGuidanceListSchema=z.object({pageSize:z.coerce.number().int().min(1).max(20).default(10),cursor:z.string().max(2000).optional()}).strict();
+export type AssistantGuidanceObservation=z.infer<typeof assistantGuidanceObservationSchema>;
+export type AssistantGuidanceSourceInput=z.infer<typeof assistantGuidancePreflightSchema>;
+export type AssistantGuidanceCreateInput=z.infer<typeof assistantGuidanceCreateSchema>;
+export type AssistantGuidanceEditInput=z.infer<typeof assistantGuidanceEditSchema>;
+export type AssistantGuidanceReportLinkInput=z.infer<typeof assistantGuidanceReportLinkSchema>;
+export type AssistantGuidancePlanInput=z.infer<typeof assistantGuidancePlanSchema>;

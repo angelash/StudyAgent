@@ -1,0 +1,480 @@
+{
+  "numTotalTests": 88,
+  "numPassedTests": 59,
+  "numFailedTests": 0,
+  "numPendingTests": 29,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "assistant-note-storage.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "sqlite atomic note schema21 to22 migration cold migrates and reopens exact complete original notes and existing formal evidence",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite atomic note schema21 to22 migration keeps both conflicting originals and schema21 intact when the new uniqueness migration fails",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite atomic note schema21 to22 migration scopes creation keys to each owner and atomically rejects duplicate notes plus unrelated partial publication",
+          "status": "passed"
+        },
+        {
+          "title": "postgres atomic note schema21 to22 migration cold migrates and reopens exact complete original notes and existing formal evidence",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres atomic note schema21 to22 migration keeps both conflicting originals and schema21 intact when the new uniqueness migration fails",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres atomic note schema21 to22 migration scopes creation keys to each owner and atomically rejects duplicate notes plus unrelated partial publication",
+          "status": "skipped"
+        }
+      ]
+    },
+    {
+      "file": "assistant-whiteboard-reader.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "sqlite actual schema22 reader through conversation-whiteboard23, practice24 and withdrawal25 upgrades unchanged original records and the saved old reader rejects before opening or rewriting them",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema22 reader through conversation-whiteboard23, practice24 and withdrawal25 rolls back the marker and migration together when the actual marker write is interrupted",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema22 reader through conversation-whiteboard23, practice24 and withdrawal25 refuses future27 and inconsistent current markers without silently resetting either one",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema22 reader through conversation-whiteboard23, practice24 and withdrawal25 keeps old22 backup compatibility and current26 native restore markers, including resume after a legal upgrade",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema22 reader through conversation-whiteboard23, practice24 and withdrawal25 upgrades unchanged original records and the saved old reader rejects before opening or rewriting them",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema22 reader through conversation-whiteboard23, practice24 and withdrawal25 rolls back the marker and migration together when the actual marker write is interrupted",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema22 reader through conversation-whiteboard23, practice24 and withdrawal25 refuses future27 and inconsistent current markers without silently resetting either one",
+          "status": "skipped"
+        }
+      ]
+    },
+    {
+      "file": "backup.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "verified backup and isolated recovery backs up the live WAL snapshot and referenced bytes, restores learning records, revokes old access and fences old workers",
+          "status": "passed"
+        },
+        {
+          "title": "verified backup and isolated recovery fails closed on corruption, omitted referenced files, path traversal, unfinished bundles and overlapping destinations",
+          "status": "passed"
+        },
+        {
+          "title": "verified backup and isolated recovery migrates a version-three database without changing evidence and refuses incomplete source restores even without the file marker",
+          "status": "passed"
+        },
+        {
+          "title": "verified backup and isolated recovery rejects future schema27 without publishing a backup success manifest",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "paper-practice-migration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "paper practice schema18 migrations and durable replay constraints upgrades a real schema17 store without changing original answers, correction history or replay receipts",
+          "status": "passed"
+        },
+        {
+          "title": "paper practice schema18 migrations and durable replay constraints rolls back a duplicate-key legacy migration atomically and retains both conflicting source records for explicit repair",
+          "status": "passed"
+        },
+        {
+          "title": "paper practice schema18 migrations and durable replay constraints scopes command replay keys to session and actor, while rejecting duplicates without committing unrelated changes",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "schema25-reader.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "sqlite actual schema24 reader fence for schema25 migrates actual24 without rewriting business records and the unmodified old reader refuses26 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema24 reader fence for schema25 migrates an actual23 database through24,25 and26 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema24 reader fence for schema25 rolls back the25 marker and its migration together and leaves the24 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema24 reader fence for schema25 rejects unknown future27 and mismatched or incomplete25 markers without resetting them",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema24 reader fence for schema25 restores a native24 bundle with its old marker, upgrades explicitly and restores native26 with the new minimum reader",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema24 reader fence for schema25 migrates actual24 without rewriting business records and the unmodified old reader refuses26 before any write",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema24 reader fence for schema25 migrates an actual23 database through24,25 and26 with its original business rows intact",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema24 reader fence for schema25 rolls back the25 marker and its migration together and leaves the24 reader usable",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema24 reader fence for schema25 rejects unknown future27 and mismatched or incomplete25 markers without resetting them",
+          "status": "skipped"
+        }
+      ]
+    },
+    {
+      "file": "schema26-reader.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 migrates actual25 without rewriting business records and the unmodified old reader refuses26 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 migrates an actual23 database through24,25 and26 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 rolls back the26 marker and its migration together and leaves the25 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 rejects unknown future27 and mismatched or incomplete26 markers without resetting them",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 restores a native25 bundle with its old marker, upgrades explicitly and restores native26 with the new minimum reader",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 migrates actual25 without rewriting business records and the unmodified old reader refuses26 before any write",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 migrates an actual23 database through24,25 and26 with its original business rows intact",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 rolls back the26 marker and its migration together and leaves the25 reader usable",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 rejects unknown future27 and mismatched or incomplete26 markers without resetting them",
+          "status": "skipped"
+        }
+      ]
+    },
+    {
+      "file": "teaching-tool-storage.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "sqlite teaching schema20 to21 original drafts and atomic owner keys migrates a real schema20 store and cold reopens all exact draft, table/formula and formal records",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite teaching schema20 to21 original drafts and atomic owner keys rolls a duplicate legacy request back to schema20 with both originals intact",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite teaching schema20 to21 original drafts and atomic owner keys scopes the unique request to its owner and rejects duplicate writes atomically",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite teaching schema20 to21 original drafts and atomic owner keys backs up and cold restores native current schema23 with complete drafts and original first answers",
+          "status": "passed"
+        },
+        {
+          "title": "postgres teaching schema20 to21 original drafts and atomic owner keys migrates a real schema20 store and cold reopens all exact draft, table/formula and formal records",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres teaching schema20 to21 original drafts and atomic owner keys rolls a duplicate legacy request back to schema20 with both originals intact",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres teaching schema20 to21 original drafts and atomic owner keys scopes the unique request to its owner and rejects duplicate writes atomically",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres teaching schema20 to21 original drafts and atomic owner keys backs up and cold restores native current schema23 with complete drafts and original first answers",
+          "status": "skipped"
+        }
+      ]
+    },
+    {
+      "file": "topic-whiteboard-postgres.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "native PostgreSQL AI whiteboard original identities opens current schema23, enforces prepare and publication identities, and retains original records after native reopen",
+          "status": "skipped"
+        },
+        {
+          "title": "native PostgreSQL AI whiteboard original identities rejects a stale competing confirmation without overwriting the already committed original board",
+          "status": "skipped"
+        }
+      ]
+    },
+    {
+      "file": "topic-whiteboard-storage.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "AI topic whiteboard schema and private original records upgrades a real schema15 database while retaining original legacy whiteboards and adds the two intended constraints",
+          "status": "passed"
+        },
+        {
+          "title": "AI topic whiteboard schema and private original records prevents duplicate original prepare commands and duplicate confirmation products without losing the prior records",
+          "status": "passed"
+        },
+        {
+          "title": "AI topic whiteboard schema and private original records separates private drafts, shared child boards and private adult boards in deletion and portable exports",
+          "status": "passed"
+        },
+        {
+          "title": "AI topic whiteboard schema and private original records backs up, verifies and cold restores current schema23 original topic records without modifying them",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "topic-whiteboard-visual-postgres.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "native PostgreSQL topic figure identities opens current schema23 and retains exact original figure requests through a native reopen",
+          "status": "skipped"
+        },
+        {
+          "title": "native PostgreSQL topic figure identities retains the winning original when a second actual connection writes from a stale snapshot",
+          "status": "skipped"
+        }
+      ]
+    },
+    {
+      "file": "topic-whiteboard-visual-storage.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "topic figure durable original request identities upgrades an actual schema16 file without changing its original whiteboard or manuscript",
+          "status": "passed"
+        },
+        {
+          "title": "topic figure durable original request identities rejects reuse of one owner original key for a different draft and retains the original record atomically",
+          "status": "passed"
+        },
+        {
+          "title": "topic figure durable original request identities stops migration17 on duplicate legacy keys without deleting their original rows or recording a successful upgrade",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "whiteboard-question-postgres.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "native PostgreSQL original whiteboard questions and schema19 migrates actual schema18 and cold reopens the complete answer, long formula, speech, camera and first diagnostic response",
+          "status": "skipped"
+        },
+        {
+          "title": "native PostgreSQL original whiteboard questions and schema19 rolls back a legacy owner/request conflict without discarding either answer or recording schema19",
+          "status": "skipped"
+        },
+        {
+          "title": "native PostgreSQL original whiteboard questions and schema19 keeps the committed answer against duplicate requests and a stale competing publication",
+          "status": "skipped"
+        }
+      ]
+    },
+    {
+      "file": "whiteboard-question-storage.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "native schema19 whiteboard question durability migrates a real schema18 file, preserving the full original question, bookmark, answer and first diagnostic response",
+          "status": "passed"
+        },
+        {
+          "title": "native schema19 whiteboard question durability rejects duplicate legacy owner/request keys atomically, retaining both original records and schema18",
+          "status": "passed"
+        },
+        {
+          "title": "native schema19 whiteboard question durability backs up current schema23 and cold restores exact question data without replacing the first diagnostic answer",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "whiteboard-question-visual-storage.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "sqlite native question-image schema19 to schema20 migrates and cold reopens actual schema19 without rewriting original questions, version snapshots, long prompts or first answers",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite native question-image schema19 to schema20 rolls back duplicate legacy owner/request keys atomically, retaining both records and schema19",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite native question-image schema19 to schema20 rejects duplicate current requests and stale competing publications without replacing the committed original",
+          "status": "passed"
+        },
+        {
+          "title": "postgres native question-image schema19 to schema20 migrates and cold reopens actual schema19 without rewriting original questions, version snapshots, long prompts or first answers",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres native question-image schema19 to schema20 rolls back duplicate legacy owner/request keys atomically, retaining both records and schema19",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres native question-image schema19 to schema20 rejects duplicate current requests and stale competing publications without replacing the committed original",
+          "status": "skipped"
+        }
+      ]
+    },
+    {
+      "file": "topic-whiteboard-visual-files.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "topic figure original files and native recovery decodes the actual landscape provider sample without cropping and keeps original and display bytes separately verifiable",
+          "status": "passed"
+        },
+        {
+          "title": "topic figure original files and native recovery does not cross the legacy classroom namespace and rejects orientation that changes the declared landscape dimensions",
+          "status": "passed"
+        },
+        {
+          "title": "topic figure original files and native recovery backs up all current schema20 image references and cold restores their original byte identities",
+          "status": "passed"
+        },
+        {
+          "title": "topic figure original files and native recovery applies a newer anonymous account deletion ledger to an old real bundle and physically removes the restored private image directory",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "whiteboard-question-visual.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "actual original-answer image HTTP tasks, byte identity and adoption versions on SQLite generates an actual PNG for the exact topic answer, keeps original bytes and recovers the one original request",
+          "status": "passed"
+        },
+        {
+          "title": "actual original-answer image HTTP tasks, byte identity and adoption versions on SQLite generates an actual PNG for the exact guidance answer, keeps original bytes and recovers the one original request",
+          "status": "passed"
+        },
+        {
+          "title": "actual original-answer image HTTP tasks, byte identity and adoption versions on SQLite adopts an exact reviewed candidate once, retains both versions through a native restart and exports only public metadata",
+          "status": "passed"
+        },
+        {
+          "title": "actual original-answer image HTTP tasks, byte identity and adoption versions on SQLite edits the actual authorized parent original and refuses a parent or target from another answer",
+          "status": "passed"
+        },
+        {
+          "title": "actual original-answer image HTTP tasks, byte identity and adoption versions on SQLite keeps failed generation and exact cancellation/retry receipts without silently creating another candidate",
+          "status": "passed"
+        },
+        {
+          "title": "actual original-answer image HTTP tasks, byte identity and adoption versions on SQLite refuses changed image bytes and keeps the original failed adoption uncommitted",
+          "status": "passed"
+        },
+        {
+          "title": "actual original-answer image HTTP tasks, byte identity and adoption versions on SQLite does not publish a late supplier PNG after cancel",
+          "status": "passed"
+        },
+        {
+          "title": "actual original-answer image HTTP tasks, byte identity and adoption versions on SQLite does not publish a late supplier PNG after logout",
+          "status": "passed"
+        },
+        {
+          "title": "actual original-answer image HTTP tasks, byte identity and adoption versions on SQLite does not publish a late supplier PNG after original",
+          "status": "passed"
+        },
+        {
+          "title": "actual original-answer image HTTP tasks, byte identity and adoption versions on SQLite rechecks logout after an asynchronous capability probe before returning private preflight content",
+          "status": "passed"
+        },
+        {
+          "title": "actual original-answer image HTTP tasks, byte identity and adoption versions on SQLite rechecks original after an asynchronous capability probe before returning private preflight content",
+          "status": "passed"
+        },
+        {
+          "title": "actual original-answer image HTTP tasks, byte identity and adoption versions on SQLite cold restores actual version PNGs, then applies a newer deletion ledger without resurrecting private images or erasing another owner",
+          "status": "passed"
+        },
+        {
+          "title": "actual original-answer image HTTP tasks, byte identity and adoption versions on SQLite cancels deleted-account work and collects private PNG/prompt bytes without removing an unknown file",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "paper-practice-recovery.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "sqlite original paper practice native recovery cold restores exact first answers, corrections and request receipts with original media, and applies newer child and account deletion receipts",
+          "status": "passed"
+        },
+        {
+          "title": "postgres original paper practice native recovery cold restores exact first answers, corrections and request receipts with original media, and applies newer child and account deletion receipts",
+          "status": "skipped"
+        }
+      ]
+    }
+  ]
+}

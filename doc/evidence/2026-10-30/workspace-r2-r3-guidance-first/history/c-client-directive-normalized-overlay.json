@@ -1,0 +1,15 @@
+{
+  "files": [
+    {
+      "path": "apps/web/app/studio/tasks/tasks.tsx",
+      "beforeSha256": "98b5d26d81a1679167d8e213902474c1e4c249d487a420e0a9386257ba72ae58",
+      "afterSha256": "98b5d26d81a1679167d8e213902474c1e4c249d487a420e0a9386257ba72ae58"
+    },
+    {
+      "path": "apps/web/app/studio/tasks/conversation-practice.tsx",
+      "beforeSha256": "f5316b618fe670e30c1fb848507a024848f9be6e74d9c5b302573e0b82e01ca5",
+      "afterSha256": "1e1e42aee3bc0101b0cccd7abcb8def10817c16b70ab73125f79f8c6c9b30697"
+    }
+  ],
+  "reason": "The first directive repair matched LF but one original input used CRLF. Remove directive lines using line parsing, preserve the actual new import and write exactly one directive before expressions. Both original build failures remain."
+}

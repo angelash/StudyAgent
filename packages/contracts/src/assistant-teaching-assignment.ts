@@ -1,0 +1,11 @@
+import { z } from 'zod';
+import type { AssistantPracticeLearnerProjection } from './assistant-practice-content';
+const id=z.string().min(1).max(180),hash=z.string().regex(/^[a-f0-9]{64}$/);
+export const assistantTeachingAssignSchema=z.object({studentId:id,contentFingerprint:hash,instructions:z.string().min(3).max(3000).refine(value=>value.trim().length>=3),acknowledgePreview:z.literal(true),requestKey:id}).strict();
+export const assistantTeachingStudentStartSchema=z.object({assignmentFingerprint:hash,requestKey:id}).strict();
+export const assistantTeachingAssignmentWithdrawSchema=z.object({assignmentFingerprint:hash,expectedStateVersion:z.literal(0),reason:z.string().min(3).max(3000).refine(value=>value.trim().length>=3),acknowledgeReadonlyHistory:z.literal(true),requestKey:id}).strict();
+export const assistantTeachingAssignmentsQuerySchema=z.object({studentId:id,subject:z.enum(['math','chinese','english','chemistry']),pageSize:z.coerce.number().int().min(1).max(20).default(10),cursor:z.string().max(2000).optional()}).strict();
+export type AssistantTeachingAssignInput=z.infer<typeof assistantTeachingAssignSchema>;
+export type AssistantTeachingStudentStartInput=z.infer<typeof assistantTeachingStudentStartSchema>;
+export type AssistantTeachingAssignmentWithdrawInput=z.infer<typeof assistantTeachingAssignmentWithdrawSchema>;
+export type AssistantTeachingAssignmentView={id:string;studentId:string;subject:'math'|'chinese'|'english'|'chemistry';title:string;objective:string;instructions:string;modelName:string;payloadFingerprint:string;stateVersion:0|1;sessionId:string|null;createdAt:string;status:'assigned'|'withdrawn';withdrawal:{reason:string;withdrawnAt:string}|null;audience:{kind:'student';studentId:string;subject:'math'|'chinese'|'english'|'chemistry';scopeGrade:number;profileGrade:number;scopeVersion:number;scopeTerm:'upper'|'lower';targets:Array<{atomId:string;name:string}>};questions:Array<AssistantPracticeLearnerProjection['questions'][number]&{targetAtomIds:string[]}>;writable:boolean;blocked:{message:string}|null;teacherReviewStatus:'pending';isTeachingOnly:true;formalEvidenceCreated:false;independentFirstPass:0};

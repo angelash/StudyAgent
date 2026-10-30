@@ -1,0 +1,2433 @@
+{
+  "schemaVersion": 25,
+  "nodeVersion": "v24.19.0",
+  "preservedAt": "2026-10-30T00:13:31.367Z",
+  "reader": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/infrastructure/domain-database.js",
+  "scope": "Actual isolated schema25 reader preserved before schema26 development. No database was booted or read.",
+  "files": [
+    {
+      "path": "data/qa/workspace-generated-first-20261030/preserve-reader25.cjs",
+      "sha256": "9a86a1c3160eeeba68c50e0237578128b0c949be74674670c2352f1d9b7609b7"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/infrastructure/domain-database.js",
+      "sha256": "597f03b93ff4f0555fee6aadb24b3f50e769726a8e072022038977b8a0d0d4d7"
+    },
+    {
+      "path": "node_modules/@nestjs/common/index.js",
+      "sha256": "515f28d88083adba509bda17c1d51f270752a8ecdae66711c68c3fd585a8fc05"
+    },
+    {
+      "path": "node_modules/tslib/tslib.js",
+      "sha256": "8855865a058bc0a6df8f5db45347be041a2d6bbe1654216c51a805648c1b6e8a"
+    },
+    {
+      "path": "node_modules/reflect-metadata/Reflect.js",
+      "sha256": "515c16dcde7492755691e3fca9eeca4656f1819b6e3307ecd4b0deaa93ad21e2"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/index.js",
+      "sha256": "d2fc8794ec739380e07b419dfa5432ca03f8277f056c136a53db6b50ad30dac6"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/core/index.js",
+      "sha256": "7748659ecd4fc4f077d1cfa1961c973351f92a681dcabb94f665d3ebb73d6122"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/core/bind.decorator.js",
+      "sha256": "d8554d47b93f45c0654d55306dc39ee12b7e62a5bf27322f5306586c20732461"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/core/catch.decorator.js",
+      "sha256": "adf5a910ba328e7a871571c116f519146006aa0f4dd416bf58a7891621146968"
+    },
+    {
+      "path": "node_modules/@nestjs/common/constants.js",
+      "sha256": "7be2f2d8683f48aa3d73df7ba678a93ae572a3a206b44623e9e9cb3362e0a31c"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/core/controller.decorator.js",
+      "sha256": "57f503aedbfe6d0bc80127d0c74b07f843873c43b5ff6ef6d7c60de7ebbfc547"
+    },
+    {
+      "path": "node_modules/@nestjs/common/utils/shared.utils.js",
+      "sha256": "0c723e10a7f907bebd3ce640830ea25d5b632742eb1c7877615f0f1d9a0ef419"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/core/dependencies.decorator.js",
+      "sha256": "3a7053be78eb02698fb27b204a54fdbc28b8692657afab3b5a73f75cffa93d89"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/core/exception-filters.decorator.js",
+      "sha256": "5cf76b6404f381192dbcf464a86937ae06307115ffaa2dd70411448a9542b6c3"
+    },
+    {
+      "path": "node_modules/@nestjs/common/utils/extend-metadata.util.js",
+      "sha256": "c589c98918fe6b98a6d28bc4d009e12127185bcf00f1b616c9d7a91c6a089a1b"
+    },
+    {
+      "path": "node_modules/@nestjs/common/utils/validate-each.util.js",
+      "sha256": "d320076f176905ae63b811ed6218b6ec3ebf7f268ab7458a594e4b8b836fd82a"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/core/inject.decorator.js",
+      "sha256": "343a7a5739fea9901b28372e20d244013a62540c371dff3896b888ddc7a13151"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/core/injectable.decorator.js",
+      "sha256": "645011f93f4d7d36a1be4f4478aa2586ad1eed0627b991e597f3c8bb7729465e"
+    },
+    {
+      "path": "node_modules/uid/dist/index.js",
+      "sha256": "355d212b4449bb55068c0ad8016224a6bf5c581910edbe051b82fbec324c9ec3"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/core/optional.decorator.js",
+      "sha256": "394641427d74d494d7152932b75fb872a872f9a01245f2a72876d64d5b266830"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/core/set-metadata.decorator.js",
+      "sha256": "3ddee08447776716c6a53032c8bbb82194a6421b9798ac28036a7a2e89d3cd42"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/core/use-guards.decorator.js",
+      "sha256": "7b64f9dae82217fa8115c729b8fcb18f9c323ef4c7d230b81cdc3c31bcd83229"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/core/use-interceptors.decorator.js",
+      "sha256": "e9e8699bf3e7cb826b96a8420b891a1ea8e6346f8ca5fccd39e860991f813647"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/core/use-pipes.decorator.js",
+      "sha256": "9fa0056ff3351f1e03e4c9f51c224e12f82b39c8b7f4fe5334de32b19d4d0800"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/core/apply-decorators.js",
+      "sha256": "1c03531aaf353691f65aa3c700fd401c1c3fd49a20674cc5e23878f1f90d8c70"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/core/version.decorator.js",
+      "sha256": "ac49cf4e0f92a29f076c65156a27a9a666c07af0169d68b2e0b459b67130f87d"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/modules/index.js",
+      "sha256": "e3f7f460ef065d235e7b65d0814dd745908dd6c3a3434c2757d125abfd02c839"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/modules/global.decorator.js",
+      "sha256": "37213554e7648e98bd68a7c31f6099cc34abb5b5760cab1be50b9736ce700537"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/modules/module.decorator.js",
+      "sha256": "66d9684ab806fe9c181b8cac2518d6173ae6f185686096beaefa53f98edb4d74"
+    },
+    {
+      "path": "node_modules/@nestjs/common/utils/validate-module-keys.util.js",
+      "sha256": "2081fa0674e80fcfb0aa57f330dcdf7687b34b1fba695d4df5d833592b1e0d68"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/http/index.js",
+      "sha256": "eaa18fd79149269a445e65775d4a2358510d935ba7a18aa33311201f0657d4fb"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/http/request-mapping.decorator.js",
+      "sha256": "f540f73cb4827f8464789b1d9c912f20ba87df13d20e053d79907711ba77f838"
+    },
+    {
+      "path": "node_modules/@nestjs/common/enums/request-method.enum.js",
+      "sha256": "18f3259eb2daf5222d3ac445aaf5a9e90289bcfd48bb307056eb1f3a944258d7"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/http/route-params.decorator.js",
+      "sha256": "290b80a7bf70ae0e3a05401a4c81a2c7720a7ed20553267e77d7b84352bcc689"
+    },
+    {
+      "path": "node_modules/@nestjs/common/enums/route-paramtypes.enum.js",
+      "sha256": "0bdce97efce35da5063c886beadc87aef62a651a66e92d80754e14bf62c22e21"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/http/http-code.decorator.js",
+      "sha256": "6f324e777e6fbb93e25bf45c63ebd66ef0c327e52ec893b1ddef66918aaba7da"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/http/create-route-param-metadata.decorator.js",
+      "sha256": "34c4707acd02f901aa05d9e2ec04ce0fc9d315e943ad95642bc8b34c4913f224"
+    },
+    {
+      "path": "node_modules/@nestjs/common/utils/assign-custom-metadata.util.js",
+      "sha256": "0b477d03c1ef743219e0d67b1b5525997f9cd8aca5fa339e00b1db2f27620e76"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/http/render.decorator.js",
+      "sha256": "20faff7da66fbc16271bcab0d49d39ede2fc7d53a7de90034d268b7acb2aa757"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/http/header.decorator.js",
+      "sha256": "7ef3e9645ab7fa362e43aad265b7c9274eca2546bf1d4ad444389e1f5a49e8c3"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/http/redirect.decorator.js",
+      "sha256": "87d4b7bfbe8d4e03f8de0b5fd9691b8a9e096bc1dcf257a24969d81fe5b932b1"
+    },
+    {
+      "path": "node_modules/@nestjs/common/decorators/http/sse.decorator.js",
+      "sha256": "c6e3dcc6c46cc4d1f29b5f3d511ce70fe687fb48039716be5c3bd7fe88ab1dac"
+    },
+    {
+      "path": "node_modules/@nestjs/common/enums/index.js",
+      "sha256": "b9504f64da23a0f4d6c0b6f7828fddfd0f991027288819147e88df32bce2ab3f"
+    },
+    {
+      "path": "node_modules/@nestjs/common/enums/http-status.enum.js",
+      "sha256": "bb010e882eabcad4fdcd07cf9096d28b07584abf4d93302c4a292a827e2920c9"
+    },
+    {
+      "path": "node_modules/@nestjs/common/enums/shutdown-signal.enum.js",
+      "sha256": "51c57ef3bd4bf9b5f27b7dd34f34bbb65de6a69979304c314319df81032927f2"
+    },
+    {
+      "path": "node_modules/@nestjs/common/enums/version-type.enum.js",
+      "sha256": "b78528e85d7323b6505326b33af2e8e7fc18db9cfb15d12a855941c37e8cc036"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/index.js",
+      "sha256": "f8670adb300bc78e193064b522a1768aa721063847c06af9c9fabec8a3b140f6"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/bad-gateway.exception.js",
+      "sha256": "20d8fa80f3d6d7b2e3add29910904e98d45c6f45027af4282842a3bf89031317"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/http.exception.js",
+      "sha256": "a770967a0e4763fd122fe8952e27bfeb4a305670ac3d21b70d9c90a06cfaba63"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/intrinsic.exception.js",
+      "sha256": "1e38d341a0710a224e7a870bd97e8fac5147fdb37159970543885082b76a6078"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/bad-request.exception.js",
+      "sha256": "f7764f5adbda316dd404973189278e2622c3787dbeba8bbb19be1c9e92ec43e7"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/conflict.exception.js",
+      "sha256": "38f0d5b2274bf601583c0847415138b687597f933067ea179680b0eb536bf88f"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/forbidden.exception.js",
+      "sha256": "32b437e6c338c5fac5b22a0fabc3b4697b48c20a155ca9980415e87ebde69aa4"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/gateway-timeout.exception.js",
+      "sha256": "6b5bf7e348ec2b1c13b1fce60ee74cab24e1db5afe1eda60c465a49b883cc674"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/gone.exception.js",
+      "sha256": "231159fe969f4f049e2506796728ad65b053a3a6fea1bd8719ba03b71b4d356b"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/http-version-not-supported.exception.js",
+      "sha256": "15d25701e20196f2aa8a0d7c6234e8aa9bfefa2a1f5bf884dbdb6467fc767e45"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/im-a-teapot.exception.js",
+      "sha256": "c427d3ebc9c7fbbef91ce4fc5fb986cc4f05f4e0f15d29354cc10ed94e4eb644"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/internal-server-error.exception.js",
+      "sha256": "dc836fd3fb910dfef09a1835b9299bc202acd50a4f1b676cd069fd5f241cb336"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/method-not-allowed.exception.js",
+      "sha256": "432b43ab7806a7b1ee9e21233e0b2db171cf3ae5d662ab9f513f50a7a7921b3a"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/misdirected.exception.js",
+      "sha256": "090c73d59374b1cd29c6ec0e07694b4a2285f143c2ff01a8845ccfba82eac562"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/not-acceptable.exception.js",
+      "sha256": "ccd7f3f6e165ade32943f3773cc0bba65e4430581136316ee810f4dc9e21bdbe"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/not-found.exception.js",
+      "sha256": "84de2f96fb99ec2d8eb9318cf5d7bf185f7622185ccd9b406db4de3f53922e7f"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/not-implemented.exception.js",
+      "sha256": "09f166201285a0dcb40c23d11e05fdc6e9c3eff1eb6a8383b6d3da92aa264340"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/payload-too-large.exception.js",
+      "sha256": "f01e8db12cf0569ce0d978808dc9712524633f69423b2f503c872bd92c2e83e2"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/precondition-failed.exception.js",
+      "sha256": "89e0937e7cbba7716acfc2e2e5413347f37284b235e7b5779784a1fab6acbee7"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/request-timeout.exception.js",
+      "sha256": "f0924684f9c62316cfae7165b33a637c66abd25b8b9d6eb1dc0b3d96f0478523"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/service-unavailable.exception.js",
+      "sha256": "1d60f6421cffb85be3e7ae30dc2dff2a23911f55685563a0b5c9f4c41fc26596"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/unauthorized.exception.js",
+      "sha256": "beb65f8ee36a713e3ad6c8c077ddebd31195d8d37643ef77a6833bf6c1b19446"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/unprocessable-entity.exception.js",
+      "sha256": "e6828486af3132e6d74fb2977e106aad716ec925054aee11203f7a20335ce27c"
+    },
+    {
+      "path": "node_modules/@nestjs/common/exceptions/unsupported-media-type.exception.js",
+      "sha256": "c49aa3de21ab6b74a56586c7cf9de1015f6fe463778c4d8e871894a9140fa087"
+    },
+    {
+      "path": "node_modules/@nestjs/common/file-stream/index.js",
+      "sha256": "0a8a5787d90f9ae9b06e0da0f69f62f332dbae9524d9bd63a738b5b06cce048c"
+    },
+    {
+      "path": "node_modules/@nestjs/common/file-stream/streamable-file.js",
+      "sha256": "4754c83b4ec8f638fcc3ca164ffaca85295c0dde3808e37c24b62b70db7ddfb4"
+    },
+    {
+      "path": "node_modules/@nestjs/common/services/index.js",
+      "sha256": "4967a9ab86e94bf29502186aedd01ce962f39a47c9f443c80a98e639166aa6ea"
+    },
+    {
+      "path": "node_modules/@nestjs/common/services/console-logger.service.js",
+      "sha256": "d83eae64a9d2b01017efb9326fd1d2975c62ef07cbc01ef9a8d2ec803e54ad3e"
+    },
+    {
+      "path": "node_modules/@nestjs/common/utils/cli-colors.util.js",
+      "sha256": "dca6f26dc6658f1db51773406a2bb223f67e2d01df28b7fb4e110d059d70b3c9"
+    },
+    {
+      "path": "node_modules/@nestjs/common/services/utils/is-log-level-enabled.util.js",
+      "sha256": "7ccde64c2a8fc4ddcba4cd8aa89b35b2abbaa77a3059012f75401f36d78fa222"
+    },
+    {
+      "path": "node_modules/@nestjs/common/services/logger.service.js",
+      "sha256": "546d1bfed0057d4e84a7b458b8ff294dec5c0908d176d8013a9b0dfe03e14a51"
+    },
+    {
+      "path": "node_modules/@nestjs/common/services/utils/index.js",
+      "sha256": "ee8abd40479da33fdfed2226e1f6a2291737e17467312c0a1e1d474bf992d250"
+    },
+    {
+      "path": "node_modules/@nestjs/common/services/utils/filter-log-levels.util.js",
+      "sha256": "c3cee8a00651356f794c0ae1343465e74f5660a365b7339783a35c6e113ac8bf"
+    },
+    {
+      "path": "node_modules/@nestjs/common/services/utils/is-log-level.util.js",
+      "sha256": "4b1a3f78ccc8dfe618294c755d419e771aae536f5805cfcbf1c403c9a62a76a3"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/index.js",
+      "sha256": "c728b789fb944e015ddf783997e298257e846479ebf29b9ab48bdbcec2c97a39"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/abstract.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/controllers/controller-metadata.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/controllers/controller.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/exceptions/exception-filter.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/exceptions/rpc-exception-filter.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/exceptions/ws-exception-filter.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/external/validation-error.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/features/arguments-host.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/features/can-activate.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/features/custom-route-param-factory.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/features/execution-context.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/features/nest-interceptor.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/features/paramtype.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/features/pipe-transform.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/global-prefix-options.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/hooks/index.js",
+      "sha256": "4a6b23292b0066aa442532b46bb13d41cd1e7a6bb4c81002de2e89aa8fcfd860"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/hooks/before-application-shutdown.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/hooks/on-application-bootstrap.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/hooks/on-application-shutdown.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/hooks/on-destroy.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/hooks/on-init.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/http/index.js",
+      "sha256": "75a9c75e3e2bff3e26800260261d6d1c16157bac8e87bcb1483c5bc8dcbf2566"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/http/http-exception-body.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/http/http-redirect-response.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/http/http-server.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/http/message-event.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/http/raw-body-request.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/injectable.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/microservices/nest-hybrid-application-options.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/middleware/index.js",
+      "sha256": "0961633c89a817dfc80412ae26709f1c062dc169754de2af2f4cb39fa0e97204"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/middleware/middleware-config-proxy.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/middleware/middleware-configuration.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/middleware/middleware-consumer.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/middleware/nest-middleware.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/modules/index.js",
+      "sha256": "3b462e4231ddb26d531b7911ba8d38ab72ea3a6cc11fc64d87f0921d4a4fc1be"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/modules/dynamic-module.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/modules/forward-reference.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/modules/injection-token.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/modules/introspection-result.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/modules/module-metadata.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/modules/nest-module.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/modules/optional-factory-dependency.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/modules/provider.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/nest-application-context.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/nest-application-options.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/nest-application.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/nest-microservice.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/scope-options.interface.js",
+      "sha256": "fb2815babd117fb42384a22cbac58ce78c2c18002b5443c50656ac9cba17316f"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/shutdown-hooks-options.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/type.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/version-options.interface.js",
+      "sha256": "888579f88f1944bb23d3788e59324e385c408c3fb0f0bfa6673aa69c1d834d1e"
+    },
+    {
+      "path": "node_modules/@nestjs/common/interfaces/websockets/web-socket-adapter.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/module-utils/index.js",
+      "sha256": "420c28d00bd2dd1db1ed33bb69edc9b0f1ee18f3f4da3f960a11bfa56b5b72b0"
+    },
+    {
+      "path": "node_modules/@nestjs/common/module-utils/configurable-module.builder.js",
+      "sha256": "53256ab1867012e9992109f9cab69d76502a146139705c8ed5f43adaa14bc4e7"
+    },
+    {
+      "path": "node_modules/@nestjs/common/utils/random-string-generator.util.js",
+      "sha256": "48f0ebf54bf8a42030b338a99c3e16e5921bfe7fff1a92c59dc50da11303b95e"
+    },
+    {
+      "path": "node_modules/@nestjs/common/module-utils/constants.js",
+      "sha256": "dd365ec85a35664d474e28dcf04384aabb657851093a0444a5cdfded304d9c7b"
+    },
+    {
+      "path": "node_modules/@nestjs/common/module-utils/utils/index.js",
+      "sha256": "4097327ee380285d2ded9a3327788f385ca1fa6d9f4468673d311532c279918c"
+    },
+    {
+      "path": "node_modules/@nestjs/common/module-utils/utils/generate-options-injection-token.util.js",
+      "sha256": "9bb25c53cf6aa7b08f785a1e77e2b42140d1fe7b46d4cd55847bfebbd8ba3a12"
+    },
+    {
+      "path": "node_modules/@nestjs/common/module-utils/utils/get-injection-providers.util.js",
+      "sha256": "03fbc6b75760b2867304a75ba1833b4f10d1aef9843cab2d4573fe648a500958"
+    },
+    {
+      "path": "node_modules/@nestjs/common/module-utils/interfaces/index.js",
+      "sha256": "43e9f68ad6ec1e88ade19476a4d083b464ed05f4108d1b9ab75adc8c0b407bcf"
+    },
+    {
+      "path": "node_modules/@nestjs/common/module-utils/interfaces/configurable-module-async-options.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/module-utils/interfaces/configurable-module-cls.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/module-utils/interfaces/configurable-module-host.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/pipes/index.js",
+      "sha256": "c285998842cf3c045397a504748aef0e5355a56f84e46333d1d56933ae51cd6b"
+    },
+    {
+      "path": "node_modules/@nestjs/common/pipes/default-value.pipe.js",
+      "sha256": "6b88f784227cca65813e321897d62c4e037edf2d4a33922b811484c4351a4fa3"
+    },
+    {
+      "path": "node_modules/@nestjs/common/pipes/file/index.js",
+      "sha256": "40412618eccdbd9f97b2fc995cfe34270c5fbf34d1aed3998881de446aba6252"
+    },
+    {
+      "path": "node_modules/@nestjs/common/pipes/file/file-type.validator.js",
+      "sha256": "04e22ec29e0067d08875a4a88825f10f1a8bd3ebee231a618f5cb7f6a596e4eb"
+    },
+    {
+      "path": "node_modules/@nestjs/common/pipes/file/file-validator.interface.js",
+      "sha256": "d66f16d9ba336f833ed6e19fc46388ea01ff8f27d33292874ea8f6b6d45b0c15"
+    },
+    {
+      "path": "node_modules/load-esm/index.js",
+      "sha256": "ec22997053215428e98d2de3d9a89f8a98366452fe95d5e2b8d5a2924f41eead"
+    },
+    {
+      "path": "node_modules/@nestjs/common/pipes/file/max-file-size.validator.js",
+      "sha256": "7f1730df51b0e10bd94049d6f4ef65e35ddd36bf6fce6ba753cb54888a113211"
+    },
+    {
+      "path": "node_modules/@nestjs/common/pipes/file/parse-file-options.interface.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/pipes/file/parse-file.pipe.js",
+      "sha256": "27c453967eed0452eedf561bb6743efc444e0d381a5a4787802aeb46364975eb"
+    },
+    {
+      "path": "node_modules/@nestjs/common/utils/http-error-by-code.util.js",
+      "sha256": "9bdcd5f93be5206fbe63fecd2e76ea979e6f28af7995ac0b5fbbd6eb3557dc60"
+    },
+    {
+      "path": "node_modules/@nestjs/common/pipes/file/parse-file-pipe.builder.js",
+      "sha256": "8438ce794f46d42e0292c343eba821711235f444b2aa37183e3160e68c0bd38c"
+    },
+    {
+      "path": "node_modules/@nestjs/common/pipes/parse-array.pipe.js",
+      "sha256": "6ffdc957fe7390931a4c2b8a10c229629816329da32c33e214bc2296e9d772ad"
+    },
+    {
+      "path": "node_modules/@nestjs/common/pipes/validation.pipe.js",
+      "sha256": "5be8f691616ebb89f6289783d7323208bbca2f36fdb9015f53e0caf65c42a94c"
+    },
+    {
+      "path": "node_modules/iterare/lib/index.js",
+      "sha256": "4c4fe3824868577753b23d387ac800d8e2eca6b1ea07734572506a89450356d8"
+    },
+    {
+      "path": "node_modules/iterare/lib/iterate.js",
+      "sha256": "09593c1c67d5a855e1f49416de61315116c58fe6682ebe23538ca45dfb997d3f"
+    },
+    {
+      "path": "node_modules/iterare/lib/concat.js",
+      "sha256": "386546bb9c79784d5b71fca382a7622691315eae548645af7678d9b80d6f2bca"
+    },
+    {
+      "path": "node_modules/iterare/lib/filter.js",
+      "sha256": "75e506ff57770e82f0c8bb8270d1184d4fdc4f23e70e3c2ca5806c5b6bd858a6"
+    },
+    {
+      "path": "node_modules/iterare/lib/flatten.js",
+      "sha256": "d2fa7701a3aa23cb134500e8ae16b68d20cf9aec9195da196d33dc95f786ac99"
+    },
+    {
+      "path": "node_modules/iterare/lib/utils.js",
+      "sha256": "6b1a32a21f59864d9a5e9c865a0ef512ac44b9d758dd1beb34b7e5ed20321d95"
+    },
+    {
+      "path": "node_modules/iterare/lib/map.js",
+      "sha256": "f556653259ec11699949f7f9911e21f8f6562e526a11a1b8329fafffded3b475"
+    },
+    {
+      "path": "node_modules/iterare/lib/slice.js",
+      "sha256": "63e4e654a20c3650e40a9b26db0e351e8d75dbda4b96bb76cfcb7724e754216d"
+    },
+    {
+      "path": "node_modules/iterare/lib/zip.js",
+      "sha256": "58f6591bbf02f4a96e6e9d23e012dae6c9c0655d5321d10c6a501cf0fc5e3140"
+    },
+    {
+      "path": "node_modules/@nestjs/common/utils/load-package.util.js",
+      "sha256": "8fc26b273fe5499285e25355b4368fe8e1527ae217ede53144219c17cf1aa721"
+    },
+    {
+      "path": "node_modules/@nestjs/common/pipes/parse-bool.pipe.js",
+      "sha256": "71157c7f05f656dab45208affd5895309b606fea49e1e9e803dc7a1f151b8703"
+    },
+    {
+      "path": "node_modules/@nestjs/common/pipes/parse-date.pipe.js",
+      "sha256": "c4c90e2274de7c7e481a1d852e93256e556b39cf7f2b96beab4c475297bbe0f3"
+    },
+    {
+      "path": "node_modules/@nestjs/common/pipes/parse-enum.pipe.js",
+      "sha256": "cfd6776317055fef3a3fc98f13086b5f955c09434cdbec03501caca92190950a"
+    },
+    {
+      "path": "node_modules/@nestjs/common/pipes/parse-float.pipe.js",
+      "sha256": "1096a9e1fd3e30c5eb91a59cb992e808878bccb92ca0f1ed3baa145e70b9298d"
+    },
+    {
+      "path": "node_modules/@nestjs/common/pipes/parse-int.pipe.js",
+      "sha256": "f2d15d43c0e0a75e7af630a1adca084fe9ee52ddabab2ec5f5bb98eeb1908d9a"
+    },
+    {
+      "path": "node_modules/@nestjs/common/pipes/parse-uuid.pipe.js",
+      "sha256": "4dd23c113775236dfe1459ad55c549a2e3a288db317ffff9f133170328ff6a59"
+    },
+    {
+      "path": "node_modules/@nestjs/common/serializer/index.js",
+      "sha256": "4d800f0b1c3b542317563e99bb985388a46b0216903b4b3889fd0367183a0cd3"
+    },
+    {
+      "path": "node_modules/@nestjs/common/serializer/class-serializer.interceptor.js",
+      "sha256": "6d61ad18b762fd3092927b0463b195a5bc63900dc64561e3b335353b27466322"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/operators/index.js",
+      "sha256": "815337444ecd9f481f1fa4f80039796c6e73458d985256c895c7b27b268430c0"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/audit.js",
+      "sha256": "f27925fbfdf28672c57751019cf62ec729003e6baa9cef672f439769e9ac5ec2"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/lift.js",
+      "sha256": "32e3757f091c1e576e53235cc18ae32f23e704dca05d07bc9a9db236152ce697"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/isFunction.js",
+      "sha256": "79b21347d14e3ef6d9cd5525d03ff3c586144643f67d71aa7733152542571d8f"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/observable/innerFrom.js",
+      "sha256": "c5aa75609d0d43222789766e2276e957c895df7b7c59f12cdbd7029ddaed6540"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/isArrayLike.js",
+      "sha256": "f6472821ab1a3fcc3681be9d1788a36f098980d2c1a614aaeb5334924de6a2ed"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/isPromise.js",
+      "sha256": "40c83b0c84cd2437108ea62c24b040f4cad620eb2e1b6371ced99ac1e58f913f"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/Observable.js",
+      "sha256": "2227e1910b1b075441d460ed4b1378046ef0e2292263ccf4d88341b9a519516e"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/Subscriber.js",
+      "sha256": "23e53ce697e512be9bb701fdc4a009cbacb9a2d70ddc679f1bed04ec63f05250"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/Subscription.js",
+      "sha256": "5f28dd229997514ba0b6dbeb2a3f7900b18e33120748df785a4357db5e5929ce"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/UnsubscriptionError.js",
+      "sha256": "88d7121c29fe765b61acaaece860ea3b4d9f5906ca446a28b73c2ebccc72416d"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/createErrorClass.js",
+      "sha256": "a53d97d27bc43b560dc14fd6de162c6254c97cb42597aa3ee4adec353e2ddd24"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/arrRemove.js",
+      "sha256": "befcc9f2443c3d1d17b9126e5e95c2ed1d05e35d11e9acfcf4198c881f34c1f2"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/config.js",
+      "sha256": "20d61d0667f95f0d8bd5c70334ee21dd689de75c9de78334d005931b23e44af8"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/reportUnhandledError.js",
+      "sha256": "ce47e5a9c6c093ab22df32cad9ce8593b7422dcacb00ab99f43e01660ae188d1"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/scheduler/timeoutProvider.js",
+      "sha256": "8eb36e7076b6675648bd5bae11a3a4b33d990f0b45e123443383d6e24e47901b"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/noop.js",
+      "sha256": "61b6da836c0749da346edbb8a3e6d4a5b8c4d0e70e64189b0b120df372487a01"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/NotificationFactories.js",
+      "sha256": "34211501b457fa1f9100ae06f22f2052e97dd8fc85257536f11eb5a912a1f453"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/errorContext.js",
+      "sha256": "a873614dc20f67113485f2c6d23db1787278dbacd1648192921bafdb7c715b83"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/symbol/observable.js",
+      "sha256": "1582a9ac63ee121f5fec532f5b8a8f2760eef622d42c265b2c73ed31fadb9dee"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/pipe.js",
+      "sha256": "b2770b80ea36975151c9d67279fe2e39167288a014198aefca07aab10788635c"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/identity.js",
+      "sha256": "67ee561ef5325e14030110f96d44b01fbdd92e41b7982f9fde42533ca3f4e510"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/isInteropObservable.js",
+      "sha256": "f1457347f4f6acc6c7e14cadee4730dcea152850a0d906484eb1a192a4804e7c"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/isAsyncIterable.js",
+      "sha256": "168f5393c3c3400ca78fed481d631f323ca71c3175d1f6c233beef7b687da2ff"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/throwUnobservableError.js",
+      "sha256": "2df9b4fbcd41f5881f1428b60ac107dce568065c0418496c9db0ab87ae8127b3"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/isIterable.js",
+      "sha256": "a1953261a74b9f960bfb5747af6887e09a36422ceea465e35fa30ee891c6af3f"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/symbol/iterator.js",
+      "sha256": "d7aecedfab0be3e2749232bdda9e2ba4a53b23001a5c18d443e971e4553e2a4f"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/isReadableStreamLike.js",
+      "sha256": "680367631adb0b97ca69edd6012ae57b0f84ca3b117a78e0a39b12af5d24fb00"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/OperatorSubscriber.js",
+      "sha256": "917291ddaad8f2fa1d05df7f9db608e16be732feb116bec4186fd7b2d86ef173"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/auditTime.js",
+      "sha256": "eca21d502e81244e5ab7a7a3fb91c8110f159e5ec7cd5d9bd51931e318354e0c"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/scheduler/async.js",
+      "sha256": "afea57e09c51b15ab0743dcb97436ded2e6b33f63c0b2c787e76f7110cad5a44"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/scheduler/AsyncAction.js",
+      "sha256": "5bf39d8d6c19125c5adc2e8a74f7d847f1375dae1ae267b1d425cecfe7242300"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/scheduler/Action.js",
+      "sha256": "07fa4c47c71d93dbd383a898182bf108058f2762b1b5525a168c9000599ab4f2"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/scheduler/intervalProvider.js",
+      "sha256": "ede1c7db30d08d7a35c8239fd90e918c4e669eef1ba38fcea6c18d531473c6bf"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/scheduler/AsyncScheduler.js",
+      "sha256": "8f0c20fb002eefe9b7dc0485934d7e349f6033fe86353750d00f919fef08ef89"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/Scheduler.js",
+      "sha256": "3bf02b963f7038a456632d87a2cf184ecc75c5521bf7c7d118d14a26414dbb78"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/scheduler/dateTimestampProvider.js",
+      "sha256": "68b1102fa221a83df97de57424a428d2beefabee9added90d7f23f0bbcd06490"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/observable/timer.js",
+      "sha256": "162ed835940608444384ddf6cd11f21d4c589ac7bf5fa17f586375d100506c3a"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/isScheduler.js",
+      "sha256": "9ed28c2d2ee5ea174c96495890dbf5a71d2447742f0035fa32183a281a5c6ab3"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/isDate.js",
+      "sha256": "3b37cb89e7823b7c4e3eb3a12cba2cf44a8701a2e750958fbe1bd5b02c656ea1"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/buffer.js",
+      "sha256": "4f87b4ebd6d0f309579e5b00e404ac242c80b2bc490bbeaf379d43bab7ee24ba"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/bufferCount.js",
+      "sha256": "d0fbef4331e6e14d0ed356ed4de04065dddf9e6341c65173c39f101e5ffa4e8e"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/bufferTime.js",
+      "sha256": "99bf12bce1d17e2cd064999f5e14f5cfda0a30987b937f9dc376906e6c799a66"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/args.js",
+      "sha256": "08670b0421d9301f33ec8fb90774f2d0c625d3968445928c707d2d184491ee49"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/executeSchedule.js",
+      "sha256": "cebe272ba6e3bca60750fd13633728fa27b2b21b8e1d4b0c5bfa9a1a46b2ea0d"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/bufferToggle.js",
+      "sha256": "be3f1b174b3399ef775aede82577af73338dffd5a4443ed702587cb2b84a4005"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/bufferWhen.js",
+      "sha256": "c5f54c5a9b57d5096d56d15c5b3e48aa56ffb3ee49268b21548e7409234b46e8"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/catchError.js",
+      "sha256": "1ceb26a4a39bbf62a9b8a233d8bcdc53bcca2943004d525940dfeeeb298e6ed2"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/combineAll.js",
+      "sha256": "06a9afd5ab98ec8f6ba45591bad4de94ce9dd76a61117211e2e0931c52a72199"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/combineLatestAll.js",
+      "sha256": "1bde0ad2e177b71a1c838ba9b64e3ebbf0a4cf7380386d78f756c6c6884ba441"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/observable/combineLatest.js",
+      "sha256": "e041ea8be36f7de513b6cef4afe3208cab5248791d483cea6a230d2db80a8c25"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/argsArgArrayOrObject.js",
+      "sha256": "018c416724d8cfc0a72858389650305bee22bd9aa1c5ed224f2a6c723f57b12e"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/observable/from.js",
+      "sha256": "4055e15603c1b8537b1be8a1fb05acf70de4e5d6f9d69660af89e37febff1f78"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/scheduled/scheduled.js",
+      "sha256": "6026a3d33e22fbd3bf96e58fe321d6867849493c61e383dee6298ef5793d93ac"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/scheduled/scheduleObservable.js",
+      "sha256": "31e06b364b3c5529ceda27676dbe7f288b9c1582ab9f43ad48d941365d93e3c2"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/observeOn.js",
+      "sha256": "ea271d85ddb9daed7dbd34c6381a206227f66f3231fd457b49ed520ab96c82be"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/subscribeOn.js",
+      "sha256": "477bab1e2b5ffe8e09319da969d108f106dcad4cf9e5805bdc80e5f3cc400a74"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/scheduled/schedulePromise.js",
+      "sha256": "de15f28ff1c7b89ef5694b04d3119c32e7f0a941de93139a09fe97b9ecb7b6b1"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/scheduled/scheduleArray.js",
+      "sha256": "ee0da2cea7d367f0482fd710257051cab4c502883aa50ca852bc3125bdd8c613"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/scheduled/scheduleIterable.js",
+      "sha256": "bd6a87554048405e4f7294d073cbc9444adaf5b4f84396e1226e700d56dd102d"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/scheduled/scheduleAsyncIterable.js",
+      "sha256": "8ebcefc48670b7bb446cf47f0039cecad0d6f5fcecf05f0e0a4a442c81d10de6"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/scheduled/scheduleReadableStreamLike.js",
+      "sha256": "d4f5d74d5a70fa6b078e17a5814bc9d2f779f48fbee85e07a4226df1f57e5d2e"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/mapOneOrManyArgs.js",
+      "sha256": "e09064988ac2193f0a08eac93478c665a240cc0f6c5f900aba0079f0bab53fbf"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/map.js",
+      "sha256": "9480c765db2966a3997341bcd2295c3ff0b8f556380ccfa9f6f9555e70b1c824"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/createObject.js",
+      "sha256": "1b754634f273975a2ccb25d25acfa12ac52207f2f9f826f04263db1c7c5952bf"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/joinAllInternals.js",
+      "sha256": "7ebe41fee71f5dca4148665debd4f136c1c32f208c05fe31980b6a2148fb5cc1"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/mergeMap.js",
+      "sha256": "5ebbefdf4ab8ca24c542a451fc9e53c2afeee1ec6a9ee8d91d4aa12177cb1e4c"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/mergeInternals.js",
+      "sha256": "7a4252ac3b65a88ad9bcd367bc95aee235bf85faa7385d79d9e471f6d9612ee3"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/toArray.js",
+      "sha256": "090a736313ee4fca62f21da46dc082fad3aff9610720d968d7f9a1c84f00a840"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/reduce.js",
+      "sha256": "f94d1d52124005bd1a14b14487176b7b95eef65fdeab9d81a8f8201a5889f1a3"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/scanInternals.js",
+      "sha256": "75e2f78a6d9fdaffde62f1db4f6594d4e5a55832ea2b96d7a201366fe207f40b"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/combineLatest.js",
+      "sha256": "c698074a52a8c41feac863439c4536503691267a0294a24fdaa2dbbb9317e396"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/argsOrArgArray.js",
+      "sha256": "566eb7a1f25289462a095282587addce462d1754b703d5b995af855dfe63d145"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/combineLatestWith.js",
+      "sha256": "157b1dedd66cf0891ca6d191b19a73614ab61a9138a5663595d7687becba69a4"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/concat.js",
+      "sha256": "6a0f6445885719843adeb23c8b7507242b3e2c0b8db89f1ad5ad96bf23d0a76c"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/concatAll.js",
+      "sha256": "f2509644ff75acc7da615de80b44b02e8a0081727db2af8858064f254dfc4269"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/mergeAll.js",
+      "sha256": "faec9d325d2f757ad399fb87b5bf277054aa66d9aa0a5f818343cc74977068fa"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/concatMap.js",
+      "sha256": "19f0512897f00e8a0e956331ba0cded470ff7b2463d438224ab2fcc0d61ee9a6"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/concatMapTo.js",
+      "sha256": "fe4dd06f0148b35e000764838ae2e15de57a732be9ed46dd761156d853b910a6"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/concatWith.js",
+      "sha256": "11f12d2cbbb97f87fac28322a8d4e442d1059b1ccf9364870d8cb5f6852c2652"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/connect.js",
+      "sha256": "71124d056400388654e58a0afe75ff40a0487d12795fca3aad552f70074a7483"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/Subject.js",
+      "sha256": "de52b970f505d635b1f5a0d7dd47bc2737d8f5cd239db5aa52e4d706fee66a89"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/ObjectUnsubscribedError.js",
+      "sha256": "913786f6c6f7608fdc9ce0c19c2be2d7da18e69acc172d61a8d51086e38e93d7"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/observable/fromSubscribable.js",
+      "sha256": "fdccd29de9551638a5abd47ced51c4985e9af17ca077d30e7fdf5ec0f941333e"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/count.js",
+      "sha256": "17e00ee43895794e0ebaa7130b64b2c9f77907e924a1d6877b4095a1f26dc06e"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/debounce.js",
+      "sha256": "19cd0b9f955c9a295b44274cc391af9f5c67995d58d7490a9d2f8270e9ca4f9d"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/debounceTime.js",
+      "sha256": "22cab23826d4383b5b8e7a34f42a3547ff87486cc86963c8e8138f1621789cdf"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/defaultIfEmpty.js",
+      "sha256": "7afcf0160d77b04de417168467c97a3965c2b8108dcd4632888557002da721e0"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/delay.js",
+      "sha256": "f908a59682a319ba00cb07ee8277e27905e7ed4e970de55632a8dca4671d9be2"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/delayWhen.js",
+      "sha256": "499183f8dbf7231a2dcabb6eda617f7ed6bf3e5e68e653eafb58c3c4eee4b1ff"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/observable/concat.js",
+      "sha256": "8a0bb4025cc3242238389b4caa230af2c21ea6ae59c140f0fcc9c26416ea5f3f"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/take.js",
+      "sha256": "1a7ccf8a3efccdfaba162943c1e6c26a597da08e4faeae7bb45dcce97db351c8"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/observable/empty.js",
+      "sha256": "ceb29b94fb8b46f971cec838e29e584e1b8a95f04b82152e71fab05d73a9111a"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/ignoreElements.js",
+      "sha256": "1e38e6bf18d2a39c3a7457e0798e7ff68529d097988c39a5350e25fb3fc3211f"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/mapTo.js",
+      "sha256": "58e637b0a570a8f7d3781f868e87d7e539ceb69aa2c64e9874a9d277f0b496bd"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/dematerialize.js",
+      "sha256": "b4724ce898ade43692b6ca80dbe5577de2757a05c10289791ae67aa765913715"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/Notification.js",
+      "sha256": "3a72c358a4659d46a8864dc8d6e170f4bee8afae1f6deeb0bd79cee8b118b381"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/observable/of.js",
+      "sha256": "56fd296b6b7f455ef353719e2efd9a680ed7d662029e8d9e1928e654eb56b037"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/observable/throwError.js",
+      "sha256": "bf5e00cbfc1988cedba96ecd98a632182ad5b9349468a76aaaa7bdc55e58c0e8"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/distinct.js",
+      "sha256": "22fe84f7fbd90fc61e52b2007f93e101ffabd09cf92263b81c6becdce5248dc9"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/distinctUntilChanged.js",
+      "sha256": "373bfea29c064e7f7677208779dba4219b147d7ef5cdaeb1f07941ed730ac32c"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/distinctUntilKeyChanged.js",
+      "sha256": "6be2544cbceabca41b0d66110404492cfe1bb5e79bd8e54e1a362d0f50b91dd9"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/elementAt.js",
+      "sha256": "cea22856996e2d07bc4d330176de992fd008b45ab86705b43b513068a7e918f9"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/ArgumentOutOfRangeError.js",
+      "sha256": "f67fbb0c0a27bcdc1b12eff9d7483e924f2d2b2bd3aa74de52eabba4dd5ee954"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/filter.js",
+      "sha256": "e45eca79a648ea9e5c27d709ba474a6b3dc4d2526219a12f389f98cc543fd299"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/throwIfEmpty.js",
+      "sha256": "b7ff2632d316292eae777367d191ee7c7b6684b25ed9b59ffb131299d831af69"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/EmptyError.js",
+      "sha256": "5c649eac907a630f5a7500b09d281386922f0a4be239660fd847f847d4939ce2"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/endWith.js",
+      "sha256": "404d026dd5e2526953aaf58b8c3e55e6f465974a4b238d9f4965f484c3ac935d"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/every.js",
+      "sha256": "f32ab34269b201ef69dcf0e2560e70115e929f2b52d9411a1bb24a86af411689"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/exhaust.js",
+      "sha256": "14e045a1561d23c072e23f70b706a3af3e8647b36d88e4eb25c6764515d815b3"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/exhaustAll.js",
+      "sha256": "33ca40711e9889afbd830e5e147791c3dae1d8f8c29719e2f56fe080c7cfcbd1"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/exhaustMap.js",
+      "sha256": "c8fc2ccfbfb484c84fc1668d7e2a8163dca16e4ef615e0d332e5a09993497806"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/expand.js",
+      "sha256": "7b61025c29cdc6812e7e8c9459369f6860299b4fbc534f74e86a7b07910d0229"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/finalize.js",
+      "sha256": "daa189a0c61959de09779f353cdb1ac7a31e90fc466e4563a4064a27a5d55318"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/find.js",
+      "sha256": "0194ad7ba35356ff59a577977deb2305e8ade00761b9627006abdfbbf8179286"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/findIndex.js",
+      "sha256": "76c27315ae5022a63670ed6a35d6b2bfd47386d339e673cadef602769c1f427a"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/first.js",
+      "sha256": "d867ea9e37a48178f1bc5264f4dc0ecedc95ca231effd4b740b0fb12b281e06b"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/groupBy.js",
+      "sha256": "a37fcdfc54710add30c519e8bc49170904c77c3ddaf120b8c25c95052a436a04"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/isEmpty.js",
+      "sha256": "9cf7eee2187b2df4351c030b2e0cad214c276126ddd9e898f43d994aec489835"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/last.js",
+      "sha256": "fa72d0df65ac688822dae31765c93e55959704534fe4f3ae6c60be87c1b7e133"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/takeLast.js",
+      "sha256": "ac355ae3adbfbcef535657f20aea3d25dbc0e7d7de64bb8de4ab8e8327eab65b"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/materialize.js",
+      "sha256": "b4e8082b6bdbfe708697ada1fc11a53dfa06c787aac3e07006dc3c776795bc37"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/max.js",
+      "sha256": "71db24d1e1454b32e7c05ec5994afa504a805e298038c5e13f2cf35fbe3fed8e"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/merge.js",
+      "sha256": "9476fd9b214544f4b7afe6996933aeac1598e571900cd996ead008e896b553e5"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/flatMap.js",
+      "sha256": "8104de8720eaad6bcd16dfe8b640a727ad10000622d482b68938133a27f369f9"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/mergeMapTo.js",
+      "sha256": "f64e1b4fb206d9e5040cab08700ea1acf596658080b0150eed441086954f9dcd"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/mergeScan.js",
+      "sha256": "9e13d71bb869cb8cecf8b05c384f27e066550875710f776f2aa4145ab591131d"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/mergeWith.js",
+      "sha256": "121ad9a45552c669d633594c81673986f9ae7057618682211a9ca301b305c35f"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/min.js",
+      "sha256": "0dde36c98170b99103faf575879f5f5ab59ded6c53a427f2a1b843d82516d7be"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/multicast.js",
+      "sha256": "f63f0cefd6c6cb8a5197470888d6004389aa3ad49440cf910748f9e32b19810c"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/observable/ConnectableObservable.js",
+      "sha256": "e9e80461d7dcdb7c69f5412f6161136cc434f6d10862bdb67d949a1ed61dcdb3"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/refCount.js",
+      "sha256": "766b515cdfb0bb20abdbfb761739f067f1345b7795cd371a03152c36c6d7a71c"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/onErrorResumeNextWith.js",
+      "sha256": "ee9c7adc478d3ca8aec6976795ef1ad4397ad2d42ddf53ca5617ecfc8261619d"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/observable/onErrorResumeNext.js",
+      "sha256": "6ed23cfebb3a0e7774e3d8c621a5b87723bf27d7983d612cbd1fa99ee6108792"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/pairwise.js",
+      "sha256": "541f07eb1a2dfef8990c1a88268c2b48d2178b4e2a7a4022809a64c4e7324935"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/partition.js",
+      "sha256": "7833242cc48ac7a58f1d89efa524c9334776f41553720813a5c0fe1a262596d6"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/not.js",
+      "sha256": "572a60fa060acbf1ddb30f8e096d5ba120fc4ac2dd5a2c9d8eb92c61c12943ce"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/pluck.js",
+      "sha256": "e2003f68f0e2533ec64d541a7c6981017a4ab1af69ac84e6d92800a7b489d8c8"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/publish.js",
+      "sha256": "20ca52eb97d3f72f12cd7d6a953339180ef13e899f019df2418b197014b16620"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/publishBehavior.js",
+      "sha256": "3cbbdee294428e71a2baac4940250287124bd9d3492c3d9bcfa6d0abd69ee156"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/BehaviorSubject.js",
+      "sha256": "54df6a1d20262c2d8b084fe4da90614a4decdfab2b63a21b9240556a344479dd"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/publishLast.js",
+      "sha256": "3c0a81a2fc20e0d074393b0c25e4c01be5774d79d294b9207ab866f451dc6291"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/AsyncSubject.js",
+      "sha256": "43b0579f650bb20c3d9478b09acbb5608571c181fafd87cea9ade2b5d39001c7"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/publishReplay.js",
+      "sha256": "ff79053097e690947cdfffc8a6180705609a38480c0ce0989624d97c09bb9f75"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/ReplaySubject.js",
+      "sha256": "108e51d51b7605ff27ea89f3ca050eb12354e17a1d112bd9740ea54f3fa69cb1"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/race.js",
+      "sha256": "65542ac0fb9bbcc740f2c4f419b4820503bf66b44000dfd39c67d18cdf039d6b"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/raceWith.js",
+      "sha256": "2d2e19b8d6edd9bf0b47a9480e84880030f1fa3b27f261427da2c81173a70fa0"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/observable/race.js",
+      "sha256": "a16677ef34446af7a22cffd4c4d23fc36907ee08918b3985854b440d009df1cc"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/repeat.js",
+      "sha256": "9227cf5388c64d59c58ce70299aefbd4736e5a33867468b97b7c9afb192c43f5"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/repeatWhen.js",
+      "sha256": "7b6586ca43d71f7a9980a0ee17f243e28a5473e722ddcb5d90da21ec65bdbafc"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/retry.js",
+      "sha256": "c33896deecc98ed2aa274492f2616d5983665c58f89acb3dbef7f1606d8e4845"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/retryWhen.js",
+      "sha256": "b3a0b8c968fa796b5baaa2f117e8c4c8df40d72223cdcd2ab9e874ecc7913a95"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/sample.js",
+      "sha256": "72208769094da4b494f1d582e5144decc1f1596268e184c2bc054fd87a1d9517"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/sampleTime.js",
+      "sha256": "45b65a53362b7ec78b549ee7cbcf72f4c4d2f3d55be42c44828e4226b634c067"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/observable/interval.js",
+      "sha256": "e3da3f4f118ef533f04d1ad2261b4a711a5e9883d85f241a74d0ec50e7a3a56c"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/scan.js",
+      "sha256": "67deeade492a25077868eeb081c1ca25000fe2b6757d1ecbc725b2b4e4af3468"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/sequenceEqual.js",
+      "sha256": "872f1c07ec12a17ca80045cf66c7fdb94942af8d94100e3a44a510dae5b3b414"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/share.js",
+      "sha256": "b94780ea1d85b8de83b648fa94f648d94212af58bf5ae5ff36bd9f79f90c66aa"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/shareReplay.js",
+      "sha256": "03b1927460d15aa5000ec5df88cf5045028aa9191dab4843520a167094741db4"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/single.js",
+      "sha256": "8eaff3bdadd585872b0770ed56a09dd87a3e334433782c056e2e0f8c11cce191"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/SequenceError.js",
+      "sha256": "2113a9da572c43affb14b7e8820c03f431887038c39c54d258dfb5fa4b964195"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/util/NotFoundError.js",
+      "sha256": "409304607a60be8cf33cbe4f0c5fa7eb6af9012ecd499769e4dd441e3afe1865"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/skip.js",
+      "sha256": "297a17b4bd0ef8f14a70374f99832fdccee06dc0dac1af9b4c25ead08d442b28"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/skipLast.js",
+      "sha256": "2a3182f46586f34aa0575b11ff83f69652f691d93bd5e051fc3eb4afff181621"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/skipUntil.js",
+      "sha256": "b7856029b474edaeded594b007d7aaa85884e8503c4c006ff3193d25b78459e7"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/skipWhile.js",
+      "sha256": "08ad83e38b48a941f6529739eab49b285f3dbf2f635635191d7415b0373a103b"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/startWith.js",
+      "sha256": "50f91bdffe6fe92611462f9361acb136d3c4e8471c2e17b655432d18b0498513"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/switchAll.js",
+      "sha256": "f538e3f85bb54608dffdbbe6c7acbdbe1e70b73dc71a871bce192635a6ac0dec"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/switchMap.js",
+      "sha256": "55178327ec4bd9c082452cea1efe021dea090b90c35cf64509395770248a60ba"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/switchMapTo.js",
+      "sha256": "f89ecbe0d32ca42654e691996455b54de94ec0f644c51b1b66bb61e17bfc5c58"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/switchScan.js",
+      "sha256": "c086c6252a6fe89294e4286afdc261ced38bc1e5ca2a1f15c6995b4ad8cdaa12"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/takeUntil.js",
+      "sha256": "25398e9b9086deb3e9f073043c4054e56bc13eb1c3d7c99798f666372580bdee"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/takeWhile.js",
+      "sha256": "e87b2321398c6a7894ac1cbee9bbd3f5de3fdfb6b49762a22794317943e7d7c6"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/tap.js",
+      "sha256": "34d98d24d3f7cd6c75cba3b7dfe7d228020cd914c4a5ddc9a02ad1b24dfb5839"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/throttle.js",
+      "sha256": "0dcd6bb8bde962a053fbb84974e6e83b38a65b10b9361c2120bcfc0267115fc7"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/throttleTime.js",
+      "sha256": "834ebef7971abf1829a223c21f20a5926fc23b7a28cd4d6b96e9fa5b2fd6f64f"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/timeInterval.js",
+      "sha256": "54a1699ab1773173f7d2094a03f91effeacda93d5f533464e56883a2fedf9df7"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/timeout.js",
+      "sha256": "0f5227b970fd3833bd9c3af46ab4ccefc9d1fe74036ae1ab0bd045ff8d57fc08"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/timeoutWith.js",
+      "sha256": "8091fb52a30a586a622abe64002f112588a91a60d3f577f55f996edc0259c89d"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/timestamp.js",
+      "sha256": "cf197dc501e7545b22c2034ef33b03f3e7f065886539812a32d295a0410887d8"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/window.js",
+      "sha256": "64d210d52606faeecc3f44d0253733822786110417916f49446e64cca543d331"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/windowCount.js",
+      "sha256": "63e6bcf0c8b54debf2c70b1e18a37a67675a7ec123001c0c2e7521cd8445f8f9"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/windowTime.js",
+      "sha256": "b9f396bd58328f4730dfa892074864d947f8bc7a2a08633f0dc9e2c24c78a39b"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/windowToggle.js",
+      "sha256": "fa59fef1ceebc6f87a47f608d6f0d3846a7114098a4a8fdbc5a186f721b71812"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/windowWhen.js",
+      "sha256": "a9e74341a294d1144efa72d4e3d03d877d23f3476b931bb91b36d0f93e46eed8"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/withLatestFrom.js",
+      "sha256": "c10a1f027319e7892ef24b4c1efb36c6c07477c3156b2f7029de8b78ebc38552"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/zip.js",
+      "sha256": "cc417d013f0126cfed54512aa63d04ded4c5704fe78d54d0cedb97ea548a4cca"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/observable/zip.js",
+      "sha256": "2e83dc549936a4d019b1f28482e2e54ace5479e983a58418cc1f0b98fefd603d"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/zipAll.js",
+      "sha256": "5b4cf6497132ddfb5268bbe8733ca462b39b2956b447279998720c69a481f1f0"
+    },
+    {
+      "path": "node_modules/rxjs/dist/cjs/internal/operators/zipWith.js",
+      "sha256": "03121e25eb173926d1112076d7b869d2321dbe4c3a9545ded4bf6757c04bb935"
+    },
+    {
+      "path": "node_modules/@nestjs/common/serializer/class-serializer.constants.js",
+      "sha256": "667c41b309ea5faa63dffea65e9f454f409bf842851005eb5d6b90180530ecea"
+    },
+    {
+      "path": "node_modules/@nestjs/common/serializer/decorators/index.js",
+      "sha256": "8ad51f771987518de97b6d49ed0486aeb3b08e1950153d0c6cc3f9601ebf632a"
+    },
+    {
+      "path": "node_modules/@nestjs/common/serializer/decorators/serialize-options.decorator.js",
+      "sha256": "f442881c6d981483fb09d4b55e0b002e3ecf301bdfdd29d71e9abc2b1fc3d5a7"
+    },
+    {
+      "path": "node_modules/@nestjs/common/serializer/class-serializer.interfaces.js",
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "node_modules/@nestjs/common/utils/index.js",
+      "sha256": "b8b230c590e1e74bddf6c7088975f501e5943923bc0859b32b7a79146bbb237d"
+    },
+    {
+      "path": "node_modules/@nestjs/common/utils/forward-ref.util.js",
+      "sha256": "9e73b3a444a8cac9de6668e02d308e861173c502ab8a5d812885ddd7c7014349"
+    },
+    {
+      "path": "node_modules/pg/lib/index.js",
+      "sha256": "3fad6e6d3d976edbabe0cbc9e1d39f4340bcb719bbbb186a0d3a24f3dbd4a94c"
+    },
+    {
+      "path": "node_modules/pg/lib/client.js",
+      "sha256": "ad6aa93c26b0bf26db1f2ebe74216212790a04c41af5585c63760f9fa8322a32"
+    },
+    {
+      "path": "node_modules/pg/lib/utils.js",
+      "sha256": "0348fa1818f4490823187cafc3d31738de7fe3bd30dd0cd12711c272367b2d80"
+    },
+    {
+      "path": "node_modules/pg/lib/defaults.js",
+      "sha256": "d91c22d082ec974f9f878a71e8d9d56a7e5fa9a711cc63f32522b43f5e9169d4"
+    },
+    {
+      "path": "node_modules/pg-types/index.js",
+      "sha256": "ece6d549270ba55d08126b10c9997324d808ee828ef00dad236e84e54d9d556d"
+    },
+    {
+      "path": "node_modules/pg-types/lib/textParsers.js",
+      "sha256": "bd811a530000508b6b90c1db462078e122f0404769d73f57ad41fe90aca159bd"
+    },
+    {
+      "path": "node_modules/postgres-array/index.js",
+      "sha256": "807ba580ed423e518672c27b4022a56acb693be04349733ffc1fe6f324fbcee2"
+    },
+    {
+      "path": "node_modules/pg-types/lib/arrayParser.js",
+      "sha256": "cad20b20e6312125b45f74480eba3ef46b456997da4f53bbec56356d66edd730"
+    },
+    {
+      "path": "node_modules/postgres-date/index.js",
+      "sha256": "9a09e3ec0775237576b1f6ff0fba0ed6171235aeded635a42c174b517e34cb1a"
+    },
+    {
+      "path": "node_modules/postgres-interval/index.js",
+      "sha256": "836fe0a39e52f051d62583d8375d3b270b4cb93dd026b125438a89e5a0258c41"
+    },
+    {
+      "path": "node_modules/xtend/mutable.js",
+      "sha256": "71a38649c77408217483f81f55daee1d6646d6c670e3d034a4482cb3453886e9"
+    },
+    {
+      "path": "node_modules/postgres-bytea/index.js",
+      "sha256": "c078b99e1009c4bcf6e3ab59d9fe808b12caee3461204ae599cdd9cccd990801"
+    },
+    {
+      "path": "node_modules/pg-types/lib/binaryParsers.js",
+      "sha256": "4b0105414068ea96450ef0d420db9449c00c565c5894683955af15bf94075fb9"
+    },
+    {
+      "path": "node_modules/pg-int8/index.js",
+      "sha256": "f991b0a41119bce0efbb471275dbd02de31a79fe6f87f8f5e5678e373a0f1627"
+    },
+    {
+      "path": "node_modules/pg-types/lib/builtins.js",
+      "sha256": "09213197e4b44012e4c83669aa80884a189e90c777ddfef1f44c90c412167354"
+    },
+    {
+      "path": "node_modules/pg/lib/crypto/sasl.js",
+      "sha256": "99f1a2607fe2a29f1c4dd1aaf43dec0fc2b5de8755de72b39d3aa8c575bd6a71"
+    },
+    {
+      "path": "node_modules/pg/lib/crypto/utils.js",
+      "sha256": "a849cfe22d7590d79ddee76c8d7a058e2b67360a0d76683275d34133e5637117"
+    },
+    {
+      "path": "node_modules/pg/lib/crypto/cert-signatures.js",
+      "sha256": "c4b666a8d8b0dedc0724fbeeb55333d15ced942d1b10f9cd854d77d7861b3d08"
+    },
+    {
+      "path": "node_modules/pg/lib/type-overrides.js",
+      "sha256": "47cb7f7bc6a6e1b1d4dc7c92bacacb436f12e99242b77da8391fd5b71991d2a5"
+    },
+    {
+      "path": "node_modules/pg/lib/connection-parameters.js",
+      "sha256": "6b6548f99acba3502663a17a180582ba8e1f1725aa9d94b5f47cac19dcb6211b"
+    },
+    {
+      "path": "node_modules/pg-connection-string/index.js",
+      "sha256": "d8c0ca43dc70daf05a9ff5469c92fd0a3cbcd11cacf68156ebb19ee32d127cfd"
+    },
+    {
+      "path": "node_modules/pg/lib/query.js",
+      "sha256": "ecf885185f0ad8b82c680a184d65bc08462fd2adee047218268c35dade9f8913"
+    },
+    {
+      "path": "node_modules/pg/lib/result.js",
+      "sha256": "6d7193da53f8557600a065e4356626026e8c5baf12c477dc19e439d8f204225c"
+    },
+    {
+      "path": "node_modules/pg/lib/connection.js",
+      "sha256": "f93e914bf408657f2301393489da561a5a464e9c30f4f51b681b18a21a5f1c84"
+    },
+    {
+      "path": "node_modules/pg-protocol/dist/index.js",
+      "sha256": "e7a99ac02633393d8c3ef16cd6385b8246100d28c838b02420844068429a46c9"
+    },
+    {
+      "path": "node_modules/pg-protocol/dist/messages.js",
+      "sha256": "dfd22ad639f3030b41617ff0ee201ece7cdbce4adb7e1aae7978541b1384cd31"
+    },
+    {
+      "path": "node_modules/pg-protocol/dist/serializer.js",
+      "sha256": "0c81a499cd210334e14bc65ee514b2ecf842588e27533f5e9a461f914d0b9623"
+    },
+    {
+      "path": "node_modules/pg-protocol/dist/buffer-writer.js",
+      "sha256": "78428fc0607cd87c28009159e87ca3704faf7bda000ea44d2ec46a97805cec9d"
+    },
+    {
+      "path": "node_modules/pg-protocol/dist/parser.js",
+      "sha256": "6f841aabda7240df44e1b08bbe8e202502ead969576c1ecc17311af48f57f2ef"
+    },
+    {
+      "path": "node_modules/pg-protocol/dist/buffer-reader.js",
+      "sha256": "fdae5fd80c1ad1015f91a92da667467752eabdf531f19558897e205559e6b714"
+    },
+    {
+      "path": "node_modules/pg/lib/stream.js",
+      "sha256": "0bd4001775301604ddf7c94152e05f6f30a9354876717bdae2ab636d00eb12ba"
+    },
+    {
+      "path": "node_modules/pg-pool/index.js",
+      "sha256": "6f304776edaabde2954cbf8c4366fa6d9512bfba0e408e78cc56b3c46c69d058"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/infrastructure/task-repository.js",
+      "sha256": "0c40d765820e26768cb9088a1abab3075203d0c19750acac1b376b7a6d5dbbb0"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/infrastructure/sqlite-serialization.js",
+      "sha256": "9e7e5e593eb9b96a8e71e1214e4330d3434729759840fa0f3b62b9998f40643c"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/infrastructure/rate-limit-repository.js",
+      "sha256": "934428b676b84a89387868c0c099d3334ccddd1bab128949b2c21b3d46f223ca"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/infrastructure/domain-selection.js",
+      "sha256": "c3aeada53cdcb0fd18314da4b432c7d85e4cd2d60517453379e07b591e1ad0c5"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/assistant-whiteboard-integrity.js",
+      "sha256": "dd0e974eac90cad7e738494e558991994a9eb7c4ae07f5b6e026655636a57f1a"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/assistant-whiteboard-source.js",
+      "sha256": "30fc821b504577fb1a85e23d449196e6e8299b315b2b6b368c040e3e793635f8"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/packages/contracts/dist/index.js",
+      "sha256": "8a4bdf756814b81acc607e98b356d7b5e4398f2137462906a49c3f715e3de36b"
+    },
+    {
+      "path": "node_modules/zod/index.cjs",
+      "sha256": "d93a8730d52c0fedab13619c8bc971cc99934c13d8dce7c97ee4d03a98d4096e"
+    },
+    {
+      "path": "node_modules/zod/v4/classic/external.cjs",
+      "sha256": "0f917f6f02890347c44e4fca280480ace573ac87b9c697d1c47761a45fdcb620"
+    },
+    {
+      "path": "node_modules/zod/v4/core/index.cjs",
+      "sha256": "aed3af491dc4ee4d18d5c3454dfadc83ff7b5566921602a6adc37a5d58716f83"
+    },
+    {
+      "path": "node_modules/zod/v4/core/core.cjs",
+      "sha256": "0aec383c3aa438289a963c30bcccde1277e7f9657fef9215f74330d2794f0dea"
+    },
+    {
+      "path": "node_modules/zod/v4/core/util.cjs",
+      "sha256": "c7fd0ee0303e7344463692d0936d59c982ed28bb1b73dbd97d2b887ae15d80f1"
+    },
+    {
+      "path": "node_modules/zod/v4/core/parse.cjs",
+      "sha256": "e19bfe843aed1844680a014f9a185d17374fe87bcd1676a2d62ed11177c1caa8"
+    },
+    {
+      "path": "node_modules/zod/v4/core/errors.cjs",
+      "sha256": "2e00adbc6abd966a2b2c68815e0d0605cd69fbd8b8331a621a4ed1c906034479"
+    },
+    {
+      "path": "node_modules/zod/v4/core/schemas.cjs",
+      "sha256": "7e35563b275bcc457a6d8ae0f5e1354b3c499ddd38401439f16bed1b8f357e41"
+    },
+    {
+      "path": "node_modules/zod/v4/core/checks.cjs",
+      "sha256": "9a2a428602fe9e380ea2a08495a47101a56710d814fe18fb0e6e30f65686a703"
+    },
+    {
+      "path": "node_modules/zod/v4/core/regexes.cjs",
+      "sha256": "0f597e9323d68371224cf7080d31e87e8f420dae4629e044a88b921470cb03d2"
+    },
+    {
+      "path": "node_modules/zod/v4/core/doc.cjs",
+      "sha256": "920b37602309434c783ecd326141418dbb0e2eff560e42cb1b85a91f4fdd9cc4"
+    },
+    {
+      "path": "node_modules/zod/v4/core/versions.cjs",
+      "sha256": "732be8195979ad944ef69d3bd5778eab9e90f395f4b3dfc86a3a214a2f8df951"
+    },
+    {
+      "path": "node_modules/zod/v4/core/memoizer.cjs",
+      "sha256": "247fe6b5aa9ff57e8c83f984a14dea70b95f8428b15176d1666342a6449aac81"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/index.cjs",
+      "sha256": "eb58a51a00b5a880dcdf9d64b70f6069f386c9245350a54079a8c6007ac50ceb"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/ar.cjs",
+      "sha256": "18559234f469cde82aafb15077a3765ffe76e8c80f1f7316a4d576edbc963e04"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/az.cjs",
+      "sha256": "0a2110cf7561f599db6b62455791b7a68b57a4c93360a4ff1e6bf5e4e97bfe80"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/be.cjs",
+      "sha256": "d7f97046fd97f51a879d124f860fb094a92a7404c88cc0db5b95f2e81823036f"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/bg.cjs",
+      "sha256": "1cd93984b84ba81302994b085fb67b0c6f88a5eeceb3c45116bf3e6f1e3d49c1"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/bn.cjs",
+      "sha256": "4fe9109396d083d9c2491fb0b19618441899b402807ede53202a50a1227e2984"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/ca.cjs",
+      "sha256": "267b91c9833398c8c587316cd53eabac72c5542d159f9079badd50326a2316c7"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/ckb.cjs",
+      "sha256": "af0033bd97c2840f0e081e0f7e0dac5ace12ee759abe714506a494ca04d0e518"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/cs.cjs",
+      "sha256": "a0f49a63ded92bb49a3a5f3f4c9302818234ea356716e9a3d1635a4834f1d4c1"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/da.cjs",
+      "sha256": "92bfee7ae9f3e0c3679802925ae770ff7ac38a4f5ee61242a8f3c93736430716"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/de.cjs",
+      "sha256": "c32b1d9445bb790eba1b13645361e1e2f82436d4f4ea7ee5d8cbb638b3268bef"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/el.cjs",
+      "sha256": "e0df8a9b0f6150b304e86536917c2e03bee05ffb1ee9276d605871d4324cf93f"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/en.cjs",
+      "sha256": "14a0588e528ab1797db17fcb3913a5804089e17208330a4e442d21be67d47682"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/eo.cjs",
+      "sha256": "5f527fcc03fbe88932cc5a01ad9bf97348a4259a8694b8b19100a5022437e582"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/es.cjs",
+      "sha256": "a7378a27ab10a2c3f71814a1f5ab59e1882d75f04bf4719cedd46a743ef90bad"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/fa.cjs",
+      "sha256": "9003c50e0b26fe1aa62ba1ecb4bb2eda7f09218e303eb3fb7691bdbb7306710e"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/fi.cjs",
+      "sha256": "f8c8281ab10379a8603b7bd76257f6fa003c33e074a86bc20dfa05bd2e89dc4a"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/fr.cjs",
+      "sha256": "47dbdb2be984c58b78b52642b3cb2d1ca262c5be8f7e6e6110728a34ad6c6e55"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/fr-CA.cjs",
+      "sha256": "19abde712631bf2a3b367ea87a202d4967a89173846804ad4f094a0f12ef427b"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/gu.cjs",
+      "sha256": "9dbafeed1d6b5906414ffd90b605c43fc50342ab9ec5f48a69c4a9319e17fb72"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/he.cjs",
+      "sha256": "cd484340c55aea560e97411c9ae34500a0c9bd4441a1b4c1dc4021dc5af70d71"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/hi.cjs",
+      "sha256": "0b2a995daed1ce721eb63eceef49ce13b5297982cb5fcd7df72659e42947aba5"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/hr.cjs",
+      "sha256": "e680043892f62367fef1b35f3d07de6dd8f4865e5d32d476f493623b96c06bea"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/hu.cjs",
+      "sha256": "f319b7f82012307620dc9010685bd820cdd4f713957f4cfabf504834592634b4"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/hy.cjs",
+      "sha256": "ecf7a657a5d6ca7be0aa15d5e1fdc2608c11cf7d4bd3aa82e1ebc332f0032f95"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/id.cjs",
+      "sha256": "fc95e772d0cc431b01740a75eb9cf42ee6ca24b06b3601772eca71d9d3f3cab2"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/is.cjs",
+      "sha256": "915d8d354fc1b0385238e4a1cea9b409b66172a530e8bd265c758a31135b9f90"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/it.cjs",
+      "sha256": "d66adacf3aa4df9b7c2cf3d92499da41d6b9039eac2b6e909b3d128699a156eb"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/ja.cjs",
+      "sha256": "4277e0fa09adaf3d707b78c1d2468937e54dc6ee1350ed4d31ba7585c4258962"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/ka.cjs",
+      "sha256": "3421600b01dd66f8ae65ba9a8ab9196737120792cceab431fe5ab90e73d52075"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/kh.cjs",
+      "sha256": "5a5f3a63e4e97a25b44692b0910f73cf15e54fc5b03c61f9d87e2a9eb6e2a098"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/km.cjs",
+      "sha256": "64491270f4b931ee972fb11721e36cf5c01e8cfae449f0e94e7dbb59b281653d"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/kn.cjs",
+      "sha256": "1c05195a8a6e803ea732990c7cae61dd0d8162cf58dc0129d00de4f629798be2"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/ko.cjs",
+      "sha256": "6a8121c8f38ffd119b4c229f8e22fe2b0115513aa1fd3d3c16970e967b11bebb"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/lt.cjs",
+      "sha256": "e2f1b949cd5cc8b048955db5a85edcdf70ad17b6347bb6de493df53e18e0a9b9"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/mk.cjs",
+      "sha256": "bdb023dd11a5b25d4caba0022491581f99264c12827146d2df3c2fb3b1a677d9"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/ms.cjs",
+      "sha256": "fd5fa183bf0c2de256b12aa2a552bc6060d6e338a568f70eb2c53d508550c730"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/ne.cjs",
+      "sha256": "dbbb0fbd17e5add4aa5552acf1fe880e4a884318b5476699f514e24a74be647f"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/nl.cjs",
+      "sha256": "07cd7721ec51b7c89cb49af7a3b6fd596be2b783f06f923e21f29f7bce67c024"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/nn.cjs",
+      "sha256": "91e2bf70fef65cd83e5f129ba919fdb6c306b394a1cc49dcdd70bb82a034a998"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/no.cjs",
+      "sha256": "3606b2dc51dcc9f053a5d7311ee553cb158fa7af7883a7a502c4caf2ce6cd442"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/ota.cjs",
+      "sha256": "4608faa8ed3d006312a7a6d7104765b111e32150138c388795327c69c5e79314"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/ps.cjs",
+      "sha256": "b328aa16b991681bc0538e1034af3d61704434f5f10fa2d3509456314cb3c460"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/pl.cjs",
+      "sha256": "9c369c4ab4f89df3339dae388e2bb2edb7e72a4842b780890dd5ce733af53a42"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/pt.cjs",
+      "sha256": "6af7063f00ede92bf48760fde31b1fa61506be18254e38e2ae6fcf7aab997d89"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/pt-BR.cjs",
+      "sha256": "8f91c3ddd94d52ec29708a2efa4f6d0dfbc4ecd856708eca843c0bae031687f1"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/ro.cjs",
+      "sha256": "49f3e5315b019a14cd429729c81cac5de6996888ac1d9954219b15757177970e"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/ru.cjs",
+      "sha256": "6cc82a211a5a72040148cfd929e1ec846fb1ea6c57388c7bf10aae7f16f4d3a0"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/sk.cjs",
+      "sha256": "1ca6c89c6d63a2b8d22402f415cf99b153660f3986dd8a573f7f91ba1a28acca"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/sl.cjs",
+      "sha256": "f987d45d2948b9c1ecc666cbec7f2470dabbd58a507391820ffd38f70c9dce0c"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/sv.cjs",
+      "sha256": "c637d45fd8df36d8afb549adeb217085255cdc2fecc8dac348a50786c73099bf"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/ta.cjs",
+      "sha256": "cefeaca1216517fb545069408f4df6861be08df745882360b6ea07f882b87a98"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/tg.cjs",
+      "sha256": "8f8d44284f22935f9941dc5f242892c22a33ccce8d6cec0af6fd379eaeb3282b"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/th.cjs",
+      "sha256": "ce34bfcf9be95ca74bf5034d45f957f291a5705997067a11d76740e6786438f6"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/tk.cjs",
+      "sha256": "cf158cdbca312af9f2b879f78b09ebe189fabc272e67dbde59acd790da883dac"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/tr.cjs",
+      "sha256": "e3343bc4bec8b59aa1cb5ea270d38d816f2ac41a05cd9f9222a4567bc919a4d4"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/ua.cjs",
+      "sha256": "0565126e33d30fd26046fd5399fe6293e8827fa846c3a7ff414e4e63acbfbf0a"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/uk.cjs",
+      "sha256": "b8483f06866654d53b689b0540492e2424cb4a128922781084365fe52ed443ae"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/ur.cjs",
+      "sha256": "7d5c4e0fc0703e269fd2c98087187535d96d705be0f5b53b7b8cb403cf8d5843"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/uz.cjs",
+      "sha256": "5694b9fd46b14f8645e241714b31b0ad1f06ed63122344906aa07c568e012bd3"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/vi.cjs",
+      "sha256": "3019737524157cec5925e8d7886de8bd67ac21f923a1762505064dc93ebed177"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/zh-CN.cjs",
+      "sha256": "1cb0d539c55dd7def2507f008879542faf121a4e2d0edef87a8a9698a9a36517"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/zh-TW.cjs",
+      "sha256": "d538244c13f88f72aa9b540f324590f546ce5649cc4540c9a439cb6b126384c7"
+    },
+    {
+      "path": "node_modules/zod/v4/locales/yo.cjs",
+      "sha256": "8ab657a1e641acc9f57b886b7b2ed47a96ed9a7677426a3047f14edec5041bb8"
+    },
+    {
+      "path": "node_modules/zod/v4/core/registries.cjs",
+      "sha256": "aabaac9f1d813d2e4836b0c0d673c4c0cdf6e0c07e740c201ae7bd77b8e3aed1"
+    },
+    {
+      "path": "node_modules/zod/v4/core/compile.cjs",
+      "sha256": "53920c324ac3709a099d2b608398699a6160211738c9ced6473065d9509b7b61"
+    },
+    {
+      "path": "node_modules/zod/v4/core/api.cjs",
+      "sha256": "1aef5cd4ed0cca874b02bf8081a67db4908cd7858ff0c61c593ce58c74e619dd"
+    },
+    {
+      "path": "node_modules/zod/v4/core/to-json-schema.cjs",
+      "sha256": "68d0c4c3310cce3c36af6e7956ff4ef0c3ba7132f7cfc33c033b712bb0eb8abd"
+    },
+    {
+      "path": "node_modules/zod/v4/core/json-schema-processors.cjs",
+      "sha256": "224ea00a1d4a19732b5d76a30b8bba3d977463aab95c45f6825c677bb6fd49db"
+    },
+    {
+      "path": "node_modules/zod/v4/core/json-schema-generator.cjs",
+      "sha256": "4fa480de056ac07a8c43ff3fe249cc642967ec4e08301ee00ba9e4d76f6c42b2"
+    },
+    {
+      "path": "node_modules/zod/v4/core/json-schema.cjs",
+      "sha256": "e684c514403d03c1259d6d51a82b795db361189c837a9d95ccb0ecef3aa9043c"
+    },
+    {
+      "path": "node_modules/zod/v4/classic/schemas.cjs",
+      "sha256": "c1870a72d6809d462a90ee1d2bcb67f7f6beea4a504ae56c28b95df50074c4b2"
+    },
+    {
+      "path": "node_modules/zod/v4/classic/checks.cjs",
+      "sha256": "7d29ae09f7f5cb85e3764fc07e069b7ea6a0c29df0278c42777b6e2cf9279522"
+    },
+    {
+      "path": "node_modules/zod/v4/classic/parse.cjs",
+      "sha256": "3141ebbdd2d7b553dcf5ebfc683c1abeed21140c38db5bd532f2204970339dd7"
+    },
+    {
+      "path": "node_modules/zod/v4/classic/errors.cjs",
+      "sha256": "7acf7b35400c681e4e9eb8da7b2921891f5a29a132cba0547a9635e625203436"
+    },
+    {
+      "path": "node_modules/zod/v4/classic/compat.cjs",
+      "sha256": "dd0289ac1a42ced592cbc6e049f61992649c524badf53eded6ea09ec05c2bb81"
+    },
+    {
+      "path": "node_modules/zod/v4/classic/from-json-schema.cjs",
+      "sha256": "2bdbfa970dac5e9bccaf98e27ab2cf5264e253563df306a941878b634f3d56bf"
+    },
+    {
+      "path": "node_modules/zod/v4/classic/iso.cjs",
+      "sha256": "3620ee2ea251ef945af2f85504ca1099a47318b90ff1a83532dfba3eacb2d256"
+    },
+    {
+      "path": "node_modules/zod/v4/classic/deep-partial.cjs",
+      "sha256": "45a5b3cde1d17e5a87202d5f5a8c2d7d858bb2ca509855919a8b70cc3d858bf4"
+    },
+    {
+      "path": "node_modules/zod/v4/core/visit.cjs",
+      "sha256": "66657f3a1c401d0f639c74fbac048c227446a440f9d99495418ced2d922bd881"
+    },
+    {
+      "path": "node_modules/zod/v4/classic/in-out.cjs",
+      "sha256": "17c0700c8c44ca7d23cc417353def8536fa1b267e3a44167fa3885c65f53683b"
+    },
+    {
+      "path": "node_modules/zod/v4/classic/coerce.cjs",
+      "sha256": "0c682fe4f473e5896cfc048c392fc602fc885ffd7d6e15b1a5fe376b88b19942"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-digest.js",
+      "sha256": "b4c2f031af5f61de5c6e5ac9eb1f7c584fbf99dbc80e4b3469bdb1ebbe028854"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/assistant-whiteboard-content.js",
+      "sha256": "26ab7e622cbabf0b23ad15b3ff6e5f689042a6cd7ab22f8c91e70fc87a13d940"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-schema.js",
+      "sha256": "37197dedbcf3b70ac1ce27ea6dcc1df9f42dac70e817eacaef6eaaf181016fbb"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-projection.js",
+      "sha256": "19a0565ba0d34638431051654449c5850dec201ce7c24a134919f2aaa8e9e5d8"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-content.js",
+      "sha256": "4a2fd246cea668f8e14caba7ad4f772499dbf143393e43fe4d1c88966ec35df1"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-figures.js",
+      "sha256": "12972bec1bdfd972cd04af62445dbf9bab027f255602d326a085fa9a357aa074"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual-context.js",
+      "sha256": "8031d4ec8dc4623444614dac0341d25f8e9a064bb4e45008c87ccfadb9eef4e1"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual-storage.js",
+      "sha256": "fa40470113a753b49ec4465a011ec4410d3556149e1f60e1b8ba933d5b93a9f6"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/teaching-visual-storage.js",
+      "sha256": "91126b968c0ece62502c3a07b1e184cb8213a476b4bff39a0cfbc9a81780900a"
+    },
+    {
+      "path": "node_modules/sharp/dist/index.cjs",
+      "sha256": "d69f275bc49fcd2a6188b26b35c986d4db32a1b008653fef88adb4598688232a"
+    },
+    {
+      "path": "node_modules/sharp/dist/constructor.cjs",
+      "sha256": "6b8978e0f1614d83a219cbbd455e3eed7922bc4212a5b3b99c5d37c3af3b3226"
+    },
+    {
+      "path": "node_modules/sharp/dist/is.cjs",
+      "sha256": "46fa32e93964d8a31d6e851dc3bb7f3ec36935f9e8323b59603ff6cd84a7faa7"
+    },
+    {
+      "path": "node_modules/sharp/dist/sharp.cjs",
+      "sha256": "76120d3971051fcc469c0bfa36e7b23d3c388b6a2f5785bf1491bbdb90ff0176"
+    },
+    {
+      "path": "node_modules/detect-libc/lib/detect-libc.js",
+      "sha256": "5de6a1c1abec8bba5ea1261cf819d83a73c92ebe72b879ae48c59ca12320a462"
+    },
+    {
+      "path": "node_modules/detect-libc/lib/process.js",
+      "sha256": "f37dd0ead9f70b50c6f5529c600e1cdf076e3c3bc8e6b4a0a9820a8d65244628"
+    },
+    {
+      "path": "node_modules/detect-libc/lib/filesystem.js",
+      "sha256": "5c98fb66b559d0b4fa82c7a3e39d9ab6840f022c4c73e6b1a73ac6d16ec13fd7"
+    },
+    {
+      "path": "node_modules/detect-libc/lib/elf.js",
+      "sha256": "0e8820f00ee11d179d94894d4f97a6e87c34ab59e5dd4d3a571dfabcecf043af"
+    },
+    {
+      "path": "node_modules/sharp/dist/libvips.cjs",
+      "sha256": "3419f6cb4303feaf4a76abe122ce1caf5dc755f9f17fa013afd5561827b61062"
+    },
+    {
+      "path": "node_modules/semver/index.js",
+      "sha256": "4b3e57d3d40e29e0706002eba113d09f35aea593578376bbeec83b777b9912ab"
+    },
+    {
+      "path": "node_modules/semver/internal/re.js",
+      "sha256": "5833262888e2b5d843a69193f83c05e374818dbe55379b497819b5bf58e48cd8"
+    },
+    {
+      "path": "node_modules/semver/internal/constants.js",
+      "sha256": "38a112baf27ceca0260082ff26ac2fd7a9861cab1af12dd65e720277f68e6ce9"
+    },
+    {
+      "path": "node_modules/semver/internal/debug.js",
+      "sha256": "8a9f420572260f3cf944463b5090d62a60f0730589dc23a7ec4ca25e2ee41bb3"
+    },
+    {
+      "path": "node_modules/semver/classes/semver.js",
+      "sha256": "813b2c185512d30c9b931c2fed8140889d9d7490ceeeedc370da30337dc8ca57"
+    },
+    {
+      "path": "node_modules/semver/internal/parse-options.js",
+      "sha256": "fdf51d0de8d5442c35a997ef58cd530d239ce206f961d14c5121354451b01d01"
+    },
+    {
+      "path": "node_modules/semver/internal/identifiers.js",
+      "sha256": "b4916b09dc7869ae0eb05e71c855c942a3a7365f7e6e89185d59a9e45a2451d7"
+    },
+    {
+      "path": "node_modules/semver/functions/parse.js",
+      "sha256": "29a69e15b6d02fe381d573f861881a89590e9d0f0f0ca740c5f85eaf0234c4ad"
+    },
+    {
+      "path": "node_modules/semver/functions/valid.js",
+      "sha256": "0de7ea736cb7807179d46dfac09c830a9338e02b6a07db12d7040cde2def6025"
+    },
+    {
+      "path": "node_modules/semver/functions/clean.js",
+      "sha256": "4eadb0892844cf3ae295121a86163a66c73f89acd1b7f0b114ec115b4539512f"
+    },
+    {
+      "path": "node_modules/semver/functions/inc.js",
+      "sha256": "952069fc8690b7d3af0fe9d55f7c54fe2ac067b48c5e74f6a54f9ce19a334493"
+    },
+    {
+      "path": "node_modules/semver/functions/diff.js",
+      "sha256": "7a11fd39b987cdf06c65e928cb1aca49bec583feb86fb5c8fe47a6fd61d7de31"
+    },
+    {
+      "path": "node_modules/semver/functions/major.js",
+      "sha256": "5c678480d882f511200fed2c16ec3847dfedb08a1d70328dc2f031d35d825276"
+    },
+    {
+      "path": "node_modules/semver/functions/minor.js",
+      "sha256": "1b051794f1713adec2a236517196691687c35f82e0b596ff3316a78b3cc10ae6"
+    },
+    {
+      "path": "node_modules/semver/functions/patch.js",
+      "sha256": "f02d3c1b059fe3d96ce124886f7eef321d381a95638fd3c4a8d5ccd8e76ffadd"
+    },
+    {
+      "path": "node_modules/semver/functions/prerelease.js",
+      "sha256": "baedbf503d5610ad041bfb56071efa48feb331ca278295c399537d35d3ffb593"
+    },
+    {
+      "path": "node_modules/semver/functions/compare.js",
+      "sha256": "d404b5aa48aaddc8a654c5da8fb7d4443404b7948589b21ac4b045d1cee4e34c"
+    },
+    {
+      "path": "node_modules/semver/functions/rcompare.js",
+      "sha256": "84fa5e88adf08d15c993cac8cdec6d1a65045b7e95a9c55184230a7f807f4dc0"
+    },
+    {
+      "path": "node_modules/semver/functions/compare-loose.js",
+      "sha256": "07b6a3a1db0a5210ceb784c1708bd4679f3a94fc73a9c9eb349349e7070a6f78"
+    },
+    {
+      "path": "node_modules/semver/functions/compare-build.js",
+      "sha256": "5ab651d5b40af289bd85c645a92b6d8cfe1a986dc413c797cfcc8d623d7c844c"
+    },
+    {
+      "path": "node_modules/semver/functions/sort.js",
+      "sha256": "c2fe2d3ed0be8a4e9de8f02abdfd5d9c0d3bcc510d88e87af84185592882c4b8"
+    },
+    {
+      "path": "node_modules/semver/functions/rsort.js",
+      "sha256": "6ec659ce3b6c2b173c719286caab04409adba046c0917874ec3b5e36ddfbc7e3"
+    },
+    {
+      "path": "node_modules/semver/functions/gt.js",
+      "sha256": "135523704aa48cd98834dd170ee9f74f0e68043b379f32d021db11e6304c5c93"
+    },
+    {
+      "path": "node_modules/semver/functions/lt.js",
+      "sha256": "1c897a9bc849320e2e9dc0f6c09555c01ee3ddf30734515d717b88ad7740ea25"
+    },
+    {
+      "path": "node_modules/semver/functions/eq.js",
+      "sha256": "b6e30a7168e52723216fc163d300e2bbabf92ec0251f9ac5438bb6ccf57c8936"
+    },
+    {
+      "path": "node_modules/semver/functions/neq.js",
+      "sha256": "a662883751918822c162183b46b9e20d09489132f82686c92ab78bee67f3a127"
+    },
+    {
+      "path": "node_modules/semver/functions/gte.js",
+      "sha256": "991c5bbe48ecb210a562646872f05862ad9fc0d42186d85aa60bdc6fa323eb9d"
+    },
+    {
+      "path": "node_modules/semver/functions/lte.js",
+      "sha256": "3a8d0b1d00423f60cc7cb810b36ab77b61330831ad237dbe73eb5cecfa412800"
+    },
+    {
+      "path": "node_modules/semver/functions/cmp.js",
+      "sha256": "a63d74e87b73788e78e9ce0a4892b5333d6b809c0de88b31e4ed76cbf17f94b3"
+    },
+    {
+      "path": "node_modules/semver/functions/coerce.js",
+      "sha256": "28a251c5ab210ddf9e97551b9f37a53329fcce91f0c3943dcbc02de1a1de915a"
+    },
+    {
+      "path": "node_modules/semver/functions/truncate.js",
+      "sha256": "e145833a250311927c92f424f56498c52f1b7bb1271ce6afbf006db87773ff43"
+    },
+    {
+      "path": "node_modules/semver/classes/comparator.js",
+      "sha256": "054202956430d63d5ff4599fae09760ce465b489e4f0b5ef5ce7cc7ac21157ac"
+    },
+    {
+      "path": "node_modules/semver/classes/range.js",
+      "sha256": "a6544485aa8575aa9854c67e2caa67726815de18a482d0ceb8a1003244de3bc1"
+    },
+    {
+      "path": "node_modules/semver/internal/lrucache.js",
+      "sha256": "14d087c87da87b6f5c36fc4cdd7d2d14077874b14a68e20fce5b6138fa2ca34f"
+    },
+    {
+      "path": "node_modules/semver/functions/satisfies.js",
+      "sha256": "8cf5e122b757251671ed6c9d9680904b71cd375845853f05312e608cf2cc2946"
+    },
+    {
+      "path": "node_modules/semver/ranges/to-comparators.js",
+      "sha256": "6c5e966210cff270fa2850668aaf8460fac7759f8d99f282521ef7a78f4564e9"
+    },
+    {
+      "path": "node_modules/semver/ranges/max-satisfying.js",
+      "sha256": "e1a2c0d6144cc772cd20bbc8ecb9e8a3a4074e9172a3d8e794838b591cdeb416"
+    },
+    {
+      "path": "node_modules/semver/ranges/min-satisfying.js",
+      "sha256": "2681abf54098aa670f12826b76a6ec77a2441186ae4243afde3be8ae4908f7ca"
+    },
+    {
+      "path": "node_modules/semver/ranges/min-version.js",
+      "sha256": "fefba0a88c2bf74d5cede504b5ae50a8dc3edfd69cf0174a491e2cf3e442614b"
+    },
+    {
+      "path": "node_modules/semver/ranges/valid.js",
+      "sha256": "5ef6f995af801868925940cf8df5735d565ebabb090b068695cae65218bcd3ac"
+    },
+    {
+      "path": "node_modules/semver/ranges/outside.js",
+      "sha256": "3a2b0b23593d2f49419c06af2af75450cab103b0c25d665d48fe5bca495a21ca"
+    },
+    {
+      "path": "node_modules/semver/ranges/gtr.js",
+      "sha256": "8fadad28e36d28e93d498ac7ac20badba2a407312845eabc18e82e90a0732b19"
+    },
+    {
+      "path": "node_modules/semver/ranges/ltr.js",
+      "sha256": "e5186fcc03018acf9be6d968755d4c49727aeb0d981d179eb568ae5fbe983038"
+    },
+    {
+      "path": "node_modules/semver/ranges/intersects.js",
+      "sha256": "fe87ac5d3020010ad3ec00636dadbf0c669ff07d0f57e0a8165a8264f79a676f"
+    },
+    {
+      "path": "node_modules/semver/ranges/simplify.js",
+      "sha256": "7b78581c13322bc68ece2088685386b2a9b51c15b94d0a2063bdf2546bd41934"
+    },
+    {
+      "path": "node_modules/semver/ranges/subset.js",
+      "sha256": "ceb9eb6ed5bfc6c7ac7af7f47e5c3535444a4e66a0e2b58cdad4bd02a35d454d"
+    },
+    {
+      "path": "node_modules/sharp/package.json",
+      "sha256": "ad4a2535d72eb638053a38867b1abf43c328cd1c1dbae5cf4172d498365a8b97"
+    },
+    {
+      "path": "node_modules/@img/sharp-win32-x64/index.cjs",
+      "sha256": "6ecbd583f45e914233410fe83a614e4f5ff1a6875a7eb828b03b7258e8ba6944"
+    },
+    {
+      "path": "node_modules/@img/sharp-win32-x64/lib/sharp-win32-x64-0.35.5.node",
+      "sha256": "971048779f9c8598df14641dfc03c625885c93f473a788e65ca2deb50d0b083e"
+    },
+    {
+      "path": "node_modules/sharp/dist/input.cjs",
+      "sha256": "e5eb5c891c0893098dbe8bc0358a2f2c7e800581018923a7956732fe1a5ddf8f"
+    },
+    {
+      "path": "node_modules/sharp/dist/resize.cjs",
+      "sha256": "e03dce87aaee233fecf191ec3c713a9f856e13d0d9ccd7b0a7dbf35b65e36538"
+    },
+    {
+      "path": "node_modules/sharp/dist/composite.cjs",
+      "sha256": "6e0837309d25c2b642d42b557f3e1292c2b057af09746647a3a6d54de772a157"
+    },
+    {
+      "path": "node_modules/sharp/dist/operation.cjs",
+      "sha256": "11eb4921f37e4e06c0b349f55e186852cdd094203cc3c5651681801eea5d80f8"
+    },
+    {
+      "path": "node_modules/sharp/dist/colour.cjs",
+      "sha256": "da760186e75d4fd8b6da0a617ecf122deec2fa6d95fdcc194bbee0cb1c5e4605"
+    },
+    {
+      "path": "node_modules/@img/colour/index.cjs",
+      "sha256": "e6e93e7fb209420a20fdf2ec676e9c67413be8d5ace99eec64f9468480f0368d"
+    },
+    {
+      "path": "node_modules/@img/colour/color.cjs",
+      "sha256": "f7c3efcf482624007f2019fffee3e1dec56b8cb893faa9a420b2832805888dce"
+    },
+    {
+      "path": "node_modules/sharp/dist/channel.cjs",
+      "sha256": "7445567e8001f4be3126374e4c17e282777ed14c718acca875c91bec69a2d7a1"
+    },
+    {
+      "path": "node_modules/sharp/dist/output.cjs",
+      "sha256": "4c2878241a264095b661fb321accf86fa9be033bfe541d5a70ac2f8d80150893"
+    },
+    {
+      "path": "node_modules/sharp/dist/utility.cjs",
+      "sha256": "0f7a14858dfa8ebd01b2c6c2272297f7a34c4af3d84f0c0b926146c49a2655b1"
+    },
+    {
+      "path": "node_modules/@img/sharp-win32-x64/versions.json",
+      "sha256": "e2611d5d854815a8b33c8a3d2ec649511a9596ccf16844e8eae7cf81e79881c4"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/infrastructure/workspace-paths.js",
+      "sha256": "92659b3d835528905e644ef93020e52ed07fd711fdf5f24671a3dcf7833417b4"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/assistant-practice-integrity.js",
+      "sha256": "4d943858a39913c3553664b4d26b2998a4b419f7cc9fe67a7389c0337737d988"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/assistant-practice-record.js",
+      "sha256": "2dd50799fb6056fb2d6ab53f17b6f02eabf1d480c2ff87f5dd6a0439238d274e"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/assistant-practice-bank-selection.js",
+      "sha256": "e3b1555ac9a55e92b343c1edb858a1c4b6355e3c7d34e8298c5b050ad362764e"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/assistant-practice-source.js",
+      "sha256": "a443bbaed2abcc77f2a267d852a9dbe72c9fb181a81003e4795c2a25ab4f1d4f"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/diagnostics/measurement-definition.js",
+      "sha256": "6f18c416aca9c35dc610c309b1ad1fb4b7ccb3211edd71a3b0e6fb2f80dbdad4"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/diagnostics/assessment-blueprint.js",
+      "sha256": "bd0e1a6d55d9481779fd807b6d22911b358c9caf60ea3c82a9ff1d84a8e4b7a6"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/diagnostics/adaptive-routing.js",
+      "sha256": "d068a8933c75ba5880e53cdd5dd11838f9367af8cfa10ef607d35f92002f3ce9"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/diagnostics/family-identity.js",
+      "sha256": "76aabc4aeac183dd698f6ba5ab680c3c982203b3c9b4351d7ec57d3d93e41296"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/resources/curriculum/authored-family-identities-v1.json",
+      "sha256": "71d6c7f8913cfc042f762679d38363057bbc3958afa03e6084dc6cc0057a6071"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/diagnostics/verification-blueprint.js",
+      "sha256": "cd8292ceefb3b2523d1139c6bc9b0d53d1055e3bb5cd71d59b8e7127af3c9528"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/diagnostics/diagnosis.js",
+      "sha256": "a6615d6a6eb3a2ed2904afdfe857152317e5ab42a60fbba7947f82d09a8ee63b"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/diagnostics/measurement.js",
+      "sha256": "19e7caddaee82f82d3e2aa8c4d8ae9f0fe5b55daf95d233731c0419345df93d0"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/assistant-practice-assignment-record.js",
+      "sha256": "06b8b84c82f56c533abf9c8a97cb3b950537b20a2bb17e42c8660c04cedb3f84"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/assistant-practice-learner-integrity.js",
+      "sha256": "37565e99c638c5be767a6fcd2a2e27bd2276c0e575f07e382acb780cbc7d7b97"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/common/answer-draft.js",
+      "sha256": "0377e3264118c6b6fcea90c08c6b00ad6ce51c3309e5ed015ee31b01eb55260f"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/diagnostics/scoring.js",
+      "sha256": "88dce48ed84a88c96c5dca288eaa0031980b737f9a0c3d4ba3d7d0a2b4bce9ce"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/diagnostics/arithmetic-expression.js",
+      "sha256": "1d626a6119c1d093fcd27329187471d827da792381aeb397a04cae7cdd243a1c"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/assistant-practice-learner-record.js",
+      "sha256": "4f3ca994bcfcebe3d21ad49a5fc2f7a0f84b2b109c141490a6e9ca88ed35219c"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/modules/learning/assistant-practice-withdrawal-record.js",
+      "sha256": "d5528c78ba0aa2d8e5be787cc3a4ca59716620443a3a2d2b7faaf19894c5f599"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/apps/api/dist/apps/api/src/infrastructure/domain-write-conflict.js",
+      "sha256": "aa5004b25db7b199fb1a639748dc4ed6f866872f91cd9d4024f49bf7dfc7f65b"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/scripts/operations/database-reader-guard.cjs",
+      "sha256": "6441683c5c05559a8cbc26c3ef8c67294b68b7a4366f0e18fefa998e046c932f"
+    },
+    {
+      "path": "data/qa/workspace-withdrawal-first-20261030/source/package-lock.json",
+      "sha256": "8b13158bd636abcb1e4255d00c4975824a5765d050c0c898e702fb21e0543cf7"
+    }
+  ]
+}

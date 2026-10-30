@@ -1,0 +1,79 @@
+{
+  "numTotalTests": 14,
+  "numPassedTests": 14,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "schema26-reader.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 migrates actual25 without rewriting business records and the unmodified old reader refuses26 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 migrates an actual23 database through24,25 and26 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 rolls back the26 marker and its migration together and leaves the25 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 rejects unknown future27 and mismatched or incomplete26 markers without resetting them",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 restores a native25 bundle with its old marker, upgrades explicitly and restores native26 with the new minimum reader",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 migrates actual25 without rewriting business records and the unmodified old reader refuses26 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 migrates an actual23 database through24,25 and26 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 rolls back the26 marker and its migration together and leaves the25 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 rejects unknown future27 and mismatched or incomplete26 markers without resetting them",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "assistant-teaching-self.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "actual adult teaching self-session HTTP and native history starts the actual adult without a child, recovers the original start and reveals no teaching reference before explicit answering",
+          "status": "passed"
+        },
+        {
+          "title": "actual adult teaching self-session HTTP and native history preserves the first answer and full reason, records help and correction separately and completes only the original two-question activity",
+          "status": "passed"
+        },
+        {
+          "title": "actual adult teaching self-session HTTP and native history serializes original starts and conflicting full drafts across two actual application instances without borrowing a losing key",
+          "status": "passed"
+        },
+        {
+          "title": "actual adult teaching self-session HTTP and native history keeps frozen historical answers readable after original source changes while rejecting new writes and preserving exact successful acknowledgements",
+          "status": "passed"
+        },
+        {
+          "title": "actual adult teaching self-session HTTP and native history cold restores the actual first reason and original response, exports only owned teaching and deletes the adult session through the latest ledger",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

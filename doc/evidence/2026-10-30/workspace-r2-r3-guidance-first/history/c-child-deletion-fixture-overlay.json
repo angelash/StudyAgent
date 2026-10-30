@@ -1,0 +1,6 @@
+{
+  "path": "apps/api/src/modules/learning/assistant-teaching-sharing.integration.test.ts",
+  "beforeSha256": "e03879541ba6c2a5c1411c93e2a08baa89d9f292685e1c805979c15825b5fd01",
+  "afterSha256": "f64167b42d12040908e5b2b13b829d5504b1b4a2c6279c81b23202d2aff0c746",
+  "reason": "The real permanent-child-deletion guard correctly rejected deleting a profile retained by another active guardian. Only the deletion fixture now creates a child with a sole guardian; retained-child author-deletion and all other fixtures keep their second legal guardian."
+}

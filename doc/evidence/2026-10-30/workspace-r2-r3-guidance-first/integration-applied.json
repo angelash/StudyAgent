@@ -1,0 +1,442 @@
+{
+  "at": "2026-10-30T07:50:38.453Z",
+  "base": "c5ae0f66b00096cc080b73eeb47f96a00c018b57",
+  "files": [
+    {
+      "path": "apps/api/src/common/auth.guard.ts",
+      "mainSha256": "890667767b15ab5db5036494854bfcfd7e2075e99418561492e8c03dd705d84c",
+      "candidateSha256": "b5d783871fa8853ad63f62c67444830c7e07c290816b0a0d0687860eede297b9"
+    },
+    {
+      "path": "apps/api/src/infrastructure/assistant-note-storage.integration.test.ts",
+      "mainSha256": "eaa48263c1242189ee65a9328a9572612134c52ae1c218d463b33734883b7247",
+      "candidateSha256": "4a1891b99092fffdce3af84429480aaee1594beef77f355c0059900d0568c72a"
+    },
+    {
+      "path": "apps/api/src/infrastructure/assistant-whiteboard-reader.integration.test.ts",
+      "mainSha256": "d278004da862c2efb6afbd99fd50f71df2ed6f67e8e6e6e175dc8b0bc5860983",
+      "candidateSha256": "cc65daced66cab2e57b6495cccb66f65bda884f11f8b29f6e76ce8ea74063477"
+    },
+    {
+      "path": "apps/api/src/infrastructure/backup.integration.test.ts",
+      "mainSha256": "0787c6a119475ec5926dacda773110e64d2437985ec089bd5ce28f29b2f30e4d",
+      "candidateSha256": "99ff20f9e40b319eb2bccba14a45cf07b40658a2059ff11ca3f3541198ce64a8"
+    },
+    {
+      "path": "apps/api/src/infrastructure/domain-database.ts",
+      "mainSha256": "b958985a2ccd0a5a8f69261ae04974c47e7328388fa4bdd4fd25e6d12bf1ee64",
+      "candidateSha256": "def89713cbcaa7fd9b63f8622334e8fca9a81d5cb459d1f7e43cdd63d35c3f96"
+    },
+    {
+      "path": "apps/api/src/infrastructure/in-memory-store.service.ts",
+      "mainSha256": "fa5fbec0e0d867c3052377c44563abd92e9f43562518bf5c56564149401b21c7",
+      "candidateSha256": "9e96dfee0daf4b2bdffe9a615ec4b076c91f6d5b98502c459f49c202378aaf4a"
+    },
+    {
+      "path": "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+      "mainSha256": "67afffbaf93b8dc8acb0b8e3f4cbc52e2dfc3195b5f1d07498b362f4ff8ea4aa",
+      "candidateSha256": "e5ff7f8eabde9fc0ecbe53dd39d0e254444ef6b389f8e214a5de75e9b21cbfa2"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema25-reader.integration.test.ts",
+      "mainSha256": "06b1cdf519adb54533ba63c16972bc1c695b399c36f4f60c1d6b108924c52cb2",
+      "candidateSha256": "8506810e0677729ff90e30ac715c486204bb11ca30c90d329b259a2b864e8e5f"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema26-reader.integration.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "c63a1f0397fc0dcc656044e2cf00afc0cdee04b3210bec666db0c4be1fed8060"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema27-reader.integration.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "ce07d4ec96bc1ac3b51913a97a02e88b6aa4a24d40c7b2322e090b72da64da52"
+    },
+    {
+      "path": "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+      "mainSha256": "59267f19af7724f2d9e8ae9c7ae5b3e9451342a6fe1637f61b587c3dd88e0e09",
+      "candidateSha256": "1dd4a2a3c8ded2e12ad9f12fa9fbf973887217fc83b90f0290c450d8b3c14f48"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-postgres.integration.test.ts",
+      "mainSha256": "3b3be40e97489e1bdb971661f27973fb174ae550ad85b969f5d7a6cf76534a4d",
+      "candidateSha256": "b89602121d783ac7ee07a428f92b402789cb1ac3eea41868f1676c074f6d05ec"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-storage.integration.test.ts",
+      "mainSha256": "98638e1f80761e6d3d6227e3557daf85b3ba25610c1a3a837e3b7d0817d3d375",
+      "candidateSha256": "9a448ea2fb2a5a4bbef2c8b4d7fd671771158ea30d9bbc6ad8a85a1599ca0843"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts",
+      "mainSha256": "5a4c09fa53ca7e38179eba5004adf2de0d56cf84c21ae0e80b8612858603bfff",
+      "candidateSha256": "71172aab674d4d80599571ed078b3c03b61c19c85195c36132ad7abd65348206"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-visual-storage.integration.test.ts",
+      "mainSha256": "4cad402afcc92ffd75ba34d6231d7ce66a277a068082efd814751d82cd8832d9",
+      "candidateSha256": "e4626bbe8f34a5ba0e45973154623725d5760dd6e722f0e98db629252af1221e"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts",
+      "mainSha256": "f7ead27be69cee57b8f0bf13bcfa34fb8db3a0aaa0142e8c14036aa72e683046",
+      "candidateSha256": "0c02cdb10aea32e52c41b3ffcf9167f836e3c7c1249aeab546a9853881858732"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts",
+      "mainSha256": "9c07127376b8c201beabd622f31ff48814943227b9275aa2a8b173c3a9efe972",
+      "candidateSha256": "4247baa540c4b71be57c0de9a9e5a0f72cf184d811c71c0a0806e4966b203c3c"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts",
+      "mainSha256": "6fd616de4b4e433ce515417daa6318a4dca0ddac924133e05b16a85b90d9d2a3",
+      "candidateSha256": "25cc30f9e38bcc082bfbcb704cf8032184f665fe7a137b4121863bee73a5445c"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/guidance.service.ts",
+      "mainSha256": "6ad8d92e9296fab120317d60a98833eb4855d9dba29cc6436fc79c3ec4481d54",
+      "candidateSha256": "5631738657909fd43b5cd2ff93c5aca07cc1ae94be620e9c191221006f6bbb2c"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-guidance-integrity.ts",
+      "mainSha256": null,
+      "candidateSha256": "8202f89dc5f8f55034a709342531e4a0156be2d51ebe0493d88b875e45856ff2"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-guidance-record.ts",
+      "mainSha256": null,
+      "candidateSha256": "5f2e73ddbdd5fe656d2f7fe5fde075dd403d8e7ce8fec458a582b55d2421f019"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-guidance.controller.ts",
+      "mainSha256": null,
+      "candidateSha256": "289fec2993bf8b54d49842d073a32ae73956b159cbeda4c508a9e8171b5fefbf"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-guidance.integration.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "072eb0f4cb25fa546b6f4a6a953133728d3a1d3c85602833efcab368c7aa9e71"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-guidance.service.ts",
+      "mainSha256": null,
+      "candidateSha256": "b5faa66df281ec0aa34df5fa8f70072f4638f21ed5e2f558e40fcccb11586437"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-practice-content.test.ts",
+      "mainSha256": "5cc49fbc0f2a7b4765816a1e2a8b0f9b1937b1787238a0a1bd8a835c08cf0779",
+      "candidateSha256": "b47f2ec626e8a49ae2a8fe548a1f9dbc3609b6bc062e6b982b168bf64cd971a9"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-practice-source.ts",
+      "mainSha256": "14f3beae2187079048f7e98eca13f92355282d18d5ee30c6c4833ba57284f1c7",
+      "candidateSha256": "2891bf8c4fb4b090b3860b73324e4b60312cd2e36f4d040577027238447fedfa"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-assignment-record.ts",
+      "mainSha256": null,
+      "candidateSha256": "8df80a1d7ae70d494614c9fd8095997e179cbb4d3b383f9e34e9006e9e8632a3"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-assignment.controller.ts",
+      "mainSha256": null,
+      "candidateSha256": "cb9ee6868ae20bb8e33a70ce8671512c6d1c602e592bd07467d4149838f021bf"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-assignment.service.ts",
+      "mainSha256": null,
+      "candidateSha256": "e57b0d1e3a72155ed908c7f41a75be1984ceadf56e95d5a7f19ecea2cfc996d8"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-integrity.ts",
+      "mainSha256": null,
+      "candidateSha256": "c7d825678329cd34b44d758c0ab44d34e41e05fee29361652073f8443cc29c0b"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-record.ts",
+      "mainSha256": null,
+      "candidateSha256": "01c1c9fe06d4c92e1d526f7c0f6828f5b6158fddaada5447b712c1ce748c6cc5"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-self-record.ts",
+      "mainSha256": null,
+      "candidateSha256": "073da9174c0f86f6d211bf97578acb7d367bac48bf09cd5dc40d3a2e6e817327"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-self.controller.ts",
+      "mainSha256": null,
+      "candidateSha256": "c6a45308ce896242865510f8d71908a69352be3bf7c247c3968d4bf787ef9f4e"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-self.integration.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "fa988fd9f2b1f838d064f62ac5d4eb45cce4d531c4ab93e4ca48dd1702acd52a"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-self.service.ts",
+      "mainSha256": null,
+      "candidateSha256": "14269b31017aef4fb0a9092474ddaa22be94ab2442a6de1b2ea4cb718afe8b85"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-sharing.integration.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "f29169d4edb784cf612f4829990ddd28a3d427abdcdca67a89ca93b3251ef92b"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-source.service.ts",
+      "mainSha256": null,
+      "candidateSha256": "df0a29e0eb95f52ab08d6a52de9646b4eb4e01cb5b2b65f4448e84cb85e8af97"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-student-record.ts",
+      "mainSha256": null,
+      "candidateSha256": "d3a327257b9c28d3429d92b32ca5914750026f17c40b5a0c5f5e6ccaca95cd18"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-student.service.ts",
+      "mainSha256": null,
+      "candidateSha256": "6cab5ed6b825308db2b3e3febf21e6bdebd512a27ae7b221bdd23d04934e55ae"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-worker.service.ts",
+      "mainSha256": null,
+      "candidateSha256": "9c619da85be8cc79c0d4e6ebdbb04cc37306804211e72769ba0c48db64cb23b2"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching.controller.ts",
+      "mainSha256": null,
+      "candidateSha256": "14c6cd0161324b0b1a03e18c35a06abb5cbdbefa1021b07c94a5573a640d0899"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching.integration.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "a52615e646bde275f3b8257cc9c6ec3630ab4d4175b48274407645e4348f7f09"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching.service.ts",
+      "mainSha256": null,
+      "candidateSha256": "999ab82bf4e92f37035534cde53e34959c1d4ff248b2cad59ea5441a76e499fa"
+    },
+    {
+      "path": "apps/api/src/modules/learning/learning.module.ts",
+      "mainSha256": "2fcad8f54d636ef184f890819bcb3173076df9e5c654dad00f6624ca0bd1d95f",
+      "candidateSha256": "919e134676cb21aca9e91f927e70bb837cd9127350cc272dc16f21a9583f2f42"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual-files.test.ts",
+      "mainSha256": "019a631f6f2a5fee13bd102ce282857dbc3cbb43e5de916c4d0c7733f28ccdc7",
+      "candidateSha256": "f929c8ce483dc9658a9e722e5e2a88a101b525eb35daa3967eccc8a2618077e9"
+    },
+    {
+      "path": "apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts",
+      "mainSha256": "4fb6507106a54c91e363c738ac8a145220381fc935d91f2b24489e566ef8f979",
+      "candidateSha256": "c35e9b321ba200c7f6e1147040a1968927500613f9d26878323b55a09c6274b4"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+      "mainSha256": "585cabad9fe406bd78d80d175710aaf0232d7ee9e119ccef551745f91f05fd4a",
+      "candidateSha256": "e237e3e3ae09a5694334965ad9394543164a2991f9e3618bb57d648492b6d257"
+    },
+    {
+      "path": "apps/api/src/modules/privacy/privacy-records.ts",
+      "mainSha256": "bc36d6415b3ae703998c1aabb013c13acdcf1b6480df4624f219bea51f2c86ca",
+      "candidateSha256": "ef6b9de9af8464b0ad945b27bd63f9b62e6adf51e4e729867d14497ecf099ae0"
+    },
+    {
+      "path": "apps/web/app/student/assessment/studio.tsx",
+      "mainSha256": "31e8cc3347e72483039d7469e11a7ba20dba79974273b2f63aae3527a37024ec",
+      "candidateSha256": "76e9852646af503519e44d6f85559fb8cc2a4fb71c430cd38ce797ca0d3a8339"
+    },
+    {
+      "path": "apps/web/app/studio/tasks/conversation-practice.css",
+      "mainSha256": "4d1b11072fbc0b6214ac6303e933293d55787bf9e62f9ca9d4d774017cca470d",
+      "candidateSha256": "c5901256b2683fb1e52f2a8dae7ee389afc3704443da6afa7aec4f563cf59428"
+    },
+    {
+      "path": "apps/web/app/studio/tasks/conversation-practice.tsx",
+      "mainSha256": "c2ba76eb163838a2e3a5de6b05cb90b62f461f462cf3f327ecc26b174e910195",
+      "candidateSha256": "1e1e42aee3bc0101b0cccd7abcb8def10817c16b70ab73125f79f8c6c9b30697"
+    },
+    {
+      "path": "apps/web/app/studio/tasks/guidance-observation.tsx",
+      "mainSha256": null,
+      "candidateSha256": "d5a5ae8b0615db79e75e9b208b4c20f4f34cca2596dcf3e1041970ba4bd5e635"
+    },
+    {
+      "path": "apps/web/app/studio/tasks/student-teaching-practice.tsx",
+      "mainSha256": null,
+      "candidateSha256": "516c83c0b642ec8431206e758fb18b43c686716fa1c304296a654ef2d162da9d"
+    },
+    {
+      "path": "apps/web/app/studio/tasks/tasks.tsx",
+      "mainSha256": "4ba6852f3c2e726978c3763740ec428caf58aa0db0240d3af55eaa2305a267c6",
+      "candidateSha256": "10251d8f0f696738cb807fa262947c720952263542f52ff00914038f2599efad"
+    },
+    {
+      "path": "apps/web/app/studio/tasks/teaching-practice.tsx",
+      "mainSha256": null,
+      "candidateSha256": "38de7cc76dc8b4980be6aa20237e43d62345808419eb4d1577b4cc101e355f3e"
+    },
+    {
+      "path": "apps/web/components/assistant-generated-practices.tsx",
+      "mainSha256": null,
+      "candidateSha256": "ff08762c1217957d5ae0b8b8a82e36c6c4c02a9b20043348885585c99f9f687d"
+    },
+    {
+      "path": "apps/web/components/assistant-guidance.css",
+      "mainSha256": null,
+      "candidateSha256": "9ae29861b26a06796f0fe47ee23c975241571949d9ced2e85a95aa11dcbf0946"
+    },
+    {
+      "path": "apps/web/components/assistant-guidance.tsx",
+      "mainSha256": null,
+      "candidateSha256": "0f2d102a44bd640bda1b3fb08d5255e7dc2307808c2fb3a7a151c94577d8f746"
+    },
+    {
+      "path": "apps/web/components/assistant-practices.tsx",
+      "mainSha256": "7d940463ca859e171f9b7a9a18d04f42d60e75e144830e836c5bf79f6e27fa27",
+      "candidateSha256": "3ce7f7d75f3a94b5e0382e3a98c8eec7b903efadfd4cd0d3df1359fd271314b4"
+    },
+    {
+      "path": "apps/web/components/assistant-widget.tsx",
+      "mainSha256": "2f15b7ba83a5c391376c2008dc7b2eab4dd60dc7ca23137ae007e12375ff40f6",
+      "candidateSha256": "e13ea868416dd5a4c729656dcdd7907f9acce629f4400db74936c2279ad22d00"
+    },
+    {
+      "path": "apps/web/components/guidance-manager.css",
+      "mainSha256": "1ca43f63d90f2174707aab2ddb9f65ad4bb28d1d35dd05e7956266204fad195b",
+      "candidateSha256": "a258abd878445aaab2c021a87ef30e2f29ae5afe8a57586b8a961a2f1972f064"
+    },
+    {
+      "path": "apps/web/components/guidance-manager.tsx",
+      "mainSha256": "0834eb34698964ce7728d12c8a917c3982ceb313aca79a12f8ec49b6941e67df",
+      "candidateSha256": "66563a2bd3295ae413865219774711292d05092498cc9ed63d7ce9542fa59133"
+    },
+    {
+      "path": "apps/web/components/guidance-plan-operations.tsx",
+      "mainSha256": null,
+      "candidateSha256": "749169216e928d67191dcca0d86261b197f5febc2f0127a89258c8b67b0164dc"
+    },
+    {
+      "path": "apps/web/components/practice-copy-controls.tsx",
+      "mainSha256": "8f31f708423b9b152ecd17b03fdb2b745745f99d0dfc92c24d772c446a4f43ca",
+      "candidateSha256": "3325c14adaec25a67c19a17d5decdcf406e1ec93c6b20814557ab46b58aaf1ea"
+    },
+    {
+      "path": "apps/web/components/workspace-shell.tsx",
+      "mainSha256": "a0d9fe414f158d8a0e3f698a6e628e0aeba604c0c568e13a2dfbd985cc77749a",
+      "candidateSha256": "599f7d77fd1c068f61995607d3bc8d965040c665a3234e0cbf4212a6b843dd5d"
+    },
+    {
+      "path": "apps/web/lib/guidance-intent-workspace.ts",
+      "mainSha256": null,
+      "candidateSha256": "5ac04a0d768073200c3a551ed7ff4a57e5634d5aef633d103c996bb825ad93f9"
+    },
+    {
+      "path": "apps/web/lib/guidance-operations-copy.ts",
+      "mainSha256": null,
+      "candidateSha256": "9b23d4642486990030625330fea1afecebf55c8cd219e99a42f191abb9883fda"
+    },
+    {
+      "path": "apps/web/lib/guidance-plan-copy.ts",
+      "mainSha256": null,
+      "candidateSha256": "83ddf1e16dac9913029ab89c333b3ea59cdf9ac14351a73d0c8be2c2761cc0ef"
+    },
+    {
+      "path": "apps/web/lib/teaching-practice-workspace.ts",
+      "mainSha256": null,
+      "candidateSha256": "1074fe7ff28cf1324391d54171a0fe986f4f39210c53f7898dce192acac773e4"
+    },
+    {
+      "path": "apps/web/lib/use-practice-local-copy.ts",
+      "mainSha256": "6b6a2fcdb3e005d044c43a7f6ca943499c4eb80a0877803da019d7c28f912495",
+      "candidateSha256": "cdc8855702f37c6bda4f3b35ec1fec1fc932eac65ae07b68674bb06048093d21"
+    },
+    {
+      "path": "apps/web/lib/workspace-exit-guard.ts",
+      "mainSha256": "558b6579faf71611dbc886d202c3b4ee4bc81668cd36cca5baf64ff7034cb394",
+      "candidateSha256": "0fc60fc103897f104593d83920a69974729864acf5183a68b6da1c7e91ea12f0"
+    },
+    {
+      "path": "packages/contracts/src/assistant-guidance.ts",
+      "mainSha256": null,
+      "candidateSha256": "37e2359ca5577ff82eb0b4d198386ef994d17086da1c1c68405cbdb870c57067"
+    },
+    {
+      "path": "packages/contracts/src/assistant-teaching-assignment.ts",
+      "mainSha256": null,
+      "candidateSha256": "36ae43ac675aa55796f5a47ae9173131ec2abc731ccc1d9cb5aeb760509e1bff"
+    },
+    {
+      "path": "packages/contracts/src/assistant-teaching-learner.ts",
+      "mainSha256": null,
+      "candidateSha256": "0e1fb5eb349658749ca2ff7333830075b0fc4fa555cd0b8da9ecb190f9ee7d9d"
+    },
+    {
+      "path": "packages/contracts/src/assistant-teaching-practice.ts",
+      "mainSha256": null,
+      "candidateSha256": "66118c1b7a611e6c38f8a0db2070a75583234bd8e9deab047729becd36f9f8fd"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "mainSha256": "588cc297b81b75313b7214f3966284dfd3d919d7cc9fb6ae7422f9e178414913",
+      "candidateSha256": "7691d6eca44bc181a40c2a55e8d783d68b8d15167d99c5291ad1a9e053756ef5"
+    },
+    {
+      "path": "scripts/operations/assistant-practice-integrity.cjs",
+      "mainSha256": "6a07aac14efe191bf93bc62b94107d34034a7d79fba8ffa3c34f5863fb86d4b3",
+      "candidateSha256": "f563006c125c3652975f7cfcaaa18bab456ac158aa9013cee3a44fa6897c7e2a"
+    },
+    {
+      "path": "scripts/operations/database-reader-guard.cjs",
+      "mainSha256": "6441683c5c05559a8cbc26c3ef8c67294b68b7a4366f0e18fefa998e046c932f",
+      "candidateSha256": "16033fa08b8c387b5383728f144ee8ce1b217b180d9fc71863509a48e5d5164b"
+    },
+    {
+      "path": "scripts/qa/assistant-teaching-fixture.cjs",
+      "mainSha256": null,
+      "candidateSha256": "8690a59d35b86efe9b272a2ad0b68577156b33c4d502ada2c945190414ea259d"
+    },
+    {
+      "path": "scripts/qa/source-course-test-api.cjs",
+      "mainSha256": "77f34d8bfb4b059298195b44086ed4e6e03b5ac53d4f9066070810d579dc1181",
+      "candidateSha256": "62d67ae08ff4eeda68b82c901f6567fc7b0798218dc4b546a2964d0077b9c6c9"
+    },
+    {
+      "path": "tests/e2e/assistant-guidance.spec.ts",
+      "mainSha256": null,
+      "candidateSha256": "adeb1bf41765a69b92b3fd677075aa2df17a16cf2dcce3069cde2ce751b084c6"
+    },
+    {
+      "path": "tests/e2e/assistant-teaching-practice.spec.ts",
+      "mainSha256": null,
+      "candidateSha256": "f9bfd0a2e0ba63c3d59811e8f6619371b454fa6fd30fe4d0f430e48d215cc87e"
+    },
+    {
+      "path": "tests/e2e/assistant-teaching-sharing.spec.ts",
+      "mainSha256": null,
+      "candidateSha256": "c48966154bab42a8354d4c0fba4c528a4212c144540f13c7d3f550f3c24298ea"
+    },
+    {
+      "path": "resources/compatibility/domain-reader-schema25-v1.json.gz",
+      "mainSha256": null,
+      "candidateSha256": "fdb8f0e10f48b89d369d59198a3e9f02c1043de9261b868df85bcd4cff6e0018"
+    },
+    {
+      "path": "resources/compatibility/domain-reader-schema25-v1.receipt.json",
+      "mainSha256": null,
+      "candidateSha256": "1150852837039ab8a15560d328407197a941e5e37f313e394b6879695f6a1afb"
+    },
+    {
+      "path": "resources/compatibility/domain-reader-schema26-v1.json.gz",
+      "mainSha256": null,
+      "candidateSha256": "c65f0d94de678361115f07ac327f6f0da37ba93a23f56fafac67532678d1a3e0"
+    },
+    {
+      "path": "resources/compatibility/domain-reader-schema26-v1.receipt.json",
+      "mainSha256": null,
+      "candidateSha256": "635aeb4eb77390a334bff12b6b9b699e0b761ffd3fb52a01c65cca8497a5aed2"
+    }
+  ],
+  "noProductionBuildOrDataChange": true
+}

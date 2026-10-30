@@ -1,0 +1,91 @@
+{
+  "files": [
+    {
+      "path": "apps/api/src/infrastructure/assistant-note-storage.integration.test.ts",
+      "beforeSha256": "8b57b40fe429eb2ae8c3ff559bb04be03574c736a023f8c97b6235733633f884",
+      "afterSha256": "4a1891b99092fffdce3af84429480aaee1594beef77f355c0059900d0568c72a"
+    },
+    {
+      "path": "apps/api/src/infrastructure/assistant-whiteboard-reader.integration.test.ts",
+      "beforeSha256": "83367d7f1835b362ea43dcc36e2c4a395297dd54ce26a8ab18009d809953db26",
+      "afterSha256": "cc65daced66cab2e57b6495cccb66f65bda884f11f8b29f6e76ce8ea74063477"
+    },
+    {
+      "path": "apps/api/src/infrastructure/backup.integration.test.ts",
+      "beforeSha256": "d827318804dcf0b66d648a15c17588fca5f20f477611df27ddf76f4f576a7df2",
+      "afterSha256": "99ff20f9e40b319eb2bccba14a45cf07b40658a2059ff11ca3f3541198ce64a8"
+    },
+    {
+      "path": "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+      "beforeSha256": "a6f457436792043c4d9b21645286d3e52c2a7bd5f90ee7dfb9eff09b31c9d384",
+      "afterSha256": "e5ff7f8eabde9fc0ecbe53dd39d0e254444ef6b389f8e214a5de75e9b21cbfa2"
+    },
+    {
+      "path": "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+      "beforeSha256": "5d0e664b2ddde079cc57b22f7cebf1104f21b1fdfcb76763c02b96817d9feeec",
+      "afterSha256": "1dd4a2a3c8ded2e12ad9f12fa9fbf973887217fc83b90f0290c450d8b3c14f48"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-postgres.integration.test.ts",
+      "beforeSha256": "41d8368780a295d401fdc1dbdd0af0f49ce8ae560565d1f2e0614413fe9bf669",
+      "afterSha256": "b89602121d783ac7ee07a428f92b402789cb1ac3eea41868f1676c074f6d05ec"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-storage.integration.test.ts",
+      "beforeSha256": "bb541ce716f1092a9aa9d3ffcee5cc25876f1e60f85d281ed76ba902ded8d43b",
+      "afterSha256": "9a448ea2fb2a5a4bbef2c8b4d7fd671771158ea30d9bbc6ad8a85a1599ca0843"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts",
+      "beforeSha256": "935873237b6610a56803a0ca8e1d83d023b07df4697df9292d8f7fc422c00330",
+      "afterSha256": "71172aab674d4d80599571ed078b3c03b61c19c85195c36132ad7abd65348206"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-visual-storage.integration.test.ts",
+      "beforeSha256": "7b13c98b770d8f04fae08602e9eb163f14a888ad5d63ab76922405cd0b25f773",
+      "afterSha256": "e4626bbe8f34a5ba0e45973154623725d5760dd6e722f0e98db629252af1221e"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts",
+      "beforeSha256": "d639a3dc0a049c214bb38e3946ac3ba7a6a055970aa0e397a19ba1dff586e245",
+      "afterSha256": "0c02cdb10aea32e52c41b3ffcf9167f836e3c7c1249aeab546a9853881858732"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts",
+      "beforeSha256": "b933767e7cc808b0bc4481a3d582399fa710b91ceba1b6e2424a8fb9b2ba14d3",
+      "afterSha256": "4247baa540c4b71be57c0de9a9e5a0f72cf184d811c71c0a0806e4966b203c3c"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts",
+      "beforeSha256": "db7c5ae8a7a9c86b0f27112cd2ad210cb3821d490122e8a719d84411607987af",
+      "afterSha256": "25cc30f9e38bcc082bfbcb704cf8032184f665fe7a137b4121863bee73a5445c"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+      "beforeSha256": "00efee4aa5ec33a05b2fe44c42be3080fb511f895974f1399fd63ccf4fd1b855",
+      "afterSha256": "e237e3e3ae09a5694334965ad9394543164a2991f9e3618bb57d648492b6d257"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual-files.test.ts",
+      "beforeSha256": "3270f97eaf894a75fe81dbe337d2213d31d66bbe2a686bddb8d4ed3d49b0069a",
+      "afterSha256": "f929c8ce483dc9658a9e722e5e2a88a101b525eb35daa3967eccc8a2618077e9"
+    },
+    {
+      "path": "apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts",
+      "beforeSha256": "c613ad57c80ff03e6e941b0fa919857c74fc628cc04dc8980df8c3daf816bcaf",
+      "afterSha256": "c35e9b321ba200c7f6e1147040a1968927500613f9d26878323b55a09c6274b4"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema25-reader.integration.test.ts",
+      "beforeSha256": "256e9616ef6aa5ec57a8fea8a268d97d6e1e9f6b1321a0470d7aa7146ce463f8",
+      "afterSha256": "8506810e0677729ff90e30ac715c486204bb11ca30c90d329b259a2b864e8e5f"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema26-reader.integration.test.ts",
+      "beforeSha256": "3686a64c5519926ed6dbe08a6131aee912879cff7cfe710611e04e14528d7111",
+      "afterSha256": "c63a1f0397fc0dcc656044e2cf00afc0cdee04b3210bec666db0c4be1fed8060"
+    }
+  ],
+  "preserved": "All actual old24/25/26 compiled reader resources, their hashes, rollback-transition triggers and prior real data remain unchanged. Only current27 and unknown-future28 assertions advance; new schema27 suite separately uses actual old26.",
+  "scope": "Compatibility expectations, not business behavior or legacy bundles."
+}
