@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-30T21:18:13.043Z",
+  "state": "Isolated native31 upload/page/group/privacy/recovery candidate; not merged into main or deployed.",
+  "baseMain": "b29a3e97d274e5ad4fedbbf34fa73fa6db4c3b4b",
+  "sourceDelta": {
+    "files": 55,
+    "uncompressedSha256": "5638c2a148957114c05d1816ca365274641a47ca36650aede153ac599dade35f",
+    "gzipSha256": "44002153808db1de6918048b661c196ffc7be8dd6866b82f70147f3afcb1c39a"
+  },
+  "build": [
+    {
+      "name": "contracts",
+      "status": 0
+    },
+    {
+      "name": "config",
+      "status": 0
+    },
+    {
+      "name": "api-types",
+      "status": 0
+    },
+    {
+      "name": "api-build",
+      "status": 0
+    }
+  ],
+  "checks": [
+    {
+      "label": "group31-second",
+      "passed": 30,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "group31-postgres-second",
+      "passed": 30,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "group31-postgres-native-third",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "otherBatches": "Separate earlier stages, failures and pure40 retained in actual-checks.json. Do not add their counts to a single passing run.",
+  "productionObservation": {
+    "at": "2026-10-30T21:16:38.349893+00:00",
+    "main": "b29a3e97d274e5ad4fedbbf34fa73fa6db4c3b4b",
+    "formalSchema": 24,
+    "formalRevision": 187,
+    "formalBuildsUnchanged": 2,
+    "mainPackageAndLockUnchanged": true,
+    "mainSource": 30,
+    "isolatedPaperNative31Registered": true,
+    "wholeGoal": "active; complete remaining development and required real evidence remain unfinished; no push or deployment"
+  },
+  "boundaries": {
+    "schema31Isolated": true,
+    "groupNative": true,
+    "derivationNative": false,
+    "durableRecognition": false,
+    "completeWorkspaceUI": false,
+    "fullApiRegression": false,
+    "wholeBrowserRegression": false,
+    "teacherReview": false,
+    "realDevice": false,
+    "realLearnerIntervals": false,
+    "mainSource": 30,
+    "wholeGoal": "active",
+    "legacy72": "11 implemented / 50 in_progress / 11 planned / 0 verified",
+    "workspaceRequirements": "in_progress"
+  },
+  "artifacts": [
+    {
+      "path": "source-delta.json.gz",
+      "sha256": "44002153808db1de6918048b661c196ffc7be8dd6866b82f70147f3afcb1c39a"
+    },
+    {
+      "path": "checked-inputs.json.gz",
+      "sha256": "b7ff4d8bb9c2fb14c05897785f1d5d35a6cac262984d8b1543b8a27b1ca22951"
+    },
+    {
+      "path": "actual-checks.json",
+      "sha256": "204063dc6195e32a64ebfc209b062c1231b88b27b7716072e5bd825d66571c48"
+    }
+  ]
+}
