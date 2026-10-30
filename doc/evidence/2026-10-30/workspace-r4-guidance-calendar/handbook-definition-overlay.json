@@ -1,0 +1,23 @@
+{
+  "features": [
+    "LEARN-12"
+  ],
+  "sources": [
+    "apps/api/src/modules/learning/guidance-calendar.service.ts",
+    "apps/api/src/modules/learning/guidance-calendar.controller.ts",
+    "apps/api/src/modules/learning/guidance-calendar-preview.ts",
+    "apps/api/src/modules/learning/guidance-calendar-time.ts",
+    "apps/api/src/modules/learning/guidance-calendar-record.ts",
+    "apps/api/src/modules/learning/legacy-calendar-command.ts",
+    "apps/api/src/modules/learning/studio-integration.service.ts",
+    "apps/api/src/modules/privacy/privacy-records.ts",
+    "apps/api/src/infrastructure/schema28-reader.integration.test.ts",
+    "apps/web/components/guidance-calendar-manager.tsx",
+    "apps/web/lib/guidance-calendar-copy.ts",
+    "apps/web/app/studio/calendar-board.tsx",
+    "packages/contracts/src/guidance-calendar.ts",
+    "tests/e2e/guidance-calendar.spec.ts",
+    "doc/product/161-guidance-calendar-persistence-and-timezone-protocol.md"
+  ],
+  "preserved": "Keep current main LEARN-08/09/10/11 and162 protocol; no stale isolated registry replacement."
+}

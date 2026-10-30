@@ -1,6 +1,6 @@
 # 06 工作台首页、学习任务、报告与学习记忆 — 详细设计
 
-源码基线：`d372bda2a6bf1fa804418981d16d23ef5810d1d3`。角色：学生、家长、授权教师。
+源码基线：`c610f4c01bd1626496b3314f8b92d66eb02a9dd5`。角色：学生、家长、授权教师。
 
 产品入口：`/`、`/studio`、`/studio/tasks`、`/studio/reports`、`/studio/profiles`、`/studio/settings`、`/learn`、`/parent/dashboard`、`/student/today`。
 
@@ -247,9 +247,9 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:140](../../../apps/api/src/modules/learning/learning.service.ts#L140)。
-- `LearningService.createStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:156](../../../apps/api/src/modules/learning/learning.service.ts#L156)。
-- `LearningService.updateStudioPlanSession`；[apps/api/src/modules/learning/learning.service.ts:199](../../../apps/api/src/modules/learning/learning.service.ts#L199)。
+- `LearningService.previewStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:142](../../../apps/api/src/modules/learning/learning.service.ts#L142)。
+- `LearningService.createStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:158](../../../apps/api/src/modules/learning/learning.service.ts#L158)。
+- `LearningService.updateStudioPlanSession`；[apps/api/src/modules/learning/learning.service.ts:196](../../../apps/api/src/modules/learning/learning.service.ts#L196)。
 
 **补充实现文件**：
 
@@ -258,6 +258,53 @@
 - [doc/product/160-guidance-calendar-conflicts-and-due-review.md](../../../doc/product/160-guidance-calendar-conflicts-and-due-review.md)
 - [apps/api/src/modules/learning/studio-study-plan.ts](../../../apps/api/src/modules/learning/studio-study-plan.ts)
 - [apps/web/app/studio/study-planner.tsx](../../../apps/web/app/studio/study-planner.tsx)
+
+## LEARN-12 原指导时间安排、完整命令和时区预算
+
+**输入**：原plan/revision、完整本地日期与IANA偏移、跨学科每日预算、实际action/review、预检指纹、原请求与明确确认。
+
+**处理与实现**：以原报告/范围/定义和现有忙碌区间只读预检；事务内重读后明确保存原活动和真实复测时间。严格作者全文/原结果与当前安排分列；双向原生关系、隐私删除、旧27读取栅栏、完整副本和稳定ICS保持来源。
+
+**输出**：原任务稳定日程、阻断解释、准确原回执、当前历史和合法共享导出。
+
+**状态与持久化**：`guidanceCalendarArrangements`、`studioCalendarCommands`、`diagnosticPlans`、`guidancePlanRevisions`、`reviewTasks`、`studioScheduleEvents`
+
+**权限、失败与边界**：614整站/2070 API和实际PG分批通过；162教学后保持资格、更多受控原因、R5-R8及教师/实机/真人仍待。源码28未发布。
+
+**关联接口**：
+
+- `POST /api/learning/guidance-calendar/preflight` → `GuidanceCalendarController.preflight`；[apps/api/src/modules/learning/guidance-calendar.controller.ts:9](../../../apps/api/src/modules/learning/guidance-calendar.controller.ts#L9)。
+- `POST /api/learning/guidance-calendar/arrangements` → `GuidanceCalendarController.confirm`；[apps/api/src/modules/learning/guidance-calendar.controller.ts:10](../../../apps/api/src/modules/learning/guidance-calendar.controller.ts#L10)。
+- `GET /api/learning/guidance-calendar/requests/:key` → `GuidanceCalendarController.receipt`；[apps/api/src/modules/learning/guidance-calendar.controller.ts:11](../../../apps/api/src/modules/learning/guidance-calendar.controller.ts#L11)。
+- `GET /api/learning/guidance-calendar/plans/:planId` → `GuidanceCalendarController.forPlan`；[apps/api/src/modules/learning/guidance-calendar.controller.ts:12](../../../apps/api/src/modules/learning/guidance-calendar.controller.ts#L12)。
+- `GET /api/learning/guidance-calendar/arrangements/:id` → `GuidanceCalendarController.get`；[apps/api/src/modules/learning/guidance-calendar.controller.ts:13](../../../apps/api/src/modules/learning/guidance-calendar.controller.ts#L13)。
+- `POST /api/learning/guidance-calendar/arrangements/:id/revisions` → `GuidanceCalendarController.revise`；[apps/api/src/modules/learning/guidance-calendar.controller.ts:14](../../../apps/api/src/modules/learning/guidance-calendar.controller.ts#L14)。
+
+**服务方法**：
+
+- `GuidanceCalendarService.preflight`；[apps/api/src/modules/learning/guidance-calendar.service.ts:46](../../../apps/api/src/modules/learning/guidance-calendar.service.ts#L46)。
+- `GuidanceCalendarService.confirm`；[apps/api/src/modules/learning/guidance-calendar.service.ts:67](../../../apps/api/src/modules/learning/guidance-calendar.service.ts#L67)。
+- `GuidanceCalendarService.receipt`；[apps/api/src/modules/learning/guidance-calendar.service.ts:62](../../../apps/api/src/modules/learning/guidance-calendar.service.ts#L62)。
+- `GuidanceCalendarService.forPlan`；[apps/api/src/modules/learning/guidance-calendar.service.ts:61](../../../apps/api/src/modules/learning/guidance-calendar.service.ts#L61)。
+- `GuidanceCalendarService.get`；[apps/api/src/modules/learning/guidance-calendar.service.ts:60](../../../apps/api/src/modules/learning/guidance-calendar.service.ts#L60)。
+- `GuidanceCalendarService.revise`；[apps/api/src/modules/learning/guidance-calendar.service.ts:68](../../../apps/api/src/modules/learning/guidance-calendar.service.ts#L68)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/learning/guidance-calendar.controller.ts](../../../apps/api/src/modules/learning/guidance-calendar.controller.ts)
+- [apps/api/src/modules/learning/guidance-calendar-preview.ts](../../../apps/api/src/modules/learning/guidance-calendar-preview.ts)
+- [apps/api/src/modules/learning/guidance-calendar-time.ts](../../../apps/api/src/modules/learning/guidance-calendar-time.ts)
+- [apps/api/src/modules/learning/guidance-calendar-record.ts](../../../apps/api/src/modules/learning/guidance-calendar-record.ts)
+- [apps/api/src/modules/learning/legacy-calendar-command.ts](../../../apps/api/src/modules/learning/legacy-calendar-command.ts)
+- [apps/api/src/modules/learning/studio-integration.service.ts](../../../apps/api/src/modules/learning/studio-integration.service.ts)
+- [apps/api/src/modules/privacy/privacy-records.ts](../../../apps/api/src/modules/privacy/privacy-records.ts)
+- [apps/api/src/infrastructure/schema28-reader.integration.test.ts](../../../apps/api/src/infrastructure/schema28-reader.integration.test.ts)
+- [apps/web/components/guidance-calendar-manager.tsx](../../../apps/web/components/guidance-calendar-manager.tsx)
+- [apps/web/lib/guidance-calendar-copy.ts](../../../apps/web/lib/guidance-calendar-copy.ts)
+- [apps/web/app/studio/calendar-board.tsx](../../../apps/web/app/studio/calendar-board.tsx)
+- [packages/contracts/src/guidance-calendar.ts](../../../packages/contracts/src/guidance-calendar.ts)
+- [tests/e2e/guidance-calendar.spec.ts](../../../tests/e2e/guidance-calendar.spec.ts)
+- [doc/product/161-guidance-calendar-persistence-and-timezone-protocol.md](../../../doc/product/161-guidance-calendar-persistence-and-timezone-protocol.md)
 
 ## LEARN-01 家庭总览与证据化学习记忆
 
@@ -278,8 +325,8 @@
 
 **服务方法**：
 
-- `LearningService.overview`；[apps/api/src/modules/learning/learning.service.ts:1030](../../../apps/api/src/modules/learning/learning.service.ts#L1030)。
-- `LearningService.memory`；[apps/api/src/modules/learning/learning.service.ts:625](../../../apps/api/src/modules/learning/learning.service.ts#L625)。
+- `LearningService.overview`；[apps/api/src/modules/learning/learning.service.ts:1029](../../../apps/api/src/modules/learning/learning.service.ts#L1029)。
+- `LearningService.memory`；[apps/api/src/modules/learning/learning.service.ts:624](../../../apps/api/src/modules/learning/learning.service.ts#L624)。
 
 ## LEARN-02 今日任务与练习入口
 
@@ -300,8 +347,8 @@
 
 **服务方法**：
 
-- `LearningService.today`；[apps/api/src/modules/learning/learning.service.ts:685](../../../apps/api/src/modules/learning/learning.service.ts#L685)。
-- `LearningService.start`；[apps/api/src/modules/learning/learning.service.ts:699](../../../apps/api/src/modules/learning/learning.service.ts#L699)。
+- `LearningService.today`；[apps/api/src/modules/learning/learning.service.ts:684](../../../apps/api/src/modules/learning/learning.service.ts#L684)。
+- `LearningService.start`；[apps/api/src/modules/learning/learning.service.ts:698](../../../apps/api/src/modules/learning/learning.service.ts#L698)。
 
 ## LEARN-03 训练作答、草稿、提示与完成
 
@@ -326,12 +373,12 @@
 
 **服务方法**：
 
-- `LearningService.view`；[apps/api/src/modules/learning/learning.service.ts:741](../../../apps/api/src/modules/learning/learning.service.ts#L741)。
-- `LearningService.render`；[apps/api/src/modules/learning/learning.service.ts:768](../../../apps/api/src/modules/learning/learning.service.ts#L768)。
-- `LearningService.draft`；[apps/api/src/modules/learning/learning.service.ts:793](../../../apps/api/src/modules/learning/learning.service.ts#L793)。
-- `LearningService.submit`；[apps/api/src/modules/learning/learning.service.ts:892](../../../apps/api/src/modules/learning/learning.service.ts#L892)。
-- `LearningService.hint`；[apps/api/src/modules/learning/learning.service.ts:970](../../../apps/api/src/modules/learning/learning.service.ts#L970)。
-- `LearningService.complete`；[apps/api/src/modules/learning/learning.service.ts:987](../../../apps/api/src/modules/learning/learning.service.ts#L987)。
+- `LearningService.view`；[apps/api/src/modules/learning/learning.service.ts:740](../../../apps/api/src/modules/learning/learning.service.ts#L740)。
+- `LearningService.render`；[apps/api/src/modules/learning/learning.service.ts:767](../../../apps/api/src/modules/learning/learning.service.ts#L767)。
+- `LearningService.draft`；[apps/api/src/modules/learning/learning.service.ts:792](../../../apps/api/src/modules/learning/learning.service.ts#L792)。
+- `LearningService.submit`；[apps/api/src/modules/learning/learning.service.ts:891](../../../apps/api/src/modules/learning/learning.service.ts#L891)。
+- `LearningService.hint`；[apps/api/src/modules/learning/learning.service.ts:969](../../../apps/api/src/modules/learning/learning.service.ts#L969)。
+- `LearningService.complete`；[apps/api/src/modules/learning/learning.service.ts:986](../../../apps/api/src/modules/learning/learning.service.ts#L986)。
 
 ## LEARN-04 错题与待复核入口
 
@@ -351,7 +398,7 @@
 
 **服务方法**：
 
-- `LearningService.mistakes`；[apps/api/src/modules/learning/learning.service.ts:999](../../../apps/api/src/modules/learning/learning.service.ts#L999)。
+- `LearningService.mistakes`；[apps/api/src/modules/learning/learning.service.ts:998](../../../apps/api/src/modules/learning/learning.service.ts#L998)。
 
 ## LEARN-05 错题组织、复做与新题验证
 

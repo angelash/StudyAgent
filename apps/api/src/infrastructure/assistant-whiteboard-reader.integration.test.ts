@@ -57,9 +57,9 @@ for (const driver of ['sqlite', 'postgres'] as const) (driver === 'sqlite' || pg
   });
   it('upgrades unchanged original records and the saved old reader rejects before opening or rewriting them', async () => {
     const url = await original('upgrade'), before = await recordSnapshot(url), current = new DomainDatabase(url); await current.open(); await current.close();
-    expect(await version(url)).toBe(27); expect(await state(url)).toBe('ready-schema27'); expect(await recordSnapshot(url)).toEqual(before);
+    expect(await version(url)).toBe(28); expect(await state(url)).toBe('ready-schema28'); expect(await recordSnapshot(url)).toEqual(before);
     const old = new OldReader(url); try { await expect(old.open()).rejects.toThrow('Database restoration is incomplete'); } finally { await old.close(); }
-    expect(await recordSnapshot(url)).toEqual(before); expect(await version(url)).toBe(27); expect(await state(url)).toBe('ready-schema27');
+    expect(await recordSnapshot(url)).toEqual(before); expect(await version(url)).toBe(28); expect(await state(url)).toBe('ready-schema28');
   });
   it('rolls back the marker and migration together when the actual marker write is interrupted', async () => {
     const url = await original('rollback'), before = await recordSnapshot(url);
@@ -72,13 +72,13 @@ for (const driver of ['sqlite', 'postgres'] as const) (driver === 'sqlite' || pg
     expect(await version(url)).toBe(22); expect(await state(url)).toBe('ready'); expect(await recordSnapshot(url)).toEqual(before);
     const old = new OldReader(url); await old.open(); await old.close(); expect(await version(url)).toBe(22);
     await sql(url, 'DROP TRIGGER reject_reader23' + (driver === 'postgres' ? ' ON study_restore_guard' : ''));
-    const retry = new DomainDatabase(url); await retry.open(); await retry.close(); expect(await state(url)).toBe('ready-schema27'); expect(await recordSnapshot(url)).toEqual(before);
+    const retry = new DomainDatabase(url); await retry.open(); await retry.close(); expect(await state(url)).toBe('ready-schema28'); expect(await recordSnapshot(url)).toEqual(before);
   });
-  it('refuses future28 and inconsistent current markers without silently resetting either one', async () => {
+  it('refuses future29 and inconsistent current markers without silently resetting either one', async () => {
     const url = await original('future'), current = new DomainDatabase(url); await current.open(); await current.close(); const before = await recordSnapshot(url);
-    await sql(url, driver === 'sqlite' ? 'INSERT INTO schema_migrations VALUES(28,?)' : 'INSERT INTO schema_migrations(version,applied_at) VALUES(28,?)', [new Date().toISOString()]);
+    await sql(url, driver === 'sqlite' ? 'INSERT INTO schema_migrations VALUES(29,?)' : 'INSERT INTO schema_migrations(version,applied_at) VALUES(29,?)', [new Date().toISOString()]);
     const future = new DomainDatabase(url); try { await expect(future.open()).rejects.toThrow('unsupported_database_schema'); } finally { await future.close(); }
-    expect(await version(url)).toBe(28); expect(await recordSnapshot(url)).toEqual(before); await sql(url, 'DELETE FROM schema_migrations WHERE version=28');
+    expect(await version(url)).toBe(29); expect(await recordSnapshot(url)).toEqual(before); await sql(url, 'DELETE FROM schema_migrations WHERE version=29');
     await sql(url, "UPDATE study_restore_guard SET state='ready' WHERE id=1"); const inconsistent = new DomainDatabase(url);
     try { await expect(inconsistent.open()).rejects.toThrow('minimum_reader_guard_mismatch'); } finally { await inconsistent.close(); }
     expect(await state(url)).toBe('ready'); expect(await recordSnapshot(url)).toEqual(before);
@@ -90,9 +90,9 @@ for (const driver of ['sqlite', 'postgres'] as const) (driver === 'sqlite' || pg
     expect(await state(restoredUrl)).toBe('ready'); const old = new OldReader(restoredUrl); await old.open(); await old.close();
     const upgraded = new DomainDatabase(restoredUrl); await upgraded.open(); try { await upgraded.commit(await upgraded.read(), { notebookEntries: [{ id: 'original-notebook', content: 'Owned synthetic original' }, { id: 'after-upgrade', content: 'Keep later work' }] }); } finally { await upgraded.close(); }
     expect(await backup.restoreBundle({ bundle: legacyBundle, destination: legacyRestored, resume: true })).toEqual(legacyReceipt); expect((await sql(restoredUrl, "SELECT record_id FROM domain_records WHERE record_id='after-upgrade'")).length).toBe(1);
-    const bundle = join(directory, 'current27-bundle'), destination = join(directory, 'current27-restored'); await backup.createBundle({ dataDir: legacyRestored, destination: bundle }); expect((await backup.verifyBundle({ bundle })).database.schemaVersions.at(-1)).toBe(27);
+    const bundle = join(directory, 'current27-bundle'), destination = join(directory, 'current27-restored'); await backup.createBundle({ dataDir: legacyRestored, destination: bundle }); expect((await backup.verifyBundle({ bundle })).database.schemaVersions.at(-1)).toBe(28);
     await expect(oldBackup.createBundle({ dataDir: legacyRestored, destination: join(directory, 'old-backup-refused') })).rejects.toThrow('source_database_restore_incomplete');
-    const receipt = await backup.restoreBundle({ bundle, destination }); expect(await state(join(destination, 'study-agent.sqlite3'))).toBe('ready-schema27'); expect(await backup.restoreBundle({ bundle, destination, resume: true })).toEqual(receipt);
+    const receipt = await backup.restoreBundle({ bundle, destination }); expect(await state(join(destination, 'study-agent.sqlite3'))).toBe('ready-schema28'); expect(await backup.restoreBundle({ bundle, destination, resume: true })).toEqual(receipt);
     const rejected = new OldReader(join(destination, 'study-agent.sqlite3')); try { await expect(rejected.open()).rejects.toThrow('Database restoration is incomplete'); } finally { await rejected.close(); }
     const readable = new DomainDatabase(join(destination, 'study-agent.sqlite3')); await readable.open(); await readable.close();
   });

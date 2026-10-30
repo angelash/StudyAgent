@@ -1,0 +1,169 @@
+{
+  "numTotalTests": 34,
+  "numPassedTests": 34,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "guidance-calendar-ics.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "original guidance calendar ICS identity and public return keeps the stable original UID, real UTC times and sequence across repeated exports",
+          "status": "passed"
+        },
+        {
+          "title": "original guidance calendar ICS identity and public return exports a cancellation with the same real identity and next sequence",
+          "status": "passed"
+        },
+        {
+          "title": "original guidance calendar ICS identity and public return refuses active or credential-bearing return URLs and cannot inject additional ICS properties through text",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "guidance-calendar-preview.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "source-bound calendar preflight, real conflicts and per-local-day budget is deterministic and leaves all source inputs untouched while returning the exact current arrangement version",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound calendar preflight, real conflicts and per-local-day budget keeps a fully conflicting selection blocked and never replaces it with a forced fallback",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound calendar preflight, real conflicts and per-local-day budget adds actual nonoverlapping cross-subject occupied minutes and refuses the combined daily budget",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound calendar preflight, real conflicts and per-local-day budget charges both true local dates across midnight and includes completed while excluding skipped events",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound calendar preflight, real conflicts and per-local-day budget detects two selected activities overlapping while allowing precisely adjoining minutes",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound calendar preflight, real conflicts and per-local-day budget replaces only verified original arrangement event identities and fingerprints a genuinely later revision or calendar change",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound calendar preflight, real conflicts and per-local-day budget returns both actual DST offsets and blocks confirmation until the user selects one valid instant",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound calendar preflight, real conflicts and per-local-day budget keeps source plan, report, action and real retention boundaries explicit instead of creating new reviews",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound calendar preflight, real conflicts and per-local-day budget requires the full explicit original due-date change acknowledgement and reason",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound calendar preflight, real conflicts and per-local-day budget allows an explicitly empty desired set only when revising an actual existing arrangement and rejects forged entry identities",
+          "status": "passed"
+        },
+        {
+          "title": "source-bound calendar preflight, real conflicts and per-local-day budget preserves an actual completed or started original entry and its occupied budget when adding a later activity",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "guidance-calendar-record.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "calendar native source relations and immutable original commands checks actual original plan/report/session and event records in an otherwise valid native snapshot",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands refuses a foreign child even after every editable outer command hash is recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands requires the actual frozen plan revision and report rather than self-consistent replacement hashes",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands does not turn an unfinished source session into completed formal evidence through a calendar receipt",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands rejects rewritten public event times, teaching text or the original event identity",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands requires an actual account deletion receipt before anonymized original attribution can replace erased private commands",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands rejects orphan command receipts and duplicate actual actor request keys",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands validates actual local time, stable entry identity and elapsed duration before accepting a stored revision",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands exports shared arrangement dates while keeping another authors full edit reason and command out of a family portable copy",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands retains a shared child arrangement after an author closes the account and proves its anonymous relation using the actual deletion receipt",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "guidance-calendar-time.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union refuses malformed dates, invalid leap days and unknown zones instead of normalizing them",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union uses the selected timezone and an explicit verified offset for half-hour and quarter-hour places",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union rejects the actual Los Angeles spring gap and requires an explicit choice for its two autumn instants",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union handles the actual thirty-minute DST transition on Lord Howe without assuming one-hour shifts",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union counts the two actual local dates across midnight and preserves fractional elapsed minutes",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union measures the real23-hour spring day and25-hour autumn day instead of assigning1440 minutes",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union splits at a real date boundary even when midnight itself was skipped by Sao Paulo DST",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union does not invent the skipped Samoa date when a real interval spans the date-line change",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union unions duplicated and overlapping busy intervals without mutating the source and keeps adjacent events conflict-free",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union refuses invalid or unbounded existing intervals so missing budget is never silently treated as zero",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

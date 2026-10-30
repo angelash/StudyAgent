@@ -296,6 +296,8 @@ export type StudioScheduleEvent = {
   status?: 'scheduled' | 'completed' | 'skipped';
   confirmed?: boolean;
   revision?: number;
+  guidance?: { arrangementId: string; entryKey: string; planId: string; actionId: string | null; reviewTaskId: string | null;
+    timeZone: string; localDate: string; localTime: string; offsetMinutes: number; sourcePlanRevision: number };
 };
 
 export type StudioIntegrationOverview = {

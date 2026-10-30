@@ -1,4 +1,5 @@
 import type { GuidanceIntentRecord } from '../modules/learning/assistant-guidance-record';
+import type { GuidanceCalendarRecord,StudioCalendarCommandRecord } from '../modules/learning/guidance-calendar-record';
 import type { AssistantPracticeGroupStartRecord } from '../modules/learning/assistant-practice-learner-record';
 import type { TeachingDraftRecord,TeachingPracticeRecord } from '../modules/learning/assistant-teaching-record';
 import type { TeachingSessionRecord } from '../modules/learning/assistant-teaching-student-record';
@@ -418,6 +419,8 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   assistantArtifactDrafts: AssistantNoteRecord[] = [];
   assistantPracticeArtifacts: AssistantPracticeArtifactRecord[] = [];
   assistantGuidanceIntents: GuidanceIntentRecord[] = [];
+  guidanceCalendarArrangements: GuidanceCalendarRecord[] = [];
+  studioCalendarCommands: StudioCalendarCommandRecord[] = [];
   assistantTeachingPracticeDrafts: TeachingDraftRecord[] = [];
   assistantTeachingPractices: TeachingPracticeRecord[] = [];
   assistantTeachingSessions: TeachingSessionRecord[] = [];
@@ -537,6 +540,8 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.assistantArtifactDrafts = [];
     this.assistantPracticeArtifacts = [];
     this.assistantGuidanceIntents = [];
+    this.guidanceCalendarArrangements = [];
+    this.studioCalendarCommands = [];
     this.assistantTeachingPracticeDrafts = [];
     this.assistantTeachingPractices = [];
     this.assistantTeachingSessions = [];

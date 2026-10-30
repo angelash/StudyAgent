@@ -147,6 +147,7 @@ export class StudioIntegrationService {
     const event = this.store.find('studioScheduleEvents', { id, source: 'studyagent' });
     if (!event) throw new NotFoundException('学习安排不存在或不是 StudyAgent 任务');
     this.students.assertGuardian(user, event.studentId);
+    if (event.guidance) throw new ConflictException('这是原指导时间安排，请在原指导安排中明确修改或取消。');
     if (event.planId) throw new ConflictException('这是学习计划任务，请在计划中使用完成、跳过或重新打开');
     this.store.remove('studioScheduleEvents', { id }); return { removed: true, id };
   }
@@ -159,7 +160,7 @@ export class StudioIntegrationService {
     const row = this.store.find('studioScheduleEvents', { id });
     if (!row) throw new NotFoundException('日程不存在');
     this.students.assertGuardian(user, row.studentId);
-    if (row.source !== 'studyagent' || row.planId) throw new ConflictException('订阅日程只读；计划任务请通过学习计划更新');
+    if (row.source !== 'studyagent' || row.planId || row.guidance) throw new ConflictException('订阅日程只读；原计划和指导安排请通过相应原入口更新');
     if ((row.revision ?? 0) !== command.expectedRevision) throw new ConflictException('日程已更新，请刷新后重试');
     const startsAt = command.startsAt ?? row.startsAt, endsAt = command.endsAt ?? row.endsAt;
     const duration = Date.parse(endsAt) - Date.parse(startsAt);
@@ -175,7 +176,7 @@ export class StudioIntegrationService {
       const row = this.store.find('studioScheduleEvents', { id });
       if (!row) throw new NotFoundException('日程不存在');
       this.students.assertGuardian(user, row.studentId);
-      if (row.source !== 'studyagent' || row.planId) throw new ConflictException('批量删除只适用于手动学习安排');
+      if (row.source !== 'studyagent' || row.planId || row.guidance) throw new ConflictException('批量删除只适用于手动学习安排');
       return row;
     });
     for (const row of rows) this.store.remove('studioScheduleEvents', { id: row.id });
@@ -185,8 +186,12 @@ export class StudioIntegrationService {
   exportCalendar(user: InMemoryUserAccount, studentId: string, subject: StudioSubject) {
     this.students.assertCanAccessStudent(user, studentId);
     const events = this.store.select('studioScheduleEvents', { studentId, subject });
+    const configured=(process.env.CORS_ORIGINS??'').split(',').map(value=>value.trim()).filter(Boolean);
+    const origin=configured.find(value=>{try{const url=new URL(value);return ['https:','http:'].includes(url.protocol)&&!url.username&&!url.password&&url.pathname==='/'&&!url.search&&!url.hash;}catch{return false;}});
     return renderIcs(`StudyAgent ${subject}`, events.map(event => ({ uid: event.externalUid, title: event.title,
-      description: event.description, startsAt: event.startsAt, endsAt: event.endsAt, allDay: event.allDay })));
+      description: event.description, startsAt: event.startsAt, endsAt: event.endsAt, allDay: event.allDay,
+      ...(event.guidance ? { sequence:event.revision??0,status:event.status==='skipped'?'CANCELLED' as const:'CONFIRMED' as const,
+        ...(origin?{url:new URL('/studio/tasks?'+new URLSearchParams({studentId:event.studentId,subject:event.subject,view:'plan',planId:event.guidance.planId}),origin).href}:{}) } : {}) })));
   }
 
   private connector(user: InMemoryUserAccount, id: string) {

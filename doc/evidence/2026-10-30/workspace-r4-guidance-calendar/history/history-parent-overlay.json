@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-30T07:24:57.704Z",
+  "changes": [
+    {
+      "path": "apps/web/lib/workspace-exit-guard.ts",
+      "beforeSha256": "be70a36eafaa96bb92dd89273c77ceb6920312d26d904d257c8d914ae1901bc5",
+      "afterSha256": "0fc60fc103897f104593d83920a69974729864acf5183a68b6da1c7e91ea12f0"
+    }
+  ],
+  "scope": "Carry the independently verified native history continuation and actual running-cancel synchronization from frozen parent. Original terminal/model/focus assertions retained."
+}

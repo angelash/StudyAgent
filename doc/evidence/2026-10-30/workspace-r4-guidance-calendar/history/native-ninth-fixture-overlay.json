@@ -1,0 +1,6 @@
+{
+  "at": "2026-10-30T07:28:30.438Z",
+  "beforeSha256": "217acfce6763f8cb4ad4ba3442d68b7935be11131b619d6e86182bbed87d76d5",
+  "afterSha256": "bae01cd999e14ec3f6b2c86906676850fe6ebef0785d40c212276281e2afd819",
+  "reason": "The original synthetic success fixture used a different confirmation reason than the actual service saves. Align only that fixture text; keep strict full-command/result integrity and all prior failures."
+}

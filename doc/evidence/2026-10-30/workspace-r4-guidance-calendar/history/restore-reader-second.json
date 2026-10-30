@@ -1,0 +1,211 @@
+{
+  "numTotalTests": 43,
+  "numPassedTests": 26,
+  "numFailedTests": 0,
+  "numPendingTests": 17,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "restore-context.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "immutable restore context publication and identity binds the backup, ledger, driver and target, and excludes passwords/URLs/paths from stored identity",
+          "status": "passed"
+        },
+        {
+          "title": "immutable restore context publication and identity retains a fully published identity on later errors and never exposes partial official JSON at any phase",
+          "status": "passed"
+        },
+        {
+          "title": "immutable restore context publication and identity refuses to replace an existing identity even when the caller supplies another valid backup",
+          "status": "passed"
+        },
+        {
+          "title": "immutable restore context publication and identity rejects incomplete, oversized and linked context records while preserving their original bytes",
+          "status": "passed"
+        },
+        {
+          "title": "immutable restore context publication and identity verifies a read-only backup without loading the compiled application runtime",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "schema25-reader.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "sqlite actual schema24 reader fence for schema25 migrates actual24 without rewriting business records and the unmodified old reader refuses26 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema24 reader fence for schema25 migrates an actual23 database through24,25 and26 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema24 reader fence for schema25 rolls back the25 marker and its migration together and leaves the24 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema24 reader fence for schema25 rejects unknown future29 and mismatched or incomplete25 markers without resetting them",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema24 reader fence for schema25 restores a native24 bundle with its old marker, upgrades explicitly and restores native26 with the new minimum reader",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema24 reader fence for schema25 migrates actual24 without rewriting business records and the unmodified old reader refuses26 before any write",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema24 reader fence for schema25 migrates an actual23 database through24,25 and26 with its original business rows intact",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema24 reader fence for schema25 rolls back the25 marker and its migration together and leaves the24 reader usable",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema24 reader fence for schema25 rejects unknown future29 and mismatched or incomplete25 markers without resetting them",
+          "status": "skipped"
+        }
+      ]
+    },
+    {
+      "file": "schema26-reader.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 migrates actual25 without rewriting business records and the unmodified old reader refuses26 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 migrates an actual23 database through24,25 and26 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 rolls back the26 marker and its migration together and leaves the25 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 rejects unknown future29 and mismatched or incomplete26 markers without resetting them",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema25 reader fence for schema26 restores a native25 bundle with its old marker, upgrades explicitly and restores native26 with the new minimum reader",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 migrates actual25 without rewriting business records and the unmodified old reader refuses26 before any write",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 migrates an actual23 database through24,25 and26 with its original business rows intact",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 rolls back the26 marker and its migration together and leaves the25 reader usable",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema25 reader fence for schema26 rejects unknown future29 and mismatched or incomplete26 markers without resetting them",
+          "status": "skipped"
+        }
+      ]
+    },
+    {
+      "file": "schema27-reader.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "sqlite actual schema26 reader fence for schema27 migrates actual26 without rewriting business records and the unmodified old reader refuses27 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema26 reader fence for schema27 migrates an actual23 database through24,25,26 and27 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema26 reader fence for schema27 rolls back the27 marker and its migration together and leaves the26 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema26 reader fence for schema27 rejects unknown future29 and mismatched or incomplete27 markers without resetting them",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema26 reader fence for schema27 restores a native26 bundle with its old marker, upgrades explicitly and restores native27 with the new minimum reader",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema26 reader fence for schema27 migrates actual26 without rewriting business records and the unmodified old reader refuses27 before any write",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema26 reader fence for schema27 migrates an actual23 database through24,25,26 and27 with its original business rows intact",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema26 reader fence for schema27 rolls back the27 marker and its migration together and leaves the26 reader usable",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema26 reader fence for schema27 rejects unknown future29 and mismatched or incomplete27 markers without resetting them",
+          "status": "skipped"
+        }
+      ]
+    },
+    {
+      "file": "schema28-reader.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "sqlite actual schema27 reader fence for schema28 migrates actual27 without rewriting business records and the unmodified old reader refuses28 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema27 reader fence for schema28 migrates an actual23 database through24,25,26,27 and28 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema27 reader fence for schema28 refuses incomplete calendar relations before advancing the actual27 minimum reader marker",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema27 reader fence for schema28 rolls back the28 marker and its migration together and leaves the27 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema27 reader fence for schema28 rejects unknown future29 and mismatched or incomplete28 markers without resetting them",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema27 reader fence for schema28 restores a native27 bundle with its old marker, upgrades explicitly and restores native28 with the new minimum reader",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema27 reader fence for schema28 migrates actual27 without rewriting business records and the unmodified old reader refuses28 before any write",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema27 reader fence for schema28 migrates an actual23 database through24,25,26,27 and28 with its original business rows intact",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema27 reader fence for schema28 refuses incomplete calendar relations before advancing the actual27 minimum reader marker",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema27 reader fence for schema28 rolls back the28 marker and its migration together and leaves the27 reader usable",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema27 reader fence for schema28 rejects unknown future29 and mismatched or incomplete28 markers without resetting them",
+          "status": "skipped"
+        }
+      ]
+    }
+  ]
+}

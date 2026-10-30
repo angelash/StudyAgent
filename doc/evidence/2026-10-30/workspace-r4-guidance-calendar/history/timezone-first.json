@@ -1,0 +1,55 @@
+{
+  "numTotalTests": 10,
+  "numPassedTests": 10,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "guidance-calendar-time.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union refuses malformed dates, invalid leap days and unknown zones instead of normalizing them",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union uses the selected timezone and an explicit verified offset for half-hour and quarter-hour places",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union rejects the actual Los Angeles spring gap and requires an explicit choice for its two autumn instants",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union handles the actual thirty-minute DST transition on Lord Howe without assuming one-hour shifts",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union counts the two actual local dates across midnight and preserves fractional elapsed minutes",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union measures the real23-hour spring day and25-hour autumn day instead of assigning1440 minutes",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union splits at a real date boundary even when midnight itself was skipped by Sao Paulo DST",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union does not invent the skipped Samoa date when a real interval spans the date-line change",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union unions duplicated and overlapping busy intervals without mutating the source and keeps adjacent events conflict-free",
+          "status": "passed"
+        },
+        {
+          "title": "actual IANA dates, elapsed minutes and all-subject interval union refuses invalid or unbounded existing intervals so missing budget is never silently treated as zero",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

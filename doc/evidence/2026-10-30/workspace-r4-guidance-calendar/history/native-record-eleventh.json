@@ -1,0 +1,75 @@
+{
+  "numTotalTests": 15,
+  "numPassedTests": 13,
+  "numFailedTests": 2,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 2,
+  "suites": [
+    {
+      "file": "guidance-calendar-record.test.ts",
+      "status": "failed",
+      "tests": [
+        {
+          "title": "calendar native source relations and immutable original commands rejects a rehashed original command whose full input differs from its actual saved calendar revision",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands binds the original command kind, author and expected revision to its exact result even after editable hashes are recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands checks actual original plan/report/session and event records in an otherwise valid native snapshot",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands refuses a foreign child even after every editable outer command hash is recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands requires the actual frozen plan revision and report rather than self-consistent replacement hashes",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands does not turn an unfinished source session into completed formal evidence through a calendar receipt",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands rejects rewritten public event times, teaching text or the original event identity",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands requires an actual account deletion receipt before anonymized original attribution can replace erased private commands",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands rejects orphan command receipts and duplicate actual actor request keys",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands rejects an orphan guidance calendar event even when the complete arrangements and commands are missing",
+          "status": "failed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands requires every guidance event to refer to its actual original task and stored revision rather than only matching the public title",
+          "status": "failed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands validates actual local time, stable entry identity and elapsed duration before accepting a stored revision",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands exports shared arrangement dates while keeping another authors full edit reason and command out of a family portable copy",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands retains a shared child arrangement after an author closes the account and proves its anonymous relation using the actual deletion receipt",
+          "status": "passed"
+        },
+        {
+          "title": "calendar native source relations and immutable original commands keeps lawful actor anonymization compatible with the exact original scope, report and plan teaching snapshots",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

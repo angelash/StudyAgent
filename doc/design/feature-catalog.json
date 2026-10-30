@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "d372bda2a6bf1fa804418981d16d23ef5810d1d3",
+  "sourceRevision": "c610f4c01bd1626496b3314f8b92d66eb02a9dd5",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 141,
-    "activeNormalApiRoutes": 497,
-    "coveredApiRoutes": 497
+    "features": 142,
+    "activeNormalApiRoutes": 503,
+    "coveredApiRoutes": 503
   },
   "areas": [
     {
@@ -346,7 +346,7 @@
             {
               "name": "LearningService.studentProfiles",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 69
+              "line": 71
             }
           ],
           "sourceFiles": [
@@ -3272,17 +3272,17 @@
             {
               "name": "LearningService.previewStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 140
+              "line": 142
             },
             {
               "name": "LearningService.createStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 156
+              "line": 158
             },
             {
               "name": "LearningService.updateStudioPlanSession",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 199
+              "line": 196
             }
           ],
           "sourceFiles": [
@@ -3292,6 +3292,143 @@
             "doc/product/160-guidance-calendar-conflicts-and-due-review.md",
             "apps/api/src/modules/learning/studio-study-plan.ts",
             "apps/web/app/studio/study-planner.tsx"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/notebook.integration.test.ts",
+            "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+            "apps/api/src/modules/learning/learning-home.test.ts",
+            "apps/api/src/modules/learning/learning-home.integration.test.ts",
+            "tests/e2e/learning-home.spec.ts",
+            "tests/e2e/product-smoke.spec.ts"
+          ]
+        },
+        {
+          "id": "LEARN-12",
+          "title": "原指导时间安排、完整命令和时区预算",
+          "area": "learning",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "学生、家长、授权教师",
+          "pages": [
+            "/",
+            "/studio",
+            "/studio/tasks",
+            "/studio/reports",
+            "/studio/profiles",
+            "/studio/settings",
+            "/learn",
+            "/parent/dashboard",
+            "/student/today"
+          ],
+          "inputs": "原plan/revision、完整本地日期与IANA偏移、跨学科每日预算、实际action/review、预检指纹、原请求与明确确认",
+          "implementation": "以原报告/范围/定义和现有忙碌区间只读预检；事务内重读后明确保存原活动和真实复测时间。严格作者全文/原结果与当前安排分列；双向原生关系、隐私删除、旧27读取栅栏、完整副本和稳定ICS保持来源。",
+          "outputs": "原任务稳定日程、阻断解释、准确原回执、当前历史和合法共享导出",
+          "collections": [
+            "guidanceCalendarArrangements",
+            "studioCalendarCommands",
+            "diagnosticPlans",
+            "guidancePlanRevisions",
+            "reviewTasks",
+            "studioScheduleEvents"
+          ],
+          "limits": "614整站/2070 API和实际PG分批通过；162教学后保持资格、更多受控原因、R5-R8及教师/实机/真人仍待。源码28未发布。",
+          "endpoints": [
+            {
+              "verb": "POST",
+              "path": "/api/learning/guidance-calendar/preflight",
+              "controller": "GuidanceCalendarController",
+              "method": "preflight",
+              "file": "apps/api/src/modules/learning/guidance-calendar.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/guidance-calendar/arrangements",
+              "controller": "GuidanceCalendarController",
+              "method": "confirm",
+              "file": "apps/api/src/modules/learning/guidance-calendar.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/guidance-calendar/requests/:key",
+              "controller": "GuidanceCalendarController",
+              "method": "receipt",
+              "file": "apps/api/src/modules/learning/guidance-calendar.controller.ts",
+              "line": 11
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/guidance-calendar/plans/:planId",
+              "controller": "GuidanceCalendarController",
+              "method": "forPlan",
+              "file": "apps/api/src/modules/learning/guidance-calendar.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/guidance-calendar/arrangements/:id",
+              "controller": "GuidanceCalendarController",
+              "method": "get",
+              "file": "apps/api/src/modules/learning/guidance-calendar.controller.ts",
+              "line": 13
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/guidance-calendar/arrangements/:id/revisions",
+              "controller": "GuidanceCalendarController",
+              "method": "revise",
+              "file": "apps/api/src/modules/learning/guidance-calendar.controller.ts",
+              "line": 14
+            }
+          ],
+          "implementations": [
+            {
+              "name": "GuidanceCalendarService.preflight",
+              "file": "apps/api/src/modules/learning/guidance-calendar.service.ts",
+              "line": 46
+            },
+            {
+              "name": "GuidanceCalendarService.confirm",
+              "file": "apps/api/src/modules/learning/guidance-calendar.service.ts",
+              "line": 67
+            },
+            {
+              "name": "GuidanceCalendarService.receipt",
+              "file": "apps/api/src/modules/learning/guidance-calendar.service.ts",
+              "line": 62
+            },
+            {
+              "name": "GuidanceCalendarService.forPlan",
+              "file": "apps/api/src/modules/learning/guidance-calendar.service.ts",
+              "line": 61
+            },
+            {
+              "name": "GuidanceCalendarService.get",
+              "file": "apps/api/src/modules/learning/guidance-calendar.service.ts",
+              "line": 60
+            },
+            {
+              "name": "GuidanceCalendarService.revise",
+              "file": "apps/api/src/modules/learning/guidance-calendar.service.ts",
+              "line": 68
+            }
+          ],
+          "sourceFiles": [
+            "apps/api/src/modules/learning/guidance-calendar.service.ts",
+            "apps/api/src/modules/learning/guidance-calendar.controller.ts",
+            "apps/api/src/modules/learning/guidance-calendar-preview.ts",
+            "apps/api/src/modules/learning/guidance-calendar-time.ts",
+            "apps/api/src/modules/learning/guidance-calendar-record.ts",
+            "apps/api/src/modules/learning/legacy-calendar-command.ts",
+            "apps/api/src/modules/learning/studio-integration.service.ts",
+            "apps/api/src/modules/privacy/privacy-records.ts",
+            "apps/api/src/infrastructure/schema28-reader.integration.test.ts",
+            "apps/web/components/guidance-calendar-manager.tsx",
+            "apps/web/lib/guidance-calendar-copy.ts",
+            "apps/web/app/studio/calendar-board.tsx",
+            "packages/contracts/src/guidance-calendar.ts",
+            "tests/e2e/guidance-calendar.spec.ts",
+            "doc/product/161-guidance-calendar-persistence-and-timezone-protocol.md"
           ],
           "tests": [
             "apps/api/src/modules/learning/notebook.integration.test.ts",
@@ -3352,12 +3489,12 @@
             {
               "name": "LearningService.overview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 1030
+              "line": 1029
             },
             {
               "name": "LearningService.memory",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 625
+              "line": 624
             }
           ],
           "sourceFiles": [
@@ -3420,12 +3557,12 @@
             {
               "name": "LearningService.today",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 685
+              "line": 684
             },
             {
               "name": "LearningService.start",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 699
+              "line": 698
             }
           ],
           "sourceFiles": [
@@ -3521,32 +3658,32 @@
             {
               "name": "LearningService.view",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 741
+              "line": 740
             },
             {
               "name": "LearningService.render",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 768
+              "line": 767
             },
             {
               "name": "LearningService.draft",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 793
+              "line": 792
             },
             {
               "name": "LearningService.submit",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 892
+              "line": 891
             },
             {
               "name": "LearningService.hint",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 970
+              "line": 969
             },
             {
               "name": "LearningService.complete",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 987
+              "line": 986
             }
           ],
           "sourceFiles": [
@@ -3601,7 +3738,7 @@
             {
               "name": "LearningService.mistakes",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 999
+              "line": 998
             }
           ],
           "sourceFiles": [
@@ -6824,7 +6961,7 @@
             {
               "name": "LearningService.studioOverview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 74
+              "line": 76
             }
           ],
           "sourceFiles": [
@@ -7016,7 +7153,7 @@
             {
               "name": "LearningService.studioOverview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 74
+              "line": 76
             }
           ],
           "sourceFiles": [
@@ -7104,17 +7241,17 @@
             {
               "name": "LearningService.previewStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 552
+              "line": 551
             },
             {
               "name": "LearningService.createStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 570
+              "line": 569
             },
             {
               "name": "LearningService.startStudioLesson",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 599
+              "line": 598
             }
           ],
           "sourceFiles": [
@@ -7788,12 +7925,12 @@
             {
               "name": "LearningService.previewStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 242
+              "line": 241
             },
             {
               "name": "LearningService.createStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 254
+              "line": 253
             }
           ],
           "sourceFiles": [
@@ -7863,7 +8000,7 @@
             {
               "name": "LearningService.studioWhiteboardNarration",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 528
+              "line": 527
             }
           ],
           "sourceFiles": [
@@ -7974,17 +8111,17 @@
             {
               "name": "LearningService.uploadStudioPdf",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 286
+              "line": 285
             },
             {
               "name": "LearningService.studioPdfPageImage",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 347
+              "line": 346
             },
             {
               "name": "LearningService.studioPdfOriginal",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 357
+              "line": 356
             }
           ],
           "sourceFiles": [
@@ -8118,12 +8255,12 @@
             {
               "name": "LearningService.reviewStudioPdfStructure",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 372
+              "line": 371
             },
             {
               "name": "LearningService.retryStudioPdfProcessing",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 400
+              "line": 399
             }
           ],
           "sourceFiles": [
@@ -8201,12 +8338,12 @@
             {
               "name": "LearningService.previewStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 435
+              "line": 434
             },
             {
               "name": "LearningService.createStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 450
+              "line": 449
             }
           ],
           "sourceFiles": [
@@ -8285,12 +8422,12 @@
             {
               "name": "LearningService.previewStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 480
+              "line": 479
             },
             {
               "name": "LearningService.createStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 501
+              "line": 500
             }
           ],
           "sourceFiles": [
@@ -8378,17 +8515,17 @@
             {
               "name": "LearningService.previewStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 140
+              "line": 142
             },
             {
               "name": "LearningService.createStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 156
+              "line": 158
             },
             {
               "name": "LearningService.updateStudioPlanSession",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 199
+              "line": 196
             }
           ],
           "sourceFiles": [
@@ -8585,7 +8722,7 @@
             {
               "name": "StudioIntegrationService.updateStudyEvent",
               "file": "apps/api/src/modules/learning/studio-integration.service.ts",
-              "line": 154
+              "line": 155
             },
             {
               "name": "StudioIntegrationService.removeStudyEvent",
@@ -8595,7 +8732,7 @@
             {
               "name": "StudioIntegrationService.batchRemoveStudyEvents",
               "file": "apps/api/src/modules/learning/studio-integration.service.ts",
-              "line": 172
+              "line": 173
             }
           ],
           "sourceFiles": [
@@ -8666,7 +8803,7 @@
             {
               "name": "StudioIntegrationService.exportCalendar",
               "file": "apps/api/src/modules/learning/studio-integration.service.ts",
-              "line": 185
+              "line": 186
             }
           ],
           "sourceFiles": [
@@ -12882,7 +13019,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 361
+              "line": 362
             },
             {
               "name": "DomainEventBusService.publish",
@@ -12897,7 +13034,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 259
+              "line": 260
             }
           ],
           "sourceFiles": [
@@ -13166,7 +13303,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 243
+              "line": 244
             },
             {
               "name": "RuntimeMetricsService.snapshot",

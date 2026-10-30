@@ -1,0 +1,405 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-30T09:25:42.629114+00:00",
+  "sourceRevision": "c610f4c01bd1626496b3314f8b92d66eb02a9dd5",
+  "state": "161 actual source28 calendar persistence/timezone/strict commands implemented and isolated; no push/deployment, whole goal active.",
+  "completeBrowser": {
+    "tests": 614,
+    "retries": 0,
+    "stats": {
+      "startTime": "2026-10-30T08:21:34.061Z",
+      "duration": 3789222.0779999997,
+      "expected": 614,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "focusedBrowser": {
+    "tests": 22
+  },
+  "completeApi": {
+    "passed": 2070,
+    "failed": 0,
+    "skipped": 91
+  },
+  "focusedHttp": {
+    "passed": 62,
+    "skipped": 5,
+    "scope": "35SQLite guidance/calendar +21 originalstudio +6SQLite reader;5PG reader skips"
+  },
+  "actualPostgres": {
+    "passed": 45,
+    "scope": "34 actualPG business +5 actualPG reader +6 repeatedSQLite reader"
+  },
+  "restoreReader": {
+    "passed": 26,
+    "skipped": 17
+  },
+  "pure": {
+    "passed": 39
+  },
+  "savedActual27": {
+    "path": "resources/compatibility/domain-reader-schema27-v1.json.gz",
+    "sha256": "4840347480e78a7b6d8fea4dfca22800d228143a2af5568c847b4035c20a809b"
+  },
+  "sourceComparison": "source-comparison.json",
+  "screenshots": [
+    {
+      "path": "screenshots/complete-download-before-schedule-write.png",
+      "sha256": "50a768b3fdae8f4aa4bddff1c02bf195cd4f2084f2b29efd769745859c320526",
+      "bytes": 422972
+    },
+    {
+      "path": "screenshots/cross-subject-budget-and-late-conflict.png",
+      "sha256": "5f71fa995d607d8f433af72d6ed27893fd96f719da6fd33f0f95d23bd3cbb9cc",
+      "bytes": 426145
+    },
+    {
+      "path": "screenshots/explicit-repeated-dst-offset.png",
+      "sha256": "edd6df146c52c1183b82c0b8d0028ecc41f45d13a9e6fc5335fad4579e71e1cb",
+      "bytes": 406949
+    },
+    {
+      "path": "screenshots/lost-original-confirmation-recovered.png",
+      "sha256": "95046733f501fcf4c54414679da54ae126c7213abbba4534fc543e4a5685daba",
+      "bytes": 432196
+    },
+    {
+      "path": "screenshots/original-confirmed-schedule-1440.png",
+      "sha256": "755b571783aa4b8e7a5da165675a726e2508c035700e24165117dd31126bab69",
+      "bytes": 435069
+    },
+    {
+      "path": "screenshots/original-confirmed-schedule-320.png",
+      "sha256": "69e29fa660e98917f8d50a4787044bb7803c8c690f0a856e0cb9d30ce8082356",
+      "bytes": 338531
+    },
+    {
+      "path": "screenshots/original-confirmed-schedule-390.png",
+      "sha256": "6b82d966b087a90b80acdcdd98b14c0c8557e47c92a398c0a93a9665ba1be9b7",
+      "bytes": 346120
+    },
+    {
+      "path": "screenshots/original-confirmed-schedule-768.png",
+      "sha256": "d97afca5c7ea007a5d50117ba6e817a4d3d93a13245b8ccda7eb3099b6c68f7d",
+      "bytes": 368227
+    },
+    {
+      "path": "screenshots/two-tabs-separate-losing-complete-command.png",
+      "sha256": "8439572bc5151171264d2d127ad3c040b04f567a9a31ca0538de619b6fb2e230",
+      "bytes": 437998
+    }
+  ],
+  "productionObservation": {
+    "readOnly": true,
+    "unchangedFromMaterialsDelivery": true,
+    "artifacts": [
+      {
+        "path": "apps/api/dist/apps/api/src/main.js",
+        "sha256": "5793c7090063d318c5e5c60bdb74350baa6f64c386639b94fbf4cd5605946c1a",
+        "mtimeUtc": "2026-10-29T14:51:26.120290+00:00"
+      },
+      {
+        "path": "apps/web/.next/BUILD_ID",
+        "sha256": "e02197beeb39c5df02110ca05544c471b3bb892662bebdcb56449b27713e7fba",
+        "mtimeUtc": "2026-10-29T14:52:20.456777+00:00"
+      }
+    ],
+    "schemaVersion": 24,
+    "revision": 187,
+    "recheckedAt": "2026-10-30T09:25:42.755693+00:00"
+  },
+  "limits": [
+    "162 retention semantics not included. More causes,R5-R8 and complete original72/WS continue.",
+    "No teacher/device/all-content or real1/3/7/14-day success implied.",
+    "No production source28 runtime delivery."
+  ],
+  "artifacts": [
+    {
+      "path": "complete-api-first.json",
+      "sha256": "bdbf636ca8f0b2c2503c420d976fc9a926d271d2ee3bb14599a770b5daef8016",
+      "bytes": 542317
+    },
+    {
+      "path": "complete-browser-first.json",
+      "sha256": "79d29212bcfd1f7d6def95cb184714011d2ea9f54e5b1a4d6e5d7e545a1a11a0",
+      "bytes": 178962
+    },
+    {
+      "path": "failures-and-limits.json",
+      "sha256": "6447feeba7e8eeebc4a4798472fadd559faee85c1ec7cd18f046da38461ba1da",
+      "bytes": 1379
+    },
+    {
+      "path": "focused-browser-second.json",
+      "sha256": "2e7ae80a24cad76018baaeaed31fa2f016ea1d048a17b32049f680fb3c1eeba5",
+      "bytes": 6683
+    },
+    {
+      "path": "history/browser-role-correction.json",
+      "sha256": "3eb229e2e8b0cef841650273c5dfd33b63ff06018660916d71aeecc441172151",
+      "bytes": 615
+    },
+    {
+      "path": "history/calendar-http-first.json",
+      "sha256": "bccd99d8bda1cea96968090d63ce4d8686f09208ef4f4db579ea3476501b78ec",
+      "bytes": 17048
+    },
+    {
+      "path": "history/calendar-postgres-first.json",
+      "sha256": "7f53349990c350c4b27734ea8921b1980e1a2195ee4608b6c65dbaf7ce36e2e5",
+      "bytes": 12219
+    },
+    {
+      "path": "history/calendar-postgres-second.json",
+      "sha256": "7f53349990c350c4b27734ea8921b1980e1a2195ee4608b6c65dbaf7ce36e2e5",
+      "bytes": 12219
+    },
+    {
+      "path": "history/calendar-protocol-test-overlay.json",
+      "sha256": "67f0b61df4911eb864600c373b09b92790875eb79b6f775ea6eb0309eade5475",
+      "bytes": 670
+    },
+    {
+      "path": "history/calendar-pure-fifth.json",
+      "sha256": "ba6577b375d0fd039c883d6a36babcddfcb5d56bd918f282a06f11f070984c8a",
+      "bytes": 8851
+    },
+    {
+      "path": "history/calendar-pure-fourth.json",
+      "sha256": "ba6577b375d0fd039c883d6a36babcddfcb5d56bd918f282a06f11f070984c8a",
+      "bytes": 8851
+    },
+    {
+      "path": "history/calendar-pure-ninth.json",
+      "sha256": "33448a64f9db6cd89e205562aab77386cf28e4b312bb76ad8abed998b962c08b",
+      "bytes": 9609
+    },
+    {
+      "path": "history/calendar-pure-seventh.json",
+      "sha256": "fa6198728c877215c0facda13c4ea604b7cbd31c8458affb04646a49e37ac7b8",
+      "bytes": 9102
+    },
+    {
+      "path": "history/calendar-pure-sixth.json",
+      "sha256": "ba6577b375d0fd039c883d6a36babcddfcb5d56bd918f282a06f11f070984c8a",
+      "bytes": 8851
+    },
+    {
+      "path": "history/calendar-pure-tenth.json",
+      "sha256": "011046fba998757a98102197906fd5b276b8c7170e5a1a7ad899564995323b48",
+      "bytes": 9609
+    },
+    {
+      "path": "history/calendar-pure-twelfth.json",
+      "sha256": "84a7b502cd5d1c81b23eb230c7b44626bff2c8d8e4b55bf016bbbdf75683c2fa",
+      "bytes": 10124
+    },
+    {
+      "path": "history/complete-api-first.json",
+      "sha256": "bdbf636ca8f0b2c2503c420d976fc9a926d271d2ee3bb14599a770b5daef8016",
+      "bytes": 542317
+    },
+    {
+      "path": "history/dst-browser-window-overlay.json",
+      "sha256": "e555b9279c09e97eb8fd54f63d5922ecf6104d728206ec90a8e5f107a28ea45b",
+      "bytes": 450
+    },
+    {
+      "path": "history/guidance-calendar-browser-complete-first.json",
+      "sha256": "79d29212bcfd1f7d6def95cb184714011d2ea9f54e5b1a4d6e5d7e545a1a11a0",
+      "bytes": 178962
+    },
+    {
+      "path": "history/guidance-calendar-browser-first.json",
+      "sha256": "8646a7fda5f35ae8fbfe5ce6b9164e291a891ee9b043e546a4617b82634ed906",
+      "bytes": 6674
+    },
+    {
+      "path": "history/guidance-calendar-browser-second.json",
+      "sha256": "2e7ae80a24cad76018baaeaed31fa2f016ea1d048a17b32049f680fb3c1eeba5",
+      "bytes": 6683
+    },
+    {
+      "path": "history/history-parent-overlay.json",
+      "sha256": "1515370c83ffc502cbcac825480911e6eb85c63745ae02572face9a4efdfb47e",
+      "bytes": 502
+    },
+    {
+      "path": "history/legacy-command-overlay.json",
+      "sha256": "d072ea956ab1cf0a38f62eedd4cad05c6d0620c3ca2dc9c8f2747fe7f56b6e0d",
+      "bytes": 594
+    },
+    {
+      "path": "history/native-ninth-fixture-overlay.json",
+      "sha256": "c82133f65a34896f354a1dc33ea01c441f3546d0377f773319276a47a41b3a98",
+      "bytes": 434
+    },
+    {
+      "path": "history/native-record-eighth.json",
+      "sha256": "89f5a58ac605d10630df02c58a95faf97ab65978171f5e2e2c3a309274095e6c",
+      "bytes": 3462
+    },
+    {
+      "path": "history/native-record-eleventh.json",
+      "sha256": "c988e409e92652af9798bcc85c186865b505ab404a23d0ae3cd83504b63ac174",
+      "bytes": 3977
+    },
+    {
+      "path": "history/native-record-first.json",
+      "sha256": "ced9f339c3b5815296b4b968c4264fdda8e3c23a0a5c48d427246606ef1fddc1",
+      "bytes": 7496
+    },
+    {
+      "path": "history/native-record-second.json",
+      "sha256": "9bc60d2f4d14122ee18d5845e533ab98492aaaf7ca8b616f7ef1cfce33cb7a3a",
+      "bytes": 7533
+    },
+    {
+      "path": "history/native-record-third.json",
+      "sha256": "43e9364d21cf0c13ed3edc3064ebc4cc69b5066ab7a0d85dde9d5fa2108cb87b",
+      "bytes": 8075
+    },
+    {
+      "path": "history/preflight-first.json",
+      "sha256": "853d118c31ea968ef6125374c6248668f65408d0e74890a30a077122f5e11b60",
+      "bytes": 5265
+    },
+    {
+      "path": "history/reader27-preserved.json",
+      "sha256": "de2740758036466b6d3617f248ec646f4a483c0e68f38aa06fca23509f3c4d53",
+      "bytes": 108370
+    },
+    {
+      "path": "history/restore-reader-second.json",
+      "sha256": "27c9fff06c7cfb33826e37cd6a2f91206d9476f16e67c7f63ab8582c4d48f43e",
+      "bytes": 10260
+    },
+    {
+      "path": "history/schema28-activation-overlay.json",
+      "sha256": "2f5ef2ad401c708ae107cc56f328f8b9e475cc04717649677f05b06242b8d2ab",
+      "bytes": 1707
+    },
+    {
+      "path": "history/schema28-current-expectation-overlay.json",
+      "sha256": "5775acaf674c8f3c7cc06fa454dc7eaf9bdf52d9902fdf215944818de98a93f0",
+      "bytes": 5707
+    },
+    {
+      "path": "history/schema28-reader-test-overlay.json",
+      "sha256": "09cba12e3b2bc687a4a3e1232c02dbc6d8d0734311d1e0e154d7dacfce38a0a8",
+      "bytes": 464
+    },
+    {
+      "path": "history/stage-g-freeze-final.json",
+      "sha256": "50eca1222424ff6f9bea0085b8bf0f654ca728d45a612a5bf3486772195257fe",
+      "bytes": 458953
+    },
+    {
+      "path": "history/timezone-first.json",
+      "sha256": "955707e04f8f65888f622ebd6300e9438f32b67f140ea9606ceb517f35ac1166",
+      "bytes": 2643
+    },
+    {
+      "path": "history/web-first-superseded.json",
+      "sha256": "3c71fda9592add963361231f6f8bb43f66417f9bfa0fd82887e54c859286cbb8",
+      "bytes": 412
+    },
+    {
+      "path": "http-first.json",
+      "sha256": "bccd99d8bda1cea96968090d63ce4d8686f09208ef4f4db579ea3476501b78ec",
+      "bytes": 17048
+    },
+    {
+      "path": "integration-applied.json",
+      "sha256": "fe80dada27bc3d26548929b266b05547871c70612a2551fc9f18d7acc6cf0f79",
+      "bytes": 21743
+    },
+    {
+      "path": "local-originals.json",
+      "sha256": "bddb2fabb1aa591792edf602ef3cc72f4f92e7011dcbbe7aa071883afb3f336b",
+      "bytes": 25119
+    },
+    {
+      "path": "postgres-second.json",
+      "sha256": "7f53349990c350c4b27734ea8921b1980e1a2195ee4608b6c65dbaf7ce36e2e5",
+      "bytes": 12219
+    },
+    {
+      "path": "pure-twelfth.json",
+      "sha256": "84a7b502cd5d1c81b23eb230c7b44626bff2c8d8e4b55bf016bbbdf75683c2fa",
+      "bytes": 10124
+    },
+    {
+      "path": "restore-reader-second.json",
+      "sha256": "27c9fff06c7cfb33826e37cd6a2f91206d9476f16e67c7f63ab8582c4d48f43e",
+      "bytes": 10260
+    },
+    {
+      "path": "screenshots/complete-download-before-schedule-write.png",
+      "sha256": "50a768b3fdae8f4aa4bddff1c02bf195cd4f2084f2b29efd769745859c320526",
+      "bytes": 422972
+    },
+    {
+      "path": "screenshots/cross-subject-budget-and-late-conflict.png",
+      "sha256": "5f71fa995d607d8f433af72d6ed27893fd96f719da6fd33f0f95d23bd3cbb9cc",
+      "bytes": 426145
+    },
+    {
+      "path": "screenshots/explicit-repeated-dst-offset.png",
+      "sha256": "edd6df146c52c1183b82c0b8d0028ecc41f45d13a9e6fc5335fad4579e71e1cb",
+      "bytes": 406949
+    },
+    {
+      "path": "screenshots/lost-original-confirmation-recovered.png",
+      "sha256": "95046733f501fcf4c54414679da54ae126c7213abbba4534fc543e4a5685daba",
+      "bytes": 432196
+    },
+    {
+      "path": "screenshots/original-confirmed-schedule-1440.png",
+      "sha256": "755b571783aa4b8e7a5da165675a726e2508c035700e24165117dd31126bab69",
+      "bytes": 435069
+    },
+    {
+      "path": "screenshots/original-confirmed-schedule-320.png",
+      "sha256": "69e29fa660e98917f8d50a4787044bb7803c8c690f0a856e0cb9d30ce8082356",
+      "bytes": 338531
+    },
+    {
+      "path": "screenshots/original-confirmed-schedule-390.png",
+      "sha256": "6b82d966b087a90b80acdcdd98b14c0c8557e47c92a398c0a93a9665ba1be9b7",
+      "bytes": 346120
+    },
+    {
+      "path": "screenshots/original-confirmed-schedule-768.png",
+      "sha256": "d97afca5c7ea007a5d50117ba6e817a4d3d93a13245b8ccda7eb3099b6c68f7d",
+      "bytes": 368227
+    },
+    {
+      "path": "screenshots/two-tabs-separate-losing-complete-command.png",
+      "sha256": "8439572bc5151171264d2d127ad3c040b04f567a9a31ca0538de619b6fb2e230",
+      "bytes": 437998
+    },
+    {
+      "path": "source-comparison.json",
+      "sha256": "8c337a8cacc8f029a932d71dac514a2f9ea4d50bb26e574f23e99843dc96a0ff",
+      "bytes": 705770
+    },
+    {
+      "path": "handbook-definition-overlay.json",
+      "sha256": "5d26ff66467cd710252f27a210e25de47edf312a82ad212087a91a872c1c173d",
+      "bytes": 1076
+    },
+    {
+      "path": "handbook-validation.json",
+      "sha256": "fc3b90b5a198b89c6b72a9b1db88ff050f917330633f9fbd678aacea9efd86e2",
+      "bytes": 107018
+    },
+    {
+      "path": "delivery-checks.json",
+      "sha256": "73a9bef3fd390abebe3c29809b1bdc896b9a9199d63e3f1e1c059460ac18aee2",
+      "bytes": 324
+    }
+  ]
+}

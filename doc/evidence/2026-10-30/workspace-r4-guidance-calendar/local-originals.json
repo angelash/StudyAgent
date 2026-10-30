@@ -1,0 +1,580 @@
+{
+  "artifacts": [
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/source/data/qa/guidance-calendar-browser-complete-first.json",
+      "sha256": "b934878c51f6278fa7cb3376e716f93953a474454f70420c72417dde9a20c1d8",
+      "bytes": 686535
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/source/data/qa/guidance-calendar-browser-second.json",
+      "sha256": "fc61cefa4e2985b413bb34d9dab63efcb20d5e99e44b1672f2efb010fe33fbcc",
+      "bytes": 28266
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/complete-api-first.json",
+      "sha256": "82ca3a06f42e771360fee0d1d8357e8751955acbb97e74544741de76c21319c6",
+      "bytes": 1049968
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-http-first.json",
+      "sha256": "c40fc36180bbc254bb3231d832a970847e0cb3194292b4ba8767755898c76b5b",
+      "bytes": 32959
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-postgres-second.json",
+      "sha256": "39c4ced696f8a678bf359f967ef0c1d65ee5ab557b4400a468f170c3e6d48757",
+      "bytes": 23832
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/restore-reader-second.json",
+      "sha256": "5262a9085b5b8538a4dc81fb1e1d518f4de647656d15a68ea74c9e6fed1c7717",
+      "bytes": 19556
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-pure-twelfth.json",
+      "sha256": "349bfcaec5f68d47bb0e0e8ec361e1df42f76c69aa7707f64d05bcd508650852",
+      "bytes": 19876
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/activated28-first.json",
+      "sha256": "bcabafcdd32fb2b8ab35214339514f909de54044806aa40a79fe2f68fdb40d18",
+      "bytes": 159
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/activated28-second.json",
+      "sha256": "bcabafcdd32fb2b8ab35214339514f909de54044806aa40a79fe2f68fdb40d18",
+      "bytes": 159
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/browser-role-correction.json",
+      "sha256": "a7626c5c91187473b08a4cb75f646d93929685a55251ac8abf7668e9cf76f6c3",
+      "bytes": 601
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/build-web-first.json",
+      "sha256": "ba31745fcbf91b8ceceb5de5bd05e8916a18c769dd3b966a9e998fb409d5aae8",
+      "bytes": 160
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/build-web-second.json",
+      "sha256": "ba31745fcbf91b8ceceb5de5bd05e8916a18c769dd3b966a9e998fb409d5aae8",
+      "bytes": 160
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-browser-first-freeze.json",
+      "sha256": "7d287733075f563653f3f00a99808a836e998e87e42ae5fee09eee4009b82381",
+      "bytes": 436370
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-draft-status.json",
+      "sha256": "f47906788c2017c65e87c69bed8a5241b89eb4f25e765427aedd3e74f249aeee",
+      "bytes": 2545
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-http-first.json",
+      "sha256": "c40fc36180bbc254bb3231d832a970847e0cb3194292b4ba8767755898c76b5b",
+      "bytes": 32959
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-postgres-first.json",
+      "sha256": "419ec3fcae63da6f6c2fe5958e53f0652f7dca9c343052915fef64d09f7f1278",
+      "bytes": 23855
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-postgres-second.json",
+      "sha256": "39c4ced696f8a678bf359f967ef0c1d65ee5ab557b4400a468f170c3e6d48757",
+      "bytes": 23832
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-protocol-test-overlay.json",
+      "sha256": "19dead81cdd77dcbcb453d78bb77da06fca9925ac3c5732f35f65c3164f599a8",
+      "bytes": 663
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-pure-fifth.json",
+      "sha256": "fa67a2e45bfe859d5300c0ccacd8b1e88f9b92bf80504ebc6a9e4a61f628d014",
+      "bytes": 17424
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-pure-fourth.json",
+      "sha256": "e32a0900ae298cab035219fa676f7b9db21f42beabbd9be90297702932c54a54",
+      "bytes": 17411
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-pure-ninth.json",
+      "sha256": "05e2599e38113855d699b6fa5d8e7d0a909f974fc96f0a4c50521feb9c8efe95",
+      "bytes": 20079
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-pure-seventh.json",
+      "sha256": "02666db258a0e3303d7b5fb70e7d664d264e88a3dbd1202b09c48ba59f122cfe",
+      "bytes": 17911
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-pure-sixth.json",
+      "sha256": "d9b661fa9a434d669611d67269a5b07d387d1ee7bc7d2549d65a62134c287b73",
+      "bytes": 17419
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-pure-tenth.json",
+      "sha256": "fac20ba025bab626ff91c5e753d27acfc015454bad3e0a6c56cbb2cf986acecc",
+      "bytes": 18891
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-pure-twelfth.json",
+      "sha256": "349bfcaec5f68d47bb0e0e8ec361e1df42f76c69aa7707f64d05bcd508650852",
+      "bytes": 19876
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/complete-api-first.json",
+      "sha256": "82ca3a06f42e771360fee0d1d8357e8751955acbb97e74544741de76c21319c6",
+      "bytes": 1049968
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/continuation-20261030T0719.json",
+      "sha256": "ca5068006307ea26c00465dbbdfbb6f9a7d30d89ce2e678429fa7604f9e73363",
+      "bytes": 6496
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/dst-browser-window-overlay.json",
+      "sha256": "7e8410bbd8d53f31970b41fda3d4246400e3867b21882aa3b0f6aa2b81a36bb9",
+      "bytes": 444
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/fifth-steps.json",
+      "sha256": "f52b74b2c491e8e89d9ed36ad2aaeed3782bb375c89ad1f82fc65d01a45ad941",
+      "bytes": 111
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/fourth-steps.json",
+      "sha256": "f52b74b2c491e8e89d9ed36ad2aaeed3782bb375c89ad1f82fc65d01a45ad941",
+      "bytes": 111
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/history-parent-overlay.json",
+      "sha256": "c5a2af287e8ee51d8d12d36f62eeabda490c1b32307f651de16c65c30dd027c0",
+      "bytes": 491
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/inputs.json",
+      "sha256": "b78a8a873091e60e61295c788abfc73195215890228016c6af504dfa1019740f",
+      "bytes": 499718
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/integration-applied.json",
+      "sha256": "41ddab59943db4870b6e46c279cfab845f6cabe1d41e04b010774049ba1938ba",
+      "bytes": 21392
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/integration-plan-preserved-1793352094144.json",
+      "sha256": "45f15d18b50db6988030e526b54539fee55e9db77a379aea139e8d32af4a10c0",
+      "bytes": 13141
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/integration-plan.json",
+      "sha256": "22d9b30011d0fe0761c836fc965b11353fd0a4a998e253061664b52ea13a4dd9",
+      "bytes": 13141
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/legacy-command-overlay.json",
+      "sha256": "8e689a67d1353740f0673ca8dc8821262aaa8e0f17d4b2ddc5dce16434dd379f",
+      "bytes": 588
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/native-ninth-fixture-overlay.json",
+      "sha256": "a875518556d4506f50cefedabb0b559f62251be9ec74bafaa89b6e34f72d5c4d",
+      "bytes": 428
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/native-record-eighth.json",
+      "sha256": "bcff763b6662f035ba909f39fb7e1d040e1d52fb5f2157f8092b5915d1dfe254",
+      "bytes": 9190
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/native-record-eleventh.json",
+      "sha256": "97a49be1723a06ed66730a0951f9baaa7a3291c2854153df4368726545e907b1",
+      "bytes": 10180
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/native-record-first.json",
+      "sha256": "c5631a0fd2da76181bd26f250a1b87522c130f4ea20a6358e08ea42496f9ccf6",
+      "bytes": 14764
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/native-record-second.json",
+      "sha256": "82cf4a1fa5b1e07bee9143bc656c67b2414f2df63194b28fafc1360b20c369a4",
+      "bytes": 14838
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/native-record-third.json",
+      "sha256": "0f939e62ef5c47b064d90f01fb949ab693f3e882e6b510f1cb57d3877e1f2a26",
+      "bytes": 15890
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/postgres-identity-first.json",
+      "sha256": "24c34924a61a575af2a12c39707d16fc74205fb1def9306998a6634019310921",
+      "bytes": 85
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/postgres-identity-second.json",
+      "sha256": "24c34924a61a575af2a12c39707d16fc74205fb1def9306998a6634019310921",
+      "bytes": 85
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/preflight-first.json",
+      "sha256": "0dbe0a6a54bbf33b9797cb297211e60a9cf152d39358d76353892972a1ede75c",
+      "bytes": 10428
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/production-protection-20261030T071904.json",
+      "sha256": "0447110c0c0124165679eb8f48f30067d8d72db587a265cd207ed943c051fa49",
+      "bytes": 345
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/production-protection-20261030T090500.json",
+      "sha256": "f6884da3f674ee06d3f33f317fc4f4f464d3d580ffe82a210671c0a5fd3ff33d",
+      "bytes": 385
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/production-protection-20261030T092254.json",
+      "sha256": "0692ff0c9bdde5f5007ea53fb341db24fe668cc7d39ed8c83861bdc85ea1e673",
+      "bytes": 385
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/reader27-preserved.json",
+      "sha256": "e636d8eba359602393f1c56c3aae97e2f6382e8e9a2dfdbfcd4679b337aa6162",
+      "bytes": 105905
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/restore-reader-second.json",
+      "sha256": "5262a9085b5b8538a4dc81fb1e1d518f4de647656d15a68ea74c9e6fed1c7717",
+      "bytes": 19556
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/schema28-activation-overlay.json",
+      "sha256": "7e9d6d1af7ebd2d1add07626d338e3cb85b206c62cb6a10d5aca2b0f9cbeb930",
+      "bytes": 1675
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/schema28-current-expectation-overlay.json",
+      "sha256": "1f3ecd3ff745333737601dd863b1017b4a4a2447dd8b3d4ab925f6fb92d5842d",
+      "bytes": 5606
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/schema28-reader-test-overlay.json",
+      "sha256": "c956c322c70d21cf4d55d1bf9b3853678fcd3f9f0b6dadbf7065c80dcf62d344",
+      "bytes": 457
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/sixth-steps.json",
+      "sha256": "f52b74b2c491e8e89d9ed36ad2aaeed3782bb375c89ad1f82fc65d01a45ad941",
+      "bytes": 111
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/stage-g-freeze-final.json",
+      "sha256": "acf779150a5153cea58058a97590a8c17578697864bf0ec6f0b09f561dd110f2",
+      "bytes": 448822
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/timezone-first.json",
+      "sha256": "4a95b9d98258dcde92d10e10e441a5a8fe26eac97c82a10a1dd2e08eea06049c",
+      "bytes": 5326
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-fifth.json",
+      "sha256": "bcabafcdd32fb2b8ab35214339514f909de54044806aa40a79fe2f68fdb40d18",
+      "bytes": 159
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-first.json",
+      "sha256": "18afc2025be31c9857f2358f47afd1edad2bedeadc1b23c9f02c60e616d5dd34",
+      "bytes": 95
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-fourth.json",
+      "sha256": "18afc2025be31c9857f2358f47afd1edad2bedeadc1b23c9f02c60e616d5dd34",
+      "bytes": 95
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-second.json",
+      "sha256": "bcabafcdd32fb2b8ab35214339514f909de54044806aa40a79fe2f68fdb40d18",
+      "bytes": 159
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-sixth.json",
+      "sha256": "bcabafcdd32fb2b8ab35214339514f909de54044806aa40a79fe2f68fdb40d18",
+      "bytes": 159
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-third.json",
+      "sha256": "bcabafcdd32fb2b8ab35214339514f909de54044806aa40a79fe2f68fdb40d18",
+      "bytes": 159
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/web-first-superseded.json",
+      "sha256": "ecefc1df847b411e7a593da6ceedad800446946568b2dce60014b1e77d67ac1e",
+      "bytes": 407
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/source/data/qa/guidance-calendar-browser-complete-first.json",
+      "sha256": "b934878c51f6278fa7cb3376e716f93953a474454f70420c72417dde9a20c1d8",
+      "bytes": 686535
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/source/data/qa/guidance-calendar-browser-first.json",
+      "sha256": "8ea85ffca3bf1224d83b3624288a6d1becefd2ababcbae330a592b001ffa2dc1",
+      "bytes": 94130
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/source/data/qa/guidance-calendar-browser-second.json",
+      "sha256": "fc61cefa4e2985b413bb34d9dab63efcb20d5e99e44b1672f2efb010fe33fbcc",
+      "bytes": 28266
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/activated28-first-api-build.log",
+      "sha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "bytes": 62
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/activated28-first-api-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/activated28-first-web-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/activated28-second-api-build.log",
+      "sha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "bytes": 62
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/activated28-second-api-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/activated28-second-web-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/browser-complete-first.log",
+      "sha256": "e29e41f03e7092826a7cd2c87a5448a5e69614c5802babdc6bc68ead225250f8",
+      "bytes": 101459
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/browser-first.log",
+      "sha256": "0dc34a49b82c3b4b130a5a4e7c8538cc2dfae317c0f511c87a57a9ebe7749cba",
+      "bytes": 43628
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/browser-second.log",
+      "sha256": "5aea336cf2220378d40bd11a053315f5ddee9f31625ca928d0bb500e01c1d531",
+      "bytes": 4279
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/build-web-first.log",
+      "sha256": "3c971290cf89cb3262128ffa03022b80aec73dcfc1daade6cebfafdf18355528",
+      "bytes": 1626
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/build-web-second.log",
+      "sha256": "81db79537704df59be2d5befb1466197a7a0a292f3c347bc18799d03d63c6f9d",
+      "bytes": 1626
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-http-first.log",
+      "sha256": "c8397d96d55d0eaec6c31814bb4bc25a83808f3f041eed62741f83797e43e65a",
+      "bytes": 9105
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-postgres-first.log",
+      "sha256": "44ab2df1ae8631a654807425fbdb8f7013482f5cf1eea56228c469ad3945f72a",
+      "bytes": 7254
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-postgres-second.log",
+      "sha256": "68bfe9cb9078afec1a8b5e74169633fe3096506906f97511df009202227972e0",
+      "bytes": 7254
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-pure-ninth.log",
+      "sha256": "8d5a1549a657252e1081bd38bade35603482f3c8dc6bd38c54c6861a6ba0f37c",
+      "bytes": 3287
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-pure-seventh.log",
+      "sha256": "e12c6c48c444df849a9add3bf6dc2a012ce49bfca131bc06931be84e62c9092e",
+      "bytes": 1085
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-pure-tenth.log",
+      "sha256": "c009a921496e3763c48fae6c64b4795de65908605bd6b02a00f582b002248407",
+      "bytes": 1083
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/calendar-pure-twelfth.log",
+      "sha256": "f441e5db99b463fc8a2de447985d93af60632f9aa57901bd2e6e67e7f61df00b",
+      "bytes": 1086
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/complete-api-first.log",
+      "sha256": "72fd61465b16f83de45ebc484820e40559af476c412915e526f04c1db75737bb",
+      "bytes": 97610
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/fifth-calendar-pure.log",
+      "sha256": "e387daf675185c75e5d0fa006cc80c2b6402deab4ebdd78d5f2fe1bdcf28011d",
+      "bytes": 1083
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/fifth-contracts.log",
+      "sha256": "0d6b24f7efc7fbf93c82f525242deccea0a961ed7337ee3b563f5d5e20208aeb",
+      "bytes": 470
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/fourth-calendar-pure.log",
+      "sha256": "6ebe04f3b2d37aaf97fd2ef4f34707d3dfba7229b1070bdd81fa8a75b3d8eebc",
+      "bytes": 1085
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/fourth-contracts.log",
+      "sha256": "466217851f9d271cd8104105373f93e412305eec6565bfd82976419a2043e19d",
+      "bytes": 470
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/native-record-eighth.log",
+      "sha256": "96403693562ad21d829f5d4b2c4322cfca7fd52298638b29bb3472918a499ab8",
+      "bytes": 3451
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/native-record-eleventh.log",
+      "sha256": "b85f41be8c242dd09ac9880d9ad93650df4a428174dbcdbdde60e262e05b0350",
+      "bytes": 3719
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/native-record-first.log",
+      "sha256": "bedee8cda7bac83995ae2bd4d949d5b8cc61443ab3e75ed8f4a5a77775c166a7",
+      "bytes": 1012
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/native-record-second.log",
+      "sha256": "b04fa7d87466a58e1d5aafc03088daaa6150947bfd40c7cc2dd17e675b2c581f",
+      "bytes": 1013
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/native-record-third.log",
+      "sha256": "90f1cec573dca8ccaecd28e8f110332d8036fb4de3625818cb13ce6d2bb95221",
+      "bytes": 1013
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/preflight-first.log",
+      "sha256": "23d53ad1d05f4ac86bfb27831b36671d7676959e4bce0b13e32fc9b7bcfdb6d1",
+      "bytes": 934
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/restore-reader-second.log",
+      "sha256": "e7da8e1fc00596a8408fc4d3d16dd294c31ebed85c765e81b2b9ea5eec053201",
+      "bytes": 1965
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/sixth-calendar-pure.log",
+      "sha256": "cc0430c2c8fc241f66c1da25f989c116f6bcdd03b32332f2a2ff7c7fe33c66e8",
+      "bytes": 1083
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/sixth-contracts.log",
+      "sha256": "f6661856acea8f6452c23db312217d905176c92effa590614c3bbc908c2e0add",
+      "bytes": 470
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/timezone-first.log",
+      "sha256": "0d273b9d817b44dfe235cac9e11c67631df5d802844769a92cd0a36c53ad7101",
+      "bytes": 855
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-fifth-api-build.log",
+      "sha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "bytes": 62
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-fifth-api-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-fifth-web-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-first-api.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-first-web.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-fourth-api.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-fourth-web.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-second-api-build.log",
+      "sha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "bytes": 62
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-second-api-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-second-web-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-sixth-api-build.log",
+      "sha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "bytes": 62
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-sixth-api-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-sixth-web-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-third-api-build.log",
+      "sha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "bytes": 62
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-third-api-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "data/qa/workspace-guidance-calendar-first-20261030/types-third-web-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "privacy": "Original traces/logs/credentials and runtime records remain ignored. Public titles/status/hashes and generated synthetic QA screenshots only."
+}

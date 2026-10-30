@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-30T07:52:47.835Z",
+  "actualReader27Sha256": "4840347480e78a7b6d8fea4dfca22800d228143a2af5568c847b4035c20a809b",
+  "files": [
+    {
+      "path": "apps/api/src/infrastructure/domain-database.ts",
+      "beforeSha256": "def89713cbcaa7fd9b63f8622334e8fca9a81d5cb459d1f7e43cdd63d35c3f96",
+      "afterSha256": "a0efe5bda42378aef56f2815ed9a1271d450a93e1f3ca7952eb6384d9ed07b68"
+    },
+    {
+      "path": "scripts/operations/database-reader-guard.cjs",
+      "beforeSha256": "16033fa08b8c387b5383728f144ee8ce1b217b180d9fc71863509a48e5d5164b",
+      "afterSha256": "8db70d4bdfae5aa0c8e913f3af882f96da6e9d143073986022fac35b5c2577d2"
+    },
+    {
+      "path": "scripts/operations/assistant-practice-integrity.cjs",
+      "beforeSha256": "f563006c125c3652975f7cfcaaa18bab456ac158aa9013cee3a44fa6897c7e2a",
+      "afterSha256": "70b01ee217e6f86d05c2b5cc8be3c25d210e00aabed6ecc489497d36a9bcf9a5"
+    },
+    {
+      "path": "apps/api/src/modules/learning/learning.module.ts",
+      "beforeSha256": "919e134676cb21aca9e91f927e70bb837cd9127350cc272dc16f21a9583f2f42",
+      "afterSha256": "d662e179cae2c7cca3f380509d5e3b414087ab41ca050d9c3771072aa8b0c7c6"
+    },
+    {
+      "path": "apps/api/src/common/auth.guard.ts",
+      "beforeSha256": "b5d783871fa8853ad63f62c67444830c7e07c290816b0a0d0687860eede297b9",
+      "afterSha256": "0c7d287a0a3240f50820b4000ccd9c17bd644306c655639931f0aec995246e4a"
+    }
+  ],
+  "scope": "Actual final27 resource gate passed;28 unique source-plan and actor-key constraints, native integrity, reader/restore marker and controller/service/learner read-only registration activated only in isolated161 source. Production/main unchanged."
+}

@@ -1,0 +1,351 @@
+{
+  "at": "2026-10-30T09:25:00.388Z",
+  "base": "c610f4c01bd1626496b3314f8b92d66eb02a9dd5",
+  "files": [
+    {
+      "path": "apps/api/src/common/auth.guard.ts",
+      "mainSha256": "b5d783871fa8853ad63f62c67444830c7e07c290816b0a0d0687860eede297b9",
+      "candidateSha256": "0c7d287a0a3240f50820b4000ccd9c17bd644306c655639931f0aec995246e4a",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "6f0072eb0c194174bf5d79bb891cdf1e6a91a9f53d8d0fd28627fcb295688e4e"
+    },
+    {
+      "path": "apps/api/src/infrastructure/assistant-note-storage.integration.test.ts",
+      "mainSha256": "4a1891b99092fffdce3af84429480aaee1594beef77f355c0059900d0568c72a",
+      "candidateSha256": "34051355b67dcf1724f284f67212da14baa880e7d45ef2de30a6f934ce95856a",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "93b8b61aa0026123e2b6b07b7c24c5bc4baad25468f0c44c9d03c9bb2aabc60f"
+    },
+    {
+      "path": "apps/api/src/infrastructure/assistant-whiteboard-reader.integration.test.ts",
+      "mainSha256": "cc65daced66cab2e57b6495cccb66f65bda884f11f8b29f6e76ce8ea74063477",
+      "candidateSha256": "6c8cb4ad4622b1a8b46e1b7bb49f933647a584013849608c18e96c6fc4d5c385",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "5f3744c8678b7b21df1290cb37f0288e8ad7c5f5122c7c7319edb667403a7b7c"
+    },
+    {
+      "path": "apps/api/src/infrastructure/backup.integration.test.ts",
+      "mainSha256": "99ff20f9e40b319eb2bccba14a45cf07b40658a2059ff11ca3f3541198ce64a8",
+      "candidateSha256": "cc1fae42c0e410ee1dce6ab4a77692c86c94f95ba0db7f2ccd79dcb41a39ac95",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "212f731db064d1a188d003aafcd437f1d7f2c7e4646e485018b7633d9b192f5b"
+    },
+    {
+      "path": "apps/api/src/infrastructure/domain-database.ts",
+      "mainSha256": "def89713cbcaa7fd9b63f8622334e8fca9a81d5cb459d1f7e43cdd63d35c3f96",
+      "candidateSha256": "aeb304c3e2f1753638db084b060855fe434a682783de6345f9d4cbf5ecf27515",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "16f564e702874f63095104ec2919a11ee0d86c46ffa651dd1d3226a9248e13ec"
+    },
+    {
+      "path": "apps/api/src/infrastructure/in-memory-store.service.ts",
+      "mainSha256": "9e96dfee0daf4b2bdffe9a615ec4b076c91f6d5b98502c459f49c202378aaf4a",
+      "candidateSha256": "a6a015448c555184b5a5d2cd70459bbde98560e01cf23ca8b015439d64ed67ba",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "0ad3c4b98009bbee90a4d1397d225def8d9e1b832478ec087cea224438a092f2"
+    },
+    {
+      "path": "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+      "mainSha256": "e5ff7f8eabde9fc0ecbe53dd39d0e254444ef6b389f8e214a5de75e9b21cbfa2",
+      "candidateSha256": "77a5718080ff9d62d7c27c5b218032f7c38aa89524226c97f8b6d059ec146502",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "8454cc081490499c3b659e303f536b079165644da665d06fa46a7112553275e7"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema25-reader.integration.test.ts",
+      "mainSha256": "8506810e0677729ff90e30ac715c486204bb11ca30c90d329b259a2b864e8e5f",
+      "candidateSha256": "685986b7ce23dabdea4746d2a6ea7e42837ea5fe44421e44c626781812684bef",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "85d66254288484a1d0e348f37d0066bec865d9608476d1d33f8dc4ed5951dfd5"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema26-reader.integration.test.ts",
+      "mainSha256": "106873a82d10406c14ce3ad69ac1c2b182d56c8864d6cdaa153c71ff8c98149a",
+      "candidateSha256": "47def55264f29f5de63401fbf5f2661ed879b5a89f09cf9622ac0971f3c3ca33",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "616ed2c5c028d5cb203dca2c3d4028f81048ec0af1f3666d0cad216d1265ac01"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema27-reader.integration.test.ts",
+      "mainSha256": "ebb10401dc3a5509156d4f33a80c225afccfca0b724fcd3a6a56dd5416c59497",
+      "candidateSha256": "fe1e4c39fe64da85738930832c833e5b1becfa453c6ccd1d6c65841e4f5c05d0",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "ca1efc73709431c13d1cb5acbbbc4d8510ad3c18d1111ef55bb92a3239044eb8"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema28-reader.integration.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "5449686b7741ecb49c1af83c85f6ac341e3c350ef2f3d3d63ff27337746ec2ab",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "5ccbe7f154fa1e3933254d1e58cde8ba4abd9fdd27b8449c2c455361e3945cac"
+    },
+    {
+      "path": "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+      "mainSha256": "1dd4a2a3c8ded2e12ad9f12fa9fbf973887217fc83b90f0290c450d8b3c14f48",
+      "candidateSha256": "11c51d6abe70677e3cc91b332d5096d8571ce51470d8fa91588f2806867ab659",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "953d675f8631ae2730b1c40f666ddeda01d11452ba3d5656a535fd8ff3e28a50"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-postgres.integration.test.ts",
+      "mainSha256": "b89602121d783ac7ee07a428f92b402789cb1ac3eea41868f1676c074f6d05ec",
+      "candidateSha256": "115f2462e134b3c991fba8a09e0eeb61ec67ce11bc8659108f0a3822f5947e49",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "accf3988c4fe46115cf769865bc2731c609270bbdd26b902045bc02f771fd124"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-storage.integration.test.ts",
+      "mainSha256": "9a448ea2fb2a5a4bbef2c8b4d7fd671771158ea30d9bbc6ad8a85a1599ca0843",
+      "candidateSha256": "9a67b60d5368d5f67a4398569269b6c4a6ed8f11e59cf760caea0255a849a606",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "04127f530d3e57ba6bf26348bdba1b1af8d7ac3b74cc82e6c813555ea27b7646"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts",
+      "mainSha256": "71172aab674d4d80599571ed078b3c03b61c19c85195c36132ad7abd65348206",
+      "candidateSha256": "dcdf156b130596414842d642bb7f2ddb9ac49522152989b507b2967a75f43e36",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "7c3c5a743cd64b283fbfaebfc61e5d68475ec0c92524e836c88f9594b031dbb8"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-visual-storage.integration.test.ts",
+      "mainSha256": "e4626bbe8f34a5ba0e45973154623725d5760dd6e722f0e98db629252af1221e",
+      "candidateSha256": "7131b661a63c3040c58e51427aa8de1e537600866e658c4f42bc06f47a40f109",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "5fd1379c164c220a4e6ea1a6a1ea7fe340a657d4fc4a156422960ea6c743ddea"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts",
+      "mainSha256": "0c02cdb10aea32e52c41b3ffcf9167f836e3c7c1249aeab546a9853881858732",
+      "candidateSha256": "f7ef8537d7b1e7a90dc059b6024567614036e3ac1a3160c55623ed5e9809960c",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "2350402621bf58e47968b706ee1c3bd6b7a42b5b1ad8967efe4cf99017386e6b"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts",
+      "mainSha256": "4247baa540c4b71be57c0de9a9e5a0f72cf184d811c71c0a0806e4966b203c3c",
+      "candidateSha256": "5e6eb6f5b6ed81f30f7a4c49843c2f9065e956313b95b457203164ad48ce0f17",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "57fe91f084224ffc70d5c77dc9b15dd27510b41ad421f92cf5b2c8a1cd2a6412"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts",
+      "mainSha256": "25cc30f9e38bcc082bfbcb704cf8032184f665fe7a137b4121863bee73a5445c",
+      "candidateSha256": "3c41efb8831654e171edb89d38a9e94ccb59b3a771c17b791d7ae258b73849db",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "e12536dccd28c62fb3074e234bc18a14fd3f03b49449c387f6954d768df8919e"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-guidance.integration.test.ts",
+      "mainSha256": "b7f0eff701990d798c1d0357fbfa890914a94fc4b9fda6c9608ee0f8b686ecb2",
+      "candidateSha256": "ef48fdbf9ecb19934847f78d58d20d8b6c0a6538b06387fab20d7f4c7c89879b",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "edc749a0833b82329f69adf572ff7fedaa1691f0d72c11e8c315d75e51cad98d"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching.integration.test.ts",
+      "mainSha256": "cb4aebbe25ad7bf138db9367fda501d8d2dc98ba5248389b0245b9e883e0083a",
+      "candidateSha256": "23428ebe210c2539bb2c6bb9a41a906f0000e0b82f9f3d68b78e115417fadc0e",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "c4f0e18632f899c037d8fd5ae662716760dab289908c1766ac513f89bcf0e75f"
+    },
+    {
+      "path": "apps/api/src/modules/learning/guidance-calendar-ics.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "f2619a5edfc66ea4022fff532ab067632ed6e72a9a724b0cd9ec1e0bc7dd1b64",
+      "deliveredSha256": "f2619a5edfc66ea4022fff532ab067632ed6e72a9a724b0cd9ec1e0bc7dd1b64"
+    },
+    {
+      "path": "apps/api/src/modules/learning/guidance-calendar-preview.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "86cf6f80863c31bef88ef5358f37fe8d0315d9fc77ef27aa34a779bf2f09769b",
+      "deliveredSha256": "86cf6f80863c31bef88ef5358f37fe8d0315d9fc77ef27aa34a779bf2f09769b"
+    },
+    {
+      "path": "apps/api/src/modules/learning/guidance-calendar-preview.ts",
+      "mainSha256": null,
+      "candidateSha256": "9cc4a1961ad744240702fbab8daafc223369a6b72499fcffdf6d6bdc2c7af49c",
+      "deliveredSha256": "9cc4a1961ad744240702fbab8daafc223369a6b72499fcffdf6d6bdc2c7af49c"
+    },
+    {
+      "path": "apps/api/src/modules/learning/guidance-calendar-record.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "4d2fde4fa353971b282d9dd1b3ef11202ad13ce89bd6adbfc74204b72ceac805",
+      "deliveredSha256": "4d2fde4fa353971b282d9dd1b3ef11202ad13ce89bd6adbfc74204b72ceac805"
+    },
+    {
+      "path": "apps/api/src/modules/learning/guidance-calendar-record.ts",
+      "mainSha256": null,
+      "candidateSha256": "ac61550fd8d9ef289744c4b8296edf058db94407c127cccdb23a4e325b977b90",
+      "deliveredSha256": "ac61550fd8d9ef289744c4b8296edf058db94407c127cccdb23a4e325b977b90"
+    },
+    {
+      "path": "apps/api/src/modules/learning/guidance-calendar-time.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "036a71a7ff9f2005e6be598b0eb42dbbaff36c8665c7a7d26fbeb48e4cea1e06",
+      "deliveredSha256": "036a71a7ff9f2005e6be598b0eb42dbbaff36c8665c7a7d26fbeb48e4cea1e06"
+    },
+    {
+      "path": "apps/api/src/modules/learning/guidance-calendar-time.ts",
+      "mainSha256": null,
+      "candidateSha256": "171237e7fdb156dec4bcea52b8de5bf18f8952007562d5f9835f2c3aed4937e6",
+      "deliveredSha256": "171237e7fdb156dec4bcea52b8de5bf18f8952007562d5f9835f2c3aed4937e6"
+    },
+    {
+      "path": "apps/api/src/modules/learning/guidance-calendar.controller.ts",
+      "mainSha256": null,
+      "candidateSha256": "0cb780d199d401d1f97b4b8d652e477a2f561ab40e9e4a819e0ac53dc2b43a07",
+      "deliveredSha256": "0cb780d199d401d1f97b4b8d652e477a2f561ab40e9e4a819e0ac53dc2b43a07"
+    },
+    {
+      "path": "apps/api/src/modules/learning/guidance-calendar.service.ts",
+      "mainSha256": null,
+      "candidateSha256": "862d442dc0c7ecb06d2764c1fcad463019ad3a959779a6093ded3218f84a9574",
+      "deliveredSha256": "862d442dc0c7ecb06d2764c1fcad463019ad3a959779a6093ded3218f84a9574"
+    },
+    {
+      "path": "apps/api/src/modules/learning/ics-calendar.ts",
+      "mainSha256": "16a02273a763762e8a03b5fb389d2cb8520d96e78e7b736fcdde5d4750ad808f",
+      "candidateSha256": "44a0a644ee1f07c710cfe7777459f2f1b2570a4f7ae2f0176b9f91ff06405663",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "f73e89ebed9e57451938aea87e199ff3ad90929d5360577d1f8807cc081457a3"
+    },
+    {
+      "path": "apps/api/src/modules/learning/learning.module.ts",
+      "mainSha256": "919e134676cb21aca9e91f927e70bb837cd9127350cc272dc16f21a9583f2f42",
+      "candidateSha256": "d662e179cae2c7cca3f380509d5e3b414087ab41ca050d9c3771072aa8b0c7c6",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "11fbe08e1044500a9a03945e7d9153c6beb65ee75c97ef7a7bb379e3d3bb2eba"
+    },
+    {
+      "path": "apps/api/src/modules/learning/learning.service.ts",
+      "mainSha256": "4b52752687856c04323341209a8d2f2b1b001492939d52c762bb448c83241971",
+      "candidateSha256": "f4485b6329ced0c092e143cfdf0cd0815976b3849cac2591aae4734958e030c6",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "64f49dd6577bd7660ac6c1b409148d1f5ad019ef30988303c74c90e6587060a6"
+    },
+    {
+      "path": "apps/api/src/modules/learning/legacy-calendar-command.ts",
+      "mainSha256": null,
+      "candidateSha256": "98e2e08e3d18a5e421bb51c12206b555e5fda0cb64a410498399fce7018aaa2b",
+      "deliveredSha256": "98e2e08e3d18a5e421bb51c12206b555e5fda0cb64a410498399fce7018aaa2b"
+    },
+    {
+      "path": "apps/api/src/modules/learning/studio-integration.service.ts",
+      "mainSha256": "a3580b3f5b9771627491cc790cc0d6dd4796b8b2581873ba24b96b9cde934d82",
+      "candidateSha256": "9d37dd341b563e545a42f05172cde1d7a5c21ab53b693505c2485fc16e8f301a",
+      "deliveredSha256": "9d37dd341b563e545a42f05172cde1d7a5c21ab53b693505c2485fc16e8f301a"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual-files.test.ts",
+      "mainSha256": "f929c8ce483dc9658a9e722e5e2a88a101b525eb35daa3967eccc8a2618077e9",
+      "candidateSha256": "737e987d4017a1fb776c0eaef7991bf8d76f3c57bc3be0433bba82429c87c043",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "3ed60efb591011c7b3d1185cb4da2f80b12ca0ee270f085c02dcc84ba4018f48"
+    },
+    {
+      "path": "apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts",
+      "mainSha256": "c35e9b321ba200c7f6e1147040a1968927500613f9d26878323b55a09c6274b4",
+      "candidateSha256": "e969015212dc6d9728405b02be6edc4ae45561ee7c05b6cd421030643a25b6e9",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "d4ac922524c61106d9cb37ce48022f0f38493ef7426363383c1c439bd87192bd"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+      "mainSha256": "e237e3e3ae09a5694334965ad9394543164a2991f9e3618bb57d648492b6d257",
+      "candidateSha256": "f967bf5274e3c9a1ae4521d4ae2f1400f30bff60380a8dc191fb8b5fa78dd41a",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "8d5d4c4a7f9429204ec699f9bbee30a86a8497fee64902e752ef1f79b0d367f3"
+    },
+    {
+      "path": "apps/api/src/modules/privacy/privacy-records.ts",
+      "mainSha256": "ef6b9de9af8464b0ad945b27bd63f9b62e6adf51e4e729867d14497ecf099ae0",
+      "candidateSha256": "40341181a1870703b4f8a7264a5324803cc8d507a330eae20cfc091663c85962",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "5229ce65714c3aba2438eb477811fb4dd37453c3f7b81bca56d429ed4e365650"
+    },
+    {
+      "path": "apps/web/app/studio/calendar-board.tsx",
+      "mainSha256": "429d4c03e7ead3d61eabf104505092b34209ee6f5ddca59fe152eef8e39aedac",
+      "candidateSha256": "95915fdd371568858f4e8acdd46ad73f9131fa4f5eabd861fc9cfaae933a02de",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "b44196a652d56fb5e7474577a0ac5dcad3eca1c0fc98f353c869b19798418b93"
+    },
+    {
+      "path": "apps/web/components/guidance-calendar-manager.css",
+      "mainSha256": null,
+      "candidateSha256": "0704cbd4341664444ddf16ba4c0f299434b6c84dbfb6130dde3f928047f83065",
+      "deliveredSha256": "0704cbd4341664444ddf16ba4c0f299434b6c84dbfb6130dde3f928047f83065"
+    },
+    {
+      "path": "apps/web/components/guidance-calendar-manager.tsx",
+      "mainSha256": null,
+      "candidateSha256": "b32b5febeeefd0f7a518f6dd835ed2f5839441dbe5eba79a74d0bc63724c7ddb",
+      "deliveredSha256": "b32b5febeeefd0f7a518f6dd835ed2f5839441dbe5eba79a74d0bc63724c7ddb"
+    },
+    {
+      "path": "apps/web/components/guidance-manager.tsx",
+      "mainSha256": "66563a2bd3295ae413865219774711292d05092498cc9ed63d7ce9542fa59133",
+      "candidateSha256": "b9618aecefbf4b8b0f5a20f1e3395b65d896bfe3a7d8db058a88fd3086f96aaa",
+      "deliveredSha256": "b9618aecefbf4b8b0f5a20f1e3395b65d896bfe3a7d8db058a88fd3086f96aaa"
+    },
+    {
+      "path": "apps/web/lib/guidance-calendar-copy.ts",
+      "mainSha256": null,
+      "candidateSha256": "2d336c0818f874697922f912163e443299a60bccfc15ee9198f1aa7cde777b56",
+      "deliveredSha256": "2d336c0818f874697922f912163e443299a60bccfc15ee9198f1aa7cde777b56"
+    },
+    {
+      "path": "packages/contracts/src/guidance-calendar.ts",
+      "mainSha256": null,
+      "candidateSha256": "885af56f5408985d92424a7e2dd43fa3136c8e4301c604407c766f068c5e3498",
+      "deliveredSha256": "885af56f5408985d92424a7e2dd43fa3136c8e4301c604407c766f068c5e3498"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "mainSha256": "7691d6eca44bc181a40c2a55e8d783d68b8d15167d99c5291ad1a9e053756ef5",
+      "candidateSha256": "860906c7306b0b104ea14ba6ea6616acbf72800d50bdf4d46a3f6b6e3f17bc1e",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "43f26a8c3706fac6c75c10d086de4f246b096687995d17bbcc0ad973ac5faa80"
+    },
+    {
+      "path": "packages/contracts/src/studio.ts",
+      "mainSha256": "283d12d9e2171f59bd16213a141ebe9a5d9111ef9c91a93883110575c010a079",
+      "candidateSha256": "b635ea62ebaf9630005d5617fccb7d48839b1d1735297b56c7f66cb9e324ae8d",
+      "deliveredSha256": "b635ea62ebaf9630005d5617fccb7d48839b1d1735297b56c7f66cb9e324ae8d"
+    },
+    {
+      "path": "resources/compatibility/domain-reader-schema27-v1.json.gz",
+      "mainSha256": null,
+      "candidateSha256": "4840347480e78a7b6d8fea4dfca22800d228143a2af5568c847b4035c20a809b",
+      "deliveredSha256": "4840347480e78a7b6d8fea4dfca22800d228143a2af5568c847b4035c20a809b"
+    },
+    {
+      "path": "resources/compatibility/domain-reader-schema27-v1.receipt.json",
+      "mainSha256": null,
+      "candidateSha256": "8d0a4d613fc9e452f6cb24b85bbcf528371ec8acba23296c8b2959af62492cf7",
+      "deliveredSha256": "8d0a4d613fc9e452f6cb24b85bbcf528371ec8acba23296c8b2959af62492cf7"
+    },
+    {
+      "path": "scripts/operations/assistant-practice-integrity.cjs",
+      "mainSha256": "f563006c125c3652975f7cfcaaa18bab456ac158aa9013cee3a44fa6897c7e2a",
+      "candidateSha256": "53762632093f0b250939c195d7bbc0fbaf93384d7e6179ad110ba5f167247c24",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "da6eb4a5726a0d846744cf150c5fcd218544af6a921f5c83b06d57a13551e43c"
+    },
+    {
+      "path": "scripts/operations/database-reader-guard.cjs",
+      "mainSha256": "16033fa08b8c387b5383728f144ee8ce1b217b180d9fc71863509a48e5d5164b",
+      "candidateSha256": "8db70d4bdfae5aa0c8e913f3af882f96da6e9d143073986022fac35b5c2577d2",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "230a7ca51d5dd306516088d66f63dc861fb30937a2e4ab785e9d6b7d4f00e841"
+    },
+    {
+      "path": "tests/e2e/guidance-calendar.spec.ts",
+      "mainSha256": null,
+      "candidateSha256": "48007b74a8d7a2beba83911cdb9fb23da8808edafa0e26c854fe6c12522228b3",
+      "deliveredSha256": "48007b74a8d7a2beba83911cdb9fb23da8808edafa0e26c854fe6c12522228b3"
+    }
+  ],
+  "productionUnchanged": true
+}

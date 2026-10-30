@@ -1,3 +1,5 @@
+import { legacyCalendarCreateSchema,legacyCalendarSessionSchema } from './guidance-calendar-record';
+import { replayLegacyCalendarCommand,saveLegacyCalendarCommand } from './legacy-calendar-command';
 import { ASSISTANT_PRACTICE_ANSWER_PROTOCOL, assistantPracticeLearnerDraftSchema, assistantPracticeLearnerResponseSchema,
   assistantPracticeHelpSchema, assistantPracticeCompleteSchema, type AssistantPracticeLearnerResponseInput } from '@study-agent/contracts';
 import { assertAssistantPracticeWriter, assistantPracticeSessionRelation } from './assistant-practice-learner-policy';
@@ -154,20 +156,15 @@ export class LearningService {
   }
 
   createStudioStudyPlan(user: InMemoryUserAccount, input: unknown) {
-    const command = validate(z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english', 'chemistry']),
-      title: z.string().trim().min(3).max(180).optional(), goal: z.string().trim().min(5).max(1000),
-      targetDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), firstSessionAt: z.string().datetime({ offset: true }),
-      minutesPerDay: z.number().int().min(10).max(60), fingerprint: z.string().regex(/^[a-f0-9]{64}$/),
-      requestKey: z.string().min(8).max(180) }).strict(), input);
+    const command = validate(legacyCalendarCreateSchema, { protocol:'studio-plan-command-v1', ...(input as object) });
     this.students.assertGuardian(user, command.studentId);
+    const resourceId = JSON.stringify(['legacy-plan-create',command.studentId,command.subject]);
+    const replay = replayLegacyCalendarCommand(this.store,this.students,user,'legacy-plan-create',resourceId,command);
+    if(replay) return replay;
     const existing = this.store.find('studioActivities', { requestKey: command.requestKey, studentId: command.studentId, subject: command.subject, kind: 'plan' });
     if (existing) {
-      if (!existing.referenceId) throw new ConflictException('原学习计划引用缺失，请保留完整输入再检查原记录');
-      const plan = this.store.find('studioStudyPlans', { id: existing.referenceId });
-      if (!plan) throw new ConflictException('原学习计划已不可核对，请保留完整输入再检查原记录');
-      this.students.assertCanAccessStudent(user, plan.studentId);
-      if (plan.studentId !== command.studentId || plan.subject !== command.subject) throw new ConflictException('原请求与当前学习对象或学科不一致');
-      return plan;
+      if(existing.referenceId){const original=this.store.find('studioStudyPlans',{id:existing.referenceId});if(original)this.students.assertCanAccessStudent(user,original.studentId);}
+      throw new ConflictException('旧活动没有完整原命令回执，请保留全文并从原计划核对；不能自动新建。');
     }
     const preview = this.previewStudioStudyPlan(user, {
       studentId: command.studentId,
@@ -193,18 +190,20 @@ export class LearningService {
     this.store.append('studioActivities', { id: this.store.nextId('studio_activity'), studentId: plan.studentId,
       subject: plan.subject, kind: 'plan', title: `创建学习计划「${plan.title}」`, detail: `${plan.sessions.length} 个任务 · 至 ${plan.targetDate}`,
       href: '/studio?view=calendar', at: now, status: 'opened', requestKey: command.requestKey, referenceId: id });
-    return plan;
+    return saveLegacyCalendarCommand(this.store,this.students,user,'legacy-plan-create',resourceId,command,plan);
   }
 
   updateStudioPlanSession(user: InMemoryUserAccount, planId: string, sessionId: string, input: unknown) {
     const plan = this.store.find('studioStudyPlans', { id: planId });
     if (!plan) throw new NotFoundException('学习计划不存在');
     this.students.assertCanAccessStudent(user, plan.studentId);
-    const command = validate(z.object({ action: z.enum(['complete', 'skip', 'reopen']), expectedRevision: z.number().int().positive(),
-      requestKey: z.string().min(8).max(180) }).strict(), input);
+    const command = validate(legacyCalendarSessionSchema, { protocol:'studio-plan-session-command-v1', ...(input as object) });
+    const resourceId = JSON.stringify(['legacy-plan-session',plan.id,sessionId]);
+    const replay = replayLegacyCalendarCommand(this.store,this.students,user,'legacy-plan-session',resourceId,command);
+    if(replay) return replay;
     const session = plan.sessions.find(row => row.id === sessionId); if (!session) throw new NotFoundException('计划任务不存在');
     const previous = this.store.find('studioActivities', { requestKey: command.requestKey, studentId: plan.studentId, subject: plan.subject, kind: 'plan', referenceId: plan.id });
-    if (previous) return plan;
+    if (previous) throw new ConflictException('旧活动没有完整原任务命令回执，请保留全文并核对原计划。');
     if (plan.revision !== command.expectedRevision) throw new ConflictException('计划已更新，请刷新后再操作');
     const status = command.action === 'complete' ? 'completed' : command.action === 'skip' ? 'skipped' : 'scheduled';
     session.status = status; const event = this.store.find('studioScheduleEvents', { id: session.calendarEventId });
@@ -236,7 +235,7 @@ export class LearningService {
       kind: 'plan', title: `${status === 'completed' ? '完成' : status === 'skipped' ? '跳过' : '重新打开'}「${session.title}」`,
       detail: `${plan.title} · 任务 ${session.index}`, href: '/studio?view=calendar', at: new Date().toISOString(),
       status: status === 'completed' ? 'complete' : 'opened', requestKey: command.requestKey, referenceId: plan.id });
-    return plan;
+    return saveLegacyCalendarCommand(this.store,this.students,user,'legacy-plan-session',resourceId,command,plan);
   }
 
   previewStudioWhiteboard(user: InMemoryUserAccount, input: unknown) {

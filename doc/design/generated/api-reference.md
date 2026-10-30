@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`d372bda2a6bf1fa804418981d16d23ef5810d1d3`。共 518 个 HTTP 路由声明，当前 AppModule 可达 497 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`c610f4c01bd1626496b3314f8b92d66eb02a9dd5`。共 524 个 HTTP 路由声明，当前 AppModule 可达 503 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -2110,6 +2110,62 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.projects.advise`
+
+## GuidanceCalendarController — 当前接入
+
+### POST /api/learning/guidance-calendar/preflight
+
+实现：[apps/api/src/modules/learning/guidance-calendar.controller.ts:9](../../../apps/api/src/modules/learning/guidance-calendar.controller.ts#L9)，方法 `preflight`。
+
+- 签名：`preflight(@Req()req:AuthenticatedRequest, @Body()body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.calendar.preflight`
+
+### POST /api/learning/guidance-calendar/arrangements
+
+实现：[apps/api/src/modules/learning/guidance-calendar.controller.ts:10](../../../apps/api/src/modules/learning/guidance-calendar.controller.ts#L10)，方法 `confirm`。
+
+- 签名：`confirm(@Req()req:AuthenticatedRequest, @Body()body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.calendar.confirm`
+
+### GET /api/learning/guidance-calendar/requests/:key
+
+实现：[apps/api/src/modules/learning/guidance-calendar.controller.ts:11](../../../apps/api/src/modules/learning/guidance-calendar.controller.ts#L11)，方法 `receipt`。
+
+- 签名：`receipt(@Req()req:AuthenticatedRequest, @Param('key')key:string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.calendar.receipt`
+
+### GET /api/learning/guidance-calendar/plans/:planId
+
+实现：[apps/api/src/modules/learning/guidance-calendar.controller.ts:12](../../../apps/api/src/modules/learning/guidance-calendar.controller.ts#L12)，方法 `forPlan`。
+
+- 签名：`forPlan(@Req()req:AuthenticatedRequest, @Param('planId')id:string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.calendar.forPlan`
+
+### GET /api/learning/guidance-calendar/arrangements/:id
+
+实现：[apps/api/src/modules/learning/guidance-calendar.controller.ts:13](../../../apps/api/src/modules/learning/guidance-calendar.controller.ts#L13)，方法 `get`。
+
+- 签名：`get(@Req()req:AuthenticatedRequest, @Param('id')id:string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.calendar.get`
+
+### POST /api/learning/guidance-calendar/arrangements/:id/revisions
+
+实现：[apps/api/src/modules/learning/guidance-calendar.controller.ts:14](../../../apps/api/src/modules/learning/guidance-calendar.controller.ts#L14)，方法 `revise`。
+
+- 签名：`revise(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.calendar.revise`
 
 ## LearningHomeController — 当前接入
 

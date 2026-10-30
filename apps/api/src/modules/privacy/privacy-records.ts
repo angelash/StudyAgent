@@ -34,7 +34,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'diagnosticResponses', 'diagnosticHypotheses',
     'diagnosticPlans', 'guidanceModelSuggestions', 'reviewTasks', 'practiceSessions', 'assistantPracticeAssignments', 'assistantPracticeAssignmentWithdrawals', 'assistantPracticeGroupStarts', 'paperPracticeSessions', 'paperPracticeCommands', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
     'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomTurns', 'whiteboardQuestionTurns', 'whiteboardQuestionVisuals', 'classroomCodeDrafts', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','studioOriginalRepairs','sourceCourses','sourceCourseStages','sourceCourseChecks',
-    'projectAssetUploads','projectAssets','studioCourses','studioActivities','studioStudyPlans','studioLearningPacks','studioWhiteboards','studioTopicWhiteboardDrafts','studioTopicWhiteboards','studioTopicWhiteboardVisuals','studioConnectors','studioScheduleEvents']) {
+    'projectAssetUploads','projectAssets','studioCourses','studioActivities','studioStudyPlans','studioLearningPacks','studioWhiteboards','studioTopicWhiteboardDrafts','studioTopicWhiteboards','studioTopicWhiteboardVisuals','studioConnectors','studioScheduleEvents','guidanceCalendarArrangements','studioCalendarCommands']) {
     add(result, store, name, row => row.studentId === studentId);
   }
   const candidateIds = new Set([...(result.studentLearningAccess ?? []).map(row => row.userId), ...result.students.map(row => row.userId)].filter(Boolean));
@@ -114,6 +114,7 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'assistantTeachingPractices', row => row.ownerUserId === actorId);
   add(result, store, 'assistantTeachingSessions', row => row.ownerUserId === actorId);
   add(result, store, 'guidanceModelSuggestions', row => row.ownerUserId === actorId);
+  add(result, store, 'studioCalendarCommands', row => row.actorId === actorId);
   add(result, store, 'teachingToolRuns', row => row.ownerUserId === actorId);
   add(result, store, 'aiInsights', row => sessions.has(row.sourceId));
   const references = new Set([actorId, ...Object.values(result).flat().map(recordId)]);
@@ -180,7 +181,7 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
   const practiceCounts = new Map<string, number>();
   for (const row of selected.practiceAttempts ?? []) { const key = JSON.stringify([row.sessionId, row.questionId]); practiceCounts.set(key, (practiceCounts.get(key) ?? 0) + 1); }
   for (const [name, records] of Object.entries(selected)) {
-    if (['users', 'sessions', 'studentLearningCodes', 'studentInvitations', 'events','sourceCourseCheckPublications'].includes(name)) continue;
+    if (['users', 'sessions', 'studentLearningCodes', 'studentInvitations', 'events','sourceCourseCheckPublications','studioCalendarCommands'].includes(name)) continue;
     if (name === 'diagnosticDrafts') result[name] = records.filter(row => row.protocol !== 'answer-draft-v2' || !answeredDrafts.has(JSON.stringify([row.sessionId, row.itemId])));
     else if (name === 'practiceSessions') result[name] = records.map(row => ({ ...row, ...(row.drafts ? { drafts: Object.fromEntries(Object.entries(row.drafts as Record<string, Row>)
       .filter(([questionId, draft]) => draft.protocol !== 'answer-draft-v2' || draft.draftAttempt === (practiceCounts.get(JSON.stringify([row.id, questionId])) ?? 0))) } : {}) }));
@@ -200,6 +201,7 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if (name === 'assistantPracticeArtifacts') result[name] = records.filter(row => row.ownerUserId === actorId ||
       (selected.users ?? []).some(user => user.id === row.ownerUserId && user.role === 'student'))
       .map(row => reviewedPracticePortableView(row as AssistantPracticeArtifactRecord));
+    else if(name==='guidanceCalendarArrangements')result[name]=records.map(({id,planId,studentId,subject,revision,createdAt,updatedAt,history})=>({id,planId,studentId,subject,revision,createdAt,updatedAt,history:history.map(({actorId:revisionActor,commandId:_command,input,reason,entries,...row}:Row)=>({...row,input:{...input,entries:input.entries.map(({rescheduleReason,...entry}:Row)=>({...entry,...(revisionActor===actorId?{rescheduleReason}:{})}))},entries:entries.map(({input,...entry}:Row)=>({...entry,input:((({rescheduleReason,...value}:Row)=>({...value,...(revisionActor===actorId?{rescheduleReason}:{})}))(input))})),...(revisionActor===actorId?{reason}:{})}))}));
     else if(name==='assistantGuidanceIntents')result[name]=records.filter(row=>row.ownerUserId===actorId||(selected.users??[]).some(user=>user.id===row.ownerUserId&&user.role==='student')).map(({id,sourceSessionId,studentId,subject,sourceInput,observation,report,plan,revision,createdAt,updatedAt})=>({id,sourceSessionId,studentId,subject,objective:sourceInput.objective,observation,reportSessionId:report?.sessionId??null,reportVersion:report?.reportVersion??null,planId:plan?.planId??null,revision,createdAt,updatedAt,isObservationOnly:true,formalEvidenceCreated:false}));
     else if(name==='assistantTeachingPracticeDrafts')result[name]=records.filter(row=>row.ownerUserId===actorId||(selected.users??[]).some(user=>user.id===row.ownerUserId&&user.role==='student')).map(row=>({id:row.id,sourceSessionId:row.sourceSessionId,studentId:row.studentId,subject:row.subject,objective:row.prepared.input.objective,modelId:row.prepared.modelId,modelName:row.modelName,status:row.status,revision:row.revision,originalContent:row.originalContent,content:row.content,contentVersion:row.contentVersion,review:row.review,teacherReviewStatus:'pending',isTeachingOnly:true,formalEvidenceCreated:false,createdAt:row.createdAt,updatedAt:row.updatedAt}));
     else if(name==='assistantTeachingPractices')result[name]=records.filter(row=>row.ownerUserId===actorId||(selected.users??[]).some(user=>user.id===row.ownerUserId&&user.role==='student')).map(({id,sourceDraftId,studentId,subject,content,contentFingerprint,targetScope,modelId,modelName,review,createdAt})=>({id,sourceDraftId,studentId,subject,content,contentFingerprint,targetScope,modelId,modelName,review,createdAt,teacherReviewStatus:'pending',isTeachingOnly:true,formalEvidenceCreated:false,independentFirstPass:0}));
@@ -270,6 +272,8 @@ export function anonymizeSharedAttribution(store: InMemoryStoreService, studentI
     const affected = new Set(records.map(recordId));
     (store as unknown as Record<string, Row[]>)[name] = rows(store, name).map(row => {
       if (!affected.has(recordId(row))) return row;
+      if(name==='guidanceCalendarArrangements')return{...row,...(row.createdBy===actorId?{createdBy:null,creatorDeletionHash:privacyHash({id:actorId})}:{}),history:row.history.map((revision:Row)=>revision.actorId===actorId?{...revision,actorId:null,commandId:null,actorDeletionHash:privacyHash({id:actorId}),reason:'',input:{...revision.input,entries:revision.input.entries.map((entry:Row)=>entry.sourceKind==='review'?{...entry,rescheduleReason:''}:entry)},entries:revision.entries.map((entry:Row)=>({...entry,input:entry.input.sourceKind==='review'?{...entry.input,rescheduleReason:''}:entry.input}))}:revision)};
+      if(name==='studioCalendarCommands')return row;
       if (name === 'assistantTeachingAssignments') return row;
       if (name === 'assistantPracticeAssignments') return row;
       if (name === 'assistantPracticeAssignmentWithdrawals') return row;

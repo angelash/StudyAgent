@@ -141,11 +141,15 @@ function foldLine(line: string) {
 }
 
 export function renderIcs(calendarName: string, events: Array<{ uid: string; title: string; description: string;
-  startsAt: string; endsAt: string; allDay?: boolean }>) {
+  startsAt: string; endsAt: string; allDay?: boolean; sequence?:number; status?:'CONFIRMED'|'CANCELLED'; url?:string }>) {
   const stamp = (value: string) => new Date(value).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}Z$/, 'Z');
   const day = (value: string) => new Date(value).toISOString().slice(0, 10).replace(/-/g, '');
+  const safeUrl = (value:string) => {try{const url=new URL(value);return ['http:','https:'].includes(url.protocol)&&!url.username&&!url.password&&!/[\r\n]/.test(value)?url.href:null;}catch{return null;}};
   const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//StudyAgent//Learning Calendar//ZH-CN', `X-WR-CALNAME:${calendarEscape(calendarName)}`,
     ...events.flatMap(event => ['BEGIN:VEVENT', `UID:${calendarEscape(event.uid)}`, `DTSTAMP:${stamp(new Date().toISOString())}`,
+      ...(event.sequence!==undefined?[`SEQUENCE:${Number.isSafeInteger(event.sequence)&&event.sequence>=0?event.sequence:0}`]:[]),
+      ...(event.status?[`STATUS:${event.status}`]:[]),
+      ...(event.url&&safeUrl(event.url)?[`URL:${safeUrl(event.url)}`]:[]),
       event.allDay ? `DTSTART;VALUE=DATE:${day(event.startsAt)}` : `DTSTART:${stamp(event.startsAt)}`,
       event.allDay ? `DTEND;VALUE=DATE:${day(event.endsAt)}` : `DTEND:${stamp(event.endsAt)}`,
       `SUMMARY:${calendarEscape(event.title)}`, `DESCRIPTION:${calendarEscape(event.description)}`, 'END:VEVENT']), 'END:VCALENDAR'];

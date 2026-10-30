@@ -781,3 +781,4 @@ export * from './assistant-teaching-learner';
 export * from './assistant-teaching-assignment';
 
 export * from './assistant-guidance';
+export * from './guidance-calendar';

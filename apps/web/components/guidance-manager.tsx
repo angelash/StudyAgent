@@ -9,6 +9,7 @@ import { guidancePlanCopySchema,guidanceAdjustmentCommandSchema,type GuidancePla
 import { PracticeCopyControls } from './practice-copy-controls';
 import './guidance-manager.css';
 import { GuidanceModelPanel } from './guidance-model-panel';
+import { GuidanceCalendarManager } from './guidance-calendar-manager';
 
 const send = <T,>(path: string, body?: unknown) => apiRequest<T>(path, body === undefined ? {} : { method: 'POST', body: JSON.stringify(body) });
 const kindNames = { created: '建立计划', legacy: '开始保留历史', adjusted: '调整活动', status: '执行状态', retrospective: '确认复盘' };
@@ -37,6 +38,7 @@ function GuidanceManagerEditor({ownerId,plan,onChange}:{ownerId:string;plan:Guid
  async function save(event:React.FormEvent){event.preventDefault();if(!copy||copy.pending||running.current)return;try{const command=guidanceAdjustmentCommandSchema.parse({expectedRevision:copy.editVersion,requestKey:crypto.randomUUID(),minutesPerDay:copy.budget,actions:copy.actions,reason:copy.reason,acknowledgeReportVersion:copy.reportVersion});const protectedNow=local.update({...copy,pending:command});if(protectedNow)await execute(command,true);}catch(reason){setError((reason as Error).message);}}
  if(!copy)return <p role="status">正在恢复完整指导输入…</p>;
   return <section className="guidance-manager" aria-label="指导计划调整与历史">
+    <GuidanceCalendarManager ownerId={ownerId} plan={plan} onChanged={async()=>{const value=await apiRequest<GuidancePlanView>('/diagnostics/plans/'+encodeURIComponent(plan.id));change.current(value);}}/>
     <div className="guidance-version"><span>第 {plan.revision ?? 1} 版</span><small>{plan.source === 'human' ? '家长调整' : plan.source === 'ai' ? 'AI 辅助说明' : '依据评测安排'} · {new Date(plan.createdAt).toLocaleDateString('zh-CN')}</small></div>
     {plan.impact && <div className={plan.impact.needsReview ? 'guidance-impact' : 'guidance-evidence'} role={plan.impact.needsReview ? 'status' : undefined}>
       <strong>{requiresNewAssessment ? '知识目标需要重新核对与评测。' : plan.impact.needsReview ? '评测有了修订，指导也要重新核对。' : '每次调整，都保留当时的依据。'}</strong>

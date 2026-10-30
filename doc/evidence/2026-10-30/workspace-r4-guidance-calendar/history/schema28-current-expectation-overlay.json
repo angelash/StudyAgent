@@ -1,0 +1,101 @@
+{
+  "at": "2026-10-30T07:52:56.140Z",
+  "changes": [
+    {
+      "path": "apps/api/src/infrastructure/assistant-note-storage.integration.test.ts",
+      "beforeSha256": "4a1891b99092fffdce3af84429480aaee1594beef77f355c0059900d0568c72a",
+      "afterSha256": "34051355b67dcf1724f284f67212da14baa880e7d45ef2de30a6f934ce95856a"
+    },
+    {
+      "path": "apps/api/src/infrastructure/assistant-whiteboard-reader.integration.test.ts",
+      "beforeSha256": "cc65daced66cab2e57b6495cccb66f65bda884f11f8b29f6e76ce8ea74063477",
+      "afterSha256": "6c8cb4ad4622b1a8b46e1b7bb49f933647a584013849608c18e96c6fc4d5c385"
+    },
+    {
+      "path": "apps/api/src/infrastructure/backup.integration.test.ts",
+      "beforeSha256": "99ff20f9e40b319eb2bccba14a45cf07b40658a2059ff11ca3f3541198ce64a8",
+      "afterSha256": "cc1fae42c0e410ee1dce6ab4a77692c86c94f95ba0db7f2ccd79dcb41a39ac95"
+    },
+    {
+      "path": "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+      "beforeSha256": "e5ff7f8eabde9fc0ecbe53dd39d0e254444ef6b389f8e214a5de75e9b21cbfa2",
+      "afterSha256": "77a5718080ff9d62d7c27c5b218032f7c38aa89524226c97f8b6d059ec146502"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema25-reader.integration.test.ts",
+      "beforeSha256": "8506810e0677729ff90e30ac715c486204bb11ca30c90d329b259a2b864e8e5f",
+      "afterSha256": "685986b7ce23dabdea4746d2a6ea7e42837ea5fe44421e44c626781812684bef"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema26-reader.integration.test.ts",
+      "beforeSha256": "c63a1f0397fc0dcc656044e2cf00afc0cdee04b3210bec666db0c4be1fed8060",
+      "afterSha256": "47def55264f29f5de63401fbf5f2661ed879b5a89f09cf9622ac0971f3c3ca33"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema27-reader.integration.test.ts",
+      "beforeSha256": "ce07d4ec96bc1ac3b51913a97a02e88b6aa4a24d40c7b2322e090b72da64da52",
+      "afterSha256": "fe1e4c39fe64da85738930832c833e5b1becfa453c6ccd1d6c65841e4f5c05d0"
+    },
+    {
+      "path": "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+      "beforeSha256": "1dd4a2a3c8ded2e12ad9f12fa9fbf973887217fc83b90f0290c450d8b3c14f48",
+      "afterSha256": "11c51d6abe70677e3cc91b332d5096d8571ce51470d8fa91588f2806867ab659"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-postgres.integration.test.ts",
+      "beforeSha256": "b89602121d783ac7ee07a428f92b402789cb1ac3eea41868f1676c074f6d05ec",
+      "afterSha256": "115f2462e134b3c991fba8a09e0eeb61ec67ce11bc8659108f0a3822f5947e49"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-storage.integration.test.ts",
+      "beforeSha256": "9a448ea2fb2a5a4bbef2c8b4d7fd671771158ea30d9bbc6ad8a85a1599ca0843",
+      "afterSha256": "9a67b60d5368d5f67a4398569269b6c4a6ed8f11e59cf760caea0255a849a606"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts",
+      "beforeSha256": "71172aab674d4d80599571ed078b3c03b61c19c85195c36132ad7abd65348206",
+      "afterSha256": "dcdf156b130596414842d642bb7f2ddb9ac49522152989b507b2967a75f43e36"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-visual-storage.integration.test.ts",
+      "beforeSha256": "e4626bbe8f34a5ba0e45973154623725d5760dd6e722f0e98db629252af1221e",
+      "afterSha256": "7131b661a63c3040c58e51427aa8de1e537600866e658c4f42bc06f47a40f109"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts",
+      "beforeSha256": "0c02cdb10aea32e52c41b3ffcf9167f836e3c7c1249aeab546a9853881858732",
+      "afterSha256": "f7ef8537d7b1e7a90dc059b6024567614036e3ac1a3160c55623ed5e9809960c"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts",
+      "beforeSha256": "4247baa540c4b71be57c0de9a9e5a0f72cf184d811c71c0a0806e4966b203c3c",
+      "afterSha256": "5e6eb6f5b6ed81f30f7a4c49843c2f9065e956313b95b457203164ad48ce0f17"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts",
+      "beforeSha256": "25cc30f9e38bcc082bfbcb704cf8032184f665fe7a137b4121863bee73a5445c",
+      "afterSha256": "3c41efb8831654e171edb89d38a9e94ccb59b3a771c17b791d7ae258b73849db"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+      "beforeSha256": "e237e3e3ae09a5694334965ad9394543164a2991f9e3618bb57d648492b6d257",
+      "afterSha256": "f967bf5274e3c9a1ae4521d4ae2f1400f30bff60380a8dc191fb8b5fa78dd41a"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching.integration.test.ts",
+      "beforeSha256": "a52615e646bde275f3b8257cc9c6ec3630ab4d4175b48274407645e4348f7f09",
+      "afterSha256": "23428ebe210c2539bb2c6bb9a41a906f0000e0b82f9f3d68b78e115417fadc0e"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual-files.test.ts",
+      "beforeSha256": "f929c8ce483dc9658a9e722e5e2a88a101b525eb35daa3967eccc8a2618077e9",
+      "afterSha256": "737e987d4017a1fb776c0eaef7991bf8d76f3c57bc3be0433bba82429c87c043"
+    },
+    {
+      "path": "apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts",
+      "beforeSha256": "c35e9b321ba200c7f6e1147040a1968927500613f9d26878323b55a09c6274b4",
+      "afterSha256": "e969015212dc6d9728405b02be6edc4ae45561ee7c05b6cd421030643a25b6e9"
+    }
+  ],
+  "scope": "Only named actual current-schema assertions and unknown-future29 gates advanced. Immutable old-reader resources, oldGuard/rollback triggers, historical original expectations, mathematical answers and content counts untouched."
+}
