@@ -1,3 +1,4 @@
+import { RetentionService } from '../diagnostics/retention.service';
 import { ConflictException, HttpException, Injectable, NotFoundException } from '@nestjs/common';
 import { assistantPracticeGroupStartSchema, type PracticeSession } from '@study-agent/contracts';
 import { validate } from '../../common/validation';
@@ -23,7 +24,7 @@ import { assignmentWithdrawal } from './assistant-practice-withdrawal-record';
 @Injectable()
 export class AssistantPracticeLearnerService {
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService, private readonly sources: AssistantArtifactService,
-    private readonly curriculum: CurriculumService, private readonly learning: LearningService) {}
+    private readonly curriculum: CurriculumService, private readonly learning: LearningService,private readonly retention:RetentionService) {}
   private async write<T>(operation: () => T | Promise<T>): Promise<T> {
     for (let index = 0; index < 3; index++) {
       try { return await this.store.transaction(operation); }
@@ -110,7 +111,7 @@ export class AssistantPracticeLearnerService {
         atomSnapshot: structuredClone(group.atomSnapshot), actionSnapshot: assistantPracticeAction(assignment, atomId, id), planRevision: 0, snapshotOrigin: 'started',
         itemSnapshots: structuredClone(group.questions.map(item => item.mapping)), familyIdentityVersion: assignment.payload.familyIdentityVersion };
       assertAssistantPracticeGroupStart(start); assertAssistantPracticeSessionLink(start, assignment, session);
-      this.store.append('assistantPracticeGroupStarts', start); this.store.append('practiceSessions', session); return structuredClone(receipt);
+      this.store.append('assistantPracticeGroupStarts', start); if(session.atomSnapshot)session.retentionProtocol='teaching-retention-v1';this.store.append('practiceSessions', session);this.retention.capturePractice(session,['practice:'+session.id+':opened']); return structuredClone(receipt);
     });
   }
   eligibility(user: InMemoryUserAccount, assignment: AssistantPracticeAssignmentRecord, auth: InMemoryAuthSession) {

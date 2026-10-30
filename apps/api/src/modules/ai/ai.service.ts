@@ -35,6 +35,7 @@ import { DomainEventBusService } from '../../infrastructure/domain-event-bus.ser
 import { AIInsightRecord, InMemoryStoreService, InMemoryUserAccount, type InMemoryAuthSession } from '../../infrastructure/in-memory-store.service';
 import { StudentsService } from '../students/students.service';
 import { atomDefinitionFingerprint } from '../diagnostics/measurement-definition';
+import { RetentionService } from '../diagnostics/retention.service';
 import { routedItemAvailable } from '../diagnostics/adaptive-routing';
 import { XiaojiuChatService } from './xiaojiu-chat.service';
 import { codexHomeDirectory, XiaojiuModelsService } from './xiaojiu-models.service';
@@ -535,8 +536,15 @@ export class AiService {
     const bound = context.bound;
     if (!bound?.assistanceNeeded) return false;
     const at = new Date().toISOString(), id = `assistant_hint:${messageId}`;
-    if (bound.kind === 'diagnostic') this.store.append('diagnosticHints', { id, sessionId: bound.sessionId, itemId: bound.itemId, level: 1, at });
-    else this.store.append('practiceHints', { id, sessionId: bound.sessionId, questionId: bound.itemId, level: 1, at });
+    const retention=this.moduleRef.get(RetentionService,{strict:false});
+    if (bound.kind === 'diagnostic') {
+      this.store.append('diagnosticHints', { id, sessionId: bound.sessionId, itemId: bound.itemId, level: 1, at });
+      const session=this.store.find('diagnosticSessions',{id:bound.sessionId}),mapping=session?.itemSnapshots.find(row=>row.id===bound.itemId),atom=session?.atomSnapshots?.find(row=>row.id===mapping?.atomId);
+      if(session&&atom)retention.capture(session.studentId,session.subject,[{atomId:atom.id,definitionFingerprint:atomDefinitionFingerprint(atom)}],['diagnostic-hint:'+id]);
+    } else {
+      this.store.append('practiceHints', { id, sessionId: bound.sessionId, questionId: bound.itemId, level: 1, at });
+      const session=this.store.find('practiceSessions',{id:bound.sessionId});if(session)retention.capturePractice(session,['practice-hint:'+id]);
+    }
     this.eventBus.publish('assistant.question_assisted', { studentId,
       kind: bound.kind, learningSessionId: bound.sessionId, itemId: bound.itemId, messageId });
     return true;

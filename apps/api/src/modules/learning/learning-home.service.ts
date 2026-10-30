@@ -28,7 +28,7 @@ export function learningHomeActions(input: ActionInput): LearningHomeAction[] {
     href: assessment({ session: incomplete.id }), label: '继续作答', estimatedMinutes: null, saved: '从服务器保存的题组恢复' });
 
   const plan = today.plan;
-  const due = today.reviews.filter(review => review.due && review.status !== 'completed');
+  const due = today.reviews.filter(review => review.due && review.status !== 'completed' && (!!review.sessionId||review.retentionReadiness?.canStart!==false));
   if (plan && !plan.impact.needsReview) for (const review of due) actions.push({
     id: 'review:' + review.id, kind: 'due_review', title: `再看看：${review.atomName}`,
     reason: `这组 +${review.intervalDays} 天复测已经到期，用新题检查一段时间后是否还会。`,

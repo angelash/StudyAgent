@@ -1,3 +1,6 @@
+import { RetentionService } from './retention.service';
+import { RETENTION_PROTOCOL } from './retention-anchor';
+import { projectRetentionEvidence } from './retention-evidence-projection';
 import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { createHash, randomUUID } from 'node:crypto';
 import { z } from 'zod';
@@ -31,7 +34,7 @@ import { originalPaperExposure } from './paper-exposure';
 export class DiagnosticsService {
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
     private readonly curriculum: CurriculumService, private readonly workspace: QuestionWorkspaceService,
-    private readonly events: DomainEventBusService, private readonly media: StudentMediaService) {}
+    private readonly events: DomainEventBusService, private readonly media: StudentMediaService,private readonly retention:RetentionService) {}
 
   start(user: InMemoryUserAccount, input: unknown, scopeOverride?: LearningScope) {
     return this.activateSession(user, this.prepareSession(user, input, scopeOverride));
@@ -60,6 +63,7 @@ export class DiagnosticsService {
       if (this.changedPlanDefinitions(baseline, plan.actions.map(action => action.atomId)).length) throw new ConflictException('知识定义已调整，请按当前定义重新评测并建立计划');
     }
     if (review && (review.status !== 'pending' || Date.parse(review.dueAt) > Date.now())) throw new BadRequestException('复测尚未到期或已不可用');
+    if(review&&plan){const readiness=this.retention.reviewReadiness(review,{status:plan.status},this.requireSession(user,plan.baselineSessionId),this.effectiveResponses(command.studentId,command.subject));if(!readiness.canStart)throw new BadRequestException(readiness.notice+' 最早时间：'+readiness.earliestAt);}
     const scope = plan ? this.requireSession(user, plan.baselineSessionId).scopeSnapshot : scopeOverride ?? this.curriculum.getScope(user, command.studentId, command.subject);
     if (!scope) throw new BadRequestException('请先确认年级、教材和已学范围，再开始评测');
     const learned = new Set(scope.learnedAtomIds);
@@ -124,7 +128,7 @@ export class DiagnosticsService {
           document: payload.document, answerSchema: payload.answerSchema, renderPayload: payload, questionType: question.type });
       }), coverage, selectionReasons: Object.fromEntries(selected.map((item) => [item.id,
         `${learned.has(item.atomId) ? '已学范围' : '前置基础核查'} · ${item.dimension} · 独立题族 ${canonicalFamily(item)}${seen.has(item.questionId) ? ' · 已接触或选入练习，不增加独立样本' : ''}`])),
-      seed, algorithmVersion: blueprint.version, startedAt: new Date().toISOString(), completedAt: null,
+      retentionProtocol: RETENTION_PROTOCOL,seed, algorithmVersion: blueprint.version, startedAt: new Date().toISOString(), completedAt: null,
       exposedQuestionIds: selected.filter((item) => seen.has(item.questionId)).map((item) => item.questionId),
       hypothesisId: command.hypothesisId ?? null, reviewTaskId: command.reviewTaskId ?? null,
       ...(plan ? { planId: plan.id, planRevision: plan.revision ?? 1 } : {}),
@@ -378,7 +382,7 @@ export class DiagnosticsService {
     const response: DiagnosticResponse = {
       id: `response:${sessionId}:${mapping.id}`, sessionId, studentId: session.studentId, itemId: mapping.id,
       questionId: mapping.questionId, atomId: mapping.atomId, family: mapping.family,
-      dimension: session.intent === 'retest' && (delay ?? 0) >= 1 ? 'retention' : mapping.dimension,
+      dimension: session.intent === 'retest' ? 'retention' : mapping.dimension,
       questionVersion: mapping.questionVersion, mappingVersion: mapping.version, answer: command.answer ?? null,
       score: grade.score, correct: grade.correct, status: grade.status, disposition: command.disposition,
       elapsedMs: command.elapsedMs, hintLevel: Math.max(0, ...this.store.select('diagnosticHints', { sessionId: sessionId, itemId: mapping.id }).map((item) => item.level)),
@@ -390,6 +394,7 @@ export class DiagnosticsService {
       ...('scoreDetails' in grade && grade.scoreDetails ? { scoreDetails: grade.scoreDetails } : {}),
       ...(atom && session.atomSnapshots ? { atomVersion: atom.version, atomDefinitionFingerprint: atomDefinitionFingerprint(atom) } : {}),
     };
+    if(session.intent==='retest')Object.assign(response,projectRetentionEvidence(response,{records:this.retention.records(session.studentId),sessions:this.store.select('diagnosticSessions',{studentId:session.studentId}),responses:this.effectiveResponses(session.studentId,session.subject)}));
     this.store.append('diagnosticResponses', response);
     this.media.bind(mediaIds, response.id);
     // Keep the v2 revision journal as a tombstone. A stale client cannot reopen or bypass it.
@@ -409,7 +414,8 @@ export class DiagnosticsService {
     const atom = session.atomSnapshots?.find(atom => atom.id === mapping.atomId);
     const previous = this.store.select('diagnosticHints', { sessionId: sessionId, itemId: itemId });
     const level = Math.min(previous.length + 1, 2);
-    this.store.append('diagnosticHints', { id: this.store.nextId('diagnostic_hint'), sessionId, itemId, level, at: new Date().toISOString() });
+    const hint={id:this.store.nextId('diagnostic_hint'),sessionId,itemId,level,at:new Date().toISOString()};this.store.append('diagnosticHints',hint);
+    if(atom)this.retention.capture(session.studentId,session.subject,[{atomId:atom.id,definitionFingerprint:atomDefinitionFingerprint(atom)}],['diagnostic-hint:'+hint.id]);
     return { level, hint: level === 1 ? `先确认这道题要你完成什么，再想一想“${atom?.name ?? '当前任务'}”的关键条件。` :
       `试着把任务拆成小步骤：${atom?.objective ?? '先列出已知条件与要求解决的目标'}。完成一步就核对一次条件。`, notice: '提示后的表现会与首次独立作答分开记录。' };
   }
@@ -448,7 +454,7 @@ export class DiagnosticsService {
       const at = starts.get(session.id)!;
       if (Number.isFinite(at) && at < (firstSeen.get(question.id) ?? Infinity)) firstSeen.set(question.id, at);
     }
-    return this.store.select('diagnosticResponses', { sessionId: [...sessions] }).map((item) => {
+    const retained=this.store.select('diagnosticResponses', { sessionId: [...sessions] }).map((item) => {
       // Earlier frozen sessions prove exposure even if an old protocol omitted the flag.
       // Preserve the stored original; this derived view never supplies a missing answer or score.
       const knownEarlier = (firstSeen.get(item.questionId) ?? Infinity) < (starts.get(item.sessionId) ?? -Infinity);
@@ -459,6 +465,7 @@ export class DiagnosticsService {
         scoreDetails: revision.ratings?.map(rating => ({ key: `criterion-${rating.criterionIndex}`, label: revision.rubricSnapshot?.[rating.criterionIndex]?.criterion ?? `量规${rating.criterionIndex + 1}`,
           score: rating.score, origin: 'review' as const, observation: rating.observation })) } : response;
     });
+    const records=this.retention.records(studentId);return retained.map(response=>projectRetentionEvidence(response,{records,sessions:history,responses:retained}));
   }
 
   refreshHypotheses(studentId: string, subject: Subject) {
@@ -604,7 +611,7 @@ export class DiagnosticsService {
           status: latest.status as DiagnosticHypothesis['status'], updatedAt: latest.at, history }] : [];
       });
     return { sessionId: session.id, studentId: session.studentId, subject: session.subject, status: session.status,
-      familyIdentityVersion: FAMILY_IDENTITY_VERSION, measurementVersion: MEASUREMENT_VERSION,
+      retentionProtocol: RETENTION_PROTOCOL,familyIdentityVersion: FAMILY_IDENTITY_VERSION, measurementVersion: MEASUREMENT_VERSION,
       answeredCount: evidence.length, totalCount: session.itemIds.length, scoredCount: scored.length, pendingReviewCount: pending,
       rawScore: scored.length ? Math.round(scored.reduce((sum, item) => sum + item.score!, 0) / scored.length * 100) : null,
       coverage: session.coverage, estimates,

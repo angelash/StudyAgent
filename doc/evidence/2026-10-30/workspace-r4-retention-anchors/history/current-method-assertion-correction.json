@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-30T10:48:16.612Z",
+  "files": [
+    {
+      "path": "apps/api/src/modules/diagnostics/measurement-versioning.integration.test.ts",
+      "beforeSha256": "ddbe02eae9e3962b5ae1118adf97fb5a65e293e09af8b008accef309e4809f69",
+      "afterSha256": "23eb1d25d17cc949d896e552bb59dea424b0bbd5cd0f17feefd8083006d178c5"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/verification-blueprint.test.ts",
+      "beforeSha256": "41e2ff2346aec7279cad8ace059c616c152c37c3a9f9909781a1ad5472c54c30",
+      "afterSha256": "f85e9d8c567a3d7a0d488fc0d74c0a66993d8659ccf84ce2b7e2253cc77214d1"
+    }
+  ],
+  "scope": "Only current-method literals advanced to v4/v7. Historical v2/v3 report fixtures, missing-original handling, raw-score/report preservation and strict eligibility assertions unchanged. Complete first failures retained. Application/builds unchanged; whole API must be rerun."
+}

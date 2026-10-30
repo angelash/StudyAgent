@@ -1,3 +1,4 @@
+import { RetentionService } from '../diagnostics/retention.service';
 import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
@@ -22,7 +23,7 @@ const identity = (studentId: string, kind: string, responseId: string) => `noteb
 @Injectable()
 export class NotebookService {
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
-    private readonly diagnostics: DiagnosticsService, private readonly learning: LearningService, private readonly events: DomainEventBusService) {}
+    private readonly diagnostics: DiagnosticsService, private readonly learning: LearningService, private readonly events: DomainEventBusService,private readonly retention:RetentionService) {}
 
   private source(user: InMemoryUserAccount, studentId: string, kindInput: unknown, responseId: string,
     knownResponses?: Map<string, ReturnType<DiagnosticsService['effectiveResponses']>[number]>) {
@@ -168,7 +169,7 @@ export class NotebookService {
         minutes: 5, successCriterion: '能指出当时卡住的步骤，并解释现在如何核对；本次不推断独立掌握。',
         resourceQuestionIds: [source.questionId], retestAt: '', ...(source.atomSnapshot?.teaching?.reviewStatus === 'approved' ? {
           teachingSnapshot: { atomVersion: source.atomSnapshot.version, teaching: structuredClone(source.atomSnapshot.teaching) } } : {}) } };
-    this.store.append('practiceSessions', session); entry.redoSessionIds.push(session.id);
+    if(session.atomSnapshot)session.retentionProtocol='teaching-retention-v1';this.store.append('practiceSessions', session);this.retention.capturePractice(session,['practice:'+session.id+':opened']); entry.redoSessionIds.push(session.id);
     this.record(entry, user, command, 'redo_started', inputHash, session.id); return this.learning.view(user, session.id);
   }
   verification(user: InMemoryUserAccount, studentId: string, kind: unknown, responseId: string, input: unknown) {

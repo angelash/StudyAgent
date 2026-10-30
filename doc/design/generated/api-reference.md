@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`c610f4c01bd1626496b3314f8b92d66eb02a9dd5`。共 524 个 HTTP 路由声明，当前 AppModule 可达 503 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`a99d8dd04411651c2c2f06976e7895976927e5cf`。共 525 个 HTTP 路由声明，当前 AppModule 可达 504 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -1931,7 +1931,7 @@
 
 ### GET /api/learning/classroom/catalog
 
-实现：[apps/api/src/modules/learning/classroom.controller.ts:9](../../../apps/api/src/modules/learning/classroom.controller.ts#L9)，方法 `catalog`。
+实现：[apps/api/src/modules/learning/classroom.controller.ts:10](../../../apps/api/src/modules/learning/classroom.controller.ts#L10)，方法 `catalog`。
 
 - 签名：`catalog(@Req() req: AuthenticatedRequest)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -1940,7 +1940,7 @@
 
 ### POST /api/learning/classroom/sessions
 
-实现：[apps/api/src/modules/learning/classroom.controller.ts:10](../../../apps/api/src/modules/learning/classroom.controller.ts#L10)，方法 `open`。
+实现：[apps/api/src/modules/learning/classroom.controller.ts:11](../../../apps/api/src/modules/learning/classroom.controller.ts#L11)，方法 `open`。
 
 - 签名：`open(@Req() req: AuthenticatedRequest, @Body() input: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -1949,16 +1949,25 @@
 
 ### GET /api/learning/classroom/sessions/:id
 
-实现：[apps/api/src/modules/learning/classroom.controller.ts:11](../../../apps/api/src/modules/learning/classroom.controller.ts#L11)，方法 `get`。
+实现：[apps/api/src/modules/learning/classroom.controller.ts:12](../../../apps/api/src/modules/learning/classroom.controller.ts#L12)，方法 `get`。
 
 - 签名：`get(@Req() req: AuthenticatedRequest, @Param('id') id: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.classroom.get`
 
+### POST /api/learning/classroom/sessions/:id/retention-displays
+
+实现：[apps/api/src/modules/learning/classroom.controller.ts:13](../../../apps/api/src/modules/learning/classroom.controller.ts#L13)，方法 `retentionDisplay`。
+
+- 签名：`retentionDisplay(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Body() input:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.retention.classroomDisplay`
+
 ### GET /api/learning/classroom/sessions/:id/sources/:key
 
-实现：[apps/api/src/modules/learning/classroom.controller.ts:12](../../../apps/api/src/modules/learning/classroom.controller.ts#L12)，方法 `source`。
+实现：[apps/api/src/modules/learning/classroom.controller.ts:14](../../../apps/api/src/modules/learning/classroom.controller.ts#L14)，方法 `source`。
 
 - 签名：`source(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Param('key') key:string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -1967,7 +1976,7 @@
 
 ### PATCH /api/learning/classroom/sessions/:id
 
-实现：[apps/api/src/modules/learning/classroom.controller.ts:13](../../../apps/api/src/modules/learning/classroom.controller.ts#L13)，方法 `progress`。
+实现：[apps/api/src/modules/learning/classroom.controller.ts:15](../../../apps/api/src/modules/learning/classroom.controller.ts#L15)，方法 `progress`。
 
 - 签名：`progress(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -1976,7 +1985,7 @@
 
 ### POST /api/learning/classroom/sessions/:id/presentation
 
-实现：[apps/api/src/modules/learning/classroom.controller.ts:16](../../../apps/api/src/modules/learning/classroom.controller.ts#L16)，方法 `presentation`。
+实现：[apps/api/src/modules/learning/classroom.controller.ts:18](../../../apps/api/src/modules/learning/classroom.controller.ts#L18)，方法 `presentation`。
 
 - 签名：`presentation(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Body() input:unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -1985,7 +1994,7 @@
 
 ### POST /api/learning/classroom/sessions/:id/answers
 
-实现：[apps/api/src/modules/learning/classroom.controller.ts:19](../../../apps/api/src/modules/learning/classroom.controller.ts#L19)，方法 `answer`。
+实现：[apps/api/src/modules/learning/classroom.controller.ts:21](../../../apps/api/src/modules/learning/classroom.controller.ts#L21)，方法 `answer`。
 
 - 签名：`answer(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -1994,7 +2003,7 @@
 
 ### POST /api/learning/classroom/sessions/:id/hints
 
-实现：[apps/api/src/modules/learning/classroom.controller.ts:22](../../../apps/api/src/modules/learning/classroom.controller.ts#L22)，方法 `hint`。
+实现：[apps/api/src/modules/learning/classroom.controller.ts:24](../../../apps/api/src/modules/learning/classroom.controller.ts#L24)，方法 `hint`。
 
 - 签名：`hint(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -2003,7 +2012,7 @@
 
 ### POST /api/learning/classroom/sessions/:id/messages
 
-实现：[apps/api/src/modules/learning/classroom.controller.ts:25](../../../apps/api/src/modules/learning/classroom.controller.ts#L25)，方法 `ask`。
+实现：[apps/api/src/modules/learning/classroom.controller.ts:27](../../../apps/api/src/modules/learning/classroom.controller.ts#L27)，方法 `ask`。
 
 - 签名：`ask(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -2012,7 +2021,7 @@
 
 ### POST /api/learning/classroom/sessions/:id/narration/:stepId
 
-实现：[apps/api/src/modules/learning/classroom.controller.ts:32](../../../apps/api/src/modules/learning/classroom.controller.ts#L32)，方法 `narration`。
+实现：[apps/api/src/modules/learning/classroom.controller.ts:34](../../../apps/api/src/modules/learning/classroom.controller.ts#L34)，方法 `narration`。
 
 - 签名：`narration(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Param('stepId') stepId: string, @Body() input: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -2021,7 +2030,7 @@
 
 ### POST /api/learning/classroom/sessions/:id/voice-preview
 
-实现：[apps/api/src/modules/learning/classroom.controller.ts:37](../../../apps/api/src/modules/learning/classroom.controller.ts#L37)，方法 `voicePreview`。
+实现：[apps/api/src/modules/learning/classroom.controller.ts:39](../../../apps/api/src/modules/learning/classroom.controller.ts#L39)，方法 `voicePreview`。
 
 - 签名：`voicePreview(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Body() input:unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`

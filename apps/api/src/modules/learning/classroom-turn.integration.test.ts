@@ -177,7 +177,7 @@ describe('durable classroom turns, original position and explicit teaching modes
     const access = await call('post', `/students/${studentId}/learning-access`, { enabled: true, expectedVersion: 0, requestKey: randomUUID(), reason: '验证持久课堂插问' });
     const code = await call('post', `/students/${studentId}/learning-access/codes`, { expectedVersion: access.version, requestKey: randomUUID() });
     const learner = await call('post', '/auth/learning-code', { code: code.code }, null);
-    await store.transaction(() => { const saved = store.find('classroomSessions', { id: row.id }); saved.studentId = studentId; saved.ownerUserId = learner.user.id; });
+    await store.transaction(() => { const saved = store.find('classroomSessions', { id: row.id }); saved.studentId = studentId; saved.ownerUserId = learner.user.id;const courseId='qa-allowlist-course-'+randomUUID();store.append('studioCourses',{id:courseId,studentId,subject:'math',grade:4,term:'upper',title:'合成授权入口课程',description:'仅核对字幕/插问授权，原课堂为合成快照，不创建正式知识映射。',objective:'核对学习码实际授权和撤回。',status:'active',source:'studyagent_curriculum',scopeVersion:1,textbookVersion:'synthetic-allowlist-only',focusAtomIds:[],units:[],materials:[],fingerprint:saved.contentFingerprint,createdAt:saved.createdAt,updatedAt:saved.updatedAt});saved.studioCourseId=courseId;saved.courseId=courseId; });
     const turn = await create(row, command(row), learner); expect((await read(row, turn, learner)).status).toBe('queued');
     await call('get', base(row.id) + '/turns', undefined, parent, 403);
     await store.transaction(() => { store.find('studentLearningAccess', { studentId }).version++; }); const mock = reply();

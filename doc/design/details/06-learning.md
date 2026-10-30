@@ -1,6 +1,6 @@
 # 06 工作台首页、学习任务、报告与学习记忆 — 详细设计
 
-源码基线：`c610f4c01bd1626496b3314f8b92d66eb02a9dd5`。角色：学生、家长、授权教师。
+源码基线：`a99d8dd04411651c2c2f06976e7895976927e5cf`。角色：学生、家长、授权教师。
 
 产品入口：`/`、`/studio`、`/studio/tasks`、`/studio/reports`、`/studio/profiles`、`/studio/settings`、`/learn`、`/parent/dashboard`、`/student/today`。
 
@@ -144,7 +144,7 @@
 - `AssistantTeachingAssignmentService.assign`；[apps/api/src/modules/learning/assistant-teaching-assignment.service.ts:29](../../../apps/api/src/modules/learning/assistant-teaching-assignment.service.ts#L29)。
 - `AssistantTeachingAssignmentService.list`；[apps/api/src/modules/learning/assistant-teaching-assignment.service.ts:42](../../../apps/api/src/modules/learning/assistant-teaching-assignment.service.ts#L42)。
 - `AssistantTeachingAssignmentService.get`；[apps/api/src/modules/learning/assistant-teaching-assignment.service.ts:41](../../../apps/api/src/modules/learning/assistant-teaching-assignment.service.ts#L41)。
-- `AssistantTeachingStudentService.start`；[apps/api/src/modules/learning/assistant-teaching-student.service.ts:22](../../../apps/api/src/modules/learning/assistant-teaching-student.service.ts#L22)。
+- `AssistantTeachingStudentService.start`；[apps/api/src/modules/learning/assistant-teaching-student.service.ts:23](../../../apps/api/src/modules/learning/assistant-teaching-student.service.ts#L23)。
 - `AssistantTeachingAssignmentService.withdraw`；[apps/api/src/modules/learning/assistant-teaching-assignment.service.ts:48](../../../apps/api/src/modules/learning/assistant-teaching-assignment.service.ts#L48)。
 - `AssistantTeachingAssignmentService.reference`；[apps/api/src/modules/learning/assistant-teaching-assignment.service.ts:54](../../../apps/api/src/modules/learning/assistant-teaching-assignment.service.ts#L54)。
 
@@ -247,9 +247,9 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:142](../../../apps/api/src/modules/learning/learning.service.ts#L142)。
-- `LearningService.createStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:158](../../../apps/api/src/modules/learning/learning.service.ts#L158)。
-- `LearningService.updateStudioPlanSession`；[apps/api/src/modules/learning/learning.service.ts:196](../../../apps/api/src/modules/learning/learning.service.ts#L196)。
+- `LearningService.previewStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:143](../../../apps/api/src/modules/learning/learning.service.ts#L143)。
+- `LearningService.createStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:159](../../../apps/api/src/modules/learning/learning.service.ts#L159)。
+- `LearningService.updateStudioPlanSession`；[apps/api/src/modules/learning/learning.service.ts:197](../../../apps/api/src/modules/learning/learning.service.ts#L197)。
 
 **补充实现文件**：
 
@@ -306,6 +306,47 @@
 - [tests/e2e/guidance-calendar.spec.ts](../../../tests/e2e/guidance-calendar.spec.ts)
 - [doc/product/161-guidance-calendar-persistence-and-timezone-protocol.md](../../../doc/product/161-guidance-calendar-persistence-and-timezone-protocol.md)
 
+## LEARN-13 教学后真实保持锚点与原报告兼容
+
+**输入**：原独立作答、原ReviewTask、实际孩子/学科/冻结目标、真实教学或帮助来源和服务端截止时间。
+
+**处理与实现**：原业务同事务写入稳定来源时间；课堂冻结原课程/原知识定义和原句单元，普通读取与家长预览不移动锚点。原任务基准稳定，最近实际教学/帮助和真实1/3/7/14日共同控制复测；开始后的帮助排除独立保持。旧首答和报告保持，明确重分析追加v4报告；画像、原因和复盘共用资格投影。原生双向关系、隐私账本与实际旧28读取器保持。
+
+**输出**：当前等待依据、准确来源返回、原时间回执/完整副本和可核查保持资格。
+
+**状态与持久化**：`retentionExposureEvents`、`diagnosticSessions`、`diagnosticResponses`、`diagnosticReports`、`practiceSessions`、`practiceAttempts`、`practiceHints`、`assistantTeachingAssignments`、`assistantTeachingSessions`、`classroomSessions`
+
+**权限、失败与边界**：620整站/2161API及双库分批通过仅说明工程范围。163更多受控原因、R5-R8和全部教材/教师/实机/真人长期条件仍待；源码29未发布。
+
+**关联接口**：
+
+- `POST /api/learning/classroom/sessions/:id/retention-displays` → `ClassroomController.retentionDisplay`；[apps/api/src/modules/learning/classroom.controller.ts:13](../../../apps/api/src/modules/learning/classroom.controller.ts#L13)。
+
+**服务方法**：
+
+- `RetentionService.classroomDisplay`；[apps/api/src/modules/diagnostics/retention.service.ts:81](../../../apps/api/src/modules/diagnostics/retention.service.ts#L81)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/diagnostics/retention-anchor.ts](../../../apps/api/src/modules/diagnostics/retention-anchor.ts)
+- [apps/api/src/modules/diagnostics/retention-source.ts](../../../apps/api/src/modules/diagnostics/retention-source.ts)
+- [apps/api/src/modules/diagnostics/retention-integrity.ts](../../../apps/api/src/modules/diagnostics/retention-integrity.ts)
+- [apps/api/src/modules/diagnostics/retention-evidence-projection.ts](../../../apps/api/src/modules/diagnostics/retention-evidence-projection.ts)
+- [apps/api/src/modules/diagnostics/retention-review-gate.ts](../../../apps/api/src/modules/diagnostics/retention-review-gate.ts)
+- [apps/api/src/modules/diagnostics/classroom-retention-record.ts](../../../apps/api/src/modules/diagnostics/classroom-retention-record.ts)
+- [apps/api/src/modules/diagnostics/classroom-retention-origin.ts](../../../apps/api/src/modules/diagnostics/classroom-retention-origin.ts)
+- [apps/api/src/modules/diagnostics/retention-legacy-classroom.test.ts](../../../apps/api/src/modules/diagnostics/retention-legacy-classroom.test.ts)
+- [apps/api/src/modules/ai/ai.service.ts](../../../apps/api/src/modules/ai/ai.service.ts)
+- [apps/api/src/modules/learning/classroom-turn.service.ts](../../../apps/api/src/modules/learning/classroom-turn.service.ts)
+- [apps/api/src/modules/learning/classroom-turn-worker.service.ts](../../../apps/api/src/modules/learning/classroom-turn-worker.service.ts)
+- [apps/api/src/modules/diagnostics/retention.integration.test.ts](../../../apps/api/src/modules/diagnostics/retention.integration.test.ts)
+- [apps/api/src/infrastructure/schema29-reader.integration.test.ts](../../../apps/api/src/infrastructure/schema29-reader.integration.test.ts)
+- [apps/web/components/retention-evidence.tsx](../../../apps/web/components/retention-evidence.tsx)
+- [apps/web/app/studio/classroom/retention-display.tsx](../../../apps/web/app/studio/classroom/retention-display.tsx)
+- [packages/contracts/src/retention.ts](../../../packages/contracts/src/retention.ts)
+- [tests/e2e/retention-evidence.spec.ts](../../../tests/e2e/retention-evidence.spec.ts)
+- [doc/product/162-retention-anchor-and-measurement-compatibility.md](../../../doc/product/162-retention-anchor-and-measurement-compatibility.md)
+
 ## LEARN-01 家庭总览与证据化学习记忆
 
 **输入**：当前家庭、学生与学科。
@@ -325,8 +366,8 @@
 
 **服务方法**：
 
-- `LearningService.overview`；[apps/api/src/modules/learning/learning.service.ts:1029](../../../apps/api/src/modules/learning/learning.service.ts#L1029)。
-- `LearningService.memory`；[apps/api/src/modules/learning/learning.service.ts:624](../../../apps/api/src/modules/learning/learning.service.ts#L624)。
+- `LearningService.overview`；[apps/api/src/modules/learning/learning.service.ts:1035](../../../apps/api/src/modules/learning/learning.service.ts#L1035)。
+- `LearningService.memory`；[apps/api/src/modules/learning/learning.service.ts:625](../../../apps/api/src/modules/learning/learning.service.ts#L625)。
 
 ## LEARN-02 今日任务与练习入口
 
@@ -347,8 +388,8 @@
 
 **服务方法**：
 
-- `LearningService.today`；[apps/api/src/modules/learning/learning.service.ts:684](../../../apps/api/src/modules/learning/learning.service.ts#L684)。
-- `LearningService.start`；[apps/api/src/modules/learning/learning.service.ts:698](../../../apps/api/src/modules/learning/learning.service.ts#L698)。
+- `LearningService.today`；[apps/api/src/modules/learning/learning.service.ts:685](../../../apps/api/src/modules/learning/learning.service.ts#L685)。
+- `LearningService.start`；[apps/api/src/modules/learning/learning.service.ts:699](../../../apps/api/src/modules/learning/learning.service.ts#L699)。
 
 ## LEARN-03 训练作答、草稿、提示与完成
 
@@ -373,12 +414,12 @@
 
 **服务方法**：
 
-- `LearningService.view`；[apps/api/src/modules/learning/learning.service.ts:740](../../../apps/api/src/modules/learning/learning.service.ts#L740)。
-- `LearningService.render`；[apps/api/src/modules/learning/learning.service.ts:767](../../../apps/api/src/modules/learning/learning.service.ts#L767)。
-- `LearningService.draft`；[apps/api/src/modules/learning/learning.service.ts:792](../../../apps/api/src/modules/learning/learning.service.ts#L792)。
-- `LearningService.submit`；[apps/api/src/modules/learning/learning.service.ts:891](../../../apps/api/src/modules/learning/learning.service.ts#L891)。
-- `LearningService.hint`；[apps/api/src/modules/learning/learning.service.ts:969](../../../apps/api/src/modules/learning/learning.service.ts#L969)。
-- `LearningService.complete`；[apps/api/src/modules/learning/learning.service.ts:986](../../../apps/api/src/modules/learning/learning.service.ts#L986)。
+- `LearningService.view`；[apps/api/src/modules/learning/learning.service.ts:742](../../../apps/api/src/modules/learning/learning.service.ts#L742)。
+- `LearningService.render`；[apps/api/src/modules/learning/learning.service.ts:769](../../../apps/api/src/modules/learning/learning.service.ts#L769)。
+- `LearningService.draft`；[apps/api/src/modules/learning/learning.service.ts:794](../../../apps/api/src/modules/learning/learning.service.ts#L794)。
+- `LearningService.submit`；[apps/api/src/modules/learning/learning.service.ts:895](../../../apps/api/src/modules/learning/learning.service.ts#L895)。
+- `LearningService.hint`；[apps/api/src/modules/learning/learning.service.ts:974](../../../apps/api/src/modules/learning/learning.service.ts#L974)。
+- `LearningService.complete`；[apps/api/src/modules/learning/learning.service.ts:992](../../../apps/api/src/modules/learning/learning.service.ts#L992)。
 
 ## LEARN-04 错题与待复核入口
 
@@ -398,7 +439,7 @@
 
 **服务方法**：
 
-- `LearningService.mistakes`；[apps/api/src/modules/learning/learning.service.ts:998](../../../apps/api/src/modules/learning/learning.service.ts#L998)。
+- `LearningService.mistakes`；[apps/api/src/modules/learning/learning.service.ts:1004](../../../apps/api/src/modules/learning/learning.service.ts#L1004)。
 
 ## LEARN-05 错题组织、复做与新题验证
 
@@ -422,11 +463,11 @@
 
 **服务方法**：
 
-- `NotebookService.list`；[apps/api/src/modules/learning/notebook.service.ts:80](../../../apps/api/src/modules/learning/notebook.service.ts#L80)。
-- `NotebookService.detail`；[apps/api/src/modules/learning/notebook.service.ts:113](../../../apps/api/src/modules/learning/notebook.service.ts#L113)。
-- `NotebookService.organize`；[apps/api/src/modules/learning/notebook.service.ts:145](../../../apps/api/src/modules/learning/notebook.service.ts#L145)。
-- `NotebookService.redo`；[apps/api/src/modules/learning/notebook.service.ts:153](../../../apps/api/src/modules/learning/notebook.service.ts#L153)。
-- `NotebookService.verification`；[apps/api/src/modules/learning/notebook.service.ts:174](../../../apps/api/src/modules/learning/notebook.service.ts#L174)。
+- `NotebookService.list`；[apps/api/src/modules/learning/notebook.service.ts:81](../../../apps/api/src/modules/learning/notebook.service.ts#L81)。
+- `NotebookService.detail`；[apps/api/src/modules/learning/notebook.service.ts:114](../../../apps/api/src/modules/learning/notebook.service.ts#L114)。
+- `NotebookService.organize`；[apps/api/src/modules/learning/notebook.service.ts:146](../../../apps/api/src/modules/learning/notebook.service.ts#L146)。
+- `NotebookService.redo`；[apps/api/src/modules/learning/notebook.service.ts:154](../../../apps/api/src/modules/learning/notebook.service.ts#L154)。
+- `NotebookService.verification`；[apps/api/src/modules/learning/notebook.service.ts:175](../../../apps/api/src/modules/learning/notebook.service.ts#L175)。
 
 ## LEARN-06 旧入口迁移与历史只读
 

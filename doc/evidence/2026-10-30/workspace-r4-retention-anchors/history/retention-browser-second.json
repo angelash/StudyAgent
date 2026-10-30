@@ -1,0 +1,73 @@
+{
+  "stats": {
+    "startTime": "2026-10-30T10:15:54.960Z",
+    "duration": 56341.451,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 320",
+      "file": "retention-evidence.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 390",
+      "file": "retention-evidence.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 768",
+      "file": "retention-evidence.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 1440",
+      "file": "retention-evidence.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "retention evidence: a lost exact original classroom time receipt survives reload and cannot move the original recorded time",
+      "file": "retention-evidence.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "retention evidence: disabled storage preserves the exact classroom time command and requires its full downloaded copy before writing",
+      "file": "retention-evidence.spec.ts",
+      "attempts": [
+        {
+          "status": "failed",
+          "failure": true
+        }
+      ]
+    }
+  ]
+}

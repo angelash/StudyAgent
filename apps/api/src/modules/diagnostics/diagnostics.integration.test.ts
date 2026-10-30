@@ -465,9 +465,11 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
     const next = await start({ intent: 'retest', targetAtomIds: ['target'], includePrerequisites: false, maxItems: 2 });
     for (const item of next.items) await submit(next, item, 6);
     const nextReport = await call('post', `/diagnostics/sessions/${next.id}/complete`, {});
-    expect(nextReport.evidence.every((response: any) => response.retentionDelayDays === null && response.dimension === 'procedure')).toBe(true);
+    expect(nextReport.evidence.every((response: any) => response.retentionDelayDays === null && response.dimension === 'procedure' && response.retentionEvidence.status==='unknown_source' && response.score===1)).toBe(true);
     expect(nextReport.definitionContext.incompatibleEvidenceIds).toHaveLength(4);
-    expect(nextReport.estimates.find((estimate: any) => estimate.atomId === 'target').scoredCount).toBe(2);
+    // The old-definition hints cannot establish the new definition's teaching history.
+    // Keep both real scores and require source review before using retention samples.
+    expect(nextReport.estimates.find((estimate: any) => estimate.atomId === 'target').scoredCount).toBe(0);
     admin = await auth.login({ principal: 'diagnostic-reviewer@test', credential: 'diagnostic-secret-123' }, 'definition-admin-renew');
     await call('post', `/admin/diagnostic-responses/${encodeURIComponent(first.evidence[2].id)}/review`,
       { score: 0, reason: '修订另一旧定义作答，不应使当前不同定义报告失效', requestKey: 'old-definition-review', expectedVersion: 0 }, 201, admin);

@@ -1,0 +1,37 @@
+{
+  "numTotalTests": 4,
+  "numPassedTests": 4,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "classroom-retention-history.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "retained classroom origins across an actual in-place chemistry tutorial revision retains the original child mapping after the actual revision command stores previousCourse",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "retention-course-history.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "actual old child classroom, chemistry maintenance ancestry and native recovery backs up and cold restores the actual upgraded course without relabelling or losing its old child displays",
+          "status": "passed"
+        },
+        {
+          "title": "actual old child classroom, chemistry maintenance ancestry and native recovery prepares an actual untouched legacy classroom using the exact old lesson from the retained upgrade audit",
+          "status": "passed"
+        },
+        {
+          "title": "actual old child classroom, chemistry maintenance ancestry and native recovery rejects missing, disconnected and cross-child upgrade origins instead of trusting recalculated saved contexts",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

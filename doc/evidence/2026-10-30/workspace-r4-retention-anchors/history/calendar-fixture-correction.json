@@ -1,0 +1,7 @@
+{
+  "at": "2026-10-30T11:34:47.965Z",
+  "path": "apps/api/src/modules/learning/assistant-guidance.integration.test.ts",
+  "beforeSha256": "ef48fdbf9ecb19934847f78d58d20d8b6c0a6538b06387fab20d7f4c7c89879b",
+  "afterSha256": "46d549d8aed6613ed51b6fa3d817415353d2fd549b1c8f6ddc9cabc9b4fd3e41",
+  "scope": "Test-only correction: the second synthetic slot is exactly one hour after the first, including UTC date rollover. The original fixed11:00 slot overlapped the first during this run; actual conflict rejection was correct. Canonical input rejection, zero failed-confirmation writes and exact command/result assertions unchanged. Application and all compiled artifacts unchanged; original complete and reproduction failures retained."
+}

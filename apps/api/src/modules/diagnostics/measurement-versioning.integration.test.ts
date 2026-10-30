@@ -88,7 +88,7 @@ describe('self reports and versioned measurement through authenticated HTTP', ()
     const { report } = await complete();
     expect(report.evidence.every((r: any) => r.disposition === 'dont_know' && r.score === 0 && r.correct === false)).toBe(true);
     expect(report.estimates.find((r: any) => r.atomId === atomId)).toMatchObject({ status: 'unknown', mastery: null,
-      lower: null, upper: null, scoredCount: 0, effectiveSamples: 0, independentFamilies: 0, algorithmVersion: 'rule-estimate-v3' });
+      lower: null, upper: null, scoredCount: 0, effectiveSamples: 0, independentFamilies: 0, algorithmVersion: 'rule-estimate-v4' });
     expect(report.hypotheses.every((h: any) => h.status === 'proposed' && !h.supportingEvidenceIds.length)).toBe(true);
     const profile = await call('get', `/diagnostics/students/${studentId}/profile?subject=math`, undefined, learner);
     expect(profile.estimates.find((r: any) => r.atomId === atomId).mastery).toBeNull();
@@ -100,13 +100,13 @@ describe('self reports and versioned measurement through authenticated HTTP', ()
     const original = structuredClone(saved), answers = await read(() => store.diagnosticResponses);
     const status = await call('get', route(second.session.id) + '/analysis-status');
     expect(status).toMatchObject({ requiresReanalysis: true, measurementRulesChanged: true,
-      reportMeasurementVersion: 'rule-estimate-v2', currentMeasurementVersion: 'rule-estimate-v3', canReanalyze: true });
+      reportMeasurementVersion: 'rule-estimate-v2', currentMeasurementVersion: 'rule-estimate-v4', canReanalyze: true });
     expect(status.affectedEvidenceIds).toContain(first.report.evidence[0].id);
     await call('get', route(second.session.id) + '/analysis-status', undefined, outsider, 403);
     const command = { requestKey: 'measurement-explicit-reanalysis', expectedReportVersion: 1, reason: '按原始实际作答核对计量，不将自述当作解题失败' };
     await call('post', route(second.session.id) + '/reanalyze', command, learner, 403);
     const updated = await call('post', route(second.session.id) + '/reanalyze', command);
-    expect(updated.version).toBe(2); expect(updated.measurementVersion).toBe('rule-estimate-v3');
+    expect(updated.version).toBe(2); expect(updated.measurementVersion).toBe('rule-estimate-v4');
     expect(updated.revisionReason).toContain('不等同于学习改善');
     expect(await call('post', route(second.session.id) + '/reanalyze', command)).toEqual(updated);
     await call('post', route(second.session.id) + '/reanalyze', { ...command, reason: '同键不同内容不能重新提交' }, owner, 409);
@@ -158,11 +158,11 @@ describe('self reports and versioned measurement through authenticated HTTP', ()
     plan = await call('post', `/diagnostics/plans/${plan.id}/adjust`, { expectedRevision: plan.revision,
       requestKey: 'measurement-plan-acknowledge', acknowledgeReportVersion: 2, reason: '按当前实际作答方法确认原指导，不把方法变化当作进步', minutesPerDay: 10,
       actions: plan.actions.map((row: any) => ({ actionId: row.id, minutes: row.minutes, activity: row.activity })) });
-    expect(plan).toMatchObject({ baselineMeasurementVersion: 'rule-estimate-v3', baselineFamilyIdentityVersion: 'authored-family-identity-v1' });
+    expect(plan).toMatchObject({ baselineMeasurementVersion: 'rule-estimate-v4', baselineFamilyIdentityVersion: 'authored-family-identity-v1' });
     expect(plan.impact.needsReview).toBe(false);
     expect(await read(() => store.find('practiceSessions', { id: started.id }))).toEqual(frozen);
     const retrospective = await call('get', `/diagnostics/plans/${plan.id}/retrospective`);
-    expect(retrospective.measurementContext.measurementVersion).toBe('rule-estimate-v3');
+    expect(retrospective.measurementContext.measurementVersion).toBe('rule-estimate-v4');
     expect(retrospective.comparisons.every((row: any) => row.before.mastery === null && row.outcome === 'awaiting_retest')).toBe(true);
   });
   it('retains an original numerical report when an input is missing and refuses to manufacture replacement evidence', async () => {

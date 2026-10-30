@@ -12,6 +12,7 @@ const draftCommand = z.object({ actorId: id, key, requestHash: hash, revision: z
 const draftSchema = z.object({ answer: z.unknown(), learnerExplanation: z.string().max(3000), savedAt: time, revision: z.number().int().min(1).max(1024),
   protocol: z.literal('answer-draft-v2'), draftAttempt: z.number().int().min(0).max(5), draftCommands: z.array(draftCommand).min(1).max(1024) }).strict();
 const sessionSchema = z.object({ id, studentId: id, subject: z.enum(['math', 'chinese', 'english', 'chemistry']), planId: z.null(), actionId: id, atomId: id,
+  retentionProtocol:z.literal('teaching-retention-v1').optional(),
   day: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), status: z.enum(['in_progress', 'completed']), questionIds: z.array(id).length(2), snapshots: z.array(z.unknown()).length(2),
   createdAt: time, completedAt: time.nullable(), drafts: z.record(z.string(), draftSchema).optional(), actionSnapshot: z.unknown(), planRevision: z.literal(0),
   snapshotOrigin: z.literal('started'), origin: z.literal('assistant_artifact'), atomSnapshot: z.unknown(), assistantAssignmentId: id, sourceGroupId: id,

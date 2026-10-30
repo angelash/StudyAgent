@@ -9,6 +9,7 @@ import { XiaojiuModelsService } from '../ai/xiaojiu-models.service';
 import { sessionPresentation } from './classroom-presentation';
 import { visualSession } from './classroom-visual.service';
 import type { ClassroomTurnRecord } from './classroom-turn-record';
+import { RetentionService } from '../diagnostics/retention.service';
 
 export const classroomTurnKind = 'classroom.turn.reply';
 function canonical(value: unknown): unknown {
@@ -45,7 +46,7 @@ export function turnAuthority(store: InMemoryStoreService, students: StudentsSer
 
 @Injectable()
 export class ClassroomTurnService {
-  constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService, private readonly models: XiaojiuModelsService) {}
+  constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService, private readonly models: XiaojiuModelsService,private readonly retention:RetentionService) {}
 
   private record(user: InMemoryUserAccount, sessionId: string, id: string) {
     visualSession(this.store, this.students, user, sessionId);
@@ -117,6 +118,7 @@ export class ClassroomTurnService {
       context: JSON.stringify({ title: session.lesson.title, objective: session.lesson.objective, teaching, intent: command.intent,
         ...(question ? { practiceQuestion: { id: question.id, prompt: question.prompt, options: question.options, selectionMode: question.selectionMode ?? 'single', table: question.table, diagram: question.diagram }, submitted: session.answers.some(answer => answer.questionId === question.id),feedback:session.answers.find(answer=>answer.questionId===question.id) } : {}) }),
       history: session.messages.slice(-10).map(({ role, content }) => ({ role, content })), status: 'queued', revision: 0, createdAt: now, updatedAt: now };
+    this.retention.prepareClassroom(session,now);
     if (question) { session.hintedQuestionIds = [...new Set([...(session.hintedQuestionIds ?? []), question.id])]; session.revision++; session.updatedAt = now; }
     this.store.append('classroomTurns', turn);
     await this.store.enqueueTask({ id: turn.taskId, kind: classroomTurnKind, ownerUserId: user.id, requestKey: 'classroom-turn:' + turn.id,

@@ -13,6 +13,8 @@ import { deriveHypotheses, DIAGNOSIS_VERSION } from './diagnosis';
 import { selectBlueprintItems } from './assessment-blueprint';
 import { selectVerificationItems, verificationBlueprint, verificationResult } from './verification-blueprint';
 import { routeNext } from './adaptive-routing';
+import { measureRetentionAnchor } from './retention-anchor';
+import { atomDefinitionFingerprint } from './measurement-definition';
 
 const atomId = 'core:math:brackets', now = new Date('2026-10-20T04:00:00.000Z');
 const atom = buildFoundationCurriculum().find(row => row.atom.id === atomId)!.atom;
@@ -91,6 +93,7 @@ describe('reviewed, atom-scoped family identities', () => {
   });
   it.each(['transfer', 'retention'] as const)('cannot verify $0 from successful aliases of one structure', dimension => {
     const rows = aliases().map(row => ({ ...row, dimension })), records = rows.map(row => evidence(row, { retentionDelayDays: 7 }));
+    if(dimension==='retention')for(const record of records){const definitionFingerprint=atomDefinitionFingerprint(atom);record.retentionEvidence=measureRetentionAnchor({studentId:record.studentId,subject:atom.subject,atomId:atom.id,definitionFingerprint,sessionId:record.sessionId,startedAt:record.submittedAt,answeredAt:record.submittedAt,intervalDays:7,answer:{status:record.status,disposition:record.disposition,hintLevel:record.hintLevel,priorExposure:!!record.priorExposure},exposures:[],baselines:[{id:'original-'+record.id,sessionId:'original-independent',studentId:record.studentId,subject:atom.subject,atomId:atom.id,definitionFingerprint,submittedAt:new Date(now.getTime()-7*86_400_000).toISOString(),correct:true,status:'scored',disposition:'answered',hintLevel:0,priorExposure:false,sourceRetained:true}]});expect(record.retentionEvidence.eligible).toBe(true);}
     const estimate = estimateMastery(atom, weightedEvidence(records, mappings(rows), now));
     expect(estimate.transferVerified).toBe(false); expect(estimate.retentionVerified).toBe(false); expect(estimate.independentFamilies).toBe(1);
   });

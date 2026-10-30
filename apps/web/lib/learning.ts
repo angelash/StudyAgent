@@ -5,7 +5,7 @@ export type Child = { id: string; nickname: string; grade: number };
 export type DailyLearning = {
   studentId: string; subject: Subject; day: string; plan: GuidancePlanView | null; awaitingConfirmation: GuidancePlanView | null;
   activities: Array<GuidanceAction & { atomName: string; status: string; sessionId: string | null }>;
-  reviews: Array<{ id: string; atomName: string; intervalDays: number; dueAt: string; due: boolean; status: string; sessionId: string | null }>;
+  reviews: Array<{ retentionReadiness?:import('@study-agent/contracts').RetentionReadiness; id: string; atomName: string; intervalDays: number; dueAt: string; due: boolean; status: string; sessionId: string | null }>;
   incompleteAssessments: Array<{ id: string; status: 'in_progress' | 'paused'; answeredCount: number; totalCount: number }>; notice: string;
 };
 export type Practice = { id: string; planId: string | null; studentId: string; subject: Subject; status: string; action: GuidanceAction; planRevision: number; currentPlanRevision: number;

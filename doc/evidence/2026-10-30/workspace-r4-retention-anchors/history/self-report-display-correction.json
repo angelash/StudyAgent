@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-30T12:02:59.022477+00:00",
+  "changes": [
+    {
+      "path": "apps/web/components/knowledge-report-workspace.tsx",
+      "beforeSha256": "895008161dbb86cd2d055d529853efd40aee7de4175ef52f087cbdd0881be5ea",
+      "afterSha256": "e85228b1e22122dd96d9782fcb224f743399695620c5d157fdb136396e5ebd87"
+    },
+    {
+      "path": "apps/web/app/student/assessment/studio.tsx",
+      "beforeSha256": "6f150e44372266a96bc622e914881258e1f959056e22e3d19b706d2b20f3b105",
+      "afterSha256": "b48cac7c87808bd70f4f07f9dc27eaee61be26d17177b4ff52366277e96f017a"
+    }
+  ],
+  "scope": "Actual Web compatibility fix only. Both known v3 and v4 methods exclude self reports; v2 and unknown historical methods keep their exact old report notice. API/backend, contracts, native records and grading unchanged. Focused knowledge17/1 preserved. Fresh Web build and18 knowledge plus620 full browser required.",
+  "hashes": "Exact preserved original bytes and actual written source bytes; normalized-read initial receipt preserved separately."
+}

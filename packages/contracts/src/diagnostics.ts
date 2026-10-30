@@ -1,3 +1,4 @@
+import type { RetentionEvidence,RetentionReadiness } from './retention';
 import { z } from 'zod';
 import { answerDraftFenceSchema } from './answer-draft';
 
@@ -150,6 +151,7 @@ export type DiagnosticBlueprintView = Omit<DiagnosticBlueprintReservation, 'acto
 };
 
 export type DiagnosticSession = {
+  retentionProtocol?: 'teaching-retention-v1';
   id: string; studentId: string; subject: z.infer<typeof subject>; intent: DiagnosticStart['intent'];
   status: 'in_progress' | 'paused' | 'completed' | 'aborted'; scopeSnapshot: LearningScope;
   blueprint?: AssessmentBlueprint; revision?: number; endedAt?: string;
@@ -194,6 +196,7 @@ export type DiagnosticResponse = {
   status: 'scored' | 'pending_review' | 'skipped'; disposition: DiagnosticResponseInput['disposition'];
   elapsedMs: number; hintLevel: number; observationCode: string | null; gradingReason: string;
   retentionDelayDays: number | null;
+  retentionEvidence?: RetentionEvidence;
   submittedAt: string; gradingVersion: string; requestKey: string;
   requestHash?: string;
   priorExposure?: boolean;
@@ -294,6 +297,7 @@ export type GuidancePlanRevision = {
   requestKey?: string; inputHash?: string;
 };
 export type ReviewTask = {
+  retentionReadiness?: RetentionReadiness;
   id: string; planId: string; studentId: string; subject: z.infer<typeof subject>; atomId: string;
   intervalDays: number; dueAt: string; status: 'pending' | 'in_progress' | 'completed'; sessionId: string | null;
   planRevision?: number; baselineReportVersion?: number; earliestDueAt?: string; scheduleRevision?: number;
@@ -302,6 +306,7 @@ export type ReviewTask = {
 };
 
 export type DiagnosticReport = {
+  retentionProtocol?: 'teaching-retention-v1';
   familyIdentityVersion?: string;
   measurementVersion?: string;
   sessionId: string; studentId: string; subject: z.infer<typeof subject>; status: DiagnosticSession['status'];

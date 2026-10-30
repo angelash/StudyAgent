@@ -46,7 +46,7 @@ test('knowledge report: the actual frozen goals, original estimates and self-rep
     await workspace.getByRole('button', { name: '查看知识点：' + estimate.atomName, exact: true }).click();
     await expect(workspace.getByRole('heading', { name: estimate.atomName, exact: true, level: 3 })).toBeVisible();
     await expect(workspace).toContainText(definition.objective); await expect(workspace).toContainText(definition.successCriterion);
-    expect(estimate).toMatchObject({ mastery: null, lower: null, upper: null, status: 'unknown', scoredCount: 0, independentFamilies: 0, algorithmVersion: 'rule-estimate-v3' });
+    expect(estimate).toMatchObject({ mastery: null, lower: null, upper: null, status: 'unknown', scoredCount: 0, independentFamilies: 0, algorithmVersion: 'rule-estimate-v4' });
     const quantification = workspace.getByRole('region', { name: '本点量化与未知项' });
     await expect(quantification).toContainText('尚未形成有效估计');
     await expect(quantification).toContainText('不计入能力估计或独立样本');

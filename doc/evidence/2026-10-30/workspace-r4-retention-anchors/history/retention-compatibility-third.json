@@ -1,0 +1,415 @@
+{
+  "numTotalTests": 94,
+  "numPassedTests": 93,
+  "numFailedTests": 1,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 2,
+  "suites": [
+    {
+      "file": "diagnostics.integration.test.ts",
+      "status": "failed",
+      "tests": [
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification builds a provenance-backed learning memory and next-action feed without treating unknown as weakness",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification isolates textbook terms and reviewed lesson maps, snapshots versions and keeps coverage gaps",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification serves all 12 source-reviewed Chinese TOCs without fabricating knowledge mappings or selectable combined parts",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification maps complete local math and English source books without inventing lesson page offsets",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification requires a separate lesson mapping review, keeps scope gaps and freezes the previous textbook edition",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification rejects cross-term lesson maps and excludes historical maps whose atom now falls outside the book term",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification keeps atom and measurement revisions and rejects cyclic or unpublishable dependencies",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification enforces progress, records coverage gaps and preserves question/scope snapshots and first submissions",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification verifies prerequisite hypotheses, produces budgeted plans without AI and schedules real delayed reviews",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification keeps subjective scoring pending and preserves review versions rather than overwriting evidence",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification previews six bounded purposes without exposing answers, creating observations or consuming fresh questions",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification starts exactly the previewed group once, restores preview receipts and enforces actor and scope boundaries",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification invalidates stale definitions, scopes and exposure while preserving previews with no usable coverage",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification expires unused blueprints without expiring a started assessment or losing its idempotent receipt",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification pauses and resumes with revisions, retains drafts, and aborts without counting unanswered work as failure",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification releases an aborted delayed task for a new probe without reusing exposed questions",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification freezes knowledge definitions through completion and score revision, and separates evidence after semantic changes",
+          "status": "failed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification keeps labels and teaching revisions comparable while preserving historical names",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification blocks new guidance and verification after changed definitions while retaining started practice",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification preserves legacy reports without fabricating definition provenance or reusing unverifiable evidence",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification excludes different-definition linked followups and keeps unrelated assessments out of the review fingerprint",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification versions parent adjustments, enforces budgets and idempotency, and freezes started activities",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification excludes incomplete interaction configuration and never scores a frozen unusable item as a student failure",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification retains reschedule history and original intervals, blocks bypasses, and does not reset dates on resume",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification requires linked independent followups and current evidence acknowledgement before closing a real review cycle",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification persists practice drafts, counts unique questions and keeps hinted/retried training out of ability evidence",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification enforces practice ownership and pause, and leaves subjective practice pending for review",
+          "status": "passed"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification retires the prototype mutation and correctness-report APIs with an explicit upgrade response",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "measurement-compatibility.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "measurement compatibility follows retained original provenance does not require unaffected v2 actual answers to be rewritten",
+          "status": "passed"
+        },
+        {
+          "title": "measurement compatibility follows retained original provenance detects cross-session self reports and earlier skipped-question exposure",
+          "status": "passed"
+        },
+        {
+          "title": "measurement compatibility follows retained original provenance does not use a different student original or resurrect missing evidence from report snapshots",
+          "status": "passed"
+        },
+        {
+          "title": "measurement compatibility follows retained original provenance keeps an unrecognised protocol unknown, and does not repeatedly rewrite an already excluded v3 record",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "measurement.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "conservative atomic measurement keeps self reports unknown in every dimension without changing the original task score",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement uses only actual answers in mixed groups and protects all seen questions from later independent reuse",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement does not infer an actual answer from missing or future dispositions, including direct weighted inputs",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement computes Beta quantiles against closed-form distributions and symmetry",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement keeps untested points unknown and cannot certify mastery after one success",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement deduplicates repeated questions and discounts hints, repeated families and age",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement requires independent transfer and actual delayed evidence for secure mastery",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement never turns practice-exposed responses into independent mastery or cause evidence",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement rejects prerequisite cycles and missing or cross-subject dependencies",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement keeps a single observed error a hypothesis and lets conflicting evidence prevent certainty",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement supports a transfer hypothesis only after replicated direct-versus-transfer evidence",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement keeps self-reported difficulty traceable without manufacturing procedural or prerequisite failures",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement cites both the target differences and independent prerequisite failures that support a prerequisite hypothesis",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement reports observed scoring positions and uncertainty without treating preset error tags as observed steps",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "assistant-practice-artifact.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability persists complete original source and two native reviewed packets without learner/task/evidence side effects",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability replays original create keys and rejects changed input or forged approval fields",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability uses the original receipt for simultaneous same-key requests from two actual application instances",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability saves teaching-only edits and keeps earlier receipts and original frozen bank packets",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability keeps another authorized guardian out of private source, candidate and original receipt",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability scopes list cursors to source and owner without exposing complete bank packets in summaries",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability requires adult-to-child confirmation and preserves a candidate when the original message changes",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability keeps native question history readable after current approved content is replaced",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability keeps profile grade4 separate when current scope is legitimately advanced to grade5",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability uses an actual learning-code identity for a private grade9 chemical candidate without changing the grade4 profile",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability persists all three explicit atomic groups over HTTP without duplicate native questions or learner side effects",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability confirms a shared native teaching assignment without writing learner sessions, exposure, tasks or measurements",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability shares confirmed teaching with the other guardian while keeping private origin and unstarted learner questions hidden",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability replays original shared assignment requests across two actual instances without another child record",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability rejects stale previews and other target children, and binds shared cursors to the current viewer",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability keeps the published instructions and receipt unchanged after a later private candidate edit",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability rejects a rehashed foreign private link or a detached assignment without a matching account deletion receipt",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability allows the actual learning-code child to arrange a private grade9 teaching candidate for themself without changing grade4 profile",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability exports owner-native teaching while excluding another guardian private origin and internal storage/scoring data",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability protects both learner and guardian candidates throughout an actual paused assessment, and replays existing receipts without writing",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability previews a complete three-point shared arrangement without creating child sessions, attempts or exposure",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability starts only from the actual child identity and preserves the single original start receipt",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability saves native answers plus independent learner explanations, fences concurrent drafts and blocks guardian writes on both route families",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability rejects another actual learning-code child on the original group and practice routes",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability records explicit hints, solutions and reported guardian demonstrations separately from the first response",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability completes the actual child group once and keeps the original completion and response receipts",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability checks exact native SQL actor, feedback, assistance and draft records before another process opens them",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability starts the second planned group through two actual instances even though the whole original preflight now contains exposure",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability preserves the second group draft throughout an actual paused assessment and rejects all new teaching writes",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability blocks an unstarted group when original source changes but preserves completed group receipts",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability uploads real image and audio bytes only from the original learner and saves native media drafts before backup",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability makes the saved actual schema23 reader refuse schema24 before writing any domain data",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability restores the native source/packets/history and original receipt with revoked old authentication",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability restores the actual learner entry, original first-response receipts and draft before completing all three groups with native composite inputs",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability rejects rehashed foreign actors, cross-group links and altered native scoring details at the cold boundary",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability rejects a damaged frozen packet despite recomputing the bundle database hash",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability replays the latest author deletion ledger without reviving private candidates from the original backup",
+          "status": "passed"
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability replays the latest child deletion ledger including adult-source transferred candidates",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "classroom.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "classroom teaching sessions and persistent isolation provides 60 unique micro-lessons and five unit checks with complete private answer keys",
+          "status": "passed"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation keeps first answers, hint flags and skip receipts immutable without creating mastery evidence",
+          "status": "passed"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation saves hints before submission and preserves assistance after refresh and restart",
+          "status": "passed"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation grants sequential frozen hints once and keeps dont-know separate from skip and wrong",
+          "status": "passed"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation retains identical teaching progress while old practice and legacy hints remain frozen",
+          "status": "passed"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation keeps old unit questions and scoring readable after a new check is published",
+          "status": "passed"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation synthesizes one exact subtitle unit, rejects invalid indices and restores the sentence cursor",
+          "status": "passed"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation persists supplemental board with its original page and keeps it private after restart",
+          "status": "passed"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation rejects invalid or stale progress, then restores frozen content, answers and project text after restart",
+          "status": "passed"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation restores edited calendar confirmation, time and completion after a SQLite restart",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

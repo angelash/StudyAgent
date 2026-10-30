@@ -3,7 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import request from 'supertest';
 import { createHash, randomUUID } from 'node:crypto';
-import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve, sep } from 'node:path';
 import { tmpdir } from 'node:os';
 import { DatabaseSync } from 'node:sqlite';
@@ -62,7 +62,7 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
   async function saved(collection: string, id: string) { return (await store.database.read()).state[collection].find((row: any) => row.id === id); }
   async function nonTeachingState() {
     const state = structuredClone((await store.database.read()).state);
-    for (const name of ['assistantPracticeArtifacts', 'assistantPracticeAssignments', 'assistantPracticeGroupStarts', 'practiceSessions', 'practiceAttempts', 'practiceHints', 'studentMedia', 'events']) delete state[name];
+    for (const name of ['retentionExposureEvents','assistantPracticeArtifacts', 'assistantPracticeAssignments', 'assistantPracticeGroupStarts', 'practiceSessions', 'practiceAttempts', 'practiceHints', 'studentMedia', 'events']) delete state[name];
     await assertOnlyMediaMaintenance(); return fingerprint(state);
   }
   async function assertOnlyMediaMaintenance() {
@@ -521,6 +521,7 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
     expect(session).toMatchObject({ origin: 'assistant_artifact', isTeachingOnly: true, formalEvidenceCreated: false, writable: true, planId: null, planRevision: 0, currentPlanRevision: 0 });
     expect(session.questions).toHaveLength(2); expect(session.summary.independentFirstPass).toBe(0);
     expect((await store.database.read()).state.assistantPracticeGroupStarts.filter((row: any) => row.assignmentId === trainingAssignment)).toHaveLength(1);
+    const event=(await store.database.read()).state.retentionExposureEvents.filter((row:any)=>row.sourceExposureId==='practice:'+firstStart.sessionId+':opened');expect(event).toHaveLength(1);expect(event[0]).toMatchObject({studentId:student.id,kind:'practice_opened',sourceId:firstStart.sessionId,at:firstStart.at});
     expect(await nonTeachingState()).toBe(before);
   });
   it('saves native answers plus independent learner explanations, fences concurrent drafts and blocks guardian writes on both route families', async () => {
@@ -608,6 +609,7 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
       integrity.assertAssistantPracticeRecords(rows); integrity.assertAssistantPracticeRecords([...rows].reverse());
     }
     catch (error) {
+      mkdirSync(join(root,'data/qa/learner-first'),{recursive:true});
       writeFileSync(join(root, 'data/qa/learner-first/cold-' + randomUUID() + '-private.json'), JSON.stringify(rows), { flag: 'wx' });
       const messages: string[] = []; let current: any = error;
       while (current) { messages.push(String(current.message)); current = current.cause; }

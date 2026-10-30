@@ -1,0 +1,637 @@
+{
+  "at": "2026-10-30T13:27:31.773Z",
+  "base": "a99d8dd04411651c2c2f06976e7895976927e5cf",
+  "files": [
+    {
+      "path": "apps/api/src/common/auth.guard.ts",
+      "mainSha256": "6f0072eb0c194174bf5d79bb891cdf1e6a91a9f53d8d0fd28627fcb295688e4e",
+      "candidateSha256": "52f35af20d219a5c80114e42d67c22ffbe9604593aded3db6fe877b8f1e49ff2",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "15f3813b6dd0a6cb16ce0c8d19f8051205bfed6407108a3318a98e618acd6c3a"
+    },
+    {
+      "path": "apps/api/src/infrastructure/assistant-note-storage.integration.test.ts",
+      "mainSha256": "93b8b61aa0026123e2b6b07b7c24c5bc4baad25468f0c44c9d03c9bb2aabc60f",
+      "candidateSha256": "c8a8d09bde713ee410e7391c7e57f0930c159ce9c9be97730eb157ca71dea5fc",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "7238ea3605f30bf622cfeaafd25cd9881cb7a6093114f7c5e558305173f60ff5"
+    },
+    {
+      "path": "apps/api/src/infrastructure/assistant-whiteboard-reader.integration.test.ts",
+      "mainSha256": "5f3744c8678b7b21df1290cb37f0288e8ad7c5f5122c7c7319edb667403a7b7c",
+      "candidateSha256": "63c357cbc8be61c1ec36eaa632ffce2a8a7a41bab3caa6876467b6dd8aa5980d",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "cdaa0cde1622815c5032eafb1a96b272eefdc1a3749197fc417e243dc47d8850"
+    },
+    {
+      "path": "apps/api/src/infrastructure/backup.integration.test.ts",
+      "mainSha256": "212f731db064d1a188d003aafcd437f1d7f2c7e4646e485018b7633d9b192f5b",
+      "candidateSha256": "01f857a8102dd60d48c10a5042b8c523cafdfb4b28708d14426d9f33f9d35a53",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "03d3cc4cee90d67e46e0f20adfdde123ce2691bbb27d91ba8999f38dcb47150c"
+    },
+    {
+      "path": "apps/api/src/infrastructure/domain-database.ts",
+      "mainSha256": "16f564e702874f63095104ec2919a11ee0d86c46ffa651dd1d3226a9248e13ec",
+      "candidateSha256": "1e3c2eeb13cfdcd268e9994e432d30f502d61768c07dcc3db035f8734e2bdfd4",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "5c429ee860859069351da17d89c5cd3881625b5f2bdd6e4218083dced90c0ebf"
+    },
+    {
+      "path": "apps/api/src/infrastructure/in-memory-store.service.ts",
+      "mainSha256": "0ad3c4b98009bbee90a4d1397d225def8d9e1b832478ec087cea224438a092f2",
+      "candidateSha256": "b32a2c49e027a40ba317a9b4581bcc7788c805be4e579f5e02269e1267f5c196",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "3d9a1d4763d8c5b0c35e13027a368c7904fb2df539290bbe1da253434d6fbca8"
+    },
+    {
+      "path": "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+      "mainSha256": "8454cc081490499c3b659e303f536b079165644da665d06fa46a7112553275e7",
+      "candidateSha256": "ddf3641d091a704d425856527d593574d4d784557bc0c000b6c41384f2c481bd",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "c8c9f461458d4d87365d74771b03c158020a9e039bc7c51f3a659877b63d7847"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema25-reader.integration.test.ts",
+      "mainSha256": "85d66254288484a1d0e348f37d0066bec865d9608476d1d33f8dc4ed5951dfd5",
+      "candidateSha256": "9e2dc7e37f808a23930fa65022adc425b08a6b6abd296f18fb50a5b1d60d64e2",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "7e0cbccedd13b387a400f70dfac493ba820772fda017a23e4a35653b70dca984"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema26-reader.integration.test.ts",
+      "mainSha256": "616ed2c5c028d5cb203dca2c3d4028f81048ec0af1f3666d0cad216d1265ac01",
+      "candidateSha256": "3eb3c8cce1660ed79b195d3d2b83c45c8c1480d02487ff5027a811d9ccba766c",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "6099cb84fe1dafbf7d4f2909c4fe88d3d4acb59d7dbc45b26798bb7cf65464e0"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema27-reader.integration.test.ts",
+      "mainSha256": "ca1efc73709431c13d1cb5acbbbc4d8510ad3c18d1111ef55bb92a3239044eb8",
+      "candidateSha256": "343839539b7ad404a2e4517ba324d8acf7b81a403b9dd486dce905db9706a104",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "89a5a8832fc07823d5681a2ac9fe4c9311051bda269bbdfac06d77cb13ae7d8c"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema28-reader.integration.test.ts",
+      "mainSha256": "5ccbe7f154fa1e3933254d1e58cde8ba4abd9fdd27b8449c2c455361e3945cac",
+      "candidateSha256": "643ad7df5de33718475f1820eb12838065924e5e9500139f86cc8b6a0a8a458f",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "ac60b98c7388fd50bb4c350ceb18c0480b5a6938c37908ebde36f58e27f7fefa"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema29-reader.integration.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "756fdf8b431fef8b48296c9ce1da97f9a4a3d8366bb4ec4c5bfaf8a673d34831",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "57c16048603c1856bf6d63a682f7a8e29138e8c37da9e4a88122f2780d7bd5e0"
+    },
+    {
+      "path": "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+      "mainSha256": "953d675f8631ae2730b1c40f666ddeda01d11452ba3d5656a535fd8ff3e28a50",
+      "candidateSha256": "5902ab2ba46f1c7c87cb3c7ff1a9593d2f6d93361ea618ce1e20fb8e43502e2c",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "b6266b5fb5b012c85be05dc1d32825e07cd83f053daa25330aaba41204184ff0"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-postgres.integration.test.ts",
+      "mainSha256": "accf3988c4fe46115cf769865bc2731c609270bbdd26b902045bc02f771fd124",
+      "candidateSha256": "75413d927fc81e749491db8077ee96ec4f6aff5e907a8ae13471db69c69e812e",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "dc684630b86aec0f3c55472791ef1bf8158d6fc1c3efaeabca22c82f4448fe85"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-storage.integration.test.ts",
+      "mainSha256": "04127f530d3e57ba6bf26348bdba1b1af8d7ac3b74cc82e6c813555ea27b7646",
+      "candidateSha256": "2f3cf1cba4124c4565b5a303601cfacf597ae499e34f642ddff5e39f5b1a2538",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "428cc1bf7346c50e1767bc6fda68b8e75b23a32cb3640defeb9d2c419ee913b2"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts",
+      "mainSha256": "7c3c5a743cd64b283fbfaebfc61e5d68475ec0c92524e836c88f9594b031dbb8",
+      "candidateSha256": "6b58fe83bb36ffa9832ab6a3c232a36f4f5dcd284d3c2f1ebc1697c33bcb6393",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "917a6d004d697dd1a19a96a9ee1835644cf2bcc340832b1b9bca5fd9c13f3ac4"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-visual-storage.integration.test.ts",
+      "mainSha256": "5fd1379c164c220a4e6ea1a6a1ea7fe340a657d4fc4a156422960ea6c743ddea",
+      "candidateSha256": "59e9b62d1f40d81c90d98b71da8e195d034ef4dd05872e05ddaee2815decec15",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "df7dc85e530aca3d2367dcae4dbdbb1f65c9c813d1785413da3a08aa5bb769eb"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts",
+      "mainSha256": "2350402621bf58e47968b706ee1c3bd6b7a42b5b1ad8967efe4cf99017386e6b",
+      "candidateSha256": "ef9360999ea4e3b7d944e4931121f68d05aed8725f16114e27160de51c67249d",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "ab0d86eb2a3896b6b56cc145978faec56a866e777109ab05dc83fe507b49671e"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts",
+      "mainSha256": "57fe91f084224ffc70d5c77dc9b15dd27510b41ad421f92cf5b2c8a1cd2a6412",
+      "candidateSha256": "5585c47d03413cea5c4238c9afae479efc0311d7b26c1dbf80dde09d20e4a977",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "7a611f025d52bf366a37c5416a7e82f40f64476f9d2fc07d20d608115a5b8973"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts",
+      "mainSha256": "e12536dccd28c62fb3074e234bc18a14fd3f03b49449c387f6954d768df8919e",
+      "candidateSha256": "923786acb5e632bca93225346bb47cd8ced643f1f302ad36a4dea91288a7f4c2",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "87f158bc103fff46c65398d435c9d28ee1826be7e501e4dca89c71354b9000bd"
+    },
+    {
+      "path": "apps/api/src/modules/ai/ai.service.ts",
+      "mainSha256": "c43f03217726a9b82acb243cc3d10b3db2667699ec4038d8c4ec7e3e9efe19dc",
+      "candidateSha256": "2d5150da21f23b5ef2ecefa429802ed8e83ab4f9dedb6d0ebf297e52afd73f19",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "f19e2d670ad06d315015da028a00ca3d4b55f66fd2252f1b8c05fd7f545e5d9c"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/classroom-retention-origin.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "4cc829cd4197ed482733e4117c1cb201794cf5f6ac863af0f2b81236fb290f3d",
+      "deliveredSha256": "4cc829cd4197ed482733e4117c1cb201794cf5f6ac863af0f2b81236fb290f3d"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/classroom-retention-origin.ts",
+      "mainSha256": null,
+      "candidateSha256": "a23d3013e7d40bf5264aca795288020d3f0b9b6165959a6b8c4b7eff7006350b",
+      "deliveredSha256": "a23d3013e7d40bf5264aca795288020d3f0b9b6165959a6b8c4b7eff7006350b"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/classroom-retention-record.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "3d691cb4bf003cf45c787ff39bc7d81984c0dab093131b215a47ba7de77e9f8c",
+      "deliveredSha256": "3d691cb4bf003cf45c787ff39bc7d81984c0dab093131b215a47ba7de77e9f8c"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/classroom-retention-record.ts",
+      "mainSha256": null,
+      "candidateSha256": "6cdfae8ab77a9b9f7779a28dfe5f14409b6907a62192db55cd4ab6f85cdb10da",
+      "deliveredSha256": "6cdfae8ab77a9b9f7779a28dfe5f14409b6907a62192db55cd4ab6f85cdb10da"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/diagnosis.ts",
+      "mainSha256": "d8bd4a3f06d93a502147e29b40fa2e2410ceaf436a44065cf2ee967480c25c5e",
+      "candidateSha256": "46767732c629077c861f5d61936d185222c984b1fb1a75868ff8947562a6eb86",
+      "deliveredSha256": "46767732c629077c861f5d61936d185222c984b1fb1a75868ff8947562a6eb86"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+      "mainSha256": "dda97ae700ad840142b11e7058a96df9d28aa8e1ad291a50d8f7cdf2a99c3992",
+      "candidateSha256": "68c2cc1f9ecdd0e1185edf8a3f892f06997e4252bcffb95a7b19cfa239043368",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "7dbf4f19f0e4982dac0ca1d8acefb79ca51170b0255450028762dc5853595887"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/diagnostics.module.ts",
+      "mainSha256": "b08c357dd4d1120ed2f3c6805533cfdd8fde8e6ed9fef600ec82b1d31305d655",
+      "candidateSha256": "09c7d1e19c491e01b4c7ba68161b960569550ddf22e34309d17dbbc0ad376472",
+      "deliveredSha256": "09c7d1e19c491e01b4c7ba68161b960569550ddf22e34309d17dbbc0ad376472"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
+      "mainSha256": "5d25bbfa8b55ee898a4acebe299417ab2ac7a9fbd032b965fdf8e0e737e79e73",
+      "candidateSha256": "5de116bb2626da2e4ad6279c261b1efc3d73f270fc7e5dabf3476ffc29b6e166",
+      "deliveredSha256": "5de116bb2626da2e4ad6279c261b1efc3d73f270fc7e5dabf3476ffc29b6e166"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/family-identity.test.ts",
+      "mainSha256": "4da170a727edc9c877de71afe22dc5e3b7b6571758ac25b74cf62a7988f1c2c2",
+      "candidateSha256": "b4e9ef2c61a41199bb59e60bb2e37d0bbed687e83cba211fc76b5e09c05431e6",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "601f8f81ba2293275682014704964209dd174965c2ad66c4145b2fe9ba0c5bc9"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/guidance.service.ts",
+      "mainSha256": "5631738657909fd43b5cd2ff93c5aca07cc1ae94be620e9c191221006f6bbb2c",
+      "candidateSha256": "b8d801c638bc46bfa13500972065fa91ee27fc9ecd9f16d18e41172f69489c87",
+      "deliveredSha256": "b8d801c638bc46bfa13500972065fa91ee27fc9ecd9f16d18e41172f69489c87"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/measurement-compatibility.ts",
+      "mainSha256": "c2cc8b0931797718ee360dfb47dc0c503dbccfef1e97e9b0a8bbb4626127cd43",
+      "candidateSha256": "ca2989aaec07afba0e8ceda1f8edfdb9f3dd4f46dba3fc9799f4b17e0f08b2db",
+      "deliveredSha256": "ca2989aaec07afba0e8ceda1f8edfdb9f3dd4f46dba3fc9799f4b17e0f08b2db"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/measurement-versioning.integration.test.ts",
+      "mainSha256": "ddbe02eae9e3962b5ae1118adf97fb5a65e293e09af8b008accef309e4809f69",
+      "candidateSha256": "23eb1d25d17cc949d896e552bb59dea424b0bbd5cd0f17feefd8083006d178c5",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "da24d177efb5f125efffbd30cf77b06bba06c03cc8c5641ffdfdf08c1b08ba61"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/measurement.test.ts",
+      "mainSha256": "c4114584a437a7ac46549daf4910490ff0b63665d41061676a718a6c7681a231",
+      "candidateSha256": "9fc3e3495005fd5fec17b384949f6a3304a010b879ee151d4f05dd70518cfed1",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "f844e971c5d770f2f5a52aacbdad684dde503f01a54e44a33acd0dd1c70b51dc"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/measurement.ts",
+      "mainSha256": "efa9626106107df267d8e25e530169d580f8d5fba4728f40883ffd976de0a1af",
+      "candidateSha256": "cfca9ea147041aba1b93d0995a0ed377969300a0d788581021bcea9554830650",
+      "deliveredSha256": "cfca9ea147041aba1b93d0995a0ed377969300a0d788581021bcea9554830650"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-anchor.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "874a20935edc05e667472657e28264121247eaf6cc5bd369be9c3efcbe8c6799",
+      "deliveredSha256": "874a20935edc05e667472657e28264121247eaf6cc5bd369be9c3efcbe8c6799"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-anchor.ts",
+      "mainSha256": null,
+      "candidateSha256": "be9f07c8cfc2fe9c4415e29970faf3ac7326a1d96e3197fd974d70586462a19e",
+      "deliveredSha256": "be9f07c8cfc2fe9c4415e29970faf3ac7326a1d96e3197fd974d70586462a19e"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-evidence-projection.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "8503ab3670daff5a3c1cdf53cd460311158221b4c2f89d3d2b97e6666fa61b6d",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "42af1b1b843ea0c05f0295f62696e27b83190360189f884f4debc3ed9775d7cc"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-evidence-projection.ts",
+      "mainSha256": null,
+      "candidateSha256": "b61bc4c1e225559865a92f229cd6bef50a9ac63a029036628c316d0b0388bfeb",
+      "deliveredSha256": "b61bc4c1e225559865a92f229cd6bef50a9ac63a029036628c316d0b0388bfeb"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-integrity.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "6bbdd587582b1f3acd9cf7e4e6015b2de2f6448b473090bd2d236e1daf6f11c5",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "a14a779ef1d5b84e4f6cdc53896f695ceb623e31208b50fd6d3695d4e1280f31"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-integrity.ts",
+      "mainSha256": null,
+      "candidateSha256": "aed7a1a847749632b3aa0adbcbe134293a59f1443b7d64347df28c93bbc6e4a8",
+      "deliveredSha256": "aed7a1a847749632b3aa0adbcbe134293a59f1443b7d64347df28c93bbc6e4a8"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-legacy-classroom.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "529b437a7afb08227d376c829283623662d11cb421d517e20b1d34d3a0a7f3f6",
+      "deliveredSha256": "529b437a7afb08227d376c829283623662d11cb421d517e20b1d34d3a0a7f3f6"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-native.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "8da99eab243fd64306a959ec7e6f4e6fa0b8a3f32e505c6a26646196cb429cea",
+      "deliveredSha256": "8da99eab243fd64306a959ec7e6f4e6fa0b8a3f32e505c6a26646196cb429cea"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-native.ts",
+      "mainSha256": null,
+      "candidateSha256": "92ccf6cb564e036fc548195bb4f1848e691225b57173616e50b93f927e392936",
+      "deliveredSha256": "92ccf6cb564e036fc548195bb4f1848e691225b57173616e50b93f927e392936"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-review-gate.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "178391e1cdb9b24b1dd4781ce2d82217ca4adfad7789a45f4cbc94ee08d9b864",
+      "deliveredSha256": "178391e1cdb9b24b1dd4781ce2d82217ca4adfad7789a45f4cbc94ee08d9b864"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-review-gate.ts",
+      "mainSha256": null,
+      "candidateSha256": "5d23964240274ace71ba5ed78ea1492e51013fa08553f6af658d656ca2288f10",
+      "deliveredSha256": "5d23964240274ace71ba5ed78ea1492e51013fa08553f6af658d656ca2288f10"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-source.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "c796cb29153ac82b24734ec77e08be272007d1f623594cc219ac39534643fddb",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "a283651f9aba581ec8a2f0a8a13854d4d111bb45fe628fcb4dda55ae17b70ae7"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-source.ts",
+      "mainSha256": null,
+      "candidateSha256": "c2fe4b78c4016f8d5e97506c4d8b45e1f5d2112017647978c5aa216f35b7590f",
+      "deliveredSha256": "c2fe4b78c4016f8d5e97506c4d8b45e1f5d2112017647978c5aa216f35b7590f"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention.integration.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "7f126506fb748c4376e3d04796d8358ae6a41aefb20cd2160bcfe10bd80e2032",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "1098a4ce8535927ef78a87b3e8539741e2ea26d37b15dd5d59c2f9c3bd467fdb"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention.service.ts",
+      "mainSha256": null,
+      "candidateSha256": "04983a73a7f330de0427b045b1a219a3403752dd11f833d11b735fb16bd36633",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "b9381a0a650a80228a5006ad1abc87d16a91119c22aed8ad9ba8cf3d29973cb0"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/verification-blueprint.test.ts",
+      "mainSha256": "41e2ff2346aec7279cad8ace059c616c152c37c3a9f9909781a1ad5472c54c30",
+      "candidateSha256": "f85e9d8c567a3d7a0d488fc0d74c0a66993d8659ccf84ce2b7e2253cc77214d1",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "6ef57de012ab80cf75b74572169f4cca81f7eddcb0fb475e2ce3c6d1174192a0"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-guidance.integration.test.ts",
+      "mainSha256": "edc749a0833b82329f69adf572ff7fedaa1691f0d72c11e8c315d75e51cad98d",
+      "candidateSha256": "46d549d8aed6613ed51b6fa3d817415353d2fd549b1c8f6ddc9cabc9b4fd3e41",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "ea07b2633a06a3ad5dbdbee497c30b6321c871851e5020bda9f8fba56ab115f2"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-practice-artifact.integration.test.ts",
+      "mainSha256": "95ab9f09aa0dd2b074f4648effe93da062573ae4607e3a9e75f2017128d0dc3b",
+      "candidateSha256": "ec263666e6afd75f3dc3b440248fb05c9ff89d69569406dff3884d172c1634d7",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "037a442a02cd961fb2dc8e0da52efe3c4df59a98ceb31db8f47528578a286a88"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-practice-learner-integrity.ts",
+      "mainSha256": "e1bf4419593da7b6556b41e9ccd7f4f09d8d52783bf53a34dfbd973738f5a137",
+      "candidateSha256": "fc74c255cde2509f339343e46f76ec641e2e787cd0e529d9ec77a8b6ba4c38f9",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "39e867c604e6adc87878dc4c09c35575ee62de53d0a99eadf329d3567bb0da35"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
+      "mainSha256": "6b67bb3dc7e74efb10607bb574f7fd0795ed6355ae52a2806ec60e80fcfe861a",
+      "candidateSha256": "263b23ef7e3640994065bc30512c6968c25512b168e8c03d1681cdfca6420df5",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "64f1326c8aed2372b4a6f801a9c65f15b3282b6d78bae564239bb8c90d1b0c6a"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-student-record.ts",
+      "mainSha256": "d3a327257b9c28d3429d92b32ca5914750026f17c40b5a0c5f5e6ccaca95cd18",
+      "candidateSha256": "785b26d8f2934c92ea00c1cf08ae2a2747edc8cf16fc85e7fe01380957f83e6a",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "6fdd164e1fe58791a1511a68adeb6feae0a771012052dd13186d7ad7768ecf46"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-student.service.ts",
+      "mainSha256": "6cab5ed6b825308db2b3e3febf21e6bdebd512a27ae7b221bdd23d04934e55ae",
+      "candidateSha256": "7844772e9af585322916833e86fee1d65f005d92f0b9471a780b96b2d8a039e0",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "00d970b2cc7319c26f519fb2cbdc7772b78a12e3aa85d8cf2b3e0a0c113e33f6"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching.integration.test.ts",
+      "mainSha256": "c4f0e18632f899c037d8fd5ae662716760dab289908c1766ac513f89bcf0e75f",
+      "candidateSha256": "889efd2e1a276b28d809a1bfdd39da84e498e07ee5258dbd87afe94d963c89e9",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "d7d7123648a855a9ddddce8f5bb01aa7f31241dc438ab4d34d5304a8172305ee"
+    },
+    {
+      "path": "apps/api/src/modules/learning/classroom-presentation.integration.test.ts",
+      "mainSha256": "c21ef8731d7928609e277b70ec42f19ec70e4a4de50ab910b5bec2a9c27d78c4",
+      "candidateSha256": "caa471d77bdb3851f34f6e969e2793893700dba00febcf4e99649e5da270e92f",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "3da57c0d9d38e7d82f073a31d60d4f9a9acd6447d696dbf05700bcf0f2081ca3"
+    },
+    {
+      "path": "apps/api/src/modules/learning/classroom-turn-worker.service.ts",
+      "mainSha256": "4883275cc175a2f62acaa346abf6971eee2333c19d9b7bb4cc13ba89538f7108",
+      "candidateSha256": "fb76c96cf97e6e093d4c857a2cf5a36c8f467ab7dda5b7eb3dba134b8499a6e6",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "88333a716b10f07ef1d04d5557af917b2030fce18b5faee969ddcd32416091d0"
+    },
+    {
+      "path": "apps/api/src/modules/learning/classroom-turn.integration.test.ts",
+      "mainSha256": "6f0de32eee973e3ef11e484755b5991da47ef9c9942704eb3d3fd7c9e01a89f2",
+      "candidateSha256": "e21f84541b31b1017f1ccf4567c08bfe5aed48e5e71fc7e23e95ba8ba3de725c",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "c019bde4b8ccaac20ae2ac926080858895f0420e7ee0958dec3f3be319f0325a"
+    },
+    {
+      "path": "apps/api/src/modules/learning/classroom-turn.service.ts",
+      "mainSha256": "039dbe534701124b8103eb45b3583570bf26225945901d21c880a5636796dfbb",
+      "candidateSha256": "29a72034d9f1a38b7bcd43b7ff2c19e8464e424823aafb2abf92a36da8af2931",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "3cc4c30e54f6b8de9414724c416f913d386ae867ce03acd006894ce18477e5ee"
+    },
+    {
+      "path": "apps/api/src/modules/learning/classroom.controller.ts",
+      "mainSha256": "b464229b0e2bd73fde9cde0dcadf273dd5aca2a01f1f9afbfb3dbfa3444af576",
+      "candidateSha256": "0d1c1942f5029ce2d872238b3005954841ed42e431bdbe542b2f4d5d05be8168",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "5435fe9532451409f72152e93ac898e0b3a2c56a6a8f050f57abe4a7d15ce7be"
+    },
+    {
+      "path": "apps/api/src/modules/learning/classroom.service.ts",
+      "mainSha256": "a8b14c57008fb9927a5e0fc8835b874b9931689b853355a1034fcd4bb5afa867",
+      "candidateSha256": "2262de9cdab814d98ace5697888013a1271399479cdc39a18ac738c036f28b6e",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "6005e733bc5a0a4fdc897c41c5054eb268708a93e7279b1465118eae6693c1a5"
+    },
+    {
+      "path": "apps/api/src/modules/learning/learning-home.service.ts",
+      "mainSha256": "19a872b0bcae191aa91fd3fb3c60d664a0e56c740f2390719a2e9eff2be7a687",
+      "candidateSha256": "3bb065424e9af571365744431ce480243feda0179443177023ba1f7d5eadae70",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "096d139a481d39c4dec5edffba0d2ed591a1ae5d53be613649cfeca0c41095a6"
+    },
+    {
+      "path": "apps/api/src/modules/learning/learning.service.ts",
+      "mainSha256": "64f49dd6577bd7660ac6c1b409148d1f5ad019ef30988303c74c90e6587060a6",
+      "candidateSha256": "f0e279c6dd89db8013f14357f93569fc111e90b05551159dc94f414e3f642192",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "58964625974cd79f7c010f29ee7419b3e3af7408e10822c1a9039624f1d5599f"
+    },
+    {
+      "path": "apps/api/src/modules/learning/notebook.service.ts",
+      "mainSha256": "9a0a777a6b1f0bcdeac606e66f66b601f5671c7a300d9738c229f7c27ada8695",
+      "candidateSha256": "71b7eb998ef2a7932230b4b25ffa79b04f4a853dbf9496e171440ab9fc6a3d60",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "42b64c3a9d0a674fa29ee116ca7cd5689de56a165b87a4bb785b5f6e56f4e3bc"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual-files.test.ts",
+      "mainSha256": "3ed60efb591011c7b3d1185cb4da2f80b12ca0ee270f085c02dcc84ba4018f48",
+      "candidateSha256": "00a9c90966e642c513d930ad4e82e3389e2916454077fdffd767ca1c5cbd80bb",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "1c79914426de7fc7b48ac1eed70be4fd25d33256180960fbd50e87a0656077a8"
+    },
+    {
+      "path": "apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts",
+      "mainSha256": "d4ac922524c61106d9cb37ce48022f0f38493ef7426363383c1c439bd87192bd",
+      "candidateSha256": "34b747a289309c25022280e5e5aef53bcceb06694d846467afa986ff98c995e1",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "6157dbf455298a4161c6062b49a749d8ce11f38cc54ab208e1dd08586a70d60b"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+      "mainSha256": "8d5d4c4a7f9429204ec699f9bbee30a86a8497fee64902e752ef1f79b0d367f3",
+      "candidateSha256": "1d3e7ba04aa186648b11038e2ab9df8303f5b25ca871afb36e5d6c1d3775d473",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "f0a2b56dcbea2460d837e610707fa89d161386415f4020a50161f5f8c2ba8e25"
+    },
+    {
+      "path": "apps/api/src/modules/privacy/privacy-records.ts",
+      "mainSha256": "5229ce65714c3aba2438eb477811fb4dd37453c3f7b81bca56d429ed4e365650",
+      "candidateSha256": "e5b5b9353a45526b1034e5069600a31b3ad54bc6393d1370efa29a05de462c6f",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "461e7dc30a2a4ccb053034d4d6aa2bf559033546812edd36659b67dd84feabad"
+    },
+    {
+      "path": "apps/web/app/student/assessment/studio.tsx",
+      "mainSha256": "76e9852646af503519e44d6f85559fb8cc2a4fb71c430cd38ce797ca0d3a8339",
+      "candidateSha256": "b48cac7c87808bd70f4f07f9dc27eaee61be26d17177b4ff52366277e96f017a",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "7687fa7f6349dad1dc05c324ab1a5db68ff76e13f9fc81effe05a0c51ddbe873"
+    },
+    {
+      "path": "apps/web/app/student/today/studio.tsx",
+      "mainSha256": "4d9a366852fc77055efc3c6b273f5ad88ee019e5c6f373cb0a6f0e8a3d122e6a",
+      "candidateSha256": "ef9bcfc82ef155e9a17d36fbec7d4a74daac8ab9347e2098a7b600d0a9e91d8f",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "78eec9b75c5c53c049c546cd9da9cfc86d7923c53494af447f656dd6813d9491"
+    },
+    {
+      "path": "apps/web/app/studio/classroom/classroom.css",
+      "mainSha256": "e5b4bb325707b659670d5ce934435088f0716ea0c6cbee693521f20047f2056f",
+      "candidateSha256": "f76e7726e57c1854df8ae61765ea9b6560a1b0efa27c73d6eb2cdd888f18d733",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "44962d05eb766144c74addfb9491933700f444a8ac13c326d28f8713061323e4"
+    },
+    {
+      "path": "apps/web/app/studio/classroom/retention-display.tsx",
+      "mainSha256": null,
+      "candidateSha256": "75422da62475cb1450648464aa6b830a079f335f74102cdf1eb513cddde0e518",
+      "deliveredSha256": "75422da62475cb1450648464aa6b830a079f335f74102cdf1eb513cddde0e518"
+    },
+    {
+      "path": "apps/web/app/studio/classroom/workbench.tsx",
+      "mainSha256": "f7deaab5b13dbb50e5f0f64ebe5bcc9b72e517ede62a966c80ad3301c3d15854",
+      "candidateSha256": "16ef5523cf3271bce885f9c27d7f684d41205d9a6534ca3b834a7ba72d49731f",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "1704a16bf64d9808f1a795eb935b1c2793336b7d488bf3e72fd928876203c60f"
+    },
+    {
+      "path": "apps/web/components/diagnostic-evidence.tsx",
+      "mainSha256": "9170b380900722d5ed1db1ead9a8e254b989033cc89015892dcf8c1f81115935",
+      "candidateSha256": "fb6027dd07ed111883770e51a8bc6e4e6db6fb6c018b89977ddc198eb2ab2034",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "37d99d1ae793753bd9babe7b8ead42846e1cf83abd586a2b776423afbb25c50a"
+    },
+    {
+      "path": "apps/web/components/knowledge-report-workspace.tsx",
+      "mainSha256": "8ebab689607df42e6b43951dab3a4f3ff5b6216ff553ce5d3ff1ea13c9494284",
+      "candidateSha256": "e85228b1e22122dd96d9782fcb224f743399695620c5d157fdb136396e5ebd87",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "1a103925552da6eeb7a489dae53fa94bf6abdcd00296059f7dfe2698637a0f5f"
+    },
+    {
+      "path": "apps/web/components/report-plan-path.tsx",
+      "mainSha256": "b463f8beec1c1b847d617ae87376526849b1bb013c3d22226fd8897e6ff02e92",
+      "candidateSha256": "feb6a766955e4cd52d113edb839c3632f7366caa751ded3a14c4fc40c308eb4b",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "5e34386600c7037d5c12d400d605749c3a5a5fa7b4c0ebfe6094ef2c250575ac"
+    },
+    {
+      "path": "apps/web/components/retention-evidence.tsx",
+      "mainSha256": null,
+      "candidateSha256": "64714c85048b1c135ec8062f2a48e2861085b570784f537c1a07d026a52dda80",
+      "deliveredSha256": "64714c85048b1c135ec8062f2a48e2861085b570784f537c1a07d026a52dda80"
+    },
+    {
+      "path": "apps/web/components/retention-source-link.tsx",
+      "mainSha256": null,
+      "candidateSha256": "f790d8d0e0ade042ece0af95578c95749bf9574c38d95ae47715daeb4c22f349",
+      "deliveredSha256": "f790d8d0e0ade042ece0af95578c95749bf9574c38d95ae47715daeb4c22f349"
+    },
+    {
+      "path": "apps/web/lib/learning.ts",
+      "mainSha256": "e43b00281f0b46ed6cf71dbcfc6c3e3856d9c82a69750660cc93bc0dd4ac3299",
+      "candidateSha256": "1274c531759b41553243babaa21f6535d6c35673da90f6577d5c75a464dad257",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "ee1902fe8581d9945416fccb0eb258a7fcd22a4ca22a6b2d4ac0b0879fd13049"
+    },
+    {
+      "path": "packages/contracts/src/classroom.ts",
+      "mainSha256": "639c9b23a04164679c7789a12f25eb923ba5374100776e44fb7a792230c1b53d",
+      "candidateSha256": "19183f7228c99e522a6ecb4b7f3011366eeeb0c237070de0015f4ddebfefa319",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "1a24ee75a1b59f2549fef4179dba9e51ff4d568f55e18a46cf71c8ca886a42ec"
+    },
+    {
+      "path": "packages/contracts/src/diagnostics.ts",
+      "mainSha256": "36121d7c96717ddd0f9e6cb59e19cbd021b4dcfeed26a57695984feb16bb2f33",
+      "candidateSha256": "483ecd1f0dc8430b869c86758702bd5da564379ac336ccb2784c329ec13454a0",
+      "deliveredSha256": "483ecd1f0dc8430b869c86758702bd5da564379ac336ccb2784c329ec13454a0"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "mainSha256": "43f26a8c3706fac6c75c10d086de4f246b096687995d17bbcc0ad973ac5faa80",
+      "candidateSha256": "4cb4e9668d431c777bec603e99931af3cfeb657ba1d9108c088912d0defed7cd",
+      "deliveredSha256": "4cb4e9668d431c777bec603e99931af3cfeb657ba1d9108c088912d0defed7cd"
+    },
+    {
+      "path": "packages/contracts/src/learning.ts",
+      "mainSha256": "5307c4cf46ae5021a7e9a334eb46719d8405e93288261cb3bd422b54c8721be6",
+      "candidateSha256": "3192d60b91ca8546190b16c1f25e31ec362a56523a4844374606ebb6cbcf7f79",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "a9f8db1e62281adf3a6a3c2ff44636579d3b295d5484d91d423223e2b1fc9718"
+    },
+    {
+      "path": "packages/contracts/src/retention.ts",
+      "mainSha256": null,
+      "candidateSha256": "d21bb4f238fc5f75fe76e426fb3d56efd4d97a403ec0dd168cafdc8c1bf25dc3",
+      "deliveredSha256": "d21bb4f238fc5f75fe76e426fb3d56efd4d97a403ec0dd168cafdc8c1bf25dc3"
+    },
+    {
+      "path": "resources/compatibility/domain-reader-schema28-v1.json.gz",
+      "mainSha256": null,
+      "candidateSha256": "a98092cd631907607d97f3806b0ebe943f28e449b12743b6aea0e55442fc5f24",
+      "deliveredSha256": "a98092cd631907607d97f3806b0ebe943f28e449b12743b6aea0e55442fc5f24"
+    },
+    {
+      "path": "resources/compatibility/domain-reader-schema28-v1.receipt.json",
+      "mainSha256": null,
+      "candidateSha256": "070948548590957a55ecf5c2de94bdb9f34929094178f250f79932f23f9bdf3e",
+      "deliveredSha256": "070948548590957a55ecf5c2de94bdb9f34929094178f250f79932f23f9bdf3e"
+    },
+    {
+      "path": "scripts/operations/assistant-practice-integrity.cjs",
+      "mainSha256": "da6eb4a5726a0d846744cf150c5fcd218544af6a921f5c83b06d57a13551e43c",
+      "candidateSha256": "5ae519c49f2dcf41868fd2a4d15b0ff29e6cb67da106387cd6b8af8a4d310f40",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "fbcc867c93bfce4feca0b08778ab96e60655f833a212bc20ad6a9966d7dbb178"
+    },
+    {
+      "path": "scripts/operations/database-reader-guard.cjs",
+      "mainSha256": "230a7ca51d5dd306516088d66f63dc861fb30937a2e4ab785e9d6b7d4f00e841",
+      "candidateSha256": "9f6f8005dca4f1a9810b37335d2437374d37a2ba9de7f2bf2d86a2d1c6bfbed2",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "26152ac17a7ca654ff5ebf19b91da8b286d8b7778b8b6b0cf2ffd71ad42a442c"
+    },
+    {
+      "path": "scripts/qa/run-source-course-browser.cjs",
+      "mainSha256": "7a0074586d304d881b210c09e03f8a1d45d26271d035147fb409551b1d2862ff",
+      "candidateSha256": "7d439721cb3e7096ea340ad8131e1527a60519660faa2f1a93c5977f2e3676f2",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "45526c69eab079e5ee165139936139ef7ac4b0414921cabf26e6f7535ac5d878"
+    },
+    {
+      "path": "tests/e2e/knowledge-report.spec.ts",
+      "mainSha256": "f540a0dc64c537c5c58d6bacf615889d90e39830e58574b55a72c83e22e12bcd",
+      "candidateSha256": "3c7b32c0a9dd09208a0065cad27d10e25b37e00579ad42f7eba56695226ff16c",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "b59944107e9a4c32444ccd2d62a860e860eedad2b4aafd011227c24d163573f0"
+    },
+    {
+      "path": "tests/e2e/retention-evidence.spec.ts",
+      "mainSha256": null,
+      "candidateSha256": "cdda59b26ae15eec2c0ff3eb58a016a7c0aa943d8ccd59178e2f797b00e1aacc",
+      "deliveryNormalization": "Only final newline sequence normalized; substantive tested source unchanged.",
+      "deliveredSha256": "f8c332a18c118bd2e60268e1ef1a4aecedee4417d26c2df80f9a79b7ae9fefe3"
+    }
+  ],
+  "productionUnchanged": true
+}

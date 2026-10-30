@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-30T11:34:49.147Z",
+  "changes": [
+    {
+      "path": "apps/api/src/modules/learning/classroom-presentation.integration.test.ts",
+      "beforeSha256": "c21ef8731d7928609e277b70ec42f19ec70e4a4de50ab910b5bec2a9c27d78c4",
+      "afterSha256": "caa471d77bdb3851f34f6e969e2793893700dba00febcf4e99649e5da270e92f"
+    },
+    {
+      "path": "apps/api/src/modules/learning/classroom-turn.integration.test.ts",
+      "beforeSha256": "6f0de32eee973e3ef11e484755b5991da47ef9c9942704eb3d3fd7c9e01a89f2",
+      "afterSha256": "e21f84541b31b1017f1ccf4567c08bfe5aed48e5e71fc7e23e95ba8ba3de725c"
+    }
+  ],
+  "scope": "Test-only: old learner allowlist tests reassigned adult-owned classroom snapshots directly to child users without any source course. Add a full explicitly synthetic studio origin for those existing snapshots, deliberately no knowledge mapping. Caption/turn/denied-route/access-version assertions unchanged. Missing actual source remains409 in the new realHTTP retention regression. No application or compiled artifact changed."
+}

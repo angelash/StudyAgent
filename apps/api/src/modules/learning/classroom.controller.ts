@@ -1,14 +1,16 @@
 import { Body, Controller, Get, Param, Patch, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard, AuthenticatedRequest } from '../../common/auth.guard';
 import { ClassroomService } from './classroom.service';
+import { RetentionService } from '../diagnostics/retention.service';
 
 @UseGuards(AuthGuard)
 @Controller('learning/classroom')
 export class ClassroomController {
-  constructor(private readonly classroom: ClassroomService) {}
+  constructor(private readonly classroom: ClassroomService,private readonly retention:RetentionService) {}
   @Get('catalog') catalog(@Req() req: AuthenticatedRequest) { return this.classroom.catalog(req.user); }
   @Post('sessions') open(@Req() req: AuthenticatedRequest, @Body() input: unknown) { return this.classroom.open(req.user, input); }
   @Get('sessions/:id') get(@Req() req: AuthenticatedRequest, @Param('id') id: string) { return this.classroom.get(req.user, id); }
+  @Post('sessions/:id/retention-displays') retentionDisplay(@Req() req:AuthenticatedRequest,@Param('id') id:string,@Body() input:unknown){return this.retention.classroomDisplay(req.user,id,input,req.authSession);}
   @Get('sessions/:id/sources/:key') source(@Req() req:AuthenticatedRequest,@Param('id') id:string,@Param('key') key:string){return this.classroom.source(req.user,id,key);}
   @Patch('sessions/:id') progress(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) {
     return this.classroom.progress(req.user, id, input);

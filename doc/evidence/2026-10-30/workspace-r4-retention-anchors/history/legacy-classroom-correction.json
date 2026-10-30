@@ -1,0 +1,76 @@
+{
+  "at": "2026-10-30T10:48:47.648Z",
+  "changes": [
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-anchor.ts",
+      "beforeSha256": "c47499a90e686bb5a791a111f9337de11a91f2bc7c9ba864f71b8d7041fc7076",
+      "afterSha256": "be9f07c8cfc2fe9c4415e29970faf3ac7326a1d96e3197fd974d70586462a19e"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-source.ts",
+      "beforeSha256": "ba8db499118ce006a89654db1d6038925612849b441e9e27cfe84fc2c23fc94c",
+      "afterSha256": "c2fe4b78c4016f8d5e97506c4d8b45e1f5d2112017647978c5aa216f35b7590f"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/classroom-retention-record.ts",
+      "beforeSha256": "b128776f1834cba47784a08f5a1545357fdbdf1a1a46971e54831bf84de3dc56",
+      "afterSha256": "6cdfae8ab77a9b9f7779a28dfe5f14409b6907a62192db55cd4ab6f85cdb10da"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention.service.ts",
+      "beforeSha256": "c659c14cbe69a7fd28dab251780d49100cfa11848d71d29a6d6930dda6ec50f4",
+      "afterSha256": "04983a73a7f330de0427b045b1a219a3403752dd11f833d11b735fb16bd36633"
+    },
+    {
+      "path": "apps/api/src/modules/learning/classroom.service.ts",
+      "beforeSha256": "27aed475087d2bfca010b2759383d6bc4df2e0732777ef38155f0b82cd19a917",
+      "afterSha256": "2262de9cdab814d98ace5697888013a1271399479cdc39a18ac738c036f28b6e"
+    },
+    {
+      "path": "apps/api/src/modules/learning/classroom-turn-worker.service.ts",
+      "beforeSha256": "50c881b9018bdf8ddd00968644447bde9776a1847fa9a95369a284f02c0637cf",
+      "afterSha256": "fb76c96cf97e6e093d4c857a2cf5a36c8f467ab7dda5b7eb3dba134b8499a6e6"
+    },
+    {
+      "path": "apps/api/src/modules/learning/classroom-turn.service.ts",
+      "beforeSha256": "039dbe534701124b8103eb45b3583570bf26225945901d21c880a5636796dfbb",
+      "afterSha256": "29a72034d9f1a38b7bcd43b7ff2c19e8464e424823aafb2abf92a36da8af2931"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-integrity.ts",
+      "beforeSha256": "d5c84975a873d6518f3d02f340ca15746b23e5f8ed7854402f71b5838468d8cc",
+      "afterSha256": "aed7a1a847749632b3aa0adbcbe134293a59f1443b7d64347df28c93bbc6e4a8"
+    },
+    {
+      "path": "packages/contracts/src/retention.ts",
+      "beforeSha256": "689e002b05473eb3a7a3e16b642dbe616d982075942d6e01a579e1970c4d3321",
+      "afterSha256": "d21bb4f238fc5f75fe76e426fb3d56efd4d97a403ec0dd168cafdc8c1bf25dc3"
+    },
+    {
+      "path": "apps/web/components/retention-source-link.tsx",
+      "beforeSha256": "ac740443648e9cc3873840990e10e3c7f82cf5de0e65ed9d2dd171c3acff3aad",
+      "afterSha256": "f790d8d0e0ade042ece0af95578c95749bf9574c38d95ae47715daeb4c22f349"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-legacy-classroom.test.ts",
+      "beforeSha256": null,
+      "afterSha256": "529b437a7afb08227d376c829283623662d11cb421d517e20b1d34d3a0a7f3f6"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention.integration.test.ts",
+      "beforeSha256": "056fcae678d9817494906ef7c120cb0ef2b4003dc1d7a73b90312de0faf48c43",
+      "afterSha256": "4e4288f446ec686e7b36d8d6917fb8abae10bdf6b9629f12281365ef35f46d4e"
+    },
+    {
+      "path": "apps/api/src/modules/ai/ai.service.ts",
+      "beforeSha256": "c43f03217726a9b82acb243cc3d10b3db2667699ec4038d8c4ec7e3e9efe19dc",
+      "afterSha256": "2d5150da21f23b5ef2ecefa429802ed8e83ab4f9dedb6d0ebf297e52afd73f19"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/family-identity.test.ts",
+      "beforeSha256": "4da170a727edc9c877de71afe22dc5e3b7b6571758ac25b74cf62a7988f1c2c2",
+      "afterSha256": "b4e9ef2c61a41199bb59e60bb2e37d0bbed687e83cba211fc76b5e09c05431e6"
+    }
+  ],
+  "scope": "Preserves old possible teaching ranges before new actual-child writes, journals actual classroom feedback and contextual assistant help in original transactions, keeps first-answer cutoff. Controlled cause draft excluded. First API failures and interrupted browser preserved; new frozen full validation required."
+}

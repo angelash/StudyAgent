@@ -1,0 +1,672 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-30T13:28:32.549131+00:00",
+  "sourceRevision": "a99d8dd04411651c2c2f06976e7895976927e5cf",
+  "state": "162 actual source29 teaching retention anchors and measurement compatibility implemented and isolated; no push/deployment, whole goal active.",
+  "completeBrowser": {
+    "tests": 620,
+    "retries": 0,
+    "stats": {
+      "startTime": "2026-10-30T12:26:44.435Z",
+      "duration": 3606406.4,
+      "expected": 620,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "focusedBrowser": {
+    "tests": 6
+  },
+  "runtimeBrowser": {
+    "tests": 2,
+    "scope": "Separate actual repeat of the two original pre-login runtime failures; no retry or input change."
+  },
+  "knowledgeBrowser": {
+    "tests": 18,
+    "scope": "Corrected actual v4 self-report display plus current original report/evidence/recovery and legacy notices."
+  },
+  "completeApi": {
+    "passed": 2161,
+    "failed": 0,
+    "skipped": 96
+  },
+  "focusedHttp": {
+    "passed": 21,
+    "skipped": 0,
+    "scope": "ActualSQLite retention business, classroom and original report/cold privacy restore."
+  },
+  "actualPostgres": {
+    "passed": 31,
+    "skipped": 1,
+    "scope": "20 actualPG business +5 actualPG reader +6 repeatedSQLite reader;1SQLite-only tamper test skipped"
+  },
+  "restoreReader": {
+    "passed": 6,
+    "skipped": 5,
+    "scope": "Separate prepared29 SQLite reader second; current final readers also in completeAPI and PG third."
+  },
+  "pure": {
+    "passed": 64
+  },
+  "savedActual28": {
+    "path": "resources/compatibility/domain-reader-schema28-v1.json.gz",
+    "sha256": "a98092cd631907607d97f3806b0ebe943f28e449b12743b6aea0e55442fc5f24"
+  },
+  "sourceComparison": "source-comparison.json",
+  "screenshots": [
+    {
+      "path": "screenshots/classroom-time-complete-download-before-write.png",
+      "sha256": "7b1d61cc04be1c904b24884bb08e7b8e6dbce6e4a05e62f06b9dc21e75a45069",
+      "bytes": 55832
+    },
+    {
+      "path": "screenshots/lost-original-classroom-time-recovered.png",
+      "sha256": "704279e8b1dbde7c3a27d384a1d63ce1a354e562c055a41a0d4f1187dd59bbea",
+      "bytes": 83407
+    },
+    {
+      "path": "screenshots/original-review-and-latest-teaching-1440.png",
+      "sha256": "7b5291b0337bb7157a90de9085e521c324309f37f5cad116f80a446f8a2b58b2",
+      "bytes": 480042
+    },
+    {
+      "path": "screenshots/original-review-and-latest-teaching-320.png",
+      "sha256": "9a6a3e8ff68989de2338f5492c1719bada1e48544a470d83e6c9258f67972e11",
+      "bytes": 408078
+    },
+    {
+      "path": "screenshots/original-review-and-latest-teaching-390.png",
+      "sha256": "ba76e44bec281f1ac00dd4d1cb42d120918fe57d0f26c9aa4ef71d64ab01478f",
+      "bytes": 408998
+    },
+    {
+      "path": "screenshots/original-review-and-latest-teaching-768.png",
+      "sha256": "bb6f4076e82c4c7769f107aff38cd657c075ba8c8075372cd7aae632c0aa27ce",
+      "bytes": 427293
+    },
+    {
+      "path": "screenshots/knowledge-report/actual-active-guidance-schedule.png",
+      "sha256": "2084697903ab0af159b8f3873769a5151f41af4d1c1b2690f78c4cafbf9b99a9",
+      "bytes": 447669
+    },
+    {
+      "path": "screenshots/knowledge-report/point-1280.png",
+      "sha256": "fea234a1428a9534e01741af4cd6d16e689de635eb84dbd9d672a6f7266971d3",
+      "bytes": 556482
+    },
+    {
+      "path": "screenshots/knowledge-report/point-1440.png",
+      "sha256": "564eea2f149abdd71765bb0c34814a29ba5d7c8f67ed16fbbc837d7b1b311c19",
+      "bytes": 526296
+    },
+    {
+      "path": "screenshots/knowledge-report/point-390.png",
+      "sha256": "422c893481e59f94ed6fdce06a904a73b72770c97fdae8c944f81afd42330fa8",
+      "bytes": 482130
+    },
+    {
+      "path": "screenshots/knowledge-report/point-768.png",
+      "sha256": "c666a12c77a500fdff4d25f980d1dac01bdcb3dcb681470107485ceac0055b1a",
+      "bytes": 464267
+    },
+    {
+      "path": "screenshots/knowledge-report/report-current.png",
+      "sha256": "049f1729ec61d367ffd2fa9bcfa9e5a91e690ef7f5a23a2853ac84b65d7842ed",
+      "bytes": 323452
+    },
+    {
+      "path": "screenshots/knowledge-report/report-first-workspace.png",
+      "sha256": "cd57c23e21140f422a16f925de09857bb0479fcb9b471d5faf2e665b6e382283",
+      "bytes": 280780
+    }
+  ],
+  "productionObservation": {
+    "readOnly": true,
+    "unchangedFromMaterialsDelivery": true,
+    "artifacts": [
+      {
+        "path": "apps/api/dist/apps/api/src/main.js",
+        "sha256": "5793c7090063d318c5e5c60bdb74350baa6f64c386639b94fbf4cd5605946c1a",
+        "mtimeUtc": "2026-10-29T14:51:26.120290+00:00"
+      },
+      {
+        "path": "apps/web/.next/BUILD_ID",
+        "sha256": "e02197beeb39c5df02110ca05544c471b3bb892662bebdcb56449b27713e7fba",
+        "mtimeUtc": "2026-10-29T14:52:20.456777+00:00"
+      }
+    ],
+    "schemaVersion": 24,
+    "revision": 187,
+    "recheckedAt": "2026-10-30T13:28:32.658684+00:00"
+  },
+  "limits": [
+    "163 controlled causes are not included. R5-R8 and complete original72/WS continue.",
+    "No teacher/device/all-content or real1/3/7/14-day success implied.",
+    "No production source29 runtime delivery.",
+    "Confirmed late course-upgrade history compatibility issue remains in this exact H source; see late-course-history/status.json and the subsequent dedicated repair delivery before final29 reader preservation."
+  ],
+  "artifacts": [
+    {
+      "path": "complete-api-third.json",
+      "sha256": "b90e9ccad66e42398f007c905ad2511edd55a977943dd05b3d26a52901454f02",
+      "bytes": 566788
+    },
+    {
+      "path": "complete-browser-fourth.json",
+      "sha256": "e59b45ec6d8c0b4a887b2713eff1dd5994190a786c4540eb60e19d16dd3504a0",
+      "bytes": 180823
+    },
+    {
+      "path": "failures-and-limits.json",
+      "sha256": "a88398a8994579af6258049c00cc8e3ad77a82dc5c0d94452d97343b3551495a",
+      "bytes": 5741
+    },
+    {
+      "path": "focused-browser-fourth.json",
+      "sha256": "c5d65f048d95f6f4e053180eb22638d0621b7574fd4e5536f69e010e6dfe58e6",
+      "bytes": 2087
+    },
+    {
+      "path": "history/allowlist-fixture-correction.json",
+      "sha256": "cdc18b8e3943f45b1c89f33e9a7e0cdd1b716a141947ba563496bf48e1860946",
+      "bytes": 1069
+    },
+    {
+      "path": "history/browser-complete-first-interrupted.json",
+      "sha256": "b423dff627e86818c0440393e2b5d0e0af504f18fd2c4719a6fddd7829baee19",
+      "bytes": 591
+    },
+    {
+      "path": "history/browser-complete-third-interrupted.json",
+      "sha256": "b59fdf0f34e57459782d5eb40ac2d95da0117f4232b8d341c28ab8b3a2dda73f",
+      "bytes": 480
+    },
+    {
+      "path": "history/browser-second-correction.json",
+      "sha256": "bb531f31858928db7a38fa42706a6fa6bf70119190ca7c8f240ac666be94d4f4",
+      "bytes": 565
+    },
+    {
+      "path": "history/browser-third-correction.json",
+      "sha256": "f4b6a4c14e82d8c245e14efd2974c003ba26e8ed8a7903b0b8ad4fbb623fd272",
+      "bytes": 472
+    },
+    {
+      "path": "history/calendar-fixture-correction.json",
+      "sha256": "503e4920ae1b9d0bf69c74577e8bc9d869fefba41890a18f03513dd7f59a6da7",
+      "bytes": 743
+    },
+    {
+      "path": "history/calendar-overlap-reproduction.json",
+      "sha256": "81e81cbceae1fb81759b7ee5511a35638e85bb5a5a6fea7d72489ab01ffb0850",
+      "bytes": 9993
+    },
+    {
+      "path": "history/complete-api-first.json",
+      "sha256": "265cf594644566b71cc7eca0ddc113aff4c2adc9147e00c3059c48041bc35340",
+      "bytes": 562495
+    },
+    {
+      "path": "history/complete-api-second.json",
+      "sha256": "af00f2d1c4e3424eab411dd3ec01aa6b4d4ae197e49525a2a25eb92a678b0fb1",
+      "bytes": 566788
+    },
+    {
+      "path": "history/complete-api-third.json",
+      "sha256": "b90e9ccad66e42398f007c905ad2511edd55a977943dd05b3d26a52901454f02",
+      "bytes": 566788
+    },
+    {
+      "path": "history/corrected-second-failures.json",
+      "sha256": "1af156abc85b1a9ace92e4b4d1e5dfe9b39854e0e1769b6ff5027752470627eb",
+      "bytes": 16960
+    },
+    {
+      "path": "history/current-method-assertion-correction.json",
+      "sha256": "6f4f2d1092a5e369485da5a2e245dfa19fd6b22acd666287b125319bb12a8c0e",
+      "bytes": 915
+    },
+    {
+      "path": "history/knowledge-current-method-correction.json",
+      "sha256": "b22b7c37e9af2de169bc1adef8d874e0a379125e99663e11d94c3be83681e2f5",
+      "bytes": 539
+    },
+    {
+      "path": "history/legacy-business-first.json",
+      "sha256": "2482a821b7daceddf3a68b97bcc44052e3e86b8c63a396f57334100ec1239018",
+      "bytes": 31157
+    },
+    {
+      "path": "history/legacy-business-second.json",
+      "sha256": "107e559d792bd18b06fcf34439a5eaad20ca10412e472a0bed4726756edb379a",
+      "bytes": 6189
+    },
+    {
+      "path": "history/legacy-classroom-correction.json",
+      "sha256": "80b5325673f7f886af0ece33d9fa1941c9704cdace8a95117188a8831a554b2e",
+      "bytes": 4068
+    },
+    {
+      "path": "history/measurement-wiring-overlay.json",
+      "sha256": "5ccbc9a308fa48069c8a55c071089ca679a8e846943e1f89c16377afe0f212a6",
+      "bytes": 2135
+    },
+    {
+      "path": "history/reader28-preserved.json",
+      "sha256": "b0c05650a54dbdbd5f4e2158a56ce67cc3bf47da39fb29b31acaeb1818d704f9",
+      "bytes": 109111
+    },
+    {
+      "path": "history/retention-browser-complete-fourth.json",
+      "sha256": "e59b45ec6d8c0b4a887b2713eff1dd5994190a786c4540eb60e19d16dd3504a0",
+      "bytes": 180823
+    },
+    {
+      "path": "history/retention-browser-complete-second.json",
+      "sha256": "441081939ca9d8f1367fa34ce47abfad3dbcef851c5044506e9bce229b3fc213",
+      "bytes": 180824
+    },
+    {
+      "path": "history/retention-browser-first.json",
+      "sha256": "2b4c0ffd5440144ab4fe9f043dd51556208ceb0ed2eb544782d71c93594cac4c",
+      "bytes": 2090
+    },
+    {
+      "path": "history/retention-browser-fourth.json",
+      "sha256": "c5d65f048d95f6f4e053180eb22638d0621b7574fd4e5536f69e010e6dfe58e6",
+      "bytes": 2087
+    },
+    {
+      "path": "history/retention-browser-second.json",
+      "sha256": "9b09ffbff5caa0ee95c6f28cc390eb485e9d1f4ec7305086e562394cfea70850",
+      "bytes": 2086
+    },
+    {
+      "path": "history/retention-browser-third.json",
+      "sha256": "fc6b9c9061faacaa3682a540a1f1492770c792c6dac8c421518fd19b0bca9875",
+      "bytes": 2096
+    },
+    {
+      "path": "history/retention-business-first.json",
+      "sha256": "28138f44f7263dfb79dc3510d77a3a91dc3bf56bf382ccc692172926652e7c8b",
+      "bytes": 1927
+    },
+    {
+      "path": "history/retention-business-fourth.json",
+      "sha256": "7ac8572ed33e411f168ae147e703d1ac3a621bbd9470c6bc8c019d91b4c1d80f",
+      "bytes": 3721
+    },
+    {
+      "path": "history/retention-business-second.json",
+      "sha256": "88da8d03e11debe75d3e9c9fdbe0c903752fe6b5890a6628dbd03e0f64c5ae9c",
+      "bytes": 2522
+    },
+    {
+      "path": "history/retention-business-third.json",
+      "sha256": "251114cb2f89fed7bf89ef6bcc02850db8533f1f17a6c9e4fb0074df8e9f9b70",
+      "bytes": 2839
+    },
+    {
+      "path": "history/retention-compatibility-fifth.json",
+      "sha256": "68397a0d20ba0152303aeb534a4d94f00e05368dfeb3cfade2875101634f8247",
+      "bytes": 22626
+    },
+    {
+      "path": "history/retention-compatibility-first.json",
+      "sha256": "57e34660f65843837913b20ef5d5a47008fa77d17844ee69c92fe2abaa45acf4",
+      "bytes": 13388
+    },
+    {
+      "path": "history/retention-compatibility-fourth.json",
+      "sha256": "8eade5edc95e5ce58e22d0f81d356a078dd8282ad4d775439323dcb90a3d0f4f",
+      "bytes": 22627
+    },
+    {
+      "path": "history/retention-compatibility-second.json",
+      "sha256": "4862f71600ef06078301e0c3d572c139d427b96e6b798fa2df92836959c23cdf",
+      "bytes": 22626
+    },
+    {
+      "path": "history/retention-compatibility-third.json",
+      "sha256": "778222fced2791cd436e7786c76312801346ccd4e4bf965bd80ee446a54a311c",
+      "bytes": 22626
+    },
+    {
+      "path": "history/retention-knowledge-browser-first.json",
+      "sha256": "e6ee3ab96140bdcc444f913ae5ec5a7b1f530b26c4345244e73918ed438d97a7",
+      "bytes": 5427
+    },
+    {
+      "path": "history/retention-knowledge-browser-second.json",
+      "sha256": "326865d77daec741a27a4f191a50cb4880aeb2dc2663db73a4363cd977f1a1f5",
+      "bytes": 5435
+    },
+    {
+      "path": "history/retention-postgres-first.json",
+      "sha256": "37609a49b596455128cd5aaad3ffe15ab90690a5f5113eb2d93b2d95948b2097",
+      "bytes": 6275
+    },
+    {
+      "path": "history/retention-postgres-second.json",
+      "sha256": "37609a49b596455128cd5aaad3ffe15ab90690a5f5113eb2d93b2d95948b2097",
+      "bytes": 6275
+    },
+    {
+      "path": "history/retention-postgres-third.json",
+      "sha256": "066ca3111139a7367bebd2d6ae10af6412477e5835d17df2705d46ca976c959a",
+      "bytes": 8743
+    },
+    {
+      "path": "history/retention-pure-eighth.json",
+      "sha256": "36982a2cca7f10b7ae1fc9f928a54aae2407361f9d4a44276e37ad9e4ce78900",
+      "bytes": 11945
+    },
+    {
+      "path": "history/retention-pure-eleventh.json",
+      "sha256": "e1e98d4811f8c00effe7126499ce5496c531130b6ce5f2413b1746c55670d460",
+      "bytes": 13943
+    },
+    {
+      "path": "history/retention-pure-fifth.json",
+      "sha256": "89426c7f310fd05cec4c0308e8c35a85e3a889720808fa7957ab40d2a2e8d6bd",
+      "bytes": 9185
+    },
+    {
+      "path": "history/retention-pure-first.json",
+      "sha256": "42cdcb46c9b0832191a557de994b5614f8e06fd9432f3575ea1d5de406c194a3",
+      "bytes": 3385
+    },
+    {
+      "path": "history/retention-pure-fourth.json",
+      "sha256": "28ba631939fb315bed8bf00bdbea64fa9f05948f0574d1c638e1b02e213eadcd",
+      "bytes": 7737
+    },
+    {
+      "path": "history/retention-pure-ninth.json",
+      "sha256": "ec2935df5a569a21910885252616b072abc321bb66d66685f17d588e26cf4611",
+      "bytes": 12199
+    },
+    {
+      "path": "history/retention-pure-second.json",
+      "sha256": "8a88e68c26abf5d0789c6281d51570450de4ea9e6d1f89e6cfcf06f52109485b",
+      "bytes": 5250
+    },
+    {
+      "path": "history/retention-pure-seventh.json",
+      "sha256": "20874d733d8a512293cf7eb9337f38b76a2eb5632857ad85da13121d03a18d74",
+      "bytes": 11718
+    },
+    {
+      "path": "history/retention-pure-sixth.json",
+      "sha256": "501611560dae7e125d777c2155b09bf9f1ea0da979911f057ce984476f63f1b1",
+      "bytes": 10495
+    },
+    {
+      "path": "history/retention-pure-tenth.json",
+      "sha256": "a006bb1df4e2cb66140db4d4eea47290ecf734c918df1b8551b446bd86a03b56",
+      "bytes": 12936
+    },
+    {
+      "path": "history/retention-pure-third.json",
+      "sha256": "b9c80d10811ffebccea4bd791f71c4e3e4cb285e273589ffdbffa6e5b310ff45",
+      "bytes": 6533
+    },
+    {
+      "path": "history/retention-pure-thirteenth.json",
+      "sha256": "9eac39938e647b185ed044d0c2055991b72cca14fa5119caae1a951ab21d8e73",
+      "bytes": 16028
+    },
+    {
+      "path": "history/retention-pure-twelfth.json",
+      "sha256": "ddfa329ddcfe170de0bd61ae37d4d4e168a8908e2b894ac5f5dee82f0e40b3ae",
+      "bytes": 14203
+    },
+    {
+      "path": "history/retention-runtime-browser-first.json",
+      "sha256": "393920eb883a633025bf5b8ed89f8415f2bbcf2caa88949512d41ab7513fd602",
+      "bytes": 852
+    },
+    {
+      "path": "history/schema29-activation-overlay.json",
+      "sha256": "cc4b806b2c5adeb5289bcc3b0bbc390b37d2ed57cc5a8a47a6ed11657f6acae6",
+      "bytes": 1144
+    },
+    {
+      "path": "history/schema29-current-expectation-overlay.json",
+      "sha256": "0f63d96cdf1ee63ef23a56b1bfcda895a437e33eec77c6820439632d7dd3ec59",
+      "bytes": 5992
+    },
+    {
+      "path": "history/schema29-reader-first.json",
+      "sha256": "22f6f04785061ff18ff98fd8f635668e35cc89dab2b22426a05756f5dcb8b91a",
+      "bytes": 265
+    },
+    {
+      "path": "history/schema29-reader-second.json",
+      "sha256": "d67f3241e54223ed61d75223a2eacc4990aca84489e7802063845374f27717f6",
+      "bytes": 2709
+    },
+    {
+      "path": "history/schema29-reader-test-overlay.json",
+      "sha256": "42062915407df05fd929576dcbb857b3877881c448b6a86e22e950095224492c",
+      "bytes": 402
+    },
+    {
+      "path": "history/self-report-display-correction.json",
+      "sha256": "df225fa01f30b9bd8cbe329783f26d8c113994a642ad87029f9a962e5534c4e2",
+      "bytes": 1054
+    },
+    {
+      "path": "history/stage-h-freeze-delivery.json",
+      "sha256": "a10f791df3a792ce688e9e1d94f7b66d607d24d6d247b4e529b20d27bd83e5d3",
+      "bytes": 469415
+    },
+    {
+      "path": "history/teaching-writers-overlay.json",
+      "sha256": "e70d858ceb59aad59e081849cc22139902edfde32b92bd44c35c0b0c6db39202",
+      "bytes": 1885
+    },
+    {
+      "path": "http-second.json",
+      "sha256": "107e559d792bd18b06fcf34439a5eaad20ca10412e472a0bed4726756edb379a",
+      "bytes": 6189
+    },
+    {
+      "path": "integration-applied.json",
+      "sha256": "401c778f23f651b475cf9665b572d580494df8565be2bea7af51765895399a8c",
+      "bytes": 39780
+    },
+    {
+      "path": "knowledge-browser-second.json",
+      "sha256": "326865d77daec741a27a4f191a50cb4880aeb2dc2663db73a4363cd977f1a1f5",
+      "bytes": 5435
+    },
+    {
+      "path": "late-course-history/classroom-history-first.json",
+      "sha256": "a56b7b265a467a1b87b67951498c06036537833348c37288d71653adac6c5ea2",
+      "bytes": 520
+    },
+    {
+      "path": "late-course-history/history-fifth-regression.json",
+      "sha256": "c38c4812969f220a3ddb33d927ec30d18667dd37d07bee0f6efb19c44be8de22",
+      "bytes": 1438
+    },
+    {
+      "path": "late-course-history/history-fourth-regression.json",
+      "sha256": "a5fc3741c0be9c592b108c025fdaf09e524c707d3b621a1caad325c325cbbe8b",
+      "bytes": 1438
+    },
+    {
+      "path": "late-course-history/history-postgres-first.json",
+      "sha256": "a89094d5e8e57cbe7eb62f23f3305407c5980ceef1bafad4fbb81ed875ec4915",
+      "bytes": 1068
+    },
+    {
+      "path": "late-course-history/history-retention-business-first.json",
+      "sha256": "f2b38dfcc156dfb160b8dbbb1507498e9825bd9bd3632eb8967cbcc1ffac9125",
+      "bytes": 7107
+    },
+    {
+      "path": "late-course-history/history-retention-pure-first.json",
+      "sha256": "5ba09743c6bbe3b55833fe7966b0cdb59976b4b2cb56e9768be186004a8e6753",
+      "bytes": 16398
+    },
+    {
+      "path": "late-course-history/history-third-regression.json",
+      "sha256": "43f7aca24bbeab5f8b3650805b23f201f3a259f613dd3805a6f1116679ebd08f",
+      "bytes": 1441
+    },
+    {
+      "path": "late-course-history/status.json",
+      "sha256": "37fae2342daa7cfaf3d0fd64f4a5d2bc79fc22df4084f91186d5dde742a66d25",
+      "bytes": 1041
+    },
+    {
+      "path": "local-originals.json",
+      "sha256": "255364b81733f40b4e1ee09322e7e9d1ef265e0f754b918457a5d577ebcc0515",
+      "bytes": 44916
+    },
+    {
+      "path": "postgres-third.json",
+      "sha256": "066ca3111139a7367bebd2d6ae10af6412477e5835d17df2705d46ca976c959a",
+      "bytes": 8743
+    },
+    {
+      "path": "pure-thirteenth.json",
+      "sha256": "9eac39938e647b185ed044d0c2055991b72cca14fa5119caae1a951ab21d8e73",
+      "bytes": 16028
+    },
+    {
+      "path": "runtime-browser-first.json",
+      "sha256": "393920eb883a633025bf5b8ed89f8415f2bbcf2caa88949512d41ab7513fd602",
+      "bytes": 852
+    },
+    {
+      "path": "schema29-reader-second.json",
+      "sha256": "d67f3241e54223ed61d75223a2eacc4990aca84489e7802063845374f27717f6",
+      "bytes": 2709
+    },
+    {
+      "path": "screenshots/classroom-time-complete-download-before-write.png",
+      "sha256": "7b1d61cc04be1c904b24884bb08e7b8e6dbce6e4a05e62f06b9dc21e75a45069",
+      "bytes": 55832
+    },
+    {
+      "path": "screenshots/knowledge-report/actual-active-guidance-schedule.png",
+      "sha256": "2084697903ab0af159b8f3873769a5151f41af4d1c1b2690f78c4cafbf9b99a9",
+      "bytes": 447669
+    },
+    {
+      "path": "screenshots/knowledge-report/point-1280.png",
+      "sha256": "fea234a1428a9534e01741af4cd6d16e689de635eb84dbd9d672a6f7266971d3",
+      "bytes": 556482
+    },
+    {
+      "path": "screenshots/knowledge-report/point-1440.png",
+      "sha256": "564eea2f149abdd71765bb0c34814a29ba5d7c8f67ed16fbbc837d7b1b311c19",
+      "bytes": 526296
+    },
+    {
+      "path": "screenshots/knowledge-report/point-390.png",
+      "sha256": "422c893481e59f94ed6fdce06a904a73b72770c97fdae8c944f81afd42330fa8",
+      "bytes": 482130
+    },
+    {
+      "path": "screenshots/knowledge-report/point-768.png",
+      "sha256": "c666a12c77a500fdff4d25f980d1dac01bdcb3dcb681470107485ceac0055b1a",
+      "bytes": 464267
+    },
+    {
+      "path": "screenshots/knowledge-report/report-current.png",
+      "sha256": "049f1729ec61d367ffd2fa9bcfa9e5a91e690ef7f5a23a2853ac84b65d7842ed",
+      "bytes": 323452
+    },
+    {
+      "path": "screenshots/knowledge-report/report-first-workspace.png",
+      "sha256": "cd57c23e21140f422a16f925de09857bb0479fcb9b471d5faf2e665b6e382283",
+      "bytes": 280780
+    },
+    {
+      "path": "screenshots/lost-original-classroom-time-recovered.png",
+      "sha256": "704279e8b1dbde7c3a27d384a1d63ce1a354e562c055a41a0d4f1187dd59bbea",
+      "bytes": 83407
+    },
+    {
+      "path": "screenshots/original-review-and-latest-teaching-1440.png",
+      "sha256": "7b5291b0337bb7157a90de9085e521c324309f37f5cad116f80a446f8a2b58b2",
+      "bytes": 480042
+    },
+    {
+      "path": "screenshots/original-review-and-latest-teaching-320.png",
+      "sha256": "9a6a3e8ff68989de2338f5492c1719bada1e48544a470d83e6c9258f67972e11",
+      "bytes": 408078
+    },
+    {
+      "path": "screenshots/original-review-and-latest-teaching-390.png",
+      "sha256": "ba76e44bec281f1ac00dd4d1cb42d120918fe57d0f26c9aa4ef71d64ab01478f",
+      "bytes": 408998
+    },
+    {
+      "path": "screenshots/original-review-and-latest-teaching-768.png",
+      "sha256": "bb6f4076e82c4c7769f107aff38cd657c075ba8c8075372cd7aae632c0aa27ce",
+      "bytes": 427293
+    },
+    {
+      "path": "source-comparison.json",
+      "sha256": "c4a23f2bb97e3d7aa4f9f7e78cf96feb46adea57502c74966b7396c5b8b46fee",
+      "bytes": 700689
+    },
+    {
+      "path": "handbook-definition-overlay.json",
+      "sha256": "33f87a663359ec2bee1c194e4763e11dd7fd96e793ebdde8e25d986452ee4d3f",
+      "bytes": 1344
+    },
+    {
+      "path": "handbook-validation.json",
+      "sha256": "9c78b0e1a55f6ba3ee946a2a9220aa7a3ab9eeade094fe6f073df3df645aede5",
+      "bytes": 109145
+    },
+    {
+      "path": "delivery-checks.json",
+      "sha256": "73a9bef3fd390abebe3c29809b1bdc896b9a9199d63e3f1e1c059460ac18aee2",
+      "bytes": 324
+    },
+    {
+      "path": "history/before-delivery-normalization-receipt.json",
+      "sha256": "d7cc47ec725004076b68c51cc841029d9945566f9713821f70b35b1145215ca8",
+      "bytes": 22217
+    },
+    {
+      "path": "history/before-delivery-normalization-source-comparison.json",
+      "sha256": "68ed38cdd770bf5341cecc999970dcc98bd8801c42650b5e65f87c4e0e3e90d6",
+      "bytes": 713129
+    },
+    {
+      "path": "history/before-delivery-normalization-integration-applied.json",
+      "sha256": "e4834d7d785289eff411620ad9b92fff788c8af345a209d6688a45d185f64291",
+      "bytes": 40324
+    },
+    {
+      "path": "history/before-delivery-normalization-handbook-validation.json",
+      "sha256": "c3dbadff66e79bc2edad7062f8b125089bc20eb53e86608c904a9b6ac5b4c2e6",
+      "bytes": 109145
+    },
+    {
+      "path": "history/before-delivery-normalization-delivery-checks.json",
+      "sha256": "73a9bef3fd390abebe3c29809b1bdc896b9a9199d63e3f1e1c059460ac18aee2",
+      "bytes": 324
+    },
+    {
+      "path": "delivery-newline-normalization.json",
+      "sha256": "11ea115a9ae739b959be74122946d5f5e301817a49c711613aedb36373cfa058",
+      "bytes": 705
+    },
+    {
+      "path": "delivery-checks-second.json",
+      "sha256": "73a9bef3fd390abebe3c29809b1bdc896b9a9199d63e3f1e1c059460ac18aee2",
+      "bytes": 324
+    }
+  ],
+  "deliveryNormalization": "delivery-newline-normalization.json"
+}

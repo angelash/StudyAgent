@@ -1,0 +1,193 @@
+{
+  "stats": {
+    "startTime": "2026-10-30T12:04:41.385Z",
+    "duration": 87512.28400000001,
+    "expected": 18,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "knowledge report: the actual frozen goals, original estimates and self-reports stay together when selecting a point",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: skipped evidence stays unknown and a point survives reload, back and forward",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: an older matching plan is found behind a newer unrelated report and opens its durable plan route",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: failed plan reads remain unknown until explicit retry returns the actual matching plan",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: a controlled missing plan hides its stale actions while the report remains readable and retry can recover",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: late proposed-plan reviews cannot erase the real schedule after activation and refresh",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: a controlled legacy definition and foreign point never create a current verification",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: the actual student role reads its report without management actions and grant revocation ends the private view",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: invalidating the actual browser login session ends the private report on its next read",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: actual submitted short-answer expressions awaiting review do not become scored failure or a zero estimate",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: a controlled cause timeline remains complete and terminal versus reopened actions stay with their point",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: complete point reading and keyboard controls fit 390",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: complete point reading and keyboard controls fit 768",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: complete point reading and keyboard controls fit 1280",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: complete point reading and keyboard controls fit 1440",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: a lost reanalysis receipt survives reload with the exact original command",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: a version conflict archives its original command before a read-only latest-report check",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "knowledge report: unavailable command storage prevents a new mutation while preserving the report",
+      "file": "knowledge-report.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    }
+  ]
+}

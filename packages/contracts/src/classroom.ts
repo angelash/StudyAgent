@@ -38,6 +38,7 @@ export type ClassroomChatMessage = { id: string; role: 'user' | 'assistant'; con
   speech?: ClassroomSpeechTrack;
   board?: ClassroomReplyBoard & { page: number } };
 export type ClassroomSession = { id: string; ownerUserId: string; studentId: string | null; courseId: string;
+  retentionContext?:import('./retention').ClassroomRetentionContext;
   studioCourseId?: string; lessonId: string; contentFingerprint: string; lesson: ClassroomLesson;
   sourceCourseId?: string; authoringAnswerExposure?: boolean;
   sourceCheckId?: string; sourceCheckFingerprint?: string;

@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-30T09:28:16.293Z",
+  "files": [
+    {
+      "path": "apps/api/src/modules/learning/learning.service.ts",
+      "beforeSha256": "f4485b6329ced0c092e143cfdf0cd0815976b3849cac2591aae4734958e030c6",
+      "afterSha256": "24c1d35ab66459026552a2b774a82c2bf51e92cd93916696cf93b2b1b9bd852e"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
+      "beforeSha256": "6b67bb3dc7e74efb10607bb574f7fd0795ed6355ae52a2806ec60e80fcfe861a",
+      "afterSha256": "9dc89f472dafd5fde7cb12ed62b50003334a5caefd609f18d60b0b251fb2d3f8"
+    },
+    {
+      "path": "apps/api/src/modules/learning/notebook.service.ts",
+      "beforeSha256": "9a0a777a6b1f0bcdeac606e66f66b601f5671c7a300d9738c229f7c27ada8695",
+      "afterSha256": "afdf70420ac97a62cc32769896f30aca8eedec7fa4bdc0af1769cbd647bc756b"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching-student.service.ts",
+      "beforeSha256": "6cab5ed6b825308db2b3e3febf21e6bdebd512a27ae7b221bdd23d04934e55ae",
+      "afterSha256": "27ebcde7af1c4bee22cefa817d327d73f755052a1b31b342ad646e390823e443"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
+      "beforeSha256": "0e256daa17dfeb5d4dd7944903c6e3650a2bc19b348aa592a523bce4090a086d",
+      "afterSha256": "bcc05cdc55374abfa66d03be656ba9a8bb67b3f3318811a2687aaf39561e70c6"
+    },
+    {
+      "path": "apps/api/src/modules/privacy/privacy-records.ts",
+      "beforeSha256": "40341181a1870703b4f8a7264a5324803cc8d507a330eae20cfc091663c85962",
+      "afterSha256": "e5b5b9353a45526b1034e5069600a31b3ad54bc6393d1370efa29a05de462c6f"
+    }
+  ],
+  "scope": "Real operation hooks inside original request/store transactions; replay returns original result before capture. Classroom display, native/privacy/concurrency and UI acceptance still pending."
+}

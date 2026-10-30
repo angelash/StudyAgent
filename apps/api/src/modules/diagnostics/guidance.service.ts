@@ -1,3 +1,5 @@
+import { RetentionService } from './retention.service';
+import { isIndependentRetention } from './retention-evidence-projection';
 import { BadRequestException, ConflictException, Injectable, NotFoundException, ServiceUnavailableException } from '@nestjs/common';
 import { ModuleRef } from '@nestjs/core';
 import { createHash } from 'node:crypto';
@@ -31,7 +33,7 @@ const inputHash = (kind: string, input: unknown) => createHash('sha256').update(
 export class GuidanceService {
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
     private readonly diagnostics: DiagnosticsService, private readonly events: DomainEventBusService,
-    private readonly textbooks: TextbookRegistryService, private readonly moduleRef: ModuleRef) {}
+    private readonly textbooks: TextbookRegistryService, private readonly moduleRef: ModuleRef,private readonly retention:RetentionService) {}
 
   private sourceCitations(scope: LearningScope, atomId: string): LearningSourceCitation[] {
     if (!scope.textbookVolumeId) return [];
@@ -311,7 +313,7 @@ export class GuidanceService {
   private reviewViews(tasks: typeof this.store.reviewTasks) {
     return [...tasks]
       .sort((a, b) => a.dueAt.localeCompare(b.dueAt)).map((item) => ({ ...item, due: Date.parse(item.dueAt) <= Date.now(),
-        atomName: this.store.find('knowledgeAtoms', { id: item.atomId })?.name ?? item.atomId }));
+        atomName: this.store.find('knowledgeAtoms', { id: item.atomId })?.name ?? item.atomId,retentionReadiness:this.retentionReadiness(item) }));
   }
 
   reschedule(user: InMemoryUserAccount, reviewId: string, input: unknown) {
@@ -336,6 +338,8 @@ export class GuidanceService {
     this.events.publish('guidance.review_rescheduled', { reviewId, planId: plan.id, scheduleRevision: version, actorId: user.id });
     return task;
   }
+
+  private retentionReadiness(item: import('@study-agent/contracts').ReviewTask){const plan=this.store.find('diagnosticPlans',{id:item.planId}),baseline=plan&&this.store.find('diagnosticSessions',{id:plan.baselineSessionId});return plan&&baseline?this.retention.reviewReadiness(item,{status:plan.status},baseline,this.diagnostics.effectiveResponses(item.studentId,item.subject)):undefined;}
 
   startReview(user: InMemoryUserAccount, reviewId: string) {
     const task = this.store.find('reviewTasks', { id: reviewId });
@@ -384,7 +388,7 @@ export class GuidanceService {
       sessions: sessions.map(s => [s.id, this.diagnostics.report(user, s.id).version ?? 1]).sort((a, b) => String(a[0]).localeCompare(String(b[0]))),
       definitionContext: { baseline: baseline.atomSnapshots?.map(atom => [atom.id, atom.objective, atom.successCriterion, atom.prerequisiteIds]),
         incompatible: compatibility.incompatibleEvidenceIds, unverified: compatibility.unverifiedEvidenceIds },
-      evidence: [...before, ...after].map(r => [r.id, r.score, r.status, r.disposition, r.priorExposure, r.dimension, r.hintLevel, r.retentionDelayDays, comparisonKey(r)]).sort((a, b) => String(a[0]).localeCompare(String(b[0]))) });
+      evidence: [...before, ...after].map(r => [r.id, r.score, r.status, r.disposition, r.priorExposure, r.dimension, r.hintLevel, r.retentionDelayDays,r.retentionEvidence?.fingerprint??null, comparisonKey(r)]).sort((a, b) => String(a[0]).localeCompare(String(b[0]))) });
     return { planId, baselineSessionId: plan.baselineSessionId, followupSessionIds, independentFollowupCount: independent.length, fingerprint,
       measurementContext: { measurementVersion: MEASUREMENT_VERSION, familyIdentityVersion: FAMILY_IDENTITY_VERSION,
         notice: '前后估计都按同一套当前能力与题族规则从原始实际作答重新计算；自述不计量，历史报告数值不直接相减，规则更新不表示学习改善。' },
@@ -407,7 +411,7 @@ export class GuidanceService {
           afterEstimate.lower! > beforeEstimate.upper! ? 'improved' : afterEstimate.upper! < beforeEstimate.lower! ? 'declined' : 'uncertain';
         return { atomId: atom.id, atomName: atom.name, before: beforeEstimate, after: afterEstimate, outcome,
           retentionSamples: post.filter((item) => item.disposition === 'answered' && item.status === 'scored' && item.score !== null &&
-            !item.hintLevel && !item.priorExposure && item.dimension === 'retention' && (item.retentionDelayDays ?? 0) >= 1).length,
+            !item.hintLevel && !item.priorExposure && isIndependentRetention(item)).length,
           note: outcome === 'improved' ? '观察到可比表现改善；仍需继续检查迁移与保持，不能据此证明单一干预因果。' : '证据量、测量维度或区间尚不足以确定改善，继续验证。' };
       }) };
   }

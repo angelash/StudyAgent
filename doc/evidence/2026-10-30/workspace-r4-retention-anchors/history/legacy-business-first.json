@@ -1,0 +1,593 @@
+{
+  "numTotalTests": 125,
+  "numPassedTests": 121,
+  "numFailedTests": 4,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 2,
+  "suites": [
+    {
+      "file": "durability.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "real API persistence across application restarts restores session, student, immutable assessment and practice draft; failed requests leave no partial mutations",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "classroom-retention-origin.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "frozen original classroom knowledge mapping uses the retained exact lesson and atom version while returning no private teaching text",
+          "status": "passed"
+        },
+        {
+          "title": "frozen original classroom knowledge mapping uses the original atom revision after publication changes rather than relabelling the old classroom with a new definition",
+          "status": "passed"
+        },
+        {
+          "title": "frozen original classroom knowledge mapping does not guess atom mapping from a source-course title, another child or altered original lesson content",
+          "status": "passed"
+        },
+        {
+          "title": "frozen original classroom knowledge mapping rejects a recomputed context that changes the original child, target or frozen definition",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "classroom-retention-record.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "original classroom teaching display receipts keeps an original legacy speech-unit receipt valid after an explicit later speech-v2 presentation upgrade",
+          "status": "passed"
+        },
+        {
+          "title": "original classroom teaching display receipts verifies the frozen original lesson, actual displayed step and complete idempotent command",
+          "status": "passed"
+        },
+        {
+          "title": "original classroom teaching display receipts rejects a recomputed original command targeting another lesson step or another student",
+          "status": "passed"
+        },
+        {
+          "title": "original classroom teaching display receipts does not invent knowledge targets for an otherwise valid unmapped historical classroom",
+          "status": "passed"
+        },
+        {
+          "title": "original classroom teaching display receipts refuses a duplicate original key and a claimed sentence outside the frozen actual narration",
+          "status": "passed"
+        },
+        {
+          "title": "original classroom teaching display receipts keeps a legacy classroom without a display journal readable but refuses a journal that lacks its frozen source context",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "family-identity.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "reviewed, atom-scoped family identities freezes the identity release so adding aliases requires a new versioned review",
+          "status": "passed"
+        },
+        {
+          "title": "reviewed, atom-scoped family identities requires legacy reanalysis for affected evidence while preserving unaffected or unmeasured reports",
+          "status": "passed"
+        },
+        {
+          "title": "reviewed, atom-scoped family identities preserves every full authored task and its original identifier",
+          "status": "passed"
+        },
+        {
+          "title": "reviewed, atom-scoped family identities merges the real legacy structures for 'core:math:brackets', including seeded prefixes",
+          "status": "passed"
+        },
+        {
+          "title": "reviewed, atom-scoped family identities merges the real legacy structures for 'core:math:bigplace', including seeded prefixes",
+          "status": "passed"
+        },
+        {
+          "title": "reviewed, atom-scoped family identities leaves unknown labels exact and never merges the same label across different points",
+          "status": "passed"
+        },
+        {
+          "title": "reviewed, atom-scoped family identities selects one legacy structure and exposes a real coverage gap instead of filling it with an alias",
+          "status": "passed"
+        },
+        {
+          "title": "reviewed, atom-scoped family identities discounts aliases together without altering original responses or erasing exact-question exposure",
+          "status": "passed"
+        },
+        {
+          "title": "reviewed, atom-scoped family identities cannot verify 'transfer' from successful aliases of one structure",
+          "status": "passed"
+        },
+        {
+          "title": "reviewed, atom-scoped family identities cannot verify 'retention' from successful aliases of one structure",
+          "status": "passed"
+        },
+        {
+          "title": "reviewed, atom-scoped family identities cannot support a procedure gap or migration contrast using aliases as independent replications",
+          "status": "passed"
+        },
+        {
+          "title": "reviewed, atom-scoped family identities rechecks a legacy status without labelling a rule update as resolution or reopening",
+          "status": "passed"
+        },
+        {
+          "title": "reviewed, atom-scoped family identities recounts a frozen legacy blueprint from actual evidence without rewriting it",
+          "status": "passed"
+        },
+        {
+          "title": "reviewed, atom-scoped family identities does not let a cross-dimension alias count on both sides of a contrast",
+          "status": "passed"
+        },
+        {
+          "title": "reviewed, atom-scoped family identities matches all observation requirements, including subset conflicts and successful reassignment",
+          "status": "passed"
+        },
+        {
+          "title": "reviewed, atom-scoped family identities prefers a distinct structure for new routes while preserving already-started legacy ordering",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "measurement-versioning.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "self reports and versioned measurement through authenticated HTTP retains original self-report scores and cause uncertainty but leaves every ability dimension unmeasured",
+          "status": "passed"
+        },
+        {
+          "title": "self reports and versioned measurement through authenticated HTTP detects actual older self-report inputs across sessions and explicitly appends a replayable report",
+          "status": "passed"
+        },
+        {
+          "title": "self reports and versioned measurement through authenticated HTTP keeps unaffected actual-answer v2 reports compatible instead of requiring a version-only rewrite",
+          "status": "passed"
+        },
+        {
+          "title": "self reports and versioned measurement through authenticated HTTP reports missing or unrecognised original eligibility as unknown without resurrecting deleted evidence",
+          "status": "passed"
+        },
+        {
+          "title": "self reports and versioned measurement through authenticated HTTP blocks new guidance on affected reports and marks an existing plan as requiring review",
+          "status": "passed"
+        },
+        {
+          "title": "self reports and versioned measurement through authenticated HTTP keeps a started activity frozen while reanalysis and explicit plan confirmation save the current methods",
+          "status": "passed"
+        },
+        {
+          "title": "self reports and versioned measurement through authenticated HTTP retains an original numerical report when an input is missing and refuses to manufacture replacement evidence",
+          "status": "passed"
+        },
+        {
+          "title": "self reports and versioned measurement through authenticated HTTP replays reanalysis across two instances and a cold restart with only one appended method version",
+          "status": "passed"
+        },
+        {
+          "title": "self reports and versioned measurement through authenticated HTTP preserves earlier displayed-question exposure even when a legacy response omitted its exposure flag",
+          "status": "passed"
+        },
+        {
+          "title": "self reports and versioned measurement through authenticated HTTP natively restores both measurement methods and plan confirmations, then applies the current child deletion ledger to an old bundle",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "retention-anchor.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "actual teaching anchors and independent elapsed retention cannot regain independent qualification by leaving this same retest open for days after receiving new teaching",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention uses the retained original independent baseline when no later teaching is known and never changes source arrays",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention does not call a30-day old baseline thirty-day post-teaching retention when help occurred yesterday",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention uses exact elapsed milliseconds for the1-day boundary",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention uses exact elapsed milliseconds for the3-day boundary",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention uses exact elapsed milliseconds for the7-day boundary",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention uses exact elapsed milliseconds for the14-day boundary",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention moves the anchor to a real help provided after this retest started and preserves the earlier baseline",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention retains a known recent teaching boundary when there is no independent baseline without inventing retention eligibility",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention never backdates future teaching into an earlier historical answer",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention does not move an actual child math anchor for another child, another subject or independent adult teaching",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention does not manufacture an independent baseline from a helped, exposed, pending or same-session answer",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention keeps missing original sources, unknown knowledge mapping and invalid time explicitly unknown",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention does not count duplicate original exposure receipts twice and refuses one identity claiming two different originals",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention retains real elapsed time while refusing to call an assisted or unscored current answer independent retention",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention rejects an invalid server cutoff and binds the exact source, interval and actual answer time into the original fingerprint",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "retention-evidence-projection.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "explicit current retention method projection without raw evidence mutation keeps the original plan baseline stable when earlier D+1 and D+3 checks succeed before the original D+7 task",
+          "status": "passed"
+        },
+        {
+          "title": "explicit current retention method projection without raw evidence mutation does not let a diagnostic completed after this retest started become a historical independent baseline",
+          "status": "passed"
+        },
+        {
+          "title": "explicit current retention method projection without raw evidence mutation does not borrow a response from another still unfinished diagnostic as a retained independent baseline",
+          "status": "passed"
+        },
+        {
+          "title": "explicit current retention method projection without raw evidence mutation recomputes post-teaching interval from original retained sources while leaving old30-day fields and report objects untouched",
+          "status": "passed"
+        },
+        {
+          "title": "explicit current retention method projection without raw evidence mutation qualifies an actual independent elapsed sample only after the original required interval with a retained original baseline",
+          "status": "passed"
+        },
+        {
+          "title": "explicit current retention method projection without raw evidence mutation does not manufacture new-protocol eligibility when an old retest lacks a frozen original target",
+          "status": "passed"
+        },
+        {
+          "title": "explicit current retention method projection without raw evidence mutation keeps an unrelated report comparable while requiring explicit reanalysis for an old report that claimed retention",
+          "status": "passed"
+        },
+        {
+          "title": "explicit current retention method projection without raw evidence mutation preserves ordinary baseline responses and makes a hinted current retest ineligible even after enough real time",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "retention-integrity.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "actual native retention cutoff and source integrity rebuilds the exact original retention snapshot from actual retained source rows",
+          "status": "passed"
+        },
+        {
+          "title": "actual native retention cutoff and source integrity rejects an altered elapsed snapshot and an actually missing original baseline even if public hashes are editable",
+          "status": "passed"
+        },
+        {
+          "title": "actual native retention cutoff and source integrity does not use teaching after the original answer cutoff to invalidate an otherwise exact saved original",
+          "status": "passed"
+        },
+        {
+          "title": "actual native retention cutoff and source integrity does not use a later scoring revision to overwrite the original baseline qualification at an earlier response",
+          "status": "passed"
+        },
+        {
+          "title": "actual native retention cutoff and source integrity keeps a legacy database without new retention records readable",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "retention-legacy-classroom.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "historical actual child classroom teaching with unknown display times does not infer no intervening teaching from an old classroom without a display journal",
+          "status": "passed"
+        },
+        {
+          "title": "historical actual child classroom teaching with unknown display times excludes a possible range wholly before the original independent baseline or after the original answer",
+          "status": "passed"
+        },
+        {
+          "title": "historical actual child classroom teaching with unknown display times does not turn a mutable last-update bound into a precise teaching timestamp",
+          "status": "passed"
+        },
+        {
+          "title": "historical actual child classroom teaching with unknown display times keeps another child, a parent preview and a known other subject outside this child target",
+          "status": "passed"
+        },
+        {
+          "title": "historical actual child classroom teaching with unknown display times keeps a genuinely missing original course unknown and ignores an untouched zero-display classroom",
+          "status": "passed"
+        },
+        {
+          "title": "historical actual child classroom teaching with unknown display times freezes the same historical uncertainty after later activity instead of invalidating earlier answer cutoffs",
+          "status": "passed"
+        },
+        {
+          "title": "historical actual child classroom teaching with unknown display times retains old hints and feedback in the unknown range and records only the newly provided explanations as precise sources",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "retention-native.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "native retained teaching source and original retention snapshots verifies an actual retained teaching operation without storing answer text or mutable current content",
+          "status": "passed"
+        },
+        {
+          "title": "native retained teaching source and original retention snapshots refuses a reassigned child even if the outer stable event identity is recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "native retained teaching source and original retention snapshots refuses missing actual operations, changed real dates or a forged target definition",
+          "status": "passed"
+        },
+        {
+          "title": "native retained teaching source and original retention snapshots requires unique original event identities and rejects unknown source kinds",
+          "status": "passed"
+        },
+        {
+          "title": "native retained teaching source and original retention snapshots does not accept recomputed frozen answer hashes when the claimed elapsed interval contradicts actual retained teaching",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "retention-review-gate.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "actual original review and post-teaching interval gate blocks an old due task after a new actual help and reports the later real earliest time without changing original dates",
+          "status": "passed"
+        },
+        {
+          "title": "actual original review and post-teaching interval gate allows the exact true interval boundary to open a check while keeping missing baseline explicit",
+          "status": "passed"
+        },
+        {
+          "title": "actual original review and post-teaching interval gate never uses a manually earlier calendar date to shorten the original review boundary",
+          "status": "passed"
+        },
+        {
+          "title": "actual original review and post-teaching interval gate does not move an already-started original task or bypass a paused plan, revised source or unresolved teaching source",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "retention-source.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "retained actual teaching source adapters uses the actual original reference and guardian demonstration commands without exporting private question or help bodies",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters binds original practice start, actual attempt and hint times to the original child and frozen atom without returning answer text",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters does not move anchors for merely proposed plans, calendar completion, unsaved drafts, another child or another subject",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters keeps missing practice definitions or a hint outside its real original question explicitly unverifiable",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters binds actual diagnostic hints to their frozen item and atom rather than a client supplied target",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters uses only actual child generated teaching and the exact retained shared target definition",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters keeps a missing shared generated original unknown and does not infer a definition from the currently published atom",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters does not use mutable classroom updatedAt as proof of a teaching display",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters requires the exact saved classroom version and actual child author for an explicit display receipt",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "retention.integration.test.ts",
+      "status": "failed",
+      "tests": [
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility blocks an old due task after a real practice and reports the exact new boundary without changing its original schedule",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility allows the exact real one-day boundary and freezes the original first answer and sources rather than the thirty-day baseline gap",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility keeps a response ineligible when real help occurs after its retest starts even if submission is much later",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility does not change another child anchor and ordinary reads or calendar completion cannot create teaching exposure events",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility records an actual child classroom provision in its original progress transaction while parent preview and ordinary rereads create no teaching events",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility keeps an actual legacy classroom interval unknown, freezes it before a new draft write and retains that uncertainty through a cold native restore",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility allows a legacy possible teaching range wholly before the independent baseline without inventing a precise event",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility does not move an earlier first-answer cutoff when a previously untouched legacy classroom first provides teaching later",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility records the actual child classroom answer explanation once and preserves its original time on command replay",
+          "status": "failed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility freezes the original legacy range before new hint classroom help and journals only the actual new explanation",
+          "status": "failed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility freezes the original legacy range before new direct classroom help and journals only the actual new explanation",
+          "status": "failed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility freezes the original legacy range before new worker classroom help and journals only the actual new explanation",
+          "status": "failed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility replays the exact original classroom display time after the cursor moves and rejects a reused key with another complete original unit",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility requires explicit reanalysis for a retained legacy-format retention report and appends a new method version while preserving its exact old report and raw answer",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility keeps actual child classroom provisions, original course mapping and exact display receipt through a cold native restore",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility exports only legal retention metadata and the latest child deletion ledger prevents an older backup from reviving teaching events or classroom receipts",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility retains a shared childs original teaching source after one guardian closes their account and applies that latest ledger to an older backup",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility preserves actual new report provenance through a cold native backup and restore with the original first answer intact",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility rejects altered actual saved retention snapshots before a cold database can be opened even after the public fingerprint is recomputed",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "verification-blueprint.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "frozen, falsifiable verification observation groups uses current rules and all direct prerequisites, with a separate target contrast",
+          "status": "passed"
+        },
+        {
+          "title": "frozen, falsifiable verification observation groups allocates two different basic and two transfer families, stops there and replays unordered candidates",
+          "status": "passed"
+        },
+        {
+          "title": "frozen, falsifiable verification observation groups cannot substitute abundant basic questions for missing transfer observations",
+          "status": "passed"
+        },
+        {
+          "title": "frozen, falsifiable verification observation groups does not support a transfer cause from the same two families relabeled under both dimensions",
+          "status": "passed"
+        },
+        {
+          "title": "frozen, falsifiable verification observation groups does not resolve a basic execution problem using only later transfer successes",
+          "status": "passed"
+        },
+        {
+          "title": "frozen, falsifiable verification observation groups does not count one family under two dimensions and reserves scarce shared families",
+          "status": "passed"
+        },
+        {
+          "title": "frozen, falsifiable verification observation groups retains the observation gap under budget {\"limit\":3,\"seconds\":600}",
+          "status": "passed"
+        },
+        {
+          "title": "frozen, falsifiable verification observation groups retains the observation gap under budget {\"limit\":12,\"seconds\":90}",
+          "status": "passed"
+        },
+        {
+          "title": "frozen, falsifiable verification observation groups keeps unselected direct contrasts visible when an older client selects only prerequisites",
+          "status": "passed"
+        },
+        {
+          "title": "frozen, falsifiable verification observation groups reports actual independent observations without mistaking completion for a supported cause",
+          "status": "passed"
+        },
+        {
+          "title": "frozen, falsifiable verification observation groups does not fill independent observation requirements from {\"hintLevel\":1}",
+          "status": "passed"
+        },
+        {
+          "title": "frozen, falsifiable verification observation groups does not fill independent observation requirements from {\"priorExposure\":true}",
+          "status": "passed"
+        },
+        {
+          "title": "frozen, falsifiable verification observation groups does not fill independent observation requirements from {\"disposition\":\"dont_know\",\"correct\":false,\"score\":0}",
+          "status": "passed"
+        },
+        {
+          "title": "frozen, falsifiable verification observation groups does not fill independent observation requirements from {\"disposition\":\"skip\",\"status\":\"skipped\",\"correct\":null,\"score\":null}",
+          "status": "passed"
+        },
+        {
+          "title": "frozen, falsifiable verification observation groups does not fill independent observation requirements from {\"status\":\"pending_review\",\"correct\":null,\"score\":null}",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

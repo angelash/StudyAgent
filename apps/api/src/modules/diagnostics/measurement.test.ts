@@ -1,3 +1,5 @@
+import { measureRetentionAnchor } from './retention-anchor';
+import { atomDefinitionFingerprint } from './measurement-definition';
 import { describe, expect, it } from 'vitest';
 import { DiagnosticResponse, KnowledgeAtom, MeasurementItem } from '@study-agent/contracts';
 import { betaCdf, betaQuantile, estimateMastery, weightedEvidence } from './measurement';
@@ -81,7 +83,11 @@ describe('conservative atomic measurement', () => {
     const records = Array.from({ length: 30 }, (_, index) => evidence(index,
       { dimension: index < 4 ? 'transfer' : index < 8 ? 'retention' : 'procedure', retentionDelayDays: 0 }));
     expect(estimateMastery(atom, weightedEvidence(records, mappings(records), now)).status).toBe('fragile');
-    for (const record of records.filter((item) => item.dimension === 'retention')) record.retentionDelayDays = 7;
+    for (const record of records.filter((item) => item.dimension === 'retention')) {
+      record.retentionDelayDays=7;
+      const at=new Date(now.getTime()-7*86_400_000).toISOString(),definitionFingerprint=atomDefinitionFingerprint(atom);
+      record.retentionEvidence=measureRetentionAnchor({studentId:record.studentId,subject:atom.subject,atomId:atom.id,definitionFingerprint,sessionId:record.sessionId,startedAt:now.toISOString(),answeredAt:now.toISOString(),intervalDays:7,answer:{status:record.status,disposition:record.disposition,hintLevel:record.hintLevel,priorExposure:!!record.priorExposure},exposures:[],baselines:[{id:'original-'+record.id,sessionId:'original-'+record.sessionId,studentId:record.studentId,subject:atom.subject,atomId:atom.id,definitionFingerprint,submittedAt:at,correct:true,status:'scored',disposition:'answered',hintLevel:0,priorExposure:false,sourceRetained:true}]});
+    }
     const secure = estimateMastery(atom, weightedEvidence(records, mappings(records), now));
     expect(secure.status).toBe('secure');
     expect(secure.lower).toBeGreaterThan(70);
@@ -122,7 +128,7 @@ describe('conservative atomic measurement', () => {
       evidence(2, { atomId: 'place', correct: false, score: 0 }), evidence(3, { atomId: 'place', correct: false, score: 0 })];
     const hypotheses = deriveHypotheses('student', 'math', [definition], records, mappings(records), [], now.toISOString());
     expect(hypotheses).toHaveLength(1); expect(hypotheses[0]).toMatchObject({ cause: 'procedure_gap', status: 'proposed', confidence: 'low',
-      supportingEvidenceIds: [], reportedEvidenceIds: ['r0', 'r1'], ruleVersion: 'diagnosis-rules-v6' });
+      supportingEvidenceIds: [], reportedEvidenceIds: ['r0', 'r1'], ruleVersion: 'diagnosis-rules-v7' });
     expect(hypotheses[0].verification!.supportCondition).toContain('两个独立题族');
     expect(hypotheses[0].verification!.undecidedCondition).toContain('暂时不会');
   });

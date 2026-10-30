@@ -14,6 +14,7 @@ export type PracticeAttempt = {
   assistantHelpSequence?: number;
 };
 export type PracticeSession = {
+  retentionProtocol?:'teaching-retention-v1';
   id: string; studentId: string; subject: 'math' | 'chinese' | 'english' | 'chemistry'; planId: string | null; actionId: string;
   atomId: string; day: string; status: 'in_progress' | 'completed'; questionIds: string[];
   snapshots: DiagnosticSession['questionSnapshots']; createdAt: string; completedAt: string | null;

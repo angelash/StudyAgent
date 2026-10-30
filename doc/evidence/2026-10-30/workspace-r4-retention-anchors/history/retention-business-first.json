@@ -1,0 +1,39 @@
+{
+  "numTotalTests": 6,
+  "numPassedTests": 6,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "retention.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility blocks an old due task after a real practice and reports the exact new boundary without changing its original schedule",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility allows the exact real one-day boundary and freezes the original first answer and sources rather than the thirty-day baseline gap",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility keeps a response ineligible when real help occurs after its retest starts even if submission is much later",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility does not change another child anchor and ordinary reads or calendar completion cannot create teaching exposure events",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility preserves actual new report provenance through a cold native backup and restore with the original first answer intact",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching retention transaction, cutoff and original report compatibility rejects altered actual saved retention snapshots before a cold database can be opened even after the public fingerprint is recomputed",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

@@ -62,14 +62,14 @@ for(const driver of ['sqlite','postgres'] as const)(driver==='sqlite'||configure
   });
   it('migrates actual27 without rewriting business records and the unmodified old reader refuses28 before any write',async()=>{
     const url=await original('u'),before=await snapshot(url);expect(await version(url)).toBe(27);expect(await state(url)).toBe('ready-schema27');
-    const current=new DomainDatabase(url);await current.open();await current.close();expect(await version(url)).toBe(28);expect(await state(url)).toBe('ready-schema28');expect(await snapshot(url)).toEqual(before);
+    const current=new DomainDatabase(url);await current.open();await current.close();expect(await version(url)).toBe(29);expect(await state(url)).toBe('ready-schema29');expect(await snapshot(url)).toEqual(before);
     const bytesBefore=driver==='sqlite'?hash(readFileSync(url)):null,old=new Reader27(url);await expect(old.open()).rejects.toThrow(/restoration|schema|reader/i);
     expect(await snapshot(url)).toEqual(before);if(driver==='sqlite')expect(hash(readFileSync(url))).toBe(bytesBefore);
     expect(()=>oldGuard.assertReady('ready-schema28',Array.from({length:28},(_,index)=>index+1))).toThrow('unsupported_database_schema');
   });
   it('migrates an actual23 database through24,25,26,27 and28 with its original business rows intact',async()=>{
     const url=await original('v23',Reader23),before=await snapshot(url);expect(await version(url)).toBe(23);expect(await state(url)).toBe('ready-schema23');
-    const current=new DomainDatabase(url);await current.open();await current.close();expect(await version(url)).toBe(28);expect(await state(url)).toBe('ready-schema28');expect(await snapshot(url)).toEqual(before);
+    const current=new DomainDatabase(url);await current.open();await current.close();expect(await version(url)).toBe(29);expect(await state(url)).toBe('ready-schema29');expect(await snapshot(url)).toEqual(before);
   });
   it('refuses incomplete calendar relations before advancing the actual27 minimum reader marker',async()=>{
     const url=await original('invalid-calendar'),old=new Reader27(url);await old.open();try{await old.commit(await old.read(),{studioScheduleEvents:[{id:'owned-orphan-calendar-event',studentId:'owned-missing-child',guidance:{arrangementId:'owned-missing-arrangement'}}]});}finally{await old.close();}const before=await snapshot(url);await expect(new DomainDatabase(url).open()).rejects.toThrow('guidance_calendar_saved_integrity_failed');expect(await version(url)).toBe(27);expect(await state(url)).toBe('ready-schema27');expect(await snapshot(url)).toEqual(before);
@@ -80,13 +80,13 @@ for(const driver of ['sqlite','postgres'] as const)(driver==='sqlite'||configure
     else{await sql(url,"CREATE FUNCTION reject_reader28() RETURNS trigger LANGUAGE plpgsql AS 'BEGIN IF NEW.state=''ready-schema28'' THEN RAISE EXCEPTION ''injected_reader28_failure''; END IF; RETURN NEW; END'");await sql(url,'CREATE TRIGGER reject_reader28 BEFORE UPDATE ON study_restore_guard FOR EACH ROW EXECUTE FUNCTION reject_reader28()');}
     const current=new DomainDatabase(url);await expect(current.open()).rejects.toThrow('injected_reader28_failure');expect(await version(url)).toBe(27);expect(await state(url)).toBe('ready-schema27');expect(await snapshot(url)).toEqual(before);
     const old=new Reader27(url);await old.open();await old.close();expect(await version(url)).toBe(27);
-    await sql(url,'DROP TRIGGER reject_reader28'+(driver==='postgres'?' ON study_restore_guard':''));const retry=new DomainDatabase(url);await retry.open();await retry.close();expect(await version(url)).toBe(28);expect(await snapshot(url)).toEqual(before);
+    await sql(url,'DROP TRIGGER reject_reader28'+(driver==='postgres'?' ON study_restore_guard':''));const retry=new DomainDatabase(url);await retry.open();await retry.close();expect(await version(url)).toBe(29);expect(await snapshot(url)).toEqual(before);
   });
-  it('rejects unknown future29 and mismatched or incomplete28 markers without resetting them',async()=>{
+  it('rejects unknown future30 and mismatched or incomplete28 markers without resetting them',async()=>{
     const url=await original('future'),current=new DomainDatabase(url);await current.open();await current.close();const before=await snapshot(url);
-    await sql(url,'INSERT INTO schema_migrations(version,applied_at) VALUES(29,?)',[new Date().toISOString()]);
-    await expect(new DomainDatabase(url).open()).rejects.toThrow('unsupported_database_schema');expect(await version(url)).toBe(29);expect(await snapshot(url)).toEqual(before);
-    await sql(url,'DELETE FROM schema_migrations WHERE version=29');await sql(url,"UPDATE study_restore_guard SET state='ready-schema27' WHERE id=1");
+    await sql(url,'INSERT INTO schema_migrations(version,applied_at) VALUES(30,?)',[new Date().toISOString()]);
+    await expect(new DomainDatabase(url).open()).rejects.toThrow('unsupported_database_schema');expect(await version(url)).toBe(30);expect(await snapshot(url)).toEqual(before);
+    await sql(url,'DELETE FROM schema_migrations WHERE version=30');await sql(url,"UPDATE study_restore_guard SET state='ready-schema27' WHERE id=1");
     await expect(new DomainDatabase(url).open()).rejects.toThrow('minimum_reader_guard_mismatch');expect(await state(url)).toBe('ready-schema27');expect(await snapshot(url)).toEqual(before);
     await sql(url,"UPDATE study_restore_guard SET state='restoring' WHERE id=1");await expect(new DomainDatabase(url).open()).rejects.toThrow('Database restoration is incomplete');expect(await state(url)).toBe('restoring');
   });
@@ -94,9 +94,9 @@ for(const driver of ['sqlite','postgres'] as const)(driver==='sqlite'||configure
     const url=await original('backup'),backup=require(join(root,'scripts/operations/backup.cjs')),legacyBundle=join(folder,'b27'),legacyTarget=join(folder,'r27');
     await backup.createBundle({dataDir:dirname(url),destination:legacyBundle});expect((await backup.verifyBundle({bundle:legacyBundle})).database.schemaVersions.at(-1)).toBe(27);
     await backup.restoreBundle({bundle:legacyBundle,destination:legacyTarget});const restored=join(legacyTarget,'study-agent.sqlite3');expect(await state(restored)).toBe('ready-schema27');
-    const reader=new DomainDatabase(restored);await reader.open();await reader.close();expect(await state(restored)).toBe('ready-schema28');
-    const bundle=join(folder,'b28'),destination=join(folder,'r28');await backup.createBundle({dataDir:legacyTarget,destination:bundle});expect((await backup.verifyBundle({bundle})).database.schemaVersions.at(-1)).toBe(28);
-    await backup.restoreBundle({bundle,destination});const location=join(destination,'study-agent.sqlite3');expect(await state(location)).toBe('ready-schema28');
+    const reader=new DomainDatabase(restored);await reader.open();await reader.close();expect(await state(restored)).toBe('ready-schema29');
+    const bundle=join(folder,'b28'),destination=join(folder,'r28');await backup.createBundle({dataDir:legacyTarget,destination:bundle});expect((await backup.verifyBundle({bundle})).database.schemaVersions.at(-1)).toBe(29);
+    await backup.restoreBundle({bundle,destination});const location=join(destination,'study-agent.sqlite3');expect(await state(location)).toBe('ready-schema29');
     await expect(new Reader27(location).open()).rejects.toThrow(/restoration|schema|reader/i);const current=new DomainDatabase(location);await current.open();await current.close();
   });
 });

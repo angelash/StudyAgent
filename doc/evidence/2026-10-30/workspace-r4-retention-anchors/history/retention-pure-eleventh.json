@@ -1,0 +1,281 @@
+{
+  "numTotalTests": 56,
+  "numPassedTests": 56,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "classroom-retention-origin.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "frozen original classroom knowledge mapping uses the retained exact lesson and atom version while returning no private teaching text",
+          "status": "passed"
+        },
+        {
+          "title": "frozen original classroom knowledge mapping uses the original atom revision after publication changes rather than relabelling the old classroom with a new definition",
+          "status": "passed"
+        },
+        {
+          "title": "frozen original classroom knowledge mapping does not guess atom mapping from a source-course title, another child or altered original lesson content",
+          "status": "passed"
+        },
+        {
+          "title": "frozen original classroom knowledge mapping rejects a recomputed context that changes the original child, target or frozen definition",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "classroom-retention-record.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "original classroom teaching display receipts keeps an original legacy speech-unit receipt valid after an explicit later speech-v2 presentation upgrade",
+          "status": "passed"
+        },
+        {
+          "title": "original classroom teaching display receipts verifies the frozen original lesson, actual displayed step and complete idempotent command",
+          "status": "passed"
+        },
+        {
+          "title": "original classroom teaching display receipts rejects a recomputed original command targeting another lesson step or another student",
+          "status": "passed"
+        },
+        {
+          "title": "original classroom teaching display receipts does not invent knowledge targets for an otherwise valid unmapped historical classroom",
+          "status": "passed"
+        },
+        {
+          "title": "original classroom teaching display receipts refuses a duplicate original key and a claimed sentence outside the frozen actual narration",
+          "status": "passed"
+        },
+        {
+          "title": "original classroom teaching display receipts keeps a legacy classroom without a display journal readable but refuses a journal that lacks its frozen source context",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "retention-anchor.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "actual teaching anchors and independent elapsed retention cannot regain independent qualification by leaving this same retest open for days after receiving new teaching",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention uses the retained original independent baseline when no later teaching is known and never changes source arrays",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention does not call a30-day old baseline thirty-day post-teaching retention when help occurred yesterday",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention uses exact elapsed milliseconds for the1-day boundary",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention uses exact elapsed milliseconds for the3-day boundary",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention uses exact elapsed milliseconds for the7-day boundary",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention uses exact elapsed milliseconds for the14-day boundary",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention moves the anchor to a real help provided after this retest started and preserves the earlier baseline",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention retains a known recent teaching boundary when there is no independent baseline without inventing retention eligibility",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention never backdates future teaching into an earlier historical answer",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention does not move an actual child math anchor for another child, another subject or independent adult teaching",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention does not manufacture an independent baseline from a helped, exposed, pending or same-session answer",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention keeps missing original sources, unknown knowledge mapping and invalid time explicitly unknown",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention does not count duplicate original exposure receipts twice and refuses one identity claiming two different originals",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention retains real elapsed time while refusing to call an assisted or unscored current answer independent retention",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention rejects an invalid server cutoff and binds the exact source, interval and actual answer time into the original fingerprint",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "retention-evidence-projection.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "explicit current retention method projection without raw evidence mutation does not let a diagnostic completed after this retest started become a historical independent baseline",
+          "status": "passed"
+        },
+        {
+          "title": "explicit current retention method projection without raw evidence mutation does not borrow a response from another still unfinished diagnostic as a retained independent baseline",
+          "status": "passed"
+        },
+        {
+          "title": "explicit current retention method projection without raw evidence mutation recomputes post-teaching interval from original retained sources while leaving old30-day fields and report objects untouched",
+          "status": "passed"
+        },
+        {
+          "title": "explicit current retention method projection without raw evidence mutation qualifies an actual independent elapsed sample only after the original required interval with a retained original baseline",
+          "status": "passed"
+        },
+        {
+          "title": "explicit current retention method projection without raw evidence mutation does not manufacture new-protocol eligibility when an old retest lacks a frozen original target",
+          "status": "passed"
+        },
+        {
+          "title": "explicit current retention method projection without raw evidence mutation keeps an unrelated report comparable while requiring explicit reanalysis for an old report that claimed retention",
+          "status": "passed"
+        },
+        {
+          "title": "explicit current retention method projection without raw evidence mutation preserves ordinary baseline responses and makes a hinted current retest ineligible even after enough real time",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "retention-integrity.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "actual native retention cutoff and source integrity rebuilds the exact original retention snapshot from actual retained source rows",
+          "status": "passed"
+        },
+        {
+          "title": "actual native retention cutoff and source integrity rejects an altered elapsed snapshot and an actually missing original baseline even if public hashes are editable",
+          "status": "passed"
+        },
+        {
+          "title": "actual native retention cutoff and source integrity does not use teaching after the original answer cutoff to invalidate an otherwise exact saved original",
+          "status": "passed"
+        },
+        {
+          "title": "actual native retention cutoff and source integrity does not use a later scoring revision to overwrite the original baseline qualification at an earlier response",
+          "status": "passed"
+        },
+        {
+          "title": "actual native retention cutoff and source integrity keeps a legacy database without new retention records readable",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "retention-native.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "native retained teaching source and original retention snapshots verifies an actual retained teaching operation without storing answer text or mutable current content",
+          "status": "passed"
+        },
+        {
+          "title": "native retained teaching source and original retention snapshots refuses a reassigned child even if the outer stable event identity is recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "native retained teaching source and original retention snapshots refuses missing actual operations, changed real dates or a forged target definition",
+          "status": "passed"
+        },
+        {
+          "title": "native retained teaching source and original retention snapshots requires unique original event identities and rejects unknown source kinds",
+          "status": "passed"
+        },
+        {
+          "title": "native retained teaching source and original retention snapshots does not accept recomputed frozen answer hashes when the claimed elapsed interval contradicts actual retained teaching",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "retention-review-gate.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "actual original review and post-teaching interval gate blocks an old due task after a new actual help and reports the later real earliest time without changing original dates",
+          "status": "passed"
+        },
+        {
+          "title": "actual original review and post-teaching interval gate allows the exact true interval boundary to open a check while keeping missing baseline explicit",
+          "status": "passed"
+        },
+        {
+          "title": "actual original review and post-teaching interval gate never uses a manually earlier calendar date to shorten the original review boundary",
+          "status": "passed"
+        },
+        {
+          "title": "actual original review and post-teaching interval gate does not move an already-started original task or bypass a paused plan, revised source or unresolved teaching source",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "retention-source.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "retained actual teaching source adapters uses the actual original reference and guardian demonstration commands without exporting private question or help bodies",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters binds original practice start, actual attempt and hint times to the original child and frozen atom without returning answer text",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters does not move anchors for merely proposed plans, calendar completion, unsaved drafts, another child or another subject",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters keeps missing practice definitions or a hint outside its real original question explicitly unverifiable",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters binds actual diagnostic hints to their frozen item and atom rather than a client supplied target",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters uses only actual child generated teaching and the exact retained shared target definition",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters keeps a missing shared generated original unknown and does not infer a definition from the currently published atom",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters does not use mutable classroom updatedAt as proof of a teaching display",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters requires the exact saved classroom version and actual child author for an explicit display receipt",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,279 @@
+{
+  "numTotalTests": 63,
+  "numPassedTests": 63,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "assistant-guidance.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "private source observations, real reports and original guidance plans keeps preflight read-only and saves a full adult observation without child or invented formal evidence",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans rejects cross-author source reads, another guardians private intent and a forged report without creating a plan",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans links actual completed first-response evidence separately from a conversation clue and creates exactly one original proposed rule plan",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans refuses an active report and a revised report version while preserving the original observation and exact report-link receipt",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans commits only one complete observation edit across two actual applications and returns the original winner after later versions",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans cold restores the actual report and created plan link without rewriting source or learning evidence and rejects a recomputed cross-report link",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans rejects altered original message SHA, selection and linked-question claims after all private source and command hashes are recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans rejects a different owner even with a self-consistent source and complete replayed command chain in native integrity validation",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans exports observations only to their actual author and keeps another guardians shared reports free of private source identifiers",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans deletes a child observation through the latest deletion ledger after restoring an actual older native backup",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans removes an adult authors original observation and source through the newest deletion ledger without recreating formal learning evidence",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans requires the actual immutable source message when internal origin hashes and the entire creation receipt are self-consistently recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans keeps profile and teaching grades distinct and blocks fresh writes after an actual profile change while restoring the exact original receipt",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans returns the original adjustment revision after later valid edits and definition changes without substituting the latest plan revision",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans allows the actual learning-code author to preserve an own observation and report while denying guardian plan creation and another authors source",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans keeps the exact original status revision and command after another valid state, including native cold restart and stable original due dates",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans preserves the complete original retrospective reason and fingerprint after a later plan edit without adding another formal response",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans keeps legacy study-plan request recovery inside the actual child and subject when two unrelated real accounts deliberately choose the same original key",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans strict legacy study-plan original receipt cannot be redirected through a later corrupted legacy activity reference",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans strict legacy study-plan commands reject a reused author key for another real confirmed subject",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans strict legacy study-plan session commands reject another plan or action with the same author key and replay the original result after a later change",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans legacy study-plan all-conflict preview has zero confirmable sessions and cannot persist an overlapping fallback",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans legacy study-plan partial-conflict preview saves only actual free slots and refuses a newly occupied final slot at confirmation",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans legacy study-plan incomplete original activity refuses creation even when the current preview would otherwise be valid",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans legacy study-plan conflict preview covers this childs other subject without exposing or blocking on another familys private events",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans guidance calendar requires the actual complete canonical preflight input and never silently changes the saved original command",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans guidance calendar native verification rejects actual rewritten source relations and complete commands after the outer database SHA is recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans guidance calendar serializes identical confirmation and conflicting complete revisions across two actual applications",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans guidance calendar shares actual arrangement times without exposing another guardians private command or reason and rechecks revoked access",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans guidance calendar account deletion and latest-ledger cold restore retain the shared child dates while removing the actual authors private commands",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans guidance calendar preflight stays read-only and explicit confirmation saves only actual source events with one immutable original command",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans guidance calendar refuses an actual newly occupied cross-subject slot and preserves all records after the failed confirmation",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans guidance calendar revision preserves the exact original confirmation after a later valid schedule and refuses generic manual deletion",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans guidance calendar keeps actual review identity and minimum interval when an explicit reschedule saves the original schedule history",
+          "status": "passed"
+        },
+        {
+          "title": "private source observations, real reports and original guidance plans guidance calendar cold native restore preserves original commands and actual events while the latest child deletion ledger removes all calendar relations",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "classroom-presentation.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "frozen bilingual captions, explicit historical upgrade and authorized narration freezes complete English units, rejects unbound new requests and synthesizes exactly the requested unit",
+          "status": "passed"
+        },
+        {
+          "title": "frozen bilingual captions, explicit historical upgrade and authorized narration projects the exact old rule without persisting a silent migration and keeps legacy narration usable",
+          "status": "passed"
+        },
+        {
+          "title": "frozen bilingual captions, explicit historical upgrade and authorized narration upgrades from the saved source range, retains hints/answers/reading facts and stores the exact prior snapshot",
+          "status": "passed"
+        },
+        {
+          "title": "frozen bilingual captions, explicit historical upgrade and authorized narration replays a lost upgrade acknowledgement without resetting later progress and refuses changed or stale commands",
+          "status": "passed"
+        },
+        {
+          "title": "frozen bilingual captions, explicit historical upgrade and authorized narration allows only one concurrent upgrade of a historical session",
+          "status": "passed"
+        },
+        {
+          "title": "frozen bilingual captions, explicit historical upgrade and authorized narration rechecks real child authorization before reading, upgrading or obtaining narration",
+          "status": "passed"
+        },
+        {
+          "title": "frozen bilingual captions, explicit historical upgrade and authorized narration lets an actual learner use only their own caption and image routes through the student allowlist",
+          "status": "passed"
+        },
+        {
+          "title": "frozen bilingual captions, explicit historical upgrade and authorized narration freezes new replies independently and retains old reply rhythm after a classroom upgrade",
+          "status": "passed"
+        },
+        {
+          "title": "frozen bilingual captions, explicit historical upgrade and authorized narration rejects a corrupt frozen unit without re-splitting or invoking a paid provider",
+          "status": "passed"
+        },
+        {
+          "title": "frozen bilingual captions, explicit historical upgrade and authorized narration aborts synthesis when the requesting browser disconnects",
+          "status": "passed"
+        },
+        {
+          "title": "frozen bilingual captions, explicit historical upgrade and authorized narration retains units, history and semantic identities through database reopen and portable export",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "classroom-turn.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "durable classroom turns, original position and explicit teaching modes commits one independent task and replays lost acknowledgments without repeated messages or board notes",
+          "status": "passed"
+        },
+        {
+          "title": "durable classroom turns, original position and explicit teaching modes persists structured boards with frozen speech, keeps legacy notes and exports complete graphs after reopening",
+          "status": "passed"
+        },
+        {
+          "title": "durable classroom turns, original position and explicit teaching modes keeps the last successful receipt readable at the message limit and fixes legacy replay order",
+          "status": "passed"
+        },
+        {
+          "title": "durable classroom turns, original position and explicit teaching modes rejects future/stale positions, same keys with changed mode/model and overlapping turns",
+          "status": "passed"
+        },
+        {
+          "title": "durable classroom turns, original position and explicit teaching modes saves practice help before generation and preserves it after cancellation without sending hints or future narration",
+          "status": "passed"
+        },
+        {
+          "title": "durable classroom turns, original position and explicit teaching modes cancels an in-flight response before publication and explicitly retries one new task generation",
+          "status": "passed"
+        },
+        {
+          "title": "durable classroom turns, original position and explicit teaching modes retains frozen teaching context while unrelated preferences and reading position change",
+          "status": "passed"
+        },
+        {
+          "title": "durable classroom turns, original position and explicit teaching modes does not publish when the frozen lesson or original guardian grant changes in flight",
+          "status": "passed"
+        },
+        {
+          "title": "durable classroom turns, original position and explicit teaching modes supports all five intents and keeps actual model identity fixed in the queued command",
+          "status": "passed"
+        },
+        {
+          "title": "durable classroom turns, original position and explicit teaching modes recovers a queued turn after database reopen and exports no internal prompt or authorization",
+          "status": "passed"
+        },
+        {
+          "title": "durable classroom turns, original position and explicit teaching modes does not publish or invoke a model when privacy deletion removed the queued business record",
+          "status": "passed"
+        },
+        {
+          "title": "durable classroom turns, original position and explicit teaching modes serializes simultaneous same-key submissions and replays the winner",
+          "status": "passed"
+        },
+        {
+          "title": "durable classroom turns, original position and explicit teaching modes uses the actual learner allowlist and rejects results after its original access version changes",
+          "status": "passed"
+        },
+        {
+          "title": "durable classroom turns, original position and explicit teaching modes retains provider failure until an explicit retry and never silently changes model",
+          "status": "passed"
+        },
+        {
+          "title": "durable classroom turns, original position and explicit teaching modes removes turns through actual child privacy deletion and prevents queued model calls",
+          "status": "passed"
+        },
+        {
+          "title": "durable classroom turns, original position and explicit teaching modes recovers an expired worker lease after restart and fences the previous worker output",
+          "status": "passed"
+        },
+        {
+          "title": "durable classroom turns, original position and explicit teaching modes retains turn context through a real SQLite backup and cold restore with invalid old leases",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,8 @@
+import { isIndependentRetention } from './retention-evidence-projection';
 import { DiagnosticResponse, KnowledgeAtom, MasteryEstimate, MeasurementDimension, MeasurementItem } from '@study-agent/contracts';
 import { FAMILY_IDENTITY_VERSION, independentFamilyKey } from './family-identity';
 
-export const MEASUREMENT_VERSION = 'rule-estimate-v3';
+export const MEASUREMENT_VERSION = 'rule-estimate-v4';
 const round = (value: number, digits = 1) => Number(value.toFixed(digits));
 const dimensions: MeasurementDimension[] = ['understanding', 'procedure', 'transfer', 'retention'];
 
@@ -62,6 +63,7 @@ export function betaQuantile(probability: number, a: number, b: number) {
 export type WeightedEvidence = { evidence: DiagnosticResponse; weight: number };
 /** Raw task scores are retained separately; only observed answers can estimate ability. */
 export const measurableResponse = (response: DiagnosticResponse) => response.disposition === 'answered' &&
+  !['not_independent','unknown_source'].includes(response.retentionEvidence?.status??'') &&
   response.status === 'scored' && typeof response.score === 'number' && Number.isFinite(response.score) &&
   response.score >= 0 && response.score <= 1 && !response.priorExposure && response.hintLevel < 3;
 export const measuredQuestionKey = (response: DiagnosticResponse) =>
@@ -77,6 +79,7 @@ export function weightedEvidence(responses: DiagnosticResponse[], mappings: Map<
   const weighted: WeightedEvidence[] = [];
   for (const response of firstQuestionResponses(responses)) {
     const mapping = mappings.get(`${response.itemId}@${response.mappingVersion}`) ?? mappings.get(response.itemId);
+    if (response.dimension==='retention'&&!isIndependentRetention(response))continue;
     if (!measurableResponse(response) || !mapping || mapping.reviewStatus !== 'approved') continue;
     const familyKey = JSON.stringify([response.studentId, independentFamilyKey(response)]);
     const count = families.get(familyKey) ?? 0;
@@ -90,7 +93,7 @@ export function weightedEvidence(responses: DiagnosticResponse[], mappings: Map<
 }
 
 export function estimateMastery(atom: KnowledgeAtom, weighted: WeightedEvidence[]): MasteryEstimate {
-  const evidence = weighted.filter((item) => item.evidence.atomId === atom.id && measurableResponse(item.evidence) &&
+  const evidence = weighted.filter((item) => item.evidence.atomId === atom.id && measurableResponse(item.evidence) && (item.evidence.dimension!=='retention'||isIndependentRetention(item.evidence)) &&
     Number.isFinite(item.weight) && item.weight > 0);
   const n = evidence.reduce((sum, item) => sum + item.weight, 0);
   const success = evidence.reduce((sum, item) => sum + item.weight * item.evidence.score!, 0);
@@ -100,8 +103,7 @@ export function estimateMastery(atom: KnowledgeAtom, weighted: WeightedEvidence[
   const mean = n ? a / (a + b) * 100 : null;
   const families = new Set(evidence.filter((item) => item.evidence.hintLevel === 0).map((item) => independentFamilyKey(item.evidence))).size;
   const transferVerified = new Set(evidence.filter(({ evidence: e }) => e.dimension === 'transfer' && e.correct && e.hintLevel === 0).map(({ evidence: e }) => independentFamilyKey(e))).size >= 2;
-  const retentionVerified = new Set(evidence.filter(({ evidence: e }) => e.dimension === 'retention' &&
-    (e.retentionDelayDays ?? 0) >= 1 && e.correct && e.hintLevel === 0).map(({ evidence: e }) => independentFamilyKey(e))).size >= 2;
+  const retentionVerified = new Set(evidence.filter(({ evidence: e }) => isIndependentRetention(e) && e.correct).map(({ evidence: e }) => independentFamilyKey(e))).size >= 2;
   const status: MasteryEstimate['status'] = !n ? 'unknown' : n < 3 || families < 2 ? 'insufficient' :
     n >= 6 && lower! >= 70 && transferVerified && retentionVerified ? 'secure' : mean! >= 70 ? 'fragile' : 'learning';
   return { atomId: atom.id, atomName: atom.name, grade: atom.grade, mastery: mean === null ? null : round(mean),

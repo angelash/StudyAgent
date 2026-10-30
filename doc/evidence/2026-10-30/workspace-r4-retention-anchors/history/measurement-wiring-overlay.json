@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-30T09:28:15.384Z",
+  "files": [
+    {
+      "path": "packages/contracts/src/diagnostics.ts",
+      "beforeSha256": "36121d7c96717ddd0f9e6cb59e19cbd021b4dcfeed26a57695984feb16bb2f33",
+      "afterSha256": "483ecd1f0dc8430b869c86758702bd5da564379ac336ccb2784c329ec13454a0"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/diagnostics.module.ts",
+      "beforeSha256": "b08c357dd4d1120ed2f3c6805533cfdd8fde8e6ed9fef600ec82b1d31305d655",
+      "afterSha256": "09c7d1e19c491e01b4c7ba68161b960569550ddf22e34309d17dbbc0ad376472"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
+      "beforeSha256": "5d25bbfa8b55ee898a4acebe299417ab2ac7a9fbd032b965fdf8e0e737e79e73",
+      "afterSha256": "0e256daa17dfeb5d4dd7944903c6e3650a2bc19b348aa592a523bce4090a086d"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/measurement.ts",
+      "beforeSha256": "efa9626106107df267d8e25e530169d580f8d5fba4728f40883ffd976de0a1af",
+      "afterSha256": "ca4830bb4914494c0098729ef139f78c3f992db0a34ad6ed2e31be82d1da9fb5"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/diagnosis.ts",
+      "beforeSha256": "d8bd4a3f06d93a502147e29b40fa2e2410ceaf436a44065cf2ee967480c25c5e",
+      "afterSha256": "70cb1a45afbe91d43642fa0a2957f6d3a2d807a7735624f59b4d26bc7d0f2113"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/measurement-compatibility.ts",
+      "beforeSha256": "c2cc8b0931797718ee360dfb47dc0c503dbccfef1e97e9b0a8bbb4626127cd43",
+      "afterSha256": "ca2989aaec07afba0e8ceda1f8edfdb9f3dd4f46dba3fc9799f4b17e0f08b2db"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/guidance.service.ts",
+      "beforeSha256": "5631738657909fd43b5cd2ff93c5aca07cc1ae94be620e9c191221006f6bbb2c",
+      "afterSha256": "b8d801c638bc46bfa13500972065fa91ee27fc9ecd9f16d18e41172f69489c87"
+    }
+  ],
+  "scope": "Isolated29 core method projection/new response snapshot/compatibility only. Real teaching writers, classroom display/consumer UI, review gate and privacy/native acceptance still required; no production change."
+}

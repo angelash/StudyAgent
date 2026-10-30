@@ -6,6 +6,7 @@ import { AnswerEvidenceView } from './answer-evidence-view';
 import { EvidenceFeedbackForm } from './evidence-feedback';
 import { QuestionFaceView } from './question-face-view';
 import './diagnostic-evidence.css';
+import { RetentionEvidenceSummary } from './retention-evidence';
 
 type Detail = { response: DiagnosticResponse; originalResponse: DiagnosticResponse; observation: DiagnosticObservation; componentObservations?: ComponentObservation[];
   payload: QuestionRenderPayload | null; stem: string; referenceAnswer: unknown; analysis: string; mapping: MeasurementItem;
@@ -50,6 +51,7 @@ export function DiagnosticEvidence({ studentId, responseId, label = '展开当�
     {detail && <div><p className="diagnostic-evidence-source">{detail.atomSnapshot?.name ?? detail.mapping.atomId} · {new Date(detail.response.submittedAt).toLocaleString('zh-CN')} · {detail.scopeSnapshot.grade}年级 · {detail.scopeSnapshot.textbookVersion}</p>
       <QuestionFaceView payload={detail.payload} stem={detail.stem} /><h5>孩子提交的回答</h5><AnswerEvidenceView answer={detail.response.answer} schema={detail.payload?.answerSchema} />
       <ObservedPerformance observation={detail.observation} /><p>{detail.response.gradingReason}</p>
+      <RetentionEvidenceSummary evidence={detail.response.retentionEvidence}/>
       <ComponentObservations observations={detail.componentObservations} />
       <p>{detail.response.disposition === 'dont_know' ? '选择暂时不会，没有提交解题过程。' : detail.response.disposition === 'skip' ? '跳过本题。' : detail.response.hintLevel ? `使用了${detail.response.hintLevel}级提示。` : '本次作答未使用提示。'}{detail.response.priorExposure && '这道题曾在学习活动中出现，不计独立新题证据。'}耗时 {Math.round(detail.response.elapsedMs / 1000)} 秒；耗时本身不能确定能力原因。</p>
       {!!detail.revisions.length && <details><summary>原分与评分修订</summary><p>首次评分：{detail.originalResponse.score === null ? '尚未评分' : `${Math.round(detail.originalResponse.score * 100)}%`}。{detail.originalResponse.gradingReason}</p>{detail.revisions.map(revision => <div key={revision.version}><p>第{revision.version}次复核 · {new Date(revision.createdAt).toLocaleString('zh-CN')} · {Math.round(revision.score * 100)}%</p><p>{revision.reason}</p></div>)}</details>}

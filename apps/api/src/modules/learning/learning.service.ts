@@ -1,3 +1,4 @@
+import { RetentionService } from '../diagnostics/retention.service';
 import { legacyCalendarCreateSchema,legacyCalendarSessionSchema } from './guidance-calendar-record';
 import { replayLegacyCalendarCommand,saveLegacyCalendarCommand } from './legacy-calendar-command';
 import { ASSISTANT_PRACTICE_ANSWER_PROTOCOL, assistantPracticeLearnerDraftSchema, assistantPracticeLearnerResponseSchema,
@@ -66,7 +67,7 @@ export class LearningService {
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
     private readonly diagnostics: DiagnosticsService, private readonly guidance: GuidanceService,
     private readonly workspace: QuestionWorkspaceService, private readonly events: DomainEventBusService, private readonly media: StudentMediaService,
-    private readonly integrations: StudioIntegrationService, private readonly speech: SpeechService) {}
+    private readonly integrations: StudioIntegrationService, private readonly speech: SpeechService, private readonly retention:RetentionService) {}
 
   studentProfiles(user: InMemoryUserAccount) {
     return this.store.students.filter((child) => user.role === 'admin' || (user.role === 'student' && child.userId === user.id) || Boolean(this.store.find('bindings', { parentUserId: user.id, studentId: child.id, status: 'active' })))
@@ -728,7 +729,8 @@ export class LearningService {
         return structuredClone({ id, stem: question.stem, answer: question.answer, analysis: question.analysis,
           document: payload.document, answerSchema: payload.answerSchema, renderPayload: payload, questionType: question.type });
       }), createdAt: new Date().toISOString(), completedAt: null };
-    this.store.append('practiceSessions', session);
+    if(session.atomSnapshot)session.retentionProtocol='teaching-retention-v1';this.store.append('practiceSessions', session);
+    this.retention.capturePractice(session,['practice:'+session.id+':opened']);
     this.events.publish('learning.practice_started', { studentId: plan.studentId, sessionId: session.id, planId, actionId, day });
     return this.view(user, session.id);
   }
@@ -861,7 +863,9 @@ export class LearningService {
       receipt = { kind: 'hint', hintId, level, hint: assistantPracticeHint(group.atomSnapshot, level), providedAt: at };
     } else if (command.kind === 'solution') receipt = { kind: 'solution', referenceAnswer: structuredClone(snapshot.answer), analysis: snapshot.analysis, providedAt: at };
     else receipt = { kind: 'guardian_demonstration', notice: ASSISTANT_DEMONSTRATION_NOTICE, providedAt: at };
-    return this.assistantPracticeRecordCommand(start, command.kind, user.id, questionId, command, command.requestKey, receipt, at);
+    const result=this.assistantPracticeRecordCommand(start, command.kind, user.id, questionId, command, command.requestKey, receipt, at);
+    this.retention.capturePractice(session,[command.kind==='hint'?'practice-hint:'+receipt.hintId:'practice-help:'+start.id+':'+command.requestKey]);
+    return result;
   }
   private assistantPracticeComplete(user: InMemoryUserAccount, session: PracticeSession, value: unknown, auth?: InMemoryAuthSession) {
     const { start } = assertAssistantPracticeWriter(this.store, this.students, user, session, auth, false), command = validate(assistantPracticeCompleteSchema, value);
@@ -923,6 +927,7 @@ export class LearningService {
       elapsedMs: command.elapsedMs, submittedAt: new Date().toISOString(), ...(relation && assistantCommand ? { actorId: user.id, actorRole: 'student' as const,
         actorStudentId: session.studentId, learnerExplanation: assistantCommand.learnerExplanation, assistantInput: structuredClone(assistantCommand), assistantHelpSequence: relation.start.commands.length } : {}) };
     this.store.append('practiceAttempts', attempt);
+    this.retention.capturePractice(session,['practice-attempt:'+attempt.id]);
     this.media.bind(mediaIds, attempt.id);
     if (session.drafts && draft?.protocol !== 'answer-draft-v2') delete session.drafts[command.questionId];
     if (relation) {
@@ -979,7 +984,8 @@ export class LearningService {
     const plan = session.planId ? this.store.find('diagnosticPlans', { id: session.planId }) : undefined;
     const atom = session.atomSnapshot ?? this.store.find('diagnosticSessions', { id: plan?.baselineSessionId })?.atomSnapshots?.find(atom => atom.id === session.atomId);
     const level = Math.min(3, 1 + this.store.select('practiceHints', { sessionId: id, questionId: questionId }).length);
-    this.store.append('practiceHints', { id: this.store.nextId('practice-hint'), sessionId: id, questionId, level, at: new Date().toISOString() });
+    const hint={id:this.store.nextId('practice-hint'),sessionId:id,questionId,level,at:new Date().toISOString()};
+    this.store.append('practiceHints',hint);this.retention.capturePractice(session,['practice-hint:'+hint.id]);
     return { level, hint: level === 1 ? `先说说题目让你做什么，再想想“${atom?.name ?? '当前任务'}”的关键条件。` : level === 2 ?
       `把思路拆开：${atom?.objective ?? '先列出已知条件和需要解决的目标'}。每做一步，核对一次条件。` : `可以请家长示范“${atom?.name ?? '当前任务'}”中的一个关键步骤，再自己解释并完成剩余部分。提示后的表现会单独记录。` };
   }

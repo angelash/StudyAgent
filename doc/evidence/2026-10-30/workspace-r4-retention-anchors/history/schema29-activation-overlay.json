@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-30T09:27:53.481Z",
+  "actualReader28": "a98092cd631907607d97f3806b0ebe943f28e449b12743b6aea0e55442fc5f24",
+  "changes": [
+    {
+      "path": "apps/api/src/infrastructure/domain-database.ts",
+      "beforeSha256": "aeb304c3e2f1753638db084b060855fe434a682783de6345f9d4cbf5ecf27515",
+      "afterSha256": "efeab97a542265ca8995d5db4e7e5fb0eb9741b410d12427df3f3d638d9ecacc"
+    },
+    {
+      "path": "scripts/operations/database-reader-guard.cjs",
+      "beforeSha256": "8db70d4bdfae5aa0c8e913f3af882f96da6e9d143073986022fac35b5c2577d2",
+      "afterSha256": "9f6f8005dca4f1a9810b37335d2437374d37a2ba9de7f2bf2d86a2d1c6bfbed2"
+    },
+    {
+      "path": "scripts/operations/assistant-practice-integrity.cjs",
+      "beforeSha256": "53762632093f0b250939c195d7bbc0fbaf93384d7e6179ad110ba5f167247c24",
+      "afterSha256": "4b13d3c5e2c595f9c075da9c59e217e618709459c8efb93fb1f2779ccacdd5f1"
+    }
+  ],
+  "scope": "Isolated29 minimum reader and native semantic validation only. Service registration and business/UI wiring must be independently completed before native29 acceptance. Production/main unchanged."
+}

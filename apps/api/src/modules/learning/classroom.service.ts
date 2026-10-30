@@ -17,8 +17,13 @@ import { lessonActivity,projectActivities } from './course-journey';
 import { adultProjectDefinitions } from './course-project-content';
 import { publishedSourceCheck,sourceCheckLesson,sourceCheckKeys,sourceCheckExposed } from './source-course-check-classroom';
 import { activityNavigationContext } from './activity-navigation';
+import { resolveClassroomRetentionContext } from '../diagnostics/classroom-retention-origin';
+import type { ClassroomRetentionDisplay,ClassroomLegacyGap } from '../diagnostics/classroom-retention-record';
+import { RetentionService } from '../diagnostics/retention.service';
 
 export type ClassroomSessionRecord = ClassroomSession & {
+  retentionDisplays?:ClassroomRetentionDisplay[];
+  retentionLegacyGap?:ClassroomLegacyGap;
   answerKeys: Record<string, { answer: number | number[]; explanation: string; optionExplanations?: string[];sourceReferences?:Array<{sourceKey:string;quote:string}> }>;
   hintKeys?: Record<string, string[]>;
   sourceCheckSources?: CourseSourceSnapshot[];
@@ -28,7 +33,7 @@ export type ClassroomSessionRecord = ClassroomSession & {
 @Injectable()
 export class ClassroomService {
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
-    private readonly speech: SpeechService, private readonly chat: XiaojiuChatService) {}
+    private readonly speech: SpeechService, private readonly chat: XiaojiuChatService,private readonly retention:RetentionService) {}
 
   catalog(user: InMemoryUserAccount): ClassroomCatalog {
     if (user.role === 'student') throw new ForbiddenException('成人课程实验室需由家长打开');
@@ -64,7 +69,7 @@ export class ClassroomService {
   }
 
   private view(row: ClassroomSessionRecord): ClassroomSessionView {
-    const { answerKeys: _answerKeys, hintKeys: _hintKeys, requests: _requests, sourceCheckSources:_sourceCheckSources,...safe } = structuredClone(row);
+    const { answerKeys: _answerKeys, hintKeys: _hintKeys, requests: _requests, sourceCheckSources:_sourceCheckSources,retentionDisplays:_retentionDisplays,retentionLegacyGap:_retentionLegacyGap,...safe } = structuredClone(row);
     if(row.sourceCheckId&&sourceCheckExposed(this.store,row))safe.authoringAnswerExposure=true;
     safe.presentation = structuredClone(sessionPresentation(row));
     safe.messages = safe.messages.map(message => message.role === 'assistant' ? {
@@ -149,6 +154,7 @@ export class ClassroomService {
       ...(check?{sourceCheckId:check.id,sourceCheckFingerprint:check.contentFingerprint!,sourceCheckTargets:check.prepared.targets.map(({lessonId,title,objective})=>({lessonId,title,objective})),sourceCheckSources:structuredClone(check.prepared.sources)}:{}),
       contentFingerprint: fingerprint, lesson, presentation: freezeClassroomPresentation(lesson,now), cursor: 0, revealed: 0, sentenceCursor: 0, status: 'paused', revision: 0,
       messages: [], answers: [], projectDraft: '', answerKeys, hintKeys, hintReceipts: [], requests: [], createdAt: now, updatedAt: now };
+    if(user.role==='student'&&studentId)session.retentionContext=resolveClassroomRetentionContext({studioCourses:command.studioCourseId?this.store.select('studioCourses',{id:command.studioCourseId}):[],sourceCourses:command.sourceCourseId?this.store.select('sourceCourses',{id:command.sourceCourseId}):[],knowledgeAtoms:this.store.inspect('knowledgeAtoms'),curriculumRevisions:this.store.inspect('curriculumRevisions')},session);
     this.store.append('classroomSessions', session);
     return this.view(session);
   }
@@ -170,11 +176,14 @@ export class ClassroomService {
     if(presentation.version==='speech-v2'&&movesSentence&&(command.presentationVersion!==presentation.version||command.unitId!==units[sentenceCursor].id)||
       command.presentationVersion!==undefined&&command.presentationVersion!==presentation.version||command.unitId!==undefined&&command.unitId!==units[sentenceCursor].id)
       throw new ConflictException('字幕版本已变化，请重新读取课堂后继续');
+    const teachingProvided=command.cursor!==row.cursor||command.revealed>row.revealed||sentenceCursor!==(row.sentenceCursor??0);
+    this.retention.prepareClassroom(row);
     row.sentenceCursor = sentenceCursor;
     row.cursor = command.cursor; row.revealed = Math.max(row.revealed, command.revealed);
     if (command.completed) row.status = 'completed';
     if (command.projectDraft !== undefined) row.projectDraft = command.projectDraft;
     row.updatedAt = new Date().toISOString(); row.revision++;
+    if(teachingProvided&&user.role==='student')this.retention.captureClassroomProvision(row);
     return this.view(row);
   }
 
@@ -190,6 +199,7 @@ export class ClassroomService {
     let sourceStart=original.start;while(sourceStart<original.end&&/\s/u.test(step.narration[sourceStart]))sourceStart++;
     const toCursor=units.findIndex(unit=>unit.start<=sourceStart&&sourceStart<unit.end);
     if(toCursor<0)throw new ConflictException('原字幕范围无法映射，已保留旧课堂');
+    this.retention.prepareClassroom(row,now);
     row.presentationRevisions=[...(row.presentationRevisions??[]),{id:this.store.nextId('presentation_revision'),at:now,stepId:step.id,fromCursor,toCursor,fromVersion:old.version,toVersion:next.version,previous:structuredClone(old)}];
     row.presentation=next;row.sentenceCursor=toCursor;row.revision++;row.updatedAt=now;
     row.requests.push({key:command.requestKey,hash,kind:'presentation'});
@@ -232,6 +242,7 @@ export class ClassroomService {
     if (modern && command.selectedIndex !== undefined && command.selectedIndex !== selectedIndex) throw new BadRequestException('单选索引与完整选择集合不一致');
     // The first submitted answer is immutable. Reopening a lesson cannot erase an error or hint.
     if (!row.answers.some(answer => answer.questionId === command.questionId)) {
+      this.retention.prepareClassroom(row);
       row.answers.push({ questionId: question.id, selectedIndex, selectedIndices, correctIndices,
         ...(key.optionExplanations ? { optionExplanations: structuredClone(key.optionExplanations) } : {}),
         correct: disposition === 'answered' && selectedIndices.length === correctIndices.length && selectedIndices.every((value, index) => value === correctIndices[index]),
@@ -239,6 +250,7 @@ export class ClassroomService {
         ...(key.sourceReferences?{sourceReferences:structuredClone(key.sourceReferences)}:{}),
         hintUsed: command.hintUsed || Boolean(row.hintedQuestionIds?.includes(question.id)) || Boolean(row.hintReceipts?.some(hint => hint.questionId === question.id)), disposition,
         hintLevel: Math.max(0, ...(row.hintReceipts ?? []).filter(hint => hint.questionId === question.id).map(hint => hint.level)), at: new Date().toISOString() });
+      this.retention.captureClassroomHelp(row,'classroom-feedback:'+row.id+':'+question.id);
       row.revision++; row.updatedAt = new Date().toISOString();
     }
     row.requests.push({ key: command.requestKey, hash, kind: 'answer', questionId: command.questionId });
@@ -262,7 +274,9 @@ export class ClassroomService {
     if (target > current + 1) throw new ConflictException('请先读取前一级提示，再决定是否继续');
     if (target > current) {
       const now = new Date().toISOString();
+      this.retention.prepareClassroom(row,now);
       row.hintReceipts = [...(row.hintReceipts ?? []), { questionId: command.questionId, level: target, text: levels[target - 1], at: now }];
+      this.retention.captureClassroomHelp(row,'classroom-hint:'+row.id+':'+command.questionId+':'+target);
       row.hintedQuestionIds = [...new Set([...(row.hintedQuestionIds ?? []), command.questionId])];
       row.revision++; row.updatedAt = now;
     }
@@ -297,11 +311,13 @@ export class ClassroomService {
     if (signal?.aborted) throw new BadRequestException('课堂插问已停止');
     const now = new Date().toISOString();
     const board = response.board;
+    this.retention.prepareClassroom(row,now);
     if (question) row.hintedQuestionIds = [...new Set([...(row.hintedQuestionIds ?? []), question.id])];
     row.messages.push({ id: this.store.nextId('classroom_message'), role: 'user', content: command.message, at: now },
       { id: this.store.nextId('classroom_message'), role: 'assistant', content: response.reply, speech: freezeSpeechTrack(response.reply), modelName: response.modelName, at: now,
         ...(board ? { board: { ...board, page: boardPage } } : {}) });
     row.requests.push({ key: command.requestKey, hash, kind: 'chat', messageId: row.messages.at(-1)?.id });
+    this.retention.captureClassroomHelp(row,'classroom-message:'+row.messages.at(-1)!.id);
     row.revision++; row.updatedAt = now;
     return this.view(row);
   }

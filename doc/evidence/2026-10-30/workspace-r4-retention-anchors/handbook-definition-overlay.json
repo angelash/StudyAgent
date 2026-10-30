@@ -1,0 +1,27 @@
+{
+  "features": [
+    "LEARN-13"
+  ],
+  "sources": [
+    "apps/api/src/modules/diagnostics/retention.service.ts",
+    "apps/api/src/modules/diagnostics/retention-anchor.ts",
+    "apps/api/src/modules/diagnostics/retention-source.ts",
+    "apps/api/src/modules/diagnostics/retention-integrity.ts",
+    "apps/api/src/modules/diagnostics/retention-evidence-projection.ts",
+    "apps/api/src/modules/diagnostics/retention-review-gate.ts",
+    "apps/api/src/modules/diagnostics/classroom-retention-record.ts",
+    "apps/api/src/modules/diagnostics/classroom-retention-origin.ts",
+    "apps/api/src/modules/diagnostics/retention-legacy-classroom.test.ts",
+    "apps/api/src/modules/ai/ai.service.ts",
+    "apps/api/src/modules/learning/classroom-turn.service.ts",
+    "apps/api/src/modules/learning/classroom-turn-worker.service.ts",
+    "apps/api/src/modules/diagnostics/retention.integration.test.ts",
+    "apps/api/src/infrastructure/schema29-reader.integration.test.ts",
+    "apps/web/components/retention-evidence.tsx",
+    "apps/web/app/studio/classroom/retention-display.tsx",
+    "packages/contracts/src/retention.ts",
+    "tests/e2e/retention-evidence.spec.ts",
+    "doc/product/162-retention-anchor-and-measurement-compatibility.md"
+  ],
+  "preserved": "Keep current main LEARN-08 through12 and163 specification; no stale registry copy."
+}

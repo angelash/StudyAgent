@@ -1,3 +1,4 @@
+import { retentionMethodAffectsReport } from './retention-evidence-projection';
 import type { DiagnosticReport, DiagnosticResponse } from '@study-agent/contracts';
 import { FAMILY_IDENTITY_VERSION, LEGACY_FAMILY_IDENTITY_VERSION, familyAnalysisOutdated } from './family-identity';
 import { MEASUREMENT_VERSION, measurableResponse, measuredQuestionKey } from './measurement';
@@ -25,12 +26,14 @@ export function reportAnalysisCompatibility(report: DiagnosticReport, originals:
     return !!row && (!measurableResponse(row) || first.get(measuredQuestionKey(row)) !== row.id);
   });
   const missingProvenance = report.estimates.some(row => row.scoredCount > 0 && !row.evidenceIds.length);
-  const unknownProtocol = !['rule-estimate-v1', 'rule-estimate-v2', MEASUREMENT_VERSION].includes(version) &&
+  const unknownProtocol = !['rule-estimate-v1', 'rule-estimate-v2', 'rule-estimate-v3', MEASUREMENT_VERSION].includes(version) &&
     (ids.length > 0 || missingProvenance);
-  const measurementRulesChanged = missing.length > 0 || missingProvenance || (version !== MEASUREMENT_VERSION &&
+  const retentionRulesChanged=retentionMethodAffectsReport(report);
+  const measurementRulesChanged = retentionRulesChanged || missing.length > 0 || missingProvenance || (version !== MEASUREMENT_VERSION &&
     (affectedEvidenceIds.length > 0 || unverifiedEvidenceIds.length > 0 || unknownProtocol));
   const familyRulesChanged = familyAnalysisOutdated(report);
   const reasons: string[] = [];
+  if(retentionRulesChanged)reasons.push('保持计量增加最近教学和帮助锚点；请按保留原件明确重新分析，旧报告保持，方法变化不表示学习进步。');
   if (familyRulesChanged) reasons.push('部分历史任务需要按相同题族合并核对。');
   if (affectedEvidenceIds.length) reasons.push('原估计中计入了自述、非独立或无法确认为实际回答的记录；需按保留的原作答重新计量。');
   if (unverifiedEvidenceIds.length || missingProvenance) reasons.push('部分原始计量资格无法核对；保留历史数值，不能把未知资格认作实际解题。');

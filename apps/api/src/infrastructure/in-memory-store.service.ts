@@ -1,4 +1,5 @@
 import type { GuidanceIntentRecord } from '../modules/learning/assistant-guidance-record';
+import type { RetentionExposureRecord } from '../modules/diagnostics/retention-native';
 import type { GuidanceCalendarRecord,StudioCalendarCommandRecord } from '../modules/learning/guidance-calendar-record';
 import type { AssistantPracticeGroupStartRecord } from '../modules/learning/assistant-practice-learner-record';
 import type { TeachingDraftRecord,TeachingPracticeRecord } from '../modules/learning/assistant-teaching-record';
@@ -420,6 +421,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   assistantPracticeArtifacts: AssistantPracticeArtifactRecord[] = [];
   assistantGuidanceIntents: GuidanceIntentRecord[] = [];
   guidanceCalendarArrangements: GuidanceCalendarRecord[] = [];
+  retentionExposureEvents: RetentionExposureRecord[] = [];
   studioCalendarCommands: StudioCalendarCommandRecord[] = [];
   assistantTeachingPracticeDrafts: TeachingDraftRecord[] = [];
   assistantTeachingPractices: TeachingPracticeRecord[] = [];
@@ -541,6 +543,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.assistantPracticeArtifacts = [];
     this.assistantGuidanceIntents = [];
     this.guidanceCalendarArrangements = [];
+    this.retentionExposureEvents = [];
     this.studioCalendarCommands = [];
     this.assistantTeachingPracticeDrafts = [];
     this.assistantTeachingPractices = [];

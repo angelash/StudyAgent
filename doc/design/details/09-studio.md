@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`c610f4c01bd1626496b3314f8b92d66eb02a9dd5`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`a99d8dd04411651c2c2f06976e7895976927e5cf`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/tasks`、`/studio/assessment`、`/studio/reports`、`/studio/profiles`、`/studio/settings`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`、`/studio/whiteboards`。
 
@@ -124,7 +124,7 @@
 
 **服务方法**：
 
-- `LearningService.studioOverview`；[apps/api/src/modules/learning/learning.service.ts:76](../../../apps/api/src/modules/learning/learning.service.ts#L76)。
+- `LearningService.studioOverview`；[apps/api/src/modules/learning/learning.service.ts:77](../../../apps/api/src/modules/learning/learning.service.ts#L77)。
 
 **补充实现文件**：
 
@@ -195,7 +195,7 @@
 
 **服务方法**：
 
-- `LearningService.studioOverview`；[apps/api/src/modules/learning/learning.service.ts:76](../../../apps/api/src/modules/learning/learning.service.ts#L76)。
+- `LearningService.studioOverview`；[apps/api/src/modules/learning/learning.service.ts:77](../../../apps/api/src/modules/learning/learning.service.ts#L77)。
 
 **补充实现文件**：
 
@@ -222,9 +222,9 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:551](../../../apps/api/src/modules/learning/learning.service.ts#L551)。
-- `LearningService.createStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:569](../../../apps/api/src/modules/learning/learning.service.ts#L569)。
-- `LearningService.startStudioLesson`；[apps/api/src/modules/learning/learning.service.ts:598](../../../apps/api/src/modules/learning/learning.service.ts#L598)。
+- `LearningService.previewStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:552](../../../apps/api/src/modules/learning/learning.service.ts#L552)。
+- `LearningService.createStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:570](../../../apps/api/src/modules/learning/learning.service.ts#L570)。
+- `LearningService.startStudioLesson`；[apps/api/src/modules/learning/learning.service.ts:599](../../../apps/api/src/modules/learning/learning.service.ts#L599)。
 
 **补充实现文件**：
 
@@ -246,11 +246,11 @@
 
 **关联接口**：
 
-- `GET /api/learning/classroom/catalog` → `ClassroomController.catalog`；[apps/api/src/modules/learning/classroom.controller.ts:9](../../../apps/api/src/modules/learning/classroom.controller.ts#L9)。
+- `GET /api/learning/classroom/catalog` → `ClassroomController.catalog`；[apps/api/src/modules/learning/classroom.controller.ts:10](../../../apps/api/src/modules/learning/classroom.controller.ts#L10)。
 
 **服务方法**：
 
-- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:33](../../../apps/api/src/modules/learning/classroom.service.ts#L33)。
+- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:38](../../../apps/api/src/modules/learning/classroom.service.ts#L38)。
 
 ## STUDIO-04 课堂会话、冻结双语字幕与旧断点升级
 
@@ -266,19 +266,19 @@
 
 **关联接口**：
 
-- `POST /api/learning/classroom/sessions` → `ClassroomController.open`；[apps/api/src/modules/learning/classroom.controller.ts:10](../../../apps/api/src/modules/learning/classroom.controller.ts#L10)。
-- `GET /api/learning/classroom/sessions/:id` → `ClassroomController.get`；[apps/api/src/modules/learning/classroom.controller.ts:11](../../../apps/api/src/modules/learning/classroom.controller.ts#L11)。
-- `PATCH /api/learning/classroom/sessions/:id` → `ClassroomController.progress`；[apps/api/src/modules/learning/classroom.controller.ts:13](../../../apps/api/src/modules/learning/classroom.controller.ts#L13)。
-- `POST /api/learning/classroom/sessions/:id/narration/:stepId` → `ClassroomController.narration`；[apps/api/src/modules/learning/classroom.controller.ts:32](../../../apps/api/src/modules/learning/classroom.controller.ts#L32)。
-- `POST /api/learning/classroom/sessions/:id/presentation` → `ClassroomController.presentation`；[apps/api/src/modules/learning/classroom.controller.ts:16](../../../apps/api/src/modules/learning/classroom.controller.ts#L16)。
+- `POST /api/learning/classroom/sessions` → `ClassroomController.open`；[apps/api/src/modules/learning/classroom.controller.ts:11](../../../apps/api/src/modules/learning/classroom.controller.ts#L11)。
+- `GET /api/learning/classroom/sessions/:id` → `ClassroomController.get`；[apps/api/src/modules/learning/classroom.controller.ts:12](../../../apps/api/src/modules/learning/classroom.controller.ts#L12)。
+- `PATCH /api/learning/classroom/sessions/:id` → `ClassroomController.progress`；[apps/api/src/modules/learning/classroom.controller.ts:15](../../../apps/api/src/modules/learning/classroom.controller.ts#L15)。
+- `POST /api/learning/classroom/sessions/:id/narration/:stepId` → `ClassroomController.narration`；[apps/api/src/modules/learning/classroom.controller.ts:34](../../../apps/api/src/modules/learning/classroom.controller.ts#L34)。
+- `POST /api/learning/classroom/sessions/:id/presentation` → `ClassroomController.presentation`；[apps/api/src/modules/learning/classroom.controller.ts:18](../../../apps/api/src/modules/learning/classroom.controller.ts#L18)。
 
 **服务方法**：
 
-- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:103](../../../apps/api/src/modules/learning/classroom.service.ts#L103)。
-- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:93](../../../apps/api/src/modules/learning/classroom.service.ts#L93)。
-- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:156](../../../apps/api/src/modules/learning/classroom.service.ts#L156)。
-- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:317](../../../apps/api/src/modules/learning/classroom.service.ts#L317)。
-- `ClassroomService.upgradePresentation`；[apps/api/src/modules/learning/classroom.service.ts:181](../../../apps/api/src/modules/learning/classroom.service.ts#L181)。
+- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:108](../../../apps/api/src/modules/learning/classroom.service.ts#L108)。
+- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:98](../../../apps/api/src/modules/learning/classroom.service.ts#L98)。
+- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:162](../../../apps/api/src/modules/learning/classroom.service.ts#L162)。
+- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:333](../../../apps/api/src/modules/learning/classroom.service.ts#L333)。
+- `ClassroomService.upgradePresentation`；[apps/api/src/modules/learning/classroom.service.ts:190](../../../apps/api/src/modules/learning/classroom.service.ts#L190)。
 
 **补充实现文件**：
 
@@ -305,7 +305,7 @@
 
 **关联接口**：
 
-- `POST /api/learning/classroom/sessions/:id/messages` → `ClassroomController.ask`；[apps/api/src/modules/learning/classroom.controller.ts:25](../../../apps/api/src/modules/learning/classroom.controller.ts#L25)。
+- `POST /api/learning/classroom/sessions/:id/messages` → `ClassroomController.ask`；[apps/api/src/modules/learning/classroom.controller.ts:27](../../../apps/api/src/modules/learning/classroom.controller.ts#L27)。
 - `GET /api/learning/classroom/sessions/:sessionId/turns` → `ClassroomTurnController.list`；[apps/api/src/modules/learning/classroom-turn.controller.ts:9](../../../apps/api/src/modules/learning/classroom-turn.controller.ts#L9)。
 - `GET /api/learning/classroom/sessions/:sessionId/turns/:id` → `ClassroomTurnController.get`；[apps/api/src/modules/learning/classroom-turn.controller.ts:10](../../../apps/api/src/modules/learning/classroom-turn.controller.ts#L10)。
 - `POST /api/learning/classroom/sessions/:sessionId/turns` → `ClassroomTurnController.create`；[apps/api/src/modules/learning/classroom-turn.controller.ts:11](../../../apps/api/src/modules/learning/classroom-turn.controller.ts#L11)。
@@ -314,11 +314,11 @@
 
 **服务方法**：
 
-- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:273](../../../apps/api/src/modules/learning/classroom.service.ts#L273)。
-- `ClassroomTurnService.list`；[apps/api/src/modules/learning/classroom-turn.service.ts:64](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L64)。
-- `ClassroomTurnService.get`；[apps/api/src/modules/learning/classroom-turn.service.ts:68](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L68)。
-- `ClassroomTurnService.create`；[apps/api/src/modules/learning/classroom-turn.service.ts:70](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L70)。
-- `ClassroomTurnService.control`；[apps/api/src/modules/learning/classroom-turn.service.ts:126](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L126)。
+- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:287](../../../apps/api/src/modules/learning/classroom.service.ts#L287)。
+- `ClassroomTurnService.list`；[apps/api/src/modules/learning/classroom-turn.service.ts:65](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L65)。
+- `ClassroomTurnService.get`；[apps/api/src/modules/learning/classroom-turn.service.ts:69](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L69)。
+- `ClassroomTurnService.create`；[apps/api/src/modules/learning/classroom-turn.service.ts:71](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L71)。
+- `ClassroomTurnService.control`；[apps/api/src/modules/learning/classroom-turn.service.ts:128](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L128)。
 
 **补充实现文件**：
 
@@ -354,13 +354,13 @@
 
 **关联接口**：
 
-- `POST /api/learning/classroom/sessions/:id/answers` → `ClassroomController.answer`；[apps/api/src/modules/learning/classroom.controller.ts:19](../../../apps/api/src/modules/learning/classroom.controller.ts#L19)。
-- `POST /api/learning/classroom/sessions/:id/hints` → `ClassroomController.hint`；[apps/api/src/modules/learning/classroom.controller.ts:22](../../../apps/api/src/modules/learning/classroom.controller.ts#L22)。
+- `POST /api/learning/classroom/sessions/:id/answers` → `ClassroomController.answer`；[apps/api/src/modules/learning/classroom.controller.ts:21](../../../apps/api/src/modules/learning/classroom.controller.ts#L21)。
+- `POST /api/learning/classroom/sessions/:id/hints` → `ClassroomController.hint`；[apps/api/src/modules/learning/classroom.controller.ts:24](../../../apps/api/src/modules/learning/classroom.controller.ts#L24)。
 
 **服务方法**：
 
-- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:199](../../../apps/api/src/modules/learning/classroom.service.ts#L199)。
-- `ClassroomService.hint`；[apps/api/src/modules/learning/classroom.service.ts:248](../../../apps/api/src/modules/learning/classroom.service.ts#L248)。
+- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:209](../../../apps/api/src/modules/learning/classroom.service.ts#L209)。
+- `ClassroomService.hint`；[apps/api/src/modules/learning/classroom.service.ts:260](../../../apps/api/src/modules/learning/classroom.service.ts#L260)。
 
 **补充实现文件**：
 
@@ -455,8 +455,8 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:241](../../../apps/api/src/modules/learning/learning.service.ts#L241)。
-- `LearningService.createStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:253](../../../apps/api/src/modules/learning/learning.service.ts#L253)。
+- `LearningService.previewStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:242](../../../apps/api/src/modules/learning/learning.service.ts#L242)。
+- `LearningService.createStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:254](../../../apps/api/src/modules/learning/learning.service.ts#L254)。
 
 **补充实现文件**：
 
@@ -480,7 +480,7 @@
 
 **服务方法**：
 
-- `LearningService.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.service.ts:527](../../../apps/api/src/modules/learning/learning.service.ts#L527)。
+- `LearningService.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.service.ts:528](../../../apps/api/src/modules/learning/learning.service.ts#L528)。
 
 **补充实现文件**：
 
@@ -529,9 +529,9 @@
 
 **服务方法**：
 
-- `LearningService.uploadStudioPdf`；[apps/api/src/modules/learning/learning.service.ts:285](../../../apps/api/src/modules/learning/learning.service.ts#L285)。
-- `LearningService.studioPdfPageImage`；[apps/api/src/modules/learning/learning.service.ts:346](../../../apps/api/src/modules/learning/learning.service.ts#L346)。
-- `LearningService.studioPdfOriginal`；[apps/api/src/modules/learning/learning.service.ts:356](../../../apps/api/src/modules/learning/learning.service.ts#L356)。
+- `LearningService.uploadStudioPdf`；[apps/api/src/modules/learning/learning.service.ts:286](../../../apps/api/src/modules/learning/learning.service.ts#L286)。
+- `LearningService.studioPdfPageImage`；[apps/api/src/modules/learning/learning.service.ts:347](../../../apps/api/src/modules/learning/learning.service.ts#L347)。
+- `LearningService.studioPdfOriginal`；[apps/api/src/modules/learning/learning.service.ts:357](../../../apps/api/src/modules/learning/learning.service.ts#L357)。
 
 **补充实现文件**：
 
@@ -575,8 +575,8 @@
 
 **服务方法**：
 
-- `LearningService.reviewStudioPdfStructure`；[apps/api/src/modules/learning/learning.service.ts:371](../../../apps/api/src/modules/learning/learning.service.ts#L371)。
-- `LearningService.retryStudioPdfProcessing`；[apps/api/src/modules/learning/learning.service.ts:399](../../../apps/api/src/modules/learning/learning.service.ts#L399)。
+- `LearningService.reviewStudioPdfStructure`；[apps/api/src/modules/learning/learning.service.ts:372](../../../apps/api/src/modules/learning/learning.service.ts#L372)。
+- `LearningService.retryStudioPdfProcessing`；[apps/api/src/modules/learning/learning.service.ts:400](../../../apps/api/src/modules/learning/learning.service.ts#L400)。
 
 ## STUDIO-14 PDF页级白板
 
@@ -597,8 +597,8 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:434](../../../apps/api/src/modules/learning/learning.service.ts#L434)。
-- `LearningService.createStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:449](../../../apps/api/src/modules/learning/learning.service.ts#L449)。
+- `LearningService.previewStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:435](../../../apps/api/src/modules/learning/learning.service.ts#L435)。
+- `LearningService.createStudioPdfWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:450](../../../apps/api/src/modules/learning/learning.service.ts#L450)。
 
 **补充实现文件**：
 
@@ -623,8 +623,8 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:479](../../../apps/api/src/modules/learning/learning.service.ts#L479)。
-- `LearningService.createStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:500](../../../apps/api/src/modules/learning/learning.service.ts#L500)。
+- `LearningService.previewStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:480](../../../apps/api/src/modules/learning/learning.service.ts#L480)。
+- `LearningService.createStudioLearningPack`；[apps/api/src/modules/learning/learning.service.ts:501](../../../apps/api/src/modules/learning/learning.service.ts#L501)。
 
 **补充实现文件**：
 
@@ -650,9 +650,9 @@
 
 **服务方法**：
 
-- `LearningService.previewStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:142](../../../apps/api/src/modules/learning/learning.service.ts#L142)。
-- `LearningService.createStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:158](../../../apps/api/src/modules/learning/learning.service.ts#L158)。
-- `LearningService.updateStudioPlanSession`；[apps/api/src/modules/learning/learning.service.ts:196](../../../apps/api/src/modules/learning/learning.service.ts#L196)。
+- `LearningService.previewStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:143](../../../apps/api/src/modules/learning/learning.service.ts#L143)。
+- `LearningService.createStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:159](../../../apps/api/src/modules/learning/learning.service.ts#L159)。
+- `LearningService.updateStudioPlanSession`；[apps/api/src/modules/learning/learning.service.ts:197](../../../apps/api/src/modules/learning/learning.service.ts#L197)。
 
 **补充实现文件**：
 
@@ -887,14 +887,14 @@
 
 - `GET /api/learning/projects/catalog` → `CourseProjectController.catalog`；[apps/api/src/modules/learning/course-project.controller.ts:9](../../../apps/api/src/modules/learning/course-project.controller.ts#L9)。
 - `POST /api/learning/projects` → `CourseProjectController.open`；[apps/api/src/modules/learning/course-project.controller.ts:12](../../../apps/api/src/modules/learning/course-project.controller.ts#L12)。
-- `GET /api/learning/classroom/catalog` → `ClassroomController.catalog`；[apps/api/src/modules/learning/classroom.controller.ts:9](../../../apps/api/src/modules/learning/classroom.controller.ts#L9)。
+- `GET /api/learning/classroom/catalog` → `ClassroomController.catalog`；[apps/api/src/modules/learning/classroom.controller.ts:10](../../../apps/api/src/modules/learning/classroom.controller.ts#L10)。
 - `GET /api/learning/source-courses/:id` → `SourceCourseController.get`；[apps/api/src/modules/learning/source-course.controller.ts:27](../../../apps/api/src/modules/learning/source-course.controller.ts#L27)。
 
 **服务方法**：
 
 - `CourseProjectService.catalog`；[apps/api/src/modules/learning/course-project.service.ts:69](../../../apps/api/src/modules/learning/course-project.service.ts#L69)。
 - `CourseProjectService.open`；[apps/api/src/modules/learning/course-project.service.ts:83](../../../apps/api/src/modules/learning/course-project.service.ts#L83)。
-- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:33](../../../apps/api/src/modules/learning/classroom.service.ts#L33)。
+- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:38](../../../apps/api/src/modules/learning/classroom.service.ts#L38)。
 - `SourceCourseService.get`；[apps/api/src/modules/learning/source-course.service.ts:87](../../../apps/api/src/modules/learning/source-course.service.ts#L87)。
 
 **补充实现文件**：
@@ -938,7 +938,7 @@
 - `PATCH /api/learning/source-courses/:courseId/checks/:id/content` → `SourceCourseCheckController.content`；[apps/api/src/modules/learning/source-course-check.controller.ts:16](../../../apps/api/src/modules/learning/source-course-check.controller.ts#L16)。
 - `POST /api/learning/source-courses/:courseId/checks/:id/confirm` → `SourceCourseCheckController.confirm`；[apps/api/src/modules/learning/source-course-check.controller.ts:17](../../../apps/api/src/modules/learning/source-course-check.controller.ts#L17)。
 - `POST /api/learning/source-courses/:courseId/checks/:id/withdraw` → `SourceCourseCheckController.withdraw`；[apps/api/src/modules/learning/source-course-check.controller.ts:18](../../../apps/api/src/modules/learning/source-course-check.controller.ts#L18)。
-- `GET /api/learning/classroom/sessions/:id/sources/:key` → `ClassroomController.source`；[apps/api/src/modules/learning/classroom.controller.ts:12](../../../apps/api/src/modules/learning/classroom.controller.ts#L12)。
+- `GET /api/learning/classroom/sessions/:id/sources/:key` → `ClassroomController.source`；[apps/api/src/modules/learning/classroom.controller.ts:14](../../../apps/api/src/modules/learning/classroom.controller.ts#L14)。
 
 **服务方法**：
 
@@ -952,7 +952,7 @@
 - `SourceCourseCheckService.edit`；[apps/api/src/modules/learning/source-course-check.service.ts:116](../../../apps/api/src/modules/learning/source-course-check.service.ts#L116)。
 - `SourceCourseCheckService.publish`；[apps/api/src/modules/learning/source-course-check.service.ts:125](../../../apps/api/src/modules/learning/source-course-check.service.ts#L125)。
 - `SourceCourseCheckService.withdraw`；[apps/api/src/modules/learning/source-course-check.service.ts:137](../../../apps/api/src/modules/learning/source-course-check.service.ts#L137)。
-- `ClassroomService.source`；[apps/api/src/modules/learning/classroom.service.ts:94](../../../apps/api/src/modules/learning/classroom.service.ts#L94)。
+- `ClassroomService.source`；[apps/api/src/modules/learning/classroom.service.ts:99](../../../apps/api/src/modules/learning/classroom.service.ts#L99)。
 
 **补充实现文件**：
 

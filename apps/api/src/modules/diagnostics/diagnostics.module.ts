@@ -1,3 +1,4 @@
+import { RetentionService } from './retention.service';
 import { Module } from '@nestjs/common';
 import { StudentsModule } from '../students/students.module';
 import { QuestionWorkspaceModule } from '../question-workspace/question-workspace.module';
@@ -17,6 +18,6 @@ import { GuidanceModelController } from './guidance-model.controller';
 import { guidanceModelPort } from './guidance-model-record';
 
 @Module({ imports: [StudentsModule, QuestionWorkspaceModule, AiModule, StudentMediaModule, ProcessingFilesModule], controllers: [DiagnosticsController,GuidanceModelController],
-  providers: [CurriculumService, CurriculumPackageService, DiagnosticsService, GuidanceService, FoundationSeedService, TextbookRegistryService,
-    GuidanceModelService,GuidanceModelWorkerService,{provide:guidanceModelPort,useExisting:GuidanceModelService}], exports: [CurriculumService, DiagnosticsService, GuidanceService] })
+  providers: [RetentionService,CurriculumService, CurriculumPackageService, DiagnosticsService, GuidanceService, FoundationSeedService, TextbookRegistryService,
+    GuidanceModelService,GuidanceModelWorkerService,{provide:guidanceModelPort,useExisting:GuidanceModelService}], exports: [RetentionService,CurriculumService, DiagnosticsService, GuidanceService] })
 export class DiagnosticsModule {}

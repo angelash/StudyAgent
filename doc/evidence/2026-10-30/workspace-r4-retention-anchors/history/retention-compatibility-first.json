@@ -1,0 +1,257 @@
+{
+  "numTotalTests": 56,
+  "numPassedTests": 16,
+  "numFailedTests": 2,
+  "numPendingTests": 38,
+  "numFailedTestSuites": 6,
+  "suites": [
+    {
+      "file": "diagnostics.integration.test.ts",
+      "status": "failed",
+      "tests": [
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification builds a provenance-backed learning memory and next-action feed without treating unknown as weakness",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification isolates textbook terms and reviewed lesson maps, snapshots versions and keeps coverage gaps",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification serves all 12 source-reviewed Chinese TOCs without fabricating knowledge mappings or selectable combined parts",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification maps complete local math and English source books without inventing lesson page offsets",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification requires a separate lesson mapping review, keeps scope gaps and freezes the previous textbook edition",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification rejects cross-term lesson maps and excludes historical maps whose atom now falls outside the book term",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification keeps atom and measurement revisions and rejects cyclic or unpublishable dependencies",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification enforces progress, records coverage gaps and preserves question/scope snapshots and first submissions",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification verifies prerequisite hypotheses, produces budgeted plans without AI and schedules real delayed reviews",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification keeps subjective scoring pending and preserves review versions rather than overwriting evidence",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification previews six bounded purposes without exposing answers, creating observations or consuming fresh questions",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification starts exactly the previewed group once, restores preview receipts and enforces actor and scope boundaries",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification invalidates stale definitions, scopes and exposure while preserving previews with no usable coverage",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification expires unused blueprints without expiring a started assessment or losing its idempotent receipt",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification pauses and resumes with revisions, retains drafts, and aborts without counting unanswered work as failure",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification releases an aborted delayed task for a new probe without reusing exposed questions",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification freezes knowledge definitions through completion and score revision, and separates evidence after semantic changes",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification keeps labels and teaching revisions comparable while preserving historical names",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification blocks new guidance and verification after changed definitions while retaining started practice",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification preserves legacy reports without fabricating definition provenance or reusing unverifiable evidence",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification excludes different-definition linked followups and keeps unrelated assessments out of the review fingerprint",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification versions parent adjustments, enforces budgets and idempotency, and freezes started activities",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification excludes incomplete interaction configuration and never scores a frozen unusable item as a student failure",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification retains reschedule history and original intervals, blocks bypasses, and does not reset dates on resume",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification requires linked independent followups and current evidence acknowledgement before closing a real review cycle",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification persists practice drafts, counts unique questions and keeps hinted/retried training out of ability evidence",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification enforces practice ownership and pause, and leaves subjective practice pending for review",
+          "status": "skipped"
+        },
+        {
+          "title": "scope → atomic assessment → diagnosis → guidance → verification retires the prototype mutation and correctness-report APIs with an explicit upgrade response",
+          "status": "skipped"
+        }
+      ]
+    },
+    {
+      "file": "measurement-compatibility.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "measurement compatibility follows retained original provenance does not require unaffected v2 actual answers to be rewritten",
+          "status": "passed"
+        },
+        {
+          "title": "measurement compatibility follows retained original provenance detects cross-session self reports and earlier skipped-question exposure",
+          "status": "passed"
+        },
+        {
+          "title": "measurement compatibility follows retained original provenance does not use a different student original or resurrect missing evidence from report snapshots",
+          "status": "passed"
+        },
+        {
+          "title": "measurement compatibility follows retained original provenance keeps an unrecognised protocol unknown, and does not repeatedly rewrite an already excluded v3 record",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "measurement.test.ts",
+      "status": "failed",
+      "tests": [
+        {
+          "title": "conservative atomic measurement keeps self reports unknown in every dimension without changing the original task score",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement uses only actual answers in mixed groups and protects all seen questions from later independent reuse",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement does not infer an actual answer from missing or future dispositions, including direct weighted inputs",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement computes Beta quantiles against closed-form distributions and symmetry",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement keeps untested points unknown and cannot certify mastery after one success",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement deduplicates repeated questions and discounts hints, repeated families and age",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement requires independent transfer and actual delayed evidence for secure mastery",
+          "status": "failed"
+        },
+        {
+          "title": "conservative atomic measurement never turns practice-exposed responses into independent mastery or cause evidence",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement rejects prerequisite cycles and missing or cross-subject dependencies",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement keeps a single observed error a hypothesis and lets conflicting evidence prevent certainty",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement supports a transfer hypothesis only after replicated direct-versus-transfer evidence",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement keeps self-reported difficulty traceable without manufacturing procedural or prerequisite failures",
+          "status": "failed"
+        },
+        {
+          "title": "conservative atomic measurement cites both the target differences and independent prerequisite failures that support a prerequisite hypothesis",
+          "status": "passed"
+        },
+        {
+          "title": "conservative atomic measurement reports observed scoring positions and uncertainty without treating preset error tags as observed steps",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "classroom.integration.test.ts",
+      "status": "failed",
+      "tests": [
+        {
+          "title": "classroom teaching sessions and persistent isolation provides 60 unique micro-lessons and five unit checks with complete private answer keys",
+          "status": "skipped"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation keeps first answers, hint flags and skip receipts immutable without creating mastery evidence",
+          "status": "skipped"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation saves hints before submission and preserves assistance after refresh and restart",
+          "status": "skipped"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation grants sequential frozen hints once and keeps dont-know separate from skip and wrong",
+          "status": "skipped"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation retains identical teaching progress while old practice and legacy hints remain frozen",
+          "status": "skipped"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation keeps old unit questions and scoring readable after a new check is published",
+          "status": "skipped"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation synthesizes one exact subtitle unit, rejects invalid indices and restores the sentence cursor",
+          "status": "skipped"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation persists supplemental board with its original page and keeps it private after restart",
+          "status": "skipped"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation rejects invalid or stale progress, then restores frozen content, answers and project text after restart",
+          "status": "skipped"
+        },
+        {
+          "title": "classroom teaching sessions and persistent isolation restores edited calendar confirmation, time and completion after a SQLite restart",
+          "status": "skipped"
+        }
+      ]
+    }
+  ]
+}

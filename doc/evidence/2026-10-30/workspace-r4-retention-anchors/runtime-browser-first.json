@@ -1,0 +1,33 @@
+{
+  "stats": {
+    "startTime": "2026-10-30T12:26:04.470Z",
+    "duration": 28754.101,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "conversation practice workspace: real image and PCM audio uploads stay attached to the original learner question and remain pending review",
+      "file": "assistant-practice-workspace.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "source whiteboard: a creation that never reached the server retries only the complete original command",
+      "file": "assistant-whiteboards.spec.ts",
+      "attempts": [
+        {
+          "status": "passed",
+          "failure": false
+        }
+      ]
+    }
+  ]
+}

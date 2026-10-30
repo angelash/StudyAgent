@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "c610f4c01bd1626496b3314f8b92d66eb02a9dd5",
+  "sourceRevision": "a99d8dd04411651c2c2f06976e7895976927e5cf",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 142,
-    "activeNormalApiRoutes": 503,
-    "coveredApiRoutes": 503
+    "features": 143,
+    "activeNormalApiRoutes": 504,
+    "coveredApiRoutes": 504
   },
   "areas": [
     {
@@ -346,7 +346,7 @@
             {
               "name": "LearningService.studentProfiles",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 71
+              "line": 72
             }
           ],
           "sourceFiles": [
@@ -1237,12 +1237,12 @@
             {
               "name": "DiagnosticsService.previewBlueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 159
+              "line": 163
             },
             {
               "name": "DiagnosticsService.getBlueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 192
+              "line": 196
             }
           ],
           "sourceFiles": [
@@ -1298,12 +1298,12 @@
             {
               "name": "DiagnosticsService.startBlueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 193
+              "line": 197
             },
             {
               "name": "DiagnosticsService.start",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 36
+              "line": 39
             }
           ],
           "sourceFiles": [
@@ -1401,17 +1401,17 @@
             {
               "name": "DiagnosticsService.listSessions",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 233
+              "line": 237
             },
             {
               "name": "DiagnosticsService.sessionView",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 239
+              "line": 243
             },
             {
               "name": "DiagnosticsService.renderItem",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 300
+              "line": 304
             }
           ],
           "sourceFiles": [
@@ -1476,17 +1476,17 @@
             {
               "name": "DiagnosticsService.saveDraft",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 325
+              "line": 329
             },
             {
               "name": "DiagnosticsService.changeState",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 260
+              "line": 264
             },
             {
               "name": "DiagnosticsService.complete",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 417
+              "line": 423
             }
           ],
           "sourceFiles": [
@@ -1542,12 +1542,12 @@
             {
               "name": "DiagnosticsService.submit",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 343
+              "line": 347
             },
             {
               "name": "DiagnosticsService.hint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 404
+              "line": 409
             }
           ],
           "sourceFiles": [
@@ -1661,7 +1661,7 @@
             {
               "name": "DiagnosticsService.evidenceView",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 563
+              "line": 570
             }
           ],
           "sourceFiles": [
@@ -1718,12 +1718,12 @@
             {
               "name": "DiagnosticsService.reviewScore",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 627
+              "line": 634
             },
             {
               "name": "DiagnosticsService.reportHistory",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 509
+              "line": 516
             }
           ],
           "sourceFiles": [
@@ -1800,22 +1800,22 @@
             {
               "name": "DiagnosticsService.report",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 502
+              "line": 509
             },
             {
               "name": "DiagnosticsService.profile",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 482
+              "line": 489
             },
             {
               "name": "DiagnosticsService.analysisStatus",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 516
+              "line": 523
             },
             {
               "name": "DiagnosticsService.reanalyzeReport",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 535
+              "line": 542
             }
           ],
           "sourceFiles": [
@@ -2104,12 +2104,12 @@
             {
               "name": "GuidanceService.create",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 44
+              "line": 46
             },
             {
               "name": "GuidanceService.creationResult",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 153
+              "line": 155
             }
           ],
           "sourceFiles": [
@@ -2195,27 +2195,27 @@
             {
               "name": "GuidanceService.list",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 146
+              "line": 148
             },
             {
               "name": "GuidanceService.get",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 152
+              "line": 154
             },
             {
               "name": "GuidanceService.update",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 264
+              "line": 266
             },
             {
               "name": "GuidanceService.adjust",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 226
+              "line": 228
             },
             {
               "name": "GuidanceService.history",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 159
+              "line": 161
             }
           ],
           "sourceFiles": [
@@ -2288,22 +2288,22 @@
             {
               "name": "GuidanceService.reviews",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 300
+              "line": 302
             },
             {
               "name": "GuidanceService.planReviews",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 306
+              "line": 308
             },
             {
               "name": "GuidanceService.reschedule",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 317
+              "line": 319
             },
             {
               "name": "GuidanceService.startReview",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 340
+              "line": 344
             }
           ],
           "sourceFiles": [
@@ -2362,12 +2362,12 @@
             {
               "name": "GuidanceService.retrospective",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 354
+              "line": 358
             },
             {
               "name": "GuidanceService.acknowledgeRetrospective",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 415
+              "line": 419
             }
           ],
           "sourceFiles": [
@@ -2982,7 +2982,7 @@
             {
               "name": "AssistantTeachingStudentService.start",
               "file": "apps/api/src/modules/learning/assistant-teaching-student.service.ts",
-              "line": 22
+              "line": 23
             },
             {
               "name": "AssistantTeachingAssignmentService.withdraw",
@@ -3272,17 +3272,17 @@
             {
               "name": "LearningService.previewStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 142
+              "line": 143
             },
             {
               "name": "LearningService.createStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 158
+              "line": 159
             },
             {
               "name": "LearningService.updateStudioPlanSession",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 196
+              "line": 197
             }
           ],
           "sourceFiles": [
@@ -3440,6 +3440,86 @@
           ]
         },
         {
+          "id": "LEARN-13",
+          "title": "教学后真实保持锚点与原报告兼容",
+          "area": "learning",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "学生、家长、授权教师",
+          "pages": [
+            "/",
+            "/studio",
+            "/studio/tasks",
+            "/studio/reports",
+            "/studio/profiles",
+            "/studio/settings",
+            "/learn",
+            "/parent/dashboard",
+            "/student/today"
+          ],
+          "inputs": "原独立作答、原ReviewTask、实际孩子/学科/冻结目标、真实教学或帮助来源和服务端截止时间",
+          "implementation": "原业务同事务写入稳定来源时间；课堂冻结原课程/原知识定义和原句单元，普通读取与家长预览不移动锚点。原任务基准稳定，最近实际教学/帮助和真实1/3/7/14日共同控制复测；开始后的帮助排除独立保持。旧首答和报告保持，明确重分析追加v4报告；画像、原因和复盘共用资格投影。原生双向关系、隐私账本与实际旧28读取器保持。",
+          "outputs": "当前等待依据、准确来源返回、原时间回执/完整副本和可核查保持资格",
+          "collections": [
+            "retentionExposureEvents",
+            "diagnosticSessions",
+            "diagnosticResponses",
+            "diagnosticReports",
+            "practiceSessions",
+            "practiceAttempts",
+            "practiceHints",
+            "assistantTeachingAssignments",
+            "assistantTeachingSessions",
+            "classroomSessions"
+          ],
+          "limits": "620整站/2161API及双库分批通过仅说明工程范围。163更多受控原因、R5-R8和全部教材/教师/实机/真人长期条件仍待；源码29未发布。",
+          "endpoints": [
+            {
+              "verb": "POST",
+              "path": "/api/learning/classroom/sessions/:id/retention-displays",
+              "controller": "ClassroomController",
+              "method": "retentionDisplay",
+              "file": "apps/api/src/modules/learning/classroom.controller.ts",
+              "line": 13
+            }
+          ],
+          "implementations": [
+            {
+              "name": "RetentionService.classroomDisplay",
+              "file": "apps/api/src/modules/diagnostics/retention.service.ts",
+              "line": 81
+            }
+          ],
+          "sourceFiles": [
+            "apps/api/src/modules/diagnostics/retention.service.ts",
+            "apps/api/src/modules/diagnostics/retention-anchor.ts",
+            "apps/api/src/modules/diagnostics/retention-source.ts",
+            "apps/api/src/modules/diagnostics/retention-integrity.ts",
+            "apps/api/src/modules/diagnostics/retention-evidence-projection.ts",
+            "apps/api/src/modules/diagnostics/retention-review-gate.ts",
+            "apps/api/src/modules/diagnostics/classroom-retention-record.ts",
+            "apps/api/src/modules/diagnostics/classroom-retention-origin.ts",
+            "apps/api/src/modules/diagnostics/retention-legacy-classroom.test.ts",
+            "apps/api/src/modules/ai/ai.service.ts",
+            "apps/api/src/modules/learning/classroom-turn.service.ts",
+            "apps/api/src/modules/learning/classroom-turn-worker.service.ts",
+            "apps/api/src/modules/diagnostics/retention.integration.test.ts",
+            "apps/api/src/infrastructure/schema29-reader.integration.test.ts",
+            "apps/web/components/retention-evidence.tsx",
+            "apps/web/app/studio/classroom/retention-display.tsx",
+            "packages/contracts/src/retention.ts",
+            "tests/e2e/retention-evidence.spec.ts",
+            "doc/product/162-retention-anchor-and-measurement-compatibility.md"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/notebook.integration.test.ts",
+            "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+            "apps/api/src/modules/learning/learning-home.test.ts",
+            "apps/api/src/modules/learning/learning-home.integration.test.ts",
+            "tests/e2e/learning-home.spec.ts",
+            "tests/e2e/product-smoke.spec.ts"
+          ]
+        },
+        {
           "id": "LEARN-01",
           "title": "家庭总览与证据化学习记忆",
           "area": "learning",
@@ -3489,12 +3569,12 @@
             {
               "name": "LearningService.overview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 1029
+              "line": 1035
             },
             {
               "name": "LearningService.memory",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 624
+              "line": 625
             }
           ],
           "sourceFiles": [
@@ -3557,12 +3637,12 @@
             {
               "name": "LearningService.today",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 684
+              "line": 685
             },
             {
               "name": "LearningService.start",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 698
+              "line": 699
             }
           ],
           "sourceFiles": [
@@ -3658,32 +3738,32 @@
             {
               "name": "LearningService.view",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 740
+              "line": 742
             },
             {
               "name": "LearningService.render",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 767
+              "line": 769
             },
             {
               "name": "LearningService.draft",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 792
+              "line": 794
             },
             {
               "name": "LearningService.submit",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 891
+              "line": 895
             },
             {
               "name": "LearningService.hint",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 969
+              "line": 974
             },
             {
               "name": "LearningService.complete",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 986
+              "line": 992
             }
           ],
           "sourceFiles": [
@@ -3738,7 +3818,7 @@
             {
               "name": "LearningService.mistakes",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 998
+              "line": 1004
             }
           ],
           "sourceFiles": [
@@ -3825,27 +3905,27 @@
             {
               "name": "NotebookService.list",
               "file": "apps/api/src/modules/learning/notebook.service.ts",
-              "line": 80
+              "line": 81
             },
             {
               "name": "NotebookService.detail",
               "file": "apps/api/src/modules/learning/notebook.service.ts",
-              "line": 113
+              "line": 114
             },
             {
               "name": "NotebookService.organize",
               "file": "apps/api/src/modules/learning/notebook.service.ts",
-              "line": 145
+              "line": 146
             },
             {
               "name": "NotebookService.redo",
               "file": "apps/api/src/modules/learning/notebook.service.ts",
-              "line": 153
+              "line": 154
             },
             {
               "name": "NotebookService.verification",
               "file": "apps/api/src/modules/learning/notebook.service.ts",
-              "line": 174
+              "line": 175
             }
           ],
           "sourceFiles": [
@@ -5373,7 +5453,7 @@
             {
               "name": "AiService.modelCatalog",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 81
+              "line": 82
             }
           ],
           "sourceFiles": [
@@ -5502,27 +5582,27 @@
             {
               "name": "AiService.lectureDescriptor",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 303
+              "line": 304
             },
             {
               "name": "AiService.openDurableAssistantSession",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 282
+              "line": 283
             },
             {
               "name": "AiService.assertSessionOwner",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 423
+              "line": 424
             },
             {
               "name": "AiService.chat",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 545
+              "line": 553
             },
             {
               "name": "AiService.listMessages",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 672
+              "line": 680
             },
             {
               "name": "AssistantTurnService.context",
@@ -5696,12 +5776,12 @@
             {
               "name": "AiService.courseDescriptor",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 321
+              "line": 322
             },
             {
               "name": "AiService.sourcePreview",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 394
+              "line": 395
             }
           ],
           "sourceFiles": [
@@ -5999,14 +6079,14 @@
               "controller": "ClassroomController",
               "method": "voicePreview",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 37
+              "line": 39
             }
           ],
           "implementations": [
             {
               "name": "ClassroomService.voicePreview",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 309
+              "line": 325
             }
           ],
           "sourceFiles": [
@@ -6643,37 +6723,37 @@
             {
               "name": "AssistantPracticeLearnerService.start",
               "file": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
-              "line": 85
+              "line": 86
             },
             {
               "name": "AssistantPracticeLearnerService.view",
               "file": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
-              "line": 145
+              "line": 146
             },
             {
               "name": "AssistantPracticeLearnerService.render",
               "file": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
-              "line": 146
+              "line": 147
             },
             {
               "name": "AssistantPracticeLearnerService.draft",
               "file": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
-              "line": 147
+              "line": 148
             },
             {
               "name": "AssistantPracticeLearnerService.submit",
               "file": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
-              "line": 148
+              "line": 149
             },
             {
               "name": "AssistantPracticeLearnerService.help",
               "file": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
-              "line": 149
+              "line": 150
             },
             {
               "name": "AssistantPracticeLearnerService.complete",
               "file": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
-              "line": 150
+              "line": 151
             }
           ],
           "sourceFiles": [
@@ -6961,7 +7041,7 @@
             {
               "name": "LearningService.studioOverview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 76
+              "line": 77
             }
           ],
           "sourceFiles": [
@@ -7153,7 +7233,7 @@
             {
               "name": "LearningService.studioOverview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 76
+              "line": 77
             }
           ],
           "sourceFiles": [
@@ -7241,17 +7321,17 @@
             {
               "name": "LearningService.previewStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 551
+              "line": 552
             },
             {
               "name": "LearningService.createStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 569
+              "line": 570
             },
             {
               "name": "LearningService.startStudioLesson",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 598
+              "line": 599
             }
           ],
           "sourceFiles": [
@@ -7316,14 +7396,14 @@
               "controller": "ClassroomController",
               "method": "catalog",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 9
+              "line": 10
             }
           ],
           "implementations": [
             {
               "name": "ClassroomService.catalog",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 33
+              "line": 38
             }
           ],
           "sourceFiles": [
@@ -7385,7 +7465,7 @@
               "controller": "ClassroomController",
               "method": "open",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 10
+              "line": 11
             },
             {
               "verb": "GET",
@@ -7393,7 +7473,7 @@
               "controller": "ClassroomController",
               "method": "get",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 11
+              "line": 12
             },
             {
               "verb": "PATCH",
@@ -7401,7 +7481,7 @@
               "controller": "ClassroomController",
               "method": "progress",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 13
+              "line": 15
             },
             {
               "verb": "POST",
@@ -7409,7 +7489,7 @@
               "controller": "ClassroomController",
               "method": "narration",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 32
+              "line": 34
             },
             {
               "verb": "POST",
@@ -7417,34 +7497,34 @@
               "controller": "ClassroomController",
               "method": "presentation",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 16
+              "line": 18
             }
           ],
           "implementations": [
             {
               "name": "ClassroomService.open",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 103
+              "line": 108
             },
             {
               "name": "ClassroomService.get",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 93
+              "line": 98
             },
             {
               "name": "ClassroomService.progress",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 156
+              "line": 162
             },
             {
               "name": "ClassroomService.narration",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 317
+              "line": 333
             },
             {
               "name": "ClassroomService.upgradePresentation",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 181
+              "line": 190
             }
           ],
           "sourceFiles": [
@@ -7515,7 +7595,7 @@
               "controller": "ClassroomController",
               "method": "ask",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 25
+              "line": 27
             },
             {
               "verb": "GET",
@@ -7562,27 +7642,27 @@
             {
               "name": "ClassroomService.ask",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 273
+              "line": 287
             },
             {
               "name": "ClassroomTurnService.list",
               "file": "apps/api/src/modules/learning/classroom-turn.service.ts",
-              "line": 64
+              "line": 65
             },
             {
               "name": "ClassroomTurnService.get",
               "file": "apps/api/src/modules/learning/classroom-turn.service.ts",
-              "line": 68
+              "line": 69
             },
             {
               "name": "ClassroomTurnService.create",
               "file": "apps/api/src/modules/learning/classroom-turn.service.ts",
-              "line": 70
+              "line": 71
             },
             {
               "name": "ClassroomTurnService.control",
               "file": "apps/api/src/modules/learning/classroom-turn.service.ts",
-              "line": 126
+              "line": 128
             }
           ],
           "sourceFiles": [
@@ -7662,7 +7742,7 @@
               "controller": "ClassroomController",
               "method": "answer",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 19
+              "line": 21
             },
             {
               "verb": "POST",
@@ -7670,19 +7750,19 @@
               "controller": "ClassroomController",
               "method": "hint",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 22
+              "line": 24
             }
           ],
           "implementations": [
             {
               "name": "ClassroomService.answer",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 199
+              "line": 209
             },
             {
               "name": "ClassroomService.hint",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 248
+              "line": 260
             }
           ],
           "sourceFiles": [
@@ -7925,12 +8005,12 @@
             {
               "name": "LearningService.previewStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 241
+              "line": 242
             },
             {
               "name": "LearningService.createStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 253
+              "line": 254
             }
           ],
           "sourceFiles": [
@@ -8000,7 +8080,7 @@
             {
               "name": "LearningService.studioWhiteboardNarration",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 527
+              "line": 528
             }
           ],
           "sourceFiles": [
@@ -8111,17 +8191,17 @@
             {
               "name": "LearningService.uploadStudioPdf",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 285
+              "line": 286
             },
             {
               "name": "LearningService.studioPdfPageImage",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 346
+              "line": 347
             },
             {
               "name": "LearningService.studioPdfOriginal",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 356
+              "line": 357
             }
           ],
           "sourceFiles": [
@@ -8255,12 +8335,12 @@
             {
               "name": "LearningService.reviewStudioPdfStructure",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 371
+              "line": 372
             },
             {
               "name": "LearningService.retryStudioPdfProcessing",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 399
+              "line": 400
             }
           ],
           "sourceFiles": [
@@ -8338,12 +8418,12 @@
             {
               "name": "LearningService.previewStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 434
+              "line": 435
             },
             {
               "name": "LearningService.createStudioPdfWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 449
+              "line": 450
             }
           ],
           "sourceFiles": [
@@ -8422,12 +8502,12 @@
             {
               "name": "LearningService.previewStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 479
+              "line": 480
             },
             {
               "name": "LearningService.createStudioLearningPack",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 500
+              "line": 501
             }
           ],
           "sourceFiles": [
@@ -8515,17 +8595,17 @@
             {
               "name": "LearningService.previewStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 142
+              "line": 143
             },
             {
               "name": "LearningService.createStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 158
+              "line": 159
             },
             {
               "name": "LearningService.updateStudioPlanSession",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 196
+              "line": 197
             }
           ],
           "sourceFiles": [
@@ -9373,7 +9453,7 @@
               "controller": "ClassroomController",
               "method": "catalog",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 9
+              "line": 10
             },
             {
               "verb": "GET",
@@ -9398,7 +9478,7 @@
             {
               "name": "ClassroomService.catalog",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 33
+              "line": 38
             },
             {
               "name": "SourceCourseService.get",
@@ -9572,7 +9652,7 @@
               "controller": "ClassroomController",
               "method": "source",
               "file": "apps/api/src/modules/learning/classroom.controller.ts",
-              "line": 12
+              "line": 14
             }
           ],
           "implementations": [
@@ -9629,7 +9709,7 @@
             {
               "name": "ClassroomService.source",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 94
+              "line": 99
             }
           ],
           "sourceFiles": [
@@ -13019,7 +13099,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 362
+              "line": 363
             },
             {
               "name": "DomainEventBusService.publish",
@@ -13034,7 +13114,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 260
+              "line": 261
             }
           ],
           "sourceFiles": [
@@ -13303,7 +13383,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 244
+              "line": 245
             },
             {
               "name": "RuntimeMetricsService.snapshot",

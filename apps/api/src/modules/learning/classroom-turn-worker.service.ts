@@ -1,4 +1,5 @@
 import { Injectable, Logger, OnApplicationBootstrap, OnModuleDestroy } from '@nestjs/common';
+import { RetentionService } from '../diagnostics/retention.service';
 import { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
 import { StudentsService } from '../students/students.service';
 import { XiaojiuChatService } from '../ai/xiaojiu-chat.service';
@@ -20,7 +21,7 @@ export class ClassroomTurnWorkerService implements OnApplicationBootstrap, OnMod
   private abort?: AbortController;
   private stopping = false;
   private readonly logger = new Logger(ClassroomTurnWorkerService.name);
-  constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService, private readonly chat: XiaojiuChatService) {}
+  constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService, private readonly chat: XiaojiuChatService,private readonly retention:RetentionService) {}
   onApplicationBootstrap() {
     if (process.env.STUDY_WORKER_ENABLED === 'false' || !this.store.persistence.durable) return;
     this.timer = setInterval(() => void this.runNext().catch(() => this.logger.warn('Classroom turn retained')), 1000);
@@ -64,11 +65,13 @@ export class ClassroomTurnWorkerService implements OnApplicationBootstrap, OnMod
         if (!turn || turn.status !== 'running' || turn.inputHash !== snapshot.inputHash) throw new Error('turn_unavailable');
         const session = turnAuthority(this.store, this.students, turn), now = new Date().toISOString();
         if (session.messages.length >= 100) throw new Error('turn_message_limit');
+        this.retention.prepareClassroom(session,now);
         const userMessageId = this.store.nextId('classroom_message'), assistantMessageId = this.store.nextId('classroom_message');
         session.messages.push({ id: userMessageId, role: 'user', content: turn.message, at: now },
           { id: assistantMessageId, role: 'assistant', content: response.reply, modelName: response.modelName, at: now,
             speech: freezeSpeechTrack(response.reply), ...(response.board ? { board: { ...response.board, page: Math.floor(turn.position.cursor / 3) } } : {}) });
         session.requests.push({ key: turn.requestKey, hash: turn.inputHash, kind: 'turn', messageId: assistantMessageId });
+        this.retention.captureClassroomHelp(session,'classroom-message:'+assistantMessageId);
         session.revision++; session.updatedAt = now;
         Object.assign(turn, { status: 'completed', userMessageId, assistantMessageId, revision: turn.revision + 1, updatedAt: now });
       }, { ...fence, result: { turnId: id } });

@@ -782,3 +782,5 @@ export * from './assistant-teaching-assignment';
 
 export * from './assistant-guidance';
 export * from './guidance-calendar';
+
+export * from './retention';

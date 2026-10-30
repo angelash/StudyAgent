@@ -1,0 +1,19 @@
+{
+  "numTotalTests": 1,
+  "numPassedTests": 0,
+  "numFailedTests": 1,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 2,
+  "suites": [
+    {
+      "file": "classroom-retention-history.test.ts",
+      "status": "failed",
+      "tests": [
+        {
+          "title": "retained classroom origins across an actual in-place chemistry tutorial revision retains the original child mapping after the actual revision command stores previousCourse",
+          "status": "failed"
+        }
+      ]
+    }
+  ]
+}

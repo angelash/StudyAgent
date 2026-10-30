@@ -2,6 +2,7 @@
 import * as React from 'react';
 import type { DiagnosticReport, GuidancePlanView, ReviewTask } from '@study-agent/contracts';
 import { apiRequest, ApiRequestError } from '../lib/api';
+import { RetentionReadinessSummary } from './retention-evidence';
 
 export type ReportPlanRead = { ownerId: string; studentId: string; subject: string; phase: 'loading' | 'ready' | 'error' };
 const statuses = { proposed: '待家长确认', active: '正在指导', paused: '已暂停', completed: '已完成' };
@@ -42,7 +43,7 @@ export function ReportPlanPath({ ownerId, report, atomId, plans, currentPlan, re
       <p><strong>{statuses[plan.status]}</strong> · 依据本报告第 {plan.baselineReportVersion ?? plan.impact.baselineReportVersion} 版制定{(plan.baselineReportVersion ?? plan.impact.baselineReportVersion) !== (report.version ?? 1) && `，当前报告为第 ${report.version ?? 1} 版`}</p>
       {plan.impact.needsReview && <p className="kr-caution">{plan.impact.message} 请先核对计划，再继续指导。</p>}
       {actions.length ? actions.map(action => <article key={action.id}><h5>{action.title}</h5><p>{action.activity}</p><p>每天安排：{action.minutes} 分钟</p><p><strong>成功标准：</strong>{action.successCriterion}</p></article>) : <p>这份计划没有单列本知识点的指导活动，可查看整份计划的优先安排。</p>}
-      {current.phase === 'loading' ? <p role="status">正在读取原复测安排…</p> : current.phase === 'error' ? <div role="alert"><p>{current.error}</p><button className="studio-secondary" onClick={() => setRetry(value => value + 1)}>重试读取复测</button></div> : tasks.length ? <ul className="kr-review-list">{tasks.map(task => <li key={task.id}><strong>间隔 {task.intervalDays} 天</strong><span>{dateLabel(task.dueAt)}</span><span>{reviewStatuses[task.status]}</span></li>)}</ul> : <p>本点暂未列入这份计划的复测安排。</p>}
+      {current.phase === 'loading' ? <p role="status">正在读取原复测安排…</p> : current.phase === 'error' ? <div role="alert"><p>{current.error}</p><button className="studio-secondary" onClick={() => setRetry(value => value + 1)}>重试读取复测</button></div> : tasks.length ? <ul className="kr-review-list">{tasks.map(task => <li key={task.id}><strong>间隔 {task.intervalDays} 天</strong><span>{dateLabel(task.dueAt)}</span><span>{reviewStatuses[task.status]}</span><RetentionReadinessSummary readiness={task.retentionReadiness}/></li>)}</ul> : <p>本点暂未列入这份计划的复测安排。</p>}
       <p>保持情况由实际间隔后的新题验证；安排了复测不等于已经保持。</p>
       {onOpenPlan && <button className="studio-secondary" onClick={() => onOpenPlan(plan)}>查看指导与复测 ↗</button>}
     </>}

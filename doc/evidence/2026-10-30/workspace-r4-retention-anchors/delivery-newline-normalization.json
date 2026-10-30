@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-30T13:31:21.244Z",
+  "path": "tests/e2e/retention-evidence.spec.ts",
+  "firstStageFailure": "git diff --cached --check rejected11 lines with duplicated CR bytes.",
+  "testedSha256": "cdda59b26ae15eec2c0ff3eb58a016a7c0aa943d8ccd59178e2f797b00e1aacc",
+  "beforeNormalizationSha256": "f8c332a18c118bd2e60268e1ef1a4aecedee4417d26c2df80f9a79b7ae9fefe3",
+  "deliveredSha256": "a910fad47673613a90410b904c6528699f4d3c74135b74732ebfe8807f2db25f",
+  "sameTypeScriptTokens": true,
+  "nonTriviaTokenCount": 2072,
+  "scope": "Duplicate CR runs immediately before LF and final line ending only. All original non-trivia TypeScript tokens are byte-identical; no application source/assertion change."
+}

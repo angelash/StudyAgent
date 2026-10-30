@@ -31,6 +31,7 @@ import { CourseLessonStatus,CourseProjectStatus } from '../course-activity';
 import { FrozenCheckSource } from './check-source';
 import { CoursePanels } from './course-panels';
 import { ActivityWorkspaceNavigation } from '../../../components/activity-workspace-navigation';
+import { ClassroomRetentionDisplay } from './retention-display';
 import './course-panels.css';
 
 function Ring({ state = 'new' }: { state?: 'new' | 'started' | 'viewed' | 'correct' }) {
@@ -212,6 +213,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const [settings, setSettings] = React.useState(false), [exit, setExit] = React.useState(false), [tourOpen, setTourOpen] = React.useState(false);
   const exitAction=React.useRef<(()=>void)|null>(null),exitFocus=React.useRef<HTMLElement|null>(null),navigationAllowed=React.useRef(false);
   const [practiceProtected,setPracticeProtected]=React.useState(false);
+  const [retentionUnsafe,setRetentionUnsafe]=React.useState(false);
   const [standalonePractice, setStandalonePractice] = React.useState(initialTab === 'practice');
   const [tab, setTab] = React.useState<'history' | 'practice' | 'project'>(initialTab === 'practice' ? 'history' : initialTab), [question, setQuestion] = React.useState(assistance ? '我正在学习“' + initial.lesson.title + '”，请围绕“' + initial.lesson.objective + '”帮我梳理，并用一个新情境检查我的理解。' : ''), [operationBusy, setBusy] = React.useState(false), [notice, setNotice] = React.useState('');
   const [projectDraft, setProjectDraft] = React.useState(initial.projectDraft), [projectSaved, setProjectSaved] = React.useState(false);
@@ -589,6 +591,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
           const target = event.currentTarget; following.current = target.scrollHeight - target.scrollTop - target.clientHeight < 100;
         }}>
           {tab === 'history' && <>
+            <ClassroomRetentionDisplay session={session} onProtectionChange={setRetentionUnsafe}/>
             {lesson.generatedNotice&&<p className="cl-source-notice">{lesson.generatedNotice}</p>}
             {lesson.sourceReferences?.length&&<details className="cl-source-references"><summary>核对本课来源（{lesson.sourceReferences.length}）</summary>{lesson.sourceReferences.map((reference,index)=><article key={index}>{session.sourceCheckId?<button onClick={()=>{pause();setCheckSource(reference.sourceKey);}}>{reference.title} · 来源 {reference.page} ↗</button>:<Link href={reference.href}>{reference.title} · {reference.locator ?? `来源 ${reference.page}`} ↗</Link>}<p>{reference.quote}</p></article>)}</details>}
             {standalonePractice && <p className="cl-practice-assistant-note">需要提示或解释时可以问我。我会帮你分析概念和条件，请先保留自己的判断。</p>}
@@ -643,7 +646,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
       <button className="cl-print" disabled={printBusy||captions.busy} onClick={()=>void printNotes()}>{printBusy?'正在准备参考图…':'打印 / 保存 PDF 笔记'}</button>{printBusy&&<p role="status">参考图完整读取后会打开打印。关闭设置可取消等待。</p>}<p className="cl-settings-note">音色在下一句生效，倍速同步当前音频。暂停后会从当前句开头继续。</p>
     </section></div></WorkspaceDialog>}
     {tourOpen && <ClassroomToolTour onClose={finishTour} onStep={tourStep}/>}
-    {exit && <WorkspaceDialog onClose={cancelExit} busy={busy} returnFocus={exitFocus.current}><div className="cl-modal-backdrop"><section className="cl-exit-dialog" role="dialog" aria-modal="true" aria-label="离开课堂确认"><h2>要暂时离开课堂吗？</h2><p>已读步骤与插问已保存。项目草稿也会在离开前保存；练习选择不会自动提交。</p>{unprotectedPractice&&!practiceProtected&&<p role="alert">本机暂不能保护完整练习草稿，请先下载副本后离开。</p>}<footer><button onClick={cancelExit}>继续学习</button>{unprotectedPractice&&<button disabled={busy} onClick={()=>{try{practiceDraft.download();setPracticeProtected(true);}catch{setNotice('副本尚未生成，请继续保留当前页面。');}}}>下载练习副本</button>}<button disabled={busy||unprotectedPractice&&!practiceProtected} onClick={() => { setBusy(true); void save({ projectDraft }).then(()=>{setBusy(false);navigationAllowed.current=true;const target=exitAction.current;exitAction.current=null;if(target)target();else onClose();}).catch(error => { setNotice(error.message); setBusy(false); setExit(false); }); }}>保存并离开</button></footer></section></div></WorkspaceDialog>}
+    {exit && <WorkspaceDialog onClose={cancelExit} busy={busy} returnFocus={exitFocus.current}><div className="cl-modal-backdrop"><section className="cl-exit-dialog" role="dialog" aria-modal="true" aria-label="离开课堂确认"><h2>要暂时离开课堂吗？</h2><p>已读步骤与插问已保存。项目草稿也会在离开前保存；练习选择不会自动提交。</p>{unprotectedPractice&&!practiceProtected&&<p role="alert">本机暂不能保护完整练习草稿，请先下载副本后离开。</p>}{retentionUnsafe&&<p role="alert">原教学时间命令尚未完整保留，请返回“教学时间与复测间隔”下载副本，再离开。</p>}<footer><button onClick={cancelExit}>继续学习</button>{unprotectedPractice&&<button disabled={busy} onClick={()=>{try{practiceDraft.download();setPracticeProtected(true);}catch{setNotice('副本尚未生成，请继续保留当前页面。');}}}>下载练习副本</button>}<button disabled={busy||retentionUnsafe||unprotectedPractice&&!practiceProtected} onClick={() => { setBusy(true); void save({ projectDraft }).then(()=>{setBusy(false);navigationAllowed.current=true;const target=exitAction.current;exitAction.current=null;if(target)target();else onClose();}).catch(error => { setNotice(error.message); setBusy(false); setExit(false); }); }}>保存并离开</button></footer></section></div></WorkspaceDialog>}
     {award && <div className="cl-modal-backdrop"><section className="cl-award" role="dialog" aria-modal="true" aria-label="课堂学习里程碑"><span>✧</span><small>YOU FINISHED A LESSON</small><h2>{lesson.title}</h2><p>已走完这段概念路线。接下来用新的情境检查理解，看看哪些地方还需要回顾。</p><button autoFocus onClick={() => { setAward(false); setTab('practice'); }}>去检查理解 →</button><button onClick={() => setAward(false)}>稍后再做</button></section></div>}
     <article className="cl-print-notes"><h1>{lesson.title}</h1><p>{lesson.objective}</p>{lesson.steps.slice(0, session.revealed).map(step => <section key={step.id}><BoardStep step={step} sentence={0} full print/>{visuals.rows.filter(row=>row.selected&&row.stepId===step.id).map(row=><VisualImage key={row.id} row={row}/>)}</section>)}
       <h2>课堂插问</h2>{session.messages.map(message => <section key={message.id}><p><b>{message.role === 'user' ? '我：' : '老师：'}</b>{message.content}</p>{message.board && <ReplyBoard message={message} print/>}</section>)}<h2>项目草稿</h2><p>{projectDraft}</p></article>

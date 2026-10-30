@@ -1,0 +1,109 @@
+{
+  "numTotalTests": 22,
+  "numPassedTests": 22,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "retention-anchor.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "actual teaching anchors and independent elapsed retention uses the retained original independent baseline when no later teaching is known and never changes source arrays",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention does not call a30-day old baseline thirty-day post-teaching retention when help occurred yesterday",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention uses exact elapsed milliseconds for the1-day boundary",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention uses exact elapsed milliseconds for the3-day boundary",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention uses exact elapsed milliseconds for the7-day boundary",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention uses exact elapsed milliseconds for the14-day boundary",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention moves the anchor to a real help provided after this retest started and preserves the earlier baseline",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention never backdates future teaching into an earlier historical answer",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention does not move an actual child math anchor for another child, another subject or independent adult teaching",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention does not manufacture an independent baseline from a helped, exposed, pending or same-session answer",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention keeps missing original sources, unknown knowledge mapping and invalid time explicitly unknown",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention does not count duplicate original exposure receipts twice and refuses one identity claiming two different originals",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention retains real elapsed time while refusing to call an assisted or unscored current answer independent retention",
+          "status": "passed"
+        },
+        {
+          "title": "actual teaching anchors and independent elapsed retention rejects an invalid server cutoff and binds the exact source, interval and actual answer time into the original fingerprint",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "retention-source.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "retained actual teaching source adapters binds original practice start, actual attempt and hint times to the original child and frozen atom without returning answer text",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters does not move anchors for merely proposed plans, calendar completion, unsaved drafts, another child or another subject",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters keeps missing practice definitions or a hint outside its real original question explicitly unverifiable",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters binds actual diagnostic hints to their frozen item and atom rather than a client supplied target",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters uses only actual child generated teaching and the exact retained shared target definition",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters keeps a missing shared generated original unknown and does not infer a definition from the currently published atom",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters does not use mutable classroom updatedAt as proof of a teaching display",
+          "status": "passed"
+        },
+        {
+          "title": "retained actual teaching source adapters requires the exact saved classroom version and actual author for an explicit display event",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

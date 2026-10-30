@@ -61,7 +61,7 @@ const learningRoutes: Record<string, RegExp[]> = {
   POST: [/^ai\/assistant\/sessions\/[^/]+\/artifacts\/guidance\/(preflight|intents)$/, /^learning\/assistant-guidance\/intents\/[^/]+\/(report-preflight|report)$/, /^learning\/teaching-practice\/practices\/[^/]+\/assignments$/, /^learning\/teaching-practice\/assignments\/[^/]+\/start$/, /^learning\/teaching-practice\/sessions\/[^/]+\/(responses|complete|questions\/[^/]+\/help)$/, /^ai\/assistant\/sessions\/[^/]+\/artifacts\/practice\/generated\/(preflight|drafts)$/, /^learning\/teaching-practice\/drafts\/[^/]+\/(cancel|retry|review|adopt)$/, /^chemistry\/checkpoints\/start$/, /^learning\/project-files\/uploads(\/[^/]+\/(complete|cancel))?$/, /^learning\/project-files\/assets\/[^/]+\/(cancel|retry|delete)$/, /^learning\/material-uploads(\/[^/]+\/(complete|cancel))?$/, /^learning\/source-courses\/materials\/[^/]+\/process\/cancel$/, /^auth\/logout$/, /^students\/[^/]+\/progress-proposals$/, /^diagnostics\/sessions$/,
     /^learning\/source-courses\/materials\/[^/]+\/(files\/check|repairs(\/[^/]+\/(cancel|retry))?)$/,
     /^learning\/classroom\/sessions\/[^/]+\/turns(\/[^/]+\/(cancel|retry))?$/,
-    /^learning\/classroom\/sessions(\/[^/]+\/(answers|hints|messages|presentation|voice-preview|narration\/[^/]+))?$/,
+    /^learning\/classroom\/sessions(\/[^/]+\/(retention-displays|answers|hints|messages|presentation|voice-preview|narration\/[^/]+))?$/,
     /^learning\/classroom\/sessions\/[^/]+\/visuals(\/[^/]+\/(select|unselect|cancel|retry|delete))?$/,
     /^learning\/projects(\/[^/]+\/(submissions|legacy|advice|narration))?$/,
     /^learning\/source-courses(\/preflight|\/materials\/(text|text-file)|\/[^/]+\/(confirm|cancel|retry|archive))?$/,

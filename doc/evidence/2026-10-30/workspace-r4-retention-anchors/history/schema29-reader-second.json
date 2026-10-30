@@ -1,0 +1,59 @@
+{
+  "numTotalTests": 11,
+  "numPassedTests": 6,
+  "numFailedTests": 0,
+  "numPendingTests": 5,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "schema29-reader.integration.test.ts",
+      "status": "passed",
+      "tests": [
+        {
+          "title": "sqlite actual schema28 reader fence for schema29 migrates actual28 without rewriting business records and the unmodified old reader refuses29 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema28 reader fence for schema29 migrates an actual23 database through24,25,26,27,28 and29 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema28 reader fence for schema29 refuses an orphan teaching exposure before advancing the actual28 minimum reader marker",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema28 reader fence for schema29 rolls back the29 marker and its migration together and leaves the28 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema28 reader fence for schema29 rejects unknown future30 and mismatched or incomplete29 markers without resetting them",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema28 reader fence for schema29 restores a native28 bundle with its old marker, upgrades explicitly and restores native29 with the new minimum reader",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema28 reader fence for schema29 migrates actual28 without rewriting business records and the unmodified old reader refuses29 before any write",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema28 reader fence for schema29 migrates an actual23 database through24,25,26,27,28 and29 with its original business rows intact",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema28 reader fence for schema29 refuses an orphan teaching exposure before advancing the actual28 minimum reader marker",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema28 reader fence for schema29 rolls back the29 marker and its migration together and leaves the28 reader usable",
+          "status": "skipped"
+        },
+        {
+          "title": "postgres actual schema28 reader fence for schema29 rejects unknown future30 and mismatched or incomplete29 markers without resetting them",
+          "status": "skipped"
+        }
+      ]
+    }
+  ]
+}

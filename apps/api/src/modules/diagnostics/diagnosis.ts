@@ -1,3 +1,4 @@
+import { isIndependentRetention } from './retention-evidence-projection';
 import { DiagnosticHypothesis, DiagnosticResponse, KnowledgeAtom, MeasurementItem, Subject } from '@study-agent/contracts';
 import { createHash } from 'node:crypto';
 import { atomDefinitionFingerprint } from './measurement-definition';
@@ -6,7 +7,7 @@ import { firstQuestionResponses, measurableResponse } from './measurement';
 
 const ids = (evidence: DiagnosticResponse[]) => evidence.map((item) => item.id);
 const families = (evidence: DiagnosticResponse[]) => new Set(evidence.map(independentFamilyKey)).size;
-export const DIAGNOSIS_VERSION = 'diagnosis-rules-v6';
+export const DIAGNOSIS_VERSION = 'diagnosis-rules-v7';
 
 // A family that merely changes its presentation must not fill both sides of a transfer contrast.
 const independentContrast = (basic: DiagnosticResponse[], transfer: DiagnosticResponse[]) =>
@@ -16,7 +17,7 @@ export function deriveHypotheses(studentId: string, subject: Subject, atoms: Kno
   responses: DiagnosticResponse[], mappings: Map<string, MeasurementItem>, previous: DiagnosticHypothesis[], at: string): DiagnosticHypothesis[] {
   const eligible = firstQuestionResponses(responses).filter((item) => item.studentId === studentId && item.status === 'scored' && !item.priorExposure && item.hintLevel === 0 &&
     (mappings.get(`${item.itemId}@${item.mappingVersion}`) ?? mappings.get(item.itemId))?.reviewStatus === 'approved');
-  const valid = eligible.filter(measurableResponse);
+  const valid = eligible.filter(item=>measurableResponse(item)&&(item.dimension!=='retention'||isIndependentRetention(item)));
   const results: DiagnosticHypothesis[] = [];
   for (const atom of atoms) {
     const local = valid.filter((item) => item.atomId === atom.id);
@@ -30,8 +31,8 @@ export function deriveHypotheses(studentId: string, subject: Subject, atoms: Kno
     const procedureFail = procedure.filter((item) => !item.correct);
     const transferFail = failed.filter((item) => item.dimension === 'transfer');
     const transferPass = local.filter((item) => item.dimension === 'transfer' && item.correct);
-    const retentionFail = failed.filter((item) => item.dimension === 'retention' && (item.retentionDelayDays ?? 0) >= 1);
-    const retentionPass = local.filter((item) => item.dimension === 'retention' && (item.retentionDelayDays ?? 0) >= 1 && item.correct);
+    const retentionFail = failed.filter((item) => isIndependentRetention(item));
+    const retentionPass = local.filter((item) => isIndependentRetention(item) && item.correct);
     const prerequisites = valid.filter((item) => atom.prerequisiteIds.includes(item.atomId));
     const failingPrerequisite = atom.prerequisiteIds.find((id) => families(prerequisites.filter((item) => item.atomId === id && !item.correct)) >= 2);
     const allPrerequisitesPassed = atom.prerequisiteIds.length > 0 && atom.prerequisiteIds.every((id) =>
@@ -76,7 +77,7 @@ export function deriveHypotheses(studentId: string, subject: Subject, atoms: Kno
       if (sameRules && old?.status === 'resolved' && !corrected && failed.some((item) => item.submittedAt > old.updatedAt)) status = 'reopened';
       const history = [...(old?.history ?? [])];
       if (!old || old.status !== status || !sameRules) history.push({ at, status, ruleVersion: DIAGNOSIS_VERSION,
-        reason: old && !sameRules ? '题族计量规则已更新，依据原始证据重新核查；规则变化不表示学习改善。' : '依据独立题族、支持证据及反证重新核查' });
+        reason: old && !sameRules ? '保持或题族计量规则已更新，依据原始证据重新核查；规则变化不表示学习改善。' : '依据独立题族、支持证据及反证重新核查' });
       results.push({ id, studentId, subject, atomId: atom.id, cause: proposal.cause, status, title: proposal.title,
         observation: `在“${atom.name}”的 ${new Set(failed.map((item) => item.questionId)).size} 道不同题目中观察到未达标作答。${reported.length ? `另有 ${reported.length} 次选择暂时不会，尚无过程可以核对。` : ''}`,
         explanation: proposal.explanation, alternatives: ['题意或评分可能需要复核', '作答环境、误触和当日状态尚未测量', '其他知识或策略因素仍待排查'],
