@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-30T23:22:49.739Z",
+  "state": "Isolated candidate archived; no application merge, push or deployment.",
+  "baseMain": "b29a3e97d274e5ad4fedbbf34fa73fa6db4c3b4b",
+  "archiveMain": "69b982dd50152839541bb551660b678e264ab2a1",
+  "sourceDelta": {
+    "files": 75,
+    "uncompressedSha256": "1db00c5dde6ad96703459f3e9afe63f6bdd8abc03efd7a837f675cbd1c2e9ded",
+    "gzipSha256": "eac2528f315e58c82dae83c2bd70829b24e5f5ab5f20f9e4201815ac0be57dd7"
+  },
+  "build": [
+    {
+      "name": "contracts",
+      "status": 0
+    },
+    {
+      "name": "config",
+      "status": 0
+    },
+    {
+      "name": "api-types",
+      "status": 0
+    },
+    {
+      "name": "api-build",
+      "status": 0
+    }
+  ],
+  "webTypes": {
+    "status": 0
+  },
+  "checks": [
+    {
+      "label": "integrity31-first",
+      "passed": 98,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "integrity31-postgres-first",
+      "passed": 50,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "integrity31-postgres-native-first",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "batchBoundary": "SQLite98 is49 actual HTTP/worker/native +1 recovery +40 pure +4 browser-codec +4 real file-observation tests. PostgreSQL50 is49 actual PG HTTP/worker/native +1 independent-schema media recovery. Native PostgreSQL1 separately runs pg_dump/pg_restore. Prior API21 batches are not added. Filtered closing-writer attempts each skip40.",
+  "fixedFailure": "A real writing_pdf task becomes cancel_requested when its author closes. Cold native validation now permits that state only with actual deletion receipt, frozen source and matching durable task; queued/running/retry_wait remain rejected and late publication remains fenced.",
+  "coverage": "Read-only checks observe actual bytes and path/handle identities, independently rebuild source mappings, recheck generation/source/session and student guardian/accessVersion, and preserve damaged files without GET side effects.",
+  "production": {
+    "formalReadOnly": {
+      "schema": 24,
+      "revision": 187
+    },
+    "protectedFilesMatchPriorCheckpoint": true,
+    "mainApplicationSource": 30,
+    "noPushOrDeployment": true
+  },
+  "boundaries": {
+    "actualFileInspection": true,
+    "paperOriginalRepair": false,
+    "productCaptureUI": false,
+    "fullApiRegression": false,
+    "wholeBrowserRegression": false,
+    "adminClosingMatrix": false,
+    "teacherReview": false,
+    "physicalDevices": false,
+    "realLearnerIntervals": false,
+    "wholeGoal": "active",
+    "legacy72": "11 implemented / 50 in_progress / 11 planned / 0 verified"
+  },
+  "artifacts": [
+    {
+      "path": "actual-checks.json",
+      "sha256": "b76c0113f7010a1519b0659cfb07671e73542d6314ceb63f7d1f4702e19e2d60"
+    },
+    {
+      "path": "checked-inputs.json.gz",
+      "sha256": "bb037fa98ceb91ab326f0995694e38b9aa5e475883186a5b4a1114286024bf63"
+    },
+    {
+      "path": "closing-writer-original-and-retry.json",
+      "sha256": "059220168f60756b2d00695aacb540c874c98cb18b388d4cc3978e0c0019b53f"
+    },
+    {
+      "path": "production-observation.json",
+      "sha256": "a942cd0bb34a1de97df3cd46b6f55316f8ba33a8492b96d692018f44b535e716"
+    },
+    {
+      "path": "source-delta.json.gz",
+      "sha256": "eac2528f315e58c82dae83c2bd70829b24e5f5ab5f20f9e4201815ac0be57dd7"
+    }
+  ]
+}
