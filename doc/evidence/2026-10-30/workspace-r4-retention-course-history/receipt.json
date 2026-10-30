@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-30T14:10:45.556Z",
+  "sourceRevision": "55efe6592072d56be20db9be261e179374a7b85f",
+  "state": "Actual in-place course history repair implemented on source29, independently isolated and locally integrated; no push/deployment, complete goal active.",
+  "completeApi": {
+    "passed": 2165,
+    "failed": 0,
+    "skipped": 96
+  },
+  "actualPostgres": {
+    "passed": 34,
+    "skipped": 1,
+    "actualPgBusiness": 23,
+    "actualPgReaders": 5,
+    "repeatedSqliteReaders": 6
+  },
+  "focusedBrowser": {
+    "tests": 6,
+    "retries": 0,
+    "stats": {
+      "startTime": "2026-10-30T13:43:30.099Z",
+      "duration": 42549.51,
+      "expected": 6,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "originalFullBrowser": {
+    "tests": 620,
+    "sourceRevision": "55efe6592072d56be20db9be261e179374a7b85f",
+    "receipt": "../workspace-r4-retention-anchors/receipt.json",
+    "scope": "Preceding backend; Web/contracts unchanged, not a new complete repair run."
+  },
+  "productionObservation": {
+    "schema": 24,
+    "revision": 187,
+    "artifacts": [
+      {
+        "path": "apps/api/dist/apps/api/src/main.js",
+        "sha256": "5793c7090063d318c5e5c60bdb74350baa6f64c386639b94fbf4cd5605946c1a",
+        "mtimeUtc": "2026-10-29T14:51:26.120290+00:00"
+      },
+      {
+        "path": "apps/web/.next/BUILD_ID",
+        "sha256": "e02197beeb39c5df02110ca05544c471b3bb892662bebdcb56449b27713e7fba",
+        "mtimeUtc": "2026-10-29T14:52:20.456777+00:00"
+      }
+    ],
+    "recheckedAt": "2026-10-30T14:10:45.558Z"
+  },
+  "artifacts": [
+    {
+      "path": "actual-production24-copy-native29.json",
+      "sha256": "9df4f4277b1e3fde9cbf0f9baaa1bdaf3343a8df328ecba84b992c02a52a6d7e",
+      "bytes": 852
+    },
+    {
+      "path": "complete-api-fourth.json",
+      "sha256": "9f546c31ae1ca9cefdaa3db0818a000c10e2099cdda7a2433f2970f413d04236",
+      "bytes": 557464
+    },
+    {
+      "path": "focused-browser-first.json",
+      "sha256": "789794e52a0fe828523553a04c2b0dbd2df4f3ec6fdea2a3093f3448155aad68",
+      "bytes": 2013
+    },
+    {
+      "path": "history-and-limits.json",
+      "sha256": "3538eac27300ab8c78c913db9e7ac564c9caa253c6e84a1be74b01e6da7074f4",
+      "bytes": 1454
+    },
+    {
+      "path": "local-originals.json",
+      "sha256": "4278dae456546812efd4568668642d247fcd423a411af5ff81eb0ff14980fc7e",
+      "bytes": 1295
+    },
+    {
+      "path": "postgres-fourth.json",
+      "sha256": "7265f05363c1254d678f0ece6e56b9cf71cc98483aaca417bd472254bc2c9089",
+      "bytes": 9419
+    },
+    {
+      "path": "screenshots/classroom-time-complete-download-before-write.png",
+      "sha256": "7b1d61cc04be1c904b24884bb08e7b8e6dbce6e4a05e62f06b9dc21e75a45069",
+      "bytes": 55832
+    },
+    {
+      "path": "screenshots/lost-original-classroom-time-recovered.png",
+      "sha256": "b4341611aef15cd37d880146817d9de8e351fa348117e3abf0d8ac0aa57bb6ed",
+      "bytes": 83069
+    },
+    {
+      "path": "screenshots/original-review-and-latest-teaching-1440.png",
+      "sha256": "3a0a766770a50f43d8a9f6b28047a3d54266fc5ae1ad32f12fa720f3a169cc31",
+      "bytes": 481681
+    },
+    {
+      "path": "screenshots/original-review-and-latest-teaching-320.png",
+      "sha256": "a3798db2f884fa42efadbae2f498fad04e31c1adddd542c142be57cf0413b9b6",
+      "bytes": 408028
+    },
+    {
+      "path": "screenshots/original-review-and-latest-teaching-390.png",
+      "sha256": "9bf2944570b58d0fcfd8e0ac17407f91ea68ad9b3d312294449d57189c3ed93f",
+      "bytes": 407264
+    },
+    {
+      "path": "screenshots/original-review-and-latest-teaching-768.png",
+      "sha256": "528466c299a29f7a68ea9cb987fedd8747520648d9475dcc423e249269b64f36",
+      "bytes": 427377
+    },
+    {
+      "path": "source-comparison.json",
+      "sha256": "7f9f65c002f653e092e53eb6a36502068be48e9be8513a2d449fb00b061861e1",
+      "bytes": 4833
+    },
+    {
+      "path": "document-checks-first.json",
+      "sha256": "44ed2dc8e3025e5e94736fc5d115de13cb8c85dc2c4f9599d9e44168dead11c8",
+      "bytes": 106
+    },
+    {
+      "path": "document-checks-second.json",
+      "sha256": "8313e5ab7c72da14588d78d07dfac51dd1761637bf8d61f5ab8bf3867df11367",
+      "bytes": 267
+    },
+    {
+      "path": "handbook-validation.json",
+      "sha256": "a532282d8c8026cb29a88120e16ebfb103513463981d86c28f058040cc254660",
+      "bytes": 109453
+    },
+    {
+      "path": "documentation-failure-and-rerun.json",
+      "sha256": "0835a6c5dde66af64677d820078a8880cab034413605ab997738fbaab6a31f30",
+      "bytes": 544
+    }
+  ],
+  "actualProduction24Copy": {
+    "file": "actual-production24-copy-native29.json",
+    "fromSchema": 24,
+    "toSchema": 29,
+    "actualDomainRecords": 89864,
+    "nativeColdOpens": 2,
+    "businessRevision": 187,
+    "completeDomainRowsAndPositionsUnchanged": true
+  },
+  "documentValidation": "handbook-validation.json"
+}

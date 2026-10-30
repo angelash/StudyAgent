@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-30T13:42:40.745400+00:00",
+  "fromSchema": 24,
+  "toSchema": 29,
+  "revisionBefore": 187,
+  "revisionAfter": 187,
+  "actualDomainRecords": 89864,
+  "collections": 32,
+  "completeDomainRowsAndPositionsUnchanged": true,
+  "domainDigest": "2f20bcfa5f13eb35ac7c1cd4d9e6ad578b34963bb5f1cf81ed65544bcaef304d",
+  "nativeColdOpens": 2,
+  "quickCheck": "ok",
+  "readerSha256": "7a90a07beff5f9d58f41d3a6d1793cd07fc646318224938c1614527de54da54f",
+  "formalSchema": 24,
+  "formalRevision": 187,
+  "formalBuildsUnchanged": true,
+  "scope": "Actual formal SQLite data was backed up through a read-only connection, migrated and opened twice only in ignored QA. No application bootstrap, HTTP server, learning writes, publication or production migration. Does not cover media restore, a new machine, real teacher/device or learner effectiveness."
+}

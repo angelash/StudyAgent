@@ -1,4 +1,5 @@
 import { atomDefinitionFingerprint } from './measurement-definition';
+import { resolveClassroomRetentionContext } from './classroom-retention-origin';
 import { retentionDigest,type RetentionExposure } from './retention-anchor';
 
 type Row=Record<string,any>;
@@ -46,7 +47,7 @@ export function collectRetentionExposures(records:RetentionRetainedRecords,targe
   const gap=session.retentionLegacyGap,old=!session.retentionContext&&(session.revealed>0||(session.hintReceipts??[]).length||(session.answers??[]).length||(session.messages??[]).some((row:Row)=>row.role==='assistant'));
   if(!gap&&!old)continue;
   const actor=rows('users').find(row=>row.id===session.ownerUserId&&row.role==='student'),actual=rows('students').some(row=>row.id===target.studentId&&row.userId===session.ownerUserId);if(!actor||!actual)continue;
-  const course=rows('studioCourses').find(row=>row.id===session.studioCourseId)??rows('sourceCourses').find(row=>row.id===session.sourceCourseId),subject=gap?.subject??course?.subject;
+  const subject=gap?.subject??resolveClassroomRetentionContext(records,session as any)?.subject;
   if(subject&&subject!==target.subject)continue;
   const fromAt=gap?.fromAt??session.createdAt,throughAt=gap?.throughAt??session.updatedAt;
   add('legacy-classroom-unverified:'+session.id,'classroom_teaching_displayed',session.id,'',null,{sessionId:session.id,contentFingerprint:session.contentFingerprint,fromAt,throughAt},false,null);

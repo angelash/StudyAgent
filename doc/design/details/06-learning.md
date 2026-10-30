@@ -1,6 +1,6 @@
 # 06 工作台首页、学习任务、报告与学习记忆 — 详细设计
 
-源码基线：`a99d8dd04411651c2c2f06976e7895976927e5cf`。角色：学生、家长、授权教师。
+源码基线：`55efe6592072d56be20db9be261e179374a7b85f`。角色：学生、家长、授权教师。
 
 产品入口：`/`、`/studio`、`/studio/tasks`、`/studio/reports`、`/studio/profiles`、`/studio/settings`、`/learn`、`/parent/dashboard`、`/student/today`。
 
@@ -310,13 +310,13 @@
 
 **输入**：原独立作答、原ReviewTask、实际孩子/学科/冻结目标、真实教学或帮助来源和服务端截止时间。
 
-**处理与实现**：原业务同事务写入稳定来源时间；课堂冻结原课程/原知识定义和原句单元，普通读取与家长预览不移动锚点。原任务基准稳定，最近实际教学/帮助和真实1/3/7/14日共同控制复测；开始后的帮助排除独立保持。旧首答和报告保持，明确重分析追加v4报告；画像、原因和复盘共用资格投影。原生双向关系、隐私账本与实际旧28读取器保持。
+**处理与实现**：原业务同事务写入稳定来源时间；课堂冻结原课程/原知识定义和原句单元，普通读取与家长预览不移动锚点。原任务基准稳定，最近实际教学/帮助和真实1/3/7/14日共同控制复测；开始后的帮助排除独立保持。旧首答和报告保持，明确重分析追加v4报告；画像、原因和复盘共用资格投影。原生双向关系、隐私账本与实际旧28读取器保持。 原地教程升级后沿实际审计连续追溯原课堂课程版本，旧课堂准备和原生冷恢复共用准确来源。
 
 **输出**：当前等待依据、准确来源返回、原时间回执/完整副本和可核查保持资格。
 
 **状态与持久化**：`retentionExposureEvents`、`diagnosticSessions`、`diagnosticResponses`、`diagnosticReports`、`practiceSessions`、`practiceAttempts`、`practiceHints`、`assistantTeachingAssignments`、`assistantTeachingSessions`、`classroomSessions`
 
-**权限、失败与边界**：620整站/2161API及双库分批通过仅说明工程范围。163更多受控原因、R5-R8和全部教材/教师/实机/真人长期条件仍待；源码29未发布。
+**权限、失败与边界**：原H620属于修正前后端；课程历史修正后2165API、PG34/1及独立6浏览器分别通过。源码29未发布，163/R5-R8及全部真实验收仍待。
 
 **关联接口**：
 
@@ -346,6 +346,8 @@
 - [packages/contracts/src/retention.ts](../../../packages/contracts/src/retention.ts)
 - [tests/e2e/retention-evidence.spec.ts](../../../tests/e2e/retention-evidence.spec.ts)
 - [doc/product/162-retention-anchor-and-measurement-compatibility.md](../../../doc/product/162-retention-anchor-and-measurement-compatibility.md)
+- [apps/api/src/modules/diagnostics/classroom-retention-history.test.ts](../../../apps/api/src/modules/diagnostics/classroom-retention-history.test.ts)
+- [apps/api/src/modules/diagnostics/retention-course-history.integration.test.ts](../../../apps/api/src/modules/diagnostics/retention-course-history.integration.test.ts)
 
 ## LEARN-01 家庭总览与证据化学习记忆
 

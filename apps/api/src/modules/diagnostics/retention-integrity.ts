@@ -10,7 +10,7 @@ type NativeRow={collection:string;record_id?:string;body:unknown};
 /** Replay at the original server cutoff; later teaching or scoring cannot rewrite a prior answer. */
 export function assertRetentionNativeRows(rows:NativeRow[]){
  try{
-  const values:RetentionRetainedRecords={};for(const row of rows){const body=typeof row.body==='string'?JSON.parse(row.body):row.body;if(!body||typeof body!=='object'||row.record_id!==undefined&&(body as any).id!==row.record_id)throw Error();values[row.collection]??=[];(values[row.collection]as any[]).push(body);}
+  const values:RetentionRetainedRecords={};for(const row of rows){const body=typeof row.body==='string'?JSON.parse(row.body):row.body;if(!body||typeof body!=='object'||row.record_id!==undefined&&(row.collection==='events'?(body as any).eventId:(body as any).id)!==row.record_id)throw Error();values[row.collection]??=[];(values[row.collection]as any[]).push(body);}
   if(!(values.retentionExposureEvents?.length||values.practiceSessions?.some(row=>row.retentionProtocol)||values.assistantTeachingSessions?.some(row=>row.retentionProtocol)||values.diagnosticResponses?.some(row=>row.retentionEvidence)||values.diagnosticSessions?.some(row=>row.retentionProtocol)||values.classroomSessions?.some(row=>row.retentionContext||row.retentionDisplays?.length||row.retentionLegacyGap)))return;
   for(const row of values.classroomSessions??[])assertClassroomRetentionRecord(row as any);
   assertClassroomRetentionOrigins(values);

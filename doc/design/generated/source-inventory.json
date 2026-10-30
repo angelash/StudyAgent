@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "a99d8dd04411651c2c2f06976e7895976927e5cf",
+  "sourceRevision": "55efe6592072d56be20db9be261e179374a7b85f",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 525,
@@ -10,12 +10,12 @@
     "activeModules": 19,
     "activeControllers": 60,
     "apiClasses": 198,
-    "apiFunctions": 638,
+    "apiFunctions": 639,
     "domainCollections": 116,
     "contractTypes": 482,
     "webPages": 36,
     "webRouteHandlers": 1,
-    "apiTestFiles": 245,
+    "apiTestFiles": 247,
     "browserTestFiles": 57
   },
   "modules": [
@@ -47048,14 +47048,20 @@
     },
     {
       "file": "apps/api/src/modules/diagnostics/classroom-retention-origin.ts",
+      "name": "retainedStudioCourses",
+      "line": 13,
+      "signature": "retainedStudioCourses(records:RetentionRetainedRecords, current:Record<string,any>)"
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/classroom-retention-origin.ts",
       "name": "resolveClassroomRetentionContext",
-      "line": 9,
+      "line": 30,
       "signature": "resolveClassroomRetentionContext(records:RetentionRetainedRecords, session:{studentId:string|null;studioCourseId?:string;sourceCourseId?:string;lessonId:string;contentFingerprint:string}): ClassroomRetentionContext|undefined"
     },
     {
       "file": "apps/api/src/modules/diagnostics/classroom-retention-origin.ts",
       "name": "assertClassroomRetentionOrigins",
-      "line": 23,
+      "line": 52,
       "signature": "assertClassroomRetentionOrigins(records:RetentionRetainedRecords)"
     },
     {
@@ -47373,7 +47379,7 @@
     {
       "file": "apps/api/src/modules/diagnostics/retention-source.ts",
       "name": "collectRetentionExposures",
-      "line": 8,
+      "line": 9,
       "signature": "collectRetentionExposures(records:RetentionRetainedRecords, target:Target): RetentionExposure[]"
     },
     {
@@ -67067,6 +67073,7 @@
     "apps/api/src/modules/diagnostics/average-atomic.integration.test.ts",
     "apps/api/src/modules/diagnostics/average-atomic.test.ts",
     "apps/api/src/modules/diagnostics/chemistry-curriculum.test.ts",
+    "apps/api/src/modules/diagnostics/classroom-retention-history.test.ts",
     "apps/api/src/modules/diagnostics/classroom-retention-origin.test.ts",
     "apps/api/src/modules/diagnostics/classroom-retention-record.test.ts",
     "apps/api/src/modules/diagnostics/core-curriculum.test.ts",
@@ -67083,6 +67090,7 @@
     "apps/api/src/modules/diagnostics/measurement.test.ts",
     "apps/api/src/modules/diagnostics/paper-exposure.integration.test.ts",
     "apps/api/src/modules/diagnostics/retention-anchor.test.ts",
+    "apps/api/src/modules/diagnostics/retention-course-history.integration.test.ts",
     "apps/api/src/modules/diagnostics/retention-evidence-projection.test.ts",
     "apps/api/src/modules/diagnostics/retention-integrity.test.ts",
     "apps/api/src/modules/diagnostics/retention-legacy-classroom.test.ts",

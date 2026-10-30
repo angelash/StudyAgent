@@ -1,0 +1,81 @@
+{
+  "base": "55efe6592072d56be20db9be261e179374a7b85f",
+  "files": [
+    {
+      "path": "apps/api/src/modules/diagnostics/classroom-retention-origin.ts",
+      "mainBefore": "a23d3013e7d40bf5264aca795288020d3f0b9b6165959a6b8c4b7eff7006350b",
+      "originalH": "a23d3013e7d40bf5264aca795288020d3f0b9b6165959a6b8c4b7eff7006350b",
+      "candidate": "5c011cdde1da7639cff4b2dfe859d46e319f1865f9fffdb5196e478f149f45aa",
+      "deliveredSha256": "5c011cdde1da7639cff4b2dfe859d46e319f1865f9fffdb5196e478f149f45aa",
+      "normalization": "Final CR/LF sequence only; all other tested bytes preserved."
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/classroom-retention-history.test.ts",
+      "mainBefore": null,
+      "originalH": null,
+      "candidate": "dc1f667e862a32e9d0c5d302dc709ef0c5fe164f259df479b882d4bbbdc70413",
+      "deliveredSha256": "dc1f667e862a32e9d0c5d302dc709ef0c5fe164f259df479b882d4bbbdc70413",
+      "normalization": "Final CR/LF sequence only; all other tested bytes preserved."
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-course-history.integration.test.ts",
+      "mainBefore": null,
+      "originalH": null,
+      "candidate": "a3a9bfa0b9bd98ad9756f50898d80fabf8595256de37f762f5b61d523828887d",
+      "deliveredSha256": "a3a9bfa0b9bd98ad9756f50898d80fabf8595256de37f762f5b61d523828887d",
+      "normalization": "Final CR/LF sequence only; all other tested bytes preserved."
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention.service.ts",
+      "mainBefore": "b9381a0a650a80228a5006ad1abc87d16a91119c22aed8ad9ba8cf3d29973cb0",
+      "originalH": "04983a73a7f330de0427b045b1a219a3403752dd11f833d11b735fb16bd36633",
+      "candidate": "52709b75bbec411eb5978292f879168e069e88c71ede73360ec58e55225ea6ff",
+      "deliveredSha256": "4c0a6787c14e080391632ac252ca274b467b97f47384428dec9cf03538487dcc",
+      "normalization": "Final CR/LF sequence only; all other tested bytes preserved."
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-source.ts",
+      "mainBefore": "c2fe4b78c4016f8d5e97506c4d8b45e1f5d2112017647978c5aa216f35b7590f",
+      "originalH": "c2fe4b78c4016f8d5e97506c4d8b45e1f5d2112017647978c5aa216f35b7590f",
+      "candidate": "0835d1bec83ba07bd7e75b7cd83f1887ea111e02d113d14da70c1dac8ddb2ea2",
+      "deliveredSha256": "dad9288373e5221742067026574781de7ac0eae37b6c9ae029783d19d15cf5cf",
+      "normalization": "Final CR/LF sequence only; all other tested bytes preserved."
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention-integrity.ts",
+      "mainBefore": "aed7a1a847749632b3aa0adbcbe134293a59f1443b7d64347df28c93bbc6e4a8",
+      "originalH": "aed7a1a847749632b3aa0adbcbe134293a59f1443b7d64347df28c93bbc6e4a8",
+      "candidate": "c88df87488560806a3ba3b7d7dc5cfb8d2c04452528ed8be74c6eda23d1e030e",
+      "deliveredSha256": "bca71a8e5a11de3f0914c8a105da64b5e5bd49e475a1a4b0a3741ad1ba7caadd",
+      "normalization": "Final CR/LF sequence only; all other tested bytes preserved."
+    },
+    {
+      "path": "apps/api/src/infrastructure/domain-database.ts",
+      "mainBefore": "5c429ee860859069351da17d89c5cd3881625b5f2bdd6e4218083dced90c0ebf",
+      "originalH": "1e3c2eeb13cfdcd268e9994e432d30f502d61768c07dcc3db035f8734e2bdfd4",
+      "candidate": "867c9088051ea799fd72562e62e4783a22a6ec1e1fa1b7709ecca8079e45ebb1",
+      "deliveredSha256": "d039e9ce4c9d2084a20d46d430c116b4277f5250ef775101c040fb6a751c7164",
+      "normalization": "Final CR/LF sequence only; all other tested bytes preserved."
+    },
+    {
+      "path": "scripts/operations/assistant-practice-integrity.cjs",
+      "mainBefore": "fbcc867c93bfce4feca0b08778ab96e60655f833a212bc20ad6a9966d7dbb178",
+      "originalH": "5ae519c49f2dcf41868fd2a4d15b0ff29e6cb67da106387cd6b8af8a4d310f40",
+      "candidate": "73b24be0fad0982c718102dd1acdf6e9fe2d5e4361c6978db8275e55b3a73543",
+      "deliveredSha256": "7889be7be48e5e242896111ebaefa7d8d822e8661835f5364ad9be06a97c95b0",
+      "normalization": "Final CR/LF sequence only; all other tested bytes preserved."
+    }
+  ],
+  "onlyChangedSources": [
+    "apps/api/src/infrastructure/domain-database.ts",
+    "apps/api/src/modules/diagnostics/classroom-retention-history.test.ts",
+    "apps/api/src/modules/diagnostics/classroom-retention-origin.ts",
+    "apps/api/src/modules/diagnostics/retention-course-history.integration.test.ts",
+    "apps/api/src/modules/diagnostics/retention-integrity.ts",
+    "apps/api/src/modules/diagnostics/retention-source.ts",
+    "apps/api/src/modules/diagnostics/retention.service.ts",
+    "scripts/operations/assistant-practice-integrity.cjs"
+  ],
+  "original620WebAndContractsUnchanged": true,
+  "originalDeliveryNormalization": "Original H retained exact non-trivia TypeScript token equality for the single e2e newline normalization; see prior receipt."
+}

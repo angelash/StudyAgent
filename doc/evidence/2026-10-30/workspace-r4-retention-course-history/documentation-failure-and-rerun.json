@@ -1,0 +1,9 @@
+{
+  "firstAttempt": {
+    "inventory": 0,
+    "snapshot": 1,
+    "reason": "Source snapshot requires an authored audit with exact current source hashes; domain-database.ts changed in this repair. Original first log and status remain in ignored QA."
+  },
+  "correction": "Re-ran the required authored audit, then regenerated source inventory/content snapshot/handbook and validated the offline viewer and all documentation links. Application source and tested builds did not change.",
+  "secondAttempt": "document-checks-second.json"
+}
