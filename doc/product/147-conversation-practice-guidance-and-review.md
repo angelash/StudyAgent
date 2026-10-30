@@ -377,3 +377,5 @@ POST /learning/assistant-practice/assignments/:id/groups/:atomId/start严格接a
 最终SQLite第八轮38/38与实际PG第二轮38/38各自通过、零失败/跳过；691源/428构建在各轮SHA保持并归档，先前SQL冷失败、非法fixture类型、媒体fixture顺序错误与编译失败均保留。原媒体3文件10/10通过，原卷浏览器修复第二轮5/5首次通过；测试范围不相加，也不替代完整产品回归。详见[所有本人轮次原件](../evidence/2026-10-29/assistant-practice-learner-second/receipt.json)与[辅助验证和旧CI](../evidence/2026-10-29/learner-wrapup-supporting-first/receipt.json)。
 
 私人候选83af7e15/40790308484已三job成功但浏览器有1次首次失败后重试；共享安排58024326/40796325938的application/PG成功、browser500通过/1失败且重试失败，现专项修复两处验收问题。原失败不取消、不覆盖。本次尚未完成完整API/整站/精确新CI或正式schema24发布；完整练习UI、撤回、成人/AI教学持久链路、D3/D4和M1～M7全部范围继续在计划中，正式schema23与原72状态保持。后续从[148续接清单](148-current-work-checkpoint-and-remaining-scope.md)恢复开发。
+
+2026-10-30 接续150/R2：[156](156-assistant-practice-workspace-ui.md)完整审核题UI现已实现并完成最终第九轮549/549整站浏览器、零重试；完整API1944/0/74跳过、实际双库各38/38按源码等价分别保留。首答与订正理由、真实媒体、完整副本及原命令恢复见[收据](../evidence/2026-10-30/workspace-r2-practice-ninth/receipt.json)。正式schema24/revision187及构建保持，仅本地提交。157撤回及158成人/AI继续隔离实施；D3/D4与R5～R8、原72/WS及长期真人证据继续active。

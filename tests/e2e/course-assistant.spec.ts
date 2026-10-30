@@ -147,7 +147,7 @@ test('course assistant: an existing range draft is preserved until the original 
 test('course assistant: learner switching and source scope mismatch hide the original content until returning to its actual profile',async({page})=>{
  test.setTimeout(120000);const actor=await login(page),one=await child(actor),two=await child(actor),row=await courseFixture(actor,'primary_unit',{studentId:one.id});await page.goto(row.href);
  const input=page.getByLabel('想一起看看什么',{exact:true});await expect(input).toBeEnabled();await input.fill('只属于第一个课程档案的草稿。');
- await page.getByLabel('学习档案',{exact:true}).selectOption(two.id);await expect(page.getByText('当前学习档案或学科与课程不一致。')).toBeVisible();await expect(input).toHaveCount(0);
+ await page.getByRole('combobox',{name:'学习对象',exact:true}).selectOption(two.id);await expect(page.getByText('当前学习档案或学科与课程不一致。')).toBeVisible();await expect(input).toHaveCount(0);
  expect(new URL(page.url()).searchParams.get('courseId')).toBe(row.courseId);await page.getByRole('button',{name:'切回课程档案',exact:true}).click();await expect(input).toHaveValue('只属于第一个课程档案的草稿。');
  await input.fill('[cite-course] 请说明单位条件。');await page.getByRole('button',{name:'发送学习问题',exact:true}).click();await expect(page.getByRole('navigation',{name:'本次回答的教学出处'})).toBeVisible();
  const href=await page.getByRole('navigation',{name:'本次回答的教学出处'}).getByRole('link').first().getAttribute('href');const q=new URL(href!,'https://local.invalid');q.searchParams.set('student',two.id);q.searchParams.set('subject','math');

@@ -1,6 +1,6 @@
 # 06 工作台首页、学习任务、报告与学习记忆 — 详细设计
 
-源码基线：`099ed99a8f3fda10b4c1d382b4dfea47e0463aa4`。角色：学生、家长、授权教师。
+源码基线：`a4611de5f1ae22d0740fea73ae22818b1ba4c838`。角色：学生、家长、授权教师。
 
 产品入口：`/`、`/studio`、`/studio/tasks`、`/studio/reports`、`/studio/profiles`、`/studio/settings`、`/learn`、`/parent/dashboard`、`/student/today`。
 
@@ -53,6 +53,32 @@
 - [apps/web/app/learn/page.tsx](../../../apps/web/app/learn/page.tsx)
 - [apps/web/lib/learning-context.ts](../../../apps/web/lib/learning-context.ts)
 
+## LEARN-08 对话练习安排与本人完整工作台
+
+**输入**：本人原对话、明确孩子/学科及1至3已学点、原生题包、完整答案和独立理由。
+
+**处理与实现**：助教原消息接来源预检、审核题候选和教学说明、明确共享安排；任务页保留原安排/逐组开始/原题位置。本人独立学习码写答案、理由、帮助及完成，监护人只读预览。专用完整副本按账号/来源/安排/原题和标签隔离；并发草稿显式比较，丢回执重放原完整命令，后续编辑与原提交分开。原生公式/表格/图片/音频沿QuestionRenderer和真实媒体服务；每题attemptHistory按实际序号脱敏显示首次答案/理由和订正。
+
+**输出**：可恢复的来源到安排、三组六题本人作答、帮助与订正历史及教学完成记录。
+
+**状态与持久化**：`assistantPracticeArtifacts`、`assistantPracticeAssignments`、`assistantPracticeGroupStarts`、`practiceSessions`、`practiceAttempts`、`practiceHints`、`studentMedia`
+
+**权限、失败与边界**：仍是教学练习，不增加正式掌握；真实上传不表示理由已审核。撤回、成人/AI持久练习、D3原因和D4排期继续实施，完整课程、教师/实机和真人间隔条件仍待。
+
+**调用方式**：领域内部计算、浏览器交互或运维命令，通过上层功能触发；没有独立HTTP端点。
+
+**补充实现文件**：
+
+- [apps/web/components/assistant-practices.tsx](../../../apps/web/components/assistant-practices.tsx)
+- [apps/web/components/practice-copy-controls.tsx](../../../apps/web/components/practice-copy-controls.tsx)
+- [apps/web/app/studio/tasks/conversation-practice.tsx](../../../apps/web/app/studio/tasks/conversation-practice.tsx)
+- [apps/web/app/studio/tasks/conversation-practice.css](../../../apps/web/app/studio/tasks/conversation-practice.css)
+- [apps/web/lib/assistant-practice-workspace.ts](../../../apps/web/lib/assistant-practice-workspace.ts)
+- [apps/web/lib/use-practice-local-copy.ts](../../../apps/web/lib/use-practice-local-copy.ts)
+- [apps/api/src/infrastructure/assistant-practice-workspace.test.ts](../../../apps/api/src/infrastructure/assistant-practice-workspace.test.ts)
+- [tests/e2e/assistant-practice-workspace.spec.ts](../../../tests/e2e/assistant-practice-workspace.spec.ts)
+- [doc/product/156-assistant-practice-workspace-ui.md](../../../doc/product/156-assistant-practice-workspace-ui.md)
+
 ## LEARN-01 家庭总览与证据化学习记忆
 
 **输入**：当前家庭、学生与学科。
@@ -72,7 +98,7 @@
 
 **服务方法**：
 
-- `LearningService.overview`；[apps/api/src/modules/learning/learning.service.ts:1014](../../../apps/api/src/modules/learning/learning.service.ts#L1014)。
+- `LearningService.overview`；[apps/api/src/modules/learning/learning.service.ts:1015](../../../apps/api/src/modules/learning/learning.service.ts#L1015)。
 - `LearningService.memory`；[apps/api/src/modules/learning/learning.service.ts:619](../../../apps/api/src/modules/learning/learning.service.ts#L619)。
 
 ## LEARN-02 今日任务与练习入口
@@ -121,11 +147,11 @@
 **服务方法**：
 
 - `LearningService.view`；[apps/api/src/modules/learning/learning.service.ts:735](../../../apps/api/src/modules/learning/learning.service.ts#L735)。
-- `LearningService.render`；[apps/api/src/modules/learning/learning.service.ts:760](../../../apps/api/src/modules/learning/learning.service.ts#L760)。
-- `LearningService.draft`；[apps/api/src/modules/learning/learning.service.ts:785](../../../apps/api/src/modules/learning/learning.service.ts#L785)。
-- `LearningService.submit`；[apps/api/src/modules/learning/learning.service.ts:876](../../../apps/api/src/modules/learning/learning.service.ts#L876)。
-- `LearningService.hint`；[apps/api/src/modules/learning/learning.service.ts:954](../../../apps/api/src/modules/learning/learning.service.ts#L954)。
-- `LearningService.complete`；[apps/api/src/modules/learning/learning.service.ts:971](../../../apps/api/src/modules/learning/learning.service.ts#L971)。
+- `LearningService.render`；[apps/api/src/modules/learning/learning.service.ts:761](../../../apps/api/src/modules/learning/learning.service.ts#L761)。
+- `LearningService.draft`；[apps/api/src/modules/learning/learning.service.ts:786](../../../apps/api/src/modules/learning/learning.service.ts#L786)。
+- `LearningService.submit`；[apps/api/src/modules/learning/learning.service.ts:877](../../../apps/api/src/modules/learning/learning.service.ts#L877)。
+- `LearningService.hint`；[apps/api/src/modules/learning/learning.service.ts:955](../../../apps/api/src/modules/learning/learning.service.ts#L955)。
+- `LearningService.complete`；[apps/api/src/modules/learning/learning.service.ts:972](../../../apps/api/src/modules/learning/learning.service.ts#L972)。
 
 ## LEARN-04 错题与待复核入口
 
@@ -145,7 +171,7 @@
 
 **服务方法**：
 
-- `LearningService.mistakes`；[apps/api/src/modules/learning/learning.service.ts:983](../../../apps/api/src/modules/learning/learning.service.ts#L983)。
+- `LearningService.mistakes`；[apps/api/src/modules/learning/learning.service.ts:984](../../../apps/api/src/modules/learning/learning.service.ts#L984)。
 
 ## LEARN-05 错题组织、复做与新题验证
 

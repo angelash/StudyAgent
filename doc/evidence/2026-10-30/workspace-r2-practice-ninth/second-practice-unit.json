@@ -1,0 +1,53 @@
+{
+  "numTotalTests": 6,
+  "numPassedTests": 6,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "assistant-practice-workspace.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "conversation practice complete copies and original activity boundaries rejects ambiguous aliases, another learner and incomplete activity links",
+          "status": "passed",
+          "durationMs": 4.238599999999906
+        },
+        {
+          "title": "conversation practice complete copies and original activity boundaries preserves later native inputs independently of the original submitted answer and reason",
+          "status": "passed",
+          "durationMs": 8.24739999999997
+        },
+        {
+          "title": "conversation practice complete copies and original activity boundaries rejects a restored original arrangement command aimed at a different child",
+          "status": "passed",
+          "durationMs": 3.1370000000000573
+        }
+      ]
+    },
+    {
+      "file": "workspace-exit-guard.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "workspace activity exit boundaries keeps stage, step and presentation changes inside the same authorized activity",
+          "status": "passed",
+          "durationMs": 1.5924999999999727
+        },
+        {
+          "title": "workspace activity exit boundaries treats another object, subject, course, project or route as leaving",
+          "status": "passed",
+          "durationMs": 0.5124000000000137
+        },
+        {
+          "title": "workspace activity exit boundaries keeps an answer-item change in one session but protects switching the original session",
+          "status": "passed",
+          "durationMs": 0.2155999999999949
+        }
+      ]
+    }
+  ]
+}

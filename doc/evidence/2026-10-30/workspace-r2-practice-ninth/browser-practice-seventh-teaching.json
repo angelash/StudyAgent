@@ -1,0 +1,266 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T23:34:23.209Z",
+    "duration": 134050.416,
+    "expected": 21,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "teaching tools: complete analysis, original input and unreviewed result at 390",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6374,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: complete analysis, original input and unreviewed result at 768",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6088,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: complete analysis, original input and unreviewed result at 1280",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5824,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: bank preflight shows actual table and formula, freezing the server original version and structured answer",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5101,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: hint failure stays explicit and a retry uses the frozen original model after changing the composer",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6289,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: lost creation acknowledgement restores the same original command after reload without duplicate generation",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4261,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: two tabs retain their own complete drafts and copying another preserves the current version",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5228,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: failed local storage blocks navigation and logout until the complete original input is downloaded",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4680,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: a provider finishing after cancellation cannot publish its late result",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 12172,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: cancellation acknowledgement loss recovers its original control key after reload",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6105,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: a role revocation unloads private work and fences the late provider reply",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 11651,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: parent identity cannot read the admin workspace or load model generation controls",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2316,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: oversized original text is rejected without losing or truncating the form or making a provider call",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3933,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: malformed structured work survives a reload and never gets silently converted into a score",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3635,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: a stale cancellation preserves its command, reads the latest state explicitly and requires a new user action",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6730,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: an unreadable original remains discoverable after two reloads and downloads byte for byte",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4560,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: an unknown control original remains discoverable across reloads and cannot execute as a command",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6680,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: non-finite JSON in 待核对作答 stays original and cannot become an unknown null",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3788,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: non-finite JSON in 参考答案 stays original and cannot become an unknown null",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3386,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: non-finite JSON in 完整题目结构 JSON stays original and cannot become an unknown null",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4062,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: non-finite JSON in 原答案结构 JSON stays original and cannot become an unknown null",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3636,
+          "failure": false
+        }
+      ]
+    }
+  ],
+  "sanitization": "Only test titles, source locations, statuses, durations and failure presence. Private traces, cookies, generated accounts, request bodies and local storage remain in the local QA snapshot."
+}

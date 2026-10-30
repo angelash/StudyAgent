@@ -1,0 +1,233 @@
+{
+  "originalStats": {
+    "startTime": "2026-10-29T22:37:12.257Z",
+    "duration": 4189066.538,
+    "expected": 500,
+    "skipped": 0,
+    "unexpected": 48,
+    "flaky": 0
+  },
+  "failedOriginalTitles": [
+    "PDF preparation waits for selected image bytes and closing settings cancels a pending print",
+    "a failed model directory has an explicit retry that preserves the complete unsent question and chosen model",
+    "a lost confirmation response can be retried with the same receipt and saves the reviewed pace",
+    "a parent can build and reopen an evidence-backed learning studio course",
+    "a parent can create a learning profile and complete an evidence-limited assessment",
+    "an administrator can reach the curriculum review workbench",
+    "an approved fraction teaching card renders a safe step-by-step visual",
+    "blueprint supports goal selection, review, edit and cancellation without creating a course",
+    "changed learning scope invalidates confirmation and can be refreshed without losing the goal",
+    "chemistry assistant: actual course teaching and cited sources return to its original unit at 1440",
+    "chemistry assistant: actual course teaching and cited sources return to its original unit at 390",
+    "chemistry: a chemical course request cannot reuse mathematics and old subject parameters cannot override course content",
+    "chemistry: family-created ninth-grade profile reaches the standard library and old links keep their unit",
+    "chemistry: viewing a course preserves an explicit primary profile until the parent changes it",
+    "classroom image survives navigation, binds its original node, enlarges and exports offline notes at three widths",
+    "course assistant: learner switching and source scope mismatch hide the original content until returning to its actual profile",
+    "course library and outline preserve navigation, panels, help and classroom back/forward",
+    "failed and cancelled classroom image tasks retry their saved version",
+    "identity recovery: a persistent connection failure offers a bounded manual retry and reuses the existing saved conversation",
+    "identity recovery: an explicit unauthenticated response clears private identity without retrying or calling it a connection failure",
+    "identity recovery: one failed identity request retries without asking the signed-in learner to log in again",
+    "lecture-assistant: changing the selected learner fences a late whiteboard preview and releases the new composer",
+    "lecture-assistant: failed initialization after a child change cannot retain the previous active session",
+    "lost image creation acknowledgement recovers the single saved task",
+    "public product shell remains usable at phone, tablet and desktop widths",
+    "teaching tools: a provider finishing after cancellation cannot publish its late result",
+    "teaching tools: a role revocation unloads private work and fences the late provider reply",
+    "teaching tools: a stale cancellation preserves its command, reads the latest state explicitly and requires a new user action",
+    "teaching tools: an unknown control original remains discoverable across reloads and cannot execute as a command",
+    "teaching tools: an unreadable original remains discoverable after two reloads and downloads byte for byte",
+    "teaching tools: bank preflight shows actual table and formula, freezing the server original version and structured answer",
+    "teaching tools: cancellation acknowledgement loss recovers its original control key after reload",
+    "teaching tools: complete analysis, original input and unreviewed result at 1280",
+    "teaching tools: complete analysis, original input and unreviewed result at 390",
+    "teaching tools: complete analysis, original input and unreviewed result at 768",
+    "teaching tools: failed local storage blocks navigation and logout until the complete original input is downloaded",
+    "teaching tools: hint failure stays explicit and a retry uses the frozen original model after changing the composer",
+    "teaching tools: lost creation acknowledgement restores the same original command after reload without duplicate generation",
+    "teaching tools: malformed structured work survives a reload and never gets silently converted into a score",
+    "teaching tools: non-finite JSON in 原答案结构 JSON stays original and cannot become an unknown null",
+    "teaching tools: non-finite JSON in 参考答案 stays original and cannot become an unknown null",
+    "teaching tools: non-finite JSON in 完整题目结构 JSON stays original and cannot become an unknown null",
+    "teaching tools: non-finite JSON in 待核对作答 stays original and cannot become an unknown null",
+    "teaching tools: oversized original text is rejected without losing or truncating the form or making a provider call",
+    "teaching tools: parent identity cannot read the admin workspace or load model generation controls",
+    "teaching tools: two tabs retain their own complete drafts and copying another preserves the current version",
+    "unit check resumes holes, persists help and provides a faithful review with topic return",
+    "workspace focus: all nine admin modules render in one shell and actual content fits phone, tablet and desktop"
+  ],
+  "intermediateRuns": [
+    {
+      "receipt": "browser-practice-second.json",
+      "stats": {
+        "startTime": "2026-10-29T22:16:14.623Z",
+        "duration": 9618.934,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "globalErrors": 1
+    },
+    {
+      "receipt": "browser-practice-second-retry.json",
+      "stats": {
+        "startTime": "2026-10-29T22:17:22.350Z",
+        "duration": 23754.124,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 3,
+        "flaky": 0
+      },
+      "globalErrors": 0
+    },
+    {
+      "receipt": "browser-practice-second-diagnostic.json",
+      "stats": {
+        "startTime": "2026-10-29T22:18:59.215Z",
+        "duration": 14032.189999999999,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "globalErrors": 0
+    },
+    {
+      "receipt": "browser-practice-second-fixture-retry.json",
+      "stats": {
+        "startTime": "2026-10-29T22:20:22.892Z",
+        "duration": 38739.984,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "globalErrors": 0
+    },
+    {
+      "receipt": "browser-practice-third.json",
+      "stats": {
+        "startTime": "2026-10-29T22:24:26.053Z",
+        "duration": 61127.704000000005,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "globalErrors": 0
+    },
+    {
+      "receipt": "browser-practice-fourth.json",
+      "stats": {
+        "startTime": "2026-10-29T22:28:26.904Z",
+        "duration": 70083.719,
+        "expected": 7,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "globalErrors": 0
+    },
+    {
+      "receipt": "browser-practice-fifth.json",
+      "stats": {
+        "startTime": "2026-10-29T22:33:16.397Z",
+        "duration": 84880.802,
+        "expected": 7,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "globalErrors": 0
+    },
+    {
+      "receipt": "browser-practice-seventh.json",
+      "stats": {
+        "startTime": "2026-10-29T22:58:26.175Z",
+        "duration": 339864.431,
+        "expected": 38,
+        "skipped": 0,
+        "unexpected": 2,
+        "flaky": 0
+      },
+      "globalErrors": 0
+    },
+    {
+      "receipt": "browser-practice-seventh-recovery.json",
+      "stats": {
+        "startTime": "2026-10-29T23:09:18.994Z",
+        "duration": 1104.608,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "globalErrors": 1
+    },
+    {
+      "receipt": "browser-practice-seventh-recovery2.json",
+      "stats": {
+        "startTime": "2026-10-29T23:10:24.935Z",
+        "duration": 429700.244,
+        "expected": 46,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "globalErrors": 0
+    },
+    {
+      "receipt": "browser-practice-seventh-compatibility.json",
+      "stats": {
+        "startTime": "2026-10-29T23:20:04.044Z",
+        "duration": 54349.398,
+        "expected": 8,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "globalErrors": 0
+    },
+    {
+      "receipt": "browser-practice-seventh-later-compatibility.json",
+      "stats": {
+        "startTime": "2026-10-29T23:28:14.382Z",
+        "duration": 263385.70399999997,
+        "expected": 39,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "globalErrors": 0
+    },
+    {
+      "receipt": "browser-practice-seventh-teaching.json",
+      "stats": {
+        "startTime": "2026-10-29T23:34:23.209Z",
+        "duration": 134050.416,
+        "expected": 21,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "globalErrors": 0
+    },
+    {
+      "receipt": "browser-practice-seventh-workspace.json",
+      "stats": {
+        "startTime": "2026-10-29T23:38:03.787Z",
+        "duration": 117578.20300000001,
+        "expected": 10,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "globalErrors": 0
+    }
+  ],
+  "finalReceipt": "complete-browser-ninth.json",
+  "unresolvedOriginalFailures": [],
+  "interpretation": "Each complete and focused run retains its own counts. The final ninth full run is549 independently passing tests with zero retries, not a sum of prior results. An additional real fallback-history journey explains the increase from548."
+}

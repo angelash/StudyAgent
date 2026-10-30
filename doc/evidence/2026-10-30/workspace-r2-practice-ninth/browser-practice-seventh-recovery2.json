@@ -1,0 +1,566 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T23:10:24.935Z",
+    "duration": 429700.244,
+    "expected": 46,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "Auto names the actual platform default and a later composer choice preserves the original saved model",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5541,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "model checks retain failure, historical scope and unknown states without generating an answer",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4319,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "a failed model directory has an explicit retry that preserves the complete unsent question and chosen model",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5483,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "a saved question survives collapse and refresh without duplicate creation or retroactive first-answer evidence",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 12676,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "a lost creation receipt restores the same original command from server state without sending it again",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 13275,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "running cancellation settles after refresh and retry retains the original model despite a new composer selection",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 9304,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "invalid model evidence remains a visible failure and an explicit retry publishes one validated answer",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4873,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "history reads beyond fifty messages, locates an old search match and returns to its actual practice question",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4168,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "unavailable local storage keeps the full question editable, exportable and recoverable once the server accepts it",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 12763,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "a forged cache owned by another account is ignored without exposing or sending its text",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3270,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "stopping local waiting leaves the real server task running until explicit cancellation",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6402,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation search pages beyond the first results and recovers from an empty result",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3460,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "identity recovery: one failed identity request retries without asking the signed-in learner to log in again",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3835,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "identity recovery: a persistent connection failure offers a bounded manual retry and reuses the existing saved conversation",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4286,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "identity recovery: an explicit unauthenticated response clears private identity without retrying or calling it a connection failure",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3413,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "reviewing an earlier task preserves selection while the new task finishes in the background",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 13818,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "diagnostic rules stay deterministic and history locates an answered frozen question without opening a future one",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6086,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "history location: the first click uses the selected original conversation while its view is still loading",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6602,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "history location: closing and reopening the same original conversation fences a late position reply",
+      "file": "assistant-conversations.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4237,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: actual parent source, three groups and six learner answers retain original reasons and help",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 13537,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: lost creation and arrangement replies keep exact original commands across reload",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8091,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: a lost learner answer keeps the original reason separate from later local edits",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7835,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: denied storage requires a complete answer and reason download before switching questions",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7871,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: progressive help and a correction keep the learner first answer and reason unchanged",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 15233,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: a second tab compares both complete drafts instead of overwriting the first save",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 9119,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: real image and PCM audio uploads stay attached to the original learner question and remain pending review",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 10136,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: browser back without Navigation API preserves the complete current-question input",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7190,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: a revoked learner entry clears server projection and rejects a conflicting child link",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7736,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "chemistry: normal course cards, seven-unit outline and native classroom preserve the library on three viewports",
+      "file": "chemistry.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 9349,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "chemistry: course assessments unlock independent checks and preserve first answers after reopening",
+      "file": "chemistry.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8652,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "chemistry: family-created ninth-grade profile reaches the standard library and old links keep their unit",
+      "file": "chemistry.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5447,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "chemistry: viewing a course preserves an explicit primary profile until the parent changes it",
+      "file": "chemistry.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4538,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "chemistry: a chemical course request cannot reuse mathematics and old subject parameters cannot override course content",
+      "file": "chemistry.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5702,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "chemistry: each unit opens actual chemical concepts and worked examples in the rendered classroom",
+      "file": "chemistry.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 13365,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "chemistry assistant: actual course teaching and cited sources return to its original unit at 390",
+      "file": "chemistry.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 11244,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "chemistry assistant: actual course teaching and cited sources return to its original unit at 1440",
+      "file": "chemistry.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 13280,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "chemistry tutorial: ten scientific models respond to conditions and fit a phone classroom",
+      "file": "chemistry.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 22992,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "chemistry tutorial: topic mapping, original figure and first classroom check survive reopening",
+      "file": "chemistry.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5969,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "unit check resumes holes, persists help and provides a faithful review with topic return",
+      "file": "classroom-review.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7233,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "saved-session links restore the exact activity and reject a mismatched lesson",
+      "file": "classroom-review.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3912,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "queued previous clicks use each confirmed position, first save succeeds",
+      "file": "classroom-visual.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3272,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "queued previous clicks use each confirmed position, first save fails",
+      "file": "classroom-visual.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3323,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "classroom image survives navigation, binds its original node, enlarges and exports offline notes at three widths",
+      "file": "classroom-visual.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 21344,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "failed and cancelled classroom image tasks retry their saved version",
+      "file": "classroom-visual.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 23909,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lost image creation acknowledgement recovers the single saved task",
+      "file": "classroom-visual.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 18466,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "PDF preparation waits for selected image bytes and closing settings cancels a pending print",
+      "file": "classroom-visual.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7203,
+          "failure": false
+        }
+      ]
+    }
+  ],
+  "sanitization": "Only test titles, source locations, statuses, durations and failure presence. Private traces, cookies, generated accounts, request bodies and local storage remain in the local QA snapshot."
+}

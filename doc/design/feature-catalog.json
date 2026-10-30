@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "099ed99a8f3fda10b4c1d382b4dfea47e0463aa4",
+  "sourceRevision": "a4611de5f1ae22d0740fea73ae22818b1ba4c838",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 137,
+    "features": 138,
     "activeNormalApiRoutes": 459,
     "coveredApiRoutes": 459
   },
@@ -2592,6 +2592,58 @@
           ]
         },
         {
+          "id": "LEARN-08",
+          "title": "对话练习安排与本人完整工作台",
+          "area": "learning",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "学生、家长、授权教师",
+          "pages": [
+            "/",
+            "/studio",
+            "/studio/tasks",
+            "/studio/reports",
+            "/studio/profiles",
+            "/studio/settings",
+            "/learn",
+            "/parent/dashboard",
+            "/student/today"
+          ],
+          "inputs": "本人原对话、明确孩子/学科及1至3已学点、原生题包、完整答案和独立理由",
+          "implementation": "助教原消息接来源预检、审核题候选和教学说明、明确共享安排；任务页保留原安排/逐组开始/原题位置。本人独立学习码写答案、理由、帮助及完成，监护人只读预览。专用完整副本按账号/来源/安排/原题和标签隔离；并发草稿显式比较，丢回执重放原完整命令，后续编辑与原提交分开。原生公式/表格/图片/音频沿QuestionRenderer和真实媒体服务；每题attemptHistory按实际序号脱敏显示首次答案/理由和订正。",
+          "outputs": "可恢复的来源到安排、三组六题本人作答、帮助与订正历史及教学完成记录",
+          "collections": [
+            "assistantPracticeArtifacts",
+            "assistantPracticeAssignments",
+            "assistantPracticeGroupStarts",
+            "practiceSessions",
+            "practiceAttempts",
+            "practiceHints",
+            "studentMedia"
+          ],
+          "limits": "仍是教学练习，不增加正式掌握；真实上传不表示理由已审核。撤回、成人/AI持久练习、D3原因和D4排期继续实施，完整课程、教师/实机和真人间隔条件仍待。",
+          "endpoints": [],
+          "implementations": [],
+          "sourceFiles": [
+            "apps/web/components/assistant-practices.tsx",
+            "apps/web/components/practice-copy-controls.tsx",
+            "apps/web/app/studio/tasks/conversation-practice.tsx",
+            "apps/web/app/studio/tasks/conversation-practice.css",
+            "apps/web/lib/assistant-practice-workspace.ts",
+            "apps/web/lib/use-practice-local-copy.ts",
+            "apps/api/src/infrastructure/assistant-practice-workspace.test.ts",
+            "tests/e2e/assistant-practice-workspace.spec.ts",
+            "doc/product/156-assistant-practice-workspace-ui.md"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/notebook.integration.test.ts",
+            "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+            "apps/api/src/modules/learning/learning-home.test.ts",
+            "apps/api/src/modules/learning/learning-home.integration.test.ts",
+            "tests/e2e/learning-home.spec.ts",
+            "tests/e2e/product-smoke.spec.ts"
+          ]
+        },
+        {
           "id": "LEARN-01",
           "title": "家庭总览与证据化学习记忆",
           "area": "learning",
@@ -2641,7 +2693,7 @@
             {
               "name": "LearningService.overview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 1014
+              "line": 1015
             },
             {
               "name": "LearningService.memory",
@@ -2815,27 +2867,27 @@
             {
               "name": "LearningService.render",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 760
+              "line": 761
             },
             {
               "name": "LearningService.draft",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 785
+              "line": 786
             },
             {
               "name": "LearningService.submit",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 876
+              "line": 877
             },
             {
               "name": "LearningService.hint",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 954
+              "line": 955
             },
             {
               "name": "LearningService.complete",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 971
+              "line": 972
             }
           ],
           "sourceFiles": [
@@ -2890,7 +2942,7 @@
             {
               "name": "LearningService.mistakes",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 983
+              "line": 984
             }
           ],
           "sourceFiles": [
@@ -5601,7 +5653,7 @@
             "practiceHints",
             "studentMedia"
           ],
-          "limits": "正式保持schema23。本批隔离schema24的本人七接口已实现，SQLite与实际PostgreSQL最终各38/38通过，原媒体3文件10/10兼容通过；各轮独立、不复用先前双库35结果。共享安排完整API1882通过/74环境跳过；58024326精确CI的application/PG成功而browser500通过/1失败（重试也失败）；原卷定位与已发布fixture重试问题已修复，专项浏览器5/5首次通过。私人候选83af7e15三job成功，浏览器实际500首次通过、1首次失败后重试通过，不能称501首次全绿。当前没有完整本人作答UI、人工撤回、成人/AI教学持久链路、D3原因指导或D4排期；完整API/整站/本提交精确CI及生产schema24交付待验收，原72与M1至M7整体未完成。",
+          "limits": "正式保持schema23。本批隔离schema24的本人七接口已实现，SQLite与实际PostgreSQL最终各38/38通过，原媒体3文件10/10兼容通过；各轮独立、不复用先前双库35结果。共享安排完整API1882通过/74环境跳过；58024326精确CI的application/PG成功而browser500通过/1失败（重试也失败）；原卷定位与已发布fixture重试问题已修复，专项浏览器5/5首次通过。私人候选83af7e15三job成功，浏览器实际500首次通过、1首次失败后重试通过，不能称501首次全绿。当前来源/候选/明确安排及本人完整UI按156和LEARN-08接续，原生首答/理由与订正历史可分别读取；人工撤回、成人/AI教学持久链路、D3原因指导及D4排期继续实施。本段schema23和旧CI为历史批次事实，当前正式库版本以150实时只读记录为准；本批完整API/整站及实际运行交付另验收，原72与M1至M7整体未完成。",
           "endpoints": [
             {
               "verb": "POST",

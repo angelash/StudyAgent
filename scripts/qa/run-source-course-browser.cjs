@@ -1,5 +1,19 @@
 const path=require('node:path'),fs=require('node:fs'),{spawnSync}=require('node:child_process');
-const root=path.resolve(__dirname,'../..'),directory=path.join(root,'data','qa','source-course-browser-'+Date.now()+'-'+process.pid);
+const root=path.resolve(__dirname,'../..');
+let directory=path.join(root,'data','qa','source-course-browser-'+Date.now()+'-'+process.pid);
+// Native Windows image/SQLite tools need a short runtime path even when the
+// immutable source snapshot is nested deeper inside the main workspace.
+if(process.env.E2E_RUNTIME_DIRECTORY){
+ const requested=process.env.E2E_RUNTIME_DIRECTORY;
+ if(!path.isAbsolute(requested))throw Error('QA runtime directory must be absolute');
+ const allowed=fs.realpathSync(path.join(root,'data','qa')),target=path.resolve(requested);
+ const inside=(value)=>{const relative=path.relative(allowed,value);return relative!==''&&!relative.startsWith('..'+path.sep)&&relative!=='..'&&!path.isAbsolute(relative);};
+ if(!inside(target)||fs.existsSync(target))throw Error('QA runtime must be a new directory inside this source data/qa');
+ let parent=path.dirname(target);while(!fs.existsSync(parent))parent=path.dirname(parent);
+ const actualParent=fs.realpathSync(parent);
+ if(actualParent!==allowed&&!inside(actualParent))throw Error('Linked QA runtime parent is outside the workspace');
+ directory=target;
+}
 // Refuse before Playwright cleans its output directory, preserving an active run's evidence.
 const webDirectory=path.resolve(root,process.env.E2E_WEB_DIRECTORY||'data/qa/experience-web');
 if(!webDirectory.startsWith(path.join(root,'data/qa')+path.sep))throw Error('QA Web directory must stay inside data/qa');

@@ -1,6 +1,6 @@
 # 05 指导计划、训练编排与间隔复盘 — 详细设计
 
-源码基线：`099ed99a8f3fda10b4c1d382b4dfea47e0463aa4`。角色：监护家长、学生、授权教师。
+源码基线：`a4611de5f1ae22d0740fea73ae22818b1ba4c838`。角色：监护家长、学生、授权教师。
 
 产品入口：`/student/assessment`、`/student/today`、`/parent/dashboard`。
 

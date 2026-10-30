@@ -1,0 +1,50 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T22:17:22.350Z",
+    "duration": 23754.124,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "conversation practice workspace: actual parent source, three groups and six learner answers retain original reasons and help",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 1177,
+          "failure": true
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: lost creation and arrangement replies keep exact original commands across reload",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 1059,
+          "failure": true
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: a lost learner answer keeps the original reason separate from later local edits",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 1107,
+          "failure": true
+        }
+      ]
+    }
+  ],
+  "sanitization": "Only test titles, source locations, statuses, durations and failure presence. Private traces, cookies, generated accounts, request bodies and local storage remain in the local QA snapshot."
+}

@@ -1,0 +1,55 @@
+{
+  "incorrectApiMode": {
+    "completed": false,
+    "reason": "An early launcher forced development/SQLite on suites that require the normal memory-reset test mode. Its exact owned process tree was stopped after preserving the log. No terminal full-suite count is invented.",
+    "receipt": "incorrect-api-run-stop.json"
+  },
+  "configuredApiFirst": {
+    "passed": 1935,
+    "failed": 9,
+    "skipped": 74,
+    "causes": [
+      "Missing historical read-only geometry audit fixture",
+      "Native SQLite/Sharp Windows path limits",
+      "Two old invalid-image tests did not configure the optional handwriting adapter before expecting file-type validation; the two isolated assertions now supply an absolute validation-only path without executing a program."
+    ]
+  },
+  "browserSixth": {
+    "passed": 500,
+    "failed": 48,
+    "total": 548,
+    "finalComplete": "complete-browser-ninth.json"
+  },
+  "browserEighth": {
+    "stats": {
+      "startTime": "2026-10-29T23:56:55.464Z",
+      "duration": 3359059.825,
+      "expected": 546,
+      "skipped": 0,
+      "unexpected": 3,
+      "flaky": 0
+    },
+    "finalComplete": "complete-browser-ninth.json",
+    "repairs": [
+      "The actual course selector is the learning-object combobox; the learning-profile link is no longer treated as a select.",
+      "A temporary identity-checking assessment mount previously rewrote an inaccessible deep link before identity resolution and then lost its notice on remount. Initialization now waits for the known identity, verified with an actually delayed identity response.",
+      "The intercepted read-only topic-figure overview fetch had ECONNRESET; the original ninth complete image-recovery test passed without any application repair or POST retry."
+    ]
+  },
+  "runtimePreparation": {
+    "completed": false,
+    "reason": "One seventh-round shortened runtime escaped its frozen source boundary and was correctly refused. Final runtime directories are new directories inside the same frozen source data/qa."
+  },
+  "realHistoryRepair": "Confirmed history navigation previously used a new location assignment and lost the original forward entry. Native destination-key traversal and legacy index-delta traversal now retain the original history. A one-use confirmation spans the navigate and resulting popstate events. Both actual back/forward journeys pass in the final complete run.",
+  "qaQuestionShape": "The old teaching-tool fixture inserted20 synthetic questions using the obsolete singular knowledgePointId. It now parses the real strict question schema with knowledgePointIds:[], keeping the actual admin content page usable. Read-only production inventory found17789 valid arrays and zero missing fields; no production repair was performed.",
+  "earlier": [
+    "Explicit student-audience union narrowing fixed the first build.",
+    "An existing WSL relay on3210 was preserved and independent QA ports selected.",
+    "Fixture selection now uses an actual eligible published numeric packet.",
+    "Canonical copy serialization prevents false unsaved state caused by JSON key ordering.",
+    "Legacy question history synchronizes the exact original question.",
+    "Authorized attemptHistory exposes both original and correction reasons in ascending attempt order.",
+    "The parent practice dialog uses the inherited close symbol to fit the existing32px icon control."
+  ],
+  "browserAdaptations": "Old navigation, identity selectors, management menus and explicit classroom exit confirmations were updated while retaining original answer/privacy/recovery assertions. PDF upload waits for its actual target tab. The exact fixture and test changes are hashed separately."
+}

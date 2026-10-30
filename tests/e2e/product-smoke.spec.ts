@@ -13,8 +13,8 @@ test('public product shell remains usable at phone, tablet and desktop widths', 
   ]) {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
     await page.goto('/');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('不只看做对多少');
-    await expect(page.getByRole('link', { name: /开始了解孩子/ })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('从一个问题开始');
+    await expect(page.getByRole('link', { name: '进入学习工作台 →', exact: true })).toBeVisible();
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow, `${viewport.label} pages must not overflow horizontally`).toBeLessThanOrEqual(1);
   }
@@ -64,20 +64,24 @@ test('a parent can create a learning profile and complete an evidence-limited as
   await page.getByLabel('登录账号').fill(principal);
   await page.getByLabel('密码').fill(credential);
   await page.getByRole('button', { name: '登录，查看学习记录 →' }).click();
-  await expect(page).toHaveURL(/\/studio(?:\?|$)/); await page.getByRole('link', { name: '建立学习档案 →', exact: true }).click();
-  await expect(page.getByRole('heading', { name: '建立孩子的学习档案' })).toBeVisible();
+  await expect(page).toHaveURL(/\/studio(?:\?|$)/); await page.getByRole('link', { name: '学习档案', exact: true }).click();
+  await expect(page.getByRole('heading', { name: '添加学习档案', exact: true })).toBeVisible();
 
   await page.getByLabel('孩子昵称').fill('浏览器验收');
   await page.getByLabel('当前年级').selectOption('2');
-  await page.getByRole('button', { name: '保存档案 ↗' }).click();
-  await expect(page.getByRole('heading', { name: /浏览器验收的每一步/ })).toBeVisible();
-  await expect(page.getByText('当前 2 年级。')).toBeVisible();
+  const creating = page.waitForResponse(response => response.url().endsWith('/api/students') && response.request().method() === 'POST');
+  await page.getByRole('button', { name: '保存档案', exact: true }).click();
+  const created = await creating; expect(created.status()).toBe(201); const studentId = (await created.json()).data.profile.id;
+  await expect(page.getByRole('heading', { name: '浏览器验收', exact: true })).toBeVisible();
+  await page.goto('/parent/dashboard?' + new URLSearchParams({ studentId, subject: 'math' }));
+  await expect(page.getByRole('heading', { name: '浏览器验收 · 数学', exact: true })).toBeVisible();
+  await expect(page.getByText(/2年级 · .*知识掌握、具体依据与周记录/)).toBeVisible();
   const memory = page.getByRole('region', { name: '证据化学习记忆' });
   await expect(memory).toBeVisible();
   await expect(memory.getByRole('heading', { name: '这次从哪里继续。' })).toBeVisible();
   await expect(memory.getByText('先确认当前学习进度', { exact: true })).toBeVisible();
   if (process.env.E2E_VISUAL_SNAPSHOT === '1') await page.screenshot({ path: 'data/qa/learning-memory-dashboard.png', fullPage: true });
-  await page.getByRole('button', { name: '打开家长陪伴助教' }).click();
+  await page.getByRole('button', { name: '打开学习助教', exact: true }).click();
   const modelSelect = page.getByLabel('选择大模型');
   await expect(modelSelect).toHaveValue('deepseek-v4-flash');
   expect(await modelSelect.locator('option').count()).toBeGreaterThanOrEqual(23);
@@ -89,7 +93,7 @@ test('a parent can create a learning profile and complete an evidence-limited as
   await expect(assistantTask).toHaveAttribute('data-status', 'completed');
   await expect(assistantTask).toContainText('Claude Opus 5.5');
   await expect(page.locator('.assistant-message.from-assistant')).toContainText('独立新例子');
-  await page.getByRole('button', { name: '收起家长陪伴助教' }).click();
+  await page.getByRole('button', { name: '收起学习助教', exact: true }).click();
 
   await page.getByRole('link', { name: '调整学习范围 ↗' }).click();
   await expect(page.getByRole('heading', { name: '先告诉我们，学到哪里了。' })).toBeVisible();
@@ -137,12 +141,15 @@ test('an approved fraction teaching card renders a safe step-by-step visual', as
   await page.getByLabel('登录账号').fill(principal);
   await page.getByLabel('密码').fill(credential);
   await page.getByRole('button', { name: '登录，查看学习记录 →' }).click();
-  await page.getByRole('link', { name: '建立学习档案 →', exact: true }).click();
-  await expect(page.getByRole('heading', { name: '建立孩子的学习档案' })).toBeVisible();
+  await expect(page).toHaveURL(/\/studio(?:\?|$)/); await page.getByRole('link', { name: '学习档案', exact: true }).click();
+  await expect(page.getByRole('heading', { name: '添加学习档案', exact: true })).toBeVisible();
   await page.getByLabel('孩子昵称').fill('分数图验收');
   await page.getByLabel('当前年级').selectOption('5');
-  await page.getByRole('button', { name: '保存档案 ↗' }).click();
-  await page.getByRole('link', { name: '调整学习范围 ↗' }).click();
+  const creating = page.waitForResponse(response => response.url().endsWith('/api/students') && response.request().method() === 'POST');
+  await page.getByRole('button', { name: '保存档案', exact: true }).click();
+  const created = await creating; expect(created.status()).toBe(201); const studentId = (await created.json()).data.profile.id;
+  await expect(page.getByRole('heading', { name: '分数图验收', exact: true })).toBeVisible();
+  await page.goto('/studio/assessment?' + new URLSearchParams({ studentId, subject: 'math' }));
   await expect(page.getByRole('heading', { name: '先告诉我们，学到哪里了。' })).toBeVisible();
   const fractionPoint = page.getByRole('checkbox', { name: /异分母分数加法/ }).first();
   await fractionPoint.check();
@@ -172,13 +179,14 @@ test('an administrator can reach the curriculum review workbench', async ({ page
   await page.getByLabel('登录账号').fill(process.env.E2E_ADMIN_PRINCIPAL ?? 'browser-admin');
   await page.getByLabel('密码').fill(process.env.E2E_ADMIN_PASSWORD ?? 'Browser-admin-only-20261021');
   await page.getByRole('button', { name: '登录，查看学习记录 →' }).click();
-  await expect(page).toHaveURL(/\/admin\/analytics$/);
+  await expect(page).toHaveURL(/\/studio(?:\?|$)/);
 
-  await page.goto('/admin/curriculum');
-  await expect(page.getByRole('heading', { name: '每一个点，都能追到依据。' })).toBeVisible();
-  await expect(page.getByRole('navigation', { name: '教研导航' })).toBeVisible();
+  await page.getByRole('link', { name: '教研与管理', exact: true }).click();
+  await expect(page).toHaveURL(/\/admin\/curriculum(?:\?|$)/);
+  await expect(page.getByRole('heading', { name: '课程与覆盖', exact: true })).toBeVisible();
+  await expect(page.getByRole('navigation', { name: '管理功能' })).toBeVisible();
   await expect(page.getByRole('heading', { name: '教材课时与知识映射' })).toBeVisible();
-  await expect(page.getByRole('link', { name: '运营观察' })).toBeVisible();
+  await expect(page.getByRole('navigation', { name: '管理功能' }).getByRole('link', { name: '运营分析', exact: true })).toBeVisible();
   await expect(page.getByText(/来源总览：250 条有同版原卷/)).toBeVisible();
   await expect(page.getByRole('button', { name: /无同版原卷/ })).toBeVisible();
   await page.getByLabel('选择目录').selectOption('archive-book:44deea6d4015a5183e175acc');

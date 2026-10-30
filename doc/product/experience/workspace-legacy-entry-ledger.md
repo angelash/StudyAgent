@@ -39,3 +39,5 @@
 | E31 | `/admin/accounts`，账号权限 | 154实际页面、真实授予教师及再次撤权 | in_progress；补禁用/冲突/原管理员保护的页面旅程 |
 
 基础证据见[152](../152-workspace-foundation-delivery-checkpoint.md)、[153](../153-workspace-materials-integration.md)和[154](../154-workspace-focus-and-admin-integration.md)。上述in_progress不合计为通过数；后续填写原路径/参数、fixture身份、精确测试名和本地证据收据，逐条关闭缺口。
+
+2026-10-30 R2补充：E01/E02/E04及原助教入口的审核题来源→安排→本人完整作答、旧参数与完整副本由[156最终第九轮整站549/549](../../evidence/2026-10-30/workspace-r2-practice-ninth/receipt.json)覆盖；先前原失败和零重试分别保留。尚未将每项旧入口所有角色/参数/实机组合穷尽，不提高E项、WS或72状态。撤回与成人AI后续接157/158。

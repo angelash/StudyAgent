@@ -11,7 +11,7 @@ exports.installTeachingToolFixture=app=>{
   if(!user||admin&&user.role!=='admin')throw Error('unauthorized');return user;}
  const http=app.getHttpAdapter().getInstance();
  http.post('/api/qa/teaching-tools/setup',async(req,res)=>{try{const value=await store.transaction(()=>{const user=actor(req,false);if(!['parent','admin'].includes(user.role))throw Error('unauthorized');user.role='admin';
-   const id='qa-teaching-'+user.id;if(!store.find('questions',{id})){store.append('questions',{id,subject:'math',type:'fill',difficultyLevel:1,status:'published',knowledgePointId:null,stem:'匿名教研原题：三人与两人的总分分别18与14，求五人平均分。',answer:'6.4',analysis:'先合计总分，再用总人数作分母。'});
+   const id='qa-teaching-'+user.id;if(!store.find('questions',{id})){store.append('questions',require('@study-agent/contracts').questionSchema.parse({id,subject:'math',type:'objective',difficultyLevel:1,status:'published',knowledgePointIds:[],stem:'匿名教研原题：三人与两人的总分分别18与14，求五人平均分。',answer:'6.4',analysis:'先合计总分，再用总人数作分母。'}));
     store.append('questionDocuments',{questionId:id,version:3,locale:'zh-CN',layoutMode:'default',accessibilityConfig:{},blocks:[{id:'original-stem',type:'text',text:'三人与两人，总分18与14。'},{id:'original-table',type:'table',headers:['人数','总分'],rows:[['3','18'],['2','14']]},{id:'original-formula',type:'math_display',latex:'\\frac{18+14}{3+2}=6.4'}],attachments:[]});
     store.append('questionAnswerSchemas',{questionId:id,mode:'numeric_blank',responseShape:{value:'string'},placeholder:'平均分',options:[],gradingConfig:{tolerance:0}});}
    return{userId:user.id,questionId:id};});res.json({data:value,error:null});}catch{res.status(403).json({error:{message:'Fixture owner required'}});}});

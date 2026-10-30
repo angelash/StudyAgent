@@ -65,11 +65,12 @@ test('model checks retain failure, historical scope and unknown states without g
 test('a failed model directory has an explicit retry that preserves the complete unsent question and chosen model',async({page})=>{
   let reads=0;const posts:any[]=[];
   page.on('request',r=>{if(r.method()==='POST'&&/\/ai\/assistant\/sessions\/[^/?]+\/turns$/.test(r.url()))posts.push(r.postDataJSON());});
+  const f=await setup(page);
   await page.route('**/api/ai/models',async route=>{
     reads++;if(reads===1)return route.fulfill({status:503,json:{error:{message:'匿名目录读取故障，请重试。'}}});
     return route.continue();
   });
-  const f=await setup(page),draft='先保留完整条件：两个整体相同，再比较二分之一与三分之一，不要省略条件。';
+  await page.reload();await open(page);const draft='先保留完整条件：两个整体相同，再比较二分之一与三分之一，不要省略条件。';
   await page.getByLabel('想一起看看什么').fill(draft);await expect(panel(page).getByRole('button',{name:'重新读取模型目录',exact:true})).toBeVisible();
   await panel(page).getByRole('button',{name:'重新读取模型目录',exact:true}).click();const select=page.getByRole('combobox',{name:'选择大模型',exact:true});
   await expect(select).toBeEnabled();await expect(page.getByLabel('想一起看看什么')).toHaveValue(draft);await select.selectOption('glm-5.3-flash');
@@ -152,18 +153,18 @@ test('conversation search pages beyond the first results and recovers from an em
 });
 
 test('identity recovery: one failed identity request retries without asking the signed-in learner to log in again',async({page})=>{
-  await setup(page);await page.goto('/student/today');await expect(page.getByRole('link',{name:'资料管理',exact:true})).toBeVisible();let reads=0;await page.route('**/api/auth/me',async route=>{if(route.request().method()!=='GET'){await route.continue();return;}reads++;if(reads===1)await route.abort('failed');else await route.continue();});
-  await page.reload();await open(page);expect(reads).toBe(2);await expect(panel(page)).not.toContainText('请先进入学习或登录家长账号');await expect(page.getByRole('alert',{name:'身份确认未完成',exact:true})).toHaveCount(0);
+  await setup(page);await page.goto('/student/today');await expect(page.getByRole('link',{name:'Materials',exact:true})).toBeVisible();let reads=0;await page.route('**/api/auth/me',async route=>{if(route.request().method()!=='GET'){await route.continue();return;}reads++;if(reads===1)await route.abort('failed');else await route.continue();});
+  await page.reload();await expect(page.getByRole('button',{name:'退出',exact:true})).toBeVisible();await open(page);expect(reads).toBe(2);await expect(panel(page)).not.toContainText('请先进入学习或登录家长账号');await expect(page.getByRole('alert',{name:'身份确认未完成',exact:true})).toHaveCount(0);
 });
 
 test('identity recovery: a persistent connection failure offers a bounded manual retry and reuses the existing saved conversation',async({page})=>{
-  const f=await setup(page);await page.goto('/student/today');await expect(page.getByRole('link',{name:'资料管理',exact:true})).toBeVisible();let reads=0,signIns=0;page.on('request',request=>{if(request.method()==='POST'&&new URL(request.url()).pathname==='/api/auth/login')signIns++;});await page.route('**/api/auth/me',async route=>{if(route.request().method()!=='GET'){await route.continue();return;}reads++;if(reads<=2)await route.abort('failed');else await route.continue();});
-  await page.reload();const warning=page.getByRole('alert',{name:'身份确认未完成',exact:true});await expect(warning).toBeVisible();expect(reads).toBe(2);await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(page.getByRole('status').filter({hasText:'正在确认学习身份…'})).toBeVisible();await expect(page.getByLabel('想一起看看什么')).toHaveCount(0);await warning.getByRole('button',{name:'重新确认登录',exact:true}).click();await expect(page.getByLabel('想一起看看什么')).toBeEnabled();await expect(warning).toHaveCount(0);expect(reads).toBe(3);expect(signIns).toBe(0);
+  const f=await setup(page);await page.goto('/student/today');await expect(page.getByRole('link',{name:'Materials',exact:true})).toBeVisible();let reads=0,signIns=0;page.on('request',request=>{if(request.method()==='POST'&&new URL(request.url()).pathname==='/api/auth/login')signIns++;});await page.route('**/api/auth/me',async route=>{if(route.request().method()!=='GET'){await route.continue();return;}reads++;if(reads<=2)await route.abort('failed');else await route.continue();});
+  await page.reload();const warning=page.getByRole('alert',{name:'身份确认未完成',exact:true});await expect(warning).toBeVisible();expect(reads).toBe(2);await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(page.getByRole('status').filter({hasText:'正在确认学习身份…'})).toBeVisible();await expect(page.getByLabel('想一起看看什么')).toHaveCount(0);await warning.getByRole('button',{name:'重新确认登录',exact:true}).click();await expect(warning).toHaveCount(0);await expect(page.getByRole('button',{name:'退出',exact:true})).toBeVisible();await open(page);expect(reads).toBe(3);expect(signIns).toBe(0);
   await page.unroute('**/api/auth/me');await page.goto(f.href);await open(page);const cached=await page.evaluate((id)=>Object.keys(localStorage).filter(key=>key.startsWith('studyagent.assistant.v1.')).map(key=>JSON.parse(localStorage.getItem(key)!)).find(value=>value.sessionId===id)?.sessionId,f.assistantId);expect(cached).toBe(f.assistantId);
 });
 
 test('identity recovery: an explicit unauthenticated response clears private identity without retrying or calling it a connection failure',async({page})=>{
-  await setup(page);await page.goto('/student/today');await expect(page.getByRole('link',{name:'资料管理',exact:true})).toBeVisible();let reads=0;await page.route('**/api/auth/me',async route=>{if(route.request().method()!=='GET'){await route.continue();return;}reads++;await route.fulfill({status:401,json:{data:null,error:{code:'unauthorized',message:'合成登录已失效'}}});});await page.reload();await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(page.getByRole('status').filter({hasText:'请先进入学习或登录家长账号'})).toBeVisible();await expect(page.getByRole('alert',{name:'身份确认未完成',exact:true})).toHaveCount(0);expect(reads).toBe(1);await expect(page.getByLabel('想一起看看什么')).toHaveCount(0);
+  await setup(page);await page.goto('/student/today');await expect(page.getByRole('link',{name:'Materials',exact:true})).toBeVisible();let reads=0;await page.route('**/api/auth/me',async route=>{if(route.request().method()!=='GET'){await route.continue();return;}reads++;await route.fulfill({status:401,json:{data:null,error:{code:'unauthorized',message:'合成登录已失效'}}});});await page.reload();await expect(page.getByRole('link',{name:'登录',exact:true})).toBeVisible();await page.getByRole('button',{name:/^打开学习(?:小助教|观察助教)$/}).click();await expect(page.getByRole('status').filter({hasText:'请先进入学习或登录家长账号'})).toBeVisible();await expect(page.getByRole('alert',{name:'身份确认未完成',exact:true})).toHaveCount(0);expect(reads).toBe(1);await expect(page.getByLabel('想一起看看什么')).toHaveCount(0);
 });
 
 test('reviewing an earlier task preserves selection while the new task finishes in the background',async({page})=>{

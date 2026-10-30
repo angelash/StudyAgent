@@ -111,7 +111,12 @@ test('another account cannot open or adopt the prior family guidance',async({pag
   const second=await setup(page);expect(second.actor.user.id).not.toBe(first.actor.user.id);await expect(panel(page).getByText('建议已生成',{exact:true})).toHaveCount(0);
   await page.goto('/student/assessment?'+new URLSearchParams({studentId:second.studentId,subject:'math',view:'plan',planId:first.plan.id}));
   await expect(page.getByRole('alert').filter({hasText:'链接中的指导计划不属于当前孩子'})).toContainText('已返回学习进度。');await expect(panel(page)).toHaveCount(0);
-  await page.goto(first.href);await expect(page.getByRole('alert').filter({hasText:'无法访问链接中的孩子'})).toContainText('已返回当前账号的学习进度。');await expect(panel(page)).toHaveCount(0);
+  let releaseIdentity:()=>void=()=>{},identitySeen:()=>void=()=>{},identityReplied=false,prematureReads=0;const identityGate=new Promise<void>(resolve=>releaseIdentity=resolve),seen=new Promise<void>(resolve=>identitySeen=resolve);
+  page.on('request',request=>{if(!identityReplied&&request.url().endsWith('/api/learning/students'))prematureReads++;});
+  await page.route('**/api/auth/me',async route=>{const response=await route.fetch();identitySeen();await identityGate;identityReplied=true;await route.fulfill({response});});
+  try{await page.goto(first.href);await seen;await expect(panel(page)).toHaveCount(0);expect(new URL(page.url()).searchParams.get('studentId')).toBe(first.studentId);releaseIdentity();
+    await expect(page.getByRole('alert').filter({hasText:'无法访问链接中的孩子'})).toContainText('已返回当前账号的学习进度。');await expect(panel(page)).toHaveCount(0);expect(prematureReads).toBe(0);
+  }finally{releaseIdentity();}
   expect(new URL(page.url()).searchParams.get('studentId')).toBe(second.studentId);expect(new URL(page.url()).searchParams.has('planId')).toBe(false);
 });
 

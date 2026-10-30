@@ -1,0 +1,494 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T23:28:14.382Z",
+    "duration": 263385.70399999997,
+    "expected": 39,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "lecture-assistant: directory opens a whole lecture in the independent assistant without starting a micro lesson",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3478,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at390",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2772,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at768",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2814,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at880",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2911,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at1440",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3094,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lecture-assistant: lecture removal, back and reload preserve separate unsent drafts without sending",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3605,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lecture-assistant: durable pending turn resumes after refresh with its original model",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 12327,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lecture-assistant: a lost receipt is recovered with the original request and no duplicate post",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4124,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lecture-assistant: a retained original version opens from the server without creating or resending a session · classroom-lecture-v1",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2791,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lecture-assistant: a retained original version opens from the server without creating or resending a session · classroom-lecture-v2",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2825,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lecture-assistant: failed initialization after a child change cannot retain the previous active session",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2982,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lecture-assistant: read-only recovery preserves a cached pending command and identifies separately selected history",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3025,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lecture-assistant: an unavailable original still allows owner-only history reads without a session post",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2918,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lecture-assistant: another account cannot open a retained version or find its private messages",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4823,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lecture-assistant: explicit cancellation and retry preserve one lecture request and the original model",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8249,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lecture-assistant: changing the selected learner fences a late whiteboard preview and releases the new composer",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3056,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lecture-navigation: lecture tools retain the original scope and draft through material refresh and planner return",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3915,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "lecture-navigation: independent tools retain the original scope and draft through material refresh and planner return",
+      "file": "studio-assistant.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3819,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "a parent can build and reopen an evidence-backed learning studio course",
+      "file": "studio.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 48409,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: complete analysis, original input and unreviewed result at 390",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5696,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: complete analysis, original input and unreviewed result at 768",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5181,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: complete analysis, original input and unreviewed result at 1280",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5083,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: bank preflight shows actual table and formula, freezing the server original version and structured answer",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4698,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: hint failure stays explicit and a retry uses the frozen original model after changing the composer",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6444,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: lost creation acknowledgement restores the same original command after reload without duplicate generation",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4894,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: two tabs retain their own complete drafts and copying another preserves the current version",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4391,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: failed local storage blocks navigation and logout until the complete original input is downloaded",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 18491,
+          "failure": true
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: a provider finishing after cancellation cannot publish its late result",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 11250,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: cancellation acknowledgement loss recovers its original control key after reload",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6502,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: a role revocation unloads private work and fences the late provider reply",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 10652,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: parent identity cannot read the admin workspace or load model generation controls",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2030,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: oversized original text is rejected without losing or truncating the form or making a provider call",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3187,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: malformed structured work survives a reload and never gets silently converted into a score",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3345,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: a stale cancellation preserves its command, reads the latest state explicitly and requires a new user action",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8169,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: an unreadable original remains discoverable after two reloads and downloads byte for byte",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3706,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: an unknown control original remains discoverable across reloads and cannot execute as a command",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5446,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: non-finite JSON in 待核对作答 stays original and cannot become an unknown null",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3735,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: non-finite JSON in 参考答案 stays original and cannot become an unknown null",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3471,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: non-finite JSON in 完整题目结构 JSON stays original and cannot become an unknown null",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3457,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "teaching tools: non-finite JSON in 原答案结构 JSON stays original and cannot become an unknown null",
+      "file": "teaching-tools.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3427,
+          "failure": false
+        }
+      ]
+    }
+  ],
+  "sanitization": "Only test titles, source locations, statuses, durations and failure presence. Private traces, cookies, generated accounts, request bodies and local storage remain in the local QA snapshot."
+}

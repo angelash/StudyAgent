@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T23:20:04.044Z",
+    "duration": 54349.398,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "blueprint supports goal selection, review, edit and cancellation without creating a course",
+      "file": "course-builder.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4794,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "a lost confirmation response can be retried with the same receipt and saves the reviewed pace",
+      "file": "course-builder.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4112,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "changed learning scope invalidates confirmation and can be refreshed without losing the goal",
+      "file": "course-builder.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3610,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "public product shell remains usable at phone, tablet and desktop widths",
+      "file": "product-smoke.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1834,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "a touch and keyboard user can enter the family access flow",
+      "file": "product-smoke.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1585,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "a parent can create a learning profile and complete an evidence-limited assessment",
+      "file": "product-smoke.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 9026,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "an approved fraction teaching card renders a safe step-by-step visual",
+      "file": "product-smoke.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 4579,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "an administrator can reach the curriculum review workbench",
+      "file": "product-smoke.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 3826,
+          "failure": false
+        }
+      ]
+    }
+  ],
+  "sanitization": "Only test titles, source locations, statuses, durations and failure presence. Private traces, cookies, generated accounts, request bodies and local storage remain in the local QA snapshot."
+}

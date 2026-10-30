@@ -1,0 +1,13 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T22:16:14.623Z",
+    "duration": 9618.934,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "globalErrors": 1,
+  "tests": [],
+  "sanitization": "Only test titles, source locations, statuses, durations and failure presence. Private traces, cookies, generated accounts, request bodies and local storage remain in the local QA snapshot."
+}

@@ -30,7 +30,7 @@
 | --- | --- | --- |
 | R0 计划提交 | 149、原型/核对证据、本计划、总计划入口及账本整合 | 已完成：d054f5a2，16份计划/原型/证据文件，4395文档链接检查通过；提交后开始应用修改 |
 | R1 工作台整合 | 149 A～C；WS01～WS12；统一导航/外壳/品牌/上下文；首页、任务、诊断、报告、档案、资料、专注和管理布局，旧链接/草稿 | [152基础](152-workspace-foundation-delivery-checkpoint.md)、[153资料](153-workspace-materials-integration.md)、[154专注/管理](154-workspace-focus-and-admin-integration.md)及[155 GESP](155-gesp-workspace-context-and-recovery.md)已实现并分批隔离验证；31旧入口与完整角色旅程继续核对，未整体验收 |
-| R2 完整练习 | 147 D2；来源→预检→候选/安排→孩子任务→原生答案与理由/帮助/媒体→恢复/完成；撤回；成人/AI教学生成/复核/采用/本人作答 | in_progress；[156完整UI](156-assistant-practice-workspace-ui.md)正在冻结候选完整回归；[157撤回与25版读取栅栏](157-practice-assignment-withdrawal-and-schema25.md)在独立副本验证；成人/AI接[158持久生成与本人作答](158-generated-teaching-practice-persistence.md)；三点六题本人学习码、并发/回执/权限/双库恢复及完整门禁 |
+| R2 完整练习 | 147 D2；来源→预检→候选/安排→孩子任务→原生答案与理由/帮助/媒体→恢复/完成；撤回；成人/AI教学生成/复核/采用/本人作答 | in_progress；[156完整UI](156-assistant-practice-workspace-ui.md)已实现并完成第九轮整站隔离回归；[157撤回与25版读取栅栏](157-practice-assignment-withdrawal-and-schema25.md)在独立副本验证；成人/AI接[158持久生成与本人作答](158-generated-teaching-practice-persistence.md)；实际运行、撤回及成人/AI完整链仍待交付 |
 | R3 原因与指导 | 147 D3、XP-I02～I05、105 M3；可观察行为、深原因/替代解释/反证、真实报告、计划确认/修订/暂停/复核 | 待实施；无证据不判因，原证据/版本可定位，教师核对单列 |
 | R4 排期与复测 | 147 D4、XP-I06/J05；日预算/冲突/时区/确认/ICS、真实到期复测、原因关闭/重开及报告复盘 | 待实施；任务执行、日程完成、独立保持证据分别核对 |
 | R5 学习与纸面完整流程 | XP-B～H、105 M1/M2/M5；全课堂状态/参考风格/声音/插问、课程修订/撤回、17题型/项目、采集/多页/OCR/题卷/错题/导出打印 | 按已有能力续补；代表性课程与纸面旅程通过，不缩减内容范围 |
@@ -100,3 +100,5 @@ R1是当前首项应用开发。R5～R8中不依赖新界面的资料清单、�
 2026-10-30 GESP批已本地提交a79e70f0，提交后工作区干净。R2从[156](156-assistant-practice-workspace-ui.md)继续：先固定完整来源/候选/明确安排、任务列表、本人逐组作答与完整副本协议，再接原持久接口；撤回和成人/AI继续分批补具体协议和实现。原72/WS及R1、R3～R8状态保持。
 
 2026-10-30 R2接续规格：[158](158-generated-teaching-practice-persistence.md)固定成人与孩子AI教学稿的持久生成、复核、采用、本人活动、共享撤回及schema26读取栅栏。156完整浏览器和157撤回验证继续在各自冻结副本运行；本次只提交具体规格，不将其计为实现。成人/AI后仍继续D3/D4和R5～R8，原72/WS及整体active保持。
+
+2026-10-30 R2审核题完整UI：[156](156-assistant-practice-workspace-ui.md)实现助教来源→候选→明确安排→学习码本人三点六题、原生答案/完整理由、帮助/订正/完成与完整副本。第九轮整站549/549零重试、另批78/78、完整API1944通过/0失败/74环境跳过，第五轮实际SQLite/PG各38/38按后台SHA等价继承；完整后单次GESP请求transport适配另批10/10，均独立记账。原失败、11张最终截图与输入核对见[收据](../evidence/2026-10-30/workspace-r2-practice-ninth/receipt.json)。正式库schema24/revision187及构建保持，未推送/发布。157撤回与158成人/AI在独立副本继续，不计入本批；R1/R2未整体验收，D3/D4、R5～R8和原72/WS及真人条件保持，整体active。

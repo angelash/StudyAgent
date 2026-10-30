@@ -70,7 +70,10 @@ test('unit check resumes holes, persists help and provides a faithful review wit
   }
   await review.locator('.cl-review-items>li').first().getByRole('button', { name: '回到相关微课' }).click();
   await expect(page).toHaveURL(/lesson=soc-1-1-2/);
-  await page.goBack(); await expect(review).toBeVisible();
+  await page.evaluate(() => history.back());
+  const exit = page.getByRole('dialog', { name: '离开课堂确认', exact: true });
+  await expect(exit).toBeVisible(); await exit.getByRole('button', { name: '保存并离开', exact: true }).click();
+  await expect(review).toBeVisible();
   expect(errors).toEqual([]);
 });
 

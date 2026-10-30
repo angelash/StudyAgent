@@ -1,0 +1,41 @@
+{
+  "numTotalTests": 5,
+  "numPassedTests": 0,
+  "numFailedTests": 5,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 2,
+  "suites": [
+    {
+      "file": "restored-materials.integration.test.ts",
+      "status": "failed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "cold recovery reapplies deletion receipts to actual material bytes and upload permissions physically removes deleted private sources and upload chunks while preserving shared/frozen originals and a legitimate resumable job",
+          "status": "failed",
+          "durationMs": 11840.150800000001
+        },
+        {
+          "title": "cold recovery reapplies deletion receipts to actual material bytes and upload permissions keeps unknown verified-backup files and the restore guard, refusing to erase or overwrite the incomplete target",
+          "status": "failed",
+          "durationMs": 413.35310000000027
+        },
+        {
+          "title": "cold recovery reapplies deletion receipts to actual material bytes and upload permissions fails closed after one unlink and can repeat the same backup/ledger into a different empty target",
+          "status": "failed",
+          "durationMs": 435.1993000000002
+        },
+        {
+          "title": "cold recovery reapplies deletion receipts to actual material bytes and upload permissions rejects a directory junction introduced during copying without chmod or deletion through the link",
+          "status": "failed",
+          "durationMs": 512.4477000000006
+        },
+        {
+          "title": "cold recovery reapplies deletion receipts to actual material bytes and upload permissions rejects a current active-upload record that conflicts with an old permanent revocation",
+          "status": "failed",
+          "durationMs": 453.8179999999993
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "numTotalTests": 38,
+  "numPassedTests": 38,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "assistant-practice-artifact.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability persists complete original source and two native reviewed packets without learner/task/evidence side effects",
+          "status": "passed",
+          "durationMs": 1867.6815000000006
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability replays original create keys and rejects changed input or forged approval fields",
+          "status": "passed",
+          "durationMs": 1660.9974000000002
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability uses the original receipt for simultaneous same-key requests from two actual application instances",
+          "status": "passed",
+          "durationMs": 4419.485099999998
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability saves teaching-only edits and keeps earlier receipts and original frozen bank packets",
+          "status": "passed",
+          "durationMs": 2910.344399999998
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability keeps another authorized guardian out of private source, candidate and original receipt",
+          "status": "passed",
+          "durationMs": 1683.589
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability scopes list cursors to source and owner without exposing complete bank packets in summaries",
+          "status": "passed",
+          "durationMs": 194.3110000000015
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability requires adult-to-child confirmation and preserves a candidate when the original message changes",
+          "status": "passed",
+          "durationMs": 533.8161
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability keeps native question history readable after current approved content is replaced",
+          "status": "passed",
+          "durationMs": 550.7796999999991
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability keeps profile grade4 separate when current scope is legitimately advanced to grade5",
+          "status": "passed",
+          "durationMs": 393.3679000000011
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability uses an actual learning-code identity for a private grade9 chemical candidate without changing the grade4 profile",
+          "status": "passed",
+          "durationMs": 2147.384399999999
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability persists all three explicit atomic groups over HTTP without duplicate native questions or learner side effects",
+          "status": "passed",
+          "durationMs": 2688.2273000000023
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability confirms a shared native teaching assignment without writing learner sessions, exposure, tasks or measurements",
+          "status": "passed",
+          "durationMs": 2060.230200000002
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability shares confirmed teaching with the other guardian while keeping private origin and unstarted learner questions hidden",
+          "status": "passed",
+          "durationMs": 1665.3237000000045
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability replays original shared assignment requests across two actual instances without another child record",
+          "status": "passed",
+          "durationMs": 4346.623799999994
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability rejects stale previews and other target children, and binds shared cursors to the current viewer",
+          "status": "passed",
+          "durationMs": 1806.3695999999982
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability keeps the published instructions and receipt unchanged after a later private candidate edit",
+          "status": "passed",
+          "durationMs": 188.09829999999783
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability rejects a rehashed foreign private link or a detached assignment without a matching account deletion receipt",
+          "status": "passed",
+          "durationMs": 385.6521999999968
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability allows the actual learning-code child to arrange a private grade9 teaching candidate for themself without changing grade4 profile",
+          "status": "passed",
+          "durationMs": 2421.801599999999
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability exports owner-native teaching while excluding another guardian private origin and internal storage/scoring data",
+          "status": "passed",
+          "durationMs": 745.850400000003
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability protects both learner and guardian candidates throughout an actual paused assessment, and replays existing receipts without writing",
+          "status": "passed",
+          "durationMs": 2454.5051999999996
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability previews a complete three-point shared arrangement without creating child sessions, attempts or exposure",
+          "status": "passed",
+          "durationMs": 4360.178500000002
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability starts only from the actual child identity and preserves the single original start receipt",
+          "status": "passed",
+          "durationMs": 2430.1474000000017
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability saves native answers plus independent learner explanations, fences concurrent drafts and blocks guardian writes on both route families",
+          "status": "passed",
+          "durationMs": 2846.3912999999957
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability rejects another actual learning-code child on the original group and practice routes",
+          "status": "passed",
+          "durationMs": 2313.8937000000005
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability records explicit hints, solutions and reported guardian demonstrations separately from the first response",
+          "status": "passed",
+          "durationMs": 2650.2983999999997
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability completes the actual child group once and keeps the original completion and response receipts",
+          "status": "passed",
+          "durationMs": 2654.2583000000013
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability checks exact native SQL actor, feedback, assistance and draft records before another process opens them",
+          "status": "passed",
+          "durationMs": 126.39250000000175
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability starts the second planned group through two actual instances even though the whole original preflight now contains exposure",
+          "status": "passed",
+          "durationMs": 6330.570700000004
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability preserves the second group draft throughout an actual paused assessment and rejects all new teaching writes",
+          "status": "passed",
+          "durationMs": 2658.9986000000063
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability blocks an unstarted group when original source changes but preserves completed group receipts",
+          "status": "passed",
+          "durationMs": 2633.383699999991
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability uploads real image and audio bytes only from the original learner and saves native media drafts before backup",
+          "status": "passed",
+          "durationMs": 2724.300199999998
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability makes the saved actual schema23 reader refuse schema24 before writing any domain data",
+          "status": "passed",
+          "durationMs": 2060.6157000000094
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability restores the native source/packets/history and original receipt with revoked old authentication",
+          "status": "passed",
+          "durationMs": 14211.457200000004
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability restores the actual learner entry, original first-response receipts and draft before completing all three groups with native composite inputs",
+          "status": "passed",
+          "durationMs": 5462.4329
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability rejects rehashed foreign actors, cross-group links and altered native scoring details at the cold boundary",
+          "status": "passed",
+          "durationMs": 2618.788400000005
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability rejects a damaged frozen packet despite recomputing the bundle database hash",
+          "status": "passed",
+          "durationMs": 733.4753999999957
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability replays the latest author deletion ledger without reviving private candidates from the original backup",
+          "status": "passed",
+          "durationMs": 13596.546900000001
+        },
+        {
+          "title": "private reviewed-practice artifact HTTP and native durability replays the latest child deletion ledger including adult-source transferred candidates",
+          "status": "passed",
+          "durationMs": 11018.764899999995
+        }
+      ]
+    }
+  ]
+}

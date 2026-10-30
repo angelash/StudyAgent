@@ -1,0 +1,565 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-30T01:33:08.662873+00:00",
+  "sourceRevision": "a4611de5f1ae22d0740fea73ae22818b1ba4c838",
+  "state": "Reviewed-bank practice UI implemented and isolated; whole development goal active; no push or production deployment",
+  "completeBrowser": {
+    "receipt": "complete-browser-ninth.json",
+    "stats": {
+      "startTime": "2026-10-30T00:35:34.959Z",
+      "duration": 3254373.522,
+      "expected": 549,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": 549,
+    "retries": 0,
+    "earlierReceipt": "complete-browser-sixth.json",
+    "unresolvedOriginalFailures": []
+  },
+  "focusedBrowser": {
+    "receipt": "focused-browser-ninth.json",
+    "tests": 78
+  },
+  "gespTransport": {
+    "receipt": "gesp-single-request-transport.json",
+    "tests": 10,
+    "overlay": "gesp-request-transport-overlay.json",
+    "scope": "After the ninth complete run, the single intercepted native POST has a60s request transport timeout and an explicit success assertion; no retry or application change."
+  },
+  "completeApi": {
+    "receipt": "complete-api-final.json",
+    "passed": 1944,
+    "failed": 0,
+    "skipped": 74
+  },
+  "sqliteNative": {
+    "receipt": "fifth-practice-api.json",
+    "passed": 38
+  },
+  "postgresNative": {
+    "receipt": "fifth-practice-postgres.json",
+    "passed": 38
+  },
+  "pureBoundaries": {
+    "receipt": "fourth-practice-unit.json",
+    "scope": "Three complete-copy and three existing activity-exit boundary tests, reported separately."
+  },
+  "sourceComparison": "source-comparison.json",
+  "nativeEquivalence": "api-native-equivalence.json",
+  "localOriginals": "local-originals.json",
+  "builds": {
+    "apiReceipt": "builds-ninth.json",
+    "webReceipt": "builds-ninth.json",
+    "webBuildId": "eHFNe-xRXj1mFL73lyPK_"
+  },
+  "screenshots": [
+    {
+      "path": "screenshots/help-and-correction-history.png",
+      "sha256": "2a6ffe00256829011350f33ec99e5a7beae82268548e3309514060379f2cc236",
+      "bytes": 218028,
+      "privacy": "Generated QA inputs and owned synthetic accounts, no production learners or credentials."
+    },
+    {
+      "path": "screenshots/learner-complete-copy-1440.png",
+      "sha256": "528faf2b5816bf879cbf638be79994163da7f0fee959ec75b548fa64e584c403",
+      "bytes": 109598,
+      "privacy": "Generated QA inputs and owned synthetic accounts, no production learners or credentials."
+    },
+    {
+      "path": "screenshots/learner-complete-copy-320.png",
+      "sha256": "ef91497aefaa94da7f4ca1605ba8f6435a9ff060d735038ad06de629bfac73fc",
+      "bytes": 100042,
+      "privacy": "Generated QA inputs and owned synthetic accounts, no production learners or credentials."
+    },
+    {
+      "path": "screenshots/learner-complete-copy-390.png",
+      "sha256": "f394904206bd5bdfa749d5ecd0d2e40fe7ea1e5c6f6f8ae40d105ef7fb77b9d1",
+      "bytes": 98674,
+      "privacy": "Generated QA inputs and owned synthetic accounts, no production learners or credentials."
+    },
+    {
+      "path": "screenshots/learner-complete-copy-768.png",
+      "sha256": "0a95dc5d6bb1cc990b4b5aab14ef13c76cc41467773a4bcfd276a5e637f76f24",
+      "bytes": 100516,
+      "privacy": "Generated QA inputs and owned synthetic accounts, no production learners or credentials."
+    },
+    {
+      "path": "screenshots/learner-three-groups-completed.png",
+      "sha256": "126bd58bdc14c8b8c326775e5947507f811f6f1898f8f12bfbe6402599fccd00",
+      "bytes": 117262,
+      "privacy": "Generated QA inputs and owned synthetic accounts, no production learners or credentials."
+    },
+    {
+      "path": "screenshots/original-answer-and-later-reason.png",
+      "sha256": "d51ad52dd7e88cc4263cb3b237535e90559a2daf68d17398cda13d282cc9a36c",
+      "bytes": 178087,
+      "privacy": "Generated QA inputs and owned synthetic accounts, no production learners or credentials."
+    },
+    {
+      "path": "screenshots/original-create-and-arrange-recovery.png",
+      "sha256": "8622a05c553d495262dd7fb43840839978834807580465a4f612fd11b4303a86",
+      "bytes": 146748,
+      "privacy": "Generated QA inputs and owned synthetic accounts, no production learners or credentials."
+    },
+    {
+      "path": "screenshots/parent-source-and-native-preview.png",
+      "sha256": "55be5d6104adbef18bc67786eb01935a85bee770a3320fc198f97c5351db8b9a",
+      "bytes": 138159,
+      "privacy": "Generated QA inputs and owned synthetic accounts, no production learners or credentials."
+    },
+    {
+      "path": "screenshots/real-media-original-question.png",
+      "sha256": "1be308e6bbcb222df561a34ce32931ba9394f54b32ae23dea7482ca503b243cb",
+      "bytes": 181360,
+      "privacy": "Generated QA inputs and owned synthetic accounts, no production learners or credentials."
+    },
+    {
+      "path": "screenshots/two-tabs-explicit-draft-comparison.png",
+      "sha256": "2ea218e34e76c96d364892a4b0da678ac708dacab955cf1e91a0c199ad8441c7",
+      "bytes": 138371,
+      "privacy": "Generated QA inputs and owned synthetic accounts, no production learners or credentials."
+    }
+  ],
+  "productionObservation": {
+    "readOnly": true,
+    "unchangedFromMaterialsDelivery": true,
+    "artifacts": [
+      {
+        "path": "apps/api/dist/apps/api/src/main.js",
+        "sha256": "5793c7090063d318c5e5c60bdb74350baa6f64c386639b94fbf4cd5605946c1a",
+        "mtimeUtc": "2026-10-29T14:51:26.120290+00:00"
+      },
+      {
+        "path": "apps/web/.next/BUILD_ID",
+        "sha256": "e02197beeb39c5df02110ca05544c471b3bb892662bebdcb56449b27713e7fba",
+        "mtimeUtc": "2026-10-29T14:52:20.456777+00:00"
+      }
+    ],
+    "schemaVersion": 24,
+    "revision": 187,
+    "recheckedAt": "2026-10-30T01:33:00.328312+00:00"
+  },
+  "limits": [
+    "Withdrawal and adult/AI persistent teaching remain open forR2.",
+    "D3/D4,R5-R8, full textbooks, teacher review, physical devices and real1/3/7/14-day learner evidence remain open.",
+    "Original72 andWS12 states are not promoted by test counts.",
+    "Teaching answers, reasons, help, completion and generated media are not formal mastery evidence.",
+    "The complete API skips74 environment-dependent cases; the separate38-case actual PostgreSQL run does not claim every skipped PG variant ran.",
+    "This batch adds no business HTTP route, collection or migration. Authorized activity reads add attemptHistory only.",
+    "The separate ignored schema25 withdrawal source is not part of this commit."
+  ],
+  "artifacts": [
+    {
+      "path": "api-native-equivalence.json",
+      "sha256": "cc944a626e25f06b74aaa80d087abf1aae74ce5c85e919bec8db3da343af6eb0",
+      "bytes": 153812
+    },
+    {
+      "path": "authored-audit.json",
+      "sha256": "3dfbc4cb8f03c874d4a09883e20f4b869aa48b60a288420bf5b96807eb63ed7b",
+      "bytes": 881283
+    },
+    {
+      "path": "browser-practice-fifth.json",
+      "sha256": "4a1e674ef3144c13ab0c82f76396c2095c14266974a53535a98a570900790472",
+      "bytes": 3094
+    },
+    {
+      "path": "browser-practice-fourth.json",
+      "sha256": "41c96ccdf6ad1c160a4d770ca57e198c9b9cf0a049a782ff2e658f245a237409",
+      "bytes": 3094
+    },
+    {
+      "path": "browser-practice-second-diagnostic.json",
+      "sha256": "059df6088bf8a338a3d213a5229aebba51bb0d14f5f7593757e6cffd9efa286b",
+      "bytes": 820
+    },
+    {
+      "path": "browser-practice-second-fixture-retry.json",
+      "sha256": "85d9a2a3b828ff066a055dfd84db6c14b2d29a1556af78f0893bfcfbdb971c3b",
+      "bytes": 813
+    },
+    {
+      "path": "browser-practice-second-retry.json",
+      "sha256": "b720f00caec845f532788c8507ee147675d517e6d42187231a7eb853aeedd23d",
+      "bytes": 1557
+    },
+    {
+      "path": "browser-practice-second.json",
+      "sha256": "44a5db475983e953edc9d960b9798fbfbdfd95c5be54b53db2c7eb8d2bb3d2fb",
+      "bytes": 424
+    },
+    {
+      "path": "browser-practice-seventh-compatibility.json",
+      "sha256": "8766196bd25ce92b764fad685b7c004aa8411a9f10bfc87b297f8903980b1431",
+      "bytes": 3012
+    },
+    {
+      "path": "browser-practice-seventh-later-compatibility.json",
+      "sha256": "6cc1c54d210d687f7e0238842e049cac26e9261dda3bdcf5837837f438c1b2e3",
+      "bytes": 14412
+    },
+    {
+      "path": "browser-practice-seventh-recovery.json",
+      "sha256": "f185b5efe74f10b8288187620086e7e11f67d4febac4d347455af89147e0d6c0",
+      "bytes": 424
+    },
+    {
+      "path": "browser-practice-seventh-recovery2.json",
+      "sha256": "2d3889e249684a3ed27def48026046d9ecd8e53714722dbb9465ee10e7c318b8",
+      "bytes": 16749
+    },
+    {
+      "path": "browser-practice-seventh-teaching.json",
+      "sha256": "d17948a11d256aca4105aac67d68eb8e94784c78ba34a9cef4bab9e6e96e5011",
+      "bytes": 7766
+    },
+    {
+      "path": "browser-practice-seventh-workspace.json",
+      "sha256": "2cd323036b45b232699fea93ea406f7affe627b991cb2059c11582f283088cdd",
+      "bytes": 4527
+    },
+    {
+      "path": "browser-practice-seventh.json",
+      "sha256": "8ea23a4e42337e4a716d6ebc4d70f5abb27abda04dae999a4d8dbd1a5860e8e5",
+      "bytes": 14774
+    },
+    {
+      "path": "browser-practice-third.json",
+      "sha256": "2d1b0c959cb4dfdbadceacdd3b515ffcfc06ca3792692eabca6a4053886b7f1c",
+      "bytes": 1952
+    },
+    {
+      "path": "builds-api-final.json",
+      "sha256": "348a34d22d4a79e803776f870c3a3a48815cfd4c0cbfa30392e0f73c6b3584ab",
+      "bytes": 470
+    },
+    {
+      "path": "builds-eighth-navigation.json",
+      "sha256": "d0554bd25bfd1571147be5fd6cd5abd4bfe73e0a08b2ee6de2b1e7d3f9f6bb7b",
+      "bytes": 157
+    },
+    {
+      "path": "builds-eighth.json",
+      "sha256": "f09000c4781e88b9a899aa54ef2d619f18aa4ddb1752395a48fde936f35e4dfe",
+      "bytes": 622
+    },
+    {
+      "path": "builds-fifth.json",
+      "sha256": "fb9aa3b6ae455d69e40127c6a79b66bb48acf3e23d81f5f7d07128e923940b71",
+      "bytes": 622
+    },
+    {
+      "path": "builds-first.json",
+      "sha256": "88989486995223a1a9d49b2e778f967e842aa2870a0fd3ea9f3d909f48e4acee",
+      "bytes": 622
+    },
+    {
+      "path": "builds-fourth.json",
+      "sha256": "9f36d0fc8048233a4d8a3522597a06748e2d3f831ee81c2a28464d3d7232fb40",
+      "bytes": 622
+    },
+    {
+      "path": "builds-ninth.json",
+      "sha256": "91d1cc674df6fb74ff33b89cecc78ef78d76dcd355a6b3481b087de085454b15",
+      "bytes": 622
+    },
+    {
+      "path": "builds-second.json",
+      "sha256": "aac9117fdb29d6defc3dcf598a98ed43ea060bb77eebbc93f3e059535383eefd",
+      "bytes": 622
+    },
+    {
+      "path": "builds-seventh.json",
+      "sha256": "5beb3f304472ebb1beff671dbc327fe7669f34ceba59e39136703862427a03b2",
+      "bytes": 622
+    },
+    {
+      "path": "builds-sixth.json",
+      "sha256": "031b97431cf8c2a505e0528bab8f4a24e3198f11e1b820c0bd9e5477b0259844",
+      "bytes": 622
+    },
+    {
+      "path": "builds-third.json",
+      "sha256": "506b1cf725fbf933ea15f431850f906639c550cc3fff0ae96b3923ad84eca9dd",
+      "bytes": 622
+    },
+    {
+      "path": "complete-api-final.json",
+      "sha256": "ac2c9a26253149e430a4d9dcb76bb1e50bc27bcef81b494fce7631e129be0059",
+      "bytes": 599363
+    },
+    {
+      "path": "complete-api-first-configured.json",
+      "sha256": "6d148fd418f132014f2ef889b7464058e8c3784f70916645a60b8fcb87a95f7f",
+      "bytes": 599460
+    },
+    {
+      "path": "complete-browser-eighth.json",
+      "sha256": "f65b43fc6b37dda342108df9b72b9a252fa7726e28fbab6c72545e6fee5b7319",
+      "bytes": 192258
+    },
+    {
+      "path": "complete-browser-followups.json",
+      "sha256": "d05f4baf8327b0077b26cdd611e3e7c54ba09858ceabeb5ef0fc216625fe6a87",
+      "bytes": 9993
+    },
+    {
+      "path": "complete-browser-ninth.json",
+      "sha256": "04c3f966cf38a4836b4cd804852d1c42834d6fb517860e9930858a96e2f30edb",
+      "bytes": 192253
+    },
+    {
+      "path": "complete-browser-sixth.json",
+      "sha256": "8406fa1965c583ceaac221fa8df1a939fb66d34ff5687a0f329174e39a94f3c7",
+      "bytes": 191898
+    },
+    {
+      "path": "eighth-guard-bypass-overlay.json",
+      "sha256": "402aec81dfa65fc31d8889289769d505f9d0cb3c77245506a9702ef47c23b2a3",
+      "bytes": 380
+    },
+    {
+      "path": "eighth-teaching-question-shape-overlay.json",
+      "sha256": "dd00624ccb2db9c8a19fa8f11fbb0e6b215a112a3e7ac0de07855205c4e80537",
+      "bytes": 544
+    },
+    {
+      "path": "fifth-practice-api.json",
+      "sha256": "f49d7cb47504d1558522f079c9ee8d9b142075075f22e503a84bc3462125e266",
+      "bytes": 11121
+    },
+    {
+      "path": "fifth-practice-postgres.json",
+      "sha256": "51f8578703ecbfb4306b7dc5ad6533dbf113a6f69cd415655d701c47735f6532",
+      "bytes": 11129
+    },
+    {
+      "path": "focused-browser-eighth.json",
+      "sha256": "52cc5e1ed4c23c61ae316a23de7e5846f073ed483dc03e99497f75a31aa4cb34",
+      "bytes": 15392
+    },
+    {
+      "path": "focused-browser-ninth.json",
+      "sha256": "ee029af4d244258212c3f5bd5dbbdc5ec8889374076c7525aac318e0349669b0",
+      "bytes": 27765
+    },
+    {
+      "path": "fourth-practice-unit.json",
+      "sha256": "b12dffbbd75376f14ade54c121a59dd71bdfc289a53f1feba56c283a536ceb6e",
+      "bytes": 1957
+    },
+    {
+      "path": "gesp-request-transport-overlay.json",
+      "sha256": "b65c793e33089017e6e4061470d30e60dedb0cc2a58225ea8a7aa977b19a7441",
+      "bytes": 482
+    },
+    {
+      "path": "gesp-single-request-transport.json",
+      "sha256": "82382539ccce0b4d519d7b305309e4fca61d77273eb8f6feb430a7efa5b7ecd7",
+      "bytes": 4051
+    },
+    {
+      "path": "historical-audit-targeted.json",
+      "sha256": "403b6a3a62f6f21403598da0f073d3484fa4f71dbcfd89a77f4d08eede120164",
+      "bytes": 7755
+    },
+    {
+      "path": "incorrect-api-run-stop.json",
+      "sha256": "2ce8e8678fa59ec11c8f064b2a9ed7e3468129d377bbd753442124be38c52918",
+      "bytes": 1646
+    },
+    {
+      "path": "local-originals.json",
+      "sha256": "2a787ce02297bc972ab3a035ffb8efdaa8147a6b94bf37906cc22b567b24367c",
+      "bytes": 23114
+    },
+    {
+      "path": "materials-diagnostic.json",
+      "sha256": "9eaa9a1ae7bb047565c28cca7875557238fab761638a2c4d61364d92a9dee6b1",
+      "bytes": 1884
+    },
+    {
+      "path": "materials-short-temp.json",
+      "sha256": "795671d61a8143038753217597a20617d97bb7d92d1de1842cadf8abd92d28ae",
+      "bytes": 1884
+    },
+    {
+      "path": "native-and-fixture-targeted.json",
+      "sha256": "553783db861b07954a14321e86038a388b73f4b675b4f9477213bffdeb773bd1",
+      "bytes": 5409
+    },
+    {
+      "path": "ninth-parent-corrections.json",
+      "sha256": "0d0d4aff22391994ee2ac5d015276e206cfe0a6714bb3b8f458aee1154ca858d",
+      "bytes": 309
+    },
+    {
+      "path": "preparation-and-failures.json",
+      "sha256": "5191c7f08f13b3b0d4f48211251ecbac235f620e2f8c11d12aebdb53912d9831",
+      "bytes": 3742
+    },
+    {
+      "path": "qa-ports-after.json",
+      "sha256": "f470f13cc487e961e8cdb589f66c8f6be99480a211e27a0b84a0584de8a069ad",
+      "bytes": 1516
+    },
+    {
+      "path": "screenshots/help-and-correction-history.png",
+      "sha256": "2a6ffe00256829011350f33ec99e5a7beae82268548e3309514060379f2cc236",
+      "bytes": 218028
+    },
+    {
+      "path": "screenshots/learner-complete-copy-1440.png",
+      "sha256": "528faf2b5816bf879cbf638be79994163da7f0fee959ec75b548fa64e584c403",
+      "bytes": 109598
+    },
+    {
+      "path": "screenshots/learner-complete-copy-320.png",
+      "sha256": "ef91497aefaa94da7f4ca1605ba8f6435a9ff060d735038ad06de629bfac73fc",
+      "bytes": 100042
+    },
+    {
+      "path": "screenshots/learner-complete-copy-390.png",
+      "sha256": "f394904206bd5bdfa749d5ecd0d2e40fe7ea1e5c6f6f8ae40d105ef7fb77b9d1",
+      "bytes": 98674
+    },
+    {
+      "path": "screenshots/learner-complete-copy-768.png",
+      "sha256": "0a95dc5d6bb1cc990b4b5aab14ef13c76cc41467773a4bcfd276a5e637f76f24",
+      "bytes": 100516
+    },
+    {
+      "path": "screenshots/learner-three-groups-completed.png",
+      "sha256": "126bd58bdc14c8b8c326775e5947507f811f6f1898f8f12bfbe6402599fccd00",
+      "bytes": 117262
+    },
+    {
+      "path": "screenshots/original-answer-and-later-reason.png",
+      "sha256": "d51ad52dd7e88cc4263cb3b237535e90559a2daf68d17398cda13d282cc9a36c",
+      "bytes": 178087
+    },
+    {
+      "path": "screenshots/original-create-and-arrange-recovery.png",
+      "sha256": "8622a05c553d495262dd7fb43840839978834807580465a4f612fd11b4303a86",
+      "bytes": 146748
+    },
+    {
+      "path": "screenshots/parent-source-and-native-preview.png",
+      "sha256": "55be5d6104adbef18bc67786eb01935a85bee770a3320fc198f97c5351db8b9a",
+      "bytes": 138159
+    },
+    {
+      "path": "screenshots/real-media-original-question.png",
+      "sha256": "1be308e6bbcb222df561a34ce32931ba9394f54b32ae23dea7482ca503b243cb",
+      "bytes": 181360
+    },
+    {
+      "path": "screenshots/two-tabs-explicit-draft-comparison.png",
+      "sha256": "2ea218e34e76c96d364892a4b0da678ac708dacab955cf1e91a0c199ad8441c7",
+      "bytes": 138371
+    },
+    {
+      "path": "second-fixture-diagnostic-overlay.json",
+      "sha256": "39d82137cbfb521a3d3577912808ed879bdc5dbd6f21ffff0401ec54f45c9676",
+      "bytes": 365
+    },
+    {
+      "path": "second-fixture-numeric-selection-overlay.json",
+      "sha256": "2a3d2a2749c5cd56378df4ef89e74f5a042674324f755dba050f0c3a9986fc22",
+      "bytes": 460
+    },
+    {
+      "path": "second-postgres-identity.json",
+      "sha256": "d2961d2db595a9bf1e3cc6f57e9bccf61bf6a4500be779c7d0de87e44dcf63c3",
+      "bytes": 203
+    },
+    {
+      "path": "second-practice-api.json",
+      "sha256": "d07834cbcf5221d0aacc459dfbb4dc4a654f6209675d41845a660f6273228cdc",
+      "bytes": 11133
+    },
+    {
+      "path": "second-practice-postgres.json",
+      "sha256": "2ee6840a632e3bccb8202f1faf1f089c34e052343b49d0f7727ba4e187e4457f",
+      "bytes": 11120
+    },
+    {
+      "path": "second-practice-unit.json",
+      "sha256": "26b705e30767bcef1c64796bf837f5188aadd0ed2d013eb7e9648c0a3cd4ac5d",
+      "bytes": 1957
+    },
+    {
+      "path": "second-test-answer-overlay.json",
+      "sha256": "eb899e7f4961a52c8f550280fa2f8aaad9ffd14d4eb00d9be74e271a8a84f81f",
+      "bytes": 367
+    },
+    {
+      "path": "seventh-blueprint-and-product-test-overlay.json",
+      "sha256": "140c0d354798c691eff7fbeec71c2abd6c8c9f814831e7ddf1a5a18786b94da8",
+      "bytes": 687
+    },
+    {
+      "path": "seventh-bounded-runtime-test-overlay.json",
+      "sha256": "00ac19b971ccb1253943531411e51054fc3106871535cd8537b71491b44bd588",
+      "bytes": 399
+    },
+    {
+      "path": "seventh-classroom-review-test-overlay.json",
+      "sha256": "9644f8766bb87b7d9c32653d1b0dbd315a892047d60f5203e5821c425b6b9862",
+      "bytes": 378
+    },
+    {
+      "path": "seventh-identity-and-runtime-test-overlay.json",
+      "sha256": "b7163370dec5a6db824c70b297d5a84f2ef1c6056a30d9ecd6eae4afa41caa8f",
+      "bytes": 729
+    },
+    {
+      "path": "seventh-later-compatibility-test-overlay.json",
+      "sha256": "ef1634aa32d8dc7351ad016351df6bc2b292a4e075981830e3027edd8856a060",
+      "bytes": 980
+    },
+    {
+      "path": "seventh-teaching-exit-test-overlay.json",
+      "sha256": "9cc469b277f8285b803b2f2333af16b69650a92872376a28f1185434008a7db8",
+      "bytes": 416
+    },
+    {
+      "path": "seventh-workspace-exit-test-overlay.json",
+      "sha256": "08965c88307444b50c0e3777d3261af1656785d41263245d08aa07b26d5fbbaf",
+      "bytes": 374
+    },
+    {
+      "path": "sixth-additional-history-permission-tests-overlay.json",
+      "sha256": "f7bf38b86587cafbb4260776ed302eb43df3cb893246cc2495ab7acc3a71a512",
+      "bytes": 399
+    },
+    {
+      "path": "sixth-historical-audit-input-overlay.json",
+      "sha256": "469aaf0ef62895d5af196d99e40e1831d59fe3d5a96d2e530ffcf9e828aec69c",
+      "bytes": 421
+    },
+    {
+      "path": "sixth-native-path-diagnostic.json",
+      "sha256": "2aae0428538b9d697336250343acd272f61586acb6cb6de290536c2d35deee2c",
+      "bytes": 1831
+    },
+    {
+      "path": "source-comparison.json",
+      "sha256": "1cd4f8cccb62d71977323b9f743bf66375dd72c0debfcc5f0bc069047d51bd21",
+      "bytes": 676597
+    },
+    {
+      "path": "source-inputs.json",
+      "sha256": "8d832045c79510e44752a33a894c6f90814c247f803f8c7c6dee59ba5d1771c9",
+      "bytes": 446704
+    },
+    {
+      "path": "third-supporting-api-equivalence.json",
+      "sha256": "26793fff22cd1c910bb4e2eace61608baa509ff2f64b8c3ee7da6e9a9c701b13",
+      "bytes": 264
+    }
+  ]
+}

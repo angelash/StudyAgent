@@ -121,16 +121,20 @@ test('chemistry: course assessments unlock independent checks and preserve first
 test('chemistry: family-created ninth-grade profile reaches the standard library and old links keep their unit', async ({ page }) => {
   const { studentId } = await fixture(page);
   await page.goto('/parent/dashboard?' + new URLSearchParams({ studentId, subject: 'chemistry' }));
-  await page.getByRole('button', { name: '＋ 添加孩子档案', exact: true }).click();
-  await page.getByPlaceholder('怎么称呼孩子').fill('新建九上化学档案'); await page.getByLabel('当前年级').selectOption('9');
-  await page.getByRole('button', { name: '保存档案 ↗', exact: true }).click();
-  const selected = page.getByLabel('选择学生', { exact: true }); await expect(selected.locator('option:checked')).toContainText('新建九上化学档案');
-  const createdId = await selected.inputValue(); expect(createdId).not.toBe(studentId);
-  await page.getByRole('link', { name: '学习工作台', exact: true }).click();
-  await expect(page.getByLabel('学习档案', { exact: true })).toHaveValue(createdId);
+  await expect(page.getByRole('heading', { name: '学习报告', exact: true })).toBeVisible();
+  await page.getByRole('link', { name: '学习档案', exact: true }).click();
+  await page.getByLabel('孩子昵称', { exact: true }).fill('新建九上化学档案'); await page.getByLabel('当前年级').selectOption('9');
+  const created = page.waitForResponse(response => response.url().endsWith('/api/students') && response.request().method() === 'POST');
+  await page.getByRole('button', { name: '保存档案', exact: true }).click();
+  const reply = await created; expect(reply.status()).toBe(201);
+  const createdId = (await reply.json()).data.profile.id; expect(createdId).not.toBe(studentId);
+  await expect(page.getByRole('heading', { name: '新建九上化学档案', exact: true })).toBeVisible();
+  await page.getByRole('link', { name: 'Home', exact: true }).click();
+  await expect(page.getByLabel('学习对象', { exact: true })).toHaveValue(studentId);
+  await page.getByLabel('学习对象', { exact: true }).selectOption(createdId);
   await page.locator('.ws-navigation').getByRole('button', { name: 'Courses', exact: true }).click(); await enroll(page);
   await page.goto('/chemistry?' + new URLSearchParams({ studentId: createdId, unit: 'u7' }));
-  await expect(page).toHaveURL(/\/studio\?/); await expect(page.getByLabel('学习档案', { exact: true })).toHaveValue(createdId);
+  await expect(page).toHaveURL(/\/studio\?/); await expect(page.getByLabel('学习对象', { exact: true })).toHaveValue(createdId);
   await expect(page.locator('.cl-unit-heading')).toContainText('燃料、能源与环境');
   await expect(page.getByRole('button', { name: '添加课程并开始学习', exact: true })).toHaveCount(0);
 });
@@ -141,11 +145,11 @@ test('chemistry: viewing a course preserves an explicit primary profile until th
     defaultVersionMap: { math: 'common', chinese: 'common', english: 'common' } }) });
   expect(result.status).toBe(201); const primaryId = (await result.json()).data.profile.id;
   await page.goto('/studio?' + new URLSearchParams({ view: 'courses', student: primaryId, subject: 'chemistry' })); await open(page);
-  await expect(page.getByLabel('学习档案', { exact: true })).toHaveValue(primaryId);
+  await expect(page.getByLabel('学习对象', { exact: true })).toHaveValue(primaryId);
   await expect(page.getByRole('button', { name: '添加课程并开始学习', exact: true })).toBeDisabled();
   expect((await call('/chemistry/catalog?studentId=' + primaryId)).studentId).toBe(primaryId);
   expect((await call('/learning/studio/overview?' + new URLSearchParams({ studentId, subject: 'chemistry' }))).courses).toHaveLength(0);
-  await page.getByLabel('学习档案', { exact: true }).selectOption(studentId); await enroll(page);
+  await page.getByLabel('学习对象', { exact: true }).selectOption(studentId); await enroll(page);
   expect((await call('/learning/studio/overview?' + new URLSearchParams({ studentId, subject: 'chemistry' }))).courses).toHaveLength(1);
 });
 
@@ -159,7 +163,7 @@ test('chemistry: a chemical course request cannot reuse mathematics and old subj
     currentAtomId: 'foundation:math:multiplytwo', minutesPerSession: 15, progressMode: 'knowledge', selectedLessonIds: [] }) });
   expect(scope.status).toBe(200);
   await page.goto('/studio?' + new URLSearchParams({ student: primaryId, subject: 'math', view: 'home' }));
-  await page.locator('.sa-composer textarea').fill('广东初三化学上学期'); await page.locator('.sa-composer').getByRole('button', { name: '↑', exact: true }).click();
+  await page.locator('.sa-composer textarea').fill('广东初三化学上学期'); await page.locator('.sa-composer').getByRole('button', { name: '创建课程', exact: true }).click();
   const dialog = page.getByRole('dialog', { name: '课程蓝图', exact: true });
   await expect(dialog).toContainText('课程名称要求化学，当前选择的是数学范围');
   await expect(dialog.getByRole('button', { name: '预览课程蓝图', exact: true })).toBeDisabled();
@@ -169,7 +173,7 @@ test('chemistry: a chemical course request cannot reuse mathematics and old subj
   await expect(page.getByRole('heading', { name: courseTitle, exact: true })).toBeVisible();
   await expect(page.locator('.cl-microlessons')).toContainText('物理变化与化学变化');
   await expect(page.locator('.cl-outline')).not.toContainText('两位数乘两位数');
-  await page.getByLabel('学习档案', { exact: true }).selectOption(studentId); await enroll(page);
+  await page.getByLabel('学习对象', { exact: true }).selectOption(studentId); await enroll(page);
   const catalog = await call('/chemistry/catalog?studentId=' + studentId);
   await page.goto('/studio?' + new URLSearchParams({ view: 'courses', student: studentId, subject: 'math', course: catalog.courseId }));
   await expect(page.getByLabel('学科', { exact: true })).toHaveValue('chemistry');
@@ -222,7 +226,7 @@ for (const width of [390, 1440]) test('chemistry assistant: actual course teachi
   await page.getByRole('navigation', { name: '本次回答的教学出处' }).getByRole('link').first().click();
   await expect(page.getByRole('heading', { name: '当时的教学出处', exact: true })).toBeVisible();
   await expect(page.getByLabel('学科', { exact: true })).toHaveValue('chemistry');
-  await expect(page.getByLabel('学习档案', { exact: true })).toHaveValue(studentId);
+  await expect(page.getByLabel('学习对象', { exact: true })).toHaveValue(studentId);
   await expect(page.locator('.assistant-source-content')).toContainText(actualUnit.lessons.find((l: any) => l.kind === 'learn').teaching.teaching.explanation);
   await expect(page.locator('.assistant-source-panel')).not.toContainText(/两位数乘两位数|异分母|通分/);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);

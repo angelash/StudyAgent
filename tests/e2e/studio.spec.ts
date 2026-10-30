@@ -135,7 +135,9 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await selectWorkspaceView(page, 'Materials');
   await expect(page.getByRole('tab', { name: '学习资料', exact: true })).toHaveAttribute('aria-selected', 'true');
   await page.getByRole('tab', { name: 'PDF页与结构', exact: true }).click();
-  await page.locator('input[type=file]').setInputFiles(pdf.path);
+  await expect(page.getByRole('tabpanel', { name: 'PDF页与结构', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'PDF原页与识别结构', exact: true })).toBeVisible();
+  await page.getByLabel('上传资料 PDF', { exact: true }).setInputFiles(pdf.path);
   await expect(page.getByText('分数讲义', { exact: true }).first()).toBeVisible({ timeout: 30_000 });
   await page.waitForFunction(() => Boolean(document.querySelector('.sa-pdf-paper img') || document.querySelector('.sa-pdf-failed')),
     undefined, { timeout: 30_000 });

@@ -1,0 +1,72 @@
+{
+  "processes": [
+    {
+      "pid": 55184,
+      "created": "10/30/2026 06:36:58",
+      "name": "node.exe",
+      "parentPid": 34076
+    },
+    {
+      "pid": 88112,
+      "created": "10/30/2026 06:36:58",
+      "name": "node.exe",
+      "parentPid": 55184
+    },
+    {
+      "pid": 25984,
+      "created": "10/30/2026 06:40:06",
+      "name": "node.exe",
+      "parentPid": 88112
+    },
+    {
+      "pid": 64500,
+      "created": "10/30/2026 06:40:49",
+      "name": "node.exe",
+      "parentPid": 88112
+    },
+    {
+      "pid": 89772,
+      "created": "10/30/2026 06:41:02",
+      "name": "node.exe",
+      "parentPid": 88112
+    },
+    {
+      "pid": 89236,
+      "created": "10/30/2026 06:41:07",
+      "name": "python.exe",
+      "parentPid": 25984
+    },
+    {
+      "pid": 80592,
+      "created": "10/30/2026 06:41:07",
+      "name": "conhost.exe",
+      "parentPid": 89236
+    },
+    {
+      "pid": 84820,
+      "created": "10/30/2026 06:41:08",
+      "name": "node.exe",
+      "parentPid": 88112
+    },
+    {
+      "pid": 17324,
+      "created": "10/30/2026 06:41:09",
+      "name": "node.exe",
+      "parentPid": 64500
+    },
+    {
+      "pid": 62100,
+      "created": "10/30/2026 06:41:09",
+      "name": "conhost.exe",
+      "parentPid": 17324
+    },
+    {
+      "pid": 71536,
+      "created": "10/30/2026 06:41:10",
+      "name": "ffmpeg.exe",
+      "parentPid": 89772
+    }
+  ],
+  "rootPid": 55184,
+  "purpose": "Stop only the current owned full API run after identifying its incorrect global SQLite mode; preserve the log and rerun repository defaults"
+}

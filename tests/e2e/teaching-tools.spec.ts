@@ -18,7 +18,11 @@ async function enter(page: Page, width = 1280, admin = true) {
   const seeded = admin ? await call('/qa/teaching-tools/setup', {}) : null;
   await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
   await page.getByRole('button', { name: '登录，查看学习记录 →', exact: true }).click(); await expect(page).toHaveURL(/\/studio/);
-  if (admin) await page.getByRole('link', { name: 'AI教研', exact: true }).click(); else await page.goto('/admin/ai-tools');
+  if (admin) {
+    if (width <= 1000) await page.getByRole('button', { name: '打开学习导航', exact: true }).click();
+    await page.getByRole('link', { name: '教研与管理', exact: true }).click();
+    await page.getByRole('navigation', { name: '管理功能', exact: true }).getByRole('link', { name: 'AI教研', exact: true }).click();
+  } else await page.goto('/admin/ai-tools');
   if (admin) await expect(page.getByRole('heading', { name: '把一次作答，看得更清楚。', exact: true })).toBeVisible();
   return { actor, call, questionId: seeded?.questionId as string, principal, credential };
 }
@@ -92,7 +96,7 @@ test('teaching tools: two tabs retain their own complete drafts and copying anot
 test('teaching tools: failed local storage blocks navigation and logout until the complete original input is downloaded', async ({ page }) => {
   await page.addInitScript(() => { const original = Storage.prototype.setItem; Storage.prototype.setItem = function (key, value) { if (key.startsWith('studyagent.teaching-tool.')) throw new DOMException('Synthetic quota', 'QuotaExceededError'); return original.call(this, key, value); }; });
   const f = await enter(page); await fill(page, 'STORAGE_FAILURE_FULL_ORIGINAL'); await expect(composer(page)).toContainText('本机存储暂不可用');
-  await page.getByRole('link', { name: '教研后台', exact: true }).click(); await expect(page).toHaveURL(/\/admin\/ai-tools/); await page.getByRole('button', { name: '退出', exact: true }).click();
+  await page.getByRole('navigation', { name: '管理功能', exact: true }).getByRole('link', { name: '课程与覆盖', exact: true }).click(); await expect(page).toHaveURL(/\/admin\/ai-tools/); await page.getByRole('button', { name: '退出', exact: true }).click();
   await expect(page).toHaveURL(/\/admin\/ai-tools/); expect((await f.call('/auth/me')).role).toBe('admin');
   const downloadPromise = page.waitForEvent('download'); await composer(page).getByRole('button', { name: '下载完整原稿 ↗', exact: true }).click(); const download = await downloadPromise;
   const saved = JSON.parse(readFileSync((await download.path())!, 'utf8')); expect(saved.form.title).toBe('STORAGE_FAILURE_FULL_ORIGINAL'); expect(saved.form.answer).toContain('保留首次原文尾行');
@@ -118,13 +122,13 @@ test('teaching tools: cancellation acknowledgement loss recovers its original co
 test('teaching tools: a role revocation unloads private work and fences the late provider reply', async ({ page }) => {
   const f = await enter(page); await f.call('/qa/teaching-tools/behavior', { mode: 'late' }); await fill(page, 'PRIVATE_TEACHING_OWNER_ONLY'); await preview(page); const id = await generate(page);
   await expect(detail(page).getByText('正在生成', { exact: true })).toBeVisible(); await f.call('/qa/teaching-tools/revoke', {});
-  await expect(page.getByRole('heading', { name: '这是一处内部教研工作区', exact: true })).toBeVisible(); await expect(page.getByText('PRIVATE_TEACHING_OWNER_ONLY', { exact: true })).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: '当前身份无法访问此管理功能', exact: true })).toBeVisible(); await expect(page.getByText('PRIVATE_TEACHING_OWNER_ONLY', { exact: true })).toHaveCount(0);
   await page.waitForTimeout(1800); await f.call('/qa/teaching-tools/setup', {});
   await expect.poll(async () => (await f.call('/ai/teaching-tools/runs/' + id)).status, { timeout: 20000 }).toBe('failed'); expect((await f.call('/ai/teaching-tools/runs/' + id)).result).toBeNull();
 });
 
 test('teaching tools: parent identity cannot read the admin workspace or load model generation controls', async ({ page }) => {
-  await enter(page, 1280, false); await expect(page.getByRole('heading', { name: '这是一处内部教研工作区', exact: true })).toBeVisible(); await expect(composer(page)).toHaveCount(0);
+  await enter(page, 1280, false); await expect(page.getByRole('heading', { name: '当前身份无法访问此管理功能', exact: true })).toBeVisible(); await expect(composer(page)).toHaveCount(0);
 });
 
 test('teaching tools: oversized original text is rejected without losing or truncating the form or making a provider call', async ({ page }) => {

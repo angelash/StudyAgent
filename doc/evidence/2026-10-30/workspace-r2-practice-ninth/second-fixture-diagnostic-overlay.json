@@ -1,0 +1,6 @@
+{
+  "path": "scripts/qa/assistant-practice-fixture.cjs",
+  "before": "0e5bf75f42589eba112c8585d47d4a668f8714e140a81a3eafbdf6099abb1fec",
+  "after": "b5af3bb50456e6fee3113ff59512d7f8b867d5da3a8ed1f384ead74aba400e26",
+  "reason": "Log only the QA fixture exception message, without tokens, request bodies or account credentials, to diagnose setup rejection."
+}

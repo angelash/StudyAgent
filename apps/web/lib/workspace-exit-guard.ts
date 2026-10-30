@@ -3,7 +3,7 @@ import type { WorkspaceExitGuard } from './workspace-shell-context';
 const stateKey = '__studyWorkspaceHistoryIndex';
 type ActiveGuard = WorkspaceExitGuard & { token: symbol };
 type Position = { href: string; state: unknown; index: number | null };
-const identityKeys = ['student','studentId','subject','courseScope','audience','studioCourseId','sourceCourseId','lesson','session','project','whiteboard','draft','course','task','reviewTask','level','track'];
+const identityKeys = ['student','studentId','subject','courseScope','audience','studioCourseId','sourceCourseId','lesson','session','project','whiteboard','draft','course','task','reviewTask','level','track','assistantAssignment','assistantPractice'];
 export function sameWorkspaceActivity(destination: string, current: string) {
   try {
     const next = new URL(destination, current), previous = new URL(current);
@@ -18,7 +18,7 @@ export function installWorkspaceExitGuard(active: () => ActiveGuard | null) {
   const stamp = (data: unknown, value: number) => ({ ...(data && typeof data === 'object' ? data : {}), [stateKey]: value });
   if (index() === null) replace.call(history, stamp(history.state, 0), '', window.location.href);
   const position = (): Position => ({ href: window.location.href, state: history.state, index: index() });
-  let current = position(), bypass = '', restoring: { original: Position; destination: string; guard: ActiveGuard } | null = null;
+  let current = position(), bypass = '', restoring: { original: Position; destination: Position; guard: ActiveGuard } | null = null;
   const wrappedPush: History['pushState'] = function(data, unused, url) { const value = (index() ?? current.index ?? 0) + 1; push.call(history, stamp(data, value), unused, url);if(!restoring)current=position(); };
   const wrappedReplace: History['replaceState'] = function(data, unused, url) { replace.call(history, stamp(data, index() ?? current.index ?? 0), unused, url);if(!restoring)current=position(); };
   history.pushState = wrappedPush; history.replaceState = wrappedReplace;
@@ -26,18 +26,22 @@ export function installWorkspaceExitGuard(active: () => ActiveGuard | null) {
     const guard = active();
     return guard && !(guard.isInternal ?? sameWorkspaceActivity)(destination,current.href) ? guard : null;
   }
-  function request(guard: ActiveGuard, destination: string) {
+  function request(guard: ActiveGuard, destination: string, resume?: () => void) {
     if(active()?.token!==guard.token)return;
     window.dispatchEvent(new Event('studyagent:close-navigation'));
-    guard.request(destination, () => { if(active()?.token!==guard.token)return;bypass=destination;window.location.assign(destination); });
+    guard.request(destination, () => { if(active()?.token!==guard.token)return;bypass=destination;if(resume)resume();else window.location.assign(destination); });
   }
-  const navigation = (window as unknown as { navigation?: EventTarget }).navigation;
+  const navigation = (window as unknown as { navigation?: EventTarget & { traverseTo?: (key: string) => { finished: Promise<unknown> } } }).navigation;
   function traverse(event: Event) {
-    const change=event as Event & { navigationType?: string; destination?: { url: string } };
+    const change=event as Event & { navigationType?: string; destination?: { url: string; key?: string } };
     if(change.navigationType!=='traverse'||!change.cancelable||!change.destination)return;
-    if(bypass===change.destination.url){bypass='';return;}
+    if(bypass===change.destination.url)return;
     const guard=leaving(change.destination.url);if(!guard)return;
-    change.preventDefault();change.stopImmediatePropagation();request(guard,change.destination.url);
+    change.preventDefault();change.stopImmediatePropagation();
+    const key=change.destination.key;
+    request(guard,change.destination.url,key&&navigation?.traverseTo?()=>{
+      try{void navigation.traverseTo!(key).finished.catch(()=>{bypass='';});}catch{bypass='';}
+    }:undefined);
   }
   function click(event: MouseEvent) {
     if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
@@ -50,7 +54,8 @@ export function installWorkspaceExitGuard(active: () => ActiveGuard | null) {
     const next=position();
     if(restoring){
       if(next.href===restoring.original.href){
-        event.stopImmediatePropagation();const pending=restoring;restoring=null;current=next;request(pending.guard,pending.destination);
+        event.stopImmediatePropagation();const pending=restoring;restoring=null;current=next;
+        request(pending.guard,pending.destination.href,()=>history.go(pending.destination.index!-pending.original.index!));
       }
       return;
     }
@@ -58,7 +63,7 @@ export function installWorkspaceExitGuard(active: () => ActiveGuard | null) {
     const guard=leaving(next.href);if(!guard){current=next;return;}
     event.stopImmediatePropagation();
     if(current.index!==null&&next.index!==null&&current.index!==next.index){
-      restoring={original:current,destination:next.href,guard};history.go(current.index-next.index);
+      restoring={original:current,destination:next,guard};history.go(current.index-next.index);
     }else{
       // Legacy entries without our marker still keep the live editor and original URL.
       const previous=current;push.call(history,previous.state,'',previous.href);current=position();request(guard,next.href);

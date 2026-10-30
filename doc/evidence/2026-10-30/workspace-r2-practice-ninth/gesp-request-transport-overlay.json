@@ -1,0 +1,6 @@
+{
+  "path": "tests/e2e/workspace-gesp.spec.ts",
+  "beforeSha256": "5da79c821808b1b8989dadfa07ac2d315e2b834f26d09e5083e5583a489c8f50",
+  "afterSha256": "f57026b79f27cfd806a57d6c1b22ee84410197c86f4a9f213173f1057c0f93f3",
+  "scope": "After the complete ninth browser run, allow60s for exactly one intercepted native GESP POST and additionally assert its HTTP success. No request retry, application change, compiler timeout change or weakened first-answer/recovery assertions."
+}

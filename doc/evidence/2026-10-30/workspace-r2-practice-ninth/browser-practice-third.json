@@ -1,0 +1,62 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T22:24:26.053Z",
+    "duration": 61127.704000000005,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "conversation practice workspace: actual parent source, three groups and six learner answers retain original reasons and help",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 10473,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: lost creation and arrangement replies keep exact original commands across reload",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6045,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: a lost learner answer keeps the original reason separate from later local edits",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6567,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: denied storage requires a complete answer and reason download before switching questions",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 21468,
+          "failure": true
+        }
+      ]
+    }
+  ],
+  "sanitization": "Only test titles, source locations, statuses, durations and failure presence. Private traces, cookies, generated accounts, request bodies and local storage remain in the local QA snapshot."
+}

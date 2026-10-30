@@ -10,10 +10,12 @@ import { apiRequest } from '../../../lib/api';
 import { learningContextIssue, readLearningContext } from '../../../lib/learning-context';
 import { workspaceHref } from '../../../lib/workspace-navigation';
 import { AssessmentStudio } from '../../student/assessment/studio';
+import { ConversationPracticeWorkspace } from './conversation-practice';
 
 export function TasksWorkspace() {
   const search = useSearchParams(), user = useSessionUser();
   if (!user) return <main className="learning-studio"><section className="workspace-page"><h1>学习任务</h1>{user === undefined ? <p role="status">正在确认学习身份…</p> : <Link href="/parent/login">登录后继续学习</Link>}</section></main>;
+  if(search.get('view')==='conversation-practice'||search.has('assistantAssignment')||search.has('assistantPractice'))return <ConversationPracticeWorkspace key={user.id+':'+user.role} user={user}/>;
   const issue = learningContextIssue('?' + search), selected = user ? readLearningContext(user.id, '?' + search) : null;
   if (issue || user?.role === 'student' && selected?.audience === 'self') return <main className="learning-studio"><StudioNavigation active="tasks" /><section className="workspace-page"><h1>学习任务</h1><p role="alert">{issue || '学生学习身份不能进入成人独立学习。'}</p><Link href="/studio">重新选择学习对象</Link></section></main>;
   return user && selected?.audience === 'self' ? <PersonalTasks key={user.id} user={user} /> : search.get('view') === 'plan' || search.has('planId') ? <AssessmentStudio /> : <DailyStudio />;

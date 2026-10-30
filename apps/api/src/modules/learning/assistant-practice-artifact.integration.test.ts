@@ -626,6 +626,10 @@ describe('private reviewed-practice artifact HTTP and native durability', () => 
       const reopened = await request(peer.getHttpServer()).get('/api' + learnerRoot(firstStart.sessionId)).set('Authorization', 'Bearer ' + learner.token);
       expect(reopened.status).toBe(200); expect(reopened.body.data.summary).toMatchObject({ teachingFirstPass: 1, assistedQuestions: 1, independentFirstPass: 0 });
       expect(reopened.body.data.questions.every((item: any) => item.latest.attempt === 2)).toBe(true);
+      expect(reopened.body.data.questions.every((item: any) => JSON.stringify(item.attemptHistory.map((attempt: any) => attempt.attempt)) === '[1,2]')).toBe(true);
+      expect(reopened.body.data.questions[0].attemptHistory[0]).toMatchObject({ id: firstAnswerReceipt.attempt.id, learnerExplanation: firstAnswerCommand.learnerExplanation });
+      expect(JSON.stringify(reopened.body.data.questions.map((item: any) => item.attemptHistory))).not.toContain('assistantInput');
+      expect(JSON.stringify(reopened.body.data.questions.map((item: any) => item.attemptHistory))).not.toContain('requestHash');
       const reopenedQuestion = await request(peer.getHttpServer()).get('/api' + learnerRoot(firstStart.sessionId) + '/questions/' + trainingPreview.groups[0].questions[0].question.id).set('Authorization', 'Bearer ' + learner.token);
       expect(reopenedQuestion.status).toBe(200); expect(reopenedQuestion.body.data.feedback.attempt.attempt).toBe(2);
       const [one, two] = await Promise.all([call('post', groupRoot(trainingTargets[1]), secondStartInput, learner),

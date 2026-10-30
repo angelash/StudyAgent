@@ -1,0 +1,555 @@
+{
+  "artifacts": [
+    {
+      "path": "data/qa/workspace-practice-ninth-20261030/source/data/qa/practice-ninth-complete.json",
+      "sha256": "6a59871846a0d56480f0e40d3f9e231c096cd0a9b820d12e9443012f41010e45",
+      "bytes": 613144
+    },
+    {
+      "path": "data/qa/workspace-practice-ninth-20261030/source/data/qa/practice-ninth-focused.json",
+      "sha256": "6c541f8be255fdcfc5a80fa843c5f2a0c6e473fc15f984f7dc63073dd08deb33",
+      "bytes": 89768
+    },
+    {
+      "path": "data/qa/workspace-practice-ninth-20261030/source/data/qa/practice-ninth-gesp-transport.json",
+      "sha256": "43ada3bd6be1e362a4a0661c588cdf401fe426527b999f0c3a3c34bd3973ccbd",
+      "bytes": 14297
+    },
+    {
+      "path": "data/qa/workspace-practice-ninth-20261030/workspace-gesp-before-transport.spec.ts",
+      "sha256": "5da79c821808b1b8989dadfa07ac2d315e2b834f26d09e5083e5583a489c8f50",
+      "bytes": 22550
+    },
+    {
+      "path": "data/qa/workspace-practice-api-final-20261030/complete-api-final.json",
+      "sha256": "2bcf3744933319268266657590ef50f1e0238c02e3094728dd5e07463457ba57",
+      "bytes": 976811
+    },
+    {
+      "path": "data/qa/workspace-practice-api-final-20261030/native-and-fixture-targeted.json",
+      "sha256": "91a70e27da3e1e808b9960c4dfd6eea56d2a4c155007675f92e404c3f4c00fb9",
+      "bytes": 9007
+    },
+    {
+      "path": "data/qa/workspace-practice-sixth-20261030/source/data/qa/practice-complete-browser-sixth.json",
+      "sha256": "a66d20e96b58dd35f5032695181db629ba440b4fc63fb73e3b19b9e13559b760",
+      "bytes": 875137
+    },
+    {
+      "path": "data/qa/workspace-practice-eighth-20261030/source/data/qa/practice-eighth-complete.json",
+      "sha256": "f7b8e29fa2c17b351d7440b588bb7ce4eeb7915851c5c1b38b24649c39067bed",
+      "bytes": 634655
+    },
+    {
+      "path": "data/qa/workspace-practice-eighth-20261030/source/data/qa/practice-eighth-focused.json",
+      "sha256": "6ffe4c3e0281d29254b19bf1e4dd181b5f9ca8ed30ee8e716af58845d9fc9b71",
+      "bytes": 50216
+    },
+    {
+      "path": "data/qa/workspace-practice-sixth-20261030/complete-api-retry.json",
+      "sha256": "55ad2ce95673df7a5d2c74f237ec44a0cd03e90623cc87d0aaf12ef59d3b7dbe",
+      "bytes": 985694
+    },
+    {
+      "path": "data/qa/workspace-practice-sixth-20261030/historical-audit-targeted.json",
+      "sha256": "5e6c47d372da5a7f898b83949eb8611b55d3722cbbbcebb5ce7d85922a036322",
+      "bytes": 12752
+    },
+    {
+      "path": "data/qa/workspace-practice-sixth-20261030/materials-diagnostic.json",
+      "sha256": "fa58d78b67dd53e1ad91014e37a0403a209d2f752583252537ca62acad817c77",
+      "bytes": 7297
+    },
+    {
+      "path": "data/qa/workspace-practice-sixth-20261030/materials-short-temp.json",
+      "sha256": "d4da496e0d0ceae8cb94a8673801be0fb274b8e2fecddfc5b490bd23475a15d8",
+      "bytes": 3373
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/source/data/qa/practice-second.json",
+      "sha256": "e139d3ae3d95a9786faa9c43ae4c17cd593e3c18a8de4b0d1c06b68a2871e587",
+      "bytes": 3295
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/source/data/qa/practice-second-retry.json",
+      "sha256": "eeabfb302ce81968ec060de93b50a1ec0cf4d37214f45fa4788bc54620f9bae1",
+      "bytes": 29390
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/source/data/qa/practice-second-diagnostic.json",
+      "sha256": "e967efd5900058c911d50ec0a5aa35d58b3f51db69e5c81c10795de712652168",
+      "bytes": 12049
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/source/data/qa/practice-second-fixture-retry.json",
+      "sha256": "e347f7c663a38a68aea90754bb9260bf942fbc68289ef1938aa965bd1ab96cc6",
+      "bytes": 12089
+    },
+    {
+      "path": "data/qa/workspace-practice-third-20261030/source/data/qa/practice-third.json",
+      "sha256": "eb77097ab7c103f8a26674210688b6e4dea21c935a72fe6f8b86c7062e031af4",
+      "bytes": 19449
+    },
+    {
+      "path": "data/qa/workspace-practice-fourth-20261030/source/data/qa/practice-fourth.json",
+      "sha256": "b34a324a27c3a0f1479eec6345a5ed45dc5a6ce4e82632b771a2586eb281847f",
+      "bytes": 11224
+    },
+    {
+      "path": "data/qa/workspace-practice-fifth-20261030/source/data/qa/practice-fifth.json",
+      "sha256": "ba713b197b91341ba9169bd5bec95195e639ae941d0f79bd10a45f2ae74e35ea",
+      "bytes": 11213
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/source/data/qa/practice-seventh.json",
+      "sha256": "53beee97c032be1b1dc5e9b90e7a93199b7afb5eb2f5356fdb4184f219bf4f76",
+      "bytes": 62630
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/source/data/qa/practice-seventh-recovery.json",
+      "sha256": "509d9eb4d10b07f6e44fa7202bfb3c8f689fea73e777ece356cfb313e05f9bb9",
+      "bytes": 3218
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/source/data/qa/practice-seventh-recovery2.json",
+      "sha256": "7b711cbef31567aec97e5027af5cd6a534185dbf9f258d9c238732f529a5d201",
+      "bytes": 54608
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/source/data/qa/practice-seventh-compatibility.json",
+      "sha256": "eb52f6d4a8946596e555c6bf7d239f0e16d9625adbc053884ddb33ec028d9117",
+      "bytes": 11963
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/source/data/qa/practice-seventh-later-compatibility.json",
+      "sha256": "ec4a5d25f16c6c4207ce6e102301cea552bdad404fa6230d7052cd41bece34fa",
+      "bytes": 52961
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/source/data/qa/practice-seventh-teaching.json",
+      "sha256": "9bb92803c4b1c178f9eee908463e2dfd5a1d51508ba194195b9881a947f79d3c",
+      "bytes": 26227
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/source/data/qa/practice-seventh-workspace.json",
+      "sha256": "79b9e43fff68789e513d0cc4ca7c411f57ab5d521efecaf89a4f223608b62aa8",
+      "bytes": 21592
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/practice-unit.json",
+      "sha256": "ba464812d8ffe75c81fe5205c24346086617a136c3f0724670d6befedfc8d5dc",
+      "bytes": 3383
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/practice-api.json",
+      "sha256": "4013c5e1ebc56f9b0a70673e8661854897a37a8abe50cc6ef7b144eeae79ba67",
+      "bytes": 18365
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/practice-postgres.json",
+      "sha256": "d92f77e67c720720e897e3db57e56cce923cd3b30f9a709fd15c326ff4147373",
+      "bytes": 18352
+    },
+    {
+      "path": "data/qa/workspace-practice-fourth-20261030/practice-unit.json",
+      "sha256": "e54c3d7302b02853d39e9d30bacf33a38c2bf48bc0103e112e237e378717841b",
+      "bytes": 3384
+    },
+    {
+      "path": "data/qa/workspace-practice-fifth-20261030/practice-api.json",
+      "sha256": "1b56cd9381a198a8335f3868a52ce09770ada66142c98bc143503584d1d751bd",
+      "bytes": 18351
+    },
+    {
+      "path": "data/qa/workspace-practice-fifth-20261030/practice-postgres.json",
+      "sha256": "303861936026d60570dab51e6867e03a11f911060623fae07730982e1457c519",
+      "bytes": 18359
+    },
+    {
+      "path": "data/qa/workspace-practice-first-20261030/build-api.log",
+      "sha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "bytes": 62
+    },
+    {
+      "path": "data/qa/workspace-practice-first-20261030/build-config.log",
+      "sha256": "81243a7e112eeccec04f94f2a8fcf2376f6d1ad12d89f5599bf4f158fa90076b",
+      "bytes": 462
+    },
+    {
+      "path": "data/qa/workspace-practice-first-20261030/build-contracts.log",
+      "sha256": "d64dd68cf1b89105ca70bf9d70f7d17d01d65075904907fbd05a30e9d8bdd0aa",
+      "bytes": 470
+    },
+    {
+      "path": "data/qa/workspace-practice-first-20261030/build-web.log",
+      "sha256": "76bcbc477e32da9b3fdc76dfeb5a784863a637dc05d3aaa73587690ce9ceb54b",
+      "bytes": 866
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/browser-practice-second-diagnostic.log",
+      "sha256": "392c85b0f8c1f105286ab5e472656f5a4aa1915db037a6246d2cdc9810cb440e",
+      "bytes": 5188
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/browser-practice-second-fixture-retry.log",
+      "sha256": "22b24e7f437beecbc250f5c4fba48b23766e9be963d0b03ba9e5d8775cf5cda2",
+      "bytes": 5084
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/browser-practice-second-retry.log",
+      "sha256": "ceae17c57c938b13d41b34b8d7706719744e4db5093c06c6cf65184f396f8f39",
+      "bytes": 14287
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/browser-practice-second.log",
+      "sha256": "2d4b7abf8afe268561b84bfeccb625bd310e3263b1b2c85a402c87d7d3c3cce9",
+      "bytes": 833
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/build-api.log",
+      "sha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "bytes": 62
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/build-config.log",
+      "sha256": "31fb52deeba9846e631c983ba558fa47698a6966b65361d228ddd4c4e9908579",
+      "bytes": 462
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/build-contracts.log",
+      "sha256": "9a098cadb182fbd19cd6fa9f408bfb43203b1c770a7b0864c9484b8c998934d6",
+      "bytes": 470
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/build-web.log",
+      "sha256": "97536bd6439ddea581e4fcd0f3c469f7ee86b672774963550882be93c46c9d08",
+      "bytes": 1628
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/practice-api.log",
+      "sha256": "5690626e844ddcbbdc077961d10be421bf0145173fc94aa4b458f638b9e1b07b",
+      "bytes": 5063
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/practice-postgres.log",
+      "sha256": "79300dfefb57dd7a00cca901f84582a7690b7cfd86eb08ae7b209769c42cfce2",
+      "bytes": 4971
+    },
+    {
+      "path": "data/qa/workspace-practice-second-20261030/practice-unit.log",
+      "sha256": "053a6fac839a8afc922344a2695f07848376329560d183a125e24e3737b5c8db",
+      "bytes": 907
+    },
+    {
+      "path": "data/qa/workspace-practice-third-20261030/browser-practice-third.log",
+      "sha256": "c1e0c9d8e33d6a6d243fe7b23fe9cb347ebea5a6a39021037906149ffa441a5d",
+      "bytes": 7305
+    },
+    {
+      "path": "data/qa/workspace-practice-third-20261030/build-api.log",
+      "sha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "bytes": 62
+    },
+    {
+      "path": "data/qa/workspace-practice-third-20261030/build-config.log",
+      "sha256": "b68d7a9ccbaeadc4745582f15d8a2a513d3468c905ee3ca7f9ed12700681a684",
+      "bytes": 462
+    },
+    {
+      "path": "data/qa/workspace-practice-third-20261030/build-contracts.log",
+      "sha256": "0a3fbd134768e747ca5c92825683fa5e79b5090d08ca54c1bbc2712aa86fde8a",
+      "bytes": 470
+    },
+    {
+      "path": "data/qa/workspace-practice-third-20261030/build-web.log",
+      "sha256": "13f66817c3f82f4f9cc2545c80cf9a7011a661d663bf7dc9ffcea5660feec567",
+      "bytes": 1628
+    },
+    {
+      "path": "data/qa/workspace-practice-fourth-20261030/browser-practice-fourth.log",
+      "sha256": "b06c578cf9f7aca65f1c3e2dc97a8f09e202585e3ccfcb78a0b94d3f25d9c2e1",
+      "bytes": 1984
+    },
+    {
+      "path": "data/qa/workspace-practice-fourth-20261030/build-api.log",
+      "sha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "bytes": 62
+    },
+    {
+      "path": "data/qa/workspace-practice-fourth-20261030/build-config.log",
+      "sha256": "f2f174e0ceacc899a54bf71dc078fcc1a596cca002622d569feed323b1baef29",
+      "bytes": 462
+    },
+    {
+      "path": "data/qa/workspace-practice-fourth-20261030/build-contracts.log",
+      "sha256": "95efebf5480e86a7994316441d3364dd3524073c0f2a5c99369a646f533387cb",
+      "bytes": 470
+    },
+    {
+      "path": "data/qa/workspace-practice-fourth-20261030/build-web.log",
+      "sha256": "aa92b263ed86cf2b8957daa20eb7ebedb607b123c195c78e4a27309cdc747bbe",
+      "bytes": 1626
+    },
+    {
+      "path": "data/qa/workspace-practice-fourth-20261030/practice-unit.log",
+      "sha256": "b786d850b60918a6ac9f3439c8709dde9369a8686c185cc6094888fa48f8aa2a",
+      "bytes": 907
+    },
+    {
+      "path": "data/qa/workspace-practice-fifth-20261030/browser-practice-fifth.log",
+      "sha256": "8499af471a6b54ec26236a76d1c3300410967eb3ca95b26d9eb3a2056810041d",
+      "bytes": 1984
+    },
+    {
+      "path": "data/qa/workspace-practice-fifth-20261030/build-api.log",
+      "sha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "bytes": 62
+    },
+    {
+      "path": "data/qa/workspace-practice-fifth-20261030/build-config.log",
+      "sha256": "3648967cd810e1e17eecd0459f4855ef21727df83080efb831183470939a9ea2",
+      "bytes": 462
+    },
+    {
+      "path": "data/qa/workspace-practice-fifth-20261030/build-contracts.log",
+      "sha256": "bbfa595441cb9be11fb65380e7080adf3abd631099cee5024eae9fad3dd396c1",
+      "bytes": 470
+    },
+    {
+      "path": "data/qa/workspace-practice-fifth-20261030/build-web.log",
+      "sha256": "9a291d5db79892cbb7a8f998ae85adf6dccfb650d2308557aa83414f27ee0719",
+      "bytes": 1628
+    },
+    {
+      "path": "data/qa/workspace-practice-fifth-20261030/practice-api.log",
+      "sha256": "4d5bdc03bb7cd469c834c490b63b20833276d05c235063faebf2e34a009b28b6",
+      "bytes": 5064
+    },
+    {
+      "path": "data/qa/workspace-practice-fifth-20261030/practice-postgres.log",
+      "sha256": "4b6c266500ce542cdc96c94dfaccb0d95371f9d2078e8780fe68f229db35bad7",
+      "bytes": 5177
+    },
+    {
+      "path": "data/qa/workspace-practice-sixth-20261030/build-api.log",
+      "sha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "bytes": 62
+    },
+    {
+      "path": "data/qa/workspace-practice-sixth-20261030/build-config.log",
+      "sha256": "b4014462f2d3811983f112663c0ab2cce2e179985294915e7df88218a75f6968",
+      "bytes": 462
+    },
+    {
+      "path": "data/qa/workspace-practice-sixth-20261030/build-contracts.log",
+      "sha256": "ab4f5b45406415f3de674069f5567e008ebf193cd904d1a7e7a027b25f64be23",
+      "bytes": 470
+    },
+    {
+      "path": "data/qa/workspace-practice-sixth-20261030/build-web.log",
+      "sha256": "9554717035b79681d03553fa9183f3b1554a11216d8cec4b0668a0c10527bd88",
+      "bytes": 1628
+    },
+    {
+      "path": "data/qa/workspace-practice-sixth-20261030/complete-api-retry.log",
+      "sha256": "9bcce7967e97ccc551d174739ca3e7b90c8bb1bc9709866c746aadbe74ed7f1c",
+      "bytes": 97504
+    },
+    {
+      "path": "data/qa/workspace-practice-sixth-20261030/complete-api.log",
+      "sha256": "595e855d4e44d7045c4b8b8ae63c9e7b1eca059feb05eb69c7d240e2349f42f1",
+      "bytes": 59517
+    },
+    {
+      "path": "data/qa/workspace-practice-sixth-20261030/complete-browser.log",
+      "sha256": "686a61d8d8fe08314d868c733f97c624f9f255280c329dffdacd2253ed8f5664",
+      "bytes": 256505
+    },
+    {
+      "path": "data/qa/workspace-practice-sixth-20261030/historical-audit-targeted.log",
+      "sha256": "11782725a3e93e7a81d624f42e3f7de690bd9fa6828eb2e9e56da3f421d5603f",
+      "bytes": 880
+    },
+    {
+      "path": "data/qa/workspace-practice-sixth-20261030/materials-diagnostic.log",
+      "sha256": "2a60cb0e2cbc65f9487953a8eeb43f6edf7a57c631b1cf8778d4bd9d4b78ba1c",
+      "bytes": 4727
+    },
+    {
+      "path": "data/qa/workspace-practice-sixth-20261030/materials-short-temp.log",
+      "sha256": "bfb0ddf766ca881d0ad77ecd0c25305aa435a059e22c4e38835c8e9946b41080",
+      "bytes": 1465
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/browser-practice-seventh-compatibility.log",
+      "sha256": "cee12cd1bd6c065205fcd298b72de0535c183cce2a52d29c1454bd7606c97a9e",
+      "bytes": 1713
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/browser-practice-seventh-later-compatibility.log",
+      "sha256": "f1a200f377bfac54e813995f92a3df3cb87b9dfcb5f130b72ad6504ffd59a970",
+      "bytes": 10692
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/browser-practice-seventh-recovery.log",
+      "sha256": "7d1fbd7d680ea8b9aa1f02d2fb14dea67f64e2559511cf300632e297ce534bc7",
+      "bytes": 1583
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/browser-practice-seventh-recovery2.log",
+      "sha256": "ee30f78d00bb22348b5a217695901d8f95d0ca2445a66e9b7345b880ae004232",
+      "bytes": 8303
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/browser-practice-seventh-teaching.log",
+      "sha256": "d8bc49694b17ab2e4da3fb4053343c27623dce75c430e48c0344f31d1f659ea4",
+      "bytes": 4037
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/browser-practice-seventh-workspace.log",
+      "sha256": "219e40d0173445cb6891e90836b279eb8bea56ad82086976fb74343382908477",
+      "bytes": 6127
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/browser-practice-seventh.log",
+      "sha256": "356c787c48f0149e2f763198cc4159536408d4df6c0a7be18cce0e98c268debb",
+      "bytes": 16059
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/build-api.log",
+      "sha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "bytes": 62
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/build-config.log",
+      "sha256": "9f4f7b3c83988a9431b6f8e405226ae7995900c87a71d6a820a661debe8beaa7",
+      "bytes": 462
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/build-contracts.log",
+      "sha256": "3ec3151e69419b3d8d67c36b1e37b3a07ba09bb39c741a11389821462191b6e6",
+      "bytes": 470
+    },
+    {
+      "path": "data/qa/workspace-practice-seventh-20261030/build-web.log",
+      "sha256": "00a0c66765e96edf84aade1f39385baed0b43afa1b9b8b539748e645b75bfcd7",
+      "bytes": 1626
+    },
+    {
+      "path": "data/qa/workspace-practice-eighth-20261030/browser-complete.log",
+      "sha256": "2442bfb1c57af165c229ea4a1498692fe3754f312cb63f75bf1c9acf246708c2",
+      "bytes": 102289
+    },
+    {
+      "path": "data/qa/workspace-practice-eighth-20261030/browser-focused.log",
+      "sha256": "1f0eeffc442433fc40d4a426097dfaa3f5f1bbe68c52dcd9e4da1bda8f39cfca",
+      "bytes": 7697
+    },
+    {
+      "path": "data/qa/workspace-practice-eighth-20261030/build-api.log",
+      "sha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "bytes": 62
+    },
+    {
+      "path": "data/qa/workspace-practice-eighth-20261030/build-config.log",
+      "sha256": "3891e31b3c9f0b571a50f6ac472343a143163ad4787d33c61b4548ea06aa3845",
+      "bytes": 462
+    },
+    {
+      "path": "data/qa/workspace-practice-eighth-20261030/build-contracts.log",
+      "sha256": "123f4f3e51d6e7e2c29c4e59bd6c6aac2ac61a987402e815f2c0bd5d52832c73",
+      "bytes": 470
+    },
+    {
+      "path": "data/qa/workspace-practice-eighth-20261030/build-navigation-web.log",
+      "sha256": "309ccaa51af95ecb22ccb919c8ff9be7d3d261fd3defd2f12aae29e7d79c3b2b",
+      "bytes": 1626
+    },
+    {
+      "path": "data/qa/workspace-practice-eighth-20261030/build-web.log",
+      "sha256": "aec84bd5263713e6704ce7f69f97b93845c9798e90b9ed75065becfc2389f4b9",
+      "bytes": 1626
+    },
+    {
+      "path": "data/qa/workspace-practice-eighth-20261030/design-authored-audit.log",
+      "sha256": "7a93d4144adbf02d787bb9add0ad1e05fc0b721d36f929cc770e1ec1195119e0",
+      "bytes": 118
+    },
+    {
+      "path": "data/qa/workspace-practice-eighth-20261030/design-handbook.log",
+      "sha256": "023f9236236ebbedd03818d40edb7e0056b1e537adb64bd584aebb2f12551116",
+      "bytes": 96
+    },
+    {
+      "path": "data/qa/workspace-practice-eighth-20261030/design-inventory.log",
+      "sha256": "e5a5de66176a2acfeba38964a100efc6c57dc84afa9302fe0563c0513bde0b70",
+      "bytes": 468
+    },
+    {
+      "path": "data/qa/workspace-practice-eighth-20261030/design-snapshot.log",
+      "sha256": "b6427a541be6635710d6fc23d9f8ba979f8e2b75bcbf7b5e3467e4b833dfd81b",
+      "bytes": 2566
+    },
+    {
+      "path": "data/qa/workspace-practice-ninth-20261030/browser-complete.log",
+      "sha256": "095cde25b83c5b13e8da35ad70bc88340f22255f01a3afc893fcd7e2a96cd2aa",
+      "bytes": 89834
+    },
+    {
+      "path": "data/qa/workspace-practice-ninth-20261030/browser-focused.log",
+      "sha256": "d20c104e37e43faebe65f66d462c69f4c17df0f1ea81812a5996cf8c5459ae25",
+      "bytes": 13287
+    },
+    {
+      "path": "data/qa/workspace-practice-ninth-20261030/browser-gesp-transport.log",
+      "sha256": "9d51d133a5fba4836811509102ec4ed2596731374cfef32f05a8a45ce48cedda",
+      "bytes": 2382
+    },
+    {
+      "path": "data/qa/workspace-practice-ninth-20261030/build-api.log",
+      "sha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "bytes": 62
+    },
+    {
+      "path": "data/qa/workspace-practice-ninth-20261030/build-config.log",
+      "sha256": "da63d2cd455b4537120c4ccc8e0ae110f87f360e874a86e48b198ec1cc6ce398",
+      "bytes": 462
+    },
+    {
+      "path": "data/qa/workspace-practice-ninth-20261030/build-contracts.log",
+      "sha256": "931c6d2410ad344f4f22c3a2e3966547d4af5fa33cedbc70be75fdb2620abce9",
+      "bytes": 470
+    },
+    {
+      "path": "data/qa/workspace-practice-ninth-20261030/build-web.log",
+      "sha256": "83e62779dfe0fe1a4228fa22440382a1e8a5a01190abe65693c2cd403b3ac589",
+      "bytes": 1627
+    },
+    {
+      "path": "data/qa/workspace-practice-api-final-20261030/build-api.log",
+      "sha256": "4174dffb8bb3d3f801e564d658a04fa12bf8ecefd09399440e9b3382f0c55ced",
+      "bytes": 62
+    },
+    {
+      "path": "data/qa/workspace-practice-api-final-20261030/build-config.log",
+      "sha256": "3c1e9e69e55a0bc1c37acc6d10d190a6feb2e93a16dd4191248e02433721f4b2",
+      "bytes": 462
+    },
+    {
+      "path": "data/qa/workspace-practice-api-final-20261030/build-contracts.log",
+      "sha256": "d8761d446ce5b47e2c8fd6489e4779d6193782e36f30c5e242a64669922ca8a6",
+      "bytes": 470
+    },
+    {
+      "path": "data/qa/workspace-practice-api-final-20261030/complete-api-final.log",
+      "sha256": "f4fa9f5aced946502a2807f43894bc796247c82d30f6e4bd9e833276e7b3c108",
+      "bytes": 88508
+    },
+    {
+      "path": "data/qa/workspace-practice-api-final-20261030/native-and-fixture-targeted.log",
+      "sha256": "545fdae09dbbeb37a9fcb5cbde209f208f5062fd2114a1b83ac210f19eb8fc61",
+      "bytes": 2264
+    }
+  ],
+  "privacy": "Raw failure text, traces, test cookies, generated account data and command environments remain local. These hashes locate the preserved originals without publishing their contents."
+}

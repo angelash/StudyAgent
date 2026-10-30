@@ -135,7 +135,10 @@ describe('versioned curriculum packages and instructional evidence', () => {
     await call('get', '/admin/curriculum/package', undefined, parent, 403);
     await call('post', '/admin/import-files', { name: 'large.json', mediaType: 'application/json', size: 8 * 1024 * 1024 + 1, requestKey: 'large-package' }, admin, 400);
     const pdf = await upload(Buffer.from('%PDF-1.4\nIsolated type test\n%%EOF'), 'application/pdf'); await preview(pdf.id, admin, 400);
-    await call('post', '/admin/processing/handwriting-preview', { fileId: file.id, requestKey: 'not-an-image' }, admin, 400);
+    const previousProcessor = process.env.STUDY_HANDWRITING_PROCESSOR;
+    process.env.STUDY_HANDWRITING_PROCESSOR = join(directory, 'validation-only-processor.py');
+    try { await call('post', '/admin/processing/handwriting-preview', { fileId: file.id, requestKey: 'not-an-image' }, admin, 400); }
+    finally { if (previousProcessor === undefined) delete process.env.STUDY_HANDWRITING_PROCESSOR; else process.env.STUDY_HANDWRITING_PROCESSOR = previousProcessor; }
     await call('post', '/admin/question-import-jobs', { importType: 'textbook_pdf', subject: 'math', fileIds: [file.id], requestKey: 'not-a-pdf',
       sourcePolicy: { sourceType: 'internal_textbook', licenseClass: 'A_INTERNAL', licenseName: null } }, admin, 400);
   });

@@ -1,0 +1,6 @@
+{
+  "path": "scripts/qa/run-source-course-browser.cjs",
+  "beforeSha256": "2852d1f97e3e08e1abda48811450cb2b610232bc080a4096012c9ded0017e150",
+  "afterSha256": "7a0074586d304d881b210c09e03f8a1d45d26271d035147fb409551b1d2862ff",
+  "reason": "The fixture server requires its runtime inside the same frozen source data/qa. Use a short child name there, preserving the original server boundary."
+}

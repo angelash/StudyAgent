@@ -1,0 +1,17 @@
+{
+  "scope": "Generated original PNG only; neither production files nor an existing test artifact was modified",
+  "results": [
+    {
+      "path": "data\\qa\\workspace-practice-sixth-20261030\\source\\data\\qa\\source-course-browser-1793313418577-77332\\native-path-probe\\classroom-visuals\\classroom_visual_00000000-0000-4000-8000-000000000001\\staging-00000000-0000-4000-8000-000000000002\\browser-fixture.png",
+      "characters": 284,
+      "success": false,
+      "reason": "<workspace>\\data\\qa\\workspace-practice-sixth-20261030\\source\\data\\qa\\source-course-browser-1793313418577-77332\\native-path-probe\\classroom-visuals\\classroom_visual_00000000-0000-4000-8000-000000000001\\staging-00000000-0000-4000-8000-000000000002\\browser-fixture.png: unable to open for write\nsystem error: No such file or directory\n<workspace>\\data\\qa\\workspace-practice-sixth-20261030\\source\\data\\qa\\source-course-browser-1793313418577-77332\\native-path-probe\\classroom-visuals\\classroom_visual_00000000-0000-4000-8000-000000000001\\staging-00000000-0000-4000-8000-000000000002\\browser-fixture.png: write error\nsystem error: No such file or directory\nwbuffer_write: write failed\nsystem error: Unknown error\nvips2png: unable to write to target <workspace>\\data\\qa\\workspace-practice-sixth-20261030\\source\\data\\qa\\source-course-browser-1793313418577-77332\\native-path-probe\\classroom-visuals\\classroom_visual_00000000-0000-4000-8000-000000000001\\staging-00000000-0000-4000-8000-000000000002\\browser-fixture.png"
+    },
+    {
+      "path": "data\\qa\\np-practice-sixth\\classroom-visuals\\classroom_visual_00000000-0000-4000-8000-000000000001\\staging-00000000-0000-4000-8000-000000000002\\browser-fixture.png",
+      "characters": 193,
+      "success": true,
+      "bytes": 16049
+    }
+  ]
+}

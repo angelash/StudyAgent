@@ -1,0 +1,26 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T22:20:22.892Z",
+    "duration": 38739.984,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "conversation practice workspace: actual parent source, three groups and six learner answers retain original reasons and help",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 23551,
+          "failure": true
+        }
+      ]
+    }
+  ],
+  "sanitization": "Only test titles, source locations, statuses, durations and failure presence. Private traces, cookies, generated accounts, request bodies and local storage remain in the local QA snapshot."
+}

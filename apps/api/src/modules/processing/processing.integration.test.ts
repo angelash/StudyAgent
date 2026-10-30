@@ -84,7 +84,10 @@ describe('resumable managed uploads and import task API', () => {
     const retried = await call('post', `/admin/processing/tasks/${job.taskId}/retry`, { expectedVersion: cancelled.version });
     expect(retried.state).toBe('queued'); expect(retried.generation).toBe(2);
     expect((await call('get', `/admin/question-import-jobs/${job.id}`)).status).toBe('pending');
-    await call('post', '/admin/processing/handwriting-preview', { fileId: file.id, requestKey: 'pdf-not-image' }, admin, 400);
+    const previousProcessor = process.env.STUDY_HANDWRITING_PROCESSOR;
+    process.env.STUDY_HANDWRITING_PROCESSOR = join(dir, 'validation-only-processor.py');
+    try { await call('post', '/admin/processing/handwriting-preview', { fileId: file.id, requestKey: 'pdf-not-image' }, admin, 400); }
+    finally { if (previousProcessor === undefined) delete process.env.STUDY_HANDWRITING_PROCESSOR; else process.env.STUDY_HANDWRITING_PROCESSOR = previousProcessor; }
   });
 
   it('preserves extraction evidence when correcting candidates and keeps source permission separate from candidate review', async () => {

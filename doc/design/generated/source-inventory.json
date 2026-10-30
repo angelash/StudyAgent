@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "099ed99a8f3fda10b4c1d382b4dfea47e0463aa4",
+  "sourceRevision": "a4611de5f1ae22d0740fea73ae22818b1ba4c838",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 480,
@@ -15,8 +15,8 @@
     "contractTypes": 438,
     "webPages": 36,
     "webRouteHandlers": 1,
-    "apiTestFiles": 220,
-    "browserTestFiles": 49
+    "apiTestFiles": 221,
+    "browserTestFiles": 50
   },
   "modules": [
     {
@@ -28927,7 +28927,7 @@
         },
         {
           "name": "render",
-          "line": 760,
+          "line": 761,
           "signature": "render(user: InMemoryUserAccount, id: string, questionId: string, auth?: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -28940,7 +28940,7 @@
         },
         {
           "name": "practiceDraftState",
-          "line": 772,
+          "line": 773,
           "signature": "practiceDraftState(session: PracticeSession, questionId: string, actorId: string, auth?: InMemoryAuthSession)",
           "access": "private",
           "decorators": [],
@@ -28952,7 +28952,7 @@
         },
         {
           "name": "orderedPracticeAttempts",
-          "line": 780,
+          "line": 781,
           "signature": "orderedPracticeAttempts(session: PracticeSession, questionId?: string)",
           "access": "private",
           "decorators": [],
@@ -28962,7 +28962,7 @@
         },
         {
           "name": "draft",
-          "line": 785,
+          "line": 786,
           "signature": "draft(user: InMemoryUserAccount, id: string, questionId: string, input: unknown, auth?: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -28977,7 +28977,7 @@
         },
         {
           "name": "assistantPracticeCanWrite",
-          "line": 802,
+          "line": 803,
           "signature": "assistantPracticeCanWrite(user: InMemoryUserAccount | undefined, session: PracticeSession, auth?: InMemoryAuthSession)",
           "access": "private",
           "decorators": [],
@@ -28985,7 +28985,7 @@
         },
         {
           "name": "assistantPracticeDraft",
-          "line": 805,
+          "line": 806,
           "signature": "assistantPracticeDraft(user: InMemoryUserAccount, session: PracticeSession, questionId: string, input: unknown, auth?: InMemoryAuthSession)",
           "access": "private",
           "decorators": [],
@@ -28996,7 +28996,7 @@
         },
         {
           "name": "assistantPracticeRecordCommand",
-          "line": 821,
+          "line": 822,
           "signature": "assistantPracticeRecordCommand(start: AssistantPracticeGroupStartRecord, kind: AssistantPracticeLearnerCommand['kind'], actorId: string, questionId: string | null, input: AssistantPracticeLearnerCommand['input'], key: string, receipt: Record<string, unknown>, providedAt = new Date().toISOString())",
           "access": "private",
           "decorators": [],
@@ -29004,7 +29004,7 @@
         },
         {
           "name": "assistantPracticeHelp",
-          "line": 828,
+          "line": 829,
           "signature": "assistantPracticeHelp(user: InMemoryUserAccount, id: string, questionId: string, value: unknown, auth?: InMemoryAuthSession): Record<string, unknown>",
           "access": "public",
           "decorators": [],
@@ -29018,7 +29018,7 @@
         },
         {
           "name": "assistantPracticeComplete",
-          "line": 851,
+          "line": 852,
           "signature": "assistantPracticeComplete(user: InMemoryUserAccount, session: PracticeSession, value: unknown, auth?: InMemoryAuthSession)",
           "access": "private",
           "decorators": [],
@@ -29030,7 +29030,7 @@
         },
         {
           "name": "assertActive",
-          "line": 868,
+          "line": 869,
           "signature": "assertActive(session: PracticeSession, user?: InMemoryUserAccount, auth?: InMemoryAuthSession)",
           "access": "private",
           "decorators": [],
@@ -29040,7 +29040,7 @@
         },
         {
           "name": "submit",
-          "line": 876,
+          "line": 877,
           "signature": "submit(user: InMemoryUserAccount, id: string, input: unknown, auth?: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -29061,7 +29061,7 @@
         },
         {
           "name": "feedback",
-          "line": 921,
+          "line": 922,
           "signature": "feedback(session: PracticeSession, attempt: PracticeAttempt)",
           "access": "private",
           "decorators": [],
@@ -29073,7 +29073,7 @@
         },
         {
           "name": "publicAttempt",
-          "line": 932,
+          "line": 933,
           "signature": "publicAttempt(attempt: PracticeAttempt)",
           "access": "private",
           "decorators": [],
@@ -29081,7 +29081,7 @@
         },
         {
           "name": "effectiveAttempt",
-          "line": 934,
+          "line": 935,
           "signature": "effectiveAttempt(attempt: PracticeAttempt): PracticeAttempt",
           "access": "public",
           "decorators": [],
@@ -29091,7 +29091,7 @@
         },
         {
           "name": "reviewScore",
-          "line": 939,
+          "line": 940,
           "signature": "reviewScore(user: InMemoryUserAccount, responseId: string, input: unknown)",
           "access": "public",
           "decorators": [],
@@ -29106,7 +29106,7 @@
         },
         {
           "name": "hint",
-          "line": 954,
+          "line": 955,
           "signature": "hint(user: InMemoryUserAccount, id: string, questionId: string, input?: unknown, auth?: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -29122,7 +29122,7 @@
         },
         {
           "name": "complete",
-          "line": 971,
+          "line": 972,
           "signature": "complete(user: InMemoryUserAccount, id: string, input?: unknown, auth?: InMemoryAuthSession)",
           "access": "public",
           "decorators": [],
@@ -29136,7 +29136,7 @@
         },
         {
           "name": "mistakes",
-          "line": 983,
+          "line": 984,
           "signature": "mistakes(user: InMemoryUserAccount, studentId: string, subject: Subject, all = false)",
           "access": "public",
           "decorators": [],
@@ -29151,7 +29151,7 @@
         },
         {
           "name": "overview",
-          "line": 1014,
+          "line": 1015,
           "signature": "overview(user: InMemoryUserAccount)",
           "access": "public",
           "decorators": [],
@@ -43896,7 +43896,7 @@
     {
       "file": "apps/api/src/modules/learning/learning.service.ts",
       "name": "promptAtomScore",
-      "line": 1044,
+      "line": 1045,
       "signature": "promptAtomScore(prompt: string, name: string)"
     },
     {
@@ -61237,6 +61237,7 @@
     "apps/api/src/infrastructure/admin-navigation.test.ts",
     "apps/api/src/infrastructure/assistant-note-recovery.integration.test.ts",
     "apps/api/src/infrastructure/assistant-note-storage.integration.test.ts",
+    "apps/api/src/infrastructure/assistant-practice-workspace.test.ts",
     "apps/api/src/infrastructure/assistant-whiteboard-reader.integration.test.ts",
     "apps/api/src/infrastructure/assistant-whiteboard-recovery.integration.test.ts",
     "apps/api/src/infrastructure/backup.integration.test.ts",
@@ -61454,6 +61455,7 @@
     "tests/e2e/answer-journeys.spec.ts",
     "tests/e2e/assistant-conversations.spec.ts",
     "tests/e2e/assistant-notes.spec.ts",
+    "tests/e2e/assistant-practice-workspace.spec.ts",
     "tests/e2e/assistant-whiteboards.spec.ts",
     "tests/e2e/chemistry.spec.ts",
     "tests/e2e/classroom-boards.spec.ts",

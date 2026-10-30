@@ -1,0 +1,120 @@
+{
+  "numTotalTests": 18,
+  "numPassedTests": 18,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "curriculum-package.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "versioned curriculum packages and instructional evidence previews and applies forward references atomically, deduplicates receipts and round-trips without version inflation",
+          "status": "passed",
+          "durationMs": 1728.8153000000002
+        },
+        {
+          "title": "versioned curriculum packages and instructional evidence rejects duplicate, missing, cyclic, cross-subject and unpublished relationships without partial writes",
+          "status": "passed",
+          "durationMs": 2209.9618999999993
+        },
+        {
+          "title": "versioned curriculum packages and instructional evidence rejects stale definitions and graph changes after preview, including individual editor saves",
+          "status": "passed",
+          "durationMs": 1302.6844999999994
+        },
+        {
+          "title": "versioned curriculum packages and instructional evidence removes omitted optional definitions, preserves old revisions and rejects stale additions",
+          "status": "passed",
+          "durationMs": 1437.982399999999
+        },
+        {
+          "title": "versioned curriculum packages and instructional evidence enforces actor, upload ownership, type and size boundaries",
+          "status": "passed",
+          "durationMs": 1313.8581999999988
+        },
+        {
+          "title": "versioned curriculum packages and instructional evidence rejects malformed UTF-8, strict-schema errors and blob tampering before any definition is applied",
+          "status": "passed",
+          "durationMs": 1455.0308999999997
+        },
+        {
+          "title": "versioned curriculum packages and instructional evidence accepts BOM and leading whitespace while still verifying the complete JSON document",
+          "status": "passed",
+          "durationMs": 1282.8117999999995
+        },
+        {
+          "title": "versioned curriculum packages and instructional evidence keeps draft teaching out of student curriculum and freezes approved guidance and practice snapshots",
+          "status": "passed",
+          "durationMs": 1377.4699
+        },
+        {
+          "title": "versioned curriculum packages and instructional evidence validates authored cards and enriches only exact unedited seed definitions",
+          "status": "passed",
+          "durationMs": 1381.2551999999996
+        }
+      ]
+    },
+    {
+      "file": "topic-whiteboard-visual-files.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "topic figure original files and native recovery decodes the actual landscape provider sample without cropping and keeps original and display bytes separately verifiable",
+          "status": "passed",
+          "durationMs": 232.97399999999993
+        },
+        {
+          "title": "topic figure original files and native recovery does not cross the legacy classroom namespace and rejects orientation that changes the declared landscape dimensions",
+          "status": "passed",
+          "durationMs": 74.91259999999988
+        },
+        {
+          "title": "topic figure original files and native recovery backs up all current schema20 image references and cold restores their original byte identities",
+          "status": "passed",
+          "durationMs": 888.6224
+        },
+        {
+          "title": "topic figure original files and native recovery applies a newer anonymous account deletion ledger to an old real bundle and physically removes the restored private image directory",
+          "status": "passed",
+          "durationMs": 1374.1448
+        }
+      ]
+    },
+    {
+      "file": "processing.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "resumable managed uploads and import task API validates metadata and roles before accepting a file",
+          "status": "passed",
+          "durationMs": 104.94900000000052
+        },
+        {
+          "title": "resumable managed uploads and import task API resumes immutable chunks and rejects different bytes or incomplete completion",
+          "status": "passed",
+          "durationMs": 106.57510000000002
+        },
+        {
+          "title": "resumable managed uploads and import task API enforces ownership and file signatures, and never allows a declared PDF to hide arbitrary bytes",
+          "status": "passed",
+          "durationMs": 39.78300000000036
+        },
+        {
+          "title": "resumable managed uploads and import task API queues quickly, deduplicates requests, keeps inputs internal and supports versioned cancel/retry",
+          "status": "passed",
+          "durationMs": 87.57210000000032
+        },
+        {
+          "title": "resumable managed uploads and import task API preserves extraction evidence when correcting candidates and keeps source permission separate from candidate review",
+          "status": "passed",
+          "durationMs": 67.13079999999991
+        }
+      ]
+    }
+  ]
+}

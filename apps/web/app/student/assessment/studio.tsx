@@ -144,6 +144,12 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
   }
 
   React.useEffect(() => {
+    // The identity boundary remounts this workspace when checking settles. Do
+    // not rewrite an inaccessible deep link in the temporary checking mount.
+    if (!identity) {
+      if (identity === null) { setLoading(false); setLoggedIn(false); }
+      return;
+    }
     let alive = true;
     (async () => {
       try {

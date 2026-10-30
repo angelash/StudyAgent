@@ -16,6 +16,7 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
   const provider=app.get(XiaojiuChatService),original=provider.structured.bind(provider),attempts=new Map();
   const originalReply=provider.reply.bind(provider),turnAttempts=new Map();
   const ordinaryReply=require('./assistant-turn-fixture.cjs').installAssistantTurnFixture(app);
+  require('./assistant-practice-fixture.cjs').installAssistantPracticeFixture(app);
   const guidanceReply=require('./guidance-model-fixture.cjs').installGuidanceModelFixture(app);
   const sourceCheckReply=require('./source-check-fixture.cjs').installSourceCheckFixture(app);
   const topicReply=require('./topic-whiteboard-fixture.cjs').installTopicWhiteboardFixture(app);

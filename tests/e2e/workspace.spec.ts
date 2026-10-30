@@ -22,8 +22,9 @@ async function account(page: Page, child = false) {
 }
 async function screenshot(page: Page, name: string) { if (!process.env.CI) { mkdirSync(evidence,{recursive:true}); await page.screenshot({path:`${evidence}/${name}.png`,fullPage:true}); } }
 
-test('course library and outline preserve navigation, panels, help and classroom back/forward', async ({page}) => {
+for(const legacy of [false,true])test('course library and outline preserve navigation, panels, help and classroom back/forward'+(legacy?' without Navigation API':''), async ({page}) => {
   test.setTimeout(100000); const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
+  if(legacy)await page.addInitScript(()=>{Object.defineProperty(window,'navigation',{configurable:true,value:undefined});});
   await page.setViewportSize({width:1645,height:954}); await account(page); await page.goto('/studio?view=courses');
   await expect(page.getByRole('heading',{name:'我的课程'})).toBeVisible();
   await expect(page.getByRole('link',{name:'打开课程：社会学概论'})).toBeVisible();
@@ -38,7 +39,7 @@ test('course library and outline preserve navigation, panels, help and classroom
   await page.getByRole('tab',{name:'单元',exact:true}).click();await page.getByRole('button',{name:/查看学习目标：/}).first().click();
   await expect(page.getByRole('dialog',{name:'微课学习目标'})).toBeVisible();await page.keyboard.press('Escape');await expect(page.getByRole('dialog')).toHaveCount(0);
   await page.locator('.cl-learn').first().click();await expect(page.locator('.cl-room')).toBeVisible();await expect(page).toHaveURL(/lesson=/);
-  await page.goBack();await expect(page.locator('.cl-unit-nav button').nth(2)).toHaveAttribute('data-active','true');
+  await page.evaluate(()=>history.back());const exit=page.getByRole('dialog',{name:'离开课堂确认',exact:true});await expect(exit).toBeVisible();await exit.getByRole('button',{name:'保存并离开',exact:true}).click();await expect(page.locator('.cl-unit-nav button').nth(2)).toHaveAttribute('data-active','true');
   await page.goForward();await expect(page.locator('.cl-room')).toBeVisible();
   await page.getByRole('button',{name:'离开课堂',exact:true}).click();await page.getByRole('button',{name:'保存并离开'}).click();
   await expect(page.locator('.cl-unit-nav button').nth(2)).toHaveAttribute('data-active','true');

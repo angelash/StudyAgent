@@ -1,0 +1,146 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T23:38:03.787Z",
+    "duration": 117578.20300000001,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "conversation practice workspace: actual parent source, three groups and six learner answers retain original reasons and help",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 12317,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: lost creation and arrangement replies keep exact original commands across reload",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6327,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: a lost learner answer keeps the original reason separate from later local edits",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7106,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: denied storage requires a complete answer and reason download before switching questions",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7043,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: progressive help and a correction keep the learner first answer and reason unchanged",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8041,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: a second tab compares both complete drafts instead of overwriting the first save",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8241,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: real image and PCM audio uploads stay attached to the original learner question and remain pending review",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 9032,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: browser back without Navigation API preserves the complete current-question input",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6677,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: a revoked learner entry clears server projection and rejects a conflicting child link",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6724,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "course library and outline preserve navigation, panels, help and classroom back/forward",
+      "file": "workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "failed",
+          "durationMs": 20053,
+          "failure": true
+        }
+      ]
+    },
+    {
+      "title": "calendar supports real date navigation, edit, confirmation, completion, export and batch lifecycle",
+      "file": "workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7702,
+          "failure": false
+        }
+      ]
+    }
+  ],
+  "sanitization": "Only test titles, source locations, statuses, durations and failure presence. Private traces, cookies, generated accounts, request bodies and local storage remain in the local QA snapshot."
+}

@@ -1,0 +1,6 @@
+{
+  "path": "tests/e2e/assistant-practice-workspace.spec.ts",
+  "before": "8297c403e5223f6ecef91de2f4711cefec7dc2d5a1189ab546a1280a2771177e",
+  "after": "27763f7327cd3481adc315188b204608b6c4d4dd3bed96c6518057557168c84d",
+  "reason": "Read the actual frozen parent preview packet answer order; do not assume joint selection preserves fixture insertion order."
+}

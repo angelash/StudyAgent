@@ -1,0 +1,15 @@
+{
+  "scope": "Wait for real identity-boundary remount before reopening the assistant; support an explicitly bounded short native-runtime directory. Application source and build remain unchanged.",
+  "files": [
+    {
+      "path": "tests/e2e/assistant-conversations.spec.ts",
+      "beforeSha256": "ed2dd9b8f2ce84a161c842971541c9cb159f9fa94607e11b0bbb02844a65c73a",
+      "afterSha256": "286934b44c262678eb86c6cdddaf00585ab8909dfb1018ed38a1d90da580772b"
+    },
+    {
+      "path": "scripts/qa/run-source-course-browser.cjs",
+      "beforeSha256": "9466ab58e95281af3f071591b880b0c5555d3c4236cf454cd428d5867c1932e7",
+      "afterSha256": "2852d1f97e3e08e1abda48811450cb2b610232bc080a4096012c9ded0017e150"
+    }
+  ]
+}

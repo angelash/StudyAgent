@@ -115,16 +115,16 @@ for(const protocol of ['classroom-lecture-v1','classroom-lecture-v2'])test('lect
 test('lecture-assistant: failed initialization after a child change cannot retain the previous active session', async ({ page }) => {
   test.setTimeout(120000); const actor = await login(page), children:Array<{id:string}> = [];
   for (const nickname of ['匿名档案甲', '匿名档案乙']) children.push((await call(actor, '/students', { nickname, grade: 3, preferredSessionMinutes: 15, defaultVersionMap: { math: '', chinese: '', english: '' } })).profile);
-  await page.goto('/studio'); await expect(page.getByRole('combobox', { name: '学习档案', exact: true }).locator('option')).toHaveCount(2);await page.getByRole('combobox',{name:'学习档案',exact:true}).selectOption(children[0].id);await expect(page.getByRole('combobox', { name: '学习档案', exact: true })).toHaveValue(children[0].id); await page.getByRole('button', { name: 'Instant Assistance', exact: true }).click();
+  await page.goto('/studio'); await expect(page.getByRole('combobox', { name: '学习对象', exact: true }).locator('option')).toHaveCount(3);await page.getByRole('combobox',{name:'学习对象',exact:true}).selectOption(children[0].id);await expect(page.getByRole('combobox', { name: '学习对象', exact: true })).toHaveValue(children[0].id); await page.getByRole('button', { name: 'Instant Assistance', exact: true }).click();
   await expect(input(page)).toBeEnabled(); await input(page).fill('只属于匿名档案甲的未发送草稿。'); const posts: string[] = [];
   page.on('request', request => { if (request.method() === 'POST' && /\/ai\/assistant\/sessions\/[^/?]+\/turns$/.test(request.url())) posts.push(request.url()); });
   await page.route(/\/ai\/assistant\/sessions$/, async route => {
     if (route.request().method() === 'POST' && route.request().postDataJSON().studentId === children[1].id) await route.fulfill({ status: 503, contentType: 'application/json', body: JSON.stringify({ data: null, error: { code: 'synthetic_unavailable', message: '匿名上下文初始化暂不可用' }, meta: {} }) });
     else await route.continue();
   });
-  await page.getByRole('combobox', { name: '学习档案', exact: true }).selectOption(children[1].id); await expect(page.getByText('匿名上下文初始化暂不可用', { exact: true })).toBeVisible();
+  await page.getByRole('combobox', { name: '学习对象', exact: true }).selectOption(children[1].id); await expect(page.getByText('匿名上下文初始化暂不可用', { exact: true })).toBeVisible();
   await expect(input(page)).toBeDisabled(); expect(posts).toEqual([]);
-  await page.getByRole('combobox', { name: '学习档案', exact: true }).selectOption(children[0].id); await expect(input(page)).toHaveValue('只属于匿名档案甲的未发送草稿。');
+  await page.getByRole('combobox', { name: '学习对象', exact: true }).selectOption(children[0].id); await expect(input(page)).toHaveValue('只属于匿名档案甲的未发送草稿。');
   await page.unrouteAll({ behavior: 'wait' });
 });
 
@@ -177,8 +177,8 @@ test('lecture-assistant: changing the selected learner fences a late whiteboard 
   page.on('request',request=>{if(request.method()==='POST'&&/\/learning\/studio\/whiteboards$/.test(request.url()))saves.push(request.url());});
   await page.route('**/api/learning/studio/whiteboards/preview',async route=>{const response=await route.fetch();expect(response.ok()).toBe(true);captured=true;await gate;try{await route.fulfill({response});}catch{/* The previous learner's client was aborted. */}finally{returned=true;}});
   try{await page.getByRole('button',{name:'预览白板主题',exact:true}).click();await expect.poll(()=>captured).toBe(true);await expect(input(page)).toBeDisabled();
-    await page.getByRole('combobox',{name:'学习档案',exact:true}).selectOption(children[1].id);await expect(input(page)).toBeEnabled();release();await expect.poll(()=>returned).toBe(true);
-    await expect(page.locator('.sa-whiteboard-preview-modal')).toHaveCount(0);await expect(page.getByRole('combobox',{name:'学习档案',exact:true})).toHaveValue(children[1].id);await expect(input(page)).toHaveValue('');expect(saves).toEqual([]);
+    await page.getByRole('combobox',{name:'学习对象',exact:true}).selectOption(children[1].id);await expect(input(page)).toBeEnabled();release();await expect.poll(()=>returned).toBe(true);
+    await expect(page.locator('.sa-whiteboard-preview-modal')).toHaveCount(0);await expect(page.getByRole('combobox',{name:'学习对象',exact:true})).toHaveValue(children[1].id);await expect(input(page)).toHaveValue('');expect(saves).toEqual([]);
   }finally{release();}
 });
 
