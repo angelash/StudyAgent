@@ -2,6 +2,7 @@ import { assertAssistantPracticeArtifact } from './assistant-practice-record';
 import { assertAssistantPracticeAssignment, assignmentPayload, assignmentPublisherFingerprint } from './assistant-practice-assignment-record';
 import { topicWhiteboardDigest as digest } from './topic-whiteboard-digest';
 import { assertAssistantPracticeLearnerRecords } from './assistant-practice-learner-integrity';
+import { assertAssistantPracticeWithdrawal } from './assistant-practice-withdrawal-record';
 
 type Row = { collection: string; record_id?: string; body: unknown };
 /** Cold semantic checks never grant live access or turn a private candidate into a learner response. */
@@ -13,7 +14,7 @@ export function assertAssistantPracticeRecords(rows: Row[]) {
     const saved = rows.filter(row => row.collection === 'assistantPracticeArtifacts');
     const assignments = rows.filter(row => row.collection === 'assistantPracticeAssignments');
     const decoded = rows.map(row => ({ ...row, body: typeof row.body === 'string' ? JSON.parse(row.body) : row.body as any }));
-    if (!saved.length && !assignments.length && !decoded.some(row => row.collection === 'assistantPracticeGroupStarts'
+    if (!saved.length && !assignments.length && !decoded.some(row => row.collection === 'assistantPracticeAssignmentWithdrawals' || row.collection === 'assistantPracticeGroupStarts'
       || row.collection === 'practiceSessions' && (row.body.origin === 'assistant_artifact' || row.body.sourceGroupId || row.body.assistantAssignmentId)
       || row.collection === 'practiceAttempts' && row.body.assistantInput || row.collection === 'practiceHints' && row.body.sourceGroupId)) return;
     const sessions = new Map(decoded.filter(row => row.collection === 'assistantSessions').map(row => [row.body.id, row.body]));
@@ -57,6 +58,54 @@ export function assertAssistantPracticeRecords(rows: Row[]) {
           && !item.body.erasedStudentHashes.includes(childHash)
           && (item.body.retainedStudentHashes.includes(childHash) || row.publisherRole === 'admin'));
         if (!deletion) throw Error();
+      }
+    }
+    phase = 'assignment-withdrawals';
+    const withdrawals = new Set<string>(), withdrawalAssignments = new Set<string>(), withdrawalRequests = new Set<string>();
+    for (const entry of decoded.filter(row => row.collection === 'assistantPracticeAssignmentWithdrawals')) {
+      const original = assignments.find(item => (typeof item.body === 'string' ? JSON.parse(item.body) : item.body as any).id === entry.body.assignmentId);
+      if (!original) throw Error();
+      const assignment = assertAssistantPracticeAssignment(typeof original.body === 'string' ? JSON.parse(original.body) : original.body);
+      const row = assertAssistantPracticeWithdrawal(entry.body, assignment), key = JSON.stringify([row.actorFingerprint, row.requestKey]);
+      if (entry.record_id !== undefined && entry.record_id !== row.id || withdrawals.has(row.id)
+        || withdrawalAssignments.has(row.assignmentId) || withdrawalRequests.has(key) || !students.has(row.studentId)) throw Error();
+      withdrawals.add(row.id); withdrawalAssignments.add(row.assignmentId); withdrawalRequests.add(key);
+      if (row.actorUserId !== null) {
+        if (!users.has(row.actorUserId) || assignmentPublisherFingerprint(row.actorUserId) !== row.actorFingerprint) throw Error();
+      } else {
+        const childHash = digest({ id: row.studentId });
+        const deletion = decoded.some(item => item.collection === 'privacyRequests' && item.body.kind === 'account_delete'
+          && typeof item.body.actorId === 'string' && assignmentPublisherFingerprint(item.body.actorId) === row.actorFingerprint
+          && item.body.subjectHash === digest({ id: item.body.actorId })
+          && Array.isArray(item.body.retainedStudentHashes) && Array.isArray(item.body.erasedStudentHashes)
+          && !item.body.erasedStudentHashes.includes(childHash)
+          && (item.body.retainedStudentHashes.includes(childHash) || row.actorRole === 'admin'));
+        if (!deletion) throw Error();
+      }
+      const deadline = Date.parse(row.withdrawnAt);
+      const beforeWithdrawal = (value: unknown) => {
+        if (typeof value !== 'string' || !Number.isFinite(Date.parse(value)) || Date.parse(value) > deadline) throw Error();
+      };
+      const starts = decoded.filter(item => item.collection === 'assistantPracticeGroupStarts' && item.body.assignmentId === row.assignmentId);
+      const practiceIds = new Set(starts.map(item => item.body.practiceSessionId));
+      for (const item of starts) {
+        beforeWithdrawal(item.body.createdAt);
+        for (const command of item.body.commands) beforeWithdrawal(command.providedAt);
+      }
+      for (const item of decoded.filter(item => item.collection === 'practiceSessions' && practiceIds.has(item.body.id))) {
+        if (item.body.completedAt !== null) beforeWithdrawal(item.body.completedAt);
+        for (const draft of Object.values(item.body.drafts ?? {}) as any[]) {
+          beforeWithdrawal(draft.savedAt);
+          for (const command of draft.draftCommands ?? []) beforeWithdrawal(command.savedAt);
+        }
+      }
+      for (const item of decoded.filter(item => practiceIds.has(item.body.sessionId))) {
+        if (item.collection === 'practiceAttempts') beforeWithdrawal(item.body.submittedAt);
+        if (item.collection === 'practiceHints') beforeWithdrawal(item.body.at);
+        if (item.collection === 'studentMedia') {
+          beforeWithdrawal(item.body.createdAt);
+          if (item.body.status === 'ready') beforeWithdrawal(item.body.completedAt);
+        }
       }
     }
     phase = 'learner-records';

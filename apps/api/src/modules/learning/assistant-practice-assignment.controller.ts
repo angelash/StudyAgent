@@ -11,4 +11,7 @@ export class AssistantPracticeAssignmentController {
   }
   @Get('assignments') list(@Req() req: AuthenticatedRequest, @Query() query: unknown) { return this.assignments.list(req.user, query, req.authSession); }
   @Get('assignments/:id') get(@Req() req: AuthenticatedRequest, @Param('id') id: string) { return this.assignments.get(req.user, id, req.authSession); }
+  @Post('assignments/:id/withdraw') withdraw(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() body: unknown) {
+    return this.assignments.withdraw(req.user, id, body, req.authSession);
+  }
 }

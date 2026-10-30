@@ -1,0 +1,36 @@
+{
+  "numTotalTests": 5,
+  "numPassedTests": 4,
+  "numFailedTests": 1,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 2,
+  "suites": [
+    {
+      "file": "assistant-practice-withdrawal.integration.test.ts",
+      "status": "failed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "immutable teaching assignment withdrawal HTTP and native recovery withdraws all unstarted groups once without changing the immutable arrangement or private creation receipt",
+          "status": "passed"
+        },
+        {
+          "title": "immutable teaching assignment withdrawal HTTP and native recovery checks actual guardian authority and strict inputs before replaying a known successful withdrawal",
+          "status": "passed"
+        },
+        {
+          "title": "immutable teaching assignment withdrawal HTTP and native recovery keeps original starts, saves, first answers, help and completed receipts readable while stopping new writes",
+          "status": "passed"
+        },
+        {
+          "title": "immutable teaching assignment withdrawal HTTP and native recovery serializes same-key and different-guardian races across two actual application instances",
+          "status": "passed"
+        },
+        {
+          "title": "immutable teaching assignment withdrawal HTTP and native recovery prevents an actual late PNG normalization from publishing a writable attachment after withdrawal",
+          "status": "failed"
+        }
+      ]
+    }
+  ]
+}

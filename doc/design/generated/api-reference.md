@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`a4611de5f1ae22d0740fea73ae22818b1ba4c838`。共 480 个 HTTP 路由声明，当前 AppModule 可达 459 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`2f9507bf6f26f4e56f85f2c957178a4cf5d4c4fa`。共 481 个 HTTP 路由声明，当前 AppModule 可达 460 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -1324,6 +1324,15 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.assignments.get`
+
+### POST /api/learning/assistant-practice/assignments/:id/withdraw
+
+实现：[apps/api/src/modules/learning/assistant-practice-assignment.controller.ts:14](../../../apps/api/src/modules/learning/assistant-practice-assignment.controller.ts#L14)，方法 `withdraw`。
+
+- 签名：`withdraw(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.assignments.withdraw`
 
 ## AssistantPracticeLearnerController — 当前接入
 

@@ -18,6 +18,7 @@ import { assertAssistantPracticeLearner, assistantPracticeSessionRelation } from
 import { stableAssistantWhiteboardOrigin } from './assistant-whiteboard-source';
 import { LearningService, studyDay } from './learning.service';
 import { topicWhiteboardDigest as digest } from './topic-whiteboard-digest';
+import { assignmentWithdrawal } from './assistant-practice-withdrawal-record';
 
 @Injectable()
 export class AssistantPracticeLearnerService {
@@ -95,6 +96,7 @@ export class AssistantPracticeLearnerService {
       }
       if (this.store.find('assistantPracticeGroupStarts', { assignmentId, atomId })) throw new ConflictException('这一组已经开始，请打开安排中的原训练；没有另建活动');
       if (input.assignmentFingerprint !== assignment.payloadFingerprint) throw new ConflictException('安排版本已变化，请先核对完整教学内容');
+      if (assignmentWithdrawal(this.store, assignment)) throw new ConflictException('原教学安排已撤回，不能再开始新的组；已开始记录仍可查看');
       assertCourseAssessmentAvailable(this.store, assignment.studentId, 'student'); this.assertSourceCurrent(assignment);
       const group = this.assertGroupCurrent(user, assignment, atomId), now = new Date().toISOString(), id = this.store.nextId('assistant-practice-group'), sessionId = this.store.nextId('practice');
       const groupFingerprint = digest(group), receipt = { assignmentId, atomId, sessionId, groupFingerprint, at: now };
@@ -123,6 +125,7 @@ export class AssistantPracticeLearnerService {
       }
       try {
         assertAssistantPracticeLearner(this.store, this.students, user, assignment.studentId, auth);
+        if (assignmentWithdrawal(this.store, assignment)) throw new ConflictException('原教学安排已撤回，不能再开始新的组');
         assertCourseAssessmentAvailable(this.store, assignment.studentId, 'student'); this.assertSourceCurrent(assignment); this.assertGroupCurrent(user, assignment, atomId);
         return { atomId, sessionId: null, status: 'not_started' as const, canStart: true, blocked: null };
       } catch (error) {

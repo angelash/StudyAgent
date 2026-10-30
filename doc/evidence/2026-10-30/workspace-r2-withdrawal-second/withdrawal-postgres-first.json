@@ -1,0 +1,91 @@
+{
+  "numTotalTests": 17,
+  "numPassedTests": 17,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numFailedTestSuites": 0,
+  "suites": [
+    {
+      "file": "schema25-reader.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "sqlite actual schema24 reader fence for schema25 migrates actual24 without rewriting business records and the unmodified old reader refuses25 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema24 reader fence for schema25 migrates an actual23 database through24 and25 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema24 reader fence for schema25 rolls back the25 marker and its migration together and leaves the24 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema24 reader fence for schema25 rejects unknown future26 and mismatched or incomplete25 markers without resetting them",
+          "status": "passed"
+        },
+        {
+          "title": "sqlite actual schema24 reader fence for schema25 restores a native24 bundle with its old marker, upgrades explicitly and restores native25 with the new minimum reader",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema24 reader fence for schema25 migrates actual24 without rewriting business records and the unmodified old reader refuses25 before any write",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema24 reader fence for schema25 migrates an actual23 database through24 and25 with its original business rows intact",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema24 reader fence for schema25 rolls back the25 marker and its migration together and leaves the24 reader usable",
+          "status": "passed"
+        },
+        {
+          "title": "postgres actual schema24 reader fence for schema25 rejects unknown future26 and mismatched or incomplete25 markers without resetting them",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "assistant-practice-withdrawal.integration.test.ts",
+      "status": "passed",
+      "loadFailure": false,
+      "tests": [
+        {
+          "title": "immutable teaching assignment withdrawal HTTP and native recovery withdraws all unstarted groups once without changing the immutable arrangement or private creation receipt",
+          "status": "passed"
+        },
+        {
+          "title": "immutable teaching assignment withdrawal HTTP and native recovery checks actual guardian authority and strict inputs before replaying a known successful withdrawal",
+          "status": "passed"
+        },
+        {
+          "title": "immutable teaching assignment withdrawal HTTP and native recovery keeps original starts, saves, first answers, help and completed receipts readable while stopping new writes",
+          "status": "passed"
+        },
+        {
+          "title": "immutable teaching assignment withdrawal HTTP and native recovery serializes same-key and different-guardian races across two actual application instances",
+          "status": "passed"
+        },
+        {
+          "title": "immutable teaching assignment withdrawal HTTP and native recovery prevents an actual late PNG normalization from publishing a writable attachment after withdrawal",
+          "status": "passed"
+        },
+        {
+          "title": "immutable teaching assignment withdrawal HTTP and native recovery cold restores withdrawal, original reasons and original acknowledgements through the native database bundle",
+          "status": "passed"
+        },
+        {
+          "title": "immutable teaching assignment withdrawal HTTP and native recovery rejects reassigned or falsely anonymized withdrawal records even after native bundle hashes are recomputed",
+          "status": "passed"
+        },
+        {
+          "title": "immutable teaching assignment withdrawal HTTP and native recovery exports only shared withdrawal reasons and reapplies the latest author and child deletion ledgers to an old bundle",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

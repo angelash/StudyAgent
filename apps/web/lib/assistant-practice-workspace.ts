@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { assistantReviewedPracticeCreateSchema,assistantReviewedPracticeEditSchema,assistantPracticeAssignSchema,assistantPracticeGroupStartSchema,assistantPracticeLearnerDraftSchema,assistantPracticeLearnerResponseSchema,assistantPracticeHelpSchema,assistantPracticeCompleteSchema,studentAnswerPayloadSchema,answerDraftFenceSchema,type AssistantArtifactOrigin,type AnswerDraftState,type KnowledgeAtom,type LearningScope,type PracticeAttempt,type QuestionRenderPayload,type StudentAnswerPayload,type Subject } from '@study-agent/contracts';
 import { learningContextIssue } from './learning-context';
+import { assistantPracticeAssignmentWithdrawSchema } from '@study-agent/contracts';
 
 const id=z.string().min(1).max(180),subject=z.enum(['math','chinese','english','chemistry']);
 const fence=answerDraftFenceSchema.extend({protocol:z.literal('answer-draft-v2'),savedAt:z.string().nullable(),editable:z.boolean(),hasSubmission:z.boolean()}).strict();
@@ -29,6 +30,13 @@ export type PreparationCopy=z.infer<typeof preparationCopySchema>;
 export type LearnerCopy=z.infer<typeof learnerCopySchema>;
 export type LearnerPending=z.infer<typeof learnerPendingSchema>;
 export type StartCopy=z.infer<typeof startCopySchema>;
+const withdrawalReceiptSchema=z.object({withdrawalId:id,assignmentId:id,stateVersion:z.literal(1),withdrawnAt:z.string().datetime(),payloadFingerprint:z.string().regex(/^[a-f0-9]{64}$/)}).strict();
+export const withdrawalCopySchema=z.object({format:z.literal('assistant-practice-workspace-copy-v1'),phase:z.literal('withdraw'),ownerId:id,studentId:id,subject,assignmentId:id,payloadFingerprint:z.string().regex(/^[a-f0-9]{64}$/),reason:z.string().max(500),pending:assistantPracticeAssignmentWithdrawSchema.nullable(),receipt:withdrawalReceiptSchema.nullable()}).strict().superRefine((copy,context)=>{
+ if(copy.pending&&(copy.pending.assignmentFingerprint!==copy.payloadFingerprint||copy.pending.reason!==copy.reason.trim())||copy.receipt&&(copy.receipt.assignmentId!==copy.assignmentId||copy.receipt.payloadFingerprint!==copy.payloadFingerprint))context.addIssue({code:'custom',message:'原撤回操作或回执不属于这份完整副本。'});
+});
+export type WithdrawalCopy=z.infer<typeof withdrawalCopySchema>;
+export type PracticeWithdrawal={id:string;assignmentId:string;stateVersion:1;payloadFingerprint:string;reason:string;withdrawnAt:string};
+export type PracticeAssignmentState={assignmentState:'assigned'|'withdrawn';stateVersion:number;withdrawal:PracticeWithdrawal|null};
 export type PracticeLocation={studentId:string;subject:Subject;assignmentId:string;practiceId:string;questionId:string};
 export function readPracticeLocation(search:string,ownStudentId?:string):PracticeLocation{
  const issue=learningContextIssue(search);if(issue)throw Error(issue);const params=new URLSearchParams(search);
@@ -41,10 +49,10 @@ export function readPracticeLocation(search:string,ownStudentId?:string):Practic
  return {studentId:current,subject:(selected??'math') as Subject,assignmentId,practiceId,questionId};
 }
 export function practiceWorkspaceHref(location:Partial<PracticeLocation>){const params=new URLSearchParams({view:'conversation-practice'});if(location.studentId)params.set('studentId',location.studentId);if(location.subject)params.set('subject',location.subject);if(location.assignmentId)params.set('assistantAssignment',location.assignmentId);if(location.practiceId)params.set('assistantPractice',location.practiceId);if(location.questionId)params.set('question',location.questionId);return '/studio/tasks?'+params;}
-export type PracticeAssignmentSummary={id:string;studentId:string;subject:Subject;title:string;objective:string;groupCount:number;questionCount:number;payloadFingerprint:string;sourceState:string;createdAt:string};
+export type PracticeAssignmentSummary=PracticeAssignmentState&{id:string;studentId:string;subject:Subject;title:string;objective:string;groupCount:number;questionCount:number;payloadFingerprint:string;sourceState:string;createdAt:string};
 export type PracticeGroup={atomSnapshot:KnowledgeAtom;questionCount:number;questions?:Array<{question:{id:string;answer:unknown;analysis:string};payload:QuestionRenderPayload}>};
 export type PracticeAssignment=PracticeAssignmentSummary&{instructions:string;scopeSnapshot:LearningScope;profileGrade:number;groups:PracticeGroup[];groupActivities:Array<{atomId:string;sessionId:string|null;status:string;canStart:boolean;blocked:null|{code:string;message:string}}>};
 export type PracticeArtifact={id:string;studentId:string;subject:Subject;title:string;instructions:string;objective:string;revision:number;contentFingerprint:string;editable:boolean;assignmentAvailable:boolean;blocked:null|{message:string};source:{origin:AssistantArtifactOrigin;sourceFingerprint:string};selection:{messageIds:string[];includeLinkedQuestions:boolean};acknowledgeHistoricalSource:boolean;acknowledgeAudienceTransfer:boolean;groups:PracticeGroup[];profileGrade:number;scopeSnapshot:LearningScope};
-export type LearnerActivity={id:string;studentId:string;subject:Subject;status:string;assistantAssignmentId:string;atomId:string;writable:boolean;completionFingerprint:string;questions:Array<{id:string;attempted:boolean;latest:PracticeAttempt|null;attempts:number;attemptHistory:PracticeAttempt[]}>;summary:{attempted:number;total:number;teachingFirstPass:number;assistedQuestions:number;pendingReview:number};helpHistory:Array<{kind:string;questionId:string;providedAt:string}>};
+export type LearnerActivity=PracticeAssignmentState&{id:string;studentId:string;subject:Subject;status:string;assistantAssignmentId:string;atomId:string;writable:boolean;completionFingerprint:string;questions:Array<{id:string;attempted:boolean;latest:PracticeAttempt|null;attempts:number;attemptHistory:PracticeAttempt[]}>;summary:{attempted:number;total:number;teachingFirstPass:number;assistedQuestions:number;pendingReview:number};helpHistory:Array<{kind:string;questionId:string;providedAt:string}>};
 export type LearnerFeedback={attempt:PracticeAttempt;analysis:string;referenceAnswer:unknown;notice:string};
 export type LearnerQuestion={payload:QuestionRenderPayload;feedback:LearnerFeedback|null;draft:{answer:StudentAnswerPayload;learnerExplanation:string}|null;draftState:AnswerDraftState};

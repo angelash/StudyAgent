@@ -6,6 +6,7 @@ import { assertCourseAssessmentAvailable } from '../ai/assistant-course-context'
 import { captureWhiteboardActorAuthorization } from './topic-whiteboard-access';
 import { assertAssistantPracticeAssignment } from './assistant-practice-assignment-record';
 import { assertAssistantPracticeGroupStart, assertAssistantPracticeSessionLink } from './assistant-practice-learner-record';
+import { assignmentWithdrawal } from './assistant-practice-withdrawal-record';
 
 /** A guardian's preview rights are independent of a child's actual answering identity. */
 export function assertAssistantPracticeLearner(store: InMemoryStoreService, students: StudentsService,
@@ -31,6 +32,7 @@ export function assertAssistantPracticeWriter(store: InMemoryStoreService, stude
   const relation = assistantPracticeSessionRelation(store, session);
   if (relation.start.actorId !== user.id) throw new ForbiddenException('这组训练属于原作答身份，请保留历史并重新核对本人学习入口');
   if (requireActive) {
+    if (assignmentWithdrawal(store, relation.assignment)) throw new ConflictException('原教学安排已撤回，历史答案和理由保留；请读取撤回说明');
     if (session.status !== 'in_progress' || relation.assignment.status !== 'assigned') throw new ConflictException('这组训练已结束，请读取原记录并用新题核对');
     assertCourseAssessmentAvailable(store, session.studentId, 'student');
   }

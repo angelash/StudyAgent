@@ -1,5 +1,5 @@
 import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
-import { assistantPracticeAssignSchema, assistantPracticeAssignmentsQuerySchema, type AssistantPracticeAssignmentReceipt } from '@study-agent/contracts';
+import { assistantPracticeAssignSchema, assistantPracticeAssignmentsQuerySchema, assistantPracticeAssignmentWithdrawSchema, type AssistantPracticeAssignmentReceipt, type AssistantPracticeAssignmentWithdrawalReceipt } from '@study-agent/contracts';
 import { validate } from '../../common/validation';
 import { DomainWriteConflict } from '../../infrastructure/domain-write-conflict';
 import { InMemoryStoreService, type InMemoryAuthSession, type InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
@@ -8,6 +8,7 @@ import { captureWhiteboardActorAuthorization } from './topic-whiteboard-access';
 import { AssistantPracticeArtifactService } from './assistant-practice-artifact.service';
 import { AssistantPracticeLearnerService } from './assistant-practice-learner.service';
 import { topicWhiteboardDigest as digest } from './topic-whiteboard-digest';
+import { assertAssistantPracticeWithdrawal, assignmentStateView, withdrawalRequestHash, type AssistantPracticeWithdrawalRecord } from './assistant-practice-withdrawal-record';
 import { assignmentArtifactIdentity, assignmentPayload, assignmentPublisherFingerprint, assignmentRequestHash, assignmentSummary, assignmentView,
   assertAssistantPracticeAssignment, type AssistantPracticeAssignmentRecord } from './assistant-practice-assignment-record';
 
@@ -70,13 +71,45 @@ export class AssistantPracticeAssignmentService {
       const found = rows.findIndex(row => row.id === cursor[4]); if (found < 0) throw new ConflictException('原列表位置已变化，请保留原件并重新读取'); start = found + 1;
     }
     const page = rows.slice(start, start + input.pageSize); page.forEach(assertAssistantPracticeAssignment);
-    return { items: page.map(assignmentSummary), nextCursor: start + page.length < rows.length
+    return { items: page.map(row => ({ ...assignmentSummary(row), ...assignmentStateView(this.store, row) })), nextCursor: start + page.length < rows.length
       ? Buffer.from(JSON.stringify(['assistant-practice-assignment-page-v1', user.id, input.studentId, input.subject, page.at(-1)!.id])).toString('base64url') : null };
   }
   get(user: InMemoryUserAccount, id: string, auth: InMemoryAuthSession) {
     const row = this.store.find('assistantPracticeAssignments', { id });
     if (!row) throw new NotFoundException('这份教学安排不存在或当前账号无法访问');
     this.authority(user, row.studentId, auth); assertAssistantPracticeAssignment(row);
-    return { ...assignmentView(row, user.role !== 'student'), ...this.learners.eligibility(user, row, auth) };
+    return { ...assignmentView(row, user.role !== 'student'), ...this.learners.eligibility(user, row, auth), ...assignmentStateView(this.store, row) };
+  }
+  async withdraw(user: InMemoryUserAccount, id: string, value: unknown, auth: InMemoryAuthSession): Promise<AssistantPracticeAssignmentWithdrawalReceipt> {
+    if (user.role !== 'parent' && user.role !== 'admin') throw new ForbiddenException('只有当前有权的监护人可以撤回教学安排');
+    const input = validate(assistantPracticeAssignmentWithdrawSchema, value), actorFingerprint = assignmentPublisherFingerprint(user.id),
+      requestHash = withdrawalRequestHash(actorFingerprint, id, input), actorRole = user.role;
+    return this.write(() => {
+      const assignment = this.store.find('assistantPracticeAssignments', { id });
+      if (!assignment) throw new NotFoundException('这份教学安排不存在或当前账号无法访问');
+      this.authority(user, assignment.studentId, auth); assertAssistantPracticeAssignment(assignment);
+      const previous = this.store.find('assistantPracticeAssignmentWithdrawals', { actorFingerprint, requestKey: input.requestKey });
+      if (previous) {
+        if (previous.requestHash !== requestHash) throw new ConflictException('原撤回请求已用于不同的安排、版本或说明');
+        assertAssistantPracticeWithdrawal(previous, assignment); return structuredClone(previous.receipt);
+      }
+      if (this.store.find('assistantPracticeAssignmentWithdrawals', { assignmentId: id }))
+        throw new ConflictException('这份安排已经撤回，请读回原撤回说明；没有重复撤回');
+      if (input.assignmentFingerprint !== assignment.payloadFingerprint) throw new ConflictException('原安排内容与撤回版本不一致，请重新核对');
+      // Order withdrawal against starts, answers, saved drafts, help and media.
+      // If an earlier in-flight write commits first, retry from its saved state.
+      this.store.select('assistantPracticeGroupStarts', { assignmentId: id });
+      for (const session of this.store.select('practiceSessions', { assistantAssignmentId: id })) {
+        this.store.select('practiceAttempts', { sessionId: session.id });
+        this.store.select('practiceHints', { sessionId: session.id });
+        this.store.select('studentMedia', { kind: 'practice', sessionId: session.id });
+      }
+      const withdrawnAt = new Date().toISOString(), withdrawalId = this.store.nextId('assistant-practice-withdrawal');
+      const receipt: AssistantPracticeAssignmentWithdrawalReceipt = { withdrawalId, assignmentId: id, stateVersion: 1, withdrawnAt, payloadFingerprint: assignment.payloadFingerprint };
+      const row: AssistantPracticeWithdrawalRecord = { id: withdrawalId, protocol: 'assistant-practice-assignment-withdrawal-v1',
+        assignmentId: id, studentId: assignment.studentId, subject: assignment.subject, payloadFingerprint: assignment.payloadFingerprint, stateVersion: 1,
+        actorUserId: user.id, actorRole, actorFingerprint, input: structuredClone(input), requestKey: input.requestKey, requestHash, withdrawnAt, receipt };
+      assertAssistantPracticeWithdrawal(row, assignment); this.store.append('assistantPracticeAssignmentWithdrawals', row); return structuredClone(receipt);
+    });
   }
 }

@@ -13,3 +13,11 @@ export const assistantPracticeAssignmentsQuerySchema = z.object({
 export type AssistantPracticeAssignmentReceipt = {
   assignmentId: string; payloadFingerprint: string; at: string;
 };
+export const assistantPracticeAssignmentWithdrawSchema = z.object({
+  expectedStateVersion: z.literal(0), assignmentFingerprint: hash,
+  reason: z.string().trim().min(5).max(500), requestKey: z.string().min(8).max(180),
+}).strict();
+export type AssistantPracticeAssignmentWithdrawInput = z.infer<typeof assistantPracticeAssignmentWithdrawSchema>;
+export type AssistantPracticeAssignmentWithdrawalReceipt = {
+  withdrawalId: string; assignmentId: string; stateVersion: 1; withdrawnAt: string; payloadFingerprint: string;
+};

@@ -9,6 +9,7 @@ import { publicTopicWhiteboard } from '../learning/topic-whiteboard-projection';
 import { publicQuestionTeachingVersion } from '../learning/whiteboard-question-teaching-versions';
 import { reviewedPracticePortableView, type AssistantPracticeArtifactRecord } from '../learning/assistant-practice-record';
 import { assignmentView, type AssistantPracticeAssignmentRecord } from '../learning/assistant-practice-assignment-record';
+import { withdrawalView, type AssistantPracticeWithdrawalRecord } from '../learning/assistant-practice-withdrawal-record';
 
 type Row = Record<string, any>;
 export type Selection = Record<string, Row[]>;
@@ -30,7 +31,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   add(result, store, 'students', row => row.id === studentId);
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'diagnosticResponses', 'diagnosticHypotheses',
-    'diagnosticPlans', 'guidanceModelSuggestions', 'reviewTasks', 'practiceSessions', 'assistantPracticeAssignments', 'assistantPracticeGroupStarts', 'paperPracticeSessions', 'paperPracticeCommands', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
+    'diagnosticPlans', 'guidanceModelSuggestions', 'reviewTasks', 'practiceSessions', 'assistantPracticeAssignments', 'assistantPracticeAssignmentWithdrawals', 'assistantPracticeGroupStarts', 'paperPracticeSessions', 'paperPracticeCommands', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
     'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomTurns', 'whiteboardQuestionTurns', 'whiteboardQuestionVisuals', 'classroomCodeDrafts', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','studioOriginalRepairs','sourceCourses','sourceCourseStages','sourceCourseChecks',
     'projectAssetUploads','projectAssets','studioCourses','studioActivities','studioStudyPlans','studioLearningPacks','studioWhiteboards','studioTopicWhiteboardDrafts','studioTopicWhiteboards','studioTopicWhiteboardVisuals','studioConnectors','studioScheduleEvents']) {
     add(result, store, name, row => row.studentId === studentId);
@@ -138,6 +139,7 @@ export function removeSelected(store: InMemoryStoreService, selection: Selection
   for (const row of rows(store, 'assistantPracticeAssignments')) if (removedUsers.has(row.publisherUserId)) {
     row.publisherUserId = null; row.privateOrigin = null; row.sourceState = 'account_deleted';
   }
+  for (const row of rows(store, 'assistantPracticeAssignmentWithdrawals')) if (removedUsers.has(row.actorUserId)) row.actorUserId = null;
   if (removedPaperPractice.size) {
     for (const row of rows(store, 'paperPracticeSessions')) if (row.origin && removedPaperPractice.has(row.origin.sessionId)) delete row.origin;
     for (const row of rows(store, 'diagnosticBlueprints')) if (row.paperReviewOrigin && removedPaperPractice.has(row.paperReviewOrigin.sessionId)) delete row.paperReviewOrigin;
@@ -176,6 +178,7 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if (name === 'assistantArtifactDrafts') result[name] = records.filter(row => allowedAssistants.has(row.sessionId))
       .map(({ ownerUserId: _owner, sessionId: _session, studentId: _student, requestKey: _key, requestHash: _hash, commands: _commands, ...row }) => row);
     else if (name === 'assistantPracticeAssignments') result[name] = records.map(row => assignmentView(row as AssistantPracticeAssignmentRecord, true));
+    else if (name === 'assistantPracticeAssignmentWithdrawals') result[name] = records.map(row => withdrawalView(row as AssistantPracticeWithdrawalRecord));
     else if (name === 'assistantPracticeGroupStarts') result[name] = records.map(row => ({ id: row.id, assignmentId: row.assignmentId,
       studentId: row.studentId, subject: row.subject, atomId: row.atomId, practiceSessionId: row.practiceSessionId,
       actorId: row.actorId, actorRole: row.actorRole, actorStudentId: row.actorStudentId, createdAt: row.createdAt,
@@ -249,6 +252,7 @@ export function anonymizeSharedAttribution(store: InMemoryStoreService, studentI
     (store as unknown as Record<string, Row[]>)[name] = rows(store, name).map(row => {
       if (!affected.has(recordId(row))) return row;
       if (name === 'assistantPracticeAssignments') return row;
+      if (name === 'assistantPracticeAssignmentWithdrawals') return row;
       if (name === 'assistantPracticeGroupStarts' || name === 'practiceSessions' && row.origin === 'assistant_artifact'
         || name === 'practiceAttempts' && row.assistantInput || name === 'practiceHints' && row.sourceGroupId) return row;
       const anonymous = replace(row) as Row;

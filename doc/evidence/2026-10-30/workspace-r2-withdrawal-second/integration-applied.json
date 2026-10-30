@@ -1,0 +1,209 @@
+{
+  "at": "2026-10-30T02:21:13.338Z",
+  "base": "2f9507bf6f26f4e56f85f2c957178a4cf5d4c4fa",
+  "files": [
+    {
+      "path": "apps/api/src/infrastructure/assistant-note-storage.integration.test.ts",
+      "mainSha256": "38f6c2b4f001e9c8b634682546d61bd2de7a3a67dacfaf166adfccbf348cd213",
+      "candidateSha256": "eaa48263c1242189ee65a9328a9572612134c52ae1c218d463b33734883b7247"
+    },
+    {
+      "path": "apps/api/src/infrastructure/assistant-whiteboard-reader.integration.test.ts",
+      "mainSha256": "05fa0c5e76eedf8416a264944a7e2b49ec1a5cc9851dafce38b2befddba3e816",
+      "candidateSha256": "d278004da862c2efb6afbd99fd50f71df2ed6f67e8e6e6e175dc8b0bc5860983"
+    },
+    {
+      "path": "apps/api/src/infrastructure/backup.integration.test.ts",
+      "mainSha256": "136080a28175eca6434956a02e163056f42994b906b5c1935a4d458f3a13ad88",
+      "candidateSha256": "0787c6a119475ec5926dacda773110e64d2437985ec089bd5ce28f29b2f30e4d"
+    },
+    {
+      "path": "apps/api/src/infrastructure/domain-database.ts",
+      "mainSha256": "3d93bfad256f12f352201037ddf6d5e42194a26b151bf8986182cafdf46085ae",
+      "candidateSha256": "b958985a2ccd0a5a8f69261ae04974c47e7328388fa4bdd4fd25e6d12bf1ee64"
+    },
+    {
+      "path": "apps/api/src/infrastructure/in-memory-store.service.ts",
+      "mainSha256": "5f684c705d63a5e4909cf6bb603392b68ada67e362af5faf1db5d15cf5c1c60a",
+      "candidateSha256": "fa5fbec0e0d867c3052377c44563abd92e9f43562518bf5c56564149401b21c7"
+    },
+    {
+      "path": "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+      "mainSha256": "ef2e76f2252b5b2625820f3c83504d1f89e7fb224450090e983bacd73d19709f",
+      "candidateSha256": "67afffbaf93b8dc8acb0b8e3f4cbc52e2dfc3195b5f1d07498b362f4ff8ea4aa"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema25-reader.integration.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "06b1cdf519adb54533ba63c16972bc1c695b399c36f4f60c1d6b108924c52cb2"
+    },
+    {
+      "path": "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+      "mainSha256": "2aacbd2e59c7c71da605fa2e7df97d7b74d3c847b0a052bb7145b6dbf02dbb3a",
+      "candidateSha256": "59267f19af7724f2d9e8ae9c7ae5b3e9451342a6fe1637f61b587c3dd88e0e09"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-postgres.integration.test.ts",
+      "mainSha256": "34fb558b544ce69b53599642ec63072322b58cac2f93d4138cb79dbabb665912",
+      "candidateSha256": "3b3be40e97489e1bdb971661f27973fb174ae550ad85b969f5d7a6cf76534a4d"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-storage.integration.test.ts",
+      "mainSha256": "c5ca08707a6a2b9f1497b62a764d55885da0854918610d75ba08be3cf89d4190",
+      "candidateSha256": "98638e1f80761e6d3d6227e3557daf85b3ba25610c1a3a837e3b7d0817d3d375"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts",
+      "mainSha256": "53185864c9286308dd1d7c71dee7953807d7a9c4527837fb78864b27d8a2061a",
+      "candidateSha256": "5a4c09fa53ca7e38179eba5004adf2de0d56cf84c21ae0e80b8612858603bfff"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-visual-storage.integration.test.ts",
+      "mainSha256": "a9d1bd183edba92fd03b3055f331347438206416b98539c7ce6f4eabe302ebc6",
+      "candidateSha256": "4cad402afcc92ffd75ba34d6231d7ce66a277a068082efd814751d82cd8832d9"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts",
+      "mainSha256": "5883c011545b9eb5f63315ab51cef00b2e2bd071026c8bf4e1afb353c39fb563",
+      "candidateSha256": "f7ead27be69cee57b8f0bf13bcfa34fb8db3a0aaa0142e8c14036aa72e683046"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts",
+      "mainSha256": "2c97c366d16adc4aa2743938d2c7213d127f03c93e16aea1b9dda427bbdabc52",
+      "candidateSha256": "9c07127376b8c201beabd622f31ff48814943227b9275aa2a8b173c3a9efe972"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts",
+      "mainSha256": "a05f323286f497e736f94c360ac16041fc0498b8bb8a56c75a8794bcaa010769",
+      "candidateSha256": "6fd616de4b4e433ce515417daa6318a4dca0ddac924133e05b16a85b90d9d2a3"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-practice-assignment.controller.ts",
+      "mainSha256": "5eaf4fe0457de3d53070482f50e73d4051cdb8b7d9880173a37add3b0b6feb35",
+      "candidateSha256": "1dcfdc9d613550a0e7b8b4bd635c4ea1719d4ae539af762a76af7cb13f2d3aa8"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-practice-assignment.service.ts",
+      "mainSha256": "16a3f40405b01ce0764ade1560440e444c24f418dbfe4e8c71f57dc925e69b6d",
+      "candidateSha256": "8052846ac53ba8487effa7ce738e08e95484753c6fe5980a41c61cf281e1bbaa"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-practice-integrity.ts",
+      "mainSha256": "9bbe8b457d63413cd1c373d2c20062f6fec1460bd4444fb870c8a7018b978578",
+      "candidateSha256": "73c7db6e6f6bb7d019ec85350379b1c08e94b4a090c6b4006556b7a4fb839f4f"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-practice-learner-policy.ts",
+      "mainSha256": "6ccc02d0cd76c026e44a87fa0b257663fd827e94926dd84b73f03f94da183422",
+      "candidateSha256": "22cf8f92edc0f59f1b93ede39bd6a7ca525ad2546f1e31a9cd51123e45b48b0a"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-practice-learner.service.ts",
+      "mainSha256": "83e8e04514ead5ae4b7b4256a972f6929844eebe02c9ecd3af6afc171860f82c",
+      "candidateSha256": "6b67bb3dc7e74efb10607bb574f7fd0795ed6355ae52a2806ec60e80fcfe861a"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-practice-withdrawal-record.ts",
+      "mainSha256": null,
+      "candidateSha256": "9424c97b465f8de6505f6cc7eb542408ce8bfa4bfabf62a53fb5ce7eacfc9144"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-practice-withdrawal.integration.test.ts",
+      "mainSha256": null,
+      "candidateSha256": "761d1539e21eaa43ae99e33bd8b9b6afcbfe29f12d47105c137be631f1b8e381"
+    },
+    {
+      "path": "apps/api/src/modules/learning/learning.service.ts",
+      "mainSha256": "3cc7bc0e8022132306a3c1e7baa8fd47013d4675fa88e9ce685d6aabb1ef829e",
+      "candidateSha256": "5490790d2fc2f3f6cb8131ecb0d478793707cc7379771c21026fa81cbd8eba90"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual-files.test.ts",
+      "mainSha256": "deebf7945425b58215a82c615de9ec8c6dc7d3f7fd8e89ea6c22acc45b5a02d4",
+      "candidateSha256": "019a631f6f2a5fee13bd102ce282857dbc3cbb43e5de916c4d0c7733f28ccdc7"
+    },
+    {
+      "path": "apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts",
+      "mainSha256": "438d19c1dee159deaa625dbb85323ca53a6d5600b12b574b4f9cd68eace919bb",
+      "candidateSha256": "4fb6507106a54c91e363c738ac8a145220381fc935d91f2b24489e566ef8f979"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+      "mainSha256": "cc3d56e9da026f6b6be3268f182b4e14f660c3d0f9211aa97b6701498a40b6c7",
+      "candidateSha256": "585cabad9fe406bd78d80d175710aaf0232d7ee9e119ccef551745f91f05fd4a"
+    },
+    {
+      "path": "apps/api/src/modules/privacy/privacy-records.ts",
+      "mainSha256": "810c41dcccc2f87888fa76f0a9984ad58e38bdc0e170bd7f08e9a028351f4131",
+      "candidateSha256": "bc36d6415b3ae703998c1aabb013c13acdcf1b6480df4624f219bea51f2c86ca"
+    },
+    {
+      "path": "apps/web/app/studio/tasks/conversation-practice.css",
+      "mainSha256": "ffe53d359f313189dace47209c3d581f388c68f3f59402d22f1737a5d596ba7d",
+      "candidateSha256": "4d1b11072fbc0b6214ac6303e933293d55787bf9e62f9ca9d4d774017cca470d"
+    },
+    {
+      "path": "apps/web/app/studio/tasks/conversation-practice.tsx",
+      "mainSha256": "c64471e9c3712e025f88a9aec53cc7ce7756fe5ceef87341bdfb84076ec3007c",
+      "candidateSha256": "c2ba76eb163838a2e3a5de6b05cb90b62f461f462cf3f327ecc26b174e910195"
+    },
+    {
+      "path": "apps/web/components/practice-withdrawal.tsx",
+      "mainSha256": null,
+      "candidateSha256": "0cddc5855d7183e310ba20101fe3abc8db0a2866efe1fb181a5f22ededdc6856"
+    },
+    {
+      "path": "apps/web/lib/assistant-practice-workspace.ts",
+      "mainSha256": "054a058a92557fa2f75e66b20ee6fb6e4669b9104f4c697f4af4a377fd3a9ccc",
+      "candidateSha256": "330aa341239415f4a1723d79685847b7c63554f68f3e5f1768b104a19b666367"
+    },
+    {
+      "path": "packages/contracts/src/assistant-practice-assignment.ts",
+      "mainSha256": "eadea17fcd6f767a28bdc2171725ab9194ded3c1ed55eba0794bf85defa967ed",
+      "candidateSha256": "a37ef8b339fd0bf8597786fd000e03b6a28bc34b950e073c9d078488bed7ec9e"
+    },
+    {
+      "path": "resources/compatibility/domain-reader-schema24-v2.json.gz",
+      "mainSha256": null,
+      "candidateSha256": "f2350d63ecbcc70c7b4b12c633b99a2f7de31aa24fbaab4df48e750746ea848e"
+    },
+    {
+      "path": "resources/compatibility/domain-reader-schema24-v2.receipt.json",
+      "mainSha256": null,
+      "candidateSha256": "93718078fbee09b85d2f08fa12859c2cd889bbc0262938f3926e5d61370abc8d"
+    },
+    {
+      "path": "scripts/operations/assistant-practice-integrity.cjs",
+      "mainSha256": "6509780a965cbd04d724b80635535b05462fe283c85e0bfcff41d8380759adc9",
+      "candidateSha256": "6a07aac14efe191bf93bc62b94107d34034a7d79fba8ffa3c34f5863fb86d4b3"
+    },
+    {
+      "path": "scripts/operations/database-reader-guard.cjs",
+      "mainSha256": "38126f43075d77162af081f32bf20fd26a1a1d2c93bc6ec5d7d0bb6ffb98bbc9",
+      "candidateSha256": "6441683c5c05559a8cbc26c3ef8c67294b68b7a4366f0e18fefa998e046c932f"
+    },
+    {
+      "path": "tests/e2e/assistant-practice-fixture.ts",
+      "mainSha256": null,
+      "candidateSha256": "dbe702eae1dfea176ccf2d321fb37da8ca60b56e28f70cbbb25cc9e9fef51b2f"
+    },
+    {
+      "path": "tests/e2e/assistant-practice-withdrawal.spec.ts",
+      "mainSha256": null,
+      "candidateSha256": "97433a9404929877cd52851a3f266974e304b6d919fed3a63b0402f806f7a465"
+    },
+    {
+      "path": "tests/e2e/assistant-practice-workspace.spec.ts",
+      "mainSha256": "ae02b55c552b499b56d7bc23630035c649b1ada3d5ff4c9bc792645ec659ab51",
+      "candidateSha256": "2da767e83a266b283b1a86c73a0bfc4af268b4c45630caf112ac560993665575"
+    }
+  ],
+  "fullBrowser": {
+    "startTime": "2026-10-30T01:27:59.462Z",
+    "duration": 3147247.5470000003,
+    "expected": 556,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

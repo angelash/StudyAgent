@@ -220,9 +220,13 @@ export class DomainDatabase {
       { name: 'assistant_practice_group_unique', collection: 'assistantPracticeGroupStarts', fields: ['assignmentId', 'atomId'] },
       { name: 'assistant_practice_group_request', collection: 'assistantPracticeGroupStarts', fields: ['actorId', 'requestKey'] },
     ], `UPDATE study_restore_guard SET state='ready-schema24',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema23';`);
-    const practiceSql = "SELECT collection,record_id,body FROM domain_records WHERE collection IN ('assistantSessions','students','users','privacyRequests','assistantPracticeArtifacts','assistantPracticeAssignments','assistantPracticeGroupStarts','practiceSessions','practiceAttempts','practiceHints','assistantTeachingPracticeSessions')";
+    const practiceSql = "SELECT collection,record_id,body FROM domain_records WHERE collection IN ('assistantSessions','students','users','privacyRequests','assistantPracticeArtifacts','assistantPracticeAssignments','assistantPracticeAssignmentWithdrawals','assistantPracticeGroupStarts','practiceSessions','practiceAttempts','practiceHints','studentMedia','assistantTeachingPracticeSessions')";
     const practiceRows = this.sqlite ? this.sqlite.prepare(practiceSql).all() : (await this.postgres!.query(practiceSql)).rows;
     assertAssistantPracticeRecords(practiceRows as Array<{ collection: string; record_id: string; body: unknown }>);
+    await this.migrateConstraints(25, [
+      { name: 'assistant_practice_withdrawal_assignment', collection: 'assistantPracticeAssignmentWithdrawals', fields: ['assignmentId'] },
+      { name: 'assistant_practice_withdrawal_request', collection: 'assistantPracticeAssignmentWithdrawals', fields: ['actorFingerprint', 'requestKey'] },
+    ], `UPDATE study_restore_guard SET state='ready-schema25',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema24';`);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now, this.sqlite && sqliteQueueKey(this.location));
     await this.tasks.open();
     this.limits = new RateLimitRepository(this.tasks, this.sqlite, this.postgres, this.now);
@@ -233,18 +237,18 @@ export class DomainDatabase {
     if (this.sqlite) {
       const table = this.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='study_restore_guard'").get();
       if (table) state = (this.sqlite.prepare('SELECT state FROM study_restore_guard WHERE id=1').get() as { state?: string } | undefined)?.state ?? 'missing';
-      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24'].includes(state)) throw new Error('Database restoration is incomplete');
+      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25'].includes(state)) throw new Error('Database restoration is incomplete');
       if (this.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='schema_migrations'").get())
         version = Number((this.sqlite.prepare('SELECT MAX(version) version FROM schema_migrations').get() as { version?: number }).version ?? 0);
     } else {
       if ((await this.postgres!.query("SELECT to_regclass('study_restore_guard') AS name")).rows[0].name)
         state = (await this.postgres!.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state ?? 'missing';
-      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24'].includes(state)) throw new Error('Database restoration is incomplete');
+      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25'].includes(state)) throw new Error('Database restoration is incomplete');
       if ((await this.postgres!.query("SELECT to_regclass('schema_migrations') AS name")).rows[0].name)
         version = Number((await this.postgres!.query('SELECT MAX(version) version FROM schema_migrations')).rows[0]?.version ?? 0);
     }
-    if (version > 24) throw new Error('unsupported_database_schema');
-    const expected = version === 24 ? 'ready-schema24' : version === 23 ? 'ready-schema23' : 'ready';
+    if (version > 25) throw new Error('unsupported_database_schema');
+    const expected = version === 25 ? 'ready-schema25' : version === 24 ? 'ready-schema24' : version === 23 ? 'ready-schema23' : 'ready';
     if (state !== undefined && state !== expected || version >= 23 && state !== expected) throw new Error('minimum_reader_guard_mismatch');
   }
 

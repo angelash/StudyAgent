@@ -1,0 +1,205 @@
+{
+  "stats": {
+    "startTime": "2026-10-30T00:07:13.572Z",
+    "duration": 172779.117,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "globalErrors": 0,
+  "tests": [
+    {
+      "title": "practice withdrawal: explicit reason and two confirmations preserve all unstarted groups and keyboard focus",
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 11027,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "practice withdrawal: a lost committed acknowledgement resumes the exact original reason and key after reload",
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7350,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "practice withdrawal: denied storage sends nothing until the complete reason and original command are downloaded",
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7319,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "practice withdrawal: parent confirmation makes the actual learner history readonly while keeping a complete unsubmitted correction",
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 11753,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "practice withdrawal: two actual tabs retain separate explanations and the losing command never borrows another success",
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8354,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "practice withdrawal: actual saved PNG and PCM audio remain readable after withdrawal while new media writes are refused",
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 14721,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "practice withdrawal: a delayed pre-withdrawal activity projection cannot reenable learner writing",
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 11423,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: actual parent source, three groups and six learner answers retain original reasons and help",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 14059,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: lost creation and arrangement replies keep exact original commands across reload",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8102,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: a lost learner answer keeps the original reason separate from later local edits",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8218,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: denied storage requires a complete answer and reason download before switching questions",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7758,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: progressive help and a correction keep the learner first answer and reason unchanged",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7812,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: a second tab compares both complete drafts instead of overwriting the first save",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 8313,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: real image and PCM audio uploads stay attached to the original learner question and remain pending review",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 9654,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: browser back without Navigation API preserves the complete current-question input",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7665,
+          "failure": false
+        }
+      ]
+    },
+    {
+      "title": "conversation practice workspace: a revoked learner entry clears server projection and rejects a conflicting child link",
+      "file": "assistant-practice-workspace.spec.ts",
+      "expected": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 7349,
+          "failure": false
+        }
+      ]
+    }
+  ]
+}

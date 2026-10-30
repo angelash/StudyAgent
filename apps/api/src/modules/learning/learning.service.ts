@@ -1,6 +1,7 @@
 import { ASSISTANT_PRACTICE_ANSWER_PROTOCOL, assistantPracticeLearnerDraftSchema, assistantPracticeLearnerResponseSchema,
   assistantPracticeHelpSchema, assistantPracticeCompleteSchema, type AssistantPracticeLearnerResponseInput } from '@study-agent/contracts';
 import { assertAssistantPracticeWriter, assistantPracticeSessionRelation } from './assistant-practice-learner-policy';
+import { assignmentStateView } from './assistant-practice-withdrawal-record';
 import { assistantPracticeCommandHash, assistantPracticeCompletionFingerprint, assistantPracticeFeedback, assistantPracticeHint,
   assistantPracticePublicAttempt, ASSISTANT_DEMONSTRATION_NOTICE, assertAssistantPracticeGroupStart,
   type AssistantPracticeGroupStartRecord, type AssistantPracticeLearnerCommand } from './assistant-practice-learner-record';
@@ -742,6 +743,7 @@ export class LearningService {
       snapshotOrigin: session.snapshotOrigin ?? 'legacy_capture',
       origin: session.origin ?? 'guidance', notebookEntryId: session.notebookEntryId ?? null,
       ...(session.origin === 'assistant_artifact' ? { assistantAssignmentId: session.assistantAssignmentId, sourceGroupId: session.sourceGroupId,
+        ...assignmentStateView(this.store, assistantPracticeSessionRelation(this.store, session).assignment),
         answerProtocol: ASSISTANT_PRACTICE_ANSWER_PROTOCOL, requiresLearnerExplanation: true, isTeachingOnly: true, formalEvidenceCreated: false,
         completionFingerprint: assistantPracticeCompletionFingerprint(session, attempts),
         writable: this.assistantPracticeCanWrite(user, session, auth),
@@ -785,8 +787,8 @@ export class LearningService {
   }
   draft(user: InMemoryUserAccount, id: string, questionId: string, input: unknown, auth?: InMemoryAuthSession) {
     const session = this.requireSession(user, id);
-    this.assertActive(session, user, auth);
     if (session.origin === 'assistant_artifact') return this.assistantPracticeDraft(user, session, questionId, input, auth);
+    this.assertActive(session, user, auth);
     if (!session.questionIds.includes(questionId)) throw new NotFoundException('题目不属于当前训练');
     const command = validate(answerDraftSaveSchema, input), { answer } = command;
     const snapshot = session.snapshots.find(item => item.id === questionId)!;
@@ -804,14 +806,22 @@ export class LearningService {
     try { if (!user) return false; assertAssistantPracticeWriter(this.store, this.students, user, session, auth); return true; } catch { return false; }
   }
   private assistantPracticeDraft(user: InMemoryUserAccount, session: PracticeSession, questionId: string, input: unknown, auth?: InMemoryAuthSession) {
-    assertAssistantPracticeWriter(this.store, this.students, user, session, auth);
+    assertAssistantPracticeWriter(this.store, this.students, user, session, auth, false);
     const command = validate(assistantPracticeLearnerDraftSchema, input), snapshot = session.snapshots.find(item => item.id === questionId);
     if (!snapshot) throw new NotFoundException('题目不属于当前教学训练');
+    const envelope = { answer: command.answer, learnerExplanation: command.learnerExplanation }, row = session.drafts?.[questionId];
+    if (row?.draftCommands?.some(item => item.actorId === user.id && item.key === command.requestKey)) {
+      // The original hash binds the complete old answer/reason/fence. Only its
+      // acknowledgement may replay after withdrawal or a later answer.
+      const current = this.practiceDraftState(session, questionId, user.id, auth);
+      return prepareAnswerDraft(row, { ...current, baseHash: command.baseHash, attempt: command.attempt },
+        { ...command, protocol: 'answer-draft-v2', answer: envelope }, user.id).receipt;
+    }
+    assertAssistantPracticeWriter(this.store, this.students, user, session, auth);
     const issue = answerProtocolIssue(snapshot.answerSchema as QuestionAnswerSchema, command.answer, true); if (issue) throw new BadRequestException(issue);
     this.media.assertAnswer(user, { kind: 'practice', sessionId: session.id, itemId: questionId }, command.answer, true, auth);
     const state = this.practiceDraftState(session, questionId, user.id, auth);
     if (!state.editable) throw new ConflictException('本题不能继续保存，请保留答案和理由并核对当前训练');
-    const envelope = { answer: command.answer, learnerExplanation: command.learnerExplanation };
     const prepared = prepareAnswerDraft(session.drafts?.[questionId], state, { ...command, protocol: 'answer-draft-v2', answer: envelope }, user.id);
     if (prepared.metadata) {
       session.drafts ??= {};
