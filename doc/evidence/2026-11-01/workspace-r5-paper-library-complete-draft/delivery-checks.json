@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-31T17:22:00.787Z",
+  "files": 77,
+  "embeddedSourceRecords": 169,
+  "patterns": [
+    "private-key",
+    "live-key",
+    "bearer-jwt",
+    "credential-url"
+  ],
+  "findings": [
+    {
+      "file": "doc\\evidence\\2026-11-01\\workspace-r5-paper-library-complete-draft\\reports\\browser-fifth-bundle.js.gz",
+      "kind": "credential-url",
+      "embedded": false
+    },
+    {
+      "file": "doc\\evidence\\2026-11-01\\workspace-r5-paper-library-complete-draft\\reports\\browser-fourth-bundle.js.gz",
+      "kind": "credential-url",
+      "embedded": false
+    },
+    {
+      "file": "doc\\evidence\\2026-11-01\\workspace-r5-paper-library-complete-draft\\reports\\browser-seventh-bundle.js.gz",
+      "kind": "credential-url",
+      "embedded": false
+    },
+    {
+      "file": "doc\\evidence\\2026-11-01\\workspace-r5-paper-library-complete-draft\\reports\\browser-sixth-bundle.js.gz",
+      "kind": "credential-url",
+      "embedded": false
+    },
+    {
+      "file": "doc\\evidence\\2026-11-01\\workspace-r5-paper-library-complete-draft\\reports\\browser-third-bundle.js.gz",
+      "kind": "credential-url",
+      "embedded": false
+    }
+  ],
+  "generatedAccountsOnly": true,
+  "rawRuntimeCredentialsIncluded": false,
+  "docs": {
+    "checked": 5132,
+    "missing": 0
+  },
+  "scopedLocalCommitOnly": true,
+  "formalDatabaseUnchanged": {
+    "schema": 24,
+    "revision": 187
+  },
+  "wholeGoal": "active"
+}
