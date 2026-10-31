@@ -1,0 +1,15 @@
+const fs = require('node:fs'), path = require('node:path'), zlib = require('node:zlib'), crypto = require('node:crypto'), { spawnSync } = require('node:child_process');
+const root = path.resolve(__dirname, '../../..'), candidate = path.join(root, 'data/qa/p182'), [batch, mode = 'types', ...suites] = process.argv.slice(2), owned = require('./owned.cjs'), sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+if (!/^[a-z0-9-]+$/.test(batch ?? '') || fs.existsSync(path.join(__dirname, batch + '.json'))) throw Error('Unused batch required');
+const source = owned.map(file => { const bytes = fs.readFileSync(path.join(candidate, file)); return { path: file, sha256: sha(bytes), data: bytes.toString('base64') }; });
+fs.writeFileSync(path.join(__dirname, batch + '-source.json.gz'), zlib.gzipSync(JSON.stringify(source)), { flag: 'wx' });
+const temporary = path.join(candidate, 'data/qa/temporary'); fs.mkdirSync(temporary, { recursive: true });
+const env = { ...process.env, TEMP: temporary, TMP: temporary, OPENAI_API_KEY: '', XIAOJIU_CHAT_ENABLED: 'false', PYTHONDONTWRITEBYTECODE: '1' };
+const steps = mode === 'test' ? [['test', process.execPath, [path.join(candidate, 'node_modules/vitest/vitest.mjs'), 'run', ...suites, '--reporter=json', '--outputFile=' + path.join(__dirname, batch + '-vitest.json')], path.join(candidate, 'apps/api')]]
+  : mode === 'python' ? [['python', 'C:/Python310/python.exe', ['-m', 'unittest', 'discover', '-s', 'scripts/assets', '-p', 'test_textbook_mapping_candidates.py', '-v'], candidate]]
+  : mode === 'web' ? [['web', process.execPath, [path.join(candidate, 'node_modules/typescript/bin/tsc'), '-p', 'apps/web/tsconfig.json', '--noEmit', '--incremental', 'false'], candidate]]
+  : [['contracts', process.execPath, [path.join(candidate, 'node_modules/typescript/bin/tsc'), '-p', 'packages/contracts/tsconfig.json'], candidate], ['config', process.execPath, [path.join(candidate, 'node_modules/typescript/bin/tsc'), '-p', 'packages/config/tsconfig.json'], candidate], ['api', process.execPath, [path.join(candidate, 'node_modules/typescript/bin/tsc'), '-p', 'apps/api/' + (mode === 'build' ? 'tsconfig.build.json' : 'tsconfig.json'), ...(mode === 'build' ? [] : ['--noEmit'])], candidate]];
+const results = [];
+for (const [name, executable, args, cwd] of steps) { const log = fs.openSync(path.join(__dirname, batch + '-' + name + '.log'), 'wx'), result = spawnSync(executable, args, { cwd, env, windowsHide: true, stdio: ['ignore', log, log], timeout: 600000 }); fs.closeSync(log); results.push({ name, exit: result.status, error: result.error?.message ?? null }); if (result.status !== 0) break; }
+const sourceUnchanged = source.every(row => sha(fs.readFileSync(path.join(candidate, row.path))) === row.sha256), report = { at: new Date().toISOString(), mode, suites, results, sourceUnchanged };
+fs.writeFileSync(path.join(__dirname, batch + '.json'), JSON.stringify(report, null, 2) + '\n', { flag: 'wx' }); console.log(JSON.stringify(report)); if (!sourceUnchanged || results.some(row => row.exit !== 0)) process.exitCode = 1;

@@ -1,0 +1,31 @@
+const fs = require('node:fs'), path = require('node:path'), crypto = require('node:crypto');
+const root = path.resolve(__dirname, '../../..'), candidate = path.join(root, 'data/qa/p181');
+const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+const files = ['apps/api/src/modules/diagnostics/textbook-registry.service.ts', 'apps/api/src/common/stream-file.ts'];
+for (const file of files) if (sha(fs.readFileSync(path.join(root, file))) !== sha(fs.readFileSync(path.join(candidate, file)))) throw Error('Baseline differs');
+const fixture = path.join(__dirname, 'baseline-fixture'); fs.mkdirSync(path.join(fixture, 'assets'), { recursive: true });
+const original = Buffer.from('%PDF-1.4\noriginal QA source\n%%EOF'), changed = Buffer.from('%PDF-1.4\nmodified QA source\n%%EOF');
+if (original.length !== changed.length) throw Error('Equal byte count required');
+const pdf = path.join(fixture, 'assets/book.pdf'), registry = path.join(fixture, 'registry.json'), manifest = path.join(fixture, 'manifest.json');
+const book = { id: 'qa-source', subject: 'chinese', grade: 3, term: 'upper', edition: 'QA source edition', title: 'Original QA source', version: 'v1', source: 'public_catalog', sourceRef: 'QA only', sourceSha256: 'a'.repeat(64), chapterState: 'available', chapters: [] };
+fs.writeFileSync(registry, JSON.stringify({ books: [book] }), { flag: 'wx' });
+fs.writeFileSync(manifest, JSON.stringify({ books: [{ id: 'source-qa', grade: 3, term: 'upper', edition: book.edition, assetPath: 'data/assets/book.pdf', sha256: sha(original), pages: 1 }] }), { flag: 'wx' });
+Object.assign(process.env, { STUDY_TEXTBOOK_REGISTRY: registry, STUDY_TEXTBOOK_SOURCE_MANIFEST: manifest, STUDY_PRIMARY_TEXTBOOK_SOURCE_MANIFEST: path.join(fixture, 'not-installed.json'), STUDY_ASSET_ROOT: path.join(fixture, 'assets'), STUDY_STORAGE: 'memory', STUDY_SEED_FOUNDATION: 'false' });
+const { TextbookRegistryService } = require(path.join(candidate, 'apps/api/dist/apps/api/src/modules/diagnostics/textbook-registry.service.js'));
+const { InMemoryStoreService } = require(path.join(candidate, 'apps/api/dist/apps/api/src/infrastructure/in-memory-store.service.js'));
+const { streamFile } = require(path.join(candidate, 'apps/api/dist/apps/api/src/common/stream-file.js'));
+(async () => {
+  const service = new TextbookRegistryService(new InMemoryStoreService()), when = new Date('2026-01-01T00:00:00Z');
+  fs.writeFileSync(pdf, original); fs.utimesSync(pdf, when, when); const before = fs.statSync(pdf);
+  await service.document(book.id); fs.writeFileSync(pdf, changed); fs.utimesSync(pdf, when, when);
+  let accepted = null, error = null; try { accepted = await service.document(book.id); } catch (e) { error = e.message; }
+  const cacheBypass = { accepted: !!accepted, returnedExpectedSha256: accepted?.sha256 ?? null, actualSha256: sha(fs.readFileSync(pdf)), sameSize: fs.statSync(pdf).size === before.size, sameMtimeMs: fs.statSync(pdf).mtimeMs === before.mtimeMs, error };
+  fs.writeFileSync(pdf, original); fs.utimesSync(pdf, when, when); const document = await service.document(book.id);
+  fs.renameSync(pdf, path.join(fixture, 'verified-original.pdf')); fs.writeFileSync(pdf, changed);
+  const headers = {}, response = { setHeader(k, v) { headers[k] = v; return this; }, once() {}, off() {}, destroyed: false, writableEnded: false };
+  const output = streamFile({ ...document, mediaType: 'application/pdf' }, undefined, response), chunks = [];
+  for await (const chunk of output.getStream()) chunks.push(chunk);
+  const streamed = Buffer.concat(chunks), reopenedPath = { headerEtag: headers.ETag, actualSha256: sha(streamed), differentBytesAccepted: sha(streamed) !== sha(original) };
+  const report = { baseline: files.map(file => ({ path: file, sha256: sha(fs.readFileSync(path.join(root, file))) })), syntheticOnly: true, manifestSha256: sha(original), cacheBypass, reopenedPath, defectsReproduced: !!accepted && cacheBypass.sameSize && cacheBypass.sameMtimeMs && reopenedPath.differentBytesAccepted };
+  fs.writeFileSync(path.join(__dirname, 'reproduce-first.json'), JSON.stringify(report, null, 2) + '\n', { flag: 'wx' }); console.log(JSON.stringify(report)); if (!report.defectsReproduced) process.exitCode = 1;
+})().catch(error => { console.error(error); process.exitCode = 1; });

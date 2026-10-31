@@ -1,12 +1,9 @@
 import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
 import { KnowledgeAtom, LearningScope, MeasurementItem, QuestionAnswerSchema, Subject,
   answerInputConfiguration, knowledgeAtomSchema, learningScopeInputSchema, measurementItemSchema, textbookMappingInputSchema } from '@study-agent/contracts';
 import { z } from 'zod';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
-import { workspaceRoot } from '../../infrastructure/workspace-paths';
 import { StudentsService } from '../students/students.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
 import { validate } from '../../common/validation';
@@ -63,7 +60,6 @@ export function assertAcyclic(atoms: KnowledgeAtom[]) {
 
 @Injectable()
 export class CurriculumService {
-  private mappingCandidates?: Map<string, { candidateAtomIds: string[]; rationale: string; evidence: unknown[]; reviewStatus: string }>;
   constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService,
     private readonly events: DomainEventBusService, readonly textbooks: TextbookRegistryService) {}
 
@@ -271,14 +267,6 @@ export class CurriculumService {
       candidate: z.enum(['all', 'with', 'without']).default('all'), source: z.enum(['all', 'matched', 'unavailable']).default('all'),
       page: z.coerce.number().int().min(1).max(10000).default(1), pageSize: z.coerce.number().int().min(1).max(100).default(40),
       bookPage: z.coerce.number().int().min(1).max(10000).default(1), bookPageSize: z.coerce.number().int().min(1).max(30).default(10) }).strict(), input);
-    if (!this.mappingCandidates) {
-      const file = resolve(workspaceRoot(), 'resources/curriculum/textbook-mapping-candidates-v1.json');
-      if (existsSync(file)) {
-        const document = JSON.parse(readFileSync(file, 'utf8')) as { rows: Array<{ bookId: string; lessonId: string; candidateAtomIds: string[];
-          rationale: string; evidence: unknown[]; reviewStatus: string }> };
-        this.mappingCandidates = new Map(document.rows.map(row => [`${row.bookId}:${row.lessonId}`, row]));
-      } else this.mappingCandidates = new Map();
-    }
     const scopedBooks = this.textbooks.all().filter(book => book.source !== 'original' && (!query.subject || book.subject === query.subject) &&
       (!query.grade || book.grade === query.grade) && (!query.term || book.term === query.term));
     const { inventory, gaps } = textbookScopeInventory(scopedBooks, book => this.textbooks.availability(book));
@@ -296,7 +284,7 @@ export class CurriculumService {
         const mapping = this.textbooks.mapping(book, lesson.id), approved = mapping?.status === 'approved' && mapping.atomIds.length > 0 &&
           mapping.atomIds.every(id => eligible.has(id));
         const state = !mapping ? 'unmapped' : mapping.status === 'approved' ? approved ? 'approved' : 'stale' : mapping.status;
-        const candidate = this.mappingCandidates.get(`${book.id}:${lesson.id}`);
+        const candidate = this.textbooks.sourceCandidate(book, lesson.id);
         const candidateAtomIds = candidate?.candidateAtomIds.filter(id => eligible.has(id)) ?? [];
         const candidateEvidence = candidate?.evidence.filter(item => {
           const atomId = item && typeof item === 'object' && 'atomId' in item ? (item as { atomId?: unknown }).atomId : undefined;
@@ -406,4 +394,15 @@ export class CurriculumService {
   }
 
   assertEditor(user: InMemoryUserAccount) { if (!['admin', 'teacher'].includes(user.role)) throw new ForbiddenException('需要教研权限'); }
+
+  /** Source hashing yields to other requests. Recheck the current native account/session before disclosing source bytes. */
+  async assertCurrentSourceEditor(request: { user: InMemoryUserAccount; authSession: { id: string } }) {
+    await this.store.requestContext(() => {
+      const actor = this.store.find('users', { id: request.user.id, status: 'active' });
+      const session = this.store.find('sessions', { id: request.authSession.id, userId: request.user.id });
+      if (!actor || actor.role !== request.user.role || !session || session.revokedAt || Date.parse(session.expiresAt) <= Date.now())
+        throw new ForbiddenException('当前教研身份或登录会话已变更，请重新登录后核对');
+      this.assertEditor(actor);
+    });
+  }
 }

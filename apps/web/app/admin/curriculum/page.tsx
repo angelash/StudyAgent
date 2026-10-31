@@ -9,6 +9,7 @@ import { TeachingEditor } from './teaching-editor';
 import { ComponentBindingEditor } from './component-binding-editor';
 import { MaterialCoverageSummary } from './material-coverage';
 import { TextbookMappingWorklist } from './mapping-worklist';
+import { TextbookLessonSourcePanel } from './lesson-source-panel';
 import { ControlledEditorialPanel } from './controlled-editorial-panel';
 import { requestControlledCopyExit } from '../../../components/controlled-copy-exit';
 import '../../student/assessment/studio.css';
@@ -35,7 +36,9 @@ export default function CurriculumPage() {
   const [userId, setUserId] = React.useState('');
   const [busy, setBusy] = React.useState(false), [notice, setNotice] = React.useState('');
   const [atom, setAtom] = React.useState<KnowledgeAtom | null>(null), [items, setItems] = React.useState<Item[]>([]), [mapping, setMapping] = React.useState<MeasurementItem | null>(null);
-  const [books, setBooks] = React.useState<BookSummary[]>([]), [bookId, setBookId] = React.useState(''), [book, setBook] = React.useState<Detail | null>(null);
+  const [books, setBooks] = React.useState<BookSummary[]>([]), [bookId, setBookId] = React.useState(''), [bookResult, setBook] = React.useState<Detail | null>(null);
+  const book = bookResult?.id === bookId && bookResult.subject === subject && bookResult.grade === grade && bookResult.term === term ? bookResult : null;
+  const [sourceViewPage, setSourceViewPage] = React.useState<{ key: string; page: number } | null>(null);
   const [lessonId, setLessonId] = React.useState(''), [mappedIds, setMappedIds] = React.useState<string[]>([]), [rationale, setRationale] = React.useState('');
   const [revisions, setRevisions] = React.useState<unknown[] | null>(null);
   const [materialFilter, setMaterialFilter] = React.useState<'all' | 'gaps' | 'ready'>('all');
@@ -44,7 +47,10 @@ export default function CurriculumPage() {
   const materialGap = (a: CoverageAtom) => a.status === 'published' && !materialReady(a);
   const selected = gradeAtoms.filter(a => materialFilter === 'all' || (materialFilter === 'ready' ? materialReady(a) : materialGap(a)));
   const lesson = book?.chapters.flatMap(c => c.lessons).find(l => l.id === lessonId);
-  const sourcePage = lesson?.sourcePageRange?.start;
+  const sourceKey = `${book?.id}:${book?.version}:${lesson?.id}`;
+  const sourcePage = sourceViewPage?.key === sourceKey ? sourceViewPage.page : lesson?.sourcePageRange?.start;
+  const showSourcePage = React.useCallback((page: number) => setSourceViewPage({ key: sourceKey, page }), [sourceKey]);
+  const sourceDenied = React.useCallback(() => { setRole('unavailable'); setData(null); setBook(null); setBooks([]); setBookId(''); setLessonId(''); setError('当前教研身份或登录会话已变更，请重新登录后核对。'); }, []);
   const sourceDocumentUrl = book?.sourceDocument?.available ? `${apiBaseUrl}/api/admin/curriculum/textbooks/${encodeURIComponent(book.id)}/document${sourcePage ? `#page=${sourcePage}&zoom=page-width` : ''}` : '';
 
   async function reload() { const overview = await req<Overview>(`/admin/curriculum/overview?subject=${subject}`); setData(overview); }
@@ -134,7 +140,9 @@ export default function CurriculumPage() {
         {book?.chapterEvidence && <p>目录由开发助手逐页对照原图核验（{book.chapterEvidence.reviewedAt}），采用本地目录标识。目录核验与教研映射审核分别进行。</p>}
         {sourceDocumentUrl && book && <section className="admin-textbook-source" aria-label="教材内审原页"><div><div><strong>{lesson ? `内审原页 · 教材印刷页 ${lesson.printedPage ?? '未标'} · ${sourcePage ? `PDF 物理页 ${sourcePage}` : '尚未建立逐课时物理页定位'}` : `内审原卷 · 目录尚未提供逐课时页范围 · 全册 ${book.sourceDocument?.pages} 页`}</strong><p>{lesson?.sourcePageRange && lesson.sourcePageRange.end !== lesson.sourcePageRange.start ? `候选覆盖 PDF 第 ${lesson.sourcePageRange.start}～${lesson.sourcePageRange.end} 页；` : ''}{lesson ? '此正文仅对教研身份开放，用于核对课时的实际内容、材料边界和知识行为；' : '可从原卷目录和正文开始核对版本、教材结构与实际内容；'}原卷校验指纹 {book.sourceDocument?.sha256.slice(0, 12)}…。</p></div><a href={sourceDocumentUrl} target="_blank" rel="noreferrer">在新窗口打开原卷 ↗</a></div><iframe key={`${book.id}:${lesson?.id ?? 'whole-book'}`} title={`${book.title}${sourcePage ? `PDF第${sourcePage}页` : 'PDF原卷'}`} src={sourceDocumentUrl} /></section>}
         {book && <div className="admin-columns"><div className="admin-lesson-list">{book.chapters.length ? book.chapters.map(c => <details key={c.id} open><summary>{c.name}</summary>{c.lessons.map(l => <button key={l.id} disabled={l.kind === 'reference'} aria-pressed={lessonId === l.id} onClick={() => { setLessonId(l.id); setMappedIds(l.mapping?.atomIds ?? l.atomIds); setRationale(l.mapping?.rationale ?? ''); }}><strong>{l.number ? `${l.number}. ` : ''}{l.name}{l.skim && '（略读）'}</strong><small>{l.printedPage ? `第${l.printedPage}页 · ` : ''}{l.kind === 'reference' ? '附录，不独立映射' : l.mappingState === 'approved' ? '已审核' : l.mappingState === 'candidate' ? '候选映射' : l.mappingState === 'stale' ? '映射需重新审核' : '待映射'} · {l.atomIds.length}点</small></button>)}</details>) : <p>原始目录未提供章节树；保留教材信息，不能虚构课时。学生可按知识点确认实际进度。</p>}</div>
-          <div>{lesson && <><h3>{lesson.name}</h3>{lesson.parts?.length ? <p>组合课包含：{lesson.parts.map(p => `${p.name}（${p.printedPage}页）`).join('、')}。子标题不单独计为课时。</p> : null}<label>关联的可观察知识点</label><div className="admin-checks">{data.atoms.filter(a => a.grade <= grade && a.status === 'published' && (a.grade < grade || a.term === 'both' || a.term === term)).map(a => <label key={a.id}><input type="checkbox" checked={mappedIds.includes(a.id)} onChange={e => setMappedIds(e.target.checked ? [...mappedIds, a.id] : mappedIds.filter(id => id !== a.id))} />{a.grade}年级 · {a.name}</label>)}</div>
+          <div>{lesson && <><h3>{lesson.name}</h3>{lesson.parts?.length ? <p>组合课包含：{lesson.parts.map(p => `${p.name}（${p.printedPage}页）`).join('、')}。子标题不单独计为课时。</p> : null}
+            {book.source !== 'original' && <TextbookLessonSourcePanel key={`${sourceKey}:${userId}`} actorId={userId} bookId={book.id} bookVersion={book.version} sourceSha256={book.sourceDocument?.sha256 ?? ''} lessonId={lesson.id} lessonName={lesson.name} range={lesson.sourcePageRange} onPage={showSourcePage} onDenied={sourceDenied} />}
+            <label>关联的可观察知识点</label><div className="admin-checks">{data.atoms.filter(a => a.grade <= grade && a.status === 'published' && (a.grade < grade || a.term === 'both' || a.term === term)).map(a => <label key={a.id}><input type="checkbox" checked={mappedIds.includes(a.id)} onChange={e => setMappedIds(e.target.checked ? [...mappedIds, a.id] : mappedIds.filter(id => id !== a.id))} />{a.grade}年级 · {a.name}</label>)}</div>
             <label>对齐依据与范围限制<textarea value={rationale} onChange={e => setRationale(e.target.value)} rows={4} maxLength={2000} placeholder="说明课时中的行为如何与知识定义相符，记录未覆盖的部分" /></label>
             <div className="admin-toolbar">{([['candidate','保存候选'], ['approved','审核通过'], ['rejected','拒绝映射']] as const).map(([status,title]) => <button key={status} className={status === 'approved' ? 'studio-primary' : 'studio-secondary'} disabled={busy || !mappedIds.length || rationale.trim().length < 8} onClick={() => act(async () => { await req('/admin/curriculum/textbook-mappings', { bookId, lessonId, atomIds: mappedIds, status, rationale }); setBook(await req<Detail>(`/admin/curriculum/textbooks/${encodeURIComponent(bookId)}`)); await reload(); })}>{title}</button>)}</div>
           </>}</div></div>}

@@ -1,5 +1,7 @@
 # 逐项需求与验收账本
 
+2026-11-01逐课来源：XP-F01/F03/F05与WS09/WS12沿[180协议](../180-textbook-lesson-source-and-teaching-package-pipeline.md)接准确来源、完整逐页文字与原工作台核对，见[本批证据](../../evidence/2026-11-01/workspace-r6-lesson-source/receipt.json)。523行仍为未批准候选，内容生产、完整教学包与教师/全教材/GESP及原所有真实条件继续；原72保持11 implemented/50 in_progress/11 planned/0 verified，WS不提升。
+
 状态口径：planned待实施；in_progress开发中；implemented已接入但验收不足；verified当前证据满足本条全部要求；blocked存在具体外部依赖。下面状态针对本轮完整目标，已有部分基础不自动等于verified。实现与证据在[实施记录](implementation-log.md)持续追加。
 
 2026-10-29入口调整：[149工作台方案](../149-workspace-centered-interaction-restructuring-proposal.md)已采用并纳入[150完整执行计划](../150-integrated-delivery-plan-and-work-ledger.md)。原72编号、完整条件与11/50/11/0状态保持；旧learn/parent/student地址作为兼容验收，主载体统一为工作台。新增WS01～WS12单独列账，初始均planned，不混入72计数。先提交计划，再推进整改与全部余项。

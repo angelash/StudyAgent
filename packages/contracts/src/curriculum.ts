@@ -42,6 +42,16 @@ export type TextbookScopeBookGaps = {
   total: number; page: number; pageSize: number; rows: TextbookScopeBookGap[];
 };
 
+/** Editor-only, exact source bytes and extraction identity; never a teaching approval. */
+export type TextbookLessonSource = {
+  bookId: string; bookVersion: string; lessonId: string; lessonName: string;
+  sourceBookId: string; sourceSha256: string; extractedSha256: string; lessonFingerprint: string;
+  fingerprint: string; locatorStatus: 'candidate_needs_review'; contentReview: 'not_reviewed';
+  pageRange: { start: number; end: number }; sourcePages: number; titleMatched: boolean;
+  page: number; text: string; textCharacters: number; extractionStatus: 'text_present' | 'no_text';
+  notice: string;
+};
+
 export const textbookMappingInputSchema = z.object({
   bookId: key, lessonId: key, atomIds: z.array(key).min(1).max(30),
   status: z.enum(['candidate', 'approved', 'rejected']),

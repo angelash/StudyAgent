@@ -2,7 +2,7 @@ import { Body, Controller, Get, Headers, Param, Patch, Post, Put, Query, Req, Re
 import type { Response } from 'express';
 import { Subject, subjectSchema } from '@study-agent/contracts';
 import { AuthGuard, AuthenticatedRequest } from '../../common/auth.guard';
-import { streamFile } from '../../common/stream-file';
+import { streamVerifiedFile } from '../../common/stream-verified-file';
 import { validate } from '../../common/validation';
 import { CurriculumService } from './curriculum.service';
 import { DiagnosticsService } from './diagnostics.service';
@@ -52,8 +52,24 @@ export class DiagnosticsController {
   async textbookDocument(@Req() req: AuthenticatedRequest, @Param('bookId') id: string, @Headers('range') range: string | undefined,
     @Res({ passthrough: true }) response: Response) {
     this.curriculum.assertEditor(req.user);
-    const document = await this.curriculum.textbooks.document(id);
-    return streamFile({ ...document, mediaType: 'application/pdf' }, range, response);
+    const cancellation = new AbortController(), disconnect = () => cancellation.abort(); response.once('close', disconnect);
+    let document: Awaited<ReturnType<typeof this.curriculum.textbooks.document>> | undefined;
+    try {
+      document = await this.curriculum.textbooks.document(id, cancellation.signal);
+      await this.curriculum.assertCurrentSourceEditor(req);
+      return await streamVerifiedFile({ ...document, mediaType: 'application/pdf' }, range, response, cancellation.signal, () => response.off('close', disconnect));
+    } catch (error) { await document?.handle.close(); response.off('close', disconnect); throw error; }
+  }
+  @Get('admin/curriculum/textbooks/:bookId/lessons/:lessonId/source')
+  async textbookLessonSource(@Req() req: AuthenticatedRequest, @Param('bookId') bookId: string, @Param('lessonId') lessonId: string,
+    @Query() raw: unknown, @Res({ passthrough: true }) response: Response) {
+    this.curriculum.assertEditor(req.user);
+    const query = validate(z.object({ page: z.coerce.number().int().min(1).max(10000).optional() }).strict(), raw);
+    const cancellation = new AbortController(), disconnect = () => cancellation.abort(); response.once('close', disconnect);
+    try {
+      const result = await this.curriculum.textbooks.lessonSource(bookId, lessonId, query.page, cancellation.signal);
+      await this.curriculum.assertCurrentSourceEditor(req); response.setHeader('Cache-Control', 'private, no-store'); return result;
+    } finally { response.off('close', disconnect); }
   }
   @Post('admin/curriculum/textbook-mappings')
   saveTextbookMapping(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.curriculum.saveTextbookMapping(req.user, body); }

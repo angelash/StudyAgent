@@ -1,15 +1,17 @@
-import { BadRequestException, Injectable, NotFoundException, ServiceUnavailableException } from '@nestjs/common';
+import { BadRequestException, ConflictException, Injectable, NotFoundException, ServiceUnavailableException } from '@nestjs/common';
 import { createHash } from 'node:crypto';
-import { createReadStream, existsSync, readFileSync, realpathSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, realpathSync } from 'node:fs';
+import { stat } from 'node:fs/promises';
 import { isAbsolute, relative, resolve } from 'node:path';
-import { CurriculumBook, Subject, TextbookAtomMapping } from '@study-agent/contracts';
+import { CurriculumBook, Subject, TextbookAtomMapping, TextbookLessonSource } from '@study-agent/contracts';
 import { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
 import { studyAssetRoot, workspaceRoot } from '../../infrastructure/workspace-paths';
+import { openVerifiedLibraryMedia } from '../library/verified-library-media';
+import { boundTextbookSourceCandidate, loadTextbookSourceCandidates, sourceFingerprint, type TextbookSourceCandidate } from './textbook-source-candidates';
 
 const names = { math: '数学', chinese: '语文', english: '英语', chemistry: '化学' };
 type SourceDocument = { id: string; subject: Subject; grade: number; term: 'upper' | 'lower'; title: string; edition: string;
-  assetPath?: string; repositoryPath?: string; sha256: string; pages: number };
-type SourcePageRange = { start: number; end: number };
+  assetPath?: string; repositoryPath?: string; sha256: string; pages: number; bytes?: number; extractedPath?: string; extractedSha256?: string };
 type SourceAvailabilityStatus = 'matched' | 'original' | 'no_candidate' | 'ambiguous' | 'edition_unverified' | 'version_conflict';
 type SourceMatch = { status: SourceAvailabilityStatus; reason: string; document: SourceDocument | null };
 
@@ -18,8 +20,7 @@ export class TextbookRegistryService {
   private imported?: CurriculumBook[];
   private sourceDocuments?: SourceDocument[];
   private sourceMatches = new Map<string, SourceMatch>();
-  private sourcePageRanges?: Map<string, SourcePageRange>;
-  private verifiedDocuments = new Map<string, { size: number; modifiedMs: number; sha256: string }>();
+  private sourceCandidates?: Map<string, TextbookSourceCandidate>;
   constructor(private readonly store: InMemoryStoreService) {}
 
   all(): CurriculumBook[] {
@@ -99,22 +100,57 @@ export class TextbookRegistryService {
     return this.publicSourceMatch(book);
   }
 
-  async document(bookId: string) {
+  async document(bookId: string, signal?: AbortSignal) {
     const book = this.require(bookId), match = this.sourceMatch(book), source = match.document;
     if (!source) throw new NotFoundException(`此教材没有已迁入的同版内审原卷：${match.reason}`);
     const path = this.resolveSourcePath(source);
     if (!path || !existsSync(path)) throw new NotFoundException('本地内审原卷未安装，请恢复教材源资产后重试');
-    const stat = statSync(path);
-    const cached = this.verifiedDocuments.get(path);
-    if (cached?.size === stat.size && cached.modifiedMs === stat.mtimeMs && cached.sha256 === source.sha256) {
-      return { path, size: stat.size, sha256: source.sha256, pages: source.pages };
-    }
-    const digest = createHash('sha256');
-    for await (const chunk of createReadStream(path)) digest.update(chunk as Buffer);
-    const sha256 = digest.digest('hex');
-    if (stat.size <= 0 || sha256 !== source.sha256) throw new ServiceUnavailableException('本地内审原卷字节校验失败，请从独立备份恢复');
-    this.verifiedDocuments.set(path, { size: stat.size, modifiedMs: stat.mtimeMs, sha256 });
-    return { path, size: stat.size, sha256, pages: source.pages };
+    try {
+      const size = source.bytes ?? (await stat(path)).size;
+      return { ...await openVerifiedLibraryMedia({ path, size, sha256: source.sha256 }, signal), pages: source.pages };
+    } catch { throw new ServiceUnavailableException('本地内审原卷字节校验失败，请从独立备份恢复'); }
+  }
+
+  sourceCandidate(book: CurriculumBook, lessonId: string) {
+    const chapter = book.chapters.find(chapter => chapter.lessons.some(lesson => lesson.id === lessonId)), lesson = chapter?.lessons.find(lesson => lesson.id === lessonId);
+    if (!chapter || !lesson) return null;
+    this.sourceCandidates ??= loadTextbookSourceCandidates(resolve(process.env.STUDY_TEXTBOOK_MAPPING_CANDIDATES ?? resolve(workspaceRoot(), 'resources/curriculum/textbook-mapping-candidates-v1.json')));
+    return boundTextbookSourceCandidate(this.sourceCandidates, book, chapter, lesson, this.sourceMatch(book).document);
+  }
+
+  async lessonSource(bookId: string, lessonId: string, page?: number, signal?: AbortSignal): Promise<TextbookLessonSource> {
+    const book = this.require(bookId), lesson = book.chapters.flatMap(chapter => chapter.lessons).find(lesson => lesson.id === lessonId);
+    if (!lesson || lesson.kind === 'reference') throw new NotFoundException('请选择此教材版本的独立课时');
+    const candidate = this.sourceCandidate(book, lessonId), source = this.sourceMatch(book).document;
+    if (!candidate || !source?.extractedPath || !source.extractedSha256) throw new ConflictException('本课尚无绑定当前教材和原卷的定位候选，请先核对来源并重新定位');
+    const selected = page ?? candidate.pdfStartPage;
+    if (!Number.isSafeInteger(selected) || selected < candidate.pdfStartPage || selected > candidate.pdfEndPage) throw new BadRequestException('物理页必须属于本课定位候选范围');
+    const document = await this.document(bookId, signal);
+    try {
+      const path = this.resolveSourcePath({ assetPath: source.extractedPath });
+      if (!path) throw Error('extraction_not_installed');
+      const size = (await stat(path)).size;
+      if (size > 32 * 1024 * 1024) throw Error('extraction_too_large');
+      const opened = await openVerifiedLibraryMedia({ path, size, sha256: source.extractedSha256 }, signal);
+      let bytes: Buffer;
+      try {
+        // Read from the verified descriptor, never reopen the extraction by path.
+        bytes = Buffer.alloc(size); let offset = 0;
+        while (offset < size) { if (signal?.aborted) throw Error('source_aborted'); const result = await opened.handle.read(bytes, offset, size - offset, offset); if (!result.bytesRead) throw Error('extraction_short'); offset += result.bytesRead; }
+        if (createHash('sha256').update(bytes).digest('hex') !== source.extractedSha256) throw Error('extraction_changed');
+      } finally { await opened.handle.close(); }
+      const extracted = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(bytes));
+      if (extracted.format !== 'chinatextbook-extraction-v1' || extracted.id !== source.id || extracted.sourceSha256 !== source.sha256 ||
+        !Array.isArray(extracted.pages) || extracted.pages.length !== source.pages || extracted.pages.some((row: any, index: number) => !row || row.page !== index + 1 || typeof row.text !== 'string')) throw Error('extraction_identity_changed');
+      if (signal?.aborted) throw Error('source_aborted');
+      const text: string = extracted.pages[selected - 1].text, identity = { bookId: book.id, bookVersion: book.version, lessonId, sourceBookId: source.id,
+        sourceSha256: source.sha256, extractedSha256: source.extractedSha256, lessonFingerprint: candidate.lessonFingerprint, pageRange: { start: candidate.pdfStartPage, end: candidate.pdfEndPage } };
+      return { ...identity, lessonName: lesson.name, sourcePages: source.pages, titleMatched: candidate.titleMatched, page: selected, text, textCharacters: [...text].length,
+        fingerprint: sourceFingerprint({ ...identity, page: selected, text }), locatorStatus: 'candidate_needs_review', contentReview: 'not_reviewed',
+        extractionStatus: text.trim() ? 'text_present' : 'no_text', notice: '定位仍是待审候选。文字按完整提取页保留；图示、公式、阅读顺序和课时边界请对照原卷逐页核对，尚未形成教学审核结论。' };
+    } catch (error) {
+      throw new ConflictException('教材提取正文的完整字节或来源身份无法核对，请恢复原资料后重试');
+    } finally { await document.handle.close(); }
   }
 
   resolveProgress(book: CurriculumBook, lessonIds: string[]) {
@@ -154,10 +190,10 @@ export class TextbookRegistryService {
       ];
       for (const manifest of manifests) if (existsSync(manifest.file)) {
         const document = JSON.parse(readFileSync(manifest.file, 'utf8')) as { books?: Array<{ id: string; subject?: Subject; grade: number;
-          term: 'upper' | 'lower'; title?: string; edition?: string; assetPath?: string; repositoryPath?: string; sha256: string; pages: number }> };
+          term: 'upper' | 'lower'; title?: string; edition?: string; assetPath?: string; repositoryPath?: string; sha256: string; pages: number; bytes?: number; extractedPath?: string; extractedSha256?: string }> };
         sources.push(...(document.books ?? []).map(book => ({ id: book.id, subject: book.subject ?? manifest.subject!, grade: book.grade,
           term: book.term, title: book.title ?? '', edition: book.edition ?? '', assetPath: book.assetPath, repositoryPath: book.repositoryPath,
-          sha256: book.sha256, pages: book.pages })));
+          sha256: book.sha256, pages: book.pages, bytes: book.bytes, extractedPath: book.extractedPath, extractedSha256: book.extractedSha256 })));
       }
       this.sourceDocuments = sources;
     }
@@ -215,20 +251,8 @@ export class TextbookRegistryService {
   }
 
   private sourcePageRange(book: CurriculumBook, lessonId: string) {
-    const source = this.sourceMatch(book).document;
-    if (!source) return undefined;
-    if (!this.sourcePageRanges) {
-      const file = resolve(process.env.STUDY_TEXTBOOK_MAPPING_CANDIDATES ?? resolve(workspaceRoot(), 'resources/curriculum/textbook-mapping-candidates-v1.json'));
-      if (!existsSync(file)) this.sourcePageRanges = new Map();
-      else {
-        const document = JSON.parse(readFileSync(file, 'utf8')) as { rows?: Array<{ bookId: string; lessonId: string; pdfStartPage: number; pdfEndPage: number }> };
-        this.sourcePageRanges = new Map((document.rows ?? []).filter(row => Number.isSafeInteger(row.pdfStartPage) && Number.isSafeInteger(row.pdfEndPage)
-          && row.pdfStartPage >= 1 && row.pdfStartPage <= row.pdfEndPage).map(row => [`${row.bookId}:${row.lessonId}`,
-          { start: row.pdfStartPage, end: row.pdfEndPage }]));
-      }
-    }
-    const range = this.sourcePageRanges.get(`${book.id}:${lessonId}`);
-    return range && range.end <= source.pages ? range : undefined;
+    const row = this.sourceCandidate(book, lessonId);
+    return row ? { start: row.pdfStartPage, end: row.pdfEndPage } : undefined;
   }
 
   private resolveSourcePath(source: Pick<SourceDocument, 'assetPath' | 'repositoryPath'>) {
@@ -246,6 +270,7 @@ export class TextbookRegistryService {
     const realRoot = realpathSync(root), realTarget = realpathSync(target);
     const rel = relative(realRoot, realTarget);
     if (!rel || isAbsolute(rel) || rel === '..' || rel.startsWith(`..${process.platform === 'win32' ? '\\' : '/'}`)) throw new ServiceUnavailableException('教材源资产链接越界');
-    return realTarget;
+    // Keep the lexical path so descriptor verification can reject in-root links too.
+    return target;
   }
 }

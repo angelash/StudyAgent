@@ -7,6 +7,9 @@ from __future__ import annotations
 
 import json
 import re
+import argparse
+import hashlib
+import os
 from collections import Counter
 from pathlib import Path
 
@@ -15,6 +18,7 @@ MANIFEST = ROOT / 'resources/curriculum/chinatextbook-chinese-v1.json'
 REVIEWED = ROOT / 'resources/curriculum/reviewed-textbook-chapters-v1.json'
 ATOMS = ROOT / 'resources/curriculum/atom-catalog-v1.json'
 OUTPUT = ROOT / 'resources/curriculum/textbook-mapping-candidates-v1.json'
+REGISTRY = ROOT / 'resources/curriculum/textbooks-v1.json'
 
 SIGNALS = {
   'initial': ['声母', '韵母', '拼读', '拼音'], 'tone': ['声调', '第一声', '第二声', '第三声', '第四声', '标调'],
@@ -65,21 +69,90 @@ def atom_signal(atom: dict) -> list[str]:
     return SIGNALS.get(atom_id.split(':')[-1], [])
 
 
+def fingerprint(value) -> str:
+    return hashlib.sha256(json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')).hexdigest()
+
+
+def controlled_path(root: Path, value: str) -> Path:
+    parts = value.replace('\\', '/').split('/')
+    if not value or re.match(r'^[a-zA-Z]:|^[/\\]', value) or any(part in {'', '.', '..'} for part in parts) or any(ord(char) < 32 for char in value):
+        raise ValueError('Invalid controlled source path')
+    current = root.absolute()
+    if current.is_symlink() or getattr(current.lstat(), 'st_file_attributes', 0) & 1024:
+        raise ValueError('Linked source root is not permitted')
+    for part in parts:
+        current = current / part
+        if current.is_symlink() or getattr(current.lstat(), 'st_file_attributes', 0) & 1024:
+            raise ValueError('Linked source path is not permitted')
+    current.resolve(strict=True).relative_to(root.resolve(strict=True))
+    if not current.is_file():
+        raise ValueError('Source is not a regular file')
+    return current
+
+
+def verified_source_pages(textbook: dict, asset_root: Path, repository_root: Path | None) -> list[dict]:
+    if textbook.get('repositoryPath'):
+        if repository_root is None:
+            raise ValueError('Set TEXTBOOK_BASE_PATH or --textbook-base-path to verify original PDF bytes')
+        original = controlled_path(repository_root, textbook['repositoryPath'])
+    else:
+        if not textbook.get('assetPath', '').startswith('data/assets/'):
+            raise ValueError('Missing controlled original source')
+        original = controlled_path(asset_root, textbook['assetPath'][len('data/assets/'):])
+    digest = hashlib.sha256()
+    with original.open('rb') as stream:
+        before = os.fstat(stream.fileno())
+        for block in iter(lambda: stream.read(1024 * 1024), b''):
+            digest.update(block)
+        after = os.fstat(stream.fileno())
+    if (before.st_dev, before.st_ino, before.st_size, before.st_mtime_ns, before.st_ctime_ns) != (after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns, after.st_ctime_ns):
+        raise ValueError('Original source changed during verification')
+    if before.st_size != textbook['bytes'] or digest.hexdigest() != textbook['sha256']:
+        raise ValueError('Original PDF bytes do not match the source manifest')
+    if not textbook.get('extractedPath', '').startswith('data/assets/'):
+        raise ValueError('Missing controlled extraction path')
+    extracted = controlled_path(asset_root, textbook['extractedPath'][len('data/assets/'):])
+    if extracted.stat().st_size > 32 * 1024 * 1024:
+        raise ValueError('Extraction exceeds the explicit 32 MiB budget')
+    raw = extracted.read_bytes()
+    if hashlib.sha256(raw).hexdigest() != textbook['extractedSha256']:
+        raise ValueError('Extraction bytes do not match the source manifest')
+    document = json.loads(raw.decode('utf-8'))
+    pages = document.get('pages')
+    if document.get('format') != 'chinatextbook-extraction-v1' or document.get('id') != textbook['id'] or document.get('sourceSha256') != textbook['sha256']:
+        raise ValueError('Extraction is not bound to the exact original source')
+    if not isinstance(pages, list) or len(pages) != textbook['pages'] or any(not isinstance(page, dict) or type(page.get('page')) is not int or page['page'] != index + 1 or not isinstance(page.get('text'), str) for index, page in enumerate(pages)):
+        raise ValueError('Extraction must preserve all numbered physical pages')
+    return pages
+
+
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--asset-root', type=Path, default=Path(os.environ.get('STUDY_ASSET_ROOT', str(ROOT / 'data/assets'))))
+    parser.add_argument('--textbook-base-path', type=Path, default=Path(os.environ['TEXTBOOK_BASE_PATH']) if os.environ.get('TEXTBOOK_BASE_PATH') else None)
+    args = parser.parse_args()
     manifest = json.loads(MANIFEST.read_text('utf-8'))
     reviewed = json.loads(REVIEWED.read_text('utf-8'))
+    registry = json.loads(REGISTRY.read_text('utf-8'))
     atoms = json.loads(ATOMS.read_text('utf-8'))['atoms']
     if manifest.get('format') != 'chinatextbook-chinese-manifest-v1' or len(manifest.get('books', [])) != 12:
         raise ValueError('Complete textbook manifest is missing')
     rows = []
     offsets = {}
+    verified_sources = []
     for textbook in manifest['books']:
         matches = [book for book in reviewed['books'] if book['grade'] == textbook['grade'] and book['term'] == textbook['term']]
         if len(matches) != 1:
             raise ValueError('Reviewed TOC does not uniquely match textbook')
         book = matches[0]
-        extraction = json.loads((ROOT / textbook['extractedPath']).read_text('utf-8'))
-        pages = extraction['pages']
+        registered = [row for row in registry['books'] if row['id'] == book['id']]
+        if len(registered) != 1 or registered[0]['chapters'] != book['chapters'] or registered[0]['chapterState'] != 'available':
+            raise ValueError('Current registered lesson definitions differ from the reviewed table of contents')
+        current = registered[0]
+        if current['subject'] != 'chinese' or current['grade'] != textbook['grade'] or current['term'] != textbook['term'] or current['edition'] != textbook['edition']:
+            raise ValueError('Current edition does not match the exact source manifest')
+        pages = verified_source_pages(textbook, args.asset_root, args.textbook_base_path)
+        verified_sources.append({key: textbook[key] for key in ['id', 'sha256', 'bytes', 'extractedSha256', 'pages']})
         page_norm = [normalize(row['text']) for row in pages]
         lessons = [lesson for chapter in book['chapters'] for lesson in chapter['lessons'] if lesson.get('kind') != 'reference']
         scored_offsets = []
@@ -93,6 +166,7 @@ def main() -> None:
           (atom['grade'] < book['grade'] or atom['term'] in ['both', book['term']])]
         ordered = sorted(lessons, key=lambda lesson: (lesson['printedPage'], lesson['tocPage']))
         for index, lesson in enumerate(ordered):
+            chapter = next(chapter for chapter in book['chapters'] if any(row['id'] == lesson['id'] for row in chapter['lessons']))
             expected = max(1, lesson['printedPage'] + offset)
             title = normalize(lesson['name'])
             starts = [page + 1 for page in range(max(0, expected - 3), min(len(pages), expected + 2)) if title in page_norm[page]]
@@ -116,6 +190,8 @@ def main() -> None:
             candidates.sort(key=lambda item: (-item['score'], -next(atom['grade'] for atom in available if atom['id'] == item['atomId']), item['atomId']))
             candidates = candidates[:3]
             rows.append({ 'bookId': book['id'], 'sourceBookId': textbook['id'], 'lessonId': lesson['id'], 'lessonName': lesson['name'],
+              'bookVersion': current['version'], 'sourceSha256': textbook['sha256'], 'extractedSha256': textbook['extractedSha256'],
+              'lessonFingerprint': fingerprint({'chapterId': chapter['id'], 'chapterName': chapter['name'], 'lesson': lesson}),
               'printedPage': lesson['printedPage'], 'pdfStartPage': start, 'pdfEndPage': end, 'titleMatched': bool(starts),
               'candidateAtomIds': [candidate['atomId'] for candidate in candidates],
               'rationale': ('完整本地PDF课时页出现匹配词；候选仍需逐课时审核。' if candidates else
@@ -123,9 +199,10 @@ def main() -> None:
               'evidence': candidates, 'reviewStatus': 'candidate' if candidates else 'unreviewed', 'approvedAtomIds': [] })
     rows.sort(key=lambda row: (row['bookId'], row['printedPage'], row['lessonId']))
     result = { 'format': 'textbook-mapping-candidates-v1', 'mappingStatus': 'candidates_not_approved',
+      'sourceIdentityVersion': 'textbook-source-candidate-v1', 'sourceVerification': 'complete_bytes_verified_not_content_reviewed', 'verifiedSources': verified_sources,
       'scope': 'Candidate evidence only. No candidate is a published textbook-to-atom mapping.',
       'sourceSha256': { 'textbookManifest': __import__('hashlib').sha256(MANIFEST.read_bytes()).hexdigest(),
-        'reviewedToc': __import__('hashlib').sha256(REVIEWED.read_bytes()).hexdigest(), 'atomCatalog': __import__('hashlib').sha256(ATOMS.read_bytes()).hexdigest() },
+        'reviewedToc': hashlib.sha256(REVIEWED.read_bytes()).hexdigest(), 'atomCatalog': hashlib.sha256(ATOMS.read_bytes()).hexdigest(), 'registry': hashlib.sha256(REGISTRY.read_bytes()).hexdigest() },
       'pageOffsets': offsets, 'books': 12, 'lessons': len(rows), 'titleMatched': sum(row['titleMatched'] for row in rows),
       'lessonsWithCandidates': sum(bool(row['candidateAtomIds']) for row in rows),
       'candidateMappings': sum(len(row['candidateAtomIds']) for row in rows),
