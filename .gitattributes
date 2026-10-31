@@ -124,3 +124,8 @@ resources/compatibility/domain-reader-schema31-v1.receipt.json text eol=lf
 doc/evidence/2026-10-31/workspace-r5-export-font-protocol/** -text
 doc/evidence/2026-10-31/workspace-r5-export-font-protocol/licenses/** -whitespace
 doc/evidence/2026-10-31/workspace-r5-export-font-protocol/sources/*.py whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Fixed policy hashes and their exact acceptance inputs must survive Windows checkout.
+resources/paper-export/profile-collection-policy-v1.json -text
+doc/evidence/2026-11-01/workspace-r5-export-workspace-collection/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+doc/evidence/2026-11-01/workspace-r5-paper-library-complete-draft/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+doc/evidence/2026-11-01/workspace-r5-export-byte-preservation/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

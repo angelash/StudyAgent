@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-31T17:26:45.406Z",
+  "scope": "Preserve fixed export policy and exact acceptance evidence bytes across Windows Git checkout",
+  "before": {
+    "files": 1,
+    "matches": 0,
+    "policyWorkingSha256": "8b8e7070cc9c11282e205b9a3a468f644f0f7f7d51e90c2c56ac9dc3be1f4196",
+    "checkoutSha256": "3217e555d4f289b668ef7ba2412d15293aa6c506d284d4f4a8f0d5cd32a6ae1b"
+  },
+  "after": {
+    "files": 133,
+    "matches": 133
+  },
+  "existingEvidenceWorkingBytesUnchanged": true,
+  "existingGitBlobsCorrectedFromVerifiedWorkingBytes": true,
+  "attributesSha256": "178872384dbd3f62ab857d598fef537d19cfcfc3e2ab7c4e26aaca1f5c8bf086",
+  "formalRuntimeAndSchemaUnchanged": true,
+  "applicationSchema": 32,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "noBranchOrWorktreeCreated": true,
+  "pushed": false,
+  "deployed": false,
+  "wholeGoal": "active",
+  "originalTextPreservationAttributesSha256": "a530cb17a6496792e0cf70755b67fcf60d15b78312096a9294ea2f6f1fa3a401",
+  "finalValidation": {
+    "files": 133,
+    "matches": 133,
+    "report": "byte-preservation-final-after.json",
+    "stagingFirstExit": 2,
+    "whitespaceCorrection": "Declared CR at EOL for exact evidence; ordinary trailing-space checks remain enabled."
+  }
+}

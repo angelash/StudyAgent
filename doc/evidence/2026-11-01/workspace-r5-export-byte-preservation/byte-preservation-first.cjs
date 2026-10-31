@@ -1,0 +1,10 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),{execFileSync}=require('node:child_process');
+const root=path.resolve(__dirname,'../../..'),phase=process.argv[2],sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex'),policy='resources/paper-export/profile-collection-policy-v1.json',archive='doc/evidence/2026-11-01/workspace-r5-export-workspace-collection';
+if(!['before','after'].includes(phase))throw Error('before or after required');const target=path.join(__dirname,'checkout-'+phase);if(fs.existsSync(target))throw Error('New byte-check destination required');fs.mkdirSync(target);
+const manifest=JSON.parse(fs.readFileSync(path.join(root,archive,'receipt.json'))),expected=[{path:policy,sha256:'8b8e7070cc9c11282e205b9a3a468f644f0f7f7d51e90c2c56ac9dc3be1f4196'},...(phase==='after'?manifest.files.map(row=>({path:archive+'/'+row.path,sha256:row.sha256})):[])];
+for(const row of expected)if(sha(fs.readFileSync(path.join(root,row.path)))!==row.sha256)throw Error('Original working bytes changed');
+execFileSync('git',['-c','core.autocrlf=true','checkout-index','--prefix='+target.replaceAll('\\','/')+'/','--',...expected.map(row=>row.path)],{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:2*1024*1024});
+const observations=expected.map(row=>{const bytes=fs.readFileSync(path.join(target,row.path));return{...row,checkedOutSha256:sha(bytes),matches:sha(bytes)===row.sha256};});
+const result={at:new Date().toISOString(),phase,coreAutocrlf:true,ordinaryCheckoutOnly:true,noBranchWorktreeOrFormalRuntimeChange:true,files:observations.length,matches:observations.filter(row=>row.matches).length,observations};
+if(phase==='before'&&result.matches!==0||phase==='after'&&result.matches!==result.files)throw Error('Actual checkout did not establish the expected byte boundary');
+fs.writeFileSync(path.join(__dirname,'byte-preservation-'+phase+'.json'),JSON.stringify(result,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({phase,files:result.files,matches:result.matches}));

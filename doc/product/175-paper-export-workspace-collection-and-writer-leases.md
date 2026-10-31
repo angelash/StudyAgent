@@ -38,6 +38,8 @@ cleanup只消费已登记的library.paper-export.cleanup，逐次验证准确fil
 
 ## 本批实现与实际证据
 
+后续字节门禁：实际用core.autocrlf=true和checkout-index签出固定策略，复现原规则将LF改为CRLF而不再匹配固定SHA。已为该策略及本次两份原始证据目录限定-text，并从仍与原manifest一致的工作字节重存五份原证据Git blob；实际文件与原SHA不变。复验策略＋132份原manifest文件，133/133字节一致，见[签出证据](../evidence/2026-11-01/workspace-r5-export-byte-preservation/receipt.json)。没有新增分支/worktree、改变业务逻辑或触碰正式运行；这不代表新机器完整验收。
+
 2026-11-01，16份源码从p176按准确SHA归并。真实cleanup worker核对原file/task/代次/token、发布引用与真实删除回执，在purge内等待Node/Python自身租约及HTTP读取；完整有界清单通过后逐文件重核SHA/身份并unlink、逐空目录rmdir，实际结束才同事务写deleted及成功结果。活跃、未知、链接或变化条目进入维护等待，不消耗正常尝试。固定Office26.8.2.2策略来自已有真实正常/取消目录，66条具体文件规则、82条目录规则；不放行整个profile。新工作目录先登记双写入者协议，旧目录缺证明则保留核查；永久撤销阻断实际迟到Node与Python。冷恢复在真实guard内为新环境登记协议，并保留撤销终态，无新增原生字段，应用仍32。
 
 最终SQLite12/0/0、真实PG12/0/0、独立代次重试SQLite与PG各1/0/0、真实渲染/HTTP6/0/0、文件IO与既有协调39/0/0、既有十六文件226/0/0及Python32/0分别记录，不合计重叠批次。真实约9MiB DOCX暂停HTTP读取后，账号删除与回收等待原lease，完整下载字节/SHA一致，释放后准确目录才回收。共同监护保留原文件与曝光，最后学生删除实际回收；同代次旧token与新代次、旧写入者仍活跃、取消维护任务的真实retry、SQLite备份及PG实际pg_dump/pg_restore＋最新账本均有原生证据。两个独立进程场景实际观察Python/UNO/Office整棵已知树，强制结束父Node或监督进程后已观察进程均退出，准确残留目录可回收，迟到Python拒绝写入。
