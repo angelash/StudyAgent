@@ -1,0 +1,66 @@
+{
+  "at": "2026-10-31T09:51:02.299Z",
+  "changed": [
+    {
+      "path": "packages/contracts/src/paper-selection.ts",
+      "sha256": "636af6ee7fc5ce858d5a863a886e18da11128638ecd7e86fe74c897f3969a657"
+    },
+    {
+      "path": "packages/contracts/src/paper-source-read.ts",
+      "sha256": "a335f52d84bb8b09cea2877c93e35aaec507a9e3b19c07d2c6059a57ad4d9e26"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-record.test.ts",
+      "sha256": "0fbd4c5ac0d85251d80987233fe6499601cc8361f9b032ec4d6644a7a67f5acf"
+    }
+  ],
+  "finalSources": [
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "e625ce6d06f135ac2a92666c60350b433d1e1d3fa218799830134dd76004ebd4"
+    },
+    {
+      "path": "packages/contracts/src/paper-selection.ts",
+      "sha256": "636af6ee7fc5ce858d5a863a886e18da11128638ecd7e86fe74c897f3969a657"
+    },
+    {
+      "path": "packages/contracts/src/paper-source-read.ts",
+      "sha256": "a335f52d84bb8b09cea2877c93e35aaec507a9e3b19c07d2c6059a57ad4d9e26"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-record.ts",
+      "sha256": "38d59c003f11424cfcc129911384598f3f5e6ddd8f2cd947d70089b292b68697"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-native.ts",
+      "sha256": "dfe6cac8b5433e0edeaa1bcd80eae7b0ccbbfda58f5523e0ef3c69dc1edbb8b0"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-source-exposure-record.ts",
+      "sha256": "9a3f303e513df3e7241b573879e9af53818ff237575998f0488b147250955026"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-record.test.ts",
+      "sha256": "0fbd4c5ac0d85251d80987233fe6499601cc8361f9b032ec4d6644a7a67f5acf"
+    },
+    {
+      "path": "apps/api/src/modules/library/library.repository.ts",
+      "sha256": "b20393d8690e1f4048c3503618c1b9306fbc4b1dd1b915153c23d592d8b95fe6"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-source.ts",
+      "sha256": "460d999ac8849f7208137a43ec9c6c415a782e1f3429091d82aefb1c2a26efd4"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-source.test.ts",
+      "sha256": "623a396a1792a4ab6950e96ad9658a55279ff51d8fc7f51341e5b95e5a110af1"
+    }
+  ],
+  "tests": {
+    "passed": 82,
+    "failed": 0,
+    "skipped": 1
+  },
+  "schema32Registered": false,
+  "goal": "active"
+}

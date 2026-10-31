@@ -1,0 +1,218 @@
+{
+  "at": "2026-10-31T09:53:39.223Z",
+  "scope": "Strict selection/read command records and pure native relation reconstruction; actual SQLite archive source verification. No application selection/export routes, schema32 registration or persistent new collections.",
+  "baseMain": "3e31aebb429f73ce08f6f422a13de9e44f738e4e",
+  "source": [
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "e625ce6d06f135ac2a92666c60350b433d1e1d3fa218799830134dd76004ebd4"
+    },
+    {
+      "path": "packages/contracts/src/paper-selection.ts",
+      "sha256": "636af6ee7fc5ce858d5a863a886e18da11128638ecd7e86fe74c897f3969a657"
+    },
+    {
+      "path": "packages/contracts/src/paper-source-read.ts",
+      "sha256": "a335f52d84bb8b09cea2877c93e35aaec507a9e3b19c07d2c6059a57ad4d9e26"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-record.ts",
+      "sha256": "38d59c003f11424cfcc129911384598f3f5e6ddd8f2cd947d70089b292b68697"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-native.ts",
+      "sha256": "dfe6cac8b5433e0edeaa1bcd80eae7b0ccbbfda58f5523e0ef3c69dc1edbb8b0"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-source-exposure-record.ts",
+      "sha256": "9a3f303e513df3e7241b573879e9af53818ff237575998f0488b147250955026"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-record.test.ts",
+      "sha256": "0fbd4c5ac0d85251d80987233fe6499601cc8361f9b032ec4d6644a7a67f5acf"
+    },
+    {
+      "path": "apps/api/src/modules/library/library.repository.ts",
+      "sha256": "b20393d8690e1f4048c3503618c1b9306fbc4b1dd1b915153c23d592d8b95fe6"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-source.ts",
+      "sha256": "460d999ac8849f7208137a43ec9c6c415a782e1f3429091d82aefb1c2a26efd4"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-source.test.ts",
+      "sha256": "623a396a1792a4ab6950e96ad9658a55279ff51d8fc7f51341e5b95e5a110af1"
+    }
+  ],
+  "finalTargetedRegression": {
+    "report": "library-regression-fifth.json",
+    "passed": 82,
+    "failed": 0,
+    "skipped": 1,
+    "newSelectionAndSourceTests": 41,
+    "notes": "Includes the new 35 record/relation cases and six actual SQLite archive cases. One existing PostgreSQL-only recovery case was skipped; no new PostgreSQL or schema32 claim."
+  },
+  "earlierRuns": [
+    {
+      "report": "selection-pure-first.json",
+      "passed": 0,
+      "failedSuites": 1,
+      "reason": "Native verifier parenthesis syntax; exact first seven sources retained."
+    },
+    {
+      "report": "selection-pure-second.json",
+      "passed": 34,
+      "failed": 0
+    },
+    {
+      "report": "selection-and-source-third.json",
+      "passed": 40,
+      "failed": 0
+    },
+    {
+      "report": "library-regression-fourth.json",
+      "passed": 81,
+      "failed": 0,
+      "skipped": 1,
+      "notes": "Before public paper: namespace enforcement; not the final 82-case run."
+    }
+  ],
+  "compilerFailures": {
+    "first": "Syntax failure in native verifier, also in first suite report.",
+    "second": "Fourteen TypeScript possibly-undefined command references; fixed with an explicit missing-command throw. Original terminal output was observed but no separate raw compiler log was captured."
+  },
+  "main": {
+    "at": "2026-10-31T09:51:57.406Z",
+    "checks": [
+      {
+        "name": "main-contracts",
+        "exit": 0
+      },
+      {
+        "name": "main-api",
+        "exit": 0
+      }
+    ],
+    "finalSources": 10,
+    "formal": {
+      "schema": 24,
+      "revision": 187
+    },
+    "protectedFiles": 1063,
+    "allProtectedUnchanged": true,
+    "schema32Registered": false,
+    "applicationRoutesRegistered": false
+  },
+  "sourceIdentity": "Exact catalog question_key including paper: namespace, with actual complete detail UTF-8 SHA verification; no display-UUID alias, fallback guess, missing slot or duplicate raw UUID accepted.",
+  "readiness": {
+    "recordPreparation": true,
+    "selectionRelationVerifier": true,
+    "actualArchiveByteProof": true,
+    "schema32Registered": false,
+    "newCollectionsWritten": false,
+    "newRoutesRegistered": false,
+    "exportNativeReady": false,
+    "durableSelectionBusiness": false,
+    "studentReadPathIntegration": false,
+    "exportQueueAndFiles": false,
+    "workspaceUi": false,
+    "wholeGoal": "active"
+  },
+  "evidence": [
+    {
+      "path": "source-preparation-first.json.gz",
+      "sha256": "0283307d556e5dd1a389fe9dd41d125d6f84aa581aa49e5f9bd5e7331b69a3bb",
+      "bytes": 171090
+    },
+    {
+      "path": "source-first.json.gz",
+      "sha256": "123c937d156d86225d085b714bd5a5021a6892186baaaf045211071b7d5071bc",
+      "bytes": 14788
+    },
+    {
+      "path": "source-third.json.gz",
+      "sha256": "33c75bba87c68493e99213d7e881dfdadc58a7d0395d15be58678965a18acb99",
+      "bytes": 20021
+    },
+    {
+      "path": "source-fifth.json.gz",
+      "sha256": "659bda67a6e1445ec45b099a1ab4d88f8dd473160c7541a31bdcaadc37dad5f7",
+      "bytes": 20196
+    },
+    {
+      "path": "selection-pure-first.json",
+      "sha256": "aec4ca0e66bccb50fbf82f8bb3d4ebe7ce22c2addc08af082ef040f0da8c230f",
+      "bytes": 5614
+    },
+    {
+      "path": "selection-pure-second.json",
+      "sha256": "1234baed607ca780c433bbba54511261d2dd5f26f5d9edb04d1d175d7b8afd81",
+      "bytes": 14953
+    },
+    {
+      "path": "selection-and-source-third.json",
+      "sha256": "27680f70b9378ddb46e02890d53f246b057a1e7992d99db33fdb7710ff402595",
+      "bytes": 17786
+    },
+    {
+      "path": "library-regression-fourth.json",
+      "sha256": "1c4190f39f607592d54fc8480cd7a441d1b0cd0832891a8609bdcaa34e256709",
+      "bytes": 39809
+    },
+    {
+      "path": "library-regression-fifth.json",
+      "sha256": "1a7d1d4b27e770694017382365bb6e899a1ce5d7fc689c323ef78b2de9d14850",
+      "bytes": 40217
+    },
+    {
+      "path": "selection-integration-first.json",
+      "sha256": "9674f13212e422db19d9886dc576e35d4ee9b695c7475ab920662a4ec83b1023",
+      "bytes": 2368
+    },
+    {
+      "path": "selection-integration-second.json",
+      "sha256": "205b19bb476db2634b439ea641606be14cc06caf53e2ee816468eea9f1534e50",
+      "bytes": 2333
+    },
+    {
+      "path": "main-validation-first.json",
+      "sha256": "b2fb60124e1a2fdd2eac44c999c2a6bcdffdcbd8efe1d661e73acdd5c2504edb",
+      "bytes": 382
+    },
+    {
+      "path": "main-contracts-first.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "main-api-first.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "prepare-first.cjs",
+      "sha256": "4e49936c2fec815786e6d12e0086451b66b025351d4e98913d243c6b3948a92d",
+      "bytes": 2935
+    },
+    {
+      "path": "snapshot-source.cjs",
+      "sha256": "6e6b9f9a7fad30f5862438321e62418fcb33da41096b8d3ef88c2735c782a2f6",
+      "bytes": 1193
+    },
+    {
+      "path": "integrate-selection-first.cjs",
+      "sha256": "4bcd0030bc8c36c2d37f5952c05fff7e5e8ac1223511bdb8cfea6fa33154531a",
+      "bytes": 2910
+    },
+    {
+      "path": "integrate-selection-second.cjs",
+      "sha256": "cb9128800fb85669e9fdb4d43870be6dc141f4b754e5b269f7b9acc156d2e194",
+      "bytes": 1743
+    },
+    {
+      "path": "validate-selection-main-first.cjs",
+      "sha256": "635df8132baa11acea338c9c888d587ea74ac3a7fc09219d2689093b765db42e",
+      "bytes": 2269
+    }
+  ]
+}

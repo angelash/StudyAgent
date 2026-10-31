@@ -1,5 +1,7 @@
 # 当前工作收尾、验证边界与续接位置
 
+2026-10-31选题记录接续：[168](168-paper-selection-export-native-protocol.md)第一批十份严格记录/关系/实际来源源码已归入主干，最终专项82/0/1条件跳过（本批41项），主干contracts/API无输出类型检查通过，见[证据](../evidence/2026-10-31/workspace-r5-native-selection-records/receipt.json)。准确来源沿用带`paper:`前缀的catalog题键并核对实际detail全文SHA。新集合/业务路由/32未注册，导出原生能力仍false；接实际事务、任务/文件/隐私恢复、学生旧读取防旁路和原工作台UI。正式24/revision187及1063份运行文件保持，仅本地，全部原范围和整体目标继续active。
+
 2026-10-31持久选题接续：[168](168-paper-selection-export-native-protocol.md)先固定作者/学习范围、六个原生集合、完整原命令/原回执、历史链、按册格式任务、已登记IO、真实删除回执与恢复关系。协议先本地提交，随后从严格记录及完整关系重建接双库/队列/文件/原UI。当前应用31、正式24，32未注册；167长正文续题与全部原范围继续active。
 
 2026-10-31最新运行与按册接续：[167](167-paper-export-runtime-and-book-capabilities.md)补离线新目录重建、固定19,417份Office文件及六份哈希锁定wheel、可复现字体与实际DOCX/PDF自检；最终重检完整通过。主干19项语义/实际几何/清空环境、6次实际导出（4成功/2应拒绝）、7项真实拒绝边界、3项只读CLI分别记账。源输入不变，练习和答案仅核对各自内容；新增真实PDF起止页、图片版心检查、显式DrawingML距离及启动前路径上限。[收据](../evidence/2026-10-31/workspace-r5-export-runtime-and-books/receipt.json)保留首次脚本/架构/图片/路径与页眉失败，两个已知原生转储逐SHA留在私有QA，重新全量工具校验通过。两次长正文页眉仍错误，未采用；持久清单/任务/授权曝光/原生恢复/UI与全部原范围继续。正式24/revision187及1063份运行文件保持，schema32未注册，未推送部署，整体active。

@@ -10,6 +10,8 @@ scope为严格联合：`{kind:'private_preparation',studentId:null}`供有效成
 
 准确source保存paperId、position、sourceQuestionId、detailSha256、publicationVersion、title、originalPage；originalPage仅核实过的正整数或null，首批为null。另存research。去重键为`[paperId,position,sourceQuestionId]`，不按文本或包hash合并。服务端从实际原卷核对题ID、题位、摘要和发布版本；客户端不能提交正文/答案、媒体路径、标题推断或私人作答。缺题不可选择，整卷PDF无可靠题位映射时保留原阅读/打印。
 
+sourceQuestionId必须是catalog的完整question_key（含`paper:`前缀），不能传预览页的裸UUID；现有测量候选及原卷练习也使用完整键。实际原卷detail的UTF-8完整SHA须与索引和原请求一致；单份原始detail读取上限64MiB，不能仅信索引，也不从另一份题库题目猜补缺失原件。同卷选题必须同一摘要/发布版本，每份清单最多1000次完整修订，达到上限保留原稿并明确另建清单，不截断旧历史。
+
 ## 六个原生集合
 
 所有对象严格校验额外字段；规范JSON hash为递归排序键后SHA-256，实际文件SHA针对完整字节。原字符串不trim后冒充同一请求，UTC时间由服务端固定。原input、原result与当前视图分开读取。
@@ -59,3 +61,9 @@ SQLite/pg_dump原生备份列出准确input/媒体/产物引用及SHA，工作�
 先实现严格记录、原命令与完整关系重建，再在独立副本注册32、接双库/队列/真实文件/删除恢复，最后接原UI和相称完整回归。各轮原失败保留。167长正文续题仍未通过，须同时验证DOCX/PDF，不能仅补PDF。
 
 R5全部题型、其他错题来源、声音/参考状态，R6全教材/GESP、R7/R8、原72/WS和教师/实机/实体打印/真人1/3/7/14日继续；本协议不提升整体验收。
+
+## 第一批记录与实际来源基础
+
+严格清单/原命令/原回执、连续修订、准确学生曝光记录和纯原生关系重建已归入主干；实际SQLite源读取核对完整原文SHA、准确题键、缺题、重复UUID和变更发布版本。最终专项82通过/0失败/1项既有PG恢复条件跳过，其中本批35项关系/原命令与6项真实SQLite来源测试；十份准确源码及首次失败见[收据](../evidence/2026-10-31/workspace-r5-native-selection-records/receipt.json)。主干contracts/API无输出类型检查通过。原语法失败保留，后续类型收窄失败未单独保存原始编译日志，证据注明该缺口。
+
+这批没有注册32、写入新集合或接通选题业务路由。`PAPER_EXPORT_NATIVE_READY=false`拒绝忽略尚未实现的导出/文件原生行；持久清单事务、导出记录/真实任务/文件与隐私恢复、学生旧读取防旁路及原工作台UI仍须继续。正式24/revision187及1063份运行文件保持，未推送部署，整体active。

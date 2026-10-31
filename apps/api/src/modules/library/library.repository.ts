@@ -1,4 +1,5 @@
-import { Injectable, OnModuleDestroy, ServiceUnavailableException } from '@nestjs/common';
+import { ConflictException, Injectable, OnModuleDestroy, ServiceUnavailableException } from '@nestjs/common';
+import { createHash } from 'node:crypto';
 import { DatabaseSync } from 'node:sqlite';
 import { existsSync, realpathSync, statSync } from 'node:fs';
 import { isAbsolute, relative, resolve } from 'node:path';
@@ -55,6 +56,28 @@ export class LibraryRepository implements OnModuleDestroy {
   detail(id: string) {
     const row = this.open('archive').prepare('SELECT detail FROM papers WHERE key=?').get(id) as { detail: string } | undefined;
     return row?.detail ? JSON.parse(row.detail) as { questions?: Array<Record<string, unknown>> } : {};
+  }
+  /** Selection freezes actual retained originals. A catalog entry alone is not
+   * proof that the archive still contains the bytes described by that entry. */
+  verifiedSelectionDetail(id: string, expectedSha256: string) {
+    const row = this.open('archive').prepare('SELECT detail FROM papers WHERE key=? AND length(CAST(detail AS BLOB))<=?')
+      .get(id, 64 * 1024 * 1024) as { detail: string } | undefined;
+    if (!row || typeof row.detail !== 'string' || createHash('sha256').update(row.detail, 'utf8').digest('hex') !== expectedSha256)
+      throw new ConflictException({ code: 'paper_selection_source_changed', message: '原卷实际内容与索引摘要不一致，请保留清单并核对原资料。' });
+    let value: unknown;
+    try { value = JSON.parse(row.detail); } catch { throw new ConflictException('原卷实际结构无法核对。'); }
+    if (!value || typeof value !== 'object' || Array.isArray(value) || 'questions' in value && !Array.isArray(value.questions))
+      throw new ConflictException('原卷实际结构无法核对。');
+    const questions = (value as { questions?: unknown[] }).questions ?? [];
+    const originals = new Map<string, Record<string, unknown>>();
+    for (const item of questions) {
+      if (!item || typeof item !== 'object' || Array.isArray(item) || !('uuid' in item) || !['string', 'number'].includes(typeof item.uuid))
+        throw new ConflictException('原卷题目身份无法核对。');
+      const key = String(item.uuid);
+      if (!key || originals.has(key)) throw new ConflictException('原卷含重复题目身份，请先核对资料。');
+      originals.set(key, item as Record<string, unknown>);
+    }
+    return originals;
   }
   question(key: string): Record<string, unknown> | null {
     const row = this.open('archive').prepare('SELECT body FROM questions WHERE key=?').get(key) as { body: Uint8Array } | undefined;

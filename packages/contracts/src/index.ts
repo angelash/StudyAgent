@@ -789,3 +789,5 @@ export * from './paper-capture-origin';
 export * from './paper-capture';
 export * from './paper-capture-integrity';
 export * from './paper-capture-repair';
+export * from './paper-selection';
+export * from './paper-source-read';

@@ -1,0 +1,64 @@
+{
+  "at": "2026-10-31T09:44:25.013Z",
+  "head": "3e31aebb429f73ce08f6f422a13de9e44f738e4e",
+  "changes": [
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "e625ce6d06f135ac2a92666c60350b433d1e1d3fa218799830134dd76004ebd4",
+      "previousSha256": "543f95ecd0e30ed1998eeb030bebbd2f6285ccb10bb42991a4b115ac268c60b1"
+    },
+    {
+      "path": "packages/contracts/src/paper-selection.ts",
+      "sha256": "60162d3e7743744505b0e079a3b28b8ae885d8a3b9287a6bef5015209cd37596",
+      "previousSha256": null
+    },
+    {
+      "path": "packages/contracts/src/paper-source-read.ts",
+      "sha256": "e61f46403c4e733bc8dab34109abab57755778917455d30a7e26c6546a699183",
+      "previousSha256": null
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-record.ts",
+      "sha256": "38d59c003f11424cfcc129911384598f3f5e6ddd8f2cd947d70089b292b68697",
+      "previousSha256": null
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-native.ts",
+      "sha256": "dfe6cac8b5433e0edeaa1bcd80eae7b0ccbbfda58f5523e0ef3c69dc1edbb8b0",
+      "previousSha256": null
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-source-exposure-record.ts",
+      "sha256": "9a3f303e513df3e7241b573879e9af53818ff237575998f0488b147250955026",
+      "previousSha256": null
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-record.test.ts",
+      "sha256": "ffca8107651e4cf03841a4f59b31e5c86744b54538d222ab27944d30aa414249",
+      "previousSha256": null
+    },
+    {
+      "path": "apps/api/src/modules/library/library.repository.ts",
+      "sha256": "b20393d8690e1f4048c3503618c1b9306fbc4b1dd1b915153c23d592d8b95fe6",
+      "previousSha256": "7c6d95869409a95258cc0217b53fe8c712be261138c05d624b8465cce2bb6bcd"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-source.ts",
+      "sha256": "460d999ac8849f7208137a43ec9c6c415a782e1f3429091d82aefb1c2a26efd4",
+      "previousSha256": null
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-source.test.ts",
+      "sha256": "623a396a1792a4ab6950e96ad9658a55279ff51d8fc7f51341e5b95e5a110af1",
+      "previousSha256": null
+    }
+  ],
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFiles": 1063,
+  "allProtectedUnchanged": true,
+  "schema32Registered": false,
+  "applicationRoutesRegistered": false
+}
