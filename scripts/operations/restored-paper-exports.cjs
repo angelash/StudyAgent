@@ -13,6 +13,7 @@ async function cleanupRestoredPaperExports({ root, query, manifest, afterPhase, 
   const inventory = manifest.files.filter(file => file.path.startsWith('data/paper-exports/'));
   if (!rows.length && !inventory.length) return { paperExportFilesRetained: 0, paperExportFilesDeleted: 0, paperExportBytesDeleted: 0, paperExportTasksFenced: 0 };
   const { assertPaperExportFile, collectPaperExportFile } = require('../../apps/api/dist/apps/api/src/modules/library/paper-export-file-record.js');
+  const { registerPaperExportWriterProtocol, revokePaperExportWorkspace } = require('../../apps/api/dist/apps/api/src/infrastructure/studio-file-coordination.js');
   const { paperExportBackupReferences } = require('../../apps/api/dist/apps/api/src/modules/library/paper-export-backup.js');
   const records = rows.filter(row => row.collection === 'paperExports').map(row => decode(row.body)), files = rows.filter(row => row.collection === 'paperExportFiles').map(row => assertPaperExportFile(decode(row.body)));
   const keep = paperExportBackupReferences(rows), expected = new Map(), knownWorkspaces = new Set(files.map(file => file.workspace));
@@ -51,9 +52,10 @@ async function cleanupRestoredPaperExports({ root, query, manifest, afterPhase, 
   }
   let filesDeleted = 0, bytesDeleted = 0;
   for (const file of files) {
+    await registerPaperExportWriterProtocol(root, file.workspace.split('/')[1]);
     const published = records.some(row => row.slots.some(slot => slot.published?.fileId === file.id));
     if (published) { if (file.state !== 'available') fail('restore_paper_export_publication_changed'); continue; }
-    if (file.state === 'deleted') continue;
+    if (file.state === 'deleted') { await revokePaperExportWorkspace(root, file.workspace.split('/')[1]); continue; }
     let current = file;
     if (!current.cleanupTaskId) {
       const prepared = collectPaperExportFile(current, current.deletionReceiptId, new Date(now()).toISOString()); current = prepared.file;
@@ -77,6 +79,7 @@ async function cleanupRestoredPaperExports({ root, query, manifest, afterPhase, 
     if (claimed.length !== 1) fail('restore_paper_export_cleanup_lease_changed');
     await query('INSERT INTO durable_task_history VALUES(?,?,?,?,?,?)', [randomUUID(), cleanup.id, 'claimed', 'worker', at, JSON.stringify({ attempt: cleanup.attempts + 1, generation: cleanup.generation, restoration: true })]);
     await query('UPDATE domain_records SET body=? WHERE collection=? AND record_id=?', [JSON.stringify(current), 'paperExportFiles', current.id]);
+    await revokePaperExportWorkspace(root, file.workspace.split('/')[1]);
     for (const [relative, descriptor] of expected) {
       if (!relative.startsWith(current.workspace + '/')) continue;
       if (keep.has(relative)) fail('restore_paper_export_file_still_referenced');

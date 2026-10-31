@@ -39,6 +39,7 @@ export async function paperLibraryApplication<T>(test: (h: any) => Promise<T>, o
     const task = await store.tasks.claim([PAPER_EXPORT_TASK_KIND], 120000); expect(task.id).toBe(prepared.tasks[0].id);
     const reserved = reservePaperExportFile(prepared.record, task, new Date().toISOString());
     await store.transaction(() => store.append('paperExportFiles', reserved.file), reserved.fence);
+    await require('../../../dist/apps/api/src/infrastructure/studio-file-coordination.js').registerPaperExportWriterProtocol(data, reserved.file.workspace.split('/')[1]);
     const workspace = join(data, reserved.file.workspace); mkdirSync(join(workspace, 'artifacts-practice'), { recursive: true });
     const format = prepared.record.slots[0].format, original = format === 'pdf' ? actualPdf : actualDocx;
     writeFileSync(join(workspace, 'input.json'), paperExportDocumentBytes(prepared.document)); copyFileSync(join(sample, 'final/practice.' + format), join(workspace, 'artifacts-practice/practice.' + format));

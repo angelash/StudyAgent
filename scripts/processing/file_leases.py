@@ -97,7 +97,7 @@ def file_lease(root, *, after_phase=None):
              'createdAt': datetime.now(timezone.utc).isoformat()}
     publish_marker(root, marker, 'lease', value, after_phase)
     try:
-        if os.path.lexists(root / 'purge.json'):
+        if os.path.lexists(root / 'purge.json') or os.path.lexists(root / 'revoked.json'):
             raise ValueError('studio_file_collection_pending')
         yield
     finally:

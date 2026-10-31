@@ -4,6 +4,7 @@ import { NestFactory } from '@nestjs/core';
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, resolve, sep } from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
+import { get as httpGet } from 'node:http';
 import { DatabaseSync } from 'node:sqlite';
 import request from 'supertest';
 import { DomainDatabase } from '../../infrastructure/domain-database';
@@ -93,15 +94,20 @@ describe.skipIf(!installation || !workspace)('actual export render supervisor, n
   }, 60000);
   it('cancels an actually running Office job and never publishes the late file', async () => {
     const actor = await register(), f = await prepare(actor, undefined, ['practice'], ['pdf']), running = worker.runNext();
-    let file: any, started: any;
+    let file: any, started: any, pythonPid: number | undefined;
     await until(async () => { file = await store.requestContext(() => store.select('paperExportFiles', { exportId: f.result.exportId })[0]); if (!file) return false;
-      const name = join(data, file.workspace, 'artifacts-practice/o-started.json'); if (!existsSync(name)) return false; started = JSON.parse(readFileSync(name, 'utf8')); try { process.kill(started.rootPid, 0); return true; } catch { return false; }
+      const name = join(data, file.workspace, 'artifacts-practice/o-started.json'); if (!existsSync(name)) return false; started = JSON.parse(readFileSync(name, 'utf8'));
+      const leases = await load('infrastructure/studio-file-coordination').inspectStudioFileLeases(data, 'paper-export', file.workspace.split('/')[1]);
+      pythonPid = leases.find((lease: any) => lease.status === 'active' && lease.pid !== process.pid)?.pid;
+      try { process.kill(started.rootPid, 0); return pythonPid !== undefined; } catch { return false; }
     });
     const task = await store.tasks.get(f.result.slots[0].taskId); await api(actor, 'post', '/library/export-commands', { kind: 'cancel', requestKey: key(), exportId: f.result.exportId,
       book: 'practice', format: 'pdf', expectedTaskVersion: task.version, expectedGeneration: task.generation });
     expect(await running).toBe(true); expect((await view(actor, f)).slots[0].state).toBe('cancelled'); expect((await view(actor, f)).slots[0].publication).toBeNull();
     expect(() => process.kill(started.rootPid, 0)).toThrow();
-    const supervisor = JSON.parse(readFileSync(join(data, file.workspace, 'supervisor-practice-process.json'), 'utf8')); expect(supervisor.tree.after.activeProcesses).toBe(0);
+    const supervisor = JSON.parse(readFileSync(join(data, file.workspace, 'supervisor-practice-process.json'), 'utf8')); expect(supervisor.tree.after.activeProcesses).toBe(0); expect(supervisor.pid).toBe(pythonPid);
+    await until(async () => (await load('infrastructure/studio-file-coordination').inspectStudioFileLeases(data, 'paper-export', file.workspace.split('/')[1])).length === 0);
+    records.push({ scenario: 'cancelled-python-owner', files: [{ supervisorPid: pythonPid, tree: supervisor.tree, leasesReleased: true }] });
     const saved = (await cold()).state.paperExportFiles!.find((row: any) => row.id === file.id) as any; expect(saved.state).toBe('collecting'); expect(saved.cleanupTaskId).toBeTruthy();
   }, 60000);
   it('refuses a real same-size source image corruption after queueing and retains a native cleanup task for the reserved workspace', async () => {
@@ -127,4 +133,33 @@ describe.skipIf(!installation || !workspace)('actual export render supervisor, n
     await download(actor, slot.downloadUrl, 403); await expect(handle.stat()).rejects.toThrow();
     expect((await cold()).state.paperSourceExposures!.filter((row: any) => row.actorId === actor.user.id)).toEqual(exposures);
   }, 60000);
+  it('holds a real paused HTTP download lease across author deletion, then collects the exact workspace after the full bytes finish', async () => {
+    const actor = await register(), f = await prepare(actor, undefined, ['practice'], ['docx']); expect(await worker.runNext()).toBe(true);
+    const slot = (await view(actor, f)).slots[0], file = await store.requestContext(() => {
+      const record = store.find('paperExports', { id: f.result.exportId }); return structuredClone(store.find('paperExportFiles', { id: record.slots[0].published.fileId }));
+    });
+    const root = join(data, file.workspace), artifact = join(root, 'artifacts-practice/practice.docx'), before = sha(readFileSync(artifact));
+    expect(slot.publication.bytes).toBeGreaterThan(8 * 1024 * 1024);
+    await app.listen(0, '127.0.0.1'); const port = app.getHttpServer().address().port;
+    const response = await new Promise<import('node:http').IncomingMessage>((yes, no) => {
+      const call = httpGet({ hostname: '127.0.0.1', port, path: slot.downloadUrl, headers: { Authorization: 'Bearer ' + actor.token } }, res => { res.pause(); yes(res); }); call.once('error', no);
+    });
+    const gc = app.get(load('modules/library/paper-export-cleanup-worker.service').PaperExportCleanupWorkerService); gc.collectionDelayMs = 1;
+    const coordination = load('infrastructure/studio-file-coordination'), key = file.workspace.split('/')[1];
+    try {
+      expect(response.statusCode).toBe(200);
+      await until(async () => (await coordination.inspectStudioFileLeases(data, 'paper-export', key)).some((lease: any) => lease.status === 'active'));
+      const preview = await api(actor, 'get', '/privacy/account/deletion-preview');
+      const receipt = await api(actor, 'post', '/privacy/account/delete', { credential: 'synthetic-render-account-only', requestKey: randomUUID(), confirmation: preview.confirmation, fingerprint: preview.fingerprint });
+      let waiting: any;
+      await until(async () => { await gc.runNext(false); const current = await store.requestContext(() => structuredClone(store.find('paperExportFiles', { id: file.id }))); waiting = await store.tasks.get(current.cleanupTaskId); return waiting?.state === 'retry_wait'; });
+      expect(waiting).toMatchObject({ attempts: 0, errorCode: 'paper_export_collection_writer_or_reader_active' }); expect(sha(readFileSync(artifact))).toBe(before);
+      const bytes = await new Promise<Buffer>((yes, no) => { const chunks: Buffer[] = []; response.on('data', chunk => chunks.push(Buffer.from(chunk))); response.once('error', no); response.once('end', () => yes(Buffer.concat(chunks))); response.resume(); });
+      expect(bytes.length).toBe(slot.publication.bytes); expect(sha(bytes)).toBe(before);
+      await until(async () => (await coordination.inspectStudioFileLeases(data, 'paper-export', key)).length === 0);
+      await until(async () => { await gc.runNext(false); return await store.requestContext(() => store.find('paperExportFiles', { id: file.id }).state === 'deleted'); });
+      expect(existsSync(root)).toBe(false); const state = (await cold()).state; expect(state.paperExportFiles!.find((row: any) => row.id === file.id)).toMatchObject({ state: 'deleted', deletionReceiptId: receipt.id });
+      records.push({ scenario: 'paused-http-download-and-actual-collection', files: [{ fileId: file.id, bytes: bytes.length, sha256: before, waitingReason: waiting.errorCode, nativeState: 'deleted' }] });
+    } finally { response.destroy(); }
+  }, 90000);
 });

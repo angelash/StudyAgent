@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 import { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
 import type { TaskRow } from '../../infrastructure/task-repository';
 import { studyDataRoot } from '../../infrastructure/workspace-paths';
-import { assertNoFileLinks, withStudioFileLease } from '../../infrastructure/studio-file-coordination';
+import { assertNoFileLinks, withStudioFileLease, registerPaperExportWriterProtocol } from '../../infrastructure/studio-file-coordination';
 import { writeImmutableBytes } from '../../infrastructure/immutable-files';
 import { retentionDigest as digest } from '../diagnostics/retention-anchor';
 import { PaperExportService } from './paper-export.service';
@@ -60,6 +60,7 @@ export class PaperExportRenderWorkerService implements OnApplicationBootstrap, O
       return work;
     });
     await withStudioFileLease(root, 'paper-export', identity, async () => {
+      await registerPaperExportWriterProtocol(root, identity);
       await check(); await assertNoFileLinks(workspace); await fs.mkdir(workspace);
       const built = await this.store.requestContext(() => this.exports.workerDocument(initial));
       const write = async (name: string, bytes: Buffer) => { await check(); const path = resolve(workspace, name); await assertNoFileLinks(path); await writeImmutableBytes(path, bytes); await assertNoFileLinks(path); };

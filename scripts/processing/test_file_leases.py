@@ -54,6 +54,23 @@ class ProcessLeases(unittest.TestCase):
             self.assertEqual(list((control / 'leases').iterdir()), [])
             self.assertTrue(fence.is_file())
 
+    def test_permanent_revocation_refuses_a_late_writer_after_the_purge_fence_is_gone(self):
+        with tempfile.TemporaryDirectory(prefix='study-python-revoked-') as directory:
+            root = Path(directory)
+            control = root / 'control'
+            control.mkdir()
+            revoked = control / 'revoked.json'
+            revoked.write_bytes(b'{"format":"study-export-workspace-revocation-v1"}')
+            before = revoked.read_bytes()
+            with self.assertRaisesRegex(ValueError, 'collection_pending'):
+                processor.pdf_structure({'leaseRoot': str(control), 'input': str(root / 'not-read.pdf'),
+                                         'cache': str(root / 'cache'), 'output': str(root / 'output.json')})
+            self.assertFalse((root / 'cache').exists())
+            self.assertFalse((root / 'output.json').exists())
+            self.assertEqual(list((control / 'leases').iterdir()), [])
+            self.assertEqual(list((control / 'staging').iterdir()), [])
+            self.assertEqual(revoked.read_bytes(), before)
+
     def test_actual_page_processing_owns_a_python_pid_until_checkpoint_or_failure(self):
         with tempfile.TemporaryDirectory(prefix='study-python-file-lease-') as directory:
             root = Path(directory)

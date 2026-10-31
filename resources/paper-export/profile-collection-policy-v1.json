@@ -1,0 +1,476 @@
+{
+  "protocol": "paper-export-profile-collection-policy-v1",
+  "officeVersion": "26.8.2.2",
+  "officeManifestSha256": "332efdeb4344e15eec827de966ff88491d7a0016abc993b72c06bb873a164814",
+  "tempSegment": "lu[0-9]{1,10}[a-z0-9]{4,24}\\.tmp",
+  "rules": [
+    {
+      "path": "cache/opencl_devices.log",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "cache/opencl_profile.xml",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "crash/dump.ini",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/autotext/mytexts.bau",
+      "maxBytes": 65536,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "1d9edfa051d79a60b4a29c5cd37ea1e3bb371de0d6041aa755726be6370fe870"
+      ]
+    },
+    {
+      "path": "user/basic/dialog.xlc",
+      "maxBytes": 65536,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "5b72c4cc5130eccab44cbfb91270befaeaf8ee7ab97cf205ee2abb582fa4a9e5"
+      ]
+    },
+    {
+      "path": "user/basic/script.xlc",
+      "maxBytes": 65536,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "5b72c4cc5130eccab44cbfb91270befaeaf8ee7ab97cf205ee2abb582fa4a9e5"
+      ]
+    },
+    {
+      "path": "user/basic/Standard/dialog.xlb",
+      "maxBytes": 65536,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "85c83411f1285a0d0d9b511a7ea7dd06d5ac9b97f90d286adaca084212e3fe80"
+      ]
+    },
+    {
+      "path": "user/basic/Standard/Module1.xba",
+      "maxBytes": 65536,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "b434faf21386064e2e81af758f307ae8bea72c0cb6c8510d55b1bc1bb38f8612"
+      ]
+    },
+    {
+      "path": "user/basic/Standard/script.xlb",
+      "maxBytes": 65536,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "80cb10b100053f6e0b26bb009a2b8ccbdedb761901680500a4736f7afbf1f959"
+      ]
+    },
+    {
+      "path": "user/config/autotbl.fmt",
+      "maxBytes": 131072,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "713229151490c66f043cb4865147c97458b4f33e4eb5f2bb4133c58cbe77041e"
+      ]
+    },
+    {
+      "path": "user/database/biblio.odb",
+      "maxBytes": 65536,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "c3dd4e9008be33cdede3abf822e9b748a201704adf95aad92ab894dd98b3fe85"
+      ]
+    },
+    {
+      "path": "user/database/biblio/biblio.dbf",
+      "maxBytes": 262144,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "aefc2bb614c2e307870405e0fd72f4a22cf794c396a73ce0551f18a478e80ed2"
+      ]
+    },
+    {
+      "path": "user/database/biblio/biblio.dbt",
+      "maxBytes": 131072,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "3ab142231d8075fdd02c95a691ddce590e0f81450744cb87ca610fd06d75cac1"
+      ]
+    },
+    {
+      "path": "user/database/evolocal.odb",
+      "maxBytes": 65536,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "c72f8fd2b0e8f2b90e967a4cc29ae2f6333901a25862d69a81fc47fe44a444df"
+      ]
+    },
+    {
+      "path": "user/extensions/buildid",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/extensions.pmap",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/lastsynchronized",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.bundle.PackageRegistryBackend/backenddb.xml",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.component.PackageRegistryBackend/unorc",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/{office-temp}/dictionaries.xcu",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/{office-temp}/Filter.xcu",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/{office-temp}/OptionsDialog.xcu",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/{office-temp}/Paths.xcu",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/backenddb.xml",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/configmgr.ini",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/da/caption/org.openoffice.da.hunspell.dictionaries%2Fpage1.xhp",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/da/caption/org.openoffice.da.hunspell.dictionaries%2Fpage2.xhp",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/da/content/org.openoffice.da.hunspell.dictionaries%2Fpage1.xhp",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/da/content/org.openoffice.da.hunspell.dictionaries%2Fpage2.xhp",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/da/help.db_",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/da/help.ht_",
+      "maxBytes": 65536,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      ]
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/da/help.jar",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/da/help.key_",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/en/help.db_",
+      "maxBytes": 65536,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      ]
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/en/help.ht_",
+      "maxBytes": 65536,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      ]
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/en/help.key_",
+      "maxBytes": 65536,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      ]
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/hu/caption/org.openoffice.hu.hunspell.dictionaries%2Fpage1.xhp",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/hu/content/org.openoffice.hu.hunspell.dictionaries%2Fpage1.xhp",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/hu/help.db_",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/hu/help.ht_",
+      "maxBytes": 65536,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      ]
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/hu/help.jar",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/hu/help.key_",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/backenddb.xml",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/bundled/registry/com.sun.star.comp.deployment.script.PackageRegistryBackend/backenddb.xml",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/shared/lastsynchronized",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/shared/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/backenddb.xml",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/shared/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/backenddb.xml",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/tmp/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/backenddb.xml",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/extensions/tmp/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/backenddb.xml",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/gallery/sg30.sdv",
+      "maxBytes": 65536,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "65365530165a871772e21962a5d7dda107d8d010f329bf59c878eabc3465bbe4"
+      ]
+    },
+    {
+      "path": "user/gallery/sg30.thm",
+      "maxBytes": 65536,
+      "kind": "pinned-office-bytes",
+      "sha256": [
+        "f1f24dff4f58a716033bcf96ad175d3436bff0e0a233ab09f6215973ed843fed"
+      ]
+    },
+    {
+      "path": "user/pack/autotext/mytexts.pack",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/pack/basic/dialog.pack",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/pack/basic/script.pack",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/pack/basic/Standard/dialog.pack",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/pack/basic/Standard/Module1.pack",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/pack/basic/Standard/script.pack",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/pack/config/autotbl.pack",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/pack/database/biblio.pack",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/pack/database/biblio/biblio.pack",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/pack/database/evolocal.pack",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/pack/ExtensionInfo.pack",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/pack/registrymodifications.pack",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/registrymodifications.xcu",
+      "maxBytes": 524288,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/uno_packages/cache/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/backenddb.xml",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    },
+    {
+      "path": "user/uno_packages/cache/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/backenddb.xml",
+      "maxBytes": 65536,
+      "kind": "bounded-generated-profile"
+    }
+  ],
+  "directories": [
+    "cache",
+    "crash",
+    "user",
+    "user/autocorr",
+    "user/autotext",
+    "user/basic",
+    "user/basic/Standard",
+    "user/config",
+    "user/config/soffice.cfg",
+    "user/config/soffice.cfg/modules",
+    "user/config/soffice.cfg/modules/scalc",
+    "user/config/soffice.cfg/modules/scalc/menubar",
+    "user/config/soffice.cfg/modules/scalc/popupmenu",
+    "user/config/soffice.cfg/modules/scalc/statusbar",
+    "user/config/soffice.cfg/modules/scalc/toolbar",
+    "user/config/soffice.cfg/modules/swriter",
+    "user/config/soffice.cfg/modules/swriter/menubar",
+    "user/config/soffice.cfg/modules/swriter/popupmenu",
+    "user/config/soffice.cfg/modules/swriter/statusbar",
+    "user/config/soffice.cfg/modules/swriter/toolbar",
+    "user/database",
+    "user/database/biblio",
+    "user/extensions",
+    "user/extensions/bundled",
+    "user/extensions/bundled/registry",
+    "user/extensions/bundled/registry/com.sun.star.comp.deployment.bundle.PackageRegistryBackend",
+    "user/extensions/bundled/registry/com.sun.star.comp.deployment.component.PackageRegistryBackend",
+    "user/extensions/bundled/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend",
+    "user/extensions/bundled/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/{office-temp}",
+    "user/extensions/bundled/registry/com.sun.star.comp.deployment.executable.PackageRegistryBackend",
+    "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend",
+    "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}",
+    "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/da",
+    "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/da/caption",
+    "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/da/content",
+    "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/en",
+    "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/hu",
+    "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/hu/caption",
+    "user/extensions/bundled/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend/{office-temp}/hu/content",
+    "user/extensions/bundled/registry/com.sun.star.comp.deployment.script.PackageRegistryBackend",
+    "user/extensions/bundled/registry/com.sun.star.comp.deployment.sfwk.PackageRegistryBackend",
+    "user/extensions/shared",
+    "user/extensions/shared/registry",
+    "user/extensions/shared/registry/com.sun.star.comp.deployment.bundle.PackageRegistryBackend",
+    "user/extensions/shared/registry/com.sun.star.comp.deployment.component.PackageRegistryBackend",
+    "user/extensions/shared/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend",
+    "user/extensions/shared/registry/com.sun.star.comp.deployment.executable.PackageRegistryBackend",
+    "user/extensions/shared/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend",
+    "user/extensions/shared/registry/com.sun.star.comp.deployment.script.PackageRegistryBackend",
+    "user/extensions/shared/registry/com.sun.star.comp.deployment.sfwk.PackageRegistryBackend",
+    "user/extensions/tmp",
+    "user/extensions/tmp/extensions",
+    "user/extensions/tmp/registry",
+    "user/extensions/tmp/registry/com.sun.star.comp.deployment.bundle.PackageRegistryBackend",
+    "user/extensions/tmp/registry/com.sun.star.comp.deployment.component.PackageRegistryBackend",
+    "user/extensions/tmp/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend",
+    "user/extensions/tmp/registry/com.sun.star.comp.deployment.executable.PackageRegistryBackend",
+    "user/extensions/tmp/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend",
+    "user/extensions/tmp/registry/com.sun.star.comp.deployment.script.PackageRegistryBackend",
+    "user/extensions/tmp/registry/com.sun.star.comp.deployment.sfwk.PackageRegistryBackend",
+    "user/gallery",
+    "user/pack",
+    "user/pack/autotext",
+    "user/pack/basic",
+    "user/pack/basic/Standard",
+    "user/pack/config",
+    "user/pack/database",
+    "user/pack/database/biblio",
+    "user/temp",
+    "user/temp/embeddedfonts",
+    "user/temp/embeddedfonts/fromdocs",
+    "user/uno_packages",
+    "user/uno_packages/cache",
+    "user/uno_packages/cache/registry",
+    "user/uno_packages/cache/registry/com.sun.star.comp.deployment.bundle.PackageRegistryBackend",
+    "user/uno_packages/cache/registry/com.sun.star.comp.deployment.component.PackageRegistryBackend",
+    "user/uno_packages/cache/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend",
+    "user/uno_packages/cache/registry/com.sun.star.comp.deployment.executable.PackageRegistryBackend",
+    "user/uno_packages/cache/registry/com.sun.star.comp.deployment.help.PackageRegistryBackend",
+    "user/uno_packages/cache/registry/com.sun.star.comp.deployment.script.PackageRegistryBackend",
+    "user/uno_packages/cache/registry/com.sun.star.comp.deployment.sfwk.PackageRegistryBackend",
+    "user/uno_packages/cache/uno_packages"
+  ]
+}

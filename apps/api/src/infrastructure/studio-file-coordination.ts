@@ -18,11 +18,35 @@ export async function acquireStudioFileLease(root:string,kind:FileKind,key:strin
   const release=()=>releaseOwnStudioMarker(file,value);
   try{
     if(await exists(resolve(control,'purge.json')))throw new ConflictException('资料正在回收，请稍后重试');
-    if((kind==='upload'||kind==='project-upload'||kind==='paper-upload'||kind==='paper-repair-upload')&&await exists(resolve(control,'revoked.json')))throw new ConflictException('这次上传已撤销，请重新开始');
+    if((kind==='upload'||kind==='project-upload'||kind==='paper-upload'||kind==='paper-repair-upload'||kind==='paper-export')&&await exists(resolve(control,'revoked.json')))throw new ConflictException(kind==='paper-export'?'这次导出文件已回收，不能继续写入。':'这次上传已撤销，请重新开始');
   }catch(error){await release();throw error;}
   return release;
 }
 export async function withStudioFileLease<T>(root:string,kind:FileKind,key:string,action:()=>Promise<T>){const release=await acquireStudioFileLease(root,kind,key);try{return await action();}finally{await release();}}
+
+/** Register only under the Node writer's lease before workspace creation, or
+ * under a verified cold-restore guard. Absence never proves legacy writers stopped. */
+export async function registerPaperExportWriterProtocol(root:string,key:string){
+  const control=studioCoordinationRoot(root,'paper-export',key),file=resolve(control,'writer-protocol.json');
+  const value={format:'study-export-writers-v1',key,nodeAndSupervisorLease:1,nonce:randomUUID(),pid:process.pid,createdAt:new Date().toISOString()};
+  try{await publishStudioMarker(control,file,'lease',value);}
+  catch(error){if((error as NodeJS.ErrnoException).code!=='EEXIST')throw error;await assertPaperExportWriterProtocol(root,key);}
+}
+export async function assertPaperExportWriterProtocol(root:string,key:string){
+  const current=await marker(resolve(studioCoordinationRoot(root,'paper-export',key),'writer-protocol.json')).catch(()=>null);
+  if(!current||Object.keys(current).sort().join(',')!=='createdAt,format,key,nodeAndSupervisorLease,nonce,pid'||current.format!=='study-export-writers-v1'||
+      current.key!==key||current.nodeAndSupervisorLease!==1||!uuid.test(String(current.nonce))||!Number.isSafeInteger(current.pid)||(current.pid as number)<1||
+      typeof current.createdAt!=='string'||!Number.isFinite(Date.parse(current.createdAt)))throw new StudioFileCollectionPending('paper_export_collection_writer_protocol_unknown');
+}
+
+/** A collected export identity is never reused. Retain this compact marker
+ * outside its workspace so a late child cannot reacquire write permission. */
+export async function revokePaperExportWorkspace(root:string,key:string){
+  const control=studioCoordinationRoot(root,'paper-export',key),file=resolve(control,'revoked.json');
+  const value={format:'study-export-workspace-revocation-v1',key,nonce:randomUUID(),pid:process.pid,createdAt:new Date().toISOString()};
+  try{await publishStudioMarker(control,file,'revoked',value);}
+  catch(error){if((error as NodeJS.ErrnoException).code!=='EEXIST')throw error;const current=await marker(file);if(current.format!==value.format||current.key!==key)throw new Error('invalid_export_workspace_revocation');}
+}
 
 /** Permanent, outside the chunk directory. Upload IDs are never reused. Called only after domain cancellation commits. */
 export async function revokeStudioUploadFiles(root:string,id:string,kind:'upload'|'project-upload'|'paper-upload'|'paper-repair-upload'='upload'){

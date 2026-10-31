@@ -6,13 +6,13 @@ from pathlib import Path
 import subprocess
 import sys
 import time
-from file_leases import no_links
+from file_leases import no_links, file_lease
 from paper_export_process import RendererJob
 from paper_export_protocol import error_code
 from paper_export_runtime import minimal_environment
 
 
-def supervise(args):
+def run_owned(args):
     workspace = Path(args.workspace).absolute(); no_links(workspace)
     if not workspace.is_dir(): raise ValueError('paper_export_invalid_input')
     cancelled = workspace / 'cancelled'; no_links(cancelled)
@@ -56,6 +56,20 @@ def supervise(args):
         with (workspace / ('supervisor-' + args.book + '-process.json')).open('x', encoding='utf8') as stream:
             json.dump({'protocol': 'paper-export-supervisor-v1', 'pid': os.getpid(), 'childPid': None if process is None else process.pid,
                        'tree': cleanup, 'parentPipeClosed': parent_closed()}, stream)
+
+
+def supervise(args):
+    import re
+    workspace = Path(args.workspace).absolute()
+    if workspace.parent.name != 'paper-exports' or not re.fullmatch('[a-f0-9]{64}', workspace.name):
+        raise ValueError('paper_export_invalid_input')
+    control = workspace.parent / 'control' / workspace.name
+    # The actual Python owner survives a Node failure. Late acquisition after
+    # collection sees the durable revocation before it can write anything.
+    with file_lease(control):
+        no_links(workspace)
+        if not workspace.is_dir(): raise ValueError('paper_export_cancelled')
+        return run_owned(args)
 
 
 if __name__ == '__main__':

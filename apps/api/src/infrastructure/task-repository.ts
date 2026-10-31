@@ -134,6 +134,7 @@ export class TaskRepository {
   }
   async recoverableProjectFileCollections(){return(await this.query("SELECT * FROM durable_tasks WHERE kind='project.file.collect' AND state IN ('failed','cancelled') ORDER BY updated_at,id LIMIT 100")).map(item=>row(item));}
   async recoverablePaperCaptureCollections(){return(await this.query("SELECT * FROM durable_tasks WHERE kind='learning.paper-capture.cleanup' AND state IN ('failed','cancelled') ORDER BY updated_at,id LIMIT 100")).map(item=>row(item));}
+  async recoverablePaperExportCollections(){return(await this.query("SELECT * FROM durable_tasks WHERE kind='library.paper-export.cleanup' AND state IN ('failed','cancelled') ORDER BY updated_at,id LIMIT 100")).map(item=>row(item));}
   async recoverablePaperRepairCollections(){return(await this.query("SELECT * FROM durable_tasks WHERE kind IN ('learning.paper-capture.repair.cleanup','learning.paper-capture.repair-upload.cleanup') AND state IN ('failed','cancelled') ORDER BY updated_at,id LIMIT 100")).map(item=>row(item));}
   async activePaperCaptureTasks(){
     const tasks=await this.query("SELECT * FROM durable_tasks WHERE kind LIKE 'learning.paper-capture.%' AND kind<>'learning.paper-capture.cleanup' AND state IN ('queued','running','retry_wait','cancel_requested') LIMIT 10001");
@@ -160,6 +161,7 @@ export class TaskRepository {
   }
   async deferProjectFileCollection(id:string,token:string,code:string,delayMs=30000){return this.deferMaterialTask(id,token,code,delayMs,'project.file.collect');}
   async deferPaperCaptureCollection(id:string,token:string,code:string,delayMs=30000){return this.deferMaterialTask(id,token,code,delayMs,'learning.paper-capture.cleanup');}
+  async deferPaperExportCollection(id:string,token:string,code:string,delayMs=30000){return this.deferMaterialTask(id,token,code,delayMs,'library.paper-export.cleanup');}
   async deferPaperRepairCollection(id:string,token:string,code:string,delayMs=30000){const task=await this.get(id);if(!task||!['learning.paper-capture.repair.cleanup','learning.paper-capture.repair-upload.cleanup'].includes(task.kind))throw Error('invalid_paper_repair_collection_kind');return this.deferMaterialTask(id,token,code,delayMs,task.kind);}
   async deferProjectAssetProcessing(id:string,token:string,code:string,delayMs=30000){return this.deferMaterialTask(id,token,code,delayMs,'project.asset.process');}
   async deferOriginalRepair(id:string,token:string,code:string,delayMs=30000){
