@@ -1,0 +1,5 @@
+const fs = require('node:fs'), path = require('node:path'), { spawnSync } = require('node:child_process');
+const config = JSON.parse(fs.readFileSync(path.join(__dirname, 'postgres-runtime.private.json'), 'utf8'));
+const result = spawnSync(process.execPath, [path.join(__dirname, 'check.cjs'), 'postgres-first', 'test', 'src/modules/library/paper-library-postgres.integration.test.ts'],
+  { windowsHide: true, env: { ...process.env, STUDY_TEST_PAPER_LIBRARY_POSTGRES_URL: config.connectionString, STUDY_TEST_PAPER_LIBRARY_PG_BIN: config.bin }, stdio: 'inherit', timeout: 360000 });
+process.exitCode = result.status ?? 1;

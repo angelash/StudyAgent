@@ -4,6 +4,8 @@ import { DatabaseSync } from 'node:sqlite';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+const { SCHEMA_VERSION: CURRENT_SCHEMA_VERSION } = require(require('node:path').resolve(__dirname, '../../../../scripts/operations/database-reader-guard.cjs'));
+
 
 describe('topic figure durable original request identities', () => {
   it('upgrades an actual schema16 file without changing its original whiteboard or manuscript', async () => {
@@ -15,7 +17,7 @@ describe('topic figure durable original request identities', () => {
       db = new DomainDatabase(file); await db.open(); await db.commit(await db.read(), legacy); await db.close(); db = undefined;
       const old = new DatabaseSync(file); old.exec('DROP INDEX topic_visual_prepare_request;DROP INDEX paper_practice_creation_request;DROP INDEX paper_practice_command_request;DROP INDEX IF EXISTS teaching_tool_creation_request;DELETE FROM schema_migrations WHERE version>=17;'); old.exec("DROP INDEX IF EXISTS assistant_note_creation_request;UPDATE study_restore_guard SET state='ready' WHERE id=1;"); old.close();
       db = new DomainDatabase(file); await db.open(); expect((await db.read()).state).toEqual(legacy); await db.close(); db = undefined;
-      const verified = new DatabaseSync(file, { readOnly: true }); try { expect(verified.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(31); } finally { verified.close(); }
+      const verified = new DatabaseSync(file, { readOnly: true }); try { expect(verified.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(CURRENT_SCHEMA_VERSION); } finally { verified.close(); }
     } finally { await db?.close(); rmSync(directory, { recursive: true, force: true }); }
   });
   it('rejects reuse of one owner original key for a different draft and retains the original record atomically', async () => {

@@ -8,6 +8,7 @@ import { retentionDigest as digest } from '../diagnostics/retention-anchor';
 import { at, fixture, sourceMap } from './paper-export-fixture.spec';
 import { PAPER_EXPORT_TASK_KIND, preparePaperExportControl } from './paper-export-record';
 import { assertPaperExportNativeRows } from './paper-export-native';
+import { fenceErasedPaperExportTasks } from './paper-export-privacy';
 import { assertPaperExportFile, collectPaperExportFile, paperExportErasureProof, paperExportFileIdentityFingerprint,
   paperExportFileProgress, publishPaperExportFile, recordPaperExportRendered, reservePaperExportFile, type PaperExportFileRecord } from './paper-export-file-record';
 
@@ -30,6 +31,10 @@ async function harness(student = false, multi = false) {
       if (options.enqueue) await queue.insert(options.enqueue);
       if (options.operations) await queue.applyOperations(options.operations);
       if (options.fence) await queue.applyFence(options.fence);
+      await fenceErasedPaperExportTasks(async (sql, args = []) => {
+        if (sql.startsWith('SELECT collection,record_id,body FROM domain_records')) return db.prepare('SELECT collection,record_id,body FROM qa_export_records').all();
+        return db.prepare(sql).all(...args);
+      }, new Date(epoch).toISOString());
       if (options.verify !== false) verify(); db.exec('COMMIT');
     } catch (error) { db.exec('ROLLBACK'); throw error; }
   }
@@ -245,6 +250,11 @@ describe('real SQLite outbox, exact controls, file checkpoints and native relati
       const duplicated = structuredClone(receipt); duplicated.erasedPaperExports!.push(duplicated.erasedPaperExports![0]); expect(() => makeLedger([duplicated])).toThrow('erasure');
       const childKept = structuredClone(receipt); childKept.subjectHash = digest({ id: 'guardian' }); childKept.actorId = 'guardian'; childKept.retainedStudentHashes = [digest({ id: 'child' })];
       childKept.erasedPaperExports![0].studentFingerprint = digest({ id: 'child' }); expect(() => makeLedger([childKept])).toThrow('erasure');
+      const noncanonicalTime = structuredClone(receipt); noncanonicalTime.completedAt = noncanonicalTime.completedAt.replace('Z', '+00:00');
+      expect(() => makeLedger([noncanonicalTime])).toThrow('erasure');
+      expect(() => h.verify([...h.rows(), { collection: 'privacyRequests', body: noncanonicalTime }])).toThrow('integrity');
+      const oversizedId = structuredClone(receipt); oversizedId.id = 'a'.repeat(129); expect(() => makeLedger([oversizedId])).toThrow('erasure');
+      expect(() => h.verify([...h.rows(), { collection: 'privacyRequests', body: oversizedId }])).toThrow('integrity');
     } finally { h.close(); }
   });
 });

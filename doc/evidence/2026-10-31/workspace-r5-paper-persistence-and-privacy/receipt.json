@@ -1,0 +1,1813 @@
+{
+  "at": "2026-10-31T12:44:38.100Z",
+  "baseline": "3efeb2a1dde1c29215c3d8db7af5732f6a4b304a",
+  "scope": "R5 six native paper collections, transaction integrity, actual privacy erasure and SQLite/PostgreSQL native file recovery",
+  "source": [
+    {
+      "path": "apps/api/src/infrastructure/assistant-note-storage.integration.test.ts",
+      "sha256": "3a44110bc9f653d7b0403671c26d1d118552052a0f20a63b96f83f8fef5152d0"
+    },
+    {
+      "path": "apps/api/src/infrastructure/assistant-whiteboard-reader.integration.test.ts",
+      "sha256": "6acd07d2df1e2ad60a630301f19d49337e97846f332c22d492dc6840d3685aad"
+    },
+    {
+      "path": "apps/api/src/infrastructure/backup.integration.test.ts",
+      "sha256": "de5085008753071fc08945f8ecf45289167bef1829d7feac86a331ff88debe16"
+    },
+    {
+      "path": "apps/api/src/infrastructure/domain-database.ts",
+      "sha256": "8147cfe463d2074ae3327c912ec7f3ff31cb7420b46fede5ae79eaf77535c9be"
+    },
+    {
+      "path": "apps/api/src/infrastructure/in-memory-store.service.ts",
+      "sha256": "98a37f0f684c11384410bc0ba048d3c5306b812ab26620180c1bf213b21ff26c"
+    },
+    {
+      "path": "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+      "sha256": "32a105f43f77444893e6ea6873d4276587fd6ee1188b022744ab185182142476"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema25-reader.integration.test.ts",
+      "sha256": "25df46a6c9b7640f86993058627419b72b33205852fceb6cfa58ce29bcf94347"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema26-reader.integration.test.ts",
+      "sha256": "5804b1daca1d1832776fc15f3e8c66f12e7757838ffdf7e7d292d9a644d4605e"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema27-reader.integration.test.ts",
+      "sha256": "fdf032a45df3bc8ccb6d1d43027d415f295f29babe6d785c3530cef108ef2905"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema28-reader.integration.test.ts",
+      "sha256": "db99263ccb7bbe06519060385b42381d6fee428b25ac5e628ce2d9db46fefb1a"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema29-reader.integration.test.ts",
+      "sha256": "06d8cc6da2f7e4d2e5834392586d74da3dc2ee12a928ffd2001705a51567c3f3"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema30-reader.integration.test.ts",
+      "sha256": "7a14b2488443e87d814bb57e0beefa63b3266bf03fee7e1cb82dbc75339c8f50"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema31-reader.integration.test.ts",
+      "sha256": "e8734ca848d4a707f38812394cfde841005bae13f11ff59c12e5ba2191b832ae"
+    },
+    {
+      "path": "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+      "sha256": "2d2272dda3279ac13832227a006713c793cea30d74a210dcbf7152aa70527382"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-postgres.integration.test.ts",
+      "sha256": "73c849136f1ea47384df6d23a4219802a885403d52e2c0e7ec15dd1588a9689f"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-storage.integration.test.ts",
+      "sha256": "0c4b4db32803d768bd34bddec66fd3b6c34ce9d8b30e04d60ef3fc6c836ef2d6"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts",
+      "sha256": "8aabd7a31fa738a70e4d66fbfec8a14b4ce926eb1663b4b07dc81352be3b7a73"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-visual-storage.integration.test.ts",
+      "sha256": "7badd779888d41ed0d8405eb303dc2dad6a4bf771c560bcdf418b26c316e9c9a"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts",
+      "sha256": "66030034edf3ef9e4cdb0c4849b9a74c8a1a56271a843eb0e47e0284c9e73496"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts",
+      "sha256": "39f0b67a63f5e20697dfb5805de66a35c321b37510815edddf163994d7c5abcf"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts",
+      "sha256": "759b1593046d8173fba34c33ee646c4d97ea1a02e04b959f515834c57479758a"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching.integration.test.ts",
+      "sha256": "835f32bcafbc47f5bae7c4e8dc8590cd1635e37141ed0aafe4b28f7f5f00d204"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-recovery.integration.test.ts",
+      "sha256": "89df3965aca81ddf86659ffae2ec37f1a0142a59670b7589a8181f6564b89aca"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual-files.test.ts",
+      "sha256": "eeeecc010293ef52045fc4123d8c5f080cff23a0dec66251d8522360ea82eb17"
+    },
+    {
+      "path": "apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts",
+      "sha256": "1a788b7fd3451b0bbd17bf4dbb5f7c27668ea2af06566f4dbdb483d9b0a62cf1"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-export-native.test.ts",
+      "sha256": "8ddfa8bffd5770f28b6caa4bb699efc721591214c63763e0d2aee4be575f88cb"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-export-native.ts",
+      "sha256": "158a2f3d9fe7d59dc7227aca7333f0f92869580236c0dd4d9be0eb5384687049"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+      "sha256": "a1a3e2d93dbba0ba83be6c1ace1ea6dd463b621c2739f09ee8d893b6e477b8cf"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-native.ts",
+      "sha256": "69a67203e589c92cfbef0192df197b88ccaad1bddf93bfed1fd768e14805680d"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-selection-record.test.ts",
+      "sha256": "bc011f886bbee18a2179b35395eca2cf7a6e1114a469d9906c30e5923e214e6d"
+    },
+    {
+      "path": "apps/api/src/modules/privacy/privacy-records.ts",
+      "sha256": "3c63f0578ba5b757e26f5496b99bed3e0cc16b2f7b53543811963a7795ecedc0"
+    },
+    {
+      "path": "apps/api/src/modules/privacy/privacy.service.ts",
+      "sha256": "cf800561536ea0471c206acc278a90105ad9763a285f463a1aac731f7f63f523"
+    },
+    {
+      "path": "scripts/operations/assistant-practice-integrity.cjs",
+      "sha256": "98ec3bd74c500a45a2e228ea0a10ead64774ed453d5b4175584f7fdcb045fd5c"
+    },
+    {
+      "path": "scripts/operations/backup.cjs",
+      "sha256": "1ba330a0049b41ee2f8466592ee89fac72ffaed2e37be1e5a43ce1dd98a64e5c"
+    },
+    {
+      "path": "scripts/operations/database-reader-guard.cjs",
+      "sha256": "4fc94954bda08df4b55fa43ba42166154f1502e5e7e716b1c9e18bad66597c73"
+    },
+    {
+      "path": "scripts/operations/postgres-backup.cjs",
+      "sha256": "1dc6c101a5a480a187cf8b091428571030b35462d40c2e19c66f9553c59279a4"
+    },
+    {
+      "path": "scripts/operations/postgres-restore.cjs",
+      "sha256": "83e87024c45989f26787d262a19ba433e1e5acaa59ed741fc042c4c6f9908552"
+    },
+    {
+      "path": "scripts/operations/privacy-ledger.cjs",
+      "sha256": "1195834ad71df5b4f522fe5242875d9cb8a54a1601d5c706c4ce63e4965552f6"
+    },
+    {
+      "path": "scripts/operations/sqlite-restore.cjs",
+      "sha256": "0ca4d6c4549474ca895dd2e8854860fb1969e69cbe3afc39c364b781b10c10ab"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema32-reader.integration.test.ts",
+      "sha256": "55a23ee609c1ec5fe3fcfd577166305cc6aa8dffdf9a5fe9145e1a07df323837"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-export-backup.ts",
+      "sha256": "c7e19cffb2daf971e1b83dfb6d2b795c33781cc2a80e42ce7864a6d62c5233bd"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-export-persistence.ts",
+      "sha256": "3005f11e2f0bc24c3815db600e9a25a9b6bafc10545efca6246e13f370ef8343"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-export-privacy.ts",
+      "sha256": "ad3abda9d03f2ea36cb14e2e07506cb4bd7b1a0ad1be29ec6785ac570299706d"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-library-app.fixture.spec.ts",
+      "sha256": "96e6da2bc3f1a331da4f338a450eeff40fa1fd4fe4083fd052ad63e693bc3610"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-library-fixture.spec.ts",
+      "sha256": "73386d20a95ee0698b9c57fb06261ab586bfc04b14b1e2cfd68e7c056ee6c676"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-library-persistence.test.ts",
+      "sha256": "44c8aeaabc2ba074f2be9df75f61aca8e38e150f5e5575903c9ee6fdcbf888ec"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-library-postgres.integration.test.ts",
+      "sha256": "80d7ce20cb9e5ba4bd4e212adaddf67217d8a9f166d9324dc21406d2cabd15bc"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-library-privacy.integration.test.ts",
+      "sha256": "23a3798f3be75eb1de377660cbb781c86e9b78bc936e6db08d9f11e24609f91c"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-library-write-integrity.ts",
+      "sha256": "aeac9887e7204879caed6f09d14e45e544a4a468dc1d701b4f67f4ee4f3ad9e6"
+    },
+    {
+      "path": "scripts/operations/restored-paper-exports.cjs",
+      "sha256": "b8265aab7439ac30a0b9b427c353c46d3b3a39208f9e5ba693f8def3c0410620"
+    }
+  ],
+  "applicationSchema": 32,
+  "main": {
+    "at": "2026-10-31T12:41:44.732Z",
+    "checks": [
+      {
+        "name": "contracts",
+        "exit": 0,
+        "error": null
+      },
+      {
+        "name": "api",
+        "exit": 0,
+        "error": null
+      },
+      {
+        "name": "web",
+        "exit": 0,
+        "error": null
+      }
+    ],
+    "exactIntegratedSources": 50,
+    "formal": {
+      "schema": 24,
+      "revision": 187
+    },
+    "protectedFiles": 1063,
+    "allProtectedUnchanged": true,
+    "applicationSchema": 32,
+    "businessRoutesEnabled": false,
+    "actualWorkersEnabled": false,
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "batches": {
+    "persistence-first": {
+      "report": "reports/persistence-first-vitest.json.gz",
+      "passed": 124,
+      "failed": 0,
+      "skipped": 0,
+      "success": true
+    },
+    "persistence-second": {
+      "report": "reports/persistence-second-vitest.json.gz",
+      "passed": 126,
+      "failed": 0,
+      "skipped": 0,
+      "success": true
+    },
+    "privacy-first": {
+      "report": "reports/privacy-first-vitest.json.gz",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "success": true
+    },
+    "postgres-first": {
+      "report": "reports/postgres-first-vitest.json.gz",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "success": true
+    },
+    "reader-first": {
+      "report": "reports/reader-first-vitest.json.gz",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "success": true
+    },
+    "api-full-second": {
+      "report": "reports/api-full-second-vitest.json.gz",
+      "passed": 2552,
+      "failed": 12,
+      "skipped": 106,
+      "success": false,
+      "sourceUnchanged": true
+    },
+    "reader-regression-first": {
+      "report": "reports/reader-regression-first-vitest.json.gz",
+      "passed": 46,
+      "failed": 0,
+      "skipped": 8,
+      "success": true,
+      "sourceUnchanged": true
+    },
+    "legacy-postgres-first": {
+      "report": "reports/legacy-postgres-first-vitest.json.gz",
+      "passed": 20,
+      "failed": 0,
+      "skipped": 1,
+      "success": true,
+      "sourceUnchanged": true
+    }
+  },
+  "fullApiFailures": [
+    {
+      "suite": "infrastructure/teaching-tool-storage.integration.test.ts",
+      "name": "sqlite teaching schema20 to21 original drafts and atomic owner keys migrates a real schema20 store and cold reopens all exact draft, table/formula and formal records",
+      "reason": "Current-schema assertion still fixed to31; exact failure in immutable complete report."
+    },
+    {
+      "suite": "infrastructure/teaching-tool-storage.integration.test.ts",
+      "name": "sqlite teaching schema20 to21 original drafts and atomic owner keys backs up and cold restores native current schema23 with complete drafts and original first answers",
+      "reason": "Current-schema assertion still fixed to31; exact failure in immutable complete report."
+    },
+    {
+      "suite": "infrastructure/topic-whiteboard-storage.integration.test.ts",
+      "name": "AI topic whiteboard schema and private original records upgrades a real schema15 database while retaining original legacy whiteboards and adds the two intended constraints",
+      "reason": "Current-schema assertion still fixed to31; exact failure in immutable complete report."
+    },
+    {
+      "suite": "infrastructure/topic-whiteboard-storage.integration.test.ts",
+      "name": "AI topic whiteboard schema and private original records backs up, verifies and cold restores current schema23 original topic records without modifying them",
+      "reason": "Current-schema assertion still fixed to31; exact failure in immutable complete report."
+    },
+    {
+      "suite": "infrastructure/topic-whiteboard-visual-storage.integration.test.ts",
+      "name": "topic figure durable original request identities upgrades an actual schema16 file without changing its original whiteboard or manuscript",
+      "reason": "Current-schema assertion still fixed to31; exact failure in immutable complete report."
+    },
+    {
+      "suite": "infrastructure/whiteboard-question-storage.integration.test.ts",
+      "name": "native schema19 whiteboard question durability migrates a real schema18 file, preserving the full original question, bookmark, answer and first diagnostic response",
+      "reason": "Current-schema assertion still fixed to31; exact failure in immutable complete report."
+    },
+    {
+      "suite": "infrastructure/whiteboard-question-storage.integration.test.ts",
+      "name": "native schema19 whiteboard question durability backs up current schema23 and cold restores exact question data without replacing the first diagnostic answer",
+      "reason": "Current-schema assertion still fixed to31; exact failure in immutable complete report."
+    },
+    {
+      "suite": "infrastructure/whiteboard-question-visual-storage.integration.test.ts",
+      "name": "sqlite native question-image schema19 to schema20 migrates and cold reopens actual schema19 without rewriting original questions, version snapshots, long prompts or first answers",
+      "reason": "Current-schema assertion still fixed to31; exact failure in immutable complete report."
+    },
+    {
+      "suite": "modules/library/paper-practice-recovery.integration.test.ts",
+      "name": "sqlite original paper practice native recovery cold restores exact first answers, corrections and request receipts with original media, and applies newer child and account deletion receipts",
+      "reason": "Current-schema assertion still fixed to31; exact failure in immutable complete report."
+    },
+    {
+      "suite": "modules/learning/assistant-teaching.integration.test.ts",
+      "name": "generated teaching drafts, explicit adoption and native recovery cold restores actual original and adopted teaching, rejects a cross-draft adoption link and preserves no formal learner evidence",
+      "reason": "Current-schema assertion still fixed to31; exact failure in immutable complete report."
+    },
+    {
+      "suite": "modules/learning/topic-whiteboard-visual-files.test.ts",
+      "name": "topic figure original files and native recovery backs up all current schema20 image references and cold restores their original byte identities",
+      "reason": "Current-schema assertion still fixed to31; exact failure in immutable complete report."
+    },
+    {
+      "suite": "modules/learning/whiteboard-question-visual.integration.test.ts",
+      "name": "actual original-answer image HTTP tasks, byte identity and adoption versions on SQLite cold restores actual version PNGs, then applies a newer deletion ledger without resurrecting private images or erasing another owner",
+      "reason": "Current-schema assertion still fixed to31; exact failure in immutable complete report."
+    }
+  ],
+  "assertionRecheck": {
+    "applicationSourceChangedAfterFullRun": false,
+    "updatedCurrentFutureAssertionsAndOneTestRestoreGuardOnly": true,
+    "originalFullReportPreserved": true,
+    "failedAssertionsCovered": 12,
+    "archivedReadersOrFixedHistoricalVersionsChanged": false,
+    "combinedSingleAllGreenClaim": false
+  },
+  "originalFailures": [
+    {
+      "name": "api-full-first",
+      "report": "reports/api-full-first.json.gz",
+      "reason": "Four-minute runner budget ETIMEDOUT; no complete Vitest JSON; no invented test counts."
+    },
+    {
+      "name": "api-full-second",
+      "report": "reports/api-full-second-vitest.json.gz",
+      "reason": "Twelve fixed current-schema31 assertions; production code unchanged during corresponding rechecks."
+    },
+    {
+      "name": "check-source-list-first",
+      "report": "reports/check-source-list-first.log.gz",
+      "reason": "QA runner parenthesis syntax; original runner retained."
+    },
+    {
+      "name": "prepare-copy-first",
+      "reason": "A preparation copy lacked a destination directory; no product or formal data changed. Original interactive output was not separately captured."
+    },
+    {
+      "name": "diff-check-first",
+      "reason": "One surplus EOF blank line in new test fixture and its evidence copy; normalized without semantic change. Original diff-check output and tested source snapshots preserved."
+    }
+  ],
+  "formalReadOnlyCopy": {
+    "at": "2026-10-31T12:23:01.915Z",
+    "before": {
+      "schema": 24,
+      "revision": 187,
+      "records": 89864,
+      "businessBytesAndOrderSha256": "bec8e727bb575ce281b2a0059c8fdf1aa50d9d1502dc69923c056b954914dce6",
+      "collections": [
+        {
+          "collection": "assistantSessions",
+          "count": 2
+        },
+        {
+          "collection": "bindings",
+          "count": 6
+        },
+        {
+          "collection": "classroomSessions",
+          "count": 7
+        },
+        {
+          "collection": "curriculumRevisions",
+          "count": 240
+        },
+        {
+          "collection": "diagnosticBlueprints",
+          "count": 4
+        },
+        {
+          "collection": "diagnosticHypotheses",
+          "count": 12
+        },
+        {
+          "collection": "diagnosticPlans",
+          "count": 1
+        },
+        {
+          "collection": "diagnosticReports",
+          "count": 1
+        },
+        {
+          "collection": "diagnosticResponses",
+          "count": 12
+        },
+        {
+          "collection": "diagnosticSessions",
+          "count": 3
+        },
+        {
+          "collection": "events",
+          "count": 237
+        },
+        {
+          "collection": "guidancePlanRevisions",
+          "count": 2
+        },
+        {
+          "collection": "knowledgeAtoms",
+          "count": 286
+        },
+        {
+          "collection": "knowledgePoints",
+          "count": 9
+        },
+        {
+          "collection": "learningScopes",
+          "count": 7
+        },
+        {
+          "collection": "measurementItems",
+          "count": 17774
+        },
+        {
+          "collection": "privacyRequests",
+          "count": 2
+        },
+        {
+          "collection": "questionAnswerSchemas",
+          "count": 17789
+        },
+        {
+          "collection": "questionDocuments",
+          "count": 17789
+        },
+        {
+          "collection": "questionSources",
+          "count": 17789
+        },
+        {
+          "collection": "questions",
+          "count": 17789
+        },
+        {
+          "collection": "reviewTasks",
+          "count": 12
+        },
+        {
+          "collection": "sessions",
+          "count": 37
+        },
+        {
+          "collection": "students",
+          "count": 6
+        },
+        {
+          "collection": "studioActivities",
+          "count": 7
+        },
+        {
+          "collection": "studioCourses",
+          "count": 5
+        },
+        {
+          "collection": "studioWhiteboards",
+          "count": 1
+        },
+        {
+          "collection": "subjectEnrollments",
+          "count": 18
+        },
+        {
+          "collection": "textbookLessons",
+          "count": 3
+        },
+        {
+          "collection": "textbookUnits",
+          "count": 3
+        },
+        {
+          "collection": "textbookVolumes",
+          "count": 3
+        },
+        {
+          "collection": "users",
+          "count": 8
+        }
+      ],
+      "guard": "ready-schema24"
+    },
+    "after": {
+      "schema": 32,
+      "revision": 187,
+      "records": 89864,
+      "businessBytesAndOrderSha256": "bec8e727bb575ce281b2a0059c8fdf1aa50d9d1502dc69923c056b954914dce6",
+      "collections": [
+        {
+          "collection": "assistantSessions",
+          "count": 2
+        },
+        {
+          "collection": "bindings",
+          "count": 6
+        },
+        {
+          "collection": "classroomSessions",
+          "count": 7
+        },
+        {
+          "collection": "curriculumRevisions",
+          "count": 240
+        },
+        {
+          "collection": "diagnosticBlueprints",
+          "count": 4
+        },
+        {
+          "collection": "diagnosticHypotheses",
+          "count": 12
+        },
+        {
+          "collection": "diagnosticPlans",
+          "count": 1
+        },
+        {
+          "collection": "diagnosticReports",
+          "count": 1
+        },
+        {
+          "collection": "diagnosticResponses",
+          "count": 12
+        },
+        {
+          "collection": "diagnosticSessions",
+          "count": 3
+        },
+        {
+          "collection": "events",
+          "count": 237
+        },
+        {
+          "collection": "guidancePlanRevisions",
+          "count": 2
+        },
+        {
+          "collection": "knowledgeAtoms",
+          "count": 286
+        },
+        {
+          "collection": "knowledgePoints",
+          "count": 9
+        },
+        {
+          "collection": "learningScopes",
+          "count": 7
+        },
+        {
+          "collection": "measurementItems",
+          "count": 17774
+        },
+        {
+          "collection": "privacyRequests",
+          "count": 2
+        },
+        {
+          "collection": "questionAnswerSchemas",
+          "count": 17789
+        },
+        {
+          "collection": "questionDocuments",
+          "count": 17789
+        },
+        {
+          "collection": "questionSources",
+          "count": 17789
+        },
+        {
+          "collection": "questions",
+          "count": 17789
+        },
+        {
+          "collection": "reviewTasks",
+          "count": 12
+        },
+        {
+          "collection": "sessions",
+          "count": 37
+        },
+        {
+          "collection": "students",
+          "count": 6
+        },
+        {
+          "collection": "studioActivities",
+          "count": 7
+        },
+        {
+          "collection": "studioCourses",
+          "count": 5
+        },
+        {
+          "collection": "studioWhiteboards",
+          "count": 1
+        },
+        {
+          "collection": "subjectEnrollments",
+          "count": 18
+        },
+        {
+          "collection": "textbookLessons",
+          "count": 3
+        },
+        {
+          "collection": "textbookUnits",
+          "count": 3
+        },
+        {
+          "collection": "textbookVolumes",
+          "count": 3
+        },
+        {
+          "collection": "users",
+          "count": 8
+        }
+      ],
+      "guard": "ready-schema32"
+    },
+    "twoColdOpens": true,
+    "formalReadOnly": true,
+    "formalUnchanged": true,
+    "original31Refused32": true,
+    "original31ArchiveSha256": "a37ee85e9de059b26feed4e616ad294175fe81bc2e38e8409b36aa041741e416",
+    "externalDependenciesVerified": 565,
+    "privateDatabaseNeverPublished": true,
+    "scope": "Native database compatibility only. Does not prove copied media, new-device tools, HTTP routes or teaching effect."
+  },
+  "artifacts": {
+    "actualSqlitePdfRetainedAndErased": true,
+    "actualPostgresDocxRetainedAndErased": true,
+    "source": "Unchanged immutable synthetic outputs from committed170 evidence, copied byte-for-byte with complete SHA verification; no new generator or visual-quality claim."
+  },
+  "postgresShutdown": {
+    "at": "2026-10-31T12:43:34.652Z",
+    "ownedQaClusterOnly": true,
+    "port": 15443,
+    "stopExit": 0,
+    "stoppedStatusExit": 3,
+    "stopped": true,
+    "otherServicesTouched": false
+  },
+  "privacy": {
+    "realSourceDatabaseOrRowsPublished": false,
+    "privateRuntimeCredentialsPublished": false,
+    "summaryCountsAndDigestsOnly": true
+  },
+  "readiness": {
+    "sixCollectionsAndSchema32Registered": true,
+    "nativeRecordReaderReady": true,
+    "businessRoutes": false,
+    "liveRenderAndCleanupWorkers": false,
+    "currentSourceFileHandleDownloads": false,
+    "studentMeasurementExposureIntegration": false,
+    "oldBodyMediaPdfPrintDiagnosticBypassClosed": false,
+    "originalWorkspaceUiAndDrafts": false,
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false,
+    "wholeGoal": "active"
+  },
+  "remaining": [
+    "selection/export/source-read business routes and original command receipt recovery",
+    "actual render/cleanup workers and verified same-handle file delivery",
+    "student exact source exposure measurement exclusion and all old body/reference/media/PDF/print restrictions",
+    "original workspace list/dialog/drawer/real artifact previews and complete drafts/two tabs/no storage/unknown results",
+    "all other R5/R6 textbooks/GESP/R7/R8, original72/WS, teachers, real devices/new machine/physical printer and real 1/3/7/14-day evidence"
+  ],
+  "files": [
+    {
+      "path": "source/apps/api/src/infrastructure/assistant-note-storage.integration.test.ts",
+      "bytes": 6084,
+      "sha256": "3a44110bc9f653d7b0403671c26d1d118552052a0f20a63b96f83f8fef5152d0",
+      "originalSha256": "3a44110bc9f653d7b0403671c26d1d118552052a0f20a63b96f83f8fef5152d0"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/assistant-whiteboard-reader.integration.test.ts",
+      "bytes": 11627,
+      "sha256": "6acd07d2df1e2ad60a630301f19d49337e97846f332c22d492dc6840d3685aad",
+      "originalSha256": "6acd07d2df1e2ad60a630301f19d49337e97846f332c22d492dc6840d3685aad"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/backup.integration.test.ts",
+      "bytes": 13524,
+      "sha256": "de5085008753071fc08945f8ecf45289167bef1829d7feac86a331ff88debe16",
+      "originalSha256": "de5085008753071fc08945f8ecf45289167bef1829d7feac86a331ff88debe16"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/domain-database.ts",
+      "bytes": 49283,
+      "sha256": "8147cfe463d2074ae3327c912ec7f3ff31cb7420b46fede5ae79eaf77535c9be",
+      "originalSha256": "8147cfe463d2074ae3327c912ec7f3ff31cb7420b46fede5ae79eaf77535c9be"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/in-memory-store.service.ts",
+      "bytes": 33322,
+      "sha256": "98a37f0f684c11384410bc0ba048d3c5306b812ab26620180c1bf213b21ff26c",
+      "originalSha256": "98a37f0f684c11384410bc0ba048d3c5306b812ab26620180c1bf213b21ff26c"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/paper-practice-migration.test.ts",
+      "bytes": 4988,
+      "sha256": "32a105f43f77444893e6ea6873d4276587fd6ee1188b022744ab185182142476",
+      "originalSha256": "32a105f43f77444893e6ea6873d4276587fd6ee1188b022744ab185182142476"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/schema25-reader.integration.test.ts",
+      "bytes": 11736,
+      "sha256": "25df46a6c9b7640f86993058627419b72b33205852fceb6cfa58ce29bcf94347",
+      "originalSha256": "25df46a6c9b7640f86993058627419b72b33205852fceb6cfa58ce29bcf94347"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/schema26-reader.integration.test.ts",
+      "bytes": 11736,
+      "sha256": "5804b1daca1d1832776fc15f3e8c66f12e7757838ffdf7e7d292d9a644d4605e",
+      "originalSha256": "5804b1daca1d1832776fc15f3e8c66f12e7757838ffdf7e7d292d9a644d4605e"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/schema27-reader.integration.test.ts",
+      "bytes": 11739,
+      "sha256": "fdf032a45df3bc8ccb6d1d43027d415f295f29babe6d785c3530cef108ef2905",
+      "originalSha256": "fdf032a45df3bc8ccb6d1d43027d415f295f29babe6d785c3530cef108ef2905"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/schema28-reader.integration.test.ts",
+      "bytes": 12426,
+      "sha256": "db99263ccb7bbe06519060385b42381d6fee428b25ac5e628ce2d9db46fefb1a",
+      "originalSha256": "db99263ccb7bbe06519060385b42381d6fee428b25ac5e628ce2d9db46fefb1a"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/schema29-reader.integration.test.ts",
+      "bytes": 12401,
+      "sha256": "06d8cc6da2f7e4d2e5834392586d74da3dc2ee12a928ffd2001705a51567c3f3",
+      "originalSha256": "06d8cc6da2f7e4d2e5834392586d74da3dc2ee12a928ffd2001705a51567c3f3"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/schema30-reader.integration.test.ts",
+      "bytes": 12417,
+      "sha256": "7a14b2488443e87d814bb57e0beefa63b3266bf03fee7e1cb82dbc75339c8f50",
+      "originalSha256": "7a14b2488443e87d814bb57e0beefa63b3266bf03fee7e1cb82dbc75339c8f50"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/schema31-reader.integration.test.ts",
+      "bytes": 12386,
+      "sha256": "e8734ca848d4a707f38812394cfde841005bae13f11ff59c12e5ba2191b832ae",
+      "originalSha256": "e8734ca848d4a707f38812394cfde841005bae13f11ff59c12e5ba2191b832ae"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+      "bytes": 7283,
+      "sha256": "2d2272dda3279ac13832227a006713c793cea30d74a210dcbf7152aa70527382",
+      "originalSha256": "2d2272dda3279ac13832227a006713c793cea30d74a210dcbf7152aa70527382"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/topic-whiteboard-postgres.integration.test.ts",
+      "bytes": 4525,
+      "sha256": "73c849136f1ea47384df6d23a4219802a885403d52e2c0e7ec15dd1588a9689f",
+      "originalSha256": "73c849136f1ea47384df6d23a4219802a885403d52e2c0e7ec15dd1588a9689f"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/topic-whiteboard-storage.integration.test.ts",
+      "bytes": 7879,
+      "sha256": "0c4b4db32803d768bd34bddec66fd3b6c34ce9d8b30e04d60ef3fc6c836ef2d6",
+      "originalSha256": "0c4b4db32803d768bd34bddec66fd3b6c34ce9d8b30e04d60ef3fc6c836ef2d6"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts",
+      "bytes": 3296,
+      "sha256": "8aabd7a31fa738a70e4d66fbfec8a14b4ce926eb1663b4b07dc81352be3b7a73",
+      "originalSha256": "8aabd7a31fa738a70e4d66fbfec8a14b4ce926eb1663b4b07dc81352be3b7a73"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/topic-whiteboard-visual-storage.integration.test.ts",
+      "bytes": 4863,
+      "sha256": "7badd779888d41ed0d8405eb303dc2dad6a4bf771c560bcdf418b26c316e9c9a",
+      "originalSha256": "7badd779888d41ed0d8405eb303dc2dad6a4bf771c560bcdf418b26c316e9c9a"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts",
+      "bytes": 5941,
+      "sha256": "66030034edf3ef9e4cdb0c4849b9a74c8a1a56271a843eb0e47e0284c9e73496",
+      "originalSha256": "66030034edf3ef9e4cdb0c4849b9a74c8a1a56271a843eb0e47e0284c9e73496"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts",
+      "bytes": 5201,
+      "sha256": "39f0b67a63f5e20697dfb5805de66a35c321b37510815edddf163994d7c5abcf",
+      "originalSha256": "39f0b67a63f5e20697dfb5805de66a35c321b37510815edddf163994d7c5abcf"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts",
+      "bytes": 6697,
+      "sha256": "759b1593046d8173fba34c33ee646c4d97ea1a02e04b959f515834c57479758a",
+      "originalSha256": "759b1593046d8173fba34c33ee646c4d97ea1a02e04b959f515834c57479758a"
+    },
+    {
+      "path": "source/apps/api/src/modules/learning/assistant-teaching.integration.test.ts",
+      "bytes": 23482,
+      "sha256": "835f32bcafbc47f5bae7c4e8dc8590cd1635e37141ed0aafe4b28f7f5f00d204",
+      "originalSha256": "835f32bcafbc47f5bae7c4e8dc8590cd1635e37141ed0aafe4b28f7f5f00d204"
+    },
+    {
+      "path": "source/apps/api/src/modules/learning/paper-capture-recovery.integration.test.ts",
+      "bytes": 29512,
+      "sha256": "89df3965aca81ddf86659ffae2ec37f1a0142a59670b7589a8181f6564b89aca",
+      "originalSha256": "89df3965aca81ddf86659ffae2ec37f1a0142a59670b7589a8181f6564b89aca"
+    },
+    {
+      "path": "source/apps/api/src/modules/learning/topic-whiteboard-visual-files.test.ts",
+      "bytes": 6842,
+      "sha256": "eeeecc010293ef52045fc4123d8c5f080cff23a0dec66251d8522360ea82eb17",
+      "originalSha256": "eeeecc010293ef52045fc4123d8c5f080cff23a0dec66251d8522360ea82eb17"
+    },
+    {
+      "path": "source/apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts",
+      "bytes": 25924,
+      "sha256": "1a788b7fd3451b0bbd17bf4dbb5f7c27668ea2af06566f4dbdb483d9b0a62cf1",
+      "originalSha256": "1a788b7fd3451b0bbd17bf4dbb5f7c27668ea2af06566f4dbdb483d9b0a62cf1"
+    },
+    {
+      "path": "source/apps/api/src/modules/library/paper-export-native.test.ts",
+      "bytes": 24313,
+      "sha256": "8ddfa8bffd5770f28b6caa4bb699efc721591214c63763e0d2aee4be575f88cb",
+      "originalSha256": "8ddfa8bffd5770f28b6caa4bb699efc721591214c63763e0d2aee4be575f88cb"
+    },
+    {
+      "path": "source/apps/api/src/modules/library/paper-export-native.ts",
+      "bytes": 23060,
+      "sha256": "158a2f3d9fe7d59dc7227aca7333f0f92869580236c0dd4d9be0eb5384687049",
+      "originalSha256": "158a2f3d9fe7d59dc7227aca7333f0f92869580236c0dd4d9be0eb5384687049"
+    },
+    {
+      "path": "source/apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+      "bytes": 19350,
+      "sha256": "a1a3e2d93dbba0ba83be6c1ace1ea6dd463b621c2739f09ee8d893b6e477b8cf",
+      "originalSha256": "a1a3e2d93dbba0ba83be6c1ace1ea6dd463b621c2739f09ee8d893b6e477b8cf"
+    },
+    {
+      "path": "source/apps/api/src/modules/library/paper-selection-native.ts",
+      "bytes": 7291,
+      "sha256": "69a67203e589c92cfbef0192df197b88ccaad1bddf93bfed1fd768e14805680d",
+      "originalSha256": "69a67203e589c92cfbef0192df197b88ccaad1bddf93bfed1fd768e14805680d"
+    },
+    {
+      "path": "source/apps/api/src/modules/library/paper-selection-record.test.ts",
+      "bytes": 16713,
+      "sha256": "bc011f886bbee18a2179b35395eca2cf7a6e1114a469d9906c30e5923e214e6d",
+      "originalSha256": "bc011f886bbee18a2179b35395eca2cf7a6e1114a469d9906c30e5923e214e6d"
+    },
+    {
+      "path": "source/apps/api/src/modules/privacy/privacy-records.ts",
+      "bytes": 42803,
+      "sha256": "3c63f0578ba5b757e26f5496b99bed3e0cc16b2f7b53543811963a7795ecedc0",
+      "originalSha256": "3c63f0578ba5b757e26f5496b99bed3e0cc16b2f7b53543811963a7795ecedc0"
+    },
+    {
+      "path": "source/apps/api/src/modules/privacy/privacy.service.ts",
+      "bytes": 39657,
+      "sha256": "cf800561536ea0471c206acc278a90105ad9763a285f463a1aac731f7f63f523",
+      "originalSha256": "cf800561536ea0471c206acc278a90105ad9763a285f463a1aac731f7f63f523"
+    },
+    {
+      "path": "source/scripts/operations/assistant-practice-integrity.cjs",
+      "bytes": 7066,
+      "sha256": "98ec3bd74c500a45a2e228ea0a10ead64774ed453d5b4175584f7fdcb045fd5c",
+      "originalSha256": "98ec3bd74c500a45a2e228ea0a10ead64774ed453d5b4175584f7fdcb045fd5c"
+    },
+    {
+      "path": "source/scripts/operations/backup.cjs",
+      "bytes": 23709,
+      "sha256": "1ba330a0049b41ee2f8466592ee89fac72ffaed2e37be1e5a43ce1dd98a64e5c",
+      "originalSha256": "1ba330a0049b41ee2f8466592ee89fac72ffaed2e37be1e5a43ce1dd98a64e5c"
+    },
+    {
+      "path": "source/scripts/operations/database-reader-guard.cjs",
+      "bytes": 1176,
+      "sha256": "4fc94954bda08df4b55fa43ba42166154f1502e5e7e716b1c9e18bad66597c73",
+      "originalSha256": "4fc94954bda08df4b55fa43ba42166154f1502e5e7e716b1c9e18bad66597c73"
+    },
+    {
+      "path": "source/scripts/operations/postgres-backup.cjs",
+      "bytes": 9843,
+      "sha256": "1dc6c101a5a480a187cf8b091428571030b35462d40c2e19c66f9553c59279a4",
+      "originalSha256": "1dc6c101a5a480a187cf8b091428571030b35462d40c2e19c66f9553c59279a4"
+    },
+    {
+      "path": "source/scripts/operations/postgres-restore.cjs",
+      "bytes": 10131,
+      "sha256": "83e87024c45989f26787d262a19ba433e1e5acaa59ed741fc042c4c6f9908552",
+      "originalSha256": "83e87024c45989f26787d262a19ba433e1e5acaa59ed741fc042c4c6f9908552"
+    },
+    {
+      "path": "source/scripts/operations/privacy-ledger.cjs",
+      "bytes": 21613,
+      "sha256": "1195834ad71df5b4f522fe5242875d9cb8a54a1601d5c706c4ce63e4965552f6",
+      "originalSha256": "1195834ad71df5b4f522fe5242875d9cb8a54a1601d5c706c4ce63e4965552f6"
+    },
+    {
+      "path": "source/scripts/operations/sqlite-restore.cjs",
+      "bytes": 9698,
+      "sha256": "0ca4d6c4549474ca895dd2e8854860fb1969e69cbe3afc39c364b781b10c10ab",
+      "originalSha256": "0ca4d6c4549474ca895dd2e8854860fb1969e69cbe3afc39c364b781b10c10ab"
+    },
+    {
+      "path": "source/apps/api/src/infrastructure/schema32-reader.integration.test.ts",
+      "bytes": 8372,
+      "sha256": "55a23ee609c1ec5fe3fcfd577166305cc6aa8dffdf9a5fe9145e1a07df323837",
+      "originalSha256": "55a23ee609c1ec5fe3fcfd577166305cc6aa8dffdf9a5fe9145e1a07df323837"
+    },
+    {
+      "path": "source/apps/api/src/modules/library/paper-export-backup.ts",
+      "bytes": 1915,
+      "sha256": "c7e19cffb2daf971e1b83dfb6d2b795c33781cc2a80e42ce7864a6d62c5233bd",
+      "originalSha256": "c7e19cffb2daf971e1b83dfb6d2b795c33781cc2a80e42ce7864a6d62c5233bd"
+    },
+    {
+      "path": "source/apps/api/src/modules/library/paper-export-persistence.ts",
+      "bytes": 2987,
+      "sha256": "3005f11e2f0bc24c3815db600e9a25a9b6bafc10545efca6246e13f370ef8343",
+      "originalSha256": "3005f11e2f0bc24c3815db600e9a25a9b6bafc10545efca6246e13f370ef8343"
+    },
+    {
+      "path": "source/apps/api/src/modules/library/paper-export-privacy.ts",
+      "bytes": 9599,
+      "sha256": "ad3abda9d03f2ea36cb14e2e07506cb4bd7b1a0ad1be29ec6785ac570299706d",
+      "originalSha256": "ad3abda9d03f2ea36cb14e2e07506cb4bd7b1a0ad1be29ec6785ac570299706d"
+    },
+    {
+      "path": "source/apps/api/src/modules/library/paper-library-app.fixture.spec.ts",
+      "bytes": 6198,
+      "sha256": "96e6da2bc3f1a331da4f338a450eeff40fa1fd4fe4083fd052ad63e693bc3610",
+      "originalSha256": "96e6da2bc3f1a331da4f338a450eeff40fa1fd4fe4083fd052ad63e693bc3610"
+    },
+    {
+      "path": "source/apps/api/src/modules/library/paper-library-fixture.spec.ts",
+      "bytes": 5892,
+      "sha256": "73386d20a95ee0698b9c57fb06261ab586bfc04b14b1e2cfd68e7c056ee6c676",
+      "originalSha256": "73386d20a95ee0698b9c57fb06261ab586bfc04b14b1e2cfd68e7c056ee6c676"
+    },
+    {
+      "path": "source/apps/api/src/modules/library/paper-library-persistence.test.ts",
+      "bytes": 14032,
+      "sha256": "44c8aeaabc2ba074f2be9df75f61aca8e38e150f5e5575903c9ee6fdcbf888ec",
+      "originalSha256": "44c8aeaabc2ba074f2be9df75f61aca8e38e150f5e5575903c9ee6fdcbf888ec"
+    },
+    {
+      "path": "source/apps/api/src/modules/library/paper-library-postgres.integration.test.ts",
+      "bytes": 7943,
+      "sha256": "80d7ce20cb9e5ba4bd4e212adaddf67217d8a9f166d9324dc21406d2cabd15bc",
+      "originalSha256": "80d7ce20cb9e5ba4bd4e212adaddf67217d8a9f166d9324dc21406d2cabd15bc"
+    },
+    {
+      "path": "source/apps/api/src/modules/library/paper-library-privacy.integration.test.ts",
+      "bytes": 9345,
+      "sha256": "23a3798f3be75eb1de377660cbb781c86e9b78bc936e6db08d9f11e24609f91c",
+      "originalSha256": "23a3798f3be75eb1de377660cbb781c86e9b78bc936e6db08d9f11e24609f91c"
+    },
+    {
+      "path": "source/apps/api/src/modules/library/paper-library-write-integrity.ts",
+      "bytes": 7723,
+      "sha256": "aeac9887e7204879caed6f09d14e45e544a4a468dc1d701b4f67f4ee4f3ad9e6",
+      "originalSha256": "aeac9887e7204879caed6f09d14e45e544a4a468dc1d701b4f67f4ee4f3ad9e6"
+    },
+    {
+      "path": "source/scripts/operations/restored-paper-exports.cjs",
+      "bytes": 10553,
+      "sha256": "b8265aab7439ac30a0b9b427c353c46d3b3a39208f9e5ba693f8def3c0410620",
+      "originalSha256": "b8265aab7439ac30a0b9b427c353c46d3b3a39208f9e5ba693f8def3c0410620"
+    },
+    {
+      "path": "reports/api-full-first-source.json.gz",
+      "bytes": 289201,
+      "sha256": "ac4c83a2d1242f42ccba1034b2aee11e00497f8d701c5fea95fefe9c44c8d3ec",
+      "originalSha256": "ac4c83a2d1242f42ccba1034b2aee11e00497f8d701c5fea95fefe9c44c8d3ec"
+    },
+    {
+      "path": "reports/api-full-first-unit.log.gz",
+      "bytes": 292,
+      "sha256": "c45202cfdad554b9eafe51f76c249f270d68bcc60c1691f31538b7e620246bd4",
+      "originalSha256": "b4acd4f819050212c4fe3b3ed8416421330f7ff8c72cb9bb667c335f3e24a94e",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/api-full-first.json.gz",
+      "bytes": 185,
+      "sha256": "e61283fd44a6eae2c6b96f77a9a906813e362522ab3168333290ded0b219b460",
+      "originalSha256": "287004951ead0e1616c52f8a88b26b798a864904d4f877c593dc07cc9d26b3a5",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/api-full-second-source.json.gz",
+      "bytes": 315489,
+      "sha256": "dfc847cff64d658d6adfaf192a85a57165d47825eb4388c58eb633483b8ebc07",
+      "originalSha256": "dfc847cff64d658d6adfaf192a85a57165d47825eb4388c58eb633483b8ebc07"
+    },
+    {
+      "path": "reports/api-full-second-unit.log.gz",
+      "bytes": 380,
+      "sha256": "df617153a1b750b355e721aa37802dab12f4b2034f8ce28a090ea57e474cca48",
+      "originalSha256": "475342158fc621e32419dd9ac286185f82cdcab4aad75c6ad71160151d80cac9",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/api-full-second-vitest.json.gz",
+      "bytes": 147990,
+      "sha256": "3e11bfe33eabd96ee3f2daddd8db5fb7f9ce6f6f6b879148a1c20627b4197d8e",
+      "originalSha256": "e2ba05cee7d6b62557dd2bcf053a710d200bd3df7e8113a21a36a01ae33496de",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/api-full-second.json.gz",
+      "bytes": 139,
+      "sha256": "50c800862d3e6585b25ed00175a88bd430d9e410baa1097b6c77695063129e37",
+      "originalSha256": "8a9dc893a1ae742df2948e56517a5a991fe7d9d96c740237dd74d51ddcd9ec2e",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/build-first-build.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/build-first-source.json.gz",
+      "bytes": 168541,
+      "sha256": "27d66992a28d907b03fa43628ea39647d15719816792bcd5e85e9468eedef142",
+      "originalSha256": "27d66992a28d907b03fa43628ea39647d15719816792bcd5e85e9468eedef142"
+    },
+    {
+      "path": "reports/build-first.json.gz",
+      "bytes": 120,
+      "sha256": "23f0392873a72722046e92b122424fd7c26a0fffe574267e83813d009e01c51b",
+      "originalSha256": "fcfe0f18d1053503b322c8748a41a36162332c8a35ec1d0438d04632ec96f4ca",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/build-second-build.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/build-second-source.json.gz",
+      "bytes": 229488,
+      "sha256": "9280ac383edb52ce7cd8b76ed017e557c35245dfd31171879711345517d45b5d",
+      "originalSha256": "9280ac383edb52ce7cd8b76ed017e557c35245dfd31171879711345517d45b5d"
+    },
+    {
+      "path": "reports/build-second.json.gz",
+      "bytes": 120,
+      "sha256": "c63497948597739eacb1df0f2c0a89c9802c3ee0e7413a9533eb8f2c2422fe03",
+      "originalSha256": "5a95c87da579b53025d981b051928a59282c6a8e81e62de2177a2f0df49a53c5",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/check-source-list-first.log.gz",
+      "bytes": 292,
+      "sha256": "8727feeabfe9e4d71a508a6599b9e6e7a8a643143de910e3ef9317cb4e6aa208",
+      "originalSha256": "452df2598940150bba8fb1afde0a269928547970516088c2595583922c3a3dc1",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/docs-candidate-first.log.gz",
+      "bytes": 60,
+      "sha256": "7f3d7fea51c5ab9916bc0b1b281081e2a9addaf861eb01efa1b560a8b6fe60f2",
+      "originalSha256": "eb35628b6f56f75a1c4539a61514986801bc35f5d628b1ccb5c5fb3bbcb499cc",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/formal-copy-migration-first.json.gz",
+      "bytes": 881,
+      "sha256": "b1a6ea1650ac86591391932276996391fda90f11e11b7439770602f4d29473a3",
+      "originalSha256": "7c7b2feedcb2c0c920c93cb8ed0f405ce3ed7e838428af34344ba19ebfe09491",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/integration-first.json.gz",
+      "bytes": 2804,
+      "sha256": "dd08c9161b4ba766b31ff414ddd0f2a0a970a0a51b5c4a8e6c15c2a20bb03b6f",
+      "originalSha256": "86d0bfee70a8be597264bce04ae79f35150030f9d06549b4256e9486093811bd",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/legacy-postgres-first-source.json.gz",
+      "bytes": 370849,
+      "sha256": "8c382b9818484a412d21364f8aa242c2675dfc6187afadebb53948b7dc3d7f8c",
+      "originalSha256": "8c382b9818484a412d21364f8aa242c2675dfc6187afadebb53948b7dc3d7f8c"
+    },
+    {
+      "path": "reports/legacy-postgres-first-unit.log.gz",
+      "bytes": 381,
+      "sha256": "b9f7af3857a6b7eec79580f5612d9c58e9aac19f80b5bb3e2d0d04898aa5ef52",
+      "originalSha256": "04111c539ee2245de5bd7c53482579db88fa1e41028faef8f3b0f085e2e78e26",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/legacy-postgres-first-vitest.json.gz",
+      "bytes": 1608,
+      "sha256": "10f6513ddd5c5c6c5350fda2dba8252a46159c9307e5e6f62b3dc04308d1c679",
+      "originalSha256": "f0b4076782552379e1023d7e122a827bac1df90578a0e03a80b70319c0c9c921",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/legacy-postgres-first.json.gz",
+      "bytes": 140,
+      "sha256": "dd07ec08b348a64b2d4a54860ffe81758453a2dd0da985f1ce70b9ee4566f7a3",
+      "originalSha256": "1a91a2fa87fb1f7a523b097b80b6d4e70adb0977f3f7a3495150ec8c0a4b46ae",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/main-before-integration.json.gz",
+      "bytes": 193526,
+      "sha256": "62ea9c9a76b02f1982a9c67099c48fddff4ba4d697d38cf1c0f9c5c04914caff",
+      "originalSha256": "62ea9c9a76b02f1982a9c67099c48fddff4ba4d697d38cf1c0f9c5c04914caff"
+    },
+    {
+      "path": "reports/main-check-first-api.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/main-check-first-contracts.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/main-check-first-web.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/main-check-first.json.gz",
+      "bytes": 293,
+      "sha256": "aed6eed2d4f1a64d4f0f8c9b40faf02e18f149ba1de224258da915a8515a2010",
+      "originalSha256": "d6567a2b34743c6eca44ae0f10ff1aa2261664546e80cbe5970e9bdbccbde26d",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/main-protection-during-full-first.json.gz",
+      "bytes": 183,
+      "sha256": "c7d743e2bd7fbcaac0e5f15a24db1fef931e9e28e47b8b7b76094d2f6ee007d0",
+      "originalSha256": "901e9d2107fb5ada447a68ec56f4a391b20219b977db0d15cd5dfa5a5aa366fd",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/persistence-first-source.json.gz",
+      "bytes": 161813,
+      "sha256": "161599f841a2686e420f66e0cf6fceac6512f7972378f7c28ca35a2f3a324b49",
+      "originalSha256": "161599f841a2686e420f66e0cf6fceac6512f7972378f7c28ca35a2f3a324b49"
+    },
+    {
+      "path": "reports/persistence-first-unit.log.gz",
+      "bytes": 374,
+      "sha256": "b96061deb89048604b52ddbbbb3673b5c78c7c89ff44571ab2818cc5c9a1404d",
+      "originalSha256": "9e436ba21023fa7d4a0e23f705b6f43f03ccc3331339de3dda4340a5faa90049",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/persistence-first-vitest.json.gz",
+      "bytes": 5612,
+      "sha256": "2fd7f5ccc5fdf0604c51ef29e39346e9a4576f743aa427713c241ac81875c188",
+      "originalSha256": "4b18641b54e42dfc9bf76b97708800a85fa4708f8d0377fe6aed8465356df88f",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/persistence-first.json.gz",
+      "bytes": 120,
+      "sha256": "3391f17bd739cf6bacffacbae2ceacbe0f0c64a3bb6e53e6ee217e1830c1a9f0",
+      "originalSha256": "60f6eb2fc04cda3cf66e0588459c5d14bd9056e4d87cc0325ae35f8aadfc02f3",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/persistence-second-source.json.gz",
+      "bytes": 229378,
+      "sha256": "767fd2aedac32cc82313cc6126445b6607c389977cb29290bac94fe4d03ee7ed",
+      "originalSha256": "767fd2aedac32cc82313cc6126445b6607c389977cb29290bac94fe4d03ee7ed"
+    },
+    {
+      "path": "reports/persistence-second-unit.log.gz",
+      "bytes": 377,
+      "sha256": "7483a51d0b88c5cfd4c36769814b81ff73f70bbd8d85e741fb270e51fa92f8a5",
+      "originalSha256": "78ea8caaa03b1ad0a47f3079657c2a08eff20c226bb39a9257d8c9203606ac8c",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/persistence-second-vitest.json.gz",
+      "bytes": 5725,
+      "sha256": "7065cca2725b908af27cdcf67b721d800d3ba85ba55823fbf7fefb2c76ecd455",
+      "originalSha256": "597670ca57929e2c8a36be9240c2f7b4213164cd1c51f92e548bf6d06d1027fd",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/persistence-second.json.gz",
+      "bytes": 120,
+      "sha256": "8be2354918334255c7d558ab6c2590a8325b6f8bf78102d2e12fd16b4455c867",
+      "originalSha256": "e210b5ebd0206d0843bc55f8c00fea5738f54e68daa351e956fe462577fd81a4",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/postgres-first-source.json.gz",
+      "bytes": 227966,
+      "sha256": "e4292bad0723ff01e5783eb08af194fb0094e837bf7c4ddf3d265e56020f2645",
+      "originalSha256": "e4292bad0723ff01e5783eb08af194fb0094e837bf7c4ddf3d265e56020f2645"
+    },
+    {
+      "path": "reports/postgres-first-unit.log.gz",
+      "bytes": 377,
+      "sha256": "aba13a5490b96174d71fcc94cb15f5edf025e7bfedb81161d186347327ae5377",
+      "originalSha256": "11822ab16ead5bb8bbd0e579f6f171c88c9fc0e618d6bfb05d19b0bd2699f9e3",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/postgres-first-vitest.json.gz",
+      "bytes": 712,
+      "sha256": "9934e2ff4b1afe6aa640bd0082682ddae03f235e2a81a8c61d6018751c90fcd9",
+      "originalSha256": "09078b55f93d64bdeda78e33937a2e4ed8faf86432d375b1868ccfb43ff81043",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/postgres-first.json.gz",
+      "bytes": 119,
+      "sha256": "ff0287ef1d86cf44ae426d438e6dd19b43c7ebf9081f122cf2df453712dc2101",
+      "originalSha256": "19eef6e805677dffd29f57e371377fe250cd5555cc8fd41c5b31eb6b5386e0de",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/postgres-start-first.json.gz",
+      "bytes": 143,
+      "sha256": "9fcc379aa7178be2b724d0acf775ca28bd19c7834f2cc3abaf8a956a1dc7c9d8",
+      "originalSha256": "3ac71b618a7c871a60f881d14e1a9ef644e2b619b8f61ce66d173911c557f857",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/postgres-stop-first.json.gz",
+      "bytes": 149,
+      "sha256": "cc659e3e7ca5b93cbbced4aaad148c8cc86ba68fb4a0a80df088bd34388d2b19",
+      "originalSha256": "02ca5558784e3afe7d63e77c94949cfc2f0e11a05e2654c52c4421460aa7d860",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/postgres-stop-first.log.gz",
+      "bytes": 73,
+      "sha256": "e3e859d818e98737c41a12ed9d3cc5b9745d40dc662626326bebd7f202cef869",
+      "originalSha256": "3589d2bd01f8295cc7c9ec3f5e07625fcd347ccb6f33f2d80edafe5f5217c1fb",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/preparation-first.json.gz",
+      "bytes": 217510,
+      "sha256": "4124b3ed60b638881b2119d66d45fab336862d6fd692e1e536333dcf1e9f77c6",
+      "originalSha256": "4124b3ed60b638881b2119d66d45fab336862d6fd692e1e536333dcf1e9f77c6"
+    },
+    {
+      "path": "reports/privacy-first-source.json.gz",
+      "bytes": 224659,
+      "sha256": "1d73014772ca41c1094a41b8f85f912b1cd89a5866b732ffdfcf117a931b41b0",
+      "originalSha256": "1d73014772ca41c1094a41b8f85f912b1cd89a5866b732ffdfcf117a931b41b0"
+    },
+    {
+      "path": "reports/privacy-first-unit.log.gz",
+      "bytes": 377,
+      "sha256": "d7cf0f241402dcad03c15e76ac822ca763ab187b13df37a78e9b7519a9c62b52",
+      "originalSha256": "6bfada1273551909846b0de5be57a84c6e2838b1ec911ba7d27a92572de417bb",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/privacy-first-vitest.json.gz",
+      "bytes": 711,
+      "sha256": "ccf2b177fd8c511480eabd68a5e3827705f6694357fc5ef14eeccbe3c6c814a8",
+      "originalSha256": "47bae44e617fd27578e1fe2e4d5fdbaf34747a74cf0edd84e5b4425ccaf96d97",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/privacy-first.json.gz",
+      "bytes": 119,
+      "sha256": "73117e964b63e2bba91a5c9ffdd93ce0d4fdf8db62869a2580c3820160a4d04b",
+      "originalSha256": "4457864f57705f4eab9a7858221f7f3a5ac53050e45c50221eea7bcaf611a159",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/reader-expectations-before-first.json.gz",
+      "bytes": 23680,
+      "sha256": "a7abc9575fd989e1f48c9f2c29373ef0f5b3b10c398953dbff694bd0504e8fa4",
+      "originalSha256": "a7abc9575fd989e1f48c9f2c29373ef0f5b3b10c398953dbff694bd0504e8fa4"
+    },
+    {
+      "path": "reports/reader-expectations-before-second.json.gz",
+      "bytes": 60022,
+      "sha256": "12e5a74381a48454abca48bfde20e71217abc05089cd7e1bc4138cb3d91d5d81",
+      "originalSha256": "12e5a74381a48454abca48bfde20e71217abc05089cd7e1bc4138cb3d91d5d81"
+    },
+    {
+      "path": "reports/reader-expectations-first.json.gz",
+      "bytes": 1309,
+      "sha256": "9a61017e74f675cee580aaf923b583d2832b06e8b2798938753b14a252802b89",
+      "originalSha256": "83dc58148c3ac2327cebebbdf81660a42daaa15f54974cb74790aa6a9d1b2c08",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/reader-expectations-second.json.gz",
+      "bytes": 1475,
+      "sha256": "26db4928e5b625bb7d77a2c3c0429926349553598e829add70c9ac91261e6ef8",
+      "originalSha256": "57766b780514b6e12709acaefd7186a50f88f385d534af0970b2c4c91cbe0b1f",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/reader-first-source.json.gz",
+      "bytes": 227966,
+      "sha256": "e4292bad0723ff01e5783eb08af194fb0094e837bf7c4ddf3d265e56020f2645",
+      "originalSha256": "e4292bad0723ff01e5783eb08af194fb0094e837bf7c4ddf3d265e56020f2645"
+    },
+    {
+      "path": "reports/reader-first-unit.log.gz",
+      "bytes": 376,
+      "sha256": "02182d3f3c0dd25d82e244534294d0c4fd742ea5c1c3d3892ff1092221a81bce",
+      "originalSha256": "f9bd97fbab20e4627bc282ff3df868e1c5c5138f03d4995dfc028b4dbbb4412e",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/reader-first-vitest.json.gz",
+      "bytes": 803,
+      "sha256": "4a16759b710a9bb54503741f52fa3aa6948996324e4d1a58c25ccab2cce207ae",
+      "originalSha256": "e5664239bfa9205e632cf128cd9c6790d981f287791c1da90949ba61b892f2e5",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/reader-first.json.gz",
+      "bytes": 120,
+      "sha256": "31e32a631e6ff55669e15cfcc7e06a5a3c339d94ddb7333a04d298c02083ea84",
+      "originalSha256": "8bceebe4d164963e8682707d92e12640d5e914c5e48aa9bdd138ae5c2cf57430",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/reader-regression-first-source.json.gz",
+      "bytes": 370849,
+      "sha256": "8c382b9818484a412d21364f8aa242c2675dfc6187afadebb53948b7dc3d7f8c",
+      "originalSha256": "8c382b9818484a412d21364f8aa242c2675dfc6187afadebb53948b7dc3d7f8c"
+    },
+    {
+      "path": "reports/reader-regression-first-unit.log.gz",
+      "bytes": 381,
+      "sha256": "2c716cae12b9b6e45d1600480ec630b9d942393a585837950efd92c86f035da6",
+      "originalSha256": "e4e8cdfec2481ef137bbd5b5dc4bb8510901047069b43c515818ba842a66ef13",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/reader-regression-first-vitest.json.gz",
+      "bytes": 3775,
+      "sha256": "2b2da7335878a02fb80a1bcb7213e9eb351d9d2c1163428d61e30c466f372bc2",
+      "originalSha256": "85c37b870a3f42dbe8870c3148f347d1fb2251817f4ee2bc69559addccc9da03",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/reader-regression-first.json.gz",
+      "bytes": 140,
+      "sha256": "929b159b3bcce520456eed35c7695040e916c8055bbe4f322c7f8af8cc231e25",
+      "originalSha256": "44d1fd0fbf0fab607e8e54d135b92c65b333c4893ef64665d68fc53fdedd98f7",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-fifth-api.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-fifth-config.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-fifth-contracts.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-fifth-source.json.gz",
+      "bytes": 228985,
+      "sha256": "c1c762653d526a2905fe6a660d960f98c61c072dd48c8e10de5d61ccdc2cd9b0",
+      "originalSha256": "c1c762653d526a2905fe6a660d960f98c61c072dd48c8e10de5d61ccdc2cd9b0"
+    },
+    {
+      "path": "reports/types-fifth.json.gz",
+      "bytes": 139,
+      "sha256": "87a278486dbd5216528d8b97a7cfe51cc7bd913fc44a577435b97280fe800f84",
+      "originalSha256": "ac542bfa4e2cc7b4275d19621af286fc4091727f2850c40c35afb157ff54015b",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-first-api.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-first-config.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-first-contracts.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-first-source.json.gz",
+      "bytes": 148727,
+      "sha256": "f850fc29c5cb7c0f794c07425649d1d470205e7047d036ebb33b0a39141bdf66",
+      "originalSha256": "f850fc29c5cb7c0f794c07425649d1d470205e7047d036ebb33b0a39141bdf66"
+    },
+    {
+      "path": "reports/types-first.json.gz",
+      "bytes": 142,
+      "sha256": "b971909b66dbcbb04231f3773aefab5de6ff89c5cfa9a64be045e67b3476b184",
+      "originalSha256": "17b92cb7cc4e04688a43df7a8d3f5d518234e20cbccb17e648da686fd0fba3db",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-fourth-api.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-fourth-config.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-fourth-contracts.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-fourth-source.json.gz",
+      "bytes": 227966,
+      "sha256": "e4292bad0723ff01e5783eb08af194fb0094e837bf7c4ddf3d265e56020f2645",
+      "originalSha256": "e4292bad0723ff01e5783eb08af194fb0094e837bf7c4ddf3d265e56020f2645"
+    },
+    {
+      "path": "reports/types-fourth.json.gz",
+      "bytes": 142,
+      "sha256": "6d7ce6be0bb04e427a104ac701ad114120a187ef07c21661939205cd19839734",
+      "originalSha256": "6ec4bef45746d74fc4dd5f3d067f393cad23ece023fe90cfffd7f08d7b203141",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-second-api.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-second-config.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-second-contracts.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-second-source.json.gz",
+      "bytes": 155472,
+      "sha256": "ce6936774957ff55f6694b630069a4a87e4e66276ead7e93bd43f1b59c23ae3b",
+      "originalSha256": "ce6936774957ff55f6694b630069a4a87e4e66276ead7e93bd43f1b59c23ae3b"
+    },
+    {
+      "path": "reports/types-second.json.gz",
+      "bytes": 142,
+      "sha256": "6c60fcef772c2a9139ae683a5c7a72dc40618d5f4d8b9a4babf86345c51150ba",
+      "originalSha256": "1ee7633d483057c7dc2173c860685f9c37d496dd61089a3760d6d62987462c78",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-sixth-api.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-sixth-config.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-sixth-contracts.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-sixth-source.json.gz",
+      "bytes": 315489,
+      "sha256": "dfc847cff64d658d6adfaf192a85a57165d47825eb4388c58eb633483b8ebc07",
+      "originalSha256": "dfc847cff64d658d6adfaf192a85a57165d47825eb4388c58eb633483b8ebc07"
+    },
+    {
+      "path": "reports/types-sixth.json.gz",
+      "bytes": 159,
+      "sha256": "a5636a502446fd886aad7b675957a7519a3227ff494d1ef3909cdb6829c7101c",
+      "originalSha256": "af3b597a70e3acbc9146abf83eed45972d5565300dfe48d111596657a293d93b",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-third-api.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-third-config.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-third-contracts.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/types-third-source.json.gz",
+      "bytes": 163373,
+      "sha256": "b9991295149698db9bad52ff071a73f58546d901631924bb1066f3540399cbd4",
+      "originalSha256": "b9991295149698db9bad52ff071a73f58546d901631924bb1066f3540399cbd4"
+    },
+    {
+      "path": "reports/types-third.json.gz",
+      "bytes": 141,
+      "sha256": "a4d3f4a6f32d57328809b78c26c12a9e0eb0dad8110ec4a13cd61d48832de948",
+      "originalSha256": "95a5ee80b17053e755942e2a882e0b218f7dac5960a8a1b49939eddca2d1e4a9",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/web-types-first.log.gz",
+      "bytes": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "gzip"
+    },
+    {
+      "path": "verification-source/archive-first.cjs",
+      "bytes": 7780,
+      "sha256": "d4a0e0921733837489e6524bb5ca520cd3b50c06b24643c0867ff670bf247116",
+      "originalSha256": "d4a0e0921733837489e6524bb5ca520cd3b50c06b24643c0867ff670bf247116"
+    },
+    {
+      "path": "verification-source/check-api-full-first-runner.cjs",
+      "bytes": 4142,
+      "sha256": "8cf274d40ffb6d54eb2f22696fd1ac1cef07941da9cb8eea180e4e90df0d866d",
+      "originalSha256": "8cf274d40ffb6d54eb2f22696fd1ac1cef07941da9cb8eea180e4e90df0d866d"
+    },
+    {
+      "path": "verification-source/check-before-source-list-fix.cjs",
+      "bytes": 4115,
+      "sha256": "047f660518d0ea9fef8685639d19a1dd0815480a5bb2b70c6f7f45189beefe76",
+      "originalSha256": "047f660518d0ea9fef8685639d19a1dd0815480a5bb2b70c6f7f45189beefe76"
+    },
+    {
+      "path": "verification-source/check.cjs",
+      "bytes": 4196,
+      "sha256": "6ddbf31a20da2e3215f17fbe658ef33a95748344c505887474ce969fee77cdef",
+      "originalSha256": "6ddbf31a20da2e3215f17fbe658ef33a95748344c505887474ce969fee77cdef"
+    },
+    {
+      "path": "verification-source/formal-copy-migration-first.cjs",
+      "bytes": 5841,
+      "sha256": "381149840ce47335fcce79a9c3c88244745d554215e2c8f2b367ffacaf2dba92",
+      "originalSha256": "381149840ce47335fcce79a9c3c88244745d554215e2c8f2b367ffacaf2dba92"
+    },
+    {
+      "path": "verification-source/integrate-first.cjs",
+      "bytes": 5081,
+      "sha256": "aadf881e1baff9e31b6465b24ff1665c4544af54cb440ad9f4734557fcd54ef7",
+      "originalSha256": "aadf881e1baff9e31b6465b24ff1665c4544af54cb440ad9f4734557fcd54ef7"
+    },
+    {
+      "path": "verification-source/legacy-postgres-check.cjs",
+      "bytes": 2413,
+      "sha256": "4b9d52a98d9d0d6a6b738170bd79c8d14e272f6482ca06f52f53afddda32de45",
+      "originalSha256": "4b9d52a98d9d0d6a6b738170bd79c8d14e272f6482ca06f52f53afddda32de45"
+    },
+    {
+      "path": "verification-source/main-check-first.cjs",
+      "bytes": 2386,
+      "sha256": "ea1327b73dfadab03c8403809f115198865137fef936d1b9210819e0129b55e0",
+      "originalSha256": "ea1327b73dfadab03c8403809f115198865137fef936d1b9210819e0129b55e0"
+    },
+    {
+      "path": "verification-source/postgres-api-full-first-runner.cjs",
+      "bytes": 677,
+      "sha256": "c31b55dd4ea3c1719aa44ddfbef3fe1478abb327870a1fac878b5ae6dba2480f",
+      "originalSha256": "c31b55dd4ea3c1719aa44ddfbef3fe1478abb327870a1fac878b5ae6dba2480f"
+    },
+    {
+      "path": "verification-source/postgres-check-first.cjs",
+      "bytes": 620,
+      "sha256": "6f4c80952324dd898b91a58ce45f09f15f160f1ac43cfc2dc4ca081fe7ece24f",
+      "originalSha256": "6f4c80952324dd898b91a58ce45f09f15f160f1ac43cfc2dc4ca081fe7ece24f"
+    },
+    {
+      "path": "verification-source/postgres-check.cjs",
+      "bytes": 712,
+      "sha256": "f9940fef778546084d69da9e778855723cb9b08902c1d616189526142b8d7529",
+      "originalSha256": "f9940fef778546084d69da9e778855723cb9b08902c1d616189526142b8d7529"
+    },
+    {
+      "path": "verification-source/postgres-start-first.cjs",
+      "bytes": 2277,
+      "sha256": "1c8fffdd777d639c73c6970f62f1d4dfdf2ed9a117a458677c22b91c9f83b48b",
+      "originalSha256": "1c8fffdd777d639c73c6970f62f1d4dfdf2ed9a117a458677c22b91c9f83b48b"
+    },
+    {
+      "path": "verification-source/prepare-first.cjs",
+      "bytes": 3676,
+      "sha256": "b7612ce791806d0efb1175734e63b1d112fe020ae6dfaa72bbbba1e3bb491df8",
+      "originalSha256": "b7612ce791806d0efb1175734e63b1d112fe020ae6dfaa72bbbba1e3bb491df8"
+    },
+    {
+      "path": "verification-source/refresh-reader-expectations-first.cjs",
+      "bytes": 3683,
+      "sha256": "7afc7ea980d3335b7b9a1a3067a2abf400bdcb9097fb340873ddfa8c8ed7ef99",
+      "originalSha256": "7afc7ea980d3335b7b9a1a3067a2abf400bdcb9097fb340873ddfa8c8ed7ef99"
+    },
+    {
+      "path": "verification-source/refresh-reader-expectations-second.cjs",
+      "bytes": 4251,
+      "sha256": "84b1f39636e169b4b1d06661e93ef62f4396c065884b28f62e001d80a0b095c1",
+      "originalSha256": "84b1f39636e169b4b1d06661e93ef62f4396c065884b28f62e001d80a0b095c1"
+    },
+    {
+      "path": "verification-source/stop-postgres-first.cjs",
+      "bytes": 1236,
+      "sha256": "94cf46fe8bf36380d5b5508004743a11ec299419b82b69036cf7adc142f83961",
+      "originalSha256": "94cf46fe8bf36380d5b5508004743a11ec299419b82b69036cf7adc142f83961"
+    },
+    {
+      "path": "verification-source/stage-first.cjs",
+      "bytes": 1898,
+      "sha256": "e59dd2cceb1c74166b2185745f04d33bf653466500f598782e72ae63ed2ff59e",
+      "originalSha256": "e59dd2cceb1c74166b2185745f04d33bf653466500f598782e72ae63ed2ff59e"
+    },
+    {
+      "path": "verification-source/finish-staging-first.cjs",
+      "bytes": 4232,
+      "sha256": "4f7d9eb503bee2371bfabafbcc4f2452488cdcdc2c647f7ff69cac0a9670dda0",
+      "originalSha256": "4f7d9eb503bee2371bfabafbcc4f2452488cdcdc2c647f7ff69cac0a9670dda0"
+    },
+    {
+      "path": "verification-source/scan-staged.cjs",
+      "bytes": 2698,
+      "sha256": "7f92a6c05876556fd087b9d2aebda7619b5d72789d8ae53973e296b13935e009",
+      "originalSha256": "7f92a6c05876556fd087b9d2aebda7619b5d72789d8ae53973e296b13935e009"
+    },
+    {
+      "path": "verification-source/finalize-first.cjs",
+      "bytes": 2373,
+      "sha256": "84243a78955f5f41bff693406c640600fe19fc726ed0bbf4851dc367aa134b37",
+      "originalSha256": "84243a78955f5f41bff693406c640600fe19fc726ed0bbf4851dc367aa134b37"
+    },
+    {
+      "path": "reports/docs-first.log.gz",
+      "bytes": 57,
+      "sha256": "fb5a6b6b0d4a24e8d82c68516a98dc4b83a764517b86b461255d446776c41696",
+      "originalSha256": "f341d2c970ff23aab494a3b516bb823083514273ca5864f260ce7d8428ed482f",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/staged-scan-first.json.gz",
+      "bytes": 251,
+      "sha256": "887de969f659efc806d41883bcae26299b7024648707b24a44d7e2cc229a2186",
+      "originalSha256": "93098579bda6f950787702c6ecfbd1404afb095100b9f1ced7d4a5da29325385",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/staging-first.json.gz",
+      "bytes": 1620,
+      "sha256": "199fdecf2d6738698ca796b31b2d665b672c730f7e02528de9ec2e510ff2621b",
+      "originalSha256": "722da823e5293bcc0122aeb0fbb9df5945063fd7a70e4bd53e53b99df1014625",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/diff-check-first.log.gz",
+      "bytes": 154,
+      "sha256": "aa5f6b77919d2429832b7fb0b4fae6cd3c5881407605913c28416d3a8e66eabd",
+      "originalSha256": "995b093a84b05008cf5dbefc8bb09d5daf10d5a6ecb6f70652850b1ab45dd477",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/source-normalization-first.json.gz",
+      "bytes": 338,
+      "sha256": "a836721fd42b0b9e42cb70adb062a6b80cee03bbe3a8544a65e41f292c4eba71",
+      "originalSha256": "1583242d5bfe0880738679236d29123a692515853bb39fe6ee80eb5da41c8540",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/source-final-first.json.gz",
+      "bytes": 236644,
+      "sha256": "8209f6852c1fe70701e2215caa51ab7860b84752f59522734f2c4d0752470747",
+      "originalSha256": "8209f6852c1fe70701e2215caa51ab7860b84752f59522734f2c4d0752470747"
+    }
+  ],
+  "sourceNormalization": {
+    "path": "apps/api/src/modules/library/paper-library-app.fixture.spec.ts",
+    "beforeSha256": "2976a7839efb9707a557dcf96c6b68db8fc6b2174118728a8e27ff70e4520a60",
+    "afterSha256": "96e6da2bc3f1a331da4f338a450eeff40fa1fd4fe4083fd052ad63e693bc3610",
+    "removedBytes": 3,
+    "change": "One surplus blank line at EOF in test fixture only; application source unchanged. Exact original is preserved in immutable test source snapshots.",
+    "additionalTestsNeeded": false
+  },
+  "deliveryChecks": {
+    "documentationLinks": 5075,
+    "missingLinks": 0,
+    "initialStagedFiles": 213,
+    "textParts": 373,
+    "decodedEmbeddedSourceParts": 160,
+    "credentialPatternFindings": 0,
+    "stagedDiffCheck": 0,
+    "sourceScopeStagedOnly": true,
+    "note": "Final staged scan repeated after adding these review records; the separate exact output remains in private QA."
+  }
+}

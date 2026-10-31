@@ -26,6 +26,7 @@ import {anonymizePaperCapturePrivacy,paperCaptureAccountRetainedStudents} from '
 import {paperCaptureFileReferenced,schedulePaperCaptureCleanup} from '../learning/paper-capture-cleanup';
 import {paperImageFilePath,type PaperImageFileReceipt} from '../learning/paper-capture-files';
 import {paperCaptureFileId} from '../learning/paper-capture-record';
+import { preparePaperLibraryErasure } from '../library/paper-export-privacy';
 import {studioMaterialRoot} from '../learning/studio-material-storage';
 import {resolve} from 'node:path';
 import {paperRepairAsset,schedulePaperRepairCleanup,schedulePaperRepairUploadCleanup} from '../learning/paper-capture-repair.service';
@@ -257,6 +258,9 @@ export class PrivacyService {
     const receipt = this.receipt(actor, kind, subjectId, command.requestKey, inputHash, preview.counts);
     receipt.erasedStudentHashes = preview.deletedChildren.map(child => privacyHash({ id: child.id }));
     receipt.retainedStudentHashes = preview.retainedChildren.map(child => privacyHash({ id: child.id }));
+    const paperExports = preparePaperLibraryErasure(this.store as unknown as Record<string, any[]>, selection.paperExports ?? [], receipt, 'live');
+    this.store.paperExportFiles = paperExports.files;
+    for (const task of paperExports.enqueue) await this.store.enqueueTask(task);
     const paperTaskIds=new Set<string>((selection.paperCaptureDerivations??[]).map(row=>String(row.taskId)));
     for(const row of selection.paperCaptureRepairs??[])paperTaskIds.add(String(row.intent.taskId));
     if(!studentId){const guarded=new Set(this.store.inspect('paperCaptureRepairCommands').filter(command=>command.authorization.learningAccess?.guardianId===actor.id&&command.result&&'repairId'in command.result).map(command=>String((command.result as {repairId:string}).repairId)));for(const row of this.store.inspect('paperCaptureRepairs'))if(row.attribution.ownerUserId===actor.id||guarded.has(row.id))paperTaskIds.add(row.intent.taskId);}

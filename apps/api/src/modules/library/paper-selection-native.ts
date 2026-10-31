@@ -3,16 +3,22 @@ import { retentionDigest as digest } from '../diagnostics/retention-anchor';
 import { assertPaperSelectionCommand, assertPaperSelectionList, preparePaperSelectionChange,
   type PaperSelectionAuthorization, type PaperSelectionListRecord } from './paper-selection-record';
 import { assertPaperSourceExposure, paperSelectionExposureKey, preparePaperSourceExposure } from './paper-source-exposure-record';
+import { assertPaperExportNativeRows } from './paper-export-native';
 
 type Row = { collection: string; record_id?: string; body: unknown };
 const same = (left: unknown, right: unknown) => digest(left) === digest(right);
 const fail = (): never => { throw Error('paper_selection_native_relation_changed'); };
 const unique = <T>(values: readonly T[], key: (value: T) => string) => { if (new Set(values.map(key)).size !== values.length) fail(); };
-export const PAPER_EXPORT_NATIVE_READY = false;
+export const PAPER_EXPORT_NATIVE_READY = true;
 
 /** Reads all retained originals. This function never repairs missing history,
  * creates exposures, or uses current publication state to erase old sources. */
-export function assertPaperSelectionNativeRows(rows: readonly Row[]) {
+export function assertPaperSelectionNativeRows(rows: readonly Row[], tasks?: readonly unknown[], history?: readonly unknown[]) {
+  if (rows.some(row => ['paperExports', 'paperExportCommands', 'paperExportFiles'].includes(row.collection) ||
+      row.collection === 'paperSourceExposures' && (typeof row.body === 'string' ? JSON.parse(row.body) : row.body as any)?.input?.kind === 'export')) {
+    if (!tasks || !history) throw Error('paper_export_native_context_required');
+    return assertPaperExportNativeRows(rows, tasks, history);
+  }
   try {
     const state: Record<string, any[]> = {};
     for (const row of rows) {

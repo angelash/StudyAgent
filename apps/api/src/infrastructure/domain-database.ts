@@ -16,6 +16,9 @@ import { assertAssistantWhiteboardRecords } from '../modules/learning/assistant-
 import { assertAssistantPracticeRecords } from '../modules/learning/assistant-practice-integrity';
 import { assertAssistantTeachingRecords } from '../modules/learning/assistant-teaching-integrity';
 import { DomainWriteConflict } from './domain-write-conflict';
+import { assertPaperLibraryPersisted, finishPaperLibraryErasure, needsPaperLibraryCommit, paperLibrarySnapshot, paperLibraryNativeRows } from '../modules/library/paper-export-persistence';
+import { assertPaperLibraryWrites } from '../modules/library/paper-library-write-integrity';
+import { assertPaperExportNativeRows } from '../modules/library/paper-export-native';
 
 export type DomainState = Record<string, unknown[]>;
 export type StateSnapshot = { revision: number; state: DomainState; collectionRevisions?: Record<string, number> };
@@ -272,6 +275,14 @@ export class DomainDatabase {
     await this.migrateConstraints(31,[{name:'paper_upload_original_request',collection:'paperImageUploads',fields:['actorId','requestKey']},{name:'paper_upload_original_command',collection:'paperImageUploads',fields:['commandId']},{name:'paper_capture_private_command',collection:'paperCaptureCommands',fields:['actorId','requestKey']},{name:'paper_capture_file_role',collection:'paperCaptureFileAssets',fields:['role','sha256']},{name:'paper_repair_upload_command',collection:'paperCaptureRepairUploads',fields:['commandId']},{name:'paper_repair_private_command',collection:'paperCaptureRepairCommands',fields:['actorId','requestKey']},{name:'paper_repair_original_task',collection:'paperCaptureRepairs',fields:['intent.taskId']}],`CREATE UNIQUE INDEX IF NOT EXISTS paper_capture_active_page_upload ON domain_records(${paperField('pageId')}) WHERE collection='paperImageUploads' AND ${paperField('status')}='uploading'; UPDATE study_restore_guard SET state='ready-schema31',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema30';`);
     this.tasks = new TaskRepository(this.sqlite, this.postgres, this.now, this.sqlite && sqliteQueueKey(this.location));
     await this.tasks.open();
+    await this.migrateConstraints(32, [
+      { name: 'paper_selection_original_request', collection: 'paperSelectionCommands', fields: ['actorId', 'requestKey'] },
+      { name: 'paper_export_original_request', collection: 'paperExportCommands', fields: ['actorId', 'requestKey'] },
+      { name: 'paper_source_exposure_request', collection: 'paperSourceExposures', fields: ['actorId', 'requestKey'] },
+      { name: 'paper_export_original_workspace', collection: 'paperExportFiles', fields: ['workspace'] },
+      { name: 'paper_export_original_lease', collection: 'paperExportFiles', fields: ['taskId', 'generation', 'token'] },
+    ], `UPDATE study_restore_guard SET state='ready-schema32',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema31';`,
+    query => assertPaperLibraryPersisted(query, this.driver === 'postgres').then(() => undefined));
     this.limits = new RateLimitRepository(this.tasks, this.sqlite, this.postgres, this.now);
   }
 
@@ -280,22 +291,23 @@ export class DomainDatabase {
     if (this.sqlite) {
       const table = this.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='study_restore_guard'").get();
       if (table) state = (this.sqlite.prepare('SELECT state FROM study_restore_guard WHERE id=1').get() as { state?: string } | undefined)?.state ?? 'missing';
-      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27', 'ready-schema28', 'ready-schema29', 'ready-schema30', 'ready-schema31'].includes(state)) throw new Error('Database restoration is incomplete');
+      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27', 'ready-schema28', 'ready-schema29', 'ready-schema30', 'ready-schema31', 'ready-schema32'].includes(state)) throw new Error('Database restoration is incomplete');
       if (this.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='schema_migrations'").get())
         version = Number((this.sqlite.prepare('SELECT MAX(version) version FROM schema_migrations').get() as { version?: number }).version ?? 0);
     } else {
       if ((await this.postgres!.query("SELECT to_regclass('study_restore_guard') AS name")).rows[0].name)
         state = (await this.postgres!.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state ?? 'missing';
-      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27', 'ready-schema28', 'ready-schema29', 'ready-schema30', 'ready-schema31'].includes(state)) throw new Error('Database restoration is incomplete');
+      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27', 'ready-schema28', 'ready-schema29', 'ready-schema30', 'ready-schema31', 'ready-schema32'].includes(state)) throw new Error('Database restoration is incomplete');
       if ((await this.postgres!.query("SELECT to_regclass('schema_migrations') AS name")).rows[0].name)
         version = Number((await this.postgres!.query('SELECT MAX(version) version FROM schema_migrations')).rows[0]?.version ?? 0);
     }
-    if (version > 31) throw new Error('unsupported_database_schema');
-    const expected = version === 31 ? 'ready-schema31' : version === 30 ? 'ready-schema30' : version === 29 ? 'ready-schema29' : version === 28 ? 'ready-schema28' : version === 27 ? 'ready-schema27' : version === 26 ? 'ready-schema26' : version === 25 ? 'ready-schema25' : version === 24 ? 'ready-schema24' : version === 23 ? 'ready-schema23' : 'ready';
+    if (version > 32) throw new Error('unsupported_database_schema');
+    const expected = version === 32 ? 'ready-schema32' : version === 31 ? 'ready-schema31' : version === 30 ? 'ready-schema30' : version === 29 ? 'ready-schema29' : version === 28 ? 'ready-schema28' : version === 27 ? 'ready-schema27' : version === 26 ? 'ready-schema26' : version === 25 ? 'ready-schema25' : version === 24 ? 'ready-schema24' : version === 23 ? 'ready-schema23' : 'ready';
     if (state !== undefined && state !== expected || version >= 23 && state !== expected) throw new Error('minimum_reader_guard_mismatch');
   }
 
-  private async migrateConstraints(version: number, constraints: Array<{ name: string; collection: string; fields: string[]; pending?: boolean; protocol?: 'assistant-generated-self-session-v1'|'assistant-generated-student-session-v1' }>, extraSql = '') {
+  private async migrateConstraints(version: number, constraints: Array<{ name: string; collection: string; fields: string[]; pending?: boolean; protocol?: 'assistant-generated-self-session-v1'|'assistant-generated-student-session-v1' }>, extraSql = '',
+    validate?: (query: (sql: string, args?: any[]) => Promise<any[]>) => Promise<void>) {
     const indexes = (postgres: boolean) => constraints.map(index => {
       const extract = (field: string) => postgres ? `(body#>>'{${field.split('.').join(',')}}')` : `json_extract(body,'$.${field}')`;
       return `CREATE UNIQUE INDEX IF NOT EXISTS ${index.name} ON domain_records(${index.fields.map(extract).join(',')})
@@ -304,6 +316,7 @@ export class DomainDatabase {
     if (this.sqlite) {
       this.sqlite.exec('BEGIN IMMEDIATE');
       try {
+        if (validate) await validate(async (sql, args = []) => this.sqlite!.prepare(sql).all(...args));
         if (!this.sqlite.prepare('SELECT version FROM schema_migrations WHERE version=?').get(version)) {
           this.sqlite.exec(indexes(false) + ';' + extraSql);
           this.sqlite.prepare("INSERT INTO schema_migrations VALUES(?, strftime('%Y-%m-%dT%H:%M:%fZ','now'))").run(version);
@@ -314,8 +327,9 @@ export class DomainDatabase {
     }
     const client = await this.postgres!.connect();
     try {
-      await client.query('BEGIN');
+      await client.query(validate ? 'BEGIN ISOLATION LEVEL REPEATABLE READ' : 'BEGIN');
       await client.query('SELECT pg_advisory_xact_lock(73199402)');
+      if (validate) await validate(async (sql, args = []) => { let parameter = 0; return (await client.query(sql.replace(/\?/g, () => '$' + ++parameter), args)).rows; });
       if (!(await client.query('SELECT version FROM schema_migrations WHERE version=$1', [version])).rowCount) {
         await client.query(indexes(true) + ';' + extraSql);
         await client.query('INSERT INTO schema_migrations(version) VALUES($1)', [version]);
@@ -413,6 +427,7 @@ export class DomainDatabase {
     const changes = differences(before.state, after, options.reads, options.writeHints);
     if (changes.length === 0 && !options.enqueue?.length && !options.fence && !options.taskOperations?.length) return before.revision;
     const conflict = () => { this.counters.conflicts++; return new DomainWriteConflict(); };
+    const paperLibrary = needsPaperLibraryCommit(changes, options);
     if (this.sqlite) {
       this.sqlite.exec('BEGIN IMMEDIATE');
       try {
@@ -435,6 +450,7 @@ export class DomainDatabase {
         for (const collection of new Set(changes.map(change => change.collection))) this.sqlite.prepare('INSERT INTO domain_collection_versions VALUES(?,?) ON CONFLICT(collection) DO UPDATE SET revision=excluded.revision').run(collection, current + 1);
         await this.tasks.insert(options.enqueue ?? []);
         await this.tasks.applyOperations(options.taskOperations ?? []);
+        if (paperLibrary) await this.checkPaperLibraryCommit(before, changes, async (sql, args = []) => this.sqlite!.prepare(sql).all(...args));
         this.sqlite.exec('COMMIT');
         this.rememberCommit(current, current + 1, changes);
         if (options.reads) this.counters.scopedCommits++;
@@ -463,11 +479,20 @@ export class DomainDatabase {
       for (const collection of new Set(changes.map(change => change.collection))) await client.query('INSERT INTO domain_collection_versions VALUES($1,$2) ON CONFLICT(collection) DO UPDATE SET revision=excluded.revision', [collection, current + 1]);
       await this.tasks.insert(options.enqueue ?? [], client);
       await this.tasks.applyOperations(options.taskOperations ?? [], client);
+      if (paperLibrary) await this.checkPaperLibraryCommit(before, changes, async (sql, args = []) => { let parameter = 0; return (await client.query(sql.replace(/\?/g, () => '$' + ++parameter), args)).rows; });
       await client.query('COMMIT');
       this.rememberCommit(current, current + 1, changes);
       if (options.reads) this.counters.scopedCommits++;
       return current + 1;
     } catch (error) { await client.query('ROLLBACK'); throw error; } finally { client.release(); }
+  }
+
+  private async checkPaperLibraryCommit(before: StateSnapshot, changes: Change[], query: (sql: string, args?: any[]) => Promise<any[]>) {
+    await finishPaperLibraryErasure(query, new Date(this.now()).toISOString());
+    const snapshot = await paperLibrarySnapshot(query, this.driver === 'postgres'), state: Record<string, any[]> = {};
+    for (const row of snapshot.rows) (state[row.collection] ??= []).push(typeof row.body === 'string' ? JSON.parse(row.body) : row.body);
+    assertPaperLibraryWrites(before.state, state, changes);
+    assertPaperExportNativeRows(paperLibraryNativeRows(snapshot.rows), snapshot.tasks, snapshot.history);
   }
 
   private async assertDependencies(before: StateSnapshot, changes: Change[], dependencies: ReadDependency[],

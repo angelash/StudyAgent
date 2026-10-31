@@ -6,6 +6,8 @@ import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { DomainDatabase } from './domain-database';
+const { SCHEMA_VERSION: CURRENT_SCHEMA_VERSION } = require(require('node:path').resolve(__dirname, '../../../../scripts/operations/database-reader-guard.cjs'));
+
 
 const connection = process.env.STUDY_TEST_QUESTION_VISUAL_POSTGRES_URL;
 const initial = () => ({ whiteboardQuestionVisuals: [{ id: 'original-image', ownerUserId: 'owner', requestKey: 'original-image-request',
@@ -67,7 +69,7 @@ for (const engine of ['sqlite', 'postgres'] as const) describe.skipIf(engine ===
       const db = new DomainDatabase(url); await db.open();
       try { expect((await db.read()).state).toEqual(initial()); } finally { await db.close(); }
     }
-    await raw(url, async sql => { expect(Number((await sql('SELECT MAX(version) AS version FROM schema_migrations'))[0].version)).toBe(31); });
+    await raw(url, async sql => { expect(Number((await sql('SELECT MAX(version) AS version FROM schema_migrations'))[0].version)).toBe(CURRENT_SCHEMA_VERSION); });
   });
   it('rolls back duplicate legacy owner/request keys atomically, retaining both records and schema19', async () => {
     const url = await scope(); await legacy(url);

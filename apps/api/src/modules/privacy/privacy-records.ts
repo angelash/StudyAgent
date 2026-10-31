@@ -16,6 +16,7 @@ import { anonymizeControlledPreviews } from '../diagnostics/controlled-preview-p
 import { controlledSessionOf } from '../diagnostics/controlled-session-origin';
 import { controlledFeedbackHeld } from '../diagnostics/controlled-contrast-disclosure';
 import {paperCaptureAttributedCollections,paperCapturePrivateCollections,paperCaptureCollections,portablePaperCaptureSource} from '../learning/paper-capture-privacy';
+import { paperLibraryPrivateCollections } from '../library/paper-export-privacy';
 
 type Row = Record<string, any>;
 export type Selection = Record<string, Row[]>;
@@ -34,6 +35,8 @@ const hasReference = (value: unknown, references: Set<string>): boolean => typeo
 /** Explicit relation registry; shared curriculum, content, originals and other families never enter it. */
 export function studentRecords(store: InMemoryStoreService, studentId: string): Selection {
   const result: Selection = {};
+  for (const name of paperLibraryPrivateCollections) add(result, store, name, row => row.scope.studentId === studentId);
+  add(result, store, 'paperSourceExposures', row => row.studentId === studentId);
   add(result, store, 'students', row => row.id === studentId);
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'controlledContrastPreviews', 'diagnosticResponses', 'diagnosticHypotheses',
@@ -81,6 +84,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
 
 export function accountRecords(store: InMemoryStoreService, actorId: string, principal: string): Selection {
   const result: Selection = {};
+  for (const name of paperLibraryPrivateCollections) add(result, store, name, row => row.actorId === actorId);
   add(result, store, 'users', row => row.id === actorId);
   add(result, store, 'sessions', row => row.userId === actorId || row.guardianId === actorId);
   add(result, store, 'bindings', row => row.parentUserId === actorId);
@@ -233,6 +237,8 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
       ({id,studentId,subject,publicationId,fingerprint,scopeSnapshot,createdAt,expiresAt,sessionId}));
     else if (name === 'diagnosticBlueprints') result[name] = records.map(row => { const { paperReviewOrigin, ...rest } = row; return !paperReviewOrigin || allowedPaperPractice.has(paperReviewOrigin.sessionId) ? row : rest; });
     else if (name === 'paperPracticeCommands') result[name] = records.filter(row => allowedPaperPractice.has(row.sessionId) && paperOwners.has(row.ownerUserId));
+    else if(paperLibraryPrivateCollections.includes(name as typeof paperLibraryPrivateCollections[number]))result[name]=records.filter(row=>row.actorId===actorId).map(({authorization:_authorization,...row})=>row);
+    else if(name==='paperSourceExposures')result[name]=records.map(({authorization:_authorization,...row})=>row);
     else if(paperCaptureAttributedCollections.includes(name as typeof paperCaptureAttributedCollections[number]))result[name]=records.map(row=>portablePaperCaptureSource(row,paperOwners,actorId));
     else if(name==='paperImageUploads')result[name]=records.filter(row=>paperOwners.has(row.actorId)).map(({learningAccess:_access,guardianDeletionHash:_guardian,preparedFileIds:_prepared,filesCollectedAt:_collected,...row})=>({...row,chunksAvailable:row.status==='uploading'&&!_collected}));
     else if(name==='paperCaptureCommands')result[name]=records.filter(row=>paperOwners.has(row.actorId)).map(({fileIds:_files,authorization:_auth,...row})=>row);
@@ -324,6 +330,7 @@ export function anonymizeSharedAttribution(store: InMemoryStoreService, studentI
       if (!affected.has(recordId(row))) return row;
       if(name==='guidanceCalendarArrangements')return{...row,...(row.createdBy===actorId?{createdBy:null,creatorDeletionHash:privacyHash({id:actorId})}:{}),history:row.history.map((revision:Row)=>revision.actorId===actorId?{...revision,actorId:null,commandId:null,actorDeletionHash:privacyHash({id:actorId}),reason:'',input:{...revision.input,entries:revision.input.entries.map((entry:Row)=>entry.sourceKind==='review'?{...entry,rescheduleReason:''}:entry)},entries:revision.entries.map((entry:Row)=>({...entry,input:entry.input.sourceKind==='review'?{...entry.input,rescheduleReason:''}:entry.input}))}:revision)};
       if(name==='studioCalendarCommands')return row;
+      if((paperLibraryPrivateCollections as readonly string[]).includes(name)||name==='paperSourceExposures')return row;
       if(paperCaptureCollections.includes(name as typeof paperCaptureCollections[number]))return row;
       if(name==='controlledContrastPreviews')return row;
       if (name === 'assistantTeachingAssignments') return row;

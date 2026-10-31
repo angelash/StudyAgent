@@ -2,6 +2,8 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { Pool } from 'pg';
 import { randomUUID } from 'node:crypto';
 import { DomainDatabase } from './domain-database';
+const { SCHEMA_VERSION: CURRENT_SCHEMA_VERSION } = require(require('node:path').resolve(__dirname, '../../../../scripts/operations/database-reader-guard.cjs'));
+
 
 const connection = process.env.STUDY_TEST_TOPIC_WHITEBOARD_POSTGRES_URL;
 describe.skipIf(!connection)('native PostgreSQL AI whiteboard original identities', () => {
@@ -29,7 +31,7 @@ describe.skipIf(!connection)('native PostgreSQL AI whiteboard original identitie
       ] })).rejects.toThrow();
       await db.close(); db = new DomainDatabase(url); await db.open(); expect((await db.read()).state).toEqual(initial);
       const probe = new Pool({ connectionString: url });
-      try { expect(Number((await probe.query('SELECT MAX(version) AS version FROM schema_migrations')).rows[0].version)).toBe(31);
+      try { expect(Number((await probe.query('SELECT MAX(version) AS version FROM schema_migrations')).rows[0].version)).toBe(CURRENT_SCHEMA_VERSION);
         expect((await probe.query('SELECT indexname FROM pg_indexes WHERE schemaname=$1 AND indexname LIKE $2 ORDER BY indexname', [schema, 'topic_whiteboard_%'])).rows.map(row => row.indexname))
           .toEqual(['topic_whiteboard_prepare_request', 'topic_whiteboard_publication_draft']);
       } finally { await probe.end(); }

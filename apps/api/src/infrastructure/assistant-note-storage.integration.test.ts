@@ -6,6 +6,8 @@ import { dirname, join, resolve } from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { Pool } from 'pg';
 import { DomainDatabase } from './domain-database';
+const { SCHEMA_VERSION: CURRENT_SCHEMA_VERSION, READY_STATE: CURRENT_READY_STATE } = require(require('node:path').resolve(__dirname, '../../../../scripts/operations/database-reader-guard.cjs'));
+
 
 const connection = process.env.STUDY_TEST_ASSISTANT_NOTE_STORAGE_POSTGRES_URL;
 const original = () => ({ assistantArtifactDrafts: [{ id: 'original-private-note', ownerUserId: 'synthetic-owner', requestKey: 'original-note-request',
@@ -35,7 +37,7 @@ for (const engine of ['sqlite', 'postgres'] as const) describe.skipIf(engine ===
   it('cold migrates and reopens exact complete original notes and existing formal evidence', async () => {
     const url = await scope(); await legacy(url);
     for (let index = 0; index < 2; index++) { const database = new DomainDatabase(url); await database.open(); try { expect((await database.read()).state).toEqual(original()); } finally { await database.close(); } }
-    await raw(url, async sql => { expect(Number((await sql('SELECT MAX(version) version FROM schema_migrations'))[0].version)).toBe(31); });
+    await raw(url, async sql => { expect(Number((await sql('SELECT MAX(version) version FROM schema_migrations'))[0].version)).toBe(CURRENT_SCHEMA_VERSION); });
   });
   it('keeps both conflicting originals and schema21 intact when the new uniqueness migration fails', async () => {
     const url = await scope(); await legacy(url);

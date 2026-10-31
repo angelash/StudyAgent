@@ -165,9 +165,23 @@ export function assertPaperExportNativeRows(rows: readonly Row[], taskValues: re
         if (!erased || erased.proof.intentFingerprint !== payload.intentFingerprint || erased.proof.actorFingerprint !== digest({ id: task.ownerUserId }) ||
             !erased.proof.tasks.some(saved => saved.id === task.id && saved.payloadHash === task.payloadHash) || erased.receipt.completedAt < task.createdAt ||
             !['failed', 'cancelled', 'succeeded', 'cancel_requested'].includes(task.state)) fail();
+        const fences = events.filter(event => event.action === 'privacy_erased');
+        if (fences.length !== 1 || fences[0].actorId !== 'system-paper-export' || fences[0].detail.receiptId !== erased.receipt.id ||
+            fences[0].detail.exportId !== payload.exportId || fences[0].detail.intentFingerprint !== payload.intentFingerprint ||
+            !Number.isSafeInteger(fences[0].detail.generation) || Number(fences[0].detail.generation) < 1 || Number(fences[0].detail.generation) > task.generation ||
+            fences[0].at < erased.receipt.completedAt) fail();
       }
       for (const event of events) if (['retried', 'cancel_requested', 'cancel_confirmed'].includes(event.action) && row &&
           (!event.detail.commandId || !usedCommands.has(String(event.detail.commandId)))) fail();
+      if (row) for (const event of events.filter(event => event.action === 'authorization_fenced')) {
+        const generation = Number(event.detail.generation), activation = commands.find(command => command.input.kind === 'retry' && command.result.kind === 'retry' && command.result.taskId === task.id && command.result.generation === generation),
+          authorization = activation?.authorization ?? row.authorization, access = authorization.learningAccess;
+        if (event.actorId !== 'system-paper-export' || !Number.isSafeInteger(generation) || generation < 1 || generation > task.generation || !access ||
+            event.detail.authorizationFingerprint !== digest(authorization) || !['queued', 'running', 'retry_wait', 'cancel_requested'].includes(String(event.detail.previousState)) ||
+            !['cancelled', 'cancel_requested'].includes(String(event.detail.state)) || !receipts.some(receipt => receipt.id === event.detail.receiptId && receipt.kind === 'account_delete' &&
+              receipt.actorId === access.guardianId && receipt.subjectHash === digest({ id: access.guardianId }) && receipt.retainedStudentHashes?.includes(digest({ id: row.scope.studentId })) &&
+              !receipt.erasedStudentHashes?.includes(digest({ id: row.scope.studentId })) && receipt.completedAt >= (activation?.at ?? row.createdAt) && event.at >= receipt.completedAt)) fail();
+      }
       for (const event of events.filter(event => event.action === 'checkpoint')) {
         const progress = paperExportProgressSchema.parse(event.detail.progress), file = fileMap.get(progress.fileId);
         if (!file || file.taskId !== task.id || event.actorId !== 'worker' || event.detail.generation !== file.generation || file.generation > task.generation ||
@@ -188,10 +202,12 @@ export function assertPaperExportNativeRows(rows: readonly Row[], taskValues: re
       if (file.output && (file.output.book !== task.payload.book || file.output.format !== task.payload.format)) fail();
       if (file.state === 'available' && !row?.slots.some(slot => slot.published?.fileId === file.id)) fail();
       if (file.cleanupTaskId) {
-        const cleanup = taskMap.get(file.cleanupTaskId), payload = paperExportCleanupPayload(file);
+        const cleanup = taskMap.get(file.cleanupTaskId), expected = paperExportCleanupPayload(file), payload = cleanup?.payload;
+        const originalCleanup = cleanup && file.deletionReceiptId && erased && cleanup.createdAt <= erased.receipt.completedAt &&
+          same(payload, { ...expected, deletionReceiptId: null });
         if (row?.slots.some(slot => slot.published?.fileId === file.id) || !cleanup || cleanup.id !== paperExportCleanupTaskId(file) || cleanup.kind !== PAPER_EXPORT_CLEANUP_KIND ||
-            cleanup.ownerUserId !== 'system-paper-export' || cleanup.requestKey !== 'paper-export-cleanup:' + file.id || !same(cleanup.payload, payload) || cleanup.maxAttempts !== 5 ||
-            cleanup.createdAt < file.createdAt || file.deletionReceiptId && cleanup.createdAt < erased!.receipt.completedAt ||
+            cleanup.ownerUserId !== 'system-paper-export' || cleanup.requestKey !== 'paper-export-cleanup:' + file.id || !same(payload, expected) && !originalCleanup || cleanup.maxAttempts !== 5 ||
+            cleanup.createdAt < file.createdAt || file.deletionReceiptId && cleanup.createdAt < erased!.receipt.completedAt && !originalCleanup ||
             (file.state === 'deleted') !== (cleanup.state === 'succeeded') || cleanup.state === 'succeeded' && !same(cleanup.result, { ...payload, filesFinished: true })) fail();
       }
     }

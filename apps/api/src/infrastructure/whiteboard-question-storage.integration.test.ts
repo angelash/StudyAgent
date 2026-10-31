@@ -4,6 +4,8 @@ import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { DomainDatabase } from './domain-database';
+const { SCHEMA_VERSION: CURRENT_SCHEMA_VERSION } = require(require('node:path').resolve(__dirname, '../../../../scripts/operations/database-reader-guard.cjs'));
+
 const backup = require(resolve(__dirname, '../../../../scripts/operations/backup.cjs'));
 
 const original = () => ({ whiteboardQuestionTurns: [{ id: 'turn-original', ownerUserId: 'owner', requestKey: 'original-key', boardKind: 'topic',
@@ -23,7 +25,7 @@ describe('native schema19 whiteboard question durability', () => {
       try { expect(await db.read()).toEqual(before); } finally { await db.close(); }
       const raw = new DatabaseSync(location, { readOnly: true });
       try {
-        expect(raw.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(31);
+        expect(raw.prepare('SELECT MAX(version) AS version FROM schema_migrations').get()?.version).toBe(CURRENT_SCHEMA_VERSION);
         expect(raw.prepare("SELECT name FROM sqlite_master WHERE type='index' AND name='whiteboard_question_request'").get()).toBeDefined();
       } finally { raw.close(); }
     } finally { rmSync(directory, { recursive: true, force: true }); }
@@ -46,7 +48,7 @@ describe('native schema19 whiteboard question durability', () => {
     const db = new DomainDatabase(join(source, 'study-agent.sqlite3')); await db.open();
     try {
       const initial = original(); await db.commit(await db.read(), initial); await backup.createBundle({ dataDir: source, destination: bundle });
-      expect((await backup.verifyBundle({ bundle })).database.schemaVersions.at(-1)).toBe(31);
+      expect((await backup.verifyBundle({ bundle })).database.schemaVersions.at(-1)).toBe(CURRENT_SCHEMA_VERSION);
       await backup.restoreBundle({ bundle, destination: restored }); const recovered = new DomainDatabase(join(restored, 'study-agent.sqlite3')); await recovered.open();
       try { const state = (await recovered.read()).state; expect(state.whiteboardQuestionTurns).toEqual(initial.whiteboardQuestionTurns); expect(state.diagnosticResponses).toEqual(initial.diagnosticResponses); }
       finally { await recovered.close(); }

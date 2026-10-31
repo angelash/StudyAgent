@@ -9,6 +9,8 @@ import { workspaceRoot } from '../../infrastructure/workspace-paths';
 import { newTopicVisualId, topicVisualStage, publishTopicVisual, topicVisualFile, topicVisualDirectory } from './topic-whiteboard-visual-storage';
 import { visualDirectory } from './classroom-visual-storage';
 import { privacyHash } from '../privacy/privacy-records';
+const { SCHEMA_VERSION: CURRENT_SCHEMA_VERSION } = require(require('node:path').resolve(__dirname, '../../../../../scripts/operations/database-reader-guard.cjs'));
+
 const root = workspaceRoot(), backup = require(resolve(root, 'scripts/operations/backup.cjs'));
 const ledger = require(resolve(root, 'scripts/operations/privacy-ledger.cjs'));
 const sample = resolve(root, 'resources/teaching-visuals/topic-whiteboard/sociology-intersection-no-heading-3f4d62a9.png');
@@ -43,7 +45,7 @@ describe('topic figure original files and native recovery', () => {
     try {
       await db.commit(await db.read(), { studioTopicWhiteboardVisuals: [{ id, ownerUserId: 'owner', requestKey: 'original', status: 'ready', ...published }] });
       await backup.createBundle({ dataDir: source, destination: bundle }); const checked = await backup.verifyBundle({ bundle });
-      expect(checked.database.schemaVersions.at(-1)).toBe(31); expect(checked.verifiedFiles).toBeGreaterThanOrEqual(3);
+      expect(checked.database.schemaVersions.at(-1)).toBe(CURRENT_SCHEMA_VERSION); expect(checked.verifiedFiles).toBeGreaterThanOrEqual(3);
       await backup.restoreBundle({ bundle, destination: restored });
       const recovered = new DomainDatabase(join(restored, 'study-agent.sqlite3')); await recovered.open();
       try {

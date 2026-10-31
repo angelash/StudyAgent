@@ -7,6 +7,8 @@ import {mkdirSync,mkdtempSync,existsSync,writeFileSync,readFileSync} from 'node:
 import {resolve,join} from 'node:path';
 import sharp from 'sharp';
 import {Pool} from 'pg';
+const { READY_STATE: CURRENT_READY_STATE } = require(require('node:path').resolve(__dirname, '../../../../../scripts/operations/database-reader-guard.cjs'));
+
 
 describe('actual paper originals, latest deletion ledger and independent cold media recovery',()=>{
  const qa=resolve(process.cwd(),'../../data/qa');mkdirSync(qa,{recursive:true});const source=mkdtempSync(join(qa,'paper-recovery-source-')),evidence=mkdtempSync(join(qa,'paper-recovery-target-')),configured=process.env.STUDY_TEST_PAPER_CAPTURE_POSTGRES_URL;
@@ -73,7 +75,7 @@ describe('actual paper originals, latest deletion ledger and independent cold me
     for(const row of originalRows!)await query('INSERT INTO domain_records VALUES(?,?,?,?)',[row.collection,row.record_id,typeof row.body==='string'?row.body:JSON.stringify(row.body),row.position]);
     for(const [table,values]of [['durable_tasks',originalTasks!],['durable_task_history',originalHistory!]]as const)for(const row of values){const columns=Object.keys(row);if(columns.some(column=>!/^[a-z_]+$/.test(column)))throw Error('Unexpected generated task columns');await query('INSERT INTO '+table+'('+columns.join(',')+') VALUES('+columns.map(()=>'?').join(',')+')',columns.map(column=>row[column]));}
     await query("INSERT INTO study_restore_guard VALUES(1,'restoring',?,?) ON CONFLICT(id) DO UPDATE SET state='restoring',backup_id=excluded.backup_id",[manifest.id,new Date().toISOString()]);
-    const applied=await ops('privacy-ledger').applyDeletionLedger(query,ops('privacy-ledger').readLedger(ledgerFile));expect(applied.appliedDeletionReceipts).toBe(2);await ops('restore-state').fenceRestoredState(query,manifest.id,0);restored=await ops('restored-paper-captures').cleanupRestoredPaperCaptures({root:target,query,manifest});await query("UPDATE study_restore_guard SET state='ready-schema31' WHERE id=1");await pool.query('COMMIT');
+    const applied=await ops('privacy-ledger').applyDeletionLedger(query,ops('privacy-ledger').readLedger(ledgerFile));expect(applied.appliedDeletionReceipts).toBe(2);await ops('restore-state').fenceRestoredState(query,manifest.id,0);restored=await ops('restored-paper-captures').cleanupRestoredPaperCaptures({root:target,query,manifest});await query("UPDATE study_restore_guard SET state=? WHERE id=1",[CURRENT_READY_STATE]);await pool.query('COMMIT');
     const cold=new(load('infrastructure/domain-database').DomainDatabase)(url.toString());try{await cold.open();await cold.read();}finally{await cold.close();}recoveredRows=await query('SELECT collection,record_id,body FROM domain_records');
    }catch(error){await pool.query('ROLLBACK').catch(()=>{});throw error;}finally{await pool.end();}
   }else{

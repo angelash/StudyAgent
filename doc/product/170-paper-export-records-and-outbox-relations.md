@@ -4,6 +4,8 @@
 
 ## 准确输入与原命令
 
+后续[171持久化与实际隐私恢复](171-paper-library-persistence-privacy-and-native-recovery.md)已将六集合和32门禁接入主干，补齐同事务原命令/当前授权、真实删除/监护栅栏及SQLite/PG产物保留和清除恢复；完整回归与版本断言复验按批次分列。正式库仍24/revision187，未部署。以下本批早期31/未注册边界保留；业务接口/实际worker/学生旧读取防旁路/工作台UI继续实施，整体active。
+
 新增严格导出契约，create只接清单ID、准确旧修订/指纹、原始标题、版式和有序books/formats。cancel/retry固定exportId、册/格式及expectedTaskVersion/expectedGeneration。完整原命令、完整原回执与摘要独立保留；成功回执不是当前队列状态。每册×格式一个固定taskId，kind为`library.paper-export.render`，准确payload为exportId/intentFingerprint/book/format，maxAttempts=3。
 
 从清单来源到文档来源的适配固定为title→paperTitle、originalPage→pageNumber；未知页码保留null。正整数发布版编码为`published-vN`，null编码为`research-v1`，不接受裸数字字符串、补零版或临时猜补。原题身份继续使用完整`paper:`题键；题序、题位、来源SHA、发布版、标题和已核实页码必须与准确旧清单修订一致。新清单重排或清空不改变既有导出。

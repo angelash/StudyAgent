@@ -45,6 +45,10 @@ import { resolve } from 'node:path';
 import { existsSync } from 'node:fs';
 import { DomainDatabase, DomainState, StateSnapshot, freezeJson } from './domain-database';
 import { TaskFence, TaskIntent, TaskOperation } from './task-repository';
+import type { PaperSelectionListRecord, PaperSelectionCommandRecord } from '../modules/library/paper-selection-record';
+import type { PaperExportRecord, PaperExportCommandRecord } from '../modules/library/paper-export-record';
+import type { PaperSourceExposureRecord } from '../modules/library/paper-source-exposure-record';
+import type { PaperExportFileRecord } from '../modules/library/paper-export-file-record';
 import { DomainSelector, ReadDependency, compileSelector, indexedPositions, validateSelector } from './domain-selection';
 import type { PaperPublication, LibraryBookmark } from '../modules/library/library.types';
 import {
@@ -443,6 +447,12 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   paperCaptureRepairUploads: PaperRepairUploadRecord[] = [];
   paperCaptureRepairCommands: PaperRepairCommandRecord[] = [];
   paperCaptureRepairs: PaperRepairRecord[] = [];
+  paperSelectionLists: PaperSelectionListRecord[] = [];
+  paperSelectionCommands: PaperSelectionCommandRecord[] = [];
+  paperExports: PaperExportRecord[] = [];
+  paperExportCommands: PaperExportCommandRecord[] = [];
+  paperSourceExposures: PaperSourceExposureRecord[] = [];
+  paperExportFiles: PaperExportFileRecord[] = [];
   studioCalendarCommands: StudioCalendarCommandRecord[] = [];
   assistantTeachingPracticeDrafts: TeachingDraftRecord[] = [];
   assistantTeachingPractices: TeachingPracticeRecord[] = [];
@@ -579,6 +589,12 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.paperCaptureRepairUploads = [];
     this.paperCaptureRepairCommands = [];
     this.paperCaptureRepairs = [];
+    this.paperSelectionLists = [];
+    this.paperSelectionCommands = [];
+    this.paperExports = [];
+    this.paperExportCommands = [];
+    this.paperSourceExposures = [];
+    this.paperExportFiles = [];
     this.studioCalendarCommands = [];
     this.assistantTeachingPracticeDrafts = [];
     this.assistantTeachingPractices = [];

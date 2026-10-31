@@ -2,6 +2,8 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { Pool } from 'pg';
 import { randomUUID } from 'node:crypto';
 import { DomainDatabase } from './domain-database';
+const { SCHEMA_VERSION: CURRENT_SCHEMA_VERSION } = require(require('node:path').resolve(__dirname, '../../../../scripts/operations/database-reader-guard.cjs'));
+
 
 const connection = process.env.STUDY_TEST_WHITEBOARD_QUESTION_POSTGRES_URL;
 const original = () => ({ whiteboardQuestionTurns: [{ id: 'original-question', ownerUserId: 'owner', requestKey: 'original-request', boardKind: 'topic', boardId: 'original-board',
@@ -29,7 +31,7 @@ describe.skipIf(!connection)('native PostgreSQL original whiteboard questions an
     const { schema, url } = await scoped(); await legacy(url);
     for (let reopen = 0; reopen < 2; reopen++) { const db = new DomainDatabase(url); await db.open(); try { expect((await db.read()).state).toEqual(original()); } finally { await db.close(); } }
     const raw = new Pool({ connectionString: url }); try {
-      expect(Number((await raw.query('SELECT MAX(version) AS version FROM schema_migrations')).rows[0].version)).toBe(31);
+      expect(Number((await raw.query('SELECT MAX(version) AS version FROM schema_migrations')).rows[0].version)).toBe(CURRENT_SCHEMA_VERSION);
       expect((await raw.query('SELECT indexname FROM pg_indexes WHERE schemaname=$1 AND indexname=$2', [schema, 'whiteboard_question_request'])).rowCount).toBe(1);
     } finally { await raw.end(); }
   });

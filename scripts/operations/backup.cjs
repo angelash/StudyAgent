@@ -60,9 +60,11 @@ function summary(db) {
     tasks: db.prepare('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state').all().map(r => ({ ...r })) };
 }
 function references(db) {
-  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioTopicWhiteboardVisuals','studioTopicWhiteboards','whiteboardQuestionVisuals','whiteboardQuestionTurns','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions','studioMaterialAssets','paperImageUploads','paperCapturePages','paperCaptureCommands','paperCaptureDerivations','paperCaptureFileAssets','paperCaptureRepairUploads')").all());
+  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('paperExports','paperExportFiles','importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioTopicWhiteboardVisuals','studioTopicWhiteboards','whiteboardQuestionVisuals','whiteboardQuestionTurns','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions','studioMaterialAssets','paperImageUploads','paperCapturePages','paperCaptureCommands','paperCaptureDerivations','paperCaptureFileAssets','paperCaptureRepairUploads')").all());
 }
 function referencesFromRecords(rows) {
+  const library = rows.filter(row => ['paperExports', 'paperExportFiles'].includes(row.collection));
+  rows = rows.filter(row => !['paperExports', 'paperExportFiles'].includes(row.collection));
   const result = new Map();
   const paperAssets=new Map(rows.filter(row=>row.collection==='paperCaptureFileAssets').map(row=>{const value=typeof row.body==='string'?JSON.parse(row.body):row.body;return[value.id,value];}));
   const add = (relative, sha256, size, unknownSize = false) => {
@@ -177,6 +179,7 @@ function referencesFromRecords(rows) {
       }
     } else add(`processing/${value.relativePath.replace(/\\/g, '/')}`, value.sha256, value.size);
   }
+  if (library.length) for (const [relative, file] of require('../../apps/api/dist/apps/api/src/modules/library/paper-export-backup.js').paperExportBackupReferences(library)) add(relative, file.sha256, file.size);
   return result;
 }
 function* walk(root, relative = '') {
@@ -223,7 +226,7 @@ async function verifyBundle({ bundle, incomplete = false }) {
   const paths = new Map(), portablePaths = new Set();
   let verifiedCount = 0;
   for (const file of manifest.files) {
-    if (!/^(database\/study-agent\.sqlite3|data\/(?:processing|student-media|classroom-visuals|topic-whiteboard-visuals|whiteboard-question-visuals|studio-materials|studio-uploads|project-assets|project-uploads|paper-images|paper-image-uploads|paper-repair-uploads)\/.+|assets\/.+)$/.test(file.path) || portablePaths.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
+    if (!/^(database\/study-agent\.sqlite3|data\/(?:paper-exports|processing|student-media|classroom-visuals|topic-whiteboard-visuals|whiteboard-question-visuals|studio-materials|studio-uploads|project-assets|project-uploads|paper-images|paper-image-uploads|paper-repair-uploads)\/.+|assets\/.+)$/.test(file.path) || portablePaths.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
     const target = within(root, file.path), stat = fs.statSync(target);
     if (!stat.isFile() || stat.size !== file.size || digest(target) !== file.sha256) fail('bundle_integrity_failed');
     paths.set(file.path, file);
@@ -240,6 +243,7 @@ async function verifyBundle({ bundle, incomplete = false }) {
     for (const [relative, expected] of refs) {
       const actual = paths.get(`data/${relative}`); if (!actual || actual.sha256 !== expected.sha256 || expected.size !== null && actual.size !== expected.size) fail('database_file_missing_from_bundle');
     }
+    for (const relative of paths.keys()) if (relative.startsWith('data/paper-exports/') && !refs.has(relative.slice(5))) fail('paper_export_backup_inventory_unknown');
   } finally { db.close(); }
   return { manifest, database: state, verifiedFiles: paths.size };
 }

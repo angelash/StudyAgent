@@ -1,0 +1,265 @@
+#!/usr/bin/env node
+// Private local backup bundles. A manifest proves integrity, not authenticity.
+const fs = require('node:fs');
+const path = require('node:path');
+const { createHash, randomUUID } = require('node:crypto');
+const { DatabaseSync, backup } = require('node:sqlite');
+const readerGuard = require('./database-reader-guard.cjs');
+const FORMAT = 'study-agent-backup-v1';
+const fail = code => { throw new Error(code); };
+function noLinks(input) {
+  let cursor = path.resolve(input);
+  for (;;) {
+    try { if (fs.lstatSync(cursor).isSymbolicLink()) fail('symbolic_link_not_allowed'); }
+    catch (error) { if (error.code !== 'ENOENT') throw error; }
+    const parent = path.dirname(cursor); if (parent === cursor) break; cursor = parent;
+  }
+  return path.resolve(input);
+}
+function within(root, relative) {
+  if (typeof relative !== 'string' || !relative || /^[a-z]:|^[/\\]/i.test(relative) || /[\x00-\x1f]/.test(relative) || relative.replace(/\\/g, '/').split('/').some(p => !p || p === '.' || p === '..')) fail('unsafe_relative_path');
+  const target = path.resolve(root, relative); if (!target.startsWith(path.resolve(root) + path.sep)) fail('path_outside_root');
+  noLinks(target); return target;
+}
+function freshDestination(destination, sources) {
+  const target = noLinks(destination);
+  if (fs.existsSync(target)) fail('destination_already_exists');
+  for (const source of sources.filter(Boolean).map(p => noLinks(p))) if (target === source || target.startsWith(source + path.sep) || source.startsWith(target + path.sep)) fail('overlapping_source_destination');
+  fs.mkdirSync(target, { recursive: true, mode: 0o700 }); return target;
+}
+function digest(file) {
+  const hash = createHash('sha256'), buffer = Buffer.allocUnsafe(1024 * 1024), fd = fs.openSync(file, 'r');
+  try { for (;;) { const count = fs.readSync(fd, buffer); if (!count) break; hash.update(buffer.subarray(0, count)); } }
+  finally { fs.closeSync(fd); }
+  return hash.digest('hex');
+}
+function copyVerified(source, target, expected) {
+  noLinks(source); const before = fs.statSync(source); if (!before.isFile()) fail('source_not_regular_file');
+  fs.mkdirSync(path.dirname(target), { recursive: true, mode: 0o700 }); fs.copyFileSync(source, target, fs.constants.COPYFILE_EXCL);
+  noLinks(target);
+  fs.chmodSync(target, (before.mode & 0o700) | 0o600);
+  const hash = digest(target), after = fs.statSync(source), size = fs.statSync(target).size;
+  if (before.size !== after.size || before.mtimeMs !== after.mtimeMs || size !== before.size || hash !== digest(source)) fail('source_changed_during_backup');
+  if (expected && (expected.size !== null && size !== expected.size || hash !== expected.sha256)) fail('referenced_file_integrity_failed');
+  const fd = fs.openSync(target, 'r+'); try { fs.fsyncSync(fd); } finally { fs.closeSync(fd); }
+  return { size, sha256: hash };
+}
+function openRead(file) { return new DatabaseSync(file, { readOnly: true }); }
+function summary(db) {
+  const sourceIntegrity = require('./whiteboard-source-integrity.cjs');
+  sourceIntegrity.validate(db.prepare(sourceIntegrity.sql).all());
+  const practiceIntegrity = require('./assistant-practice-integrity.cjs');
+  practiceIntegrity.validateSqlite(db);
+  const guard = db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='study_restore_guard'").get()
+    ? db.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state ?? 'missing' : undefined;
+  if (db.prepare('PRAGMA integrity_check').get().integrity_check !== 'ok') fail('database_integrity_failed');
+  const versions = db.prepare('SELECT version FROM schema_migrations ORDER BY version').all().map(r => r.version);
+  readerGuard.assertReady(guard, versions);
+  return { schemaVersions: versions, revision: db.prepare('SELECT revision FROM store_meta WHERE id=1').get().revision,
+    collections: db.prepare('SELECT collection,COUNT(*) AS count FROM domain_records GROUP BY collection ORDER BY collection').all().map(r => ({ ...r })),
+    tasks: db.prepare('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state').all().map(r => ({ ...r })) };
+}
+function references(db) {
+  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('paperExports','paperExportFiles','importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioTopicWhiteboardVisuals','studioTopicWhiteboards','whiteboardQuestionVisuals','whiteboardQuestionTurns','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions','studioMaterialAssets','paperImageUploads','paperCapturePages','paperCaptureCommands','paperCaptureDerivations','paperCaptureFileAssets','paperCaptureRepairUploads')").all());
+}
+function referencesFromRecords(rows) {
+  const library = rows.filter(row => ['paperExports', 'paperExportFiles'].includes(row.collection));
+  rows = rows.filter(row => !['paperExports', 'paperExportFiles'].includes(row.collection));
+  const result = new Map();
+  const paperAssets=new Map(rows.filter(row=>row.collection==='paperCaptureFileAssets').map(row=>{const value=typeof row.body==='string'?JSON.parse(row.body):row.body;return[value.id,value];}));
+  const add = (relative, sha256, size, unknownSize = false) => {
+    within(path.resolve('.'), relative);
+    if (!/^[a-f0-9]{64}$/.test(sha256) || !(unknownSize && size === null) && (!Number.isSafeInteger(size) || size < 0)) fail('invalid_file_reference');
+    const previous = result.get(relative); if (previous && (previous.sha256 !== sha256 || previous.size !== null && size !== null && previous.size !== size)) fail('conflicting_file_reference');
+    result.set(relative, { sha256, size: size === null && previous ? previous.size : size });
+  };
+  for (const row of rows) {
+    const value = typeof row.body === 'string' ? JSON.parse(row.body) : row.body;
+    const paperFile=file=>{if(!file||!['original','baseline','derived','pdf'].includes(file.role)||!['image/png','image/jpeg','application/pdf'].includes(file.mediaType)||file.role==='pdf'!==(file.mediaType==='application/pdf'))fail('invalid_paper_capture_file_reference');add('paper-images/'+file.role+'/'+file.sha256+(file.mediaType==='application/pdf'?'.pdf':file.mediaType==='image/jpeg'?'.jpg':'.png'),file.sha256,file.bytes);};
+    if(row.collection==='paperCapturePages'){
+      for(const version of value.versions??[])for(const file of version.receipt.files)paperFile(file);
+    }else if(row.collection==='paperCaptureDerivations'){
+      if(value.pdf)paperFile({role:'pdf',sha256:value.pdf.pdfSha256,bytes:value.pdf.pdfBytes,mediaType:'application/pdf'});
+    }else if(row.collection==='paperImageUploads'){
+      if(!/^paper_upload_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(value.id))fail('invalid_paper_capture_upload_reference');
+      if(!value.filesCollectedAt)for(const chunk of value.chunks??[]){if(!Number.isSafeInteger(chunk.index)||chunk.index<0||chunk.index>11)fail('invalid_paper_capture_chunk_reference');add('paper-image-uploads/'+value.id+'/'+chunk.index+'-'+chunk.sha256,chunk.sha256,chunk.bytes);}
+      if(value.status==='uploading')for(const id of value.preparedFileIds??[]){const asset=paperAssets.get(id);if(!asset||asset.state!=='available')fail('invalid_paper_capture_prepared_reference');paperFile(asset);}
+    }else if(row.collection==='paperCaptureRepairUploads'){
+      if(!/^paper_repair_upload_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(value.id))fail('invalid_paper_repair_upload_reference');
+      if(!value.filesCollectedAt)for(const chunk of require('../../apps/api/dist/apps/api/src/modules/learning/paper-capture-repair-record.js').paperRepairUploadChunks(value)){if(!Number.isSafeInteger(chunk.index)||chunk.index<0||chunk.index>79||!Number.isSafeInteger(chunk.bytes)||chunk.bytes<1||chunk.bytes>1048576)fail('invalid_paper_repair_chunk_reference');add('paper-repair-uploads/'+value.id+'/'+chunk.index+'-'+chunk.sha256,chunk.sha256,chunk.bytes);}
+    }else if(row.collection==='paperCaptureCommands'){
+      if(value.status==='preparing')fail('paper_capture_operation_active');
+    }else if(row.collection==='paperCaptureFileAssets'){
+      if(value.state==='repairing'||value.paperCaptureRepair)fail('paper_capture_original_repair_active');
+    }else if(row.collection==='studioMaterialAssets'){
+      if(value.state==='repairing'||value.paperCaptureRepair)fail('material_original_repair_active');
+      if(!['available','deleting'].includes(value.state))fail('invalid_material_asset_state');
+    }else if (row.collection === 'sourceCourses'||row.collection==='sourceCourseChecks'||row.collection==='classroomSessions') {
+      if(row.collection==='classroomSessions'&&!value.sourceCheckId&&value.sourceCheckSources===undefined)continue;
+      const sources=row.collection==='classroomSessions'?value.sourceCheckSources:row.collection==='sourceCourseChecks'?value.prepared?.sources:value.sources;
+      if (!Array.isArray(sources)) fail('invalid_frozen_course_sources');
+      for (const source of sources) if (source.kind === 'pdf') {
+        if (!/^[a-f0-9]{64}$/.test(source.sha256)) fail('invalid_file_reference');
+        add(`studio-materials/${source.sha256}.pdf`,source.sha256,null,true);
+      }
+    } else if(row.collection==='projectAssetUploads'){
+      if(!/^project_upload_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(value.id))fail('invalid_project_upload_reference');
+      if(value.status==='uploading')for(const chunk of value.chunks??[]){if(!Number.isSafeInteger(chunk.index)||chunk.index<0||chunk.index>=20)fail('invalid_project_chunk_reference');add('project-uploads/'+value.id+'/'+chunk.index+'-'+chunk.sha256,chunk.sha256,chunk.size);}
+    } else if(row.collection==='projectAssets'){
+      if(!/^project_asset_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(value.id))fail('invalid_project_asset_reference');
+      if(!value.filesCollectedAt){for(const file of [value.original,...(value.display?[value.display]:[]),...(value.previews??[]).map(preview=>preview.file)]){
+        if(!file||!/^(original\.(png|jpg|pdf|txt|webm|ogg|wav|mp3|m4a|docx|xlsx|pptx)|display\.(png|wav)|page-[1-9]\d*\.png)$/.test(file.name))fail('invalid_project_file_reference');
+        add('project-assets/'+value.id+'/'+file.name,file.sha256,file.size);
+      }}
+    } else if (row.collection === 'studioMaterialUploads') {
+      if (!/^studio_upload_[a-f0-9-]+$/.test(value.id)) fail('invalid_material_upload_reference');
+      if (value.status === 'uploading') for (const chunk of value.chunks ?? []) {
+        if (!Number.isSafeInteger(chunk.index) || chunk.index < 0) fail('invalid_chunk_reference');
+        add(`studio-uploads/${value.id}/${chunk.index}-${chunk.sha256}`,chunk.sha256,chunk.size);
+      }
+    } else if (row.collection === 'studioSourceMaterials') {
+      if (value.kind !== 'text' || value.originalFormat === 'txt') {
+        const format = value.originalFormat ?? 'pdf';
+        if (!['pdf','txt'].includes(format)) fail('invalid_material_format');
+        add(`studio-materials/${value.sha256}.${format}`,value.sha256,value.byteSize);
+      }
+      for (const file of value.pageFiles ?? []) {
+        if (!Number.isSafeInteger(file.page) || file.page < 1 || file.page > 500 || !/^[a-f0-9]{64}$/.test(value.sha256)) fail('invalid_material_page_reference');
+        const name=file.name??`page-${file.page}.png`;
+        if (name!==`page-${file.page}.png`&&!new RegExp('^study-pdf-structure-v\\d+/page-'+file.page+'\\.png$').test(name)) fail('invalid_material_page_reference');
+        add(`studio-materials/processed/${value.sha256}/${name}`,file.sha256,file.size);
+      }
+      for (const file of value.checkpointFiles ?? []) {
+        if (!Number.isSafeInteger(file.page)||file.page<1||file.page>500||!new RegExp('^study-pdf-structure-v\\d+/page-'+file.page+'\\.json$').test(file.name)||!/^[a-f0-9]{64}$/.test(value.sha256)) fail('invalid_material_checkpoint_reference');
+        add(`studio-materials/processed/${value.sha256}/${file.name}`,file.sha256,file.size);
+      }
+    } else if (row.collection === 'studioTopicWhiteboards') {
+      if(value.figureSnapshots!==undefined&&!Array.isArray(value.figureSnapshots))fail('invalid_topic_figure_snapshot');
+      for(const figure of value.figureSnapshots??[]){
+        if(!/^topic_whiteboard_visual_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(figure.visualId)||figure.width!==1536||figure.height!==1024||
+          !value.scenes?.some(scene=>scene.id===figure.sceneId&&scene.figure?.sha256===figure.image?.sha256&&scene.figure?.originalSha256===figure.original?.sha256))fail('invalid_topic_figure_snapshot');
+        for(const file of [figure.original,figure.image]){
+          if(!file||!/^[a-f0-9]{64}\.png$/.test(file.name)||file.name!==file.sha256+'.png')fail('invalid_topic_figure_snapshot');
+          add('topic-whiteboard-visuals/'+figure.visualId+'/'+file.name,file.sha256,file.size);
+        }
+      }
+    } else if (row.collection === 'whiteboardQuestionTurns') {
+      if (value.teachingVersions !== undefined && !Array.isArray(value.teachingVersions)) fail('invalid_question_figure_snapshot');
+      for (const version of value.teachingVersions ?? []) {
+        const figure = version.figure;
+        if (!figure || !/^whiteboard_question_visual_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(figure.visualId) ||
+          figure.width !== 1536 || figure.height !== 1024 || version.target?.turnId !== value.id || version.target?.boardId !== value.boardId ||
+          version.target?.boardKind !== value.boardKind || !/^[a-f0-9]{64}$/.test(version.target?.replyFingerprint ?? '')) fail('invalid_question_figure_snapshot');
+        for (const file of [figure.original, figure.image]) {
+          if (!file || !/^[a-f0-9]{64}\.png$/.test(file.name) || file.name !== file.sha256 + '.png') fail('invalid_question_figure_snapshot');
+          add('whiteboard-question-visuals/' + figure.visualId + '/' + file.name, file.sha256, file.size);
+        }
+      }
+    } else if (row.collection === 'classroomVisuals' || row.collection === 'studioTopicWhiteboardVisuals' || row.collection === 'whiteboardQuestionVisuals') {
+      const topic = row.collection === 'studioTopicWhiteboardVisuals', question = row.collection === 'whiteboardQuestionVisuals',
+        prefix = question ? 'whiteboard_question_visual' : topic ? 'topic_whiteboard_visual' : 'classroom_visual';
+      if (!new RegExp('^' + prefix + '_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$').test(value.id)) fail('invalid_visual_reference');
+      if ((topic || question) && value.status === 'ready' && (!value.files || Object.keys(value.files).sort().join(',') !== 'image,original,prompt' || value.width !== 1536 || value.height !== 1024)) fail('invalid_visual_file_reference');
+      if (value.status === 'ready' && value.files) for (const file of Object.values(value.files)) {
+        if (!/^[a-f0-9]{64}\.(?:png|txt)$/.test(file.name) || !file.name.startsWith(file.sha256 + '.')) fail('invalid_visual_file_reference');
+        add(`${question ? 'whiteboard-question-visuals' : topic ? 'topic-whiteboard-visuals' : 'classroom-visuals'}/${value.id}/${file.name}`,file.sha256,file.size);
+      }
+    } else if (row.collection === 'studentMedia') {
+      if (!/^student_media_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(value.id)) fail('invalid_student_media_reference');
+      if (value.status === 'ready') add(`student-media/${value.id}/ready/${value.sha256}`, value.sha256, value.storedSize);
+      else if (value.status === 'uploading') for (const chunk of value.chunks ?? []) {
+        if (!Number.isSafeInteger(chunk.index) || chunk.index < 0) fail('invalid_chunk_reference');
+        add(`student-media/${value.id}/chunks/${chunk.index}-${chunk.sha256}`, chunk.sha256, chunk.size);
+      }
+    } else if (row.collection === 'importFiles') {
+      if (value.status === 'ready') add(`processing/blobs/${value.sha256}`, value.sha256, value.size);
+      else for (const chunk of value.chunks ?? []) {
+        if (!/^import_file_[a-f0-9-]+$/.test(value.id) || !Number.isSafeInteger(chunk.index) || chunk.index < 0) fail('invalid_chunk_reference');
+        add(`processing/chunks/${value.id}/${chunk.index}-${chunk.sha256}`, chunk.sha256, chunk.size);
+      }
+    } else add(`processing/${value.relativePath.replace(/\\/g, '/')}`, value.sha256, value.size);
+  }
+  if (library.length) for (const [relative, file] of require('../../apps/api/dist/apps/api/src/modules/library/paper-export-backup.js').paperExportBackupReferences(library)) add(relative, file.sha256, file.size);
+  return result;
+}
+function* walk(root, relative = '') {
+  for (const entry of fs.readdirSync(relative ? within(root, relative) : root, { withFileTypes: true })) {
+    const name = relative ? `${relative}/${entry.name}` : entry.name, target = within(root, name);
+    if (entry.isSymbolicLink()) fail('symbolic_link_not_allowed');
+    if (entry.isDirectory()) yield* walk(root, name);
+    else if (entry.isFile()) yield { relative: name, path: target };
+    else fail('asset_not_regular_file');
+  }
+}
+async function createBundle({ dataDir, destination, assets }) {
+  const source = noLinks(dataDir), database = within(source, 'study-agent.sqlite3');
+  if (fs.existsSync(within(source, '.study-restore-incomplete'))) fail('source_database_restore_incomplete');
+  if (!fs.existsSync(database)) fail('source_database_missing');
+  const root = freshDestination(destination, [source, assets]);
+  fs.writeFileSync(within(root, '.study-backup-incomplete'), 'Backup has not passed verification.\n', { flag: 'wx' });
+  fs.mkdirSync(within(root, 'database'), { mode: 0o700 });
+  const dbPath = within(root, 'database/study-agent.sqlite3'), db = openRead(database);
+  try { await backup(db, dbPath); fs.chmodSync(dbPath, 0o600); } finally { db.close(); }
+  const snapshot = openRead(dbPath); let state, refs;
+  try { state = summary(snapshot); refs = references(snapshot); } finally { snapshot.close(); }
+  const files = [{ path: 'database/study-agent.sqlite3', size: fs.statSync(dbPath).size, sha256: digest(dbPath) }];
+  for (const [relative, expected] of refs) files.push({ path: `data/${relative}`, ...copyVerified(within(source, relative), within(root, `data/${relative}`), expected) });
+  let assetCount = 0;
+  if (assets) for (const item of walk(noLinks(assets))) {
+    files.push({ path: `assets/${item.relative}`, ...copyVerified(item.path, within(root, `assets/${item.relative}`)) });
+    if (++assetCount % 5000 === 0) process.stderr.write(`Copied ${assetCount} asset files\n`);
+  }
+  const manifest = { format: FORMAT, id: randomUUID(), createdAt: new Date().toISOString(), database: state,
+    assetsIncluded: Boolean(assets), referencedFileCount: refs.size, assetCount, files };
+  fs.writeFileSync(within(root, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
+  await verifyBundle({ bundle: root, incomplete: true }); fs.unlinkSync(within(root, '.study-backup-incomplete'));
+  return { format: FORMAT, id: manifest.id, files: files.length, assetCount, database: state, assetsIncluded: Boolean(assets) };
+}
+async function verifyBundle({ bundle, incomplete = false }) {
+  const root = noLinks(bundle);
+  if (!incomplete && fs.existsSync(within(root, '.study-backup-incomplete'))) fail('backup_incomplete');
+  const manifestPath = within(root, 'manifest.json');
+  if (fs.statSync(manifestPath).size > 256 * 1024 * 1024) fail('manifest_too_large');
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+  if (manifest.format !== FORMAT || !Array.isArray(manifest.files) || manifest.files.length > 1_000_000) fail('unsupported_backup_format');
+  if (typeof manifest.assetsIncluded !== 'boolean' || typeof manifest.id !== 'string' || !Number.isFinite(Date.parse(manifest.createdAt))) fail('invalid_manifest_metadata');
+  const paths = new Map(), portablePaths = new Set();
+  let verifiedCount = 0;
+  for (const file of manifest.files) {
+    if (!/^(database\/study-agent\.sqlite3|data\/(?:paper-exports|processing|student-media|classroom-visuals|topic-whiteboard-visuals|whiteboard-question-visuals|studio-materials|studio-uploads|project-assets|project-uploads|paper-images|paper-image-uploads|paper-repair-uploads)\/.+|assets\/.+)$/.test(file.path) || portablePaths.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
+    const target = within(root, file.path), stat = fs.statSync(target);
+    if (!stat.isFile() || stat.size !== file.size || digest(target) !== file.sha256) fail('bundle_integrity_failed');
+    paths.set(file.path, file);
+    portablePaths.add(file.path.toLowerCase());
+    if (++verifiedCount % 25000 === 0) process.stderr.write(`Verified ${verifiedCount} backup files\n`);
+  }
+  if (!paths.has('database/study-agent.sqlite3')) fail('database_missing_from_manifest');
+  const db = openRead(within(root, 'database/study-agent.sqlite3')); let state;
+  try {
+    state = summary(db);
+    if (JSON.stringify(state) !== JSON.stringify(manifest.database)) fail('database_summary_mismatch');
+    const refs = references(db);
+    if (manifest.referencedFileCount !== refs.size || manifest.assetCount !== [...paths.keys()].filter(p => p.startsWith('assets/')).length || !manifest.assetsIncluded && manifest.assetCount) fail('manifest_count_mismatch');
+    for (const [relative, expected] of refs) {
+      const actual = paths.get(`data/${relative}`); if (!actual || actual.sha256 !== expected.sha256 || expected.size !== null && actual.size !== expected.size) fail('database_file_missing_from_bundle');
+    }
+    for (const relative of paths.keys()) if (relative.startsWith('data/paper-exports/') && !refs.has(relative.slice(5))) fail('paper_export_backup_inventory_unknown');
+  } finally { db.close(); }
+  return { manifest, database: state, verifiedFiles: paths.size };
+}
+async function restoreBundle(options) { return require('./sqlite-restore.cjs').restoreSqlite(options); }
+module.exports = { createBundle, verifyBundle, restoreBundle,
+  files: { noLinks, within, freshDestination, digest, copyVerified, referencesFromRecords, walk } };
+if (require.main === module) {
+  (async () => {
+    const [command, ...args] = process.argv.slice(2), options = {}, allowed = command === 'create' ? ['data-dir', 'destination', 'assets'] : ['bundle', 'destination', 'deletion-ledger'];
+    for (let i = 0; i < args.length; i += 2) {
+      const key = args[i].slice(2);
+      if (command === 'restore' && args[i] === '--resume' && !options.resume) { options.resume = true; i--; continue; }
+      if (!args[i].startsWith('--') || !args[i + 1] || !allowed.includes(key) || options[key]) fail('invalid_arguments'); options[key] = args[i + 1];
+    }
+    return command === 'create' ? createBundle({ dataDir: options['data-dir'], destination: options.destination, assets: options.assets }) :
+      command === 'verify' ? verifyBundle({ bundle: options.bundle }).then(r => ({ verifiedFiles: r.verifiedFiles, database: r.database, assetsIncluded: r.manifest.assetsIncluded })) :
+      command === 'restore' ? restoreBundle({ bundle: options.bundle, destination: options.destination, deletionLedger: options['deletion-ledger'], resume: options.resume }) : fail('usage_create_verify_restore');
+  })().then(result => process.stdout.write(JSON.stringify(result) + '\n')).catch(error => { process.stderr.write(`Backup operation failed: ${error.code ?? error.message}\n`); process.exitCode = 1; });
+}

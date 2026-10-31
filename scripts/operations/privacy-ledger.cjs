@@ -27,7 +27,8 @@ function validateReceipt(receipt) {
     const proofs = receipt.erasedPaperExports, identity = value => typeof value === 'string' && /^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$/.test(value);
     const exact = (value, keys) => value && typeof value === 'object' && !Array.isArray(value) && Object.keys(value).sort().join(',') === keys;
     const actorHash = hash({ id: receipt.actorId });
-    if (receipt.kind === 'account_delete' && receipt.subjectHash !== actorHash || !Array.isArray(proofs) || proofs.length > 100000 || proofs.some(proof =>
+    if (!identity(receipt.id) || !identity(receipt.actorId) || new Date(receipt.completedAt).toISOString() !== receipt.completedAt ||
+      receipt.kind === 'account_delete' && receipt.subjectHash !== actorHash || !Array.isArray(proofs) || proofs.length > 100000 || proofs.some(proof =>
       !exact(proof, 'actorFingerprint,exportId,files,intentFingerprint,studentFingerprint,tasks') || !identity(proof.exportId) || !isHash(proof.intentFingerprint) ||
       !isHash(proof.actorFingerprint) || proof.studentFingerprint !== null && !isHash(proof.studentFingerprint) ||
       !(receipt.kind === 'account_delete' && proof.actorFingerprint === receipt.subjectHash) && !(proof.studentFingerprint !== null && receipt.erasedStudentHashes.includes(proof.studentFingerprint)) ||
@@ -80,6 +81,7 @@ async function applyDeletionLedger(query, ledger) {
   // while relation removal/anonymization edits the working copy in place.
   for (const row of records) (store[row.collection] ??= []).push(typeof row.body === 'string' ? JSON.parse(row.body) : structuredClone(row.body));
   store.privacyRequests ??= [];
+  const paperExportCleanup = [];
   for (const receipt of ledger.entries) {
     const erased = (store.students ?? []).filter(child => receipt.erasedStudentHashes.includes(helpers.privacyHash({ id: child.id })));
     const retained = (store.students ?? []).filter(child => receipt.retainedStudentHashes.includes(helpers.privacyHash({ id: child.id })));
@@ -93,6 +95,11 @@ async function applyDeletionLedger(query, ledger) {
       receipt.kind === 'account_delete' && actor ? helpers.accountRecords(store, actor.id, actor.principal) : {});
     if (receipt.kind === 'account_delete') helpers.anonymizeControlledAttribution(store, receipt.actorId, receipt);
     if (receipt.kind === 'account_delete') require('../../apps/api/dist/apps/api/src/modules/learning/paper-capture-privacy.js').anonymizePaperCapturePrivacy(store,receipt.actorId,receipt);
+    if (selected.paperExports?.length || store.paperExportFiles?.length || receipt.erasedPaperExports !== undefined) {
+      const paperLibrary = require('../../apps/api/dist/apps/api/src/modules/library/paper-export-privacy.js');
+      const erasedExports = paperLibrary.preparePaperLibraryErasure(store, selected.paperExports ?? [], receipt, 'restore');
+      store.paperExportFiles = erasedExports.files; paperExportCleanup.push(...erasedExports.enqueue);
+    }
     helpers.removeSelected(store, selected);
     if (receipt.kind === 'account_delete') helpers.anonymizeSharedAttribution(store, retained.map(child => child.id), receipt.actorId);
     const previous = store.privacyRequests.find(row => row.id === receipt.id || row.actorId === receipt.actorId && row.requestKey === receipt.requestKey);
@@ -114,6 +121,15 @@ async function applyDeletionLedger(query, ledger) {
     }
   }
   for (const before of previous.values()) { await query('DELETE FROM domain_records WHERE collection=? AND record_id=?', [before.collection, before.record_id]); removed++; }
+  for (const task of paperExportCleanup) {
+    const existing = (await query('SELECT id,payload_hash FROM durable_tasks WHERE id=? OR (owner_id=? AND kind=? AND request_key=?)', [task.id, task.ownerUserId, task.kind, task.requestKey]))[0];
+    if (existing) { if (existing.id !== task.id || existing.payload_hash !== task.payloadHash) fail('paper_export_cleanup_original_changed'); continue; }
+    await query("INSERT INTO durable_tasks(id,kind,owner_id,request_key,payload_hash,payload,state,max_attempts,available_at,created_at,updated_at) VALUES(?,?,?,?,?,?,'queued',?,?,?,?)",
+      [task.id, task.kind, task.ownerUserId, task.requestKey, task.payloadHash, JSON.stringify(task.payload), task.maxAttempts, Date.now(), task.createdAt, task.createdAt]);
+    await query('INSERT INTO durable_task_history VALUES(?,?,?,?,?,?)', ['requested:' + task.id, task.id, 'requested', task.ownerUserId, task.createdAt, JSON.stringify({ kind: task.kind })]);
+  }
+  if (paperExportCleanup.length || store.paperExports?.length || ledger.entries.some(receipt => receipt.erasedPaperExports !== undefined))
+    await require('../../apps/api/dist/apps/api/src/modules/library/paper-export-privacy.js').fencePaperLibraryPrivacy(query, new Date().toISOString());
   const event = { eventId: randomUUID(), eventName: 'privacy.restore_deletions_applied', eventVersion: 1, occurredAt: new Date().toISOString(),
     payload: { ledgerSha256: ledger.sha256, appliedDeletionReceipts: ledger.entries.length, privacyRowsRemoved: removed } };
   const position = Number((await query("SELECT COALESCE(MAX(position),-1)+1 AS position FROM domain_records WHERE collection='events'"))[0].position);

@@ -38,7 +38,7 @@ async function createPostgresBundle({ connectionString, pgBin, dataDir, destinat
       ? (await client.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state ?? 'missing' : undefined;
     database = await summary(client);
     readerGuard.assertReady(guard, database.schemaVersions);
-    refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioTopicWhiteboardVisuals','studioTopicWhiteboards','whiteboardQuestionVisuals','whiteboardQuestionTurns','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions','studioMaterialAssets','paperImageUploads','paperCapturePages','paperCaptureCommands','paperCaptureDerivations','paperCaptureFileAssets','paperCaptureRepairUploads')")).rows);
+    refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('paperExports','paperExportFiles','importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioTopicWhiteboardVisuals','studioTopicWhiteboards','whiteboardQuestionVisuals','whiteboardQuestionTurns','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions','studioMaterialAssets','paperImageUploads','paperCapturePages','paperCaptureCommands','paperCaptureDerivations','paperCaptureFileAssets','paperCaptureRepairUploads')")).rows);
     if (refs.size && !dataDir) fail('data_dir_required_for_referenced_files');
     root = freshDestination(destination, [dataDir, assets]);
     fs.writeFileSync(within(root, '.study-backup-incomplete'), 'PostgreSQL backup has not passed verification.\n', { flag: 'wx', mode: 0o600 });
@@ -71,13 +71,14 @@ async function verifyPostgresBundle({ bundle, pgBin, incomplete = false }) {
   readerGuard.readyState(manifest.database?.schemaVersions);
   const paths = new Map(), portable = new Set();
   for (const file of manifest.files) {
-    if (!/^(database\/postgres\.dump|data\/(?:processing|student-media|classroom-visuals|topic-whiteboard-visuals|whiteboard-question-visuals|studio-materials|studio-uploads|project-assets|project-uploads|paper-images|paper-image-uploads|paper-repair-uploads)\/.+|assets\/.+)$/.test(file.path) || portable.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
+    if (!/^(database\/postgres\.dump|data\/(?:paper-exports|processing|student-media|classroom-visuals|topic-whiteboard-visuals|whiteboard-question-visuals|studio-materials|studio-uploads|project-assets|project-uploads|paper-images|paper-image-uploads|paper-repair-uploads)\/.+|assets\/.+)$/.test(file.path) || portable.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
     const actual = within(root, file.path), stat = fs.statSync(actual);
     if (!stat.isFile() || stat.size !== file.size || digest(actual) !== file.sha256) fail('bundle_integrity_failed');
     paths.set(file.path, file); portable.add(file.path.toLowerCase());
   }
   if (!paths.has('database/postgres.dump') || manifest.assetCount !== [...paths.keys()].filter(p => p.startsWith('assets/')).length || manifest.referencedFileCount !== manifest.references.length || !manifest.assetsIncluded && manifest.assetCount) fail('manifest_count_mismatch');
   for (const ref of manifest.references) if (!paths.has(ref.path) || paths.get(ref.path).size !== ref.size || paths.get(ref.path).sha256 !== ref.sha256) fail('database_file_missing_from_bundle');
+  for (const relative of paths.keys()) if (relative.startsWith('data/paper-exports/') && !manifest.references.some(ref => ref.path === relative)) fail('paper_export_backup_inventory_unknown');
   await native('pg_restore', ['--list', within(root, 'database/postgres.dump')], pgBin);
   return { manifest, verifiedFiles: paths.size };
 }

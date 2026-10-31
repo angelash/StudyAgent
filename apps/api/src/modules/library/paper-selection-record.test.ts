@@ -125,8 +125,8 @@ describe('complete paper selection commands, historical revisions and source ide
     if (field === 'duplicate') records.push(structuredClone(records[4]));
     expect(() => assertPaperSelectionNativeRows(records)).toThrow('paper_selection_native_integrity_failed');
   });
-  it('does not silently accept export rows before their full native verifier exists', () => {
-    expect(() => assertPaperSelectionNativeRows([...rows(), { collection: 'paperExports', body: { id: 'unregistered-export' } }])).toThrow('paper_export_native_not_ready');
+  it('does not silently accept export rows without their full actual task/history context', () => {
+    expect(() => assertPaperSelectionNativeRows([...rows(), { collection: 'paperExports', body: { id: 'unregistered-export' } }])).toThrow('paper_export_native_context_required');
   });
   it('validates historical records even when the actor is disabled or current paper publication changed', () => {
     const records: any[] = rows(); records[0].body.status = 'disabled';

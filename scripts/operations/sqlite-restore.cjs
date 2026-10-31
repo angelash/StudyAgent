@@ -94,8 +94,9 @@ async function restoreSqlite({bundle,destination,deletionLedger,resume=false,aft
       const materials=await cleanupRestoredMaterials({root,query,manifest:verified.manifest,before,restoreContext:context,afterPhase:async(phase,relative)=>{if(phase==='material_file_deleted')deleted.add(relative);await afterPhase?.(phase,relative);}});
       privacy.mediaDirectoriesPurged=purgeRestoredMedia(root,removedMediaIds,verified.manifest,relative=>deleted.add(relative),topicVisualRetentions);
       const paper=await require('./restored-paper-captures.cjs').cleanupRestoredPaperCaptures({root,query,manifest:verified.manifest,afterPhase:async(phase,relative)=>{if(phase==='paper_capture_file_deleted')deleted.add(relative);await afterPhase?.(phase,relative);}});
+      const exports=await require('./restored-paper-exports.cjs').cleanupRestoredPaperExports({root,query,manifest:verified.manifest,afterPhase:async(phase,relative)=>{if(phase==='paper_export_file_deleted')deleted.add(relative);await afterPhase?.(phase,relative);}});
       await practiceIntegrity.validateQuery(query);
-      receipt={format:verified.manifest.format,backupId:context.backupId,restoreId:context.restoreId,sourceRevision:verified.database.revision,assetsIncluded:verified.manifest.assetsIncluded,verifiedFiles:verified.verifiedFiles,...access,...privacy,...materials,...paper,copiedFiles,skippedFiles,omittedControlFiles,databaseImported:true};
+      receipt={format:verified.manifest.format,backupId:context.backupId,restoreId:context.restoreId,sourceRevision:verified.database.revision,assetsIncluded:verified.manifest.assetsIncluded,verifiedFiles:verified.verifiedFiles,...access,...privacy,...materials,...paper,...exports,copiedFiles,skippedFiles,omittedControlFiles,databaseImported:true};
       const finalFiles=[];
       for(const file of verified.manifest.files){
         if(file.path.startsWith('database/'))continue;

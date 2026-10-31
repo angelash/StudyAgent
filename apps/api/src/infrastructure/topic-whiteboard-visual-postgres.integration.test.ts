@@ -2,6 +2,8 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { Pool } from 'pg';
 import { randomUUID } from 'node:crypto';
 import { DomainDatabase } from './domain-database';
+const { SCHEMA_VERSION: CURRENT_SCHEMA_VERSION } = require(require('node:path').resolve(__dirname, '../../../../scripts/operations/database-reader-guard.cjs'));
+
 
 const connection = process.env.STUDY_TEST_TOPIC_VISUAL_POSTGRES_URL;
 describe.skipIf(!connection)('native PostgreSQL topic figure identities', () => {
@@ -21,7 +23,7 @@ describe.skipIf(!connection)('native PostgreSQL topic figure identities', () => 
     let db = new DomainDatabase(url); await db.open();
     try { await db.commit(await db.read(), initial); await db.close(); db = new DomainDatabase(url); await db.open();
       expect((await db.read()).state).toEqual(initial);
-      expect((await pool.query('SELECT MAX(version) AS version FROM "' + schema + '".schema_migrations')).rows[0].version).toBe(31);
+      expect((await pool.query('SELECT MAX(version) AS version FROM "' + schema + '".schema_migrations')).rows[0].version).toBe(CURRENT_SCHEMA_VERSION);
       const state = await db.read(); await expect(db.commit(state, { studioTopicWhiteboardVisuals: [...state.state.studioTopicWhiteboardVisuals,
         { id: 'changed', ownerUserId: 'owner', requestKey: 'key', operation: 'edit' }] })).rejects.toThrow('duplicate');
       expect((await db.read()).state).toEqual(initial);
