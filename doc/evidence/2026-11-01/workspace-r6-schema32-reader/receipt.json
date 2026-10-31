@@ -1,0 +1,253 @@
+{
+  "at": "2026-10-31T22:10:11.228Z",
+  "protocol": "actual-final-schema32-reader-preservation-and-execution-v1",
+  "baseline": "f5553ba44cccc2e6856e8f2168a81e643d588bf3",
+  "actualReader": {
+    "protocol": "study-domain-reader32-baseline-v1",
+    "schemaVersion": 32,
+    "sourceRevision": "f5553ba44cccc2e6856e8f2168a81e643d588bf3",
+    "gzipSha256": "9221e34998be95314358470836ef879791fb444c41dfbfa13f71362df34344bb",
+    "fileCount": 665,
+    "externalDependencyCount": 565,
+    "sourceInputCount": 897,
+    "readerSha256": "9941939503394403ccea9718d79eaa2495b936636d9c398288aff760bb6f2789",
+    "source": "Actual final isolated p182 compiled API/contracts/config plus committed native operation scripts. Every tracked API/contract/config/operation source and lock file matches committed main. No database, environment, credentials, source originals or runtime logs. The fixed native workspace-collection policy is also included so extracted backup/restore does not read current-main policy files.",
+    "validation": "Final source slice: unit37/0/0, actual SQLite7/0/0, actual PG7/0/0, existing four files44/0/0; final second production build browser9/0. First browser8/1, role-only1/0 and loading-preview revision retained. This is not a new full API/whole-site run. Extracted archive execution is a separate gate.",
+    "runtimeResources": [
+      {
+        "path": "resources/paper-export/profile-collection-policy-v1.json",
+        "sha256": "8b8e7070cc9c11282e205b9a3a468f644f0f7f7d51e90c2c56ac9dc3be1f4196",
+        "purpose": "Pinned native export-workspace collection policy used by restored-material cleanup"
+      }
+    ],
+    "initialLoadOnlyArchiveSha256": "bfa34a0e9c5d08d25ea375f66a8ec660f0b93bb86edd48a86e6ddb9cd81f2daf"
+  },
+  "execution": {
+    "at": "2026-10-31T22:08:27.346Z",
+    "archiveSha256": "9221e34998be95314358470836ef879791fb444c41dfbfa13f71362df34344bb",
+    "passed": 8,
+    "failed": 0,
+    "checks": [
+      {
+        "name": "extract-final-32-with-native-policy-and-verify-external-modules",
+        "passed": true,
+        "files": 665,
+        "dependencies": 565
+      },
+      {
+        "name": "sqlite-two-cold-opens-keep-all-native-originals",
+        "passed": true,
+        "schema": 32
+      },
+      {
+        "name": "sqlite-published-export-full-native-backup-restore-cold-read",
+        "passed": true,
+        "referencedFiles": 8,
+        "paperCollections": {
+          "paperExportCommands": 1,
+          "paperExportFiles": 4,
+          "paperExports": 1,
+          "paperPublications": 4,
+          "paperSelectionCommands": 4,
+          "paperSelectionLists": 4
+        }
+      },
+      {
+        "name": "sqlite-queued-source-exposures-full-native-backup-restore-cold-read",
+        "passed": true,
+        "referencedFiles": 0,
+        "paperCollections": {
+          "paperExportCommands": 15,
+          "paperExports": 11,
+          "paperPublications": 15,
+          "paperSelectionCommands": 16,
+          "paperSelectionLists": 15,
+          "paperSourceExposures": 5
+        }
+      },
+      {
+        "name": "sqlite-actual32-refuses-future33-before-native-write",
+        "passed": true
+      },
+      {
+        "name": "postgres-two-cold-opens-keep-native-originals",
+        "passed": true
+      },
+      {
+        "name": "postgres-actual-native-dump-empty-database-restore-and-cold-open",
+        "passed": true,
+        "sample": "generated notebook; rich paper roundtrip is the separate SQLite case"
+      },
+      {
+        "name": "postgres-actual32-refuses-future33-before-native-write",
+        "passed": true
+      }
+    ],
+    "datasets": [
+      {
+        "name": "published-export",
+        "source": "data/qa/w180t2",
+        "originalDatabaseSha256": "3a91d495193ce7018d1f9823cff1e9aa48fe2956c89332ceb37d43ce7f0f1ef1",
+        "originalRows": 116,
+        "paperCollections": {
+          "paperExportCommands": 1,
+          "paperExportFiles": 4,
+          "paperExports": 1,
+          "paperPublications": 4,
+          "paperSelectionCommands": 4,
+          "paperSelectionLists": 4
+        },
+        "tasks": 4,
+        "files": 9,
+        "expectedRestoreCredentialFences": 4,
+        "originalBusinessSha256": "cf4616214ea26d9fc8eb01f0113b33ff3f173a28bb1f12dbdba1e72aea10c342",
+        "originalSourceUnchanged": true,
+        "paperExportTasksFenced": 0
+      },
+      {
+        "name": "queued-source-exposures",
+        "source": "data/qa/p180/data/qa/paper-export-business-F6vU2P/source",
+        "originalDatabaseSha256": "9212e402f16f8b8fe3786857a3fdd8e2f27d8d9d737da3e50c9943996c1c5033",
+        "originalRows": 296,
+        "paperCollections": {
+          "paperExportCommands": 15,
+          "paperExports": 11,
+          "paperPublications": 15,
+          "paperSelectionCommands": 16,
+          "paperSelectionLists": 15,
+          "paperSourceExposures": 5
+        },
+        "tasks": 20,
+        "files": 1,
+        "expectedRestoreCredentialFences": 19,
+        "originalBusinessSha256": "bdbaea7f4666e9181a493a779af5086abb7be594d0724da4e3067cec5ec0b141",
+        "originalSourceUnchanged": true,
+        "paperExportTasksFenced": 18
+      }
+    ],
+    "extractedReader": "data/qa/r32b",
+    "internalPackageJunctionsRetainedDoNotRecursivelyDelete": true,
+    "actualPostgresPort": 15454,
+    "formalDataOrApplicationChanged": false,
+    "new33NotRegistered": true,
+    "wholeGoal": "active"
+  },
+  "firstExecution": {
+    "passed": 3,
+    "failed": 1,
+    "reason": "The verifier initially expected queued renderer tasks to stay unchanged. The actual frozen restoration policy cancels all 18 queued renderers; the repeat proves every unchanged input/generation, exact four-field terminal fence and one bound backup history row per task."
+  },
+  "resourceClosure": {
+    "initialLoadOnlyArchivePreservedLocally": true,
+    "addedPinnedCollectionPolicy": "resources/paper-export/profile-collection-policy-v1.json",
+    "compiledOperationMembersUnchanged": true
+  },
+  "protectedFilesUnchanged": 1063,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "applicationSchema": 32,
+  "new33NotRegistered": true,
+  "runtimeStop": {
+    "at": "2026-10-31T22:10:08.751Z",
+    "postgresPort": 15454,
+    "stop": 0,
+    "status": 3,
+    "allReaderBatchesTerminalBeforeStop": true,
+    "noOtherServicesTouched": true,
+    "generatedNativeDatabasesAndInternalJunctionsRetained": true
+  },
+  "limits": {
+    "notNewTeachingPackageImplementation": true,
+    "noNewFullApiOrWholeSiteRun": true,
+    "postgresRoundtripUsesSyntheticNotebookNotRichPaperDataset": true,
+    "richPaperAndExposureCasesAreSeparateSqliteChecks": true,
+    "notNewMachineInstallOrTeacherOrRealLearnerEvidence": true,
+    "pushed": false,
+    "deployed": false,
+    "wholeGoal": "active"
+  },
+  "files": [
+    {
+      "path": "reports/reader32-credential-scan-first.json.gz",
+      "sha256": "7ac2b74c32d0c96501db7e4e6ded0374c27e81cc53c52e87a5c1c5da9769d107",
+      "bytes": 259
+    },
+    {
+      "path": "reports/reader32-preserved-first.json.gz",
+      "sha256": "11a227cbb62d74a1d3e1e12598ecc73ff5a35cdfb3aa90d8a7764ce6bd205b26",
+      "bytes": 66929
+    },
+    {
+      "path": "reports/reader32-resource-closure-first.json.gz",
+      "sha256": "f1ee0d321ea63647b33022ab73a29989b8c1308fb2aaf13dc12273b665f5d053",
+      "bytes": 450
+    },
+    {
+      "path": "reports/reader32-execution-first.json.gz",
+      "sha256": "709870f03b87139cfd10bdc837eb8544cc63a72ddf3f13aeeaeb5469ee912e32",
+      "bytes": 713
+    },
+    {
+      "path": "reports/reader32-execution-second.json.gz",
+      "sha256": "2b16bdf4663fb24bb56236526d4b2eb7fd2cddbd7e6263f873ef8f38b9c62c06",
+      "bytes": 1058
+    },
+    {
+      "path": "reports/reader32-stop-first.json.gz",
+      "sha256": "387907dd3575564c10aa02a57ba73451b53e9e7d82c940c76464f34a5e5ecbc4",
+      "bytes": 195
+    },
+    {
+      "path": "reports/postgres-start-first.json.gz",
+      "sha256": "f76a1582c2801ad6fc5483e8c0dc894bc74c56ba9774c5d7bd97f1fa0dda2157",
+      "bytes": 128
+    },
+    {
+      "path": "reports/reader32-initial-load-only.receipt.json.gz",
+      "sha256": "ba1f9037ebc49d14a8cc03bdfaf2e99f0c11869121db4974202c5a061a2ed39a",
+      "bytes": 612
+    },
+    {
+      "path": "verification-source/archive-reader32-first.cjs",
+      "sha256": "07c0bf179caea8b7e10aa0fd976eef0ed6f868514513909e67848dfae3d3267e",
+      "bytes": 5622
+    },
+    {
+      "path": "verification-source/complete-reader32-resource-closure-first.cjs",
+      "sha256": "8c2bc5a6d7dab2f8621e9957990b80a51d530d49b2d0838ef4740e0d5c994f4a",
+      "bytes": 2686
+    },
+    {
+      "path": "verification-source/postgres-start-first.cjs",
+      "sha256": "dcae34687a7a56e182ee5e62d0fbb6d8e59e5f6d96ded7c8d2c43c1fcb1c81e5",
+      "bytes": 2468
+    },
+    {
+      "path": "verification-source/prepare-reader32-second.cjs",
+      "sha256": "942bc3cf0417cb933192ea2091b5e49ee4d571593f5cb064a6af88291bbf2add",
+      "bytes": 3079
+    },
+    {
+      "path": "verification-source/preserve-reader32-first.cjs",
+      "sha256": "28262c992388c83dd8496237172da3086d2a1a21934b2ff7fba947466916e888",
+      "bytes": 6999
+    },
+    {
+      "path": "verification-source/stop-reader32-first.cjs",
+      "sha256": "61d038fb201ab8f6876d2ff7bd5466cd9b2e303c0830f92ba6c8347e48ae9f54",
+      "bytes": 1466
+    },
+    {
+      "path": "verification-source/verify-reader32-first.cjs",
+      "sha256": "cd7047d7789cdf2c20aca23ebb052e4a980150f848132efaea6cf7b2aafb2b01",
+      "bytes": 13795
+    },
+    {
+      "path": "verification-source/verify-reader32-second.cjs",
+      "sha256": "d044bce4cd946e7f1531b3122b0a1799e332ba95d95088ceb887e9e076a1cb69",
+      "bytes": 15864
+    }
+  ]
+}

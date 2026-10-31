@@ -1,0 +1,7 @@
+const fs = require('node:fs'), path = require('node:path'), { spawnSync } = require('node:child_process');
+const config = JSON.parse(fs.readFileSync(path.join(__dirname, 'postgres-runtime.private.json'))), expected = path.join(__dirname, 'postgres/cluster'), result = JSON.parse(fs.readFileSync(path.join(__dirname, 'reader32-execution-second.json')));
+if (result.failed || result.passed !== 8 || path.resolve(config.data) !== path.resolve(expected) || config.port !== 15454 || Number(fs.readFileSync(path.join(expected, 'postmaster.pid'), 'utf8').split(/\r?\n/)[3]) !== 15454) throw Error('Completed exact tests and owned PostgreSQL required');
+const stop = spawnSync(path.join(config.bin, 'pg_ctl.exe'), ['-D', config.data, '-m', 'fast', '-w', '-t', '30', 'stop'], { windowsHide: true, encoding: 'utf8', timeout: 45000 }), status = spawnSync(path.join(config.bin, 'pg_ctl.exe'), ['-D', config.data, 'status'], { windowsHide: true, encoding: 'utf8', timeout: 10000 });
+if (stop.status !== 0 || status.status !== 3) throw Error('Owned PostgreSQL not stopped');
+const report = { at: new Date().toISOString(), postgresPort: 15454, stop: stop.status, status: status.status, allReaderBatchesTerminalBeforeStop: true, noOtherServicesTouched: true, generatedNativeDatabasesAndInternalJunctionsRetained: true };
+fs.writeFileSync(path.join(__dirname, 'reader32-stop-first.json'), JSON.stringify(report, null, 2) + '\n', { flag: 'wx' }); console.log(JSON.stringify(report));

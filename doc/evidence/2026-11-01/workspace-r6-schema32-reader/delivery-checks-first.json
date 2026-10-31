@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-31T22:11:57.928Z",
+  "files": 25,
+  "decodedReaderMembers": 665,
+  "findings": [],
+  "allowedTrackedDefaults": [
+    {
+      "label": "resources/compatibility/domain-reader-schema32-v1.json.gz#/files/apps/api/dist/packages/config/src/index.js",
+      "sha256": "c3390ca53f9fef2d568d91228f08cedd8073449e0dfc042ac6623b2f1f4f624a"
+    },
+    {
+      "label": "resources/compatibility/domain-reader-schema32-v1.json.gz#/files/packages/config/dist/index.js",
+      "sha256": "c3390ca53f9fef2d568d91228f08cedd8073449e0dfc042ac6623b2f1f4f624a"
+    }
+  ],
+  "docs": {
+    "checked": 5206,
+    "missing": []
+  },
+  "protectedFilesUnchanged": 1063,
+  "schema33Registered": false,
+  "localCommitOnly": true,
+  "wholeGoal": "active"
+}

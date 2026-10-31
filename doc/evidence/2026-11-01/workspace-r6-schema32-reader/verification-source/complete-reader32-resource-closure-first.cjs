@@ -1,0 +1,13 @@
+const fs = require('node:fs'), path = require('node:path'), zlib = require('node:zlib'), crypto = require('node:crypto');
+const root = path.resolve(__dirname, '../../..'), sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex'), directory = path.join(root, 'resources/compatibility'), archive = path.join(directory, 'domain-reader-schema32-v1.json.gz'), receiptPath = path.join(directory, 'domain-reader-schema32-v1.receipt.json');
+const initial = fs.readFileSync(archive), receiptBytes = fs.readFileSync(receiptPath), manifest = JSON.parse(zlib.gunzipSync(initial)), receipt = JSON.parse(receiptBytes);
+if (sha(initial) !== receipt.gzipSha256 || manifest.files['resources/paper-export/profile-collection-policy-v1.json']) throw Error('Exact initial load-only baseline required');
+const file = 'resources/paper-export/profile-collection-policy-v1.json', bytes = fs.readFileSync(path.join(root, file));
+if (sha(bytes) !== '8b8e7070cc9c11282e205b9a3a468f644f0f7f7d51e90c2c56ac9dc3be1f4196' || sha(fs.readFileSync(path.join(root, 'data/qa/p182', file))) !== sha(bytes)) throw Error('Exact policy pinned by the archived collection code required');
+fs.writeFileSync(path.join(__dirname, 'reader32-initial-load-only.json.gz'), initial, { flag: 'wx' }); fs.writeFileSync(path.join(__dirname, 'reader32-initial-load-only.receipt.json'), receiptBytes, { flag: 'wx' });
+manifest.files[file] = { sha256: sha(bytes), base64: bytes.toString('base64') }; manifest.sourceInputs.push({ path: file, sha256: sha(bytes) });
+const final = zlib.gzipSync(Buffer.from(JSON.stringify(manifest)), { level: 9 }); fs.writeFileSync(archive, final);
+const next = { ...receipt, gzipSha256: sha(final), fileCount: Object.keys(manifest.files).length, sourceInputCount: manifest.sourceInputs.length, runtimeResources: [{ path: file, sha256: sha(bytes), purpose: 'Pinned native export-workspace collection policy used by restored-material cleanup' }], initialLoadOnlyArchiveSha256: sha(initial), source: receipt.source + ' The fixed native workspace-collection policy is also included so extracted backup/restore does not read current-main policy files.' };
+fs.writeFileSync(receiptPath, JSON.stringify(next, null, 2) + '\n');
+const report = { at: new Date().toISOString(), initialArchiveSha256: sha(initial), finalArchiveSha256: sha(final), added: next.runtimeResources, compiledAndOperationMembersUnchanged: true, externalDependenciesUnchanged: true, initialLoadOnlyArchiveRetainedLocally: true, finalFileCount: next.fileCount };
+fs.writeFileSync(path.join(__dirname, 'reader32-resource-closure-first.json'), JSON.stringify(report, null, 2) + '\n', { flag: 'wx' }); console.log(JSON.stringify(report));

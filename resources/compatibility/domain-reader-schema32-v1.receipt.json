@@ -1,0 +1,20 @@
+{
+  "protocol": "study-domain-reader32-baseline-v1",
+  "schemaVersion": 32,
+  "sourceRevision": "f5553ba44cccc2e6856e8f2168a81e643d588bf3",
+  "gzipSha256": "9221e34998be95314358470836ef879791fb444c41dfbfa13f71362df34344bb",
+  "fileCount": 665,
+  "externalDependencyCount": 565,
+  "sourceInputCount": 897,
+  "readerSha256": "9941939503394403ccea9718d79eaa2495b936636d9c398288aff760bb6f2789",
+  "source": "Actual final isolated p182 compiled API/contracts/config plus committed native operation scripts. Every tracked API/contract/config/operation source and lock file matches committed main. No database, environment, credentials, source originals or runtime logs. The fixed native workspace-collection policy is also included so extracted backup/restore does not read current-main policy files.",
+  "validation": "Final source slice: unit37/0/0, actual SQLite7/0/0, actual PG7/0/0, existing four files44/0/0; final second production build browser9/0. First browser8/1, role-only1/0 and loading-preview revision retained. This is not a new full API/whole-site run. Extracted archive execution is a separate gate.",
+  "runtimeResources": [
+    {
+      "path": "resources/paper-export/profile-collection-policy-v1.json",
+      "sha256": "8b8e7070cc9c11282e205b9a3a468f644f0f7f7d51e90c2c56ac9dc3be1f4196",
+      "purpose": "Pinned native export-workspace collection policy used by restored-material cleanup"
+    }
+  ],
+  "initialLoadOnlyArchiveSha256": "bfa34a0e9c5d08d25ea375f66a8ec660f0b93bb86edd48a86e6ddb9cd81f2daf"
+}
