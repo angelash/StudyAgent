@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-31T01:49:59.318Z",
+  "state": "Isolated exact-repair and private-upload workspace candidate; no application merge, push or deployment.",
+  "baseMain": "b29a3e97d274e5ad4fedbbf34fa73fa6db4c3b4b",
+  "archiveMain": "bfcf273d9a0819f74d59ae1b386630bff0e9f1c1",
+  "sourceDelta": {
+    "files": 100,
+    "uncompressedSha256": "a1cf46cd4cb50f74ec82197c1e8615b8027d89d00be96f849a526b886d0f3c7e"
+  },
+  "build": [
+    {
+      "name": "contracts",
+      "status": 0
+    },
+    {
+      "name": "config",
+      "status": 0
+    },
+    {
+      "name": "api-types",
+      "status": 0
+    },
+    {
+      "name": "api-build",
+      "status": 0
+    }
+  ],
+  "apiTypes": {
+    "status": 0
+  },
+  "webTypes": {
+    "status": 0
+  },
+  "checks": [
+    {
+      "label": "paper-control38-full-sqlite-first",
+      "passed": 152,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "paper-control38-full-postgres-first",
+      "passed": 71,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "productBrowser": {
+    "passed": 14,
+    "failed": 0,
+    "browser": "156.0.8078.4",
+    "scope": "Actual Next development workspace and real isolated SQLite Nest API, generated users/files only; one real committed response was deliberately dropped. No production runtime, physical camera, teacher or learner-effect acceptance."
+  },
+  "repairLocalBrowser": {
+    "passed": 9,
+    "failed": 0,
+    "browser": "156.0.8078.4",
+    "scope": "Real headless Chromium/WebCrypto/IndexedDB/tabs/downloads in an isolated localhost harness. Product UI and physical devices remain unfinished."
+  },
+  "batchBoundary": "SQLite152 includes70 actual HTTP/worker/native +1 recovery +40 earlier pure +6 browser codec +4 real observation +25 repair IO +6 binary-repair codec. PG71 is70 actual PG HTTP/worker/native +1 independent-schema recovery. Product14 and local9 are separate real-browser scopes. Earlier3/67 filtered results,14 predecessor and11 predecessor overlap and are not added.",
+  "historicalInputs": "All earlier actual product and first Web-type inputs match current bytes or one of six exact retained source variants. First three product import assertions failed while screenshots retained the restored file and note; the final actual product uses a visible textarea value and proceeds through real server repair. No codec was changed to bypass the assertions.",
+  "failureHistory": "First Web types rejected an inferred query object with optional undefined union fields; an explicit string record fixed it. Original import assertion failures, runner variants and input SHA records are retained. Prior product first/second/third achieved9 before the import assertion; fourth11, first private-control13 and second14 are overlapping predecessors.",
+  "production": {
+    "formalReadOnly": {
+      "schema": 24,
+      "revision": 187
+    },
+    "mainApplicationSource": 30,
+    "protectedFilesMatchPrior": true,
+    "noPushOrDeployment": true
+  },
+  "boundaries": {
+    "exactRepairProductUi": true,
+    "wrongCandidatePreserved": true,
+    "actualBinaryDownloadReadback": true,
+    "actualDurableRepairAndLostReceipt": true,
+    "repairLocalMonotonicClear": true,
+    "privateUploadControlWithoutOriginalBytes": true,
+    "exactReselectionAndResume": true,
+    "completedUploadStillDiscoverable": true,
+    "pdfFileCheckEntry": true,
+    "actualRepairLayouts3207681440": true,
+    "sourceRebuildStrategy": false,
+    "otherPdfStrategy": false,
+    "fullApiRegression": false,
+    "wholeBrowserRegression": false,
+    "currentNativePgBackupRepeat": false,
+    "teacherReview": false,
+    "physicalDevices": false,
+    "realLearnerIntervals": false,
+    "wholeGoal": "active",
+    "legacy72": "11 implemented / 50 in_progress / 11 planned / 0 verified"
+  },
+  "artifacts": [
+    {
+      "path": "01-add-materials.png",
+      "sha256": "7ef3e428e9896f7c40661c3039d9738488b1f16a5b6311b91c0926fed83045e9"
+    },
+    {
+      "path": "actual-capture.studycopy.json",
+      "sha256": "1ee731001c9b71290ed1188a6502d6dfe9cf7d7e989cf7c8a62a6fb376fade8e"
+    },
+    {
+      "path": "actual-repair.studycopy",
+      "sha256": "ae3b4a7c8ab289b8ade229d306b5e447540c3128c95c894e957f109d2ab4e34a"
+    },
+    {
+      "path": "capture-1024.png",
+      "sha256": "8fe1924aa8fb386446956ac1d89a54b90eb0e46cec25e1402619d8ec8ca27323"
+    },
+    {
+      "path": "capture-1440.png",
+      "sha256": "ada2e1f1905d23c58cc0dac168b2fd27bf66396cd50c77001d896212afd02941"
+    },
+    {
+      "path": "capture-320.png",
+      "sha256": "aa1fb269c3f0acb3d2dec593e03d778ed74b6f25cc0566156189c9bb343ff5b4"
+    },
+    {
+      "path": "capture-768.png",
+      "sha256": "a5395f0ac631f84e63edec2f389b2954aae8a7035cb2497ef8b70b3189f31393"
+    },
+    {
+      "path": "checked-inputs.json.gz",
+      "sha256": "33e5151c5e1599f972f7421478d247e76b1b5af37418157615e222ca7d475d5a"
+    },
+    {
+      "path": "current-paper-checks.json",
+      "sha256": "c6c9d6786d29c08357a37c686442a620df11e1e078c56d51663d03a4a07fb5a1"
+    },
+    {
+      "path": "historical-source-variants.json.gz",
+      "sha256": "ac871ebd5fa7fdd4921aa01b150023a4691196874f4aafea63387842e0a69333"
+    },
+    {
+      "path": "original-failures-and-retries.json.gz",
+      "sha256": "924453e56f61f1dafe6fd7bf2b0e021d630cde07a4492f31b449e498be6a706b"
+    },
+    {
+      "path": "production-observation.json",
+      "sha256": "649d2954a74a72b6a5a50a92dd6bc889d46261070faf7114cc1011352264a5d0"
+    },
+    {
+      "path": "qa-runners.json.gz",
+      "sha256": "37d036d23cd99411f5836f25494c0cd4779f78793de5cd8676b06077f60ca8dd"
+    },
+    {
+      "path": "repair-1440.png",
+      "sha256": "365a62b95d70e8cd0c00fae5c6cfe6510748f2c1412d636b0d2fb8a916d81a3d"
+    },
+    {
+      "path": "repair-320.png",
+      "sha256": "0a30d4c693e5b37b1b8cd801507d1e0a4036ee5629bea378b7ee4b0ac509c2e8"
+    },
+    {
+      "path": "repair-768.png",
+      "sha256": "d290ac7c4dd6274513bf02f2c57698ff9568158b70c96f8b115704b9f4d52833"
+    },
+    {
+      "path": "repair-indexeddb-browser.json",
+      "sha256": "cd8dc315afa00e339ca43c06733cf9c3a97bf5eb41c8544edbe3351e21c30ad7"
+    },
+    {
+      "path": "source-delta.json.gz",
+      "sha256": "7f97739d65bebec2b7f4edc889a1e39831003a06822caebfc4617536fec4f975"
+    },
+    {
+      "path": "workspace-product-browser.json",
+      "sha256": "5399ce095c678dc78946e8418106e7960f9eba61358a4f523c6ea5a20d21f95a"
+    }
+  ]
+}

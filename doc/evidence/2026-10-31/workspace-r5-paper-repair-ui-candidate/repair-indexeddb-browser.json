@@ -1,0 +1,333 @@
+{
+  "at": "2026-10-31T01:34:35.668Z",
+  "success": true,
+  "passed": 9,
+  "failed": 0,
+  "browser": "156.0.8078.4",
+  "scope": "Real headless Chromium/WebCrypto/IndexedDB/tabs/downloads in an isolated localhost harness. Product UI and physical devices remain unfinished.",
+  "bundleSha256": "1d07828ff2f5388bd9140cfb1c53fcd106f96936f4d22a90f6a5d25cc10f5d93",
+  "inputs": [
+    {
+      "path": "apps/web/lib/paper-capture-copy.ts",
+      "sha256": "c0c60f9a05bd06626fb5ce4765561e53fce76ab7ad3ca454a3723a29b9d386c1"
+    },
+    {
+      "path": "apps/web/lib/paper-capture-repair-copy.ts",
+      "sha256": "a0b2a092d0dcf193cd68cbf7a9aed26395c9e54ddcc18c998fc59d0beb15d2e6"
+    },
+    {
+      "path": "apps/web/lib/paper-capture-repair-local.ts",
+      "sha256": "a5de9707b985203d503e52dc16e56f261626d93e0d89e0a5722a37595b84cad5"
+    },
+    {
+      "path": "packages/contracts/package.json",
+      "sha256": "1090bce0b1570ede8c8544b068388db4ff314b487f78b598d9139d7b1c8a16b2"
+    },
+    {
+      "path": "packages/contracts/src/activity-navigation.ts",
+      "sha256": "4e0639c3669a5d7b5c9c20457cf695c6621e824c5c29663015377ea2f90fee85"
+    },
+    {
+      "path": "packages/contracts/src/ai-models.ts",
+      "sha256": "c27640b994c433be31aa6f048e727446f86e68252d695732740f5dd652b0df63"
+    },
+    {
+      "path": "packages/contracts/src/ai-teaching-tools.ts",
+      "sha256": "5063a057c70360db1e3f122ca68cb4632b621e58a2b9163e3c864b71475ed005"
+    },
+    {
+      "path": "packages/contracts/src/answer-draft.ts",
+      "sha256": "226653dad8a598fb1d4b27fe76e804f63e49a06d1884b586569facbaec8682dd"
+    },
+    {
+      "path": "packages/contracts/src/answer-protocol.ts",
+      "sha256": "0d134d6df743ad67a2c4621c83a996dc2bb2feb34da6dea8b2f26f640d4eb822"
+    },
+    {
+      "path": "packages/contracts/src/assistant-artifact.ts",
+      "sha256": "695ee474a735cd7311fcf5f79569af5045fcc5b6221e3fb0dacdb32edaf8a337"
+    },
+    {
+      "path": "packages/contracts/src/assistant-guidance.ts",
+      "sha256": "37e2359ca5577ff82eb0b4d198386ef994d17086da1c1c68405cbdb870c57067"
+    },
+    {
+      "path": "packages/contracts/src/assistant-practice-assignment.ts",
+      "sha256": "a37ef8b339fd0bf8597786fd000e03b6a28bc34b950e073c9d078488bed7ec9e"
+    },
+    {
+      "path": "packages/contracts/src/assistant-practice-content.ts",
+      "sha256": "bbe6d78bb8da31df0343d4fee3266079116ba74127559df17cb3a03633277993"
+    },
+    {
+      "path": "packages/contracts/src/assistant-practice-learner.ts",
+      "sha256": "13ac28ee74e46d476b5f503a3844ca5c158af66ad69ef8b89d15a3be0972632c"
+    },
+    {
+      "path": "packages/contracts/src/assistant-practice.ts",
+      "sha256": "262d96d2df29508cdac9bbc28fe851330b263753da900567954ac4cd476060b8"
+    },
+    {
+      "path": "packages/contracts/src/assistant-reviewed-practice.ts",
+      "sha256": "86854be6ae75149ad9b40d21ea117d0a92fd6f789fa7e744b20b9562be1a03d5"
+    },
+    {
+      "path": "packages/contracts/src/assistant-teaching-assignment.ts",
+      "sha256": "36ae43ac675aa55796f5a47ae9173131ec2abc731ccc1d9cb5aeb760509e1bff"
+    },
+    {
+      "path": "packages/contracts/src/assistant-teaching-learner.ts",
+      "sha256": "0e1fb5eb349658749ca2ff7333830075b0fc4fa555cd0b8da9ecb190f9ee7d9d"
+    },
+    {
+      "path": "packages/contracts/src/assistant-teaching-practice.ts",
+      "sha256": "66118c1b7a611e6c38f8a0db2070a75583234bd8e9deab047729becd36f9f8fd"
+    },
+    {
+      "path": "packages/contracts/src/assistant-turn.ts",
+      "sha256": "1d4e62757b762f9447584ce10adb0ff3789942acdfb671a871cf1e96154c9525"
+    },
+    {
+      "path": "packages/contracts/src/assistant-whiteboard.ts",
+      "sha256": "83fc1fb1e6e0c6cb62e29ac2236c3298dc8d192e34e41c80f60356efe82ea553"
+    },
+    {
+      "path": "packages/contracts/src/chemistry.ts",
+      "sha256": "616280e1ccf1337fcc2ea5ca33df3c9b6cd9e6f7fdaa0fe162e8991d78f0c597"
+    },
+    {
+      "path": "packages/contracts/src/classroom-board.ts",
+      "sha256": "93569508be22606e2a319468a4e063a212360e6402275df02782db42f80f72bd"
+    },
+    {
+      "path": "packages/contracts/src/classroom-choice.ts",
+      "sha256": "8a83a7390b5f657dc0fa732ce1508c2393d4235fca6692a61cdd455d0b48b707"
+    },
+    {
+      "path": "packages/contracts/src/classroom-code.ts",
+      "sha256": "ac986891d044dec74c5b73bce42751ba3b6589dc6e5072373a995a12a1b485dc"
+    },
+    {
+      "path": "packages/contracts/src/classroom-experiment.ts",
+      "sha256": "48d82048756bfcbfc52ce12e81ee4d792b44614c6ec8c14ef8d56d03a3d5e331"
+    },
+    {
+      "path": "packages/contracts/src/classroom-speech.ts",
+      "sha256": "34a98501b01a9f096464455d7403902361e6dd870b53cbc394e40dd9b271ca79"
+    },
+    {
+      "path": "packages/contracts/src/classroom-turn.ts",
+      "sha256": "4452899e3d185c031aa32906a517604081d903b6d6b73a7e35c5dc31e0d6558f"
+    },
+    {
+      "path": "packages/contracts/src/classroom-visual.ts",
+      "sha256": "3e3aa33e0ea4b5f91b0e0330557bc69d5efc24d775aebff422e8166e47b04420"
+    },
+    {
+      "path": "packages/contracts/src/classroom.ts",
+      "sha256": "19183f7228c99e522a6ecb4b7f3011366eeeb0c237070de0015f4ddebfefa319"
+    },
+    {
+      "path": "packages/contracts/src/controlled-contrast.ts",
+      "sha256": "1089e1e25e177849c309e845bbb399f8992576bcb0a80af605a49730ea40a82f"
+    },
+    {
+      "path": "packages/contracts/src/course-journey.ts",
+      "sha256": "064f0bc93a1341995ec30f80ea1ff13a9908770b451470c78487380dc50eccc3"
+    },
+    {
+      "path": "packages/contracts/src/course-project.ts",
+      "sha256": "95fc965a7958b24a34dc6ea96b29ff0ce928a15af243173825a8eaa499d68020"
+    },
+    {
+      "path": "packages/contracts/src/curriculum.ts",
+      "sha256": "a3dc46958640ef2c944fac82839feebdbefc937d2875ea67b97549de703bc47d"
+    },
+    {
+      "path": "packages/contracts/src/diagnostics.ts",
+      "sha256": "b747c9383bb53b370755f52420c8510ef4fc23d60be437b3b3fd77ca59726472"
+    },
+    {
+      "path": "packages/contracts/src/gesp.ts",
+      "sha256": "53786002bacff89fcdbc05f43c5570d87546d3d8a3f4436c883d31023ceda7cf"
+    },
+    {
+      "path": "packages/contracts/src/guidance-calendar.ts",
+      "sha256": "885af56f5408985d92424a7e2dd43fa3136c8e4301c604407c766f068c5e3498"
+    },
+    {
+      "path": "packages/contracts/src/guidance-model.ts",
+      "sha256": "12e171ad5779c9029f4e1339af3e7316127d1f64c94ab913e3c682a88a2f5662"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "543f95ecd0e30ed1998eeb030bebbd2f6285ccb10bb42991a4b115ac268c60b1"
+    },
+    {
+      "path": "packages/contracts/src/learning-home.ts",
+      "sha256": "93a149be8a0424c2fa8390e0675bf8be73d1ef2cf1108713bc91ca9d8f06eaa4"
+    },
+    {
+      "path": "packages/contracts/src/learning.ts",
+      "sha256": "89312ed27c6f0b8d26fe16a414a7b9c4a6ddc035ed2c5b41f78da3fdd1c93508"
+    },
+    {
+      "path": "packages/contracts/src/measurement-content.ts",
+      "sha256": "52e7300b6602af4bd1d62d7f4277a9ef982c2d0625a95dd5c7726469f640e2fa"
+    },
+    {
+      "path": "packages/contracts/src/operations.ts",
+      "sha256": "54fd93045894ee050d0bda6bc34190a255fcceafbec17efad9cfc9344088289c"
+    },
+    {
+      "path": "packages/contracts/src/paper-capture-integrity.ts",
+      "sha256": "313ad179b76468b321e3c64467cab8c8c710a393cd1fe4a759d85f3465a3d907"
+    },
+    {
+      "path": "packages/contracts/src/paper-capture-origin.ts",
+      "sha256": "50aaf09ba6eb7ba8cbe0c5cfcff9d9a5d13b65094d53de397af44f520c02d04b"
+    },
+    {
+      "path": "packages/contracts/src/paper-capture-repair.ts",
+      "sha256": "aa1b700c5921a8db28417790d9bf7da3dc23f6c9330a59c7cdb29b9d9f931595"
+    },
+    {
+      "path": "packages/contracts/src/paper-capture.ts",
+      "sha256": "bf4074959838d2996ebd2aa752b2927dff5c6cbfec985b79e2552e95265d40de"
+    },
+    {
+      "path": "packages/contracts/src/paper-practice.ts",
+      "sha256": "c9a04bbc41001ce17ffdcaca9dd2b77a22d32342043c4f6bef1d686e8ccdf792"
+    },
+    {
+      "path": "packages/contracts/src/paper-review.ts",
+      "sha256": "ebf986d42557ba57a1884b625c5dcc0a8d3ef5e6d7228b235b47f19db7f0aa48"
+    },
+    {
+      "path": "packages/contracts/src/privacy.ts",
+      "sha256": "3abd3861bc88ed9416328d068bd2357214eeeb0c5f8ae6e66cb5912fb4c93e10"
+    },
+    {
+      "path": "packages/contracts/src/processing.ts",
+      "sha256": "330e34d05a39a3a13d86c29820ab90f782b212d973977b30b76ebc4e95f11786"
+    },
+    {
+      "path": "packages/contracts/src/project-assets.ts",
+      "sha256": "d02d1c9790c931c4ac556d868bacd430a1572e07bcaee8eb780afc8856aabe68"
+    },
+    {
+      "path": "packages/contracts/src/project-teaching.ts",
+      "sha256": "e2dee36ca7634b67ee4d0e1e6e35e2d07b4aed13db79c5f2b57c4bfb3d3c72da"
+    },
+    {
+      "path": "packages/contracts/src/retention.ts",
+      "sha256": "d21bb4f238fc5f75fe76e426fb3d56efd4d97a403ec0dd168cafdc8c1bf25dc3"
+    },
+    {
+      "path": "packages/contracts/src/reviews.ts",
+      "sha256": "fb29dc81453566d52ea71e2a2616167a41afea011d5ec027a9d77d522164bb63"
+    },
+    {
+      "path": "packages/contracts/src/source-course-check.ts",
+      "sha256": "5338436864693c8bc774f723dedbf3fae96143e440d5f01f88d1e43c40b12e9f"
+    },
+    {
+      "path": "packages/contracts/src/source-course-compilation.ts",
+      "sha256": "ecf11437f2b8b2fe47954a928a5e679bb4f64f216e6835475288e84b7b9583f3"
+    },
+    {
+      "path": "packages/contracts/src/source-course-lifecycle.ts",
+      "sha256": "e359d5ca51d53ecd09199f6fd138558ec75c3cd63af9bcd5d6239ea234ac4972"
+    },
+    {
+      "path": "packages/contracts/src/source-course.ts",
+      "sha256": "4cb5f48292cdf6402232f1acf567499cf541c9e15cc21b269af9a3dcd0504640"
+    },
+    {
+      "path": "packages/contracts/src/student-access.ts",
+      "sha256": "505707fdc74ef260c0d5408823c9eb7a215e64044c96bf80b104fc770d48fdc3"
+    },
+    {
+      "path": "packages/contracts/src/student-media.ts",
+      "sha256": "981cc20f0e1b46982e127ca391261eb8833b5636521a6fa8b83c22a7419e462f"
+    },
+    {
+      "path": "packages/contracts/src/studio-course-request.ts",
+      "sha256": "519a834a2e34c81f190b11ca986fb62d51594dfc544ef973a05ae22d21e9d671"
+    },
+    {
+      "path": "packages/contracts/src/studio-material-upload.ts",
+      "sha256": "f15448bdb866de7b794a820a9929bda456eaf2fa7602324dbed5575ed6554886"
+    },
+    {
+      "path": "packages/contracts/src/studio.ts",
+      "sha256": "cd539e497cc998fd4ffe2565c14c0ed8d02f157a90410d7ba6b5e3e27d8ae4aa"
+    },
+    {
+      "path": "packages/contracts/src/topic-whiteboard-visual.ts",
+      "sha256": "42b8cdfde0d3dc4a0e78b689e687a1a9d7e2c80849a8d35d7432998ad23c8db9"
+    },
+    {
+      "path": "packages/contracts/src/topic-whiteboard.ts",
+      "sha256": "818c646503be69d84df78fda9489a04c8da92cd322613c40b6ea03143ae0e4b6"
+    },
+    {
+      "path": "packages/contracts/src/whiteboard-question-visual.ts",
+      "sha256": "ced5594d72d26a033d002d63473ca6440be33dd92d921d4b8138c93aaf13ce1e"
+    },
+    {
+      "path": "packages/contracts/src/whiteboard-question.ts",
+      "sha256": "f36b8ce32eb1787bf996f9203696907b9129a567dee8bce7e7875af44b8bc60a"
+    },
+    {
+      "path": "packages/contracts/src/whiteboard-speech.ts",
+      "sha256": "11dd6b68db2fe42b46faf9f4218b79336e3561f3bb26b23c8cf4063447fa867e"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Real IndexedDB restores complete binary original, raw form and exact original commands after reload",
+      "passed": true
+    },
+    {
+      "name": "Actual stale tab cannot overwrite a newer draft and an exact lost acknowledgement retains the original save revision",
+      "passed": true
+    },
+    {
+      "name": "Two simultaneous real-tab writers settle one new revision and preserve the losing complete file",
+      "passed": true
+    },
+    {
+      "name": "Independent private account and exact target/role keys prevent foreign drafts from replacing the reviewed original",
+      "passed": true
+    },
+    {
+      "name": "Explicit clearing compares the exact reviewed revision and fingerprint while retaining another account original",
+      "passed": true
+    },
+    {
+      "name": "Actual exact-target clearing and recreation keep a monotonic revision and reject stale ABA writes without replacing the new original file",
+      "passed": true
+    },
+    {
+      "name": "Actual persisted binary tampering is refused after recomputing public file and manifest hashes, preserving the original in-memory file",
+      "passed": true
+    },
+    {
+      "name": "Injected storage denial retains and actually downloads the entire binary original with its full pending command",
+      "passed": true,
+      "condition": "Injected IndexedDB SecurityError; not an actual quota measurement"
+    },
+    {
+      "name": "Actual Chromium IndexedDB preserves and reads back an80MiB binary original across reload with a small complete header",
+      "passed": true,
+      "condition": "Desktop headless Chromium only; not physical or weak-device acceptance"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "paper-repair-local-browser-second/synthetic-exact-repair.studycopy",
+      "sha256": "bb9095d8e5db7cd9caa12b2c7e64adb8dac7f91b2c757590e5bf22553d9f1c02"
+    }
+  ]
+}

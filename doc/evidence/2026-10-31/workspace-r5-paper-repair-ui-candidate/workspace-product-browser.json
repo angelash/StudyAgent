@@ -1,0 +1,97 @@
+{
+  "at": "2026-10-31T01:48:29.988Z",
+  "success": true,
+  "passed": 14,
+  "failed": 0,
+  "browser": "156.0.8078.4",
+  "scope": "Actual Next development workspace and real isolated SQLite Nest API, generated users/files only; one real committed response was deliberately dropped. No production runtime, physical camera, teacher or learner-effect acceptance.",
+  "inputsFile": "paper-product-control-third/inputs.json",
+  "generatedImageSha256": "74af8d8ccc268fbd8ed992d2575c4c317534150bc35720943952a64f68bb4e14",
+  "checks": [
+    {
+      "name": "Actual workspace unified add picker opens image capture; opening and empty file selection create no upload, page, group, task or learning fact",
+      "passed": true
+    },
+    {
+      "name": "Actual product IndexedDB restores two exact original files and title after full page reload without automatically uploading or recognizing",
+      "passed": true
+    },
+    {
+      "name": "Real original uploads preserve duplicate bytes as separate page IDs; dropping an actual committed complete response is recovered through its original command without a second page",
+      "passed": true
+    },
+    {
+      "name": "Actual pixel crop and clockwise rotation publish a new page version; explicit group revisions preserve exact selected order and prior history",
+      "passed": true
+    },
+    {
+      "name": "Explicit recognize creates a real durable derivation; actual worker saves the frozen PDF and original material, and the workspace returns to that material reader",
+      "passed": true
+    },
+    {
+      "name": "Persistent workspace exit guard blocks an exact capture change with unsaved input and keeps keyboard focus inside the existing confirmation dialog",
+      "passed": true
+    },
+    {
+      "name": "Actual existing workspace capture dialog rendered without horizontal content overflow at 320, 768, 1024 and 1440 pixels",
+      "passed": true
+    },
+    {
+      "name": "Blocked replaceState keeps the exact live input; an actual downloaded complete copy must be selected and read back before continuation, which opens the independent new slot",
+      "passed": true,
+      "artifact": {
+        "path": "paper-product-control-third/actual-capture.studycopy.json",
+        "sha256": "1ee731001c9b71290ed1188a6502d6dfe9cf7d7e989cf7c8a62a6fb376fade8e"
+      }
+    },
+    {
+      "name": "Actual native Back is blocked with unsaved new-slot input and resumes after a complete IndexedDB write/readback while the guard remains registered",
+      "passed": true
+    },
+    {
+      "name": "Actual damaged-original report opens the existing-style repair dialog; a wrong candidate is retained without uploading, and its complete binary copy must be downloaded and read back before closing and can be imported without replay",
+      "passed": true,
+      "artifact": {
+        "path": "paper-product-control-third/actual-repair.studycopy",
+        "sha256": "ae3b4a7c8ab289b8ade229d306b5e447540c3128c95c894e957f109d2ab4e34a"
+      }
+    },
+    {
+      "name": "Explicit exact-file staging creates no repair until confirmation; an actually committed repair response is deliberately lost, recovered by its original command, and a real durable worker restores the same original bytes and receipt without another repair",
+      "passed": true
+    },
+    {
+      "name": "Actual private incomplete-upload control explicitly contains no original bytes, retains the full cancellation, and recovers an actually lost committed cancel response by the original upload ID without fabricating a receipt",
+      "passed": true
+    },
+    {
+      "name": "Missing-original control rejects a different real file, then validates the exact SHA, size and MIME and transfers it into an independent complete image draft; explicit resume saves the original upload and page identities",
+      "passed": true
+    },
+    {
+      "name": "A completed upload remains discoverable for original receipt recovery and reopening its independent complete draft after a lost completion; no duplicate page is created",
+      "passed": true
+    }
+  ],
+  "countsBefore": {
+    "paperImageUploads": 0,
+    "paperCapturePages": 0,
+    "paperCaptureGroups": 0,
+    "paperCaptureDerivations": 0,
+    "diagnosticResponses": 0,
+    "practiceAttempts": 0,
+    "paperPracticeSessions": 0,
+    "retentionExposureEvents": 0
+  },
+  "countsAfter": {
+    "paperImageUploads": 4,
+    "paperCapturePages": 3,
+    "paperCaptureGroups": 1,
+    "paperCaptureDerivations": 1,
+    "diagnosticResponses": 0,
+    "practiceAttempts": 0,
+    "paperPracticeSessions": 0,
+    "retentionExposureEvents": 0
+  },
+  "consoleErrors": []
+}
