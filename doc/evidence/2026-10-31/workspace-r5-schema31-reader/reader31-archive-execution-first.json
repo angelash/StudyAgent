@@ -1,0 +1,46 @@
+{
+  "at": "2026-10-31T06:45:41.123Z",
+  "scope": "Execute the actual sealed31 archive, not current main compilation; synthetic notebook only. SQLite and real native PostgreSQL backup/restore, cold open and future32 fences. No main API, formal data or actual learner evidence.",
+  "archiveSha256": "a37ee85e9de059b26feed4e616ad294175fe81bc2e38e8409b36aa041741e416",
+  "extractedFiles": 606,
+  "verifiedExternalDependencies": 565,
+  "success": true,
+  "passed": 6,
+  "failed": 0,
+  "checks": [
+    {
+      "driver": "sqlite",
+      "name": "Extracted actual archive cold opens its original schema31 record and minimum-reader marker",
+      "passed": true
+    },
+    {
+      "driver": "sqlite",
+      "name": "Actual native SQLite bundle restores original31 bytes and archived reader cold opens them",
+      "passed": true
+    },
+    {
+      "driver": "sqlite",
+      "name": "Unmodified archived31 reader and operation guard reject future32 without changing original rows",
+      "passed": true
+    },
+    {
+      "driver": "postgres",
+      "name": "Extracted actual archive cold opens its original schema31 record and minimum-reader marker",
+      "passed": true
+    },
+    {
+      "driver": "postgres",
+      "name": "Actual pg_dump/pg_restore bundle restores original31 record and archived reader cold opens it",
+      "passed": true
+    },
+    {
+      "driver": "postgres",
+      "name": "Unmodified archived31 reader and operation guard reject future32 without changing original rows",
+      "passed": true
+    }
+  ],
+  "error": null,
+  "extractedRuntimeRetained": "data/qa/r31a includes owned internal package junctions; do not recursively delete this runtime.",
+  "generatedPostgresDatabasesCleaned": 2,
+  "formalApplicationChanged": false
+}

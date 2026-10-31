@@ -1,0 +1,96 @@
+{
+  "at": "2026-10-31T06:46:55.312Z",
+  "sourceRevision": "4d97bc84e5b764634074d65351b83ad56c5d275e",
+  "archive": "resources/compatibility/domain-reader-schema31-v1.json.gz",
+  "archiveSha256": "a37ee85e9de059b26feed4e616ad294175fe81bc2e38e8409b36aa041741e416",
+  "fileCount": 606,
+  "externalDependencyCount": 565,
+  "readerSha256": "99dd5508513d61a5d53b68c28a1f72e317796d4c24d67ad0110da5017f8a8989",
+  "checks": [
+    {
+      "driver": "sqlite",
+      "name": "Extracted actual archive cold opens its original schema31 record and minimum-reader marker",
+      "passed": true
+    },
+    {
+      "driver": "sqlite",
+      "name": "Actual native SQLite bundle restores original31 bytes and archived reader cold opens them",
+      "passed": true
+    },
+    {
+      "driver": "sqlite",
+      "name": "Unmodified archived31 reader and operation guard reject future32 without changing original rows",
+      "passed": true
+    },
+    {
+      "driver": "postgres",
+      "name": "Extracted actual archive cold opens its original schema31 record and minimum-reader marker",
+      "passed": true
+    },
+    {
+      "driver": "postgres",
+      "name": "Actual pg_dump/pg_restore bundle restores original31 record and archived reader cold opens it",
+      "passed": true
+    },
+    {
+      "driver": "postgres",
+      "name": "Unmodified archived31 reader and operation guard reject future32 without changing original rows",
+      "passed": true
+    }
+  ],
+  "passed": 6,
+  "failed": 0,
+  "knownPublicDefaults": [
+    {
+      "path": "apps/api/dist/packages/config/src/index.js",
+      "line": 11,
+      "matchSha256": "c3390ca53f9fef2d568d91228f08cedd8073449e0dfc042ac6623b2f1f4f624a",
+      "kind": "Exact tracked local example default, no runtime configuration value"
+    },
+    {
+      "path": "packages/config/dist/index.js",
+      "line": 11,
+      "matchSha256": "c3390ca53f9fef2d568d91228f08cedd8073449e0dfc042ac6623b2f1f4f624a",
+      "kind": "Exact tracked local example default, no runtime configuration value"
+    }
+  ],
+  "formalReadOnly": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedRuntimeFiles": 1063,
+  "allProtectedRuntimeFilesUnchanged": true,
+  "scope": "Actual archived31 reader baseline before any32 registration. Synthetic notebook only, native SQLite and actual pg_dump/pg_restore; no formal API startup or real learner evidence. Does not replace broader31 source/media/privacy migration gates.",
+  "retainedQaRuntime": "data/qa/r31a; owned internal junctions and synthetic future32 copies retained, do not recursively delete.",
+  "generatedQaDatabasesCleaned": 2,
+  "push": false,
+  "deployment": false,
+  "wholeGoal": "active",
+  "artifacts": [
+    {
+      "path": "preserve-final-reader31-first.cjs",
+      "bytes": 6497,
+      "sha256": "7be58d0243b12382194aad774923cad3b5d7ebf3776773a248cbd059e6f55acd"
+    },
+    {
+      "path": "verify-preserved-reader31-first.cjs",
+      "bytes": 9178,
+      "sha256": "de267beb399782fee8a88277b2ca5a16eed33ea5cb0b2bd4747e09af827234f5"
+    },
+    {
+      "path": "reader31-credential-scan-first.json",
+      "bytes": 577,
+      "sha256": "e123f5bd74d819e20d22719fc2905042e62ca4909b64ba5b2a880ad4a47639c0"
+    },
+    {
+      "path": "reader31-preserved-first.json",
+      "bytes": 171904,
+      "sha256": "4980fe0ba46d12f150e6ee811bf3e6274015caf9aeef0ee6b216c56e2ba7ee3d"
+    },
+    {
+      "path": "reader31-archive-execution-first.json",
+      "bytes": 1748,
+      "sha256": "97cfc54263849f4ddb3dd42441b0e47aa92c11e4ace0557b318b1e1a3c4bb2d9"
+    }
+  ]
+}

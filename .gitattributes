@@ -117,3 +117,6 @@ doc/evidence/2026-10-31/workspace-r5-adult-models-and-compatibility/** -text
 doc/evidence/2026-10-31/workspace-r5-export-preparation/** -text
 # Native Windows JSON reports retain CRLF; keep the usual whitespace checks.
 doc/evidence/2026-10-31/workspace-r5-export-preparation/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Preserve the executed schema31 compatibility baseline and its receipts.
+doc/evidence/2026-10-31/workspace-r5-schema31-reader/** -text
+resources/compatibility/domain-reader-schema31-v1.receipt.json text eol=lf

@@ -1,0 +1,11 @@
+{
+  "protocol": "study-domain-reader31-baseline-v1",
+  "schemaVersion": 31,
+  "sourceRevision": "4d97bc84e5b764634074d65351b83ad56c5d275e",
+  "gzipSha256": "a37ee85e9de059b26feed4e616ad294175fe81bc2e38e8409b36aa041741e416",
+  "fileCount": 606,
+  "externalDependencyCount": 565,
+  "readerSha256": "99dd5508513d61a5d53b68c28a1f72e317796d4c24d67ad0110da5017f8a8989",
+  "source": "Actual final isolated a165 API third compile, exact committed source after paper31 and adult models. No database, environment, runtime credentials or logs.",
+  "validation": "Full API 2429/2/106; exact identical-input two-file environmental differential3/0 and seed-disabled1/2. Production browser50/0 zero retries; assistant SQLite69/0/1 and PG-config70/0/0. Original failures retained, not a single all-green broad API run. Reader restoration execution is a separate gate."
+}
