@@ -1,0 +1,176 @@
+{
+  "protocol": "paper-export-render-result-v1",
+  "inputSha256": "c76d4b819dcb20e14fb53e37a5e9d67bb920008b3fa683fc82b03499131a9235",
+  "files": [
+    {
+      "book": "practice",
+      "format": "docx",
+      "path": "artifacts-practice/practice.docx",
+      "bytes": 9406227,
+      "sha256": "748f24366f2094fc13c2b7315447b0ea3e2111bca48320ac8961ac92779518d9",
+      "pageCount": 6,
+      "sourceMap": [
+        {
+          "itemId": "item-1",
+          "number": 1,
+          "source": {
+            "paperId": "synthetic-paper-a",
+            "position": 2,
+            "sourceQuestionId": "original-1",
+            "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "publicationVersion": "synthetic-v1",
+            "paperTitle": "自建合成题卷甲",
+            "pageNumber": 1
+          },
+          "startPage": 1,
+          "bookmark": "paper_item_0001"
+        },
+        {
+          "itemId": "item-2",
+          "number": 2,
+          "source": {
+            "paperId": "synthetic-paper-a",
+            "position": 4,
+            "sourceQuestionId": "original-2",
+            "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "publicationVersion": "synthetic-v1",
+            "paperTitle": "自建合成题卷甲",
+            "pageNumber": 2
+          },
+          "startPage": 1,
+          "bookmark": "paper_item_0002"
+        },
+        {
+          "itemId": "item-3",
+          "number": 3,
+          "source": {
+            "paperId": "synthetic-paper-a",
+            "position": 6,
+            "sourceQuestionId": "original-3",
+            "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "publicationVersion": "synthetic-v1",
+            "paperTitle": "自建合成题卷甲",
+            "pageNumber": 3
+          },
+          "startPage": 2,
+          "bookmark": "paper_item_0003"
+        },
+        {
+          "itemId": "item-4",
+          "number": 4,
+          "source": {
+            "paperId": "synthetic-paper-b",
+            "position": 8,
+            "sourceQuestionId": "original-4",
+            "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "publicationVersion": "synthetic-v1",
+            "paperTitle": "自建合成题卷乙",
+            "pageNumber": null
+          },
+          "startPage": 5,
+          "bookmark": "paper_item_0004"
+        },
+        {
+          "itemId": "item-5",
+          "number": 5,
+          "source": {
+            "paperId": "synthetic-paper-b",
+            "position": 10,
+            "sourceQuestionId": "original-5",
+            "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "publicationVersion": "synthetic-v1",
+            "paperTitle": "自建合成题卷乙",
+            "pageNumber": null
+          },
+          "startPage": 6,
+          "bookmark": "paper_item_0005"
+        }
+      ]
+    },
+    {
+      "book": "practice",
+      "format": "pdf",
+      "path": "artifacts-practice/practice.pdf",
+      "bytes": 150507,
+      "sha256": "2e2c6e4479c48c1b41e012183d6fde0529a27d39dfa998ed29243264f283c562",
+      "pageCount": 6,
+      "sourceMap": [
+        {
+          "itemId": "item-1",
+          "number": 1,
+          "source": {
+            "paperId": "synthetic-paper-a",
+            "position": 2,
+            "sourceQuestionId": "original-1",
+            "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "publicationVersion": "synthetic-v1",
+            "paperTitle": "自建合成题卷甲",
+            "pageNumber": 1
+          },
+          "startPage": 1,
+          "bookmark": "paper_item_0001"
+        },
+        {
+          "itemId": "item-2",
+          "number": 2,
+          "source": {
+            "paperId": "synthetic-paper-a",
+            "position": 4,
+            "sourceQuestionId": "original-2",
+            "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "publicationVersion": "synthetic-v1",
+            "paperTitle": "自建合成题卷甲",
+            "pageNumber": 2
+          },
+          "startPage": 1,
+          "bookmark": "paper_item_0002"
+        },
+        {
+          "itemId": "item-3",
+          "number": 3,
+          "source": {
+            "paperId": "synthetic-paper-a",
+            "position": 6,
+            "sourceQuestionId": "original-3",
+            "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "publicationVersion": "synthetic-v1",
+            "paperTitle": "自建合成题卷甲",
+            "pageNumber": 3
+          },
+          "startPage": 2,
+          "bookmark": "paper_item_0003"
+        },
+        {
+          "itemId": "item-4",
+          "number": 4,
+          "source": {
+            "paperId": "synthetic-paper-b",
+            "position": 8,
+            "sourceQuestionId": "original-4",
+            "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "publicationVersion": "synthetic-v1",
+            "paperTitle": "自建合成题卷乙",
+            "pageNumber": null
+          },
+          "startPage": 5,
+          "bookmark": "paper_item_0004"
+        },
+        {
+          "itemId": "item-5",
+          "number": 5,
+          "source": {
+            "paperId": "synthetic-paper-b",
+            "position": 10,
+            "sourceQuestionId": "original-5",
+            "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "publicationVersion": "synthetic-v1",
+            "paperTitle": "自建合成题卷乙",
+            "pageNumber": null
+          },
+          "startPage": 6,
+          "bookmark": "paper_item_0005"
+        }
+      ]
+    }
+  ]
+}

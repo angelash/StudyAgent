@@ -1,0 +1,7 @@
+# Document worker only. The UNO Python and official Office/Poppler versions
+# are separately configured and verified; never install arbitrary system fonts.
+python-docx==1.2.0
+lxml==5.4.0
+fonttools==4.58.0
+PyMuPDF==1.26.6
+Pillow==11.1.0

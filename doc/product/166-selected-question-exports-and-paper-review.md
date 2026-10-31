@@ -86,6 +86,22 @@ DOCX采用python-docx 1.2.0、lxml 5.4.0、fontTools 4.58.0生成。中文字体
 
 先生成练习册；要求答案时生成另一份独立答案册，禁止只插入一个分页符后把答案混在同一个题干文件。DOCX输出同样实际加载渲染并检查；PDF检查页数、A4几何、实际字体、题单标题/题位顺序、完整表格/公式及图片边界，页数上限120、单产物80MiB。通过后返回`paper-export-render-result-v1`，逐文件记录book、format、真实bytes/SHA/pageCount及来源映射；失败只返回允许的错误码，原始Office日志留本地，不成为产品提示。
 
+### 首批文档执行器：已实现的范围与剩余边界
+
+[文档执行器](../../scripts/processing/paper_export_document.py)、[冻结输入校验](../../scripts/processing/paper_export_content.py)、[原生公式转换](../../scripts/processing/paper_export_math.py)、[固定字体](../../scripts/processing/paper_export_fonts.py)、[逐文档Office](../../scripts/processing/paper_export_office.py)和[Windows子进程容器](../../scripts/processing/paper_export_process.py)已从独立p166副本逐SHA归入主干；[依赖版本](../../scripts/processing/requirements-paper-export.txt)和[语义测试](../../scripts/processing/test_paper_export.py)一并保存。它们接收服务端已授权的冻结输入，不自行授予来源资格、发布文件或产生学习记录，当前应用尚未调用。
+
+首批精确JSON键固定为`protocol/title/items/media/layout`。`layout`只含`answerLines/breakBetweenQuestions`；每个item含`id/source/promptHtml/optionHtml/reference`，`optionHtml`是有序`{label,html}`数组。`source`含`paperId/position/sourceQuestionId/detailSha256/publicationVersion/paperTitle/pageNumber`，未知页码使用null。`reference`为null或`{answerHtml,analysisHtml}`，其中缺项使用null。媒体为`{path,sha256,bytes,width,height}`，path严格为`media/<sha>.png`。拒绝未知字段、重复JSON键、重复题位、同卷不一致指纹、丢图、路径链接和缺字形。总输入文件另限12MiB、解码媒体总像素120百万、单表最多500行/12列、列表最多5层，不能用这些新上限静默截断原内容。
+
+调用只允许服务端提供workspace/input及其SHA、font-root、uno-python、soffice和book；book分别为practice或answers，每次使用独占输出目录。DOCX实际写入、嵌入完整派生字体及OFL，再在自己的Office profile中加载并生成PDF，检查源DOCX未改、实际字体、A4、页数、字节、题序与来源映射。相同产物分别返回真实book/format/path/bytes/SHA/pageCount/sourceMap。按册完整能力预检和应用按格式状态投影尚未接通；不能把当前执行器回执直接当作业务发布资格。
+
+Office子进程先挂起创建、加入Windows Job Object再恢复运行，后代继承该容器；限制16个进程及1.5GiB总内存，监视取消、160秒渲染预算与日志大小，父工作流另有180秒调用预算。正常收尾实际查询容器中activeProcesses为0；真实杀掉监督进程后，第二次审计枚举出的三个运行进程全部退出，启动前/启动中的真实Office取消都返回允许错误码。其他操作系统目前明确不可用，未实现同等进程保护前不回退到无容器运行。完整启动能力探测、工具部署清单及超时/内存边界的全套故障注入仍待补齐。
+
+[第九轮最终证据](../evidence/2026-10-31/workspace-r5-export-document-worker/receipt.json)保存五个合成题位的独立练习册6页、答案册2页及四份真实文件；48条表格记录、跨页题号/重复表头、rowspan/colspan、图片、三处分式、上下标/根号、原生注音与列表、准确来源、两条答题线和答案分离均核对。生产PDF八页及集成render_docx.py独立渲染的八页全部实际打开。最终语义测试10/0、预检拒绝12项、字体与实际进程/取消检查8/0分别记账，不合计为完整应用测试数。
+
+原解析器拒绝MathML、实际缺字体、关键字冲突、CJK公式后备字体、PDF文本空格定位、默认标题蓝线、答题线合并及短行分页失败都单列。第三轮原始traceback未捕获，证据明确保留这个缺口。默认Office直接转换仍会给公式使用Times New Roman/OpenSymbol，独立canonical-review只作布局核对；实际下载候选PDF必须使用逐文档UNO，才通过两套派生字体白名单。CJK MathML mtext当前明确拒绝，不能静默换系统字体。
+
+这批仍是有界文档层实现。任意长正文跨页的续题标记、全部溢出/媒体边界、全部HTML/MathML及题型、Microsoft Word/其他环境、实体打印和完整工具部署未验收；当前支持之外的有意义结构明确拒绝。应用持久清单、任务/代次/取消发布栅栏、来源授权与曝光防旁路、原生文件恢复和工作台UI均继续未完成，不能据此提升XP-H或WS整体验收状态。
+
 这份文档层协议不代替后续完整业务协议。后续原生集合暂定为`paperSelectionLists`、`paperSelectionCommands`、`paperExports`、`paperExportCommands`和`paperSourceExposures`；在注册32前还须逐字段固定作者/学习范围、完整原命令与原回执、历史指纹链、按格式任务/代次、文件引用与最新删除账本关系。不得先用通用数组写进库，再用新版本读取器忽略不完整旧记录。
 
 1. 冻结真实题卷、原卷复习和来源授权基线；使用自建合成题卷，不改正式学生数据。确认渲染工具及字体，补齐精确记录/接口/迁移协议并先提交。
