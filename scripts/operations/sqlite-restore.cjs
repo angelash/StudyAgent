@@ -85,16 +85,17 @@ async function restoreSqlite({bundle,destination,deletionLedger,resume=false,aft
       state(db,context);
       const query=(sql,params=[])=>db.prepare(sql).all(...params);
       const sourceIntegrity=require('./whiteboard-source-integrity.cjs');sourceIntegrity.validate(await query(sourceIntegrity.sql));
-      const practiceIntegrity=require('./assistant-practice-integrity.cjs');practiceIntegrity.validate(await query(practiceIntegrity.sql));
+      const practiceIntegrity=require('./assistant-practice-integrity.cjs');await practiceIntegrity.validateQuery(query);
       const before=await captureMaterialKeys(query);
       const{removedMediaIds,topicVisualRetentions,...privacy}=await applyDeletionLedger(query,ledger);
-      practiceIntegrity.validate(await query(practiceIntegrity.sql));
       await afterPhase?.('ledger_applied');
       const access=await fenceRestoredState(query,context.backupId,verified.database.revision);
       const deleted=new Set();
       const materials=await cleanupRestoredMaterials({root,query,manifest:verified.manifest,before,restoreContext:context,afterPhase:async(phase,relative)=>{if(phase==='material_file_deleted')deleted.add(relative);await afterPhase?.(phase,relative);}});
       privacy.mediaDirectoriesPurged=purgeRestoredMedia(root,removedMediaIds,verified.manifest,relative=>deleted.add(relative),topicVisualRetentions);
-      receipt={format:verified.manifest.format,backupId:context.backupId,restoreId:context.restoreId,sourceRevision:verified.database.revision,assetsIncluded:verified.manifest.assetsIncluded,verifiedFiles:verified.verifiedFiles,...access,...privacy,...materials,copiedFiles,skippedFiles,omittedControlFiles,databaseImported:true};
+      const paper=await require('./restored-paper-captures.cjs').cleanupRestoredPaperCaptures({root,query,manifest:verified.manifest,afterPhase:async(phase,relative)=>{if(phase==='paper_capture_file_deleted')deleted.add(relative);await afterPhase?.(phase,relative);}});
+      await practiceIntegrity.validateQuery(query);
+      receipt={format:verified.manifest.format,backupId:context.backupId,restoreId:context.restoreId,sourceRevision:verified.database.revision,assetsIncluded:verified.manifest.assetsIncluded,verifiedFiles:verified.verifiedFiles,...access,...privacy,...materials,...paper,copiedFiles,skippedFiles,omittedControlFiles,databaseImported:true};
       const finalFiles=[];
       for(const file of verified.manifest.files){
         if(file.path.startsWith('database/'))continue;

@@ -1,4 +1,5 @@
 'use client';
+import {commitWorkspaceNavigation} from '../../../lib/workspace-exit-guard';
 import * as React from 'react';
 import Link from 'next/link';
 import type { AssistantLectureDescriptor, ClassroomTurnIntent, ClassroomTurnView, ClassroomCatalog, ClassroomLesson, ClassroomSessionView, ClassroomUnit } from '@study-agent/contracts';
@@ -97,12 +98,15 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
           signal: controller.signal, body: JSON.stringify({ lessonId, ...(studioCourseId ? { studioCourseId } : {}), ...(sourceCourseId?{sourceCourseId}:{}),...(sourceCheckId?{sourceCheckId}:{}), ...(useCurrentVersion ? { useCurrentVersion: true } : {}) }) });
       if (controller.signal.aborted) return;
       if (lessonId && row.lessonId !== lessonId || studioCourseId && row.studioCourseId !== studioCourseId || sourceCourseId&&row.sourceCourseId!==sourceCourseId||sourceCheckId&&row.sourceCheckId!==sourceCheckId) throw new Error('保存记录与当前课程入口不一致，请从课程历史重新进入。');
-      setInitialTab(tab); setHelp(assistance); setSession(row); studio.current = row.studioCourseId;sourceCourse.current=row.sourceCourseId;
       const query = entryQuery; query.set('lesson', row.lessonId); query.set('session', row.id); query.set('tab', tab); if (row.studioCourseId) query.set('studioCourseId', row.studioCourseId); else query.delete('studioCourseId'); if(assistance) query.set('help','1'); else query.delete('help');
       if(row.sourceCourseId)query.set('sourceCourseId',row.sourceCourseId);else query.delete('sourceCourseId');
       if(row.sourceCheckId)query.set('sourceCheckId',row.sourceCheckId);else query.delete('sourceCheckId');
-      if(history==='push') window.history.pushState(null, '', '/studio/classroom?' + query);
-      else window.history.replaceState(null, '', '/studio/classroom?' + query);
+      const destination='/studio/classroom?'+query;
+      commitWorkspaceNavigation(destination,()=>{
+        if(controller.signal.aborted)return;
+        if(history==='push')window.history.pushState(null,'',destination);else window.history.replaceState(null,'',destination);
+        setInitialTab(tab);setHelp(assistance);setSession(row);studio.current=row.studioCourseId;sourceCourse.current=row.sourceCourseId;
+      });
     } catch (caught) { if (!controller.signal.aborted) setError((caught as Error).message); }
     finally { if (!controller.signal.aborted) setLoading(false); }
   }, []);
@@ -557,7 +561,10 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     onClose={() => requestExit()} onAssistant={() => { if (showChat) closePracticeAssistant(); else { setShowChat(true); setTab('history'); } }}/>; }
   const subtitle = replySubtitle || (session.revealed ? classroomStepUnits(session,current)[session.sentenceCursor ?? 0]?.text : '准备好后，点击 ▶ 开始。');
   return <main className="cl-room ws-activity-shell" data-dots={dots} data-mobile={mobile} data-practice={standalonePractice} data-assistant={showChat} style={{ '--cl-chat-width': showChat ? chatWidth + 'px' : '0px' } as React.CSSProperties}>
-    <ActivityWorkspaceNavigation context={session.navigationContext} activityId={session.id} onRequestNavigate={(_href,proceed)=>requestExit(proceed)}/>
+    <ActivityWorkspaceNavigation context={session.navigationContext} activityId={session.id} onRequestNavigate={(href,proceed,kind)=>{
+      const destination=new URL(href,window.location.href),current=new URL(window.location.href);
+      if(navigationAllowed.current||kind==='commit'&&destination.origin===current.origin&&destination.pathname===current.pathname&&projectDraft===session.projectDraft&&(!unprotectedPractice||practiceProtected)){pause();proceed();}else requestExit(proceed);
+    }}/>
     {standalonePractice && practice(true)}
     {checkSource&&<FrozenCheckSource sessionId={session.id} sourceKey={checkSource} onClose={()=>setCheckSource('')}/>}
     {visualOpen&&<VisualPanel session={session} visuals={visuals} onClose={()=>setVisualOpen(false)}/>}

@@ -8,5 +8,5 @@ export type WorkspaceRegistration = {
   registerExitGuard: (token: symbol, ownerId: string, guard: WorkspaceExitGuard) => void;
   unregisterExitGuard: (token: symbol) => void;
 };
-export type WorkspaceExitGuard = { request: (href: string, proceed: () => void) => void; isInternal?: (destination: string, current: string) => boolean };
+export type WorkspaceExitGuard = { request: (href: string, proceed: () => void, kind?: 'commit') => void; isInternal?: (destination: string, current: string) => boolean };
 export const WorkspaceShellContext = createContext<WorkspaceRegistration | null>(null);

@@ -8,7 +8,7 @@ export function useWorkspaceExitGuard(ownerId: string, enabled: boolean, guard: 
   React.useLayoutEffect(()=>{
     if(!host||!enabled)return;
     const key=token.current;
-    host.registerExitGuard(key,ownerId,{request:(href,proceed)=>latest.current.request(href,proceed),isInternal:(next,current)=>(latest.current.isInternal??sameWorkspaceActivity)(next,current)});
+    host.registerExitGuard(key,ownerId,{request:(href,proceed,kind)=>latest.current.request(href,proceed,kind),isInternal:(next,current)=>(latest.current.isInternal??sameWorkspaceActivity)(next,current)});
     return()=>host.unregisterExitGuard(key);
   },[host,ownerId,enabled]);
   return Boolean(host);

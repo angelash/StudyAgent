@@ -10,6 +10,8 @@
 
 2026-10-25原件恢复已接入真实持久任务与两工作台，见[交付106](../106-original-repair-product-delivery.md)。XP-B02/B06、F03、G06、K05/K06继续in_progress，完整课程、复杂内容、设备与最终验收门槛不因本增量通过而清除。
 
+2026-10-31纸面续批：[164采集与原件恢复](../164-paper-capture-intents-pages-and-original-versions.md)已受控归并schema31，[本批证据](../../evidence/2026-10-31/workspace-r5-paper-candidates-and-integration/receipt.json)分列完整回归原失败、实际短路径/PG/新菜单与连接复验。XP-G02～G06、H03～H06及相关F03/K05/K06继续原状态，未以本批关闭教师/实机/真人、任意目录恢复或R5其余内容条件；72项仍11/50/11/0，WS不提升。
+
 ## A. 统一入口与连续学习 / E01
 
 ### XP-A01 统一学习首页 [implemented]

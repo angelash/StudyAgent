@@ -1,0 +1,15 @@
+{
+  "files": [
+    {
+      "path": "F:/workspace/github/StudyAgent/data/qa/workspace-paper-capture-native-first-20261031/integration44-source/apps/api/src/modules/diagnostics/guidance-model.integration.test.ts",
+      "skipped": 11
+    },
+    {
+      "path": "F:/workspace/github/StudyAgent/data/qa/workspace-paper-capture-native-first-20261031/integration44-source/apps/api/src/modules/learning/assistant-practice-preflight.integration.test.ts",
+      "skipped": 12
+    }
+  ],
+  "text": "Failed Suites 2 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  src/modules/diagnostics/guidance-model.integration.test.ts > durable parent guidance suggestions and immutable rule actions\nError: Hook timed out in 60000ms.\nIf this is a long-running hook, pass a timeout value as the last argument or configure it globally with \"hookTimeout\".\n ❯ src/modules/diagnostics/guidance-model.integration.test.ts:21:3\n\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯\n\n FAIL  src/modules/learning/assistant-practice-preflight.integration.test.ts > read-only source practice and atomic coverage over actual HTTP\nError: Hook timed out in 60000ms.\nIf this is a long-running hook, pass a timeout value as the last argument or configure it globally with \"hookTimeout\".\n ❯ src/modules/learning/assistant-practice-preflight.integration.test.ts:40:3\n     38|       contextRefId: descriptor.referenceId, contextItemId: descriptor.…\n     39|   }\n     40|   beforeAll(async () => {\n       |   ^\n     41|     let driver = 'sqlite'; const url = process.env.STUDY_TEST_ASSISTAN…\n     42|     if (url) {\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯\n\n\n⎯⎯⎯⎯⎯⎯⎯ ",
+  "originalLogSha256": "3aac6200615138226835b61437935a0a81813abf117b74fc9276aeb8981cbf24",
+  "rawLogRetainedLocally": true
+}

@@ -6,7 +6,7 @@ import { writeImmutableBytes,verifyImmutableFile } from '../../infrastructure/im
 import type { OriginalRepairIdentity,OriginalRepairObservation } from '../../infrastructure/studio-original-repair';
 
 export type StudioMaterialAssetRecord={id:string;state:'available'|'deleting'|'repairing';generation:number;updatedAt:string;cleanupTaskId?:string;cleanupToken?:string;
- repair?:{identity:OriginalRepairIdentity;baseline:OriginalRepairObservation;uploadId:string;cleanupTaskId:string;cleanupRequested:boolean}};
+ repair?:{identity:OriginalRepairIdentity;baseline:OriginalRepairObservation;uploadId:string;cleanupTaskId:string;cleanupRequested:boolean};paperCaptureRepair?:import('./paper-capture-repair-record').PaperRepairAssetIntent};
 /** Every original registration reads this identity in its domain transaction, even when bytes already exist. */
 export function assertStudioAssetAvailable(store:InMemoryStoreService,sha256:string){
   if(!/^[a-f0-9]{64}$/.test(sha256))throw new Error('invalid_material_checksum');

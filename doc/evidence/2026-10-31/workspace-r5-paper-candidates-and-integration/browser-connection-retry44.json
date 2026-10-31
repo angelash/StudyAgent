@@ -1,0 +1,150 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-paper-capture-native-first-20261031\\integration44-source\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/topic-whiteboard.spec.ts",
+      "--grep",
+      "topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-paper-capture-native-first-20261031\\integration44-source\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent/data/qa/workspace-paper-capture-native-first-20261031/integration44-source/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent/data/qa/workspace-paper-capture-native-first-20261031/integration44-browser-connection-retry-first-output",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent/data/qa/workspace-paper-capture-native-first-20261031/integration44-source/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-paper-capture-native-first-20261031\\integration44-browser-connection-retry-first-output",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-paper-capture-native-first-20261031\\integration44-source\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-paper-capture-native-first-20261031\\integration44-source\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:65375",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-paper-capture-native-first-20261031\\integration44-browser-connection-retry-first.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "topic-whiteboard.spec.ts",
+      "file": "topic-whiteboard.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 27494,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T04:38:12.421Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e046ebfd3e9cdf69f01e-c9fc89af84b21cba2190",
+          "file": "topic-whiteboard.spec.ts",
+          "line": 190,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-31T04:37:39.970Z",
+    "duration": 62934.885,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

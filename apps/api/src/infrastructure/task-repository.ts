@@ -126,10 +126,21 @@ export class TaskRepository {
   async activeStudioSourceTasks(sha256:string){
     if(!/^[a-f0-9]{64}$/.test(sha256))throw new Error('invalid_material_checksum');
     const selector=this.sqlite?"json_extract(payload,'$.sha256')":"payload::jsonb->>'sha256'";
-    const rows=await this.query(`SELECT * FROM durable_tasks WHERE kind='studio.material.process' AND state IN ('queued','running','retry_wait','cancel_requested') AND ${selector}=? LIMIT 1001`,[sha256]);
+    const derived=this.sqlite?"json_extract(progress,'$.pdfSha256')":"progress::jsonb->>'pdfSha256'";
+    const rows=await this.query(`SELECT * FROM durable_tasks WHERE state IN ('queued','running','retry_wait','cancel_requested') AND ((kind='studio.material.process' AND ${selector}=?) OR (kind='learning.paper-capture.derive' AND ${derived}=?)) LIMIT 1001`,[sha256,sha256]);
     if(rows.length>1000)throw new Error('material_processing_task_limit');return rows.map(item=>row(item));
   }
   async recoverableProjectFileCollections(){return(await this.query("SELECT * FROM durable_tasks WHERE kind='project.file.collect' AND state IN ('failed','cancelled') ORDER BY updated_at,id LIMIT 100")).map(item=>row(item));}
+  async recoverablePaperCaptureCollections(){return(await this.query("SELECT * FROM durable_tasks WHERE kind='learning.paper-capture.cleanup' AND state IN ('failed','cancelled') ORDER BY updated_at,id LIMIT 100")).map(item=>row(item));}
+  async recoverablePaperRepairCollections(){return(await this.query("SELECT * FROM durable_tasks WHERE kind IN ('learning.paper-capture.repair.cleanup','learning.paper-capture.repair-upload.cleanup') AND state IN ('failed','cancelled') ORDER BY updated_at,id LIMIT 100")).map(item=>row(item));}
+  async activePaperCaptureTasks(){
+    const tasks=await this.query("SELECT * FROM durable_tasks WHERE kind LIKE 'learning.paper-capture.%' AND kind<>'learning.paper-capture.cleanup' AND state IN ('queued','running','retry_wait','cancel_requested') LIMIT 10001");
+    if(tasks.length>10000)throw Error('paper_capture_processing_task_limit');return tasks.map(item=>row(item));
+  }
+  async paperCaptureIntegrityTasks(){
+    const rows=await this.query("SELECT * FROM durable_tasks WHERE kind IN ('learning.paper-capture.derive','studio.material.process','learning.paper-capture.repair','learning.paper-capture.repair.cleanup','learning.paper-capture.repair-upload.cleanup') LIMIT 100001");
+    if(rows.length>100000)throw Error('paper_capture_integrity_task_limit');return rows.map(item=>row(item));
+  }
   async recoverableMaterialCollections(){return(await this.query("SELECT * FROM durable_tasks WHERE kind='studio.material.collect' AND state IN ('failed','cancelled') ORDER BY updated_at,id LIMIT 100")).map(item=>row(item));}
   async studioSourceTaskIds(sha256:string){
     if(!/^[a-f0-9]{64}$/.test(sha256))throw new Error('invalid_material_checksum');
@@ -146,6 +157,8 @@ export class TaskRepository {
     return this.deferMaterialTask(id,token,code,delayMs,'studio.material.collect');
   }
   async deferProjectFileCollection(id:string,token:string,code:string,delayMs=30000){return this.deferMaterialTask(id,token,code,delayMs,'project.file.collect');}
+  async deferPaperCaptureCollection(id:string,token:string,code:string,delayMs=30000){return this.deferMaterialTask(id,token,code,delayMs,'learning.paper-capture.cleanup');}
+  async deferPaperRepairCollection(id:string,token:string,code:string,delayMs=30000){const task=await this.get(id);if(!task||!['learning.paper-capture.repair.cleanup','learning.paper-capture.repair-upload.cleanup'].includes(task.kind))throw Error('invalid_paper_repair_collection_kind');return this.deferMaterialTask(id,token,code,delayMs,task.kind);}
   async deferProjectAssetProcessing(id:string,token:string,code:string,delayMs=30000){return this.deferMaterialTask(id,token,code,delayMs,'project.asset.process');}
   async deferOriginalRepair(id:string,token:string,code:string,delayMs=30000){
     return this.deferMaterialTask(id,token,code,delayMs,'studio.material.repair');

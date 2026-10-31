@@ -424,6 +424,7 @@ export class LearningService {
       requestKey: command.requestKey, payloadHash: createHash('sha256').update(JSON.stringify(payload)).digest('hex'),
       payload, createdAt: now, maxAttempts: 2 });
     material.processingAccess=user.role==='student'&&session?{guardianId:session.guardianId!,accessVersion:session.accessVersion!}:undefined;
+    delete material.processingGuardianDeletionHash;
     material.status = 'queued'; material.error = null; material.processingTaskId = taskId; material.updatedAt = now;
     material.commands = [...(material.commands ?? []), { key: command.requestKey, hash, kind: 'retry' }];
     if (material.studentId && material.subject) this.store.append('studioActivities', { id: this.store.nextId('studio_activity'), studentId: material.studentId,

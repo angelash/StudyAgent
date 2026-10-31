@@ -16,18 +16,19 @@ const values: Record<string, readonly string[]> = {
   materialView: ['page', 'text', 'structure'], paperCollection: ['published', 'bookmarks', 'research'],
   paperState: ['complete', 'partial', 'pdf', 'unknown'], paperAnswers: ['1'],
 };
-const lengths: Record<string, number> = { materialQuery: 100, paperQuery: 100, paperGrade: 100, paperSubject: 100, material: 180, paper: 180 };
+const lengths: Record<string, number> = { materialQuery: 100, paperQuery: 100, paperGrade: 100, paperSubject: 100, material: 180, paper: 180, capture: 180 };
 const integers: Record<string, number> = { materialListPage: 100000, page: 10000, paperPage: 100000, position: 10000, paperScroll: 10000000 };
 const fields = [...Object.keys(values), ...Object.keys(lengths), ...Object.keys(integers)];
 function usable(key: string, value: string) {
   if (/[\u0000-\u001f\u007f]/.test(value)) return false;
+  if(key==='capture')return value==='new'||/^paper_group_[a-f0-9-]{36}$/.test(value);
   if (values[key]) return values[key].includes(value);
   if (lengths[key]) return value.length > 0 && value.length <= lengths[key];
   return /^\d+$/.test(value) && Number.isSafeInteger(Number(value)) && Number(value) >= (key === 'paperScroll' ? 0 : 1) && Number(value) <= integers[key];
 }
 export function copyMaterialsState(from: URLSearchParams, to: URLSearchParams, keepSelection = true) {
   for (const key of fields) {
-    if (!keepSelection && ['material', 'page', 'materialView', 'paper', 'position', 'paperAnswers', 'paperScroll'].includes(key)) continue;
+    if (!keepSelection && ['material', 'page', 'materialView', 'paper', 'position', 'paperAnswers', 'paperScroll', 'capture'].includes(key)) continue;
     const value = from.get(key); if (value !== null && usable(key, value)) to.set(key, value);
   }
   return to;

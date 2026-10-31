@@ -1,4 +1,5 @@
 import type { AtomTeaching, KnowledgeAtom, LearningScope, MasteryEstimate, TeachingVisual } from './diagnostics';
+import type {PaperCaptureMaterialOrigin} from './paper-capture-origin';
 
 export type StudioSubject = 'chinese' | 'math' | 'english' | 'chemistry';
 export type StudioLessonKind = 'learn' | 'practice' | 'project' | 'exam';
@@ -146,6 +147,7 @@ export type StudioMaterialStructure = {
 };
 
 export type StudioSourceMaterial = {
+  paperCaptureOrigin?:PaperCaptureMaterialOrigin;
   contentVersion?:string;
   id: string;
   studentId: string | null;

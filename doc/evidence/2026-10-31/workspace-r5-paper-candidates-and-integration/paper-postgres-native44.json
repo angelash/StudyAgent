@@ -1,0 +1,52 @@
+{
+  "numTotalTestSuites": 2,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 1,
+  "numPassedTests": 1,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1793417891516,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "actual paper originals, latest deletion ledger and independent cold media recovery"
+          ],
+          "fullName": "actual paper originals, latest deletion ledger and independent cold media recovery preserves only authorized shared source bytes through real account closure, latest-ledger application and cold-open; deleted private and learner-pending bytes do not return",
+          "status": "passed",
+          "title": "preserves only authorized shared source bytes through real account closure, latest-ledger application and cold-open; deleted private and learner-pending bytes do not return",
+          "duration": 31397.1097,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1793417904045,
+      "endTime": 1793417935442.1096,
+      "status": "passed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent/data/qa/workspace-paper-capture-native-first-20261031/integration44-source/apps/api/src/modules/learning/paper-capture-recovery.integration.test.ts"
+    }
+  ]
+}

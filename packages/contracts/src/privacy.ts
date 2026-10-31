@@ -3,6 +3,8 @@ export type PrivacyReceipt = {
   id: string; actorId: string; kind: 'account_export' | 'student_export' | 'student_delete' | 'account_delete';
   subjectHash: string; requestKey: string; inputHash: string; completedAt: string; counts: PrivacyCounts;
   erasedStudentHashes?: string[]; retainedStudentHashes?: string[];
+  /** Actual retained paper history prefixes at account deletion; no source text or raw author ID. */
+  retainedPaperSources?: Array<{collection:'paperCapturePages'|'paperCaptureGroups'|'paperCaptureDerivations'|'paperCaptureRepairs';id:string;fingerprints:string[]}>;
 };
 export type PrivacyOverview = {
   account: { id: string; principal: string; displayName: string };

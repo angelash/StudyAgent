@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-31T04:44:43.653Z",
+  "state": "Final source44 candidate before controlled main integration; no push or deployment.",
+  "baseMain": "b29a3e97d274e5ad4fedbbf34fa73fa6db4c3b4b",
+  "archiveMain": "4cf06904a9c0786f738e06ea7770dfcc550fa17c",
+  "sourceDelta": {
+    "files": 127,
+    "plainSha256": "e23c85da189cfc4b15c983ee54a57f6d0fdd3ea14e5c8e413d615662c34f610e"
+  },
+  "apiBuildInherited43": [
+    {
+      "name": "contracts",
+      "status": 0
+    },
+    {
+      "name": "config",
+      "status": 0
+    },
+    {
+      "name": "api-types",
+      "status": 0
+    },
+    {
+      "name": "api-build",
+      "status": 0
+    }
+  ],
+  "currentApiTypes": {
+    "status": 0
+  },
+  "productionWebBuild": {
+    "at": "2026-10-31T03:23:27.790Z",
+    "status": 0,
+    "error": null,
+    "source": "integration44-source",
+    "distDir": ".next-exit44",
+    "apiPort": 65373,
+    "buildId": "9K_VAXvOR_Nipf81muSIR"
+  },
+  "api43": {
+    "passed": 2412,
+    "failed": 12,
+    "skipped": 106,
+    "scope": "Actual complete267-file run:2412 passed,12 failed,106 skipped. One old version object; seven deep-path SQLite failures and four subsequent unavailable-app failures. Corrected version-object4/0, complete portable recovery65/0 and original-paper recovery1/0 are separate real checks;1423 implementation/binary inputs equivalent across43/44."
+  },
+  "postgres44": {
+    "passed": 766,
+    "failed": 1,
+    "skipped": 33,
+    "setupSkipped": 23,
+    "conditionalSkipped": 10,
+    "failedSetupFiles": 2,
+    "files": 75,
+    "scope": "Actual75 detected PG-related files with67 explicit URL gates. One repeated SQLite native-paper recovery failed on a deep path and passed separately with a short QA root; actual corresponding PG recovery passed in this original report. Two beforeAll60-second timeouts caused23 setup-skipped assertions; both exact unchanged PG suites passed separately23/0/0. Ten other conditional skips and repeated SQLite cases remain; this is not an all-green75-file run."
+  },
+  "browser44": {
+    "passed": 622,
+    "failed": 5,
+    "skipped": 0,
+    "flaky": 0,
+    "attempts": 627,
+    "scope": "One complete627-test run; one exact background overview route.fetch ECONNRESET and four old direct-text-entry selector failures retained. Frozen application/build never changed. Independent exact connection retry1/1; both affected complete files18/18 after declared unified-menu selectors/focus target updates."
+  },
+  "browserConnectionRetry": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "attempts": 1,
+    "originalSpecId": "e046ebfd3e9cdf69f01e-c9fc89af84b21cba2190"
+  },
+  "paperProduct44": {
+    "passed": 16,
+    "failed": 0
+  },
+  "paperSqlitePortable44": {
+    "passed": 1,
+    "failed": 0
+  },
+  "paperPostgresNative44": {
+    "passed": 1,
+    "failed": 0
+  },
+  "materialSelectorRetry": {
+    "passed": 18,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "attempts": 18,
+    "files": 2
+  },
+  "testedSelectorUpdates": {
+    "files": 2,
+    "paths": [
+      "tests/e2e/workspace-materials.spec.ts",
+      "tests/e2e/workspace-focus.spec.ts"
+    ]
+  },
+  "postgresSetupRetry": {
+    "passed": 23,
+    "failed": 0,
+    "skipped": 0,
+    "files": 2
+  },
+  "portableRecovery65": {
+    "passed": 65,
+    "failed": 0
+  },
+  "portablePaperPractice": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 1
+  },
+  "boundaries": {
+    "applicationMerged": false,
+    "formalReadOnly": {
+      "schema": 24,
+      "revision": 187
+    },
+    "physicalCamera": false,
+    "physicalWeakDevice": false,
+    "teacherReview": false,
+    "realLearnerIntervals": false,
+    "allTextbookBodyAndSourceQualification": false,
+    "gespFullReviewedContent": false,
+    "wholeGoal": "active"
+  },
+  "batchBoundary": "Earlier170/86, product16, focused5, original failures, native2/89 and full broad counts overlap and are never added. No claim of a single all-green full API, browser or complete PostgreSQL-detected-file run is made. The exact failed browser ID passed once in a separate independent runtime with unchanged production build and assertions. The source44 full browser and detected PG runs are their exact actual reports.",
+  "artifacts": [
+    {
+      "path": "01-add-materials.png",
+      "sha256": "3b219af6c3708ec6815cae9a5ab0a72ae658e6e059f7c3bad324130ec72c0d84"
+    },
+    {
+      "path": "actual-capture.studycopy.json",
+      "sha256": "dbff4aef629c4825e00b4490235b908d19f5bb30eb60d4163a814de0c7b1ea65"
+    },
+    {
+      "path": "actual-repair.studycopy",
+      "sha256": "978594821e1325b3acbcaa9c366a018273e58e475eb7e0e2f058d5373e1a254c"
+    },
+    {
+      "path": "api43-44-equivalence.json",
+      "sha256": "076665f670765efb0306ffa17f324cc7ee754f2088ca5e94e3bb5b9c1a6f1e96"
+    },
+    {
+      "path": "browser-connection-retry44.json",
+      "sha256": "6892c66fd225146a3cad113508f93de117fa44e5db6304fbb89d350f445638a1"
+    },
+    {
+      "path": "candidate-other-pdf.png",
+      "sha256": "93e3159bac026ef8018bb30c1d4e189beb7eaa2ad15667832a55b9aefc31e895"
+    },
+    {
+      "path": "candidate-rebuilt-source.png",
+      "sha256": "dde5ae1090354c6d61e7957c2e2f23af463cb051a1a2f8c8c70fb8f427568f7b"
+    },
+    {
+      "path": "capture-1024.png",
+      "sha256": "10165635a618a585fcb97d9cc91ee49143b8ba845f264d5a02f1e79dbac303dc"
+    },
+    {
+      "path": "capture-1440.png",
+      "sha256": "9c5cfe09cd4f1db96b1de671c18cc2ccdf8732770a6446e7ffac596804145e61"
+    },
+    {
+      "path": "capture-320.png",
+      "sha256": "752a5e81a70cfe39c6d62062110d724221ad51074ea03d6ad258339d02d8e509"
+    },
+    {
+      "path": "capture-768.png",
+      "sha256": "50a394021583d1a345abd1a078af11bb39e6e6acb9651f93a9a55aa7abea6eae"
+    },
+    {
+      "path": "checked-inputs.json.gz",
+      "sha256": "480e4d27c9fa640e09452c1ce6ffa1d4c7a1ca54a8c3736fa9315c7b0c1fbbda"
+    },
+    {
+      "path": "complete-api43.json.gz",
+      "sha256": "5cc3761f3378275a1cdd35d63c09a713c2881f3a36bfd850644aad9ded44ba09"
+    },
+    {
+      "path": "complete-browser44.json.gz",
+      "sha256": "dc97d5c9fd3ae5bc1808154827d25123ec4d9e869036fa2fe0e1750a50ae4dc2"
+    },
+    {
+      "path": "complete-postgres44.json.gz",
+      "sha256": "01c165e3e3ac964cacbeed5c33805c999b517f2ed8141fd05775469ec2c872c3"
+    },
+    {
+      "path": "controlled-integration-plan.json.gz",
+      "sha256": "ba800c2ff6434bc6ef344f38cf01fa781c2d1376a83d7cdc4c429fe304b29a91"
+    },
+    {
+      "path": "focused-historical-inputs.json.gz",
+      "sha256": "2b7a84c7c443ce6a590315d72acb3ea0498a3d84b090d7a06d3f27235a8a1481"
+    },
+    {
+      "path": "historical-input-variants.json.gz",
+      "sha256": "673273aef1549a6994b4c92506389c84d16fd2ffecca9ea1258549161ebee931"
+    },
+    {
+      "path": "material-selector-retry45.json",
+      "sha256": "4a51b1249ffd37868a911c5325647197a041367674798ad39ae34f01c9efbc12"
+    },
+    {
+      "path": "original-failures-and-retries.json.gz",
+      "sha256": "8d4256ade0877aead29c36c41baf72242a711884e55c6d45064dc1f97f2a285d"
+    },
+    {
+      "path": "original-paper-results.json.gz",
+      "sha256": "b37576a6be89872ccb37faaa591ee9121f5b45b1f398bc16aacdac313f79d60a"
+    },
+    {
+      "path": "original40-source-delta.json.gz",
+      "sha256": "af85b11b8bdaabeb39d19f477bedf46283000dd791028d7263845057a7ca11eb"
+    },
+    {
+      "path": "paper-postgres-native44.json",
+      "sha256": "b1b73b5ba96593dadc9933ea6acf3a3d05a5c26b22c311a80437868671e75ec5"
+    },
+    {
+      "path": "paper-product44.json",
+      "sha256": "9d78a1a4306da0c797dea38e7a850faf39b82c6f9a4d1208312b0be45698b2ac"
+    },
+    {
+      "path": "paper-sqlite-portable44.json",
+      "sha256": "4d4d9ff9ff1c786e70d154c1ffe05c2e8c3fcba491c38b8da461fd0c0430a3de"
+    },
+    {
+      "path": "path-portability-checks.json.gz",
+      "sha256": "a83de9de6ea1518d3e4e20721dd8adbe93f2e33834d28fa02967f8c14ee26fb5"
+    },
+    {
+      "path": "postgres-setup-failure.json",
+      "sha256": "6807e0703c239253ba8939b113180acef0ed3bdc8a6e3b6a7018fe1517f8f234"
+    },
+    {
+      "path": "postgres-setup-retry44.json",
+      "sha256": "ebfbb8bd02734147ef411dbb777c9ddfac7c8c1460a081caef5dd80db992e40d"
+    },
+    {
+      "path": "production-observation.json",
+      "sha256": "6ec2371ebcb7a5fc85001f09d6924461423c0f21d614ad3abda64191fe5d62e6"
+    },
+    {
+      "path": "qa-runners.json.gz",
+      "sha256": "2cd5b473e59cc3d83a96ed487d4fabfd45b46f5032556fb18b376c28422c20d4"
+    },
+    {
+      "path": "repair-1440.png",
+      "sha256": "2c0119d5ee327da5e46b40046a63741b9444ff7f7de59370c5fb5b3edbc13ffe"
+    },
+    {
+      "path": "repair-320.png",
+      "sha256": "1fc8d523282b438bbc6ae83a4d052bd3e430ae4a284adfc411b87c3a0ee34fcb"
+    },
+    {
+      "path": "repair-768.png",
+      "sha256": "5b2b83dd15f17e98d769b0d1ca0f022b9c55c2c8a209187d66e8c01c05e65d8d"
+    },
+    {
+      "path": "report-redactions.json",
+      "sha256": "86900bce009da8e1b8f0bcc2d0216d97404deea59a5ebabc7e3c8e82291b83d7"
+    },
+    {
+      "path": "source-delta.json.gz",
+      "sha256": "4fc44ee51f444f6eb1ff90add954a71021c1d8ed30d799ced0caf080a691e853"
+    },
+    {
+      "path": "test-selector-updates.json",
+      "sha256": "8899daa478bcca5a517bccd68c420007297b073ed2ec50c852a6f971dcaded10"
+    }
+  ]
+}

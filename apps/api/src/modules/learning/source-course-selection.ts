@@ -15,7 +15,7 @@ export const courseSelectionShape={title:z.string().trim().min(1).max(180),goal:
   selections:z.array(z.object({materialId:id,version:z.string().regex(/^[a-f0-9]{64}$/),pages:z.array(z.number().int().min(1).max(500)).min(1).max(sourceCompilationLimits.pages)}).strict()).min(1).max(5)};
 export const courseSelectionSchema=z.object(courseSelectionShape).strict().refine(value=>Boolean(value.studentId)===Boolean(value.subject),'档案和学科需要同时选择');
 export type CourseSelection=z.infer<typeof courseSelectionSchema>;
-export function materialVersion(material:StudioSourceMaterial){return sourceDigest({sha256:material.sha256,updatedAt:material.updatedAt??material.createdAt,pages:material.pages,structure:material.structure});}
+export function materialVersion(material:StudioSourceMaterial){return sourceDigest({sha256:material.sha256,updatedAt:material.updatedAt??material.createdAt,pages:material.pages,structure:material.structure,...(material.paperCaptureOrigin?{paperCaptureOrigin:material.paperCaptureOrigin.fingerprint}:{})});}
 export function readCourseSelection(store:InMemoryStoreService,students:StudentsService,user:InMemoryUserAccount,command:CourseSelection){
   if(command.studentId){students.assertCanAccessStudent(user,command.studentId);if(!store.find('students',{id:command.studentId}))throw new NotFoundException('学习档案不存在');}else if(user.role==='student')throw new ForbiddenException('请从自己的学习档案生成课程');
   if(command.targetAtomIds.length){const scope=command.studentId&&store.find('learningScopes',{studentId:command.studentId,subject:command.subject});if(!scope||command.targetAtomIds.some(atomId=>!scope.learnedAtomIds.includes(atomId)||!store.find('knowledgeAtoms',{id:atomId,status:'published'})))throw new BadRequestException('知识目标需要来自当前已确认范围');}
@@ -28,7 +28,10 @@ export function readCourseSelection(store:InMemoryStoreService,students:Students
     for(const pageNumber of selection.pages){const page=material.pages.find(page=>page.page===pageNumber);if(!page||page.text.trim().length<20)throw new BadRequestException('所选原页缺少可读正文，请先完成识别与核对');
       if(sources.some(source=>source.materialId===material.id&&source.page===pageNumber))throw new BadRequestException('来源页重复选择');
       characters+=page.text.length;if(characters>sourceCompilationLimits.characters||sources.length>=sourceCompilationLimits.pages)throw new BadRequestException('本次编排最多120页/段、180000字。请拆成相邻课程；原件不会截断。');
-      sources.push({key:`src-${materialIndex+1}-${pageNumber}`,materialId:material.id,page:pageNumber,title:material.title,kind:material.kind??'pdf',text:page.text,blocks:structuredClone(page.blocks??[]),sha256:material.sha256,version:selection.version,fingerprint:sourceDigest(page),structureReviewRequired:material.structure?.reviewRequired??false});
+      const origin=material.paperCaptureOrigin,mapping=origin?.pdf.pages.find(page=>page.page===pageNumber);
+      if(origin&&!mapping)throw new ConflictException('纸面来源的原图片与PDF页对应关系需要先核对。');
+      sources.push({key:`src-${materialIndex+1}-${pageNumber}`,materialId:material.id,page:pageNumber,title:material.title,kind:material.kind??'pdf',text:page.text,blocks:structuredClone(page.blocks??[]),sha256:material.sha256,version:selection.version,fingerprint:sourceDigest(page),structureReviewRequired:material.structure?.reviewRequired??false,
+        ...(origin&&mapping?{paperCaptureSource:{protocol:'paper-capture-course-source-v1' as const,derivationId:origin.derivationId,originFingerprint:origin.fingerprint,sourceGroupScope:structuredClone(origin.sourceGroupScope),groupId:origin.pdf.groupId,groupRevision:origin.pdf.groupRevision,groupFingerprint:origin.pdf.groupFingerprint,pdfSha256:origin.pdf.pdfSha256,page:structuredClone(mapping)}}:{})});
     }
   }
   const targetGoals=command.targetAtomIds.map(atomId=>{const atom=store.find('knowledgeAtoms',{id:atomId})!;return{id:atom.id,name:atom.name,objective:atom.objective,version:atom.version};});

@@ -1,0 +1,526 @@
+{
+  "at": "2026-10-31T04:46:18.894Z",
+  "scope": "Actual main source and exactly added pinned dependencies; no application start, database migration, emitted files or incremental output.",
+  "kind": "web",
+  "status": 0,
+  "error": null,
+  "args": [
+    "node_modules/typescript/bin/tsc",
+    "-p",
+    "apps/web/tsconfig.json",
+    "--noEmit",
+    "--incremental",
+    "false"
+  ],
+  "sourceInputs": [
+    {
+      "path": "apps/api/package.json",
+      "sha256": "d48ca6e989c1bc5428ba8f7e59bad0070994689bb67b42d876903e36d3ae388e"
+    },
+    {
+      "path": "apps/api/src/common/auth.guard.ts",
+      "sha256": "a7181ef0ee90572b3a52330d9544e4adf43ec3138739a612373ce05fe58d0414"
+    },
+    {
+      "path": "apps/api/src/infrastructure/assistant-note-storage.integration.test.ts",
+      "sha256": "680a011bf9fe307fdac6c2eabaa11ae1fea71b3bb5dd9e88d1d502df04302db5"
+    },
+    {
+      "path": "apps/api/src/infrastructure/assistant-whiteboard-reader.integration.test.ts",
+      "sha256": "40ae5f521b66276ee7fdf48ea3c4207f39dc4765643c7c98d52ce528996067b6"
+    },
+    {
+      "path": "apps/api/src/infrastructure/backup.integration.test.ts",
+      "sha256": "59e629eb0b93e216cb862ac877cbf3dd5d7b9fdd4835ba3185c1bacf616ee0e3"
+    },
+    {
+      "path": "apps/api/src/infrastructure/domain-database.ts",
+      "sha256": "cc0e8abecb24e80fa0fb71e6af2f5e60b98e921946ba84be16a775ee0c3a3bbe"
+    },
+    {
+      "path": "apps/api/src/infrastructure/immutable-files.ts",
+      "sha256": "a213d25a3ca4b7cf5447676c5d67a0777c4c57f7b1ae5ae86498ee83f0ed30e5"
+    },
+    {
+      "path": "apps/api/src/infrastructure/in-memory-store.service.ts",
+      "sha256": "954695f8760119984d6bce1f002975f05b8156ba95165a6e6649bb118e5042fa"
+    },
+    {
+      "path": "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+      "sha256": "074ba3767086f9639ff6d03d3bcebaf408fa05bbb482dbad204395d59d0e808d"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema25-reader.integration.test.ts",
+      "sha256": "118fd47957b065cd289d4b0f6416553e7178c9f0f2a5946b9e5bd7b61f21f3ea"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema26-reader.integration.test.ts",
+      "sha256": "21626318761b20eafaa9b48dca0d463ac237270b7b546bafe6e09d3351d05df8"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema27-reader.integration.test.ts",
+      "sha256": "64d0e5e727893b98891b3552b4e4c46ffcc282fb52f71d1b3ab76d9a052036ee"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema28-reader.integration.test.ts",
+      "sha256": "d56a80ba70abc3c52622e3ea9375acbf45e4e7c376ca2acee65f609c38b4c568"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema29-reader.integration.test.ts",
+      "sha256": "aea290673548490c523a401957a447b86c5c10b26436f0aff9c5037e8552ce28"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema30-reader.integration.test.ts",
+      "sha256": "c8a6c71d1df9fd90d27d34ed6104927ca5d890d9a6f02772ea9ca2656652ba39"
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema31-reader.integration.test.ts",
+      "sha256": "32549e2e564b91fe0bb1f6802924288548ef7dacd8abca6164b42e1bd2a05949"
+    },
+    {
+      "path": "apps/api/src/infrastructure/studio-file-coordination.ts",
+      "sha256": "e439de5f39db3702250d492e35bac31d18886cc659eecc1db4712395a532f4c0"
+    },
+    {
+      "path": "apps/api/src/infrastructure/studio-file-paths.ts",
+      "sha256": "8fb735cef05e2a7c325bc37f5a5e35b0880d007247a4588f0e0dddedd4d6b2d8"
+    },
+    {
+      "path": "apps/api/src/infrastructure/task-repository.ts",
+      "sha256": "cac31826a43586d75f9c863a500073771842d002c1c07f79e7f70967a99ce8c8"
+    },
+    {
+      "path": "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+      "sha256": "8999ed72cdda38419572bec96c51285db89231fb2a7a90641e04f07724a754bf"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-postgres.integration.test.ts",
+      "sha256": "b49bc5fdf7355b19b5346cb158f2796da744fc40fc899b0cfc377b3605fc8f49"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-storage.integration.test.ts",
+      "sha256": "330cff7499129e602e9008448f1fd2bd57a60277fad0862c48ae87f0d8113eaa"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts",
+      "sha256": "70c5fc7403e330649592a1e01db6ac4f70d8d3b66f716b72f10d93587625908b"
+    },
+    {
+      "path": "apps/api/src/infrastructure/topic-whiteboard-visual-storage.integration.test.ts",
+      "sha256": "e84bc6c986c4fc0be268fc5575641c875abb3cf0ab274e1a83e218ef926f1060"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts",
+      "sha256": "b8fbc15b5cad18e0d33c1fefb63c520fd856713266bb7069315892ede03b9aea"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts",
+      "sha256": "eae731f203ca2af555d3bf1d3c05edaaecdaaee498788e166bfd89f7781c6010"
+    },
+    {
+      "path": "apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts",
+      "sha256": "9d910f4230a03b26b0f514a3658f5053b8fd193fb5ef317519ad3974ad65ecec"
+    },
+    {
+      "path": "apps/api/src/modules/learning/assistant-teaching.integration.test.ts",
+      "sha256": "95804c0b724aa79fccae1208d7d07bf24182b0a78a2af1728e60402d84f1de92"
+    },
+    {
+      "path": "apps/api/src/modules/learning/learning.module.ts",
+      "sha256": "f7a7c32df52cae11f43b23b99662f520db05e72f4e66cdac4a5ccaed71afc79e"
+    },
+    {
+      "path": "apps/api/src/modules/learning/learning.service.ts",
+      "sha256": "002d6d8a543ad936975bd197c1d8a6b08d2c973f1a11905aca506872635c794d"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-attribution.test.ts",
+      "sha256": "4f0f82b888905131f107ca93d0c43cf5ed48aecbda0e4411427ae3ace6490961"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-attribution.ts",
+      "sha256": "9f742a20a573c8901dec9cc9ed0685dd17e19d07ad54063bec1a352516b591f4"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-browser-copy.test.ts",
+      "sha256": "1f1cc8fad43ec6f42f5fe920db8e8f6e50492fc64330b5dd67152be367b83294"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-cleanup-worker.service.ts",
+      "sha256": "280d2ad7c25a7a1ee58660a86ff6780ac8911e05a985fe9657a5f863caad57aa"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-cleanup.ts",
+      "sha256": "c70a41bfeb5d1fd506fdbfed3fdac74f5846ae0ba4578da2a9a7086399b9d7ee"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-command.service.ts",
+      "sha256": "516507be4bfd1526687210d2b9054172dfa54be9a2ef215c53c499e1666d543b"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-command.ts",
+      "sha256": "c9815970a809faa6df7f63cb1297615242211270f33cc1aa51d6335d9133425c"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-copy.test.ts",
+      "sha256": "a6944f6ba7e9680e393e0d007c51172502ff878cb7a6c68e03c546beff84b550"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-copy.ts",
+      "sha256": "dd9c0b8c1ea790e9767a42ee53b0c370a3841f0831f14399ba964fe185a64337"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-derivation-native.ts",
+      "sha256": "92b9c1c6b65dd4efeacf6ebb0da00f76bacdc153875a9688a15799d4b0d63309"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-derivation-record.ts",
+      "sha256": "2397cf8ea68a0a596798979694be8c54aa08bf8e806910f90071182ae1b39ecc"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-derivation-worker.service.ts",
+      "sha256": "ef244478ff29070238db37179dd487459a2a5c9c8c59dce1c1c19aae22d8488e"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-derivation.service.ts",
+      "sha256": "626bcd949c807f554e7cac104eb4e4c3878b912f8194de82d9851c3aa696b09b"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-derived-pdf.test.ts",
+      "sha256": "117e14be007a7fe83278a9b837a53055357056091980e172b17e327255245fdf"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-derived-pdf.ts",
+      "sha256": "8908885410b30492070f317fa1a5cee6dceda73d1629520a629d0c3d6fe10511"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-file-observation.test.ts",
+      "sha256": "0dac788e04799ce6013dc766904aa665239752af91433c652e6b0e933645dacc"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-file-observation.ts",
+      "sha256": "58f97afd7dfe8d00561c57ad6eb2d0b1f681e62aa0bf46d73b7171cfbc79acd1"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-file.service.ts",
+      "sha256": "df1ea3195b883e7dd17b153df4e5f38dcf4dde33688f77d0c772ffe81a6f71d6"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-files.test.ts",
+      "sha256": "ede806f045894a0fd6b17afc2a8e4e590312520b9ba02e09ea34f5035536abac"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-files.ts",
+      "sha256": "ee916f41396cde7e6be6c526e3608cf4991d1ea35869b2ff06851fbe7d6836a7"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-group-record.ts",
+      "sha256": "c9c9a37bd435d477b7d84d917e7ffda26a42692df80fa6854a88a1abc83e00ca"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-group.service.ts",
+      "sha256": "1b2d32bb2c74f3764d797cd1452adc87c78ef1fa73091755cb2668c1d897185f"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-group.test.ts",
+      "sha256": "17f35c914f1b0209ddb60fa79224890979a6a50cc3c193e7b3316c1f2c65fa72"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-group.ts",
+      "sha256": "a636146d904f69b1e8d46e46c1acaca4a1f3ac18ea2e2e617832cadde302b4df"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-image-operation.ts",
+      "sha256": "be8b9c290866a6a5e6d0b925ae232d66580a01ebcf3690ba769871c19f6d5562"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-image.test.ts",
+      "sha256": "34e40efb0aef409edc04d1fbefb4644f0e20da9eb01aed439245c6a5a294c3db"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-image.ts",
+      "sha256": "b94a54a595b968c4b20709afdefb13c65bed376dede3ca8f5a64353e633f40eb"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-integrity.service.ts",
+      "sha256": "b69f31411a981323c33866b068a62b471e5b46e8aa69c7c3b64a6c0407afdb33"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-native.ts",
+      "sha256": "8d50e93487e30d8ac32e7099d76de2f36641ccc48543a598208f02952e79dfca"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-page.service.ts",
+      "sha256": "1777659c5f0807c030cf5b8aa79177c60776f50496d0f92abc648489bb7bb0ea"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-page.test.ts",
+      "sha256": "0c39b344e34e8c47b8f0425f38e5a56fda199c98967c3e1c839c6705afc676a0"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-page.ts",
+      "sha256": "2837ccb1ca5d26d559bdc075d595b06121f6b96bc3c8d043f313373537fc34f3"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-privacy.ts",
+      "sha256": "faeff4fbc5ef3a338b99576b7151ac48796309645d43bb52502ab12a3a527fbe"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-record.ts",
+      "sha256": "56ef8b81735a7189790aec25b07f99e9e70d357eb3af144f468c86068e21dfab"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-recovery.integration.test.ts",
+      "sha256": "e0caf10bfd9169e6ba84dc3fb4c17127d09477ec4e9faba0673645f7e0200172"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-repair-browser-copy.test.ts",
+      "sha256": "a61ea4daadd3b838b93d85b5c9bf4a434bbc0c8f03b128feb3c2b094c53ab466"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-repair-files.test.ts",
+      "sha256": "7beb91d2d5caa37c3c2f92cbaf609fbc0aef37c7230aa58067bd59ed2db061f2"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-repair-files.ts",
+      "sha256": "88f101b76ebf3881856eb8d35d90d0b66b390fcf1a25bfcfbd19da2830b1fa21"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-repair-native.ts",
+      "sha256": "cfa40f250682ae58957844f0553186a4087f4bffa42999f995fbe5d582af8a14"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-repair-record.ts",
+      "sha256": "a7de2c55439226139172b48f1dfd9951d3b573390ddcdaacc972faf25604e9d7"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-repair-worker.service.ts",
+      "sha256": "b628b39e9551b8a06ccf0165c09b16cc8ddd4b7f1c0de013e65c5830bc48fc9b"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-repair.service.ts",
+      "sha256": "889e8e9062a475260a451ee1c9dd9473a55d02a6d23dcb65b930aeaaa3ecf5b7"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-retention-proof.ts",
+      "sha256": "10e13c70b9ae96f8ba5d173088be58e003197467d6dbbe06b0712c623f0bfe47"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-scope.ts",
+      "sha256": "1adbb6057eab1bf30e12ec9d7d7830f60b16f98d32f318ebbfe3c50f5eba0d25"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-storage.integration.test.ts",
+      "sha256": "480c0704fd8023a496cf20358e291de1645addc49612cfb296720e8bbed85368"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture-upload.service.ts",
+      "sha256": "d2610eb4303ceae9d403837aebddf026321f22a0f6b187b600bac2e1506d87ab"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture.controller.ts",
+      "sha256": "1934d897afed0aef61531333253efcfb235e2d11e8ab690d5bf7c93b6f967fb7"
+    },
+    {
+      "path": "apps/api/src/modules/learning/paper-capture.module.ts",
+      "sha256": "042523556280ada754b987ceb4fd58e25bb270f87e26959eb3ca479e6b27b145"
+    },
+    {
+      "path": "apps/api/src/modules/learning/source-course-selection.ts",
+      "sha256": "bcbab5535fc46b3592f2e84adcad05e1958ac655798515907ad89b5699451749"
+    },
+    {
+      "path": "apps/api/src/modules/learning/studio-material-access.ts",
+      "sha256": "a8619943e4f928b3599b60618565856138ed32dce381ca9a96efab1dd0afec81"
+    },
+    {
+      "path": "apps/api/src/modules/learning/studio-material-maintenance.service.ts",
+      "sha256": "17d4db71c45818e53ce6a3227ce4ed8594e4f9773aba977885a73a4465ef4945"
+    },
+    {
+      "path": "apps/api/src/modules/learning/studio-material-storage.ts",
+      "sha256": "6c4db9a7791545c2d872840461e636a9fc948427fc34c55a8d7c1ef003861182"
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual-files.test.ts",
+      "sha256": "863222a9c90b9beced18560763f948fb9fc19e1515b75c9b2d936977bf334fac"
+    },
+    {
+      "path": "apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts",
+      "sha256": "d8210424eb1f58ce2a37ee2015b220dabc8a24ec22334d54e20c9691dd7b6aff"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+      "sha256": "faf91ac809ead0aed860b02387372a01fb4b581627ead783bbd6f5e83a0bcdb1"
+    },
+    {
+      "path": "apps/api/src/modules/privacy/privacy-records.ts",
+      "sha256": "44a812b89cb438847ea6e9ada4492862e3ae6bb30e811b9e756cc952daa85e7a"
+    },
+    {
+      "path": "apps/api/src/modules/privacy/privacy.service.ts",
+      "sha256": "32ddea707224b8b1fd8ef9bda32856ce1531894ebebffb038657fc9066711226"
+    },
+    {
+      "path": "apps/web/app/studio/classroom/workbench.tsx",
+      "sha256": "5ab65fcd686c8cf2d9688d7ffc7b0e6bcb0cf2d7891a946a2d9725dc0f0263e5"
+    },
+    {
+      "path": "apps/web/app/studio/materials-workspace.css",
+      "sha256": "2455e032b2091e34b7a24e0cee5202312cc2154e0b061baa391b5c06f942405b"
+    },
+    {
+      "path": "apps/web/app/studio/paper-capture-repair-workspace.tsx",
+      "sha256": "b2a90e6a2b81cb65f713828d0144db87b219d69b9db3c5597d86c9b115209b10"
+    },
+    {
+      "path": "apps/web/app/studio/paper-capture-upload-recovery.tsx",
+      "sha256": "28dd2283a79a17083abe5874a122ccc8f9cb57b66c73d03e086ef3f1595364ae"
+    },
+    {
+      "path": "apps/web/app/studio/paper-capture-workspace.tsx",
+      "sha256": "6a4c4d6d81aa7cae0dfbee61f4072b80e682b0d522bc6f4a63dcc02e998d1b4d"
+    },
+    {
+      "path": "apps/web/app/studio/personal-materials.tsx",
+      "sha256": "03392622b1e7cd16a4ff2f3ecf27dda3d1ee1f1cfb9021a573d62def233b4a80"
+    },
+    {
+      "path": "apps/web/components/activity-workspace-navigation.tsx",
+      "sha256": "091941b79fe7c85f93144bcf00292fadf8a82914c5575b2561e370e10fd9b9c6"
+    },
+    {
+      "path": "apps/web/components/workspace-shell.tsx",
+      "sha256": "9c0f4afc0d556af72ed412713d8af903486966e5a28b59862f7ef6f338b4b959"
+    },
+    {
+      "path": "apps/web/lib/materials-navigation.ts",
+      "sha256": "679f27ddee1c3ee6d8f34fb6818147a8fb4810db6ce82d0b7f41ddec153b0b6b"
+    },
+    {
+      "path": "apps/web/lib/paper-capture-client.ts",
+      "sha256": "f8a128d485ed9dd4001136e5bb7fac28c473b19145886a38539086ce73eac792"
+    },
+    {
+      "path": "apps/web/lib/paper-capture-copy.ts",
+      "sha256": "c0c60f9a05bd06626fb5ce4765561e53fce76ab7ad3ca454a3723a29b9d386c1"
+    },
+    {
+      "path": "apps/web/lib/paper-capture-editor.ts",
+      "sha256": "b93107552c422f6be0d22bcff018274ede98d99b221d9cd0dc5c408d84f993b6"
+    },
+    {
+      "path": "apps/web/lib/paper-capture-local.ts",
+      "sha256": "83705b901ed918fcb095282f2993db39f229dd47c6affe1c351e2b761d682098"
+    },
+    {
+      "path": "apps/web/lib/paper-capture-repair-copy.ts",
+      "sha256": "5ccda321af80abb31dd1f2d4ad5f0d8c7bc78ad4255630f38040671f6f7524aa"
+    },
+    {
+      "path": "apps/web/lib/paper-capture-repair-local.ts",
+      "sha256": "a5de9707b985203d503e52dc16e56f261626d93e0d89e0a5722a37595b84cad5"
+    },
+    {
+      "path": "apps/web/lib/paper-capture-upload-control.ts",
+      "sha256": "4be794d02e66f86a1bea11755f8d1d9e08bc8810897f0f3b7fef8b2d67a49473"
+    },
+    {
+      "path": "apps/web/lib/use-workspace-exit-guard.ts",
+      "sha256": "1752f777f155697a1029d4c4be9256cf2e06a90ab341ffe2b2b69558fc8ca12a"
+    },
+    {
+      "path": "apps/web/lib/workspace-exit-guard.ts",
+      "sha256": "797d99a880f35cafcdbb7852fe96e4658566033b7906779a67d8186cfae14539"
+    },
+    {
+      "path": "apps/web/lib/workspace-navigation.ts",
+      "sha256": "afc939455fbd3aca819f452e9b9539e69d7d8f111a6b0cc08e98438b91563d6e"
+    },
+    {
+      "path": "apps/web/lib/workspace-shell-context.ts",
+      "sha256": "ed3c1df116dd7b285485aa1397a679f852da1fb3a777b9520bda2f9caaabfe59"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "8f2b90605d487a25329e02ba3173f47f5127b575e870649917e5cc82c029e381"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "543f95ecd0e30ed1998eeb030bebbd2f6285ccb10bb42991a4b115ac268c60b1"
+    },
+    {
+      "path": "packages/contracts/src/paper-capture-integrity.ts",
+      "sha256": "313ad179b76468b321e3c64467cab8c8c710a393cd1fe4a759d85f3465a3d907"
+    },
+    {
+      "path": "packages/contracts/src/paper-capture-origin.ts",
+      "sha256": "50aaf09ba6eb7ba8cbe0c5cfcff9d9a5d13b65094d53de397af44f520c02d04b"
+    },
+    {
+      "path": "packages/contracts/src/paper-capture-repair.ts",
+      "sha256": "10e2bdbbbdea3c927687035de944c33667738a2439dbf66f8c651a1572d3b571"
+    },
+    {
+      "path": "packages/contracts/src/paper-capture.ts",
+      "sha256": "bf4074959838d2996ebd2aa752b2927dff5c6cbfec985b79e2552e95265d40de"
+    },
+    {
+      "path": "packages/contracts/src/privacy.ts",
+      "sha256": "3abd3861bc88ed9416328d068bd2357214eeeb0c5f8ae6e66cb5912fb4c93e10"
+    },
+    {
+      "path": "packages/contracts/src/source-course.ts",
+      "sha256": "4cb5f48292cdf6402232f1acf567499cf541c9e15cc21b269af9a3dcd0504640"
+    },
+    {
+      "path": "packages/contracts/src/studio.ts",
+      "sha256": "cd539e497cc998fd4ffe2565c14c0ed8d02f157a90410d7ba6b5e3e27d8ae4aa"
+    },
+    {
+      "path": "scripts/operations/assistant-practice-integrity.cjs",
+      "sha256": "91382895324423ff65f0145d44abd3e85dd367eec4a9f7d1d12127c9d5eb8548"
+    },
+    {
+      "path": "scripts/operations/backup.cjs",
+      "sha256": "d7fdb61e058035354dc7a3bdf88069e203dfe7d85a23a8f59a2f2d274798ad69"
+    },
+    {
+      "path": "scripts/operations/database-reader-guard.cjs",
+      "sha256": "4d25d8a0de094e8edce89bb9ca6e316b908a85fe1e3304c0cf9525f9aadd67cd"
+    },
+    {
+      "path": "scripts/operations/material-audit.cjs",
+      "sha256": "cbd7c24c4cc7b93e6dd84f85d52458342a5a5b391a8d798ba611c7d9e31ed156"
+    },
+    {
+      "path": "scripts/operations/postgres-backup.cjs",
+      "sha256": "05210d2bff335242a80ea28316acbd5030b0df23e417e90463599b6e90f3c8b2"
+    },
+    {
+      "path": "scripts/operations/postgres-restore.cjs",
+      "sha256": "d26430fd69be8cd2bdaf42341e395d153f17d5546d4efb74f8b609cd2809e186"
+    },
+    {
+      "path": "scripts/operations/privacy-ledger.cjs",
+      "sha256": "d826fa199242b19fd8d923827d76651bc02b93436d019b747d74f331f542f429"
+    },
+    {
+      "path": "scripts/operations/restored-paper-captures.cjs",
+      "sha256": "057b4ed15179ddcf4d50aea800f0a9480d046e16038a10bbe4b60b9f2bfb8710"
+    },
+    {
+      "path": "scripts/operations/sqlite-restore.cjs",
+      "sha256": "db0a0c8d1dea8ee42fef4ec3f86aa996d9e35405f363d23197010e95b7e4426c"
+    },
+    {
+      "path": "tests/e2e/workspace-materials.spec.ts",
+      "sha256": "3d2d3abccae23668465cde656722e3cb764d81cdac4b61622d736aa15cfbbb47"
+    },
+    {
+      "path": "tests/e2e/workspace-focus.spec.ts",
+      "sha256": "c7ce547fc7ea1597f89d59be357db466a410497650ae023b466164b6accc78e6"
+    }
+  ],
+  "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

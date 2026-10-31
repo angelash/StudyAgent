@@ -9,7 +9,7 @@ const { DatabaseSync } = require('node:sqlite');
 const HASH = /^[a-f0-9]{64}$/;
 const UPLOAD = /^studio_upload_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
 const ACTIVE = new Set(['queued', 'running', 'retry_wait', 'cancel_requested']);
-const COLLECTIONS = ['studioSourceMaterials', 'studioMaterialUploads', 'sourceCourses', 'sourceCourseChecks','classroomSessions','studioMaterialAssets', 'studioWhiteboards', 'studioLearningPacks'];
+const COLLECTIONS = ['studioSourceMaterials', 'studioMaterialUploads', 'sourceCourses', 'sourceCourseChecks','classroomSessions','studioMaterialAssets', 'studioWhiteboards', 'studioLearningPacks','paperCaptureRepairs'];
 const MAX_ENTRIES = 100000;
 const fail = code => { throw new Error(code); };
 const body = row => typeof row.body === 'string' ? JSON.parse(row.body) : row.body;
@@ -63,7 +63,7 @@ async function readMaterialSnapshot({ dataDir, connectionString }) {
 }
 
 /** Shared by the audit and future collector. Invalid references conservatively disable eligibility. */
-function materialReferences(rows, tasks = [], now = Date.now()) {
+function materialReferences(rows, tasks = [], now = Date.now(), options = {}) {
   const assets = new Map(), uploads = new Map(), expected = new Map(), issues = [], materialById = new Map(), frozenPdfs = new Set();
   const reservedUploads=new Set(rows.filter(entry=>entry.collection==='studioMaterialAssets').map(body).filter(row=>row?.state==='repairing').map(row=>row.repair?.uploadId));
   const asset = sha => { if (!HASH.test(sha ?? '')) { issues.push('invalid_source_hash'); return; } if (!assets.has(sha)) assets.set(sha, { references: new Set(), active: false }); return assets.get(sha); };
@@ -110,6 +110,11 @@ function materialReferences(rows, tasks = [], now = Date.now()) {
       }
     } else if (entry.collection === 'studioMaterialAssets') {
       if (!HASH.test(row.id ?? '') || !['available', 'deleting','repairing'].includes(row.state) || !Number.isSafeInteger(row.generation) || row.generation < 1) issues.push('invalid_material_asset_state');
+      else if(row.paperCaptureRepair){
+        const repair=row.paperCaptureRepair;
+        if(!/^paper_repair_[a-f0-9-]{36}$/.test(repair.repairId??'')||!HASH.test(repair.intentFingerprint??'')||repair.generation!==row.generation||!['available','repairing'].includes(row.state)||!/^paper_repair_upload_[a-f0-9-]{36}$/.test(repair.uploadId??''))issues.push('invalid_paper_material_repair_state');
+        if(options.ignorePaperRepairId!==repair.repairId){const ref=asset(row.id);if(ref){ref.active=true;ref.references.add('paper-repair:'+repair.repairId);}}
+      }
       else if(row.state==='repairing'){
         const repair=row.repair;
         if(!repair||repair.identity?.sha256!==row.id||repair.identity?.generation!==row.generation||!UPLOAD.test(repair.uploadId??''))issues.push('invalid_material_repair_state');
@@ -178,9 +183,20 @@ async function fileDigest(file) {
 async function auditMaterials({ dataDir, snapshot, graceHours = 24, now = Date.now(), verify = true }) {
   if (!Number.isFinite(now) || !Number.isFinite(graceHours) || graceHours < 0 || graceHours > 8760) fail('invalid_material_audit_budget');
   const root = noLinks(dataDir), references = materialReferences(snapshot.rows, snapshot.tasks, now), entries = [], seen = new Set(), coordination = new Map(), workingSources = new Map();
-  const repairEntries=new Map();
+  const repairEntries=new Map(),paperRepairDirectories=[];
   for(const entry of snapshot.rows.filter(row=>row.collection==='studioMaterialAssets')){
-    const asset=body(entry);if(asset?.state!=='repairing')continue;
+    const asset=body(entry);if(asset?.paperCaptureRepair){
+      try{
+        const repair=snapshot.rows.filter(row=>row.collection==='paperCaptureRepairs').map(body).find(row=>row.id===asset.paperCaptureRepair.repairId);
+        if(!repair)throw Error('missing_actual_paper_repair');
+        const {assertPaperRepairRecord,paperRepairAssetIntentSchema}=require('../../apps/api/dist/apps/api/src/modules/learning/paper-capture-repair-record.js'),{paperRepairFileIdentity}=require('../../apps/api/dist/apps/api/src/modules/learning/paper-capture-repair.service.js');assertPaperRepairRecord(repair);paperRepairAssetIntentSchema.parse(asset.paperCaptureRepair);
+        const identity=paperRepairFileIdentity(repair,asset.paperCaptureRepair);if(identity.kind!=='source'||identity.key!==asset.id||identity.generation!==asset.generation)throw Error('invalid_paper_repair_binding');
+        const {inspectExactPaperRepair}=require('../../apps/api/dist/apps/api/src/modules/learning/paper-capture-repair-files.js'),inventory=await inspectExactPaperRepair({root,identity,baseline:asset.paperCaptureRepair.baseline});
+        for(const file of inventory.files)repairEntries.set(path.relative(root,file).replaceAll('\\','/'),{key:asset.id,kind:'source',part:'repair_private'});
+        for(const directory of inventory.directories)repairEntries.set(path.relative(root,directory).replaceAll('\\','/'),{key:asset.id,kind:'source',part:'repair_private',container:true});
+        if(inventory.directories.length)paperRepairDirectories.push(path.relative(root,inventory.directories[0]).replaceAll('\\','/'));
+      }catch{references.issues.push('paper_material_repair_inventory_unknown');}continue;
+    }if(asset?.state!=='repairing')continue;
     try{
       if(asset.repair?.identity?.sha256!==asset.id||asset.repair?.identity?.generation!==asset.generation)throw new Error('invalid_repair_binding');
       const {inspectStudioOriginalRepair}=require('../../apps/api/dist/apps/api/src/infrastructure/studio-original-repair.js');
@@ -253,6 +269,7 @@ async function auditMaterials({ dataDir, snapshot, graceHours = 24, now = Date.n
     entries.push(entry);
   }
   await visit('studio-materials'); await visit('studio-uploads');
+  for(const directory of paperRepairDirectories)await visit(directory);
   for (const taskId of workingSources.keys()) await visit('processing/runs/' + taskId);
   for (const entry of entries) if (entry.key && !['lease', 'purge', 'revocation', 'marker_staging'].includes(entry.part) && coordination.has(entry.key)) { entry.state = coordination.get(entry.key); entry.reason = 'file_coordination_pending'; }
   for (const [relative, expected] of references.expected) if (!seen.has(relative)) {

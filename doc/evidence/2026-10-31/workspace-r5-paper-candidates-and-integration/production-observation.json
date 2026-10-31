@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-31T04:44:43.646Z",
+  "main": "4cf06904a9c0786f738e06ea7770dfcc550fa17c",
+  "formalReadOnly": {
+    "schema": 24,
+    "revision": 187
+  },
+  "files": [
+    {
+      "path": ".env",
+      "sha256": "986c3a6e14f548f78914103262074328bceab7fc10a159d8997a4b3097f2a5bc",
+      "matchesPrior": true
+    },
+    {
+      "path": "package.json",
+      "sha256": "8e52d88cc598e04ce10558b85673010cc1e088ad17a1a412e840867426b65637",
+      "matchesPrior": true
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "8b13158bd636abcb1e4255d00c4975824a5765d050c0c898e702fb21e0543cf7",
+      "matchesPrior": true
+    },
+    {
+      "path": "apps/api/dist/apps/api/src/infrastructure/domain-database.js",
+      "sha256": "09d35b1cbba804da6e7579e800986a2f5491215b68ffd3871745f9232bacc2a2",
+      "matchesPrior": true
+    },
+    {
+      "path": "apps/web/.next/BUILD_ID",
+      "sha256": "e02197beeb39c5df02110ca05544c471b3bb892662bebdcb56449b27713e7fba",
+      "matchesPrior": true
+    }
+  ],
+  "allProtectedFilesRechecked": true
+}

@@ -60,17 +60,19 @@ async function restorePostgres({bundle,destination,connectionString,pgBin,deleti
     try{
       if((await client.query('SELECT '+contentDigestSql()+' AS digest')).rows[0].digest!==imported.data_digest)fail('restore_imported_database_changed');
       if(JSON.stringify(await backup.summary(client))!==JSON.stringify(verified.manifest.database))fail('restored_database_summary_mismatch');
-      const refs=referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioTopicWhiteboardVisuals','studioTopicWhiteboards','whiteboardQuestionVisuals','whiteboardQuestionTurns','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions')")).rows);
+      const refs=referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioTopicWhiteboardVisuals','studioTopicWhiteboards','whiteboardQuestionVisuals','whiteboardQuestionTurns','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions','studioMaterialAssets','paperImageUploads','paperCapturePages','paperCaptureCommands','paperCaptureDerivations','paperCaptureFileAssets','paperCaptureRepairUploads')")).rows);
       for(const[relative,expected]of refs){const item=verified.manifest.references.find(row=>row.path==='data/'+relative);if(!item||expected.sha256!==item.sha256||expected.size!==null&&expected.size!==item.size)fail('restored_file_reference_mismatch');}
       if(refs.size!==verified.manifest.referencedFileCount)fail('restored_file_reference_mismatch');
       const query=async(sql,params=[])=>{let index=0;return(await client.query(sql.replace(/\?/g,()=>'$'+(++index)),params)).rows;};
+      const practiceIntegrity=require('./assistant-practice-integrity.cjs');await practiceIntegrity.validateQuery(query);
       const before=await captureMaterialKeys(query),{removedMediaIds,topicVisualRetentions,...privacy}=await applyDeletionLedger(query,ledger);
-      const practiceIntegrity=require('./assistant-practice-integrity.cjs');practiceIntegrity.validate(await query(practiceIntegrity.sql));
       await afterPhase?.('ledger_applied');
       const access=await fenceRestoredState(query,context.backupId,verified.manifest.database.revision),deleted=new Set();
       const materials=await cleanupRestoredMaterials({root,query,manifest:verified.manifest,before,restoreContext:context,afterPhase:async(phase,relative)=>{if(phase==='material_file_deleted')deleted.add(relative);await afterPhase?.(phase,relative);}});
       privacy.mediaDirectoriesPurged=purgeRestoredMedia(root,removedMediaIds,verified.manifest,relative=>deleted.add(relative),topicVisualRetentions);
-      receipt={format:verified.manifest.format,backupId:context.backupId,restoreId:context.restoreId,sourceRevision:verified.manifest.database.revision,assetsIncluded:verified.manifest.assetsIncluded,verifiedFiles:verified.verifiedFiles,...access,...privacy,...materials,copiedFiles,skippedFiles,omittedControlFiles,databaseImported:true};
+      const paper=await require('./restored-paper-captures.cjs').cleanupRestoredPaperCaptures({root,query,manifest:verified.manifest,afterPhase:async(phase,relative)=>{if(phase==='paper_capture_file_deleted')deleted.add(relative);await afterPhase?.(phase,relative);}});
+      await practiceIntegrity.validateQuery(query);
+      receipt={format:verified.manifest.format,backupId:context.backupId,restoreId:context.restoreId,sourceRevision:verified.manifest.database.revision,assetsIncluded:verified.manifest.assetsIncluded,verifiedFiles:verified.verifiedFiles,...access,...privacy,...materials,...paper,copiedFiles,skippedFiles,omittedControlFiles,databaseImported:true};
       const finalFiles=[];
       for(const file of verified.manifest.files){
         if(file.path.startsWith('database/'))continue;

@@ -1,0 +1,325 @@
+{
+  "numTotalTestSuites": 4,
+  "numPassedTestSuites": 4,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 23,
+  "numPassedTests": 23,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1793420934057,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "durable parent guidance suggestions and immutable rule actions"
+          ],
+          "fullName": "durable parent guidance suggestions and immutable rule actions creates one rule plan and queued suggestion atomically, replays its creation and leaves its text unchanged until explicit adoption",
+          "status": "passed",
+          "title": "creates one rule plan and queued suggestion atomically, replays its creation and leaves its text unchanged until explicit adoption",
+          "duration": 479.33000000000175,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable parent guidance suggestions and immutable rule actions"
+          ],
+          "fullName": "durable parent guidance suggestions and immutable rule actions retains failure without changing the plan and retries the original actual model",
+          "status": "passed",
+          "title": "retains failure without changing the plan and retries the original actual model",
+          "duration": 471.5601999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable parent guidance suggestions and immutable rule actions"
+          ],
+          "fullName": "durable parent guidance suggestions and immutable rule actions prevents a model finishing after plan activation from publishing or replacing the active plan",
+          "status": "passed",
+          "title": "prevents a model finishing after plan activation from publishing or replacing the active plan",
+          "duration": 378.5046000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable parent guidance suggestions and immutable rule actions"
+          ],
+          "fullName": "durable parent guidance suggestions and immutable rule actions cancels a queued suggestion and keeps another account outside the task and adoption boundaries",
+          "status": "passed",
+          "title": "cancels a queued suggestion and keeps another account outside the task and adoption boundaries",
+          "duration": 240.39019999999437,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable parent guidance suggestions and immutable rule actions"
+          ],
+          "fullName": "durable parent guidance suggestions and immutable rule actions keeps the rule plan when a requested model is unavailable and returns exact creation receipts",
+          "status": "passed",
+          "title": "keeps the rule plan when a requested model is unavailable and returns exact creation receipts",
+          "duration": 222.6394999999975,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable parent guidance suggestions and immutable rule actions"
+          ],
+          "fullName": "durable parent guidance suggestions and immutable rule actions serializes identical commands across two app instances and refuses two active suggestions for a plan",
+          "status": "passed",
+          "title": "serializes identical commands across two app instances and refuses two active suggestions for a plan",
+          "duration": 3539.922700000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable parent guidance suggestions and immutable rule actions"
+          ],
+          "fullName": "durable parent guidance suggestions and immutable rule actions pages immutable completed history and locates an original request independently of the page",
+          "status": "passed",
+          "title": "pages immutable completed history and locates an original request independently of the page",
+          "duration": 780.8672000000006,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable parent guidance suggestions and immutable rule actions"
+          ],
+          "fullName": "durable parent guidance suggestions and immutable rule actions rejects a late model result after the plan is paused",
+          "status": "passed",
+          "title": "rejects a late model result after the plan is paused",
+          "duration": 512.8541000000041,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable parent guidance suggestions and immutable rule actions"
+          ],
+          "fullName": "durable parent guidance suggestions and immutable rule actions rejects a late model result after the plan is adjusted",
+          "status": "passed",
+          "title": "rejects a late model result after the plan is adjusted",
+          "duration": 312.70760000000155,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable parent guidance suggestions and immutable rule actions"
+          ],
+          "fullName": "durable parent guidance suggestions and immutable rule actions cannot publish or retry after the exact original guardian authorization was revoked",
+          "status": "passed",
+          "title": "cannot publish or retry after the exact original guardian authorization was revoked",
+          "duration": 266.2896000000037,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable parent guidance suggestions and immutable rule actions"
+          ],
+          "fullName": "durable parent guidance suggestions and immutable rule actions does not publish an obsolete report, and adopting a completed suggestion requires its original plan revision",
+          "status": "passed",
+          "title": "does not publish an obsolete report, and adopting a completed suggestion requires its original plan revision",
+          "duration": 641.7543000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1793421058656,
+      "endTime": 1793421066503.7544,
+      "status": "passed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent/data/qa/workspace-paper-capture-native-first-20261031/integration44-source/apps/api/src/modules/diagnostics/guidance-model.integration.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "read-only source practice and atomic coverage over actual HTTP"
+          ],
+          "fullName": "read-only source practice and atomic coverage over actual HTTP keeps full linked adult sources, fixed original model and stable hashes without creating evidence, tasks or practice",
+          "status": "passed",
+          "title": "keeps full linked adult sources, fixed original model and stable hashes without creating evidence, tasks or practice",
+          "duration": 1492.153600000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "read-only source practice and atomic coverage over actual HTTP"
+          ],
+          "fullName": "read-only source practice and atomic coverage over actual HTTP requires explicit adult-to-child confirmation and returns only reviewed atomic counts with no candidate answers",
+          "status": "passed",
+          "title": "requires explicit adult-to-child confirmation and returns only reviewed atomic counts with no candidate answers",
+          "duration": 1697.7007000000012,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "read-only source practice and atomic coverage over actual HTTP"
+          ],
+          "fullName": "read-only source practice and atomic coverage over actual HTTP refuses foreign conversation access even when another guardian can manage the same child",
+          "status": "passed",
+          "title": "refuses foreign conversation access even when another guardian can manage the same child",
+          "duration": 1557.7044999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "read-only source practice and atomic coverage over actual HTTP"
+          ],
+          "fullName": "read-only source practice and atomic coverage over actual HTTP rejects forged fields, duplicate source or atom IDs, cross-session messages and points outside confirmed progress",
+          "status": "passed",
+          "title": "rejects forged fields, duplicate source or atom IDs, cross-session messages and points outside confirmed progress",
+          "duration": 1660.8130999999994,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "read-only source practice and atomic coverage over actual HTTP"
+          ],
+          "fullName": "read-only source practice and atomic coverage over actual HTTP returns a precise scope entry rather than silently assigning a grade or subject to a child without progress",
+          "status": "passed",
+          "title": "returns a precise scope entry rather than silently assigning a grade or subject to a child without progress",
+          "duration": 1770.8012999999992,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "read-only source practice and atomic coverage over actual HTTP"
+          ],
+          "fullName": "read-only source practice and atomic coverage over actual HTTP preserves complete over-budget source and all selected message identities without model or state changes",
+          "status": "passed",
+          "title": "preserves complete over-budget source and all selected message identities without model or state changes",
+          "duration": 2034.078999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "read-only source practice and atomic coverage over actual HTTP"
+          ],
+          "fullName": "read-only source practice and atomic coverage over actual HTTP counts real aborted diagnostic snapshots as exposure and excludes their canonical families from independent structures",
+          "status": "passed",
+          "title": "counts real aborted diagnostic snapshots as exposure and excludes their canonical families from independent structures",
+          "duration": 2419.672400000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "read-only source practice and atomic coverage over actual HTTP"
+          ],
+          "fullName": "read-only source practice and atomic coverage over actual HTTP changes the full fingerprint when a reviewed mapping changes even if every coverage count stays the same",
+          "status": "passed",
+          "title": "changes the full fingerprint when a reviewed mapping changes even if every coverage count stays the same",
+          "duration": 1663.3952999999965,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "read-only source practice and atomic coverage over actual HTTP"
+          ],
+          "fullName": "read-only source practice and atomic coverage over actual HTTP keeps course grade9 and profile grade4 separate, rejects subject/child reassignment and requires old-source confirmation",
+          "status": "passed",
+          "title": "keeps course grade9 and profile grade4 separate, rejects subject/child reassignment and requires old-source confirmation",
+          "duration": 1723.1950999999972,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "read-only source practice and atomic coverage over actual HTTP"
+          ],
+          "fullName": "read-only source practice and atomic coverage over actual HTTP invalidates the current scope fingerprint while preserving an intentionally different profile grade",
+          "status": "passed",
+          "title": "invalidates the current scope fingerprint while preserving an intentionally different profile grade",
+          "duration": 1677.8833000000013,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "read-only source practice and atomic coverage over actual HTTP"
+          ],
+          "fullName": "read-only source practice and atomic coverage over actual HTTP refuses a withdrawn atomic definition still present in an old learned-scope snapshot",
+          "status": "passed",
+          "title": "refuses a withdrawn atomic definition still present in an old learned-scope snapshot",
+          "duration": 1192.2492000000057,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "read-only source practice and atomic coverage over actual HTTP"
+          ],
+          "fullName": "read-only source practice and atomic coverage over actual HTTP uses actual learning-code identity and blocks both learner and guardian source preflight throughout a paused assessment",
+          "status": "passed",
+          "title": "uses actual learning-code identity and blocks both learner and guardian source preflight throughout a paused assessment",
+          "duration": 4656.116300000009,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1793420986307,
+      "endTime": 1793421009854.1162,
+      "status": "passed",
+      "message": "",
+      "name": "F:/workspace/github/StudyAgent/data/qa/workspace-paper-capture-native-first-20261031/integration44-source/apps/api/src/modules/learning/assistant-practice-preflight.integration.test.ts"
+    }
+  ]
+}

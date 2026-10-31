@@ -785,3 +785,7 @@ export * from './guidance-calendar';
 
 export * from './retention';
 export * from './controlled-contrast';
+export * from './paper-capture-origin';
+export * from './paper-capture';
+export * from './paper-capture-integrity';
+export * from './paper-capture-repair';

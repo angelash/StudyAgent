@@ -15,6 +15,7 @@ import { anonymizeControlledEditorial } from '../diagnostics/controlled-editoria
 import { anonymizeControlledPreviews } from '../diagnostics/controlled-preview-privacy';
 import { controlledSessionOf } from '../diagnostics/controlled-session-origin';
 import { controlledFeedbackHeld } from '../diagnostics/controlled-contrast-disclosure';
+import {paperCaptureAttributedCollections,paperCapturePrivateCollections,paperCaptureCollections,portablePaperCaptureSource} from '../learning/paper-capture-privacy';
 
 type Row = Record<string, any>;
 export type Selection = Record<string, Row[]>;
@@ -42,6 +43,8 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
     add(result, store, name, row => row.studentId === studentId);
   }
   const candidateIds = new Set([...(result.studentLearningAccess ?? []).map(row => row.userId), ...result.students.map(row => row.userId)].filter(Boolean));
+  for(const name of paperCapturePrivateCollections)add(result,store,name,row=>row.scope.studentId===studentId);
+  for(const name of paperCaptureAttributedCollections)add(result,store,name,row=>row.attribution.scope.studentId===studentId);
   const sourceCourseIds=ids(result,'sourceCourses');
   add(result,store,'sourceCourseChecks',row=>row.studentId===studentId||sourceCourseIds.has(row.courseId));
   const sourceCheckIds=ids(result,'sourceCourseChecks');add(result,store,'sourceCourseCheckPublications',row=>row.studentId===studentId||sourceCourseIds.has(row.courseId)||sourceCheckIds.has(row.checkId));
@@ -87,6 +90,8 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'libraryBookmarks', row => row.userId === actorId);
   add(result, store, 'paperPracticeSessions', row => row.ownerUserId === actorId);
   add(result, store, 'paperPracticeCommands', row => row.ownerUserId === actorId);
+  for(const name of paperCapturePrivateCollections)add(result,store,name,row=>row.actorId===actorId);
+  for(const name of paperCaptureAttributedCollections)add(result,store,name,row=>row.attribution.ownerUserId===actorId&&row.attribution.scope.studentId===null);
   add(result, store, 'diagnosticBlueprints', row => row.actorId === actorId);
   const publishedControlledReviews = new Set(rows(store, 'controlledContrastPublications').flatMap(row => row.originals.map((original: Row) => original.review.id)));
   add(result, store, 'controlledEditorialCommands', row => row.actorId === actorId);
@@ -228,6 +233,11 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
       ({id,studentId,subject,publicationId,fingerprint,scopeSnapshot,createdAt,expiresAt,sessionId}));
     else if (name === 'diagnosticBlueprints') result[name] = records.map(row => { const { paperReviewOrigin, ...rest } = row; return !paperReviewOrigin || allowedPaperPractice.has(paperReviewOrigin.sessionId) ? row : rest; });
     else if (name === 'paperPracticeCommands') result[name] = records.filter(row => allowedPaperPractice.has(row.sessionId) && paperOwners.has(row.ownerUserId));
+    else if(paperCaptureAttributedCollections.includes(name as typeof paperCaptureAttributedCollections[number]))result[name]=records.map(row=>portablePaperCaptureSource(row,paperOwners,actorId));
+    else if(name==='paperImageUploads')result[name]=records.filter(row=>paperOwners.has(row.actorId)).map(({learningAccess:_access,guardianDeletionHash:_guardian,preparedFileIds:_prepared,filesCollectedAt:_collected,...row})=>({...row,chunksAvailable:row.status==='uploading'&&!_collected}));
+    else if(name==='paperCaptureCommands')result[name]=records.filter(row=>paperOwners.has(row.actorId)).map(({fileIds:_files,authorization:_auth,...row})=>row);
+    else if(name==='paperCaptureRepairUploads')result[name]=records.filter(row=>paperOwners.has(row.actorId)).map(({authorization:_auth,commandId:_command,terminalCommandId:_terminal,filesCollectedAt:_collected,stagedChunks:_staged,...row})=>({...row,chunksAvailable:!_collected,unacknowledgedChunks:(_staged??[]).filter((chunk:Row)=>!row.chunks.some((saved:Row)=>saved.index===chunk.index))}));
+    else if(name==='paperCaptureRepairCommands')result[name]=records.filter(row=>paperOwners.has(row.actorId)).map(({authorization:_auth,...row})=>row);
     else if (name === 'assistantSessions') result[name] = records.filter(row => allowedAssistants.has(row.id));
     else if (name === 'assistantMessages') result[name] = records.filter(row => allowedAssistants.has(row.sessionId));
     else if (name === 'assistantArtifactDrafts') result[name] = records.filter(row => allowedAssistants.has(row.sessionId))
@@ -314,6 +324,7 @@ export function anonymizeSharedAttribution(store: InMemoryStoreService, studentI
       if (!affected.has(recordId(row))) return row;
       if(name==='guidanceCalendarArrangements')return{...row,...(row.createdBy===actorId?{createdBy:null,creatorDeletionHash:privacyHash({id:actorId})}:{}),history:row.history.map((revision:Row)=>revision.actorId===actorId?{...revision,actorId:null,commandId:null,actorDeletionHash:privacyHash({id:actorId}),reason:'',input:{...revision.input,entries:revision.input.entries.map((entry:Row)=>entry.sourceKind==='review'?{...entry,rescheduleReason:''}:entry)},entries:revision.entries.map((entry:Row)=>({...entry,input:entry.input.sourceKind==='review'?{...entry.input,rescheduleReason:''}:entry.input}))}:revision)};
       if(name==='studioCalendarCommands')return row;
+      if(paperCaptureCollections.includes(name as typeof paperCaptureCollections[number]))return row;
       if(name==='controlledContrastPreviews')return row;
       if (name === 'assistantTeachingAssignments') return row;
       if (name === 'assistantPracticeAssignments') return row;

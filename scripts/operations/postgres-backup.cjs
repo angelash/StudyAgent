@@ -21,7 +21,7 @@ async function summary(client) {
   const sourceIntegrity = require('./whiteboard-source-integrity.cjs');
   sourceIntegrity.validate((await client.query(sourceIntegrity.sql)).rows);
   const practiceIntegrity = require('./assistant-practice-integrity.cjs');
-  practiceIntegrity.validate((await client.query(practiceIntegrity.sql)).rows);
+  await practiceIntegrity.validateQuery(async sql=>(await client.query(sql)).rows);
   const versions = (await client.query('SELECT version FROM schema_migrations ORDER BY version')).rows.map(r => r.version);
   readerGuard.readyState(versions);
   return { schemaVersions: versions, revision: Number((await client.query('SELECT revision FROM store_meta WHERE id=1')).rows[0].revision),
@@ -38,7 +38,7 @@ async function createPostgresBundle({ connectionString, pgBin, dataDir, destinat
       ? (await client.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state ?? 'missing' : undefined;
     database = await summary(client);
     readerGuard.assertReady(guard, database.schemaVersions);
-    refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioTopicWhiteboardVisuals','studioTopicWhiteboards','whiteboardQuestionVisuals','whiteboardQuestionTurns','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions','studioMaterialAssets')")).rows);
+    refs = referencesFromRecords((await client.query("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioTopicWhiteboardVisuals','studioTopicWhiteboards','whiteboardQuestionVisuals','whiteboardQuestionTurns','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions','studioMaterialAssets','paperImageUploads','paperCapturePages','paperCaptureCommands','paperCaptureDerivations','paperCaptureFileAssets','paperCaptureRepairUploads')")).rows);
     if (refs.size && !dataDir) fail('data_dir_required_for_referenced_files');
     root = freshDestination(destination, [dataDir, assets]);
     fs.writeFileSync(within(root, '.study-backup-incomplete'), 'PostgreSQL backup has not passed verification.\n', { flag: 'wx', mode: 0o600 });
@@ -71,7 +71,7 @@ async function verifyPostgresBundle({ bundle, pgBin, incomplete = false }) {
   readerGuard.readyState(manifest.database?.schemaVersions);
   const paths = new Map(), portable = new Set();
   for (const file of manifest.files) {
-    if (!/^(database\/postgres\.dump|data\/(?:processing|student-media|classroom-visuals|topic-whiteboard-visuals|whiteboard-question-visuals|studio-materials|studio-uploads|project-assets|project-uploads)\/.+|assets\/.+)$/.test(file.path) || portable.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
+    if (!/^(database\/postgres\.dump|data\/(?:processing|student-media|classroom-visuals|topic-whiteboard-visuals|whiteboard-question-visuals|studio-materials|studio-uploads|project-assets|project-uploads|paper-images|paper-image-uploads|paper-repair-uploads)\/.+|assets\/.+)$/.test(file.path) || portable.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
     const actual = within(root, file.path), stat = fs.statSync(actual);
     if (!stat.isFile() || stat.size !== file.size || digest(actual) !== file.sha256) fail('bundle_integrity_failed');
     paths.set(file.path, file); portable.add(file.path.toLowerCase());

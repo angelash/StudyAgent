@@ -11,7 +11,7 @@ export function ActivityWorkspaceNavigation({ context, active = 'courses', activ
   onRequestNavigate?: WorkspaceNavigation['onRequestNavigate'];
 }) {
   const owner=useSessionUser();
-  useWorkspaceExitGuard(owner?.id??'',Boolean(owner&&onRequestNavigate),{request:(href,proceed)=>onRequestNavigate?.(href,proceed),isInternal:sameWorkspaceActivity});
+  useWorkspaceExitGuard(owner?.id??'',Boolean(owner&&onRequestNavigate),{request:(href,proceed,kind)=>onRequestNavigate?.(href,proceed,kind),isInternal:sameWorkspaceActivity});
   const learning = context?.audience === 'student' ? { studentId: context.studentId, subject: context.subject } : context?.audience === 'independent' ? { subject: 'math' as const, audience: 'self' as const } : undefined;
   return <StudioNavigation active={active} context={learning} contextState={learning?'ready':pending?'pending':'unavailable'} layout={focus?'focus':'default'} activityKey={activityId} onRequestNavigate={onRequestNavigate} />;
 }

@@ -14,7 +14,7 @@ import { verifyImmutableFile } from '../../infrastructure/immutable-files';
 import { visualFile,visualDigest } from '../learning/classroom-visual-storage';
 import type { ClassroomVisualRecord } from '@study-agent/contracts';
 import { StudioMaterialMaintenanceService } from '../learning/studio-material-maintenance.service';
-import { acquireStudioFileLease } from '../../infrastructure/studio-file-coordination';
+import { acquireStudioFileLease,assertNoFileLinks } from '../../infrastructure/studio-file-coordination';
 import { projectFileRoot, verifyProjectFile } from '../learning/project-file-storage';
 import { scheduleProjectFileCollection } from '../learning/project-file.service';
 import type { ProjectAssetRecord } from '../learning/project-file-record';
@@ -22,6 +22,14 @@ import type { StudioTopicWhiteboard } from '@study-agent/contracts';
 import { topicVisualDescriptorFile } from '../learning/topic-whiteboard-visual-storage';
 import { topicVisualTaskKind, topicVisualPurgeKind } from '../learning/topic-whiteboard-visual-access';
 import { questionVisualTaskKind, questionVisualPurgeKind } from '../learning/whiteboard-question-visual-access';
+import {anonymizePaperCapturePrivacy,paperCaptureAccountRetainedStudents} from '../learning/paper-capture-privacy';
+import {paperCaptureFileReferenced,schedulePaperCaptureCleanup} from '../learning/paper-capture-cleanup';
+import {paperImageFilePath,type PaperImageFileReceipt} from '../learning/paper-capture-files';
+import {paperCaptureFileId} from '../learning/paper-capture-record';
+import {studioMaterialRoot} from '../learning/studio-material-storage';
+import {resolve} from 'node:path';
+import {paperRepairAsset,schedulePaperRepairCleanup,schedulePaperRepairUploadCleanup} from '../learning/paper-capture-repair.service';
+import {paperRepairUploadChunks} from '../learning/paper-capture-repair-record';
 
 const policyVersion = 'family-data-v1';
 const retentionNotice = '删除会清除当前业务库中的所选资料和学习身份。已下载副本及离线备份需另行管理；运维恢复旧备份时须提供最新删除记录。共同监护档案会继续保留学习事实和复核历史，关闭账号的历史署名改为匿名。';
@@ -64,9 +72,12 @@ export class PrivacyService {
     const children = studentId ? [this.child(actor, studentId)] : this.children(actor);
     const deleted = children.filter(child => this.guardians(child.id).every(id => id === actor.id));
     const retained = children.filter(child => !deleted.includes(child));
+    // An administrator may have authored a shared source without ever being
+    // this child's guardian. Preserve only scopes proved by actual records.
+    if(!studentId){const erased=new Set(deleted.map(child=>child.id)),known=new Set(retained.map(child=>child.id));for(const id of paperCaptureAccountRetainedStudents(this.store,actor.id))if(!erased.has(id)&&!known.has(id)){const child=this.store.find('students',{id});if(child){retained.push(child);known.add(id);}}}
     const selection = studentId ? studentRecords(this.store, studentId) : mergeSelections(accountRecords(this.store, actor.id, actor.principal), ...deleted.map(child => studentRecords(this.store, child.id)));
     const context = { policyVersion, actorId: actor.id, subjectId: studentId ?? actor.id,
-      guardians: children.map(child => ({ id: child.id, guardians: this.guardians(child.id) })) };
+      guardians: children.map(child => ({ id: child.id, guardians: this.guardians(child.id) })),retainedSourceStudents:retained.map(child=>child.id).sort() };
     const blockers = studentId && retained.length ? ['这个档案仍有其他有效监护人，不能由当前账号单独永久删除。']
       : actor.role === 'admin' && this.store.select('bindings', { parentUserId: actor.id, status: 'active' }).length
         ? ['当前管理员仍有关联孩子档案，请先以原家长身份处理监护关系，再核对本人账号删除范围。'] : [];
@@ -192,7 +203,41 @@ export class PrivacyService {
           const path=await verifyProjectFile(asset.id,file),name='projects/'+asset.id+'/'+file.name;entries.push({name,path,size:file.size});projectFiles.push({assetId:asset.id,projectId:asset.projectId,name,size:file.size,sha256:file.sha256,mediaType:file.mediaType});
         }
       }
+      const paperPages=[...(snapshot.accountRecords.paperCapturePages??[]),...snapshot.students.flatMap(child=>child.records.paperCapturePages??[])] as Array<{id:string;attribution:{scope:unknown};versions:Array<{receipt:PaperImageFileReceipt}>}>,paperFiles:unknown[]=[],paperUploads:unknown[]=[],paperLeases=new Set<string>();
+      const paperAudience=(scope:{studentId:string|null;creatorFingerprint:string})=>{
+        const actor=this.store.find('users',{id:snapshot.account.id,status:'active'});if(!actor)throw new ForbiddenException('原导出账号已关闭，请重新核对资料范围。');this.accountActor(actor);
+        if(scope.studentId)this.child(actor,scope.studentId);else if(scope.creatorFingerprint!==privacyHash({id:actor.id}))throw new ForbiddenException('私人纸面资料的原作者已变化。');
+      };
+      const checkPage=(frozen:typeof paperPages[number])=>this.store.requestContext(()=>{
+        const current=this.store.find('paperCapturePages',{id:frozen.id});if(!current||privacyHash(current.attribution.scope)!==privacyHash(frozen.attribution.scope))throw new ConflictException('纸面来源已变化，请重新准备副本。');paperAudience(current.attribution.scope);
+        for(const version of frozen.versions)if(!current.versions.some(row=>row.receipt.version.fingerprint===version.receipt.version.fingerprint&&privacyHash(row.receipt)===privacyHash(version.receipt)))throw new ConflictException('纸面原处理版本已变化，请重新准备副本。');
+      });
+      for(const page of new Map(paperPages.map(page=>[page.id,page])).values()){
+        await checkPage(page);
+        for(const version of page.versions)for(const file of version.receipt.files){
+          const id=paperCaptureFileId(file.role,file.sha256);if(!paperLeases.has(id)){releases.push(await acquireStudioFileLease(studioMaterialRoot(),'paper-file',id));paperLeases.add(id);}
+          await this.store.requestContext(()=>{const asset=this.store.find('paperCaptureFileAssets',{id,state:'available'});if(!asset||asset.bytes!==file.bytes||asset.mediaType!==file.mediaType)throw new ConflictException('纸面原文件正在恢复或回收，请稍后重新准备副本。');});
+          const path=paperImageFilePath(studioMaterialRoot(),file);try{await assertNoFileLinks(path);await verifyImmutableFile(path,file.sha256,file.bytes);}catch{throw new ConflictException('纸面原图或处理图缺失，不能生成缺少原件的资料归档。');}
+          const name='paper/'+file.role+'/'+file.sha256+(file.mediaType==='image/jpeg'?'.jpg':'.png');paperFiles.push({pageId:page.id,versionFingerprint:version.receipt.version.fingerprint,role:file.role,name,size:file.bytes,sha256:file.sha256,mediaType:file.mediaType});
+          if(!included.has(name)){included.add(name);entries.push({name,path,size:file.bytes});}
+        }
+        await checkPage(page);
+      }
+      const uploads=[...(snapshot.accountRecords.paperImageUploads??[]),...snapshot.students.flatMap(child=>child.records.paperImageUploads??[])] as Array<Record<string,any>>;
+      for(const upload of new Map(uploads.filter(row=>row.chunksAvailable).map(row=>[row.id,row])).values()){
+        releases.push(await acquireStudioFileLease(studioMaterialRoot(),'paper-upload',upload.id));
+        const check=()=>this.store.requestContext(()=>{const current=this.store.find('paperImageUploads',{id:upload.id,status:'uploading'});if(!current||current.actorId!==upload.actorId||current.sha256!==upload.sha256||privacyHash(current.chunks)!==privacyHash(upload.chunks)||privacyHash(current.scope)!==privacyHash(upload.scope))throw new ConflictException('纸面分块已变化，请重新准备副本。');paperAudience(current.scope);});
+        await check();for(const chunk of upload.chunks){const path=resolve(studioMaterialRoot(),'paper-image-uploads',upload.id,chunk.index+'-'+chunk.sha256);await assertNoFileLinks(path);await verifyImmutableFile(path,chunk.sha256,chunk.bytes);const name='paper/chunks/'+upload.id.slice('paper_upload_'.length)+'-'+chunk.index;if(!included.has(name)){included.add(name);entries.push({name,path,size:chunk.bytes});}paperUploads.push({uploadId:upload.id,pageId:upload.pageId,name,chunkIndex:chunk.index,size:chunk.bytes,sha256:chunk.sha256,partialUpload:true});}await check();
+      }
+      const repairUploads=[...(snapshot.accountRecords.paperCaptureRepairUploads??[]),...snapshot.students.flatMap(child=>child.records.paperCaptureRepairUploads??[])]as Array<Record<string,any>>,paperRepairFiles:unknown[]=[];
+      for(const upload of new Map(repairUploads.filter(row=>row.chunksAvailable).map(row=>[row.id,row])).values()){
+        releases.push(await acquireStudioFileLease(studioMaterialRoot(),'paper-repair-upload',upload.id));
+        const chunks=[...upload.chunks,...upload.unacknowledgedChunks??[]].sort((a,b)=>a.index-b.index),check=()=>this.store.requestContext(()=>{const current=this.store.find('paperCaptureRepairUploads',{id:upload.id});if(!current||current.actorId!==upload.actorId||current.filesCollectedAt||privacyHash(current.selection)!==privacyHash(upload.selection)||privacyHash(paperRepairUploadChunks(current))!==privacyHash(chunks)||privacyHash(current.scope)!==privacyHash(upload.scope))throw new ConflictException('原件恢复暂存已变化，请重新准备完整副本。');paperAudience(current.scope);});
+        await check();for(const chunk of chunks){const path=resolve(studioMaterialRoot(),'paper-repair-uploads',upload.id,chunk.index+'-'+chunk.sha256);await assertNoFileLinks(path);await verifyImmutableFile(path,chunk.sha256,chunk.bytes);const name='paper/repair-chunks/'+upload.id.slice('paper_repair_upload_'.length)+'-'+chunk.index;if(!included.has(name)){included.add(name);entries.push({name,path,size:chunk.bytes});}paperRepairFiles.push({uploadId:upload.id,target:upload.selection.target,role:upload.selection.role,name,chunkIndex:chunk.index,size:chunk.bytes,sha256:chunk.sha256,partialUpload:true,acknowledged:upload.chunks.some((saved:{index:number})=>saved.index===chunk.index)});}await check();
+      }
       const json = Buffer.from(JSON.stringify(snapshot, null, 2) + '\n'), manifest = Buffer.from(JSON.stringify({ format: 'study-agent-family-media-v1', files: manifests, sources:sourceManifests,visuals:visualManifests,projects:projectFiles,
+        ...(paperFiles.length?{paperImages:paperFiles}:{}),...(paperUploads.length?{partialPaperUploads:paperUploads}:{}),
+        ...(paperRepairFiles.length?{partialPaperRepairUploads:paperRepairFiles}:{}),
         ...(topicFigureManifests.length?{whiteboardFigures:topicFigureManifests}:{}) }, null, 2) + '\n');
       entries.unshift({ name: 'study-agent-family.json', bytes: json, size: json.length }, { name: 'media-manifest.json', bytes: manifest, size: manifest.length });
       const stream=tarArchive(entries,snapshot.exportedAt);stream.once('close',()=>void release());return {stream,receiptId:snapshot.receipt.id};
@@ -212,9 +257,29 @@ export class PrivacyService {
     const receipt = this.receipt(actor, kind, subjectId, command.requestKey, inputHash, preview.counts);
     receipt.erasedStudentHashes = preview.deletedChildren.map(child => privacyHash({ id: child.id }));
     receipt.retainedStudentHashes = preview.retainedChildren.map(child => privacyHash({ id: child.id }));
-    if (!studentId) anonymizeControlledAttribution(this.store, actor.id, receipt);
+    const paperTaskIds=new Set<string>((selection.paperCaptureDerivations??[]).map(row=>String(row.taskId)));
+    for(const row of selection.paperCaptureRepairs??[])paperTaskIds.add(String(row.intent.taskId));
+    if(!studentId){const guarded=new Set(this.store.inspect('paperCaptureRepairCommands').filter(command=>command.authorization.learningAccess?.guardianId===actor.id&&command.result&&'repairId'in command.result).map(command=>String((command.result as {repairId:string}).repairId)));for(const row of this.store.inspect('paperCaptureRepairs'))if(row.attribution.ownerUserId===actor.id||guarded.has(row.id))paperTaskIds.add(row.intent.taskId);}
+    if(!studentId){
+      const guardianDerivations=new Set(this.store.inspect('paperCaptureCommands').filter(command=>command.authorization?.learningAccess?.guardianId===actor.id).map(command=>String(command.result?.derivationId)));
+      for(const derivation of this.store.inspect('paperCaptureDerivations'))if(derivation.attribution.ownerUserId===actor.id||guardianDerivations.has(derivation.id)){
+        paperTaskIds.add(derivation.taskId);const material=derivation.materialId?this.store.find('studioSourceMaterials',{id:derivation.materialId}):null;if(material?.processingTaskId)paperTaskIds.add(material.processingTaskId);
+      }
+      const nativeTasks=this.store.inspect('paperCaptureDerivations').length||this.store.inspect('paperCaptureRepairs').length||this.store.inspect('paperCaptureRepairUploads').length?await this.store.tasks.paperCaptureIntegrityTasks():[];
+      const paperMaterials=this.store.inspect('studioSourceMaterials').filter(material=>material.paperCaptureOrigin)as import('../learning/studio-material-access').StudioMaterialRecord[];
+      for(const material of paperMaterials){const task=nativeTasks.find(task=>task.id===material.processingTaskId);if(task&&(task.ownerUserId===actor.id||material.processingAccess?.guardianId===actor.id))paperTaskIds.add(task.id);}
+      anonymizePaperCapturePrivacy(this.store,actor.id,receipt,true,nativeTasks);anonymizeControlledAttribution(this.store, actor.id, receipt);
+    }
+    for(const id of paperTaskIds){const task=await this.store.tasks.get(id);if(task&&['learning.paper-capture.derive','studio.material.process','learning.paper-capture.repair'].includes(task.kind)&&['queued','running','retry_wait','cancel_requested'].includes(task.state))await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});}
+    for(const row of this.store.inspect('paperCaptureRepairs'))if(paperTaskIds.has(row.intent.taskId)){const asset=paperRepairAsset(this.store,row.intent.selection);if(asset.row.paperCaptureRepair?.repairId===row.id){asset.row.paperCaptureRepair.cleanupRequested=true;await schedulePaperRepairCleanup(this.store,row);}}
+    for(const row of selection.paperCaptureRepairUploads??[])await schedulePaperRepairUploadCleanup(this.store,row as import('../learning/paper-capture-repair-record').PaperRepairUploadRecord);
+    for(const row of this.store.inspect('paperCaptureRepairUploads'))if(row.status==='cancelled'&&!row.filesCollectedAt)await schedulePaperRepairUploadCleanup(this.store,row);
     removeSelected(this.store, selection);
     if (!studentId) anonymizeSharedAttribution(this.store, preview.retainedChildren.map(child => child.id), actor.id);
+    Object.assign(this.store.find('privacyRequests',{id:receipt.id})!,receipt);
+    for(const upload of selection.paperImageUploads??[])await schedulePaperCaptureCleanup(this.store,'paper-upload',String(upload.id),actor.id);
+    for(const upload of this.store.paperImageUploads)if(upload.status!=='uploading'&&!upload.filesCollectedAt)await schedulePaperCaptureCleanup(this.store,'paper-upload',upload.id,upload.actorId);
+    for(const asset of this.store.paperCaptureFileAssets)if(!paperCaptureFileReferenced(this.store,asset.id))await schedulePaperCaptureCleanup(this.store,'paper-file',asset.id,actor.id);
     const sourceHashes=new Set<string>();
     for(const draft of selection.teachingToolRuns??[]){
       const task=await this.store.tasks.get(String(draft.taskId));
@@ -261,7 +326,7 @@ export class PrivacyService {
     }
     for(const material of selection.studioSourceMaterials??[]){
       if(typeof material.sha256==='string'&&/^[a-f0-9]{64}$/.test(material.sha256))sourceHashes.add(material.sha256);
-      if(typeof material.processingTaskId==='string'){const task=await this.store.tasks.get(material.processingTaskId);if(task&&['queued','running','retry_wait','cancel_requested'].includes(task.state))await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});}
+      if(typeof material.processingTaskId==='string'&&!paperTaskIds.has(material.processingTaskId)){const task=await this.store.tasks.get(material.processingTaskId);if(task&&['queued','running','retry_wait','cancel_requested'].includes(task.state))await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});}
     }
     for(const course of selection.sourceCourses??[])for(const source of Array.isArray(course.sources)?course.sources:[])if(typeof source.sha256==='string'&&/^[a-f0-9]{64}$/.test(source.sha256))sourceHashes.add(source.sha256);
     for(const upload of selection.studioMaterialUploads??[])await this.materialMaintenance.scheduleUpload(String(upload.id),String(upload.sha256),actor.id,'privacy:'+receipt.id);

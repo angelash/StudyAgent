@@ -29,10 +29,12 @@ export class StudioMaterialMaintenanceService implements OnApplicationBootstrap,
     const id='task_'+bytesDigest(Buffer.from(JSON.stringify([ownerUserId,kind,requestKey])));await this.store.enqueueTask({id,kind,ownerUserId,requestKey,payloadHash:bytesDigest(Buffer.from(JSON.stringify(payload))),payload,createdAt:new Date().toISOString(),maxAttempts:5});return id;
   }
   async scheduleUpload(id:string,sha256:string,ownerUserId:string,salt:string){const upload=await this.schedule('upload',id,ownerUserId,salt),source=await this.schedule('source',sha256,ownerUserId,salt);return Number(Boolean(upload))+Number(Boolean(source));}
-  private sourceReferenced(sha256:string){
+  sourceReferencedOutsidePaperRepair(sha256:string,repairId:string){return this.sourceReferenced(sha256,repairId);}
+  private sourceReferenced(sha256:string,ignorePaperRepairId?:string){
+    if(this.store.inspect('studioMaterialAssets').some(asset=>asset.id===sha256&&asset.paperCaptureRepair&&asset.paperCaptureRepair.repairId!==ignorePaperRepairId))return true;
     const {materialReferences}=require(resolve(workspaceRoot(),'scripts/operations/material-audit.cjs'));
     const rows=['studioSourceMaterials','sourceCourses','sourceCourseChecks','classroomSessions','studioMaterialUploads','studioMaterialAssets','studioWhiteboards','studioLearningPacks'].flatMap(collection=>this.store.inspect(collection as 'studioSourceMaterials').map(body=>({collection,body})));
-    const references=materialReferences(rows,[],Date.now());if(references.issues.length)throw new StudioFileCollectionPending('material_collection_reference_unknown');return Boolean(references.assets.get(sha256)?.references.size);
+    const references=materialReferences(rows,[],Date.now(),{ignorePaperRepairId});if(references.issues.length)throw new StudioFileCollectionPending('material_collection_reference_unknown');return Boolean(references.assets.get(sha256)?.references.size);
   }
   private uploadReserved(id:string){return this.store.select('studioMaterialAssets',{state:'repairing'}).some(asset=>asset.repair?.uploadId===id);}
   private async candidates(){
@@ -108,6 +110,7 @@ export class StudioMaterialMaintenanceService implements OnApplicationBootstrap,
       }
       let row=this.store.find('studioMaterialAssets',{id:payload.key});
       if(row?.state==='repairing'){retained=true;return;}
+      if((await this.store.tasks.activeStudioSourceTasks(payload.key)).length)throw new StudioFileCollectionPending('material_processing_task_active');
       if(this.sourceReferenced(payload.key)){if(row?.state==='deleting')throw new StudioFileCollectionPending('material_source_reference_changed');retained=true;return;}
       if(!row){row={id:payload.key,state:'available',generation:1,updatedAt:new Date().toISOString()};this.store.append('studioMaterialAssets',row);}
       if(row.state==='deleting'){

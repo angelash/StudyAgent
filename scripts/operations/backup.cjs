@@ -49,7 +49,7 @@ function summary(db) {
   const sourceIntegrity = require('./whiteboard-source-integrity.cjs');
   sourceIntegrity.validate(db.prepare(sourceIntegrity.sql).all());
   const practiceIntegrity = require('./assistant-practice-integrity.cjs');
-  practiceIntegrity.validate(db.prepare(practiceIntegrity.sql).all());
+  practiceIntegrity.validateSqlite(db);
   const guard = db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='study_restore_guard'").get()
     ? db.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()?.state ?? 'missing' : undefined;
   if (db.prepare('PRAGMA integrity_check').get().integrity_check !== 'ok') fail('database_integrity_failed');
@@ -60,10 +60,11 @@ function summary(db) {
     tasks: db.prepare('SELECT state,COUNT(*) AS count FROM durable_tasks GROUP BY state ORDER BY state').all().map(r => ({ ...r })) };
 }
 function references(db) {
-  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioTopicWhiteboardVisuals','studioTopicWhiteboards','whiteboardQuestionVisuals','whiteboardQuestionTurns','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions','studioMaterialAssets')").all());
+  return referencesFromRecords(db.prepare("SELECT collection,body FROM domain_records WHERE collection IN ('importFiles','importPages','processingArtifacts','studentMedia','classroomVisuals','studioTopicWhiteboardVisuals','studioTopicWhiteboards','whiteboardQuestionVisuals','whiteboardQuestionTurns','studioSourceMaterials','studioMaterialUploads','projectAssetUploads','projectAssets','sourceCourses','sourceCourseChecks','classroomSessions','studioMaterialAssets','paperImageUploads','paperCapturePages','paperCaptureCommands','paperCaptureDerivations','paperCaptureFileAssets','paperCaptureRepairUploads')").all());
 }
 function referencesFromRecords(rows) {
   const result = new Map();
+  const paperAssets=new Map(rows.filter(row=>row.collection==='paperCaptureFileAssets').map(row=>{const value=typeof row.body==='string'?JSON.parse(row.body):row.body;return[value.id,value];}));
   const add = (relative, sha256, size, unknownSize = false) => {
     within(path.resolve('.'), relative);
     if (!/^[a-f0-9]{64}$/.test(sha256) || !(unknownSize && size === null) && (!Number.isSafeInteger(size) || size < 0)) fail('invalid_file_reference');
@@ -72,8 +73,24 @@ function referencesFromRecords(rows) {
   };
   for (const row of rows) {
     const value = typeof row.body === 'string' ? JSON.parse(row.body) : row.body;
-    if(row.collection==='studioMaterialAssets'){
-      if(value.state==='repairing')fail('material_original_repair_active');
+    const paperFile=file=>{if(!file||!['original','baseline','derived','pdf'].includes(file.role)||!['image/png','image/jpeg','application/pdf'].includes(file.mediaType)||file.role==='pdf'!==(file.mediaType==='application/pdf'))fail('invalid_paper_capture_file_reference');add('paper-images/'+file.role+'/'+file.sha256+(file.mediaType==='application/pdf'?'.pdf':file.mediaType==='image/jpeg'?'.jpg':'.png'),file.sha256,file.bytes);};
+    if(row.collection==='paperCapturePages'){
+      for(const version of value.versions??[])for(const file of version.receipt.files)paperFile(file);
+    }else if(row.collection==='paperCaptureDerivations'){
+      if(value.pdf)paperFile({role:'pdf',sha256:value.pdf.pdfSha256,bytes:value.pdf.pdfBytes,mediaType:'application/pdf'});
+    }else if(row.collection==='paperImageUploads'){
+      if(!/^paper_upload_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(value.id))fail('invalid_paper_capture_upload_reference');
+      if(!value.filesCollectedAt)for(const chunk of value.chunks??[]){if(!Number.isSafeInteger(chunk.index)||chunk.index<0||chunk.index>11)fail('invalid_paper_capture_chunk_reference');add('paper-image-uploads/'+value.id+'/'+chunk.index+'-'+chunk.sha256,chunk.sha256,chunk.bytes);}
+      if(value.status==='uploading')for(const id of value.preparedFileIds??[]){const asset=paperAssets.get(id);if(!asset||asset.state!=='available')fail('invalid_paper_capture_prepared_reference');paperFile(asset);}
+    }else if(row.collection==='paperCaptureRepairUploads'){
+      if(!/^paper_repair_upload_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(value.id))fail('invalid_paper_repair_upload_reference');
+      if(!value.filesCollectedAt)for(const chunk of require('../../apps/api/dist/apps/api/src/modules/learning/paper-capture-repair-record.js').paperRepairUploadChunks(value)){if(!Number.isSafeInteger(chunk.index)||chunk.index<0||chunk.index>79||!Number.isSafeInteger(chunk.bytes)||chunk.bytes<1||chunk.bytes>1048576)fail('invalid_paper_repair_chunk_reference');add('paper-repair-uploads/'+value.id+'/'+chunk.index+'-'+chunk.sha256,chunk.sha256,chunk.bytes);}
+    }else if(row.collection==='paperCaptureCommands'){
+      if(value.status==='preparing')fail('paper_capture_operation_active');
+    }else if(row.collection==='paperCaptureFileAssets'){
+      if(value.state==='repairing'||value.paperCaptureRepair)fail('paper_capture_original_repair_active');
+    }else if(row.collection==='studioMaterialAssets'){
+      if(value.state==='repairing'||value.paperCaptureRepair)fail('material_original_repair_active');
       if(!['available','deleting'].includes(value.state))fail('invalid_material_asset_state');
     }else if (row.collection === 'sourceCourses'||row.collection==='sourceCourseChecks'||row.collection==='classroomSessions') {
       if(row.collection==='classroomSessions'&&!value.sourceCheckId&&value.sourceCheckSources===undefined)continue;
@@ -206,7 +223,7 @@ async function verifyBundle({ bundle, incomplete = false }) {
   const paths = new Map(), portablePaths = new Set();
   let verifiedCount = 0;
   for (const file of manifest.files) {
-    if (!/^(database\/study-agent\.sqlite3|data\/(?:processing|student-media|classroom-visuals|topic-whiteboard-visuals|whiteboard-question-visuals|studio-materials|studio-uploads|project-assets|project-uploads)\/.+|assets\/.+)$/.test(file.path) || portablePaths.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
+    if (!/^(database\/study-agent\.sqlite3|data\/(?:processing|student-media|classroom-visuals|topic-whiteboard-visuals|whiteboard-question-visuals|studio-materials|studio-uploads|project-assets|project-uploads|paper-images|paper-image-uploads|paper-repair-uploads)\/.+|assets\/.+)$/.test(file.path) || portablePaths.has(file.path.toLowerCase()) || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 0) fail('invalid_manifest_entry');
     const target = within(root, file.path), stat = fs.statSync(target);
     if (!stat.isFile() || stat.size !== file.size || digest(target) !== file.sha256) fail('bundle_integrity_failed');
     paths.set(file.path, file);

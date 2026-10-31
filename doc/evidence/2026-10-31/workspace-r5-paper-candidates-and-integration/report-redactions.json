@@ -1,0 +1,61 @@
+{
+  "scope": "Only private authentication header/session strings are removed from browser result strings. Raw reports and traces remain local. Source bytes, assertions, IDs, counts, error causes and failure status are preserved.",
+  "reports": [
+    {
+      "path": "integration44-whole-browser-first.json",
+      "rawSha256": "fcc1233b5771a50104e2633781256bde6e2ae301585a821f9bde4d086ce6753e",
+      "publishedCanonicalSha256": "30823ff5faceeb0e459d814dd492ce8be65178cba096b37f34faf14511094e31",
+      "redactions": 3,
+      "rawRetainedLocally": true
+    },
+    {
+      "path": "integration44-material45-browser-second.json",
+      "rawSha256": "8240e5657690aabd725cbdfb7594168ed0e8750b60a76def2ba5653f2d6b107c",
+      "publishedCanonicalSha256": "42d8fd23e82aada525a11cea2bb0b90825bb5f0e38fde37d15b4edeea9b07b17",
+      "redactions": 0,
+      "rawRetainedLocally": true
+    },
+    {
+      "path": "integration44-browser-connection-retry-first.json",
+      "rawSha256": "ab377984b65df36bc1cbdbbd176db851e32d97c9d33ac9f4ea3e431405f892db",
+      "publishedCanonicalSha256": "a2b705bc67311ca105f1c25838af6bcc48ddda47bd153f02721cc3331607b84c",
+      "redactions": 0,
+      "rawRetainedLocally": true
+    },
+    {
+      "path": "paper-candidate40-whole-browser-first.json",
+      "rawSha256": "71795d2c7d501be17956b0d6ae47e37822f7048046e5a17c8fec83c32c8b4bf1",
+      "publishedCanonicalSha256": "8da4a467f7d4661af3eab906cd086f1ac15190e8ede121ad17fdd77b65640ad1",
+      "redactions": 0,
+      "rawRetainedLocally": true
+    },
+    {
+      "path": "paper-candidate40-whole-browser-second.json",
+      "rawSha256": "e7cb6fb910d3518f235927887ec12f352986ca1b0f0b3589d63b29b38ff82282",
+      "publishedCanonicalSha256": "6983f62dfa4b6b4adc1bab5b590569c1dadb04a453095bcb922c59a54b2d9c04",
+      "redactions": 0,
+      "rawRetainedLocally": true
+    },
+    {
+      "path": "integration44-material45-browser-first.json",
+      "rawSha256": "ce398bab05dcbe6ea4d30f036a6bb2e33f855876050f23648e72002d96471fb5",
+      "publishedCanonicalSha256": "edfb4f1a564af1ef2d3a54667a826e5f888d013eb87586fff696d665d85d0f0c",
+      "redactions": 0,
+      "rawRetainedLocally": true
+    },
+    {
+      "path": "web-exit42-product-focused-first.json",
+      "rawSha256": "8b0539c2450fa5464aaeb82ef02a08522ff21a4f1158dd1bc2be313f8ed21069",
+      "publishedCanonicalSha256": "7240a18a902ea7d92544ae3c307fa8f95a3c9c49bc19b2487687916a66568fc4",
+      "redactions": 0,
+      "rawRetainedLocally": true
+    },
+    {
+      "path": "web-exit43-product-focused-first.json",
+      "rawSha256": "548a2de4fb19e9370487ce2d468efddd2b0a68130663a80c724714cf10df1d38",
+      "publishedCanonicalSha256": "e38521b5d1caf28e57522bf8183658b1472aea3031a703d6a9ec5bcf59cce304",
+      "redactions": 0,
+      "rawRetainedLocally": true
+    }
+  ]
+}

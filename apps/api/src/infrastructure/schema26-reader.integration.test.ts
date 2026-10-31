@@ -62,14 +62,14 @@ for(const driver of ['sqlite','postgres'] as const)(driver==='sqlite'||configure
   });
   it('migrates actual25 without rewriting business records and the unmodified old reader refuses26 before any write',async()=>{
     const url=await original('u'),before=await snapshot(url);expect(await version(url)).toBe(25);expect(await state(url)).toBe('ready-schema25');
-    const current=new DomainDatabase(url);await current.open();await current.close();expect(await version(url)).toBe(30);expect(await state(url)).toBe('ready-schema30');expect(await snapshot(url)).toEqual(before);
+    const current=new DomainDatabase(url);await current.open();await current.close();expect(await version(url)).toBe(31);expect(await state(url)).toBe('ready-schema31');expect(await snapshot(url)).toEqual(before);
     const bytesBefore=driver==='sqlite'?hash(readFileSync(url)):null,old=new Reader25(url);await expect(old.open()).rejects.toThrow(/restoration|schema|reader/i);
     expect(await snapshot(url)).toEqual(before);if(driver==='sqlite')expect(hash(readFileSync(url))).toBe(bytesBefore);
     expect(()=>oldGuard.assertReady('ready-schema26',Array.from({length:26},(_,index)=>index+1))).toThrow('unsupported_database_schema');
   });
   it('migrates an actual23 database through24,25 and26 with its original business rows intact',async()=>{
     const url=await original('v23',Reader23),before=await snapshot(url);expect(await version(url)).toBe(23);expect(await state(url)).toBe('ready-schema23');
-    const current=new DomainDatabase(url);await current.open();await current.close();expect(await version(url)).toBe(30);expect(await state(url)).toBe('ready-schema30');expect(await snapshot(url)).toEqual(before);
+    const current=new DomainDatabase(url);await current.open();await current.close();expect(await version(url)).toBe(31);expect(await state(url)).toBe('ready-schema31');expect(await snapshot(url)).toEqual(before);
   });
   it('rolls back the26 marker and its migration together and leaves the25 reader usable',async()=>{
     const url=await original('rollback'),before=await snapshot(url);
@@ -77,13 +77,13 @@ for(const driver of ['sqlite','postgres'] as const)(driver==='sqlite'||configure
     else{await sql(url,"CREATE FUNCTION reject_reader26() RETURNS trigger LANGUAGE plpgsql AS 'BEGIN IF NEW.state=''ready-schema26'' THEN RAISE EXCEPTION ''injected_reader26_failure''; END IF; RETURN NEW; END'");await sql(url,'CREATE TRIGGER reject_reader26 BEFORE UPDATE ON study_restore_guard FOR EACH ROW EXECUTE FUNCTION reject_reader26()');}
     const current=new DomainDatabase(url);await expect(current.open()).rejects.toThrow('injected_reader26_failure');expect(await version(url)).toBe(25);expect(await state(url)).toBe('ready-schema25');expect(await snapshot(url)).toEqual(before);
     const old=new Reader25(url);await old.open();await old.close();expect(await version(url)).toBe(25);
-    await sql(url,'DROP TRIGGER reject_reader26'+(driver==='postgres'?' ON study_restore_guard':''));const retry=new DomainDatabase(url);await retry.open();await retry.close();expect(await version(url)).toBe(30);expect(await snapshot(url)).toEqual(before);
+    await sql(url,'DROP TRIGGER reject_reader26'+(driver==='postgres'?' ON study_restore_guard':''));const retry=new DomainDatabase(url);await retry.open();await retry.close();expect(await version(url)).toBe(31);expect(await snapshot(url)).toEqual(before);
   });
-  it('rejects unknown future31 and mismatched or incomplete26 markers without resetting them',async()=>{
+  it('rejects unknown future32 and mismatched or incomplete26 markers without resetting them',async()=>{
     const url=await original('future'),current=new DomainDatabase(url);await current.open();await current.close();const before=await snapshot(url);
-    await sql(url,'INSERT INTO schema_migrations(version,applied_at) VALUES(31,?)',[new Date().toISOString()]);
-    await expect(new DomainDatabase(url).open()).rejects.toThrow('unsupported_database_schema');expect(await version(url)).toBe(31);expect(await snapshot(url)).toEqual(before);
-    await sql(url,'DELETE FROM schema_migrations WHERE version=31');await sql(url,"UPDATE study_restore_guard SET state='ready-schema25' WHERE id=1");
+    await sql(url,'INSERT INTO schema_migrations(version,applied_at) VALUES(32,?)',[new Date().toISOString()]);
+    await expect(new DomainDatabase(url).open()).rejects.toThrow('unsupported_database_schema');expect(await version(url)).toBe(32);expect(await snapshot(url)).toEqual(before);
+    await sql(url,'DELETE FROM schema_migrations WHERE version=32');await sql(url,"UPDATE study_restore_guard SET state='ready-schema25' WHERE id=1");
     await expect(new DomainDatabase(url).open()).rejects.toThrow('minimum_reader_guard_mismatch');expect(await state(url)).toBe('ready-schema25');expect(await snapshot(url)).toEqual(before);
     await sql(url,"UPDATE study_restore_guard SET state='restoring' WHERE id=1");await expect(new DomainDatabase(url).open()).rejects.toThrow('Database restoration is incomplete');expect(await state(url)).toBe('restoring');
   });
@@ -91,9 +91,9 @@ for(const driver of ['sqlite','postgres'] as const)(driver==='sqlite'||configure
     const url=await original('backup'),backup=require(join(root,'scripts/operations/backup.cjs')),legacyBundle=join(folder,'b25'),legacyTarget=join(folder,'r25');
     await backup.createBundle({dataDir:dirname(url),destination:legacyBundle});expect((await backup.verifyBundle({bundle:legacyBundle})).database.schemaVersions.at(-1)).toBe(25);
     await backup.restoreBundle({bundle:legacyBundle,destination:legacyTarget});const restored=join(legacyTarget,'study-agent.sqlite3');expect(await state(restored)).toBe('ready-schema25');
-    const reader=new DomainDatabase(restored);await reader.open();await reader.close();expect(await state(restored)).toBe('ready-schema30');
-    const bundle=join(folder,'b26'),destination=join(folder,'r26');await backup.createBundle({dataDir:legacyTarget,destination:bundle});expect((await backup.verifyBundle({bundle})).database.schemaVersions.at(-1)).toBe(30);
-    await backup.restoreBundle({bundle,destination});const location=join(destination,'study-agent.sqlite3');expect(await state(location)).toBe('ready-schema30');
+    const reader=new DomainDatabase(restored);await reader.open();await reader.close();expect(await state(restored)).toBe('ready-schema31');
+    const bundle=join(folder,'b26'),destination=join(folder,'r26');await backup.createBundle({dataDir:legacyTarget,destination:bundle});expect((await backup.verifyBundle({bundle})).database.schemaVersions.at(-1)).toBe(31);
+    await backup.restoreBundle({bundle,destination});const location=join(destination,'study-agent.sqlite3');expect(await state(location)).toBe('ready-schema31');
     await expect(new Reader25(location).open()).rejects.toThrow(/restoration|schema|reader/i);const current=new DomainDatabase(location);await current.open();await current.close();
   });
 });

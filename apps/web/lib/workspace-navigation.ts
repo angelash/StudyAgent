@@ -11,7 +11,7 @@ export type WorkspaceNavigation = {
   contextState?: 'ready' | 'pending' | 'unavailable';
   layout?: 'default' | 'focus';
   activityKey?: string;
-  onRequestNavigate?: (href: string, proceed: () => void) => void;
+  onRequestNavigate?: (href: string, proceed: () => void, kind?: 'commit') => void;
   recent?: Array<{ title: string; detail?: string; href: string }>;
   onNavigate?: (view: StudioView) => void;
   onCreate?: (returnFocus?: HTMLElement | null) => void;

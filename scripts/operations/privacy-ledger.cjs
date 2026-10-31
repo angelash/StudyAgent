@@ -17,7 +17,13 @@ function validateReceipt(receipt) {
     receipt.erasedStudentHashes.some(value => receipt.retainedStudentHashes.includes(value)) ||
     (receipt.kind === 'student_delete' && (receipt.erasedStudentHashes.length !== 1 || receipt.erasedStudentHashes[0] !== receipt.subjectHash || receipt.retainedStudentHashes.length)) ||
     !receipt.counts || !['records', 'observations', 'activities', 'plans', 'conversations', 'accessRecords'].every(key => Number.isSafeInteger(receipt.counts[key]) && receipt.counts[key] >= 0)) fail('invalid_privacy_deletion_receipt');
-  return Object.fromEntries(['id', 'actorId', 'kind', 'subjectHash', 'requestKey', 'inputHash', 'completedAt', 'counts', 'erasedStudentHashes', 'retainedStudentHashes'].map(key => [key, receipt[key]]));
+  const result=Object.fromEntries(['id', 'actorId', 'kind', 'subjectHash', 'requestKey', 'inputHash', 'completedAt', 'counts', 'erasedStudentHashes', 'retainedStudentHashes'].map(key => [key, receipt[key]]));
+  if(receipt.retainedPaperSources!==undefined){
+    const proofs=receipt.retainedPaperSources;
+    if(receipt.kind!=='account_delete'||!Array.isArray(proofs)||proofs.length>100000||proofs.some(proof=>!proof||Object.keys(proof).sort().join(',')!=='collection,fingerprints,id'||!['paperCapturePages','paperCaptureGroups','paperCaptureDerivations','paperCaptureRepairs'].includes(proof.collection)||typeof proof.id!=='string'||!proof.id.length||proof.id.length>180||!Array.isArray(proof.fingerprints)||!proof.fingerprints.length||proof.fingerprints.length>1000||proof.fingerprints.some(value=>!isHash(value))||new Set(proof.fingerprints).size!==proof.fingerprints.length)||new Set(proofs.map(proof=>proof.collection+'\0'+proof.id)).size!==proofs.length)fail('invalid_paper_capture_retained_source_proof');
+    result.retainedPaperSources=proofs.map(({collection,id,fingerprints})=>({collection,id,fingerprints:[...fingerprints]}));
+  }
+  return result;
 }
 function makeLedger(receipts) {
   const entries = receipts.filter(receipt => receipt.kind.endsWith('_delete')).map(validateReceipt).sort((a, b) => a.completedAt.localeCompare(b.completedAt) || a.id.localeCompare(b.id));
@@ -63,10 +69,13 @@ async function applyDeletionLedger(query, ledger) {
     const actor = (store.users ?? []).find(user => user.id === receipt.actorId);
     if (receipt.kind === 'account_delete' && actor &&
       (!['parent','admin'].includes(actor.role) || helpers.privacyHash({ id: actor.id }) !== receipt.subjectHash ||
-        actor.role === 'admin' && (receipt.erasedStudentHashes.length || receipt.retainedStudentHashes.length))) fail('privacy_ledger_account_identity_conflict');
+        actor.role === 'admin' && receipt.erasedStudentHashes.length)) fail('privacy_ledger_account_identity_conflict');
+    // Retained paper-source hashes do not establish a guardian binding.
+    // Admin account closure still cannot erase a child through this ledger.
     const selected = helpers.mergeSelections(...erased.map(child => helpers.studentRecords(store, child.id)),
       receipt.kind === 'account_delete' && actor ? helpers.accountRecords(store, actor.id, actor.principal) : {});
     if (receipt.kind === 'account_delete') helpers.anonymizeControlledAttribution(store, receipt.actorId, receipt);
+    if (receipt.kind === 'account_delete') require('../../apps/api/dist/apps/api/src/modules/learning/paper-capture-privacy.js').anonymizePaperCapturePrivacy(store,receipt.actorId,receipt);
     helpers.removeSelected(store, selected);
     if (receipt.kind === 'account_delete') helpers.anonymizeSharedAttribution(store, retained.map(child => child.id), receipt.actorId);
     const previous = store.privacyRequests.find(row => row.id === receipt.id || row.actorId === receipt.actorId && row.requestKey === receipt.requestKey);

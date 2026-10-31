@@ -21,7 +21,8 @@ async function fixture(page: Page, children = 0) {
   return { actor, profiles, call, href, add };
 }
 async function openText(page: Page) {
-  await page.getByRole('button', { name: /^(添加文字资料|继续文字资料草稿)$/ }).click();
+  await page.getByRole('button',{name:'添加资料',exact:true}).click();
+  await page.getByRole('dialog', { name: '添加学习资料', exact: true }).getByRole('button', { name: /^(添加文字资料|继续文字资料草稿) 粘贴或编辑完整文字$/ }).click();
   const dialog = page.getByRole('dialog', { name: '添加文字资料', exact: true }); await expect(dialog).toBeVisible(); return dialog;
 }
 async function publish(page: Page, call: Awaited<ReturnType<typeof fixture>>['call'], slot: number) {
@@ -74,7 +75,7 @@ test('workspace materials: unavailable storage protects full text across browser
   await expect(dialog.getByLabel('完整文字', { exact: true })).toHaveValue(full); await page.evaluate(() => window.history.back()); await expect(dialog.getByRole('button', { name: '已保留副本，关闭编辑', exact: true })).toBeDisabled(); expect(new URL(page.url()).searchParams.get('tab')).toBe('personal');
   await dialog.getByRole('button', { name: '继续编辑', exact: true }).click(); await expect(dialog.getByLabel('完整文字', { exact: true })).toHaveValue(full); await dialog.getByRole('button', { name: '关闭文字编辑', exact: true }).click();
   const downloading = page.waitForEvent('download'); await dialog.getByRole('button', { name: '下载完整文字稿', exact: true }).click(); const downloaded = await downloading; const bytes = await readFile((await downloaded.path())!, 'utf8'); expect(JSON.parse(bytes).text).toBe(full);
-  await dialog.getByRole('button', { name: '已保留副本，关闭编辑', exact: true }).click(); await expect(dialog).toHaveCount(0); await expect(page.getByRole('button', { name: '继续文字资料草稿', exact: true })).toBeFocused(); expect((await f.call('/learning/source-courses/materials?view=catalog')).length).toBe(0);
+  await dialog.getByRole('button', { name: '已保留副本，关闭编辑', exact: true }).click(); await expect(dialog).toHaveCount(0); await expect(page.getByRole('button', { name: '添加资料', exact: true })).toBeFocused(); expect((await f.call('/learning/source-courses/materials?view=catalog')).length).toBe(0);
 });
 
 test('workspace materials: real PDF pages, source course, classroom and project preserve the source return', async ({ page }) => {
