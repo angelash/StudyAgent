@@ -119,6 +119,8 @@ export class AuthGuard implements CanActivate {
     if (!user || user.status !== 'active') {
       throw new UnauthorizedException('User is unavailable');
     }
+    const requestedActor = request.headers['x-study-actor'];
+    if (requestedActor !== undefined && requestedActor !== user.id) throw new ForbiddenException('学习身份已切换，请在当前账号下重新打开原入口。');
 
     if (user.role === 'student') {
       const access = this.store.find('studentLearningAccess', { studentId: session.studentId, userId: user.id, status: 'enabled', version: session.accessVersion });

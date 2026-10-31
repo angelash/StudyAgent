@@ -1,5 +1,4 @@
 import { Body, Controller, Get, Headers, Param, Patch, Post, Query, Req, Res, StreamableFile, UseGuards, BadRequestException } from '@nestjs/common';
-import { createReadStream } from 'node:fs';
 import { extname } from 'node:path';
 import type { Response } from 'express';
 import { AuthGuard, AuthenticatedRequest } from '../../common/auth.guard';
@@ -13,15 +12,17 @@ export class LibraryController {
   @Get('facets') facets() { return this.library.facets(); }
   @Get('papers') search(@Req() req: AuthenticatedRequest, @Query() query: unknown) { return this.library.search(req.user, query); }
   @Get('papers/:id') preview(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Query('answers') answers?: string) {
-    return this.library.preview(req.user, id, answers === 'true');
+    return this.library.preview(req, id, answers === 'true');
   }
   @Post('papers/:id/publication') publish(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) { return this.library.publish(req.user, id, input); }
   @Patch('papers/:id/bookmark') bookmark(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Body() input: unknown) { return this.library.bookmark(req.user, id, input); }
   @Get('media')
-  media(@Req() req: AuthenticatedRequest, @Query('paperId') id: string, @Query('url') url: string,
+  async media(@Req() req: AuthenticatedRequest, @Query('paperId') id: string, @Query('url') url: string,
     @Headers('range') range: string | undefined, @Res({ passthrough: true }) response: Response) {
     if (typeof id !== 'string' || typeof url !== 'string' || url.length > 3000) throw new BadRequestException('资源参数有误');
-    const media = this.library.media(req.user, id, url);
+    const cancellation = new AbortController(); response.once('close', () => cancellation.abort());
+    const media = await this.library.media(req, id, url, cancellation.signal); let ownsHandle = true;
+    try {
     const type = ({ '.pdf': 'application/pdf', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png',
       '.gif': 'image/gif', '.webp': 'image/webp', '.mp3': 'audio/mpeg', '.mp4': 'video/mp4' } as Record<string, string>)[extname(media.path).toLowerCase()];
     if (!type) throw new BadRequestException('暂不支持此媒体格式');
@@ -42,6 +43,9 @@ export class LibraryController {
       }
       response.status(206).setHeader('Content-Range', `bytes ${start}-${end}/${media.size}`);
     }
-    return new StreamableFile(createReadStream(media.path, { start, end }), { type, length: end - start + 1, disposition: 'inline' });
+    const stream = media.handle.createReadStream({ start, end, autoClose: true, signal: cancellation.signal });
+    const close = () => stream.destroy(); response.once('close', close); stream.once('close', () => response.off('close', close));
+    const result = new StreamableFile(stream, { type, length: end - start + 1, disposition: 'inline' }); ownsHandle = false; return result;
+    } finally { if (ownsHandle) await media.handle.close(); }
   }
 }

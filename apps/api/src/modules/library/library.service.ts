@@ -1,4 +1,4 @@
-import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { z } from 'zod';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
@@ -6,6 +6,9 @@ import { validate } from '../../common/validation';
 import { LibraryRepository } from './library.repository';
 import { cleanPaperHtml } from './library-html';
 import { PaperRow } from './library.types';
+import type { PaperLibraryActor } from './paper-library-authorization';
+import { assertPaperPreviewAccess, assertPaperMediaAccess } from './paper-student-source-access';
+import { openVerifiedLibraryMedia } from './verified-library-media';
 
 export const searchLibrarySchema = z.object({ q: z.string().trim().max(100).optional(),
   grade: z.string().max(30).optional(), subject: z.string().max(30).optional(), province: z.string().max(30).optional(),
@@ -60,30 +63,31 @@ export class LibraryService {
     const result = this.repo.search(query, visible);
     return { ...result, items: result.items.map((item) => this.metadata(item, user)) };
   }
-  private originalItems(row: PaperRow) {
-    const original = this.repo.detail(row.id).questions ?? [];
-    const byId = new Map(original.map((item) => [String(item.uuid), item]));
-    return this.repo.items(row.id).map((item) => ({ position: item.position,
-      question: item.available ? byId.get(item.question_key.replace(/^paper:/, '')) ?? this.repo.question(item.question_key) : null }));
+  private originalItems(row: PaperRow, exact = false) {
+    const byId = exact ? this.repo.verifiedSelectionDetail(row.id, row.detail_sha256) : new Map((this.repo.detail(row.id).questions ?? []).map(item => [String(item.uuid), item]));
+    return this.repo.items(row.id).map((item) => ({ position: item.position, sourceQuestionId: item.question_key,
+      question: item.available ? (exact ? byId.get(item.question_key.replace(/^paper:/, '')) ?? null : byId.get(item.question_key.replace(/^paper:/, '')) ?? this.repo.question(item.question_key)) : null }));
   }
-  private collectMedia(row: PaperRow) {
+  private collectMedia(row: PaperRow, originals = this.originalItems(row)) {
     const urls = new Set<string>();
     const collect = (html: unknown) => cleanPaperHtml(typeof html === 'string' ? html : '', (url) => { urls.add(url); return null; });
-    for (const item of this.originalItems(row)) if (item.question) {
+    for (const item of originals) if (item.question) {
       collect(item.question.title); collect(item.question.answer); collect(item.question.details);
       for (const option of Array.isArray(item.question.options) ? item.question.options : []) collect(typeof option === 'string' ? option : (option as Record<string, unknown>)?.title);
     }
     if (row.pdf_url) urls.add(row.pdf_url);
     return urls;
   }
-  preview(user: InMemoryUserAccount, id: string, answers: boolean) {
+  preview(request: PaperLibraryActor, id: string, answers: boolean) {
+    const user = request.user;
     const row = this.requirePaper(user, id), missingMedia = new Set<string>();
+    assertPaperPreviewAccess(this.store, request, row, this.repo.items(id), answers);
     const media = (url: string) => {
       if (!this.repo.media(url)) { missingMedia.add(url); return null; }
       return `/api/library/media?paperId=${encodeURIComponent(id)}&url=${encodeURIComponent(url)}`;
     };
     const html = (value: unknown) => cleanPaperHtml(typeof value === 'string' ? value : '', media);
-    const questions = this.originalItems(row).map(({ position, question }) => question ? {
+    const questions = this.originalItems(row, user.role === 'student').map(({ position, question }) => question ? {
       position, id: String(question.uuid ?? position), missing: false, type: String(question.type ?? ''),
       html: html(question.title), options: (Array.isArray(question.options) ? question.options : []).map((option) =>
         html(typeof option === 'string' ? option : (option as Record<string, unknown>)?.title)),
@@ -91,17 +95,30 @@ export class LibraryService {
     } : { position, id: `missing-${position}`, missing: true, html: '', options: [] });
     const pdf = row.pdf_url ? media(row.pdf_url) : null;
     return { ...this.metadata(row, user), questions, pdf, missingMedia: missingMedia.size,
+      sourceIdentity: { detailSha256: row.detail_sha256, publicationVersion: this.store.find('paperPublications', { paperId: id })?.version ?? null },
       publication: privileged(user) ? this.store.find('paperPublications', { paperId: id }) ?? null : null,
       source: '本地保存的试卷宝原始资料',
       notice: row.content_state === 'partial' ? `原始资料缺少 ${row.missing ?? '部分'} 道题，已保留缺题位置。` :
         row.content_state === 'pdf' ? '此卷以原始 PDF 保存。尚未完成逐题结构化。' : '结构已恢复；练习结果不自动计入知识点能力评测。' };
   }
-  media(user: InMemoryUserAccount, id: string, url: string) {
-    const row = this.requirePaper(user, id);
-    if (!this.collectMedia(row).has(url)) throw new ForbiddenException('资源不属于当前试卷');
+  private mediaGrant(request: PaperLibraryActor, id: string, url: string) {
+    const row = this.requirePaper(request.user, id), originals = this.originalItems(row, request.user.role === 'student');
+    if (!this.collectMedia(row, originals).has(url)) throw new ForbiddenException('资源不属于当前试卷');
+    assertPaperMediaAccess(this.store, request, row, url, originals);
     const local = this.repo.media(url);
     if (!local) throw new NotFoundException('此媒体尚未完成迁入校验');
-    return local;
+    return { local, source: JSON.stringify({ detailSha256: row.detail_sha256, publicationVersion: this.store.find('paperPublications', { paperId: id })?.version ?? null }) };
+  }
+  async media(request: PaperLibraryActor, id: string, url: string, signal?: AbortSignal) {
+    const initial = this.mediaGrant(request, id, url), opened = await openVerifiedLibraryMedia(initial.local, signal);
+    try {
+      // Hashing is asynchronous: a fresh native snapshot must recheck actual
+      // session/learning/source rights before any HTTP bytes are returned.
+      const current = await this.store.requestContext(() => this.mediaGrant(request, id, url));
+      if (signal?.aborted || current.source !== initial.source || JSON.stringify(current.local) !== JSON.stringify(initial.local))
+        throw new ConflictException('原卷或资源版本已变化，请重新核对后读取。');
+      return opened;
+    } catch (error) { await opened.handle.close(); throw error; }
   }
   publish(user: InMemoryUserAccount, id: string, input: unknown) {
     this.assertResearch(user);

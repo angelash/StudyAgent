@@ -12,11 +12,13 @@ import '../student/today/today.css';
 import { StudyNav } from '../../components/study-nav';
 import { RichMath } from '../../components/rich-math';
 import { PaperPracticeLauncher } from '../../components/paper-practice-launcher';
+import { checkOriginalPaperPdf, readPaperPreview, type PaperReadingSource } from '../../lib/paper-source-read';
 
 type Paper = { id: string; title: string; grade: string; subject: string; province: string; paperType: string;
   year: number | null; state: string; available: number; expected: number | null; missing: number | null;
   hasPdf: boolean; flags: string[]; publicationStatus: string; bookmarked: boolean };
 type Preview = Paper & { notice: string; source: string; missingMedia: number; pdf: string | null;
+  sourceIdentity: PaperReadingSource;
   questions: Array<{ position: number; id: string; missing: boolean; html: string; options: string[]; answerHtml?: string; analysisHtml?: string }> };
 type Overview = { ready: boolean; researchAccess: boolean; measurementAccess: boolean; research: { papers: number; questions: number } | null; published: number; bookmarks: number; notice: string };
 type Facets = Record<string, Array<{ value: string; count: number }>>;
@@ -39,6 +41,9 @@ function ActorLibrary({ identity, embedded, context }: { identity: SessionUser; 
   const [paper, setPaper] = React.useState<Preview | null>(null), [overviewLoading, setOverviewLoading] = React.useState(true), [listing, setListing] = React.useState(false), [busy, setBusy] = React.useState(false);
   const [error, setError] = React.useState(''), [license, setLicense] = React.useState(''), [reviewed, setReviewed] = React.useState(false);
   const [refresh, setRefresh] = React.useState(0), [authenticated, setAuthenticated] = React.useState(false);
+  const alive = React.useRef(true), printRequest = React.useRef<AbortController | null>(null);
+  React.useEffect(() => { alive.current = true; return () => { alive.current = false; printRequest.current?.abort(); }; }, []);
+  React.useEffect(() => () => printRequest.current?.abort(), [selectedId, answers, identity.id, identity.role]);
   const loading = overviewLoading || listing;
   React.useEffect(() => setQuery(search), [search]);
   function update(patch: Partial<PaperLibraryState>) {
@@ -68,13 +73,13 @@ function ActorLibrary({ identity, embedded, context }: { identity: SessionUser; 
   }, [overview?.ready, search, grade, subject, paperState, page, collection, refresh]);
   React.useEffect(() => {
     const controller = new AbortController(); setPaper(null);
-    if (!selectedId) return () => controller.abort();
+    if (!selectedId) { setBusy(false); return () => controller.abort(); }
     setBusy(true); setError('');
-    apiRequest<Preview>('/library/papers/' + encodeURIComponent(selectedId) + '?answers=' + answers, { signal: controller.signal })
+    readPaperPreview<Preview>(identity, selectedId, answers, { signal: controller.signal })
       .then(value => { if (!controller.signal.aborted) setPaper(value); })
       .catch(caught => { if (!controller.signal.aborted) setError(failure(caught)); }).finally(() => { if (!controller.signal.aborted) setBusy(false); });
     return () => controller.abort();
-  }, [selectedId, answers, refresh]);
+  }, [selectedId, answers, refresh, identity.id, identity.role]);
   React.useEffect(() => { setLicense(''); setReviewed(false); }, [selectedId]);
   function select(id: string) { update({ paper: id, position: 0, answers: false, scroll: id ? Math.round(window.scrollY) : location.scroll }); if (id) window.scrollTo({ top: 0 }); }
   React.useEffect(() => {
@@ -90,6 +95,28 @@ function ActorLibrary({ identity, embedded, context }: { identity: SessionUser; 
     try { await apiRequest(`/library/papers/${encodeURIComponent(value.id)}/bookmark`, { method: 'PATCH', body: JSON.stringify({ bookmarked: !value.bookmarked }) });
       setRefresh((v) => v + 1); } catch (caught) { setError(failure(caught)); }
   }
+  async function printPaper() {
+    if (!paper || busy) return;
+    const controller = new AbortController(); printRequest.current?.abort(); printRequest.current = controller; setBusy(true); setError('');
+    const popup = paper.pdf ? window.open('about:blank', '_blank') : null;
+    if (paper.pdf && !popup) { setBusy(false); setError('浏览器阻止了原PDF窗口，请允许弹出窗口后重试。'); return; }
+    if (popup) {
+      popup.opener = null; popup.document.title = '正在核对原PDF';
+      const message = popup.document.createElement('p'); message.textContent = '正在核对原PDF…'; message.setAttribute('role', 'status');
+      popup.document.body.style.margin = '24px'; popup.document.body.style.fontFamily = window.getComputedStyle(document.body).fontFamily; popup.document.body.append(message);
+    }
+    const cancelPopup = () => popup?.close(); controller.signal.addEventListener('abort', cancelPopup, { once: true });
+    try {
+      const current = await readPaperPreview<Preview>(identity, paper.id, answers, { signal: controller.signal, expectedSource: paper.sourceIdentity });
+      if (popup) {
+        if (!current.pdf || current.pdf !== paper.pdf) throw new Error('原PDF来源已变化，请重新打开核对后再打印。');
+        await checkOriginalPaperPdf(identity, current.pdf, controller.signal);
+        if (alive.current && !controller.signal.aborted && !popup.closed) popup.location.replace(apiBaseUrl + current.pdf);
+        else popup.close();
+      } else if (alive.current && !controller.signal.aborted) window.print();
+    } catch (caught) { popup?.close(); if (alive.current && !controller.signal.aborted) setError(failure(caught)); }
+    finally { controller.signal.removeEventListener('abort', cancelPopup); if (alive.current && !controller.signal.aborted) setBusy(false); }
+  }
   async function publish(status: 'published' | 'withdrawn') {
     if (!paper) return; setBusy(true); setError('');
     try { await apiRequest(`/library/papers/${encodeURIComponent(paper.id)}/publication`, { method: 'POST', body: JSON.stringify({
@@ -104,11 +131,11 @@ function ActorLibrary({ identity, embedded, context }: { identity: SessionUser; 
       {error && <div className="studio-error library-no-print" role="alert">{error}<button aria-label="关闭提示" onClick={() => setError('')}>×</button></div>}
       {!authenticated && !loading ? <div className="studio-empty"><h1>把好内容，留给每一次练习。</h1><p>登录后查看可用试卷与收藏。教研账号可审核迁入的原始资料。</p><Link className="studio-primary" href="/parent/login">登录或创建账号 ↗</Link></div> :
         selectedId ? paper?.id === selectedId ? <>
-          <div className="library-toolbar library-no-print"><button className="studio-text-button" onClick={() => select('')}>← 返回题卷库</button><div><button className="studio-secondary" onClick={() => bookmark(paper)}>{paper.bookmarked ? '取消收藏' : '收藏试卷'}</button><button className="studio-secondary" onClick={() => update({ answers: !answers })} disabled={busy}>{answers ? '收起参考答案' : '查看参考答案'}</button><button className="studio-primary" onClick={() => paper.pdf ? window.open(apiBaseUrl + paper.pdf, '_blank', 'noopener') : window.print()}>{paper.pdf ? '打印原PDF' : '打印 / 存为 PDF'}</button></div></div>
+          <div className="library-toolbar library-no-print"><button className="studio-text-button" onClick={() => select('')}>← 返回题卷库</button><div><button className="studio-secondary" onClick={() => bookmark(paper)}>{paper.bookmarked ? '取消收藏' : '收藏试卷'}</button><button className="studio-secondary" onClick={() => update({ answers: !answers })} disabled={busy}>{answers ? '收起参考答案' : '查看参考答案'}</button><button className="studio-primary" disabled={busy} onClick={() => void printPaper()}>{paper.pdf ? '打印原PDF' : '打印 / 存为 PDF'}</button></div></div>
           <article className="library-paper"><header><span className="studio-eyebrow">{paper.grade} / {paper.subject} / {paper.province}</span><h1>{paper.title}</h1><p>{paper.source} · {stateNames[paper.state]} · {publicationNames[paper.publicationStatus]}</p></header>
             <PaperPracticeLauncher key={paper.id} paper={paper} questions={paper.questions} />
             <div className="library-notice">{paper.notice}{paper.missingMedia > 0 && <p>有 {paper.missingMedia} 项媒体暂不可用，预览中已标明。</p>}{paper.flags.length > 0 && <p>来源元数据存在待核查项，请核对题名与适用范围。</p>}</div>
-            {paper.pdf ? <div className="library-pdf library-no-print"><a className="studio-primary" href={`${apiBaseUrl}${paper.pdf}`} target="_blank" rel="noreferrer">打开原始 PDF ↗</a><p>可在 PDF 页面中阅读、打印或保存原件。</p><iframe title="原始试卷 PDF" src={`${apiBaseUrl}${paper.pdf}`} /></div> : paper.state === 'pdf' ? <p>原始 PDF 尚未完成本地校验。</p> : null}
+            {paper.pdf ? <div className="library-pdf library-no-print"><a className="studio-primary" href={`${apiBaseUrl}${paper.pdf}`} target="_blank" rel="noreferrer" aria-disabled={busy} onClick={event => { event.preventDefault(); void printPaper(); }}>打开原始 PDF ↗</a><p>可在 PDF 页面中阅读、打印或保存原件。</p><iframe title="原始试卷 PDF" src={`${apiBaseUrl}${paper.pdf}`} /></div> : paper.state === 'pdf' ? <p>原始 PDF 尚未完成本地校验。</p> : null}
             {paper.questions.map((question) => <section className="library-question" id={"library-question-" + question.position} key={question.position}><span className="library-question-number">{String(question.position).padStart(2, '0')}</span><div>{question.missing ? <p className="library-missing">原始资料缺少此题，保留原位置。</p> : <><RichMath html={localHtml(question.html)} />{question.options.map((option, index) => <RichMath key={index} html={localHtml(option)} />)}{answers && <details open className="library-answer"><summary>参考答案与原始解析</summary>{question.answerHtml ? <RichMath html={localHtml(question.answerHtml)} /> : <p>原始资料未提供可展示答案。</p>}{question.analysisHtml && <RichMath html={localHtml(question.analysisHtml)} />}</details>}{overview?.measurementAccess && <Link className="studio-text-button library-no-print" href={`/admin/measurement?paper=${encodeURIComponent(paper.id)}&position=${question.position}`}>整理为测量素材 ↗</Link>}</>}</div></section>)}
           </article>
           {overview?.researchAccess && <section className="library-review library-no-print"><span className="studio-eyebrow">教研审核 / 可撤回的发布版本</span><h2>确认后进入家庭练习库</h2><p>请核对适用年级、原卷完整度、答案和每一张插图；用于量化评测还需单独审核评分与原子知识点映射。</p><label>来源许可与核查说明<textarea value={license} onChange={(e) => setLicense(e.target.value)} rows={3} placeholder="填写可用于家庭练习的许可依据与核查结果" /></label><label className="library-check"><input type="checkbox" checked={reviewed} onChange={(e) => setReviewed(e.target.checked)} />已逐项复核内容、缺题说明与本地媒体，确认许可依据</label><div><button className="studio-primary" disabled={busy || !reviewed || license.trim().length < 10} onClick={() => publish('published')}>审核并发布</button>{paper.publicationStatus === 'published' && <button className="studio-secondary" disabled={busy || !reviewed || license.trim().length < 10} onClick={() => publish('withdrawn')}>撤回发布</button>}</div></section>}

@@ -17,6 +17,7 @@ import { renderIcs } from '../learning/ics-calendar';
 import { paperReviewKnowledge } from './paper-review-eligibility';
 import { CurriculumService } from '../diagnostics/curriculum.service';
 import { DiagnosticsService } from '../diagnostics/diagnostics.service';
+import { assertNoStudentPaperDiagnostic, paperDiagnosticRestriction } from './paper-student-source-access';
 
 const id = z.string().trim().min(1).max(180), key = z.string().trim().min(8).max(180);
 const hash = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
@@ -44,6 +45,8 @@ export class PaperPracticeService {
     return row;
   }
   private sourceAvailability(user: InMemoryUserAccount, source: PaperPracticeSource): PaperPracticeAvailability {
+    const diagnostic = paperDiagnosticRestriction(this.store, user);
+    if (diagnostic) return { available: false, reason: diagnostic };
     try {
       const current = this.library.practiceSource(user, source.paperId);
       if (current.detail_sha256 !== source.detailSha256) return { available: false, reason: '原卷版本已变化，保留自己的作答，请重新选卷。' };
@@ -87,6 +90,7 @@ export class PaperPracticeService {
   }
   private build(user: InMemoryUserAccount, command: z.infer<typeof selectionSchema>) {
     this.student(user, command.studentId);
+    assertNoStudentPaperDiagnostic(this.store, user, command.studentId);
     if (new Set(command.selection.map(item => item.paperId)).size !== command.selection.length) throw new BadRequestException('同一试卷请合并选择题位');
     const sources: PaperPracticeSource[] = [], items: PaperPracticeItemRecord[] = [];
     for (const selection of command.selection) {

@@ -6,6 +6,8 @@
 
 ## 1. 完整目标与范围
 
+2026-10-31原卷读取第二批：[172](172-paper-selection-business-and-student-source-access.md)十份准确源码已归并，接原工作台学生明确阅读、当前HTML/PDF打印重核、诊断期间旧入口防旁路及同句柄HTTP响应。媒体9/0/0、SQLite13/0/0和另批撤权1/0/13过滤跳过、真实PG最终14/0/0、既有十二文件186/0/0分列。生产浏览器原4/3、2/1与修复后7/0、等待真实终态的另批3/0保留，不合计为一次结果，见[证据](../evidence/2026-10-31/workspace-r5-paper-source-access/receipt.json)。主干contracts/API/Web检查0，正式24/revision187及1063运行文件保持，仅本地，自己的PG/API/Web已停止。下一步真实导出/回收worker、完整业务接口与产物下载，然后原工作台选题/完整稿/双标签/禁存储/未知结果UI；R5其他/R6全教材GESP/R7/R8及原72/WS、教师/实机/实体打印/真人全部范围继续active。
+
 2026-10-31选题业务第一批：[172](172-paper-selection-business-and-student-source-access.md)七份源码已归并，接通本人清单/完整原命令与原回执、只读准确来源目录、学生明确阅读及测量排除。最终SQLite16/0/0、真实PG16/0/0分别实际验证诊断选题排除；既有十一文件170/0/0另批通过，见[证据](../evidence/2026-10-31/workspace-r5-paper-selection-business/receipt.json)。来源和会话当前授权、并发修订回滚、准确原结果及诊断期间清空保持。接下来继续172第二批旧正文/参考/媒体/PDF/打印防旁路、同句柄响应及原视图阅读，再接完整导出worker和工作台UI；正式24/revision187及1063运行文件保持，未推送部署，全部原范围继续active。
 
 2026-10-31业务接续：[172](172-paper-selection-business-and-student-source-access.md)先固定完整选题/阅读原命令、只读准确来源目录、学生曝光进入测量排除，以及旧正文/参考/媒体/PDF/打印防旁路和同句柄响应。171已本地提交44272f9b；先在新隔离副本接业务事务，再接旧入口与原视图，之后继续实际导出/回收worker和完整工作台UI。正式24/revision187及运行构建保持，全部原目标继续active。
@@ -61,7 +63,7 @@
 | R2 完整练习 | 147 D2；来源→预检→候选/安排→孩子任务→原生答案与理由/帮助/媒体→恢复/完成；撤回；成人/AI教学生成/复核/采用/本人作答 | in_progress；[156完整UI](156-assistant-practice-workspace-ui.md)已实现并完成第九轮整站隔离回归；[157撤回与25版读取栅栏](157-practice-assignment-withdrawal-and-schema25.md)已实现并完成第二轮整站隔离验证；[158持久生成与本人作答](158-generated-teaching-practice-persistence.md)的成人与孩子AI完整链已实现，并随159共同27候选完成599项整站隔离回归；实际运行与R2整体验收继续 |
 | R3 原因与指导 | 147 D3、XP-I02～I05、105 M3；可观察行为、深原因/替代解释/反证、真实报告、计划确认/修订/暂停/复核 | [159来源到证据指导](159-conversation-clues-to-evidence-guidance.md)的完整观察、真实报告、原规则计划及状态/修改/复盘恢复已实现并随158共同完成599项整站隔离回归；更多原因的审核对照/反证和教师核对继续，无证据不判因 |
 | R4 排期与复测 | 147 D4、XP-I06/J05；日预算/冲突/时区/确认/ICS、真实到期复测、原因关闭/重开及报告复盘 | in_progress；[161原安排与时区](161-guidance-calendar-persistence-and-timezone-protocol.md)已本地提交693d4592；[162教学后保持](162-retention-anchor-and-measurement-compatibility.md)已实现并取得620整站及2161 API/双库隔离证据。任务执行、日程完成、独立保持、真实长期学生结果分别核对，实际运行及整体验收继续 |
-| R5 学习与纸面完整流程 | XP-B～H、105 M1/M2/M5；全课堂状态/参考风格/声音/插问、课程修订/撤回、17题型/项目、采集/多页/OCR/题卷/错题/导出打印 | [164纸面采集与准确恢复](164-paper-capture-intents-pages-and-original-versions.md)及[165成人模型](165-adult-classroom-models-and-evidence.md)已归并schema31源码并有分列证据；[166跨卷导出](166-selected-question-exports-and-paper-review.md)已具第一批有界文档执行器及真实文件/取消证据，应用未实施。声音/全参考状态、错题全来源与其余R5条件继续，整项in_progress |
+| R5 学习与纸面完整流程 | XP-B～H、105 M1/M2/M5；全课堂状态/参考风格/声音/插问、课程修订/撤回、17题型/项目、采集/多页/OCR/题卷/错题/导出打印 | [164纸面采集与准确恢复](164-paper-capture-intents-pages-and-original-versions.md)、[165成人模型](165-adult-classroom-models-and-evidence.md)及[166跨卷导出](166-selected-question-exports-and-paper-review.md)的文档执行器已分批归并；[171持久化](171-paper-library-persistence-privacy-and-native-recovery.md)/[172业务与读取](172-paper-selection-business-and-student-source-access.md)已接schema32、本人清单/准确曝光、旧入口防旁路与原视图阅读打印。真实导出/回收worker、完整接口/产物下载和选题完整稿UI继续；声音/全参考状态、错题全来源与其余R5条件继续，整项in_progress |
 | R6 教材与GESP完整内容 | XP-F/L01、105 M4；三科六年级逐版本/学期/课时正文、映射、教学包、题族、评分与保持；GESP1～4完整目标和内容审核；化学原范围维护 | 逐目标实施；下载/索引/候选不等于人工审核，来源资格和教师结论分列 |
 | R7 工程与跨环境 | XP-J/K/L04、105 M6/M7；模型/记忆/历史、性能/长时/弱网、权限隐私、依赖、守护、双库/媒体/资产恢复、新环境安装 | 分项明确机器/版本/负载与失败，独立恢复和实际功能验收 |
 | R8 真人与最终审计 | XP-L01～L06、105 M7、03 M10；从R1起准备真实设备、教师审核和真人1/3/7/14日观察；原52/72/WS12交叉核对 | 全程保留；缺真实证据保持未完成，逐条证明全部满足后才整体完成 |
