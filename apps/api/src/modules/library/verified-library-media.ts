@@ -16,10 +16,15 @@ export async function openVerifiedLibraryMedia(expected: { path: string; size: n
     if (!before.isFile() || before.size !== BigInt(expected.size)) throw Error('media_identity_changed');
     await assertNoFileLinks(expected.path); const originalPath = await fs.lstat(expected.path, { bigint: true });
     if (!originalPath.isFile() || !same(before, originalPath)) throw Error('media_path_changed');
-    const hash = createHash('sha256'); let bytes = 0;
-    for await (const chunk of handle.createReadStream({ autoClose: false, start: 0, end: expected.size - 1, signal })) {
+    if (signal?.aborted) throw Error('media_read_aborted');
+    const hash = createHash('sha256'), stream = handle.createReadStream({ autoClose: false, start: 0, end: expected.size - 1, signal }); let bytes = 0, streamFailure: Error | null = null;
+    // A pre-aborted ReadStream can emit before its async iterator installs a
+    // listener. Observe it immediately; the iterator still rejects the read.
+    stream.on('error', error => { streamFailure = error; });
+    for await (const chunk of stream) {
       bytes += chunk.length; if (bytes > expected.size) throw Error('media_size_changed'); hash.update(chunk);
     }
+    if (streamFailure) throw streamFailure;
     await assertNoFileLinks(expected.path); const after = await handle.stat({ bigint: true }), currentPath = await fs.lstat(expected.path, { bigint: true });
     if (signal?.aborted || !currentPath.isFile() || bytes !== expected.size || hash.digest('hex') !== expected.sha256 || !same(before, after) || !same(before, currentPath)) throw Error('media_bytes_changed');
     return { ...expected, handle };

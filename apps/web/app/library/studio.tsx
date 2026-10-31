@@ -13,6 +13,8 @@ import { StudyNav } from '../../components/study-nav';
 import { RichMath } from '../../components/rich-math';
 import { PaperPracticeLauncher } from '../../components/paper-practice-launcher';
 import { checkOriginalPaperPdf, readPaperPreview, type PaperReadingSource } from '../../lib/paper-source-read';
+import { usePaperLibraryWorkspace } from '../../lib/use-paper-library-workspace';
+import { PaperLibraryTools, PaperLibraryQuestionChoice, PaperLibraryWorkspacePanel } from './paper-library-workspace';
 
 type Paper = { id: string; title: string; grade: string; subject: string; province: string; paperType: string;
   year: number | null; state: string; available: number; expected: number | null; missing: number | null;
@@ -34,6 +36,7 @@ export function LibraryStudio({ embedded = false, context }: { embedded?: boolea
   return <ActorLibrary key={identity.id + ':' + identity.role} identity={identity} embedded={embedded} context={context} />;
 }
 function ActorLibrary({ identity, embedded, context }: { identity: SessionUser; embedded: boolean; context?: LearningContext }) {
+  const workspace = usePaperLibraryWorkspace(identity);
   const params = useSearchParams(), location = readPaperLibraryState(new URLSearchParams(params.toString()));
   const { collection, query: search, grade, subject, state: paperState, page, paper: selectedId, answers } = location;
   const [overview, setOverview] = React.useState<Overview | null>(null), [facets, setFacets] = React.useState<Facets>({});
@@ -81,6 +84,11 @@ function ActorLibrary({ identity, embedded, context }: { identity: SessionUser; 
     return () => controller.abort();
   }, [selectedId, answers, refresh, identity.id, identity.role]);
   React.useEffect(() => { setLicense(''); setReviewed(false); }, [selectedId]);
+  React.useEffect(() => {
+    const controller = new AbortController(); if (!workspace.ready || !paper || paper.id !== selectedId) return () => controller.abort();
+    void workspace.readMetadata(paper.id, paper.sourceIdentity, controller.signal).catch(caught => { if (!controller.signal.aborted) workspace.setError(failure(caught)); });
+    return () => controller.abort();
+  }, [paper?.id, paper?.sourceIdentity.detailSha256, paper?.sourceIdentity.publicationVersion, selectedId, identity.id, identity.role, workspace.slot, workspace.ready]);
   function select(id: string) { update({ paper: id, position: 0, answers: false, scroll: id ? Math.round(window.scrollY) : location.scroll }); if (id) window.scrollTo({ top: 0 }); }
   React.useEffect(() => {
     if (selectedId || listing || !overview?.ready) return;
@@ -128,6 +136,7 @@ function ActorLibrary({ identity, embedded, context }: { identity: SessionUser; 
   return <Root className={'paper-library' + (embedded ? ' workspace-paper-library' : ' learning-studio')}>
     {!embedded && <div className="library-no-print"><StudyNav current="library" context={context} /></div>}
     <div className="library-layout">
+      <PaperLibraryTools workspace={workspace} />
       {error && <div className="studio-error library-no-print" role="alert">{error}<button aria-label="关闭提示" onClick={() => setError('')}>×</button></div>}
       {!authenticated && !loading ? <div className="studio-empty"><h1>把好内容，留给每一次练习。</h1><p>登录后查看可用试卷与收藏。教研账号可审核迁入的原始资料。</p><Link className="studio-primary" href="/parent/login">登录或创建账号 ↗</Link></div> :
         selectedId ? paper?.id === selectedId ? <>
@@ -136,7 +145,7 @@ function ActorLibrary({ identity, embedded, context }: { identity: SessionUser; 
             <PaperPracticeLauncher key={paper.id} paper={paper} questions={paper.questions} />
             <div className="library-notice">{paper.notice}{paper.missingMedia > 0 && <p>有 {paper.missingMedia} 项媒体暂不可用，预览中已标明。</p>}{paper.flags.length > 0 && <p>来源元数据存在待核查项，请核对题名与适用范围。</p>}</div>
             {paper.pdf ? <div className="library-pdf library-no-print"><a className="studio-primary" href={`${apiBaseUrl}${paper.pdf}`} target="_blank" rel="noreferrer" aria-disabled={busy} onClick={event => { event.preventDefault(); void printPaper(); }}>打开原始 PDF ↗</a><p>可在 PDF 页面中阅读、打印或保存原件。</p><iframe title="原始试卷 PDF" src={`${apiBaseUrl}${paper.pdf}`} /></div> : paper.state === 'pdf' ? <p>原始 PDF 尚未完成本地校验。</p> : null}
-            {paper.questions.map((question) => <section className="library-question" id={"library-question-" + question.position} key={question.position}><span className="library-question-number">{String(question.position).padStart(2, '0')}</span><div>{question.missing ? <p className="library-missing">原始资料缺少此题，保留原位置。</p> : <><RichMath html={localHtml(question.html)} />{question.options.map((option, index) => <RichMath key={index} html={localHtml(option)} />)}{answers && <details open className="library-answer"><summary>参考答案与原始解析</summary>{question.answerHtml ? <RichMath html={localHtml(question.answerHtml)} /> : <p>原始资料未提供可展示答案。</p>}{question.analysisHtml && <RichMath html={localHtml(question.analysisHtml)} />}</details>}{overview?.measurementAccess && <Link className="studio-text-button library-no-print" href={`/admin/measurement?paper=${encodeURIComponent(paper.id)}&position=${question.position}`}>整理为测量素材 ↗</Link>}</>}</div></section>)}
+            {paper.questions.map((question) => <section className="library-question" id={"library-question-" + question.position} key={question.position}><span className="library-question-number">{String(question.position).padStart(2, '0')}</span><div>{question.missing ? <p className="library-missing">原始资料缺少此题，保留原位置。</p> : <><RichMath html={localHtml(question.html)} />{question.options.map((option, index) => <RichMath key={index} html={localHtml(option)} />)}{answers && <details open className="library-answer"><summary>参考答案与原始解析</summary>{question.answerHtml ? <RichMath html={localHtml(question.answerHtml)} /> : <p>原始资料未提供可展示答案。</p>}{question.analysisHtml && <RichMath html={localHtml(question.analysisHtml)} />}</details>}<PaperLibraryQuestionChoice workspace={workspace} paperId={paper.id} position={question.position} />{overview?.measurementAccess && <Link className="studio-text-button library-no-print" href={`/admin/measurement?paper=${encodeURIComponent(paper.id)}&position=${question.position}`}>整理为测量素材 ↗</Link>}</>}</div></section>)}
           </article>
           {overview?.researchAccess && <section className="library-review library-no-print"><span className="studio-eyebrow">教研审核 / 可撤回的发布版本</span><h2>确认后进入家庭练习库</h2><p>请核对适用年级、原卷完整度、答案和每一张插图；用于量化评测还需单独审核评分与原子知识点映射。</p><label>来源许可与核查说明<textarea value={license} onChange={(e) => setLicense(e.target.value)} rows={3} placeholder="填写可用于家庭练习的许可依据与核查结果" /></label><label className="library-check"><input type="checkbox" checked={reviewed} onChange={(e) => setReviewed(e.target.checked)} />已逐项复核内容、缺题说明与本地媒体，确认许可依据</label><div><button className="studio-primary" disabled={busy || !reviewed || license.trim().length < 10} onClick={() => publish('published')}>审核并发布</button>{paper.publicationStatus === 'published' && <button className="studio-secondary" disabled={busy || !reviewed || license.trim().length < 10} onClick={() => publish('withdrawn')}>撤回发布</button>}</div></section>}
         </> : <div className="studio-empty"><p role="status">{busy ? '正在读取原卷与来源…' : '原卷当前无法读取，请核对权限或重试。'}</p><button className="studio-secondary" onClick={() => select('')}>返回题卷库</button></div> : <>
@@ -151,5 +160,9 @@ function ActorLibrary({ identity, embedded, context }: { identity: SessionUser; 
           {total > 20 && <nav className="library-pagination" aria-label="试卷分页"><button className="studio-secondary" disabled={page === 1 || loading} onClick={() => update({ page: page - 1, scroll: 0 })}>上一页</button><span>{page} / {Math.ceil(total / 20)}</span><button className="studio-secondary" disabled={page >= Math.ceil(total / 20) || loading} onClick={() => update({ page: page + 1, scroll: 0 })}>下一页</button></nav>}
         </>}
     </div>
+    <PaperLibraryWorkspacePanel workspace={workspace} originalHref={(paperId, position) => {
+      const query = writePaperLibraryState(new URLSearchParams(window.location.search), { ...location, paper: paperId, position, answers: false }); query.delete('paperDesk');
+      if (embedded) { query.set('view', 'materials'); query.set('tab', 'papers'); } return (embedded ? '/studio' : '/library') + '?' + query;
+    }} />
   </Root>;
 }

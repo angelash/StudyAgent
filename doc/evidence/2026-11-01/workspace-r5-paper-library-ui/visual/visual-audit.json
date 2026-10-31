@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-31T19:06:23.996Z",
+  "reviewer": "assistant visual inspection",
+  "images": [
+    {
+      "path": "visual-first/practice-1.png",
+      "sha256": "a0c8ca0d247254a2dae7afbf641e7fb05b1a1b577a7bf30103c3c6b38f7d16f9"
+    },
+    {
+      "path": "visual-first/practice-2.png",
+      "sha256": "c4bcb6c61edf8a0aba7d51ba4d1f275ae92f68f7a5dc1e614904c9d69c9f7909"
+    },
+    {
+      "path": "browser-ui-seventh/selection-320.png",
+      "sha256": "bf0bbf174b8f2730412191b595e355292e7a7e6d0cafca71da12d81b9311800e"
+    },
+    {
+      "path": "browser-ui-seventh/selection-1440.png",
+      "sha256": "a61b9ca6d515f64dd52d0e519a0174e96b63043e0fb30ca6f0506876accb861d"
+    }
+  ],
+  "observations": [
+    "Two pages show selected original positions 2 then 1, all five circles, formula 3+2, source table and three answer lines without clipped content",
+    "Workbench inherited typography/buttons/dialogs remain legible at 320 and 1440 CSS pixel widths with scrolling inside the panel"
+  ],
+  "humanTeacherReview": false,
+  "physicalPrinterOrNativeWordAcceptance": false
+}

@@ -61,6 +61,12 @@ describe('browser complete paper-library copy and immutable original-command cli
     const first = await sendPaperLibraryCommand(owner, entry, async () => {}, undefined, transport); expect(first.verified).toBe(false); expect(first.entry.phase).toBe('unknown'); expect(posts).toHaveLength(1);
     const second = await sendPaperLibraryCommand(owner, first.entry, async () => {}, undefined, transport); expect(second.verified).toBe(false); expect(posts).toHaveLength(2); expect(posts[0]).toBe(posts[1]); expect(JSON.parse(posts[1]).requestKey).toBe(entry.input.requestKey);
   });
+  it('keeps an explicit diagnosis or revision refusal visible when the subsequent actual original lookup is still null', async () => {
+    const { entry } = await selection(), refusal = '请先完成正在进行的正式诊断，原稿仍保留。';
+    const result = await sendPaperLibraryCommand(owner, entry, async () => {}, undefined, async (_path, options) => { if (options.method === 'POST') throw Error(refusal); return null; });
+    expect(result.verified).toBe(false); expect(result.entry.phase).toBe('unknown'); expect(result.entry.message).toContain(refusal); expect(result.entry.message).toContain('还未查询到原回执');
+    const again = await lookupPaperLibraryCommand(owner, result.entry, undefined, async () => null); expect(again.entry.message).toBe(result.entry.message); expect(again.entry.input).toEqual(entry.input);
+  });
   it('does not send when complete-state retention fails and refuses late successful responses after abort', async () => {
     const { entry, response } = await selection(); let calls = 0; await expect(sendPaperLibraryCommand(owner, entry, async () => { throw Error('Actual caller did not preserve complete state'); }, undefined, async () => { calls++; return response.result; })).rejects.toThrow('did not preserve'); expect(calls).toBe(0);
     const controller = new AbortController(), retained: PaperLibraryJournal[] = [];

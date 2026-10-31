@@ -1,0 +1,47 @@
+const fs=require('node:fs'),path=require('node:path'),zlib=require('node:zlib'),crypto=require('node:crypto');
+const root=path.resolve(__dirname,'../../..'),out=path.join(root,'doc/evidence/2026-11-01/workspace-r5-paper-library-ui'),sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex'),read=name=>JSON.parse(fs.readFileSync(path.join(__dirname,name))),integration=read('integration-first.json'),main=read('main-check-first.json');
+if(fs.existsSync(out)||main.checks.some(row=>row.exit!==0)||!main.allProtectedUnchanged)throw Error('Unused archive and verified main required');for(const row of integration.source)if(sha(fs.readFileSync(path.join(root,row.path)))!==row.sha256)throw Error('Integrated source changed');
+fs.mkdirSync(out,{recursive:true});const files=[];
+function write(name,bytes,originalSha256){if(/private|\.(?:sqlite3?|dump|db|zip)$/.test(name))throw Error('Private artifact refused');const to=path.join(out,name);fs.mkdirSync(path.dirname(to),{recursive:true});fs.writeFileSync(to,bytes,{flag:'wx'});if(sha(fs.readFileSync(to))!==sha(bytes))throw Error('Archive readback failed');files.push({path:name,sha256:sha(bytes),bytes:bytes.length,...(originalSha256?{originalSha256}:{})});}
+function copy(from,name,compress=false){const original=fs.readFileSync(from);write(name,compress?zlib.gzipSync(original):original,sha(original));}
+for(const row of integration.source)copy(path.join(root,row.path),'source/'+row.path);
+const owned=new Set(integration.source.map(row=>row.path));
+for(const name of fs.readdirSync(__dirname).filter(name=>name.endsWith('-source.json.gz'))){const rows=JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(__dirname,name))));write('snapshots/'+name,zlib.gzipSync(JSON.stringify({inputs:rows.map(({data,...row})=>row),recoverableDelta:rows.filter(row=>owned.has(row.path)),unchangedInputsRecoverableFromBaseline:integration.baseline})));}
+for(const name of fs.readdirSync(__dirname).filter(name=>!name.includes('private')&&!name.endsWith('-source.json.gz')&&/\.(json|log|gz)$/.test(name)&&!/^(?:integration-first|main-check-first|main-before-integration)\.json/.test(name)))copy(path.join(__dirname,name),'reports/'+name+(name.endsWith('.gz')?'':'.gz'),!name.endsWith('.gz'));
+for(const name of ['integration-first.json','main-check-first.json','main-before-integration.json.gz'])copy(path.join(__dirname,name),'reports/'+name+(name.endsWith('.gz')?'':'.gz'),!name.endsWith('.gz'));
+for(const name of fs.readdirSync(__dirname).filter(name=>/\.(cjs|js\.txt)$/.test(name)))copy(path.join(__dirname,name),'verification-source/'+name);
+const browserBatches=[];for(const name of fs.readdirSync(__dirname).filter(name=>/^(?:browser-ui-|browser-additional-|browser-control-|browser-ui-debug-)/.test(name)&&fs.statSync(path.join(__dirname,name)).isDirectory())){const dir=path.join(__dirname,name);if(fs.existsSync(path.join(dir,'receipt.json'))){const report=read(name+'/receipt.json');browserBatches.push({batch:name,passed:report.passed,failed:report.failed,buildId:report.buildId,report:'browser/'+name+'/receipt.json.gz'});}
+ for(const file of fs.readdirSync(dir).filter(file=>!file.includes('private')&&/\.(png|json)$/.test(file)))copy(path.join(dir,file),'browser/'+name+'/'+file+(file.endsWith('.json')?'.gz':''),file.endsWith('.json'));
+}
+for(const name of ['actual-practice.pdf','actual-practice.docx'])copy(path.join(__dirname,'browser-ui-seventh',name),'artifacts/'+name);
+for(const name of fs.readdirSync(path.join(__dirname,'visual-first')))copy(path.join(__dirname,'visual-first',name),'visual/'+name);
+const batches=Object.fromEntries(['browser-http-first','postgres-http-first','regression-first','regression-second','regression-third','media-abort-tests-first','client-final-first','postgres-http-second'].map(name=>{const r=read(name+'-vitest.json'),meta=read(name+'.json');return[name,{passed:r.numPassedTests,failed:r.numFailedTests,skipped:r.numPendingTests,success:r.success,sourceUnchanged:meta.sourceUnchanged,exit:meta.results[0].exit,report:'reports/'+name+'-vitest.json.gz'}];}));
+const receipt={at:new Date().toISOString(),scope:'176 actual LibraryStudio selection, native saved directories, complete draft protection, original requests, real export control and exact published PDF/DOCX',baseline:integration.baseline,source:integration.source,main,batches,browserBatches,
+ finalBrowser:{primary:'browser-ui-seventh',primaryPassed:7,additional:'browser-additional-fifth',additionalPassed:6,control:'browser-control-fourth',controlPassed:2,legacy:'legacy-compat-fourth',legacyPassed:8,retries:0,countsAreSeparateBatches:true,buildId:read('web-build-sixth.json').buildId,actualApplicationHttpAndSqlite:true,actualChromiumPdfViewer:true,physicalDeviceTeacherPrinterOrRealLearningEvidence:false},
+ actualChecks:['Original workbench fonts/buttons/WorkspaceDialog and exact original paper positions; ordered cross-paper selection and explicit native save/revision',
+ 'Complete raw strings, local baselines, settings, page and location restore across refresh/import; separate slots and monotonic CAS/clear tombstones',
+ 'Two real tabs retain losing input; storage denial uses actual full-file download/readback before exit; original saved versions remain after local clear',
+ 'Actual lost receipts/null original GET retain full original input/key and later edits; new dependent commands are blocked until exact original lookup/retry',
+ 'Original inputs/receipts remain inspectable after confirmation; native conflict keeps local input and current server projection in a separate new slot',
+ 'Exact old-list deep links outside directory page one and directory page two restore; newer reads fence old linked projections',
+ 'Actual per-book preflight, four native publications, hash-verified PDF/DOCX downloads and full Chromium PDF viewer',
+ 'Actual task cancellation and original-task generation-two retry; a corrupted HTTP body with original size/ETag cannot download, then the exact valid file succeeds',
+ 'Real learning-code identity/guardian withdrawal and switched account headers exercised against SQLite and actual PostgreSQL',
+ 'Injected diagnosis condition keeps the full student draft and original command with no extra saved selection/exposure; this is not a completed diagnostic activity',
+ 'Actual abort after file open/during stream construction was reproduced in isolated child processes, then repaired without process exit or original-byte changes',
+ 'Eight original material/identity/text-recovery/source-return/keyboard journeys pass against the frozen final build'],
+ failuresPreserved:['First seven UI scenarios stopped at the same mistaken open-panel exit guard',
+ 'Second UI: full bytes downloaded, then headless-shell PDF navigation failed; transition rendering and file-input overlay were genuine product defects and were repaired',
+ 'A real client navigation aborted a media hash stream before its iterator observed the error and exited API PID 90452; original child failures and repaired child success retained',
+ 'Supplemental server-conflict journey exposed an old linked projection overriding a refreshed revision; native directory/linked reads now share generation fences',
+ 'Initial regression suite reused an old generated render directory; second passed 77 tests but authored inputs changed during an independent repair, so sourceUnchanged=false and it is not a final batch',
+ 'Initial legacy grep matched no tests; corrected bounded suite has eight zero-retry passes',
+ 'The first control preparation used a displayed queued version after the worker had already claimed it; final new-command preparation rechecks the exact generation before freezing the current task version',
+ 'A later control harness read its generated export array before create committed; the repaired harness waits for the actual native record before observing the task',
+ 'Shared synthetic clients and 50ms business polling hit the unchanged real rate limits; generated loopback-trusted family addresses and one-second task polling fixed QA isolation'],
+ limitations:{fullApiOrWholeSiteNotRepeatedThisSlice:true,nineFile85BatchPrecedesFinalClientMessagePreservationChange:true,finalClientAndMediaThreeFile22ThenFinalProductionBuildCoverFinalInputs:true,diagnosisCaseIsExplicitInjectedCondition:true,headlessDesktopIsNotPhysicalDevice:true,teacherTextbookGespNewMachineWordAndPrinterReviewsRemain:true,real1_3_7_14DayEvidenceRemains:true,pushed:false,deployed:false,formalMigrated:false,original72AndWsStatusesNotRaised:true},
+ readiness:{applicationSchema:32,formalSchema:24,formalRevision:187,protectedFiles:1063,wholeGoal:'active'},
+ privateTracesRetainedLocally:'data/qa/workspace-paper-library-ui-second-20261101',rawRuntimeCredentialsPublished:false,files};
+write('receipt.json',Buffer.from(JSON.stringify(receipt,null,2)+'\n'));
+write('README.md',Buffer.from('# 工作台选题与真实导出界面\n\n13份源码逐SHA归并，继续复用原LibraryStudio、工作台字体、按钮与WorkspaceDialog。实际选题排序/目录/完整稿/原命令、逐册预检/生成/取消/重试及PDF/DOCX读回接通。\n\n最终生产构建：主旅程7/0、补充6/0、控制/文件2/0和原资料兼容8/0分别记账；九文件85/0/0在最终客户端提示变更前运行，随后三文件22/0/0及真实PG2/0/0验证最终客户端。两次真实子进程取消失败与修复后通过、原页面失败、API退出、限流和QA准备失败全部保留。\n\n正式24/revision187及1063运行文件保持，应用32；仅本地提交，未推送部署。完整教材/GESP、其他R5、R7/R8、原72/WS和教师/实机/新机器/实体打印/真人1/3/7/14日继续active。\n'));
+write('archive-manifest.json',Buffer.from(JSON.stringify({at:new Date().toISOString(),files},null,2)+'\n'));console.log(JSON.stringify({sourceFiles:integration.source.length,archivedFiles:files.length,bytes:files.reduce((sum,row)=>sum+row.bytes,0),wholeGoal:'active'}));

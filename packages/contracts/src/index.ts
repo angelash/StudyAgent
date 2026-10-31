@@ -793,3 +793,4 @@ export * from './paper-selection';
 export * from './paper-source-read';
 export * from './paper-export';
 export * from './paper-library-copy';
+export * from './paper-library-view';

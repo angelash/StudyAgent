@@ -18,8 +18,11 @@ async function receipt(owner: PaperLibraryCopyOwner, entry: PaperLibraryJournal,
  * A null GET does not prove that an earlier POST cannot still commit. */
 export async function lookupPaperLibraryCommand(owner: PaperLibraryCopyOwner, value: PaperLibraryJournal, signal?: AbortSignal, transport: PaperLibraryTransport = apiRequest): Promise<PaperLibraryLookup> {
   stopped(signal); const entry = await assertPaperLibraryJournal(owner, structuredClone(value)); stopped(signal);
-  const response = await transport(route(entry.family) + '/' + encodeURIComponent(entry.input.requestKey), { signal }); stopped(signal);
-  if (response === null) return { verified: false, entry: uncertain(entry, '还未查询到原回执，原请求仍可能稍后完成。请保留完整稿，核对或按原命令重试。'), current: null };
+  const response = await transport(route(entry.family) + '/' + encodeURIComponent(entry.input.requestKey), { signal, headers: { 'X-Study-Actor': owner.actorId } }); stopped(signal);
+  if (response === null) {
+    const waiting = '还未查询到原回执，原请求仍可能稍后完成。请保留完整稿，核对或按原命令重试。';
+    return { verified: false, entry: uncertain(entry, (entry.message.includes(waiting) ? entry.message : waiting + (entry.message ? '\n' + entry.message : '')).slice(0, 4000)), current: null };
+  }
   if (!response || typeof response !== 'object' || Object.keys(response).sort().join(',') !== 'current,input,result') throw new Error('服务器返回的原命令不完整，请保留当前完整稿。');
   const original = response as { input: unknown; result: unknown; current: unknown }, input = (entry.family === 'selection' ? paperSelectionCommandSchema : paperExportCommandSchema).parse(original.input);
   if (await hash(input) !== await hash(original.input) || await paperLibraryRequestFingerprint(owner, entry.family, input) !== entry.requestFingerprint) throw new Error('这个请求键对应另一份完整命令，未覆盖当前编辑或重发。');
@@ -33,7 +36,7 @@ export async function sendPaperLibraryCommand(owner: PaperLibraryCopyOwner, valu
   stopped(signal); let entry = uncertain(await assertPaperLibraryJournal(owner, structuredClone(value)), '正在提交原请求；离开或中断后请先核对原结果。');
   await retain(structuredClone(entry)); stopped(signal);
   try {
-    const result = await transport(route(entry.family), { method: 'POST', body: JSON.stringify(entry.input), signal }); stopped(signal);
+    const result = await transport(route(entry.family), { method: 'POST', body: JSON.stringify(entry.input), signal, headers: { 'X-Study-Actor': owner.actorId } }); stopped(signal);
     entry = await receipt(owner, entry, result); stopped(signal); await retain(structuredClone(entry)); stopped(signal);
   } catch (error) {
     stopped(signal); entry = uncertain(entry, message(error)); await retain(structuredClone(entry)); stopped(signal);

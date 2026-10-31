@@ -50,6 +50,18 @@ describe('actual verified media handle bytes and lifecycle', () => {
     }); });
     await expect(openVerifiedLibraryMedia(f.expected, cancellation.signal)).rejects.toThrow('完整字节'); expect(cancellation.signal.aborted).toBe(true); expect(handles[0].fd).toBe(-1);
   });
+  it('rejects cancellation after the actual file open and closes without creating an unobserved aborted stream', async () => {
+    const f = fixture(), cancellation = new AbortController(); capture(() => cancellation.abort());
+    await expect(openVerifiedLibraryMedia(f.expected, cancellation.signal)).rejects.toThrow('完整字节');
+    await new Promise<void>(done => setImmediate(done)); expect(handles).toHaveLength(1); expect(handles[0].fd).toBe(-1); expect(readFileSync(f.path)).toEqual(f.bytes);
+  });
+  it('observes an abort delivered during actual stream construction and rejects while preserving the original bytes', async () => {
+    const f = fixture(), cancellation = new AbortController(); capture(handle => { const original = handle.createReadStream.bind(handle);
+      vi.spyOn(handle, 'createReadStream').mockImplementation(options => { cancellation.abort(); return original(options); });
+    });
+    await expect(openVerifiedLibraryMedia(f.expected, cancellation.signal)).rejects.toThrow('完整字节');
+    await new Promise<void>(done => setImmediate(done)); expect(handles).toHaveLength(1); expect(handles[0].fd).toBe(-1); expect(readFileSync(f.path)).toEqual(f.bytes);
+  });
   it('refuses a real junction without opening its target or altering either generated file', async () => {
     const f = fixture(), link = join(f.root, 'link'), target = join(f.root, 'generated-target'); mkdirSync(target); writeFileSync(join(target, 'original.png'), f.bytes); symlinkSync(target, link, 'junction'); capture();
     await expect(openVerifiedLibraryMedia({ ...f.expected, path: join(link, 'original.png') })).rejects.toThrow('完整字节');

@@ -1,5 +1,7 @@
 # 150 工作台整合与剩余全部开发执行计划
 
+2026-11-01选题与导出界面：[176](176-paper-selection-and-export-workspace-ui.md)的13份源码已逐SHA归入主干，原LibraryStudio接准确跨卷选题/排序、本人保存目录与深链、完整稿/双标签/清空墓碑/禁存储退出、完整原请求与回执，以及真实逐册预检、生成/取消/原任务重试和PDF/DOCX核对下载。新控制命令在同一生成代次下重读当前任务版本后固定全文，已保留原命令始终同键同全文恢复。快速离开引发的媒体hash流中止曾实际退出API，已修复并由两个独立子进程证明保持存活。最终同一生产构建主旅程7/0、补充6/0、控制/文件2/0和既有资料8/0分别通过；九文件85/0/0在最终客户端提示变更前运行，随后三文件22/0/0、实际PG2/0/0及新构建覆盖相应最终源码，不合并为单次结果。独立Poppler两页、原生DOCX结构及各轮失败见[完整证据](../evidence/2026-11-01/workspace-r5-paper-library-ui/receipt.json)。正式24/revision187及1063运行文件保持，应用32，无新迁移，未推送部署；自己的QA API/Web与15449 PG已停止。本批没有重复完整API/整站、教师/真实设备/原生Word或实体打印验收，注入诊断条件不计完整诊断活动。接续其他R5声音/呈现和全部纸面题型边界，再推进R6全教材/GESP、R7/R8与原72/WS及教师/实机/新机器/真人1/3/7/14日；整体active。
+
 日期：2026-10-29。状态：用户已采用149方案，要求整合计划、先本地提交，再持续完成剩余全部开发；整体目标 active。
 
 本计划接续[03原始开发计划](03-development-plan.md)、[92体验与内容总计划](92-experience-and-content-master-plan.md)、[105里程碑](105-development-plan-status-and-next-milestones.md)、[147练习/原因/指导/复盘](147-conversation-practice-guidance-and-review.md)与[原72项需求](experience/requirements.md)，增加[149工作台整改](149-workspace-centered-interaction-restructuring-proposal.md)。当前以本页作为统一执行入口，旧方案和历史验收不删除。

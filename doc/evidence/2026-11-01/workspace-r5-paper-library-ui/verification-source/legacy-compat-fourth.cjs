@@ -1,0 +1,9 @@
+const fs=require('node:fs'),path=require('node:path'),zlib=require('node:zlib'),crypto=require('node:crypto'),{spawnSync}=require('node:child_process');
+const config=JSON.parse(fs.readFileSync(path.join(__dirname,'browser-runtime-third.private.json'))),build=JSON.parse(fs.readFileSync(path.join(__dirname,'web-build-sixth.json'))),running=JSON.parse(fs.readFileSync(path.join(__dirname,'browser-web-sixth.json')));
+if(build.buildId!==running.buildId||!running.ready)throw Error('Exact owned final build required');
+const frozen=JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(__dirname,'web-build-sixth-source.json.gz'))));
+const authored=()=>frozen.every(row=>crypto.createHash('sha256').update(fs.readFileSync(path.join(config.candidate,row.path))).digest('hex')===row.sha256);
+if(!authored())throw Error('Frozen authored inputs changed');const log=fs.openSync(path.join(__dirname,'legacy-compat-fourth.log'),'wx');
+const result=spawnSync(process.execPath,[path.join(config.candidate,'node_modules/@playwright/test/cli.js'),'test','--config',path.join(__dirname,'legacy-compat-fourth.config.cjs')],{
+ cwd:config.candidate,windowsHide:true,env:{...process.env,E2E_API_PORT:String(config.port),E2E_WEB_PORT:String(config.webPort),E2E_ADMIN_PRINCIPAL:config.principal,E2E_ADMIN_PASSWORD:config.credential},stdio:['ignore',log,log],timeout:660000});fs.closeSync(log);
+const unchanged=authored(),report={at:new Date().toISOString(),exit:result.status,error:result.error?.message??null,sourceUnchanged:unchanged,buildId:build.buildId,scope:'eight existing materials, original-paper and shared-navigation journeys; excludes long PDF/model flows and the separately modified unsupported-answer fixture'};fs.writeFileSync(path.join(__dirname,'legacy-compat-fourth.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(report));if(result.status!==0||!unchanged)process.exitCode=1;

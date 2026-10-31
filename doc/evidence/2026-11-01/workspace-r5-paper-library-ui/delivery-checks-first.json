@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-31T19:11:06.531Z",
+  "files": 391,
+  "embeddedSourceRecords": 253,
+  "patterns": [
+    "private-key",
+    "live-key",
+    "bearer-jwt",
+    "credential-url"
+  ],
+  "exactKnownRuntimeSecretsComparedByValueWithoutPublication": 10,
+  "findings": [],
+  "docs": {
+    "checked": 5138,
+    "missing": []
+  },
+  "formalDatabaseUnchanged": {
+    "schema": 24,
+    "revision": 187
+  },
+  "privateTracesRuntimeFilesAndDatabasesExcluded": true,
+  "generatedAccountsOnly": true,
+  "localCommitOnly": true,
+  "wholeGoal": "active"
+}
