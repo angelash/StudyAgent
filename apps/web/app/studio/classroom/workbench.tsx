@@ -5,6 +5,7 @@ import Link from 'next/link';
 import type { AssistantLectureDescriptor, ClassroomTurnIntent, ClassroomTurnView, ClassroomCatalog, ClassroomLesson, ClassroomSessionView, ClassroomUnit } from '@study-agent/contracts';
 import { classroomStepUnits,classroomReplyUnits,classroomReadingMs, classroomPracticeSummary } from '@study-agent/contracts';
 import { apiBaseUrl, apiRequest,getAuthToken } from '../../../lib/api';
+import { playClassroomAudio, readClassroomAudio, releaseClassroomAudio } from '../../../lib/classroom-audio';
 import { useSessionUser } from '../../../lib/session-user';
 import { XiaojiuModelPicker, useXiaojiuModels } from '../../../components/xiaojiu-model-picker';
 import { CourseCover } from './diagram';
@@ -223,6 +224,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const [projectDraft, setProjectDraft] = React.useState(initial.projectDraft), [projectSaved, setProjectSaved] = React.useState(false);
   const [hinted, setHinted] = React.useState<string[]>(initial.hintedQuestionIds ?? []), [questionIndex, setQuestionIndex] = React.useState(() => classroomPracticeSummary(initial.lesson.questions, initial.answers).nextQuestionIndex);
   const [audioState, setAudioState] = React.useState(''), [listening, setListening] = React.useState(false);
+  const [narrationFailed, setNarrationFailed] = React.useState(false);
   const [readingReply, setReadingReply] = React.useState(''), [award, setAward] = React.useState(false);
   const [replySubtitle, setReplySubtitle] = React.useState('');
   const [checkSource,setCheckSource]=React.useState('');
@@ -260,7 +262,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   React.useEffect(()=>{const warn=(event:BeforeUnloadEvent)=>{if(!navigationAllowed.current&&(projectDraft!==session.projectDraft||unprotectedPractice&&!practiceProtected)){event.preventDefault();event.returnValue='';}};window.addEventListener('beforeunload',warn);return()=>window.removeEventListener('beforeunload',warn);},[projectDraft,session.projectDraft,unprotectedPractice,practiceProtected]);
   function requestExit(proceed?:()=>void){pause();exitAction.current=proceed??null;exitFocus.current=window.matchMedia('(max-width:1000px)').matches?document.querySelector<HTMLElement>('.ws-reference-trigger'):document.activeElement as HTMLElement|null;setExit(true);}
   function cancelExit(){exitAction.current=null;setExit(false);}
-  const voicePreview = useVoicePreview({ session, visible: settings, beforePlay: pause, speed });
+  const voicePreview = useVoicePreview({ session, visible: settings, beforePlay: pause, speed, muted });
   const primaryVoices=session.speech.voices.filter(item=>item.classroomPreset),visibleVoices=primaryVoices.length?primaryVoices:session.speech.voices;
   const extraVoices=primaryVoices.length?session.speech.voices.filter(item=>!item.classroomPreset):[];
   const presetNames={warm:'Warm',calm:'Calm',bright:'Bright',gentle:'Gentle',professional:'Professional',lively:'Lively'};
@@ -295,7 +297,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
       if (!standalonePractice && !localStorage.getItem('studyagent.classroom.tour')) openTour();
     } catch { /* Optional UI preferences never prevent a lesson. */ }
     setPage(Math.max(0, Math.floor(initial.cursor / 3)));
-    return () => { mounted.current = false; recognition.current?.abort(); replyAudio.current?.abort.abort(); replyAudio.current?.audio?.pause(); if (replyAudio.current?.url) URL.revokeObjectURL(replyAudio.current.url); };
+    return () => { mounted.current = false; recognition.current?.abort(); replyAudio.current?.abort.abort(); releaseClassroomAudio(replyAudio.current?.audio ?? null); if (replyAudio.current?.url) URL.revokeObjectURL(replyAudio.current.url); };
   }, [initial]);
   React.useEffect(() => {
     try { localStorage.setItem('studyagent.classroom.preferences', JSON.stringify({ speed, voice, dots, handwriting })); } catch { /* Optional. */ }
@@ -334,8 +336,8 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   }, []);
   React.useEffect(() => {
     if (!playing) return;
-    let cancelled = false, timer: ReturnType<typeof setTimeout> | undefined,
-      audio: HTMLAudioElement | null = null, url = '';
+    setNarrationFailed(false);
+    let cancelled = false, preparationTimedOut = false, audio: HTMLAudioElement | null = null, url = '';
     const abort = new AbortController(),epoch=++playEpoch.current;
     narrationAbort.current=abort;const stopped=()=>cancelled||epoch!==playEpoch.current;
     async function play() {
@@ -346,23 +348,28 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
       const units=classroomStepUnits(row.current,step),sentences=units.map(unit=>unit.text),version=row.current.presentation?.version,startSentence = row.current.sentenceCursor ?? 0;
       const pending = new Map<string, Promise<Blob>>();
       function loadSentence(sentenceIndex: number): Promise<Blob> {
-        const key = row.current.id+':'+step.id+':'+(version??'legacy-v1')+':'+units[sentenceIndex].id+':' + voiceRef.current;
+        const captured = row.current, selectedVoice = voiceRef.current;
+        const key = JSON.stringify([captured.ownerUserId, captured.id, captured.contentFingerprint, step.id, version ?? 'legacy-v1', units[sentenceIndex].id, selectedVoice]);
         const cached = cache.current.get(key); if (cached) return Promise.resolve(cached);
         if (!pending.has(key)) pending.set(key, (async () => {
-          const response = await fetch(apiBaseUrl + '/api/learning/classroom/sessions/' + row.current.id + '/narration/' + encodeURIComponent(step.id), {
-            method: 'POST', credentials: 'include', signal: abort.signal, headers: { 'Content-Type': 'application/json',...(getAuthToken()?{Authorization:'Bearer '+getAuthToken()}:{}) },
-            body: JSON.stringify({ voice: voiceRef.current || undefined, sentenceIndex,...(version?{presentationVersion:version,unitId:units[sentenceIndex].id}:{}) }) });
-          if (!response.ok) throw new Error('语音暂时不可用。可以重试，或选择“文字继续”。');
-          const blob = await response.blob();
-          if (!blob.type.startsWith('audio/')) throw new Error('语音返回格式异常，请使用文字继续。');
-          if (!stopped()) cache.current.set(key, blob);
-          return blob;
+          const preparation = new AbortController(), signal = AbortSignal.any([abort.signal, preparation.signal]), timeout = setTimeout(() => preparation.abort(), 45000);
+          try {
+            const response = await fetch(apiBaseUrl + '/api/learning/classroom/sessions/' + captured.id + '/narration/' + encodeURIComponent(step.id), {
+              method: 'POST', credentials: 'include', signal, headers: { 'Content-Type': 'application/json', 'X-Study-Actor': captured.ownerUserId, ...(getAuthToken()?{Authorization:'Bearer '+getAuthToken()}:{}) },
+              body: JSON.stringify({ voice: selectedVoice || undefined, sentenceIndex,...(version?{presentationVersion:version,unitId:units[sentenceIndex].id}:{}) }) });
+            const blob = await readClassroomAudio(response, signal);
+            if (!stopped()) { cache.current.set(key, blob); while (cache.current.size > 4) cache.current.delete(cache.current.keys().next().value!); }
+            return blob;
+          } catch (error) { if (preparation.signal.aborted && !abort.signal.aborted) throw Error('声音准备超时，可以重试或文字继续。'); throw error; }
+          finally { clearTimeout(timeout); }
         })());
         return pending.get(key)!;
       }
       for (let sentenceIndex = startSentence; sentenceIndex < sentences.length; sentenceIndex++) {
       if (stopped()) return;
       if (!mutedRef.current && row.current.speech.available) {
+        const deadline = setTimeout(() => { preparationTimedOut = true; abort.abort(); }, 45000);
+        try {
         setAudioState('正在准备声音…');
         const blob = await loadSentence(sentenceIndex);
         if (stopped()) return;
@@ -372,14 +379,14 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
         await save({ sentenceCursor: sentenceIndex });
         if (stopped()) return;
         setAudioState('老师正在讲解');
-        await new Promise<void>((resolve, reject) => { if (!audio) return resolve(); audio.onended = () => resolve();
-          audio.onerror = () => reject(new Error('声音播放失败，请重试或文字继续。')); void audio.play().catch(reject); });
+        await playClassroomAudio(audio, abort.signal, { onStarted: () => clearTimeout(deadline) });
         if (url) URL.revokeObjectURL(url); url = ''; audio = null; cloudAudio.current = null;
+        } finally { clearTimeout(deadline); }
       } else {
         await save({ sentenceCursor: sentenceIndex });
         if (stopped()) return;
         setAudioState('正在讲解');
-        await new Promise<void>(resolve => { timer = setTimeout(resolve, classroomReadingMs(sentences[sentenceIndex],version) / speedRef.current); });
+        await waitForReplyReading(classroomReadingMs(sentences[sentenceIndex],version) / speedRef.current, abort.signal);
       }
       }
       if (stopped()) return;
@@ -393,14 +400,14 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
         if (!stopped()) { setPlaying(false); setAward(true); setNotice('本节讲解已读。接下来用新情境练习，再决定需要回看哪一段。'); }
       } else await save({ cursor: index + 1 });
     }
-    void play().catch(error => { if (!stopped()) { setNotice(error.message); setPlaying(false); } });
-    return () => { cancelled = true; abort.abort(); if(narrationAbort.current===abort)narrationAbort.current=null; if (timer) clearTimeout(timer); audio?.pause(); cloudAudio.current = null; if (url) URL.revokeObjectURL(url); setAudioState(''); };
+    void play().catch(error => { if (!stopped()) { setNotice(preparationTimedOut ? '声音准备超时，可以重试或文字继续。' : error.message); setNarrationFailed(true); setPlaying(false); } });
+    return () => { cancelled = true; abort.abort(); if(narrationAbort.current===abort)narrationAbort.current=null; releaseClassroomAudio(audio); if (cloudAudio.current === audio) cloudAudio.current = null; if (url) URL.revokeObjectURL(url); setAudioState(''); };
     // Audio completion advances the persisted cursor. Display, mute and voice changes apply
     // at the next sentence; pause cancels the current sentence and any pending fetch.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playing, session.cursor]);
   function pause() { explicitBoard.current=false;setBoardLocation(null);playEpoch.current++;narrationAbort.current?.abort();cloudAudio.current?.pause();setPlaying(false); recognition.current?.abort(); setListening(false);
-    replyAudio.current?.abort.abort(); replyAudio.current?.audio?.pause(); if (replyAudio.current?.url) URL.revokeObjectURL(replyAudio.current.url); replyAudio.current = null; setReadingReply(''); setReplySubtitle(''); setReplyUnit(null); }
+    replyAudio.current?.abort.abort(); releaseClassroomAudio(replyAudio.current?.audio ?? null); if (replyAudio.current?.url) URL.revokeObjectURL(replyAudio.current.url); replyAudio.current = null; setReadingReply(''); setReplySubtitle(''); setReplyUnit(null); }
   function locateBoard(id:string, targetPage:number) { explicitBoard.current=true;setPage(targetPage);setMobile('board');setBoardLocation({id,page:targetPage}); }
   async function selectBoard(id:string,targetPage:number) {
     pause();const epoch=playEpoch.current;
@@ -409,6 +416,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     locateBoard(id,targetPage);
   }
   async function readReply(messageId: string, mode: 'audio'|'text' = 'audio') {
+    voicePreview.stop(); if (mode === 'audio' && mutedRef.current) { setNotice('当前已静音，请先取消静音，或按句阅读回答。'); return; }
     pause(); const operation = { abort: new AbortController(), audio: null as HTMLAudioElement | null, url: '' }; replyAudio.current = operation;
     setReadingReply(messageId); setExpandedReply(''); setReplyReadingMode(mode);
     try {
@@ -428,21 +436,23 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
           setReplySubtitle(unit.text); setReplyUnit({messageId,unitId:unit.id});
           await waitForReplyReading(classroomReadingMs(unit.text, message.speech?.version ?? 'legacy-v1') / speedRef.current, operation.abort.signal);
         } else {
-          const response = await fetch(apiBaseUrl + '/api/learning/classroom/sessions/' + row.current.id + '/narration/' + encodeURIComponent(messageId), {
-            method: 'POST', credentials: 'include', signal: operation.abort.signal,
-            headers: { 'Content-Type': 'application/json', ...(getAuthToken()?{Authorization:'Bearer '+getAuthToken()}:{}) },
-            body: JSON.stringify({ voice: voiceRef.current || undefined, sentenceIndex, ...(message.speech?{presentationVersion:message.speech.version,unitId:unit.id}:{}) }) });
-          if (!response.ok) throw new Error('回答语音暂时不可用，可以按句阅读文字。');
-          const blob = await response.blob(); if (operation.abort.signal.aborted) return;
+          const preparing = new AbortController(), signal = AbortSignal.any([operation.abort.signal, preparing.signal]), timeout = setTimeout(() => preparing.abort(), 45000); let blob: Blob;
+          try {
+            const response = await fetch(apiBaseUrl + '/api/learning/classroom/sessions/' + row.current.id + '/narration/' + encodeURIComponent(messageId), {
+              method: 'POST', credentials: 'include', signal, headers: { 'Content-Type': 'application/json', 'X-Study-Actor': row.current.ownerUserId, ...(getAuthToken()?{Authorization:'Bearer '+getAuthToken()}:{}) },
+              body: JSON.stringify({ voice: voiceRef.current || undefined, sentenceIndex, ...(message.speech?{presentationVersion:message.speech.version,unitId:unit.id}:{}) }) });
+            blob = await readClassroomAudio(response, signal);
+          if (operation.abort.signal.aborted) return;
           operation.url = URL.createObjectURL(blob); operation.audio = new Audio(operation.url); operation.audio.playbackRate = speedRef.current;
           setReplySubtitle(unit.text); setReplyUnit({messageId,unitId:unit.id});
-          await playReplyAudio(operation.audio, operation.abort.signal);
+          await playReplyAudio(operation.audio, signal, { onStarted: () => clearTimeout(timeout) });
           URL.revokeObjectURL(operation.url); operation.url = ''; operation.audio = null;
+          } catch (error) { if (preparing.signal.aborted && !operation.abort.signal.aborted) throw Error('回答声音准备超时，可以按句阅读文字。'); throw error; } finally { clearTimeout(timeout); }
         }
       }
     } catch (error) { if (!operation.abort.signal.aborted) setNotice((error as Error).message); }
     finally {
-      operation.audio?.pause(); if (operation.url) URL.revokeObjectURL(operation.url);
+      releaseClassroomAudio(operation.audio); if (operation.url) URL.revokeObjectURL(operation.url);
       if (replyAudio.current === operation) { replyAudio.current = null; setReadingReply(''); setReplySubtitle(''); setReplyUnit(null); }
     }
   }
@@ -618,7 +628,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
             <button disabled={busy || !projectDraft.trim()} onClick={() => { pause(); setBusy(true); void save({ projectDraft }).then(() => { setProjectSaved(true); setQuestion('请按事实与推断、概念运用、替代解释、证据局限四方面核对我的项目草稿，指出下一步需要验证什么。'); setTab('history'); }).catch(error => setNotice(error.message)).finally(() => setBusy(false)); }}>请老师核对草稿</button>{projectSaved && <p role="status">草稿已保存，重新打开仍可继续。</p>}
           </div>}
         </div>
-        <div className="cl-room-notice" role="status">{session.contentStatus && session.contentStatus !== 'current' && !standalonePractice && <span>正在查看保留的旧版课堂，内容与作答按当时版本保存。{session.contentStatus === 'archived' && <button onClick={() => onNext(lesson.id, 'history', true)}>打开新版讲解</button>}</span>}{notice}{notice && <button onClick={() => setNotice('')} aria-label="关闭提示">×</button>}{notice.includes('语音') && <button onClick={() => { setMuted(true); setPlaying(true); setNotice('已切到文字讲解。'); }}>文字继续</button>}</div>
+        <div className="cl-room-notice" role="status">{session.contentStatus && session.contentStatus !== 'current' && !standalonePractice && <span>正在查看保留的旧版课堂，内容与作答按当时版本保存。{session.contentStatus === 'archived' && <button onClick={() => onNext(lesson.id, 'history', true)}>打开新版讲解</button>}</span>}{notice}{notice && <button onClick={() => setNotice('')} aria-label="关闭提示">×</button>}{narrationFailed && <button onClick={() => { setNarrationFailed(false); setMuted(true); setPlaying(true); setNotice('已切到文字讲解。'); }}>文字继续</button>}</div>
         <div className="cl-session-navigation"><button onClick={() => { pause(); setTab('history'); void save(latest=>({cursor:Math.max(0,latest.cursor-1)})).then(value => setPage(Math.floor(value.cursor / 3))).catch(error => setNotice(error.message)); }} disabled={session.cursor === 0 || busy}>‹ 上一步</button>
           <span>{session.cursor + 1} / {lesson.steps.length}</span><button onClick={() => void advance()} disabled={busy}>下一步 ›</button>{session.status === 'completed' && nextLesson && <button onClick={() => onNext(nextLesson.id)}>下一课 →</button>}</div>
         <ClassroomTurnStatus state={turns} onReturn={turn=>void returnToTurn(turn)} onEdit={command=>{setQuestion(command.message);setIntent(command.intent);setModelId(command.modelId);}}/>

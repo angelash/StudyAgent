@@ -51,11 +51,11 @@ test('text reading reveals whole points, rows and formulas; stop restores the or
 
 test('audio ended advances frozen units, abort settles a pending reader and a new reply rejects late audio',async({page})=>{
   await enter(page); await ask(page); const original=await page.locator('.cl-subtitle').innerText();
-  await page.evaluate(()=>{const instances:any[]=[];class ControlledAudio{playbackRate=1;onended:(()=>void)|null=null;onerror:(()=>void)|null=null;paused=false;constructor(public src:string){instances.push(this);}play(){return Promise.resolve();}pause(){this.paused=true;}}Object.assign(window,{Audio:ControlledAudio,__replyAudios:instances});});
+  await page.evaluate(()=>{const instances:any[]=[];class ControlledAudio extends EventTarget{playbackRate=1;readyState=1;duration=3;currentTime=0;onended:(()=>void)|null=null;onerror:(()=>void)|null=null;paused=true;constructor(public src:string){super();instances.push(this);}play(){this.paused=false;return Promise.resolve();}pause(){this.paused=true;}removeAttribute(name:string){if(name==='src')this.src='';}load(){}}Object.assign(window,{Audio:ControlledAudio,__replyAudios:instances});});
   const requests:any[]=[];await page.route('**/api/learning/classroom/sessions/*/narration/*',async route=>{requests.push(route.request().postDataJSON());await route.fulfill({contentType:'audio/wav',body:wav()});});
   await page.getByRole('button',{name:'♪ 朗读这段回答',exact:true}).click(); await expect(page.locator('.cl-subtitle')).toHaveText('先固定总量。');
   await expect(board(page).locator('tbody tr')).toHaveCount(0);
-  await page.evaluate(()=>(window as any).__replyAudios.at(-1).onended());await expect(page.locator('.cl-subtitle')).toHaveText('第一种分法是十二颗分成三组。');await expect(board(page).locator('tbody tr')).toHaveCount(1);
+  await page.evaluate(()=>(window as any).__replyAudios.at(-1).dispatchEvent(new Event('ended')));await expect(page.locator('.cl-subtitle')).toHaveText('第一种分法是十二颗分成三组。');await expect(board(page).locator('tbody tr')).toHaveCount(1);
   expect(requests[0].presentationVersion).toBe('speech-v2');expect(requests[0].unitId).not.toBe(requests[1].unitId);
   await page.getByRole('button',{name:'■ 停止朗读',exact:true}).click(); await expect(page.locator('.cl-subtitle')).toHaveText(original);
   expect(await page.evaluate(()=>(window as any).__replyAudios.every((audio:any)=>audio.onended===null&&audio.onerror===null))).toBe(true);

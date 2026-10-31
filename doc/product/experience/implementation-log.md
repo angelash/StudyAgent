@@ -512,6 +512,8 @@ SQLite课堂组合35、PG33/2个SQLite专属跳过、完整API1069/34环境跳�
 
 2026-10-27独立138进展：统一模型教研持久后端、schema21、表格/公式完整冻结、取消/原模型恢复和admin本人资料双库恢复已接入，当前完整API1498/0/64环境跳过、PG实际HTTP/原生恢复23/0/1 SQLite专属跳过、API/Web类型通过。所有初失败、双实例冲突、真实限流、无操作取消键和1e999重放红色原件保留；人工发现ISO时间字符串过滤漏项的纯服务红色，下一阶段先修并补HTTP边界。后台UI、旧SDK入口迁移、真实匿名供应商、新模型矩阵、完整浏览器/精确CI及正式schema21交付尚未完成；当前生产仍137/schema20，不能上线当前138或以测试全绿称整体完成。见[138当前完整范围](../138-internal-teaching-tools-unified-models.md)与[基础证据](../../evidence/2026-10-27/teaching-tool-durable-foundation/receipt.json)。72项与M1～M7保持。
 
+2026-11-01声音续批：XP-C01/C02/C04和WS10/WS12沿[177协议](../177-classroom-audio-preparation-cancellation-and-original-samples.md)接通真实原样本完整核对、流预算、准备/停滞超时、精确停止与原生late play保护、统一静音和讲解失败的明确文字继续。新页面10/0、既有四套件31/0零重试、声音/字幕43/0/0及实际PG4/0/0各自记账，全部原失败见[证据](../../evidence/2026-11-01/workspace-r5-classroom-audio/receipt.json)。六份既有MP3复用，动态旁白为明确合成WAV，不是新供应商或物理听感证明；正式24/revision187和1063运行文件保持，应用32，仅本地。原72仍11 implemented/50 in_progress/11 planned/0 verified，WS和教师/设备/全参考状态/教材GESP/真人条件不提升。
+
 
 ### 2026-10-28 138实际运行交付
 

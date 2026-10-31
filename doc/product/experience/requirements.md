@@ -12,6 +12,8 @@
 
 2026-10-31纸面续批：[164采集与原件恢复](../164-paper-capture-intents-pages-and-original-versions.md)已受控归并schema31，[本批证据](../../evidence/2026-10-31/workspace-r5-paper-candidates-and-integration/receipt.json)分列完整回归原失败、实际短路径/PG/新菜单与连接复验。XP-G02～G06、H03～H06及相关F03/K05/K06继续原状态，未以本批关闭教师/实机/真人、任意目录恢复或R5其余内容条件；72项仍11/50/11/0，WS不提升。
 
+2026-11-01声音续批：XP-C01/C02/C04和WS10/WS12沿[177协议](../177-classroom-audio-preparation-cancellation-and-original-samples.md)接通真实原样本完整核对、流预算、准备/停滞超时、精确停止与原生late play保护、统一静音和讲解失败的明确文字继续。新页面10/0、既有四套件31/0零重试、声音/字幕43/0/0及实际PG4/0/0各自记账，全部原失败见[证据](../../evidence/2026-11-01/workspace-r5-classroom-audio/receipt.json)。六份既有MP3复用，动态旁白为明确合成WAV，不是新供应商或物理听感证明；正式24/revision187和1063运行文件保持，应用32，仅本地。原72仍11 implemented/50 in_progress/11 planned/0 verified，WS和教师/设备/全参考状态/教材GESP/真人条件不提升。
+
 ## A. 统一入口与连续学习 / E01
 
 ### XP-A01 统一学习首页 [implemented]
