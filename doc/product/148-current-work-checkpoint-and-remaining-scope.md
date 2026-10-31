@@ -1,5 +1,7 @@
 # 当前工作收尾、验证边界与续接位置
 
+2026-10-31文档层接续：166已补具体输入/Word-OMML/字体/Office子进程协议，见[真实字体与公式证明](../evidence/2026-10-31/workspace-r5-export-font-protocol/receipt.json)。实际两套OFL字体嵌入后，Office直接转换仍默认公式字体；最终只在加载文档中指定公式字体，PDF仅出现两套派生字体，准确DOCX保持、最终PNG已看。失败与来源固定SHA均保留。新`data/qa/p166`为3289文件/约99MB独立源，contracts/config解析自己副本，287依赖junction保留且不得递归删除；仍schema31，没有新32注册。下一步按166先实现文档生成器并验证完整内容/实际渲染，再补完整原生记录和接口协议，继续所有剩余范围。
+
 2026-10-31最新前置已完成：[最终31实际读取器](../evidence/2026-10-31/workspace-r5-schema31-reader/receipt.json)606文件/565依赖封存并解包运行，SQLite/真实PG原生恢复、冷开及future32拒读6/0。下一步继续166的实际工具/字体和原生记录/接口详细协议，再在新隔离副本实现；新schema32未注册。正式schema24/revision187、原运行文件保持。data/qa/r31a含自己包junction及合成future32副本，保留且不得递归删除。
 
 2026-10-31下一位置：165已本地提交fb0b7eec，接[166跨卷选题与导出](166-selected-question-exports-and-paper-review.md)。实际DOCX→PDF→4页PNG工具样本已归档[准备证据](../evidence/2026-10-31/workspace-r5-export-preparation/receipt.json)，首轮图题分页与两次错误文本顺序核对保留，最终同页图题/32行及续表头/原生分式/独立答案页通过。应用的持久清单、导出任务、来源授权/学生曝光、工作台UI及原生恢复未实施；先封存实际最终31读取器，补齐工具/字体和原生记录具体协议再注册32。主干源码31，正式只读24/revision187及旧构建保持；R5～R8、原72/WS、教师/实机/实体打印/真人全部范围继续，整体active。

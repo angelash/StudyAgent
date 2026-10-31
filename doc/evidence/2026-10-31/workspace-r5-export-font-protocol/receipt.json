@@ -1,0 +1,265 @@
+{
+  "at": "2026-10-31T07:18:50.343Z",
+  "baseMain": "a790ce7a91fd49f34b208c3eb20a6cf05f54646d",
+  "scope": "166 concrete document-rendering protocol and font/dependency feasibility, before business record registration. Real synthetic DOCX/OMML/PDF proof, no API feature claim.",
+  "fontProof": {
+    "scope": "Synthetic portable font/OMML proof only. Final actual PDF and PNG opened and inspected; no system font installation, formal data or application source changed.",
+    "docxOriginalBytesUnchanged": true,
+    "nativeFractions": 3,
+    "nativeSuperscripts": 1,
+    "nativeRoots": 1,
+    "actualEmbeddedPdfFonts": [
+      "BAAAAA+StudyAgentPrintSerif-Regular",
+      "CAAAAA+StudyAgentPrintSerif-Regular",
+      "DAAAAA+StudyAgentPrintMath-Regular"
+    ],
+    "noTimesNewRomanOrOpenSymbolFallback": true,
+    "fontsAndOflEmbeddedInDocx": true,
+    "onlyLoadedDocumentFormulaPropertiesChangedForPdf": true,
+    "a4": true,
+    "pages": 1,
+    "originalOtfAndTtfAutomaticConversionsRetainedAsFontFailures": true,
+    "originalUnoStartupQueryFailureRetained": true,
+    "sourceDocumentStillEditableOmml": true,
+    "allFinalPagesVisuallyInspected": true,
+    "systemFontsInstalled": false,
+    "applicationExportImplemented": false,
+    "physicalPrintVerified": false,
+    "crossEnvironmentVerified": false,
+    "files": [
+      {
+        "path": "portable-font-probe-second/portable-fonts.docx",
+        "bytes": 9401260,
+        "sha256": "267784e0e70e3593d51d4087047b814882941ba20c569e9db7d69da2cb99be95"
+      },
+      {
+        "path": "portable-font-probe-second/explicit-math-third.pdf",
+        "bytes": 31117,
+        "sha256": "e7d144eb6e29083eee79b46203cb0b4505c61bb2697cef314e44d408ab5d0b9c"
+      },
+      {
+        "path": "portable-font-probe-second/explicit-math-third.png",
+        "bytes": 53094,
+        "sha256": "fe7e663d88a09982011eacf21937a2a95bc6ddaeb65915752149ca1c75047682"
+      }
+    ]
+  },
+  "isolatedSource": {
+    "path": "data/qa/p166",
+    "files": 3289,
+    "bytes": 99105283,
+    "dependencyLinks": 287,
+    "workspacePackagesLocal": true,
+    "schema": 31,
+    "schema32Registered": false
+  },
+  "failures": [
+    "GitHub release API lookup hit its anonymous rate limit; read-only official release/tag archive used instead.",
+    "First guessed master static-OTF path returned404; no binary from that response was used.",
+    "Both actual OTF and TTF direct DOCX conversions used Times New Roman/OpenSymbol for formulas despite embedded math fonts; retained as font-policy failures.",
+    "First isolated UNO query failed before its remote context was available. Second query with the explicit context and bounded startup completed; third applies per-document formula properties."
+  ],
+  "knownLimits": [
+    "Actual Windows/LibreOffice build only; Linux, Microsoft Word and physical print remain unverified.",
+    "This is a single synthetic equation/font proof, not all source formulas or completed export layout.",
+    "Standalone source font binaries, old source ZIPs and original DOCX variants remain in ignored local tools/QA. Final exact DOCX/PDF/PNG are archived."
+  ],
+  "formalReadOnly": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedMainFiles": 1063,
+  "allProtectedBytesUnchanged": true,
+  "applicationExportImplemented": false,
+  "native32Registered": false,
+  "studentLearningFactsCreated": false,
+  "humanReviewCompleted": false,
+  "wholeGoal": "active",
+  "artifacts": [
+    {
+      "path": "sources/probe-portable-fonts-first.py",
+      "bytes": 8913,
+      "sha256": "806963d201ee0ba8328706d9e876f9751923928ac42e2edffbfdb089354ed343",
+      "originalSha256": "806963d201ee0ba8328706d9e876f9751923928ac42e2edffbfdb089354ed343"
+    },
+    {
+      "path": "sources/probe-portable-fonts-second.py",
+      "bytes": 9050,
+      "sha256": "93346f628a9bd260b75a32e6b1aed6ba063daf419920497f9c84f6a9bcfe12a0",
+      "originalSha256": "93346f628a9bd260b75a32e6b1aed6ba063daf419920497f9c84f6a9bcfe12a0"
+    },
+    {
+      "path": "sources/inspect-math-fonts-uno-first.py",
+      "bytes": 3130,
+      "sha256": "ac370793dd566939454ffa7f555cf0ad431a2e65448a6eeed6da63e0c633e0c6",
+      "originalSha256": "ac370793dd566939454ffa7f555cf0ad431a2e65448a6eeed6da63e0c633e0c6"
+    },
+    {
+      "path": "sources/inspect-math-fonts-uno-second.py",
+      "bytes": 3562,
+      "sha256": "ec4bb3e5caa214bfb4849715ce02f38676cde6b1f1d38bb3ec76d1b6e294da06",
+      "originalSha256": "ec4bb3e5caa214bfb4849715ce02f38676cde6b1f1d38bb3ec76d1b6e294da06"
+    },
+    {
+      "path": "sources/render-explicit-math-fonts-third.py",
+      "bytes": 4384,
+      "sha256": "a9fe3160e320554402667e69fd8491eff2963c67fccfce4650e1dc601360163f",
+      "originalSha256": "a9fe3160e320554402667e69fd8491eff2963c67fccfce4650e1dc601360163f"
+    },
+    {
+      "path": "sources/verify-portable-fonts-third.py",
+      "bytes": 3504,
+      "sha256": "a0854f534e5867e3bae073c4173da90a332064964d5162b08b2a4bea723a001e",
+      "originalSha256": "a0854f534e5867e3bae073c4173da90a332064964d5162b08b2a4bea723a001e"
+    },
+    {
+      "path": "sources/prepare-isolated-export-source-first.cjs",
+      "bytes": 5166,
+      "sha256": "e2b5e5ad6016f82f98be3072b7b0bb48e0148dcc65aad3749396551f897198ef",
+      "originalSha256": "e2b5e5ad6016f82f98be3072b7b0bb48e0148dcc65aad3749396551f897198ef"
+    },
+    {
+      "path": "sources/archive-font-and-render-protocol-first.cjs",
+      "bytes": 7486,
+      "sha256": "30fce2f71503d46e4440230d20aa64a4beb4bb30318058388a96ff39a81a41af",
+      "originalSha256": "30fce2f71503d46e4440230d20aa64a4beb4bb30318058388a96ff39a81a41af"
+    },
+    {
+      "path": "reports/uno-font-query-first-failure.json.gz",
+      "bytes": 324,
+      "sha256": "5b2d29ec526a7dfc2cca7a214293bde512c69338aa5bcb7e16a81bcfd30c646b",
+      "originalSha256": "63dc5e7806fd9fc118851c748e88c330f0c68f9117dffb13295dca9d842f0060",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/uno-font-query-second-process.json.gz",
+      "bytes": 49,
+      "sha256": "be51bccb933c1946b05a9ac5a15e97baa2718563e3281decbb6f607e5144b3c9",
+      "originalSha256": "91ec3436dfb4505e90874e2dad931685f6b6aff5fa6652fe3cf69efc205c9752",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/uno-math-font-query-second.json.gz",
+      "bytes": 1251,
+      "sha256": "f35bb475a25ca3b02d928950319b3f8bdbf68813cbb2f65bd94e3439cc0cb57a",
+      "originalSha256": "919b11bdaea95295984f17a8128f9f285682e366603163bbbe1fb01e01fe3ed7",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/uno-font-render-third-process.json.gz",
+      "bytes": 49,
+      "sha256": "be51bccb933c1946b05a9ac5a15e97baa2718563e3281decbb6f607e5144b3c9",
+      "originalSha256": "91ec3436dfb4505e90874e2dad931685f6b6aff5fa6652fe3cf69efc205c9752",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/uno-math-font-render-third.json.gz",
+      "bytes": 620,
+      "sha256": "80dda687e4b88fc7e6e0a54f2aeaf549991bb553fee49b9a3c5a3c3aae8a1ad1",
+      "originalSha256": "81d2a5bf2a28170686494c3e6aacbb827bc32f79e9ea03a3228b4ad9f51e845d",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/portable-fonts-third-acceptance.json.gz",
+      "bytes": 768,
+      "sha256": "bd46235655261e63266b71394ec3a82ea4bf3ab6ab01944f290a0aa58696606f",
+      "originalSha256": "90f39aea1f131ac7944947f1bfaa60dd38696deefd8cd9a80fada3bf5a14a711",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/pinned-font-origin-first.json.gz",
+      "bytes": 302,
+      "sha256": "685656f4fa9fdfbf5228be87fba55c1a37d338a614f8c6f106f6c1089a79bce9",
+      "originalSha256": "c2be8e08045c8a39ad40223bc2b74a034eb249ddba63ee15539c8abeccbad0b4",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/export166-source-preparation-first.json.gz",
+      "bytes": 171460,
+      "sha256": "2e8d20b7a5aa97e2081eb8200a416ac809f4c2c5e144bde73cedc40e7e483604",
+      "originalSha256": "2e8d20b7a5aa97e2081eb8200a416ac809f4c2c5e144bde73cedc40e7e483604"
+    },
+    {
+      "path": "reports/font-first-build.json.gz",
+      "bytes": 621,
+      "sha256": "74e75072bc5218de6121ed096b161bed717dac1c8fd2623057dff0c6c861bde0",
+      "originalSha256": "7633eba866af830e1dd1f532cf83efc47ce20cabf61256ec1c411c911878845d",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/font-first-render.log.gz",
+      "bytes": 337,
+      "sha256": "a4bdabbd793beab47612c7ffcd2fb84245fbf23d037d40ca0bb68e9a18fd2b89",
+      "originalSha256": "2b9f3c7076e883a4d16ef1a47e306c20112d5491d3b9cf05730169c674a458b7",
+      "encoding": "gzip"
+    },
+    {
+      "path": "original-font-failures/first.pdf",
+      "bytes": 44717,
+      "sha256": "d7c1a5a663d63fbf6250a54c57689f48193defd0d788f7abd512c8853ad0ef47",
+      "originalSha256": "d7c1a5a663d63fbf6250a54c57689f48193defd0d788f7abd512c8853ad0ef47"
+    },
+    {
+      "path": "original-font-failures/first.png",
+      "bytes": 71048,
+      "sha256": "86d86a9e5367c92fcb56607a0db4e168488639049d11efd277fd8978fbf0acaf",
+      "originalSha256": "86d86a9e5367c92fcb56607a0db4e168488639049d11efd277fd8978fbf0acaf"
+    },
+    {
+      "path": "reports/font-second-build.json.gz",
+      "bytes": 620,
+      "sha256": "cd694aa234304a913417f0fe583bc9fcfad3da0f8e5626c8c6e3c80098539b43",
+      "originalSha256": "cdc4b852bed3d7dbb73f314ff850e8e18fcaa2641e55e8b41b9b5ceff99ecdc2",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/font-second-render.log.gz",
+      "bytes": 342,
+      "sha256": "f1284965ce7a3030337b58b6adab928588965519186bb2b976535fa5cc5440a9",
+      "originalSha256": "b42b0ec5e26769e72b5af658b9030f4ed2cfec7d7633318df5aaa25809d7b9cb",
+      "encoding": "gzip"
+    },
+    {
+      "path": "original-font-failures/second.pdf",
+      "bytes": 44719,
+      "sha256": "fdca558e28b798a2a57c350a13c359e0f33d14c228951a61fac7328da0736664",
+      "originalSha256": "fdca558e28b798a2a57c350a13c359e0f33d14c228951a61fac7328da0736664"
+    },
+    {
+      "path": "original-font-failures/second.png",
+      "bytes": 71048,
+      "sha256": "86d86a9e5367c92fcb56607a0db4e168488639049d11efd277fd8978fbf0acaf",
+      "originalSha256": "86d86a9e5367c92fcb56607a0db4e168488639049d11efd277fd8978fbf0acaf"
+    },
+    {
+      "path": "final/portable-fonts.docx",
+      "bytes": 9401260,
+      "sha256": "267784e0e70e3593d51d4087047b814882941ba20c569e9db7d69da2cb99be95",
+      "originalSha256": "267784e0e70e3593d51d4087047b814882941ba20c569e9db7d69da2cb99be95"
+    },
+    {
+      "path": "final/explicit-math-third.pdf",
+      "bytes": 31117,
+      "sha256": "e7d144eb6e29083eee79b46203cb0b4505c61bb2697cef314e44d408ab5d0b9c",
+      "originalSha256": "e7d144eb6e29083eee79b46203cb0b4505c61bb2697cef314e44d408ab5d0b9c"
+    },
+    {
+      "path": "final/explicit-math-third.png",
+      "bytes": 53094,
+      "sha256": "fe7e663d88a09982011eacf21937a2a95bc6ddaeb65915752149ca1c75047682",
+      "originalSha256": "fe7e663d88a09982011eacf21937a2a95bc6ddaeb65915752149ca1c75047682"
+    },
+    {
+      "path": "licenses/Noto-OFL.txt",
+      "bytes": 4350,
+      "sha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6",
+      "originalSha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6"
+    },
+    {
+      "path": "licenses/STIX-OFL.txt",
+      "bytes": 4519,
+      "sha256": "0c8825913b60d858aacdb33c4ca6660a7d64b0d6464702efbb19313f5765861a",
+      "originalSha256": "0c8825913b60d858aacdb33c4ca6660a7d64b0d6464702efbb19313f5765861a"
+    }
+  ]
+}

@@ -66,6 +66,28 @@ PDF和DOCX使用同一冻结的题目/媒体/版式中间结构，保持用户�
 
 ## 实施顺序与验收
 
+### 文档生成器的具体协议（先于业务写入）
+
+文档层先在新隔离目录`data/qa/p166`实施；原165源码、构建和QA继续冻结。新副本从实际a790ce7a主干及165最终编译逐SHA复制，contracts/config解析到副本自己的包，其他依赖目录为明确列出的共享junction。此阶段不增加业务路由、不写正式数据，也不注册schema32。持久记录、完整接口和删除/恢复关系须补齐后才接业务事务。
+
+冻结输入格式为`paper-export-document-v1`：`title`保留完整原文字；`items`为1～100个有序题位，每项保存`id`、准确`source`（paperId、position、sourceQuestionId、detailSha256、publicationVersion、原卷标题及已核实页码或null）、`promptHtml`、全部`optionHtml`及原始`reference`（answerHtml/analysisHtml或null）。题单编号由顺序确定，不接受客户端另传评分、首答或能力结论。版式为A4、18mm四边距、12pt正文、1.25行距；`answerLines`为0～12，`breakBetweenQuestions`明确选择。题目与来源文字总预算8MiB，单段128KiB；不截断后继续生成。
+
+图片先由受控工作流复制并核对为本次工作目录内的PNG；文档输入只包含`media/<sha256>.png`身份、完整SHA、大小和真实宽高，不包含服务器绝对路径、认证链接或外部抓取指令。每张最多12MiB、6000×6000，总媒体80MiB。正文中图片引用只能匹配本次清单的媒体键。生成器逐文件核对、拒绝链接路径和缺图；需要方向/缩放时使用已冻结的实际归一化版本，不在打印阶段另猜原图裁剪。
+
+题干/选项按受控HTML语义转为原生Word段落、强调、上下标、注音、列表、表格和公式；不会把整题截图后宣称可编辑DOCX。表格保留行列及rowspan/colspan、重复表头；单元格不设置会截断正文的固定高度。MathML的分式、上下标、根号等转换为原生OMML，嵌套关系不靠纯文字拼接。遇到未支持的有意义结构、缺字形、超宽/过长不可排内容，预检明确拒绝并保留完整题单；不能静默移除公式节点或换成空白成功文档。支持范围随真实样本扩展，局部样本不代表全题型已完成。
+
+DOCX采用python-docx 1.2.0、lxml 5.4.0、fontTools 4.58.0生成。中文字体来源Noto Serif SC原件SHA`050080d9255a86808f2945bffac582b31ef32bc36411ce29563b4961670c66f9`；数学字体来源STIX Two Math v2.13b171 TTF，SHA`49b22767985171bce579307b21d98f4d35012fa39e316acc4ffcab8644dfb69b`。已实际核对两者的OFL 1.1许可与fsType=0。Noto先固定wght=400，两套派生字体另用`StudyAgent Print Serif/Math`名称，保留版权与许可，完整嵌入DOCX；不能假定机器上已有宋体、Calibri或数学字体。提供可复现的派生/缓存过程，不把系统字体副本当作未经核对的发布资产。
+
+实际LibreOffice 26.8.2.2导入OMML后会使用自己的公式字体设置，单靠DOCX的mathFont和rFonts不足以控制PDF。隔离渲染因此经UNO只在当前加载文档中明确设置Variables/Functions/Numbers/Math为嵌入数学字体，Text为嵌入中文字体，然后生成PDF；不修改系统或用户常用配置。已实际验证最终PDF只包含这两套派生字体。早先OTF/TTF直接转换仍使用Times New Roman/OpenSymbol的结果，以及首次UNO启动查询失败均须保留，不能称为字体门禁通过。源DOCX的字节保持，PDF与它的原生公式/正文关系分别核对。
+
+[原始字体与公式验证](../evidence/2026-10-31/workspace-r5-export-font-protocol/receipt.json)保存最终准确DOCX/PDF/PNG、原字体失败PDF/PNG、完整源程序、源字体/许可摘要及UNO前后属性。最终一页实际打开检查，三个原生分式、上标和根号保持，PDF仅用两套嵌入派生字体，源DOCX字节未变。Noto原件另从google/fonts固定提交`6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec`按完整SHA核对，STIX取实际v2.13b171官方发布TTF；GitHub匿名API限流及首个路径404均单列，没有使用错误响应中的二进制。此项仍只证明该合成样本；完整生成器和应用尚未实现。
+
+文档生成Python与Office自带UNO Python是两个受配置约束的执行器；路径只由服务端配置提供。每次Office运行使用自己profile和随机本地pipe，禁止宏和外部文档更新，不开启公共监听。Node调用只传有界工作目录、冻结输入路径/摘要、book种类和格式，子进程环境不得继承模型密钥或数据库凭据。总处理、进度/租约、取消标记及迟到发布栅栏由持久任务负责；不得因杀掉父进程就假定Office子进程和临时文件已经清理。
+
+先生成练习册；要求答案时生成另一份独立答案册，禁止只插入一个分页符后把答案混在同一个题干文件。DOCX输出同样实际加载渲染并检查；PDF检查页数、A4几何、实际字体、题单标题/题位顺序、完整表格/公式及图片边界，页数上限120、单产物80MiB。通过后返回`paper-export-render-result-v1`，逐文件记录book、format、真实bytes/SHA/pageCount及来源映射；失败只返回允许的错误码，原始Office日志留本地，不成为产品提示。
+
+这份文档层协议不代替后续完整业务协议。后续原生集合暂定为`paperSelectionLists`、`paperSelectionCommands`、`paperExports`、`paperExportCommands`和`paperSourceExposures`；在注册32前还须逐字段固定作者/学习范围、完整原命令与原回执、历史指纹链、按格式任务/代次、文件引用与最新删除账本关系。不得先用通用数组写进库，再用新版本读取器忽略不完整旧记录。
+
 1. 冻结真实题卷、原卷复习和来源授权基线；使用自建合成题卷，不改正式学生数据。确认渲染工具及字体，补齐精确记录/接口/迁移协议并先提交。
 2. 实现跨卷清单的完整原命令、冲突、同键恢复、来源变化和删除；默认不创建练习活动或正式学习证据。
 3. 实现统一文档结构及实际PDF/DOCX后台产物，验证真实公式、跨页表格、图片、留白、答案分册和来源映射。保存首次渲染失败及对应复验。

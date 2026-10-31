@@ -120,3 +120,7 @@ doc/evidence/2026-10-31/workspace-r5-export-preparation/**/*.json whitespace=bla
 # Preserve the executed schema31 compatibility baseline and its receipts.
 doc/evidence/2026-10-31/workspace-r5-schema31-reader/** -text
 resources/compatibility/domain-reader-schema31-v1.receipt.json text eol=lf
+# Keep exact font-render proof bytes and upstream license whitespace.
+doc/evidence/2026-10-31/workspace-r5-export-font-protocol/** -text
+doc/evidence/2026-10-31/workspace-r5-export-font-protocol/licenses/** -whitespace
+doc/evidence/2026-10-31/workspace-r5-export-font-protocol/sources/*.py whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
