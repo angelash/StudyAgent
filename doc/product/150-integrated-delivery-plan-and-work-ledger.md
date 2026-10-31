@@ -6,6 +6,8 @@
 
 ## 1. 完整目标与范围
 
+2026-11-01界面接续：175回收已本地提交d6df249c，下一步按[176选题与导出工作台UI](176-paper-selection-and-export-workspace-ui.md)先实现完整稿/双标签CAS/原命令恢复，再接原LibraryStudio选题/排序/目录、逐册预检/任务控制及真实文件预览。继承工作台样式与交互，保护原筛选/阅读/原卷练习/返回。先提交具体协议，正式24/revision187与原构建保持，全部原范围继续active。
+
 2026-11-01精确回收：[175](175-paper-export-workspace-collection-and-writer-leases.md)的真实cleanup消费、完整路径清单/逐文件回收、永久撤销、Node/Python自身租约及旧目录缺证明等待已归并16份源码。SQLite12/0/0、真实PG12/0/0、独立代次SQLite与PG各1/0/0、真实渲染/慢HTTP6/0/0、IO39/0/0、既有回归226/0/0及Python32/0分列；两种实际进程终止、共同监护/最终删除和双库原生最新账本恢复见[证据](../evidence/2026-11-01/workspace-r5-export-workspace-collection/receipt.json)。主干类型检查通过，正式24/revision187及1063文件保持，15448 PG停止，未推送部署。接原工作台选题/导出完整稿、双标签/禁存储/未知结果及完整旅程回归；原72/WS、R1～R8、全部教材/GESP/教师/实机/新机器/实体打印/真人1/3/7/14日完整范围继续active。
 
 2026-10-31回收接续：[175](175-paper-export-workspace-collection-and-writer-leases.md)先固定存活Python自身租约、精确任务/引用/purge、全部已知路径清单、未知条目保持、逐文件回收及真实隐私/恢复，之后接原工作台选题完整稿。174已本地提交66c2233b；本批只提交具体协议，不预称cleanup完成，全部原范围继续active。
