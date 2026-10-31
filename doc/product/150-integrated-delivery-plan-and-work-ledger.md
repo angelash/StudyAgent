@@ -6,6 +6,8 @@
 
 ## 1. 完整目标与范围
 
+2026-10-31选题业务第一批：[172](172-paper-selection-business-and-student-source-access.md)七份源码已归并，接通本人清单/完整原命令与原回执、只读准确来源目录、学生明确阅读及测量排除。最终SQLite16/0/0、真实PG16/0/0分别实际验证诊断选题排除；既有十一文件170/0/0另批通过，见[证据](../evidence/2026-10-31/workspace-r5-paper-selection-business/receipt.json)。来源和会话当前授权、并发修订回滚、准确原结果及诊断期间清空保持。接下来继续172第二批旧正文/参考/媒体/PDF/打印防旁路、同句柄响应及原视图阅读，再接完整导出worker和工作台UI；正式24/revision187及1063运行文件保持，未推送部署，全部原范围继续active。
+
 2026-10-31业务接续：[172](172-paper-selection-business-and-student-source-access.md)先固定完整选题/阅读原命令、只读准确来源目录、学生曝光进入测量排除，以及旧正文/参考/媒体/PDF/打印防旁路和同句柄响应。171已本地提交44272f9b；先在新隔离副本接业务事务，再接旧入口与原视图，之后继续实际导出/回收worker和完整工作台UI。正式24/revision187及运行构建保持，全部原目标继续active。
 
 2026-10-31持久化接续：[171](171-paper-library-persistence-privacy-and-native-recovery.md)已将六集合、同事务原命令/完整关系/权限校验、实际隐私删除/监护栅栏、精确文件回收及SQLite/PG原生恢复归入主干源码32。最终完整API2552/12/106，12项旧版本断言经对应46/0/8复验，另批真实PG20/0/1；应用源码在完整回归后未变，不拼合为单次全绿。正式库只读副本24→32保留89,864条原业务记录/顺序/SHA及revision187，两次冷开和实际31拒读通过，见[证据](../evidence/2026-10-31/workspace-r5-paper-persistence-and-privacy/receipt.json)。正式库仍24/revision187及1063运行文件保持，未推送部署；下一步业务清单/导出/原回执接口、真实worker/同句柄下载、学生曝光与旧读取防旁路，再接原UI及全部剩余目标，整体active。

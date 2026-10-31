@@ -8,6 +8,8 @@ import { MeasurementContentController } from './measurement-content.controller';
 import { StudentsModule } from '../students/students.module';
 import { PaperPracticeController } from './paper-practice.controller';
 import { PaperPracticeService } from './paper-practice.service';
-@Module({ imports: [DiagnosticsModule, StudentsModule], controllers: [LibraryController, MeasurementContentController, PaperPracticeController],
-  providers: [LibraryRepository, LibraryService, MeasurementContentService, PaperPracticeService], exports: [LibraryRepository, LibraryService, MeasurementContentService] })
+import { PaperSelectionController } from './paper-selection.controller';
+import { PaperSelectionService } from './paper-selection.service';
+@Module({ imports: [DiagnosticsModule, StudentsModule], controllers: [LibraryController, MeasurementContentController, PaperPracticeController, PaperSelectionController],
+  providers: [LibraryRepository, LibraryService, MeasurementContentService, PaperPracticeService, PaperSelectionService], exports: [LibraryRepository, LibraryService, MeasurementContentService] })
 export class LibraryModule {}

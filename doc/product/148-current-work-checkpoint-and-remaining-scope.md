@@ -1,5 +1,7 @@
 # 当前工作收尾、验证边界与续接位置
 
+2026-10-31选题业务接续：[172](172-paper-selection-business-and-student-source-access.md)第一批七份源码已归并，新增本人选题清单、完整原命令/原回执读回、只读准确题位、学生明确阅读和测量排除；SQLite16/0/0及真实PG16/0/0分别通过，均实际创建诊断确认已读原题不进入独立新题。既有十一文件170/0/0另批通过，原15项及QA误标构建记录保留，见[证据](../evidence/2026-10-31/workspace-r5-paper-selection-business/receipt.json)。应用仍32，正式24/revision187及1063运行文件保持，15444测试PG已停止，未推送部署。继续172第二批旧正文/参考/媒体/PDF/打印防旁路、同句柄下载与原视图阅读，然后完整导出/回收worker和原工作台选题/完整稿UI；其余全部原范围及教师/实机/实体打印/真人条件继续active。
+
 2026-10-31持久化接续：[171](171-paper-library-persistence-privacy-and-native-recovery.md)的六集合、原命令事务/当前授权、真实隐私删除及监护栅栏、精确文件回收、SQLite/PG原生备份恢复和32门禁已逐SHA归并50份主干源码。完整API2552/12/106，12项为旧当前版本断言；对应46/0/8与另批真实PG20/0/1复验通过，原报告分别保留，应用源码在完整回归后未变。正式库只读副本24→32保留89,864条原业务记录/顺序/SHA和revision187，两次冷开、实际封存31拒读通过，见[证据](../evidence/2026-10-31/workspace-r5-paper-persistence-and-privacy/receipt.json)。应用源码32，正式库仍24/revision187及1063运行文件保持，未推送部署。接业务清单/导出/原回执接口、真实worker/同句柄读取、学生曝光进入测量排除和旧读取防旁路，再接原工作台UI与完整稿；其余全部原范围继续active。
 
 2026-10-31导出原生记录接续：[170](170-paper-export-records-and-outbox-relations.md)已实现严格冻结意图、完整原命令/原回执、准确清单旧修订/文档适配、按册格式任务与控制、实际reserved/rendered文件检查点、发布栅栏及删除证明/账本校验。最终专项113/0/0（本批65、既有48），既有隐私HTTP和最新删除恢复另批6/0/0；一页实际PDF/DOCX桥接成功且两个页面均已打开，见[证据](../evidence/2026-10-31/workspace-r5-export-records-and-outbox/receipt.json)。首次类型/模块路径/提取空白失败分别保留。仍未注册32或接业务路由/实际隐私删除，PAPER_EXPORT_NATIVE_READY保持false。接六集合持久事务、隐私删除/最新账本应用、备份恢复及32门禁，然后真实授权/文件worker/学生旧读取防旁路与原UI。应用31、正式24/revision187和受保护运行文件保持，仅本地；全部原范围继续active。

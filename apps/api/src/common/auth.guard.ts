@@ -98,6 +98,11 @@ const learningRoutes: Record<string, RegExp[]> = {
   PATCH: [/^learning\/assistant-guidance\/intents\/[^/]+\/observation$/, /^learning\/teaching-practice\/sessions\/[^/]+\/questions\/[^/]+\/draft$/, /^learning\/teaching-practice\/drafts\/[^/]+\/content$/, /^learning\/assistant-practice\/sessions\/[^/]+\/questions\/[^/]+\/draft$/,/^learning\/assistant-practice\/artifacts\/[^/]+$/,/^ai\/assistant\/sessions\/[^/]+\/artifacts\/notes\/[^/]+\/content$/,/^learning\/studio\/topic-whiteboards\/drafts\/[^/]+\/content$/,/^learning\/source-courses\/[^/]+\/checks\/[^/]+\/content$/,/^learning\/classroom\/sessions\/[^/]+\/code-drafts\/[^/]+\/[^/]+$/,/^learning\/source-courses\/[^/]+$/, /^learning\/projects\/[^/]+$/, /^learning\/classroom\/sessions\/[^/]+$/, /^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/draft$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/draft$/],
 };
 
+const paperLibraryLearningRoutes: Record<string, RegExp[]> = {
+  GET: [/^library\/selection-lists(\/[^/]+)?$/, /^library\/selection-commands\/[^/]+$/, /^library\/source-reads\/[^/]+$/, /^library\/papers\/[^/]+\/metadata$/],
+  POST: [/^library\/selection-commands$/, /^library\/source-reads$/],
+};
+
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(private readonly store: InMemoryStoreService, private readonly limits: RateLimitService) {}
@@ -121,7 +126,7 @@ export class AuthGuard implements CanActivate {
       const bound = guardian && (guardian.role === 'admin' || Boolean(this.store.find('bindings', { parentUserId: guardian.id, studentId: session.studentId, status: 'active' })));
       if (!access || !bound) throw new UnauthorizedException('学习权限已变更，请由家长重新开启');
       const path = request.path.replace(/^\/api\//, '').replace(/\/$/, '');
-      if (!learningRoutes[request.method]?.some(pattern => pattern.test(path))) throw new ForbiddenException('这是孩子的学习身份，请由家长登录后管理');
+      if (![...(learningRoutes[request.method] ?? []), ...(paperLibraryLearningRoutes[request.method] ?? [])].some(pattern => pattern.test(path))) throw new ForbiddenException('这是孩子的学习身份，请由家长登录后管理');
     }
 
     const writing = !['GET', 'HEAD', 'OPTIONS'].includes(request.method);

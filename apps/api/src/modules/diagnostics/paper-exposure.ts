@@ -3,6 +3,12 @@ import type { InMemoryStoreService } from '../../infrastructure/in-memory-store.
 /** Reserving an original for the learner is conservative prior exposure, not proof of answering it. */
 export function originalPaperExposure(store: InMemoryStoreService, studentId: string): Set<string> {
   const originals = new Set<string>(), documents = new Set<string>();
+  for (const exposure of store.select('paperSourceExposures', { studentId })) {
+    // These are immutable, native-validated learner facts. A later role change
+    // or guardian deletion does not rewrite what was previously reserved/read.
+    if (exposure.result.document) documents.add(exposure.input.paperId);
+    for (const source of exposure.result.sources) originals.add(JSON.stringify([source.paperId, source.position, source.sourceQuestionId]));
+  }
   for (const session of store.select('paperPracticeSessions', { studentId })) {
     // A guardian's private rehearsal must never become the child's learning evidence.
     if (!store.find('users', { id: session.ownerUserId, role: 'student' })) continue;
