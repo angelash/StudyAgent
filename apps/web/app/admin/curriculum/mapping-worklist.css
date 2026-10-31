@@ -8,3 +8,4 @@
 @media(max-width:600px){.mapping-worklist{padding:15px}.mapping-worklist-head{display:grid;gap:8px}.mapping-worklist-rows>button{align-items:flex-start}.mapping-worklist-rows>button>span:last-child{white-space:normal}}
 .mapping-candidate-filter{margin-top:-10px}.mapping-candidate-filter button[aria-pressed=true]{background:#4b5e49;border-color:#4b5e49}
 .mapping-source-filter{margin-top:-10px}.mapping-source-filter button[aria-pressed=true]{background:#775d38;border-color:#775d38}
+.mapping-book-gaps{border-top:1px solid var(--line);margin-top:22px;padding-top:18px}.mapping-book-gaps h4{font-size:16px;margin:0 0 8px}

@@ -26,6 +26,22 @@ export type CurriculumBook = {
   };
 };
 
+/** Read-only bibliographic inventory; it does not assert lesson-body,
+ * pedagogical, source-byte or teacher review completeness. */
+export type TextbookScopeInventory = {
+  registeredBooks: number; booksWithProgressLessons: number;
+  booksWithoutProgressLessons: number; progressLessons: number;
+};
+export type TextbookScopeBookGap = {
+  bookId: string; bookTitle: string; bookVersion: string; edition: string;
+  chapterState: CurriculumBook['chapterState'];
+  reason: 'missing_chapters' | 'unconfirmed_chapters' | 'no_progress_lessons';
+  sourceStatus: string; sourceReason: string;
+};
+export type TextbookScopeBookGaps = {
+  total: number; page: number; pageSize: number; rows: TextbookScopeBookGap[];
+};
+
 export const textbookMappingInputSchema = z.object({
   bookId: key, lessonId: key, atomIds: z.array(key).min(1).max(30),
   status: z.enum(['candidate', 'approved', 'rejected']),

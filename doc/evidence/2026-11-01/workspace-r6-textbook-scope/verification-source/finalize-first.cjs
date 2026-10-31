@@ -1,0 +1,9 @@
+const fs = require('node:fs'), path = require('node:path'), crypto = require('node:crypto'), { execFileSync } = require('node:child_process');
+const root = path.resolve(__dirname, '../../..'), prefix = 'doc/evidence/2026-11-01/workspace-r6-textbook-scope', archive = path.join(root, prefix), integration = JSON.parse(fs.readFileSync(path.join(__dirname, 'integration-first.json'))), sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+const checks = JSON.parse(fs.readFileSync(path.join(archive, 'delivery-checks-first.json'))); if (checks.findings.length || checks.docs.missing.length) throw Error('Delivery scan required');
+for (const row of integration.source) if (sha(fs.readFileSync(path.join(root, row.path))) !== row.sha256) throw Error('Final source changed');
+const files = [];
+function walk(directory) { for (const entry of fs.readdirSync(directory, { withFileTypes: true })) { const file = path.join(directory, entry.name); if (entry.isSymbolicLink()) throw Error('Linked archive refused'); if (entry.isDirectory()) walk(file); else files.push({ path: path.relative(archive, file).replaceAll('\\', '/'), bytes: fs.statSync(file).size, sha256: sha(fs.readFileSync(file)) }); } } walk(archive);
+fs.writeFileSync(path.join(archive, 'SHA256.json'), JSON.stringify({ excludesSelf: true, files }, null, 2) + '\n', { flag: 'wx' });
+execFileSync('git', ['add', '--', ...integration.source.map(row => row.path), '.gitattributes', 'doc/product/148-current-work-checkpoint-and-remaining-scope.md', 'doc/product/150-integrated-delivery-plan-and-work-ledger.md', 'doc/product/179-textbook-scope-inventory-and-missing-lesson-worklist.md', 'doc/product/experience/requirements.md', 'doc/product/experience/implementation-log.md', prefix], { cwd: root, stdio: ['ignore', 'pipe', 'pipe'] });
+console.log(JSON.stringify({ exactSourceFiles: integration.source.length, hashedEvidenceFiles: files.length, localCommitOnly: true }));

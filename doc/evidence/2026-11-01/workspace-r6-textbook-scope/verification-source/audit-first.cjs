@@ -1,0 +1,23 @@
+const fs = require('node:fs'), path = require('node:path'), crypto = require('node:crypto'), { DatabaseSync } = require('node:sqlite'), { execFileSync } = require('node:child_process');
+const root = path.resolve(__dirname, '../../..'), sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+if (execFileSync('git', ['status', '--porcelain'], { cwd: root, encoding: 'utf8' }).trim()) throw Error('Clean current main required');
+const registry = JSON.parse(fs.readFileSync(path.join(root, 'resources/curriculum/textbooks-v1.json'))), knowledge = JSON.parse(fs.readFileSync(path.join(root, 'resources/gesp/knowledge-map.json'))), pilot = JSON.parse(fs.readFileSync(path.join(root, 'resources/gesp/student-curriculum-v2.json')));
+const lessons = book => book.chapters.flatMap(chapter => chapter.lessons).filter(lesson => lesson.kind !== 'reference');
+const primary = registry.books.filter(book => ['math', 'chinese', 'english'].includes(book.subject) && book.grade >= 1 && book.grade <= 6), structured = primary.filter(book => book.chapterState === 'available' && lessons(book).length);
+const cells = ['math', 'chinese', 'english'].flatMap(subject => [1, 2, 3, 4, 5, 6].flatMap(grade => ['upper', 'lower'].map(term => {
+  const books = primary.filter(book => book.subject === subject && book.grade === grade && book.term === term), usable = books.filter(book => structured.includes(book));
+  return { subject, grade, term, registeredBooks: books.length, booksWithProgressLessons: usable.length, booksWithoutUsableLessons: books.length - usable.length, progressLessons: usable.reduce((sum, book) => sum + lessons(book).length, 0) };
+})));
+const db = new DatabaseSync(path.join(root, 'data/study-agent.sqlite3'), { readOnly: true }), formal = { schema: db.prepare('SELECT MAX(version) version FROM schema_migrations').get().version, revision: db.prepare('SELECT revision FROM store_meta WHERE id=1').get().revision };
+const collections = {};
+for (const name of ['knowledgeAtoms', 'measurementItems', 'textbookAtomMappings', 'curriculumRevisions', 'gespTaskReviews', 'gespTaskReviewRevisions']) {
+  const rows = db.prepare('SELECT body FROM domain_records WHERE collection=?').all(name).map(row => JSON.parse(row.body));
+  collections[name] = { rows: rows.length, savedStatusCounts: rows.reduce((result, row) => { const status = row.status ?? row.reviewStatus ?? 'unspecified'; result[status] = (result[status] ?? 0) + 1; return result; }, {}) };
+}
+db.close();
+const files = ['resources/curriculum/textbooks-v1.json', 'resources/curriculum/reviewed-textbook-chapters-v1.json', 'resources/gesp/knowledge-map.json', 'resources/gesp/student-curriculum-v2.json', 'apps/api/src/modules/diagnostics/curriculum.service.ts', 'apps/api/src/modules/diagnostics/textbook-registry.service.ts', 'apps/web/app/admin/curriculum/mapping-worklist.tsx'];
+const result = { at: new Date().toISOString(), head: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), formal, inventory: { registered: registry.books.length, primaryBooks: primary.length, primaryWithProgressLessons: structured.length, primaryBooksExcludedByCurrentLessonWorklist: primary.filter(book => !book.chapters.length).length, primaryWithoutUsableLessons: primary.length - structured.length, primaryProgressLessons: structured.reduce((sum, book) => sum + lessons(book).length, 0), tocVisualReviews: primary.filter(book => book.chapterEvidence?.method === 'agent_visual_review').length }, cells,
+  gesp: { researchedAtoms: knowledge.atoms.length, levels1to4: knowledge.atoms.filter(atom => atom.level >= 1 && atom.level <= 4).length, pilotTasks: pilot.tasks.length, pilotStatus: pilot.status, pilotIsNotCompleteReviewedCourse: true }, savedFormalCountsNotHumanReviewClaims: collections,
+  findings: ['The current worklist drops every book with an empty chapters array before calculating books and totals', 'The matched source filter is bibliographic edition matching, while the current UI calls it available without checking local file installation or bytes', 'Existing chapter evidence is a table-of-contents review; it is not lesson body/teaching-package review', 'GESP pilot tasks and research atoms remain distinct from full reviewed courses'],
+  source: files.map(file => ({ path: file, sha256: sha(fs.readFileSync(path.join(root, file))) })), noFormalWritesOrPublications: true, wholeGoal: 'active' };
+fs.writeFileSync(path.join(__dirname, 'audit-first.json'), JSON.stringify(result, null, 2) + '\n', { flag: 'wx' }); console.log(JSON.stringify({ inventory: result.inventory, gesp: result.gesp, formal, cells: cells.length, savedCounts: collections }));

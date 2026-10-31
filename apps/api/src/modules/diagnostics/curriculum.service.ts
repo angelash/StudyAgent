@@ -15,6 +15,7 @@ import { atomDefinitionFingerprint, measurementContentMatches, questionContentFi
 import { componentBindingsIssue, reviewComponentBindings } from './component-observations';
 import { FAMILY_IDENTITY_VERSION, canonicalFamily } from './family-identity';
 import { knowledgeMaterialCoverage } from './verification-materials';
+import { hasTextbookProgressLessons, textbookScopeInventory } from './textbook-scope-inventory';
 
 import { eligibleMeasurements,availableMeasurementInput,measuredAgainstDefinition } from './eligible-measurements';
 export { eligibleMeasurements } from './eligible-measurements';
@@ -268,7 +269,8 @@ export class CurriculumService {
     const query = validate(z.object({ subject: z.enum(['math', 'chinese', 'english', 'chemistry']).optional(), grade: z.coerce.number().int().min(1).max(9).optional(),
       term: z.enum(['upper', 'lower']).optional(), status: z.enum(['all', 'unmapped', 'candidate', 'approved', 'rejected', 'stale']).default('all'),
       candidate: z.enum(['all', 'with', 'without']).default('all'), source: z.enum(['all', 'matched', 'unavailable']).default('all'),
-      page: z.coerce.number().int().min(1).max(10000).default(1), pageSize: z.coerce.number().int().min(1).max(100).default(40) }).strict(), input);
+      page: z.coerce.number().int().min(1).max(10000).default(1), pageSize: z.coerce.number().int().min(1).max(100).default(40),
+      bookPage: z.coerce.number().int().min(1).max(10000).default(1), bookPageSize: z.coerce.number().int().min(1).max(30).default(10) }).strict(), input);
     if (!this.mappingCandidates) {
       const file = resolve(workspaceRoot(), 'resources/curriculum/textbook-mapping-candidates-v1.json');
       if (existsSync(file)) {
@@ -277,8 +279,10 @@ export class CurriculumService {
         this.mappingCandidates = new Map(document.rows.map(row => [`${row.bookId}:${row.lessonId}`, row]));
       } else this.mappingCandidates = new Map();
     }
-    const books = this.textbooks.all().filter(book => book.source !== 'original' && book.chapters.length && (!query.subject || book.subject === query.subject) &&
+    const scopedBooks = this.textbooks.all().filter(book => book.source !== 'original' && (!query.subject || book.subject === query.subject) &&
       (!query.grade || book.grade === query.grade) && (!query.term || book.term === query.term));
+    const { inventory, gaps } = textbookScopeInventory(scopedBooks, book => this.textbooks.availability(book));
+    const books = scopedBooks.filter(hasTextbookProgressLessons);
     const atoms = this.store.inspect('knowledgeAtoms').filter(atom => atom.status === 'published'), rows: Array<{ bookId: string; bookTitle: string; bookVersion: string;
       edition: string; lessonId: string; lessonName: string; printedPage: number | undefined; chapterName: string; state: string;
       atomIds: string[]; rubric: string; mappingVersion: number | null; candidateAtomIds: string[]; candidateRationale: string;
@@ -316,7 +320,9 @@ export class CurriculumService {
       unavailable: candidateRows.filter(row => row.sourceStatus !== 'matched').length };
     const selected = query.source === 'all' ? candidateRows : candidateRows.filter(row => query.source === 'matched' ? row.sourceStatus === 'matched' : row.sourceStatus !== 'matched');
     return { scope: { subject: query.subject ?? null, grade: query.grade ?? null, term: query.term ?? null, status: query.status,
-      candidate: query.candidate, source: query.source }, counts, candidateCounts, sourceCounts, books: books.length,
+      candidate: query.candidate, source: query.source }, counts, candidateCounts, sourceCounts, books: books.length, inventory,
+      bookGaps: { total: gaps.length, page: query.bookPage, pageSize: query.bookPageSize,
+        rows: gaps.slice((query.bookPage - 1) * query.bookPageSize, query.bookPage * query.bookPageSize) },
       total: selected.length, page: query.page, pageSize: query.pageSize, rows: selected.slice((query.page - 1) * query.pageSize, query.page * query.pageSize),
       note: '该清单只定位待核对课时；有候选不等于已映射，状态变化必须通过逐课时映射审核，不根据标题自动批准知识映射。' };
   }
