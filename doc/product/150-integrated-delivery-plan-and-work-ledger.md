@@ -6,6 +6,8 @@
 
 ## 1. 完整目标与范围
 
+2026-10-31下一实施：[174导出业务、运行与精确回收](174-paper-export-business-runtime-and-collection.md)先固定准确旧清单/原文媒体重建、无IO实际逐册预检、完整导出命令/原回执及同事务队列/学生曝光，再接真实render/cleanup和同句柄产物下载，之后原工作台完整稿UI。172第二批已本地提交dcd9c1d7，源码32、正式24/revision187及原构建保持；先提交协议，全部原范围继续active。
+
 2026-10-31原卷读取第二批：[172](172-paper-selection-business-and-student-source-access.md)十份准确源码已归并，接原工作台学生明确阅读、当前HTML/PDF打印重核、诊断期间旧入口防旁路及同句柄HTTP响应。媒体9/0/0、SQLite13/0/0和另批撤权1/0/13过滤跳过、真实PG最终14/0/0、既有十二文件186/0/0分列。生产浏览器原4/3、2/1与修复后7/0、等待真实终态的另批3/0保留，不合计为一次结果，见[证据](../evidence/2026-10-31/workspace-r5-paper-source-access/receipt.json)。主干contracts/API/Web检查0，正式24/revision187及1063运行文件保持，仅本地，自己的PG/API/Web已停止。下一步真实导出/回收worker、完整业务接口与产物下载，然后原工作台选题/完整稿/双标签/禁存储/未知结果UI；R5其他/R6全教材GESP/R7/R8及原72/WS、教师/实机/实体打印/真人全部范围继续active。
 
 2026-10-31选题业务第一批：[172](172-paper-selection-business-and-student-source-access.md)七份源码已归并，接通本人清单/完整原命令与原回执、只读准确来源目录、学生明确阅读及测量排除。最终SQLite16/0/0、真实PG16/0/0分别实际验证诊断选题排除；既有十一文件170/0/0另批通过，见[证据](../evidence/2026-10-31/workspace-r5-paper-selection-business/receipt.json)。来源和会话当前授权、并发修订回滚、准确原结果及诊断期间清空保持。接下来继续172第二批旧正文/参考/媒体/PDF/打印防旁路、同句柄响应及原视图阅读，再接完整导出worker和工作台UI；正式24/revision187及1063运行文件保持，未推送部署，全部原范围继续active。
