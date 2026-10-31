@@ -1,0 +1,66 @@
+{
+  "at": "2026-10-31T04:51:36.913Z",
+  "baseMain": "46e961ff93a999448e4016c9848d2ff15cfdb510",
+  "state": "Next165 authored model preparation; application implementation and rendered/history/recovery verification have not started.",
+  "models": 59,
+  "modelVersion": "2026-10-31.models.1",
+  "checks": {
+    "typeAndStructure": true,
+    "numericExamples": 6
+  },
+  "baseline": {
+    "snapshot": "adult165-before-content-second.json.gz",
+    "plainSha256": "e2cabcd0b503bb570cc7c002d5c1912e3644d0541b6d967e4a5d2d993649e41b",
+    "lessons": 60,
+    "questions": 185,
+    "unitQuestions": 60,
+    "projects": 5
+  },
+  "humanReviewCompleted": false,
+  "applicationIntegrated": false,
+  "renderedClassroomVerified": false,
+  "realLearnerEvidence": false,
+  "wholeGoal": "active",
+  "artifacts": [
+    {
+      "path": "authored-model-candidate.ts",
+      "bytes": 68322,
+      "sha256": "4e67a4ce6139a873d66b6b614fb45bde8b1ecfc7526a9303dfa1cfaa441486c6"
+    },
+    {
+      "path": "structure-and-numeric-checks.json",
+      "bytes": 14261,
+      "sha256": "574468f80902d8a4125ba1af35c59616537649848ee1b69d544f3e219a5288fa"
+    },
+    {
+      "path": "before-content.json.gz",
+      "bytes": 97936,
+      "sha256": "c24a07068bd760187129c2435896150ddc4261d6f254e5b9960f7a1f032383a9"
+    },
+    {
+      "path": "actual-original-lesson-basis.json",
+      "bytes": 34202,
+      "sha256": "c24c333ad5ba124ba1fe8b4462fdf27327301faeb0dbedbbe2f6e676a52b852b"
+    },
+    {
+      "path": "original-type-placement-failure.ts.txt",
+      "bytes": 68322,
+      "sha256": "d45e7b94db2ddf5e441f81f82309360d175521a2dc5a3ecf76273ac07432aa55"
+    },
+    {
+      "path": "original-preparation-failure.json",
+      "bytes": 419,
+      "sha256": "f222bec562782e42abd34b909fb12820abc29ec8b081119bd828a97484bf5b7e"
+    },
+    {
+      "path": "original-check-runner.cjs",
+      "bytes": 5546,
+      "sha256": "530cd12c4ae89ae007b07921cb16fe419bdc7a9c4bcdcb39cec6917aef2c81ab"
+    },
+    {
+      "path": "complete-check-runner.cjs",
+      "bytes": 6064,
+      "sha256": "6cd2d83c7eea3cf0a8226e3c8ebf35d8cfce6eacf053143c1ea65db222dbaf64"
+    }
+  ]
+}
