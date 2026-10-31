@@ -1,0 +1,75 @@
+{
+  "scope": "Actual synthetic tool fixture only; all4 final PNG pages visually inspected after canonical render_docx.py with isolated actual LibreOffice/Poppler. No application export routes, tasks, user data or physical printer exercised.",
+  "pages": 4,
+  "all32RowsAndRepeatedHeader": true,
+  "questionFigureAndCaptionSamePage": true,
+  "nativeFractionStructureAndVisibleOutput": true,
+  "answersOnSeparatePage4": true,
+  "a4Geometry": true,
+  "docxInputUnchangedByRender": true,
+  "layoutAcceptedForThisProbe": true,
+  "firstLayoutFailureRetained": true,
+  "utf8Mode": 1,
+  "pythonVersions": {
+    "python-docx": "1.2.0",
+    "PyMuPDF": "1.26.6",
+    "pdf2image": "1.17.0",
+    "Pillow": "11.1.0"
+  },
+  "fontsObserved": [
+    "BAAAAA+Calibri",
+    "CAAAAA+SimSun",
+    "DAAAAA+SimSun",
+    "EAAAAA+MS-Gothic",
+    "FAAAAA+SourceHanSansSC-Regular",
+    "GAAAAA+Calibri-Italic",
+    "HAAAAA+MS-Gothic",
+    "IAAAAA+SourceHanSansSC-Bold",
+    "JAAAAA+MS-Gothic",
+    "KAAAAA+Calibri-Bold",
+    "LAAAAA+SimSun",
+    "MAAAAA+TimesNewRomanPSMT",
+    "NAAAAA+OpenSymbol",
+    "OAAAAA+NotoSerifSC-Regular",
+    "PAAAAA+Calibri",
+    "QAAAAA+SimSun",
+    "RAAAAA+Calibri"
+  ],
+  "fontRedistributionReviewed": false,
+  "actualApplicationExportImplemented": false,
+  "crossEnvironmentVerified": false,
+  "teacherApproved": false,
+  "physicalPrintVerified": false,
+  "files": [
+    {
+      "path": "render-probe-second/synthetic-paper.docx",
+      "bytes": 40616,
+      "sha256": "ce328ffd4f4712ebef66eb07c0c99f5270d3699954861d5a27fc28f27bb787ba"
+    },
+    {
+      "path": "render-probe-second/png/synthetic-paper.pdf",
+      "bytes": 201716,
+      "sha256": "f3b462217fe4e1b928a49a9664565afd9f8d053e711a0702f11d0e76f177935f"
+    },
+    {
+      "path": "render-probe-second/png/page-1.png",
+      "bytes": 235575,
+      "sha256": "6d5ebeb35a0c5db1c2ddf3230b2935df3c6da2cbf6028825a2fcc600cc46488f"
+    },
+    {
+      "path": "render-probe-second/png/page-2.png",
+      "bytes": 222506,
+      "sha256": "66c66e7851a66e9566360057a30cad4f825dfd21fd12634b8b7bc4957e83af6c"
+    },
+    {
+      "path": "render-probe-second/png/page-3.png",
+      "bytes": 59203,
+      "sha256": "5e1282dfa2e112ad92c78ebb4cd6764fc86e6d3e1c283e303c34ec347d0b6e79"
+    },
+    {
+      "path": "render-probe-second/png/page-4.png",
+      "bytes": 85429,
+      "sha256": "f56ad360ee640af1df1f22ba78f4aaf76951cb8eacec8478e36d79f6aff6f66f"
+    }
+  ]
+}

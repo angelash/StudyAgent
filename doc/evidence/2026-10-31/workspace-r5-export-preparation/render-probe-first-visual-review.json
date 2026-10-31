@@ -1,0 +1,29 @@
+{
+  "scope": "Actual first canonical DOCX renderer succeeded; all4 PNG pages were opened. This is a synthetic tool fixture, not an application export.",
+  "layoutAccepted": false,
+  "problems": [
+    "Question3 heading/prompt ends on page2 while its figure and caption start on page3.",
+    "Built-in Title acquires a full-width blue rule; use an explicit worksheet title style."
+  ],
+  "originalSourceSha256": "2cd78e7353b5252c7bef35d86d05c8914ed8a9b747291863142a54a6e97f09f3",
+  "images": [
+    {
+      "path": "page-1.png",
+      "sha256": "946376a13dff07f0e842338981ada7389c6bb5ec15bf64eaa0e77ad79cbc583d"
+    },
+    {
+      "path": "page-2.png",
+      "sha256": "2e2105679cb2b10ddb8b68dc7b24791e132220b21bc430bebd32138686c0b01e"
+    },
+    {
+      "path": "page-3.png",
+      "sha256": "c5e36a8521a5cf33afd016a8c603d0cd4809b1011256b42a0e38b49f2ee277e2"
+    },
+    {
+      "path": "page-4.png",
+      "sha256": "f56ad360ee640af1df1f22ba78f4aaf76951cb8eacec8478e36d79f6aff6f66f"
+    }
+  ],
+  "physicalPrint": false,
+  "teacherReview": false
+}

@@ -1,0 +1,72 @@
+{
+  "version": "1",
+  "pip_version": "25.3",
+  "install": [
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/62/33/61766ae033518957f877ab246f87ca30a85b778ebaad65b7f74fa7e52988/pdf2image-1.17.0-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=ecdd58d7afb810dffe21ef2b1bbc057ef434dabbac6c33778a38a3f7744a27e2",
+          "hashes": {
+            "sha256": "ecdd58d7afb810dffe21ef2b1bbc057ef434dabbac6c33778a38a3f7744a27e2"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": true,
+      "metadata": {
+        "metadata_version": "2.1",
+        "name": "pdf2image",
+        "version": "1.17.0",
+        "platform": [
+          "UNKNOWN"
+        ],
+        "summary": "A wrapper around the pdftoppm and pdftocairo command line tools to convert PDF to a PIL Image list.",
+        "description_content_type": "text/markdown",
+        "keywords": [
+          "pdf",
+          "image",
+          "png",
+          "jpeg",
+          "jpg",
+          "convert"
+        ],
+        "home_page": "https://github.com/Belval/pdf2image",
+        "author": "Edouard Belval",
+        "author_email": "edouard@belval.org",
+        "license": "MIT",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Intended Audience :: Developers",
+          "License :: OSI Approved :: MIT License",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3.7",
+          "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10"
+        ],
+        "requires_dist": [
+          "pillow"
+        ],
+        "description": "# pdf2image\n[![CircleCI](https://circleci.com/gh/Belval/pdf2image/tree/master.svg?style=svg)](https://circleci.com/gh/Belval/pdf2image/tree/master) [![PyPI version](https://badge.fury.io/py/pdf2image.svg)](https://badge.fury.io/py/pdf2image) [![codecov](https://codecov.io/gh/Belval/pdf2image/branch/master/graph/badge.svg)](https://codecov.io/gh/Belval/pdf2image) [![Downloads](https://pepy.tech/badge/pdf2image/month)](https://pepy.tech/project/pdf2image) [![GitHub CI](https://github.com/Belval/pdf2image/actions/workflows/documentation.yml/badge.svg)](https://belval.github.io/pdf2image)\n\nA python (3.7+) module that wraps pdftoppm and pdftocairo to convert PDF to a PIL Image object\n\n## How to install\n\n`pip install pdf2image`\n\n### Windows\n\nWindows users will have to build or download poppler for Windows. I recommend [@oschwartz10612 version](https://github.com/oschwartz10612/poppler-windows/releases/) which is the most up-to-date. You will then have to add the `bin/` folder to [PATH](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/) or use `poppler_path = r\"C:\\path\\to\\poppler-xx\\bin\" as an argument` in `convert_from_path`.\n\n### Mac\n\nMac users will have to install [poppler](https://poppler.freedesktop.org/).\n\nInstalling using [Brew](https://brew.sh/):\n\n```\nbrew install poppler\n```\n\n### Linux\n\nMost distros ship with `pdftoppm` and `pdftocairo`. If they are not installed, refer to your package manager to install `poppler-utils`\n\n### Platform-independant (Using `conda`)\n\n1. Install poppler: `conda install -c conda-forge poppler`\n2. Install pdf2image: `pip install pdf2image`\n\n## How does it work?\n\n\n```py\nfrom pdf2image import convert_from_path, convert_from_bytes\nfrom pdf2image.exceptions import (\n    PDFInfoNotInstalledError,\n    PDFPageCountError,\n    PDFSyntaxError\n)\n```\n\nThen simply do:\n\n```py\nimages = convert_from_path('/home/belval/example.pdf')\n```\n\nOR\n\n```py\nimages = convert_from_bytes(open('/home/belval/example.pdf', 'rb').read())\n```\n\nOR better yet\n\n```py\nimport tempfile\n\nwith tempfile.TemporaryDirectory() as path:\n    images_from_path = convert_from_path('/home/belval/example.pdf', output_folder=path)\n    # Do something here\n```\n\n`images` will be a list of PIL Image representing each page of the PDF document.\n\nHere are the definitions:\n\n`convert_from_path(pdf_path, dpi=200, output_folder=None, first_page=None, last_page=None, fmt='ppm', jpegopt=None, thread_count=1, userpw=None, use_cropbox=False, strict=False, transparent=False, single_file=False, output_file=str(uuid.uuid4()), poppler_path=None, grayscale=False, size=None, paths_only=False, use_pdftocairo=False, timeout=600, hide_attributes=False)`\n\n`convert_from_bytes(pdf_file, dpi=200, output_folder=None, first_page=None, last_page=None, fmt='ppm', jpegopt=None, thread_count=1, userpw=None, use_cropbox=False, strict=False, transparent=False, single_file=False, output_file=str(uuid.uuid4()), poppler_path=None, grayscale=False, size=None, paths_only=False, use_pdftocairo=False, timeout=600, hide_attributes=False)`\n\n## What's new?\n\n- Allow users to hide attributes when using pdftoppm with `hide_attributes` (Thank you @StaticRocket)\n- Fix console opening on Windows (Thank you @OhMyAgnes!)\n- Add `timeout` parameter which raises `PDFPopplerTimeoutError` after the given number of seconds.\n- Add `use_pdftocairo` parameter which forces `pdf2image` to use `pdftocairo`. Should improve performance.\n- Fixed a bug where using `pdf2image` with multiple threads (but not multiple processes) would cause and exception\n- `jpegopt` parameter allows for tuning of the output JPEG when using `fmt=\"jpeg\"` (`-jpegopt` in pdftoppm CLI) (Thank you @abieler)\n- `pdfinfo_from_path` and `pdfinfo_from_bytes` which expose the output of the pdfinfo CLI\n- `paths_only` parameter will return image paths instead of Image objects, to prevent OOM when converting a big PDF\n- `size` parameter allows you to define the shape of the resulting images (`-scale-to` in pdftoppm CLI)\n    - `size=400` will fit the image to a 400x400 box, preserving aspect ratio\n    - `size=(400, None)` will make the image 400 pixels wide, preserving aspect ratio\n    - `size=(500, 500)` will resize the image to 500x500 pixels, not preserving aspect ratio\n- `grayscale` parameter allows you to convert images to grayscale (`-gray` in pdftoppm CLI)\n- `single_file` parameter allows you to convert the first PDF page only, without adding digits at the end of the `output_file`\n- Allow the user to specify poppler's installation path with `poppler_path`\n\n## Performance tips\n\n- Using an output folder is significantly faster if you are using an SSD. Otherwise i/o usually becomes the bottleneck.\n- Using multiple threads can give you some gains but avoid more than 4 as this will cause i/o bottleneck (even on my NVMe SSD!).\n- If i/o is your bottleneck, using the JPEG format can lead to significant gains.\n- PNG format is pretty slow, this is because of the compression.\n- If you want to know the best settings (most settings will be fine anyway) you can clone the project and run `python tests.py` to get timings.\n\n## Limitations / known issues\n\n- A relatively big PDF will use up all your memory and cause the process to be killed (unless you use an output folder)\n- Sometimes fail read pdf signed using DocuSign, [Solution for DocuSign issue.](docs/installation.md)\n\n\n"
+      }
+    }
+  ],
+  "environment": {
+    "implementation_name": "cpython",
+    "implementation_version": "3.10.8",
+    "os_name": "nt",
+    "platform_machine": "AMD64",
+    "platform_release": "10",
+    "platform_system": "Windows",
+    "platform_version": "10.0.26220",
+    "python_full_version": "3.10.8",
+    "platform_python_implementation": "CPython",
+    "python_version": "3.10",
+    "sys_platform": "win32"
+  }
+}

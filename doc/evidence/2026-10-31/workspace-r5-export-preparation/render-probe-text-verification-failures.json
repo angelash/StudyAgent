@@ -1,0 +1,18 @@
+{
+  "scope": "Both failed checks read the same actual second PDF in content-stream order. The unchanged rendered pages were visually correct; exact Unicode heading assertions pass only when positions are sorted into reading order. No source text, assertion phrase, DOCX or PDF was changed.",
+  "attempts": [
+    {
+      "name": "inline-first",
+      "error": "AssertionError at stdin line13, original raw heading containment",
+      "passed": false
+    },
+    {
+      "name": "file-utf8-second",
+      "error": "AssertionError at verify-render-probe-second.py line13, same original heading containment",
+      "passed": false
+    }
+  ],
+  "originalVerifierSha256": "d944c5e361323649b18e21a85359d786c7d6570d1920effe3d797fa41eeb06ac",
+  "geometricVerifierSha256": "786b01396f39f0078f30ecb2b84a33b43def63e6605f9671bf8112be6f68780f",
+  "change": "Use PyMuPDF get_text(sort=True) to read positioned text in visual order; every original exact content assertion retained."
+}

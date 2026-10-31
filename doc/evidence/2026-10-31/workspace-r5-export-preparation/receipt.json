@@ -1,0 +1,250 @@
+{
+  "at": "2026-10-31T06:23:34.347Z",
+  "baseMain": "a2b0eac8f0ae7a3c511981ba8ba3aa1c3c7699a1",
+  "scope": "166 implementation preparation. Actual synthetic DOCX->PDF->PNG tool chain, not the application selection/export feature.",
+  "office": {
+    "version": "LibreOffice 26.8.2.2 9dea406ab7695df6325b11b0e19fdca8db4b7276",
+    "officialInstallerSha256": "ff4b911403b67ee9e6249f820f9782c44bb32c94fdaa45b0da53a8e419e5307a",
+    "signature": "Valid",
+    "signer": "CN=The Document Foundation, O=The Document Foundation, L=Berlin, S=Berlin, C=DE",
+    "method": "Project-local administrative image, isolated profile; no formal application runtime path changed."
+  },
+  "poppler": {
+    "source": "Pinned GitHub release asset digest, oschwartz10612/poppler-windows v26.09.0-0",
+    "archiveSha256": "7a6f256a0ddf7536182246a5733331bf4677cbcc34f4663774947ad34556c8d0"
+  },
+  "canonicalHelper": {
+    "source": "Integrated documents skill render_docx.py",
+    "sha256": "d8fe979f76e11215e146e53484bb4cb4e5f3906b58debed6844171073b187286"
+  },
+  "final": {
+    "pages": 4,
+    "completeRows": 32,
+    "nativeFractions": 2,
+    "figureAndCaptionWithPrompt": true,
+    "repeatedTableHeader": true,
+    "separateAnswerPage": 4,
+    "allPagesVisuallyInspected": true,
+    "a4": true,
+    "originalDocxUnchangedByRendering": true
+  },
+  "firstFailure": "First real render split the third prompt and its figure across pages; the built-in title added an unwanted rule. Original first DOCX/PDF/PNGs and source remain separate.",
+  "verifierFailures": "Two exact phrase checks incorrectly read unsorted PDF content streams. The final position-sorted reader retains all original assertions and reads the unchanged second document in visual order.",
+  "applicationImplemented": false,
+  "durableExportTasksImplemented": false,
+  "studentDataChanged": false,
+  "crossEnvironmentVerified": false,
+  "fontRedistributionReviewed": false,
+  "physicalPrintVerified": false,
+  "teacherReviewCompleted": false,
+  "wholeGoal": "active",
+  "localOnly": [
+    "Official MSI and extracted LibreOffice tree",
+    "Poppler release ZIP and native tree",
+    "Verbose MSI extraction log",
+    "Temporary isolated LibreOffice profiles"
+  ],
+  "remaining": [
+    "Freeze exact production renderer/font dependencies and protocol",
+    "Seal actual final schema31 reader before any schema32 native records",
+    "Persistent selection/export commands and worker/file lifecycle",
+    "Original preview/media/student exposure boundaries",
+    "Workbench UI and complete draft recovery",
+    "SQLite/real PG/native file recovery and matching application regression",
+    "Other native question sources, real devices, teachers and physical print"
+  ],
+  "artifacts": [
+    {
+      "path": "archive-export-preparation-first.cjs",
+      "bytes": 6269,
+      "sha256": "fd1957d49fd1bd49bcc3e285f06237012bff254aaae82e41488b52db04a9ab89",
+      "originalSha256": "fd1957d49fd1bd49bcc3e285f06237012bff254aaae82e41488b52db04a9ab89"
+    },
+    {
+      "path": "create-render-probe-first.py",
+      "bytes": 7390,
+      "sha256": "2cd78e7353b5252c7bef35d86d05c8914ed8a9b747291863142a54a6e97f09f3",
+      "originalSha256": "2cd78e7353b5252c7bef35d86d05c8914ed8a9b747291863142a54a6e97f09f3"
+    },
+    {
+      "path": "create-render-probe-second.py",
+      "bytes": 7627,
+      "sha256": "bd3635b6dd78637ea289a8dbe8dc6716085f40239d288d59e7f3564b49414520",
+      "originalSha256": "bd3635b6dd78637ea289a8dbe8dc6716085f40239d288d59e7f3564b49414520"
+    },
+    {
+      "path": "libreoffice-download-first.json",
+      "bytes": 356,
+      "sha256": "c2f025093a6a806a08c5c87b30a0ef3d3bd4b4736a3cb9432f78f06b885e8696",
+      "originalSha256": "c2f025093a6a806a08c5c87b30a0ef3d3bd4b4736a3cb9432f78f06b885e8696"
+    },
+    {
+      "path": "libreoffice-extract-first.json",
+      "bytes": 318,
+      "sha256": "165003b96b84aff41c2af1a2e78ed5271eb154c55017aa74abf39f0c5ec45d3f",
+      "originalSha256": "165003b96b84aff41c2af1a2e78ed5271eb154c55017aa74abf39f0c5ec45d3f"
+    },
+    {
+      "path": "libreoffice-version-first.json",
+      "bytes": 802,
+      "sha256": "c32ff3675f75520fc22869c85c783a8c445e0e2686646191afe6fe04c8238ac9",
+      "originalSha256": "c32ff3675f75520fc22869c85c783a8c445e0e2686646191afe6fe04c8238ac9"
+    },
+    {
+      "path": "pdf2image-install-first.json",
+      "bytes": 7783,
+      "sha256": "be6e402d8307fe9c79cb6790537271df0ab53121f90687cd603d59f17e4147c4",
+      "originalSha256": "be6e402d8307fe9c79cb6790537271df0ab53121f90687cd603d59f17e4147c4"
+    },
+    {
+      "path": "poppler-preparation-first.json",
+      "bytes": 818,
+      "sha256": "23bea943a5461b581e72e87f2536e7293fcbe275045f33b85f1b74207cc9752b",
+      "originalSha256": "23bea943a5461b581e72e87f2536e7293fcbe275045f33b85f1b74207cc9752b"
+    },
+    {
+      "path": "render-probe-first-visual-review.json",
+      "bytes": 1046,
+      "sha256": "3209ce080dc11ddbf0b04d34b8480af75b1e65227d61dc0895dd7808e31012b8",
+      "originalSha256": "3209ce080dc11ddbf0b04d34b8480af75b1e65227d61dc0895dd7808e31012b8"
+    },
+    {
+      "path": "render-probe-second-acceptance.json",
+      "bytes": 2488,
+      "sha256": "a12487391b14aa07caaecddd4a8e2a16cb223d3fab0d23ea7206b28aad14a98e",
+      "originalSha256": "a12487391b14aa07caaecddd4a8e2a16cb223d3fab0d23ea7206b28aad14a98e"
+    },
+    {
+      "path": "render-probe-text-verification-failures.json",
+      "bytes": 968,
+      "sha256": "eb6488d828349a4e386a5a9e433ffa481dcbb4dcec71d67556e8e7c933179a10",
+      "originalSha256": "eb6488d828349a4e386a5a9e433ffa481dcbb4dcec71d67556e8e7c933179a10"
+    },
+    {
+      "path": "toolchain-observation-first.json",
+      "bytes": 1114,
+      "sha256": "3646eaf890fcf249c24c26b3d4ad7b540c1b0971c5d7abdee1d7afb7d3f0c599",
+      "originalSha256": "3646eaf890fcf249c24c26b3d4ad7b540c1b0971c5d7abdee1d7afb7d3f0c599"
+    },
+    {
+      "path": "verify-render-probe-second.py",
+      "bytes": 2712,
+      "sha256": "d944c5e361323649b18e21a85359d786c7d6570d1920effe3d797fa41eeb06ac",
+      "originalSha256": "d944c5e361323649b18e21a85359d786c7d6570d1920effe3d797fa41eeb06ac"
+    },
+    {
+      "path": "verify-render-probe-third.py",
+      "bytes": 2721,
+      "sha256": "786b01396f39f0078f30ecb2b84a33b43def63e6605f9671bf8112be6f68780f",
+      "originalSha256": "786b01396f39f0078f30ecb2b84a33b43def63e6605f9671bf8112be6f68780f"
+    },
+    {
+      "path": "render-probe-first/synthetic-paper.docx",
+      "bytes": 40470,
+      "sha256": "10209369a427e8d3830929bdc93dd1dd897599853c72384500cf473d5fef097b",
+      "originalSha256": "10209369a427e8d3830929bdc93dd1dd897599853c72384500cf473d5fef097b"
+    },
+    {
+      "path": "render-probe-first/synthetic-equal-squares.png",
+      "bytes": 749,
+      "sha256": "7fa7ff5fab504bf7fd3f27e8cc83ce3752f93d0dd96f0a18e4392dc701efb5ab",
+      "originalSha256": "7fa7ff5fab504bf7fd3f27e8cc83ce3752f93d0dd96f0a18e4392dc701efb5ab"
+    },
+    {
+      "path": "render-probe-first/build.json",
+      "bytes": 1294,
+      "sha256": "91d990b0bb9e3c567686e60dfac9f1b84b70f725049dd5fab34bd7d69ce462ee",
+      "originalSha256": "91d990b0bb9e3c567686e60dfac9f1b84b70f725049dd5fab34bd7d69ce462ee"
+    },
+    {
+      "path": "render-probe-first/render.log.gz",
+      "bytes": 339,
+      "sha256": "0d1cdb411b194338f5f6314031dd6afc5f0a1fe5b0512169677f00ee41bc7e2a",
+      "originalSha256": "11ebea2d1565ec6fe74a3a87d31b26b96bbfcd463e40b6abbc2d108b3f6470ab"
+    },
+    {
+      "path": "render-probe-first/png/synthetic-paper.pdf",
+      "bytes": 200500,
+      "sha256": "7071c26fab15680f6760092a34ae3e4809df03c0ac996ee5ed5aa6e726f1b8fa",
+      "originalSha256": "7071c26fab15680f6760092a34ae3e4809df03c0ac996ee5ed5aa6e726f1b8fa"
+    },
+    {
+      "path": "render-probe-first/png/page-1.png",
+      "bytes": 236031,
+      "sha256": "946376a13dff07f0e842338981ada7389c6bb5ec15bf64eaa0e77ad79cbc583d",
+      "originalSha256": "946376a13dff07f0e842338981ada7389c6bb5ec15bf64eaa0e77ad79cbc583d"
+    },
+    {
+      "path": "render-probe-first/png/page-2.png",
+      "bytes": 241894,
+      "sha256": "2e2105679cb2b10ddb8b68dc7b24791e132220b21bc430bebd32138686c0b01e",
+      "originalSha256": "2e2105679cb2b10ddb8b68dc7b24791e132220b21bc430bebd32138686c0b01e"
+    },
+    {
+      "path": "render-probe-first/png/page-3.png",
+      "bytes": 39794,
+      "sha256": "c5e36a8521a5cf33afd016a8c603d0cd4809b1011256b42a0e38b49f2ee277e2",
+      "originalSha256": "c5e36a8521a5cf33afd016a8c603d0cd4809b1011256b42a0e38b49f2ee277e2"
+    },
+    {
+      "path": "render-probe-first/png/page-4.png",
+      "bytes": 85429,
+      "sha256": "f56ad360ee640af1df1f22ba78f4aaf76951cb8eacec8478e36d79f6aff6f66f",
+      "originalSha256": "f56ad360ee640af1df1f22ba78f4aaf76951cb8eacec8478e36d79f6aff6f66f"
+    },
+    {
+      "path": "render-probe-second/synthetic-paper.docx",
+      "bytes": 40616,
+      "sha256": "ce328ffd4f4712ebef66eb07c0c99f5270d3699954861d5a27fc28f27bb787ba",
+      "originalSha256": "ce328ffd4f4712ebef66eb07c0c99f5270d3699954861d5a27fc28f27bb787ba"
+    },
+    {
+      "path": "render-probe-second/synthetic-equal-squares.png",
+      "bytes": 749,
+      "sha256": "7fa7ff5fab504bf7fd3f27e8cc83ce3752f93d0dd96f0a18e4392dc701efb5ab",
+      "originalSha256": "7fa7ff5fab504bf7fd3f27e8cc83ce3752f93d0dd96f0a18e4392dc701efb5ab"
+    },
+    {
+      "path": "render-probe-second/build.json",
+      "bytes": 1294,
+      "sha256": "8d9750362ce81431aa859cd0384b9979a0a21896c6ee3285542d1feb09a3b6a2",
+      "originalSha256": "8d9750362ce81431aa859cd0384b9979a0a21896c6ee3285542d1feb09a3b6a2"
+    },
+    {
+      "path": "render-probe-second/render.log.gz",
+      "bytes": 341,
+      "sha256": "037ed52a89671da9ccd01adf683910e2a426c0def8ea2e1d600cd716283fabe7",
+      "originalSha256": "6cc30894f6e349cf40df839aa121ffb334057445e42820c84052506e5c2d4fb7"
+    },
+    {
+      "path": "render-probe-second/png/synthetic-paper.pdf",
+      "bytes": 201716,
+      "sha256": "f3b462217fe4e1b928a49a9664565afd9f8d053e711a0702f11d0e76f177935f",
+      "originalSha256": "f3b462217fe4e1b928a49a9664565afd9f8d053e711a0702f11d0e76f177935f"
+    },
+    {
+      "path": "render-probe-second/png/page-1.png",
+      "bytes": 235575,
+      "sha256": "6d5ebeb35a0c5db1c2ddf3230b2935df3c6da2cbf6028825a2fcc600cc46488f",
+      "originalSha256": "6d5ebeb35a0c5db1c2ddf3230b2935df3c6da2cbf6028825a2fcc600cc46488f"
+    },
+    {
+      "path": "render-probe-second/png/page-2.png",
+      "bytes": 222506,
+      "sha256": "66c66e7851a66e9566360057a30cad4f825dfd21fd12634b8b7bc4957e83af6c",
+      "originalSha256": "66c66e7851a66e9566360057a30cad4f825dfd21fd12634b8b7bc4957e83af6c"
+    },
+    {
+      "path": "render-probe-second/png/page-3.png",
+      "bytes": 59203,
+      "sha256": "5e1282dfa2e112ad92c78ebb4cd6764fc86e6d3e1c283e303c34ec347d0b6e79",
+      "originalSha256": "5e1282dfa2e112ad92c78ebb4cd6764fc86e6d3e1c283e303c34ec347d0b6e79"
+    },
+    {
+      "path": "render-probe-second/png/page-4.png",
+      "bytes": 85429,
+      "sha256": "f56ad360ee640af1df1f22ba78f4aaf76951cb8eacec8478e36d79f6aff6f66f",
+      "originalSha256": "f56ad360ee640af1df1f22ba78f4aaf76951cb8eacec8478e36d79f6aff6f66f"
+    }
+  ]
+}

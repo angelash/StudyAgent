@@ -1,0 +1,30 @@
+{
+  "scope": "Read-only export toolchain preparation, not a rendered document or application implementation. Managed workspace dependency bundle26.1020.11618 was resolved.",
+  "python": "C:\\Python310\\python.exe",
+  "modules": {
+    "docx": true,
+    "reportlab": false,
+    "pypdf": false,
+    "pdfplumber": false,
+    "fitz": true,
+    "lxml": true,
+    "pdf2image": false
+  },
+  "officeCandidates": [
+    {
+      "path": "C:\\Program Files\\LibreOffice\\program\\soffice.exe",
+      "exists": false
+    },
+    {
+      "path": "C:\\Program Files (x86)\\LibreOffice\\program\\soffice.exe",
+      "exists": false
+    }
+  ],
+  "observedOfficeRendererAvailable": false,
+  "pdfRuntimeExisting": "Application currently uses pinned pdf-lib1.17.1. This check has not selected a production export renderer.",
+  "docxRenderingVerified": false,
+  "pdfExportVerified": false,
+  "physicalPrintVerified": false,
+  "userDataReadOrChanged": false,
+  "next": "Resolve a reproducible isolated production/QA renderer and required fonts before freezing the exact export record and endpoint protocol."
+}

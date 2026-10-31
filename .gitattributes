@@ -113,3 +113,7 @@ doc/evidence/2026-10-29/schema23-full-api-second/** -text -whitespace
 
 # Preserve hashed adult-model acceptance reports and exact source variants.
 doc/evidence/2026-10-31/workspace-r5-adult-models-and-compatibility/** -text
+# Preserve export renderer probe inputs, including native Office/PDF samples.
+doc/evidence/2026-10-31/workspace-r5-export-preparation/** -text
+# Native Windows JSON reports retain CRLF; keep the usual whitespace checks.
+doc/evidence/2026-10-31/workspace-r5-export-preparation/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
