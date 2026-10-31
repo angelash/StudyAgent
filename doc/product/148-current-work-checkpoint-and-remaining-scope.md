@@ -1,5 +1,7 @@
 # 当前工作收尾、验证边界与续接位置
 
+2026-10-31原生文档接续：[169](169-native-question-continuations-and-text-integrity.md)修正有界生成器的多段/单段续题、起止目标、参考/留白和数据重复，并拒绝已知正文缺字文件。主干24项、五次真实生成31页、五份DOCX独立渲染31页分别记账，全部62张页面经31组原像素并排图打开；[证据](../evidence/2026-10-31/workspace-r5-native-question-flow/receipt.json)保留各轮错误原文件。168基础已提交0044f4b0；继续完整导出/命令/文件原生关系后注册32，再接清单事务/真实队列/学生旧读取/隐私恢复/原UI。正式24/revision187、1063份运行文件保持，未推送部署，全部原范围继续active。
+
 2026-10-31选题记录接续：[168](168-paper-selection-export-native-protocol.md)第一批十份严格记录/关系/实际来源源码已归入主干，最终专项82/0/1条件跳过（本批41项），主干contracts/API无输出类型检查通过，见[证据](../evidence/2026-10-31/workspace-r5-native-selection-records/receipt.json)。准确来源沿用带`paper:`前缀的catalog题键并核对实际detail全文SHA。新集合/业务路由/32未注册，导出原生能力仍false；接实际事务、任务/文件/隐私恢复、学生旧读取防旁路和原工作台UI。正式24/revision187及1063份运行文件保持，仅本地，全部原范围和整体目标继续active。
 
 2026-10-31持久选题接续：[168](168-paper-selection-export-native-protocol.md)先固定作者/学习范围、六个原生集合、完整原命令/原回执、历史链、按册格式任务、已登记IO、真实删除回执与恢复关系。协议先本地提交，随后从严格记录及完整关系重建接双库/队列/文件/原UI。当前应用31、正式24，32未注册；167长正文续题与全部原范围继续active。

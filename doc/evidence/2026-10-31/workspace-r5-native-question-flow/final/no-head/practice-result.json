@@ -1,0 +1,62 @@
+{
+  "protocol": "paper-export-render-result-v1",
+  "inputSha256": "3af90d627e49519e6946b7170ebef9dcd6d7f78f349a641de944c44e3ca0d078",
+  "files": [
+    {
+      "book": "practice",
+      "format": "docx",
+      "path": "artifacts-practice/practice.docx",
+      "bytes": 9403050,
+      "sha256": "24d57ebfa382c535751255c8501ea13208140556dcb5df923608f6528b6d7305",
+      "pageCount": 5,
+      "sourceMap": [
+        {
+          "itemId": "item-1",
+          "number": 1,
+          "source": {
+            "paperId": "synthetic-paper-a",
+            "position": 2,
+            "sourceQuestionId": "original-1",
+            "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "publicationVersion": "synthetic-v1",
+            "paperTitle": "自建合成题卷甲",
+            "pageNumber": 1
+          },
+          "startPage": 1,
+          "endPage": 5,
+          "bookmark": "PaperItem0001",
+          "endBookmark": "PaperEnd0001",
+          "pdfDestinationName": "PaperItem0001"
+        }
+      ]
+    },
+    {
+      "book": "practice",
+      "format": "pdf",
+      "path": "artifacts-practice/practice.pdf",
+      "bytes": 119088,
+      "sha256": "7f92b3d390c045e7a6826570b22e4bf3a4a47f1115298affb6023e9454e5681e",
+      "pageCount": 5,
+      "sourceMap": [
+        {
+          "itemId": "item-1",
+          "number": 1,
+          "source": {
+            "paperId": "synthetic-paper-a",
+            "position": 2,
+            "sourceQuestionId": "original-1",
+            "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "publicationVersion": "synthetic-v1",
+            "paperTitle": "自建合成题卷甲",
+            "pageNumber": 1
+          },
+          "startPage": 1,
+          "endPage": 5,
+          "bookmark": "PaperItem0001",
+          "endBookmark": "PaperEnd0001",
+          "pdfDestinationName": "PaperItem0001"
+        }
+      ]
+    }
+  ]
+}

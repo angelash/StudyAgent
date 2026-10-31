@@ -15,7 +15,7 @@ from docx import Document
 from docx.oxml.ns import qn
 from paper_export_content import load_input, parse_markup, table_grid, preflight, text
 from paper_export_protocol import error_code
-from paper_export_document import Builder, styles, inspect_visual_bounds
+from paper_export_document import Builder, styles, inspect_visual_bounds, inspect_continuation_labels, inspect_text_coverage
 from paper_export_math import omml
 
 
@@ -163,6 +163,54 @@ class RuntimeEnvironment(unittest.TestCase):
 
 
 class ActualPdfGeometry(unittest.TestCase):
+    def test_actual_pdf_must_retain_every_occurrence_of_original_plain_text(self):
+        import fitz
+        value = {'items': [{'promptHtml': 'body', 'optionHtml': [], 'reference': None}]}
+        parsed = [{'body': ET.fromstring('<div><p>ZZZZZ</p></div>')}]
+        with fitz.open() as pdf:
+            pdf.new_page().insert_text((55, 80), 'ZZZ')
+            with self.assertRaisesRegex(ValueError, '^paper_export_content_incomplete$'):
+                inspect_text_coverage(pdf, value, 'practice', parsed)
+            pdf[0].insert_text((55, 100), 'ZZ')
+            inspect_text_coverage(pdf, value, 'practice', parsed)
+
+    def test_text_coverage_separates_books_and_native_formula_reading_order(self):
+        import fitz
+        value = {'items': [{'promptHtml': 'body', 'optionHtml': [{'label': 'A', 'html': 'option'}], 'reference': {'answerHtml': 'answer', 'analysisHtml': None}}]}
+        parsed = [{'body': ET.fromstring('<div><p>QQ<math><mi>unrelatedMathOrder</mi></math></p></div>'),
+                   'option': ET.fromstring('<div>Extra</div>'), 'answer': ET.fromstring('<div>ZZ</div>')}]
+        with fitz.open() as pdf:
+            pdf.new_page().insert_text((55, 80), 'QQ A Extra')
+            inspect_text_coverage(pdf, value, 'practice', parsed)
+            with self.assertRaisesRegex(ValueError, '^paper_export_content_incomplete$'):
+                inspect_text_coverage(pdf, value, 'answers', parsed)
+
+    def test_every_actual_continuation_page_needs_its_correct_question_context(self):
+        import fitz
+        with fitz.open() as pdf:
+            for _ in range(3): pdf.new_page(width=210*72/25.4, height=297*72/25.4)
+            pdf[1].insert_text((55, 80), '第1题（跨页接续）', fontname='china-s', fontsize=9)
+            with self.assertRaisesRegex(ValueError, '^paper_export_source_map_invalid$'):
+                inspect_continuation_labels(pdf, [{'number': 1, 'startPage': 1, 'endPage': 3}])
+            pdf[2].insert_text((55, 80), '第1题（跨页接续）', fontname='china-s', fontsize=9)
+            inspect_continuation_labels(pdf, [{'number': 1, 'startPage': 1, 'endPage': 3}])
+
+    def test_a_wrong_question_number_cannot_satisfy_continuation_context(self):
+        import fitz
+        with fitz.open() as pdf:
+            for _ in range(2): pdf.new_page(width=210*72/25.4, height=297*72/25.4)
+            pdf[1].insert_text((55, 80), '第2题（跨页接续）', fontname='china-s', fontsize=9)
+            with self.assertRaisesRegex(ValueError, '^paper_export_source_map_invalid$'):
+                inspect_continuation_labels(pdf, [{'number': 1, 'startPage': 1, 'endPage': 2}])
+
+    def test_body_text_cannot_replace_a_missing_continuation_header(self):
+        import fitz
+        with fitz.open() as pdf:
+            for _ in range(2): pdf.new_page(width=210*72/25.4, height=297*72/25.4)
+            pdf[1].insert_text((55, 250), '第1题（跨页接续）', fontname='china-s', fontsize=9)
+            with self.assertRaisesRegex(ValueError, '^paper_export_source_map_invalid$'):
+                inspect_continuation_labels(pdf, [{'number': 1, 'startPage': 1, 'endPage': 2}])
+
     def test_clipped_images_are_rejected_even_when_all_visible_text_is_inside_page(self):
         import fitz
         from PIL import Image

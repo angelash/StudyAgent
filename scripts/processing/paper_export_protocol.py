@@ -5,6 +5,7 @@ ERROR_CODES = frozenset('paper_export_' + name for name in [
     'process_cleanup_failed', 'render_failed', 'render_timeout', 'renderer_unavailable',
     'source_changed', 'source_map_invalid', 'text_limit', 'unsupported_markup',
     'runtime_invalid', 'version_mismatch', 'dependency_missing', 'output_exists', 'empty_question', 'path_limit',
+    'content_incomplete',
 ])
 
 

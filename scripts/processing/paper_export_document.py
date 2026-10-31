@@ -13,12 +13,15 @@ import os
 import re
 import subprocess
 import sys
+import unicodedata
+from collections import Counter
 from lxml import etree as ET
 from docx import Document
 from docx.shared import Mm, Pt, RGBColor
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.text.paragraph import Paragraph
 from paper_export_content import load_input, fail, tag, INLINE, table_grid, meaningful
 from paper_export_protocol import error_code, ERROR_CODES
 from paper_export_fonts import load_font_set, embed_fonts
@@ -189,7 +192,10 @@ class Builder:
         if caption is not None:
             paragraph = parent.add_paragraph(); self.inline(paragraph, caption, width=width)
             paragraph.paragraph_format.keep_with_next = True
-        context_rows = 1 if self.question_number is not None else 0
+        # Nested Writer tables repeat at least two leading rows in the actual
+        # renderer. Supply two genuine context/header rows so a data row can
+        # never be mistaken for another repeated heading.
+        context_rows = (1 if any(headers) else 2) if self.question_number is not None else 0
         table = parent.add_table(rows=rows + context_rows, cols=columns)
         table.autofit = False; table.style = 'Table Grid'
         total = round(width * 20); widths = [total // columns] * columns; widths[-1] += total - sum(widths)
@@ -205,6 +211,10 @@ class Builder:
             plain(context.paragraphs[0], f'第{self.question_number}题（续题） / 原题{self.source_position}')
             for run in context.paragraphs[0].runs: run.font.size = Pt(9)
             setting(table.rows[0]._tr.get_or_add_trPr(), 'tblHeader', val='true')
+            if context_rows == 2:
+                blank = table.cell(1, 0).merge(table.cell(1, columns - 1))
+                compact_empty(blank.paragraphs[0])
+                setting(table.rows[1]._tr.get_or_add_trPr(), 'tblHeader', val='true')
         for r, c, rs, cs, content in cells:
             r += context_rows
             cell = table.cell(r, c)
@@ -226,6 +236,77 @@ class Builder:
         parent.add_paragraph()
 
 
+def borderless_table(parent, rows):
+    table = parent.add_table(rows=rows, cols=1); table.autofit = False
+    total = round(PAGE_WIDTH * 20); properties = table._tbl.tblPr
+    properties.find(qn('w:tblW')).set(qn('w:type'), 'dxa')
+    properties.find(qn('w:tblW')).set(qn('w:w'), str(total))
+    table._tbl.tblGrid[0].set(qn('w:w'), str(total))
+    setting(properties, 'tblInd', w=0, type='dxa')
+    margins = setting(properties, 'tblCellMar')
+    for side in ['top', 'bottom', 'start', 'end', 'left', 'right']: setting(margins, side, w=0, type='dxa')
+    borders = setting(properties, 'tblBorders')
+    for side in ['top', 'bottom', 'left', 'right', 'insideH', 'insideV']: setting(borders, side, val='nil')
+    for row in table.rows: row.cells[0].width = Pt(PAGE_WIDTH)
+    return table
+
+
+def compact_empty(paragraph):
+    paragraph.paragraph_format.space_before = paragraph.paragraph_format.space_after = Pt(0)
+    paragraph.paragraph_format.line_spacing = Pt(1)
+    for run in paragraph.runs: run.font.size = Pt(1)
+
+
+def question_body(document, number, source_position):
+    """Native Word question context repeats when the body continues on a page.
+
+    The primary heading and its bookmark stay outside this repeating row:
+    repeated bookmark copies otherwise move PDF named destinations to the last
+    page. This borderless structure keeps all body paragraphs editable.
+    """
+    table = borderless_table(document, 2)
+    setting(table.rows[0]._tr.get_or_add_trPr(), 'tblHeader', val='true')
+    context = table.cell(0, 0).paragraphs[0]
+    plain(context, f'第{number}题（跨页接续） / 原题{source_position}')
+    for run in context.runs: run.font.size = Pt(9)
+    context.paragraph_format.keep_with_next = True
+    body = table.cell(1, 0)
+    body._tc.remove(body.paragraphs[0]._p)
+    return body
+
+
+def answer_area(parent, number, lines):
+    if not lines: return
+    table = borderless_table(parent, 1)
+    setting(table.rows[0]._tr.get_or_add_trPr(), 'cantSplit')
+    cell = table.cell(0, 0); label = cell.paragraphs[0]
+    plain(label, f'第{number}题答题区')
+    for run in label.runs: run.font.size = Pt(9)
+    for line in range(lines):
+        paragraph = cell.add_paragraph(' ')
+        paragraph.paragraph_format.space_after = Pt(0)
+        border = setting(paragraph._p.get_or_add_pPr(), 'pBdr')
+        for side in ['bottom', 'between']: setting(border, side, val='single', sz=2, color='BBBBBB', space=1)
+    compact_empty(parent.paragraphs[-1])
+
+
+def reference_section(parent, label, content, builder):
+    before = len(parent._tc)
+    if content is None or not meaningful(content): plain(parent.add_paragraph(), '原资料未提供')
+    else: builder.blocks(parent, content)
+    first = list(parent._tc)[before]
+    paragraph_node = first if first.tag == qn('w:p') else next(first.iter(qn('w:p')), None)
+    if paragraph_node is None: fail('layout_invalid')
+    paragraph = Paragraph(paragraph_node, parent)
+    # Keep the label with actual content as one native paragraph. A separate
+    # keepNext label forces a whole split table forward in Writer; another
+    # nested reference table can lose prose at its page boundary.
+    run = paragraph.add_run(label + '：'); font(run, 12); run.bold = True; run.add_break()
+    paragraph_node.remove(run._r)
+    paragraph_node.insert(1 if len(paragraph_node) and paragraph_node[0].tag == qn('w:pPr') else 0, run._r)
+    paragraph.paragraph_format.widow_control = True
+
+
 def write_book(value, parsed, media, fonts, book, destination, cancelled):
     document = Document(); styles(document, value['title'])
     title = document.add_paragraph(style='Title'); plain(title, value['title'], {'bold': True})
@@ -243,35 +324,29 @@ def write_book(value, parsed, media, fonts, book, destination, cancelled):
         source_paragraph = document.add_paragraph()
         plain(source_paragraph, f"来源：{source['paperTitle']} / 原题{source['position']} / {page}")
         source_paragraph.paragraph_format.keep_with_next = True
+        body = question_body(document, number, source['position'])
         if book == 'practice':
-            builder.blocks(document, markup[item['promptHtml']])
+            builder.blocks(body, markup[item['promptHtml']])
             for option in item['optionHtml']:
-                paragraph = document.add_paragraph(); plain(paragraph, option['label'] + '：')
+                paragraph = body.add_paragraph(); plain(paragraph, option['label'] + '：')
                 root = markup[option['html']]
                 if len(root) == 1 and tag(root[0]) == 'p' and all(tag(node) in INLINE for node in root[0]):
                     builder.inline(paragraph, root[0])
                 else:
                     paragraph.paragraph_format.keep_with_next = True
-                    builder.blocks(document, root)
-            if value['layout']['answerLines']:
-                label = document.add_paragraph(); plain(label, f'第{number}题答题区')
-                for run in label.runs: run.font.size = Pt(9)
-                label.paragraph_format.keep_with_next = True
-            for line in range(value['layout']['answerLines']):
-                paragraph = document.add_paragraph(' ')
-                paragraph.paragraph_format.space_after = Pt(0)
-                paragraph.paragraph_format.keep_with_next = line + 1 < value['layout']['answerLines']
-                border = setting(paragraph._p.get_or_add_pPr(), 'pBdr')
-                for side in ['bottom', 'between']: setting(border, side, val='single', sz=2, color='BBBBBB', space=1)
+                    builder.blocks(body, root)
+            answer_area(body, number, value['layout']['answerLines'])
         else:
             reference = item['reference']
             for key, label in [('answerHtml', '参考答案'), ('analysisHtml', '原解析')]:
-                plain(document.add_paragraph(), label + '：', {'bold': True})
-                if reference is None or reference[key] is None or not meaningful(markup[reference[key]]): plain(document.add_paragraph(), '原资料未提供')
-                else: builder.blocks(document, markup[reference[key]])
-        end = document.paragraphs[-1]
-        setting(end._p, 'bookmarkStart', id=1000 + number, name=f'PaperEnd{number:04d}')
-        setting(end._p, 'bookmarkEnd', id=1000 + number)
+                content = None if reference is None or reference[key] is None else markup[reference[key]]
+                reference_section(body, label, content, builder)
+        if not body.paragraphs or body._tc[-1].tag != qn('w:p'): body.add_paragraph()
+        separator = document.add_paragraph()
+        plain(separator, ' ')
+        compact_empty(separator)
+        setting(separator._p, 'bookmarkStart', id=1000 + number, name=f'PaperEnd{number:04d}')
+        setting(separator._p, 'bookmarkEnd', id=1000 + number)
     output = BytesIO(); document.save(output)
     for paragraph in document.element.iter(qn('w:p')):
         content = ''.join(node.text or '' for node in paragraph.iter() if node.tag in {qn('w:t'), qn('m:t')})
@@ -298,7 +373,36 @@ def inspect_visual_bounds(page):
                 if x0 < 40 or x1 > page.rect.width - 40 or y0 < 10 or y1 > page.rect.height - 10: fail('layout_invalid')
 
 
-def inspect_pdf(file, value, book, expected_images=None):
+def inspect_continuation_labels(pdf, source_map):
+    import fitz
+    for source in source_map:
+        for index in range(source['startPage'], source['endPage']):
+            page = pdf[index]
+            top = re.sub(r'\s+', '', page.get_text(clip=fitz.Rect(0, 0, page.rect.width, 160)))
+            if f"第{source['number']}题（跨页接续）" not in top: fail('source_map_invalid')
+
+
+def inspect_text_coverage(pdf, value, book, parsed):
+    """A minimum text completeness gate, separate from math/media/layout QA.
+
+    Native math has a different visual reading order. Ruby fallback brackets
+    are deliberately not printed. All other source text must survive at least
+    in its full character multiplicity; page furniture may add characters.
+    """
+    def prose(node):
+        if tag(node) in {'math', 'img', 'rp'}: return ''
+        return (node.text or '') + ''.join(prose(child) + (child.tail or '') for child in node)
+    expected = []
+    for item, group in zip(value['items'], parsed):
+        parts = [item['promptHtml']] + [option['html'] for option in item['optionHtml']] if book == 'practice' else [part for part in (item['reference'] or {}).values() if part is not None]
+        expected += [prose(group[part]) for part in parts]
+        if book == 'practice': expected += [option['label'] for option in item['optionHtml']]
+    counter = lambda text: Counter(character for character in unicodedata.normalize('NFC', text) if not character.isspace())
+    actual = counter(''.join(page.get_text(sort=True) for page in pdf))
+    if counter(''.join(expected)) - actual: fail('content_incomplete')
+
+
+def inspect_pdf(file, value, book, expected_images=None, parsed=None):
     import fitz
     source_map, fonts, all_text = [], set(), []
     with fitz.open(file) as pdf:
@@ -336,6 +440,8 @@ def inspect_pdf(file, value, book, expected_images=None):
             source_map.append({'itemId': item['id'], 'number': number, 'source': item['source'], 'startPage': found[0][0], 'endPage': end['page'] + 1,
                                'bookmark': bookmark, 'endBookmark': end_bookmark, 'pdfDestinationName': bookmark})
         if any(first['endPage'] > second['startPage'] for first, second in zip(source_map, source_map[1:])): fail('source_map_invalid')
+        inspect_continuation_labels(pdf, source_map)
+        if parsed is not None: inspect_text_coverage(pdf, value, book, parsed)
         if value['title'] not in '\n'.join(all_text).replace('\n', ''): fail('source_map_invalid')
         return {'pageCount': len(pdf), 'sourceMap': source_map, 'fonts': sorted(fonts)}
 
@@ -380,7 +486,7 @@ def render(args):
     for item, group in zip(value['items'], parsed):
         parts = [item['promptHtml']] + [option['html'] for option in item['optionHtml']] if args.book == 'practice' else [part for part in (item['reference'] or {}).values() if part is not None]
         expected_images += sum(sum(tag(node) == 'img' for node in group[part].iter()) for part in parts)
-    inspected = inspect_pdf(pdf, value, args.book, expected_images)
+    inspected = inspect_pdf(pdf, value, args.book, expected_images, parsed)
     files = []
     for format, file in [('docx', docx), ('pdf', pdf)]:
         data = file.read_bytes()
