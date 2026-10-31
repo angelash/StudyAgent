@@ -6,6 +6,8 @@
 
 ## 1. 完整目标与范围
 
+2026-10-31回收接续：[175](175-paper-export-workspace-collection-and-writer-leases.md)先固定存活Python自身租约、精确任务/引用/purge、全部已知路径清单、未知条目保持、逐文件回收及真实隐私/恢复，之后接原工作台选题完整稿。174已本地提交66c2233b；本批只提交具体协议，不预称cleanup完成，全部原范围继续active。
+
 2026-10-31实际导出执行：[174](174-paper-export-business-runtime-and-collection.md)第二批十一份源码已归并，真实册×格式任务消费、整棵生成进程树保护、reserved/rendered/完成发布与同句柄产物下载已接通。SQLite4/0/0、另批本人答案册1/0/4过滤跳过、实际PG5/0/0、既有十六文件226/0/0及Python26/0分列；四份实际发布产物的两页原PDF/两页独立DOCX均已打开，见[证据](../evidence/2026-10-31/workspace-r5-export-render-and-download/receipt.json)。正式24/revision187与1063文件保持，15447 PG已停止，仅本地。接精确cleanup及实际隐私/恢复、更多两实例/租约矩阵，再接原工作台完整选题UI；原72/WS、全部R1～R8与教材/教师/实机/实体打印/真人范围继续active。
 
 2026-10-31导出业务第一批：[174](174-paper-export-business-runtime-and-collection.md)十三份源码已归并，准确旧清单/实际原文和PNG重建、有界stdin真实逐册预检、完整create/control原命令与原回执、当前私有目录及同事务队列/学生曝光已实现。最终SQLite19/0/0、真实PG15/0/0、Python25/0分列，既有十四文件207/0/0的准确范围与原6/12、PG13/1失败见[证据](../evidence/2026-10-31/workspace-r5-export-business-and-preflight/receipt.json)。尚未消费新导出任务或提供新产物下载；接真实render/cleanup与同句柄下载，然后原工作台选题/完整稿UI。正式24/revision187及1062受保护文件保持；锁文件仅新增已有htmlparser2的直接依赖声明，全部实际依赖解析条目不变。独占15446 PG已停止，未推送部署；原72/WS、全部R1～R8与教材/教师/实机/实体打印/真人目标继续active。

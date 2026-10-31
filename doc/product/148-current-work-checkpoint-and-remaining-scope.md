@@ -1,5 +1,7 @@
 # 当前工作收尾、验证边界与续接位置
 
+2026-10-31下一步：[175精确回收与写入者租约](175-paper-export-workspace-collection-and-writer-leases.md)先固定Python自身文件租约、精确purge/引用证明、有界完整路径清单、未知条目保持、逐文件删除及实际隐私/恢复退出条件。174真实生成/下载已本地提交66c2233b；本次先提交175协议，应用32、正式24/revision187与原构建保持。随后在新隔离副本实现cleanup，再接完整选题UI及全部原剩余目标，整体active。
+
 2026-10-31真实生成与下载：[174](174-paper-export-business-runtime-and-collection.md)第二批十一份源码从p175逐SHA归并，接实际render worker、整棵生成进程树的Windows Job保护、reserved/rendered/成功发布、源/权限/代次重核和同句柄完整/Range下载。SQLite四场景4/0/0及另批本人答案册1/0/4过滤跳过、真实PG5/0/0、十六文件226/0/0与Python26/0分别通过。四个实际发布slot，两份原PDF与两份DOCX独立渲染共四页均已打开，数学字体差异及工具准备失败如实保留，见[证据](../evidence/2026-10-31/workspace-r5-export-render-and-download/receipt.json)。主干types0，正式24/revision187与1063文件保持，15447 PG已停止，未推送部署。回收任务已登记，cleanup worker仍未接；接精确回收/实际隐私与冷恢复、更多两实例/租约/取消矩阵，再接原工作台选题/完整稿UI。全部其余原范围与真实条件继续active。
 
 2026-10-31导出业务第一批：[174](174-paper-export-business-runtime-and-collection.md)十三份源码已从p174逐SHA归并。准确旧清单重建完整原文/PNG，实际Python解析器通过有界stdin逐册预检，不创建预检工作区、不启动Office；接完整导出create/cancel/retry、原命令/原回执、当前目录及同事务学生曝光/真实队列。最终SQLite19/0/0、真实PG15/0/0、Python25/0/0分列；十四文件既有207/0/0属于末次目录URL省略前的同一业务实现，最终专项验证最终源码，见[证据](../evidence/2026-10-31/workspace-r5-export-business-and-preflight/receipt.json)。原6/12与PG13/1失败及独立重现均保留。主干无输出类型检查通过，正式24/revision187及1062受保护文件保持；锁文件仅新增已有htmlparser2的直接依赖声明，全部实际依赖解析条目不变，15446 PG已停止，未推送部署。下一步接实际render worker、同句柄产物下载及精确cleanup，再接原工作台选题/完整稿UI；全部其余原范围及真实条件继续active。
