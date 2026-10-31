@@ -1,0 +1,741 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/adult-models.spec.ts",
+      "tests/e2e/classroom.spec.ts"
+    ],
+    "configFile": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\playwright.config.ts",
+    "rootDir": "F:/workspace/github/StudyAgent/data/qa/a165/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "F:/workspace/github/StudyAgent/data/qa/workspace-adult-models-first-20261031/adult165-browser-first-output",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "F:/workspace/github/StudyAgent/data/qa/a165/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\adult165-browser-first-output",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e",
+        "snapshotDir": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://localhost:65375",
+          "browserName": "chromium",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\adult165-browser-first.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "adult-models.spec.ts",
+      "file": "adult-models.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "adult models: every59 actual lesson renders its complete authored comparison through the production classroom",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 28675,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:12:48.792Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50107f0eef0b56da13dc-fb2c86bfb191cbcad76f",
+          "file": "adult-models.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "adult models: unit concept, comparison, example, limits and original practice remain usable across widths for soc-1-1-2",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 21004,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-practice-progress button')\nExpected: \u001b[32m4\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.cl-practice-progress button') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-progress button')\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-practice-progress button')\nExpected: \u001b[32m4\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.cl-practice-progress button') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-progress button')\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts:56:62",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts",
+                      "column": 62,
+                      "line": 56
+                    },
+                    "snippet": "  54 |   await page.setViewportSize({ width: 390, height: 560 }); await page.screenshot({ path: test.info().outputPath(id + '-short.png'), fullPage: false });\n  55 |   await page.setViewportSize({ width: 1440, height: 900 }); await page.getByRole('tab', { name: '课堂练习', exact: true }).click();\n> 56 |   await expect(page.locator('.cl-practice-progress button')).toHaveCount(row.lesson.questions.length);\n     |                                                              ^\n  57 |   expect((await f.call('/learning/classroom/sessions/' + row.id)).answers).toEqual([]);\n  58 | });\n  59 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts",
+                        "column": 62,
+                        "line": 56
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-practice-progress button')\nExpected: \u001b[32m4\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.cl-practice-progress button') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-progress button')\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  54 |   await page.setViewportSize({ width: 390, height: 560 }); await page.screenshot({ path: test.info().outputPath(id + '-short.png'), fullPage: false });\n  55 |   await page.setViewportSize({ width: 1440, height: 900 }); await page.getByRole('tab', { name: '课堂练习', exact: true }).click();\n> 56 |   await expect(page.locator('.cl-practice-progress button')).toHaveCount(row.lesson.questions.length);\n     |                                                              ^\n  57 |   expect((await f.call('/learning/classroom/sessions/' + row.id)).answers).toEqual([]);\n  58 | });\n  59 |\n    at F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts:56:62"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:13:17.936Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\adult165-browser-first-output\\adult-models-adult-models--06c2f-across-widths-for-soc-1-1-2\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\adult165-browser-first-output\\adult-models-adult-models--06c2f-across-widths-for-soc-1-1-2\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\adult165-browser-first-output\\adult-models-adult-models--06c2f-across-widths-for-soc-1-1-2\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts",
+                    "column": 62,
+                    "line": 56
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "50107f0eef0b56da13dc-a0acb0a0381643067b7d",
+          "file": "adult-models.spec.ts",
+          "line": 41,
+          "column": 89
+        },
+        {
+          "title": "adult models: unit concept, comparison, example, limits and original practice remain usable across widths for soc-2-3-3",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 21755,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-practice-progress button')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.cl-practice-progress button') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-progress button')\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-practice-progress button')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.cl-practice-progress button') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-progress button')\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts:56:62",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts",
+                      "column": 62,
+                      "line": 56
+                    },
+                    "snippet": "  54 |   await page.setViewportSize({ width: 390, height: 560 }); await page.screenshot({ path: test.info().outputPath(id + '-short.png'), fullPage: false });\n  55 |   await page.setViewportSize({ width: 1440, height: 900 }); await page.getByRole('tab', { name: '课堂练习', exact: true }).click();\n> 56 |   await expect(page.locator('.cl-practice-progress button')).toHaveCount(row.lesson.questions.length);\n     |                                                              ^\n  57 |   expect((await f.call('/learning/classroom/sessions/' + row.id)).answers).toEqual([]);\n  58 | });\n  59 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts",
+                        "column": 62,
+                        "line": 56
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-practice-progress button')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.cl-practice-progress button') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-progress button')\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  54 |   await page.setViewportSize({ width: 390, height: 560 }); await page.screenshot({ path: test.info().outputPath(id + '-short.png'), fullPage: false });\n  55 |   await page.setViewportSize({ width: 1440, height: 900 }); await page.getByRole('tab', { name: '课堂练习', exact: true }).click();\n> 56 |   await expect(page.locator('.cl-practice-progress button')).toHaveCount(row.lesson.questions.length);\n     |                                                              ^\n  57 |   expect((await f.call('/learning/classroom/sessions/' + row.id)).answers).toEqual([]);\n  58 | });\n  59 |\n    at F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts:56:62"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:13:41.644Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\adult165-browser-first-output\\adult-models-adult-models--4f131-across-widths-for-soc-2-3-3\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\adult165-browser-first-output\\adult-models-adult-models--4f131-across-widths-for-soc-2-3-3\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\adult165-browser-first-output\\adult-models-adult-models--4f131-across-widths-for-soc-2-3-3\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts",
+                    "column": 62,
+                    "line": 56
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "50107f0eef0b56da13dc-fa22238dcc09212d8ce6",
+          "file": "adult-models.spec.ts",
+          "line": 41,
+          "column": 89
+        },
+        {
+          "title": "adult models: unit concept, comparison, example, limits and original practice remain usable across widths for soc-3-3-3",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 20967,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-practice-progress button')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.cl-practice-progress button') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-progress button')\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-practice-progress button')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.cl-practice-progress button') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-progress button')\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts:56:62",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts",
+                      "column": 62,
+                      "line": 56
+                    },
+                    "snippet": "  54 |   await page.setViewportSize({ width: 390, height: 560 }); await page.screenshot({ path: test.info().outputPath(id + '-short.png'), fullPage: false });\n  55 |   await page.setViewportSize({ width: 1440, height: 900 }); await page.getByRole('tab', { name: '课堂练习', exact: true }).click();\n> 56 |   await expect(page.locator('.cl-practice-progress button')).toHaveCount(row.lesson.questions.length);\n     |                                                              ^\n  57 |   expect((await f.call('/learning/classroom/sessions/' + row.id)).answers).toEqual([]);\n  58 | });\n  59 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts",
+                        "column": 62,
+                        "line": 56
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-practice-progress button')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.cl-practice-progress button') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-progress button')\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  54 |   await page.setViewportSize({ width: 390, height: 560 }); await page.screenshot({ path: test.info().outputPath(id + '-short.png'), fullPage: false });\n  55 |   await page.setViewportSize({ width: 1440, height: 900 }); await page.getByRole('tab', { name: '课堂练习', exact: true }).click();\n> 56 |   await expect(page.locator('.cl-practice-progress button')).toHaveCount(row.lesson.questions.length);\n     |                                                              ^\n  57 |   expect((await f.call('/learning/classroom/sessions/' + row.id)).answers).toEqual([]);\n  58 | });\n  59 |\n    at F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts:56:62"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:14:05.623Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\adult165-browser-first-output\\adult-models-adult-models--b57af-across-widths-for-soc-3-3-3\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\adult165-browser-first-output\\adult-models-adult-models--b57af-across-widths-for-soc-3-3-3\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\adult165-browser-first-output\\adult-models-adult-models--b57af-across-widths-for-soc-3-3-3\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts",
+                    "column": 62,
+                    "line": 56
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "50107f0eef0b56da13dc-73964bb8802257515deb",
+          "file": "adult-models.spec.ts",
+          "line": 41,
+          "column": 89
+        },
+        {
+          "title": "adult models: unit concept, comparison, example, limits and original practice remain usable across widths for soc-4-3-2",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 21251,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-practice-progress button')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.cl-practice-progress button') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-progress button')\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-practice-progress button')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.cl-practice-progress button') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-progress button')\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts:56:62",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts",
+                      "column": 62,
+                      "line": 56
+                    },
+                    "snippet": "  54 |   await page.setViewportSize({ width: 390, height: 560 }); await page.screenshot({ path: test.info().outputPath(id + '-short.png'), fullPage: false });\n  55 |   await page.setViewportSize({ width: 1440, height: 900 }); await page.getByRole('tab', { name: '课堂练习', exact: true }).click();\n> 56 |   await expect(page.locator('.cl-practice-progress button')).toHaveCount(row.lesson.questions.length);\n     |                                                              ^\n  57 |   expect((await f.call('/learning/classroom/sessions/' + row.id)).answers).toEqual([]);\n  58 | });\n  59 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts",
+                        "column": 62,
+                        "line": 56
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-practice-progress button')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.cl-practice-progress button') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-progress button')\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  54 |   await page.setViewportSize({ width: 390, height: 560 }); await page.screenshot({ path: test.info().outputPath(id + '-short.png'), fullPage: false });\n  55 |   await page.setViewportSize({ width: 1440, height: 900 }); await page.getByRole('tab', { name: '课堂练习', exact: true }).click();\n> 56 |   await expect(page.locator('.cl-practice-progress button')).toHaveCount(row.lesson.questions.length);\n     |                                                              ^\n  57 |   expect((await f.call('/learning/classroom/sessions/' + row.id)).answers).toEqual([]);\n  58 | });\n  59 |\n    at F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts:56:62"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:14:28.796Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\adult165-browser-first-output\\adult-models-adult-models--b8f1a-across-widths-for-soc-4-3-2\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\adult165-browser-first-output\\adult-models-adult-models--b8f1a-across-widths-for-soc-4-3-2\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\adult165-browser-first-output\\adult-models-adult-models--b8f1a-across-widths-for-soc-4-3-2\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts",
+                    "column": 62,
+                    "line": 56
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "50107f0eef0b56da13dc-6f7abd76face77e04fa4",
+          "file": "adult-models.spec.ts",
+          "line": 41,
+          "column": 89
+        },
+        {
+          "title": "adult models: unit concept, comparison, example, limits and original practice remain usable across widths for soc-5-2-1",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 21207,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-practice-progress button')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.cl-practice-progress button') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-progress button')\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-practice-progress button')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.cl-practice-progress button') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-progress button')\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts:56:62",
+                    "location": {
+                      "file": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts",
+                      "column": 62,
+                      "line": 56
+                    },
+                    "snippet": "  54 |   await page.setViewportSize({ width: 390, height: 560 }); await page.screenshot({ path: test.info().outputPath(id + '-short.png'), fullPage: false });\n  55 |   await page.setViewportSize({ width: 1440, height: 900 }); await page.getByRole('tab', { name: '课堂练习', exact: true }).click();\n> 56 |   await expect(page.locator('.cl-practice-progress button')).toHaveCount(row.lesson.questions.length);\n     |                                                              ^\n  57 |   expect((await f.call('/learning/classroom/sessions/' + row.id)).answers).toEqual([]);\n  58 | });\n  59 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts",
+                        "column": 62,
+                        "line": 56
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.cl-practice-progress button')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.cl-practice-progress button') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cl-practice-progress button')\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  54 |   await page.setViewportSize({ width: 390, height: 560 }); await page.screenshot({ path: test.info().outputPath(id + '-short.png'), fullPage: false });\n  55 |   await page.setViewportSize({ width: 1440, height: 900 }); await page.getByRole('tab', { name: '课堂练习', exact: true }).click();\n> 56 |   await expect(page.locator('.cl-practice-progress button')).toHaveCount(row.lesson.questions.length);\n     |                                                              ^\n  57 |   expect((await f.call('/learning/classroom/sessions/' + row.id)).answers).toEqual([]);\n  58 | });\n  59 |\n    at F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts:56:62"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:14:52.224Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\adult165-browser-first-output\\adult-models-adult-models--010ee-across-widths-for-soc-5-2-1\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\adult165-browser-first-output\\adult-models-adult-models--010ee-across-widths-for-soc-5-2-1\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\adult165-browser-first-output\\adult-models-adult-models--010ee-across-widths-for-soc-5-2-1\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\tests\\e2e\\adult-models.spec.ts",
+                    "column": 62,
+                    "line": 56
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "50107f0eef0b56da13dc-c4335facc3e5d206974e",
+          "file": "adult-models.spec.ts",
+          "line": 41,
+          "column": 89
+        }
+      ]
+    },
+    {
+      "title": "classroom.spec.ts",
+      "file": "classroom.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "course classroom supports teaching, executable examples, learning checks and durable resume",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8993,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:15:15.636Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ee123a1e90c2c71e0969-cc7311318ba17478d17e",
+          "file": "classroom.spec.ts",
+          "line": 25,
+          "column": 5
+        },
+        {
+          "title": "audio playback ends drive teaching progress and pause prevents later automatic advancement",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9183,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:15:25.117Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ee123a1e90c2c71e0969-1d2b231c99f680f32288",
+          "file": "classroom.spec.ts",
+          "line": 72,
+          "column": 5
+        },
+        {
+          "title": "question replies add safe board notes with page links, export and restored session rendering",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4738,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:15:34.313Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ee123a1e90c2c71e0969-1eac336599fede3fa4e2",
+          "file": "classroom.spec.ts",
+          "line": 107,
+          "column": 5
+        },
+        {
+          "title": "board notes reveal whole items and subtitle advances only at spoken sentence boundaries",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9915,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:15:39.061Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ee123a1e90c2c71e0969-2ca949facc19bdd43dd0",
+          "file": "classroom.spec.ts",
+          "line": 160,
+          "column": 5
+        },
+        {
+          "title": "independent practice matches four-option illustrated question flow on desktop and phone",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2843,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T05:15:48.987Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ee123a1e90c2c71e0969-8c5bcbbda27cafe1f899",
+          "file": "classroom.spec.ts",
+          "line": 198,
+          "column": 5
+        }
+      ],
+      "suites": [
+        {
+          "title": "reference viewport and display scaling",
+          "file": "classroom.spec.ts",
+          "line": 225,
+          "column": 6,
+          "specs": [
+            {
+              "title": "practice geometry, whiteboard image and comparison table use the observed display scale",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4970,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-31T05:15:51.840Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ee123a1e90c2c71e0969-3621181cebe072becbfc",
+              "file": "classroom.spec.ts",
+              "line": 227,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-31T05:12:27.896Z",
+    "duration": 211590.503,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}

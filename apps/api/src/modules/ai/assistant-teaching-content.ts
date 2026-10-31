@@ -118,7 +118,10 @@ export function lectureTeachingCatalog(courseId: string, lectureId: string, cour
     for (const [si, step] of lesson.steps.entries()) {
       const sectionKey = `lesson-${index + 1}:step-${si + 1}`, referenceKey = `lecture-${index + 1}-${si + 1}`;
       parts.push({ key: sectionKey, targetId: meta.id, title: step.title, phase: step.phase,
-        blocks: [paragraph(step.narration), ...step.blocks.map(classroomBlock)], referenceKeys: [referenceKey] });
+        // The exact heading remains in part.title. Keep every distinct board
+        // heading and all teaching content without spending the context budget twice.
+        blocks: [paragraph(step.narration), ...step.blocks.filter(block => block.kind !== 'heading' || block.text !== step.title).map(classroomBlock)],
+        referenceKeys: [referenceKey] });
       sources.push({ key: referenceKey, title: meta.title + ' · ' + step.title, targetId: meta.id, sectionKey });
     }
   }

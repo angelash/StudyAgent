@@ -1,0 +1,84 @@
+{
+  "at": "2026-10-31T06:37:45.751Z",
+  "head": "a2b0eac8f0ae7a3c511981ba8ba3aa1c3c7699a1",
+  "sourceFiles": [
+    {
+      "path": "apps/api/src/modules/learning/adult-classroom-models.ts",
+      "baselineSha256": null,
+      "sha256": "4e67a4ce6139a873d66b6b614fb45bde8b1ecfc7526a9303dfa1cfaa441486c6"
+    },
+    {
+      "path": "apps/api/src/modules/learning/adult-classroom-model-projection.ts",
+      "baselineSha256": null,
+      "sha256": "549c0b1e11d17cfb8432c92112c039b670cbc5081a46ff3fc4d3fca2a5931f14"
+    },
+    {
+      "path": "apps/api/src/modules/learning/adult-classroom-models.test.ts",
+      "baselineSha256": null,
+      "sha256": "42fe77fedb122d4af3220cdef1f25ac95d1ce31332159b6aa1b9ae3e419f0576"
+    },
+    {
+      "path": "apps/api/src/modules/learning/classroom-curriculum.ts",
+      "baselineSha256": "2089a8c24f2938d4c2bbcc2983322bd8d90734f282b11a7d86ee01653bfe097d",
+      "sha256": "d6d7dbc8e8f0f0a872379e06915601393e82f17d53244dc5c1afea563042895e"
+    },
+    {
+      "path": "apps/web/app/studio/classroom/board-step.tsx",
+      "baselineSha256": "c333eb40c046ab28d0d1ac3ec095d5af1fa32f8d97542079cac945656593efbb",
+      "sha256": "b40e1bc898e1c489e78a17947b7ad546e6af590ac6b4dcfec9da2a950bd3e9db"
+    },
+    {
+      "path": "apps/web/app/studio/classroom/classroom.css",
+      "baselineSha256": "f76e7726e57c1854df8ae61765ea9b6560a1b0efa27c73d6eb2cdd888f18d733",
+      "sha256": "4b18876dc717fc2d91715aff1af9f78e3c5993540223aa6ee7782ed892a1a01b"
+    },
+    {
+      "path": "tests/e2e/adult-models.spec.ts",
+      "baselineSha256": null,
+      "sha256": "546388ba317aee90da219cd584d95c8048a390eb978bf58f11ff7b308e5a0cae"
+    },
+    {
+      "path": "apps/api/src/modules/ai/assistant-teaching-content.ts",
+      "baselineSha256": "1ae16dcb07886d8c1cceabfdaa0f394fe271a3381a02a596b48a81e7c69cbae0",
+      "sha256": "ee23794e45418a353a69270867fcac0e34761359b1d1644a9f60f49dfd5e800b"
+    },
+    {
+      "path": "apps/api/src/modules/ai/assistant-teaching-content.test.ts",
+      "baselineSha256": "7602d37b8cb5d3a7505622ed6a9edfefb9ada296f6fa113eed69a3847b6baf2c",
+      "sha256": "48bcbdada8013dc0f4bf7ef58d9cafa080f58ab3223625300a519f0c3f142773"
+    },
+    {
+      "path": "apps/api/src/modules/ai/assistant-lecture-content-migration.test.ts",
+      "baselineSha256": "924c7c7bf27e8cb06620c29068723bac28a0651a9a89f33dfa1b51a462480577",
+      "sha256": "67ea7cc0f6764d3f66ea226c17b819cbf72c9c004f0a9093ed7c788238a456e1"
+    },
+    {
+      "path": "apps/api/src/modules/ai/assistant-lecture.integration.test.ts",
+      "baselineSha256": "406f3025ef65d539f48e2171c991139b58ddbce47da823e55a1eecd3816eca41",
+      "sha256": "a15326854689f4095688061a0016c7d23e0961f486f652646a7ad9203adaa5f5"
+    },
+    {
+      "path": "apps/api/src/modules/ai/fixtures/adult-lecture-before-models.json",
+      "baselineSha256": null,
+      "sha256": "452d32daede7c15aedbc24b8cd0011261e0f55c5a54d9b60bf935caa318e49e4"
+    }
+  ],
+  "protectedMainFiles": 1063,
+  "formalReadOnly": {
+    "schema": 24,
+    "revision": 187
+  },
+  "scope": "Exact final twelve source/fixture files only. No generated Next imports, output, dependency, database or junction copied.",
+  "push": false,
+  "deployment": false,
+  "applicationIntegrated": true,
+  "sourceReadback": true,
+  "protectedMainUnchanged": true,
+  "formalAfter": {
+    "schema": 24,
+    "revision": 187
+  },
+  "testedInput": "Final candidate third exact source and compiled runtime, with second unchanged actual production Web build.",
+  "actualRuntimeUpdated": false,
+  "wholeGoal": "active"
+}

@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-31T06:32:15.696Z",
+  "exactTestAndCompiledInputsEqual": true,
+  "passedEnvironment": {
+    "run": "adult165-durability-diagnostic-sqlite-fourth.json",
+    "foundationSeeding": "No forced STUDY_SEED_FOUNDATION=false; the fixtures explicitly boot development to seed original reviewed curriculum.",
+    "passed": 3,
+    "failed": 0
+  },
+  "reproducedFailure": {
+    "run": "adult165-durability-diagnostic-sqlite-seed-disabled-fifth.json",
+    "foundationSeeding": "Explicit STUDY_SEED_FOUNDATION=false, inherited from the new full runner template.",
+    "passed": 1,
+    "failed": 2,
+    "messages": [
+      {
+        "test": "real API persistence across application restarts restores session, student, immutable assessment and practice draft; failed requests leave no partial mutations",
+        "message": "TypeError: Cannot read properties of undefined (reading 'atomId')\n    at F:/workspace/github/StudyAgent/data/qa/a165/apps/api/src/durability.integration.test.ts:40:133\n    at F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\apps\\api\\dist\\apps\\api\\src\\infrastructure\\in-memory-store.service.js:220:71\n    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)\n    at InMemoryStoreService.requestContext (F:\\workspace\\github\\StudyAgent\\data\\qa\\a165\\apps\\api\\dist\\apps\\api\\src\\infrastructure\\in-memory-store.service.js:183:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at F:/workspace/github/StudyAgent/data/qa/a165/apps/api/src/durability.integration.test.ts:38:22\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+      },
+      {
+        "test": "real SQLite media upload recovery and deletion outbox resumes a partially uploaded image across API restarts, restores the saved draft, and cleans bytes only after committed deletion",
+        "message": "Error: expected 200 \"OK\", got 400 \"Bad Request\"\n    at call (F:/workspace/github/StudyAgent/data/qa/a165/apps/api/src/modules/student-media/student-media.durability.integration.test.ts:25:75)\n    at F:/workspace/github/StudyAgent/data/qa/a165/apps/api/src/modules/student-media/student-media.durability.integration.test.ts:35:13\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20\n----\n    at Test._assertStatus (F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:309:14)\n    at F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:365:13\n    at Test._assertFunction (F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:342:13)\n    at Test.assert (F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:195:23)\n    at localAssert (F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:138:14)\n    at Server.<anonymous> (F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:152:11)\n    at Object.onceWrapper (node:events:630:28)\n    at Server.emit (node:events:509:28)\n    at emitCloseNT (node:net:2661:8)\n    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)"
+      }
+    ]
+  },
+  "cause": "The full-run template disables foundation seeding globally. These two existing real curriculum/media fixtures explicitly use development and require seeded original items; they do not set a false override themselves.",
+  "applicationOrAssertionsChanged": false,
+  "wholeBroadRun": "Still running; original failures must be retained and compared before integration. This differential is not a new full all-green API run."
+}

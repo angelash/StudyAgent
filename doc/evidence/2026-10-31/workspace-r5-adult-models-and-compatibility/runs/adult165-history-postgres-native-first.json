@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-31T05:08:30.053Z",
+  "driver": "postgres",
+  "nativePgDumpRestore": true,
+  "scope": "Actual old44/new165 compiled APIs and native PostgreSQL backup/restore; synthetic adult only.",
+  "success": true,
+  "passed": 4,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Actual previous31 application creates its original six-step lesson, first answer, original subtitle position and full draft",
+      "passed": true
+    },
+    {
+      "name": "Actual new application cold reads old teaching, first answer, speech and draft unchanged; catalog/default reopening create no replacement session",
+      "passed": true
+    },
+    {
+      "name": "Only explicit current-version opening creates the new model lesson; old first-answer replay and complete original draft stay with the old identity",
+      "passed": true
+    },
+    {
+      "name": "Real native PostgreSQL backup/restore cold opens both teaching versions and original receipts without adding formal mastery or retention evidence",
+      "passed": true
+    }
+  ],
+  "oldTeachingSha256": "333bdb659b34d64e83583f6f3b144f0eb974c7c700f50f52312160b209f6c036",
+  "newTeachingSha256": "ebe0c2260ef89513fc9cb88720877fede12f72bbf8e461550c6dd2d641bb8d16",
+  "oldFirstAnswerSha256": "41c8706aa8e34e74adf34bf56830401459d38f4497880b9ec1c0bb148e570e3f",
+  "originalPresentationSha256": "7b316cc75ffe420122777ed132bcea847093fd4fe371292b741cdd481010f812",
+  "facts": {
+    "classroomSessions": 2,
+    "diagnosticResponses": 0,
+    "practiceAttempts": 0,
+    "masteryEstimates": 0,
+    "retentionExposureEvents": 0
+  },
+  "humanReviewCompleted": false,
+  "realLearnerEvidence": false,
+  "mainApplicationChanged": false
+}

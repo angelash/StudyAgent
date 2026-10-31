@@ -17,7 +17,7 @@ export function BoardStep({ step, sentence, full = false, print = false,unitCoun
     if (block.kind === 'heading') return <h2 key={block.id}><span>{block.text}</span></h2>;
     if (block.kind === 'points') return <ul className="cl-board-points" key={block.id}>{block.items?.map((point, index) =>
       visible((block.atSentence ?? 0) + index) && <li className="cl-board-item" key={index}>{point}</li>)}</ul>;
-    if (block.kind === 'table' && block.table) return <div className="cl-table-wrap" key={block.id}><table><caption>{block.text}</caption>
+    if (block.kind === 'table' && block.table) return <div className="cl-table-wrap" key={block.id} role="region" aria-label={block.text} tabIndex={0} title="表格支持左右方向键滚动" onKeyDown={event => { if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') event.stopPropagation(); }}><table><caption>{block.text}</caption>
       <thead><tr>{block.table.headers.map(header => <th key={header}>{header}</th>)}</tr></thead><tbody>{block.table.rows.map((cells, index) =>
         visible((block.atSentence ?? 0) + index) && <tr className="cl-board-item" key={index}>{cells.map((cell, column) => <td key={column}>{cell}</td>)}</tr>)}</tbody></table></div>;
     if (block.kind === 'image' && block.image) return <ClassroomImage key={block.id} image={block.image} interactive={!print} onOpen={onExperiment}/>;

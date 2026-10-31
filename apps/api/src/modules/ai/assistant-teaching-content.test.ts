@@ -44,12 +44,54 @@ describe('authorized teaching content projections, before HTTP integration', () 
       const expected = lecture.lessons.map(l => classroomLesson(l.id)!);
       expect(catalog.targets.map(x => x.id)).toEqual(lecture.lessons.map(x => x.id));
       expect(catalog.parts).toHaveLength(expected.reduce((sum, x) => sum + x.steps.length, 0));
-      for (const lesson of expected) for (const step of lesson.steps) expect(JSON.stringify(catalog)).toContain(JSON.stringify(step.narration).slice(1, -1));
-      expect(freezeTeachingContent(catalog, descriptor.completeFits ? { mode: 'complete' } : { mode: 'overview' }).protocol).toBe('classroom-lecture-v2');
+      let partIndex = 0;
+      for (const lesson of expected) for (const step of lesson.steps) {
+        const part = catalog.parts[partIndex++];
+        expect(part).toMatchObject({ targetId: lesson.id, title: step.title, phase: step.phase });
+        expect(part.blocks[0]).toEqual({ kind: 'text', text: step.narration });
+        const board = step.blocks.filter(block => block.kind !== 'heading' || block.text !== step.title);
+        expect(part.blocks).toHaveLength(board.length + 1);
+        for (const [index, block] of board.entries()) {
+          const projected = part.blocks[index + 1];
+          expect(projected.text).toBe(block.text);
+          expect(projected.kind).toBe(block.kind === 'heading' ? 'text' : block.kind === 'image' ? 'figure' : block.kind);
+          if (block.kind === 'points') expect(projected.items).toEqual(block.items);
+          if (block.kind === 'table') expect(projected.table).toEqual(block.table);
+          if (block.kind === 'diagram') expect(projected.diagram).toEqual(block.diagram);
+          if (block.kind === 'code') expect(projected.code).toBe(block.code);
+          if (block.kind === 'image') expect(projected.figure).toMatchObject({ alt: block.image!.alt, caption: block.image!.caption });
+        }
+        expect(part.referenceKeys).toHaveLength(1);
+        expect(catalog.sources.find(source => source.key === part.referenceKeys[0])).toEqual({ key: part.referenceKeys[0],
+          title: lesson.title + ' · ' + step.title, targetId: lesson.id, sectionKey: part.key });
+      }
+      expect(descriptor.completeFits).toBe(true);
+      const snapshot = freezeTeachingContent(catalog, { mode: 'complete' });
+      expect(snapshot.protocol).toBe('classroom-lecture-v2'); expect(snapshot.parts).toEqual(catalog.parts);
+      expect(snapshot.sources).toEqual(catalog.sources); expect(snapshot.coverage.complete).toBe(true);
       expect(JSON.stringify(catalog)).not.toMatch(/questions|answerKeys|hintKeys|privatePrompt/);
       lectures++; lessons += catalog.targets.length;
     }
     expect([lectures, lessons]).toEqual([15, 60]);
+  });
+
+  it.each(['补充的不同标题', ''])('retains distinct headings and title-like body text in the teaching identity: %j', suffix => {
+    const course = classroomCourse(), lecture = course.units[0].lectures[0];
+    const catalog = lectureTeachingCatalog(course.id, lecture.id), selection = { mode: 'detail' as const, partKeys: [catalog.parts[0].key] };
+    const original = freezeTeachingContent(catalog, selection), title = catalog.parts[0].title;
+    const heading = suffix || title + ' ';
+    const changed = lectureTeachingCatalog(course.id, lecture.id, course, id => {
+      const lesson = classroomLesson(id)!;
+      if (id === lecture.lessons[0].id) lesson.steps[0].blocks.push({ id: 'distinct-heading', kind: 'heading', text: heading },
+        { id: 'title-like-body', kind: 'text', text: title });
+      return lesson;
+    });
+    const snapshot = freezeTeachingContent(changed, selection);
+    expect(snapshot.parts[0].title).toBe(title);
+    expect(snapshot.parts[0].blocks.slice(-2)).toEqual([{ kind: 'text', text: heading }, { kind: 'text', text: title }]);
+    expect(snapshot.fingerprint).not.toBe(original.fingerprint);
+    expect(readTeachingContent(original, teachingContentReference(original), lecture.id, changed, false)).toEqual({ snapshot: original, current: false });
+    expect(() => readTeachingContent(original, teachingContentReference(original), lecture.id, changed, true)).toThrow('教学内容已变化');
   });
 
   it('preserves code and structured tables while ignoring scoring getters and remote image URLs', () => {

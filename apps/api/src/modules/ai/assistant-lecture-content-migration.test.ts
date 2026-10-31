@@ -1,4 +1,6 @@
 import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { classroomCourse, classroomLesson } from '../learning/classroom-curriculum';
 import { assistantDigest } from './assistant-turn-record';
 import { assistantLectureReference, freezeAssistantLecture, readAssistantLecture } from './assistant-lecture-context';
@@ -27,6 +29,17 @@ describe('actual lecture teaching and original v1 compatibility', () => {
     const snapshot = legacy(), result = readAssistantLecture(snapshot, assistantLectureReference(snapshot), snapshot.lectureId, false);
     expect(result.snapshot).toEqual(snapshot); expect(result.current).toBe(false);
     expect(JSON.stringify(result.snapshot)).not.toContain(classroomLesson(snapshot.lessons[0].id)!.steps[0].narration);
+  });
+  it('reads an actual pre-model v2 snapshot with its original duplicate headings and teaching identity unchanged', () => {
+    const snapshot = JSON.parse(readFileSync(join(__dirname, 'fixtures/adult-lecture-before-models.json'), 'utf8'));
+    const before = JSON.stringify(snapshot), reference = assistantLectureReference(snapshot);
+    expect(snapshot.protocol).toBe('classroom-lecture-v2');
+    expect(snapshot.fingerprint).toBe('6aa6d782f5a7241ac0783cc587f9e1301947df9005730b6a30d481adbe6b6091');
+    expect(readAssistantLecture(snapshot, reference, snapshot.lectureId, false)).toEqual({ snapshot, current: false });
+    expect(() => readAssistantLecture(snapshot, reference, snapshot.lectureId, true)).toThrow('讲座内容已更新');
+    expect(JSON.stringify(snapshot)).toBe(before);
+    expect(snapshot.teaching.parts[0].blocks.some((block: { text: string }) => block.text === snapshot.teaching.parts[0].title)).toBe(true);
+    expect(freezeAssistantLecture(snapshot.courseId, snapshot.lectureId).fingerprint).not.toBe(snapshot.fingerprint);
   });
   it('requires a new teaching scope before sending from a legacy goal-only snapshot', () => {
     const snapshot = legacy();

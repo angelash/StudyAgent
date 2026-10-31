@@ -1,0 +1,1056 @@
+{
+  "courseId": "sociology-foundations",
+  "courseVersion": "2026-10-25.1",
+  "courseTitle": "社会学概论",
+  "unitId": "soc-u1",
+  "unitTitle": "社会学视角",
+  "unitPosition": 1,
+  "lectureId": "soc-u1-l1",
+  "lectureTitle": "社会学思考",
+  "description": "围绕社会学思考，通过四段微课完成概念辨析与情境应用。",
+  "lecturePosition": 1,
+  "lessons": [
+    {
+      "id": "soc-1-1-1",
+      "title": "社会学想象力",
+      "objective": "能在新情境中区分关于“社会学想象力”的解释，并指出需要进一步核查的证据。"
+    },
+    {
+      "id": "soc-1-1-2",
+      "title": "结构与能动性",
+      "objective": "能在新情境中区分关于“结构与能动性”的解释，并指出需要进一步核查的证据。"
+    },
+    {
+      "id": "soc-1-1-3",
+      "title": "社会事实",
+      "objective": "能在新情境中区分关于“社会事实”的解释，并指出需要进一步核查的证据。"
+    },
+    {
+      "id": "soc-1-1-4",
+      "title": "社会学与日常生活",
+      "objective": "能在新情境中区分关于“社会学与日常生活”的解释，并指出需要进一步核查的证据。"
+    }
+  ],
+  "fingerprint": "6aa6d782f5a7241ac0783cc587f9e1301947df9005730b6a30d481adbe6b6091",
+  "protocol": "classroom-lecture-v2",
+  "teaching": {
+    "protocol": "classroom-lecture-v2",
+    "courseId": "sociology-foundations",
+    "courseTitle": "社会学概论",
+    "itemId": "soc-u1-l1",
+    "itemTitle": "社会学思考",
+    "description": "围绕社会学思考，通过四段微课完成概念辨析与情境应用。",
+    "courseVersion": "2026-10-25.1",
+    "unitPosition": 1,
+    "lecturePosition": 1,
+    "targets": [
+      {
+        "id": "soc-1-1-1",
+        "title": "社会学想象力",
+        "objective": "能在新情境中区分关于“社会学想象力”的解释，并指出需要进一步核查的证据。"
+      },
+      {
+        "id": "soc-1-1-2",
+        "title": "结构与能动性",
+        "objective": "能在新情境中区分关于“结构与能动性”的解释，并指出需要进一步核查的证据。"
+      },
+      {
+        "id": "soc-1-1-3",
+        "title": "社会事实",
+        "objective": "能在新情境中区分关于“社会事实”的解释，并指出需要进一步核查的证据。"
+      },
+      {
+        "id": "soc-1-1-4",
+        "title": "社会学与日常生活",
+        "objective": "能在新情境中区分关于“社会学与日常生活”的解释，并指出需要进一步核查的证据。"
+      }
+    ],
+    "parts": [
+      {
+        "key": "lesson-1:step-1",
+        "targetId": "soc-1-1-1",
+        "title": "本节课导航",
+        "phase": "orient",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "今天一起研究“社会学想象力”。先记住三个问题：这个概念指什么？它怎样解释具体生活？什么证据能帮助我们判断解释是否站得住？"
+          },
+          {
+            "kind": "text",
+            "text": "本节课导航"
+          },
+          {
+            "kind": "points",
+            "text": "本节课导航",
+            "items": [
+              "概念是什么？",
+              "怎样解释生活？",
+              "用什么证据核查？"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-1-1"
+        ]
+      },
+      {
+        "key": "lesson-1:step-2",
+        "targetId": "soc-1-1-1",
+        "title": "社会学想象力",
+        "phase": "concept",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "米尔斯把个人的生活历程与时代、制度联系起来。分析时同时追问个人处境和处境形成的社会条件。"
+          },
+          {
+            "kind": "text",
+            "text": "社会学想象力"
+          },
+          {
+            "kind": "points",
+            "text": "社会学想象力",
+            "items": [
+              "传记：个人经历与选择",
+              "历史：时代、制度与社会条件",
+              "交汇点：把个人处境放回社会背景"
+            ]
+          },
+          {
+            "kind": "figure",
+            "text": "个人处境与社会条件的交汇",
+            "figure": {
+              "alt": "个人处境与社会条件的交汇",
+              "caption": "传记与历史的交汇点 · 社会学想象力"
+            }
+          }
+        ],
+        "referenceKeys": [
+          "lecture-1-2"
+        ]
+      },
+      {
+        "key": "lesson-1:step-3",
+        "targetId": "soc-1-1-1",
+        "title": "先看问题的规模",
+        "phase": "example",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "一个人找不到工作时，可以调查技能和求职过程；同一产业大量岗位一起消失时，还必须检查需求、投资与政策。规模变化提示我们扩大解释范围，但规模本身还不是因果证明。"
+          },
+          {
+            "kind": "text",
+            "text": "先看问题的规模"
+          },
+          {
+            "kind": "points",
+            "text": "先看问题的规模",
+            "items": [
+              "个体处境：检查经历与求职过程",
+              "群体变化：检查行业与制度条件",
+              "规模提示分析层次，不直接证明因果"
+            ]
+          },
+          {
+            "kind": "diagram",
+            "text": "相同现象，不同分析层次",
+            "diagram": {
+              "kind": "bars",
+              "title": "相同现象，不同分析层次",
+              "labels": [
+                "个人处境",
+                "行业岗位变化"
+              ],
+              "values": [
+                1,
+                80
+              ]
+            }
+          },
+          {
+            "kind": "code",
+            "text": "用数值比较数量与比例：可编辑的演示，不是真实社会数据",
+            "code": "const groups = [{name: \"甲地区\", unemployed: 20, population: 100}, {name: \"乙地区\", unemployed: 40, population: 1000}];\nfor (const g of groups) console.log(g.name + \": \" + (g.unemployed / g.population * 100).toFixed(1) + \"%\");"
+          }
+        ],
+        "referenceKeys": [
+          "lecture-1-3"
+        ]
+      },
+      {
+        "key": "lesson-1:step-4",
+        "targetId": "soc-1-1-1",
+        "title": "把概念放进生活",
+        "phase": "example",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "同一地区多家工厂关闭，许多有经验的工人同时失业。个人技能可能相关，但岗位整体消失需要结构层面的解释。"
+          },
+          {
+            "kind": "text",
+            "text": "把概念放进生活"
+          },
+          {
+            "kind": "points",
+            "text": "把概念放进生活",
+            "items": [
+              "观察：多家工厂同时关闭",
+              "问题：岗位变化还是个体差异？"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-1-4"
+        ]
+      },
+      {
+        "key": "lesson-1:step-5",
+        "targetId": "soc-1-1-1",
+        "title": "行动仍然有位置",
+        "phase": "contrast",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "看见结构不是放弃行动。把船放在河流中：你能调整划桨方式，也能与他人改善航道；但水流和航道决定行动需要面对什么条件。"
+          },
+          {
+            "kind": "text",
+            "text": "行动仍然有位置"
+          },
+          {
+            "kind": "points",
+            "text": "行动仍然有位置",
+            "items": [
+              "划桨：个人能动性",
+              "水流与航道：结构条件",
+              "集体行动：也能改变航道"
+            ]
+          },
+          {
+            "kind": "figure",
+            "text": "能动性与结构",
+            "figure": {
+              "alt": "划船者选择划桨方式，水流限制前进条件，岸边的人合作改善航道",
+              "caption": "划桨、河流与航道 · 概念示意"
+            }
+          }
+        ],
+        "referenceKeys": [
+          "lecture-1-5"
+        ]
+      },
+      {
+        "key": "lesson-1:step-6",
+        "targetId": "soc-1-1-1",
+        "title": "一个常见的误区",
+        "phase": "contrast",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "先检验这句话：“许多人失业，必定是每个人都不够努力。” 它省略了哪些条件？要比较产业变化、岗位数量与个人条件，不能只作性格归因。"
+          },
+          {
+            "kind": "text",
+            "text": "一个常见的误区"
+          },
+          {
+            "kind": "points",
+            "text": "一个常见的误区",
+            "items": [
+              "个人困扰：近处情境中的经历",
+              "公共议题：群体与制度层面的模式"
+            ]
+          },
+          {
+            "kind": "table",
+            "text": "个人困扰与公共议题",
+            "table": {
+              "headers": [
+                "分析层次",
+                "观察什么",
+                "还需核查什么"
+              ],
+              "rows": [
+                [
+                  "个人与近处情境",
+                  "经历、资源、求职过程",
+                  "技能、健康、关系和可选机会"
+                ],
+                [
+                  "公共与制度条件",
+                  "群体分布、行业与时期变化",
+                  "岗位结构、政策和替代解释"
+                ]
+              ]
+            }
+          }
+        ],
+        "referenceKeys": [
+          "lecture-1-6"
+        ]
+      },
+      {
+        "key": "lesson-1:step-7",
+        "targetId": "soc-1-1-1",
+        "title": "停下来，检查理解",
+        "phase": "check",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "请先用自己的话解释这个情境，再打开右侧的课堂练习。答错时先比较两种解释；使用提示也会记录下来，这只是学习记录。"
+          },
+          {
+            "kind": "text",
+            "text": "停下来，检查理解"
+          },
+          {
+            "kind": "points",
+            "text": "停下来，检查理解",
+            "items": [
+              "独立判断",
+              "说明理由",
+              "对照反馈，修正解释"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-1-7"
+        ]
+      },
+      {
+        "key": "lesson-1:step-8",
+        "targetId": "soc-1-1-1",
+        "title": "带到一个新情境",
+        "phase": "transfer",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "选择另一个与社会学想象力有关的匿名日常情境。写清观察、解释和还需要的证据，然后把它加入本单元项目。看完讲解只表示接触过内容，能否迁移要用新情境再核查。"
+          },
+          {
+            "kind": "text",
+            "text": "带到一个新情境"
+          },
+          {
+            "kind": "points",
+            "text": "带到一个新情境",
+            "items": [
+              "新情境：观察 → 解释 → 证据",
+              "加入项目，再用新题核查"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-1-8"
+        ]
+      },
+      {
+        "key": "lesson-2:step-1",
+        "targetId": "soc-1-1-2",
+        "title": "本节课导航",
+        "phase": "orient",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "今天一起研究“结构与能动性”。先记住三个问题：这个概念指什么？它怎样解释具体生活？什么证据能帮助我们判断解释是否站得住？"
+          },
+          {
+            "kind": "text",
+            "text": "本节课导航"
+          },
+          {
+            "kind": "points",
+            "text": "本节课导航",
+            "items": [
+              "概念是什么？",
+              "怎样解释生活？",
+              "用什么证据核查？"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-2-1"
+        ]
+      },
+      {
+        "key": "lesson-2:step-2",
+        "targetId": "soc-1-1-2",
+        "title": "结构与能动性",
+        "phase": "concept",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "结构是持续的规则、资源和关系；能动性是人在这些条件中作出选择并改变处境的能力。两者相互作用。"
+          },
+          {
+            "kind": "text",
+            "text": "结构与能动性"
+          },
+          {
+            "kind": "points",
+            "text": "结构与能动性",
+            "items": [
+              "结构：规则、资源与关系",
+              "能动性：条件中的选择与改变",
+              "相互作用，避免单向决定论"
+            ]
+          },
+          {
+            "kind": "diagram",
+            "text": "从观察走向可以核查的解释",
+            "diagram": {
+              "kind": "flow",
+              "title": "从观察走向可以核查的解释",
+              "labels": [
+                "结构与能动性",
+                "情境与规则",
+                "证据与替代解释"
+              ]
+            }
+          }
+        ],
+        "referenceKeys": [
+          "lecture-2-2"
+        ]
+      },
+      {
+        "key": "lesson-2:step-3",
+        "targetId": "soc-1-1-2",
+        "title": "把概念放进生活",
+        "phase": "example",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "通勤者能选择交通方式，但线路、票价和无障碍设施会改变可选范围。改善交通也来自人的集体行动。"
+          },
+          {
+            "kind": "text",
+            "text": "把概念放进生活"
+          },
+          {
+            "kind": "points",
+            "text": "把概念放进生活",
+            "items": [
+              "先记录观察事实",
+              "再提出机制与替代解释"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-2-3"
+        ]
+      },
+      {
+        "key": "lesson-2:step-4",
+        "targetId": "soc-1-1-2",
+        "title": "一个常见的误区",
+        "phase": "contrast",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "先检验这句话：“承认社会结构的影响，就等于否认个人能做任何事。” 它省略了哪些条件？研究选择空间如何受条件影响，同时寻找能够改变条件的行动。"
+          },
+          {
+            "kind": "text",
+            "text": "一个常见的误区"
+          },
+          {
+            "kind": "points",
+            "text": "一个常见的误区",
+            "items": [
+              "警惕“全部、必然、唯一”等绝对判断",
+              "补足条件，再检查证据"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-2-4"
+        ]
+      },
+      {
+        "key": "lesson-2:step-5",
+        "targetId": "soc-1-1-2",
+        "title": "停下来，检查理解",
+        "phase": "check",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "请先用自己的话解释这个情境，再打开右侧的课堂练习。答错时先比较两种解释；使用提示也会记录下来，这只是学习记录。"
+          },
+          {
+            "kind": "text",
+            "text": "停下来，检查理解"
+          },
+          {
+            "kind": "points",
+            "text": "停下来，检查理解",
+            "items": [
+              "独立判断",
+              "说明理由",
+              "对照反馈，修正解释"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-2-5"
+        ]
+      },
+      {
+        "key": "lesson-2:step-6",
+        "targetId": "soc-1-1-2",
+        "title": "带到一个新情境",
+        "phase": "transfer",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "选择另一个与结构与能动性有关的匿名日常情境。写清观察、解释和还需要的证据，然后把它加入本单元项目。看完讲解只表示接触过内容，能否迁移要用新情境再核查。"
+          },
+          {
+            "kind": "text",
+            "text": "带到一个新情境"
+          },
+          {
+            "kind": "points",
+            "text": "带到一个新情境",
+            "items": [
+              "新情境：观察 → 解释 → 证据",
+              "加入项目，再用新题核查"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-2-6"
+        ]
+      },
+      {
+        "key": "lesson-3:step-1",
+        "targetId": "soc-1-1-3",
+        "title": "本节课导航",
+        "phase": "orient",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "今天一起研究“社会事实”。先记住三个问题：这个概念指什么？它怎样解释具体生活？什么证据能帮助我们判断解释是否站得住？"
+          },
+          {
+            "kind": "text",
+            "text": "本节课导航"
+          },
+          {
+            "kind": "points",
+            "text": "本节课导航",
+            "items": [
+              "概念是什么？",
+              "怎样解释生活？",
+              "用什么证据核查？"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-3-1"
+        ]
+      },
+      {
+        "key": "lesson-3:step-2",
+        "targetId": "soc-1-1-3",
+        "title": "社会事实",
+        "phase": "concept",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "涂尔干关注外在于个人、并具有约束力的行为与思维方式。判断约束要寻找可观察的规则和偏离后果。"
+          },
+          {
+            "kind": "text",
+            "text": "社会事实"
+          },
+          {
+            "kind": "points",
+            "text": "社会事实",
+            "items": [
+              "外在于个人的共同规则",
+              "偏离规则会遇到约束",
+              "观察规则与后果，不能只看心情"
+            ]
+          },
+          {
+            "kind": "diagram",
+            "text": "从观察走向可以核查的解释",
+            "diagram": {
+              "kind": "flow",
+              "title": "从观察走向可以核查的解释",
+              "labels": [
+                "社会事实",
+                "情境与规则",
+                "证据与替代解释"
+              ]
+            }
+          }
+        ],
+        "referenceKeys": [
+          "lecture-3-2"
+        ]
+      },
+      {
+        "key": "lesson-3:step-3",
+        "targetId": "soc-1-1-3",
+        "title": "把概念放进生活",
+        "phase": "example",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "学校规定上课时间。即使某个学生不认可，迟到仍可能引来记名或他人的评价。"
+          },
+          {
+            "kind": "text",
+            "text": "把概念放进生活"
+          },
+          {
+            "kind": "points",
+            "text": "把概念放进生活",
+            "items": [
+              "先记录观察事实",
+              "再提出机制与替代解释"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-3-3"
+        ]
+      },
+      {
+        "key": "lesson-3:step-4",
+        "targetId": "soc-1-1-3",
+        "title": "一个常见的误区",
+        "phase": "contrast",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "先检验这句话：“只要许多人有相同的心情，它就一定是社会事实。” 它省略了哪些条件？要检查共同规则是否外在存在，以及违反规则会遇到什么约束。"
+          },
+          {
+            "kind": "text",
+            "text": "一个常见的误区"
+          },
+          {
+            "kind": "points",
+            "text": "一个常见的误区",
+            "items": [
+              "警惕“全部、必然、唯一”等绝对判断",
+              "补足条件，再检查证据"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-3-4"
+        ]
+      },
+      {
+        "key": "lesson-3:step-5",
+        "targetId": "soc-1-1-3",
+        "title": "停下来，检查理解",
+        "phase": "check",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "请先用自己的话解释这个情境，再打开右侧的课堂练习。答错时先比较两种解释；使用提示也会记录下来，这只是学习记录。"
+          },
+          {
+            "kind": "text",
+            "text": "停下来，检查理解"
+          },
+          {
+            "kind": "points",
+            "text": "停下来，检查理解",
+            "items": [
+              "独立判断",
+              "说明理由",
+              "对照反馈，修正解释"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-3-5"
+        ]
+      },
+      {
+        "key": "lesson-3:step-6",
+        "targetId": "soc-1-1-3",
+        "title": "带到一个新情境",
+        "phase": "transfer",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "选择另一个与社会事实有关的匿名日常情境。写清观察、解释和还需要的证据，然后把它加入本单元项目。看完讲解只表示接触过内容，能否迁移要用新情境再核查。"
+          },
+          {
+            "kind": "text",
+            "text": "带到一个新情境"
+          },
+          {
+            "kind": "points",
+            "text": "带到一个新情境",
+            "items": [
+              "新情境：观察 → 解释 → 证据",
+              "加入项目，再用新题核查"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-3-6"
+        ]
+      },
+      {
+        "key": "lesson-4:step-1",
+        "targetId": "soc-1-1-4",
+        "title": "本节课导航",
+        "phase": "orient",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "今天一起研究“社会学与日常生活”。先记住三个问题：这个概念指什么？它怎样解释具体生活？什么证据能帮助我们判断解释是否站得住？"
+          },
+          {
+            "kind": "text",
+            "text": "本节课导航"
+          },
+          {
+            "kind": "points",
+            "text": "本节课导航",
+            "items": [
+              "概念是什么？",
+              "怎样解释生活？",
+              "用什么证据核查？"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-4-1"
+        ]
+      },
+      {
+        "key": "lesson-4:step-2",
+        "targetId": "soc-1-1-4",
+        "title": "社会学与日常生活",
+        "phase": "concept",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "把熟悉的习惯暂时当作需要解释的现象：谁这样做，在何时何地做，规则怎样形成，谁受益或受限。"
+          },
+          {
+            "kind": "text",
+            "text": "社会学与日常生活"
+          },
+          {
+            "kind": "points",
+            "text": "社会学与日常生活",
+            "items": [
+              "把熟悉的习惯变成研究问题",
+              "比较人物、场景与规则",
+              "寻找重复出现的社会模式"
+            ]
+          },
+          {
+            "kind": "diagram",
+            "text": "从观察走向可以核查的解释",
+            "diagram": {
+              "kind": "flow",
+              "title": "从观察走向可以核查的解释",
+              "labels": [
+                "社会学与日常生活",
+                "情境与规则",
+                "证据与替代解释"
+              ]
+            }
+          }
+        ],
+        "referenceKeys": [
+          "lecture-4-2"
+        ]
+      },
+      {
+        "key": "lesson-4:step-3",
+        "targetId": "soc-1-1-4",
+        "title": "把概念放进生活",
+        "phase": "example",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "排队看似自然，但不同场景用取号、预约或先到先得组织顺序。比较规则才能解释秩序。"
+          },
+          {
+            "kind": "text",
+            "text": "把概念放进生活"
+          },
+          {
+            "kind": "points",
+            "text": "把概念放进生活",
+            "items": [
+              "先记录观察事实",
+              "再提出机制与替代解释"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-4-3"
+        ]
+      },
+      {
+        "key": "lesson-4:step-4",
+        "targetId": "soc-1-1-4",
+        "title": "一个常见的误区",
+        "phase": "contrast",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "先检验这句话：“日常小事没有研究价值，因为它们只是个人喜好。” 它省略了哪些条件？可以比较情境、参与者和规则，寻找日常行为背后的社会模式。"
+          },
+          {
+            "kind": "text",
+            "text": "一个常见的误区"
+          },
+          {
+            "kind": "points",
+            "text": "一个常见的误区",
+            "items": [
+              "警惕“全部、必然、唯一”等绝对判断",
+              "补足条件，再检查证据"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-4-4"
+        ]
+      },
+      {
+        "key": "lesson-4:step-5",
+        "targetId": "soc-1-1-4",
+        "title": "停下来，检查理解",
+        "phase": "check",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "请先用自己的话解释这个情境，再打开右侧的课堂练习。答错时先比较两种解释；使用提示也会记录下来，这只是学习记录。"
+          },
+          {
+            "kind": "text",
+            "text": "停下来，检查理解"
+          },
+          {
+            "kind": "points",
+            "text": "停下来，检查理解",
+            "items": [
+              "独立判断",
+              "说明理由",
+              "对照反馈，修正解释"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-4-5"
+        ]
+      },
+      {
+        "key": "lesson-4:step-6",
+        "targetId": "soc-1-1-4",
+        "title": "带到一个新情境",
+        "phase": "transfer",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "选择另一个与社会学与日常生活有关的匿名日常情境。写清观察、解释和还需要的证据，然后把它加入本单元项目。看完讲解只表示接触过内容，能否迁移要用新情境再核查。"
+          },
+          {
+            "kind": "text",
+            "text": "带到一个新情境"
+          },
+          {
+            "kind": "points",
+            "text": "带到一个新情境",
+            "items": [
+              "新情境：观察 → 解释 → 证据",
+              "加入项目，再用新题核查"
+            ]
+          }
+        ],
+        "referenceKeys": [
+          "lecture-4-6"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "key": "lecture-1-1",
+        "title": "社会学想象力 · 本节课导航",
+        "targetId": "soc-1-1-1",
+        "sectionKey": "lesson-1:step-1"
+      },
+      {
+        "key": "lecture-1-2",
+        "title": "社会学想象力 · 社会学想象力",
+        "targetId": "soc-1-1-1",
+        "sectionKey": "lesson-1:step-2"
+      },
+      {
+        "key": "lecture-1-3",
+        "title": "社会学想象力 · 先看问题的规模",
+        "targetId": "soc-1-1-1",
+        "sectionKey": "lesson-1:step-3"
+      },
+      {
+        "key": "lecture-1-4",
+        "title": "社会学想象力 · 把概念放进生活",
+        "targetId": "soc-1-1-1",
+        "sectionKey": "lesson-1:step-4"
+      },
+      {
+        "key": "lecture-1-5",
+        "title": "社会学想象力 · 行动仍然有位置",
+        "targetId": "soc-1-1-1",
+        "sectionKey": "lesson-1:step-5"
+      },
+      {
+        "key": "lecture-1-6",
+        "title": "社会学想象力 · 一个常见的误区",
+        "targetId": "soc-1-1-1",
+        "sectionKey": "lesson-1:step-6"
+      },
+      {
+        "key": "lecture-1-7",
+        "title": "社会学想象力 · 停下来，检查理解",
+        "targetId": "soc-1-1-1",
+        "sectionKey": "lesson-1:step-7"
+      },
+      {
+        "key": "lecture-1-8",
+        "title": "社会学想象力 · 带到一个新情境",
+        "targetId": "soc-1-1-1",
+        "sectionKey": "lesson-1:step-8"
+      },
+      {
+        "key": "lecture-2-1",
+        "title": "结构与能动性 · 本节课导航",
+        "targetId": "soc-1-1-2",
+        "sectionKey": "lesson-2:step-1"
+      },
+      {
+        "key": "lecture-2-2",
+        "title": "结构与能动性 · 结构与能动性",
+        "targetId": "soc-1-1-2",
+        "sectionKey": "lesson-2:step-2"
+      },
+      {
+        "key": "lecture-2-3",
+        "title": "结构与能动性 · 把概念放进生活",
+        "targetId": "soc-1-1-2",
+        "sectionKey": "lesson-2:step-3"
+      },
+      {
+        "key": "lecture-2-4",
+        "title": "结构与能动性 · 一个常见的误区",
+        "targetId": "soc-1-1-2",
+        "sectionKey": "lesson-2:step-4"
+      },
+      {
+        "key": "lecture-2-5",
+        "title": "结构与能动性 · 停下来，检查理解",
+        "targetId": "soc-1-1-2",
+        "sectionKey": "lesson-2:step-5"
+      },
+      {
+        "key": "lecture-2-6",
+        "title": "结构与能动性 · 带到一个新情境",
+        "targetId": "soc-1-1-2",
+        "sectionKey": "lesson-2:step-6"
+      },
+      {
+        "key": "lecture-3-1",
+        "title": "社会事实 · 本节课导航",
+        "targetId": "soc-1-1-3",
+        "sectionKey": "lesson-3:step-1"
+      },
+      {
+        "key": "lecture-3-2",
+        "title": "社会事实 · 社会事实",
+        "targetId": "soc-1-1-3",
+        "sectionKey": "lesson-3:step-2"
+      },
+      {
+        "key": "lecture-3-3",
+        "title": "社会事实 · 把概念放进生活",
+        "targetId": "soc-1-1-3",
+        "sectionKey": "lesson-3:step-3"
+      },
+      {
+        "key": "lecture-3-4",
+        "title": "社会事实 · 一个常见的误区",
+        "targetId": "soc-1-1-3",
+        "sectionKey": "lesson-3:step-4"
+      },
+      {
+        "key": "lecture-3-5",
+        "title": "社会事实 · 停下来，检查理解",
+        "targetId": "soc-1-1-3",
+        "sectionKey": "lesson-3:step-5"
+      },
+      {
+        "key": "lecture-3-6",
+        "title": "社会事实 · 带到一个新情境",
+        "targetId": "soc-1-1-3",
+        "sectionKey": "lesson-3:step-6"
+      },
+      {
+        "key": "lecture-4-1",
+        "title": "社会学与日常生活 · 本节课导航",
+        "targetId": "soc-1-1-4",
+        "sectionKey": "lesson-4:step-1"
+      },
+      {
+        "key": "lecture-4-2",
+        "title": "社会学与日常生活 · 社会学与日常生活",
+        "targetId": "soc-1-1-4",
+        "sectionKey": "lesson-4:step-2"
+      },
+      {
+        "key": "lecture-4-3",
+        "title": "社会学与日常生活 · 把概念放进生活",
+        "targetId": "soc-1-1-4",
+        "sectionKey": "lesson-4:step-3"
+      },
+      {
+        "key": "lecture-4-4",
+        "title": "社会学与日常生活 · 一个常见的误区",
+        "targetId": "soc-1-1-4",
+        "sectionKey": "lesson-4:step-4"
+      },
+      {
+        "key": "lecture-4-5",
+        "title": "社会学与日常生活 · 停下来，检查理解",
+        "targetId": "soc-1-1-4",
+        "sectionKey": "lesson-4:step-5"
+      },
+      {
+        "key": "lecture-4-6",
+        "title": "社会学与日常生活 · 带到一个新情境",
+        "targetId": "soc-1-1-4",
+        "sectionKey": "lesson-4:step-6"
+      }
+    ],
+    "selection": {
+      "mode": "complete"
+    },
+    "catalogFingerprint": "0be35ebd7e518b5e41175ec6b050c6e3b572a09b3acb6846323d1a453decdb82",
+    "coverage": {
+      "totalParts": 26,
+      "includedParts": 26,
+      "totalTargets": 4,
+      "includedTargets": 4,
+      "complete": true
+    },
+    "fingerprint": "4995587f36942a2720707de2ff5d3b8dba6f066a941023f5359327c1920eedea"
+  }
+}

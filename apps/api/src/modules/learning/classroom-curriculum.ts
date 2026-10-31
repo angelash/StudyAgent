@@ -5,6 +5,8 @@ import { UNIT_CHECK_VERSION, unitChecks } from './classroom-unit-checks';
 import { CLASSROOM_PRACTICE_VERSION, practiceVariations } from './classroom-practice-content';
 import { freezeMultipleChoice, microChoices, unitChoice } from './classroom-choice-content';
 import { supplementChemistryLesson } from './chemistry-tutorial';
+import { ADULT_CLASSROOM_MODEL_VERSION } from './adult-classroom-models';
+import { applyAdultClassroomModel } from './adult-classroom-model-projection';
 
 // Independently authored teaching material. Topic structure follows the observed syllabus;
 // no third-party narration, artwork, personal history or generated session code is embedded.
@@ -132,7 +134,7 @@ const lessonMap = new Map<string, ClassroomLesson>();
 const keys = new Map<string, { answer: number | number[]; explanation: string; optionExplanations?: string[] }>();
 const hints = new Map<string, string[]>();
 const course: ClassroomCourse = {
-  id: 'sociology-foundations', title: '社会学概论', level: '成人 · 自主学习', version: CLASSROOM_PRACTICE_VERSION,
+  id: 'sociology-foundations', title: '社会学概论', level: '成人 · 自主学习', version: ADULT_CLASSROOM_MODEL_VERSION + ':' + CLASSROOM_PRACTICE_VERSION,
   description: '从自己的生活出发，看见文化、关系和制度如何共同塑造社会。五个单元串起概念、案例、练习与一个持续推进的社区研究。',
   provenance: 'StudyAgent 自编教学内容；课程层级与交互参考用户指定HyperKnow页面的可见观察。成人课程记录独立于小学能力评测。',
   references: [{ title: 'OpenStax · Introduction to Sociology 3e', url: 'https://openstax.org/details/books/introduction-sociology-3e' }],
@@ -222,6 +224,7 @@ const course: ClassroomCourse = {
         }
         lesson.practiceVersion = CLASSROOM_PRACTICE_VERSION + ':' + createHash('sha256').update(JSON.stringify(lesson.questions.map(question =>
           [question, keys.get(question.id), hints.get(question.id)]))).digest('hex').slice(0, 16);
+        applyAdultClassroomModel(lesson);
         lessonMap.set(id, lesson);
         return { id, title: name, objective: lesson.objective };
       }),

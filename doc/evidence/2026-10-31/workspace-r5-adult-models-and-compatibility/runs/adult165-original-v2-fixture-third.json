@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-31T05:44:06.253Z",
+  "source": "Frozen actual integration44 compiled lecture context before adult models",
+  "fixture": "apps/api/src/modules/ai/fixtures/adult-lecture-before-models.json",
+  "fixtureSha256": "452d32daede7c15aedbc24b8cd0011261e0f55c5a54d9b60bf935caa318e49e4",
+  "fingerprint": "6aa6d782f5a7241ac0783cc587f9e1301947df9005730b6a30d481adbe6b6091",
+  "courseVersion": "2026-10-25.1",
+  "compiledInputs": [
+    {
+      "path": "modules/ai/assistant-lecture-context.js",
+      "sha256": "1bc2f531054b8459d4acfd01c252a7e47c708338059f17c59ef7c38efbd1c3c4"
+    },
+    {
+      "path": "modules/ai/assistant-teaching-content.js",
+      "sha256": "323f3eea902cc742f304926c483b3d3d6c3f767aa88ef7330753382b97a1aeea"
+    },
+    {
+      "path": "modules/learning/classroom-curriculum.js",
+      "sha256": "fa488e7b9d57436d04cff31997453a6aad1d73326822c71c83cb8e4e3fa8f70b"
+    }
+  ]
+}

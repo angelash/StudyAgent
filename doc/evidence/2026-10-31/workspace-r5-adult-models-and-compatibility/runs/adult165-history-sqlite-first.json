@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-31T05:03:02.328Z",
+  "success": false,
+  "passed": 3,
+  "failed": 1,
+  "checks": [
+    {
+      "name": "Actual previous31 application creates its original six-step lesson, first answer, original subtitle position and full draft",
+      "passed": true
+    },
+    {
+      "name": "Actual new application cold reads old teaching, first answer, speech and draft unchanged; catalog/default reopening create no replacement session",
+      "passed": true
+    },
+    {
+      "name": "Only explicit current-version opening creates the new model lesson; old first-answer replay and complete original draft stay with the old identity",
+      "passed": true
+    }
+  ],
+  "error": "AssertionError [ERR_ASSERTION]: /learning/classroom/sessions/classroom_87394e47-3ef2-4c2f-822f-67d432a5bb6c: {\"code\":\"unauthorized\",\"message\":\"Invalid session token\"}\n\n401 !== 200\n\n    at call (F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\run-adult165-history-sqlite-first.cjs:10:305)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-adult-models-first-20261031\\run-adult165-history-sqlite-first.cjs:18:472)"
+}

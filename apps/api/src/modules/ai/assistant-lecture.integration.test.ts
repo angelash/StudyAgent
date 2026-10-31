@@ -263,6 +263,31 @@ describe('adult lecture assistant HTTP and frozen task boundaries', () => {
     await call('post',base(session.id)+'/turns',{...c,requestKey:randomUUID()},parent,409);
   });
 
+  it('prepares and sends all fifteen complete lectures within the original provider budget without dropping teaching', async () => {
+    const actor = await call('post', '/auth/register', { principal: 'all-lectures-' + randomUUID() + '@local.test',
+      credential: 'Lecture-All-QA-only-20261031' }, null);
+    const reply = model();
+    let checked = 0;
+    for (const unit of course.units) for (const target of unit.lectures) {
+      const descriptor = await call('get', '/ai/assistant/lecture-context?' + new URLSearchParams({ courseId: course.id, lectureId: target.id }), undefined, actor);
+      const session = await call('post', '/ai/assistant/sessions', command(descriptor), actor);
+      const frozen = await store.requestContext(() => structuredClone(store.find('assistantSessions', { id: session.id }).lectureSnapshot));
+      const prepared = await store.requestContext(() => ai.prepareAssistant(session.id, '请结合本讲全部正文解释概念之间的联系。', 'deepseek-v4-flash'));
+      await ai.renderAssistant(prepared);
+      const sent = reply.mock.calls.at(-1)![0].context, context = JSON.parse(sent);
+      expect(sent.length, target.id).toBeLessThanOrEqual(18_000);
+      expect(JSON.stringify(frozen).length, target.id).toBeLessThan(17_800);
+      expect(context.lecture, target.id).toEqual(frozen);
+      expect(context.lecture.teaching.selection).toEqual({ mode: 'complete' });
+      expect(context.lecture.teaching.coverage.complete).toBe(true);
+      expect(context.lecture.teaching.parts).toHaveLength(target.lessons.reduce((sum, lesson) => sum + curriculum.classroomLesson(lesson.id).steps.length, 0));
+      expect(context.evidenceIds).toEqual([]);
+      checked++;
+    }
+    expect(checked).toBe(15); expect(reply).toHaveBeenCalledTimes(15);
+    expect(await store.requestContext(() => store.classroomSessions.length)).toBe(0);
+  });
+
   it('refuses an open when its authenticated login is revoked before the durable transaction begins',async()=>{
     const actor=await call('post','/auth/register',{principal:'lecture-revoked-'+randomUUID()+'@local.test',credential:'Lecture-revocation-only-20261028'},null),descriptor=await call('get',descriptorPath,undefined,actor);
     const original=ai.openDurableAssistantSession.bind(ai),before=await store.requestContext(()=>store.select('assistantSessions',{ownerUserId:actor.user.id}).length);
