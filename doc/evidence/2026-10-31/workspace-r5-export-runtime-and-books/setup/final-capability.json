@@ -1,0 +1,44 @@
+{
+  "protocol": "paper-export-capability-v1",
+  "available": true,
+  "reason": null,
+  "runtime": {
+    "officeVersion": "26.8.2.2",
+    "manifestSha256": "332efdeb4344e15eec827de966ff88491d7a0016abc993b72c06bb873a164814",
+    "filesChecked": 19417,
+    "bytesChecked": 1583065349,
+    "full": true
+  },
+  "dependencies": {
+    "python-docx": "1.2.0",
+    "lxml": "5.4.0",
+    "fonttools": "4.58.0",
+    "PyMuPDF": "1.26.6",
+    "Pillow": "11.1.0",
+    "typing_extensions": "4.15.0"
+  },
+  "fonts": [
+    {
+      "family": "StudyAgent Print Serif",
+      "sha256": "14d8632919bb46d64e6f258b754c4035f90d47458b7fb79818f636a6d9692ff9"
+    },
+    {
+      "family": "StudyAgent Print Math",
+      "sha256": "b73cea0ce4af6e3a10ba6cb3074a06b1875881a2e4a1ad8077723643248dadac"
+    }
+  ],
+  "selfTest": [
+    {
+      "format": "docx",
+      "sha256": "034e514805f6bf20cd8837cd9cbe322402e8f2dd004505b034a812e3820b5179",
+      "bytes": 9402016,
+      "pageCount": 1
+    },
+    {
+      "format": "pdf",
+      "sha256": "1e5ac729e2ce9ad2b25c0b4928e9a5b2f36c54615a5df3fcca685ad8328a9048",
+      "bytes": 30771,
+      "pageCount": 1
+    }
+  ]
+}

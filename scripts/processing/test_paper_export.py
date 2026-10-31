@@ -7,11 +7,15 @@ from tempfile import TemporaryDirectory
 from zipfile import ZipFile
 import json
 import unittest
+import os
+import subprocess
+import sys
 from lxml import etree as ET
 from docx import Document
 from docx.oxml.ns import qn
-from paper_export_content import load_input, parse_markup, table_grid
-from paper_export_document import Builder, styles
+from paper_export_content import load_input, parse_markup, table_grid, preflight, text
+from paper_export_protocol import error_code
+from paper_export_document import Builder, styles, inspect_visual_bounds
 from paper_export_math import omml
 
 
@@ -89,6 +93,94 @@ class PaperDocumentSemantics(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, '^paper_export_invalid_input$'):
                 load_input(file, sha256(raw).hexdigest(), Path(temp), self.fonts)
             self.assertEqual(sorted(p.name for p in Path(temp).iterdir()), ['input.json'])
+
+
+class BookPreflight(unittest.TestCase):
+    def setUp(self):
+        self.fonts = [{'cmap': set(range(32, 127))}, {'cmap': set(range(32, 127))}]
+        self.value = {'protocol': 'paper-export-document-v1', 'title': 'Synthetic', 'layout': {'answerLines': 0, 'breakBetweenQuestions': False}, 'media': [],
+                      'items': [{'id': 'q1', 'source': {'paperId': 'p1', 'position': 1, 'sourceQuestionId': 's1', 'detailSha256': 'a'*64,
+                                'publicationVersion': 'v1', 'paperTitle': 'Paper', 'pageNumber': None},
+                                'promptHtml': '<p>Original prompt</p>', 'optionHtml': [],
+                                'reference': {'answerHtml': '<p>Original answer</p>', 'analysisHtml': None}}]}
+
+    def project(self):
+        with TemporaryDirectory(prefix='study-paper-books-') as temp:
+            root = Path(temp); file = root / 'input.json'
+            raw = json.dumps(self.value).encode('utf8'); file.write_bytes(raw)
+            result = preflight(file, sha256(raw).hexdigest(), root, self.fonts)
+            self.assertEqual(file.read_bytes(), raw)
+            self.assertEqual([p.name for p in root.iterdir()], ['input.json'])
+            return result['books']
+
+    def test_unsupported_reference_blocks_only_answers(self):
+        self.value['items'][0]['reference']['answerHtml'] = '<math><menclose><mi>x</mi></menclose></math>'
+        books = self.project()
+        self.assertTrue(books['practice']['available'])
+        self.assertEqual(books['answers']['reason'], 'paper_export_unsupported_markup')
+
+    def test_unsupported_question_does_not_block_independent_original_answer(self):
+        self.value['items'][0]['promptHtml'] = '<video>Original meaningful material</video>'
+        books = self.project()
+        self.assertEqual(books['practice']['reason'], 'paper_export_unsupported_markup')
+        self.assertTrue(books['answers']['available'])
+
+    def test_missing_answer_image_does_not_block_practice_or_trigger_network(self):
+        digest = 'b'*64; media = {'path': 'media/'+digest+'.png', 'sha256': digest, 'bytes': 20, 'width': 20, 'height': 20}
+        self.value['media'] = [media]
+        self.value['items'][0]['reference']['answerHtml'] = '<p><img src="'+media['path']+'" alt="original diagram"/></p>'
+        books = self.project()
+        self.assertTrue(books['practice']['available'])
+        self.assertEqual(books['answers']['reason'], 'paper_export_media_invalid')
+
+    def test_empty_question_is_rejected_while_null_answers_remain_explicit(self):
+        self.value['items'][0]['promptHtml'] = '<p><span> </span><br/></p>'
+        self.value['items'][0]['reference'] = None
+        books = self.project()
+        self.assertEqual(books['practice']['reason'], 'paper_export_empty_question')
+        self.assertTrue(books['answers']['available'])
+
+    def test_private_unknown_fields_reject_both_books(self):
+        self.value['items'][0]['studentAnswer'] = 'Never include private response'
+        books = self.project()
+        self.assertEqual([books[name]['reason'] for name in ['practice', 'answers']], ['paper_export_invalid_input']*2)
+
+    def test_invalid_unicode_and_unknown_error_messages_never_escape_public_protocol(self):
+        with self.assertRaisesRegex(ValueError, '^paper_export_invalid_input$'): text('\ud800')
+        self.assertEqual(error_code(ValueError('paper_export_unknown_private_details')), 'paper_export_render_failed')
+        self.assertEqual(error_code(RuntimeError('private local path')), 'paper_export_render_failed')
+
+
+class RuntimeEnvironment(unittest.TestCase):
+    @unittest.skipUnless(sys.platform == 'win32', 'Actual Windows process target')
+    def test_dependencies_work_after_all_application_credentials_and_arch_environment_are_removed(self):
+        script = Path(__file__).absolute().parent
+        code = 'import sys,json;sys.path.insert(0,sys.argv[1]);from paper_export_runtime import verify_dependencies;print(json.dumps(verify_dependencies()))'
+        environment = {key:os.environ[key] for key in ['SystemRoot','WINDIR','TEMP','TMP','SYSTEMDRIVE','COMSPEC'] if key in os.environ}
+        result = subprocess.run([sys.executable, '-E', '-s', '-c', code, str(script)], env=environment, capture_output=True, text=True, timeout=15)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertEqual(json.loads(result.stdout)['python-docx'], '1.2.0')
+
+
+class ActualPdfGeometry(unittest.TestCase):
+    def test_clipped_images_are_rejected_even_when_all_visible_text_is_inside_page(self):
+        import fitz
+        from PIL import Image
+        image = Image.new('RGB', (20,20), 'red'); buffer = BytesIO(); image.save(buffer, format='PNG')
+        for rectangle in [fitz.Rect(20,70,100,150), fitz.Rect(70,780,150,860)]:
+            with self.subTest(rectangle=rectangle), fitz.open() as pdf:
+                page = pdf.new_page(width=210*72/25.4, height=297*72/25.4)
+                page.insert_image(rectangle, stream=buffer.getvalue())
+                with self.assertRaisesRegex(ValueError, '^paper_export_layout_invalid$'): inspect_visual_bounds(page)
+
+    def test_actual_inline_image_inside_print_margins_is_accepted(self):
+        import fitz
+        from PIL import Image
+        image = Image.new('RGB', (20,20), 'red'); buffer = BytesIO(); image.save(buffer, format='PNG')
+        with fitz.open() as pdf:
+            page = pdf.new_page(width=210*72/25.4, height=297*72/25.4)
+            page.insert_image(fitz.Rect(70,70,150,150), stream=buffer.getvalue())
+            inspect_visual_bounds(page)
 
 
 if __name__ == '__main__': unittest.main()

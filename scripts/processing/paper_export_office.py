@@ -6,6 +6,8 @@ import uno
 from com.sun.star.beans import PropertyValue
 from file_leases import no_links
 from paper_export_process import RendererJob
+from paper_export_protocol import error_code
+from paper_export_runtime import loaded_office_version
 
 PROTOCOL = 'paper-export-office-v1'
 
@@ -22,6 +24,12 @@ def render(source, expected_sha256, destination, profile, executable, cancelled)
     if not source.is_file() or sha256(source.read_bytes()).hexdigest() != expected_sha256 or destination.exists() or profile.exists():
         raise ValueError('paper_export_source_changed')
     if cancelled.exists(): raise ValueError('paper_export_cancelled')
+    # This exact registry backend still uses a MAX_PATH-limited Windows API.
+    # A real 265-character path exited before UNO startup; a 252-character
+    # counterpart rendered the identical document. Fail before launching Office.
+    registry = profile.absolute() / 'user/uno_packages/cache/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/backenddb.xml'
+    if len(str(registry).encode('utf-16-le')) // 2 >= 260:
+        raise ValueError('paper_export_path_limit')
     profile.mkdir(parents=True, exist_ok=False)
     pipe = 'study_paper_' + uuid.uuid4().hex
     arguments = [str(executable), '-env:UserInstallation=' + profile.resolve().as_uri(), '--headless', '--invisible', '--norestore',
@@ -55,6 +63,7 @@ def render(source, expected_sha256, destination, profile, executable, cancelled)
                 if process.poll() is not None: break
                 time.sleep(0.1)
         if context is None: raise ValueError(interrupted[0] if interrupted else 'paper_export_renderer_unavailable')
+        office_version = loaded_office_version(context)
         desktop = context.ServiceManager.createInstanceWithContext('com.sun.star.frame.Desktop', context)
         document = desktop.loadComponentFromURL(source.resolve().as_uri(), '_blank', 0,
             (property_value('Hidden', True), property_value('ReadOnly', False), property_value('MacroExecutionMode', 4), property_value('UpdateDocMode', 0)))
@@ -71,14 +80,15 @@ def render(source, expected_sha256, destination, profile, executable, cancelled)
                 if model.getPropertyValue(name) != 'StudyAgent Print Math': raise ValueError('paper_export_font_invalid')
             model.setPropertyValue('FontNameText', 'StudyAgent Print Serif'); count += 1
         if cancelled.exists(): raise ValueError('paper_export_cancelled')
-        options = (property_value('UseTaggedPDF', True), property_value('ExportBookmarks', True), property_value('EmbedStandardFonts', True))
+        options = (property_value('UseTaggedPDF', True), property_value('ExportBookmarks', True), property_value('ExportBookmarksToPDFDestination', True),
+                   property_value('EmbedStandardFonts', True), property_value('UseLosslessCompression', True), property_value('ReduceImageResolution', False))
         document.storeToURL(destination.resolve().as_uri(), (property_value('FilterName', 'writer_pdf_Export'), property_value('Overwrite', False),
             property_value('FilterData', uno.Any('[]com.sun.star.beans.PropertyValue', options))))
         if cancelled.exists(): raise ValueError('paper_export_cancelled')
         if sha256(source.read_bytes()).hexdigest() != expected_sha256: raise ValueError('paper_export_source_changed')
         if not destination.is_file() or not 1 <= destination.stat().st_size <= 80 * 1024 * 1024: raise ValueError('paper_export_byte_limit')
         if interrupted: raise ValueError(interrupted[0])
-        return {'formulas': count, 'sourceUnchanged': True}
+        return {'formulas': count, 'sourceUnchanged': True, 'officeVersion': office_version}
     finally:
         if document and not interrupted:
             try: document.close(True)
@@ -108,6 +118,6 @@ if __name__ == '__main__':
         value = render(args.source, args.source_sha256, args.destination, args.profile, args.soffice, args.cancelled)
         print('PAPER_EXPORT_OFFICE ' + json.dumps({'protocol': PROTOCOL, 'result': value}))
     except Exception as error:
-        code = str(error) if isinstance(error, ValueError) and str(error).startswith('paper_export_') else 'paper_export_render_failed'
+        code = error_code(error)
         print('PAPER_EXPORT_OFFICE ' + json.dumps({'protocol': PROTOCOL, 'error': code}))
         raise SystemExit(1)

@@ -88,6 +88,8 @@ DOCX采用python-docx 1.2.0、lxml 5.4.0、fontTools 4.58.0生成。中文字体
 
 ### 首批文档执行器：已实现的范围与剩余边界
 
+后续[167运行环境与按册能力](167-paper-export-runtime-and-book-capabilities.md)已实现同设备新目录离线重建、固定工具完整校验、实际自检及按册只读预检，并补真实图片位置、原生起止书签/PDF页范围和Windows路径边界。该页优先说明这些后续状态；下文首批的“工具/按册预检未完成”保留为当时边界。长正文续题和应用持久链路仍未完成。
+
 [文档执行器](../../scripts/processing/paper_export_document.py)、[冻结输入校验](../../scripts/processing/paper_export_content.py)、[原生公式转换](../../scripts/processing/paper_export_math.py)、[固定字体](../../scripts/processing/paper_export_fonts.py)、[逐文档Office](../../scripts/processing/paper_export_office.py)和[Windows子进程容器](../../scripts/processing/paper_export_process.py)已从独立p166副本逐SHA归入主干；[依赖版本](../../scripts/processing/requirements-paper-export.txt)和[语义测试](../../scripts/processing/test_paper_export.py)一并保存。它们接收服务端已授权的冻结输入，不自行授予来源资格、发布文件或产生学习记录，当前应用尚未调用。
 
 首批精确JSON键固定为`protocol/title/items/media/layout`。`layout`只含`answerLines/breakBetweenQuestions`；每个item含`id/source/promptHtml/optionHtml/reference`，`optionHtml`是有序`{label,html}`数组。`source`含`paperId/position/sourceQuestionId/detailSha256/publicationVersion/paperTitle/pageNumber`，未知页码使用null。`reference`为null或`{answerHtml,analysisHtml}`，其中缺项使用null。媒体为`{path,sha256,bytes,width,height}`，path严格为`media/<sha>.png`。拒绝未知字段、重复JSON键、重复题位、同卷不一致指纹、丢图、路径链接和缺字形。总输入文件另限12MiB、解码媒体总像素120百万、单表最多500行/12列、列表最多5层，不能用这些新上限静默截断原内容。

@@ -19,10 +19,12 @@ from docx.shared import Mm, Pt, RGBColor
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from paper_export_content import load_input, fail, tag, INLINE, table_grid
+from paper_export_content import load_input, fail, tag, INLINE, table_grid, meaningful
+from paper_export_protocol import error_code, ERROR_CODES
 from paper_export_fonts import load_font_set, embed_fonts
 from paper_export_math import omml
 from file_leases import no_links
+from paper_export_runtime import verify_dependencies, verify_install, minimal_environment
 
 RESULT_PROTOCOL = 'paper-export-render-result-v1'
 SERIF, MATH = 'StudyAgent Print Serif', 'StudyAgent Print Math'
@@ -102,6 +104,10 @@ class Builder:
             image = self.media[node.get('src')]
             points = min(width, image['width'] * 72 / 96, 150 * 72 / 25.4 * image['width'] / image['height'])
             run = paragraph.add_run(); picture = run.add_picture(BytesIO(image['data']), width=Pt(points))
+            for side in ['distT', 'distB', 'distL', 'distR']: picture._inline.set(side, '0')
+            effect = OxmlElement('wp:effectExtent')
+            for side in ['l', 't', 'r', 'b']: effect.set(side, '0')
+            picture._inline.insert(1, effect)
             picture._inline.docPr.set('descr', node.get('alt')); return
         if name == 'math': paragraph._p.append(omml(node)); return
         if name == 'ruby':
@@ -231,7 +237,7 @@ def write_book(value, parsed, media, fonts, book, destination, cancelled):
         heading = document.add_paragraph(style='Heading 1')
         heading.paragraph_format.page_break_before = number > 1 and value['layout']['breakBetweenQuestions']
         plain(heading, f'第{number}题')
-        setting(heading._p, 'bookmarkStart', id=number, name=f'paper_item_{number:04d}')
+        setting(heading._p, 'bookmarkStart', id=number, name=f'PaperItem{number:04d}')
         setting(heading._p, 'bookmarkEnd', id=number)
         source = item['source']; page = '未核实页码' if source['pageNumber'] is None else f"第{source['pageNumber']}页"
         source_paragraph = document.add_paragraph()
@@ -261,8 +267,11 @@ def write_book(value, parsed, media, fonts, book, destination, cancelled):
             reference = item['reference']
             for key, label in [('answerHtml', '参考答案'), ('analysisHtml', '原解析')]:
                 plain(document.add_paragraph(), label + '：', {'bold': True})
-                if reference is None or reference[key] is None: plain(document.add_paragraph(), '原资料未提供')
+                if reference is None or reference[key] is None or not meaningful(markup[reference[key]]): plain(document.add_paragraph(), '原资料未提供')
                 else: builder.blocks(document, markup[reference[key]])
+        end = document.paragraphs[-1]
+        setting(end._p, 'bookmarkStart', id=1000 + number, name=f'PaperEnd{number:04d}')
+        setting(end._p, 'bookmarkEnd', id=1000 + number)
     output = BytesIO(); document.save(output)
     for paragraph in document.element.iter(qn('w:p')):
         content = ''.join(node.text or '' for node in paragraph.iter() if node.tag in {qn('w:t'), qn('m:t')})
@@ -273,11 +282,29 @@ def write_book(value, parsed, media, fonts, book, destination, cancelled):
     return sha256(data).hexdigest()
 
 
-def inspect_pdf(file, value, book):
+def inspect_visual_bounds(page):
+    """Check actual placed images as well as text, including clipped placements."""
+    for image in page.get_image_info():
+        x0, y0, x1, y1 = image['bbox']
+        margin = 18 * 72 / 25.4 - 2
+        if image['width'] <= 0 or image['height'] <= 0 or x1 <= x0 or y1 <= y0 or x0 < margin or y0 < margin or x1 > page.rect.width - margin or y1 > page.rect.height - margin:
+            fail('layout_invalid')
+    for block in page.get_text('dict')['blocks']:
+        if block['type'] != 0: continue
+        for line in block['lines']:
+            for span in line['spans']:
+                if '\ufffd' in span['text'] or '\x00' in span['text']: fail('missing_glyph')
+                x0, y0, x1, y1 = span['bbox']
+                if x0 < 40 or x1 > page.rect.width - 40 or y0 < 10 or y1 > page.rect.height - 10: fail('layout_invalid')
+
+
+def inspect_pdf(file, value, book, expected_images=None):
     import fitz
     source_map, fonts, all_text = [], set(), []
     with fitz.open(file) as pdf:
         if not 1 <= len(pdf) <= 120: fail('page_limit')
+        destinations = pdf.resolve_names()
+        observed_images = 0
         for page in pdf:
             if abs(page.rect.width - 210 * 72 / 25.4) > 1 or abs(page.rect.height - 297 * 72 / 25.4) > 1: fail('layout_invalid')
             all_text.append(page.get_text(sort=True))
@@ -285,40 +312,43 @@ def inspect_pdf(file, value, book):
                 fonts.add(record[3])
                 if not any(name in record[3] for name in ['StudyAgentPrintSerif', 'StudyAgentPrintMath']): fail('font_invalid')
                 if not pdf.extract_font(record[0])[3]: fail('font_invalid')
-            for block in page.get_text('dict')['blocks']:
-                if block['type'] == 0:
-                    for line in block['lines']:
-                        for span in line['spans']:
-                            if '\ufffd' in span['text'] or '\x00' in span['text']: fail('missing_glyph')
-                            x0, y0, x1, y1 = span['bbox']
-                            if x0 < 40 or x1 > page.rect.width - 40 or y0 < 10 or y1 > page.rect.height - 10: fail('layout_invalid')
+            inspect_visual_bounds(page)
+            observed_images += len(page.get_image_info())
+        if expected_images is not None and observed_images < expected_images: fail('media_invalid')
         previous = (0, -1)
         for number, item in enumerate(value['items'], 1):
+            bookmark, end_bookmark = f'PaperItem{number:04d}', f'PaperEnd{number:04d}'
+            start, end = destinations.get(bookmark), destinations.get(end_bookmark)
+            if not start or not end or type(start.get('page')) is not int or type(end.get('page')) is not int or not 0 <= start['page'] <= end['page'] < len(pdf):
+                fail('source_map_invalid')
             found = []
-            for page_index, page in enumerate(pdf):
-                for block in page.get_text('dict')['blocks']:
+            page_index = start['page']; page = pdf[page_index]
+            for block in page.get_text('dict')['blocks']:
                     if block['type'] != 0: continue
                     for line in block['lines']:
                         label = ''.join(span['text'] for span in line['spans']).strip()
-                        if re.sub(r'\s+', '', label) == f'第{number}题' and any(abs(span['size'] - 14) < 0.1 for span in line['spans']):
+                        point = start.get('to')
+                        if point is None or len(point) != 2: fail('source_map_invalid')
+                        if re.sub(r'\s+', '', label) == f'第{number}题' and any(abs(span['size'] - 14) < 0.1 for span in line['spans']) and abs(line['bbox'][1] - (page.rect.height - point[1])) < 35:
                             found.append((page_index + 1, line['bbox'][1]))
             if len(found) != 1 or found[0] <= previous: fail('source_map_invalid')
             previous = found[0]
-            source_map.append({'itemId': item['id'], 'number': number, 'source': item['source'], 'startPage': found[0][0], 'bookmark': f'paper_item_{number:04d}'})
+            source_map.append({'itemId': item['id'], 'number': number, 'source': item['source'], 'startPage': found[0][0], 'endPage': end['page'] + 1,
+                               'bookmark': bookmark, 'endBookmark': end_bookmark, 'pdfDestinationName': bookmark})
+        if any(first['endPage'] > second['startPage'] for first, second in zip(source_map, source_map[1:])): fail('source_map_invalid')
         if value['title'] not in '\n'.join(all_text).replace('\n', ''): fail('source_map_invalid')
         return {'pageCount': len(pdf), 'sourceMap': source_map, 'fonts': sorted(fonts)}
 
 
 def render(args):
-    import importlib.metadata
-    for package, version in [('python-docx', '1.2.0'), ('lxml', '5.4.0'), ('fonttools', '4.58.0'), ('PyMuPDF', '1.26.6'), ('Pillow', '11.1.0')]:
-        if importlib.metadata.version(package) != version: fail('renderer_unavailable')
+    verify_dependencies()
+    verify_install(args.uno_python, args.soffice)
     workspace = Path(args.workspace).absolute(); no_links(workspace)
     if not workspace.is_dir(): fail('invalid_input')
     cancelled = workspace / 'cancelled'; no_links(cancelled)
     if cancelled.exists(): fail('cancelled')
     fonts = load_font_set(args.font_root)
-    value, parsed, media = load_input(args.input, args.input_sha256, workspace, fonts)
+    value, parsed, media = load_input(args.input, args.input_sha256, workspace, fonts, args.book)
     artifacts = workspace / ('artifacts-' + args.book); no_links(artifacts)
     artifacts.mkdir(exist_ok=False)
     docx, pdf = artifacts / (args.book + '.docx'), artifacts / (args.book + '.pdf')
@@ -326,9 +356,9 @@ def render(args):
     executable = Path(args.uno_python).absolute(); soffice = Path(args.soffice).absolute()
     if not executable.is_file() or not soffice.is_file(): fail('renderer_unavailable')
     # Only system runtime needs survive. Model secrets and DB credentials never pass through.
-    environment = {key: os.environ[key] for key in ['SystemRoot', 'WINDIR', 'TEMP', 'TMP', 'SYSTEMDRIVE', 'COMSPEC'] if key in os.environ}
-    command = [str(executable), str(Path(__file__).with_name('paper_export_office.py')), '--source', str(docx), '--source-sha256', digest,
-               '--destination', str(pdf), '--profile', str(artifacts / 'office-profile'), '--soffice', str(soffice), '--cancelled', str(cancelled)]
+    environment = minimal_environment()
+    command = [str(executable), '-B', '-X', 'pycache_prefix=' + str(artifacts / 'c'), str(Path(__file__).with_name('paper_export_office.py')), '--source', str(docx), '--source-sha256', digest,
+               '--destination', str(pdf), '--profile', str(artifacts / 'o'), '--soffice', str(soffice), '--cancelled', str(cancelled)]
     with (artifacts / 'office-worker.log').open('xb') as log:
         try:
             result = subprocess.run(command, cwd=workspace, env=environment, stdin=subprocess.DEVNULL, stdout=log, stderr=log,
@@ -337,7 +367,7 @@ def render(args):
     if cancelled.exists(): fail('cancelled')
     if result.returncode != 0:
         # Product errors are allowlisted, never raw Office messages or local paths.
-        allowed = {'paper_export_cancelled', 'paper_export_font_invalid', 'paper_export_unsupported_markup', 'paper_export_source_changed', 'paper_export_byte_limit', 'paper_export_renderer_unavailable'}
+        allowed = ERROR_CODES
         raw = (artifacts / 'office-worker.log').read_text(encoding='utf8', errors='replace')[-8192:]
         for line in reversed(raw.splitlines()):
             if line.startswith('PAPER_EXPORT_OFFICE '):
@@ -346,7 +376,11 @@ def render(args):
                 if code in allowed: raise ValueError(code)
         fail('render_failed')
     if sha256(docx.read_bytes()).hexdigest() != digest: fail('source_changed')
-    inspected = inspect_pdf(pdf, value, args.book)
+    expected_images = 0
+    for item, group in zip(value['items'], parsed):
+        parts = [item['promptHtml']] + [option['html'] for option in item['optionHtml']] if args.book == 'practice' else [part for part in (item['reference'] or {}).values() if part is not None]
+        expected_images += sum(sum(tag(node) == 'img' for node in group[part].iter()) for part in parts)
+    inspected = inspect_pdf(pdf, value, args.book, expected_images)
     files = []
     for format, file in [('docx', docx), ('pdf', pdf)]:
         data = file.read_bytes()
@@ -373,5 +407,5 @@ if __name__ == '__main__':
             no_links(private_log)
             with private_log.open('x', encoding='utf8') as stream: stream.write(traceback.format_exc()[-65536:])
         except (OSError, ValueError): pass
-        code = str(error) if isinstance(error, ValueError) and re.fullmatch(r'paper_export_[a-z_]{1,50}', str(error)) else 'paper_export_render_failed'
+        code = error_code(error)
         print('PAPER_EXPORT_RESULT ' + json.dumps({'protocol': RESULT_PROTOCOL, 'error': code})); raise SystemExit(1)

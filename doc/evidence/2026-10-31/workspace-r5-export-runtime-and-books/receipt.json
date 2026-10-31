@@ -1,0 +1,1905 @@
+{
+  "at": "2026-10-31T09:03:49.586Z",
+  "baseMain": "36a3c3384485f5339f2c3677d064302fdd1c09d7",
+  "scope": "Actual Windows same-device offline runtime reconstruction and synthetic per-book exports. Not a new-machine, application, teacher or physical-print claim.",
+  "acceptance": {
+    "scope": "Actual Windows same-device offline runtime reconstruction and synthetic per-book exports. Not a new-machine, application, teacher or physical-print claim.",
+    "baseMain": "36a3c3384485f5339f2c3677d064302fdd1c09d7",
+    "runtime": {
+      "protocol": "paper-export-capability-v1",
+      "available": true,
+      "reason": null,
+      "runtime": {
+        "officeVersion": "26.8.2.2",
+        "manifestSha256": "332efdeb4344e15eec827de966ff88491d7a0016abc993b72c06bb873a164814",
+        "filesChecked": 19417,
+        "bytesChecked": 1583065349,
+        "full": true
+      },
+      "dependencies": {
+        "python-docx": "1.2.0",
+        "lxml": "5.4.0",
+        "fonttools": "4.58.0",
+        "PyMuPDF": "1.26.6",
+        "Pillow": "11.1.0",
+        "typing_extensions": "4.15.0"
+      },
+      "fonts": [
+        {
+          "family": "StudyAgent Print Serif",
+          "sha256": "14d8632919bb46d64e6f258b754c4035f90d47458b7fb79818f636a6d9692ff9"
+        },
+        {
+          "family": "StudyAgent Print Math",
+          "sha256": "b73cea0ce4af6e3a10ba6cb3074a06b1875881a2e4a1ad8077723643248dadac"
+        }
+      ],
+      "selfTest": [
+        {
+          "format": "docx",
+          "sha256": "034e514805f6bf20cd8837cd9cbe322402e8f2dd004505b034a812e3820b5179",
+          "bytes": 9402016,
+          "pageCount": 1
+        },
+        {
+          "format": "pdf",
+          "sha256": "1e5ac729e2ce9ad2b25c0b4928e9a5b2f36c54615a5df3fcca685ad8328a9048",
+          "bytes": 30771,
+          "pageCount": 1
+        }
+      ]
+    },
+    "source": [
+      {
+        "path": "scripts/processing/paper_export_content.py",
+        "bytes": 16474,
+        "sha256": "0dab2cc9db96e13509faaf183d9364defc6ebce1cefc914500ab2e05af959576"
+      },
+      {
+        "path": "scripts/processing/paper_export_document.py",
+        "bytes": 25448,
+        "sha256": "0a2b5bc6f3140fa2236e03c2ede5b99235037ff002fe4776226cfdc96020adad"
+      },
+      {
+        "path": "scripts/processing/paper_export_fonts.py",
+        "bytes": 9924,
+        "sha256": "36b556f24d81d3380917b96d91e77e04efeed0b1bb3287d4b8211fb744a4bdd2"
+      },
+      {
+        "path": "scripts/processing/paper_export_math.py",
+        "bytes": 2464,
+        "sha256": "dca93ce7f8d93e1a6f8514e83b5434a3574d0a258d6df1e3b364670bd9e6f5ea"
+      },
+      {
+        "path": "scripts/processing/paper_export_office.py",
+        "bytes": 7989,
+        "sha256": "bffd7caeb20f86cf2a1f8ef133688969969c1518d5bdedc6c8214ae72d7744ea"
+      },
+      {
+        "path": "scripts/processing/paper_export_preflight.py",
+        "bytes": 1420,
+        "sha256": "4821a5e7c3f2b7d7d18c6594aea792d4e52ced6fe174db62ddbe58eb2bf6918e"
+      },
+      {
+        "path": "scripts/processing/paper_export_probe.py",
+        "bytes": 3439,
+        "sha256": "6aecaee2be4e2ce8394c5a3e2e9092d94b2cfc65ed72e7cdb1b4eb1387c9d192"
+      },
+      {
+        "path": "scripts/processing/paper_export_process.py",
+        "bytes": 6118,
+        "sha256": "e725c50aba1b12bef61b46f208e71129999ba1d33feb77d56ec21aab4ab37458"
+      },
+      {
+        "path": "scripts/processing/paper_export_protocol.py",
+        "bytes": 887,
+        "sha256": "e460baea3e024e5568ac841df10f5c31a3f86b3527c70e764d653a0ba8ff9adc"
+      },
+      {
+        "path": "scripts/processing/paper_export_runtime.py",
+        "bytes": 5331,
+        "sha256": "9d613e1c691ca8a7b56c7cc83d35eda321a3d1cc4a71f604b6d48752a930e170"
+      },
+      {
+        "path": "scripts/processing/requirements-paper-export.txt",
+        "bytes": 262,
+        "sha256": "2b87f8634d93dbdbc8410e525f8b95cfd6b9a3e819446f1f3cdbf6caf31df840"
+      },
+      {
+        "path": "scripts/processing/test_paper_export.py",
+        "bytes": 11477,
+        "sha256": "5cd54d60bb1b963bf3fe8e64aaebe42e5b2ee6b3313c017b77d8fd79e81ab364"
+      },
+      {
+        "path": "scripts/operations/setup-paper-export.ps1",
+        "bytes": 8102,
+        "sha256": "547250074eb1ab05e241a40550b277d742a85cdf377360253caa21c159205003"
+      },
+      {
+        "path": "resources/paper-export/libreoffice-26.8.2-win-x64.json.gz",
+        "bytes": 884692,
+        "sha256": "332efdeb4344e15eec827de966ff88491d7a0016abc993b72c06bb873a164814"
+      },
+      {
+        "path": "resources/paper-export/python310-win-wheels.json",
+        "bytes": 2522,
+        "sha256": "9a7c80e88e1b3e7bea8f0800b98bc928d14ccfd59ddb613b2db827f918871ddc"
+      },
+      {
+        "path": "resources/paper-export/requirements-win-py310.lock",
+        "bytes": 586,
+        "sha256": "932e3c49de5a68f3340482f9e495ec89e4feaa229cbf19c916f842befdab3a2d"
+      }
+    ],
+    "unit": {
+      "passed": 19,
+      "failed": 0,
+      "run": "unit-final.log"
+    },
+    "generation": {
+      "attempts": 6,
+      "expectedSuccesses": 4,
+      "expectedRejections": 2,
+      "unexpectedFailures": 0
+    },
+    "books": [
+      {
+        "case": "full",
+        "book": "practice",
+        "pages": 6,
+        "files": [
+          {
+            "book": "practice",
+            "format": "docx",
+            "path": "artifacts-practice/practice.docx",
+            "bytes": 9406333,
+            "sha256": "0e4e74cdeca24818b434be4fc9dd78d8658cd58532c206dc37fb6cd4ae8df4ac",
+            "pageCount": 6,
+            "sourceMap": [
+              {
+                "itemId": "item-1",
+                "number": 1,
+                "source": {
+                  "paperId": "synthetic-paper-a",
+                  "position": 2,
+                  "sourceQuestionId": "original-1",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷甲",
+                  "pageNumber": 1
+                },
+                "startPage": 1,
+                "endPage": 1,
+                "bookmark": "PaperItem0001",
+                "endBookmark": "PaperEnd0001",
+                "pdfDestinationName": "PaperItem0001"
+              },
+              {
+                "itemId": "item-2",
+                "number": 2,
+                "source": {
+                  "paperId": "synthetic-paper-a",
+                  "position": 4,
+                  "sourceQuestionId": "original-2",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷甲",
+                  "pageNumber": 2
+                },
+                "startPage": 1,
+                "endPage": 2,
+                "bookmark": "PaperItem0002",
+                "endBookmark": "PaperEnd0002",
+                "pdfDestinationName": "PaperItem0002"
+              },
+              {
+                "itemId": "item-3",
+                "number": 3,
+                "source": {
+                  "paperId": "synthetic-paper-a",
+                  "position": 6,
+                  "sourceQuestionId": "original-3",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷甲",
+                  "pageNumber": 3
+                },
+                "startPage": 2,
+                "endPage": 5,
+                "bookmark": "PaperItem0003",
+                "endBookmark": "PaperEnd0003",
+                "pdfDestinationName": "PaperItem0003"
+              },
+              {
+                "itemId": "item-4",
+                "number": 4,
+                "source": {
+                  "paperId": "synthetic-paper-b",
+                  "position": 8,
+                  "sourceQuestionId": "original-4",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷乙",
+                  "pageNumber": null
+                },
+                "startPage": 5,
+                "endPage": 6,
+                "bookmark": "PaperItem0004",
+                "endBookmark": "PaperEnd0004",
+                "pdfDestinationName": "PaperItem0004"
+              },
+              {
+                "itemId": "item-5",
+                "number": 5,
+                "source": {
+                  "paperId": "synthetic-paper-b",
+                  "position": 10,
+                  "sourceQuestionId": "original-5",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷乙",
+                  "pageNumber": null
+                },
+                "startPage": 6,
+                "endPage": 6,
+                "bookmark": "PaperItem0005",
+                "endBookmark": "PaperEnd0005",
+                "pdfDestinationName": "PaperItem0005"
+              }
+            ]
+          },
+          {
+            "book": "practice",
+            "format": "pdf",
+            "path": "artifacts-practice/practice.pdf",
+            "bytes": 150992,
+            "sha256": "666f188e7db5eb5b409d972d858448e725cebcd181f3ccbbb0ca98b588d1cd23",
+            "pageCount": 6,
+            "sourceMap": [
+              {
+                "itemId": "item-1",
+                "number": 1,
+                "source": {
+                  "paperId": "synthetic-paper-a",
+                  "position": 2,
+                  "sourceQuestionId": "original-1",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷甲",
+                  "pageNumber": 1
+                },
+                "startPage": 1,
+                "endPage": 1,
+                "bookmark": "PaperItem0001",
+                "endBookmark": "PaperEnd0001",
+                "pdfDestinationName": "PaperItem0001"
+              },
+              {
+                "itemId": "item-2",
+                "number": 2,
+                "source": {
+                  "paperId": "synthetic-paper-a",
+                  "position": 4,
+                  "sourceQuestionId": "original-2",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷甲",
+                  "pageNumber": 2
+                },
+                "startPage": 1,
+                "endPage": 2,
+                "bookmark": "PaperItem0002",
+                "endBookmark": "PaperEnd0002",
+                "pdfDestinationName": "PaperItem0002"
+              },
+              {
+                "itemId": "item-3",
+                "number": 3,
+                "source": {
+                  "paperId": "synthetic-paper-a",
+                  "position": 6,
+                  "sourceQuestionId": "original-3",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷甲",
+                  "pageNumber": 3
+                },
+                "startPage": 2,
+                "endPage": 5,
+                "bookmark": "PaperItem0003",
+                "endBookmark": "PaperEnd0003",
+                "pdfDestinationName": "PaperItem0003"
+              },
+              {
+                "itemId": "item-4",
+                "number": 4,
+                "source": {
+                  "paperId": "synthetic-paper-b",
+                  "position": 8,
+                  "sourceQuestionId": "original-4",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷乙",
+                  "pageNumber": null
+                },
+                "startPage": 5,
+                "endPage": 6,
+                "bookmark": "PaperItem0004",
+                "endBookmark": "PaperEnd0004",
+                "pdfDestinationName": "PaperItem0004"
+              },
+              {
+                "itemId": "item-5",
+                "number": 5,
+                "source": {
+                  "paperId": "synthetic-paper-b",
+                  "position": 10,
+                  "sourceQuestionId": "original-5",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷乙",
+                  "pageNumber": null
+                },
+                "startPage": 6,
+                "endPage": 6,
+                "bookmark": "PaperItem0005",
+                "endBookmark": "PaperEnd0005",
+                "pdfDestinationName": "PaperItem0005"
+              }
+            ]
+          }
+        ],
+        "pdfFonts": [
+          "BAAAAA+StudyAgentPrintSerif-Regular",
+          "CAAAAA+StudyAgentPrintSerif-Regular",
+          "DAAAAA+StudyAgentPrintSerif-Regular",
+          "EAAAAA+StudyAgentPrintSerif-Regular",
+          "FAAAAA+StudyAgentPrintMath-Regular",
+          "GAAAAA+StudyAgentPrintSerif-Regular"
+        ],
+        "sourceDocxUnchangedAfterIndependentRender": true,
+        "allProductionPagesOpened": true
+      },
+      {
+        "case": "full",
+        "book": "answers",
+        "pages": 2,
+        "files": [
+          {
+            "book": "answers",
+            "format": "docx",
+            "path": "artifacts-answers/answers.docx",
+            "bytes": 9402214,
+            "sha256": "6cd827229eabff33bd81bed86a3c5a38f2c9aa3b4fdba5c331fd9d3da6429199",
+            "pageCount": 2,
+            "sourceMap": [
+              {
+                "itemId": "item-1",
+                "number": 1,
+                "source": {
+                  "paperId": "synthetic-paper-a",
+                  "position": 2,
+                  "sourceQuestionId": "original-1",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷甲",
+                  "pageNumber": 1
+                },
+                "startPage": 1,
+                "endPage": 1,
+                "bookmark": "PaperItem0001",
+                "endBookmark": "PaperEnd0001",
+                "pdfDestinationName": "PaperItem0001"
+              },
+              {
+                "itemId": "item-2",
+                "number": 2,
+                "source": {
+                  "paperId": "synthetic-paper-a",
+                  "position": 4,
+                  "sourceQuestionId": "original-2",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷甲",
+                  "pageNumber": 2
+                },
+                "startPage": 1,
+                "endPage": 1,
+                "bookmark": "PaperItem0002",
+                "endBookmark": "PaperEnd0002",
+                "pdfDestinationName": "PaperItem0002"
+              },
+              {
+                "itemId": "item-3",
+                "number": 3,
+                "source": {
+                  "paperId": "synthetic-paper-a",
+                  "position": 6,
+                  "sourceQuestionId": "original-3",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷甲",
+                  "pageNumber": 3
+                },
+                "startPage": 1,
+                "endPage": 1,
+                "bookmark": "PaperItem0003",
+                "endBookmark": "PaperEnd0003",
+                "pdfDestinationName": "PaperItem0003"
+              },
+              {
+                "itemId": "item-4",
+                "number": 4,
+                "source": {
+                  "paperId": "synthetic-paper-b",
+                  "position": 8,
+                  "sourceQuestionId": "original-4",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷乙",
+                  "pageNumber": null
+                },
+                "startPage": 2,
+                "endPage": 2,
+                "bookmark": "PaperItem0004",
+                "endBookmark": "PaperEnd0004",
+                "pdfDestinationName": "PaperItem0004"
+              },
+              {
+                "itemId": "item-5",
+                "number": 5,
+                "source": {
+                  "paperId": "synthetic-paper-b",
+                  "position": 10,
+                  "sourceQuestionId": "original-5",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷乙",
+                  "pageNumber": null
+                },
+                "startPage": 2,
+                "endPage": 2,
+                "bookmark": "PaperItem0005",
+                "endBookmark": "PaperEnd0005",
+                "pdfDestinationName": "PaperItem0005"
+              }
+            ]
+          },
+          {
+            "book": "answers",
+            "format": "pdf",
+            "path": "artifacts-answers/answers.pdf",
+            "bytes": 44236,
+            "sha256": "0da22f6ebf6652bf2e5b25c368e33125d7aea5d2b566da64bd2b359a6751bc33",
+            "pageCount": 2,
+            "sourceMap": [
+              {
+                "itemId": "item-1",
+                "number": 1,
+                "source": {
+                  "paperId": "synthetic-paper-a",
+                  "position": 2,
+                  "sourceQuestionId": "original-1",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷甲",
+                  "pageNumber": 1
+                },
+                "startPage": 1,
+                "endPage": 1,
+                "bookmark": "PaperItem0001",
+                "endBookmark": "PaperEnd0001",
+                "pdfDestinationName": "PaperItem0001"
+              },
+              {
+                "itemId": "item-2",
+                "number": 2,
+                "source": {
+                  "paperId": "synthetic-paper-a",
+                  "position": 4,
+                  "sourceQuestionId": "original-2",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷甲",
+                  "pageNumber": 2
+                },
+                "startPage": 1,
+                "endPage": 1,
+                "bookmark": "PaperItem0002",
+                "endBookmark": "PaperEnd0002",
+                "pdfDestinationName": "PaperItem0002"
+              },
+              {
+                "itemId": "item-3",
+                "number": 3,
+                "source": {
+                  "paperId": "synthetic-paper-a",
+                  "position": 6,
+                  "sourceQuestionId": "original-3",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷甲",
+                  "pageNumber": 3
+                },
+                "startPage": 1,
+                "endPage": 1,
+                "bookmark": "PaperItem0003",
+                "endBookmark": "PaperEnd0003",
+                "pdfDestinationName": "PaperItem0003"
+              },
+              {
+                "itemId": "item-4",
+                "number": 4,
+                "source": {
+                  "paperId": "synthetic-paper-b",
+                  "position": 8,
+                  "sourceQuestionId": "original-4",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷乙",
+                  "pageNumber": null
+                },
+                "startPage": 2,
+                "endPage": 2,
+                "bookmark": "PaperItem0004",
+                "endBookmark": "PaperEnd0004",
+                "pdfDestinationName": "PaperItem0004"
+              },
+              {
+                "itemId": "item-5",
+                "number": 5,
+                "source": {
+                  "paperId": "synthetic-paper-b",
+                  "position": 10,
+                  "sourceQuestionId": "original-5",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷乙",
+                  "pageNumber": null
+                },
+                "startPage": 2,
+                "endPage": 2,
+                "bookmark": "PaperItem0005",
+                "endBookmark": "PaperEnd0005",
+                "pdfDestinationName": "PaperItem0005"
+              }
+            ]
+          }
+        ],
+        "pdfFonts": [
+          "BAAAAA+StudyAgentPrintSerif-Regular",
+          "CAAAAA+StudyAgentPrintSerif-Regular",
+          "DAAAAA+StudyAgentPrintSerif-Regular",
+          "EAAAAA+StudyAgentPrintSerif-Regular"
+        ],
+        "sourceDocxUnchangedAfterIndependentRender": true,
+        "allProductionPagesOpened": true
+      },
+      {
+        "case": "unsupported-reference",
+        "book": "practice",
+        "pages": 1,
+        "files": [
+          {
+            "book": "practice",
+            "format": "docx",
+            "path": "artifacts-practice/practice.docx",
+            "bytes": 9402338,
+            "sha256": "c48f02327be7c14d5c4ee13c91f8a7c59f5b6f927083c617cacd04e34bd21bc0",
+            "pageCount": 1,
+            "sourceMap": [
+              {
+                "itemId": "item-1",
+                "number": 1,
+                "source": {
+                  "paperId": "synthetic-paper-a",
+                  "position": 2,
+                  "sourceQuestionId": "original-1",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷甲",
+                  "pageNumber": 1
+                },
+                "startPage": 1,
+                "endPage": 1,
+                "bookmark": "PaperItem0001",
+                "endBookmark": "PaperEnd0001",
+                "pdfDestinationName": "PaperItem0001"
+              }
+            ]
+          },
+          {
+            "book": "practice",
+            "format": "pdf",
+            "path": "artifacts-practice/practice.pdf",
+            "bytes": 40562,
+            "sha256": "7b3f5a4a3019c533aaa9be9fbe0b805f6937704a847263e4ca1079a9faccfabc",
+            "pageCount": 1,
+            "sourceMap": [
+              {
+                "itemId": "item-1",
+                "number": 1,
+                "source": {
+                  "paperId": "synthetic-paper-a",
+                  "position": 2,
+                  "sourceQuestionId": "original-1",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷甲",
+                  "pageNumber": 1
+                },
+                "startPage": 1,
+                "endPage": 1,
+                "bookmark": "PaperItem0001",
+                "endBookmark": "PaperEnd0001",
+                "pdfDestinationName": "PaperItem0001"
+              }
+            ]
+          }
+        ],
+        "pdfFonts": [
+          "BAAAAA+StudyAgentPrintSerif-Regular",
+          "CAAAAA+StudyAgentPrintSerif-Regular",
+          "DAAAAA+StudyAgentPrintSerif-Regular",
+          "EAAAAA+StudyAgentPrintSerif-Regular",
+          "FAAAAA+StudyAgentPrintMath-Regular",
+          "GAAAAA+StudyAgentPrintSerif-Regular"
+        ],
+        "sourceDocxUnchangedAfterIndependentRender": null,
+        "allProductionPagesOpened": true
+      },
+      {
+        "case": "unsupported-question",
+        "book": "answers",
+        "pages": 1,
+        "files": [
+          {
+            "book": "answers",
+            "format": "docx",
+            "path": "artifacts-answers/answers.docx",
+            "bytes": 9401982,
+            "sha256": "2e49fd5fdd02226b595253b8c09937b29e21291684644f2fddcb3e060986dedf",
+            "pageCount": 1,
+            "sourceMap": [
+              {
+                "itemId": "item-1",
+                "number": 1,
+                "source": {
+                  "paperId": "synthetic-paper-a",
+                  "position": 2,
+                  "sourceQuestionId": "original-1",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷甲",
+                  "pageNumber": 1
+                },
+                "startPage": 1,
+                "endPage": 1,
+                "bookmark": "PaperItem0001",
+                "endBookmark": "PaperEnd0001",
+                "pdfDestinationName": "PaperItem0001"
+              }
+            ]
+          },
+          {
+            "book": "answers",
+            "format": "pdf",
+            "path": "artifacts-answers/answers.pdf",
+            "bytes": 30470,
+            "sha256": "0511713546d96dd500cf3d63bb8e026b2981955661cf406d1a3e64ba134c21b3",
+            "pageCount": 1,
+            "sourceMap": [
+              {
+                "itemId": "item-1",
+                "number": 1,
+                "source": {
+                  "paperId": "synthetic-paper-a",
+                  "position": 2,
+                  "sourceQuestionId": "original-1",
+                  "detailSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "publicationVersion": "synthetic-v1",
+                  "paperTitle": "自建合成题卷甲",
+                  "pageNumber": 1
+                },
+                "startPage": 1,
+                "endPage": 1,
+                "bookmark": "PaperItem0001",
+                "endBookmark": "PaperEnd0001",
+                "pdfDestinationName": "PaperItem0001"
+              }
+            ]
+          }
+        ],
+        "pdfFonts": [
+          "BAAAAA+StudyAgentPrintSerif-Regular",
+          "CAAAAA+StudyAgentPrintSerif-Regular",
+          "DAAAAA+StudyAgentPrintSerif-Regular",
+          "EAAAAA+StudyAgentPrintSerif-Regular"
+        ],
+        "sourceDocxUnchangedAfterIndependentRender": null,
+        "allProductionPagesOpened": true
+      }
+    ],
+    "boundaries": {
+      "passed": 7,
+      "failed": 0,
+      "cases": [
+        {
+          "case": "actual-critical-files",
+          "passed": true
+        },
+        {
+          "case": "actual-corrupt-binary",
+          "passed": true,
+          "noBinaryExecuted": true
+        },
+        {
+          "case": "actual-missing-binary",
+          "passed": true,
+          "noBinaryExecuted": true
+        },
+        {
+          "case": "real-python-with-site-disabled",
+          "passed": true,
+          "result": {
+            "protocol": "paper-export-capability-v1",
+            "available": false,
+            "reason": "paper_export_dependency_missing"
+          },
+          "noOutputCreated": true
+        },
+        {
+          "case": "setup-existing",
+          "passed": true,
+          "reason": "paper_export_output_exists",
+          "installedConfigUnchanged": true
+        },
+        {
+          "case": "setup-outside-data",
+          "passed": true,
+          "reason": "paper_export_invalid_input",
+          "installedConfigUnchanged": true
+        },
+        {
+          "case": "actual-office-profile-path-limit",
+          "passed": true,
+          "result": {
+            "protocol": "paper-export-office-v1",
+            "error": "paper_export_path_limit"
+          },
+          "noOfficeProfileOrArtifactCreated": true
+        }
+      ]
+    },
+    "preflightCli": {
+      "passed": 3,
+      "failed": 0,
+      "cases": [
+        {
+          "case": "full",
+          "exit": 0,
+          "result": {
+            "protocol": "paper-export-preflight-v1",
+            "inputSha256": "48bc48b5616315be3dc85a3f76322989b83769a526756d7aba9d728f1d9163a7",
+            "books": {
+              "practice": {
+                "available": true,
+                "reason": null,
+                "items": 5,
+                "media": 1
+              },
+              "answers": {
+                "available": true,
+                "reason": null,
+                "items": 5,
+                "media": 0
+              }
+            }
+          },
+          "inputAndFilesUnchanged": true
+        },
+        {
+          "case": "unsupported-reference",
+          "exit": 0,
+          "result": {
+            "protocol": "paper-export-preflight-v1",
+            "inputSha256": "523c0529976a005b0fe2e15cefa674e90a97620a6dcc488e6f73e8abb3347c81",
+            "books": {
+              "practice": {
+                "available": true,
+                "reason": null,
+                "items": 1,
+                "media": 0
+              },
+              "answers": {
+                "available": false,
+                "reason": "paper_export_unsupported_markup",
+                "items": null,
+                "media": null
+              }
+            }
+          },
+          "inputAndFilesUnchanged": true
+        },
+        {
+          "case": "unsupported-question",
+          "exit": 0,
+          "result": {
+            "protocol": "paper-export-preflight-v1",
+            "inputSha256": "8160d607811e64bd8126ba09b9d29bd106e08d2c02e28e35486e0e77ba668e33",
+            "books": {
+              "practice": {
+                "available": false,
+                "reason": "paper_export_unsupported_markup",
+                "items": null,
+                "media": null
+              },
+              "answers": {
+                "available": true,
+                "reason": null,
+                "items": 1,
+                "media": 0
+              }
+            }
+          },
+          "inputAndFilesUnchanged": true
+        }
+      ]
+    },
+    "allCanonicalBasePagesOpened": true,
+    "failuresRetained": [
+      "Initial PowerShell comment parse failure before any setup writes",
+      "First rebuilt runtime rejected because cleared architecture env hid platform.machine; compiled interpreter target fixes it",
+      "First actual export rejected image right-margin bleed caused by implicit DrawingML distances; explicit zero distances fixes actual placement",
+      "Second actual sequence hit Office profile MAX_PATH backend; long/short same-source A/B and a second long failure retained; short profile plus prelaunch UTF16 path guard fixes it",
+      "Full health recheck refused two crash dumps generated by known failed startups. Exact dumps preserved privately with SHA, not ignored or published; subsequent full verification passes",
+      "Two native conditional continuation-header probes rendered 1335 instead of correct labels. Never integrated; long prose continuation remains incomplete"
+    ],
+    "applicationExportImplemented": false,
+    "schema32Registered": false,
+    "newMachineVerified": false,
+    "physicalPrintVerified": false,
+    "teacherReviewCompleted": false,
+    "wholeGoal": "active"
+  },
+  "integration": {
+    "at": "2026-10-31T09:01:01.446Z",
+    "baseMain": "36a3c3384485f5339f2c3677d064302fdd1c09d7",
+    "changes": [
+      {
+        "path": "scripts/processing/paper_export_content.py",
+        "bytes": 16474,
+        "sha256": "0dab2cc9db96e13509faaf183d9364defc6ebce1cefc914500ab2e05af959576",
+        "previousSha256": "94d7ff6b3a535f17e806cda9067003964546b8c000f1f5a0d900c8bd5de54fd3"
+      },
+      {
+        "path": "scripts/processing/paper_export_document.py",
+        "bytes": 25448,
+        "sha256": "0a2b5bc6f3140fa2236e03c2ede5b99235037ff002fe4776226cfdc96020adad",
+        "previousSha256": "60bebbd1ba8dc3a2dd2a0e38496ce41a872f08e5805d7ab64dda5094a6b0e1f7"
+      },
+      {
+        "path": "scripts/processing/paper_export_office.py",
+        "bytes": 7989,
+        "sha256": "bffd7caeb20f86cf2a1f8ef133688969969c1518d5bdedc6c8214ae72d7744ea",
+        "previousSha256": "03d02e23fd7eb8587fbef58b61b4b73525e5a77699646af3b12f5965396e25c2"
+      },
+      {
+        "path": "scripts/processing/paper_export_preflight.py",
+        "bytes": 1420,
+        "sha256": "4821a5e7c3f2b7d7d18c6594aea792d4e52ced6fe174db62ddbe58eb2bf6918e",
+        "previousSha256": null
+      },
+      {
+        "path": "scripts/processing/paper_export_probe.py",
+        "bytes": 3439,
+        "sha256": "6aecaee2be4e2ce8394c5a3e2e9092d94b2cfc65ed72e7cdb1b4eb1387c9d192",
+        "previousSha256": null
+      },
+      {
+        "path": "scripts/processing/paper_export_protocol.py",
+        "bytes": 887,
+        "sha256": "e460baea3e024e5568ac841df10f5c31a3f86b3527c70e764d653a0ba8ff9adc",
+        "previousSha256": null
+      },
+      {
+        "path": "scripts/processing/paper_export_runtime.py",
+        "bytes": 5331,
+        "sha256": "9d613e1c691ca8a7b56c7cc83d35eda321a3d1cc4a71f604b6d48752a930e170",
+        "previousSha256": null
+      },
+      {
+        "path": "scripts/processing/requirements-paper-export.txt",
+        "bytes": 262,
+        "sha256": "2b87f8634d93dbdbc8410e525f8b95cfd6b9a3e819446f1f3cdbf6caf31df840",
+        "previousSha256": "7d5522f062ab1900982a387b69d94aaf623fd944cfc447487364c13b9f49d802"
+      },
+      {
+        "path": "scripts/processing/test_paper_export.py",
+        "bytes": 11477,
+        "sha256": "5cd54d60bb1b963bf3fe8e64aaebe42e5b2ee6b3313c017b77d8fd79e81ab364",
+        "previousSha256": "b67fbf3336bee6b228603526478a9be27a11785217b630143fa4269bb13dfae1"
+      },
+      {
+        "path": "scripts/operations/setup-paper-export.ps1",
+        "bytes": 8102,
+        "sha256": "547250074eb1ab05e241a40550b277d742a85cdf377360253caa21c159205003",
+        "previousSha256": null
+      },
+      {
+        "path": "resources/paper-export/libreoffice-26.8.2-win-x64.json.gz",
+        "bytes": 884692,
+        "sha256": "332efdeb4344e15eec827de966ff88491d7a0016abc993b72c06bb873a164814",
+        "previousSha256": null
+      },
+      {
+        "path": "resources/paper-export/python310-win-wheels.json",
+        "bytes": 2522,
+        "sha256": "9a7c80e88e1b3e7bea8f0800b98bc928d14ccfd59ddb613b2db827f918871ddc",
+        "previousSha256": null
+      },
+      {
+        "path": "resources/paper-export/requirements-win-py310.lock",
+        "bytes": 586,
+        "sha256": "932e3c49de5a68f3340482f9e495ec89e4feaa229cbf19c916f842befdab3a2d",
+        "previousSha256": null
+      }
+    ],
+    "unchanged": [
+      {
+        "path": "scripts/processing/paper_export_fonts.py",
+        "bytes": 9924,
+        "sha256": "36b556f24d81d3380917b96d91e77e04efeed0b1bb3287d4b8211fb744a4bdd2"
+      },
+      {
+        "path": "scripts/processing/paper_export_math.py",
+        "bytes": 2464,
+        "sha256": "dca93ce7f8d93e1a6f8514e83b5434a3574d0a258d6df1e3b364670bd9e6f5ea"
+      },
+      {
+        "path": "scripts/processing/paper_export_process.py",
+        "bytes": 6118,
+        "sha256": "e725c50aba1b12bef61b46f208e71129999ba1d33feb77d56ec21aab4ab37458"
+      }
+    ],
+    "formalReadOnly": {
+      "schema": 24,
+      "revision": 187
+    },
+    "protectedFiles": 1063,
+    "allProtectedUnchanged": true,
+    "applicationExportImplemented": false,
+    "schema32Registered": false,
+    "goal": "active"
+  },
+  "mainUnit": {
+    "exit": 0,
+    "passed": 19,
+    "failed": 0
+  },
+  "formalReadOnly": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFiles": 1063,
+  "allProtectedUnchanged": true,
+  "originalEvidenceGaps": [
+    "Initial delivery-inventory checker also selected the unrelated restored-paper-captures operation and failed its expected count; corrected explicit feature filter retains that source unchanged.",
+    "Raw administrative MSI logs, crash dump memory, standalone Office binaries, wheels and branch DOCX originals remain in ignored local QA/tool directories. Public archive retains hashes, bounded setup reports and the exact final base books.",
+    "Final health probe first refused the two known generated crash dumps. After exact SHA inventory and preservation outside the tool root, a new complete probe passed. No unknown files were deleted or ignored."
+  ],
+  "applicationExportImplemented": false,
+  "schema32Registered": false,
+  "newMachineVerified": false,
+  "physicalPrintVerified": false,
+  "teacherReviewCompleted": false,
+  "wholeGoal": "active",
+  "artifacts": [
+    {
+      "path": "source/scripts/processing/paper_export_content.py",
+      "bytes": 16474,
+      "sha256": "0dab2cc9db96e13509faaf183d9364defc6ebce1cefc914500ab2e05af959576",
+      "originalSha256": "0dab2cc9db96e13509faaf183d9364defc6ebce1cefc914500ab2e05af959576"
+    },
+    {
+      "path": "source/scripts/processing/paper_export_document.py",
+      "bytes": 25448,
+      "sha256": "0a2b5bc6f3140fa2236e03c2ede5b99235037ff002fe4776226cfdc96020adad",
+      "originalSha256": "0a2b5bc6f3140fa2236e03c2ede5b99235037ff002fe4776226cfdc96020adad"
+    },
+    {
+      "path": "source/scripts/processing/paper_export_fonts.py",
+      "bytes": 9924,
+      "sha256": "36b556f24d81d3380917b96d91e77e04efeed0b1bb3287d4b8211fb744a4bdd2",
+      "originalSha256": "36b556f24d81d3380917b96d91e77e04efeed0b1bb3287d4b8211fb744a4bdd2"
+    },
+    {
+      "path": "source/scripts/processing/paper_export_math.py",
+      "bytes": 2464,
+      "sha256": "dca93ce7f8d93e1a6f8514e83b5434a3574d0a258d6df1e3b364670bd9e6f5ea",
+      "originalSha256": "dca93ce7f8d93e1a6f8514e83b5434a3574d0a258d6df1e3b364670bd9e6f5ea"
+    },
+    {
+      "path": "source/scripts/processing/paper_export_office.py",
+      "bytes": 7989,
+      "sha256": "bffd7caeb20f86cf2a1f8ef133688969969c1518d5bdedc6c8214ae72d7744ea",
+      "originalSha256": "bffd7caeb20f86cf2a1f8ef133688969969c1518d5bdedc6c8214ae72d7744ea"
+    },
+    {
+      "path": "source/scripts/processing/paper_export_preflight.py",
+      "bytes": 1420,
+      "sha256": "4821a5e7c3f2b7d7d18c6594aea792d4e52ced6fe174db62ddbe58eb2bf6918e",
+      "originalSha256": "4821a5e7c3f2b7d7d18c6594aea792d4e52ced6fe174db62ddbe58eb2bf6918e"
+    },
+    {
+      "path": "source/scripts/processing/paper_export_probe.py",
+      "bytes": 3439,
+      "sha256": "6aecaee2be4e2ce8394c5a3e2e9092d94b2cfc65ed72e7cdb1b4eb1387c9d192",
+      "originalSha256": "6aecaee2be4e2ce8394c5a3e2e9092d94b2cfc65ed72e7cdb1b4eb1387c9d192"
+    },
+    {
+      "path": "source/scripts/processing/paper_export_process.py",
+      "bytes": 6118,
+      "sha256": "e725c50aba1b12bef61b46f208e71129999ba1d33feb77d56ec21aab4ab37458",
+      "originalSha256": "e725c50aba1b12bef61b46f208e71129999ba1d33feb77d56ec21aab4ab37458"
+    },
+    {
+      "path": "source/scripts/processing/paper_export_protocol.py",
+      "bytes": 887,
+      "sha256": "e460baea3e024e5568ac841df10f5c31a3f86b3527c70e764d653a0ba8ff9adc",
+      "originalSha256": "e460baea3e024e5568ac841df10f5c31a3f86b3527c70e764d653a0ba8ff9adc"
+    },
+    {
+      "path": "source/scripts/processing/paper_export_runtime.py",
+      "bytes": 5331,
+      "sha256": "9d613e1c691ca8a7b56c7cc83d35eda321a3d1cc4a71f604b6d48752a930e170",
+      "originalSha256": "9d613e1c691ca8a7b56c7cc83d35eda321a3d1cc4a71f604b6d48752a930e170"
+    },
+    {
+      "path": "source/scripts/processing/requirements-paper-export.txt",
+      "bytes": 262,
+      "sha256": "2b87f8634d93dbdbc8410e525f8b95cfd6b9a3e819446f1f3cdbf6caf31df840",
+      "originalSha256": "2b87f8634d93dbdbc8410e525f8b95cfd6b9a3e819446f1f3cdbf6caf31df840"
+    },
+    {
+      "path": "source/scripts/processing/test_paper_export.py",
+      "bytes": 11477,
+      "sha256": "5cd54d60bb1b963bf3fe8e64aaebe42e5b2ee6b3313c017b77d8fd79e81ab364",
+      "originalSha256": "5cd54d60bb1b963bf3fe8e64aaebe42e5b2ee6b3313c017b77d8fd79e81ab364"
+    },
+    {
+      "path": "source/scripts/operations/setup-paper-export.ps1",
+      "bytes": 8102,
+      "sha256": "547250074eb1ab05e241a40550b277d742a85cdf377360253caa21c159205003",
+      "originalSha256": "547250074eb1ab05e241a40550b277d742a85cdf377360253caa21c159205003"
+    },
+    {
+      "path": "source/resources/paper-export/libreoffice-26.8.2-win-x64.json.gz",
+      "bytes": 884692,
+      "sha256": "332efdeb4344e15eec827de966ff88491d7a0016abc993b72c06bb873a164814",
+      "originalSha256": "332efdeb4344e15eec827de966ff88491d7a0016abc993b72c06bb873a164814"
+    },
+    {
+      "path": "source/resources/paper-export/python310-win-wheels.json",
+      "bytes": 2522,
+      "sha256": "9a7c80e88e1b3e7bea8f0800b98bc928d14ccfd59ddb613b2db827f918871ddc",
+      "originalSha256": "9a7c80e88e1b3e7bea8f0800b98bc928d14ccfd59ddb613b2db827f918871ddc"
+    },
+    {
+      "path": "source/resources/paper-export/requirements-win-py310.lock",
+      "bytes": 586,
+      "sha256": "932e3c49de5a68f3340482f9e495ec89e4feaa229cbf19c916f842befdab3a2d",
+      "originalSha256": "932e3c49de5a68f3340482f9e495ec89e4feaa229cbf19c916f842befdab3a2d"
+    },
+    {
+      "path": "verification-source/prepare-office-catalog-first.py",
+      "bytes": 2125,
+      "sha256": "9f158f5c684dd276d8f0284cf11b4bfe589fec6a438fadddabfb84140d0c77c8",
+      "originalSha256": "9f158f5c684dd276d8f0284cf11b4bfe589fec6a438fadddabfb84140d0c77c8"
+    },
+    {
+      "path": "verification-source/prepare-python-wheels-first.py",
+      "bytes": 2052,
+      "sha256": "370aef02011e2ec44b591f7fda5821608c9150c5f2c899801b519dd5ab44f33e",
+      "originalSha256": "370aef02011e2ec44b591f7fda5821608c9150c5f2c899801b519dd5ab44f33e"
+    },
+    {
+      "path": "verification-source/verify-runtime-and-books-first.py",
+      "bytes": 4011,
+      "sha256": "adbf6228933a918697afda5dad533f6db07ae464badf13f5fbec9446c5cb1c51",
+      "originalSha256": "adbf6228933a918697afda5dad533f6db07ae464badf13f5fbec9446c5cb1c51"
+    },
+    {
+      "path": "verification-source/verify-runtime-and-books-second.py",
+      "bytes": 4012,
+      "sha256": "18a1294daa41a02cee264ce19fdef90faf383549d9d04e663107e3bcd0265aef",
+      "originalSha256": "18a1294daa41a02cee264ce19fdef90faf383549d9d04e663107e3bcd0265aef"
+    },
+    {
+      "path": "verification-source/verify-runtime-and-books-third.py",
+      "bytes": 4011,
+      "sha256": "696ff5ce014e9a2d32cb2ff24cffc8239ee76fc24d689f4a802b18778d2f9798",
+      "originalSha256": "696ff5ce014e9a2d32cb2ff24cffc8239ee76fc24d689f4a802b18778d2f9798"
+    },
+    {
+      "path": "verification-source/verify-runtime-boundaries-first.py",
+      "bytes": 3502,
+      "sha256": "21e66047561dd258102edacbbf7312e55ee648201b1379c2b1cee927c4a224e9",
+      "originalSha256": "21e66047561dd258102edacbbf7312e55ee648201b1379c2b1cee927c4a224e9"
+    },
+    {
+      "path": "verification-source/verify-runtime-boundaries-second.py",
+      "bytes": 4467,
+      "sha256": "36faa207ee7708d04c8b79f21bca4f372ce8270d87703e7c75d6b835320c2548",
+      "originalSha256": "36faa207ee7708d04c8b79f21bca4f372ce8270d87703e7c75d6b835320c2548"
+    },
+    {
+      "path": "verification-source/verify-delivery-first.py",
+      "bytes": 5226,
+      "sha256": "bf44b80fac0060abd197b6d02210726aa392563f1b1a7b966ee45d01b13365dd",
+      "originalSha256": "bf44b80fac0060abd197b6d02210726aa392563f1b1a7b966ee45d01b13365dd"
+    },
+    {
+      "path": "verification-source/verify-delivery-second.py",
+      "bytes": 5301,
+      "sha256": "cb59701f6da892f50897e3161f7958093ea5afa0dea836d9ab9daa025eb89e1c",
+      "originalSha256": "cb59701f6da892f50897e3161f7958093ea5afa0dea836d9ab9daa025eb89e1c"
+    },
+    {
+      "path": "verification-source/probe-native-continuations-first.py",
+      "bytes": 4410,
+      "sha256": "ec653767095e4e4acad2cf281e3fafd5954d7c2e440275038b2a1c98be9bf74a",
+      "originalSha256": "ec653767095e4e4acad2cf281e3fafd5954d7c2e440275038b2a1c98be9bf74a"
+    },
+    {
+      "path": "verification-source/probe-native-continuations-second.py",
+      "bytes": 4489,
+      "sha256": "877ceba5d84c12e2b81f03aca633e2bc3a73ae5b0892d5b09f88cf37e8195eb1",
+      "originalSha256": "877ceba5d84c12e2b81f03aca633e2bc3a73ae5b0892d5b09f88cf37e8195eb1"
+    },
+    {
+      "path": "verification-source/office-field-export-first.py",
+      "bytes": 7668,
+      "sha256": "4277267b1f2d63ac47ff84cd38494d0a7c48d9001b8a9b9902e0313092eba957",
+      "originalSha256": "4277267b1f2d63ac47ff84cd38494d0a7c48d9001b8a9b9902e0313092eba957"
+    },
+    {
+      "path": "verification-source/office-field-export-second.py",
+      "bytes": 7668,
+      "sha256": "4277267b1f2d63ac47ff84cd38494d0a7c48d9001b8a9b9902e0313092eba957",
+      "originalSha256": "4277267b1f2d63ac47ff84cd38494d0a7c48d9001b8a9b9902e0313092eba957"
+    },
+    {
+      "path": "verification-source/setup-paper-export-first.ps1",
+      "bytes": 8029,
+      "sha256": "aade3515ab4659132a5d45d215183f0e55a21d9c175f34c49d4229230ffdd447",
+      "originalSha256": "aade3515ab4659132a5d45d215183f0e55a21d9c175f34c49d4229230ffdd447"
+    },
+    {
+      "path": "verification-source/integrate-runtime-first.cjs",
+      "bytes": 3158,
+      "sha256": "2763a28125910682ee0eb51a51250daace5b182fa71c526b00013c6f5cd37a19",
+      "originalSha256": "2763a28125910682ee0eb51a51250daace5b182fa71c526b00013c6f5cd37a19"
+    },
+    {
+      "path": "verification-source/archive-runtime-first.cjs",
+      "bytes": 10050,
+      "sha256": "21a4c6df0392a81c8fa403bc3d0fe9afef75a25c9057e6dc3ca665997dbf12ab",
+      "originalSha256": "21a4c6df0392a81c8fa403bc3d0fe9afef75a25c9057e6dc3ca665997dbf12ab"
+    },
+    {
+      "path": "reports/source-before-first.json.gz",
+      "bytes": 20378,
+      "sha256": "e336828b8dd2fe98eb7705de65650b8819769f2456f654d7b910848caf0e7068",
+      "originalSha256": "e336828b8dd2fe98eb7705de65650b8819769f2456f654d7b910848caf0e7068"
+    },
+    {
+      "path": "reports/runtime-candidate-first.json.gz",
+      "bytes": 26684,
+      "sha256": "244dd0bfcce3d2fde6bfba07f5c5309008977057b5df89f20905936e4dd4a82e",
+      "originalSha256": "244dd0bfcce3d2fde6bfba07f5c5309008977057b5df89f20905936e4dd4a82e"
+    },
+    {
+      "path": "reports/setup-first-failure.json.gz",
+      "bytes": 127,
+      "sha256": "f524c2f5efa1c982a62d3ddee7979382ccf788d97052a6329230806f8ae24604",
+      "originalSha256": "82248814ad5f3ecac9d0f5aa0bf61c4628c640289699f7782e42ce02a6942391",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/stripped-environment-architecture-first.json.gz",
+      "bytes": 136,
+      "sha256": "3584fc3c3f22a2f000f10af42152634f8957912e328f76a235eea16bf667751a",
+      "originalSha256": "309be647ef601dc24e4f3850a0d4b7547cacf3ea4f64aa209c26301f27b999d8",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/office-catalog-first.json.gz",
+      "bytes": 149,
+      "sha256": "17e8e86a5a192a36b2cf6ff05d75928c42967f367717bb1f2a7b401dd5b74a67",
+      "originalSha256": "c33336da0fcbdb208064ec5316e01c9b88b0cd1d15918a7f49a1c8157082575e",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/delivery-second.json.gz",
+      "bytes": 4364,
+      "sha256": "a874d383a5fe2ef70e86b92db3f409caf5b4cb5e4f5db35ef6c8f2668b8f5d6f",
+      "originalSha256": "5aeb6be684bb0402615fabb809cec9608c3077683b095f35acdfe68629d4d6f8",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/source-integration-first.json.gz",
+      "bytes": 1419,
+      "sha256": "dcae96727f8faa3129e939f7d2f79b9cf15f75dd679823a473a33563d70bb51d",
+      "originalSha256": "8aba7f7a0e54ebb85609c49b52ef110d0ba8afb659e64460a6b491903fa8b46c",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/main-unit-first.json.gz",
+      "bytes": 793,
+      "sha256": "a2b0d53e270597682fd47e9b63370fdfa39d249b9abdf5c685564e22b2b9fed5",
+      "originalSha256": "a861f5fb707dcc4e6efe7d069e0adc8226d51024d141d07a428403cf5cbce066",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/unit-first.log.gz",
+      "bytes": 636,
+      "sha256": "88f5066b1e11d3c040bc9fd484448b096c623c1dbb1a0ef903dc816ac7d1ff45",
+      "originalSha256": "f70166e9994352950d708d5b6bcc2d0a3627c86ae178809ad35b684fced4c2dc",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/unit-second.log.gz",
+      "bytes": 760,
+      "sha256": "ea1ad2b51191fa89def279ec87a85005ce9dbf25e8e59a631fb48a3abe3cf411",
+      "originalSha256": "c03e7ef96b807af961577a3f7cddf6b35b2c17aeead76300e1611b537740b719",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/unit-final.log.gz",
+      "bytes": 759,
+      "sha256": "f4455fad717728dac46876788f8aac430ff8989e57d58f66e45cffeebb86c3fe",
+      "originalSha256": "2e1669cd953f3dafeea6117d21bc5c3025302628786c710b1061df7635060f00",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/preflight-cli-first.json.gz",
+      "bytes": 475,
+      "sha256": "a9eab51f06ee41a425207bd4bc5ad0beb1327170e88bc279ebd98a3166a44140",
+      "originalSha256": "3e23a239ac4aa200a9ba838fd23cfa4679579a6c60dea2b26b0dd40a8cd88cc1",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/known-office-crash-dumps-first.json.gz",
+      "bytes": 376,
+      "sha256": "db1b7a237762d1be5364959ca0ef11523b3f4def3380d4e59f600df0f9a0ad8d",
+      "originalSha256": "84e5e97482733fd01f7361f6c2e6582530f0c0b9c6d27988329db37e6d542513",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/runtime-boundaries-first-result.json.gz",
+      "bytes": 318,
+      "sha256": "f64bde0f8bc45cab82f1d0c925d85c1dcc6f37b77147ed5771d57ee65e22852d",
+      "originalSha256": "83b409310adbd4c77c229009661f2bff60ca8965e8fd4451e4e27ccd5a5f1448",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/runtime-boundaries-second-result.json.gz",
+      "bytes": 371,
+      "sha256": "f491e93e95fd4522a58bd3c40404c7f247430caea5149aa0bb3ec51b3f7c600b",
+      "originalSha256": "e61dddcdb4fb85957a0699dd41548322470cdb608827d4138ce73013ef83c742",
+      "encoding": "gzip"
+    },
+    {
+      "path": "reports/generation-third-result.json.gz",
+      "bytes": 2272,
+      "sha256": "68f7b64a6f0b8c9b8a9f68b2624827b601ca9f142cd746de3165483496c848aa",
+      "originalSha256": "c357df2b4bb4ae2c409c8e878c4492ecd58fcfe1c1667db13068dcf084d9a62a",
+      "encoding": "gzip"
+    },
+    {
+      "path": "setup/er1-python-version.json.gz",
+      "bytes": 158,
+      "sha256": "b521c01f1e7ea6e3f35666b68485df97ce10f690436213ab8100e32f1c1a378f",
+      "originalSha256": "ffb4c298d40dba18a3a1be0db9a29000f8bd64fdf5fa0dfda484d73af896b3da",
+      "encoding": "gzip"
+    },
+    {
+      "path": "setup/er1-python-venv.json.gz",
+      "bytes": 75,
+      "sha256": "f9e0a0b05db60548dce4262a327027482d99e4fa7e443ff6d81ced7ff64a2081",
+      "originalSha256": "fcae20f7ba41959d1aa4cc7b2711863c8f17579d3aaa0cba0eadc95162d71246",
+      "encoding": "gzip"
+    },
+    {
+      "path": "setup/er1-python-install.json.gz",
+      "bytes": 391,
+      "sha256": "eb72c3767e974e4bda9bee5554dd31764014c232db054b05c505936e825ea4d5",
+      "originalSha256": "38baae1c2c608dc5da8b1de8ca616002183537e7be43d049fc810d42ee2344b9",
+      "encoding": "gzip"
+    },
+    {
+      "path": "setup/er1-office-extract.json.gz",
+      "bytes": 78,
+      "sha256": "3ac7e5325157c6dea5ff78d9f46bf4f372bdd94c8ddd9763356f07217bbeac55",
+      "originalSha256": "4bc72287a16ae10e558f070ef989263a1cbab34c5e060e9e785d41d36ac23d9c",
+      "encoding": "gzip"
+    },
+    {
+      "path": "setup/er1-font-prepare.json.gz",
+      "bytes": 308,
+      "sha256": "cf866008ae1d3dad63a9b1cb9c2f698b9de5afcc4dcc6e839124a0c38b3faa4c",
+      "originalSha256": "f12cdfe4f190be7f27f3ab76f3884e8657c5cd8dfe1271fde6dc094a07c9e90b",
+      "encoding": "gzip"
+    },
+    {
+      "path": "setup/er1-runtime-probe.json.gz",
+      "bytes": 185,
+      "sha256": "a6f121986c81666e41823bb9afde1bd18f0a218aff7afbfdeb36840d5cf42257",
+      "originalSha256": "1dcfb56ffbaebceb3ca6984c6575722b15c1a3844d1fc83ce93a66cf67afaa3c",
+      "encoding": "gzip"
+    },
+    {
+      "path": "setup/er2-python-version.json.gz",
+      "bytes": 157,
+      "sha256": "32e3f242b241659bb613e0e1df25e52546e4342debc14bc5ae9a9ac0c923acef",
+      "originalSha256": "c682d17ba7f7399322852b913ec5ce13f7841f713bb15ca477913f5fbed36c45",
+      "encoding": "gzip"
+    },
+    {
+      "path": "setup/er2-python-venv.json.gz",
+      "bytes": 73,
+      "sha256": "65aa42bb5f9975163429c383d81e5d276d6bf1a3f3eb5e5a1bec9f4f4eaf360d",
+      "originalSha256": "b4890855d2915c6e838cbefbab823e2a920b348c68c0f5ab1afdf76e07fc4c68",
+      "encoding": "gzip"
+    },
+    {
+      "path": "setup/er2-python-install.json.gz",
+      "bytes": 389,
+      "sha256": "b6cb2d40a3f6f5755036a796d02ea6551b281dec7808bfe80dfb834c86e58af8",
+      "originalSha256": "1f9b3d6a74587720da256da7a2e7e79fe364956e7f313767fbd23f2a459594c5",
+      "encoding": "gzip"
+    },
+    {
+      "path": "setup/er2-office-extract.json.gz",
+      "bytes": 76,
+      "sha256": "68dcecbc3fba0ed4dbfc60f81eca13021af8288c165f6b88589ea6032a7ce40b",
+      "originalSha256": "7ccaa77df4c81fdcad914abfd750c677f33bce2fb5556df3d51e683b668860bc",
+      "encoding": "gzip"
+    },
+    {
+      "path": "setup/er2-font-prepare.json.gz",
+      "bytes": 307,
+      "sha256": "a48c8a73abe77a0af425d9107256fe1ddcca40f530f5c214eb477c2972d8d23f",
+      "originalSha256": "840b1286af9ff8ffdd035d56de3deeee42deb5f4096265210634a5f65fc5603a",
+      "encoding": "gzip"
+    },
+    {
+      "path": "setup/er2-runtime-probe.json.gz",
+      "bytes": 662,
+      "sha256": "75404cfe0f7bc541de68bf7091a4cc72d943df4567545f62af54e2d9972fc358",
+      "originalSha256": "81ec13714877e26ade0638a7b354f7d048f34fd2965242708eaddf49530bdaa6",
+      "encoding": "gzip"
+    },
+    {
+      "path": "setup/final-capability.json",
+      "bytes": 1172,
+      "sha256": "67f9f87e2abce9e120cfca33da6bea7a6ab1e052a304090d0b3fe2176e52631b",
+      "originalSha256": "67f9f87e2abce9e120cfca33da6bea7a6ab1e052a304090d0b3fe2176e52631b"
+    },
+    {
+      "path": "setup/final-probe.pdf",
+      "bytes": 30771,
+      "sha256": "1e5ac729e2ce9ad2b25c0b4928e9a5b2f36c54615a5df3fcca685ad8328a9048",
+      "originalSha256": "1e5ac729e2ce9ad2b25c0b4928e9a5b2f36c54615a5df3fcca685ad8328a9048"
+    },
+    {
+      "path": "setup/final-probe.png",
+      "bytes": 26447,
+      "sha256": "8c5fc95a1398cc67a32c6988dfd5c35573e2bc7076c242a0700326ba95dc8826",
+      "originalSha256": "8c5fc95a1398cc67a32c6988dfd5c35573e2bc7076c242a0700326ba95dc8826"
+    },
+    {
+      "path": "attempts/first-full-input.json.gz",
+      "bytes": 1690,
+      "sha256": "c5a6d8d688fbd5184989539e1b3f0deec8f43d1f6c2c7543d8b4c12873255b37",
+      "originalSha256": "48bc48b5616315be3dc85a3f76322989b83769a526756d7aba9d728f1d9163a7",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/first-full-preflight.json.gz",
+      "bytes": 215,
+      "sha256": "1484bfadbba7923c05e4dc0039b624699f4b3265f30652d979baa1872aed2ffb",
+      "originalSha256": "8eec84c7693ea11352ca887ceb59d253e584c3f7d9d04f3cc817586276d7d141",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/first-full-practice-execution.json.gz",
+      "bytes": 190,
+      "sha256": "508f638f145e50ad49740082fb19aac0bd0181be4293497759c85178d787d334",
+      "originalSha256": "c89030dcdb1e2db97daf46ac32bdc5893dc15d334b97606987538996bda9d342",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/first-full-practice-worker-error.log.gz",
+      "bytes": 371,
+      "sha256": "4a43c368c9d4525bd22368e8ba736fefaf59f4ab6e8cec6fa0b775f0652c3206",
+      "originalSha256": "a7467385e0d04282f40a1e74cf80012f1265a81ec47a5d79e46b0989d1705038",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/first-full-practice-office-worker.log.gz",
+      "bytes": 149,
+      "sha256": "74a8a65a5789e1ad41fb9244e727a75861b3af63449fbed79eab9b2c1a6b73a9",
+      "originalSha256": "72dee18473538928ae895d3d45784d2d926fe27b7d17b812169b297d40c2f929",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/first-full-practice-office-profile-process.json.gz",
+      "bytes": 173,
+      "sha256": "5ac190c1924665fab64b4394a57c7822aef81bed8e7a68c87a48b267418833f6",
+      "originalSha256": "a4c0946af7bc6b6673e976f4c672fe839e0f0490fa7e3dc6142eea9c82170181",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/second-full-input.json.gz",
+      "bytes": 1690,
+      "sha256": "c5a6d8d688fbd5184989539e1b3f0deec8f43d1f6c2c7543d8b4c12873255b37",
+      "originalSha256": "48bc48b5616315be3dc85a3f76322989b83769a526756d7aba9d728f1d9163a7",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/second-full-preflight.json.gz",
+      "bytes": 215,
+      "sha256": "1484bfadbba7923c05e4dc0039b624699f4b3265f30652d979baa1872aed2ffb",
+      "originalSha256": "8eec84c7693ea11352ca887ceb59d253e584c3f7d9d04f3cc817586276d7d141",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/second-full-practice-execution.json.gz",
+      "bytes": 798,
+      "sha256": "8f0fc9d9dc4a374305bf85e88051ee371f1ffd8e2290a24cd08d69a75dfd10af",
+      "originalSha256": "4d8b5e2993cca66adc10c9bb513d8fef30ec0b02eab897a683a630f2c3c3f7b6",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/second-full-answers-execution.json.gz",
+      "bytes": 777,
+      "sha256": "5ea9bf6649e72da4a28c03547d2a08f568eeee4145ae83d3d15ae3d7d3553224",
+      "originalSha256": "e89ab3e1015f930929b76295d79d8d0aba0dd005351e4f86ecbfa30a60a94ceb",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/second-full-practice-office-worker.log.gz",
+      "bytes": 149,
+      "sha256": "74a8a65a5789e1ad41fb9244e727a75861b3af63449fbed79eab9b2c1a6b73a9",
+      "originalSha256": "72dee18473538928ae895d3d45784d2d926fe27b7d17b812169b297d40c2f929",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/second-full-practice-office-profile-process.json.gz",
+      "bytes": 173,
+      "sha256": "5ac190c1924665fab64b4394a57c7822aef81bed8e7a68c87a48b267418833f6",
+      "originalSha256": "a4c0946af7bc6b6673e976f4c672fe839e0f0490fa7e3dc6142eea9c82170181",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/second-full-answers-office-worker.log.gz",
+      "bytes": 149,
+      "sha256": "f4cbfd329097b308c9b5919863017a2b386ba0210266d48cc1e25a790f0468cf",
+      "originalSha256": "44dd81162eac8be375a5858886d6b5176d6de05b1cd6153c2ef45661d50151d4",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/second-full-answers-office-profile-process.json.gz",
+      "bytes": 173,
+      "sha256": "5ac190c1924665fab64b4394a57c7822aef81bed8e7a68c87a48b267418833f6",
+      "originalSha256": "a4c0946af7bc6b6673e976f4c672fe839e0f0490fa7e3dc6142eea9c82170181",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/second-unsupported-reference-input.json.gz",
+      "bytes": 732,
+      "sha256": "276f21ad2e4f4604e8ea30e74a12dc730f98b0915042240ed50b91d0f7f69e09",
+      "originalSha256": "523c0529976a005b0fe2e15cefa674e90a97620a6dcc488e6f73e8abb3347c81",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/second-unsupported-reference-preflight.json.gz",
+      "bytes": 246,
+      "sha256": "aaf59a7dd1f664a6692fe4ff7ee121616c42e8fc6822e82e4350ff55e2c3e577",
+      "originalSha256": "33eb48279f5b4da10b343a8e770672c6bc9fdbd3ef6dd59549ca109ed26d25f8",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/second-unsupported-reference-practice-execution.json.gz",
+      "bytes": 194,
+      "sha256": "50119cc9d86e935fbbbb8a1203eddcba0f65d868a2838a976f38ff9cd0172f71",
+      "originalSha256": "dd555672267cb21586783f032d95b116b1dcd8f7a08c001d9c626b34f6786538",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/second-unsupported-reference-practice-worker-error.log.gz",
+      "bytes": 285,
+      "sha256": "f564a9d269031e0ca35afa6f153b00ea14fb872c5fc409998d37a195f26bf2cc",
+      "originalSha256": "dba4e9b1addab8d846f701e37e73cd2e0383e89c89c82c581f34bb63f9ec8e49",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/second-unsupported-reference-practice-office-worker.log.gz",
+      "bytes": 115,
+      "sha256": "b39075390dfd134cd17ef3b21b9712ce6b5ec4f65c3c0dbbccfe80f7bf967418",
+      "originalSha256": "2215672a76868e6741385238ed5043fbe95b93baf1dd58f07e42b03019ad866a",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/second-unsupported-reference-practice-office-profile-process.json.gz",
+      "bytes": 167,
+      "sha256": "ec168993d76ab99dc7b6962329700e9cf7c5126a18be1a1dc0bccda6c01e2838",
+      "originalSha256": "4e0be4f8ca93aadc43512786edb2b9eaafbde0879e5d65c7a85817890c98dacb",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-full-input.json.gz",
+      "bytes": 1690,
+      "sha256": "c5a6d8d688fbd5184989539e1b3f0deec8f43d1f6c2c7543d8b4c12873255b37",
+      "originalSha256": "48bc48b5616315be3dc85a3f76322989b83769a526756d7aba9d728f1d9163a7",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-full-preflight.json.gz",
+      "bytes": 215,
+      "sha256": "1484bfadbba7923c05e4dc0039b624699f4b3265f30652d979baa1872aed2ffb",
+      "originalSha256": "8eec84c7693ea11352ca887ceb59d253e584c3f7d9d04f3cc817586276d7d141",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-full-practice-execution.json.gz",
+      "bytes": 795,
+      "sha256": "ecebd21e883e423cf9a3f89e0228da4d68373fd3a7173eddf13b708e6ea74661",
+      "originalSha256": "eb5a7555200ef3411803495312cc5e95e1e7aba074d8a088b356ac5105a2abec",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-full-answers-execution.json.gz",
+      "bytes": 781,
+      "sha256": "fd6c35f886c39b93f9772d0786a143ac25d68cd098f340a5aba3bd6c361935cf",
+      "originalSha256": "1bc2e1b0bc5da1634292d9d5512bef5ef20259f85b22257266b865510923231b",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-full-practice-office-worker.log.gz",
+      "bytes": 149,
+      "sha256": "74a8a65a5789e1ad41fb9244e727a75861b3af63449fbed79eab9b2c1a6b73a9",
+      "originalSha256": "72dee18473538928ae895d3d45784d2d926fe27b7d17b812169b297d40c2f929",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-full-practice-o-process.json.gz",
+      "bytes": 173,
+      "sha256": "5ac190c1924665fab64b4394a57c7822aef81bed8e7a68c87a48b267418833f6",
+      "originalSha256": "a4c0946af7bc6b6673e976f4c672fe839e0f0490fa7e3dc6142eea9c82170181",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-full-answers-office-worker.log.gz",
+      "bytes": 149,
+      "sha256": "f4cbfd329097b308c9b5919863017a2b386ba0210266d48cc1e25a790f0468cf",
+      "originalSha256": "44dd81162eac8be375a5858886d6b5176d6de05b1cd6153c2ef45661d50151d4",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-full-answers-o-process.json.gz",
+      "bytes": 173,
+      "sha256": "5ac190c1924665fab64b4394a57c7822aef81bed8e7a68c87a48b267418833f6",
+      "originalSha256": "a4c0946af7bc6b6673e976f4c672fe839e0f0490fa7e3dc6142eea9c82170181",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-unsupported-reference-input.json.gz",
+      "bytes": 732,
+      "sha256": "276f21ad2e4f4604e8ea30e74a12dc730f98b0915042240ed50b91d0f7f69e09",
+      "originalSha256": "523c0529976a005b0fe2e15cefa674e90a97620a6dcc488e6f73e8abb3347c81",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-unsupported-reference-preflight.json.gz",
+      "bytes": 246,
+      "sha256": "aaf59a7dd1f664a6692fe4ff7ee121616c42e8fc6822e82e4350ff55e2c3e577",
+      "originalSha256": "33eb48279f5b4da10b343a8e770672c6bc9fdbd3ef6dd59549ca109ed26d25f8",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-unsupported-reference-practice-execution.json.gz",
+      "bytes": 633,
+      "sha256": "31166def374c419bbd275b86272e286c6f8c9350077cab30579059cdc40a1425",
+      "originalSha256": "4672bda2b1a992ab4bf58e7abb35ddf0b66440d3f16337d62cc032279347edd6",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-unsupported-reference-answers-execution.json.gz",
+      "bytes": 197,
+      "sha256": "34ae9b81928f1a81b5acb2dfaa756dcb1f1cb2b1507558cf8146e1e3d13280a8",
+      "originalSha256": "53ad51269c9d7488ed45b607c895b919df65fecd4c9612fe6bb41ab41f3132ac",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-unsupported-reference-practice-office-worker.log.gz",
+      "bytes": 149,
+      "sha256": "74a8a65a5789e1ad41fb9244e727a75861b3af63449fbed79eab9b2c1a6b73a9",
+      "originalSha256": "72dee18473538928ae895d3d45784d2d926fe27b7d17b812169b297d40c2f929",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-unsupported-reference-practice-o-process.json.gz",
+      "bytes": 173,
+      "sha256": "5ac190c1924665fab64b4394a57c7822aef81bed8e7a68c87a48b267418833f6",
+      "originalSha256": "a4c0946af7bc6b6673e976f4c672fe839e0f0490fa7e3dc6142eea9c82170181",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-unsupported-question-input.json.gz",
+      "bytes": 587,
+      "sha256": "a20ad3a0b5bd0d9ddea70b8e46b9ed2521f68e7b037bef461a66795f9faf56d8",
+      "originalSha256": "8160d607811e64bd8126ba09b9d29bd106e08d2c02e28e35486e0e77ba668e33",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-unsupported-question-preflight.json.gz",
+      "bytes": 242,
+      "sha256": "054c864a03f87ee760d74ccac5014df0c5e18ac552563eb94bb7c925591cb59e",
+      "originalSha256": "a8c2ddb2778f4831a56a6fc0e0ef12c898017d4623ebeabe5a0ece1094793efa",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-unsupported-question-practice-execution.json.gz",
+      "bytes": 199,
+      "sha256": "d4c6cbec0b264b30f7997972f6202291189af14c43192779caf2812892c66c9e",
+      "originalSha256": "48e7c985c1685eb241da8a5cb18a0095539c29bd6eb3e88d6b2044d7c70a2a54",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-unsupported-question-answers-execution.json.gz",
+      "bytes": 634,
+      "sha256": "90ddb4cf141d0490514fbcdd6ed1c1c587be6a8b6f2072e819b5e706525e105f",
+      "originalSha256": "9839707e380cdf161c12f4eb81f8fa40a3c3fc0bad5c88f4a2b08924b89f4617",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-unsupported-question-answers-office-worker.log.gz",
+      "bytes": 149,
+      "sha256": "f4cbfd329097b308c9b5919863017a2b386ba0210266d48cc1e25a790f0468cf",
+      "originalSha256": "44dd81162eac8be375a5858886d6b5176d6de05b1cd6153c2ef45661d50151d4",
+      "encoding": "gzip"
+    },
+    {
+      "path": "attempts/third-unsupported-question-answers-o-process.json.gz",
+      "bytes": 173,
+      "sha256": "5ac190c1924665fab64b4394a57c7822aef81bed8e7a68c87a48b267418833f6",
+      "originalSha256": "a4c0946af7bc6b6673e976f4c672fe839e0f0490fa7e3dc6142eea9c82170181",
+      "encoding": "gzip"
+    },
+    {
+      "path": "final/practice.docx",
+      "bytes": 9406333,
+      "sha256": "0e4e74cdeca24818b434be4fc9dd78d8658cd58532c206dc37fb6cd4ae8df4ac",
+      "originalSha256": "0e4e74cdeca24818b434be4fc9dd78d8658cd58532c206dc37fb6cd4ae8df4ac"
+    },
+    {
+      "path": "final/practice.pdf",
+      "bytes": 150992,
+      "sha256": "666f188e7db5eb5b409d972d858448e725cebcd181f3ccbbb0ca98b588d1cd23",
+      "originalSha256": "666f188e7db5eb5b409d972d858448e725cebcd181f3ccbbb0ca98b588d1cd23"
+    },
+    {
+      "path": "final/practice-result.json",
+      "bytes": 7199,
+      "sha256": "559df201f96d6a116f1710fad164bea32b762f13a89aea907baa0ecfd3437002",
+      "originalSha256": "559df201f96d6a116f1710fad164bea32b762f13a89aea907baa0ecfd3437002"
+    },
+    {
+      "path": "final/practice-pages/page-1.png",
+      "bytes": 56343,
+      "sha256": "046b2376ed932d5394a1340f5c21dbc48295e4a74b02e8f6a500368af6e19543",
+      "originalSha256": "046b2376ed932d5394a1340f5c21dbc48295e4a74b02e8f6a500368af6e19543"
+    },
+    {
+      "path": "canonical-review/practice-pages/page-1.png",
+      "bytes": 107324,
+      "sha256": "db0ab972c6f92309ca1eb14c4e65cc62829d2a353171b9a370cdb0b580b95849",
+      "originalSha256": "db0ab972c6f92309ca1eb14c4e65cc62829d2a353171b9a370cdb0b580b95849"
+    },
+    {
+      "path": "final/practice-pages/page-2.png",
+      "bytes": 72091,
+      "sha256": "e618f587753211a3d8c6ab1ae953384563200a2b1b7ecd567e0e62c51f5314c7",
+      "originalSha256": "e618f587753211a3d8c6ab1ae953384563200a2b1b7ecd567e0e62c51f5314c7"
+    },
+    {
+      "path": "canonical-review/practice-pages/page-2.png",
+      "bytes": 136600,
+      "sha256": "15e45f031402830bacd402b6fda2fcfe6b835964f94238e841e7ad2c074c7d46",
+      "originalSha256": "15e45f031402830bacd402b6fda2fcfe6b835964f94238e841e7ad2c074c7d46"
+    },
+    {
+      "path": "final/practice-pages/page-3.png",
+      "bytes": 73846,
+      "sha256": "4c4ebd613d3f52c84570add45c3d159d1248e1da4bb20ecad0d7258fa11ff43c",
+      "originalSha256": "4c4ebd613d3f52c84570add45c3d159d1248e1da4bb20ecad0d7258fa11ff43c"
+    },
+    {
+      "path": "canonical-review/practice-pages/page-3.png",
+      "bytes": 129063,
+      "sha256": "df1266cc9dd1d6f51fe2e5069e7ca321dde91e1d1e82ab818a0077977929a592",
+      "originalSha256": "df1266cc9dd1d6f51fe2e5069e7ca321dde91e1d1e82ab818a0077977929a592"
+    },
+    {
+      "path": "final/practice-pages/page-4.png",
+      "bytes": 77389,
+      "sha256": "181c18674f1ef630123690360af6e2e6c0856cdee84d297f9904bc7c14fe92cd",
+      "originalSha256": "181c18674f1ef630123690360af6e2e6c0856cdee84d297f9904bc7c14fe92cd"
+    },
+    {
+      "path": "canonical-review/practice-pages/page-4.png",
+      "bytes": 135499,
+      "sha256": "229d36df1fda787fa7a8802a67f016a49c56affd6bd29b51d462774476dd8da4",
+      "originalSha256": "229d36df1fda787fa7a8802a67f016a49c56affd6bd29b51d462774476dd8da4"
+    },
+    {
+      "path": "final/practice-pages/page-5.png",
+      "bytes": 66938,
+      "sha256": "6be36d6df90ac50ebc1672921cd1f583ec8de76851b5e33b0bb01427cf33e364",
+      "originalSha256": "6be36d6df90ac50ebc1672921cd1f583ec8de76851b5e33b0bb01427cf33e364"
+    },
+    {
+      "path": "canonical-review/practice-pages/page-5.png",
+      "bytes": 121881,
+      "sha256": "acf89d1d221c768eafcb84f4b6960ad62d04f27c07adaa2ac80ebafe500ac338",
+      "originalSha256": "acf89d1d221c768eafcb84f4b6960ad62d04f27c07adaa2ac80ebafe500ac338"
+    },
+    {
+      "path": "final/practice-pages/page-6.png",
+      "bytes": 39718,
+      "sha256": "f14800da685f954411670bb19bed4568189e258f923df94dacd9741bfe615cec",
+      "originalSha256": "f14800da685f954411670bb19bed4568189e258f923df94dacd9741bfe615cec"
+    },
+    {
+      "path": "canonical-review/practice-pages/page-6.png",
+      "bytes": 80464,
+      "sha256": "66b49469aac1fdfc39fd8a1f0fa474577e3bf36af771977373671eeb63965cdd",
+      "originalSha256": "66b49469aac1fdfc39fd8a1f0fa474577e3bf36af771977373671eeb63965cdd"
+    },
+    {
+      "path": "canonical-review/practice.pdf",
+      "bytes": 164122,
+      "sha256": "5411f7594a72f763feaeebd25913584f0a4a150807297b77e493d1c46f9f60a9",
+      "originalSha256": "5411f7594a72f763feaeebd25913584f0a4a150807297b77e493d1c46f9f60a9"
+    },
+    {
+      "path": "final/answers.docx",
+      "bytes": 9402214,
+      "sha256": "6cd827229eabff33bd81bed86a3c5a38f2c9aa3b4fdba5c331fd9d3da6429199",
+      "originalSha256": "6cd827229eabff33bd81bed86a3c5a38f2c9aa3b4fdba5c331fd9d3da6429199"
+    },
+    {
+      "path": "final/answers.pdf",
+      "bytes": 44236,
+      "sha256": "0da22f6ebf6652bf2e5b25c368e33125d7aea5d2b566da64bd2b359a6751bc33",
+      "originalSha256": "0da22f6ebf6652bf2e5b25c368e33125d7aea5d2b566da64bd2b359a6751bc33"
+    },
+    {
+      "path": "final/answers-result.json",
+      "bytes": 7192,
+      "sha256": "58fe7a5e389e40ece3cac36c023ced63c5ab9036da04e8068da3fca3f584646a",
+      "originalSha256": "58fe7a5e389e40ece3cac36c023ced63c5ab9036da04e8068da3fca3f584646a"
+    },
+    {
+      "path": "final/answers-pages/page-1.png",
+      "bytes": 79376,
+      "sha256": "a0174037faa5f45a7b7f74f0697438fc8e82213736dc80a7ffefdb379df65637",
+      "originalSha256": "a0174037faa5f45a7b7f74f0697438fc8e82213736dc80a7ffefdb379df65637"
+    },
+    {
+      "path": "canonical-review/answers-pages/page-1.png",
+      "bytes": 157540,
+      "sha256": "482b44e2ebe5b0658cd4e35363b0bcba9ebc3572d0b79d62df7bc4a8ef001dd0",
+      "originalSha256": "482b44e2ebe5b0658cd4e35363b0bcba9ebc3572d0b79d62df7bc4a8ef001dd0"
+    },
+    {
+      "path": "final/answers-pages/page-2.png",
+      "bytes": 45705,
+      "sha256": "57ce6a48702ae4b0e00dcf23dadcad62be359b79d155f94b6d289a3ab9a06e07",
+      "originalSha256": "57ce6a48702ae4b0e00dcf23dadcad62be359b79d155f94b6d289a3ab9a06e07"
+    },
+    {
+      "path": "canonical-review/answers-pages/page-2.png",
+      "bytes": 94515,
+      "sha256": "024b41df377ff06f68aecfb5558aceec95fcd50e8e97c8b5632ca2cb2ab53342",
+      "originalSha256": "024b41df377ff06f68aecfb5558aceec95fcd50e8e97c8b5632ca2cb2ab53342"
+    },
+    {
+      "path": "canonical-review/answers.pdf",
+      "bytes": 43793,
+      "sha256": "a9b69388eab4be76bac5277865526c467a61f11c53393734d68513407d60576e",
+      "originalSha256": "a9b69388eab4be76bac5277865526c467a61f11c53393734d68513407d60576e"
+    },
+    {
+      "path": "per-book/unsupported-reference.pdf",
+      "bytes": 40562,
+      "sha256": "7b3f5a4a3019c533aaa9be9fbe0b805f6937704a847263e4ca1079a9faccfabc",
+      "originalSha256": "7b3f5a4a3019c533aaa9be9fbe0b805f6937704a847263e4ca1079a9faccfabc"
+    },
+    {
+      "path": "per-book/unsupported-reference.png",
+      "bytes": 40093,
+      "sha256": "403646906f584c2486c176afef21b06b7fd98ae252e58d221983c6266d3f24c9",
+      "originalSha256": "403646906f584c2486c176afef21b06b7fd98ae252e58d221983c6266d3f24c9"
+    },
+    {
+      "path": "per-book/unsupported-question.pdf",
+      "bytes": 30470,
+      "sha256": "0511713546d96dd500cf3d63bb8e026b2981955661cf406d1a3e64ba134c21b3",
+      "originalSha256": "0511713546d96dd500cf3d63bb8e026b2981955661cf406d1a3e64ba134c21b3"
+    },
+    {
+      "path": "per-book/unsupported-question.png",
+      "bytes": 40386,
+      "sha256": "ce613f471645fa10aba8d934e525e18de0d895607c16fb3c434b6965ed967156",
+      "originalSha256": "ce613f471645fa10aba8d934e525e18de0d895607c16fb3c434b6965ed967156"
+    },
+    {
+      "path": "original-failures/image-margin.pdf",
+      "bytes": 151000,
+      "sha256": "6d05c484f56a65ef47d9d2e0f8bc1c54480a9bd8fe80d65ea23794f85f3b93c0",
+      "originalSha256": "6d05c484f56a65ef47d9d2e0f8bc1c54480a9bd8fe80d65ea23794f85f3b93c0"
+    },
+    {
+      "path": "original-failures/continuations-first.json",
+      "bytes": 652,
+      "sha256": "c1a07ea44a20a66aa845a983d27644ea61c1a84f0e4c731caf7d7d5daa861f4a",
+      "originalSha256": "c1a07ea44a20a66aa845a983d27644ea61c1a84f0e4c731caf7d7d5daa861f4a"
+    },
+    {
+      "path": "original-failures/continuations-first.pdf",
+      "bytes": 47423,
+      "sha256": "ecb46b834ead84cfe59277ecc799f5e957ed9781e88639ed42d94d69ec07a99e",
+      "originalSha256": "ecb46b834ead84cfe59277ecc799f5e957ed9781e88639ed42d94d69ec07a99e"
+    },
+    {
+      "path": "original-failures/continuations-second.json",
+      "bytes": 652,
+      "sha256": "c1a07ea44a20a66aa845a983d27644ea61c1a84f0e4c731caf7d7d5daa861f4a",
+      "originalSha256": "c1a07ea44a20a66aa845a983d27644ea61c1a84f0e4c731caf7d7d5daa861f4a"
+    },
+    {
+      "path": "original-failures/continuations-second.pdf",
+      "bytes": 47423,
+      "sha256": "0a66bd03dd90037092f93bfd21bbfd1c02cc24df0695ce8cdb2bbcb43b653c19",
+      "originalSha256": "0a66bd03dd90037092f93bfd21bbfd1c02cc24df0695ce8cdb2bbcb43b653c19"
+    },
+    {
+      "path": "original-failures/continuation-header.png",
+      "bytes": 214306,
+      "sha256": "3440d2dc49f18d11947316860b7d75c169b57674234ac9bfc44e778d8a36626f",
+      "originalSha256": "3440d2dc49f18d11947316860b7d75c169b57674234ac9bfc44e778d8a36626f"
+    },
+    {
+      "path": "original-failures/path-office-profile-process.json",
+      "bytes": 296,
+      "sha256": "4e0be4f8ca93aadc43512786edb2b9eaafbde0879e5d65c7a85817890c98dacb",
+      "originalSha256": "4e0be4f8ca93aadc43512786edb2b9eaafbde0879e5d65c7a85817890c98dacb"
+    },
+    {
+      "path": "original-failures/path-office-profile-replay-process.json",
+      "bytes": 296,
+      "sha256": "4e0be4f8ca93aadc43512786edb2b9eaafbde0879e5d65c7a85817890c98dacb",
+      "originalSha256": "4e0be4f8ca93aadc43512786edb2b9eaafbde0879e5d65c7a85817890c98dacb"
+    },
+    {
+      "path": "original-failures/path-p-process.json",
+      "bytes": 296,
+      "sha256": "a4c0946af7bc6b6673e976f4c672fe839e0f0490fa7e3dc6142eea9c82170181",
+      "originalSha256": "a4c0946af7bc6b6673e976f4c672fe839e0f0490fa7e3dc6142eea9c82170181"
+    }
+  ]
+}

@@ -7,6 +7,7 @@ import re
 from lxml import etree as ET, html
 from PIL import Image
 from file_leases import no_links
+from paper_export_protocol import error_code
 
 INPUT_PROTOCOL = 'paper-export-document-v1'
 TEXT_LIMIT = 8 * 1024 * 1024
@@ -33,10 +34,11 @@ def integer(value, minimum, maximum):
 
 
 def text(value, limit=PARAGRAPH_LIMIT, empty=False):
-    if not isinstance(value, str) or (not empty and not value.strip()) or len(value.encode('utf8')) > limit:
+    if not isinstance(value, str) or (not empty and not value.strip()):
         fail('text_limit')
     if any(ord(char) < 32 and char not in '\t\n\r' or 0xD800 <= ord(char) <= 0xDFFF or ord(char) in (0xFFFE, 0xFFFF) for char in value):
         fail('invalid_input')
+    if len(value.encode('utf8')) > limit: fail('text_limit')
     return value
 
 
@@ -181,7 +183,12 @@ def parse_markup(value, media, fonts):
     return root
 
 
-def load_input(file, expected_sha256, workspace, fonts):
+def meaningful(root):
+    return any((node.text or '').strip() or (node.tail or '').strip() or tag(node) in {'img', 'math'} for node in root.iter())
+
+
+def load_input(file, expected_sha256, workspace, fonts, book=None):
+    if book not in {None, 'practice', 'answers'}: fail('invalid_input')
     file, workspace = Path(file), Path(workspace)
     no_links(file); no_links(workspace)
     if not file.is_file() or file.stat().st_size > 12 * 1024 * 1024: fail('text_limit')
@@ -212,18 +219,11 @@ def load_input(file, expected_sha256, workspace, fonts):
         integer(item['bytes'], 1, 12 * 1024 * 1024); integer(item['width'], 1, 6000); integer(item['height'], 1, 6000)
         media_pixels += item['width'] * item['height']
         if media_pixels > 120_000_000: fail('media_invalid')
-        path = workspace / item['path']; no_links(path)
-        if not path.is_file() or path.stat().st_size != item['bytes']: fail('media_invalid')
-        data = path.read_bytes(); media_bytes += len(data)
-        if sha256(data).hexdigest() != digest or media_bytes > MEDIA_LIMIT: fail('media_invalid')
-        try:
-            with Image.open(BytesIO(data)) as image:
-                if image.format != 'PNG' or image.size != (item['width'], item['height']) or getattr(image, 'n_frames', 1) != 1:
-                    fail('media_invalid')
-                image.verify()
-        except (OSError, Image.DecompressionBombError): fail('media_invalid')
-        media[item['path']] = {**item, 'data': data}
+        media_bytes += item['bytes']
+        if media_bytes > MEDIA_LIMIT: fail('media_invalid')
+        media[item['path']] = dict(item)
     identities, papers, text_bytes, parsed = set(), {}, len(value['title'].encode('utf8')), []
+    node_count = 0
     for item in value['items']:
         keys(item, {'id', 'source', 'promptHtml', 'optionHtml', 'reference'})
         identity(item['id']); source = item['source']
@@ -243,16 +243,49 @@ def load_input(file, expected_sha256, workspace, fonts):
         options = item['optionHtml']
         if not isinstance(options, list) or len(options) > 30: fail('invalid_input')
         parts = [item['promptHtml']]
+        practice_parts = [item['promptHtml']]; answer_parts = []
         for option in options:
-            keys(option, {'label', 'html'}); text(option['label']); glyphs(option['label'], fonts[0]); parts += [option['html']]
+            keys(option, {'label', 'html'}); text(option['label']); parts += [option['html']]
+            if book in {None, 'practice'}: glyphs(option['label'], fonts[0])
+            practice_parts.append(option['html'])
         if item['reference'] is not None:
             keys(item['reference'], {'answerHtml', 'analysisHtml'})
             for key in ['answerHtml', 'analysisHtml']:
-                if item['reference'][key] is not None: parts += [item['reference'][key]]
+                if item['reference'][key] is not None:
+                    parts += [item['reference'][key]]; answer_parts.append(item['reference'][key])
         text_bytes += len(json.dumps(source, ensure_ascii=False).encode('utf8')) + sum(len(text(part, TEXT_LIMIT, empty=True).encode('utf8')) for part in parts)
         text_bytes += sum(len(option['label'].encode('utf8')) for option in options)
         if text_bytes > TEXT_LIMIT: fail('text_limit')
         if not item['promptHtml'].strip(): fail('invalid_input')
-        parsed.append({part: parse_markup(part, media, fonts) for part in parts})
-        if sum(sum(1 for _ in root.iter()) for group in parsed for root in group.values()) > 120000: fail('layout_limit')
-    return value, parsed, media
+        selected = practice_parts if book == 'practice' else answer_parts if book == 'answers' else parts
+        current = {part: parse_markup(part, media, fonts) for part in selected}
+        if book in {None, 'practice'} and not meaningful(current[item['promptHtml']]): fail('empty_question')
+        parsed.append(current)
+        node_count += sum(sum(1 for _ in root.iter()) for root in current.values())
+        if node_count > 120000: fail('layout_limit')
+    required = set(media) if book is None else {node.get('src') for group in parsed for root in group.values() for node in root.iter() if tag(node) == 'img'}
+    selected_media = {}
+    for name in sorted(required):
+        item = media[name]; path = workspace / name; no_links(path)
+        if not path.is_file() or path.stat().st_size != item['bytes']: fail('media_invalid')
+        data = path.read_bytes()
+        if sha256(data).hexdigest() != item['sha256']: fail('media_invalid')
+        try:
+            with Image.open(BytesIO(data)) as image:
+                if image.format != 'PNG' or image.size != (item['width'], item['height']) or getattr(image, 'n_frames', 1) != 1: fail('media_invalid')
+                image.verify()
+        except (OSError, Image.DecompressionBombError): fail('media_invalid')
+        selected_media[name] = {**item, 'data': data}
+    return value, parsed, selected_media
+
+
+def preflight(file, expected_sha256, workspace, fonts):
+    """Read-only per-book projection. The full raw input is never rewritten."""
+    books = {}
+    for book in ['practice', 'answers']:
+        try:
+            value, parsed, media = load_input(file, expected_sha256, workspace, fonts, book)
+            books[book] = {'available': True, 'reason': None, 'items': len(value['items']), 'media': len(media)}
+        except Exception as error:
+            books[book] = {'available': False, 'reason': error_code(error, 'paper_export_invalid_input'), 'items': None, 'media': None}
+    return {'protocol': 'paper-export-preflight-v1', 'inputSha256': expected_sha256, 'books': books}
