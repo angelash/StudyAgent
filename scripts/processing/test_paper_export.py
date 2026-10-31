@@ -5,6 +5,7 @@ from io import BytesIO
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from zipfile import ZipFile
+from unittest.mock import patch
 import json
 import unittest
 import os
@@ -118,6 +119,20 @@ class BookPreflight(unittest.TestCase):
         books = self.project()
         self.assertTrue(books['practice']['available'])
         self.assertEqual(books['answers']['reason'], 'paper_export_unsupported_markup')
+
+    def test_memory_preflight_checks_actual_png_bytes_without_filesystem_io(self):
+        from PIL import Image
+        stream = BytesIO(); Image.new('RGB', (2, 3), 'white').save(stream, format='PNG')
+        image = stream.getvalue(); digest = sha256(image).hexdigest(); name = 'media/' + digest + '.png'
+        self.value['media'] = [{'path': name, 'sha256': digest, 'bytes': len(image), 'width': 2, 'height': 3}]
+        self.value['items'][0]['promptHtml'] = '<p>Original</p><img src="' + name + '" alt="original image">'
+        raw = json.dumps(self.value).encode('utf8')
+        with patch.object(Path, 'read_bytes', side_effect=AssertionError('No file read')), patch.object(Path, 'stat', side_effect=AssertionError('No file stat')):
+            result = preflight(None, sha256(raw).hexdigest(), None, self.fonts, raw_bytes=raw, media_bytes={name: image})
+            self.assertTrue(result['books']['practice']['available']); self.assertEqual(result['books']['practice']['media'], 1)
+            self.assertTrue(result['books']['answers']['available'])
+            corrupt = preflight(None, sha256(raw).hexdigest(), None, self.fonts, raw_bytes=raw, media_bytes={name: image[:-1] + b'x'})
+            self.assertEqual(corrupt['books']['practice']['reason'], 'paper_export_media_invalid'); self.assertTrue(corrupt['books']['answers']['available'])
 
     def test_unsupported_question_does_not_block_independent_original_answer(self):
         self.value['items'][0]['promptHtml'] = '<video>Original meaningful material</video>'

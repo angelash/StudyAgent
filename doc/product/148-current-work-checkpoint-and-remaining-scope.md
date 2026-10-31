@@ -1,5 +1,7 @@
 # 当前工作收尾、验证边界与续接位置
 
+2026-10-31导出业务第一批：[174](174-paper-export-business-runtime-and-collection.md)十三份源码已从p174逐SHA归并。准确旧清单重建完整原文/PNG，实际Python解析器通过有界stdin逐册预检，不创建预检工作区、不启动Office；接完整导出create/cancel/retry、原命令/原回执、当前目录及同事务学生曝光/真实队列。最终SQLite19/0/0、真实PG15/0/0、Python25/0/0分列；十四文件既有207/0/0属于末次目录URL省略前的同一业务实现，最终专项验证最终源码，见[证据](../evidence/2026-10-31/workspace-r5-export-business-and-preflight/receipt.json)。原6/12与PG13/1失败及独立重现均保留。主干无输出类型检查通过，正式24/revision187及1062受保护文件保持；锁文件仅新增已有htmlparser2的直接依赖声明，全部实际依赖解析条目不变，15446 PG已停止，未推送部署。下一步接实际render worker、同句柄产物下载及精确cleanup，再接原工作台选题/完整稿UI；全部其余原范围及真实条件继续active。
+
 2026-10-31下一执行协议：[174导出业务/执行/回收](174-paper-export-business-runtime-and-collection.md)固定准确旧清单重建、原文不静默降级、无IO实际逐册预检、完整原命令与同事务任务/曝光、显式安装清单、真实lease/检查点与下载/精确回收。172第二批已本地提交dcd9c1d7；下一批先接预检及完整导出业务，再接真实worker/文件和原工作台完整稿UI。正式24/revision187与运行构建保持，全部原范围继续active；本次先提交具体协议。
 
 2026-10-31原卷读取接续：[172](172-paper-selection-business-and-student-source-access.md)第二批十份源码已逐SHA归并：原工作台明确阅读、参考与HTML/PDF打印重核，诊断期间旧正文/媒体/原卷练习防旁路，以及同一已完整校验句柄的Range/完整HTTP响应。媒体9/0/0、SQLite旧入口13/0/0与另批监护撤权1/0/13过滤跳过、实际PG最终14/0/0、原十二文件186/0/0分别记录。生产浏览器首轮4/3、第二轮2/1保留；PDF修复后的第三轮7/0及等待真实409/终态的第四轮3/0分列，见[证据](../evidence/2026-10-31/workspace-r5-paper-source-access/receipt.json)。主干contracts/API/Web类型0，正式24/revision187及1063运行文件保持，独占PG和浏览器服务已准确停止，未推送部署。下一步接真实导出/回收worker、完整业务接口与产物下载，再接原工作台选题/完整稿/双标签/禁存储/未知结果UI；全部其余R5～R8、原72/WS及教材/教师/实机/实体打印/真人条件继续active。下方旧状态保留历史边界。

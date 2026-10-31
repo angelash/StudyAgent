@@ -1,0 +1,13 @@
+const fs = require('node:fs'), path = require('node:path'), { execFileSync, spawnSync } = require('node:child_process');
+const root = path.resolve(__dirname, '../../..'), evidence = 'doc/evidence/2026-10-31/workspace-r5-export-business-and-preflight';
+const source = JSON.parse(fs.readFileSync(path.join(__dirname, 'integration-first.json'))).source.map(row => row.path);
+const owned = [...source, ...['148-current-work-checkpoint-and-remaining-scope.md', '150-integrated-delivery-plan-and-work-ledger.md', '174-paper-export-business-runtime-and-collection.md'].map(name => 'doc/product/' + name), evidence];
+const docs = spawnSync(process.execPath, [path.join(root, 'scripts/qa/verify-doc-links.cjs')], { cwd: root, windowsHide: true, encoding: 'utf8', timeout: 120000 });
+fs.writeFileSync(path.join(__dirname, 'docs-first.log'), docs.stdout + docs.stderr, { flag: 'wx' }); if (docs.status !== 0) throw Error('Document link check failed');
+execFileSync('git', ['add', '--', ...owned], { cwd: root, stdio: ['ignore', 'pipe', 'pipe'] });
+const checked = spawnSync('git', ['diff', '--cached', '--check'], { cwd: root, windowsHide: true, encoding: 'utf8' });
+fs.writeFileSync(path.join(__dirname, 'diff-check-first.log'), checked.stdout + checked.stderr, { flag: 'wx' }); if (checked.status !== 0) throw Error('Staged diff check failed; exact output retained');
+const staged = execFileSync('git', ['diff', '--cached', '--name-only', '-z'], { cwd: root, encoding: 'utf8', maxBuffer: 20 * 1024 * 1024 }).split('\0').filter(Boolean);
+if (staged.some(file => !owned.includes(file) && !file.startsWith(evidence + '/'))) throw Error('Unexpected staged path');
+const result = { stagedFiles: staged.length, sourceScopeOnly: true, checkExit: checked.status, documentation: JSON.parse(docs.stdout), files: staged };
+fs.writeFileSync(path.join(__dirname, 'staging-first.json'), JSON.stringify(result, null, 2), { flag: 'wx' }); console.log(JSON.stringify({ staged: staged.length, sourceScopeOnly: true, documentation: result.documentation }));

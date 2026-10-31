@@ -99,8 +99,8 @@ const learningRoutes: Record<string, RegExp[]> = {
 };
 
 const paperLibraryLearningRoutes: Record<string, RegExp[]> = {
-  GET: [/^library\/selection-lists(\/[^/]+)?$/, /^library\/selection-commands\/[^/]+$/, /^library\/source-reads\/[^/]+$/, /^library\/papers\/[^/]+\/metadata$/],
-  POST: [/^library\/selection-commands$/, /^library\/source-reads$/],
+  GET: [/^library\/exports(\/[^/]+)?$/, /^library\/export-commands\/[^/]+$/, /^library\/selection-lists(\/[^/]+)?$/, /^library\/selection-commands\/[^/]+$/, /^library\/source-reads\/[^/]+$/, /^library\/papers\/[^/]+\/metadata$/],
+  POST: [/^library\/(export-preflight|export-commands)$/, /^library\/selection-commands$/, /^library\/source-reads$/],
 };
 
 @Injectable()

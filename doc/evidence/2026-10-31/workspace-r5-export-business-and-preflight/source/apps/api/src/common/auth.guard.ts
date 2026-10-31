@@ -1,0 +1,142 @@
+import { CanActivate, ExecutionContext, ForbiddenException, Injectable, UnauthorizedException } from '@nestjs/common';
+import { RequestWithContext } from './request-context.middleware';
+import { InMemoryStoreService, InMemoryUserAccount, InMemoryAuthSession } from '../infrastructure/in-memory-store.service';
+import { hashToken } from '../modules/auth/auth.service';
+import { RateLimitService } from '../infrastructure/rate-limit.service';
+
+export function requestToken(request: { headers: { authorization?: string; cookie?: string } }) {
+  const authorization = request.headers.authorization;
+  if (authorization?.startsWith('Bearer ')) return authorization.slice(7).trim();
+  const raw = request.headers.cookie?.split(';').map((part) => part.trim()).find((part) => part.startsWith('study_session='));
+  return raw ? raw.slice('study_session='.length) : '';
+}
+
+export type AuthenticatedRequest = RequestWithContext & {
+  user: InMemoryUserAccount;
+  authSession: InMemoryAuthSession;
+};
+
+// Student sessions deny new management routes by default. Resource-level checks
+// still verify the child, session, response and plan on every allowed route.
+const learningRoutes: Record<string, RegExp[]> = {
+  // Explicitly allowed learning operations; object authorization remains in the service.
+  GET: [/^learning\/paper-captures\/(repair-commands\/[^/]+|repair-uploads(\/[^/]+)?|repairs(\/[^/]+)?)$/, /^learning\/paper-captures\/(pages|derivations)\/[^/]+\/files$/, /^learning\/paper-captures\/groups\/[^/]+\/derivations$/, /^learning\/paper-captures\/derivations\/[^/]+(\/pdf)?$/, /^learning\/paper-captures\/groups(\/[^/]+)?$/, /^learning\/paper-captures\/(limits|commands\/[^/]+|uploads(\/[^/]+(\/commands)?)?|pages\/[^/]+(\/images\/(original|baseline|derived))?)$/, /^learning\/guidance-calendar\/(plans|arrangements)\/[^/]+$/, /^ai\/assistant\/sessions\/[^/]+\/artifacts\/guidance\/(intents|requests\/[^/]+)$/, /^learning\/assistant-guidance\/intents\/[^/]+(\/requests\/[^/]+)?$/, /^learning\/teaching-practice\/assignments(\/[^/]+)?$/, /^learning\/teaching-practice\/sessions\/[^/]+(\/questions\/[^/]+)?$/, /^learning\/teaching-practice\/drafts\/[^/]+\/source$/, /^ai\/assistant\/sessions\/[^/]+\/artifacts\/practice\/generated\/(drafts|requests\/[^/]+)$/, /^learning\/teaching-practice\/(drafts\/[^/]+(\/requests\/[^/]+)?|practices\/[^/]+)$/, /^chemistry\/catalog$/, /^learning\/project-files$/, /^learning\/project-files\/(uploads\/[^/]+|assets\/[^/]+(\/integrity|\/files\/(original|display|page-\d+))?)$/, /^learning\/material-uploads(\/[^/]+)?$/, /^learning\/source-courses\/materials\/[^/]+(\/progress|\/pages\/\d+)?$/, /^auth\/me$/, /^learning\/home$/, /^learning\/students$/, /^learning\/students\/[^/]+\/(today|mistakes)$/,
+    /^learning\/source-courses\/materials\/[^/]+\/(files|repairs(\/[^/]+)?)$/,
+    /^learning\/classroom\/sessions\/[^/]+$/,
+    /^learning\/classroom\/sessions\/[^/]+\/turns(\/[^/]+)?$/,
+    /^learning\/classroom\/sessions\/[^/]+\/code-drafts\/[^/]+\/[^/]+$/,
+    /^learning\/classroom\/sessions\/[^/]+\/visuals(\/[^/]+\/file)?$/,
+    /^learning\/projects\/(catalog|[^/]+)$/, /^learning\/projects\/[^/]+\/teaching$/, /^learning\/projects\/[^/]+\/requests\/[^/]+$/,
+    /^learning\/source-courses(\/(materials|[^/]+))?$/,
+    /^learning\/source-courses\/[^/]+\/(progress|versions|sources\/[^/]+)$/,
+    /^learning\/source-courses\/[^/]+\/checks(\/[^/]+(\/requests\/[^/]+)?)?$/,
+    /^learning\/studio\/topic-whiteboards(\/(drafts(\/[^/]+(\/(source|history|requests\/[^/]+))?)?|[^/]+))?$/,
+    /^learning\/studio\/topic-whiteboards\/[^/]+\/figures\/[^/]+\/(image|original)$/,
+    /^learning\/studio\/topic-whiteboard-visuals(\/(capabilities|requests\/[^/]+|[^/]+(\/(requests\/[^/]+|image|original))?))?$/,
+    /^learning\/studio\/overview$/, /^learning\/studio\/materials\/[^/]+\/(pages\/\d+|original)$/,
+    /^learning\/studio\/calendar\/export$/,
+    /^gesp\/students\/[^/]+\/workspace$/,
+    /^learning\/students\/[^/]+\/notebook(\/[^/]+\/[^/]+)?$/,
+    /^students\/[^/]+\/(profile|learning-scope|progress-proposals)$/, /^diagnostics\/curriculum$/, /^diagnostics\/textbooks(\/[^/]+)?$/,
+    /^diagnostics\/sessions$/, /^diagnostics\/sessions\/[^/]+(\/(report|report-history|analysis-status)|\/items\/[^/]+)?$/,
+    /^diagnostics\/blueprints\/[^/]+$/,
+    /^diagnostics\/students\/[^/]+\/controlled-(contrasts|previews|preview-requests\/[^/]+)$/,
+    /^diagnostics\/controlled-contrasts\/previews\/[^/]+(\/start-requests\/[^/]+)?$/,
+    /^diagnostics\/students\/[^/]+\/(profile|plans|reviews)$/,
+    /^diagnostics\/students\/[^/]+\/evidence\/[^/]+$/,
+    /^diagnostics\/plans\/[^/]+(\/(reviews|retrospective))?$/,
+    /^learning\/practice\/[^/]+(\/questions\/[^/]+)?$/, /^learning\/feedback$/,
+    /^ai\/models$/, /^ai\/assistant\/history$/, /^ai\/assistant\/course-context$/, /^ai\/assistant\/sessions\/[^/]+\/(context|messages(\/page)?|turns(\/[^/]+)?)$/, /^learning\/media\/(capabilities|[^/]+(\/content)?)$/,
+    /^ai\/assistant\/sessions\/[^/]+\/sources\/[^/]+$/,
+    /^ai\/assistant\/sessions\/[^/]+\/artifacts\/notes(\/requests\/[^/]+|\/[^/]+(\/(export|requests\/[^/]+))?)?$/,
+    /^ai\/assistant\/sessions\/[^/]+\/artifacts\/whiteboards(\/requests\/[^/]+)?$/,
+    /^ai\/assistant\/sessions\/[^/]+\/artifacts\/practice\/(candidates|requests\/[^/]+)$/,
+    /^learning\/assistant-practice\/artifacts\/[^/]+$/,
+    /^learning\/assistant-practice\/assignments(\/[^/]+)?$/,
+    /^learning\/assistant-practice\/sessions\/[^/]+(\/questions\/[^/]+)?$/,
+    /^measurement-content\/candidates\/[^/]+\/media\/\d+$/,
+    /^library\/(overview|facets|papers|media)$/, /^library\/papers\/[^/]+$/,
+    /^library\/practice\/reviews(\/calendar(\/export)?)?$/,
+    /^library\/practice\/sessions\/[^/]+\/items\/[^/]+\/next-options$/,
+    /^library\/practice\/sessions\/[^/]+\/items\/[^/]+\/verification-requests\/[^/]+$/,
+    /^library\/practice\/requests\/[^/]+$/, /^library\/practice\/sessions(\/[^/]+(\/(items|commands)\/[^/]+)?)?$/],
+  POST: [/^learning\/paper-captures\/repair-candidates$/, /^learning\/paper-captures\/(repair-uploads(\/[^/]+\/cancel)?|repairs(\/[^/]+\/(cancel|retry))?)$/, /^learning\/paper-captures\/groups\/[^/]+\/recognize$/, /^learning\/paper-captures\/derivations\/[^/]+\/(cancel|retry)$/, /^learning\/paper-captures\/groups\/[^/]+\/revisions$/, /^learning\/paper-captures\/pages\/[^/]+\/revisions$/, /^learning\/paper-captures\/uploads(\/[^/]+\/(complete|cancel))?$/, /^ai\/assistant\/sessions\/[^/]+\/artifacts\/guidance\/(preflight|intents)$/, /^learning\/assistant-guidance\/intents\/[^/]+\/(report-preflight|report)$/, /^learning\/teaching-practice\/practices\/[^/]+\/assignments$/, /^learning\/teaching-practice\/assignments\/[^/]+\/start$/, /^learning\/teaching-practice\/sessions\/[^/]+\/(responses|complete|questions\/[^/]+\/help)$/, /^ai\/assistant\/sessions\/[^/]+\/artifacts\/practice\/generated\/(preflight|drafts)$/, /^learning\/teaching-practice\/drafts\/[^/]+\/(cancel|retry|review|adopt)$/, /^chemistry\/checkpoints\/start$/, /^learning\/project-files\/uploads(\/[^/]+\/(complete|cancel))?$/, /^learning\/project-files\/assets\/[^/]+\/(cancel|retry|delete)$/, /^learning\/material-uploads(\/[^/]+\/(complete|cancel))?$/, /^learning\/source-courses\/materials\/[^/]+\/process\/cancel$/, /^auth\/logout$/, /^students\/[^/]+\/progress-proposals$/, /^diagnostics\/sessions$/,
+    /^learning\/source-courses\/materials\/[^/]+\/(files\/check|repairs(\/[^/]+\/(cancel|retry))?)$/,
+    /^learning\/classroom\/sessions\/[^/]+\/turns(\/[^/]+\/(cancel|retry))?$/,
+    /^learning\/classroom\/sessions(\/[^/]+\/(retention-displays|answers|hints|messages|presentation|voice-preview|narration\/[^/]+))?$/,
+    /^learning\/classroom\/sessions\/[^/]+\/visuals(\/[^/]+\/(select|unselect|cancel|retry|delete))?$/,
+    /^learning\/projects(\/[^/]+\/(submissions|legacy|advice|narration))?$/,
+    /^learning\/source-courses(\/preflight|\/materials\/(text|text-file)|\/[^/]+\/(confirm|cancel|retry|archive))?$/,
+    /^learning\/source-courses\/[^/]+\/checks\/(preflight|prepare|[^/]+\/(cancel|retry|authoring|confirm|withdraw))$/,
+    /^learning\/studio\/courses(\/preview)?$/, /^learning\/studio\/courses\/[^/]+\/lessons\/[^/]+\/start$/,
+    /^learning\/studio\/topic-whiteboards\/(preflight|drafts(\/[^/]+\/(cancel|retry|confirm))?|[^/]+\/narration\/[^/]+)$/,
+    /^learning\/studio\/topic-whiteboard-visuals(\/(preflight|[^/]+\/(cancel|retry|edits)))?$/,
+    /^learning\/studio\/whiteboards(\/preview)?$/, /^learning\/studio\/whiteboards\/[^/]+\/narration\/[^/]+$/,
+    /^learning\/studio\/materials\/pdf$/, /^learning\/studio\/materials\/[^/]+\/whiteboard(\/preview)?$/,
+    /^learning\/studio\/materials\/[^/]+\/structure\/review$/,
+    /^learning\/studio\/materials\/[^/]+\/process\/retry$/,
+    /^learning\/studio\/study-packs(\/preview)?$/,
+    /^learning\/studio\/study-plans\/preview$/, /^learning\/studio\/study-plans\/[^/]+\/sessions\/[^/]+$/,
+    /^learning\/students\/[^/]+\/notebook\/[^/]+\/[^/]+\/(organize|redo|verification)$/,
+    /^diagnostics\/blueprints(\/[^/]+\/start)?$/,
+    /^diagnostics\/controlled-contrasts\/previews(\/[^/]+\/start)?$/,
+    /^diagnostics\/sessions\/[^/]+\/state$/,
+    /^diagnostics\/sessions\/[^/]+\/(responses|complete)$/, /^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/hint$/,
+    /^diagnostics\/reviews\/[^/]+\/start$/, /^learning\/plans\/[^/]+\/actions\/[^/]+\/start$/,
+    /^learning\/practice\/[^/]+\/(responses|complete)$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/hint$/,
+    /^learning\/feedback$/, /^ai\/assistant\/sessions(\/[^/]+\/(messages|turns(\/[^/]+\/(cancel|retry))?))?$/, /^learning\/media(\/[^/]+\/(complete|cancel))?$/, /^gesp\/(code|probe)-submissions$/, /^gesp\/hints$/,
+    /^ai\/assistant\/sessions\/[^/]+\/artifacts\/preflight$/,
+    /^learning\/assistant-practice\/artifacts\/[^/]+\/assignments$/,
+    /^learning\/assistant-practice\/assignments\/[^/]+\/groups\/[^/]+\/start$/,
+    /^learning\/assistant-practice\/sessions\/[^/]+\/(responses|complete|questions\/[^/]+\/help)$/,
+    /^ai\/assistant\/sessions\/[^/]+\/artifacts\/practice\/(preflight|candidates)$/,
+    /^ai\/assistant\/sessions\/[^/]+\/artifacts\/whiteboards(\/preflight)?$/,
+    /^ai\/assistant\/sessions\/[^/]+\/artifacts\/notes(\/[^/]+\/confirm)?$/,
+    /^library\/practice\/sessions\/[^/]+\/items\/[^/]+\/verification-preview$/,
+    /^library\/practice\/(preview|sessions)$/, /^library\/practice\/sessions\/[^/]+\/commands$/],
+  PUT: [/^learning\/paper-captures\/repair-uploads\/[^/]+\/chunks\/\d+$/, /^learning\/paper-captures\/uploads\/[^/]+\/chunks\/\d+$/, /^learning\/project-files\/uploads\/[^/]+\/chunks\/\d+$/, /^learning\/material-uploads\/[^/]+\/chunks\/\d+$/, /^learning\/media\/[^/]+\/chunks\/\d+$/],
+  PATCH: [/^learning\/assistant-guidance\/intents\/[^/]+\/observation$/, /^learning\/teaching-practice\/sessions\/[^/]+\/questions\/[^/]+\/draft$/, /^learning\/teaching-practice\/drafts\/[^/]+\/content$/, /^learning\/assistant-practice\/sessions\/[^/]+\/questions\/[^/]+\/draft$/,/^learning\/assistant-practice\/artifacts\/[^/]+$/,/^ai\/assistant\/sessions\/[^/]+\/artifacts\/notes\/[^/]+\/content$/,/^learning\/studio\/topic-whiteboards\/drafts\/[^/]+\/content$/,/^learning\/source-courses\/[^/]+\/checks\/[^/]+\/content$/,/^learning\/classroom\/sessions\/[^/]+\/code-drafts\/[^/]+\/[^/]+$/,/^learning\/source-courses\/[^/]+$/, /^learning\/projects\/[^/]+$/, /^learning\/classroom\/sessions\/[^/]+$/, /^diagnostics\/sessions\/[^/]+\/items\/[^/]+\/draft$/, /^learning\/practice\/[^/]+\/questions\/[^/]+\/draft$/],
+};
+
+const paperLibraryLearningRoutes: Record<string, RegExp[]> = {
+  GET: [/^library\/exports(\/[^/]+)?$/, /^library\/export-commands\/[^/]+$/, /^library\/selection-lists(\/[^/]+)?$/, /^library\/selection-commands\/[^/]+$/, /^library\/source-reads\/[^/]+$/, /^library\/papers\/[^/]+\/metadata$/],
+  POST: [/^library\/(export-preflight|export-commands)$/, /^library\/selection-commands$/, /^library\/source-reads$/],
+};
+
+@Injectable()
+export class AuthGuard implements CanActivate {
+  constructor(private readonly store: InMemoryStoreService, private readonly limits: RateLimitService) {}
+
+  async canActivate(context: ExecutionContext): Promise<boolean> {
+    const request = context.switchToHttp().getRequest<AuthenticatedRequest>();
+    const token = requestToken(request);
+    const session = token ? this.store.find('sessions', { tokenHash: hashToken(token) }) : undefined;
+    if (!session || session.revokedAt || Date.parse(session.expiresAt) <= Date.now()) {
+      throw new UnauthorizedException('Invalid session token');
+    }
+
+    const user = this.store.find('users', { id: session.userId });
+    if (!user || user.status !== 'active') {
+      throw new UnauthorizedException('User is unavailable');
+    }
+    const requestedActor = request.headers['x-study-actor'];
+    if (requestedActor !== undefined && requestedActor !== user.id) throw new ForbiddenException('学习身份已切换，请在当前账号下重新打开原入口。');
+
+    if (user.role === 'student') {
+      const access = this.store.find('studentLearningAccess', { studentId: session.studentId, userId: user.id, status: 'enabled', version: session.accessVersion });
+      const guardian = this.store.find('users', { id: session.guardianId, status: 'active', role: ['parent', 'admin'] });
+      const bound = guardian && (guardian.role === 'admin' || Boolean(this.store.find('bindings', { parentUserId: guardian.id, studentId: session.studentId, status: 'active' })));
+      if (!access || !bound) throw new UnauthorizedException('学习权限已变更，请由家长重新开启');
+      const path = request.path.replace(/^\/api\//, '').replace(/\/$/, '');
+      if (![...(learningRoutes[request.method] ?? []), ...(paperLibraryLearningRoutes[request.method] ?? [])].some(pattern => pattern.test(path))) throw new ForbiddenException('这是孩子的学习身份，请由家长登录后管理');
+    }
+
+    const writing = !['GET', 'HEAD', 'OPTIONS'].includes(request.method);
+    await this.limits.assert(`request-user:${writing ? 'write' : 'read'}:${user.id}`, writing ? 180 : 600, 60000);
+    if (writing && (request.path.startsWith('/api/ai/') || /^\/api\/learning\/classroom\/sessions\/[^/]+\/(messages|turns)$/.test(request.path) || /^\/api\/learning\/projects\/[^/]+\/advice$/.test(request.path)))
+      await this.limits.assert(`request-ai:${user.id}`, 60, 600000);
+    request.user = user;
+    request.authSession = session;
+    return true;
+  }
+}

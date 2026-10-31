@@ -187,12 +187,16 @@ def meaningful(root):
     return any((node.text or '').strip() or (node.tail or '').strip() or tag(node) in {'img', 'math'} for node in root.iter())
 
 
-def load_input(file, expected_sha256, workspace, fonts, book=None):
+def load_input(file, expected_sha256, workspace, fonts, book=None, *, raw_bytes=None, media_bytes=None):
     if book not in {None, 'practice', 'answers'}: fail('invalid_input')
-    file, workspace = Path(file), Path(workspace)
-    no_links(file); no_links(workspace)
-    if not file.is_file() or file.stat().st_size > 12 * 1024 * 1024: fail('text_limit')
-    raw = file.read_bytes()
+    if raw_bytes is None:
+        file, workspace = Path(file), Path(workspace)
+        no_links(file); no_links(workspace)
+        if not file.is_file() or file.stat().st_size > 12 * 1024 * 1024: fail('text_limit')
+        raw = file.read_bytes()
+    else:
+        if type(raw_bytes) is not bytes or len(raw_bytes) > 12 * 1024 * 1024 or not isinstance(media_bytes, dict): fail('invalid_input')
+        raw = raw_bytes
     if not SHA.fullmatch(expected_sha256) or sha256(raw).hexdigest() != expected_sha256: fail('source_changed')
     def unique_pairs(pairs):
         result = {}
@@ -210,7 +214,7 @@ def load_input(file, expected_sha256, workspace, fonts, book=None):
     if type(value['layout']['breakBetweenQuestions']) is not bool: fail('invalid_input')
     if not isinstance(value['items'], list) or not 1 <= len(value['items']) <= 100: fail('invalid_input')
     if not isinstance(value['media'], list) or len(value['media']) > 500: fail('media_invalid')
-    media, media_bytes, media_pixels = {}, 0, 0
+    media, media_total_bytes, media_pixels = {}, 0, 0
     for item in value['media']:
         keys(item, {'path', 'sha256', 'bytes', 'width', 'height'})
         digest = item['sha256']
@@ -219,8 +223,8 @@ def load_input(file, expected_sha256, workspace, fonts, book=None):
         integer(item['bytes'], 1, 12 * 1024 * 1024); integer(item['width'], 1, 6000); integer(item['height'], 1, 6000)
         media_pixels += item['width'] * item['height']
         if media_pixels > 120_000_000: fail('media_invalid')
-        media_bytes += item['bytes']
-        if media_bytes > MEDIA_LIMIT: fail('media_invalid')
+        media_total_bytes += item['bytes']
+        if media_total_bytes > MEDIA_LIMIT: fail('media_invalid')
         media[item['path']] = dict(item)
     identities, papers, text_bytes, parsed = set(), {}, len(value['title'].encode('utf8')), []
     node_count = 0
@@ -266,9 +270,14 @@ def load_input(file, expected_sha256, workspace, fonts, book=None):
     required = set(media) if book is None else {node.get('src') for group in parsed for root in group.values() for node in root.iter() if tag(node) == 'img'}
     selected_media = {}
     for name in sorted(required):
-        item = media[name]; path = workspace / name; no_links(path)
-        if not path.is_file() or path.stat().st_size != item['bytes']: fail('media_invalid')
-        data = path.read_bytes()
+        item = media[name]
+        if raw_bytes is None:
+            path = workspace / name; no_links(path)
+            if not path.is_file() or path.stat().st_size != item['bytes']: fail('media_invalid')
+            data = path.read_bytes()
+        else:
+            data = media_bytes.get(name)
+            if type(data) is not bytes or len(data) != item['bytes']: fail('media_invalid')
         if sha256(data).hexdigest() != item['sha256']: fail('media_invalid')
         try:
             with Image.open(BytesIO(data)) as image:
@@ -279,12 +288,12 @@ def load_input(file, expected_sha256, workspace, fonts, book=None):
     return value, parsed, selected_media
 
 
-def preflight(file, expected_sha256, workspace, fonts):
+def preflight(file, expected_sha256, workspace, fonts, **memory):
     """Read-only per-book projection. The full raw input is never rewritten."""
     books = {}
     for book in ['practice', 'answers']:
         try:
-            value, parsed, media = load_input(file, expected_sha256, workspace, fonts, book)
+            value, parsed, media = load_input(file, expected_sha256, workspace, fonts, book, **memory)
             books[book] = {'available': True, 'reason': None, 'items': len(value['items']), 'media': len(media)}
         except Exception as error:
             books[book] = {'available': False, 'reason': error_code(error, 'paper_export_invalid_input'), 'items': None, 'media': None}
