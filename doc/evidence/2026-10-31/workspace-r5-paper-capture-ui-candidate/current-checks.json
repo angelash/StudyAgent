@@ -1,0 +1,921 @@
+[
+  {
+    "label": "paper-editor37-http-sqlite-first",
+    "success": true,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 67,
+    "tests": [
+      {
+        "name": "<isolated-source>/apps/api/src/modules/learning/paper-capture-storage.integration.test.ts",
+        "status": "passed",
+        "assertions": [
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery recovers actual initialization and lost cancellation receipts by original upload ID across cold reopen, with private ownership and current scope authorization",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects frozen page input after actual A to B to A revisions even when the selected version fingerprint returns to its original value",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery saves actual out-of-order chunks and original bytes, recovers exact old receipts after completion, and keeps duplicate bytes as two stable page identities",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery uses two actual Nest instances to settle one complete original command and cold reopens its real original bytes",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery refuses another account and an altered original key, without replacing the exact saved input or its original result",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery retains the rejected complete command for real invalid image bytes and does not create a page or any learning evidence",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery uses the actual learning-code identity for its own subject and prevents new chunks after real permission disablement",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery cancels while the actual decoder is delayed, retains both original commands, and prevents the late normalized page from publishing",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery retains admin-authored shared paper sources on actual account closure without treating global administration access as a guardian binding",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery exports shared original pages while excluding another guardian private uploads, commands and raw author identity, then anonymously retains the real source after actual account deletion",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery deletes the last guardian child and all nested paper relations, collecting its actual bytes while preserving other families that use the same original SHA",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery closes a learner upload on its original guardian deletion, removes that raw authorization and rejects a late decoder without deleting the learner original receipts",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery defers physical collection under an actual active file lease, then settles its tombstone and safely reuses identical bytes in a newer storage generation",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery retains unknown upload-directory entries and its original cancellation receipt until generated unknown bytes are removed explicitly",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery streams an actual family archive with original/normalized/derived image bytes and explicit private partial chunks, without leaking those private chunks to a co-guardian",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects an actual incomplete original archive and invalidates a prepared archive when its child is deleted",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery collects bytes from an actual late completed file write after cancellation, waits for its live leases, and never publishes its page",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery collects an actual chunk that finished writing after its original upload was cancelled before the chunk database commit",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery expires an actual unfinished upload under an explicitly advanced engineering clock without inventing a user cancellation or learning observation",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery saves actual rotated/cropped pixels, preserves all original bytes and old receipts, rejects an ABA stale tab, and cold reopens every retained page adoption",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery allows a co-guardian to read the shared page while restricting actual page revisions to its original author",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery settles one exact revision in two actual Nest instances without duplicating its adoption or changing its original result",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects a delayed older revision after another complete command adopted a newer page version, retaining the exact rejected input",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects a learner delayed page revision after actual disablement and re-enablement, even though its current learning access is enabled again",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery holds one shared image budget across actual upload completion and page revision, returning a recoverable busy response before a third operation begins",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery retains an invalid crop command as rejected and never substitutes a normalized image for a missing original",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery prunes an actual exited child writer lease and its partial bytes from an asset-specific working directory before publishing a deleted tombstone",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery persists duplicate-byte pages as distinct ordered group sources, keeps removed pages in history, and replays the exact old result after reorder and later page editing",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects mixed scopes, repeated page identities and incompatible intent page counts, keeping the actual group and original commands unchanged",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery settles the same actual group revision in two Nest instances and verifies the reverse original-command relation during actual native cold opening",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery preserves shared group history through real author closure while deleting private group commands, and lets a learner save only its own authorized group",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects rehashed anonymous source histories despite matching actor and child deletion receipts",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery derives actual ordered PDF bytes once per original command, keeps equal PDFs as independent material origins and cold reopens their actual task relations",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery settles one original recognition and one PDF publication across two real Nest instances",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery cancels a real running derivation before publication, preserves the exact old receipts and explicitly retries with a new authorized task generation",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects late publication after actual group reordering and requires an explicit recognition of the newly confirmed source version",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery keeps the frozen older page processing version when the actual page is subsequently rotated without changing its confirmed group",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery does not reauthorize an old learner task after actual disablement and reenabling, but accepts a new original retry from the current learning-code session",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery lets another currently authorized guardian derive an independent material from a shared group and keeps it valid after the source author closes the account",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery freezes the published anonymous origin on author closure, cancels the old OCR task and rejects both publication downgrading and rehashed actual task payloads during cold opening",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery scrubs a closed original guardian from learner recognition authorization and material processing access, and cancels both real old task chains",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery protects both PDF asset generations from actual cleanup while a derivation has checkpointed its file references and is still writing the bytes",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery keeps a closed author pending derivation readable during actual cancellation and blocks the late writer",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery checks all actual page bytes and reconstructed source transforms without changing saved source records, commands or learning facts",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery reports actual missing and damaged page files without recreating them or replacing the stable original page identity",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rebuilds the actual transform instead of accepting rehashed unrelated PNG bytes with the same dimensions and an apparently verified file receipt",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery keeps actual old renderer metadata explicit when matching file bytes need a source-transform review",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery checks both actual PDF copies against their fixed source mapping and reports one missing PDF without registering a replacement material",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects unauthorized page file checks before IO and withholds an in-flight learner report after actual disablement and reenabling",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery refuses a page report if the actual file changes after hashing and before the guarded response",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery refuses a page report if the actual file asset generation changes during IO",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery accurately restores a missing or damaged original through private chunks and the actual durable worker, preserving the exact page and original receipts",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery accurately restores a missing or damaged baseline through private chunks and the actual durable worker, preserving the exact page and original receipts",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery accurately restores a missing or damaged derived through private chunks and the actual durable worker, preserving the exact page and original receipts",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery accurately restores the pdf copy of an actual frozen derivation without registering another material or changing its source PDF",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery accurately restores the material_pdf copy of an actual frozen derivation without registering another material or changing its source PDF",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects an obsolete actual repair preflight while retaining its full command and uploaded exact bytes, and restricts a co-guardian repair upload to its actual author",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery cancels an actual repair after publication IO but before completion, restores the precise previous damaged bytes, and never registers a successful repair receipt",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery stops an exact repair losing its original learner authorization after actual disablement and reenabling, rolls back IO and keeps the original queue receipt",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery anonymously retains an exact repair after the actual parent repair author closes during publication IO, with private commands removed and no late success",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery anonymously retains an exact repair after the actual admin repair author closes during publication IO, with private commands removed and no late success",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery settles an exact repair after deleting its last child during publication IO, collecting every known private candidate and damaged target byte",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery keeps an exact repair baseline when another actual family still references the same original SHA after the first child is deleted",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery uses a new explicit exact repair retry command and task generation after a real temporary chunk loss, keeping the original start receipt immutable",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery cold rejects an exact repair asset without its actual intent and an altered durable payload even after its public hash is recomputed",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery settles one exact repair original command across two actual Nest instances and retains its queued receipt after the single physical publication",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery keeps an exact repair target untouched when the uploaded candidate has valid per-chunk hashes but different complete bytes",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery collects a late exact repair chunk after actual upload cancellation while keeping the exact original cancel receipt",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery restores an exact JPEG repair original with EXIF orientation while retaining its normalized coordinate space and original JPEG MIME",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery passes an actual generated image through PDF derivation, the original Python OCR worker, persisted page checkpoints and source-course page mapping without creating learning facts",
+            "status": "skipped",
+            "failures": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "paper-editor37-http-postgres-first",
+    "success": true,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 67,
+    "tests": [
+      {
+        "name": "<isolated-source>/apps/api/src/modules/learning/paper-capture-storage.integration.test.ts",
+        "status": "passed",
+        "assertions": [
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery recovers actual initialization and lost cancellation receipts by original upload ID across cold reopen, with private ownership and current scope authorization",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects frozen page input after actual A to B to A revisions even when the selected version fingerprint returns to its original value",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery saves actual out-of-order chunks and original bytes, recovers exact old receipts after completion, and keeps duplicate bytes as two stable page identities",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery uses two actual Nest instances to settle one complete original command and cold reopens its real original bytes",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery refuses another account and an altered original key, without replacing the exact saved input or its original result",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery retains the rejected complete command for real invalid image bytes and does not create a page or any learning evidence",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery uses the actual learning-code identity for its own subject and prevents new chunks after real permission disablement",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery cancels while the actual decoder is delayed, retains both original commands, and prevents the late normalized page from publishing",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery retains admin-authored shared paper sources on actual account closure without treating global administration access as a guardian binding",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery exports shared original pages while excluding another guardian private uploads, commands and raw author identity, then anonymously retains the real source after actual account deletion",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery deletes the last guardian child and all nested paper relations, collecting its actual bytes while preserving other families that use the same original SHA",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery closes a learner upload on its original guardian deletion, removes that raw authorization and rejects a late decoder without deleting the learner original receipts",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery defers physical collection under an actual active file lease, then settles its tombstone and safely reuses identical bytes in a newer storage generation",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery retains unknown upload-directory entries and its original cancellation receipt until generated unknown bytes are removed explicitly",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery streams an actual family archive with original/normalized/derived image bytes and explicit private partial chunks, without leaking those private chunks to a co-guardian",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects an actual incomplete original archive and invalidates a prepared archive when its child is deleted",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery collects bytes from an actual late completed file write after cancellation, waits for its live leases, and never publishes its page",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery collects an actual chunk that finished writing after its original upload was cancelled before the chunk database commit",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery expires an actual unfinished upload under an explicitly advanced engineering clock without inventing a user cancellation or learning observation",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery saves actual rotated/cropped pixels, preserves all original bytes and old receipts, rejects an ABA stale tab, and cold reopens every retained page adoption",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery allows a co-guardian to read the shared page while restricting actual page revisions to its original author",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery settles one exact revision in two actual Nest instances without duplicating its adoption or changing its original result",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects a delayed older revision after another complete command adopted a newer page version, retaining the exact rejected input",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects a learner delayed page revision after actual disablement and re-enablement, even though its current learning access is enabled again",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery holds one shared image budget across actual upload completion and page revision, returning a recoverable busy response before a third operation begins",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery retains an invalid crop command as rejected and never substitutes a normalized image for a missing original",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery prunes an actual exited child writer lease and its partial bytes from an asset-specific working directory before publishing a deleted tombstone",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery persists duplicate-byte pages as distinct ordered group sources, keeps removed pages in history, and replays the exact old result after reorder and later page editing",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects mixed scopes, repeated page identities and incompatible intent page counts, keeping the actual group and original commands unchanged",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery settles the same actual group revision in two Nest instances and verifies the reverse original-command relation during actual native cold opening",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery preserves shared group history through real author closure while deleting private group commands, and lets a learner save only its own authorized group",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects rehashed anonymous source histories despite matching actor and child deletion receipts",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery derives actual ordered PDF bytes once per original command, keeps equal PDFs as independent material origins and cold reopens their actual task relations",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery settles one original recognition and one PDF publication across two real Nest instances",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery cancels a real running derivation before publication, preserves the exact old receipts and explicitly retries with a new authorized task generation",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects late publication after actual group reordering and requires an explicit recognition of the newly confirmed source version",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery keeps the frozen older page processing version when the actual page is subsequently rotated without changing its confirmed group",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery does not reauthorize an old learner task after actual disablement and reenabling, but accepts a new original retry from the current learning-code session",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery lets another currently authorized guardian derive an independent material from a shared group and keeps it valid after the source author closes the account",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery freezes the published anonymous origin on author closure, cancels the old OCR task and rejects both publication downgrading and rehashed actual task payloads during cold opening",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery scrubs a closed original guardian from learner recognition authorization and material processing access, and cancels both real old task chains",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery protects both PDF asset generations from actual cleanup while a derivation has checkpointed its file references and is still writing the bytes",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery keeps a closed author pending derivation readable during actual cancellation and blocks the late writer",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery checks all actual page bytes and reconstructed source transforms without changing saved source records, commands or learning facts",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery reports actual missing and damaged page files without recreating them or replacing the stable original page identity",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rebuilds the actual transform instead of accepting rehashed unrelated PNG bytes with the same dimensions and an apparently verified file receipt",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery keeps actual old renderer metadata explicit when matching file bytes need a source-transform review",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery checks both actual PDF copies against their fixed source mapping and reports one missing PDF without registering a replacement material",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects unauthorized page file checks before IO and withholds an in-flight learner report after actual disablement and reenabling",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery refuses a page report if the actual file changes after hashing and before the guarded response",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery refuses a page report if the actual file asset generation changes during IO",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery accurately restores a missing or damaged original through private chunks and the actual durable worker, preserving the exact page and original receipts",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery accurately restores a missing or damaged baseline through private chunks and the actual durable worker, preserving the exact page and original receipts",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery accurately restores a missing or damaged derived through private chunks and the actual durable worker, preserving the exact page and original receipts",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery accurately restores the pdf copy of an actual frozen derivation without registering another material or changing its source PDF",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery accurately restores the material_pdf copy of an actual frozen derivation without registering another material or changing its source PDF",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery rejects an obsolete actual repair preflight while retaining its full command and uploaded exact bytes, and restricts a co-guardian repair upload to its actual author",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery cancels an actual repair after publication IO but before completion, restores the precise previous damaged bytes, and never registers a successful repair receipt",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery stops an exact repair losing its original learner authorization after actual disablement and reenabling, rolls back IO and keeps the original queue receipt",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery anonymously retains an exact repair after the actual parent repair author closes during publication IO, with private commands removed and no late success",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery anonymously retains an exact repair after the actual admin repair author closes during publication IO, with private commands removed and no late success",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery settles an exact repair after deleting its last child during publication IO, collecting every known private candidate and damaged target byte",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery keeps an exact repair baseline when another actual family still references the same original SHA after the first child is deleted",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery uses a new explicit exact repair retry command and task generation after a real temporary chunk loss, keeping the original start receipt immutable",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery cold rejects an exact repair asset without its actual intent and an altered durable payload even after its public hash is recomputed",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery settles one exact repair original command across two actual Nest instances and retains its queued receipt after the single physical publication",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery keeps an exact repair target untouched when the uploaded candidate has valid per-chunk hashes but different complete bytes",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery collects a late exact repair chunk after actual upload cancellation while keeping the exact original cancel receipt",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery restores an exact JPEG repair original with EXIF orientation while retaining its normalized coordinate space and original JPEG MIME",
+            "status": "skipped",
+            "failures": []
+          },
+          {
+            "name": "actual paper image HTTP, immutable originals and native31 recovery passes an actual generated image through PDF derivation, the original Python OCR worker, persisted page checkpoints and source-course page mapping without creating learning facts",
+            "status": "skipped",
+            "failures": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "paper-editor37-boundaries-first",
+    "success": true,
+    "passed": 30,
+    "failed": 0,
+    "skipped": 0,
+    "tests": [
+      {
+        "name": "<isolated-source>/apps/api/src/infrastructure/materials-navigation.test.ts",
+        "status": "passed",
+        "assertions": [
+          {
+            "name": "materials navigation and full text recovery boundaries reconstructs only a local unambiguous materials destination",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "materials navigation and full text recovery boundaries preserves independent or explicitly empty object intent instead of a cached child",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "materials navigation and full text recovery boundaries clears concrete selections when changing object but keeps lawful list filters",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "materials navigation and full text recovery boundaries adapts old paper filters without losing the original paper or confusing page and position",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "materials navigation and full text recovery boundaries keeps the sanitized source on internal course and paper routes without changing activity IDs",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "materials navigation and full text recovery boundaries accepts complete original text only under the matching actor, object and subject",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "materials navigation and full text recovery boundaries submits every valid section and rejects excessive input without truncation",
+            "status": "passed",
+            "failures": []
+          }
+        ]
+      },
+      {
+        "name": "<isolated-source>/apps/api/src/infrastructure/workspace-exit-guard.test.ts",
+        "status": "passed",
+        "assertions": [
+          {
+            "name": "workspace activity exit boundaries keeps stage, step and presentation changes inside the same authorized activity",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "workspace activity exit boundaries treats another object, subject, course, project or route as leaving",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "workspace activity exit boundaries keeps an answer-item change in one session but protects switching the original session",
+            "status": "passed",
+            "failures": []
+          }
+        ]
+      },
+      {
+        "name": "<isolated-source>/apps/api/src/infrastructure/workspace-navigation.test.ts",
+        "status": "passed",
+        "assertions": [
+          {
+            "name": "workspace learning object and legacy navigation boundaries rejects contradictory aliases, mixed adult/child intent and unsupported subjects",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "workspace learning object and legacy navigation boundaries adapts old home and report URLs explicitly and rejects unsafe login destinations",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "workspace learning object and legacy navigation boundaries does not restore a child into explicit or saved self learning, or another actor",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "workspace learning object and legacy navigation boundaries preserves object intent when navigating and adapts historical areas",
+            "status": "passed",
+            "failures": []
+          }
+        ]
+      },
+      {
+        "name": "<isolated-source>/apps/api/src/modules/learning/paper-capture-browser-copy.test.ts",
+        "status": "passed",
+        "assertions": [
+          {
+            "name": "actual browser-format copies interoperate with the retained native paper protocol preserves frozen editor revisions through native/browser copies while keeping the old format and its fingerprint unchanged",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "actual browser-format copies interoperate with the retained native paper protocol refuses duplicate and foreign frozen editor bases even after recomputing the public manifest fingerprint",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "actual browser-format copies interoperate with the retained native paper protocol uses the same private scope and crop/rotation fingerprints as native processing for all four rotations of an actual original",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "actual browser-format copies interoperate with the retained native paper protocol round trips native to browser and back with actual original bytes, raw invalid form text and complete pending/rejected commands while performing no network action",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "actual browser-format copies interoperate with the retained native paper protocol rejects altered original bytes even after public manifest hashes are recomputed, and refuses another current actor, child or subject",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "actual browser-format copies interoperate with the retained native paper protocol preserves a real local file above the server image budget in a complete copy and stops an aborted restoration without producing a metadata-only replacement",
+            "status": "passed",
+            "failures": []
+          }
+        ]
+      },
+      {
+        "name": "<isolated-source>/apps/api/src/modules/learning/paper-capture-copy.test.ts",
+        "status": "passed",
+        "assertions": [
+          {
+            "name": "complete paper capture copies contain actual original image bytes reads the exact raw original and ordered transformation back independently of the current browser file selection",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "complete paper capture copies contain actual original image bytes refuses a metadata-only list and a page whose base64 bytes have been removed or changed even when its manifest hash is recomputed",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "complete paper capture copies contain actual original image bytes does not import another account, child or subject as the currently open private capture",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "complete paper capture copies contain actual original image bytes rejects malformed transforms and noncanonical base64 without discarding the caller original file bytes",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "complete paper capture copies contain actual original image bytes refuses oversized declared originals before attempting to decode their apparently valid base64",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "complete paper capture copies contain actual original image bytes retains exact pending upload and rejected page-revision commands alongside real original bytes and refuses moving their scope",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "complete paper capture copies contain actual original image bytes restores actual undecoded original bytes and incomplete crop text without inventing a normalized source or server upload",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "complete paper capture copies contain actual original image bytes keeps a raw file above the accepted upload limit in the bounded local backup, retaining its unsupported media type",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "complete paper capture copies contain actual original image bytes keeps removed original bytes needed by a pending complete command while restoring the exact current selected order separately",
+            "status": "passed",
+            "failures": []
+          },
+          {
+            "name": "complete paper capture copies contain actual original image bytes preserves an empty rejected raw file without claiming it is an accepted image or creating a command",
+            "status": "passed",
+            "failures": []
+          }
+        ]
+      }
+    ]
+  }
+]

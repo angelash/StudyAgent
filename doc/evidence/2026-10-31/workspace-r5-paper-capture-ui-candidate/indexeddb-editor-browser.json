@@ -1,0 +1,71 @@
+{
+  "at": "2026-10-31T01:12:28.230Z",
+  "success": true,
+  "passed": 9,
+  "failed": 0,
+  "browser": "156.0.8078.4",
+  "scope": "Isolated localhost harness with real headless Chromium, IndexedDB, tabs and WebCrypto. No product UI or physical device acceptance.",
+  "bundleSha256": "d6073dc6b6f774df9bb749484d533fb00b44a1c5a0ce73246e5acc31ebae6a49",
+  "generatedImageSha256": "8ef0caca0edba3c95a3bf3ea329d1e5ecbd712564332d03c0c96482265e7c369",
+  "inputs": [
+    {
+      "path": "apps/web/lib/paper-capture-copy.ts",
+      "sha256": "c0c60f9a05bd06626fb5ce4765561e53fce76ab7ad3ca454a3723a29b9d386c1"
+    },
+    {
+      "path": "apps/web/lib/paper-capture-local.ts",
+      "sha256": "83705b901ed918fcb095282f2993db39f229dd47c6affe1c351e2b761d682098"
+    },
+    {
+      "path": "packages/contracts/src/paper-capture.ts",
+      "sha256": "bf4074959838d2996ebd2aa752b2927dff5c6cbfec985b79e2552e95265d40de"
+    },
+    {
+      "path": "packages/contracts/src/paper-capture-origin.ts",
+      "sha256": "50aaf09ba6eb7ba8cbe0c5cfcff9d9a5d13b65094d53de397af44f520c02d04b"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "543f95ecd0e30ed1998eeb030bebbd2f6285ccb10bb42991a4b115ac268c60b1"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Actual IndexedDB retains exact PNG bytes, raw form text and original pending command across reload",
+      "passed": true
+    },
+    {
+      "name": "Two actual tabs reject stale writes while exact lost-save acknowledgements preserve the same revision",
+      "passed": true
+    },
+    {
+      "name": "Current account keys are separate and a foreign copy cannot replace the current account draft",
+      "passed": true
+    },
+    {
+      "name": "Explicit local clearing compares the reviewed revision and fingerprint and preserves another account draft",
+      "passed": true
+    },
+    {
+      "name": "Separate new and exact group slots retain independent original bytes, pending commands and editor slots across actual reload; legacy key remains unchanged",
+      "passed": true
+    },
+    {
+      "name": "Exact-slot replay and clearing preserve sibling slots, and a copy cannot be written under another slot",
+      "passed": true
+    },
+    {
+      "name": "Actual clear and recreation retain a monotonic slot revision and reject the old tab ABA write while preserving the new bytes",
+      "passed": true
+    },
+    {
+      "name": "Actual persisted byte corruption is rejected after public hashes are recomputed; original in-memory bytes remain available",
+      "passed": true
+    },
+    {
+      "name": "Simulated IndexedDB denial preserves a complete downloadable original and pending command",
+      "passed": true,
+      "condition": "Injected browser storage denial; not a real quota measurement"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-31T01:25:31.386Z",
+  "success": true,
+  "passed": 9,
+  "failed": 0,
+  "browser": "156.0.8078.4",
+  "scope": "Actual Next development workspace and real isolated SQLite Nest API, generated users/files only; one real committed response was deliberately dropped. No production runtime, physical camera, teacher or learner-effect acceptance.",
+  "inputsFile": "paper-product-sixth/inputs.json",
+  "generatedImageSha256": "74af8d8ccc268fbd8ed992d2575c4c317534150bc35720943952a64f68bb4e14",
+  "checks": [
+    {
+      "name": "Actual workspace unified add picker opens image capture; opening and empty file selection create no upload, page, group, task or learning fact",
+      "passed": true
+    },
+    {
+      "name": "Actual product IndexedDB restores two exact original files and title after full page reload without automatically uploading or recognizing",
+      "passed": true
+    },
+    {
+      "name": "Real original uploads preserve duplicate bytes as separate page IDs; dropping an actual committed complete response is recovered through its original command without a second page",
+      "passed": true
+    },
+    {
+      "name": "Actual pixel crop and clockwise rotation publish a new page version; explicit group revisions preserve exact selected order and prior history",
+      "passed": true
+    },
+    {
+      "name": "Explicit recognize creates a real durable derivation; actual worker saves the frozen PDF and original material, and the workspace returns to that material reader",
+      "passed": true
+    },
+    {
+      "name": "Persistent workspace exit guard blocks an exact capture change with unsaved input and keeps keyboard focus inside the existing confirmation dialog",
+      "passed": true
+    },
+    {
+      "name": "Actual existing workspace capture dialog rendered without horizontal content overflow at 320, 768, 1024 and 1440 pixels",
+      "passed": true
+    },
+    {
+      "name": "Blocked replaceState keeps the exact live input; an actual downloaded complete copy must be selected and read back before continuation, which opens the independent new slot",
+      "passed": true,
+      "artifact": {
+        "path": "paper-product-sixth/actual-capture.studycopy.json",
+        "sha256": "c9567508f9407c9ab5be2fc84b8256baf4802ff9f6422bf580126da65c112da3"
+      }
+    },
+    {
+      "name": "Actual native Back is blocked with unsaved new-slot input and resumes after a complete IndexedDB write/readback while the guard remains registered",
+      "passed": true
+    }
+  ],
+  "countsBefore": {
+    "paperImageUploads": 0,
+    "paperCapturePages": 0,
+    "paperCaptureGroups": 0,
+    "paperCaptureDerivations": 0,
+    "diagnosticResponses": 0,
+    "practiceAttempts": 0,
+    "paperPracticeSessions": 0,
+    "retentionExposureEvents": 0
+  },
+  "countsAfter": {
+    "paperImageUploads": 2,
+    "paperCapturePages": 2,
+    "paperCaptureGroups": 1,
+    "paperCaptureDerivations": 1,
+    "diagnosticResponses": 0,
+    "practiceAttempts": 0,
+    "paperPracticeSessions": 0,
+    "retentionExposureEvents": 0
+  },
+  "consoleErrors": []
+}

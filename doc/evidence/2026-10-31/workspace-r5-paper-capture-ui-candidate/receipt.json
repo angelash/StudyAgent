@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-31T01:29:06.131Z",
+  "state": "Isolated frozen-editor and workspace capture UI candidate; no application merge, push or deployment.",
+  "baseMain": "b29a3e97d274e5ad4fedbbf34fa73fa6db4c3b4b",
+  "archiveMain": "f707078ee57c2ad45c297b74543a60c027763a88",
+  "sourceDelta": {
+    "files": 97,
+    "uncompressedSha256": "81c0e1e1d10d33b51e9c0c1c7b86ab546319f4014ea4a5c56abbe39c2ee3f81f"
+  },
+  "build": [
+    {
+      "name": "contracts",
+      "status": 0
+    },
+    {
+      "name": "config",
+      "status": 0
+    },
+    {
+      "name": "api-types",
+      "status": 0
+    },
+    {
+      "name": "api-build",
+      "status": 0
+    }
+  ],
+  "webTypes": {
+    "status": 0
+  },
+  "checks": [
+    {
+      "label": "paper-editor37-http-sqlite-first",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 67
+    },
+    {
+      "label": "paper-editor37-http-postgres-first",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 67
+    },
+    {
+      "label": "paper-editor37-boundaries-first",
+      "passed": 30,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "productBrowser": {
+    "passed": 9,
+    "failed": 0,
+    "browser": "156.0.8078.4",
+    "scope": "Actual Next development workspace and real isolated SQLite Nest API, generated users/files only; one real committed response was deliberately dropped. No production runtime, physical camera, teacher or learner-effect acceptance."
+  },
+  "localBrowser": {
+    "passed": 9,
+    "failed": 0,
+    "browser": "156.0.8078.4",
+    "scope": "Isolated localhost harness with real headless Chromium, IndexedDB, tabs and WebCrypto. No product UI or physical device acceptance."
+  },
+  "historicalInputs": "Every earlier actual product attempt and first Web type failure is checked against unchanged current bytes or a retained exact SHA source variant. Earlier filtered/unit/local passes overlap; final current batches are reported separately.",
+  "failureHistory": "First product attempt omitted its generated origin from isolated API CORS configuration. Second reached real uploads but the harness read a raw record as a public view. Third exposed bypassed pushState. Fourth exposed Next URL-store update before an inner guard, unmounting the confirmation. Final outer guard installation and saved-draft continuation are exercised in product sixth9/0. Original type error was an unnarrowed control union.",
+  "production": {
+    "formalReadOnly": {
+      "schema": 24,
+      "revision": 187
+    },
+    "mainApplicationSource": 30,
+    "protectedFilesMatchPrior": true,
+    "noPushOrDeployment": true
+  },
+  "boundaries": {
+    "frozenPageAndGroupEditor": true,
+    "legacyCompleteCopyCompatibility": true,
+    "monotonicLocalSlots": true,
+    "exactUploadOriginalReceipts": true,
+    "currentLearnerAndGuardianPrivacy": true,
+    "actualProductCaptureUi": true,
+    "actualCaptureDownloadReadback": true,
+    "pixelCropAndGroupOrder": true,
+    "actualDerivedPdfMaterialReturn": true,
+    "exactRepairUi": false,
+    "privateUploadWithoutOriginalUi": false,
+    "repairLocalAbaStillPending": true,
+    "sourceRebuildStrategy": false,
+    "otherPdfStrategy": false,
+    "fullApiRegression": false,
+    "wholeBrowserRegression": false,
+    "teacherReview": false,
+    "physicalDevices": false,
+    "realLearnerIntervals": false,
+    "wholeGoal": "active",
+    "legacy72": "11 implemented / 50 in_progress / 11 planned / 0 verified"
+  },
+  "artifacts": [
+    {
+      "path": "01-add-materials.png",
+      "sha256": "1b2a2d595eff1f26900fb611554669db421ba0235e7764fdbd5e206a407e451a"
+    },
+    {
+      "path": "actual-capture.studycopy.json",
+      "sha256": "c9567508f9407c9ab5be2fc84b8256baf4802ff9f6422bf580126da65c112da3"
+    },
+    {
+      "path": "capture-1024.png",
+      "sha256": "cac5b47f879549c27735ca243f703378443b6095411c053ee19617cf1c5d0539"
+    },
+    {
+      "path": "capture-1440.png",
+      "sha256": "9e68e6ba0cade3fd3da75005695a572e2c3ffc406c7d9b8790f974dd3ad6c181"
+    },
+    {
+      "path": "capture-320.png",
+      "sha256": "d2fbe9abe0b11ac4961bc9d7b3d20368a77b142e9cc7da365374ea8d9a4171c7"
+    },
+    {
+      "path": "capture-768.png",
+      "sha256": "315de653a3d6d2f6f4bb725fef7fd7afe1149ea984ff028c3debb534729f41ce"
+    },
+    {
+      "path": "checked-inputs.json.gz",
+      "sha256": "49f2b2b1b49f13b885b0a96722dfce74049f7aca1ef6c6f53a4381744f64987d"
+    },
+    {
+      "path": "current-checks.json",
+      "sha256": "c4a5237203b6e98286d8e5bd72ad1813fd82e931849e09726750f4ed17d08bfc"
+    },
+    {
+      "path": "historical-source-variants.json.gz",
+      "sha256": "cfe54b68a8a2e44fa81199afe38f44f984b93ee50bd9d702e26ce1fe29d4c0fb"
+    },
+    {
+      "path": "indexeddb-editor-browser.json",
+      "sha256": "fd45151948523cea740fb9e603528b7370373c1c4b268c79fd6b9405b2fb0307"
+    },
+    {
+      "path": "original-failures-and-retries.json.gz",
+      "sha256": "87e623d64a34f508fe917f9358dce557f5b71e766137eb4660ce61ca6a3e0379"
+    },
+    {
+      "path": "production-observation.json",
+      "sha256": "665efe617cc3865ad0fa4009a0c64c3025660cb1e35be5df0fd2f8e462235916"
+    },
+    {
+      "path": "qa-runners.json.gz",
+      "sha256": "d9ab28d37918f4ba88655fd472ce1d092053e47ce6c71621f36cf2b6d4e7ffe3"
+    },
+    {
+      "path": "source-delta.json.gz",
+      "sha256": "a29c36940666c0446c56a0d23068fce685be89f52f18cf248cfccb7eab46b566"
+    },
+    {
+      "path": "workspace-product-browser.json",
+      "sha256": "32dea00903af288d279fcb57c606cf27daa16e5d57a12e0919fffb51e96f0887"
+    }
+  ]
+}
