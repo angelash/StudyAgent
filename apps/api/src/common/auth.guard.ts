@@ -99,7 +99,7 @@ const learningRoutes: Record<string, RegExp[]> = {
 };
 
 const paperLibraryLearningRoutes: Record<string, RegExp[]> = {
-  GET: [/^library\/exports(\/[^/]+)?$/, /^library\/export-commands\/[^/]+$/, /^library\/selection-lists(\/[^/]+)?$/, /^library\/selection-commands\/[^/]+$/, /^library\/source-reads\/[^/]+$/, /^library\/papers\/[^/]+\/metadata$/],
+  GET: [/^library\/exports\/[^/]+\/files\/(practice|answers)\/(pdf|docx)$/, /^library\/exports(\/[^/]+)?$/, /^library\/export-commands\/[^/]+$/, /^library\/selection-lists(\/[^/]+)?$/, /^library\/selection-commands\/[^/]+$/, /^library\/source-reads\/[^/]+$/, /^library\/papers\/[^/]+\/metadata$/],
   POST: [/^library\/(export-preflight|export-commands)$/, /^library\/selection-commands$/, /^library\/source-reads$/],
 };
 

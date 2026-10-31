@@ -12,6 +12,12 @@ import { buildPaperExportDocument } from './paper-export-document-source';
 import { paperExportDocumentSha256, paperExportExposureKey, preparePaperExport, preparePaperExportControl, type PaperExportRecord } from './paper-export-record';
 import { preparePaperSourceExposure } from './paper-source-exposure-record';
 import { PaperExportRuntimeService, type PaperExportPreflight } from './paper-export-runtime.service';
+import type { TaskRow } from '../../infrastructure/task-repository';
+import { resolve } from 'node:path';
+import { acquireStudioFileLease } from '../../infrastructure/studio-file-coordination';
+import { studyDataRoot } from '../../infrastructure/workspace-paths';
+import { openVerifiedLibraryMedia } from './verified-library-media';
+import { paperExportBookSchema, paperExportFormatSchema } from '@study-agent/contracts';
 
 type Create = Extract<PaperExportCommand, { kind: 'create' }>;
 const same = (a: unknown, b: unknown) => digest(a) === digest(b);
@@ -47,7 +53,8 @@ export class PaperExportService {
       return { book: slot.book, format: slot.format, taskId: slot.taskId, state: task.state, version: task.version, generation: task.generation,
         stage: task.progress.stage === 'reserved' || task.progress.stage === 'rendered' ? task.progress.stage : null,
         errorCode: task.errorCode && /^paper_export_[a-z0-9_]{1,80}$/.test(task.errorCode) ? task.errorCode : null,
-        publication: slot.published ? { sha256: slot.published.sha256, bytes: slot.published.bytes, pageCount: slot.published.pageCount, generation: slot.published.generation, publishedAt: slot.published.publishedAt } : null };
+        publication: slot.published ? { sha256: slot.published.sha256, bytes: slot.published.bytes, pageCount: slot.published.pageCount, generation: slot.published.generation, publishedAt: slot.published.publishedAt } : null,
+        downloadUrl: availability.available && slot.published && task.state === 'succeeded' ? '/api/library/exports/' + encodeURIComponent(record.id) + '/files/' + slot.book + '/' + slot.format : null };
     }));
     return { id: record.id, scope: structuredClone(record.scope), createdAt: record.createdAt, title: record.intent.document.title, layout: structuredClone(record.intent.document.layout),
       listId: record.intent.listId, listRevision: record.intent.listRevision, listFingerprint: record.intent.listFingerprint, intentFingerprint: record.intent.fingerprint,
@@ -121,5 +128,54 @@ export class PaperExportService {
     try { prepared = preparePaperExportControl({ actorId: request.user.id, authorization, input, record, task, at: new Date().toISOString() }); }
     catch { throw changed(); }
     this.store.append('paperExportCommands', prepared.command); await this.store.controlTask(prepared.operation); return structuredClone(prepared.command.result);
+  }
+  /** A durable worker has an original authorization snapshot, never a forged
+   * browser session. Recheck it and its actual source dependencies each time. */
+  work(task: TaskRow) {
+    const record = this.store.find('paperExports', { id: String(task.payload.exportId), actorId: task.ownerUserId });
+    if (!record || record.intent.fingerprint !== task.payload.intentFingerprint || !record.slots.some(slot => slot.taskId === task.id && slot.book === task.payload.book && slot.format === task.payload.format && !slot.published)) throw changed();
+    const activation = this.store.select('paperExportCommands', { actorId: record.actorId }).find(command => command.input.kind === 'retry' && command.result.kind === 'retry' && command.result.taskId === task.id && command.result.generation === task.generation);
+    const authorization = activation?.authorization ?? record.authorization, user = this.store.find('users', { id: record.actorId, status: 'active', role: authorization.actorRole });
+    if (!user || (user.version ?? 1) !== authorization.actorVersion) throw changed();
+    if (record.scope.kind === 'student_self') {
+      const access = authorization.learningAccess, guardian = access && this.store.find('users', { id: access.guardianId, status: 'active', role: ['parent', 'admin'] });
+      if (!access || !guardian || !this.store.find('students', { id: record.scope.studentId, userId: user.id }) || !this.store.find('studentLearningAccess', { studentId: record.scope.studentId, userId: user.id, status: 'enabled', version: access.accessVersion }) ||
+          guardian.role !== 'admin' && !this.store.find('bindings', { studentId: record.scope.studentId, parentUserId: guardian.id, status: 'active' })) throw changed();
+    }
+    assertPaperDiagnosticAvailable(this.store, record.scope);
+    const list = this.store.find('paperSelectionLists', { id: record.intent.listId, actorId: record.actorId }), saved = list?.history[record.intent.listRevision - 1];
+    if (!saved || saved.fingerprint !== record.intent.listFingerprint) throw changed();
+    const resolved = resolvePaperSelectionSources({ user, sources: saved.snapshot.items.map(item => { const { title: _title, originalPage: _page, ...source } = item.source; return source; }),
+      repo: this.repo, paper: id => this.library.practiceSource(user, id), publication: id => this.store.find('paperPublications', { paperId: id }) });
+    if (!same(resolved.map(row => row.item), saved.snapshot.items)) throw changed();
+    return { record, resolved };
+  }
+  async workerDocument(task: TaskRow) {
+    const original = this.work(task), built = await buildPaperExportDocument({ title: original.record.intent.document.title, layout: original.record.intent.document.layout, resolved: original.resolved, repo: this.repo });
+    if (!same(built.document, original.record.intent.document) || !same(built.media, original.record.intent.media)) throw changed();
+    return built;
+  }
+  async file(request: PaperLibraryActor, id: string, selectedBook: unknown, selectedFormat: unknown, signal?: AbortSignal) {
+    const book = validate(paperExportBookSchema, selectedBook), format = validate(paperExportFormatSchema, selectedFormat);
+    const grant = async () => {
+      const record = this.require(request, id), original = this.selection(request, record.intent); assertPaperDiagnosticAvailable(this.store, original.scope);
+      const slot = record.slots.find(slot => slot.book === book && slot.format === format), published = slot?.published;
+      const file = published && this.store.find('paperExportFiles', { id: published.fileId, exportId: record.id, state: 'available', generation: published.generation });
+      const task = slot && await this.store.tasks.get(slot.taskId);
+      if (!published || !file?.output || !task || task.state !== 'succeeded' || task.generation !== published.generation || task.result?.fileId !== file.id ||
+          file.output.book !== book || file.output.format !== format || file.output.sha256 !== published.sha256 || file.output.bytes !== published.bytes) throw changed();
+      return { file, publication: published, original, record, identity: digest({ exportId: record.id, intentFingerprint: record.intent.fingerprint, published, file, task: { id: task.id, version: task.version, generation: task.generation, result: task.result } }) };
+    };
+    const initial = await grant(), root = studyDataRoot(), release = await acquireStudioFileLease(root, 'paper-export', initial.file.workspace.split('/')[1]);
+    let opened: Awaited<ReturnType<typeof openVerifiedLibraryMedia>> | undefined;
+    try {
+      const built = await buildPaperExportDocument({ title: initial.record.intent.document.title, layout: initial.record.intent.document.layout,
+        resolved: initial.original.resolved, repo: this.repo, signal });
+      if (!same(built.media, initial.record.intent.media) || !same(built.document, initial.record.intent.document)) throw changed();
+      opened = await openVerifiedLibraryMedia({ path: resolve(root, initial.file.workspace, 'artifacts-' + book, book + '.' + format), size: initial.publication.bytes, sha256: initial.publication.sha256 }, signal);
+      const current = await this.store.requestContext(grant); if (signal?.aborted || current.identity !== initial.identity) throw changed();
+      return { ...opened, type: format === 'pdf' ? 'application/pdf' : 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        disposition: (format === 'pdf' ? 'inline' : 'attachment') + '; filename="studyagent-' + book + '.' + format + '"', release };
+    } catch (error) { await opened?.handle.close(); await release(); throw error; }
   }
 }

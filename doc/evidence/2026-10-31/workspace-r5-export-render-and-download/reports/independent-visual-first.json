@@ -1,0 +1,104 @@
+{
+  "at": "2026-10-31T15:42:12.032871+00:00",
+  "executions": [
+    {
+      "name": "practice-pdf",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "practice-docx",
+      "exit": 0,
+      "stdout": "Pages rendered to F:\\workspace\\github\\StudyAgent\\data\\qa\\v175a\\practice-docx\n",
+      "stderr": ""
+    },
+    {
+      "name": "answers-pdf",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "answers-docx",
+      "exit": 0,
+      "stdout": "Pages rendered to F:\\workspace\\github\\StudyAgent\\data\\qa\\v175a\\answers-docx\n",
+      "stderr": ""
+    }
+  ],
+  "observations": [
+    {
+      "name": "practice-pdf",
+      "sourceSha256": "f991d7394ad6c8dbb3db18ffb7d717fba54a29e9d7dc28128bb18d15456f46bc",
+      "renderedSha256": "f991d7394ad6c8dbb3db18ffb7d717fba54a29e9d7dc28128bb18d15456f46bc",
+      "pages": 1,
+      "sourceOrderAndBookSeparation": true,
+      "pngs": [
+        "practice-pdf\\page-1.png"
+      ],
+      "fonts": [
+        "BAAAAA+StudyAgentPrintSerif-Regular",
+        "CAAAAA+StudyAgentPrintSerif-Regular",
+        "DAAAAA+StudyAgentPrintSerif-Regular",
+        "EAAAAA+StudyAgentPrintSerif-Regular",
+        "FAAAAA+StudyAgentPrintMath-Regular",
+        "GAAAAA+StudyAgentPrintSerif-Regular"
+      ]
+    },
+    {
+      "name": "practice-docx",
+      "sourceSha256": "b5a9bf2c019f8ec99130f1a88d1ed0f392afd8204cf615b11bb84c4f09608f47",
+      "renderedSha256": "4b6af7b0785e9e2754a92c2b9dfde5a0035efab101b78df10363d3162fe727b2",
+      "pages": 1,
+      "sourceOrderAndBookSeparation": true,
+      "pngs": [
+        "practice-docx\\page-1.png"
+      ],
+      "fonts": [
+        "BAAAAA+StudyAgentPrintSerif-Regular",
+        "CAAAAA+StudyAgentPrintSerif-Regular",
+        "DAAAAA+StudyAgentPrintSerif-Regular",
+        "EAAAAA+StudyAgentPrintSerif-Regular",
+        "FAAAAA+TimesNewRomanPSMT",
+        "GAAAAA+StudyAgentPrintSerif-Regular"
+      ]
+    },
+    {
+      "name": "answers-pdf",
+      "sourceSha256": "46bce3cc5cb6eae42b5494915720d2a387088bcbf51b3929899198f4cbbb21ad",
+      "renderedSha256": "46bce3cc5cb6eae42b5494915720d2a387088bcbf51b3929899198f4cbbb21ad",
+      "pages": 1,
+      "sourceOrderAndBookSeparation": true,
+      "pngs": [
+        "answers-pdf\\page-1.png"
+      ],
+      "fonts": [
+        "BAAAAA+StudyAgentPrintSerif-Regular",
+        "CAAAAA+StudyAgentPrintSerif-Regular",
+        "DAAAAA+StudyAgentPrintSerif-Regular",
+        "EAAAAA+StudyAgentPrintSerif-Regular",
+        "FAAAAA+StudyAgentPrintSerif-Regular"
+      ]
+    },
+    {
+      "name": "answers-docx",
+      "sourceSha256": "47887733bcac257c786c5bf79287df05aae494e804dc6489a832ae119c2516af",
+      "renderedSha256": "7c5f9cb567866cc1696efb77c67674fa5cfe06778dc26bf7f3687b089fbfe22a",
+      "pages": 1,
+      "sourceOrderAndBookSeparation": true,
+      "pngs": [
+        "answers-docx\\page-1.png"
+      ],
+      "fonts": [
+        "BAAAAA+StudyAgentPrintSerif-Regular",
+        "CAAAAA+StudyAgentPrintSerif-Regular",
+        "DAAAAA+StudyAgentPrintSerif-Regular",
+        "EAAAAA+StudyAgentPrintSerif-Regular",
+        "FAAAAA+StudyAgentPrintSerif-Regular"
+      ]
+    }
+  ],
+  "publishedSourceFilesUnchanged": true,
+  "pageImagesNeedHumanInspection": true,
+  "physicalPrinterOrNativeWordEvidence": false
+}

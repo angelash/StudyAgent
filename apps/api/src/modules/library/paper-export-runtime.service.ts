@@ -7,6 +7,8 @@ import { assertNoFileLinks } from '../../infrastructure/studio-file-coordination
 import { workspaceRoot } from '../../infrastructure/workspace-paths';
 import { paperExportDocumentBytes, paperExportDocumentSha256 } from './paper-export-record';
 import type { PaperExportResolvedDocument } from './paper-export-document-source';
+import { paperExportSourceMapSchema } from '@study-agent/contracts';
+import type { PaperExportIntent } from './paper-export-record';
 
 const installationSchema = z.object({ protocol: z.literal('paper-export-installation-v1'), python: z.string(), fontRoot: z.string(), unoPython: z.string(), soffice: z.string(),
   capabilityReceipt: z.string(), manifestSha256: z.string().regex(/^[a-f0-9]{64}$/) }).strict();
@@ -53,5 +55,39 @@ export class PaperExportRuntimeService {
       if (report.inputSha256 !== expected || result.exit !== 0 || Object.values(report.books).some(book => book.available ? book.reason !== null || book.items !== input.document.items.length || book.media === null : !book.reason || book.items !== null || book.media !== null)) throw unavailable();
       return report;
     } catch { throw unavailable(); }
+  }
+  async render(workspace: string, intent: PaperExportIntent, book: 'practice' | 'answers', signal: AbortSignal) {
+    const config = await this.installation(), environment: NodeJS.ProcessEnv = {};
+    for (const name of ['SystemRoot', 'WINDIR', 'PATH', 'TEMP', 'TMP', 'COMSPEC', 'PATHEXT', 'PROGRAMFILES']) if (process.env[name]) environment[name] = process.env[name];
+    if (signal.aborted) throw new Error('paper_export_cancelled');
+    await assertNoFileLinks(workspace);
+    const result = await new Promise<{ exit: number | null; stdout: string }>((resolveResult, reject) => {
+      const child = spawn(config.python, ['-E', '-s', '-B', '-X', 'utf8', resolve(workspaceRoot(), 'scripts/processing/paper_export_supervisor.py'),
+        '--workspace', workspace, '--input', resolve(workspace, 'input.json'), '--input-sha256', intent.documentSha256, '--font-root', config.fontRoot,
+        '--uno-python', config.unoPython, '--soffice', config.soffice, '--book', book], { cwd: workspace, env: environment, windowsHide: true, shell: false, stdio: ['pipe', 'pipe', 'pipe'] });
+      let stdout = '', output = 0, invalid = false, force: ReturnType<typeof setTimeout> | undefined;
+      const abort = () => {
+        invalid = true; child.stdin.end();
+        // EOF asks the supervisor to close its job; killing that exact owner
+        // also closes the kill-on-close handle if graceful shutdown stalls.
+        force ??= setTimeout(() => child.kill(), 12000); force.unref();
+      };
+      const timer = setTimeout(abort, 240000); timer.unref(); signal.addEventListener('abort', abort, { once: true });
+      child.stdout.on('data', (chunk: Buffer) => { output += chunk.length; if (output > 2 * 1024 * 1024) abort(); else stdout += chunk.toString('utf8'); });
+      child.stderr.on('data', (chunk: Buffer) => { output += chunk.length; if (output > 2 * 1024 * 1024) abort(); });
+      child.once('error', abort); child.stdin.on('error', () => { invalid = true; });
+      child.once('close', exit => { clearTimeout(timer); if (force) clearTimeout(force); signal.removeEventListener('abort', abort);
+        if (invalid) reject(new Error(signal.aborted ? 'paper_export_cancelled' : 'paper_export_render_failed')); else resolveResult({ exit, stdout }); });
+      if (signal.aborted) abort();
+    });
+    const lines = result.stdout.trim().split(/\r?\n/); if (lines.length !== 1 || !lines[0].startsWith('PAPER_EXPORT_RESULT ')) throw Error('paper_export_render_failed');
+    let value: unknown; try { value = JSON.parse(lines[0].slice('PAPER_EXPORT_RESULT '.length)); } catch { throw Error('paper_export_render_failed'); }
+    if (result.exit !== 0) { const error = z.object({ protocol: z.literal('paper-export-render-result-v1'), error: z.string().regex(/^paper_export_[a-z0-9_]{1,80}$/) }).strict().safeParse(value); throw Error(error.success ? error.data.error : 'paper_export_render_failed'); }
+    const schema = z.object({ protocol: z.literal('paper-export-render-result-v1'), inputSha256: z.literal(intent.documentSha256), files: z.array(z.object({
+      book: z.literal(book), format: z.enum(['pdf', 'docx']), path: z.string(), bytes: z.number().int().min(1).max(80 * 1024 * 1024),
+      sha256: z.string().regex(/^[a-f0-9]{64}$/), pageCount: z.number().int().min(1).max(120), sourceMap: paperExportSourceMapSchema }).strict()).length(2) }).strict();
+    const parsed = schema.safeParse(value);
+    if (!parsed.success || new Set(parsed.data.files.map(file => file.format)).size !== 2 || parsed.data.files.some(file => file.path !== 'artifacts-' + book + '/' + book + '.' + file.format)) throw Error('paper_export_render_failed');
+    return parsed.data;
   }
 }

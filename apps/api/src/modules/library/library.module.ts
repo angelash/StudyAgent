@@ -13,6 +13,8 @@ import { PaperSelectionService } from './paper-selection.service';
 import { PaperExportController } from './paper-export.controller';
 import { PaperExportService } from './paper-export.service';
 import { PaperExportRuntimeService } from './paper-export-runtime.service';
-@Module({ imports: [DiagnosticsModule, StudentsModule], controllers: [LibraryController, MeasurementContentController, PaperPracticeController, PaperSelectionController, PaperExportController],
-  providers: [LibraryRepository, LibraryService, MeasurementContentService, PaperPracticeService, PaperSelectionService, PaperExportService, PaperExportRuntimeService], exports: [LibraryRepository, LibraryService, MeasurementContentService] })
+import { PaperExportRenderWorkerService } from './paper-export-render-worker.service';
+import { PaperExportArtifactController } from './paper-export-artifact.controller';
+@Module({ imports: [DiagnosticsModule, StudentsModule], controllers: [LibraryController, MeasurementContentController, PaperPracticeController, PaperSelectionController, PaperExportController, PaperExportArtifactController],
+  providers: [LibraryRepository, LibraryService, MeasurementContentService, PaperPracticeService, PaperSelectionService, PaperExportService, PaperExportRuntimeService, PaperExportRenderWorkerService], exports: [LibraryRepository, LibraryService, MeasurementContentService] })
 export class LibraryModule {}

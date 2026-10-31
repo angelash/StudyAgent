@@ -133,6 +133,10 @@ def table_grid(table):
 def parse_markup(value, media, fonts):
     text(value, TEXT_LIMIT, empty=True)
     if re.search(r'<!|<\?', value): fail('unsupported_markup')
+    # The workbench displays these delimiters as TeX. Printing their raw text
+    # would claim a usable formula while changing its actual presentation.
+    # Keep the complete source and refuse until a verified native adapter exists.
+    if re.search(r'\\\(|\\\[|\$\$', value): fail('unsupported_markup')
     parser = html.HTMLParser(recover=True, no_network=True)
     try: root = html.fragment_fromstring(value, create_parent='div', parser=parser)
     except (ET.ParserError, ET.XMLSyntaxError): fail('unsupported_markup')

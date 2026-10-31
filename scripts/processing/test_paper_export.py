@@ -46,6 +46,12 @@ class PaperDocumentSemantics(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, '^paper_export_unsupported_markup$'):
             parse_markup('<math><mtext>汉</mtext></math>', {}, self.fonts)
 
+    def test_workbench_tex_delimiters_are_not_printed_as_literal_formula_text(self):
+        for value in [r'<p>\(\frac{1}{2}\)</p>', r'<p>\[x^2\]</p>', '<p>$$x+1$$</p>']:
+            with self.subTest(value=value), self.assertRaisesRegex(ValueError, '^paper_export_unsupported_markup$'):
+                parse_markup(value, {}, self.fonts)
+        self.assertIsNotNone(parse_markup('<math><mfrac><mn>1</mn><mn>2</mn></mfrac></math>', {}, self.fonts))
+
     def test_unknown_meaningful_markup_is_rejected_in_all_positions(self):
         for markup in ['<p><video>keep me</video></p>', '<math><munder><mi>x</mi><mn>1</mn></munder></math>',
                        '<p style="display:none">keep me</p>', '<p onclick="run()">keep me</p>', '<!--keep me-->',
