@@ -15,6 +15,7 @@ import subprocess
 import sys
 import unicodedata
 from collections import Counter
+from copy import deepcopy
 from lxml import etree as ET
 from docx import Document
 from docx.shared import Mm, Pt, RGBColor
@@ -94,15 +95,40 @@ class Builder:
         self.document, self.media, self.cancelled = document, media, cancelled
         self.numbering = 1000
         self.question_number = self.source_position = None
+        self.math_continuations = []
 
     def check(self):
         if self.cancelled.exists(): fail('cancelled')
+
+    def following(self, paragraph, original_properties):
+        node = OxmlElement('w:p')
+        if original_properties is not None:
+            properties = deepcopy(original_properties)
+            numbering = properties.find(qn('w:numPr'))
+            if numbering is not None:
+                identifier = numbering.find(qn('w:numId'))
+                if identifier is not None:
+                    numbers = self.document.part.numbering_part.element
+                    number = numbers.find(f'w:num[@w:numId="{identifier.get(qn("w:val"))}"]', numbers.nsmap)
+                    abstract_id = None if number is None else number.find(qn('w:abstractNumId'))
+                    abstract = None if abstract_id is None else numbers.find(f'w:abstractNum[@w:abstractNumId="{abstract_id.get(qn("w:val"))}"]', numbers.nsmap)
+                    indent = None if abstract is None else abstract.find('w:lvl/w:pPr/w:ind', numbers.nsmap)
+                    if indent is not None and properties.find(qn('w:ind')) is None:
+                        indent = deepcopy(indent); indent.set(qn('w:hanging'), '0'); properties.append(indent)
+                properties.remove(numbering)
+            node.append(properties)
+        paragraph._p.addnext(node)
+        return Paragraph(node, paragraph._parent)
+
+    def finish(self):
+        for node in self.math_continuations:
+            if node.getparent() is not None and all(child.tag == qn('w:pPr') for child in node): node.getparent().remove(node)
 
     def inline(self, paragraph, node, flags=None, width=PAGE_WIDTH):
         self.check(); name = tag(node); flags = dict(flags or {})
         attributes = {'b': 'bold', 'strong': 'bold', 'i': 'italic', 'em': 'italic', 'u': 'underline', 's': 'strike', 'sub': 'subscript', 'sup': 'superscript'}
         if name in attributes: flags[attributes[name]] = True
-        if name == 'br': paragraph.add_run().add_break(); return
+        if name == 'br': paragraph.add_run().add_break(); return paragraph
         if name == 'img':
             image = self.media[node.get('src')]
             points = min(width, image['width'] * 72 / 96, 150 * 72 / 25.4 * image['width'] / image['height'])
@@ -111,8 +137,21 @@ class Builder:
             effect = OxmlElement('wp:effectExtent')
             for side in ['l', 't', 'r', 'b']: effect.set(side, '0')
             picture._inline.insert(1, effect)
-            picture._inline.docPr.set('descr', node.get('alt')); return
-        if name == 'math': paragraph._p.append(omml(node)); return
+            picture._inline.docPr.set('descr', node.get('alt')); return paragraph
+        if name == 'math':
+            result = omml(node)
+            if node.get('display') == 'block':
+                original_properties = deepcopy(paragraph._p.pPr)
+                if any(child.tag != qn('w:pPr') for child in paragraph._p):
+                    paragraph.paragraph_format.keep_with_next = True
+                    paragraph = self.following(paragraph, original_properties)
+                paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                display = OxmlElement('m:oMathPara'); properties = OxmlElement('m:oMathParaPr')
+                alignment = OxmlElement('m:jc'); alignment.set(qn('m:val'), 'center'); properties.append(alignment)
+                display.append(properties); display.append(result); paragraph._p.append(display)
+                paragraph = self.following(paragraph, original_properties); self.math_continuations.append(paragraph._p)
+                return paragraph
+            paragraph._p.append(result); return paragraph
         if name == 'ruby':
             ruby = OxmlElement('w:ruby'); properties = setting(ruby, 'rubyPr')
             setting(properties, 'rubyAlign', val='center'); setting(properties, 'hps', val=12); setting(properties, 'hpsBaseText', val=24)
@@ -121,10 +160,11 @@ class Builder:
                 container = setting(ruby, role); run = OxmlElement('w:r'); container.append(run)
                 rpr = setting(run, 'rPr'); setting(rpr, 'rFonts', ascii=SERIF, hAnsi=SERIF, eastAsia=SERIF)
                 setting(run, 't').text = content
-            run = paragraph.add_run(); run._r.append(ruby); return
+            run = paragraph.add_run(); run._r.append(ruby); return paragraph
         plain(paragraph, node.text, flags)
         for child in node:
-            self.inline(paragraph, child, flags, width); plain(paragraph, child.tail, flags)
+            paragraph = self.inline(paragraph, child, flags, width); plain(paragraph, child.tail, flags)
+        return paragraph
 
     def blocks(self, parent, root, width=PAGE_WIDTH):
         pending = None
@@ -135,7 +175,7 @@ class Builder:
             self.check(); name = tag(node)
             if name in INLINE:
                 if pending is None: pending = parent.add_paragraph()
-                self.inline(pending, node, width=width)
+                pending = self.inline(pending, node, width=width)
             elif name == 'table':
                 if parent.paragraphs: parent.paragraphs[-1].paragraph_format.keep_with_next = True
                 self.table(parent, node, width); pending = None
@@ -144,7 +184,7 @@ class Builder:
                 self.blocks(parent, node, width); pending = None
             else:
                 paragraph = parent.add_paragraph(style={'h1': 'Heading 1', 'h2': 'Heading 2', 'h3': 'Heading 3'}.get(name, 'Normal'))
-                self.inline(paragraph, node, width=width); pending = None
+                paragraph = self.inline(paragraph, node, width=width); pending = None
                 if index + 1 < len(nodes) and any(tag(child) == 'img' for child in nodes[index + 1].iter()):
                     paragraph.paragraph_format.keep_with_next = True
             if node.tail and (pending is not None or node.tail.strip()):
@@ -174,7 +214,7 @@ class Builder:
                     self.list(parent, child, width, depth + 1); paragraph = None
                 elif tag(child) in INLINE:
                     if paragraph is None: paragraph = parent.add_paragraph()
-                    self.inline(paragraph, child, width=width)
+                    paragraph = self.inline(paragraph, child, width=width)
                 else:
                     # Block children remain real paragraphs in the list item's flow.
                     holder = ET.Element('div'); holder.append(ET.fromstring(ET.tostring(child, with_tail=False)))
@@ -298,6 +338,13 @@ def reference_section(parent, label, content, builder):
     paragraph_node = first if first.tag == qn('w:p') else next(first.iter(qn('w:p')), None)
     if paragraph_node is None: fail('layout_invalid')
     paragraph = Paragraph(paragraph_node, parent)
+    if paragraph_node.find(qn('m:oMathPara')) is not None:
+        # A standalone equation cannot also own a prose label: Writer would
+        # center the label and equation together. Keep this small label next
+        # to its own equation, while preserving the existing table behavior.
+        label_node = OxmlElement('w:p'); paragraph_node.addprevious(label_node)
+        paragraph = Paragraph(label_node, parent); paragraph_node = label_node
+        paragraph.paragraph_format.keep_with_next = True
     # Keep the label with actual content as one native paragraph. A separate
     # keepNext label forces a whole split table forward in Writer; another
     # nested reference table can lose prose at its page boundary.
@@ -347,6 +394,7 @@ def write_book(value, parsed, media, fonts, book, destination, cancelled):
         compact_empty(separator)
         setting(separator._p, 'bookmarkStart', id=1000 + number, name=f'PaperEnd{number:04d}')
         setting(separator._p, 'bookmarkEnd', id=1000 + number)
+    builder.finish()
     output = BytesIO(); document.save(output)
     for paragraph in document.element.iter(qn('w:p')):
         content = ''.join(node.text or '' for node in paragraph.iter() if node.tag in {qn('w:t'), qn('m:t')})

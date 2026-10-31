@@ -1,0 +1,34 @@
+require('reflect-metadata');
+const fs = require('node:fs'), path = require('node:path'), crypto = require('node:crypto'), { DatabaseSync } = require('node:sqlite');
+const root = path.resolve(__dirname, '../../..'), candidate = path.join(root, 'data/qa/p179'), directory = path.join(root, 'data/qa/w180old');
+if (fs.existsSync(directory)) throw Error('Unused legacy source directory required'); fs.mkdirSync(directory);
+const assets = require(path.join(candidate, 'scripts/qa/paper-practice-fixture.cjs')).preparePaperPracticeAssets(directory, root);
+const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex'), request = require('supertest');
+const original = new DatabaseSync(path.join(assets, 'shijuanbao/archive.sqlite3')), catalog = new DatabaseSync(path.join(assets, 'catalog.sqlite3'));
+const paperId = 'qa:paper:0:complete', raw = JSON.parse(original.prepare('SELECT detail FROM papers WHERE key=?').get(paperId).detail);
+Object.assign(raw.questions[0], { title: '<p>LEGACYORIGINAL：原练习无需公式。</p>', options: [], answer: '<p>LEGACYREFERENCE：\\(\\frac{1}{2}\\)</p>', details: null });
+const source = JSON.stringify(raw); original.prepare('UPDATE papers SET detail=? WHERE key=?').run(source, paperId); catalog.prepare('UPDATE papers SET detail_sha256=? WHERE id=?').run(sha(source), paperId); original.close(); catalog.close();
+Object.assign(process.env, { NODE_ENV: 'development', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_ASSET_ROOT: assets, STUDY_WORKER_ENABLED: 'false', STUDY_SEED_FOUNDATION: 'false', STUDY_PAPER_EXPORT_INSTALLATION: path.join(root, 'data/qa/er2/installation.json'), XIAOJIU_CHAT_ENABLED: 'false', OPENAI_API_KEY: '' }); delete process.env.DATABASE_URL;
+const load = name => require(path.join(candidate, 'apps/api/dist/apps/api/src', name + '.js'));
+let app;
+(async () => {
+  const assert = require('node:assert/strict'), { NestFactory } = require('@nestjs/core');
+  app = await NestFactory.create(load('app.module').AppModule, { logger: false }); app.setGlobalPrefix('api'); await app.init();
+  const store = app.get(load('infrastructure/in-memory-store.service').InMemoryStoreService);
+  async function call(actor, method, route, input) { let req = request(app.getHttpServer())[method]('/api' + route); if (actor) req = req.set('Authorization', 'Bearer ' + actor.token); if (input) req = req.send(input); const response = await req; assert.equal(response.status, method === 'post' ? 201 : 200, JSON.stringify(response.body.error)); return response.body.data; }
+  const actor = await call(null, 'post', '/auth/register', { principal: 'legacy-native-tex-' + crypto.randomUUID(), credential: 'synthetic-legacy-only' });
+  await store.transaction(() => { store.find('users', { id: actor.user.id }).role = 'admin'; });
+  await call(actor, 'post', '/library/papers/' + paperId + '/publication', { status: 'published', licenseEvidence: 'Original synthetic old-book fixture', contentReviewed: true, mediaReviewed: true, reason: 'Prove actual old native input remains readable' });
+  const metadata = await call(actor, 'get', '/library/papers/' + paperId + '/metadata');
+  const list = await call(actor, 'post', '/library/selection-commands', { kind: 'create', requestKey: crypto.randomUUID(), scope: { kind: 'private_preparation', studentId: null }, title: 'Legacy book', items: metadata.positions.slice(0, 1) });
+  const input = { kind: 'create', requestKey: crypto.randomUUID(), listId: list.listId, listRevision: list.revision, listFingerprint: list.fingerprint, title: '原始旧练习册', layout: { answerLines: 2, breakBetweenQuestions: false }, books: ['practice'], formats: ['pdf'] };
+  const preflight = await call(actor, 'post', '/library/export-preflight', input); assert.equal(preflight.books.practice.available, true); assert.equal(preflight.books.answers.available, false);
+  const result = await call(actor, 'post', '/library/export-commands', input), worker = app.get(load('modules/library/paper-export-render-worker.service').PaperExportRenderWorkerService);
+  assert.equal(await worker.runNext(), true);
+  const view = await call(actor, 'get', '/library/exports/' + result.exportId); assert.equal(view.slots[0].state, 'succeeded');
+  const record = await store.requestContext(() => structuredClone(store.find('paperExports', { id: result.exportId })));
+  assert(record.intent.document.items[0].reference.answerHtml.includes('\\(\\frac'));
+  fs.writeFileSync(path.join(__dirname, 'legacy-runtime.private.json'), JSON.stringify({ directory, assets, actor, input, result, file: view.slots[0], intentFingerprint: record.intent.fingerprint }), { flag: 'wx', mode: 0o600 });
+  const report = { at: new Date().toISOString(), oldCandidate: 'data/qa/p179', oldSourceSha256: sha(fs.readFileSync(path.join(candidate, 'apps/api/src/modules/library/paper-export-document-source.ts'))), preflight, actualLegacyRawUnusedTex: true, generatedSlot: { book: view.slots[0].book, format: view.slots[0].format, state: view.slots[0].state, publication: view.slots[0].publication }, inputSha256: sha(JSON.stringify(input)), originalSourceSha256: sha(source), originalCommandAndResultPrivate: true };
+  fs.writeFileSync(path.join(__dirname, 'legacy-baseline-first.json'), JSON.stringify(report, null, 2), { flag: 'wx' }); console.log(JSON.stringify({ actualOldRenderedSlot: true, legacyRawReferenceTex: true }));
+})().catch(error => { console.error(error); process.exitCode = 1; }).finally(async () => { await app?.close(); });

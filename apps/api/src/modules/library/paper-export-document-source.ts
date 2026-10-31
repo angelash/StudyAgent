@@ -5,8 +5,9 @@ import sharp from 'sharp';
 import type { PaperExportDocument } from '@study-agent/contracts';
 import type { LibraryRepository } from './library.repository';
 import type { ResolvedPaperSelection } from './paper-selection-source';
-import { assertPaperExportDocument, paperExportMediaId, paperExportSource, type PaperExportIntent } from './paper-export-record';
+import { assertPaperExportDocument, paperExportDocumentSha256, paperExportMediaId, paperExportSource, type PaperExportIntent } from './paper-export-record';
 import { openVerifiedLibraryMedia } from './verified-library-media';
+import { paperExportTex } from './paper-export-tex';
 
 const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
 const failure = () => new ConflictException({ code: 'paper_export_media_invalid', message: '原题图片暂不能完整导出，请保留清单并核对原始PNG资料。' });
@@ -39,7 +40,7 @@ const text = (value: unknown) => {
 };
 export type PaperExportResolvedDocument = { document: PaperExportDocument; media: PaperExportIntent['media']; mediaBytes: Map<string, Buffer> };
 export async function buildPaperExportDocument(input: { title: string; layout: PaperExportDocument['layout']; resolved: readonly ResolvedPaperSelection[];
-  repo: Pick<LibraryRepository, 'media'>; signal?: AbortSignal }): Promise<PaperExportResolvedDocument> {
+  repo: Pick<LibraryRepository, 'media'>; signal?: AbortSignal; frozenDocument?: PaperExportDocument }): Promise<PaperExportResolvedDocument> {
   const urls = new Map<string, { paperId: string; sourceUrl: string }>();
   const raw = input.resolved.map(({ item, original }) => {
     if (!Array.isArray(original.options) && original.options != null) throw new ConflictException('原选项结构无法完整解析。');
@@ -94,5 +95,17 @@ export async function buildPaperExportDocument(input: { title: string; layout: P
     }), media: [...mediaBytes.keys()].sort((a, b) => a.localeCompare(b)).map(file => {
       const descriptor = media.find(item => file === 'media/' + item.sha256 + '.png')!; return { path: file, sha256: descriptor.sha256, bytes: descriptor.bytes, width: descriptor.width, height: descriptor.height };
     }) };
+  // Older successful practice books can contain unused, unsupported TeX in the
+  // answer fields. Reconstruct that exact legacy input before considering the
+  // new adapter; a new conversion must never invalidate their saved receipts.
+  if (!input.frozenDocument || paperExportDocumentSha256(document) !== paperExportDocumentSha256(input.frozenDocument)) {
+    for (const item of document.items) {
+      item.promptHtml = paperExportTex(item.promptHtml);
+      for (const option of item.optionHtml) option.html = paperExportTex(option.html);
+      if (item.reference) for (const key of ['answerHtml', 'analysisHtml'] as const) {
+        if (item.reference[key] !== null) item.reference[key] = paperExportTex(item.reference[key]);
+      }
+    }
+  }
   assertPaperExportDocument(document); return { document, media, mediaBytes };
 }

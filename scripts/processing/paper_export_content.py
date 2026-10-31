@@ -17,7 +17,7 @@ SHA = re.compile(r'[a-f0-9]{64}')
 IDENTIFIER = re.compile(r'[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}')
 INLINE = {'span', 'strong', 'b', 'em', 'i', 'u', 's', 'sub', 'sup', 'br', 'code', 'ruby', 'rb', 'rt', 'rp', 'img', 'math'}
 BLOCK = {'p', 'div', 'h1', 'h2', 'h3', 'blockquote', 'ul', 'ol', 'li', 'table', 'thead', 'tbody', 'tfoot', 'tr', 'td', 'th', 'caption'}
-MATH = {'math', 'mrow', 'mi', 'mn', 'mo', 'mtext', 'mfrac', 'msup', 'msub', 'msubsup', 'msqrt', 'mroot', 'mfenced'}
+MATH = {'math', 'mrow', 'mi', 'mn', 'mo', 'mtext', 'mfrac', 'msup', 'msub', 'msubsup', 'msqrt', 'mroot', 'mfenced', 'semantics', 'annotation'}
 
 
 def fail(code):
@@ -66,15 +66,23 @@ def validate_math(node, fonts):
     if name == 'math': attributes |= {'display'}
     if name in {'mi', 'mn', 'mo', 'mtext'}: attributes |= {'mathvariant'}
     if name == 'mfenced': attributes |= {'open', 'close', 'separators'}
+    if name == 'mo': attributes |= {'fence'}
+    if name == 'annotation': attributes = {'encoding'}
     if set(node.attrib) - attributes: fail('unsupported_markup')
     if node.get('mathvariant', 'normal') != 'normal' or node.get('display', 'inline') not in {'inline', 'block'}:
         fail('unsupported_markup')
+    if name == 'annotation':
+        if node.get('encoding') != 'application/x-tex' or nodes or tag(node.getparent()) != 'semantics': fail('unsupported_markup')
+        text(node.text, 2000)
+        return
+    if name == 'semantics':
+        if len(nodes) != 2 or tag(nodes[0]) in {'annotation', 'semantics'} or tag(nodes[1]) != 'annotation': fail('unsupported_markup')
     if name in {'mi', 'mn', 'mo', 'mtext'}:
-        if nodes or not (node.text or '').strip(): fail('unsupported_markup')
+        if nodes or not (node.text or '').strip() and not (name == 'mo' and node.get('fence') == 'true'): fail('unsupported_markup')
         # Actual LibreOffice Math uses a separate CJK fallback for mtext despite
         # FontNameText. Keep prose outside formulas until that path is proven.
         if name == 'mtext' and any(ord(char) > 127 for char in node.text): fail('unsupported_markup')
-        glyphs(node.text, fonts[0 if name == 'mtext' else 1])
+        glyphs(node.text or '', fonts[0 if name == 'mtext' else 1])
     elif (node.text or '').strip() or any((child.tail or '').strip() for child in nodes):
         fail('unsupported_markup')
     required = {'mfrac': 2, 'msup': 2, 'msub': 2, 'msubsup': 3, 'mroot': 2}
@@ -85,6 +93,12 @@ def validate_math(node, fonts):
             value = node.get(key, default)
             if len(value) != 1: fail('unsupported_markup')
             glyphs(value, fonts[1])
+    if name == 'mo' and 'fence' in node.attrib:
+        if node.get('fence') != 'true' or (node.text or '') not in {'', '(', ')', '[', ']', '{', '}', '|', '‖', '⌊', '⌋', '⌈', '⌉'}: fail('unsupported_markup')
+        parent = node.getparent()
+        if tag(parent) != 'mrow' or len(parent) < 2 or node not in {parent[0], parent[-1]}: fail('unsupported_markup')
+    if name == 'mrow' and any(child.get('fence') is not None for child in nodes):
+        if len(nodes) < 3 or nodes[0].get('fence') != 'true' or nodes[-1].get('fence') != 'true' or any(child.get('fence') is not None for child in nodes[1:-1]): fail('unsupported_markup')
     for child in nodes: validate_math(child, fonts)
 
 

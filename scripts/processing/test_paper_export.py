@@ -16,7 +16,7 @@ from docx import Document
 from docx.oxml.ns import qn
 from paper_export_content import load_input, parse_markup, table_grid, preflight, text
 from paper_export_protocol import error_code
-from paper_export_document import Builder, styles, inspect_visual_bounds, inspect_continuation_labels, inspect_text_coverage
+from paper_export_document import Builder, styles, inspect_visual_bounds, inspect_continuation_labels, inspect_text_coverage, reference_section
 from paper_export_math import omml
 
 
@@ -51,6 +51,70 @@ class PaperDocumentSemantics(unittest.TestCase):
             with self.subTest(value=value), self.assertRaisesRegex(ValueError, '^paper_export_unsupported_markup$'):
                 parse_markup(value, {}, self.fonts)
         self.assertIsNotNone(parse_markup('<math><mfrac><mn>1</mn><mn>2</mn></mfrac></math>', {}, self.fonts))
+
+    def test_semantics_retains_the_expression_and_never_prints_tex_annotation(self):
+        value = '<math><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><msubsup><mi>x</mi><mn>1</mn><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\\frac{1}{2}+x_1^2</annotation></semantics></math>'
+        result = omml(parse_markup(value, {}, self.fonts)[0])
+        ns = {'m': 'http://schemas.openxmlformats.org/officeDocument/2006/math'}
+        self.assertEqual(result.xpath('string(m:f/m:num/m:r/m:t)', namespaces=ns), '1')
+        self.assertEqual(result.xpath('string(m:f/m:den/m:r/m:t)', namespaces=ns), '2')
+        self.assertEqual(result.xpath('string(m:sSubSup/m:sub/m:r/m:t)', namespaces=ns), '1')
+        self.assertNotIn('frac', ET.tostring(result).decode())
+
+    def test_semantics_cannot_hide_an_invalid_or_missing_primary_expression(self):
+        for body in ['<annotation encoding="application/x-tex">x</annotation>',
+                     '<mrow><menclose><mi>x</mi></menclose></mrow><annotation encoding="application/x-tex">x</annotation>',
+                     '<mi>x</mi><annotation encoding="text/html">x</annotation>',
+                     '<mi>x</mi><annotation encoding="application/x-tex"><mi>x</mi></annotation>',
+                     '<mi>x</mi><annotation encoding="application/x-tex">' + 'a'*2001 + '</annotation>',
+                     '<mi>x</mi><annotation encoding="application/x-tex">x</annotation><mi>y</mi>']:
+            with self.subTest(body=body), self.assertRaises(ValueError): parse_markup('<math><semantics>' + body + '</semantics></math>', {}, self.fonts)
+
+    def test_katex_fences_become_growing_native_delimiters_around_the_full_expression(self):
+        markup = '<math><mrow><mo fence="true">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>+</mo><mi>x</mi><mo fence="true">)</mo></mrow></math>'
+        result = omml(parse_markup(markup, {}, self.fonts)[0]); ns = {'m': 'http://schemas.openxmlformats.org/officeDocument/2006/math'}
+        self.assertEqual(result.xpath('string(m:d/m:dPr/m:begChr/@m:val)', namespaces=ns), '(')
+        self.assertEqual(result.xpath('string(m:d/m:dPr/m:endChr/@m:val)', namespaces=ns), ')')
+        self.assertEqual(result.xpath('string(m:d/m:e/m:f/m:den/m:r/m:t)', namespaces=ns), '2')
+        self.assertEqual(result.xpath('string(m:d/m:e/m:r[last()]/m:t)', namespaces=ns), 'x')
+        for invalid in [markup.replace('fence="true"', 'fence="false"', 1), markup.replace('<mo fence="true">)</mo>', ''), markup.replace('<mo>+</mo>', '<mo fence="true">|</mo>')]:
+            with self.subTest(invalid=invalid), self.assertRaises(ValueError): parse_markup(invalid, {}, self.fonts)
+
+    def test_display_math_is_a_native_centered_equation_block_with_original_surrounding_prose(self):
+        root = parse_markup('<p>Before<math display="block"><mi>x</mi></math>After</p>', {}, self.fonts)
+        document = Document(); styles(document, 'test')
+        builder = Builder(document, {}, Path('this-cancel-marker-does-not-exist')); builder.blocks(document, root); builder.finish()
+        self.assertEqual([paragraph.text for paragraph in document.paragraphs], ['Before', '', 'After'])
+        self.assertIsNone(document.paragraphs[0].alignment)
+        self.assertIsNone(document.paragraphs[2].alignment)
+        self.assertEqual(len(document.element.xpath('.//m:oMathPara/m:oMath')), 1)
+        self.assertEqual(document.element.xpath('.//m:oMathPara/m:oMathParaPr/m:jc')[0].get(qn('m:val')), 'center')
+
+    def test_display_math_preserves_nested_emphasis_and_list_continuation_without_repeating_numbers(self):
+        root = parse_markup('<ol><li>Before<strong> bold<math display="block"><mi>x</mi></math>After</strong> tail</li></ol>', {}, self.fonts)
+        document = Document(); styles(document, 'test')
+        builder = Builder(document, {}, Path('this-cancel-marker-does-not-exist')); builder.blocks(document, root); builder.finish()
+        self.assertEqual([paragraph.text for paragraph in document.paragraphs], ['Before bold', '', 'After tail'])
+        self.assertEqual(len(document.element.xpath('.//w:numPr')), 1)
+        self.assertEqual(document.paragraphs[2].paragraph_format.left_indent.pt, 27)
+        self.assertTrue(document.paragraphs[2].runs[0].bold)
+        self.assertFalse(bool(document.paragraphs[2].runs[-1].bold))
+
+    def test_display_math_does_not_leave_empty_continuations_or_center_the_next_source_paragraph(self):
+        root = parse_markup('<p><math display="block"><mi>x</mi></math></p><p>After</p>', {}, self.fonts)
+        document = Document(); styles(document, 'test')
+        builder = Builder(document, {}, Path('this-cancel-marker-does-not-exist')); builder.blocks(document, root); builder.finish()
+        self.assertEqual([paragraph.text for paragraph in document.paragraphs], ['', 'After'])
+        self.assertIsNone(document.paragraphs[1].alignment)
+
+    def test_standalone_reference_equation_does_not_center_its_prose_label(self):
+        root = parse_markup('<math display="block"><mi>x</mi></math>', {}, self.fonts)
+        document = Document(); styles(document, 'test'); cell = document.add_table(rows=1, cols=1).cell(0, 0)
+        builder = Builder(document, {}, Path('this-cancel-marker-does-not-exist')); reference_section(cell, 'Reference', root, builder); builder.finish()
+        labels = [paragraph for paragraph in cell.paragraphs if paragraph.text == 'Reference：\n']
+        self.assertEqual(len(labels), 1); self.assertIsNone(labels[0].alignment)
+        equations = [paragraph for paragraph in cell.paragraphs if paragraph._p.find(qn('m:oMathPara')) is not None]
+        self.assertEqual(len(equations), 1); self.assertEqual(equations[0].text, '')
 
     def test_unknown_meaningful_markup_is_rejected_in_all_positions(self):
         for markup in ['<p><video>keep me</video></p>', '<math><munder><mi>x</mi><mn>1</mn></munder></math>',

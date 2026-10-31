@@ -1,0 +1,88 @@
+{
+  "receipts": [
+    {
+      "book": "practice",
+      "format": "pdf",
+      "bytes": 50833,
+      "sha256": "9cecc4765e547b2ef1b6a4d66cf26d43e3bbe83320bba493dfd69c3cc05260fc",
+      "pages": 1
+    },
+    {
+      "book": "practice",
+      "format": "docx",
+      "bytes": 9402892,
+      "sha256": "efd68bbfb7ff6df5d237c78e104514dd4e3a71a9e05b601412f2b66b5084d97b",
+      "pages": 1
+    },
+    {
+      "book": "answers",
+      "format": "pdf",
+      "bytes": 48248,
+      "sha256": "517b673dde1ae1e1db5823d643af3bde767ea07f0a961d13da2fd64abc3c3215",
+      "pages": 1
+    },
+    {
+      "book": "answers",
+      "format": "docx",
+      "bytes": 9402605,
+      "sha256": "369c6642d5bf7e4dbdb57dc09664dc8cd7ec213b90aa6716203ccf6652c4dfda",
+      "pages": 1
+    },
+    {
+      "variant": 30,
+      "availability": {
+        "practice": {
+          "available": true,
+          "reason": null,
+          "items": 2,
+          "media": 0
+        },
+        "answers": {
+          "available": false,
+          "reason": "paper_export_unsupported_markup",
+          "items": null,
+          "media": null
+        }
+      },
+      "noQueueOrNativeWrite": true
+    },
+    {
+      "variant": 31,
+      "availability": {
+        "practice": {
+          "available": false,
+          "reason": "paper_export_unsupported_markup",
+          "items": null,
+          "media": null
+        },
+        "answers": {
+          "available": true,
+          "reason": null,
+          "items": 2,
+          "media": 0
+        }
+      },
+      "noQueueOrNativeWrite": true
+    },
+    {
+      "variant": 32,
+      "availability": {
+        "practice": {
+          "available": true,
+          "reason": null,
+          "items": 2,
+          "media": 0
+        },
+        "answers": {
+          "available": false,
+          "reason": "paper_export_unsupported_markup",
+          "items": null,
+          "media": null
+        }
+      },
+      "noQueueOrNativeWrite": true
+    }
+  ],
+  "generatedOnly": true,
+  "noTeacherPhysicalPrinterOrNewMachineClaim": true
+}

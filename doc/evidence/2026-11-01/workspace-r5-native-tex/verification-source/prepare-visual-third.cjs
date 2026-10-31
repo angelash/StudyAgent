@@ -1,0 +1,10 @@
+const fs = require('node:fs'), path = require('node:path');
+let source = fs.readFileSync(path.join(__dirname, 'visual-second.py'), 'utf8');
+source = source.replaceAll('w180t1', 'w180t2').replaceAll('v180t2', 'v180t3').replaceAll('ct180t2', 'ct180t3').replaceAll('visual-second.json', 'visual-third.json');
+const marker = "    production = out / ('production-' + book)";
+if (!source.includes(marker)) throw Error('Expected exact visual source');
+source = source.replace(marker, "    equations = xml.xpath('.//w:p[m:oMathPara]', namespaces=ns)\n    assert all(not paragraph.xpath('./w:r/w:t', namespaces=ns) for paragraph in equations), 'Display equations must not center surrounding prose or labels'\n" + marker);
+const textMarker = "        text = ''.join(page.get_text() for page in actual)";
+if (!source.includes(textMarker)) throw Error('Expected PDF text stage');
+source = source.replace(textMarker, textMarker + "\n        if book == 'practice':\n            words = [word for page in actual for word in page.get_text('words')]\n            before = next(word for word in words if word[4].startswith('PREBLOCK'))\n            after = next(word for word in words if word[4].startswith('POSTBLOCK'))\n            assert after[1] > before[1] + 12, 'Before/after prose must lie on separate lines around the equation'\n            assert after[0] < 100, 'Following prose must return to the original left edge'\n");
+fs.writeFileSync(path.join(__dirname, 'visual-third.py'), source, { flag: 'wx' });

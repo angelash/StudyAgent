@@ -151,7 +151,7 @@ export class PaperExportService {
     return { record, resolved };
   }
   async workerDocument(task: TaskRow) {
-    const original = this.work(task), built = await buildPaperExportDocument({ title: original.record.intent.document.title, layout: original.record.intent.document.layout, resolved: original.resolved, repo: this.repo });
+    const original = this.work(task), built = await buildPaperExportDocument({ title: original.record.intent.document.title, layout: original.record.intent.document.layout, resolved: original.resolved, repo: this.repo, frozenDocument: original.record.intent.document });
     if (!same(built.document, original.record.intent.document) || !same(built.media, original.record.intent.media)) throw changed();
     return built;
   }
@@ -170,7 +170,7 @@ export class PaperExportService {
     let opened: Awaited<ReturnType<typeof openVerifiedLibraryMedia>> | undefined;
     try {
       const built = await buildPaperExportDocument({ title: initial.record.intent.document.title, layout: initial.record.intent.document.layout,
-        resolved: initial.original.resolved, repo: this.repo, signal });
+        resolved: initial.original.resolved, repo: this.repo, signal, frozenDocument: initial.record.intent.document });
       if (!same(built.media, initial.record.intent.media) || !same(built.document, initial.record.intent.document)) throw changed();
       opened = await openVerifiedLibraryMedia({ path: resolve(root, initial.file.workspace, 'artifacts-' + book, book + '.' + format), size: initial.publication.bytes, sha256: initial.publication.sha256 }, signal);
       const current = await this.store.requestContext(grant); if (signal?.aborted || current.identity !== initial.identity) throw changed();

@@ -24,6 +24,10 @@ def convert(node):
     items = list(node)
     if name in {'mi', 'mn', 'mo', 'mtext'}:
         return [math_run(node.text, 'StudyAgent Print Serif' if name == 'mtext' else 'StudyAgent Print Math')]
+    if name == 'semantics': return convert(items[0])
+    if name == 'mrow' and items and items[0].get('fence') == 'true':
+        properties = element('m:dPr', element('m:begChr', val=items[0].text or ''), element('m:endChr', val=items[-1].text or ''), element('m:sepChr', val=''))
+        return [element('m:d', properties, element('m:e', *(part for child in items[1:-1] for part in convert(child))))]
     if name in {'math', 'mrow'}: return [part for child in items for part in convert(child)]
     if name == 'mfrac': return [element('m:f', element('m:num', *convert(items[0])), element('m:den', *convert(items[1])))]
     if name in {'msup', 'msub', 'msubsup'}:

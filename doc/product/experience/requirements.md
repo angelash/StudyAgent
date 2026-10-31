@@ -14,6 +14,8 @@
 
 2026-11-01声音续批：XP-C01/C02/C04和WS10/WS12沿[177协议](../177-classroom-audio-preparation-cancellation-and-original-samples.md)接通真实原样本完整核对、流预算、准备/停滞超时、精确停止与原生late play保护、统一静音和讲解失败的明确文字继续。新页面10/0、既有四套件31/0零重试、声音/字幕43/0/0及实际PG4/0/0各自记账，全部原失败见[证据](../../evidence/2026-11-01/workspace-r5-classroom-audio/receipt.json)。六份既有MP3复用，动态旁白为明确合成WAV，不是新供应商或物理听感证明；正式24/revision187和1063运行文件保持，应用32，仅本地。原72仍11 implemented/50 in_progress/11 planned/0 verified，WS和教师/设备/全参考状态/教材GESP/真人条件不提升。
 
+2026-11-01原生公式：[178原卷TeX](../178-paper-tex-native-math-and-book-boundaries.md)十一份源码已逐SHA归并；原题/选项/参考/解析复用KaTeX0.19.0转有界MathML及原生Word公式，非公式原字节、来源和原件保持。旧版实际练习册的未使用TeX参考先按原冻结输入重建，新版冷开/原命令与逐SHA下载保持全部原生记录。最终SQLite2/0/0、实际PG2/0/0、Python33/0分列；原91/0/0回归先于块公式排版修正，最终实际任务覆盖修正后渲染器。练习2页/答案1页和独立DOCX同页数，六张最终PNG均打开；先前居中缺陷、无效样本、计数/分词及锁文件保护拦截见[证据](../../evidence/2026-11-01/workspace-r5-native-tex/receipt.json)。主干类型检查0，正式24/revision187保持，1062份保护文件不变；锁文件仅新增API对已有KaTeX的声明，全部依赖解析保持且未安装。应用32，无新迁移、推送或部署。矩阵/更多TeX、中文公式字体、全部题型/错题来源、全参考状态、R6～R8及原72/WS和全部真人条件继续active。
+
 ## A. 统一入口与连续学习 / E01
 
 ### XP-A01 统一学习首页 [implemented]

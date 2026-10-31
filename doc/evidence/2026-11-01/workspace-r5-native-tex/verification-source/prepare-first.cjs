@@ -1,0 +1,27 @@
+const fs = require('node:fs'), path = require('node:path'), crypto = require('node:crypto'), zlib = require('node:zlib'), { execFileSync } = require('node:child_process');
+const root = path.resolve(__dirname, '../../..'), prior = path.join(root, 'data/qa/p179'), target = path.join(root, 'data/qa/p180');
+const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+const head = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
+if (fs.existsSync(target) || execFileSync('git', ['status', '--porcelain'], { cwd: root, encoding: 'utf8' }).trim() || !fs.existsSync(path.join(root, 'doc/product/178-paper-tex-native-math-and-book-boundaries.md'))) throw Error('Committed specification and unused candidate required');
+const previous = JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(root, 'data/qa/workspace-audio-first-20261101/preparation-first.json.gz'))));
+const tracked = new Set(execFileSync('git', ['ls-files', '-z'], { cwd: root, encoding: 'utf8', maxBuffer: 40 * 1024 * 1024 }).split('\0').filter(Boolean));
+const selected = new Set([...previous.files.map(row => row.path), ...[...tracked].filter(file => /^(apps|packages|resources|scripts|tests\/e2e)\//.test(file))]);
+const files = [], links = [];
+for (const file of [...selected].sort()) {
+  if (/(^|\/)(?:\.env[^/]*|node_modules|\.next[^/]*|__pycache__)(\/|$)|\.pyc$/.test(file)) continue;
+  if (file.includes('..')) throw Error('Unsafe input');
+  const bytes = fs.readFileSync(path.join(tracked.has(file) ? root : prior, file)), destination = path.join(target, file);
+  fs.mkdirSync(path.dirname(destination), { recursive: true }); fs.writeFileSync(destination, bytes, { flag: 'wx' });
+  if (sha(fs.readFileSync(destination)) !== sha(bytes)) throw Error('Source copy differs'); files.push({ path: file, sha256: sha(bytes), bytes: bytes.length });
+}
+fs.mkdirSync(path.join(target, 'node_modules'));
+for (const entry of fs.readdirSync(path.join(prior, 'node_modules'), { withFileTypes: true })) {
+  if (entry.name === '@study-agent' || entry.name.startsWith('.') && entry.name !== '.bin') continue;
+  const source = fs.realpathSync(path.join(prior, 'node_modules', entry.name)); if (!fs.statSync(source).isDirectory()) continue;
+  const destination = path.join(target, 'node_modules', entry.name); fs.symlinkSync(source, destination, 'junction'); links.push({ path: path.relative(root, destination), target: source });
+}
+fs.mkdirSync(path.join(target, 'node_modules/@study-agent'));
+for (const name of ['config', 'contracts', 'ui']) { const source = path.join(target, 'packages', name), destination = path.join(target, 'node_modules/@study-agent', name); fs.symlinkSync(source, destination, 'junction'); links.push({ path: path.relative(root, destination), target: source }); }
+for (const row of previous.protectedFiles) if (sha(fs.readFileSync(path.join(root, row.path))) !== row.sha256) throw Error('Protected runtime changed');
+fs.writeFileSync(path.join(__dirname, 'preparation-first.json.gz'), zlib.gzipSync(JSON.stringify({ head, target, prior, files, links, protectedFiles: previous.protectedFiles, formal: previous.formal })), { flag: 'wx' });
+console.log(JSON.stringify({ head, copied: files.length, dependencyLinks: links.length, formal: previous.formal, protectedFiles: previous.protectedFiles.length }));
