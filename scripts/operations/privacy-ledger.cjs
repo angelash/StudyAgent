@@ -23,6 +23,23 @@ function validateReceipt(receipt) {
     if(receipt.kind!=='account_delete'||!Array.isArray(proofs)||proofs.length>100000||proofs.some(proof=>!proof||Object.keys(proof).sort().join(',')!=='collection,fingerprints,id'||!['paperCapturePages','paperCaptureGroups','paperCaptureDerivations','paperCaptureRepairs'].includes(proof.collection)||typeof proof.id!=='string'||!proof.id.length||proof.id.length>180||!Array.isArray(proof.fingerprints)||!proof.fingerprints.length||proof.fingerprints.length>1000||proof.fingerprints.some(value=>!isHash(value))||new Set(proof.fingerprints).size!==proof.fingerprints.length)||new Set(proofs.map(proof=>proof.collection+'\0'+proof.id)).size!==proofs.length)fail('invalid_paper_capture_retained_source_proof');
     result.retainedPaperSources=proofs.map(({collection,id,fingerprints})=>({collection,id,fingerprints:[...fingerprints]}));
   }
+  if (receipt.erasedPaperExports !== undefined) {
+    const proofs = receipt.erasedPaperExports, identity = value => typeof value === 'string' && /^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$/.test(value);
+    const exact = (value, keys) => value && typeof value === 'object' && !Array.isArray(value) && Object.keys(value).sort().join(',') === keys;
+    const actorHash = hash({ id: receipt.actorId });
+    if (receipt.kind === 'account_delete' && receipt.subjectHash !== actorHash || !Array.isArray(proofs) || proofs.length > 100000 || proofs.some(proof =>
+      !exact(proof, 'actorFingerprint,exportId,files,intentFingerprint,studentFingerprint,tasks') || !identity(proof.exportId) || !isHash(proof.intentFingerprint) ||
+      !isHash(proof.actorFingerprint) || proof.studentFingerprint !== null && !isHash(proof.studentFingerprint) ||
+      !(receipt.kind === 'account_delete' && proof.actorFingerprint === receipt.subjectHash) && !(proof.studentFingerprint !== null && receipt.erasedStudentHashes.includes(proof.studentFingerprint)) ||
+      !Array.isArray(proof.tasks) || !proof.tasks.length || proof.tasks.length > 4 || proof.tasks.some(task => !exact(task, 'id,payloadHash') || !identity(task.id) || !isHash(task.payloadHash)) ||
+      !Array.isArray(proof.files) || proof.files.length > 100000 || proof.files.some(file => !exact(file, 'id,identityFingerprint') || !identity(file.id) || !isHash(file.identityFingerprint))))
+      fail('invalid_paper_export_erasure_proof');
+    for (const [values, key] of [[proofs, 'exportId'], [proofs.flatMap(proof => proof.tasks), 'id'], [proofs.flatMap(proof => proof.files), 'id']])
+      if (new Set(values.map(value => value[key])).size !== values.length) fail('invalid_paper_export_erasure_proof');
+    result.erasedPaperExports = proofs.map(proof => ({ exportId: proof.exportId, intentFingerprint: proof.intentFingerprint, actorFingerprint: proof.actorFingerprint,
+      studentFingerprint: proof.studentFingerprint, tasks: proof.tasks.map(task => ({ id: task.id, payloadHash: task.payloadHash })),
+      files: proof.files.map(file => ({ id: file.id, identityFingerprint: file.identityFingerprint })) }));
+  }
   return result;
 }
 function makeLedger(receipts) {

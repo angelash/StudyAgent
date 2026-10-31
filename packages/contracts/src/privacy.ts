@@ -5,6 +5,8 @@ export type PrivacyReceipt = {
   erasedStudentHashes?: string[]; retainedStudentHashes?: string[];
   /** Actual retained paper history prefixes at account deletion; no source text or raw author ID. */
   retainedPaperSources?: Array<{collection:'paperCapturePages'|'paperCaptureGroups'|'paperCaptureDerivations'|'paperCaptureRepairs';id:string;fingerprints:string[]}>;
+  /** Exact private export/task/workspace identities observed by this deletion. */
+  erasedPaperExports?: import('./paper-export').PaperExportErasureProof[];
 };
 export type PrivacyOverview = {
   account: { id: string; principal: string; displayName: string };

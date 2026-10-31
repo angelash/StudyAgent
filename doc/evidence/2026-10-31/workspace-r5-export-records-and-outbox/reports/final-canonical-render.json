@@ -1,0 +1,52 @@
+{
+  "executions": [
+    {
+      "name": "production-pdf",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "independent-docx",
+      "exit": 0,
+      "stdout": "Pages rendered to F:\\workspace\\github\\StudyAgent\\data\\qa\\c170b\\canonical\n",
+      "stderr": ""
+    }
+  ],
+  "observations": [
+    {
+      "name": "production",
+      "pages": 1,
+      "sourceOrder": [
+        7,
+        3
+      ],
+      "answersSeparated": true,
+      "fonts": [
+        "BAAAAA+StudyAgentPrintSerif-Regular",
+        "CAAAAA+StudyAgentPrintSerif-Regular",
+        "DAAAAA+StudyAgentPrintSerif-Regular",
+        "EAAAAA+StudyAgentPrintSerif-Regular",
+        "FAAAAA+StudyAgentPrintSerif-Regular"
+      ]
+    },
+    {
+      "name": "independent",
+      "pages": 1,
+      "sourceOrder": [
+        7,
+        3
+      ],
+      "answersSeparated": true,
+      "fonts": [
+        "BAAAAA+StudyAgentPrintSerif-Regular",
+        "CAAAAA+StudyAgentPrintSerif-Regular",
+        "DAAAAA+StudyAgentPrintSerif-Regular",
+        "EAAAAA+StudyAgentPrintSerif-Regular",
+        "FAAAAA+StudyAgentPrintSerif-Regular"
+      ]
+    }
+  ],
+  "originalDocxUnchanged": true,
+  "role": "Independent DOCX and original PDF layout check. Not application UI, all question types, real Word or physical printing."
+}

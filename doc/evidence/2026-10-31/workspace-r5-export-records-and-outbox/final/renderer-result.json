@@ -1,0 +1,98 @@
+{
+  "protocol": "paper-export-render-result-v1",
+  "inputSha256": "c9cca3dfbc27c0e3dffb0b827acb547d2195eeee9403c9e7f3d1a452d78504ed",
+  "files": [
+    {
+      "book": "practice",
+      "format": "docx",
+      "path": "artifacts-practice/practice.docx",
+      "bytes": 9402510,
+      "sha256": "730c5d650cb2195bcdb1bab63b417fafc37adcdb06a6b1414130fff56aba66b5",
+      "pageCount": 1,
+      "sourceMap": [
+        {
+          "itemId": "paper_selected_633782a83aed1d477770c2e6abfc5aae10004bc74bfa6b532ddad044d2cfd63b",
+          "number": 1,
+          "source": {
+            "detailSha256": "cec465c03e368e689c72ab2c9e8eb45c5678449969b4269d73fb6f8c7d6ad7b5",
+            "pageNumber": null,
+            "paperId": "source-0",
+            "paperTitle": "原卷0",
+            "position": 7,
+            "publicationVersion": "published-v2",
+            "sourceQuestionId": "paper:original-7"
+          },
+          "startPage": 1,
+          "endPage": 1,
+          "bookmark": "PaperItem0001",
+          "endBookmark": "PaperEnd0001",
+          "pdfDestinationName": "PaperItem0001"
+        },
+        {
+          "itemId": "paper_selected_71a840c5fb264ff6c7cd0ab6e9f47bdbfca4b66f86591fed63f44567c8bd69b4",
+          "number": 2,
+          "source": {
+            "detailSha256": "6a54b40c05c89e952e6ceb16daa396c82038da66bf27851b373a83159e640f50",
+            "pageNumber": 4,
+            "paperId": "source-1",
+            "paperTitle": "原卷1",
+            "position": 3,
+            "publicationVersion": "published-v2",
+            "sourceQuestionId": "paper:original-3"
+          },
+          "startPage": 1,
+          "endPage": 1,
+          "bookmark": "PaperItem0002",
+          "endBookmark": "PaperEnd0002",
+          "pdfDestinationName": "PaperItem0002"
+        }
+      ]
+    },
+    {
+      "book": "practice",
+      "format": "pdf",
+      "path": "artifacts-practice/practice.pdf",
+      "bytes": 42368,
+      "sha256": "512d9654f5c044c5b26917b4f35cf96a407d53a649d0a1ecfa06aeebfbb38001",
+      "pageCount": 1,
+      "sourceMap": [
+        {
+          "itemId": "paper_selected_633782a83aed1d477770c2e6abfc5aae10004bc74bfa6b532ddad044d2cfd63b",
+          "number": 1,
+          "source": {
+            "detailSha256": "cec465c03e368e689c72ab2c9e8eb45c5678449969b4269d73fb6f8c7d6ad7b5",
+            "pageNumber": null,
+            "paperId": "source-0",
+            "paperTitle": "原卷0",
+            "position": 7,
+            "publicationVersion": "published-v2",
+            "sourceQuestionId": "paper:original-7"
+          },
+          "startPage": 1,
+          "endPage": 1,
+          "bookmark": "PaperItem0001",
+          "endBookmark": "PaperEnd0001",
+          "pdfDestinationName": "PaperItem0001"
+        },
+        {
+          "itemId": "paper_selected_71a840c5fb264ff6c7cd0ab6e9f47bdbfca4b66f86591fed63f44567c8bd69b4",
+          "number": 2,
+          "source": {
+            "detailSha256": "6a54b40c05c89e952e6ceb16daa396c82038da66bf27851b373a83159e640f50",
+            "pageNumber": 4,
+            "paperId": "source-1",
+            "paperTitle": "原卷1",
+            "position": 3,
+            "publicationVersion": "published-v2",
+            "sourceQuestionId": "paper:original-3"
+          },
+          "startPage": 1,
+          "endPage": 1,
+          "bookmark": "PaperItem0002",
+          "endBookmark": "PaperEnd0002",
+          "pdfDestinationName": "PaperItem0002"
+        }
+      ]
+    }
+  ]
+}

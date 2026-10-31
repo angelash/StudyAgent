@@ -1,5 +1,7 @@
 # 当前工作收尾、验证边界与续接位置
 
+2026-10-31导出原生记录接续：[170](170-paper-export-records-and-outbox-relations.md)已实现严格冻结意图、完整原命令/原回执、准确清单旧修订/文档适配、按册格式任务与控制、实际reserved/rendered文件检查点、发布栅栏及删除证明/账本校验。最终专项113/0/0（本批65、既有48），既有隐私HTTP和最新删除恢复另批6/0/0；一页实际PDF/DOCX桥接成功且两个页面均已打开，见[证据](../evidence/2026-10-31/workspace-r5-export-records-and-outbox/receipt.json)。首次类型/模块路径/提取空白失败分别保留。仍未注册32或接业务路由/实际隐私删除，PAPER_EXPORT_NATIVE_READY保持false。接六集合持久事务、隐私删除/最新账本应用、备份恢复及32门禁，然后真实授权/文件worker/学生旧读取防旁路与原UI。应用31、正式24/revision187和受保护运行文件保持，仅本地；全部原范围继续active。
+
 2026-10-31原生文档接续：[169](169-native-question-continuations-and-text-integrity.md)修正有界生成器的多段/单段续题、起止目标、参考/留白和数据重复，并拒绝已知正文缺字文件。主干24项、五次真实生成31页、五份DOCX独立渲染31页分别记账，全部62张页面经31组原像素并排图打开；[证据](../evidence/2026-10-31/workspace-r5-native-question-flow/receipt.json)保留各轮错误原文件。168基础已提交0044f4b0；继续完整导出/命令/文件原生关系后注册32，再接清单事务/真实队列/学生旧读取/隐私恢复/原UI。正式24/revision187、1063份运行文件保持，未推送部署，全部原范围继续active。
 
 2026-10-31选题记录接续：[168](168-paper-selection-export-native-protocol.md)第一批十份严格记录/关系/实际来源源码已归入主干，最终专项82/0/1条件跳过（本批41项），主干contracts/API无输出类型检查通过，见[证据](../evidence/2026-10-31/workspace-r5-native-selection-records/receipt.json)。准确来源沿用带`paper:`前缀的catalog题键并核对实际detail全文SHA。新集合/业务路由/32未注册，导出原生能力仍false；接实际事务、任务/文件/隐私恢复、学生旧读取防旁路和原工作台UI。正式24/revision187及1063份运行文件保持，仅本地，全部原范围和整体目标继续active。

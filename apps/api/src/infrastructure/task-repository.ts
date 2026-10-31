@@ -13,7 +13,9 @@ export type TaskRow = TaskIntent & { state: TaskState; attempts: number; generat
 export type TaskCompletionFence = { id: string; token: string; mode?: 'complete'; result?: Record<string, unknown> };
 export type TaskCheckpointFence = { id: string; token: string; mode: 'checkpoint'; progress: Record<string, unknown> };
 export type TaskFence = TaskCompletionFence | TaskCheckpointFence;
-export type TaskOperation = { id: string; action: 'cancel' | 'retry'; expectedVersion: number; actorId: string };
+export type PaperExportTaskControl = { commandId: string; at: string; expectedGeneration: number };
+export type TaskOperation = { id: string; action: 'cancel' | 'retry'; expectedVersion: number; actorId: string;
+  paperExportControl?: PaperExportTaskControl };
 type RawRow = { id: string; kind: string; owner_id: string; request_key: string; payload_hash: string; payload: string | object;
   state: TaskState; attempts: number; max_attempts: number; generation: number; version: number; available_at: number | string;
   lease_token: string | null; lease_until: number | string | null; progress: string | object; result: string | object | null;
@@ -180,26 +182,41 @@ export class TaskRepository {
   async cancel(id: string, expectedVersion: number, actorId = 'system') {
     return this.locked(query => this.cancelUsing(query, id, expectedVersion, actorId));
   }
-  private async cancelUsing(query: (sql: string, args?: any[]) => Promise<any[]>, id: string, expectedVersion: number, actorId: string) {
+  private exportControl(old: RawRow, actorId: string, context?: PaperExportTaskControl) {
+    if (old.kind !== 'library.paper-export.render') { if (context) throw new ConflictException('导出命令不能控制其他任务'); return {}; }
+    if (old.owner_id !== actorId || !context || Object.keys(context).sort().join(',') !== 'at,commandId,expectedGeneration' ||
+        !/^paper_export_command_[a-f0-9]{64}$/.test(context.commandId) || !Number.isSafeInteger(context.expectedGeneration) || context.expectedGeneration !== old.generation ||
+        !Number.isFinite(Date.parse(context.at)) || new Date(context.at).toISOString() !== context.at || context.at < old.updated_at || Date.parse(context.at) > this.now() || old.state === 'succeeded')
+      throw new ConflictException('请使用准确的导出原命令控制当前代次');
+    return { commandId: context.commandId, acceptedAt: context.at, previousVersion: old.version };
+  }
+  private async cancelUsing(query: (sql: string, args?: any[]) => Promise<any[]>, id: string, expectedVersion: number, actorId: string, context?: PaperExportTaskControl) {
       const old = (await query(`SELECT * FROM durable_tasks WHERE id=?${this.sqlite ? '' : ' FOR UPDATE'}`, [id]))[0];
       if (!old) return null;
       if (old.version !== expectedVersion) throw new ConflictException('任务状态已变化，请刷新后操作');
-      if (['cancelled', 'failed', 'succeeded'].includes(old.state)) return row(old);
+      const control = this.exportControl(old, actorId, context);
+      if (['cancelled', 'failed', 'succeeded'].includes(old.state)) {
+        if (context) await this.auditWith(query, id, 'cancel_confirmed', actorId, { ...control, generation: old.generation, previousState: old.state });
+        return row(old);
+      }
       await query(`UPDATE durable_tasks SET state=?,version=version+1,updated_at=? WHERE id=?`,
         [old.state === 'running' || old.state === 'cancel_requested' ? 'cancel_requested' : 'cancelled', new Date(this.now()).toISOString(), id]);
-      await this.auditWith(query, id, 'cancel_requested', actorId, { generation: old.generation, previousState: old.state });
+      await this.auditWith(query, id, 'cancel_requested', actorId, { ...control, generation: old.generation, previousState: old.state });
       return row((await query('SELECT * FROM durable_tasks WHERE id=?', [id]))[0]);
   }
 
   async retry(id: string, expectedVersion: number, actorId = 'system') {
     return this.locked(query => this.retryUsing(query, id, expectedVersion, actorId));
   }
-  private async retryUsing(query: (sql: string, args?: any[]) => Promise<any[]>, id: string, expectedVersion: number, actorId: string) {
+  private async retryUsing(query: (sql: string, args?: any[]) => Promise<any[]>, id: string, expectedVersion: number, actorId: string, context?: PaperExportTaskControl) {
+    const old = (await query(`SELECT * FROM durable_tasks WHERE id=?${this.sqlite ? '' : ' FOR UPDATE'}`, [id]))[0];
+    if (!old || old.version !== expectedVersion) throw new ConflictException('任务状态已变化，请刷新后操作');
+    const control = this.exportControl(old, actorId, context);
     const rows = await query(`UPDATE durable_tasks SET state='queued',attempts=0,generation=generation+1,version=version+1,lease_token=NULL,
       lease_until=NULL,available_at=?,result=NULL,error_code=NULL,progress='{}',updated_at=? WHERE id=? AND version=? AND state IN ('failed','cancelled') RETURNING *`,
       [this.now(), new Date(this.now()).toISOString(), id, expectedVersion]);
     if (!rows[0]) throw new ConflictException('只有已失败或已取消的任务可以重试，请刷新状态');
-    await this.auditWith(query, id, 'retried', actorId, { generation: rows[0].generation });
+    await this.auditWith(query, id, 'retried', actorId, { ...control, generation: rows[0].generation });
     return row(rows[0]);
   }
 
@@ -207,8 +224,8 @@ export class TaskRepository {
   async applyOperations(operations: TaskOperation[], client?: PoolClient) {
     const query = async (sql: string, args: any[] = []) => this.sqlite ? this.sqlite.prepare(sql).all(...args) : (await client!.query(this.pg(sql), args)).rows;
     for (const operation of operations) {
-      if (operation.action === 'cancel') await this.cancelUsing(query, operation.id, operation.expectedVersion, operation.actorId);
-      else await this.retryUsing(query, operation.id, operation.expectedVersion, operation.actorId);
+      if (operation.action === 'cancel') await this.cancelUsing(query, operation.id, operation.expectedVersion, operation.actorId, operation.paperExportControl);
+      else await this.retryUsing(query, operation.id, operation.expectedVersion, operation.actorId, operation.paperExportControl);
     }
   }
 
@@ -232,11 +249,12 @@ export class TaskRepository {
   async applyFence(fence: TaskFence, client?: PoolClient) {
     if (fence.mode !== 'checkpoint') return this.finish(fence, client);
     const sql = `UPDATE durable_tasks SET progress=?,updated_at=?
-      WHERE id=? AND lease_token=? AND state='running' AND lease_until>? RETURNING id`;
+      WHERE id=? AND lease_token=? AND state='running' AND lease_until>? RETURNING id,kind,generation`;
     const args = [JSON.stringify(fence.progress), new Date(this.now()).toISOString(), fence.id, fence.token, this.now()];
     const rows = this.sqlite ? this.sqlite.prepare(sql).all(...args) : (await client!.query(this.pg(sql), args)).rows;
     if (rows.length !== 1) throw new ConflictException('任务租约已过期或已取消，检查点未保存');
-    await this.audit(fence.id, 'checkpoint', 'worker', {}, client);
+    await this.audit(fence.id, 'checkpoint', 'worker', rows[0].kind === 'library.paper-export.render' ?
+      { generation: rows[0].generation, progress: fence.progress } : {}, client);
   }
 
   /** Fenced completion shares a transaction with all published domain outputs. */

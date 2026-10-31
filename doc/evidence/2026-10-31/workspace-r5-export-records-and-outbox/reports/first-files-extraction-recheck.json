@@ -1,0 +1,55 @@
+{
+  "observations": [
+    {
+      "name": "production",
+      "pages": 1,
+      "sourceOrder": [
+        7,
+        3
+      ],
+      "originalUnknownPagePreserved": true,
+      "verifiedPage4Preserved": true,
+      "answersSeparated": true,
+      "fonts": [
+        "BAAAAA+StudyAgentPrintSerif-Regular",
+        "CAAAAA+StudyAgentPrintSerif-Regular",
+        "DAAAAA+StudyAgentPrintSerif-Regular",
+        "EAAAAA+StudyAgentPrintSerif-Regular",
+        "FAAAAA+StudyAgentPrintSerif-Regular"
+      ]
+    },
+    {
+      "name": "independent",
+      "pages": 1,
+      "sourceOrder": [
+        7,
+        3
+      ],
+      "originalUnknownPagePreserved": true,
+      "verifiedPage4Preserved": true,
+      "answersSeparated": true,
+      "fonts": [
+        "BAAAAA+StudyAgentPrintSerif-Regular",
+        "CAAAAA+StudyAgentPrintSerif-Regular",
+        "DAAAAA+StudyAgentPrintSerif-Regular",
+        "EAAAAA+StudyAgentPrintSerif-Regular",
+        "FAAAAA+StudyAgentPrintSerif-Regular"
+      ]
+    }
+  ],
+  "originalDocxAndPdfUnchanged": true,
+  "bothRendersExit": 0,
+  "actualPageImagesOpened": [
+    "production.png",
+    "canonical/page-1.png"
+  ],
+  "allPagesReadable": true,
+  "firstFailurePreserved": {
+    "stage": "post-render text source-label check",
+    "firstError": "assert '未核实页码' in text and '第4页' in text: AssertionError",
+    "diagnosis": "Both actual renders exited zero. PDF extraction contains 第4 页. Page images were opened and show the correct verified page 4.",
+    "originalScript": "render-bridge-first.py",
+    "artifactsPreserved": true
+  },
+  "scope": "One synthetic original-PDF and independently rendered DOCX page. Not product HTTP/UI or physical printing."
+}

@@ -6,6 +6,8 @@
 
 ## 1. 完整目标与范围
 
+2026-10-31导出记录与队列：[170](170-paper-export-records-and-outbox-relations.md)实现冻结导出/原命令/原回执、准确旧清单适配、实际TaskOperation及按lease登记文件、reserved/rendered检查点、发布/删除证明和双向关系核对。最终专项113/0/0，既有隐私HTTP/最新账本恢复另批6/0/0；真实执行器桥接生成一页PDF/DOCX，发布一个PDF slot，两张生产/独立页面均已打开，原失败保留，见[收据](../evidence/2026-10-31/workspace-r5-export-records-and-outbox/receipt.json)。这仍是预注册记录和直接QA桥接；应用31、正式24/revision187，未注册32、未接业务HTTP/worker或新增导出的真实隐私删除。接六集合持久事务/隐私账本应用/原生备份恢复与32门禁，再接授权曝光防旁路、原UI和全部R1～R8/原72/WS/教材GESP/教师实机实体打印真人目标，整体active，仅本地。
+
 2026-10-31原生文档接续：[169](169-native-question-continuations-and-text-integrity.md)修正长正文/单段续页、真实起止书签、答题区/参考标题和嵌套表格数据重复；新增正文字符数量下限，实际缺字文件拒绝。主干24项通过，五次生成31页及五份DOCX独立渲染31页全部打开，原失败保留，见[收据](../evidence/2026-10-31/workspace-r5-native-question-flow/receipt.json)。这不关闭全部题型/边界或R5整项；168完整持久业务/文件/32门禁、学生旧读取防旁路/隐私恢复和原UI，以及R1～R8/原72/WS/教材GESP/教师实机实体打印真人全部范围继续。正式24/revision187及1063运行文件保持，仅本地，整体active。
 
 2026-10-31选题基础：[168](168-paper-selection-export-native-protocol.md)的严格清单修订、完整原命令/原回执、学生准确曝光与关系重建，以及实际原卷UTF-8字节/`paper:`原题键校验已归并。最终七文件专项82通过/0失败/1项既有PG恢复条件跳过，含本批41项，见[收据](../evidence/2026-10-31/workspace-r5-native-selection-records/receipt.json)。仅记录基础，无新路由、持久集合或32注册；主干无输出类型检查通过，正式24/revision187及1063份运行文件保持。继续清单业务事务、按册格式任务/文件/隐私恢复、学生旧读取防旁路与原UI，以及R1～R8和全部原范围，整体active。
