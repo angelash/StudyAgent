@@ -1,0 +1,202 @@
+[
+  {
+    "label": "admin-close31-first",
+    "success": false,
+    "passed": 0,
+    "failed": 1,
+    "skipped": 49,
+    "failedSuites": 2
+  },
+  {
+    "label": "admin-close31-postgres-first",
+    "success": false,
+    "passed": 0,
+    "failed": 1,
+    "skipped": 49,
+    "failedSuites": 2
+  },
+  {
+    "label": "admin-close31-second",
+    "success": false,
+    "passed": 0,
+    "failed": 1,
+    "skipped": 49,
+    "failedSuites": 2
+  },
+  {
+    "label": "admin-close31-postgres-second",
+    "success": false,
+    "passed": 0,
+    "failed": 1,
+    "skipped": 49,
+    "failedSuites": 2
+  },
+  {
+    "label": "admin-close31-third",
+    "success": true,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 49,
+    "failedSuites": 0
+  },
+  {
+    "label": "admin-close31-postgres-third",
+    "success": true,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 49,
+    "failedSuites": 0
+  },
+  {
+    "label": "repair31-first",
+    "success": false,
+    "passed": 0,
+    "failed": 0,
+    "skipped": 57,
+    "failedSuites": 2
+  },
+  {
+    "label": "repair31-postgres-first",
+    "success": false,
+    "passed": 0,
+    "failed": 0,
+    "skipped": 57,
+    "failedSuites": 2
+  },
+  {
+    "label": "repair31-second",
+    "success": false,
+    "passed": 4,
+    "failed": 3,
+    "skipped": 50,
+    "failedSuites": 2
+  },
+  {
+    "label": "repair31-postgres-second",
+    "success": false,
+    "passed": 4,
+    "failed": 3,
+    "skipped": 50,
+    "failedSuites": 2
+  },
+  {
+    "label": "repair31-third",
+    "success": true,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 50,
+    "failedSuites": 0
+  },
+  {
+    "label": "repair31-postgres-third",
+    "success": true,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 50,
+    "failedSuites": 0
+  },
+  {
+    "label": "repair-privacy31-first",
+    "success": false,
+    "passed": 3,
+    "failed": 1,
+    "skipped": 57,
+    "failedSuites": 2
+  },
+  {
+    "label": "repair-privacy31-postgres-first",
+    "success": false,
+    "passed": 3,
+    "failed": 1,
+    "skipped": 57,
+    "failedSuites": 2
+  },
+  {
+    "label": "repair-privacy31-second",
+    "success": true,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 57,
+    "failedSuites": 0
+  },
+  {
+    "label": "repair-privacy31-postgres-second",
+    "success": true,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 57,
+    "failedSuites": 0
+  },
+  {
+    "label": "repair-upload31-first",
+    "success": false,
+    "passed": 2,
+    "failed": 1,
+    "skipped": 64,
+    "failedSuites": 2
+  },
+  {
+    "label": "repair-upload31-postgres-first",
+    "success": false,
+    "passed": 2,
+    "failed": 1,
+    "skipped": 64,
+    "failedSuites": 2
+  },
+  {
+    "label": "repair-upload31-second",
+    "success": true,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 64,
+    "failedSuites": 0
+  },
+  {
+    "label": "repair-upload31-postgres-second",
+    "success": true,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 64,
+    "failedSuites": 0
+  },
+  {
+    "label": "repair35-full-postgres-first",
+    "success": false,
+    "passed": 68,
+    "failed": 1,
+    "skipped": 0,
+    "failedSuites": 2
+  },
+  {
+    "label": "repair-io31-first",
+    "success": true,
+    "passed": 24,
+    "failed": 0,
+    "skipped": 0,
+    "failedSuites": 0
+  },
+  {
+    "label": "repair-io31-second",
+    "success": true,
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0,
+    "failedSuites": 0
+  },
+  {
+    "label": "repair-binary-copy31-first",
+    "success": true,
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "failedSuites": 0
+  },
+  {
+    "label": "repair-recovery31-first",
+    "success": true,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "failedSuites": 0
+  }
+]

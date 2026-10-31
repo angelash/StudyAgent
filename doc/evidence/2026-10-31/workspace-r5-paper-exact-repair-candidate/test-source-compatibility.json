@@ -1,0 +1,16 @@
+[
+  {
+    "label": "repair35-full-first",
+    "path": "apps/api/src/modules/learning/paper-capture-recovery.integration.test.ts",
+    "actualCheckedSha256": "f73b9372583c51b5aab528613e070a7de0f856c4fe6569fead19b333467059b3",
+    "currentSha256": "323ed11fad3adaa19ec38c122901529f9b917f91eb7f9d96be116d1ce5b82dab",
+    "change": "Only the independent non-native PostgreSQL branch expected one receipt before its actual two-receipt failure. SQLite and native PostgreSQL do not execute that branch. The original exact source variant is retained."
+  },
+  {
+    "label": "repair-recovery31-postgres-native-first",
+    "path": "apps/api/src/modules/learning/paper-capture-recovery.integration.test.ts",
+    "actualCheckedSha256": "f73b9372583c51b5aab528613e070a7de0f856c4fe6569fead19b333467059b3",
+    "currentSha256": "323ed11fad3adaa19ec38c122901529f9b917f91eb7f9d96be116d1ce5b82dab",
+    "change": "Only the independent non-native PostgreSQL branch expected one receipt before its actual two-receipt failure. SQLite and native PostgreSQL do not execute that branch. The original exact source variant is retained."
+  }
+]

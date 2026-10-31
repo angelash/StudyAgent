@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-31T00:39:05.955Z",
+  "state": "Isolated exact-upload repair and binary/local copy candidate archived; no application merge, push or deployment.",
+  "baseMain": "b29a3e97d274e5ad4fedbbf34fa73fa6db4c3b4b",
+  "archiveMain": "df177530e95b1d205cd548943d397b495a10d568",
+  "sourceDelta": {
+    "files": 87,
+    "uncompressedSha256": "d0fd56e7e6fd243dd39341d852e1ccd5ea15e5b872bbc988a018946927fd1dd7",
+    "gzipSha256": "f2de494936c49b052ef72fccd07b41c0b09abb5e52b70bc03067e4efb36fbc02"
+  },
+  "build": [
+    {
+      "name": "contracts",
+      "status": 0
+    },
+    {
+      "name": "config",
+      "status": 0
+    },
+    {
+      "name": "api-types",
+      "status": 0
+    },
+    {
+      "name": "api-build",
+      "status": 0
+    }
+  ],
+  "finalApiTypes": {
+    "status": 0
+  },
+  "webTypes": {
+    "status": 0
+  },
+  "checks": [
+    {
+      "label": "repair35-full-first",
+      "passed": 142,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "repair35-full-postgres-second",
+      "passed": 69,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "repair-recovery31-postgres-native-first",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "repair-binary-copy31-second",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "browserLocal": {
+    "passed": 8,
+    "failed": 0,
+    "browser": "156.0.8078.4",
+    "scope": "Real headless Chromium/WebCrypto/IndexedDB/tabs/downloads in an isolated localhost harness. Product UI and physical devices remain unfinished."
+  },
+  "batchBoundary": "SQLite142 is68 actual HTTP/worker/native +1 recovery +40 earlier pure +4 codec +4 real observation +25 repair IO. PG69 is68 actual PG HTTP/worker/native +1 independent-schema recovery. Native PG1 separately runs pg_dump/pg_restore. Binary codec6 and browser8 are separate; all filtered retries and earlier passes overlap and are not added.",
+  "sourceCompatibility": [
+    {
+      "label": "repair35-full-first",
+      "path": "apps/api/src/modules/learning/paper-capture-recovery.integration.test.ts",
+      "actualCheckedSha256": "f73b9372583c51b5aab528613e070a7de0f856c4fe6569fead19b333467059b3",
+      "currentSha256": "323ed11fad3adaa19ec38c122901529f9b917f91eb7f9d96be116d1ce5b82dab",
+      "change": "Only the independent non-native PostgreSQL branch expected one receipt before its actual two-receipt failure. SQLite and native PostgreSQL do not execute that branch. The original exact source variant is retained."
+    },
+    {
+      "label": "repair-recovery31-postgres-native-first",
+      "path": "apps/api/src/modules/learning/paper-capture-recovery.integration.test.ts",
+      "actualCheckedSha256": "f73b9372583c51b5aab528613e070a7de0f856c4fe6569fead19b333467059b3",
+      "currentSha256": "323ed11fad3adaa19ec38c122901529f9b917f91eb7f9d96be116d1ce5b82dab",
+      "change": "Only the independent non-native PostgreSQL branch expected one receipt before its actual two-receipt failure. SQLite and native PostgreSQL do not execute that branch. The original exact source variant is retained."
+    }
+  ],
+  "failures": "Admin fixture shape failed before reaching the defect; next actual admin closure500 was repaired. Initialization read durable_tasks before creation; guarded by actual records. Original checkFile rejected real repairing image assets; now requires full repair-native proof. Actual last-child deletion needed intent-bound discard only after all external references vanish. Late chunk IO needed durable staging before writing; unknown entries remain. PG full69 first68/1 was one stale expected receipt count, then69/0. Original type26 and28 failures retained.",
+  "production": {
+    "formalReadOnly": {
+      "schema": 24,
+      "revision": 187
+    },
+    "protectedFilesMatchPriorCheckpoint": true,
+    "mainApplicationSource": 30,
+    "noPushOrDeployment": true
+  },
+  "boundaries": {
+    "exactUploadDurableRepair": true,
+    "realCancelledIoRollback": true,
+    "privateChunkStaging": true,
+    "actualLatestLedgerBackupRecovery": true,
+    "binary80MiBCopy": true,
+    "actualIndexedDbAndDownload": true,
+    "sourceRebuildStrategy": false,
+    "otherPdfStrategy": false,
+    "productCaptureAndRepairUI": false,
+    "fullApiRegression": false,
+    "wholeBrowserRegression": false,
+    "teacherReview": false,
+    "physicalDevices": false,
+    "realLearnerIntervals": false,
+    "wholeGoal": "active",
+    "legacy72": "11 implemented / 50 in_progress / 11 planned / 0 verified"
+  },
+  "artifacts": [
+    {
+      "path": "actual-checks.json",
+      "sha256": "16872ab75e9a148a3a76af56ab1f339cab427b935f64c22c165d02ca5bed0057"
+    },
+    {
+      "path": "actual-generated-download-0.studycopy.gz",
+      "sha256": "883e5cf41d7c71ccd670747b9c61bea668462dda955d884acf93e1728fe48c5c"
+    },
+    {
+      "path": "binary-copy-local-browser.json",
+      "sha256": "3ca470cb89c5aef71777ea95dd4b206b6229db5d35ad594202fabde271e354ac"
+    },
+    {
+      "path": "builds-and-type-errors.json",
+      "sha256": "c7b8458c2edd53b446812d95873d71ea138ebdb514f41440e2c1217536bde951"
+    },
+    {
+      "path": "checked-inputs.json.gz",
+      "sha256": "1f1c334b6ca4f57d6afeec939bad5617f9a2533701f0ae170fcc4744a753564c"
+    },
+    {
+      "path": "failures-and-retries-index.json",
+      "sha256": "f2f4930752b94ccd04ee691b238d4920ae45a3d85cbe5ad324a95da922c88344"
+    },
+    {
+      "path": "historical-test-source-variants.json.gz",
+      "sha256": "3ed6d0140f8e7f27a7921fedc7b755fb52e3e0dd7bf3975230a217bddaad7ffd"
+    },
+    {
+      "path": "original-failures-and-retries.json.gz",
+      "sha256": "5f781cac3b49e7d0b5d5186c04995c0720971aec3a5784a211acef8652f86606"
+    },
+    {
+      "path": "production-observation.json",
+      "sha256": "a6440f7b6d1ad670db64fe92ec91bce43587154b5259c192cbfe2692a6657e24"
+    },
+    {
+      "path": "source-delta.json.gz",
+      "sha256": "f2de494936c49b052ef72fccd07b41c0b09abb5e52b70bc03067e4efb36fbc02"
+    },
+    {
+      "path": "test-source-compatibility.json",
+      "sha256": "454eed5cf18c202a913463593482db751c4d7e4a2435699b63d2ec80435bbe4e"
+    }
+  ]
+}
