@@ -1,0 +1,181 @@
+{
+  "protocol": "study-agent-course-history-native-proof-v1",
+  "at": "2026-11-01T04:08:31.302Z",
+  "baselineHead": "6a101491aa94e9d2afa2a0ebf2c3f3810134977d",
+  "candidate": "data/qa/p184",
+  "mainApplicationSchema": 32,
+  "candidateSchema": 33,
+  "applicationIntegrated": false,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFilesUnchanged": 1063,
+  "sourceIncrement": {
+    "files": 2,
+    "archive": "candidate-source-delta.json.gz",
+    "sha256": "4d686a40408c7a665acc1d111c4305247d9f214892869fa907e90ba85096132c",
+    "allMembersReadBack": true,
+    "parentArchive": "../workspace-r6-course-history-backend-candidate/candidate-source-delta.json.gz",
+    "parentSha256": "f1268ea9cf694d24bd6b7c105dac88183a133703c292273ac34a987553b2438c",
+    "parentInputCount": 1273,
+    "currentInputCount": 1275,
+    "allCurrentInputsMatchParentOrDelta": true,
+    "businessSourceUnchanged": true,
+    "copiedIntoMainApplication": false
+  },
+  "readers": [
+    {
+      "variant": "four",
+      "path": "resources/compatibility/early-schema33-four-collections-reader-v1.json.gz",
+      "sha256": "3e91deb97dd5fc5ad5b8454e77529044b39aaef49595085ef8cccecda109eafa",
+      "bundleSha256": "aa98d04af0149d84bfe3d030e51cac7323582ba3cbaea30fa31becb3020ab901",
+      "sourceFiles": 893,
+      "actualSavePublishAndColdRead": true,
+      "adoptedCourse": false,
+      "nativeSQLiteAndPostgresNegativeProbe": true,
+      "allNativeStatePreserved": true,
+      "sqliteFileBytesPreserved": true
+    },
+    {
+      "variant": "five",
+      "path": "resources/compatibility/early-schema33-five-collections-reader-v1.json.gz",
+      "sha256": "fe82cef5cc8ae8f32ef2f0f3f662edbd2ffc4ecab9f06c685671234f58e3e622",
+      "bundleSha256": "fb4333a1945260187cd19f5768d9dc11506653aacca998e4a118ff873ea5fc57",
+      "sourceFiles": 923,
+      "actualSavePublishAndColdRead": true,
+      "adoptedCourse": true,
+      "nativeSQLiteAndPostgresNegativeProbe": true,
+      "allNativeStatePreserved": true,
+      "sqliteFileBytesPreserved": true
+    }
+  ],
+  "reports": [
+    {
+      "label": "course-history-native-matrix-postgres-first.json",
+      "passed": 8,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "course-history-native-matrix-postgres-second.json",
+      "passed": 8,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "course-history-native-matrix-sqlite-first.json",
+      "passed": 8,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "course-history-native-matrix-sqlite-second.json",
+      "passed": 8,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "course-history-native-proof-api-type-first.json",
+      "mode": "type",
+      "status": 2
+    },
+    {
+      "label": "course-history-native-proof-api-type-second.json",
+      "mode": "type",
+      "status": 0
+    },
+    {
+      "label": "early33-packaged-readers-postgres-first.json",
+      "passed": 4,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "early33-packaged-readers-sqlite-first.json",
+      "passed": 4,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "early33-readers-postgres-first.json",
+      "passed": 4,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "early33-readers-postgres-second.json",
+      "passed": 4,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "early33-readers-sqlite-first.json",
+      "passed": 4,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "early33-readers-sqlite-second.json",
+      "passed": 4,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    }
+  ],
+  "latestReaders": {
+    "sqlite": {
+      "label": "early33-packaged-readers-sqlite-first",
+      "passed": 4,
+      "failed": 0
+    },
+    "postgres": {
+      "label": "early33-packaged-readers-postgres-first",
+      "passed": 4,
+      "failed": 0,
+      "actualPostgres": true
+    }
+  },
+  "latestMatrix": {
+    "sqlite": {
+      "label": "course-history-native-matrix-sqlite-second",
+      "passed": 8,
+      "failed": 0
+    },
+    "postgres": {
+      "label": "course-history-native-matrix-postgres-second",
+      "passed": 8,
+      "failed": 0,
+      "actualPostgres": true
+    }
+  },
+  "verifiedScope": [
+    "Actual frozen early4/5 application readers save/publish/cold-read their own original protocol, with five-collection adopted course",
+    "Both actual older application readers refuse current six-collection minimum marker before any native rows/tasks/history/meta/marker changes; SQLite bytes preserved",
+    "Real SQLite/Postgres sixth-collection revision and original-request unique indexes reject direct duplicate SQL",
+    "Entire native transaction rolls back on binding/session/role/scope/material/original-fingerprint changes"
+  ],
+  "limitations": [
+    "These are unreleased historical QA protocols, not a new final33 rollback baseline.",
+    "Original course upgrade/version UI, full copies/unknown results and product browser journey remain pending.",
+    "Accurate real-source original candidate, original due-retention and final whole API/site/dualDB/privacy recovery remain pending.",
+    "Original full p1832741/1/131 remains a failed whole batch.",
+    "All textbooks/GESP/R5/R7/R8/72/WS and teacher/physical devices/print/real1/3/7/14-day conditions remain active.",
+    "Separate test batches are never summed."
+  ],
+  "generatedEngineeringDataOnly": true,
+  "realLearnerEvidence": false,
+  "wholeGoal": "active",
+  "localOnly": true,
+  "pushed": false,
+  "deployed": false
+}
