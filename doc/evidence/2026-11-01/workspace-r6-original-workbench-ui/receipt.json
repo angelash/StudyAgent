@@ -1,0 +1,88 @@
+{
+  "protocol": "study-agent-original-workbench-ui-candidate-v1",
+  "at": "2026-11-01T11:26:31.673Z",
+  "candidate": "data/qa/p187",
+  "webSource": "data/qa/workspace-original-teaching-ui-first-20261101/source",
+  "mainApplicationSchema": 32,
+  "candidateSchema": 33,
+  "applicationIntegrated": false,
+  "sourceIncrement": {
+    "files": 5,
+    "archive": "candidate-source-delta.json.gz",
+    "sha256": "1e6903db2469d9f04049b3cc7f69e689e92f872e7f586d9e0f4bc2132543afbd",
+    "parentArchive": "doc/evidence/2026-11-01/workspace-r6-original-course-learner-and-reviews/candidate-source-delta.json.gz",
+    "parentSha256": "def06df4d83184e1d12f1e19562a6016bdd1dd77d452be338d138f10e70f00ac"
+  },
+  "checks": {
+    "apiRepro": {
+      "passed": 24,
+      "failed": 1
+    },
+    "apiFinal": {
+      "passed": 37,
+      "failed": 0,
+      "actualCourseChecks": 25,
+      "existingModelChecks": 12,
+      "sourceVariant": "Before the two CSS-only changes; API implementation and compiled inputs unchanged after those style changes."
+    },
+    "actualPostgres": {
+      "passed": 25,
+      "failed": 0
+    },
+    "apiType": 0,
+    "apiBuild": 0,
+    "webFirst": 0,
+    "webFinal": 0,
+    "uiBeforeCoverageCorrection": {
+      "passed": 5,
+      "failed": 1,
+      "pageErrors": 0
+    },
+    "uiFinal": {
+      "passed": 7,
+      "failed": 0,
+      "pageErrors": 0
+    },
+    "previousCompleteApi": {
+      "passed": 3015,
+      "failed": 0,
+      "pending": 131,
+      "archive": "../workspace-r6-original-course-learner-and-reviews/final-api-first/receipt.json",
+      "sourceVariant": "Before public coverage view and style corrections."
+    },
+    "newCompleteApiNotRunYet": true
+  },
+  "webBuildId": "QmLJL9yPf__UB67hesBAJ",
+  "webInputs": 1608,
+  "onlyExpectedNextGeneratedTypeFileChanges": true,
+  "apiSourceAndCompiledInputsDuringUi": 1911,
+  "apiInputsUnchangedDuringUi": true,
+  "existingWorkbenchNavigationStylesAndFocusReused": true,
+  "actualOriginalCourseAndLearningCodeLogin": true,
+  "restoredChildResumesOriginalGoalsStep": true,
+  "actualTeacherFacingOrLearnerCourseIdsNotSubstituted": true,
+  "publicCoverageCountCorrectedFrom6To8": true,
+  "originalPrivateBlueprintAndRequestFingerprintRetained": true,
+  "primaryButtonContrast": {
+    "before": 1.139500532355348,
+    "after": 5.002578812784904,
+    "required": 4.5,
+    "enabled": true
+  },
+  "workspaceFontsAndCardStylesReused": true,
+  "screenshotVisualReview": true,
+  "finalUiLabel": "product-inspection-eighth",
+  "actualRevealedClassroomStable": true,
+  "actualUiResponseSubmissionNotTestedYet": true,
+  "mediaDraftAndOriginalSubmissionRecoveryUiStillRequired": true,
+  "teacherReviewed": false,
+  "humanLearningEvidence": false,
+  "sourceBookNotEntirelyCompleted": true,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFilesUnchanged": 1063,
+  "localOnly": true,
+  "wholeGoal": "active"
+}

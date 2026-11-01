@@ -1,0 +1,33 @@
+{
+  "at": "2026-11-01T10:28:46.543Z",
+  "candidate": "data/qa/p187",
+  "webSource": "data/qa/workspace-original-teaching-ui-first-20261101/source",
+  "buildId": "k1XbIYEgY_r9dBzoFQ6oZ",
+  "checks": [
+    {
+      "name": "original-parent-login-and-original-course-in-workbench",
+      "passed": true
+    },
+    {
+      "name": "original-course-mobile-navigation-and-width",
+      "passed": true
+    },
+    {
+      "name": "original-adult-classroom-and-native-visual-content",
+      "passed": true
+    },
+    {
+      "name": "actual-learning-code-login-and-original-child-classroom-mobile",
+      "passed": false,
+      "error": "expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学', exact: true, level: 1 })\nExpected: visible\nTimeout: 30000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学', exact: true, level: 1 }) with timeout 30000ms\n  - waiting for getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学', exact: true, level: 1 })\n"
+    }
+  ],
+  "pageErrors": [],
+  "completed": false,
+  "error": "expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学', exact: true, level: 1 })\nExpected: visible\nTimeout: 30000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学', exact: true, level: 1 }) with timeout 30000ms\n  - waiting for getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学', exact: true, level: 1 })\n",
+  "contrast": null,
+  "originalPrivateReceiptSha256": "b0c68fdb1677b37af690596c901ac26b24f0b23ba32dfb57c149fb774d861567",
+  "originalScreenshotsAndTracesRemainLocal": true,
+  "engineeringQaOnly": true,
+  "humanLearningEvidence": false
+}

@@ -1,0 +1,23 @@
+{
+  "at": "2026-11-01T10:46:33.697Z",
+  "candidate": "data/qa/p187",
+  "passed": 3015,
+  "failed": 0,
+  "pending": 131,
+  "exit": 0,
+  "loadedFileFailures": 0,
+  "sourceInputs": 1310,
+  "compiledInputs": 601,
+  "sourceAndCompiledInputsUnchanged": true,
+  "sourceArchive": "doc/evidence/2026-11-01/workspace-r6-original-course-learner-and-reviews/candidate-source-delta.json.gz",
+  "sourceArchiveSha256": "def06df4d83184e1d12f1e19562a6016bdd1dd77d452be338d138f10e70f00ac",
+  "applicationIntegrated": false,
+  "uiFollowup": {
+    "realWorkbenchAndMobileInspected": true,
+    "originalCoverageNoticeMismatchObserved": "The public preview shows six coverage gaps while all eight retained target rows remain below their original-purpose requirements.",
+    "correctionNotIncludedInThisFullBatch": true
+  },
+  "formalDatabaseAndMainBuildNotChanged": true,
+  "localOnly": true,
+  "wholeGoal": "active"
+}

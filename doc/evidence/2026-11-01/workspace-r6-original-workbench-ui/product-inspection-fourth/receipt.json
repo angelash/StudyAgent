@@ -1,0 +1,41 @@
+{
+  "at": "2026-11-01T10:38:49.675Z",
+  "candidate": "data/qa/p187",
+  "webSource": "data/qa/workspace-original-teaching-ui-first-20261101/source",
+  "buildId": "k1XbIYEgY_r9dBzoFQ6oZ",
+  "checks": [
+    {
+      "name": "original-parent-login-and-original-course-in-workbench",
+      "passed": true
+    },
+    {
+      "name": "original-course-mobile-navigation-and-width",
+      "passed": true
+    },
+    {
+      "name": "original-adult-classroom-and-native-visual-content",
+      "passed": true
+    },
+    {
+      "name": "actual-learning-code-login-and-resumed-original-child-classroom-mobile",
+      "passed": true
+    },
+    {
+      "name": "original-child-independent-check-entry-is-in-course-workbench",
+      "passed": true
+    },
+    {
+      "name": "original-live-purpose-coverage-notice-matches-all-eight-targets",
+      "passed": false,
+      "error": "expect(locator).toContainText(expected) failed\n\nLocator: locator('.blueprint-notices')\nExpected substring: \"8 个点本次证据覆盖不足\"\nReceived string:    \"6 个点本次证据覆盖不足，结果会保留未知或待补充。本课还有检查目的尚未完整安排，请逐目标查看缺口；完成当前题组不能代替其余内容或真实到期保持核查。\"\nTimeout: 5000ms\n\nCall log:\n  - Expect \"toContainText\" locator('.blueprint-notices') with timeout 5000ms\n  - waiting for locator('.blueprint-notices')\n    14 × locator resolved to <div role=\"status\" class=\"blueprint-notices\">…</div>\n       - unexpected value \"6 个点本次证据覆盖不足，结果会保留未知或待补充。本课还有检查目的尚未完整安排，请逐目标查看缺口；完成当前题组不能代替其余内容或真实到期保持核查。\"\n"
+    }
+  ],
+  "pageErrors": [],
+  "completed": false,
+  "error": "expect(locator).toContainText(expected) failed\n\nLocator: locator('.blueprint-notices')\nExpected substring: \"8 个点本次证据覆盖不足\"\nReceived string:    \"6 个点本次证据覆盖不足，结果会保留未知或待补充。本课还有检查目的尚未完整安排，请逐目标查看缺口；完成当前题组不能代替其余内容或真实到期保持核查。\"\nTimeout: 5000ms\n\nCall log:\n  - Expect \"toContainText\" locator('.blueprint-notices') with timeout 5000ms\n  - waiting for locator('.blueprint-notices')\n    14 × locator resolved to <div role=\"status\" class=\"blueprint-notices\">…</div>\n       - unexpected value \"6 个点本次证据覆盖不足，结果会保留未知或待补充。本课还有检查目的尚未完整安排，请逐目标查看缺口；完成当前题组不能代替其余内容或真实到期保持核查。\"\n",
+  "contrast": null,
+  "originalPrivateReceiptSha256": "fabdd6e9401836528879bf028db3629c82aba59646d323078f3887977a2c4ecb",
+  "originalScreenshotsAndTracesRemainLocal": true,
+  "engineeringQaOnly": true,
+  "humanLearningEvidence": false
+}

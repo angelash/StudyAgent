@@ -1,0 +1,40 @@
+{
+  "at": "2026-11-01T11:05:51.288Z",
+  "candidate": "data/qa/p187",
+  "webSource": "data/qa/workspace-original-teaching-ui-first-20261101/source",
+  "buildId": "k1XbIYEgY_r9dBzoFQ6oZ",
+  "checks": [
+    {
+      "name": "original-parent-login-and-original-course-in-workbench",
+      "passed": true
+    },
+    {
+      "name": "original-course-mobile-navigation-and-width",
+      "passed": true
+    },
+    {
+      "name": "original-adult-classroom-and-native-visual-content",
+      "passed": true
+    },
+    {
+      "name": "actual-learning-code-login-and-resumed-original-child-classroom-mobile",
+      "passed": true
+    },
+    {
+      "name": "original-child-independent-check-entry-is-in-course-workbench",
+      "passed": true
+    },
+    {
+      "name": "original-live-purpose-coverage-notice-matches-all-eight-targets",
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "completed": true,
+  "error": null,
+  "contrast": null,
+  "originalPrivateReceiptSha256": "ac4041284b0d6e3ac6e2bcdaf0739ff73efe8c6737d55273bef66f72058b688a",
+  "originalScreenshotsAndTracesRemainLocal": true,
+  "engineeringQaOnly": true,
+  "humanLearningEvidence": false
+}

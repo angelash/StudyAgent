@@ -1,0 +1,53 @@
+{
+  "at": "2026-11-01T11:14:16.144Z",
+  "candidate": "data/qa/p187",
+  "webSource": "data/qa/workspace-original-teaching-ui-first-20261101/source",
+  "buildId": "QmLJL9yPf__UB67hesBAJ",
+  "buildLabel": "original-ui-build-second",
+  "checks": [
+    {
+      "name": "original-parent-login-and-original-course-in-workbench",
+      "passed": true
+    },
+    {
+      "name": "original-course-mobile-navigation-and-width",
+      "passed": true
+    },
+    {
+      "name": "original-adult-classroom-and-native-visual-content",
+      "passed": true
+    },
+    {
+      "name": "actual-learning-code-login-and-resumed-original-child-classroom-mobile",
+      "passed": true
+    },
+    {
+      "name": "original-child-independent-check-entry-is-in-course-workbench",
+      "passed": true
+    },
+    {
+      "name": "original-live-purpose-coverage-notice-matches-all-eight-targets",
+      "passed": true
+    },
+    {
+      "name": "workspace-primary-button-remains-readable-when-enabled",
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "completed": true,
+  "error": null,
+  "contrast": {
+    "color": "rgb(76, 102, 150)",
+    "background": "rgb(232, 240, 248)",
+    "opacity": "1",
+    "font": "Satoshi-Regular, MiSans, sans-serif",
+    "ratio": 5.002578812784904,
+    "required": 4.5,
+    "disabled": false
+  },
+  "originalPrivateReceiptSha256": "052edec271944a96391ce9d0692650b7ff000c5e831a1d432a913c103e59b36a",
+  "originalScreenshotsAndTracesRemainLocal": true,
+  "engineeringQaOnly": true,
+  "humanLearningEvidence": false
+}

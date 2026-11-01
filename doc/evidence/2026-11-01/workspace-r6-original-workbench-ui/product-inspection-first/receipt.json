@@ -1,0 +1,29 @@
+{
+  "at": "2026-11-01T10:26:50.789Z",
+  "candidate": "data/qa/p187",
+  "webSource": "data/qa/workspace-original-teaching-ui-first-20261101/source",
+  "buildId": "k1XbIYEgY_r9dBzoFQ6oZ",
+  "checks": [
+    {
+      "name": "original-parent-login-and-original-course-in-workbench",
+      "passed": true
+    },
+    {
+      "name": "original-course-mobile-navigation-and-width",
+      "passed": true
+    },
+    {
+      "name": "original-adult-classroom-and-native-visual-content",
+      "passed": false,
+      "error": "expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学', exact: true })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学', exact: true }) resolved to 2 elements:\n    1) <h1>在字词、画面与细节中认识大青树下的小学</h1> aka getByRole('region', { name: '教学白板' }).getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学' })\n    2) <h2>在字词、画面与细节中认识大青树下的小学</h2> aka getByLabel('课堂对话历史').getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学' })\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学', exact: true }) with timeout 30000ms\n  - waiting for getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学', exact: true })\n"
+    }
+  ],
+  "pageErrors": [],
+  "completed": false,
+  "error": "expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学', exact: true })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学', exact: true }) resolved to 2 elements:\n    1) <h1>在字词、画面与细节中认识大青树下的小学</h1> aka getByRole('region', { name: '教学白板' }).getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学' })\n    2) <h2>在字词、画面与细节中认识大青树下的小学</h2> aka getByLabel('课堂对话历史').getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学' })\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学', exact: true }) with timeout 30000ms\n  - waiting for getByRole('heading', { name: '在字词、画面与细节中认识大青树下的小学', exact: true })\n",
+  "contrast": null,
+  "originalPrivateReceiptSha256": "3b237c02f6ad1fcb9b7b4189eed457c1e235338f36780a565968e52000c8e8b2",
+  "originalScreenshotsAndTracesRemainLocal": true,
+  "engineeringQaOnly": true,
+  "humanLearningEvidence": false
+}
