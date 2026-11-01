@@ -1,0 +1,150 @@
+{
+  "protocol": "study-agent-original-retention-content-candidate-v1",
+  "at": "2026-11-01T07:48:53.590Z",
+  "candidate": "data/qa/p186",
+  "mainApplicationSchema": 32,
+  "candidateSchema": 33,
+  "applicationIntegrated": false,
+  "newOriginalQuestions": 24,
+  "newTaskStructures": 6,
+  "reusedTargets": 3,
+  "teacherReviewed": false,
+  "sourceIncrement": {
+    "files": 2,
+    "archive": "candidate-source-delta.json.gz",
+    "sha256": "b7e3038068afb1d16e5f4982696988fd0a5d3a663553edfcb008446e58267710",
+    "parentArchive": "doc/evidence/2026-11-01/workspace-r6-exact-edition-candidate/whole-first-corrections/test-source-delta.json.gz",
+    "parentSha256": "97103297ecfa4b89a494fb3788a62801d0b3a508239b0632b199c2e62d079924",
+    "sourceInputsChecked": 1298
+  },
+  "checks": {
+    "model": {
+      "passed": 4,
+      "failed": 0,
+      "pending": 0
+    },
+    "type": 0,
+    "build": 0,
+    "sqlite": {
+      "label": "retention-sqlite-journey-third",
+      "passed": 13,
+      "failed": 0
+    },
+    "postgres": {
+      "label": "retention-postgres-journey-first",
+      "passed": 13,
+      "failed": 0
+    }
+  },
+  "preflight": {
+    "before": 62,
+    "after": 50,
+    "publishable": false,
+    "reusedThreeTargetsFourSlotStockReady": true,
+    "remaining": {
+      "target_not_published": 5,
+      "check_material_missing": 20,
+      "material_family_coverage": 5,
+      "retention_stock_gap": 20
+    }
+  },
+  "savedThroughOriginalTeachingService": true,
+  "originalCommandReplay": true,
+  "incompletePublicationRefused": true,
+  "existingThreeDefinitionsQuestionsMappingsRetained": true,
+  "sourceTextAndPrivateInputsKeptLocal": true,
+  "learnerEvidence": false,
+  "courseAdoption": false,
+  "realDay1_3_7_14Results": false,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFilesUnchanged": 1063,
+  "evidenceFiles": [
+    {
+      "path": "retention-type-first.json",
+      "sha256": "b0d646fe1d180e5e0e9567b78b1fe315ad4a0dfb3e92e4ded6e306b448013e10"
+    },
+    {
+      "path": "retention-type-first.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "retention-type-first-source-check.json",
+      "sha256": "5555a74d910700f20258a50e3fb8493fa0cfa9ab96a606ee68285dffe64a577a"
+    },
+    {
+      "path": "retention-model-first.json",
+      "sha256": "41d1ac59c861eb518802b23161be5a806bb1102473cae9276693e3d5fa9ad55c"
+    },
+    {
+      "path": "retention-model-first.log",
+      "sha256": "480d20aed21684967cdd239eba42fe5989ebbfbc1811dc3df97497e36211046e"
+    },
+    {
+      "path": "retention-model-first-source-check.json",
+      "sha256": "711e16a0212f6565d7cd0052666cf016b97193f7f31de8d342cfaeac8dfa5e59"
+    },
+    {
+      "path": "retention-build-first.json",
+      "sha256": "f07cc4ed90889d7da25577a65a1fdad7cbd2af8286c14f41a5af4b0e3029d3b4"
+    },
+    {
+      "path": "retention-build-first.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "retention-build-first-source-check.json",
+      "sha256": "5555a74d910700f20258a50e3fb8493fa0cfa9ab96a606ee68285dffe64a577a"
+    },
+    {
+      "path": "retention-journey-storage-correction.json",
+      "sha256": "05769776b744370bbe1e1954ff80def47a2557c6157161f7a1f308d8d7f1c205"
+    },
+    {
+      "path": "retention-sqlite-journey-third/receipt.json",
+      "sha256": "1c984aceb55698f0d365c8dee8aad4cdec9c36c49e9203336c8e775611ed1416"
+    },
+    {
+      "path": "retention-sqlite-journey-third/cold-read-summary.json",
+      "sha256": "4744c74609f6ecf1a9c60804045558383a3567ffcfc833dc54bd499d6b465068"
+    },
+    {
+      "path": "retention-sqlite-journey-third/golden-scoring.json",
+      "sha256": "e570242806191acd65d3ce572d53e3c85ac334d1f5b5e77191bdd1619f339e54"
+    },
+    {
+      "path": "retention-postgres-journey-first/receipt.json",
+      "sha256": "65f7c89b1ca7c089fd764349a55bbaa9036f6cc2205beda90a15d69981f82e63"
+    },
+    {
+      "path": "retention-postgres-journey-first/cold-read-summary.json",
+      "sha256": "3a9ec4c81f0c14ff36183336eec5ce2e2d85db2fe585cc8446a2122a06649f10"
+    },
+    {
+      "path": "retention-postgres-journey-first/golden-scoring.json",
+      "sha256": "56ec68db195fad1a85dd07beb7e13eb17df68f89bd0e0660b9bc5c9ed260889f"
+    },
+    {
+      "path": "verification-source/run-retention-material-journey.cjs",
+      "sha256": "994484c1e946ce1db4371c4c29a66c2d71c7b4b5d42db4db94ea0e7241fcf58d"
+    },
+    {
+      "path": "verification-source/run-retention-postgres.cjs",
+      "sha256": "ce4a10e56177b89a2af36548b23473443f74168ebee9e85c18766669e1d41f76"
+    },
+    {
+      "path": "verification-source/run-content-check.cjs",
+      "sha256": "e152b3de305e390a4f70587b0c3776c99820e86f65d693cc38150fc8625432c6"
+    },
+    {
+      "path": "verification-source/archive-retention-content.cjs",
+      "sha256": "820068a2061cc0701e5cb691a9b82e0c9efbfc15598420b278b280e069d329ae"
+    }
+  ],
+  "wholeGoal": "active",
+  "localOnly": true,
+  "pushed": false,
+  "deployed": false
+}

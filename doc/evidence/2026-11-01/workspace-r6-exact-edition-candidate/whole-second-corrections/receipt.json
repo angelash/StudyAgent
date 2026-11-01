@@ -1,0 +1,57 @@
+{
+  "at": "2026-11-01T07:50:55.120Z",
+  "secondWhole": {
+    "passed": 2986,
+    "failedTests": 0,
+    "pending": 131,
+    "failedSuites": 1,
+    "success": false,
+    "processStatus": 1,
+    "sourceInputs": 1296,
+    "compiledInputs": 595,
+    "changedDuringCheck": []
+  },
+  "suiteLoadFailures": [
+    {
+      "path": "src/modules/learning/adult-classroom-models.test.ts",
+      "message": "ENOENT: no such file or directory, open 'F:\\workspace\\github\\StudyAgent\\data\\qa\\p185\\doc\\evidence\\2026-10-31\\workspace-r5-adult-model-preparation\\before-content.json.gz'"
+    }
+  ],
+  "firstWholeSummaryCorrection": {
+    "passed": 2984,
+    "failedTests": 2,
+    "pending": 131,
+    "failedSuites": 5,
+    "success": false,
+    "omittedFileLoadFailures": [
+      {
+        "path": "src/modules/learning/adult-classroom-models.test.ts",
+        "message": "ENOENT: no such file or directory, open 'F:\\workspace\\github\\StudyAgent\\data\\qa\\p185\\doc\\evidence\\2026-10-31\\workspace-r5-adult-model-preparation\\before-content.json.gz'"
+      }
+    ],
+    "earlierTwoFailedCasesSummaryWasIncomplete": true
+  },
+  "restoredFixture": {
+    "path": "doc/evidence/2026-10-31/workspace-r5-adult-model-preparation/before-content.json.gz",
+    "bytes": 97936,
+    "sha256": "c24a07068bd760187129c2435896150ddc4261d6f254e5b9960f7a1f032383a9",
+    "matchesTrackedMainAndPriorP184": true
+  },
+  "focused": {
+    "passed": 3,
+    "failed": 0,
+    "pending": 0
+  },
+  "businessCodeChanged": false,
+  "thirdWhole": {
+    "label": "edition-api-all-third",
+    "status": "running",
+    "sourceInputs": 1297,
+    "compiledInputs": 595,
+    "notCountedAsPassed": true
+  },
+  "mainApplicationSchema": 32,
+  "candidateSchema": 33,
+  "localOnly": true,
+  "wholeGoal": "active"
+}

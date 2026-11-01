@@ -1,0 +1,11 @@
+{
+  "kind": "qa-preparation-storage-correction",
+  "affected": ["retention-sqlite-journey-first", "retention-sqlite-journey-second"],
+  "cause": "The first harness set NODE_ENV=test. InMemoryStoreService.onModuleInit explicitly chooses memory in test mode even if STUDY_STORAGE=sqlite.",
+  "first": "Original mapping state pending was rejected. Its valid protocol state is draft; no business rule changed.",
+  "second": "Ten service/HTTP checks passed in memory. The separate cold file read was empty and failed. The original receipt kind incorrectly says actual SQLite and must not be used as persistence evidence.",
+  "qualification": "Neither affected batch qualifies as actual file-backed SQLite validation. Raw reports and the original incorrect label are preserved for traceability.",
+  "correction": "Use NODE_ENV=development with foundation and workers explicitly disabled, assert the actual database instance and file before the first operation, then verify saved commands and mappings after shutdown with DomainDatabase.",
+  "learnerEvidence": false,
+  "wholeGoal": "active"
+}

@@ -1,0 +1,515 @@
+{
+  "format": "study-original-source-material-review-v1",
+  "status": "editorial-candidate",
+  "autoImport": false,
+  "teacherReviewed": false,
+  "realLearnerEvidence": false,
+  "sourceBookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+  "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+  "families": [
+    {
+      "atomId": "core:chinese:contextmeaning",
+      "family": "context-ambiguity-clarification",
+      "dimension": "retention",
+      "behavior": "发现语境不足并选择真正有区分力的补充信息",
+      "structure": "同一词语的两个合理义项与不充分短句 → 选择可排除其中一义的追加语境",
+      "distinction": "旧题给定充分语境后选词义、填词义或换句选词义；本结构先保留未定，再判断哪条新信息能消除歧义，不能直接套一个义项。",
+      "exercises": [
+        {
+          "stem": "记录只有“小桐说：这个包很轻”。“轻”可能指重量小，也可能指装的东西少、负担小。若要确定这里明确在比较重量，补哪条信息最有用？",
+          "answer": "他把包放在秤上，与另一个包比较克数。",
+          "mode": "single_choice",
+          "options": [
+            "他把包放在秤上，与另一个包比较克数。",
+            "包是蓝色的。",
+            "他今天背这个包来学校。",
+            "包上有一张名字卡。"
+          ],
+          "analysis": "秤和克数限定重量比较；颜色、到校和名字卡不能决定“轻”在这里的含义。",
+          "expectedSeconds": 100,
+          "family": "context-ambiguity-clarification",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "纸条只写“这一段很深”。“深”可能指水的深度，也可能指文字难理解。补哪条信息能明确它说的是文字难理解？",
+          "answer": "小禾反复读这段文字，仍不明白它在讲什么。",
+          "mode": "single_choice",
+          "options": [
+            "小禾反复读这段文字，仍不明白它在讲什么。",
+            "纸条放在桌子上。",
+            "纸条上有六个字。",
+            "旁边站着两名同学。"
+          ],
+          "analysis": "读文字仍不明白限定理解难度；纸条的位置、字数和人数都不能区分两个义项。",
+          "expectedSeconds": 100,
+          "family": "context-ambiguity-clarification",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "记录只有“这里很冷”。“冷”可能说温度低，也可能说气氛不热情。哪条补充能明确这里在说气氛？",
+          "answer": "屋里温度适宜，可是问候以后没有人回应。",
+          "mode": "single_choice",
+          "options": [
+            "屋里温度适宜，可是问候以后没有人回应。",
+            "屋里有两张桌子。",
+            "门边放着一本书。",
+            "记录写在白纸上。"
+          ],
+          "analysis": "温度适宜排除温度低，无人回应说明气氛不热情；其余信息不能消除歧义。",
+          "expectedSeconds": 100,
+          "family": "context-ambiguity-clarification",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "句子只有“这个点很关键”。“点”可能指一个位置，也可能指讨论中的要点。哪条补充能确定它是讨论要点？",
+          "answer": "大家正在比较两种解释，这条理由决定采用哪一种。",
+          "mode": "single_choice",
+          "options": [
+            "大家正在比较两种解释，这条理由决定采用哪一种。",
+            "笔记本是方格本。",
+            "说话的人坐在前排。",
+            "窗外有一棵树。"
+          ],
+          "analysis": "比较解释与理由把“点”限定为要点；座位、纸张和窗外景物与词义判断无关。",
+          "expectedSeconds": 100,
+          "family": "context-ambiguity-clarification",
+          "dimension": "retention",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:contextmeaning",
+      "family": "context-gloss-error-repair",
+      "dimension": "retention",
+      "behavior": "依据前后条件修复错误词义造成的矛盾",
+      "structure": "完整语境＋明确错误解释 → 指出冲突线索并替换成相容义项",
+      "distinction": "旧词义表直接填义或选择库存；这里必须同时找到使错误解释不成立的原句线索与相容解释，不能只复述一个词义。",
+      "exercises": [
+        {
+          "stem": "材料：“山洞里很暗，没有灯，连台阶也看不清。”小宁把“暗”解释为“颜色深”。请从材料中摘出说明缺少照明的三字线索，并把“暗”解释为“光线不足”或“颜色深”。",
+          "mode": "multi_blank",
+          "answer": [
+            {
+              "key": "cue",
+              "value": "没有灯"
+            },
+            {
+              "key": "meaning",
+              "value": "光线不足"
+            }
+          ],
+          "responseShape": {
+            "entries": [
+              {
+                "key": "cue",
+                "label": "三字线索"
+              },
+              {
+                "key": "meaning",
+                "label": "相容解释"
+              }
+            ]
+          },
+          "analysis": "“没有灯”直接说明照明条件，不是物体颜色。",
+          "expectedSeconds": 110,
+          "family": "context-gloss-error-repair",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "材料：“这根丝线细得快看不见了，一根针眼能穿过两股。”有人把“细”解释为“做事认真”。摘出说明线条粗细的三字线索，再用“不粗”或“做事认真”修正词义。",
+          "mode": "multi_blank",
+          "answer": [
+            {
+              "key": "cue",
+              "value": "丝线细"
+            },
+            {
+              "key": "meaning",
+              "value": "不粗"
+            }
+          ],
+          "responseShape": {
+            "entries": [
+              {
+                "key": "cue",
+                "label": "三字线索"
+              },
+              {
+                "key": "meaning",
+                "label": "相容解释"
+              }
+            ]
+          },
+          "analysis": "句子谈丝线的粗细与穿针条件，没有描写做事态度。",
+          "expectedSeconds": 110,
+          "family": "context-gloss-error-repair",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "材料：“这个问题不轻，得多查几份资料才能解释。”有人把“不轻”解释成“物体重量大”。摘出明确讨论对象的两个字，再用“重要而不简单”或“重量大”修正解释。",
+          "mode": "multi_blank",
+          "answer": [
+            {
+              "key": "cue",
+              "value": "问题"
+            },
+            {
+              "key": "meaning",
+              "value": "重要而不简单"
+            }
+          ],
+          "responseShape": {
+            "entries": [
+              {
+                "key": "cue",
+                "label": "两字对象"
+              },
+              {
+                "key": "meaning",
+                "label": "相容解释"
+              }
+            ]
+          },
+          "analysis": "讨论对象是问题，查资料才能解释限制的是问题的分量与难度，而非称重。",
+          "expectedSeconds": 110,
+          "family": "context-gloss-error-repair",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "材料：“姐姐把来龙去脉讲得很清楚，我终于听懂了。”有人把“清楚”解释为“视力好”。摘出结果中的两个字，再用“明白、有条理”或“视力好”修正解释。",
+          "mode": "multi_blank",
+          "answer": [
+            {
+              "key": "cue",
+              "value": "听懂"
+            },
+            {
+              "key": "meaning",
+              "value": "明白、有条理"
+            }
+          ],
+          "responseShape": {
+            "entries": [
+              {
+                "key": "cue",
+                "label": "两字结果"
+              },
+              {
+                "key": "meaning",
+                "label": "相容解释"
+              }
+            ]
+          },
+          "analysis": "听懂是对讲述效果的验证，不能把讲述的清楚改成视力好。",
+          "expectedSeconds": 110,
+          "family": "context-gloss-error-repair",
+          "dimension": "retention",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:detail-evidence",
+      "family": "evidence-counterexample-update",
+      "dimension": "retention",
+      "behavior": "读到相反细节后限定或修正原判断",
+      "structure": "暂定特点＋支持细节＋后续反例 → 保留已有事实并修正结论范围",
+      "distinction": "旧题是单条证据支持、证据与判断匹配或一次行为的推断边界；本结构要求同时容纳新增反例，不能选择丢掉反例的原结论。",
+      "exercises": [
+        {
+          "stem": "先读到“午读开始后，阅览角里没有交谈声”，小宁写“这里从来没有声音”。后来又读到“午读结束，大家交流最喜欢的一页”。怎样修正最有依据？",
+          "answer": "午读时安静，交流时有人说话；不能说从来没有声音。",
+          "mode": "single_choice",
+          "options": [
+            "午读时安静，交流时有人说话；不能说从来没有声音。",
+            "这里任何时候都安静。",
+            "交流记录一定写错了。",
+            "这里任何时候都很吵。"
+          ],
+          "analysis": "两个时段的细节都要保留，用时间限定判断，不能删除反例或把另一种绝对结论代入。",
+          "expectedSeconds": 100,
+          "family": "evidence-counterexample-update",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "先看到“小队成员一起搬好展板”，小禾判断“他们每件事都意见相同”。接着看到“选照片时，他们提出不同想法，讨论后达成一致”。哪种修改合理？",
+          "answer": "他们能合作，也会有不同意见并通过讨论协商。",
+          "mode": "single_choice",
+          "options": [
+            "他们能合作，也会有不同意见并通过讨论协商。",
+            "他们从来没有不同意见。",
+            "有不同意见就说明他们没有合作过。",
+            "搬展板的记录可以忽略。"
+          ],
+          "analysis": "共同完成工作与表达分歧可以同时成立，合作不能被扩大成所有意见相同。",
+          "expectedSeconds": 100,
+          "family": "evidence-counterexample-update",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "材料先写“操场上跑步的同学很多”，小雨写“全校同学都在跑步”。后来写“树荫下还有几位同学安静下棋”。怎样调整？",
+          "answer": "操场上有许多同学跑步，也有同学下棋，活动并不相同。",
+          "mode": "single_choice",
+          "options": [
+            "操场上有许多同学跑步，也有同学下棋，活动并不相同。",
+            "所有人都在跑步。",
+            "没有人在运动。",
+            "下棋的同学一定不属于这所学校。"
+          ],
+          "analysis": "新增下棋细节否定“全校都跑步”，不能为保持原判断而编造学生身份。",
+          "expectedSeconds": 100,
+          "family": "evidence-counterexample-update",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "先有“图书角的故事书摆放整齐”，记录写成“所有图书都已经整理完”。随后写“新到的科普书还装在箱子里”。最稳妥的修改是？",
+          "answer": "故事书已摆整齐，新到科普书仍待整理。",
+          "mode": "single_choice",
+          "options": [
+            "故事书已摆整齐，新到科普书仍待整理。",
+            "所有书都已经整理完。",
+            "故事书一定也没整理。",
+            "箱子里的科普书不算图书。"
+          ],
+          "analysis": "按两类书分别保留整理状态，反例要求缩小结论，不能否认已有事实。",
+          "expectedSeconds": 100,
+          "family": "evidence-counterexample-update",
+          "dimension": "retention",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:detail-evidence",
+      "family": "evidence-comparison-completion",
+      "dimension": "retention",
+      "behavior": "为两个竞争解释选择能形成比较的新细节",
+      "structure": "同一观察＋两种解释 → 选择同时记录关键条件的新观察",
+      "distinction": "旧题从已有动作选主张、找错配或限制推断；这里判断还缺什么信息才能区分解释，缺少比较时明确不作结论。",
+      "exercises": [
+        {
+          "stem": "只记录“今天的阅览室很安静”。甲说因为孩子们在认真阅读，乙说因为里面根本没人。补哪条观察最能区分这两个解释？",
+          "answer": "记录室内是否有人，以及这些人在做什么。",
+          "mode": "single_choice",
+          "options": [
+            "记录室内是否有人，以及这些人在做什么。",
+            "记录门框的颜色。",
+            "记录窗户有几块玻璃。",
+            "记录记录本的页数。"
+          ],
+          "analysis": "两种解释的差异在有人阅读还是无人，需直接补这个条件；装饰和记录本信息无区分力。",
+          "expectedSeconds": 100,
+          "family": "evidence-comparison-completion",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "看到一组同学都拿着同一种纸花。甲说他们彼此分享，乙说每人各自从老师处领到。哪种补充最能区分？",
+          "answer": "核对纸花是互相赠送，还是分别向老师领取的经过。",
+          "mode": "single_choice",
+          "options": [
+            "核对纸花是互相赠送，还是分别向老师领取的经过。",
+            "比较纸花是不是红色。",
+            "数清桌角有几支笔。",
+            "记录他们站在教室前排。"
+          ],
+          "analysis": "相同成品不能单独证明分享；需要取得过程，不用外观替代交往证据。",
+          "expectedSeconds": 100,
+          "family": "evidence-comparison-completion",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "记录只有“花坛里的植物很精神”。甲认为有人持续照料，乙认为今天刚换成新盆栽。哪条新信息更有区分力？",
+          "answer": "核对最近是否更换植物，并查看这段时间的照料记录。",
+          "mode": "single_choice",
+          "options": [
+            "核对最近是否更换植物，并查看这段时间的照料记录。",
+            "花坛旁边有块石头。",
+            "花坛在楼前。",
+            "观察记录用了蓝色墨水。"
+          ],
+          "analysis": "更换与照料是两个解释的关键条件，单看植物当天样子不能确定持续照料。",
+          "expectedSeconds": 100,
+          "family": "evidence-comparison-completion",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "看到同学们在同一时刻举手。甲说他们都想回答，乙说老师正在带做统一动作。哪项应优先补充？",
+          "answer": "记录举手前老师的提问或指令，以及同学举手后的活动。",
+          "mode": "single_choice",
+          "options": [
+            "记录举手前老师的提问或指令，以及同学举手后的活动。",
+            "记录墙上时钟的形状。",
+            "比较椅子的颜色。",
+            "清点窗台花盆。"
+          ],
+          "analysis": "前后言语和后续行动能区分自愿回答与动作指令，教室物品不能说明举手意图。",
+          "expectedSeconds": 100,
+          "family": "evidence-comparison-completion",
+          "dimension": "retention",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:personification",
+      "family": "personification-factual-rewrite",
+      "dimension": "retention",
+      "behavior": "撤去拟人意味同时保留可观察事实",
+      "structure": "含拟人句＋改写候选 → 选择事实保持而人物化表达已撤去的句子",
+      "distinction": "旧题辨认修辞、选择拟人句、改标签或找人物化词语；这里要同时核对改写前后的事实与表达方式，不能换成另一句拟人或删掉事件。",
+      "exercises": [
+        {
+          "stem": "把“晚风牵着柳枝跳舞”改成普通观察记录。哪句既撤去拟人，又保留原句可以观察到的现象？",
+          "answer": "晚风吹来，柳枝随风摆动。",
+          "mode": "single_choice",
+          "options": [
+            "晚风吹来，柳枝随风摆动。",
+            "柳枝在晚风中快乐地聊天。",
+            "柳枝整夜一动不动。",
+            "孩子们在柳树下跳舞。"
+          ],
+          "analysis": "随风摆动保留风与柳枝运动的联系；聊天仍人物化，静止或换成孩子活动都改变事实。",
+          "expectedSeconds": 100,
+          "family": "personification-factual-rewrite",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "把“雨点敲着窗，催我们快起床”改成不带拟人的记录，哪句合适？",
+          "answer": "雨点落在窗上，发出声响。",
+          "mode": "single_choice",
+          "options": [
+            "雨点落在窗上，发出声响。",
+            "雨点商量着叫醒我们。",
+            "窗外没有下雨。",
+            "我们敲窗提醒雨点起床。"
+          ],
+          "analysis": "落窗和声响是可观察部分；商量仍赋予人意图，其他项改变了事件或施事。",
+          "expectedSeconds": 100,
+          "family": "personification-factual-rewrite",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "把“清晨，太阳探出头来向村庄问好”改成普通事实表达，哪句合适？",
+          "answer": "清晨，太阳升起，阳光照到村庄。",
+          "mode": "single_choice",
+          "options": [
+            "清晨，太阳升起，阳光照到村庄。",
+            "清晨，太阳微笑着欢迎村庄。",
+            "清晨，太阳落到山后。",
+            "村庄变成了一个会问好的孩子。"
+          ],
+          "analysis": "升起和照到保留清晨现象；微笑仍拟人，落山改变时段现象，最后一项另造情节。",
+          "expectedSeconds": 100,
+          "family": "personification-factual-rewrite",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "把“溪水一边奔跑，一边唱着欢乐的歌”改成普通观察记录，哪句合适？",
+          "answer": "溪水向前流动，发出哗哗的声响。",
+          "mode": "single_choice",
+          "options": [
+            "溪水向前流动，发出哗哗的声响。",
+            "溪水边流动边讲笑话。",
+            "小朋友在溪边唱歌。",
+            "溪水完全静止，也没有声响。"
+          ],
+          "analysis": "流动与水声对应原句的可观察现象；讲笑话仍拟人，换主体或否认现象都不相容。",
+          "expectedSeconds": 100,
+          "family": "personification-factual-rewrite",
+          "dimension": "retention",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:personification",
+      "family": "personification-effect-contrast",
+      "dimension": "retention",
+      "behavior": "比较同一事实的普通句与拟人句并说明表达效果",
+      "structure": "同一事实的两种写法 → 选择兼顾人物化依据与场景效果的解释",
+      "distinction": "旧题只判断修辞名或定位动作；本结构控制事件事实相同，比较两种表达如何影响场景感受，并拒绝把想象当科学事实。",
+      "exercises": [
+        {
+          "stem": "甲：“花在阳光下开放。”乙：“花儿迎着阳光露出笑脸。”两句写的是同一处花。哪种比较恰当？",
+          "answer": "乙把开放写得像人的微笑，使画面显得亲切；不能据此认定花真的会笑。",
+          "mode": "single_choice",
+          "options": [
+            "乙把开放写得像人的微笑，使画面显得亲切；不能据此认定花真的会笑。",
+            "甲一定用了拟人，因为花不是人。",
+            "乙证明植物有和人一样的面部肌肉。",
+            "两句的区别只是字数，表达感受完全无关。"
+          ],
+          "analysis": "笑脸赋予人的表情，效果与写法相连；文学表达不能直接成为生物学结论。",
+          "expectedSeconds": 100,
+          "family": "personification-effect-contrast",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "甲：“树叶被风吹得沙沙响。”乙：“树叶在风中互相说悄悄话。”哪种比较有依据？",
+          "answer": "乙把沙沙声写成朋友间的低声交谈，使场景有亲近感；没有证明树叶真的交谈。",
+          "mode": "single_choice",
+          "options": [
+            "乙把沙沙声写成朋友间的低声交谈，使场景有亲近感；没有证明树叶真的交谈。",
+            "甲因为写了声音，所以必然是拟人。",
+            "乙是对树叶语言能力的实验结论。",
+            "乙没有出现人名，所以不可能是拟人。"
+          ],
+          "analysis": "说悄悄话是人物化表达，沙沙声本身是普通可观察现象；判断不能只靠主语或有没有人名。",
+          "expectedSeconds": 100,
+          "family": "personification-effect-contrast",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "甲：“旗帜在风中展开。”乙：“旗帜挺起胸膛，精神抖擞地站在高处。”哪种比较恰当？",
+          "answer": "乙借人的姿态表现旗帜昂扬的样子；普通展开不因旗帜不是人就自动算拟人。",
+          "mode": "single_choice",
+          "options": [
+            "乙借人的姿态表现旗帜昂扬的样子；普通展开不因旗帜不是人就自动算拟人。",
+            "两句只要主语都是旗帜就都必然拟人。",
+            "乙说明旗帜实际长着人的胸膛。",
+            "甲一定比乙更长，所以甲用了拟人。"
+          ],
+          "analysis": "挺起胸膛与精神状态体现人物化姿态，不应将写法误认成物体的真实生理结构。",
+          "expectedSeconds": 100,
+          "family": "personification-effect-contrast",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "甲：“春雨落进田里。”乙：“春雨悄悄走进田野，轻轻唤醒种子。”哪种解释恰当？",
+          "answer": "乙借走进、唤醒的人的活动表现春雨到来和生长的景象；这是文学想象，不能当成种子只靠一声呼唤就发芽。",
+          "mode": "single_choice",
+          "options": [
+            "乙借走进、唤醒的人的活动表现春雨到来和生长的景象；这是文学想象，不能当成种子只靠一声呼唤就发芽。",
+            "落进田里本身就证明春雨具有人格。",
+            "乙证明种子靠听懂语言发芽。",
+            "两句没有对话引号，所以乙没有拟人。"
+          ],
+          "analysis": "写法与效果需要一起比较；发芽还受水、温度等条件影响，不能从拟人句推出生理机制。",
+          "expectedSeconds": 100,
+          "family": "personification-effect-contrast",
+          "dimension": "retention",
+          "identityVersion": 2
+        }
+      ]
+    }
+  ]
+}

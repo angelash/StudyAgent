@@ -1,0 +1,221 @@
+{
+  "message": "Cannot read properties of undefined (reading 'some')",
+  "response": null,
+  "records": [
+    {
+      "id": "actual-source-and-three-complete-pages",
+      "ok": true
+    },
+    {
+      "id": "initial-62-gaps-retained",
+      "ok": true,
+      "gaps": 62
+    },
+    {
+      "id": "24-pending-candidates-grant-no-qualification",
+      "ok": true,
+      "gaps": 62
+    },
+    {
+      "id": "original-three-target-stock-now-covered",
+      "ok": true,
+      "coverage": [
+        {
+          "atomId": "core:chinese:contextmeaning",
+          "ready": true,
+          "families": 4,
+          "gaps": [],
+          "retentionStock": [
+            {
+              "intervalDays": 1,
+              "ready": true,
+              "questions": 4,
+              "measurementIds": [
+                "measurement:foundation_q_fe13424d902fb31e046d6659",
+                "measurement:question_20945d3f-6ffb-41f2-aefa-480bc0da33d6",
+                "measurement:foundation_q_v2_6e786de62015c01ed30d2176",
+                "measurement:question_ef956d32-131c-4806-a118-7a83cc063677"
+              ]
+            },
+            {
+              "intervalDays": 3,
+              "ready": true,
+              "questions": 4,
+              "measurementIds": [
+                "measurement:foundation_q_v2_b5e745286fb7f33f60cd2382",
+                "measurement:question_01ef1e90-165e-4d0d-b54c-86fcade9a2aa",
+                "measurement:foundation_q_v2_0a1541f93117eb45846c31aa",
+                "measurement:question_4c7ba26d-eacc-4a72-bf65-e5e0ea265ef8"
+              ]
+            },
+            {
+              "intervalDays": 7,
+              "ready": true,
+              "questions": 4,
+              "measurementIds": [
+                "measurement:foundation_q_v2_b7fda85a94dd6313ed0e8e3b",
+                "measurement:question_ec9e8eb1-b0f2-4492-8f8c-2a960be98378",
+                "measurement:foundation_q_v2_029d77571524466912745e81",
+                "measurement:question_7fca4d81-8d0e-4dee-bcb6-437dbf0f1bfc"
+              ]
+            },
+            {
+              "intervalDays": 14,
+              "ready": true,
+              "questions": 4,
+              "measurementIds": [
+                "measurement:foundation_q_8b6a8fcbb044b61e7dab8776",
+                "measurement:question_dabf4582-a2d0-43ce-a5df-37ae1875b1b3",
+                "measurement:foundation_q_v2_613bffdbb0ad70412f39baea",
+                "measurement:question_2607c0c9-6fdb-49fe-a52e-ca767fc61f7a"
+              ]
+            }
+          ]
+        },
+        {
+          "atomId": "core:chinese:detail-evidence",
+          "ready": true,
+          "families": 4,
+          "gaps": [],
+          "retentionStock": [
+            {
+              "intervalDays": 1,
+              "ready": true,
+              "questions": 4,
+              "measurementIds": [
+                "measurement:foundation_q_de7a81c71181f8d1e3d0c517",
+                "measurement:question_23570f3b-a0b6-474c-a8a0-e9a0ca75c311",
+                "measurement:foundation_q_v2_34d8c7706a5715a121c18e4c",
+                "measurement:question_d4690817-4414-4d77-8a71-0927d767baa2"
+              ]
+            },
+            {
+              "intervalDays": 3,
+              "ready": true,
+              "questions": 4,
+              "measurementIds": [
+                "measurement:foundation_q_v2_25f22cb598460e104a429ad4",
+                "measurement:question_12973179-5803-496b-8d48-3ab51f338f53",
+                "measurement:foundation_q_v2_00cb6195189992172a4f9e0f",
+                "measurement:question_d721cb0c-5483-4908-a872-7d516be82fe7"
+              ]
+            },
+            {
+              "intervalDays": 7,
+              "ready": true,
+              "questions": 4,
+              "measurementIds": [
+                "measurement:foundation_q_v2_6ea612dc51b524d360493156",
+                "measurement:question_1997316d-365c-4904-9807-1306c1535366",
+                "measurement:foundation_q_v2_803261f8a5b5ae3a61a6eb29",
+                "measurement:question_d4fe0947-2ad9-438c-bed1-aab53b7ae64e"
+              ]
+            },
+            {
+              "intervalDays": 14,
+              "ready": true,
+              "questions": 4,
+              "measurementIds": [
+                "measurement:foundation_q_v2_2727e6214c3d2d7529501a73",
+                "measurement:question_af65f19a-c212-4847-b6ba-3bf088fafcb5",
+                "measurement:foundation_q_v2_2644e436093563642111977f",
+                "measurement:question_23a3f87a-cbd1-45c4-808e-9610e49ef605"
+              ]
+            }
+          ]
+        },
+        {
+          "atomId": "core:chinese:personification",
+          "ready": true,
+          "families": 4,
+          "gaps": [],
+          "retentionStock": [
+            {
+              "intervalDays": 1,
+              "ready": true,
+              "questions": 4,
+              "measurementIds": [
+                "measurement:foundation_q_v2_b747efd994162cf26ce18415",
+                "measurement:question_68af8d84-0c99-4d40-87b9-18401fdcc146",
+                "measurement:foundation_q_v2_1a292a78b9205a6f43528731",
+                "measurement:question_09813e80-3a83-4d27-b1fe-577fff5cea08"
+              ]
+            },
+            {
+              "intervalDays": 3,
+              "ready": true,
+              "questions": 4,
+              "measurementIds": [
+                "measurement:foundation_q_v2_312878309069daf13b58bb9b",
+                "measurement:question_a67928c3-712f-47f1-bde5-768e00cdd27f",
+                "measurement:foundation_q_v2_b3fba0bc14f6dc697e41d4b1",
+                "measurement:question_74d4fe1c-0527-4518-ad15-7f65f401879a"
+              ]
+            },
+            {
+              "intervalDays": 7,
+              "ready": true,
+              "questions": 4,
+              "measurementIds": [
+                "measurement:foundation_q_v2_74820f051873f89c4c955181",
+                "measurement:question_def025f2-8b9d-4d96-a315-2d237aebd419",
+                "measurement:foundation_q_v2_68f8940f51645036800d7be0",
+                "measurement:question_2d4099c6-4c7d-4303-b6e8-1d517a9b3b92"
+              ]
+            },
+            {
+              "intervalDays": 14,
+              "ready": true,
+              "questions": 4,
+              "measurementIds": [
+                "measurement:foundation_q_v2_26c5e10225b666d582126554",
+                "measurement:question_8a3e9432-c82e-47aa-a927-e34732252fa1",
+                "measurement:foundation_q_v2_88025fe79d809cc42fd4bac9",
+                "measurement:question_af315a7a-20df-447a-b4e6-b611d735bd0b"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "five-other-target-gaps-stay-visible",
+      "ok": true,
+      "gaps": 50,
+      "codes": {
+        "target_not_published": 5,
+        "check_material_missing": 20,
+        "material_family_coverage": 5,
+        "retention_stock_gap": 20
+      }
+    },
+    {
+      "id": "actual-draft-save-and-exact-readback",
+      "ok": true
+    },
+    {
+      "id": "original-command-replay-retained",
+      "ok": true
+    },
+    {
+      "id": "incomplete-whole-lesson-publication-refused",
+      "ok": true
+    },
+    {
+      "id": "no-learner-or-adoption-evidence-written",
+      "ok": true,
+      "counts": {
+        "students": 0,
+        "diagnosticSessions": 0,
+        "diagnosticResponses": 0,
+        "reviewTasks": 0,
+        "courseTeachingAdoptions": 0
+      }
+    },
+    {
+      "id": "old-three-definitions-and-all-prior-questions-mappings-preserved",
+      "ok": true
+    }
+  ],
+  "qualification": "In-memory checks only; cold file validation failed. The original receipt kind was wrong and is disqualified."
+}
