@@ -1,0 +1,5086 @@
+{
+  "label": "workbench-browser-whole-fourth",
+  "stats": {
+    "startTime": "2026-11-01T14:55:56.283Z",
+    "duration": 4227224.097,
+    "expected": 634,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "rows": [
+    {
+      "file": "adult-models.spec.ts",
+      "line": 29,
+      "title": "adult models: every59 actual lesson renders its complete authored comparison through the production classroom",
+      "status": "passed",
+      "durationMs": 29806,
+      "error": ""
+    },
+    {
+      "file": "adult-models.spec.ts",
+      "line": 41,
+      "title": "adult models: unit concept, comparison, example, limits and original practice remain usable across widths for soc-1-1-2",
+      "status": "passed",
+      "durationMs": 6494,
+      "error": ""
+    },
+    {
+      "file": "adult-models.spec.ts",
+      "line": 41,
+      "title": "adult models: unit concept, comparison, example, limits and original practice remain usable across widths for soc-2-3-3",
+      "status": "passed",
+      "durationMs": 6958,
+      "error": ""
+    },
+    {
+      "file": "adult-models.spec.ts",
+      "line": 41,
+      "title": "adult models: unit concept, comparison, example, limits and original practice remain usable across widths for soc-3-3-3",
+      "status": "passed",
+      "durationMs": 6803,
+      "error": ""
+    },
+    {
+      "file": "adult-models.spec.ts",
+      "line": 41,
+      "title": "adult models: unit concept, comparison, example, limits and original practice remain usable across widths for soc-4-3-2",
+      "status": "passed",
+      "durationMs": 7024,
+      "error": ""
+    },
+    {
+      "file": "adult-models.spec.ts",
+      "line": 41,
+      "title": "adult models: unit concept, comparison, example, limits and original practice remain usable across widths for soc-5-2-1",
+      "status": "passed",
+      "durationMs": 7108,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 13,
+      "title": "recovery: a late save receipt cannot mark a newer local answer saved or overwrite its queue",
+      "status": "passed",
+      "durationMs": 4013,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 22,
+      "title": "recovery: a dropped save acknowledgment survives refresh with its original command and one server revision",
+      "status": "passed",
+      "durationMs": 4433,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 31,
+      "title": "recovery: two real tabs retain conflicting input and explicitly download before keeping the local version",
+      "status": "passed",
+      "durationMs": 6449,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 43,
+      "title": "recovery: a lost diagnostic first-submit reply replays the frozen time and advances exactly one question after reload",
+      "status": "passed",
+      "durationMs": 3677,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 52,
+      "title": "recovery: practice correction drafts and their lost submit reply preserve the original first answer and the current question",
+      "status": "passed",
+      "durationMs": 3822,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 61,
+      "title": "recovery: leaving before debounce flushes the exact question, while offline navigation retains its local input",
+      "status": "passed",
+      "durationMs": 3015,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 68,
+      "title": "recovery: unavailable browser storage keeps the full answer editable and offers a real downloaded copy",
+      "status": "passed",
+      "durationMs": 3961,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 74,
+      "title": "recovery: attachment completion revalidates a conflict without another upload or a manufactured first answer",
+      "status": "passed",
+      "durationMs": 6128,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 82,
+      "title": "recovery: a delayed old question read cannot reopen a practice after the learner has left",
+      "status": "passed",
+      "durationMs": 3005,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 90,
+      "title": "recovery: an older tab keeps its original attempt binding after another page submits the first answer",
+      "status": "passed",
+      "durationMs": 5741,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "diagnostic single_choice: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 6092,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "diagnostic multiple_choice: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5792,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "diagnostic boolean: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 6049,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "diagnostic numeric_blank: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5594,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "diagnostic text_blank: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5629,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "diagnostic formula_blank: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 6430,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "diagnostic multi_blank: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5613,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "diagnostic table_fill: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 6515,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "diagnostic matching: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5884,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "diagnostic sorting: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 6070,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "diagnostic drag_drop: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 6019,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "diagnostic hotspot: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 6363,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "diagnostic geometry_draw: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5959,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "diagnostic stepwise: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5832,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "diagnostic image_upload: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 6323,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "diagnostic short_answer: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5752,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "diagnostic audio_record: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 6979,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "practice single_choice: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5101,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "practice multiple_choice: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5277,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "practice boolean: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5513,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "practice numeric_blank: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5233,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "practice text_blank: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5298,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "practice formula_blank: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 6003,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "practice multi_blank: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5151,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "practice table_fill: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5488,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "practice matching: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5485,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "practice sorting: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5394,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "practice drag_drop: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5204,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "practice hotspot: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5344,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "practice geometry_draw: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5480,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "practice stepwise: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5181,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "practice image_upload: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5866,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "practice short_answer: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 5290,
+      "error": ""
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "line": 152,
+      "title": "practice audio_record: incomplete input, reload, continued editing, first submit and historical read",
+      "status": "passed",
+      "durationMs": 7760,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 22,
+      "title": "Auto names the actual platform default and a later composer choice preserves the original saved model",
+      "status": "passed",
+      "durationMs": 5206,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 40,
+      "title": "model checks retain failure, historical scope and unknown states without generating an answer",
+      "status": "passed",
+      "durationMs": 3938,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 65,
+      "title": "a failed model directory has an explicit retry that preserves the complete unsent question and chosen model",
+      "status": "passed",
+      "durationMs": 5746,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 82,
+      "title": "a saved question survives collapse and refresh without duplicate creation or retroactive first-answer evidence",
+      "status": "passed",
+      "durationMs": 13577,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 91,
+      "title": "a lost creation receipt restores the same original command from server state without sending it again",
+      "status": "passed",
+      "durationMs": 12289,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 101,
+      "title": "running cancellation settles after refresh and retry retains the original model despite a new composer selection",
+      "status": "passed",
+      "durationMs": 6573,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 109,
+      "title": "invalid model evidence remains a visible failure and an explicit retry publishes one validated answer",
+      "status": "passed",
+      "durationMs": 5227,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 114,
+      "title": "history reads beyond fifty messages, locates an old search match and returns to its actual practice question",
+      "status": "passed",
+      "durationMs": 4239,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 125,
+      "title": "unavailable local storage keeps the full question editable, exportable and recoverable once the server accepts it",
+      "status": "passed",
+      "durationMs": 12390,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 133,
+      "title": "a forged cache owned by another account is ignored without exposing or sending its text",
+      "status": "passed",
+      "durationMs": 3438,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 139,
+      "title": "stopping local waiting leaves the real server task running until explicit cancellation",
+      "status": "passed",
+      "durationMs": 5272,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 147,
+      "title": "conversation search pages beyond the first results and recovers from an empty result",
+      "status": "passed",
+      "durationMs": 3754,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 155,
+      "title": "identity recovery: one failed identity request retries without asking the signed-in learner to log in again",
+      "status": "passed",
+      "durationMs": 3977,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 160,
+      "title": "identity recovery: a persistent connection failure offers a bounded manual retry and reuses the existing saved conversation",
+      "status": "passed",
+      "durationMs": 4345,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 166,
+      "title": "identity recovery: an explicit unauthenticated response clears private identity without retrying or calling it a connection failure",
+      "status": "passed",
+      "durationMs": 3464,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 170,
+      "title": "reviewing an earlier task preserves selection while the new task finishes in the background",
+      "status": "passed",
+      "durationMs": 14346,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 177,
+      "title": "diagnostic rules stay deterministic and history locates an answered frozen question without opening a future one",
+      "status": "passed",
+      "durationMs": 6052,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 187,
+      "title": "history location: the first click uses the selected original conversation while its view is still loading",
+      "status": "passed",
+      "durationMs": 5704,
+      "error": ""
+    },
+    {
+      "file": "assistant-conversations.spec.ts",
+      "line": 202,
+      "title": "history location: closing and reopening the same original conversation fences a late position reply",
+      "status": "passed",
+      "durationMs": 4906,
+      "error": ""
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "line": 15,
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 320",
+      "status": "passed",
+      "durationMs": 5177,
+      "error": ""
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "line": 15,
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 390",
+      "status": "passed",
+      "durationMs": 4694,
+      "error": ""
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "line": 15,
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 768",
+      "status": "passed",
+      "durationMs": 5214,
+      "error": ""
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "line": 15,
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 1440",
+      "status": "passed",
+      "durationMs": 5924,
+      "error": ""
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "line": 19,
+      "title": "guidance observations: child real report remains separate and creates exactly one original proposed plan with native manager",
+      "status": "passed",
+      "durationMs": 7329,
+      "error": ""
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "line": 23,
+      "title": "guidance observations: no completed report offers the native scope entry and never invents a plan",
+      "status": "passed",
+      "durationMs": 4534,
+      "error": ""
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "line": 27,
+      "title": "guidance observations: lost committed creation uses its exact complete original receipt after reload without a second POST",
+      "status": "passed",
+      "durationMs": 5588,
+      "error": ""
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "line": 31,
+      "title": "guidance observations: two tabs preserve full losing observations after a real version conflict",
+      "status": "passed",
+      "durationMs": 6493,
+      "error": ""
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "line": 35,
+      "title": "guidance observations: unavailable storage requires a full original command download before saving",
+      "status": "passed",
+      "durationMs": 4973,
+      "error": ""
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "line": 39,
+      "title": "guidance observations: a late source preflight cannot fill a reopened observation",
+      "status": "passed",
+      "durationMs": 4823,
+      "error": ""
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "line": 50,
+      "title": "guidance observations: complete original plan activities and reasons survive reload and a lost committed adjustment reply",
+      "status": "passed",
+      "durationMs": 6856,
+      "error": ""
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "line": 53,
+      "title": "guidance observations: two original plan editors preserve the losing full reason after a real version conflict",
+      "status": "passed",
+      "durationMs": 7209,
+      "error": ""
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "line": 57,
+      "title": "guidance operations: a lost original activation survives reload and creates the original four delayed tasks per action",
+      "status": "passed",
+      "durationMs": 5900,
+      "error": ""
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "line": 60,
+      "title": "guidance operations: the original paused receipt stays separate from a later active plan",
+      "status": "passed",
+      "durationMs": 6055,
+      "error": ""
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "line": 63,
+      "title": "guidance operations: two complete forms require both actual downloads before leaving with unavailable storage",
+      "status": "passed",
+      "durationMs": 5819,
+      "error": ""
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "line": 66,
+      "title": "guidance operations: complete retrospective input restores and cannot be acknowledged without actual independent followup evidence",
+      "status": "passed",
+      "durationMs": 5653,
+      "error": ""
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "line": 69,
+      "title": "guidance operations: actual completed independent followup supports an exact lost retrospective command while uncertainty stays explicit",
+      "status": "passed",
+      "durationMs": 6339,
+      "error": ""
+    },
+    {
+      "file": "assistant-notes.spec.ts",
+      "line": 30,
+      "title": "assistant notes: original source, explicit editing/adoption/export and original-message return at390",
+      "status": "passed",
+      "durationMs": 5125,
+      "error": ""
+    },
+    {
+      "file": "assistant-notes.spec.ts",
+      "line": 30,
+      "title": "assistant notes: original source, explicit editing/adoption/export and original-message return at768",
+      "status": "passed",
+      "durationMs": 5253,
+      "error": ""
+    },
+    {
+      "file": "assistant-notes.spec.ts",
+      "line": 30,
+      "title": "assistant notes: original source, explicit editing/adoption/export and original-message return at880",
+      "status": "passed",
+      "durationMs": 4905,
+      "error": ""
+    },
+    {
+      "file": "assistant-notes.spec.ts",
+      "line": 30,
+      "title": "assistant notes: original source, explicit editing/adoption/export and original-message return at1440",
+      "status": "passed",
+      "durationMs": 6267,
+      "error": ""
+    },
+    {
+      "file": "assistant-notes.spec.ts",
+      "line": 49,
+      "title": "assistant notes: a committed create with a lost HTTP reply survives refresh and recovers without another create",
+      "status": "passed",
+      "durationMs": 5106,
+      "error": ""
+    },
+    {
+      "file": "assistant-notes.spec.ts",
+      "line": 59,
+      "title": "assistant notes: offline local editing, independent draft and Escape focus survive leaving and reopening",
+      "status": "passed",
+      "durationMs": 4272,
+      "error": ""
+    },
+    {
+      "file": "assistant-notes.spec.ts",
+      "line": 67,
+      "title": "assistant notes: corrupt or different-account cached content stays hidden and its original bytes are preserved",
+      "status": "passed",
+      "durationMs": 3522,
+      "error": ""
+    },
+    {
+      "file": "assistant-notes.spec.ts",
+      "line": 74,
+      "title": "assistant notes: a source outside70 later messages returns by a read-only anchor without opening another conversation",
+      "status": "passed",
+      "durationMs": 4913,
+      "error": ""
+    },
+    {
+      "file": "assistant-notes.spec.ts",
+      "line": 82,
+      "title": "assistant notes: a request that never reached the server retries only its preserved original command",
+      "status": "passed",
+      "durationMs": 4672,
+      "error": ""
+    },
+    {
+      "file": "assistant-notes.spec.ts",
+      "line": 94,
+      "title": "assistant notes: lost edit and adoption replies recover their original results without publishing another command",
+      "status": "passed",
+      "durationMs": 6275,
+      "error": ""
+    },
+    {
+      "file": "assistant-notes.spec.ts",
+      "line": 105,
+      "title": "assistant notes: another selected message keeps the first unsubmitted editing draft intact",
+      "status": "passed",
+      "durationMs": 4236,
+      "error": ""
+    },
+    {
+      "file": "assistant-notes.spec.ts",
+      "line": 111,
+      "title": "assistant notes: an export read failure preserves the full saved note and a retry only downloads it",
+      "status": "passed",
+      "durationMs": 4746,
+      "error": ""
+    },
+    {
+      "file": "assistant-notes.spec.ts",
+      "line": 118,
+      "title": "assistant notes: closing a pending private read and switching accounts hides its late response",
+      "status": "passed",
+      "durationMs": 7627,
+      "error": ""
+    },
+    {
+      "file": "assistant-notes.spec.ts",
+      "line": 127,
+      "title": "assistant notes: overlong pasted text stays complete through reopening and download while server writes remain disabled",
+      "status": "passed",
+      "durationMs": 5960,
+      "error": ""
+    },
+    {
+      "file": "assistant-notes.spec.ts",
+      "line": 153,
+      "title": "assistant notes: an actual stale revision preserves original409 command and local text before explicit server selection",
+      "status": "passed",
+      "durationMs": 5366,
+      "error": ""
+    },
+    {
+      "file": "assistant-notes.spec.ts",
+      "line": 166,
+      "title": "assistant notes: another device adopting the server note does not mark a different local draft adopted",
+      "status": "passed",
+      "durationMs": 4910,
+      "error": ""
+    },
+    {
+      "file": "assistant-notes.spec.ts",
+      "line": 175,
+      "title": "assistant notes: real learning-code student keeps notes readable during assessment and resumes only after an explicit permission check",
+      "status": "passed",
+      "durationMs": 7945,
+      "error": ""
+    },
+    {
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "line": 15,
+      "title": "practice withdrawal: explicit reason and two confirmations preserve all unstarted groups and keyboard focus",
+      "status": "passed",
+      "durationMs": 8408,
+      "error": ""
+    },
+    {
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "line": 29,
+      "title": "practice withdrawal: a lost committed acknowledgement resumes the exact original reason and key after reload",
+      "status": "passed",
+      "durationMs": 7197,
+      "error": ""
+    },
+    {
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "line": 37,
+      "title": "practice withdrawal: denied storage sends nothing until the complete reason and original command are downloaded",
+      "status": "passed",
+      "durationMs": 6919,
+      "error": ""
+    },
+    {
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "line": 47,
+      "title": "practice withdrawal: parent confirmation makes the actual learner history readonly while keeping a complete unsubmitted correction",
+      "status": "passed",
+      "durationMs": 11056,
+      "error": ""
+    },
+    {
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "line": 61,
+      "title": "practice withdrawal: two actual tabs retain separate explanations and the losing command never borrows another success",
+      "status": "passed",
+      "durationMs": 7777,
+      "error": ""
+    },
+    {
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "line": 71,
+      "title": "practice withdrawal: actual saved PNG and PCM audio remain readable after withdrawal while new media writes are refused",
+      "status": "passed",
+      "durationMs": 13779,
+      "error": ""
+    },
+    {
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "line": 91,
+      "title": "practice withdrawal: a delayed pre-withdrawal activity projection cannot reenable learner writing",
+      "status": "passed",
+      "durationMs": 10502,
+      "error": ""
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "line": 8,
+      "title": "conversation practice workspace: actual parent source, three groups and six learner answers retain original reasons and help",
+      "status": "passed",
+      "durationMs": 13320,
+      "error": ""
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "line": 25,
+      "title": "conversation practice workspace: lost creation and arrangement replies keep exact original commands across reload",
+      "status": "passed",
+      "durationMs": 7479,
+      "error": ""
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "line": 33,
+      "title": "conversation practice workspace: a lost learner answer keeps the original reason separate from later local edits",
+      "status": "passed",
+      "durationMs": 8219,
+      "error": ""
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "line": 40,
+      "title": "conversation practice workspace: denied storage requires a complete answer and reason download before switching questions",
+      "status": "passed",
+      "durationMs": 8475,
+      "error": ""
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "line": 48,
+      "title": "conversation practice workspace: progressive help and a correction keep the learner first answer and reason unchanged",
+      "status": "passed",
+      "durationMs": 8645,
+      "error": ""
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "line": 55,
+      "title": "conversation practice workspace: a second tab compares both complete drafts instead of overwriting the first save",
+      "status": "passed",
+      "durationMs": 9326,
+      "error": ""
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "line": 63,
+      "title": "conversation practice workspace: real image and PCM audio uploads stay attached to the original learner question and remain pending review",
+      "status": "passed",
+      "durationMs": 11436,
+      "error": ""
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "line": 72,
+      "title": "conversation practice workspace: browser back without Navigation API preserves the complete current-question input",
+      "status": "passed",
+      "durationMs": 8279,
+      "error": ""
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "line": 77,
+      "title": "conversation practice workspace: a revoked learner entry clears server projection and rejects a conflicting child link",
+      "status": "passed",
+      "durationMs": 8683,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "line": 24,
+      "title": "generated teaching workspace: actual source, Auto model, full edit, rereview and adult first reasons at 320",
+      "status": "passed",
+      "durationMs": 9462,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "line": 24,
+      "title": "generated teaching workspace: actual source, Auto model, full edit, rereview and adult first reasons at 390",
+      "status": "passed",
+      "durationMs": 9513,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "line": 24,
+      "title": "generated teaching workspace: actual source, Auto model, full edit, rereview and adult first reasons at 768",
+      "status": "passed",
+      "durationMs": 10066,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "line": 24,
+      "title": "generated teaching workspace: actual source, Auto model, full edit, rereview and adult first reasons at 1440",
+      "status": "passed",
+      "durationMs": 11613,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "line": 32,
+      "title": "generated teaching workspace: uncertain review preserves the original and blocks adoption until complete edits and new review",
+      "status": "passed",
+      "durationMs": 6368,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "line": 36,
+      "title": "generated teaching workspace: one lost generation acknowledgement is recovered with the same complete original command after reload",
+      "status": "passed",
+      "durationMs": 6723,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "line": 40,
+      "title": "generated teaching workspace: denied storage sends no creation until the full original copy is downloaded",
+      "status": "passed",
+      "durationMs": 5888,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "line": 44,
+      "title": "generated teaching workspace: the original adult response receipt survives reload without replacing the first reason",
+      "status": "passed",
+      "durationMs": 7004,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "line": 48,
+      "title": "generated teaching workspace: two actual tabs keep both complete edit drafts and compare the saved version",
+      "status": "passed",
+      "durationMs": 7885,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "line": 52,
+      "title": "generated teaching workspace: an explicit source change keeps original adult history readable and blocks new writes",
+      "status": "passed",
+      "durationMs": 7471,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "line": 56,
+      "title": "generated teaching workspace: original adoption and adult-start acknowledgements restore without duplicate records",
+      "status": "passed",
+      "durationMs": 8131,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "line": 60,
+      "title": "generated teaching workspace: explicit cancellation, original-model retry and Escape preserve source and restore focus",
+      "status": "passed",
+      "durationMs": 9921,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "line": 64,
+      "title": "generated teaching workspace: actual adult-answer tabs preserve conflicting complete reasons before explicit comparison",
+      "status": "passed",
+      "durationMs": 8078,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-sharing.spec.ts",
+      "line": 15,
+      "title": "generated child teaching: explicit source and separate adoption and sharing preserve six actual learner reasons at 320",
+      "status": "passed",
+      "durationMs": 20591,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-sharing.spec.ts",
+      "line": 15,
+      "title": "generated child teaching: explicit source and separate adoption and sharing preserve six actual learner reasons at 390",
+      "status": "passed",
+      "durationMs": 19404,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-sharing.spec.ts",
+      "line": 15,
+      "title": "generated child teaching: explicit source and separate adoption and sharing preserve six actual learner reasons at 768",
+      "status": "passed",
+      "durationMs": 19934,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-sharing.spec.ts",
+      "line": 15,
+      "title": "generated child teaching: explicit source and separate adoption and sharing preserve six actual learner reasons at 1440",
+      "status": "passed",
+      "durationMs": 20190,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-sharing.spec.ts",
+      "line": 21,
+      "title": "generated child teaching: a lost sharing acknowledgement retains the complete original instruction and key across reload",
+      "status": "passed",
+      "durationMs": 9504,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-sharing.spec.ts",
+      "line": 25,
+      "title": "generated child teaching: guardian withdrawal keeps the actual first answer and full unsubmitted correction readonly",
+      "status": "passed",
+      "durationMs": 14259,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-sharing.spec.ts",
+      "line": 29,
+      "title": "generated child teaching: disabled storage downloads the complete reason and original withdrawal before sending",
+      "status": "passed",
+      "durationMs": 9897,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-sharing.spec.ts",
+      "line": 33,
+      "title": "generated child teaching: the exact lost child-start receipt survives reload and creates only one original activity",
+      "status": "passed",
+      "durationMs": 10873,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-sharing.spec.ts",
+      "line": 37,
+      "title": "generated child teaching: one lost first-answer receipt keeps the original reason separate from complete later edits",
+      "status": "passed",
+      "durationMs": 11664,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-sharing.spec.ts",
+      "line": 41,
+      "title": "generated child teaching: a delayed pre-withdrawal activity read cannot restore write controls after the confirmed new state",
+      "status": "passed",
+      "durationMs": 10860,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-sharing.spec.ts",
+      "line": 45,
+      "title": "generated child teaching: two actual guardian tabs keep the losing original complete withdrawal reason",
+      "status": "passed",
+      "durationMs": 10102,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-sharing.spec.ts",
+      "line": 49,
+      "title": "generated child teaching: disabled storage protects a full unsent answer and reason before changing the original question",
+      "status": "passed",
+      "durationMs": 10150,
+      "error": ""
+    },
+    {
+      "file": "assistant-teaching-sharing.spec.ts",
+      "line": 53,
+      "title": "generated child teaching: conflicting object parameters and revoked learning identity stop reads and keep the prior complete copy private",
+      "status": "passed",
+      "durationMs": 11068,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 35,
+      "title": "source whiteboard: complete original selection, mapped edit, adoption and player return at 390",
+      "status": "passed",
+      "durationMs": 7547,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 35,
+      "title": "source whiteboard: complete original selection, mapped edit, adoption and player return at 768",
+      "status": "passed",
+      "durationMs": 6988,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 35,
+      "title": "source whiteboard: complete original selection, mapped edit, adoption and player return at 880",
+      "status": "passed",
+      "durationMs": 6994,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 35,
+      "title": "source whiteboard: complete original selection, mapped edit, adoption and player return at 1440",
+      "status": "passed",
+      "durationMs": 6378,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 59,
+      "title": "source whiteboard: a lost committed creation reply is recovered with the exact original key after refresh",
+      "status": "passed",
+      "durationMs": 5629,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 70,
+      "title": "source whiteboard: incomplete selection survives closing, restores focus and returns to the precise original message without changing the assistant draft",
+      "status": "passed",
+      "durationMs": 4548,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 79,
+      "title": "source whiteboard: another owner cache remains byte-for-byte intact and is never rendered as the current selection",
+      "status": "passed",
+      "durationMs": 3426,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 86,
+      "title": "source whiteboard: an interrupted review resumes the original draft and fixed model through the actual workbench",
+      "status": "passed",
+      "durationMs": 7021,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 94,
+      "title": "source whiteboard: normalized mapped edits settle cleanly and an actual409 retains the complete original command across reload",
+      "status": "passed",
+      "durationMs": 7862,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 108,
+      "title": "source whiteboard: a real learner preserves local mapped edits during paused assessment and explicitly rechecks before saving again",
+      "status": "passed",
+      "durationMs": 9730,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 128,
+      "title": "source whiteboard: actual private PNG generation, original editing, adoption and sentence narration use the existing classroom",
+      "status": "passed",
+      "durationMs": 13181,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 146,
+      "title": "source whiteboard: a creation that never reached the server retries only the complete original command",
+      "status": "passed",
+      "durationMs": 4671,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 157,
+      "title": "source whiteboard: two duplicated documents retain independent full selections across reload",
+      "status": "passed",
+      "durationMs": 6514,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 178,
+      "title": "source whiteboard: multiple unfinished drafts keep an original pending creation when switching explicitly",
+      "status": "passed",
+      "durationMs": 5134,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 194,
+      "title": "source whiteboard: a valid legacy source cache is restored without changing its original bytes",
+      "status": "passed",
+      "durationMs": 4656,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 203,
+      "title": "source whiteboard: unavailable storage blocks unsaved switching and creation until the complete original command is downloaded",
+      "status": "passed",
+      "durationMs": 4422,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 216,
+      "title": "source whiteboard: the complete over-budget source stays visible and reducing the selection requires a new preflight",
+      "status": "passed",
+      "durationMs": 7074,
+      "error": ""
+    },
+    {
+      "file": "assistant-whiteboards.spec.ts",
+      "line": 226,
+      "title": "source whiteboard: closing during a late original preflight cannot populate the reopened selection",
+      "status": "passed",
+      "durationMs": 4412,
+      "error": ""
+    },
+    {
+      "file": "calendar-boundary.spec.ts",
+      "line": 21,
+      "title": "legacy calendar boundary: all actual slots busy leaves zero confirmable sessions at 320",
+      "status": "passed",
+      "durationMs": 3735,
+      "error": ""
+    },
+    {
+      "file": "calendar-boundary.spec.ts",
+      "line": 21,
+      "title": "legacy calendar boundary: all actual slots busy leaves zero confirmable sessions at 390",
+      "status": "passed",
+      "durationMs": 3830,
+      "error": ""
+    },
+    {
+      "file": "calendar-boundary.spec.ts",
+      "line": 21,
+      "title": "legacy calendar boundary: all actual slots busy leaves zero confirmable sessions at 768",
+      "status": "passed",
+      "durationMs": 3919,
+      "error": ""
+    },
+    {
+      "file": "calendar-boundary.spec.ts",
+      "line": 21,
+      "title": "legacy calendar boundary: all actual slots busy leaves zero confirmable sessions at 1440",
+      "status": "passed",
+      "durationMs": 4065,
+      "error": ""
+    },
+    {
+      "file": "calendar-boundary.spec.ts",
+      "line": 31,
+      "title": "legacy calendar boundary: a real late conflict keeps the complete input and confirmation never implicitly re-previews at 320",
+      "status": "passed",
+      "durationMs": 4342,
+      "error": ""
+    },
+    {
+      "file": "calendar-boundary.spec.ts",
+      "line": 31,
+      "title": "legacy calendar boundary: a real late conflict keeps the complete input and confirmation never implicitly re-previews at 1440",
+      "status": "passed",
+      "durationMs": 4504,
+      "error": ""
+    },
+    {
+      "file": "chemistry.spec.ts",
+      "line": 39,
+      "title": "chemistry: normal course cards, seven-unit outline and native classroom preserve the library on three viewports",
+      "status": "passed",
+      "durationMs": 8480,
+      "error": ""
+    },
+    {
+      "file": "chemistry.spec.ts",
+      "line": 94,
+      "title": "chemistry: course assessments unlock independent checks and preserve first answers after reopening",
+      "status": "passed",
+      "durationMs": 8687,
+      "error": ""
+    },
+    {
+      "file": "chemistry.spec.ts",
+      "line": 121,
+      "title": "chemistry: family-created ninth-grade profile reaches the standard library and old links keep their unit",
+      "status": "passed",
+      "durationMs": 5283,
+      "error": ""
+    },
+    {
+      "file": "chemistry.spec.ts",
+      "line": 142,
+      "title": "chemistry: viewing a course preserves an explicit primary profile until the parent changes it",
+      "status": "passed",
+      "durationMs": 4373,
+      "error": ""
+    },
+    {
+      "file": "chemistry.spec.ts",
+      "line": 156,
+      "title": "chemistry: a chemical course request cannot reuse mathematics and old subject parameters cannot override course content",
+      "status": "passed",
+      "durationMs": 5931,
+      "error": ""
+    },
+    {
+      "file": "chemistry.spec.ts",
+      "line": 184,
+      "title": "chemistry: each unit opens actual chemical concepts and worked examples in the rendered classroom",
+      "status": "passed",
+      "durationMs": 16199,
+      "error": ""
+    },
+    {
+      "file": "chemistry.spec.ts",
+      "line": 209,
+      "title": "chemistry assistant: actual course teaching and cited sources return to its original unit at 390",
+      "status": "passed",
+      "durationMs": 11385,
+      "error": ""
+    },
+    {
+      "file": "chemistry.spec.ts",
+      "line": 209,
+      "title": "chemistry assistant: actual course teaching and cited sources return to its original unit at 1440",
+      "status": "passed",
+      "durationMs": 12966,
+      "error": ""
+    },
+    {
+      "file": "chemistry.spec.ts",
+      "line": 259,
+      "title": "chemistry tutorial: ten scientific models respond to conditions and fit a phone classroom",
+      "status": "passed",
+      "durationMs": 22461,
+      "error": ""
+    },
+    {
+      "file": "chemistry.spec.ts",
+      "line": 327,
+      "title": "chemistry tutorial: topic mapping, original figure and first classroom check survive reopening",
+      "status": "passed",
+      "durationMs": 6194,
+      "error": ""
+    },
+    {
+      "file": "classroom-boards.spec.ts",
+      "line": 36,
+      "title": "text reading reveals whole points, rows and formulas; stop restores the original line and complete notes",
+      "status": "passed",
+      "durationMs": 16950,
+      "error": ""
+    },
+    {
+      "file": "classroom-boards.spec.ts",
+      "line": 52,
+      "title": "audio ended advances frozen units, abort settles a pending reader and a new reply rejects late audio",
+      "status": "passed",
+      "durationMs": 14711,
+      "error": ""
+    },
+    {
+      "file": "classroom-boards.spec.ts",
+      "line": 74,
+      "title": "recovery: complete notes, cross-page reply navigation, keyboard activation and narrow layouts remain usable",
+      "status": "passed",
+      "durationMs": 8858,
+      "error": ""
+    },
+    {
+      "file": "classroom-boards.spec.ts",
+      "line": 96,
+      "title": "untrusted table/formula text stays inert in the board, actual offline HTML, Markdown and print",
+      "status": "passed",
+      "durationMs": 8920,
+      "error": ""
+    },
+    {
+      "file": "classroom-captions.spec.ts",
+      "line": 17,
+      "title": "frozen English sentences drive audio, table rows, resume, voice selection and reply playback",
+      "status": "passed",
+      "durationMs": 8269,
+      "error": ""
+    },
+    {
+      "file": "classroom-captions.spec.ts",
+      "line": 28,
+      "title": "muted English reading follows the same frozen units without requesting audio",
+      "status": "passed",
+      "durationMs": 7032,
+      "error": ""
+    },
+    {
+      "file": "classroom-captions.spec.ts",
+      "line": 35,
+      "title": "an explicit legacy upgrade cancels an old pending track and restores focus at the mapped sentence",
+      "status": "passed",
+      "durationMs": 4057,
+      "error": ""
+    },
+    {
+      "file": "classroom-captions.spec.ts",
+      "line": 42,
+      "title": "lost upgrade acknowledgements replay the same command and stale tabs can read the current frozen version",
+      "status": "passed",
+      "durationMs": 4250,
+      "error": ""
+    },
+    {
+      "file": "classroom-captions.spec.ts",
+      "line": 48,
+      "title": "closing confirmation sends nothing; cancelling an in-flight acknowledgement can read its committed state",
+      "status": "passed",
+      "durationMs": 3718,
+      "error": ""
+    },
+    {
+      "file": "classroom-captions.spec.ts",
+      "line": 57,
+      "title": "long protected tokens remain readable without widening the board or transcript on small screens",
+      "status": "passed",
+      "durationMs": 2763,
+      "error": ""
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "line": 24,
+      "title": "single and multiple choices retain drafts, lock original feedback and separate submitted option states",
+      "status": "passed",
+      "durationMs": 4077,
+      "error": ""
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "line": 39,
+      "title": "lost acknowledgement is resolved by reading the saved first answer without creating another request",
+      "status": "passed",
+      "durationMs": 3261,
+      "error": ""
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "line": 50,
+      "title": "an undelivered command survives refresh and reuses its exact request key and choices",
+      "status": "passed",
+      "durationMs": 3409,
+      "error": ""
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "line": 61,
+      "title": "a definitive rejected submission retains its command copy and permits a new checked selection",
+      "status": "passed",
+      "durationMs": 2977,
+      "error": ""
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "line": 70,
+      "title": "another account cannot restore prior selections or open its frozen classroom",
+      "status": "passed",
+      "durationMs": 4828,
+      "error": ""
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "line": 76,
+      "title": "unit checks expose the new selection mode and retain first feedback after reopening",
+      "status": "passed",
+      "durationMs": 2994,
+      "error": ""
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "line": 82,
+      "title": "skip, unknown and actual hints remain separate immutable first-answer facts",
+      "status": "passed",
+      "durationMs": 3255,
+      "error": ""
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "line": 91,
+      "title": "a complete correct set, assisted wrong answer, skip and unknown produce a usable first-answer review",
+      "status": "passed",
+      "durationMs": 3489,
+      "error": ""
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "line": 105,
+      "title": "keyboard selection stays in the question area and leaves assistant input isolated",
+      "status": "passed",
+      "durationMs": 2814,
+      "error": ""
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "line": 116,
+      "title": "enlarged practice artwork restores focus and preserves the selection without submitting from its dialog",
+      "status": "passed",
+      "durationMs": 2565,
+      "error": ""
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "line": 123,
+      "title": "unavailable local storage keeps current choices and a downloadable command copy",
+      "status": "passed",
+      "durationMs": 2832,
+      "error": ""
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "line": 131,
+      "title": "multiple-choice layout and assistant fit at 390",
+      "status": "passed",
+      "durationMs": 2743,
+      "error": ""
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "line": 131,
+      "title": "multiple-choice layout and assistant fit at 768",
+      "status": "passed",
+      "durationMs": 2763,
+      "error": ""
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "line": 131,
+      "title": "multiple-choice layout and assistant fit at 1440",
+      "status": "passed",
+      "durationMs": 2696,
+      "error": ""
+    },
+    {
+      "file": "classroom-code.spec.ts",
+      "line": 19,
+      "title": "code and input save, execute, survive whiteboard navigation and reload at three widths",
+      "status": "passed",
+      "durationMs": 6720,
+      "error": ""
+    },
+    {
+      "file": "classroom-code.spec.ts",
+      "line": 31,
+      "title": "a lost save acknowledgment and offline refresh retain exact local edits until the same command can recover",
+      "status": "passed",
+      "durationMs": 6355,
+      "error": ""
+    },
+    {
+      "file": "classroom-code.spec.ts",
+      "line": 44,
+      "title": "concurrent pages preserve a conflicting buffer and require an explicit choice before replacement",
+      "status": "passed",
+      "durationMs": 7610,
+      "error": ""
+    },
+    {
+      "file": "classroom-code.spec.ts",
+      "line": 55,
+      "title": "errors, timeouts, stop and oversize programs have explicit states without truncation or unwanted reset",
+      "status": "passed",
+      "durationMs": 6946,
+      "error": ""
+    },
+    {
+      "file": "classroom-neutral-voices.spec.ts",
+      "line": 29,
+      "title": "a neutral sample decodes before the first lecture, changes no selection and sends only its fixed version",
+      "status": "passed",
+      "durationMs": 3047,
+      "error": ""
+    },
+    {
+      "file": "classroom-neutral-voices.spec.ts",
+      "line": 39,
+      "title": "closing the settings aborts an unfinished sample and its late audio cannot start",
+      "status": "passed",
+      "durationMs": 2878,
+      "error": ""
+    },
+    {
+      "file": "classroom-neutral-voices.spec.ts",
+      "line": 45,
+      "title": "failed neutral playback keeps an explicit retry and cannot advance or reveal the lesson",
+      "status": "passed",
+      "durationMs": 2959,
+      "error": ""
+    },
+    {
+      "file": "classroom-neutral-voices.spec.ts",
+      "line": 51,
+      "title": "a legacy voice can preview only the selected already-revealed frozen sentence",
+      "status": "passed",
+      "durationMs": 3436,
+      "error": ""
+    },
+    {
+      "file": "classroom-neutral-voices.spec.ts",
+      "line": 63,
+      "title": "six real voice cards and preview controls fit at 390",
+      "status": "passed",
+      "durationMs": 2764,
+      "error": ""
+    },
+    {
+      "file": "classroom-neutral-voices.spec.ts",
+      "line": 63,
+      "title": "six real voice cards and preview controls fit at 768",
+      "status": "passed",
+      "durationMs": 2802,
+      "error": ""
+    },
+    {
+      "file": "classroom-neutral-voices.spec.ts",
+      "line": 63,
+      "title": "six real voice cards and preview controls fit at 1440",
+      "status": "passed",
+      "durationMs": 3015,
+      "error": ""
+    },
+    {
+      "file": "classroom-practice.spec.ts",
+      "line": 20,
+      "title": "practice records dont-know, skip, sequential help and replay after a lost hint response",
+      "status": "passed",
+      "durationMs": 5079,
+      "error": ""
+    },
+    {
+      "file": "classroom-practice.spec.ts",
+      "line": 60,
+      "title": "every unit has a readable data or diagram practice example at desktop, tablet and phone widths",
+      "status": "passed",
+      "durationMs": 5895,
+      "error": ""
+    },
+    {
+      "file": "classroom-review.spec.ts",
+      "line": 17,
+      "title": "unit check resumes holes, persists help and provides a faithful review with topic return",
+      "status": "passed",
+      "durationMs": 6626,
+      "error": ""
+    },
+    {
+      "file": "classroom-review.spec.ts",
+      "line": 80,
+      "title": "saved-session links restore the exact activity and reject a mismatched lesson",
+      "status": "passed",
+      "durationMs": 3644,
+      "error": ""
+    },
+    {
+      "file": "classroom-tools.spec.ts",
+      "line": 35,
+      "title": "anchored tour visits actual controls, resizes and returns without issuing learning or voice requests",
+      "status": "passed",
+      "durationMs": 3714,
+      "error": ""
+    },
+    {
+      "file": "classroom-tools.spec.ts",
+      "line": 64,
+      "title": "phone tour exposes the real chat controls then restores the original board and survives unavailable storage",
+      "status": "passed",
+      "durationMs": 2927,
+      "error": ""
+    },
+    {
+      "file": "classroom-tools.spec.ts",
+      "line": 77,
+      "title": "controlled figures and curriculum images retain their content, contain focus and support reading and printing",
+      "status": "passed",
+      "durationMs": 5480,
+      "error": ""
+    },
+    {
+      "file": "classroom-tools.spec.ts",
+      "line": 106,
+      "title": "a failed curriculum image still has a readable alternative and a keyboard exit",
+      "status": "passed",
+      "durationMs": 3638,
+      "error": ""
+    },
+    {
+      "file": "classroom-tools.spec.ts",
+      "line": 115,
+      "title": "voice samples decode actual audio, keep the selected voice and original progress, and cannot play after settings closes",
+      "status": "passed",
+      "durationMs": 3561,
+      "error": ""
+    },
+    {
+      "file": "classroom-turns.spec.ts",
+      "line": 24,
+      "title": "lost submission receipt, refresh and explicit return preserve a single turn and the original spoken line",
+      "status": "passed",
+      "durationMs": 12708,
+      "error": ""
+    },
+    {
+      "file": "classroom-turns.spec.ts",
+      "line": 52,
+      "title": "in-flight cancellation survives refresh and explicit retry creates only one saved answer",
+      "status": "passed",
+      "durationMs": 14388,
+      "error": ""
+    },
+    {
+      "file": "classroom-turns.spec.ts",
+      "line": 61,
+      "title": "all teaching modes show an editable request and keep the conventional model picker",
+      "status": "passed",
+      "durationMs": 28346,
+      "error": ""
+    },
+    {
+      "file": "classroom-turns.spec.ts",
+      "line": 77,
+      "title": "provider errors remain visible and retry preserves the chosen question",
+      "status": "passed",
+      "durationMs": 12718,
+      "error": ""
+    },
+    {
+      "file": "classroom-turns.spec.ts",
+      "line": 83,
+      "title": "a real learning-code user asks in their own approved course and resumes the same answer after refresh",
+      "status": "passed",
+      "durationMs": 9076,
+      "error": ""
+    },
+    {
+      "file": "classroom-visual.spec.ts",
+      "line": 27,
+      "title": "queued previous clicks use each confirmed position, first save succeeds",
+      "status": "passed",
+      "durationMs": 3084,
+      "error": ""
+    },
+    {
+      "file": "classroom-visual.spec.ts",
+      "line": 27,
+      "title": "queued previous clicks use each confirmed position, first save fails",
+      "status": "passed",
+      "durationMs": 3147,
+      "error": ""
+    },
+    {
+      "file": "classroom-visual.spec.ts",
+      "line": 45,
+      "title": "classroom image survives navigation, binds its original node, enlarges and exports offline notes at three widths",
+      "status": "passed",
+      "durationMs": 20965,
+      "error": ""
+    },
+    {
+      "file": "classroom-visual.spec.ts",
+      "line": 119,
+      "title": "failed and cancelled classroom image tasks retry their saved version",
+      "status": "passed",
+      "durationMs": 23481,
+      "error": ""
+    },
+    {
+      "file": "classroom-visual.spec.ts",
+      "line": 139,
+      "title": "lost image creation acknowledgement recovers the single saved task",
+      "status": "passed",
+      "durationMs": 18061,
+      "error": ""
+    },
+    {
+      "file": "classroom-visual.spec.ts",
+      "line": 158,
+      "title": "PDF preparation waits for selected image bytes and closing settings cancels a pending print",
+      "status": "passed",
+      "durationMs": 7020,
+      "error": ""
+    },
+    {
+      "file": "classroom.spec.ts",
+      "line": 25,
+      "title": "course classroom supports teaching, executable examples, learning checks and durable resume",
+      "status": "passed",
+      "durationMs": 9247,
+      "error": ""
+    },
+    {
+      "file": "classroom.spec.ts",
+      "line": 72,
+      "title": "audio playback ends drive teaching progress and pause prevents later automatic advancement",
+      "status": "passed",
+      "durationMs": 9519,
+      "error": ""
+    },
+    {
+      "file": "classroom.spec.ts",
+      "line": 107,
+      "title": "question replies add safe board notes with page links, export and restored session rendering",
+      "status": "passed",
+      "durationMs": 5340,
+      "error": ""
+    },
+    {
+      "file": "classroom.spec.ts",
+      "line": 160,
+      "title": "board notes reveal whole items and subtitle advances only at spoken sentence boundaries",
+      "status": "passed",
+      "durationMs": 10389,
+      "error": ""
+    },
+    {
+      "file": "classroom.spec.ts",
+      "line": 198,
+      "title": "independent practice matches four-option illustrated question flow on desktop and phone",
+      "status": "passed",
+      "durationMs": 3360,
+      "error": ""
+    },
+    {
+      "file": "classroom.spec.ts",
+      "line": 227,
+      "title": "practice geometry, whiteboard image and comparison table use the observed display scale",
+      "status": "passed",
+      "durationMs": 5678,
+      "error": ""
+    },
+    {
+      "file": "controlled-contrasts.spec.ts",
+      "line": 12,
+      "title": "controlled: the isolated Web relative API route reaches the same actual QA service as the explicit client",
+      "status": "passed",
+      "durationMs": 410,
+      "error": ""
+    },
+    {
+      "file": "controlled-contrasts.spec.ts",
+      "line": 16,
+      "title": "controlled: actual editorial UI publishes reviewed originals, parent previews, child completes the original group and report keeps paired observations separate",
+      "status": "passed",
+      "durationMs": 21509,
+      "error": ""
+    },
+    {
+      "file": "controlled-contrasts.spec.ts",
+      "line": 32,
+      "title": "controlled: a lost committed preview response recovers through the exact original copy without making another preview",
+      "status": "passed",
+      "durationMs": 5267,
+      "error": ""
+    },
+    {
+      "file": "controlled-contrasts.spec.ts",
+      "line": 38,
+      "title": "controlled: an imported altered command cannot clear a committed original request and the exact downloaded input still recovers",
+      "status": "passed",
+      "durationMs": 4944,
+      "error": ""
+    },
+    {
+      "file": "controlled-contrasts.spec.ts",
+      "line": 49,
+      "title": "controlled: two tabs retain their own input and require an explicit read of the other complete copy",
+      "status": "passed",
+      "durationMs": 5592,
+      "error": ""
+    },
+    {
+      "file": "controlled-contrasts.spec.ts",
+      "line": 57,
+      "title": "controlled: unavailable browser storage protects internal subject changes until the latest complete input is downloaded",
+      "status": "passed",
+      "durationMs": 4890,
+      "error": ""
+    },
+    {
+      "file": "controlled-contrasts.spec.ts",
+      "line": 64,
+      "title": "controlled: the report creates a dual-source plan and the actual child opens teaching while the guardian keeps a read-only view",
+      "status": "passed",
+      "durationMs": 12919,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 29,
+      "title": "course assistant: opens the actual frozen source directly without creating a conversation or sending a question",
+      "status": "passed",
+      "durationMs": 3681,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 37,
+      "title": "course assistant: a cited answer exposes its source and returns to its complete draft and original message",
+      "status": "passed",
+      "durationMs": 4625,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 48,
+      "title": "course assistant: narrow source views retain every table cell and original teaching code without running it",
+      "status": "passed",
+      "durationMs": 3611,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 65,
+      "title": "course assistant: a different account cannot retain source content or cause a conversation post",
+      "status": "passed",
+      "durationMs": 5304,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 75,
+      "title": "course assistant: source return locates an original answer outside the newest25 messages",
+      "status": "passed",
+      "durationMs": 4881,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 94,
+      "title": "course assistant: primary unit entry opens its authorized teaching context without a classroom session at390",
+      "status": "passed",
+      "durationMs": 4208,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 94,
+      "title": "course assistant: primary unit entry opens its authorized teaching context without a classroom session at768",
+      "status": "passed",
+      "durationMs": 4412,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 94,
+      "title": "course assistant: primary unit entry opens its authorized teaching context without a classroom session at880",
+      "status": "passed",
+      "durationMs": 6450,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 94,
+      "title": "course assistant: primary unit entry opens its authorized teaching context without a classroom session at1440",
+      "status": "passed",
+      "durationMs": 4496,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 110,
+      "title": "course assistant: material lesson entry opens actual safe teaching and its published scope at390",
+      "status": "passed",
+      "durationMs": 2803,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 110,
+      "title": "course assistant: material lesson entry opens actual safe teaching and its published scope at768",
+      "status": "passed",
+      "durationMs": 2883,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 110,
+      "title": "course assistant: material lesson entry opens actual safe teaching and its published scope at880",
+      "status": "passed",
+      "durationMs": 2894,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 110,
+      "title": "course assistant: material lesson entry opens actual safe teaching and its published scope at1440",
+      "status": "passed",
+      "durationMs": 3041,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 121,
+      "title": "course assistant: oversized full teaching preserves the complete question and copies it only into explicitly selected detail",
+      "status": "passed",
+      "durationMs": 4536,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 137,
+      "title": "course assistant: an existing range draft is preserved until the original question copy is explicitly adopted",
+      "status": "passed",
+      "durationMs": 5027,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 147,
+      "title": "course assistant: learner switching and source scope mismatch hide the original content until returning to its actual profile",
+      "status": "passed",
+      "durationMs": 5981,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 158,
+      "title": "course assistant: current author draft becomes an original read-only scope on publication and keeps its question",
+      "status": "passed",
+      "durationMs": 6278,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 169,
+      "title": "course assistant: actual learning-code student opens published courses and exits to own learning with its draft intact",
+      "status": "passed",
+      "durationMs": 9240,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 177,
+      "title": "course assistant: real assessment beginning after entry blocks a new model command and preserves the original student question",
+      "status": "passed",
+      "durationMs": 5231,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 190,
+      "title": "course assistant: no-fingerprint student entry during an existing assessment offers its exact return without opening a chat",
+      "status": "passed",
+      "durationMs": 3583,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 194,
+      "title": "course assistant: material tools preserve the authoritative scope and draft through refresh and planner return",
+      "status": "passed",
+      "durationMs": 4412,
+      "error": ""
+    },
+    {
+      "file": "course-assistant.spec.ts",
+      "line": 200,
+      "title": "course assistant: closing a pending range preflight ignores its late response and restores keyboard focus",
+      "status": "passed",
+      "durationMs": 3853,
+      "error": ""
+    },
+    {
+      "file": "course-builder.spec.ts",
+      "line": 29,
+      "title": "blueprint supports goal selection, review, edit and cancellation without creating a course",
+      "status": "passed",
+      "durationMs": 3980,
+      "error": ""
+    },
+    {
+      "file": "course-builder.spec.ts",
+      "line": 48,
+      "title": "a lost confirmation response is verified from the original request and opens the same saved pace once",
+      "status": "passed",
+      "durationMs": 4143,
+      "error": ""
+    },
+    {
+      "file": "course-builder.spec.ts",
+      "line": 68,
+      "title": "changed learning scope invalidates confirmation and can be refreshed without losing the goal",
+      "status": "passed",
+      "durationMs": 3838,
+      "error": ""
+    },
+    {
+      "file": "course-library.spec.ts",
+      "line": 41,
+      "title": "course filters use actual reading states, combine and restore through reload and browser history",
+      "status": "passed",
+      "durationMs": 4227,
+      "error": ""
+    },
+    {
+      "file": "course-library.spec.ts",
+      "line": 66,
+      "title": "adult outline, unit controls and classroom exit retain course-library conditions",
+      "status": "passed",
+      "durationMs": 3563,
+      "error": ""
+    },
+    {
+      "file": "course-library.spec.ts",
+      "line": 79,
+      "title": "primary course and approved classroom return to the original filtered course and unit",
+      "status": "passed",
+      "durationMs": 4795,
+      "error": ""
+    },
+    {
+      "file": "course-panels.spec.ts",
+      "line": 21,
+      "title": "course panels: references and all activities preserve the unit outline, complete titles and keyboard focus at 390",
+      "status": "passed",
+      "durationMs": 2962,
+      "error": ""
+    },
+    {
+      "file": "course-panels.spec.ts",
+      "line": 21,
+      "title": "course panels: references and all activities preserve the unit outline, complete titles and keyboard focus at 768",
+      "status": "passed",
+      "durationMs": 2929,
+      "error": ""
+    },
+    {
+      "file": "course-panels.spec.ts",
+      "line": 21,
+      "title": "course panels: references and all activities preserve the unit outline, complete titles and keyboard focus at 1280",
+      "status": "passed",
+      "durationMs": 3346,
+      "error": ""
+    },
+    {
+      "file": "course-panels.spec.ts",
+      "line": 21,
+      "title": "course panels: references and all activities preserve the unit outline, complete titles and keyboard focus at 1440",
+      "status": "passed",
+      "durationMs": 3314,
+      "error": ""
+    },
+    {
+      "file": "course-panels.spec.ts",
+      "line": 40,
+      "title": "course panels: a cross-unit practice returns to its original panel and reopens the exact first answer after refresh",
+      "status": "passed",
+      "durationMs": 3708,
+      "error": ""
+    },
+    {
+      "file": "course-panels.spec.ts",
+      "line": 57,
+      "title": "course panels: the actual cross-unit project returns to the same course panel and target unit",
+      "status": "passed",
+      "durationMs": 3116,
+      "error": ""
+    },
+    {
+      "file": "course-panels.spec.ts",
+      "line": 67,
+      "title": "course panels: the actual cross-unit check keeps its unit, original session and unanswered return after refresh",
+      "status": "passed",
+      "durationMs": 3677,
+      "error": ""
+    },
+    {
+      "file": "course-project.spec.ts",
+      "line": 16,
+      "title": "project stages save artifacts, evidence and self-assessment; immutable submissions remain available after revisions",
+      "status": "passed",
+      "durationMs": 5395,
+      "error": ""
+    },
+    {
+      "file": "course-project.spec.ts",
+      "line": 34,
+      "title": "a lost save response replays the same request; a stale page preserves local input and can recover",
+      "status": "passed",
+      "durationMs": 3263,
+      "error": ""
+    },
+    {
+      "file": "course-project.spec.ts",
+      "line": 45,
+      "title": "unsaved-stage navigation asks to preserve work and unavailable AI leaves the saved artifact usable",
+      "status": "passed",
+      "durationMs": 3319,
+      "error": ""
+    },
+    {
+      "file": "course-project.spec.ts",
+      "line": 52,
+      "title": "a guardian reviews a learner submission in the curriculum project workspace and the learner keeps its version",
+      "status": "passed",
+      "durationMs": 4320,
+      "error": ""
+    },
+    {
+      "file": "course-project.spec.ts",
+      "line": 69,
+      "title": "all five adult projects complete their three stages and can cite earlier immutable artifacts",
+      "status": "passed",
+      "durationMs": 16946,
+      "error": ""
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "line": 16,
+      "title": "guidance calendar: original plan, explicit time and budget confirmation fit at 320",
+      "status": "passed",
+      "durationMs": 5240,
+      "error": ""
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "line": 16,
+      "title": "guidance calendar: original plan, explicit time and budget confirmation fit at 390",
+      "status": "passed",
+      "durationMs": 5500,
+      "error": ""
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "line": 16,
+      "title": "guidance calendar: original plan, explicit time and budget confirmation fit at 768",
+      "status": "passed",
+      "durationMs": 5920,
+      "error": ""
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "line": 16,
+      "title": "guidance calendar: original plan, explicit time and budget confirmation fit at 1440",
+      "status": "passed",
+      "durationMs": 6538,
+      "error": ""
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "line": 20,
+      "title": "guidance calendar: an unknown original confirmation restores its exact complete command after reload without another event",
+      "status": "passed",
+      "durationMs": 7167,
+      "error": ""
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "line": 24,
+      "title": "guidance calendar: actual other-subject occupied minutes block the day budget and a late overlap keeps the original selection",
+      "status": "passed",
+      "durationMs": 6599,
+      "error": ""
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "line": 28,
+      "title": "guidance calendar: unavailable storage downloads the entire schedule command before any confirmation",
+      "status": "passed",
+      "durationMs": 6401,
+      "error": ""
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "line": 32,
+      "title": "guidance calendar: two actual tabs keep separate full choices and a losing confirmation cannot borrow the winners original receipt",
+      "status": "passed",
+      "durationMs": 8960,
+      "error": ""
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "line": 36,
+      "title": "guidance calendar: an actual missing DST minute is blocked and a repeated minute requires an explicit real offset",
+      "status": "passed",
+      "durationMs": 6505,
+      "error": ""
+    },
+    {
+      "file": "guidance-model.spec.ts",
+      "line": 21,
+      "title": "the original rule plan stays usable and an explicitly reviewed model description changes only its text",
+      "status": "passed",
+      "durationMs": 4874,
+      "error": ""
+    },
+    {
+      "file": "guidance-model.spec.ts",
+      "line": 31,
+      "title": "a dropped plan creation acknowledgement recovers the original request without making another plan",
+      "status": "passed",
+      "durationMs": 4476,
+      "error": ""
+    },
+    {
+      "file": "guidance-model.spec.ts",
+      "line": 41,
+      "title": "a dropped suggestion creation acknowledgement survives reload and restores the same saved task",
+      "status": "passed",
+      "durationMs": 4222,
+      "error": ""
+    },
+    {
+      "file": "guidance-model.spec.ts",
+      "line": 49,
+      "title": "a dropped adoption acknowledgement replays its original command and leaves exactly one adopted revision",
+      "status": "passed",
+      "durationMs": 5005,
+      "error": ""
+    },
+    {
+      "file": "guidance-model.spec.ts",
+      "line": 58,
+      "title": "cancel and retry preserve the original selected model and plan",
+      "status": "passed",
+      "durationMs": 8069,
+      "error": ""
+    },
+    {
+      "file": "guidance-model.spec.ts",
+      "line": 66,
+      "title": "invalid output cannot be adopted and a later explicit retry keeps the original evidence",
+      "status": "passed",
+      "durationMs": 5076,
+      "error": ""
+    },
+    {
+      "file": "guidance-model.spec.ts",
+      "line": 72,
+      "title": "unavailable browser storage keeps the full original command downloadable",
+      "status": "passed",
+      "durationMs": 4421,
+      "error": ""
+    },
+    {
+      "file": "guidance-model.spec.ts",
+      "line": 78,
+      "title": "a manually changed plan refuses an older completed suggestion and preserves its original command",
+      "status": "passed",
+      "durationMs": 6008,
+      "error": ""
+    },
+    {
+      "file": "guidance-model.spec.ts",
+      "line": 88,
+      "title": "a cancelled local wait resumes the server record after navigating away and back",
+      "status": "passed",
+      "durationMs": 7304,
+      "error": ""
+    },
+    {
+      "file": "guidance-model.spec.ts",
+      "line": 100,
+      "title": "forged cross-account cached commands are ignored and never replayed",
+      "status": "passed",
+      "durationMs": 3914,
+      "error": ""
+    },
+    {
+      "file": "guidance-model.spec.ts",
+      "line": 109,
+      "title": "another account cannot open or adopt the prior family guidance",
+      "status": "passed",
+      "durationMs": 8230,
+      "error": ""
+    },
+    {
+      "file": "guidance-model.spec.ts",
+      "line": 123,
+      "title": "guidance comparisons and actions fit at 390",
+      "status": "passed",
+      "durationMs": 4534,
+      "error": ""
+    },
+    {
+      "file": "guidance-model.spec.ts",
+      "line": 123,
+      "title": "guidance comparisons and actions fit at 768",
+      "status": "passed",
+      "durationMs": 5750,
+      "error": ""
+    },
+    {
+      "file": "guidance-model.spec.ts",
+      "line": 123,
+      "title": "guidance comparisons and actions fit at 1440",
+      "status": "passed",
+      "durationMs": 4790,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 36,
+      "title": "knowledge report: the actual frozen goals, original estimates and self-reports stay together when selecting a point",
+      "status": "passed",
+      "durationMs": 4318,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 65,
+      "title": "knowledge report: skipped evidence stays unknown and a point survives reload, back and forward",
+      "status": "passed",
+      "durationMs": 4562,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 87,
+      "title": "knowledge report: an older matching plan is found behind a newer unrelated report and opens its durable plan route",
+      "status": "passed",
+      "durationMs": 6087,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 106,
+      "title": "knowledge report: failed plan reads remain unknown until explicit retry returns the actual matching plan",
+      "status": "passed",
+      "durationMs": 4563,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 116,
+      "title": "knowledge report: a controlled missing plan hides its stale actions while the report remains readable and retry can recover",
+      "status": "passed",
+      "durationMs": 4607,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 127,
+      "title": "knowledge report: late proposed-plan reviews cannot erase the real schedule after activation and refresh",
+      "status": "passed",
+      "durationMs": 4961,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 149,
+      "title": "knowledge report: a controlled legacy definition and foreign point never create a current verification",
+      "status": "passed",
+      "durationMs": 4699,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 163,
+      "title": "knowledge report: the actual student role reads its report without management actions and grant revocation ends the private view",
+      "status": "passed",
+      "durationMs": 5365,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 177,
+      "title": "knowledge report: invalidating the actual browser login session ends the private report on its next read",
+      "status": "passed",
+      "durationMs": 3895,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 184,
+      "title": "knowledge report: actual submitted short-answer expressions awaiting review do not become scored failure or a zero estimate",
+      "status": "passed",
+      "durationMs": 4631,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 209,
+      "title": "knowledge report: a controlled cause timeline remains complete and terminal versus reopened actions stay with their point",
+      "status": "passed",
+      "durationMs": 4365,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 233,
+      "title": "knowledge report: complete point reading and keyboard controls fit 390",
+      "status": "passed",
+      "durationMs": 3839,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 233,
+      "title": "knowledge report: complete point reading and keyboard controls fit 768",
+      "status": "passed",
+      "durationMs": 4032,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 233,
+      "title": "knowledge report: complete point reading and keyboard controls fit 1280",
+      "status": "passed",
+      "durationMs": 4263,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 233,
+      "title": "knowledge report: complete point reading and keyboard controls fit 1440",
+      "status": "passed",
+      "durationMs": 4283,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 247,
+      "title": "knowledge report: a lost reanalysis receipt survives reload with the exact original command",
+      "status": "passed",
+      "durationMs": 5019,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 270,
+      "title": "knowledge report: a version conflict archives its original command before a read-only latest-report check",
+      "status": "passed",
+      "durationMs": 5127,
+      "error": ""
+    },
+    {
+      "file": "knowledge-report.spec.ts",
+      "line": 293,
+      "title": "knowledge report: unavailable command storage prevents a new mutation while preserving the report",
+      "status": "passed",
+      "durationMs": 4180,
+      "error": ""
+    },
+    {
+      "file": "learning-home.spec.ts",
+      "line": 24,
+      "title": "learning home offers clear entry and works on phone, tablet and desktop",
+      "status": "passed",
+      "durationMs": 1455,
+      "error": ""
+    },
+    {
+      "file": "learning-home.spec.ts",
+      "line": 35,
+      "title": "adult can enter a course without creating a child and restore its classroom",
+      "status": "passed",
+      "durationMs": 3040,
+      "error": ""
+    },
+    {
+      "file": "learning-home.spec.ts",
+      "line": 48,
+      "title": "parent selection, navigation, refresh, history and invalid profile recovery keep context",
+      "status": "passed",
+      "durationMs": 5099,
+      "error": ""
+    },
+    {
+      "file": "learning-home.spec.ts",
+      "line": 85,
+      "title": "a delayed old selection and a failed request cannot replace the current child",
+      "status": "passed",
+      "durationMs": 3097,
+      "error": ""
+    },
+    {
+      "file": "learning-home.spec.ts",
+      "line": 111,
+      "title": "corrupt or different-account cached choices cannot select another profile",
+      "status": "passed",
+      "durationMs": 3371,
+      "error": ""
+    },
+    {
+      "file": "learning-home.spec.ts",
+      "line": 120,
+      "title": "a student resumes the exact saved assessment and sees only their profile",
+      "status": "passed",
+      "durationMs": 3419,
+      "error": ""
+    },
+    {
+      "file": "original-teaching-fonts.spec.ts",
+      "line": 24,
+      "title": "original fonts: real captured Latin and Chinese faces decode before a board is measured, played or exported",
+      "status": "passed",
+      "durationMs": 3499,
+      "error": ""
+    },
+    {
+      "file": "original-teaching-fonts.spec.ts",
+      "line": 49,
+      "title": "original fonts: a failed captured glyph never starts playback and an explicit retry recovers the same board",
+      "status": "passed",
+      "durationMs": 3776,
+      "error": ""
+    },
+    {
+      "file": "original-teaching-fonts.spec.ts",
+      "line": 59,
+      "title": "teaching frame: moving to another scene retains already taught notes, excludes future scenes and keeps one full caption",
+      "status": "passed",
+      "durationMs": 3672,
+      "error": ""
+    },
+    {
+      "file": "original-teaching-fonts.spec.ts",
+      "line": 80,
+      "title": "teaching shell: actual original chrome, font switch and return fit 390",
+      "status": "passed",
+      "durationMs": 3884,
+      "error": ""
+    },
+    {
+      "file": "original-teaching-fonts.spec.ts",
+      "line": 80,
+      "title": "teaching shell: actual original chrome, font switch and return fit 768",
+      "status": "passed",
+      "durationMs": 4022,
+      "error": ""
+    },
+    {
+      "file": "original-teaching-fonts.spec.ts",
+      "line": 80,
+      "title": "teaching shell: actual original chrome, font switch and return fit 1280",
+      "status": "passed",
+      "durationMs": 4049,
+      "error": ""
+    },
+    {
+      "file": "original-teaching-fonts.spec.ts",
+      "line": 98,
+      "title": "original fonts: captured math faces stay isolated and the real formula editor decodes its own local font bytes after a board closes",
+      "status": "passed",
+      "durationMs": 6212,
+      "error": ""
+    },
+    {
+      "file": "original-teaching-fonts.spec.ts",
+      "line": 133,
+      "title": "original fonts: assistant shares the controlled registry without duplicate board faces and prepares its real UI fonts",
+      "status": "passed",
+      "durationMs": 3743,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 29,
+      "title": "paper practice: actual original-paper entry keeps the first answer, explicit reference, correction and completed review",
+      "status": "passed",
+      "durationMs": 5460,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 67,
+      "title": "paper practice: a lost first-answer receipt recovers the same command after actual refresh without submitting twice",
+      "status": "passed",
+      "durationMs": 3258,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 80,
+      "title": "paper practice: a lost creation acknowledgment restores the original started session with read-only receipt checks",
+      "status": "passed",
+      "durationMs": 3464,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 93,
+      "title": "recovery: paper practice offline draft saving and a refresh retain the full original command until explicit retry",
+      "status": "passed",
+      "durationMs": 4706,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 110,
+      "title": "paper practice: two actual pages preserve different local drafts and resolve a server conflict without overwriting the other copy",
+      "status": "passed",
+      "durationMs": 3817,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 128,
+      "title": "paper practice: rejected local persistence sends no answer until a real recovery download and explicit protection acknowledgment",
+      "status": "passed",
+      "durationMs": 3076,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 140,
+      "title": "paper practice: an actual original PDF stays an unsplit document with its own persistent response",
+      "status": "passed",
+      "durationMs": 3178,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 150,
+      "title": "paper practice: actual publication withdrawal hides the frozen question and reference while retaining the learner response",
+      "status": "passed",
+      "durationMs": 3448,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 159,
+      "title": "paper practice: completed review permits explicit reference reading without changing the original response or reopening correction",
+      "status": "passed",
+      "durationMs": 3178,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 169,
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 390",
+      "status": "passed",
+      "durationMs": 2792,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 169,
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 768",
+      "status": "passed",
+      "durationMs": 3022,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 169,
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 1440",
+      "status": "passed",
+      "durationMs": 3319,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 181,
+      "title": "paper practice: selected positions from two actual papers remain in the cross-paper basket and return to their original anchor",
+      "status": "passed",
+      "durationMs": 4671,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 197,
+      "title": "recovery: paper practice correction drafts stay with their own item through rapid review, navigation and a real reload",
+      "status": "passed",
+      "durationMs": 5676,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 215,
+      "title": "paper practice: delayed cross-item reads cannot replace the current question after actual browser back and forward",
+      "status": "passed",
+      "durationMs": 2879,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 229,
+      "title": "paper practice: metadata refreshes keep the same original PDF frame through submit and explicit reference reading",
+      "status": "passed",
+      "durationMs": 2868,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 238,
+      "title": "paper practice: recovery files from another account, session or item never replace the current private draft",
+      "status": "passed",
+      "durationMs": 2724,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 249,
+      "title": "paper practice: a real learning-code student writes only their own record and loses the private workspace after grant revocation",
+      "status": "passed",
+      "durationMs": 3858,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 264,
+      "title": "paper practice: an actual login logout and another family cannot reuse a private record or its visible answer",
+      "status": "passed",
+      "durationMs": 4367,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 276,
+      "title": "paper practice: an expired original preview can be safely retained and previewed again without duplicating a started record",
+      "status": "passed",
+      "durationMs": 3595,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 289,
+      "title": "recovery: paper practice retains an uncommitted original start through three actual refreshes before one explicit retry",
+      "status": "passed",
+      "durationMs": 4263,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 300,
+      "title": "paper review: a completed first answer leads through real reflection, actual review and the stable local-date calendar",
+      "status": "passed",
+      "durationMs": 3466,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 318,
+      "title": "recovery: paper review: a lost organization receipt is recovered after three reloads without duplicating history or clearing later reflection",
+      "status": "passed",
+      "durationMs": 5649,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 330,
+      "title": "paper review: two real pages compare conflicting reflection drafts before saving a new command",
+      "status": "passed",
+      "durationMs": 3597,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 345,
+      "title": "paper review: current item, full reflection and protected calendar fit 390",
+      "status": "passed",
+      "durationMs": 2976,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 345,
+      "title": "paper review: current item, full reflection and protected calendar fit 768",
+      "status": "passed",
+      "durationMs": 3157,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 345,
+      "title": "paper review: current item, full reflection and protected calendar fit 1440",
+      "status": "passed",
+      "durationMs": 3061,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 355,
+      "title": "paper review next: an original redo retains its source and recovers the exact new attempt after a lost creation receipt",
+      "status": "passed",
+      "durationMs": 4411,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 372,
+      "title": "paper review next: a learner confirms scope, restores a lost independent preview and starts only the frozen new group",
+      "status": "passed",
+      "durationMs": 7864,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 452,
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 390",
+      "status": "passed",
+      "durationMs": 2945,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 452,
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 768",
+      "status": "passed",
+      "durationMs": 3021,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 452,
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 1440",
+      "status": "passed",
+      "durationMs": 3074,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 464,
+      "title": "paper calendar: changing the actual actor scope fences a late private response and preserves an explicit read failure",
+      "status": "passed",
+      "durationMs": 3246,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 510,
+      "title": "paper review next: a late recovery-file read cannot replace the subsequently confirmed original preview",
+      "status": "passed",
+      "durationMs": 3458,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 526,
+      "title": "paper review next: repeating the owned fixture withdraws the previous published candidate before creating its next reviewed version",
+      "status": "passed",
+      "durationMs": 4146,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 534,
+      "title": "paper review next: denied storage requires a real original file and rejects another owner before explicit exact-key preview recovery",
+      "status": "passed",
+      "durationMs": 4008,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 553,
+      "title": "paper review: actual large history is refused before truncation and the complete earlier history remains downloadable",
+      "status": "passed",
+      "durationMs": 10047,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 430,
+      "title": "paper calendar: an adult without a child keeps the actual all-day date, original review and calendar return through reloads",
+      "status": "passed",
+      "durationMs": 4969,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 430,
+      "title": "paper calendar: an adult without a child keeps the actual all-day date, original review and calendar return through reloads",
+      "status": "passed",
+      "durationMs": 4678,
+      "error": ""
+    },
+    {
+      "file": "pdf-material.spec.ts",
+      "line": 11,
+      "title": "interrupted PDF chunks survive reload, a lost completion acknowledgment recovers one material and its later pages load lazily",
+      "status": "passed",
+      "durationMs": 9857,
+      "error": ""
+    },
+    {
+      "file": "pdf-material.spec.ts",
+      "line": 21,
+      "title": "page processing cancellation retains its checkpoint and retry restores the task instead of publishing the cancelled attempt",
+      "status": "passed",
+      "durationMs": 11407,
+      "error": ""
+    },
+    {
+      "file": "pdf-material.spec.ts",
+      "line": 26,
+      "title": "the PDF workbench uses the same long upload and loads current-page text and structures without fetching the whole book",
+      "status": "passed",
+      "durationMs": 8260,
+      "error": ""
+    },
+    {
+      "file": "pdf-material.spec.ts",
+      "line": 30,
+      "title": "file checks recover lost acknowledgments, regenerate missing pages and honestly report unavailable original bytes",
+      "status": "passed",
+      "durationMs": 12811,
+      "error": ""
+    },
+    {
+      "file": "pdf-material.spec.ts",
+      "line": 57,
+      "title": "the original PDF workbench repairs and cancels through the same persistent flow",
+      "status": "passed",
+      "durationMs": 22617,
+      "error": ""
+    },
+    {
+      "file": "practice-reference.spec.ts",
+      "line": 25,
+      "title": "reference practice: explicit frozen media, three-column answer, readable full feedback and no unrelated next-question image",
+      "status": "passed",
+      "durationMs": 3235,
+      "error": ""
+    },
+    {
+      "file": "practice-reference.spec.ts",
+      "line": 48,
+      "title": "reference practice: multiple choice and local assistant preserve complete input and selection at 390",
+      "status": "passed",
+      "durationMs": 2852,
+      "error": ""
+    },
+    {
+      "file": "practice-reference.spec.ts",
+      "line": 48,
+      "title": "reference practice: multiple choice and local assistant preserve complete input and selection at 768",
+      "status": "passed",
+      "durationMs": 2882,
+      "error": ""
+    },
+    {
+      "file": "practice-reference.spec.ts",
+      "line": 48,
+      "title": "reference practice: multiple choice and local assistant preserve complete input and selection at 1280",
+      "status": "passed",
+      "durationMs": 2948,
+      "error": ""
+    },
+    {
+      "file": "practice-reference.spec.ts",
+      "line": 48,
+      "title": "reference practice: multiple choice and local assistant preserve complete input and selection at 1440",
+      "status": "passed",
+      "durationMs": 2979,
+      "error": ""
+    },
+    {
+      "file": "product-smoke.spec.ts",
+      "line": 8,
+      "title": "public product shell remains usable at phone, tablet and desktop widths",
+      "status": "passed",
+      "durationMs": 1382,
+      "error": ""
+    },
+    {
+      "file": "product-smoke.spec.ts",
+      "line": 30,
+      "title": "a touch and keyboard user can enter the family access flow",
+      "status": "passed",
+      "durationMs": 1213,
+      "error": ""
+    },
+    {
+      "file": "product-smoke.spec.ts",
+      "line": 49,
+      "title": "a parent can create a learning profile and complete an evidence-limited assessment",
+      "status": "passed",
+      "durationMs": 10228,
+      "error": ""
+    },
+    {
+      "file": "product-smoke.spec.ts",
+      "line": 134,
+      "title": "an approved fraction teaching card renders a safe step-by-step visual",
+      "status": "passed",
+      "durationMs": 5367,
+      "error": ""
+    },
+    {
+      "file": "product-smoke.spec.ts",
+      "line": 177,
+      "title": "an administrator can reach the curriculum review workbench",
+      "status": "passed",
+      "durationMs": 5447,
+      "error": ""
+    },
+    {
+      "file": "project-files.spec.ts",
+      "line": 13,
+      "title": "actual file versions remain frozen through submission, download, nested preview, editing and responsive layouts",
+      "status": "passed",
+      "durationMs": 10487,
+      "error": ""
+    },
+    {
+      "file": "project-files.spec.ts",
+      "line": 27,
+      "title": "a dropped second chunk resumes the exact selected image after refresh and lost complete acknowledgments do not duplicate it",
+      "status": "passed",
+      "durationMs": 7773,
+      "error": ""
+    },
+    {
+      "file": "project-files.spec.ts",
+      "line": 37,
+      "title": "real PDF previews turn individual pages and closing a playing recording releases its actual audio element",
+      "status": "passed",
+      "durationMs": 11940,
+      "error": ""
+    },
+    {
+      "file": "project-files.spec.ts",
+      "line": 44,
+      "title": "an oversized saved project keeps its full text while the learner explicitly narrows the AI advice scope",
+      "status": "passed",
+      "durationMs": 2918,
+      "error": ""
+    },
+    {
+      "file": "project-teaching.spec.ts",
+      "line": 17,
+      "title": "guided original fields save before moving, keep the full work and submit one frozen stage",
+      "status": "passed",
+      "durationMs": 3435,
+      "error": ""
+    },
+    {
+      "file": "project-teaching.spec.ts",
+      "line": 29,
+      "title": "an unsaved local field survives reload and a different tab requires an explicit comparison before saving",
+      "status": "passed",
+      "durationMs": 3779,
+      "error": ""
+    },
+    {
+      "file": "project-teaching.spec.ts",
+      "line": 37,
+      "title": "independent unsaved tab copies survive reload even when a duplicated tab inherits sessionStorage",
+      "status": "passed",
+      "durationMs": 3558,
+      "error": ""
+    },
+    {
+      "file": "project-teaching.spec.ts",
+      "line": 44,
+      "title": "hard closing without beforeunload preserves the input effect and reopening offers an explicit copy preview",
+      "status": "passed",
+      "durationMs": 3274,
+      "error": ""
+    },
+    {
+      "file": "project-teaching.spec.ts",
+      "line": 51,
+      "title": "two pending original commands use separate slots and confirming one preserves the other",
+      "status": "passed",
+      "durationMs": 3596,
+      "error": ""
+    },
+    {
+      "file": "project-teaching.spec.ts",
+      "line": 60,
+      "title": "unavailable project storage keeps the live input and offers a full download",
+      "status": "passed",
+      "durationMs": 2447,
+      "error": ""
+    },
+    {
+      "file": "project-teaching.spec.ts",
+      "line": 65,
+      "title": "a mismatched owner draft is preserved but never restored or offered as another copy",
+      "status": "passed",
+      "durationMs": 2640,
+      "error": ""
+    },
+    {
+      "file": "project-teaching.spec.ts",
+      "line": 70,
+      "title": "observed denied teaching clears old project content and narration",
+      "status": "passed",
+      "durationMs": 2437,
+      "error": ""
+    },
+    {
+      "file": "project-teaching.spec.ts",
+      "line": 70,
+      "title": "observed denied narration clears old project content and narration",
+      "status": "passed",
+      "durationMs": 2323,
+      "error": ""
+    },
+    {
+      "file": "project-teaching.spec.ts",
+      "line": 77,
+      "title": "a lost save reply survives reload, reads the same actor receipt and preserves later local edits",
+      "status": "passed",
+      "durationMs": 3031,
+      "error": ""
+    },
+    {
+      "file": "project-teaching.spec.ts",
+      "line": 85,
+      "title": "a lost submission reply reloads its original receipt without creating a second frozen submission",
+      "status": "passed",
+      "durationMs": 3562,
+      "error": ""
+    },
+    {
+      "file": "project-teaching.spec.ts",
+      "line": 91,
+      "title": "an unavailable step link returns to the frozen stage introduction without writing progress",
+      "status": "passed",
+      "durationMs": 2669,
+      "error": ""
+    },
+    {
+      "file": "project-teaching.spec.ts",
+      "line": 95,
+      "title": "project teaching, original fields and controls fit at 390",
+      "status": "passed",
+      "durationMs": 2219,
+      "error": ""
+    },
+    {
+      "file": "project-teaching.spec.ts",
+      "line": 95,
+      "title": "project teaching, original fields and controls fit at 768",
+      "status": "passed",
+      "durationMs": 2115,
+      "error": ""
+    },
+    {
+      "file": "project-teaching.spec.ts",
+      "line": 95,
+      "title": "project teaching, original fields and controls fit at 1440",
+      "status": "passed",
+      "durationMs": 2417,
+      "error": ""
+    },
+    {
+      "file": "project-teaching.spec.ts",
+      "line": 99,
+      "title": "project audio decodes original samples, does not save progress and stops when the selected step changes",
+      "status": "passed",
+      "durationMs": 2524,
+      "error": ""
+    },
+    {
+      "file": "reference-navigation.spec.ts",
+      "line": 18,
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 390",
+      "status": "passed",
+      "durationMs": 2600,
+      "error": ""
+    },
+    {
+      "file": "reference-navigation.spec.ts",
+      "line": 18,
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 768",
+      "status": "passed",
+      "durationMs": 2764,
+      "error": ""
+    },
+    {
+      "file": "reference-navigation.spec.ts",
+      "line": 18,
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1280",
+      "status": "passed",
+      "durationMs": 3362,
+      "error": ""
+    },
+    {
+      "file": "reference-navigation.spec.ts",
+      "line": 18,
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1440",
+      "status": "passed",
+      "durationMs": 3347,
+      "error": ""
+    },
+    {
+      "file": "reference-navigation.spec.ts",
+      "line": 47,
+      "title": "reference navigation: a real saved classroom opens the exact original session and position from the course library",
+      "status": "passed",
+      "durationMs": 3431,
+      "error": ""
+    },
+    {
+      "file": "reference-navigation.spec.ts",
+      "line": 56,
+      "title": "reference navigation: resizing an open drawer restores usable desktop controls and releases the original background",
+      "status": "passed",
+      "durationMs": 2490,
+      "error": ""
+    },
+    {
+      "file": "reference-navigation.spec.ts",
+      "line": 65,
+      "title": "reference navigation: blocked preference storage keeps current controls usable without inventing a saved preference",
+      "status": "passed",
+      "durationMs": 3501,
+      "error": ""
+    },
+    {
+      "file": "reference-navigation.spec.ts",
+      "line": 77,
+      "title": "reference navigation: a mobile drawer hands focus to the real course blueprint and returns to its menu trigger after closing",
+      "status": "passed",
+      "durationMs": 2756,
+      "error": ""
+    },
+    {
+      "file": "retention-evidence.spec.ts",
+      "line": 8,
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 320",
+      "status": "passed",
+      "durationMs": 4173,
+      "error": ""
+    },
+    {
+      "file": "retention-evidence.spec.ts",
+      "line": 8,
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 390",
+      "status": "passed",
+      "durationMs": 4164,
+      "error": ""
+    },
+    {
+      "file": "retention-evidence.spec.ts",
+      "line": 8,
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 768",
+      "status": "passed",
+      "durationMs": 4701,
+      "error": ""
+    },
+    {
+      "file": "retention-evidence.spec.ts",
+      "line": 8,
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 1440",
+      "status": "passed",
+      "durationMs": 4625,
+      "error": ""
+    },
+    {
+      "file": "retention-evidence.spec.ts",
+      "line": 11,
+      "title": "retention evidence: a lost exact original classroom time receipt survives reload and cannot move the original recorded time",
+      "status": "passed",
+      "durationMs": 4765,
+      "error": ""
+    },
+    {
+      "file": "retention-evidence.spec.ts",
+      "line": 12,
+      "title": "retention evidence: disabled storage preserves the exact classroom time command and requires its full downloaded copy before writing",
+      "status": "passed",
+      "durationMs": 4309,
+      "error": ""
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "line": 11,
+      "title": "one confirmed lesson prepares one explicit target and restores its independent first answer and frozen source",
+      "status": "passed",
+      "durationMs": 5741,
+      "error": ""
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "line": 36,
+      "title": "source check keeps independent first answers, frozen sources and exact course return at 390",
+      "status": "passed",
+      "durationMs": 7546,
+      "error": ""
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "line": 36,
+      "title": "source check keeps independent first answers, frozen sources and exact course return at 768",
+      "status": "passed",
+      "durationMs": 7810,
+      "error": ""
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "line": 36,
+      "title": "source check keeps independent first answers, frozen sources and exact course return at 1440",
+      "status": "passed",
+      "durationMs": 8182,
+      "error": ""
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "line": 45,
+      "title": "recovery: lost prepare and confirmation replies replay exact original commands after refresh without exposing answers",
+      "status": "passed",
+      "durationMs": 7953,
+      "error": ""
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "line": 51,
+      "title": "recovery: explicit authoring keeps a dirty local copy and replays a lost edit without replacing the original request or review",
+      "status": "passed",
+      "durationMs": 7394,
+      "error": ""
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "line": 56,
+      "title": "uncertain review requires an explicit acknowledgement and cancellation retries only the original model",
+      "status": "passed",
+      "durationMs": 11187,
+      "error": ""
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "line": 71,
+      "title": "recovery: shared tabs block unknown commands while another device can edit before historical replay",
+      "status": "passed",
+      "durationMs": 9914,
+      "error": ""
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "line": 77,
+      "title": "an unavailable local draft store keeps the editor open and never promises a saved recoverable copy",
+      "status": "passed",
+      "durationMs": 5305,
+      "error": ""
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "line": 81,
+      "title": "recovery: a rejected concurrent edit keeps both drafts until the user explicitly compares and rebases",
+      "status": "passed",
+      "durationMs": 7229,
+      "error": ""
+    },
+    {
+      "file": "source-course-lifecycle.spec.ts",
+      "line": 15,
+      "title": "edit and publish a revision, then explicitly resume the old version at its frozen line",
+      "status": "passed",
+      "durationMs": 4561,
+      "error": ""
+    },
+    {
+      "file": "source-course-lifecycle.spec.ts",
+      "line": 25,
+      "title": "lost revision creation receipts survive refresh and recover the same draft with the original command",
+      "status": "passed",
+      "durationMs": 3987,
+      "error": ""
+    },
+    {
+      "file": "source-course-lifecycle.spec.ts",
+      "line": 32,
+      "title": "archive, withdrawal reasons, restore, keyboard cancellation and responsive impact previews use real saved states",
+      "status": "passed",
+      "durationMs": 5904,
+      "error": ""
+    },
+    {
+      "file": "source-course-lifecycle.spec.ts",
+      "line": 42,
+      "title": "a lost publication reply recovers after refresh without another publication or another lesson version",
+      "status": "passed",
+      "durationMs": 3465,
+      "error": ""
+    },
+    {
+      "file": "source-course-lifecycle.spec.ts",
+      "line": 50,
+      "title": "a stale publication preview reads the actual saved version before a new explicit confirmation",
+      "status": "passed",
+      "durationMs": 5011,
+      "error": ""
+    },
+    {
+      "file": "source-course-lifecycle.spec.ts",
+      "line": 57,
+      "title": "stopping a lost publication wait preserves the committed command and ignores its late reply",
+      "status": "passed",
+      "durationMs": 3794,
+      "error": ""
+    },
+    {
+      "file": "source-course-long.spec.ts",
+      "line": 19,
+      "title": "long text import, cancellable preflight, lost acknowledgment, original coverage and single-lesson authoring reach the classroom",
+      "status": "passed",
+      "durationMs": 8086,
+      "error": ""
+    },
+    {
+      "file": "source-course-long.spec.ts",
+      "line": 36,
+      "title": "a long-source failure resumes saved stages across page reload and retains exact progress",
+      "status": "passed",
+      "durationMs": 19339,
+      "error": ""
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "line": 41,
+      "title": "a published source course opens one real project, completes all frozen stages and returns to its original course",
+      "status": "passed",
+      "durationMs": 11802,
+      "error": ""
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "line": 64,
+      "title": "a project URL bound to another source course clears the old work instead of silently changing the course",
+      "status": "passed",
+      "durationMs": 3979,
+      "error": ""
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "line": 68,
+      "title": "source-course project entry and frozen objectives fit at 390",
+      "status": "passed",
+      "durationMs": 3556,
+      "error": ""
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "line": 68,
+      "title": "source-course project entry and frozen objectives fit at 768",
+      "status": "passed",
+      "durationMs": 2981,
+      "error": ""
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "line": 68,
+      "title": "source-course project entry and frozen objectives fit at 1440",
+      "status": "passed",
+      "durationMs": 3182,
+      "error": ""
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "line": 72,
+      "title": "source reading, assisted practice and project draft return to their exact saved objects in one continuous journey",
+      "status": "passed",
+      "durationMs": 6594,
+      "error": ""
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "line": 81,
+      "title": "returning from a course restores the personal project step and mode while an explicit URL takes priority",
+      "status": "passed",
+      "durationMs": 5978,
+      "error": ""
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "line": 86,
+      "title": "adult course journey keeps reading, unit check and project separate and resumes the same saved classroom",
+      "status": "passed",
+      "durationMs": 5147,
+      "error": ""
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "line": 90,
+      "title": "an entire adult unit retains every lesson, complete practice, unit check and all project submissions as separate facts",
+      "status": "passed",
+      "durationMs": 224424,
+      "error": ""
+    },
+    {
+      "file": "source-course.spec.ts",
+      "line": 17,
+      "title": "adult source selection, blueprint editing, lost confirmation, classroom practice and source return form a real persisted route",
+      "status": "passed",
+      "durationMs": 9165,
+      "error": ""
+    },
+    {
+      "file": "source-course.spec.ts",
+      "line": 32,
+      "title": "in-flight cancellation and retry survive reload and never publish the cancelled attempt",
+      "status": "passed",
+      "durationMs": 8526,
+      "error": ""
+    },
+    {
+      "file": "source-course.spec.ts",
+      "line": 36,
+      "title": "lost generation acknowledgment is replayed and stale blueprint edits preserve local input without overwriting another page",
+      "status": "passed",
+      "durationMs": 4875,
+      "error": ""
+    },
+    {
+      "file": "source-course.spec.ts",
+      "line": 44,
+      "title": "an adult can upload a PDF, inspect its real page and preserve selected page and language through generation",
+      "status": "passed",
+      "durationMs": 6610,
+      "error": ""
+    },
+    {
+      "file": "source-course.spec.ts",
+      "line": 51,
+      "title": "complete teaching edits survive section switches and a lost save, then reach the classroom with private answers",
+      "status": "passed",
+      "durationMs": 6836,
+      "error": ""
+    },
+    {
+      "file": "source-course.spec.ts",
+      "line": 63,
+      "title": "staged generation retains reviewed work through failure, retry and manuscript correction",
+      "status": "passed",
+      "durationMs": 18837,
+      "error": ""
+    },
+    {
+      "file": "source-course.spec.ts",
+      "line": 75,
+      "title": "uncertain model checks remain visible through confirmation and retain private review details",
+      "status": "passed",
+      "durationMs": 4619,
+      "error": ""
+    },
+    {
+      "file": "source-course.spec.ts",
+      "line": 79,
+      "title": "stale full manuscripts stay local through a public reload and offer an export before browser back",
+      "status": "passed",
+      "durationMs": 5124,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 30,
+      "title": "lecture-assistant: directory opens a whole lecture in the independent assistant without starting a micro lesson",
+      "status": "passed",
+      "durationMs": 3254,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 49,
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at390",
+      "status": "passed",
+      "durationMs": 2793,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 49,
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at768",
+      "status": "passed",
+      "durationMs": 3060,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 49,
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at880",
+      "status": "passed",
+      "durationMs": 2928,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 49,
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at1440",
+      "status": "passed",
+      "durationMs": 3124,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 63,
+      "title": "lecture-assistant: lecture removal, back and reload preserve separate unsent drafts without sending",
+      "status": "passed",
+      "durationMs": 3445,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 75,
+      "title": "lecture-assistant: durable pending turn resumes after refresh with its original model",
+      "status": "passed",
+      "durationMs": 13105,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 86,
+      "title": "lecture-assistant: a lost receipt is recovered with the original request and no duplicate post",
+      "status": "passed",
+      "durationMs": 4826,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 102,
+      "title": "lecture-assistant: a retained original version opens from the server without creating or resending a session · classroom-lecture-v1",
+      "status": "passed",
+      "durationMs": 2897,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 102,
+      "title": "lecture-assistant: a retained original version opens from the server without creating or resending a session · classroom-lecture-v2",
+      "status": "passed",
+      "durationMs": 2857,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 115,
+      "title": "lecture-assistant: failed initialization after a child change cannot retain the previous active session",
+      "status": "passed",
+      "durationMs": 3274,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 131,
+      "title": "lecture-assistant: read-only recovery preserves a cached pending command and identifies separately selected history",
+      "status": "passed",
+      "durationMs": 3058,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 146,
+      "title": "lecture-assistant: an unavailable original still allows owner-only history reads without a session post",
+      "status": "passed",
+      "durationMs": 2642,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 156,
+      "title": "lecture-assistant: another account cannot open a retained version or find its private messages",
+      "status": "passed",
+      "durationMs": 4814,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 164,
+      "title": "lecture-assistant: explicit cancellation and retry preserve one lecture request and the original model",
+      "status": "passed",
+      "durationMs": 8307,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 171,
+      "title": "lecture-assistant: changing the selected learner fences a late whiteboard preview and releases the new composer",
+      "status": "passed",
+      "durationMs": 3439,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 185,
+      "title": "lecture-navigation: lecture tools retain the original scope and draft through material refresh and planner return",
+      "status": "passed",
+      "durationMs": 3642,
+      "error": ""
+    },
+    {
+      "file": "studio-assistant.spec.ts",
+      "line": 185,
+      "title": "lecture-navigation: independent tools retain the original scope and draft through material refresh and planner return",
+      "status": "passed",
+      "durationMs": 3883,
+      "error": ""
+    },
+    {
+      "file": "studio.spec.ts",
+      "line": 35,
+      "title": "a parent can build and reopen an evidence-backed learning studio course",
+      "status": "passed",
+      "durationMs": 48091,
+      "error": ""
+    },
+    {
+      "file": "teaching-plan-verification.spec.ts",
+      "line": 4,
+      "title": "original guidance verification: ordinary baseline retains prerequisite checks",
+      "status": "passed",
+      "durationMs": 4328,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 41,
+      "title": "teaching tools: complete analysis, original input and unreviewed result at 390",
+      "status": "passed",
+      "durationMs": 5986,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 41,
+      "title": "teaching tools: complete analysis, original input and unreviewed result at 768",
+      "status": "passed",
+      "durationMs": 6250,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 41,
+      "title": "teaching tools: complete analysis, original input and unreviewed result at 1280",
+      "status": "passed",
+      "durationMs": 6398,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 54,
+      "title": "teaching tools: bank preflight shows actual table and formula, freezing the server original version and structured answer",
+      "status": "passed",
+      "durationMs": 6008,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 65,
+      "title": "teaching tools: hint failure stays explicit and a retry uses the frozen original model after changing the composer",
+      "status": "passed",
+      "durationMs": 7147,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 75,
+      "title": "teaching tools: lost creation acknowledgement restores the same original command after reload without duplicate generation",
+      "status": "passed",
+      "durationMs": 5566,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 85,
+      "title": "teaching tools: two tabs retain their own complete drafts and copying another preserves the current version",
+      "status": "passed",
+      "durationMs": 5561,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 96,
+      "title": "teaching tools: failed local storage blocks navigation and logout until the complete original input is downloaded",
+      "status": "passed",
+      "durationMs": 4511,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 106,
+      "title": "teaching tools: a provider finishing after cancellation cannot publish its late result",
+      "status": "passed",
+      "durationMs": 12685,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 112,
+      "title": "teaching tools: cancellation acknowledgement loss recovers its original control key after reload",
+      "status": "passed",
+      "durationMs": 6268,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 122,
+      "title": "teaching tools: a role revocation unloads private work and fences the late provider reply",
+      "status": "passed",
+      "durationMs": 12146,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 130,
+      "title": "teaching tools: parent identity cannot read the admin workspace or load model generation controls",
+      "status": "passed",
+      "durationMs": 2085,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 134,
+      "title": "teaching tools: oversized original text is rejected without losing or truncating the form or making a provider call",
+      "status": "passed",
+      "durationMs": 4232,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 140,
+      "title": "teaching tools: malformed structured work survives a reload and never gets silently converted into a score",
+      "status": "passed",
+      "durationMs": 4388,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 146,
+      "title": "teaching tools: a stale cancellation preserves its command, reads the latest state explicitly and requires a new user action",
+      "status": "passed",
+      "durationMs": 7598,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 165,
+      "title": "teaching tools: an unreadable original remains discoverable after two reloads and downloads byte for byte",
+      "status": "passed",
+      "durationMs": 4861,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 174,
+      "title": "teaching tools: an unknown control original remains discoverable across reloads and cannot execute as a command",
+      "status": "passed",
+      "durationMs": 6587,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 183,
+      "title": "teaching tools: non-finite JSON in 待核对作答 stays original and cannot become an unknown null",
+      "status": "passed",
+      "durationMs": 5025,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 183,
+      "title": "teaching tools: non-finite JSON in 参考答案 stays original and cannot become an unknown null",
+      "status": "passed",
+      "durationMs": 4456,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 183,
+      "title": "teaching tools: non-finite JSON in 完整题目结构 JSON stays original and cannot become an unknown null",
+      "status": "passed",
+      "durationMs": 4588,
+      "error": ""
+    },
+    {
+      "file": "teaching-tools.spec.ts",
+      "line": 183,
+      "title": "teaching tools: non-finite JSON in 原答案结构 JSON stays original and cannot become an unknown null",
+      "status": "passed",
+      "durationMs": 4587,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 57,
+      "title": "continuity: a confirmed adult topic also overlaps its adjacent WAV and preserves its frozen sentence identity",
+      "status": "passed",
+      "durationMs": 9053,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 98,
+      "title": "topic-formula: complete vector fractions, aligned roots and Unicode fit narrow notes and preserve copyable source and safe fallback",
+      "status": "passed",
+      "durationMs": 8503,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 121,
+      "title": "topic-formula: actual shared image and fraction/root/alignment vector video decodes with full audio and caption timeline",
+      "status": "passed",
+      "durationMs": 25399,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 179,
+      "title": "login forms cannot submit before their client handlers are ready",
+      "status": "passed",
+      "durationMs": 1087,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 190,
+      "title": "topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume",
+      "status": "passed",
+      "durationMs": 25671,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 258,
+      "title": "topic-figure: uncached complete image commands block leaving until their exact complete download",
+      "status": "passed",
+      "durationMs": 4728,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 278,
+      "title": "topic-figure: mismatched image bytes stay hidden and can be reread without creating another candidate",
+      "status": "passed",
+      "durationMs": 7066,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 290,
+      "title": "topic-figure: an explicit running cancellation and retry keep the same original candidate and advance its task generation",
+      "status": "passed",
+      "durationMs": 11711,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 300,
+      "title": "topic-figure: two actual tabs retain separate full figure inputs and metadata across reloads",
+      "status": "passed",
+      "durationMs": 5912,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 313,
+      "title": "topic-figure: complete verified image and keyboard reader fit 390",
+      "status": "passed",
+      "durationMs": 7053,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 313,
+      "title": "topic-figure: complete verified image and keyboard reader fit 768",
+      "status": "passed",
+      "durationMs": 7030,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 313,
+      "title": "topic-figure: complete verified image and keyboard reader fit 1440",
+      "status": "passed",
+      "durationMs": 7316,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 326,
+      "title": "adult original generation, lost edit and confirmation replies recover without duplicates and reach a complete table/formula player",
+      "status": "passed",
+      "durationMs": 5025,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 365,
+      "title": "cancelled and failed review generations retain the original selected model through refresh and explicit retry",
+      "status": "passed",
+      "durationMs": 18551,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 376,
+      "title": "incomplete local teaching edits survive reload and another saved draft cannot silently replace them",
+      "status": "passed",
+      "durationMs": 5068,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 387,
+      "title": "unavailable local storage keeps the full editable draft and requires a real downloaded copy before leaving",
+      "status": "passed",
+      "durationMs": 4706,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 396,
+      "title": "stale-topic: another real tab keeps the local manuscript and opens a comparison before any replacement save",
+      "status": "passed",
+      "durationMs": 5462,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 412,
+      "title": "uncached original topic cannot disappear on a scope change until its complete input is downloaded",
+      "status": "passed",
+      "durationMs": 2646,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 429,
+      "title": "another explicit local manuscript cannot replace uncached dirty input until the current complete copy is downloaded",
+      "status": "passed",
+      "durationMs": 5157,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 447,
+      "title": "recovery: an uncached original cancellation survives object changes until its exact command is downloaded",
+      "status": "passed",
+      "durationMs": 2819,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 465,
+      "title": "topic-slot: two real tabs keep their own complete incomplete edits after either tab reloads",
+      "status": "passed",
+      "durationMs": 6061,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 478,
+      "title": "explicit child goals, adult separation and complete edit controls fit at 390",
+      "status": "passed",
+      "durationMs": 5147,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 478,
+      "title": "explicit child goals, adult separation and complete edit controls fit at 768",
+      "status": "passed",
+      "durationMs": 5279,
+      "error": ""
+    },
+    {
+      "file": "topic-whiteboard.spec.ts",
+      "line": 478,
+      "title": "explicit child goals, adult separation and complete edit controls fit at 1440",
+      "status": "passed",
+      "durationMs": 5316,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 66,
+      "title": "complete sentence, complete notes, paused text reading and explicit sentence navigation",
+      "status": "passed",
+      "durationMs": 3465,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 80,
+      "title": "real WAV ended drives cloud playback, pause retains audio time and late ended cannot move a new sentence",
+      "status": "passed",
+      "durationMs": 6309,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 97,
+      "title": "ended boundary: a queued previous audio frame cannot seek the next actual WAV to its end",
+      "status": "passed",
+      "durationMs": 6039,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 107,
+      "title": "continuity: adjacent actual WAV prepares during the current sentence and transfers once at its beginning",
+      "status": "passed",
+      "durationMs": 7091,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 125,
+      "title": "continuity: three complete actual WAVs remain ordered through a live speed change without duplicate preparation",
+      "status": "passed",
+      "durationMs": 9047,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 150,
+      "title": "continuity: an already prepared WAV cannot survive actual login-session revocation",
+      "status": "passed",
+      "durationMs": 6033,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 167,
+      "title": "continuity: a failed adjacent preparation preserves current playback and needs an explicit retry at its original sentence",
+      "status": "passed",
+      "durationMs": 5950,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 187,
+      "title": "continuity: closing during adjacent preparation aborts it and no late audio can play",
+      "status": "passed",
+      "durationMs": 4649,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 201,
+      "title": "continuity: an exact manual next keeps the prepared WAV paused and transfers it without another request",
+      "status": "passed",
+      "durationMs": 5682,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 216,
+      "title": "continuity: a prepared WAV cannot play after actual guardian revocation before handover",
+      "status": "passed",
+      "durationMs": 5791,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 228,
+      "title": "continuity: changing voice fences the old adjacent request and preserves an explicit fresh play",
+      "status": "passed",
+      "durationMs": 7398,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 245,
+      "title": "continuity: slow adjacent audio cannot advance early and can be paused while waiting",
+      "status": "passed",
+      "durationMs": 10855,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 259,
+      "title": "voice switch fences delayed requests and an audio failure offers explicit retry or text reading",
+      "status": "passed",
+      "durationMs": 5478,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 269,
+      "title": "reopening a paused cloud sentence restores its known audio time in the verified original board",
+      "status": "passed",
+      "durationMs": 6691,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 280,
+      "title": "scoped local resume and complete accessible notes fit phone, tablet and desktop",
+      "status": "passed",
+      "durationMs": 6787,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 295,
+      "title": "actual WebM has a decoded audio track and the same complete SRT timeline at the selected speed",
+      "status": "passed",
+      "durationMs": 12573,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 354,
+      "title": "cancelling a recording releases it and never downloads a partial video",
+      "status": "passed",
+      "durationMs": 3782,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 362,
+      "title": "seeking cancels old audio and ignores its late completion at the new reading position",
+      "status": "passed",
+      "durationMs": 3598,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 373,
+      "title": "revoked student access closes the private player before another frozen sentence can be fetched",
+      "status": "passed",
+      "durationMs": 3711,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 382,
+      "title": "closing while export audio is pending aborts it and cannot download or reopen a late result",
+      "status": "passed",
+      "durationMs": 5279,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-media.spec.ts",
+      "line": 389,
+      "title": "a recorder error releases resources, keeps the reading position and offers a retry without a partial download",
+      "status": "passed",
+      "durationMs": 3292,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 52,
+      "title": "whiteboard questions: selected model, exact sentence and pause bookmark survive a real queued answer and return",
+      "status": "passed",
+      "durationMs": 6517,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 68,
+      "title": "supplementary board: explicit audio, whole structured items, real video/SRT and original camera restoration",
+      "status": "passed",
+      "durationMs": 11912,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 97,
+      "title": "supplementary board: a delayed authorized audio response cannot play after the original grant is revoked",
+      "status": "passed",
+      "durationMs": 6806,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 107,
+      "title": "teaching notes: full JSON and Markdown include twelve saved answers while only the last history page is loaded",
+      "status": "passed",
+      "durationMs": 25602,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 117,
+      "title": "teaching notes: closing the whiteboard discards a late full-note response",
+      "status": "passed",
+      "durationMs": 3899,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 124,
+      "title": "mobile draft: closing and reopening the reading layer preserves blocked-storage input without remounting the composer",
+      "status": "passed",
+      "durationMs": 3433,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 130,
+      "title": "supplementary private link: restores its actual answer and original sentence for a child guidance board",
+      "status": "passed",
+      "durationMs": 6492,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 130,
+      "title": "supplementary private link: restores its actual answer and original sentence for an adult topic without a child",
+      "status": "passed",
+      "durationMs": 5436,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 148,
+      "title": "supplementary close: a late authorized sentence stays silent while the original board remains open",
+      "status": "passed",
+      "durationMs": 5288,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 162,
+      "title": "whiteboard questions: five intentions produce distinct original commands and retain completed history",
+      "status": "passed",
+      "durationMs": 11019,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 173,
+      "title": "whiteboard questions: a failed answer has an explicit original-model retry and preserves the next unsent question",
+      "status": "passed",
+      "durationMs": 9206,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 182,
+      "title": "whiteboard questions: cancelling running work blocks the late answer and the same original can be retried",
+      "status": "passed",
+      "durationMs": 10640,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 189,
+      "title": "whiteboard questions: a lost create response is recovered after reload without a second write",
+      "status": "passed",
+      "durationMs": 5526,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 201,
+      "title": "whiteboard questions: unavailable local storage keeps the full input, protects closing and round trips the downloaded JSON",
+      "status": "passed",
+      "durationMs": 3770,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 218,
+      "title": "whiteboard questions: duplicated documents keep separate full drafts across independent reloads",
+      "status": "passed",
+      "durationMs": 5963,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 226,
+      "title": "whiteboard questions: the real composer, model selection and return controls remain usable at 390",
+      "status": "passed",
+      "durationMs": 5138,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 226,
+      "title": "whiteboard questions: the real composer, model selection and return controls remain usable at 768",
+      "status": "passed",
+      "durationMs": 5209,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 226,
+      "title": "whiteboard questions: the real composer, model selection and return controls remain usable at 1280",
+      "status": "passed",
+      "durationMs": 4928,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 254,
+      "title": "question figures: exact PNG adoption binds voice, video, private links, complete notes and original-version review",
+      "status": "passed",
+      "durationMs": 16376,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 292,
+      "title": "question figures: lost prepare and adoption receipts retain original commands through reload without duplicate images or versions",
+      "status": "passed",
+      "durationMs": 11717,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 311,
+      "title": "question figures: original PNG editing and two explicit adoptions preserve both prior teaching versions",
+      "status": "passed",
+      "durationMs": 12136,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 329,
+      "title": "question figures: explicit cancel and original retry keep the same image requirement and target",
+      "status": "passed",
+      "durationMs": 19285,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 339,
+      "title": "question figures: duplicated documents keep separate full inputs and a closed workbench discards late preflight",
+      "status": "passed",
+      "durationMs": 7588,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 351,
+      "title": "question figures: full input, storage failure, download and import remain usable at 390",
+      "status": "passed",
+      "durationMs": 5569,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 351,
+      "title": "question figures: full input, storage failure, download and import remain usable at 768",
+      "status": "passed",
+      "durationMs": 5381,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 351,
+      "title": "question figures: full input, storage failure, download and import remain usable at 1280",
+      "status": "passed",
+      "durationMs": 4817,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 370,
+      "title": "question figures: a stale second tab preserves its full requirements and rechecks the current adoption before choosing again",
+      "status": "passed",
+      "durationMs": 9082,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 389,
+      "title": "question figures: mobile adopted image layers contain keyboard focus and return to the actual original control at 390",
+      "status": "passed",
+      "durationMs": 9625,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-questions.spec.ts",
+      "line": 389,
+      "title": "question figures: mobile adopted image layers contain keyboard focus and return to the actual original control at 768",
+      "status": "passed",
+      "durationMs": 8049,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-settings.spec.ts",
+      "line": 25,
+      "title": "original settings: six actual neutral MP3s decode, previews preserve selection and closing releases audio",
+      "status": "passed",
+      "durationMs": 5691,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-settings.spec.ts",
+      "line": 43,
+      "title": "original settings: corrupt samples fail visibly, explicit retry works and a late closed sample never plays",
+      "status": "passed",
+      "durationMs": 5486,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-settings.spec.ts",
+      "line": 52,
+      "title": "original settings: half speed restores, double speed records real WAV and frozen captions at matching durations",
+      "status": "passed",
+      "durationMs": 10867,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-settings.spec.ts",
+      "line": 61,
+      "title": "original settings: real seven-tool tour preserves position and focus at 390",
+      "status": "passed",
+      "durationMs": 4255,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-settings.spec.ts",
+      "line": 61,
+      "title": "original settings: real seven-tool tour preserves position and focus at 1280",
+      "status": "passed",
+      "durationMs": 4359,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-settings.spec.ts",
+      "line": 74,
+      "title": "reading panel: original380 width, pointer and keyboard bounds, viewport cap and collapsed preference restore without teaching writes",
+      "status": "passed",
+      "durationMs": 5339,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-settings.spec.ts",
+      "line": 92,
+      "title": "reading panel: explicit mobile entry contains focus, returns to the same sentence and closes only its own layer at 390",
+      "status": "passed",
+      "durationMs": 3708,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-settings.spec.ts",
+      "line": 92,
+      "title": "reading panel: explicit mobile entry contains focus, returns to the same sentence and closes only its own layer at 768",
+      "status": "passed",
+      "durationMs": 3737,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-settings.spec.ts",
+      "line": 101,
+      "title": "reading panel: malformed or wrong-owner device preferences are rejected and blocked storage leaves resizing usable",
+      "status": "passed",
+      "durationMs": 5103,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-settings.spec.ts",
+      "line": 109,
+      "title": "share toolbar: a private link reopens the same board and a real PNG exactly decodes the visible frozen canvas",
+      "status": "passed",
+      "durationMs": 5327,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-settings.spec.ts",
+      "line": 126,
+      "title": "share toolbar: closing during original PNG authorization fences a late reply and never downloads",
+      "status": "passed",
+      "durationMs": 4511,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-settings.spec.ts",
+      "line": 133,
+      "title": "share toolbar: every visible playback and toolbar control stays inside the actual viewport at 390",
+      "status": "passed",
+      "durationMs": 3385,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-settings.spec.ts",
+      "line": 133,
+      "title": "share toolbar: every visible playback and toolbar control stays inside the actual viewport at 768",
+      "status": "passed",
+      "durationMs": 3502,
+      "error": ""
+    },
+    {
+      "file": "whiteboard-settings.spec.ts",
+      "line": 133,
+      "title": "share toolbar: every visible playback and toolbar control stays inside the actual viewport at 1280",
+      "status": "passed",
+      "durationMs": 3740,
+      "error": ""
+    },
+    {
+      "file": "workspace-focus.spec.ts",
+      "line": 31,
+      "title": "workspace focus: a real classroom uses its authorized chemistry scope and restores the ordinary sidebar preference",
+      "status": "passed",
+      "durationMs": 4503,
+      "error": ""
+    },
+    {
+      "file": "workspace-focus.spec.ts",
+      "line": 42,
+      "title": "workspace focus: adult whiteboard exposes one navigation and restores the original workspace and focus",
+      "status": "passed",
+      "durationMs": 3760,
+      "error": ""
+    },
+    {
+      "file": "workspace-focus.spec.ts",
+      "line": 55,
+      "title": "workspace focus: paper exit preserves the full draft and imports it without writing a first answer",
+      "status": "passed",
+      "durationMs": 3888,
+      "error": ""
+    },
+    {
+      "file": "workspace-focus.spec.ts",
+      "line": 65,
+      "title": "workspace focus: admin cookie identity exposes nine modules and a teacher is gated before private data reads",
+      "status": "passed",
+      "durationMs": 8835,
+      "error": ""
+    },
+    {
+      "file": "workspace-focus.spec.ts",
+      "line": 79,
+      "title": "workspace focus: project navigation protects the complete local artifact before an explicit export and leave",
+      "status": "passed",
+      "durationMs": 4291,
+      "error": ""
+    },
+    {
+      "file": "workspace-focus.spec.ts",
+      "line": 88,
+      "title": "workspace focus: all nine admin modules render in one shell and actual content fits phone, tablet and desktop",
+      "status": "passed",
+      "durationMs": 9799,
+      "error": ""
+    },
+    {
+      "file": "workspace-focus.spec.ts",
+      "line": 102,
+      "title": "workspace focus: without Navigation API the persistent host keeps full unsaved material text during browser back",
+      "status": "passed",
+      "durationMs": 6475,
+      "error": ""
+    },
+    {
+      "file": "workspace-focus.spec.ts",
+      "line": 111,
+      "title": "workspace focus: a classroom with disabled storage requires the full choice download and never submits it on exit",
+      "status": "passed",
+      "durationMs": 5256,
+      "error": ""
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "line": 22,
+      "title": "GESP workspace: exact original task and complete independent code survive task changes, reloads and a second tab",
+      "status": "passed",
+      "durationMs": 9141,
+      "error": ""
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "line": 32,
+      "title": "GESP workspace: disabled storage requires the complete code download before mobile navigation and explicit import",
+      "status": "passed",
+      "durationMs": 8135,
+      "error": ""
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "line": 40,
+      "title": "GESP workspace: a lost probe reply retains the original full command through reload and rejects another atom",
+      "status": "passed",
+      "durationMs": 2442,
+      "error": ""
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "line": 49,
+      "title": "GESP workspace: a changed parent scope keeps the original full code visible for export and blocks new writes",
+      "status": "passed",
+      "durationMs": 4583,
+      "error": ""
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "line": 55,
+      "title": "GESP workspace: a parent restores the exact linked child and certification level while keeping each level draft separate",
+      "status": "passed",
+      "durationMs": 3257,
+      "error": ""
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "line": 64,
+      "title": "GESP workspace: a lost parent confirmation replays its original version while a later confirmed scope stays current",
+      "status": "passed",
+      "durationMs": 3361,
+      "error": ""
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "line": 71,
+      "title": "GESP workspace: a parent with disabled storage downloads the full selection before changing levels and restores it explicitly",
+      "status": "passed",
+      "durationMs": 3897,
+      "error": ""
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "line": 78,
+      "title": "GESP workspace: without Navigation API browser back preserves the full original-task code until its exact download",
+      "status": "passed",
+      "durationMs": 5439,
+      "error": ""
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "line": 83,
+      "title": "GESP workspace: actual isolated code execution recovers one lost receipt while preserving later complete code edits",
+      "status": "passed",
+      "durationMs": 16080,
+      "error": ""
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "line": 89,
+      "title": "GESP workspace: delayed parent reads and a disconnected refresh cannot replace another child or erase its complete draft",
+      "status": "passed",
+      "durationMs": 3143,
+      "error": ""
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "line": 40,
+      "title": "workspace materials: adult documents and actor-bound text drafts work without a child",
+      "status": "passed",
+      "durationMs": 3854,
+      "error": ""
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "line": 51,
+      "title": "workspace materials: explicit object and subject never mix lawful parent-private documents",
+      "status": "passed",
+      "durationMs": 4275,
+      "error": ""
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "line": 62,
+      "title": "workspace materials: a lost text receipt and reload reuse the complete original command once",
+      "status": "passed",
+      "durationMs": 3211,
+      "error": ""
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "line": 71,
+      "title": "workspace materials: unavailable storage protects full text across browser back and restores focus",
+      "status": "passed",
+      "durationMs": 7302,
+      "error": ""
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "line": 81,
+      "title": "workspace materials: real PDF pages, source course, classroom and project preserve the source return",
+      "status": "passed",
+      "durationMs": 9054,
+      "error": ""
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "line": 94,
+      "title": "workspace materials: paper legacy links and URL filters survive details answers back forward and refresh",
+      "status": "passed",
+      "durationMs": 3579,
+      "error": ""
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "line": 103,
+      "title": "workspace materials: original-paper first answers keep identity and exact source return through review",
+      "status": "passed",
+      "durationMs": 5372,
+      "error": ""
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "line": 112,
+      "title": "workspace materials: student learning code reads only their own materials and no adult projection",
+      "status": "passed",
+      "durationMs": 3709,
+      "error": ""
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "line": 119,
+      "title": "workspace materials: existing-style tabs support keyboard navigation and narrow screens",
+      "status": "passed",
+      "durationMs": 3271,
+      "error": ""
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "line": 126,
+      "title": "workspace materials: a late catalog cannot replace a new object and list pagination restores from URL",
+      "status": "passed",
+      "durationMs": 6407,
+      "error": ""
+    },
+    {
+      "file": "workspace-shell.spec.ts",
+      "line": 17,
+      "title": "workspace shell: one existing-style sidebar keeps the object across tasks reports and profiles",
+      "status": "passed",
+      "durationMs": 3018,
+      "error": ""
+    },
+    {
+      "file": "workspace-shell.spec.ts",
+      "line": 34,
+      "title": "workspace shell: profiles read metadata only and new profiles keep the original creation contract",
+      "status": "passed",
+      "durationMs": 2910,
+      "error": ""
+    },
+    {
+      "file": "workspace-shell.spec.ts",
+      "line": 43,
+      "title": "workspace shell: a learning-code student stays bound to their own profile and rejects self mode",
+      "status": "passed",
+      "durationMs": 3314,
+      "error": ""
+    },
+    {
+      "file": "workspace-shell.spec.ts",
+      "line": 56,
+      "title": "workspace shell: completed reports and the old family URL preserve original records without writes",
+      "status": "passed",
+      "durationMs": 6912,
+      "error": ""
+    },
+    {
+      "file": "workspace-shell.spec.ts",
+      "line": 77,
+      "title": "workspace shell: login returns to a local original activity and refuses an external return",
+      "status": "passed",
+      "durationMs": 4095,
+      "error": ""
+    },
+    {
+      "file": "workspace-shell.spec.ts",
+      "line": 84,
+      "title": "workspace shell: parent self learning reads independent data instead of a cached child",
+      "status": "passed",
+      "durationMs": 2652,
+      "error": ""
+    },
+    {
+      "file": "workspace-shell.spec.ts",
+      "line": 92,
+      "title": "workspace shell: contradictory old object aliases stop before reading a diagnostic or starting work",
+      "status": "passed",
+      "durationMs": 2421,
+      "error": ""
+    },
+    {
+      "file": "workspace-shell.spec.ts",
+      "line": 99,
+      "title": "workspace shell: report detail refuses an unfinished session without becoming an answer screen",
+      "status": "passed",
+      "durationMs": 2561,
+      "error": ""
+    },
+    {
+      "file": "workspace-shell.spec.ts",
+      "line": 107,
+      "title": "workspace shell: mobile navigation and compact preference work across legacy and new pages",
+      "status": "passed",
+      "durationMs": 3535,
+      "error": ""
+    },
+    {
+      "file": "workspace.spec.ts",
+      "line": 36,
+      "title": "course library and outline preserve navigation, panels, help and classroom back/forward",
+      "status": "passed",
+      "durationMs": 5385,
+      "error": ""
+    },
+    {
+      "file": "workspace.spec.ts",
+      "line": 36,
+      "title": "course library and outline preserve navigation, panels, help and classroom back/forward without Navigation API",
+      "status": "passed",
+      "durationMs": 5457,
+      "error": ""
+    },
+    {
+      "file": "workspace.spec.ts",
+      "line": 67,
+      "title": "calendar supports real date navigation, edit, confirmation, completion, export and batch lifecycle",
+      "status": "passed",
+      "durationMs": 6979,
+      "error": ""
+    }
+  ],
+  "originalPrivateResultsSha256": "1dae53ae32d4dd22aa450bb0d2a99eaf6bcfc168e4e0042895e833125a4be819"
+}

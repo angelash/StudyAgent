@@ -1,6 +1,7 @@
 import type { RetentionEvidence,RetentionReadiness } from './retention';
 import { z } from 'zod';
 import { answerDraftFenceSchema } from './answer-draft';
+import { textbookTeachingPracticeOriginSchema, type TextbookTeachingPracticeOrigin, type TextbookTeachingQuestionPacket } from './textbook-teaching';
 
 const subject = z.enum(['chinese', 'math', 'english', 'chemistry']);
 const id = z.string().min(1).max(180);
@@ -107,6 +108,7 @@ export const diagnosticStartSchema = z.object({
   targetAtomIds: z.array(id).max(100).optional(), maxItems: z.number().int().min(2).max(30).optional(),
   includePrerequisites: z.boolean().default(false), hypothesisId: id.optional(), reviewTaskId: id.optional(), planId: id.optional(),
   adaptive: z.boolean().optional(),
+  teachingOrigin: textbookTeachingPracticeOriginSchema.optional(),
 }).strict();
 export type DiagnosticStart = z.infer<typeof diagnosticStartSchema>;
 
@@ -136,6 +138,7 @@ export type AssessmentBlueprint = {
   warnings: string[];
   verification?: DiagnosticVerificationBlueprint;
   routing?: { mode: 'adaptive'; version: string; description: string };
+  teachingCoverage?: Array<{ atomId: string; purpose: 'understanding' | 'procedure' | 'transfer' | 'retention'; selected: number; required: number; available: number; missingReason?: string }>;
 };
 export type PaperReviewAssessmentOrigin = { sessionId: string; itemId: string; atomId: string; createdAt: string };
 export type DiagnosticBlueprintReservation = {
@@ -144,6 +147,7 @@ export type DiagnosticBlueprintReservation = {
   blueprint: AssessmentBlueprint; scopeSnapshot: LearningScope; coverage: DiagnosticSession['coverage'];
   atomNames: Array<{ id: string; name: string }>; itemCount: number;
   paperReviewOrigin?: PaperReviewAssessmentOrigin & { inputHash: string };
+  teachingOrigin?: TextbookTeachingPracticeOrigin;
 };
 export type DiagnosticBlueprintView = Omit<DiagnosticBlueprintReservation, 'actorId' | 'command' | 'seed' | 'fingerprint' | 'requestHash' | 'paperReviewOrigin'> & {
   canStart: boolean; expired: boolean;
@@ -152,6 +156,9 @@ export type DiagnosticBlueprintView = Omit<DiagnosticBlueprintReservation, 'acto
 
 export type DiagnosticSession = {
   retentionProtocol?: 'teaching-retention-v1';
+  teachingOrigin?: TextbookTeachingPracticeOrigin;
+  /** Server-only exact source packets for native grading integrity. */
+  teachingPackets?: TextbookTeachingQuestionPacket[];
   id: string; studentId: string; subject: z.infer<typeof subject>; intent: DiagnosticStart['intent'];
   status: 'in_progress' | 'paused' | 'completed' | 'aborted'; scopeSnapshot: LearningScope;
   blueprint?: AssessmentBlueprint; revision?: number; endedAt?: string;

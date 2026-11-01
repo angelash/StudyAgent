@@ -1,0 +1,1066 @@
+{
+  "at": "2026-11-01T15:34:11.225Z",
+  "base": "abbfe793cf3b6aeabb1c62a7e667659a29ffdb2d",
+  "head": "72f57e47bd747ef31dc6bd3116957e6142ed6c81",
+  "mainChangedSinceBaseInScope": [],
+  "trackedInScope": 2758,
+  "candidateInScope": 2861,
+  "changed": [
+    {
+      "path": "apps/api/src/common/auth.guard.ts",
+      "mainSha256": "569b1c262c14c1c7c438df9b387aec2ff238284623960c37c0cead75c4891de0",
+      "candidateSha256": "5edf1db867d7b1459bcad21d1ccaa62189d2486db475ea53ccab1aef53d7c3db",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/infrastructure/domain-database.ts",
+      "mainSha256": "8147cfe463d2074ae3327c912ec7f3ff31cb7420b46fede5ae79eaf77535c9be",
+      "candidateSha256": "86703dbc5ed24f1907cce64c457135b09800f6e2c3907566e8dd99f931abf452",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/infrastructure/in-memory-store.service.ts",
+      "mainSha256": "98a37f0f684c11384410bc0ba048d3c5306b812ab26620180c1bf213b21ff26c",
+      "candidateSha256": "dd4e06cd009dbf539494060975177d10f24f7628ba7fe4a8f776a12a9e328bb8",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/infrastructure/schema32-reader.integration.test.ts",
+      "mainSha256": "55a23ee609c1ec5fe3fcfd577166305cc6aa8dffdf9a5fe9145e1a07df323837",
+      "candidateSha256": "abf2ece44a9a1bec3e4d8bff32d4d77679d3915569a1c9828d4c5e58d75b52ff",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/main.ts",
+      "mainSha256": "427a1ccfbab02f6bd193d903a88be13f65c662e9a087eeb5a2b82ef8aeaf41db",
+      "candidateSha256": "e939ce17b49bc012ef1e433296696e6521a7ad7b2402c1a21cea6fc82efbc87d",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/assessment-blueprint.ts",
+      "mainSha256": "c1d2d931830b14024fe0a2abc716fd004511534a14090ba999ee41f6dd313618",
+      "candidateSha256": "286dd52ea4a6b0efd84dbf8f4e147537230fb2aaa1b5770f762af41262b20550",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/classroom-retention-origin.test.ts",
+      "mainSha256": "4cc829cd4197ed482733e4117c1cb201794cf5f6ac863af0f2b81236fb290f3d",
+      "candidateSha256": "ff954e828a64f6d90bca0118c8d364a5210d061c0c99c7e04cf45fc2913bffde",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/classroom-retention-origin.ts",
+      "mainSha256": "5c011cdde1da7639cff4b2dfe859d46e319f1865f9fffdb5196e478f149f45aa",
+      "candidateSha256": "f1db3b5953ab2d436c5747475bfec9abdea930ee8dcd4d8d4bdbf0857787a89e",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/curriculum.service.ts",
+      "mainSha256": "ccfc1204707e0a8edc9ea7dae00e1dc0b7634e03fca1cca4a3a886ddb19b180d",
+      "candidateSha256": "08bf1e157fd42807be460910f8701d5aa5c1547b1278c822236ea3677c28ab5e",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
+      "mainSha256": "c4e53395824b1a0d0d1590708f4a924c2914385aa85a4a8154f15da1d78d4930",
+      "candidateSha256": "2692a14ad2d8df2981d84c0910b17f647708cb904582ed2e0f06420014375d4f",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+      "mainSha256": "68c2cc1f9ecdd0e1185edf8a3f892f06997e4252bcffb95a7b19cfa239043368",
+      "candidateSha256": "6fa93b5a04359b9f457bd6623c9dff157aa9a8f1f1cde7da040e08dc1a94eac5",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/diagnostics.module.ts",
+      "mainSha256": "abd048c068d31911dd6844229407d45e945166ad4a30f4f5b28bd05dd54e6443",
+      "candidateSha256": "06d304726ee819ab76af68855ed871ff4bce5321e477e867c2676d8e2479956d",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
+      "mainSha256": "565587134ec5b1e4d12d925d72c3f39851185b54f18f3125c5c6dca653e46c25",
+      "candidateSha256": "76e5d0a37cf20e14e7c4461a96b629ab9539a2d7aa646eaf6918eed8ae02818c",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/guidance.service.ts",
+      "mainSha256": "7a9ab8392da9a895a36275c2fda1878e45ff46c26e79946e407d147cd2289744",
+      "candidateSha256": "b92fefc5970189760bf3e445c5eac3a727fd43fe139a9673be0fcff351674974",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/retention.service.ts",
+      "mainSha256": "d15f546ccb7214a0fa3fcc86f306097b416c9584e4e2296481da3a4fe2b70036",
+      "candidateSha256": "f8435e555b43f9da9e402b91906db1321fa741c3e162efc124542ecfb75d51a7",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-lesson-source.integration.test.ts",
+      "mainSha256": "0a6f9fb228b40b5239286fb06665e34146cb60129f7cd4b42d30132dca4b62cc",
+      "candidateSha256": "e1d40565b288f9d9b8ebf9cdee504d5989627b9a99b0d0b209b17f12160d5317",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts",
+      "mainSha256": "731554c0d3c4ed2bf52654c343018e28bad3581e90fb44185acb988bd49b75ce",
+      "candidateSha256": "9b8f8de3c2a69fbaa0659c73ffbe3e01771265dc7449853f79d611c6fc34cf78",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-registry.service.ts",
+      "mainSha256": "601e05a051c22f93110394e135acf511daf1529e093f2012cfcd8a12a042ac30",
+      "candidateSha256": "59ab5e80c15c31a22ea5e4c682c9632ee27122e52fdde74dfd2a7f4dd65e47ba",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-scope-inventory.integration.test.ts",
+      "mainSha256": "b39de79918e5126938391c483f3026fae02cbd58047a03a12b4e3c4b72e04a96",
+      "candidateSha256": "48d673227904bfbef5e0be7a742378ac0a284fc36a70edfc411d86bc3da01d4d",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-source-candidates.ts",
+      "mainSha256": "7cb97543b8addb42c6dc4c141c442d2485b8d6a5f4b7fb52fbbf2f260989bf6a",
+      "candidateSha256": "28ee35fb91f241548b170eb0a7734a1166307a764986ed568287a49e75b2579a",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/verification-materials.integration.test.ts",
+      "mainSha256": "7294cc8223d3f3dec4bd253c11d043d9f0992d26413f1b028643274456269565",
+      "candidateSha256": "f055dd2c5544bf8298bc5f273971ac5042c8cc27cbab8a499dc4c000196e7fa1",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/learning/chemistry-tutorial.integration.test.ts",
+      "mainSha256": "c3f81b81ceca8614736b13b5393bc7228b2d56701e3e9e4db09dac6a741b1c3b",
+      "candidateSha256": "f555b5290fe8ed9018a417f7e6e4390e987fd01dd2e30145f63bd7684f9b67ae",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/learning/classroom.service.ts",
+      "mainSha256": "2262de9cdab814d98ace5697888013a1271399479cdc39a18ac738c036f28b6e",
+      "candidateSha256": "8b6a3f14e94f8269b10464a69568061151a0a6c8c87408eebad952c7f6f9cd8e",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/learning/learning.controller.ts",
+      "mainSha256": "383f39a025e789997943373b990c4ac2104d0419bf50f98f93aef2d0175deefb",
+      "candidateSha256": "a1509088f398640ef87300090b49d9da4cff2bd3b07437fe502f4baf1c0585fd",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/learning/learning.module.ts",
+      "mainSha256": "f7a7c32df52cae11f43b23b99662f520db05e72f4e66cdac4a5ccaed71afc79e",
+      "candidateSha256": "b85570eef4a8439c72576d71c641a7e0532a689247d3289e2b38dedc493086ed",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/learning/learning.service.ts",
+      "mainSha256": "002d6d8a543ad936975bd197c1d8a6b08d2c973f1a11905aca506872635c794d",
+      "candidateSha256": "3c550c5290b5e56209787c5d6abe1c8a8ed1395993ca53937f9da30bdee349e4",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/learning/studio-course.ts",
+      "mainSha256": "7bfcc1089dc64322f9831d3155b2a929a7bf18f7072d36d7b6c34145be0179b1",
+      "candidateSha256": "787f6b2cb68b31e9ffd59bca37e2312b9f3807cbcf825ae9d86e4c87877fd084",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-library-persistence.test.ts",
+      "mainSha256": "44c8aeaabc2ba074f2be9df75f61aca8e38e150f5e5575903c9ee6fdcbf888ec",
+      "candidateSha256": "b88d46ef406718e9ed6bcdeaa1b2f02c342d3e8ae783d8b91a8f78a0668d8271",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/privacy/privacy-records.ts",
+      "mainSha256": "3c63f0578ba5b757e26f5496b99bed3e0cc16b2f7b53543811963a7795ecedc0",
+      "candidateSha256": "92c4ff7828f55e903c7dc5b3613c4378042fcf2d47b5c6b693b08120359a8075",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/privacy/privacy.integration.test.ts",
+      "mainSha256": "edf2c64b70a57cf67dfd378df3f5fbaea048408483e54c5d25364c692728ccaa",
+      "candidateSha256": "a6702a4d1031cc54f6fa531b9f2d988915323f6d5d3e20a32d665f045ce502f5",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/privacy/privacy.service.ts",
+      "mainSha256": "cf800561536ea0471c206acc278a90105ad9763a285f463a1aac731f7f63f523",
+      "candidateSha256": "44f01f65a3bb9d3dd869e0a5df80b768e735869f750bd402d3c13e0f1e0e0836",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/app/admin/curriculum/page.tsx",
+      "mainSha256": "6b587917a1de8f26eb8b0c26ae2aafdb5a9f79872564d0fc882ebfa786a98c40",
+      "candidateSha256": "ab2238cc17a485c370d0f39490a3e6e00a78c2187a0fd5b59e58a6994d13513d",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/app/library/practice/review/studio.tsx",
+      "mainSha256": "8e24ed6b14b1ac658d6262eacc4ad773ab978466abafc506bb0c70fd5c2dd0be",
+      "candidateSha256": "0edb43e633c472b56f091a1124a6cf4d45a6efee469bd3374aa309cef6f4723e",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/app/student/assessment/studio.css",
+      "mainSha256": "109ae97b4f6399ba3b9ffb26b0a7055a89fe940591f4572aed3f03f9799a289b",
+      "candidateSha256": "623dec517046bd6e1f53c6c31c47e1b73c1cedca62a561add3c2ae7c6f34c867",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/app/student/assessment/studio.tsx",
+      "mainSha256": "9d175b450927456a4da6f62b8dcec5c23d4a9c6d3df6e9bb7a413059720d83ab",
+      "candidateSha256": "d1a77ae6c48d1b760473edc1bbc6ef2a2d393afcf7ac2c77e14eda17aaf9e27f",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/app/studio/classroom/practice-panel.tsx",
+      "mainSha256": "39133f07ba6cfa163ddb99acf5adf4bdeac098aadf0d6927cc3b791511923fb5",
+      "candidateSha256": "b227696248ca770b5931997a4483847941cb0c943cf4c9e187223c6d7740e143",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/app/studio/classroom/workbench.tsx",
+      "mainSha256": "fbbb1aa5ed89a254cd4764c8862ca6521e9abe5b71a0b4211d0aec18dab9e58b",
+      "candidateSha256": "76dd264b03c44c305b3cb5a28a12a5e0f471781f5f4d9974ab7020212321bee4",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/app/studio/course-builder.css",
+      "mainSha256": "a37cec2a11c5f8bb70f2270f3c1f56ee767cb2c3b89d3277cd13c22438ca5c24",
+      "candidateSha256": "74e12ad4be8b2468c1dfbf3d87228ed11eabb0dcefcc42a97625373c8cd7cc57",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/app/studio/course-builder.tsx",
+      "mainSha256": "9e2ca488bda7765acdc32d0bbff39ff8b5a44e4340276cb133fe97ad66fc985a",
+      "candidateSha256": "5391a05fea3d1fcb6d8cf95a542572d5eb4f351a62e92a66f93708fe652acc9c",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/app/studio/settings/page.tsx",
+      "mainSha256": "4a51ee2265bb5025f31326959253a6f10cea3a237cac28aae147270cc861aeb3",
+      "candidateSha256": "9ca4de76ee3b7a9cff1e1475dd8e39d1d98f85ecf1a43b1e3dbcc3f4761bfd6c",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/app/studio/studio.tsx",
+      "mainSha256": "8fc6d41dd2ba0809ff576a252291ec52f98f4e24900a072ac83af8b21c6f4c39",
+      "candidateSha256": "b2109c30994a9ea4534ebd831009b46b6c01da3cc1b60648d682e3e39ab617e7",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/components/assessment-blueprint.tsx",
+      "mainSha256": "e811c7c9024ae4013ce11743a1514384829f26ec5f082ad05bca3cbed40360a6",
+      "candidateSha256": "134ef455dc754900963cad7a3d166868ea41cdb0ca3f95f690bd51717d99eedc",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/components/workspace-shell.css",
+      "mainSha256": "d6a28ebf0af806e40e641d47610e447ccc6097702b1569e661e8f1f497e3f05a",
+      "candidateSha256": "c4fd05aefb9629025f5b67b98419fabc3119803eb5a76030f133691f00831275",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/lib/workspace-exit-guard.ts",
+      "mainSha256": "797d99a880f35cafcdbb7852fe96e4658566033b7906779a67d8186cfae14539",
+      "candidateSha256": "8c83fd7b5a677c1bf1cba1fff842b7175e84f741202121772afdf1bdd39e1491",
+      "candidateCrlf": false
+    },
+    {
+      "path": "packages/contracts/src/curriculum.ts",
+      "mainSha256": "438b61a0787d1ea582700e8d526849e8fe0fccdf144ae7842c21b6464d5de13d",
+      "candidateSha256": "273694369811a9f3a954fe9555f31e8b007c91b89cd2bb9cdaebab9c721e7c8a",
+      "candidateCrlf": false
+    },
+    {
+      "path": "packages/contracts/src/diagnostics.ts",
+      "mainSha256": "b747c9383bb53b370755f52420c8510ef4fc23d60be437b3b3fd77ca59726472",
+      "candidateSha256": "07eb81a009ace236963c42df599a72ede35e9a4121242cb94e83fb8a02367963",
+      "candidateCrlf": false
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "mainSha256": "a9f848b6b88531ce502a14f63e8d08bd774230c02f6e52624281e5f926ef4225",
+      "candidateSha256": "ecf8b340c24f5a7d9d33a6bde8f7f1ccbf46e0e213c0d38bf19febf0c7abf640",
+      "candidateCrlf": true
+    },
+    {
+      "path": "packages/contracts/src/studio-course-request.ts",
+      "mainSha256": "519a834a2e34c81f190b11ca986fb62d51594dfc544ef973a05ae22d21e9d671",
+      "candidateSha256": "686f91823bd2e75f5440af463031ba58561c453133cf48b7d0785d8b0043f445",
+      "candidateCrlf": false
+    },
+    {
+      "path": "packages/contracts/src/studio.ts",
+      "mainSha256": "cd539e497cc998fd4ffe2565c14c0ed8d02f157a90410d7ba6b5e3e27d8ae4aa",
+      "candidateSha256": "1ce74b4b094d024d32eafa9f2a5914645cf28958be27033814600f4b1c38074e",
+      "candidateCrlf": false
+    },
+    {
+      "path": "resources/curriculum/textbook-mapping-candidates-v1.json",
+      "mainSha256": "22858381bdd572320f31d1eb0d57cd37f4560a04b439f3251398833153640096",
+      "candidateSha256": "6f81d4fb7806ef0af0de4e4aeaa3bf1423cd3ddf68ec642df4dc4d2ca3dce08e",
+      "candidateCrlf": false
+    },
+    {
+      "path": "resources/curriculum/textbooks-v1.json",
+      "mainSha256": "87b6166f5fbbe29ae334d3194e6d95f7c0fb3723c982b0ec85914f9dba946118",
+      "candidateSha256": "339f1cddf605e067745e5a4e9393ddc9bdc6a062de82c7ebae1092cd65f7209e",
+      "candidateCrlf": false
+    },
+    {
+      "path": "scripts/operations/assistant-practice-integrity.cjs",
+      "mainSha256": "98ec3bd74c500a45a2e228ea0a10ead64774ed453d5b4175584f7fdcb045fd5c",
+      "candidateSha256": "36052c01cb22c6232475d3cb48d07c55f1fb9ba52312183b231cac187c1f9305",
+      "candidateCrlf": false
+    },
+    {
+      "path": "scripts/operations/database-reader-guard.cjs",
+      "mainSha256": "4fc94954bda08df4b55fa43ba42166154f1502e5e7e716b1c9e18bad66597c73",
+      "candidateSha256": "35b6806389988126a69719705aa1214368725f11dff7b4be66aaebda2f2103ff",
+      "candidateCrlf": true
+    },
+    {
+      "path": "scripts/operations/privacy-ledger.cjs",
+      "mainSha256": "1195834ad71df5b4f522fe5242875d9cb8a54a1601d5c706c4ce63e4965552f6",
+      "candidateSha256": "44b603d5a0f6b410d51c9a321f952a9d06f64496ddc5d0de251f5f6a1888f503",
+      "candidateCrlf": false
+    },
+    {
+      "path": "scripts/qa/source-course-test-api.cjs",
+      "mainSha256": "81864d37a4830b61d71a9ba2570e0c75ed624352bc07c155db7eb5afac7cc3e7",
+      "candidateSha256": "5ebbff1a1d7f89c89cfee3692fa28dba90467282988244f1aa5da84166ba914f",
+      "candidateCrlf": true
+    },
+    {
+      "path": "tests/e2e/classroom-boards.spec.ts",
+      "mainSha256": "7a505f09bd3dd48516bcb0bb06f1a46a250ba49f973eaf5ba2d4e9204c0366be",
+      "candidateSha256": "9cd54f8833c421ffed057289e9dc6b1e782bc8af9ecdd9dfaead770c02d119c2",
+      "candidateCrlf": true
+    },
+    {
+      "path": "tests/e2e/course-builder.spec.ts",
+      "mainSha256": "2a94366ba5df72c07ca6c08643d4789d313088974b82f9ff15ab52cd69e848dd",
+      "candidateSha256": "132e851995264f0701c9aa656a224228ca4929cd17c4d10a4872b7a16e18bc26",
+      "candidateCrlf": true
+    },
+    {
+      "path": "tests/e2e/product-smoke.spec.ts",
+      "mainSha256": "2ac3a3758863f366da22126e02a6baf3497a28dffd844b71464e402d10816cb8",
+      "candidateSha256": "49959af3c249b291d669fabd5f490bcc04d2447f7ba18a6fccc4a213b43174a0",
+      "candidateCrlf": true
+    },
+    {
+      "path": "tests/e2e/source-course-project.spec.ts",
+      "mainSha256": "7c7d511c34ed57b248b088c36263710b7a1ee9be1ef929536b93277222e8e45a",
+      "candidateSha256": "c51b9250e5536fb1a584e1919cd3843d131f847f4b85c6e49b49722ec787c0f9",
+      "candidateCrlf": true
+    },
+    {
+      "path": "tests/e2e/studio.spec.ts",
+      "mainSha256": "02846c68adef151c2372e5f8cb6888627ed5be56a0457617f537967e97efb07a",
+      "candidateSha256": "ffe15942f6a4170c2b36e96db652daef1e42e365dd114ef60b90ba272dd4567c",
+      "candidateCrlf": false
+    },
+    {
+      "path": "tests/e2e/workspace.spec.ts",
+      "mainSha256": "7efce22dd60fca039d926a955337945a0f70f1e7ab940d86ac8d951f0b7bc34a",
+      "candidateSha256": "e09c3c08f1c4ca70239c4bb5f94855e12409182f724fa9bd450f4effafedb1fb",
+      "candidateCrlf": true
+    }
+  ],
+  "eolOnly": [],
+  "added": [
+    {
+      "path": "apps/api/src/infrastructure/http-keep-alive.ts",
+      "candidateSha256": "463091e4dd96c7910f795d49131b762e5f1410469bbcaf6902352723b26d0f5f",
+      "bytes": 480,
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/infrastructure/textbook-edition-reader.integration.test.ts",
+      "candidateSha256": "9a8297782b6756791787bc9a8b8313583215242fc6093cefd355cd357326d8bd",
+      "bytes": 6074,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/infrastructure/textbook-teaching-adoption-native.integration.test.ts",
+      "candidateSha256": "334e6f8aa29bc17af2b61e829c8073e135e1f24225ffcd607a399a3e42eb4b97",
+      "bytes": 10089,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/infrastructure/textbook-teaching-course-history-native.integration.test.ts",
+      "candidateSha256": "ef3fc54046418e75d32983d80c354862e123e1f51f80875b3683995f5efca8cc",
+      "bytes": 8116,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/infrastructure/textbook-teaching-early33-readers.integration.test.ts",
+      "candidateSha256": "9c99460a4a370f8a5b9e58177899fd6ddd8c18c18cae380b9e35288fbea8f5b1",
+      "bytes": 7330,
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/infrastructure/textbook-teaching-native.integration.test.ts",
+      "candidateSha256": "ee74baef2bfa5cb690e0181268cf12c78dba2bcd9d9c259b49b2d0535f42ffc3",
+      "bytes": 14279,
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/source-chinese-expression-probes.ts",
+      "candidateSha256": "018e5260cb444543192de0594f48bebaa1ce13d2ed2f3b020d47adc9db98d29f",
+      "bytes": 15546,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/source-chinese-feature-probes.test.ts",
+      "candidateSha256": "5ab3c0e70c654784f9c1ed8a94ba8151b822a0f6c85290da5897541caea552e5",
+      "bytes": 6616,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/source-chinese-feature-probes.ts",
+      "candidateSha256": "050f3c8cb2ac2b83a1bd5fe906ee86375623c1a094e00cee70218ecf71df3e11",
+      "bytes": 17509,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/source-chinese-first-probes.test.ts",
+      "candidateSha256": "931ff774bbb442c78046a346540bbbaba367eb8b30f601bd3d6f60029a1d22a1",
+      "bytes": 6487,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/source-chinese-first-probes.ts",
+      "candidateSha256": "3d80dc9b2c8f4369d7ae66d821ac8955bacfb925d9fb3178f9d71cb3152e90eb",
+      "bytes": 14966,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/source-chinese-production-probes.test.ts",
+      "candidateSha256": "24364df369412e80ff77930b834d6406fbc2efcbd7ede6f5e6c63ccfe68ab7a4",
+      "bytes": 7798,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/source-chinese-reading-probes.test.ts",
+      "candidateSha256": "d2f4eb0e6108207153ccedec5915e0394efde3e1f39454faee6baf5add84f108",
+      "bytes": 6592,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/source-chinese-reading-probes.ts",
+      "candidateSha256": "f2b2138014ac54dff9e0c978a4ad10c56a7c2a86166fbac6e91b1e8e4f5fcb5f",
+      "bytes": 11481,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/source-chinese-scene-probes.test.ts",
+      "candidateSha256": "b025ac4dfb730d3ed7b9f3673cd6491f5050f180f87024122ed41db2a58693b4",
+      "bytes": 6348,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/source-chinese-scene-probes.ts",
+      "candidateSha256": "62c18b990ec50cb65e5ae0e67d1d3e4379c1242da21aefac88f10d3319b625d8",
+      "bytes": 16173,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/source-chinese-writing-probes.ts",
+      "candidateSha256": "3df59775412b27c213a21ad16fa9946ec333e01cc6eb707b87b2618f0cacb650",
+      "bytes": 11089,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/teaching-editor-client.test.ts",
+      "candidateSha256": "bca9ec8b74a38581c754dab77040e7ab3ceb4fa7b87f7b2d0547aec4c1b7fc6d",
+      "bytes": 7532,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/teaching-editor-copy.test.ts",
+      "candidateSha256": "5f4233c9ccba0fedb55c965a5792facb16387f0aa2fe2b3b3e133162789c24c7",
+      "bytes": 8537,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/teaching-editor-state.test.ts",
+      "candidateSha256": "bf7f8b0acfcb10c89ffdeb48b7f9a7de598ee2c49e18a11b35881a65f4c5330e",
+      "bytes": 10850,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/teaching-practice-navigation.test.ts",
+      "candidateSha256": "fcf30241c78937e0a8ed5567377022d7791b561dc887b4311ab612982c7dff4b",
+      "bytes": 2599,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-edition-conformity.fixture.ts",
+      "candidateSha256": "501f2986ce57d2eda977ec77badf89f17000905e3db6b140923dfd4ccf1611a1",
+      "bytes": 3582,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-edition-conformity.test.ts",
+      "candidateSha256": "07478572ed1f96c19f9cd5b2edbd661c93162b9c877517c87267dc9530c43252",
+      "bytes": 5096,
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-edition-conformity.ts",
+      "candidateSha256": "f28fa9d33a7ce77f30c21e7db209d658f57e5cb4cd11c23307cbc926898894a9",
+      "bytes": 7824,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-edition-registry.test.ts",
+      "candidateSha256": "69cbc7bad9570f042459cceccbeea5d37e3c059495c7abb73fc05db3be901570",
+      "bytes": 8181,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching-adoption-fixture.ts",
+      "candidateSha256": "08b8dc40143425b4273f285096f5e94415361c4d52e899d7fd4aa4c51077f3cd",
+      "bytes": 7170,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching-adoption-native.test.ts",
+      "candidateSha256": "500fa1d2af9c915420b6904ef2a128f5b19c17335d1917f5b92d63100a9ae372",
+      "bytes": 6042,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching-adoption-native.ts",
+      "candidateSha256": "0ea5b46b60389c8161e43b46155b2ef6af6c22d1a7029a33dcd8f3ee7ad2d9b6",
+      "bytes": 7886,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching-adoption.test.ts",
+      "candidateSha256": "4836550da23201b524aefdd4e746ecc5d5255af8fc5d2a125a07ead5976363a0",
+      "bytes": 6212,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching-adoption.ts",
+      "candidateSha256": "3f9d32583d5be2b4f553033f360829b9e27a3ed72cd0dd7b8af001261268a0ea",
+      "bytes": 12910,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching-classroom-native.ts",
+      "candidateSha256": "c72bdacbc6bcb743fb154015f8890c7a7a1972750f496d447f051da214d54e2f",
+      "bytes": 2096,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching-fixture.ts",
+      "candidateSha256": "0658a5c296229605496febcb2893474b1bdd336afb7bb88245e0485b4519aae7",
+      "bytes": 8106,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching-native.ts",
+      "candidateSha256": "b1497b821d1adb1416c29bf32a8ed6a2bc05a62fa74cf41e01a0a844a22ba520",
+      "bytes": 8639,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching-package.ts",
+      "candidateSha256": "eba05314a0da673ea46c27b3bb39bb34a791421d4abeaacff25dbb2be042a674",
+      "bytes": 15727,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching-practice.test.ts",
+      "candidateSha256": "dac7a1f2257e501ec70d7b62c86551def21b87ed897b25f89aefd7b6fa6183fd",
+      "bytes": 8576,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching-practice.ts",
+      "candidateSha256": "2447ddb474d30ab7fc9a79ae3a5d401fc717437fe3ec39d8ce7e42abcb44db58",
+      "bytes": 11162,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching-public.ts",
+      "candidateSha256": "ec6ef4425def554ebea2a8afdce50fbf9e4eedaabb49627f929db0c3a9df4a30",
+      "bytes": 8005,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching-record.ts",
+      "candidateSha256": "a3f981bf5e8ef69d683dd63e3249a5fb04d72829be9c402319bf1c9d19dd1e76",
+      "bytes": 17535,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching-release.ts",
+      "candidateSha256": "8247491d2b1f89c109486d1a6f30944b6997bb62c4e43a5bf60d2f507d16be66",
+      "bytes": 4298,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching.controller.ts",
+      "candidateSha256": "6ff7f577f61143002801e9a97412e76b04a30844fae9764c9bfc61bf36280300",
+      "bytes": 2650,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching.integration.test.ts",
+      "candidateSha256": "8b0c573d061aa6c01682f6c90c60db6ee7bec977499036cc057d64913f4b0512",
+      "bytes": 28865,
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching.service.ts",
+      "candidateSha256": "26b108c8e228f4641be9290dba9aa6f7c3d5b7c94c3902acee5ace3675789493",
+      "bytes": 13039,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching.test.ts",
+      "candidateSha256": "295eaebeea77d004a2d9ea7ad411f97e2ac3426f584d035ae095e4e29c6c6009",
+      "bytes": 24386,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/learning/course-builder-copy.test.ts",
+      "candidateSha256": "9d82bdadbc8f52ae88b5f581daac79f0a2622f70bae8a8894ce6a1c6475b8bb9",
+      "bytes": 7873,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/learning/course-upgrade-copy.test.ts",
+      "candidateSha256": "00ed4e52c2e40e34d234fb1ac7306f7f9a090e470e5a3657e64513187e2476d4",
+      "bytes": 11906,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/learning/studio-course-history-lookup.ts",
+      "candidateSha256": "b2dfb4e8043325ab860d068fe091b9f8ee4fb881efb0a8cf1699c71c3b92c67d",
+      "bytes": 2176,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/learning/textbook-teaching-course-fixture.ts",
+      "candidateSha256": "9165b8f0940f9937f3a0286f0ef8b33282d94a218dac82f978884fd1c6655372",
+      "bytes": 5087,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/learning/textbook-teaching-course-history-native.ts",
+      "candidateSha256": "d1614ea670a558d395c62b42b6263613032f2219dee9c3c86308d5e146d98c90",
+      "bytes": 7516,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/learning/textbook-teaching-course-history.test.ts",
+      "candidateSha256": "f45e6b0785ff30b2781618a34fb17150bc33ee48ed1835f64be5d791676ba35b",
+      "bytes": 10466,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/learning/textbook-teaching-course-history.ts",
+      "candidateSha256": "da1b11860cd44d62e28e7631b9662b619ef9039d88463f56f6cf1e2a881375ec",
+      "bytes": 12022,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts",
+      "candidateSha256": "335c591b2397a4cdfeefd8d8cf028c76090597554568e1f72dfb63e44cdd8f24",
+      "bytes": 28957,
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts",
+      "candidateSha256": "7f9d8e8e8cf84bcf9ed4ad5706c139cab6dbc4c54f159265c18ca9ea522bfd31",
+      "bytes": 41465,
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/learning/textbook-teaching-course.service.ts",
+      "candidateSha256": "d7b065155866be3568fdcfd477cd2f779fd553be4f54fed439a9960198fb84f7",
+      "bytes": 28415,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/learning/textbook-teaching-course.test.ts",
+      "candidateSha256": "be26f1243e7c71ca3bb6bf7442bd52e62d3d8644c530177e00442a1b2225c04f",
+      "bytes": 6451,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/learning/textbook-teaching-course.ts",
+      "candidateSha256": "d5fc2bd72b007dde20d75255546f2008b81968f7c181941aea19ce971ee01c4b",
+      "bytes": 7662,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/AGENTS.md",
+      "candidateSha256": "063098f6cb31bb44c6f8fbea25b3876de7ee1e5f7d00a50dbab506f6415eb7f0",
+      "bytes": 679,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/app/admin/curriculum/reference-source-panel.tsx",
+      "candidateSha256": "09b98f0bb3071715ce0259a78a678380d85bf44af9291a45bc13c01351a909ff",
+      "bytes": 3943,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/app/admin/curriculum/teaching-package-content.tsx",
+      "candidateSha256": "5bf66bbe8822a320b076eb89a3873c86c290c0e90fe3629d9ebbeda76a7cae70",
+      "bytes": 23966,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/app/admin/curriculum/teaching-package-workspace.tsx",
+      "candidateSha256": "300ce43b8f725bcc4114012742248de48f17e72a562a0dc9fdc04af7e85511d9",
+      "bytes": 24457,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/app/admin/curriculum/teaching-package.css",
+      "candidateSha256": "d7d37d106cccd9c00eeb0453a24f62dd62e5fc50f3a62f5b71bf51d7a48f74ca",
+      "bytes": 5039,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/app/studio/course-upgrade.tsx",
+      "candidateSha256": "914b161e41dc0147a8f6cfa7e8900619cacce5b40dfd8af26faad67b24eb9f59",
+      "bytes": 9472,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/app/studio/course-workspace.tsx",
+      "candidateSha256": "5bc318ca38cfda45f693ee3e8a855a109a239b0aa218c758af9fe260fcec8832",
+      "bytes": 7212,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/app/studio/textbook-course-selector.tsx",
+      "candidateSha256": "0cfdf9abc976538a8745df00c869d9a41ad0bcbbbc219fb78759f8986163c97e",
+      "bytes": 6492,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/course-builder-client.ts",
+      "candidateSha256": "07645fada58d57b006c15bffd7c5c762cc7c7294ce5f1e14ea2ade3460fe8c08",
+      "bytes": 4988,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/course-builder-copy.ts",
+      "candidateSha256": "6f8d488211a368210650a1a771907f195a438a7d760cba1ac631ae8eca523aeb",
+      "bytes": 9746,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/course-builder-local.ts",
+      "candidateSha256": "cccc2554772b44fa4ed7dfb9fe88c12fb4be13b78ef46fa9dfa30ccf4cc72525",
+      "bytes": 8061,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/course-upgrade-client.ts",
+      "candidateSha256": "7e93a9f7825a1da4eb415716954b0f357075085b38278940aa95b2332df4f106",
+      "bytes": 8460,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/course-upgrade-copy.ts",
+      "candidateSha256": "582d58fe52f1b55faae8085c120c95d088082807e3d19bd6bba6b1714d02de56",
+      "bytes": 9482,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/course-upgrade-local.ts",
+      "candidateSha256": "fc976298853225ef6c9c8a0b83989fb3d5a3500f66e179cbaaa8c66a614317f6",
+      "bytes": 8104,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/course-version-navigation.ts",
+      "candidateSha256": "32e0cae3eb3ea58f885959abcb6e0904ea0b821488e013e94b765b268cd34692",
+      "bytes": 1349,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/teaching-editor-client.ts",
+      "candidateSha256": "51251f607485543b65e52c86c5d0107b5048200a1cd8c0f33605bf83ae67c8f7",
+      "bytes": 5530,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/teaching-editor-copy.ts",
+      "candidateSha256": "04c4a1db802635f3d57abc4f33434da9d1b7ad1fa94187067a6d32b851d11168",
+      "bytes": 12258,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/teaching-editor-local.ts",
+      "candidateSha256": "9dd61b2e3b182355ba678a6ee9286eac87a5cd1e8d22e2040b1cd7d59c7dd13d",
+      "bytes": 8255,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/teaching-editor-read.ts",
+      "candidateSha256": "0756226919a0edea773066ef211a48bec93702429dd6d627397725b81af322d5",
+      "bytes": 10582,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/teaching-editor-state.ts",
+      "candidateSha256": "b9eaa13eef5b0239c3fff14afdb04753f66cbacc1f6997c8865ba91e30d6ea4f",
+      "bytes": 3756,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/teaching-practice-navigation.ts",
+      "candidateSha256": "15d3d882d07840ee682260682b51018ac911c4497712643864d2769a0bbb8e24",
+      "bytes": 2454,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/use-course-builder-workspace.ts",
+      "candidateSha256": "922b63aec5e2488fac2ae15b15a0180e98b3badd2a64c702510995e241ea7dbc",
+      "bytes": 17762,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/use-course-upgrade-workspace.ts",
+      "candidateSha256": "bc1f963172954c7854fad4b9a0bba1374e38bb4596a25bf15931f2ba23bb3ba9",
+      "bytes": 19968,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/use-teaching-editor-workspace.ts",
+      "candidateSha256": "2f0c81190c95c30ded882af8b8062bb68bcb472640a07a52580df549e68350af",
+      "bytes": 30874,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_AMS-Regular.woff2",
+      "candidateSha256": "0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308",
+      "bytes": 28076,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Caligraphic-Bold.woff2",
+      "candidateSha256": "de7701e42cf1f4cf0b766c03fb27977207eee2f4fd5d76fa82188406da43ea4c",
+      "bytes": 6912,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Caligraphic-Regular.woff2",
+      "candidateSha256": "5d53e70ad607c2352162dec9e0923fb54ecdafaccbf604cd8dcf7d00facb989b",
+      "bytes": 6908,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Fraktur-Bold.woff2",
+      "candidateSha256": "74444efd593c005e3f4573b44524704c0af0a937fe911cca9e94068d0d140d3f",
+      "bytes": 11348,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Fraktur-Regular.woff2",
+      "candidateSha256": "51814d270d06ff0255dba0799994fa4d8c84d11f09951d47595f4abb1f3602dc",
+      "bytes": 11316,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Main-Bold.woff2",
+      "candidateSha256": "0f60d1b897938ec918c8ce073092411baf9438f6739465693ff18b0f9d20b021",
+      "bytes": 25324,
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Main-BoldItalic.woff2",
+      "candidateSha256": "99cd42a3c072d918f2f44984a807cf7aa16e13545fd0875fc07c6c65f99e715b",
+      "bytes": 16780,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Main-Italic.woff2",
+      "candidateSha256": "97479ca6cce906abc961ecac96faa5f9ca2e61b8e7670d475826bcdee9a7c267",
+      "bytes": 16988,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Main-Regular.woff2",
+      "candidateSha256": "c2342cd8b869e01752a9321dc17213fc40d4d04c79688c1d43f2cf316abd7866",
+      "bytes": 26272,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Math-BoldItalic.woff2",
+      "candidateSha256": "dc47344dbb6cb5b655c8460d561f4df5f501b90c804ad3c6cec65fe322351ab1",
+      "bytes": 16400,
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Math-Italic.woff2",
+      "candidateSha256": "7af58c5ec8f132a2ddde9027c6d7814decce4d3b822a11192a42a20e2e973264",
+      "bytes": 16440,
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_SansSerif-Bold.woff2",
+      "candidateSha256": "e99ae51144bf1232efcc1bfe5add36262c6866b0faab24fa75740e1b98577a62",
+      "bytes": 12216,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_SansSerif-Italic.woff2",
+      "candidateSha256": "00b26ac825e2095056396e0553b8ac26d3f8ad158c3826e28b4c45b385c4714a",
+      "bytes": 12028,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_SansSerif-Regular.woff2",
+      "candidateSha256": "68e8c73ef42afd3ccec58bf0fba302cce448938e7fc020a5e31f8a952eee1342",
+      "bytes": 10344,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Script-Regular.woff2",
+      "candidateSha256": "036d4e95149b69ff9bcc0cd55771efeb25ffa3947293e69acd78d5ac328c684b",
+      "bytes": 9644,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Size1-Regular.woff2",
+      "candidateSha256": "6b47c40166b6dbe21a5dfca7718413f2147fd2399be1ba605d8ad39cedf25dfe",
+      "bytes": 5468,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Size2-Regular.woff2",
+      "candidateSha256": "d04c54219f9eaec6d4d4fd42dfb28785975a4794d6b2fc71e566b9cd6db842dd",
+      "bytes": 5208,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Size3-Regular.woff2",
+      "candidateSha256": "73d591271b1604960cb10bb90fee021670af7297017e0e98480b332d11f51995",
+      "bytes": 3624,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Size4-Regular.woff2",
+      "candidateSha256": "a4af7d414440a1c1790825cfb700cf9cf43b0f2c4b04f0ebc523011ad9853ec0",
+      "bytes": 4928,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Typewriter-Regular.woff2",
+      "candidateSha256": "71d517d67827787cfabdf186914cc3358eda539e37931941f2b2fd4a21f68c0b",
+      "bytes": 13568,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/LICENSE.txt",
+      "candidateSha256": "3caebd18611959ca725ab976a004d408017eb1d7093d6c9b9b09c5a4790eaff8",
+      "bytes": 1099,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/manifest.json",
+      "candidateSha256": "f1c62381ca8c2f743f5eb1947fe35b4f281a879f75054938b8268e605223a798",
+      "bytes": 3433,
+      "candidateCrlf": false
+    },
+    {
+      "path": "packages/contracts/src/studio-course-history.ts",
+      "candidateSha256": "0b40af5e47c0e29528c1684ff2c997d119ac38e77227b2b1fcfaa5ddb08bf5e8",
+      "bytes": 4910,
+      "candidateCrlf": false
+    },
+    {
+      "path": "packages/contracts/src/textbook-teaching.ts",
+      "candidateSha256": "fc8b5a7e3ca6dc4fc62845c229a45287e55cf3524b2b7827afa54ab55c3d0b8f",
+      "bytes": 19724,
+      "candidateCrlf": false
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-daqingshu-objectives-v1.json",
+      "candidateSha256": "c0aff9078b7d871e20749f9fac73eb08fa7d109d46c6a8e5472daf6a47909287",
+      "bytes": 4147,
+      "candidateCrlf": false
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-daqingshu-v1.json",
+      "candidateSha256": "2b35c967cd885c234da4ca46d38e39a65e9849f542125b67a1b1a2bddd2918f0",
+      "bytes": 23803,
+      "candidateCrlf": false
+    },
+    {
+      "path": "resources/curriculum/textbook-edition-conformities-v1.json",
+      "candidateSha256": "a169ac0b33832d87121ccebbacf21d914fcc7ae592123b63113278203d49b05a",
+      "bytes": 21982,
+      "candidateCrlf": false
+    },
+    {
+      "path": "tests/e2e/teaching-plan-verification.spec.ts",
+      "candidateSha256": "71ae3cfd0a382e9de59acc8b6a856a711aecaee17c1d82a8113f19f35c4c938d",
+      "bytes": 2186,
+      "candidateCrlf": false
+    }
+  ],
+  "missing": [
+    "resources/compatibility/course-history-schema33-reader-v1.receipt.json",
+    "resources/compatibility/early-schema33-five-collections-reader-v1.json.gz",
+    "resources/compatibility/early-schema33-four-collections-reader-v1.json.gz",
+    "resources/compatibility/early-schema33-readers.md"
+  ],
+  "summary": {
+    "changed": {
+      "apps/api/src": 31,
+      "apps/web/app": 10,
+      "apps/web/components": 2,
+      "apps/web/lib": 1,
+      "packages/contracts/src": 5,
+      "resources/curriculum/textbook-mapping-candidates-v1.json": 1,
+      "resources/curriculum/textbooks-v1.json": 1,
+      "scripts/operations/assistant-practice-integrity.cjs": 1,
+      "scripts/operations/database-reader-guard.cjs": 1,
+      "scripts/operations/privacy-ledger.cjs": 1,
+      "scripts/qa/source-course-test-api.cjs": 1,
+      "tests/e2e/classroom-boards.spec.ts": 1,
+      "tests/e2e/course-builder.spec.ts": 1,
+      "tests/e2e/product-smoke.spec.ts": 1,
+      "tests/e2e/source-course-project.spec.ts": 1,
+      "tests/e2e/studio.spec.ts": 1,
+      "tests/e2e/workspace.spec.ts": 1
+    },
+    "added": {
+      "apps/api/src": 55,
+      "apps/web/AGENTS.md": 1,
+      "apps/web/app": 7,
+      "apps/web/lib": 16,
+      "apps/web/public": 22,
+      "packages/contracts/src": 2,
+      "resources/curriculum/source-lessons": 2,
+      "resources/curriculum/textbook-edition-conformities-v1.json": 1,
+      "tests/e2e/teaching-plan-verification.spec.ts": 1
+    },
+    "missing": {
+      "resources/compatibility/course-history-schema33-reader-v1.receipt.json": 1,
+      "resources/compatibility/early-schema33-five-collections-reader-v1.json.gz": 1,
+      "resources/compatibility/early-schema33-four-collections-reader-v1.json.gz": 1,
+      "resources/compatibility/early-schema33-readers.md": 1
+    },
+    "eolOnly": 0
+  }
+}

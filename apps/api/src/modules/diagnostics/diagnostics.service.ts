@@ -20,8 +20,8 @@ import { gradeResponse } from './scoring';
 import { prepareScoringReview } from './scoring-review';
 import { StudentMediaService } from '../student-media/student-media.service';
 import { mediaModeAvailable } from '../student-media/media-normalization';
-import { atomDefinitionFingerprint, compatibleDefinitionEvidence } from './measurement-definition';
-import { blueprintContentHash, selectBlueprintItems } from './assessment-blueprint';
+import { atomDefinitionFingerprint, compatibleDefinitionEvidence, questionContentFingerprint } from './measurement-definition';
+import { blueprintContentHash, publicAssessmentBlueprint, selectBlueprintItems } from './assessment-blueprint';
 import { advanceRouting, initializeRouting, routedItemAvailable, routedItems } from './adaptive-routing';
 import { observedPerformance } from './observations';
 import { componentObservations } from './component-observations';
@@ -36,6 +36,7 @@ import { evaluateControlledContrasts } from './controlled-contrast-result';
 import { deriveControlledCause } from './controlled-cause-lifecycle';
 import { controlledActorIdentity } from './controlled-actor-identity';
 import { retentionDigest } from './retention-anchor';
+import { currentTeachingPractice, teachingPracticePacket, teachingPracticeQuestionSnapshot } from './textbook-teaching-practice';
 
 @Injectable()
 export class DiagnosticsService {
@@ -43,10 +44,10 @@ export class DiagnosticsService {
     private readonly curriculum: CurriculumService, private readonly workspace: QuestionWorkspaceService,
     private readonly events: DomainEventBusService, private readonly media: StudentMediaService,private readonly retention:RetentionService) {}
 
-  private controlledChild(user: InMemoryUserAccount, session: DiagnosticSession) {
-    if (!controlledSessionOf(session)) return;
+  private assertIndependentChild(user: InMemoryUserAccount, session: DiagnosticSession) {
+    if (!controlledSessionOf(session) && !session.teachingOrigin) return;
     const actual = this.store.find('users', { id: user.id, status: 'active', role: 'student' });
-    if (!actual || user.role !== 'student' || !this.store.find('students', { id: session.studentId, userId: actual.id })) throw new ForbiddenException('这组成对任务请由孩子本人通过学习码作答');
+    if (!actual || user.role !== 'student' || !this.store.find('students', { id: session.studentId, userId: actual.id })) throw new ForbiddenException(session.teachingOrigin ? '本课独立检查请由孩子本人通过学习码作答' : '这组成对任务请由孩子本人通过学习码作答');
   }
   private controlledItem(session: DiagnosticSession, itemId: string) {
     if (!controlledSessionOf(session)) return;
@@ -104,11 +105,24 @@ export class DiagnosticsService {
     if(review&&plan){const readiness=this.retention.reviewReadiness(review,{status:plan.status},this.requireSession(user,plan.baselineSessionId),this.effectiveResponses(command.studentId,command.subject));if(!readiness.canStart)throw new BadRequestException(readiness.notice+' 最早时间：'+readiness.earliestAt);}
     const scope = plan ? this.requireSession(user, plan.baselineSessionId).scopeSnapshot : scopeOverride ?? this.curriculum.getScope(user, command.studentId, command.subject);
     if (!scope) throw new BadRequestException('请先确认年级、教材和已学范围，再开始评测');
+    const baselineOrigin = plan ? this.requireSession(user, plan.baselineSessionId).teachingOrigin : undefined,
+      teachingOrigin = command.teachingOrigin ?? baselineOrigin;
+    if (teachingOrigin && command.intent === 'retest' && (!review || !plan)) throw new BadRequestException('本课保持核查请从原指导计划的到期复测任务开始');
+    if (teachingOrigin && (!['unit', 'verification', 'retest'].includes(command.intent) || command.includePrerequisites || command.hypothesisId ||
+        plan && blueprintContentHash(teachingOrigin) !== blueprintContentHash(baselineOrigin)))
+      throw new BadRequestException('本课独立检查沿用完整原目标；原因对照请从原报告另行安排');
+    let teaching: ReturnType<typeof currentTeachingPractice> | undefined;
+    if (teachingOrigin) {
+      try { const currentScope = this.curriculum.getScope(user, command.studentId, command.subject);
+        if (!currentScope) throw Error('请先重新核对本课的当前学习范围');
+        teaching = currentTeachingPractice(this.store, teachingOrigin, command.studentId, command.subject, currentScope, command.intent === 'retest'); }
+      catch (cause) { throw new ConflictException(cause instanceof Error ? cause.message : '原教学材料资格已改变，请返回原课程核对'); }
+    }
     const learned = new Set(scope.learnedAtomIds);
     const prerequisites = new Set(this.curriculum.prerequisiteClosure(scope.learnedAtomIds));
     const allowed = new Set([...learned, ...(command.includePrerequisites ? prerequisites : [])]);
     let targets = command.targetAtomIds ?? (review ? [review.atomId] : plan ? plan.actions.map(a => a.atomId) :
-      command.intent === 'micro' ? [scope.currentAtomId ?? scope.learnedAtomIds.at(-1)!] : scope.learnedAtomIds);
+      teaching ? teaching.record.qualification.targets.map(target => target.atomId) : command.intent === 'micro' ? [scope.currentAtomId ?? scope.learnedAtomIds.at(-1)!] : scope.learnedAtomIds);
     if (command.intent === 'micro' && targets.length > 3) throw new BadRequestException('微测最多选择3个知识目标；扩大范围时请选择单元或阶段评测');
     let hypothesis: DiagnosticHypothesis | undefined, specification: DiagnosticVerificationBlueprint | undefined;
     if (command.hypothesisId) {
@@ -131,6 +145,9 @@ export class DiagnosticsService {
       if (targets.some((id) => !hypothesisAtoms.has(id))) throw new BadRequestException('验证点超出当前假设的对照范围');
     }
     targets = [...new Set(targets)];
+    if (teaching && (targets.some(id => !teaching!.record.qualification.targets.some(target => target.atomId === id)) ||
+        !plan && command.intent !== 'retest' && blueprintContentHash(targets) !== blueprintContentHash(teaching.record.qualification.targets.map(target => target.atomId))))
+      throw new BadRequestException('请完整保留本课全部教学目标，单次题量不足的内容会列出覆盖缺口');
     if (review && (targets.length !== 1 || targets[0] !== review.atomId)) throw new BadRequestException('本次复测只针对安排中的知识目标');
     if (plan && targets.some(id => !plan.actions.some(a => a.atomId === id))) throw new BadRequestException('验证目标不属于当前指导计划');
     if (!targets.length || targets.some((id) => !allowed.has(id))) throw new BadRequestException('评测知识点超出已确认的学习进度');
@@ -144,22 +161,42 @@ export class DiagnosticsService {
       ...originalPaperExposure(this.store, command.studentId),
     ]);
     const atomMap = new Map(this.store.inspect('knowledgeAtoms').map((item) => [item.id, item]));
+    const teachingMaterials = teaching ? new Set(teaching.materials.map(material => material.measurementId)) : undefined;
     const candidates = eligibleMeasurements(this.store, [...targetSet]).filter((item) => {
       const atom = atomMap.get(item.atomId);
       return targetSet.has(item.atomId) && atom?.subject === scope.subject && atom.grade <= scope.grade &&
-        (!['verification', 'retest'].includes(command.intent) || !seen.has(item.questionId));
+        (!teachingMaterials || teachingMaterials.has(item.id)) && (!(teaching || ['verification', 'retest'].includes(command.intent)) || !seen.has(item.questionId));
     });
-    const coverage = [...targetSet].map((atomId) => ({ atomId, selected: 0, required: 2,
+    const coverage: DiagnosticSession['coverage'] = [...targetSet].map((atomId) => ({ atomId, selected: 0, required: 2,
       role: (hypothesis ? atomId === hypothesis.atomId ? 'target' : 'prerequisite' : targets.includes(atomId) ? 'target' : 'prerequisite') as 'target' | 'prerequisite' }));
     const { selected, blueprint } = selectBlueprintItems(command, candidates, coverage, seed, seen, scope.minutesPerSession, scope.grade, specification);
+    if (teaching) {
+      blueprint.title = command.intent === 'retest' ? '本课到期新题核查' : '本课独立检查';
+      blueprint.focus = '使用本课准确采用的原材料，逐目标保留本次安排与缺口。已接触的题目不会作为独立新题。';
+      blueprint.teachingCoverage = targets.flatMap(atomId => (command.intent === 'retest' ? ['retention'] as const : ['understanding', 'procedure', 'transfer'] as const).map(purpose => {
+        const refs = new Set(teaching!.checks.filter(check => check.atomId === atomId && check.purpose === purpose).flatMap(check => check.materials.map(material => material.measurementId))),
+          available = candidates.filter(item => refs.has(item.id)).length, count = selected.filter(item => refs.has(item.id)).length, required = purpose === 'transfer' || purpose === 'retention' ? 2 : 1;
+        return { atomId, purpose, selected: count, required, available, ...(count < required ? { missingReason: available < required ? '原材料中的未曝光题族不足，请补充审核材料后再核对。' : '受本次题量或时间预算限制，其余目标继续保留待核查。' } : {}) };
+      }));
+      for (const point of coverage) {
+        const rows = blueprint.teachingCoverage.filter(row => row.atomId === point.atomId); point.required = rows.reduce((sum, row) => sum + row.required, 0);
+        point.missingReason = rows.find(row => row.missingReason)?.missingReason;
+      }
+      if (blueprint.teachingCoverage.some(row => row.missingReason)) blueprint.warnings.push('本课还有检查目的尚未完整安排，请逐目标查看缺口；完成当前题组不能代替其余内容或真实到期保持核查。');
+    }
     if (!selected.length && !allowEmpty) throw new BadRequestException({ message: '当前范围缺少审核通过的量化题，请查看覆盖缺口或调整已学范围',
       missingAtomIds: targets, code: 'assessment_coverage_gap' });
     const session: DiagnosticSession = {
       id: this.store.nextId('diagnostic'), studentId: command.studentId, subject: command.subject, intent: command.intent,
-      status: 'in_progress', revision: 1, blueprint, scopeSnapshot: structuredClone(scope), itemIds: selected.map((item) => item.id), itemSnapshots: selected,
+      status: 'in_progress', revision: 1, blueprint, scopeSnapshot: structuredClone(scope), itemIds: selected.map((item) => item.id),
+      // Legacy approved mappings can lack a stored digest. Freeze the verified full packet
+      // for this adopted session; the old mapping and its approval remain unchanged.
+      itemSnapshots: teachingOrigin ? selected.map(item => ({ ...item, contentFingerprint: item.contentFingerprint ?? questionContentFingerprint(this.store, item.questionId) })) : selected,
       atomSnapshots: structuredClone(this.store.select('knowledgeAtoms', { id: [...new Set([...scope.learnedAtomIds, ...targetSet])] })),
       componentAtomSnapshots: structuredClone(this.store.select('knowledgeAtoms', { id: [...new Set(selected.flatMap(item => item.componentBindings?.map(binding => binding.atomId) ?? []))] })),
+      ...(teachingOrigin ? { teachingOrigin: structuredClone(teachingOrigin), teachingPackets: selected.map(item => teachingPracticePacket(this.store, item.questionId)) } : {}),
       questionSnapshots: selected.map((item) => {
+        if (teachingOrigin) return teachingPracticeQuestionSnapshot(teachingPracticePacket(this.store, item.questionId));
         const question = this.store.find('questions', { id: item.questionId })!;
         const payload = this.workspace.buildRenderPayload(question.id);
         return structuredClone({ id: question.id, stem: question.stem, answer: question.answer, analysis: question.analysis,
@@ -195,7 +232,8 @@ export class DiagnosticsService {
   private blueprintFingerprint(session: DiagnosticSession) {
     return blueprintContentHash({ scope: session.scopeSnapshot, atoms: session.atomSnapshots, componentAtoms: session.componentAtomSnapshots,
       items: session.itemSnapshots, questions: session.questionSnapshots, coverage: session.coverage,
-      blueprint: session.blueprint, exposed: session.exposedQuestionIds, planRevision: session.planRevision, hypothesisId: session.hypothesisId });
+      blueprint: session.blueprint, exposed: session.exposedQuestionIds, planRevision: session.planRevision, hypothesisId: session.hypothesisId,
+      ...(session.teachingOrigin ? { teachingOrigin: session.teachingOrigin, teachingPackets: session.teachingPackets } : {}) });
   }
 
   previewBlueprint(user: InMemoryUserAccount, input: unknown): DiagnosticBlueprintView {
@@ -214,7 +252,8 @@ export class DiagnosticsService {
     const reservation: DiagnosticBlueprintReservation = { id, studentId: draft.studentId, actorId: user.id, command, seed,
       fingerprint: this.blueprintFingerprint(draft), createdAt, expiresAt: new Date(Date.now() + 30 * 60_000).toISOString(), sessionId: null, requestHash,
       blueprint: draft.blueprint!, scopeSnapshot: draft.scopeSnapshot, coverage: draft.coverage,
-      atomNames: draft.atomSnapshots!.filter(atom => draft.coverage.some(point => point.atomId === atom.id)).map(atom => ({ id: atom.id, name: atom.name })), itemCount: draft.itemIds.length };
+      atomNames: draft.atomSnapshots!.filter(atom => draft.coverage.some(point => point.atomId === atom.id)).map(atom => ({ id: atom.id, name: atom.name })), itemCount: draft.itemIds.length,
+      ...(draft.teachingOrigin ? { teachingOrigin: structuredClone(draft.teachingOrigin) } : {}) };
     this.store.append('diagnosticBlueprints', reservation);
     return this.blueprintView(user, reservation);
   }
@@ -229,7 +268,7 @@ export class DiagnosticsService {
     const { actorId: _actor, command: _command, seed: _seed, fingerprint: _fingerprint, requestHash: _requestHash, paperReviewOrigin, ...view } = reservation;
     const origin = paperReviewOrigin ? { sessionId: paperReviewOrigin.sessionId, itemId: paperReviewOrigin.itemId, atomId: paperReviewOrigin.atomId, createdAt: paperReviewOrigin.createdAt } : undefined;
     const expired = Date.parse(reservation.expiresAt) <= Date.now();
-    return { ...view, ...(origin ? { paperReviewOrigin: origin } : {}), expired, canStart: !!reservation.sessionId || reservation.itemCount > 0 && !expired };
+    return { ...view, blueprint: publicAssessmentBlueprint(view.blueprint, view.coverage), ...(origin ? { paperReviewOrigin: origin } : {}), expired, canStart: !!reservation.sessionId || reservation.itemCount > 0 && !expired };
   }
   getBlueprint(user: InMemoryUserAccount, id: string) { return this.blueprintView(user, this.requireBlueprint(user, id)); }
   startBlueprint(user: InMemoryUserAccount, id: string) {
@@ -288,9 +327,10 @@ export class DiagnosticsService {
       ...(controlled ? { controlled: { protocol:'controlled-cause-session-v1', feedbackHeld:controlledFeedbackHeld(controlled),
         evidencePurpose:'controlled_cause_observation', notice:'本组成对任务按原顺序完成，结束后再核对评分；两侧不增加普通掌握或保持样本。' } } : {}),
       ...(originVisible ? { paperReviewOrigin: session.paperReviewOrigin } : {}),
+      ...(session.teachingOrigin ? { teachingOrigin: structuredClone(session.teachingOrigin) } : {}),
       status: session.status, scopeSnapshot: session.scopeSnapshot, coverage: session.coverage,
       startedAt: session.startedAt, completedAt: session.completedAt, endedAt: session.endedAt ?? null,
-      revision: session.revision ?? 1, blueprint: session.blueprint,
+      revision: session.revision ?? 1, blueprint: publicAssessmentBlueprint(session.blueprint, session.coverage),
       routing: session.routing ? { version: session.routing.version, mode: 'adaptive', currentItemId: session.routing.currentItemId,
         notice: '本组根据刚才的作答逐步选择核查顺序；题量和范围沿用开始前的确认，不即时判定深层原因。',
         decisions: ['completed', 'aborted'].includes(session.status) ? session.routing.decisions : undefined } : null,
@@ -371,7 +411,7 @@ export class DiagnosticsService {
 
   saveDraft(user: InMemoryUserAccount, sessionId: string, itemId: string, input: unknown) {
     const session = this.requireSession(user, sessionId);
-    this.controlledChild(user, session); this.controlledItem(session, itemId);
+    this.assertIndependentChild(user, session); this.controlledItem(session, itemId);
     const command = validate(answerDraftSaveSchema, input);
     if (session.status !== 'in_progress' || !session.itemIds.includes(itemId) || session.routing && session.routing.currentItemId !== itemId || Boolean(this.store.find('diagnosticResponses', { sessionId: sessionId, itemId: itemId }))) {
       throw new BadRequestException('只能保存尚未提交的当前评测题目');
@@ -391,9 +431,9 @@ export class DiagnosticsService {
   submit(user: InMemoryUserAccount, sessionId: string, input: unknown) {
     const command = validate(diagnosticResponseInputSchema, input);
     const session = this.requireSession(user, sessionId);
-    this.controlledChild(user, session);
+    this.assertIndependentChild(user, session);
     const controlled = controlledSessionOf(session);
-    if (controlled && (!command.requestKey || !command.draftFence || retentionDigest(command) !== retentionDigest(input))) throw new ConflictException('请保留完整的本人首答命令与原草稿身份');
+    if ((controlled || session.teachingOrigin) && (!command.requestKey || !command.draftFence || retentionDigest(command) !== retentionDigest(input))) throw new ConflictException('请保留完整的本人首答命令与原草稿身份');
     const mapping = session.itemSnapshots.find((item) => item.id === command.itemId);
     if (!mapping) throw new BadRequestException('题目不属于当前评测');
     if (command.draftFence && !command.requestKey) throw new BadRequestException('恢复作答需要完整的提交标识');
@@ -457,7 +497,7 @@ export class DiagnosticsService {
 
   hint(user: InMemoryUserAccount, sessionId: string, itemId: string) {
     const session = this.requireSession(user, sessionId);
-    this.controlledChild(user, session); this.controlledItem(session, itemId);
+    this.assertIndependentChild(user, session); this.controlledItem(session, itemId);
     if (session.status !== 'in_progress' || session.routing && session.routing.currentItemId !== itemId || Boolean(this.store.find('diagnosticResponses', { sessionId: sessionId, itemId: itemId }))) throw new BadRequestException('只能获取尚未提交的当前核查题提示');
     const mapping = session.itemSnapshots.find((item) => item.id === itemId);
     if (!mapping) throw new NotFoundException('题目不存在');
@@ -472,7 +512,7 @@ export class DiagnosticsService {
 
   complete(user: InMemoryUserAccount, sessionId: string) {
     const session = this.requireSession(user, sessionId);
-    this.controlledChild(user, session);
+    this.assertIndependentChild(user, session);
     if (session.status === 'completed') return this.report(user, sessionId);
     if (session.status !== 'in_progress') throw new BadRequestException('请先恢复进行中的评测；已结束评测保留原始证据');
     const answered = new Set(this.store.select('diagnosticResponses', { sessionId: sessionId }).map((item) => item.itemId));

@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-01T13:35:01.537Z",
+  "label": "fixes-focused-browser-first",
+  "executed": {
+    "status": 1,
+    "error": null
+  },
+  "discovered": 13,
+  "files": 8,
+  "stats": {
+    "startTime": "2026-11-01T13:28:26.194Z",
+    "duration": 392213.932,
+    "expected": 11,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  },
+  "errors": [],
+  "sourceAndCompiledInputs": 0,
+  "testAndFixtureInputs": 1800,
+  "changedDuringRun": [],
+  "buildId": "T26Tgryj3FiyoTt2Sgrko",
+  "actualLiveModelTests": false,
+  "engineeringQaOnly": true,
+  "wholeGoal": "active"
+}

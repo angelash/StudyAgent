@@ -4,6 +4,8 @@ import type { ClassroomRetentionContext } from './classroom-retention-record';
 import { atomDefinitionFingerprint } from './measurement-definition';
 import { classroomFingerprint,curriculumClassroomLesson } from '../learning/classroom-curriculum';
 import { retentionDigest } from './retention-anchor';
+import { assertAdoptedTeachingLesson } from './textbook-teaching-adoption';
+import { courseAuthoredFingerprint } from '../learning/studio-course-history-lookup';
 
 export const CLASSROOM_COURSE_HISTORY_EVENTS = ['studio.course_content_corrected','studio.chemistry_tutorial_revised'];
 
@@ -12,6 +14,11 @@ export const CLASSROOM_COURSE_HISTORY_EVENTS = ['studio.course_content_corrected
  */
 function retainedStudioCourses(records:RetentionRetainedRecords,current:Record<string,any>){
  const result=[current],seen=new Set<string>(),pending=[current];
+ const history=(records.textbookTeachingCourseRevisions??[]).filter(row=>row.courseId===current.id&&row.studentId===current.studentId).sort((a,b)=>a.revision-b.revision);
+ if(history.length){
+  const valid=history.length===(current.contentRevision??0)+1&&history.every((row,index)=>{const{fingerprint,...body}=row;return row.protocol==='textbook-teaching-course-revision-v1'&&row.revision===index&&row.course?.id===current.id&&row.course?.studentId===current.studentId&&row.course?.createdAt===current.createdAt&&fingerprint===retentionDigest(body)&&(index===0?row.previousFingerprint===null:row.previousFingerprint===history[index-1].course.fingerprint);})&&courseAuthoredFingerprint(history.at(-1)!.course)===courseAuthoredFingerprint(current as StudioCourse);
+  if(valid)result.push(...history.slice(0,-1).map(row=>row.course));
+ }
  while(pending.length){
   const next=pending.shift()!;if(typeof next.fingerprint!=='string'||seen.has(next.fingerprint))continue;seen.add(next.fingerprint);
   for(const event of records.events??[]){
@@ -26,7 +33,7 @@ function retainedStudioCourses(records:RetentionRetainedRecords,current:Record<s
  return result;
 }
 
-/** The exact saved course lesson and atom version supply a target; names never do. */
+/** Exact saved teaching supplies every target; names and the first atom never do. */
 export function resolveClassroomRetentionContext(records:RetentionRetainedRecords,session:{studentId:string|null;studioCourseId?:string;sourceCourseId?:string;lessonId:string;contentFingerprint:string}):ClassroomRetentionContext|undefined{
  if(!session.studentId)return;
  const course=session.studioCourseId?records.studioCourses?.find(row=>row.id===session.studioCourseId):records.sourceCourses?.find(row=>row.id===session.sourceCourseId);
@@ -37,6 +44,15 @@ export function resolveClassroomRetentionContext(records:RetentionRetainedRecord
   for(const original of retainedStudioCourses(records,course)){
    if(!['math','chinese','english','chemistry'].includes(original.subject))continue;
    const source=original.units?.flatMap((unit:any)=>unit.lessons).find((row:any)=>row.id===session.lessonId),version=source?.teaching?.atomVersion;
+   if(source?.textbookTeaching){
+    const adoption=records.textbookTeachingAdoptions?.find(row=>row.studentId===session.studentId&&row.courseId===original.id&&row.lessonId===source.id);
+    try{
+     const {record,snapshot}=assertAdoptedTeachingLesson(adoption,original as StudioCourse,source);
+     if(classroomFingerprint(snapshot.lesson)!==session.contentFingerprint)continue;
+     matches.push(context(original.subject,record.qualification.targets.map(target=>({atomId:target.atomId,definitionFingerprint:target.definitionFingerprint}))));
+    }catch{ /* An unavailable original cannot establish a teaching target. */ }
+    continue;
+   }
    const atom=records.knowledgeAtoms?.find(row=>row.id===source?.atomId&&row.version===version)??records.curriculumRevisions?.find(row=>row.kind==='atom'&&row.entityId===source?.atomId&&row.version===version)?.snapshot;
    const lesson=source?curriculumClassroomLesson(original as StudioCourse,source):undefined;
    if(!lesson||classroomFingerprint(lesson)!==session.contentFingerprint)continue;

@@ -1,0 +1,118 @@
+{
+  "label": "fixes-focused-browser-first",
+  "stats": {
+    "startTime": "2026-11-01T13:28:26.194Z",
+    "duration": 392213.932,
+    "expected": 11,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  },
+  "rows": [
+    {
+      "file": "classroom-boards.spec.ts",
+      "line": 36,
+      "title": "text reading reveals whole points, rows and formulas; stop restores the original line and complete notes",
+      "status": "passed",
+      "durationMs": 17046,
+      "error": ""
+    },
+    {
+      "file": "classroom-boards.spec.ts",
+      "line": 52,
+      "title": "audio ended advances frozen units, abort settles a pending reader and a new reply rejects late audio",
+      "status": "passed",
+      "durationMs": 14265,
+      "error": ""
+    },
+    {
+      "file": "classroom-boards.spec.ts",
+      "line": 74,
+      "title": "recovery: complete notes, cross-page reply navigation, keyboard activation and narrow layouts remain usable",
+      "status": "passed",
+      "durationMs": 8173,
+      "error": ""
+    },
+    {
+      "file": "classroom-boards.spec.ts",
+      "line": 96,
+      "title": "untrusted table/formula text stays inert in the board, actual offline HTML, Markdown and print",
+      "status": "passed",
+      "durationMs": 8462,
+      "error": ""
+    },
+    {
+      "file": "course-builder.spec.ts",
+      "line": 29,
+      "title": "blueprint supports goal selection, review, edit and cancellation without creating a course",
+      "status": "failed",
+      "durationMs": 19194,
+      "error": "Error: expect(locator).toHaveCount(expected) failed"
+    },
+    {
+      "file": "course-builder.spec.ts",
+      "line": 48,
+      "title": "a lost confirmation response is verified from the original request and opens the same saved pace once",
+      "status": "passed",
+      "durationMs": 4571,
+      "error": ""
+    },
+    {
+      "file": "course-builder.spec.ts",
+      "line": 68,
+      "title": "changed learning scope invalidates confirmation and can be refreshed without losing the goal",
+      "status": "passed",
+      "durationMs": 3315,
+      "error": ""
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "line": 28,
+      "title": "guidance calendar: unavailable storage downloads the entire schedule command before any confirmation",
+      "status": "passed",
+      "durationMs": 5409,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 300,
+      "title": "paper review: a completed first answer leads through real reflection, actual review and the stable local-date calendar",
+      "status": "passed",
+      "durationMs": 3422,
+      "error": ""
+    },
+    {
+      "file": "product-smoke.spec.ts",
+      "line": 177,
+      "title": "an administrator can reach the curriculum review workbench",
+      "status": "failed",
+      "durationMs": 19318,
+      "error": "Error: expect(locator).toBeVisible() failed"
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "line": 90,
+      "title": "an entire adult unit retains every lesson, complete practice, unit check and all project submissions as separate facts",
+      "status": "passed",
+      "durationMs": 213261,
+      "error": ""
+    },
+    {
+      "file": "studio.spec.ts",
+      "line": 35,
+      "title": "a parent can build and reopen an evidence-backed learning studio course",
+      "status": "passed",
+      "durationMs": 48565,
+      "error": ""
+    },
+    {
+      "file": "teaching-plan-verification.spec.ts",
+      "line": 4,
+      "title": "original guidance verification: ordinary baseline retains prerequisite checks",
+      "status": "passed",
+      "durationMs": 3771,
+      "error": ""
+    }
+  ],
+  "originalPrivateResultsSha256": "395b3e4e9054f72955ee15098a068c5c284fff433787616e5abf1afc966c7f8e"
+}

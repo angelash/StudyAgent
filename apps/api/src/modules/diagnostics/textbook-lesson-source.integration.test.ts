@@ -1,3 +1,4 @@
+import { installSyntheticEditionConformities } from './textbook-edition-conformity.fixture';
 import 'reflect-metadata';
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import { NestFactory } from '@nestjs/core';
@@ -13,7 +14,7 @@ const postgres = process.env.STUDY_TEST_TEXTBOOK_SOURCE_POSTGRES_URL;
 describe('actual textbook source HTTP and native read-only state on ' + (postgres ? 'PostgreSQL' : 'SQLite'), () => {
   const candidate = resolve(process.cwd(), '../..'), qa = join(candidate, 'data/qa'); mkdirSync(qa, { recursive: true });
   const directory = mkdtempSync(join(qa, 'textbook-source-http-')), assets = join(directory, 'assets'); mkdirSync(assets);
-  const names = ['NODE_ENV', 'STUDY_STORAGE', 'STUDY_DATA_DIR', 'STUDY_WORKER_ENABLED', 'STUDY_SEED_FOUNDATION', 'DATABASE_URL', 'STUDY_ASSET_ROOT', 'TEXTBOOK_BASE_PATH', 'STUDY_TEXTBOOK_REGISTRY', 'STUDY_TEXTBOOK_SOURCE_MANIFEST', 'STUDY_PRIMARY_TEXTBOOK_SOURCE_MANIFEST', 'STUDY_TEXTBOOK_MAPPING_CANDIDATES'] as const;
+  const names = ['NODE_ENV', 'STUDY_STORAGE', 'STUDY_DATA_DIR', 'STUDY_WORKER_ENABLED', 'STUDY_SEED_FOUNDATION', 'DATABASE_URL', 'STUDY_ASSET_ROOT', 'TEXTBOOK_BASE_PATH', 'STUDY_TEXTBOOK_REGISTRY', 'STUDY_TEXTBOOK_SOURCE_MANIFEST', 'STUDY_PRIMARY_TEXTBOOK_SOURCE_MANIFEST', 'STUDY_TEXTBOOK_MAPPING_CANDIDATES', 'STUDY_TEXTBOOK_EDITION_CONFORMITIES'] as const;
   const prior = Object.fromEntries(names.map(name => [name, process.env[name]])), sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
   const load = (file: string) => require('../../../dist/apps/api/src/' + file + '.js');
   const original = Buffer.from('%PDF-1.4\nOriginal isolated source fixture\n%%EOF'), pdf = join(assets, 'book.pdf');
@@ -27,7 +28,7 @@ describe('actual textbook source HTTP and native read-only state on ' + (postgre
   }
   async function cold() { const db = new DomainDatabase(postgres ?? join(directory, 'study-agent.sqlite3')); await db.open(); try { return await db.read(); } finally { await db.close(); } }
   beforeAll(async () => {
-    if (postgres) { const url = new URL(postgres); if (url.hostname !== '127.0.0.1' || url.port !== '15453' || url.pathname !== '/study_textbook_sources') throw Error('Exact owned PostgreSQL required'); }
+    if (postgres) { const url = new URL(postgres); if (url.hostname !== '127.0.0.1' || !(url.port === '15453' && url.pathname === '/study_textbook_sources' || url.port === '15455' && /^\/study_teaching_package33_http_[a-f0-9]{32}$/.test(url.pathname))) throw Error('Exact owned PostgreSQL required'); }
     writeFileSync(pdf, original);
     const books: CurriculumBook[] = [], manifests: any[] = [], rows: any[] = [];
     for (const kind of ['valid', 'wrong-id', 'wrong-pdf', 'missing-page', 'duplicate-page', 'reordered-page', 'long-page', 'stale', 'unbound', 'duplicate']) {
@@ -45,6 +46,9 @@ describe('actual textbook source HTTP and native read-only state on ' + (postgre
     }
     const registryPath = join(directory, 'registry.json'), manifestPath = join(directory, 'manifest.json'), candidatesPath = join(directory, 'candidates.json');
     writeFileSync(registryPath, JSON.stringify({ books })); writeFileSync(manifestPath, JSON.stringify({ books: manifests })); writeFileSync(candidatesPath, JSON.stringify({ format: 'textbook-mapping-candidates-v1', sourceIdentityVersion: 'textbook-source-candidate-v1', rows }));
+    const proofIds = installSyntheticEditionConformities(directory);
+    for (const row of rows) row.editionProofFingerprint = proofIds.get(row.bookId);
+    writeFileSync(candidatesPath, JSON.stringify({ format: 'textbook-mapping-candidates-v1', sourceIdentityVersion: 'textbook-source-candidate-v1', rows }));
     Object.assign(process.env, { NODE_ENV: 'development', STUDY_STORAGE: postgres ? 'postgres' : 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false', STUDY_SEED_FOUNDATION: 'false', STUDY_ASSET_ROOT: assets, TEXTBOOK_BASE_PATH: '', STUDY_TEXTBOOK_REGISTRY: registryPath, STUDY_TEXTBOOK_SOURCE_MANIFEST: manifestPath, STUDY_PRIMARY_TEXTBOOK_SOURCE_MANIFEST: join(directory, 'not-installed.json'), STUDY_TEXTBOOK_MAPPING_CANDIDATES: candidatesPath });
     if (postgres) process.env.DATABASE_URL = postgres; else delete process.env.DATABASE_URL;
     app = await NestFactory.create(load('app.module').AppModule, { logger: false }); app.setGlobalPrefix('api'); await app.init(); store = app.get(load('infrastructure/in-memory-store.service').InMemoryStoreService); sources = app.get(load('modules/diagnostics/textbook-registry.service').TextbookRegistryService);

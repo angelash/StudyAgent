@@ -1,5 +1,6 @@
 import type { AtomTeaching, KnowledgeAtom, LearningScope, MasteryEstimate, TeachingVisual } from './diagnostics';
 import type {PaperCaptureMaterialOrigin} from './paper-capture-origin';
+import type { TextbookTeachingPublicSnapshot, TextbookTeachingCourseSelection } from './textbook-teaching';
 
 export type StudioSubject = 'chinese' | 'math' | 'english' | 'chemistry';
 export type StudioLessonKind = 'learn' | 'practice' | 'project' | 'exam';
@@ -14,6 +15,12 @@ export type StudioLesson = {
   state: StudioLessonState;
   href: string;
   teaching?: { atomVersion: number; teaching: AtomTeaching };
+  /** A textbook lesson can teach several exact goals. atomId remains only the
+   * legacy display anchor; independent practice must use the complete list. */
+  targetAtomIds?: string[];
+  textbookTeaching?: TextbookTeachingPublicSnapshot;
+  textbookTeachingLessonId?: string;
+  estimatedMinutes?: number;
 };
 
 export type StudioUnit = {
@@ -48,6 +55,10 @@ export type StudioCourse = {
   curriculumVersion?: string;
   teachingVersion?: string;
   focusAtomIds: string[];
+  teachingSelection?: TextbookTeachingCourseSelection;
+  /** Absent legacy records are revision0. Historical versions are retained by
+   * the server and are never nested inside the current public course. */
+  contentRevision?: number;
   units: StudioUnit[];
   materials: Array<{ id: string; title: string; detail: string; status: 'available' | 'needs_review' }>;
   fingerprint: string;
@@ -57,13 +68,13 @@ export type StudioCourse = {
   pace?: StudioCoursePace;
 };
 
-export type StudioCoursePreview = StudioCourse & { canCreate: boolean; warnings: string[] };
+export type StudioCoursePreview = StudioCourse & { canCreate: boolean; warnings: string[]; previewFingerprint?: string };
 
 export type StudioActivity = {
   id: string;
   studentId: string;
   subject: StudioSubject;
-  kind: 'course_created' | 'lesson_started' | 'assessment' | 'plan' | 'review' | 'memory' | 'material';
+  kind: 'course_created' | 'course_upgraded' | 'lesson_started' | 'assessment' | 'plan' | 'review' | 'memory' | 'material';
   title: string;
   detail: string;
   href: string;
@@ -73,6 +84,8 @@ export type StudioActivity = {
   referenceId?: string;
   actorId?: string;
   requestHash?: string;
+  courseFingerprint?: string;
+  courseRevision?: number;
 };
 
 export type StudioPlanSessionKind = 'learn' | 'practice' | 'transfer' | 'review';

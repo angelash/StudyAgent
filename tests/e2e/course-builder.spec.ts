@@ -45,21 +45,20 @@ test('blueprint supports goal selection, review, edit and cancellation without c
   await page.keyboard.press('Escape'); await expect(dialog).toHaveCount(0); release(); expect(await courses()).toHaveLength(0);
 });
 
-test('a lost confirmation response can be retried with the same receipt and saves the reviewed pace', async ({ page }) => {
+test('a lost confirmation response is verified from the original request and opens the same saved pace once', async ({ page }) => {
   const errors: string[] = []; page.on('pageerror', error => errors.push(error.message)); const { courses } = await fixture(page);
   await page.getByLabel('课程名称', { exact: true }).fill('网络恢复后的同一门课程'); await page.getByLabel('每次学习预算').selectOption('5');
   await page.getByRole('button', { name: '预览课程蓝图', exact: true }).click(); await expect(page.getByRole('button', { name: '确认并创建', exact: true })).toBeVisible();
   const keys: string[] = []; let lost = false;
   await page.route('**/api/learning/studio/courses', async route => {
-    const body = route.request().postDataJSON(); keys.push(body.requestKey);
+    if (route.request().method() !== 'POST') return route.continue(); const body = route.request().postDataJSON(); keys.push(body.requestKey);
     if (!lost) { lost = true; const result = await route.fetch(); expect(result.status()).toBe(201); await route.abort('failed'); }
     else await route.continue();
   });
   await page.getByRole('button', { name: '确认并创建', exact: true }).click();
-  await expect(page.getByRole('dialog').getByRole('alert')).toContainText('暂时无法连接'); expect(await courses()).toHaveLength(1);
-  await page.getByRole('button', { name: '确认并创建', exact: true }).click(); await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page.getByRole('dialog')).toHaveCount(0);
   await expect(page.getByRole('heading', { name: '网络恢复后的同一门课程', exact: true })).toBeVisible();
-  const saved = await courses(); expect(saved).toHaveLength(1); expect(keys).toHaveLength(2); expect(keys[0]).toBe(keys[1]);
+  const saved = await courses(); expect(saved).toHaveLength(1); expect(keys).toHaveLength(1);
   expect(saved[0].pace.minutesPerSession).toBe(5); expect(saved[0].pace.sessions.every((session: {minutes:number}) => session.minutes <= 5)).toBe(true);
   await page.reload(); await expect(page.locator('.ws-course-pace>summary')).toContainText('每次约 5 分钟');
   await page.locator('.ws-course-pace>summary').click(); await expect(page.locator('.ws-course-pace a').first()).toHaveAttribute('href', /studioCourseId=/);
@@ -72,7 +71,9 @@ test('changed learning scope invalidates confirmation and can be refreshed witho
   await page.getByRole('button', { name: '预览课程蓝图', exact: true }).click(); await expect(page.getByRole('button', { name: '确认并创建', exact: true })).toBeVisible();
   await scope(['core:math:fractionadd'], '蓝图范围v2'); await page.getByRole('button', { name: '确认并创建', exact: true }).click();
   await expect(page.getByRole('dialog').getByRole('alert')).toContainText('当前已确认学习范围'); expect(await courses()).toHaveLength(0);
-  await page.getByRole('button', { name: '重新核对学习范围', exact: true }).click(); await expect(page.getByRole('checkbox')).toHaveCount(1); await expect(page.getByRole('checkbox')).toBeChecked();
+  await expect(page.getByLabel('课程名称', { exact: true })).toBeEnabled();
+  await page.getByRole('button', { name: '重新核对学习范围', exact: true }).click(); await page.getByRole('button', { name: '按当前范围另开稿', exact: true }).click();
+  await expect(page.getByRole('checkbox')).toHaveCount(1); await expect(page.getByRole('checkbox')).toBeChecked();
   await expect(page.getByLabel('课程名称', { exact: true })).toHaveValue('范围变化后重新核对'); await expect(page.getByLabel('课程学习目标')).toHaveValue('保留目标，重新核对当前可用知识');
   await page.getByRole('button', { name: '预览课程蓝图', exact: true }).click(); await expect(page.getByRole('dialog')).toContainText('蓝图范围v2');
   await page.getByRole('button', { name: '确认并创建', exact: true }).click(); await expect(page.getByRole('dialog')).toHaveCount(0);

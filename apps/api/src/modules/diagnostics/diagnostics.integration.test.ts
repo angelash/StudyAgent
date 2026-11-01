@@ -107,10 +107,9 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
       const detail = await call('get', `/diagnostics/textbooks/${encodeURIComponent(book.id)}`);
       for (const chapter of detail.chapters) for (const lesson of chapter.lessons) {
         expect(lesson.atomIds).toEqual([]); expect(lesson.printedPage).toBeGreaterThan(0);
-        if (lesson.kind !== 'reference') {
-          expect(lesson.sourcePageRange.start).toBeGreaterThan(0); expect(lesson.sourcePageRange.end).toBeGreaterThanOrEqual(lesson.sourcePageRange.start);
-          expect(lesson.sourcePageRange.end).toBeLessThanOrEqual(detail.sourceDocument.pages);
-        }
+        expect(lesson.sourcePageRange).toBeUndefined();
+        expect(detail.sourceDocument).toBeNull();
+        expect(detail.sourceAvailability.status).not.toBe('matched');
         expect(lesson.mappingState).toBe(lesson.kind === 'reference' ? 'reference' : 'unmapped');
         for (const part of lesson.parts ?? []) { expect(part).not.toHaveProperty('id'); expect(part).not.toHaveProperty('atomIds'); }
       }
@@ -118,37 +117,37 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
     }
     expect(entries).toBe(558); expect(lessons).toBe(523);
     const sourceBook = (await call('get', '/diagnostics/textbooks?subject=chinese&grade=1&term=upper')).find((b: any) => b.source === 'public_catalog');
-    expect(sourceBook.sourceDocument).toMatchObject({ pages: 127 });
-    expect(sourceBook.sourceDocument.sha256).toMatch(/^[a-f0-9]{64}$/);
-    expect(JSON.stringify(sourceBook.sourceDocument)).not.toContain('data/assets');
-    if (sourceBook.sourceDocument.available) {
-      const documentPath = `/api/admin/curriculum/textbooks/${encodeURIComponent(sourceBook.id)}/document`;
+    expect(sourceBook.sourceDocument).toBeNull();
+    const editorial = await call('get', `/admin/curriculum/textbooks/${encodeURIComponent(sourceBook.id)}`, undefined, 200, admin),
+      reference = editorial.referenceSources.find((source: any) => source.id === 'chinatextbook:chinese:g1:upper');
+    expect(reference).toMatchObject({ pages: 127 }); expect(reference.sha256).toMatch(/^[a-f0-9]{64}$/);
+    expect(JSON.stringify(reference)).not.toContain('data/assets');
+    await request(app.getHttpServer()).get(`/api/admin/curriculum/textbooks/${encodeURIComponent(sourceBook.id)}/document`).set('Authorization', `Bearer ${admin.token}`).expect(409);
+    if (reference.available) {
+      const documentPath = `/api/admin/curriculum/textbooks/${encodeURIComponent(sourceBook.id)}/reference-sources/${encodeURIComponent(reference.id)}/document`;
       const range = await request(app.getHttpServer()).get(documentPath).set('Authorization', `Bearer ${admin.token}`).set('Range', 'bytes=0-7').expect(206);
       expect(range.headers['content-type']).toContain('application/pdf'); expect(range.headers['content-range']).toMatch(/^bytes 0-7\/\d+$/);
-      expect(range.headers['cache-control']).toContain('no-store'); expect(range.headers.etag).toContain(sourceBook.sourceDocument.sha256);
+      expect(range.headers['cache-control']).toContain('no-store'); expect(range.headers.etag).toContain(reference.sha256);
+      expect(range.headers['x-study-source-purpose']).toBe('reference-only');
       await request(app.getHttpServer()).get(documentPath).set('Authorization', `Bearer ${owner.token}`).expect(403);
     }
   });
 
-  it('maps complete local math and English source books without inventing lesson page offsets', async () => {
-    let mathSources = 0, englishSources = 0, sample: any;
-    for (let grade = 1; grade <= 6; grade++) for (const term of ['upper', 'lower'] as const) {
-      for (const subject of ['math', 'english'] as const) {
-        const books = await call('get', `/diagnostics/textbooks?subject=${subject}&grade=${grade}&term=${term}`);
-        const sourced = books.filter((book: any) => book.sourceDocument);
-        if (subject === 'math') mathSources += sourced.length; else englishSources += sourced.length;
-        if (!sample && subject === 'math') sample = sourced.find((book: any) => book.chapterState === 'available') ?? sourced[0];
-      }
+  it('keeps math and English originals reference-only until complete edition conformity is independently reviewed', async () => {
+    for (let grade = 1; grade <= 6; grade++) for (const term of ['upper', 'lower']) for (const subject of ['math', 'english']) {
+      const books = await call('get', `/diagnostics/textbooks?subject=${subject}&grade=${grade}&term=${term}`);
+      expect(books.filter((book: any) => book.sourceDocument)).toEqual([]);
+      expect(books.filter((book: any) => book.source !== 'original').every((book: any) => book.sourceAvailability.status !== 'matched')).toBe(true);
     }
-    expect(mathSources).toBe(113); expect(englishSources).toBe(125); expect(sample).toBeTruthy();
     const gradeThreeMath = await call('get', '/diagnostics/textbooks?subject=math&grade=3&term=upper');
-    const undatedPeopleEducation = gradeThreeMath.find((book: any) => book.source === 'public_catalog' && book.edition === '人教版');
-    const datedPeopleEducation = gradeThreeMath.find((book: any) => book.source === 'archive' && book.edition === '人教版(2024)');
-    expect(undatedPeopleEducation.sourceDocument).not.toBeNull();
-    expect(datedPeopleEducation.sourceDocument).toBeNull();
-    expect(datedPeopleEducation.sourceAvailability).toMatchObject({ status: 'version_conflict' });
-    const detail = await call('get', `/admin/curriculum/textbooks/${encodeURIComponent(sample.id)}`, undefined, 200, admin);
-    expect(detail.sourceDocument.pages).toBeGreaterThan(0); expect(detail.sourceDocument.sha256).toMatch(/^[a-f0-9]{64}$/);
+    for (const edition of ['人教版', '人教版(2024)']) {
+      const book = gradeThreeMath.find((book: any) => book.edition === edition); expect(book).toBeTruthy(); expect(book.sourceDocument).toBeNull();
+      expect(book.sourceAvailability).toMatchObject({ status: 'edition_unverified' });
+    }
+    const sample = gradeThreeMath.find((book: any) => book.source === 'public_catalog' && book.edition === '人教版'),
+      detail = await call('get', `/admin/curriculum/textbooks/${encodeURIComponent(sample.id)}`, undefined, 200, admin);
+    expect(detail.referenceSources.length).toBeGreaterThan(0);
+    expect(detail.referenceSources.every((source: any) => source.pages > 0 && /^[a-f0-9]{64}$/.test(source.sha256))).toBe(true);
     expect(detail.chapters.flatMap((chapter: any) => chapter.lessons).every((lesson: any) => lesson.sourcePageRange === undefined)).toBe(true);
   });
 

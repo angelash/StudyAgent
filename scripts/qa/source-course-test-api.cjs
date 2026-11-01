@@ -72,6 +72,6 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
   require('./classroom-caption-fixture.cjs').installCaptionFixture(app);
   require('./answer-journey-fixture.cjs').installAnswerJourneyFixture(app);
   require('./whiteboard-media-fixture.cjs').installWhiteboardMediaFixture(app);
-  app.enableCors({origin:(process.env.CORS_ORIGINS??'').split(',').filter(Boolean),credentials:true});await app.init();await app.listen(Number(process.env.API_PORT??4107),'127.0.0.1');
+  app.enableCors({origin:(process.env.CORS_ORIGINS??'').split(',').filter(Boolean),credentials:true});await app.init();await app.listen(Number(process.env.API_PORT??4107),'127.0.0.1');require('../../apps/api/dist/apps/api/src/infrastructure/http-keep-alive.js').configureProxyKeepAlive(app.getHttpServer());
   for(const signal of ['SIGTERM','SIGINT'])process.on(signal,()=>void app.close().then(()=>process.exit(0)));
 })().catch(error=>{console.error(error.message);process.exitCode=1;});

@@ -20,6 +20,10 @@ export type CurriculumBook = {
   sourceRef: string; sourceSha256: string; chapterState: 'available' | 'missing';
   chapters: CurriculumChapter[];
   catalogVersion?: string;
+  /** Explicit bibliography for an independently identified original. A course
+   * standard year is recorded separately from its publication edition. */
+  sourceEdition?: { sourceBookId: string; sourceSha256: string; publicationYear: number | null;
+    curriculumStandardYear: number | null; publicationStatement: string };
   chapterEvidence?: {
     reviewId: string; method: 'agent_visual_review'; reviewedAt: string; idScheme: 'local_toc_ids';
     sourceManifestSha256: string; metadataSha256: string; tocPageSha256s: string[]; mappingReview: 'not_reviewed';

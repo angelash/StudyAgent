@@ -53,6 +53,8 @@ test('audio ended advances frozen units, abort settles a pending reader and a ne
   await enter(page); await ask(page); const original=await page.locator('.cl-subtitle').innerText();
   await page.evaluate(()=>{const instances:any[]=[];class ControlledAudio extends EventTarget{playbackRate=1;readyState=1;duration=3;currentTime=0;onended:(()=>void)|null=null;onerror:(()=>void)|null=null;paused=true;constructor(public src:string){super();instances.push(this);}play(){this.paused=false;return Promise.resolve();}pause(){this.paused=true;}removeAttribute(name:string){if(name==='src')this.src='';}load(){}}Object.assign(window,{Audio:ControlledAudio,__replyAudios:instances});});
   const requests:any[]=[];await page.route('**/api/learning/classroom/sessions/*/narration/*',async route=>{requests.push(route.request().postDataJSON());await route.fulfill({contentType:'audio/wav',body:wav()});});
+  // Reading aloud respects the classroom mute introduced by the bounded-audio change; a learner unmutes first.
+  await page.getByRole('button',{name:'开启讲解声音',exact:true}).click();
   await page.getByRole('button',{name:'♪ 朗读这段回答',exact:true}).click(); await expect(page.locator('.cl-subtitle')).toHaveText('先固定总量。');
   await expect(board(page).locator('tbody tr')).toHaveCount(0);
   await page.evaluate(()=>(window as any).__replyAudios.at(-1).dispatchEvent(new Event('ended')));await expect(page.locator('.cl-subtitle')).toHaveText('第一种分法是十二颗分成三组。');await expect(board(page).locator('tbody tr')).toHaveCount(1);

@@ -10,6 +10,7 @@ import { paperExportDocumentBytes, PAPER_EXPORT_TASK_KIND, preparePaperExportCon
 import { reservePaperExportFile, recordPaperExportRendered, publishPaperExportFile, collectPaperExportFile } from './paper-export-file-record';
 import { preparePaperLibraryErasure } from './paper-export-privacy';
 import { assertPaperLibraryPersisted } from './paper-export-persistence';
+const { SCHEMA_VERSION: CURRENT_SCHEMA_VERSION, READY_STATE: CURRENT_READY_STATE } = require(join(__dirname, '../../../../../scripts/operations/database-reader-guard.cjs'));
 
 async function reserve(h: Awaited<ReturnType<typeof libraryDatabase>>) {
   const task = (await h.db.tasks.claim([PAPER_EXPORT_TASK_KIND], 120000))!, prepared = reservePaperExportFile(h.record, task, new Date().toISOString()), state = await h.state();
@@ -35,13 +36,13 @@ function deletion(h: Awaited<ReturnType<typeof libraryDatabase>>, student = fals
 }
 
 describe('registered SQLite paper-library transactions, real files and deletion fences', () => {
-  it('persists all original rows in schema32 and cold-reopens without rewriting them', async () => {
+  it('persists all original rows in the current schema and cold-reopens without rewriting them', async () => {
     const h = await libraryDatabase(true); try {
       const before = await h.db.read(); await h.close(); const db = new DomainDatabase(h.location); await db.open();
       try { expect(await db.read()).toEqual(before); } finally { await db.close(); }
       const raw = new DatabaseSync(h.location, { readOnly: true }); try {
-        expect(raw.prepare('SELECT MAX(version) version FROM schema_migrations').get()!.version).toBe(32);
-        expect(raw.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()!.state).toBe('ready-schema32');
+        expect(raw.prepare('SELECT MAX(version) version FROM schema_migrations').get()!.version).toBe(CURRENT_SCHEMA_VERSION);
+        expect(raw.prepare('SELECT state FROM study_restore_guard WHERE id=1').get()!.state).toBe(CURRENT_READY_STATE);
       } finally { raw.close(); }
     } finally { await h.close(); }
   });

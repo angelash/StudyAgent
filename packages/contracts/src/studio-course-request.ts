@@ -1,4 +1,12 @@
 import type { StudioSubject } from './studio';
+import { z } from 'zod';
+
+export const studioCourseDraftSchema = z.object({ studentId: z.string().min(1).max(180), subject: z.enum(['math', 'chinese', 'english', 'chemistry']),
+  focusAtomIds: z.array(z.string().min(1).max(180)).min(1).max(30).optional(), title: z.string().trim().min(3).max(180).optional(),
+  objective: z.string().trim().min(5).max(1000).optional(), minutesPerSession: z.number().int().min(5).max(60).optional() }).strict();
+export const studioCourseCreateSchema = studioCourseDraftSchema.extend({ previewFingerprint: z.string().regex(/^[a-f0-9]{64}$/), requestKey: z.string().min(8).max(180) }).strict();
+export type StudioCourseDraft = z.infer<typeof studioCourseDraftSchema>;
+export type StudioCourseCreate = z.infer<typeof studioCourseCreateSchema>;
 
 const subjects: Array<[StudioSubject, RegExp]> = [
   ['math', /数学|\bmath(?:s|ematics)?\b/i], ['chinese', /语文|\bchinese\b/i],

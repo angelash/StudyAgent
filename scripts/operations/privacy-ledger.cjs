@@ -87,8 +87,8 @@ async function applyDeletionLedger(query, ledger) {
     const retained = (store.students ?? []).filter(child => receipt.retainedStudentHashes.includes(helpers.privacyHash({ id: child.id })));
     const actor = (store.users ?? []).find(user => user.id === receipt.actorId);
     if (receipt.kind === 'account_delete' && actor &&
-      (!['parent','admin'].includes(actor.role) || helpers.privacyHash({ id: actor.id }) !== receipt.subjectHash ||
-        actor.role === 'admin' && receipt.erasedStudentHashes.length)) fail('privacy_ledger_account_identity_conflict');
+      (!['parent','admin','teacher'].includes(actor.role) || helpers.privacyHash({ id: actor.id }) !== receipt.subjectHash ||
+        actor.role !== 'parent' && receipt.erasedStudentHashes.length)) fail('privacy_ledger_account_identity_conflict');
     // Retained paper-source hashes do not establish a guardian binding.
     // Admin account closure still cannot erase a child through this ledger.
     const selected = helpers.mergeSelections(...erased.map(child => helpers.studentRecords(store, child.id)),

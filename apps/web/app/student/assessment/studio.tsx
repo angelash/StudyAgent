@@ -4,7 +4,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import type { AnswerDraftState, GuidancePlanView, DiagnosticHypothesis, DiagnosticReport, KnowledgeAtom, LearningScope,
-  AssessmentBlueprint, DiagnosticBlueprintView, DiagnosticRoutingDecision, DiagnosticStart, QuestionRenderPayload, ReviewTask, StudentAnswerPayload, Subject } from '@study-agent/contracts';
+  AssessmentBlueprint, DiagnosticBlueprintView, DiagnosticRoutingDecision, DiagnosticStart, DiagnosticSession, TextbookTeachingPracticeOrigin, QuestionRenderPayload, ReviewTask, StudentAnswerPayload, Subject } from '@study-agent/contracts';
 import { apiRequest, ApiRequestError, getAuthToken } from '../../../lib/api';
 import { QuestionRenderer, createEmptyAnswerPayload } from '../../../components/question-renderer';
 import { useAnswerDraft, recoverPendingAnswerSubmission } from '../../../lib/answer-draft';
@@ -31,12 +31,14 @@ import type { ReportPlanRead } from '../../../components/report-plan-path';
 import { learningContextIssue, readLearningContext } from '../../../lib/learning-context';
 import { ControlledContrastPlanner } from '../../../components/controlled-contrast-planner';
 import { requestControlledCopyExit } from '../../../components/controlled-copy-exit';
+import { readTeachingPracticeLocation, teachingPracticeCourseHref } from '../../../lib/teaching-practice-navigation';
 
 type Child = { id: string; nickname: string; grade: number };
 type Session = { id: string; status: 'in_progress' | 'paused' | 'completed' | 'aborted'; subject: Subject; scopeSnapshot: LearningScope;
   controlled?:{feedbackHeld:boolean;notice:string;evidencePurpose:'controlled_cause_observation'};
   revision: number; blueprint?: AssessmentBlueprint;
   paperReviewOrigin?: DiagnosticBlueprintView['paperReviewOrigin'];
+  teachingOrigin?: DiagnosticSession['teachingOrigin'];
   routing: { mode: 'adaptive'; currentItemId: string | null; notice: string; decisions?: DiagnosticRoutingDecision[] } | null;
   answeredCount: number; totalCount: number; startedAt: string;
   items: Array<{ id: string; atomId: string; questionId: string; dimension: string; atomName: string; answered: boolean; reason: string }> };
@@ -46,7 +48,8 @@ type Retrospective = { fingerprint: string; reviewed: boolean; followupSessionId
 const subjects: Array<[Subject, string]> = [['math', '数学'], ['chinese', '语文'], ['english', '英语'], ['chemistry', '化学']];
 const outcomeNames: Record<string, string> = { awaiting_retest: '等待复测', different_definitions: '知识定义待核对，暂不比较', different_dimensions: '测量维度或量规不同', insufficient: '证据待补充', uncertain: '变化尚不确定', improved: '观察到改善', declined: '需要重新指导' };
 const request = <T,>(path: string, body?: unknown, method = 'POST') => apiRequest<T>(path, body === undefined ? {} : { method, body: JSON.stringify(body) }, getAuthToken());
-const previewStorageKey = (studentId: string, subject: string) => `study-blueprint:${studentId}:${subject}`;
+const previewStorageKey = (studentId: string, subject: string, origin?: TextbookTeachingPracticeOrigin, actorId?: string) => origin
+  ? JSON.stringify(['study-teaching-blueprint-v1', actorId, studentId, subject, origin]) : `study-blueprint:${studentId}:${subject}`;
 
 export function AssessmentStudio({ reportOnly = false }: { reportOnly?: boolean } = {}) {
   const identity=useSessionUser();
@@ -55,6 +58,7 @@ export function AssessmentStudio({ reportOnly = false }: { reportOnly?: boolean 
 function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof useSessionUser>;reportOnly:boolean}) {
   const router = useRouter();
   const [returnReport] = React.useState(() => { const id = typeof window === 'undefined' ? null : new URLSearchParams(window.location.search).get('returnReport'); return id && id.length <= 180 ? id : ''; });
+  const [teachingLocation, setTeachingLocation] = React.useState<ReturnType<typeof readTeachingPracticeLocation> | null>(null);
   const studentMode = identity?.role === 'student';
   const [confirmedScope, setConfirmedScope] = React.useState<LearningScope | null>(null);
   const [controlledTarget,setControlledTarget]=React.useState('');
@@ -90,8 +94,9 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
   const [locatedItem, setLocatedItem] = React.useState<{ id: string; payload: QuestionRenderPayload } | null>(null);
   const planCreation=useGuidanceCreation(!studentMode?identity?.id??'':'',studentId,report?.sessionId??'',report?.version??1,screen==='report',value=>visitPlan(value));
   const current = session?.routing ? session.items.find(item => item.id === session.routing!.currentItemId && !item.answered) : session?.items.find((item) => !item.answered);
+  const studentOnly = Boolean(session?.controlled || session?.teachingOrigin);
   const answerReady = !!payload && !!answer && draft.matches('diagnostic', session?.id ?? '', current?.id ?? '');
-  const canAnswer = answerReady && payload ? (!session?.controlled||studentMode)&&answerInputConfiguration(payload.answerSchema).supported && payload.inputAvailability?.supported !== false && !mediaPending && !resourceBlocked && !draft.pendingSubmission && draft.phase !== 'conflict' : false;
+  const canAnswer = answerReady && payload ? (!studentOnly||studentMode)&&answerInputConfiguration(payload.answerSchema).supported && payload.inputAvailability?.supported !== false && !mediaPending && !resourceBlocked && !draft.pendingSubmission && draft.phase !== 'conflict' : false;
   const currentGroup = session?.routing ? `第 ${Math.floor(session.answeredCount / (session.blueprint?.groupSize ?? 3)) + 1} 小组` :
     session?.blueprint?.groups.find(group => group.itemIds.includes(current?.id ?? ''))?.title ?? `第 ${Math.floor((session?.answeredCount ?? 0) / 4) + 1} 小组`;
   const child = children.find((item) => item.id === studentId);
@@ -127,7 +132,7 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
     setStudentId(next.scopeSnapshot.studentId); setSubject(next.subject); setGrade(next.scopeSnapshot.grade); setTerm(next.scopeSnapshot.term);
     draft.reset(); setAnswerReadRevision(value => value + 1); setSession(next); setReport(null); setPayload(null); setHint(''); setBlueprint(null); setEndOpen(false); setLocatedItem(null);
     setSessions(rows => [next, ...rows.filter(row => row.id !== next.id)].sort((a, b) => b.startedAt.localeCompare(a.startedAt)));
-    try { sessionStorage.removeItem(previewStorageKey(next.scopeSnapshot.studentId, next.subject)); } catch { /* Storage is optional; the server remains authoritative. */ }
+    try { sessionStorage.removeItem(previewStorageKey(next.scopeSnapshot.studentId, next.subject, next.teachingOrigin, identity?.id)); } catch { /* Storage is optional; the server remains authoritative. */ }
     const location = new URLSearchParams({ studentId: next.scopeSnapshot.studentId, subject: next.subject, session: next.id });
     if (returnReport) location.set('returnReport', returnReport);
     const previous = new URLSearchParams(window.location.search), reportAtom = previous.get('reportAtom');
@@ -165,6 +170,7 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
         if (!alive) return;
         setLoggedIn(true); setChildren(list);
         const params = new URLSearchParams(window.location.search), requested = params.get('studentId')??params.get('student');
+        const teaching = readTeachingPracticeLocation(window.location.search); setTeachingLocation(teaching);
         const requestedSubject = params.get('subject');
         if (subjects.some(([key]) => key === requestedSubject)) setSubject(requestedSubject as Subject);
         const selected = list.find((item) => item.id === requested) ?? list[0];
@@ -187,7 +193,8 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
           const selectedSubject = subjects.some(([key]) => key === requestedSubject) ? requestedSubject! : 'math';
           const previewId = params.get('blueprint');
           let pending: string | null = null;
-          try { pending = !previewId ? sessionStorage.getItem(previewStorageKey(selected.id, selectedSubject)) : null; }
+          if (teaching.kind === 'invalid') throw new Error(teaching.message);
+          try { pending = !previewId ? sessionStorage.getItem(previewStorageKey(selected.id, selectedSubject, teaching.kind === 'teaching' ? teaching.origin : undefined, identity?.id)) : null; }
           catch { /* A disabled browser store must not prevent loading the learning record. */ }
           if (previewId || pending) {
             const restored = previewId ? await request<DiagnosticBlueprintView>(`/diagnostics/blueprints/${encodeURIComponent(previewId)}`)
@@ -243,7 +250,14 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
   }, [loggedIn, grade, term, subject]);
 
   React.useEffect(() => {
-    if (atomDeepLinkDone.current || !confirmedScope || !atoms.length || session || blueprint) return;
+    if (atomDeepLinkDone.current || loading || !teachingLocation || !confirmedScope || !atoms.length || session || blueprint) return;
+    if (teachingLocation.kind !== 'none') {
+      atomDeepLinkDone.current = true;
+      if (teachingLocation.kind === 'invalid') { setError(teachingLocation.message); return; }
+      setIntent('unit'); setMaxItems(20); setAdaptive(false); setIncludePrerequisites(false);
+      void execute(() => showBlueprint({ studentId: confirmedScope.studentId, subject: confirmedScope.subject, intent: 'unit', maxItems: 20,
+        includePrerequisites: false, adaptive: false, teachingOrigin: teachingLocation.origin }, confirmedScope.id)); return;
+    }
     const atomId = new URLSearchParams(window.location.search).get('atom');
     if (!atomId) { atomDeepLinkDone.current = true; return; }
     if (!confirmedScope.learnedAtomIds.includes(atomId) || !atoms.some(atom => atom.id === atomId)) {
@@ -252,7 +266,7 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
     atomDeepLinkDone.current = true; setIntent('micro'); setMaxItems(4); setAdaptive(true); setAssessmentTargets([atomId]);
     void execute(() => showBlueprint({ studentId: confirmedScope.studentId, subject: confirmedScope.subject, intent: 'micro',
       maxItems: 4, includePrerequisites: true, adaptive: true, targetAtomIds: [atomId] }, confirmedScope.id));
-  }, [confirmedScope, atoms, session, blueprint]);
+  }, [confirmedScope, atoms, session, blueprint, loading, teachingLocation]);
 
   React.useEffect(() => {
     if (!session || session.status !== 'in_progress' || !current) return;
@@ -304,11 +318,13 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
     await showBlueprint(command, scope.id);
   }
   async function showBlueprint(command: DiagnosticStart, context: string) {
-    const configured = { ...command, adaptive: command.intent === 'retest' ? false : command.adaptive ?? adaptive };
+    const configured = { ...command, adaptive: command.intent === 'retest' || command.teachingOrigin ? false : command.adaptive ?? adaptive };
     const signature = JSON.stringify([context, configured]);
     if (previewRequest.current.signature !== signature) previewRequest.current = { signature, key: crypto.randomUUID() };
     const body = { ...configured, requestKey: previewRequest.current.key };
-    try { sessionStorage.setItem(previewStorageKey(command.studentId, command.subject), JSON.stringify(body)); } catch { /* The response and URL also restore the preview. */ }
+    try { const key = previewStorageKey(command.studentId, command.subject, command.teachingOrigin, identity?.id), text = JSON.stringify(body); sessionStorage.setItem(key, text);
+      if (command.teachingOrigin && sessionStorage.getItem(key) !== text) throw new Error();
+    } catch { if (command.teachingOrigin) throw new Error('本机暂时无法保留这份完整的原检查请求，请保持当前课程入口，恢复浏览器存储后重试。'); }
     const next = await request<DiagnosticBlueprintView>('/diagnostics/blueprints', body);
     const params = new URLSearchParams({ studentId: command.studentId, subject: command.subject, blueprint: next.id });
     if (reportOnly && report) params.set('returnReport', report.sessionId);
@@ -324,7 +340,7 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
     draft.reset();
     previewRequest.current = { signature: '', key: '' }; setBlueprint(null); setLocatedItem(null); setScreen('setup');
     if (intent === 'verification' || intent === 'retest') { setIntent('baseline'); setMaxItems(12); }
-    try { sessionStorage.removeItem(previewStorageKey(studentId, subject)); } catch { /* No local state is required. */ }
+    try { sessionStorage.removeItem(previewStorageKey(studentId, subject, blueprint?.teachingOrigin, identity?.id)); } catch { /* No local state is required. */ }
     const params = new URLSearchParams({ studentId, subject });if (returnReport) params.set('returnReport', returnReport);window.history.replaceState({}, '', '?' + params);
   }
   async function changeSessionState(action: 'pause' | 'resume' | 'abort') {
@@ -333,7 +349,7 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
       const reason = action === 'abort' ? endReason : action === 'pause' ? '暂时休息，保留原题组和已经写出的思路。' : '休息结束，按原范围与原题组继续独立作答。';
       const signature = JSON.stringify([session.id, session.revision, action, reason]);
       if (stateRequest.current.signature !== signature) {
-        if (session.status === 'in_progress' && current && answer && (!session.controlled || studentMode)) await draft.flush();
+        if (session.status === 'in_progress' && current && answer && (!studentOnly || studentMode)) await draft.flush();
         stateRequest.current = { signature, key: crypto.randomUUID() };
       }
       const next = await request<Session>(`/diagnostics/sessions/${session.id}/state`, { action, expectedRevision: session.revision,
@@ -344,7 +360,7 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
   }
   async function respond(disposition: 'answered' | 'dont_know' | 'skip') {
     if (!session || !current || !answerReady) return;
-    if(session.controlled&&!studentMode){setError('这组成对任务请由孩子本人通过学习码作答。');return;}
+    if(studentOnly&&!studentMode){setError(session.teachingOrigin?'本课独立检查请由孩子本人通过学习码作答。':'这组成对任务请由孩子本人通过学习码作答。');return;}
     const epoch = draft.epoch;
     await execute(async () => {
       await draft.submit(disposition);
@@ -360,10 +376,16 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
     router.replace(reportLocation(id));
   }
   async function verify(hypothesis?: DiagnosticHypothesis, atomId?: string) {
-    await execute(() => showBlueprint({ studentId, subject, intent: 'verification', maxItems: 8,
-      includePrerequisites: true, ...(screen === 'plan' && plan ? { planId: plan.id } : {}),
-      ...(hypothesis ? { hypothesisId: hypothesis.id } : { targetAtomIds: atomId ? [atomId] : learned }) },
-      plan?.id ?? report?.sessionId ?? 'verification'));
+    const originalPlan = screen === 'plan' ? plan : null;
+    await execute(async () => {
+      const baseline = originalPlan ? await request<Session>(`/diagnostics/sessions/${encodeURIComponent(originalPlan.baselineSessionId)}`) : null;
+      await showBlueprint({ studentId, subject, intent: 'verification', maxItems: 8,
+        includePrerequisites: !baseline?.teachingOrigin,
+        ...(originalPlan ? { planId: originalPlan.id } : {}),
+        ...(baseline?.teachingOrigin ? { teachingOrigin: baseline.teachingOrigin } : {}),
+        ...(hypothesis ? { hypothesisId: hypothesis.id } : { targetAtomIds: atomId ? [atomId] : learned }) },
+        originalPlan?.id ?? report?.sessionId ?? 'verification');
+    });
   }
   async function reviewTask(review: Review) {
     await execute(async () => {
@@ -384,6 +406,7 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
   return <main className="learning-studio">
     <StudyNav current={reportOnly || screen === 'report' ? 'reports' : screen === 'plan' ? 'today' : 'assessment'} context={{ studentId: studentId || undefined, subject }} />
     <div className="studio-layout"><header className="workspace-page-heading"><h1>{screen==='report'?'学习报告':screen==='plan'?'指导计划':'知识诊断'}</h1></header>
+      {(session?.teachingOrigin||blueprint?.teachingOrigin||teachingLocation?.kind==='teaching')&&<div className="workspace-page-controls"><Link className="workspace-button" href={teachingPracticeCourseHref((session?.teachingOrigin??blueprint?.teachingOrigin??(teachingLocation?.kind==='teaching'?teachingLocation.origin:undefined))!,studentId,subject)}>返回原课程</Link></div>}
       {(reportOnly || returnReport) && <div className="workspace-page-controls">{reportOnly && <Link className="workspace-button" href={'/studio/reports?' + new URLSearchParams({ studentId, subject })}>返回报告列表</Link>}{returnReport && <Link className="workspace-button" href={reportLocation(returnReport)}>返回来源报告</Link>}</div>}
       <aside className="studio-rail"><span className="studio-eyebrow">LEARNING / INSIGHT</span><h1>把知识<br /><em>学扎实。</em></h1>
         <p>从学到了哪里开始，找到卡住的那一步，再用新题看看是否真的掌握。</p>
@@ -394,6 +417,7 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
       </aside>
       <section className="studio-main" aria-busy={busy || loading}>
         {error && <div role="alert" className="studio-error">{error}<button aria-label="收起提示" onClick={() => setError('')}>×</button></div>}
+        {teachingLocation?.kind==='teaching'&&screen==='setup'&&confirmedScope&&<section className="studio-card" aria-label="原课时独立检查"><h2>本课独立检查</h2><p>先核对原课全部目标、准确教学版本与本次题组；其余内容继续保留待核查。</p><button className="studio-primary" disabled={busy||loading} onClick={()=>void execute(()=>showBlueprint({studentId:confirmedScope.studentId,subject:confirmedScope.subject,intent:'unit',maxItems:20,includePrerequisites:false,adaptive:false,teachingOrigin:teachingLocation.origin},confirmedScope.id))}>重新核对本课题组</button></section>}
         {paperReviewOrigin && <section className="studio-card" aria-label="独立新题的原卷来源"><p>这组新题用于独立核对已学知识。原题再练、自我反思与本组证据分别保留。</p><a className="studio-secondary" href={'/library/practice/review?' + new URLSearchParams({ session: paperReviewOrigin.sessionId, item: paperReviewOrigin.itemId })}>返回原首答与反思 ↗</a></section>}
         {loading ? <div className="studio-empty">正在取回你的学习记录…</div> : !loggedIn ? <div className="studio-empty"><h2>从孩子的学习档案开始</h2><p>登录后即可保存进度、评测与指导计划。</p><Link className="studio-primary" href="/parent/login">登录或创建家长账号</Link></div> : <>
           {screen === 'setup' && <>
@@ -437,20 +461,20 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
             <button className="studio-secondary" onClick={() => { setLocatedItem(null); const params = new URLSearchParams(window.location.search); params.delete('item'); params.set('studentId', studentId); params.set('subject', session.subject); params.set('session', session.id); window.history.replaceState({}, '', '?' + params.toString()); }}>{['completed', 'aborted'].includes(session.status) ? '回到本组报告与原作答' : '回到当前核查进度'}</button>
           </section>}
           {!locatedItem && screen === 'assessment' && session && <>
-            {session.controlled&&<p className="studio-notice" role="status">{session.controlled.notice}{!studentMode&&' 请孩子使用自己的学习码继续；家长可查看进度、暂停或保留已答记录后结束本组。'}</p>}
+            {session.teachingOrigin&&!studentMode&&<p className="studio-notice" role="status">本课独立检查请由孩子使用自己的学习码作答。家长可以查看进度、暂停，或保留已答记录后结束本组。</p>}{session.controlled&&<p className="studio-notice" role="status">{session.controlled.notice}{!studentMode&&' 请孩子使用自己的学习码继续；家长可查看进度、暂停或保留已答记录后结束本组。'}</p>}
             <div className="studio-section-head"><span className="studio-eyebrow">02 / 一次只看一步</span><div className="studio-question-meta"><h2>{current?.atomName ?? '这一组已完成'}</h2><span>{session.answeredCount + (current ? 1 : 0)} / {session.totalCount}</span></div><p>先独立想一想。暂时不会也可以如实记录。</p></div>
             <div className="studio-progress" role="progressbar" aria-label="评测进度" aria-valuemin={0} aria-valuemax={session.totalCount} aria-valuenow={session.answeredCount}><span style={{ width: `${session.answeredCount / session.totalCount * 100}%` }} /></div>
             {session.status === 'in_progress' && current ? <div className="studio-question"><div className="studio-question-top"><span>{currentGroup}</span><small aria-live="polite">{draft.label}</small></div>
-              {answerReady && payload && answer ? <fieldset className="daily-answer-field" disabled={busy || draft.pendingSubmission || !!session.controlled&&!studentMode}><legend className="visually-hidden">本题作答</legend><QuestionRenderer disabled={busy || draft.pendingSubmission || !!session.controlled&&!studentMode} key={`${session.id}:${current.id}:${draft.state?.baseHash}`} renderPayload={payload} answer={answer} onChange={changeAnswer} mediaTarget={{ kind: 'diagnostic', sessionId: session.id, itemId: current!.id }} onPendingChange={setMediaPending} onDisplayIssueChange={setResourceBlocked} /></fieldset> : <p>正在打开题目…</p>}
+              {answerReady && payload && answer ? <fieldset className="daily-answer-field" disabled={busy || draft.pendingSubmission || studentOnly&&!studentMode}><legend className="visually-hidden">本题作答</legend><QuestionRenderer disabled={busy || draft.pendingSubmission || studentOnly&&!studentMode} key={`${session.id}:${current.id}:${draft.state?.baseHash}`} renderPayload={payload} answer={answer} onChange={changeAnswer} mediaTarget={{ kind: 'diagnostic', sessionId: session.id, itemId: current!.id }} onPendingChange={setMediaPending} onDisplayIssueChange={setResourceBlocked} /></fieldset> : <p>正在打开题目…</p>}
               <AnswerDraftStatus draft={draft} schema={payload?.answerSchema} onRecover={() => respond('answered')} onReadActivity={async () => { await openSession(session, false); }} />
               {hint && <div className="studio-hint" role="status">{hint}</div>}
-              <div className="studio-answer-actions"><button className="studio-text-button" disabled={busy || draft.pendingSubmission || !!session.controlled&&!studentMode} onClick={() => execute(async () => {
+              <div className="studio-answer-actions"><button className="studio-text-button" disabled={busy || draft.pendingSubmission || studentOnly&&!studentMode} onClick={() => execute(async () => {
                 const epoch = draft.epoch, result = await request<{ hint: string }>(`/diagnostics/sessions/${session.id}/items/${encodeURIComponent(current.id)}/hint`, {}); if (draft.isCurrent(epoch)) setHint(result.hint);
               })}>给我一点提示</button><div><button className="studio-secondary" disabled={busy || !canAnswer} onClick={() => respond('dont_know')}>暂时不会</button><button className="studio-primary" disabled={busy || !answer || !canAnswer} onClick={() => respond('answered')}>{busy ? '保存中…' : '提交，下一步'} →</button></div></div>
-              <button className="studio-text-button studio-skip" disabled={busy || !answerReady || draft.pendingSubmission || !!session.controlled&&!studentMode} onClick={() => respond('skip')}>题目显示不清或有问题，先跳过</button>
-            </div> : session.status === 'in_progress' ? <button className="studio-primary" disabled={busy || !!session.controlled&&!studentMode} onClick={() => execute(() => completeSession(session.id))}>生成本次报告</button> : null}
+              <button className="studio-text-button studio-skip" disabled={busy || !answerReady || draft.pendingSubmission || studentOnly&&!studentMode} onClick={() => respond('skip')}>题目显示不清或有问题，先跳过</button>
+            </div> : session.status === 'in_progress' ? <button className="studio-primary" disabled={busy || studentOnly&&!studentMode} onClick={() => execute(() => completeSession(session.id))}>生成本次报告</button> : null}
             {session.status === 'paused' && <div className="assessment-paused"><span className="studio-eyebrow">先休息一下</span><h3>思路和进度都已保存。</h3><p>回来后继续同一组题目。暂停期间保留草稿、首次作答与提示记录。</p><button className="studio-primary" disabled={busy} onClick={() => changeSessionState('resume')}>准备好了，继续这一组 →</button></div>}
-            <div className="assessment-state-controls">{session.status === 'in_progress' && <button className="studio-secondary" disabled={busy || mediaPending} onClick={() => changeSessionState('pause')}>保存草稿，休息一下</button>}<button className="studio-text-button" disabled={busy || mediaPending} onClick={() => setEndOpen(!endOpen)}>提前结束本组</button><button className="studio-text-button" disabled={busy} onClick={() => execute(async () => { if (answerReady && !draft.pendingSubmission && (!session.controlled || studentMode)) await draft.flush(); await openSession(session); })}>刷新当前状态</button></div>
+            <div className="assessment-state-controls">{session.status === 'in_progress' && <button className="studio-secondary" disabled={busy || mediaPending} onClick={() => changeSessionState('pause')}>保存草稿，休息一下</button>}<button className="studio-text-button" disabled={busy || mediaPending} onClick={() => setEndOpen(!endOpen)}>提前结束本组</button><button className="studio-text-button" disabled={busy} onClick={() => execute(async () => { if (answerReady && !draft.pendingSubmission && (!studentOnly || studentMode)) await draft.flush(); await openSession(session); })}>刷新当前状态</button></div>
             {endOpen && <form className="assessment-stop" onSubmit={event => { event.preventDefault(); void changeSessionState('abort'); }}><h3>保留这次已经完成的部分。</h3><p>已提交的表现和草稿继续保存，未答题保持未知。本组结束后不能再续答，可从当前范围另开一组新题。</p><label>这次提前结束的原因<textarea required minLength={5} maxLength={1000} rows={3} value={endReason} onChange={event => setEndReason(event.target.value)} placeholder="例如：今天已经疲劳，休息后再用新题继续观察。" /></label><div><button className="studio-primary" disabled={busy || mediaPending || endReason.trim().length < 5}>保留已答记录，结束本组</button><button type="button" className="studio-text-button" disabled={busy} onClick={() => setEndOpen(false)}>继续这一组</button></div></form>}
             <p className="studio-footnote">首次提交会保留为测量证据；提示记录会单独计入。随时可以离开，回来继续。</p>
           </>}

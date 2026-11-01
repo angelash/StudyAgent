@@ -131,10 +131,10 @@ describe('guardian-controlled portable learning data and permanent deletion', ()
     expect(JSON.stringify(store.students)).toBe(before); expect(store.privacyRequests).toHaveLength(0);
   });
 
-  it('keeps child exports unavailable to teaching/administration identities and gives admins only their own empty account overview', async () => {
+  it('keeps child exports unavailable to teaching/administration identities and gives teachers/admins only their own account overview', async () => {
     for (const role of ['teacher', 'operator', 'admin']) {
       store.users.find((row: any) => row.id === other.user.id).role = role;
-      if (role === 'admin') expect((await call('get', '/privacy/overview', undefined, other)).children).toEqual([]);
+      if (role === 'admin' || role === 'teacher') expect((await call('get', '/privacy/overview', undefined, other)).children).toEqual([]);
       else await call('get', '/privacy/overview', undefined, other, 403);
       await call('post', `/privacy/students/${child.id}/export`, { credential, requestKey: `role-export-${role}` }, other, 403);
     }

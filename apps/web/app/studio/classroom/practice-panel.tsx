@@ -1,5 +1,6 @@
 'use client';
 import * as React from 'react';
+import Link from 'next/link';
 import type { ClassroomQuestion, ClassroomAnswerReceipt, ClassroomHintReceipt, ClassroomLesson, ClassroomSessionView } from '@study-agent/contracts';
 import { classroomPracticeSummary, classroomReceiptSelection } from '@study-agent/contracts';
 import { ClassroomFigure } from './diagram';
@@ -7,7 +8,7 @@ import { ClassroomImage } from './board-step';
 import { ClassroomIcon } from './icons';
 import './practice-review.css';
 
-export function PracticePanel({ questions, answers, questionIndex, selected, hinted, hintReceipts = [], busy, standalone, lessonId, assessment,
+export function PracticePanel({ questions, answers, questionIndex, selected, hinted, hintReceipts = [], busy, standalone, lessonId, assessment, verificationHref,
   contentStatus, notice, recovery, onDismiss, onCurrent, onLearn, onIndex, onSelect, onHint, onAnswer, onClose, onAssistant,onSource,
   assistantOpen = false, assistantButtonRef, inactive = false }: {
   questions: ClassroomQuestion[]; answers: ClassroomAnswerReceipt[]; questionIndex: number;
@@ -18,6 +19,7 @@ export function PracticePanel({ questions, answers, questionIndex, selected, hin
   onSource?: (key:string)=>void;
   assistantOpen?: boolean; assistantButtonRef?: React.RefObject<HTMLButtonElement | null>; inactive?: boolean;
   assessment?: ClassroomLesson['assessment']; contentStatus?: ClassroomSessionView['contentStatus'];
+  verificationHref?: string;
   onCurrent?: () => void; onLearn?: (lessonId: string) => void;
   onIndex: (index: number) => void; onSelect: (id: string, index: number) => void; onHint: (id: string, level: number) => void;
   onAnswer: (disposition?: 'skip' | 'dont_know') => void; onClose: () => void; onAssistant: () => void;
@@ -37,7 +39,7 @@ export function PracticePanel({ questions, answers, questionIndex, selected, hin
     if (/^[1-8]$/.test(event.key) && Number(event.key) <= item.options.length) { event.preventDefault(); onSelect(item.id, Number(event.key) - 1); }
     if (event.key === 'Enter' && selected[item.id]?.length) { event.preventDefault(); onAnswer(); }
   }
-  if (!item) return <div className="cl-empty">本节请使用独立测量入口核查理解。</div>;
+  if (!item) return <div className="cl-empty"><p>本节使用独立检查核对全部原教学目标。先查看本次题组与缺口，再由孩子本人作答。</p><div className="cl-review-actions">{verificationHref&&<Link className="cl-review-primary" href={verificationHref}>打开本课独立检查 →</Link>}{standalone&&<button onClick={onClose}>返回课堂</button>}</div></div>;
   const heading = standalone ? <header className="cl-practice-top"><button aria-label="关闭独立练习" onClick={onClose}><ClassroomIcon name="close"/></button>
     <nav className="cl-practice-progress" aria-label="题目进度">{questions.map((question, index) => <button key={question.id}
       aria-label={'第' + (index + 1) + '题'} aria-current={!showSummary && index === questionIndex ? 'step' : undefined}

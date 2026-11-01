@@ -12,6 +12,19 @@ export function blueprintContentHash(value: unknown): string {
   return createHash('sha256').update(JSON.stringify(canonical(value))).digest('hex');
 }
 
+/** Recalculate the coverage notice for a public view, including retained previews.
+ * Private blueprint fingerprints and accepted session snapshots are left intact. */
+/** Only lesson-check blueprints raise per-target requirements after selection.
+ * Every other preview, and every historical session, keeps its saved blueprint. */
+export function publicAssessmentBlueprint<T extends { warnings: string[]; teachingCoverage?: unknown[] } | undefined>(blueprint: T, coverage: DiagnosticSession['coverage']): T {
+  return blueprint?.teachingCoverage ? { ...blueprint, warnings: assessmentCoverageWarnings(coverage, blueprint.warnings) } : blueprint;
+}
+export function assessmentCoverageWarnings(coverage: DiagnosticSession['coverage'], warnings: readonly string[] = []) {
+  const retained = warnings.filter(warning => !/^\d+ 个点本次证据覆盖不足，结果会保留未知或待补充。$/.test(warning));
+  const missing = coverage.filter(point => point.selected < point.required).length;
+  return missing ? [`${missing} 个点本次证据覆盖不足，结果会保留未知或待补充。`, ...retained] : retained;
+}
+
 const policies: Record<DiagnosticStart['intent'], { title: string; focus: string; items: number; cap: number; minutes: number; dimensions: MeasurementDimension[] }> = {
   baseline: { title: '起点评测', focus: '先核查基础理解与执行，再补充变式证据。', items: 12, cap: 30, minutes: 20, dimensions: ['understanding', 'procedure', 'transfer', 'retention'] },
   unit: { title: '单元评测', focus: '围绕本次确认的单元知识点，兼顾基本行为和应用。', items: 8, cap: 20, minutes: 15, dimensions: ['procedure', 'understanding', 'transfer', 'retention'] },

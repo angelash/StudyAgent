@@ -1,3 +1,4 @@
+import { installSyntheticEditionConformities } from './textbook-edition-conformity.fixture';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { createHash } from 'node:crypto';
 import { mkdirSync, mkdtempSync, rmSync, statSync, symlinkSync, utimesSync, writeFileSync } from 'node:fs';
@@ -12,7 +13,7 @@ describe('verified textbook source documents', () => {
   let root = '', assets = '', registryPath = '', manifestPath = '', sourcePath = '', service: TextbookRegistryService;
   let handles: FileHandle[] = [];
   async function open() { const document = await service.document(book.id); handles.push(document.handle); return document; }
-  let previous = { registry: process.env.STUDY_TEXTBOOK_REGISTRY, manifest: process.env.STUDY_TEXTBOOK_SOURCE_MANIFEST, assets: process.env.STUDY_ASSET_ROOT, textbooks: process.env.TEXTBOOK_BASE_PATH };
+  let previous = { registry: process.env.STUDY_TEXTBOOK_REGISTRY, manifest: process.env.STUDY_TEXTBOOK_SOURCE_MANIFEST, assets: process.env.STUDY_ASSET_ROOT, textbooks: process.env.TEXTBOOK_BASE_PATH, conformity: process.env.STUDY_TEXTBOOK_EDITION_CONFORMITIES };
   const bytes = Buffer.from('%PDF-1.4\nsynthetic textbook source\n%%EOF');
   const sha256 = createHash('sha256').update(bytes).digest('hex');
   const book: CurriculumBook = {
@@ -28,10 +29,12 @@ describe('verified textbook source documents', () => {
     writeFileSync(manifestPath, JSON.stringify({ books: [{ id: 'source:test', grade: 3, term: 'upper', edition: 'test',
       assetPath: 'data/assets/textbook-sources/test/books/book.pdf', sha256, pages: 12 }] }));
     process.env.STUDY_TEXTBOOK_REGISTRY = registryPath; process.env.STUDY_TEXTBOOK_SOURCE_MANIFEST = manifestPath; process.env.STUDY_ASSET_ROOT = assets;
+    installSyntheticEditionConformities(root);
     service = new TextbookRegistryService(new InMemoryStoreService());
   });
   afterEach(async () => {
     for (const handle of handles) await handle.close(); handles = [];
+    if (previous.conformity === undefined) delete process.env.STUDY_TEXTBOOK_EDITION_CONFORMITIES; else process.env.STUDY_TEXTBOOK_EDITION_CONFORMITIES = previous.conformity;
     if (previous.registry === undefined) delete process.env.STUDY_TEXTBOOK_REGISTRY; else process.env.STUDY_TEXTBOOK_REGISTRY = previous.registry;
     if (previous.manifest === undefined) delete process.env.STUDY_TEXTBOOK_SOURCE_MANIFEST; else process.env.STUDY_TEXTBOOK_SOURCE_MANIFEST = previous.manifest;
     if (previous.assets === undefined) delete process.env.STUDY_ASSET_ROOT; else process.env.STUDY_ASSET_ROOT = previous.assets;
@@ -56,6 +59,7 @@ describe('verified textbook source documents', () => {
     const target = join(process.env.TEXTBOOK_BASE_PATH, '小学/语文/book.pdf');
     mkdirSync(join(target, '..'), { recursive: true }); writeFileSync(target, bytes);
     writeFileSync(manifestPath, JSON.stringify({ books: [{ id: 'source:test', grade: 3, term: 'upper', edition: 'test', repositoryPath: path, sha256, pages: 12 }] }));
+    installSyntheticEditionConformities(root);
     service = new TextbookRegistryService(new InMemoryStoreService());
     return target;
   }
@@ -67,7 +71,7 @@ describe('verified textbook source documents', () => {
   });
   it('reports an unavailable repository without falling back to a different local PDF', async () => {
     external(); delete process.env.TEXTBOOK_BASE_PATH;
-    expect(service.documentMetadata(book)).toMatchObject({ available: false });
+    expect(service.documentMetadata(service.require(book.id))).toMatchObject({ available: false });
     await expect(service.document(book.id)).rejects.toThrow('原卷未安装');
   });
   it('rehashes equal-length originals even when the original modification time is restored', async () => {
@@ -81,6 +85,7 @@ describe('verified textbook source documents', () => {
     const real = join(assets, 'real'); mkdirSync(real); writeFileSync(join(real, 'book.pdf'), bytes);
     symlinkSync(real, join(assets, 'linked'), process.platform === 'win32' ? 'junction' : 'dir');
     writeFileSync(manifestPath, JSON.stringify({ books: [{ id: 'source:test', grade: 3, term: 'upper', edition: 'test', assetPath: 'data/assets/linked/book.pdf', sha256, pages: 12 }] }));
+    installSyntheticEditionConformities(root);
     service = new TextbookRegistryService(new InMemoryStoreService());
     await expect(service.document(book.id)).rejects.toThrow('字节校验失败');
   });
@@ -109,10 +114,27 @@ describe('verified textbook source documents', () => {
     ] }));
     service = new TextbookRegistryService(new InMemoryStoreService());
     expect(service.detail('dated-book').sourceDocument).toBeNull();
-    expect((service.detail('dated-book') as any).sourceAvailability).toMatchObject({ status: 'version_conflict' });
-    expect(service.detail('undated-book').sourceDocument).toMatchObject({ pages: 12, sha256 });
+    expect((service.detail('dated-book') as any).sourceAvailability).toMatchObject({ status: 'edition_unverified' });
+    expect(service.detail('undated-book').sourceDocument).toBeNull();
   });
-  it('binds year-labelled editions only when the source carries the same explicit year', () => {
+  it.each([undefined, '教材2024年版'])('does not let the exact edition label bypass an explicit catalog-title year with source title %s', title => {
+    writeFileSync(registryPath, JSON.stringify({ books: [{ ...book, id: 'title-year-book', edition: '测试版', title: '教材2022年版' }] }));
+    writeFileSync(manifestPath, JSON.stringify({ books: [{ id: 'same-label-unverified-source', grade: 3, term: 'upper', edition: '测试版', title,
+      assetPath: 'data/assets/textbook-sources/test/books/book.pdf', sha256, pages: 12 }] }));
+    service = new TextbookRegistryService(new InMemoryStoreService());
+    expect(service.documentMetadata(service.require('title-year-book'))).toBeNull();
+    expect(service.availability(service.require('title-year-book')).status).toBe('edition_unverified');
+  });
+  it('does not grant whole-book conformity from a same-year source among same-name originals', () => {
+    writeFileSync(registryPath, JSON.stringify({ books: [{ ...book, id: 'title-year-book', edition: '测试版', title: '教材2022年版' }] }));
+    writeFileSync(manifestPath, JSON.stringify({ books: [{ id: 'source-undated-label', grade: 3, term: 'upper', edition: '测试版',
+      assetPath: 'data/assets/textbook-sources/test/books/book.pdf', sha256: 'f'.repeat(64), pages: 9 },
+    { id: 'source-dated-label', grade: 3, term: 'upper', edition: '测试版', title: '教材2022年版',
+      assetPath: 'data/assets/textbook-sources/test/books/book.pdf', sha256, pages: 12 }] }));
+    service = new TextbookRegistryService(new InMemoryStoreService());
+    expect(service.documentMetadata(service.require('title-year-book'))).toBeNull();
+  });
+  it('never grants exact conformity from either same or conflicting year labels alone', () => {
     writeFileSync(registryPath, JSON.stringify({ books: [{ ...book, id: 'dated-book', edition: '测试版(2022)' }] }));
     writeFileSync(manifestPath, JSON.stringify({ books: [
       { id: 'source-different-year', grade: 3, term: 'upper', edition: '测试版(2024)',
@@ -120,13 +142,13 @@ describe('verified textbook source documents', () => {
     ] }));
     service = new TextbookRegistryService(new InMemoryStoreService());
     expect(service.detail('dated-book').sourceDocument).toBeNull();
-    expect((service.detail('dated-book') as any).sourceAvailability).toMatchObject({ status: 'version_conflict' });
+    expect((service.detail('dated-book') as any).sourceAvailability).toMatchObject({ status: 'edition_unverified' });
 
     writeFileSync(manifestPath, JSON.stringify({ books: [
       { id: 'source-same-year', grade: 3, term: 'upper', edition: '测试版(2022)',
         assetPath: 'data/assets/textbook-sources/test/books/book.pdf', sha256, pages: 12 },
     ] }));
     service = new TextbookRegistryService(new InMemoryStoreService());
-    expect(service.detail('dated-book').sourceDocument).toMatchObject({ pages: 12, sha256 });
+    expect(service.detail('dated-book').sourceDocument).toBeNull();
   });
 });

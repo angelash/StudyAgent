@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-01T13:14:14.151Z",
+  "label": "main-baseline-failures-first",
+  "executed": {
+    "status": 1,
+    "error": null
+  },
+  "discovered": 9,
+  "files": 7,
+  "stats": {
+    "startTime": "2026-11-01T13:10:10.956Z",
+    "duration": 239631.734,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 6,
+    "flaky": 0
+  },
+  "errors": [],
+  "sourceAndCompiledInputs": 0,
+  "testAndFixtureInputs": 1984,
+  "changedDuringRun": [],
+  "buildId": "TTPcB8F4HNZtq1pip2yYN",
+  "actualLiveModelTests": false,
+  "engineeringQaOnly": true,
+  "wholeGoal": "active"
+}

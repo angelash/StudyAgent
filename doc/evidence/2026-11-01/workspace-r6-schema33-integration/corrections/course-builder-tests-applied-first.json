@@ -1,0 +1,17 @@
+{
+  "at": "2026-11-01T13:15:28.546Z",
+  "files": {
+    "tests/e2e/course-builder.spec.ts": {
+      "before": "2a94366ba5df72c07ca6c08643d4789d313088974b82f9ff15ab52cd69e848dd",
+      "after": "132e851995264f0701c9aa656a224228ca4929cd17c4d10a4872b7a16e18bc26"
+    },
+    "tests/e2e/product-smoke.spec.ts": {
+      "before": "2ac3a3758863f366da22126e02a6baf3497a28dffd844b71464e402d10816cb8",
+      "after": "e215a956627ce50cf2e5277869e2f0b3cc985f9f4a55d6c60e3413e4a219b9df"
+    }
+  },
+  "reasons": {
+    "courseBuilder": "Lost reply now verified by original request lookup without another POST; explicit scope rejection keeps the goal and opens a current-scope draft.",
+    "productSmoke": "Same-day main baseline also failed: 183 counts only whole-book editions verified against the original."
+  }
+}

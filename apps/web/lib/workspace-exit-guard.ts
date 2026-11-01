@@ -56,13 +56,13 @@ export function installWorkspaceExitGuard(active: () => ActiveGuard | null, opti
     window.dispatchEvent(new Event('studyagent:close-navigation'));
     guard.request(destination, () => { if(active()?.token!==guard.token)return;bypass=destination;if(resume)resume();else window.location.assign(destination); },kind);
   }
-  const navigation = (window as unknown as { navigation?: EventTarget & { currentEntry?: { index: number }; traverseTo?: (key: string) => { finished: Promise<unknown> } } }).navigation;
+  type Transition={committed?:Promise<unknown>;finished:Promise<unknown>};
+  const navigation = (window as unknown as { navigation?: EventTarget & { currentEntry?: { index: number }; back?:()=>Transition;forward?:()=>Transition;traverseTo?: (key: string) => Transition } }).navigation;
   function traverse(event: Event) {
     const change=event as Event & { navigationType?: string; destination?: { url: string; key?: string; index?: number } };
     if(change.navigationType!=='traverse'||!change.cancelable||!change.destination)return;
     if(bypass===change.destination.url)return;
     const guard=leaving(change.destination.url);if(!guard)return;
-    change.preventDefault();change.stopImmediatePropagation();
     const key=change.destination.key,destination=change.destination.url;
     const fromIndex=navigation?.currentEntry?.index,toIndex=change.destination.index;
     const delta=Number.isSafeInteger(fromIndex)&&Number.isSafeInteger(toIndex)?toIndex!-fromIndex!:0;
@@ -70,10 +70,20 @@ export function installWorkspaceExitGuard(active: () => ActiveGuard | null, opti
     // traversable by this Navigation object. Resume the original native history
     // movement after every input guard, instead of silently abandoning Back.
     const native=()=>{if(active()?.token!==guard.token){bypass='';return;}bypass=destination;
+      try{const transition=delta===-1?navigation?.back?.():delta===1?navigation?.forward?.():undefined;
+        if(transition){void Promise.all([transition.finished,transition.committed]).catch(()=>{if(active()?.token===guard.token)window.location.assign(destination);});return;}
+      }catch{/* Fall through to the original browser history operation. */}
       if(delta&&Number.isSafeInteger(delta))history.go(delta);else window.location.assign(destination);};
-    request(guard,destination,key&&navigation?.traverseTo?()=>{
-      try{void navigation.traverseTo!(key).finished.catch(native);}catch{native();}
-    }:native);
+    const resume=key&&navigation?.traverseTo?()=>{
+      try{const transition=navigation.traverseTo!(key);void Promise.all([transition.finished,transition.committed]).catch(native);}catch{native();}
+    }:native;
+    // A protected editor can approve immediately. Let that original native
+    // traversal finish rather than canceling and replaying it inside its event.
+    let returned=false,permitted=false;
+    try{request(guard,destination,()=>{if(!returned)permitted=true;else resume();});}
+    catch(error){change.preventDefault();change.stopImmediatePropagation();throw error;}
+    returned=true;
+    if(!permitted){change.preventDefault();change.stopImmediatePropagation();}
   }
   function click(event: MouseEvent) {
     if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;

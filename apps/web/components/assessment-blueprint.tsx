@@ -25,6 +25,8 @@ export function AssessmentBlueprintCard({ preview, busy, onStart, onBack }: {
       <i aria-hidden="true"><b style={{ width: `${preview.itemCount ? row.selected / preview.itemCount * 100 : 0}%` }} /></i></div>)}</div>
     <p className="studio-footnote">保持能力需要真实间隔后的新题证据，本组题量不等于已经验证的能力。</p>
     <VerificationObservationPlan verification={preview.blueprint.verification} names={names} />
+    {preview.teachingOrigin&&<p className="studio-footnote">采用原课程教学稿第 {preview.teachingOrigin.contentVersion} 版。独立检查由孩子本人作答；保持核查从指导计划的真实到期任务开始。</p>}
+    {preview.blueprint.teachingCoverage&&<details className="blueprint-coverage"><summary>逐目标查看理解、执行、迁移与保持的安排</summary><ul>{preview.blueprint.teachingCoverage.map(row=><li key={row.atomId+':'+row.purpose} data-gap={row.selected<row.required}><div><strong>{names.get(row.atomId)??row.atomId} · {dimensionNames[row.purpose]}</strong><small>本组 {row.selected} / 需 {row.required} 题；原材料当前可用 {row.available} 题</small>{row.missingReason&&<p>{row.missingReason}</p>}</div><span>{row.selected>=row.required?'已安排':'待核查'}</span></li>)}</ul></details>}
     <div className="blueprint-coverage"><h3>这次观察哪些知识点</h3><ul>{preview.coverage.map(point => <li key={point.atomId} data-gap={point.selected < point.required}>
       <div><strong>{names.get(point.atomId) ?? point.atomId}</strong><small>{point.role === 'prerequisite' ? '前置基础核查' : '已学范围'} · 本组{point.selected}题</small>
         {point.missingReason && <p>{point.missingReason}</p>}</div><span>{point.selected >= point.required ? '已安排' : point.selected ? '仍需补证据' : '本次未覆盖'}</span>

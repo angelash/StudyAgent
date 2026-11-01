@@ -1,0 +1,94 @@
+{
+  "label": "workbench-browser-failures-rerun-first",
+  "stats": {
+    "startTime": "2026-11-01T12:59:41.178Z",
+    "duration": 298025.298,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 9,
+    "flaky": 0
+  },
+  "rows": [
+    {
+      "file": "classroom-boards.spec.ts",
+      "line": 52,
+      "title": "audio ended advances frozen units, abort settles a pending reader and a new reply rejects late audio",
+      "status": "failed",
+      "durationMs": 23815,
+      "error": "Error: expect(locator).toHaveText(expected) failed"
+    },
+    {
+      "file": "course-builder.spec.ts",
+      "line": 29,
+      "title": "blueprint supports goal selection, review, edit and cancellation without creating a course",
+      "status": "failed",
+      "durationMs": 19334,
+      "error": "Error: expect(locator).toHaveCount(expected) failed"
+    },
+    {
+      "file": "course-builder.spec.ts",
+      "line": 48,
+      "title": "a lost confirmation response can be retried with the same receipt and saves the reviewed pace",
+      "status": "failed",
+      "durationMs": 18647,
+      "error": "Error: expect(locator).toContainText(expected) failed"
+    },
+    {
+      "file": "course-builder.spec.ts",
+      "line": 69,
+      "title": "changed learning scope invalidates confirmation and can be refreshed without losing the goal",
+      "status": "failed",
+      "durationMs": 18585,
+      "error": "Error: expect(locator).toContainText(expected) failed"
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "line": 28,
+      "title": "guidance calendar: unavailable storage downloads the entire schedule command before any confirmation",
+      "status": "passed",
+      "durationMs": 5951,
+      "error": ""
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "line": 300,
+      "title": "paper review: a completed first answer leads through real reflection, actual review and the stable local-date calendar",
+      "status": "failed",
+      "durationMs": 19111,
+      "error": "Error: expect(locator).toBeVisible() failed"
+    },
+    {
+      "file": "product-smoke.spec.ts",
+      "line": 177,
+      "title": "an administrator can reach the curriculum review workbench",
+      "status": "failed",
+      "durationMs": 19807,
+      "error": "Error: expect(locator).toBeVisible() failed"
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "line": 90,
+      "title": "an entire adult unit retains every lesson, complete practice, unit check and all project submissions as separate facts",
+      "status": "failed",
+      "durationMs": 49478,
+      "error": "Error: expect(locator).toContainText(expected) failed"
+    },
+    {
+      "file": "studio.spec.ts",
+      "line": 35,
+      "title": "a parent can build and reopen an evidence-backed learning studio course",
+      "status": "failed",
+      "durationMs": 59121,
+      "error": "Error: expect(locator).toBeVisible() failed"
+    },
+    {
+      "file": "workspace.spec.ts",
+      "line": 56,
+      "title": "calendar supports real date navigation, edit, confirmation, completion, export and batch lifecycle",
+      "status": "failed",
+      "durationMs": 23058,
+      "error": "Error: expect(locator).toBeVisible() failed"
+    }
+  ],
+  "originalPrivateResultsSha256": "2be7ae65af060a9d39e251e628434a6982e6b5d6d26ba98ccbdfe948f31aa8f4"
+}

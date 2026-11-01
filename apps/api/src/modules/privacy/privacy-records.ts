@@ -17,6 +17,7 @@ import { controlledSessionOf } from '../diagnostics/controlled-session-origin';
 import { controlledFeedbackHeld } from '../diagnostics/controlled-contrast-disclosure';
 import {paperCaptureAttributedCollections,paperCapturePrivateCollections,paperCaptureCollections,portablePaperCaptureSource} from '../learning/paper-capture-privacy';
 import { paperLibraryPrivateCollections } from '../library/paper-export-privacy';
+import { textbookTeachingCollections } from '../diagnostics/textbook-teaching-record';
 
 type Row = Record<string, any>;
 export type Selection = Record<string, Row[]>;
@@ -35,6 +36,8 @@ const hasReference = (value: unknown, references: Set<string>): boolean => typeo
 /** Explicit relation registry; shared curriculum, content, originals and other families never enter it. */
 export function studentRecords(store: InMemoryStoreService, studentId: string): Selection {
   const result: Selection = {};
+  add(result, store, 'textbookTeachingAdoptions', row => row.studentId === studentId);
+  add(result, store, 'textbookTeachingCourseRevisions', row => row.studentId === studentId);
   for (const name of paperLibraryPrivateCollections) add(result, store, name, row => row.scope.studentId === studentId);
   add(result, store, 'paperSourceExposures', row => row.studentId === studentId);
   add(result, store, 'students', row => row.id === studentId);
@@ -84,6 +87,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
 
 export function accountRecords(store: InMemoryStoreService, actorId: string, principal: string): Selection {
   const result: Selection = {};
+  for (const name of textbookTeachingCollections) add(result, store, name, row => row.actorId === actorId);
   for (const name of paperLibraryPrivateCollections) add(result, store, name, row => row.actorId === actorId);
   add(result, store, 'users', row => row.id === actorId);
   add(result, store, 'sessions', row => row.userId === actorId || row.guardianId === actorId);
@@ -217,12 +221,17 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
   const practiceCounts = new Map<string, number>();
   for (const row of selected.practiceAttempts ?? []) { const key = JSON.stringify([row.sessionId, row.questionId]); practiceCounts.set(key, (practiceCounts.get(key) ?? 0) + 1); }
   for (const [name, records] of Object.entries(selected)) {
-    if (['users', 'sessions', 'studentLearningCodes', 'studentInvitations', 'events','sourceCourseCheckPublications','studioCalendarCommands'].includes(name)) continue;
-    if (name === 'diagnosticDrafts') result[name] = records.filter(row => row.protocol !== 'answer-draft-v2' || !answeredDrafts.has(JSON.stringify([row.sessionId, row.itemId])));
+    if (['users', 'sessions', 'studentLearningCodes', 'studentInvitations', 'events','sourceCourseCheckPublications','studioCalendarCommands','textbookTeachingAdoptions'].includes(name)) continue;
+    if(name==='textbookTeachingCourseRevisions')result[name]=records.map(row=>({protocol:'textbook-teaching-course-history-public-v1',courseId:row.courseId,revision:row.revision,previousFingerprint:row.previousFingerprint,at:row.at,course:row.course}));
+    else if (name === 'diagnosticDrafts') result[name] = records.filter(row => row.protocol !== 'answer-draft-v2' || !answeredDrafts.has(JSON.stringify([row.sessionId, row.itemId])));
     else if (name === 'practiceSessions') result[name] = records.map(row => ({ ...row, ...(row.drafts ? { drafts: Object.fromEntries(Object.entries(row.drafts as Record<string, Row>)
       .filter(([questionId, draft]) => draft.protocol !== 'answer-draft-v2' || draft.draftAttempt === (practiceCounts.get(JSON.stringify([row.id, questionId])) ?? 0))) } : {}) }));
     else if (name === 'paperPracticeSessions') result[name] = records.filter(row => allowedPaperPractice.has(row.id)).map(row => { const { origin, ...rest } = row; return !origin || allowedPaperPractice.has(origin.sessionId) ? row : rest; });
     else if (name === 'diagnosticSessions') result[name] = records.map(row => {
+      if (row.teachingOrigin) return { id: row.id, studentId: row.studentId, subject: row.subject, intent: row.intent, status: row.status, teachingOrigin: row.teachingOrigin,
+        scopeSnapshot: row.scopeSnapshot, blueprint: row.blueprint, coverage: row.coverage, startedAt: row.startedAt, completedAt: row.completedAt, endedAt: row.endedAt,
+        items: row.itemSnapshots.map(({ id, questionId, atomId, dimension, questionVersion, version }: Row) => ({ id, questionId, atomId, dimension, questionVersion, version })),
+        questions: row.questionSnapshots.map(({ id, stem, document, questionType }: Row) => ({ id, stem, document, questionType })) };
       if (heldControlled.has(row.id)) return { id: row.id, studentId: row.studentId, subject: row.subject, intent: row.intent, status: row.status,
         scopeSnapshot: row.scopeSnapshot, startedAt: row.startedAt, completedAt: row.completedAt, feedbackHeld: true,
         notice: '本组成对任务结束后再导出原评分、参考答案和对照结果。' };
@@ -235,7 +244,11 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if (name === 'diagnosticReports') result[name] = records.filter(row => !heldControlled.has(row.sessionId));
     else if (name === 'controlledContrastPreviews') result[name] = records.map(({id,studentId,subject,publicationId,fingerprint,scopeSnapshot,createdAt,expiresAt,sessionId}) =>
       ({id,studentId,subject,publicationId,fingerprint,scopeSnapshot,createdAt,expiresAt,sessionId}));
-    else if (name === 'diagnosticBlueprints') result[name] = records.map(row => { const { paperReviewOrigin, ...rest } = row; return !paperReviewOrigin || allowedPaperPractice.has(paperReviewOrigin.sessionId) ? row : rest; });
+    else if (name === 'diagnosticBlueprints') result[name] = records.map(row => {
+      if (row.teachingOrigin) { const { id, studentId, teachingOrigin, createdAt, expiresAt, sessionId, blueprint, scopeSnapshot, coverage, atomNames, itemCount } = row;
+        return { id, studentId, teachingOrigin, createdAt, expiresAt, sessionId, blueprint, scopeSnapshot, coverage, atomNames, itemCount }; }
+      const { paperReviewOrigin, ...rest } = row; return !paperReviewOrigin || allowedPaperPractice.has(paperReviewOrigin.sessionId) ? row : rest;
+    });
     else if (name === 'paperPracticeCommands') result[name] = records.filter(row => allowedPaperPractice.has(row.sessionId) && paperOwners.has(row.ownerUserId));
     else if(paperLibraryPrivateCollections.includes(name as typeof paperLibraryPrivateCollections[number]))result[name]=records.filter(row=>row.actorId===actorId).map(({authorization:_authorization,...row})=>row);
     else if(name==='paperSourceExposures')result[name]=records.map(({authorization:_authorization,...row})=>row);

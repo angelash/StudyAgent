@@ -77,9 +77,9 @@ body[data-study-navigation] .learning-studio :is(.studio-section-head h2,.daily-
 body[data-study-navigation] .learning-studio :is(.studio-eyebrow,.studio-child,.studio-steps li span) { font-family:inherit;letter-spacing:0; }
 body[data-study-navigation] .learning-studio :is(.studio-primary,.studio-secondary,.studio-text-button) { border-radius:8px;font-family:inherit; }
 body[data-study-navigation] .learning-studio .studio-primary { background:#e8f0f8;color:#4c6696;border-color:#e8f0f8; }
-body[data-study-navigation] .learning-studio :is(.family-next,.studio-panel,.privacy-panel,.daily-complete) { background:#fff;border-color:#e9ecf1;border-radius:12px;box-shadow:none; }
+body[data-study-navigation] .learning-studio :is(.family-next,.studio-panel,.privacy-panel,.daily-complete,.blueprint-scope) { background:#fff;border-color:#e9ecf1;border-radius:12px;box-shadow:none; }
 body[data-study-navigation] .learning-studio .studio-main h1 { font:500 26px/1.4 "Satoshi-Medium",MiSans,sans-serif; }
-body[data-study-navigation] .learning-studio :is(.studio-line-title,.family-section-title h3,.family-week strong,.family-metrics strong,.studio-report-stats strong,.studio-hypotheses h4,.studio-action h3,.studio-report-next h3),body[data-study-navigation] .knowledge-report :is(h3,h4,h5) { font-family:"Satoshi-Medium",MiSans,sans-serif;font-weight:500; }
+body[data-study-navigation] .learning-studio :is(.studio-line-title,.family-section-title h3,.family-week strong,.family-metrics strong,.studio-report-stats strong,.studio-hypotheses h4,.studio-action h3,.studio-report-next h3,.blueprint-scope>strong,.blueprint-metrics dd,.blueprint-metrics dd small,.blueprint-coverage h3,.assessment-paused h3,.assessment-stop h3),body[data-study-navigation] .knowledge-report :is(h3,h4,h5) { font-family:"Satoshi-Medium",MiSans,sans-serif;font-weight:500; }
 @media(max-width:1000px){
   body[data-study-navigation=mobile] { --workspace-sidebar:0px; }
   body[data-study-navigation=mobile] .learning-studio { padding-left:0;padding-top:58px; }

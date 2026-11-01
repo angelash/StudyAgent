@@ -5,6 +5,7 @@ import { AppModule } from './app.module';
 import { loadApiEnv } from '@study-agent/config';
 import { configureJsonBody } from './common/http-body';
 import { trustedProxies } from './infrastructure/trusted-proxy';
+import { configureProxyKeepAlive } from './infrastructure/http-keep-alive';
 
 async function bootstrap() {
   const env = loadApiEnv();
@@ -19,6 +20,7 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.enableShutdownHooks();
   await app.listen(port, env.API_HOST);
+  configureProxyKeepAlive(app.getHttpServer());
 }
 
 void bootstrap();

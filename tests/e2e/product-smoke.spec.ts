@@ -187,11 +187,18 @@ test('an administrator can reach the curriculum review workbench', async ({ page
   await expect(page.getByRole('navigation', { name: '管理功能' })).toBeVisible();
   await expect(page.getByRole('heading', { name: '教材课时与知识映射' })).toBeVisible();
   await expect(page.getByRole('navigation', { name: '管理功能' }).getByRole('link', { name: '运营分析', exact: true })).toBeVisible();
-  await expect(page.getByText(/来源总览：250 条有同版原卷/)).toBeVisible();
-  await expect(page.getByRole('button', { name: /无同版原卷/ })).toBeVisible();
+  // Only a whole-book edition verified against its original counts; same-name or same-year files do not.
+  await expect(page.getByText(/来源总览：1 条整册版本已核对，448 条仍需补来源/)).toBeVisible();
+  await expect(page.getByRole('button', { name: /同版来源未匹配/ }).first()).toBeVisible();
   await page.getByLabel('选择目录').selectOption('archive-book:44deea6d4015a5183e175acc');
-  await expect(page.getByText(/教材目录与现有原卷的版本年份不一致/)).toBeVisible();
+  await expect(page.getByText(/未绑定内审原卷：/)).toBeVisible();
+  // A same-name public catalogue without a verified whole-book edition offers reference originals only.
   await page.getByLabel('选择目录').selectOption('public-book:33c8d495-9862-4e19-aab9-61d2af08608a');
+  await expect(page.getByText(/未绑定内审原卷：/)).toBeVisible(); await expect(page.getByRole('region', { name: '参考版本原件' })).toBeVisible();
+  await expect(page.getByRole('region', { name: '教材内审原页' })).toHaveCount(0);
+  // The exact independent edition keeps its internal original review page.
+  await page.getByLabel('学科', { exact: true }).selectOption('chinese'); await page.getByRole('button', { name: /^3年级/ }).click();
+  await page.getByLabel('选择目录').selectOption('archive-book:chinese-g3-upper-02915a7db6517258');
   const installedSource = page.getByRole('region', { name: '教材内审原页' });
   const missingAssets = page.getByText(/同版来源已登记，但本地原卷未安装/);
   await expect(installedSource.or(missingAssets)).toBeVisible();

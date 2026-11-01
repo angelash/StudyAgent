@@ -71,6 +71,18 @@ export class DiagnosticsController {
       await this.curriculum.assertCurrentSourceEditor(req); response.setHeader('Cache-Control', 'private, no-store'); return result;
     } finally { response.off('close', disconnect); }
   }
+  @Get('admin/curriculum/textbooks/:bookId/reference-sources/:sourceId/document')
+  async textbookReferenceDocument(@Req() req: AuthenticatedRequest, @Param('bookId') bookId: string, @Param('sourceId') sourceId: string,
+    @Headers('range') range: string | undefined, @Res({ passthrough: true }) response: Response) {
+    this.curriculum.assertEditor(req.user);
+    const cancellation = new AbortController(), disconnect = () => cancellation.abort(); response.once('close', disconnect);
+    let document: Awaited<ReturnType<typeof this.curriculum.textbooks.referenceDocument>> | undefined;
+    try {
+      document = await this.curriculum.textbooks.referenceDocument(bookId, sourceId, cancellation.signal);
+      await this.curriculum.assertCurrentSourceEditor(req); response.setHeader('X-Study-Source-Purpose', 'reference-only');
+      return await streamVerifiedFile({ ...document, mediaType: 'application/pdf' }, range, response, cancellation.signal, () => response.off('close', disconnect));
+    } catch (error) { await document?.handle.close(); response.off('close', disconnect); throw error; }
+  }
   @Post('admin/curriculum/textbook-mappings')
   saveTextbookMapping(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.curriculum.saveTextbookMapping(req.user, body); }
   @Get('admin/curriculum/textbook-mapping-worklist')

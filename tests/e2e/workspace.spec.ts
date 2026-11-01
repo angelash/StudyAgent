@@ -2,6 +2,17 @@ import { browserEvidence } from './evidence';
 import { expect, test, type Page } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 
+// Move by the visible month heading instead of assuming the run date's month.
+async function showMonth(page: Page, year: number, month: number) {
+  const title = page.locator('h2').filter({ hasText: /^\d{4}年\d{1,2}月$/ }).first();
+  for (let step = 0; step < 36; step++) {
+    const text = await title.innerText(), [shownYear, shownMonth] = text.match(/\d+/g)!.map(Number), delta = (year - shownYear) * 12 + month - shownMonth;
+    if (!delta) return;
+    await page.getByRole('button', { name: delta > 0 ? '下一个日期范围' : '上一个日期范围' }).click(); await expect(title).not.toHaveText(text);
+  }
+  throw new Error('Calendar month was not reached');
+}
+
 const api = `http://localhost:${process.env.E2E_API_PORT ?? '4107'}/api`;
 const evidence = browserEvidence('workspace');
 let fixtureAddress=0;
@@ -86,7 +97,7 @@ test('calendar supports real date navigation, edit, confirmation, completion, ex
   await page.getByRole('button',{name:'下一个日期范围'}).click();await expect(page.locator('.ws-month-grid').getByText('跨月移动后的任务',{exact:false})).toBeVisible();
   await screenshot(page,'workspace-calendar-tasks-desktop');
   await page.getByLabel('学科',{exact:true}).selectOption('english');await expect(page.locator('.ws-month-grid').getByText('跨月移动后的任务',{exact:false})).toHaveCount(0);await page.reload();await expect(page.getByLabel('学科',{exact:true})).toHaveValue('english');
-  await page.getByLabel('学科',{exact:true}).selectOption('math');await page.getByRole('button',{name:'下一个日期范围'}).click();await expect(page.locator('.ws-month-grid').getByText('跨月移动后的任务',{exact:false})).toBeVisible();
+  await page.getByLabel('学科',{exact:true}).selectOption('math');await showMonth(page,2026,11);await expect(page.locator('.ws-month-grid').getByText('跨月移动后的任务',{exact:false})).toBeVisible();
   await page.setViewportSize({width:390,height:844});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);await screenshot(page,'workspace-calendar-mobile');
   expect(errors).toEqual([]);
 });

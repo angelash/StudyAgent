@@ -1,0 +1,54 @@
+{
+  "label": "fixes-focused-browser-second",
+  "stats": {
+    "startTime": "2026-11-01T13:39:11.183Z",
+    "duration": 38327.21,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "rows": [
+    {
+      "file": "course-builder.spec.ts",
+      "line": 29,
+      "title": "blueprint supports goal selection, review, edit and cancellation without creating a course",
+      "status": "passed",
+      "durationMs": 4123,
+      "error": ""
+    },
+    {
+      "file": "course-builder.spec.ts",
+      "line": 48,
+      "title": "a lost confirmation response is verified from the original request and opens the same saved pace once",
+      "status": "passed",
+      "durationMs": 3548,
+      "error": ""
+    },
+    {
+      "file": "course-builder.spec.ts",
+      "line": 68,
+      "title": "changed learning scope invalidates confirmation and can be refreshed without losing the goal",
+      "status": "passed",
+      "durationMs": 3412,
+      "error": ""
+    },
+    {
+      "file": "product-smoke.spec.ts",
+      "line": 177,
+      "title": "an administrator can reach the curriculum review workbench",
+      "status": "passed",
+      "durationMs": 5280,
+      "error": ""
+    },
+    {
+      "file": "teaching-plan-verification.spec.ts",
+      "line": 4,
+      "title": "original guidance verification: ordinary baseline retains prerequisite checks",
+      "status": "passed",
+      "durationMs": 4077,
+      "error": ""
+    }
+  ],
+  "originalPrivateResultsSha256": "67a03d4a7eba49bae2a2efbfda9a79c61103871083272ff73f6ffaaacd8653ef"
+}

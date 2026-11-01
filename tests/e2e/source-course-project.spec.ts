@@ -88,12 +88,14 @@ test('adult course journey keeps reading, unit check and project separate and re
 });
 
 test('an entire adult unit retains every lesson, complete practice, unit check and all project submissions as separate facts',async({page})=>{
-  test.setTimeout(300000);const{actor}=await enter(page),catalog=await call(actor,'GET','/learning/classroom/catalog'),unit=catalog.course.units[0],lessons=unit.lectures.flatMap((lecture:any)=>lecture.lessons);
+  test.setTimeout(480000);const{actor}=await enter(page),catalog=await call(actor,'GET','/learning/classroom/catalog'),unit=catalog.course.units[0],lessons=unit.lectures.flatMap((lecture:any)=>lecture.lessons);
   const journey=page.getByLabel('本单元学习进程',{exact:true});
   for(let index=0;index<lessons.length;index++){
     await page.goto('/studio/classroom?unit=0&panel=units');await journey.locator('summary').click();
     await journey.locator('ol>li').nth(index).getByRole('button',{name:'开始讲解',exact:true}).click();
     const session=await finishReading(page,actor);await finishQuestions(page,session);await leaveClassroom(page);
+    // One learner stays below the service limit of 180 writes per minute; this automated unit otherwise saves faster than a person can.
+    await page.waitForTimeout(15000);
   }
   await journey.locator('summary').click();await journey.locator('ol>li').last().getByRole('button',{name:'开始练习',exact:true}).click();
   await expect(page.locator('.cl-practice-options label').first()).toBeVisible();

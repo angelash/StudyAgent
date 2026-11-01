@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-01T16:07:04.831Z",
+  "plan": "schema33-integration-plan-second",
+  "head": "72f57e47bd747ef31dc6bd3116957e6142ed6c81",
+  "base": "abbfe793cf3b6aeabb1c62a7e667659a29ffdb2d",
+  "applied": 145,
+  "changed": 61,
+  "added": 84,
+  "excluded": [
+    "apps/web/AGENTS.md"
+  ],
+  "ignoredGeneratedFilesSkipped": 22,
+  "mainOnlyResourcesRetained": [
+    "resources/compatibility/course-history-schema33-reader-v1.receipt.json",
+    "resources/compatibility/early-schema33-five-collections-reader-v1.json.gz",
+    "resources/compatibility/early-schema33-four-collections-reader-v1.json.gz",
+    "resources/compatibility/early-schema33-readers.md"
+  ],
+  "filesNotInCompleteRunManifests": [],
+  "recovery": "schema33-integration-apply-first-main-before.json.gz",
+  "recoverySha256": "f596a6a10f34279f8cce3f953d5c1e150dcc26a347b67f7b7e15e5db8f7236cf",
+  "allFilesReadBack": true,
+  "noBuildInMain": true,
+  "formalDataUntouched": true
+}

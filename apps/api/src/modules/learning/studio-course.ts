@@ -107,13 +107,14 @@ export function buildStudioCourse(input: StudioCourseInput): StudioCourse {
   return { id: input.id, ...base, fingerprint, createdAt: now, updatedAt: now };
 }
 
-function buildCoursePace(units: StudioUnit[], budget: number): StudioCoursePace {
+export function buildCoursePace(units: StudioUnit[], budget: number): StudioCoursePace {
   if (!Number.isInteger(budget) || budget < 5 || budget > 60) throw new Error('课程时间预算须为5至60的整数分钟');
   const sessions: StudioCoursePace['sessions'] = [];
   for (const lesson of units.flatMap(unit => unit.lessons)) {
     const teaching = lesson.teaching?.teaching;
-    const text = teaching ? [teaching.explanation, teaching.example.prompt, ...teaching.example.steps, teaching.example.conclusion].join('') : lesson.objective;
-    const minutes = lesson.kind === 'learn' ? Math.max(3, Math.ceil(text.length / 180) + 2) : lesson.kind === 'practice' ? 5 : 10;
+    const text = lesson.textbookTeaching ? lesson.textbookTeaching.lesson.steps.map(step => step.narration).join('') : teaching ? [teaching.explanation, teaching.example.prompt, ...teaching.example.steps, teaching.example.conclusion].join('') : lesson.objective;
+    const minutes = lesson.estimatedMinutes ?? (lesson.kind === 'learn' ? Math.max(3, Math.ceil(text.length / 180) + 2) : lesson.kind === 'practice' ? 5 : 10);
+    if (!Number.isSafeInteger(minutes) || minutes < 1 || minutes > 10000) throw new Error('课程活动参考时长无效，请核对原教学内容');
     const parts = Math.ceil(minutes / budget);
     let remaining = minutes;
     for (let part = 1; part <= parts; part++) {

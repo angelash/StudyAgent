@@ -20,8 +20,10 @@ import { ControlledEditorialService } from './controlled-editorial.service';
 import { ControlledEditorialController } from './controlled-editorial.controller';
 import { ControlledDiagnosticsService } from './controlled-diagnostics.service';
 import { ControlledDiagnosticsController } from './controlled-diagnostics.controller';
+import { TextbookTeachingService } from './textbook-teaching.service';
+import { TextbookTeachingController } from './textbook-teaching.controller';
 
-@Module({ imports: [StudentsModule, QuestionWorkspaceModule, AiModule, StudentMediaModule, ProcessingFilesModule], controllers: [DiagnosticsController,GuidanceModelController,ControlledEditorialController,ControlledDiagnosticsController],
-  providers: [ControlledEditorialService,ControlledDiagnosticsService,RetentionService,CurriculumService, CurriculumPackageService, DiagnosticsService, GuidanceService, FoundationSeedService, TextbookRegistryService,
-    GuidanceModelService,GuidanceModelWorkerService,{provide:guidanceModelPort,useExisting:GuidanceModelService}], exports: [RetentionService,CurriculumService, DiagnosticsService, GuidanceService] })
+@Module({ imports: [StudentsModule, QuestionWorkspaceModule, AiModule, StudentMediaModule, ProcessingFilesModule], controllers: [DiagnosticsController,GuidanceModelController,ControlledEditorialController,ControlledDiagnosticsController,TextbookTeachingController],
+  providers: [TextbookTeachingService,ControlledEditorialService,ControlledDiagnosticsService,RetentionService,CurriculumService, CurriculumPackageService, DiagnosticsService, GuidanceService, FoundationSeedService, TextbookRegistryService,
+    GuidanceModelService,GuidanceModelWorkerService,{provide:guidanceModelPort,useExisting:GuidanceModelService}], exports: [TextbookRegistryService,RetentionService,CurriculumService, DiagnosticsService, GuidanceService] })
 export class DiagnosticsModule {}

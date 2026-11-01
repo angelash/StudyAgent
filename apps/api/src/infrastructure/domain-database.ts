@@ -19,6 +19,7 @@ import { DomainWriteConflict } from './domain-write-conflict';
 import { assertPaperLibraryPersisted, finishPaperLibraryErasure, needsPaperLibraryCommit, paperLibrarySnapshot, paperLibraryNativeRows } from '../modules/library/paper-export-persistence';
 import { assertPaperLibraryWrites } from '../modules/library/paper-library-write-integrity';
 import { assertPaperExportNativeRows } from '../modules/library/paper-export-native';
+import { assertTeachingPersisted, assertTeachingWrites, needsTeachingCommit } from '../modules/diagnostics/textbook-teaching-native';
 
 export type DomainState = Record<string, unknown[]>;
 export type StateSnapshot = { revision: number; state: DomainState; collectionRevisions?: Record<string, number> };
@@ -256,11 +257,11 @@ export class DomainDatabase {
     const calendarRows=this.sqlite?this.sqlite.prepare(calendarSql).all():(await this.postgres!.query(calendarSql)).rows;
     assertGuidanceCalendarRecords(calendarRows as Array<{collection:string;record_id:string;body:unknown}>);
     await this.migrateConstraints(28,[{name:'guidance_calendar_original_plan',collection:'guidanceCalendarArrangements',fields:['planId']},{name:'studio_calendar_author_request',collection:'studioCalendarCommands',fields:['actorId','requestKey']}],`UPDATE study_restore_guard SET state='ready-schema28',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema27';`);
-    const retentionSql="SELECT collection,record_id,body FROM domain_records WHERE collection IN ('events','retentionExposureEvents','students','users','practiceSessions','practiceAttempts','practiceHints','assistantPracticeGroupStarts','diagnosticSessions','diagnosticResponses','diagnosticHints','assistantTeachingAssignments','assistantTeachingSessions','classroomSessions','studioCourses','sourceCourses','knowledgeAtoms','curriculumRevisions','scoringRevisions','reviewTasks','diagnosticPlans')";
+    const retentionSql="SELECT collection,record_id,body FROM domain_records WHERE collection IN ('events','retentionExposureEvents','students','users','practiceSessions','practiceAttempts','practiceHints','assistantPracticeGroupStarts','diagnosticSessions','diagnosticResponses','diagnosticHints','assistantTeachingAssignments','assistantTeachingSessions','classroomSessions','textbookTeachingAdoptions','textbookTeachingCourseRevisions','studioCourses','sourceCourses','knowledgeAtoms','curriculumRevisions','scoringRevisions','reviewTasks','diagnosticPlans')";
     const retentionRows=this.sqlite?this.sqlite.prepare(retentionSql).all():(await this.postgres!.query(retentionSql)).rows;
     assertRetentionNativeRows(retentionRows as Array<{collection:string;record_id:string;body:unknown}>);
     await this.migrateConstraints(29,[{name:'retention_source_original_atom',collection:'retentionExposureEvents',fields:['sourceExposureId','studentId','atomId']}],`UPDATE study_restore_guard SET state='ready-schema29',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema28';`);
-    const controlledSql="SELECT collection,record_id,body FROM domain_records WHERE collection IN ('controlledMaterialReviews','controlledContrastPublications','controlledContrastReleases','controlledEditorialCommands','controlledContrastPreviews','privacyRequests','diagnosticSessions','diagnosticResponses','diagnosticHints','diagnosticDrafts','diagnosticReports','students','users','scoringRevisions','retentionExposureEvents','practiceSessions','practiceAttempts','practiceHints','assistantPracticeGroupStarts','assistantTeachingAssignments','assistantTeachingSessions','classroomSessions','studioCourses','sourceCourses','events','curriculumRevisions','knowledgeAtoms','diagnosticPlans','guidancePlanRevisions','reviewTasks')";
+    const controlledSql="SELECT collection,record_id,body FROM domain_records WHERE collection IN ('controlledMaterialReviews','controlledContrastPublications','controlledContrastReleases','controlledEditorialCommands','controlledContrastPreviews','privacyRequests','diagnosticSessions','diagnosticResponses','diagnosticHints','diagnosticDrafts','diagnosticReports','students','users','scoringRevisions','retentionExposureEvents','practiceSessions','practiceAttempts','practiceHints','assistantPracticeGroupStarts','assistantTeachingAssignments','assistantTeachingSessions','classroomSessions','textbookTeachingAdoptions','textbookTeachingCourseRevisions','studioCourses','sourceCourses','events','curriculumRevisions','knowledgeAtoms','diagnosticPlans','guidancePlanRevisions','reviewTasks')";
     const controlledRows=this.sqlite?this.sqlite.prepare(controlledSql).all():(await this.postgres!.query(controlledSql)).rows;
     assertControlledNativeRows(controlledRows as Array<{collection:string;record_id:string;body:unknown}>);
     await this.migrateConstraints(30,[{name:'controlled_material_original_command',collection:'controlledMaterialReviews',fields:['actorId','commandId']},{name:'controlled_publication_revision',collection:'controlledContrastPublications',fields:['logicalId','revision']},{name:'controlled_release_identity',collection:'controlledContrastReleases',fields:['logicalId']},{name:'controlled_editorial_original_request',collection:'controlledEditorialCommands',fields:['actorId','requestKey']},{name:'controlled_preview_original_request',collection:'controlledContrastPreviews',fields:['arrangedBy','requestKey']}],`UPDATE study_restore_guard SET state='ready-schema30',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema29';`);
@@ -283,6 +284,24 @@ export class DomainDatabase {
       { name: 'paper_export_original_lease', collection: 'paperExportFiles', fields: ['taskId', 'generation', 'token'] },
     ], `UPDATE study_restore_guard SET state='ready-schema32',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema31';`,
     query => assertPaperLibraryPersisted(query, this.driver === 'postgres').then(() => undefined));
+    await this.migrateConstraints(33, [
+      { name: 'textbook_teaching_original_request', collection: 'textbookTeachingCommands', fields: ['actorId', 'requestKey'] },
+      { name: 'textbook_teaching_content_version', collection: 'textbookTeachingVersions', fields: ['packageId', 'contentVersion'] },
+      { name: 'textbook_teaching_source_version', collection: 'textbookTeachingSources', fields: ['packageId', 'snapshot.fingerprint'] },
+      { name: 'textbook_teaching_adopted_lesson', collection: 'textbookTeachingAdoptions', fields: ['studentId', 'courseId', 'lessonId'] },
+      { name: 'textbook_teaching_course_revision', collection: 'textbookTeachingCourseRevisions', fields: ['studentId', 'courseId', 'revision'] },
+      { name: 'textbook_teaching_course_upgrade_request', collection: 'textbookTeachingCourseRevisions', fields: ['command.input.requestKey'] },
+    ], `UPDATE study_restore_guard SET state='ready-schema33-exact-edition-v1',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema32';`,
+    query => assertTeachingPersisted(query).then(() => undefined));
+    // Earlier QA-only33 candidates had four/five collections. They were never
+    // released and cannot masquerade as this six-collection history protocol.
+    const adoptionIndex = this.sqlite ? this.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='index' AND name='textbook_teaching_adopted_lesson'").get()
+      : (await this.postgres!.query("SELECT indexname FROM pg_indexes WHERE schemaname=current_schema() AND indexname='textbook_teaching_adopted_lesson'")).rows[0];
+    if (!adoptionIndex) throw new Error('textbook_teaching_schema33_candidate_incomplete');
+    for(const name of ['textbook_teaching_course_revision','textbook_teaching_course_upgrade_request']){
+      const index=this.sqlite?this.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='index' AND name=?").get(name):(await this.postgres!.query('SELECT indexname FROM pg_indexes WHERE schemaname=current_schema() AND indexname=$1',[name])).rows[0];
+      if(!index)throw new Error('textbook_teaching_schema33_course_history_incomplete');
+    }
     this.limits = new RateLimitRepository(this.tasks, this.sqlite, this.postgres, this.now);
   }
 
@@ -291,18 +310,18 @@ export class DomainDatabase {
     if (this.sqlite) {
       const table = this.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='study_restore_guard'").get();
       if (table) state = (this.sqlite.prepare('SELECT state FROM study_restore_guard WHERE id=1').get() as { state?: string } | undefined)?.state ?? 'missing';
-      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27', 'ready-schema28', 'ready-schema29', 'ready-schema30', 'ready-schema31', 'ready-schema32'].includes(state)) throw new Error('Database restoration is incomplete');
+      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27', 'ready-schema28', 'ready-schema29', 'ready-schema30', 'ready-schema31', 'ready-schema32', 'ready-schema33-exact-edition-v1'].includes(state)) throw new Error('Database restoration is incomplete');
       if (this.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='schema_migrations'").get())
         version = Number((this.sqlite.prepare('SELECT MAX(version) version FROM schema_migrations').get() as { version?: number }).version ?? 0);
     } else {
       if ((await this.postgres!.query("SELECT to_regclass('study_restore_guard') AS name")).rows[0].name)
         state = (await this.postgres!.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state ?? 'missing';
-      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27', 'ready-schema28', 'ready-schema29', 'ready-schema30', 'ready-schema31', 'ready-schema32'].includes(state)) throw new Error('Database restoration is incomplete');
+      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27', 'ready-schema28', 'ready-schema29', 'ready-schema30', 'ready-schema31', 'ready-schema32', 'ready-schema33-exact-edition-v1'].includes(state)) throw new Error('Database restoration is incomplete');
       if ((await this.postgres!.query("SELECT to_regclass('schema_migrations') AS name")).rows[0].name)
         version = Number((await this.postgres!.query('SELECT MAX(version) version FROM schema_migrations')).rows[0]?.version ?? 0);
     }
-    if (version > 32) throw new Error('unsupported_database_schema');
-    const expected = version === 32 ? 'ready-schema32' : version === 31 ? 'ready-schema31' : version === 30 ? 'ready-schema30' : version === 29 ? 'ready-schema29' : version === 28 ? 'ready-schema28' : version === 27 ? 'ready-schema27' : version === 26 ? 'ready-schema26' : version === 25 ? 'ready-schema25' : version === 24 ? 'ready-schema24' : version === 23 ? 'ready-schema23' : 'ready';
+    if (version > 33) throw new Error('unsupported_database_schema');
+    const expected = version === 33 ? 'ready-schema33-exact-edition-v1' : version === 32 ? 'ready-schema32' : version === 31 ? 'ready-schema31' : version === 30 ? 'ready-schema30' : version === 29 ? 'ready-schema29' : version === 28 ? 'ready-schema28' : version === 27 ? 'ready-schema27' : version === 26 ? 'ready-schema26' : version === 25 ? 'ready-schema25' : version === 24 ? 'ready-schema24' : version === 23 ? 'ready-schema23' : 'ready';
     if (state !== undefined && state !== expected || version >= 23 && state !== expected) throw new Error('minimum_reader_guard_mismatch');
   }
 
@@ -428,6 +447,7 @@ export class DomainDatabase {
     if (changes.length === 0 && !options.enqueue?.length && !options.fence && !options.taskOperations?.length) return before.revision;
     const conflict = () => { this.counters.conflicts++; return new DomainWriteConflict(); };
     const paperLibrary = needsPaperLibraryCommit(changes, options);
+    const textbookTeaching = needsTeachingCommit(changes);
     if (this.sqlite) {
       this.sqlite.exec('BEGIN IMMEDIATE');
       try {
@@ -451,6 +471,7 @@ export class DomainDatabase {
         await this.tasks.insert(options.enqueue ?? []);
         await this.tasks.applyOperations(options.taskOperations ?? []);
         if (paperLibrary) await this.checkPaperLibraryCommit(before, changes, async (sql, args = []) => this.sqlite!.prepare(sql).all(...args));
+        if (textbookTeaching) await this.checkTeachingCommit(before, changes, async (sql, args = []) => this.sqlite!.prepare(sql).all(...args));
         this.sqlite.exec('COMMIT');
         this.rememberCommit(current, current + 1, changes);
         if (options.reads) this.counters.scopedCommits++;
@@ -480,6 +501,7 @@ export class DomainDatabase {
       await this.tasks.insert(options.enqueue ?? [], client);
       await this.tasks.applyOperations(options.taskOperations ?? [], client);
       if (paperLibrary) await this.checkPaperLibraryCommit(before, changes, async (sql, args = []) => { let parameter = 0; return (await client.query(sql.replace(/\?/g, () => '$' + ++parameter), args)).rows; });
+      if (textbookTeaching) await this.checkTeachingCommit(before, changes, async (sql, args = []) => { let parameter = 0; return (await client.query(sql.replace(/\?/g, () => '$' + ++parameter), args)).rows; });
       await client.query('COMMIT');
       this.rememberCommit(current, current + 1, changes);
       if (options.reads) this.counters.scopedCommits++;
@@ -493,6 +515,15 @@ export class DomainDatabase {
     for (const row of snapshot.rows) (state[row.collection] ??= []).push(typeof row.body === 'string' ? JSON.parse(row.body) : row.body);
     assertPaperLibraryWrites(before.state, state, changes);
     assertPaperExportNativeRows(paperLibraryNativeRows(snapshot.rows), snapshot.tasks, snapshot.history);
+  }
+
+  private async checkTeachingCommit(before: StateSnapshot, changes: Change[], query: (sql: string, args?: any[]) => Promise<any[]>) {
+    const eligibility = changes.some(change => change.body !== null && (change.collection === 'textbookTeachingCommands' &&
+      !before.state.textbookTeachingCommands?.some((row: any) => row.id === change.id) || change.collection === 'textbookTeachingAdoptions' &&
+      !before.state.textbookTeachingAdoptions?.some((row: any) => row.id === change.id) || change.collection === 'diagnosticSessions' &&
+      Boolean(JSON.parse(change.body).teachingOrigin) && !before.state.diagnosticSessions?.some((row: any) => row.id === change.id) || change.collection==='textbookTeachingCourseRevisions'&&!before.state.textbookTeachingCourseRevisions?.some((row:any)=>row.id===change.id)));
+    const state = await assertTeachingPersisted(query, eligibility);
+    assertTeachingWrites(before.state, state, changes, this.now());
   }
 
   private async assertDependencies(before: StateSnapshot, changes: Change[], dependencies: ReadDependency[],

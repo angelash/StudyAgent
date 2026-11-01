@@ -6,6 +6,7 @@ import type { CurriculumBook, CurriculumChapter, CurriculumLesson } from '@study
 const sha256 = z.string().regex(/^[a-f0-9]{64}$/), key = z.string().min(1).max(180);
 const candidateSchema = z.object({
   bookId: key, bookVersion: key, sourceBookId: key, sourceSha256: sha256, extractedSha256: sha256, lessonId: key, lessonFingerprint: sha256,
+  editionProofFingerprint: sha256.optional(),
   pdfStartPage: z.number().int().min(1), pdfEndPage: z.number().int().min(1), titleMatched: z.boolean(),
   candidateAtomIds: z.array(key).max(30), rationale: z.string().max(2000), evidence: z.array(z.unknown()).max(30),
   reviewStatus: z.enum(['candidate', 'unreviewed']), approvedAtomIds: z.array(z.never()).length(0),

@@ -49,6 +49,9 @@ import type { PaperSelectionListRecord, PaperSelectionCommandRecord } from '../m
 import type { PaperExportRecord, PaperExportCommandRecord } from '../modules/library/paper-export-record';
 import type { PaperSourceExposureRecord } from '../modules/library/paper-source-exposure-record';
 import type { PaperExportFileRecord } from '../modules/library/paper-export-file-record';
+import type { TextbookTeachingPackageRecord, TextbookTeachingVersionRecord, TextbookTeachingSourceRecord, TextbookTeachingCommandRecord } from '../modules/diagnostics/textbook-teaching-record';
+import type { TextbookTeachingAdoptionRecord } from '../modules/diagnostics/textbook-teaching-adoption';
+import type { TeachingCourseRevisionRecord } from '../modules/learning/textbook-teaching-course-history';
 import { DomainSelector, ReadDependency, compileSelector, indexedPositions, validateSelector } from './domain-selection';
 import type { PaperPublication, LibraryBookmark } from '../modules/library/library.types';
 import {
@@ -448,6 +451,12 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   paperCaptureRepairCommands: PaperRepairCommandRecord[] = [];
   paperCaptureRepairs: PaperRepairRecord[] = [];
   paperSelectionLists: PaperSelectionListRecord[] = [];
+  textbookTeachingPackages: TextbookTeachingPackageRecord[] = [];
+  textbookTeachingVersions: TextbookTeachingVersionRecord[] = [];
+  textbookTeachingSources: TextbookTeachingSourceRecord[] = [];
+  textbookTeachingCommands: TextbookTeachingCommandRecord[] = [];
+  textbookTeachingAdoptions: TextbookTeachingAdoptionRecord[] = [];
+  textbookTeachingCourseRevisions: TeachingCourseRevisionRecord[] = [];
   paperSelectionCommands: PaperSelectionCommandRecord[] = [];
   paperExports: PaperExportRecord[] = [];
   paperExportCommands: PaperExportCommandRecord[] = [];
@@ -593,6 +602,12 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.paperSelectionCommands = [];
     this.paperExports = [];
     this.paperExportCommands = [];
+    this.textbookTeachingPackages = [];
+    this.textbookTeachingVersions = [];
+    this.textbookTeachingSources = [];
+    this.textbookTeachingCommands = [];
+    this.textbookTeachingAdoptions = [];
+    this.textbookTeachingCourseRevisions = [];
     this.paperSourceExposures = [];
     this.paperExportFiles = [];
     this.studioCalendarCommands = [];

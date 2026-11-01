@@ -1,7 +1,7 @@
 import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException, StreamableFile } from '@nestjs/common';
 import { z } from 'zod';
 import { createHash } from 'node:crypto';
-import type { ClassroomCatalog, ClassroomSession, ClassroomSessionView,CourseSourceSnapshot } from '@study-agent/contracts';
+import type { ClassroomCatalog, ClassroomSession, ClassroomSessionView,CourseSourceSnapshot, StudioCourse, StudioLesson } from '@study-agent/contracts';
 import { normalizeClassroomSelection } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { validate } from '../../common/validation';
@@ -20,6 +20,8 @@ import { activityNavigationContext } from './activity-navigation';
 import { resolveClassroomRetentionContext } from '../diagnostics/classroom-retention-origin';
 import type { ClassroomRetentionDisplay,ClassroomLegacyGap } from '../diagnostics/classroom-retention-record';
 import { RetentionService } from '../diagnostics/retention.service';
+import { retainedCourseLesson,currentLessonForHistoricalSource } from './studio-course-history-lookup';
+import { assertAdoptedTeachingLesson } from '../diagnostics/textbook-teaching-adoption';
 
 export type ClassroomSessionRecord = ClassroomSession & {
   retentionDisplays?:ClassroomRetentionDisplay[];
@@ -68,6 +70,13 @@ export class ClassroomService {
     return row;
   }
 
+  private studioLesson(course: StudioCourse, source: StudioLesson) {
+    if (!source.textbookTeaching) return curriculumClassroomLesson(course, source);
+    const record = this.store.find('textbookTeachingAdoptions', { studentId: course.studentId, courseId: course.id, lessonId: source.id });
+    try { return assertAdoptedTeachingLesson(record, course, source).snapshot.lesson; }
+    catch { throw new ConflictException('本课采用的准确教学版本无法核对，请保留原课堂并返回课程检查'); }
+  }
+
   private view(row: ClassroomSessionRecord): ClassroomSessionView {
     const { answerKeys: _answerKeys, hintKeys: _hintKeys, requests: _requests, sourceCheckSources:_sourceCheckSources,retentionDisplays:_retentionDisplays,retentionLegacyGap:_retentionLegacyGap,...safe } = structuredClone(row);
     if(row.sourceCheckId&&sourceCheckExposed(this.store,row))safe.authoringAnswerExposure=true;
@@ -76,11 +85,13 @@ export class ClassroomService {
       ...message, speech: message.speech ? verifySpeechTrack(message.content,message.speech) : freezeSpeechTrack(message.content,'legacy-v1'),
     } : message);
     safe.lesson.questions = safe.lesson.questions.map(question => ({ ...question, hint: '', hintCount: this.hintLevels(row, question.id).length }));
-    let current = classroomLesson(row.lessonId);
+    let current = classroomLesson(row.lessonId),archivedCourseVersion=false;
     if (row.studioCourseId) {
       const course = this.store.find('studioCourses', { id: row.studioCourseId });
       const source = course?.units.flatMap(unit => unit.lessons).find(lesson => lesson.id === row.lessonId);
-      current = course && source ? curriculumClassroomLesson(course, source) : undefined;
+      try { current = course && source ? this.studioLesson(course, source) : undefined; }
+      catch { current = undefined; }
+      if(course&&!source){const historical=retainedCourseLesson({textbookTeachingCourseRevisions:this.store.select('textbookTeachingCourseRevisions',{courseId:course.id,studentId:course.studentId})},course.id,row.lessonId,course.studentId,course.subject);if(historical)try{const saved=this.studioLesson(historical.course,historical.lesson);archivedCourseVersion=Boolean(saved&&classroomFingerprint(saved)===row.contentFingerprint);}catch{/* An invalid historical qualification remains unavailable. */}}
     }
     if(row.sourceCheckId){const course=this.store.find('sourceCourses',{id:row.sourceCourseId}),check=course&&publishedSourceCheck(this.store,course,row.sourceCheckId);current=check?sourceCheckLesson(check):undefined;}
     else if(row.sourceCourseId){const course=this.store.find('sourceCourses',{id:row.sourceCourseId});
@@ -92,7 +103,7 @@ export class ClassroomService {
     const navigationCourse = row.sourceCourseId ? this.store.find('sourceCourses', { id: row.sourceCourseId }) : row.studioCourseId ? this.store.find('studioCourses', { id: row.studioCourseId }) : undefined;
     return { ...safe, navigationContext: activityNavigationContext(row.studentId, navigationCourse, row.lesson.verificationHref), speech: this.speech.capabilities(),
       ...(projectUnit ? { projectHref: '/studio/projects?' + new URLSearchParams({ unitId: projectUnit, legacy: row.id, ...(row.studioCourseId ? { studioCourseId: row.studioCourseId } : {}) }) } : {}),
-      contentStatus: current ? classroomFingerprint(current) === row.contentFingerprint ? 'current' : 'archived' : 'unavailable' };
+      contentStatus: current ? classroomFingerprint(current) === row.contentFingerprint ? 'current' : 'archived' : archivedCourseVersion?'archived':'unavailable' };
   }
 
   get(user: InMemoryUserAccount, id: string) { return this.view(this.record(user, id)); }
@@ -105,9 +116,10 @@ export class ClassroomService {
     return legacy ? [legacy] : [];
   }
 
-  open(user: InMemoryUserAccount, input: unknown) {
+  open(user: InMemoryUserAccount, input: unknown):ClassroomSessionView {
     const command = validate(z.object({ lessonId: z.string().min(1).max(180), studioCourseId: z.string().min(1).max(180).optional(),sourceCourseId:z.string().min(1).max(180).optional(),
-      sourceCheckId:z.string().min(1).max(180).optional(),useCurrentVersion: z.boolean().default(false) }).strict().refine(value=>!value.studioCourseId||!value.sourceCourseId,'请选择一个课程来源')
+      sourceCheckId:z.string().min(1).max(180).optional(),courseRevision:z.number().int().min(0).max(1000).optional(),useCurrentVersion: z.boolean().default(false) }).strict().refine(value=>!value.studioCourseId||!value.sourceCourseId,'请选择一个课程来源')
+      .refine(value=>value.courseRevision===undefined||Boolean(value.studioCourseId)&&!value.useCurrentVersion,'课程修订必须与明确的原课程入口一致')
       .refine(value=>!value.sourceCheckId||Boolean(value.sourceCourseId)&&!value.studioCourseId&&value.lessonId==='source-check:'+value.sourceCheckId,'核查题组与来源课程不一致'), input);
     let lesson = classroomLesson(command.lessonId), courseId = 'sociology-foundations', studentId: string | null = null;
     let generatedKeys:ReturnType<typeof sourceCourseAnswerKeys>|ReturnType<typeof sourceCheckKeys>|undefined;let authoringAnswerExposure=false;
@@ -116,9 +128,14 @@ export class ClassroomService {
       const course = this.store.find('studioCourses', { id: command.studioCourseId });
       if (!course) throw new NotFoundException('课程不存在');
       this.students.assertCanAccessStudent(user, course.studentId);
-      const source = course.units.flatMap(unit => unit.lessons).find(item => item.id === command.lessonId);
-      lesson = source && curriculumClassroomLesson(course, source);
-      if (lesson) generatedKeys = chemistryTutorialKeys(lesson);
+      const selectedCourse=command.courseRevision===undefined||(course.contentRevision??0)===command.courseRevision?course:this.store.find('textbookTeachingCourseRevisions',{courseId:course.id,studentId:course.studentId,revision:command.courseRevision})?.course;
+      if(!selectedCourse)throw new NotFoundException('指定的历史课程版本不存在');
+      const source = selectedCourse.units.flatMap(unit => unit.lessons).find(item => item.id === command.lessonId);
+      if(command.courseRevision!==undefined&&!source)throw new ConflictException('课时不属于明确选择的课程修订，请返回原课程核对');
+      if(!source){const previous=this.store.select('classroomSessions',{ownerUserId:user.id,studioCourseId:course.id,lessonId:command.lessonId}).sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt))[0];
+        if(previous&&!command.useCurrentVersion)return this.view(previous);const historical=retainedCourseLesson({textbookTeachingCourseRevisions:this.store.select('textbookTeachingCourseRevisions',{courseId:course.id,studentId:course.studentId})},course.id,command.lessonId,course.studentId,course.subject);if(command.useCurrentVersion&&historical){const latest=currentLessonForHistoricalSource(course,historical.lesson);if(latest)return this.open(user,{...command,lessonId:latest.id});}if(previous||historical)throw new ConflictException('这个课时属于原课程的历史版本，请保留原入口并返回课程选择准确版本');}
+      lesson = source && this.studioLesson(selectedCourse, source);
+      if (lesson) generatedKeys = source?.textbookTeaching ? { answers: {}, hints: {} } : chemistryTutorialKeys(lesson);
       courseId = course.id; studentId = course.studentId;
       if (!lesson) throw new BadRequestException('该活动没有已审核的教学讲解，请使用独立练习入口');
     } else if(command.sourceCourseId){const course=this.store.find('sourceCourses',{id:command.sourceCourseId});if(!course)throw new NotFoundException('资料课程不存在');assertSourceCourseAccess(user,course,this.students);
@@ -138,7 +155,7 @@ export class ClassroomService {
     const fingerprint = classroomFingerprint(lesson);
     const previous = this.store.find('classroomSessions', { ownerUserId: user.id, courseId, lessonId: lesson.id, contentFingerprint: fingerprint });
     if (previous) return this.view(previous);
-    if (!command.useCurrentVersion) {
+    if (!command.useCurrentVersion && command.courseRevision === undefined) {
       const archived = this.store.select('classroomSessions', { ownerUserId: user.id, courseId, lessonId: lesson.id })
         .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))[0];
       if (archived) return this.view(archived);
@@ -154,7 +171,7 @@ export class ClassroomService {
       ...(check?{sourceCheckId:check.id,sourceCheckFingerprint:check.contentFingerprint!,sourceCheckTargets:check.prepared.targets.map(({lessonId,title,objective})=>({lessonId,title,objective})),sourceCheckSources:structuredClone(check.prepared.sources)}:{}),
       contentFingerprint: fingerprint, lesson, presentation: freezeClassroomPresentation(lesson,now), cursor: 0, revealed: 0, sentenceCursor: 0, status: 'paused', revision: 0,
       messages: [], answers: [], projectDraft: '', answerKeys, hintKeys, hintReceipts: [], requests: [], createdAt: now, updatedAt: now };
-    if(user.role==='student'&&studentId)session.retentionContext=resolveClassroomRetentionContext({studioCourses:command.studioCourseId?this.store.select('studioCourses',{id:command.studioCourseId}):[],sourceCourses:command.sourceCourseId?this.store.select('sourceCourses',{id:command.sourceCourseId}):[],knowledgeAtoms:this.store.inspect('knowledgeAtoms'),curriculumRevisions:this.store.inspect('curriculumRevisions')},session);
+    if(user.role==='student'&&studentId)session.retentionContext=resolveClassroomRetentionContext({studioCourses:command.studioCourseId?this.store.select('studioCourses',{id:command.studioCourseId}):[],textbookTeachingCourseRevisions:command.studioCourseId?this.store.select('textbookTeachingCourseRevisions',{courseId:command.studioCourseId,studentId}):[],textbookTeachingAdoptions:command.studioCourseId?this.store.select('textbookTeachingAdoptions',{courseId:command.studioCourseId,studentId}):[],sourceCourses:command.sourceCourseId?this.store.select('sourceCourses',{id:command.sourceCourseId}):[],knowledgeAtoms:this.store.inspect('knowledgeAtoms'),curriculumRevisions:this.store.inspect('curriculumRevisions')},session);
     this.store.append('classroomSessions', session);
     return this.view(session);
   }

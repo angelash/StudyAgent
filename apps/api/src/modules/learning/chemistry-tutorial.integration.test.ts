@@ -54,7 +54,11 @@ describe.sequential('versioned chemical teaching resources and preserved learnin
     expect(original.contentStatus).toBe('archived'); expect(original.lesson).toEqual(old.lesson);
     const reopened = await call('post', '/learning/classroom/sessions', { studioCourseId: course.id, lessonId: old.lessonId });
     expect(reopened.id).toBe(old.id);
+    const selectedRevision = await call('post', '/learning/classroom/sessions', { studioCourseId: course.id, lessonId: old.lessonId, courseRevision: 0 });
+    expect(selectedRevision.id).not.toBe(old.id); expect(selectedRevision.contentStatus).toBe('current');
+    expect(selectedRevision.lesson.steps.flatMap((step: any) => step.blocks).some((block: any) => block.kind === 'experiment')).toBe(true);
     const current = await call('post', '/learning/classroom/sessions', { studioCourseId: course.id, lessonId: old.lessonId, useCurrentVersion: true });
+    expect(current.id).toBe(selectedRevision.id);
     expect(current.id).not.toBe(old.id); expect(current.contentStatus).toBe('current'); expect(current.lesson.questions).toHaveLength(1);
     expect(current.lesson.steps.flatMap((step: any) => step.blocks).some((block: any) => block.kind === 'experiment')).toBe(true);
     expect((await call('get', '/learning/classroom/sessions/' + old.id)).lesson).toEqual(old.lesson);

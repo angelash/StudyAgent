@@ -113,7 +113,9 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await expect(page.locator('.ws-month-grid').getByText('分数复习安排')).toBeVisible();
   await page.getByRole('button', { name: '连接 LMS / 日历' }).click();
   await page.getByLabel('来源类型').selectOption('lms_ics');
-  await page.getByLabel('或粘贴 ICS 文件内容').fill('BEGIN:VCALENDAR\nBEGIN:VEVENT\nUID:school-1\nDTSTART:20261103T080000+0800\nDTEND:20261103T084500+0800\nSUMMARY:学校单元复习\nEND:VEVENT\nEND:VCALENDAR');
+  // The school event is on the third day of next month in Asia/Shanghai, whatever the run date.
+  const schoolDay = (() => { const local = new Date(Date.now() + 8 * 3600000); return new Date(Date.UTC(local.getUTCFullYear(), local.getUTCMonth() + 1, 3)).toISOString().slice(0, 10).replaceAll('-', ''); })();
+  await page.getByLabel('或粘贴 ICS 文件内容').fill('BEGIN:VCALENDAR\nBEGIN:VEVENT\nUID:school-1\nDTSTART:' + schoolDay + 'T080000+0800\nDTEND:' + schoolDay + 'T084500+0800\nSUMMARY:学校单元复习\nEND:VEVENT\nEND:VCALENDAR');
   await page.getByRole('button', { name: '连接并同步' }).click();
   await page.getByRole('button', {name:'下一个日期范围'}).click();
   await expect(page.locator('.ws-month-grid').getByText('学校单元复习')).toBeVisible();

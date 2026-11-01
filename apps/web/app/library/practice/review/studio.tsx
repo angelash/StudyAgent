@@ -61,7 +61,7 @@ function ReviewList({ user }: { user: SessionUser }) {
     let current = true; const controller = new AbortController(); setCalendarBusy(true); setCalendarError(''); setEvents([]);
     void call<{ events: PaperReviewCalendarEvent[] }>('/library/practice/reviews/calendar?' + calendarQuery, undefined, controller.signal).then(value => { if (current) setEvents(value.events); }).catch(caught => { if (current) setCalendarError(paperPracticeFailure(caught)); }).finally(() => { if (current) setCalendarBusy(false); });
     return () => { current = false; controller.abort(); };
-  }, [calendarQuery, call, reload]);
+  }, [calendarQuery, call, reload, query]);
   function apply(next: Query) { setQuery(next); setEditing(next); window.history.replaceState({}, '', back('/library/practice/review?' + queryString(next))); }
   async function exportCalendar() {
     setCalendarError('');

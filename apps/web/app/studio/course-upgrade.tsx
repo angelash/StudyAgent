@@ -1,0 +1,42 @@
+'use client';
+import * as React from 'react';
+import type { StudioCourse, StudioOverview } from '@study-agent/contracts';
+import { courseBuilderScope } from '../../lib/course-builder-copy';
+import { upgradeCourseRevision, type CourseUpgradeOwner } from '../../lib/course-upgrade-copy';
+import { useCourseUpgradeWorkspace } from '../../lib/use-course-upgrade-workspace';
+import { WorkspaceDialog } from './workspace-dialog';
+import { TextbookCourseSelector } from './textbook-course-selector';
+import './course-builder.css';
+
+export function CourseUpgrade({ owner, selected, course, onClose, onConfirmed, returnFocus }: {
+  owner: CourseUpgradeOwner; selected: StudioOverview['selected']; course: StudioCourse; onClose: () => void; onConfirmed: (course: StudioCourse) => void; returnFocus: HTMLElement | null;
+}) {
+  const ws = useCourseUpgradeWorkspace(owner, selected, course, onConfirmed), formId = React.useId();
+  const close = () => { ws.stop(); ws.request(onClose); };
+  if (ws.denied) return <WorkspaceDialog onClose={onClose} returnFocus={returnFocus}><section className="ws-builder ws-course-builder" role="dialog" aria-modal="true" aria-label="课程升级"><h2>请重新核对当前身份</h2><p role="alert">当前身份无法继续操作这份升级稿。原稿按原账号保留。</p><button onClick={onClose}>关闭</button></section></WorkspaceDialog>;
+  if (!ws.loaded || !ws.copy) return <WorkspaceDialog onClose={close} returnFocus={returnFocus}><section className="ws-builder ws-course-builder" role="dialog" aria-modal="true" aria-label="课程升级"><header><h2>课程升级完整稿</h2><button aria-label="关闭课程升级" onClick={close}>×</button></header><p role="status">{ws.storage}</p>{ws.error && <p role="alert">{ws.error}</p>}<button disabled={!ws.loaded || Boolean(ws.busy)} onClick={() => void ws.fresh()}>按当前版本另开升级稿</button></section></WorkspaceDialog>;
+  const copy = ws.copy, preview = ws.preview, locked = Boolean(ws.busy || copy.pending);
+  const scopeChanged = !selected || selected.id !== owner.studentId || JSON.stringify(copy.scope) !== JSON.stringify(courseBuilderScope(selected.scope, selected.grade));
+  const copyTools = <div className="ws-builder-copy-controls">
+    <button type="button" disabled={Boolean(ws.busy)} onClick={() => void ws.download()}>下载完整升级副本</button>
+    <label>读回下载副本<input aria-label="读回升级下载副本" type="file" accept="application/json,.json" disabled={Boolean(ws.busy)} onChange={event => { const file = event.currentTarget.files?.[0]; event.currentTarget.value = ''; void ws.verifyFile(file); }}/></label>
+    <label>导入完整升级稿<input aria-label="导入完整升级稿" type="file" accept="application/json,.json" disabled={Boolean(ws.busy || copy.pending && !ws.verifiedOriginal)} onChange={event => { const file = event.currentTarget.files?.[0]; event.currentTarget.value = ''; void ws.importFile(file); }}/></label>
+    <button type="button" disabled={Boolean(ws.busy || copy.pending && !ws.verifiedOriginal)} onClick={() => void ws.fresh()}>按当前版本另开升级稿</button>
+  </div>;
+  return <WorkspaceDialog onClose={close} busy={Boolean(ws.busy)} returnFocus={returnFocus}><section className="ws-builder ws-course-builder" role="dialog" aria-modal="true" aria-label="课程升级">
+    <header><div><small>COURSE REVISION</small><h2>{preview ? '审阅课程升级' : '更新这门课程的教学'}</h2></div><button type="button" aria-label="关闭课程升级" disabled={Boolean(ws.busy)} onClick={close}>×</button></header>
+    <ol className="ws-blueprint-steps" aria-label="升级课程步骤"><li aria-current={!preview ? 'step' : undefined}>1 · 选择准确教学</li><li aria-current={preview ? 'step' : undefined}>2 · 审阅后升级</li></ol>
+    <section className="ws-blueprint-copy" aria-label="升级完整副本"><p role="status">{ws.storage}</p>{copyTools}{ws.notice && <p role="status">{ws.notice}</p>}{ws.busy && <button type="button" onClick={ws.stop}>停止等待，保留原请求</button>}</section>
+    <section className="ws-upgrade-baseline" aria-label="保留的原课程"><small>原课程 · 内容修订 {upgradeCourseRevision(copy.baseline)}</small><h3>{copy.baseline.title}</h3><p>{copy.baseline.objective}</p><p>{copy.baseline.grade}年级 · {copy.baseline.textbookVersion} · {copy.baseline.focusAtomIds.length} 个原目标</p><p>沿用原课程名称、学习目标和课程标识；已有课堂、独立作答及复测保留原教学版本。</p></section>
+    {scopeChanged && <div className="ws-builder-error" role="alert"><p>当前范围与原稿不同。请保留本稿，核对原结果后按当前版本另开稿。</p></div>}
+    {ws.error && <div className="ws-builder-error" role="alert"><p>{ws.error}</p></div>}
+    {copy.pending && <section className="ws-blueprint-sources" aria-label="原课程升级恢复"><h3>原课程升级结果</h3><p>{copy.pending.message || '完整原请求已保留，升级结果须向服务器独立核对。'}</p>{copy.pending.result && <p>这次原结果：内容修订 {copy.pending.result.revision} · {ws.verifiedOriginal ? '原结果已核对' : '原回执待核对'}</p>}<div className="ws-builder-copy-controls"><button type="button" disabled={Boolean(ws.busy)} onClick={() => void ws.lookup()}>核对原升级结果</button><button type="button" disabled={Boolean(ws.busy)} onClick={() => void ws.recover()}>用同一原升级请求恢复</button>{ws.verifiedOriginal && <button type="button" disabled={Boolean(ws.busy)} onClick={() => void ws.openOriginal()}>打开原升级版本</button>}</div></section>}
+    {preview ? <>
+      <section className="ws-blueprint-summary" aria-label="升级变化"><small>内容修订 {preview.previousRevision} → {upgradeCourseRevision(preview.course)}</small><h3>{preview.course.title}</h3><p>{preview.course.objective}</p><dl><div><dt>保留原目标</dt><dd>{copy.baseline.focusAtomIds.length}</dd></div><div><dt>新增目标</dt><dd>{preview.changes.addedTargets.length}</dd></div><div><dt>移除目标</dt><dd>{preview.changes.removedTargets.length}</dd></div><div><dt>课时</dt><dd>{preview.changes.previousLessons} → {preview.changes.nextLessons}</dd></div></dl></section>
+      {preview.changes.addedTargets.length > 0 && <section className="ws-blueprint-sources"><h3>新增学习目标</h3><ul>{preview.changes.addedTargets.map(id => <li key={id}>{selected?.atoms.find(atom => atom.id === id)?.name ?? id}</li>)}</ul></section>}
+      <section className="ws-blueprint-sources"><h3>准确来源与待核对内容</h3>{preview.course.materials.map(material => <article key={material.id}><b>{material.title}</b><span>{material.status === 'available' ? '来源已绑定' : '需要核对'}</span><p>{material.detail}</p></article>)}<ul>{preview.warnings.map(warning => <li key={warning}>{warning}</li>)}</ul></section>
+      <section className="ws-blueprint-units"><h3>升级后的课时与全部目标</h3>{preview.course.units.map(unit => <details key={unit.id} open={preview.course.units.length === 1}><summary>{unit.title} <small>{unit.lessons.filter(lesson => lesson.kind === 'learn').length} 课时</small></summary><p>{unit.objective}</p><ol>{unit.lessons.filter(lesson => lesson.kind === 'learn').map(lesson => <li key={lesson.id}><span>完整讲解</span><div><b>{lesson.title}</b><small>{lesson.objective}</small>{lesson.textbookTeaching && <small>教学稿第 {lesson.textbookTeaching.contentVersion} 版 · {lesson.targetAtomIds?.length} 个目标</small>}</div></li>)}</ol></details>)}</section>
+      <footer><button type="button" disabled={locked} onClick={ws.edit}>返回修改</button><button type="button" disabled={locked || scopeChanged || !preview.canUpgrade || preview.changes.removedTargets.length > 0} onClick={() => void ws.create()}>确认原ID升级</button></footer>
+    </> : <><form id={formId} onSubmit={event => { event.preventDefault(); void ws.generate(); }}><div className="ws-blueprint-fields"><label>每次学习预算（分钟）<input aria-label="升级每次学习预算" inputMode="numeric" maxLength={32} value={copy.form.minutes} disabled={locked} onChange={event => ws.update({ minutes: event.target.value })}/></label></div><TextbookCourseSelector actorId={owner.actorId} studentId={owner.studentId} scope={selected?.scope ?? null} value={copy.form.teachingSelection} disabled={locked || scopeChanged} onChange={teachingSelection => ws.update({ teachingSelection })}/></form><footer><button type="button" onClick={close}>取消</button><button type="submit" form={formId} disabled={locked || scopeChanged || !copy.form.teachingSelection?.lessons.length}>预览课程升级</button></footer></>}
+  </section>{ws.leaving && <WorkspaceDialog onClose={() => ws.setLeaving(null)} busy={Boolean(ws.busy)}><section className="ws-builder ws-course-builder" role="dialog" aria-modal="true" aria-label="保留升级完整副本"><h2>先保留当前完整升级稿</h2><p>最新原课程、完整课时选择和原请求尚未保护。请下载并读回刚下载的副本后继续。</p>{copyTools}<footer><button type="button" onClick={() => ws.setLeaving(null)}>继续编辑</button><button type="button" disabled={!ws.protectedCopy || Boolean(ws.busy)} onClick={() => { const proceed = ws.leaving!.proceed; ws.setLeaving(null); proceed(); }}>已读回完整副本，继续</button></footer></section></WorkspaceDialog>}</WorkspaceDialog>;
+}

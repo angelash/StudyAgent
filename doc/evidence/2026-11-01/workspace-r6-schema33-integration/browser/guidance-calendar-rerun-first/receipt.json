@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-01T14:53:26.429Z",
+  "label": "guidance-calendar-rerun-first",
+  "executed": {
+    "status": 0,
+    "error": null
+  },
+  "discovered": 9,
+  "files": 1,
+  "stats": {
+    "startTime": "2026-11-01T14:52:11.077Z",
+    "duration": 72009.508,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "errors": [],
+  "sourceAndCompiledInputs": 0,
+  "testAndFixtureInputs": 1800,
+  "changedDuringRun": [],
+  "buildId": "1MQvK8cUCDNUATw8iBcJ6",
+  "actualLiveModelTests": false,
+  "engineeringQaOnly": true,
+  "wholeGoal": "active"
+}

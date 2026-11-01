@@ -8,6 +8,7 @@ import { DomainDatabase } from './domain-database';
 
 let workspace = resolve(__dirname); while (!existsSync(join(workspace, '.git')) && dirname(workspace) !== workspace) workspace = dirname(workspace);
 const root = resolve(__dirname, '../../../..'), qa = join(root, 'data/qa'); mkdirSync(qa, { recursive: true });
+const { SCHEMA_VERSION: CURRENT_SCHEMA_VERSION } = require(join(root, 'scripts/operations/database-reader-guard.cjs'));
 const baseline = mkdtempSync(join(qa, 'actual-reader31-for32-')), sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
 const archive = readFileSync(join(root, 'resources/compatibility/domain-reader-schema31-v1.json.gz')), receipt = JSON.parse(readFileSync(join(root, 'resources/compatibility/domain-reader-schema31-v1.receipt.json'), 'utf8'));
 expect(sha(archive)).toBe(receipt.gzipSha256); const manifest = JSON.parse(gunzipSync(archive, { maxOutputLength: 40 * 1024 * 1024 }).toString('utf8'));
@@ -43,7 +44,7 @@ for (const driver of ['sqlite', 'postgres'] as const) (driver === 'sqlite' || co
   afterAll(async () => { await pool?.end(); });
   it('migrates the sealed actual31 without changing original rows and refuses32 in the unmodified old reader before writing', async () => {
     const url = await original('migration'), before = await snapshot(url); expect(await version(url)).toBe(31);
-    const current = new DomainDatabase(url); await current.open(); await current.close(); expect(await version(url)).toBe(32); expect(await snapshot(url)).toEqual(before);
+    const current = new DomainDatabase(url); await current.open(); await current.close(); expect(await version(url)).toBe(CURRENT_SCHEMA_VERSION); expect(await snapshot(url)).toEqual(before);
     const bytes = driver === 'sqlite' ? sha(readFileSync(url)) : null, old = new Reader31(url); await expect(old.open()).rejects.toThrow(/restoration|schema|reader/i);
     expect(await snapshot(url)).toEqual(before); if (bytes) expect(sha(readFileSync(url))).toBe(bytes);
     expect(() => oldGuard.assertReady('ready-schema32', Array.from({ length: 32 }, (_, index) => index + 1))).toThrow('unsupported_database_schema');
@@ -60,10 +61,10 @@ for (const driver of ['sqlite', 'postgres'] as const) (driver === 'sqlite' || co
     await expect(new DomainDatabase(url).open()).rejects.toThrow('injected_reader32_failure'); expect(await version(url)).toBe(31); expect(await snapshot(url)).toEqual(before);
     const old = new Reader31(url); await old.open(); await old.close(); expect(await version(url)).toBe(31);
     await sql(url, 'DROP TRIGGER reject_reader32' + (driver === 'postgres' ? ' ON study_restore_guard' : '')); const current = new DomainDatabase(url); await current.open(); await current.close();
-    expect(await version(url)).toBe(32); expect(await snapshot(url)).toEqual(before);
+    expect(await version(url)).toBe(CURRENT_SCHEMA_VERSION); expect(await snapshot(url)).toEqual(before);
   });
-  it('refuses unknown future33 before resetting its marker or touching original records', async () => {
-    const url = await original('future'), current = new DomainDatabase(url); await current.open(); await current.close(); await sql(url, 'INSERT INTO schema_migrations(version,applied_at) VALUES(33,?)', [new Date().toISOString()]);
-    const before = await snapshot(url); await expect(new DomainDatabase(url).open()).rejects.toThrow('unsupported_database_schema'); expect(await snapshot(url)).toEqual(before); expect(await version(url)).toBe(33);
+  it('refuses an unknown future current-schema-plus-one before resetting its marker or touching original records', async () => {
+    const url = await original('future'), current = new DomainDatabase(url); await current.open(); await current.close(); await sql(url, `INSERT INTO schema_migrations(version,applied_at) VALUES(${CURRENT_SCHEMA_VERSION + 1},?)`, [new Date().toISOString()]);
+    const before = await snapshot(url); await expect(new DomainDatabase(url).open()).rejects.toThrow('unsupported_database_schema'); expect(await snapshot(url)).toEqual(before); expect(await version(url)).toBe(CURRENT_SCHEMA_VERSION + 1);
   });
 });

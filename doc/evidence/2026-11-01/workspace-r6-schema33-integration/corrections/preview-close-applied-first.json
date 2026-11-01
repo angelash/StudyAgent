@@ -1,0 +1,17 @@
+{
+  "at": "2026-11-01T13:37:14.321Z",
+  "files": {
+    "apps/web/app/studio/course-builder.tsx": {
+      "before": "3d252b9ccbe91c29c5bffb3df415bfb40f11a531877285361a3ed906ade96522",
+      "after": "5391a05fea3d1fcb6d8cf95a542572d5eb4f351a62e92a66f93708fe652acc9c"
+    },
+    "tests/e2e/product-smoke.spec.ts": {
+      "before": "e215a956627ce50cf2e5277869e2f0b3cc985f9f4a55d6c60e3413e4a219b9df",
+      "after": "49959af3c249b291d669fabd5f490bcc04d2447f7ba18a6fccc4a213b43174a0"
+    }
+  },
+  "reasons": {
+    "courseBuilder": "Escape during a read-only preview deferred closing until the preview returned; writes keep the guard.",
+    "productSmoke": "183 exact-edition rule: unverified public catalogue offers references only; exact edition keeps the internal original page."
+  }
+}

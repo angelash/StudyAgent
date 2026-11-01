@@ -20,7 +20,9 @@ export type AuthenticatedRequest = RequestWithContext & {
 // still verify the child, session, response and plan on every allowed route.
 const learningRoutes: Record<string, RegExp[]> = {
   // Explicitly allowed learning operations; object authorization remains in the service.
-  GET: [/^learning\/paper-captures\/(repair-commands\/[^/]+|repair-uploads(\/[^/]+)?|repairs(\/[^/]+)?)$/, /^learning\/paper-captures\/(pages|derivations)\/[^/]+\/files$/, /^learning\/paper-captures\/groups\/[^/]+\/derivations$/, /^learning\/paper-captures\/derivations\/[^/]+(\/pdf)?$/, /^learning\/paper-captures\/groups(\/[^/]+)?$/, /^learning\/paper-captures\/(limits|commands\/[^/]+|uploads(\/[^/]+(\/commands)?)?|pages\/[^/]+(\/images\/(original|baseline|derived))?)$/, /^learning\/guidance-calendar\/(plans|arrangements)\/[^/]+$/, /^ai\/assistant\/sessions\/[^/]+\/artifacts\/guidance\/(intents|requests\/[^/]+)$/, /^learning\/assistant-guidance\/intents\/[^/]+(\/requests\/[^/]+)?$/, /^learning\/teaching-practice\/assignments(\/[^/]+)?$/, /^learning\/teaching-practice\/sessions\/[^/]+(\/questions\/[^/]+)?$/, /^learning\/teaching-practice\/drafts\/[^/]+\/source$/, /^ai\/assistant\/sessions\/[^/]+\/artifacts\/practice\/generated\/(drafts|requests\/[^/]+)$/, /^learning\/teaching-practice\/(drafts\/[^/]+(\/requests\/[^/]+)?|practices\/[^/]+)$/, /^chemistry\/catalog$/, /^learning\/project-files$/, /^learning\/project-files\/(uploads\/[^/]+|assets\/[^/]+(\/integrity|\/files\/(original|display|page-\d+))?)$/, /^learning\/material-uploads(\/[^/]+)?$/, /^learning\/source-courses\/materials\/[^/]+(\/progress|\/pages\/\d+)?$/, /^auth\/me$/, /^learning\/home$/, /^learning\/students$/, /^learning\/students\/[^/]+\/(today|mistakes)$/,
+  // Exact public course history and own original upgrade receipts retain the
+  // same current child/session/guardian checks as course adoption.
+  GET: [/^learning\/studio\/courses\/(teaching-options|requests\/[^/]+)$/, /^learning\/paper-captures\/(repair-commands\/[^/]+|repair-uploads(\/[^/]+)?|repairs(\/[^/]+)?)$/, /^learning\/paper-captures\/(pages|derivations)\/[^/]+\/files$/, /^learning\/paper-captures\/groups\/[^/]+\/derivations$/, /^learning\/paper-captures\/derivations\/[^/]+(\/pdf)?$/, /^learning\/paper-captures\/groups(\/[^/]+)?$/, /^learning\/paper-captures\/(limits|commands\/[^/]+|uploads(\/[^/]+(\/commands)?)?|pages\/[^/]+(\/images\/(original|baseline|derived))?)$/, /^learning\/guidance-calendar\/(plans|arrangements)\/[^/]+$/, /^ai\/assistant\/sessions\/[^/]+\/artifacts\/guidance\/(intents|requests\/[^/]+)$/, /^learning\/assistant-guidance\/intents\/[^/]+(\/requests\/[^/]+)?$/, /^learning\/teaching-practice\/assignments(\/[^/]+)?$/, /^learning\/teaching-practice\/sessions\/[^/]+(\/questions\/[^/]+)?$/, /^learning\/teaching-practice\/drafts\/[^/]+\/source$/, /^ai\/assistant\/sessions\/[^/]+\/artifacts\/practice\/generated\/(drafts|requests\/[^/]+)$/, /^learning\/teaching-practice\/(drafts\/[^/]+(\/requests\/[^/]+)?|practices\/[^/]+)$/, /^chemistry\/catalog$/, /^learning\/project-files$/, /^learning\/project-files\/(uploads\/[^/]+|assets\/[^/]+(\/integrity|\/files\/(original|display|page-\d+))?)$/, /^learning\/material-uploads(\/[^/]+)?$/, /^learning\/source-courses\/materials\/[^/]+(\/progress|\/pages\/\d+)?$/, /^auth\/me$/, /^learning\/home$/, /^learning\/students$/, /^learning\/students\/[^/]+\/(today|mistakes)$/,
     /^learning\/source-courses\/materials\/[^/]+\/(files|repairs(\/[^/]+)?)$/,
     /^learning\/classroom\/sessions\/[^/]+$/,
     /^learning\/classroom\/sessions\/[^/]+\/turns(\/[^/]+)?$/,
@@ -33,6 +35,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^learning\/studio\/topic-whiteboards(\/(drafts(\/[^/]+(\/(source|history|requests\/[^/]+))?)?|[^/]+))?$/,
     /^learning\/studio\/topic-whiteboards\/[^/]+\/figures\/[^/]+\/(image|original)$/,
     /^learning\/studio\/topic-whiteboard-visuals(\/(capabilities|requests\/[^/]+|[^/]+(\/(requests\/[^/]+|image|original))?))?$/,
+    /^learning\/studio\/courses\/[^/]+\/(revisions(\/\d+)?|lesson-versions\/[^/]+)$/, /^learning\/studio\/courses\/upgrade-requests\/[^/]+$/,
     /^learning\/studio\/overview$/, /^learning\/studio\/materials\/[^/]+\/(pages\/\d+|original)$/,
     /^learning\/studio\/calendar\/export$/,
     /^gesp\/students\/[^/]+\/workspace$/,
@@ -68,7 +71,7 @@ const learningRoutes: Record<string, RegExp[]> = {
     /^learning\/projects(\/[^/]+\/(submissions|legacy|advice|narration))?$/,
     /^learning\/source-courses(\/preflight|\/materials\/(text|text-file)|\/[^/]+\/(confirm|cancel|retry|archive))?$/,
     /^learning\/source-courses\/[^/]+\/checks\/(preflight|prepare|[^/]+\/(cancel|retry|authoring|confirm|withdraw))$/,
-    /^learning\/studio\/courses(\/preview)?$/, /^learning\/studio\/courses\/[^/]+\/lessons\/[^/]+\/start$/,
+    /^learning\/studio\/courses(\/preview)?$/, /^learning\/studio\/courses\/(upgrade-preview|upgrade)$/, /^learning\/studio\/courses\/[^/]+\/lessons\/[^/]+\/start$/,
     /^learning\/studio\/topic-whiteboards\/(preflight|drafts(\/[^/]+\/(cancel|retry|confirm))?|[^/]+\/narration\/[^/]+)$/,
     /^learning\/studio\/topic-whiteboard-visuals(\/(preflight|[^/]+\/(cancel|retry|edits)))?$/,
     /^learning\/studio\/whiteboards(\/preview)?$/, /^learning\/studio\/whiteboards\/[^/]+\/narration\/[^/]+$/,

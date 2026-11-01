@@ -84,12 +84,15 @@ export class GuidanceService {
     const controlled=command.controlledSource?this.controlledSource(user,studentId,command.controlledSource):null;
     if(controlled){const original=this.store.find('diagnosticReports',{sessionId:session.id,version:report.version??1});if(!original)throw new ConflictException('普通独立原报告无法核对');try{controlledGuidanceBaseline(session,original,controlled.basis,this.store.select('diagnosticResponses',{studentId}));}catch{throw new ConflictException('请先完成同一目标与定义的普通独立评测；受控观察不能补成能力或保持基准。');}}
     const activeHypotheses = report.hypotheses.filter((item) => !['contradicted', 'resolved', 'withdrawn'].includes(item.status));
-    const prioritized = [...report.estimates].sort((a, b) => {
+    // An adopted lesson can sit inside a wider confirmed textbook scope. Keep
+    // this plan on that lesson's frozen targets while preserving the full report.
+    const estimates = session.teachingOrigin ? report.estimates.filter(estimate => session.coverage.some(point => point.atomId === estimate.atomId)) : report.estimates;
+    const prioritized = [...estimates].sort((a, b) => {
       const rootA = activeHypotheses.some((hypothesis) => hypothesis.cause === 'prerequisite_gap' && hypothesis.status === 'supported' && hypothesis.probeAtomIds.includes(a.atomId));
       const rootB = activeHypotheses.some((hypothesis) => hypothesis.cause === 'prerequisite_gap' && hypothesis.status === 'supported' && hypothesis.probeAtomIds.includes(b.atomId));
       return Number(rootB) - Number(rootA) || (a.mastery ?? 0) - (b.mastery ?? 0);
     }).filter((item) => item.status !== 'secure').slice(0, Math.min(3, Math.max(1, Math.floor(command.minutesPerDay / 5))));
-    if (!prioritized.length) prioritized.push(...report.estimates.slice(0, 1));
+    if (!prioritized.length) prioritized.push(...estimates.slice(0, 1));
     if(controlled){const target=report.estimates.find(estimate=>estimate.atomId===controlled.basis.atomId);if(!target)throw new ConflictException('普通基准没有这条受控观察的原目标。');prioritized.splice(0,prioritized.length,target);}
     const now = new Date();
     const perAction = Math.floor(command.minutesPerDay / Math.max(prioritized.length, 1));
@@ -400,7 +403,7 @@ export class GuidanceService {
     if (Date.parse(task.dueAt) > Date.now()) throw new BadRequestException('复测尚未到期；如需立即检查，请开始验证评测');
     const baseline = this.diagnostics.requireSession(user, plan.baselineSessionId);
     return this.diagnostics.start(user, { studentId: task.studentId, subject: task.subject, intent: 'retest',
-      targetAtomIds: [task.atomId], maxItems: 4, includePrerequisites: true, reviewTaskId: task.id }, baseline.scopeSnapshot);
+      targetAtomIds: [task.atomId], maxItems: 4, includePrerequisites: !baseline.teachingOrigin, reviewTaskId: task.id }, baseline.scopeSnapshot);
   }
 
   retrospective(user: InMemoryUserAccount, planId: string) {

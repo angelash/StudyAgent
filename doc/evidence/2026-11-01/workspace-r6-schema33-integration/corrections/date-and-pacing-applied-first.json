@@ -1,0 +1,31 @@
+{
+  "at": "2026-11-01T13:25:58.415Z",
+  "files": {
+    "apps/web/app/library/practice/review/studio.tsx": {
+      "before": "8e24ed6b14b1ac658d6262eacc4ad773ab978466abafc506bb0c70fd5c2dd0be",
+      "after": "0edb43e633c472b56f091a1124a6cf4d45a6efee469bd3374aa309cef6f4723e"
+    },
+    "tests/e2e/studio.spec.ts": {
+      "before": "02846c68adef151c2372e5f8cb6888627ed5be56a0457617f537967e97efb07a",
+      "after": "ffe15942f6a4170c2b36e96db652daef1e42e365dd114ef60b90ba272dd4567c"
+    },
+    "tests/e2e/workspace.spec.ts": {
+      "before": "7efce22dd60fca039d926a955337945a0f70f1e7ab940d86ac8d951f0b7bc34a",
+      "after": "e09c3c08f1c4ca70239c4bb5f94855e12409182f724fa9bd450f4effafedb1fb"
+    },
+    "tests/e2e/classroom-boards.spec.ts": {
+      "before": "7a505f09bd3dd48516bcb0bb06f1a46a250ba49f973eaf5ba2d4e9204c0366be",
+      "after": "9cd54f8833c421ffed057289e9dc6b1e782bc8af9ecdd9dfaead770c02d119c2"
+    },
+    "tests/e2e/source-course-project.spec.ts": {
+      "before": "7c7d511c34ed57b248b088c36263710b7a1ee9be1ef929536b93277222e8e45a",
+      "after": "c51b9250e5536fb1a584e1919cd3843d131f847f4b85c6e49b49722ec787c0f9"
+    }
+  },
+  "productDefect": "Review calendar skipped its first read before the learner object loaded and never retried for the unchanged default query.",
+  "testCorrections": [
+    "studio/workspace calendars assumed an October run date",
+    "classroom-boards did not unmute before audio reading after the mute guard",
+    "source-course-project exceeded the per-user write limit of 180 per minute"
+  ]
+}

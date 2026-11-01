@@ -18473,6 +18473,55 @@
       "evidence": [],
       "reviewStatus": "unreviewed",
       "approvedAtomIds": []
+    },
+    {
+      "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+      "sourceBookId": "chinatextbook:chinese:g3:upper",
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry1",
+      "lessonName": "大青树下的小学",
+      "bookVersion": "93bdabc0bebd3987c6d417c0",
+      "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+      "extractedSha256": "96e8ffc8ca547a3dddfb40e8c8a98951f8a0d1d2a1a735fd988d1e091e76df63",
+      "lessonFingerprint": "ce23940a730d7f94fdcbe899fe33edac68e8c5cee5b67a0b839c6229a612ba31",
+      "printedPage": 2,
+      "pdfStartPage": 7,
+      "pdfEndPage": 9,
+      "titleMatched": true,
+      "candidateAtomIds": [
+        "core:chinese:oral-sequence",
+        "core:chinese:oral-complete"
+      ],
+      "rationale": "本独立原件的整册目录及物理7～9页已分别核对；此新定位候选不代表映射或教学审核，不能授予另一登记修订版资格。",
+      "evidence": [
+        {
+          "atomId": "core:chinese:oral-sequence",
+          "signalTerms": [
+            "说一说"
+          ],
+          "signalOccurrences": 2,
+          "score": 2,
+          "evidencePages": [
+            7,
+            9
+          ]
+        },
+        {
+          "atomId": "core:chinese:oral-complete",
+          "signalTerms": [
+            "说一说"
+          ],
+          "signalOccurrences": 2,
+          "score": 2,
+          "evidencePages": [
+            7,
+            9
+          ]
+        }
+      ],
+      "reviewStatus": "candidate",
+      "approvedAtomIds": [],
+      "chapterName": "第一单元",
+      "editionProofFingerprint": "66abd64ba947c86623073c68dade75e957d7a2cc3f24d2fdda32b4f0a56287de"
     }
   ]
 }

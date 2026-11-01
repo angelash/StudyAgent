@@ -7,10 +7,15 @@ import { AuthGuard, AuthenticatedRequest } from '../../common/auth.guard';
 import { validate } from '../../common/validation';
 import { LearningService } from './learning.service';
 import { StudioIntegrationService } from './studio-integration.service';
+import { TextbookTeachingCourseService, isTextbookTeachingCourseRequest } from './textbook-teaching-course.service';
 @UseGuards(AuthGuard)
 @Controller('learning')
 export class LearningController {
-  constructor(private readonly learning: LearningService, private readonly integrations: StudioIntegrationService) {}
+  constructor(private readonly learning: LearningService, private readonly integrations: StudioIntegrationService, private readonly teachingCourses: TextbookTeachingCourseService) {}
+  private async teachingRequest<T>(response: Response, run: (signal: AbortSignal) => Promise<T>) {
+    response.setHeader('Cache-Control', 'private, no-store'); const cancellation = new AbortController(), close = () => cancellation.abort(); response.once('close', close);
+    try { return await run(cancellation.signal); } finally { response.off('close', close); }
+  }
   @Get('students') students(@Req() req: AuthenticatedRequest) { return this.learning.studentProfiles(req.user); }
   @Get('students/:id/memory') memory(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Query('subject') subject?: string) {
     return this.learning.memory(req.user, id, validate(subjectSchema, subject ?? 'math'));
@@ -21,10 +26,24 @@ export class LearningController {
     if (audience !== undefined && !['student', 'independent'].includes(audience)) throw new BadRequestException('学习对象类型无效');
     return this.learning.studioOverview(req.user, studentId, validate(subjectSchema, subject ?? 'math'),materialView==='catalog',courseId,audience==='independent');
   }
-  @Post('studio/courses/preview') studioCoursePreview(@Req() req: AuthenticatedRequest, @Body() input: unknown) {
+  @Get('studio/courses/teaching-options') studioTeachingOptions(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: string, @Query('page') page?: string, @Res({ passthrough: true }) response?: Response) {
+    response?.setHeader('Cache-Control', 'private, no-store'); return this.teachingCourses.options(req, studentId, validate(subjectSchema, subject ?? 'math'), page);
+  }
+  @Get('studio/courses/requests/:key') studioCourseOriginalRequest(@Req() req: AuthenticatedRequest, @Param('key') key: string, @Res({ passthrough: true }) response: Response) {
+    response.setHeader('Cache-Control', 'private, no-store'); return this.teachingCourses.getRequest(req, key);
+  }
+  @Post('studio/courses/upgrade-preview') studioCourseUpgradePreview(@Req() req:AuthenticatedRequest,@Body() input:unknown,@Res({passthrough:true}) response:Response){return this.teachingRequest(response,signal=>this.teachingCourses.previewUpgrade(req,input,signal));}
+  @Post('studio/courses/upgrade') studioCourseUpgrade(@Req() req:AuthenticatedRequest,@Body() input:unknown,@Res({passthrough:true}) response:Response){return this.teachingRequest(response,signal=>this.teachingCourses.upgrade(req,input,signal));}
+  @Get('studio/courses/upgrade-requests/:key') studioCourseUpgradeRequest(@Req() req:AuthenticatedRequest,@Param('key') key:string,@Res({passthrough:true}) response:Response){response.setHeader('Cache-Control','private, no-store');return this.teachingCourses.getUpgradeRequest(req,key);}
+  @Get('studio/courses/:id/revisions') studioCourseVersions(@Req() req:AuthenticatedRequest,@Param('id') id:string,@Res({passthrough:true}) response:Response){response.setHeader('Cache-Control','private, no-store');return this.teachingCourses.history(req,id);}
+  @Get('studio/courses/:id/revisions/:revision') studioCourseVersion(@Req() req:AuthenticatedRequest,@Param('id') id:string,@Param('revision') revision:string,@Res({passthrough:true}) response:Response){response.setHeader('Cache-Control','private, no-store');return this.teachingCourses.history(req,id,revision);}
+  @Get('studio/courses/:id/lesson-versions/:lessonId') studioCourseLessonVersion(@Req() req:AuthenticatedRequest,@Param('id') id:string,@Param('lessonId') lessonId:string,@Res({passthrough:true}) response:Response){response.setHeader('Cache-Control','private, no-store');return this.teachingCourses.versionForLesson(req,id,lessonId);}
+  @Post('studio/courses/preview') studioCoursePreview(@Req() req: AuthenticatedRequest, @Body() input: unknown, @Res({ passthrough: true }) response: Response) {
+    if (isTextbookTeachingCourseRequest(input)) return this.teachingRequest(response, signal => this.teachingCourses.preview(req, input, signal));
     return this.learning.previewStudioCourse(req.user, input);
   }
-  @Post('studio/courses') studioCourseCreate(@Req() req: AuthenticatedRequest, @Body() input: unknown) {
+  @Post('studio/courses') studioCourseCreate(@Req() req: AuthenticatedRequest, @Body() input: unknown, @Res({ passthrough: true }) response: Response) {
+    if (isTextbookTeachingCourseRequest(input)) return this.teachingRequest(response, signal => this.teachingCourses.create(req, input, signal));
     return this.learning.createStudioCourse(req.user, input);
   }
   @Post('studio/courses/:courseId/lessons/:lessonId/start') studioLessonStart(@Req() req: AuthenticatedRequest,

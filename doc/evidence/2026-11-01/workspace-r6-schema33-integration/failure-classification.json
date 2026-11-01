@@ -1,0 +1,38 @@
+{
+  "completeBrowserSecond": {
+    "passed": 624,
+    "failed": 10
+  },
+  "sameBuildRerun": {
+    "passed": 1,
+    "failed": 9
+  },
+  "sameDayMainBaseline": {
+    "passed": 3,
+    "failed": 6
+  },
+  "schema33Regressions": [
+    "course-builder lost reply, explicit scope rejection and cancel/preview closing"
+  ],
+  "mainPreExisting": {
+    "productDefect": "paper review calendar skipped its first read for the default month",
+    "testDateAssumptions": [
+      "studio.spec calendar next month",
+      "workspace.spec subject switch month"
+    ],
+    "fixtureOrPacing": [
+      "classroom-boards audio reading needs unmute after mute guard",
+      "source-course-project exceeded 180 writes per user per minute"
+    ],
+    "curriculumRule": "product-smoke expected pre-183 same-version source counts"
+  },
+  "proxyKeepAlive": "Next same-origin proxy reused idle API sockets closed by the Node 5 s default; ECONNRESET became proxied 500s in the second and third complete runs. API keeps idle sockets 65 s.",
+  "underLoadOnly": [
+    "guidance-calendar storage unavailable in second run, passed alone",
+    "guidance-calendar two-tab losing confirmation in third run, see rerun"
+  ],
+  "apiSecond": {
+    "failure": "ordinary legacy started group returned a re-derived public blueprint",
+    "environment": "assistant-practice-artifact file stopped before its tests under concurrent load and passed 38/38 alone"
+  }
+}

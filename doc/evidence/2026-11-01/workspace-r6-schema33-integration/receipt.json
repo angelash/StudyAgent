@@ -1,0 +1,131 @@
+{
+  "protocol": "study-agent-schema33-integration-v1",
+  "at": "2026-11-01T16:08:20.776Z",
+  "candidate": "data/qa/p187",
+  "mainApplicationSchemaBefore": 32,
+  "mainApplicationSchemaAfter": 33,
+  "integrated": {
+    "files": 145,
+    "changed": 61,
+    "added": 84,
+    "recovery": "integration/main-before.json.gz",
+    "mainOnlyResourcesRetained": [
+      "resources/compatibility/course-history-schema33-reader-v1.receipt.json",
+      "resources/compatibility/early-schema33-five-collections-reader-v1.json.gz",
+      "resources/compatibility/early-schema33-four-collections-reader-v1.json.gz",
+      "resources/compatibility/early-schema33-readers.md"
+    ]
+  },
+  "sourceIncrement": {
+    "files": 16,
+    "archive": "candidate-source-delta.json.gz",
+    "sha256": "b9f41c0f5a0a722cac6c58c8b1c2afede525b93f2abda6bc3f13e0f84e8c503f",
+    "parentArchive": "doc/evidence/2026-11-01/workspace-r6-original-ui-responses/candidate-source-delta.json.gz",
+    "parentSha256": "fcf8aa3da3a3107b7354466634647afed8713d771c2b987c2944b394e0d713a6"
+  },
+  "api": {
+    "secondComplete": {
+      "passed": 2977,
+      "failed": 1,
+      "pending": 169
+    },
+    "focused": {
+      "passed": 71,
+      "failed": 0
+    },
+    "postgresCourse": {
+      "passed": 25,
+      "failed": 0
+    },
+    "thirdComplete": {
+      "passed": 3016,
+      "failed": 0,
+      "pending": 131,
+      "exit": 0,
+      "beforeKeepAliveCorrection": true
+    },
+    "finalComplete": {
+      "label": "original-workbench-whole-fourth",
+      "passed": 3016,
+      "failed": 0,
+      "pending": 131
+    }
+  },
+  "browser": {
+    "workbench-browser-whole-second": {
+      "expected": 624,
+      "unexpected": 10,
+      "flaky": 0,
+      "skipped": 0,
+      "buildId": "ezOJ10mo_h2cMFkdAVzPD"
+    },
+    "workbench-browser-failures-rerun-first": {
+      "expected": 1,
+      "unexpected": 9,
+      "flaky": 0,
+      "skipped": 0,
+      "buildId": "ezOJ10mo_h2cMFkdAVzPD"
+    },
+    "main-baseline-failures-first": {
+      "expected": 3,
+      "unexpected": 6,
+      "flaky": 0,
+      "skipped": 0,
+      "buildId": "TTPcB8F4HNZtq1pip2yYN"
+    },
+    "fixes-focused-browser-first": {
+      "expected": 11,
+      "unexpected": 2,
+      "flaky": 0,
+      "skipped": 0,
+      "buildId": "T26Tgryj3FiyoTt2Sgrko"
+    },
+    "fixes-focused-browser-second": {
+      "expected": 5,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "buildId": "1MQvK8cUCDNUATw8iBcJ6"
+    },
+    "workbench-browser-whole-third": {
+      "expected": 633,
+      "unexpected": 1,
+      "flaky": 0,
+      "skipped": 0,
+      "buildId": "1MQvK8cUCDNUATw8iBcJ6"
+    },
+    "guidance-calendar-rerun-first": {
+      "expected": 9,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "buildId": "1MQvK8cUCDNUATw8iBcJ6"
+    },
+    "workbench-browser-whole-fourth": {
+      "expected": 634,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "buildId": "1MQvK8cUCDNUATw8iBcJ6"
+    }
+  },
+  "formalCopyMigration": {
+    "schema": "24->33",
+    "records": 89864,
+    "collections": 32,
+    "revision": 187,
+    "coldOpens": 2,
+    "originalUnchanged": true,
+    "mediaOrNewMachineAcceptance": false
+  },
+  "mainBuildOutputsUntouched": true,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFilesUnchanged": 1063,
+  "notPushedOrDeployed": true,
+  "teacherReviewed": false,
+  "humanLearningEvidence": false,
+  "wholeGoal": "active"
+}

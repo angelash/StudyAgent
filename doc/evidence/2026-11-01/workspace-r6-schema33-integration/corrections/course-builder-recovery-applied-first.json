@@ -1,0 +1,22 @@
+{
+  "at": "2026-11-01T13:15:02.784Z",
+  "files": {
+    "apps/web/lib/course-builder-copy.ts": {
+      "before": "84051bff48fe8c857ad30b127e4277cb6bdcf7e3d0271c69a4976c687d83c45d",
+      "after": "6f8d488211a368210650a1a771907f195a438a7d760cba1ac631ae8eca523aeb"
+    },
+    "apps/web/lib/course-builder-client.ts": {
+      "before": "3c6670ecdb654669e5345c667ca00f94f32c41c2d491843520fc7f73650fe2d8",
+      "after": "07645fada58d57b006c15bffd7c5c762cc7c7294ce5f1e14ea2ade3460fe8c08"
+    },
+    "apps/web/lib/use-course-builder-workspace.ts": {
+      "before": "51d41f3c6a2549a2adbba2a2f02cedfe83cd4d3f88f3b2374b6465d955f0b409",
+      "after": "922b63aec5e2488fac2ae15b15a0180e98b3badd2a64c702510995e241ea7dbc"
+    },
+    "apps/web/app/studio/course-builder.tsx": {
+      "before": "56ea97fc8a17a3d50b5d48917f6ede71650ca56f75ebfec23a29ac0027266eb6",
+      "after": "3d252b9ccbe91c29c5bffb3df415bfb40f11a531877285361a3ed906ade96522"
+    }
+  },
+  "reason": "Complete browser reproduced an explicit scope rejection held as an unknown result with no way forward, and a quick cancel after editing asking for a download although local storage works."
+}

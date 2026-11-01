@@ -25,6 +25,7 @@ import { ReplyBoard } from './reply-board';
 import { waitForReplyReading, playReplyAudio } from './reply-reading';
 import { replyBoardMarkdown } from './reply-board-notes';
 import { copyCourseFilters, courseLibraryHref } from '../course-library-state';
+import { readCourseVersionLocation } from '../../../lib/course-version-navigation';
 import { materialsReturn, withMaterialsReturn } from '../../../lib/materials-navigation';
 import { ClassroomToolTour } from './tool-tour';
 import { useVoicePreview } from './voice-preview';
@@ -94,12 +95,15 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
     setLoading(true); setError('');
     const entryQuery = new URLSearchParams(window.location.search);
     try {
+      const requestedVersion=readCourseVersionLocation(window.location.search);
+      if(studioCourseId&&!useCurrentVersion&&requestedVersion.kind==='invalid')throw Error(requestedVersion.message);
       const row = savedSessionId ? await apiRequest<ClassroomSessionView>('/learning/classroom/sessions/' + encodeURIComponent(savedSessionId), { signal: controller.signal }) :
         await apiRequest<ClassroomSessionView>('/learning/classroom/sessions', { method: 'POST',
-          signal: controller.signal, body: JSON.stringify({ lessonId, ...(studioCourseId ? { studioCourseId } : {}), ...(sourceCourseId?{sourceCourseId}:{}),...(sourceCheckId?{sourceCheckId}:{}), ...(useCurrentVersion ? { useCurrentVersion: true } : {}) }) });
+          signal: controller.signal, body: JSON.stringify({ lessonId, ...(studioCourseId ? { studioCourseId,...(!useCurrentVersion&&requestedVersion.kind==='version'?{courseRevision:requestedVersion.revision}:{}) } : {}), ...(sourceCourseId?{sourceCourseId}:{}),...(sourceCheckId?{sourceCheckId}:{}), ...(useCurrentVersion ? { useCurrentVersion: true } : {}) }) });
       if (controller.signal.aborted) return;
-      if (lessonId && row.lessonId !== lessonId || studioCourseId && row.studioCourseId !== studioCourseId || sourceCourseId&&row.sourceCourseId!==sourceCourseId||sourceCheckId&&row.sourceCheckId!==sourceCheckId) throw new Error('保存记录与当前课程入口不一致，请从课程历史重新进入。');
+      if (lessonId && row.lessonId !== lessonId && !useCurrentVersion || studioCourseId && row.studioCourseId !== studioCourseId || sourceCourseId&&row.sourceCourseId!==sourceCourseId||sourceCheckId&&row.sourceCheckId!==sourceCheckId) throw new Error('保存记录与当前课程入口不一致，请从课程历史重新进入。');
       const query = entryQuery; query.set('lesson', row.lessonId); query.set('session', row.id); query.set('tab', tab); if (row.studioCourseId) query.set('studioCourseId', row.studioCourseId); else query.delete('studioCourseId'); if(assistance) query.set('help','1'); else query.delete('help');
+      if(useCurrentVersion)query.delete('courseRevision');
       if(row.sourceCourseId)query.set('sourceCourseId',row.sourceCourseId);else query.delete('sourceCourseId');
       if(row.sourceCheckId)query.set('sourceCheckId',row.sourceCheckId);else query.delete('sourceCheckId');
       const destination='/studio/classroom?'+query;
@@ -134,6 +138,7 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
     if (studio.current) {
       const params=new URLSearchParams(window.location.search), query=copyCourseFilters(window.location.search,new URLSearchParams({view:'courses',course:studio.current}));
       if(session?.studentId)query.set('student',session.studentId);if(actualSubject)query.set('subject',actualSubject);
+      if(session?.lessonId)query.set('courseLesson',session.lessonId);
       if(params.get('returnUnit'))query.set('unit',params.get('returnUnit')!);if(params.get('returnPanel'))query.set('panel',params.get('returnPanel')!);
       window.location.assign('/studio?'+query); return;
     }
@@ -565,7 +570,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     selected={practiceDraft.choices} hinted={hinted} hintReceipts={session.hintReceipts} busy={busy || !practiceDraft.ready || !!practiceDraft.pending} standalone={standalone} lessonId={lesson.id} onIndex={setQuestionIndex}
     onSelect={practiceDraft.select}
     onSource={session.sourceCheckId?key=>{pause();setCheckSource(key);}:undefined}
-    assessment={lesson.assessment} contentStatus={session.contentStatus} notice={standalone ? notice : undefined} onDismiss={() => setNotice('')} onCurrent={() => onNext(lesson.id, 'practice', true)} onLearn={id => onNext(id)}
+    assessment={lesson.assessment} verificationHref={lesson.verificationHref} contentStatus={session.contentStatus} notice={standalone ? notice : undefined} onDismiss={() => setNotice('')} onCurrent={() => onNext(lesson.id, 'practice', true)} onLearn={id => onNext(id)}
     onHint={(id,level) => void hint(id,level)} onAnswer={disposition => void answer(disposition)}
     assistantOpen={showChat} assistantButtonRef={practiceAssistantButton} inactive={standalone && showChat && practiceNarrow}
     onClose={() => requestExit()} onAssistant={() => { if (showChat) closePracticeAssistant(); else { setShowChat(true); setTab('history'); } }}/>; }

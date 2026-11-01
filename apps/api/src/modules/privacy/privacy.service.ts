@@ -45,7 +45,7 @@ export class PrivacyService {
     if (actor.role !== 'parent' || actor.status !== 'active') throw new ForbiddenException('家庭资料管理需要家长本人登录');
   }
   private accountActor(actor: InMemoryUserAccount) {
-    if (!['parent', 'admin'].includes(actor.role) || actor.status !== 'active') throw new ForbiddenException('本人资料管理需要当前有效账号登录');
+    if (!['parent', 'admin', 'teacher'].includes(actor.role) || actor.status !== 'active') throw new ForbiddenException('本人资料管理需要当前有效账号登录');
   }
   private child(actor: InMemoryUserAccount, id: string) {
     this.parent(actor);
@@ -54,7 +54,7 @@ export class PrivacyService {
     return child;
   }
   private children(actor: InMemoryUserAccount) {
-    if (actor.role === 'admin') return [];
+    if (actor.role !== 'parent') return [];
     return this.store.students.filter(row => Boolean(this.store.find('bindings', { studentId: row.id, parentUserId: actor.id, status: 'active' })));
   }
   private guardians(id: string) {

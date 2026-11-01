@@ -1,0 +1,14 @@
+{
+  "at": "2026-11-01T13:06:13.652Z",
+  "files": {
+    "apps/api/src/modules/diagnostics/assessment-blueprint.ts": {
+      "before": "c2d5ac1f0631db2f3ec50a01773fbf3f83c4f72c850da4e375694e049dd3eea6",
+      "after": "286dd52ea4a6b0efd84dbf8f4e147537230fb2aaa1b5770f762af41262b20550"
+    },
+    "apps/api/src/modules/diagnostics/diagnostics.service.ts": {
+      "before": "438a2c453ef1a6bd797bdd1a4b6e1f30e1786274f292877c1796755335f9af37",
+      "after": "76e5d0a37cf20e14e7c4461a96b629ab9539a2d7aa646eaf6918eed8ae02818c"
+    }
+  },
+  "reason": "Complete API showed an already-started ordinary legacy group returning a changed public blueprint. Keep saved blueprints unchanged except lesson-check views whose coverage requirements are raised after initial selection."
+}

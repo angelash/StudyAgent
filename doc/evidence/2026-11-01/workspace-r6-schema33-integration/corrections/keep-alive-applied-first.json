@@ -1,0 +1,17 @@
+{
+  "at": "2026-11-01T14:53:37.330Z",
+  "added": {
+    "apps/api/src/infrastructure/http-keep-alive.ts": "463091e4dd96c7910f795d49131b762e5f1410469bbcaf6902352723b26d0f5f"
+  },
+  "files": {
+    "apps/api/src/main.ts": {
+      "before": "427a1ccfbab02f6bd193d903a88be13f65c662e9a087eeb5a2b82ef8aeaf41db",
+      "after": "e939ce17b49bc012ef1e433296696e6521a7ad7b2402c1a21cea6fc82efbc87d"
+    },
+    "scripts/qa/source-course-test-api.cjs": {
+      "before": "81864d37a4830b61d71a9ba2570e0c75ed624352bc07c155db7eb5afac7cc3e7",
+      "after": "5ebbff1a1d7f89c89cfee3692fa28dba90467282988244f1aa5da84166ba914f"
+    }
+  },
+  "evidence": "Second and third complete browser runs: Next proxy ECONNRESET on GET /api/diagnostics/students/:id/plans after the fixture idled the upstream socket; proxied 500 with an empty body."
+}

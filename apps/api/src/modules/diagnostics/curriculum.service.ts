@@ -261,6 +261,9 @@ export class CurriculumService {
   }
 
   textbookMappingWorklist(user: InMemoryUserAccount, input: unknown) {
+    return this.textbooks.readSourcesTogether(() => this.mappingWorklistInSnapshot(user, input));
+  }
+  private mappingWorklistInSnapshot(user: InMemoryUserAccount, input: unknown) {
     this.assertEditor(user);
     const query = validate(z.object({ subject: z.enum(['math', 'chinese', 'english', 'chemistry']).optional(), grade: z.coerce.number().int().min(1).max(9).optional(),
       term: z.enum(['upper', 'lower']).optional(), status: z.enum(['all', 'unmapped', 'candidate', 'approved', 'rejected', 'stale']).default('all'),
@@ -319,13 +322,17 @@ export class CurriculumService {
     this.assertEditor(user);
     if (grade !== undefined) validate(z.number().int().min(1).max(9), grade);
     const definitions = this.store.inspect('knowledgeAtoms').filter((a) => (!subject || a.subject === subject) && (!grade || a.grade === grade));
-    const eligible = eligibleMeasurements(this.store, subject || grade ? definitions.map(atom => atom.id) : undefined), counts = new Map<string, MeasurementItem[]>();
+    const filtered = !!(subject || grade), atomIds = definitions.map(atom => atom.id);
+    const eligible = eligibleMeasurements(this.store, filtered ? atomIds : undefined), counts = new Map<string, MeasurementItem[]>();
     for (const item of eligible) { const items = counts.get(item.atomId) ?? []; items.push(item); counts.set(item.atomId, items); }
     const mappingsByAtom = new Map<string, MeasurementItem[]>();
-    for (const item of this.store.inspect('measurementItems')) {
+    const mappingsInScope = filtered ? this.store.select('measurementItems', { atomId: atomIds }) : this.store.inspect('measurementItems');
+    for (const item of mappingsInScope) {
       const items = mappingsByAtom.get(item.atomId) ?? []; items.push(item); mappingsByAtom.set(item.atomId, items);
     }
-    const availableInteractions = new Set(this.store.inspect('questionAnswerSchemas').filter(availableMeasurementInput).map(schema => schema.questionId));
+    const schemasInScope = filtered ? this.store.select('questionAnswerSchemas', { questionId: [...new Set(mappingsInScope.map(item => item.questionId))] }) :
+      this.store.inspect('questionAnswerSchemas');
+    const availableInteractions = new Set(schemasInScope.filter(availableMeasurementInput).map(schema => schema.questionId));
     const atoms = definitions.map((atom) => {
       const items = counts.get(atom.id) ?? [], mappings = mappingsByAtom.get(atom.id) ?? [];
       return { ...atom, approvedQuestions: new Set(items.map((i) => i.questionId)).size,
@@ -349,7 +356,7 @@ export class CurriculumService {
         withRelations: subset.filter(a => a.parentId || a.confusableAtomIds?.length || a.transferAtomIds?.length).length };
     })).filter((c) => (!subject || c.subject === subject) && (!grade || c.grade === grade));
     const importedBooks = this.textbooks.all().filter(book => book.source !== 'original');
-    const sourceStatuses = importedBooks.map(book => this.textbooks.availability(book).status);
+    const sourceStatuses = this.textbooks.readSourcesTogether(() => importedBooks.map(book => this.textbooks.availability(book).status));
     const countSource = (status: string) => sourceStatuses.filter(value => value === status).length;
     return { generatedAt: new Date().toISOString(), cells, atoms,
       notice: '按已发布定义与当前有效审核题映射核对素材。结构齐备还须能在四题、600秒内安排基础和迁移各两个不同题族；样例未考虑个人曝光与学习范围，不代表学生掌握、常模校准或教材全部覆盖。',

@@ -1,0 +1,8 @@
+{
+  "at": "2026-11-01T11:41:15.977Z",
+  "firstLabel": "workbench-browser-whole-first",
+  "discoveredTests": 634,
+  "executedTests": 0,
+  "reason": "QA wrapper omitted the required explicit CLI principal; durable application setup and tests did not start.",
+  "correction": "Pass the generated browser-admin principal to the existing create-admin command; retain original failure and use a fresh QA directory."
+}
