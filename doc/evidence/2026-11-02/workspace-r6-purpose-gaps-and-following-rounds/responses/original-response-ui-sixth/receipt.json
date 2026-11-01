@@ -1,0 +1,124 @@
+{
+  "at": "2026-11-01T18:34:18.626Z",
+  "checks": [
+    {
+      "name": "original-parent-login-and-original-course-in-workbench",
+      "passed": true
+    },
+    {
+      "name": "original-course-mobile-navigation-and-width",
+      "passed": true
+    },
+    {
+      "name": "original-adult-classroom-and-native-visual-content",
+      "passed": true
+    },
+    {
+      "name": "actual-learning-code-login-and-resumed-original-child-classroom-mobile",
+      "passed": true
+    },
+    {
+      "name": "original-child-independent-check-entry-is-in-course-workbench",
+      "passed": true
+    },
+    {
+      "name": "original-live-purpose-coverage-notice-matches-all-eight-targets",
+      "passed": true
+    },
+    {
+      "name": "original-purpose-gaps-separate-next-group-from-exhausted-material",
+      "passed": true
+    },
+    {
+      "name": "workspace-primary-button-remains-readable-when-enabled",
+      "passed": true
+    },
+    {
+      "name": "original-child-starts-the-actual-preview-through-workbench-button",
+      "passed": true
+    },
+    {
+      "name": "original-child-mobile-actual-response-1",
+      "passed": true
+    },
+    {
+      "name": "original-child-mobile-actual-response-2",
+      "passed": true
+    },
+    {
+      "name": "original-child-mobile-actual-response-3",
+      "passed": true
+    },
+    {
+      "name": "original-child-mobile-actual-response-4",
+      "passed": true
+    },
+    {
+      "name": "original-child-mobile-actual-response-5",
+      "passed": true
+    },
+    {
+      "name": "original-child-mobile-actual-response-6",
+      "passed": true
+    },
+    {
+      "name": "original-child-mobile-actual-response-7",
+      "passed": true
+    },
+    {
+      "name": "original-mobile-complete-report-keeps-all-eight-goals-and-media-review-boundaries",
+      "passed": true
+    },
+    {
+      "name": "original-following-preview-reports-remaining-and-exhausted-purposes",
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "error": null,
+  "completed": true,
+  "buildId": "BNbL59bQJABMlhRw2jJ8M",
+  "buildLabel": "blueprint-gap-ui-build-second",
+  "gapKinds": {
+    "currentGroup": {
+      "reservationId": "blueprint:a90dd791e413ccee3529f6e0d2210c1e3820a7e0d9ef4d7f44d3e0ed40e67649",
+      "deferred": 2,
+      "exhausted": 22,
+      "deferredByPurpose": {
+        "understanding": 0,
+        "procedure": 0,
+        "transfer": 2,
+        "retention": 0
+      },
+      "exhaustedByPurpose": {
+        "understanding": 8,
+        "procedure": 8,
+        "transfer": 6,
+        "retention": 0
+      },
+      "remainingUnexposedAfterGroup": 2
+    },
+    "followingPreview": {
+      "reservationId": "blueprint:da905f7bc929a276ea05779d6347a25f05fa7833b0583452e387908a6c29b5a9",
+      "deferred": 0,
+      "exhausted": 24,
+      "deferredByPurpose": {
+        "understanding": 0,
+        "procedure": 0,
+        "transfer": 0,
+        "retention": 0
+      },
+      "exhaustedByPurpose": {
+        "understanding": 8,
+        "procedure": 8,
+        "transfer": 8,
+        "retention": 0
+      },
+      "remainingUnexposedAfterGroup": 0
+    }
+  },
+  "originalPrivateReceiptSha256": "e60918cbd1088a384da6a35c001e985def59354dfa019519b52368df033ef8c4",
+  "screenshotsAndPrivateRequestsRemainLocal": true,
+  "engineeringQaOnly": true,
+  "humanLearningEvidence": false
+}

@@ -1,0 +1,52 @@
+{
+  "at": "2026-11-01T18:15:16.243Z",
+  "checks": [
+    {
+      "name": "original-parent-login-and-original-course-in-workbench",
+      "passed": true
+    },
+    {
+      "name": "original-course-mobile-navigation-and-width",
+      "passed": true
+    },
+    {
+      "name": "original-adult-classroom-and-native-visual-content",
+      "passed": true
+    },
+    {
+      "name": "actual-learning-code-login-and-resumed-original-child-classroom-mobile",
+      "passed": true
+    },
+    {
+      "name": "original-child-independent-check-entry-is-in-course-workbench",
+      "passed": true
+    },
+    {
+      "name": "original-live-purpose-coverage-notice-matches-all-eight-targets",
+      "passed": true
+    },
+    {
+      "name": "workspace-primary-button-remains-readable-when-enabled",
+      "passed": true
+    },
+    {
+      "name": "original-child-starts-the-actual-preview-through-workbench-button",
+      "passed": true
+    },
+    {
+      "name": "original-child-mobile-actual-response-1",
+      "passed": false,
+      "error": "expect(received).toBeTruthy()\n\nReceived: undefined"
+    }
+  ],
+  "pageErrors": [],
+  "error": "expect(received).toBeTruthy()\n\nReceived: undefined",
+  "completed": false,
+  "buildId": "svtTJyE_AU_b60rH_odbb",
+  "buildLabel": "student-entries-ui-build-first",
+  "gapKinds": null,
+  "originalPrivateReceiptSha256": "a36dba7c954327c37c5614095d2823c430158796d240ebbe414d715d0eda5780",
+  "screenshotsAndPrivateRequestsRemainLocal": true,
+  "engineeringQaOnly": true,
+  "humanLearningEvidence": false
+}

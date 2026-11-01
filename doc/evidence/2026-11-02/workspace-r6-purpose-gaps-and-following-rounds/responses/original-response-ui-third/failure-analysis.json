@@ -1,0 +1,9 @@
+{
+  "failedCheck": "original-child-mobile-actual-response-1",
+  "error": "expect(received).toBeTruthy()\n\nReceived: undefined",
+  "cause": "The runner checked its held server receipt as soon as 核对原提交 was enabled. That button is enabled while the original submission is still in flight, so the check raced the server. The route handler aborts the browser reply only after route.fetch returns 201, and the failure screenshot shows the aborted notice, so the original response was committed after the check.",
+  "productBehaviourUnchanged": true,
+  "correction": "Wait for the visible 提交尚待核对： notice, which appears only after the aborted reply, before checking the held receipt.",
+  "correctedRun": "original-response-ui-fourth",
+  "originalFailureScreenshotsRemainLocal": true
+}
