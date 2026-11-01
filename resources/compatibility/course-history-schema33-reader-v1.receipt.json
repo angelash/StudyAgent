@@ -1,0 +1,27 @@
+{
+  "protocol": "study-agent-course-history33-reader-v1",
+  "archiveSha256": "50ba779c243018f86e92db49b8f1885db2fcf28ca5006118dc3703816cbb2cf2",
+  "source": "Actual p184 API build-third compiled reader, preserved before the new exact-edition persisted field and guard. Original pending flags describe preservation time; later own-protocol positive and new-protocol refusal probes are complete.",
+  "validation": [
+    {
+      "label": "edition-previous-reader-sqlite-first",
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "files": [
+        "textbook-edition-reader.integration.test.ts"
+      ]
+    },
+    {
+      "label": "edition-previous-reader-postgres-first",
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "files": [
+        "textbook-edition-reader.integration.test.ts"
+      ]
+    }
+  ],
+  "evidence": "doc/evidence/2026-11-01/workspace-r6-exact-edition-candidate/receipt.json",
+  "notDeployed": true
+}

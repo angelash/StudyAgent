@@ -1,0 +1,51 @@
+{
+  "at": "2026-11-01T06:13:31.053Z",
+  "completed": true,
+  "buildId": "cMBUbL63yrqTKJcX_MZkz",
+  "passed": 7,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "actual-wrong-directory-remains-unqualified-and-reference-reads-do-not-write",
+      "passed": true
+    },
+    {
+      "name": "reference-originals-retain-current-editor-authorization",
+      "passed": true
+    },
+    {
+      "name": "real-independent-original-binds-all51-directory-entries-and-complete-first-lesson-only",
+      "passed": true
+    },
+    {
+      "name": "original-workbench-shows-specific-edition-difference-before-reference-selection",
+      "passed": true
+    },
+    {
+      "name": "workbench-reference-reading-is-explicit-and-keeps-the-registered-edition-selected",
+      "passed": true
+    },
+    {
+      "name": "existing-workbench-reference-panel-fits-four-viewports-and-keyboard",
+      "passed": true
+    },
+    {
+      "name": "independent-version-remains-an-explicit-separate-workbench-choice-with-unknown-year",
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "screenshots": [
+    "reference-390x844.png",
+    "reference-768x900.png",
+    "reference-1440x1000.png",
+    "reference-1440x500.png",
+    "independent-original-choice.png"
+  ],
+  "publisherIframesMaskedInPublicScreenshots": true,
+  "actualOriginalBytesRead": true,
+  "noTeachingPublished": true,
+  "noLearnerEvidenceWritten": true,
+  "generatedAccountsOnly": true,
+  "wholeGoal": "active"
+}

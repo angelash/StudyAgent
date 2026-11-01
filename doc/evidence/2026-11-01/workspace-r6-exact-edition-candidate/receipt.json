@@ -1,0 +1,637 @@
+{
+  "protocol": "study-agent-exact-textbook-edition-candidate-v1",
+  "at": "2026-11-01T06:32:51.133Z",
+  "baselineHead": "c1c25b213cdc893fe1c341e5e6be05e453a39816",
+  "candidate": "data/qa/p185",
+  "mainApplicationSchema": 32,
+  "candidateSchema": 33,
+  "candidateMinimumReader": "ready-schema33-exact-edition-v1",
+  "applicationIntegrated": false,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFilesUnchanged": 1063,
+  "sourceIncrement": {
+    "files": 32,
+    "inputCount": 1295,
+    "archive": "candidate-source-delta.json.gz",
+    "sha256": "becd4044afd2c17c355741e74931ea2656c97f93bc11f011a847a3acbcaf7133",
+    "parentArchive": "../workspace-r6-course-upgrade-ui-candidate/candidate-source-delta.json.gz",
+    "parentSha256": "4705fc1ec2cef8b2d290fe5594c523eaee02a23fccd648108fa6b8bca83f8c4a",
+    "allMembersReadBack": true
+  },
+  "finalBatches": [
+    {
+      "label": "edition-source-model-fourth",
+      "passed": 48,
+      "failed": 0,
+      "pending": 0,
+      "files": [
+        "textbook-edition-conformity.test.ts",
+        "textbook-edition-registry.test.ts",
+        "textbook-registry-document.test.ts",
+        "textbook-source-candidates.test.ts"
+      ]
+    },
+    {
+      "label": "edition-existing-diagnostics-second",
+      "passed": 35,
+      "failed": 0,
+      "pending": 0,
+      "files": [
+        "diagnostics.integration.test.ts",
+        "verification-materials.integration.test.ts"
+      ]
+    },
+    {
+      "label": "edition-final-http-sqlite-first",
+      "passed": 51,
+      "failed": 0,
+      "pending": 0,
+      "files": [
+        "textbook-teaching.integration.test.ts",
+        "textbook-teaching-course-upgrade.integration.test.ts",
+        "textbook-teaching-course.integration.test.ts"
+      ]
+    },
+    {
+      "label": "edition-final-teaching-postgres-first",
+      "passed": 15,
+      "failed": 0,
+      "pending": 0,
+      "files": [
+        "textbook-teaching.integration.test.ts"
+      ]
+    },
+    {
+      "label": "edition-final-course-postgres-first",
+      "passed": 22,
+      "failed": 0,
+      "pending": 0,
+      "files": [
+        "textbook-teaching-course.integration.test.ts"
+      ]
+    },
+    {
+      "label": "edition-final-upgrade-postgres-first",
+      "passed": 14,
+      "failed": 0,
+      "pending": 0,
+      "files": [
+        "textbook-teaching-course-upgrade.integration.test.ts"
+      ]
+    },
+    {
+      "label": "edition-source-http-sqlite-first",
+      "passed": 7,
+      "failed": 0,
+      "pending": 0,
+      "files": [
+        "textbook-lesson-source.integration.test.ts"
+      ]
+    },
+    {
+      "label": "edition-source-http-postgres-first",
+      "passed": 7,
+      "failed": 0,
+      "pending": 0,
+      "files": [
+        "textbook-lesson-source.integration.test.ts"
+      ]
+    },
+    {
+      "label": "edition-native-sqlite-first",
+      "passed": 25,
+      "failed": 0,
+      "pending": 0,
+      "files": [
+        "textbook-teaching-course-history-native.integration.test.ts",
+        "textbook-teaching-early33-readers.integration.test.ts",
+        "textbook-teaching-native.integration.test.ts"
+      ]
+    },
+    {
+      "label": "edition-native-postgres-first",
+      "passed": 25,
+      "failed": 0,
+      "pending": 0,
+      "files": [
+        "textbook-teaching-course-history-native.integration.test.ts",
+        "textbook-teaching-early33-readers.integration.test.ts",
+        "textbook-teaching-native.integration.test.ts"
+      ]
+    },
+    {
+      "label": "edition-previous-reader-sqlite-first",
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "files": [
+        "textbook-edition-reader.integration.test.ts"
+      ]
+    },
+    {
+      "label": "edition-previous-reader-postgres-first",
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "files": [
+        "textbook-edition-reader.integration.test.ts"
+      ]
+    }
+  ],
+  "reports": [
+    {
+      "label": "edition-api-build-fifth.json",
+      "mode": "build",
+      "status": 0,
+      "error": null
+    },
+    {
+      "label": "edition-api-build-first.json",
+      "mode": "build",
+      "status": 0,
+      "error": null
+    },
+    {
+      "label": "edition-api-build-fourth.json",
+      "mode": "build",
+      "status": 0,
+      "error": null
+    },
+    {
+      "label": "edition-api-build-second.json",
+      "mode": "build",
+      "status": 0,
+      "error": null
+    },
+    {
+      "label": "edition-api-build-third.json",
+      "mode": "build",
+      "status": 0,
+      "error": null
+    },
+    {
+      "label": "edition-api-type-fifth.json",
+      "mode": "type",
+      "status": 0,
+      "error": null
+    },
+    {
+      "label": "edition-api-type-first.json",
+      "mode": "type",
+      "status": 0,
+      "error": null
+    },
+    {
+      "label": "edition-api-type-fourth.json",
+      "mode": "type",
+      "status": 0,
+      "error": null
+    },
+    {
+      "label": "edition-api-type-second.json",
+      "mode": "type",
+      "status": 0,
+      "error": null
+    },
+    {
+      "label": "edition-api-type-third.json",
+      "mode": "type",
+      "status": 0,
+      "error": null
+    },
+    {
+      "label": "edition-conformity-model-first.json",
+      "passed": 11,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-contracts-first.json",
+      "mode": "contracts",
+      "status": 0,
+      "error": null
+    },
+    {
+      "label": "edition-course-http-postgres-first.json",
+      "passed": 22,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-course-http-sqlite-first.json",
+      "passed": 21,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-course-http-sqlite-second.json",
+      "passed": 22,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-existing-diagnostics-first.json",
+      "passed": 27,
+      "failed": 8,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "scope → atomic assessment → diagnosis → guidance → verification serves all 12 source-reviewed Chinese TOCs without fabricating knowledge mappings or selectable combined parts",
+          "messages": [
+            "TypeError: Cannot read properties of undefined (reading 'start')\n    at F:/workspace/github/StudyAgent/data/qa/p185/apps/api/src/modules/diagnostics/diagnostics.integration.test.ts:111:41\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "scope → atomic assessment → diagnosis → guidance → verification maps complete local math and English source books without inventing lesson page offsets",
+          "messages": [
+            "AssertionError: expected +0 to be 113 // Object.is equality\n    at F:/workspace/github/StudyAgent/data/qa/p185/apps/api/src/modules/diagnostics/diagnostics.integration.test.ts:143:25\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "scope → atomic assessment → diagnosis → guidance → verification requires a separate lesson mapping review, keeps scope gaps and freezes the previous textbook edition",
+          "messages": [
+            "AssertionError: expected [ 'chinese-fixture' ] to deeply equal []\n    at F:/workspace/github/StudyAgent/data/qa/p185/apps/api/src/modules/diagnostics/diagnostics.integration.test.ts:189:53\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "eligible material coverage through real curriculum services and HTTP preserves all 258 primary points and adds 28 chemistry points without mutating business data",
+          "messages": [
+            "AssertionError: expected { imported: 449, …(8) } to match object { imported: 448, …(2) }\n(6 matching properties omitted from actual)\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/expect/dist/index.js:1283:10)\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/expect/dist/index.js:1156:15)\n    at Proxy.methodWrapper (file:///F:/workspace/github/StudyAgent/node_modules/chai/index.js:1737:25)\n    at F:/workspace/github/StudyAgent/data/qa/p185/apps/api/src/modules/diagnostics/verification-materials.integration.test.ts:42:35\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "eligible material coverage through real curriculum services and HTTP pages the cross-textbook lesson worklist without approving title-based mappings",
+          "messages": [
+            "AssertionError: expected { all: 45, matched: +0, …(1) } to deeply equal { all: 45, matched: 45, …(1) }\n    at F:/workspace/github/StudyAgent/data/qa/p185/apps/api/src/modules/diagnostics/verification-materials.integration.test.ts:57:33\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "eligible material coverage through real curriculum services and HTTP uses every current eligibility gate and restores readiness only when the actual packets are eligible again",
+          "messages": [
+            "Error: STACK_TRACE_ERROR\n    at task (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1784:27)\n    at Object.<anonymous> (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1817:16)\n    at Object.<anonymous> (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1563:28)\n    at chain (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:599:14)\n    at F:/workspace/github/StudyAgent/data/qa/p185/apps/api/src/modules/diagnostics/verification-materials.integration.test.ts:84:3\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1889:40\n    at runWithSuite (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2258:8)\n    at Object.collect (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1889:10)\n    at Object.collect (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1893:54)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "eligible material coverage through real curriculum services and HTTP distinguishes time budget from structure and removes inactive definitions from published totals",
+          "messages": [
+            "Error: read ECONNRESET\n    at TCP.onStreamRead (node:internal/stream_base_commons:216:20)"
+          ]
+        },
+        {
+          "name": "eligible material coverage through real curriculum services and HTTP rechecks edited immutable answer snapshots with the same IDs instead of retaining prior input support",
+          "messages": [
+            "AssertionError: expected false to be true // Object.is equality\n    at F:/workspace/github/StudyAgent/data/qa/p185/apps/api/src/modules/diagnostics/verification-materials.integration.test.ts:126:77\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "edition-existing-diagnostics-second.json",
+      "passed": 35,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-final-course-postgres-first.json",
+      "passed": 22,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-final-http-sqlite-first.json",
+      "passed": 51,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-final-teaching-postgres-first.json",
+      "passed": 15,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-final-upgrade-postgres-first.json",
+      "passed": 14,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-native-postgres-first.json",
+      "passed": 25,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-native-sqlite-first.json",
+      "passed": 25,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-previous-reader-postgres-first.json",
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-previous-reader-sqlite-first.json",
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-product-first-visual-review.json",
+      "at": "2026-11-01T06:07:11.352Z",
+      "productLabel": "edition-product-first",
+      "allFiveImagesOpened": true,
+      "publisherIframesAreReviewMasksNotProductColors": true,
+      "layout": "Existing workbench typography, panels, native selection, button and keyboard styles retained. Four viewport widths have no horizontal overflow. Reference choice and separate unknown-edition choice remain explicit.",
+      "images": [
+        {
+          "name": "reference-390x844.png",
+          "viewed": true,
+          "sha256": "f6c68ec1b79de0962b9f5fb18bd5d74227f3040874e2b2b03d21ffd1b0e659b2"
+        },
+        {
+          "name": "reference-768x900.png",
+          "viewed": true,
+          "sha256": "91e26b2dc6bb0285f6508a58fbf265994e0bd5924cc3589ce6cb58e6aeb7da7c"
+        },
+        {
+          "name": "reference-1440x1000.png",
+          "viewed": true,
+          "sha256": "48eef29ba6c3c57d1b353a88dd0aade46abec1a49dbb02dbea23031ee0db916d"
+        },
+        {
+          "name": "reference-1440x500.png",
+          "viewed": true,
+          "sha256": "942b775e9629f014bcb5a9e8dd89afa18dec1e60008dff3eb3a2e7b582ac7d0d"
+        },
+        {
+          "name": "independent-original-choice.png",
+          "viewed": true,
+          "sha256": "dbdf6090790e537034745ea303470b095bf564f4dac6227f9b76ebab1eb89742"
+        }
+      ]
+    },
+    {
+      "label": "edition-product-second-visual-review.json",
+      "at": "2026-11-01T06:18:32.174Z",
+      "productLabel": "edition-product-second",
+      "allFiveImagesOpened": true,
+      "publisherIframesAreReviewMasksNotProductColors": true,
+      "images": [
+        {
+          "name": "reference-390x844.png",
+          "viewed": true,
+          "sha256": "f6c68ec1b79de0962b9f5fb18bd5d74227f3040874e2b2b03d21ffd1b0e659b2"
+        },
+        {
+          "name": "reference-768x900.png",
+          "viewed": true,
+          "sha256": "91e26b2dc6bb0285f6508a58fbf265994e0bd5924cc3589ce6cb58e6aeb7da7c"
+        },
+        {
+          "name": "reference-1440x1000.png",
+          "viewed": true,
+          "sha256": "48eef29ba6c3c57d1b353a88dd0aade46abec1a49dbb02dbea23031ee0db916d"
+        },
+        {
+          "name": "reference-1440x500.png",
+          "viewed": true,
+          "sha256": "942b775e9629f014bcb5a9e8dd89afa18dec1e60008dff3eb3a2e7b582ac7d0d"
+        },
+        {
+          "name": "independent-original-choice.png",
+          "viewed": true,
+          "sha256": "dbdf6090790e537034745ea303470b095bf564f4dac6227f9b76ebab1eb89742"
+        }
+      ]
+    },
+    {
+      "label": "edition-product-third-visual-review.json",
+      "at": "2026-11-01T06:29:35.503Z",
+      "productLabel": "edition-product-third",
+      "allFiveImagesOpened": true,
+      "publisherIframesAreReviewMasksNotProductColors": true,
+      "images": [
+        {
+          "name": "reference-390x844.png",
+          "viewed": true,
+          "sha256": "f6c68ec1b79de0962b9f5fb18bd5d74227f3040874e2b2b03d21ffd1b0e659b2"
+        },
+        {
+          "name": "reference-768x900.png",
+          "viewed": true,
+          "sha256": "91e26b2dc6bb0285f6508a58fbf265994e0bd5924cc3589ce6cb58e6aeb7da7c"
+        },
+        {
+          "name": "reference-1440x1000.png",
+          "viewed": true,
+          "sha256": "48eef29ba6c3c57d1b353a88dd0aade46abec1a49dbb02dbea23031ee0db916d"
+        },
+        {
+          "name": "reference-1440x500.png",
+          "viewed": true,
+          "sha256": "942b775e9629f014bcb5a9e8dd89afa18dec1e60008dff3eb3a2e7b582ac7d0d"
+        },
+        {
+          "name": "independent-original-choice.png",
+          "viewed": true,
+          "sha256": "dbdf6090790e537034745ea303470b095bf564f4dac6227f9b76ebab1eb89742"
+        }
+      ]
+    },
+    {
+      "label": "edition-production-first.json",
+      "at": "2026-11-01T06:01:15.211Z",
+      "status": 0,
+      "error": null,
+      "distDir": ".next-edition-production-first",
+      "source": "data/qa/p185",
+      "buildId": "cMBUbL63yrqTKJcX_MZkz",
+      "inputFiles": 1607,
+      "apiPort": 4285,
+      "webPort": 3285
+    },
+    {
+      "label": "edition-registry-model-first.json",
+      "passed": 44,
+      "failed": 3,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "independent whole-book edition conformity rejects backwards, duplicate or out-of-book physical directory and edition evidence",
+          "messages": [
+            "AssertionError: expected { …(11) } to be null\n    at F:/workspace/github/StudyAgent/data/qa/p185/apps/api/src/modules/diagnostics/textbook-edition-conformity.test.ts:49:102\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2956:64"
+          ]
+        },
+        {
+          "name": "verified textbook source documents reports an unavailable repository without falling back to a different local PDF",
+          "messages": [
+            "AssertionError: expected null to match object { available: false }\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/expect/dist/index.js:1283:10)\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/expect/dist/index.js:1156:15)\n    at Proxy.methodWrapper (file:///F:/workspace/github/StudyAgent/node_modules/chai/index.js:1737:25)\n    at F:/workspace/github/StudyAgent/data/qa/p185/apps/api/src/modules/diagnostics/textbook-registry-document.test.ts:74:44\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20"
+          ]
+        },
+        {
+          "name": "verified textbook source documents does not mask an in-root link by resolving it before descriptor verification",
+          "messages": [
+            "Error: expected [Function] to throw error including '字节校验失败' but got '此教材尚无核对完整目录的准确版本原件：当前教材目录或完整原件身份与整册核对…'\n    at _Assertion.__VITEST_REJECTS__ (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///F:/workspace/github/StudyAgent/node_modules/chai/index.js:1607:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///F:/workspace/github/StudyAgent/node_modules/chai/index.js:1696:22)\n    at F:/workspace/github/StudyAgent/data/qa/p185/apps/api/src/modules/diagnostics/textbook-registry-document.test.ts:89:44\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "edition-registry-model-second.json",
+      "passed": 47,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-source-http-postgres-first.json",
+      "passed": 7,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-source-http-sqlite-first.json",
+      "passed": 7,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-source-model-fourth.json",
+      "passed": 48,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-source-model-third.json",
+      "passed": 48,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-teaching-http-postgres-first.json",
+      "passed": 15,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-teaching-http-sqlite-first.json",
+      "passed": 12,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-teaching-http-sqlite-second.json",
+      "passed": 15,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-upgrade-http-postgres-first.json",
+      "passed": 13,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-upgrade-http-postgres-second.json",
+      "passed": 14,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-upgrade-http-sqlite-first.json",
+      "passed": 14,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "edition-web-type-first.json",
+      "mode": "webtype",
+      "status": 0,
+      "error": null
+    },
+    {
+      "label": "edition-web-type-second.json",
+      "mode": "webtype",
+      "status": 0,
+      "error": null
+    }
+  ],
+  "latestProduct": {
+    "label": "edition-product-third",
+    "buildId": "cMBUbL63yrqTKJcX_MZkz",
+    "passed": 7,
+    "failed": 0,
+    "pageErrors": [],
+    "screenshotsViewed": 5,
+    "publisherIframesMasked": true
+  },
+  "previousActualCompiledReader": {
+    "resource": "resources/compatibility/course-history-schema33-reader-v1.json.gz",
+    "sha256": "50ba779c243018f86e92db49b8f1885db2fcf28ca5006118dc3703816cbb2cf2",
+    "oldMinimumReader": "ready-schema33-course-history-v1",
+    "nativeSQLite": {
+      "passed": 2,
+      "failed": 0
+    },
+    "nativePostgres": {
+      "passed": 2,
+      "failed": 0
+    },
+    "historicalPreservationTimePendingFlagsAreNotCurrentProbeStatus": true
+  },
+  "wholeAPI": {
+    "status": "running",
+    "label": "edition-api-all-first",
+    "inputCount": 1295,
+    "compiledInputs": 595,
+    "notCountedAsPassed": true
+  },
+  "scope": [
+    "Independent whole-book proof binds explicit bibliography, full source/extraction, all directory identities/order and complete evidence-page hashes. Publication year and course standard year are separate.",
+    "Old523 source locators cannot inherit a new proof. Same-name originals remain explicit editor-only references; post-I/O current-editor checks and no-write reference reads are exercised.",
+    "One actual27-numbered-lesson/51-entry original is independently registered with unknown publication/standard years; the old26-lesson revision stays unqualified and student choices are not switched.",
+    "New source snapshots/commands carry the proof hash. Changed qualification blocks new preflight/publication/create/upgrade after I/O while original commands, receipts, adopted history and learner first responses remain frozen.",
+    "Synchronous catalog projections share one inventory; caches end before any await and subsequent exact-source checks reread actual file bytes."
+  ],
+  "limitations": [
+    "This is an isolated engineering candidate, not a main application merge or release.",
+    "Only one real whole-book directory and the first physical7-9 lesson source are reviewed here, not all textbook bodies or complete teaching content.",
+    "The exact edition record does not grant redistribution rights, mapping approval, teacher review or real learning effectiveness.",
+    "First47-test batch44/3 and existing diagnostic27/8 failures are retained; batch results are independent and never summed.",
+    "Real-source original teaching adoption, original-plan due retention, final site/privacy/restoration gates and all original72/WS/GESP/R5/R7/R8 and teacher/device/print/real1/3/7/14-day requirements remain active."
+  ],
+  "localOnly": true,
+  "pushed": false,
+  "deployed": false,
+  "wholeGoal": "active"
+}
