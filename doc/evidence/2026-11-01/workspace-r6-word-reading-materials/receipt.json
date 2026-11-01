@@ -1,0 +1,106 @@
+{
+  "protocol": "study-agent-source-word-reading-candidate-v1",
+  "at": "2026-11-01T08:48:16.508Z",
+  "candidate": "data/qa/p186",
+  "mainApplicationSchema": 32,
+  "candidateSchema": 33,
+  "applicationIntegrated": false,
+  "newReadingQuestions": 22,
+  "readingTaskStructures": 6,
+  "writtenPronunciationChecks": 5,
+  "audioProductionCandidates": 17,
+  "allMaterialQuestionsInThisJourney": 90,
+  "closedScoringCases": 47,
+  "openReferenceCasesAwaitingRubricReview": 43,
+  "formatOnlyMediaGoldenCases": 17,
+  "actualMediaUploaded": false,
+  "studentPronunciationVerified": false,
+  "teacherReviewed": false,
+  "sourceIncrement": {
+    "files": 3,
+    "archive": "candidate-source-delta.json.gz",
+    "sha256": "3961511026893a3e7df4bd03469c92661bb356d37dab57a0953799f519105bd5",
+    "parentArchive": "doc/evidence/2026-11-01/workspace-r6-feature-summary-materials/candidate-source-delta.json.gz",
+    "parentSha256": "aec3805f0e78e00026a611ef0cb85a74fb0f0fe866fe9ebd80cd6ed1e3d10bf6",
+    "frozenInputs": 1307,
+    "frozenCompiledInputs": 599,
+    "driversFrozenBeforeJourney": true
+  },
+  "checks": {
+    "firstCombinedModel": {
+      "passed": 15,
+      "failed": 1,
+      "pending": 0,
+      "reason": "Text passed to an audio protocol is rejected as mode mismatch; the first test incorrectly expected the missing-recording wording."
+    },
+    "finalCombinedModel": {
+      "passed": 23,
+      "failed": 0,
+      "pending": 0,
+      "newReadingChecks": 4,
+      "previousContentChecks": 12,
+      "existingOverviewIntegrationChecks": 7
+    },
+    "type": 0,
+    "build": 0,
+    "sqlite": {
+      "label": "reading-sqlite-journey-first",
+      "passed": 17,
+      "failed": 0
+    },
+    "postgres": {
+      "label": "reading-postgres-journey-first",
+      "passed": 17,
+      "failed": 0
+    }
+  },
+  "originalMaterialDirectory": {
+    "total": 22,
+    "audioRecordInputs": 17,
+    "answerOrGradingLeak": false
+  },
+  "fiveDefinitionPackage": {
+    "initialAllDraft": true,
+    "actualUploadPreviewApply": true,
+    "onlyThreeSelectedDefinitionsExplicitlyPublishedInQa": true,
+    "otherTwoDraftDefinitionsRetained": true,
+    "automaticRelease": false
+  },
+  "preflight": {
+    "initialGaps": 62,
+    "previousCandidateGaps": 30,
+    "actualThisJourneyGaps": 20,
+    "publishable": false,
+    "readyTargets": 6,
+    "remainingDraftTargets": 2,
+    "remainingChecksWithoutMaterials": 8,
+    "remainingStructureGaps": 2,
+    "remainingIntervalStockGaps": 8
+  },
+  "actualTeachingServiceSaved": true,
+  "originalCommandReplay": true,
+  "exactReadback": true,
+  "incompletePublicationRefused": true,
+  "coldOriginalCommandsAnd90Mappings": true,
+  "noStudentSessionsResponsesMediaOrAdoptionsWritten": true,
+  "oldThreeCoreDefinitionsQuestionsMappingsRetained": true,
+  "sourceTextAndPrivateCommandsRemainLocal": true,
+  "wholeApiThirdStillFailed": true,
+  "newCandidateWholeApiNotRunYet": true,
+  "performance": {
+    "beforeCandidate": "p185",
+    "afterCandidate": "p186",
+    "beforeUnchangedFocusedMs": 21869.9749,
+    "afterScopedQueryMs": 16363.871900000002,
+    "unchangedLimitMs": 30000,
+    "allSevenOriginalGatesPassed": true,
+    "note": "Observed durations on this host, not a calibrated benchmark. Subject/grade filtering now selects only relevant mappings and answer configurations; exact source reads and eligibility rules remain unchanged."
+  },
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFilesUnchanged": 1063,
+  "localOnly": true,
+  "wholeGoal": "active"
+}

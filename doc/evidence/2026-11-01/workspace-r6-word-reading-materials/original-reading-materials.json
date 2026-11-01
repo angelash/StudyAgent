@@ -1,0 +1,736 @@
+{
+  "format": "study-original-source-material-review-v1",
+  "status": "editorial-candidate",
+  "autoImport": false,
+  "teacherReviewed": false,
+  "pronunciationReviewed": false,
+  "actualMediaUploaded": false,
+  "wordList": [
+    {
+      "character": "坝",
+      "word": "坪坝",
+      "pinyin": "bà"
+    },
+    {
+      "character": "汉",
+      "word": "汉字",
+      "pinyin": "hàn"
+    },
+    {
+      "character": "艳",
+      "word": "鲜艳",
+      "pinyin": "yàn"
+    },
+    {
+      "character": "扮",
+      "word": "打扮",
+      "pinyin": "bàn"
+    },
+    {
+      "character": "扬",
+      "word": "飘扬",
+      "pinyin": "yáng"
+    },
+    {
+      "character": "读",
+      "word": "朗读",
+      "pinyin": "dú"
+    },
+    {
+      "character": "摔",
+      "word": "摔倒",
+      "pinyin": "shuāi"
+    },
+    {
+      "character": "跤",
+      "word": "摔跤",
+      "pinyin": "jiāo"
+    },
+    {
+      "character": "凤",
+      "word": "凤尾竹",
+      "pinyin": "fèng"
+    },
+    {
+      "character": "洁",
+      "word": "洁白",
+      "pinyin": "jié"
+    }
+  ],
+  "families": [
+    {
+      "atomId": "source:chinese:g3:02915a7d:word-reading",
+      "family": "reading-character-tone-pair",
+      "dimension": "understanding",
+      "behavior": "区分指定字的拼音与声调，书面辨认和实际发音分别记录",
+      "structure": "两个明确词语中的指定字＋备选拼音 → 分别填写拼音",
+      "distinction": "此结构只检查书面字音对应，不能因为两空全对就推断已能实际读出；原音频表现另用产生性任务复核。",
+      "exercises": [
+        {
+          "stem": "从备选“bà、hàn、bá、jiè”中，分别填写“坪坝”里的“坝”和“汉字”里的“汉”的读音。只核查书面辨认，实际发音还需录音。",
+          "mode": "multi_blank",
+          "answer": [
+            {
+              "key": "left",
+              "value": "bà"
+            },
+            {
+              "key": "right",
+              "value": "hàn"
+            }
+          ],
+          "responseShape": {
+            "entries": [
+              {
+                "key": "left",
+                "label": "坝的读音"
+              },
+              {
+                "key": "right",
+                "label": "汉的读音"
+              }
+            ]
+          },
+          "expectedSeconds": 80,
+          "analysis": "坪坝中的坝读bà，汉字中的汉读hàn。按当前词语和声调核对，书面辨认不代替真实朗读。",
+          "family": "reading-character-tone-pair",
+          "dimension": "understanding",
+          "identityVersion": 2
+        },
+        {
+          "stem": "从备选“yàn、bàn、bá、jiè”中，分别填写“鲜艳”里的“艳”和“打扮”里的“扮”的读音。只核查书面辨认，实际发音还需录音。",
+          "mode": "multi_blank",
+          "answer": [
+            {
+              "key": "left",
+              "value": "yàn"
+            },
+            {
+              "key": "right",
+              "value": "bàn"
+            }
+          ],
+          "responseShape": {
+            "entries": [
+              {
+                "key": "left",
+                "label": "艳的读音"
+              },
+              {
+                "key": "right",
+                "label": "扮的读音"
+              }
+            ]
+          },
+          "expectedSeconds": 80,
+          "analysis": "鲜艳中的艳读yàn，打扮中的扮读bàn。按当前词语和声调核对，书面辨认不代替真实朗读。",
+          "family": "reading-character-tone-pair",
+          "dimension": "understanding",
+          "identityVersion": 2
+        },
+        {
+          "stem": "从备选“yáng、dú、bá、jiè”中，分别填写“飘扬”里的“扬”和“朗读”里的“读”的读音。只核查书面辨认，实际发音还需录音。",
+          "mode": "multi_blank",
+          "answer": [
+            {
+              "key": "left",
+              "value": "yáng"
+            },
+            {
+              "key": "right",
+              "value": "dú"
+            }
+          ],
+          "responseShape": {
+            "entries": [
+              {
+                "key": "left",
+                "label": "扬的读音"
+              },
+              {
+                "key": "right",
+                "label": "读的读音"
+              }
+            ]
+          },
+          "expectedSeconds": 80,
+          "analysis": "飘扬中的扬读yáng，朗读中的读读dú。按当前词语和声调核对，书面辨认不代替真实朗读。",
+          "family": "reading-character-tone-pair",
+          "dimension": "understanding",
+          "identityVersion": 2
+        },
+        {
+          "stem": "从备选“shuāi、jiāo、bá、jiè”中，分别填写“摔倒”里的“摔”和“摔跤”里的“跤”的读音。只核查书面辨认，实际发音还需录音。",
+          "mode": "multi_blank",
+          "answer": [
+            {
+              "key": "left",
+              "value": "shuāi"
+            },
+            {
+              "key": "right",
+              "value": "jiāo"
+            }
+          ],
+          "responseShape": {
+            "entries": [
+              {
+                "key": "left",
+                "label": "摔的读音"
+              },
+              {
+                "key": "right",
+                "label": "跤的读音"
+              }
+            ]
+          },
+          "expectedSeconds": 80,
+          "analysis": "摔倒中的摔读shuāi，摔跤中的跤读jiāo。按当前词语和声调核对，书面辨认不代替真实朗读。",
+          "family": "reading-character-tone-pair",
+          "dimension": "understanding",
+          "identityVersion": 2
+        },
+        {
+          "stem": "从备选“fèng、jié、bá、jiè”中，分别填写“凤尾竹”里的“凤”和“洁白”里的“洁”的读音。只核查书面辨认，实际发音还需录音。",
+          "mode": "multi_blank",
+          "answer": [
+            {
+              "key": "left",
+              "value": "fèng"
+            },
+            {
+              "key": "right",
+              "value": "jié"
+            }
+          ],
+          "responseShape": {
+            "entries": [
+              {
+                "key": "left",
+                "label": "凤的读音"
+              },
+              {
+                "key": "right",
+                "label": "洁的读音"
+              }
+            ]
+          },
+          "expectedSeconds": 80,
+          "analysis": "凤尾竹中的凤读fèng，洁白中的洁读jié。按当前词语和声调核对，书面辨认不代替真实朗读。",
+          "family": "reading-character-tone-pair",
+          "dimension": "understanding",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:word-reading",
+      "family": "reading-unmarked-word-production",
+      "dimension": "procedure",
+      "behavior": "不依靠现成拼音实际读出指定字词",
+      "structure": "不标拼音的明确词语清单 → 原音频逐词识读＋任选一词说明意思",
+      "distinction": "不是填写拼音或播放参考音频；必须保留本人实际读音与自我修正，参考答案只供有权限的复核者使用。",
+      "exercises": [
+        {
+          "stem": "请依次读“坪坝、汉字、鲜艳”，再选一个词，用自己的话说明意思。 请用自己的声音录音回答，可先试听，最长3分钟。",
+          "answer": "坪坝中的坝读bà，汉字中的汉读hàn，鲜艳中的艳读yàn；词义解释应与平地、汉字或色彩明亮相容。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "按本题指定的新字词逐项识读，字音和声调依据实际录音复核，不用选择题成绩代替发音",
+              "weight": 0.5
+            },
+            {
+              "criterion": "把目标字放回词语或当前语句，词语意义与语境相容，要求比较时能说明区别",
+              "weight": 0.3
+            },
+            {
+              "criterion": "录音可辨认，允许自然停顿与自我修正，不因口音差异一概扣分；听不清保留待复核",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "analysis": "听原录音逐字复核，不把键盘写出的拼音或他人声音当本人读音。",
+          "family": "reading-unmarked-word-production",
+          "dimension": "procedure",
+          "identityVersion": 2
+        },
+        {
+          "stem": "请依次读“打扮、飘扬、朗读”，再选一个词说明它可以用在什么场景。 请用自己的声音录音回答，可先试听，最长3分钟。",
+          "answer": "扮bàn、扬yáng、读dú；所说场景须符合装扮、随风摆动或出声读文字等意义。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "按本题指定的新字词逐项识读，字音和声调依据实际录音复核，不用选择题成绩代替发音",
+              "weight": 0.5
+            },
+            {
+              "criterion": "把目标字放回词语或当前语句，词语意义与语境相容，要求比较时能说明区别",
+              "weight": 0.3
+            },
+            {
+              "criterion": "录音可辨认，允许自然停顿与自我修正，不因口音差异一概扣分；听不清保留待复核",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "analysis": "实际发音与词义分别记录，允许先读错后自己更正，保留更正经过。",
+          "family": "reading-unmarked-word-production",
+          "dimension": "procedure",
+          "identityVersion": 2
+        },
+        {
+          "stem": "请依次读“摔倒、摔跤、凤尾竹”，再说说前两个词中共同的那个字怎样读。 请用自己的声音录音回答，可先试听，最长3分钟。",
+          "answer": "摔shuāi、跤jiāo、凤fèng；摔倒和摔跤中的共同字是摔。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "按本题指定的新字词逐项识读，字音和声调依据实际录音复核，不用选择题成绩代替发音",
+              "weight": 0.5
+            },
+            {
+              "criterion": "把目标字放回词语或当前语句，词语意义与语境相容，要求比较时能说明区别",
+              "weight": 0.3
+            },
+            {
+              "criterion": "录音可辨认，允许自然停顿与自我修正，不因口音差异一概扣分；听不清保留待复核",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "analysis": "读完整词语再比较共同字；没有录音时保持未测，不能直接采用文字参考判分。",
+          "family": "reading-unmarked-word-production",
+          "dimension": "procedure",
+          "identityVersion": 2
+        },
+        {
+          "stem": "请按这一新顺序读“洁白、朗读、打扮、坪坝”，任选一个词说一句自己的话。 请用自己的声音录音回答，可先试听，最长3分钟。",
+          "answer": "洁jié、读dú、扮bàn、坝bà；自编句子应清楚且词义相容。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "按本题指定的新字词逐项识读，字音和声调依据实际录音复核，不用选择题成绩代替发音",
+              "weight": 0.5
+            },
+            {
+              "criterion": "把目标字放回词语或当前语句，词语意义与语境相容，要求比较时能说明区别",
+              "weight": 0.3
+            },
+            {
+              "criterion": "录音可辨认，允许自然停顿与自我修正，不因口音差异一概扣分；听不清保留待复核",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "analysis": "改变顺序仍在同一词表识读结构内，不增加题族；句子不要求照参考措辞。",
+          "family": "reading-unmarked-word-production",
+          "dimension": "procedure",
+          "identityVersion": 2
+        },
+        {
+          "stem": "请按这一新顺序读“鲜艳、凤尾竹、汉字、飘扬、摔跤”，遇到不会的词可以明确说暂时不会。 请用自己的声音录音回答，可先试听，最长3分钟。",
+          "answer": "艳yàn、凤fèng、汉hàn、扬yáng、摔shuāi、跤jiāo；逐词核对，未知项如实保留。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "按本题指定的新字词逐项识读，字音和声调依据实际录音复核，不用选择题成绩代替发音",
+              "weight": 0.5
+            },
+            {
+              "criterion": "把目标字放回词语或当前语句，词语意义与语境相容，要求比较时能说明区别",
+              "weight": 0.3
+            },
+            {
+              "criterion": "录音可辨认，允许自然停顿与自我修正，不因口音差异一概扣分；听不清保留待复核",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "analysis": "不会读不应被空白或播放合成读法伪装成已会，保留本人原始响应。",
+          "family": "reading-unmarked-word-production",
+          "dimension": "procedure",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:word-reading",
+      "family": "reading-fresh-sentence-production",
+      "dimension": "transfer",
+      "behavior": "将目标字词放入新语句，保持词义与读音对应",
+      "structure": "自编新语句中的目标字词 → 朗读完整句子并说明当前意思",
+      "distinction": "相较孤立词表，需在句中确定断句与当前意思，不能仅背一串拼音或从旧示范复制整段录音。",
+      "exercises": [
+        {
+          "stem": "原创句子：“广场上的彩旗在风中飘扬，墙边新画的花朵色彩鲜艳。”请朗读，再说明两个目标词各描写什么。 请用自己的声音录音回答，可先试听，最长3分钟。",
+          "answer": "飘扬的扬yáng，鲜艳的艳yàn；前者描述彩旗随风摆动，后者描述色彩明亮。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "按本题指定的新字词逐项识读，字音和声调依据实际录音复核，不用选择题成绩代替发音",
+              "weight": 0.5
+            },
+            {
+              "criterion": "把目标字放回词语或当前语句，词语意义与语境相容，要求比较时能说明区别",
+              "weight": 0.3
+            },
+            {
+              "criterion": "录音可辨认，允许自然停顿与自我修正，不因口音差异一概扣分；听不清保留待复核",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "analysis": "读音与修饰对象要同时复核，不把形容颜色的词解释成旗帜动作。",
+          "family": "reading-fresh-sentence-production",
+          "dimension": "transfer",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创句子：“雨后，值日小组把走廊打扫洁净；午间，小宁在窗边朗读自己写的短文。”请朗读，并解释两个活动是否发生在同一明确时段。 请用自己的声音录音回答，可先试听，最长3分钟。",
+          "answer": "洁jié、读dú；材料分别标雨后和午间，不能据此断言两个活动同时进行。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "按本题指定的新字词逐项识读，字音和声调依据实际录音复核，不用选择题成绩代替发音",
+              "weight": 0.5
+            },
+            {
+              "criterion": "把目标字放回词语或当前语句，词语意义与语境相容，要求比较时能说明区别",
+              "weight": 0.3
+            },
+            {
+              "criterion": "录音可辨认，允许自然停顿与自我修正，不因口音差异一概扣分；听不清保留待复核",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "analysis": "新词洁净仍核对洁字的读音与清洁意义；时段判断接受保留未知的解释。",
+          "family": "reading-fresh-sentence-production",
+          "dimension": "transfer",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:word-reading",
+      "family": "reading-annotated-error-self-correction",
+      "dimension": "transfer",
+      "behavior": "核查现成注音、指出不相符项并亲自读出修正",
+      "structure": "明确词语＋含错误的注音记录 → 定位错误、录下正确读法与核对过程",
+      "distinction": "不只从备选中选拼音，也不盲从旁人的现成注音；在纠错条件下保留本人实际读法，不以文字改注代替录音。",
+      "exercises": [
+        {
+          "stem": "有人给“汉字、打扮、洁白”中的指定字注为“汉hàn、扮bàn、洁jiè”。这份记录有一处声调不合。请指出并亲自读出这三个词。 请用自己的声音录音回答，可先试听，最长3分钟。",
+          "answer": "洁白的洁应读jié，不是jiè；汉hàn、扮bàn。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "按本题指定的新字词逐项识读，字音和声调依据实际录音复核，不用选择题成绩代替发音",
+              "weight": 0.5
+            },
+            {
+              "criterion": "把目标字放回词语或当前语句，词语意义与语境相容，要求比较时能说明区别",
+              "weight": 0.3
+            },
+            {
+              "criterion": "录音可辨认，允许自然停顿与自我修正，不因口音差异一概扣分；听不清保留待复核",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "analysis": "错误标注属于题目材料，修正不能只抄答案；原录音仍等待量规复核。",
+          "family": "reading-annotated-error-self-correction",
+          "dimension": "transfer",
+          "identityVersion": 2
+        },
+        {
+          "stem": "有人把“摔跤、凤尾竹、飘扬”中的指定字记为“跤jiǎo、凤fèng、扬yáng”。请核对不合适的标注，再实际读出三个词。 请用自己的声音录音回答，可先试听，最长3分钟。",
+          "answer": "摔跤中的跤应读jiāo，不是jiǎo；凤fèng、扬yáng。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "按本题指定的新字词逐项识读，字音和声调依据实际录音复核，不用选择题成绩代替发音",
+              "weight": 0.5
+            },
+            {
+              "criterion": "把目标字放回词语或当前语句，词语意义与语境相容，要求比较时能说明区别",
+              "weight": 0.3
+            },
+            {
+              "criterion": "录音可辨认，允许自然停顿与自我修正，不因口音差异一概扣分；听不清保留待复核",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "analysis": "指定词语限定读音，重点看实际读音和自我核对，不能把错误标注当提示后的自动掌握。",
+          "family": "reading-annotated-error-self-correction",
+          "dimension": "transfer",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:word-reading",
+      "family": "reading-visual-word-contrast",
+      "dimension": "retention",
+      "behavior": "在形近或同音词对中辨认指定词，再清楚读出完整词语",
+      "structure": "新语境＋两组易混词形 → 根据对象选词并录下两词的读法或差别",
+      "distinction": "不是重新读一张孤立词表；还需依据字形与词义辨认材料所指对象，遇到同音不凭读音假装已经区分字形。",
+      "exercises": [
+        {
+          "stem": "原创记录：“同学把自己写的一段话读出声音。”请在“朗读/郎读”中指出规范词形，再读完整词语，说明你怎样核对“朗”。 请用自己的声音录音回答，可先试听，最长3分钟。",
+          "answer": "应选朗读；读dú。两个相近字形不能仅靠声音决定正字，应依据规范词语和字形核对。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "按本题指定的新字词逐项识读，字音和声调依据实际录音复核，不用选择题成绩代替发音",
+              "weight": 0.5
+            },
+            {
+              "criterion": "把目标字放回词语或当前语句，词语意义与语境相容，要求比较时能说明区别",
+              "weight": 0.3
+            },
+            {
+              "criterion": "录音可辨认，允许自然停顿与自我修正，不因口音差异一概扣分；听不清保留待复核",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "analysis": "错误词形仅供辨析，读对音不等于已经写对字；字形选择与实际读音分开复核。",
+          "family": "reading-visual-word-contrast",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创记录：“旗子随着风展开、摆动。”请比较“飘扬/飘杨”，选出这里的规范词语并读出，说明这里为什么不是树木名称。 请用自己的声音录音回答，可先试听，最长3分钟。",
+          "answer": "应选飘扬，扬yáng；句子描写旗帜随风摆动，不是杨树。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "按本题指定的新字词逐项识读，字音和声调依据实际录音复核，不用选择题成绩代替发音",
+              "weight": 0.5
+            },
+            {
+              "criterion": "把目标字放回词语或当前语句，词语意义与语境相容，要求比较时能说明区别",
+              "weight": 0.3
+            },
+            {
+              "criterion": "录音可辨认，允许自然停顿与自我修正，不因口音差异一概扣分；听不清保留待复核",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "analysis": "扬和杨同音，必须说清词义与字形条件，不能靠合成音频替自己选择字形。",
+          "family": "reading-visual-word-contrast",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创记录：“小路刚被打扫过，没有垃圾和污迹。”请比较“洁净/结净”，说出这里的规范词语，再读完整词语。 请用自己的声音录音回答，可先试听，最长3分钟。",
+          "answer": "应选洁净，洁jié；描述清洁状态，不使用结净。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "按本题指定的新字词逐项识读，字音和声调依据实际录音复核，不用选择题成绩代替发音",
+              "weight": 0.5
+            },
+            {
+              "criterion": "把目标字放回词语或当前语句，词语意义与语境相容，要求比较时能说明区别",
+              "weight": 0.3
+            },
+            {
+              "criterion": "录音可辨认，允许自然停顿与自我修正，不因口音差异一概扣分；听不清保留待复核",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "analysis": "同音并不保证字形正确，保存原口头比较和实际读法。",
+          "family": "reading-visual-word-contrast",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创记录：“摔倒后，小宁站稳了。”请在“摔倒/衰倒”中选择符合动作意义的词语，再清楚读出，说明目标字的声调。 请用自己的声音录音回答，可先试听，最长3分钟。",
+          "answer": "应选摔倒，摔shuāi；句子说失去平衡倒下的动作，摔是第一声。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "按本题指定的新字词逐项识读，字音和声调依据实际录音复核，不用选择题成绩代替发音",
+              "weight": 0.5
+            },
+            {
+              "criterion": "把目标字放回词语或当前语句，词语意义与语境相容，要求比较时能说明区别",
+              "weight": 0.3
+            },
+            {
+              "criterion": "录音可辨认，允许自然停顿与自我修正，不因口音差异一概扣分；听不清保留待复核",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "analysis": "字音、字形、动作意义都要核对，听不清的声调保留待复核。",
+          "family": "reading-visual-word-contrast",
+          "dimension": "retention",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:word-reading",
+      "family": "reading-context-cloze-production",
+      "dimension": "retention",
+      "behavior": "在新语境中选择相容词义，再把完整语句独立读出",
+      "structure": "有语义限制的新句＋多个候选词 → 补足词语、朗读整句并说明选择依据",
+      "distinction": "材料没有直接给出完整句子，需先根据语境选词再完成实际朗读；不能仅提交词语选项就算已经识读。",
+      "exercises": [
+        {
+          "stem": "原创句子：“表演前，大家整理服装，把自己认真地（打扮/摔跤）了一番。”请选合适的词，读出完整句子，再说明理由。 请用自己的声音录音回答，可先试听，最长3分钟。",
+          "answer": "选打扮，扮bàn；整理服装和表演准备限定为装扮，不是摔跤动作。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "按本题指定的新字词逐项识读，字音和声调依据实际录音复核，不用选择题成绩代替发音",
+              "weight": 0.5
+            },
+            {
+              "criterion": "把目标字放回词语或当前语句，词语意义与语境相容，要求比较时能说明区别",
+              "weight": 0.3
+            },
+            {
+              "criterion": "录音可辨认，允许自然停顿与自我修正，不因口音差异一概扣分；听不清保留待复核",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "analysis": "先核对语义选择，再听整句里的实际发音；选择正确仍不自动取得朗读分。",
+          "family": "reading-context-cloze-production",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创句子：“新做的花环颜色明亮，显得十分（鲜艳/朗读）。”请选词并朗读，说明它描写的是什么。 请用自己的声音录音回答，可先试听，最长3分钟。",
+          "answer": "选鲜艳，艳yàn；它描写花环颜色明亮，朗读是读文字的活动。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "按本题指定的新字词逐项识读，字音和声调依据实际录音复核，不用选择题成绩代替发音",
+              "weight": 0.5
+            },
+            {
+              "criterion": "把目标字放回词语或当前语句，词语意义与语境相容，要求比较时能说明区别",
+              "weight": 0.3
+            },
+            {
+              "criterion": "录音可辨认，允许自然停顿与自我修正，不因口音差异一概扣分；听不清保留待复核",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "analysis": "形容颜色与活动词不同，语义与实际字音分别复核。",
+          "family": "reading-context-cloze-production",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创句子：“山间的一块平地上，孩子们沿着小路走过（坪坝/凤尾竹）。”请根据句意选词，读出整句，并解释所选词所指的地点。 请用自己的声音录音回答，可先试听，最长3分钟。",
+          "answer": "选坪坝，坝bà；句意描述山间平地，不是植物凤尾竹。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "按本题指定的新字词逐项识读，字音和声调依据实际录音复核，不用选择题成绩代替发音",
+              "weight": 0.5
+            },
+            {
+              "criterion": "把目标字放回词语或当前语句，词语意义与语境相容，要求比较时能说明区别",
+              "weight": 0.3
+            },
+            {
+              "criterion": "录音可辨认，允许自然停顿与自我修正，不因口音差异一概扣分；听不清保留待复核",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "analysis": "本题词义受明确句意限制，不直接把坝解释为所有语境下的水坝。",
+          "family": "reading-context-cloze-production",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创句子：“展台上放着两片（洁白/飘扬）的纸，准备给同学写观察记录。”请选词后完整朗读，再指出词语在这里说明哪种特点。 请用自己的声音录音回答，可先试听，最长3分钟。",
+          "answer": "选洁白，洁jié；它说明纸洁净而白，材料没有把纸写成随风飘动。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "按本题指定的新字词逐项识读，字音和声调依据实际录音复核，不用选择题成绩代替发音",
+              "weight": 0.5
+            },
+            {
+              "criterion": "把目标字放回词语或当前语句，词语意义与语境相容，要求比较时能说明区别",
+              "weight": 0.3
+            },
+            {
+              "criterion": "录音可辨认，允许自然停顿与自我修正，不因口音差异一概扣分；听不清保留待复核",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "analysis": "纸也可能被风吹起，但本句没有这个条件，不能脱离语境任意选择；实际朗读待复核。",
+          "family": "reading-context-cloze-production",
+          "dimension": "retention",
+          "identityVersion": 2
+        }
+      ]
+    }
+  ]
+}

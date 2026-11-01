@@ -1,5 +1,7 @@
 # 开发计划核对、整体进度与后续里程碑
 
+2026-11-01最新：[184真实首课](184-real-source-original-lessons-and-complete-objective-coverage.md)补22识读候选，实际双库各17/0、目录/完整稿/冷读及不完整发布拒绝通过，缺口30→20；5书面与17录音任务分列，没有实际学生媒体或发音结论。第三完整API2988/1/131仍失败；后续范围查询优化的23项组合通过，尚待新完整回归。以[150全部计划](150-integrated-delivery-plan-and-work-ledger.md)接手写/场景表达、原课程课堂/保持及全部原72/WS/R1～R8和真实验收，主干32/正式24保持，仅本地软件提交。
+
 2026-11-01最新接续：[184真实首课](184-real-source-original-lessons-and-complete-objective-coverage.md)新增22道特点概括材料，实际双库最新各16/0和原稿保存/冷读/不完整发布拒绝通过，当前缺口40→30。识读/手写/校园表达及原课程课堂/保持仍待；第三完整API未收取。以[150完整计划](150-integrated-delivery-plan-and-work-ledger.md)继续全部余项，原72/WS和所有真实验收不提升，主干32/正式24保持，仅本地软件提交。
 
 2026-11-01最新以[150计划](150-integrated-delivery-plan-and-work-ledger.md)和[184真实首课](184-real-source-original-lessons-and-complete-objective-coverage.md)为准：新增22道场景材料，实际双库各16/0、原定义包导入与未完整发布拒绝/冷读通过，整课缺口50→40；13道开放描述仍待量规复核。字词参考音频只完成生成、解码与回读，未取得字音/教师或学生资格。第三完整API仍在冻结运行；原72/WS和所有剩余工程/内容/真实验收保持active，软件仅本地提交、正式24/revision187保持。

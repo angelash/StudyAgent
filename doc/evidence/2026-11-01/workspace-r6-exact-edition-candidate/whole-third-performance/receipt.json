@@ -1,0 +1,74 @@
+{
+  "at": "2026-11-01T08:37:36.660Z",
+  "candidate": "data/qa/p185",
+  "wholeThird": {
+    "passed": 2988,
+    "failedTests": 1,
+    "pending": 131,
+    "failedSuites": 2,
+    "success": false,
+    "processStatus": 1
+  },
+  "failure": {
+    "title": "eligible material coverage through real curriculum services and HTTP uses every current eligibility gate and restores readiness only when the actual packets are eligible again",
+    "durationMs": 30233.627099999998,
+    "explicitPerTestLimitMs": 30000,
+    "failureMessages": [
+      "Error: STACK_TRACE_ERROR\n    at task (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1784:27)\n    at Object.<anonymous> (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1817:16)\n    at Object.<anonymous> (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1563:28)\n    at chain (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:599:14)\n    at F:/workspace/github/StudyAgent/data/qa/p185/apps/api/src/modules/diagnostics/verification-materials.integration.test.ts:86:3\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1889:40\n    at runWithSuite (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2258:8)\n    at Object.collect (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1889:10)\n    at Object.collect (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1893:54)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+    ],
+    "interpretation": "The duration crossed the original 30-second test limit and the JSON reporter retained STACK_TRACE_ERROR. Timing is consistent with a timeout; the full run remains failed."
+  },
+  "source": {
+    "sourceInputs": 1297,
+    "compiledInputs": 595,
+    "changedDuringCheck": [],
+    "beforeRunArchive": "doc/evidence/2026-11-01/workspace-r6-exact-edition-candidate/whole-second-corrections/edition-api-all-third-source.json.gz",
+    "beforeRunArchiveSha256": "935eaae9a38412bcad0304e22c59d3d76227ee7234a2a2402d86b60d8d720f15"
+  },
+  "focusedUnchanged": {
+    "passed": 7,
+    "failed": 0,
+    "pending": 0,
+    "success": true,
+    "businessCodeChanged": false
+  },
+  "history": [
+    {
+      "label": "edition-api-all-first",
+      "status": "passed",
+      "durationMs": 28677.0016
+    },
+    {
+      "label": "edition-api-all-second",
+      "status": "passed",
+      "durationMs": 26156.545599999998
+    },
+    {
+      "label": "edition-api-all-third",
+      "status": "failed",
+      "durationMs": 30233.627099999998
+    },
+    {
+      "label": "edition-existing-diagnostics-first",
+      "status": "failed",
+      "durationMs": 33334.1136
+    },
+    {
+      "label": "edition-existing-diagnostics-second",
+      "status": "passed",
+      "durationMs": 23607.783799999997
+    },
+    {
+      "label": "edition-third-materials-repro-first",
+      "status": "passed",
+      "durationMs": 21869.9749
+    }
+  ],
+  "next": "Validate the separate p186 optimization that scopes overview mappings and answer schemas to the requested subject/grade. Do not raise the 30-second limit or combine the focused pass with the failed whole run.",
+  "wholeGatePassed": false,
+  "mainApplicationSchema": 32,
+  "candidateSchema": 33,
+  "formalDatabaseUnmodified": true,
+  "localOnly": true,
+  "wholeGoal": "active"
+}
