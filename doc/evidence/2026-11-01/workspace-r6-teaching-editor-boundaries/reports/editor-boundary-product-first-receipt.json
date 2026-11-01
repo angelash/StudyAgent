@@ -1,0 +1,100 @@
+{
+  "at": "2026-11-01T03:08:16.232Z",
+  "source": "data/qa/p184",
+  "buildId": "iYFaUQY6VMsMH1574MCwY",
+  "distDir": ".next-editor-archive-production-first",
+  "generatedEngineeringDataOnly": true,
+  "productUI": true,
+  "passed": 14,
+  "failed": 0,
+  "completed": true,
+  "error": null,
+  "checks": [
+    {
+      "name": "production-original-admin-entry-exact-textbook-deeplink-and-complete-import",
+      "passed": true,
+      "at": "2026-11-01T03:07:53.174Z"
+    },
+    {
+      "name": "real-ui-saves-original-complete-two-target-body-and-confirms-original-command",
+      "passed": true,
+      "at": "2026-11-01T03:07:54.870Z"
+    },
+    {
+      "name": "explicit-publish-is-separate-from-save-and-preserves-full-original-receipt",
+      "passed": true,
+      "at": "2026-11-01T03:07:55.230Z"
+    },
+    {
+      "name": "lost-save-post-response-recovers-same-original-key-and-keeps-v1-published",
+      "passed": true,
+      "at": "2026-11-01T03:07:55.741Z"
+    },
+    {
+      "name": "refresh-retains-unsaved-fields-and-requires-authoritative-baseline-and-each-original-receipt",
+      "passed": true,
+      "at": "2026-11-01T03:07:56.317Z"
+    },
+    {
+      "name": "rechecking-an-older-original-receipt-does-not-replace-the-newer-editing-base",
+      "passed": true,
+      "at": "2026-11-01T03:07:58.896Z"
+    },
+    {
+      "name": "actual-two-tab-cas-keeps-both-original-bodies-and-refuses-stale-autosave",
+      "passed": true,
+      "at": "2026-11-01T03:07:59.255Z"
+    },
+    {
+      "name": "unsaved-body-cannot-publish-and-explicit-withdraw-targets-the-original-published-version",
+      "passed": true,
+      "at": "2026-11-01T03:08:03.000Z"
+    },
+    {
+      "name": "blocked-indexeddb-guards-original-term-selector-and-requires-actual-file-readback",
+      "passed": true,
+      "at": "2026-11-01T03:08:03.674Z"
+    },
+    {
+      "name": "source-range-change-keeps-old-complete-draft-and-opens-a-separate-new-source-slot",
+      "passed": true,
+      "at": "2026-11-01T03:08:04.954Z"
+    },
+    {
+      "name": "original-workspace-responsive-layout-short-height-and-keyboard-focus",
+      "passed": true,
+      "at": "2026-11-01T03:08:06.024Z"
+    },
+    {
+      "name": "above8mib-original-ui-import-refuses-local-save-and-exits-only-after-complete-file-readback",
+      "passed": true,
+      "at": "2026-11-01T03:08:07.560Z"
+    },
+    {
+      "name": "original-clear-confirmation-four-sizes-real-tombstone-and-stale-tab-original-preservation",
+      "passed": true,
+      "at": "2026-11-01T03:08:12.313Z"
+    },
+    {
+      "name": "current-role-loss-hides-private-draft-source-and-grading-data",
+      "passed": true,
+      "at": "2026-11-01T03:08:15.278Z"
+    }
+  ],
+  "screenshots": [
+    "workspace-390x844.png",
+    "workspace-768x900.png",
+    "workspace-1440x1000.png",
+    "workspace-1440x500.png",
+    "editor-exit-390x844.png",
+    "editor-exit-768x900.png",
+    "editor-exit-1440x1000.png",
+    "editor-exit-1440x500.png",
+    "editor-clear-390x844.png",
+    "editor-clear-768x900.png",
+    "editor-clear-1440x1000.png",
+    "editor-clear-1440x500.png"
+  ],
+  "pageErrors": [],
+  "privateRuntime": "runtime.private.json"
+}

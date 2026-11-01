@@ -1,0 +1,46 @@
+{
+  "at": "2026-11-01T03:06:14.740Z",
+  "generatedOnly": true,
+  "actualChromium": true,
+  "actualIndexedDB": true,
+  "passed": 8,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "complete-source-draft-real-indexeddb-save-and-readback",
+      "passed": true
+    },
+    {
+      "name": "two-browser-pages-compare-actual-version-and-reject-stale-complete-body",
+      "passed": true
+    },
+    {
+      "name": "identical-fingerprint-write-still-advances-real-revision-and-refuses-aba",
+      "passed": true
+    },
+    {
+      "name": "clear-tombstone-blocks-old-and-null-versions-and-allows-only-explicit-reread",
+      "passed": true
+    },
+    {
+      "name": "abort-inside-real-indexeddb-write-transaction-preserves-the-original-record",
+      "passed": true
+    },
+    {
+      "name": "private-owner-isolation-rejects-foreign-copy-before-writing",
+      "passed": true
+    },
+    {
+      "name": "blocked-storage-keeps-the-full-memory-copy-and-actual-downloaded-file-readback",
+      "passed": true
+    },
+    {
+      "name": "above8mib-history-and-unknown-original-command-download-and-real-file-readback",
+      "passed": true
+    }
+  ],
+  "bundleSha256": "4b6a24e391e72eda71c42691ba43fbe1b2eed888e4e056c488c2c8ce74527a90",
+  "productUIAcceptance": false,
+  "nativeBusinessHTTPAcceptance": false,
+  "realLearnerEvidence": false
+}

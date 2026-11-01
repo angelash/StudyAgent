@@ -1,0 +1,324 @@
+{
+  "protocol": "study-agent-teaching-editor-boundaries-evidence-v1",
+  "at": "2026-11-01T03:10:03.278Z",
+  "baselineHead": "17ecfb8267fa1cd7e9ceec90b9a91f28623f86e0",
+  "candidate": "data/qa/p184",
+  "mainApplicationSchema": 32,
+  "candidateSchema": 33,
+  "applicationIntegrated": false,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFilesUnchanged": 1063,
+  "sourceIncrement": {
+    "files": 4,
+    "archive": "candidate-source-delta.json.gz",
+    "sha256": "edd314d6ed476bf479da67fda18224d5106f227b373f2e030926922b823c7d65",
+    "allMembersReadBack": true,
+    "parentArchive": "../workspace-r6-course-builder-candidate/candidate-source.json.gz",
+    "parentSha256": "b649d822a147b9459ae437efebe23f853f1a7ffe59f82cbd71be46bdd82f79df",
+    "parentInputCount": 1267,
+    "allCurrentInputsMatchParentOrDelta": true,
+    "copiedIntoMainApplication": false
+  },
+  "productionBuild": {
+    "label": "editor-archive-production-first",
+    "at": "2026-11-01T03:07:26.051Z",
+    "status": 0,
+    "error": null,
+    "distDir": ".next-editor-archive-production-first",
+    "source": "data/qa/p184",
+    "buildId": "iYFaUQY6VMsMH1574MCwY",
+    "inputFiles": 1598,
+    "apiPort": 4284,
+    "webPort": 3284
+  },
+  "latestProductBrowser": {
+    "label": "editor-boundary-product-first",
+    "at": "2026-11-01T03:08:16.232Z",
+    "source": "data/qa/p184",
+    "buildId": "iYFaUQY6VMsMH1574MCwY",
+    "distDir": ".next-editor-archive-production-first",
+    "generatedEngineeringDataOnly": true,
+    "productUI": true,
+    "passed": 14,
+    "failed": 0,
+    "completed": true,
+    "error": null,
+    "checks": [
+      {
+        "name": "production-original-admin-entry-exact-textbook-deeplink-and-complete-import",
+        "passed": true,
+        "at": "2026-11-01T03:07:53.174Z"
+      },
+      {
+        "name": "real-ui-saves-original-complete-two-target-body-and-confirms-original-command",
+        "passed": true,
+        "at": "2026-11-01T03:07:54.870Z"
+      },
+      {
+        "name": "explicit-publish-is-separate-from-save-and-preserves-full-original-receipt",
+        "passed": true,
+        "at": "2026-11-01T03:07:55.230Z"
+      },
+      {
+        "name": "lost-save-post-response-recovers-same-original-key-and-keeps-v1-published",
+        "passed": true,
+        "at": "2026-11-01T03:07:55.741Z"
+      },
+      {
+        "name": "refresh-retains-unsaved-fields-and-requires-authoritative-baseline-and-each-original-receipt",
+        "passed": true,
+        "at": "2026-11-01T03:07:56.317Z"
+      },
+      {
+        "name": "rechecking-an-older-original-receipt-does-not-replace-the-newer-editing-base",
+        "passed": true,
+        "at": "2026-11-01T03:07:58.896Z"
+      },
+      {
+        "name": "actual-two-tab-cas-keeps-both-original-bodies-and-refuses-stale-autosave",
+        "passed": true,
+        "at": "2026-11-01T03:07:59.255Z"
+      },
+      {
+        "name": "unsaved-body-cannot-publish-and-explicit-withdraw-targets-the-original-published-version",
+        "passed": true,
+        "at": "2026-11-01T03:08:03.000Z"
+      },
+      {
+        "name": "blocked-indexeddb-guards-original-term-selector-and-requires-actual-file-readback",
+        "passed": true,
+        "at": "2026-11-01T03:08:03.674Z"
+      },
+      {
+        "name": "source-range-change-keeps-old-complete-draft-and-opens-a-separate-new-source-slot",
+        "passed": true,
+        "at": "2026-11-01T03:08:04.954Z"
+      },
+      {
+        "name": "original-workspace-responsive-layout-short-height-and-keyboard-focus",
+        "passed": true,
+        "at": "2026-11-01T03:08:06.024Z"
+      },
+      {
+        "name": "above8mib-original-ui-import-refuses-local-save-and-exits-only-after-complete-file-readback",
+        "passed": true,
+        "at": "2026-11-01T03:08:07.560Z"
+      },
+      {
+        "name": "original-clear-confirmation-four-sizes-real-tombstone-and-stale-tab-original-preservation",
+        "passed": true,
+        "at": "2026-11-01T03:08:12.313Z"
+      },
+      {
+        "name": "current-role-loss-hides-private-draft-source-and-grading-data",
+        "passed": true,
+        "at": "2026-11-01T03:08:15.278Z"
+      }
+    ],
+    "screenshots": [
+      "workspace-390x844.png",
+      "workspace-768x900.png",
+      "workspace-1440x1000.png",
+      "workspace-1440x500.png",
+      "editor-exit-390x844.png",
+      "editor-exit-768x900.png",
+      "editor-exit-1440x1000.png",
+      "editor-exit-1440x500.png",
+      "editor-clear-390x844.png",
+      "editor-clear-768x900.png",
+      "editor-clear-1440x1000.png",
+      "editor-clear-1440x500.png"
+    ],
+    "pageErrors": [],
+    "privateRuntime": "runtime.private.json"
+  },
+  "storage": {
+    "label": "editor-archive-storage-first",
+    "at": "2026-11-01T03:06:14.740Z",
+    "generatedOnly": true,
+    "actualChromium": true,
+    "actualIndexedDB": true,
+    "passed": 8,
+    "failed": 0,
+    "checks": [
+      {
+        "name": "complete-source-draft-real-indexeddb-save-and-readback",
+        "passed": true
+      },
+      {
+        "name": "two-browser-pages-compare-actual-version-and-reject-stale-complete-body",
+        "passed": true
+      },
+      {
+        "name": "identical-fingerprint-write-still-advances-real-revision-and-refuses-aba",
+        "passed": true
+      },
+      {
+        "name": "clear-tombstone-blocks-old-and-null-versions-and-allows-only-explicit-reread",
+        "passed": true
+      },
+      {
+        "name": "abort-inside-real-indexeddb-write-transaction-preserves-the-original-record",
+        "passed": true
+      },
+      {
+        "name": "private-owner-isolation-rejects-foreign-copy-before-writing",
+        "passed": true
+      },
+      {
+        "name": "blocked-storage-keeps-the-full-memory-copy-and-actual-downloaded-file-readback",
+        "passed": true
+      },
+      {
+        "name": "above8mib-history-and-unknown-original-command-download-and-real-file-readback",
+        "passed": true
+      }
+    ],
+    "bundleSha256": "4b6a24e391e72eda71c42691ba43fbe1b2eed888e4e056c488c2c8ce74527a90",
+    "productUIAcceptance": false,
+    "nativeBusinessHTTPAcceptance": false,
+    "realLearnerEvidence": false
+  },
+  "reports": [
+    {
+      "label": "editor-archive-model-first.json",
+      "passed": 15,
+      "failed": 1,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "complete private teaching draft ownership, original commands and receipt recovery archives and reads back complete history above the local storage budget without losing original text or pending commands",
+          "messages": [
+            "Error: 完整教学稿已达到8MiB；请先下载当前完整副本并另开本机稿，没有截断原输入或原命令。\n    at completeTeachingEditorCopy (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-copy.ts:78:99)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-copy.test.ts:76:66\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "editor-archive-model-second.json",
+      "passed": 48,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "editor-archive-api-type-first.json",
+      "mode": "type",
+      "status": 0
+    },
+    {
+      "label": "editor-archive-production-first.json",
+      "at": "2026-11-01T03:07:26.051Z",
+      "status": 0,
+      "error": null,
+      "distDir": ".next-editor-archive-production-first",
+      "source": "data/qa/p184",
+      "buildId": "iYFaUQY6VMsMH1574MCwY",
+      "inputFiles": 1598,
+      "apiPort": 4284,
+      "webPort": 3284
+    },
+    {
+      "label": "editor-archive-production-first-inputs.json",
+      "inputFiles": 1598
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "workspace-390x844.png",
+      "sha256": "902415429cbcddc081bb1319e1aa0ec5ce73fa766db52a2c7d824d098756dc14",
+      "visuallyInspected": true
+    },
+    {
+      "file": "workspace-768x900.png",
+      "sha256": "426917b058cc84d6b7a6bc82ea781de410101d62b9bd12154edcf711d5c6c903",
+      "visuallyInspected": true
+    },
+    {
+      "file": "workspace-1440x1000.png",
+      "sha256": "6341599826ef535d5d190914009931e22989e566399c12ece99220ecb874512a",
+      "visuallyInspected": true
+    },
+    {
+      "file": "workspace-1440x500.png",
+      "sha256": "6341599826ef535d5d190914009931e22989e566399c12ece99220ecb874512a",
+      "visuallyInspected": true
+    },
+    {
+      "file": "editor-exit-390x844.png",
+      "sha256": "fa1fee728c2fd8c790db548a905fdef2d171f1ed8042562bae98318c190c783a",
+      "visuallyInspected": true
+    },
+    {
+      "file": "editor-exit-768x900.png",
+      "sha256": "17e8f0e1e5a62691dc44ea234e5079c4ac5280182e86a58066c970f8ac254699",
+      "visuallyInspected": true
+    },
+    {
+      "file": "editor-exit-1440x1000.png",
+      "sha256": "a73a09871e2bb1a898bccb916d0342d85a112a3541efee4e2ff5bbd650282726",
+      "visuallyInspected": true
+    },
+    {
+      "file": "editor-exit-1440x500.png",
+      "sha256": "0cddccf18ebb64721695426c44b205b1dbe167635847b727b192d98a2a2fe2aa",
+      "visuallyInspected": true
+    },
+    {
+      "file": "editor-clear-390x844.png",
+      "sha256": "e947b7649e61bb02b65977d08657f3590512e35a53d89fa5eac9facaacf8dd72",
+      "visuallyInspected": true
+    },
+    {
+      "file": "editor-clear-768x900.png",
+      "sha256": "7232909ec85eb26f03f948723bcb3ae1a900b47faa364a27bee0554d37ae8ba1",
+      "visuallyInspected": true
+    },
+    {
+      "file": "editor-clear-1440x1000.png",
+      "sha256": "ce65b5e045e039125174837c354d8d01b25d7e26264cdd0cd53e77d614496d85",
+      "visuallyInspected": true
+    },
+    {
+      "file": "editor-clear-1440x500.png",
+      "sha256": "a1618f450a605841d8e9952d8796d7c7b335823f1fdc83ea09716e1f2118227c",
+      "visuallyInspected": true
+    }
+  ],
+  "verifiedScope": [
+    "Complete above8MiB original history and pending command archive with actual downloaded file readback",
+    "Strict8MiB UTF8 local persistence refusal without writes or truncated recovery",
+    "Original editor guarded import/exit and no new POST from unverified original",
+    "Original clear confirmation and actual revision5 tombstone with stale-tab refusal and preserved original input",
+    "Four viewport original page/exit dialog/clear dialog and current role hiding"
+  ],
+  "limitations": [
+    "Schema33 application remains isolated.",
+    "Final whole-candidate API/site/dual-database/privacy recovery remains pending.",
+    "Same-ID upgrade, real-source original candidate, original due-retention and all textbooks/GESP/R5/R7/R8/72/WS remain active.",
+    "Synthetic engineering files are not teacher/real learner or physical device evidence.",
+    "Separate overlapping test batches are never added into one total."
+  ],
+  "originalFullApi": {
+    "candidate": "p183",
+    "passed": 2741,
+    "failed": 1,
+    "pending": 131,
+    "unresolvedAsWholeBatch": true
+  },
+  "originalPlan72": {
+    "implemented": 11,
+    "in_progress": 50,
+    "planned": 11,
+    "verified": 0
+  },
+  "generatedEngineeringDataOnly": true,
+  "realLearnerEvidence": false,
+  "wholeGoal": "active",
+  "localOnly": true,
+  "pushed": false,
+  "deployed": false
+}
