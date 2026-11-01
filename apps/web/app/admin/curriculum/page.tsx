@@ -100,7 +100,7 @@ export default function CurriculumPage() {
     <p><Link href="/admin/gesp">GESP C++ 独立教研轨道：认证等级、知识先修与历年原卷 →</Link></p>
     {error && <p className="studio-error" role="alert">{error}</p>}{notice && <p role="status">{notice}</p>}
     {!role && <p>正在核对教研权限… <Link href="/parent/login">登录</Link></p>}
-    {role && !['admin', 'teacher'].includes(role) && <p>此页面需要教研权限。<Link href="/parent/dashboard">返回家长空间</Link></p>}
+    {role && !['admin', 'teacher'].includes(role) && <p>此页面需要教研权限。<Link href="/studio">返回学习工作台</Link></p>}
     {['admin', 'teacher'].includes(role) && !data && !privateAccessDenied && <p role="status">正在核对当前学科的课程覆盖。{error && <button type="button" className="studio-text-button" disabled={busy} onClick={() => void act(reload, '已重新核对当前学科覆盖')}>重试当前覆盖</button>}</p>}
     {linkedBook && requestedBookVersion && linkedBook.version !== requestedBookVersion && <p className="studio-error" role="alert">链接要求的教材版本与当前目录不同，未打开其他版本的教学稿。请核对准确教材。</p>}
     {book && lessonId && !lesson && <p className="studio-error" role="alert">这个准确教材版本中没有链接要求的课时，未用相似标题替换。</p>}

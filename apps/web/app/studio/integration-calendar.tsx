@@ -67,7 +67,7 @@ export function IntegrationCalendar({ user, studentId, subject, value, plans, at
     setTimeout(() => URL.revokeObjectURL(url), 5000);
   }); }
   return <section className="sa-calendar-view ws-calendar-view">
-    {!studentId && <div className="ws-calendar-adult"><p>这里显示本人的原卷复习；课程计划需要先选择学习档案。</p><a href="/parent/dashboard">打开学习档案 →</a></div>}<CalendarBoard user={user} studentId={studentId} events={value.events} plans={plans} canManage={canManage && Boolean(studentId)}
+    {!studentId && <div className="ws-calendar-adult"><p>这里显示本人的原卷复习；课程计划需要先选择学习档案。</p><a href="/studio/profiles">打开学习档案 →</a></div>}<CalendarBoard user={user} studentId={studentId} events={value.events} plans={plans} canManage={canManage && Boolean(studentId)}
       onNew={day=>openForm('plan',day)} onSources={()=>openForm('sync')} onPlanner={()=>setManagement(!management)} onExport={()=>void exportCalendar()}
       onChanged={onChanged} onError={onError}/>
     <details className="ws-calendar-management" open={management} onToggle={event=>setManagement(event.currentTarget.open)}><summary>学习计划与同步来源</summary>

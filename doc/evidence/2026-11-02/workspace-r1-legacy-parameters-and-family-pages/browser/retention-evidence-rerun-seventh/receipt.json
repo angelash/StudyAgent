@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-01T22:12:38.918Z",
+  "label": "retention-evidence-rerun-seventh",
+  "executed": {
+    "status": 0,
+    "error": null
+  },
+  "discovered": 6,
+  "files": 1,
+  "stats": {
+    "startTime": "2026-11-01T22:11:50.546Z",
+    "duration": 44285.658,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "errors": [],
+  "sourceAndCompiledInputs": 0,
+  "testAndFixtureInputs": 1805,
+  "changedDuringRun": [],
+  "buildId": "Hyn8am17Wn_h3qfylG6WC",
+  "actualLiveModelTests": false,
+  "engineeringQaOnly": true,
+  "wholeGoal": "active"
+}

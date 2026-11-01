@@ -27,6 +27,9 @@ body[data-study-navigation] .learning-studio :is(.studio-main,.daily-main,.priva
 .workspace-page-controls label :is(input,select) { min-width:0; }
 .workspace-page :is(select,input) { border:1px solid var(--workspace-line);border-radius:8px;background:white;padding:8px 10px;font:inherit;max-width:100%; }
 body[data-study-navigation] .workspace-page :is(select,input) { border-color:#e9ecf1;background:#fff; }
+/* Older page bodies inside a workspace page inherit the workspace field and secondary button, outranking their original learning-studio rules. */
+body[data-study-navigation] .workspace-page :is(input:not([type=checkbox]):not([type=radio]),select,textarea) { background:#fff;border:1px solid #e9ecf1;border-radius:8px;color:#172031; }
+body[data-study-navigation] .workspace-page .studio-secondary { background:#fff;color:#4c6696;border-color:#e9ecf1;font-weight:500; }
 .workspace-page-row { display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--workspace-line);padding:18px 0; }
 .workspace-page-row>div { flex:1;min-width:180px; }
 .workspace-page-row h2 { font-size:15px;margin:0 0 5px; }

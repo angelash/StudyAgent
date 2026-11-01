@@ -28,7 +28,7 @@ export function ChemistryEnrollment({ catalog, onChanged }: { catalog: Chemistry
   }
   return <section className="cl-course-enrollment" aria-label="添加课程">
     <div><strong>把这门课加入学习计划</strong><p>添加后保存到{child?.nickname ?? '当前学习档案'}，从课前诊断开始学习。</p>
-      {child?.grade !== 9 ? <p>请在顶部选择九年级档案，或到<Link href="/parent/dashboard?subject=chemistry">家长空间添加档案</Link>。</p>
+      {child?.grade !== 9 ? <p>请在顶部选择九年级档案，或到<Link href="/studio/profiles">学习档案</Link>添加九年级档案。</p>
         : !catalog.canEnroll && <p>请由监护人添加这门课程。</p>}
       <small>添加课程只建立计划，讲解、作答与复测进度分别记录。</small></div>
     <button className="cl-course-action" disabled={busy || !catalog.canEnroll} onClick={() => void enroll()}>{busy ? '正在添加…' : '添加课程并开始学习'}</button>

@@ -92,7 +92,8 @@ function LearningStudioWorkspace({identity}:{identity:ReturnType<typeof useSessi
     setError('');
     try { const q=new URLSearchParams({subject:selected.subject,materialView:'catalog'}); if(independent)q.set('audience','independent');else if(selected.studentId||studentId)q.set('studentId',selected.studentId||studentId);
       const params=new URLSearchParams(window.location.search),requestedCourse=params.get('course');
-      if(!independent&&requestedCourse&&requestedCourse!=='chemistry'&&(!requestedCourse.startsWith('chemistry-course:')||subject!=='chemistry'))q.set('courseId',requestedCourse);
+      // Use the subject read from this URL; the state may still hold the default before the route effect runs.
+      if(!independent&&requestedCourse&&requestedCourse!=='chemistry'&&(!requestedCourse.startsWith('chemistry-course:')||selected.subject!=='chemistry'))q.set('courseId',requestedCourse);
       const data=await apiRequest<StudioOverview>(`/learning/studio/overview?${q}`); if(generation!==loadGeneration.current)return;
       setOverview(data);
       if (data.selected) saveLearningContext(identity.id, { studentId: data.selected.id, subject: data.selected.subject });

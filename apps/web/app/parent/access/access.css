@@ -1,1 +1,22 @@
-.family-access{max-width:1100px}.family-access>.studio-eyebrow{display:block;margin-top:35px}.access-child{max-width:350px;margin-block:30px}.access-section{margin-top:35px;padding-top:30px;border-top:1px solid var(--line)}.access-section h2{font-size:25px}.access-section>form{display:flex;align-items:flex-end;gap:18px;margin-top:25px}.access-section>form>label{flex:1}.access-section form button{white-space:nowrap}.access-assignments{margin-top:25px}.access-assignments article{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding:18px 0;gap:15px}.access-assignments strong{font-size:15px}.access-assignments p{margin:6px 0;font-size:11px}.access-section>details{margin-top:15px}.access-invitation{padding:22px;background:#e4ecda;margin-top:25px}.access-invitation>strong{font-size:14px}.access-invitation textarea{font:11px/1.8 Consolas,monospace}.access-feedback{padding:20px;background:#eef0e4;margin-top:18px}.access-feedback p{white-space:pre-wrap;overflow-wrap:anywhere}.access-feedback small{font-size:10px;color:var(--muted)}.access-pages{display:flex;align-items:center;gap:20px;margin-top:20px;font-size:12px}.access-notice{border-left:3px solid var(--accent);padding:15px 20px;background:#e3ecdb}@media(max-width:700px){.access-section>form{flex-direction:column;align-items:stretch}.access-section h2{font-size:22px}.access-section form button{width:100%;white-space:normal}.access-assignments article{align-items:flex-start;flex-direction:column}.access-assignments article button{font-size:12px}}
+.family-access .workspace-back,.privacy-page .workspace-back{display:inline-block;margin:0 0 16px;font-size:13px;text-decoration:none}
+.access-section{margin-top:28px;padding-top:24px;border-top:1px solid #e9ecf1}
+.access-section>h2{margin:0 0 6px}
+.access-section>p{color:#7d8799;font-size:13px;margin:0 0 14px;max-width:760px}
+.access-section form{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-top:14px}
+.access-section form>label{display:grid;gap:6px;flex:1;min-width:220px;font-size:13px}
+.access-section :is(input,textarea){border:1px solid #e9ecf1;border-radius:8px;background:#fff;padding:8px 10px;font:inherit;max-width:100%;box-sizing:border-box}
+.access-section textarea{width:100%;font:12px/1.7 Consolas,monospace}
+.access-section form button{white-space:nowrap}
+.access-assignments{margin-top:16px}
+.access-assignments article{display:flex;justify-content:space-between;align-items:center;gap:14px;border-bottom:1px solid #e9ecf1;padding:14px 0}
+.access-assignments strong{font-size:14px}
+.access-assignments p{margin:4px 0 0;font-size:12px;color:#7d8799}
+.access-section>details{margin-top:12px;font-size:13px}
+.access-invitation{margin-top:16px;padding:16px;border:1px solid #e9ecf1;border-radius:12px;background:#f7f9fc}
+.access-invitation>strong{font-size:14px}
+.access-feedback{padding:14px 0;border-bottom:1px solid #e9ecf1}
+.access-feedback p{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;margin:8px 0}
+.access-feedback small{font-size:12px;color:#7d8799}
+.access-pages{display:flex;align-items:center;gap:16px;margin-top:16px;font-size:12px}
+.access-notice{margin:0 0 16px;padding:12px 16px;border:1px solid #c9d8ea;border-radius:8px;background:#f2f7fc;font-size:13px}
+@media(max-width:700px){.access-section form{flex-direction:column;align-items:stretch}.access-section form>label{min-width:0}.access-section form button{width:100%;white-space:normal}.access-assignments article{align-items:flex-start;flex-direction:column}}

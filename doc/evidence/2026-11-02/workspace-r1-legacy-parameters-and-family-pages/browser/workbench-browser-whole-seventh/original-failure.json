@@ -1,0 +1,13 @@
+{
+  "failures": [
+    {
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: a lost exact original classroom time receipt survives reload and cannot move the original recorded time",
+      "status": "failed",
+      "error": "Error: page.goto: net::ERR_NO_BUFFER_SPACE at http://localhost:3287/parent/login"
+    }
+  ],
+  "environmentalNavigationFailureBeforeAnyApplicationRequest": true,
+  "sameBuildFileRerun": "retention-evidence-rerun-seventh 6/0",
+  "notCombinedIntoOneCompleteRun": true
+}

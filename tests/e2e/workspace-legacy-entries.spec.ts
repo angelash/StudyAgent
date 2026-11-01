@@ -86,8 +86,7 @@ async function observe(page: Page, role: Role, id: string, href: string, width: 
     expect(state.mains, id + ' ' + role + ' single main').toBeLessThanOrEqual(1);
     expect(row.reloadKeepsLocation, id + ' ' + role + ' reload keeps the actual location').toBe(true);
     const foreignChild = ['adult', 'teacher'].includes(role) && ['E02', 'E03', 'E04', 'E05', 'E06', 'E07', 'E08', 'E11'].includes(id);
-    const unexpected = refused.filter(item => !(role === 'anonymous' && item.startsWith('401 ')) && !(foreignChild && item.startsWith('403 ')) &&
-      !(id === 'E20' && item === '404 GET /api/learning/studio/overview'));
+    const unexpected = refused.filter(item => !(role === 'anonymous' && item.startsWith('401 ')) && !(foreignChild && item.startsWith('403 ')));
     expect(unexpected, id + ' ' + role + ' refused reads').toEqual([]);
     return row;
   } finally { page.off('pageerror', onError); page.off('request', onRequest); page.off('response', onResponse); }

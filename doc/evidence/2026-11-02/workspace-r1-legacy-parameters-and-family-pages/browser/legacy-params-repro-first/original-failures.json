@@ -1,0 +1,18 @@
+{
+  "label": "legacy-params-repro-first",
+  "buildId": "BNbL59bQJABMlhRw2jJ8M",
+  "failures": [
+    {
+      "title": "legacy parameters: the old mission link opens the requested child and refuses ambiguous learners",
+      "status": "failed",
+      "error": "Error: expect(received).toBe(expected) // Object.is equality  Expected: \"student_8a1c17fd-e0e3-41ac-8ae4-df10ff46076b\""
+    },
+    {
+      "title": "legacy parameters: the chemistry alias keeps the requested child, reloads without refused reads and rejects conflicts",
+      "status": "failed",
+      "error": "Error: the real chemistry course id is not sent as an ordinary course  expect(received).toEqual(expected) // deep equality"
+    }
+  ],
+  "beforeSourceChange": true,
+  "newTestsOnly": true
+}

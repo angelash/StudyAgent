@@ -1,0 +1,5 @@
+// Records the unmerged candidate data page before the isolated copies receive the new main bytes.
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');const root=path.resolve(__dirname,'../../..'),file='apps/web/app/parent/data/page.tsx',out=path.join(__dirname,'data-page-candidate-before.json');
+if(fs.existsSync(out))throw Error('Keep the first candidate record');const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const p187=fs.readFileSync(path.join(root,'data/qa/p187',file)),source=fs.readFileSync(path.join(__dirname,'source',file));if(sha(p187)!==sha(source))throw Error('Candidate copies differ');
+fs.writeFileSync(out,JSON.stringify({at:new Date().toISOString(),path:file,sha256:sha(p187),base64:p187.toString('base64'),foundBy:'compare-candidate-with-main-first.json',onlyDivergentTrackedFile:true,missingFromMain:'24f241ba integrated 13 files; this verified candidate file was not among them'},null,2)+'\n',{flag:'wx'});console.log(sha(p187));

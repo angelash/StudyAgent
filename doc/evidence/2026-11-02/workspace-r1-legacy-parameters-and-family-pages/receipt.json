@@ -1,0 +1,123 @@
+{
+  "protocol": "study-agent-legacy-parameters-and-family-pages-v1",
+  "at": "2026-11-01T22:13:54.598Z",
+  "applicationIntegrated": true,
+  "mainApplicationSchema": 33,
+  "sourceIncrement": {
+    "files": 20,
+    "webFiles": 17,
+    "testFiles": 3,
+    "archive": "candidate-source-delta.json.gz",
+    "sha256": "f253fb1e6953ad059ae9247d4c25cc6b56e991b77ba27c6110b4566520ab5c87",
+    "parentArchive": "doc/evidence/2026-11-02/workspace-r6-purpose-gaps-and-following-rounds/candidate-source-delta.json.gz",
+    "parentSha256": "fc1f3dfb59833915807c29a3a57ef97415f3cecf374abca7179ae93e349118a6",
+    "apiAndContractsUnchanged": true
+  },
+  "legacyParameters": {
+    "missionForwardsBothAliasesAndSubject": true,
+    "chemistryForwardsBothAliasesAndSubject": true,
+    "chemistryOverviewUsesUrlSubject": true,
+    "matrixE20NotFoundExceptionRemoved": true
+  },
+  "familyPages": {
+    "authorization": "/parent/access 授权与学习码, returns to /studio/profiles",
+    "dataManagement": "/parent/data 资料管理, returns to /studio/settings",
+    "controlNamesAndConfirmationsUnchanged": true,
+    "conflictAndInaccessibleProfileRejected": true,
+    "selectedChildKeptInUrl": true,
+    "familySpaceLinksReplaced": 6
+  },
+  "lateMerge": {
+    "path": "apps/web/app/parent/data/page.tsx",
+    "candidateSha256": "1f7178ee9e3425a1ee28960f2b9527427c655d3463ac664e204de7520c0eb2b9",
+    "onlyDivergentTrackedFile": true,
+    "trackedFilesCompared": 1528,
+    "claimIn186NowTrueForMain": true
+  },
+  "runs": [
+    {
+      "label": "legacy-params-repro-first",
+      "expected": 2,
+      "unexpected": 2,
+      "flaky": 0,
+      "skipped": 0,
+      "discovered": 4,
+      "buildId": "BNbL59bQJABMlhRw2jJ8M"
+    },
+    {
+      "label": "legacy-params-focused-first",
+      "expected": 16,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "discovered": 16,
+      "buildId": "FpNjt4iPuieffsYcqCzV0"
+    },
+    {
+      "label": "legacy-family-focused-first",
+      "expected": 27,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "discovered": 27,
+      "buildId": "vb2UyUgpmzaAoVJ0frWo2"
+    },
+    {
+      "label": "legacy-family-focused-second",
+      "expected": 11,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "discovered": 11,
+      "buildId": "Hyn8am17Wn_h3qfylG6WC"
+    },
+    {
+      "label": "workbench-browser-whole-seventh",
+      "expected": 641,
+      "unexpected": 1,
+      "flaky": 0,
+      "skipped": 0,
+      "discovered": 642,
+      "buildId": "Hyn8am17Wn_h3qfylG6WC"
+    },
+    {
+      "label": "retention-evidence-rerun-seventh",
+      "expected": 6,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "discovered": 6,
+      "buildId": "Hyn8am17Wn_h3qfylG6WC"
+    }
+  ],
+  "completeBrowser": {
+    "label": "workbench-browser-whole-seventh",
+    "discovered": 642,
+    "files": 63,
+    "passed": 641,
+    "failed": 1,
+    "onlyFailure": "retention-evidence lost classroom time receipt: page.goto net::ERR_NO_BUFFER_SPACE at /parent/login before the test reached the application",
+    "sameBuildFileRerun": {
+      "label": "retention-evidence-rerun-seventh",
+      "passed": 6,
+      "failed": 0
+    },
+    "originalFailureRetained": true
+  },
+  "latestCompleteApi": {
+    "label": "original-workbench-whole-fifth",
+    "passed": 3018,
+    "failed": 0,
+    "pending": 131,
+    "sameApiAndContractBytes": true
+  },
+  "singleBatchCountsNeverAddedTogether": true,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFilesUnchanged": 1063,
+  "realDevicesScreenReadersAndTeachersStillRequired": true,
+  "localOnly": true,
+  "wholeGoal": "active"
+}

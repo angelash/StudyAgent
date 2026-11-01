@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-01T20:04:14.584Z",
+  "label": "legacy-params-repro-first",
+  "executed": {
+    "status": 1,
+    "error": null
+  },
+  "discovered": 4,
+  "files": 1,
+  "stats": {
+    "startTime": "2026-11-01T20:03:30.315Z",
+    "duration": 40922.362,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  },
+  "errors": [],
+  "sourceAndCompiledInputs": 0,
+  "testAndFixtureInputs": 1804,
+  "changedDuringRun": [],
+  "buildId": "BNbL59bQJABMlhRw2jJ8M",
+  "actualLiveModelTests": false,
+  "engineeringQaOnly": true,
+  "wholeGoal": "active"
+}

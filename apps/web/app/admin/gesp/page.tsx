@@ -94,7 +94,7 @@ export default function GespWorkbench() {
     <header className="gesp-hero"><div><span className="studio-eyebrow">GESP / C++ · 教研资料</span><h1>GESP教研</h1><p>按认证等级研究知识与题目，把看懂、会写和独立迁移分别观察。</p></div><div className="gesp-scope"><strong>01—04</strong><span>零基础优先研究</span><small>05—08 保留完整进阶框架</small></div></header>
     {user === undefined && <p role="status">正在核对教研权限…</p>}
     {user === null && <p>请先<Link href="/parent/login">登录</Link>教研账号。</p>}
-    {user && !allowed && <p>此资料区需要教研权限。<Link href="/parent/dashboard">返回家长空间</Link></p>}
+    {user && !allowed && <p>此资料区需要教研权限。<Link href="/studio">返回学习工作台</Link></p>}
     {error && <div className="studio-error" role="alert">{error} <button onClick={() => setRetry(n => n + 1)}>重新读取</button></div>}
     {allowed && !overview && !error && <p role="status">正在读取资料目录…</p>}
     {allowed && overview && <>
