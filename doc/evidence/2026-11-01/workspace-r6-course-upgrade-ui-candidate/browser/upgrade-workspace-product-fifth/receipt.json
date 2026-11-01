@@ -1,0 +1,69 @@
+{
+  "at": "2026-11-01T04:47:13.635Z",
+  "source": "data/qa/p184",
+  "buildId": "mMa8O3-T_4SfUnCzyscFG",
+  "distDir": ".next-upgrade-workspace-production-third",
+  "generatedEngineeringDataOnly": true,
+  "realLearnerEvidence": false,
+  "productUI": true,
+  "completed": false,
+  "passed": 10,
+  "failed": 1,
+  "error": "expect(locator).toHaveValue(expected) failed\n\nLocator:  getByRole('dialog', { name: '课程升级', exact: true }).getByLabel('升级每次学习预算', { exact: true })\nExpected: \" 22 \"\nReceived: \"20\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveValue\" getByRole('dialog', { name: '课程升级', exact: true }).getByLabel('升级每次学习预算', { exact: true }) with timeout 5000ms\n  - waiting for getByRole('dialog', { name: '课程升级', exact: true }).getByLabel('升级每次学习预算', { exact: true })\n    - locator resolved to <input disabled value=\"20\" maxlength=\"32\" inputmode=\"numeric\" aria-label=\"升级每次学习预算\"/>\n    13 × unexpected value \"20\"\n       - locator resolved to <input value=\"20\" maxlength=\"32\" inputmode=\"numeric\" aria-label=\"升级每次学习预算\"/>\n    - unexpected value \"20\"\n",
+  "checks": [
+    {
+      "name": "actual-original-builder-creates-the32-target-baseline-and-protected-original-command",
+      "passed": true
+    },
+    {
+      "name": "complete-upgrade-form-restores-raw-time-original-course-and-four-exact-new-versions",
+      "passed": true
+    },
+    {
+      "name": "original-workspace-upgrade-dialog-four-sizes-keyboard-and-sticky-footer",
+      "passed": true
+    },
+    {
+      "name": "accepted-upgrade-loss-and-null-lookup-preserve-the-one-original-request-across-refresh",
+      "passed": true
+    },
+    {
+      "name": "actual-original-create-copy-opens-its-accurate-old-result-after-the-same-course-was-upgraded",
+      "passed": true
+    },
+    {
+      "name": "pinned-course-versions-survive-reload-back-forward-and-refuse-malformed-links",
+      "passed": true
+    },
+    {
+      "name": "ordinary-current-course-progress-refreshes-without-changing-the-pinned-authored-version",
+      "passed": true
+    },
+    {
+      "name": "actual-old-classroom-resumes-then-explicit-current-switch-and-return-follow-the-correct-revision",
+      "passed": true
+    },
+    {
+      "name": "first-explicit-historical-classroom-opens-only-the-selected-original-and-returns-to-it",
+      "passed": true
+    },
+    {
+      "name": "two-real-tabs-preserve-complete-conflicting-upgrade-input-and-fork-only-after-file-readback",
+      "passed": true
+    },
+    {
+      "name": "explicit-saved-upgrade-slot-links-and-browser-back-restore-the-exact-independent-form",
+      "passed": false,
+      "error": "expect(locator).toHaveValue(expected) failed\n\nLocator:  getByRole('dialog', { name: '课程升级', exact: true }).getByLabel('升级每次学习预算', { exact: true })\nExpected: \" 22 \"\nReceived: \"20\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveValue\" getByRole('dialog', { name: '课程升级', exact: true }).getByLabel('升级每次学习预算', { exact: true }) with timeout 5000ms\n  - waiting for getByRole('dialog', { name: '课程升级', exact: true }).getByLabel('升级每次学习预算', { exact: true })\n    - locator resolved to <input disabled value=\"20\" maxlength=\"32\" inputmode=\"numeric\" aria-label=\"升级每次学习预算\"/>\n    13 × unexpected value \"20\"\n       - locator resolved to <input value=\"20\" maxlength=\"32\" inputmode=\"numeric\" aria-label=\"升级每次学习预算\"/>\n    - unexpected value \"20\"\n"
+    }
+  ],
+  "screenshots": [
+    "upgrade-390x844.png",
+    "upgrade-768x900.png",
+    "upgrade-1440x1000.png",
+    "upgrade-1440x500.png",
+    "upgrade-accepted-unknown.png",
+    "original-create-result-revision-zero.png"
+  ],
+  "pageErrors": []
+}

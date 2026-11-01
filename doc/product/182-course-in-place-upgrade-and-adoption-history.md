@@ -1,5 +1,7 @@
 # 182 原ID课程升级与历史采用版本
 
+2026-11-01原工作台课程升级UI候选已完成本段验证：按[182准确修订与历史恢复](182-course-in-place-upgrade-and-adoption-history.md)，完整升级稿、原请求恢复、双标签CAS/禁存储下载读回、原创建revision0、显式历史课堂与前进后退已接原工作台组件。最终第四生产构建的第七产品批16/0、页面错误0，10图已查看；完整API第二轮2960通过/0失败/131条件跳过，1283源输入与593编译输入在运行前后逐SHA保持。双库第三轮各13/0、修正回归46/0及实际导航4场景独立记账，见[最终候选证据](../evidence/2026-11-01/workspace-r6-course-upgrade-ui-candidate/receipt.json)。首完整2956/2/131、复现22/3、此前Invalid key和归档目录名失败保留；首完整批源码只在运行期间捕获，不宣称运行前冻结。22份增量与父链可恢复，业务仍隔离33、主干应用32、正式24/revision187及1063保护文件保持，仅本地。接[183](183-exact-textbook-edition-and-source-directory-binding.md)严格整册版本来源，再推进真实原创教学、原计划到期保持与最终整站/双库/隐私恢复；全部原教材/GESP/R5/R7/R8/72/WS及教师/实机/打印/真人1/3/7/14日继续active。
+
 2026-11-01，接[181完整教学包](181-textbook-teaching-package-and-classroom-adoption.md)及[150完整执行计划](150-integrated-delivery-plan-and-work-ledger.md)。492cd704已封存原创建表单和编辑器边界；业务候选继续在data/qa/p184，主干应用32、正式24/revision187保持。本页先提交具体协议，再实施；不缩减全部原计划。
 
 ## 实际缺口

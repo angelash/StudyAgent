@@ -1,5 +1,7 @@
 # 150 工作台整合与剩余全部开发执行计划
 
+2026-11-01原工作台课程升级UI候选已完成本段验证：按[182准确修订与历史恢复](182-course-in-place-upgrade-and-adoption-history.md)，完整升级稿、原请求恢复、双标签CAS/禁存储下载读回、原创建revision0、显式历史课堂与前进后退已接原工作台组件。最终第四生产构建的第七产品批16/0、页面错误0，10图已查看；完整API第二轮2960通过/0失败/131条件跳过，1283源输入与593编译输入在运行前后逐SHA保持。双库第三轮各13/0、修正回归46/0及实际导航4场景独立记账，见[最终候选证据](../evidence/2026-11-01/workspace-r6-course-upgrade-ui-candidate/receipt.json)。首完整2956/2/131、复现22/3、此前Invalid key和归档目录名失败保留；首完整批源码只在运行期间捕获，不宣称运行前冻结。22份增量与父链可恢复，业务仍隔离33、主干应用32、正式24/revision187及1063保护文件保持，仅本地。接[183](183-exact-textbook-edition-and-source-directory-binding.md)严格整册版本来源，再推进真实原创教学、原计划到期保持与最终整站/双库/隐私恢复；全部原教材/GESP/R5/R7/R8/72/WS及教师/实机/打印/真人1/3/7/14日继续active。
+
 2026-11-01接续发现：[182](182-course-in-place-upgrade-and-adoption-history.md)补明确课程修订/原稿恢复与浏览器历史守卫协议，产品候选16条流程已走通但发现Invalid key，仍须修正并复验后归档，未计整体验收。[183准确版本](183-exact-textbook-edition-and-source-directory-binding.md)记录真实三上语文原件27课与登记修订版26课的目录差异；完整字节与首课页段一致不证明整册符合，须先补严格版本来源再做真实原创候选。应用仍32、正式24/revision187保持；所有原工作包、72/WS与教师/实机/打印/真人条件继续active，仅本地。
 
 2026-11-01原生补充：[182](182-course-in-place-upgrade-and-adoption-history.md)的实际早期四/五集合读取器拒读及升级授权/唯一索引矩阵已补，受版本控制的历史资产独立解包，SQLite/真实PG读取器各4/0、原生矩阵各8/0分别通过；原准备缺题族资源及夹具类型错误保留，见[证据](../evidence/2026-11-01/workspace-r6-course-history-native-proof/receipt.json)。两测试/1275输入核对，33业务未归并，主干32、正式24/revision187及1063保护保持。接原课程版本和升级交互、完整副本/未知结果真实产品旅程，继续准确真实来源/原到期保持/最终回归及全部原72/WS/R1～R8/教材/GESP和真实条件，整体active，仅本地。

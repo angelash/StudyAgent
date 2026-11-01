@@ -1,0 +1,24 @@
+{
+  "at": "2026-11-01T04:58:57.687Z",
+  "mode": "reproduce",
+  "completed": false,
+  "error": "page.waitForURL: Timeout 5000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/second\" until \"load\"\n============================================================",
+  "source": "data/qa/p184/apps/web/lib/workspace-exit-guard.ts",
+  "sourceSha256": "797d99a880f35cafcdbb7852fe96e4658566033b7906779a67d8186cfae14539",
+  "realChromium": true,
+  "actualSharedModule": true,
+  "generatedEngineeringDataOnly": true,
+  "realLearnerEvidence": false,
+  "pageErrors": [
+    {
+      "message": "Invalid key",
+      "stack": "",
+      "url": "http://127.0.0.1:4388/third"
+    },
+    {
+      "message": "Invalid key",
+      "stack": "",
+      "url": "http://127.0.0.1:4388/third"
+    }
+  ]
+}

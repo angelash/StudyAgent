@@ -1,0 +1,133 @@
+{
+  "url": "http://127.0.0.1:4388/third",
+  "events": [
+    {
+      "event": "navigate",
+      "url": "http://127.0.0.1:4388/first",
+      "index": 0,
+      "state": null,
+      "destination": "http://127.0.0.1:4388/first",
+      "destinationIndex": -1,
+      "cancelable": true,
+      "type": "replace"
+    },
+    {
+      "event": "request",
+      "url": "http://127.0.0.1:4388/first",
+      "index": 0,
+      "state": {
+        "__studyWorkspaceHistoryIndex": 0
+      },
+      "href": "http://127.0.0.1:4388/second"
+    },
+    {
+      "event": "navigate",
+      "url": "http://127.0.0.1:4388/first",
+      "index": 0,
+      "state": {
+        "__studyWorkspaceHistoryIndex": 0
+      },
+      "destination": "http://127.0.0.1:4388/second",
+      "destinationIndex": -1,
+      "cancelable": true,
+      "type": "push"
+    },
+    {
+      "event": "request",
+      "url": "http://127.0.0.1:4388/second",
+      "index": 1,
+      "state": {
+        "__studyWorkspaceHistoryIndex": 1
+      },
+      "href": "http://127.0.0.1:4388/third"
+    },
+    {
+      "event": "navigate",
+      "url": "http://127.0.0.1:4388/second",
+      "index": 1,
+      "state": {
+        "__studyWorkspaceHistoryIndex": 1
+      },
+      "destination": "http://127.0.0.1:4388/third",
+      "destinationIndex": -1,
+      "cancelable": true,
+      "type": "push"
+    },
+    {
+      "event": "navigate",
+      "url": "http://127.0.0.1:4388/third",
+      "index": 2,
+      "state": {
+        "__studyWorkspaceHistoryIndex": 2
+      },
+      "destination": "http://127.0.0.1:4388/second",
+      "destinationIndex": 1,
+      "cancelable": true,
+      "type": "traverse"
+    },
+    {
+      "event": "request",
+      "url": "http://127.0.0.1:4388/third",
+      "index": 2,
+      "state": {
+        "__studyWorkspaceHistoryIndex": 2
+      },
+      "href": "http://127.0.0.1:4388/second"
+    },
+    {
+      "event": "forced-invalid-traverse",
+      "url": "http://127.0.0.1:4388/third",
+      "index": 2,
+      "state": {
+        "__studyWorkspaceHistoryIndex": 2
+      }
+    },
+    {
+      "event": "native-go",
+      "url": "http://127.0.0.1:4388/third",
+      "index": 2,
+      "state": {
+        "__studyWorkspaceHistoryIndex": 2
+      },
+      "delta": -1
+    },
+    {
+      "event": "navigate",
+      "url": "http://127.0.0.1:4388/third",
+      "index": 2,
+      "state": {
+        "__studyWorkspaceHistoryIndex": 2
+      },
+      "destination": "http://127.0.0.1:4388/first",
+      "destinationIndex": 0,
+      "cancelable": true,
+      "type": "traverse"
+    },
+    {
+      "event": "request",
+      "url": "http://127.0.0.1:4388/third",
+      "index": 2,
+      "state": {
+        "__studyWorkspaceHistoryIndex": 2
+      },
+      "href": "http://127.0.0.1:4388/first"
+    },
+    {
+      "event": "forced-invalid-traverse",
+      "url": "http://127.0.0.1:4388/third",
+      "index": 2,
+      "state": {
+        "__studyWorkspaceHistoryIndex": 2
+      }
+    },
+    {
+      "event": "native-go",
+      "url": "http://127.0.0.1:4388/third",
+      "index": 2,
+      "state": {
+        "__studyWorkspaceHistoryIndex": 2
+      },
+      "delta": -2
+    }
+  ]
+}

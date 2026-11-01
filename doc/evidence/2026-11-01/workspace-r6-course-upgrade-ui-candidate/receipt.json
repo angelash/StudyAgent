@@ -1,0 +1,1681 @@
+{
+  "protocol": "study-agent-course-upgrade-ui-candidate-v1",
+  "at": "2026-11-01T06:11:17.580Z",
+  "baselineHead": "6c7c165983e0dbfaaf29f8ecb7bdf400fc183443",
+  "candidate": "data/qa/p184",
+  "mainApplicationSchema": 32,
+  "candidateSchema": 33,
+  "applicationIntegrated": false,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFilesUnchanged": 1063,
+  "sourceIncrement": {
+    "files": 22,
+    "archive": "candidate-source-delta.json.gz",
+    "sha256": "4705fc1ec2cef8b2d290fe5594c523eaee02a23fccd648108fa6b8bca83f8c4a",
+    "allMembersReadBack": true,
+    "parentArchive": "../workspace-r6-course-history-native-proof/candidate-source-delta.json.gz",
+    "parentSha256": "4d686a40408c7a665acc1d111c4305247d9f214892869fa907e90ba85096132c",
+    "parentInputCount": 1275,
+    "currentInputCount": 1283,
+    "allCurrentInputsMatchParentOrDelta": true,
+    "copiedIntoMainApplication": false
+  },
+  "builds": [
+    {
+      "label": "upgrade-workspace-production-first",
+      "buildId": "HHC2huEeUMVeOUazF5-TE",
+      "checkedInputs": 1606,
+      "sourceFiles": 38,
+      "reconstructed": [
+        {
+          "path": "apps/web/app/studio/course-workspace.tsx",
+          "method": "Exact removal of the two later enrollment-preview edits, independently matched to original pre-build SHA256"
+        },
+        {
+          "path": "apps/web/app/studio/studio.tsx",
+          "method": "Exact removal of the two later enrollment-preview edits, independently matched to original pre-build SHA256"
+        }
+      ],
+      "archive": "upgrade-first-source.json.gz",
+      "sha256": "e8ae9e962a0aa6465188fe9a598a88a77ae9109c777441a316b9c431773cc5e0"
+    },
+    {
+      "label": "upgrade-workspace-production-second",
+      "buildId": "UGwKssOkYF_BeNw-va0e5",
+      "checkedInputs": 1606,
+      "sourceFiles": 38,
+      "reconstructed": [],
+      "archive": "upgrade-second-source.json.gz",
+      "sha256": "3a00cf34c2bdd95c64bea0a3d12ea1e3e0d051410fc81e46cb197c7f486c6a86"
+    },
+    {
+      "label": "upgrade-workspace-production-third",
+      "buildId": "mMa8O3-T_4SfUnCzyscFG",
+      "checkedInputs": 1606,
+      "sourceFiles": 38,
+      "reconstructed": [],
+      "archive": "upgrade-third-source.json.gz",
+      "sha256": "2ac210dfe361167d6a9d8b9ea2e985d88cd49bc6187b09ffbc3e6c6355bd740a"
+    },
+    {
+      "label": "upgrade-workspace-production-fourth",
+      "buildId": "ch_FoKxyzvyjUcCFiuIh-",
+      "checkedInputs": 1606,
+      "sourceFiles": 39,
+      "reconstructed": [],
+      "archive": "upgrade-fourth-source.json.gz",
+      "sha256": "4191c9194af1f3fe1a9d6e624899465e6dc71b7374384379f6e0ea5feda2ec53"
+    }
+  ],
+  "reports": [
+    {
+      "label": "upgrade-copy-api-type-first.json",
+      "mode": "type",
+      "status": 2
+    },
+    {
+      "label": "upgrade-copy-contracts-first.json",
+      "mode": "contracts",
+      "status": 0
+    },
+    {
+      "label": "upgrade-copy-model-first.json",
+      "passed": 27,
+      "failed": 0,
+      "pending": 0,
+      "actualFiles": [
+        "apps/api/src/modules/learning/course-builder-copy.test.ts",
+        "apps/api/src/modules/learning/course-upgrade-copy.test.ts"
+      ],
+      "failures": []
+    },
+    {
+      "label": "upgrade-copy-webtype-first.json",
+      "mode": "webtype",
+      "status": 0
+    },
+    {
+      "label": "upgrade-legacy-guards-reproduce-first.json",
+      "passed": 22,
+      "failed": 3,
+      "pending": 0,
+      "actualFiles": [
+        "apps/api/src/modules/learning/chemistry-tutorial.integration.test.ts",
+        "apps/api/src/modules/learning/textbook-teaching-course-history.test.ts"
+      ],
+      "failures": [
+        {
+          "name": "versioned chemical teaching resources and preserved learning evidence keeps the old session readable and opens the new tutorial only through the version switch",
+          "messages": [
+            "AssertionError: expected 'classroom_7d5e541a-8bd5-4a81-93c7-6b8…' not to be 'classroom_7d5e541a-8bd5-4a81-93c7-6b8…' // Object.is equality\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/chemistry-tutorial.integration.test.ts:58:37\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "same-ID course public history model and exact original receipts allows account attribution cleanup on an unversioned legacy row without parsing it as a new teaching snapshot",
+          "messages": [
+            "AssertionError: expected [Function] to not throw an error but 'TypeError: Cannot read properties of …' was thrown\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/expect/dist/index.js:1552:16)\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/expect/dist/index.js:1156:15)\n    at Proxy.methodWrapper (file:///F:/workspace/github/StudyAgent/node_modules/chai/index.js:1737:25)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-history.test.ts:20:542\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20"
+          ]
+        },
+        {
+          "name": "same-ID course public history model and exact original receipts does not let the legacy cleanup exemption attach an unversioned teaching selection",
+          "messages": [
+            "AssertionError: expected [Function] to throw an error\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/expect/dist/index.js:1552:16)\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/expect/dist/index.js:1156:15)\n    at Proxy.methodWrapper (file:///F:/workspace/github/StudyAgent/node_modules/chai/index.js:1737:25)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-history.test.ts:21:551\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)\n    at file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "upgrade-workspace-api-all-first.json",
+      "passed": 2956,
+      "failed": 2,
+      "pending": 131,
+      "actualFiles": [
+        "apps/api/src/app.integration.test.ts",
+        "apps/api/src/durability.integration.test.ts",
+        "apps/api/src/product-safety.integration.test.ts",
+        "apps/api/src/common/http-body.integration.test.ts",
+        "apps/api/src/common/stream-verified-file.test.ts",
+        "apps/api/src/common/terminate-child-process.integration.test.ts",
+        "apps/api/src/common/validation.test.ts",
+        "apps/api/src/infrastructure/admin-navigation.test.ts",
+        "apps/api/src/infrastructure/assistant-note-recovery.integration.test.ts",
+        "apps/api/src/infrastructure/assistant-note-storage.integration.test.ts",
+        "apps/api/src/infrastructure/assistant-practice-workspace.test.ts",
+        "apps/api/src/infrastructure/assistant-whiteboard-reader.integration.test.ts",
+        "apps/api/src/infrastructure/assistant-whiteboard-recovery.integration.test.ts",
+        "apps/api/src/infrastructure/backup.integration.test.ts",
+        "apps/api/src/infrastructure/controlled-workspace-copy.test.ts",
+        "apps/api/src/infrastructure/domain-database.test.ts",
+        "apps/api/src/infrastructure/gesp-workspace.test.ts",
+        "apps/api/src/infrastructure/materials-navigation.test.ts",
+        "apps/api/src/infrastructure/operations.integration.test.ts",
+        "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+        "apps/api/src/infrastructure/postgres-restore-import.integration.test.ts",
+        "apps/api/src/infrastructure/postgres-restore-resume.integration.test.ts",
+        "apps/api/src/infrastructure/postgres.integration.test.ts",
+        "apps/api/src/infrastructure/rate-limit.test.ts",
+        "apps/api/src/infrastructure/restore-context.test.ts",
+        "apps/api/src/infrastructure/restored-materials.integration.test.ts",
+        "apps/api/src/infrastructure/schema25-reader.integration.test.ts",
+        "apps/api/src/infrastructure/schema26-reader.integration.test.ts",
+        "apps/api/src/infrastructure/schema27-reader.integration.test.ts",
+        "apps/api/src/infrastructure/schema28-reader.integration.test.ts",
+        "apps/api/src/infrastructure/schema29-reader.integration.test.ts",
+        "apps/api/src/infrastructure/schema30-reader.integration.test.ts",
+        "apps/api/src/infrastructure/schema31-reader.integration.test.ts",
+        "apps/api/src/infrastructure/schema32-reader.integration.test.ts",
+        "apps/api/src/infrastructure/scoped-transactions.test.ts",
+        "apps/api/src/infrastructure/snapshot-isolation.test.ts",
+        "apps/api/src/infrastructure/source-course-check-postgres.integration.test.ts",
+        "apps/api/src/infrastructure/source-course-check-storage.integration.test.ts",
+        "apps/api/src/infrastructure/source-material-backup.integration.test.ts",
+        "apps/api/src/infrastructure/sqlite-restore-resume.integration.test.ts",
+        "apps/api/src/infrastructure/studio-atomic-marker.test.ts",
+        "apps/api/src/infrastructure/studio-file-coordination.test.ts",
+        "apps/api/src/infrastructure/studio-original-repair.test.ts",
+        "apps/api/src/infrastructure/task-repository.test.ts",
+        "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+        "apps/api/src/infrastructure/textbook-teaching-adoption-native.integration.test.ts",
+        "apps/api/src/infrastructure/textbook-teaching-course-history-native.integration.test.ts",
+        "apps/api/src/infrastructure/textbook-teaching-early33-readers.integration.test.ts",
+        "apps/api/src/infrastructure/textbook-teaching-native.integration.test.ts",
+        "apps/api/src/infrastructure/topic-whiteboard-postgres.integration.test.ts",
+        "apps/api/src/infrastructure/topic-whiteboard-recovery.integration.test.ts",
+        "apps/api/src/infrastructure/topic-whiteboard-storage.integration.test.ts",
+        "apps/api/src/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts",
+        "apps/api/src/infrastructure/topic-whiteboard-visual-recovery.integration.test.ts",
+        "apps/api/src/infrastructure/topic-whiteboard-visual-storage.integration.test.ts",
+        "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts",
+        "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts",
+        "apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts",
+        "apps/api/src/infrastructure/workspace-exit-guard.test.ts",
+        "apps/api/src/infrastructure/workspace-navigation.test.ts",
+        "apps/api/src/modules/ai/assistant-artifact.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-chemistry-tutorial.test.ts",
+        "apps/api/src/modules/ai/assistant-chemistry.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-controlled-figure.test.ts",
+        "apps/api/src/modules/ai/assistant-course-recovery.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-course.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-lecture-content-migration.test.ts",
+        "apps/api/src/modules/ai/assistant-lecture-context.test.ts",
+        "apps/api/src/modules/ai/assistant-lecture-recovery.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-lecture.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-note.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-source-references.test.ts",
+        "apps/api/src/modules/ai/assistant-teaching-content.test.ts",
+        "apps/api/src/modules/ai/assistant-teaching-provider-context.test.ts",
+        "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
+        "apps/api/src/modules/ai/classroom-image.service.test.ts",
+        "apps/api/src/modules/ai/classroom-reply-board.test.ts",
+        "apps/api/src/modules/ai/codex-pdf-structure.service.test.ts",
+        "apps/api/src/modules/ai/codex-search.service.test.ts",
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/ai/openai-compatibility.test.ts",
+        "apps/api/src/modules/ai/speech.service.test.ts",
+        "apps/api/src/modules/ai/teaching-output-caller.test.ts",
+        "apps/api/src/modules/ai/teaching-output-policy.test.ts",
+        "apps/api/src/modules/ai/teaching-tool-protocol.test.ts",
+        "apps/api/src/modules/ai/teaching-tool.integration.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-model-qualification.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-text-transport.test.ts",
+        "apps/api/src/modules/content/open-resource-registry.test.ts",
+        "apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts",
+        "apps/api/src/modules/gesp/gesp-learning-loop.test.ts",
+        "apps/api/src/modules/gesp/gesp-student.integration.test.ts",
+        "apps/api/src/modules/gesp/gesp.integration.test.ts",
+        "apps/api/src/modules/gesp/isolated-runner.test.ts",
+        "apps/api/src/modules/gesp/student-curriculum.test.ts",
+        "apps/api/src/modules/diagnostics/adaptive-routing.integration.test.ts",
+        "apps/api/src/modules/diagnostics/adaptive-routing.test.ts",
+        "apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts",
+        "apps/api/src/modules/diagnostics/answer-draft.integration.test.ts",
+        "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
+        "apps/api/src/modules/diagnostics/atomic-components.integration.test.ts",
+        "apps/api/src/modules/diagnostics/atomic-components.test.ts",
+        "apps/api/src/modules/diagnostics/authored-arithmetic-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-chinese-grade1-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-chinese-grade2-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-chinese-grade3-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-chinese-grade4-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-chinese-grade5-grade6-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-chinese-oral-grade1-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-data-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-english-foundation-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-english-grade1-grade2-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-english-grade3-grade6-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-english-lexical-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-factor-multiple-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-fourth-grade-geometry-statistics-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-fourth-grade-number-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-geometry-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-math-grade5-grade6-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-math-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-number-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-relation-release.test.ts",
+        "apps/api/src/modules/diagnostics/authored-remainder-decimal-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-second-grade-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-spatial-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-third-grade-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-unit-probes.test.ts",
+        "apps/api/src/modules/diagnostics/average-atomic.integration.test.ts",
+        "apps/api/src/modules/diagnostics/average-atomic.test.ts",
+        "apps/api/src/modules/diagnostics/chemistry-curriculum.test.ts",
+        "apps/api/src/modules/diagnostics/classroom-retention-history.test.ts",
+        "apps/api/src/modules/diagnostics/classroom-retention-origin.test.ts",
+        "apps/api/src/modules/diagnostics/classroom-retention-record.test.ts",
+        "apps/api/src/modules/diagnostics/controlled-contexts.integration.test.ts",
+        "apps/api/src/modules/diagnostics/controlled-contrast-materials.test.ts",
+        "apps/api/src/modules/diagnostics/controlled-contrast.test.ts",
+        "apps/api/src/modules/diagnostics/controlled-storage.integration.test.ts",
+        "apps/api/src/modules/diagnostics/core-curriculum.test.ts",
+        "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/family-identity.integration.test.ts",
+        "apps/api/src/modules/diagnostics/family-identity.test.ts",
+        "apps/api/src/modules/diagnostics/guidance-model-record.test.ts",
+        "apps/api/src/modules/diagnostics/guidance-model-recovery.integration.test.ts",
+        "apps/api/src/modules/diagnostics/guidance-model.integration.test.ts",
+        "apps/api/src/modules/diagnostics/learning-source-citation.test.ts",
+        "apps/api/src/modules/diagnostics/measurement-compatibility.test.ts",
+        "apps/api/src/modules/diagnostics/measurement-versioning.integration.test.ts",
+        "apps/api/src/modules/diagnostics/measurement.test.ts",
+        "apps/api/src/modules/diagnostics/paper-exposure.integration.test.ts",
+        "apps/api/src/modules/diagnostics/retention-anchor.test.ts",
+        "apps/api/src/modules/diagnostics/retention-course-history.integration.test.ts",
+        "apps/api/src/modules/diagnostics/retention-evidence-projection.test.ts",
+        "apps/api/src/modules/diagnostics/retention-integrity.test.ts",
+        "apps/api/src/modules/diagnostics/retention-legacy-classroom.test.ts",
+        "apps/api/src/modules/diagnostics/retention-native.test.ts",
+        "apps/api/src/modules/diagnostics/retention-review-gate.test.ts",
+        "apps/api/src/modules/diagnostics/retention-source.test.ts",
+        "apps/api/src/modules/diagnostics/retention.integration.test.ts",
+        "apps/api/src/modules/diagnostics/scoring.test.ts",
+        "apps/api/src/modules/diagnostics/teaching-editor-client.test.ts",
+        "apps/api/src/modules/diagnostics/teaching-editor-copy.test.ts",
+        "apps/api/src/modules/diagnostics/teaching-editor-state.test.ts",
+        "apps/api/src/modules/diagnostics/teaching-practice-navigation.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-lesson-source.integration.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-scope-inventory.integration.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-scope-inventory.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-source-candidates.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-teaching-adoption-native.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-teaching-adoption.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-teaching-practice.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-teaching.integration.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-teaching.test.ts",
+        "apps/api/src/modules/diagnostics/verification-blueprint.integration.test.ts",
+        "apps/api/src/modules/diagnostics/verification-blueprint.test.ts",
+        "apps/api/src/modules/diagnostics/verification-materials.integration.test.ts",
+        "apps/api/src/modules/diagnostics/verification-materials.test.ts",
+        "apps/api/src/modules/learning/activity-navigation.test.ts",
+        "apps/api/src/modules/learning/adult-classroom-models.test.ts",
+        "apps/api/src/modules/learning/assistant-guidance.integration.test.ts",
+        "apps/api/src/modules/learning/assistant-practice-artifact.integration.test.ts",
+        "apps/api/src/modules/learning/assistant-practice-bank-selection.test.ts",
+        "apps/api/src/modules/learning/assistant-practice-content.test.ts",
+        "apps/api/src/modules/learning/assistant-practice-preflight.integration.test.ts",
+        "apps/api/src/modules/learning/assistant-practice-withdrawal.integration.test.ts",
+        "apps/api/src/modules/learning/assistant-teaching-self.integration.test.ts",
+        "apps/api/src/modules/learning/assistant-teaching-sharing.integration.test.ts",
+        "apps/api/src/modules/learning/assistant-teaching.integration.test.ts",
+        "apps/api/src/modules/learning/assistant-whiteboard-content.test.ts",
+        "apps/api/src/modules/learning/assistant-whiteboard-lifecycle.integration.test.ts",
+        "apps/api/src/modules/learning/assistant-whiteboard.integration.test.ts",
+        "apps/api/src/modules/learning/chemistry-course-correction.integration.test.ts",
+        "apps/api/src/modules/learning/chemistry-tutorial.integration.test.ts",
+        "apps/api/src/modules/learning/chemistry.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-audio-client.test.ts",
+        "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-code.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-presentation.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-presentation.test.ts",
+        "apps/api/src/modules/learning/classroom-turn.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom-visual-context.test.ts",
+        "apps/api/src/modules/learning/classroom-visual-storage.test.ts",
+        "apps/api/src/modules/learning/classroom-visual.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-voice-preview.integration.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-builder-copy.test.ts",
+        "apps/api/src/modules/learning/course-journey.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/course-upgrade-copy.test.ts",
+        "apps/api/src/modules/learning/guidance-calendar-ics.test.ts",
+        "apps/api/src/modules/learning/guidance-calendar-preview.test.ts",
+        "apps/api/src/modules/learning/guidance-calendar-record.test.ts",
+        "apps/api/src/modules/learning/guidance-calendar-time.test.ts",
+        "apps/api/src/modules/learning/ics-calendar.test.ts",
+        "apps/api/src/modules/learning/learning-home.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.test.ts",
+        "apps/api/src/modules/learning/notebook.integration.test.ts",
+        "apps/api/src/modules/learning/paper-capture-attribution.test.ts",
+        "apps/api/src/modules/learning/paper-capture-browser-copy.test.ts",
+        "apps/api/src/modules/learning/paper-capture-copy.test.ts",
+        "apps/api/src/modules/learning/paper-capture-derived-pdf.test.ts",
+        "apps/api/src/modules/learning/paper-capture-file-observation.test.ts",
+        "apps/api/src/modules/learning/paper-capture-files.test.ts",
+        "apps/api/src/modules/learning/paper-capture-group.test.ts",
+        "apps/api/src/modules/learning/paper-capture-image.test.ts",
+        "apps/api/src/modules/learning/paper-capture-page.test.ts",
+        "apps/api/src/modules/learning/paper-capture-recovery.integration.test.ts",
+        "apps/api/src/modules/learning/paper-capture-repair-browser-copy.test.ts",
+        "apps/api/src/modules/learning/paper-capture-repair-files.test.ts",
+        "apps/api/src/modules/learning/paper-capture-storage.integration.test.ts",
+        "apps/api/src/modules/learning/project-file-postgres-recovery.integration.test.ts",
+        "apps/api/src/modules/learning/project-file.integration.test.ts",
+        "apps/api/src/modules/learning/project-teaching.integration.test.ts",
+        "apps/api/src/modules/learning/source-course-check-content.test.ts",
+        "apps/api/src/modules/learning/source-course-check.integration.test.ts",
+        "apps/api/src/modules/learning/source-course-chunks.test.ts",
+        "apps/api/src/modules/learning/source-course-compilation.integration.test.ts",
+        "apps/api/src/modules/learning/source-course-lifecycle.integration.test.ts",
+        "apps/api/src/modules/learning/source-course-project.integration.test.ts",
+        "apps/api/src/modules/learning/source-course-project.test.ts",
+        "apps/api/src/modules/learning/source-course.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio-material-integrity.integration.test.ts",
+        "apps/api/src/modules/learning/studio-material-maintenance.integration.test.ts",
+        "apps/api/src/modules/learning/studio-material-upload.integration.test.ts",
+        "apps/api/src/modules/learning/studio-original-repair.integration.test.ts",
+        "apps/api/src/modules/learning/studio-pdf-structure.test.ts",
+        "apps/api/src/modules/learning/studio-whiteboard.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "apps/api/src/modules/learning/textbook-teaching-course-history.test.ts",
+        "apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts",
+        "apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts",
+        "apps/api/src/modules/learning/textbook-teaching-course.test.ts",
+        "apps/api/src/modules/learning/topic-whiteboard-access.test.ts",
+        "apps/api/src/modules/learning/topic-whiteboard-content.test.ts",
+        "apps/api/src/modules/learning/topic-whiteboard-visual-context.test.ts",
+        "apps/api/src/modules/learning/topic-whiteboard-visual-files.test.ts",
+        "apps/api/src/modules/learning/topic-whiteboard-visual.integration.test.ts",
+        "apps/api/src/modules/learning/topic-whiteboard.integration.test.ts",
+        "apps/api/src/modules/learning/whiteboard-formula.test.ts",
+        "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+        "apps/api/src/modules/learning/whiteboard-question-context.test.ts",
+        "apps/api/src/modules/learning/whiteboard-question-notes.test.ts",
+        "apps/api/src/modules/learning/whiteboard-question-teaching-versions.test.ts",
+        "apps/api/src/modules/learning/whiteboard-question-teaching.test.ts",
+        "apps/api/src/modules/learning/whiteboard-question-visual-context.test.ts",
+        "apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts",
+        "apps/api/src/modules/learning/whiteboard-question.integration.test.ts",
+        "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+        "apps/api/src/modules/learning/whiteboard-table.test.ts",
+        "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+        "apps/api/src/modules/learning/workspace-overview.integration.test.ts",
+        "apps/api/src/modules/library/library.integration.test.ts",
+        "apps/api/src/modules/library/measurement-content.integration.test.ts",
+        "apps/api/src/modules/library/paper-export-business.integration.test.ts",
+        "apps/api/src/modules/library/paper-export-cleanup.integration.test.ts",
+        "apps/api/src/modules/library/paper-export-document-source.test.ts",
+        "apps/api/src/modules/library/paper-export-generation-cleanup.integration.test.ts",
+        "apps/api/src/modules/library/paper-export-native.test.ts",
+        "apps/api/src/modules/library/paper-export-record.test.ts",
+        "apps/api/src/modules/library/paper-export-render.integration.test.ts",
+        "apps/api/src/modules/library/paper-export-tex.integration.test.ts",
+        "apps/api/src/modules/library/paper-export-tex.test.ts",
+        "apps/api/src/modules/library/paper-export-workspace-collection.test.ts",
+        "apps/api/src/modules/library/paper-library-browser-copy.test.ts",
+        "apps/api/src/modules/library/paper-library-browser-http.integration.test.ts",
+        "apps/api/src/modules/library/paper-library-persistence.test.ts",
+        "apps/api/src/modules/library/paper-library-postgres.integration.test.ts",
+        "apps/api/src/modules/library/paper-library-privacy.integration.test.ts",
+        "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+        "apps/api/src/modules/library/paper-practice.integration.test.ts",
+        "apps/api/src/modules/library/paper-selection-business.integration.test.ts",
+        "apps/api/src/modules/library/paper-selection-record.test.ts",
+        "apps/api/src/modules/library/paper-selection-source.test.ts",
+        "apps/api/src/modules/library/paper-student-source-access.integration.test.ts",
+        "apps/api/src/modules/library/verified-library-media.test.ts",
+        "apps/api/src/modules/processing/external-handwriting.test.ts",
+        "apps/api/src/modules/processing/processing.integration.test.ts",
+        "apps/api/src/modules/processing/retired-local-explain.test.ts",
+        "apps/api/src/modules/privacy/privacy.durability.integration.test.ts",
+        "apps/api/src/modules/privacy/privacy.integration.test.ts",
+        "apps/api/src/modules/question-workspace/question-import.utils.test.ts",
+        "apps/api/src/modules/reviews/reviews.integration.test.ts",
+        "apps/api/src/modules/student-media/media-normalization.test.ts",
+        "apps/api/src/modules/student-media/student-media.durability.integration.test.ts",
+        "apps/api/src/modules/student-media/student-media.integration.test.ts",
+        "apps/api/src/modules/students/student-access.integration.test.ts"
+      ],
+      "failures": [
+        {
+          "name": "durable private source collection with shared references and process/write fences continues private original, page and upload cleanup after the owning account has actually been deleted",
+          "messages": [
+            "Error: expected 201 \"Created\", got 500 \"Internal Server Error\"\n    at call (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/studio-material-maintenance.integration.test.ts:19:415)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/studio-material-maintenance.integration.test.ts:145:360\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20\n----\n    at Test._assertStatus (F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:309:14)\n    at F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:365:13\n    at Test._assertFunction (F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:342:13)\n    at Test.assert (F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:195:23)\n    at localAssert (F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:138:14)\n    at Server.<anonymous> (F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:152:11)\n    at Object.onceWrapper (node:events:630:28)\n    at Server.emit (node:events:509:28)\n    at emitCloseNT (node:net:2661:8)\n    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)"
+          ]
+        },
+        {
+          "name": "family deletion survives restart and old-snapshot recovery reapplies the latest deletion ledger inside recovery without resurrecting a closed account or erasing a shared child",
+          "messages": [
+            "Error: expected 201 \"Created\", got 500 \"Internal Server Error\"\n    at call (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/privacy/privacy.durability.integration.test.ts:26:23)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/privacy/privacy.durability.integration.test.ts:85:29\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20\n----\n    at Test._assertStatus (F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:309:14)\n    at F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:365:13\n    at Test._assertFunction (F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:342:13)\n    at Test.assert (F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:195:23)\n    at localAssert (F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:138:14)\n    at Server.<anonymous> (F:\\workspace\\github\\StudyAgent\\node_modules\\supertest\\lib\\test.js:152:11)\n    at Object.onceWrapper (node:events:630:28)\n    at Server.emit (node:events:509:28)\n    at emitCloseNT (node:net:2661:8)\n    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "upgrade-workspace-api-all-second.json",
+      "passed": 2960,
+      "failed": 0,
+      "pending": 131,
+      "actualFiles": [
+        "apps/api/src/app.integration.test.ts",
+        "apps/api/src/durability.integration.test.ts",
+        "apps/api/src/product-safety.integration.test.ts",
+        "apps/api/src/common/http-body.integration.test.ts",
+        "apps/api/src/common/stream-verified-file.test.ts",
+        "apps/api/src/common/terminate-child-process.integration.test.ts",
+        "apps/api/src/common/validation.test.ts",
+        "apps/api/src/infrastructure/admin-navigation.test.ts",
+        "apps/api/src/infrastructure/assistant-note-recovery.integration.test.ts",
+        "apps/api/src/infrastructure/assistant-note-storage.integration.test.ts",
+        "apps/api/src/infrastructure/assistant-practice-workspace.test.ts",
+        "apps/api/src/infrastructure/assistant-whiteboard-reader.integration.test.ts",
+        "apps/api/src/infrastructure/assistant-whiteboard-recovery.integration.test.ts",
+        "apps/api/src/infrastructure/backup.integration.test.ts",
+        "apps/api/src/infrastructure/controlled-workspace-copy.test.ts",
+        "apps/api/src/infrastructure/domain-database.test.ts",
+        "apps/api/src/infrastructure/gesp-workspace.test.ts",
+        "apps/api/src/infrastructure/materials-navigation.test.ts",
+        "apps/api/src/infrastructure/operations.integration.test.ts",
+        "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+        "apps/api/src/infrastructure/postgres-restore-import.integration.test.ts",
+        "apps/api/src/infrastructure/postgres-restore-resume.integration.test.ts",
+        "apps/api/src/infrastructure/postgres.integration.test.ts",
+        "apps/api/src/infrastructure/rate-limit.test.ts",
+        "apps/api/src/infrastructure/restore-context.test.ts",
+        "apps/api/src/infrastructure/restored-materials.integration.test.ts",
+        "apps/api/src/infrastructure/schema25-reader.integration.test.ts",
+        "apps/api/src/infrastructure/schema26-reader.integration.test.ts",
+        "apps/api/src/infrastructure/schema27-reader.integration.test.ts",
+        "apps/api/src/infrastructure/schema28-reader.integration.test.ts",
+        "apps/api/src/infrastructure/schema29-reader.integration.test.ts",
+        "apps/api/src/infrastructure/schema30-reader.integration.test.ts",
+        "apps/api/src/infrastructure/schema31-reader.integration.test.ts",
+        "apps/api/src/infrastructure/schema32-reader.integration.test.ts",
+        "apps/api/src/infrastructure/scoped-transactions.test.ts",
+        "apps/api/src/infrastructure/snapshot-isolation.test.ts",
+        "apps/api/src/infrastructure/source-course-check-postgres.integration.test.ts",
+        "apps/api/src/infrastructure/source-course-check-storage.integration.test.ts",
+        "apps/api/src/infrastructure/source-material-backup.integration.test.ts",
+        "apps/api/src/infrastructure/sqlite-restore-resume.integration.test.ts",
+        "apps/api/src/infrastructure/studio-atomic-marker.test.ts",
+        "apps/api/src/infrastructure/studio-file-coordination.test.ts",
+        "apps/api/src/infrastructure/studio-original-repair.test.ts",
+        "apps/api/src/infrastructure/task-repository.test.ts",
+        "apps/api/src/infrastructure/teaching-tool-storage.integration.test.ts",
+        "apps/api/src/infrastructure/textbook-teaching-adoption-native.integration.test.ts",
+        "apps/api/src/infrastructure/textbook-teaching-course-history-native.integration.test.ts",
+        "apps/api/src/infrastructure/textbook-teaching-early33-readers.integration.test.ts",
+        "apps/api/src/infrastructure/textbook-teaching-native.integration.test.ts",
+        "apps/api/src/infrastructure/topic-whiteboard-postgres.integration.test.ts",
+        "apps/api/src/infrastructure/topic-whiteboard-recovery.integration.test.ts",
+        "apps/api/src/infrastructure/topic-whiteboard-storage.integration.test.ts",
+        "apps/api/src/infrastructure/topic-whiteboard-visual-postgres.integration.test.ts",
+        "apps/api/src/infrastructure/topic-whiteboard-visual-recovery.integration.test.ts",
+        "apps/api/src/infrastructure/topic-whiteboard-visual-storage.integration.test.ts",
+        "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts",
+        "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts",
+        "apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts",
+        "apps/api/src/infrastructure/workspace-exit-guard.test.ts",
+        "apps/api/src/infrastructure/workspace-navigation.test.ts",
+        "apps/api/src/modules/ai/assistant-artifact.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-chemistry-tutorial.test.ts",
+        "apps/api/src/modules/ai/assistant-chemistry.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-controlled-figure.test.ts",
+        "apps/api/src/modules/ai/assistant-course-recovery.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-course.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-lecture-content-migration.test.ts",
+        "apps/api/src/modules/ai/assistant-lecture-context.test.ts",
+        "apps/api/src/modules/ai/assistant-lecture-recovery.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-lecture.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-note.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-source-references.test.ts",
+        "apps/api/src/modules/ai/assistant-teaching-content.test.ts",
+        "apps/api/src/modules/ai/assistant-teaching-provider-context.test.ts",
+        "apps/api/src/modules/ai/assistant-turn-recovery.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-turn.integration.test.ts",
+        "apps/api/src/modules/ai/classroom-image.service.test.ts",
+        "apps/api/src/modules/ai/classroom-reply-board.test.ts",
+        "apps/api/src/modules/ai/codex-pdf-structure.service.test.ts",
+        "apps/api/src/modules/ai/codex-search.service.test.ts",
+        "apps/api/src/modules/ai/evidence-coach.integration.test.ts",
+        "apps/api/src/modules/ai/openai-compatibility.test.ts",
+        "apps/api/src/modules/ai/speech.service.test.ts",
+        "apps/api/src/modules/ai/teaching-output-caller.test.ts",
+        "apps/api/src/modules/ai/teaching-output-policy.test.ts",
+        "apps/api/src/modules/ai/teaching-tool-protocol.test.ts",
+        "apps/api/src/modules/ai/teaching-tool.integration.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-chat.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-model-qualification.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-models.service.test.ts",
+        "apps/api/src/modules/ai/xiaojiu-text-transport.test.ts",
+        "apps/api/src/modules/content/open-resource-registry.test.ts",
+        "apps/api/src/modules/diagnostics/adaptive-routing.integration.test.ts",
+        "apps/api/src/modules/diagnostics/adaptive-routing.test.ts",
+        "apps/api/src/modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts",
+        "apps/api/src/modules/diagnostics/answer-draft.integration.test.ts",
+        "apps/api/src/modules/diagnostics/answer-protocol.test.ts",
+        "apps/api/src/modules/diagnostics/atomic-components.integration.test.ts",
+        "apps/api/src/modules/diagnostics/atomic-components.test.ts",
+        "apps/api/src/modules/diagnostics/authored-arithmetic-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-chinese-grade1-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-chinese-grade2-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-chinese-grade3-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-chinese-grade4-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-chinese-grade5-grade6-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-chinese-oral-grade1-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-data-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-english-foundation-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-english-grade1-grade2-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-english-grade3-grade6-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-english-lexical-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-factor-multiple-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-fourth-grade-geometry-statistics-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-fourth-grade-number-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-geometry-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-math-grade5-grade6-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-math-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-number-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-relation-release.test.ts",
+        "apps/api/src/modules/diagnostics/authored-remainder-decimal-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-second-grade-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-spatial-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-third-grade-probes.test.ts",
+        "apps/api/src/modules/diagnostics/authored-unit-probes.test.ts",
+        "apps/api/src/modules/diagnostics/average-atomic.integration.test.ts",
+        "apps/api/src/modules/diagnostics/average-atomic.test.ts",
+        "apps/api/src/modules/diagnostics/chemistry-curriculum.test.ts",
+        "apps/api/src/modules/diagnostics/classroom-retention-history.test.ts",
+        "apps/api/src/modules/diagnostics/classroom-retention-origin.test.ts",
+        "apps/api/src/modules/diagnostics/classroom-retention-record.test.ts",
+        "apps/api/src/modules/diagnostics/controlled-contexts.integration.test.ts",
+        "apps/api/src/modules/diagnostics/controlled-contrast-materials.test.ts",
+        "apps/api/src/modules/diagnostics/controlled-contrast.test.ts",
+        "apps/api/src/modules/diagnostics/controlled-storage.integration.test.ts",
+        "apps/api/src/modules/diagnostics/core-curriculum.test.ts",
+        "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+        "apps/api/src/modules/diagnostics/family-identity.integration.test.ts",
+        "apps/api/src/modules/diagnostics/family-identity.test.ts",
+        "apps/api/src/modules/diagnostics/guidance-model-record.test.ts",
+        "apps/api/src/modules/diagnostics/guidance-model-recovery.integration.test.ts",
+        "apps/api/src/modules/diagnostics/guidance-model.integration.test.ts",
+        "apps/api/src/modules/diagnostics/learning-source-citation.test.ts",
+        "apps/api/src/modules/diagnostics/measurement-compatibility.test.ts",
+        "apps/api/src/modules/diagnostics/measurement-versioning.integration.test.ts",
+        "apps/api/src/modules/diagnostics/measurement.test.ts",
+        "apps/api/src/modules/diagnostics/paper-exposure.integration.test.ts",
+        "apps/api/src/modules/diagnostics/retention-anchor.test.ts",
+        "apps/api/src/modules/diagnostics/retention-course-history.integration.test.ts",
+        "apps/api/src/modules/diagnostics/retention-evidence-projection.test.ts",
+        "apps/api/src/modules/diagnostics/retention-integrity.test.ts",
+        "apps/api/src/modules/diagnostics/retention-legacy-classroom.test.ts",
+        "apps/api/src/modules/diagnostics/retention-native.test.ts",
+        "apps/api/src/modules/diagnostics/retention-review-gate.test.ts",
+        "apps/api/src/modules/diagnostics/retention-source.test.ts",
+        "apps/api/src/modules/diagnostics/retention.integration.test.ts",
+        "apps/api/src/modules/diagnostics/scoring.test.ts",
+        "apps/api/src/modules/diagnostics/teaching-editor-client.test.ts",
+        "apps/api/src/modules/diagnostics/teaching-editor-copy.test.ts",
+        "apps/api/src/modules/diagnostics/teaching-editor-state.test.ts",
+        "apps/api/src/modules/diagnostics/teaching-practice-navigation.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-lesson-source.integration.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-scope-inventory.integration.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-scope-inventory.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-source-candidates.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-teaching-adoption-native.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-teaching-adoption.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-teaching-practice.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-teaching.integration.test.ts",
+        "apps/api/src/modules/diagnostics/textbook-teaching.test.ts",
+        "apps/api/src/modules/diagnostics/verification-blueprint.integration.test.ts",
+        "apps/api/src/modules/diagnostics/verification-blueprint.test.ts",
+        "apps/api/src/modules/diagnostics/verification-materials.integration.test.ts",
+        "apps/api/src/modules/diagnostics/verification-materials.test.ts",
+        "apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts",
+        "apps/api/src/modules/gesp/gesp-learning-loop.test.ts",
+        "apps/api/src/modules/gesp/gesp-student.integration.test.ts",
+        "apps/api/src/modules/gesp/gesp.integration.test.ts",
+        "apps/api/src/modules/gesp/isolated-runner.test.ts",
+        "apps/api/src/modules/gesp/student-curriculum.test.ts",
+        "apps/api/src/modules/learning/activity-navigation.test.ts",
+        "apps/api/src/modules/learning/adult-classroom-models.test.ts",
+        "apps/api/src/modules/learning/assistant-guidance.integration.test.ts",
+        "apps/api/src/modules/learning/assistant-practice-artifact.integration.test.ts",
+        "apps/api/src/modules/learning/assistant-practice-bank-selection.test.ts",
+        "apps/api/src/modules/learning/assistant-practice-content.test.ts",
+        "apps/api/src/modules/learning/assistant-practice-preflight.integration.test.ts",
+        "apps/api/src/modules/learning/assistant-practice-withdrawal.integration.test.ts",
+        "apps/api/src/modules/learning/assistant-teaching-self.integration.test.ts",
+        "apps/api/src/modules/learning/assistant-teaching-sharing.integration.test.ts",
+        "apps/api/src/modules/learning/assistant-teaching.integration.test.ts",
+        "apps/api/src/modules/learning/assistant-whiteboard-content.test.ts",
+        "apps/api/src/modules/learning/assistant-whiteboard-lifecycle.integration.test.ts",
+        "apps/api/src/modules/learning/assistant-whiteboard.integration.test.ts",
+        "apps/api/src/modules/learning/chemistry-course-correction.integration.test.ts",
+        "apps/api/src/modules/learning/chemistry-tutorial.integration.test.ts",
+        "apps/api/src/modules/learning/chemistry.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-audio-client.test.ts",
+        "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-code.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+        "apps/api/src/modules/learning/classroom-presentation.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-presentation.test.ts",
+        "apps/api/src/modules/learning/classroom-turn.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+        "apps/api/src/modules/learning/classroom-visual-context.test.ts",
+        "apps/api/src/modules/learning/classroom-visual-storage.test.ts",
+        "apps/api/src/modules/learning/classroom-visual.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-voice-preview.integration.test.ts",
+        "apps/api/src/modules/learning/classroom.integration.test.ts",
+        "apps/api/src/modules/learning/course-builder-copy.test.ts",
+        "apps/api/src/modules/learning/course-journey.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/api/src/modules/learning/course-upgrade-copy.test.ts",
+        "apps/api/src/modules/learning/guidance-calendar-ics.test.ts",
+        "apps/api/src/modules/learning/guidance-calendar-preview.test.ts",
+        "apps/api/src/modules/learning/guidance-calendar-record.test.ts",
+        "apps/api/src/modules/learning/guidance-calendar-time.test.ts",
+        "apps/api/src/modules/learning/ics-calendar.test.ts",
+        "apps/api/src/modules/learning/learning-home.integration.test.ts",
+        "apps/api/src/modules/learning/learning-home.test.ts",
+        "apps/api/src/modules/learning/notebook.integration.test.ts",
+        "apps/api/src/modules/learning/paper-capture-attribution.test.ts",
+        "apps/api/src/modules/learning/paper-capture-browser-copy.test.ts",
+        "apps/api/src/modules/learning/paper-capture-copy.test.ts",
+        "apps/api/src/modules/learning/paper-capture-derived-pdf.test.ts",
+        "apps/api/src/modules/learning/paper-capture-file-observation.test.ts",
+        "apps/api/src/modules/learning/paper-capture-files.test.ts",
+        "apps/api/src/modules/learning/paper-capture-group.test.ts",
+        "apps/api/src/modules/learning/paper-capture-image.test.ts",
+        "apps/api/src/modules/learning/paper-capture-page.test.ts",
+        "apps/api/src/modules/learning/paper-capture-recovery.integration.test.ts",
+        "apps/api/src/modules/learning/paper-capture-repair-browser-copy.test.ts",
+        "apps/api/src/modules/learning/paper-capture-repair-files.test.ts",
+        "apps/api/src/modules/learning/paper-capture-storage.integration.test.ts",
+        "apps/api/src/modules/learning/project-file-postgres-recovery.integration.test.ts",
+        "apps/api/src/modules/learning/project-file.integration.test.ts",
+        "apps/api/src/modules/learning/project-teaching.integration.test.ts",
+        "apps/api/src/modules/learning/source-course-check-content.test.ts",
+        "apps/api/src/modules/learning/source-course-check.integration.test.ts",
+        "apps/api/src/modules/learning/source-course-chunks.test.ts",
+        "apps/api/src/modules/learning/source-course-compilation.integration.test.ts",
+        "apps/api/src/modules/learning/source-course-lifecycle.integration.test.ts",
+        "apps/api/src/modules/learning/source-course-project.integration.test.ts",
+        "apps/api/src/modules/learning/source-course-project.test.ts",
+        "apps/api/src/modules/learning/source-course.integration.test.ts",
+        "apps/api/src/modules/learning/studio-course.test.ts",
+        "apps/api/src/modules/learning/studio-material-integrity.integration.test.ts",
+        "apps/api/src/modules/learning/studio-material-maintenance.integration.test.ts",
+        "apps/api/src/modules/learning/studio-material-upload.integration.test.ts",
+        "apps/api/src/modules/learning/studio-original-repair.integration.test.ts",
+        "apps/api/src/modules/learning/studio-pdf-structure.test.ts",
+        "apps/api/src/modules/learning/studio-whiteboard.test.ts",
+        "apps/api/src/modules/learning/studio.integration.test.ts",
+        "apps/api/src/modules/learning/textbook-teaching-course-history.test.ts",
+        "apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts",
+        "apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts",
+        "apps/api/src/modules/learning/textbook-teaching-course.test.ts",
+        "apps/api/src/modules/learning/topic-whiteboard-access.test.ts",
+        "apps/api/src/modules/learning/topic-whiteboard-content.test.ts",
+        "apps/api/src/modules/learning/topic-whiteboard-visual-context.test.ts",
+        "apps/api/src/modules/learning/topic-whiteboard-visual-files.test.ts",
+        "apps/api/src/modules/learning/topic-whiteboard-visual.integration.test.ts",
+        "apps/api/src/modules/learning/topic-whiteboard.integration.test.ts",
+        "apps/api/src/modules/learning/whiteboard-formula.test.ts",
+        "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+        "apps/api/src/modules/learning/whiteboard-question-context.test.ts",
+        "apps/api/src/modules/learning/whiteboard-question-notes.test.ts",
+        "apps/api/src/modules/learning/whiteboard-question-teaching-versions.test.ts",
+        "apps/api/src/modules/learning/whiteboard-question-teaching.test.ts",
+        "apps/api/src/modules/learning/whiteboard-question-visual-context.test.ts",
+        "apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts",
+        "apps/api/src/modules/learning/whiteboard-question.integration.test.ts",
+        "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+        "apps/api/src/modules/learning/whiteboard-table.test.ts",
+        "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+        "apps/api/src/modules/learning/workspace-overview.integration.test.ts",
+        "apps/api/src/modules/library/library.integration.test.ts",
+        "apps/api/src/modules/library/measurement-content.integration.test.ts",
+        "apps/api/src/modules/library/paper-export-business.integration.test.ts",
+        "apps/api/src/modules/library/paper-export-cleanup.integration.test.ts",
+        "apps/api/src/modules/library/paper-export-document-source.test.ts",
+        "apps/api/src/modules/library/paper-export-generation-cleanup.integration.test.ts",
+        "apps/api/src/modules/library/paper-export-native.test.ts",
+        "apps/api/src/modules/library/paper-export-record.test.ts",
+        "apps/api/src/modules/library/paper-export-render.integration.test.ts",
+        "apps/api/src/modules/library/paper-export-tex.integration.test.ts",
+        "apps/api/src/modules/library/paper-export-tex.test.ts",
+        "apps/api/src/modules/library/paper-export-workspace-collection.test.ts",
+        "apps/api/src/modules/library/paper-library-browser-copy.test.ts",
+        "apps/api/src/modules/library/paper-library-browser-http.integration.test.ts",
+        "apps/api/src/modules/library/paper-library-persistence.test.ts",
+        "apps/api/src/modules/library/paper-library-postgres.integration.test.ts",
+        "apps/api/src/modules/library/paper-library-privacy.integration.test.ts",
+        "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+        "apps/api/src/modules/library/paper-practice.integration.test.ts",
+        "apps/api/src/modules/library/paper-selection-business.integration.test.ts",
+        "apps/api/src/modules/library/paper-selection-record.test.ts",
+        "apps/api/src/modules/library/paper-selection-source.test.ts",
+        "apps/api/src/modules/library/paper-student-source-access.integration.test.ts",
+        "apps/api/src/modules/library/verified-library-media.test.ts",
+        "apps/api/src/modules/privacy/privacy.durability.integration.test.ts",
+        "apps/api/src/modules/privacy/privacy.integration.test.ts",
+        "apps/api/src/modules/processing/external-handwriting.test.ts",
+        "apps/api/src/modules/processing/processing.integration.test.ts",
+        "apps/api/src/modules/processing/retired-local-explain.test.ts",
+        "apps/api/src/modules/question-workspace/question-import.utils.test.ts",
+        "apps/api/src/modules/reviews/reviews.integration.test.ts",
+        "apps/api/src/modules/student-media/media-normalization.test.ts",
+        "apps/api/src/modules/student-media/student-media.durability.integration.test.ts",
+        "apps/api/src/modules/student-media/student-media.integration.test.ts",
+        "apps/api/src/modules/students/student-access.integration.test.ts"
+      ],
+      "failures": []
+    },
+    {
+      "label": "upgrade-workspace-api-build-first.json",
+      "mode": "build",
+      "status": 0
+    },
+    {
+      "label": "upgrade-workspace-api-build-second.json",
+      "mode": "build",
+      "status": 0
+    },
+    {
+      "label": "upgrade-workspace-api-build-third.json",
+      "mode": "build",
+      "status": 0
+    },
+    {
+      "label": "upgrade-workspace-api-type-first.json",
+      "mode": "type",
+      "status": 0
+    },
+    {
+      "label": "upgrade-workspace-api-type-second.json",
+      "mode": "type",
+      "status": 0
+    },
+    {
+      "label": "upgrade-workspace-api-type-third.json",
+      "mode": "type",
+      "status": 0
+    },
+    {
+      "label": "upgrade-workspace-corrected-regression-first.json",
+      "passed": 46,
+      "failed": 0,
+      "pending": 0,
+      "actualFiles": [
+        "apps/api/src/infrastructure/assistant-practice-workspace.test.ts",
+        "apps/api/src/infrastructure/workspace-exit-guard.test.ts",
+        "apps/api/src/modules/learning/chemistry-tutorial.integration.test.ts",
+        "apps/api/src/modules/learning/studio-material-maintenance.integration.test.ts",
+        "apps/api/src/modules/learning/textbook-teaching-course-history.test.ts",
+        "apps/api/src/modules/privacy/privacy.durability.integration.test.ts"
+      ],
+      "failures": []
+    },
+    {
+      "label": "upgrade-workspace-final-regression-first.json",
+      "passed": 55,
+      "failed": 0,
+      "pending": 0,
+      "actualFiles": [
+        "apps/api/src/modules/diagnostics/teaching-practice-navigation.test.ts",
+        "apps/api/src/modules/learning/course-builder-copy.test.ts",
+        "apps/api/src/modules/learning/course-upgrade-copy.test.ts",
+        "apps/api/src/modules/learning/textbook-teaching-course-history.test.ts"
+      ],
+      "failures": []
+    },
+    {
+      "label": "upgrade-workspace-http-postgres-first.json",
+      "passed": 12,
+      "failed": 1,
+      "pending": 0,
+      "actualFiles": [
+        "apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts"
+      ],
+      "failures": [
+        {
+          "name": "actual PostgreSQL same-ID course upgrades, original receipt, historical goals, privacy and restore resolves exact historical lesson returns and requires an explicit revision to first open an old classroom",
+          "messages": [
+            "AssertionError: {\"code\":\"forbidden\",\"message\":\"这是孩子的学习身份，请由家长登录后管理\"}: expected 403 to be 200 // Object.is equality\n    at call (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:25:113)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at get (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:27:70)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:113:93\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "upgrade-workspace-http-postgres-second.json",
+      "passed": 13,
+      "failed": 0,
+      "pending": 0,
+      "actualFiles": [
+        "apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts"
+      ],
+      "failures": []
+    },
+    {
+      "label": "upgrade-workspace-http-postgres-third.json",
+      "passed": 13,
+      "failed": 0,
+      "pending": 0,
+      "actualFiles": [
+        "apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts"
+      ],
+      "failures": []
+    },
+    {
+      "label": "upgrade-workspace-http-sqlite-first.json",
+      "passed": 12,
+      "failed": 1,
+      "pending": 0,
+      "actualFiles": [
+        "apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts"
+      ],
+      "failures": [
+        {
+          "name": "actual SQLite same-ID course upgrades, original receipt, historical goals, privacy and restore resolves exact historical lesson returns and requires an explicit revision to first open an old classroom",
+          "messages": [
+            "AssertionError: {\"code\":\"forbidden\",\"message\":\"这是孩子的学习身份，请由家长登录后管理\"}: expected 403 to be 200 // Object.is equality\n    at call (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:25:113)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at get (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:27:70)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:113:93\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "upgrade-workspace-http-sqlite-second.json",
+      "passed": 13,
+      "failed": 0,
+      "pending": 0,
+      "actualFiles": [
+        "apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts"
+      ],
+      "failures": []
+    },
+    {
+      "label": "upgrade-workspace-http-sqlite-third.json",
+      "passed": 13,
+      "failed": 0,
+      "pending": 0,
+      "actualFiles": [
+        "apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts"
+      ],
+      "failures": []
+    },
+    {
+      "label": "upgrade-workspace-model-first.json",
+      "passed": 36,
+      "failed": 0,
+      "pending": 0,
+      "actualFiles": [
+        "apps/api/src/modules/diagnostics/teaching-practice-navigation.test.ts",
+        "apps/api/src/modules/learning/course-builder-copy.test.ts",
+        "apps/api/src/modules/learning/course-upgrade-copy.test.ts"
+      ],
+      "failures": []
+    },
+    {
+      "label": "upgrade-workspace-production-first.json",
+      "at": "2026-11-01T04:30:34.795Z",
+      "status": 0,
+      "error": null,
+      "distDir": ".next-upgrade-workspace-production-first",
+      "source": "data/qa/p184",
+      "buildId": "HHC2huEeUMVeOUazF5-TE",
+      "inputFiles": 1606,
+      "apiPort": 4284,
+      "webPort": 3284
+    },
+    {
+      "label": "upgrade-workspace-production-fourth.json",
+      "at": "2026-11-01T05:26:08.852Z",
+      "status": 0,
+      "error": null,
+      "distDir": ".next-upgrade-workspace-production-fourth",
+      "source": "data/qa/p184",
+      "buildId": "ch_FoKxyzvyjUcCFiuIh-",
+      "inputFiles": 1606,
+      "apiPort": 4284,
+      "webPort": 3284
+    },
+    {
+      "label": "upgrade-workspace-production-second.json",
+      "at": "2026-11-01T04:36:40.530Z",
+      "status": 0,
+      "error": null,
+      "distDir": ".next-upgrade-workspace-production-second",
+      "source": "data/qa/p184",
+      "buildId": "UGwKssOkYF_BeNw-va0e5",
+      "inputFiles": 1606,
+      "apiPort": 4284,
+      "webPort": 3284
+    },
+    {
+      "label": "upgrade-workspace-production-third.json",
+      "at": "2026-11-01T04:40:15.679Z",
+      "status": 0,
+      "error": null,
+      "distDir": ".next-upgrade-workspace-production-third",
+      "source": "data/qa/p184",
+      "buildId": "mMa8O3-T_4SfUnCzyscFG",
+      "inputFiles": 1606,
+      "apiPort": 4284,
+      "webPort": 3284
+    },
+    {
+      "label": "upgrade-workspace-webtype-first.json",
+      "mode": "webtype",
+      "status": 0
+    },
+    {
+      "label": "upgrade-workspace-webtype-second.json",
+      "mode": "webtype",
+      "status": 0
+    },
+    {
+      "label": "upgrade-workspace-webtype-third.json",
+      "mode": "webtype",
+      "status": 0
+    }
+  ],
+  "browsers": [
+    {
+      "label": "upgrade-workspace-product-fifth",
+      "at": "2026-11-01T04:47:13.635Z",
+      "source": "data/qa/p184",
+      "buildId": "mMa8O3-T_4SfUnCzyscFG",
+      "distDir": ".next-upgrade-workspace-production-third",
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "productUI": true,
+      "completed": false,
+      "passed": 10,
+      "failed": 1,
+      "error": "expect(locator).toHaveValue(expected) failed\n\nLocator:  getByRole('dialog', { name: '课程升级', exact: true }).getByLabel('升级每次学习预算', { exact: true })\nExpected: \" 22 \"\nReceived: \"20\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveValue\" getByRole('dialog', { name: '课程升级', exact: true }).getByLabel('升级每次学习预算', { exact: true }) with timeout 5000ms\n  - waiting for getByRole('dialog', { name: '课程升级', exact: true }).getByLabel('升级每次学习预算', { exact: true })\n    - locator resolved to <input disabled value=\"20\" maxlength=\"32\" inputmode=\"numeric\" aria-label=\"升级每次学习预算\"/>\n    13 × unexpected value \"20\"\n       - locator resolved to <input value=\"20\" maxlength=\"32\" inputmode=\"numeric\" aria-label=\"升级每次学习预算\"/>\n    - unexpected value \"20\"\n",
+      "checks": [
+        {
+          "name": "actual-original-builder-creates-the32-target-baseline-and-protected-original-command",
+          "passed": true
+        },
+        {
+          "name": "complete-upgrade-form-restores-raw-time-original-course-and-four-exact-new-versions",
+          "passed": true
+        },
+        {
+          "name": "original-workspace-upgrade-dialog-four-sizes-keyboard-and-sticky-footer",
+          "passed": true
+        },
+        {
+          "name": "accepted-upgrade-loss-and-null-lookup-preserve-the-one-original-request-across-refresh",
+          "passed": true
+        },
+        {
+          "name": "actual-original-create-copy-opens-its-accurate-old-result-after-the-same-course-was-upgraded",
+          "passed": true
+        },
+        {
+          "name": "pinned-course-versions-survive-reload-back-forward-and-refuse-malformed-links",
+          "passed": true
+        },
+        {
+          "name": "ordinary-current-course-progress-refreshes-without-changing-the-pinned-authored-version",
+          "passed": true
+        },
+        {
+          "name": "actual-old-classroom-resumes-then-explicit-current-switch-and-return-follow-the-correct-revision",
+          "passed": true
+        },
+        {
+          "name": "first-explicit-historical-classroom-opens-only-the-selected-original-and-returns-to-it",
+          "passed": true
+        },
+        {
+          "name": "two-real-tabs-preserve-complete-conflicting-upgrade-input-and-fork-only-after-file-readback",
+          "passed": true
+        },
+        {
+          "name": "explicit-saved-upgrade-slot-links-and-browser-back-restore-the-exact-independent-form",
+          "passed": false,
+          "error": "expect(locator).toHaveValue(expected) failed\n\nLocator:  getByRole('dialog', { name: '课程升级', exact: true }).getByLabel('升级每次学习预算', { exact: true })\nExpected: \" 22 \"\nReceived: \"20\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveValue\" getByRole('dialog', { name: '课程升级', exact: true }).getByLabel('升级每次学习预算', { exact: true }) with timeout 5000ms\n  - waiting for getByRole('dialog', { name: '课程升级', exact: true }).getByLabel('升级每次学习预算', { exact: true })\n    - locator resolved to <input disabled value=\"20\" maxlength=\"32\" inputmode=\"numeric\" aria-label=\"升级每次学习预算\"/>\n    13 × unexpected value \"20\"\n       - locator resolved to <input value=\"20\" maxlength=\"32\" inputmode=\"numeric\" aria-label=\"升级每次学习预算\"/>\n    - unexpected value \"20\"\n"
+        }
+      ],
+      "screenshots": [
+        "upgrade-390x844.png",
+        "upgrade-768x900.png",
+        "upgrade-1440x1000.png",
+        "upgrade-1440x500.png",
+        "upgrade-accepted-unknown.png",
+        "original-create-result-revision-zero.png"
+      ],
+      "pageErrors": []
+    },
+    {
+      "label": "upgrade-workspace-product-first",
+      "at": "2026-11-01T04:33:53.505Z",
+      "source": "data/qa/p184",
+      "buildId": "HHC2huEeUMVeOUazF5-TE",
+      "distDir": ".next-upgrade-workspace-production-first",
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "productUI": true,
+      "completed": false,
+      "passed": 3,
+      "failed": 1,
+      "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '更新课程教学', exact: true })\u001b[22m\n",
+      "checks": [
+        {
+          "name": "actual-original-builder-creates-the32-target-baseline-and-protected-original-command",
+          "passed": true
+        },
+        {
+          "name": "complete-upgrade-form-restores-raw-time-original-course-and-four-exact-new-versions",
+          "passed": true
+        },
+        {
+          "name": "original-workspace-upgrade-dialog-four-sizes-keyboard-and-sticky-footer",
+          "passed": true
+        },
+        {
+          "name": "accepted-upgrade-loss-and-null-lookup-preserve-the-one-original-request-across-refresh",
+          "passed": false,
+          "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '更新课程教学', exact: true })\u001b[22m\n"
+        }
+      ],
+      "screenshots": [
+        "upgrade-390x844.png",
+        "upgrade-768x900.png",
+        "upgrade-1440x1000.png",
+        "upgrade-1440x500.png",
+        "upgrade-accepted-unknown.png"
+      ],
+      "pageErrors": []
+    },
+    {
+      "label": "upgrade-workspace-product-fourth",
+      "at": "2026-11-01T04:45:15.425Z",
+      "source": "data/qa/p184",
+      "buildId": "mMa8O3-T_4SfUnCzyscFG",
+      "distDir": ".next-upgrade-workspace-production-third",
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "productUI": true,
+      "completed": false,
+      "passed": 6,
+      "failed": 1,
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('link', { name: '▶ 继续学习', exact: true }).first() to be visible\u001b[22m\n",
+      "checks": [
+        {
+          "name": "actual-original-builder-creates-the32-target-baseline-and-protected-original-command",
+          "passed": true
+        },
+        {
+          "name": "complete-upgrade-form-restores-raw-time-original-course-and-four-exact-new-versions",
+          "passed": true
+        },
+        {
+          "name": "original-workspace-upgrade-dialog-four-sizes-keyboard-and-sticky-footer",
+          "passed": true
+        },
+        {
+          "name": "accepted-upgrade-loss-and-null-lookup-preserve-the-one-original-request-across-refresh",
+          "passed": true
+        },
+        {
+          "name": "actual-original-create-copy-opens-its-accurate-old-result-after-the-same-course-was-upgraded",
+          "passed": true
+        },
+        {
+          "name": "pinned-course-versions-survive-reload-back-forward-and-refuse-malformed-links",
+          "passed": true
+        },
+        {
+          "name": "ordinary-current-course-progress-refreshes-without-changing-the-pinned-authored-version",
+          "passed": false,
+          "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('link', { name: '▶ 继续学习', exact: true }).first() to be visible\u001b[22m\n"
+        }
+      ],
+      "screenshots": [
+        "upgrade-390x844.png",
+        "upgrade-768x900.png",
+        "upgrade-1440x1000.png",
+        "upgrade-1440x500.png",
+        "upgrade-accepted-unknown.png",
+        "original-create-result-revision-zero.png"
+      ],
+      "pageErrors": []
+    },
+    {
+      "label": "upgrade-workspace-product-second",
+      "at": "2026-11-01T04:38:39.229Z",
+      "source": "data/qa/p184",
+      "buildId": "UGwKssOkYF_BeNw-va0e5",
+      "distDir": ".next-upgrade-workspace-production-second",
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "productUI": true,
+      "completed": false,
+      "passed": 8,
+      "failed": 1,
+      "error": "Expected \"actual\" to be strictly unequal to:\n\n'9f89b23c-f8c5-4a14-a0fb-137c35fa34e4'",
+      "checks": [
+        {
+          "name": "actual-original-builder-creates-the32-target-baseline-and-protected-original-command",
+          "passed": true
+        },
+        {
+          "name": "complete-upgrade-form-restores-raw-time-original-course-and-four-exact-new-versions",
+          "passed": true
+        },
+        {
+          "name": "original-workspace-upgrade-dialog-four-sizes-keyboard-and-sticky-footer",
+          "passed": true
+        },
+        {
+          "name": "accepted-upgrade-loss-and-null-lookup-preserve-the-one-original-request-across-refresh",
+          "passed": true
+        },
+        {
+          "name": "actual-original-create-copy-opens-its-accurate-old-result-after-the-same-course-was-upgraded",
+          "passed": true
+        },
+        {
+          "name": "pinned-course-versions-survive-reload-back-forward-and-refuse-malformed-links",
+          "passed": true
+        },
+        {
+          "name": "actual-old-classroom-resumes-then-explicit-current-switch-and-return-follow-the-correct-revision",
+          "passed": true
+        },
+        {
+          "name": "first-explicit-historical-classroom-opens-only-the-selected-original-and-returns-to-it",
+          "passed": true
+        },
+        {
+          "name": "two-real-tabs-preserve-complete-conflicting-upgrade-input-and-fork-only-after-file-readback",
+          "passed": false,
+          "error": "Expected \"actual\" to be strictly unequal to:\n\n'9f89b23c-f8c5-4a14-a0fb-137c35fa34e4'"
+        }
+      ],
+      "screenshots": [
+        "upgrade-390x844.png",
+        "upgrade-768x900.png",
+        "upgrade-1440x1000.png",
+        "upgrade-1440x500.png",
+        "upgrade-accepted-unknown.png",
+        "original-create-result-revision-zero.png"
+      ],
+      "pageErrors": []
+    },
+    {
+      "label": "upgrade-workspace-product-seventh",
+      "at": "2026-11-01T05:30:25.669Z",
+      "source": "data/qa/p184",
+      "buildId": "ch_FoKxyzvyjUcCFiuIh-",
+      "distDir": ".next-upgrade-workspace-production-fourth",
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "productUI": true,
+      "completed": true,
+      "passed": 16,
+      "failed": 0,
+      "error": null,
+      "checks": [
+        {
+          "name": "actual-original-builder-creates-the32-target-baseline-and-protected-original-command",
+          "passed": true
+        },
+        {
+          "name": "complete-upgrade-form-restores-raw-time-original-course-and-four-exact-new-versions",
+          "passed": true
+        },
+        {
+          "name": "original-workspace-upgrade-dialog-four-sizes-keyboard-and-sticky-footer",
+          "passed": true
+        },
+        {
+          "name": "accepted-upgrade-loss-and-null-lookup-preserve-the-one-original-request-across-refresh",
+          "passed": true
+        },
+        {
+          "name": "actual-original-create-copy-opens-its-accurate-old-result-after-the-same-course-was-upgraded",
+          "passed": true
+        },
+        {
+          "name": "pinned-course-versions-survive-reload-back-forward-and-refuse-malformed-links",
+          "passed": true
+        },
+        {
+          "name": "ordinary-current-course-progress-refreshes-without-changing-the-pinned-authored-version",
+          "passed": true
+        },
+        {
+          "name": "actual-old-classroom-resumes-then-explicit-current-switch-and-return-follow-the-correct-revision",
+          "passed": true
+        },
+        {
+          "name": "first-explicit-historical-classroom-opens-only-the-selected-original-and-returns-to-it",
+          "passed": true
+        },
+        {
+          "name": "two-real-tabs-preserve-complete-conflicting-upgrade-input-and-fork-only-after-file-readback",
+          "passed": true
+        },
+        {
+          "name": "explicit-saved-upgrade-slot-links-and-browser-back-restore-the-exact-independent-form",
+          "passed": true
+        },
+        {
+          "name": "disabled-indexeddb-protects-the-full-upgrade-before-exit-by-real-download-readback",
+          "passed": true
+        },
+        {
+          "name": "same-owner-import-preserves-all-raw-upgrade-data-in-a-new-slot-without-new-write",
+          "passed": true
+        },
+        {
+          "name": "foreign-owner-import-and-forged-baseline-never-grant-an-upgrade-or-overwrite-the-original-slot",
+          "passed": true
+        },
+        {
+          "name": "actual-student-reads-its-historical-version-and-independent-check-returns-to-the-exact-original",
+          "passed": true
+        },
+        {
+          "name": "current-role-change-hides-the-private-upgrade-and-retains-original-native-course-records",
+          "passed": true
+        }
+      ],
+      "screenshots": [
+        "upgrade-390x844.png",
+        "upgrade-768x900.png",
+        "upgrade-1440x1000.png",
+        "upgrade-1440x500.png",
+        "upgrade-accepted-unknown.png",
+        "original-create-result-revision-zero.png",
+        "upgrade-blocked-readback-exit.png",
+        "upgrade-imported-original-input.png",
+        "upgrade-forged-baseline-refused.png",
+        "student-original-history-return.png"
+      ],
+      "pageErrors": []
+    },
+    {
+      "label": "upgrade-workspace-product-sixth",
+      "at": "2026-11-01T04:51:01.409Z",
+      "source": "data/qa/p184",
+      "buildId": "mMa8O3-T_4SfUnCzyscFG",
+      "distDir": ".next-upgrade-workspace-production-third",
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "productUI": true,
+      "completed": true,
+      "passed": 16,
+      "failed": 0,
+      "error": null,
+      "checks": [
+        {
+          "name": "actual-original-builder-creates-the32-target-baseline-and-protected-original-command",
+          "passed": true
+        },
+        {
+          "name": "complete-upgrade-form-restores-raw-time-original-course-and-four-exact-new-versions",
+          "passed": true
+        },
+        {
+          "name": "original-workspace-upgrade-dialog-four-sizes-keyboard-and-sticky-footer",
+          "passed": true
+        },
+        {
+          "name": "accepted-upgrade-loss-and-null-lookup-preserve-the-one-original-request-across-refresh",
+          "passed": true
+        },
+        {
+          "name": "actual-original-create-copy-opens-its-accurate-old-result-after-the-same-course-was-upgraded",
+          "passed": true
+        },
+        {
+          "name": "pinned-course-versions-survive-reload-back-forward-and-refuse-malformed-links",
+          "passed": true
+        },
+        {
+          "name": "ordinary-current-course-progress-refreshes-without-changing-the-pinned-authored-version",
+          "passed": true
+        },
+        {
+          "name": "actual-old-classroom-resumes-then-explicit-current-switch-and-return-follow-the-correct-revision",
+          "passed": true
+        },
+        {
+          "name": "first-explicit-historical-classroom-opens-only-the-selected-original-and-returns-to-it",
+          "passed": true
+        },
+        {
+          "name": "two-real-tabs-preserve-complete-conflicting-upgrade-input-and-fork-only-after-file-readback",
+          "passed": true
+        },
+        {
+          "name": "explicit-saved-upgrade-slot-links-and-browser-back-restore-the-exact-independent-form",
+          "passed": true
+        },
+        {
+          "name": "disabled-indexeddb-protects-the-full-upgrade-before-exit-by-real-download-readback",
+          "passed": true
+        },
+        {
+          "name": "same-owner-import-preserves-all-raw-upgrade-data-in-a-new-slot-without-new-write",
+          "passed": true
+        },
+        {
+          "name": "foreign-owner-import-and-forged-baseline-never-grant-an-upgrade-or-overwrite-the-original-slot",
+          "passed": true
+        },
+        {
+          "name": "actual-student-reads-its-historical-version-and-independent-check-returns-to-the-exact-original",
+          "passed": true
+        },
+        {
+          "name": "current-role-change-hides-the-private-upgrade-and-retains-original-native-course-records",
+          "passed": true
+        }
+      ],
+      "screenshots": [
+        "upgrade-390x844.png",
+        "upgrade-768x900.png",
+        "upgrade-1440x1000.png",
+        "upgrade-1440x500.png",
+        "upgrade-accepted-unknown.png",
+        "original-create-result-revision-zero.png",
+        "upgrade-blocked-readback-exit.png",
+        "upgrade-imported-original-input.png",
+        "upgrade-forged-baseline-refused.png",
+        "student-original-history-return.png"
+      ],
+      "pageErrors": [
+        "Invalid key"
+      ]
+    },
+    {
+      "label": "upgrade-workspace-product-third",
+      "at": "2026-11-01T04:42:15.656Z",
+      "source": "data/qa/p184",
+      "buildId": "mMa8O3-T_4SfUnCzyscFG",
+      "distDir": ".next-upgrade-workspace-production-third",
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "productUI": true,
+      "completed": false,
+      "passed": 6,
+      "failed": 1,
+      "error": "{\"code\":\"bad_request\",\"message\":\"输入格式有误\",\"details\":{\"issues\":[{\"path\":[\"requestKey\"],\"message\":\"Invalid input: expected string, received undefined\"}]}}\n\n400 !== 201\n",
+      "checks": [
+        {
+          "name": "actual-original-builder-creates-the32-target-baseline-and-protected-original-command",
+          "passed": true
+        },
+        {
+          "name": "complete-upgrade-form-restores-raw-time-original-course-and-four-exact-new-versions",
+          "passed": true
+        },
+        {
+          "name": "original-workspace-upgrade-dialog-four-sizes-keyboard-and-sticky-footer",
+          "passed": true
+        },
+        {
+          "name": "accepted-upgrade-loss-and-null-lookup-preserve-the-one-original-request-across-refresh",
+          "passed": true
+        },
+        {
+          "name": "actual-original-create-copy-opens-its-accurate-old-result-after-the-same-course-was-upgraded",
+          "passed": true
+        },
+        {
+          "name": "pinned-course-versions-survive-reload-back-forward-and-refuse-malformed-links",
+          "passed": true
+        },
+        {
+          "name": "ordinary-current-course-progress-refreshes-without-changing-the-pinned-authored-version",
+          "passed": false,
+          "error": "{\"code\":\"bad_request\",\"message\":\"输入格式有误\",\"details\":{\"issues\":[{\"path\":[\"requestKey\"],\"message\":\"Invalid input: expected string, received undefined\"}]}}\n\n400 !== 201\n"
+        }
+      ],
+      "screenshots": [
+        "upgrade-390x844.png",
+        "upgrade-768x900.png",
+        "upgrade-1440x1000.png",
+        "upgrade-1440x500.png",
+        "upgrade-accepted-unknown.png",
+        "original-create-result-revision-zero.png"
+      ],
+      "pageErrors": []
+    }
+  ],
+  "latestProduct": {
+    "label": "upgrade-workspace-product-seventh",
+    "buildId": "ch_FoKxyzvyjUcCFiuIh-",
+    "passed": 16,
+    "failed": 0,
+    "pageErrors": [],
+    "allScreenshotsViewed": true
+  },
+  "latestHTTP": {
+    "sqlite": {
+      "label": "upgrade-workspace-http-sqlite-third",
+      "passed": 13,
+      "failed": 0
+    },
+    "postgres": {
+      "label": "upgrade-workspace-http-postgres-third",
+      "passed": 13,
+      "failed": 0,
+      "actualPostgres": true
+    }
+  },
+  "latestWholeAPI": {
+    "label": "upgrade-workspace-api-all-second",
+    "passed": 2960,
+    "failed": 0,
+    "pending": 131
+  },
+  "wholeCohorts": [
+    {
+      "label": "upgrade-workspace-api-all-first",
+      "actualDirectory": "upgrade-api-all-first-source",
+      "sourceFiles": 18,
+      "inputs": 1283,
+      "apiBuild": "upgrade-workspace-api-build-second",
+      "sourceChangesDuringWholeAPI": null,
+      "sourceCapturedBeforeBatchStart": false
+    },
+    {
+      "label": "upgrade-workspace-api-all-second",
+      "actualDirectory": "upgrade-workspace-api-all-second-source",
+      "sourceFiles": 22,
+      "inputs": 1283,
+      "apiBuild": "upgrade-workspace-api-build-third",
+      "sourceChangesDuringWholeAPI": false,
+      "sourceCapturedBeforeBatchStart": true
+    }
+  ],
+  "navigation": [
+    {
+      "label": "upgrade-navigation-actual-first",
+      "at": "2026-11-01T05:23:08.035Z",
+      "mode": "verify",
+      "completed": true,
+      "error": null,
+      "source": "data/qa/p184/apps/web/lib/workspace-exit-guard.ts",
+      "sourceSha256": "8c83fd7b5a677c1bf1cba1fff842b7175e84f741202121772afdf1bdd39e1491",
+      "realChromium": true,
+      "actualSharedModule": true,
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "pageErrors": [],
+      "sourceVariant": "actual-candidate",
+      "prototypeReceiptAppliedFlagNotAuthoritative": false
+    },
+    {
+      "label": "upgrade-navigation-prototype-first",
+      "at": "2026-11-01T04:59:50.136Z",
+      "mode": "prototype",
+      "completed": false,
+      "error": "page.waitForURL: Timeout 5000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/third\" until \"load\"\n============================================================",
+      "source": "data/qa/p184/apps/web/lib/workspace-exit-guard.ts",
+      "sourceSha256": "797d99a880f35cafcdbb7852fe96e4658566033b7906779a67d8186cfae14539",
+      "realChromium": true,
+      "actualSharedModule": true,
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "pageErrors": [],
+      "sourceVariant": "isolated-proposal",
+      "prototypeReceiptAppliedFlagNotAuthoritative": true
+    },
+    {
+      "label": "upgrade-navigation-prototype-fourth",
+      "at": "2026-11-01T05:02:59.659Z",
+      "mode": "prototype",
+      "completed": true,
+      "error": null,
+      "source": "data/qa/p184/apps/web/lib/workspace-exit-guard.ts",
+      "sourceSha256": "797d99a880f35cafcdbb7852fe96e4658566033b7906779a67d8186cfae14539",
+      "realChromium": true,
+      "actualSharedModule": true,
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "pageErrors": [],
+      "sourceVariant": "isolated-proposal",
+      "prototypeReceiptAppliedFlagNotAuthoritative": true
+    },
+    {
+      "label": "upgrade-navigation-prototype-second",
+      "at": "2026-11-01T05:01:24.484Z",
+      "mode": "prototype",
+      "completed": true,
+      "error": null,
+      "source": "data/qa/p184/apps/web/lib/workspace-exit-guard.ts",
+      "sourceSha256": "797d99a880f35cafcdbb7852fe96e4658566033b7906779a67d8186cfae14539",
+      "realChromium": true,
+      "actualSharedModule": true,
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "pageErrors": [],
+      "sourceVariant": "isolated-proposal",
+      "prototypeReceiptAppliedFlagNotAuthoritative": true
+    },
+    {
+      "label": "upgrade-navigation-prototype-third",
+      "at": "2026-11-01T05:02:00.620Z",
+      "mode": "prototype",
+      "completed": false,
+      "error": "page.waitForURL: Timeout 5000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/third\" until \"load\"\n============================================================",
+      "source": "data/qa/p184/apps/web/lib/workspace-exit-guard.ts",
+      "sourceSha256": "797d99a880f35cafcdbb7852fe96e4658566033b7906779a67d8186cfae14539",
+      "realChromium": true,
+      "actualSharedModule": true,
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "pageErrors": [],
+      "sourceVariant": "isolated-proposal",
+      "prototypeReceiptAppliedFlagNotAuthoritative": true
+    },
+    {
+      "label": "upgrade-navigation-reproduce-first",
+      "at": "2026-11-01T04:56:25.600Z",
+      "mode": "reproduce",
+      "completed": false,
+      "error": "page.waitForURL: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/second\" until \"load\"\n============================================================",
+      "source": "data/qa/p184/apps/web/lib/workspace-exit-guard.ts",
+      "sourceSha256": "797d99a880f35cafcdbb7852fe96e4658566033b7906779a67d8186cfae14539",
+      "realChromium": true,
+      "actualSharedModule": true,
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "pageErrors": [
+        {
+          "message": "Invalid key",
+          "stack": "",
+          "url": "http://127.0.0.1:4388/third"
+        },
+        {
+          "message": "Invalid key",
+          "stack": "",
+          "url": "http://127.0.0.1:4388/third"
+        }
+      ],
+      "sourceVariant": "actual-candidate",
+      "prototypeReceiptAppliedFlagNotAuthoritative": false
+    },
+    {
+      "label": "upgrade-navigation-reproduce-second",
+      "at": "2026-11-01T04:58:57.687Z",
+      "mode": "reproduce",
+      "completed": false,
+      "error": "page.waitForURL: Timeout 5000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/second\" until \"load\"\n============================================================",
+      "source": "data/qa/p184/apps/web/lib/workspace-exit-guard.ts",
+      "sourceSha256": "797d99a880f35cafcdbb7852fe96e4658566033b7906779a67d8186cfae14539",
+      "realChromium": true,
+      "actualSharedModule": true,
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "pageErrors": [
+        {
+          "message": "Invalid key",
+          "stack": "",
+          "url": "http://127.0.0.1:4388/third"
+        },
+        {
+          "message": "Invalid key",
+          "stack": "",
+          "url": "http://127.0.0.1:4388/third"
+        }
+      ],
+      "sourceVariant": "actual-candidate",
+      "prototypeReceiptAppliedFlagNotAuthoritative": false
+    }
+  ],
+  "latestCorrectedRegression": {
+    "label": "upgrade-workspace-corrected-regression-first",
+    "passed": 46,
+    "failed": 0
+  },
+  "verifiedScope": [
+    "Original-workspace complete upgrade draft, exact baseline and complete selections; imports do not convey baseline or original-command authority",
+    "Actual accepted upgrade response loss and null lookup, refresh and exact original GET; old creation copy opens its own revision0 after upgrade",
+    "Accurate public version directory; pinned revisions, reload/back/forward, exact old classroom/check returns and explicit new/historical classroom opening",
+    "Actual current progress refresh, two-tab CAS, independently saved slot traversal, blocked storage real download/file readback, foreign import and forged baseline refusal",
+    "Current actor/role change hides private inputs; exact student read/return routes keep service object/session/guardian authorization"
+  ],
+  "limitations": [
+    "The first full API source seal was captured during that failed batch, not before its start. It is an archival variant, not proof of a fully frozen first-batch run. The final second batch was sealed before start and all1283 source plus593 compiled files stayed equal.",
+    "Original p1832741/1/131 and every intervening failure remain independent results. Separate batches are never summed.",
+    "The55-test regression actually ran four named files; two additional requested filters did not name existing files and are not counted as coverage.",
+    "Current business33 is isolated; accurate real-source original teaching adoption, original due-retention and final site/native/privacy/restoration gates remain before application integration.",
+    "All textbooks/GESP/R5/R7/R8/original72/WS and teacher/physical device/print/real1/3/7/14-day conditions remain active."
+  ],
+  "generatedEngineeringDataOnly": true,
+  "realLearnerEvidence": false,
+  "wholeGoal": "active",
+  "localOnly": true,
+  "pushed": false,
+  "deployed": false,
+  "archivalPreparation": {
+    "firstAttemptFailed": "ENOENT for expected upgrade-workspace-api-all-first-source directory; actual original is upgrade-api-all-first-source",
+    "failedPartialPublicAndLocalArchivesPreservedLocally": true,
+    "secondAttemptCompleted": true
+  }
+}

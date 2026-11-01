@@ -1,0 +1,61 @@
+{
+  "at": "2026-11-01T04:38:39.229Z",
+  "source": "data/qa/p184",
+  "buildId": "UGwKssOkYF_BeNw-va0e5",
+  "distDir": ".next-upgrade-workspace-production-second",
+  "generatedEngineeringDataOnly": true,
+  "realLearnerEvidence": false,
+  "productUI": true,
+  "completed": false,
+  "passed": 8,
+  "failed": 1,
+  "error": "Expected \"actual\" to be strictly unequal to:\n\n'9f89b23c-f8c5-4a14-a0fb-137c35fa34e4'",
+  "checks": [
+    {
+      "name": "actual-original-builder-creates-the32-target-baseline-and-protected-original-command",
+      "passed": true
+    },
+    {
+      "name": "complete-upgrade-form-restores-raw-time-original-course-and-four-exact-new-versions",
+      "passed": true
+    },
+    {
+      "name": "original-workspace-upgrade-dialog-four-sizes-keyboard-and-sticky-footer",
+      "passed": true
+    },
+    {
+      "name": "accepted-upgrade-loss-and-null-lookup-preserve-the-one-original-request-across-refresh",
+      "passed": true
+    },
+    {
+      "name": "actual-original-create-copy-opens-its-accurate-old-result-after-the-same-course-was-upgraded",
+      "passed": true
+    },
+    {
+      "name": "pinned-course-versions-survive-reload-back-forward-and-refuse-malformed-links",
+      "passed": true
+    },
+    {
+      "name": "actual-old-classroom-resumes-then-explicit-current-switch-and-return-follow-the-correct-revision",
+      "passed": true
+    },
+    {
+      "name": "first-explicit-historical-classroom-opens-only-the-selected-original-and-returns-to-it",
+      "passed": true
+    },
+    {
+      "name": "two-real-tabs-preserve-complete-conflicting-upgrade-input-and-fork-only-after-file-readback",
+      "passed": false,
+      "error": "Expected \"actual\" to be strictly unequal to:\n\n'9f89b23c-f8c5-4a14-a0fb-137c35fa34e4'"
+    }
+  ],
+  "screenshots": [
+    "upgrade-390x844.png",
+    "upgrade-768x900.png",
+    "upgrade-1440x1000.png",
+    "upgrade-1440x500.png",
+    "upgrade-accepted-unknown.png",
+    "original-create-result-revision-zero.png"
+  ],
+  "pageErrors": []
+}
