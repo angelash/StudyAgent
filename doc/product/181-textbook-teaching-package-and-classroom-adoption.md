@@ -1,5 +1,7 @@
 # 181 教材课时完整教学包与原课堂采用
 
+原ID升级接[182](182-course-in-place-upgrade-and-adoption-history.md)：当前采用按课程/课时唯一，旧诊断反查当前课程，不能直接替换。第六服务器集合保存不可变公开课程修订及升级原请求，创建回执定位原课程指纹；历史课堂、检查和保持沿冻结版本恢复。此为当前未发布33候选的接续协议，主干32/正式24/revision187保持，尚未计为升级实现。
+
 2026-11-01，接[180准确来源](180-textbook-lesson-source-and-teaching-package-pipeline.md)、[150完整计划](150-integrated-delivery-plan-and-work-ledger.md)R6与XP-F01/F03/F05、WS09/WS10/WS12。180已本地提交02ef8924，主干干净，应用32、正式库24/revision187。先提交本协议，再在主目录内隔离实施；所有原开发与真实验收条件继续active。
 
 ## 实际起点与复用
