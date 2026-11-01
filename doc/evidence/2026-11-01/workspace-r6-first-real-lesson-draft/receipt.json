@@ -685,5 +685,115 @@
   "adopted": false,
   "classroomJourneyVerified": false,
   "wholeGoal": "active",
-  "next": "Create genuine additional independent material families for the five new draft definitions and complete the three reused definitions retention stock; then review and register through existing editorial APIs before actual source/course/classroom/original-plan retention acceptance."
+  "next": "Create genuine additional independent material families for the five new draft definitions and complete the three reused definitions retention stock; then review and register through existing editorial APIs before actual source/course/classroom/original-plan retention acceptance.",
+  "retentionRuleAudit": {
+    "at": "2026-11-01T07:19:56.521Z",
+    "source": "apps/api/src/modules/diagnostics/diagnosis.ts:106",
+    "sourceSha256": "46767732c629077c861f5d61936d185222c984b1fb1a75868ff8947562a6eb86",
+    "correction": "The earlier explanation incorrectly named insufficient understanding/procedure families. The actual immediate basic group is covered; the retention-dimension group has no candidates.",
+    "atoms": [
+      {
+        "id": "core:chinese:contextmeaning",
+        "existingAuthoredExerciseDimensionCounts": {
+          "understanding": 16,
+          "procedure": 12,
+          "transfer": 24
+        },
+        "requiredGroups": [
+          {
+            "atomIds": [
+              "core:chinese:contextmeaning"
+            ],
+            "dimensions": [
+              "understanding",
+              "procedure"
+            ],
+            "minIndependentFamilies": 2,
+            "purpose": "核对即时基础表现"
+          },
+          {
+            "atomIds": [
+              "core:chinese:contextmeaning"
+            ],
+            "dimensions": [
+              "retention"
+            ],
+            "minIndependentFamilies": 2,
+            "purpose": "经复测队列安排真实间隔后的新题"
+          }
+        ],
+        "retentionDimensionAvailable": 0,
+        "immediateBasicGroupCovered": true
+      },
+      {
+        "id": "core:chinese:detail-evidence",
+        "existingAuthoredExerciseDimensionCounts": {
+          "understanding": 16,
+          "procedure": 12,
+          "transfer": 24
+        },
+        "requiredGroups": [
+          {
+            "atomIds": [
+              "core:chinese:detail-evidence"
+            ],
+            "dimensions": [
+              "understanding",
+              "procedure"
+            ],
+            "minIndependentFamilies": 2,
+            "purpose": "核对即时基础表现"
+          },
+          {
+            "atomIds": [
+              "core:chinese:detail-evidence"
+            ],
+            "dimensions": [
+              "retention"
+            ],
+            "minIndependentFamilies": 2,
+            "purpose": "经复测队列安排真实间隔后的新题"
+          }
+        ],
+        "retentionDimensionAvailable": 0,
+        "immediateBasicGroupCovered": true
+      },
+      {
+        "id": "core:chinese:personification",
+        "existingAuthoredExerciseDimensionCounts": {
+          "understanding": 16,
+          "procedure": 12,
+          "transfer": 24
+        },
+        "requiredGroups": [
+          {
+            "atomIds": [
+              "core:chinese:personification"
+            ],
+            "dimensions": [
+              "understanding",
+              "procedure"
+            ],
+            "minIndependentFamilies": 2,
+            "purpose": "核对即时基础表现"
+          },
+          {
+            "atomIds": [
+              "core:chinese:personification"
+            ],
+            "dimensions": [
+              "retention"
+            ],
+            "minIndependentFamilies": 2,
+            "purpose": "经复测队列安排真实间隔后的新题"
+          }
+        ],
+        "retentionDimensionAvailable": 0,
+        "immediateBasicGroupCovered": true
+      }
+    ],
+    "preflightCountsUnchanged": true,
+    "latestGaps": 62,
+    "realLearnerEvidence": false
+  }
 }
