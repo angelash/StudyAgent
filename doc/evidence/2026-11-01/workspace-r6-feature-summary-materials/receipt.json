@@ -1,0 +1,82 @@
+{
+  "protocol": "study-agent-source-feature-material-candidate-v1",
+  "at": "2026-11-01T08:21:58.938Z",
+  "candidate": "data/qa/p186",
+  "mainApplicationSchema": 32,
+  "candidateSchema": 33,
+  "applicationIntegrated": false,
+  "newFeatureQuestions": 22,
+  "featureTaskStructures": 6,
+  "allMaterialQuestionsInThisJourney": 68,
+  "closedScoringCases": 42,
+  "openReferenceCasesAwaitingRubricReview": 26,
+  "teacherReviewed": false,
+  "sourceIncrement": {
+    "files": 2,
+    "archive": "candidate-source-delta.json.gz",
+    "sha256": "aec3805f0e78e00026a611ef0cb85a74fb0f0fe866fe9ebd80cd6ed1e3d10bf6",
+    "parentArchive": "doc/evidence/2026-11-01/workspace-r6-scene-reconstruction-materials/candidate-source-delta.json.gz",
+    "parentSha256": "7fe880a00c6e0b09f1dd72ca5f702a8ff41c0e5bea9533bc892440b82c605e0c",
+    "frozenInputs": 1305,
+    "frozenCompiledInputs": 598,
+    "driversFrozenBeforeJourney": true
+  },
+  "checks": {
+    "finalCombinedModel": {
+      "passed": 12,
+      "failed": 0,
+      "pending": 0,
+      "newFeatureChecks": 4,
+      "previousChecks": 8
+    },
+    "type": 0,
+    "build": 0,
+    "sqlite": {
+      "label": "feature-sqlite-journey-first",
+      "passed": 16,
+      "failed": 0
+    },
+    "postgres": {
+      "label": "feature-postgres-journey-first",
+      "passed": 16,
+      "failed": 0
+    }
+  },
+  "fiveDefinitionPackage": {
+    "format": "study-curriculum-package-v1",
+    "initialAllDraft": true,
+    "actualUploadPreviewApply": true,
+    "stalePreviewRefused": true,
+    "onlyTwoSelectedDefinitionsExplicitlyPublishedInQa": true,
+    "otherThreeDraftDefinitionsRetained": true,
+    "automaticRelease": false
+  },
+  "preflight": {
+    "initialGaps": 62,
+    "previousReadingCandidateGaps": 40,
+    "actualThisJourneyGaps": 30,
+    "publishable": false,
+    "readyTargets": 5,
+    "remainingDraftTargets": 3,
+    "remainingChecksWithoutMaterials": 12,
+    "remainingStructureGaps": 3,
+    "remainingIntervalStockGaps": 12
+  },
+  "actualTeachingServiceSaved": true,
+  "originalCommandReplay": true,
+  "exactReadback": true,
+  "incompletePublicationRefused": true,
+  "coldOriginalCommandsAnd68Mappings": true,
+  "oldThreeCoreDefinitionsQuestionsMappingsRetained": true,
+  "learnerEvidence": false,
+  "courseAdoption": false,
+  "realIntervalsVerified": false,
+  "sourceTextAndPrivateCommandsRemainLocal": true,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFilesUnchanged": 1063,
+  "localOnly": true,
+  "wholeGoal": "active"
+}

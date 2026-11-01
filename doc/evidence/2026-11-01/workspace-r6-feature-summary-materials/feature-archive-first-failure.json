@@ -1,0 +1,82 @@
+{
+  "at": "2026-11-01T08:21:48.789Z",
+  "kind": "archive-preparation-only",
+  "cause": "Generic driver name adaptation expected feature-definition-release.json, but actual preserved driver writes scene-definition-release.json.",
+  "businessJourneysStillPassed": {
+    "sqlite": 16,
+    "postgres": 16
+  },
+  "source": "F:\\workspace\\github\\StudyAgent\\doc\\evidence\\2026-11-01\\workspace-r6-feature-summary-materials",
+  "destination": "F:\\workspace\\github\\StudyAgent\\data\\qa\\workspace-original-teaching-first-20261101\\feature-archive-first-partial",
+  "partialFiles": [
+    {
+      "path": "candidate-source-delta.json.gz",
+      "sha256": "aec3805f0e78e00026a611ef0cb85a74fb0f0fe866fe9ebd80cd6ed1e3d10bf6"
+    },
+    {
+      "path": "feature-build-first-source-check.json",
+      "sha256": "44404ce5e0f3ec7c619031cd9c5bc8647d554f57eb66b90f6f0f6fef230721a1"
+    },
+    {
+      "path": "feature-build-first.json",
+      "sha256": "f07cc4ed90889d7da25577a65a1fdad7cbd2af8286c14f41a5af4b0e3029d3b4"
+    },
+    {
+      "path": "feature-build-first.log.gz",
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63"
+    },
+    {
+      "path": "feature-model-first-source-check.json",
+      "sha256": "4560975bfeef1a121d1a43cc52d7810d4e564cc6b78eb8bb57a6485b7a0a8c8c"
+    },
+    {
+      "path": "feature-model-first.json",
+      "sha256": "2531e0bee671e0806477f5ed17157f3564c1857608fbd475fadb2be00e3054f3"
+    },
+    {
+      "path": "feature-model-first.log.gz",
+      "sha256": "39438100e370d717a50bce5286d34a2a76a4602a64f4a63669b93e9367936124"
+    },
+    {
+      "path": "feature-sqlite-journey-first\\cold-read-summary.json",
+      "sha256": "7e43c2aecca7ace7d1fe6e5e9478531cba20cfdeb58456dd38729c64fea794c6"
+    },
+    {
+      "path": "feature-sqlite-journey-first\\definition-import.json",
+      "sha256": "ca587fde41c7df832be61a61e8aca24fc80bbf440b39fb8674ed3d27cea9125b"
+    },
+    {
+      "path": "feature-sqlite-journey-first\\golden-scoring.json",
+      "sha256": "44432aafdec71a23e4ef3f72f3f00fafeabb423532ff6489e908894b53b6b093"
+    },
+    {
+      "path": "feature-sqlite-journey-first\\receipt.json",
+      "sha256": "2ef4a50e81a6534f6d0a49610eb85916ff282562a2a680ebe244c5e853955bfd"
+    },
+    {
+      "path": "feature-type-first-source-check.json",
+      "sha256": "44404ce5e0f3ec7c619031cd9c5bc8647d554f57eb66b90f6f0f6fef230721a1"
+    },
+    {
+      "path": "feature-type-first.json",
+      "sha256": "b0d646fe1d180e5e0e9567b78b1fe315ad4a0dfb3e92e4ded6e306b448013e10"
+    },
+    {
+      "path": "feature-type-first.log.gz",
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63"
+    },
+    {
+      "path": "journey-before-input-manifest.json.gz",
+      "sha256": "caa34c3bbdd53172d74c62aaa889fcbc54dd8a6a25639ec967726d87b5210866"
+    },
+    {
+      "path": "objective-draft-package.json",
+      "sha256": "c0aff9078b7d871e20749f9fac73eb08fa7d109d46c6a8e5472daf6a47909287"
+    },
+    {
+      "path": "original-feature-materials.json",
+      "sha256": "0d6828f5a41539e826bff291a97b4c49fb6844ce94521b51249d980d5474805f"
+    }
+  ],
+  "notACompleteArchive": true
+}

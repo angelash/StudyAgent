@@ -1,5 +1,7 @@
 # 开发计划核对、整体进度与后续里程碑
 
+2026-11-01最新接续：[184真实首课](184-real-source-original-lessons-and-complete-objective-coverage.md)新增22道特点概括材料，实际双库最新各16/0和原稿保存/冷读/不完整发布拒绝通过，当前缺口40→30。识读/手写/校园表达及原课程课堂/保持仍待；第三完整API未收取。以[150完整计划](150-integrated-delivery-plan-and-work-ledger.md)继续全部余项，原72/WS和所有真实验收不提升，主干32/正式24保持，仅本地软件提交。
+
 2026-11-01最新以[150计划](150-integrated-delivery-plan-and-work-ledger.md)和[184真实首课](184-real-source-original-lessons-and-complete-objective-coverage.md)为准：新增22道场景材料，实际双库各16/0、原定义包导入与未完整发布拒绝/冷读通过，整课缺口50→40；13道开放描述仍待量规复核。字词参考音频只完成生成、解码与回读，未取得字音/教师或学生资格。第三完整API仍在冻结运行；原72/WS和所有剩余工程/内容/真实验收保持active，软件仅本地提交、正式24/revision187保持。
 
 2026-11-01接续以[150统一计划](150-integrated-delivery-plan-and-work-ledger.md)为准：真实首课新增24道原创保持材料，实际双库各13/0与原完整稿保存/冷读、未完整发布拒绝独立通过，缺口62降为50，5新目标及课堂/原到期保持仍待完成。准确版本完整API第二轮虽2986通过用例且0失败用例，仍因1文件加载失败退出1；已补回同SHA夹具并启动第三整批，未记全绿。见[184具体进展](184-real-source-original-lessons-and-complete-objective-coverage.md)及[整批失败更正](../evidence/2026-11-01/workspace-r6-exact-edition-candidate/whole-second-corrections/receipt.json)。原72/WS与所有R1～R8/教材/GESP及真实验收仍active，主干32/正式24保持，仅本地。
