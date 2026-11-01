@@ -1,0 +1,83 @@
+{
+  "protocol": "study-agent-textbook-source-version-discrepancy-preparation-v1",
+  "at": "2026-11-01T05:12:33.496Z",
+  "operation": "read-only-originals-and-source-metadata",
+  "registered": {
+    "bookId": "public-book:837f368e-fd4e-404a-ae3f-342d75bc0227",
+    "bookVersion": "31bff353ac6f7c2044598682",
+    "title": "（根据2022年版课程标准修订）义务教育教科书·语文三年级上册",
+    "subject": "chinese",
+    "grade": 3,
+    "term": "upper",
+    "editionLabel": "统编版",
+    "lessonCount": 26,
+    "registryPath": "resources/curriculum/textbooks-v1.json",
+    "registrySha256": "87b6166f5fbbe29ae334d3194e6d95f7c0fb3723c982b0ec85914f9dba946118",
+    "thirdUnitFirstLesson": {
+      "name": "总也倒不了的老屋",
+      "printedPage": 28
+    }
+  },
+  "original": {
+    "sourceBookId": "chinatextbook:chinese:g3:upper",
+    "title": "义务教育教科书·语文3年级上册",
+    "editionLabel": "统编版",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "bytes": 13264541,
+    "physicalPages": 130,
+    "extractedSha256": "96e8ffc8ca547a3dddfb40e8c8a98951f8a0d1d2a1a735fd988d1e091e76df63",
+    "manifestPath": "resources/curriculum/chinatextbook-chinese-v1.json",
+    "manifestSha256": "ffea2a5ec3e8e686fbe85246aa3c24181609a8228c0adc4d33383f6a2a96e1e6",
+    "sourceUse": "Bibliographic and lesson-level internal review only. This import does not grant redistribution rights.",
+    "observedLessonCount": 27,
+    "observedThirdUnitFirstLesson": {
+      "name": "卖火柴的小女孩",
+      "printedPage": 28
+    },
+    "observedFourthUnitFirstLesson": {
+      "name": "总也倒不了的老屋",
+      "printedPage": 46
+    },
+    "editionYear": "not established from reviewed pages"
+  },
+  "reviewed": [
+    {
+      "physicalPage": 3,
+      "localPath": "data/qa/workspace-teaching-package-first-20261101/real-source-daqingshu-first/edition-page-003.png",
+      "bytes": 92202,
+      "sha256": "c81437a4ddee1638c89a7c135b7b55c111e2be9ce6e372f3a64761f42ed5cde8",
+      "visuallyRead": true,
+      "publisherImageCopiedToGit": false
+    },
+    {
+      "physicalPage": 4,
+      "localPath": "data/qa/workspace-teaching-package-first-20261101/real-source-daqingshu-first/edition-page-004.png",
+      "bytes": 221597,
+      "sha256": "79ee57b370100c43f641c2d318e1d4d7ce0f7333a2a508bd3ae9c046277577ba",
+      "visuallyRead": true,
+      "publisherImageCopiedToGit": false
+    },
+    {
+      "physicalPage": 5,
+      "localPath": "data/qa/workspace-teaching-package-first-20261101/real-source-daqingshu-first/edition-page-005.png",
+      "bytes": 171116,
+      "sha256": "48e2d2e4c294b31436efc237475e3d2b1518d97a02ac660f885f59a2599f894b",
+      "visuallyRead": true,
+      "publisherImageCopiedToGit": false
+    }
+  ],
+  "conclusions": {
+    "completeSourceBytesMatchManifest": true,
+    "firstLessonPhysical7To9ReviewedSeparately": true,
+    "wholeBookEquivalentToRegisteredVersion": false,
+    "directoryDifferenceConfirmedVisually": true,
+    "teacherReviewed": false,
+    "sourceMatchingFixed": false,
+    "mappingApproved": false,
+    "published": false,
+    "sourceTextOrImagesCopiedToGit": false
+  },
+  "next": "Apply doc/product/183-exact-textbook-edition-and-source-directory-binding.md before a real-source original teaching candidate is treated as belonging to the registered revision.",
+  "wholeGoal": "active",
+  "localOnly": true
+}

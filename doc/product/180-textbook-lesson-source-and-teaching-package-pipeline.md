@@ -1,5 +1,7 @@
 # 180 课时正文来源与完整教学包生产链
 
+准确版本接续见[183原件目录绑定](183-exact-textbook-edition-and-source-directory-binding.md)：本次回读与实际目录视觉核对确认，三上语文原件为27课，登记修订版为26课且课题/顺序/页码不同。已有字节SHA与首课页段一致不证明整册版本符合。后续新教学预检与采用须补准确符合性证明；不能从523行候选或同名版别直接提升为版本审核。
+
 2026-11-01，接[150总计划](150-integrated-delivery-plan-and-work-ledger.md)R6、[179完整教材范围](179-textbook-scope-inventory-and-missing-lesson-worklist.md)、[103来源课编排](103-long-source-course-compilation.md)及原XP-F01/F03/F05、WS09/WS12。先提交本协议，再在主目录data/qa隔离实现。整体目标包含全部剩余开发，本页不替代R5/R7/R8和原72/WS要求。
 
 ## 核查起点与完整路径
