@@ -1,0 +1,32 @@
+{
+  "label": "ui-product-browser-second",
+  "sha256": "62769d7aaeb2f3f27f83108dc8d467bf8b4393634a97487a0273417fd3aee572",
+  "buildId": "A-nFvoUfTHr8eUACgnvTs",
+  "passed": 3,
+  "failed": 1,
+  "completed": false,
+  "error": "Expected values to be strictly equal:\n\n0 !== 3\n",
+  "checks": [
+    {
+      "name": "production-original-admin-entry-exact-textbook-deeplink-and-complete-import",
+      "passed": true,
+      "at": "2026-11-01T00:26:04.646Z"
+    },
+    {
+      "name": "real-ui-saves-original-complete-two-target-body-and-confirms-original-command",
+      "passed": true,
+      "at": "2026-11-01T00:26:06.363Z"
+    },
+    {
+      "name": "explicit-publish-is-separate-from-save-and-preserves-full-original-receipt",
+      "passed": true,
+      "at": "2026-11-01T00:26:06.745Z"
+    },
+    {
+      "name": "lost-save-post-response-recovers-same-original-key-and-keeps-v1-published",
+      "passed": false,
+      "at": "2026-11-01T00:26:07.245Z",
+      "error": "Expected values to be strictly equal:\n\n0 !== 3\n"
+    }
+  ]
+}

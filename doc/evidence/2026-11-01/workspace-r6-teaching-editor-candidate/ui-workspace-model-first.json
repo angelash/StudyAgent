@@ -1,0 +1,87 @@
+{
+  "label": "ui-workspace-model-first",
+  "sha256": "7ddae0ab81b4d056189869d81246f05f2dcef0383df765b40449ae1de96c4065",
+  "passed": 24,
+  "failed": 13,
+  "pending": 0,
+  "failures": [
+    {
+      "name": "teaching workspace saved-base separation and source/preflight read boundaries opens the entire two-target saved body in a new slot without authenticating imported receipts",
+      "messages": [
+        "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:23:15"
+      ]
+    },
+    {
+      "name": "teaching workspace saved-base separation and source/preflight read boundaries uses the current header only for CAS while preserving exact old content lineage and all local edits",
+      "messages": [
+        "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:31:15"
+      ]
+    },
+    {
+      "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses a actor rebase without mutating the current complete draft",
+      "messages": [
+        "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:41:15"
+      ]
+    },
+    {
+      "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses a lesson rebase without mutating the current complete draft",
+      "messages": [
+        "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:41:15"
+      ]
+    },
+    {
+      "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses a version rebase without mutating the current complete draft",
+      "messages": [
+        "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:41:15"
+      ]
+    },
+    {
+      "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses a fingerprint rebase without mutating the current complete draft",
+      "messages": [
+        "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:41:15"
+      ]
+    },
+    {
+      "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses a older_header rebase without mutating the current complete draft",
+      "messages": [
+        "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:41:15"
+      ]
+    },
+    {
+      "name": "teaching workspace saved-base separation and source/preflight read boundaries verifies the full source and every page digest before adopting a source response",
+      "messages": [
+        "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:51:15"
+      ]
+    },
+    {
+      "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses an invalid whole range before I/O",
+      "messages": [
+        "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:60:15"
+      ]
+    },
+    {
+      "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses an invalid whole range before I/O",
+      "messages": [
+        "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:60:15"
+      ]
+    },
+    {
+      "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses an invalid whole range before I/O",
+      "messages": [
+        "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:60:15"
+      ]
+    },
+    {
+      "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses an invalid whole range before I/O",
+      "messages": [
+        "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:60:15"
+      ]
+    },
+    {
+      "name": "teaching workspace saved-base separation and source/preflight read boundaries binds a preflight to the entire original input and targets, even if an altered report has a recomputed public hash",
+      "messages": [
+        "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:64:15"
+      ]
+    }
+  ]
+}

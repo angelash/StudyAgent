@@ -1,0 +1,17 @@
+{
+  "label": "ui-product-browser-first",
+  "sha256": "2f4aadf53851da3c214b52846fe38ae033c532188ecb2a5be79c9216d76a0c0f",
+  "buildId": "V-PsAB8TeHG08CVpFdhA9",
+  "passed": 0,
+  "failed": 1,
+  "completed": false,
+  "error": "locator.inputValue: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '教材课时完整教学稿', exact: true }).getByLabel('完整概念讲解', { exact: true })\u001b[22m\n",
+  "checks": [
+    {
+      "name": "production-original-admin-entry-exact-textbook-deeplink-and-complete-import",
+      "passed": false,
+      "at": "2026-11-01T00:22:34.755Z",
+      "error": "locator.inputValue: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '教材课时完整教学稿', exact: true }).getByLabel('完整概念讲解', { exact: true })\u001b[22m\n"
+    }
+  ]
+}

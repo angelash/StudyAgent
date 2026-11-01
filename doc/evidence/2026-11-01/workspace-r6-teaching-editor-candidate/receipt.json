@@ -1,0 +1,654 @@
+{
+  "protocol": "study-agent-teaching-editor-candidate-evidence-v1",
+  "at": "2026-11-01T00:46:28.499Z",
+  "baselineHead": "fe7c771cf3f0a0b114515bfa2e757ccb58e51b98",
+  "candidate": "data/qa/p184",
+  "sourceIncrement": {
+    "files": 39,
+    "archive": "candidate-source.json.gz",
+    "sha256": "6d68644c0ec1a902f49d8093b7887d36e1dd70356654489706097ada660e6242",
+    "allMembersReadBack": true,
+    "copiedIntoMainApplication": false
+  },
+  "latestProductBrowser": {
+    "label": "ui-product-browser-ninth",
+    "sha256": "2c82eac3ef17245b373a76934286ab73868a18cdd4134c2128027055ac2d47dd",
+    "buildId": "FCWqlOLfV9ZExdvVzwunA",
+    "passed": 12,
+    "failed": 0,
+    "completed": true,
+    "error": null,
+    "checks": [
+      {
+        "name": "production-original-admin-entry-exact-textbook-deeplink-and-complete-import",
+        "passed": true,
+        "at": "2026-11-01T00:41:54.222Z"
+      },
+      {
+        "name": "real-ui-saves-original-complete-two-target-body-and-confirms-original-command",
+        "passed": true,
+        "at": "2026-11-01T00:41:56.008Z"
+      },
+      {
+        "name": "explicit-publish-is-separate-from-save-and-preserves-full-original-receipt",
+        "passed": true,
+        "at": "2026-11-01T00:41:56.510Z"
+      },
+      {
+        "name": "lost-save-post-response-recovers-same-original-key-and-keeps-v1-published",
+        "passed": true,
+        "at": "2026-11-01T00:41:57.034Z"
+      },
+      {
+        "name": "refresh-retains-unsaved-fields-and-requires-authoritative-baseline-and-each-original-receipt",
+        "passed": true,
+        "at": "2026-11-01T00:41:57.597Z"
+      },
+      {
+        "name": "rechecking-an-older-original-receipt-does-not-replace-the-newer-editing-base",
+        "passed": true,
+        "at": "2026-11-01T00:42:00.210Z"
+      },
+      {
+        "name": "actual-two-tab-cas-keeps-both-original-bodies-and-refuses-stale-autosave",
+        "passed": true,
+        "at": "2026-11-01T00:42:00.579Z"
+      },
+      {
+        "name": "unsaved-body-cannot-publish-and-explicit-withdraw-targets-the-original-published-version",
+        "passed": true,
+        "at": "2026-11-01T00:42:04.175Z"
+      },
+      {
+        "name": "blocked-indexeddb-guards-original-term-selector-and-requires-actual-file-readback",
+        "passed": true,
+        "at": "2026-11-01T00:42:04.793Z"
+      },
+      {
+        "name": "source-range-change-keeps-old-complete-draft-and-opens-a-separate-new-source-slot",
+        "passed": true,
+        "at": "2026-11-01T00:42:06.002Z"
+      },
+      {
+        "name": "original-workspace-responsive-layout-short-height-and-keyboard-focus",
+        "passed": true,
+        "at": "2026-11-01T00:42:07.069Z"
+      },
+      {
+        "name": "current-role-loss-hides-private-draft-source-and-grading-data",
+        "passed": true,
+        "at": "2026-11-01T00:42:08.447Z"
+      }
+    ]
+  },
+  "latestModel": {
+    "label": "ui-workspace-model-fourth",
+    "sha256": "ac0676943dd4699fe12d18907d6d2404a6f37f483906659731e74f8be292b7ed",
+    "passed": 39,
+    "failed": 0,
+    "pending": 0,
+    "failures": []
+  },
+  "earlierBrowserBatches": [
+    {
+      "label": "ui-product-browser-first",
+      "sha256": "2f4aadf53851da3c214b52846fe38ae033c532188ecb2a5be79c9216d76a0c0f",
+      "buildId": "V-PsAB8TeHG08CVpFdhA9",
+      "passed": 0,
+      "failed": 1,
+      "completed": false,
+      "error": "locator.inputValue: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '教材课时完整教学稿', exact: true }).getByLabel('完整概念讲解', { exact: true })\u001b[22m\n",
+      "checks": [
+        {
+          "name": "production-original-admin-entry-exact-textbook-deeplink-and-complete-import",
+          "passed": false,
+          "at": "2026-11-01T00:22:34.755Z",
+          "error": "locator.inputValue: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '教材课时完整教学稿', exact: true }).getByLabel('完整概念讲解', { exact: true })\u001b[22m\n"
+        }
+      ]
+    },
+    {
+      "label": "ui-product-browser-second",
+      "sha256": "62769d7aaeb2f3f27f83108dc8d467bf8b4393634a97487a0273417fd3aee572",
+      "buildId": "A-nFvoUfTHr8eUACgnvTs",
+      "passed": 3,
+      "failed": 1,
+      "completed": false,
+      "error": "Expected values to be strictly equal:\n\n0 !== 3\n",
+      "checks": [
+        {
+          "name": "production-original-admin-entry-exact-textbook-deeplink-and-complete-import",
+          "passed": true,
+          "at": "2026-11-01T00:26:04.646Z"
+        },
+        {
+          "name": "real-ui-saves-original-complete-two-target-body-and-confirms-original-command",
+          "passed": true,
+          "at": "2026-11-01T00:26:06.363Z"
+        },
+        {
+          "name": "explicit-publish-is-separate-from-save-and-preserves-full-original-receipt",
+          "passed": true,
+          "at": "2026-11-01T00:26:06.745Z"
+        },
+        {
+          "name": "lost-save-post-response-recovers-same-original-key-and-keeps-v1-published",
+          "passed": false,
+          "at": "2026-11-01T00:26:07.245Z",
+          "error": "Expected values to be strictly equal:\n\n0 !== 3\n"
+        }
+      ]
+    },
+    {
+      "label": "ui-product-browser-third",
+      "sha256": "914bd1111a1e9f1a83e3fe449233f38e687c58cc92ed0e9a93ae0da6dcadee04",
+      "buildId": "A-nFvoUfTHr8eUACgnvTs",
+      "passed": 3,
+      "failed": 1,
+      "completed": false,
+      "error": "Expected values to be strictly equal:\n\n0 !== 3\n",
+      "checks": [
+        {
+          "name": "production-original-admin-entry-exact-textbook-deeplink-and-complete-import",
+          "passed": true,
+          "at": "2026-11-01T00:26:48.718Z"
+        },
+        {
+          "name": "real-ui-saves-original-complete-two-target-body-and-confirms-original-command",
+          "passed": true,
+          "at": "2026-11-01T00:26:50.426Z"
+        },
+        {
+          "name": "explicit-publish-is-separate-from-save-and-preserves-full-original-receipt",
+          "passed": true,
+          "at": "2026-11-01T00:26:50.883Z"
+        },
+        {
+          "name": "lost-save-post-response-recovers-same-original-key-and-keeps-v1-published",
+          "passed": false,
+          "at": "2026-11-01T00:26:51.389Z",
+          "error": "Expected values to be strictly equal:\n\n0 !== 3\n"
+        }
+      ]
+    },
+    {
+      "label": "ui-product-browser-fourth",
+      "sha256": "be7ae0d64bcfe0f5b397e6e53896339ea2ed7679ec7a6b6bbefcb9b67fedf1cc",
+      "buildId": "A-nFvoUfTHr8eUACgnvTs",
+      "passed": 5,
+      "failed": 1,
+      "completed": false,
+      "error": "The input did not match the regular expression /^从内容v2复制/. Input:\n\n'从内容v1复制，核对的包头修订号为3。仍须向服务器核对。'\n",
+      "checks": [
+        {
+          "name": "production-original-admin-entry-exact-textbook-deeplink-and-complete-import",
+          "passed": true,
+          "at": "2026-11-01T00:27:48.228Z"
+        },
+        {
+          "name": "real-ui-saves-original-complete-two-target-body-and-confirms-original-command",
+          "passed": true,
+          "at": "2026-11-01T00:27:50.009Z"
+        },
+        {
+          "name": "explicit-publish-is-separate-from-save-and-preserves-full-original-receipt",
+          "passed": true,
+          "at": "2026-11-01T00:27:50.354Z"
+        },
+        {
+          "name": "lost-save-post-response-recovers-same-original-key-and-keeps-v1-published",
+          "passed": true,
+          "at": "2026-11-01T00:27:50.851Z"
+        },
+        {
+          "name": "refresh-retains-unsaved-fields-and-requires-authoritative-baseline-and-each-original-receipt",
+          "passed": true,
+          "at": "2026-11-01T00:27:51.428Z"
+        },
+        {
+          "name": "rechecking-an-older-original-receipt-does-not-replace-the-newer-editing-base",
+          "passed": false,
+          "at": "2026-11-01T00:27:53.995Z",
+          "error": "The input did not match the regular expression /^从内容v2复制/. Input:\n\n'从内容v1复制，核对的包头修订号为3。仍须向服务器核对。'\n"
+        }
+      ]
+    },
+    {
+      "label": "ui-product-browser-fifth",
+      "sha256": "528b1aab33d197d29a37a7d1b2226b6d49737f07639470126f10937ca7b399fa",
+      "buildId": "QL-3wsS87pG2TEiI8R5IT",
+      "passed": 6,
+      "failed": 1,
+      "completed": false,
+      "error": "locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '教材课时完整教学稿', exact: true }).getByLabel('完整概念讲解', { exact: true })\u001b[22m\n",
+      "checks": [
+        {
+          "name": "production-original-admin-entry-exact-textbook-deeplink-and-complete-import",
+          "passed": true,
+          "at": "2026-11-01T00:30:19.817Z"
+        },
+        {
+          "name": "real-ui-saves-original-complete-two-target-body-and-confirms-original-command",
+          "passed": true,
+          "at": "2026-11-01T00:30:21.552Z"
+        },
+        {
+          "name": "explicit-publish-is-separate-from-save-and-preserves-full-original-receipt",
+          "passed": true,
+          "at": "2026-11-01T00:30:21.953Z"
+        },
+        {
+          "name": "lost-save-post-response-recovers-same-original-key-and-keeps-v1-published",
+          "passed": true,
+          "at": "2026-11-01T00:30:22.406Z"
+        },
+        {
+          "name": "refresh-retains-unsaved-fields-and-requires-authoritative-baseline-and-each-original-receipt",
+          "passed": true,
+          "at": "2026-11-01T00:30:22.954Z"
+        },
+        {
+          "name": "rechecking-an-older-original-receipt-does-not-replace-the-newer-editing-base",
+          "passed": true,
+          "at": "2026-11-01T00:30:25.492Z"
+        },
+        {
+          "name": "actual-two-tab-cas-keeps-both-original-bodies-and-refuses-stale-autosave",
+          "passed": false,
+          "at": "2026-11-01T00:30:25.867Z",
+          "error": "locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '教材课时完整教学稿', exact: true }).getByLabel('完整概念讲解', { exact: true })\u001b[22m\n"
+        }
+      ]
+    },
+    {
+      "label": "ui-product-browser-sixth",
+      "sha256": "fb07149b27366f3308ed7e9ba3405906005e02a38d5a9a8bbc09eddae428d19d",
+      "buildId": "QL-3wsS87pG2TEiI8R5IT",
+      "passed": 8,
+      "failed": 1,
+      "completed": false,
+      "error": "locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('学期', { exact: true })\u001b[22m\n",
+      "checks": [
+        {
+          "name": "production-original-admin-entry-exact-textbook-deeplink-and-complete-import",
+          "passed": true,
+          "at": "2026-11-01T00:31:50.670Z"
+        },
+        {
+          "name": "real-ui-saves-original-complete-two-target-body-and-confirms-original-command",
+          "passed": true,
+          "at": "2026-11-01T00:31:52.364Z"
+        },
+        {
+          "name": "explicit-publish-is-separate-from-save-and-preserves-full-original-receipt",
+          "passed": true,
+          "at": "2026-11-01T00:31:52.729Z"
+        },
+        {
+          "name": "lost-save-post-response-recovers-same-original-key-and-keeps-v1-published",
+          "passed": true,
+          "at": "2026-11-01T00:31:53.205Z"
+        },
+        {
+          "name": "refresh-retains-unsaved-fields-and-requires-authoritative-baseline-and-each-original-receipt",
+          "passed": true,
+          "at": "2026-11-01T00:31:53.754Z"
+        },
+        {
+          "name": "rechecking-an-older-original-receipt-does-not-replace-the-newer-editing-base",
+          "passed": true,
+          "at": "2026-11-01T00:31:56.520Z"
+        },
+        {
+          "name": "actual-two-tab-cas-keeps-both-original-bodies-and-refuses-stale-autosave",
+          "passed": true,
+          "at": "2026-11-01T00:31:56.914Z"
+        },
+        {
+          "name": "unsaved-body-cannot-publish-and-explicit-withdraw-targets-the-original-published-version",
+          "passed": true,
+          "at": "2026-11-01T00:32:00.563Z"
+        },
+        {
+          "name": "blocked-indexeddb-guards-original-term-selector-and-requires-actual-file-readback",
+          "passed": false,
+          "at": "2026-11-01T00:32:01.280Z",
+          "error": "locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('学期', { exact: true })\u001b[22m\n"
+        }
+      ]
+    },
+    {
+      "label": "ui-product-browser-seventh",
+      "sha256": "25dca4bc239ac291a1303b7d929741cbdfdaaace6015c12bba0354cadc7ba7ba",
+      "buildId": "5kMVdsL4ajq_8zbviMiBO",
+      "passed": 8,
+      "failed": 1,
+      "completed": false,
+      "error": "page.waitForURL: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+      "checks": [
+        {
+          "name": "production-original-admin-entry-exact-textbook-deeplink-and-complete-import",
+          "passed": true,
+          "at": "2026-11-01T00:35:43.171Z"
+        },
+        {
+          "name": "real-ui-saves-original-complete-two-target-body-and-confirms-original-command",
+          "passed": true,
+          "at": "2026-11-01T00:35:44.938Z"
+        },
+        {
+          "name": "explicit-publish-is-separate-from-save-and-preserves-full-original-receipt",
+          "passed": true,
+          "at": "2026-11-01T00:35:45.402Z"
+        },
+        {
+          "name": "lost-save-post-response-recovers-same-original-key-and-keeps-v1-published",
+          "passed": true,
+          "at": "2026-11-01T00:35:45.901Z"
+        },
+        {
+          "name": "refresh-retains-unsaved-fields-and-requires-authoritative-baseline-and-each-original-receipt",
+          "passed": true,
+          "at": "2026-11-01T00:35:46.479Z"
+        },
+        {
+          "name": "rechecking-an-older-original-receipt-does-not-replace-the-newer-editing-base",
+          "passed": true,
+          "at": "2026-11-01T00:35:49.090Z"
+        },
+        {
+          "name": "actual-two-tab-cas-keeps-both-original-bodies-and-refuses-stale-autosave",
+          "passed": true,
+          "at": "2026-11-01T00:35:49.456Z"
+        },
+        {
+          "name": "unsaved-body-cannot-publish-and-explicit-withdraw-targets-the-original-published-version",
+          "passed": true,
+          "at": "2026-11-01T00:35:53.039Z"
+        },
+        {
+          "name": "blocked-indexeddb-guards-original-term-selector-and-requires-actual-file-readback",
+          "passed": false,
+          "at": "2026-11-01T00:35:53.624Z",
+          "error": "page.waitForURL: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================"
+        }
+      ]
+    },
+    {
+      "label": "ui-product-browser-eighth",
+      "sha256": "bdf91a9cbc7ff6688a8b9fc3e5cf8ef6577fad6f4be567863420be156b405fa8",
+      "buildId": "FCWqlOLfV9ZExdvVzwunA",
+      "passed": 9,
+      "failed": 1,
+      "completed": false,
+      "error": "page.waitForURL: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+      "checks": [
+        {
+          "name": "production-original-admin-entry-exact-textbook-deeplink-and-complete-import",
+          "passed": true,
+          "at": "2026-11-01T00:39:48.818Z"
+        },
+        {
+          "name": "real-ui-saves-original-complete-two-target-body-and-confirms-original-command",
+          "passed": true,
+          "at": "2026-11-01T00:39:50.577Z"
+        },
+        {
+          "name": "explicit-publish-is-separate-from-save-and-preserves-full-original-receipt",
+          "passed": true,
+          "at": "2026-11-01T00:39:51.036Z"
+        },
+        {
+          "name": "lost-save-post-response-recovers-same-original-key-and-keeps-v1-published",
+          "passed": true,
+          "at": "2026-11-01T00:39:51.510Z"
+        },
+        {
+          "name": "refresh-retains-unsaved-fields-and-requires-authoritative-baseline-and-each-original-receipt",
+          "passed": true,
+          "at": "2026-11-01T00:39:52.033Z"
+        },
+        {
+          "name": "rechecking-an-older-original-receipt-does-not-replace-the-newer-editing-base",
+          "passed": true,
+          "at": "2026-11-01T00:39:54.586Z"
+        },
+        {
+          "name": "actual-two-tab-cas-keeps-both-original-bodies-and-refuses-stale-autosave",
+          "passed": true,
+          "at": "2026-11-01T00:39:54.950Z"
+        },
+        {
+          "name": "unsaved-body-cannot-publish-and-explicit-withdraw-targets-the-original-published-version",
+          "passed": true,
+          "at": "2026-11-01T00:39:58.512Z"
+        },
+        {
+          "name": "blocked-indexeddb-guards-original-term-selector-and-requires-actual-file-readback",
+          "passed": true,
+          "at": "2026-11-01T00:39:59.176Z"
+        },
+        {
+          "name": "source-range-change-keeps-old-complete-draft-and-opens-a-separate-new-source-slot",
+          "passed": false,
+          "at": "2026-11-01T00:40:00.344Z",
+          "error": "page.waitForURL: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================"
+        }
+      ]
+    }
+  ],
+  "earlierModelBatches": [
+    {
+      "label": "ui-workspace-model-first",
+      "sha256": "7ddae0ab81b4d056189869d81246f05f2dcef0383df765b40449ae1de96c4065",
+      "passed": 24,
+      "failed": 13,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "teaching workspace saved-base separation and source/preflight read boundaries opens the entire two-target saved body in a new slot without authenticating imported receipts",
+          "messages": [
+            "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:23:15"
+          ]
+        },
+        {
+          "name": "teaching workspace saved-base separation and source/preflight read boundaries uses the current header only for CAS while preserving exact old content lineage and all local edits",
+          "messages": [
+            "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:31:15"
+          ]
+        },
+        {
+          "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses a actor rebase without mutating the current complete draft",
+          "messages": [
+            "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:41:15"
+          ]
+        },
+        {
+          "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses a lesson rebase without mutating the current complete draft",
+          "messages": [
+            "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:41:15"
+          ]
+        },
+        {
+          "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses a version rebase without mutating the current complete draft",
+          "messages": [
+            "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:41:15"
+          ]
+        },
+        {
+          "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses a fingerprint rebase without mutating the current complete draft",
+          "messages": [
+            "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:41:15"
+          ]
+        },
+        {
+          "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses a older_header rebase without mutating the current complete draft",
+          "messages": [
+            "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:41:15"
+          ]
+        },
+        {
+          "name": "teaching workspace saved-base separation and source/preflight read boundaries verifies the full source and every page digest before adopting a source response",
+          "messages": [
+            "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:51:15"
+          ]
+        },
+        {
+          "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses an invalid whole range before I/O",
+          "messages": [
+            "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:60:15"
+          ]
+        },
+        {
+          "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses an invalid whole range before I/O",
+          "messages": [
+            "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:60:15"
+          ]
+        },
+        {
+          "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses an invalid whole range before I/O",
+          "messages": [
+            "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:60:15"
+          ]
+        },
+        {
+          "name": "teaching workspace saved-base separation and source/preflight read boundaries refuses an invalid whole range before I/O",
+          "messages": [
+            "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:60:15"
+          ]
+        },
+        {
+          "name": "teaching workspace saved-base separation and source/preflight read boundaries binds a preflight to the entire original input and targets, even if an altered report has a recomputed public hash",
+          "messages": [
+            "ZodError: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"version\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]\n    at readTeachingEditorDetail (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-read.ts:35:45)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at fixture (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:17:19)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:64:15"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ui-workspace-model-second",
+      "sha256": "24654e78db94b68fa7f947b85828e3e5e0c2b51daf1535d36a08051e7fbc20c7",
+      "passed": 36,
+      "failed": 1,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "teaching workspace saved-base separation and source/preflight read boundaries uses the current header only for CAS while preserving exact old content lineage and all local edits",
+          "messages": [
+            "Error: 原操作结果尚待确认，请先恢复同一个原请求；当前完整稿仍保留。\n    at teachingEditorSaveCommand (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-copy.ts:90:128)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:35:72\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ui-workspace-model-third",
+      "sha256": "8f63e52b0bb996903d750a7e298b15514baef00569d8b18ae63fdfb9e3b14534",
+      "passed": 37,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    }
+  ],
+  "additional": [
+    {
+      "label": "ui-http-detail-sqlite-fourth",
+      "sha256": "5b7c9331563a42b8396af9d7574cdf67834cce5ddc31a902b0e6a0511d6fe3f9",
+      "passed": 12,
+      "failed": 0,
+      "pending": 0
+    },
+    {
+      "label": "ui-http-detail-postgres-third",
+      "sha256": "0d8a601b7f76e28116c2436d50ef3a67ad0483e4101fc1f1d0f86be2ad70cd72",
+      "passed": 12,
+      "failed": 0,
+      "pending": 0
+    },
+    {
+      "label": "ui-native-sqlite-lineage-first",
+      "sha256": "581c346f14e6d715d6ec2cc81b32d9920d953b8221513122927184c4e1980f40",
+      "passed": 13,
+      "failed": 0,
+      "pending": 0
+    },
+    {
+      "label": "ui-native-postgres-lineage-first",
+      "sha256": "92588371742fada847c5adfca207e5d89e8be52fe4c5f57508f75ee2c32eee74",
+      "passed": 13,
+      "failed": 0,
+      "pending": 0
+    },
+    {
+      "label": "ui-paper-persistence-recheck-first",
+      "sha256": "e888a4c896ef00437204520ad5fe73db51d7c51ab81fed32624aefb03c07dfa4",
+      "passed": 17,
+      "failed": 0,
+      "pending": 4
+    }
+  ],
+  "originalFullApi": {
+    "label": "api-full-first",
+    "source": "p183",
+    "sha256": "48320be589867575ea940e76f28ed19c247247af4f76ae857fcd9279c1930187",
+    "passed": 2741,
+    "failed": 1,
+    "pending": 131,
+    "failures": [
+      {
+        "name": "registered SQLite paper-library transactions, real files and deletion fences persists all original rows in schema32 and cold-reopens without rewriting them",
+        "messages": [
+          "AssertionError: expected 33 to be 32 // Object.is equality\n    at F:/workspace/github/StudyAgent/data/qa/p183/apps/api/src/modules/library/paper-library-persistence.test.ts:43:98\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+        ]
+      }
+    ]
+  },
+  "screenshots": [
+    {
+      "name": "workspace-390x844.png",
+      "sha256": "91d367775be5349ca57646d2e408b918650eb4bf106f0344dec37e72d730e1f6",
+      "visuallyInspected": true
+    },
+    {
+      "name": "workspace-768x900.png",
+      "sha256": "426917b058cc84d6b7a6bc82ea781de410101d62b9bd12154edcf711d5c6c903",
+      "visuallyInspected": true
+    },
+    {
+      "name": "workspace-1440x1000.png",
+      "sha256": "6341599826ef535d5d190914009931e22989e566399c12ece99220ecb874512a",
+      "visuallyInspected": true
+    },
+    {
+      "name": "workspace-1440x500.png",
+      "sha256": "6341599826ef535d5d190914009931e22989e566399c12ece99220ecb874512a",
+      "visuallyInspected": true
+    }
+  ],
+  "generatedEngineeringFixturesOnly": true,
+  "actualTextbookTeacherReview": false,
+  "fullTextbookCoverage": false,
+  "wholeSiteFinalValidation": false,
+  "limitations": [
+    "Only the editor product journey is validated in this batch; independent course adoption/classroom/practice/retention remains unfinished.",
+    "The still-unreleased schema33 must include the fifth server-only adoption collection before main application integration.",
+    "Model/API/browser batches are independent and are not added together.",
+    "Physical devices, new machines, native Word/physical printing, teachers and actual learner 1/3/7/14-day evidence remain unverified."
+  ],
+  "protectedFilesUnchanged": 1063,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "mainApplicationSchema": 32,
+  "candidateSchema": 33,
+  "originalPlan72": {
+    "implemented": 11,
+    "in_progress": 50,
+    "planned": 11,
+    "verified": 0
+  },
+  "wholeGoal": "active",
+  "localOnly": true,
+  "pushed": false,
+  "deployed": false
+}

@@ -1,0 +1,57 @@
+{
+  "label": "ui-product-browser-seventh",
+  "sha256": "25dca4bc239ac291a1303b7d929741cbdfdaaace6015c12bba0354cadc7ba7ba",
+  "buildId": "5kMVdsL4ajq_8zbviMiBO",
+  "passed": 8,
+  "failed": 1,
+  "completed": false,
+  "error": "page.waitForURL: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+  "checks": [
+    {
+      "name": "production-original-admin-entry-exact-textbook-deeplink-and-complete-import",
+      "passed": true,
+      "at": "2026-11-01T00:35:43.171Z"
+    },
+    {
+      "name": "real-ui-saves-original-complete-two-target-body-and-confirms-original-command",
+      "passed": true,
+      "at": "2026-11-01T00:35:44.938Z"
+    },
+    {
+      "name": "explicit-publish-is-separate-from-save-and-preserves-full-original-receipt",
+      "passed": true,
+      "at": "2026-11-01T00:35:45.402Z"
+    },
+    {
+      "name": "lost-save-post-response-recovers-same-original-key-and-keeps-v1-published",
+      "passed": true,
+      "at": "2026-11-01T00:35:45.901Z"
+    },
+    {
+      "name": "refresh-retains-unsaved-fields-and-requires-authoritative-baseline-and-each-original-receipt",
+      "passed": true,
+      "at": "2026-11-01T00:35:46.479Z"
+    },
+    {
+      "name": "rechecking-an-older-original-receipt-does-not-replace-the-newer-editing-base",
+      "passed": true,
+      "at": "2026-11-01T00:35:49.090Z"
+    },
+    {
+      "name": "actual-two-tab-cas-keeps-both-original-bodies-and-refuses-stale-autosave",
+      "passed": true,
+      "at": "2026-11-01T00:35:49.456Z"
+    },
+    {
+      "name": "unsaved-body-cannot-publish-and-explicit-withdraw-targets-the-original-published-version",
+      "passed": true,
+      "at": "2026-11-01T00:35:53.039Z"
+    },
+    {
+      "name": "blocked-indexeddb-guards-original-term-selector-and-requires-actual-file-readback",
+      "passed": false,
+      "at": "2026-11-01T00:35:53.624Z",
+      "error": "page.waitForURL: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================"
+    }
+  ]
+}

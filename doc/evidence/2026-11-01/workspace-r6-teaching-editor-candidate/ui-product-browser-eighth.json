@@ -1,0 +1,62 @@
+{
+  "label": "ui-product-browser-eighth",
+  "sha256": "bdf91a9cbc7ff6688a8b9fc3e5cf8ef6577fad6f4be567863420be156b405fa8",
+  "buildId": "FCWqlOLfV9ZExdvVzwunA",
+  "passed": 9,
+  "failed": 1,
+  "completed": false,
+  "error": "page.waitForURL: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+  "checks": [
+    {
+      "name": "production-original-admin-entry-exact-textbook-deeplink-and-complete-import",
+      "passed": true,
+      "at": "2026-11-01T00:39:48.818Z"
+    },
+    {
+      "name": "real-ui-saves-original-complete-two-target-body-and-confirms-original-command",
+      "passed": true,
+      "at": "2026-11-01T00:39:50.577Z"
+    },
+    {
+      "name": "explicit-publish-is-separate-from-save-and-preserves-full-original-receipt",
+      "passed": true,
+      "at": "2026-11-01T00:39:51.036Z"
+    },
+    {
+      "name": "lost-save-post-response-recovers-same-original-key-and-keeps-v1-published",
+      "passed": true,
+      "at": "2026-11-01T00:39:51.510Z"
+    },
+    {
+      "name": "refresh-retains-unsaved-fields-and-requires-authoritative-baseline-and-each-original-receipt",
+      "passed": true,
+      "at": "2026-11-01T00:39:52.033Z"
+    },
+    {
+      "name": "rechecking-an-older-original-receipt-does-not-replace-the-newer-editing-base",
+      "passed": true,
+      "at": "2026-11-01T00:39:54.586Z"
+    },
+    {
+      "name": "actual-two-tab-cas-keeps-both-original-bodies-and-refuses-stale-autosave",
+      "passed": true,
+      "at": "2026-11-01T00:39:54.950Z"
+    },
+    {
+      "name": "unsaved-body-cannot-publish-and-explicit-withdraw-targets-the-original-published-version",
+      "passed": true,
+      "at": "2026-11-01T00:39:58.512Z"
+    },
+    {
+      "name": "blocked-indexeddb-guards-original-term-selector-and-requires-actual-file-readback",
+      "passed": true,
+      "at": "2026-11-01T00:39:59.176Z"
+    },
+    {
+      "name": "source-range-change-keeps-old-complete-draft-and-opens-a-separate-new-source-slot",
+      "passed": false,
+      "at": "2026-11-01T00:40:00.344Z",
+      "error": "page.waitForURL: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================"
+    }
+  ]
+}

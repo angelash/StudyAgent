@@ -1,0 +1,15 @@
+{
+  "label": "ui-workspace-model-second",
+  "sha256": "24654e78db94b68fa7f947b85828e3e5e0c2b51daf1535d36a08051e7fbc20c7",
+  "passed": 36,
+  "failed": 1,
+  "pending": 0,
+  "failures": [
+    {
+      "name": "teaching workspace saved-base separation and source/preflight read boundaries uses the current header only for CAS while preserving exact old content lineage and all local edits",
+      "messages": [
+        "Error: 原操作结果尚待确认，请先恢复同一个原请求；当前完整稿仍保留。\n    at teachingEditorSaveCommand (F:/workspace/github/StudyAgent/data/qa/p184/apps/web/lib/teaching-editor-copy.ts:90:128)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/teaching-editor-state.test.ts:35:72\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+      ]
+    }
+  ]
+}

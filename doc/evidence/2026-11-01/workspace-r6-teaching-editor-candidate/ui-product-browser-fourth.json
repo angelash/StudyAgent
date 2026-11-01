@@ -1,0 +1,42 @@
+{
+  "label": "ui-product-browser-fourth",
+  "sha256": "be7ae0d64bcfe0f5b397e6e53896339ea2ed7679ec7a6b6bbefcb9b67fedf1cc",
+  "buildId": "A-nFvoUfTHr8eUACgnvTs",
+  "passed": 5,
+  "failed": 1,
+  "completed": false,
+  "error": "The input did not match the regular expression /^从内容v2复制/. Input:\n\n'从内容v1复制，核对的包头修订号为3。仍须向服务器核对。'\n",
+  "checks": [
+    {
+      "name": "production-original-admin-entry-exact-textbook-deeplink-and-complete-import",
+      "passed": true,
+      "at": "2026-11-01T00:27:48.228Z"
+    },
+    {
+      "name": "real-ui-saves-original-complete-two-target-body-and-confirms-original-command",
+      "passed": true,
+      "at": "2026-11-01T00:27:50.009Z"
+    },
+    {
+      "name": "explicit-publish-is-separate-from-save-and-preserves-full-original-receipt",
+      "passed": true,
+      "at": "2026-11-01T00:27:50.354Z"
+    },
+    {
+      "name": "lost-save-post-response-recovers-same-original-key-and-keeps-v1-published",
+      "passed": true,
+      "at": "2026-11-01T00:27:50.851Z"
+    },
+    {
+      "name": "refresh-retains-unsaved-fields-and-requires-authoritative-baseline-and-each-original-receipt",
+      "passed": true,
+      "at": "2026-11-01T00:27:51.428Z"
+    },
+    {
+      "name": "rechecking-an-older-original-receipt-does-not-replace-the-newer-editing-base",
+      "passed": false,
+      "at": "2026-11-01T00:27:53.995Z",
+      "error": "The input did not match the regular expression /^从内容v2复制/. Input:\n\n'从内容v1复制，核对的包头修订号为3。仍须向服务器核对。'\n"
+    }
+  ]
+}

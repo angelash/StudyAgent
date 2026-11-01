@@ -1,0 +1,47 @@
+{
+  "label": "ui-product-browser-fifth",
+  "sha256": "528b1aab33d197d29a37a7d1b2226b6d49737f07639470126f10937ca7b399fa",
+  "buildId": "QL-3wsS87pG2TEiI8R5IT",
+  "passed": 6,
+  "failed": 1,
+  "completed": false,
+  "error": "locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '教材课时完整教学稿', exact: true }).getByLabel('完整概念讲解', { exact: true })\u001b[22m\n",
+  "checks": [
+    {
+      "name": "production-original-admin-entry-exact-textbook-deeplink-and-complete-import",
+      "passed": true,
+      "at": "2026-11-01T00:30:19.817Z"
+    },
+    {
+      "name": "real-ui-saves-original-complete-two-target-body-and-confirms-original-command",
+      "passed": true,
+      "at": "2026-11-01T00:30:21.552Z"
+    },
+    {
+      "name": "explicit-publish-is-separate-from-save-and-preserves-full-original-receipt",
+      "passed": true,
+      "at": "2026-11-01T00:30:21.953Z"
+    },
+    {
+      "name": "lost-save-post-response-recovers-same-original-key-and-keeps-v1-published",
+      "passed": true,
+      "at": "2026-11-01T00:30:22.406Z"
+    },
+    {
+      "name": "refresh-retains-unsaved-fields-and-requires-authoritative-baseline-and-each-original-receipt",
+      "passed": true,
+      "at": "2026-11-01T00:30:22.954Z"
+    },
+    {
+      "name": "rechecking-an-older-original-receipt-does-not-replace-the-newer-editing-base",
+      "passed": true,
+      "at": "2026-11-01T00:30:25.492Z"
+    },
+    {
+      "name": "actual-two-tab-cas-keeps-both-original-bodies-and-refuses-stale-autosave",
+      "passed": false,
+      "at": "2026-11-01T00:30:25.867Z",
+      "error": "locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '教材课时完整教学稿', exact: true }).getByLabel('完整概念讲解', { exact: true })\u001b[22m\n"
+    }
+  ]
+}
