@@ -1,0 +1,22 @@
+{
+  "at": "2026-11-01T02:10:42.413Z",
+  "source": "data/qa/p184",
+  "buildId": "tbr02mj8XeCL2HO1Y-uyu",
+  "distDir": ".next-adoption-practice-production-second",
+  "generatedEngineeringDataOnly": true,
+  "realLearnerEvidence": false,
+  "productUI": true,
+  "completed": false,
+  "passed": 0,
+  "failed": 1,
+  "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '退出课程', exact: true }) to be visible\u001b[22m\n",
+  "checks": [
+    {
+      "name": "original-workspace-course-deeplink-retains32-targets-and-profile-grade",
+      "passed": false,
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '退出课程', exact: true }) to be visible\u001b[22m\n"
+    }
+  ],
+  "screenshots": [],
+  "pageErrors": []
+}

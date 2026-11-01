@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-01T02:16:15.444Z",
+  "source": "data/qa/p184",
+  "buildId": "JnbLOGnsh-3REd8ZqPTGb",
+  "distDir": ".next-adoption-practice-production-third",
+  "generatedEngineeringDataOnly": true,
+  "realLearnerEvidence": false,
+  "productUI": true,
+  "completed": false,
+  "passed": 2,
+  "failed": 1,
+  "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '本课独立检查入口', exact: true }) to be visible\u001b[22m\n",
+  "checks": [
+    {
+      "name": "original-workspace-course-deeplink-retains32-targets-and-profile-grade",
+      "passed": true
+    },
+    {
+      "name": "parent-original-practice-preview-shows-all-goals-and-blocks-proxy-answer",
+      "passed": true
+    },
+    {
+      "name": "original-child-course-classroom-keeps-eight-goals-and-exposes-actual-independent-check-link",
+      "passed": false,
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '本课独立检查入口', exact: true }) to be visible\u001b[22m\n"
+    }
+  ],
+  "screenshots": [],
+  "pageErrors": []
+}

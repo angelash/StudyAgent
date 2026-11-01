@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-01T02:12:23.963Z",
+  "source": "data/qa/p184",
+  "buildId": "tbr02mj8XeCL2HO1Y-uyu",
+  "distDir": ".next-adoption-practice-production-second",
+  "generatedEngineeringDataOnly": true,
+  "realLearnerEvidence": false,
+  "productUI": true,
+  "completed": false,
+  "passed": 1,
+  "failed": 1,
+  "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '本次评测范围与题组', exact: true }) to be visible\u001b[22m\n",
+  "checks": [
+    {
+      "name": "original-workspace-course-deeplink-retains32-targets-and-profile-grade",
+      "passed": true
+    },
+    {
+      "name": "parent-original-practice-preview-shows-all-goals-and-blocks-proxy-answer",
+      "passed": false,
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '本次评测范围与题组', exact: true }) to be visible\u001b[22m\n"
+    }
+  ],
+  "screenshots": [],
+  "pageErrors": []
+}

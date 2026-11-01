@@ -1,0 +1,947 @@
+{
+  "protocol": "study-agent-teaching-adoption-candidate-evidence-v1",
+  "at": "2026-11-01T02:18:57.304Z",
+  "baselineHead": "bd5e10fa9370639511d39c214a09e35366472904",
+  "candidate": "data/qa/p184",
+  "mainApplicationSchema": 32,
+  "candidateSchema": 33,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFilesUnchanged": 1063,
+  "sourceIncrement": {
+    "files": 72,
+    "archive": "candidate-source.json.gz",
+    "sha256": "e1cef036162891d98ba42c038dee629df0639596877a2612f6566797631eeecb",
+    "allMembersReadBack": true,
+    "copiedIntoMainApplication": false
+  },
+  "productionBuild": {
+    "label": "adoption-practice-production-third",
+    "at": "2026-11-01T02:15:01.455Z",
+    "status": 0,
+    "error": null,
+    "distDir": ".next-adoption-practice-production-third",
+    "source": "data/qa/p184",
+    "buildId": "JnbLOGnsh-3REd8ZqPTGb",
+    "inputFiles": 1593,
+    "apiPort": 4284,
+    "webPort": 3284
+  },
+  "latestProductBrowser": {
+    "label": "adoption-practice-product-fourth",
+    "at": "2026-11-01T02:17:49.122Z",
+    "source": "data/qa/p184",
+    "buildId": "JnbLOGnsh-3REd8ZqPTGb",
+    "distDir": ".next-adoption-practice-production-third",
+    "generatedEngineeringDataOnly": true,
+    "realLearnerEvidence": false,
+    "productUI": true,
+    "completed": true,
+    "passed": 7,
+    "failed": 0,
+    "error": null,
+    "checks": [
+      {
+        "name": "original-workspace-course-deeplink-retains32-targets-and-profile-grade",
+        "passed": true
+      },
+      {
+        "name": "parent-original-practice-preview-shows-all-goals-and-blocks-proxy-answer",
+        "passed": true
+      },
+      {
+        "name": "original-child-course-classroom-keeps-eight-goals-and-exposes-actual-independent-check-link",
+        "passed": true
+      },
+      {
+        "name": "accepted-preview-response-loss-recovers-the-same-complete-original-request",
+        "passed": true
+      },
+      {
+        "name": "real-question-renderer-draft-refresh-first-response-and-pause-resume",
+        "passed": true
+      },
+      {
+        "name": "original-course-assessment-responsive-layout-and-keyboard",
+        "passed": true
+      },
+      {
+        "name": "exact-public-course-return-and-no-mastery-or-retention-promotion",
+        "passed": true
+      }
+    ],
+    "screenshots": [
+      "assessment-390x844.png",
+      "assessment-768x900.png",
+      "assessment-1440x1000.png",
+      "assessment-1440x500.png"
+    ],
+    "pageErrors": []
+  },
+  "browserBatches": [
+    {
+      "label": "adoption-practice-product-first",
+      "sha256": "bcf52df6a445fd73bb93fa56b8fa4cea88417230d27ad14022bf1617f76df4ac",
+      "at": "2026-11-01T02:10:42.413Z",
+      "source": "data/qa/p184",
+      "buildId": "tbr02mj8XeCL2HO1Y-uyu",
+      "distDir": ".next-adoption-practice-production-second",
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "productUI": true,
+      "completed": false,
+      "passed": 0,
+      "failed": 1,
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '退出课程', exact: true }) to be visible\u001b[22m\n",
+      "checks": [
+        {
+          "name": "original-workspace-course-deeplink-retains32-targets-and-profile-grade",
+          "passed": false,
+          "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '退出课程', exact: true }) to be visible\u001b[22m\n"
+        }
+      ],
+      "screenshots": [],
+      "pageErrors": []
+    },
+    {
+      "label": "adoption-practice-product-fourth",
+      "sha256": "22b24478629c76cc3268ec38d1dcb8997f8cd344a3f90980c54eeebaf62a8c11",
+      "at": "2026-11-01T02:17:49.122Z",
+      "source": "data/qa/p184",
+      "buildId": "JnbLOGnsh-3REd8ZqPTGb",
+      "distDir": ".next-adoption-practice-production-third",
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "productUI": true,
+      "completed": true,
+      "passed": 7,
+      "failed": 0,
+      "error": null,
+      "checks": [
+        {
+          "name": "original-workspace-course-deeplink-retains32-targets-and-profile-grade",
+          "passed": true
+        },
+        {
+          "name": "parent-original-practice-preview-shows-all-goals-and-blocks-proxy-answer",
+          "passed": true
+        },
+        {
+          "name": "original-child-course-classroom-keeps-eight-goals-and-exposes-actual-independent-check-link",
+          "passed": true
+        },
+        {
+          "name": "accepted-preview-response-loss-recovers-the-same-complete-original-request",
+          "passed": true
+        },
+        {
+          "name": "real-question-renderer-draft-refresh-first-response-and-pause-resume",
+          "passed": true
+        },
+        {
+          "name": "original-course-assessment-responsive-layout-and-keyboard",
+          "passed": true
+        },
+        {
+          "name": "exact-public-course-return-and-no-mastery-or-retention-promotion",
+          "passed": true
+        }
+      ],
+      "screenshots": [
+        "assessment-390x844.png",
+        "assessment-768x900.png",
+        "assessment-1440x1000.png",
+        "assessment-1440x500.png"
+      ],
+      "pageErrors": []
+    },
+    {
+      "label": "adoption-practice-product-second",
+      "sha256": "19e249ce5b3ef4a397e7be74ec2df47b3b76d74c89083f94e03e15c70c411ac5",
+      "at": "2026-11-01T02:12:23.963Z",
+      "source": "data/qa/p184",
+      "buildId": "tbr02mj8XeCL2HO1Y-uyu",
+      "distDir": ".next-adoption-practice-production-second",
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "productUI": true,
+      "completed": false,
+      "passed": 1,
+      "failed": 1,
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '本次评测范围与题组', exact: true }) to be visible\u001b[22m\n",
+      "checks": [
+        {
+          "name": "original-workspace-course-deeplink-retains32-targets-and-profile-grade",
+          "passed": true
+        },
+        {
+          "name": "parent-original-practice-preview-shows-all-goals-and-blocks-proxy-answer",
+          "passed": false,
+          "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '本次评测范围与题组', exact: true }) to be visible\u001b[22m\n"
+        }
+      ],
+      "screenshots": [],
+      "pageErrors": []
+    },
+    {
+      "label": "adoption-practice-product-third",
+      "sha256": "180970f15a07c8f5d27dd5f489e705d5a9954c18cae34b832462d01bba926216",
+      "at": "2026-11-01T02:16:15.444Z",
+      "source": "data/qa/p184",
+      "buildId": "JnbLOGnsh-3REd8ZqPTGb",
+      "distDir": ".next-adoption-practice-production-third",
+      "generatedEngineeringDataOnly": true,
+      "realLearnerEvidence": false,
+      "productUI": true,
+      "completed": false,
+      "passed": 2,
+      "failed": 1,
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '本课独立检查入口', exact: true }) to be visible\u001b[22m\n",
+      "checks": [
+        {
+          "name": "original-workspace-course-deeplink-retains32-targets-and-profile-grade",
+          "passed": true
+        },
+        {
+          "name": "parent-original-practice-preview-shows-all-goals-and-blocks-proxy-answer",
+          "passed": true
+        },
+        {
+          "name": "original-child-course-classroom-keeps-eight-goals-and-exposes-actual-independent-check-link",
+          "passed": false,
+          "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '本课独立检查入口', exact: true }) to be visible\u001b[22m\n"
+        }
+      ],
+      "screenshots": [],
+      "pageErrors": []
+    }
+  ],
+  "reports": [
+    {
+      "label": "adoption-api-first",
+      "mode": "build",
+      "status": 0
+    },
+    {
+      "label": "adoption-classroom-build-first",
+      "mode": "build",
+      "status": 0
+    },
+    {
+      "label": "adoption-classroom-build-second",
+      "mode": "build",
+      "status": 0
+    },
+    {
+      "label": "adoption-classroom-http-postgres-first",
+      "sha256": "db237abfebf2f805438bad9deb0be5288d419a446bd9f74c2c03fafe0828db88",
+      "passed": 7,
+      "failed": 8,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual PostgreSQL exact textbook course creation, all goals, privacy and restore rejects native writes that reduce the retained classroom to only the first goal, leaving the complete original untouched",
+          "messages": [
+            "Error: promise resolved \"31\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///F:/workspace/github/StudyAgent/node_modules/chai/index.js:1607:27)\n    at Object.proxyGetter [as get] (file:///F:/workspace/github/StudyAgent/node_modules/chai/index.js:1696:22)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:122:132\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual PostgreSQL exact textbook course creation, all goals, privacy and restore rejects changed preview authority before creating another course, even when the public blueprint is unchanged",
+          "messages": [
+            "Error: retention_saved_integrity_failed\n    at assertRetentionNativeRows (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/retention-integrity.ts:50:22)\n    at DomainDatabase.initialize (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:262:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at DomainDatabase.open (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:117:74)\n    at cold (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:29:121)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:127:85\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual PostgreSQL exact textbook course creation, all goals, privacy and restore rechecks current material eligibility after actual original/extraction I/O before creating a course",
+          "messages": [
+            "Error: retention_saved_integrity_failed\n    at assertRetentionNativeRows (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/retention-integrity.ts:50:22)\n    at DomainDatabase.initialize (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:262:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at DomainDatabase.open (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:117:74)\n    at cold (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:29:121)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:141:13\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual PostgreSQL exact textbook course creation, all goals, privacy and restore refuses changed original bytes without truncating or replacing the requested teaching selection",
+          "messages": [
+            "Error: retention_saved_integrity_failed\n    at assertRetentionNativeRows (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/retention-integrity.ts:50:22)\n    at DomainDatabase.initialize (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:262:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at DomainDatabase.open (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:117:74)\n    at cold (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:29:121)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:144:20\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual PostgreSQL exact textbook course creation, all goals, privacy and restore lets the current student create all32 goals under the original guardian grant without exposing server-only proofs",
+          "messages": [
+            "Error: retention_saved_integrity_failed\n    at assertRetentionNativeRows (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/retention-integrity.ts:50:22)\n    at DomainDatabase.initialize (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:262:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at DomainDatabase.open (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:117:74)\n    at cold (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:29:121)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:157:66\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual PostgreSQL exact textbook course creation, all goals, privacy and restore exports the retained public courses for their family while excluding every private material qualification",
+          "messages": [
+            "Error: retention_saved_integrity_failed\n    at assertRetentionNativeRows (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/retention-integrity.ts:50:22)\n    at DomainDatabase.initialize (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:262:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at DomainDatabase.open (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:117:74)\n    at cold (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:29:121)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:162:112\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual PostgreSQL exact textbook course creation, all goals, privacy and restore closes the real author account and restores the old backup with the latest ledger while preserving lawful adopted teaching",
+          "messages": [
+            "Error: retention_saved_integrity_failed\n    at assertRetentionNativeRows (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/retention-integrity.ts:50:22)\n    at DomainDatabase.initialize (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:262:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at DomainDatabase.open (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:117:74)\n    at cold (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:29:121)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:170:20\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual PostgreSQL exact textbook course creation, all goals, privacy and restore deletes the actual student courses and server qualifications and applies that deletion when restoring the same old backup",
+          "messages": [
+            "Error: retention_saved_integrity_failed\n    at assertRetentionNativeRows (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/retention-integrity.ts:50:22)\n    at DomainDatabase.initialize (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:262:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at DomainDatabase.open (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:117:74)\n    at cold (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:29:121)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:182:20\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "adoption-classroom-http-postgres-second",
+      "sha256": "deb11cea01ee46cde7f135fbe4b8157de1dd75d55b420b1669a8db705988fe7d",
+      "passed": 12,
+      "failed": 3,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual PostgreSQL exact textbook course creation, all goals, privacy and restore exports the retained public courses for their family while excluding every private material qualification",
+          "messages": [
+            "Error: retention_saved_integrity_failed\n    at Object.assertRetentionNativeRows (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\apps\\api\\dist\\apps\\api\\src\\modules\\diagnostics\\retention-integrity.js:78:15)\n    at validate (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\assistant-practice-integrity.cjs:21:612)\n    at Object.validateQuery (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\assistant-practice-integrity.cjs:12:164)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async summary (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\postgres-backup.cjs:24:3)\n    at async Object.createPostgresBundle (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\postgres-backup.cjs:39:16)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:166:19\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual PostgreSQL exact textbook course creation, all goals, privacy and restore closes the real author account and restores the old backup with the latest ledger while preserving lawful adopted teaching",
+          "messages": [
+            "Error: ENOENT: no such file or directory, stat 'F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\data\\qa\\teaching-course33-http-fxgjWq\\before-author-close\\manifest.json'\n    at Object.statSync (node:fs:1795:25)\n    at Object.verifyPostgresBundle (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\postgres-backup.cjs:68:62)\n    at Object.restorePostgres (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\postgres-restore.cjs:15:65)\n    at Object.restorePostgresBundle (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\postgres-backup.cjs:85:90)\n    at restore (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:35:76)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:174:172\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual PostgreSQL exact textbook course creation, all goals, privacy and restore deletes the actual student courses and server qualifications and applies that deletion when restoring the same old backup",
+          "messages": [
+            "Error: ENOENT: no such file or directory, stat 'F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\data\\qa\\teaching-course33-http-fxgjWq\\before-author-close\\manifest.json'\n    at Object.statSync (node:fs:1795:25)\n    at Object.verifyPostgresBundle (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\postgres-backup.cjs:68:62)\n    at Object.restorePostgres (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\postgres-restore.cjs:15:65)\n    at Object.restorePostgresBundle (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\postgres-backup.cjs:85:90)\n    at restore (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:35:76)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:186:172\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "adoption-classroom-http-sqlite-first",
+      "sha256": "ac97f646320237d3c1a1caf6884861cb9f6417c2139543ffaf4dff92ce6cf484",
+      "passed": 7,
+      "failed": 8,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual SQLite exact textbook course creation, all goals, privacy and restore rejects native writes that reduce the retained classroom to only the first goal, leaving the complete original untouched",
+          "messages": [
+            "Error: promise resolved \"31\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///F:/workspace/github/StudyAgent/node_modules/chai/index.js:1607:27)\n    at Object.proxyGetter [as get] (file:///F:/workspace/github/StudyAgent/node_modules/chai/index.js:1696:22)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:122:132\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual SQLite exact textbook course creation, all goals, privacy and restore rejects changed preview authority before creating another course, even when the public blueprint is unchanged",
+          "messages": [
+            "Error: retention_saved_integrity_failed\n    at assertRetentionNativeRows (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/retention-integrity.ts:50:22)\n    at DomainDatabase.initialize (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:262:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual SQLite exact textbook course creation, all goals, privacy and restore rechecks current material eligibility after actual original/extraction I/O before creating a course",
+          "messages": [
+            "Error: retention_saved_integrity_failed\n    at assertRetentionNativeRows (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/retention-integrity.ts:50:22)\n    at DomainDatabase.initialize (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:262:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual SQLite exact textbook course creation, all goals, privacy and restore refuses changed original bytes without truncating or replacing the requested teaching selection",
+          "messages": [
+            "Error: retention_saved_integrity_failed\n    at assertRetentionNativeRows (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/retention-integrity.ts:50:22)\n    at DomainDatabase.initialize (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:262:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual SQLite exact textbook course creation, all goals, privacy and restore lets the current student create all32 goals under the original guardian grant without exposing server-only proofs",
+          "messages": [
+            "Error: retention_saved_integrity_failed\n    at assertRetentionNativeRows (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/retention-integrity.ts:50:22)\n    at DomainDatabase.initialize (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:262:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual SQLite exact textbook course creation, all goals, privacy and restore exports the retained public courses for their family while excluding every private material qualification",
+          "messages": [
+            "Error: retention_saved_integrity_failed\n    at assertRetentionNativeRows (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/retention-integrity.ts:50:22)\n    at DomainDatabase.initialize (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:262:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual SQLite exact textbook course creation, all goals, privacy and restore closes the real author account and restores the old backup with the latest ledger while preserving lawful adopted teaching",
+          "messages": [
+            "Error: retention_saved_integrity_failed\n    at assertRetentionNativeRows (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/retention-integrity.ts:50:22)\n    at DomainDatabase.initialize (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:262:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual SQLite exact textbook course creation, all goals, privacy and restore deletes the actual student courses and server qualifications and applies that deletion when restoring the same old backup",
+          "messages": [
+            "Error: retention_saved_integrity_failed\n    at assertRetentionNativeRows (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/retention-integrity.ts:50:22)\n    at DomainDatabase.initialize (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:262:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "adoption-classroom-http-sqlite-second",
+      "sha256": "2afc2dd603500b164df436b36b6d398c420ed2d59d3a53bd9b9d23c102882e1c",
+      "passed": 12,
+      "failed": 3,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual SQLite exact textbook course creation, all goals, privacy and restore exports the retained public courses for their family while excluding every private material qualification",
+          "messages": [
+            "Error: retention_saved_integrity_failed\n    at Object.assertRetentionNativeRows (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\apps\\api\\dist\\apps\\api\\src\\modules\\diagnostics\\retention-integrity.js:78:15)\n    at validate (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\assistant-practice-integrity.cjs:21:612)\n    at Object.validateSqlite (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\assistant-practice-integrity.cjs:13:62)\n    at summary (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\backup.cjs:52:21)\n    at Object.createBundle (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\backup.cjs:204:17)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:167:10\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual SQLite exact textbook course creation, all goals, privacy and restore closes the real author account and restores the old backup with the latest ledger while preserving lawful adopted teaching",
+          "messages": [
+            "Error: backup_incomplete\n    at fail (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\backup.cjs:9:30)\n    at Object.verifyBundle (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\backup.cjs:220:79)\n    at Object.restoreSqlite (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\sqlite-restore.cjs:29:65)\n    at Object.restoreBundle (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\backup.cjs:250:80)\n    at restore (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:36:72)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:174:178\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual SQLite exact textbook course creation, all goals, privacy and restore deletes the actual student courses and server qualifications and applies that deletion when restoring the same old backup",
+          "messages": [
+            "Error: backup_incomplete\n    at fail (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\backup.cjs:9:30)\n    at Object.verifyBundle (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\backup.cjs:220:79)\n    at Object.restoreSqlite (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\sqlite-restore.cjs:29:65)\n    at Object.restoreBundle (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\backup.cjs:250:80)\n    at restore (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:36:72)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:186:178\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "adoption-classroom-model-first",
+      "sha256": "e2b54053ce04bf7f46a05790fd17d63bc15c61c9ba5c562980e2e41aab3f43c9",
+      "passed": 45,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "adoption-classroom-type-first",
+      "mode": "type",
+      "status": 0
+    },
+    {
+      "label": "adoption-contracts-first",
+      "mode": "contracts",
+      "status": 0
+    },
+    {
+      "label": "adoption-course-build-first",
+      "mode": "build",
+      "status": 0
+    },
+    {
+      "label": "adoption-course-build-second",
+      "mode": "build",
+      "status": 0
+    },
+    {
+      "label": "adoption-course-contracts-first",
+      "mode": "contracts",
+      "status": 0
+    },
+    {
+      "label": "adoption-course-contracts-second",
+      "mode": "contracts",
+      "status": 0
+    },
+    {
+      "label": "adoption-course-http-postgres-first",
+      "sha256": "5274928100d8aa1d7cb96ba58382c307efc60813fb1936a064135689e54e61d4",
+      "passed": 9,
+      "failed": 3,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual PostgreSQL exact textbook course creation, all goals, privacy and restore refuses changed original bytes without truncating or replacing the requested teaching selection",
+          "messages": [
+            "AssertionError: {\"code\":\"service_unavailable\",\"message\":\"本地内审原卷字节校验失败，请从独立备份恢复\"}: expected 503 to be 409 // Object.is equality\n    at call (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:24:96)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at post (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:27:86)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:119:11\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual PostgreSQL exact textbook course creation, all goals, privacy and restore uses the newest confirmed scope rather than an older retained version and rejects stale preview creation",
+          "messages": [
+            "AssertionError: {\"code\":\"not_found\",\"message\":\"Cannot GET /api/students/student_ea8db60e-ec6a-4ae2-aa4c-5725fd666e1e\"}: expected 404 to be 200 // Object.is equality\n    at call (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:24:96)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at get (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:26:70)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:127:104\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual PostgreSQL exact textbook course creation, all goals, privacy and restore deletes the actual student courses and server qualifications and applies that deletion when restoring the same old backup",
+          "messages": [
+            "AssertionError: expected [ Array(655) ] to have a length of 640 but got 655\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/expect/dist/index.js:1389:20)\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/expect/dist/index.js:1156:15)\n    at Proxy.methodWrapper (file:///F:/workspace/github/StudyAgent/node_modules/chai/index.js:1737:25)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:157:36\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "adoption-course-http-postgres-second",
+      "sha256": "c6ddd5d074f10f986173e1688d204f8534afb48819efac2e28d60088b55b0eee",
+      "passed": 12,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "adoption-course-http-sqlite-first",
+      "sha256": "e859a2130888eba0d37e4bc4076edd2a1ce3848cc68c684717942c630a0ef3ae",
+      "passed": 9,
+      "failed": 3,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual SQLite exact textbook course creation, all goals, privacy and restore refuses changed original bytes without truncating or replacing the requested teaching selection",
+          "messages": [
+            "AssertionError: {\"code\":\"service_unavailable\",\"message\":\"本地内审原卷字节校验失败，请从独立备份恢复\"}: expected 503 to be 409 // Object.is equality\n    at call (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:24:96)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at post (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:27:86)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:119:11\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual SQLite exact textbook course creation, all goals, privacy and restore uses the newest confirmed scope rather than an older retained version and rejects stale preview creation",
+          "messages": [
+            "AssertionError: {\"code\":\"not_found\",\"message\":\"Cannot GET /api/students/student_07dbae36-1725-4fbe-a397-9eeb4c05ce0b\"}: expected 404 to be 200 // Object.is equality\n    at call (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:24:96)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at get (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:26:70)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:127:104\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual SQLite exact textbook course creation, all goals, privacy and restore deletes the actual student courses and server qualifications and applies that deletion when restoring the same old backup",
+          "messages": [
+            "AssertionError: expected [ Array(655) ] to have a length of 640 but got 655\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/expect/dist/index.js:1389:20)\n    at Proxy.<anonymous> (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/expect/dist/index.js:1156:15)\n    at Proxy.methodWrapper (file:///F:/workspace/github/StudyAgent/node_modules/chai/index.js:1737:25)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:157:36\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "adoption-course-http-sqlite-second",
+      "sha256": "d3c99214300fb59afd3356858d416f3f7efe0b794cc13728ea10248643003c7e",
+      "passed": 12,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "adoption-course-model-first",
+      "sha256": "d45f69e9fd689439e7ae03e14ffac3f1297333ad99a4fb4b9cd289b3674b5413",
+      "passed": 18,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "adoption-course-model-second",
+      "sha256": "6c62045daf2a4c152e56d361319f28c9c8f5cc0c13bb9729f1ee14512e1a5d09",
+      "passed": 53,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "adoption-course-type-first",
+      "mode": "type",
+      "status": 0
+    },
+    {
+      "label": "adoption-course-type-second",
+      "mode": "type",
+      "status": 0
+    },
+    {
+      "label": "adoption-delivery-type-first",
+      "mode": "type",
+      "status": 0
+    },
+    {
+      "label": "adoption-model-first",
+      "sha256": "65836d3a37a947630f07bc8236b302002ea51a028d284365d198e8a51ccd3711",
+      "passed": 18,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "adoption-model-second",
+      "sha256": "6f921c98ee398159e16d9b773d90e60be512800ff7f5beeec56503619162e99c",
+      "passed": 35,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "adoption-native-postgres-first",
+      "sha256": "e77f8c505030bb7c4ca6665c2e2daf3386cec449b46c63e227f233ee98133466",
+      "passed": 8,
+      "failed": 2,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual PostgreSQL fifth textbook adoption collection preserves adopted student teaching and private material eligibility when the original author closes",
+          "messages": [
+            "AssertionError: expected undefined to deeply equal []\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/textbook-teaching-adoption-native.integration.test.ts:74:44\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual PostgreSQL fifth textbook adoption collection removes the server qualification only with the original student/course under its actual native deletion receipt",
+          "messages": [
+            "AssertionError: expected undefined to deeply equal []\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/textbook-teaching-adoption-native.integration.test.ts:83:45\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "adoption-native-postgres-second",
+      "sha256": "c0f61454725573a10a767de70138469f8671a11c6fea0dc0c9f31e32157f0487",
+      "passed": 10,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "adoption-native-sqlite-first",
+      "sha256": "04fe85238d584cc3f5f68ec3a229459be927dd8ea694d33f47a45778126dd294",
+      "passed": 13,
+      "failed": 10,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual SQLite fifth textbook adoption collection creates original author commands then atomically freezes all goals/materials with the real course, and cold-opens twice",
+          "messages": [
+            "Error: UNIQUE constraint failed: index 'session_token'\n    at DomainDatabase.commitSnapshot (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:462:78)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:436:41\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual SQLite fifth textbook adoption collection rolls back the entire real native transaction when answer changes before adoption",
+          "messages": [
+            "Error: UNIQUE constraint failed: index 'session_token'\n    at DomainDatabase.commitSnapshot (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:462:78)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:436:41\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual SQLite fifth textbook adoption collection rolls back the entire real native transaction when binding changes before adoption",
+          "messages": [
+            "Error: UNIQUE constraint failed: index 'session_token'\n    at DomainDatabase.commitSnapshot (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:462:78)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:436:41\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual SQLite fifth textbook adoption collection rolls back the entire real native transaction when scope changes before adoption",
+          "messages": [
+            "Error: UNIQUE constraint failed: index 'session_token'\n    at DomainDatabase.commitSnapshot (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:462:78)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:436:41\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual SQLite fifth textbook adoption collection rolls back the entire real native transaction when withdrawn changes before adoption",
+          "messages": [
+            "Error: UNIQUE constraint failed: index 'session_token'\n    at DomainDatabase.commitSnapshot (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:462:78)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:436:41\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual SQLite fifth textbook adoption collection enforces the actual unique adopted-lesson index before a direct duplicate insert",
+          "messages": [
+            "Error: UNIQUE constraint failed: index 'session_token'\n    at DomainDatabase.commitSnapshot (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:462:78)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:436:41\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual SQLite fifth textbook adoption collection refuses immutable qualification rewrites and removal without actual erasure, preserving every native row/task/history",
+          "messages": [
+            "Error: UNIQUE constraint failed: index 'session_token'\n    at DomainDatabase.commitSnapshot (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:462:78)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:436:41\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual SQLite fifth textbook adoption collection preserves adopted student teaching and private material eligibility when the original author closes",
+          "messages": [
+            "Error: UNIQUE constraint failed: index 'session_token'\n    at DomainDatabase.commitSnapshot (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:462:78)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:436:41\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual SQLite fifth textbook adoption collection removes the server qualification only with the original student/course under its actual native deletion receipt",
+          "messages": [
+            "Error: UNIQUE constraint failed: index 'session_token'\n    at DomainDatabase.commitSnapshot (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:462:78)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:436:41\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual SQLite fifth textbook adoption collection refuses an obsolete four-collection33 candidate without silently changing its data or registering another migration",
+          "messages": [
+            "Error: UNIQUE constraint failed: index 'session_token'\n    at DomainDatabase.commitSnapshot (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:462:78)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/domain-database.ts:436:41\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "adoption-native-sqlite-second",
+      "sha256": "fce871e80c7f98e404e832c1cdcde32e13c125f0906aee7a475e7df27e702671",
+      "passed": 8,
+      "failed": 2,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual SQLite fifth textbook adoption collection preserves adopted student teaching and private material eligibility when the original author closes",
+          "messages": [
+            "AssertionError: expected undefined to deeply equal []\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/textbook-teaching-adoption-native.integration.test.ts:74:44\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual SQLite fifth textbook adoption collection removes the server qualification only with the original student/course under its actual native deletion receipt",
+          "messages": [
+            "AssertionError: expected undefined to deeply equal []\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/textbook-teaching-adoption-native.integration.test.ts:83:45\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "adoption-native-sqlite-third",
+      "sha256": "a81acf7a0840ece66b8d7ccd20ebbcd57f83b504fa1a0c8488041576fcb3aa6d",
+      "passed": 10,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "adoption-practice-build-first",
+      "mode": "build",
+      "status": 0
+    },
+    {
+      "label": "adoption-practice-build-second",
+      "mode": "build",
+      "status": 0
+    },
+    {
+      "label": "adoption-practice-contracts-first",
+      "mode": "contracts",
+      "status": 0
+    },
+    {
+      "label": "adoption-practice-http-postgres-first",
+      "sha256": "6dde009c66407f21ed8593e2e13d015fb13548fc19ab59b29797c98c8e92001f",
+      "passed": 19,
+      "failed": 1,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual PostgreSQL exact textbook course creation, all goals, privacy and restore accepts only the actual synthetic child first-response command and deterministic numeric grading, preserving replay and every target report",
+          "messages": [
+            "AssertionError: {\"code\":\"bad_request\",\"message\":\"作答题目或模式不匹配\"}: expected 400 to be 201 // Object.is equality\n    at call (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:24:96)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at post (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:27:86)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:161:22\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "adoption-practice-http-postgres-second",
+      "sha256": "caefcd51541067c294cc94856ae0801df5cee1b6c75f27e8271c17dbdcc53b17",
+      "passed": 20,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "adoption-practice-http-sqlite-first",
+      "sha256": "9c3ed7e11a198bc4a228a595ae7de4640060f8ef97ba37b1cc1fc777081bc0d0",
+      "passed": 19,
+      "failed": 1,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual SQLite exact textbook course creation, all goals, privacy and restore accepts only the actual synthetic child first-response command and deterministic numeric grading, preserving replay and every target report",
+          "messages": [
+            "AssertionError: {\"code\":\"bad_request\",\"message\":\"作答题目或模式不匹配\"}: expected 400 to be 201 // Object.is equality\n    at call (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:24:96)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at post (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:27:86)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts:161:22\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "adoption-practice-http-sqlite-second",
+      "sha256": "e27e3dbcf3ac8f09df1ba02b6a2243b7a9a84218d9c3dc7e12f98829f3abca52",
+      "passed": 20,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "adoption-practice-model-first",
+      "sha256": "4e5b2e3f16d2b728ce09ae0ca1bc2fc875d67229887efb89a2d74e0b596f54f8",
+      "passed": 59,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "adoption-practice-native-postgres-first",
+      "sha256": "272effda4408a154745fafe4bec3cab00730f6bb74f08258d82eb814030304eb",
+      "passed": 10,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "adoption-practice-native-sqlite-first",
+      "sha256": "b5f77b4fde7c84d9ae8ab4ef3a1e3546c4b55570ad3105c583bc32d8162d672c",
+      "passed": 23,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "adoption-practice-production-first",
+      "at": "2026-11-01T02:07:04.294Z",
+      "status": 0,
+      "error": null,
+      "distDir": ".next-adoption-practice-production-first",
+      "source": "data/qa/p184",
+      "buildId": "3fOZH2N99tRRs5erFVVFw",
+      "inputFiles": 1593,
+      "apiPort": 4284,
+      "webPort": 3284
+    },
+    {
+      "label": "adoption-practice-production-second",
+      "at": "2026-11-01T02:09:11.816Z",
+      "status": 0,
+      "error": null,
+      "distDir": ".next-adoption-practice-production-second",
+      "source": "data/qa/p184",
+      "buildId": "tbr02mj8XeCL2HO1Y-uyu",
+      "inputFiles": 1593,
+      "apiPort": 4284,
+      "webPort": 3284
+    },
+    {
+      "label": "adoption-practice-production-third",
+      "at": "2026-11-01T02:15:01.455Z",
+      "status": 0,
+      "error": null,
+      "distDir": ".next-adoption-practice-production-third",
+      "source": "data/qa/p184",
+      "buildId": "JnbLOGnsh-3REd8ZqPTGb",
+      "inputFiles": 1593,
+      "apiPort": 4284,
+      "webPort": 3284
+    },
+    {
+      "label": "adoption-practice-regression-first",
+      "sha256": "04c19f84530836b0af87890e4e755bfbd5e08c691bbd8b4002d9e17485c9c313",
+      "passed": 51,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "adoption-practice-type-first",
+      "mode": "type",
+      "status": 2
+    },
+    {
+      "label": "adoption-practice-type-second",
+      "mode": "type",
+      "status": 2
+    },
+    {
+      "label": "adoption-practice-type-third",
+      "mode": "type",
+      "status": 0
+    },
+    {
+      "label": "adoption-practice-webtype-first",
+      "mode": "webtype",
+      "status": 0
+    },
+    {
+      "label": "adoption-source-build-first",
+      "mode": "build",
+      "status": 1
+    },
+    {
+      "label": "adoption-source-build-second",
+      "mode": "build",
+      "status": 0
+    },
+    {
+      "label": "adoption-source-http-postgres-first",
+      "sha256": "70d705ef93daea6dc35c364864835c5dc1fd2049997bcb03772543d4416ef9e7",
+      "passed": 12,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "adoption-source-http-sqlite-first",
+      "sha256": "960b3e235d37119d38912b0523fff13e1c8a1a9a37aeb468a38604ee98303784",
+      "passed": 12,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "adoption-source-type-first",
+      "mode": "type",
+      "status": 2
+    },
+    {
+      "label": "adoption-type-first",
+      "mode": "type",
+      "status": 2
+    },
+    {
+      "label": "adoption-type-fourth",
+      "mode": "type",
+      "status": 0
+    },
+    {
+      "label": "adoption-type-second",
+      "mode": "type",
+      "status": 2
+    },
+    {
+      "label": "adoption-type-third",
+      "mode": "type",
+      "status": 2
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "assessment-390x844.png",
+      "sha256": "44db7e659934cf6c92f8e7406e8e52d7170d0645b2ba0b6330b7a8b20a774de7",
+      "visuallyInspected": true
+    },
+    {
+      "file": "assessment-768x900.png",
+      "sha256": "378e8b08910bd1ef595e2b7d9b31239a70cfe171648c84b577b31fd2de049f6e",
+      "visuallyInspected": true
+    },
+    {
+      "file": "assessment-1440x1000.png",
+      "sha256": "2767ed1f11e8cc79e8137e0b405a6a3f6581501419796914979e0978ae898e3f",
+      "visuallyInspected": true
+    },
+    {
+      "file": "assessment-1440x500.png",
+      "sha256": "7335b62cff961efdbd1618a28e8fc097ccc1025b67340c4eb5425b9d90b3ad11",
+      "visuallyInspected": true
+    }
+  ],
+  "originalFullApi": {
+    "candidate": "p183",
+    "label": "api-full-first",
+    "passed": 2741,
+    "failed": 1,
+    "pending": 131,
+    "unresolvedAsWholeBatch": true
+  },
+  "originalPlan72": {
+    "implemented": 11,
+    "in_progress": 50,
+    "planned": 11,
+    "verified": 0
+  },
+  "verifiedScope": [
+    "Exact published course creation32-goal synthetic journey",
+    "Original classroom8-goal retention origin and native rollback",
+    "Exact original nonreserve/unexposed material practice using existing response/scoring",
+    "Actor-bound blueprint response-loss recovery and real renderer draft reload",
+    "Author closure and student deletion with native backup/latest-ledger restore"
+  ],
+  "limitations": [
+    "Schema33 application remains isolated until complete adoption work is ready.",
+    "Original course-builder package selection with full-copy/unknown-result recovery remains unfinished.",
+    "Same-ID old-course upgrades, exact real-source candidate and full due-retention journey remain unfinished.",
+    "New actual lesson response journey covers numeric fixtures; original17-mode pipeline is reused, not all17 newly verified.",
+    "Full final API/site and all textbooks/GESP/R5/R7/R8/72/WS remain active.",
+    "Teacher, physical devices, native Word/physical print and real learner1/3/7/14-day evidence remain unverified.",
+    "Old editor tombstone/modal coverage and8MiB complete-copy boundary need follow-up.",
+    "Separate and overlapping test batches are never added into one total."
+  ],
+  "generatedEngineeringDataOnly": true,
+  "realLearnerEvidence": false,
+  "wholeGoal": "active",
+  "localOnly": true,
+  "pushed": false,
+  "deployed": false
+}
