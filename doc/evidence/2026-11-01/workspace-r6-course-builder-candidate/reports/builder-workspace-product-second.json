@@ -1,0 +1,55 @@
+{
+  "at": "2026-11-01T02:50:27.171Z",
+  "source": "data/qa/p184",
+  "buildId": "eTGu9PBydMmwMfGLCkrxK",
+  "distDir": ".next-builder-workspace-production-first",
+  "generatedEngineeringDataOnly": true,
+  "realLearnerEvidence": false,
+  "productUI": true,
+  "completed": false,
+  "passed": 7,
+  "failed": 1,
+  "error": "Old private builder remained visible after identity changed",
+  "checks": [
+    {
+      "name": "original-create-modal-exact-textbook-selection-and-complete-form-refresh",
+      "passed": true
+    },
+    {
+      "name": "original-dialog-four-sizes-keyboard-containment-and-scroll",
+      "passed": true
+    },
+    {
+      "name": "explicit32-goal-preview-accepted-create-loss-and-original-lookup-after-reload",
+      "passed": true
+    },
+    {
+      "name": "original-knowledge-course-path-uses-the-same-complete-copy-and-request-recovery",
+      "passed": true
+    },
+    {
+      "name": "two-real-tabs-retain-conflicting-complete-input-and-fork-after-file-readback",
+      "passed": true
+    },
+    {
+      "name": "disabled-indexeddb-exit-requires-actual-full-download-file-readback",
+      "passed": true
+    },
+    {
+      "name": "same-owner-import-opens-a-separate-complete-slot-without-creating-a-course",
+      "passed": true
+    },
+    {
+      "name": "current-role-change-hides-private-form-and-native-counts-remain-original",
+      "passed": false,
+      "error": "Old private builder remained visible after identity changed"
+    }
+  ],
+  "screenshots": [
+    "builder-390x844.png",
+    "builder-768x900.png",
+    "builder-1440x1000.png",
+    "builder-1440x500.png"
+  ],
+  "pageErrors": []
+}

@@ -1,0 +1,35 @@
+{
+  "at": "2026-11-01T02:47:54.069Z",
+  "source": "data/qa/p184",
+  "buildId": "eTGu9PBydMmwMfGLCkrxK",
+  "distDir": ".next-builder-workspace-production-first",
+  "generatedEngineeringDataOnly": true,
+  "realLearnerEvidence": false,
+  "productUI": true,
+  "completed": false,
+  "passed": 2,
+  "failed": 1,
+  "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'studio_course_3450a761-3383-4010-acca-11d4ac63149e'\n- 'studio_course_3fb5b41e-4cc4-417b-978d-6091721a62e1'\n",
+  "checks": [
+    {
+      "name": "original-create-modal-exact-textbook-selection-and-complete-form-refresh",
+      "passed": true
+    },
+    {
+      "name": "original-dialog-four-sizes-keyboard-containment-and-scroll",
+      "passed": true
+    },
+    {
+      "name": "explicit32-goal-preview-accepted-create-loss-and-original-lookup-after-reload",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'studio_course_3450a761-3383-4010-acca-11d4ac63149e'\n- 'studio_course_3fb5b41e-4cc4-417b-978d-6091721a62e1'\n"
+    }
+  ],
+  "screenshots": [
+    "builder-390x844.png",
+    "builder-768x900.png",
+    "builder-1440x1000.png",
+    "builder-1440x500.png"
+  ],
+  "pageErrors": []
+}

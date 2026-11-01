@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-01T02:56:28.588Z",
+  "source": "data/qa/p184",
+  "buildId": "W2fvHx_Lnz6O1fb1HchbL",
+  "distDir": ".next-builder-workspace-production-second",
+  "generatedEngineeringDataOnly": true,
+  "realLearnerEvidence": false,
+  "productUI": true,
+  "completed": false,
+  "passed": 1,
+  "failed": 1,
+  "error": "Dialog footer action is clipped",
+  "checks": [
+    {
+      "name": "original-create-modal-exact-textbook-selection-and-complete-form-refresh",
+      "passed": true
+    },
+    {
+      "name": "original-dialog-four-sizes-keyboard-containment-and-scroll",
+      "passed": false,
+      "error": "Dialog footer action is clipped"
+    }
+  ],
+  "screenshots": [
+    "builder-390x844.png",
+    "builder-768x900.png",
+    "builder-1440x1000.png"
+  ],
+  "pageErrors": []
+}
