@@ -1,0 +1,63 @@
+{
+  "at": "2026-11-01T08:08:27.451Z",
+  "kind": "generated-pronunciation-reference-candidate",
+  "skill": "aigw-mediakit-tts",
+  "status": "completed",
+  "model": "speech-2.8-turbo",
+  "voiceId": "male-qn-qingse",
+  "language": "Chinese",
+  "usage": {
+    "usage_characters": 189,
+    "audio_length": 35316,
+    "audio_size": 566772
+  },
+  "transcriptSha256": "d9726fec391e0735368ce4a4c5c404cdb69ad9945ac27d079b9d5593e67184b7",
+  "sourcePublisherTextCopied": false,
+  "assetPath": "data/assets/teaching-references/5934eac0a815cd8e829d665d230d2b0e8e6f3dbfd2f5d4889ae1e29edec603b4.mp3",
+  "assetSha256": "5934eac0a815cd8e829d665d230d2b0e8e6f3dbfd2f5d4889ae1e29edec603b4",
+  "bytes": 566772,
+  "sourceCharacters": [
+    "坝",
+    "汉",
+    "艳",
+    "扮",
+    "扬",
+    "读",
+    "摔",
+    "跤",
+    "凤",
+    "洁"
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "mp3",
+        "sample_rate": "32000",
+        "channels": 1
+      }
+    ],
+    "format": {
+      "duration": "35.316000",
+      "size": "566772"
+    }
+  },
+  "fullDecodeStatus": 0,
+  "skillUploadedEncryptedMedia": true,
+  "remoteReadbackSha256": "5934eac0a815cd8e829d665d230d2b0e8e6f3dbfd2f5d4889ae1e29edec603b4",
+  "remoteReadbackMatches": true,
+  "encryptedMediaUrlKeptPrivate": true,
+  "teacherReviewed": false,
+  "pronunciationReviewed": false,
+  "listeningReviewed": false,
+  "studentEvidence": false,
+  "importedIntoProduct": false,
+  "automaticPublication": false,
+  "assetKeptOutsideGit": true,
+  "mainApplicationSchema": 32,
+  "formalDatabaseModified": false,
+  "softwarePushed": false,
+  "softwareDeployed": false,
+  "wholeGoal": "active"
+}

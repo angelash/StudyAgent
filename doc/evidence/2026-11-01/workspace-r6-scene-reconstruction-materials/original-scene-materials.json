@@ -1,0 +1,582 @@
+{
+  "format": "study-original-source-material-review-v1",
+  "status": "editorial-candidate",
+  "autoImport": false,
+  "teacherReviewed": false,
+  "realLearnerEvidence": false,
+  "openResponsesRequireRubricReview": true,
+  "families": [
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-reconstruction",
+      "family": "scene-conditional-compatibility",
+      "dimension": "understanding",
+      "behavior": "同时保留时段、场所和活动条件，判断哪些细节可组成同一画面",
+      "structure": "两个场景的完整条件 → 选出条件同时相容的一幅场景",
+      "distinction": "不是只找到一个地点；答案必须同时满足时间、地点与活动，不能把另一时段的动作借过来。",
+      "exercises": [
+        {
+          "stem": "原创材料：“早读前，孩子们在教室门口互相问好。早读开始后，他们坐在座位上朗读。”哪幅画面符合早读开始后？",
+          "answer": "孩子们坐在教室座位上朗读。",
+          "options": [
+            "孩子们坐在教室座位上朗读。",
+            "孩子们站在门口互相问好。",
+            "孩子们正在操场跑步。",
+            "孩子们在门口一边站着一边齐读，材料已经明确写了。"
+          ],
+          "mode": "single_choice",
+          "expectedSeconds": 90,
+          "analysis": "时间限定为早读开始后，材料对应座位和朗读；门口问好属于前一个时段，不能合并。",
+          "family": "scene-conditional-compatibility",
+          "dimension": "understanding",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创材料：“午饭后，小雨在走廊看展板。上课铃响后，她回到教室做观察记录。”要还原午饭后看展板的画面，应保留哪组条件？",
+          "answer": "午饭后、走廊、小雨、看展板。",
+          "options": [
+            "午饭后、走廊、小雨、看展板。",
+            "上课后、教室、小雨、看展板。",
+            "午饭后、教室、老师、做记录。",
+            "午饭后、操场、小雨、打球。"
+          ],
+          "mode": "single_choice",
+          "expectedSeconds": 90,
+          "analysis": "四个条件须来自同一条活动记录，不能拼接后一个时段的地点。",
+          "family": "scene-conditional-compatibility",
+          "dimension": "understanding",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创材料：“下课时，操场传来踢球声。阅读课上，阅览室里只有轻轻翻书的声音。”哪幅画面符合阅读课？",
+          "answer": "同学们在阅览室阅读，能听到轻轻的翻书声。",
+          "options": [
+            "同学们在阅览室阅读，能听到轻轻的翻书声。",
+            "同学们在阅览室踢球，球声很响。",
+            "同学们下课在操场翻书，材料写得很明确。",
+            "阅读课上所有人都在操场踢球。"
+          ],
+          "mode": "single_choice",
+          "expectedSeconds": 90,
+          "analysis": "阅读课、阅览室和翻书声相互对应，操场踢球声属于另一幅画面。",
+          "family": "scene-conditional-compatibility",
+          "dimension": "understanding",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创材料：“进校时，小禾沿着花坛走向教学楼。活动课时，他在花坛边观察新叶。”哪项是活动课的完整画面？",
+          "answer": "小禾在花坛边观察新叶。",
+          "options": [
+            "小禾在花坛边观察新叶。",
+            "小禾正沿花坛走向教学楼。",
+            "小禾在教学楼内给新叶浇水。",
+            "小禾放学后在校外观察新叶。"
+          ],
+          "mode": "single_choice",
+          "expectedSeconds": 90,
+          "analysis": "活动课对应观察新叶；经过花坛与停在花坛观察是不同活动，不能只因地点接近而混用。",
+          "family": "scene-conditional-compatibility",
+          "dimension": "understanding",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创材料：“清晨，值日生在教室擦黑板。下午，几位同学在同一间教室排练课本剧。”要还原下午画面，哪项相容？",
+          "answer": "同学们在教室排练课本剧。",
+          "options": [
+            "同学们在教室排练课本剧。",
+            "值日生清晨在教室擦黑板。",
+            "值日生下午在操场擦黑板。",
+            "老师下午在图书馆排练，材料已经说了。"
+          ],
+          "mode": "single_choice",
+          "expectedSeconds": 90,
+          "analysis": "即使地点相同，下午的活动仍是排练；清晨擦黑板不能自动搬到下午。",
+          "family": "scene-conditional-compatibility",
+          "dimension": "understanding",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-reconstruction",
+      "family": "scene-evidence-grounded-reconstruction",
+      "dimension": "procedure",
+      "behavior": "把叙述组织成一个有依据的画面，主动标明补充的想象",
+      "structure": "完整短段落 → 自己的话还原指定画面并附原文依据和想象边界",
+      "distinction": "需要主动组织信息与标明依据；选择相容句、抄一个地点或补充任意细节不能替代完整还原。",
+      "exercises": [
+        {
+          "stem": "原创材料：“晨会前，礼堂的前两排已经坐好。小宁站在侧门边，轻声提醒迟到的同学从后排入座。”用自己的话还原这时的画面，指出两处依据；若补充想象，单独写明。",
+          "answer": "晨会前礼堂前排已坐好，小宁在侧门提醒后来者从后排入座。依据是前两排已坐好和侧门轻声提醒。人物表情未写，若补充须标为想象。",
+          "mode": "short_answer",
+          "expectedSeconds": 150,
+          "rubric": [
+            {
+              "criterion": "时间、地点、人物和主要活动对应材料，没有把不同场景混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "用具体文字或记录支持关键细节，区分材料事实与自己补充的想象",
+              "weight": 0.4
+            },
+            {
+              "criterion": "自己的话连贯可理解，允许不同措辞，不因答案与参考不同就判错",
+              "weight": 0.2
+            }
+          ],
+          "analysis": "按时间、场所和座位关系核对，接受不改变事实的表达；没有声音大小以外的心理依据时不替人物定心情。",
+          "family": "scene-evidence-grounded-reconstruction",
+          "dimension": "procedure",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创材料：“午后，种植角的泥土湿润。两名同学蹲在盆边看嫩芽，另一名同学把今天的日期写在标签上。”还原一个午后种植角的画面，说明主要活动的依据。",
+          "answer": "午后种植角里，两人蹲着观察嫩芽，一人在标签上写日期，盆里泥土湿润。依据是看嫩芽与写日期。不能断定刚下过雨或已经浇水。",
+          "mode": "short_answer",
+          "expectedSeconds": 150,
+          "rubric": [
+            {
+              "criterion": "时间、地点、人物和主要活动对应材料，没有把不同场景混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "用具体文字或记录支持关键细节，区分材料事实与自己补充的想象",
+              "weight": 0.4
+            },
+            {
+              "criterion": "自己的话连贯可理解，允许不同措辞，不因答案与参考不同就判错",
+              "weight": 0.2
+            }
+          ],
+          "analysis": "材料只给泥土状态，没有提供变湿的原因；因果补充要标为假设。",
+          "family": "scene-evidence-grounded-reconstruction",
+          "dimension": "procedure",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创材料：“下课铃响后，图书角仍有几位同学坐着阅读。门口的同学压低声音，互相指着书页上的插图。”请还原这个下课后的画面，并说明哪两处细节支持声音较轻。",
+          "answer": "下课后图书角有人仍坐着读书，门口同学压低声音对着插图交流。压低声音是直接声音依据，坐着阅读只说明活动，不能单独证明完全无声。",
+          "mode": "short_answer",
+          "expectedSeconds": 150,
+          "rubric": [
+            {
+              "criterion": "时间、地点、人物和主要活动对应材料，没有把不同场景混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "用具体文字或记录支持关键细节，区分材料事实与自己补充的想象",
+              "weight": 0.4
+            },
+            {
+              "criterion": "自己的话连贯可理解，允许不同措辞，不因答案与参考不同就判错",
+              "weight": 0.2
+            }
+          ],
+          "analysis": "问题有意要求核查证据数量：实际只有一处直接声音依据，应如实指出，不能为凑两处把阅读等同绝对安静。",
+          "family": "scene-evidence-grounded-reconstruction",
+          "dimension": "procedure",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创材料：“美术课结束前，桌上摆着几幅还未收起的画。小川把画笔洗净，放回靠窗的笔筒。”还原收尾时的教室画面，指出哪些内容没有写、不能当作材料事实。",
+          "answer": "美术课结束前，桌上仍有画，小川把洗净的笔放回靠窗笔筒。画的内容、全班人数和窗外天气都没有写，不能当成已经知道的事实。",
+          "mode": "short_answer",
+          "expectedSeconds": 150,
+          "rubric": [
+            {
+              "criterion": "时间、地点、人物和主要活动对应材料，没有把不同场景混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "用具体文字或记录支持关键细节，区分材料事实与自己补充的想象",
+              "weight": 0.4
+            },
+            {
+              "criterion": "自己的话连贯可理解，允许不同措辞，不因答案与参考不同就判错",
+              "weight": 0.2
+            }
+          ],
+          "analysis": "核对结束前和洗笔归位，不把未收起解释为学生粗心；事实与评价分开。",
+          "family": "scene-evidence-grounded-reconstruction",
+          "dimension": "procedure",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创材料：“放学后，校门旁只剩值日小组。两人抬着轻便的纸箱，其他人扶着箱边，慢慢走向回收点。”用自己的话描述这个场景，并解释你怎样知道他们有配合。",
+          "answer": "放学后值日小组在校门旁一起搬轻便纸箱到回收点，有人抬有人扶着边，走得慢。抬与扶是配合依据，未写的口令或对话不能说成原文内容。",
+          "mode": "short_answer",
+          "expectedSeconds": 150,
+          "rubric": [
+            {
+              "criterion": "时间、地点、人物和主要活动对应材料，没有把不同场景混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "用具体文字或记录支持关键细节，区分材料事实与自己补充的想象",
+              "weight": 0.4
+            },
+            {
+              "criterion": "自己的话连贯可理解，允许不同措辞，不因答案与参考不同就判错",
+              "weight": 0.2
+            }
+          ],
+          "analysis": "保留纸箱轻便与多人分工，不把场景扩成危险重物搬运指导；允许自己的合理表述。",
+          "family": "scene-evidence-grounded-reconstruction",
+          "dimension": "procedure",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-reconstruction",
+      "family": "scene-cross-period-conflict-repair",
+      "dimension": "transfer",
+      "behavior": "从错误合成画面反查冲突条件并恢复正确关系",
+      "structure": "明确原记录＋跨时段拼错的描述 → 指出错配并改写，保留两条原事实",
+      "distinction": "不是再选一次相容句；必须定位合成描述里哪一条件来自另一时段，并解释怎样恢复而不是删除另一条记录。",
+      "exercises": [
+        {
+          "stem": "原创记录：上午，展览室里大家围着模型看说明；下午，同一小组在操场试飞纸飞机。有人写“下午大家在展览室试飞纸飞机”。请修复这幅合成画面，并指出拼错了哪个条件。",
+          "answer": "下午应是同一小组在操场试飞纸飞机；展览室是上午看模型说明的地点。错误是把上午的地点接到了下午的活动上。",
+          "mode": "short_answer",
+          "expectedSeconds": 150,
+          "rubric": [
+            {
+              "criterion": "时间、地点、人物和主要活动对应材料，没有把不同场景混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "用具体文字或记录支持关键细节，区分材料事实与自己补充的想象",
+              "weight": 0.4
+            },
+            {
+              "criterion": "自己的话连贯可理解，允许不同措辞，不因答案与参考不同就判错",
+              "weight": 0.2
+            }
+          ],
+          "analysis": "原材料没有在室内试飞，不可保留错误地点；上午看模型的事实也不需被否定。",
+          "family": "scene-cross-period-conflict-repair",
+          "dimension": "transfer",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创记录：午休时，阅览室窗边有人看书；社团时间，音乐室里有人练习合唱。有人还原“午休时音乐室窗边响起合唱声”。请指出至少两处没有依据的拼接，并给出一个准确场景。",
+          "answer": "合唱与音乐室属于社团时间，窗边来自午休阅览室。准确场景可写午休时阅览室窗边有人看书，或社团时间音乐室有人练合唱。不能把窗边自动搬进音乐室。",
+          "mode": "short_answer",
+          "expectedSeconds": 150,
+          "rubric": [
+            {
+              "criterion": "时间、地点、人物和主要活动对应材料，没有把不同场景混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "用具体文字或记录支持关键细节，区分材料事实与自己补充的想象",
+              "weight": 0.4
+            },
+            {
+              "criterion": "自己的话连贯可理解，允许不同措辞，不因答案与参考不同就判错",
+              "weight": 0.2
+            }
+          ],
+          "analysis": "同时核对时段、地点、动作和位置，接受任一有完整依据的准确场景。",
+          "family": "scene-cross-period-conflict-repair",
+          "dimension": "transfer",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-reconstruction",
+      "family": "scene-record-to-spatial-description",
+      "dimension": "transfer",
+      "behavior": "把表格中的时间和空间关系转成连贯场景",
+      "structure": "分散在表格各列的方位/活动/时段 → 连贯描述并说明并存与先后",
+      "distinction": "信息以记录表而非连贯短文提供，需保持方位关系与同时发生的活动；不能把表的上下行误读为时间先后。",
+      "exercises": [
+        {
+          "stem": "这是一份原创午间观察表。请用自己的话还原同一时刻的庭院画面，说明哪些活动同时发生，而不是按表格行号说成先后发生。",
+          "answer": "午间庭院东侧两位同学给花浇水，西侧几位同学坐着阅读，中间小道有老师经过。三条记录同属午间同一时刻，不能编成浇花后才阅读。",
+          "mode": "short_answer",
+          "expectedSeconds": 150,
+          "rubric": [
+            {
+              "criterion": "时间、地点、人物和主要活动对应材料，没有把不同场景混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "用具体文字或记录支持关键细节，区分材料事实与自己补充的想象",
+              "weight": 0.4
+            },
+            {
+              "criterion": "自己的话连贯可理解，允许不同措辞，不因答案与参考不同就判错",
+              "weight": 0.2
+            }
+          ],
+          "analysis": "方位与人物活动一一对应，表行是地点分类，未提供活动的先后顺序。",
+          "blocks": [
+            {
+              "id": "yard-observation",
+              "type": "table",
+              "headers": [
+                "时刻",
+                "方位",
+                "观察记录"
+              ],
+              "rows": [
+                [
+                  "午间同一时刻",
+                  "东侧花坛",
+                  "两位同学给花浇水"
+                ],
+                [
+                  "午间同一时刻",
+                  "西侧长凳",
+                  "几位同学坐着阅读"
+                ],
+                [
+                  "午间同一时刻",
+                  "中间小道",
+                  "老师经过"
+                ]
+              ]
+            }
+          ],
+          "family": "scene-record-to-spatial-description",
+          "dimension": "transfer",
+          "identityVersion": 2
+        },
+        {
+          "stem": "根据原创记录表还原上课前的走廊画面。用方位组织描述，并说清哪些声音确实有记录、哪些没有记录。",
+          "answer": "上课前走廊靠教室门的一侧有同学整理队伍，靠窗的一侧有两人看展板，楼梯口老师提醒靠右慢行。提醒声有记录，看展板的两人是否交谈没有记录。",
+          "mode": "short_answer",
+          "expectedSeconds": 150,
+          "rubric": [
+            {
+              "criterion": "时间、地点、人物和主要活动对应材料，没有把不同场景混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "用具体文字或记录支持关键细节，区分材料事实与自己补充的想象",
+              "weight": 0.4
+            },
+            {
+              "criterion": "自己的话连贯可理解，允许不同措辞，不因答案与参考不同就判错",
+              "weight": 0.2
+            }
+          ],
+          "analysis": "有位置不等于有声音，也不能把未记声音写成绝对无声。",
+          "blocks": [
+            {
+              "id": "corridor-observation",
+              "type": "table",
+              "headers": [
+                "共同时间",
+                "位置",
+                "记录"
+              ],
+              "rows": [
+                [
+                  "上课前",
+                  "靠教室门",
+                  "同学整理队伍"
+                ],
+                [
+                  "上课前",
+                  "靠窗",
+                  "两人看展板"
+                ],
+                [
+                  "上课前",
+                  "楼梯口",
+                  "老师出声提醒靠右慢行"
+                ]
+              ]
+            }
+          ],
+          "family": "scene-record-to-spatial-description",
+          "dimension": "transfer",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-reconstruction",
+      "family": "scene-fact-imagination-boundary",
+      "dimension": "retention",
+      "behavior": "在新的描写中区分直接事实与合理但未证实的想象",
+      "structure": "完整新场景＋两种补充说法 → 保留可核对事实，拒绝把感受或推测写成确定原文",
+      "distinction": "与基础条件匹配不同，本结构专门核查材料是否实际给出心理、原因或声音；合理想象可以标明保留，但不能伪装成已知事实。",
+      "exercises": [
+        {
+          "stem": "原创材料：“傍晚，操场边的长椅上放着一只书包。小禾站在旁边等候。”以下哪种还原严格区分了事实与想象？",
+          "answer": "长椅上有书包，小禾在旁等候；他等谁、心情怎样，材料没有说明。",
+          "options": [
+            "长椅上有书包，小禾在旁等候；他等谁、心情怎样，材料没有说明。",
+            "小禾很难过，因为家长一定忘记接他。",
+            "小禾在高兴地等生日礼物，这是原文明说的。",
+            "长椅上没有东西，小禾正在跑步。"
+          ],
+          "mode": "single_choice",
+          "expectedSeconds": 90,
+          "analysis": "等候事实不能独自确定对象与心情；可以提出想象，但必须标明未证实。",
+          "family": "scene-fact-imagination-boundary",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创材料：“雨停后，同学们来到廊下，望着滴水的屋檐。”哪种表述有准确边界？",
+          "answer": "他们在廊下看滴水的屋檐；是否在数水滴或说话，需要更多记录。",
+          "options": [
+            "他们在廊下看滴水的屋檐；是否在数水滴或说话，需要更多记录。",
+            "他们一定在争论水滴有几颗。",
+            "他们没有发出任何声音，材料已经证明了。",
+            "他们都站在操场中央淋雨。"
+          ],
+          "mode": "single_choice",
+          "expectedSeconds": 90,
+          "analysis": "望着屋檐有直接依据，具体数数、交谈或绝对无声均不是材料给出的事实。",
+          "family": "scene-fact-imagination-boundary",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创材料：“午间，教室窗边摆着新到的盆栽，几位同学轮流看叶片。”哪项适合做有依据的还原？",
+          "answer": "同学们午间在窗边轮流看新盆栽；是否闻到香味没有记录。",
+          "options": [
+            "同学们午间在窗边轮流看新盆栽；是否闻到香味没有记录。",
+            "每片叶子都很香，所以大家一直闻。",
+            "所有同学都参加了观察，材料写得很清楚。",
+            "盆栽早已枯萎，没有人理会。"
+          ],
+          "mode": "single_choice",
+          "expectedSeconds": 90,
+          "analysis": "轮流看叶片不能推出气味或全班参与；未写的感官细节不能补成原事实。",
+          "family": "scene-fact-imagination-boundary",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创材料：“社团活动时，门厅里传来短短的鼓声。门边的同学停下脚步向里张望。”哪项区分正确？",
+          "answer": "鼓声和停步张望有依据；是否因为惊讶或喜爱而停下，材料没有确定。",
+          "options": [
+            "鼓声和停步张望有依据；是否因为惊讶或喜爱而停下，材料没有确定。",
+            "同学一定害怕鼓声，所以逃走了。",
+            "同学最喜欢打鼓，这是材料已经给出的心情。",
+            "门厅里没有任何声音，同学一直在跑。"
+          ],
+          "mode": "single_choice",
+          "expectedSeconds": 90,
+          "analysis": "材料给了声响和动作，动作可能有多种解释，不能替人物确定心理。",
+          "family": "scene-fact-imagination-boundary",
+          "dimension": "retention",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-reconstruction",
+      "family": "scene-minimum-missing-evidence",
+      "dimension": "retention",
+      "behavior": "为缺少关键条件的画面提出可回答的最小补充问题",
+      "structure": "部分观察记录＋指定还原目标 → 找到尚缺的条件并提出针对性核实问题",
+      "distinction": "不是依靠猜测补全画面，也不是从完整材料选择事实；本结构要求明确指出未知条件并寻找能补足它的原记录。",
+      "exercises": [
+        {
+          "stem": "原创记录只有：“小组在花园围着一盆植物交流。”要准确区分这是上课活动还是下课活动，还缺什么关键条件？请写一个最有针对性的核实问题，保留原来已知的地点与活动。",
+          "answer": "缺少活动时段或课程安排。可问：这次交流发生在上课时间还是下课时间？已知是花园里围着植物交流，不必再猜地点。",
+          "mode": "short_answer",
+          "expectedSeconds": 150,
+          "rubric": [
+            {
+              "criterion": "时间、地点、人物和主要活动对应材料，没有把不同场景混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "用具体文字或记录支持关键细节，区分材料事实与自己补充的想象",
+              "weight": 0.4
+            },
+            {
+              "criterion": "自己的话连贯可理解，允许不同措辞，不因答案与参考不同就判错",
+              "weight": 0.2
+            }
+          ],
+          "analysis": "核实时段即可区分给定目标，不能直接凭交流或植物推断是某一课程；接受同义提问。",
+          "family": "scene-minimum-missing-evidence",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创记录写：“下课后，几位同学围在一起，能听见翻页声。”要在教室、图书馆、走廊三处中准确还原地点，缺什么信息？请给出一个核实问题，并指出已知的声音。",
+          "answer": "缺具体地点，可问：他们围在学校哪一处翻看材料？已知声音是翻页声，不能凭翻页就确定一定在图书馆。",
+          "mode": "short_answer",
+          "expectedSeconds": 150,
+          "rubric": [
+            {
+              "criterion": "时间、地点、人物和主要活动对应材料，没有把不同场景混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "用具体文字或记录支持关键细节，区分材料事实与自己补充的想象",
+              "weight": 0.4
+            },
+            {
+              "criterion": "自己的话连贯可理解，允许不同措辞，不因答案与参考不同就判错",
+              "weight": 0.2
+            }
+          ],
+          "analysis": "同一种活动可发生在不同场所，地点仍需记录；不把可能地点选成确定答案。",
+          "family": "scene-minimum-missing-evidence",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创记录写：“晨读前，教室门边有轻轻的说话声。”要准确说清谁在做什么，还需补哪类信息？请给出一个能直接核实的问题。",
+          "answer": "缺少说话者及具体活动，可问：门边是谁在说话，他们在问候、讨论还是做其他事情？晨读前、教室门边和轻声已有依据。",
+          "mode": "short_answer",
+          "expectedSeconds": 150,
+          "rubric": [
+            {
+              "criterion": "时间、地点、人物和主要活动对应材料，没有把不同场景混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "用具体文字或记录支持关键细节，区分材料事实与自己补充的想象",
+              "weight": 0.4
+            },
+            {
+              "criterion": "自己的话连贯可理解，允许不同措辞，不因答案与参考不同就判错",
+              "weight": 0.2
+            }
+          ],
+          "analysis": "不把轻声自动解释为问好或争论；核实主体和活动，保留已知条件。",
+          "family": "scene-minimum-missing-evidence",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创记录写：“午休时，小宁在阅览室把一本书递给小川。”若要说明这是借书、还书还是共同选书，还缺什么？请写一个针对交接经过的核实问题。",
+          "answer": "缺交接目的及前后经过。可问：这本书原来由谁保管，这次递交是借出、归还还是一起选书？只凭递书动作不能确定目的。",
+          "mode": "short_answer",
+          "expectedSeconds": 150,
+          "rubric": [
+            {
+              "criterion": "时间、地点、人物和主要活动对应材料，没有把不同场景混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "用具体文字或记录支持关键细节，区分材料事实与自己补充的想象",
+              "weight": 0.4
+            },
+            {
+              "criterion": "自己的话连贯可理解，允许不同措辞，不因答案与参考不同就判错",
+              "weight": 0.2
+            }
+          ],
+          "analysis": "问目的与前后关系，不改变午休、阅览室与递书动作；不根据一个动作直接给因果结论。",
+          "family": "scene-minimum-missing-evidence",
+          "dimension": "retention",
+          "identityVersion": 2
+        }
+      ]
+    }
+  ]
+}
