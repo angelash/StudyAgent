@@ -1,0 +1,104 @@
+{
+  "protocol": "study-agent-original-response-workbench-ui-v1",
+  "at": "2026-11-01T11:44:08.056Z",
+  "applicationIntegrated": false,
+  "mainApplicationSchema": 32,
+  "candidateSchema": 33,
+  "sourceIncrement": {
+    "files": 2,
+    "applicationFiles": 1,
+    "unexecutedOrdinaryBaselineRegressionTests": 1,
+    "archive": "candidate-source-delta.json.gz",
+    "sha256": "fcf8aa3da3a3107b7354466634647afed8713d771c2b987c2944b394e0d713a6",
+    "parentArchive": "doc/evidence/2026-11-01/workspace-r6-original-workbench-ui/candidate-source-delta.json.gz",
+    "parentSha256": "1e6903db2469d9f04049b3cc7f69e689e92f872e7f586d9e0f4bc2132543afbd"
+  },
+  "planReproduction": {
+    "passed": 7,
+    "failed": 1,
+    "http": 400
+  },
+  "planCorrected": {
+    "passed": 8,
+    "failed": 0,
+    "http": 201,
+    "pageErrors": 0
+  },
+  "responseBatches": [
+    {
+      "label": "original-response-ui-first",
+      "passed": 19,
+      "failed": 0,
+      "answers": 10,
+      "modes": [
+        "multi_blank",
+        "single_choice",
+        "short_answer",
+        "audio_record"
+      ],
+      "media": 1
+    },
+    {
+      "label": "original-response-ui-second",
+      "passed": 17,
+      "failed": 0,
+      "answers": 8,
+      "modes": [
+        "audio_record",
+        "image_upload",
+        "single_choice",
+        "short_answer"
+      ],
+      "media": 2,
+      "nativeTables": 2
+    }
+  ],
+  "allRealizedModes": [
+    "multi_blank",
+    "single_choice",
+    "short_answer",
+    "audio_record",
+    "image_upload"
+  ],
+  "singleBatchCountsNeverAddedTogether": true,
+  "sameOriginalCourseAndLearnerContinued": true,
+  "firstResponseCommitThenLostReplyAndExactCommandReplay": true,
+  "savedDraftReloadsForMultiBlankOpenTextAndBothMedia": true,
+  "actualNormalizedMediaDownloadedAndShaChecked": true,
+  "openAndMediaRemainPendingReview": true,
+  "originalBaselineAndCourseTargetsRetained": true,
+  "allEightTargetsInEachReport": true,
+  "noHumanLearningEvidence": true,
+  "pureColorImagesNotHandwriting": true,
+  "sineTonesNotSpeech": true,
+  "webBuild": {
+    "status": 0,
+    "id": "ezOJ10mo_h2cMFkdAVzPD",
+    "inputFiles": 1608,
+    "apiInputsUnchanged": 1911
+  },
+  "newCompleteApi": {
+    "label": "original-workbench-whole-second",
+    "status": "running-at-archive",
+    "resultNotClaimed": true
+  },
+  "completeBrowser": {
+    "firstLabel": "workbench-browser-whole-first",
+    "firstDiscovered": 634,
+    "firstExecuted": 0,
+    "firstPreparationFailureRetained": true,
+    "correctedLabel": "workbench-browser-whole-second",
+    "status": "running-at-archive",
+    "newOrdinaryBaselineRegressionNotYetClaimed": true
+  },
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFilesUnchanged": 1063,
+  "teacherReviewed": false,
+  "wholeTextbookComplete": false,
+  "remainingOriginal32CheckPurposeGapsNotClosedByTheseCounts": true,
+  "localOnly": true,
+  "wholeGoal": "active"
+}

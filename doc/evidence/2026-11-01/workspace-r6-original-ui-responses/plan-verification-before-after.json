@@ -1,0 +1,19 @@
+{
+  "before": {
+    "status": 400,
+    "includePrerequisites": true,
+    "error": {
+      "code": "bad_request",
+      "message": "本课独立检查沿用完整原目标；原因对照请从原报告另行安排"
+    }
+  },
+  "after": {
+    "status": 201,
+    "includePrerequisites": false,
+    "adaptive": false,
+    "originalTeachingOriginRetained": true,
+    "originalPlanSha256": "fb31f086aae3ef379bb06505fb044c472140b9a62d96c2722b6c971c568b086f"
+  },
+  "privateRequestsAndBaselineOriginRemainLocal": true,
+  "serverValidationAndPersistedPlanUnchanged": true
+}

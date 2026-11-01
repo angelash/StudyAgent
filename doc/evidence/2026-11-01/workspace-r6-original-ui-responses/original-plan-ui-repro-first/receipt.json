@@ -1,0 +1,47 @@
+{
+  "at": "2026-11-01T11:27:33.542Z",
+  "checks": [
+    {
+      "name": "original-parent-login-and-original-course-in-workbench",
+      "passed": true
+    },
+    {
+      "name": "original-course-mobile-navigation-and-width",
+      "passed": true
+    },
+    {
+      "name": "original-adult-classroom-and-native-visual-content",
+      "passed": true
+    },
+    {
+      "name": "actual-learning-code-login-and-resumed-original-child-classroom-mobile",
+      "passed": true
+    },
+    {
+      "name": "original-child-independent-check-entry-is-in-course-workbench",
+      "passed": true
+    },
+    {
+      "name": "original-live-purpose-coverage-notice-matches-all-eight-targets",
+      "passed": true
+    },
+    {
+      "name": "workspace-primary-button-remains-readable-when-enabled",
+      "passed": true
+    },
+    {
+      "name": "original-active-plan-new-question-verification-mobile",
+      "passed": false,
+      "error": "expect(received).toBe(expected) // Object.is equality\n\nExpected: 201\nReceived: 400"
+    }
+  ],
+  "pageErrors": [],
+  "error": "expect(received).toBe(expected) // Object.is equality\n\nExpected: 201\nReceived: 400",
+  "completed": false,
+  "buildId": "QmLJL9yPf__UB67hesBAJ",
+  "buildLabel": "original-ui-build-second",
+  "originalPrivateReceiptSha256": "5cfaf9760dd36ae43ed4d2dbb76adf5aed6255eb536986c42ebd63d440ad4e7f",
+  "screenshotsAndPrivateRequestsRemainLocal": true,
+  "engineeringQaOnly": true,
+  "humanLearningEvidence": false
+}
