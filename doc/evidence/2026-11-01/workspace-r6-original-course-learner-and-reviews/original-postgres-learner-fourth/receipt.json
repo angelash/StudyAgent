@@ -1,0 +1,247 @@
+{
+  "protocol": "study-agent-source-original-learner-journey-v1",
+  "at": "2026-11-01T09:47:54.809Z",
+  "candidate": "data/qa/p187",
+  "kind": "postgres",
+  "originLabel": "production-postgres-journey-first",
+  "records": [
+    {
+      "id": "exact-confirmed-source-options-retain-eight-targets",
+      "ok": true
+    },
+    {
+      "id": "course-preview-is-read-only-and-covers-all-eight",
+      "ok": true
+    },
+    {
+      "id": "actual-original-course-created-with-all-eight",
+      "ok": true
+    },
+    {
+      "id": "same-complete-course-command-replays-exactly",
+      "ok": true
+    },
+    {
+      "id": "adult-original-classroom-does-not-create-child-exposure",
+      "ok": true
+    },
+    {
+      "id": "actual-student-classroom-retains-eight-targets",
+      "ok": true
+    },
+    {
+      "id": "actual-display-records-all-eight-and-replays",
+      "ok": true
+    },
+    {
+      "id": "bounded-preview-retains-each-original-target",
+      "ok": true,
+      "coverage": [
+        {
+          "atomId": "source:chinese:g3:02915a7d:word-reading",
+          "selected": 1
+        },
+        {
+          "atomId": "source:chinese:g3:02915a7d:handwriting",
+          "selected": 1
+        },
+        {
+          "atomId": "core:chinese:contextmeaning",
+          "selected": 1
+        },
+        {
+          "atomId": "source:chinese:g3:02915a7d:scene-reconstruction",
+          "selected": 1
+        },
+        {
+          "atomId": "core:chinese:detail-evidence",
+          "selected": 1
+        },
+        {
+          "atomId": "core:chinese:personification",
+          "selected": 1
+        },
+        {
+          "atomId": "source:chinese:g3:02915a7d:scene-description",
+          "selected": 1
+        },
+        {
+          "atomId": "source:chinese:g3:02915a7d:feature-summary",
+          "selected": 1
+        }
+      ],
+      "gaps": null
+    },
+    {
+      "id": "blueprint-start-replays-same-session",
+      "ok": true
+    },
+    {
+      "id": "practice-withholds-answers-and-does-not-consume-retention-stock",
+      "ok": true
+    },
+    {
+      "id": "real-audio-and-image-normalizers-available",
+      "ok": true
+    },
+    {
+      "id": "student-render-withholds-private-grading-measurement:question_0295a053-1e25-48e7-81a8-6368d10399e0",
+      "ok": true
+    },
+    {
+      "id": "media-start-replay-student_media_d9adf8fc-af9a-4cdb-a537-568ec568e2bd",
+      "ok": true
+    },
+    {
+      "id": "actual-normalized-media-readback-student_media_d9adf8fc-af9a-4cdb-a537-568ec568e2bd",
+      "ok": true
+    },
+    {
+      "id": "actual-original-first-response-replay-measurement:question_0295a053-1e25-48e7-81a8-6368d10399e0",
+      "ok": true
+    },
+    {
+      "id": "student-render-withholds-private-grading-measurement:question_5022cda5-f500-4f5f-8f20-497ff9143ef9",
+      "ok": true
+    },
+    {
+      "id": "media-start-replay-student_media_d35bc184-f6b9-4c85-aeff-5f01b74978e0",
+      "ok": true
+    },
+    {
+      "id": "actual-normalized-media-readback-student_media_d35bc184-f6b9-4c85-aeff-5f01b74978e0",
+      "ok": true
+    },
+    {
+      "id": "actual-original-first-response-replay-measurement:question_5022cda5-f500-4f5f-8f20-497ff9143ef9",
+      "ok": true
+    },
+    {
+      "id": "student-render-withholds-private-grading-measurement:foundation_q_v2_13dc777875c7b596ae5b5e77",
+      "ok": true
+    },
+    {
+      "id": "actual-original-first-response-replay-measurement:foundation_q_v2_13dc777875c7b596ae5b5e77",
+      "ok": true
+    },
+    {
+      "id": "student-render-withholds-private-grading-measurement:question_265ec442-31e0-495f-95f0-51e562f48794",
+      "ok": true
+    },
+    {
+      "id": "actual-original-first-response-replay-measurement:question_265ec442-31e0-495f-95f0-51e562f48794",
+      "ok": true
+    },
+    {
+      "id": "student-render-withholds-private-grading-measurement:foundation_q_v2_0a48333344cab43e5b8932f3",
+      "ok": true
+    },
+    {
+      "id": "actual-original-first-response-replay-measurement:foundation_q_v2_0a48333344cab43e5b8932f3",
+      "ok": true
+    },
+    {
+      "id": "student-render-withholds-private-grading-measurement:foundation_q_v2_06f8786262d60eafb6b4c777",
+      "ok": true
+    },
+    {
+      "id": "actual-original-first-response-replay-measurement:foundation_q_v2_06f8786262d60eafb6b4c777",
+      "ok": true
+    },
+    {
+      "id": "student-render-withholds-private-grading-measurement:question_402273e3-123b-4fd8-b703-c692b0a9eadc",
+      "ok": true
+    },
+    {
+      "id": "media-start-replay-student_media_f294482e-a87a-4f01-a3e2-5b975b1b8ed0",
+      "ok": true
+    },
+    {
+      "id": "actual-normalized-media-readback-student_media_f294482e-a87a-4f01-a3e2-5b975b1b8ed0",
+      "ok": true
+    },
+    {
+      "id": "actual-original-first-response-replay-measurement:question_402273e3-123b-4fd8-b703-c692b0a9eadc",
+      "ok": true
+    },
+    {
+      "id": "student-render-withholds-private-grading-measurement:question_0e91c556-71ec-4aba-b2d7-816b90bb49c5",
+      "ok": true
+    },
+    {
+      "id": "actual-original-first-response-replay-measurement:question_0e91c556-71ec-4aba-b2d7-816b90bb49c5",
+      "ok": true
+    },
+    {
+      "id": "both-real-upload-modes-exercised",
+      "ok": true
+    },
+    {
+      "id": "actual-original-guidance-plan-keeps-baseline-and-pending-review",
+      "ok": true
+    },
+    {
+      "id": "original-plan-create-command-replays",
+      "ok": true
+    },
+    {
+      "id": "original-plan-schedules-four-real-future-intervals-per-prioritized-target",
+      "ok": true
+    },
+    {
+      "id": "before-due-start-and-too-early-reschedule-do-not-change-original-tasks",
+      "ok": true
+    },
+    {
+      "id": "original-course-adoption-retained",
+      "ok": true
+    },
+    {
+      "id": "grade4-profile-preserved-with-grade3-course",
+      "ok": true
+    },
+    {
+      "id": "all-original-response-targets-and-report-retained",
+      "ok": true
+    },
+    {
+      "id": "actual-open-media-responses-retain-null-scores",
+      "ok": true
+    },
+    {
+      "id": "every-actual-media-row-matches-uploaded-and-read-back-bytes",
+      "ok": true
+    },
+    {
+      "id": "cold-read-original-course-responses-and-uploaded-media",
+      "ok": true
+    }
+  ],
+  "courseTargets": 8,
+  "courseGrade": 3,
+  "profileGrade": 4,
+  "sessionItems": 8,
+  "responseTargets": 8,
+  "responses": 8,
+  "pendingReview": 4,
+  "uploadedMedia": 3,
+  "imageUploads": 1,
+  "audioUploads": 2,
+  "normalizedMediaShaReadback": true,
+  "adoptions": 1,
+  "reviewTasks": 12,
+  "prioritizedPlanTargets": 3,
+  "allEightTargetsNotAllScheduledAtOnce": true,
+  "originalFutureIntervalsCreated": true,
+  "beforeDueStartAndTooEarlyRescheduleRejected": true,
+  "syntheticQaStudent": true,
+  "pureColorImageIsNotHandwriting": true,
+  "sineToneIsNotSpeech": true,
+  "closedAnswersAreEngineeringGoldens": true,
+  "teacherReviewed": false,
+  "humanLearningEvidence": false,
+  "actualWallClockRetentionVerified": false,
+  "applicationIntegrated": false,
+  "localOnly": true,
+  "wholeGoal": "active"
+}

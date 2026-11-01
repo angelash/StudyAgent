@@ -1,0 +1,124 @@
+{
+  "at": "2026-11-01T09:42:20.660Z",
+  "message": "HTTP 400 at /diagnostics/sessions/diagnostic_405095e2-db9a-4bd0-9292-305973e9b12e/responses: {\"code\":\"bad_request\",\"message\":\"作答题目或模式不匹配\"}",
+  "records": [
+    {
+      "id": "exact-confirmed-source-options-retain-eight-targets",
+      "ok": true
+    },
+    {
+      "id": "course-preview-is-read-only-and-covers-all-eight",
+      "ok": true
+    },
+    {
+      "id": "actual-original-course-created-with-all-eight",
+      "ok": true
+    },
+    {
+      "id": "same-complete-course-command-replays-exactly",
+      "ok": true
+    },
+    {
+      "id": "adult-original-classroom-does-not-create-child-exposure",
+      "ok": true
+    },
+    {
+      "id": "actual-student-classroom-retains-eight-targets",
+      "ok": true
+    },
+    {
+      "id": "actual-display-records-all-eight-and-replays",
+      "ok": true
+    },
+    {
+      "id": "bounded-preview-retains-each-original-target",
+      "ok": true,
+      "coverage": [
+        {
+          "atomId": "source:chinese:g3:02915a7d:word-reading",
+          "selected": 1
+        },
+        {
+          "atomId": "source:chinese:g3:02915a7d:handwriting",
+          "selected": 1
+        },
+        {
+          "atomId": "core:chinese:contextmeaning",
+          "selected": 1
+        },
+        {
+          "atomId": "source:chinese:g3:02915a7d:scene-reconstruction",
+          "selected": 1
+        },
+        {
+          "atomId": "core:chinese:detail-evidence",
+          "selected": 1
+        },
+        {
+          "atomId": "core:chinese:personification",
+          "selected": 1
+        },
+        {
+          "atomId": "source:chinese:g3:02915a7d:scene-description",
+          "selected": 1
+        },
+        {
+          "atomId": "source:chinese:g3:02915a7d:feature-summary",
+          "selected": 1
+        }
+      ],
+      "gaps": null
+    },
+    {
+      "id": "blueprint-start-replays-same-session",
+      "ok": true
+    },
+    {
+      "id": "practice-withholds-answers-and-does-not-consume-retention-stock",
+      "ok": true
+    },
+    {
+      "id": "real-audio-and-image-normalizers-available",
+      "ok": true
+    },
+    {
+      "id": "student-render-withholds-private-grading-measurement:question_7846cdc4-02d3-4766-bbfc-f6018ca6c304",
+      "ok": true
+    },
+    {
+      "id": "media-start-replay-student_media_44611e29-1a44-4ba5-bd18-3834ffe73b59",
+      "ok": true
+    },
+    {
+      "id": "actual-normalized-media-readback-student_media_44611e29-1a44-4ba5-bd18-3834ffe73b59",
+      "ok": true
+    },
+    {
+      "id": "actual-original-first-response-replay-measurement:question_7846cdc4-02d3-4766-bbfc-f6018ca6c304",
+      "ok": true
+    },
+    {
+      "id": "student-render-withholds-private-grading-measurement:question_06bed687-213c-46bb-bd13-931cf9869aa1",
+      "ok": true
+    },
+    {
+      "id": "media-start-replay-student_media_f81067bc-f9be-4393-9aad-b4fa973f2cd5",
+      "ok": true
+    },
+    {
+      "id": "actual-normalized-media-readback-student_media_f81067bc-f9be-4393-9aad-b4fa973f2cd5",
+      "ok": true
+    },
+    {
+      "id": "actual-original-first-response-replay-measurement:question_06bed687-213c-46bb-bd13-931cf9869aa1",
+      "ok": true
+    },
+    {
+      "id": "student-render-withholds-private-grading-measurement:foundation_q_v2_13dc777875c7b596ae5b5e77",
+      "ok": true
+    }
+  ],
+  "originalPrivateSha256": "a8371ca57cf98d08c72ded50a16e7d3155bdee542144164233ea2aac7df74f4c",
+  "originalPrivateResultRetainedLocally": true,
+  "syntheticQaOnly": true
+}

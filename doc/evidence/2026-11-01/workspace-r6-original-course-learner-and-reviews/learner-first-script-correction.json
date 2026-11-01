@@ -1,0 +1,11 @@
+{
+  "firstDriverSha256": "e1edf85b9b388339cfac4dd8b28ef6a246589acedd70720f6b5aff1b915acb9e",
+  "correctedDriverSha256": "82deccc776f0dde20af0f121d58c9e279f42f68abc7a82a12d68af4765bd3ea6",
+  "firstFailures": [
+    "original-sqlite-learner-first",
+    "original-postgres-learner-first"
+  ],
+  "cause": "The driver incorrectly expected one generated course lesson. The existing product creates a learn lesson and a practice lesson for one selected textbook entry, both with all eight targets.",
+  "applicationChanged": false,
+  "priorDatabasesAndResultsRetained": true
+}

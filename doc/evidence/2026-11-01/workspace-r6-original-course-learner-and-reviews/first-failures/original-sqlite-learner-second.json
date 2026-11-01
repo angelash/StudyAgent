@@ -1,0 +1,76 @@
+{
+  "at": "2026-11-01T09:28:34.739Z",
+  "message": "HTTP 500 at /diagnostics/blueprints/blueprint%3Af0faeef5733a8de42d9fbe550eff522a800715282e3edb999039f1e42dc25074/start: {\"code\":\"internal_server_error\",\"message\":\"服务暂时不可用，请稍后重试\"}",
+  "records": [
+    {
+      "id": "exact-confirmed-source-options-retain-eight-targets",
+      "ok": true
+    },
+    {
+      "id": "course-preview-is-read-only-and-covers-all-eight",
+      "ok": true
+    },
+    {
+      "id": "actual-original-course-created-with-all-eight",
+      "ok": true
+    },
+    {
+      "id": "same-complete-course-command-replays-exactly",
+      "ok": true
+    },
+    {
+      "id": "adult-original-classroom-does-not-create-child-exposure",
+      "ok": true
+    },
+    {
+      "id": "actual-student-classroom-retains-eight-targets",
+      "ok": true
+    },
+    {
+      "id": "actual-display-records-all-eight-and-replays",
+      "ok": true
+    },
+    {
+      "id": "bounded-preview-retains-each-original-target",
+      "ok": true,
+      "coverage": [
+        {
+          "atomId": "source:chinese:g3:02915a7d:word-reading",
+          "selected": 1
+        },
+        {
+          "atomId": "source:chinese:g3:02915a7d:handwriting",
+          "selected": 1
+        },
+        {
+          "atomId": "core:chinese:contextmeaning",
+          "selected": 1
+        },
+        {
+          "atomId": "source:chinese:g3:02915a7d:scene-reconstruction",
+          "selected": 1
+        },
+        {
+          "atomId": "core:chinese:detail-evidence",
+          "selected": 1
+        },
+        {
+          "atomId": "core:chinese:personification",
+          "selected": 1
+        },
+        {
+          "atomId": "source:chinese:g3:02915a7d:scene-description",
+          "selected": 1
+        },
+        {
+          "atomId": "source:chinese:g3:02915a7d:feature-summary",
+          "selected": 1
+        }
+      ],
+      "gaps": null
+    }
+  ],
+  "originalPrivateSha256": "b1157dae2a4835aede8f086d9c9613aa291c6b9b76c1b63debd1a7dd91accf5d",
+  "originalPrivateResultRetainedLocally": true,
+  "syntheticQaOnly": true
+}

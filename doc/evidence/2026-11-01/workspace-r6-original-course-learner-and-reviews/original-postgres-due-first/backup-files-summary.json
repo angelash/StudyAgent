@@ -1,0 +1,40 @@
+{
+  "format": "study-agent-postgres-backup-v1",
+  "id": "a96e7827-0d61-47eb-bac4-7ceb9a287002",
+  "createdAt": "2026-11-01T10:01:44.586Z",
+  "assetsIncluded": false,
+  "files": [
+    {
+      "path": "database/postgres.dump",
+      "size": 4507117,
+      "sha256": "236c514749f77e32de73e1fa6939cb01655c4d90c9dda0a0d52307b12f2acbcb"
+    },
+    {
+      "path": "data/processing/blobs/28b9c3f38d6e9fbede480cdb542c1e34928413448387c97288cecdcfcc21ba3e",
+      "size": 3361,
+      "sha256": "28b9c3f38d6e9fbede480cdb542c1e34928413448387c97288cecdcfcc21ba3e"
+    },
+    {
+      "path": "data/processing/blobs/87bf33062bcbaa84d099fead1bbed45d84941a1366ea1d3dd820e494a1278e88",
+      "size": 3381,
+      "sha256": "87bf33062bcbaa84d099fead1bbed45d84941a1366ea1d3dd820e494a1278e88"
+    },
+    {
+      "path": "data/student-media/student_media_d9adf8fc-af9a-4cdb-a537-568ec568e2bd/ready/5d39dccff08cb1e436542165de528bf7f77c0cdbde3c79f5c9ac3309368bb278",
+      "size": 16078,
+      "sha256": "5d39dccff08cb1e436542165de528bf7f77c0cdbde3c79f5c9ac3309368bb278"
+    },
+    {
+      "path": "data/student-media/student_media_d35bc184-f6b9-4c85-aeff-5f01b74978e0/ready/e03d1ded05cbc6aa1bcb96fe18a5b10a08eb4d98e7bb494a091e5a56a9bce4b9",
+      "size": 270,
+      "sha256": "e03d1ded05cbc6aa1bcb96fe18a5b10a08eb4d98e7bb494a091e5a56a9bce4b9"
+    },
+    {
+      "path": "data/student-media/student_media_f294482e-a87a-4f01-a3e2-5b975b1b8ed0/ready/5d39dccff08cb1e436542165de528bf7f77c0cdbde3c79f5c9ac3309368bb278",
+      "size": 16078,
+      "sha256": "5d39dccff08cb1e436542165de528bf7f77c0cdbde3c79f5c9ac3309368bb278"
+    }
+  ],
+  "originalPrivateResultsSha256": "fec2d9b8fe37f6f2eac600118ad2076d7180a27a55ee839d70e512bab10d1a06",
+  "actualRestoreAndOriginalMediaReadback": true
+}

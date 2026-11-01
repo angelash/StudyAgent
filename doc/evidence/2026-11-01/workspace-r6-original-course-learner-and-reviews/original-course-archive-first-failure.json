@@ -1,0 +1,424 @@
+{
+  "at": "2026-11-01T10:10:28.596Z",
+  "operation": "first evidence archive",
+  "errorCode": "ENOENT",
+  "missingRelativeDirectory": "first-failures",
+  "cause": "The write helper created parent directories for copy operations but not for JSON write operations.",
+  "scriptSha256": "f9c24e1ad567045e3f834fe2be981e6f00e66402bb617e7547a94b77c7dc6296",
+  "source": "doc\\evidence\\2026-11-01\\workspace-r6-original-course-learner-and-reviews",
+  "keeper": "data\\qa\\workspace-original-teaching-first-20261101\\original-course-archive-first-partial",
+  "files": [
+    {
+      "path": "candidate-source-delta.json.gz",
+      "size": 62245,
+      "sha256": "def06df4d83184e1d12f1e19562a6016bdd1dd77d452be338d138f10e70f00ac"
+    },
+    {
+      "path": "due-api-build-first-source-check.json",
+      "size": 81,
+      "sha256": "2c730ba46f3e43186275f33e86b254c2912dc1449c17c037aed87a7cc74dfac6"
+    },
+    {
+      "path": "due-api-build-first.json",
+      "size": 40,
+      "sha256": "f07cc4ed90889d7da25577a65a1fdad7cbd2af8286c14f41a5af4b0e3029d3b4"
+    },
+    {
+      "path": "due-api-build-first.log.gz",
+      "size": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63"
+    },
+    {
+      "path": "due-api-build-second-source-check.json",
+      "size": 81,
+      "sha256": "2c730ba46f3e43186275f33e86b254c2912dc1449c17c037aed87a7cc74dfac6"
+    },
+    {
+      "path": "due-api-build-second.json",
+      "size": 40,
+      "sha256": "f07cc4ed90889d7da25577a65a1fdad7cbd2af8286c14f41a5af4b0e3029d3b4"
+    },
+    {
+      "path": "due-api-build-second.log.gz",
+      "size": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63"
+    },
+    {
+      "path": "due-api-type-first-source-check.json",
+      "size": 81,
+      "sha256": "2c730ba46f3e43186275f33e86b254c2912dc1449c17c037aed87a7cc74dfac6"
+    },
+    {
+      "path": "due-api-type-first.json",
+      "size": 39,
+      "sha256": "b0d646fe1d180e5e0e9567b78b1fe315ad4a0dfb3e92e4ded6e306b448013e10"
+    },
+    {
+      "path": "due-api-type-first.log.gz",
+      "size": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63"
+    },
+    {
+      "path": "due-api-type-second-source-check.json",
+      "size": 81,
+      "sha256": "2c730ba46f3e43186275f33e86b254c2912dc1449c17c037aed87a7cc74dfac6"
+    },
+    {
+      "path": "due-api-type-second.json",
+      "size": 39,
+      "sha256": "b0d646fe1d180e5e0e9567b78b1fe315ad4a0dfb3e92e4ded6e306b448013e10"
+    },
+    {
+      "path": "due-api-type-second.log.gz",
+      "size": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63"
+    },
+    {
+      "path": "due-course-fixed-first-source-check.json",
+      "size": 83,
+      "sha256": "f48f7d50bd2f82e8746ca58b5541c3cf01415e776cf3616e37abd0a02d3f7461"
+    },
+    {
+      "path": "due-course-fixed-first.json",
+      "size": 19517,
+      "sha256": "720fe75b96ccfa7b80e742b91ad2943301b2ac254637f3707b8b07ad4650f8a2"
+    },
+    {
+      "path": "due-course-fixed-first.log.gz",
+      "size": 381,
+      "sha256": "4abcd6400fc07b4b1f95ce7f5aea8d292e56ce7e6985a1b3f7791801f4d47ea5"
+    },
+    {
+      "path": "due-course-fixed-second-source-check.json",
+      "size": 83,
+      "sha256": "f48f7d50bd2f82e8746ca58b5541c3cf01415e776cf3616e37abd0a02d3f7461"
+    },
+    {
+      "path": "due-course-fixed-second.json",
+      "size": 18653,
+      "sha256": "0360c7181c021f884a0e930dec36f1e233b89bd832b49f4fdf158531ed6f3ede"
+    },
+    {
+      "path": "due-course-fixed-second.log.gz",
+      "size": 383,
+      "sha256": "a55e1eb1e52c55366582dd660b1e219b09ce7af0eccaf7e54314bb7f0fa57402"
+    },
+    {
+      "path": "due-course-postgres-first-source-check.json",
+      "size": 83,
+      "sha256": "f48f7d50bd2f82e8746ca58b5541c3cf01415e776cf3616e37abd0a02d3f7461"
+    },
+    {
+      "path": "due-course-postgres-first.json",
+      "size": 13299,
+      "sha256": "5fe696e94e5d752c8c391acdf82689a91e099496156a85ed8f27a2567dcd9b09"
+    },
+    {
+      "path": "due-course-postgres-first.log.gz",
+      "size": 381,
+      "sha256": "672a8a5c1aece8adaa9f68e69ac0921e34caa0d1cd5c1249cf796fc4e1f2dca2"
+    },
+    {
+      "path": "due-course-repro-first-source-check.json",
+      "size": 83,
+      "sha256": "0711a2f2c180f7cf6ffa72552cb1697666d9d7d0a09c4915208f509113b8cfbe"
+    },
+    {
+      "path": "due-course-repro-first.json",
+      "size": 13977,
+      "sha256": "86045bad1ac53799fa1c7acf4b74230ca414541866fb8f14b7c67371d1b51e45"
+    },
+    {
+      "path": "due-course-repro-first.log.gz",
+      "size": 380,
+      "sha256": "94d8f61aa1d3438abbb96aba316908ab1df62a05ebf39d2ca529f7e759e67d2c"
+    },
+    {
+      "path": "final-before-input-manifest.json.gz",
+      "size": 87370,
+      "sha256": "b350956d866e221e4a040b2c56b8353bea4671fc9c77913e03d86f378e50c3b4"
+    },
+    {
+      "path": "first-due-before-input-manifest.json.gz",
+      "size": 87365,
+      "sha256": "d8e61059bd98f6cf93ebad75e0288a7b13261fa6f1e501d70665618fa22ddce8"
+    },
+    {
+      "path": "learner-before-input-manifest.json.gz",
+      "size": 90385,
+      "sha256": "3dfab45d95185e327867b56396ac0d185b7b6e96c8118b19637db8ffa8b3bb85"
+    },
+    {
+      "path": "legacy-api-build-first-source-check.json",
+      "size": 81,
+      "sha256": "0d5c2f4a9de6e5850d9e7566d4b61c7d42d96701705b284fb55e37ff42b675a3"
+    },
+    {
+      "path": "legacy-api-build-first.json",
+      "size": 40,
+      "sha256": "f07cc4ed90889d7da25577a65a1fdad7cbd2af8286c14f41a5af4b0e3029d3b4"
+    },
+    {
+      "path": "legacy-api-build-first.log.gz",
+      "size": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63"
+    },
+    {
+      "path": "legacy-api-type-first-source-check.json",
+      "size": 81,
+      "sha256": "03b7a6f7b9ccb3594d759a784014af754578f89f4c09e8b0bc9810ba91c01ab5"
+    },
+    {
+      "path": "legacy-api-type-first.json",
+      "size": 39,
+      "sha256": "b0d646fe1d180e5e0e9567b78b1fe315ad4a0dfb3e92e4ded6e306b448013e10"
+    },
+    {
+      "path": "legacy-api-type-first.log.gz",
+      "size": 20,
+      "sha256": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63"
+    },
+    {
+      "path": "legacy-course-fixed-first-source-check.json",
+      "size": 83,
+      "sha256": "0711a2f2c180f7cf6ffa72552cb1697666d9d7d0a09c4915208f509113b8cfbe"
+    },
+    {
+      "path": "legacy-course-fixed-first.json",
+      "size": 18141,
+      "sha256": "8c0f20bddf35dc4f8c796940baa2aa893b0451305486f9bd399f8b6dea7af6ec"
+    },
+    {
+      "path": "legacy-course-fixed-first.log.gz",
+      "size": 382,
+      "sha256": "5b83bee7795e2ca11f4d69daed7bbdb06b1c5b96f07fbf00c2ed7845b5807d96"
+    },
+    {
+      "path": "legacy-course-postgres-first-source-check.json",
+      "size": 83,
+      "sha256": "0711a2f2c180f7cf6ffa72552cb1697666d9d7d0a09c4915208f509113b8cfbe"
+    },
+    {
+      "path": "legacy-course-postgres-first.json",
+      "size": 12775,
+      "sha256": "55239eca8572e1fb64e50741c060cb887a7fb9883a3433d2bf6ca6cc243d5004"
+    },
+    {
+      "path": "legacy-course-postgres-first.log.gz",
+      "size": 383,
+      "sha256": "8d8a8a38f9f9d098e9a175de69dc22f54da5e522e33d5df49c96082387d408a7"
+    },
+    {
+      "path": "legacy-course-repro-first-source-check.json",
+      "size": 83,
+      "sha256": "5709fa99a9c66b89ebbf2f8a1e04eb30a148b115a6c9e674882f019595385547"
+    },
+    {
+      "path": "legacy-course-repro-first.json",
+      "size": 15568,
+      "sha256": "d92b7d7e0a75e68825e1f0658e88a860115206b8027bd17f523038ecde96e2d1"
+    },
+    {
+      "path": "legacy-course-repro-first.log.gz",
+      "size": 381,
+      "sha256": "bb870f3edd87706f2df835594f2f4a8163e5479c867ddcfaa809b16071ae44cb"
+    },
+    {
+      "path": "original-postgres-due-first/backup-files-summary.json",
+      "size": 1757,
+      "sha256": "b6edc7289220795fbed0f00307b6bc5023761967b50d8d1b62b807a101014171"
+    },
+    {
+      "path": "original-postgres-due-first/before-input-manifest.json.gz",
+      "size": 87894,
+      "sha256": "c3b8f62c59e67b50e67a2e49177f5654f4fa7d348772ba372c5608090f562ce8"
+    },
+    {
+      "path": "original-postgres-due-first/media-byte-checks.json",
+      "size": 13383,
+      "sha256": "8ac4706dfb3677792504443ab4b88bf704a47238a1712a96dcb79ba70d9afc3a"
+    },
+    {
+      "path": "original-postgres-due-first/receipt.json",
+      "size": 22886,
+      "sha256": "7409d19432e72066ae98a22babdbf0d08eb9fe00d4070dedad27db729a234cdf"
+    },
+    {
+      "path": "original-postgres-due-first/simulated-interval-runs.json",
+      "size": 4061,
+      "sha256": "ea1febaaa883c7dd94d917bcdaece1215a90f1aac273bfe087bdb3b4cb410da2"
+    },
+    {
+      "path": "original-postgres-learner-fourth/before-input-manifest.json.gz",
+      "size": 87900,
+      "sha256": "884f2976c3b7f4d7d49989e07b8c20d3560e759774c1102ff7dfbeb70ee1c22a"
+    },
+    {
+      "path": "original-postgres-learner-fourth/bounded-purpose-coverage.json",
+      "size": 8153,
+      "sha256": "5f768699213f1bbb39e4710dee3e163df75902875b68d0c16de5344b93a2b9db"
+    },
+    {
+      "path": "original-postgres-learner-fourth/media-byte-checks.json",
+      "size": 1463,
+      "sha256": "53fd2a6fbb39f4c8b53e0f22e6de0f4c3b39ebe31438fe123ab418eabd11ddfb"
+    },
+    {
+      "path": "original-postgres-learner-fourth/receipt.json",
+      "size": 6993,
+      "sha256": "b725f1e782fb506c3207b21e44a4f3b155d5451e7bee7244513cae19868484a8"
+    },
+    {
+      "path": "original-postgres-learner-fourth/review-schedule.json",
+      "size": 4073,
+      "sha256": "d4bf9ee5627197ee07974e8b2867be8fbadf6ac9b9cd4b444c2af5af0c7f2e7a"
+    },
+    {
+      "path": "original-postgres-learner-fourth/submitted-summary.json",
+      "size": 2175,
+      "sha256": "7c5d7990dcb6e0220211e7845f0e5ddd48f6bca6b0dbb8a84e05fea430d4f895"
+    },
+    {
+      "path": "original-sqlite-due-first/backup-files-summary.json",
+      "size": 2303,
+      "sha256": "963a97f5b95b086cbf51190d3327d15331c19e23c1c0a948afefd5b729239842"
+    },
+    {
+      "path": "original-sqlite-due-first/before-input-manifest.json.gz",
+      "size": 87886,
+      "sha256": "5870a4d0c27ec1bee4634da311dc231790e009f50549d5312f573709ae41eaca"
+    },
+    {
+      "path": "original-sqlite-due-first/media-byte-checks.json",
+      "size": 13383,
+      "sha256": "16a6ef46b85e9ea4f7aa53971f4fd41025f0e4f269cb1ccd54588b6a9cc9fb8d"
+    },
+    {
+      "path": "original-sqlite-due-first/receipt.json",
+      "size": 22882,
+      "sha256": "550546ece76256955fc590c0055de762f9b0b0a1ddfc10bda02e7a72f4dcbd90"
+    },
+    {
+      "path": "original-sqlite-due-first/simulated-interval-runs.json",
+      "size": 4061,
+      "sha256": "431a71ed852a0dcc91bd1f94a4f70c3dbbd26353e83f795aac0144f04158a054"
+    },
+    {
+      "path": "original-sqlite-learner-fourth/before-input-manifest.json.gz",
+      "size": 87898,
+      "sha256": "636d4cf374cde49601bb5bebfbd1a38732ab458304cbd410b8d3167d3c775901"
+    },
+    {
+      "path": "original-sqlite-learner-fourth/bounded-purpose-coverage.json",
+      "size": 8153,
+      "sha256": "ff1125ab62880bebcadddc57e558974ab99401149a61ed3b55be3089fc61e5ee"
+    },
+    {
+      "path": "original-sqlite-learner-fourth/media-byte-checks.json",
+      "size": 1463,
+      "sha256": "25d6fb3a6e6dfccffaa0b097c2f5d14aa3ff7cfb46f5cd654dbe8517a6c66215"
+    },
+    {
+      "path": "original-sqlite-learner-fourth/receipt.json",
+      "size": 6989,
+      "sha256": "72659beb1705f0b5b9d401278346727c09d592f937d928c0ccb23217dc454087"
+    },
+    {
+      "path": "original-sqlite-learner-fourth/review-schedule.json",
+      "size": 4073,
+      "sha256": "167c75363c65fef2e7ef38e5da02d940920662c9eaddea4b7cb1e34b86cf65e7"
+    },
+    {
+      "path": "original-sqlite-learner-fourth/submitted-summary.json",
+      "size": 2175,
+      "sha256": "45ad81d37fffa5da11bbdf20bbf308161e44e79ed4e27cb54cf869a43e55ce2f"
+    },
+    {
+      "path": "p186-whole-input-manifest.json",
+      "size": 333238,
+      "sha256": "73e4732d03445d1d479b87342f7c06dd1386bb3384049e21a0991e4c6d2bdb95"
+    },
+    {
+      "path": "production-whole-first-source-check.json",
+      "size": 84,
+      "sha256": "a32565d70c0544d3a06f99e52a2b7558158ea9eca22ee418c522edec5e090d63"
+    },
+    {
+      "path": "production-whole-first.json.gz",
+      "size": 171812,
+      "sha256": "cbcba267ebca6458d796b928b3b8ba942fed383828cc8592ea4db51c9dba90bf"
+    },
+    {
+      "path": "production-whole-first.log.gz",
+      "size": 381,
+      "sha256": "310b1d565420830be887d067499586e4e0ba428898c2b3f860eaa949a86adaf1"
+    },
+    {
+      "path": "source-variants/due-api-build-first-source.json.gz",
+      "size": 122766,
+      "sha256": "83a1fce9607e8db9ddfdd218443835377044b157312a700689b80c62b16f1232"
+    },
+    {
+      "path": "source-variants/due-api-build-second-source.json.gz",
+      "size": 122974,
+      "sha256": "46f02f490b5d1d4335ea8f2febe6d4e259ef55d1f7174ecfe284a404e9b119b0"
+    },
+    {
+      "path": "source-variants/due-api-type-first-source.json.gz",
+      "size": 122767,
+      "sha256": "ff96ca1b8c8e4de645c459d90286219bf5dff60cab35a94e7c58a50f5030566d"
+    },
+    {
+      "path": "source-variants/due-api-type-second-source.json.gz",
+      "size": 122975,
+      "sha256": "274a4c65e42e23d3d6288a7d8f6c572eef93dbf490ab8957c2248511aead23c1"
+    },
+    {
+      "path": "source-variants/due-course-fixed-first-source.json.gz",
+      "size": 149670,
+      "sha256": "0dff8ab64f152a8afa6a8fd4a0349bceb3e9c9e96b92bc170308da7942e7436f"
+    },
+    {
+      "path": "source-variants/due-course-fixed-second-source.json.gz",
+      "size": 149885,
+      "sha256": "ab2e088ba5db272ef22e9275d494d9831f35720a7d02e0e3239d7b7ead090ca3"
+    },
+    {
+      "path": "source-variants/due-course-postgres-first-source.json.gz",
+      "size": 149885,
+      "sha256": "3456321a295aec5e86ccca6c858dc756f6aad19c5a4dc8c7ecd6786b0f7e3afb"
+    },
+    {
+      "path": "source-variants/due-course-repro-first-source.json.gz",
+      "size": 131101,
+      "sha256": "1fbc50dd4c861260eadee485740b8b0d3b36a5b4851e3f29ea94f855b01f8f97"
+    },
+    {
+      "path": "source-variants/legacy-api-build-first-source.json.gz",
+      "size": 103207,
+      "sha256": "2a10c1f5077315bdcf7d4a2dbbbc02b712039bd0f0aae1e34ebe954b4e81943c"
+    },
+    {
+      "path": "source-variants/legacy-api-type-first-source.json.gz",
+      "size": 103119,
+      "sha256": "491650cd927c5b2b6627fb6b72e726259df0d227cae4422409f85ddadfac3056"
+    },
+    {
+      "path": "source-variants/legacy-course-fixed-first-source.json.gz",
+      "size": 130207,
+      "sha256": "3df065b094f1314dec8c03c4780c9f561c6a9a17acd936b5ab3175455105d2e2"
+    },
+    {
+      "path": "source-variants/legacy-course-postgres-first-source.json.gz",
+      "size": 130207,
+      "sha256": "0cdae257adeeddad59dbe3e6768a0948a5c029477c942b1c7e69d8b282bd49f2"
+    },
+    {
+      "path": "source-variants/legacy-course-repro-first-source.json.gz",
+      "size": 103977,
+      "sha256": "0cc596461161d9ae533ee5327d2a466f6e30923389178cf44430217d90c29ee1"
+    }
+  ],
+  "allFilesAndDirectoriesWithoutLinks": true,
+  "applicationAndValidationResultsUnchanged": true
+}

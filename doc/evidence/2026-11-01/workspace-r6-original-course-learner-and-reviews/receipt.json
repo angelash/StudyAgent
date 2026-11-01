@@ -1,0 +1,159 @@
+{
+  "protocol": "study-agent-original-course-learner-and-review-candidate-v1",
+  "at": "2026-11-01T10:11:00.804Z",
+  "candidate": "data/qa/p187",
+  "mainApplicationSchema": 32,
+  "candidateSchema": 33,
+  "applicationIntegrated": false,
+  "sourceIncrement": {
+    "files": 3,
+    "archive": "candidate-source-delta.json.gz",
+    "sha256": "def06df4d83184e1d12f1e19562a6016bdd1dd77d452be338d138f10e70f00ac",
+    "parentArchive": "doc/evidence/2026-11-01/workspace-r6-writing-expression-materials/candidate-source-delta.json.gz",
+    "parentSha256": "86161c28f17edc934e40e0f8e364f0172b168eb725fcd7efbdbb239a9060e899"
+  },
+  "finalFrozenSourceInputs": 1310,
+  "finalFrozenCompiledInputs": 601,
+  "fixes": [
+    "Freeze the verified packet digest in adopted sessions when a valid legacy approval lacks it, preserving the original mapping and native rejection checks.",
+    "Start original adopted-course ReviewTasks without adding prerequisites.",
+    "Select guidance actions from the adopted lesson coverage while preserving the complete confirmed scope in the report."
+  ],
+  "checks": {
+    "legacyRepro": {
+      "passed": 18,
+      "failed": 5,
+      "rootFailures": 1,
+      "dependentFailures": 4
+    },
+    "legacyFixedSqliteAndModel": {
+      "passed": 35,
+      "failed": 0
+    },
+    "legacyPostgres": {
+      "passed": 23,
+      "failed": 0
+    },
+    "firstDueRepro": {
+      "passed": 23,
+      "failed": 1
+    },
+    "firstDueCorrection": {
+      "passed": 35,
+      "failed": 1,
+      "remainingCause": "Plan selected targets from other lessons in a wider32-target scope."
+    },
+    "finalSqliteAndModel": {
+      "passed": 36,
+      "failed": 0,
+      "actualCourseChecks": 24,
+      "existingModelChecks": 12
+    },
+    "finalPostgres": {
+      "passed": 24,
+      "failed": 0
+    },
+    "finalApiType": 0,
+    "finalApiBuild": 0,
+    "p186CompleteApi": {
+      "passed": 3013,
+      "failed": 0,
+      "pending": 131,
+      "exit": 0,
+      "sourceInputsUnchanged": true
+    },
+    "p187CompleteApi": {
+      "label": "original-course-whole-first",
+      "status": "running-at-archive",
+      "resultNotClaimed": true
+    }
+  },
+  "originalLearnerJourneys": [
+    {
+      "label": "original-sqlite-learner-fourth",
+      "passed": 44,
+      "failed": 0,
+      "responses": 8,
+      "courseTargets": 8,
+      "profileGrade": 4,
+      "courseGrade": 3,
+      "pendingReview": 4,
+      "uploadedMedia": 3,
+      "reviewTasks": 12,
+      "prioritizedPlanTargets": 3,
+      "sourceVariant": "legacy digest correction before later guidance changes"
+    },
+    {
+      "label": "original-postgres-learner-fourth",
+      "passed": 44,
+      "failed": 0,
+      "responses": 8,
+      "courseTargets": 8,
+      "profileGrade": 4,
+      "courseGrade": 3,
+      "pendingReview": 4,
+      "uploadedMedia": 3,
+      "reviewTasks": 12,
+      "prioritizedPlanTargets": 3,
+      "sourceVariant": "legacy digest correction before later guidance changes"
+    }
+  ],
+  "simulatedDueJourneys": [
+    {
+      "label": "original-sqlite-due-first",
+      "passed": 144,
+      "failed": 0,
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "tasks": 12,
+      "responses": 48,
+      "actualUploadedMedia": 24,
+      "originalMediaRestoredAndReadBack": 3,
+      "sourceVariant": "first scheduled-review correction before later plan target restriction"
+    },
+    {
+      "label": "original-postgres-due-first",
+      "passed": 144,
+      "failed": 0,
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "tasks": 12,
+      "responses": 48,
+      "actualUploadedMedia": 24,
+      "originalMediaRestoredAndReadBack": 3,
+      "sourceVariant": "final three-file correction"
+    }
+  ],
+  "allMediaNormalizedAndDownloadedShaVerified": true,
+  "actualNativeSqliteAndPostgresBackupRestore": true,
+  "originalQaDatabasesUnchanged": true,
+  "originalBaselineReportsAndEightTargetCoursesRetained": true,
+  "legacyApprovalsUnchanged": true,
+  "wrongOrMissingFrozenDigestsStillRejected": true,
+  "reportRetains32ConfirmedTargetsWhilePlanStaysWithinOriginalEight": true,
+  "engineeringClockOnly": true,
+  "actualWallClockRetentionVerified": false,
+  "allEightTargetsNotAllScheduledAtOnce": true,
+  "pureColorImagesAreNotHandwriting": true,
+  "sineTonesAreNotSpeech": true,
+  "closedAnswersAreEngineeringGoldens": true,
+  "teacherReviewed": false,
+  "humanLearningEvidence": false,
+  "realWorkbenchMobilePrivacyAndFinalWholeAcceptanceStillRequired": true,
+  "privateSourceCourseClassroomReportCommandsAndConnectionsRemainLocal": true,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFilesUnchanged": 1063,
+  "localOnly": true,
+  "wholeGoal": "active"
+}

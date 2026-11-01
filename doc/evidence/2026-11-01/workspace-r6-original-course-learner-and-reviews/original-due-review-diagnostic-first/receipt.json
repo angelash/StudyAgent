@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-01T09:48:12.301Z",
+  "candidate": "data/qa/p187",
+  "sourceLabel": "original-sqlite-learner-fourth",
+  "engineeringClockOnly": true,
+  "simulatedAt": "2026-11-02T09:45:23.076Z",
+  "originalTaskId": "review:guidance_f434075a-11d5-4369-ac61-69cc21ee4856:source:chinese:g3:02915a7d:word-reading:1",
+  "originalIntervalDays": 1,
+  "retentionReadiness": {
+    "canStart": true,
+    "reason": "can_check",
+    "earliestAt": "2026-11-02T09:45:22.076Z",
+    "originalDueAt": "2026-11-02T09:45:22.076Z",
+    "originalEarliestDueAt": "2026-11-02T09:45:22.076Z",
+    "latestTeachingAt": "2026-11-01T09:45:11.960Z",
+    "independentBaselineAvailable": false,
+    "notice": "可以进入原复测核对新题；完成仍需按真实作答判断。"
+  },
+  "error": {
+    "name": "BadRequestException",
+    "message": "本课独立检查沿用完整原目标；原因对照请从原报告另行安排",
+    "status": 400
+  },
+  "started": null,
+  "nativeSnapshotUnchanged": true,
+  "successfulStartAlsoIntentionallyRolledBack": true,
+  "humanLearningEvidence": false
+}

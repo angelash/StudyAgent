@@ -1,0 +1,266 @@
+{
+  "generatedAt": "2026-11-01T10:07:57.376Z",
+  "studentAndCourseAreGeneratedQa": true,
+  "originalSessionId": "diagnostic_f00424d4-1162-4572-a7e9-567fe454c099",
+  "coverage": [
+    {
+      "atomId": "source:chinese:g3:02915a7d:word-reading",
+      "selected": 1,
+      "required": 4,
+      "role": "target",
+      "available": 4,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:handwriting",
+      "selected": 1,
+      "required": 4,
+      "role": "target",
+      "available": 4,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "core:chinese:contextmeaning",
+      "selected": 1,
+      "required": 4,
+      "role": "target",
+      "available": 5,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-reconstruction",
+      "selected": 1,
+      "required": 4,
+      "role": "target",
+      "available": 4,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "core:chinese:detail-evidence",
+      "selected": 1,
+      "required": 4,
+      "role": "target",
+      "available": 5,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "core:chinese:personification",
+      "selected": 1,
+      "required": 4,
+      "role": "target",
+      "available": 5,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-description",
+      "selected": 1,
+      "required": 4,
+      "role": "target",
+      "available": 4,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:feature-summary",
+      "selected": 1,
+      "required": 4,
+      "role": "target",
+      "available": 4,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    }
+  ],
+  "teachingCoverage": [
+    {
+      "atomId": "source:chinese:g3:02915a7d:word-reading",
+      "purpose": "understanding",
+      "selected": 0,
+      "required": 1,
+      "available": 1,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:word-reading",
+      "purpose": "procedure",
+      "selected": 1,
+      "required": 1,
+      "available": 1
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:word-reading",
+      "purpose": "transfer",
+      "selected": 0,
+      "required": 2,
+      "available": 2,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:handwriting",
+      "purpose": "understanding",
+      "selected": 0,
+      "required": 1,
+      "available": 1,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:handwriting",
+      "purpose": "procedure",
+      "selected": 1,
+      "required": 1,
+      "available": 1
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:handwriting",
+      "purpose": "transfer",
+      "selected": 0,
+      "required": 2,
+      "available": 2,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "core:chinese:contextmeaning",
+      "purpose": "understanding",
+      "selected": 0,
+      "required": 1,
+      "available": 2,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "core:chinese:contextmeaning",
+      "purpose": "procedure",
+      "selected": 1,
+      "required": 1,
+      "available": 1
+    },
+    {
+      "atomId": "core:chinese:contextmeaning",
+      "purpose": "transfer",
+      "selected": 0,
+      "required": 2,
+      "available": 2,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-reconstruction",
+      "purpose": "understanding",
+      "selected": 0,
+      "required": 1,
+      "available": 1,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-reconstruction",
+      "purpose": "procedure",
+      "selected": 1,
+      "required": 1,
+      "available": 1
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-reconstruction",
+      "purpose": "transfer",
+      "selected": 0,
+      "required": 2,
+      "available": 2,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "core:chinese:detail-evidence",
+      "purpose": "understanding",
+      "selected": 0,
+      "required": 1,
+      "available": 2,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "core:chinese:detail-evidence",
+      "purpose": "procedure",
+      "selected": 1,
+      "required": 1,
+      "available": 1
+    },
+    {
+      "atomId": "core:chinese:detail-evidence",
+      "purpose": "transfer",
+      "selected": 0,
+      "required": 2,
+      "available": 2,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "core:chinese:personification",
+      "purpose": "understanding",
+      "selected": 0,
+      "required": 1,
+      "available": 2,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "core:chinese:personification",
+      "purpose": "procedure",
+      "selected": 1,
+      "required": 1,
+      "available": 1
+    },
+    {
+      "atomId": "core:chinese:personification",
+      "purpose": "transfer",
+      "selected": 0,
+      "required": 2,
+      "available": 2,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-description",
+      "purpose": "understanding",
+      "selected": 0,
+      "required": 1,
+      "available": 1,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-description",
+      "purpose": "procedure",
+      "selected": 1,
+      "required": 1,
+      "available": 1
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-description",
+      "purpose": "transfer",
+      "selected": 0,
+      "required": 2,
+      "available": 2,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:feature-summary",
+      "purpose": "understanding",
+      "selected": 1,
+      "required": 1,
+      "available": 1
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:feature-summary",
+      "purpose": "procedure",
+      "selected": 0,
+      "required": 1,
+      "available": 1,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:feature-summary",
+      "purpose": "transfer",
+      "selected": 0,
+      "required": 2,
+      "available": 2,
+      "missingReason": "受本次题量或时间预算限制，其余目标继续保留待核查。"
+    }
+  ],
+  "originalItemLimit": 20,
+  "originalMinutesLimit": 15,
+  "selectedResponses": 8,
+  "immediatePurposeRows": 24,
+  "immediatePurposeRowsWithGaps": 16,
+  "additionalRequiredObservations": 24,
+  "all32ChecksNotCompletedByEightResponses": true,
+  "retentionTasksAreSeparate": true,
+  "humanLearningEvidence": false
+}

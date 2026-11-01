@@ -1,0 +1,18 @@
+{
+  "at": "2026-11-01T09:40:28.136Z",
+  "cause": "The clone helper excluded directories named data at every depth. Only the candidate root data directory should be excluded.",
+  "omittedWebSources": [
+    {
+      "path": "apps/web/app/parent/data/page.tsx",
+      "sha256": "c0a831768349486f1ccd185050e0b714dbccc3a5ef015b53a992310a778ed540"
+    },
+    {
+      "path": "apps/web/app/parent/data/privacy.css",
+      "sha256": "168532cde63b0e0711489d98123f7e00f1ddae71a085977614fc925fe1c35794"
+    }
+  ],
+  "restoredFromOriginalSha": true,
+  "apiSourcesAndBuildUnaffected": true,
+  "firstDriverSha256": "bf1339ecff1222a1ccce0d7663b969ae706950c9f5623d0e2514e5fba178fa38",
+  "correctedDriverSha256": "5a40338e8cda408fe457c260b6fd56bb3aaa28ae3f5bf5ac97d6d7725b1e5fe7"
+}
