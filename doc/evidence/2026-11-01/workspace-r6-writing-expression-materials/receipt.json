@@ -1,0 +1,91 @@
+{
+  "protocol": "study-agent-original-writing-expression-candidate-v1",
+  "at": "2026-11-01T09:21:35.735Z",
+  "candidate": "data/qa/p186",
+  "mainApplicationSchema": 32,
+  "candidateSchema": 33,
+  "applicationIntegrated": false,
+  "newProductionQuestions": 44,
+  "writing": {
+    "questions": 22,
+    "actualTaskStructures": 4,
+    "closedChecks": 5,
+    "imageTasks": 17,
+    "characters": 13,
+    "allProcedureTasksRequireAll13": true
+  },
+  "expression": {
+    "questions": 22,
+    "actualTaskStructures": 4,
+    "closedChecks": 5,
+    "audioTasks": 11,
+    "openTextTasks": 6
+  },
+  "allMaterialQuestions": 134,
+  "closedScoringCases": 57,
+  "openReferenceCasesAwaitingRubricReview": 77,
+  "formatOnlyMediaGoldenCases": 45,
+  "actualMediaUploaded": false,
+  "teacherReviewed": false,
+  "realLearnerEvidence": false,
+  "sourceIncrement": {
+    "files": 3,
+    "archive": "candidate-source-delta.json.gz",
+    "sha256": "86161c28f17edc934e40e0f8e364f0172b168eb725fcd7efbdbb239a9060e899",
+    "parentArchive": "doc/evidence/2026-11-01/workspace-r6-word-reading-materials/candidate-source-delta.json.gz",
+    "parentSha256": "3961511026893a3e7df4bd03469c92661bb356d37dab57a0953799f519105bd5"
+  },
+  "frozenInputs": 1310,
+  "frozenCompiledInputs": 601,
+  "frozenDrivers": 2,
+  "checks": {
+    "model": {
+      "passed": 24,
+      "failed": 0,
+      "newChecks": 8,
+      "previousChecks": 16
+    },
+    "type": 0,
+    "build": 0,
+    "sqlite": {
+      "passed": 33,
+      "failed": 0
+    },
+    "postgres": {
+      "passed": 33,
+      "failed": 0
+    }
+  },
+  "preflight": {
+    "initialGaps": 62,
+    "previousCandidateGaps": 20,
+    "actualGaps": 0,
+    "readyTargets": 8,
+    "publishable": true,
+    "qualification": "current material stock only"
+  },
+  "definitionPackageRemainsDraft": true,
+  "allFiveDefinitionsExplicitlyPublishedOnlyInQa": true,
+  "completeTeachingPackageExplicitlyPublishedOnlyInQa": true,
+  "tenNativeTablesRenderedWithExactBlockHashesPerDatabase": true,
+  "all39ChoiceQuestionsHaveFourDifferentCorrectPositions": true,
+  "originalOmission": {
+    "earlierSavedQuestionsWithoutTable": 4,
+    "earlierDatabaseUnchanged": true,
+    "earlierInterfaceSuccessDoesNotProveCompleteQuestionDocuments": true
+  },
+  "originalSaveReplayAfterRelease": true,
+  "coldOriginalCommandsAnd134ApprovedMappings": true,
+  "noLearnerOrAdoptionEvidenceWritten": true,
+  "oldCoreDefinitionsQuestionsAndMappingsRetained": true,
+  "sourceTextAndPrivateCommandsRemainLocal": true,
+  "wholeApiThirdStillFailed": true,
+  "newCandidateWholeApiNotRun": true,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFilesUnchanged": 1063,
+  "localOnly": true,
+  "wholeGoal": "active"
+}

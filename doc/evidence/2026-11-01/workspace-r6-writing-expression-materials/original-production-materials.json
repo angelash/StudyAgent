@@ -1,0 +1,1463 @@
+{
+  "format": "study-original-source-material-review-v1",
+  "status": "editorial-candidate",
+  "autoImport": false,
+  "teacherReviewed": false,
+  "actualMediaUploaded": false,
+  "writingCharacters": [
+    "晨",
+    "绒",
+    "球",
+    "汉",
+    "艳",
+    "服",
+    "装",
+    "扮",
+    "静",
+    "停",
+    "孔",
+    "雀",
+    "粗"
+  ],
+  "families": [
+    {
+      "atomId": "source:chinese:g3:02915a7d:handwriting",
+      "family": "writing-layout-recognition",
+      "dimension": "understanding",
+      "behavior": "辨认目标字部件排列，把辨认与亲自书写分开",
+      "structure": "指定目标字的印刷字形 → 分别填写左右或上下结构",
+      "distinction": "只核对部件位置，不证明已经会写；印刷字形不能提供动态笔顺或替代实际手写原件。",
+      "exercises": [
+        {
+          "stem": "观察“晨、绒、球”的部件排列，分别从“左右、上下”中填写结构。这一题只检查字形辨认，另有亲自手写任务。",
+          "mode": "multi_blank",
+          "answer": [
+            {
+              "key": "c0",
+              "value": "上下"
+            },
+            {
+              "key": "c1",
+              "value": "左右"
+            },
+            {
+              "key": "c2",
+              "value": "左右"
+            }
+          ],
+          "responseShape": {
+            "entries": [
+              {
+                "key": "c0",
+                "label": "晨的结构"
+              },
+              {
+                "key": "c1",
+                "label": "绒的结构"
+              },
+              {
+                "key": "c2",
+                "label": "球的结构"
+              }
+            ]
+          },
+          "expectedSeconds": 80,
+          "analysis": "晨按上下观察部件位置；绒按左右观察部件位置；球按左右观察部件位置。实际字形与书写仍由原图片和量规复核，不由结构答案推定。",
+          "family": "writing-layout-recognition",
+          "dimension": "understanding",
+          "identityVersion": 2
+        },
+        {
+          "stem": "观察“汉、艳、服”的部件排列，分别从“左右、上下”中填写结构。这一题只检查字形辨认，另有亲自手写任务。",
+          "mode": "multi_blank",
+          "answer": [
+            {
+              "key": "c0",
+              "value": "左右"
+            },
+            {
+              "key": "c1",
+              "value": "左右"
+            },
+            {
+              "key": "c2",
+              "value": "左右"
+            }
+          ],
+          "responseShape": {
+            "entries": [
+              {
+                "key": "c0",
+                "label": "汉的结构"
+              },
+              {
+                "key": "c1",
+                "label": "艳的结构"
+              },
+              {
+                "key": "c2",
+                "label": "服的结构"
+              }
+            ]
+          },
+          "expectedSeconds": 80,
+          "analysis": "汉按左右观察部件位置；艳按左右观察部件位置；服按左右观察部件位置。实际字形与书写仍由原图片和量规复核，不由结构答案推定。",
+          "family": "writing-layout-recognition",
+          "dimension": "understanding",
+          "identityVersion": 2
+        },
+        {
+          "stem": "观察“装、扮、静”的部件排列，分别从“左右、上下”中填写结构。这一题只检查字形辨认，另有亲自手写任务。",
+          "mode": "multi_blank",
+          "answer": [
+            {
+              "key": "c0",
+              "value": "上下"
+            },
+            {
+              "key": "c1",
+              "value": "左右"
+            },
+            {
+              "key": "c2",
+              "value": "左右"
+            }
+          ],
+          "responseShape": {
+            "entries": [
+              {
+                "key": "c0",
+                "label": "装的结构"
+              },
+              {
+                "key": "c1",
+                "label": "扮的结构"
+              },
+              {
+                "key": "c2",
+                "label": "静的结构"
+              }
+            ]
+          },
+          "expectedSeconds": 80,
+          "analysis": "装按上下观察部件位置；扮按左右观察部件位置；静按左右观察部件位置。实际字形与书写仍由原图片和量规复核，不由结构答案推定。",
+          "family": "writing-layout-recognition",
+          "dimension": "understanding",
+          "identityVersion": 2
+        },
+        {
+          "stem": "观察“停、孔”的部件排列，分别从“左右、上下”中填写结构。这一题只检查字形辨认，另有亲自手写任务。",
+          "mode": "multi_blank",
+          "answer": [
+            {
+              "key": "c0",
+              "value": "左右"
+            },
+            {
+              "key": "c1",
+              "value": "左右"
+            }
+          ],
+          "responseShape": {
+            "entries": [
+              {
+                "key": "c0",
+                "label": "停的结构"
+              },
+              {
+                "key": "c1",
+                "label": "孔的结构"
+              }
+            ]
+          },
+          "expectedSeconds": 80,
+          "analysis": "停按左右观察部件位置；孔按左右观察部件位置。实际字形与书写仍由原图片和量规复核，不由结构答案推定。",
+          "family": "writing-layout-recognition",
+          "dimension": "understanding",
+          "identityVersion": 2
+        },
+        {
+          "stem": "观察“雀、粗”的部件排列，分别从“左右、上下”中填写结构。这一题只检查字形辨认，另有亲自手写任务。",
+          "mode": "multi_blank",
+          "answer": [
+            {
+              "key": "c0",
+              "value": "上下"
+            },
+            {
+              "key": "c1",
+              "value": "左右"
+            }
+          ],
+          "responseShape": {
+            "entries": [
+              {
+                "key": "c0",
+                "label": "雀的结构"
+              },
+              {
+                "key": "c1",
+                "label": "粗的结构"
+              }
+            ]
+          },
+          "expectedSeconds": 80,
+          "analysis": "雀按上下观察部件位置；粗按左右观察部件位置。实际字形与书写仍由原图片和量规复核，不由结构答案推定。",
+          "family": "writing-layout-recognition",
+          "dimension": "understanding",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:handwriting",
+      "family": "writing-observe-produce-check",
+      "dimension": "procedure",
+      "behavior": "逐字观察、亲自写出全部13字，再保留自查依据",
+      "structure": "13字目标清单 → 每字一次真实手写＋部件位置自查",
+      "distinction": "每道候选都包含完整13字，不拿抽中少量字当全部书写；五个排列变式始终只是同一个观察书写结构。",
+      "exercises": [
+        {
+          "stem": "请按清单亲自各写一次：“晨、绒、球、汉、艳、服、装、扮、静、停、孔、雀、粗”。写后在三个需要仔细核对的部件旁作小标记，不要擦掉初写。 请上传自己的手写原件图片，保留初写与需要说明的标记。",
+          "answer": "原件应逐字包含晨、绒、球、汉、艳、服、装、扮、静、停、孔、雀、粗。实际字形由有权限的复核者参照已确认范字逐项核对，不能以印刷图片或结构题代替。",
+          "mode": "image_upload",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "实际手写原件包含本题要求的各目标字；逐字核对完整字形与部件，没有用打字、印刷图或他人书写代替",
+              "weight": 0.5
+            },
+            {
+              "criterion": "部件与位置符合已核对范字；按任务说明保留初写、自查或修正痕迹，不由一张静态图推断笔顺或运笔",
+              "weight": 0.3
+            },
+            {
+              "criterion": "图片清楚且能区分各字与标记，缺少目标字或模糊处保留待补证，不凭图片上传成功判书写达标",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 150,
+          "analysis": "清单文字只供目标与部件位置观察，不作为动态笔顺标准；自查标记与原手写都要保留，静态图不足以判断运笔顺序。",
+          "family": "writing-observe-produce-check",
+          "dimension": "procedure",
+          "identityVersion": 2
+        },
+        {
+          "stem": "请按清单亲自各写一次：“绒、球、晨、服、装、汉、艳、扮、孔、雀、粗、静、停”。写后给上下结构的字加一个外侧小记号，不要擦掉初写。 请上传自己的手写原件图片，保留初写与需要说明的标记。",
+          "answer": "原件应逐字包含晨、绒、球、汉、艳、服、装、扮、静、停、孔、雀、粗。实际字形由有权限的复核者参照已确认范字逐项核对，不能以印刷图片或结构题代替。",
+          "mode": "image_upload",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "实际手写原件包含本题要求的各目标字；逐字核对完整字形与部件，没有用打字、印刷图或他人书写代替",
+              "weight": 0.5
+            },
+            {
+              "criterion": "部件与位置符合已核对范字；按任务说明保留初写、自查或修正痕迹，不由一张静态图推断笔顺或运笔",
+              "weight": 0.3
+            },
+            {
+              "criterion": "图片清楚且能区分各字与标记，缺少目标字或模糊处保留待补证，不凭图片上传成功判书写达标",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 150,
+          "analysis": "清单文字只供目标与部件位置观察，不作为动态笔顺标准；自查标记与原手写都要保留，静态图不足以判断运笔顺序。",
+          "family": "writing-observe-produce-check",
+          "dimension": "procedure",
+          "identityVersion": 2
+        },
+        {
+          "stem": "请按清单亲自各写一次：“装、晨、雀、绒、球、汉、艳、服、扮、静、停、孔、粗”。写后给左右结构的字加一个外侧小记号，不要擦掉初写。 请上传自己的手写原件图片，保留初写与需要说明的标记。",
+          "answer": "原件应逐字包含晨、绒、球、汉、艳、服、装、扮、静、停、孔、雀、粗。实际字形由有权限的复核者参照已确认范字逐项核对，不能以印刷图片或结构题代替。",
+          "mode": "image_upload",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "实际手写原件包含本题要求的各目标字；逐字核对完整字形与部件，没有用打字、印刷图或他人书写代替",
+              "weight": 0.5
+            },
+            {
+              "criterion": "部件与位置符合已核对范字；按任务说明保留初写、自查或修正痕迹，不由一张静态图推断笔顺或运笔",
+              "weight": 0.3
+            },
+            {
+              "criterion": "图片清楚且能区分各字与标记，缺少目标字或模糊处保留待补证，不凭图片上传成功判书写达标",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 150,
+          "analysis": "清单文字只供目标与部件位置观察，不作为动态笔顺标准；自查标记与原手写都要保留，静态图不足以判断运笔顺序。",
+          "family": "writing-observe-produce-check",
+          "dimension": "procedure",
+          "identityVersion": 2
+        },
+        {
+          "stem": "请按清单亲自各写一次：“静、停、孔、雀、粗、晨、汉、服、装、扮、艳、绒、球”。写后选一个想再核对的字，在旁边重写一次，不要擦掉初写。 请上传自己的手写原件图片，保留初写与需要说明的标记。",
+          "answer": "原件应逐字包含晨、绒、球、汉、艳、服、装、扮、静、停、孔、雀、粗。实际字形由有权限的复核者参照已确认范字逐项核对，不能以印刷图片或结构题代替。",
+          "mode": "image_upload",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "实际手写原件包含本题要求的各目标字；逐字核对完整字形与部件，没有用打字、印刷图或他人书写代替",
+              "weight": 0.5
+            },
+            {
+              "criterion": "部件与位置符合已核对范字；按任务说明保留初写、自查或修正痕迹，不由一张静态图推断笔顺或运笔",
+              "weight": 0.3
+            },
+            {
+              "criterion": "图片清楚且能区分各字与标记，缺少目标字或模糊处保留待补证，不凭图片上传成功判书写达标",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 150,
+          "analysis": "清单文字只供目标与部件位置观察，不作为动态笔顺标准；自查标记与原手写都要保留，静态图不足以判断运笔顺序。",
+          "family": "writing-observe-produce-check",
+          "dimension": "procedure",
+          "identityVersion": 2
+        },
+        {
+          "stem": "请按清单亲自各写一次：“服、装、扮、绒、球、汉、艳、静、停、孔、雀、粗、晨”。写后选两个自己觉得最需要比较部件位置的字，在旁边作记号，不要擦掉初写。 请上传自己的手写原件图片，保留初写与需要说明的标记。",
+          "answer": "原件应逐字包含晨、绒、球、汉、艳、服、装、扮、静、停、孔、雀、粗。实际字形由有权限的复核者参照已确认范字逐项核对，不能以印刷图片或结构题代替。",
+          "mode": "image_upload",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "实际手写原件包含本题要求的各目标字；逐字核对完整字形与部件，没有用打字、印刷图或他人书写代替",
+              "weight": 0.5
+            },
+            {
+              "criterion": "部件与位置符合已核对范字；按任务说明保留初写、自查或修正痕迹，不由一张静态图推断笔顺或运笔",
+              "weight": 0.3
+            },
+            {
+              "criterion": "图片清楚且能区分各字与标记，缺少目标字或模糊处保留待补证，不凭图片上传成功判书写达标",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 150,
+          "analysis": "清单文字只供目标与部件位置观察，不作为动态笔顺标准；自查标记与原手写都要保留，静态图不足以判断运笔顺序。",
+          "family": "writing-observe-produce-check",
+          "dimension": "procedure",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:handwriting",
+      "family": "writing-component-repair",
+      "dimension": "transfer",
+      "behavior": "根据明确错因说明，亲自修正字形并保留核对部位",
+      "structure": "部件错配记录 → 定位错误部位＋手写正确目标字＋标记依据",
+      "distinction": "不是只选择一种结构，也不是照抄全部清单；要把错误记录具体落实到部件及位置，修正与初始依据都保留。",
+      "exercises": [
+        {
+          "stem": "一份自编核对记录把“绒”的右部说成“戒”，把“球”的右部说成“术”。请亲自写出这两个目标字，分别在对应的右部旁作标记，并写一句核对说明。 请上传自己的手写原件图片，保留初写与需要说明的标记。",
+          "answer": "绒的右部应按戎核对，球的右部应按求核对；图片必须有本人写出的绒和球及标记。",
+          "mode": "image_upload",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "实际手写原件包含本题要求的各目标字；逐字核对完整字形与部件，没有用打字、印刷图或他人书写代替",
+              "weight": 0.5
+            },
+            {
+              "criterion": "部件与位置符合已核对范字；按任务说明保留初写、自查或修正痕迹，不由一张静态图推断笔顺或运笔",
+              "weight": 0.3
+            },
+            {
+              "criterion": "图片清楚且能区分各字与标记，缺少目标字或模糊处保留待补证，不凭图片上传成功判书写达标",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 150,
+          "analysis": "错误部件描述只供比较，不应教成正确范字；实际完整字形及标记需人工复核。",
+          "family": "writing-component-repair",
+          "dimension": "transfer",
+          "identityVersion": 2
+        },
+        {
+          "stem": "一份自编记录把“装”写成下部壮、上部衣，把“静”说成左争右青。请按目标字的正确部件位置亲自写出两字，并在图上标出你修正的位置。 请上传自己的手写原件图片，保留初写与需要说明的标记。",
+          "answer": "装按上壮下衣观察，静按左青右争观察；保留本人手写与位置标记。",
+          "mode": "image_upload",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "实际手写原件包含本题要求的各目标字；逐字核对完整字形与部件，没有用打字、印刷图或他人书写代替",
+              "weight": 0.5
+            },
+            {
+              "criterion": "部件与位置符合已核对范字；按任务说明保留初写、自查或修正痕迹，不由一张静态图推断笔顺或运笔",
+              "weight": 0.3
+            },
+            {
+              "criterion": "图片清楚且能区分各字与标记，缺少目标字或模糊处保留待补证，不凭图片上传成功判书写达标",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 150,
+          "analysis": "只改说明文字不能证明实际写对；两字按完整字形和部件位置复核，不推断静态图未显示的笔顺。",
+          "family": "writing-component-repair",
+          "dimension": "transfer",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:handwriting",
+      "family": "writing-cued-word-production",
+      "dimension": "transfer",
+      "behavior": "从拼音与词义提示写出目标字，保留实际字形",
+      "structure": "拼音和意义提示、不直接给目标字形 → 手写指定词或字",
+      "distinction": "提示给的是声音编码与意思，需生成字形，不是从字表照写；迁移与保持沿用同一结构身份，不改维度制造新题族。",
+      "exercises": [
+        {
+          "stem": "根据拼音与意思写出目标词：zhuāng bàn，意思是修饰自己、改变外表；再根据“cū，与细相对”写出一个目标字。题目不给这三个目标字的字形。 请上传自己的手写原件图片，保留初写与需要说明的标记。",
+          "answer": "应有本人手写的装、扮、粗，词语为装扮；按实际字形核对，不以拼音抄写代替。",
+          "mode": "image_upload",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "实际手写原件包含本题要求的各目标字；逐字核对完整字形与部件，没有用打字、印刷图或他人书写代替",
+              "weight": 0.5
+            },
+            {
+              "criterion": "部件与位置符合已核对范字；按任务说明保留初写、自查或修正痕迹，不由一张静态图推断笔顺或运笔",
+              "weight": 0.3
+            },
+            {
+              "criterion": "图片清楚且能区分各字与标记，缺少目标字或模糊处保留待补证，不凭图片上传成功判书写达标",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 150,
+          "analysis": "这是拼音/词义提示书写，并非实际听写音频；音、义提示与字形产生的条件须如实保留。",
+          "family": "writing-cued-word-production",
+          "dimension": "transfer",
+          "identityVersion": 2
+        },
+        {
+          "stem": "根据提示亲自写字：kǒng què，一种有长尾羽的鸟；jìng，指不喧闹的那个本课目标字。不要用打字或只写拼音代替。 请上传自己的手写原件图片，保留初写与需要说明的标记。",
+          "answer": "应有本人写出的孔、雀、静；没有给出动态笔顺，不凭想象补教学步骤。",
+          "mode": "image_upload",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "实际手写原件包含本题要求的各目标字；逐字核对完整字形与部件，没有用打字、印刷图或他人书写代替",
+              "weight": 0.5
+            },
+            {
+              "criterion": "部件与位置符合已核对范字；按任务说明保留初写、自查或修正痕迹，不由一张静态图推断笔顺或运笔",
+              "weight": 0.3
+            },
+            {
+              "criterion": "图片清楚且能区分各字与标记，缺少目标字或模糊处保留待补证，不凭图片上传成功判书写达标",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 150,
+          "analysis": "原图中每字分别复核，少一个目标字就保留缺项，不能因附件完整而默认全会写。",
+          "family": "writing-cued-word-production",
+          "dimension": "transfer",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:handwriting",
+      "family": "writing-component-repair",
+      "dimension": "retention",
+      "behavior": "在到期新材料里重做部件纠错，不把当天修正当保持",
+      "structure": "新的部件错配说明 → 亲自写出目标字并标出修正位置",
+      "distinction": "与迁移的部件纠错是同一结构，保留相同题族名；四道新材料不增加四个独立题族，也不代表经过真实间隔。",
+      "exercises": [
+        {
+          "stem": "新核对记录把“绒”右部漏看一笔，把“球”右部看成“术”。请分别亲自写出两字，在右部旁作标记，说明实际应核对的完整部件。 请上传自己的手写原件图片，保留初写与需要说明的标记。",
+          "answer": "绒右部按戎整体核对，球右部按求整体核对；实际笔画是否完整由原图逐字复核。",
+          "mode": "image_upload",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "实际手写原件包含本题要求的各目标字；逐字核对完整字形与部件，没有用打字、印刷图或他人书写代替",
+              "weight": 0.5
+            },
+            {
+              "criterion": "部件与位置符合已核对范字；按任务说明保留初写、自查或修正痕迹，不由一张静态图推断笔顺或运笔",
+              "weight": 0.3
+            },
+            {
+              "criterion": "图片清楚且能区分各字与标记，缺少目标字或模糊处保留待补证，不凭图片上传成功判书写达标",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 150,
+          "analysis": "不得因错因文字已明确就自动判手写正确，图片与量规仍必需。",
+          "family": "writing-component-repair",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "新记录把“汉”的左右部件位置互换，又把“艳”的左右部件位置互换。请亲自写出两字，标出各字的左部和右部。 请上传自己的手写原件图片，保留初写与需要说明的标记。",
+          "answer": "汉为左氵右又；艳为左丰右色，原图需完整包含两字与相应标记。",
+          "mode": "image_upload",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "实际手写原件包含本题要求的各目标字；逐字核对完整字形与部件，没有用打字、印刷图或他人书写代替",
+              "weight": 0.5
+            },
+            {
+              "criterion": "部件与位置符合已核对范字；按任务说明保留初写、自查或修正痕迹，不由一张静态图推断笔顺或运笔",
+              "weight": 0.3
+            },
+            {
+              "criterion": "图片清楚且能区分各字与标记，缺少目标字或模糊处保留待补证，不凭图片上传成功判书写达标",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 150,
+          "analysis": "部件名称可用指向标记说明，难读部件不应直接变成书写错误；实际位置必须可辨。",
+          "family": "writing-component-repair",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "新记录把“装”的上、下部件混在一起，并把“静”的右部误看成“青”。请亲自写出两字，标出你需要核对的上下或左右关系。 请上传自己的手写原件图片，保留初写与需要说明的标记。",
+          "answer": "装上壮下衣，静左青右争；核对整个字形，不只读出部件名称。",
+          "mode": "image_upload",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "实际手写原件包含本题要求的各目标字；逐字核对完整字形与部件，没有用打字、印刷图或他人书写代替",
+              "weight": 0.5
+            },
+            {
+              "criterion": "部件与位置符合已核对范字；按任务说明保留初写、自查或修正痕迹，不由一张静态图推断笔顺或运笔",
+              "weight": 0.3
+            },
+            {
+              "criterion": "图片清楚且能区分各字与标记，缺少目标字或模糊处保留待补证，不凭图片上传成功判书写达标",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 150,
+          "analysis": "相同纠错结构沿用原题族，只有实际到期、原答和复核条件满足后才谈保持结果。",
+          "family": "writing-component-repair",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "新记录给“停”左边加了多余部件，又把“孔”的右边看成完整的“乙”。请亲自写两字，标记停的左部和孔的右边，保留原件。 请上传自己的手写原件图片，保留初写与需要说明的标记。",
+          "answer": "停左边按亻核对；孔右边核对竖弯钩形态，不能当成完整乙字；其他部分也需完整复核。",
+          "mode": "image_upload",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "实际手写原件包含本题要求的各目标字；逐字核对完整字形与部件，没有用打字、印刷图或他人书写代替",
+              "weight": 0.5
+            },
+            {
+              "criterion": "部件与位置符合已核对范字；按任务说明保留初写、自查或修正痕迹，不由一张静态图推断笔顺或运笔",
+              "weight": 0.3
+            },
+            {
+              "criterion": "图片清楚且能区分各字与标记，缺少目标字或模糊处保留待补证，不凭图片上传成功判书写达标",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 150,
+          "analysis": "只说明局部不足以证明整个字已会写，实际原图仍须按目标字整体检查。",
+          "family": "writing-component-repair",
+          "dimension": "retention",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:handwriting",
+      "family": "writing-cued-word-production",
+      "dimension": "retention",
+      "behavior": "到期后依据新的拼音词义组合生成字形",
+      "structure": "新的拼音/词义组合 → 独立手写指定目标字",
+      "distinction": "沿用迁移的提示书写身份，四组合共同覆盖13字；单次部分字表现不外推为其余字已会，真实原图和间隔另核对。",
+      "exercises": [
+        {
+          "stem": "新提示：zǎo chén，指一天中较早的时段，只写第二个目标字；fú zhuāng，指穿在身上的衣物，写两个目标字。 请上传自己的手写原件图片，保留初写与需要说明的标记。",
+          "answer": "本题目标为晨、服、装，需本人手写原件逐字复核。",
+          "mode": "image_upload",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "实际手写原件包含本题要求的各目标字；逐字核对完整字形与部件，没有用打字、印刷图或他人书写代替",
+              "weight": 0.5
+            },
+            {
+              "criterion": "部件与位置符合已核对范字；按任务说明保留初写、自查或修正痕迹，不由一张静态图推断笔顺或运笔",
+              "weight": 0.3
+            },
+            {
+              "criterion": "图片清楚且能区分各字与标记，缺少目标字或模糊处保留待补证，不凭图片上传成功判书写达标",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 150,
+          "analysis": "没有直接给出目标字形；不能只凭上传成功、拼音或他人代写判断。",
+          "family": "writing-cued-word-production",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "新提示：róng qiú，细软丝绒团成的小圆团，写两个目标字；cū，与细相对，写这个目标字。 请上传自己的手写原件图片，保留初写与需要说明的标记。",
+          "answer": "本题目标为绒、球、粗，需实际字形与部件位置分别复核。",
+          "mode": "image_upload",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "实际手写原件包含本题要求的各目标字；逐字核对完整字形与部件，没有用打字、印刷图或他人书写代替",
+              "weight": 0.5
+            },
+            {
+              "criterion": "部件与位置符合已核对范字；按任务说明保留初写、自查或修正痕迹，不由一张静态图推断笔顺或运笔",
+              "weight": 0.3
+            },
+            {
+              "criterion": "图片清楚且能区分各字与标记，缺少目标字或模糊处保留待补证，不凭图片上传成功判书写达标",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 150,
+          "analysis": "保持材料使用新组合，结构身份不变；不得把本题三个字的表现外推为13字全部达标。",
+          "family": "writing-cued-word-production",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "新提示：kǒng què，一种有长尾羽的鸟，写两个目标字；ān jìng，指不喧闹，只写第二个目标字。 请上传自己的手写原件图片，保留初写与需要说明的标记。",
+          "answer": "本题目标为孔、雀、静，图片需清楚区分三个字和必要的自查标记。",
+          "mode": "image_upload",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "实际手写原件包含本题要求的各目标字；逐字核对完整字形与部件，没有用打字、印刷图或他人书写代替",
+              "weight": 0.5
+            },
+            {
+              "criterion": "部件与位置符合已核对范字；按任务说明保留初写、自查或修正痕迹，不由一张静态图推断笔顺或运笔",
+              "weight": 0.3
+            },
+            {
+              "criterion": "图片清楚且能区分各字与标记，缺少目标字或模糊处保留待补证，不凭图片上传成功判书写达标",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 150,
+          "analysis": "同音或拼音写对不能替代字形；看不清、缺字或需要复核处如实保留。",
+          "family": "writing-cued-word-production",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "新提示：tíng zhǐ，指不再向前或不再继续，只写第一个目标字；dǎ bàn，指修饰自己，只写第二个目标字；hàn zì，按这个常用词的拼音只写第一个目标字；xiān yàn，形容色彩明丽，只写第二个目标字。 请上传自己的手写原件图片，保留初写与需要说明的标记。",
+          "answer": "本题目标为停、扮、汉、艳，逐字复核；四组保持提示合计覆盖晨绒球汉艳服装扮静停孔雀粗。",
+          "mode": "image_upload",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "实际手写原件包含本题要求的各目标字；逐字核对完整字形与部件，没有用打字、印刷图或他人书写代替",
+              "weight": 0.5
+            },
+            {
+              "criterion": "部件与位置符合已核对范字；按任务说明保留初写、自查或修正痕迹，不由一张静态图推断笔顺或运笔",
+              "weight": 0.3
+            },
+            {
+              "criterion": "图片清楚且能区分各字与标记，缺少目标字或模糊处保留待补证，不凭图片上传成功判书写达标",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 150,
+          "analysis": "本题仍是拼音/词义提示书写，不伪装成没有音频的听写。真实间隔和本人原件须由原复测流程证明。",
+          "family": "writing-cued-word-production",
+          "dimension": "retention",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-description",
+      "family": "expression-scene-plan-selection",
+      "dimension": "understanding",
+      "behavior": "辨认可以帮助听者跟上场景的组织方法",
+      "structure": "具体表达目的＋可用观察 → 选择有明确场景、合理顺序和依据的计划",
+      "distinction": "这里只判断表达计划，不等于已经能口头介绍；不要求为每个描写场景硬编人物问题、处理办法和结果。",
+      "exercises": [
+        {
+          "stem": "准备介绍午间图书角。你确实见到同学读书、听见轻轻翻页声。哪种计划最合适？",
+          "answer": "先说明午间图书角，再说同学的阅读活动，最后补翻页声。",
+          "options": [
+            "先说明午间图书角，再说同学的阅读活动，最后补翻页声。",
+            "先编一个丢书事件，再写大家解决了问题。",
+            "把早操、午饭和放学的活动说成同一刻发生。",
+            "只连续说“真美、真好”，不说明场所或活动。"
+          ],
+          "mode": "single_choice",
+          "analysis": "时间、场所、主要活动和观察声音连成同一个场景；材料没有要求叙事问题与结果。",
+          "expectedSeconds": 80,
+          "family": "expression-scene-plan-selection",
+          "dimension": "understanding",
+          "identityVersion": 2
+        },
+        {
+          "stem": "要介绍下课操场的一角，你只观察到跳绳小组和绳子落地声。哪种表达有依据？",
+          "answer": "限定为下课操场的跳绳小组，按自己的观察顺序介绍动作和声音。",
+          "options": [
+            "限定为下课操场的跳绳小组，按自己的观察顺序介绍动作和声音。",
+            "说全校同学任何时候都在跳绳。",
+            "编出自己没有听到的对话。",
+            "只说所有人的成绩都特别好。"
+          ],
+          "mode": "single_choice",
+          "analysis": "局部观察可清楚地介绍为局部场景，不外推为全校或任何时候。",
+          "expectedSeconds": 80,
+          "family": "expression-scene-plan-selection",
+          "dimension": "understanding",
+          "identityVersion": 2
+        },
+        {
+          "stem": "听者不知道你说的是校门口还是教室，也不知道是上课还是放学。最该先补哪项？",
+          "answer": "先交代这幅画面发生的时段和地点，再继续主要活动。",
+          "options": [
+            "先交代这幅画面发生的时段和地点，再继续主要活动。",
+            "添加一句没有依据的人物心情。",
+            "把同一个形容词重复三遍。",
+            "直接宣布故事结局，其他条件不必说。"
+          ],
+          "mode": "single_choice",
+          "analysis": "缺少场景条件会让听者无法定位，修饰词和编造结局不能补这个缺口。",
+          "expectedSeconds": 80,
+          "family": "expression-scene-plan-selection",
+          "dimension": "understanding",
+          "identityVersion": 2
+        },
+        {
+          "stem": "你要介绍校园花坛。已经观察到不同高低的植物，也看到同学在名牌前核对叶形。哪种顺序清楚？",
+          "answer": "先定位花坛，再按一侧到另一侧说植物和观察活动，保留自己实际看到的细节。",
+          "options": [
+            "先定位花坛，再按一侧到另一侧说植物和观察活动，保留自己实际看到的细节。",
+            "把未闻到的花香说成最确定的观察。",
+            "只按想到什么就说什么，反复换时段。",
+            "先保证这里的所有植物全年都开花。"
+          ],
+          "mode": "single_choice",
+          "analysis": "空间顺序可帮助听者跟上；没有气味或全年记录时不应补成事实。",
+          "expectedSeconds": 80,
+          "family": "expression-scene-plan-selection",
+          "dimension": "understanding",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原材料只记录课堂里的朗读声，没有写窗外动物的活动。要介绍这段场景，哪种处理合适？",
+          "answer": "说清课堂与朗读声；若补充想象，明确说这是自己的想象。",
+          "options": [
+            "说清课堂与朗读声；若补充想象，明确说这是自己的想象。",
+            "把动物认真听课说成已经观测到的事实。",
+            "断言所有动物都能听懂课文。",
+            "为了更生动，把课堂地点换成自己没有去过的地方。"
+          ],
+          "mode": "single_choice",
+          "analysis": "观察、材料事实和文学想象可以分别表达，不能互相冒充。",
+          "expectedSeconds": 80,
+          "family": "expression-scene-plan-selection",
+          "dimension": "understanding",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-description",
+      "family": "expression-personal-observation-production",
+      "dimension": "procedure",
+      "behavior": "围绕自己确实观察的一个校园场景连贯介绍",
+      "structure": "本人确实观察的一个时段与场所 → 自己组织活动与一两处观察细节的口头介绍",
+      "distinction": "不是选出别人写好的句子，也不是复述统一故事；未观察到时如实说明，不能为凑场景编造个人经历。",
+      "exercises": [
+        {
+          "stem": "选择你确实观察过的到校时段，限定一个校园场所，说清谁在做什么，再补一处自己看到或听到的细节。若尚未观察到，直接说明，不把想象说成本人经历。 请录音回答，可先试听，最长3分钟。",
+          "answer": "没有唯一参考内容。实际录音应交代时段、地点、活动及有依据的观察；未观察到的自述不评成已完成观察介绍。",
+          "analysis": "允许不同校园与观察条件，复核实际内容，不要求复制课文或他人的经历。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "听者或读者能辨认明确时段、地点和主要活动；围绕一个场景组织，没有把不同场景无说明地混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "活动与一两处感官细节有实际观察或题给材料依据；说明想象或未知，不为满足结构补造问题和结果",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达顺序连贯，口头关键内容可听清，允许自然停顿及自我修正；不因口音或合理措辞不同一概扣分",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "family": "expression-personal-observation-production",
+          "dimension": "procedure",
+          "identityVersion": 2
+        },
+        {
+          "stem": "选择你确实观察过的上课前场景，按空间或观察顺序介绍一个地点的主要活动。用“同学”“老师”等称呼即可，说明一处直接观察的细节。 请录音回答，可先试听，最长3分钟。",
+          "answer": "原录音应围绕一个具体时段和地点组织，不把其他时段活动搬进来；允许不同合理顺序。",
+          "analysis": "不按人名数量或固定故事模板计分，重点是听者能否跟上有依据的画面。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "听者或读者能辨认明确时段、地点和主要活动；围绕一个场景组织，没有把不同场景无说明地混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "活动与一两处感官细节有实际观察或题给材料依据；说明想象或未知，不为满足结构补造问题和结果",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达顺序连贯，口头关键内容可听清，允许自然停顿及自我修正；不因口音或合理措辞不同一概扣分",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "family": "expression-personal-observation-production",
+          "dimension": "procedure",
+          "identityVersion": 2
+        },
+        {
+          "stem": "回想自己确实观察过的一次下课场景，限定校园的一角，说主要活动和一处声音或动作。没观察到声音时可以只用看见的细节，不必编造声音。 请录音回答，可先试听，最长3分钟。",
+          "answer": "可以只用视觉观察，内容应与所说地点时段一致；听不清或没有观察经历保留待复核或未测。",
+          "analysis": "不能把感官细节的数量要求变成编造事实的压力，真实依据比套表格重要。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "听者或读者能辨认明确时段、地点和主要活动；围绕一个场景组织，没有把不同场景无说明地混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "活动与一两处感官细节有实际观察或题给材料依据；说明想象或未知，不为满足结构补造问题和结果",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达顺序连贯，口头关键内容可听清，允许自然停顿及自我修正；不因口音或合理措辞不同一概扣分",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "family": "expression-personal-observation-production",
+          "dimension": "procedure",
+          "identityVersion": 2
+        },
+        {
+          "stem": "选一个自己观察过的午间校园场景，先给出时段与地点，再依次说明主要活动和一处具体表现。说完后可以自行补一句，让听者更容易定位。 请录音回答，可先试听，最长3分钟。",
+          "answer": "原话与自我补充都保留，补充应澄清场景条件，不制造新事件结果。",
+          "analysis": "自我修正是可记录表现，不能替学生抹去原答后只保留润色版本。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "听者或读者能辨认明确时段、地点和主要活动；围绕一个场景组织，没有把不同场景无说明地混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "活动与一两处感官细节有实际观察或题给材料依据；说明想象或未知，不为满足结构补造问题和结果",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达顺序连贯，口头关键内容可听清，允许自然停顿及自我修正；不因口音或合理措辞不同一概扣分",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "family": "expression-personal-observation-production",
+          "dimension": "procedure",
+          "identityVersion": 2
+        },
+        {
+          "stem": "选择自己确实观察过的放学时段，介绍一个校园场所的画面。先想好观察顺序，再说主要活动；把没有依据的猜想单独标明或不说。 请录音回答，可先试听，最长3分钟。",
+          "answer": "按真实观察条件复核，不以是否热闹、是否发生问题作为成文条件。",
+          "analysis": "材料不要求发生冲突或解决问题，不能把叙事结构当场景介绍的唯一标准。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "听者或读者能辨认明确时段、地点和主要活动；围绕一个场景组织，没有把不同场景无说明地混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "活动与一两处感官细节有实际观察或题给材料依据；说明想象或未知，不为满足结构补造问题和结果",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达顺序连贯，口头关键内容可听清，允许自然停顿及自我修正；不因口音或合理措辞不同一概扣分",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "family": "expression-personal-observation-production",
+          "dimension": "procedure",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-description",
+      "family": "expression-observation-record-to-speech",
+      "dimension": "transfer",
+      "behavior": "把分散的原创观察记录组织成可听懂的场景",
+      "structure": "时段/地点/活动/细节记录表 → 选择明确顺序并口头连成画面",
+      "distinction": "材料由题目给出，须说这是材料场景，不冒充本人经历；表格行不自动成为时间先后。",
+      "exercises": [
+        {
+          "stem": "请依据表中原创记录介绍一个完整画面，开头说明这是材料中的场景。选择空间或先主要活动后细节的顺序，不把表格各行说成先后发生。 请录音回答，可先试听，最长3分钟。",
+          "answer": "午间阅览角里，窗边有人看图画书，书架旁有人整理归还的书，能听到轻轻翻页声。按合理空间或主次顺序组织即可。",
+          "analysis": "记录同属午间场景，不添加未记对话与心情；口头内容由原音频量规复核。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "听者或读者能辨认明确时段、地点和主要活动；围绕一个场景组织，没有把不同场景无说明地混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "活动与一两处感官细节有实际观察或题给材料依据；说明想象或未知，不为满足结构补造问题和结果",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达顺序连贯，口头关键内容可听清，允许自然停顿及自我修正；不因口音或合理措辞不同一概扣分",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "blocks": [
+            {
+              "id": "reading-corner",
+              "type": "table",
+              "headers": [
+                "条件",
+                "原创观察记录"
+              ],
+              "rows": [
+                [
+                  "时段与地点",
+                  "午间，阅览角"
+                ],
+                [
+                  "窗边",
+                  "几位同学看图画书"
+                ],
+                [
+                  "书架旁",
+                  "同学整理归还的书"
+                ],
+                [
+                  "声音",
+                  "轻轻的翻页声"
+                ]
+              ]
+            }
+          ],
+          "family": "expression-observation-record-to-speech",
+          "dimension": "transfer",
+          "identityVersion": 2
+        },
+        {
+          "stem": "请依据这份原创记录给第一次来学校的人口头介绍画面，说明共同的时间和地点，并使用一个能帮助听者定位的方位词。 请录音回答，可先试听，最长3分钟。",
+          "answer": "社团活动时，种植角左边有人观察叶片，右边有人写标签，工具盒放在中间的小桌上。",
+          "analysis": "方位及活动须对应，不能把写标签说成先于观察的必定顺序，材料没有给先后。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "听者或读者能辨认明确时段、地点和主要活动；围绕一个场景组织，没有把不同场景无说明地混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "活动与一两处感官细节有实际观察或题给材料依据；说明想象或未知，不为满足结构补造问题和结果",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达顺序连贯，口头关键内容可听清，允许自然停顿及自我修正；不因口音或合理措辞不同一概扣分",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "blocks": [
+            {
+              "id": "plant-corner",
+              "type": "table",
+              "headers": [
+                "条件",
+                "原创观察记录"
+              ],
+              "rows": [
+                [
+                  "时段与地点",
+                  "社团活动时，种植角"
+                ],
+                [
+                  "左边",
+                  "同学观察叶片"
+                ],
+                [
+                  "右边",
+                  "同学写植物标签"
+                ],
+                [
+                  "中间小桌",
+                  "放着工具盒"
+                ]
+              ]
+            }
+          ],
+          "family": "expression-observation-record-to-speech",
+          "dimension": "transfer",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-description",
+      "family": "expression-factual-revision",
+      "dimension": "transfer",
+      "behavior": "修改妨碍听者定位或没有依据的场景表达",
+      "structure": "原观察记录＋失真的草稿 → 保留事实并改成一个连贯场景",
+      "distinction": "不是只判断哪句话正确；要亲自重写，说明改动怎样恢复时间、地点、顺序或证据，不另编问题和结局。",
+      "exercises": [
+        {
+          "stem": "原创记录：下课时，长廊里几位同学看展板，偶尔指着图片交流。草稿写：“上课时全校都在操场大声争吵，后来大家解决了问题。”请改成符合观察的场景介绍，并说明删改依据。",
+          "answer": "下课时长廊里，几位同学一边看展板一边指着图片交流。原记录没有全校、操场、争吵或解决问题，应删去这些无依据内容。",
+          "analysis": "保留时段、地点和活动，不把正常交流强改成冲突故事；允许不同连贯表达。",
+          "mode": "short_answer",
+          "rubric": [
+            {
+              "criterion": "听者或读者能辨认明确时段、地点和主要活动；围绕一个场景组织，没有把不同场景无说明地混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "活动与一两处感官细节有实际观察或题给材料依据；说明想象或未知，不为满足结构补造问题和结果",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达顺序连贯，口头关键内容可听清，允许自然停顿及自我修正；不因口音或合理措辞不同一概扣分",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 140,
+          "family": "expression-factual-revision",
+          "dimension": "transfer",
+          "identityVersion": 2
+        },
+        {
+          "stem": "原创记录：早读前，教室门边有同学互相问好，靠窗的座位上有人准备书本。草稿把两处位置来回跳换，还写“每个人都特别紧张”。请重新组织成清楚的一段，指出哪项心情没有依据。",
+          "answer": "早读前的教室里，门边有同学互相问好，靠窗的座位上有人准备书本。可以按门边到窗边介绍；“每个人都紧张”没有材料依据。",
+          "analysis": "空间顺序可调整，不要求唯一句式；不能仅把心情换成高兴而保留同样无依据的推断。",
+          "mode": "short_answer",
+          "rubric": [
+            {
+              "criterion": "听者或读者能辨认明确时段、地点和主要活动；围绕一个场景组织，没有把不同场景无说明地混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "活动与一两处感官细节有实际观察或题给材料依据；说明想象或未知，不为满足结构补造问题和结果",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达顺序连贯，口头关键内容可听清，允许自然停顿及自我修正；不因口音或合理措辞不同一概扣分",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 140,
+          "family": "expression-factual-revision",
+          "dimension": "transfer",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-description",
+      "family": "expression-observation-record-to-speech",
+      "dimension": "retention",
+      "behavior": "从到期新观察记录独立组织口头场景",
+      "structure": "新的场景记录表 → 口头介绍明确时段地点、活动与真实给定细节",
+      "distinction": "与迁移记录转口述保留同一题族；新材料不是新的结构，也不证明真实间隔已经到期。",
+      "exercises": [
+        {
+          "stem": "根据新原创记录口头介绍一幅画面，说明这是材料场景，并让听者能按你的顺序找到两处活动。 请录音回答，可先试听，最长3分钟。",
+          "answer": "晨会前，礼堂前排有人整理座位，侧门有人轻声引导来者入座；可按前排到侧门介绍。",
+          "analysis": "不把轻声引导改成材料外广播或争吵，保留实际录音待复核。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "听者或读者能辨认明确时段、地点和主要活动；围绕一个场景组织，没有把不同场景无说明地混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "活动与一两处感官细节有实际观察或题给材料依据；说明想象或未知，不为满足结构补造问题和结果",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达顺序连贯，口头关键内容可听清，允许自然停顿及自我修正；不因口音或合理措辞不同一概扣分",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "blocks": [
+            {
+              "id": "hall",
+              "type": "table",
+              "headers": [
+                "条件",
+                "原创观察记录"
+              ],
+              "rows": [
+                [
+                  "时段与地点",
+                  "晨会前，礼堂"
+                ],
+                [
+                  "前排",
+                  "同学整理座位"
+                ],
+                [
+                  "侧门",
+                  "同学轻声引导来者入座"
+                ]
+              ]
+            }
+          ],
+          "family": "expression-observation-record-to-speech",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "依据新原创记录向没看过材料的人口头介绍。先定位一个时段与地点，再说活动和有依据的声音。 请录音回答，可先试听，最长3分钟。",
+          "answer": "午后美术课，教室里同学整理画纸，水槽旁有人洗笔，能听到轻微水声。",
+          "analysis": "声音有材料依据，但画的具体内容和人物心情未写，不应补成事实。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "听者或读者能辨认明确时段、地点和主要活动；围绕一个场景组织，没有把不同场景无说明地混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "活动与一两处感官细节有实际观察或题给材料依据；说明想象或未知，不为满足结构补造问题和结果",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达顺序连贯，口头关键内容可听清，允许自然停顿及自我修正；不因口音或合理措辞不同一概扣分",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "blocks": [
+            {
+              "id": "art",
+              "type": "table",
+              "headers": [
+                "条件",
+                "原创观察记录"
+              ],
+              "rows": [
+                [
+                  "时段与地点",
+                  "午后美术课，教室"
+                ],
+                [
+                  "桌旁",
+                  "整理画纸"
+                ],
+                [
+                  "水槽旁",
+                  "清洗画笔"
+                ],
+                [
+                  "声音",
+                  "轻微水声"
+                ]
+              ]
+            }
+          ],
+          "family": "expression-observation-record-to-speech",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "请根据新原创记录组织一段口头场景介绍。可以选空间顺序或先活动后细节，并说明记录里没有哪种感官信息。 请录音回答，可先试听，最长3分钟。",
+          "answer": "活动课时的花坛边，同学看花期牌并比较叶形，阳光照在叶面上；记录没有气味。",
+          "analysis": "不能为凑感官项目编花香，允许明确说没有记录气味。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "听者或读者能辨认明确时段、地点和主要活动；围绕一个场景组织，没有把不同场景无说明地混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "活动与一两处感官细节有实际观察或题给材料依据；说明想象或未知，不为满足结构补造问题和结果",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达顺序连贯，口头关键内容可听清，允许自然停顿及自我修正；不因口音或合理措辞不同一概扣分",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "blocks": [
+            {
+              "id": "flowerbed",
+              "type": "table",
+              "headers": [
+                "条件",
+                "原创观察记录"
+              ],
+              "rows": [
+                [
+                  "时段与地点",
+                  "活动课时，花坛边"
+                ],
+                [
+                  "活动",
+                  "看花期牌、比较叶形"
+                ],
+                [
+                  "看到的细节",
+                  "阳光照在叶面上"
+                ],
+                [
+                  "气味",
+                  "没有记录"
+                ]
+              ]
+            }
+          ],
+          "family": "expression-observation-record-to-speech",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "根据新原创记录口头介绍校园一角，说明两项活动是在同一个画面中发生，不把表格顺序编成事件经过。 请录音回答，可先试听，最长3分钟。",
+          "answer": "放学后校门旁，值日小组整理可回收纸盒，门厅边有老师等候来接孩子的家长；两项同属放学后画面。",
+          "analysis": "只描述已记活动，不凭等候动作推断人物是否焦虑，也不改变地点。",
+          "mode": "audio_record",
+          "responseShape": {
+            "mediaPolicy": "student-media-v1"
+          },
+          "rubric": [
+            {
+              "criterion": "听者或读者能辨认明确时段、地点和主要活动；围绕一个场景组织，没有把不同场景无说明地混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "活动与一两处感官细节有实际观察或题给材料依据；说明想象或未知，不为满足结构补造问题和结果",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达顺序连贯，口头关键内容可听清，允许自然停顿及自我修正；不因口音或合理措辞不同一概扣分",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 120,
+          "blocks": [
+            {
+              "id": "gate",
+              "type": "table",
+              "headers": [
+                "条件",
+                "原创观察记录"
+              ],
+              "rows": [
+                [
+                  "时段与地点",
+                  "放学后，校门与门厅旁"
+                ],
+                [
+                  "校门旁",
+                  "值日小组整理可回收纸盒"
+                ],
+                [
+                  "门厅旁",
+                  "老师等候来接孩子的家长"
+                ]
+              ]
+            }
+          ],
+          "family": "expression-observation-record-to-speech",
+          "dimension": "retention",
+          "identityVersion": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-description",
+      "family": "expression-factual-revision",
+      "dimension": "retention",
+      "behavior": "对到期新草稿做有依据的表达修正",
+      "structure": "新的观察记录＋不清楚或补造事实的草稿 → 亲自重写并说明取舍",
+      "distinction": "沿用原表达修改身份，不因过了某个日期或改了材料就增加独立结构；原稿和修改依据同时保留。",
+      "exercises": [
+        {
+          "stem": "新原创记录：午间操场东侧有人练习传球，西侧树下有人下棋。草稿写：“先所有人传球，再所有人去下棋。”请改成一个不虚构先后与人数的画面。",
+          "answer": "午间操场东侧有人练习传球，西侧树下有人下棋。记录是不同位置，不证明所有人先后完成两项活动。",
+          "analysis": "不把表格或空间顺序当作时间证据，改写仍要让听者知道两处位置。",
+          "mode": "short_answer",
+          "rubric": [
+            {
+              "criterion": "听者或读者能辨认明确时段、地点和主要活动；围绕一个场景组织，没有把不同场景无说明地混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "活动与一两处感官细节有实际观察或题给材料依据；说明想象或未知，不为满足结构补造问题和结果",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达顺序连贯，口头关键内容可听清，允许自然停顿及自我修正；不因口音或合理措辞不同一概扣分",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 140,
+          "family": "expression-factual-revision",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "新原创记录：阅览室里同学轻轻翻书，有人把书放回分类书格。草稿只有“这里真好真棒，人人永远都特别开心”。请补成有具体依据的场景介绍，并删去无法证明的评价。",
+          "answer": "阅览室里，同学轻轻翻书，有人把读过的书放回分类书格。记录没有所有人永远开心的依据，可删去绝对评价。",
+          "analysis": "换一个夸赞词仍不能补活动与细节，允许保留有依据的个人感受并明确这是自己感受。",
+          "mode": "short_answer",
+          "rubric": [
+            {
+              "criterion": "听者或读者能辨认明确时段、地点和主要活动；围绕一个场景组织，没有把不同场景无说明地混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "活动与一两处感官细节有实际观察或题给材料依据；说明想象或未知，不为满足结构补造问题和结果",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达顺序连贯，口头关键内容可听清，允许自然停顿及自我修正；不因口音或合理措辞不同一概扣分",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 140,
+          "family": "expression-factual-revision",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "新原创记录：早读前的走廊，老师出声提醒慢行，同学沿右侧经过。草稿改成“放学后的花园，大家在比赛跑步”。请按原观察重写，并指出要恢复的关键条件。",
+          "answer": "早读前的走廊里，老师提醒慢行，同学沿右侧经过。应恢复时段、地点、活动和提醒内容，不能保留比赛跑步。",
+          "analysis": "不是只改一个词，主要条件都要对应；实际可接受多种连贯句式。",
+          "mode": "short_answer",
+          "rubric": [
+            {
+              "criterion": "听者或读者能辨认明确时段、地点和主要活动；围绕一个场景组织，没有把不同场景无说明地混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "活动与一两处感官细节有实际观察或题给材料依据；说明想象或未知，不为满足结构补造问题和结果",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达顺序连贯，口头关键内容可听清，允许自然停顿及自我修正；不因口音或合理措辞不同一概扣分",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 140,
+          "family": "expression-factual-revision",
+          "dimension": "retention",
+          "identityVersion": 2
+        },
+        {
+          "stem": "新原创记录：午后种植角有人查看标签、给盆栽补水，记录只写看见的动作。草稿添加了具体对话、花香和所有人的心情。请用自己的话整理一段，明确哪些应删去或标为未知。",
+          "answer": "午后种植角，同学查看标签并给盆栽补水。对话、花香和所有人的心情没有记录，应删去或说明未知。",
+          "analysis": "可以组织成自然语言，不要求复制参考；不能为满足生动要求把猜想当观察。",
+          "mode": "short_answer",
+          "rubric": [
+            {
+              "criterion": "听者或读者能辨认明确时段、地点和主要活动；围绕一个场景组织，没有把不同场景无说明地混在一起",
+              "weight": 0.4
+            },
+            {
+              "criterion": "活动与一两处感官细节有实际观察或题给材料依据；说明想象或未知，不为满足结构补造问题和结果",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达顺序连贯，口头关键内容可听清，允许自然停顿及自我修正；不因口音或合理措辞不同一概扣分",
+              "weight": 0.2
+            }
+          ],
+          "expectedSeconds": 140,
+          "family": "expression-factual-revision",
+          "dimension": "retention",
+          "identityVersion": 2
+        }
+      ]
+    }
+  ]
+}

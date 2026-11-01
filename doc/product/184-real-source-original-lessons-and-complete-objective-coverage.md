@@ -1,5 +1,11 @@
 # 184 真实来源原创课时与完整目标覆盖
 
+2026-11-01手写与校园表达候选补齐：新增44题，手写22题包含5字形检查/17图像，13字分列且每道过程任务全覆盖；校园表达22题包含5封闭/11录音/6文字修改，不强套叙事模板，不编造本人经历。两目标各4种实际结构，迁移/保持沿用相同题族，不能把6条family记录算6结构。专项24/0含8新增/16旧，类型及编译0，实际SQLite/PG各33/0分别通过，见[本批证据](../evidence/2026-11-01/workspace-r6-writing-expression-materials/receipt.json)。134题的57封闭与77开放/媒体待复核分开，45媒体金样本只是协议，尚未实际上传附件或写学生记录。
+
+8目标/32组当前库存预检0缺口，五定义和完整稿仅在隔离QA显式发布；公共定义包仍全draft，不表示教师审阅、本人首答或长期保持。旧SQLite只读核对证实4道场景/特点题遗漏附加表格，旧库不改，原接口通过不能证明旧题面完整。新驱动通过原QuestionWorkspaceService存储task.blocks和实际版本；两库各10道表格render全文块SHA/version2通过，39选择题正确位置有4处。1310源/601编译输入和两驱动保持；原完整API第三轮2988/1/131失败保留，新候选尚未完整验收。
+
+接准确范围的原课程创建、8目标课堂、实际上传工程媒体与本人权限首答、原计划ReviewTask到期、最终API/整站/双库/隐私恢复及33窄归并。主干32、正式24/revision187及1063保护文件保持，原03/92/105/147、72/WS和全教材/GESP/R5/R7/R8、教师/实机/打印/真人1/3/7/14日全部范围active，仅本地提交。
+
 2026-11-01，接[180逐课管线](180-textbook-lesson-source-and-teaching-package-pipeline.md)、[181完整教学包](181-textbook-teaching-package-and-classroom-adoption.md)、[183准确版本](183-exact-textbook-edition-and-source-directory-binding.md)及[150全部计划](150-integrated-delivery-plan-and-work-ledger.md)R6。18ace40a已封存准确版本候选；p185的1295输入/595编译输入正在完整API回归，不修改该冻结版本。新内容在主目录内p186隔离副本接续，不建分支或worktree，不迁移正式库，不推送或部署。
 
 ## 已核对的首个真实样例

@@ -1,0 +1,62 @@
+{
+  "at": "2026-11-01T09:09:12.447Z",
+  "database": "data/qa/workspace-original-teaching-first-20261101/reading-sqlite-journey-first/db/study-agent.sqlite3",
+  "databaseUnchanged": true,
+  "findings": [
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-reconstruction",
+      "family": "scene-record-to-spatial-description",
+      "questionId": "question_9248782f-a901-4ac4-9fc9-6afb596d04e7",
+      "expectedExtraBlocks": 1,
+      "actualBlocks": 1,
+      "actualTypes": [
+        "text"
+      ],
+      "actualVersion": 1,
+      "expectedBlocksSha256": "d462eda0268d99853aeea723064923864c3e75714b106de720d5357e0f59f7c1",
+      "actualDocumentSha256": "ece9630c3ed94b86e0b93b34a58767c168c69b1e1fae410e4fffaf2f818e2be4"
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-reconstruction",
+      "family": "scene-record-to-spatial-description",
+      "questionId": "question_2d162019-b954-424e-84c5-3117256a3c04",
+      "expectedExtraBlocks": 1,
+      "actualBlocks": 1,
+      "actualTypes": [
+        "text"
+      ],
+      "actualVersion": 1,
+      "expectedBlocksSha256": "1ee09a46cb59e2cc76b9d816fb5b08f4dcc7b876a83ef9675d7eed137f99ff7c",
+      "actualDocumentSha256": "545fd8b54fd6941a80a1a2171628a1e14afd5d022e58879f9727ba298e775903"
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:feature-summary",
+      "family": "feature-across-records-synthesis",
+      "questionId": "question_9a297861-b590-4f98-9824-2002362d8b30",
+      "expectedExtraBlocks": 1,
+      "actualBlocks": 1,
+      "actualTypes": [
+        "text"
+      ],
+      "actualVersion": 1,
+      "expectedBlocksSha256": "a6cb5e98104f05fb359aba3cddf997d4970bc8df6b770470fa9600be622b008f",
+      "actualDocumentSha256": "7149c23b1818d3f9861de64fc6fc9ff207476697d21d873e2b4f2e0a891d383e"
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:feature-summary",
+      "family": "feature-across-records-synthesis",
+      "questionId": "question_148cd4a1-0988-4931-8984-3c53b8b58855",
+      "expectedExtraBlocks": 1,
+      "actualBlocks": 1,
+      "actualTypes": [
+        "text"
+      ],
+      "actualVersion": 1,
+      "expectedBlocksSha256": "d9182b287db41a05442b4a4512f993d69e69c853b1285c53bd75b0b8b2b19b9e",
+      "actualDocumentSha256": "aa0a40d2f82d9e03e257b574b0261eb0c73c207563f8b446a565ec88ca99438f"
+    }
+  ],
+  "scope": "Earlier editorial QA importer did not save extra authored question table blocks. Those earlier service passes do not prove complete question rendering; original reports stay unchanged.",
+  "formalDataModified": false,
+  "learnerEvidence": false
+}
