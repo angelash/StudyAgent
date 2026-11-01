@@ -1,0 +1,395 @@
+{
+  "at": "2026-11-01T18:11:43.621Z",
+  "base": "abbfe793cf3b6aeabb1c62a7e667659a29ffdb2d",
+  "head": "81754f7949ab1d91b78e0205588d1c7318f932ee",
+  "mainChangedSinceBaseInScope": [
+    "apps/api/src/common/auth.guard.ts",
+    "apps/api/src/infrastructure/domain-database.ts",
+    "apps/api/src/infrastructure/http-keep-alive.ts",
+    "apps/api/src/infrastructure/in-memory-store.service.ts",
+    "apps/api/src/infrastructure/schema32-reader.integration.test.ts",
+    "apps/api/src/infrastructure/textbook-edition-reader.integration.test.ts",
+    "apps/api/src/infrastructure/textbook-teaching-adoption-native.integration.test.ts",
+    "apps/api/src/infrastructure/textbook-teaching-course-history-native.integration.test.ts",
+    "apps/api/src/infrastructure/textbook-teaching-early33-readers.integration.test.ts",
+    "apps/api/src/infrastructure/textbook-teaching-native.integration.test.ts",
+    "apps/api/src/main.ts",
+    "apps/api/src/modules/diagnostics/assessment-blueprint.ts",
+    "apps/api/src/modules/diagnostics/classroom-retention-origin.test.ts",
+    "apps/api/src/modules/diagnostics/classroom-retention-origin.ts",
+    "apps/api/src/modules/diagnostics/curriculum.service.ts",
+    "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
+    "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+    "apps/api/src/modules/diagnostics/diagnostics.module.ts",
+    "apps/api/src/modules/diagnostics/diagnostics.service.ts",
+    "apps/api/src/modules/diagnostics/guidance.service.ts",
+    "apps/api/src/modules/diagnostics/retention.service.ts",
+    "apps/api/src/modules/diagnostics/source-chinese-expression-probes.ts",
+    "apps/api/src/modules/diagnostics/source-chinese-feature-probes.test.ts",
+    "apps/api/src/modules/diagnostics/source-chinese-feature-probes.ts",
+    "apps/api/src/modules/diagnostics/source-chinese-first-probes.test.ts",
+    "apps/api/src/modules/diagnostics/source-chinese-first-probes.ts",
+    "apps/api/src/modules/diagnostics/source-chinese-production-probes.test.ts",
+    "apps/api/src/modules/diagnostics/source-chinese-reading-probes.test.ts",
+    "apps/api/src/modules/diagnostics/source-chinese-reading-probes.ts",
+    "apps/api/src/modules/diagnostics/source-chinese-scene-probes.test.ts",
+    "apps/api/src/modules/diagnostics/source-chinese-scene-probes.ts",
+    "apps/api/src/modules/diagnostics/source-chinese-writing-probes.ts",
+    "apps/api/src/modules/diagnostics/teaching-editor-client.test.ts",
+    "apps/api/src/modules/diagnostics/teaching-editor-copy.test.ts",
+    "apps/api/src/modules/diagnostics/teaching-editor-state.test.ts",
+    "apps/api/src/modules/diagnostics/teaching-practice-navigation.test.ts",
+    "apps/api/src/modules/diagnostics/textbook-edition-conformity.fixture.ts",
+    "apps/api/src/modules/diagnostics/textbook-edition-conformity.test.ts",
+    "apps/api/src/modules/diagnostics/textbook-edition-conformity.ts",
+    "apps/api/src/modules/diagnostics/textbook-edition-registry.test.ts",
+    "apps/api/src/modules/diagnostics/textbook-lesson-source.integration.test.ts",
+    "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts",
+    "apps/api/src/modules/diagnostics/textbook-registry.service.ts",
+    "apps/api/src/modules/diagnostics/textbook-scope-inventory.integration.test.ts",
+    "apps/api/src/modules/diagnostics/textbook-source-candidates.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching-adoption-fixture.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching-adoption-native.test.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching-adoption-native.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching-adoption.test.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching-adoption.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching-classroom-native.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching-fixture.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching-native.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching-package.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching-practice.test.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching-practice.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching-public.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching-record.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching-release.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching.controller.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching.integration.test.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching.service.ts",
+    "apps/api/src/modules/diagnostics/textbook-teaching.test.ts",
+    "apps/api/src/modules/diagnostics/verification-materials.integration.test.ts",
+    "apps/api/src/modules/learning/chemistry-tutorial.integration.test.ts",
+    "apps/api/src/modules/learning/classroom.service.ts",
+    "apps/api/src/modules/learning/course-builder-copy.test.ts",
+    "apps/api/src/modules/learning/course-upgrade-copy.test.ts",
+    "apps/api/src/modules/learning/learning.controller.ts",
+    "apps/api/src/modules/learning/learning.module.ts",
+    "apps/api/src/modules/learning/learning.service.ts",
+    "apps/api/src/modules/learning/studio-course-history-lookup.ts",
+    "apps/api/src/modules/learning/studio-course.ts",
+    "apps/api/src/modules/learning/textbook-teaching-course-fixture.ts",
+    "apps/api/src/modules/learning/textbook-teaching-course-history-native.ts",
+    "apps/api/src/modules/learning/textbook-teaching-course-history.test.ts",
+    "apps/api/src/modules/learning/textbook-teaching-course-history.ts",
+    "apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts",
+    "apps/api/src/modules/learning/textbook-teaching-course.integration.test.ts",
+    "apps/api/src/modules/learning/textbook-teaching-course.service.ts",
+    "apps/api/src/modules/learning/textbook-teaching-course.test.ts",
+    "apps/api/src/modules/learning/textbook-teaching-course.ts",
+    "apps/api/src/modules/library/paper-library-persistence.test.ts",
+    "apps/api/src/modules/privacy/privacy-records.ts",
+    "apps/api/src/modules/privacy/privacy.integration.test.ts",
+    "apps/api/src/modules/privacy/privacy.service.ts",
+    "apps/web/app/admin/curriculum/page.tsx",
+    "apps/web/app/admin/curriculum/reference-source-panel.tsx",
+    "apps/web/app/admin/curriculum/teaching-package-content.tsx",
+    "apps/web/app/admin/curriculum/teaching-package-workspace.tsx",
+    "apps/web/app/admin/curriculum/teaching-package.css",
+    "apps/web/app/library/practice/review/studio.tsx",
+    "apps/web/app/student/assessment/studio.css",
+    "apps/web/app/student/assessment/studio.tsx",
+    "apps/web/app/studio/classroom/practice-panel.tsx",
+    "apps/web/app/studio/classroom/workbench.tsx",
+    "apps/web/app/studio/course-builder.css",
+    "apps/web/app/studio/course-builder.tsx",
+    "apps/web/app/studio/course-upgrade.tsx",
+    "apps/web/app/studio/course-workspace.tsx",
+    "apps/web/app/studio/settings/page.tsx",
+    "apps/web/app/studio/studio.tsx",
+    "apps/web/app/studio/textbook-course-selector.tsx",
+    "apps/web/components/assessment-blueprint.tsx",
+    "apps/web/components/workspace-shell.css",
+    "apps/web/lib/course-builder-client.ts",
+    "apps/web/lib/course-builder-copy.ts",
+    "apps/web/lib/course-builder-local.ts",
+    "apps/web/lib/course-upgrade-client.ts",
+    "apps/web/lib/course-upgrade-copy.ts",
+    "apps/web/lib/course-upgrade-local.ts",
+    "apps/web/lib/course-version-navigation.ts",
+    "apps/web/lib/teaching-editor-client.ts",
+    "apps/web/lib/teaching-editor-copy.ts",
+    "apps/web/lib/teaching-editor-local.ts",
+    "apps/web/lib/teaching-editor-read.ts",
+    "apps/web/lib/teaching-editor-state.ts",
+    "apps/web/lib/teaching-practice-navigation.ts",
+    "apps/web/lib/use-course-builder-workspace.ts",
+    "apps/web/lib/use-course-upgrade-workspace.ts",
+    "apps/web/lib/use-teaching-editor-workspace.ts",
+    "apps/web/lib/workspace-exit-guard.ts",
+    "packages/contracts/src/curriculum.ts",
+    "packages/contracts/src/diagnostics.ts",
+    "packages/contracts/src/index.ts",
+    "packages/contracts/src/studio-course-history.ts",
+    "packages/contracts/src/studio-course-request.ts",
+    "packages/contracts/src/studio.ts",
+    "packages/contracts/src/textbook-teaching.ts",
+    "scripts/operations/assistant-practice-integrity.cjs",
+    "scripts/operations/database-reader-guard.cjs",
+    "scripts/operations/privacy-ledger.cjs",
+    "scripts/qa/source-course-test-api.cjs",
+    "tests/e2e/classroom-boards.spec.ts",
+    "tests/e2e/course-builder.spec.ts",
+    "tests/e2e/product-smoke.spec.ts",
+    "tests/e2e/source-course-project.spec.ts",
+    "tests/e2e/studio.spec.ts",
+    "tests/e2e/teaching-plan-verification.spec.ts",
+    "tests/e2e/workspace.spec.ts"
+  ],
+  "trackedInScope": 2842,
+  "candidateInScope": 2862,
+  "changed": [
+    {
+      "path": "apps/api/src/common/auth.guard.ts",
+      "mainSha256": "5edf1db867d7b1459bcad21d1ccaa62189d2486db475ea53ccab1aef53d7c3db",
+      "candidateSha256": "4e500f05d4e726b527f06cf9fcf88d42cdb433176f64724cc8a105ca7c315fb2",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/learning/course-builder-copy.test.ts",
+      "mainSha256": "9d82bdadbc8f52ae88b5f581daac79f0a2622f70bae8a8894ce6a1c6475b8bb9",
+      "candidateSha256": "be51c95d68a1128db2b3749c9684d539478fd272976e82d00ad2976454a1bd2c",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/learning/course-upgrade-copy.test.ts",
+      "mainSha256": "00ed4e52c2e40e34d234fb1ac7306f7f9a090e470e5a3657e64513187e2476d4",
+      "candidateSha256": "8b3c02add6ce16b9f45a37a443550a28edff216c9d2f3d0ed7077a865f90d88c",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/learning/learning.controller.ts",
+      "mainSha256": "a1509088f398640ef87300090b49d9da4cff2bd3b07437fe502f4baf1c0585fd",
+      "candidateSha256": "dab2d8afd8a36d58260dfe563606c39e49b8f750275e4e024a327bbc28ae3a2d",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/api/src/modules/learning/learning.service.ts",
+      "mainSha256": "3c550c5290b5e56209787c5d6abe1c8a8ed1395993ca53937f9da30bdee349e4",
+      "candidateSha256": "f379a685a7d53b88475cef72529a35d91c56e1cbbdac16cff86791f41f9f9771",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/api/src/modules/students/student-access.integration.test.ts",
+      "mainSha256": "60eb8435b4ac13002e684b6e7e19aa5fe3f1a89c4292ed7ad7333ae2b09d96d1",
+      "candidateSha256": "acd54bed872765ea57a9b3fc9479986a03adf2f82925dccf0f1746827374b098",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/app/parent/dashboard/studio.tsx",
+      "mainSha256": "f2c6101d2e25caeb3f1055716baa3d995a02cedd2b5d5c7b09bb8f232f6ea7d8",
+      "candidateSha256": "6b7a7b2862ba10184c7df2565ffe4a67eb423ba97ef1ea76f9c4934826059da1",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/app/studio/course-upgrade.tsx",
+      "mainSha256": "914b161e41dc0147a8f6cfa7e8900619cacce5b40dfd8af26faad67b24eb9f59",
+      "candidateSha256": "121692e1325bd859cad14137050b56c7c1beac1ef9b05705328d446d91b34e27",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/app/studio/projects/workbench.tsx",
+      "mainSha256": "bcbb4560ee21ba7f3f1d12c3babdb4229fe616534619fd520ad7488e4d79fbbd",
+      "candidateSha256": "fccf07a8a45240be22e298fa97fc035c16abc870b75430b44d411167c98b5a04",
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/lib/course-upgrade-client.ts",
+      "mainSha256": "7e93a9f7825a1da4eb415716954b0f357075085b38278940aa95b2332df4f106",
+      "candidateSha256": "faea451b71016cd228936692ffe3471b35ec036ba46ada1a657fb547392e2403",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/course-upgrade-copy.ts",
+      "mainSha256": "582d58fe52f1b55faae8085c120c95d088082807e3d19bd6bba6b1714d02de56",
+      "candidateSha256": "789b8af8268a33656c264ec63b1adefe332da08a308e10129f69a1ee5466a911",
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/lib/use-course-upgrade-workspace.ts",
+      "mainSha256": "bc1f963172954c7854fad4b9a0bba1374e38bb4596a25bf15931f2ba23bb3ba9",
+      "candidateSha256": "c5b3a0f97ff78355d29d8056e71f657e7291e6d2fb34f65f422cc8e671a7e866",
+      "candidateCrlf": false
+    }
+  ],
+  "eolOnly": [],
+  "added": [
+    {
+      "path": "apps/web/AGENTS.md",
+      "candidateSha256": "063098f6cb31bb44c6f8fbea25b3876de7ee1e5f7d00a50dbab506f6415eb7f0",
+      "bytes": 679,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_AMS-Regular.woff2",
+      "candidateSha256": "0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308",
+      "bytes": 28076,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Caligraphic-Bold.woff2",
+      "candidateSha256": "de7701e42cf1f4cf0b766c03fb27977207eee2f4fd5d76fa82188406da43ea4c",
+      "bytes": 6912,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Caligraphic-Regular.woff2",
+      "candidateSha256": "5d53e70ad607c2352162dec9e0923fb54ecdafaccbf604cd8dcf7d00facb989b",
+      "bytes": 6908,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Fraktur-Bold.woff2",
+      "candidateSha256": "74444efd593c005e3f4573b44524704c0af0a937fe911cca9e94068d0d140d3f",
+      "bytes": 11348,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Fraktur-Regular.woff2",
+      "candidateSha256": "51814d270d06ff0255dba0799994fa4d8c84d11f09951d47595f4abb1f3602dc",
+      "bytes": 11316,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Main-Bold.woff2",
+      "candidateSha256": "0f60d1b897938ec918c8ce073092411baf9438f6739465693ff18b0f9d20b021",
+      "bytes": 25324,
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Main-BoldItalic.woff2",
+      "candidateSha256": "99cd42a3c072d918f2f44984a807cf7aa16e13545fd0875fc07c6c65f99e715b",
+      "bytes": 16780,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Main-Italic.woff2",
+      "candidateSha256": "97479ca6cce906abc961ecac96faa5f9ca2e61b8e7670d475826bcdee9a7c267",
+      "bytes": 16988,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Main-Regular.woff2",
+      "candidateSha256": "c2342cd8b869e01752a9321dc17213fc40d4d04c79688c1d43f2cf316abd7866",
+      "bytes": 26272,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Math-BoldItalic.woff2",
+      "candidateSha256": "dc47344dbb6cb5b655c8460d561f4df5f501b90c804ad3c6cec65fe322351ab1",
+      "bytes": 16400,
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Math-Italic.woff2",
+      "candidateSha256": "7af58c5ec8f132a2ddde9027c6d7814decce4d3b822a11192a42a20e2e973264",
+      "bytes": 16440,
+      "candidateCrlf": true
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_SansSerif-Bold.woff2",
+      "candidateSha256": "e99ae51144bf1232efcc1bfe5add36262c6866b0faab24fa75740e1b98577a62",
+      "bytes": 12216,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_SansSerif-Italic.woff2",
+      "candidateSha256": "00b26ac825e2095056396e0553b8ac26d3f8ad158c3826e28b4c45b385c4714a",
+      "bytes": 12028,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_SansSerif-Regular.woff2",
+      "candidateSha256": "68e8c73ef42afd3ccec58bf0fba302cce448938e7fc020a5e31f8a952eee1342",
+      "bytes": 10344,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Script-Regular.woff2",
+      "candidateSha256": "036d4e95149b69ff9bcc0cd55771efeb25ffa3947293e69acd78d5ac328c684b",
+      "bytes": 9644,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Size1-Regular.woff2",
+      "candidateSha256": "6b47c40166b6dbe21a5dfca7718413f2147fd2399be1ba605d8ad39cedf25dfe",
+      "bytes": 5468,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Size2-Regular.woff2",
+      "candidateSha256": "d04c54219f9eaec6d4d4fd42dfb28785975a4794d6b2fc71e566b9cd6db842dd",
+      "bytes": 5208,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Size3-Regular.woff2",
+      "candidateSha256": "73d591271b1604960cb10bb90fee021670af7297017e0e98480b332d11f51995",
+      "bytes": 3624,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Size4-Regular.woff2",
+      "candidateSha256": "a4af7d414440a1c1790825cfb700cf9cf43b0f2c4b04f0ebc523011ad9853ec0",
+      "bytes": 4928,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/fonts/KaTeX_Typewriter-Regular.woff2",
+      "candidateSha256": "71d517d67827787cfabdf186914cc3358eda539e37931941f2b2fd4a21f68c0b",
+      "bytes": 13568,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/LICENSE.txt",
+      "candidateSha256": "3caebd18611959ca725ab976a004d408017eb1d7093d6c9b9b09c5a4790eaff8",
+      "bytes": 1099,
+      "candidateCrlf": false
+    },
+    {
+      "path": "apps/web/public/vendor/mathlive/manifest.json",
+      "candidateSha256": "f1c62381ca8c2f743f5eb1947fe35b4f281a879f75054938b8268e605223a798",
+      "bytes": 3433,
+      "candidateCrlf": false
+    },
+    {
+      "path": "tests/e2e/workspace-legacy-entries.spec.ts",
+      "candidateSha256": "a1015a1aac017e33e8f0fce35faddeed4e782be5e5db36c968ef733cdc51d3a4",
+      "bytes": 10969,
+      "candidateCrlf": false
+    }
+  ],
+  "missing": [
+    "resources/compatibility/course-history-schema33-reader-v1.receipt.json",
+    "resources/compatibility/early-schema33-five-collections-reader-v1.json.gz",
+    "resources/compatibility/early-schema33-four-collections-reader-v1.json.gz",
+    "resources/compatibility/early-schema33-readers.md"
+  ],
+  "summary": {
+    "changed": {
+      "apps/api/src": 6,
+      "apps/web/app": 3,
+      "apps/web/lib": 3
+    },
+    "added": {
+      "apps/web/AGENTS.md": 1,
+      "apps/web/public": 22,
+      "tests/e2e/workspace-legacy-entries.spec.ts": 1
+    },
+    "missing": {
+      "resources/compatibility/course-history-schema33-reader-v1.receipt.json": 1,
+      "resources/compatibility/early-schema33-five-collections-reader-v1.json.gz": 1,
+      "resources/compatibility/early-schema33-four-collections-reader-v1.json.gz": 1,
+      "resources/compatibility/early-schema33-readers.md": 1
+    },
+    "eolOnly": 0
+  }
+}

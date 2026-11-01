@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-01T16:42:06.889Z",
+  "files": {
+    "apps/api/src/modules/learning/learning.service.ts": {
+      "before": "3c550c5290b5e56209787c5d6abe1c8a8ed1395993ca53937f9da30bdee349e4",
+      "after": "d7ad0b95d5fd37fff4c49fc78b097998518635dc569dcf445708d755880622d6"
+    },
+    "apps/api/src/common/auth.guard.ts": {
+      "before": "5edf1db867d7b1459bcad21d1ccaa62189d2486db475ea53ccab1aef53d7c3db",
+      "after": "f240d767327f223dbc334d96c9d4cc5852234d797b81345373664c37f3efde6c"
+    },
+    "apps/web/app/parent/dashboard/studio.tsx": {
+      "before": "f2c6101d2e25caeb3f1055716baa3d995a02cedd2b5d5c7b09bb8f232f6ea7d8",
+      "after": "468a6b0b3cc824939081b2ffb0e8231b95889df6025749b6be32154e8beaa2ef"
+    },
+    "apps/web/app/parent/data/page.tsx": {
+      "before": "c0a831768349486f1ccd185050e0b714dbccc3a5ef015b53a992310a778ed540",
+      "after": "1f7178ee9e3425a1ee28960f2b9527427c655d3463ac664e204de7520c0eb2b9"
+    },
+    "apps/web/app/studio/projects/workbench.tsx": {
+      "before": "bcbb4560ee21ba7f3f1d12c3babdb4229fe616534619fd520ad7488e4d79fbbd",
+      "after": "fccf07a8a45240be22e298fa97fc035c16abc870b75430b44d411167c98b5a04"
+    },
+    "tests/e2e/workspace-legacy-entries.spec.ts": {
+      "before": "c141111555166010d0f960a405967f6137d0a7491596b34d46e1ed8cf74dcd11",
+      "after": "a1015a1aac017e33e8f0fce35faddeed4e782be5e5db36c968ef733cdc51d3a4"
+    }
+  },
+  "evidence": "legacy-matrix-browser-third recorded learner 403s on /api/learning/overview (E04/E08), /api/privacy/overview (E10) and /api/learning/projects/catalog (E18)."
+}

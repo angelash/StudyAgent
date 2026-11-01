@@ -66,6 +66,10 @@ describe('guardian-managed finite student learning identity', () => {
     expect((await call('get', '/learning/students', undefined, student)).map((c: any) => c.id)).toEqual([child.id]);
     await call('get', `/students/${sibling.id}/profile`, undefined, student, 403);
     await call('get', `/learning/students/${sibling.id}/today`, undefined, student, 403);
+    // The learner-only knowledge view returns just this child; guardians keep the family overview.
+    expect((await call('get', `/learning/students/${child.id}/knowledge`, undefined, student)).children.map((c: any) => c.id)).toEqual([child.id]);
+    await call('get', `/learning/students/${sibling.id}/knowledge`, undefined, student, 403);
+    await call('get', `/learning/students/${child.id}/knowledge`, undefined, parent, 403);
     await call('post', '/diagnostics/sessions', { studentId: sibling.id, subject: 'math' }, student, 403);
     const { session, report } = await assessment(student);
     expect(report.rawScore).toBe(100); expect(session.scopeSnapshot.version).toBe(1);

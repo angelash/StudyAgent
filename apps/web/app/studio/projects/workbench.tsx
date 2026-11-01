@@ -107,6 +107,8 @@ function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof use
       try {
         const next = new URLSearchParams(window.location.search), course = next.get('studioCourseId'),source=next.get('sourceCourseId'); setQuery(next.toString());
         const filters = new URLSearchParams(); if (course) filters.set('studioCourseId', course);if(source)filters.set('sourceCourseId',source); if(next.get('studentId')) filters.set('studentId',next.get('studentId')!);
+        // Learner projects belong to their own course units; the adult catalog is not a learner entry.
+        if (identity.role === 'student' && !course && !source && !next.get('project')) throw new Error('请从自己的课程进入项目；项目按课程单元保存。');
         const list = await apiRequest<CourseProjectCatalog>('/learning/projects/catalog?' + filters, { signal: active.signal });
         const projectId = next.get('project'); const target = projectId ? await apiRequest<CourseProjectView>('/learning/projects/' + encodeURIComponent(projectId), { signal: active.signal }) :
           list.projects.find(item => item.definition.unitId === (next.get('unitId') ?? list.definitions[0]?.unitId));

@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-01T18:11:48.601Z",
+  "plan": "learner-entries-integration-plan-first",
+  "head": "81754f7949ab1d91b78e0205588d1c7318f932ee",
+  "base": "abbfe793cf3b6aeabb1c62a7e667659a29ffdb2d",
+  "applied": 13,
+  "changed": 12,
+  "added": 1,
+  "excluded": [
+    "apps/web/AGENTS.md"
+  ],
+  "ignoredGeneratedFilesSkipped": 22,
+  "mainOnlyResourcesRetained": [
+    "resources/compatibility/course-history-schema33-reader-v1.receipt.json",
+    "resources/compatibility/early-schema33-five-collections-reader-v1.json.gz",
+    "resources/compatibility/early-schema33-four-collections-reader-v1.json.gz",
+    "resources/compatibility/early-schema33-readers.md"
+  ],
+  "filesNotInCompleteRunManifests": [],
+  "recovery": "learner-entries-integration-apply-first-main-before.json.gz",
+  "recoverySha256": "f06e233c9c088ca0c719e411207c50667cf15fb85782ff0d704fe818c4f2e71d",
+  "allFilesReadBack": true,
+  "noBuildInMain": true,
+  "formalDataUntouched": true
+}

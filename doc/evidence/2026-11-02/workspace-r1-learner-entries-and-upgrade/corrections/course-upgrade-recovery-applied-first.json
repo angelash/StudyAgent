@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-01T16:42:07.249Z",
+  "files": {
+    "apps/web/lib/course-upgrade-copy.ts": {
+      "before": "582d58fe52f1b55faae8085c120c95d088082807e3d19bd6bba6b1714d02de56",
+      "after": "789b8af8268a33656c264ec63b1adefe332da08a308e10129f69a1ee5466a911"
+    },
+    "apps/web/lib/course-upgrade-client.ts": {
+      "before": "7e93a9f7825a1da4eb415716954b0f357075085b38278940aa95b2332df4f106",
+      "after": "faea451b71016cd228936692ffe3471b35ec036ba46ada1a657fb547392e2403"
+    },
+    "apps/web/lib/use-course-upgrade-workspace.ts": {
+      "before": "bc1f963172954c7854fad4b9a0bba1374e38bb4596a25bf15931f2ba23bb3ba9",
+      "after": "c5b3a0f97ff78355d29d8056e71f657e7291e6d2fb34f65f422cc8e671a7e866"
+    },
+    "apps/web/app/studio/course-upgrade.tsx": {
+      "before": "914b161e41dc0147a8f6cfa7e8900619cacce5b40dfd8af26faad67b24eb9f59",
+      "after": "121692e1325bd859cad14137050b56c7c1beac1ef9b05705328d446d91b34e27"
+    },
+    "apps/api/src/modules/learning/course-builder-copy.test.ts": {
+      "before": "9d82bdadbc8f52ae88b5f581daac79f0a2622f70bae8a8894ce6a1c6475b8bb9",
+      "after": "be51c95d68a1128db2b3749c9684d539478fd272976e82d00ad2976454a1bd2c"
+    },
+    "apps/api/src/modules/learning/course-upgrade-copy.test.ts": {
+      "before": "00ed4e52c2e40e34d234fb1ac7306f7f9a090e470e5a3657e64513187e2476d4",
+      "after": "8b3c02add6ce16b9f45a37a443550a28edff216c9d2f3d0ed7077a865f90d88c"
+    }
+  },
+  "reason": "Course upgrade shared the course-builder unknown-result handling: an explicit refusal stayed unknown, blocked new upgrades and history verification; quick cancel and preview closing matched the earlier builder defects."
+}

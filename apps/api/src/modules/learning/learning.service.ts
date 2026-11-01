@@ -1039,7 +1039,15 @@ export class LearningService {
         !['contradicted', 'resolved', 'withdrawn'].includes(hypothesis.status)) ?? null : null }));
   }
   overview(user: InMemoryUserAccount) {
-    const children = this.store.students.filter((child) => user.role === 'admin' || Boolean(this.store.find('bindings', { parentUserId: user.id, studentId: child.id, status: 'active' })));
+    return this.knowledgeOverview(user, this.store.students.filter((child) => user.role === 'admin' || Boolean(this.store.find('bindings', { parentUserId: user.id, studentId: child.id, status: 'active' }))));
+  }
+  /** The learner's own knowledge view: same per-subject reads, each keeping its learner projection. */
+  learnerKnowledge(user: InMemoryUserAccount, studentId: string) {
+    if (user.role !== 'student') throw new ForbiddenException('本人知识视图仅供孩子本人的学习身份使用');
+    this.students.assertCanAccessStudent(user, studentId);
+    return this.knowledgeOverview(user, this.store.students.filter((child) => child.id === studentId));
+  }
+  private knowledgeOverview(user: InMemoryUserAccount, children: Array<{ id: string; nickname: string; grade: number }>) {
     return { generatedAt: new Date().toISOString(), day: studyDay(), children: children.map((child) => ({ id: child.id, nickname: child.nickname,
       grade: child.grade, subjects: (['math', 'chinese', 'english', 'chemistry'] as Subject[]).map((subject) => {
         const profile = this.diagnostics.profile(user, child.id, subject), today = this.today(user, child.id, subject);
@@ -1061,7 +1069,8 @@ export class LearningService {
             completedActivities: this.store.practiceSessions.filter((item) => item.studentId === child.id && item.subject === subject && item.status === 'completed' && Date.parse(item.completedAt!) >= weekStart).length,
             observations: this.diagnostics.effectiveResponses(child.id, subject).filter((item) => Date.parse(item.submittedAt) >= weekStart).length },
           trend: this.store.select('diagnosticReports', { 'report.studentId': child.id, 'report.subject': subject })
-            .sort((a, b) => a.createdAt.localeCompare(b.createdAt)).filter((item, index, all) => !all.slice(index + 1).some((other) => other.sessionId === item.sessionId)).slice(-8)
+            .sort((a, b) => a.createdAt.localeCompare(b.createdAt)).filter((item, index, all) => !all.slice(index + 1).some((other) => other.sessionId === item.sessionId))
+            .filter((item) => user.role !== 'student' || sessions.some((session) => session.id === item.sessionId)).slice(-8)
             .map((item) => ({ at: item.createdAt, sessionId: item.sessionId, measuredPoints: item.report.estimates.filter((estimate) => estimate.scoredCount > 0).length,
               sufficientPoints: item.report.estimates.filter((estimate) => !['unknown', 'insufficient'].includes(estimate.status)).length })) };
       }) })) };

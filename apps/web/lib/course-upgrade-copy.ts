@@ -5,7 +5,7 @@ import{courseBuilderOwnerSchema,courseBuilderCopySchema,courseBuilderScope,cours
 const key=z.string().min(1).max(180),digest=z.string().regex(/^[a-f0-9]{64}$/);
 export const courseUpgradeCopyByteLimit=8*1024*1024,courseUpgradeArchiveByteLimit=256*1024*1024;
 export const courseUpgradeOwnerSchema=courseBuilderOwnerSchema.extend({courseId:key}).strict();export type CourseUpgradeOwner=z.infer<typeof courseUpgradeOwnerSchema>;
-export const courseUpgradePendingSchema=z.object({input:textbookTeachingCourseUpgradeSchema,courseFingerprint:digest,requestHash:digest,phase:z.enum(['prepared','unknown','received','confirmed']),result:textbookTeachingCourseUpgradeResultSchema.nullable(),message:z.string().max(2000)}).strict();
+export const courseUpgradePendingSchema=z.object({input:textbookTeachingCourseUpgradeSchema,courseFingerprint:digest,requestHash:digest,phase:z.enum(['prepared','unknown','received','confirmed','rejected']),result:textbookTeachingCourseUpgradeResultSchema.nullable(),message:z.string().max(2000)}).strict();
 export type CourseUpgradePending=z.infer<typeof courseUpgradePendingSchema>;
 export const courseUpgradeCopySchema=z.object({protocol:z.literal('course-upgrade-complete-copy-v1'),owner:courseUpgradeOwnerSchema,slot:key,scope:courseBuilderCopySchema.shape.scope,baseline:studioCourseSnapshotSchema,
  form:z.object({minutes:z.string().max(32),teachingSelection:courseBuilderSelectionSchema.nullable()}).strict(),preview:z.object({input:textbookTeachingCourseUpgradeDraftSchema,courseFingerprint:digest,previewFingerprint:digest}).strict().nullable(),
@@ -36,7 +36,7 @@ export async function courseUpgradePreview(copy:CourseUpgradeDraft,result:Textbo
  return{input,courseFingerprint:digest.parse(course.fingerprint),previewFingerprint:digest.parse(result.previewFingerprint)};
 }
 export async function prepareCourseUpgrade(copy:CourseUpgradeDraft,requestKey:string,proof:{baselineVerified:boolean;verifiedOriginalRequests:readonly string[]}):Promise<CourseUpgradePending>{
- if(!proof.baselineVerified||copy.pending||copy.history.some(entry=>entry.phase!=='confirmed'||!proof.verifiedOriginalRequests.includes(entry.input.requestKey)))throw Error('请先向服务器核对原课程和全部原请求，再准备新的升级。');if(!copy.preview||!await same(copy.preview.input,courseUpgradeDraftCommand(copy)))throw Error('原升级预览与当前完整输入不同，请重新预览。');
+ if(!proof.baselineVerified||copy.pending||copy.history.some(entry=>entry.phase!=='rejected'&&(entry.phase!=='confirmed'||!proof.verifiedOriginalRequests.includes(entry.input.requestKey))))throw Error('请先向服务器核对原课程和全部原请求，再准备新的升级。');if(!copy.preview||!await same(copy.preview.input,courseUpgradeDraftCommand(copy)))throw Error('原升级预览与当前完整输入不同，请重新预览。');
  const input=textbookTeachingCourseUpgradeSchema.parse({...copy.preview.input,previewFingerprint:copy.preview.previewFingerprint,requestKey});return assertCourseUpgradePending(copy.owner,{input,courseFingerprint:copy.preview.courseFingerprint,requestHash:await courseUpgradeRequestHash(input),phase:'prepared',result:null,message:''});
 }
 export async function upgradeAuthoredFingerprint(course:StudioCourse){const{updatedAt:_updatedAt,status:_status,learningProgress:_learningProgress,...body}=course;return hash({...body,units:course.units.map(unit=>({...unit,lessons:unit.lessons.map(lesson=>{const{state:_state,...body}=lesson;return body;})}))});}

@@ -7,6 +7,7 @@ import { teachingHash } from '../diagnostics/textbook-teaching-package';
 import { emptyCourseBuilderDraft, completeCourseBuilderCopy, readCourseBuilderCopy, courseBuilderPreview, prepareCourseBuilderCreate, courseBuilderRequestHash,
  courseBuilderReceipt, courseBuilderCopyByteLimit, type CourseBuilderDraft, type CourseBuilderPending } from '../../../../web/lib/course-builder-copy';
 import { lookupCourseBuilderCommand, sendCourseBuilderCommand } from '../../../../web/lib/course-builder-client';
+import { ApiRequestError } from '../../../../web/lib/api';
 
 async function fixture(mode:'textbook'|'knowledge'='textbook'){
  const f=teachingCourseFixture(mode==='textbook'?4:1),owner={actorId:'synthetic-course-parent',role:'parent' as const,studentId:f.value.scope.studentId,subject:'math' as const},
@@ -41,6 +42,13 @@ describe('complete original course form, command and server confirmation',()=>{
  it('keeps a received response uncertain when the independent original lookup is null',async()=>{
   const f=await fixture(),states:CourseBuilderPending[]=[],result=await sendCourseBuilderCommand(f.owner,f.pending,async entry=>{states.push(structuredClone(entry));},undefined,async(_path,options)=>options.method==='POST'?f.course:null);
   expect(result.verified).toBe(false);expect(result.entry.phase).toBe('received');expect(states[0].phase).toBe('unknown');expect(states.at(-1)?.input).toEqual(f.pending.input);
+ });
+ it('settles an explicit service refusal with its reason while a lost connection stays unknown',async()=>{
+  const f=await fixture(),refused=await sendCourseBuilderCommand(f.owner,f.pending,async()=>{},undefined,async(_path,options)=>{if(options.method==='POST')throw new ApiRequestError('当前已确认学习范围已更新，请重新预览。',409);return null;});
+  expect(refused.verified).toBe(false);expect(refused.entry.phase).toBe('rejected');expect(refused.entry.message).toContain('当前已确认学习范围');expect(refused.entry.result).toBeNull();expect(refused.entry.input).toEqual(f.pending.input);
+  const lost=await sendCourseBuilderCommand(f.owner,f.pending,async()=>{},undefined,async(_path,options)=>{if(options.method==='POST')throw new Error('暂时无法连接学习服务');return null;});expect(lost.entry.phase).toBe('unknown');
+  const next=await prepareCourseBuilderCreate({...f.body,history:[refused.entry]},'synthetic-next-create-key');expect(next.input.requestKey).toBe('synthetic-next-create-key');
+  await expect(prepareCourseBuilderCreate({...f.body,history:[lost.entry]},'synthetic-blocked-create-key')).rejects.toThrow(/核对原创建请求/);
  });
  it('recovers one accepted response-loss with only the same complete original request, never a new key',async()=>{
   const f=await fixture(),states:CourseBuilderPending[]=[],posts:any[]=[],result=await sendCourseBuilderCommand(f.owner,f.pending,async entry=>{states.push(structuredClone(entry));},undefined,async(path,options)=>{

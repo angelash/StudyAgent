@@ -135,6 +135,9 @@ export class LearningController {
     @Query('subject') subject?: string) {
     return { filename: 'studyagent-calendar.ics', content: this.integrations.exportCalendar(req.user, studentId, validate(subjectSchema, subject ?? 'math')) };
   }
+  @Get('students/:id/knowledge') learnerKnowledge(@Req() req: AuthenticatedRequest, @Param('id') id: string) {
+    return this.learning.learnerKnowledge(req.user, id);
+  }
   @Get('students/:id/today') today(@Req() req: AuthenticatedRequest, @Param('id') id: string, @Query('subject') subject?: string) {
     return this.learning.today(req.user, id, validate(subjectSchema, subject ?? 'math'));
   }

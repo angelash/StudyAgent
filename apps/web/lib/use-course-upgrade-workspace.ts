@@ -118,10 +118,15 @@ export function useCourseUpgradeWorkspace(owner: CourseUpgradeOwner, selected: S
     const timer = setTimeout(() => { if (state.current === copy) void persist(copy, false).catch(error => { if (state.current === copy) localFailure(error); }); }, 300);
     return () => clearTimeout(timer);
   }, [loaded, copy]);
-  function request(proceed: () => void) { if (dirty.current && !blocked.current) setLeaving({ proceed }); else proceed(); }
+  function request(proceed: () => void) {
+    if (!dirty.current || blocked.current) { proceed(); return; }
+    const value = state.current; if (!value || operation.current) { setLeaving({ proceed }); return; }
+    // Save and read back the latest complete input first; ask for a downloaded copy only when local protection fails.
+    void persist(value).then(() => { if (state.current === value && !dirty.current) proceed(); else setLeaving({ proceed }); }).catch(error => { localFailure(error); setLeaving({ proceed }); });
+  }
   useWorkspaceExitGuard(owner.actorId, Boolean(copy && !denied), { request: (_href, proceed) => request(proceed), isInternal: () => bypass.current });
   React.useEffect(() => {
-    const leave = (event: Event) => { if (!dirty.current || blocked.current) return; event.preventDefault(); setLeaving({ proceed: (event as CustomEvent<{ proceed: () => void }>).detail.proceed }); };
+    const leave = (event: Event) => { if (!dirty.current || blocked.current) return; event.preventDefault(); request((event as CustomEvent<{ proceed: () => void }>).detail.proceed); };
     const unload = (event: BeforeUnloadEvent) => { if (dirty.current && !blocked.current) { event.preventDefault(); event.returnValue = ''; } };
     window.addEventListener('study:controlled-copy-exit', leave); window.addEventListener('beforeunload', unload);
     return () => { window.removeEventListener('study:controlled-copy-exit', leave); window.removeEventListener('beforeunload', unload); };
@@ -139,9 +144,17 @@ export function useCourseUpgradeWorkspace(owner: CourseUpgradeOwner, selected: S
     adopt({ ...value, form: { ...value.form, ...form }, preview: null }); setPreview(null); setError('');
   }
   async function retainPending(entry: CourseUpgradePending) { await keep({ ...actual(), pending: entry }); }
+  async function settle(entry: CourseUpgradePending) {
+    if (entry.phase !== 'rejected') { setNotice(entry.message); return; }
+    const value = actual(); if (value.pending?.input.requestKey !== entry.input.requestKey) throw Error('当前升级稿已变化，原拒绝结果没有覆盖它。');
+    await keep({ ...value, pending: null, preview: null, history: [...value.history, entry].slice(-100) }); setPreview(null); setNotice('');
+    setError('没有升级课程：' + entry.message + ' 完整升级稿和原请求记录已保留，请核对后重新预览，或按当前版本另开升级稿。');
+  }
   async function verifyHistory(value: CourseUpgradeDraft, signal: AbortSignal) {
     for (const entry of value.history) {
       const result = await lookupCourseUpgradeCommand(owner, entry, signal); if (signal.aborted) throw aborted();
+      // A refused request created no revision; finding none again is consistent with that refusal.
+      if (!result.verified && entry.phase === 'rejected') continue;
       if (!result.verified) throw Error('一份历史升级原请求尚未核对，完整稿和同键请求保持。');
       verified.current.add(entry.input.requestKey);
     }
@@ -165,7 +178,7 @@ export function useCourseUpgradeWorkspace(owner: CourseUpgradeOwner, selected: S
       const entry = await prepareCourseUpgrade(value, crypto.randomUUID(), { baselineVerified: true, verifiedOriginalRequests: [...verified.current] });
       await completeCourseUpgradeCopy({ ...value, pending: entry }, signal); await retainPending(entry);
       const result = await sendCourseUpgradeCommand(owner, entry, retainPending, signal); if (signal.aborted) throw aborted();
-      if (result.verified) { verified.current.add(result.entry.input.requestKey); confirmed.current(result.course); } else setNotice(result.entry.message);
+      if (result.verified) { verified.current.add(result.entry.input.requestKey); confirmed.current(result.course); } else await settle(result.entry);
     });
   }
   async function lookup(open = false) {
@@ -173,14 +186,14 @@ export function useCourseUpgradeWorkspace(owner: CourseUpgradeOwner, selected: S
       const value = actual(); if (!value.pending) throw Error('当前没有待核对的原升级请求。');
       const result = await lookupCourseUpgradeCommand(owner, value.pending, signal); if (signal.aborted) throw aborted(); await retainPending(result.entry);
       if (result.verified) { verified.current.add(result.entry.input.requestKey); setNotice('原升级请求与准确结果已核对，可以打开这次原修订。'); if (open) confirmed.current(result.course); }
-      else setNotice(result.entry.message);
+      else await settle(result.entry);
     });
   }
   async function recover() {
     await work('正在恢复同一升级请求', async signal => {
       const value = actual(); if (!value.pending) throw Error('当前没有原升级请求。');
       const result = await sendCourseUpgradeCommand(owner, value.pending, retainPending, signal); if (signal.aborted) throw aborted();
-      if (result.verified) { verified.current.add(result.entry.input.requestKey); confirmed.current(result.course); } else setNotice(result.entry.message);
+      if (result.verified) { verified.current.add(result.entry.input.requestKey); confirmed.current(result.course); } else await settle(result.entry);
     });
   }
   async function download() { await work('正在下载完整升级稿', async () => { exported.current = await downloadCourseUpgradeCopy(actual()); setNotice('完整升级副本已开始下载，请读回刚下载的文件核对。'); }); }

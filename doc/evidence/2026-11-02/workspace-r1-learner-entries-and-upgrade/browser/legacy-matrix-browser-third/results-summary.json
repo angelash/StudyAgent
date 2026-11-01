@@ -1,0 +1,30 @@
+{
+  "label": "legacy-matrix-browser-third",
+  "stats": {
+    "startTime": "2026-11-01T16:28:01.247Z",
+    "duration": 511752.086,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "rows": [
+    {
+      "file": "workspace-legacy-entries.spec.ts",
+      "line": 92,
+      "title": "legacy entries: every old address is observed for each identity at phone and desktop widths",
+      "status": "passed",
+      "durationMs": 471101,
+      "error": ""
+    },
+    {
+      "file": "workspace-legacy-entries.spec.ts",
+      "line": 111,
+      "title": "legacy entries: browser history returns through the parent sequence without re-entering another identity",
+      "status": "passed",
+      "durationMs": 23001,
+      "error": ""
+    }
+  ],
+  "originalPrivateResultsSha256": "4b3a449ec5abe86e7fe82fb449e9616ecec4cbf41ada296d2943ccd90d8b5b8f"
+}

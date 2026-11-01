@@ -31,12 +31,14 @@ function FamilyStudioWorkspace({identity}:{identity:ReturnType<typeof useSession
     if (!identity) { setLoading(false); return () => { alive = false; }; }
     const issue=learningContextIssue(window.location.search);if(issue){setError(issue);setLoading(false);return()=>{alive=false;};}
     if (readLearningContext(identity.id, window.location.search).audience === 'self') { setError('知识与周记录按孩子档案保存，请先选择学习对象。');setLoading(false);return()=>{alive=false;}; }
-    apiRequest<FamilyOverview>('/learning/overview').then((value) => { if (alive) { const selected = readLearningContext(identity.id, window.location.search), requested = selected.studentId;if(requested&&!value.children.some(child=>child.id===requested))throw new Error('所选学习档案不可访问，请重新选择。');setOverview(value);setSubject(selected.subject);setStudentId(value.children.find((child) => child.id === requested)?.id ?? value.children[0]?.id ?? ''); } })
+    // Guardians read the family overview; a learner reads only the own knowledge view.
+    (identity.role === 'student' ? apiRequest<Array<{ id: string }>>('/learning/students').then(list => { if (!list[0]) throw new Error('当前学习档案不可用，请由家长重新开启。'); return apiRequest<FamilyOverview>('/learning/students/' + encodeURIComponent(list[0].id) + '/knowledge'); }) : apiRequest<FamilyOverview>('/learning/overview')).then((value) => { if (alive) { const selected = readLearningContext(identity.id, window.location.search), requested = selected.studentId;if(requested&&!value.children.some(child=>child.id===requested))throw new Error('所选学习档案不可访问，请重新选择。');setOverview(value);setSubject(selected.subject);setStudentId(value.children.find((child) => child.id === requested)?.id ?? value.children[0]?.id ?? ''); } })
       .catch((caught) => { if (alive) setError(caught.message); }).finally(() => { if (alive) setLoading(false); });
     return () => { alive = false; };
   }, []);
   React.useEffect(() => { let alive = true; setMemory(null);
-    if (!studentId) return () => { alive = false; };
+    // Learning memory may hold guardian observations; the learner's own knowledge view omits it.
+    if (!studentId || identity?.role === 'student') return () => { alive = false; };
     apiRequest<LearningMemory>(`/learning/students/${encodeURIComponent(studentId)}/memory?subject=${subject}`)
       .then(value => { if (alive) setMemory(value); }).catch(() => { if (alive) setMemory(null); });
     return () => { alive = false; };

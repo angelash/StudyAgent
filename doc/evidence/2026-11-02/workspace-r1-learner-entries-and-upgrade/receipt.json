@@ -1,0 +1,96 @@
+{
+  "protocol": "study-agent-learner-entries-and-upgrade-v1",
+  "at": "2026-11-01T18:12:49.482Z",
+  "mainApplicationSchema": 33,
+  "integrated": {
+    "files": 13,
+    "changed": 12,
+    "added": 1,
+    "recovery": "integration/main-before.json.gz"
+  },
+  "sourceIncrement": {
+    "files": 13,
+    "archive": "candidate-source-delta.json.gz",
+    "sha256": "8af437bfd12875d455a5c378c2bceb81e3f8af42b10178735d825480d017c979",
+    "parentArchive": "doc/evidence/2026-11-01/workspace-r6-schema33-integration/candidate-source-delta.json.gz",
+    "parentSha256": "b9f41c0f5a0a722cac6c58c8b1c2afede525b93f2abda6bc3f13e0f84e8c503f"
+  },
+  "matrix": {
+    "entries": 31,
+    "identities": [
+      "anonymous",
+      "parent",
+      "student",
+      "adult",
+      "teacher",
+      "admin"
+    ],
+    "widths": "320 and 1440 for parent/student/admin, 1440 for others",
+    "historyBackForward": true,
+    "firstRunTestCodeError": "one-time learning codes replaced by later issues",
+    "thirdRunRefusedReads": [
+      "student 403 /api/learning/overview (E04/E08)",
+      "student 403 /api/privacy/overview (E10)",
+      "student 403 /api/learning/projects/catalog (E18)"
+    ],
+    "expectedRefusals": [
+      "anonymous 401",
+      "adult/teacher 403 on another family child link",
+      "E20 404 chemistry alias overview fallback"
+    ]
+  },
+  "api": {
+    "focused": {
+      "passed": 71,
+      "failed": 0
+    },
+    "finalComplete": {
+      "label": "original-workbench-whole-fifth",
+      "passed": 3018,
+      "failed": 0,
+      "pending": 131
+    }
+  },
+  "browser": {
+    "legacy-matrix-browser-first": {
+      "expected": 1,
+      "unexpected": 1,
+      "flaky": 0,
+      "skipped": 0,
+      "buildId": "1MQvK8cUCDNUATw8iBcJ6"
+    },
+    "legacy-matrix-browser-second": {
+      "expected": 2,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "buildId": "1MQvK8cUCDNUATw8iBcJ6"
+    },
+    "legacy-matrix-browser-third": {
+      "expected": 2,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "buildId": "1MQvK8cUCDNUATw8iBcJ6"
+    },
+    "workbench-browser-whole-fifth": {
+      "expected": 636,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "buildId": "svtTJyE_AU_b60rH_odbb"
+    }
+  },
+  "learnerOverviewRemainsGuardianOnly": true,
+  "learnerKnowledgeEndpoint": "/api/learning/students/:id/knowledge",
+  "courseUpgradeExplicitRefusalSettled": true,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFilesUnchanged": 1063,
+  "mainBuildOutputsUntouched": true,
+  "notPushedOrDeployed": true,
+  "realDevicesTeachersAndLongTermLearnersStillRequired": true,
+  "wholeGoal": "active"
+}

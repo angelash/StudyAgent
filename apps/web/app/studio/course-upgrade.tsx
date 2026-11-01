@@ -23,8 +23,8 @@ export function CourseUpgrade({ owner, selected, course, onClose, onConfirmed, r
     <label>导入完整升级稿<input aria-label="导入完整升级稿" type="file" accept="application/json,.json" disabled={Boolean(ws.busy || copy.pending && !ws.verifiedOriginal)} onChange={event => { const file = event.currentTarget.files?.[0]; event.currentTarget.value = ''; void ws.importFile(file); }}/></label>
     <button type="button" disabled={Boolean(ws.busy || copy.pending && !ws.verifiedOriginal)} onClick={() => void ws.fresh()}>按当前版本另开升级稿</button>
   </div>;
-  return <WorkspaceDialog onClose={close} busy={Boolean(ws.busy)} returnFocus={returnFocus}><section className="ws-builder ws-course-builder" role="dialog" aria-modal="true" aria-label="课程升级">
-    <header><div><small>COURSE REVISION</small><h2>{preview ? '审阅课程升级' : '更新这门课程的教学'}</h2></div><button type="button" aria-label="关闭课程升级" disabled={Boolean(ws.busy)} onClick={close}>×</button></header>
+  return <WorkspaceDialog onClose={close} busy={Boolean(ws.busy)&&ws.busy!=='正在核对升级蓝图'} returnFocus={returnFocus}><section className="ws-builder ws-course-builder" role="dialog" aria-modal="true" aria-label="课程升级">
+    <header><div><small>COURSE REVISION</small><h2>{preview ? '审阅课程升级' : '更新这门课程的教学'}</h2></div><button type="button" aria-label="关闭课程升级" disabled={Boolean(ws.busy)&&ws.busy!=='正在核对升级蓝图'} onClick={close}>×</button></header>
     <ol className="ws-blueprint-steps" aria-label="升级课程步骤"><li aria-current={!preview ? 'step' : undefined}>1 · 选择准确教学</li><li aria-current={preview ? 'step' : undefined}>2 · 审阅后升级</li></ol>
     <section className="ws-blueprint-copy" aria-label="升级完整副本"><p role="status">{ws.storage}</p>{copyTools}{ws.notice && <p role="status">{ws.notice}</p>}{ws.busy && <button type="button" onClick={ws.stop}>停止等待，保留原请求</button>}</section>
     <section className="ws-upgrade-baseline" aria-label="保留的原课程"><small>原课程 · 内容修订 {upgradeCourseRevision(copy.baseline)}</small><h3>{copy.baseline.title}</h3><p>{copy.baseline.objective}</p><p>{copy.baseline.grade}年级 · {copy.baseline.textbookVersion} · {copy.baseline.focusAtomIds.length} 个原目标</p><p>沿用原课程名称、学习目标和课程标识；已有课堂、独立作答及复测保留原教学版本。</p></section>

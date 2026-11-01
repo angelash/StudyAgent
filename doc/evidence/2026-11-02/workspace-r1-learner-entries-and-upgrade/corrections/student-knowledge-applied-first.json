@@ -1,0 +1,22 @@
+{
+  "at": "2026-11-01T16:44:06.204Z",
+  "files": {
+    "apps/api/src/modules/learning/learning.service.ts": {
+      "before": "d7ad0b95d5fd37fff4c49fc78b097998518635dc569dcf445708d755880622d6",
+      "after": "f379a685a7d53b88475cef72529a35d91c56e1cbbdac16cff86791f41f9f9771"
+    },
+    "apps/api/src/common/auth.guard.ts": {
+      "before": "f240d767327f223dbc334d96c9d4cc5852234d797b81345373664c37f3efde6c",
+      "after": "4e500f05d4e726b527f06cf9fcf88d42cdb433176f64724cc8a105ca7c315fb2"
+    },
+    "apps/api/src/modules/learning/learning.controller.ts": {
+      "before": "a1509088f398640ef87300090b49d9da4cff2bd3b07437fe502f4baf1c0585fd",
+      "after": "dab2d8afd8a36d58260dfe563606c39e49b8f750275e4e024a327bbc28ae3a2d"
+    },
+    "apps/web/app/parent/dashboard/studio.tsx": {
+      "before": "468a6b0b3cc824939081b2ffb0e8231b95889df6025749b6be32154e8beaa2ef",
+      "after": "6b7a7b2862ba10184c7df2565ffe4a67eb423ba97ef1ea76f9c4934826059da1"
+    }
+  },
+  "reason": "Existing tests define /learning/overview as guardian management (learner 403). The learner knowledge tab now uses a learner-only endpoint sharing the same projection."
+}
