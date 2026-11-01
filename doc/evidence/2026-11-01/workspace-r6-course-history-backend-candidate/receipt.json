@@ -1,0 +1,312 @@
+{
+  "protocol": "study-agent-course-history-backend-candidate-evidence-v1",
+  "at": "2026-11-01T03:50:25.885Z",
+  "baselineHead": "94110f8dfe5b599b1509bd2b917c5c2a78bbb4b6",
+  "candidate": "data/qa/p184",
+  "mainApplicationSchema": 32,
+  "candidateSchema": 33,
+  "minimumReaderState": "ready-schema33-course-history-v1",
+  "applicationIntegrated": false,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFilesUnchanged": 1063,
+  "sourceIncrement": {
+    "files": 26,
+    "archive": "candidate-source-delta.json.gz",
+    "sha256": "f1268ea9cf694d24bd6b7c105dac88183a133703c292273ac34a987553b2438c",
+    "allMembersReadBack": true,
+    "parentArchive": "../workspace-r6-teaching-editor-boundaries/candidate-source-delta.json.gz",
+    "parentSha256": "edd314d6ed476bf479da67fda18224d5106f227b373f2e030926922b823c7d65",
+    "parentInputCount": 1267,
+    "currentInputCount": 1273,
+    "allCurrentInputsMatchParentOrDelta": true,
+    "copiedIntoMainApplication": false
+  },
+  "reports": [
+    {
+      "label": "course-history-api-type-first.json",
+      "mode": "type",
+      "status": 2
+    },
+    {
+      "label": "course-history-api-type-second.json",
+      "mode": "type",
+      "status": 0
+    },
+    {
+      "label": "course-history-contracts-first.json",
+      "mode": "contracts",
+      "status": 0
+    },
+    {
+      "label": "course-history-contracts-second.json",
+      "mode": "contracts",
+      "status": 0
+    },
+    {
+      "label": "course-history-model-final-first.json",
+      "passed": 39,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "course-history-model-first.json",
+      "passed": 27,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "course-history-native-api-build-first.json",
+      "mode": "build",
+      "status": 0
+    },
+    {
+      "label": "course-history-native-api-type-first.json",
+      "mode": "type",
+      "status": 2
+    },
+    {
+      "label": "course-history-native-model-first.json",
+      "passed": 41,
+      "failed": 1,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual old child classroom, chemistry maintenance ancestry and native recovery backs up and cold restores the actual upgraded course without relabelling or losing its old child displays",
+          "messages": [
+            "Error: source_database_restore_incomplete\n    at Object.assertReady (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\database-reader-guard.cjs:13:86)\n    at summary (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\backup.cjs:57:15)\n    at Object.createBundle (F:\\workspace\\github\\StudyAgent\\data\\qa\\p184\\scripts\\operations\\backup.cjs:204:17)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/diagnostics/retention-course-history.integration.test.ts:83:30\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "course-history-native-regression-first.json",
+      "passed": 25,
+      "failed": 1,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "sqlite actual32 to33 reader and complete teaching native transactions rolls the33 version, unique indexes and ready marker back on injected migration failure",
+          "messages": [
+            "Error: promise resolved \"undefined\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///F:/workspace/github/StudyAgent/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///F:/workspace/github/StudyAgent/node_modules/chai/index.js:1607:27)\n    at Object.proxyGetter [as get] (file:///F:/workspace/github/StudyAgent/node_modules/chai/index.js:1696:22)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/infrastructure/textbook-teaching-native.integration.test.ts:76:49\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "course-history-native-regression-second.json",
+      "passed": 47,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "course-history-service-api-build-fifth.json",
+      "mode": "build",
+      "status": 0
+    },
+    {
+      "label": "course-history-service-api-build-first.json",
+      "mode": "build",
+      "status": 0
+    },
+    {
+      "label": "course-history-service-api-build-fourth.json",
+      "mode": "build",
+      "status": 1
+    },
+    {
+      "label": "course-history-service-api-build-second.json",
+      "mode": "build",
+      "status": 0
+    },
+    {
+      "label": "course-history-service-api-build-third.json",
+      "mode": "build",
+      "status": 0
+    },
+    {
+      "label": "course-history-service-api-type-final-first.json",
+      "mode": "type",
+      "status": 0
+    },
+    {
+      "label": "course-history-webtype-first.json",
+      "mode": "webtype",
+      "status": 0
+    },
+    {
+      "label": "course-upgrade-http-postgres-first.json",
+      "passed": 11,
+      "failed": 1,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual PostgreSQL same-ID course upgrades, original receipt, historical goals, privacy and restore resumes the real old classroom and first response while reading original public versions without private commands",
+          "messages": [
+            "AssertionError: expected { saved: true, …(3) } to deeply equal { saved: true, …(3) }\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:107:107\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "course-upgrade-http-postgres-second.json",
+      "passed": 11,
+      "failed": 1,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual PostgreSQL same-ID course upgrades, original receipt, historical goals, privacy and restore resumes the real old classroom and first response while reading original public versions without private commands",
+          "messages": [
+            "AssertionError: expected undefined to be true // Object.is equality\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:107:190\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "course-upgrade-http-postgres-third.json",
+      "passed": 12,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "course-upgrade-http-sqlite-fifth.json",
+      "passed": 12,
+      "failed": 0,
+      "pending": 0,
+      "failures": []
+    },
+    {
+      "label": "course-upgrade-http-sqlite-first.json",
+      "passed": 7,
+      "failed": 4,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual SQLite same-ID course upgrades, original receipt, historical goals, privacy and restore previews a published revision without writing history or altering original learner evidence",
+          "messages": [
+            "AssertionError: {\"code\":\"conflict\",\"message\":\"教材版本或完整来源已改变，请重新核对范围并保留原稿\"}: expected 409 to be 201 // Object.is equality\n    at call (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:25:113)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at post (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:28:86)\n    at publishNext (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:82:63)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:97:5\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual SQLite same-ID course upgrades, original receipt, historical goals, privacy and restore upgrades in one real native transaction and preserves original course identity, original receipt and all historical rows",
+          "messages": [
+            "AssertionError: {\"code\":\"bad_request\",\"message\":\"输入格式有误\",\"details\":{\"issues\":[{\"path\":[],\"message\":\"Invalid input: expected object, received undefined\"}]}}: expected 400 to be 201 // Object.is equality\n    at call (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:25:113)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at post (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:28:86)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:100:14\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual SQLite same-ID course upgrades, original receipt, historical goals, privacy and restore resumes the real old classroom and first response while reading original public versions without private commands",
+          "messages": [
+            "AssertionError: expected 'current' to be 'archived' // Object.is equality\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:106:208\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual SQLite same-ID course upgrades, original receipt, historical goals, privacy and restore allows only one of two concurrent same-baseline upgrades and cold-opens all original versions twice",
+          "messages": [
+            "AssertionError: {\"code\":\"conflict\",\"message\":\"教材版本或完整来源已改变，请重新核对范围并保留原稿\"}: expected 409 to be 201 // Object.is equality\n    at call (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:25:113)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at post (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:28:86)\n    at publishNext (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:82:63)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:118:5\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "course-upgrade-http-sqlite-fourth.json",
+      "passed": 11,
+      "failed": 1,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual SQLite same-ID course upgrades, original receipt, historical goals, privacy and restore resumes the real old classroom and first response while reading original public versions without private commands",
+          "messages": [
+            "AssertionError: expected undefined to be true // Object.is equality\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:107:190\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "course-upgrade-http-sqlite-second.json",
+      "passed": 10,
+      "failed": 2,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual SQLite same-ID course upgrades, original receipt, historical goals, privacy and restore upgrades in one real native transaction and preserves original course identity, original receipt and all historical rows",
+          "messages": [
+            "AssertionError: {\"code\":\"conflict\",\"message\":\"原确认标识已用于另一份完整课程操作，请先核对原结果\"}: expected 409 to be 201 // Object.is equality\n    at call (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:25:113)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at post (F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:28:86)\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:102:204\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "name": "actual SQLite same-ID course upgrades, original receipt, historical goals, privacy and restore resumes the real old classroom and first response while reading original public versions without private commands",
+          "messages": [
+            "AssertionError: expected 'unavailable' to be 'archived' // Object.is equality\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:106:208\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "course-upgrade-http-sqlite-third.json",
+      "passed": 11,
+      "failed": 1,
+      "pending": 0,
+      "failures": [
+        {
+          "name": "actual SQLite same-ID course upgrades, original receipt, historical goals, privacy and restore resumes the real old classroom and first response while reading original public versions without private commands",
+          "messages": [
+            "AssertionError: expected { saved: true, …(3) } to deeply equal { saved: true, …(3) }\n    at F:/workspace/github/StudyAgent/data/qa/p184/apps/api/src/modules/learning/textbook-teaching-course-upgrade.integration.test.ts:107:107\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///F:/workspace/github/StudyAgent/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ]
+    }
+  ],
+  "latestSQLite": {
+    "label": "course-upgrade-http-sqlite-fifth",
+    "passed": 12,
+    "failed": 0
+  },
+  "latestPostgres": {
+    "label": "course-upgrade-http-postgres-third",
+    "passed": 12,
+    "failed": 0,
+    "actualPostgres": true
+  },
+  "verifiedScope": [
+    "Actual synthetic8-target course and legacy same-ID upgrades",
+    "Exact original creation and upgrade request recovery with immutable public versions",
+    "Native old classroom/first-response/retention source preservation and explicit current lesson switch",
+    "Ordinary lesson-start progress kept apart from authored snapshots",
+    "One concurrent baseline winner, real cold reads and native history rewrite/deletion rollback",
+    "Actual SQLite/Postgres backups, author closure and student erasure with latest-ledger restore",
+    "Public history export excludes complete original commands/authorization/private answer hashes"
+  ],
+  "limitations": [
+    "Original course UI/version chooser/full-copy unknown-result workflow and real product browser journey remain unfinished.",
+    "Explicit actual early4/5-collection33 reader rejection and more native authorization/unique matrices remain pending.",
+    "47-case regression precedes the last classroom archive/switch changes; current12-case driver journeys exercise those changes.",
+    "39-case model precedes the final explicit-switch helper. Batches are never summed.",
+    "Final full API/site, accurate real-source original candidate, original due-retention and all textbooks/GESP/R5/R7/R8/72/WS remain active.",
+    "Teacher, actual devices/print and real learner1/3/7/14-day evidence are unverified."
+  ],
+  "originalFullApi": {
+    "candidate": "p183",
+    "passed": 2741,
+    "failed": 1,
+    "pending": 131,
+    "unresolvedAsWholeBatch": true
+  },
+  "originalPlan72": {
+    "implemented": 11,
+    "in_progress": 50,
+    "planned": 11,
+    "verified": 0
+  },
+  "generatedEngineeringDataOnly": true,
+  "realLearnerEvidence": false,
+  "wholeGoal": "active",
+  "localOnly": true,
+  "pushed": false,
+  "deployed": false
+}
