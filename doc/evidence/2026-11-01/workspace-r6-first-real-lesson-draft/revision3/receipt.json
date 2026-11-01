@@ -1,0 +1,700 @@
+{
+  "protocol": "study-agent-first-real-source-lesson-draft-review-v1",
+  "at": "2026-11-01T07:12:29.101Z",
+  "candidate": "data/qa/p186",
+  "actualSource": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "bookVersion": "93bdabc0bebd3987c6d417c0",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "extractedSha256": "96e8ffc8ca547a3dddfb40e8c8a98951f8a0d1d2a1a735fd988d1e091e76df63",
+    "editionProofFingerprint": "66abd64ba947c86623073c68dade75e957d7a2cc3f24d2fdda32b4f0a56287de",
+    "physicalPages": [
+      {
+        "page": 7,
+        "characters": 293,
+        "textSha256": "184b0e0ac7e9a2717adbe8ada4ac6f365cd8d70a44a6f9599e8279702372f21f"
+      },
+      {
+        "page": 8,
+        "characters": 196,
+        "textSha256": "7c66e9f64c3fe9f57aa3b1a15a97b4528d9aa8eff83da4b78a2c5c2cfdf4ee67"
+      },
+      {
+        "page": 9,
+        "characters": 298,
+        "textSha256": "878ccdc806dd2cbce477839a9615b4bef031b1aab15f6660b628393948cb1e3a"
+      }
+    ],
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "targets": {
+    "total": 8,
+    "newDraftDefinitions": [
+      {
+        "id": "source:chinese:g3:02915a7d:word-reading",
+        "version": 1
+      },
+      {
+        "id": "source:chinese:g3:02915a7d:handwriting",
+        "version": 1
+      },
+      {
+        "id": "source:chinese:g3:02915a7d:scene-reconstruction",
+        "version": 1
+      },
+      {
+        "id": "source:chinese:g3:02915a7d:scene-description",
+        "version": 1
+      },
+      {
+        "id": "source:chinese:g3:02915a7d:feature-summary",
+        "version": 1
+      }
+    ],
+    "existingDefinitionsReused": [
+      {
+        "id": "core:chinese:contextmeaning",
+        "version": 1
+      },
+      {
+        "id": "core:chinese:detail-evidence",
+        "version": 1
+      },
+      {
+        "id": "core:chinese:personification",
+        "version": 1
+      }
+    ]
+  },
+  "recognitionCharacters": 10,
+  "writingCharacters": 13,
+  "originalContent": {
+    "file": "lesson-draft.json",
+    "sha256": "fece6041b0db5a0a2aec5edf6277dc5e12018f12e190a35c889ba52d1a9770a9",
+    "originalAuthoringBytesSha256": "2b35c967cd885c234da4ca46d38e39a65e9849f542125b67a1b1a2bddd2918f0",
+    "visuals": 4,
+    "publicCopyCannotBeUsedAsCommand": true,
+    "sourceQuotationsUsePinnedLocatorsOnly": true
+  },
+  "preflightBatches": [
+    {
+      "label": "first-real-lesson-draft-first",
+      "checks": 32,
+      "publishable": false,
+      "gaps": 65,
+      "counts": {
+        "target_not_published": 5,
+        "check_material_missing": 20,
+        "material_family_coverage": 5,
+        "retention_stock_gap": 32,
+        "retention_material_overlap": 3
+      }
+    },
+    {
+      "label": "first-real-lesson-draft-second",
+      "checks": 32,
+      "publishable": false,
+      "gaps": 62,
+      "counts": {
+        "target_not_published": 5,
+        "check_material_missing": 20,
+        "material_family_coverage": 5,
+        "retention_stock_gap": 32
+      }
+    },
+    {
+      "label": "first-real-lesson-draft-third",
+      "checks": 32,
+      "publishable": false,
+      "gaps": 62,
+      "counts": {
+        "target_not_published": 5,
+        "check_material_missing": 20,
+        "material_family_coverage": 5,
+        "retention_stock_gap": 32
+      }
+    }
+  ],
+  "remainingGaps": [
+    {
+      "code": "target_not_published",
+      "path": "targetRefs",
+      "message": "目标“原件首课字词识读”尚未发布"
+    },
+    {
+      "code": "target_not_published",
+      "path": "targetRefs",
+      "message": "目标“原件首课写字与字形核对”尚未发布"
+    },
+    {
+      "code": "target_not_published",
+      "path": "targetRefs",
+      "message": "目标“联系时间与细节还原场景”尚未发布"
+    },
+    {
+      "code": "target_not_published",
+      "path": "targetRefs",
+      "message": "目标“围绕一个场景具体表达”尚未发布"
+    },
+    {
+      "code": "target_not_published",
+      "path": "targetRefs",
+      "message": "目标“用多处细节概括描写对象特点”尚未发布"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.0",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.1",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.2",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.3",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.4",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.5",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.6",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.7",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.12",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.13",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.14",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.15",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.24",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.25",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.26",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.27",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.28",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.29",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.30",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "check_material_missing",
+      "path": "content.checks.31",
+      "message": "请补充已审核且具有完整作答配置的检查材料"
+    },
+    {
+      "code": "material_family_coverage",
+      "path": "content.checks",
+      "message": "目标“原件首课字词识读”的基础、迁移及独立题族材料尚不足"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“原件首课字词识读”的第1日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“原件首课字词识读”的第3日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“原件首课字词识读”的第7日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“原件首课字词识读”的第14日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "material_family_coverage",
+      "path": "content.checks",
+      "message": "目标“原件首课写字与字形核对”的基础、迁移及独立题族材料尚不足"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“原件首课写字与字形核对”的第1日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“原件首课写字与字形核对”的第3日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“原件首课写字与字形核对”的第7日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“原件首课写字与字形核对”的第14日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“结合上下文解释词义”的第1日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“结合上下文解释词义”的第3日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“结合上下文解释词义”的第7日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“结合上下文解释词义”的第14日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "material_family_coverage",
+      "path": "content.checks",
+      "message": "目标“联系时间与细节还原场景”的基础、迁移及独立题族材料尚不足"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“联系时间与细节还原场景”的第1日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“联系时间与细节还原场景”的第3日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“联系时间与细节还原场景”的第7日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“联系时间与细节还原场景”的第14日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“从动作找到直接证据”的第1日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“从动作找到直接证据”的第3日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“从动作找到直接证据”的第7日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“从动作找到直接证据”的第14日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“拟人与普通动作区分”的第1日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“拟人与普通动作区分”的第3日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“拟人与普通动作区分”的第7日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“拟人与普通动作区分”的第14日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "material_family_coverage",
+      "path": "content.checks",
+      "message": "目标“围绕一个场景具体表达”的基础、迁移及独立题族材料尚不足"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“围绕一个场景具体表达”的第1日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“围绕一个场景具体表达”的第3日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“围绕一个场景具体表达”的第7日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“围绕一个场景具体表达”的第14日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "material_family_coverage",
+      "path": "content.checks",
+      "message": "目标“用多处细节概括描写对象特点”的基础、迁移及独立题族材料尚不足"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“用多处细节概括描写对象特点”的第1日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“用多处细节概括描写对象特点”的第3日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“用多处细节概括描写对象特点”的第7日独立材料储备不足；这不是保持结果"
+    },
+    {
+      "code": "retention_stock_gap",
+      "path": "content.checks",
+      "message": "目标“用多处细节概括描写对象特点”的第14日独立材料储备不足；这不是保持结果"
+    }
+  ],
+  "coverage": [
+    {
+      "atomId": "source:chinese:g3:02915a7d:word-reading",
+      "ready": false,
+      "families": 0,
+      "gaps": [
+        "understanding_family_missing",
+        "procedure_family_missing",
+        "two_basic_families_missing",
+        "two_transfer_families_missing",
+        "four_contrast_families_missing"
+      ],
+      "retentionStock": [
+        {
+          "intervalDays": 1,
+          "ready": false,
+          "questions": 0
+        },
+        {
+          "intervalDays": 3,
+          "ready": false,
+          "questions": 0
+        },
+        {
+          "intervalDays": 7,
+          "ready": false,
+          "questions": 0
+        },
+        {
+          "intervalDays": 14,
+          "ready": false,
+          "questions": 0
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:handwriting",
+      "ready": false,
+      "families": 0,
+      "gaps": [
+        "understanding_family_missing",
+        "procedure_family_missing",
+        "two_basic_families_missing",
+        "two_transfer_families_missing",
+        "four_contrast_families_missing"
+      ],
+      "retentionStock": [
+        {
+          "intervalDays": 1,
+          "ready": false,
+          "questions": 0
+        },
+        {
+          "intervalDays": 3,
+          "ready": false,
+          "questions": 0
+        },
+        {
+          "intervalDays": 7,
+          "ready": false,
+          "questions": 0
+        },
+        {
+          "intervalDays": 14,
+          "ready": false,
+          "questions": 0
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:contextmeaning",
+      "ready": false,
+      "families": 4,
+      "gaps": [],
+      "retentionStock": [
+        {
+          "intervalDays": 1,
+          "ready": false,
+          "questions": 2
+        },
+        {
+          "intervalDays": 3,
+          "ready": false,
+          "questions": 2
+        },
+        {
+          "intervalDays": 7,
+          "ready": false,
+          "questions": 2
+        },
+        {
+          "intervalDays": 14,
+          "ready": false,
+          "questions": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-reconstruction",
+      "ready": false,
+      "families": 0,
+      "gaps": [
+        "understanding_family_missing",
+        "procedure_family_missing",
+        "two_basic_families_missing",
+        "two_transfer_families_missing",
+        "four_contrast_families_missing"
+      ],
+      "retentionStock": [
+        {
+          "intervalDays": 1,
+          "ready": false,
+          "questions": 0
+        },
+        {
+          "intervalDays": 3,
+          "ready": false,
+          "questions": 0
+        },
+        {
+          "intervalDays": 7,
+          "ready": false,
+          "questions": 0
+        },
+        {
+          "intervalDays": 14,
+          "ready": false,
+          "questions": 0
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:detail-evidence",
+      "ready": false,
+      "families": 4,
+      "gaps": [],
+      "retentionStock": [
+        {
+          "intervalDays": 1,
+          "ready": false,
+          "questions": 2
+        },
+        {
+          "intervalDays": 3,
+          "ready": false,
+          "questions": 2
+        },
+        {
+          "intervalDays": 7,
+          "ready": false,
+          "questions": 2
+        },
+        {
+          "intervalDays": 14,
+          "ready": false,
+          "questions": 2
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:personification",
+      "ready": false,
+      "families": 4,
+      "gaps": [],
+      "retentionStock": [
+        {
+          "intervalDays": 1,
+          "ready": false,
+          "questions": 2
+        },
+        {
+          "intervalDays": 3,
+          "ready": false,
+          "questions": 2
+        },
+        {
+          "intervalDays": 7,
+          "ready": false,
+          "questions": 2
+        },
+        {
+          "intervalDays": 14,
+          "ready": false,
+          "questions": 2
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:scene-description",
+      "ready": false,
+      "families": 0,
+      "gaps": [
+        "understanding_family_missing",
+        "procedure_family_missing",
+        "two_basic_families_missing",
+        "two_transfer_families_missing",
+        "four_contrast_families_missing"
+      ],
+      "retentionStock": [
+        {
+          "intervalDays": 1,
+          "ready": false,
+          "questions": 0
+        },
+        {
+          "intervalDays": 3,
+          "ready": false,
+          "questions": 0
+        },
+        {
+          "intervalDays": 7,
+          "ready": false,
+          "questions": 0
+        },
+        {
+          "intervalDays": 14,
+          "ready": false,
+          "questions": 0
+        }
+      ]
+    },
+    {
+      "atomId": "source:chinese:g3:02915a7d:feature-summary",
+      "ready": false,
+      "families": 0,
+      "gaps": [
+        "understanding_family_missing",
+        "procedure_family_missing",
+        "two_basic_families_missing",
+        "two_transfer_families_missing",
+        "four_contrast_families_missing"
+      ],
+      "retentionStock": [
+        {
+          "intervalDays": 1,
+          "ready": false,
+          "questions": 0
+        },
+        {
+          "intervalDays": 3,
+          "ready": false,
+          "questions": 0
+        },
+        {
+          "intervalDays": 7,
+          "ready": false,
+          "questions": 0
+        },
+        {
+          "intervalDays": 14,
+          "ready": false,
+          "questions": 0
+        }
+      ]
+    }
+  ],
+  "noEditorialOrLearnerWrites": true,
+  "inMemoryEngineeringPreflightOnly": true,
+  "sourceTextSnapshotAndPrivateInputRemainLocal": true,
+  "noCompletePublisherPageCopied": true,
+  "teacherReviewed": false,
+  "audioPronunciationReviewed": false,
+  "handwritingReviewed": false,
+  "savedToTeachingService": false,
+  "published": false,
+  "adopted": false,
+  "classroomJourneyVerified": false,
+  "wholeGoal": "active",
+  "next": "Create genuine additional independent material families for the five new draft definitions and complete the three reused definitions retention stock; then review and register through existing editorial APIs before actual source/course/classroom/original-plan retention acceptance."
+}

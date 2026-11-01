@@ -1,0 +1,59 @@
+{
+  "at": "2026-11-01T07:14:34.627Z",
+  "firstWhole": {
+    "label": "edition-api-all-first",
+    "passed": 2984,
+    "failed": 2,
+    "pending": 131,
+    "sourceInputs": 1295,
+    "compiledInputs": 595,
+    "changedDuringCheck": []
+  },
+  "failures": [
+    {
+      "kind": "missing-isolated-historical-test-fixture",
+      "path": "doc/evidence/2026-10-20/family-identity-content-audit.json",
+      "restoredSha256": "7ba4dc9a5f475c95b8144e3534a80a226d71348871d6d2beeecbcf90f8239f53",
+      "bytes": 310475,
+      "matchesTrackedMainAndPriorFrozenP184": true
+    },
+    {
+      "kind": "outdated-inventory-expectation",
+      "path": "apps/api/src/modules/diagnostics/textbook-scope-inventory.integration.test.ts",
+      "originalPrimaryBooksRetained": 448,
+      "independentBooksAdded": 1,
+      "currentPrimaryBooks": 449,
+      "structuredBooks": 113,
+      "wholeBookGaps": 336,
+      "progressLessons": 3512,
+      "addedOriginalDirectoryEntries": 51,
+      "addedNumberedLessons": 27
+    }
+  ],
+  "businessCodeChanged": false,
+  "correctedRegression": {
+    "label": "edition-whole-corrections-first",
+    "passed": 31,
+    "failed": 0,
+    "pending": 0
+  },
+  "apiTypeStatus": 0,
+  "testSourceIncrement": {
+    "files": 1,
+    "archive": "test-source-delta.json.gz",
+    "sha256": "97103297ecfa4b89a494fb3788a62801d0b3a508239b0632b199c2e62d079924",
+    "parentArchive": "../candidate-source-delta.json.gz",
+    "parentSha256": "becd4044afd2c17c355741e74931ea2656c97f93bc11f011a847a3acbcaf7133"
+  },
+  "nextWhole": {
+    "label": "edition-api-all-second",
+    "status": "running",
+    "sourceInputs": 1296,
+    "compiledInputs": 595,
+    "notCountedAsPassed": true
+  },
+  "mainApplicationSchema": 32,
+  "candidateSchema": 33,
+  "wholeGoal": "active",
+  "localOnly": true
+}
