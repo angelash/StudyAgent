@@ -1,0 +1,186 @@
+{
+  "format": "study-block-four-nature-unit-candidates-v1",
+  "at": "2026-11-02T13:56:54.048Z",
+  "baseCommit": "2ed3af61b35778c5862406cb6734515debdab72e",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "newDrafts": 5,
+  "targetCounts": [
+    7,
+    7,
+    5,
+    5,
+    7
+  ],
+  "newDefinitionCandidates": 26,
+  "newCandidateQuestions": 217,
+  "purposeCounts": {
+    "immediate": 93,
+    "proposedRetention": 124
+  },
+  "modes": {
+    "audio_record": 49,
+    "image_upload": 35,
+    "short_answer": 133
+  },
+  "source": {
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "physicalPages": [
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105
+    ],
+    "allSelectedPagesVisuallyReviewed": true,
+    "originalImagesAndModernFullTextCommitted": false,
+    "observersAndTimelineSeparated": true,
+    "actualPeerViewsNotInvented": true,
+    "suggestionsRemainOptional": true,
+    "completeCailianPublicDomainPoemInReadingBody": true
+  },
+  "validation": {
+    "firstStaticQuoteFailurePreserved": true,
+    "minimumQuoteLengthNotRelaxed": 8,
+    "citationOnlyRevision": "checks/nature-unit-citation-revision.json",
+    "all217QuestionTextsAnswersModesRubricsUnchangedAfterCitationFix": true,
+    "http": [
+      {
+        "report": "checks/nature-prose-materials-http-first.json",
+        "questions": 98,
+        "coldRead": true,
+        "originalCommandsReplayed": true,
+        "incompletePublicationRejected": true
+      },
+      {
+        "report": "checks/nature-activities-materials-http-first.json",
+        "questions": 119,
+        "coldRead": true,
+        "originalCommandsReplayed": true,
+        "incompletePublicationRejected": true
+      }
+    ],
+    "browser": {
+      "buildId": "ELFqjEh0ZktmjW7mcCIOL",
+      "passed": 7,
+      "failed": 0,
+      "report": "browser/receipt.json",
+      "screenshotsVisuallyReviewed": 11
+    },
+    "poemReading": {
+      "drafts": 5,
+      "completePoems": 9,
+      "negativeCasesRejected": 14
+    },
+    "regeneration": {
+      "inputsAndOutputsUnchanged": 8,
+      "sharedKitUnchanged": true,
+      "privateQaFilesRequired": false
+    },
+    "gapCounts": [
+      {
+        "file": "chinese-g3-nature-book-v1.json",
+        "gaps": 90,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      },
+      {
+        "file": "chinese-g3-father-forest-birds-v1.json",
+        "gaps": 90,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      },
+      {
+        "file": "chinese-g3-small-things-v1.json",
+        "gaps": 64,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      },
+      {
+        "file": "chinese-g3-one-idea-writing-v1.json",
+        "gaps": 64,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      },
+      {
+        "file": "chinese-g3-garden-seven-v1.json",
+        "gaps": 90,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      }
+    ]
+  },
+  "reusedEngineering": {
+    "fullApi": {
+      "passed": 3051,
+      "failed": 0,
+      "conditionalSkips": 131
+    },
+    "applicationAndContractsUnchanged": true,
+    "evidence": "../block-four-reading-preview-and-dog/receipt.json",
+    "countsNotAddedToThisContentBatch": true
+  },
+  "boundaries": {
+    "teacherReviewed": false,
+    "scoringReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0,
+    "published": 0,
+    "adoptions": 0,
+    "learnerResponses": 0,
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "formal": {
+    "schema": 24,
+    "revision": 188,
+    "protectedFiles": 1063
+  },
+  "remaining": {
+    "registeredBooks": 449,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 101,
+    "booksWithDirectory": 113,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3512,
+    "lessonsWithCandidateFiles": 41,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3471,
+    "authoredFollowingMaterialCandidates": 1757,
+    "materialBundlesWithStaleDraftIdentity": 0,
+    "firstLesson44FollowupsNotIncludedIn1757": true,
+    "unit8SourcePagesReviewed": 13,
+    "unit8CandidateDrafts": 0,
+    "next": "Continue unit8 seven items, all other exact-source textbook/GESP content and reviews, then block5."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "at": "2026-11-02T13:49:11.974Z",
+  "failure": "Pinyin interleaved into selected-source extraction made the first short quote non-verbatim.",
+  "minimumQuoteLengthUnchanged": 8,
+  "changes": [
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-nature-book-v1.json",
+      "onlyOneCitationChanged": true,
+      "beforeSha256": "509d22e71fef4b3a1a5f4f3bd90e0651aaf40b3171a1e96f5c1c02b5fc97450f",
+      "afterSha256": "2bfb9c9c5b0c1c871481acb4fd27dd6b32207a77d215317ffdcc158c9e3fabd8"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-father-forest-birds-v1.json",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-small-things-v1.json",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-one-idea-writing-v1.json",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-seven-v1.json",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-nature-unit-v1.json",
+      "onlySourceBindingChanged": true,
+      "questionGroupsUnchanged": true,
+      "questions": 217
+    }
+  ],
+  "all217QuestionTextsAnswersModesRubricsUnchanged": true,
+  "noHttpWritesBeforeFix": true
+}

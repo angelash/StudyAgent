@@ -2,6 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'../..');
 const expected={
+ 'garden-seven':[['采莲曲','唐','王昌龄','荷叶罗裙一色裁，\n芙蓉向脸两边开。\n乱入池中看不见，\n闻歌始觉有人来。']],
  'garden-six':[['早发白帝城','唐','李白','朝辞白帝彩云间，\n千里江陵一日还。\n两岸猿声啼不住，\n轻舟已过万重山。']],
  'garden':[['所见','清','袁枚','牧童骑黄牛，\n歌声振林樾。\n意欲捕鸣蝉，\n忽然闭口立。']],
  'autumn-poems':[

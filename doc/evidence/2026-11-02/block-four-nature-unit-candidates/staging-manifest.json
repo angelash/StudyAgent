@@ -1,0 +1,294 @@
+{
+  "at": "2026-11-02T13:57:28.750Z",
+  "baseCommit": "2ed3af61b35778c5862406cb6734515debdab72e",
+  "branch": "main",
+  "localBranches": [
+    "main"
+  ],
+  "worktreeInventory": "worktree F:/workspace/github/StudyAgent\nHEAD 2ed3af61b35778c5862406cb6734515debdab72e\nbranch refs/heads/main\n\n",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "scripts/content/build-chinese-nature-unit-candidates.cjs",
+      "bytes": 79349,
+      "sha256": "36deb22ce86b56ba608b6753d97f515129e5e4ed75746b781e3d6ed7e61d08ea",
+      "gitNormalizedSha256": "36deb22ce86b56ba608b6753d97f515129e5e4ed75746b781e3d6ed7e61d08ea"
+    },
+    {
+      "path": "scripts/qa/verify-chinese-poem-reading.cjs",
+      "bytes": 3237,
+      "sha256": "277c7a73d11209c0e5b443e4f0e07007f6b82f4e96895711c332b571f8485263",
+      "gitNormalizedSha256": "277c7a73d11209c0e5b443e4f0e07007f6b82f4e96895711c332b571f8485263"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-nature-book-v1.json",
+      "bytes": 16043,
+      "sha256": "2bfb9c9c5b0c1c871481acb4fd27dd6b32207a77d215317ffdcc158c9e3fabd8",
+      "gitNormalizedSha256": "2bfb9c9c5b0c1c871481acb4fd27dd6b32207a77d215317ffdcc158c9e3fabd8"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-father-forest-birds-v1.json",
+      "bytes": 16297,
+      "sha256": "40e42f14ecb21f7df80fab32ec803e1e7dbaec4fb89683900800f0bda3e4cfcb",
+      "gitNormalizedSha256": "40e42f14ecb21f7df80fab32ec803e1e7dbaec4fb89683900800f0bda3e4cfcb"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-small-things-v1.json",
+      "bytes": 12611,
+      "sha256": "0eda8746dd85ea7f61ae7331fbff49388c382ccf7c8cc6c11812d97a61d042dc",
+      "gitNormalizedSha256": "0eda8746dd85ea7f61ae7331fbff49388c382ccf7c8cc6c11812d97a61d042dc"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-one-idea-writing-v1.json",
+      "bytes": 13163,
+      "sha256": "dd590989d8c930435dad7a203663eb1c166e1da11b0d7f00c534302e40adfeaf",
+      "gitNormalizedSha256": "dd590989d8c930435dad7a203663eb1c166e1da11b0d7f00c534302e40adfeaf"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-seven-v1.json",
+      "bytes": 16423,
+      "sha256": "7fc0faba760ae0b345c55444068599b13f04a8169b7d707d116874badd94508b",
+      "gitNormalizedSha256": "7fc0faba760ae0b345c55444068599b13f04a8169b7d707d116874badd94508b"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-nature-unit-v1.json",
+      "bytes": 189966,
+      "sha256": "2bfea55ba5973244b5401606a9e16b80be0d40bce92ea4a9b8e03fd89c8efc28",
+      "gitNormalizedSha256": "2bfea55ba5973244b5401606a9e16b80be0d40bce92ea4a9b8e03fd89c8efc28"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 13834,
+      "sha256": "53e81dcf3f8ab16fc7341b7c7aac121d24b51147e37f3887cf26a19d69120ad3",
+      "gitNormalizedSha256": "eb8c77c5a886f504b9ab5b36f35c3abce2d8204e91cf616a01ae0fc5b60b67be"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 175918,
+      "sha256": "9e1b8821990d04beb889a300ed51d3fa846d97f07a9deb895d8b7aa44761ce1f",
+      "gitNormalizedSha256": "62aabb04dcfa73e291ad83e210baa957b4c7f79472f2d2f1bfced66afefeeaad"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 101966,
+      "sha256": "851dfdca56d18db0121956f38f08c08fc0f114c2e3b86670f996c509157411dd",
+      "gitNormalizedSha256": "64c5aca336d4b0aa8798bfe78c66d8b03599acf89e4dbb00f87a319060f161f0"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 107381,
+      "sha256": "42c20be2f3b42dd7e84bf2e68488e5c382368beee5f9b80a87bccccee1c3fc69",
+      "gitNormalizedSha256": "ae9cc065f14c4f9f0c0935fe52399c4865a35a19c0f4e265aa43ba5f4f49acee"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 16916,
+      "sha256": "7225c9ce15186ef52894e751339e73e4d446cae9f22c4c736ed665a0abe1a560",
+      "gitNormalizedSha256": "cdc5605648d442f4c12fbfd926855c16bc5cf81ccd658acf9e040aa510124a22"
+    },
+    {
+      "path": "doc/product/206-nature-unit-perspectives-real-opinions-and-expression.md",
+      "bytes": 4452,
+      "sha256": "96828139a380be6bbe10831306be634785752992117f8ad5a62f30cebb682dea",
+      "gitNormalizedSha256": "96828139a380be6bbe10831306be634785752992117f8ad5a62f30cebb682dea"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 36096,
+      "sha256": "e0781c1f618f0ff69eee0f2f031330c20b8aec2082b3cc8ab897f4044aa4ccf5",
+      "gitNormalizedSha256": "2250a2555b16df4e35fbd7c76826c53bdfd17cdd22ca07f42cef2b06c3546457"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/browser/chinese-g3-father-forest-birds-v1-desktop.png",
+      "bytes": 252351,
+      "sha256": "baedc6a2785ea386d0b807713a6dc39ad61d235bcf718fae1b557f8ac442a2ee",
+      "gitNormalizedSha256": "e57a4952aa2e0df91e7debab3ea4633b29dabc028f786021da7075ee2610941f"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/browser/chinese-g3-father-forest-birds-v1-mobile-table.png",
+      "bytes": 74764,
+      "sha256": "a14c955f16f775e3c6000487d37e3366833e300abf0a5a35a153c72807b79c0d",
+      "gitNormalizedSha256": "eb6fabe0d74cc3fa68990a617cbb8418ce36cf96fbf6405086a1c18506fe1483"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/browser/chinese-g3-father-forest-birds-v1-table.png",
+      "bytes": 57842,
+      "sha256": "385ed4d7bf4aa2141349a8bc3ab712bd5635cb8ce0258d7c682d2988a3e96fd3",
+      "gitNormalizedSha256": "3157ef911acc89833587da56c3c782577d49db05fcd0b63417f4aa96beafe15a"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/browser/chinese-g3-garden-seven-v1-desktop.png",
+      "bytes": 220842,
+      "sha256": "5ab5860ca81325815788ba561eeeb1ea231c50ba2ee14beac949a0f4d8f7d2e4",
+      "gitNormalizedSha256": "fef84bdb729d01a188dba1b2f8458efceed6b343142605a2749ce4bf650050b5"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/browser/chinese-g3-garden-seven-v1-table.png",
+      "bytes": 52152,
+      "sha256": "d108883b3e40c8ce81494474538e346ff3fd82b7a89ddbc3c5ef6a9e76935452",
+      "gitNormalizedSha256": "55eef62918c3b4bbbd4264e84cba00f24f90cde39c41eb7013412209a72a6558"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/browser/chinese-g3-nature-book-v1-desktop.png",
+      "bytes": 247424,
+      "sha256": "c17f5a9fc9d42cbc014e2c2622b497526d02618a6f398cb45f380cf99381cfb0",
+      "gitNormalizedSha256": "2c23453334a63c9386159c95e55b96af485191c2cf4fdc44e54918a9873ca37e"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/browser/chinese-g3-nature-book-v1-table.png",
+      "bytes": 52267,
+      "sha256": "3106f514333da0f4e00b4cd921b7b5c0fd2af341f43264fa1f56c03d539c0397",
+      "gitNormalizedSha256": "b3a950dad21fad5f1f18345c915ae0c7bcdb2dd08e4026d5a4a947382cbf9800"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/browser/chinese-g3-one-idea-writing-v1-desktop.png",
+      "bytes": 238241,
+      "sha256": "94b362f9b95f99d79d4512747e2548a308eb7135c8a77da53709f81eb5006f1c",
+      "gitNormalizedSha256": "bfbdf824e135eafdd33f8c1e3d22dfc8e12021e5b22f998d7bbd5bcba44bda2b"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/browser/chinese-g3-one-idea-writing-v1-table.png",
+      "bytes": 46506,
+      "sha256": "943c3ee1021f03e148ad1fc87b4e36973f7a3d933023e509b6aa0fbe8a5e44e6",
+      "gitNormalizedSha256": "030d2dcec8d9da8ec197b08aec62cd8104860ea7e3bbbab3a13db54efcdcdedb"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/browser/chinese-g3-small-things-v1-desktop.png",
+      "bytes": 230531,
+      "sha256": "113b5e019d87bdca97cd00708d43b4069ea8868046020233d9e37e0fc4feeb73",
+      "gitNormalizedSha256": "11eeeda867d8d545d2e68993f0949becb9844a1187d68ae045eda7d88c0dc3c9"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/browser/chinese-g3-small-things-v1-table.png",
+      "bytes": 39097,
+      "sha256": "4066b04a9c279a9feb2cf1c5fda17bafe6de6739d1a7f2ee01f23a932aa26bd8",
+      "gitNormalizedSha256": "5908aab2df9a9b25c977968c4a7e7461f124dacf342d96e7b160b7a27654adcd"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/browser/receipt.json",
+      "bytes": 1648,
+      "sha256": "72d0817f24d2bb1b2e9e6580892321bb7513c48c7680459a14594154444c1285",
+      "gitNormalizedSha256": "72d0817f24d2bb1b2e9e6580892321bb7513c48c7680459a14594154444c1285"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/browser/runner.cjs",
+      "bytes": 17071,
+      "sha256": "d695041829541b2e0d8b1cd2c44a5da8e3b5f3ef5a8eebabfb1486f161aca90e",
+      "gitNormalizedSha256": "d695041829541b2e0d8b1cd2c44a5da8e3b5f3ef5a8eebabfb1486f161aca90e"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/checks/b4-nature-unit-archive-scan.json",
+      "bytes": 997,
+      "sha256": "aca0b2021950895982525263795afbf25c33ffe7035f39536c83a01c60ab3ac3",
+      "gitNormalizedSha256": "aca0b2021950895982525263795afbf25c33ffe7035f39536c83a01c60ab3ac3"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/checks/content-worklist-nature-unit-first.json.gz",
+      "bytes": 114713,
+      "sha256": "d5ec642ee0470710ab96e5048ebb11c84a67fca9fc9535df760a16fdb7fcbe41",
+      "gitNormalizedSha256": "654bd98e53315c1425195040f5dad6a0bd1a78e133a2d74795d6cb293382768c"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/checks/nature-activities-materials-http-first.json",
+      "bytes": 2918,
+      "sha256": "82c6ec9fa5499696b93ea36e7c152b5231be5cc2985132f71ea1e6701aa91b2f",
+      "gitNormalizedSha256": "82c6ec9fa5499696b93ea36e7c152b5231be5cc2985132f71ea1e6701aa91b2f"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/checks/nature-prose-materials-http-first.json",
+      "bytes": 2303,
+      "sha256": "9e19a4f49818e53cead377ee1229b2992385f0496196b54f189897de53b8f3d1",
+      "gitNormalizedSha256": "9e19a4f49818e53cead377ee1229b2992385f0496196b54f189897de53b8f3d1"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/checks/nature-unit-before-citation-fix.json.gz",
+      "bytes": 73790,
+      "sha256": "1a3f60e1fe6b984605fd05f41ade10ea0409408ff3a93622911563c9471d0a94",
+      "gitNormalizedSha256": "1a3f60e1fe6b984605fd05f41ade10ea0409408ff3a93622911563c9471d0a94"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/checks/nature-unit-citation-revision.json",
+      "bytes": 1334,
+      "sha256": "433bb0b6709e124cf6641e5c057151883de25dbfdbdaccb8f44c6064aa0fbd1f",
+      "gitNormalizedSha256": "433bb0b6709e124cf6641e5c057151883de25dbfdbdaccb8f44c6064aa0fbd1f"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/checks/nature-unit-generation-readback.json",
+      "bytes": 1597,
+      "sha256": "769a2217ee1a4ddca496b3a4ebe8ebd8315e557ec123998b253ce1100f2dd115",
+      "gitNormalizedSha256": "769a2217ee1a4ddca496b3a4ebe8ebd8315e557ec123998b253ce1100f2dd115"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/checks/nature-unit-static-citation-second.json",
+      "bytes": 1152,
+      "sha256": "6d8af5738716b682486cf33f7e46ffecfb4c37a399476007f08f7039e6ea061d",
+      "gitNormalizedSha256": "6d8af5738716b682486cf33f7e46ffecfb4c37a399476007f08f7039e6ea061d"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/checks/nature-unit-static-first.json",
+      "bytes": 485,
+      "sha256": "a7d5e284c3ed758afb5c73e64bf27acacc7141597266beb934aaeb6cbe8254d1",
+      "gitNormalizedSha256": "a7d5e284c3ed758afb5c73e64bf27acacc7141597266beb934aaeb6cbe8254d1"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/checks/poem-reading-regression-garden-seven.json",
+      "bytes": 347,
+      "sha256": "dd90d2be7ca1f8544ebf5f0662a505d34d1868ccda39f8f6a1b81ef38101271e",
+      "gitNormalizedSha256": "dd90d2be7ca1f8544ebf5f0662a505d34d1868ccda39f8f6a1b81ef38101271e"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/checks/verify-nature-unit-static-second.cjs",
+      "bytes": 3807,
+      "sha256": "f2b9694e129bbed33dc742be3f6b8d7e8775c10c00464bc239c06fb7420a32c1",
+      "gitNormalizedSha256": "f2b9694e129bbed33dc742be3f6b8d7e8775c10c00464bc239c06fb7420a32c1"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/checks/verify-nature-unit-static.cjs",
+      "bytes": 3797,
+      "sha256": "1ee938096f8b170cb488c45c363aa18edb92ca8f341f2a5c9749bb825f9de4a7",
+      "gitNormalizedSha256": "1ee938096f8b170cb488c45c363aa18edb92ca8f341f2a5c9749bb825f9de4a7"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/manifest.json",
+      "bytes": 5189,
+      "sha256": "01903c710762ce6c750b0648f1a20e0c1660ee68bac642641a6c9843dafb253d",
+      "gitNormalizedSha256": "01903c710762ce6c750b0648f1a20e0c1660ee68bac642641a6c9843dafb253d"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/receipt.json",
+      "bytes": 5006,
+      "sha256": "bd14d85eab3bfd61bb4305ce8d0a72977883f24e94d0ebc27db016e8acacab22",
+      "gitNormalizedSha256": "bd14d85eab3bfd61bb4305ce8d0a72977883f24e94d0ebc27db016e8acacab22"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/source-intake/b4-source-care-unit-first.json",
+      "bytes": 6279,
+      "sha256": "7a477d1084fff6e7a1480d1caa30e93974939cc4a9bae5cf30ada602d8660d9e",
+      "gitNormalizedSha256": "7a477d1084fff6e7a1480d1caa30e93974939cc4a9bae5cf30ada602d8660d9e"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/source-intake/b4-source-nature-unit-first.json",
+      "bytes": 5947,
+      "sha256": "6482a7dbd0f2db53c079b8d06047932107d84bd2b9b9978f31ba7325e28394dc",
+      "gitNormalizedSha256": "6482a7dbd0f2db53c079b8d06047932107d84bd2b9b9978f31ba7325e28394dc"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/sources.json.gz",
+      "bytes": 117428,
+      "sha256": "225aac98d7d7308e3a060ed9e7c1b0562f3c9812032dee3fb1123c3e45421401",
+      "gitNormalizedSha256": "225aac98d7d7308e3a060ed9e7c1b0562f3c9812032dee3fb1123c3e45421401"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/tools/archive-nature-unit.cjs",
+      "bytes": 7349,
+      "sha256": "934ab5e7d7bf4d981117af19b4b8f34c7a9211e7d7cbabd77ef026ece681e791",
+      "gitNormalizedSha256": "934ab5e7d7bf4d981117af19b4b8f34c7a9211e7d7cbabd77ef026ece681e791"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-nature-unit-candidates/tools/stage-nature-unit.cjs",
+      "bytes": 3419,
+      "sha256": "9a8a2a2610c469583766d327e9f394bb9e9e4183ddd95b167aa81a7f6e91300b",
+      "gitNormalizedSha256": "9a8a2a2610c469583766d327e9f394bb9e9e4183ddd95b167aa81a7f6e91300b"
+    }
+  ]
+}
