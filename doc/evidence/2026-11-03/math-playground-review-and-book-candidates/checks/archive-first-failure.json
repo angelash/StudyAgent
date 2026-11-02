@@ -1,0 +1,10 @@
+{
+  "at": "2026-11-02T18:42:22.778Z",
+  "passed": false,
+  "phase": "archive-checker",
+  "error": "Final receipt and runner were selected but screenshot loop still referenced the first failed browser folder; the missing final-only screenshot stopped archival.",
+  "applicationFailure": false,
+  "stagingStarted": false,
+  "partialArchivePreserved": "data/qa/b4-math-book-final-first/archive-partial-first",
+  "resolution": "Select final screenshots from browser-floating-second; keep first receipt/runner/screenshots under browser/first. Documentation-link check also refused the incomplete archive before staging."
+}

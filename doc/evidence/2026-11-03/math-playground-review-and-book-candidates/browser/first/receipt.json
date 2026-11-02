@@ -1,0 +1,35 @@
+{
+  "at": "2026-11-02T18:37:17.518Z",
+  "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+  "source": "main synchronized to data/qa/p187",
+  "accurateTextbookCandidates": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 2,
+  "failed": 1,
+  "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    80,\n+   108.00000000000001\n-   108\n  ]\n",
+  "checks": [
+    {
+      "name": "actual-candidate-reading:math-g1-a8e88021-playground-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-candidate-reading:math-g1-a8e88021-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "review-actual-clock-and-solid-desktop-models",
+      "passed": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    80,\n+   108.00000000000001\n-   108\n  ]\n"
+    }
+  ],
+  "screenshots": [
+    "math-g1-a8e88021-playground-v1-desktop.png",
+    "math-g1-a8e88021-playground-v1-table.png",
+    "math-g1-a8e88021-review-v1-desktop.png",
+    "math-g1-a8e88021-review-v1-table.png"
+  ],
+  "pageErrors": [],
+  "mutations": []
+}

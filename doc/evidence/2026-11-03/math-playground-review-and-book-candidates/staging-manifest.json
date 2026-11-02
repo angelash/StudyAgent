@@ -1,0 +1,344 @@
+{
+  "at": "2026-11-02T18:42:52.598Z",
+  "branch": "main",
+  "baseCommit": "723e6da641a0d8e06f54c75d9a7185f8c3e1e47c",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "scripts/content/build-math-g1-playground-candidates.cjs",
+      "bytes": 22305,
+      "sha256": "204f3b8f4329fbfc4edac11ba19a1f05a8170006374bd532a49f727adaae4d7f",
+      "gitNormalizedSha256": "204f3b8f4329fbfc4edac11ba19a1f05a8170006374bd532a49f727adaae4d7f"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-playground-v1.json",
+      "bytes": 16678,
+      "sha256": "2ec8b26a875f0543b1fb079d04cb11f9953c67c3a7e78967cc74f92a31a484aa",
+      "gitNormalizedSha256": "2ec8b26a875f0543b1fb079d04cb11f9953c67c3a7e78967cc74f92a31a484aa"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-playground-v1.json",
+      "bytes": 47787,
+      "sha256": "6cac048a01dee706686287b5698914281eec3614c5d2165bbffec8f2b638fe6f",
+      "gitNormalizedSha256": "6cac048a01dee706686287b5698914281eec3614c5d2165bbffec8f2b638fe6f"
+    },
+    {
+      "path": "scripts/content/build-math-g1-review-candidates.cjs",
+      "bytes": 24921,
+      "sha256": "43451da2db6fb01c1f6c7d989bd50d65706d3e1de910d0d0cce7eec3a9cd5f56",
+      "gitNormalizedSha256": "43451da2db6fb01c1f6c7d989bd50d65706d3e1de910d0d0cce7eec3a9cd5f56"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-review-v1.json",
+      "bytes": 20387,
+      "sha256": "12ac41c01c439889dd6c9a77921e09b522af823ca80342e0a520b868f163238e",
+      "gitNormalizedSha256": "12ac41c01c439889dd6c9a77921e09b522af823ca80342e0a520b868f163238e"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-review-v1.json",
+      "bytes": 47815,
+      "sha256": "757396239c62d6feb421ac20b6c16740c51d5fc50150d3da876c1cd52c1ae4f2",
+      "gitNormalizedSha256": "757396239c62d6feb421ac20b6c16740c51d5fc50150d3da876c1cd52c1ae4f2"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 15162,
+      "sha256": "773b59c38c6f68903ad1d7191d986386c3d62e4a3761fa51db5f23d53206620b",
+      "gitNormalizedSha256": "0ce001736e5add77c71022fff716c7b3c705001009e356ae8715b43ed46237ca"
+    },
+    {
+      "path": "doc/product/216-math-playground-review-and-whole-book-candidates.md",
+      "bytes": 4006,
+      "sha256": "ca0112359ec15fc0fa610fbbced4ace1ee994b71ef7c0775e1ed46321c95d756",
+      "gitNormalizedSha256": "ca0112359ec15fc0fa610fbbced4ace1ee994b71ef7c0775e1ed46321c95d756"
+    },
+    {
+      "path": "doc/product/03-development-plan.md",
+      "bytes": 13503,
+      "sha256": "c0de66031375d4818f48648ee4ee13c2314d9161b52ba7011e86f4697fa64cc7",
+      "gitNormalizedSha256": "c0de66031375d4818f48648ee4ee13c2314d9161b52ba7011e86f4697fa64cc7"
+    },
+    {
+      "path": "doc/product/92-experience-and-content-master-plan.md",
+      "bytes": 29172,
+      "sha256": "4b6700af9f17cc812adc0c85edf961b55cad39d4f9a16b93125d0a4ebc13c468",
+      "gitNormalizedSha256": "ec8f84277446653746732b87a285e6c6483d66b05c57aeced7da9120a6fc67f4"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 181053,
+      "sha256": "f47d09beac065ec97b84ef801e8855b96f3f3c420c004a141bbeefdcb139128e",
+      "gitNormalizedSha256": "ca6aec4dbeb6ee82c878e14732d1feb4e323a9f3664e03a3317b277b5e9b4cc1"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 107437,
+      "sha256": "4521f7c6778686609a4d72814a508592ab7d527ffaac288552ada74e3edaf121",
+      "gitNormalizedSha256": "c7b35a80cd51f9de1eafcaa55b697ba83cf863070fe56df316d9cf21fe0e6dfa"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 112516,
+      "sha256": "d5ee088381c4f4230272202cf04748617316f479ad68d0a49ff132b2330dda59",
+      "gitNormalizedSha256": "2cb2c4ddf8196df0ff1f857b75a75d6dcf9571c7b12ecd169645ba939f3cd98b"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 22454,
+      "sha256": "626ea2d2538983ab7ad6d2d9d94afcb42a5f1386030254b349ce160c94788083",
+      "gitNormalizedSha256": "9b372096528dc3cf6445a028e59ec995f376826294dcb6eb119b7f23be42acf7"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 41264,
+      "sha256": "67873300c15b8bd2061dcda86ddd116a741bdab99dd29bc2a9d27a6bf03e907d",
+      "gitNormalizedSha256": "31c8b7c361379bac222f34df1140d686d254281273d81d902c9e4a03f56a3f06"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/browser/first/math-g1-a8e88021-playground-v1-desktop.png",
+      "bytes": 292576,
+      "sha256": "67b938438620886ed3fd78e76474d7f961860620845d66daffba817034284cb2",
+      "gitNormalizedSha256": "d0b138d83620f3fd8617916298fb7cb2f552036fd4fd618bd36c3ab08310536e"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/browser/first/math-g1-a8e88021-playground-v1-table.png",
+      "bytes": 48606,
+      "sha256": "be39b1578e5803d3d3bbbd72749cc7a0d7b29bd19027c4cca3d18be4bf5b9aa2",
+      "gitNormalizedSha256": "1d428f4986b19d162b633d3705cde436f89442a22eddd0d1c0260c394836febf"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/browser/first/math-g1-a8e88021-review-v1-desktop.png",
+      "bytes": 326401,
+      "sha256": "64ef0764586c187846e86f63ed11617d1707ad5bc76810b0c0d2ab2370379238",
+      "gitNormalizedSha256": "e12e0235c3d5c9899b5b16b5ecb0db8264a10cf480dd3b2d7d4c28c351f258a8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/browser/first/math-g1-a8e88021-review-v1-table.png",
+      "bytes": 15462,
+      "sha256": "9eb3c00711564b5c8299d4064775308e0f01e094454d75957cf8d2541df4456f",
+      "gitNormalizedSha256": "ab406aafea4243dd65fd5adba3fd72a56e46c42e7754b44f9aa9034a117a1624"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/browser/first/receipt.json",
+      "bytes": 1121,
+      "sha256": "9b671fb45d7f3fcaa734e35e247e8370a6a61f68a21be4977f31ce52c95ca92a",
+      "gitNormalizedSha256": "9b671fb45d7f3fcaa734e35e247e8370a6a61f68a21be4977f31ce52c95ca92a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/browser/first/runner.cjs",
+      "bytes": 20076,
+      "sha256": "cdd00409d9294d7802bb1d0d8f7457f5cb4ef1de21851db94c4930a22a2936c6",
+      "gitNormalizedSha256": "cdd00409d9294d7802bb1d0d8f7457f5cb4ef1de21851db94c4930a22a2936c6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/browser/math-g1-a8e88021-playground-v1-desktop.png",
+      "bytes": 292576,
+      "sha256": "67b938438620886ed3fd78e76474d7f961860620845d66daffba817034284cb2",
+      "gitNormalizedSha256": "d0b138d83620f3fd8617916298fb7cb2f552036fd4fd618bd36c3ab08310536e"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/browser/math-g1-a8e88021-playground-v1-mobile-table.png",
+      "bytes": 79106,
+      "sha256": "10b70868c0418bac39d71d8fb4c89583023304544ac075bf9d046e880e2cc8b6",
+      "gitNormalizedSha256": "5b917358cf1668d5cd0fa7af94f69a25a67154876638e9bc172ade63e18d8c52"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/browser/math-g1-a8e88021-playground-v1-table.png",
+      "bytes": 48606,
+      "sha256": "be39b1578e5803d3d3bbbd72749cc7a0d7b29bd19027c4cca3d18be4bf5b9aa2",
+      "gitNormalizedSha256": "1d428f4986b19d162b633d3705cde436f89442a22eddd0d1c0260c394836febf"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/browser/math-g1-a8e88021-review-v1-desktop.png",
+      "bytes": 326401,
+      "sha256": "64ef0764586c187846e86f63ed11617d1707ad5bc76810b0c0d2ab2370379238",
+      "gitNormalizedSha256": "e12e0235c3d5c9899b5b16b5ecb0db8264a10cf480dd3b2d7d4c28c351f258a8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/browser/math-g1-a8e88021-review-v1-table.png",
+      "bytes": 15462,
+      "sha256": "9eb3c00711564b5c8299d4064775308e0f01e094454d75957cf8d2541df4456f",
+      "gitNormalizedSha256": "ab406aafea4243dd65fd5adba3fd72a56e46c42e7754b44f9aa9034a117a1624"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/browser/receipt.json",
+      "bytes": 1358,
+      "sha256": "461f44419e8411e1abd38a7978361b06ed0c9c5f7e5edf448dea993ea390ec49",
+      "gitNormalizedSha256": "461f44419e8411e1abd38a7978361b06ed0c9c5f7e5edf448dea993ea390ec49"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/browser/review-clocks-desktop.png",
+      "bytes": 32126,
+      "sha256": "2966e3b36d84b49bc9a44c21b0728de65ab9479ab0bd43fca82d642c25376052",
+      "gitNormalizedSha256": "f12a7ce9666a0a4e9243ba8166eaddd6f58b7bc7fabc45916c655eced728e99a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/browser/review-clocks-mobile.png",
+      "bytes": 46299,
+      "sha256": "6d51e394b074638ef59bf85a1fb87b405fc4b1713b8356ffc6c4982bc99b3a9a",
+      "gitNormalizedSha256": "861b21651bc461f60a5494316dc5e8db816ff0ba5b5786101410caff04f0bef9"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/browser/review-solids-desktop.png",
+      "bytes": 42816,
+      "sha256": "1ba059c6105737e5d0eb5b2c47e793fcba95788e2884a68f639f74e0ec96b280",
+      "gitNormalizedSha256": "0f4d81327c646499074e6edc27a47bdde120ced0203961bf20fe9da82ee1d25e"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/browser/review-solids-mobile.png",
+      "bytes": 46817,
+      "sha256": "a920db8d643e962bac0b390214a89561a11a5629d21caf61cff8147870a9c2e4",
+      "gitNormalizedSha256": "e4514dfd27fe12309f41b566cc3f338c14fb2002998ac6bbe3bccb5677d4119e"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/browser/runner.cjs",
+      "bytes": 20213,
+      "sha256": "b1217a920074ba296c1189330355fcf8a306eb04dc9da179c84ba8474b7fd988",
+      "gitNormalizedSha256": "b1217a920074ba296c1189330355fcf8a306eb04dc9da179c84ba8474b7fd988"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/checks/archive-first-failure.json",
+      "bytes": 618,
+      "sha256": "b1001e9cf81993d92208aa22cb8827db048ebd0435701706c8ccf6a3c13293d6",
+      "gitNormalizedSha256": "b1001e9cf81993d92208aa22cb8827db048ebd0435701706c8ccf6a3c13293d6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/checks/branch-audit-previous.json",
+      "bytes": 6896,
+      "sha256": "eda6ffacfb67cc72776bb3ec114cd251aeaabf4a7e5b7cf85e0ab44a036b3461",
+      "gitNormalizedSha256": "eda6ffacfb67cc72776bb3ec114cd251aeaabf4a7e5b7cf85e0ab44a036b3461"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/checks/browser-floating-assertion-correction.json",
+      "bytes": 347,
+      "sha256": "d906fdfb4cca8936a4d2ead4c7d37e800ccfbd97d9470e78ed5cb4cc22942ff7",
+      "gitNormalizedSha256": "d906fdfb4cca8936a4d2ead4c7d37e800ccfbd97d9470e78ed5cb4cc22942ff7"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/checks/content-worklist-first.json.gz",
+      "bytes": 117152,
+      "sha256": "3f554402cc2e9d52463edaa9912e8c376eaa08e4ef584dd19efd52e26a720c73",
+      "gitNormalizedSha256": "3eaa20ac9444ddcfb6299e72f2e2f37ac3bcf979f96f46a7a8c6d74e72241419"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/checks/playground-http-first.json",
+      "bytes": 2171,
+      "sha256": "6db644b650c6f7a085a450b35cbbf7de90a4978ddb858a26cf34abce3b57553b",
+      "gitNormalizedSha256": "6db644b650c6f7a085a450b35cbbf7de90a4978ddb858a26cf34abce3b57553b"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/checks/protection-final.json",
+      "bytes": 294,
+      "sha256": "178a8e5826238e5424418cc4ac023e7a7fea8f594a15d9c0f352bcc8591557f9",
+      "gitNormalizedSha256": "178a8e5826238e5424418cc4ac023e7a7fea8f594a15d9c0f352bcc8591557f9"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/checks/rendered.json",
+      "bytes": 9993,
+      "sha256": "9621578fc776952bdf424943388186a3d6d8da66655fe2be74e782af151c2b62",
+      "gitNormalizedSha256": "9621578fc776952bdf424943388186a3d6d8da66655fe2be74e782af151c2b62"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/checks/review-http-first.json",
+      "bytes": 2243,
+      "sha256": "19cf8934428cb5f3c1044f4072401c57eb72767e21a04dd8464671a5bb2012f0",
+      "gitNormalizedSha256": "19cf8934428cb5f3c1044f4072401c57eb72767e21a04dd8464671a5bb2012f0"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/checks/reviewed-receipt.json",
+      "bytes": 4277,
+      "sha256": "d1b28fe4fc96861e85539cf8f86e85a75cb833a5ada77c67d302d66d6d9faa73",
+      "gitNormalizedSha256": "d1b28fe4fc96861e85539cf8f86e85a75cb833a5ada77c67d302d66d6d9faa73"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/checks/static-first.json",
+      "bytes": 970,
+      "sha256": "9c602c18c0f3472353dbddc5249609e3265cd1620a2b24a27fb79592c695839c",
+      "gitNormalizedSha256": "9c602c18c0f3472353dbddc5249609e3265cd1620a2b24a27fb79592c695839c"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/checks/sync-initial.json",
+      "bytes": 1734,
+      "sha256": "b54951c7fb208ae0c33222c701ddd3d8c97cfd63b88600e42bd69665a3a65fe6",
+      "gitNormalizedSha256": "b54951c7fb208ae0c33222c701ddd3d8c97cfd63b88600e42bd69665a3a65fe6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/checks/whole-book-first.json",
+      "bytes": 5179,
+      "sha256": "4426f17a2423b5be0912037633e4c10423e04b4cfe582383663db95104441be2",
+      "gitNormalizedSha256": "4426f17a2423b5be0912037633e4c10423e04b4cfe582383663db95104441be2"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/manifest.json",
+      "bytes": 6419,
+      "sha256": "c8e9dad27d206c5c7e5b755c3a0aa411cc0f74b928106fd8c5432e311982c762",
+      "gitNormalizedSha256": "c8e9dad27d206c5c7e5b755c3a0aa411cc0f74b928106fd8c5432e311982c762"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/receipt.json",
+      "bytes": 12874,
+      "sha256": "ee48eddc5ff7becb145721f05401533b6f84dc6197ff8a71756f1f6c091d20aa",
+      "gitNormalizedSha256": "ee48eddc5ff7becb145721f05401533b6f84dc6197ff8a71756f1f6c091d20aa"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/sources.json.gz",
+      "bytes": 70831,
+      "sha256": "ff3f7f40ec96d4a746922ca73e39d93f8bd52f5ee436d90af1e73a25eae16f01",
+      "gitNormalizedSha256": "668bf4fcf4d780101e91250602d83199709d076176f8d716a0e307306a735ae8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/tools/archive-first.cjs",
+      "bytes": 6848,
+      "sha256": "9b285cd622821ffe7b430f77c584e8c44fb9cf5fe7750b7b8f4dc2978b04caa2",
+      "gitNormalizedSha256": "9b285cd622821ffe7b430f77c584e8c44fb9cf5fe7750b7b8f4dc2978b04caa2"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/tools/archive.cjs",
+      "bytes": 6896,
+      "sha256": "bdacf2a3311e34de7bf5a721e17938ecb602765aedc6f1a81068fe7296bfe454",
+      "gitNormalizedSha256": "bdacf2a3311e34de7bf5a721e17938ecb602765aedc6f1a81068fe7296bfe454"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/tools/browser-run.cjs",
+      "bytes": 20213,
+      "sha256": "b1217a920074ba296c1189330355fcf8a306eb04dc9da179c84ba8474b7fd988",
+      "gitNormalizedSha256": "b1217a920074ba296c1189330355fcf8a306eb04dc9da179c84ba8474b7fd988"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/tools/check.cjs",
+      "bytes": 3600,
+      "sha256": "f749d887a283ecf9afe47dbd347ad19828b3488d9470fd4021b99a0db9da6ac8",
+      "gitNormalizedSha256": "f749d887a283ecf9afe47dbd347ad19828b3488d9470fd4021b99a0db9da6ac8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/tools/prepare-browser.cjs",
+      "bytes": 3505,
+      "sha256": "73008707a8d0c4d3d909d3b3e29544d93c4802e244c657b91c7f820553801847",
+      "gitNormalizedSha256": "73008707a8d0c4d3d909d3b3e29544d93c4802e244c657b91c7f820553801847"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/tools/render-source.cjs",
+      "bytes": 1427,
+      "sha256": "e8f2a8b739dc8d2443d2de4d6f9b0c9c4a01429ab6c6510310bbbf540d03bf7f",
+      "gitNormalizedSha256": "e8f2a8b739dc8d2443d2de4d6f9b0c9c4a01429ab6c6510310bbbf540d03bf7f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/tools/whole-book.cjs",
+      "bytes": 3712,
+      "sha256": "00cc78021c60cea289a6b62d28d2ed978ba58dc16c3fb603ceb8526284d55d79",
+      "gitNormalizedSha256": "00cc78021c60cea289a6b62d28d2ed978ba58dc16c3fb603ceb8526284d55d79"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/checks/staging-scan.json",
+      "bytes": 218,
+      "sha256": "80fb869c99dbd6b13046ee707a360603f97329f597a358a997345c3749259aeb",
+      "gitNormalizedSha256": "80fb869c99dbd6b13046ee707a360603f97329f597a358a997345c3749259aeb"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-playground-review-and-book-candidates/tools/stage.cjs",
+      "bytes": 4344,
+      "sha256": "b94169b954e6c0a22b3cac924c66a1bfb262d685a8c3067104224725d5f52204",
+      "gitNormalizedSha256": "b94169b954e6c0a22b3cac924c66a1bfb262d685a8c3067104224725d5f52204"
+    }
+  ]
+}

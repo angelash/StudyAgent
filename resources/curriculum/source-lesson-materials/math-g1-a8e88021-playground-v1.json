@@ -1,0 +1,728 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "playground",
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-playground-v1.json",
+      "sha256": "2ec8b26a875f0543b1fb079d04cb11f9953c67c3a7e78967cc74f92a31a484aa",
+      "source": {
+        "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+        "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:math-playground:entry1",
+        "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+        "pageStart": 87,
+        "pageEnd": 88,
+        "publicationYear": 2022,
+        "curriculumStandardYear": 2011
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "49道未审原创候选，7目标各3即时4拟议间隔。按规则/单位/参照/个人与同伴事实组织，不复制原棋盘或代本人参与；胜负和题量不等独立测量、评分审核或充分保持库存。",
+  "groups": [
+    {
+      "lesson": "playground",
+      "atomId": "source:math:g1:a8e88021:play-rules",
+      "structure": "given-rules-versus-observed-action",
+      "familyProposal": "a8e88021-given-rules-versus-observed-action",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "规则条件保持",
+          "weight": 0.4
+        },
+        {
+          "criterion": "回答结果实际给出",
+          "weight": 0.4
+        },
+        {
+          "criterion": "胜负与掌握分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "退回第3格，按本局答错退一格；先前移动到4不等答对，也不能套其他局继续前进的规则。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-playground-given-rules-versus-observed-action-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创本局答对留新格、答错退一格。甲从第3格前进到第4格后答错，应停哪格？说明规则。",
+          "answer": "退回第3格，按本局答错退一格；先前移动到4不等答对，也不能套其他局继续前进的规则。",
+          "analysis": "退回第3格，按本局答错退一格；先前移动到4不等答对，也不能套其他局继续前进的规则。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-given-rules-versus-observed-action-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "同一本局，乙在第5格答对后留在新格。能只因他走得快就说每个数学目标已掌握吗？",
+          "answer": "不能，规则只支持当前步留格，走快与掌握是不同结论；目标原答、帮助和后续任务需另核。",
+          "analysis": "不能，规则只支持当前步留格，走快与掌握是不同结论；目标原答、帮助和后续任务需另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-given-rules-versus-observed-action-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创只看棋子从2移到3，未听到回答也无结果。现在能认定答对或答错并代改记录吗？",
+          "answer": "不能，移动不提供答题结果；需实际原答和判断，不能代填正确或失败，暂保留未知。",
+          "analysis": "不能，移动不提供答题结果；需实际原答和判断，不能代填正确或失败，暂保留未知。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-given-rules-versus-observed-action-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新一局明确答错留原位，上一局是退一格。有人仍强迫按旧局退，当前应依据什么？",
+          "answer": "依据新局明说规则，答错留原位；不同规则分别保存，不能用旧习惯替当前条件。",
+          "analysis": "依据新局明说规则，答错留原位；不同规则分别保存，不能用旧习惯替当前条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-given-rules-versus-observed-action-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创要求按①到⑦依次走，棋子直接跳到⑦却没有前六步记录。可以直接当全部完成吗？",
+          "answer": "不能，位置到⑦不满足依次完成条件；需核实际轮次和回答，缺失不反向补造。",
+          "analysis": "不能，位置到⑦不满足依次完成条件；需核实际轮次和回答，缺失不反向补造。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-given-rules-versus-observed-action-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人还没参加游戏，只分析了两道规则例。能把两道分析写作已经真实赢一局吗？",
+          "answer": "不能，规则分析与真实参与胜负不同；保留已分析范围，实际游戏未发生不编回合和结果。",
+          "analysis": "不能，规则分析与真实参与胜负不同；保留已分析范围，实际游戏未发生不编回合和结果。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-given-rules-versus-observed-action-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "某次有同伴提示后答对，按游戏可留格。能把这次顺带记成未受帮助的独立首答吗？",
+          "answer": "不能，留格可按规则判断，但提示事实保留；游戏判定不重写首答和帮助时间，也不认未见保持。",
+          "analysis": "不能，留格可按规则判断，但提示事实保留；游戏判定不重写首答和帮助时间，也不认未见保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "playground",
+      "atomId": "source:math:g1:a8e88021:play-arithmetic",
+      "structure": "calculate-then-match-given-value",
+      "familyProposal": "a8e88021-calculate-then-match-given-value",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前算式正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "运算顺序保持",
+          "weight": 0.4
+        },
+        {
+          "criterion": "匹配依据非位置",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "10-1=9，应投9号；规则按得数不是摆放序位，首箱若为3也不能直接投进去。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-playground-calculate-then-match-given-value-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创信箱标签3、9、17，按得数投信。卡10-1应投哪箱，为什么不是按桌面第一个箱？",
+          "answer": "10-1=9，应投9号；规则按得数不是摆放序位，首箱若为3也不能直接投进去。",
+          "analysis": "10-1=9，应投9号；规则按得数不是摆放序位，首箱若为3也不能直接投进去。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-calculate-then-match-given-value-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创卡9-6与11+6，按同一得数规则分别投到哪号箱？请逐式说明。",
+          "answer": "9-6=3投3号，11+6=17投17号；分别核原式，不能把第一张的结果套后卡。",
+          "analysis": "9-6=3投3号，11+6=17投17号；分别核原式，不能把第一张的结果套后卡。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-calculate-then-match-given-value-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创14-4+3先求当前得数再选13或7号箱。请说中间量和最后应投处。",
+          "answer": "先14-4=10，再10+3=13，投13号；不能先算4+3再从14减去，原操作角色需保持。",
+          "analysis": "先14-4=10，再10+3=13，投13号；不能先算4+3再从14减去，原操作角色需保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-calculate-then-match-given-value-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创标签只有9号和17号，但某卡9-6得3。规则未说明无箱时怎么办，可硬改答案成9吗？",
+          "answer": "不能，算式仍得3，缺对应箱应核规则或补箱；不能为完成投递把数学结果改成已有标签。",
+          "analysis": "不能，算式仍得3，缺对应箱应核规则或补箱；不能为完成投递把数学结果改成已有标签。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-calculate-then-match-given-value-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创两卡7+2和10-1都得9，能同投9号吗？能据同箱推它们是同一原始回答吗？",
+          "answer": "可依规则同投9号，但两原算式和作答仍各自不同；分类结果不合并身份或证明独立题族。",
+          "analysis": "可依规则同投9号，但两原算式和作答仍各自不同；分类结果不合并身份或证明独立题族。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-calculate-then-match-given-value-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创信卡字迹不清，可能为13-10也可能13-1。未核清就投3号，条件充分吗？",
+          "answer": "不充分，两式分别3与12；先确认原式，不把模糊输入悄悄纠正成想要的算式。",
+          "analysis": "不充分，两式分别3与12；先确认原式，不把模糊输入悄悄纠正成想要的算式。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-calculate-then-match-given-value-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "换新卡15-2，只因上一卡投17号，能继续沿用吗？请按当前算式和规则作答。",
+          "answer": "15-2=13，应找13号箱或核缺箱规则；上一结果不替当前题，不因熟悉路线改变得数。",
+          "analysis": "15-2=13，应找13号箱或核缺箱规则；上一结果不替当前题，不因熟悉路线改变得数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "playground",
+      "atomId": "source:math:g1:a8e88021:play-unit",
+      "structure": "explicit-units-and-hidden-parts",
+      "familyProposal": "a8e88021-explicit-units-and-hidden-parts",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "一件单位明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "配对或包装条件充足",
+          "weight": 0.4
+        },
+        {
+          "criterion": "可见不冒充全部",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "只数6只；明确每两只可配时3双。单位不同数字可不同，不把六只直接说六双。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-playground-explicit-units-and-hidden-parts-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创六只袜子，只问几只，应答多少？若另说每两只可配一双，再问双数怎样数？",
+          "answer": "只数6只；明确每两只可配时3双。单位不同数字可不同，不把六只直接说六双。",
+          "analysis": "只数6只；明确每两只可配时3双。单位不同数字可不同，不把六只直接说六双。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-explicit-units-and-hidden-parts-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创五只袜子，其中两双完整另有一只。能把单只也当第三双，报三双完整吗？",
+          "answer": "不能，完整2双另1只，单只不足一双；每双的配对条件保持，不把摆放组数当完整双数。",
+          "analysis": "不能，完整2双另1只，单只不足一双；每双的配对条件保持，不把摆放组数当完整双数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-explicit-units-and-hidden-parts-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创车图只见一侧三个轮子，没有完整车型或总数说明。可确定全车共几个吗？",
+          "answer": "不能唯一确定，全车未见部分和车型待核；可说明看见三个，不直接补对侧或额外轮数。",
+          "analysis": "不能唯一确定，全车未见部分和车型待核；可说明看见三个，不直接补对侧或额外轮数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-explicit-units-and-hidden-parts-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创每包明确10张，一包另加2张散纸。问多少张与多少整包怎样分别答？",
+          "answer": "共12张，整包1包另散2张；包与张不可直接把1加2得3张，散纸也不自动成第二整包。",
+          "analysis": "共12张，整包1包另散2张；包与张不可直接把1加2得3张，散纸也不自动成第二整包。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-explicit-units-and-hidden-parts-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创一盒没标数量，旁边三枚。有人因常见包装十枚而答13，依据够吗？",
+          "answer": "不够，要确认本盒恰十枚才得13；常见包装不代当前数量，未知盒不能默认十或零。",
+          "analysis": "不够，要确认本盒恰十枚才得13；常见包装不代当前数量，未知盒不能默认十或零。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-explicit-units-and-hidden-parts-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创数动物腿，明确一只普通完整四足狗与一只普通完整两足鸡，合计腿数能否直接数动物只数？",
+          "answer": "两只动物但腿4+2=6条，所问单位是腿；完整条件已给，不把只数2当条数6。",
+          "analysis": "两只动物但腿4+2=6条，所问单位是腿；完整条件已给，不把只数2当条数6。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-explicit-units-and-hidden-parts-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创虫子被遮住部分，没给类别或完整腿数。能只按熟悉昆虫规则代填六条吗？",
+          "answer": "不能，类别和完整结构未核，遮挡不足支持六条；先确认对象或完整条件，不凭形似套已知动物。",
+          "analysis": "不能，类别和完整结构未核，遮挡不足支持六条；先确认对象或完整条件，不凭形似套已知动物。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "playground",
+      "atomId": "source:math:g1:a8e88021:play-number-role",
+      "structure": "label-versus-count-context",
+      "familyProposal": "a8e88021-label-versus-count-context",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "数字角色明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "单位与标识分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "示例不代个人信息",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能，12是楼层标签表示第12层，不给乘客人数；同一数字角色要由情境判断。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-playground-label-versus-count-context-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创电梯图明确按钮12表示楼层。能说电梯里必有12个人吗？12当前表示什么？",
+          "answer": "不能，12是楼层标签表示第12层，不给乘客人数；同一数字角色要由情境判断。",
+          "analysis": "不能，12是楼层标签表示第12层，不给乘客人数；同一数字角色要由情境判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-label-versus-count-context-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创箱子写9号，未给箱内信封数。有人答里面九封，缺什么条件？",
+          "answer": "缺实际信封数量或明确编码规则；9是箱号不自动是封数，应按当前标签角色解释。",
+          "analysis": "缺实际信封数量或明确编码规则；9是箱号不自动是封数，应按当前标签角色解释。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-label-versus-count-context-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创示例代码写13579，问含几个数字符号，不问代码数值。怎样回答才分清角色？",
+          "answer": "共有5个数字符号，是五位代码；不把代码值13579当物品件数，也不声称是本人的真实号码。",
+          "analysis": "共有5个数字符号，是五位代码；不把代码值13579当物品件数，也不声称是本人的真实号码。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-label-versus-count-context-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创从队首排第8的人拿3枚卡，问他有几枚。可以把序位8当卡数吗？说明。",
+          "answer": "有3枚，8说人在队里的位置；序位和物品数不是同一单位，不能因数字先出现就选8。",
+          "analysis": "有3枚，8说人在队里的位置；序位和物品数不是同一单位，不能因数字先出现就选8。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-label-versus-count-context-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创本页示例生日写6月。能据此自动填每个学生本人生日为6月吗？说明。",
+          "answer": "不能，示例月份不属于每个人的真实资料；本人愿意且已知时另答，否则未知或先核。",
+          "analysis": "不能，示例月份不属于每个人的真实资料；本人愿意且已知时另答，否则未知或先核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-label-versus-count-context-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创卡写班级一（4）班，问这个4是否必等于全班4个人。怎样核数字用途？",
+          "answer": "不必，4在此是班级标识，不是人数；全班数量需实际或题给人数，不能从标签推人数。",
+          "analysis": "不必，4在此是班级标识，不是人数；全班数量需实际或题给人数，不能从标签推人数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-label-versus-count-context-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "同一个12在十二枚贴纸和第12层两题里，表示方式有什么不同？不要只说数值一样。",
+          "answer": "前者是数量12枚，后者为楼层序位或标签；相同数字需结合对象与问题解释，不混单位和事实。",
+          "analysis": "前者是数量12枚，后者为楼层序位或标签；相同数字需结合对象与问题解释，不混单位和事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "playground",
+      "atomId": "source:math:g1:a8e88021:play-spatial-shape",
+      "structure": "reference-and-filled-cube-conditions",
+      "familyProposal": "a8e88021-reference-and-filled-cube-conditions",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "参照说清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "整体立体与平面分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "拼组条件完整",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能保证，个人左与图面左参照不同；需明确按谁的朝向或统一图面，不能凭一个左字代定位。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-playground-reference-and-filled-cube-conditions-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创甲乙面对面，各说我的左边。能保证两人指的是图面同一方向吗？说明需核什么。",
+          "answer": "不能保证，个人左与图面左参照不同；需明确按谁的朝向或统一图面，不能凭一个左字代定位。",
+          "analysis": "不能保证，个人左与图面左参照不同；需明确按谁的朝向或统一图面，不能凭一个左字代定位。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-reference-and-filled-cube-conditions-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创图面规定上北下南，盒A在盒B的图面左侧。换成站在对面者自己的左，还能直接沿用吗？",
+          "answer": "不能直接沿用，图面与人的参照已变；应先保持或转换明确参照，不能悄悄把左改右。",
+          "analysis": "不能直接沿用，图面与人的参照已变；应先保持或转换明确参照，不能悄悄把左改右。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-reference-and-filled-cube-conditions-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创六块相同小正方体，全部使用、不切割、无缝填实，要求拼比一块更大的正方体。够吗？",
+          "answer": "不够，最小每边两块，两层各四共8块；六块不足。结论依相同小块与填实等条件，不泛化到切块空心。",
+          "analysis": "不够，最小每边两块，两层各四共8块；六块不足。结论依相同小块与填实等条件，不泛化到切块空心。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-reference-and-filled-cube-conditions-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创有人只看到一个圆形轮廓，就断言完整物品一定是球。条件足够吗？给一种核查方向。",
+          "answer": "不足，可能球也可能圆柱某面等；需看完整立体和曲平特征，平面轮廓不唯一决定整体。",
+          "analysis": "不足，可能球也可能圆柱某面等；需看完整立体和曲平特征，平面轮廓不唯一决定整体。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-reference-and-filled-cube-conditions-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创两相同小正方体无缝并排，得到典型长方体。能因为用了正方体就仍说整体只能正方体吗？",
+          "answer": "不能，单块形状与组合整体不同；并排整体三向尺寸不全相等，为长方体，实际本人搭建另核。",
+          "analysis": "不能，单块形状与组合整体不同；并排整体三向尺寸不全相等，为长方体，实际本人搭建另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-reference-and-filled-cube-conditions-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只看积木组合的五个可见面，没有完整结构或总量，能直接说用了五块吗？请说明。",
+          "answer": "不能，多个面可能属同一块且有遮挡；需完整块与结构条件，不以可见面数代块数。",
+          "analysis": "不能，多个面可能属同一块且有遮挡；需完整块与结构条件，不以可见面数代块数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-reference-and-filled-cube-conditions-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人尚未实际搭积木，只画一份方案。可以标明图稿后分析吗？能写成本人已经放稳吗？",
+          "answer": "可标清未实搭的方案作分析，但不能记为已放稳；实际稳定与帮助需本人操作证据，图稿不代完成。",
+          "analysis": "可标清未实搭的方案作分析，但不能记为已放稳；实际稳定与帮助需本人操作证据，图稿不代完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "playground",
+      "atomId": "source:math:g1:a8e88021:play-personal",
+      "structure": "truthful-current-personal-answer",
+      "familyProposal": "a8e88021-truthful-current-personal-answer",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "本人已知范围真实",
+          "weight": 0.4
+        },
+        {
+          "criterion": "假设和示例分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未做未核不代完成",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可说明暂未知并之后核实，或明确选择先做假设例；不能把示例6月写成本人真实月份。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-playground-truthful-current-personal-answer-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "活动问本人生日月份，但本人暂时不知道。可以怎样保留回答，能抄示例6月当自己的吗？",
+          "answer": "可说明暂未知并之后核实，或明确选择先做假设例；不能把示例6月写成本人真实月份。",
+          "analysis": "可说明暂未知并之后核实，或明确选择先做假设例；不能把示例6月写成本人真实月份。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-truthful-current-personal-answer-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "活动问本周几节数学课，只有一份别班课表。能直接记成本人本周五节且已上完吗？",
+          "answer": "不能，需本人本周真实课表与调课范围；安排节数和已经上过也不同，别班示例不代实际。",
+          "analysis": "不能，需本人本周真实课表与调课范围；安排节数和已经上过也不同，别班示例不代实际。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-truthful-current-personal-answer-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "本人愿意只说生日在八月，不提供具体日期。这能回答本题月份要求吗？不能额外推什么？",
+          "answer": "可以满足只问月份的范围；不能据此编具体日期或其他个人资料，按本人实际已知保留即可。",
+          "analysis": "可以满足只问月份的范围；不能据此编具体日期或其他个人资料，按本人实际已知保留即可。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-truthful-current-personal-answer-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人课表显示本周四节，其中一节临时取消。问原安排和实际已上是否同一个数？怎样核？",
+          "answer": "不是同一事实，原安排可为四节，实际需逐节核有无进行；取消不等自动全部上完或只凭表填完成。",
+          "analysis": "不是同一事实，原安排可为四节，实际需逐节核有无进行；取消不等自动全部上完或只凭表填完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-truthful-current-personal-answer-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "活动未真正开始，学生只说愿意参加。能把愿意写为已经参与并完成所有任务吗？说明。",
+          "answer": "不能，意愿、开始和完成分别记录；没有实际活动与原答不代编过程，愿意本身可如实保留。",
+          "analysis": "不能，意愿、开始和完成分别记录；没有实际活动与原答不代编过程，愿意本身可如实保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-truthful-current-personal-answer-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人只知道常规周课表，不知道节假日调课。问特定假期周有几节，怎样回答才不捏造？",
+          "answer": "说明常规安排与本周尚待核区别，先查该周实际课表；不把常规数字当已确认本周或已上课事实。",
+          "analysis": "说明常规安排与本周尚待核区别，先查该周实际课表；不把常规数字当已确认本周或已上课事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-truthful-current-personal-answer-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "个人问题选择不回答，改分析明确写着假设的示例，可以把示例结论存为他的个人资料吗？",
+          "answer": "不能，示例用于数学分析而非本人真实信息；保留未提供状态，不因练习完成就自动补个人资料。",
+          "analysis": "不能，示例用于数学分析而非本人真实信息；保留未提供状态，不因练习完成就自动补个人资料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "playground",
+      "atomId": "source:math:g1:a8e88021:play-collaboration",
+      "structure": "actual-peer-words-and-evidence",
+      "familyProposal": "a8e88021-actual-peer-words-and-evidence",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "原话与假设分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "数学依据独立核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助与首答顺序保持",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能当实际认可，可写自己的推测或尚未交流；真实原话需要确实发生，不能编对方意见。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-playground-actual-peer-words-and-evidence-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人没有和同伴交流，只想对方可能同意。能写同伴已经认可本方法吗？应怎样标明？",
+          "answer": "不能当实际认可，可写自己的推测或尚未交流；真实原话需要确实发生，不能编对方意见。",
+          "analysis": "不能当实际认可，可写自己的推测或尚未交流；真实原话需要确实发生，不能编对方意见。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-actual-peer-words-and-evidence-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创假设甲说8加5用凑十，乙说接数。未实际有两名同伴时，怎样比较才不造交流事实？",
+          "answer": "明确这是两种假设方法，再分别核拆分或次数均得13；不说真实甲乙已经发表或已参与讨论。",
+          "analysis": "明确这是两种假设方法，再分别核拆分或次数均得13；不说真实甲乙已经发表或已参与讨论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-actual-peer-words-and-evidence-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "真实同伴说我先把9补成10，只听到这一句。能替他补写剩余怎么加并说这是完整原话吗？",
+          "answer": "不能，原话按实际听到保存，补充推断另标；可追问剩余，但未问到不编完整发言。",
+          "analysis": "不能，原话按实际听到保存，补充推断另标；可追问剩余，但未问到不编完整发言。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-actual-peer-words-and-evidence-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "同伴说得快但当前8+7答16。能只凭速度判对并进入下一格吗？怎样按依据核？",
+          "answer": "不能，8+7=15，需核当前拆分或接数；速度和规则正误不同，记录实际原答后再反馈。",
+          "analysis": "不能，8+7=15，需核当前拆分或接数；速度和规则正误不同，记录实际原答后再反馈。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-actual-peer-words-and-evidence-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本人看同伴答案后解释正确，能把这次倒写为他最早的独立首答吗？应保留什么？",
+          "answer": "不能，保留原答、看参考及解释时间顺序与帮助；教学后的正确说明不改写未见独立表现。",
+          "analysis": "不能，保留原答、看参考及解释时间顺序与帮助；教学后的正确说明不改写未见独立表现。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-actual-peer-words-and-evidence-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "两名同伴方法不同且各守原量得同结果，就必须选一个人错误吗？怎样讨论有依据？",
+          "answer": "不必，逐法核当前条件和完整过程，两法都合理可接受；不能为选胜负强造错误或合并个人原答。",
+          "analysis": "不必，逐法核当前条件和完整过程，两法都合理可接受；不能为选胜负强造错误或合并个人原答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-playground-actual-peer-words-and-evidence-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "一次合作游戏赢了，能认定所有参加者各自达到14天独立保持吗？请分清需要的证据。",
+          "answer": "不能，合作胜负不代每人未见原答、帮助及真实到期间隔；这些条件各自需本人证据，不能集体代记。",
+          "analysis": "不能，合作胜负不代每人未见原答、帮助及真实到期间隔；这些条件各自需本人证据，不能集体代记。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

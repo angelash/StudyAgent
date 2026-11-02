@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-02T18:38:17.010Z",
+  "scope": "test harness only",
+  "first": {
+    "passed": 2,
+    "failed": 1
+  },
+  "expected": [
+    80,
+    108
+  ],
+  "actual": [
+    80,
+    108.00000000000001
+  ],
+  "coordinateTolerance": 1e-9,
+  "geometryOrApplicationChanged": false,
+  "sourceContentChanged": false,
+  "priorReceiptPreserved": true
+}

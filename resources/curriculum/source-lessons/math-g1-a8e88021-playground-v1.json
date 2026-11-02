@@ -1,0 +1,357 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+    "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:math-playground:entry1",
+    "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+    "pageStart": 87,
+    "pageEnd": 88,
+    "publicationYear": 2022,
+    "curriculumStandardYear": 2011
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:math:g1:a8e88021:play-rules",
+      "version": 1,
+      "name": "按当前游戏规则行走和核回答",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "规则与行动",
+      "objective": "先说明当前进退与答题条件再判断下一步",
+      "successCriterion": "用本局明说规则而非套别局，未知结果不代赢或已完成，胜负不代掌握",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:play-arithmetic",
+      "version": 1,
+      "name": "用当前算式求结果再匹配",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "运算应用",
+      "objective": "对0至20内指定算式保留顺序并按结果选择",
+      "successCriterion": "逐式核当前数值，投信或匹配标签按结果，不按纸面位置猜",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:play-unit",
+      "version": 1,
+      "name": "数量问题先明确一件与单位",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "单位与条件",
+      "objective": "区分只双组和已知包装量或未见部分",
+      "successCriterion": "单位明确且条件足够才求总量，不由局部图或组数替不同件数",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:play-number-role",
+      "version": 1,
+      "name": "数字的数量和标识角色分开",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "数的用途",
+      "objective": "解释当前楼层标签、序位与计数的不同角色",
+      "successCriterion": "先核数字表示什么，不把号码值当件数，不据示例填本人资料",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:play-spatial-shape",
+      "version": 1,
+      "name": "按参照说位置并核拼组条件",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "空间与拼组",
+      "objective": "在明确参照中说左右上下并分析相同小块的完整拼组",
+      "successCriterion": "参照一致，立体与平面分清，大立方体须满足相同小块填实条件，实际搭建另记",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:play-personal",
+      "version": 1,
+      "name": "本人信息按真实已知范围回答",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "真实信息",
+      "objective": "对生日月或本周课表明确已知未知与本人选择",
+      "successCriterion": "不编个人信息、不用他人示例代本人，未核课表不代填课程数或已上课事实",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:play-collaboration",
+      "version": 1,
+      "name": "保留同伴原话并核条件",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "交流与核查",
+      "objective": "听取一种真实方法或明确假设后分别核对",
+      "successCriterion": "未发生交流不造同伴意见，意见和数学依据不同，参考后的说明不倒写首答",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:math:g1:a8e88021:play-rules",
+    "source:math:g1:a8e88021:play-arithmetic",
+    "source:math:g1:a8e88021:play-unit",
+    "source:math:g1:a8e88021:play-number-role",
+    "source:math:g1:a8e88021:play-spatial-shape",
+    "source:math:g1:a8e88021:play-personal",
+    "source:math:g1:a8e88021:play-collaboration"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "两张横排原页已转正实际查看，核分层前进/答错后退、题目标签与单位和实际个人问题；不复刻棋盘或代替本人参与。",
+    "pages": [
+      {
+        "page": 87,
+        "visualChecked": true,
+        "statement": "按①至⑦顺序走、石剪布胜者先行、每格答题且错退一格；数量标签、轮子未见部分、立方体拼组、生日月和课表须核条件。"
+      },
+      {
+        "page": 88,
+        "visualChecked": true,
+        "statement": "右页按和投信、袜子单位与动物腿数、位置参照、相邻数和19位值及终点；真实个人回答和同伴交流不代填。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "数学乐园",
+    "directoryGranularity": "activity",
+    "printedPages": [
+      82,
+      83
+    ],
+    "publicationEdition": "2022年8月第2版",
+    "curriculumStandardYear": 2011,
+    "actualGameAndPersonalResponsesRequired": true,
+    "gameScoreIsNotMastery": true,
+    "allPageActivitiesDelivered": false,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "数学乐园：先读规则，再用当前条件回答",
+    "activation": {
+      "prompt": "原创小棋盘规定每次前进一格先答题，答对留在新格，答错回到原格。若只看见棋子被移到新格，就能说已答对吗？",
+      "expectedObservation": "移动动作、回答和规则判断分开，尚无回答结果不能认定正确或获胜。",
+      "bridge": "乐园把学过的数、运算、位置和生活问题放在一起。先核这局怎么玩，再核每题实际问什么。"
+    },
+    "concept": {
+      "explanation": "每个游戏先说清本局规则。这里的原创练习棋盘规定前进一格后答题，正确才留在新格，答错退回一格；走到终点还要按本局规则核有没有完成必要步骤。棋子移动不等已经作答，赢一局也不等每个数学目标都独立掌握。与朋友真正玩过才记录实际轮次，没有玩可先分析示例。\n题目换了，仍要用当前算式。例如14-4+3先得10再得13；投信任务若规定按得数投到3、9、17号箱，10-1应投9，不按信封摆在第几个位置。号码是箱子标识，不是箱中必有几封信。\n数袜子先看问几只还是几双。每双明确两只，六只可配三双；若问按颜色和大小相配的完整双，还要核配对条件，不能随意两只就说一双。同样，画面只显示车的一侧轮子，不足独自决定全车轮数；要有车型说明、完整图或总数条件。\n数字可以表示数量、位置或标签。电梯按钮12在明确楼层标记时表示第12层，不表示里面有12人。给出一串有五个符号的示例号码，能数它有五位，但号码本身的数值不等物品件数。不要拿示例号码、生日月或课表当本人的资料。\n说左右上下先指参照对象。两个人面对面时各自左手方向可以不同，桌面图的左边与人的左边也可能不同。四类立体形状看整体，不把圆的平面轮廓当球。六块相同小正方体若要求全部用上、无缝填实、拼成比一块更大的正方体，最小需每边两块、两层各四块，共八块，六块不够；若允许切块、空心或不全用，条件已变，需另核。\n个人问题由本人按当前已知回答。愿意提供时生日可以只说月份，不知道就先核；本周有几节数学课，需要本人的真实课表、按哪一周和是否临时调课。示例说一周五节，不证明每个人本周都五节，更不表示本人已上完。可以选择先练一份标清假设的示例，不编真实资料。\n和同伴交流先保留对方实际说了什么，再核算式和条件。没有交流，不写同伴已经同意我。两种合理解法可比较，但看过参考后的说明与原先独立回答分开；是否赢、走几格、谁说得快和数学依据分别看。",
+      "points": [
+        "先核当前进退和答题规则",
+        "移动或胜负不等数学掌握",
+        "算出当前值再按规则匹配",
+        "只与双、局部与整体分清",
+        "数字标签不自动是数量",
+        "左右要指参照",
+        "拼大立体先核完整条件",
+        "个人与同伴事实不代编"
+      ]
+    },
+    "example": {
+      "situation": "原创投信卡给三个箱，标签3、9、17；信卡为10-1、9-6、11+6，规则按每张当前得数投到对应箱。",
+      "steps": [
+        {
+          "explanation": "先算第一张10-1=9，投9号箱；它放在桌面第一个位置，不要求投3号箱。",
+          "board": [
+            "10-1=9",
+            "箱号按得数匹配",
+            "摆放位置不是投递规则"
+          ]
+        },
+        {
+          "explanation": "9-6=3投3号，11+6=17投17号。逐卡核，不因上一张得9就给所有卡投同箱。",
+          "board": [
+            "9-6=3 → 3号",
+            "11+6=17 → 17号",
+            "每张原算式分别保留"
+          ]
+        }
+      ],
+      "conclusion": "先算再按已说明的规则匹配；这只是原创示例，不记录本人已经寄信或完成一局。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "原创规则核查卡：动作和事实分开",
+        "headers": [
+          "场景",
+          "已给条件",
+          "可以判断什么",
+          "仍须另外核"
+        ],
+        "rows": [
+          [
+            "棋子前进",
+            "答对留、答错退一格",
+            "需依当前原答判留退",
+            "移动不代表已经答对"
+          ],
+          [
+            "信投号码箱",
+            "按得数投3/9/17号箱",
+            "10-1应投9号",
+            "不由箱号推箱内封数"
+          ],
+          [
+            "六只袜子",
+            "问只数，不另给配对属性",
+            "可说共有6只",
+            "若求合适成双还需核条件"
+          ],
+          [
+            "生日或本周课表",
+            "尚未提供本人信息",
+            "可保留未知或练假设例",
+            "不代编真实月和节数"
+          ]
+        ],
+        "explanation": "这些是原创条件对照，不复制原棋盘。实际游戏、个人回答和同伴交流须分别有本人事实；一次胜负不生成掌握或保持结论。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "棋子到了终点，就替本人把中途全部题目记成正确。",
+        "alternatives": [
+          "把位置结果代答题和实际参与证据。"
+        ],
+        "verification": "逐格查看是否有本人的实际原答、帮助和规则判断，未答保持未完成。",
+        "correctiveFeedback": "到达位置、答题结果和学习掌握分别记录，不反填缺失回答。"
+      },
+      {
+        "observation": "从车一侧看见三只轮子，就确定全车只有三只或一定六只。",
+        "alternatives": [
+          "把可见部分当完整条件，或未经给定就假定对称和轮轴数。"
+        ],
+        "verification": "先核题目有无完整车轮或车型说明，不足则问还缺什么。",
+        "correctiveFeedback": "可见轮数不自动等全车轮数，先核完整结构条件。"
+      },
+      {
+        "observation": "对方没说话，却写同桌同意我，并拿示例课表代本人真实课表。",
+        "alternatives": [
+          "把合理推想或示例当已经发生的事实。"
+        ],
+        "verification": "分别写实际听到什么、示例假设什么和本人目前未知什么。",
+        "correctiveFeedback": "未发生的交流和未提供的个人信息都留未知，不代填。"
+      }
+    ],
+    "transfer": {
+      "scenario": "新的规则卡、投递算式、空间问题或个人/同伴任务混排出现。",
+      "prompt": "每题先说规则、单位、参照和已知，再答；若只分析示例，明确不是真实参与或个人事实。",
+      "expectedStrategy": "使用当前条件，不靠上局习惯或图上摆放猜；不足的信息先核，实际原答和提示另存。"
+    },
+    "summary": {
+      "synthesis": "乐园里每题都先核当前规则、单位和事实。算式值、物品数量、位置标签、真实个人回答和游戏结果分别判断。",
+      "takeaways": [
+        "读规则再行动",
+        "当前算式逐张算",
+        "单位与参照说清",
+        "缺条件先核",
+        "个人与同伴原话真实保留",
+        "胜负不代掌握"
+      ]
+    },
+    "citations": [
+      {
+        "page": 87,
+        "quote": "按①、②、③……⑦的顺序走。",
+        "usedFor": "concept"
+      },
+      {
+        "page": 87,
+        "quote": "这辆车一共有几个轮子？",
+        "usedFor": "misconception"
+      },
+      {
+        "page": 88,
+        "quote": "问题一：有几双袜子？",
+        "usedFor": "example"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:math:g1:a8e88021:play-rules",
+        "objective": "先说明当前进退与答题条件再判断下一步",
+        "successCriterion": "用本局明说规则而非套别局，未知结果不代赢或已完成，胜负不代掌握"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:math:g1:a8e88021:play-arithmetic",
+        "objective": "对0至20内指定算式保留顺序并按结果选择",
+        "successCriterion": "逐式核当前数值，投信或匹配标签按结果，不按纸面位置猜"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:math:g1:a8e88021:play-unit",
+        "objective": "区分只双组和已知包装量或未见部分",
+        "successCriterion": "单位明确且条件足够才求总量，不由局部图或组数替不同件数"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:math:g1:a8e88021:play-number-role",
+        "objective": "解释当前楼层标签、序位与计数的不同角色",
+        "successCriterion": "先核数字表示什么，不把号码值当件数，不据示例填本人资料"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:math:g1:a8e88021:play-spatial-shape",
+        "objective": "在明确参照中说左右上下并分析相同小块的完整拼组",
+        "successCriterion": "参照一致，立体与平面分清，大立方体须满足相同小块填实条件，实际搭建另记"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "source:math:g1:a8e88021:play-personal",
+        "objective": "对生日月或本周课表明确已知未知与本人选择",
+        "successCriterion": "不编个人信息、不用他人示例代本人，未核课表不代填课程数或已上课事实"
+      },
+      {
+        "id": "goal-7",
+        "atomId": "source:math:g1:a8e88021:play-collaboration",
+        "objective": "听取一种真实方法或明确假设后分别核对",
+        "successCriterion": "未发生交流不造同伴意见，意见和数学依据不同，参考后的说明不倒写首答"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "playground",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

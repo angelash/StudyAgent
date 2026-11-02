@@ -1,0 +1,428 @@
+{
+  "protocol": "math-playground-review-and-book-candidates-v1",
+  "at": "2026-11-02T18:42:29.162Z",
+  "branch": "main",
+  "baseCommit": "723e6da641a0d8e06f54c75d9a7185f8c3e1e47c",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "sourceFiles": 6,
+  "source": {
+    "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+    "sha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+    "publicationYear": 2022,
+    "curriculumStandardYear": 2011,
+    "physicalPageRanges": [
+      [
+        87,
+        88
+      ],
+      [
+        109,
+        116
+      ]
+    ],
+    "pagesIndividuallyVisuallyReviewed": 10
+  },
+  "content": {
+    "drafts": 2,
+    "targets": [
+      7,
+      7
+    ],
+    "newCandidateQuestions": [
+      49,
+      49
+    ],
+    "teacherReviewed": false,
+    "allPageActivitiesDelivered": false,
+    "sufficientRetentionIntervalsApproved": 0
+  },
+  "validation": {
+    "static": [
+      {
+        "slug": "playground",
+        "sourcePages": 2,
+        "targets": 7,
+        "questions": 49,
+        "generatorBytesReproduced": true,
+        "sourcePreflight": true,
+        "format": "source-following-original-materials-v1",
+        "genuineWorkSeparated": true,
+        "teacherReviewed": false,
+        "allPageActivitiesDelivered": false
+      },
+      {
+        "slug": "review",
+        "sourcePages": 8,
+        "targets": 7,
+        "questions": 49,
+        "generatorBytesReproduced": true,
+        "sourcePreflight": true,
+        "format": "source-following-original-materials-v1",
+        "genuineWorkSeparated": true,
+        "teacherReviewed": false,
+        "allPageActivitiesDelivered": false
+      }
+    ],
+    "http": [
+      {
+        "slug": "playground",
+        "passed": true,
+        "commandReplay": [
+          {
+            "file": "math-g1-a8e88021-playground-v1.json",
+            "sha256": "2ec8b26a875f0543b1fb079d04cb11f9953c67c3a7e78967cc74f92a31a484aa",
+            "physicalPages": [
+              87,
+              88
+            ],
+            "fullSourceTextKeptPrivate": true,
+            "targets": 7,
+            "preflightPublishable": false,
+            "gapCount": 91,
+            "linkedDraftMaterialReferences": 49,
+            "gapCodes": [
+              "target_not_published",
+              "material_changed_or_ineligible",
+              "material_family_coverage",
+              "retention_stock_gap"
+            ],
+            "fullOriginalContentReadBack": true,
+            "originalCommandReplayed": true,
+            "incompletePublicationRejected": true
+          }
+        ],
+        "coldRead": {
+          "drafts": 1,
+          "wholeContentAndSourceFingerprintsPreserved": true,
+          "draftQuestions": 49,
+          "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+          "exactSourceNamesAndMetadataPreserved": true,
+          "visualQuestionDocuments": 0,
+          "wholeVisualDocumentsPreserved": true,
+          "staleVisualDocumentVersionRejected": false,
+          "publications": 0,
+          "adoptions": 0,
+          "learnerResponses": 0
+        }
+      },
+      {
+        "slug": "review",
+        "passed": true,
+        "commandReplay": [
+          {
+            "file": "math-g1-a8e88021-review-v1.json",
+            "sha256": "12ac41c01c439889dd6c9a77921e09b522af823ca80342e0a520b868f163238e",
+            "physicalPages": [
+              109,
+              110,
+              111,
+              112,
+              113,
+              114,
+              115,
+              116
+            ],
+            "fullSourceTextKeptPrivate": true,
+            "targets": 7,
+            "preflightPublishable": false,
+            "gapCount": 91,
+            "linkedDraftMaterialReferences": 49,
+            "gapCodes": [
+              "target_not_published",
+              "material_changed_or_ineligible",
+              "material_family_coverage",
+              "retention_stock_gap"
+            ],
+            "fullOriginalContentReadBack": true,
+            "originalCommandReplayed": true,
+            "incompletePublicationRejected": true
+          }
+        ],
+        "coldRead": {
+          "drafts": 1,
+          "wholeContentAndSourceFingerprintsPreserved": true,
+          "draftQuestions": 49,
+          "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+          "exactSourceNamesAndMetadataPreserved": true,
+          "visualQuestionDocuments": 0,
+          "wholeVisualDocumentsPreserved": true,
+          "staleVisualDocumentVersionRejected": false,
+          "publications": 0,
+          "adoptions": 0,
+          "learnerResponses": 0
+        }
+      }
+    ],
+    "browser": {
+      "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+      "passed": 6,
+      "failed": 0,
+      "screenshots": 9,
+      "wholeConceptTablesAndDownloadedCopyChecked": true,
+      "keyboardAndMobileChecked": true,
+      "learningAndPublicationWrites": 0
+    },
+    "wholeBook": {
+      "at": "2026-11-02T18:37:38.996Z",
+      "passed": true,
+      "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+      "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+      "directoryEntries": 10,
+      "unitLevelDrafts": 10,
+      "sourcePages": 110,
+      "sourcePageRange": [
+        7,
+        116
+      ],
+      "targets": 74,
+      "candidateQuestions": 518,
+      "uniqueQuestionIdentities": 518,
+      "nativeImageQuestions": 28,
+      "rows": [
+        {
+          "slug": "carry",
+          "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit8:entry1",
+          "physicalPages": [
+            93,
+            108
+          ],
+          "sourceReviewedPages": 16,
+          "targets": 8,
+          "candidates": 56,
+          "format": "source-following-original-materials-v1",
+          "nativeImageQuestions": 0,
+          "mathTeachingGroups": 0,
+          "generatedBytesStable": true,
+          "teacherReviewed": false
+        },
+        {
+          "slug": "clock",
+          "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit7:entry1",
+          "physicalPages": [
+            89,
+            92
+          ],
+          "sourceReviewedPages": 4,
+          "targets": 7,
+          "candidates": 49,
+          "format": "source-following-original-materials-v2",
+          "nativeImageQuestions": 21,
+          "mathTeachingGroups": 3,
+          "generatedBytesStable": true,
+          "teacherReviewed": false
+        },
+        {
+          "slug": "five",
+          "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit3:entry1",
+          "physicalPages": [
+            19,
+            38
+          ],
+          "sourceReviewedPages": 20,
+          "targets": 8,
+          "candidates": 56,
+          "format": "source-following-original-materials-v1",
+          "nativeImageQuestions": 0,
+          "mathTeachingGroups": 0,
+          "generatedBytesStable": true,
+          "teacherReviewed": false
+        },
+        {
+          "slug": "playground",
+          "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:math-playground:entry1",
+          "physicalPages": [
+            87,
+            88
+          ],
+          "sourceReviewedPages": 2,
+          "targets": 7,
+          "candidates": 49,
+          "format": "source-following-original-materials-v1",
+          "nativeImageQuestions": 0,
+          "mathTeachingGroups": 0,
+          "generatedBytesStable": true,
+          "teacherReviewed": false
+        },
+        {
+          "slug": "position",
+          "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit2:entry1",
+          "physicalPages": [
+            14,
+            18
+          ],
+          "sourceReviewedPages": 5,
+          "targets": 7,
+          "candidates": 49,
+          "format": "source-following-original-materials-v1",
+          "nativeImageQuestions": 0,
+          "mathTeachingGroups": 0,
+          "generatedBytesStable": true,
+          "teacherReviewed": false
+        },
+        {
+          "slug": "preparation",
+          "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit1:entry1",
+          "physicalPages": [
+            7,
+            13
+          ],
+          "sourceReviewedPages": 7,
+          "targets": 7,
+          "candidates": 49,
+          "format": "source-following-original-materials-v1",
+          "nativeImageQuestions": 0,
+          "mathTeachingGroups": 0,
+          "generatedBytesStable": true,
+          "teacherReviewed": false
+        },
+        {
+          "slug": "review",
+          "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit9:entry1",
+          "physicalPages": [
+            109,
+            116
+          ],
+          "sourceReviewedPages": 8,
+          "targets": 7,
+          "candidates": 49,
+          "format": "source-following-original-materials-v1",
+          "nativeImageQuestions": 0,
+          "mathTeachingGroups": 2,
+          "generatedBytesStable": true,
+          "teacherReviewed": false
+        },
+        {
+          "slug": "solids",
+          "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit4:entry1",
+          "physicalPages": [
+            39,
+            43
+          ],
+          "sourceReviewedPages": 5,
+          "targets": 7,
+          "candidates": 49,
+          "format": "source-following-original-materials-v2",
+          "nativeImageQuestions": 7,
+          "mathTeachingGroups": 2,
+          "generatedBytesStable": true,
+          "teacherReviewed": false
+        },
+        {
+          "slug": "ten",
+          "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit5:entry1",
+          "physicalPages": [
+            44,
+            77
+          ],
+          "sourceReviewedPages": 34,
+          "targets": 8,
+          "candidates": 56,
+          "format": "source-following-original-materials-v1",
+          "nativeImageQuestions": 0,
+          "mathTeachingGroups": 0,
+          "generatedBytesStable": true,
+          "teacherReviewed": false
+        },
+        {
+          "slug": "twenty",
+          "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit6:entry1",
+          "physicalPages": [
+            78,
+            86
+          ],
+          "sourceReviewedPages": 9,
+          "targets": 8,
+          "candidates": 56,
+          "format": "source-following-original-materials-v1",
+          "nativeImageQuestions": 0,
+          "mathTeachingGroups": 0,
+          "generatedBytesStable": true,
+          "teacherReviewed": false
+        }
+      ],
+      "directoryBindingsCompleteAtUnitGranularity": true,
+      "allPageActivitiesDelivered": false,
+      "teacherReviewed": false,
+      "scoringAndFamiliesApproved": false,
+      "sufficientRetentionStockApproved": false,
+      "automaticPublication": false,
+      "formalDatabaseWritten": false,
+      "learnerEvidenceCreated": false,
+      "wholeCurriculumCompleted": false
+    },
+    "browserFirst": {
+      "passed": 2,
+      "failed": 1,
+      "reason": "Exact equality rejected 108.00000000000001 against 108; corrected only test tolerance to 1e-9 SVG units."
+    },
+    "frozenApplicationAndCompiledInputs": 1930,
+    "mainAndQaSyncedInputs": 8,
+    "applicationRuntimeChanged": false,
+    "databaseProtocolChanged": false,
+    "previousFullApi": {
+      "passed": 3103,
+      "failed": 1,
+      "conditionalSkips": 131,
+      "correctedEditorSuitesPassed": 50,
+      "fullSuiteRerun": false,
+      "separateBatches": true
+    }
+  },
+  "protection": {
+    "at": "2026-11-02T18:38:30.923Z",
+    "branch": "main",
+    "branches": [
+      "main"
+    ],
+    "worktreeCount": 1,
+    "protectedFiles": 1063,
+    "changedProtectedFiles": [],
+    "formal": {
+      "schema": 24,
+      "revision": 188
+    },
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "branches": {
+    "remoteNonMain": 41,
+    "allIncludedInMain": true,
+    "localBranches": [
+      "main"
+    ],
+    "worktrees": 1
+  },
+  "boundaries": {
+    "sourceOriginalImagesOrFullTextCommitted": false,
+    "privateLogsOrCredentialsCommitted": false,
+    "teacherAcceptance": false,
+    "scoringAndFamilyApproved": false,
+    "newLearnerResponses": 0,
+    "published": 0,
+    "adopted": 0,
+    "pushed": false,
+    "deployed": false
+  },
+  "remaining": {
+    "registeredBooks": 450,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 102,
+    "booksWithDirectory": 114,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3522,
+    "lessonsWithCandidateFiles": 58,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3464,
+    "authoredFollowingMaterialCandidates": 2597,
+    "materialBundlesWithStaleDraftIdentity": 0,
+    "firstLessonSeparateCandidates": 44,
+    "allRemainingTextbooksAndGesp": true,
+    "teacherScoringFamilyAndSufficientRetentionReview": true,
+    "block5": true
+  }
+}
