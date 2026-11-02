@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-02T01:50:15.373Z",
+  "label": "continuation-switch-repro-first",
+  "executed": {
+    "status": 1,
+    "error": null
+  },
+  "discovered": 1,
+  "files": 1,
+  "stats": {
+    "startTime": "2026-11-02T01:49:34.576Z",
+    "duration": 37508,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "errors": [],
+  "sourceAndCompiledInputs": 0,
+  "testAndFixtureInputs": 1808,
+  "changedDuringRun": [],
+  "buildId": "gUXB3iRftmNGkCVrd7IqK",
+  "actualLiveModelTests": false,
+  "engineeringQaOnly": true,
+  "wholeGoal": "active"
+}

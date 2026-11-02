@@ -1,4 +1,5 @@
 'use client';
+import { LoginLink } from '../../../components/login-link';
 import {commitWorkspaceNavigation} from '../../../lib/workspace-exit-guard';
 import * as React from 'react';
 import Link from 'next/link';
@@ -148,7 +149,7 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
     window.history.replaceState(null, '', '/studio/classroom?' + query); void refresh();
   }
   if (identity === undefined) return <div className="cl-loading" role="status">正在打开教学课堂…</div>;
-  if (!identity) return <div className="cl-gate"><h1>让学习，发生在一间真正的课堂里。</h1><p>登录后保存课程、讲解断点和插问。</p><Link href="/parent/login">登录学习工作台 →</Link></div>;
+  if (!identity) return <div className="cl-gate"><h1>让学习，发生在一间真正的课堂里。</h1><p>登录后保存课程、讲解断点和插问。</p><LoginLink>登录学习工作台 →</LoginLink></div>;
   if (session && session.ownerUserId !== identity.id) return <div className="cl-loading" role="status">正在切换当前账号的课堂…</div>;
   if (session) return <>{error&&<aside className="cl-session-open-notice" role="alert" aria-label="课堂切换未完成"><span>{error}</span><button onClick={()=>setError('')}>关闭课堂切换提示</button></aside>}{loading&&<aside className="cl-session-open-notice" role="status">正在读取目标课时，当前记录继续保留…</aside>}<ClassroomSession key={identity.id + ':' + session.id} initial={session} initialTab={initialTab} assistance={help} unit={catalog?.course.units.find(unit =>
     unit.lectures.some(lecture => lecture.lessons.some(lesson => lesson.id === session.lessonId)) || session.lessonId === 'unit-exam:' + unit.id)}

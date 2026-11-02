@@ -1,0 +1,38 @@
+{
+  "at": "2026-11-02T01:47:24.217Z",
+  "source": "tests/e2e/workspace-continuation.spec.ts",
+  "sourceSha256": "48c52ee658b30483a7be8410d2e8e74bc4c3baf8df6c404d4e22b3e74144dfee",
+  "applicationUnchanged": true,
+  "buildId": "gUXB3iRftmNGkCVrd7IqK",
+  "wholeRun": "workbench-browser-whole-ninth",
+  "wholeRunUnchangedBeforeSupplementalTests": true,
+  "runs": [
+    {
+      "label": "continuation-first",
+      "stats": {
+        "startTime": "2026-11-02T01:44:21.982Z",
+        "duration": 58726.283,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    {
+      "label": "continuation-second",
+      "stats": {
+        "startTime": "2026-11-02T01:46:29.083Z",
+        "duration": 45914.595,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "testOnlyCorrection": "The management shell names its sign-in link 登录工作台; the first test incorrectly looked for 登录.",
+  "originalTestSourceSha256": "718ca6abd299775e7f5a25a841de84b1e7b14cb443f9f38c3bc05a9d909f6477",
+  "engineeringOnly": true,
+  "touch": "Chromium mobile context with hasTouch and tap; not physical hardware",
+  "formalDataNotUsed": true
+}

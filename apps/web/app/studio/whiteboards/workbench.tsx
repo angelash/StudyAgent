@@ -1,4 +1,5 @@
 'use client';
+import { LoginLink } from '../../../components/login-link';
 import * as React from 'react';
 import Link from 'next/link';
 import { z } from 'zod';
@@ -37,7 +38,7 @@ function readSelection(): Selection {
 export function TopicWhiteboardWorkbench() {
   const identity = useSessionUser();
   if (identity === undefined) return <main className="tw-gate" role="status">正在确认学习身份…</main>;
-  if (!identity) return <main className="tw-gate"><h1>把一个问题，讲清楚。</h1><p>登录后生成、核对并保留自己的白板。</p><Link href="/parent/login">登录学习工作台 →</Link></main>;
+  if (!identity) return <main className="tw-gate"><h1>把一个问题，讲清楚。</h1><p>登录后生成、核对并保留自己的白板。</p><LoginLink>登录学习工作台 →</LoginLink></main>;
   return <TopicWorkspace key={identity.id + ':' + identity.role} identity={identity}/>;
 }
 function TopicWorkspace({ identity }: { identity: NonNullable<ReturnType<typeof useSessionUser>> }) {

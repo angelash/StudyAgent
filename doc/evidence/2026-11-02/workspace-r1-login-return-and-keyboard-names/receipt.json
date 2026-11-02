@@ -1,0 +1,141 @@
+{
+  "protocol": "study-agent-login-return-and-keyboard-names-v1",
+  "at": "2026-11-02T01:43:51.010Z",
+  "applicationIntegrated": true,
+  "mainApplicationSchema": 33,
+  "sourceIncrement": {
+    "files": 36,
+    "webFiles": 25,
+    "testFiles": 11,
+    "archive": "candidate-source-delta.json.gz",
+    "sha256": "9c3d1cc84fa991cb77bdeeb17165a9278fe21affe466832c048dc9c241efdb17",
+    "parentArchive": "doc/evidence/2026-11-02/workspace-r1-legacy-parameters-and-family-pages/candidate-source-delta.json.gz",
+    "parentSha256": "f253fb1e6953ad059ae9247d4c25cc6b56e991b77ba27c6110b4566520ab5c87",
+    "apiAndContractsUnchanged": true
+  },
+  "loginReturn": {
+    "anonymousSignInLinksWithReturn": 22,
+    "legacyAddressesAllowedAsDestinations": [
+      "/learn",
+      "/parent/dashboard",
+      "/student/knowledge",
+      "/student/mission",
+      "/chemistry"
+    ],
+    "existingValidationUnchanged": true
+  },
+  "planOnlyReportLinksOpenTasksPlan": true,
+  "sidebarAccessibleNamesMatchVisibleChinese": 9,
+  "testLocatorsUpdated": 24,
+  "runs": [
+    {
+      "label": "login-return-repro-first",
+      "expected": 0,
+      "unexpected": 3,
+      "flaky": 0,
+      "skipped": 0,
+      "discovered": 3,
+      "buildId": "Hyn8am17Wn_h3qfylG6WC"
+    },
+    {
+      "label": "login-return-focused-first",
+      "expected": 18,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "discovered": 18,
+      "buildId": "aL2igT6GRW2_a5WBszj5F"
+    },
+    {
+      "label": "keyboard-names-repro-first",
+      "expected": 1,
+      "unexpected": 1,
+      "flaky": 0,
+      "skipped": 0,
+      "discovered": 2,
+      "buildId": "aL2igT6GRW2_a5WBszj5F"
+    },
+    {
+      "label": "keyboard-names-repro-second",
+      "expected": 1,
+      "unexpected": 1,
+      "flaky": 0,
+      "skipped": 0,
+      "discovered": 2,
+      "buildId": "aL2igT6GRW2_a5WBszj5F"
+    },
+    {
+      "label": "login-keyboard-focused-first",
+      "expected": 133,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "discovered": 133,
+      "buildId": "xw87PdcIUKDaXJSQnDJZI"
+    },
+    {
+      "label": "workbench-browser-whole-eighth",
+      "expected": 646,
+      "unexpected": 1,
+      "flaky": 0,
+      "skipped": 0,
+      "discovered": 647,
+      "buildId": "xw87PdcIUKDaXJSQnDJZI"
+    },
+    {
+      "label": "login-keyboard-focused-second",
+      "expected": 19,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "discovered": 19,
+      "buildId": "gUXB3iRftmNGkCVrd7IqK"
+    },
+    {
+      "label": "workbench-browser-whole-ninth",
+      "expected": 647,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "discovered": 647,
+      "buildId": "gUXB3iRftmNGkCVrd7IqK"
+    }
+  ],
+  "firstCompleteBrowser": {
+    "label": "workbench-browser-whole-eighth",
+    "passed": 646,
+    "failed": 1,
+    "failure": "product-smoke home sign-in link carried returnTo=%2F",
+    "fixed": true
+  },
+  "voidBuild": {
+    "label": "login-keyboard-ui-build-second",
+    "buildId": "K6BiZTgOr8JnWsEk_YUJX",
+    "usedForVerification": false
+  },
+  "completeBrowser": {
+    "label": "workbench-browser-whole-ninth",
+    "discovered": 647,
+    "files": 65,
+    "passed": 647,
+    "failed": 0,
+    "failures": [],
+    "sameBuildReruns": []
+  },
+  "latestCompleteApi": {
+    "label": "original-workbench-whole-fifth",
+    "passed": 3018,
+    "failed": 0,
+    "pending": 131,
+    "sameApiAndContractBytes": true
+  },
+  "automatedKeyboardIsNotScreenReaderOrTouchDevice": true,
+  "singleBatchCountsNeverAddedTogether": true,
+  "formal": {
+    "schema": 24,
+    "revision": 187
+  },
+  "protectedFilesUnchanged": 1063,
+  "localOnly": true,
+  "wholeGoal": "active"
+}

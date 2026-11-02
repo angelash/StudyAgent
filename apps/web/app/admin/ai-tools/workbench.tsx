@@ -1,4 +1,5 @@
 'use client';
+import { LoginLink } from '../../../components/login-link';
 import * as React from 'react';
 import Link from 'next/link';
 import type { TeachingToolPurpose, TeachingToolRunsPage, TeachingToolRunView } from '@study-agent/contracts';
@@ -17,7 +18,7 @@ function locationState() { const query = new URLSearchParams(window.location.sea
 export function TeachingToolsWorkbench() {
   const user = useSessionUser(), session = useSessionStatus();
   if (user === undefined) return <main className="learning-studio tt-gate"><h1>教研工作台</h1><p role="status">{session.status === 'unavailable' ? '暂不能确认当前身份，原资料仍保留。' : '正在确认教研身份…'}</p>{session.status === 'unavailable' && <button type="button" onClick={() => void refreshSessionUser()}>重新确认登录</button>}</main>;
-  if (!user) return <main className="learning-studio tt-gate"><h1>教研工作台</h1><p>登录后查看本人教研草稿。</p><Link href="/parent/login">登录工作台 →</Link></main>;
+  if (!user) return <main className="learning-studio tt-gate"><h1>教研工作台</h1><p>登录后查看本人教研草稿。</p><LoginLink>登录工作台 →</LoginLink></main>;
   if (user.role !== 'admin') return <main className="learning-studio tt-gate"><h1>这是一处内部教研工作区</h1><p>当前身份没有教研管理员权限。学习任务仍可从学习首页继续。</p><Link href="/learn">返回学习首页 →</Link></main>;
   return <Workspace key={user.id + ':' + user.role} ownerId={user.id}/>;
 }

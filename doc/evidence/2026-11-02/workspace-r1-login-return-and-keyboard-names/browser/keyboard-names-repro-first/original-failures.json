@@ -1,0 +1,12 @@
+{
+  "label": "keyboard-names-repro-first",
+  "failures": [
+    {
+      "file": "workspace-keyboard.spec.ts",
+      "title": "keyboard: every sidebar entry is reached by Tab with a visible focus ring, is named as shown and opens with Enter",
+      "status": "failed",
+      "error": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('body')\n    - locator resolved to <body data-workspace-layout=\"default\" data-study-navigation=\"expanded\">…</body>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <html lang=\"zh-CN\">…</html> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <html lang=\"zh-CN\">…</html> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    28 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <html lang=\"zh-CN\">…</html> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n"
+    }
+  ],
+  "retained": true
+}

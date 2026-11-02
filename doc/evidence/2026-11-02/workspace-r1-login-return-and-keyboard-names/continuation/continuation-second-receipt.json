@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-02T01:47:18.708Z",
+  "label": "continuation-second",
+  "executed": {
+    "status": 0,
+    "error": null
+  },
+  "discovered": 4,
+  "files": 1,
+  "stats": {
+    "startTime": "2026-11-02T01:46:29.083Z",
+    "duration": 45914.595,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "errors": [],
+  "sourceAndCompiledInputs": 0,
+  "testAndFixtureInputs": 1808,
+  "changedDuringRun": [],
+  "buildId": "gUXB3iRftmNGkCVrd7IqK",
+  "actualLiveModelTests": false,
+  "engineeringQaOnly": true,
+  "wholeGoal": "active"
+}

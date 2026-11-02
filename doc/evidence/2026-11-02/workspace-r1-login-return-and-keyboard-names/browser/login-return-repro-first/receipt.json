@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-01T22:21:37.828Z",
+  "label": "login-return-repro-first",
+  "executed": {
+    "status": 1,
+    "error": null
+  },
+  "discovered": 3,
+  "files": 1,
+  "stats": {
+    "startTime": "2026-11-01T22:20:13.506Z",
+    "duration": 81341.561,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  },
+  "errors": [],
+  "sourceAndCompiledInputs": 0,
+  "testAndFixtureInputs": 1806,
+  "changedDuringRun": [],
+  "buildId": "Hyn8am17Wn_h3qfylG6WC",
+  "actualLiveModelTests": false,
+  "engineeringQaOnly": true,
+  "wholeGoal": "active"
+}

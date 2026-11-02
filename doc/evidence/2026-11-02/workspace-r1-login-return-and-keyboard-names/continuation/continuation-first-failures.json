@@ -1,0 +1,11 @@
+{
+  "failures": [
+    {
+      "title": "continuation: teachers and admins sign in to their original allowed management page while a forbidden teacher return reads no account data",
+      "status": "failed",
+      "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByRole('link', { name: '登录', exact: true })\n"
+    }
+  ],
+  "retained": true,
+  "originalPrivateTraceNotPublished": true
+}

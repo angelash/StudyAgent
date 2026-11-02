@@ -1,0 +1,35 @@
+{
+  "at": "2026-11-02T01:56:20.160Z",
+  "appFiles": [
+    "apps/web/components/login-link.tsx",
+    "apps/web/app/parent/login/page.tsx",
+    "apps/web/app/student/login/page.tsx"
+  ],
+  "buildId": "MHFmzlLIzoyAvHkLaUiwr",
+  "priorBuildId": "gUXB3iRftmNGkCVrd7IqK",
+  "priorCompleteBrowser": {
+    "passed": 647,
+    "failed": 0,
+    "buildId": "gUXB3iRftmNGkCVrd7IqK"
+  },
+  "currentFocusedBrowser": {
+    "passed": 24,
+    "failed": 0,
+    "files": 5,
+    "buildId": "MHFmzlLIzoyAvHkLaUiwr"
+  },
+  "buildInputFiles": 1609,
+  "changedBuildInputs": [
+    "apps/web/app/parent/login/page.tsx",
+    "apps/web/app/student/login/page.tsx",
+    "apps/web/components/login-link.tsx",
+    "apps/web/next-env.d.ts"
+  ],
+  "apiInputs": 1911,
+  "apiInputsChanged": [],
+  "sourceArchive": "candidate-source-delta.json.gz",
+  "testSourceSha256": "d37b253a8b88dbc80391c5e7e07ba9322b91b21dfe88b8c5b58491ed7f813618",
+  "newBuildNotClaimedToHaveRunThePrior647": true,
+  "teacherDeviceAndLongTermAcceptanceIncomplete": true,
+  "localOnly": true
+}

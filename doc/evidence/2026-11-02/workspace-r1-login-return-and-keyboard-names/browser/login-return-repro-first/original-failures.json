@@ -1,0 +1,24 @@
+{
+  "label": "login-return-repro-first",
+  "failures": [
+    {
+      "file": "workspace-login-return.spec.ts",
+      "title": "login return: anonymous workspace deep links come back to the same address after parent sign-in",
+      "status": "failed",
+      "error": "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  getByRole('link', { name: '登录后管理学习档案', exact: true })\nExpected: \"/parent/login?returnTo=%2Fstudio%2Fprofiles%3FstudentId%3Dstudent_611f102a-e999-4d89-a468-671b316a4613%26subject%3Denglish\"\nReceived: \"/parent/login\"\nTimeout:  15000ms\n\nCall log:\n  - Expect \"toHaveAttribute\" getByRole('link', { name: '登录后管理学习档案', exact: true }) with timeout 15000ms\n  - waiting for getByRole('link', { name: '登录后管理学习档案', exact: true })\n    33 × locator resolved to <a href=\"/parent/login\">登录后管理学习档案</a>\n       - unexpected value \"/parent/login\"\n"
+    },
+    {
+      "file": "workspace-login-return.spec.ts",
+      "title": "login return: old addresses in saved sign-in links reach their workspace destination, including the same plan",
+      "status": "failed",
+      "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"/student/today\"\nReceived: \"/studio\"\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate"
+    },
+    {
+      "file": "workspace-login-return.spec.ts",
+      "title": "login return: a learner code sign-in returns to the original task page",
+      "status": "failed",
+      "error": "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  getByRole('link', { name: '使用学习码进入 ↗', exact: true })\nExpected: \"/student/login?returnTo=%2Fstudent%2Ftoday%3FstudentId%3Dstudent_682f190e-4a26-4546-96e9-a96aab147740%26subject%3Dmath\"\nReceived: \"/student/login\"\nTimeout:  15000ms\n\nCall log:\n  - Expect \"toHaveAttribute\" getByRole('link', { name: '使用学习码进入 ↗', exact: true }) with timeout 15000ms\n  - waiting for getByRole('link', { name: '使用学习码进入 ↗', exact: true })\n    32 × locator resolved to <a href=\"/student/login\" class=\"studio-primary\">使用学习码进入 ↗</a>\n       - unexpected value \"/student/login\"\n"
+    }
+  ],
+  "retained": true
+}

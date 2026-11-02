@@ -1,4 +1,5 @@
 'use client';
+import { LoginLink } from '../../../components/login-link';
 import * as React from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -56,7 +57,7 @@ function FamilyStudioWorkspace({identity}:{identity:ReturnType<typeof useSession
     </aside>
     <section className="studio-main" aria-busy={loading}>
       {error && <div className="studio-error" role="alert">{error}<button aria-label="关闭提示" onClick={() => setError('')}>×</button></div>}
-      {loading ? <div className="studio-empty" role="status">正在整理学习记录…</div> : !overview ? <div className="studio-empty"><h2>孩子的成长，从这里留下。</h2><p>登录后，查看学习范围、具体证据、指导计划与复测。</p><Link className="studio-primary" href="/parent/login">登录或创建账号 ↗</Link></div> : <>
+      {loading ? <div className="studio-empty" role="status">正在整理学习记录…</div> : !overview ? <div className="studio-empty"><h2>孩子的成长，从这里留下。</h2><p>登录后，查看学习范围、具体证据、指导计划与复测。</p><LoginLink className="studio-primary">登录或创建账号 ↗</LoginLink></div> : <>
         {!overview.children.length && canManage && <div className="workspace-page-row"><div><h2>添加学习档案后查看孩子的报告</h2><p>档案、年级和授权统一在学习档案中管理。</p></div><Link className="workspace-button" href="/studio/profiles">管理学习档案</Link></div>}
         {child && data && <>
           <div className="studio-section-head"><h2>{child.nickname} · {subjectNames[subject]}</h2><p>{child.grade}年级 · {overview.day} · 知识掌握、具体依据与周记录</p></div>

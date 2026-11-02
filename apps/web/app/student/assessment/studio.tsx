@@ -1,5 +1,6 @@
 'use client';
 
+import { LoginLink } from '../../../components/login-link';
 import * as React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -419,7 +420,7 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
         {error && <div role="alert" className="studio-error">{error}<button aria-label="收起提示" onClick={() => setError('')}>×</button></div>}
         {teachingLocation?.kind==='teaching'&&screen==='setup'&&confirmedScope&&<section className="studio-card" aria-label="原课时独立检查"><h2>本课独立检查</h2><p>先核对原课全部目标、准确教学版本与本次题组；其余内容继续保留待核查。</p><button className="studio-primary" disabled={busy||loading} onClick={()=>void execute(()=>showBlueprint({studentId:confirmedScope.studentId,subject:confirmedScope.subject,intent:'unit',maxItems:20,includePrerequisites:false,adaptive:false,teachingOrigin:teachingLocation.origin},confirmedScope.id))}>重新核对本课题组</button></section>}
         {paperReviewOrigin && <section className="studio-card" aria-label="独立新题的原卷来源"><p>这组新题用于独立核对已学知识。原题再练、自我反思与本组证据分别保留。</p><a className="studio-secondary" href={'/library/practice/review?' + new URLSearchParams({ session: paperReviewOrigin.sessionId, item: paperReviewOrigin.itemId })}>返回原首答与反思 ↗</a></section>}
-        {loading ? <div className="studio-empty">正在取回你的学习记录…</div> : !loggedIn ? <div className="studio-empty"><h2>从孩子的学习档案开始</h2><p>登录后即可保存进度、评测与指导计划。</p><Link className="studio-primary" href="/parent/login">登录或创建家长账号</Link></div> : <>
+        {loading ? <div className="studio-empty">正在取回你的学习记录…</div> : !loggedIn ? <div className="studio-empty"><h2>从孩子的学习档案开始</h2><p>登录后即可保存进度、评测与指导计划。</p><LoginLink className="studio-primary">登录或创建家长账号</LoginLink></div> : <>
           {screen === 'setup' && <>
             <div className="studio-section-head"><span className="studio-eyebrow">01 / 学习起点</span><h2>先告诉我们，学到哪里了。</h2><p>只测已学内容。还没有测到的知识点，会保留为未知。</p></div>
             <div className="studio-config">

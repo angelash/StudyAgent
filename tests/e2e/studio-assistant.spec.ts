@@ -188,7 +188,7 @@ for(const mode of ['lecture','independent'])test('lecture-navigation: '+mode+' t
   page.on('request',request=>{if(request.method()==='POST'&&(/\/ai\/assistant\/sessions\/[^/?]+\/turns$/.test(request.url())||/\/learning\/classroom\/sessions(?:\?|$)/.test(request.url())))posts.push(request.url());});
   const assertScope=()=>{const current=new URL(page.url());for(const key of keys)expect(current.searchParams.get(key),'preserved '+key).toBe(original.searchParams.get(key));};
   await input(page).fill(draft);await page.getByRole('button',{name:'打开学习资料',exact:true}).click();await expect(page).toHaveURL(/view=materials/);assertScope();await page.reload();await expect(page.locator('.sa-top strong')).toHaveText('资料');
-  await page.locator('.ws-navigation').getByRole('button',{name:'Home',exact:true}).click();await expect(input(page)).toHaveValue(draft);assertScope();
+  await page.locator('.ws-navigation').getByRole('button',{name:'首页',exact:true}).click();await expect(input(page)).toHaveValue(draft);assertScope();
   await page.getByRole('button',{name:'Tools',exact:true}).click();await page.getByRole('menuitem',{name:/Study Planner/}).click();await expect(page).toHaveURL(/view=calendar/);assertScope();
-  await page.locator('.ws-navigation').getByRole('button',{name:'Home',exact:true}).click();await expect(input(page)).toHaveValue(draft);assertScope();await expect(page.getByRole('region',{name:'当前讲座上下文'})).toHaveCount(mode==='lecture'?1:0);expect(posts).toEqual([]);await shot(page,'navigation-retained-'+mode);
+  await page.locator('.ws-navigation').getByRole('button',{name:'首页',exact:true}).click();await expect(input(page)).toHaveValue(draft);assertScope();await expect(page.getByRole('region',{name:'当前讲座上下文'})).toHaveCount(mode==='lecture'?1:0);expect(posts).toEqual([]);await shot(page,'navigation-retained-'+mode);
 });

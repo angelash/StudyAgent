@@ -1,5 +1,6 @@
 'use client';
 
+import { LoginLink } from '../../../components/login-link';
 import * as React from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -99,7 +100,7 @@ export default function CurriculumPage() {
     <span className="studio-eyebrow">CURRICULUM / EVIDENCE</span><h1>课程与覆盖</h1><p>把知识定义、题目量规与教材进度分别审核。缺题、缺维度和缺映射会保留在覆盖视图中。</p>
     <p><Link href="/admin/gesp">GESP C++ 独立教研轨道：认证等级、知识先修与历年原卷 →</Link></p>
     {error && <p className="studio-error" role="alert">{error}</p>}{notice && <p role="status">{notice}</p>}
-    {!role && <p>正在核对教研权限… <Link href="/parent/login">登录</Link></p>}
+    {!role && <p>正在核对教研权限… <LoginLink>登录</LoginLink></p>}
     {role && !['admin', 'teacher'].includes(role) && <p>此页面需要教研权限。<Link href="/studio">返回学习工作台</Link></p>}
     {['admin', 'teacher'].includes(role) && !data && !privateAccessDenied && <p role="status">正在核对当前学科的课程覆盖。{error && <button type="button" className="studio-text-button" disabled={busy} onClick={() => void act(reload, '已重新核对当前学科覆盖')}>重试当前覆盖</button>}</p>}
     {linkedBook && requestedBookVersion && linkedBook.version !== requestedBookVersion && <p className="studio-error" role="alert">链接要求的教材版本与当前目录不同，未打开其他版本的教学稿。请核对准确教材。</p>}

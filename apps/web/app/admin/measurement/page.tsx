@@ -1,4 +1,5 @@
 'use client';
+import { LoginLink } from '../../../components/login-link';
 import * as React from 'react';
 import Link from 'next/link';
 import { MeasurementContentCandidate, MeasurementContentGate, MeasurementDraft, KnowledgeAtom, QuestionAnswerMode, StudentAnswerPayload, QuestionRenderPayload } from '@study-agent/contracts';
@@ -91,7 +92,7 @@ export default function MeasurementContentPage() {
 
     <span className="studio-eyebrow">ORIGINAL → EVIDENCE</span><h1>测量素材</h1><p>保留原件，分别核对题面、评分与知识行为。一次综合作答只为主测点产生证据，先修和次测线索留给后续验证。</p>
     {error && <p className="studio-error" role="alert">{error}</p>}{notice && <p role="status">{notice}</p>}
-    {!role && <p>{loading ? '正在核对教研权限…' : '请先登录教研账号。'} <Link href="/parent/login">登录</Link></p>}
+    {!role && <p>{loading ? '正在核对教研权限…' : '请先登录教研账号。'} <LoginLink>登录</LoginLink></p>}
     {role && !permitted && <p>测量素材审核需要管理员或教师身份。<Link href="/studio">返回学习工作台</Link></p>}
     {permitted && <>
       <form className="measurement-stage" onSubmit={e => { e.preventDefault(); void act(async () => {

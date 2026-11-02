@@ -1,0 +1,16 @@
+{
+  "failures": [
+    {
+      "file": "product-smoke.spec.ts",
+      "title": "public product shell remains usable at phone, tablet and desktop widths",
+      "status": "failed",
+      "error": "Error: expect(page).toHaveURL(expected) failed\n\nExpected pattern: /\\/parent\\/login$/\nReceived string:  \"http://localhost:3287/parent/login?returnTo=%2F\"\nTimeout: 15000ms\n\nCall log:\n  - Expect \"toHaveURL\" with timeout 15000ms\n    33 × locator resolved to <html lang=\"zh-CN\">…</html>\n       - unexpected value \"http://localhost:3287/parent/login?returnTo=%2F\"\n"
+    }
+  ],
+  "causedByThisBatch": "The shared sign-in link added a return to the public home page, which is not a return destination; the link now adds a return only for allowed pages.",
+  "fixedBy": "isLoginReturnPath in apps/web/lib/workspace-navigation.ts",
+  "verifiedAfterFix": [
+    "login-keyboard-focused-second",
+    "workbench-browser-whole-ninth"
+  ]
+}

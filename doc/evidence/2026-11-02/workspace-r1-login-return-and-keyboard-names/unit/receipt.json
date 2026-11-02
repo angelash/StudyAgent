@@ -1,0 +1,13 @@
+{
+  "passed": 6,
+  "failed": 0,
+  "pending": 0,
+  "sourceHashes": {
+    "apps/web/lib/workspace-navigation.ts": "b15d6f17ca077e5e7726628a844dca462fd9a13dfa2c2d25f35b3e09806c22eb",
+    "apps/web/lib/learning-context.ts": "a1de67076d04e8f065765eac5c773561ce76688e115e1fce9ca01d7950cae732",
+    "apps/web/lib/admin-navigation.ts": "61416edb26adc43ef32f97b6e751ebd9d91a59ac30658adb04e525fc7e706db7",
+    "apps/api/src/infrastructure/workspace-navigation.test.ts": "f67bca88b9b5bd675f7a44c70f2eb0a073a2cd8ff6cce1e15a22a68970224a6b",
+    "apps/api/src/infrastructure/admin-navigation.test.ts": "d1d1bf5bc1e1a58813a8b3afa94b1e51e2c36a6729f43cb0e8e09ad349495f20"
+  },
+  "scope": "Pure navigation and role tests on the current main sources; no database or provider access."
+}

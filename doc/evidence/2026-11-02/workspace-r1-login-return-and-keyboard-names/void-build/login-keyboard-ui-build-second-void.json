@@ -1,0 +1,7 @@
+{
+  "label": "login-keyboard-ui-build-second",
+  "buildId": "K6BiZTgOr8JnWsEk_YUJX",
+  "void": true,
+  "reason": "The sync command failed on an intermediate synced version of apps/web/lib/workspace-navigation.ts before copying the login-link return fix; PowerShell continued to the build, so this build holds the pre-fix Web source and is not used for any verification.",
+  "replacedBy": "login-keyboard-ui-build-third"
+}

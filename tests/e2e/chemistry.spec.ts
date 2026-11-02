@@ -129,10 +129,10 @@ test('chemistry: family-created ninth-grade profile reaches the standard library
   const reply = await created; expect(reply.status()).toBe(201);
   const createdId = (await reply.json()).data.profile.id; expect(createdId).not.toBe(studentId);
   await expect(page.getByRole('heading', { name: '新建九上化学档案', exact: true })).toBeVisible();
-  await page.getByRole('link', { name: 'Home', exact: true }).click();
+  await page.getByRole('link', { name: '首页', exact: true }).click();
   await expect(page.getByLabel('学习对象', { exact: true })).toHaveValue(studentId);
   await page.getByLabel('学习对象', { exact: true }).selectOption(createdId);
-  await page.locator('.ws-navigation').getByRole('button', { name: 'Courses', exact: true }).click(); await enroll(page);
+  await page.locator('.ws-navigation').getByRole('button', { name: '课程', exact: true }).click(); await enroll(page);
   await page.goto('/chemistry?' + new URLSearchParams({ studentId: createdId, unit: 'u7' }));
   await expect(page).toHaveURL(/\/studio\?/); await expect(page.getByLabel('学习对象', { exact: true })).toHaveValue(createdId);
   await expect(page.locator('.cl-unit-heading')).toContainText('燃料、能源与环境');

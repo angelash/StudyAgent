@@ -59,7 +59,7 @@ test('parent selection, navigation, refresh, history and invalid profile recover
   await page.goForward(); await expect(page.locator('.workspace-home-context strong')).toHaveText('首页孩子2的语文');
   await page.getByLabel('学习工作台导航', {exact:true}).getByRole('link', { name: '学习任务', exact: true }).click();
   await expect(page).toHaveURL(new RegExp(`studentId=${profiles[1].id}.*subject=chinese|subject=chinese.*studentId=${profiles[1].id}`));
-  await page.getByLabel('学习工作台导航', {exact:true}).getByRole('link', { name: 'Home', exact: true }).click();
+  await page.getByLabel('学习工作台导航', {exact:true}).getByRole('link', { name: '首页', exact: true }).click();
   await expect(page.locator('.workspace-home-context strong')).toHaveText('首页孩子2的语文');
   await page.goto('/learn?student=unavailable-profile&subject=english');
   await expect(page.locator('.sa-error[role="alert"]')).toContainText('无法访问');
@@ -138,5 +138,5 @@ test('a student resumes the exact saved assessment and sees only their profile',
   await expect(page.getByRole('link', { name: '报告与家长决定' })).toHaveCount(0);
   await expect(page.locator('.workspace-home-next a')).toHaveAttribute('href', new RegExp(`session=${session.id}`));
   await page.locator('.workspace-home-next a').click(); await expect(page).toHaveURL(new RegExp(`session=${session.id}`));
-  await expect(page.getByLabel('学习工作台导航', {exact:true}).getByRole('link', { name: 'Home', exact:true })).toHaveAttribute('href', new RegExp(`student=${child.id}`));
+  await expect(page.getByLabel('学习工作台导航', {exact:true}).getByRole('link', { name: '首页', exact:true })).toHaveAttribute('href', new RegExp(`student=${child.id}`));
 });

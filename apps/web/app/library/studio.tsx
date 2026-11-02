@@ -1,4 +1,5 @@
 'use client';
+import { LoginLink } from '../../components/login-link';
 import * as React from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -32,7 +33,7 @@ const localHtml = (value: string) => value.replace(/src="\/api\/library\/media\?
 
 export function LibraryStudio({ embedded = false, context }: { embedded?: boolean; context?: LearningContext } = {}) {
   const identity = useSessionUser(), Root = embedded ? 'section' : 'main';
-  if (!identity) return <Root className="paper-library"><p role="status">{identity === undefined ? '正在确认学习身份…' : '请先登录后查看题卷资料。'}</p>{identity === null && <Link href="/parent/login">登录账号</Link>}</Root>;
+  if (!identity) return <Root className="paper-library"><p role="status">{identity === undefined ? '正在确认学习身份…' : '请先登录后查看题卷资料。'}</p>{identity === null && <LoginLink>登录账号</LoginLink>}</Root>;
   return <ActorLibrary key={identity.id + ':' + identity.role} identity={identity} embedded={embedded} context={context} />;
 }
 function ActorLibrary({ identity, embedded, context }: { identity: SessionUser; embedded: boolean; context?: LearningContext }) {
@@ -138,7 +139,7 @@ function ActorLibrary({ identity, embedded, context }: { identity: SessionUser; 
     <div className="library-layout">
       <PaperLibraryTools workspace={workspace} />
       {error && <div className="studio-error library-no-print" role="alert">{error}<button aria-label="关闭提示" onClick={() => setError('')}>×</button></div>}
-      {!authenticated && !loading ? <div className="studio-empty"><h1>把好内容，留给每一次练习。</h1><p>登录后查看可用试卷与收藏。教研账号可审核迁入的原始资料。</p><Link className="studio-primary" href="/parent/login">登录或创建账号 ↗</Link></div> :
+      {!authenticated && !loading ? <div className="studio-empty"><h1>把好内容，留给每一次练习。</h1><p>登录后查看可用试卷与收藏。教研账号可审核迁入的原始资料。</p><LoginLink className="studio-primary">登录或创建账号 ↗</LoginLink></div> :
         selectedId ? paper?.id === selectedId ? <>
           <div className="library-toolbar library-no-print"><button className="studio-text-button" onClick={() => select('')}>← 返回题卷库</button><div><button className="studio-secondary" onClick={() => bookmark(paper)}>{paper.bookmarked ? '取消收藏' : '收藏试卷'}</button><button className="studio-secondary" onClick={() => update({ answers: !answers })} disabled={busy}>{answers ? '收起参考答案' : '查看参考答案'}</button><button className="studio-primary" disabled={busy} onClick={() => void printPaper()}>{paper.pdf ? '打印原PDF' : '打印 / 存为 PDF'}</button></div></div>
           <article className="library-paper"><header><span className="studio-eyebrow">{paper.grade} / {paper.subject} / {paper.province}</span><h1>{paper.title}</h1><p>{paper.source} · {stateNames[paper.state]} · {publicationNames[paper.publicationStatus]}</p></header>

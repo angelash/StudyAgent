@@ -1,5 +1,6 @@
 'use client';
 
+import { LoginLink } from '../../../components/login-link';
 import * as React from 'react';
 import Link from 'next/link';
 import type {
@@ -2474,7 +2475,7 @@ export default function AdminContentPage() {
             lineHeight: 1.7,
           }}
         >
-          {adminWarning} <Link href="/parent/login">去重新登录</Link>
+          {adminWarning} <LoginLink>去重新登录</LoginLink>
         </div>
       ) : null}
       {error ? <div style={{ marginTop: 20, color: '#b91c1c' }}>{error}</div> : null}

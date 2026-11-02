@@ -1,0 +1,9 @@
+{
+  "failures": [
+    {
+      "title": "continuation: switching between parent and learner sign-in and continuing an existing learner session preserve the original activity",
+      "error": "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  getByRole('link', { name: '孩子自己来学习？使用学习码进入 ↗', exact: true })\nExpected: \"/student/login?returnTo=%2Fstudent%2Fassessment%3FstudentId%3Dstudent_caa2f9f9-aaac-4fc4-9c49-fa71e581e163%26subject%3Dmath%26session%3Ddiagnostic_5433a9f6-8922-4fa1-8683-d4b75b71d17c\"\nReceived: \"/student/login\"\nTimeout:  15000ms\n\nCall log:\n  - Expect \"toHaveAttribute\" getByRole('link', { name: '孩子自己来学习？使用学习码进入 ↗', exact: true }) with timeout 15000ms\n  - waiting for getByRole('link', { name: '孩子自己来学习？使用学习码进入 ↗', exact: true })\n    33 × locator resolved to <a class=\"login-other\" href=\"/student/login\">孩子自己来学习？使用学习码进入 ↗</a>\n       - unexpected value \"/student/login\"\n"
+    }
+  ],
+  "originalPrivateTraceRetained": true
+}

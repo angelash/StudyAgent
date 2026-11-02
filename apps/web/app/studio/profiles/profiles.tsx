@@ -1,4 +1,5 @@
 'use client';
+import { LoginLink } from '../../../components/login-link';
 import * as React from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -11,7 +12,7 @@ import { StudioNavigation } from '../studio-navigation';
 type Profile = { id: string; nickname: string; grade: number };
 export function ProfilesWorkspace() {
   const identity = useSessionUser();
-  if (!identity) return <main className="learning-studio"><section className="workspace-page"><h1>学习档案</h1>{identity === undefined ? <p role="status">正在确认学习身份…</p> : <Link href="/parent/login">登录后管理学习档案</Link>}</section></main>;
+  if (!identity) return <main className="learning-studio"><section className="workspace-page"><h1>学习档案</h1>{identity === undefined ? <p role="status">正在确认学习身份…</p> : <LoginLink>登录后管理学习档案</LoginLink>}</section></main>;
   return <ActorProfiles key={identity.id + ':' + identity.role} identity={identity} />;
 }
 function ActorProfiles({ identity }: { identity: SessionUser }) {

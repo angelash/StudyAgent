@@ -194,7 +194,7 @@ test('course assistant: no-fingerprint student entry during an existing assessme
 test('course assistant: material tools preserve the authoritative scope and draft through refresh and planner return',async({page})=>{
  test.setTimeout(120000);const actor=await login(page),student=await child(actor),row=await courseFixture(actor,'material_lesson',{studentId:student.id});await page.goto(row.href);const input=page.getByLabel('想一起看看什么',{exact:true});await expect(input).toBeEnabled();await input.fill('资料课程中尚未发送的匿名草稿。');const original=new URL(page.url());
  await page.getByRole('button',{name:'打开学习资料',exact:true}).click();await expect(page).toHaveURL(/view=materials/);expect(new URL(page.url()).searchParams.get('courseVersion')).toBe(original.searchParams.get('courseVersion'));await page.reload();
- await page.locator('.ws-navigation').getByRole('button',{name:'Home',exact:true}).click();await expect(input).toHaveValue('资料课程中尚未发送的匿名草稿。');await page.getByRole('button',{name:'学习计划',exact:true}).click();await expect(page).toHaveURL(/view=calendar/);await page.reload();await page.locator('.ws-navigation').getByRole('button',{name:'Home',exact:true}).click();await expect(input).toHaveValue('资料课程中尚未发送的匿名草稿。');
+ await page.locator('.ws-navigation').getByRole('button',{name:'首页',exact:true}).click();await expect(input).toHaveValue('资料课程中尚未发送的匿名草稿。');await page.getByRole('button',{name:'学习计划',exact:true}).click();await expect(page).toHaveURL(/view=calendar/);await page.reload();await page.locator('.ws-navigation').getByRole('button',{name:'首页',exact:true}).click();await expect(input).toHaveValue('资料课程中尚未发送的匿名草稿。');
 });
 
 test('course assistant: closing a pending range preflight ignores its late response and restores keyboard focus',async({page})=>{

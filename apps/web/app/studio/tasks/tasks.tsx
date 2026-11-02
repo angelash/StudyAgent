@@ -1,4 +1,5 @@
 'use client';
+import { LoginLink } from '../../../components/login-link';
 import { GuidanceObservationWorkspace } from './guidance-observation';
 import { StudentTeachingPracticeWorkspace } from './student-teaching-practice';
 import * as React from 'react';
@@ -18,7 +19,7 @@ import { teachingWorkspaceHref } from '../../../lib/teaching-practice-workspace'
 
 export function TasksWorkspace() {
   const search = useSearchParams(), user = useSessionUser();
-  if (!user) return <main className="learning-studio"><section className="workspace-page"><h1>学习任务</h1>{user === undefined ? <p role="status">正在确认学习身份…</p> : <Link href="/parent/login">登录后继续学习</Link>}</section></main>;
+  if (!user) return <main className="learning-studio"><section className="workspace-page"><h1>学习任务</h1>{user === undefined ? <p role="status">正在确认学习身份…</p> : <LoginLink>登录后继续学习</LoginLink>}</section></main>;
   if(search.has('guidanceIntent')||search.get('view')==='guidance-observation')return <GuidanceObservationWorkspace key={user.id+':'+user.role+':'+search.toString()} user={user}/>;
   if(search.has('teachingAssignment')||search.get('kind')==='generated')return <StudentTeachingPracticeWorkspace key={user.id+':'+user.role+':'+search.get('studentId')+':'+search.get('subject')+':'+search.get('teachingAssignment')+':'+search.get('teachingSession')} user={user}/>;
   if(search.has('teachingPractice')||search.has('teachingSession')||search.get('view')==='conversation-practice'&&search.get('audience')==='independent')return <TeachingPracticeWorkspace key={user.id+':'+user.role} user={user}/>;

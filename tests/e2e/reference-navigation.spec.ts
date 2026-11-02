@@ -23,7 +23,7 @@ for (const width of [390, 768, 1280, 1440]) test(`reference navigation: truthful
   await expect(sidebar.getByRole('region', { name: '继续学习', exact: true })).toHaveCount(0);
   if (width <= 1000) {
     await expect(sidebar).toHaveAttribute('aria-modal', 'true');
-    const row = sidebar.getByRole('link', { name: 'Courses', exact: true }), icon = await row.locator('svg').boundingBox(), label = await row.locator('.button-label').boundingBox();
+    const row = sidebar.getByRole('link', { name: '课程', exact: true }), icon = await row.locator('svg').boundingBox(), label = await row.locator('.button-label').boundingBox();
     expect(label!.x, 'the open drawer keeps the icon and complete label in one horizontal row').toBeGreaterThan(icon!.x + icon!.width);
     expect(Math.abs(label!.y + label!.height / 2 - icon!.y - icon!.height / 2)).toBeLessThanOrEqual(4);
     expect(await page.locator('.cl-course-layout').evaluate(node => Boolean(node.closest('[inert]')))).toBe(true);
@@ -36,12 +36,12 @@ for (const width of [390, 768, 1280, 1440]) test(`reference navigation: truthful
   } else {
     expect((await sidebar.boundingBox())!.width).toBe(240);
     await sidebar.getByRole('button', { name: '收起学习导航', exact: true }).click(); await expect(sidebar).toHaveCSS('width', '60px');
-    await expect(sidebar.getByRole('link', { name: 'Courses', exact: true })).toBeVisible();
+    await expect(sidebar.getByRole('link', { name: '课程', exact: true })).toBeVisible();
     await page.reload(); await expect(page.getByRole('button', { name: '展开学习导航', exact: true })).toBeVisible();
     await page.getByRole('button', { name: '展开学习导航', exact: true }).click();
     await page.screenshot({ path: evidence + '/navigation-' + width + '.png', fullPage: true });
   }
-  await sidebar.getByRole('link', { name: 'Courses', exact: true }).click(); await expect(page.getByRole('heading', { name: '我的课程', exact: true })).toBeVisible();
+  await sidebar.getByRole('link', { name: '课程', exact: true }).click(); await expect(page.getByRole('heading', { name: '我的课程', exact: true })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
 });
 test('reference navigation: a real saved classroom opens the exact original session and position from the course library', async ({ page }) => {

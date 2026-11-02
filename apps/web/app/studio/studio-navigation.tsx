@@ -97,7 +97,8 @@ export function WorkspaceSidebar({ active, recent, onNavigate, onCreate, context
           {entries.filter(entry => entry.group === group).map(entry => {
             const className = 'nav-item' + (expanded ? ' expanded' : '') + (current === entry.id ? ' active' : '');
             const content = <><StudioSymbol path={entry.path}/><span className="button-label">{entry.label}</span></>;
-            const label = ['tasks', 'assessment', 'reports'].includes(entry.id) ? entry.label : entry.english;
+            // The accessible name is the visible Chinese label, so screen readers announce what learners see.
+            const label = entry.label;
             if(contextState!=='ready'&&entry.id!=='home')return <button key={entry.id} type="button" className={className} disabled aria-label={label} title={entry.label+' · 等待确认学习范围'}>{content}</button>;
             return onNavigate && entry.view ? <button key={entry.id} type="button" className={className} title={!expanded ? entry.label : undefined} aria-label={label}
               aria-current={current === entry.id ? 'page' : undefined} onClick={() => request(workspaceHref(entry.id,selectedContext,trackContext),()=>onNavigate(entry.view!))}>{content}</button> :

@@ -1,4 +1,5 @@
 'use client';
+import { LoginLink } from '../../../components/login-link';
 import * as React from 'react';
 import Link from 'next/link';
 import type { CourseProjectCatalog, CourseProjectView, ProjectArtifact, ProjectCriterion, ProjectRating, ProjectSubmission,ProjectCommandReceipt } from '@study-agent/contracts';
@@ -55,7 +56,7 @@ function ProjectEditorPreview({value,row,stageId}:{value:Editor;row:CourseProjec
 export function ProjectWorkbench(){
   const identity=useSessionUser();
   if(identity===undefined)return <main className="pj-gate" role="status">正在恢复课程项目…</main>;
-  if(!identity)return <main className="pj-gate"><h1>把理解变成自己的作品。</h1><p>登录后保存阶段草稿与提交记录。</p><Link href="/parent/login">登录学习工作台 →</Link></main>;
+  if(!identity)return <main className="pj-gate"><h1>把理解变成自己的作品。</h1><p>登录后保存阶段草稿与提交记录。</p><LoginLink>登录学习工作台 →</LoginLink></main>;
   return <ProjectWorkspace key={identity.id+':'+identity.role} identity={identity}/>;
 }
 function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof useSessionUser>>}) {
@@ -208,7 +209,7 @@ function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof use
 
   const navigation=<ActivityWorkspaceNavigation activityId={row?.id??sourceCourseId??studioCourseId??'project-catalog'} context={loading?undefined:row?.navigationContext??catalog?.navigationContext} pending={loading} focus={Boolean(row&&guided)} onRequestNavigate={(_href,proceed)=>{leaveFocus.current=window.matchMedia('(max-width:1000px)').matches?document.querySelector<HTMLElement>('.ws-reference-trigger'):document.activeElement as HTMLElement|null;guarded(()=>{navigationAllowed.current=true;proceed();});}}/>;
   if (loading) return <>{navigation}<main className="pj-gate ws-activity-shell" role="status">正在恢复课程项目…</main></>;
-  if (!identity) return <main className="pj-gate"><h1>把理解变成自己的作品。</h1><p>登录后保存阶段草稿与提交记录。</p><Link href="/parent/login">登录学习工作台 →</Link></main>;
+  if (!identity) return <main className="pj-gate"><h1>把理解变成自己的作品。</h1><p>登录后保存阶段草稿与提交记录。</p><LoginLink>登录学习工作台 →</LoginLink></main>;
   return <main className="pj-shell ws-activity-shell" data-teaching={guided} data-teaching-step={guided?teachingStep?.kind:undefined}>
     {navigation}
     <header className="pj-top"><a href={backHref} onClick={event => { event.preventDefault(); guarded(() => window.location.assign(backHref)); }}>‹ 返回课程</a><span>LEARNING STUDIO <i>/</i> PROJECT</span><button disabled={!row || Boolean(busy)} onClick={exportLocal}>导出项目</button></header>

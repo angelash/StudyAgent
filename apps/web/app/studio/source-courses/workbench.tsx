@@ -1,4 +1,5 @@
 'use client';
+import { LoginLink } from '../../../components/login-link';
 import * as React from 'react';
 import Link from 'next/link';
 import type { CourseSourceSnapshot, SourceCoursePreflight, SourceCoverage, SourceCourseAuthoring, SourceCourseContent, SourceCourseSummary, SourceCourseView, StudioSourceMaterial, StudioSubject } from '@study-agent/contracts';
@@ -140,7 +141,7 @@ function SourceCourseWorkspace({identity}:{identity:ReturnType<typeof useSession
   }
   const lessonHref=(lessonId:string,tab='history',sessionId?:string)=>withMaterialsReturn('/studio/classroom?'+copyCourseFilters(search,new URLSearchParams({sourceCourseId:row!.id,lesson:lessonId,tab,...(sessionId?{session:sessionId}:{}),...(row?.studentId?{returnStudent:row.studentId,returnSubject:row.subject??'math'}:{})})),materialBack);
   if(identity===undefined||loading)return <main className="sc-gate" role="status">正在恢复资料课程…</main>;
-  if(!identity)return <main className="sc-gate"><h1>把自己的资料，变成可以学下去的课程。</h1><p>登录后保留原文、课程和课堂断点。</p><Link href="/parent/login">登录学习工作台 →</Link></main>;
+  if(!identity)return <main className="sc-gate"><h1>把自己的资料，变成可以学下去的课程。</h1><p>登录后保留原文、课程和课堂断点。</p><LoginLink>登录学习工作台 →</LoginLink></main>;
   return <main className="sc-shell"><StudioNavigation active="materials" context={{subject,...(studentId?{studentId}:{audience:'self' as const})}}/><div className="sc-body">
     <header className="sc-top"><div><Link href={backHref}>{materialBack?'‹ 返回来源资料':'‹ 返回我的课程'}</Link><small>SOURCE TO COURSE</small><h1>{row?row.title:'让资料成为一条学习路线。'}</h1><p>{row?row.goal:'选中真正需要的原页，先审阅讲解，再开始学习。'}</p></div><button disabled={Boolean(busy)||Boolean(author)} onClick={startNew}>＋ 从资料创建课程</button></header>
     {error&&!preflightOpen&&<div className="sc-error" role="alert"><b>这次操作尚未确认成功</b><p>{error}</p><button disabled={Boolean(busy)} onClick={()=>void reload()}>读取已保存状态</button></div>}{notice&&<p className="sc-notice" role="status">{notice}</p>}

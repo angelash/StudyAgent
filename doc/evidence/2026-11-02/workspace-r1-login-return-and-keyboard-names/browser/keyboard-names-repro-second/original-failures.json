@@ -1,0 +1,12 @@
+{
+  "label": "keyboard-names-repro-second",
+  "failures": [
+    {
+      "file": "workspace-keyboard.spec.ts",
+      "title": "keyboard: every sidebar entry is reached by Tab with a visible focus ring, is named as shown and opens with Enter",
+      "status": "failed",
+      "error": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 6\n+ Received  + 0\n\n  Array [\n-   \"AI白板\",\n-   \"历史\",\n    \"学习任务\",\n-   \"学习动态\",\n    \"学习报告\",\n    \"学习档案\",\n    \"知识诊断\",\n-   \"课程\",\n    \"账号与设置\",\n-   \"资料\",\n-   \"首页\",\n  ]"
+    }
+  ],
+  "retained": true
+}

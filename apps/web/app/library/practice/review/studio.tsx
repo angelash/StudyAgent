@@ -1,4 +1,5 @@
 'use client';
+import { LoginLink } from '../../../../components/login-link';
 import * as React from 'react';
 import type { PaperReviewCalendarEvent, PaperReviewFilter, PaperReviewList, PaperReviewScope } from '@study-agent/contracts';
 import { useSessionStatus, refreshSessionUser, type SessionUser } from '../../../../lib/session-user';
@@ -16,7 +17,7 @@ type Query = { scope: PaperReviewScope; studentId: string; filter: PaperReviewFi
 function queryString(value: Query) { return new URLSearchParams({ scope: value.scope, filter: value.filter, page: String(value.page), ...(value.studentId ? { studentId: value.studentId } : {}), ...(value.q ? { q: value.q } : {}), ...(value.tag ? { tag: value.tag } : {}), ...(value.paperId ? { paperId: value.paperId } : {}) }).toString(); }
 export function PaperReviewStudio() {
   const identity = useSessionStatus();
-  return <main className="paper-practice learning-studio"><StudyNav current="library" />{identity.status === 'anonymous' ? <section className="pp-empty"><h1>回到自己的思考，再走下一步。</h1><a href="/parent/login">登录后继续原卷复习 ↗</a></section> : identity.status === 'unavailable' ? <section className="pp-empty"><h1>暂时无法核对当前身份。</h1><button onClick={() => void refreshSessionUser()}>重新读取登录状态</button></section> : !identity.user ? <p role="status">正在核对当前学习身份…</p> : <AuthorizedReview key={identity.user.id} user={identity.user} />}</main>;
+  return <main className="paper-practice learning-studio"><StudyNav current="library" />{identity.status === 'anonymous' ? <section className="pp-empty"><h1>回到自己的思考，再走下一步。</h1><LoginLink>登录后继续原卷复习 ↗</LoginLink></section> : identity.status === 'unavailable' ? <section className="pp-empty"><h1>暂时无法核对当前身份。</h1><button onClick={() => void refreshSessionUser()}>重新读取登录状态</button></section> : !identity.user ? <p role="status">正在核对当前学习身份…</p> : <AuthorizedReview key={identity.user.id} user={identity.user} />}</main>;
 }
 function AuthorizedReview({ user }: { user: SessionUser }) {
   const [search, setSearch] = React.useState<string | null>(null);

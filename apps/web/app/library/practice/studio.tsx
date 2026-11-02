@@ -1,4 +1,5 @@
 'use client';
+import { LoginLink } from '../../../components/login-link';
 import * as React from 'react';
 import { paperPracticeCreationSchema, type PaperPracticeCreationResult, type PaperPracticePreview, type PaperPracticeSelection, type PaperPracticeSessionView, type PaperPracticeOrigin } from '@study-agent/contracts';
 import { useSessionStatus, refreshSessionUser, type SessionUser } from '../../../lib/session-user';
@@ -20,7 +21,7 @@ const startKey = (ownerId: string) => 'study.paper-practice.start:' + ownerId;
 export function PaperPracticeStudio() {
   const identity = useSessionStatus();
   return <main className="paper-practice learning-studio"><StudyNav current="library" />
-    {identity.status === 'anonymous' ? <section className="pp-empty"><h1>从原卷开始，留下自己的思考。</h1><p>登录后继续原题练习与订正。</p><a className="studio-primary" href="/parent/login">登录 ↗</a></section>
+    {identity.status === 'anonymous' ? <section className="pp-empty"><h1>从原卷开始，留下自己的思考。</h1><p>登录后继续原题练习与订正。</p><LoginLink className="studio-primary">登录 ↗</LoginLink></section>
       : identity.status === 'unavailable' ? <section className="pp-empty"><h1>暂时无法核对登录状态。</h1><button className="studio-secondary" onClick={() => void refreshSessionUser()}>重新读取登录状态</button></section>
         : !identity.user ? <p role="status">正在核对当前学习身份…</p> : <AuthorizedPractice key={identity.user.id} user={identity.user} />}
   </main>;

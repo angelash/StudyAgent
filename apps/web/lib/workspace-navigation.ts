@@ -78,11 +78,16 @@ export function legacyWorkspaceHref(area: 'home' | 'reports', source: Record<str
     const value = source[key];
     for (const item of Array.isArray(value) ? value : value === undefined ? [] : [value]) params.append(key, item);
   }
+  // A saved plan without its report opens that same plan in tasks; a report link keeps its original session.
+  if (area === 'reports' && !params.has('session') && params.has('planId')) { params.set('view', 'plan'); return '/studio/tasks?' + params; }
   if (area === 'reports' && !params.has('session')) params.set('tab', 'knowledge');
   return (area === 'home' ? '/studio' : '/studio/reports') + (params.size ? '?' + params : '');
 }
 
-const loginReturnPaths = new Set(['/studio', '/studio/tasks', '/studio/assessment', '/studio/reports', '/studio/profiles', '/studio/settings', '/studio/classroom', '/studio/projects', '/studio/whiteboards', '/studio/source-courses', '/student/assessment', '/student/today', '/student/gesp', '/library', '/library/practice', '/library/practice/review', '/parent/access', '/parent/data', '/parent/gesp',...adminWorkspaceEntries.map(entry=>entry.path)]);
+// Old addresses stay valid sign-in destinations; their own pages redirect to the workspace location.
+const loginReturnPaths = new Set(['/learn', '/parent/dashboard', '/student/knowledge', '/student/mission', '/chemistry', '/studio', '/studio/tasks', '/studio/assessment', '/studio/reports', '/studio/profiles', '/studio/settings', '/studio/classroom', '/studio/projects', '/studio/whiteboards', '/studio/source-courses', '/student/assessment', '/student/today', '/student/gesp', '/library', '/library/practice', '/library/practice/review', '/parent/access', '/parent/data', '/parent/gesp',...adminWorkspaceEntries.map(entry=>entry.path)]);
+/** Whether a page is one of the activities a sign-in may return to; other pages sign in without a return. */
+export function isLoginReturnPath(pathname: string) { return loginReturnPaths.has(pathname); }
 /** Login may return to an existing activity, never an external site or nested login. */
 export function workspaceLoginDestination(value: string | null, role: string) {
   if (!value || !value.startsWith('/') || value.startsWith('//') || /[\\\u0000-\u0020\u007f]/.test(value)) return '/studio';

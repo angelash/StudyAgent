@@ -1,4 +1,5 @@
 'use client';
+import { LoginLink } from '../../../components/login-link';
 import * as React from 'react';
 import Link from 'next/link';
 import type { PrivacyCounts, PrivacyOverview, PrivacyPreview, PrivacyReceipt } from '@study-agent/contracts';
@@ -64,7 +65,7 @@ export default function FamilyDataPage() {
       {error && <div className="workspace-error" role="alert"><p>{error}</p><button className="workspace-button" onClick={() => setError('')} aria-label="关闭错误提示">×</button></div>}
       {notice && <p className="privacy-success" role="status">{notice}</p>}
       {closed ? <section className="privacy-panel" role="status"><h2>账号已注销</h2><p>{family ? '本人登录与关联学习权限已结束。共同监护的孩子档案继续由其他监护人保留。' : '本人登录已结束，私有稿件和原操作回执已删除。孩子档案继续由原监护人管理。'}</p><Link className="studio-secondary" href="/parent/login">返回登录页 →</Link></section>
-        : loading ? <p role="status">正在核对资料范围…</p> : !overview ? <section className="privacy-panel"><h2>请由有权限的本人账号管理资料。</h2><p>家长管理家庭资料，教研账号管理自己的私有稿件。孩子资料仍由监护权限控制。</p><Link className="studio-primary" href="/parent/login">登录账号 →</Link>{user?.role === 'student' && <Link className="studio-secondary" href="/student/today">继续今日学习</Link>}</section> : <>
+        : loading ? <p role="status">正在核对资料范围…</p> : !overview ? <section className="privacy-panel"><h2>请由有权限的本人账号管理资料。</h2><p>家长管理家庭资料，教研账号管理自己的私有稿件。孩子资料仍由监护权限控制。</p><LoginLink className="studio-primary">登录账号 →</LoginLink>{user?.role === 'student' && <Link className="studio-secondary" href="/student/today">继续今日学习</Link>}</section> : <>
           <section className="privacy-panel"><h2>{overview.account.displayName}的{family ? '家庭' : '本人'}资料</h2><label className="privacy-scope">选择本次管理的范围<select value={scope} disabled={busy || !!operation} onChange={e => { setScope(e.target.value); setReceipt(null); }}><option value="account">{family ? '我的账号与全部可见孩子档案' : '本人账号与私有资料'}</option>{overview.children.map(item => <option key={item.id} value={item.id}>{item.nickname} · {item.grade}年级</option>)}</select></label>
             {child ? <><Counts counts={child.counts} /><p>{child.guardianCount} 位有效监护人{child.canDelete ? '。你可以在核对后删除此档案。' : '。永久删除需要先处理共同监护关系。'}</p></> : <div className="privacy-children">{overview.children.length ? overview.children.map(item => <article key={item.id}><div><strong>{item.nickname}</strong><span>{item.grade}年级 · {item.guardianCount} 位监护人</span></div><p>{item.counts.observations} 条作答 · {item.counts.activities} 次学习活动</p></article>) : <p>当前没有绑定孩子档案。账号资料和本人收藏、私有对话仍可导出。</p>}</div>}
             <div className="privacy-actions"><button className="studio-primary" disabled={busy || !!operation} onClick={() => begin('export')}>下载资料副本 ↗</button><button className="privacy-delete-link" disabled={busy || !!operation} onClick={() => begin('delete')}>{scope === 'account' ? '查看注销账号的影响' : '查看删除档案的影响'}</button></div></section>

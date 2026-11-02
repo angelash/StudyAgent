@@ -1,4 +1,5 @@
 'use client';
+import { LoginLink } from '../../../components/login-link';
 import * as React from 'react';
 import { RetentionReadinessSummary } from '../../../components/retention-evidence';
 import Link from 'next/link';
@@ -123,7 +124,7 @@ function DailyWorkspace({studentMode}:{studentMode:boolean}) {
     </aside>
     <section className="studio-main" aria-busy={busy}>
       {error && <div className="studio-error" role="alert">{error}<button aria-label="关闭提示" onClick={() => setError('')}>×</button></div>}
-      {loading ? <div className="studio-empty" role="status">正在取回学习安排…</div> : !loggedIn ? <div className="studio-empty"><h2>继续孩子的学习旅程</h2><p>登录后保存每天的练习和思路。</p><Link className="studio-primary" href="/student/login">使用学习码进入 ↗</Link></div> : !studentId ? <div className="studio-empty"><h2>先建立一个学习档案</h2><p>确认年级和已经学过的知识点后，再安排适合的任务。</p><Link className="studio-primary" href="/student/assessment">建立档案 ↗</Link></div> : practice ? <>
+      {loading ? <div className="studio-empty" role="status">正在取回学习安排…</div> : !loggedIn ? <div className="studio-empty"><h2>继续孩子的学习旅程</h2><p>登录后保存每天的练习和思路。</p><LoginLink kind="student" className="studio-primary">使用学习码进入 ↗</LoginLink></div> : !studentId ? <div className="studio-empty"><h2>先建立一个学习档案</h2><p>确认年级和已经学过的知识点后，再安排适合的任务。</p><Link className="studio-primary" href="/student/assessment">建立档案 ↗</Link></div> : practice ? <>
         <div className="studio-section-head"><span className="studio-eyebrow">{practice.status === 'completed' ? '今日活动已完成' : '可以提示，也可以订正'}</span><h2>{practice.action.title}</h2><p>{practice.action.activity}</p></div>{practice.planRevision !== practice.currentPlanRevision && <p className="studio-notice" role="status">{practice.snapshotOrigin === 'started' ? '指导计划已调整。这次练习继续使用开始时保存的活动，完成后按最新计划安排下一步。' : '这是早期练习记录，活动内容在首次版本归档时保存，无法追溯更早的活动变化。'}</p>}
         {practice.status === 'completed' && <div className="daily-complete"><span aria-hidden="true">✓</span><h2>这一步，已经认真走过。</h2><p>已作答 {practice.summary.answered} 道，跳过 {practice.summary.skipped} 道；其中 {practice.summary.independentFirstPass} 道首次独立做对。{practice.summary.pendingReview > 0 && `${practice.summary.pendingReview} 道表达题等待复核。`}</p><p>{practice.origin === 'notebook' ? '原题订正已记录。回到错题本，另用未见新题核查，再等待间隔复测。' : '接下来按计划复测，用新题检查理解和保持。'}</p><button className="studio-primary" onClick={leave}>查看下一步 ↗</button></div>}<>
           {controlledReadOnly&&<p className="studio-notice">{practice.controlledGuidanceNeedsReview?'原指导依据已有修订，先核对新报告；这次活动保留回看。':'当前是监护回看。条件指导的答案、提示和完成由孩子本人操作。'}</p>}<TeachingGuide snapshot={practice.action.teachingSnapshot} showObservation={!studentMode} />
