@@ -1,0 +1,728 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "bird",
+      "path": "resources/curriculum/source-lessons/chinese-g3-bird-v1.json",
+      "sha256": "7da8c93e384bb384e75e2ae2421f171c4f81203c9578e3a80d97dc4c2779679b",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit5:entry1",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 69,
+        "pageEnd": 70,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标每间隔仅一份拟议样题，原篇/动作/图卡示范已见不恢复未见资格；真实声音、本人原稿、课文想象与实际观察分别记。未构成充分四维库存。",
+  "groups": [
+    {
+      "lesson": "bird",
+      "atomId": "source:chinese:g3:02915a7d:bird-reading",
+      "structure": "bird-five-contextual-reading",
+      "familyProposal": "following-bird-five-contextual-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人本次声音覆盖五字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "读法对应原词语境",
+          "weight": 0.4
+        },
+        {
+          "criterion": "五字与四组词分清，文字选择不代声音",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "父fù、啦lā、鹦yīng、鹉wǔ、悄qiāo按当前词核对；鹦鹉含两个目标，四组词不等四字。",
+        "insufficientExample": "它很漂亮，我全部看过了，每只鸟都这样。",
+        "insufficientReason": "缺具体部位动作与来源范围，不能由一个评价或文学阅读补成真实观察和所有动物规律。",
+        "alternativeAnswers": "候选人工核对参考，允许有据不同评价；真实声音原稿、原答、帮助和未知各自留证。"
+      },
+      "exercises": [
+        {
+          "id": "bird-bird-five-contextual-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录音读“外祖父、沙啦沙啦、鹦鹉、静悄悄”，说明包含哪五个目标字。",
+          "answer": "父fù、啦lā、鹦yīng、鹉wǔ、悄qiāo按当前词核对；鹦鹉含两个目标，四组词不等四字。",
+          "analysis": "父fù、啦lā、鹦yīng、鹉wǔ、悄qiāo按当前词核对；鹦鹉含两个目标，四组词不等四字。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 200
+        },
+        {
+          "id": "bird-bird-five-contextual-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先读鹦鹉两字所在词，再补其他目标词，指出哪一个还需核对。",
+          "answer": "两目标分别听，补父啦悄，不由一个词读顺推其他未读字已会。",
+          "analysis": "两目标分别听，补父啦悄，不由一个词读顺推其他未读字已会。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 200
+        },
+        {
+          "id": "bird-bird-five-contextual-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创句“外祖父站在静悄悄的屋里看鹦鹉”。录音后补沙啦沙啦，说明覆盖。",
+          "answer": "新句与补词一起覆盖五目标，按当前词语听实际音，旁字不混成目标。",
+          "analysis": "新句与补词一起覆盖五目标，按当前词语听实际音，旁字不混成目标。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 200
+        },
+        {
+          "id": "bird-bird-five-contextual-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次给五字配当前合理词语读出，说明是否刚听过参考或看过原页。",
+          "answer": "本人本次音频与语境相容，帮助保留，旧声音和示范声音不代本人表现。",
+          "analysis": "本人本次音频与语境相容，帮助保留，旧声音和示范声音不代本人表现。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 200
+        },
+        {
+          "id": "bird-bird-five-contextual-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "沙啦沙啦是雨声里的啦，与别的口语语气词读法能机械统一吗？录音读当前词并说明。",
+          "answer": "当前读lā依原词拟声，不强定同字所有语境同音；说明不能代实际录音。",
+          "analysis": "当前读lā依原词拟声，不强定同字所有语境同音；说明不能代实际录音。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 200
+        },
+        {
+          "id": "bird-bird-five-contextual-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "把仍不稳的一字查证后再读，接着补齐其余目标，保留本次订正前后。",
+          "answer": "核对当前词语，实际音频和订正分别记，拼音选择不代发音。",
+          "analysis": "核对当前词语，实际音频和订正分别记，拼音选择不代发音。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 200
+        },
+        {
+          "id": "bird-bird-five-contextual-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新录音读全表，说明实际帮助与未完成部分；无本次录音则如实留缺。",
+          "answer": "五字真实声音分别核对，原词重复不自动取得新的未见保持资格，不能补造本次已读。",
+          "analysis": "五字真实声音分别核对，原词重复不自动取得新的未见保持资格，不能补造本次已读。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 200
+        }
+      ]
+    },
+    {
+      "lesson": "bird",
+      "atomId": "source:chinese:g3:02915a7d:bird-handwriting",
+      "structure": "bird-twelve-actual-handwriting",
+      "familyProposal": "following-bird-twelve-actual-handwriting",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖十二目标字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "部件和结构实际可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "旧图参考图不代本人本次，原改分别留",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "逐字看本人原稿与结构，指认部件和实际字形分别评，范字图或旧字库图不能代本次。",
+        "insufficientExample": "它很漂亮，我全部看过了，每只鸟都这样。",
+        "insufficientReason": "缺具体部位动作与来源范围，不能由一个评价或文学阅读补成真实观察和所有动物规律。",
+        "alternativeAnswers": "候选人工核对参考，允许有据不同评价；真实声音原稿、原答、帮助和未知各自留证。"
+      },
+      "exercises": [
+        {
+          "id": "bird-bird-twelve-actual-handwriting-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "真实书写搭亲父啦响羽翠嘴悄吞哦捕12字并上传，圈出一处需要进一步核对的部件。",
+          "answer": "逐字看本人原稿与结构，指认部件和实际字形分别评，范字图或旧字库图不能代本次。",
+          "analysis": "逐字看本人原稿与结构，指认部件和实际字形分别评，范字图或旧字库图不能代本次。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "bird-bird-twelve-actual-handwriting-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先写“搭、亲、父、啦、响、羽”，再写其余目标字，保留原稿和实际订正上传。",
+          "answer": "十二字覆盖分别核对，写前六不推后六已经会，声音或拼音选择不能代书写。",
+          "analysis": "十二字覆盖分别核对，写前六不推后六已经会，声音或拼音选择不能代书写。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "bird-bird-twelve-actual-handwriting-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "在新原创观察短句中实际书写目标字，再补齐未用到的目标并上传说明覆盖。",
+          "answer": "原句内字和补写合起来核十二字，不能由一张句子图推没出现的目标字已会。",
+          "analysis": "原句内字和补写合起来核十二字，不能由一张句子图推没出现的目标字已会。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "bird-bird-twelve-actual-handwriting-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次手写“翠、嘴、悄、吞、哦、捕”并上传，再说明另六字当前是否实际完成。",
+          "answer": "当前六字原件逐项核查，另六未做就留缺，不用过去照片自动补本次全表保持。",
+          "analysis": "当前六字原件逐项核查，另六未做就留缺，不用过去照片自动补本次全表保持。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "bird-bird-twelve-actual-handwriting-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "上传本人十二字中的原改对照，指出一项真有问题的结构与改法；无问题不故意造错。",
+          "answer": "原问题与改后可追溯，清稿不能倒造订正过程，改得多不等能力更高。",
+          "analysis": "原问题与改后可追溯，清稿不能倒造订正过程，改得多不等能力更高。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "bird-bird-twelve-actual-handwriting-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "观察嘴和捕等字的部件关系，真实写出再补全目标表上传，说明所用帮助。",
+          "answer": "部件观察支持当前书写，方法说明不代字形，帮助和实际覆盖留证。",
+          "analysis": "部件观察支持当前书写，方法说明不代字形，帮助和实际覆盖留证。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "bird-bird-twelve-actual-handwriting-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "分两次短书写实际覆盖全表并上传本人原件，报告未稳字，不要求机械大量抄写。",
+          "answer": "分次可接受，实际全表才有对应信息，未完成保持，旧图和字库不得替本人本次。",
+          "analysis": "分次可接受，实际全表才有对应信息，未完成保持，旧图和字库不得替本人本次。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 300
+        }
+      ]
+    },
+    {
+      "lesson": "bird",
+      "atomId": "source:chinese:g3:02915a7d:bird-detailed-appearance",
+      "structure": "bird-part-color-shape-observation",
+      "familyProposal": "following-bird-part-color-shape-observation",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "部位和颜色形状对应准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "评价有具体细节支持",
+          "weight": 0.4
+        },
+        {
+          "criterion": "一例与所有鸟、原篇与新卡不混",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "羽毛翠绿、翅膀带蓝、嘴红且长分别对应，漂亮感受由细节支持，不互换部位或补未给花纹。",
+        "insufficientExample": "它很漂亮，我全部看过了，每只鸟都这样。",
+        "insufficientReason": "缺具体部位动作与来源范围，不能由一个评价或文学阅读补成真实观察和所有动物规律。",
+        "alternativeAnswers": "候选人工核对参考，允许有据不同评价；真实声音原稿、原答、帮助和未知各自留证。"
+      },
+      "exercises": [
+        {
+          "id": "bird-bird-part-color-shape-observation-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "用羽毛、翅膀和嘴三个部位分别说明翠鸟外形，再解释一项自己的感受。",
+          "answer": "羽毛翠绿、翅膀带蓝、嘴红且长分别对应，漂亮感受由细节支持，不互换部位或补未给花纹。",
+          "analysis": "羽毛翠绿、翅膀带蓝、嘴红且长分别对应，漂亮感受由细节支持，不互换部位或补未给花纹。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-part-color-shape-observation-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“翠鸟很好看”补成两项可定位的观察，再说明原文哪些词支持。",
+          "answer": "具体部位与特点有原文依据，不只堆好美漂亮；评价可以不同但细节需准确。",
+          "analysis": "具体部位与特点有原文依据，不只堆好美漂亮；评价可以不同但细节需准确。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-part-color-shape-observation-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创图卡给纸鸟身体绿、翅边蓝、嘴细长红。写两项观察和一项评价，并标明材料身份。",
+          "answer": "按当前纸鸟卡描述，不称本人已看真实翠鸟，也不把图卡新增信息说成原文。",
+          "analysis": "按当前纸鸟卡描述，不称本人已看真实翠鸟，也不把图卡新增信息说成原文。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-part-color-shape-observation-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "某说明把红色写到翅膀、蓝色写到嘴，保留原说法并按原文改正。",
+          "answer": "原部位颜色配对错误，改回翅膀带蓝、嘴红且长，原答和订正不混成首答已对。",
+          "analysis": "原部位颜色配对错误，改回翅膀带蓝、嘴红且长，原答和订正不混成首答已对。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-part-color-shape-observation-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "“比鹦鹉还漂亮”是怎样的信息？能由此测出翠鸟全部部位的精确尺寸吗？",
+          "answer": "是作者比较感受，具体外形来自当前描述，不提供所有精确尺寸或统一审美结论。",
+          "analysis": "是作者比较感受，具体外形来自当前描述，不提供所有精确尺寸或统一审美结论。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-part-color-shape-observation-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "选一个实际身边物件或明确图卡，用部位加特点写两句。实际观察与图卡分析分别标。",
+          "answer": "具体信息可对应当前对象，没实际看不称已观察，未给部分不靠评价补齐。",
+          "analysis": "具体信息可对应当前对象，没实际看不称已观察，未给部分不靠评价补齐。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-part-color-shape-observation-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重看自己一段外形说明，指出一处只有标签的表达并补实际细节；无原稿则用标明示例。",
+          "answer": "原说法与改进有对应来源，不从一次对象推所有鸟颜色习性或全部阅读能力。",
+          "analysis": "原说法与改进有对应来源，不从一次对象推所有鸟颜色习性或全部阅读能力。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "bird",
+      "atomId": "source:chinese:g3:02915a7d:bird-fishing-actions",
+      "structure": "bird-action-object-sequence",
+      "familyProposal": "following-bird-action-object-sequence",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "动作先后和对象准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "衔与吞阶段分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "快慢词不变编造秒数或本人观察",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "冲入水，飞起时衔鱼，站船头后吞下；衔着与已吞不同，不能把后一步倒放成前一步。",
+        "insufficientExample": "它很漂亮，我全部看过了，每只鸟都这样。",
+        "insufficientReason": "缺具体部位动作与来源范围，不能由一个评价或文学阅读补成真实观察和所有动物规律。",
+        "alternativeAnswers": "候选人工核对参考，允许有据不同评价；真实声音原稿、原答、帮助和未知各自留证。"
+      },
+      "exercises": [
+        {
+          "id": "bird-bird-action-object-sequence-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "按课文梳理冲、飞、衔、站、吞怎样连成一次捕鱼过程，分别说鱼在什么阶段出现。",
+          "answer": "冲入水，飞起时衔鱼，站船头后吞下；衔着与已吞不同，不能把后一步倒放成前一步。",
+          "analysis": "冲入水，飞起时衔鱼，站船头后吞下；衔着与已吞不同，不能把后一步倒放成前一步。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-action-object-sequence-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "将“鸟吞着鱼飞起来，后来衔下去”按当前叙述改清楚，说明哪里混淆。",
+          "answer": "应飞起时衔着，随后站船头吞下，衔是嘴叼着，吞为咽下，动作对象和先后对应。",
+          "analysis": "应飞起时衔着，随后站船头吞下，衔是嘴叼着，吞为咽下，动作对象和先后对应。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-action-object-sequence-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创动作卡：玩具下移、夹起纸鱼、回到边沿、放下纸鱼。按顺序写过程并说明与原篇身份不同。",
+          "answer": "当前卡顺序对象清楚，不冒充真实捕鱼或原篇具体动作，夹着和放下不同阶段。",
+          "analysis": "当前卡顺序对象清楚，不冒充真实捕鱼或原篇具体动作，夹着和放下不同阶段。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-action-object-sequence-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "一下子、没一会儿怎样帮助想象动作？能写成精确两秒三秒吗？",
+          "answer": "让读者感到行动快，但原文无具体秒数，不能把感受变精确测时结论。",
+          "analysis": "让读者感到行动快，但原文无具体秒数，不能把感受变精确测时结论。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-action-object-sequence-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只说“翠鸟捕鱼了”与列出相连动作，给读者的信息有何不同？用一项具体动作说明。",
+          "answer": "概括给结果，动作使过程可想象，如冲入水或衔鱼飞起；不能只背动作数量代关系。",
+          "analysis": "概括给结果，动作使过程可想象，如冲入水或衔鱼飞起；不能只背动作数量代关系。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-action-object-sequence-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "选择原过程相邻两项动作，说明前一动作完成到什么状态、后一动作又改变什么。",
+          "answer": "如衔鱼到吞鱼由在嘴里到吞下，关系有原文支持；不由想象补作本人亲眼所见。",
+          "analysis": "如衔鱼到吞鱼由在嘴里到吞下，关系有原文支持；不由想象补作本人亲眼所见。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-action-object-sequence-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "对一段真正新动作材料作顺序说明并记录来源；没有新材料则标原篇回顾。",
+          "answer": "对象先后明确，原篇重复与实际帮助保留，不把熟悉五词再排序当新独立结构通过。",
+          "analysis": "对象先后明确，原篇重复与实际帮助保留，不把熟悉五词再排序当新独立结构通过。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "bird",
+      "atomId": "source:chinese:g3:02915a7d:bird-observation-and-questions",
+      "structure": "bird-seen-questions-and-later-information",
+      "familyProposal": "following-bird-seen-questions-and-later-information",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "所见与问句分别定位",
+          "weight": 0.4
+        },
+        {
+          "criterion": "后续所知有获得途径",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未回答的时刻时长目的地不代填",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "部位颜色是所见，何时来等是疑问，母亲告知翠鸟及捕鱼所见帮助后来理解；三类分清。",
+        "insufficientExample": "它很漂亮，我全部看过了，每只鸟都这样。",
+        "insufficientReason": "缺具体部位动作与来源范围，不能由一个评价或文学阅读补成真实观察和所有动物规律。",
+        "alternativeAnswers": "候选人工核对参考，允许有据不同评价；真实声音原稿、原答、帮助和未知各自留证。"
+      },
+      "exercises": [
+        {
+          "id": "bird-bird-seen-questions-and-later-information-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "把作者看到的外形、提出的一个问题和后来知道的信息各写一项，说明来源。",
+          "answer": "部位颜色是所见，何时来等是疑问，母亲告知翠鸟及捕鱼所见帮助后来理解；三类分清。",
+          "analysis": "部位颜色是所见，何时来等是疑问，母亲告知翠鸟及捕鱼所见帮助后来理解；三类分清。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-seen-questions-and-later-information-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原文是否给出鸟何时飞来、在船头停了多久？怎样准确表达当前状态？",
+          "answer": "未给精确答案，可说作者当时也不知道，不能把自己估计的时间填成原文事实。",
+          "analysis": "未给精确答案，可说作者当时也不知道，不能把自己估计的时间填成原文事实。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-seen-questions-and-later-information-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡：先见盒盖有蓝色标记，问里面是否有书，后卡才说明是空盒。分别列先前已知、猜想和后知。",
+          "answer": "标记已给，里面有书是问题或猜想，空盒是后卡信息，原猜保留不倒改成起初已知。",
+          "analysis": "标记已给，里面有书是问题或猜想，空盒是后卡信息，原猜保留不倒改成起初已知。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-seen-questions-and-later-information-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "“难道它要和我们一起坐船到外祖父家里去吗”能改成鸟已经计划探亲吗？说明。",
+          "answer": "不能，这是叙述者疑问，鸟的具体内心和目的地未给，不能把人的猜测变动物已定行程。",
+          "analysis": "不能，这是叙述者疑问，鸟的具体内心和目的地未给，不能把人的猜测变动物已定行程。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-seen-questions-and-later-information-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "作者后来知道鸟名，能直接写成刚看到时就已确定是翠鸟吗？",
+          "answer": "不能，原文母亲后来告知，信息获取顺序保留，不以后知覆盖初见未知。",
+          "analysis": "不能，原文母亲后来告知，信息获取顺序保留，不以后知覆盖初见未知。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-seen-questions-and-later-information-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "外形观察能单独回答它当时在做什么吗？后续哪项信息更直接支持捕鱼判断？",
+          "answer": "外形不等活动目的，衔鱼飞起并吞下更直接支持当前捕鱼吃，母亲告知鸟名另属信息。",
+          "analysis": "外形不等活动目的，衔鱼飞起并吞下更直接支持当前捕鱼吃，母亲告知鸟名另属信息。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-seen-questions-and-later-information-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "列一个当前仍未知的问题和可怎样核对的思路，不伪造已经得到答案。",
+          "answer": "问题有原范围，进一步可靠观察或资料可拟议，但当前未做保持未知，不能代填本人真实发现。",
+          "analysis": "问题有原范围，进一步可靠观察或资料可拟议，但当前未做保持未知，不能代填本人真实发现。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "bird",
+      "atomId": "core:chinese:contextmeaning",
+      "structure": "bird-context-meaning-actions",
+      "familyProposal": "following-bird-context-meaning-actions",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "词义符合当前对象与场景",
+          "weight": 0.4
+        },
+        {
+          "criterion": "具体线索支持解释",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不同义项和人物推测不套全部事实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "衔是用嘴叼着，吞下是咽下，前后状态不同，词义由当前过程支持。",
+        "insufficientExample": "它很漂亮，我全部看过了，每只鸟都这样。",
+        "insufficientReason": "缺具体部位动作与来源范围，不能由一个评价或文学阅读补成真实观察和所有动物规律。",
+        "alternativeAnswers": "候选人工核对参考，允许有据不同评价；真实声音原稿、原答、帮助和未知各自留证。"
+      },
+      "exercises": [
+        {
+          "id": "bird-bird-context-meaning-actions-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "“衔着”和“吞下”为什么不能互换？联系小鱼在当前动作中的状态解释。",
+          "answer": "衔是用嘴叼着，吞下是咽下，前后状态不同，词义由当前过程支持。",
+          "analysis": "衔是用嘴叼着，吞下是咽下，前后状态不同，词义由当前过程支持。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-context-meaning-actions-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "“搭船”在本课怎样联系鸟停在船头理解？是否已证明它像人一样买票探亲？",
+          "answer": "借用人搭船表达停在船上当前情形，未给付费或探亲内心，不把拟人联想作事实。",
+          "analysis": "借用人搭船表达停在船上当前情形，未给付费或探亲内心，不把拟人联想作事实。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-context-meaning-actions-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创句“纸夹夹着小卡，后来把卡放下”。用状态变化解释夹着和放下的区别。",
+          "answer": "卡仍被夹住与松开落下不同，具体对象和动作关系清楚，不搬原篇鸟动作代所有词。",
+          "analysis": "卡仍被夹住与松开落下不同，具体对象和动作关系清楚，不搬原篇鸟动作代所有词。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-context-meaning-actions-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "“静悄悄”写鸟停在船头的什么表现？能推断它已经停了固定多久吗？",
+          "answer": "安静不出声等当前状态，不给精确停留时长，也不证明一直完全不动。",
+          "analysis": "安静不出声等当前状态，不给精确停留时长，也不证明一直完全不动。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-context-meaning-actions-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "“一下子冲进水里”怎样形成动作画面？能只由冲字算速度数值吗？",
+          "answer": "表现迅速有力进入水的动作，结合句子想象，不提供距离和时间测量来算速度。",
+          "analysis": "表现迅速有力进入水的动作，结合句子想象，不提供距离和时间测量来算速度。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-context-meaning-actions-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "“翠绿”和“带着一些蓝色”怎样限制颜色描述范围？",
+          "answer": "分别对应羽毛和翅膀，带一些不是整只鸟纯蓝或纯绿，需按部位和程度表达。",
+          "analysis": "分别对应羽毛和翅膀，带一些不是整只鸟纯蓝或纯绿，需按部位和程度表达。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-context-meaning-actions-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "自选一词，写当前解释、原句线索和一种不适合当前场景的理解。",
+          "answer": "具体词义有语境支持，不只列联系上下文口号或机械套字典另一义。",
+          "analysis": "具体词义有语境支持，不只列联系上下文口号或机械套字典另一义。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "bird",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "bird-observation-range-evidence",
+      "familyProposal": "following-bird-observation-range-evidence",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "判断有具体叙述支持",
+          "weight": 0.4
+        },
+        {
+          "criterion": "所见所想告知和本人过程分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未知和一例范围不被扩大",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能，仅支持当前一只鸟的这次叙述，其他鸟与情况需要各自资料，不能从一例推全部。",
+        "insufficientExample": "它很漂亮，我全部看过了，每只鸟都这样。",
+        "insufficientReason": "缺具体部位动作与来源范围，不能由一个评价或文学阅读补成真实观察和所有动物规律。",
+        "alternativeAnswers": "候选人工核对参考，允许有据不同评价；真实声音原稿、原答、帮助和未知各自留证。"
+      },
+      "exercises": [
+        {
+          "id": "bird-bird-observation-range-evidence-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "作者见一只翠鸟捕鱼，能证明所有鸟都以同样动作和食物生活吗？",
+          "answer": "不能，仅支持当前一只鸟的这次叙述，其他鸟与情况需要各自资料，不能从一例推全部。",
+          "analysis": "不能，仅支持当前一只鸟的这次叙述，其他鸟与情况需要各自资料，不能从一例推全部。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-observation-range-evidence-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "读课文后想象出捕鱼画面，能填写本人已实际观察同一只翠鸟吗？",
+          "answer": "不能，阅读想象与本人真实观察分别记，参考图卡或模型不代实际经历。",
+          "analysis": "不能，阅读想象与本人真实观察分别记，参考图卡或模型不代实际经历。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-observation-range-evidence-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创观察卡只给绿色身体与蓝色翅边，能补红嘴作为已经观察到的信息吗？",
+          "answer": "不能，除非当前材料另给红嘴；可提问题但不能靠熟悉原文补成新卡事实。",
+          "analysis": "不能，除非当前材料另给红嘴；可提问题但不能靠熟悉原文补成新卡事实。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-observation-range-evidence-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "母亲告诉作者鸟名，是哪种信息来源？能忽略来源改成自己早就认识吗？",
+          "answer": "是他人告知，叙述中来源保留，后来认识不倒改成初见时已确定。",
+          "analysis": "是他人告知，叙述中来源保留，后来认识不倒改成初见时已确定。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-observation-range-evidence-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原文说没一会儿，能据此写为刚好五秒并当已测量结果吗？",
+          "answer": "不能，无精确时距测量，快的描述和量化事实不同，不伪造数字。",
+          "analysis": "不能，无精确时距测量，快的描述和量化事实不同，不伪造数字。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-observation-range-evidence-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "看过动作示范后再排对五词，怎样记录帮助和首答？",
+          "answer": "原首答与所见示范、改后分别留，排对不恢复最初未见资格或证明新保持。",
+          "analysis": "原首答与所见示范、改后分别留，排对不恢复最初未见资格或证明新保持。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "bird-bird-observation-range-evidence-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "各写当前一项已给事实、一个疑问和一项本人仍未实际做过的观察，说明身份。",
+          "answer": "事实有原叙述依据，疑问和未做保持清楚，计划与范例不补造成已发生的本人观察。",
+          "analysis": "事实有原叙述依据，疑问和未做保持清楚，计划与范例不补造成已发生的本人观察。 仅供未审材料人工核对，不能自动评分、批准独立性或代填本人真实观察。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

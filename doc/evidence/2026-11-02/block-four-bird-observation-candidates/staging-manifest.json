@@ -1,0 +1,174 @@
+{
+  "at": "2026-11-02T12:00:23.953Z",
+  "baseCommit": "de0c38bf672fc579a8cb01607f2095480436f93b",
+  "branch": "main",
+  "localBranches": [
+    "main"
+  ],
+  "worktreeInventory": "worktree F:/workspace/github/StudyAgent\nHEAD de0c38bf672fc579a8cb01607f2095480436f93b\nbranch refs/heads/main\n\n",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-bird-v1.json",
+      "bytes": 44049,
+      "sha256": "a407d5d7a54aee0c05538c57ca553bc0027045f82a8b5bc82b6612ddc97be077",
+      "gitNormalizedSha256": "a407d5d7a54aee0c05538c57ca553bc0027045f82a8b5bc82b6612ddc97be077"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-bird-v1.json",
+      "bytes": 16644,
+      "sha256": "7da8c93e384bb384e75e2ae2421f171c4f81203c9578e3a80d97dc4c2779679b",
+      "gitNormalizedSha256": "7da8c93e384bb384e75e2ae2421f171c4f81203c9578e3a80d97dc4c2779679b"
+    },
+    {
+      "path": "scripts/content/build-chinese-bird-candidates.cjs",
+      "bytes": 25462,
+      "sha256": "718967a10a6b90c843134df7d6a294dfcef10e3b7511b5713447ecbeff53ff25",
+      "gitNormalizedSha256": "718967a10a6b90c843134df7d6a294dfcef10e3b7511b5713447ecbeff53ff25"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 13160,
+      "sha256": "723fbad203cbba45a7cc672a1892d385ed25101106f43f19721602c36a8aabaa",
+      "gitNormalizedSha256": "48bb219b5933abca2a459ba412f39728454369cb76578aaafb986a4002989b40"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 172878,
+      "sha256": "ef3d6c8e1d0cfba50a171341c126885cb396e540f2a54d8900640b94fe31fbb5",
+      "gitNormalizedSha256": "a7aa618ee10527f65a406e2b9f3eeeb54a3cb7552e188ee4dd2602a4f14d7933"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 98926,
+      "sha256": "79e70499093395d15e575cbdff6f0fc63e098b739746017c99a677c6062077f0",
+      "gitNormalizedSha256": "a3be1aabad8489886badd701bc3a5a47086220469390e7199d8c4f6ab5949420"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 104341,
+      "sha256": "dfb92031eee286cd075f0271a7be9abe50ea24694ed0fcd410629405c6d60285",
+      "gitNormalizedSha256": "d6535f910f6bde66cc5fb8cba4a79d0a0a84d41243c954ec6428e019668fc696"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 13876,
+      "sha256": "c293521a9c30223560aac48fc13206587b0821d4e2f8c90fe71e4d004f541c05",
+      "gitNormalizedSha256": "0125958fd82a676d4a1d0da3b3eeef01a4d5e90f55be2e32ac5ba6f0bba53d9d"
+    },
+    {
+      "path": "doc/product/201-bird-observation-actions-and-information-source-candidates.md",
+      "bytes": 2771,
+      "sha256": "5b15ac37a70bb86c5e58cb6623ecfee044d979349a9dc4df5f900098754b443a",
+      "gitNormalizedSha256": "5b15ac37a70bb86c5e58cb6623ecfee044d979349a9dc4df5f900098754b443a"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 33041,
+      "sha256": "aa39d5b623a17552341867cc69f9b7256405a251c0072907b7c79cc6d5aa2c75",
+      "gitNormalizedSha256": "d12120f4e12de5a2dfa14c05d52d55bb389a55784228726fdf00b95025cab19c"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-bird-observation-candidates/browser/chinese-g3-bird-v1-desktop.png",
+      "bytes": 260662,
+      "sha256": "b18a504617b42960fe9212f0da7f995315051dc54ec56846ce1d8aede7fd162e",
+      "gitNormalizedSha256": "36cb8386da65d5b97d7116c199142fb0737d1d94e9dfc04ccf7fc6d192c2e1d2"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-bird-observation-candidates/browser/chinese-g3-bird-v1-mobile-table.png",
+      "bytes": 84655,
+      "sha256": "b12d5d0e77a644b314897a261d32f9e5d48870409e6d2d6ba48c4911d75b22cb",
+      "gitNormalizedSha256": "1d584322231f464605cbe3c845f746a01092f2579a410f47eaaefef0755092a4"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-bird-observation-candidates/browser/chinese-g3-bird-v1-table.png",
+      "bytes": 65063,
+      "sha256": "2f868070ab55337ff7a3e3a2223de239e23acacbd0bc424dfd6daae0990b268d",
+      "gitNormalizedSha256": "92feca2741f4371f6bc148c09ee609b5e4b5a3337639f95c4ed33487d2a3f550"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-bird-observation-candidates/browser/receipt.json",
+      "bytes": 787,
+      "sha256": "379c473c74ddb8a4fe6a1e8a838140e49ffb93af39710a5da94a00d6f1345104",
+      "gitNormalizedSha256": "379c473c74ddb8a4fe6a1e8a838140e49ffb93af39710a5da94a00d6f1345104"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-bird-observation-candidates/browser/runner.cjs",
+      "bytes": 16466,
+      "sha256": "ef0bae54e465ceb4c1fd9e22158502420344d942b08e381f256e1e31635d7cd7",
+      "gitNormalizedSha256": "ef0bae54e465ceb4c1fd9e22158502420344d942b08e381f256e1e31635d7cd7"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-bird-observation-candidates/checks/b4-bird-archive-final.json",
+      "bytes": 996,
+      "sha256": "0ecc7e03a584d0c0ac78c228daa2c72b2bf76f97e9246eca65038da2ff215437",
+      "gitNormalizedSha256": "0ecc7e03a584d0c0ac78c228daa2c72b2bf76f97e9246eca65038da2ff215437"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-bird-observation-candidates/checks/bird-materials-http-first.json",
+      "bytes": 1594,
+      "sha256": "ac418f4bafb45c33ff7a811a5c18b8030d3235c7dc089c3e88f1f54131bd0308",
+      "gitNormalizedSha256": "ac418f4bafb45c33ff7a811a5c18b8030d3235c7dc089c3e88f1f54131bd0308"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-bird-observation-candidates/checks/bird-materials-static-review.json",
+      "bytes": 606,
+      "sha256": "7683b16138b343a8c745e17f1401527a12dea407845a210adb0f95a2554421b0",
+      "gitNormalizedSha256": "7683b16138b343a8c745e17f1401527a12dea407845a210adb0f95a2554421b0"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-bird-observation-candidates/checks/content-worklist-bird-first.json.gz",
+      "bytes": 113465,
+      "sha256": "61fea6fcf478e2aa5109e4c50591d39220f2c2a1200d075dfb0818f24d892972",
+      "gitNormalizedSha256": "0fae7daadcf16c30ac2c5d23a5e090c4e3ee95b8bf1a78f9b99f8e7733af3fb6"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-bird-observation-candidates/manifest.json",
+      "bytes": 2217,
+      "sha256": "650c57316aa389dabe97fc05adb455a7c6bfc3b5046be8a9d59e62e5a5de4ff8",
+      "gitNormalizedSha256": "650c57316aa389dabe97fc05adb455a7c6bfc3b5046be8a9d59e62e5a5de4ff8"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-bird-observation-candidates/receipt.json",
+      "bytes": 3289,
+      "sha256": "0f277a759be119ac14d82824098965b5e1b195fd3020641302a375eb1ac4ff5e",
+      "gitNormalizedSha256": "0f277a759be119ac14d82824098965b5e1b195fd3020641302a375eb1ac4ff5e"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-bird-observation-candidates/source-intake/reviewed-receipt.json",
+      "bytes": 5089,
+      "sha256": "e7ef64f16e515aa5266e47274d860471966faee0e7b626cccc45a8bf4cff06d6",
+      "gitNormalizedSha256": "e7ef64f16e515aa5266e47274d860471966faee0e7b626cccc45a8bf4cff06d6"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-bird-observation-candidates/sources.json.gz",
+      "bytes": 34111,
+      "sha256": "fac0b032c463cb6a36a8fc22147e116d883557e4c80331fc7521d5ac48d3b830",
+      "gitNormalizedSha256": "acd43eb48090332ff18cfea2bfbbeb0f47ee44e150a83e0b226a1cb547e87025"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-bird-observation-candidates/tools/archive-bird.cjs",
+      "bytes": 5645,
+      "sha256": "97cd20b2f95198dcaba0bfc27dcd0d2f6e9b85d93f26ab673999c66f0cac90af",
+      "gitNormalizedSha256": "97cd20b2f95198dcaba0bfc27dcd0d2f6e9b85d93f26ab673999c66f0cac90af"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-bird-observation-candidates/tools/intake-observation-unit-first.cjs",
+      "bytes": 1509,
+      "sha256": "d332531a43051d56fb635c9878b7b13bf688e2d730762ee9ef8f53b989bb7103",
+      "gitNormalizedSha256": "d332531a43051d56fb635c9878b7b13bf688e2d730762ee9ef8f53b989bb7103"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-bird-observation-candidates/tools/stage-bird.cjs",
+      "bytes": 3410,
+      "sha256": "743096ae591f378fa6a7ed633f0805db6f7b03bbcbb2293948a852c8d6a0ee90",
+      "gitNormalizedSha256": "743096ae591f378fa6a7ed633f0805db6f7b03bbcbb2293948a852c8d6a0ee90"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-bird-observation-candidates/tools/verify-bird.cjs",
+      "bytes": 6025,
+      "sha256": "90d105f0026948ea4868ef39389b878645a3d947d1413f89f5e3b68bd8a978d0",
+      "gitNormalizedSha256": "cac8d3d0a61176c68dc3dd267d1603d89d2d52f9e348bb6188ceef1d4b9e8509"
+    }
+  ]
+}
