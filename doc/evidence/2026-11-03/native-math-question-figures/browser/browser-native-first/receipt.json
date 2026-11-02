@@ -1,0 +1,42 @@
+{
+  "at": "2026-11-02T17:35:51.774Z",
+  "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+  "source": "main synchronized to data/qa/p187",
+  "actualNativeQuestionDocuments": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 4,
+  "failed": 1,
+  "error": "Expected values to be strictly equal:\n\nfalse !== true\n",
+  "checks": [
+    {
+      "name": "all-25-served-assets-match-original-content-addresses",
+      "passed": true
+    },
+    {
+      "name": "native-saved-question:clock:whole-hour-read",
+      "passed": true
+    },
+    {
+      "name": "native-saved-question:clock:near-whole-hour",
+      "passed": true
+    },
+    {
+      "name": "native-saved-question:clock:near-whole-hour",
+      "passed": true
+    },
+    {
+      "name": "native-saved-question:solids:shape-classify",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n\nfalse !== true\n"
+    }
+  ],
+  "screenshots": [
+    "clock-whole-hour-read-desktop.png",
+    "clock-near-whole-hour-desktop.png",
+    "clock-near-whole-hour-desktop.png"
+  ],
+  "pageErrors": [],
+  "mutations": []
+}

@@ -17,9 +17,9 @@ function validateSourceCandidates({root,apiRoot,sourceRoot,bookId,materials,less
  const originalBytes=fs.readFileSync(originalPath);assert.equal(sha(originalBytes),original.sha256,'Exact original PDF bytes required');assert.equal(originalBytes.length,original.bytes);
  const extractedBytes=fs.readFileSync(path.join(root,original.extractedPath));assert.equal(sha(extractedBytes),original.extractedSha256);const extracted=JSON.parse(extractedBytes);assert(textbookExtractionIdentityMatches(extracted,original),'Current importer extraction identity required');assert.equal(extracted.pages.length,original.pages);assertConformityExtraction(conformity.proof,extracted.pages);
  const materialPath=path.resolve(root,materials),directory=path.join(root,'resources/curriculum/source-lesson-materials')+path.sep;assert(materialPath.startsWith(directory)&&fs.realpathSync(materialPath).startsWith(fs.realpathSync(directory)+path.sep),'Versioned source material bundle required');
- const materialBytes=fs.readFileSync(materialPath),bundle=JSON.parse(materialBytes);assert.equal(bundle.format,'source-following-original-materials-v1');
+ const materialBytes=fs.readFileSync(materialPath),bundle=JSON.parse(materialBytes);assert(['source-following-original-materials-v1','source-following-original-materials-v2'].includes(bundle.format));
  for(const key of ['teacherReviewed','targetAlignmentReviewed','scoringReviewed','familyIndependenceReviewed','automaticPublication'])assert.equal(bundle[key],false,'Unapproved editorial materials only: '+key);
- assert(Array.isArray(bundle.sourceLessons)&&Array.isArray(bundle.groups));const questionIds=new Set(),definitions=new Map(),drafts=[];
+ assert(Array.isArray(bundle.sourceLessons)&&Array.isArray(bundle.groups));const visualValidation=require('./source-candidate-visuals.cjs').validateCandidateVisuals(root,bundle,contracts);const questionIds=new Set(),definitions=new Map(),drafts=[];
  for(const name of lessonNames){
   const relative='resources/curriculum/source-lessons/'+name,bytes=fs.readFileSync(path.join(root,relative)),draft=JSON.parse(bytes);assert.equal(draft.format,'source-original-lesson-draft-v1');assert.equal(draft.source.bookId,book.id,'Selected packets cannot mix books');assert.equal(draft.source.sourceSha256,original.sha256);
   assert.equal(draft.source.publicationYear,conformity.proof.edition.publicationYear);assert.equal(draft.source.curriculumStandardYear,conformity.proof.edition.curriculumStandardYear);
@@ -36,6 +36,6 @@ function validateSourceCandidates({root,apiRoot,sourceRoot,bookId,materials,less
   }
   drafts.push({name,draft,sha256:sha(bytes),groups});
  }
- return{book,original,originalPath,materialPath,materialBytes,bundle,drafts,questionCount:questionIds.size,proofFingerprint:conformity.fingerprint};
+ return{book,original,originalPath,materialPath,materialBytes,bundle,drafts,questionCount:questionIds.size,proofFingerprint:conformity.fingerprint,visualValidation};
 }
 module.exports={validateSourceCandidates};

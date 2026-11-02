@@ -1,5 +1,6 @@
 const {createKit}=require('./exact-source-candidate-kit.cjs');
 const {draft,group,write}=createKit({bookId:'archive-book:math-g1-upper-a8e880217c456db6',prefix:'source:math:g1:a8e88021:',filePrefix:'math-g1-a8e88021'});
+const visuals=require('./source-math-visuals.cjs').createMathQuestionVisuals(require('node:path').resolve(__dirname,'../..'));
 const definitions=[
  ['solid-and-face','区分立体形状与看到的平面轮廓','结合完整立体模型说清物体与可见轮廓不是一回事','能区分球与平面圆、盒子与画出的面；投影或照片只有一面时保留未知','图形认识'],
  ['shape-classify','按典型外形分类并说明近似','对明确提供的理想模型或日常物品按外形分类','不以颜色大小朝向决定类别，物品只说外形近似，不凭未给细节强分','形状分类'],
@@ -109,4 +110,16 @@ add('follow-shape-rule','stated-order-and-repeating-unit','short_answer',['对�
  ['指令说圆柱放在长方体左边，正方体放在长方体上面，方向约定按图面。能改成圆柱在右边仍说完全按原指令吗？','不能，按明确图面参照应左边放圆柱、上面放正方体；有其他合理摆法也不等符合这条特定指令，真实操作另记。'],
  ['给定规则每组依次正方体、正方体、球。学生摆成正方体、球、正方体，并说用的形状一样所以正确。怎样核查？','要核对象数量与顺序，规则要求先两个正方体再一个球，不能只看形状名称集合一样；按当前指令逐项更正。'],
 ]);
-write('math-g1-a8e88021-solids-v1',[lesson],groups,'49道均为未审原创候选：每目标3道即时、4道拟议间隔，不等独立题族或充分库存。课堂使用受控立体图，现有材料以明确文字条件和本人操作任务核查；原生逐题图形辨认库存、教师/评分/题族审核与真实摆搭仍须继续，不自动发布或代写学习结果。');
+const illustrated=(suffix,index,shapes,stem,answer)=>{
+ const task=groups.find(g=>g.atomId.endsWith(':'+suffix)).exercises[index];task.stem=stem;
+ if(answer){task.answer=answer;task.analysis=answer+' 仅作候选人工核对参考；真实原答、帮助与曝光另存，不据此自动认定独立掌握或保持。';if(index===0)groups.find(g=>g.atomId.endsWith(':'+suffix)).goldAnchors.acceptedExample=answer;}
+ task.blocks=visuals.blocks({kind:'solids',title:'原创立体观察卡',showNames:false,solids:shapes.map((shape,position)=>({shape,caption:shapes.length>1?['甲模型','乙模型','丙模型','丁模型'][position]:''}))});
+};
+illustrated('solid-and-face',2,['cube'],'观察原创模型的几个可见平面，有人把它们数成三块积木。请解释看到的面与完整一块的区别。');
+illustrated('shape-classify',0,['cube','sphere','cuboid','cylinder'],'按整体外形说出原创甲乙丙丁模型的类别，各给出一条观察依据；不能只看当前某个面或颜色。','甲正方体、乙球、丙典型长方体、丁圆柱。要看完整理想形体及平曲特征，不以某一平面、颜色或朝向代整体分类。');
+illustrated('shape-classify',2,['cylinder'],'原创图是供比较的理想模型。另有一只未画出的饮料罐，主要外形与它近似但有拉环。能说罐与理想模型毫无细节差别吗？');
+illustrated('shape-classify',5,['cuboid'],'原创图是理想参照模型。另一个主要外形近似它的纸盒只从竖放改横放、没有变形。类别会只因朝向改变吗？');
+illustrated('flat-and-curved',0,['cylinder'],'观察原创模型，用自己的话说明两端与中间侧面有什么不同，不把整个立体当成一张平面圆。');
+illustrated('flat-and-curved',3,['sphere'],'将原创图中的理想模型与纸上画的平面圆比较，怎样说明平面和曲面的区别？不要只说看起来都圆。');
+illustrated('flat-and-curved',4,['sphere'],'有人观察原创模型没有平面，就断言它在任何支撑上都绝不可能稳。这个推理充分吗？说明还需核什么条件。');
+write('math-g1-a8e88021-solids-v1',[lesson],groups,'49道均为未审原创候选：每目标3道即时、4道拟议间隔，不等独立题族或充分库存。已为明确辨形和平曲任务附有限原创立体题图；拼合比例、遮挡数量及真实摆搭不使用不相容的示意代条件。图示数量不等独立性或充分库存，教师/评分/题族审核与真实操作仍待，不自动发布或代写学习事实。',visuals.manifest());

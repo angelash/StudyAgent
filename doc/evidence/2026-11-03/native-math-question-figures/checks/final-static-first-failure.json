@@ -1,0 +1,8 @@
+{
+  "at": "2026-11-02T17:50:07.823Z",
+  "passed": false,
+  "phase": "evidence-checker",
+  "error": "ENOENT reading QA position source draft: checker incorrectly expected legacy content outside the changed-input sync set to exist in the QA source copy.",
+  "applicationFailure": false,
+  "resolution": "Compare main/QA bytes for the changed solids and clock packets and all explicit sync inputs; validate unchanged legacy v1 packets directly from main with the same actual compiled preflight reader."
+}

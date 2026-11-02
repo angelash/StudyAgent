@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-02T17:39:13.434Z",
+  "passed": true,
+  "actualPreviousSourceTool": true,
+  "gitCommit": "4f0b0ed0",
+  "sourceFile": "scripts/qa/source-candidate-preflight.cjs",
+  "sourceSha256": "55612a975453d94908d03c950b99d14ede02211e169fe778acf51c1c01c0c096",
+  "results": [
+    {
+      "slug": "preparation",
+      "oldV1Positive": true,
+      "questions": 49
+    },
+    {
+      "slug": "position",
+      "oldV1Positive": true,
+      "questions": 49
+    },
+    {
+      "slug": "solids",
+      "rejectedV2BeforeAnyRuntimeOrWrites": true
+    },
+    {
+      "slug": "clock",
+      "rejectedV2BeforeAnyRuntimeOrWrites": true
+    }
+  ],
+  "applicationOrDatabaseMigration": false,
+  "teacherAcceptance": false
+}

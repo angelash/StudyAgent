@@ -1,0 +1,187 @@
+{
+  "at": "2026-11-02T17:32:24.800Z",
+  "source": "main",
+  "target": "data/qa/p187",
+  "rows": [
+    {
+      "file": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-clock-v1.json",
+      "sha256": "83e134cc303eaf29cc2dd84d6bc7dfa4a3f8d7bda7899fa4d5490b90dce439de",
+      "bytes": 70059
+    },
+    {
+      "file": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-solids-v1.json",
+      "sha256": "d8d4fc69c27664529c0743f159d477b2be519f7c992ffd39733402f9567bf1be",
+      "bytes": 61565
+    },
+    {
+      "file": "scripts/content/build-math-g1-clock-candidates.cjs",
+      "sha256": "e8c1bb4adc9d6195102bb4c54dda77a4d75cf58ff32b8925124f8596227e47d0",
+      "bytes": 25851
+    },
+    {
+      "file": "scripts/content/build-math-g1-solids-candidates.cjs",
+      "sha256": "586761445c54fd54ed6ccdc70013dcb5e12ec87cf54c1ccc56b6efd56584733d",
+      "bytes": 28298
+    },
+    {
+      "file": "scripts/content/exact-source-candidate-kit.cjs",
+      "sha256": "04cfac695e61598941781e91e48aa2b9f43d3e71f11df2c79bd02d52bad124dc",
+      "bytes": 7654
+    },
+    {
+      "file": "scripts/qa/source-candidate-preflight.cjs",
+      "sha256": "46120b073a8474947b4d8de5f3b60af1b373b26af84ee38034a119b57908f137",
+      "bytes": 7709
+    },
+    {
+      "file": "scripts/qa/verify-source-candidates.cjs",
+      "sha256": "a90aeda1fb30f89172aaa1d89c1f41e434298db1e8a071ea6a443f2f445cc089",
+      "bytes": 19067
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/03376fee6a87741f3cc13d9c7e4c458826fe510441731bf0ab6214c08f709dd2.svg",
+      "sha256": "03376fee6a87741f3cc13d9c7e4c458826fe510441731bf0ab6214c08f709dd2",
+      "bytes": 10884
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/091a814c556cc8dddfc0687d57ca385e615798c745928df1c5066250b500c628.svg",
+      "sha256": "091a814c556cc8dddfc0687d57ca385e615798c745928df1c5066250b500c628",
+      "bytes": 10974
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/0c945c70054a276c8b706d0e088cc08e9b96d9960df3c1a2b54b81070d187e53.svg",
+      "sha256": "0c945c70054a276c8b706d0e088cc08e9b96d9960df3c1a2b54b81070d187e53",
+      "bytes": 752
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/1343881d917a317d1d7f75570621adb05193585c5c9b2873458cf6607dbad044.svg",
+      "sha256": "1343881d917a317d1d7f75570621adb05193585c5c9b2873458cf6607dbad044",
+      "bytes": 660
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/152e4873971fa442bf2980be605c07059eef30083275f399e2f6f1591b058c26.svg",
+      "sha256": "152e4873971fa442bf2980be605c07059eef30083275f399e2f6f1591b058c26",
+      "bytes": 10869
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/186d54596c8f35e36da3d4e3c8c165a6cc39de2b483223e1f31ce080927e9603.svg",
+      "sha256": "186d54596c8f35e36da3d4e3c8c165a6cc39de2b483223e1f31ce080927e9603",
+      "bytes": 10974
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/1899aa41b8a5071a5d94353db5e46eabc75bf186ab4c8e389c6ef945396260ee.svg",
+      "sha256": "1899aa41b8a5071a5d94353db5e46eabc75bf186ab4c8e389c6ef945396260ee",
+      "bytes": 648
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/251c325e75647daf61c1e14ec40d9cb6ac713a62a1b22242635bb987097c4c13.svg",
+      "sha256": "251c325e75647daf61c1e14ec40d9cb6ac713a62a1b22242635bb987097c4c13",
+      "bytes": 562
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/2a753c96513d91644866207eb7f1fe4fb63f6f17ad851c34bdd429d17671e599.svg",
+      "sha256": "2a753c96513d91644866207eb7f1fe4fb63f6f17ad851c34bdd429d17671e599",
+      "bytes": 10878
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/2e83e3493df83ca724b2b6d5e64c5aa5c6e01fc1b075737d24059f2032ce2467.svg",
+      "sha256": "2e83e3493df83ca724b2b6d5e64c5aa5c6e01fc1b075737d24059f2032ce2467",
+      "bytes": 10884
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/376a9be39b8147e04691e347db69bc8ae57ee6fe2b0b8142b1f5e380ee1cb560.svg",
+      "sha256": "376a9be39b8147e04691e347db69bc8ae57ee6fe2b0b8142b1f5e380ee1cb560",
+      "bytes": 574
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/5903d03310634d488ccf6c191bfcc526ea54dca5fa0a3f11a29fcbff9eed1a30.svg",
+      "sha256": "5903d03310634d488ccf6c191bfcc526ea54dca5fa0a3f11a29fcbff9eed1a30",
+      "bytes": 10964
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/64bb0abe8e7c10668ac90421d33c1f9ddec14519dc682f48dfe68ac00624ee56.svg",
+      "sha256": "64bb0abe8e7c10668ac90421d33c1f9ddec14519dc682f48dfe68ac00624ee56",
+      "bytes": 10883
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/6bdb09b794a61fdd438ae8b62d6da3b72fed707e67b4ebe38b9074b76c96e664.svg",
+      "sha256": "6bdb09b794a61fdd438ae8b62d6da3b72fed707e67b4ebe38b9074b76c96e664",
+      "bytes": 10883
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/77015fdb02b754a4c873b2e6fb477c06f6bf20720cee9375b1fa9e12f6869c98.svg",
+      "sha256": "77015fdb02b754a4c873b2e6fb477c06f6bf20720cee9375b1fa9e12f6869c98",
+      "bytes": 10883
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/7eab6b8bd4d33edf8493320748b1e682feef7845a7a05fb9be0fda07f202ac01.svg",
+      "sha256": "7eab6b8bd4d33edf8493320748b1e682feef7845a7a05fb9be0fda07f202ac01",
+      "bytes": 10963
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/8748f6edea27527516b572a5fbd6a75088bf365f83d3a3661f14eaf50fec1459.svg",
+      "sha256": "8748f6edea27527516b572a5fbd6a75088bf365f83d3a3661f14eaf50fec1459",
+      "bytes": 10964
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/915a01dc652e526525978382e56f7c98abdf5d6203297c01ec2c2a35bc549a95.svg",
+      "sha256": "915a01dc652e526525978382e56f7c98abdf5d6203297c01ec2c2a35bc549a95",
+      "bytes": 764
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/a6cdec7c272d7bdafb40cdf09e6753d08798a65a24781ed16ad2ec1d519849b8.svg",
+      "sha256": "a6cdec7c272d7bdafb40cdf09e6753d08798a65a24781ed16ad2ec1d519849b8",
+      "bytes": 10883
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/bdacd1c3457bf832d65d7e2181f5b18e8a5be657c693d5549e246e4b3f760a8b.svg",
+      "sha256": "bdacd1c3457bf832d65d7e2181f5b18e8a5be657c693d5549e246e4b3f760a8b",
+      "bytes": 10898
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/d315afedcf66e264ae83af7f1fc5719b03d39e47aedb9a62446a88dc3f099729.svg",
+      "sha256": "d315afedcf66e264ae83af7f1fc5719b03d39e47aedb9a62446a88dc3f099729",
+      "bytes": 10963
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/d3b9a2fb53b2b2ff819bc8bbd5af97c9ece95175d63e97a025ccfb70b4b7a8c2.svg",
+      "sha256": "d3b9a2fb53b2b2ff819bc8bbd5af97c9ece95175d63e97a025ccfb70b4b7a8c2",
+      "bytes": 10963
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/efd3f89763478db257d29730b36fe551ba6029d1f5643227c0825cab2a13d094.svg",
+      "sha256": "efd3f89763478db257d29730b36fe551ba6029d1f5643227c0825cab2a13d094",
+      "bytes": 458
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/ff611e26e360921a19afdf33672d376d5d1ca6867460a8265ec954f98e34734a.svg",
+      "sha256": "ff611e26e360921a19afdf33672d376d5d1ca6867460a8265ec954f98e34734a",
+      "bytes": 470
+    },
+    {
+      "file": "apps/web/public/question-assets/source-math-v1/ff99bde7d2a23343a918ce0d1180f9914572b7da74c42f34649c4c3c914169c1.svg",
+      "sha256": "ff99bde7d2a23343a918ce0d1180f9914572b7da74c42f34649c4c3c914169c1",
+      "bytes": 10976
+    },
+    {
+      "file": "scripts/content/source-math-visuals.cjs",
+      "sha256": "693a212dbdffd57bd3d56b53416abf2993dd66c1ac8a5b7068117230afa79bae",
+      "bytes": 2892
+    },
+    {
+      "file": "scripts/qa/source-candidate-visuals.cjs",
+      "sha256": "c1f16dfb8f17b39ed3b36818ffb97ce0185aa68b1e3f48cf90bce1e4fb4b43fc",
+      "bytes": 3777
+    },
+    {
+      "file": "resources/compatibility/math-before-figures-schema36-reader-v1.json.gz",
+      "sha256": "43bdcb143a9dc11ea39892d17b4d9d8453e5c6f84a0ea44cff4430959e2b7e7e",
+      "bytes": 373780
+    },
+    {
+      "file": "resources/compatibility/math-before-figures-schema36-reader-v1.receipt.json",
+      "sha256": "a606e2baffcffb3bcfa9caeb2523f13ae8d7dd6ed29ca8811fef48796c4d1501",
+      "bytes": 374
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-02T17:53:12.530Z",
+  "passed": false,
+  "phase": "archive-inventory",
+  "stagingStarted": false,
+  "reason": "Print render folder included mechanical pdfinfo logs and extracted preview text. Narrowed archive to selected PNG page renders; original local evidence retained.",
+  "removedFromPublicationArchive": [
+    "pdf-render-first/pdfinfo.log",
+    "pdf-render-first/pdftoppm.log",
+    "pdf-render-first/pdftotext.log",
+    "pdf-render-final/pdfinfo.log",
+    "pdf-render-final/pdftoppm.log",
+    "pdf-render-final/pdftotext.log"
+  ],
+  "finalResolution": "Stage scanner still rejects private files, databases and logs."
+}

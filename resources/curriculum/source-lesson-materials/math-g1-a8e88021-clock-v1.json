@@ -1,5 +1,5 @@
 {
-  "format": "source-following-original-materials-v1",
+  "format": "source-following-original-materials-v2",
   "status": "editorial_candidate",
   "sourceLessons": [
     {
@@ -22,7 +22,387 @@
   "scoringReviewed": false,
   "familyIndependenceReviewed": false,
   "automaticPublication": false,
-  "reservePolicy": "49道均为未审原创候选：每目标3道即时、4道拟议间隔，不等独立题族或充分库存。课堂受控钟面保留连续针位；现有材料用明确针位文字及本人拨针或标清图稿核查，原生逐题钟面读图库存仍待建设审核。本课不强求准确读分、不代写真实作息或操作、不自动发布或认定掌握保持。",
+  "reservePolicy": "49道均为未审原创候选：每目标3道即时、4道拟议间隔，不等独立题族或充分库存。已为明确读图任务附有限的原创受控钟面，条件不足的文字题不补造隐藏针位。图题身份不因换图重置，图示数量不等独立性或充分库存。本课不强求准确读分，不代写真实作息或操作，不自动发布或认定掌握保持。",
+  "minimumWriter": "source-candidates-visual-documents-v2",
+  "visualAssets": [
+    {
+      "url": "/question-assets/source-math-v1/03376fee6a87741f3cc13d9c7e4c458826fe510441731bf0ab6214c08f709dd2.svg",
+      "sha256": "03376fee6a87741f3cc13d9c7e4c458826fe510441731bf0ab6214c08f709dd2",
+      "bytes": 10884,
+      "width": 240,
+      "height": 264,
+      "figure": {
+        "kind": "clocks",
+        "title": "原创钟面观察卡",
+        "showDigitalTime": false,
+        "showHandLabels": false,
+        "clocks": [
+          {
+            "hour": 7,
+            "minute": 0,
+            "caption": ""
+          }
+        ]
+      },
+      "index": 0
+    },
+    {
+      "url": "/question-assets/source-math-v1/091a814c556cc8dddfc0687d57ca385e615798c745928df1c5066250b500c628.svg",
+      "sha256": "091a814c556cc8dddfc0687d57ca385e615798c745928df1c5066250b500c628",
+      "bytes": 10974,
+      "width": 240,
+      "height": 264,
+      "figure": {
+        "kind": "clocks",
+        "title": "原创钟面观察卡",
+        "showDigitalTime": false,
+        "showHandLabels": false,
+        "clocks": [
+          {
+            "hour": 11,
+            "minute": 58,
+            "caption": "甲图"
+          },
+          {
+            "hour": 12,
+            "minute": 2,
+            "caption": "乙图"
+          }
+        ]
+      },
+      "index": 1
+    },
+    {
+      "url": "/question-assets/source-math-v1/152e4873971fa442bf2980be605c07059eef30083275f399e2f6f1591b058c26.svg",
+      "sha256": "152e4873971fa442bf2980be605c07059eef30083275f399e2f6f1591b058c26",
+      "bytes": 10869,
+      "width": 240,
+      "height": 264,
+      "figure": {
+        "kind": "clocks",
+        "title": "原创钟面观察卡",
+        "showDigitalTime": false,
+        "showHandLabels": false,
+        "clocks": [
+          {
+            "hour": 12,
+            "minute": 0,
+            "caption": ""
+          }
+        ]
+      },
+      "index": 0
+    },
+    {
+      "url": "/question-assets/source-math-v1/186d54596c8f35e36da3d4e3c8c165a6cc39de2b483223e1f31ce080927e9603.svg",
+      "sha256": "186d54596c8f35e36da3d4e3c8c165a6cc39de2b483223e1f31ce080927e9603",
+      "bytes": 10974,
+      "width": 240,
+      "height": 264,
+      "figure": {
+        "kind": "clocks",
+        "title": "原创钟面观察卡",
+        "showDigitalTime": false,
+        "showHandLabels": false,
+        "clocks": [
+          {
+            "hour": 5,
+            "minute": 58,
+            "caption": "甲图"
+          },
+          {
+            "hour": 6,
+            "minute": 0,
+            "caption": "乙图"
+          }
+        ]
+      },
+      "index": 0
+    },
+    {
+      "url": "/question-assets/source-math-v1/2a753c96513d91644866207eb7f1fe4fb63f6f17ad851c34bdd429d17671e599.svg",
+      "sha256": "2a753c96513d91644866207eb7f1fe4fb63f6f17ad851c34bdd429d17671e599",
+      "bytes": 10878,
+      "width": 240,
+      "height": 264,
+      "figure": {
+        "kind": "clocks",
+        "title": "原创钟面观察卡",
+        "showDigitalTime": false,
+        "showHandLabels": false,
+        "clocks": [
+          {
+            "hour": 5,
+            "minute": 58,
+            "caption": "甲图"
+          },
+          {
+            "hour": 6,
+            "minute": 0,
+            "caption": "乙图"
+          }
+        ]
+      },
+      "index": 1
+    },
+    {
+      "url": "/question-assets/source-math-v1/2e83e3493df83ca724b2b6d5e64c5aa5c6e01fc1b075737d24059f2032ce2467.svg",
+      "sha256": "2e83e3493df83ca724b2b6d5e64c5aa5c6e01fc1b075737d24059f2032ce2467",
+      "bytes": 10884,
+      "width": 240,
+      "height": 264,
+      "figure": {
+        "kind": "clocks",
+        "title": "原创钟面观察卡",
+        "showDigitalTime": false,
+        "showHandLabels": false,
+        "clocks": [
+          {
+            "hour": 4,
+            "minute": 0,
+            "caption": ""
+          }
+        ]
+      },
+      "index": 0
+    },
+    {
+      "url": "/question-assets/source-math-v1/5903d03310634d488ccf6c191bfcc526ea54dca5fa0a3f11a29fcbff9eed1a30.svg",
+      "sha256": "5903d03310634d488ccf6c191bfcc526ea54dca5fa0a3f11a29fcbff9eed1a30",
+      "bytes": 10964,
+      "width": 240,
+      "height": 264,
+      "figure": {
+        "kind": "clocks",
+        "title": "原创钟面观察卡",
+        "showDigitalTime": false,
+        "showHandLabels": false,
+        "clocks": [
+          {
+            "hour": 10,
+            "minute": 2,
+            "caption": ""
+          }
+        ]
+      },
+      "index": 0
+    },
+    {
+      "url": "/question-assets/source-math-v1/64bb0abe8e7c10668ac90421d33c1f9ddec14519dc682f48dfe68ac00624ee56.svg",
+      "sha256": "64bb0abe8e7c10668ac90421d33c1f9ddec14519dc682f48dfe68ac00624ee56",
+      "bytes": 10883,
+      "width": 240,
+      "height": 264,
+      "figure": {
+        "kind": "clocks",
+        "title": "原创钟面观察卡",
+        "showDigitalTime": false,
+        "showHandLabels": false,
+        "clocks": [
+          {
+            "hour": 1,
+            "minute": 0,
+            "caption": ""
+          }
+        ]
+      },
+      "index": 0
+    },
+    {
+      "url": "/question-assets/source-math-v1/6bdb09b794a61fdd438ae8b62d6da3b72fed707e67b4ebe38b9074b76c96e664.svg",
+      "sha256": "6bdb09b794a61fdd438ae8b62d6da3b72fed707e67b4ebe38b9074b76c96e664",
+      "bytes": 10883,
+      "width": 240,
+      "height": 264,
+      "figure": {
+        "kind": "clocks",
+        "title": "原创钟面观察卡",
+        "showDigitalTime": false,
+        "showHandLabels": false,
+        "clocks": [
+          {
+            "hour": 2,
+            "minute": 0,
+            "caption": ""
+          }
+        ]
+      },
+      "index": 0
+    },
+    {
+      "url": "/question-assets/source-math-v1/77015fdb02b754a4c873b2e6fb477c06f6bf20720cee9375b1fa9e12f6869c98.svg",
+      "sha256": "77015fdb02b754a4c873b2e6fb477c06f6bf20720cee9375b1fa9e12f6869c98",
+      "bytes": 10883,
+      "width": 240,
+      "height": 264,
+      "figure": {
+        "kind": "clocks",
+        "title": "原创钟面观察卡",
+        "showDigitalTime": false,
+        "showHandLabels": false,
+        "clocks": [
+          {
+            "hour": 9,
+            "minute": 0,
+            "caption": ""
+          }
+        ]
+      },
+      "index": 0
+    },
+    {
+      "url": "/question-assets/source-math-v1/7eab6b8bd4d33edf8493320748b1e682feef7845a7a05fb9be0fda07f202ac01.svg",
+      "sha256": "7eab6b8bd4d33edf8493320748b1e682feef7845a7a05fb9be0fda07f202ac01",
+      "bytes": 10963,
+      "width": 240,
+      "height": 264,
+      "figure": {
+        "kind": "clocks",
+        "title": "原创钟面观察卡",
+        "showDigitalTime": false,
+        "showHandLabels": false,
+        "clocks": [
+          {
+            "hour": 7,
+            "minute": 58,
+            "caption": ""
+          }
+        ]
+      },
+      "index": 0
+    },
+    {
+      "url": "/question-assets/source-math-v1/8748f6edea27527516b572a5fbd6a75088bf365f83d3a3661f14eaf50fec1459.svg",
+      "sha256": "8748f6edea27527516b572a5fbd6a75088bf365f83d3a3661f14eaf50fec1459",
+      "bytes": 10964,
+      "width": 240,
+      "height": 264,
+      "figure": {
+        "kind": "clocks",
+        "title": "原创钟面观察卡",
+        "showDigitalTime": false,
+        "showHandLabels": false,
+        "clocks": [
+          {
+            "hour": 3,
+            "minute": 2,
+            "caption": ""
+          }
+        ]
+      },
+      "index": 0
+    },
+    {
+      "url": "/question-assets/source-math-v1/a6cdec7c272d7bdafb40cdf09e6753d08798a65a24781ed16ad2ec1d519849b8.svg",
+      "sha256": "a6cdec7c272d7bdafb40cdf09e6753d08798a65a24781ed16ad2ec1d519849b8",
+      "bytes": 10883,
+      "width": 240,
+      "height": 264,
+      "figure": {
+        "kind": "clocks",
+        "title": "原创钟面观察卡",
+        "showDigitalTime": false,
+        "showHandLabels": false,
+        "clocks": [
+          {
+            "hour": 10,
+            "minute": 0,
+            "caption": ""
+          }
+        ]
+      },
+      "index": 0
+    },
+    {
+      "url": "/question-assets/source-math-v1/bdacd1c3457bf832d65d7e2181f5b18e8a5be657c693d5549e246e4b3f760a8b.svg",
+      "sha256": "bdacd1c3457bf832d65d7e2181f5b18e8a5be657c693d5549e246e4b3f760a8b",
+      "bytes": 10898,
+      "width": 240,
+      "height": 264,
+      "figure": {
+        "kind": "clocks",
+        "title": "原创钟面观察卡",
+        "showDigitalTime": false,
+        "showHandLabels": false,
+        "clocks": [
+          {
+            "hour": 11,
+            "minute": 0,
+            "caption": ""
+          }
+        ]
+      },
+      "index": 0
+    },
+    {
+      "url": "/question-assets/source-math-v1/d315afedcf66e264ae83af7f1fc5719b03d39e47aedb9a62446a88dc3f099729.svg",
+      "sha256": "d315afedcf66e264ae83af7f1fc5719b03d39e47aedb9a62446a88dc3f099729",
+      "bytes": 10963,
+      "width": 240,
+      "height": 264,
+      "figure": {
+        "kind": "clocks",
+        "title": "原创钟面观察卡",
+        "showDigitalTime": false,
+        "showHandLabels": false,
+        "clocks": [
+          {
+            "hour": 5,
+            "minute": 2,
+            "caption": ""
+          }
+        ]
+      },
+      "index": 0
+    },
+    {
+      "url": "/question-assets/source-math-v1/d3b9a2fb53b2b2ff819bc8bbd5af97c9ece95175d63e97a025ccfb70b4b7a8c2.svg",
+      "sha256": "d3b9a2fb53b2b2ff819bc8bbd5af97c9ece95175d63e97a025ccfb70b4b7a8c2",
+      "bytes": 10963,
+      "width": 240,
+      "height": 264,
+      "figure": {
+        "kind": "clocks",
+        "title": "原创钟面观察卡",
+        "showDigitalTime": false,
+        "showHandLabels": false,
+        "clocks": [
+          {
+            "hour": 8,
+            "minute": 2,
+            "caption": ""
+          }
+        ]
+      },
+      "index": 0
+    },
+    {
+      "url": "/question-assets/source-math-v1/ff99bde7d2a23343a918ce0d1180f9914572b7da74c42f34649c4c3c914169c1.svg",
+      "sha256": "ff99bde7d2a23343a918ce0d1180f9914572b7da74c42f34649c4c3c914169c1",
+      "bytes": 10976,
+      "width": 240,
+      "height": 264,
+      "figure": {
+        "kind": "clocks",
+        "title": "原创钟面观察卡",
+        "showDigitalTime": false,
+        "showHandLabels": false,
+        "clocks": [
+          {
+            "hour": 11,
+            "minute": 58,
+            "caption": "甲图"
+          },
+          {
+            "hour": 12,
+            "minute": 2,
+            "caption": "乙图"
+          }
+        ]
+      },
+      "index": 0
+    }
+  ],
   "groups": [
     {
       "lesson": "clock",
@@ -157,30 +537,72 @@
           "purpose": "understanding",
           "dimension": "understanding",
           "proposedIntervalDays": null,
-          "stem": "原创钟面分针正指12、时针正指4，现在几时？请把两针依据说完整。",
+          "stem": "观察原创钟面，现在是几时？请把两针的观察依据说完整。",
           "answer": "现在4时，分针12说明整时，时针4说明具体是4时，不能略掉其中一个条件。",
           "analysis": "现在4时，分针12说明整时，时针4说明具体是4时，不能略掉其中一个条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/2e83e3493df83ca724b2b6d5e64c5aa5c6e01fc1b075737d24059f2032ce2467.svg",
+              "alt": "较短指针指向数字4；较长指针指向数字12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "2e83e3493df83ca724b2b6d5e64c5aa5c6e01fc1b075737d24059f2032ce2467",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-both-hands-whole-hour-2",
           "purpose": "procedure",
           "dimension": "procedure",
           "proposedIntervalDays": null,
-          "stem": "原创钟面分针12、时针9。读当前整时后，能否只凭它断定上午或晚上？",
+          "stem": "观察原创钟面，读出当前整时。单凭这面钟能确定上午或晚上吗？说明依据。",
           "answer": "读9时，两针满足当前整时条件；上午晚上仍需情境，单凭这面钟不能确定。",
           "analysis": "读9时，两针满足当前整时条件；上午晚上仍需情境，单凭这面钟不能确定。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/77015fdb02b754a4c873b2e6fb477c06f6bf20720cee9375b1fa9e12f6869c98.svg",
+              "alt": "较短指针指向数字9；较长指针指向数字12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "77015fdb02b754a4c873b2e6fb477c06f6bf20720cee9375b1fa9e12f6869c98",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-both-hands-whole-hour-3",
           "purpose": "transfer",
           "dimension": "transfer",
           "proposedIntervalDays": null,
-          "stem": "原创普通两针钟面两针都指12，应读12时还是因为重合就不能读？",
+          "stem": "观察原创钟面，两针重合时还能读出几时吗？说明两针各自的位置与身份。",
           "answer": "读12时，分针12与时针12同时满足整时条件；重合不等没有时针或必须改写钟面0时。",
           "analysis": "读12时，分针12与时针12同时满足整时条件；重合不等没有时针或必须改写钟面0时。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/152e4873971fa442bf2980be605c07059eef30083275f399e2f6f1591b058c26.svg",
+              "alt": "较短指针指向数字12；较长指针指向数字12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "152e4873971fa442bf2980be605c07059eef30083275f399e2f6f1591b058c26",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-both-hands-whole-hour-4",
@@ -197,30 +619,72 @@
           "purpose": "retention",
           "dimension": "procedure",
           "proposedIntervalDays": 3,
-          "stem": "原创分针12、时针2，学生只看长针而读12时，怎样用两针纠正？",
+          "stem": "有人只看原创钟面的长针，把它记为12时。记录正确吗？核两针后说明应怎样改。",
           "answer": "应读2时；长分针12说明是整时，具体几时由短时针2提供，两针信息不能互相代替。",
           "analysis": "应读2时；长分针12说明是整时，具体几时由短时针2提供，两针信息不能互相代替。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/6bdb09b794a61fdd438ae8b62d6da3b72fed707e67b4ebe38b9074b76c96e664.svg",
+              "alt": "较短指针指向数字2；较长指针指向数字12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "6bdb09b794a61fdd438ae8b62d6da3b72fed707e67b4ebe38b9074b76c96e664",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-both-hands-whole-hour-6",
           "purpose": "retention",
           "dimension": "transfer",
           "proposedIntervalDays": 7,
-          "stem": "原创分针刚过12、短时针刚过5，可直接说5时整吗？本课怎样表达？",
+          "stem": "观察原创钟面，可以直接说5时整吗？本课可以怎样表达，并说明依据？",
           "answer": "不是5时整，可说5时过了一点儿；刚过和正到不同，不强求准确说几分。",
           "analysis": "不是5时整，可说5时过了一点儿；刚过和正到不同，不强求准确说几分。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/d315afedcf66e264ae83af7f1fc5719b03d39e47aedb9a62446a88dc3f099729.svg",
+              "alt": "较短指针在数字5和6之间，靠近5；较长指针在数字12和1之间，靠近12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "d315afedcf66e264ae83af7f1fc5719b03d39e47aedb9a62446a88dc3f099729",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-both-hands-whole-hour-7",
           "purpose": "retention",
           "dimension": "understanding",
           "proposedIntervalDays": 14,
-          "stem": "原创分针12、时针10，为什么不能按最近学过的7时例子直接答7时？",
+          "stem": "观察原创钟面，应读成最近学过的7时吗？请根据当前两针独立说明。",
           "answer": "当前应读10时，须核本图分针12、时针10；旧例时间不能代当前两针条件。",
           "analysis": "当前应读10时，须核本图分针12、时针10；旧例时间不能代当前两针条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/a6cdec7c272d7bdafb40cdf09e6753d08798a65a24781ed16ad2ec1d519849b8.svg",
+              "alt": "较短指针指向数字10；较长指针指向数字12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "a6cdec7c272d7bdafb40cdf09e6753d08798a65a24781ed16ad2ec1d519849b8",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         }
       ]
     },
@@ -257,10 +721,24 @@
           "purpose": "understanding",
           "dimension": "understanding",
           "proposedIntervalDays": null,
-          "stem": "原创钟面分针12、时针7，确认是7时后，电子整时应怎样写？",
+          "stem": "观察原创钟面，读出整时并写成电子整时表示。不要只沿用其他钟面的例子。",
           "answer": "可写7:00，小时是7，冒号后00对应整时；不能把小时与后面的00颠倒。",
           "analysis": "可写7:00，小时是7，冒号后00对应整时；不能把小时与后面的00颠倒。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/03376fee6a87741f3cc13d9c7e4c458826fe510441731bf0ab6214c08f709dd2.svg",
+              "alt": "较短指针指向数字7；较长指针指向数字12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "03376fee6a87741f3cc13d9c7e4c458826fe510441731bf0ab6214c08f709dd2",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-whole-hour-digital-match-2",
@@ -277,10 +755,24 @@
           "purpose": "transfer",
           "dimension": "transfer",
           "proposedIntervalDays": null,
-          "stem": "原创普通钟面两针都在12，电子12:00是否对应？请说明而不省略一根针。",
+          "stem": "观察原创钟面，电子12:00是否与它对应？请说明两针条件，不省略重合的一根针。",
           "answer": "对应12时，分针12、时针12均满足；两针重合仍有各自身份，不改成另一个未要求的表示。",
           "analysis": "对应12时，分针12、时针12均满足；两针重合仍有各自身份，不改成另一个未要求的表示。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/152e4873971fa442bf2980be605c07059eef30083275f399e2f6f1591b058c26.svg",
+              "alt": "较短指针指向数字12；较长指针指向数字12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "152e4873971fa442bf2980be605c07059eef30083275f399e2f6f1591b058c26",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-whole-hour-digital-match-4",
@@ -307,10 +799,24 @@
           "purpose": "retention",
           "dimension": "transfer",
           "proposedIntervalDays": 7,
-          "stem": "原创分针12、时针1，没有上午下午信息。写1:00后能自动补下午吗？",
+          "stem": "观察原创钟面，写出对应电子整时表示。没有其他情境时，能直接加上下午吗？",
           "answer": "不能，1:00对应当前1时整，下午信息没有给；电子写法本身不能代情境提供时段。",
           "analysis": "不能，1:00对应当前1时整，下午信息没有给；电子写法本身不能代情境提供时段。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/64bb0abe8e7c10668ac90421d33c1f9ddec14519dc682f48dfe68ac00624ee56.svg",
+              "alt": "较短指针指向数字1；较长指针指向数字12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "64bb0abe8e7c10668ac90421d33c1f9ddec14519dc682f48dfe68ac00624ee56",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-whole-hour-digital-match-7",
@@ -457,30 +963,72 @@
           "purpose": "understanding",
           "dimension": "understanding",
           "proposedIntervalDays": null,
-          "stem": "原创当前7时整，过一小时几时？说明普通钟面两针应在什么位置。",
+          "stem": "以原创图中的当前整时为起点，过一小时是几时？说明过后的时针和分针位置。",
           "answer": "过一小时8时，时针8、分针回12；当前没给时段，不凭空补上午或晚上。",
           "analysis": "过一小时8时，时针8、分针回12；当前没给时段，不凭空补上午或晚上。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/03376fee6a87741f3cc13d9c7e4c458826fe510441731bf0ab6214c08f709dd2.svg",
+              "alt": "较短指针指向数字7；较长指针指向数字12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "03376fee6a87741f3cc13d9c7e4c458826fe510441731bf0ab6214c08f709dd2",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-whole-hour-successor-wrap-2",
           "purpose": "procedure",
           "dimension": "procedure",
           "proposedIntervalDays": null,
-          "stem": "原创当前11时整，过一小时与再过一小时分别几时？按顺序说明。",
+          "stem": "以原创图中的整时为起点，过一小时、再过一小时分别是几时？按顺序说明。",
           "answer": "依次12时、1时，钟面12后接1；每次整时分针在12，不把本课钟面写成13时。",
           "analysis": "依次12时、1时，钟面12后接1；每次整时分针在12，不把本课钟面写成13时。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/bdacd1c3457bf832d65d7e2181f5b18e8a5be657c693d5549e246e4b3f760a8b.svg",
+              "alt": "较短指针指向数字11；较长指针指向数字12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "bdacd1c3457bf832d65d7e2181f5b18e8a5be657c693d5549e246e4b3f760a8b",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-whole-hour-successor-wrap-3",
           "purpose": "transfer",
           "dimension": "transfer",
           "proposedIntervalDays": null,
-          "stem": "当前12时整，学生说过一小时是钟面13时。应怎样按本课钟面改正？",
+          "stem": "以原创图中的整时为起点，学生把过一小时的结果写成钟面13时，应怎样改？",
           "answer": "应改成1时，钟面12后接1；本题未给也未要求24小时制转换，不另补时段。",
           "analysis": "应改成1时，钟面12后接1；本题未给也未要求24小时制转换，不另补时段。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/152e4873971fa442bf2980be605c07059eef30083275f399e2f6f1591b058c26.svg",
+              "alt": "较短指针指向数字12；较长指针指向数字12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "152e4873971fa442bf2980be605c07059eef30083275f399e2f6f1591b058c26",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-whole-hour-successor-wrap-4",
@@ -497,30 +1045,72 @@
           "purpose": "retention",
           "dimension": "procedure",
           "proposedIntervalDays": 3,
-          "stem": "原创从10时整开始，连续两次各过一小时，两个结果依次是什么？",
+          "stem": "从原创图中的整时开始，连续两次各过一小时。两个结果按顺序是什么？",
           "answer": "先11时、再12时；不能把起始10时错算为第一次过后的结果，整时两针均应相容。",
           "analysis": "先11时、再12时；不能把起始10时错算为第一次过后的结果，整时两针均应相容。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/a6cdec7c272d7bdafb40cdf09e6753d08798a65a24781ed16ad2ec1d519849b8.svg",
+              "alt": "较短指针指向数字10；较长指针指向数字12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "a6cdec7c272d7bdafb40cdf09e6753d08798a65a24781ed16ad2ec1d519849b8",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-whole-hour-successor-wrap-6",
           "purpose": "retention",
           "dimension": "transfer",
           "proposedIntervalDays": 7,
-          "stem": "原创当前1时整，过一小时会直接到12时吗？应按哪种顺序核查？",
+          "stem": "从原创图中的整时过一小时，会直接到12时吗？请按正确钟面顺序说明。",
           "answer": "应到2时，按时针前进顺序1后是2；不能反向数回12代过一小时。",
           "analysis": "应到2时，按时针前进顺序1后是2；不能反向数回12代过一小时。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/64bb0abe8e7c10668ac90421d33c1f9ddec14519dc682f48dfe68ac00624ee56.svg",
+              "alt": "较短指针指向数字1；较长指针指向数字12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "64bb0abe8e7c10668ac90421d33c1f9ddec14519dc682f48dfe68ac00624ee56",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-whole-hour-successor-wrap-7",
           "purpose": "retention",
           "dimension": "understanding",
           "proposedIntervalDays": 14,
-          "stem": "只给12时过一小时到1时，未说起始中午或夜里，能断定一定进入第二天吗？",
+          "stem": "以原创图中的整时为起点过一小时，没有说明起始为中午或夜里，能断定一定进入第二天吗？",
           "answer": "不能，钟面顺序支持到1时，是否跨日还依赖起始时段，未给信息应保留未知。",
           "analysis": "不能，钟面顺序支持到1时，是否跨日还依赖起始时段，未给信息应保留未知。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/152e4873971fa442bf2980be605c07059eef30083275f399e2f6f1591b058c26.svg",
+              "alt": "较短指针指向数字12；较长指针指向数字12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "152e4873971fa442bf2980be605c07059eef30083275f399e2f6f1591b058c26",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         }
       ]
     },
@@ -557,40 +1147,110 @@
           "purpose": "understanding",
           "dimension": "understanding",
           "proposedIntervalDays": null,
-          "stem": "原创分针快到12但未到、时针快到8，应说快8时了还是8时整？为什么？",
+          "stem": "观察原创钟面，可说快8时了还是8时整？请根据两针位置说明，不强求准确几分。",
           "answer": "可说快8时了，分针未正指12尚不满足整时条件；不能把接近当作已经8时整。",
           "analysis": "可说快8时了，分针未正指12尚不满足整时条件；不能把接近当作已经8时整。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/7eab6b8bd4d33edf8493320748b1e682feef7845a7a05fb9be0fda07f202ac01.svg",
+              "alt": "较短指针在数字7和8之间，靠近8；较长指针在数字11和12之间，靠近12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "7eab6b8bd4d33edf8493320748b1e682feef7845a7a05fb9be0fda07f202ac01",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-just-before-versus-after-2",
           "purpose": "procedure",
           "dimension": "procedure",
           "proposedIntervalDays": null,
-          "stem": "原创分针刚过12、短时针刚过10，本课可怎样说，与快10时有何区别？",
+          "stem": "观察原创钟面，本课可以怎样说当前时间？与快10时了有什么区别？",
           "answer": "可说10时过了一点儿，已经过与尚未到不同；不强求精确几分，不能反说快10时。",
           "analysis": "可说10时过了一点儿，已经过与尚未到不同；不强求精确几分，不能反说快10时。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/5903d03310634d488ccf6c191bfcc526ea54dca5fa0a3f11a29fcbff9eed1a30.svg",
+              "alt": "较短指针在数字10和11之间，靠近10；较长指针在数字12和1之间，靠近12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "5903d03310634d488ccf6c191bfcc526ea54dca5fa0a3f11a29fcbff9eed1a30",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-just-before-versus-after-3",
           "purpose": "transfer",
           "dimension": "transfer",
           "proposedIntervalDays": null,
-          "stem": "甲分针未到12且时针接近6，乙分针正到12且时针正到6，能都说6时整吗？",
+          "stem": "观察原创甲乙两面钟，它们能都说成6时整吗？分别核两针并给合适表达。",
           "answer": "不能，甲可说快6时，乙才是6时整；须核两针共同条件，不能只看靠近6。",
           "analysis": "不能，甲可说快6时，乙才是6时整；须核两针共同条件，不能只看靠近6。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/186d54596c8f35e36da3d4e3c8c165a6cc39de2b483223e1f31ce080927e9603.svg",
+              "alt": "甲图；较短指针在数字5和6之间，靠近6；较长指针在数字11和12之间，靠近12",
+              "caption": "甲图",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "186d54596c8f35e36da3d4e3c8c165a6cc39de2b483223e1f31ce080927e9603",
+                "width": 240,
+                "height": 264
+              }
+            },
+            {
+              "id": "math-image-1",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/2a753c96513d91644866207eb7f1fe4fb63f6f17ad851c34bdd429d17671e599.svg",
+              "alt": "乙图；较短指针指向数字6；较长指针指向数字12",
+              "caption": "乙图",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "2a753c96513d91644866207eb7f1fe4fb63f6f17ad851c34bdd429d17671e599",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-just-before-versus-after-4",
           "purpose": "retention",
           "dimension": "understanding",
           "proposedIntervalDays": 1,
-          "stem": "原创分针刚过12、时针刚过8，学生说快8时了，怎样用尚未到与已经过纠正？",
+          "stem": "观察原创钟面，学生说快8时了。请分清尚未到与已经过，核两针后说明怎样改。",
           "answer": "应说8时过了一点儿，因为已经过8时；快8时了对应尚未到的另一种相容针位。",
           "analysis": "应说8时过了一点儿，因为已经过8时；快8时了对应尚未到的另一种相容针位。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/d3b9a2fb53b2b2ff819bc8bbd5af97c9ece95175d63e97a025ccfb70b4b7a8c2.svg",
+              "alt": "较短指针在数字8和9之间，靠近8；较长指针在数字12和1之间，靠近12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "d3b9a2fb53b2b2ff819bc8bbd5af97c9ece95175d63e97a025ccfb70b4b7a8c2",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-just-before-versus-after-5",
@@ -607,20 +1267,62 @@
           "purpose": "retention",
           "dimension": "transfer",
           "proposedIntervalDays": 7,
-          "stem": "原创短时针略过3、分针刚过12，本课一定要精确报几分才能表达当前时间吗？",
+          "stem": "观察原创钟面，本课是否一定要精确报几分才能表达当前时间？先说合适的接近整时表达。",
           "answer": "不必，可先说3时过了一点儿，核刚过与两针位置；不把尚未要求的准确读分强作条件。",
           "analysis": "不必，可先说3时过了一点儿，核刚过与两针位置；不把尚未要求的准确读分强作条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/8748f6edea27527516b572a5fbd6a75088bf365f83d3a3661f14eaf50fec1459.svg",
+              "alt": "较短指针在数字3和4之间，靠近3；较长指针在数字12和1之间，靠近12",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "8748f6edea27527516b572a5fbd6a75088bf365f83d3a3661f14eaf50fec1459",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         },
         {
           "id": "math-g1-a8e88021-clock-just-before-versus-after-7",
           "purpose": "retention",
           "dimension": "understanding",
           "proposedIntervalDays": 14,
-          "stem": "快12时与12时过一点的两面钟，两针都近12，能因此当成完全相同的整时吗？",
+          "stem": "观察原创甲乙两面钟，两针都近12就能当成同一整时吗？请分别说明快到、正到或刚过。",
           "answer": "不能，要区分分针未到或刚过12及时针前后位置；接近同一数字不等同一时刻或12时整。",
           "analysis": "不能，要区分分针未到或刚过12及时针前后位置；接近同一数字不等同一时刻或12时整。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
-          "expectedSeconds": 180
+          "expectedSeconds": 180,
+          "blocks": [
+            {
+              "id": "math-image-0",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/ff99bde7d2a23343a918ce0d1180f9914572b7da74c42f34649c4c3c914169c1.svg",
+              "alt": "甲图；较短指针在数字11和12之间，靠近12；较长指针在数字11和12之间，靠近12",
+              "caption": "甲图",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "ff99bde7d2a23343a918ce0d1180f9914572b7da74c42f34649c4c3c914169c1",
+                "width": 240,
+                "height": 264
+              }
+            },
+            {
+              "id": "math-image-1",
+              "type": "image",
+              "url": "/question-assets/source-math-v1/091a814c556cc8dddfc0687d57ca385e615798c745928df1c5066250b500c628.svg",
+              "alt": "乙图；较短指针在数字12和1之间，靠近12；较长指针在数字12和1之间，靠近12",
+              "caption": "乙图",
+              "meta": {
+                "protocol": "source-math-image-v1",
+                "sha256": "091a814c556cc8dddfc0687d57ca385e615798c745928df1c5066250b500c628",
+                "width": 240,
+                "height": 264
+              }
+            }
+          ]
         }
       ]
     },

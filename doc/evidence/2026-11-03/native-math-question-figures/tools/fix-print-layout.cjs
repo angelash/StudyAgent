@@ -1,0 +1,3 @@
+const fs=require('fs'),path=require('path'),assert=require('assert/strict');const file=path.join(__dirname,'browser-run.cjs');let text=fs.readFileSync(file,'utf8');
+const old='<style>body{font-family:',next='<style>*,*::before,*::after{box-sizing:border-box}div:has(>figure){grid-template-columns:repeat(2,minmax(0,1fr))}div:has(>figure)>div:first-child{grid-column:1/-1}body{font-family:';assert(text.includes(old));text=text.replace(old,next);
+const before="const print=await context.newPage();await print.setContent(",after="fs.writeFileSync(path.join(folder,'native-print-dom.json'),JSON.stringify(nativeHtml),{flag:'wx'});const print=await context.newPage();await print.setContent(";assert(text.includes(before));text=text.replace(before,after);fs.writeFileSync(file,text);

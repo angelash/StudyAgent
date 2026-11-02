@@ -27,7 +27,7 @@ const {teachingSourceDescriptor,teachingHash}=load('modules/diagnostics/textbook
 const candidateFile=options['--materials']?path.resolve(root,options['--materials']):null;
 if(candidateFile&&!candidateFile.startsWith(path.join(root,'resources/curriculum/source-lesson-materials')+path.sep))throw Error('A versioned original candidate bundle is required');
 const candidateBytes=candidateFile?fs.readFileSync(candidateFile):null,candidates=candidateBytes?JSON.parse(candidateBytes):null;
-if(candidates&&(candidates.format!=='source-following-original-materials-v1'||candidates.teacherReviewed||candidates.automaticPublication))throw Error('Unapproved editorial materials only');
+if(candidates&&(!['source-following-original-materials-v1','source-following-original-materials-v2'].includes(candidates.format)||candidates.teacherReviewed||candidates.automaticPublication))throw Error('Unapproved editorial materials only');
 const contracts=require(path.join(apiRoot,'packages/contracts/dist/index.js'));
 // Reject invalid authored packets before administrator bootstrap and per-question HTTP writes.
 for(const name of lessonNames){
@@ -43,7 +43,7 @@ for(const name of lessonNames){
 const definitions=new Map(fs.readdirSync(path.join(root,'resources/curriculum/source-lessons')).filter(name=>name.endsWith('.json'))
   .flatMap(name=>JSON.parse(fs.readFileSync(path.join(root,'resources/curriculum/source-lessons',name))).definitionCandidates??[]).map(row=>[row.id,row]));
 let app,base,actor;const result={at:new Date().toISOString(),passed:false,storage:postgres?'postgres':'sqlite',scope:'All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.',bookId:validated.book.id,subject:validated.book.subject,prewriteValidation:{passed:true,selectedDrafts:validated.drafts.length,questionCount:validated.questionCount,exactOriginalSha256:validated.original.sha256,proofFingerprint:validated.proofFingerprint},drafts:[]};
-let lastWrite=0;
+let lastWrite=0,checkedVisualDocumentVersionGuard=false;
 async function call(method,url,body,expected=method==='POST'?201:200){
   if(method==='POST'&&actor){const delay=350-(Date.now()-lastWrite);if(delay>0)await new Promise(resolve=>setTimeout(resolve,delay));lastWrite=Date.now();}
   const reply=await fetch(base+url,{method,headers:{'Content-Type':'application/json',...(actor?{Authorization:'Bearer '+actor.token}:{})},...(body===undefined?{}:{body:JSON.stringify(body)}),signal:AbortSignal.timeout(30000)}),payload=await reply.json();assert.equal(reply.status,expected,method+' '+url+': '+(payload.error?.message??''));return payload.data;
@@ -88,6 +88,12 @@ async function call(method,url,body,expected=method==='POST'?201:200){
         for(const exercise of group.exercises){
           const question=await call('POST','/admin/questions',{subject:validated.book.subject,type:'subjective',stem:exercise.stem,answer:exercise.answer,
             analysis:exercise.analysis,difficultyLevel:1,knowledgePointIds:[],status:'draft'});
+          let document;
+          if(exercise.blocks){
+            const body={locale:'zh-CN',blocks:[{id:'source-statement',type:'text',text:exercise.stem},...structuredClone(exercise.blocks)],attachments:[],layoutMode:'default',accessibilityConfig:{}};
+            document=await call('POST',`/admin/questions/${question.id}/document`,body);
+            for(const[key,value]of Object.entries(body))assert.deepEqual(document[key],value,'Complete visual question document before fingerprint');
+          }
           const answerSchema={mode:group.mode,responseShape:group.mode==='short_answer'?{value:'string'}:{mediaPolicy:'student-media-v1'},
             validationRules:{required:true},gradingConfig:{rubric:group.rubric,referenceOnly:true,reviewRequired:true}};
           await call('POST',`/admin/questions/${question.id}/answer-schema`,answerSchema);
@@ -95,14 +101,16 @@ async function call(method,url,body,expected=method==='POST'?201:200){
             sourcePathOrUrl:'authored-following:'+draft.source.sourceSha256+':'+exercise.id,licenseClass:'A_INTERNAL',licenseName:'original-editorial-candidate',
             importJobId:null,reviewStatus:'pending',notes:'原创题面，不转载教材正文。仅拟议目标、评分与结构，不自动审核、发布或消耗保持库存。'};
           await call('POST',`/admin/questions/${question.id}/source`,sourceRecord);
-          const mapping={id:question.id+':candidate',questionId:question.id,questionVersion:1,atomId:group.atomId,dimension:exercise.dimension,
+          const mapping={id:question.id+':candidate',questionId:question.id,questionVersion:document?.version??1,atomId:group.atomId,dimension:exercise.dimension,
             family:group.familyProposal,probeRole:exercise.purpose==='retention'?'retention':exercise.dimension==='transfer'?'transfer':'anchor',
             expectedSeconds:exercise.expectedSeconds,difficulty:1,reviewStatus:'draft',mappingWeight:1,observationCode:'editorial_unreviewed',version:1};
+          if(document&&!checkedVisualDocumentVersionGuard){await call('POST','/admin/measurement-items',{...mapping,questionVersion:document.version-1},400);checkedVisualDocumentVersionGuard=true;}
           await call('POST','/admin/measurement-items',mapping);
           if(!savedQuestions.length)await call('POST','/admin/measurement-items',{...mapping,reviewStatus:'approved'},400);
-          const reference=await store.requestContext(()=>({measurementId:mapping.id,version:1,questionId:question.id,questionVersion:1,
+          const reference=await store.requestContext(()=>({measurementId:mapping.id,version:1,questionId:question.id,questionVersion:mapping.questionVersion,
             definitionFingerprint:atomDefinitionFingerprint(store.find('knowledgeAtoms',{id:group.atomId})),contentFingerprint:questionContentFingerprint(store,question.id)}));
-          refs.push({purpose:exercise.purpose,reference});savedQuestions.push({questionId:question.id,mappingId:mapping.id,stem:exercise.stem,answer:exercise.answer,analysis:exercise.analysis,answerSchema,sourceRecord,family:group.familyProposal});
+          if(document)assert.deepEqual((await call('GET',`/questions/${question.id}/render`)).document,document,'Authorized native renderer receives the complete saved image document');
+          refs.push({purpose:exercise.purpose,reference});savedQuestions.push({questionId:question.id,mappingId:mapping.id,stem:exercise.stem,answer:exercise.answer,analysis:exercise.analysis,answerSchema,sourceRecord,family:group.familyProposal,...(document?{document}:{} )});
         }
         for(const purpose of ['understanding','procedure','transfer','retention'])checks.push({id:slug+'-'+(checks.length+1),atomId:group.atomId,purpose,
           instructions:purpose==='retention'?'仅是四个间隔的拟议样题，审核、独立性与充分库存未通过前不能发布或安排实际复测。':'使用实际题面与人工量规核对目标表现；未审核候选不能用于正式诊断或自动评分。',
@@ -129,16 +137,18 @@ async function call(method,url,body,expected=method==='POST'?201:200){
       const question=state.questions.find(row=>row.id===item.questionId),mapping=state.measurementItems.find(row=>row.id===item.mappingId);
       assert.equal(question.stem,item.stem);assert.deepEqual(question.answer,item.answer);assert.equal(question.analysis,item.analysis);assert.equal(question.status,'draft');
       assert.equal(mapping.reviewStatus,'draft');assert.equal(mapping.family,item.family);
+      assert.equal(mapping.questionVersion,item.document?.version??1,'Mapping retains actual question document version');
       assert.equal(state.questionSources.find(row=>row.questionId===item.questionId).reviewStatus,'pending');
       const sourceRecord=state.questionSources.find(row=>row.questionId===item.questionId);
       for(const[key,value]of Object.entries(item.sourceRecord))assert.deepEqual(sourceRecord[key],value,'Exact authored-source metadata '+key);
       const schema=state.questionAnswerSchemas.find(row=>row.questionId===item.questionId);
       assert.equal(schema.mode,item.answerSchema.mode);assert.deepEqual(schema.gradingConfig,item.answerSchema.gradingConfig);
+      if(item.document)assert.deepEqual(state.questionDocuments.find(row=>row.questionId===item.questionId),item.document,'Pinned visual question document survives independent cold read');
     }
     assert.equal((state.textbookTeachingAdoptions??[]).length,0);assert.equal((state.diagnosticResponses??[]).length,0);assert.equal((state.practiceAttempts??[]).length,0);
   }finally{await db.close();}
   result.coldRead={drafts:saved.length,wholeContentAndSourceFingerprintsPreserved:true,draftQuestions:savedQuestions.length,allQuestionTextModesRubricsSourcesAndMappingsPreserved:true,
-    exactSourceNamesAndMetadataPreserved:true,publications:0,adoptions:0,learnerResponses:0};
+    exactSourceNamesAndMetadataPreserved:true,visualQuestionDocuments:savedQuestions.filter(row=>row.document).length,wholeVisualDocumentsPreserved:true,staleVisualDocumentVersionRejected:checkedVisualDocumentVersionGuard,publications:0,adoptions:0,learnerResponses:0};
   if(candidates)result.materials={file:path.relative(root,candidateFile).replaceAll('\\','/'),sha256:sha(candidateBytes),groups:candidates.groups.length,questions:savedQuestions.length,
     scoringAnchorsAreAuthoredExamplesNotStudentEvidence:true,teacherReviewed:false,independentFamiliesApproved:0,fullyStockedRetentionIntervals:0};
   result.passed=true;

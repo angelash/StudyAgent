@@ -1,0 +1,69 @@
+{
+  "at": "2026-11-02T17:42:45.964Z",
+  "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+  "source": "main synchronized to data/qa/p187",
+  "actualNativeQuestionDocuments": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 11,
+  "failed": 0,
+  "error": null,
+  "checks": [
+    {
+      "name": "all-25-served-assets-match-original-content-addresses",
+      "passed": true
+    },
+    {
+      "name": "native-saved-question:clock:whole-hour-read:0",
+      "passed": true
+    },
+    {
+      "name": "native-saved-question:clock:near-whole-hour:0",
+      "passed": true
+    },
+    {
+      "name": "native-saved-question:clock:near-whole-hour:2",
+      "passed": true
+    },
+    {
+      "name": "native-saved-question:solids:shape-classify:0",
+      "passed": true
+    },
+    {
+      "name": "native-saved-question:solids:flat-and-curved:0",
+      "passed": true
+    },
+    {
+      "name": "native-saved-question:solids:solid-and-face:2",
+      "passed": true
+    },
+    {
+      "name": "native-mobile-and-local-preview-answer-no-learning-record",
+      "passed": true
+    },
+    {
+      "name": "missing-image-blocks-native-display-and-recovers-on-reload",
+      "passed": true
+    },
+    {
+      "name": "print-preview-pdf-uses-complete-native-documents-without-reference-answers",
+      "passed": true
+    },
+    {
+      "name": "native-preview-keeps-unpublished-candidates-and-no-student-responses",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "clock-whole-hour-read-0-desktop.png",
+    "clock-near-whole-hour-0-desktop.png",
+    "clock-near-whole-hour-2-desktop.png",
+    "solids-shape-classify-0-desktop.png",
+    "solids-flat-and-curved-0-desktop.png",
+    "solids-solid-and-face-2-desktop.png",
+    "native-solids-mobile.png"
+  ],
+  "pageErrors": [],
+  "mutations": []
+}

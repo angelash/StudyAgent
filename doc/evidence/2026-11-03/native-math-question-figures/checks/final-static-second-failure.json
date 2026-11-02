@@ -1,0 +1,8 @@
+{
+  "at": "2026-11-02T17:50:25.688Z",
+  "passed": false,
+  "phase": "evidence-checker",
+  "error": "Checker compared the QA schema37 compiled auth.guard.js with the intentionally protected old formal build in main apps/api/dist.",
+  "applicationFailure": false,
+  "resolution": "Keep the entire QA application/compiled input set frozen, compare main and QA source inputs only. Formal compiled files remain protected and are not a schema37 comparison target."
+}

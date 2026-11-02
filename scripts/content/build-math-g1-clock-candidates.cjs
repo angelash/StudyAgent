@@ -1,5 +1,6 @@
 const {createKit}=require('./exact-source-candidate-kit.cjs');
 const {draft,group,write}=createKit({bookId:'archive-book:math-g1-upper-a8e880217c456db6',prefix:'source:math:g1:a8e88021:',filePrefix:'math-g1-a8e88021'});
+const visuals=require('./source-math-visuals.cjs').createMathQuestionVisuals(require('node:path').resolve(__dirname,'../..'));
 const definitions=[
  ['clock-hands','按长短和功能辨认时针分针','在明确普通两针教学钟面上辨认长分针和短时针','身份与位置分清，不以颜色粗细或指向数字作为唯一标准','钟面认识'],
  ['whole-hour-read','结合两针位置读整时','先核分针指12再按时针指向读几时','两针条件同时满足才读对应整时，不只看一针或将接近整时当整时','整时读数'],
@@ -106,4 +107,29 @@ add('clock-context','same-clock-stated-period','short_answer',['区分钟面与�
  ['同一天上午9时阅读、晚上9时看图，只因钟面相同就删除后一项当重复，合理吗？','不合理，已给不同上午晚上，虽钟面同样仍可两次活动；不能只凭钟面去重。'],
  ['同一上午8时开始，过一小时到9时，能据此断定所有人在9时都应做同一件事吗？','不能，时间关系只对应当前条件；其他人的真实任务和作息未给，不能用示例代安排或已完成记录。'],
 ]);
-write('math-g1-a8e88021-clock-v1',[lesson],groups,'49道均为未审原创候选：每目标3道即时、4道拟议间隔，不等独立题族或充分库存。课堂受控钟面保留连续针位；现有材料用明确针位文字及本人拨针或标清图稿核查，原生逐题钟面读图库存仍待建设审核。本课不强求准确读分、不代写真实作息或操作、不自动发布或认定掌握保持。');
+const illustrated=(suffix,index,hours,stem)=>{
+ const task=groups.find(g=>g.atomId.endsWith(':'+suffix)).exercises[index];task.stem=stem;
+ task.blocks=visuals.blocks({kind:'clocks',title:'原创钟面观察卡',showDigitalTime:false,showHandLabels:false,clocks:hours.map(([hour,minute=0],position)=>({hour,minute,caption:hours.length>1?['甲图','乙图','丙图','丁图'][position]:''}))});
+};
+illustrated('whole-hour-read',0,[[4]],'观察原创钟面，现在是几时？请把两针的观察依据说完整。');
+illustrated('whole-hour-read',1,[[9]],'观察原创钟面，读出当前整时。单凭这面钟能确定上午或晚上吗？说明依据。');
+illustrated('whole-hour-read',2,[[12]],'观察原创钟面，两针重合时还能读出几时吗？说明两针各自的位置与身份。');
+illustrated('whole-hour-read',4,[[2]],'有人只看原创钟面的长针，把它记为12时。记录正确吗？核两针后说明应怎样改。');
+illustrated('whole-hour-read',5,[[5,2]],'观察原创钟面，可以直接说5时整吗？本课可以怎样表达，并说明依据？');
+illustrated('whole-hour-read',6,[[10]],'观察原创钟面，应读成最近学过的7时吗？请根据当前两针独立说明。');
+illustrated('whole-hour-digital',0,[[7]],'观察原创钟面，读出整时并写成电子整时表示。不要只沿用其他钟面的例子。');
+illustrated('whole-hour-digital',2,[[12]],'观察原创钟面，电子12:00是否与它对应？请说明两针条件，不省略重合的一根针。');
+illustrated('whole-hour-digital',5,[[1]],'观察原创钟面，写出对应电子整时表示。没有其他情境时，能直接加上下午吗？');
+illustrated('one-hour-later',0,[[7]],'以原创图中的当前整时为起点，过一小时是几时？说明过后的时针和分针位置。');
+illustrated('one-hour-later',1,[[11]],'以原创图中的整时为起点，过一小时、再过一小时分别是几时？按顺序说明。');
+illustrated('one-hour-later',2,[[12]],'以原创图中的整时为起点，学生把过一小时的结果写成钟面13时，应怎样改？');
+illustrated('one-hour-later',4,[[10]],'从原创图中的整时开始，连续两次各过一小时。两个结果按顺序是什么？');
+illustrated('one-hour-later',5,[[1]],'从原创图中的整时过一小时，会直接到12时吗？请按正确钟面顺序说明。');
+illustrated('one-hour-later',6,[[12]],'以原创图中的整时为起点过一小时，没有说明起始为中午或夜里，能断定一定进入第二天吗？');
+illustrated('near-whole-hour',0,[[7,58]],'观察原创钟面，可说快8时了还是8时整？请根据两针位置说明，不强求准确几分。');
+illustrated('near-whole-hour',1,[[10,2]],'观察原创钟面，本课可以怎样说当前时间？与快10时了有什么区别？');
+illustrated('near-whole-hour',2,[[5,58],[6]],'观察原创甲乙两面钟，它们能都说成6时整吗？分别核两针并给合适表达。');
+illustrated('near-whole-hour',3,[[8,2]],'观察原创钟面，学生说快8时了。请分清尚未到与已经过，核两针后说明怎样改。');
+illustrated('near-whole-hour',5,[[3,2]],'观察原创钟面，本课是否一定要精确报几分才能表达当前时间？先说合适的接近整时表达。');
+illustrated('near-whole-hour',6,[[11,58],[12,2]],'观察原创甲乙两面钟，两针都近12就能当成同一整时吗？请分别说明快到、正到或刚过。');
+write('math-g1-a8e88021-clock-v1',[lesson],groups,'49道均为未审原创候选：每目标3道即时、4道拟议间隔，不等独立题族或充分库存。已为明确读图任务附有限的原创受控钟面，条件不足的文字题不补造隐藏针位。图题身份不因换图重置，图示数量不等独立性或充分库存。本课不强求准确读分，不代写真实作息或操作，不自动发布或认定掌握保持。',visuals.manifest());

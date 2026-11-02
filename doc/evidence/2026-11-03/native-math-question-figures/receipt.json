@@ -1,0 +1,192 @@
+{
+  "protocol": "native-math-question-figures-development-checkpoint-v1",
+  "at": "2026-11-02T17:52:15.111Z",
+  "branch": "main",
+  "baseCommit": "4f0b0ed09add9ad9eaf2e0758ae902c29d8685a5",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "sourceFiles": 34,
+  "implementation": {
+    "existingCandidateQuestions": 98,
+    "illustratedQuestions": 28,
+    "uniqueSvgAssets": 25,
+    "newQuestions": 0,
+    "existingIdentitiesPreserved": true,
+    "format": "source-following-original-materials-v2",
+    "oldV1Compatible": true,
+    "minimumWriter": "source-candidates-visual-documents-v2",
+    "databaseProtocol": 37,
+    "applicationRuntimeChanged": false
+  },
+  "validation": {
+    "static": [
+      {
+        "slug": "preparation",
+        "format": "source-following-original-materials-v1",
+        "questions": 49,
+        "imageQuestions": 0,
+        "assets": 0,
+        "identitiesPreserved": true,
+        "generatorBytesReproduced": true,
+        "editorialAnchorsConsistent": true
+      },
+      {
+        "slug": "position",
+        "format": "source-following-original-materials-v1",
+        "questions": 49,
+        "imageQuestions": 0,
+        "assets": 0,
+        "identitiesPreserved": true,
+        "generatorBytesReproduced": true,
+        "editorialAnchorsConsistent": true
+      },
+      {
+        "slug": "solids",
+        "format": "source-following-original-materials-v2",
+        "questions": 49,
+        "imageQuestions": 7,
+        "assets": 8,
+        "identitiesPreserved": true,
+        "generatorBytesReproduced": true,
+        "editorialAnchorsConsistent": true
+      },
+      {
+        "slug": "clock",
+        "format": "source-following-original-materials-v2",
+        "questions": 49,
+        "imageQuestions": 21,
+        "assets": 17,
+        "identitiesPreserved": true,
+        "generatorBytesReproduced": true,
+        "editorialAnchorsConsistent": true
+      }
+    ],
+    "newPrewriteNegatives": 18,
+    "legacyPrewriteNegatives": 15,
+    "actualPreviousV1ReaderExecuted": true,
+    "http": [
+      {
+        "slug": "solids",
+        "passed": true,
+        "coldRead": {
+          "drafts": 1,
+          "wholeContentAndSourceFingerprintsPreserved": true,
+          "draftQuestions": 49,
+          "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+          "exactSourceNamesAndMetadataPreserved": true,
+          "visualQuestionDocuments": 7,
+          "wholeVisualDocumentsPreserved": true,
+          "staleVisualDocumentVersionRejected": true,
+          "publications": 0,
+          "adoptions": 0,
+          "learnerResponses": 0
+        }
+      },
+      {
+        "slug": "clock",
+        "passed": true,
+        "coldRead": {
+          "drafts": 1,
+          "wholeContentAndSourceFingerprintsPreserved": true,
+          "draftQuestions": 49,
+          "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+          "exactSourceNamesAndMetadataPreserved": true,
+          "visualQuestionDocuments": 21,
+          "wholeVisualDocumentsPreserved": true,
+          "staleVisualDocumentVersionRejected": true,
+          "publications": 0,
+          "adoptions": 0,
+          "learnerResponses": 0
+        }
+      }
+    ],
+    "mainAndQaSyncedInputs": 36,
+    "frozenApplicationAndCompiledInputs": 1930,
+    "browser": {
+      "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+      "first": {
+        "passed": 4,
+        "failed": 1,
+        "uniqueScreenshots": 2
+      },
+      "second": {
+        "passed": 11,
+        "failed": 0
+      },
+      "final": {
+        "passed": 11,
+        "failed": 0,
+        "uniqueScreenshots": 7
+      },
+      "batchesNotCombined": true,
+      "nativeAdminQuestionRenderer": true,
+      "all25ServedAssetHashesVerified": true
+    },
+    "print": {
+      "finalPages": 6,
+      "allPagesIndividuallyViewed": true,
+      "firstSevenPagePreviewRetained": true,
+      "nativeDomPreviewOnly": true
+    },
+    "editorialAnchorCorrectionOnly": true,
+    "finalCheckerFailuresPreserved": 2,
+    "priorFullApi": {
+      "passed": 3103,
+      "failed": 1,
+      "conditionalSkips": 131,
+      "correctedEditorSuitesPassed": 50,
+      "fullSuiteRerun": false,
+      "separateBatches": true
+    }
+  },
+  "protection": {
+    "at": "2026-11-02T17:49:46.580Z",
+    "branch": "main",
+    "branches": [
+      "main"
+    ],
+    "worktreeCount": 1,
+    "protectedFiles": 1063,
+    "changedProtectedFiles": [],
+    "formal": {
+      "schema": 24,
+      "revision": 188
+    },
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "boundaries": {
+    "teacherReviewed": false,
+    "scoringOrFamilyApproved": false,
+    "sufficientRetentionStockApproved": false,
+    "newLearnerResponses": 0,
+    "published": 0,
+    "adopted": 0,
+    "sourceOriginalsOrPrivateLogsCommitted": false,
+    "libraryExportBackendVerifiedByThisBatch": false,
+    "physicalPrintVerified": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "remaining": {
+    "registeredBooks": 450,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 102,
+    "booksWithDirectory": 114,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3522,
+    "lessonsWithCandidateFiles": 52,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3470,
+    "authoredFollowingMaterialCandidates": 2275,
+    "materialBundlesWithStaleDraftIdentity": 0,
+    "firstLessonSeparateCandidates": 44,
+    "allRemainingContentAndGesp": true,
+    "allTeacherScoringFamilyAndSufficientRetentionReviews": true,
+    "block5": true
+  }
+}
