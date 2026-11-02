@@ -1,0 +1,92 @@
+{
+  "at": "2026-11-02T10:22:06.986Z",
+  "passed": true,
+  "scope": "Original drafts, manual exact-source ranges, real SQLite HTTP and cold read. No teacher approval, material release, adoption or learner evidence.",
+  "drafts": [
+    {
+      "file": "chinese-g3-fairy-composing-v1.json",
+      "sha256": "40d2b33e6b6cdcdccb9c5fe492ccdae811f56efcebb5fc8f54089f64a8066b64",
+      "physicalPages": [
+        45
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 5,
+      "preflightPublishable": false,
+      "gapCount": 64,
+      "linkedDraftMaterialReferences": 35,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    },
+    {
+      "file": "chinese-g3-garden-three-v1.json",
+      "sha256": "d16be7ddaa2eb4f281c0a9003d990f27dbd84b2c860f4715f26816b37c99c98b",
+      "physicalPages": [
+        46,
+        47
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 6,
+      "preflightPublishable": false,
+      "gapCount": 77,
+      "linkedDraftMaterialReferences": 42,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    },
+    {
+      "file": "chinese-g3-fairy-reading-v1.json",
+      "sha256": "f45b01f0a2f5681fe39237c1ada6fa1814d96009de2ae4435cec286177b5edc2",
+      "physicalPages": [
+        48,
+        49
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 5,
+      "preflightPublishable": false,
+      "gapCount": 64,
+      "linkedDraftMaterialReferences": 35,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 3,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 112,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "exactSourceNamesAndMetadataPreserved": true,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/chinese-g3-fairy-activities-v1.json",
+    "sha256": "7e06d64e9e2fab0b8203d31c8ebef1dc0e6c16f0fbd2f33ed401e6edfd55b95d",
+    "groups": 16,
+    "questions": 112,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

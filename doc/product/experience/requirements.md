@@ -1,5 +1,7 @@
 # 逐项需求与验收账本
 
+2026-11-02 第4块内容继续：第三单元三活动3稿/112未审候选、16目标绑定、13新定义，见[196](../196-fairy-writing-garden-and-real-reading-candidates.md)。当前19项有稿、3493项无稿、336册缺目录；770候选不等已审或充分库存，书目计划不当本人整本已读。72项仍11 implemented/52 in_progress/9 planned/0 verified，全部余项与第5块和真实验收继续。
+
 2026-11-02 第4块内容继续：牛肚子/奶酪2稿与91未审候选，13目标绑定、10新定义；8目标门槛首败与科学来源见[195](../195-cow-route-science-boundary-and-cheese-judgment.md)。当前16条有稿、3496条无稿、336册缺目录，658后续候选不等已审或充分库存。72项仍11 implemented/52 in_progress/9 planned/0 verified，教师/结构/评分/库存、第5块与真实验收继续。
 
 2026-11-02 第4块内容继续：第三单元前两课新增2稿/98题、14目标绑定和10新定义，均未审候选，证据见[194](../194-fairy-tale-reality-wishes-and-retelling-candidates.md)。严格内容HTTP/冷读与4d26c399既有工程回归分别记账，当前14项有稿、3498项无稿、336册缺目录；72项仍11 implemented/52 in_progress/9 planned/0 verified，教师/结构/评分/库存、第5块及真实验收继续。

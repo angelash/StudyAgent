@@ -1,0 +1,1656 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "fairy-composing",
+      "path": "resources/curriculum/source-lessons/chinese-g3-fairy-composing-v1.json",
+      "sha256": "40d2b33e6b6cdcdccb9c5fe492ccdae811f56efcebb5fc8f54089f64a8066b64",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry5",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 45,
+        "pageEnd": 45,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    },
+    {
+      "lesson": "garden-three",
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-three-v1.json",
+      "sha256": "d16be7ddaa2eb4f281c0a9003d990f27dbd84b2c860f4715f26816b37c99c98b",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry6",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 46,
+        "pageEnd": 47,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    },
+    {
+      "lesson": "fairy-reading",
+      "path": "resources/curriculum/source-lessons/chinese-g3-fairy-reading-v1.json",
+      "sha256": "f45b01f0a2f5681fe39237c1ada6fa1814d96009de2ae4435cec286177b5edc2",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry7",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 48,
+        "pageEnd": 49,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标每间隔仅一份拟议样题，原文重复同结构换词与换序不自动成为独立题族。实际声音作品修改和阅读进度须本人真实完成，计划和参考不创建已读或学习记录，非充分四维库存。",
+  "groups": [
+    {
+      "lesson": "fairy-composing",
+      "atomId": "source:chinese:g3:02915a7d:fairy-composing-elements",
+      "structure": "fairy-story-element-selection",
+      "familyProposal": "following-fairy-story-element-selection",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "选择的角色时间地点有联系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明准备发生的一件具体事",
+          "weight": 0.4
+        },
+        {
+          "criterion": "给定词可任选并增添，不强制全用或唯一开头",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "角色时间地点有联系且有要发生的事即可，如冬天玫瑰花在森林超市选礼物；不同合理选择可接受，不以用词总数评分。",
+        "insufficientExample": "很有趣，我全读完也全会了。",
+        "insufficientReason": "评价和完成声明未给具体表现或来源，不能代替本人作品、声音、修改或实际已读范围。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；有依据的其他创作与看法可接受，帮助和未完成部分保留。"
+      },
+      "exercises": [
+        {
+          "id": "fairy-composing-fairy-story-element-selection-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "从给定角色国王、啄木鸟、玫瑰花中选一个或几个，再配时间地点，写一个故事起点。可以增添角色，不必用完九词。",
+          "answer": "角色时间地点有联系且有要发生的事即可，如冬天玫瑰花在森林超市选礼物；不同合理选择可接受，不以用词总数评分。",
+          "analysis": "角色时间地点有联系且有要发生的事即可，如冬天玫瑰花在森林超市选礼物；不同合理选择可接受，不以用词总数评分。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-fairy-story-element-selection-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先列角色、时间、地点，再用一句话写他们在做什么。检查是否只是清单而没有事情。",
+          "answer": "四项能组成具体起点，行动清楚；列九个词不等故事，新增角色也不算违规。",
+          "analysis": "四项能组成具体起点，行动清楚；列九个词不等故事，新增角色也不算违规。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-fairy-story-element-selection-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新词卡：月亮、晚饭后、屋顶花盆。可以只选有联系的部分，写一个明确虚构的故事起点。",
+          "answer": "选材自主、条件相容，允许增添必要角色；不把虚构写成本人真实经历。",
+          "analysis": "选材自主、条件相容，允许增添必要角色；不把虚构写成本人真实经历。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-fairy-story-element-selection-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "再选一组与上次不同的起点，说明留下哪些元素、没有用哪些，为什么这样选。",
+          "answer": "理由与中心有关，未选全部不扣为缺失；换词本身不自动成为新的独立结构。",
+          "analysis": "理由与中心有关，未选全部不扣为缺失；换词本身不自动成为新的独立结构。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-fairy-story-element-selection-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "有人把九个词全写进第一句，却让地点不断跳换。选一个中心，改写起点并说明。",
+          "answer": "删留服务同一件事，时间地点关系清楚，不为凑词保持无关信息。",
+          "analysis": "删留服务同一件事，时间地点关系清楚，不为凑词保持无关信息。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-fairy-story-element-selection-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只用一个给定角色，再加一个自己的角色，写他们准备做的一件事。",
+          "answer": "新角色允许，事情具体、前后相容；不要求与参考角色数量相同。",
+          "analysis": "新角色允许，事情具体、前后相容；不要求与参考角色数量相同。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-fairy-story-element-selection-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "为另一个虚构故事做一张文字构思卡：谁、何时、何地、做什么。说明哪里还没想好。",
+          "answer": "已有信息清楚，未定部分可保留；构思卡是计划，不当完整习作已经完成。",
+          "analysis": "已有信息清楚，未定部分可保留；构思卡是计划，不当完整习作已经完成。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "fairy-composing",
+      "atomId": "source:chinese:g3:02915a7d:fairy-composing-event-link",
+      "structure": "imaginative-event-coherence",
+      "familyProposal": "following-imaginative-event-coherence",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "围绕一件事写出变化",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色行动与结果有可理解联系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "想象奇妙仍保持条件，不只靠突然解决全部",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "行动能回应包裹问题，结果与行动相连，允许合作、尝试未成功或继续寻找等合理发展；不能无过程一句全好了。",
+        "insufficientExample": "很有趣，我全读完也全会了。",
+        "insufficientReason": "评价和完成声明未给具体表现或来源，不能代替本人作品、声音、修改或实际已读范围。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；有依据的其他创作与看法可接受，帮助和未完成部分保留。"
+      },
+      "exercises": [
+        {
+          "id": "fairy-composing-imaginative-event-coherence-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "明确虚构起点：啄木鸟和玫瑰花要送礼物，风把包裹吹散了。续写一个行动和相应结果，不必套标准结尾。",
+          "answer": "行动能回应包裹问题，结果与行动相连，允许合作、尝试未成功或继续寻找等合理发展；不能无过程一句全好了。",
+          "analysis": "行动能回应包裹问题，结果与行动相连，允许合作、尝试未成功或继续寻找等合理发展；不能无过程一句全好了。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-imaginative-event-coherence-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "为自己构思的故事写起点、变化、行动、结果四项，再检查哪两项联系最弱，补清一句。",
+          "answer": "四项围绕中心，补句解释联系；不是只标四个名称就当已写故事。",
+          "analysis": "四项围绕中心，补句解释联系；不是只标四个名称就当已写故事。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-imaginative-event-coherence-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构卡：月亮想给屋顶花盆一点光，却被云遮住。写一段有联系的发展，明确是童话。",
+          "answer": "想象与给定云光条件有联系，可用角色交流或等待等合理办法；不把文学创作当真实天文学结论。",
+          "analysis": "想象与给定云光条件有联系，可用角色交流或等待等合理办法；不把文学创作当真实天文学结论。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-imaginative-event-coherence-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "读回一段明确虚构的故事，找一处突然发生却没有线索的变化，补上与条件相容的行动。",
+          "answer": "原句与补句对应，行动解释变化，允许多种合理表达，不机械要求唯一情节。",
+          "analysis": "原句与补句对应，行动解释变化，允许多种合理表达，不机械要求唯一情节。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-imaginative-event-coherence-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "角色决定不继续原来的办法，先说明它遇到什么变化，再写新的行动。",
+          "answer": "决定联系材料中的困难或发现，不能无缘由改换目标让前文失去关系。",
+          "analysis": "决定联系材料中的困难或发现，不能无缘由改换目标让前文失去关系。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-imaginative-event-coherence-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "比较“突然一切都好了”和一段说明怎样改变的续写，指出后者多提供了什么。",
+          "answer": "有具体行动、条件与结果关系，不只因为字数更长就判断更好。",
+          "analysis": "有具体行动、条件与结果关系，不只因为字数更长就判断更好。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-imaginative-event-coherence-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "写一个仍未完全解决问题的童话结尾，说明它怎样与前面相连。",
+          "answer": "未完全解决也可，保留事件发展与角色选择；不强迫所有故事都以同一个胜利或道德口号收尾。",
+          "analysis": "未完全解决也可，保留事件发展与角色选择；不强迫所有故事都以同一个胜利或道德口号收尾。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "fairy-composing",
+      "atomId": "source:chinese:g3:02915a7d:fairy-composing-imagination",
+      "structure": "story-linked-personification",
+      "familyProposal": "following-story-linked-personification",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "想象与角色事件有联系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "具体写出说话想法或行动",
+          "weight": 0.4
+        },
+        {
+          "criterion": "允许不同创意，童话与实际经历科学事实分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "人物化表达联系具体问题，如担心包裹或提出办法；不是随便加一句好看，不要求所有对象都开口。",
+        "insufficientExample": "很有趣，我全读完也全会了。",
+        "insufficientReason": "评价和完成声明未给具体表现或来源，不能代替本人作品、声音、修改或实际已读范围。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；有依据的其他创作与看法可接受，帮助和未完成部分保留。"
+      },
+      "exercises": [
+        {
+          "id": "fairy-composing-story-linked-personification-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "让玫瑰花或一个物品成为角色，写一句与当前故事问题有关的话或想法，再说它怎样推进事情。",
+          "answer": "人物化表达联系具体问题，如担心包裹或提出办法；不是随便加一句好看，不要求所有对象都开口。",
+          "analysis": "人物化表达联系具体问题，如担心包裹或提出办法；不是随便加一句好看，不要求所有对象都开口。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-story-linked-personification-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "给“风把包裹吹散”补一段角色对话，说明两句话之间怎样回应。",
+          "answer": "对话有对象和回应关系，服务事件，不只连放两句无关台词。",
+          "analysis": "对话有对象和回应关系，服务事件，不只连放两句无关台词。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-story-linked-personification-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创卡：旧铅笔担心自己太短帮不上忙。写一个想象片段，标明虚构，不说它实际具有人的心情。",
+          "answer": "可围绕短与用途形成愿望行动，想象相容，文学拟人不当实测物品心理。",
+          "analysis": "可围绕短与用途形成愿望行动，想象相容，文学拟人不当实测物品心理。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-story-linked-personification-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "从自己的虚构故事选一处想象，说明原先条件与新增创意怎样相连。",
+          "answer": "条件和创意可对应，允许有据不同想象；不能把续写新增内容说成教材原文。",
+          "analysis": "条件和创意可对应，允许有据不同想象；不能把续写新增内容说成教材原文。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-story-linked-personification-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "一段故事里花、石头和风全在说话，却与事情无关。选一处改成有用的交流。",
+          "answer": "保留服务事件的具体对话，角色数量不是创意质量指标，不要求所有对象同时说话。",
+          "analysis": "保留服务事件的具体对话，角色数量不是创意质量指标，不要求所有对象同时说话。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-story-linked-personification-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "写一个角色用非说话动作表达想法的片段，再说明读者可据什么理解。",
+          "answer": "动作与情节关系清楚，允许不同表达；不把只有开口说话才算童话当规则。",
+          "analysis": "动作与情节关系清楚，允许不同表达；不把只有开口说话才算童话当规则。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-story-linked-personification-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "把同一故事的一项原材料条件和一项自己新增的想象分别写出，解释为何分开。",
+          "answer": "来源清楚，创作允许增加相容情节，新增不冒充原文或本人真实经历。",
+          "analysis": "来源清楚，创作允许增加相容情节，新增不冒充原文或本人真实经历。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "fairy-composing",
+      "atomId": "source:chinese:g3:02915a7d:fairy-composing-self-revision",
+      "structure": "personal-story-revision-and-title",
+      "familyProposal": "following-personal-story-revision-and-title",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "提供本人原稿与具体修改",
+          "weight": 0.4
+        },
+        {
+          "criterion": "修改回应不通顺指代或事件联系问题",
+          "weight": 0.4
+        },
+        {
+          "criterion": "题目可选，纸面标题与内容相配，排版图不代本人习作",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "原稿和改动可比，修改确实补清关系；题目可选，不能只交字库排版截图代本人作品，也不强制字数。",
+        "insufficientExample": "很有趣，我全读完也全会了。",
+        "insufficientReason": "评价和完成声明未给具体表现或来源，不能代替本人作品、声音、修改或实际已读范围。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；有依据的其他创作与看法可接受，帮助和未完成部分保留。"
+      },
+      "exercises": [
+        {
+          "id": "fairy-composing-personal-story-revision-and-title-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "读回本人一小段童话，找一处不通顺或对象不清的句子，真实标注修改并上传原稿。若加题目，可检查纸面居中。",
+          "answer": "原稿和改动可比，修改确实补清关系；题目可选，不能只交字库排版截图代本人作品，也不强制字数。",
+          "analysis": "原稿和改动可比，修改确实补清关系；题目可选，不能只交字库排版截图代本人作品，也不强制字数。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "fairy-composing-personal-story-revision-and-title-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "在本人原稿中圈出一句“它把它交给它”一类指代不清处，补清角色后上传。原稿没有这类问题可选另一处真实问题。",
+          "answer": "按实际原句修改，不要求为做题捏造错句；修改前后可核对，内容质量和标题格式分别看。",
+          "analysis": "按实际原句修改，不要求为做题捏造错句；修改前后可核对，内容质量和标题格式分别看。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "fairy-composing-personal-story-revision-and-title-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "用一组新词卡写一个本人原创短段，读回修一处，再上传原稿与修改，题目自行决定是否添加。",
+          "answer": "本次本人作品有变化依据，新增词卡不直接构成独立新题族；未写题目不判为未完成全部创作。",
+          "analysis": "本次本人作品有变化依据，新增词卡不直接构成独立新题族；未写题目不判为未完成全部创作。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "fairy-composing-personal-story-revision-and-title-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次选一处实际习作修订上传，说明它帮助读者理解什么，不用旧图冒充。",
+          "answer": "真实原稿与理由对应，未实际听取同伴意见时不编造反馈。",
+          "analysis": "真实原稿与理由对应，未实际听取同伴意见时不编造反馈。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "fairy-composing-personal-story-revision-and-title-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "如果给故事加了题目，上传本人作品，说明题目与哪件事相配，并检查纸面位置。没加可先只修正文。",
+          "answer": "标题反映内容，居中只在实际纸面能核对时评价；没有题目不替代正文修订要求，也不以整齐代内容。",
+          "analysis": "标题反映内容，居中只在实际纸面能核对时评价；没有题目不替代正文修订要求，也不以整齐代内容。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "fairy-composing-personal-story-revision-and-title-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "保留一次读回发现的问题与改稿，上传并说还有哪处未解决。",
+          "answer": "实际修改与未定处清楚，未解决可保留，不由最终正确稿倒推原表现都正确。",
+          "analysis": "实际修改与未定处清楚，未解决可保留，不由最终正确稿倒推原表现都正确。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "fairy-composing-personal-story-revision-and-title-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选本人愿交流的一小段，上传原稿与一处最有用的修改，说明是否得到提示。",
+          "answer": "作品、修改和帮助可核对，不要求公开整本私人习作或个人生活信息。",
+          "analysis": "作品、修改和帮助可核对，不要求公开整本私人习作或个人生活信息。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "fairy-composing",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "claim-supported-by-record",
+      "familyProposal": "following-claim-supported-by-record",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "判断或创作与明确材料相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "指出具体来源和支持关系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "虚构节选计划与实际已发生表现不混算",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能，原页允许选择和增添；应看是否形成有联系故事，不把全用当硬性规则。",
+        "insufficientExample": "很有趣，我全读完也全会了。",
+        "insufficientReason": "评价和完成声明未给具体表现或来源，不能代替本人作品、声音、修改或实际已读范围。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；有依据的其他创作与看法可接受，帮助和未完成部分保留。"
+      },
+      "exercises": [
+        {
+          "id": "fairy-composing-claim-supported-by-record-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原任务允许任选一个或几个角色。能说没用全部九词就一定不合要求吗？给原页依据。",
+          "answer": "不能，原页允许选择和增添；应看是否形成有联系故事，不把全用当硬性规则。",
+          "analysis": "不能，原页允许选择和增添；应看是否形成有联系故事，不把全用当硬性规则。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-claim-supported-by-record-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创词卡只给冬天森林超市。续写可加玫瑰花角色吗？怎样说明是自己的创作而非原文已经写出？",
+          "answer": "可以加相容角色，标明新增创意；给定条件和续写分别记，不冒充教材原有情节。",
+          "analysis": "可以加相容角色，标明新增创意；给定条件和续写分别记，不冒充教材原有情节。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-claim-supported-by-record-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡只给月亮与花盆，没有指定时间地点。你写出补充条件时该如何标明？",
+          "answer": "可作为自己设定的虚构条件，不能说卡片本来已给，故事前后须相容。",
+          "analysis": "可作为自己设定的虚构条件，不能说卡片本来已给，故事前后须相容。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-claim-supported-by-record-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "写了一张构思卡，是否等于本人已经完成整篇习作和修改？还需什么表现？",
+          "answer": "不等于，需要本人实际作品与读回修改；计划不能代完成，未完成保留。",
+          "analysis": "不等于，需要本人实际作品与读回修改；计划不能代完成，未完成保留。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-claim-supported-by-record-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "人物在童话里飞上月亮，能据此说作者本人真的有这段经历或已证明科学可行吗？",
+          "answer": "不能，文学想象不等本人经历或科学试验，来源性质清楚即可。",
+          "analysis": "不能，文学想象不等本人经历或科学试验，来源性质清楚即可。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-claim-supported-by-record-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只展示最后排版好的标题，能证明已经读回并修订正文吗？说明缺什么。",
+          "answer": "不能，缺本人原稿、实际问题与改动，标题格式不替代修订过程。",
+          "analysis": "不能，缺本人原稿、实际问题与改动，标题格式不替代修订过程。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-composing-claim-supported-by-record-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "把原词卡条件、自己新增情节和目前还没决定的结尾分别写出，说明它们的关系。",
+          "answer": "来源和完成程度清楚，新增相容、未定不编成已完成，不以参考代本人作品。",
+          "analysis": "来源和完成程度清楚，新增相容、未定不编成已完成，不以参考代本人作品。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "garden-three",
+      "atomId": "source:chinese:g3:02915a7d:garden-three-fairy-observation",
+      "structure": "fairy-feature-specific-example",
+      "familyProposal": "following-fairy-feature-specific-example",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "用本单元具体人物或事件说明想象",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明文学表达怎样服务故事",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不同感受和启示可有依据，不当完整自然机制",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "例子确在当前单元，如树的愿望或蟋蟀对话，有具体叙述支持；不能只背充满想象四字。",
+        "insufficientExample": "很有趣，我全读完也全会了。",
+        "insufficientReason": "评价和完成声明未给具体表现或来源，不能代替本人作品、声音、修改或实际已读范围。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；有依据的其他创作与看法可接受，帮助和未完成部分保留。"
+      },
+      "exercises": [
+        {
+          "id": "garden-three-fairy-feature-specific-example-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "从本单元选一处植物物品有想法或动物有对话的情节，说说童话想象在哪里。",
+          "answer": "例子确在当前单元，如树的愿望或蟋蟀对话，有具体叙述支持；不能只背充满想象四字。",
+          "analysis": "例子确在当前单元，如树的愿望或蟋蟀对话，有具体叙述支持；不能只背充满想象四字。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-fairy-feature-specific-example-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“我喜欢童话”和一条具体阅读发现连起来，说明人物或事件怎样支持。",
+          "answer": "看法有材料依据，允许不同发现，不以与参考同感受作为唯一标准。",
+          "analysis": "看法有材料依据，允许不同发现，不以与参考同感受作为唯一标准。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-fairy-feature-specific-example-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创句：“旧书包担心雨把信淋湿，悄悄对伞说话。”指出一处想象和它与事情的联系。",
+          "answer": "书包心理和对话为拟人，围绕保护信的事情；不证明现实书包有语言和心理。",
+          "analysis": "书包心理和对话为拟人，围绕保护信的事情；不证明现实书包有语言和心理。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-fairy-feature-specific-example-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "同一童话读者有不同感受，怎样用具体情节交流？",
+          "answer": "各自找相容材料解释关系，不强迫同一种喜悲或单一道德口号，也不编造原情节。",
+          "analysis": "各自找相容材料解释关系，不强迫同一种喜悲或单一道德口号，也不编造原情节。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-fairy-feature-specific-example-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "童话中蟋蟀脱险的故事可以直接当完整牛胃机制吗？说清阅读边界。",
+          "answer": "不能，故事服务人物情节，科学机制需可靠资料；不由一次喷嚏故事推出反刍每次必喷出。",
+          "analysis": "不能，故事服务人物情节，科学机制需可靠资料；不由一次喷嚏故事推出反刍每次必喷出。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-fairy-feature-specific-example-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "选择一处你印象深的想象，分开写“原文怎样写”和“我想到什么”。",
+          "answer": "原信息可定位，读后联想标明，不把新画面冒充作者已写。",
+          "analysis": "原信息可定位，读后联想标明，不把新画面冒充作者已写。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-fairy-feature-specific-example-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用一项本单元例子说明为什么想象既可以奇妙，又需要读懂当前情节条件。",
+          "answer": "例子和条件对应，解释文学联系，不强制所有童话同一种现实逻辑或结尾。",
+          "analysis": "例子和条件对应，解释文学联系，不强制所有童话同一种现实逻辑或结尾。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "garden-three",
+      "atomId": "source:chinese:g3:02915a7d:garden-three-character-reading",
+      "structure": "shape-comparison-real-reading",
+      "familyProposal": "following-shape-comparison-real-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人本次声音覆盖申介绍宗乙召孝七字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "具体词语读法与字形比较相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "部件相似不推同音义，不增加本页写字表",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "实际覆盖申介绍宗乙召孝七字，介绍含两个目标字；音义依词语，招zhāo与召zhào不因字形相近就同读。",
+        "insufficientExample": "很有趣，我全读完也全会了。",
+        "insufficientReason": "评价和完成声明未给具体表现或来源，不能代替本人作品、声音、修改或实际已读范围。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；有依据的其他创作与看法可接受，帮助和未完成部分保留。"
+      },
+      "exercises": [
+        {
+          "id": "garden-three-shape-comparison-real-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录音读“申请、介绍、祖宗、乙方、召开、孝顺”，再选一组伸申或招召说说字形差别。",
+          "answer": "实际覆盖申介绍宗乙召孝七字，介绍含两个目标字；音义依词语，招zhāo与召zhào不因字形相近就同读。",
+          "analysis": "实际覆盖申介绍宗乙召孝七字，介绍含两个目标字；音义依词语，招zhāo与召zhào不因字形相近就同读。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-three-shape-comparison-real-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先读介绍中的两个目标字，再读其他目标词；任选一组比较增减了哪个部件。",
+          "answer": "七字都有实际声音，比较具体部件但不由去部件就推所有字同音同义，非目标字不熟另记。",
+          "analysis": "七字都有实际声音，比较具体部件但不由去部件就推所有字同音同义，非目标字不熟另记。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-three-shape-comparison-real-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新词卡换序：“孝顺、召开、乙方、祖宗、介绍、申请”。真实录音读出，说明一个仍需核对的字。",
+          "answer": "顺序变化仍逐目标听音，换序不自动成为新独立题族，绍不漏计。",
+          "analysis": "顺序变化仍逐目标听音，换序不自动成为新独立题族，绍不漏计。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-three-shape-comparison-real-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次用词语录音读七字，说明是否刚听过示范，不上传旧录音冒充。",
+          "answer": "本人声音与帮助保留，拼音选择或自报会读不能替真实发音。",
+          "analysis": "本人声音与帮助保留，拼音选择或自报会读不能替真实发音。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-three-shape-comparison-real-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "录音比较伸和申、招和召，再补全其他目标字所在词语。",
+          "answer": "当前字词发音各自核对，比较不只读同一个音；其他目标仍需实际覆盖。",
+          "analysis": "当前字词发音各自核对，比较不只读同一个音；其他目标仍需实际覆盖。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-three-shape-comparison-real-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "给七字各配一个合理词录音读出，说明一处字形线索能帮助什么、不能保证什么。",
+          "answer": "词语合理、实际声音可听，字形可帮助辨认但非全部同音义保证，未测部分不补。",
+          "analysis": "词语合理、实际声音可听，字形可帮助辨认但非全部同音义保证，未测部分不补。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-three-shape-comparison-real-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "按自己顺序录音读全七字，先读没把握处，再说明仍未完成的目标。",
+          "answer": "实际覆盖与未知清楚，绍在介绍中单独核对，不将六个词错误算成六字。",
+          "analysis": "实际覆盖与未知清楚，绍在介绍中单独核对，不将六个词错误算成六字。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-three",
+      "atomId": "source:chinese:g3:02915a7d:garden-three-mouth-groups",
+      "structure": "mouth-character-meaning-groups",
+      "familyProposal": "following-mouth-character-meaning-groups",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "结合具体词语比较意义",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明一组共同联系并给例子",
+          "weight": 0.4
+        },
+        {
+          "criterion": "分类限当前材料，不说所有带口字都同义",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "前组可联系口部吃含动作，后组可联系呼喊发声；词语支持分类，不能只说都有口就完全一样。",
+        "insufficientExample": "很有趣，我全读完也全会了。",
+        "insufficientReason": "评价和完成声明未给具体表现或来源，不能代替本人作品、声音、修改或实际已读范围。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；有依据的其他创作与看法可接受，帮助和未完成部分保留。"
+      },
+      "exercises": [
+        {
+          "id": "garden-three-mouth-character-meaning-groups-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "比较咬、吞、含与叫、喊、唤，各给一个词说明两组意义联系有什么不同。",
+          "answer": "前组可联系口部吃含动作，后组可联系呼喊发声；词语支持分类，不能只说都有口就完全一样。",
+          "analysis": "前组可联系口部吃含动作，后组可联系呼喊发声；词语支持分类，不能只说都有口就完全一样。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-mouth-character-meaning-groups-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "给啪、哗、嗡各配一个合理声音情境，再说明它们与咬吞含的区别。",
+          "answer": "拟声词表示声音，吃含动作另类，具体情境相容；不是所有带口字都表示吃东西。",
+          "analysis": "拟声词表示声音，吃含动作另类，具体情境相容；不是所有带口字都表示吃东西。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-mouth-character-meaning-groups-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新词卡给“咬住、呼喊、哗啦”。按当前意思分组并说明，不只看字的位置。",
+          "answer": "分别动作、呼喊与拟声，依据当前词语；结构相同不能推出意思相同。",
+          "analysis": "分别动作、呼喊与拟声，依据当前词语；结构相同不能推出意思相同。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-mouth-character-meaning-groups-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "有人说有口字旁就都表示嘴在吃。用一项吃的动作和一项拟声词具体回应。",
+          "answer": "例子具体，词义区别清楚，不靠背分类名却不给语境。",
+          "analysis": "例子具体，词义区别清楚，不靠背分类名却不给语境。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-mouth-character-meaning-groups-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "把本页三个字放进合理短句，让读者看见意义区别。",
+          "answer": "短句与词义相容，允许不同选择；不把某一分组扩成所有语境的固定唯一含义。",
+          "analysis": "短句与词义相容，允许不同选择；不把某一分组扩成所有语境的固定唯一含义。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-mouth-character-meaning-groups-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "选一个会随词语变化理解的口字相关字，说明当前例子为什么需要看语境。",
+          "answer": "解释有实际词例支持，可保留不熟，不要求从同部件臆造全部读音和意思。",
+          "analysis": "解释有实际词例支持，可保留不熟，不要求从同部件臆造全部读音和意思。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-mouth-character-meaning-groups-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用一组新原创字词材料说明你怎样先看词义再总结共同联系，指出总结范围。",
+          "answer": "过程具体，分类有材料支持且范围明确，不把局部规律说成所有汉字都适用。",
+          "analysis": "过程具体，分类有材料支持且范围明确，不把局部规律说成所有汉字都适用。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "garden-three",
+      "atomId": "source:chinese:g3:02915a7d:garden-three-revision-signs",
+      "structure": "actual-correction-addition-deletion",
+      "familyProposal": "following-actual-correction-addition-deletion",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿有实际修改符号",
+          "weight": 0.4
+        },
+        {
+          "criterion": "改正增补删除与问题目的相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原文改文及理由可比，不以术语名称代标记",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "实际符号与原句对应，替换错误、加缺项、去多余分别可辨；不只写三种名称，不要求为凑符号编造本人原错。",
+        "insufficientExample": "很有趣，我全读完也全会了。",
+        "insufficientReason": "评价和完成声明未给具体表现或来源，不能代替本人作品、声音、修改或实际已读范围。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；有依据的其他创作与看法可接受，帮助和未完成部分保留。"
+      },
+      "exercises": [
+        {
+          "id": "garden-three-actual-correction-addition-deletion-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "在本人原稿或明确原创练习句上，分别用符号表示一处改正、增补、删除，上传并说明每处目的。",
+          "answer": "实际符号与原句对应，替换错误、加缺项、去多余分别可辨；不只写三种名称，不要求为凑符号编造本人原错。",
+          "analysis": "实际符号与原句对应，替换错误、加缺项、去多余分别可辨；不只写三种名称，不要求为凑符号编造本人原错。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-three-actual-correction-addition-deletion-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创练习：“小鹿以经到了。它穿着外套，一顶帽子。盒里只放文具，有铅笔、橡皮、苹果。”在纸上真实标注三种修改后上传。",
+          "answer": "以改已，帽子前增戴着等，苹果不合明确只放文具类别可删；保留原句与改动，其他合理修订要解释。",
+          "analysis": "以改已，帽子前增戴着等，苹果不合明确只放文具类别可删；保留原句与改动，其他合理修订要解释。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-three-actual-correction-addition-deletion-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创草稿有一处错字、一处缺对象和一处重复词。自己选择明确句子，真实标记修改并上传，先标明是练习。",
+          "answer": "三类问题具体，操作与目的相容，原句和改文可看；新词替换不自动成为独立新结构。",
+          "analysis": "三类问题具体，操作与目的相容，原句和改文可看；新词替换不自动成为独立新结构。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-three-actual-correction-addition-deletion-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次从本人愿交流的习作选一处实际问题，用合适修改符号标注上传，说明为什么选这种操作。",
+          "answer": "原稿可核对、操作有据，只有一种问题可只做一种，不机械要求每次三种都出现。",
+          "analysis": "原稿可核对、操作有据，只有一种问题可只做一种，不机械要求每次三种都出现。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-three-actual-correction-addition-deletion-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "把一处本需增补的句子误作删除，会改变什么？给一个原创例子并真实标注两种处理后上传说明。",
+          "answer": "能比较信息变少与补足的效果，实际标注清楚，不仅说我知道区别。",
+          "analysis": "能比较信息变少与补足的效果，实际标注清楚，不仅说我知道区别。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-three-actual-correction-addition-deletion-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "上传本次原稿与修改，说明一处改动后仍未通顺的问题，保留待改部分。",
+          "answer": "真实修改与疑问清楚，不以最终排版稿倒推全程已完成，不强制公开整本私人习作。",
+          "analysis": "真实修改与疑问清楚，不以最终排版稿倒推全程已完成，不强制公开整本私人习作。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-three-actual-correction-addition-deletion-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用最少必要的符号修订一小段实际或明确练习草稿，上传并说明最有用的一处。",
+          "answer": "修订服务表达而非符号数量，原字原句与新意思可比，帮助条件保留。",
+          "analysis": "修订服务表达而非符号数量，原字原句与新意思可比，帮助条件保留。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "garden-three",
+      "atomId": "source:chinese:g3:02915a7d:garden-three-proverb-reading",
+      "structure": "reasoning-proverbs-real-reading",
+      "familyProposal": "following-reasoning-proverbs-real-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本次真实声音覆盖三条谚语",
+          "weight": 0.4
+        },
+        {
+          "criterion": "联系具体情境解释一条讲理含义",
+          "weight": 0.4
+        },
+        {
+          "criterion": "事实理由与声量身份区分，不把谚语当每次立即获胜保证",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三条实际声音分别核对，理不辩不明等联系分辨事理；观点需事实理由，不靠嗓门大或身份高，解释不代其他两条读音。",
+        "insufficientExample": "很有趣，我全读完也全会了。",
+        "insufficientReason": "评价和完成声明未给具体表现或来源，不能代替本人作品、声音、修改或实际已读范围。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；有依据的其他创作与看法可接受，帮助和未完成部分保留。"
+      },
+      "exercises": [
+        {
+          "id": "garden-three-reasoning-proverbs-real-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录音读本页三条讲理谚语，再选一条用一个具体情境解释。",
+          "answer": "三条实际声音分别核对，理不辩不明等联系分辨事理；观点需事实理由，不靠嗓门大或身份高，解释不代其他两条读音。",
+          "analysis": "三条实际声音分别核对，理不辩不明等联系分辨事理；观点需事实理由，不靠嗓门大或身份高，解释不代其他两条读音。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-three-reasoning-proverbs-real-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先读“灯不拨不亮，理不辩不明”，说辩与吵有什么不同，再补读另外两条。",
+          "answer": "本次声音可听，辩重在说明与分辨理由，不等压过别人；其余两条需实际读到。",
+          "analysis": "本次声音可听，辩重在说明与分辨理由，不等压过别人；其余两条需实际读到。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-three-reasoning-proverbs-real-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构卡：两位角色对路线有分歧，一位大声，一位拿出地图证据。录音选一条谚语联系情境说明。",
+          "answer": "可用事实与理由支持路线判断，声量不决定正确；材料卡不是保证任何人现实必立刻获胜。",
+          "analysis": "可用事实与理由支持路线判断，声量不决定正确；材料卡不是保证任何人现实必立刻获胜。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-three-reasoning-proverbs-real-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次录音读三条，说明是否刚听示范，再选一句指出还不明白的词。",
+          "answer": "本次声音、帮助和未知保留；跟读正确不自动证明已会在所有情境使用。",
+          "analysis": "本次声音、帮助和未知保留；跟读正确不自动证明已会在所有情境使用。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-three-reasoning-proverbs-real-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "读“有理走遍天下，无理寸步难行”，用一句话说明讲道理需要什么具体支持，再补读其余两条。",
+          "answer": "需要事实理由和当前条件，文学格言鼓励讲理，不机械保证每次结果；三条声音分别看。",
+          "analysis": "需要事实理由和当前条件，文学格言鼓励讲理，不机械保证每次结果；三条声音分别看。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-three-reasoning-proverbs-real-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "录音比较“一时强弱在于力，万古胜负在于理”中的力与理，再把另外两条读出。",
+          "answer": "按原句读音核对，说明力量与道理的表达对比，不能用身体力量替论据；不要求唯一释义措辞。",
+          "analysis": "按原句读音核对，说明力量与道理的表达对比，不能用身体力量替论据；不要求唯一释义措辞。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-three-reasoning-proverbs-real-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "录音读全三条，给其中一条配一个明确虚构的讲理例子，说明证据是什么。",
+          "answer": "声音与应用分别核查，例子有具体理由，不以会背推已经在真实争论中表现良好。",
+          "analysis": "声音与应用分别核查，例子有具体理由，不以会背推已经在真实争论中表现良好。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-three",
+      "atomId": "core:chinese:contextmeaning",
+      "structure": "context-supported-explanation",
+      "familyProposal": "following-context-supported-explanation",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "含义与当前句相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明线索或比较方法怎样起作用",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不逐字硬拆或套所有场景同义",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "联系分辨事理、说明依据，不等大声争吵；解释须与理和明的关系相容。",
+        "insufficientExample": "很有趣，我全读完也全会了。",
+        "insufficientReason": "评价和完成声明未给具体表现或来源，不能代替本人作品、声音、修改或实际已读范围。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；有依据的其他创作与看法可接受，帮助和未完成部分保留。"
+      },
+      "exercises": [
+        {
+          "id": "garden-three-context-supported-explanation-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "“理不辩不明”里的辩联系什么活动理解？能直接等同大声吵架吗？",
+          "answer": "联系分辨事理、说明依据，不等大声争吵；解释须与理和明的关系相容。",
+          "analysis": "联系分辨事理、说明依据，不等大声争吵；解释须与理和明的关系相容。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-context-supported-explanation-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "“修改”在这里怎样联系原稿理解？仅把字体变漂亮是否就等于修清一句意思？",
+          "answer": "修改要回应具体表达问题，排版美观不自动补足对象或改正错字；原句与改文关系重要。",
+          "analysis": "修改要回应具体表达问题，排版美观不自动补足对象或改正错字；原句与改文关系重要。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-context-supported-explanation-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创句：“这段话的意思还不明，需要把理由说清。”这里明是教室灯亮了吗？",
+          "answer": "联系意思和理由，指清楚明白，不套光照义，说明上下文的作用。",
+          "analysis": "联系意思和理由，指清楚明白，不套光照义，说明上下文的作用。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-context-supported-explanation-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "“不可思议”的童话事件怎样理解，是否表示不能提出任何阅读问题？",
+          "answer": "写奇特、超出平常经验的感受，不表示禁止思考或质疑；可结合具体情节解释。",
+          "analysis": "写奇特、超出平常经验的感受，不表示禁止思考或质疑；可结合具体情节解释。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-context-supported-explanation-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "“增补”和“删除”结合一个具体句子各说明改变了什么，不只换同义词。",
+          "answer": "增补加缺的信息，删除去多余或不合条件部分，句子效果具体可核对。",
+          "analysis": "增补加缺的信息，删除去多余或不合条件部分，句子效果具体可核对。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-context-supported-explanation-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "“介绍”和“申请”都在识字表，它们能在所有句子中互换吗？举一个简单语境说明。",
+          "answer": "不能，各有交代说明与提出请求等当前作用，需具体词语语境支持，不因同表就同义。",
+          "analysis": "不能，各有交代说明与提出请求等当前作用，需具体词语语境支持，不因同表就同义。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-three-context-supported-explanation-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "自选本页一个词或短句，说明当前意思、使用线索和一个不合语境的解释。",
+          "answer": "原词可定位，解释有据，方法具体，不只背术语或强迫与参考同词。",
+          "analysis": "原词可定位，解释有据，方法具体，不只背术语或强迫与参考同词。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "fairy-reading",
+      "atomId": "source:chinese:g3:02915a7d:fairy-reading-book-identity",
+      "structure": "recommended-book-edition-identity",
+      "familyProposal": "following-recommended-book-edition-identity",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "书名作者整理者关系准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "实际所选版本与当前范围清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "推荐目录节选不替整本已读，不强定不同译本同字句",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "书名对应正确，格林兄弟搜集整理身份保留；推荐不证明本人整本已读，需实际版本与阅读范围。",
+        "insufficientExample": "很有趣，我全读完也全会了。",
+        "insufficientReason": "评价和完成声明未给具体表现或来源，不能代替本人作品、声音、修改或实际已读范围。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；有依据的其他创作与看法可接受，帮助和未完成部分保留。"
+      },
+      "exercises": [
+        {
+          "id": "fairy-reading-recommended-book-edition-identity-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "把《安徒生童话》《稻草人》《格林童话》分别与安徒生、叶圣陶、格林兄弟对应，再说明推荐页能否证明你已经读完整本。",
+          "answer": "书名对应正确，格林兄弟搜集整理身份保留；推荐不证明本人整本已读，需实际版本与阅读范围。",
+          "analysis": "书名对应正确，格林兄弟搜集整理身份保留；推荐不证明本人整本已读，需实际版本与阅读范围。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-recommended-book-edition-identity-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "若手边有一本童话书，记录实际书名、作者或整理者、能找到的译者版本信息；没拿到时明确只作选书计划。",
+          "answer": "信息由实际书核对，未知可留未知，不编版次年份；有书也不自动表示已经读完。",
+          "analysis": "信息由实际书核对，未知可留未知，不编版次年份；有书也不自动表示已经读完。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-recommended-book-edition-identity-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构书卡：某童话选本收一篇故事，译者甲，节选有改动。能直接说它等于另一译者的完整原作吗？",
+          "answer": "不能，选本、翻译和节选范围分别核对，同书名或同故事不保证所有字句一致。",
+          "analysis": "不能，选本、翻译和节选范围分别核对，同书名或同故事不保证所有字句一致。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-recommended-book-edition-identity-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次选择一项推荐作品，说明目前有书、读过片段还是只想读，保留真实状态。",
+          "answer": "状态具体、版本信息有来源，未读不补成已读；不以书名熟悉度评价完成。",
+          "analysis": "状态具体、版本信息有来源，未读不补成已读；不以书名熟悉度评价完成。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-recommended-book-edition-identity-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "“格林兄弟搜集整理”和“我本人已经读完整本”各自说明什么？为什么不能互相替代？",
+          "answer": "前者书目来源身份，后者实际个人阅读范围，类别不同，需各自证据。",
+          "analysis": "前者书目来源身份，后者实际个人阅读范围，类别不同，需各自证据。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-recommended-book-edition-identity-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "比较教材拇指姑娘节选与手边版本能看到的一处信息差别；没有该书时只提出准备核对的问题。",
+          "answer": "实际差异有来源，未拿书不编比较结果，不从标题相同强判字句相同。",
+          "analysis": "实际差异有来源，未拿书不编比较结果，不从标题相同强判字句相同。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-recommended-book-edition-identity-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "为另一个愿意了解的童话书写一张真实状态卡，区分已核对信息和仍未知版本信息。",
+          "answer": "身份和完成范围清楚，未知不编造，原书信息不由推荐文案代替。",
+          "analysis": "身份和完成范围清楚，未知不编造，原书信息不由推荐文案代替。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "fairy-reading",
+      "atomId": "source:chinese:g3:02915a7d:fairy-reading-excerpt-evidence",
+      "structure": "excerpt-scene-textual-evidence",
+      "familyProposal": "following-excerpt-scene-textual-evidence",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "具体依据来自当前拇指姑娘节选",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明动作环境怎样形成画面",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未给的整篇情节和新增想象不当原文",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "寒冷与发抖提供条件，钻入羽毛回应保暖，具体线索支持画面；不由此编出整篇后续结局。",
+        "insufficientExample": "很有趣，我全读完也全会了。",
+        "insufficientReason": "评价和完成声明未给具体表现或来源，不能代替本人作品、声音、修改或实际已读范围。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；有依据的其他创作与看法可接受，帮助和未完成部分保留。"
+      },
+      "exercises": [
+        {
+          "id": "fairy-reading-excerpt-scene-textual-evidence-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "当前节选写拇指姑娘在寒冷高空钻到温暖羽毛下面。指出动作和环境，说明二者怎样联系。",
+          "answer": "寒冷与发抖提供条件，钻入羽毛回应保暖，具体线索支持画面；不由此编出整篇后续结局。",
+          "analysis": "寒冷与发抖提供条件，钻入羽毛回应保暖，具体线索支持画面；不由此编出整篇后续结局。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-excerpt-scene-textual-evidence-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "选节选中飞过的一类环境和到温暖地方的一处景物，说明画面发生什么变化。",
+          "answer": "森林海洋积雪高山与温暖国度景致依当前原文核对，指出对比联系；不凭熟悉版本补未写路线。",
+          "analysis": "森林海洋积雪高山与温暖国度景致依当前原文核对，指出对比联系；不凭熟悉版本补未写路线。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-excerpt-scene-textual-evidence-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创片段：纸船经过暗桥洞，出来时水面映着夕光。用动作环境线索说明画面，不搬原节选燕子情节。",
+          "answer": "暗到亮和经过动作有材料支持，来源为新卡；不混不同故事人物和位置。",
+          "analysis": "暗到亮和经过动作有材料支持，来源为新卡；不混不同故事人物和位置。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-excerpt-scene-textual-evidence-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "把本节选一条原信息和一项读后想象分开写，说明依据。",
+          "answer": "原信息可定位，联想相容且标明，不能把新添景物说成当前原句已经写出。",
+          "analysis": "原信息可定位，联想相容且标明，不能把新添景物说成当前原句已经写出。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-excerpt-scene-textual-evidence-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只读当前节选，能确定拇指姑娘整篇所有人物和最后结局吗？举一项仍需要继续读的信息。",
+          "answer": "不能，当前范围有限，具体未给的人物过程或结局需原作，不由推荐或别版印象补齐。",
+          "analysis": "不能，当前范围有限，具体未给的人物过程或结局需原作，不由推荐或别版印象补齐。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-excerpt-scene-textual-evidence-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "用一个具体细节说明角色为什么改变姿势，再指出这种推知的范围。",
+          "answer": "如寒冷钻羽毛，有条件支持；不推断所有时候她都同样或角色每个心理都已给。",
+          "analysis": "如寒冷钻羽毛，有条件支持；不推断所有时候她都同样或角色每个心理都已给。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-excerpt-scene-textual-evidence-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "给节选画面写一段简短说明，每句标出依据或清楚标明自己的追加想象。",
+          "answer": "来源与判断关系清楚，允许多种合理画面，不以形容词数量或同参考措辞评分。",
+          "analysis": "来源与判断关系清楚，允许多种合理画面，不以形容词数量或同参考措辞评分。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "fairy-reading",
+      "atomId": "source:chinese:g3:02915a7d:fairy-reading-perspective",
+      "structure": "character-perspective-supported-response",
+      "familyProposal": "following-character-perspective-supported-response",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "想象回应角色具体处境",
+          "weight": 0.4
+        },
+        {
+          "criterion": "感受或疑问有材料依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不同反应可接受，想象不当实际经历或原作新增事实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "感受可担心、惊奇或其他合理反应，联系寒冷发抖和羽毛等；不强迫统一情绪或说本人真实经历过。",
+        "insufficientExample": "很有趣，我全读完也全会了。",
+        "insufficientReason": "评价和完成声明未给具体表现或来源，不能代替本人作品、声音、修改或实际已读范围。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；有依据的其他创作与看法可接受，帮助和未完成部分保留。"
+      },
+      "exercises": [
+        {
+          "id": "fairy-reading-character-perspective-supported-response-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "想象自己读到拇指姑娘在寒冷高空的处境，你会注意哪个细节？说一种感受或问题，并指出材料依据。",
+          "answer": "感受可担心、惊奇或其他合理反应，联系寒冷发抖和羽毛等；不强迫统一情绪或说本人真实经历过。",
+          "analysis": "感受可担心、惊奇或其他合理反应，联系寒冷发抖和羽毛等；不强迫统一情绪或说本人真实经历过。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-character-perspective-supported-response-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "将“如果我是角色，我会想……”和“原文明确写……”分成两句，说明各自来源。",
+          "answer": "角色视角为读者想象，原句有定位，二者不混为作者已写的事实。",
+          "analysis": "角色视角为读者想象，原句有定位，二者不混为作者已写的事实。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-character-perspective-supported-response-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创卡：一支短铅笔想帮朋友写完便条。代入角色说一个有依据的感受和一个疑问。",
+          "answer": "联系短与写便条条件，允许不同想法；不由物品拟人推真实铅笔有人的心理。",
+          "analysis": "联系短与写便条条件，允许不同想法；不由物品拟人推真实铅笔有人的心理。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-character-perspective-supported-response-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "同伴喜欢飞行画面，你却对寒冷一段有担心。怎样用节选交流不同感受？",
+          "answer": "各用具体依据，情绪不要求一致，不以人数或情绪强烈判断谁读懂。",
+          "analysis": "各用具体依据，情绪不要求一致，不以人数或情绪强烈判断谁读懂。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-character-perspective-supported-response-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "把自己的一个阅读疑问写清，说明节选已经回答哪部分、哪部分仍不知道。",
+          "answer": "问题与当前范围相连，未知保留，不用参考结局代替真实继续阅读。",
+          "analysis": "问题与当前范围相连，未知保留，不用参考结局代替真实继续阅读。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-character-perspective-supported-response-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "若想给角色增加一段新对话，应怎样标明它与原文的关系？写一个短例。",
+          "answer": "标明续写或想象，前后条件相容，不冒充原文引语或本人经历。",
+          "analysis": "标明续写或想象，前后条件相容，不冒充原文引语或本人经历。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-character-perspective-supported-response-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选一处新读到的实际片段或当前节选，说明代入角色怎样帮助理解，以及它不能证明什么。",
+          "answer": "具体联系与边界清楚，未新读时用当前节选并标范围，不编新进度或额外原情节。",
+          "analysis": "具体联系与边界清楚，未新读时用当前节选并标范围，不编新进度或额外原情节。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "fairy-reading",
+      "atomId": "source:chinese:g3:02915a7d:fairy-reading-real-progress",
+      "structure": "reading-plan-versus-actual-progress",
+      "familyProposal": "following-reading-plan-versus-actual-progress",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "选择可获得材料和可执行的小安排",
+          "weight": 0.4
+        },
+        {
+          "criterion": "计划实际已读与未读清楚分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不伪造页数天数或反馈，完成勾选不代理解",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "计划具体可执行，材料状态真实；没有阅读就不提前填写篇章页数或整本完成。",
+        "insufficientExample": "很有趣，我全读完也全会了。",
+        "insufficientReason": "评价和完成声明未给具体表现或来源，不能代替本人作品、声音、修改或实际已读范围。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；有依据的其他创作与看法可接受，帮助和未完成部分保留。"
+      },
+      "exercises": [
+        {
+          "id": "fairy-reading-reading-plan-versus-actual-progress-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "选一项可获得的适龄童话版本，写下一次小阅读安排。若还没有材料，就先写找书核对计划，不填已完成。",
+          "answer": "计划具体可执行，材料状态真实；没有阅读就不提前填写篇章页数或整本完成。",
+          "analysis": "计划具体可执行，材料状态真实；没有阅读就不提前填写篇章页数或整本完成。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-reading-plan-versus-actual-progress-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "已经实际读过时，记录书名版本、真正读到的范围、一处发现和一件问题；未读时明确保留计划状态。",
+          "answer": "实际信息由本人提供，半篇如实记半篇，未知不补造，参考示例不当本人记录。",
+          "analysis": "实际信息由本人提供，半篇如实记半篇，未知不补造，参考示例不当本人记录。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-reading-plan-versus-actual-progress-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构示例卡：“计划读第一篇，实际只读到开头。”怎样分别填计划和实际，不能改成全书读完？",
+          "answer": "前者意图后者完成范围，记录开头与未完即可；此示例本身不是学生真实进度。",
+          "analysis": "前者意图后者完成范围，记录开头与未完即可；此示例本身不是学生真实进度。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-reading-plan-versus-actual-progress-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次回看安排，按真实情况记已读、未读或调整，说明下一步小安排。",
+          "answer": "状态依据实际，未完成允许保留，不伪造连续天数或以勾选替阅读理解。",
+          "analysis": "状态依据实际，未完成允许保留，不伪造连续天数或以勾选替阅读理解。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-reading-plan-versus-actual-progress-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "如果只读完教材节选，下一次想找整本书，怎样写进度最准确？",
+          "answer": "已读写当前节选，整本为后续计划；两者不混成整本已完成，也不编版次。",
+          "analysis": "已读写当前节选，整本为后续计划；两者不混成整本已完成，也不编版次。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-reading-plan-versus-actual-progress-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "选择一处本人真正读过的内容记录发现；若没有新阅读，说明目前仍停在哪个已核对范围。",
+          "answer": "真实范围与内容可对应，没有新进度不需要编造，允许承认暂未开始。",
+          "analysis": "真实范围与内容可对应，没有新进度不需要编造，允许承认暂未开始。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-reading-plan-versus-actual-progress-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "回看一段实际阅读记录，说明一项理解变化与一个还想继续读的问题；只有计划时只更新计划。",
+          "answer": "记录状态与本人实际相符，变化有具体材料，不把安排天数或样例当长期习惯证据。",
+          "analysis": "记录状态与本人实际相符，变化有具体材料，不把安排天数或样例当长期习惯证据。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "fairy-reading",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "claim-supported-by-record",
+      "familyProposal": "following-claim-supported-by-record",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "判断或创作与明确材料相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "指出具体来源和支持关系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "虚构节选计划与实际已发生表现不混算",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能，推荐页只说明书目与部分介绍，整本实际阅读需本人版本和完成范围。",
+        "insufficientExample": "很有趣，我全读完也全会了。",
+        "insufficientReason": "评价和完成声明未给具体表现或来源，不能代替本人作品、声音、修改或实际已读范围。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；有依据的其他创作与看法可接受，帮助和未完成部分保留。"
+      },
+      "exercises": [
+        {
+          "id": "fairy-reading-claim-supported-by-record-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "教材推荐三本书，能据此说你已看完三本所有故事吗？指出证据范围。",
+          "answer": "不能，推荐页只说明书目与部分介绍，整本实际阅读需本人版本和完成范围。",
+          "analysis": "不能，推荐页只说明书目与部分介绍，整本实际阅读需本人版本和完成范围。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-claim-supported-by-record-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "拇指姑娘节选标明叶君健译有改动。能断定所有版本字句完全相同吗？怎样核对？",
+          "answer": "不能，需实际版本和范围，翻译节选身份不同；保留已知标注，不编其他版差异。",
+          "analysis": "不能，需实际版本和范围，翻译节选身份不同；保留已知标注，不编其他版差异。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-claim-supported-by-record-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构卡只列两篇目录。它证明正文已读过吗？可以准确说什么？",
+          "answer": "只证明见到目录信息，未证明正文阅读；可说准备选哪篇，不能补已读细节。",
+          "analysis": "只证明见到目录信息，未证明正文阅读；可说准备选哪篇，不能补已读细节。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-claim-supported-by-record-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "读者想象角色多说一句话，这句话能自动成为原文引语吗？怎样记录准确？",
+          "answer": "不能，新增须标续写或个人想象，原引语需逐字来源，不把创作冒充原作。",
+          "analysis": "不能，新增须标续写或个人想象，原引语需逐字来源，不把创作冒充原作。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-claim-supported-by-record-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "记录打了已完成勾选，是否单独证明本人理解了整本所有故事？还需看什么？",
+          "answer": "不能，需真实范围与具体理解表现，勾选不代理解；不能由一项局部表现推全部。",
+          "analysis": "不能，需真实范围与具体理解表现，勾选不代理解；不能由一项局部表现推全部。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-claim-supported-by-record-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原节选写温暖国度景物，能推广世界所有地方同一天都同样温暖吗？",
+          "answer": "不能，当前场景不支持全球时间气候结论，保留叙述范围。",
+          "analysis": "不能，当前场景不支持全球时间气候结论，保留叙述范围。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "fairy-reading-claim-supported-by-record-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "把一条原节选信息、一项个人感受和一件尚未读到的事分别写出，说明为何分开。",
+          "answer": "原信息可定位，感受有联系，未读保持未知，不凭熟悉书名或示例填成已经发生。",
+          "analysis": "原信息可定位，感受有联系，未读保持未知，不凭熟悉书名或示例填成已经发生。 请核对具体依据与实际表现，不以是否照抄参考措辞评分。",
+          "expectedSeconds": 160
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry7",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 48,
+    "pageEnd": 49,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:fairy-reading-book-identity",
+      "version": 1,
+      "name": "认识推荐书目与所读版本",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "整本书阅读",
+      "objective": "区分安徒生童话稻草人格林童话的作者整理者与实际所选版本",
+      "successCriterion": "目录推荐不当整本已读，记录实际书名版本和当前范围，不将不同译本所有字句强当相同",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:fairy-reading-excerpt-evidence",
+      "version": 1,
+      "name": "从拇指姑娘节选找画面依据",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "文学阅读",
+      "objective": "联系当前节选中人物动作环境和移动描写形成画面",
+      "successCriterion": "原信息可定位，人物想象和追加创作分清，不由两页推荐推断原作全部情节",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:fairy-reading-perspective",
+      "version": 1,
+      "name": "带着角色处境阅读并交流",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "阅读体验",
+      "objective": "把自己想象成角色，联系具体处境说明感受或疑问",
+      "successCriterion": "接受有依据的不同反应，不要求真实冒险或复制角色动作，也不强迫统一情绪",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:fairy-reading-real-progress",
+      "version": 1,
+      "name": "制定阅读安排并保留实际进度",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "阅读习惯",
+      "objective": "选择可获得的适龄版本，安排短阅读并记录真正读到的范围与问题",
+      "successCriterion": "计划和已读分别记，未读完保留未完；不伪造页数连续天数或同伴反馈",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:fairy-reading-book-identity",
+    "source:chinese:g3:02915a7d:fairy-reading-excerpt-evidence",
+    "source:chinese:g3:02915a7d:fairy-reading-perspective",
+    "source:chinese:g3:02915a7d:fairy-reading-real-progress",
+    "core:chinese:detail-evidence"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "选定原件全部页、任务、示例、插图和书目已逐张查看；只是教材页来源核对，不是教师审核或推荐整本书已读证明。",
+    "pages": [
+      {
+        "page": 48,
+        "visualChecked": true,
+        "statement": "已查看推荐安徒生童话、拇指姑娘完整节选与叶君健译有改动标注，不称整本原作已读。"
+      },
+      {
+        "page": 49,
+        "visualChecked": true,
+        "statement": "已查看角色想象提示、叶圣陶稻草人与德国格林兄弟整理格林童话推荐及插图，仅教材推荐范围已读，不代替三本完整书。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "快乐读书吧：在那奇妙的王国里",
+    "activityKind": "whole_book_reading",
+    "recommendedBooks": [
+      {
+        "title": "安徒生童话",
+        "author": "安徒生",
+        "country": "丹麦"
+      },
+      {
+        "title": "稻草人",
+        "author": "叶圣陶"
+      },
+      {
+        "title": "格林童话",
+        "collectors": "格林兄弟",
+        "country": "德国"
+      }
+    ],
+    "excerpt": {
+      "title": "拇指姑娘",
+      "author": "安徒生",
+      "translator": "叶君健",
+      "adapted": true
+    },
+    "recommendedWholeBooksActuallyReadInThisBatch": false,
+    "actualLearnerProgressNotCreated": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "在那奇妙的王国里：从节选出发，真实地开始整本阅读",
+    "activation": {
+      "prompt": "看到一份推荐书目，与自己真正读过一本书有什么不同？可以说想读，也可以承认还没拿到适合版本。先选一个愿意了解的故事。",
+      "expectedObservation": "孩子能分清推荐、计划、读过片段和整本已读，不以书名熟悉当已经完成阅读。",
+      "bridge": "先读原页拇指姑娘节选，再看怎样选择书、记录实际范围和自己的疑问。"
+    },
+    "concept": {
+      "explanation": "本页推荐安徒生的安徒生童话、叶圣陶的稻草人和德国格林兄弟搜集整理的格林童话，书目与作者身份分别看，实际版本要由手边书核对。拇指姑娘节选写随燕子飞过不同环境、寒冷时钻入羽毛以及到达温暖地方的景致，可以从动作与环境找画面依据；它是叶君健译的改动节选，不代表已读完整故事或整本书。阅读可以把自己想象成角色，理解处境与感受，仍不必复制角色冒险或统一欢喜悲伤。先选可获得的适龄版本，安排能做到的小段，记录真正读到哪一篇哪一部分、一个发现与一个问题；计划不是已读，没读完保持未完。",
+      "points": [
+        "书目作者与实际版本分别核对",
+        "节选画面有文字依据",
+        "角色想象与原文分清",
+        "阅读安排与实际进度分开",
+        "未读完不补成整本完成"
+      ]
+    },
+    "example": {
+      "situation": "原创阅读安排示例，不是学生真实记录：先找到适龄童话选本，核对书名与译者；计划下一次读一篇。读后只记录实际完成的篇名和一处问题，若只读半篇就写半篇。",
+      "steps": [
+        {
+          "explanation": "先检查手边版本，不因标题熟悉就假定和教材节选字句完全一样。",
+          "board": [
+            "书名作者",
+            "译者版本",
+            "可获得的实际材料"
+          ]
+        },
+        {
+          "explanation": "计划栏写打算读，实际栏在真正阅读后再记，不能提前打已完成。",
+          "board": [
+            "计划：想读哪篇",
+            "实际：真正读到哪里"
+          ]
+        },
+        {
+          "explanation": "交流一处材料依据和一个问题，不需要编造全书结局或同伴意见。",
+          "board": [
+            "具体发现",
+            "当前疑问",
+            "尚未读完部分保留"
+          ]
+        }
+      ],
+      "conclusion": "安排帮助开始，实际阅读和理解需要本人后续完成，参考示例不能代填学习记录。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "推荐、节选、计划与已读",
+        "headers": [
+          "类别",
+          "当前能说明什么",
+          "不能替代"
+        ],
+        "rows": [
+          [
+            "推荐书目",
+            "可选择了解哪些作品",
+            "不代表整本已读"
+          ],
+          [
+            "当前节选",
+            "这一范围的动作环境和语言",
+            "不证明全部原作情节"
+          ],
+          [
+            "阅读计划",
+            "准备怎样开始",
+            "不当已发生进度"
+          ],
+          [
+            "实际记录",
+            "本人真正读到范围和问题",
+            "不以勾选代理解或长期习惯"
+          ]
+        ],
+        "explanation": "表格帮助保持阅读事实，不替孩子写虚假的页数、日期或完成状态。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "只读推荐页就说三本书全读完，或把教材两段当完整原作。",
+        "alternatives": [
+          "可能混淆书目与正文，也可能想用完成勾选替代实际范围。"
+        ],
+        "verification": "请指出手边版本及真正读到的篇章，不确定部分保留未读。",
+        "correctiveFeedback": "读片段也有收获，准确记录范围，不把未读补成全读。"
+      },
+      {
+        "observation": "把自己想象成角色，就将自己的新情节写成原书必有。",
+        "alternatives": [
+          "可能未区分阅读感受与续写，也可能凭熟悉版本替代当前文字。"
+        ],
+        "verification": "逐项指出原句与自己追加的想象，标明版本与范围。",
+        "correctiveFeedback": "想象可丰富阅读，但不能改写当前原信息；续写另标创作。"
+      }
+    ],
+    "transfer": {
+      "scenario": "由本人选择另一篇可获得的适龄童话，先核对实际版本与当前所读范围。",
+      "prompt": "读后用一条具体细节说明画面或感受，再留一个问题和下一次小安排；未读过时只作计划，不代填结果。",
+      "expectedStrategy": "材料身份、片段依据、个人感受与真实进度分清，阅读活动不制造已完成事实。"
+    },
+    "summary": {
+      "synthesis": "发挥想象去读，也准确说自己读过什么。一个节选可以引出整本阅读，书目、计划和完成不是同一件事。",
+      "takeaways": [
+        "实际版本要核对",
+        "节选不等整本",
+        "感受与想象有来源",
+        "真正读后再记录进度"
+      ]
+    },
+    "citations": [
+      {
+        "page": 48,
+        "quote": "终于他们来到了温暖的国度",
+        "usedFor": "concept"
+      },
+      {
+        "page": 49,
+        "quote": "一起欢笑，一起悲伤。",
+        "usedFor": "transfer"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:fairy-reading-book-identity",
+        "objective": "区分安徒生童话稻草人格林童话的作者整理者与实际所选版本",
+        "successCriterion": "目录推荐不当整本已读，记录实际书名版本和当前范围，不将不同译本所有字句强当相同"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:fairy-reading-excerpt-evidence",
+        "objective": "联系当前节选中人物动作环境和移动描写形成画面",
+        "successCriterion": "原信息可定位，人物想象和追加创作分清，不由两页推荐推断原作全部情节"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:fairy-reading-perspective",
+        "objective": "把自己想象成角色，联系具体处境说明感受或疑问",
+        "successCriterion": "接受有依据的不同反应，不要求真实冒险或复制角色动作，也不强迫统一情绪"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g3:02915a7d:fairy-reading-real-progress",
+        "objective": "选择可获得的适龄版本，安排短阅读并记录真正读到的范围与问题",
+        "successCriterion": "计划和已读分别记，未读完保留未完；不伪造页数连续天数或同伴反馈"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "结合明确材料说明判断，分清原信息、虚构创作与实际阅读范围",
+        "successCriterion": "说明依据和来源，未读整本不由节选或目录推断已完成，追加想象不冒充原文"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "目标、结构、评分和充分未见材料先审核，按真实日期保留实际表现。重复故事、提示和示范保留条件，不用计划、勾选或模拟日期当已完成保持。"
+    }
+  },
+  "editorNotes": {
+    "slug": "fairy-reading",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "materialStatus": "具体原创讲解、例子、图表、错因与迁移已写；检查材料、独立结构、评分金样本和充分保持库存仍需审核。",
+    "reuseBoundary": "只复用明确列出的通用目标，新增定义和等价先修保持待审。",
+    "pacing": "习作、实际修改、字音与阅读分次留证，阅读计划不是已发生的整本阅读，局部表现不替全部目标。"
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "format": "study-block-four-fairy-activity-candidates-v1",
+  "at": "2026-11-02T10:26:16.375Z",
+  "baseCommit": "7344d65ee0cd38f86a1ed4902d2730c6bd5ea154",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "newDrafts": 3,
+  "targetGroups": 16,
+  "newDefinitionCandidates": 13,
+  "newCandidateQuestions": 112,
+  "purposeCounts": {
+    "immediate": 48,
+    "proposedRetention": 64
+  },
+  "modes": {
+    "audio_record": 14,
+    "image_upload": 14,
+    "short_answer": 84
+  },
+  "bundle": {
+    "path": "resources/curriculum/source-lesson-materials/chinese-g3-fairy-activities-v1.json",
+    "sha256": "7e06d64e9e2fab0b8203d31c8ebef1dc0e6c16f0fbd2f33ed401e6edfd55b95d"
+  },
+  "source": {
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "physicalPages": [
+      45,
+      46,
+      47,
+      48,
+      49
+    ],
+    "allFivePagesVisuallyViewed": true,
+    "sourceImagesCommitted": false
+  },
+  "actualChecks": {
+    "draftHttpColdRead": "checks/fairy-activities-drafts-http-first.json",
+    "materialsHttpColdRead": "checks/fairy-activities-materials-http-first.json",
+    "exactSourceCitationsAndMetadata": true,
+    "originalCommandReplayed": true,
+    "incompletePublicationRejected": true,
+    "allQuestionTextsModesRubricsSourcesMappingsPreserved": true,
+    "finalGapCounts": [
+      {
+        "file": "chinese-g3-fairy-composing-v1.json",
+        "gaps": 64,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      },
+      {
+        "file": "chinese-g3-garden-three-v1.json",
+        "gaps": 77,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      },
+      {
+        "file": "chinese-g3-fairy-reading-v1.json",
+        "gaps": 64,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      }
+    ]
+  },
+  "reusedEngineering": {
+    "sourceCommit": "4d26c399",
+    "applicationContractsAndTestsUnchanged": true,
+    "fullApi": {
+      "passed": 3051,
+      "failed": 0,
+      "conditionalSkips": 131
+    },
+    "browser": {
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0
+    },
+    "evidence": "../block-four-retention-feedback-and-autumn/receipt.json",
+    "countsNotAddedToContentBatch": true,
+    "newContentUsesIndependentRealHttpVerification": true
+  },
+  "boundaries": {
+    "teacherReviewed": false,
+    "recommendedWholeBooksActuallyRead": false,
+    "readingPlansNotCompletedProgress": true,
+    "scoringGoldExamplesAreAuthoredNotLearnerSamples": true,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0,
+    "publishedPackages": 0,
+    "adoptions": 0,
+    "learnerResponses": 0,
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "formal": {
+    "schema": 24,
+    "revision": 188,
+    "protectedRuntimeFiles": 1063
+  },
+  "remaining": {
+    "registeredBooks": 449,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3512,
+    "entriesWithDrafts": 19,
+    "entriesWithoutDraftsInSelectedInputs": 3493,
+    "authoredFollowingCandidates": 770,
+    "firstLesson44FollowupsNotIncludedIn770": true,
+    "next": "Continue remaining exact-source lessons and activities, teacher/scoring/family review and sufficient independent stocks, then block5 engineering and real-condition acceptance."
+  }
+}
