@@ -1,0 +1,60 @@
+{
+  "at": "2026-11-02T20:18:44.799Z",
+  "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+  "source": "main synchronized to data/qa/p187",
+  "accurateTextbookCandidates": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 7,
+  "failed": 0,
+  "error": null,
+  "checks": [
+    {
+      "name": "actual-candidate-reading:english-g3-349949e1-animals-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-candidate-reading:english-g3-349949e1-birthday-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-candidate-reading:english-g3-349949e1-food-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-candidate-reading:english-g3-349949e1-recycle-one-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-candidate-reading:english-g3-349949e1-recycle-two-v1.json",
+      "passed": true
+    },
+    {
+      "name": "mobile-table-keyboard-scroll-and-edit-preservation",
+      "passed": true
+    },
+    {
+      "name": "private-preview-creates-no-publication-or-learner-facts",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "english-g3-349949e1-animals-v1-desktop.png",
+    "english-g3-349949e1-animals-v1-table.png",
+    "english-g3-349949e1-animals-v1-letter-table.png",
+    "english-g3-349949e1-birthday-v1-desktop.png",
+    "english-g3-349949e1-birthday-v1-table.png",
+    "english-g3-349949e1-birthday-v1-letter-table.png",
+    "english-g3-349949e1-food-v1-desktop.png",
+    "english-g3-349949e1-food-v1-table.png",
+    "english-g3-349949e1-food-v1-letter-table.png",
+    "english-g3-349949e1-recycle-one-v1-desktop.png",
+    "english-g3-349949e1-recycle-one-v1-table.png",
+    "english-g3-349949e1-recycle-two-v1-desktop.png",
+    "english-g3-349949e1-recycle-two-v1-table.png",
+    "english-g3-349949e1-animals-v1-mobile-table.png"
+  ],
+  "pageErrors": [],
+  "mutations": []
+}

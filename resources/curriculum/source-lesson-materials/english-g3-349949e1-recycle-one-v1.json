@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "recycle-one",
+      "path": "resources/curriculum/source-lessons/english-g3-349949e1-recycle-one-v1.json",
+      "sha256": "4e82eb7fb7230fb0ca3277ab0cf38fbbcdb9041505a2d14e0428a494a879a89d",
+      "source": {
+        "bookId": "archive-book:english-g3-upper-349949e1df2ad88b",
+        "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:recycle1:entry1",
+        "sourceSha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+        "pageStart": 37,
+        "pageEnd": 40,
+        "publicationYear": null,
+        "curriculumStandardYear": 2011
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "42道原创未审候选，6目标各3即时4拟议间隔。单元级稿不等全部页面活动；当前没有真实听力输入，不复制原图歌词、不代本人参与，教师/评分/独立题族和充分保持库存未完成。",
+  "groups": [
+    {
+      "lesson": "recycle-one",
+      "atomId": "source:english:g3:349949e1:r1-greeting",
+      "structure": "r1-current-speaker-introduction",
+      "familyProposal": "349949e1-r1-current-speaker-introduction",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "时段和角色相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "被介绍者不混",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人发声可理解",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可说Good morning, Lin. This is Mei.，按当前时段和被介绍者；不是I’m Mei.。听实际录音核是否可理解，角色句不改本人身份。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-current-speaker-introduction-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创上午，你演Bo，向Lin介绍Mei。本人录一句问候和介绍，角色名不是真实资料。",
+          "answer": "可说Good morning, Lin. This is Mei.，按当前时段和被介绍者；不是I’m Mei.。听实际录音核是否可理解，角色句不改本人身份。",
+          "analysis": "可说Good morning, Lin. This is Mei.，按当前时段和被介绍者；不是I’m Mei.。听实际录音核是否可理解，角色句不改本人身份。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-current-speaker-introduction-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创你演Kai，只介绍自己初次见面，不介绍第三人。本人录问候与名字，不沿用别人的角色句。",
+          "answer": "可录Hello, I’m Kai.或Hi, I’m Kai.，I指当前说话者Kai；需本人实际发声，书面参考不代口语表现。",
+          "analysis": "可录Hello, I’m Kai.或Hi, I’m Kai.，I指当前说话者Kai；需本人实际发声，书面参考不代口语表现。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-current-speaker-introduction-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创下午你演An，向Mei介绍Yu。请本人录当前表达，不能照抄上午Bo与Lin的名字。",
+          "answer": "可说Good afternoon, Mei. This is Yu.；当前介绍Yu，An是说话者。录音可理解及是否先看示例分别核。",
+          "analysis": "可说Good afternoon, Mei. This is Yu.；当前介绍Yu，An是说话者。录音可理解及是否先看示例分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-current-speaker-introduction-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新角色Lin在上午向Bo介绍Kai，请先本人录问候和介绍；单人练习就明确范围。",
+          "answer": "可录Good morning, Bo. This is Kai.；时段和角色正确。单人发声不冒充真实三人交流，原答及帮助另核。",
+          "analysis": "可录Good morning, Bo. This is Kai.；时段和角色正确。单人发声不冒充真实三人交流，原答及帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-current-speaker-introduction-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "角色Mei初次向对方介绍自己。请本人录Hello或Hi加介绍，别用This is误介绍另一个人。",
+          "answer": "可录Hi, I’m Mei.；当前I’m介绍本人所演角色。需听实际声音，不把角色名字存为本人真实姓名，帮助如实说明。",
+          "analysis": "可录Hi, I’m Mei.；当前I’m介绍本人所演角色。需听实际声音，不把角色名字存为本人真实姓名，帮助如实说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-current-speaker-introduction-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "当前明确下午，你演Yu向An介绍Lin。录新句，不沿上一题上午的问候。",
+          "answer": "可说Good afternoon, An. This is Lin.，依据当前条件。真实间隔和本人原答另核，旧参考不能当本次已开口。",
+          "analysis": "可说Good afternoon, An. This is Lin.，依据当前条件。真实间隔和本人原答另核，旧参考不能当本次已开口。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-current-speaker-introduction-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "角色卡你演Bo，尚无真实同伴参与。独自录This is Mei的介绍，可以怎样说明这次完成的范围？",
+          "answer": "可本人录Hello, this is Mei.等角色介绍，但注明单人练习；对方尚未实际回应，不编已发生的交流，声音与提示另核。",
+          "analysis": "可本人录Hello, this is Mei.等角色介绍，但注明单人练习；对方尚未实际回应，不编已发生的交流，声音与提示另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "recycle-one",
+      "atomId": "source:english:g3:349949e1:r1-object",
+      "structure": "r1-complete-word-and-possession",
+      "familyProposal": "349949e1-r1-complete-word-and-possession",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "完整词义正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "所有物条件保持",
+          "weight": 0.4
+        },
+        {
+          "criterion": "相同回应有依据",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "完整pen两张；pencil是铅笔，pencil box是铅笔盒，不按词内字母段另算pen。词卡数量也不等本人有几支笔。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-complete-word-and-possession-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创完整卡pen、pencil、pencil box、pen。问完整pen有几张，pencil和pencil box各表示什么？",
+          "answer": "完整pen两张；pencil是铅笔，pencil box是铅笔盒，不按词内字母段另算pen。词卡数量也不等本人有几支笔。",
+          "analysis": "完整pen两张；pencil是铅笔，pencil box是铅笔盒，不按词内字母段另算pen。词卡数量也不等本人有几支笔。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-complete-word-and-possession-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创Lin有尺子，Mei只有橡皮。Lin说I have a ruler，Mei可以仅为接话说Me too吗？给合适自述。",
+          "answer": "不应按本条件说也有尺，可说I have an eraser.。Me too须有相同事实；角色物品不代本人真实所有物。",
+          "analysis": "不应按本条件说也有尺，可说I have an eraser.。Me too须有相同事实；角色物品不代本人真实所有物。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-complete-word-and-possession-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创选“包、书、蜡笔”，卡顺序为book、crayon、bag。按意思重排，不按原位置抄。",
+          "answer": "依次bag、book、crayon；按完整词义，不按旧排位。这是文字任务，没有声音不认听辨或本人发音。",
+          "analysis": "依次bag、book、crayon；按完整词义，不按旧排位。这是文字任务，没有声音不认听辨或本人发音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-complete-word-and-possession-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新卡ruler、eraser、pencil各是什么？若说有一块橡皮，本例I have后面怎样接？",
+          "answer": "分别尺子、橡皮、铅笔；可说I have an eraser.。本例表达与物品对应，不把这三词合成同一物品或推全部冠词规则。",
+          "analysis": "分别尺子、橡皮、铅笔；可说I have an eraser.。本例表达与物品对应，不把这三词合成同一物品或推全部冠词规则。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-complete-word-and-possession-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "角色An和Yu都明说有一本书。对方说I have a book后，An怎样回应相同情况？只知道一人有书时还缺什么？",
+          "answer": "两人都有书时可回应Me too.；只知一人有书，不足确认另一人也有。保留当前角色条件，不自动生成本人所有物记录。",
+          "analysis": "两人都有书时可回应Me too.；只知一人有书，不足确认另一人也有。保留当前角色条件，不自动生成本人所有物记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-complete-word-and-possession-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "当前题要“铅笔盒”，有人因含pencil就写pencil。应写完整什么词组，为什么不能省成另一物品？",
+          "answer": "应写pencil box，整体指铅笔盒；pencil单独是铅笔，省略box改变对象。按当前词义而非共享字母段判断。",
+          "analysis": "应写pencil box，整体指铅笔盒；pencil单独是铅笔，省略box改变对象。按当前词义而非共享字母段判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-complete-word-and-possession-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "完整词卡bag、book、bag、ruler，问bag有几张，不问本人书包数。请按当前卡答。",
+          "answer": "两张完整bag词卡，第1和第3张；book为书，ruler为尺。文字出现次数不代本人实际物品数量，原答与提示另存。",
+          "analysis": "两张完整bag词卡，第1和第3张；book为书，ruler为尺。文字出现次数不代本人实际物品数量，原答与提示另存。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "recycle-one",
+      "atomId": "source:english:g3:349949e1:r1-colour-part",
+      "structure": "r1-colour-part-combination",
+      "familyProposal": "349949e1-r1-colour-part-combination",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "颜色与部位都正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "问句与肯定分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "材料范围真实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "分别红色的嘴、白色的手，颜色和部位都要对应；只对颜色不够。文字条件不证明本人已看图、听音或执行动作。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-colour-part-combination-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创文字卡red mouth、white hands，请分别说明两项含义；只选对颜色而把部位换掉够吗？",
+          "answer": "分别红色的嘴、白色的手，颜色和部位都要对应；只对颜色不够。文字条件不证明本人已看图、听音或执行动作。",
+          "analysis": "分别红色的嘴、白色的手，颜色和部位都要对应；只对颜色不够。文字条件不证明本人已看图、听音或执行动作。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-colour-part-combination-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创要blue arms，可选blue nose、brown arms、blue arms。选完整符合项并说明其余各错哪一部分。",
+          "answer": "选blue arms，蓝色胳膊；blue nose部位错，brown arms颜色错。两个信息同时保持，不因出现熟词就直接选。",
+          "analysis": "选blue arms，蓝色胳膊；blue nose部位错，brown arms颜色错。两个信息同时保持，不因出现熟词就直接选。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-colour-part-combination-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "角色只问Brown arms?，尚无回答和清晰图片。能认胳膊已经棕色吗？什么仍需核？",
+          "answer": "不能，问句是询问或猜测，不是肯定事实；需明确回答或可辨图。缺声音也不认听辨，人物服装不代学生本人身体资料。",
+          "analysis": "不能，问句是询问或猜测，不是肯定事实；需明确回答或可辨图。缺声音也不认听辨，人物服装不代学生本人身体资料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-colour-part-combination-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新卡yellow body和red body，当前文字明确要求黄色身体，应选哪个？若真实图片看不清，能用常识补吗？",
+          "answer": "文字条件选yellow body；图若看不清需另核，不能拿常见颜色补当前画面。词义判断与实际视觉任务分开。",
+          "analysis": "文字条件选yellow body；图若看不清需另核，不能拿常见颜色补当前画面。词义判断与实际视觉任务分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-colour-part-combination-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "当前要white mouth，旧题曾是red mouth。请给当前含义，不能只因部位相同沿用旧颜色。",
+          "answer": "当前白色的嘴，颜色white而非red；部位mouth保持。按新条件判断，旧题答案不是新题依据。",
+          "analysis": "当前白色的嘴，颜色white而非red；部位mouth保持。按新条件判断，旧题答案不是新题依据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-colour-part-combination-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创字卡black eyes与orange eyes混排，给定要求橙色眼睛。写完整选项，不用物种常见眼色猜。",
+          "answer": "选orange eyes，按已给颜色和部位；不能因常见眼色改black。这里是原创角色条件，不作本人或真实动物眼色结论。",
+          "analysis": "选orange eyes，按已给颜色和部位；不能因常见眼色改black。这里是原创角色条件，不作本人或真实动物眼色结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-colour-part-combination-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "你只读懂blue arms，没有图和音频。可以说明文字意思吗？能据此填“已听辨且画中胳膊确实蓝色”吗？",
+          "answer": "可以说明蓝色的胳膊这一文字组合，不能补已听过声音或看清画面。需要相应真实材料再核，原答与帮助如实保持。",
+          "analysis": "可以说明蓝色的胳膊这一文字组合，不能补已听过声音或看清画面。需要相应真实材料再核，原答与帮助如实保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "recycle-one",
+      "atomId": "source:english:g3:349949e1:r1-letters",
+      "structure": "r1-a-to-i-writing",
+      "familyProposal": "349949e1-r1-a-to-i-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "字母身份和大小写对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人字形可辨",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字体与过程边界明确",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三组大小写对应且本人字形可辨；字体与手写可有细节差异。完成图不独证笔顺或发音，样本帮助如实保留。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-a-to-i-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创本人写Aa、Bb、Cc三组并上传，先看样本可如实说明。不要用印刷截图当本人书写。",
+          "answer": "三组大小写对应且本人字形可辨；字体与手写可有细节差异。完成图不独证笔顺或发音，样本帮助如实保留。",
+          "analysis": "三组大小写对应且本人字形可辨；字体与手写可有细节差异。完成图不独证笔顺或发音，样本帮助如实保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-a-to-i-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创本人写Dd、Ee、Ff并上传，标清大写小写；不能只唱字母歌替本次作品。",
+          "answer": "三组配对正确、实际作品可辨；唱歌不提供本次手写。图不证明听音、字母名发音或完整过程，未写保持未完成。",
+          "analysis": "三组配对正确、实际作品可辨；唱歌不提供本次手写。图不证明听音、字母名发音或完整过程，未写保持未完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-a-to-i-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创本人写Gg、Hh、Ii并上传；大小写形状不完全相同就一定不是同一字母吗？",
+          "answer": "三组仍是对应大小写，字形可不同；核实际样本与本人可辨作品。不按完全同形要求误判配对，声音和笔顺另核。",
+          "analysis": "三组仍是对应大小写，字形可不同；核实际样本与本人可辨作品。不按完全同形要求误判配对，声音和笔顺另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-a-to-i-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新顺序Ii、Aa、Ee，请本人按当前顺序写并上传；需要样本可如实说明。",
+          "answer": "按当前顺序配对、字形清楚；不机械沿旧排列。本人作品和看样本帮助保持，实际到期与声音表现另核。",
+          "analysis": "按当前顺序配对、字形清楚；不机械沿旧排列。本人作品和看样本帮助保持，实际到期与声音表现另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-a-to-i-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "当前要求写Bb与Dd并标明小写竖笔位置，请上传本人作品，不把同一个形状当两字母。",
+          "answer": "b竖左弧右，d弧左竖右，大小写分别对应；实际图可核字形，不能独证无人提示、完整笔顺或听音。",
+          "analysis": "b竖左弧右，d弧左竖右，大小写分别对应；实际图可核字形，不能独证无人提示、完整笔顺或听音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-a-to-i-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人可先写九组Aa至Ii，也可说明暂未写。能直接把旧印刷表自动记作本次已写完吗？",
+          "answer": "不能；实际本人新写可核字形，未写如实保留。印刷表是参考，不能代本次作品、听辨或独立保持。",
+          "analysis": "不能；实际本人新写可核字形，未写如实保留。印刷表是参考，不能代本次作品、听辨或独立保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-a-to-i-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人上传Aa至Ii完成图，有人要据此同时勾选所有词中声音、字母名及独立书写过程，应怎样限定？",
+          "answer": "图只支持所见字形和大小写核对，声音、过程及帮助需实际材料。作品范围如实保留，不由一图推出全部听说读写已通过。",
+          "analysis": "图只支持所见字形和大小写核对，声音、过程及帮助需实际材料。作品范围如实保留，不由一图推出全部听说读写已通过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "recycle-one",
+      "atomId": "source:english:g3:349949e1:r1-rules",
+      "structure": "r1-current-ladder-snake-rule",
+      "familyProposal": "349949e1-r1-current-ladder-snake-rule",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前规则正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "端点与动作条件完整",
+          "weight": 0.4
+        },
+        {
+          "criterion": "棋位不代原答",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "升到5格；移动规则只给位置，不提供格内本人回答。英语原答与帮助需实际核，不能由升格反填正确。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-current-ladder-snake-rule-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创本局落到2格梯底就升5格，落到7格蛇头就退4格。棋子落2后按规则去哪？能据此认格内英语题已答对吗？",
+          "answer": "升到5格；移动规则只给位置，不提供格内本人回答。英语原答与帮助需实际核，不能由升格反填正确。",
+          "analysis": "升到5格；移动规则只给位置，不提供格内本人回答。英语原答与帮助需实际核，不能由升格反填正确。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-current-ladder-snake-rule-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创同局棋子落7，蛇尾在4。应去哪？如果只是经过7而没有落在7，能自动用落点规则吗？",
+          "answer": "落7时到4；只经过7不满足明说落点条件，不自动触发。动作依本局规则，未知回答不能因退格直接认失败。",
+          "analysis": "落7时到4；只经过7不满足明说落点条件，不自动触发。动作依本局规则，未知回答不能因退格直接认失败。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-current-ladder-snake-rule-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新局明确梯子3到6、蛇8到5。有人沿旧2到5规则跳格，应按什么判断？",
+          "answer": "按新局3到6、8到5的端点，旧局不替当前条件。棋位、实际作答和判定分别记录，不补造本人已完成任务。",
+          "analysis": "按新局3到6、8到5的端点，旧局不替当前条件。棋位、实际作答和判定分别记录，不补造本人已完成任务。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-current-ladder-snake-rule-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创棋子直接被放终点，没有前面轮次和回答。能记成全部任务独立正确吗？",
+          "answer": "不能，终点位置不证明依规则完成或本人逐项回答；需核实际轮次、原答和帮助。缺失环节保持未核，不倒填结果。",
+          "analysis": "不能，终点位置不证明依规则完成或本人逐项回答；需核实际轮次、原答和帮助。缺失环节保持未核，不倒填结果。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-current-ladder-snake-rule-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本局说到梯顶停，未说明还能再多走。棋子按梯子到6后有人加走一步，应怎样处理？",
+          "answer": "先依明说规则停6；额外步数没有依据需核本局说明，不能自行补规则。移动与是否答题仍分别核。",
+          "analysis": "先依明说规则停6；额外步数没有依据需核本局说明，不能自行补规则。移动与是否答题仍分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-current-ladder-snake-rule-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人看同伴答案后说对，按游戏可继续。能把游戏继续顺带改成未经帮助的独立首答吗？",
+          "answer": "不能，游戏判定可依规则，但看答案的帮助和先后保持。游戏状态不改写原答，也不证明后续独立保持。",
+          "analysis": "不能，游戏判定可依规则，但看答案的帮助和先后保持。游戏状态不改写原答，也不证明后续独立保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-current-ladder-snake-rule-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "同伴赢一局，你只观察没参与。能把他的胜利记成本人已经会所有字母、词和对话吗？",
+          "answer": "不能，观察和同伴胜利不代本人实际回答。本人未参与如实保留，各目标需自己的相应任务，不能集体代记掌握。",
+          "analysis": "不能，观察和同伴胜利不代本人实际回答。本人未参与如实保留，各目标需自己的相应任务，不能集体代记掌握。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "recycle-one",
+      "atomId": "source:english:g3:349949e1:r1-dialogue",
+      "structure": "r1-different-question-response",
+      "familyProposal": "349949e1-r1-different-question-response",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "当前问句功能对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色答案准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "单人示范与实际交流分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可说My name’s Mei.或I’m Mei.，当前问姓名；I’m fine.不是同样功能。需实际录音供核，角色名字不作真实资料。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-different-question-response-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创你演Mei，问句What’s your name?。本人录回答，别用近况句代名字。",
+          "answer": "可说My name’s Mei.或I’m Mei.，当前问姓名；I’m fine.不是同样功能。需实际录音供核，角色名字不作真实资料。",
+          "analysis": "可说My name’s Mei.或I’m Mei.，当前问姓名；I’m fine.不是同样功能。需实际录音供核，角色名字不作真实资料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-different-question-response-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创你演感觉很好的Lin，对方问How are you?。本人先录合适回应，不只报名字。",
+          "answer": "可说I’m fine, thank you.或Very well, thanks.，回应当前问候；角色感觉不替本人实际状态，声音与帮助另核。",
+          "analysis": "可说I’m fine, thank you.或Very well, thanks.，回应当前问候；角色感觉不替本人实际状态，声音与帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-different-question-response-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创明确会面结束。本人录一句告别，不把How are you当所有场景的固定回应。",
+          "answer": "可录Bye.或Goodbye.，对应离开场景；要听本人实际发声，不编对方已回答或会面真实发生。",
+          "analysis": "可录Bye.或Goodbye.，对应离开场景；要听本人实际发声，不编对方已回答或会面真实发生。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-different-question-response-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新角色Bo被问姓名，请本人录新名字，不照抄旧Mei的参考。",
+          "answer": "可说My name’s Bo.或I’m Bo.；当前说话者与名字对应。原答和是否先看参考保持，单人练习不冒充真实双方交流。",
+          "analysis": "可说My name’s Bo.或I’m Bo.；当前说话者与名字对应。原答和是否先看参考保持，单人练习不冒充真实双方交流。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-different-question-response-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "角色Yu感觉很好，当前问How are you?。请本人先录回应，若只是演角色要说明。",
+          "answer": "可录Very well, thanks.等当前合适回应；虚构状态不写为本人真实感受。实际声音、帮助及到期间隔另核。",
+          "analysis": "可录Very well, thanks.等当前合适回应；虚构状态不写为本人真实感受。实际声音、帮助及到期间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-different-question-response-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创独自切角：先问名字再以Kai回答。本人录两句，明确没有真实同伴参与。",
+          "answer": "可录What’s your name? / My name’s Kai.，角色切换清楚；不虚构第二名真人发言，需核实际声音与帮助。",
+          "analysis": "可录What’s your name? / My name’s Kai.，角色切换清楚；不虚构第二名真人发言，需核实际声音与帮助。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-one-r1-different-question-response-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "混排姓名、近况和告别三张卡，你演An且近况卡明说很好。录三种不同回应，不能全部只说名字。",
+          "answer": "可分别My name’s An. / I’m fine, thank you. / Bye.，按当前功能。本人录音供核，角色与实际参与范围明确，提示顺序保持。",
+          "analysis": "可分别My name’s An. / I’m fine, thank you. / Bye.，按当前功能。本人录音供核，角色与实际参与范围明确，提示顺序保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

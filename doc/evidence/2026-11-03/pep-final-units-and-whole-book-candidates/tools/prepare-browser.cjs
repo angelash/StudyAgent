@@ -1,0 +1,5 @@
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');const root=path.resolve(__dirname,'../../..'),slugs=['recycle-one','animals','food','birthday','recycle-two'];
+let s=fs.readFileSync(path.join(root,'data/qa/block-four-content-source-first/math-browser-run.cjs'),'utf8');assert(s.includes('data/qa/b4-preview-web'));s=s.replaceAll('data/qa/b4-preview-web','data/qa/b4-math37-web');
+const marker="'math-g1-a8e88021-preparation-v1.json',";assert(s.includes(marker));s=s.replace(marker,slugs.map(slug=>`'english-g3-349949e1-${slug}-v1.json'`).join(',')+',');
+const shot='await tab.screenshot({path:path.join(folder,tableShot)});screenshots.push(tableShot);';assert(s.includes(shot));s=s.replace(shot,shot+`if(row.body.content.visuals.filter(v=>v.kind==='table').length>1){const second=reading().locator('.cl-table-wrap').nth(1),name=row.file.replace('.json','-letter-table.png');await second.screenshot({path:path.join(folder,name)});screenshots.push(name);}`);
+fs.writeFileSync(path.join(__dirname,'browser-run.cjs'),s,{flag:'wx'});console.log('Prepared five source packets in the existing workbench reader.');

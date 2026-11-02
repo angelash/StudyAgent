@@ -1,0 +1,728 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "food",
+      "path": "resources/curriculum/source-lessons/english-g3-349949e1-food-v1.json",
+      "sha256": "00b076de960f269434141e3fd989ac71127c3410ff737847b5e8d6aaf7ea5e1d",
+      "source": {
+        "bookId": "archive-book:english-g3-upper-349949e1df2ad88b",
+        "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit5:entry1",
+        "sourceSha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+        "pageStart": 51,
+        "pageEnd": 60,
+        "publicationYear": null,
+        "curriculumStandardYear": 2011
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "49道原创未审候选，7目标各3即时4拟议间隔。单元级稿不等全部页面活动；当前没有真实听力输入，不复制原图歌词、不代本人参与，教师/评分/独立题族和充分保持库存未完成。",
+  "groups": [
+    {
+      "lesson": "food",
+      "atomId": "source:english:g3:349949e1:food-words",
+      "structure": "food-current-menu-word-meaning",
+      "familyProposal": "349949e1-food-current-menu-word-meaning",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "八词语义对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前语境保持",
+          "weight": 0.4
+        },
+        {
+          "criterion": "标签容器和实物分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "分别面包、果汁、蛋、牛奶；文字可核词义，不证明本人食用过或听过声音。当前词卡与实际饮食分开。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-food-food-current-menu-word-meaning-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创菜单词bread、juice、egg、milk分别是什么？这些词印在卡上，能认本人实际吃喝过吗？",
+          "answer": "分别面包、果汁、蛋、牛奶；文字可核词义，不证明本人食用过或听过声音。当前词卡与实际饮食分开。",
+          "analysis": "分别面包、果汁、蛋、牛奶；文字可核词义，不证明本人食用过或听过声音。当前词卡与实际饮食分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-current-menu-word-meaning-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创把“水、蛋糕、鱼肉、米饭”对应water/cake/fish/rice，fish在这份餐单按什么语境理解？",
+          "answer": "依次water、cake、fish、rice；本菜单fish按鱼肉餐食理解，换动物情境再看所指，不能强定所有场景同一具体意思。",
+          "analysis": "依次water、cake、fish、rice；本菜单fish按鱼肉餐食理解，换动物情境再看所指，不能强定所有场景同一具体意思。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-current-menu-word-meaning-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创文字卡water、milk、water、rice，问完整water出现几次。可以把结果直接说成本人喝水杯数吗？",
+          "answer": "完整water两次，第1和第3张；不能变成本人喝了两杯。词牌数、容器数与真实饮用事实不同，声音和图像另核。",
+          "analysis": "完整water两次，第1和第3张；不能变成本人喝了两杯。词牌数、容器数与真实饮用事实不同，声音和图像另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-current-menu-word-meaning-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新菜单给cake、bread、rice，当前要“米饭”应选哪个？不按上题的面包位置猜。",
+          "answer": "选rice，cake为蛋糕、bread为面包；按当前完整词义，不沿旧位置。这只是文字任务，不代真实听辨或已经食用。",
+          "analysis": "选rice，cake为蛋糕、bread为面包；按当前完整词义，不沿旧位置。这只是文字任务，不代真实听辨或已经食用。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-current-menu-word-meaning-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "同一个fish在动物图与餐单里出现，能不看当前对象就强行说两处一定都只指盘中鱼肉吗？",
+          "answer": "不能，fish可随语境指鱼或鱼肉，需核当前材料；餐单语义不替动物图对象，也不能由一个词推本人饮食经历。",
+          "analysis": "不能，fish可随语境指鱼或鱼肉，需核当前材料；餐单语义不替动物图对象，也不能由一个词推本人饮食经历。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-current-menu-word-meaning-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创文字菜单列milk、juice、water，按“果汁、水、牛奶”顺序重排，别沿原顺序全部抄。",
+          "answer": "依次juice、water、milk；完整词与当前意思对应，不能用旧排位。没有声音不认听辨，本人是否读出另听实际录音。",
+          "analysis": "依次juice、water、milk；完整词与当前意思对应，不能用旧排位。没有声音不认听辨，本人是否读出另听实际录音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-current-menu-word-meaning-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "菜单同时写egg和cake，学生只因都可能甜就选同一项。当前中文分别是蛋与蛋糕，应怎样对应？",
+          "answer": "蛋对应egg，蛋糕对应cake，不能由经验味道把两个不同词合并。当前标签和已给条件优先，不编未提供的品尝或偏好。",
+          "analysis": "蛋对应egg，蛋糕对应cake，不能由经验味道把两个不同词合并。当前标签和已给条件优先，不编未提供的品尝或偏好。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "food",
+      "atomId": "source:english:g3:349949e1:food-request",
+      "structure": "food-current-polite-request",
+      "familyProposal": "349949e1-food-current-polite-request",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "请求对象正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "表达可理解且礼貌",
+          "weight": 0.4
+        },
+        {
+          "criterion": "请求不当已收到",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可说I’d like some juice, please.或Can I have some juice, please?；对象正确供听核，请求不证明实际得到或喝过。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-food-food-current-polite-request-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创角色Bo想要果汁，菜单有juice。本人录一句礼貌请求，角色需要不当真实个人偏好。",
+          "answer": "可说I’d like some juice, please.或Can I have some juice, please?；对象正确供听核，请求不证明实际得到或喝过。",
+          "analysis": "可说I’d like some juice, please.或Can I have some juice, please?；对象正确供听核，请求不证明实际得到或喝过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-current-polite-request-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创角色Mei要水，请本人录Can I have请求，不沿旧果汁题改错对象。",
+          "answer": "可录Can I have some water, please?，当前要water；需实际听本人可理解程度。some不自动给几杯，请求和交付分开。",
+          "analysis": "可录Can I have some water, please?，当前要water；需实际听本人可理解程度。some不自动给几杯，请求和交付分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-current-polite-request-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创菜单只给bread、milk、rice，角色Lin要米饭。本人录合适请求，不因熟悉water句就沿用。",
+          "answer": "可说I’d like some rice, please.或相应Can I have表达；按当前对象。本人实际声音和帮助另核，菜单角色不代真实进食。",
+          "analysis": "可说I’d like some rice, please.或相应Can I have表达；按当前对象。本人实际声音和帮助另核，菜单角色不代真实进食。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-current-polite-request-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新角色Yu要牛奶，先自己录礼貌请求；如果先听了样本，保留帮助顺序。",
+          "answer": "可录Can I have some milk, please?等合适请求；milk对象相符。先听示范如实说明，不倒写独立首答，也不认已经喝到。",
+          "analysis": "可录Can I have some milk, please?等合适请求；milk对象相符。先听示范如实说明，不倒写独立首答，也不认已经喝到。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-current-polite-request-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "当前角色要一些蛋，菜单用eggs表示这次项目。录I’d like请求，不把some固定译成两个蛋。",
+          "answer": "可说I’d like some eggs, please.；some这里未规定精确个数。实际词句可理解、提示与角色范围另核，请求不代食用。",
+          "analysis": "可说I’d like some eggs, please.；some这里未规定精确个数。实际词句可理解、提示与角色范围另核，请求不代食用。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-current-polite-request-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "新菜单明确想要bread，角色An本人独自练。录一个请求并说明只是单人角色句，不编对方回应。",
+          "answer": "可录I’d like some bread, please.；当前bread正确。单人发声不证明真实交付或同伴回应，声音与帮助实际核。",
+          "analysis": "可录I’d like some bread, please.；当前bread正确。单人发声不证明真实交付或同伴回应，声音与帮助实际核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-current-polite-request-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "角色刚说想要cake，对方还没动作。本人录礼貌请求，能顺带写“已收到一整块”吗？",
+          "answer": "可说Can I have some cake, please?，但请求不支持已收到或精确份量。真实声音、原答与帮助另核，未给条件不补结果。",
+          "analysis": "可说Can I have some cake, please?，但请求不支持已收到或精确份量。真实声音、原答与帮助另核，未给条件不补结果。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "food",
+      "atomId": "source:english:g3:349949e1:food-exchange",
+      "structure": "food-offer-thanks-response-order",
+      "familyProposal": "349949e1-food-offer-thanks-response-order",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "交接角色相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "致谢回应顺序正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "单人角色与真实交付分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可依次Here you are. / Thank you. / You’re welcome.；角色和顺序对应。需听实际录音，纸卡交流不等食物已交付或饮用。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-food-food-offer-thanks-response-order-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创单人切角练提供water卡、接受致谢、提供者回应。本人录三句并标清角色，不说已真实交付水。",
+          "answer": "可依次Here you are. / Thank you. / You’re welcome.；角色和顺序对应。需听实际录音，纸卡交流不等食物已交付或饮用。",
+          "analysis": "可依次Here you are. / Thank you. / You’re welcome.；角色和顺序对应。需听实际录音，纸卡交流不等食物已交付或饮用。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-offer-thanks-response-order-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创你演接过bread卡的Mei，对方刚说Here you are。本人录合适致谢，不把You’re welcome抢作接受者感谢。",
+          "answer": "可说Thank you.或Thanks.；You’re welcome通常回应致谢，发话功能不同。实际声音和角色范围供核，不补真实吃过的事实。",
+          "analysis": "可说Thank you.或Thanks.；You’re welcome通常回应致谢，发话功能不同。实际声音和角色范围供核，不补真实吃过的事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-offer-thanks-response-order-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创你演提供者，对方说Thank you。本人录回应，别把它解释为又一次请求食物。",
+          "answer": "可录You’re welcome.，是对当前致谢的回应，不是食物请求。本人录音供听核，角色交接不证明真实食物或真人双方互动。",
+          "analysis": "可录You’re welcome.，是对当前致谢的回应，不是食物请求。本人录音供听核，角色交接不证明真实食物或真人双方互动。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-offer-thanks-response-order-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新角色Bo提供milk卡给An，独自录双方交接三句，先后不要混。",
+          "answer": "可Here you are. / Thanks. / You’re welcome.，标清提供者、接受者与回应者。单人切角范围和帮助保持，不编实际喝奶。",
+          "analysis": "可Here you are. / Thanks. / You’re welcome.，标清提供者、接受者与回应者。单人切角范围和帮助保持，不编实际喝奶。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-offer-thanks-response-order-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "当前接受者拿的是rice纸卡，想表达感谢。请录合适一句；纸卡是否证明拿到真实米饭？",
+          "answer": "可录Thank you.或Thanks.；纸卡不等真实米饭，实际交付和食用另核。本人声音可理解及是否看过参考如实说明。",
+          "analysis": "可录Thank you.或Thanks.；纸卡不等真实米饭，实际交付和食用另核。本人声音可理解及是否看过参考如实说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-offer-thanks-response-order-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "角色提供者回应对方感谢，本人先看参考You’re welcome再录。能删除先看的帮助称独立首答吗？",
+          "answer": "可以录You’re welcome.供核，但先看帮助和顺序保持，不倒写独立首答。当前回应并不证明本人实际提供食物，间隔另核。",
+          "analysis": "可以录You’re welcome.供核，但先看帮助和顺序保持，不倒写独立首答。当前回应并不证明本人实际提供食物，间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-offer-thanks-response-order-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "当前只给一人Here you are的文字，没有真实回应。本人可单人补演三句练习，但能记成两名真人已经完成交流吗？",
+          "answer": "可注明单人角色练Here you are / Thank you / You’re welcome，不能补真人双方已发言。实际录音、帮助与参与范围分别核。",
+          "analysis": "可注明单人角色练Here you are / Thank you / You’re welcome，不能补真人双方已发言。实际录音、帮助与参与范围分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "food",
+      "atomId": "source:english:g3:349949e1:food-state",
+      "structure": "food-want-invite-state-result",
+      "familyProposal": "349949e1-food-want-invite-state-result",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前语境作用正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色与本人分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "请求邀请不当结果",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "前句角色说饿，后句邀请吃些面包；都不证明已吃完。角色感受不代本人状态，邀请与真实食用需另有事实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-food-food-want-invite-state-result-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创角色说I’m hungry，另一人说Have some bread。两句话各起什么作用？能直接说明已经吃完吗？",
+          "answer": "前句角色说饿，后句邀请吃些面包；都不证明已吃完。角色感受不代本人状态，邀请与真实食用需另有事实。",
+          "analysis": "前句角色说饿，后句邀请吃些面包；都不证明已吃完。角色感受不代本人状态，邀请与真实食用需另有事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-want-invite-state-result-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "比较I have a ruler和餐食情境Have some rice。都有have，就可以都解释成已经拥有或吃过吗？",
+          "answer": "不能，前者自述有尺，后者在该情境邀请吃些米饭。按语境分功能，邀请不当已拥有或食用，也不由词形套同一解释。",
+          "analysis": "不能，前者自述有尺，后者在该情境邀请吃些米饭。按语境分功能，邀请不当已拥有或食用，也不由词形套同一解释。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-want-invite-state-result-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "角色说I’d like some juice, please，对方尚未回应。能推出已收到两杯果汁吗？指出两个不足。",
+          "answer": "不能，请求不证明已收到，some也未给两杯数量。角色需要、实际交付与精确份数分别核，不补本人饮食事实。",
+          "analysis": "不能，请求不证明已收到，some也未给两杯数量。角色需要、实际交付与精确份数分别核，不补本人饮食事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-want-invite-state-result-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新角色只是看菜单觉得饿的假设卡，学生没有谈真实感受。可以把卡上hungry存为学生本人当时饥饿吗？",
+          "answer": "不能，卡是虚构角色条件，不代本人真实状态。可按角色练语言，实际本人感受未提供就不补，原答与帮助另存。",
+          "analysis": "不能，卡是虚构角色条件，不代本人真实状态。可按角色练语言，实际本人感受未提供就不补，原答与帮助另存。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-want-invite-state-result-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "对方说Here you are并指一张cake卡。可以说完成纸卡提供示意吗？能直接说本人已经切并吃了蛋糕吗？",
+          "answer": "可如实说明纸卡交接示意，不能推出实际切或吃过。语言、图示与真实行动分别核，指卡不独证后续完整过程。",
+          "analysis": "可如实说明纸卡交接示意，不能推出实际切或吃过。语言、图示与真实行动分别核，指卡不独证后续完整过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-want-invite-state-result-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "故事里角色先要fish，后来又要rice。只根据点单话，能认两样都已吃完且知道精确份量吗？",
+          "answer": "不能，点单是请求，实际收到、吃完及份量需看明确材料。逐次对象保持，不凭想要或熟悉故事补未知结果。",
+          "analysis": "不能，点单是请求，实际收到、吃完及份量需看明确材料。逐次对象保持，不凭想要或熟悉故事补未知结果。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-want-invite-state-result-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "Coke和ice cream出现在故事，能仅因出现就要求所有学生与八重点词一样默写并认本人已品尝？",
+          "answer": "不能，故事扩展、当前教学要求和本人经历不同。按明确目标分配要求，不由词出现自动升级默写，也不编饮食或听说经历。",
+          "analysis": "不能，故事扩展、当前教学要求和本人经历不同。按明确目标分配要求，不由词出现自动升级默写，也不编饮食或听说经历。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "food",
+      "atomId": "source:english:g3:349949e1:food-letters",
+      "structure": "food-o-to-t-actual-writing",
+      "familyProposal": "349949e1-food-o-to-t-actual-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "六组大小写对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人字形可辨",
+          "weight": 0.4
+        },
+        {
+          "criterion": "作品声音过程分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "六组大小写对应且可辨，当前样本和字体细节分别核。本人完成图不证明完整笔顺、词音或无帮助，未写保持未完成。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-food-food-o-to-t-actual-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创本人写Oo/Pp/Qq/Rr/Ss/Tt并上传，可看样本但如实说明；不能用印刷截图代新作品。",
+          "answer": "六组大小写对应且可辨，当前样本和字体细节分别核。本人完成图不证明完整笔顺、词音或无帮助，未写保持未完成。",
+          "analysis": "六组大小写对应且可辨，当前样本和字体细节分别核。本人完成图不证明完整笔顺、词音或无帮助，未写保持未完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-food-food-o-to-t-actual-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创本人写Pp与Qq，标清小写p/q的当前样本方向并上传，不只因为都有圆和竖就合并。",
+          "answer": "p/q按当前样本区分方向并分别与P/Q配对，实际字形应清楚。图不代听音或全程笔顺，看样本帮助如实保留。",
+          "analysis": "p/q按当前样本区分方向并分别与P/Q配对，实际字形应清楚。图不代听音或全程笔顺，看样本帮助如实保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-food-food-o-to-t-actual-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创按Tt、Rr、Oo新顺序写并上传，不把当前任务自动改回字母歌顺序。",
+          "answer": "按当前Tt、Rr、Oo写清大小写配对；不以熟练排列替要求。本人作品、提示和实际过程分别核，声音另听实际材料。",
+          "analysis": "按当前Tt、Rr、Oo写清大小写配对；不以熟练排列替要求。本人作品、提示和实际过程分别核，声音另听实际材料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-food-food-o-to-t-actual-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新任务只写Ss和Qq两组，暂未书写时可说明；可以因会念两字母就自动记已写吗？",
+          "answer": "不能，会念不提供本次手写作品；可新写后核可辨字形。完成图不独证声音、笔顺或未受助，原答和实际间隔另核。",
+          "analysis": "不能，会念不提供本次手写作品；可新写后核可辨字形。完成图不独证声音、笔顺或未受助，原答和实际间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-food-food-o-to-t-actual-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本人写Oo、Pp并上传，老师看到字体略不同。应只按字体差异认另一个字母，还是核当前样本与身份？",
+          "answer": "应核当前样本、大小写身份和可辨字形，不因字体细节自动判另字母。实际作品范围、帮助和声音分别保留，不以印刷表代本人。",
+          "analysis": "应核当前样本、大小写身份和可辨字形，不因字体细节自动判另字母。实际作品范围、帮助和声音分别保留，不以印刷表代本人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-food-food-o-to-t-actual-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "新顺序Qq、Tt、Ss，请本人先写上传；若照样本临写，要如实说明，不能隐去称未见首答。",
+          "answer": "三组按当前要求清楚配对，临写帮助保持。完成图只核可见字形，不证明独立笔顺或词音，实际到期间隔另核。",
+          "analysis": "三组按当前要求清楚配对，临写帮助保持。完成图只核可见字形，不证明独立笔顺或词音，实际到期间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-food-food-o-to-t-actual-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "一张Oo至Tt完成图被要求同时证明queen/quiet听辨通过。图能支持什么，缺什么？",
+          "answer": "图能核可见书写和大小写，不能提供真实输入音频或本人词音。听辨、发音、帮助与实际间隔各需对应材料，不合并成全部通过。",
+          "analysis": "图能核可见书写和大小写，不能提供真实输入音频或本人词音。听辨、发音、帮助与实际间隔各需对应材料，不合并成全部通过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "food",
+      "atomId": "source:english:g3:349949e1:food-sounds",
+      "structure": "food-o-to-t-specific-exemplars",
+      "familyProposal": "349949e1-food-o-to-t-specific-exemplars",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "当前完整词可理解",
+          "weight": 0.4
+        },
+        {
+          "criterion": "qu组合与字母名分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "示例不推广全部规则",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "需听四个完整词的可理解程度，共同o或p不等全词同音。字母名不替整词，真实示范与本人原答帮助分别保持。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-food-food-o-to-t-specific-exemplars-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人录on/orange、pig/pen两组，先听示范可说明。共同首字母是否等两词所有声音相同？",
+          "answer": "需听四个完整词的可理解程度，共同o或p不等全词同音。字母名不替整词，真实示范与本人原答帮助分别保持。",
+          "analysis": "需听四个完整词的可理解程度，共同o或p不等全词同音。字母名不替整词，真实示范与本人原答帮助分别保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-o-to-t-specific-exemplars-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人录queen、quiet，指出本页两词开头都写qu。能把词例声音拆成独立q在所有词里的规则吗？",
+          "answer": "应读当前完整queen、quiet供听核；两例含qu，不能推出独立q在所有词里的规则。字母名、组合和词音分开，帮助如实说明。",
+          "analysis": "应读当前完整queen、quiet供听核；两例含qu，不能推出独立q在所有词里的规则。字母名、组合和词音分开，帮助如实说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-o-to-t-specific-exemplars-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "本人录rice/red、six/Sarah、tiger/ten三组；Sarah在这里是什么范围？",
+          "answer": "读六个完整词供核，Sarah是当前名称词例，不是本人身份或真人参与证明。各组首字母与全词不同，输入声音和本人发声分别核。",
+          "analysis": "读六个完整词供核，Sarah是当前名称词例，不是本人身份或真人参与证明。各组首字母与全词不同，输入声音和本人发声分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-o-to-t-specific-exemplars-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "换顺序orange、on，请本人先录完整词，不只念O字母名代两词。",
+          "answer": "应实际读orange、on供听核，O字母名不替完整词。当前例子不推所有o词读音，示范、原答与真实间隔另核。",
+          "analysis": "应实际读orange、on供听核，O字母名不替完整词。当前例子不推所有o词读音，示范、原答与真实间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-o-to-t-specific-exemplars-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "新顺序quiet、queen，本人看过词形但未听任何输入声音。可以录尝试吗？可同时认听辨已完成吗？",
+          "answer": "可以保留本人读词尝试，缺输入声音不能认听辨。当前两词含qu，不能据字形或文件存在认发音已合格，帮助和间隔另核。",
+          "analysis": "可以保留本人读词尝试，缺输入声音不能认听辨。当前两词含qu，不能据字形或文件存在认发音已合格，帮助和间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-o-to-t-specific-exemplars-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人录red、rice与ten、tiger。两词同字母开头就能把后面所有声音照同一读法吗？",
+          "answer": "不能，应按当前完整词供听核，共同r或t不等全词声音相同。字母名、词音、示范和本人原答分别保持，不推广全部规则。",
+          "analysis": "不能，应按当前完整词供听核，共同r或t不等全词声音相同。字母名、词音、示范和本人原答分别保持，不推广全部规则。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-food-food-o-to-t-specific-exemplars-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人先听过示范Sarah、six后录当前尝试。可以删去先听顺序称独立首答或把Sarah写成本人名字吗？",
+          "answer": "都不能；可录两词供核，但示范帮助保留，Sarah仅词例。真实声音、原答和间隔分别核，不倒写独立表现或本人资料。",
+          "analysis": "都不能；可录两词供核，但示范帮助保留，Sarah仅词例。真实声音、原答和间隔分别核，不倒写独立表现或本人资料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "food",
+      "atomId": "source:english:g3:349949e1:food-action",
+      "structure": "food-action-and-paper-menu",
+      "familyProposal": "349949e1-food-action-and-paper-menu",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "动作与当前对象相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "纸卡材料范围明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "示意不代真实吃喝",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "应对应water与drink，纸卡标清当前动作对象。示意不等本人实际喝过，没有声音不认听辨，完整过程和帮助另核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-food-food-action-and-paper-menu-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "文字Drink some water，请在本人原创菜单或卡片上标水与喝的对应示意并上传，不必真的喝。",
+          "answer": "应对应water与drink，纸卡标清当前动作对象。示意不等本人实际喝过，没有声音不认听辨，完整过程和帮助另核。",
+          "analysis": "应对应water与drink，纸卡标清当前动作对象。示意不等本人实际喝过，没有声音不认听辨，完整过程和帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-food-food-action-and-paper-menu-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "文字Eat some rice，请画本人原创纸卡示意，不能因旧题是milk就画喝奶当本题对象。",
+          "answer": "当前为吃rice米饭，与旧milk喝奶不同；对象和动作同时核。本人图只支持示意范围，不代真实食用、输入声音或无帮助结论。",
+          "analysis": "当前为吃rice米饭，与旧milk喝奶不同；对象和动作同时核。本人图只支持示意范围，不代真实食用、输入声音或无帮助结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-food-food-action-and-paper-menu-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "文字Cut the cake，请用本人原创纸面步骤或箭头示意并上传，标明语言示意而非真实操作。",
+          "answer": "应指当前cake和切的动作含义，纸面箭头或图示可核理解。图不证明本人真的切过或完成全过程，声音、原答和提示另核。",
+          "analysis": "应指当前cake和切的动作含义，纸面箭头或图示可核理解。图不证明本人真的切过或完成全过程，声音、原答和提示另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-food-food-action-and-paper-menu-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新文字Drink some milk，画本人卡片示意并标对象，不能拿旧water图不加区分称已满足。",
+          "answer": "当前对象milk牛奶，动作drink；旧water对象需按当前条件改。示意不代真实喝奶或听辨，实际间隔及帮助分别保留。",
+          "analysis": "当前对象milk牛奶，动作drink；旧water对象需按当前条件改。示意不代真实喝奶或听辨，实际间隔及帮助分别保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-food-food-action-and-paper-menu-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "新文字Eat some bread，当前只提供纸卡。本人标对应词和动作后上传，可以记实际已经吃完吗？",
+          "answer": "可以核bread与eat的纸卡示意，不能记本人实际吃完。材料身份、声音与真实行为分别核，未发生环节保持未核。",
+          "analysis": "可以核bread与eat的纸卡示意，不能记本人实际吃完。材料身份、声音与真实行为分别核，未发生环节保持未核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-food-food-action-and-paper-menu-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "当前指令Have some juice为角色邀请，上传本人原创菜单标注。可以只因图上有杯子就认收到精确两杯并喝过吗？",
+          "answer": "不能，菜单标注可说明juice与邀请，杯图或some未给精确交付和食用事实。实际过程、声音和帮助另核，不补本人饮食记录。",
+          "analysis": "不能，菜单标注可说明juice与邀请，杯图或some未给精确交付和食用事实。实际过程、声音和帮助另核，不补本人饮食记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-food-food-action-and-paper-menu-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "只有已画好的cake图，文字说Cut the cake。请说明或补本人原创示意，单张完整蛋糕图能证明切过吗？",
+          "answer": "不能，完整蛋糕图仅见对象，切的过程或结果要有相应示意或真实材料。本人图范围如实保持，文字不认听辨，也不由一图认完整动作。",
+          "analysis": "不能，完整蛋糕图仅见对象，切的过程或结果要有相应示意或真实材料。本人图范围如实保持，文字不认听辨，也不由一图认完整动作。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    }
+  ]
+}

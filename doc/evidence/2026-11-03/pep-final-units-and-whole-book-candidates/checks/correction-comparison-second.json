@@ -1,0 +1,102 @@
+{
+  "at": "2026-11-02T20:31:43.717Z",
+  "passed": true,
+  "firstSnapshotRetained": true,
+  "changedFiles": 5,
+  "unchangedFiles": 6,
+  "questionsAndAnswerGroupsUnchanged": 231,
+  "previousThreeUnitsUnchanged": true,
+  "corrections": [
+    {
+      "slug": "recycle-one",
+      "reason": "Published body schema requires at least ten characters for this alternative",
+      "before": "未先辨问题功能。",
+      "after": "尚未先辨当前问句的实际功能。"
+    },
+    {
+      "slug": "birthday",
+      "reason": "Clarify that some in a request does not supply an exact count",
+      "before": "Some例子也不替精确盘数。",
+      "after": "some在请求中的用法也不提供精确盘数。"
+    }
+  ],
+  "rows": [
+    {
+      "path": "scripts/content/build-english-g3-final-candidates.cjs",
+      "beforeSha256": "0d85d39f5cda84aa51bf54af3e2400d0b68927199d5cfce1f559d9b05488bcfa",
+      "afterSha256": "f92532bc5732e43963509175094ff50dfd431ffbc19a687a4e0917b472120383",
+      "changed": true,
+      "groupsUnchanged": null
+    },
+    {
+      "path": "resources/curriculum/source-lessons/english-g3-349949e1-recycle-one-v1.json",
+      "beforeSha256": "d609b397c4b43682a45396f1101c5bf50a6c3f339bc7127fe6da6f91e0863964",
+      "afterSha256": "4e82eb7fb7230fb0ca3277ab0cf38fbbcdb9041505a2d14e0428a494a879a89d",
+      "changed": true,
+      "groupsUnchanged": null
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/english-g3-349949e1-recycle-one-v1.json",
+      "beforeSha256": "051da056294516d4c464d630fd3d0b1347098f5018108960c07d5dacde4531fb",
+      "afterSha256": "fdca20a90386116161cd66d4c2fe0b1b68a4d932e7eb8c583b720022e4d8300b",
+      "changed": true,
+      "groupsUnchanged": true
+    },
+    {
+      "path": "resources/curriculum/source-lessons/english-g3-349949e1-animals-v1.json",
+      "beforeSha256": "d0361dbe66b2f1d6c6183dc2a88d0acef01ac3161890d3a12f89b7e304698664",
+      "afterSha256": "d0361dbe66b2f1d6c6183dc2a88d0acef01ac3161890d3a12f89b7e304698664",
+      "changed": false,
+      "groupsUnchanged": null
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/english-g3-349949e1-animals-v1.json",
+      "beforeSha256": "e8b822db6cde21322e3996163ae14860c88dbc11d05f797bfd2005e6e340b561",
+      "afterSha256": "e8b822db6cde21322e3996163ae14860c88dbc11d05f797bfd2005e6e340b561",
+      "changed": false,
+      "groupsUnchanged": true
+    },
+    {
+      "path": "resources/curriculum/source-lessons/english-g3-349949e1-food-v1.json",
+      "beforeSha256": "00b076de960f269434141e3fd989ac71127c3410ff737847b5e8d6aaf7ea5e1d",
+      "afterSha256": "00b076de960f269434141e3fd989ac71127c3410ff737847b5e8d6aaf7ea5e1d",
+      "changed": false,
+      "groupsUnchanged": null
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/english-g3-349949e1-food-v1.json",
+      "beforeSha256": "8fb64dbcee5c60fb73c1f595ee497a701be39b6d97d03554542071d0a7aec1e6",
+      "afterSha256": "8fb64dbcee5c60fb73c1f595ee497a701be39b6d97d03554542071d0a7aec1e6",
+      "changed": false,
+      "groupsUnchanged": true
+    },
+    {
+      "path": "resources/curriculum/source-lessons/english-g3-349949e1-birthday-v1.json",
+      "beforeSha256": "3803982675beb930b64a06d236142ecccc0f13923d286654c656ee80e325713d",
+      "afterSha256": "827103851157df8598859d757021b996de0652d9a0b971602217b9ab5cde8682",
+      "changed": true,
+      "groupsUnchanged": null
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/english-g3-349949e1-birthday-v1.json",
+      "beforeSha256": "d2a1cffd0c7d39a26843a9088b4b6240e39550a4c289ae1903290c5cb5dddcfd",
+      "afterSha256": "bd334d1817964d7d0a1c75ba34b9cdef9008ab1d1a9abc701e6e9348ca2eb1bc",
+      "changed": true,
+      "groupsUnchanged": true
+    },
+    {
+      "path": "resources/curriculum/source-lessons/english-g3-349949e1-recycle-two-v1.json",
+      "beforeSha256": "8d0405b88b2c902b59eb3121c28444dec264a5c715c6d2258759ae6263d3b282",
+      "afterSha256": "8d0405b88b2c902b59eb3121c28444dec264a5c715c6d2258759ae6263d3b282",
+      "changed": false,
+      "groupsUnchanged": null
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/english-g3-349949e1-recycle-two-v1.json",
+      "beforeSha256": "5e582471d94a3921f8e39278102311c5b57ed5aa4f9f52e3338d9b9bad865bab",
+      "afterSha256": "5e582471d94a3921f8e39278102311c5b57ed5aa4f9f52e3338d9b9bad865bab",
+      "changed": false,
+      "groupsUnchanged": true
+    }
+  ]
+}

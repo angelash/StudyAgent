@@ -1,0 +1,728 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "animals",
+      "path": "resources/curriculum/source-lessons/english-g3-349949e1-animals-v1.json",
+      "sha256": "d0361dbe66b2f1d6c6183dc2a88d0acef01ac3161890d3a12f89b7e304698664",
+      "source": {
+        "bookId": "archive-book:english-g3-upper-349949e1df2ad88b",
+        "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit4:entry1",
+        "sourceSha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+        "pageStart": 41,
+        "pageEnd": 50,
+        "publicationYear": null,
+        "curriculumStandardYear": 2011
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "49道原创未审候选，7目标各3即时4拟议间隔。单元级稿不等全部页面活动；当前没有真实听力输入，不复制原图歌词、不代本人参与，教师/评分/独立题族和充分保持库存未完成。",
+  "groups": [
+    {
+      "lesson": "animals",
+      "atomId": "source:english:g3:349949e1:animal-words",
+      "structure": "animal-complete-label-meaning",
+      "familyProposal": "349949e1-animal-complete-label-meaning",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前完整名称对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "动物地点描述分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "具体要求与材料范围清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "分别鸭、狗、猪、猫；duck与dog虽同为d开头，完整词与意思不同，不能互换。本题文字不代实际听辨或看清动物图。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-animals-animal-complete-label-meaning-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创文字卡duck、dog、pig、cat分别是什么？只看首字母d能把前两种当同一个词吗？",
+          "answer": "分别鸭、狗、猪、猫；duck与dog虽同为d开头，完整词与意思不同，不能互换。本题文字不代实际听辨或看清动物图。",
+          "analysis": "分别鸭、狗、猪、猫；duck与dog虽同为d开头，完整词与意思不同，不能互换。本题文字不代实际听辨或看清动物图。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-complete-label-meaning-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创把“熊、大象、猴、鸟、老虎、大熊猫”与bear/elephant/monkey/bird/tiger/panda对应，不按卡片位置猜。",
+          "answer": "依次bear、elephant、monkey、bird、tiger、panda；按当前完整词义。具体卡名区别不扩为全部动物科学分类，图像和声音另核。",
+          "analysis": "依次bear、elephant、monkey、bird、tiger、panda；按当前完整词义。具体卡名区别不扩为全部动物科学分类，图像和声音另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-complete-label-meaning-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡zoo、funny、tiger混排，哪项是本组动物名，另外两项在当前语境表示什么？",
+          "answer": "tiger是老虎名称，zoo是动物园地点，funny是滑稽好笑的描述；不能因都在动物场景就当三种动物，也不统一追加funny默写。",
+          "analysis": "tiger是老虎名称，zoo是动物园地点，funny是滑稽好笑的描述；不能因都在动物场景就当三种动物，也不统一追加funny默写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-complete-label-meaning-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新完整词卡dog、duck、dog、bird，问完整dog出现几张，不问现实犬只数。",
+          "answer": "完整dog两张，第1与第3张；duck和bird另有词义。词牌出现次数不等真实动物数，当前文字任务也不认听辨通过。",
+          "analysis": "完整dog两张，第1与第3张；duck和bird另有词义。词牌出现次数不等真实动物数，当前文字任务也不认听辨通过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-complete-label-meaning-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "当前要求按具体词卡“鸭”选完整词，可选bird、duck、dog。应选哪个？能把它延伸为鸭不是鸟类吗？",
+          "answer": "按本题具体标签选duck；bird较一般，dog是狗。此命名任务不支持鸭不是鸟类等科学结论，不能把所需具体名称误作分类否定。",
+          "analysis": "按本题具体标签选duck；bird较一般，dog是狗。此命名任务不支持鸭不是鸟类等科学结论，不能把所需具体名称误作分类否定。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-complete-label-meaning-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "新卡只给panda与bear文字，问本课两张具体卡如何分别命名。可以据此直接推出大熊猫不属任何熊的科属关系吗？",
+          "answer": "按本课标签分别说panda大熊猫、bear熊；词卡命名区分不推出动物科属否定。先回答当前语言任务，科学分类需另有依据。",
+          "analysis": "按本课标签分别说panda大熊猫、bear熊；词卡命名区分不推出动物科属否定。先回答当前语言任务，科学分类需另有依据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-complete-label-meaning-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "当前要“动物园”，有人因里面有动物就选monkey。应写哪个完整词，为什么不等于动物名？",
+          "answer": "应为zoo，表示动物园地点；monkey为猴这一动物名。场景包含动物不使地点变成动物，当前文字识读与真实图像听辨分开。",
+          "analysis": "应为zoo，表示动物园地点；monkey为猴这一动物名。场景包含动物不使地点变成动物，当前文字识读与真实图像听辨分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "animals",
+      "atomId": "source:english:g3:349949e1:animal-question",
+      "structure": "animal-this-that-and-answer",
+      "familyProposal": "349949e1-animal-this-that-and-answer",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "当前对象明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "问答名称与本例a/an相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人声音供核",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可录What’s this? / It’s a dog.，当前指向近处dog卡。注明单人切角，需听实际声音，不冒充双方真人已交流。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-animals-animal-this-that-and-answer-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创近处卡明确dog，你演提问者。本人录询问这张卡的短句，再切角按给定名称回答。",
+          "answer": "可录What’s this? / It’s a dog.，当前指向近处dog卡。注明单人切角，需听实际声音，不冒充双方真人已交流。",
+          "analysis": "可录What’s this? / It’s a dog.，当前指向近处dog卡。注明单人切角，需听实际声音，不冒充双方真人已交流。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-this-that-and-answer-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创远处卡明确elephant。本人录What’s that问答，按当前本例说完整名称。",
+          "answer": "可录What’s that? / It’s an elephant.；对象与an elephant对应。实际声音是否可理解、提示与角色范围另核。",
+          "analysis": "可录What’s that? / It’s an elephant.；对象与an elephant对应。实际声音是否可理解、提示与角色范围另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-this-that-and-answer-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创近处duck、远处tiger。先指近处问，再指远处问，录两种当前对象回答，不沿一个名字全部答。",
+          "answer": "可按指向录It’s a duck.及It’s a tiger.，问题可分别What’s this/that。指向变化重新核，单人示例不等真实同伴对话。",
+          "analysis": "可按指向录It’s a duck.及It’s a tiger.，问题可分别What’s this/that。指向变化重新核，单人示例不等真实同伴对话。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-this-that-and-answer-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新近处卡cat，远处卡dog。本人录对近处卡的问答，不因旧题近处是dog就沿旧名。",
+          "answer": "可录What’s this? / It’s a cat.，当前指向cat；旧位置答案不替新标签。本人录音可理解与帮助分别核。",
+          "analysis": "可录What’s this? / It’s a cat.，当前指向cat；旧位置答案不替新标签。本人录音可理解与帮助分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-this-that-and-answer-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "当前角色站位改变，明确指向较远monkey卡。本人录询问和给定回应，this/that是动物的固定名称吗？",
+          "answer": "可录What’s that? / It’s a monkey.；this/that依当前指向，不是动物永久名字。本人发声及是否听过示范如实核。",
+          "analysis": "可录What’s that? / It’s a monkey.；this/that依当前指向，不是动物永久名字。本人发声及是否听过示范如实核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-this-that-and-answer-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "近处卡panda的标签已明确，不再猜。本人录What’s this问答，别把旧猜问bear留作已确认答案。",
+          "answer": "可说What’s this? / It’s a panda.，以当前明确标签回答。旧猜测不是确认，实际声音、原答及帮助顺序保持。",
+          "analysis": "可说What’s this? / It’s a panda.，以当前明确标签回答。旧猜测不是确认，实际声音、原答及帮助顺序保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-this-that-and-answer-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "当前给定较远elephant卡，你先看过本例an elephant再录。请录完整问答，能隐去先看参考吗？",
+          "answer": "可录What’s that? / It’s an elephant.，但先看参考的帮助保留。本人发声供核，不倒写未见独立首答，实际间隔另核。",
+          "analysis": "可录What’s that? / It’s an elephant.，但先看参考的帮助保留。本人发声供核，不倒写未见独立首答，实际间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "animals",
+      "atomId": "source:english:g3:349949e1:animal-guess",
+      "structure": "animal-question-correction-evidence",
+      "familyProposal": "349949e1-animal-question-correction-evidence",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "猜问与确认分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "按随后信息更新",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不扩大命名结论",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能，疑问只提出猜测，需要明确标签、回答或足够可辨图。不能从问句反填确认，也不能补尚未出现的对方话语。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-animals-animal-question-correction-evidence-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创遮住卡片，角色只问A bear?，对方尚未答。能认卡一定标bear吗？还缺什么？",
+          "answer": "不能，疑问只提出猜测，需要明确标签、回答或足够可辨图。不能从问句反填确认，也不能补尚未出现的对方话语。",
+          "analysis": "不能，疑问只提出猜测，需要明确标签、回答或足够可辨图。不能从问句反填确认，也不能补尚未出现的对方话语。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-question-correction-evidence-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创先问A bear?，随后另一人说No, it’s a panda.。当前卡该怎样更新，旧猜问还能算已证事实吗？",
+          "answer": "按给定明确回应更新为panda，旧bear是被修正的猜测而非确认。这里是具体命名任务，不推动物科属关系，原问答次序保留。",
+          "analysis": "按给定明确回应更新为panda，旧bear是被修正的猜测而非确认。这里是具体命名任务，不推动物科属关系，原问答次序保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-question-correction-evidence-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创手影像dog，随后揭示其实是人做的影子。可以说现实中出现了一只真狗吗？模型和对象怎样分？",
+          "answer": "不能由手影认有真实狗；可说影子模仿dog形状，真实对象是给定的人手。相像、猜测和揭示不同，不编额外动物事实。",
+          "analysis": "不能由手影认有真实狗；可说影子模仿dog形状，真实对象是给定的人手。相像、猜测和揭示不同，不编额外动物事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-question-correction-evidence-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新卡只问A tiger?，另一人回答No，没有说名字。可以沿上题panda直接补吗？",
+          "answer": "不能，只知当前否定tiger猜测，具体名称仍未知；上题panda不替新信息。须另核标签或回答，不能用熟悉结尾补造。",
+          "analysis": "不能，只知当前否定tiger猜测，具体名称仍未知；上题panda不替新信息。须另核标签或回答，不能用熟悉结尾补造。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-question-correction-evidence-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创先猜dog，后来明确标签duck。有人因先猜时很自信就保留dog为正确，应怎样判断？",
+          "answer": "当前名称以明确duck标签核，最初dog仅为猜测；自信不代依据。保留最初回答和后续修正，不把修正后的答案倒写为首答。",
+          "analysis": "当前名称以明确duck标签核，最初dog仅为猜测；自信不代依据。保留最初回答和后续修正，不把修正后的答案倒写为首答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-question-correction-evidence-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创角色说I like it，但卡被遮住，没说动物名。可以因喜欢就认一定tiger吗？",
+          "answer": "不能，喜欢表达态度，不提供唯一动物名称；需要当前所指和身份资料。态度、猜问和确认各自分开，不补未给名称。",
+          "analysis": "不能，喜欢表达态度，不提供唯一动物名称；需要当前所指和身份资料。态度、猜问和确认各自分开，不补未给名称。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-question-correction-evidence-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本组bear卡与panda卡用不同英文标签，能把一次No命名修正写成全部生物分类知识已经测过吗？",
+          "answer": "不能，只核本题具体所指和标签。一次语境修正不替全部科学分类或本人掌握记录，相关知识需要相应任务和依据。",
+          "analysis": "不能，只核本题具体所指和标签。一次语境修正不替全部科学分类或本人掌握记录，相关知识需要相应任务和依据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "animals",
+      "atomId": "source:english:g3:349949e1:animal-like",
+      "structure": "animal-like-it-current-reference",
+      "familyProposal": "349949e1-animal-like-it-current-reference",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "it指当前对象",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色偏好表达合适",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不代本人真实偏好",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可录I like it.，it指当前tiger卡所示对象；需听本人声音。角色偏好不写成本人真实偏好，也不靠喜欢确认看不清的动物身份。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-animals-animal-like-it-current-reference-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创角色Lin明确喜欢当前tiger卡。本人录一句喜欢表达，并说明it指什么，不必提供真实个人喜好。",
+          "answer": "可录I like it.，it指当前tiger卡所示对象；需听本人声音。角色偏好不写成本人真实偏好，也不靠喜欢确认看不清的动物身份。",
+          "analysis": "可录I like it.，it指当前tiger卡所示对象；需听本人声音。角色偏好不写成本人真实偏好，也不靠喜欢确认看不清的动物身份。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-like-it-current-reference-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创对方展示已标dog的有趣玩具，角色Mei觉得很棒且喜欢。本人录合适赞赏与喜欢，不编真狗出现。",
+          "answer": "可说Cool! I like it.，当前对象是dog玩具；赞赏和喜欢不把玩具变真实动物。实际发声可理解及帮助另核。",
+          "analysis": "可说Cool! I like it.，当前对象是dog玩具；赞赏和喜欢不把玩具变真实动物。实际发声可理解及帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-like-it-current-reference-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创只有角色喜欢panda卡的条件。录一句喜欢表达，能由此断定所有同伴和本人也喜欢吗？",
+          "answer": "可录I like it.指该panda卡，但不能推所有人实际偏好。当前角色范围、本人声音和是否先看参考分别保持。",
+          "analysis": "可录I like it.指该panda卡，但不能推所有人实际偏好。当前角色范围、本人声音和是否先看参考分别保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-like-it-current-reference-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新角色Bo喜欢monkey卡，it不能沿旧题指tiger。本人录表达并说明当前所指。",
+          "answer": "可录I like it.，it随当前对象指monkey卡。旧例不替新指向，角色偏好与本人实际喜好分开，声音供听核。",
+          "analysis": "可录I like it.，it随当前对象指monkey卡。旧例不替新指向，角色偏好与本人实际喜好分开，声音供听核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-like-it-current-reference-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "角色Yu赞赏一张已标bird的原创图，本人录Cool或喜欢表达。图上画鸟是否等现场有真鸟？",
+          "answer": "可说Cool! I like it.等合适表达；喜欢当前bird图不证明现场有真鸟。本人发声与示意材料、帮助分别核。",
+          "analysis": "可说Cool! I like it.等合适表达；喜欢当前bird图不证明现场有真鸟。本人发声与示意材料、帮助分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-like-it-current-reference-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "你不愿提供真实动物偏好，改演明确喜欢elephant卡的角色。本人可怎样录而不把角色变成个人资料？",
+          "answer": "可录I like it.并说明扮演角色、it指当前elephant卡；不写成真实个人偏好。录音实际可理解与提示另核。",
+          "analysis": "可录I like it.并说明扮演角色、it指当前elephant卡；不写成真实个人偏好。录音实际可理解与提示另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-like-it-current-reference-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "当前卡标签尚未明确，角色只是说Cool。本人录赞赏可以，能同时认已识别具体动物名并完成真人交流吗？",
+          "answer": "可录Cool.表示当前角色赞赏，但它不确认动物名或真人交流已发生。实际发声、指向未知及帮助事实分别保留。",
+          "analysis": "可录Cool.表示当前角色赞赏，但它不确认动物名或真人交流已发生。实际发声、指向未知及帮助事实分别保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "animals",
+      "atomId": "source:english:g3:349949e1:animal-letters",
+      "structure": "animal-j-to-n-actual-writing",
+      "familyProposal": "349949e1-animal-j-to-n-actual-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "五组大小写对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "相似字形按样本核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人作品与声音分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "五组大小写对应且字形可辨，当前样本与字体差异另核。本人完成图不证明全部笔顺或字母名发音，看样本帮助保留。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-animals-animal-j-to-n-actual-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创本人写Jj、Kk、Ll、Mm、Nn并上传，可先看样本并如实说明；不要用印刷字代本人作品。",
+          "answer": "五组大小写对应且字形可辨，当前样本与字体差异另核。本人完成图不证明全部笔顺或字母名发音，看样本帮助保留。",
+          "analysis": "五组大小写对应且字形可辨，当前样本与字体差异另核。本人完成图不证明全部笔顺或字母名发音，看样本帮助保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-j-to-n-actual-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创本人写Ll与Ii两组并标明大小写，上传实际作品；直竖外形相似就必须同一个字母吗？",
+          "answer": "L/l与I/i字母身份不同，按样本和大小写核具体字形，不只凭直竖认同。实际作品可见范围与声音、笔顺过程分开。",
+          "analysis": "L/l与I/i字母身份不同，按样本和大小写核具体字形，不只凭直竖认同。实际作品可见范围与声音、笔顺过程分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-j-to-n-actual-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创本人按Nn、Mm、Kk顺序写并上传，注意当前排列不是字母歌顺序。",
+          "answer": "按Nn、Mm、Kk配对，字形清楚；不机械改为旧排列。本人作品和提示如实记录，完成图不代听音或无人帮助结论。",
+          "analysis": "按Nn、Mm、Kk配对，字形清楚；不机械改为旧排列。本人作品和提示如实记录，完成图不代听音或无人帮助结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-j-to-n-actual-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新任务写Jj和Ll并标清下方点或竖形等当前样本特征；上传本人实际书写，不用旧卡自动代本次。",
+          "answer": "按当前J/j、L/l样本写清可辨字形，不用旧印刷卡作本人新写。图不独证过程、声音或未受助，实际到期另核。",
+          "analysis": "按当前J/j、L/l样本写清可辨字形，不用旧印刷卡作本人新写。图不独证过程、声音或未受助，实际到期另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-j-to-n-actual-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "当前只要求写Kk、Nn两组，能因为喜欢Mm就改交另一组且称全部满足吗？请按实际作品说明。",
+          "answer": "应按当前K/k、N/n要求核，其他字母不能代所要求两组。实际写了什么如实保留，缺项不由参考图反填完成。",
+          "analysis": "应按当前K/k、N/n要求核，其他字母不能代所要求两组。实际写了什么如实保留，缺项不由参考图反填完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-j-to-n-actual-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人暂未写Jj至Nn，只读了词例。可说明未写或现在写后上传，能由读词认手写已完成吗？",
+          "answer": "不能，读词与实际书写不同。新写本人图可核字形，未写保持未完成；听音、词音和完整笔顺仍需相应材料。",
+          "analysis": "不能，读词与实际书写不同。新写本人图可核字形，未写保持未完成；听音、词音和完整笔顺仍需相应材料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-j-to-n-actual-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人一张Jj至Nn完成图能核可见字形，能直接证明jeep/jump等全部词已听懂且未受提示吗？",
+          "answer": "不能，完成图不提供输入声音或本人词音，也不证明无帮助。实际字形范围、原答和帮助保持，不扩大成全部任务通过。",
+          "analysis": "不能，完成图不提供输入声音或本人词音，也不证明无帮助。实际字形范围、原答和帮助保持，不扩大成全部任务通过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "animals",
+      "atomId": "source:english:g3:349949e1:animal-sounds",
+      "structure": "animal-j-to-n-specific-exemplars",
+      "familyProposal": "349949e1-animal-j-to-n-specific-exemplars",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "当前完整词可理解",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字母名与词例分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "具体两例不推全部规则",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "读四个完整词供听核，前组j、后组k是当前词例；不只报字母名。Kate不作本人真实名字，未有输入声音不认听辨。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-animals-animal-j-to-n-specific-exemplars-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人录jeep、jump与kite、Kate两组；Kate只作当前名称词例，示范帮助如实说明。",
+          "answer": "读四个完整词供听核，前组j、后组k是当前词例；不只报字母名。Kate不作本人真实名字，未有输入声音不认听辨。",
+          "analysis": "读四个完整词供听核，前组j、后组k是当前词例；不只报字母名。Kate不作本人真实名字，未有输入声音不认听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-j-to-n-specific-exemplars-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人录long、leg及mum、milk，说明各组共同首字母，不把全部词音说成一样。",
+          "answer": "前组l、后组m，需听本人完整词的可理解程度；共同字母不等全词同音。示范、原答和是否受助分别保持。",
+          "analysis": "前组l、后组m，需听本人完整词的可理解程度；共同字母不等全词同音。示范、原答和是否受助分别保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-j-to-n-specific-exemplars-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "本人录nose、noodles，并说明这两个当前例词能否证明所有n词都已经会读。",
+          "answer": "需听实际完整词，两词共同首字母n；两个例子不证明所有n词已掌握。本人尝试、真实听辨和帮助范围分别核。",
+          "analysis": "需听实际完整词，两词共同首字母n；两个例子不证明所有n词已掌握。本人尝试、真实听辨和帮助范围分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-j-to-n-specific-exemplars-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "换顺序jump、jeep，请本人先录完整词；可以只念J的字母名当两个词的回答吗？",
+          "answer": "不能只报字母名，应本人读jump、jeep供核。当前词例的声音与字母名分开，实际间隔、示范和帮助另核。",
+          "analysis": "不能只报字母名，应本人读jump、jeep供核。当前词例的声音与字母名分开，实际间隔、示范和帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-j-to-n-specific-exemplars-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "新顺序Kate、kite，请录本人读法并说明是给定词例，不借名字编一个真人已经参与。",
+          "answer": "本人实际读Kate、kite供听核，名称例不证明真人参与或本人身份。字母k与整词分别学，是否先听示范如实保留。",
+          "analysis": "本人实际读Kate、kite供听核，名称例不证明真人参与或本人身份。字母k与整词分别学，是否先听示范如实保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-j-to-n-specific-exemplars-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "录milk、mum和leg、long两组，若先看过参考或听过示范，应怎样保留而不倒记独立首答？",
+          "answer": "可本人录四词，但先看或先听的帮助和时间顺序保持。听核实际可理解程度，不把文件存在直接当发音合格，间隔另核。",
+          "analysis": "可本人录四词，但先看或先听的帮助和时间顺序保持。听核实际可理解程度，不把文件存在直接当发音合格，间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-j-to-n-specific-exemplars-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人只看nose/noodles印刷字还没听声音，现录自己的尝试可以，能同时勾已完成听辨吗？",
+          "answer": "可记录本人实际读词尝试，缺输入声音不能认听辨。两种材料分别核，原答、帮助和实际到期保留，不凭词形推听力表现。",
+          "analysis": "可记录本人实际读词尝试，缺输入声音不能认听辨。两种材料分别核，原答、帮助和实际到期保留，不凭词形推听力表现。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "animals",
+      "atomId": "source:english:g3:349949e1:animal-model",
+      "structure": "animal-imitation-model-and-identity",
+      "familyProposal": "349949e1-animal-imitation-model-and-identity",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "模仿对象明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "图模型与真实身份分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "可见姿态不代完整过程",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "图应标清模仿bird，纸偶示意不等本人已表演或变成鸟。当前只有文字，不认听辨，完整动作与帮助需另核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-animals-animal-imitation-model-and-identity-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "文字Act like a bird，可画原创纸偶模仿鸟的示意并上传，不必实际表演；标明是示意。",
+          "answer": "图应标清模仿bird，纸偶示意不等本人已表演或变成鸟。当前只有文字，不认听辨，完整动作与帮助需另核。",
+          "analysis": "图应标清模仿bird，纸偶示意不等本人已表演或变成鸟。当前只有文字，不认听辨，完整动作与帮助需另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-imitation-model-and-identity-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "文字Act like an elephant，上传本人原创示意或实际可见材料，并说明单张图能证明什么。",
+          "answer": "对象应为模仿elephant；单图可核可见姿态或示意，不独证完整过程、声音或独立行动。模仿不把人或纸偶变成真大象。",
+          "analysis": "对象应为模仿elephant；单图可核可见姿态或示意，不独证完整过程、声音或独立行动。模仿不把人或纸偶变成真大象。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-imitation-model-and-identity-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡是一只dog玩具，要求画图标它所表示的动物。上传本人图并注明模型，不编现场有真狗。",
+          "answer": "可标dog玩具或其示意，所表示的动物名和真实材料身份分开。本人图不证明真狗出现、完整动作或输入声音。",
+          "analysis": "可标dog玩具或其示意，所表示的动物名和真实材料身份分开。本人图不证明真狗出现、完整动作或输入声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-imitation-model-and-identity-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新指令Act like a monkey，画标清monkey的原创示意；不要沿旧bird题交相同标签称符合。",
+          "answer": "当前对象monkey，标签与示意应相符；旧bird标签不满足新指令。图示与本人真实表演不同，未做如实保留，声音另核。",
+          "analysis": "当前对象monkey，标签与示意应相符；旧bird标签不满足新指令。图示与本人真实表演不同，未做如实保留，声音另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-imitation-model-and-identity-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "新文字Act like a panda，上传本人原创图或说明未做。可据模仿认现实熊猫都会同样表演吗？",
+          "answer": "不能，由本人的模仿或图示不推真实动物普遍行为。当前应标明panda及材料范围，静图不独证完整动作、听辨或无帮助。",
+          "analysis": "不能，由本人的模仿或图示不推真实动物普遍行为。当前应标明panda及材料范围，静图不独证完整动作、听辨或无帮助。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-imitation-model-and-identity-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只有一张本人手影照片，被说“已经独立听懂并表演完整tiger动作”。请说明可见范围，必要时另画标清示意。",
+          "answer": "手影图仅支持所见形状或当前姿态，不自动证明听过指令、完整表演或没有帮助。tiger猜测与明确对象分别核，缺失保持未知。",
+          "analysis": "手影图仅支持所见形状或当前姿态，不自动证明听过指令、完整表演或没有帮助。tiger猜测与明确对象分别核，缺失保持未知。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-animals-animal-imitation-model-and-identity-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "当前图画标zoo而非动物，要求Act like a tiger。可以把地点词zoo当模仿的动物名并认完成吗？",
+          "answer": "不能，zoo是地点，当前动物对象tiger是老虎。可按条件画或实际示意，材料身份和过程范围如实保持，不补听辨或参与记录。",
+          "analysis": "不能，zoo是地点，当前动物对象tiger是老虎。可按条件画或实际示意，材料身份和过程范围如实保持，不补听辨或参与记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,554 @@
+{
+  "protocol": "pep-final-units-and-whole-book-candidates-v1",
+  "at": "2026-11-02T20:23:32.464Z",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "source": {
+    "bookId": "archive-book:english-g3-upper-349949e1df2ad88b",
+    "sourceSha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+    "publicationYear": null,
+    "standardYear": 2011,
+    "newSourceRanges": [
+      [
+        37,
+        40
+      ],
+      [
+        41,
+        50
+      ],
+      [
+        51,
+        60
+      ],
+      [
+        61,
+        70
+      ],
+      [
+        71,
+        74
+      ]
+    ],
+    "newPagesVisuallyReviewed": 38,
+    "wholeSourcePagesVisuallyReviewed": 82
+  },
+  "content": {
+    "drafts": 5,
+    "targets": 33,
+    "candidates": 231,
+    "perPacket": [
+      {
+        "slug": "recycle-one",
+        "targets": 6,
+        "candidates": 42,
+        "sourcePageRange": [
+          37,
+          40
+        ],
+        "sourcePages": 4,
+        "sourcePreflight": true,
+        "generatorByteIdentical": true,
+        "teacherReviewed": false
+      },
+      {
+        "slug": "animals",
+        "targets": 7,
+        "candidates": 49,
+        "sourcePageRange": [
+          41,
+          50
+        ],
+        "sourcePages": 10,
+        "sourcePreflight": true,
+        "generatorByteIdentical": true,
+        "teacherReviewed": false
+      },
+      {
+        "slug": "food",
+        "targets": 7,
+        "candidates": 49,
+        "sourcePageRange": [
+          51,
+          60
+        ],
+        "sourcePages": 10,
+        "sourcePreflight": true,
+        "generatorByteIdentical": true,
+        "teacherReviewed": false
+      },
+      {
+        "slug": "birthday",
+        "targets": 7,
+        "candidates": 49,
+        "sourcePageRange": [
+          61,
+          70
+        ],
+        "sourcePages": 10,
+        "sourcePreflight": true,
+        "generatorByteIdentical": true,
+        "teacherReviewed": false
+      },
+      {
+        "slug": "recycle-two",
+        "targets": 6,
+        "candidates": 42,
+        "sourcePageRange": [
+          71,
+          74
+        ],
+        "sourcePages": 4,
+        "sourcePreflight": true,
+        "generatorByteIdentical": true,
+        "teacherReviewed": false
+      }
+    ],
+    "modes": {
+      "audio_record": 98,
+      "short_answer": 84,
+      "image_upload": 49
+    },
+    "teacherReviewed": false,
+    "authenticListeningStimuliIncluded": false,
+    "allPageActivitiesDelivered": false
+  },
+  "validation": {
+    "staticPassed": true,
+    "http": [
+      {
+        "slug": "recycle-one",
+        "passed": true,
+        "drafts": [
+          {
+            "file": "english-g3-349949e1-recycle-one-v1.json",
+            "sha256": "d609b397c4b43682a45396f1101c5bf50a6c3f339bc7127fe6da6f91e0863964",
+            "physicalPages": [
+              37,
+              38,
+              39,
+              40
+            ],
+            "fullSourceTextKeptPrivate": true,
+            "targets": 6,
+            "preflightPublishable": false,
+            "gapCount": 79,
+            "linkedDraftMaterialReferences": 42,
+            "gapCodes": [
+              "target_not_published",
+              "content_incomplete",
+              "material_changed_or_ineligible",
+              "material_family_coverage",
+              "retention_stock_gap"
+            ],
+            "fullOriginalContentReadBack": true,
+            "originalCommandReplayed": true,
+            "incompletePublicationRejected": true
+          }
+        ],
+        "coldRead": {
+          "drafts": 1,
+          "wholeContentAndSourceFingerprintsPreserved": true,
+          "draftQuestions": 42,
+          "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+          "exactSourceNamesAndMetadataPreserved": true,
+          "visualQuestionDocuments": 0,
+          "wholeVisualDocumentsPreserved": true,
+          "staleVisualDocumentVersionRejected": false,
+          "publications": 0,
+          "adoptions": 0,
+          "learnerResponses": 0
+        }
+      },
+      {
+        "slug": "animals",
+        "passed": true,
+        "drafts": [
+          {
+            "file": "english-g3-349949e1-animals-v1.json",
+            "sha256": "d0361dbe66b2f1d6c6183dc2a88d0acef01ac3161890d3a12f89b7e304698664",
+            "physicalPages": [
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50
+            ],
+            "fullSourceTextKeptPrivate": true,
+            "targets": 7,
+            "preflightPublishable": false,
+            "gapCount": 91,
+            "linkedDraftMaterialReferences": 49,
+            "gapCodes": [
+              "target_not_published",
+              "material_changed_or_ineligible",
+              "material_family_coverage",
+              "retention_stock_gap"
+            ],
+            "fullOriginalContentReadBack": true,
+            "originalCommandReplayed": true,
+            "incompletePublicationRejected": true
+          }
+        ],
+        "coldRead": {
+          "drafts": 1,
+          "wholeContentAndSourceFingerprintsPreserved": true,
+          "draftQuestions": 49,
+          "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+          "exactSourceNamesAndMetadataPreserved": true,
+          "visualQuestionDocuments": 0,
+          "wholeVisualDocumentsPreserved": true,
+          "staleVisualDocumentVersionRejected": false,
+          "publications": 0,
+          "adoptions": 0,
+          "learnerResponses": 0
+        }
+      },
+      {
+        "slug": "food",
+        "passed": true,
+        "drafts": [
+          {
+            "file": "english-g3-349949e1-food-v1.json",
+            "sha256": "00b076de960f269434141e3fd989ac71127c3410ff737847b5e8d6aaf7ea5e1d",
+            "physicalPages": [
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60
+            ],
+            "fullSourceTextKeptPrivate": true,
+            "targets": 7,
+            "preflightPublishable": false,
+            "gapCount": 91,
+            "linkedDraftMaterialReferences": 49,
+            "gapCodes": [
+              "target_not_published",
+              "material_changed_or_ineligible",
+              "material_family_coverage",
+              "retention_stock_gap"
+            ],
+            "fullOriginalContentReadBack": true,
+            "originalCommandReplayed": true,
+            "incompletePublicationRejected": true
+          }
+        ],
+        "coldRead": {
+          "drafts": 1,
+          "wholeContentAndSourceFingerprintsPreserved": true,
+          "draftQuestions": 49,
+          "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+          "exactSourceNamesAndMetadataPreserved": true,
+          "visualQuestionDocuments": 0,
+          "wholeVisualDocumentsPreserved": true,
+          "staleVisualDocumentVersionRejected": false,
+          "publications": 0,
+          "adoptions": 0,
+          "learnerResponses": 0
+        }
+      },
+      {
+        "slug": "birthday",
+        "passed": true,
+        "drafts": [
+          {
+            "file": "english-g3-349949e1-birthday-v1.json",
+            "sha256": "3803982675beb930b64a06d236142ecccc0f13923d286654c656ee80e325713d",
+            "physicalPages": [
+              61,
+              62,
+              63,
+              64,
+              65,
+              66,
+              67,
+              68,
+              69,
+              70
+            ],
+            "fullSourceTextKeptPrivate": true,
+            "targets": 7,
+            "preflightPublishable": false,
+            "gapCount": 91,
+            "linkedDraftMaterialReferences": 49,
+            "gapCodes": [
+              "target_not_published",
+              "material_changed_or_ineligible",
+              "material_family_coverage",
+              "retention_stock_gap"
+            ],
+            "fullOriginalContentReadBack": true,
+            "originalCommandReplayed": true,
+            "incompletePublicationRejected": true
+          }
+        ],
+        "coldRead": {
+          "drafts": 1,
+          "wholeContentAndSourceFingerprintsPreserved": true,
+          "draftQuestions": 49,
+          "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+          "exactSourceNamesAndMetadataPreserved": true,
+          "visualQuestionDocuments": 0,
+          "wholeVisualDocumentsPreserved": true,
+          "staleVisualDocumentVersionRejected": false,
+          "publications": 0,
+          "adoptions": 0,
+          "learnerResponses": 0
+        }
+      },
+      {
+        "slug": "recycle-two",
+        "passed": true,
+        "drafts": [
+          {
+            "file": "english-g3-349949e1-recycle-two-v1.json",
+            "sha256": "8d0405b88b2c902b59eb3121c28444dec264a5c715c6d2258759ae6263d3b282",
+            "physicalPages": [
+              71,
+              72,
+              73,
+              74
+            ],
+            "fullSourceTextKeptPrivate": true,
+            "targets": 6,
+            "preflightPublishable": false,
+            "gapCount": 78,
+            "linkedDraftMaterialReferences": 42,
+            "gapCodes": [
+              "target_not_published",
+              "material_changed_or_ineligible",
+              "material_family_coverage",
+              "retention_stock_gap"
+            ],
+            "fullOriginalContentReadBack": true,
+            "originalCommandReplayed": true,
+            "incompletePublicationRejected": true
+          }
+        ],
+        "coldRead": {
+          "drafts": 1,
+          "wholeContentAndSourceFingerprintsPreserved": true,
+          "draftQuestions": 42,
+          "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+          "exactSourceNamesAndMetadataPreserved": true,
+          "visualQuestionDocuments": 0,
+          "wholeVisualDocumentsPreserved": true,
+          "staleVisualDocumentVersionRejected": false,
+          "publications": 0,
+          "adoptions": 0,
+          "learnerResponses": 0
+        }
+      }
+    ],
+    "browser": {
+      "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+      "passed": 7,
+      "failed": 0,
+      "screenshots": 14,
+      "wholeConceptTablesAndDownloadsChecked": true,
+      "keyboardMobileAndLocalEditsChecked": true,
+      "learningOrPublicationWrites": 0
+    },
+    "wholeBook": {
+      "at": "2026-11-02T20:15:43.739Z",
+      "passed": true,
+      "bookId": "archive-book:english-g3-upper-349949e1df2ad88b",
+      "sourceSha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+      "unitAndReviewDrafts": 8,
+      "instructionalDirectoryEntries": 8,
+      "referencesExcludedFromTeachingProgress": 3,
+      "targets": 53,
+      "candidates": 371,
+      "uniqueTargetAndQuestionIds": true,
+      "sourcePages": 68,
+      "sourcePageRange": [
+        7,
+        74
+      ],
+      "sourcePageRangesContinuousWithoutOverlap": true,
+      "modes": {
+        "short_answer": 133,
+        "audio_record": 154,
+        "image_upload": 84
+      },
+      "allGenerationBytesReproduced": true,
+      "rows": [
+        {
+          "file": "english-g3-349949e1-animals-v1.json",
+          "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit4:entry1",
+          "targets": 7,
+          "candidates": 49,
+          "sourcePageRange": [
+            41,
+            50
+          ],
+          "sourcePages": 10,
+          "teacherReviewed": false
+        },
+        {
+          "file": "english-g3-349949e1-birthday-v1.json",
+          "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit6:entry1",
+          "targets": 7,
+          "candidates": 49,
+          "sourcePageRange": [
+            61,
+            70
+          ],
+          "sourcePages": 10,
+          "teacherReviewed": false
+        },
+        {
+          "file": "english-g3-349949e1-colours-v1.json",
+          "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit2:entry1",
+          "targets": 7,
+          "candidates": 49,
+          "sourcePageRange": [
+            17,
+            26
+          ],
+          "sourcePages": 10,
+          "teacherReviewed": false
+        },
+        {
+          "file": "english-g3-349949e1-food-v1.json",
+          "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit5:entry1",
+          "targets": 7,
+          "candidates": 49,
+          "sourcePageRange": [
+            51,
+            60
+          ],
+          "sourcePages": 10,
+          "teacherReviewed": false
+        },
+        {
+          "file": "english-g3-349949e1-hello-v1.json",
+          "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit1:entry1",
+          "targets": 7,
+          "candidates": 49,
+          "sourcePageRange": [
+            7,
+            16
+          ],
+          "sourcePages": 10,
+          "teacherReviewed": false
+        },
+        {
+          "file": "english-g3-349949e1-look-v1.json",
+          "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit3:entry1",
+          "targets": 6,
+          "candidates": 42,
+          "sourcePageRange": [
+            27,
+            36
+          ],
+          "sourcePages": 10,
+          "teacherReviewed": false
+        },
+        {
+          "file": "english-g3-349949e1-recycle-one-v1.json",
+          "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:recycle1:entry1",
+          "targets": 6,
+          "candidates": 42,
+          "sourcePageRange": [
+            37,
+            40
+          ],
+          "sourcePages": 4,
+          "teacherReviewed": false
+        },
+        {
+          "file": "english-g3-349949e1-recycle-two-v1.json",
+          "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:recycle2:entry1",
+          "targets": 6,
+          "candidates": 42,
+          "sourcePageRange": [
+            71,
+            74
+          ],
+          "sourcePages": 4,
+          "teacherReviewed": false
+        }
+      ],
+      "teacherReviewed": false,
+      "authenticListeningInventoryComplete": false,
+      "allPageActivitiesDelivered": false,
+      "scoringAndIndependentFamiliesApproved": false,
+      "sufficientRetentionStockApproved": false,
+      "published": 0,
+      "adopted": 0,
+      "learnerResponses": 0,
+      "entireCurriculumCompleted": false
+    },
+    "frozenApplicationAndCompiledInputs": 1930,
+    "applicationRuntimeChanged": false,
+    "databaseProtocolChanged": false,
+    "previousFullApi": {
+      "passed": 3102,
+      "failed": 2,
+      "conditionalSkips": 131,
+      "correctedTwoSuitesPassed": 11,
+      "correctedTwoSuitesFailed": 0,
+      "separateBatches": true,
+      "fullSuiteRerun": false
+    }
+  },
+  "protection": {
+    "at": "2026-11-02T20:23:29.524Z",
+    "branch": "main",
+    "branches": [
+      "main"
+    ],
+    "worktreeCount": 1,
+    "protectedFiles": 1063,
+    "changedProtectedFiles": [],
+    "formal": {
+      "schema": 24,
+      "revision": 188
+    },
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "remaining": {
+    "registeredBooks": 451,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 103,
+    "booksWithDirectory": 115,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3530,
+    "lessonsWithCandidateFiles": 66,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3464,
+    "authoredFollowingMaterialCandidates": 2968,
+    "materialBundlesWithStaleDraftIdentity": 0,
+    "firstLessonSeparateCandidates": 44,
+    "allRemainingTextbooksAndGesp": true,
+    "teacherScoringFamiliesAndSufficientRetentionStock": true,
+    "authenticListeningAndAllActivities": true,
+    "block5": true
+  },
+  "boundaries": {
+    "originalImagesLyricsAndFullTextLocalOnly": true,
+    "privateRuntimeAndCredentialsExcluded": true,
+    "published": 0,
+    "adopted": 0,
+    "learnerResponses": 0,
+    "pushed": false,
+    "deployed": false
+  }
+}

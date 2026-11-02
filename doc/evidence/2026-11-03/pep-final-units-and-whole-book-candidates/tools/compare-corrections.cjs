@@ -1,0 +1,13 @@
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto'),zlib=require('node:zlib');
+const root=path.resolve(__dirname,'../../..'),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const first=JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(__dirname,'archive-before-body-completeness-correction/sources.json.gz'))));
+const rows=first.files.map(row=>{const before=Buffer.from(row.base64,'base64'),after=fs.readFileSync(path.join(root,row.path));assert.equal(sha(before),row.sha256);let groupsUnchanged=null;if(row.path.includes('/source-lesson-materials/')){assert.deepEqual(JSON.parse(after).groups,JSON.parse(before).groups);groupsUnchanged=true;}return{path:row.path,beforeSha256:sha(before),afterSha256:sha(after),changed:!before.equals(after),groupsUnchanged};});
+assert.deepEqual(rows.filter(row=>row.changed).map(row=>row.path),[
+ 'scripts/content/build-english-g3-final-candidates.cjs',
+ 'resources/curriculum/source-lessons/english-g3-349949e1-recycle-one-v1.json',
+ 'resources/curriculum/source-lesson-materials/english-g3-349949e1-recycle-one-v1.json',
+ 'resources/curriculum/source-lessons/english-g3-349949e1-birthday-v1.json',
+ 'resources/curriculum/source-lesson-materials/english-g3-349949e1-birthday-v1.json']);
+for(const slug of ['recycle-one','birthday']){const file='resources/curriculum/source-lessons/english-g3-349949e1-'+slug+'-v1.json',a=JSON.parse(Buffer.from(first.files.find(row=>row.path===file).base64,'base64')),b=JSON.parse(fs.readFileSync(path.join(root,file)));if(slug==='recycle-one'){assert.equal(a.content.misconceptions[0].alternatives[0],'未先辨问题功能。');a.content.misconceptions[0].alternatives[0]='尚未先辨当前问句的实际功能。';}else{const from='Some例子也不替精确盘数。',to='some在请求中的用法也不提供精确盘数。';const json=JSON.stringify(a);assert(json.includes(from));Object.assign(a,JSON.parse(json.replace(from,to)));}assert.deepEqual(a,b,'Exactly the documented body correction: '+slug);}
+const report={at:new Date().toISOString(),passed:true,firstSnapshotRetained:true,changedFiles:5,unchangedFiles:6,questionsAndAnswerGroupsUnchanged:231,previousThreeUnitsUnchanged:true,corrections:[{slug:'recycle-one',reason:'Published body schema requires at least ten characters for this alternative',before:'未先辨问题功能。',after:'尚未先辨当前问句的实际功能。'},{slug:'birthday',reason:'Clarify that some in a request does not supply an exact count',before:'Some例子也不替精确盘数。',after:'some在请求中的用法也不提供精确盘数。'}],rows};
+fs.writeFileSync(path.join(__dirname,'correction-comparison-second.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({passed:true,changed:5,unchanged:6,questionsUnchanged:231}));

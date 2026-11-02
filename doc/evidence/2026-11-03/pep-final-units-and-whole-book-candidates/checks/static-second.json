@@ -1,0 +1,133 @@
+{
+  "at": "2026-11-02T20:28:10.388Z",
+  "passed": true,
+  "rows": [
+    {
+      "slug": "recycle-one",
+      "targets": 6,
+      "candidates": 42,
+      "sourcePageRange": [
+        37,
+        40
+      ],
+      "sourcePages": 4,
+      "sourcePreflight": true,
+      "generatorByteIdentical": true,
+      "teacherReviewed": false
+    },
+    {
+      "slug": "animals",
+      "targets": 7,
+      "candidates": 49,
+      "sourcePageRange": [
+        41,
+        50
+      ],
+      "sourcePages": 10,
+      "sourcePreflight": true,
+      "generatorByteIdentical": true,
+      "teacherReviewed": false
+    },
+    {
+      "slug": "food",
+      "targets": 7,
+      "candidates": 49,
+      "sourcePageRange": [
+        51,
+        60
+      ],
+      "sourcePages": 10,
+      "sourcePreflight": true,
+      "generatorByteIdentical": true,
+      "teacherReviewed": false
+    },
+    {
+      "slug": "birthday",
+      "targets": 7,
+      "candidates": 49,
+      "sourcePageRange": [
+        61,
+        70
+      ],
+      "sourcePages": 10,
+      "sourcePreflight": true,
+      "generatorByteIdentical": true,
+      "teacherReviewed": false
+    },
+    {
+      "slug": "recycle-two",
+      "targets": 6,
+      "candidates": 42,
+      "sourcePageRange": [
+        71,
+        74
+      ],
+      "sourcePages": 4,
+      "sourcePreflight": true,
+      "generatorByteIdentical": true,
+      "teacherReviewed": false
+    }
+  ],
+  "newTargets": 33,
+  "newCandidates": 231,
+  "modes": {
+    "audio_record": 98,
+    "short_answer": 84,
+    "image_upload": 49
+  },
+  "sourcePages": 38,
+  "sync": [
+    {
+      "file": "scripts/content/build-english-g3-final-candidates.cjs",
+      "sha256": "f92532bc5732e43963509175094ff50dfd431ffbc19a687a4e0917b472120383"
+    },
+    {
+      "file": "resources/curriculum/source-lessons/english-g3-349949e1-recycle-one-v1.json",
+      "sha256": "4e82eb7fb7230fb0ca3277ab0cf38fbbcdb9041505a2d14e0428a494a879a89d"
+    },
+    {
+      "file": "resources/curriculum/source-lesson-materials/english-g3-349949e1-recycle-one-v1.json",
+      "sha256": "fdca20a90386116161cd66d4c2fe0b1b68a4d932e7eb8c583b720022e4d8300b"
+    },
+    {
+      "file": "resources/curriculum/source-lessons/english-g3-349949e1-animals-v1.json",
+      "sha256": "d0361dbe66b2f1d6c6183dc2a88d0acef01ac3161890d3a12f89b7e304698664"
+    },
+    {
+      "file": "resources/curriculum/source-lesson-materials/english-g3-349949e1-animals-v1.json",
+      "sha256": "e8b822db6cde21322e3996163ae14860c88dbc11d05f797bfd2005e6e340b561"
+    },
+    {
+      "file": "resources/curriculum/source-lessons/english-g3-349949e1-food-v1.json",
+      "sha256": "00b076de960f269434141e3fd989ac71127c3410ff737847b5e8d6aaf7ea5e1d"
+    },
+    {
+      "file": "resources/curriculum/source-lesson-materials/english-g3-349949e1-food-v1.json",
+      "sha256": "8fb64dbcee5c60fb73c1f595ee497a701be39b6d97d03554542071d0a7aec1e6"
+    },
+    {
+      "file": "resources/curriculum/source-lessons/english-g3-349949e1-birthday-v1.json",
+      "sha256": "827103851157df8598859d757021b996de0652d9a0b971602217b9ab5cde8682"
+    },
+    {
+      "file": "resources/curriculum/source-lesson-materials/english-g3-349949e1-birthday-v1.json",
+      "sha256": "bd334d1817964d7d0a1c75ba34b9cdef9008ab1d1a9abc701e6e9348ca2eb1bc"
+    },
+    {
+      "file": "resources/curriculum/source-lessons/english-g3-349949e1-recycle-two-v1.json",
+      "sha256": "8d0405b88b2c902b59eb3121c28444dec264a5c715c6d2258759ae6263d3b282"
+    },
+    {
+      "file": "resources/curriculum/source-lesson-materials/english-g3-349949e1-recycle-two-v1.json",
+      "sha256": "5e582471d94a3921f8e39278102311c5b57ed5aa4f9f52e3338d9b9bad865bab"
+    }
+  ],
+  "frozenApplicationAndCompiledInputs": 1930,
+  "applicationRuntimeChanged": false,
+  "databaseProtocolChanged": false,
+  "mainApplicationSourceMatchesQa": true,
+  "previousEnglishSourcesUnchanged": true,
+  "teacherReviewed": false,
+  "authenticListeningStimuliIncluded": false,
+  "allPageActivitiesDelivered": false
+}

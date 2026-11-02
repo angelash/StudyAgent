@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "recycle-two",
+      "path": "resources/curriculum/source-lessons/english-g3-349949e1-recycle-two-v1.json",
+      "sha256": "8d0405b88b2c902b59eb3121c28444dec264a5c715c6d2258759ae6263d3b282",
+      "source": {
+        "bookId": "archive-book:english-g3-upper-349949e1df2ad88b",
+        "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:recycle2:entry1",
+        "sourceSha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+        "pageStart": 71,
+        "pageEnd": 74,
+        "publicationYear": null,
+        "curriculumStandardYear": 2011
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "42道原创未审候选，6目标各3即时4拟议间隔。单元级稿不等全部页面活动；当前没有真实听力输入，不复制原图歌词、不代本人参与，教师/评分/独立题族和充分保持库存未完成。",
+  "groups": [
+    {
+      "lesson": "recycle-two",
+      "atomId": "source:english:g3:349949e1:r2-dialogue",
+      "structure": "r2-current-mixed-dialogue-role",
+      "familyProposal": "349949e1-r2-current-mixed-dialogue-role",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "问题与对象相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色顺序和表达正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "实际练习范围明确",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可说My name’s Yu.或I’m Yu.；当前问姓名，seven另是年龄。听本人实际发声，虚构角色不代真实资料，提示情况另核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-current-mixed-dialogue-role-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创角色Yu七岁，问句What’s your name?。本人录姓名回答，不把年龄seven答给名字问题。",
+          "answer": "可说My name’s Yu.或I’m Yu.；当前问姓名，seven另是年龄。听本人实际发声，虚构角色不代真实资料，提示情况另核。",
+          "analysis": "可说My name’s Yu.或I’m Yu.；当前问姓名，seven另是年龄。听本人实际发声，虚构角色不代真实资料，提示情况另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-current-mixed-dialogue-role-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创角色Lin九岁，问How old are you?。本人录年龄回答，不能只因名字Lin先出现就报名字。",
+          "answer": "可说I’m nine years old.，按当前年龄问题。实际声音与帮助分别核，角色年龄不存为学生本人年龄，单人范围保持。",
+          "analysis": "可说I’m nine years old.，按当前年龄问题。实际声音与帮助分别核，角色年龄不存为学生本人年龄，单人范围保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-current-mixed-dialogue-role-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创角色不需要milk而想要bread。本人录礼貌拒绝与请求，不编已经收到或吃过。",
+          "answer": "可说No, thanks. Can I have some bread, please?，按当前需要；拒绝不认已食用。本人声音、示范帮助与角色范围另核。",
+          "analysis": "可说No, thanks. Can I have some bread, please?，按当前需要；拒绝不认已食用。本人声音、示范帮助与角色范围另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-current-mixed-dialogue-role-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新角色An想要water，独自切角练请求与给卡致谢。录当前表达，明确是纸卡角色交流。",
+          "answer": "可录Can I have some water, please? / Here you are. / Thank you.，角色顺序清楚。纸卡不代真实饮用，声音与帮助实际核。",
+          "analysis": "可录Can I have some water, please? / Here you are. / Thank you.，角色顺序清楚。纸卡不代真实饮用，声音与帮助实际核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-current-mixed-dialogue-role-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "当前角色Kai六岁，被问名字再问年龄。本人录两种不同回应，不全部机械答six。",
+          "answer": "可分别My name’s Kai.和I’m six years old.，问题功能相符。角色资料不代本人，实际声音、原答与帮助分别保持。",
+          "analysis": "可分别My name’s Kai.和I’m six years old.，问题功能相符。角色资料不代本人，实际声音、原答与帮助分别保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-current-mixed-dialogue-role-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "新情境接受者说Thank you，你演提供者。本人录回应，不把You’re welcome当新请求或生日祝福。",
+          "answer": "可录You’re welcome.，对应当前致谢。本人声音供核，角色回应不证明真实食物交付或真人互动，示范帮助保留。",
+          "analysis": "可录You’re welcome.，对应当前致谢。本人声音供核，角色回应不证明真实食物交付或真人互动，示范帮助保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-current-mixed-dialogue-role-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人先看示例后独自录多角色问答，可以练习，但能称真实同伴已经参与且未受帮助独立首答吗？",
+          "answer": "不能；可录当前角色句供核，但先看帮助和单人切角范围保持。原答、声音与真实参与各自核，实际间隔另核。",
+          "analysis": "不能；可录当前角色句供核，但先看帮助和单人切角范围保持。原答、声音与真实参与各自核，实际间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "recycle-two",
+      "atomId": "source:english:g3:349949e1:r2-category",
+      "structure": "r2-explicit-category-and-current-meaning",
+      "familyProposal": "349949e1-r2-explicit-category-and-current-meaning",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "分类标准先明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前完整词义正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "语境与位置分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "cat和dog符合动物名；red颜色、six数词、hand身体词。按明确标准与完整词义，不因外框或位置改变类别，文字不代听辨。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-explicit-category-and-current-meaning-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创标准为“动物名称”，词卡cat、red、dog、six、hand。哪些符合，另外三项当前是什么类别？",
+          "answer": "cat和dog符合动物名；red颜色、six数词、hand身体词。按明确标准与完整词义，不因外框或位置改变类别，文字不代听辨。",
+          "analysis": "cat和dog符合动物名；red颜色、six数词、hand身体词。按明确标准与完整词义，不因外框或位置改变类别，文字不代听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-explicit-category-and-current-meaning-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创标准为“当前菜单的食物饮品”，给bread、rice、water、tiger、eraser。哪些符合？",
+          "answer": "bread、rice、water按本菜单符合，tiger动物、eraser文具不同。分类先看标准和当前语境，不把常见外框里的词全部认同类。",
+          "analysis": "bread、rice、water按本菜单符合，tiger动物、eraser文具不同。分类先看标准和当前语境，不把常见外框里的词全部认同类。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-explicit-category-and-current-meaning-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "fish在动物图与餐单分别出现，可不看当前对象就说永远只归一个具体组，或强行所有分类只有同一标准吗？",
+          "answer": "不可以，fish可指鱼或鱼肉，需当前语境和分类标准；不同标准可有不同分组。先说明依据，不用旧题标签覆盖当前材料。",
+          "analysis": "不可以，fish可指鱼或鱼肉，需当前语境和分类标准；不同标准可有不同分组。先说明依据，不用旧题标签覆盖当前材料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-explicit-category-and-current-meaning-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新标准为“文具名称”，卡pen、pencil box、milk、blue、book。选符合项并解释不是按外框颜色分。",
+          "answer": "pen、pencil box、book符合；milk饮品、blue颜色不同。按当前语义标准，不因卡外框相同就全放一类，也不以子串拆成额外物品。",
+          "analysis": "pen、pencil box、book符合；milk饮品、blue颜色不同。按当前语义标准，不因卡外框相同就全放一类，也不以子串拆成额外物品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-explicit-category-and-current-meaning-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "当前要求选颜色词，卡brown、eight、white、bird、orange。写符合项，不因orange也可指水果就忽略颜色语境。",
+          "answer": "brown、white、orange在明确颜色任务里符合；eight数词、bird动物名。orange按当前颜色语境解释，分类不脱离已给标准。",
+          "analysis": "brown、white、orange在明确颜色任务里符合；eight数词、bird动物名。orange按当前颜色语境解释，分类不脱离已给标准。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-explicit-category-and-current-meaning-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "一组词放在面包外框里，标准却未说明。能仅凭外框把bear、eye、ten都认作食物吗？",
+          "answer": "不能，外框不能改变词义，标准需核清。bear熊、eye眼、ten十在当前通常意义不同，不以摆放位置代语言分类依据。",
+          "analysis": "不能，外框不能改变词义，标准需核清。bear熊、eye眼、ten十在当前通常意义不同，不以摆放位置代语言分类依据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-explicit-category-and-current-meaning-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "新标准为“身体部位词”，给ear、foot、cake、mouth、zoo。哪几项符合，zoo是不是一种动物部位？",
+          "answer": "ear、foot、mouth符合；cake蛋糕、zoo动物园地点不同。zoo不是动物部位，按当前完整词义分，不编实际看图或听辨表现。",
+          "analysis": "ear、foot、mouth符合；cake蛋糕、zoo动物园地点不同。zoo不是动物部位，按当前完整词义分，不编实际看图或听辨表现。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "recycle-two",
+      "atomId": "source:english:g3:349949e1:r2-alphabet",
+      "structure": "r2-alphabet-case-and-actual-writing",
+      "familyProposal": "349949e1-r2-alphabet-case-and-actual-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "当前字母身份与大小写正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人作品及缺项清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字形声音过程分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "九组大小写对应且字形可辨；本人实际写的范围为前九组，不自动认26组全部完成。完成图不代声音或笔顺，帮助如实保留。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-alphabet-case-and-actual-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创本人写Aa至Ii九组并上传，标清这只是当前九组，不把旧印刷表代本人作品。",
+          "answer": "九组大小写对应且字形可辨；本人实际写的范围为前九组，不自动认26组全部完成。完成图不代声音或笔顺，帮助如实保留。",
+          "analysis": "九组大小写对应且字形可辨；本人实际写的范围为前九组，不自动认26组全部完成。完成图不代声音或笔顺，帮助如实保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-alphabet-case-and-actual-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创本人按Jj至Tt当前十一个字母组写并上传，可分块排在一张纸上，先看样本要说明。",
+          "answer": "当前J至T各组大小写配对可辨，实际作品范围和缺项保持。字体细节看样本，完成图不独证词音、笔顺或没有帮助。",
+          "analysis": "当前J至T各组大小写配对可辨，实际作品范围和缺项保持。字体细节看样本，完成图不独证词音、笔顺或没有帮助。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-alphabet-case-and-actual-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创本人写Uu至Zz六组并上传，若尚未写则说明；不能用会唱末六字母就自动记已写。",
+          "answer": "六组大小写对应，图应是本人实际作品。唱歌和印刷表不代手写，未写保持未完成，声音、帮助与完整过程另核。",
+          "analysis": "六组大小写对应，图应是本人实际作品。唱歌和印刷表不代手写，未写保持未完成，声音、帮助与完整过程另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-alphabet-case-and-actual-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新任务补大小写：A配空、空配b、C配空、空配d。请本人按当前样本写完整四组上传。",
+          "answer": "应配Aa、Bb、Cc、Dd，按当前大小写任务而非完全同字形要求。实际作品可核字形，图不认听辨或无人提示，间隔另核。",
+          "analysis": "应配Aa、Bb、Cc、Dd，按当前大小写任务而非完全同字形要求。实际作品可核字形，图不认听辨或无人提示，间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-alphabet-case-and-actual-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "当前本人写Bb、Dd、Pp、Qq比较方向并上传，不能因都有竖和圆就合成一组。",
+          "answer": "各字母身份与大小写分别对应，具体方向按当前样本核清。完成图只核可见作品，不证明全部笔顺、输入声音或未受帮助。",
+          "analysis": "各字母身份与大小写分别对应，具体方向按当前样本核清。完成图只核可见作品，不证明全部笔顺、输入声音或未受帮助。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-alphabet-case-and-actual-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "当前要求本人写完整26组，但只提供前半部分作品。可以保留已写范围吗？剩余可直接由字母歌补成完成记录吗？",
+          "answer": "可如实保留已写部分，剩余缺项不能由唱歌或印刷表代填。实际作品、帮助和间隔分别核，不把部分成功当整册全部书写通过。",
+          "analysis": "可如实保留已写部分，剩余缺项不能由唱歌或印刷表代填。实际作品、帮助和间隔分别核，不把部分成功当整册全部书写通过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-alphabet-case-and-actual-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人上传26组完成图后，能据一图认所有字母名变体、全部词中音和陌生词拼读已通过吗？",
+          "answer": "不能，图可核字形和配对，不提供这些声音表现或全过程。相应任务需本人实际材料，原答、帮助与间隔保持，不扩大结论。",
+          "analysis": "不能，图可核字形和配对，不提供这些声音表现或全过程。相应任务需本人实际材料，原答、帮助与间隔保持，不扩大结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "recycle-two",
+      "atomId": "source:english:g3:349949e1:r2-number",
+      "structure": "r2-number-purpose-current-condition",
+      "familyProposal": "349949e1-r2-number-purpose-current-condition",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "数词数意正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前用途和对象分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色与真实资料分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "盘数five，年龄eight，3是桌号；不同问题用途不混。角色条件不代学生真实年龄，纸面数量也不证明真实聚会发生。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-number-purpose-current-condition-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创角色eight岁、桌号3、five plates，问盘数和年龄分别用哪个数词？",
+          "answer": "盘数five，年龄eight，3是桌号；不同问题用途不混。角色条件不代学生真实年龄，纸面数量也不证明真实聚会发生。",
+          "analysis": "盘数five，年龄eight，3是桌号；不同问题用途不混。角色条件不代学生真实年龄，纸面数量也不证明真实聚会发生。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-number-purpose-current-condition-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "完整词卡two、two、six，问完整two有几张。答案是six吗？请说明词义数意与出现次数的不同。",
+          "answer": "two有两张，six是另一张词卡且数意为六；当前问出现次数，不是读到的最大数。词牌不自动是实际物品数量。",
+          "analysis": "two有两张，six是另一张词卡且数意为六；当前问出现次数，不是读到的最大数。词牌不自动是实际物品数量。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-number-purpose-current-condition-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创当前顺序ten、nine、eight、空位，明确每次少一。空位填哪一词，能沿旧题加一规则吗？",
+          "answer": "填seven，按当前递减规则；不能用旧递增模板。文字顺序和真实物品计数不同，听辨和本人发声另需材料。",
+          "analysis": "填seven，按当前递减规则；不能用旧递增模板。文字顺序和真实物品计数不同，听辨和本人发声另需材料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-number-purpose-current-condition-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新条件桌号9、角色seven岁、two gifts，问How many gifts。应回答哪个，为什么不是nine？",
+          "answer": "应two，问题问礼物数；nine为桌号、seven为年龄。当前用途明确，不由数字先后或大小替代所问对象，角色信息不改本人。",
+          "analysis": "应two，问题问礼物数；nine为桌号、seven为年龄。当前用途明确，不由数字先后或大小替代所问对象，角色信息不改本人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-number-purpose-current-condition-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "当前只给This one, please的选择句，没有全部商品图。能认总数一定one并顺带认本人一岁吗？",
+          "answer": "不能，one在此指当前选择对象，不说明全部数量或年龄。需问题、单位和完整条件，不从一个词补多个本人事实。",
+          "analysis": "不能，one在此指当前选择对象，不说明全部数量或年龄。需问题、单位和完整条件，不从一个词补多个本人事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-number-purpose-current-condition-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创物品数量没给全，只说有许多，问精确几件。可以因为会念one到ten就随便填ten吗？",
+          "answer": "不能，顺背数词不提供完整数量。先核实际对象或明确条件，暂未知如实保留，声音和帮助另核，不把熟练歌谣当计数。",
+          "analysis": "不能，顺背数词不提供完整数量。先核实际对象或明确条件，暂未知如实保留，声音和帮助另核，不把熟练歌谣当计数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-number-purpose-current-condition-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "角色卡六岁、六个盘、数字6标签同时出现，就能认学生本人六岁且真实吃过六份吗？",
+          "answer": "不能，同数值可有不同角色；虚构年龄、盘数与标签不代本人资料或食用事实。按当前问题回应，未发生的表现不补造。",
+          "analysis": "不能，同数值可有不同角色；虚构年龄、盘数与标签不代本人资料或食用事实。按当前问题回应，未发生的表现不补造。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "recycle-two",
+      "atomId": "source:english:g3:349949e1:r2-sound",
+      "structure": "r2-exact-i-qu-x-and-current-words",
+      "familyProposal": "349949e1-r2-exact-i-qu-x-and-current-words",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "完整词与当前位置准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "例词不套统一规则",
+          "weight": 0.4
+        },
+        {
+          "criterion": "实际声音与帮助范围明确",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "需听实际完整词尝试；当前i例为ice/ice cream，原件范围保持。字母名与词音分别核，示范帮助保留，没有输入声音不认听辨。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-exact-i-qu-x-and-current-words-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人录ice、ice cream，说明本册当前i用这两个例子，不能擅换短i词再称原页如此。",
+          "answer": "需听实际完整词尝试；当前i例为ice/ice cream，原件范围保持。字母名与词音分别核，示范帮助保留，没有输入声音不认听辨。",
+          "analysis": "需听实际完整词尝试；当前i例为ice/ice cream，原件范围保持。字母名与词音分别核，示范帮助保留，没有输入声音不认听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-exact-i-qu-x-and-current-words-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人录queen、quiet，指出当前qu组合，不把两词开头音拆成所有独立q的规则。",
+          "answer": "读完整queen、quiet供核，两词含qu。当前示例不等全部q规则，字母名、词音和输入声音分开，帮助如实说明。",
+          "analysis": "读完整queen、quiet供核，两词含qu。当前示例不等全部q规则，字母名、词音和输入声音分开，帮助如实说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-exact-i-qu-x-and-current-words-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "本人录fox、box并说明x在什么位置。可以为了字母课表顺序就说两词以x开头吗？",
+          "answer": "不能，fox、box的x在词尾，需读当前完整词。词形位置保持，不造词首x例；本人声音、真实示范与帮助分别核。",
+          "analysis": "不能，fox、box的x在词尾，需读当前完整词。词形位置保持，不造词首x例；本人声音、真实示范与帮助分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-exact-i-qu-x-and-current-words-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新顺序box、fox、ice，请本人先录完整词，不只报X和I的字母名代所有词。",
+          "answer": "应实际读三个完整词供听核；x在前两词尾部，ice为当前i例。字母名与整词不同任务，原答、帮助和实际间隔保持。",
+          "analysis": "应实际读三个完整词供听核；x在前两词尾部，ice为当前i例。字母名与整词不同任务，原答、帮助和实际间隔保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-exact-i-qu-x-and-current-words-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本人录gift/green与jeep/jump。都见到g或j等字母，就能凭字母名认每词的全部声音吗？",
+          "answer": "不能，需实际听本人完整词，本组g与j具体例词分别学。字母名不替词音，两例不推所有规则，示范和原答顺序保持。",
+          "analysis": "不能，需实际听本人完整词，本组g与j具体例词分别学。字母名不替词音，两例不推所有规则，示范和原答顺序保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-exact-i-qu-x-and-current-words-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人录water、wet、yellow、yo-yo，未听过任何输入音频。可以核自己的尝试，但能同时写听圈题完成吗？",
+          "answer": "可保留本人实际读词尝试，缺输入声音不能认听辨或听圈题完成。词形、本人发声、帮助和真实间隔分别核，文件不自动判发音合格。",
+          "analysis": "可保留本人实际读词尝试，缺输入声音不能认听辨或听圈题完成。词形、本人发声、帮助和真实间隔分别核，文件不自动判发音合格。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-exact-i-qu-x-and-current-words-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人先听示范后录fox/box与queen/quiet，能删掉示范帮助并认未见独立首答、全部字母音已保持吗？",
+          "answer": "不能，当前录音供核且示范顺序保留。x词尾与qu组合按例词保持，四词不证明全部字母音或充分保持，实际间隔另核。",
+          "analysis": "不能，当前录音供核且示范顺序保留。x词尾与qu组合按例词保持，四词不证明全部字母音或充分保持，实际间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "recycle-two",
+      "atomId": "source:english:g3:349949e1:r2-game",
+      "structure": "r2-current-game-and-actual-progress",
+      "familyProposal": "349949e1-r2-current-game-and-actual-progress",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "按当前端点规则",
+          "weight": 0.4
+        },
+        {
+          "criterion": "任务和位置分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "真实原答帮助不反填",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "按本局升6，但位置不提供本人姓名问答原答。需实际声音、回答和帮助，不能因移动符合规则就反填英语正确。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-current-game-and-actual-progress-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创本局梯底3到6，蛇头8到4，落点触发。棋子落3后去哪，能由此认该格姓名问答已经独立正确吗？",
+          "answer": "按本局升6，但位置不提供本人姓名问答原答。需实际声音、回答和帮助，不能因移动符合规则就反填英语正确。",
+          "analysis": "按本局升6，但位置不提供本人姓名问答原答。需实际声音、回答和帮助，不能因移动符合规则就反填英语正确。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-current-game-and-actual-progress-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创同局棋子落8，应去4。若只是走过8而未落点，能照落点规则自动下降吗？",
+          "answer": "落8才按明说规则到4，经过不自动触发。动作条件完整再判断，棋位也不证明原答或掌握，未给事实不补。",
+          "analysis": "落8才按明说规则到4，经过不自动触发。动作条件完整再判断，棋位也不证明原答或掌握，未给事实不补。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-current-game-and-actual-progress-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新局梯底2到5、蛇头7到3，与上一局不同。按当前图说下一步，能沿旧3到6的端点吗？",
+          "answer": "不能，应依当前2到5、7到3的规则，旧局不替新条件。实际作答、帮助和移动结果分别记录，游戏状态不改本人原答。",
+          "analysis": "不能，应依当前2到5、7到3的规则，旧局不替新条件。实际作答、帮助和移动结果分别记录，游戏状态不改本人原答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-current-game-and-actual-progress-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人只完成两个角色问答，字母书写和听力未做，但棋子已终点。可以怎样保留进度，能全部勾完成吗？",
+          "answer": "保留两个实际已答范围，其余书写、听力未做不能由终点代填。位置和各项表现不同，原答与帮助保持，不补长期掌握。",
+          "analysis": "保留两个实际已答范围，其余书写、听力未做不能由终点代填。位置和各项表现不同，原答与帮助保持，不补长期掌握。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-current-game-and-actual-progress-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "同伴提示后答对并继续游戏，能把继续状态改成本人未受助独立首答，还删掉先前错误吗？",
+          "answer": "不能，原答、错误与提示顺序保留；可按游戏规则继续但不改证据身份。教学后表现与最初独立回应不同，实际到期另核。",
+          "analysis": "不能，原答、错误与提示顺序保留；可按游戏规则继续但不改证据身份。教学后表现与最初独立回应不同，实际到期另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-current-game-and-actual-progress-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人只观察同伴玩，愿意下次参加。能把意愿、观察和同伴胜利当本人已完成全部混合任务吗？",
+          "answer": "不能，意愿与观察可如实记录，实际参与和本人各项原答仍未发生。不能由同伴胜利补本人声音、书写或完整学习记录。",
+          "analysis": "不能，意愿与观察可如实记录，实际参与和本人各项原答仍未发生。不能由同伴胜利补本人声音、书写或完整学习记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-recycle-two-r2-current-game-and-actual-progress-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "复习后学生自己说“我都会了”，尚无新任务与实际间隔。可以保留自评吗？能据此认所有目标长期保持完成吗？",
+          "answer": "可保留真实自评，但它不替新任务原答、帮助排除及实际到期间隔。各目标仍按相应表现核，不能把一次自评当全部长期保持。",
+          "analysis": "可保留真实自评，但它不替新任务原答、帮助排除及实际到期间隔。各目标仍按相应表现核，不能把一次自评当全部长期保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

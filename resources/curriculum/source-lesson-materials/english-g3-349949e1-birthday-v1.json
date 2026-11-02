@@ -1,0 +1,728 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "birthday",
+      "path": "resources/curriculum/source-lessons/english-g3-349949e1-birthday-v1.json",
+      "sha256": "827103851157df8598859d757021b996de0652d9a0b971602217b9ab5cde8682",
+      "source": {
+        "bookId": "archive-book:english-g3-upper-349949e1df2ad88b",
+        "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit6:entry1",
+        "sourceSha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+        "pageStart": 61,
+        "pageEnd": 70,
+        "publicationYear": null,
+        "curriculumStandardYear": 2011
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "49道原创未审候选，7目标各3即时4拟议间隔。单元级稿不等全部页面活动；当前没有真实听力输入，不复制原图歌词、不代本人参与，教师/评分/独立题族和充分保持库存未完成。",
+  "groups": [
+    {
+      "lesson": "birthday",
+      "atomId": "source:english:g3:349949e1:birth-numbers",
+      "structure": "birthday-one-to-ten-current-meaning",
+      "familyProposal": "349949e1-birthday-one-to-ten-current-meaning",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "数词数意对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前顺序条件保持",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不由词牌推真实物品",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "依次一、二、三、四、五；文字可核数意，不能由词卡认真实有相应盘数或本人已数过实物，没有声音不认听辨。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-birthday-birthday-one-to-ten-current-meaning-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创词卡one、two、three、four、five分别表示多少？当前只给词卡，不给真实盘子。",
+          "answer": "依次一、二、三、四、五；文字可核数意，不能由词卡认真实有相应盘数或本人已数过实物，没有声音不认听辨。",
+          "analysis": "依次一、二、三、四、五；文字可核数意，不能由词卡认真实有相应盘数或本人已数过实物，没有声音不认听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-one-to-ten-current-meaning-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“六、七、八、九、十”对应six/seven/eight/nine/ten，按当前顺序答，不按卡片位置猜。",
+          "answer": "依次six、seven、eight、nine、ten；完整词与数意相符。当前文字识读不代本人实际发声、默写或真实看图计数。",
+          "analysis": "依次six、seven、eight、nine、ten；完整词与数意相符。当前文字识读不代本人实际发声、默写或真实看图计数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-one-to-ten-current-meaning-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创明确按one、two、空位、four顺序续说，空位应是什么？若只会背全歌，能不看当前顺序随便填吗？",
+          "answer": "空位three，当前顺序为一二三四；不能以熟悉歌谣位置替新条件。数词顺序不证明本人已数清物品，声音与帮助另核。",
+          "analysis": "空位three，当前顺序为一二三四；不能以熟悉歌谣位置替新条件。数词顺序不证明本人已数清物品，声音与帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-one-to-ten-current-meaning-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新顺序ten、nine、空位、seven，要求按每次少一续。空位填哪个完整词？",
+          "answer": "填eight，按十、九、八、七的明确顺序。要看当前递减规则，不能沿上一题递增；文字答案不代真实听说或物品数量。",
+          "analysis": "填eight，按十、九、八、七的明确顺序。要看当前递减规则，不能沿上一题递增；文字答案不代真实听说或物品数量。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-one-to-ten-current-meaning-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "完整词卡five、nine、five、one，问完整five出现几次，不问有几个真实礼物。",
+          "answer": "完整five两次，第1和第3张；词出现次数与数词five表示五不同，也不证明真实礼物数。按当前问题区分角色。",
+          "analysis": "完整five两次，第1和第3张；词出现次数与数词five表示五不同，也不证明真实礼物数。按当前问题区分角色。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-one-to-ten-current-meaning-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "当前要“七”这一数词，可选six、seven、ten。选哪个，能只因ten在最右边就当最大物品数已知吗？",
+          "answer": "选seven；six六、ten十。文字卡排位不提供真实物品总数，不能由位置补实际数量或本人已听过的事实。",
+          "analysis": "选seven；six六、ten十。文字卡排位不提供真实物品总数，不能由位置补实际数量或本人已听过的事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-one-to-ten-current-meaning-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "有人顺着念到ten，就说桌上一定十个盘子但没有盘图和数量条件。当前还能确定什么，不能确定什么？",
+          "answer": "可以知道ten表示十或他说到十，不能确定真实盘子数。需完整对象或明确数量再核，顺背不替当前计数与本人实际表现。",
+          "analysis": "可以知道ten表示十或他说到十，不能确定真实盘子数。需完整对象或明确数量再核，顺背不替当前计数与本人实际表现。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "birthday",
+      "atomId": "source:english:g3:349949e1:birth-quantity",
+      "structure": "birthday-current-how-many-answer",
+      "familyProposal": "349949e1-birthday-current-how-many-answer",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "对象和完整数量对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "数词发声可理解",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不混年龄和标签",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可录Four.或Four plates.，依据明确四盘；桌号不替盘数。听本人实际声音核可理解，给定条件不证明已数过实物。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-birthday-birthday-current-how-many-answer-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创条件明确four plates，你演回应者。本人录How many plates的数量回答，不把桌号7当答案。",
+          "answer": "可录Four.或Four plates.，依据明确四盘；桌号不替盘数。听本人实际声音核可理解，给定条件不证明已数过实物。",
+          "analysis": "可录Four.或Four plates.，依据明确四盘；桌号不替盘数。听本人实际声音核可理解，给定条件不证明已数过实物。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-current-how-many-answer-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创明确需要five plates，角色被问How many plates?。本人录当前数量回应，不沿上一题four。",
+          "answer": "可说Five.或Five plates.，按当前所需五盘。发声与帮助另核，盘子数不是角色年龄或本人实际准备数量。",
+          "analysis": "可说Five.或Five plates.，按当前所需五盘。发声与帮助另核，盘子数不是角色年龄或本人实际准备数量。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-current-how-many-answer-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创有three gifts且桌号9，问How many gifts?。本人录数量回答，不能因为9先出现就答nine。",
+          "answer": "可录Three.或Three gifts.，问题是礼物数。桌号9为标签，需实际听本人声音，不把纸卡条件代真实聚会。",
+          "analysis": "可录Three.或Three gifts.，问题是礼物数。桌号9为标签，需实际听本人声音，不把纸卡条件代真实聚会。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-current-how-many-answer-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新条件明确six plates，问盘子数。本人先录回答；如果数量条件没给全，会直接套six吗？",
+          "answer": "当前可说Six.，依据完整条件；若缺条件就先核，不能机械套数。声音、原答和是否受助分别保持，实际间隔另核。",
+          "analysis": "当前可说Six.，依据完整条件；若缺条件就先核，不能机械套数。声音、原答和是否受助分别保持，实际间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-current-how-many-answer-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "当前桌号2但有eight gifts，问How many gifts?。录一个符合数量的短答。",
+          "answer": "可录Eight.或Eight gifts.，不能拿桌号Two替数量。当前角色纸卡与真实实物分开，录音可理解及提示另核。",
+          "analysis": "可录Eight.或Eight gifts.，不能拿桌号Two替数量。当前角色纸卡与真实实物分开，录音可理解及提示另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-current-how-many-answer-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "新条件nine plates、角色六岁。本人录盘数短答；年龄会改变这题盘数吗？",
+          "answer": "可说Nine.或Nine plates.，问题与完整条件是九盘，角色六岁不替盘数。实际发声与帮助另核，不补本人真实生日资料。",
+          "analysis": "可说Nine.或Nine plates.，问题与完整条件是九盘，角色六岁不替盘数。实际发声与帮助另核，不补本人真实生日资料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-current-how-many-answer-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "只有问句How many plates?，没有完整盘图或数量。本人可录说明暂未知，能因为常见四人桌就答four并认确定吗？",
+          "answer": "不能，缺完整数量资料要先核，可如实说明暂不知道。常见桌型不代本题数量，声音、帮助及实际间隔分别核，不编确定答案。",
+          "analysis": "不能，缺完整数量资料要先核，可如实说明暂不知道。常见桌型不代本题数量，声音、帮助及实际间隔分别核，不编确定答案。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "birthday",
+      "atomId": "source:english:g3:349949e1:birth-age",
+      "structure": "birthday-current-role-age-answer",
+      "familyProposal": "349949e1-birthday-current-role-age-answer",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "年龄问句功能正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前角色年龄对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不代本人真实资料",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可说I’m six years old.或I’m six.，按明确角色年龄；不是报姓名。听实际声音核可理解，六岁不写作学生本人真实资料。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-birthday-birthday-current-role-age-answer-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创角色Bo六岁，被问How old are you?。本人录角色回应，不必提供真实年龄。",
+          "answer": "可说I’m six years old.或I’m six.，按明确角色年龄；不是报姓名。听实际声音核可理解，六岁不写作学生本人真实资料。",
+          "analysis": "可说I’m six years old.或I’m six.，按明确角色年龄；不是报姓名。听实际声音核可理解，六岁不写作学生本人真实资料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-current-role-age-answer-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创角色Mei八岁，对方问年龄。本人录回应，不能沿旧Bo六岁的答案。",
+          "answer": "可录I’m eight years old.，当前角色八岁。需要实际本人声音，角色与本人年龄分开，是否先看参考如实说明。",
+          "analysis": "可录I’m eight years old.，当前角色八岁。需要实际本人声音，角色与本人年龄分开，是否先看参考如实说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-current-role-age-answer-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创角色Lin十岁且有three plates，问How old are you?。本人录年龄回答，不用盘数three。",
+          "answer": "可说I’m ten years old.；问题问年龄，不是盘数。角色卡不代真实个人资料，声音与帮助实际核。",
+          "analysis": "可说I’m ten years old.；问题问年龄，不是盘数。角色卡不代真实个人资料，声音与帮助实际核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-current-role-age-answer-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新角色Yu四岁，请先本人录年龄句；单人练习就说明，不编对方也说过什么。",
+          "answer": "可录I’m four years old.，按当前角色。单人范围和帮助保持，不补真人交流或学生实际年龄，实际间隔另核。",
+          "analysis": "可录I’m four years old.，按当前角色。单人范围和帮助保持，不补真人交流或学生实际年龄，实际间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-current-role-age-answer-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "当前角色An七岁，问句换成What’s your name?。本人录姓名回应，别机械用年龄句答所有问题。",
+          "answer": "可录My name’s An.或I’m An.；当前问名字，不应只说I’m seven。本人声音、角色范围及帮助另核，不改真实档案。",
+          "analysis": "可录My name’s An.或I’m An.；当前问名字，不应只说I’m seven。本人声音、角色范围及帮助另核，不改真实档案。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-current-role-age-answer-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "角色卡没给年龄，只画六个盘子。有人要本人录I’m six并认年龄已知，依据够吗？可录当前未知说明。",
+          "answer": "不够，盘数不提供角色年龄；可说明需年龄卡再答，不硬套六岁。本人实际录音与未知范围保持，不能补真实个人信息。",
+          "analysis": "不够，盘数不提供角色年龄；可说明需年龄卡再答，不硬套六岁。本人实际录音与未知范围保持，不能补真实个人信息。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-current-role-age-answer-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "先看过参考I’m nine years old，当前角色也九岁。本人录尝试后，能删除先看顺序称独立首答吗？",
+          "answer": "可说I’m nine years old.供核，但先看参考帮助保留，不倒写独立首答。角色年龄不代学生实际年龄，声音和间隔另核。",
+          "analysis": "可说I’m nine years old.供核，但先看参考帮助保留，不倒写独立首答。角色年龄不代学生实际年龄，声音和间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "birthday",
+      "atomId": "source:english:g3:349949e1:birth-greeting",
+      "structure": "birthday-wish-and-thanks-role",
+      "familyProposal": "349949e1-birthday-wish-and-thanks-role",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "生日场景已明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "祝福与感谢角色正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "单人练习不代真实聚会",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可录Happy birthday!，对象是给定生日角色；听本人实际发声。角色情境不证明学生本人今天生日或真实聚会发生，帮助另核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-birthday-birthday-wish-and-thanks-role-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创明确今天是角色Mei的生日，你演送祝福者。本人录一句祝福，不把虚构日期写为本人生日。",
+          "answer": "可录Happy birthday!，对象是给定生日角色；听本人实际发声。角色情境不证明学生本人今天生日或真实聚会发生，帮助另核。",
+          "analysis": "可录Happy birthday!，对象是给定生日角色；听本人实际发声。角色情境不证明学生本人今天生日或真实聚会发生，帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-wish-and-thanks-role-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创你演收到生日祝福的Bo。本人录回应感谢，不把祝福者与接受者角色混。",
+          "answer": "可说Thank you.或Thanks.，回应当前祝福。声音需实际听核，角色句不代本人真实生日或礼物已经交付。",
+          "analysis": "可说Thank you.或Thanks.，回应当前祝福。声音需实际听核，角色句不代本人真实生日或礼物已经交付。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-wish-and-thanks-role-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创独自演祝福者与接受者两角，录祝福和感谢，明确没有真人同伴参与。",
+          "answer": "可依次Happy birthday! / Thank you.，角色顺序清楚；单人切角不认双方真人已交流，实际声音与帮助分别保留。",
+          "analysis": "可依次Happy birthday! / Thank you.，角色顺序清楚；单人切角不认双方真人已交流，实际声音与帮助分别保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-wish-and-thanks-role-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新生日角色Yu，你演Lin祝福。本人录当前祝福，不必透露本人生日日期或年龄。",
+          "answer": "可录Happy birthday, Yu!或Happy birthday!，对应给定角色。真实本人生日未提供就不补，声音和是否先听示范另核。",
+          "analysis": "可录Happy birthday, Yu!或Happy birthday!，对应给定角色。真实本人生日未提供就不补，声音和是否先听示范另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-wish-and-thanks-role-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "当前只说“见面”，没说明生日。可以先问清场景或按普通问候练，能认人人都应生日祝福且今天生日吗？",
+          "answer": "不能从普通见面认生日事实；可如实说明场景不足。本人录音范围清楚，生日角色需明确条件，不自动补学生或同伴日期。",
+          "analysis": "不能从普通见面认生日事实；可如实说明场景不足。本人录音范围清楚，生日角色需明确条件，不自动补学生或同伴日期。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-wish-and-thanks-role-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "角色收到祝福但礼物交付未给。录一句感谢后，能顺带记本人已收到两份礼物吗？",
+          "answer": "可说Thank you.等合适回应，但感谢不证明两份礼物或真实交付。声音、角色范围和帮助分别核，实际间隔另核。",
+          "analysis": "可说Thank you.等合适回应，但感谢不证明两份礼物或真实交付。声音、角色范围和帮助分别核，实际间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-wish-and-thanks-role-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人先跟读Happy birthday再录角色尝试。可以完成练习，但能把跟读隐去称未受助首答或真实庆生活动吗？",
+          "answer": "不能；可录Happy birthday!供核，但跟读帮助与单人角色范围保持。本人发声、实际到期和是否真实聚会各自核，不补过程。",
+          "analysis": "不能；可录Happy birthday!供核，但跟读帮助与单人角色范围保持。本人发声、实际到期和是否真实聚会各自核，不补过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "birthday",
+      "atomId": "source:english:g3:349949e1:birth-letters",
+      "structure": "birthday-u-to-z-actual-writing",
+      "familyProposal": "349949e1-birthday-u-to-z-actual-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "六组大小写对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人字形可辨",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完成图不代声音过程",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "六组大小写对应、本人字形可辨；字体差异按样本核。完成图不独证笔顺、词音或无帮助，未写保持未完成。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-birthday-birthday-u-to-z-actual-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创本人写Uu/Vv/Ww/Xx/Yy/Zz并上传，看样本可如实说明，不以印刷表代新作品。",
+          "answer": "六组大小写对应、本人字形可辨；字体差异按样本核。完成图不独证笔顺、词音或无帮助，未写保持未完成。",
+          "analysis": "六组大小写对应、本人字形可辨；字体差异按样本核。完成图不独证笔顺、词音或无帮助，未写保持未完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-u-to-z-actual-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创本人写Vv与Ww两组并上传，不因都含斜线就合成同一字母。",
+          "answer": "V/v与W/w身份不同，按样本写清各组大小写。图可核可见形状，不能代本人声音或完整笔顺，看样本帮助如实保留。",
+          "analysis": "V/v与W/w身份不同，按样本写清各组大小写。图可核可见形状，不能代本人声音或完整笔顺，看样本帮助如实保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-u-to-z-actual-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创按Zz、Xx、Yy顺序本人写并上传，不能把当前顺序自动改回歌谣排列。",
+          "answer": "按当前三组配对写清字形，旧顺序不替要求。实际作品和提示保持，完成图不认输入声音、发音或独立过程。",
+          "analysis": "按当前三组配对写清字形，旧顺序不替要求。实际作品和提示保持，完成图不认输入声音、发音或独立过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-u-to-z-actual-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新任务本人写Uu与Yy，看当前样本比较字形并上传；若还没写，可如实说明。",
+          "answer": "两组大小写分别对应、字形可辨；未写不能用旧印刷表代本人作品。图不独证词音、笔顺或未受助，实际到期另核。",
+          "analysis": "两组大小写分别对应、字形可辨；未写不能用旧印刷表代本人作品。图不独证词音、笔顺或未受助，实际到期另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-u-to-z-actual-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "当前本人只写Xx、Zz，要求的是六组Uu至Zz全部。可以保留已写范围吗？能把其余四组自动记完成吗？",
+          "answer": "可如实保留X/x、Z/z已写范围，其他四组缺项不补。本人实际作品、帮助和间隔另核，不由部分成功认全部书写完成。",
+          "analysis": "可如实保留X/x、Z/z已写范围，其他四组缺项不补。本人实际作品、帮助和间隔另核，不由部分成功认全部书写完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-u-to-z-actual-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "新顺序Ww、Uu、Vv，请本人先写后上传，若临写样本要说明，不倒写独立首答。",
+          "answer": "按当前三组大小写可辨书写，临写帮助保持。图不证明声音或全程无人提示，真实间隔和本人原答另核。",
+          "analysis": "按当前三组大小写可辨书写，临写帮助保持。图不证明声音或全程无人提示，真实间隔和本人原答另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-u-to-z-actual-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "一张Uu至Zz完成图能否直接证明fox/box词音、所有z字母名变体和听圈题都通过？",
+          "answer": "不能，图只核可见字形，不提供输入音频或本人发声，也不替多种语音任务。作品范围、帮助及实际间隔分别保留。",
+          "analysis": "不能，图只核可见字形，不提供输入音频或本人发声，也不替多种语音任务。作品范围、帮助及实际间隔分别保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "birthday",
+      "atomId": "source:english:g3:349949e1:birth-sounds",
+      "structure": "birthday-u-to-z-exact-word-position",
+      "familyProposal": "349949e1-birthday-u-to-z-exact-word-position",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "完整词声音可理解",
+          "weight": 0.4
+        },
+        {
+          "criterion": "x当前在词尾",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字母名与词例帮助分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "读四个完整词供听核，字母名不替词例。当前示范和本人原答帮助分开，两例不推全部u/v词规则，没有输入声音不认听辨。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-birthday-birthday-u-to-z-exact-word-position-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人录umbrella/under与vet/vest两组，先听示范可如实说明，不只报U或V字母名。",
+          "answer": "读四个完整词供听核，字母名不替词例。当前示范和本人原答帮助分开，两例不推全部u/v词规则，没有输入声音不认听辨。",
+          "analysis": "读四个完整词供听核，字母名不替词例。当前示范和本人原答帮助分开，两例不推全部u/v词规则，没有输入声音不认听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-u-to-z-exact-word-position-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人录wet/water和fox/box，指出x在后两个词哪个位置，不能把它们说成x开头。",
+          "answer": "fox、box的x在末尾，本人录完整词供核；wet/water为当前w例。位置与声音分别看，不造词首x例，原答和帮助保持。",
+          "analysis": "fox、box的x在末尾，本人录完整词供核；wet/water为当前w例。位置与声音分别看，不造词首x例，原答和帮助保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-u-to-z-exact-word-position-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "本人录yellow/yo-yo及zoo/Zip；Zip在这里是什么，能代本人名字或真人参与吗？",
+          "answer": "读四个完整词供听核，Zip只是给定名称词例，不代本人姓名或真实参与。字母名、词音和实际输入声音分开，帮助如实说明。",
+          "analysis": "读四个完整词供听核，Zip只是给定名称词例，不代本人姓名或真实参与。字母名、词音和实际输入声音分开，帮助如实说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-u-to-z-exact-word-position-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "换顺序under、umbrella，请本人先录完整词；两个词能证明所有u词都同一读法或已经全部会吗？",
+          "answer": "不能，只核当前本人完整词尝试；两例不推广全部u规则。示范、原答和真实间隔另核，文件存在不等发音已合格。",
+          "analysis": "不能，只核当前本人完整词尝试；两例不推广全部u规则。示范、原答和真实间隔另核，文件存在不等发音已合格。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-u-to-z-exact-word-position-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本人录box、fox并说x的位置；只因字母课按Xx排列，就可以把词中x改到开头再说原页如此吗？",
+          "answer": "不可以，当前box、fox的x都在词尾，应保留真实词形和完整词音。不能为套模板改写原件，输入声音、帮助和本人发声分别核。",
+          "analysis": "不可以，当前box、fox的x都在词尾，应保留真实词形和完整词音。不能为套模板改写原件，输入声音、帮助和本人发声分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-u-to-z-exact-word-position-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "新顺序vest、vet、water、wet，先自己录完整词，再说明是否先听过示范；不以字母名代全部词。",
+          "answer": "实际读四词供听核，v/w当前例词与字母名不同任务。先听的帮助如实保留，不倒写独立首答，间隔与可理解程度另核。",
+          "analysis": "实际读四词供听核，v/w当前例词与字母名不同任务。先听的帮助如实保留，不倒写独立首答，间隔与可理解程度另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-u-to-z-exact-word-position-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人只看过yellow、yo-yo、zoo、Zip印刷词，现在录尝试可以；能同时勾真实听辨已完成吗？",
+          "answer": "可保留本人实际读词尝试，但缺输入音频不能认听辨。Zip不作本人身份，声音、词形、示范帮助和真实间隔分别核。",
+          "analysis": "可保留本人实际读词尝试，但缺输入音频不能认听辨。Zip不作本人身份，声音、词形、示范帮助和真实间隔分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "birthday",
+      "atomId": "source:english:g3:349949e1:birth-context",
+      "structure": "birthday-number-role-and-given-rule",
+      "familyProposal": "349949e1-birthday-number-role-and-given-rule",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "问题和数字角色清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "条件充足才推关系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "虚构资料不改本人",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "盘数依据three，年龄依据six，7只是桌号；不同用途不混。角色卡年龄不代本人资料，给定数量也不证明实际聚会发生。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-birthday-birthday-number-role-and-given-rule-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创桌号7、角色six岁、盘子three，问How many plates与How old分别依据哪个数？",
+          "answer": "盘数依据three，年龄依据six，7只是桌号；不同用途不混。角色卡年龄不代本人资料，给定数量也不证明实际聚会发生。",
+          "analysis": "盘数依据three，年龄依据six，7只是桌号；不同用途不混。角色卡年龄不代本人资料，给定数量也不证明实际聚会发生。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-number-role-and-given-rule-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创选蛋糕时说This one, please，能解释为所有蛋糕总数恰一吗？当前one起什么作用？",
+          "answer": "不能，这里one代当前选中的对象，表示请给我这个；不是全部数量陈述。需看选择语境，不能由一个词补全真实库存。",
+          "analysis": "不能，这里one代当前选中的对象，表示请给我这个；不是全部数量陈述。需看选择语境，不能由一个词补全真实库存。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-number-role-and-given-rule-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创只画许多蜡烛，没有说明每支代表一岁，也没给完整数量。可以推精确年龄吗？",
+          "answer": "不能，缺完整数量及年龄编码规则；很多蜡烛不直接给几岁。故事玩笑、角色年龄和学生真实资料分开，不编精确值。",
+          "analysis": "不能，缺完整数量及年龄编码规则；很多蜡烛不直接给几岁。故事玩笑、角色年龄和学生真实资料分开，不编精确值。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-number-role-and-given-rule-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "新假设明确每支蜡烛代表一岁且完整共有eight支。可在这个假设里分析几岁？能自动写进本人档案吗？",
+          "answer": "在明说一支一岁且完整八支的假设里可得eight岁，但这只是角色条件，不改学生真实年龄。结论依当前规则与完整数量，不能泛化。",
+          "analysis": "在明说一支一岁且完整八支的假设里可得eight岁，但这只是角色条件，不改学生真实年龄。结论依当前规则与完整数量，不能泛化。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-number-role-and-given-rule-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "角色介绍说This is my brother，未给年龄和长幼。能推出本人有弟弟、且对方一定小两岁吗？",
+          "answer": "不能，brother可为兄或弟，本句未给具体长幼年龄差；角色关系也不是学生本人家庭资料。按已知范围理解，不补真实信息。",
+          "analysis": "不能，brother可为兄或弟，本句未给具体长幼年龄差；角色关系也不是学生本人家庭资料。按已知范围理解，不补真实信息。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-number-role-and-given-rule-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "当前看见一个数字five标签，既没盘图也没年龄卡。能只凭标签同时答五盘、五岁和今天生日吗？",
+          "answer": "不能，数字标签用途未明确，不能同时填多个事实。需当前对象、问题和完整条件，示例或熟悉故事不代本人生日信息。",
+          "analysis": "不能，数字标签用途未明确，不能同时填多个事实。需当前对象、问题和完整条件，示例或熟悉故事不代本人生日信息。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-birthday-birthday-number-role-and-given-rule-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人只会唱one到ten歌曲并愿意参加角色游戏。能认所有数量、年龄问答已独立完成且真实生日聚会已参加吗？",
+          "answer": "不能，歌曲与意愿不代不同问题的本人实际回答，也不证明真实聚会。当前已做范围、原答及帮助分别保持，缺项不反填。",
+          "analysis": "不能，歌曲与意愿不代不同问题的本人实际回答，也不证明真实聚会。当前已做范围、原答及帮助分别保持，缺项不反填。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

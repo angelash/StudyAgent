@@ -1,0 +1,64 @@
+{
+  "at": "2026-11-02T20:16:46.472Z",
+  "passed": true,
+  "storage": "sqlite",
+  "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+  "bookId": "archive-book:english-g3-upper-349949e1df2ad88b",
+  "subject": "english",
+  "prewriteValidation": {
+    "passed": true,
+    "selectedDrafts": 1,
+    "questionCount": 42,
+    "exactOriginalSha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+    "proofFingerprint": "7ce05149ab8146c815b750108acd87657c29c25e9981ee038751482fc3aaa52e"
+  },
+  "drafts": [
+    {
+      "file": "english-g3-349949e1-recycle-two-v1.json",
+      "sha256": "8d0405b88b2c902b59eb3121c28444dec264a5c715c6d2258759ae6263d3b282",
+      "physicalPages": [
+        71,
+        72,
+        73,
+        74
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 6,
+      "preflightPublishable": false,
+      "gapCount": 78,
+      "linkedDraftMaterialReferences": 42,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 1,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 42,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "exactSourceNamesAndMetadataPreserved": true,
+    "visualQuestionDocuments": 0,
+    "wholeVisualDocumentsPreserved": true,
+    "staleVisualDocumentVersionRejected": false,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/english-g3-349949e1-recycle-two-v1.json",
+    "sha256": "5e582471d94a3921f8e39278102311c5b57ed5aa4f9f52e3338d9b9bad865bab",
+    "groups": 6,
+    "questions": 42,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}
