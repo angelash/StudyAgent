@@ -2,6 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'../..');
 const expected={
+ 'garden-six':[['早发白帝城','唐','李白','朝辞白帝彩云间，\n千里江陵一日还。\n两岸猿声啼不住，\n轻舟已过万重山。']],
  'garden':[['所见','清','袁枚','牧童骑黄牛，\n歌声振林樾。\n意欲捕鸣蝉，\n忽然闭口立。']],
  'autumn-poems':[
   ['山行','唐','杜牧','远上寒山石径斜，\n白云生处有人家。\n停车坐爱枫林晚，\n霜叶红于二月花。'],
@@ -26,5 +27,8 @@ for(const [slug,poems]of Object.entries(expected)){
  assert.throws(()=>verify(metadataOnly,poems));negativeCases++;
  for(const poem of poems){const missingLine=structuredClone(draft);missingLine.content.concept.explanation=missingLine.content.concept.explanation.replace(poem[3].split('\n')[2],'');assert.throws(()=>verify(missingLine,poems));negativeCases++;}
 }
-const report={passed:true,drafts:3,completePoems:7,metadataOnlyAndMissingLineRejected:negativeCases,selectedVersionWords:['生处','最是','山水翠'],scope:'Ancient public-domain poem reading only. Not a license to reproduce full modern textbook passages or annotations, nor proof of teacher approval or learner recall.'};
+const garden=JSON.parse(fs.readFileSync(path.join(root,'resources/curriculum/source-lessons/chinese-g3-garden-six-v1.json')));
+assert.equal(garden.scope.poemReadings['朝辞'],'zhāo cí');
+assert(!/朝cháo/.test(JSON.stringify(garden)),'Morning departure uses zhāo');
+const report={passed:true,drafts:Object.keys(expected).length,completePoems:Object.values(expected).flat().length,metadataOnlyAndMissingLineRejected:negativeCases,selectedVersionWords:['生处','最是','山水翠'],baidiMorningReading:'zhāo cí',scope:'Ancient public-domain poem reading only. Not a license to reproduce full modern textbook passages or annotations, nor proof of teacher approval or learner recall.'};
 console.log(JSON.stringify(report));

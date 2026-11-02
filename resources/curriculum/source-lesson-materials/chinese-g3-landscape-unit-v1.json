@@ -1,0 +1,3184 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "xisha",
+      "path": "resources/curriculum/source-lessons/chinese-g3-xisha-v1.json",
+      "sha256": "5b5b288171e95a726381fed68f8f55ad88cbfcac8ee1e537d0c58f2f1524a76d",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry2",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 81,
+        "pageEnd": 83,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    },
+    {
+      "lesson": "seaside",
+      "path": "resources/curriculum/source-lessons/chinese-g3-seaside-v1.json",
+      "sha256": "9e8158a97e80676de5fd04be218995be6681a65834ece433c6a9fa7ce8da78d2",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry3",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 84,
+        "pageEnd": 85,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    },
+    {
+      "lesson": "xiaoxingan",
+      "path": "resources/curriculum/source-lessons/chinese-g3-xiaoxingan-v1.json",
+      "sha256": "d91e4baaae8d9647e632b0fca409a355ad9a2e11ad24dff7635177fd699a8725",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry4",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 86,
+        "pageEnd": 88,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    },
+    {
+      "lesson": "beautiful-place-writing",
+      "path": "resources/curriculum/source-lessons/chinese-g3-beautiful-place-writing-v1.json",
+      "sha256": "ecd9e08c08c69fc4cb058cdeb2d8eb7a51d5c2507db30e634fc34ef1d9ca4c67",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry5",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 89,
+        "pageEnd": 89,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    },
+    {
+      "lesson": "garden-six",
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-six-v1.json",
+      "sha256": "00248e2791c8c2c6cb7598ff3493b83a89af893a917a0b68f856dffab73dccd7",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry6",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 90,
+        "pageEnd": 91,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三个即时和四个拟议间隔样题，不等充分库存或独立题族。语境识读、原篇朗读书写与陌生理解分别核，选做家乡季节段不变成必做目标。所有声音原稿真实活动由本人实际完成，不生成学生表现。",
+  "groups": [
+    {
+      "lesson": "xisha",
+      "atomId": "source:chinese:g3:02915a7d:xisha-reading",
+      "structure": "xisha-contextual-word-reading",
+      "familyProposal": "following-xisha-contextual-word-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人本次声音覆盖当前目标",
+          "weight": 0.4
+        },
+        {
+          "criterion": "语境读音与当前词义相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "缺项帮助与订正真实保留",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "饶ráo优yōu瑰guī岩yán参shēn武wǔ栖qī粪fèn辈bèi设shè；按本人当前声音核覆盖，不由词数等同字数。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "xisha-xisha-contextual-word-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录音读“富饶、优美、瑰丽、岩石、海参、威武、栖息、鸟粪、祖辈、建设”，逐字说明当前目标覆盖；文字拼音不代实际声音。",
+          "answer": "饶ráo优yōu瑰guī岩yán参shēn武wǔ栖qī粪fèn辈bèi设shè；按本人当前声音核覆盖，不由词数等同字数。",
+          "analysis": "饶ráo优yōu瑰guī岩yán参shēn武wǔ栖qī粪fèn辈bèi设shè；按本人当前声音核覆盖，不由词数等同字数。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-contextual-word-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“富饶、优美、瑰丽、岩石、海参、威武、栖息、鸟粪、祖辈、建设”分两组实际读出，标一处需要核对的读音，没问题不造错。",
+          "answer": "饶ráo优yōu瑰guī岩yán参shēn武wǔ栖qī粪fèn辈bèi设shè；两组声音合并核覆盖，原音和订正后分开。",
+          "analysis": "饶ráo优yōu瑰guī岩yán参shēn武wǔ栖qī粪fèn辈bèi设shè；两组声音合并核覆盖，原音和订正后分开。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-contextual-word-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "给目标字各配一个新的合理词语实际录音，再补尚未覆盖目标。",
+          "answer": "新词语义与读音相容，当前目标全部逐字核；新词不保证自动形成未见独立题族。",
+          "analysis": "新词语义与读音相容，当前目标全部逐字核；新词不保证自动形成未见独立题族。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-contextual-word-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次逐字读全当前目标，说明刚看过原页或听过示范的部分。",
+          "answer": "本人本次声音可核，原词重复与帮助曝光保留，不恢复未见资格。",
+          "analysis": "本人本次声音可核，原词重复与帮助曝光保留，不恢复未见资格。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-contextual-word-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "选择一个确实不稳的目标查证后实际录音；如都稳则正常读全，不造错。",
+          "answer": "查证依据与实际声音分别看，解释会查不代发音正确，其余未做保留。",
+          "analysis": "查证依据与实际声音分别看，解释会查不代发音正确，其余未做保留。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-contextual-word-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只读你本次实际完成的词，列未覆盖目标与帮助，不拿旧音补齐。",
+          "answer": "本次覆盖和未完成如实，分次允许但不能把教师示范当本人声音。",
+          "analysis": "本次覆盖和未完成如实，分次允许但不能把教师示范当本人声音。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-contextual-word-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新实际录全表，说明哪一字因语境需特别核对。",
+          "answer": "饶ráo优yōu瑰guī岩yán参shēn武wǔ栖qī粪fèn辈bèi设shè；说明和声音对应，不能只打拼音或自报都认识。",
+          "analysis": "饶ráo优yōu瑰guī岩yán参shēn武wǔ栖qī粪fèn辈bèi设shè；说明和声音对应，不能只打拼音或自报都认识。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "xisha",
+      "atomId": "source:chinese:g3:02915a7d:xisha-handwriting",
+      "structure": "xisha-own-handwriting",
+      "familyProposal": "following-xisha-own-handwriting",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿实际覆盖当前字表",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字形部件与当前目标相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原改帮助缺项分别保留",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "逐字核本人本次原稿与目标字表，识读正确或范字图不代实际书写。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "xisha-xisha-own-handwriting-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际书写“优淡浅错岩挺刺鼓数厚宝贵业”并上传原稿，指出一处需要核对的部件。",
+          "answer": "逐字核本人本次原稿与目标字表，识读正确或范字图不代实际书写。",
+          "analysis": "逐字核本人本次原稿与目标字表，识读正确或范字图不代实际书写。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "xisha-xisha-own-handwriting-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“优淡浅错岩挺刺鼓数厚宝贵业”分两次短书写，上传两份原稿并说明覆盖。",
+          "answer": "两份实际字形合并核表，少写如实留缺，不机械要求长时间反复抄写。",
+          "analysis": "两份实际字形合并核表，少写如实留缺，不机械要求长时间反复抄写。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "xisha-xisha-own-handwriting-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "在新原创短句中实际写出部分目标，再补未出现目标并上传。",
+          "answer": "句内与补写合并核当前字表，新句身份清楚，不能一处正确推全表。",
+          "analysis": "句内与补写合并核当前字表，新句身份清楚，不能一处正确推全表。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "xisha-xisha-own-handwriting-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "上传本次本人写字，说明看过范字或得到帮助的部分。",
+          "answer": "本人原件和帮助可核，旧字库或教师原件不能冒充本次。",
+          "analysis": "本人原件和帮助可核，旧字库或教师原件不能冒充本次。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "xisha-xisha-own-handwriting-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "保留本人一处真实订正的原改对照；没错不必造错。",
+          "answer": "改动有可追溯原件，清稿不倒造过程，字形质量不以改动数量计。",
+          "analysis": "改动有可追溯原件，清稿不倒造过程，字形质量不以改动数量计。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "xisha-xisha-own-handwriting-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "选择一个部件易混字先说明区别，再实际写并补全当前表。",
+          "answer": "方法说明与真实字形各自核，未写部分留缺，不用解释代原稿。",
+          "analysis": "方法说明与真实字形各自核，未写部分留缺，不用解释代原稿。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "xisha-xisha-own-handwriting-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本次重新书写字表并上传，注明实际完成范围和帮助。",
+          "answer": "本人本次覆盖逐字核，不由已学原字重复推出未见迁移或长期保持。",
+          "analysis": "本人本次覆盖逐字核，不由已学原字重复推出未见迁移或长期保持。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        }
+      ]
+    },
+    {
+      "lesson": "xisha",
+      "atomId": "source:chinese:g3:02915a7d:xisha-oral-reading",
+      "structure": "xisha-actual-passage-reading",
+      "familyProposal": "following-xisha-actual-passage-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人本次声音与原文对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "朗读处理服务当前句意",
+          "weight": 0.4
+        },
+        {
+          "criterion": "范围看稿与帮助清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "真实录音与原句对应，停顿可有合理差异，选段不充全篇完成。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "xisha-xisha-actual-passage-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人朗读本课一段，先说明选段范围，再说一处停顿怎样帮助听清景物特点与分方面信息。",
+          "answer": "真实录音与原句对应，停顿可有合理差异，选段不充全篇完成。",
+          "analysis": "真实录音与原句对应，停顿可有合理差异，选段不充全篇完成。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-actual-passage-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "读一处较长句，把不应拆散的词组连起来，再说明依据。",
+          "answer": "句意与词组关系支持停连，不要求唯一划线模板，书面划分不代声音。",
+          "analysis": "句意与词组关系支持停连，不要求唯一划线模板，书面划分不代声音。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-actual-passage-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "先读一段新的明确原创景物短句，再回原课读选段，分清材料身份。",
+          "answer": "新材料练方法与本课朗读各自留，不能用原创短句替整课朗读。",
+          "analysis": "新材料练方法与本课朗读各自留，不能用原创短句替整课朗读。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-actual-passage-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次实际朗读并报告是否看稿、听过示范或受提示。",
+          "answer": "当前本人声音与帮助清楚，看稿朗读不被记成脱稿背诵。",
+          "analysis": "当前本人声音与帮助清楚，看稿朗读不被记成脱稿背诵。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-actual-passage-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "比较本人一处两次读法，指出哪个更便于理解景物特点与分方面信息；保留原音。",
+          "answer": "比较有句意依据，读法合理可不同，不以音色或快慢单独自动评分。",
+          "analysis": "比较有句意依据，读法合理可不同，不以音色或快慢单独自动评分。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-actual-passage-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "如当前只完成局部，录音读该部分并报告其他部分状态。",
+          "answer": "范围真实，未完成不由参考音代填，文字陈述不代实际朗读。",
+          "analysis": "范围真实，未完成不由参考音代填，文字陈述不代实际朗读。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-actual-passage-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新实际朗读所选原文，报告帮助和自己仍需核对处。",
+          "answer": "本人原声、版本与范围可核，重复原文不自动成为未见理解或保持。",
+          "analysis": "本人原声、版本与范围可核，重复原文不自动成为未见理解或保持。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "seaside",
+      "atomId": "source:chinese:g3:02915a7d:seaside-reading",
+      "structure": "seaside-contextual-word-reading",
+      "familyProposal": "following-seaside-contextual-word-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人本次声音覆盖当前目标",
+          "weight": 0.4
+        },
+        {
+          "criterion": "语境读音与当前词义相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "缺项帮助与订正真实保留",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "滨bīn鸥ōu胳gē臂bei睬cǎi载zài凰huáng亚yà榕róng凳dèng逢féng除chú；按本人当前声音核覆盖，不由词数等同字数。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "seaside-seaside-contextual-word-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录音读“海滨、海鸥、胳臂、理睬、满载、凤凰、亚热带、榕树、石凳、每逢、除了”，逐字说明当前目标覆盖；文字拼音不代实际声音。",
+          "answer": "滨bīn鸥ōu胳gē臂bei睬cǎi载zài凰huáng亚yà榕róng凳dèng逢féng除chú；按本人当前声音核覆盖，不由词数等同字数。",
+          "analysis": "滨bīn鸥ōu胳gē臂bei睬cǎi载zài凰huáng亚yà榕róng凳dèng逢féng除chú；按本人当前声音核覆盖，不由词数等同字数。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-contextual-word-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“海滨、海鸥、胳臂、理睬、满载、凤凰、亚热带、榕树、石凳、每逢、除了”分两组实际读出，标一处需要核对的读音，没问题不造错。",
+          "answer": "滨bīn鸥ōu胳gē臂bei睬cǎi载zài凰huáng亚yà榕róng凳dèng逢féng除chú；两组声音合并核覆盖，原音和订正后分开。",
+          "analysis": "滨bīn鸥ōu胳gē臂bei睬cǎi载zài凰huáng亚yà榕róng凳dèng逢féng除chú；两组声音合并核覆盖，原音和订正后分开。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-contextual-word-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "给目标字各配一个新的合理词语实际录音，再补尚未覆盖目标。",
+          "answer": "新词语义与读音相容，当前目标全部逐字核；新词不保证自动形成未见独立题族。",
+          "analysis": "新词语义与读音相容，当前目标全部逐字核；新词不保证自动形成未见独立题族。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-contextual-word-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次逐字读全当前目标，说明刚看过原页或听过示范的部分。",
+          "answer": "本人本次声音可核，原词重复与帮助曝光保留，不恢复未见资格。",
+          "analysis": "本人本次声音可核，原词重复与帮助曝光保留，不恢复未见资格。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-contextual-word-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "选择一个确实不稳的目标查证后实际录音；如都稳则正常读全，不造错。",
+          "answer": "查证依据与实际声音分别看，解释会查不代发音正确，其余未做保留。",
+          "analysis": "查证依据与实际声音分别看，解释会查不代发音正确，其余未做保留。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-contextual-word-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只读你本次实际完成的词，列未覆盖目标与帮助，不拿旧音补齐。",
+          "answer": "本次覆盖和未完成如实，分次允许但不能把教师示范当本人声音。",
+          "analysis": "本次覆盖和未完成如实，分次允许但不能把教师示范当本人声音。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-contextual-word-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新实际录全表，说明哪一字因语境需特别核对。",
+          "answer": "滨bīn鸥ōu胳gē臂bei睬cǎi载zài凰huáng亚yà榕róng凳dèng逢féng除chú；说明和声音对应，不能只打拼音或自报都认识。",
+          "analysis": "滨bīn鸥ōu胳gē臂bei睬cǎi载zài凰huáng亚yà榕róng凳dèng逢féng除chú；说明和声音对应，不能只打拼音或自报都认识。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "seaside",
+      "atomId": "source:chinese:g3:02915a7d:seaside-handwriting",
+      "structure": "seaside-own-handwriting",
+      "familyProposal": "following-seaside-own-handwriting",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿实际覆盖当前字表",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字形部件与当前目标相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原改帮助缺项分别保留",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "逐字核本人本次原稿与目标字表，识读正确或范字图不代实际书写。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "seaside-seaside-own-handwriting-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际书写“滨灰飘渔遍躺载靠亚夏除踩洁”并上传原稿，指出一处需要核对的部件。",
+          "answer": "逐字核本人本次原稿与目标字表，识读正确或范字图不代实际书写。",
+          "analysis": "逐字核本人本次原稿与目标字表，识读正确或范字图不代实际书写。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "seaside-seaside-own-handwriting-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“滨灰飘渔遍躺载靠亚夏除踩洁”分两次短书写，上传两份原稿并说明覆盖。",
+          "answer": "两份实际字形合并核表，少写如实留缺，不机械要求长时间反复抄写。",
+          "analysis": "两份实际字形合并核表，少写如实留缺，不机械要求长时间反复抄写。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "seaside-seaside-own-handwriting-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "在新原创短句中实际写出部分目标，再补未出现目标并上传。",
+          "answer": "句内与补写合并核当前字表，新句身份清楚，不能一处正确推全表。",
+          "analysis": "句内与补写合并核当前字表，新句身份清楚，不能一处正确推全表。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "seaside-seaside-own-handwriting-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "上传本次本人写字，说明看过范字或得到帮助的部分。",
+          "answer": "本人原件和帮助可核，旧字库或教师原件不能冒充本次。",
+          "analysis": "本人原件和帮助可核，旧字库或教师原件不能冒充本次。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "seaside-seaside-own-handwriting-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "保留本人一处真实订正的原改对照；没错不必造错。",
+          "answer": "改动有可追溯原件，清稿不倒造过程，字形质量不以改动数量计。",
+          "analysis": "改动有可追溯原件，清稿不倒造过程，字形质量不以改动数量计。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "seaside-seaside-own-handwriting-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "选择一个部件易混字先说明区别，再实际写并补全当前表。",
+          "answer": "方法说明与真实字形各自核，未写部分留缺，不用解释代原稿。",
+          "analysis": "方法说明与真实字形各自核，未写部分留缺，不用解释代原稿。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "seaside-seaside-own-handwriting-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本次重新书写字表并上传，注明实际完成范围和帮助。",
+          "answer": "本人本次覆盖逐字核，不由已学原字重复推出未见迁移或长期保持。",
+          "analysis": "本人本次覆盖逐字核，不由已学原字重复推出未见迁移或长期保持。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        }
+      ]
+    },
+    {
+      "lesson": "seaside",
+      "atomId": "source:chinese:g3:02915a7d:seaside-oral-reading",
+      "structure": "seaside-actual-passage-reading",
+      "familyProposal": "following-seaside-actual-passage-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人本次声音与原文对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "朗读处理服务当前句意",
+          "weight": 0.4
+        },
+        {
+          "criterion": "范围看稿与帮助清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "真实录音与原句对应，停顿可有合理差异，选段不充全篇完成。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "seaside-seaside-actual-passage-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人朗读本课一段，先说明选段范围，再说一处停顿怎样帮助听清不同地点和观察条件。",
+          "answer": "真实录音与原句对应，停顿可有合理差异，选段不充全篇完成。",
+          "analysis": "真实录音与原句对应，停顿可有合理差异，选段不充全篇完成。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-actual-passage-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "读一处较长句，把不应拆散的词组连起来，再说明依据。",
+          "answer": "句意与词组关系支持停连，不要求唯一划线模板，书面划分不代声音。",
+          "analysis": "句意与词组关系支持停连，不要求唯一划线模板，书面划分不代声音。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-actual-passage-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "先读一段新的明确原创景物短句，再回原课读选段，分清材料身份。",
+          "answer": "新材料练方法与本课朗读各自留，不能用原创短句替整课朗读。",
+          "analysis": "新材料练方法与本课朗读各自留，不能用原创短句替整课朗读。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-actual-passage-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次实际朗读并报告是否看稿、听过示范或受提示。",
+          "answer": "当前本人声音与帮助清楚，看稿朗读不被记成脱稿背诵。",
+          "analysis": "当前本人声音与帮助清楚，看稿朗读不被记成脱稿背诵。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-actual-passage-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "比较本人一处两次读法，指出哪个更便于理解不同地点和观察条件；保留原音。",
+          "answer": "比较有句意依据，读法合理可不同，不以音色或快慢单独自动评分。",
+          "analysis": "比较有句意依据，读法合理可不同，不以音色或快慢单独自动评分。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-actual-passage-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "如当前只完成局部，录音读该部分并报告其他部分状态。",
+          "answer": "范围真实，未完成不由参考音代填，文字陈述不代实际朗读。",
+          "analysis": "范围真实，未完成不由参考音代填，文字陈述不代实际朗读。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-actual-passage-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新实际朗读所选原文，报告帮助和自己仍需核对处。",
+          "answer": "本人原声、版本与范围可核，重复原文不自动成为未见理解或保持。",
+          "analysis": "本人原声、版本与范围可核，重复原文不自动成为未见理解或保持。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "xiaoxingan",
+      "atomId": "source:chinese:g3:02915a7d:xiaoxingan-reading",
+      "structure": "xiaoxingan-contextual-word-reading",
+      "familyProposal": "following-xiaoxingan-contextual-word-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人本次声音覆盖当前目标",
+          "weight": 0.4
+        },
+        {
+          "criterion": "语境读音与当前词义相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "缺项帮助与订正真实保留",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "兴xīng融róng侧cè欣xīn浸jìn乳rǔ梢shāo舍shè显xiǎn材cái膝xī眠mián库kù；按本人当前声音核覆盖，不由词数等同字数。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "xiaoxingan-xiaoxingan-contextual-word-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录音读“小兴安岭、融化、侧身、欣赏、浸、乳白、树梢、宿舍、显得、药材、膝盖、冬眠、宝库”，逐字说明当前目标覆盖；文字拼音不代实际声音。",
+          "answer": "兴xīng融róng侧cè欣xīn浸jìn乳rǔ梢shāo舍shè显xiǎn材cái膝xī眠mián库kù；按本人当前声音核覆盖，不由词数等同字数。",
+          "analysis": "兴xīng融róng侧cè欣xīn浸jìn乳rǔ梢shāo舍shè显xiǎn材cái膝xī眠mián库kù；按本人当前声音核覆盖，不由词数等同字数。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-contextual-word-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“小兴安岭、融化、侧身、欣赏、浸、乳白、树梢、宿舍、显得、药材、膝盖、冬眠、宝库”分两组实际读出，标一处需要核对的读音，没问题不造错。",
+          "answer": "兴xīng融róng侧cè欣xīn浸jìn乳rǔ梢shāo舍shè显xiǎn材cái膝xī眠mián库kù；两组声音合并核覆盖，原音和订正后分开。",
+          "analysis": "兴xīng融róng侧cè欣xīn浸jìn乳rǔ梢shāo舍shè显xiǎn材cái膝xī眠mián库kù；两组声音合并核覆盖，原音和订正后分开。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-contextual-word-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "给目标字各配一个新的合理词语实际录音，再补尚未覆盖目标。",
+          "answer": "新词语义与读音相容，当前目标全部逐字核；新词不保证自动形成未见独立题族。",
+          "analysis": "新词语义与读音相容，当前目标全部逐字核；新词不保证自动形成未见独立题族。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-contextual-word-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次逐字读全当前目标，说明刚看过原页或听过示范的部分。",
+          "answer": "本人本次声音可核，原词重复与帮助曝光保留，不恢复未见资格。",
+          "analysis": "本人本次声音可核，原词重复与帮助曝光保留，不恢复未见资格。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-contextual-word-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "选择一个确实不稳的目标查证后实际录音；如都稳则正常读全，不造错。",
+          "answer": "查证依据与实际声音分别看，解释会查不代发音正确，其余未做保留。",
+          "analysis": "查证依据与实际声音分别看，解释会查不代发音正确，其余未做保留。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-contextual-word-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只读你本次实际完成的词，列未覆盖目标与帮助，不拿旧音补齐。",
+          "answer": "本次覆盖和未完成如实，分次允许但不能把教师示范当本人声音。",
+          "analysis": "本次覆盖和未完成如实，分次允许但不能把教师示范当本人声音。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-contextual-word-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新实际录全表，说明哪一字因语境需特别核对。",
+          "answer": "兴xīng融róng侧cè欣xīn浸jìn乳rǔ梢shāo舍shè显xiǎn材cái膝xī眠mián库kù；说明和声音对应，不能只打拼音或自报都认识。",
+          "analysis": "兴xīng融róng侧cè欣xīn浸jìn乳rǔ梢shāo舍shè显xiǎn材cái膝xī眠mián库kù；说明和声音对应，不能只打拼音或自报都认识。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "xiaoxingan",
+      "atomId": "source:chinese:g3:02915a7d:xiaoxingan-handwriting",
+      "structure": "xiaoxingan-own-handwriting",
+      "familyProposal": "following-xiaoxingan-own-handwriting",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿实际覆盖当前字表",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字形部件与当前目标相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原改帮助缺项分别保留",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "逐字核本人本次原稿与目标字表，识读正确或范字图不代实际书写。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "xiaoxingan-xiaoxingan-own-handwriting-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际书写“脑袋严实挡视线坛显材软刮库”并上传原稿，指出一处需要核对的部件。",
+          "answer": "逐字核本人本次原稿与目标字表，识读正确或范字图不代实际书写。",
+          "analysis": "逐字核本人本次原稿与目标字表，识读正确或范字图不代实际书写。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-own-handwriting-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“脑袋严实挡视线坛显材软刮库”分两次短书写，上传两份原稿并说明覆盖。",
+          "answer": "两份实际字形合并核表，少写如实留缺，不机械要求长时间反复抄写。",
+          "analysis": "两份实际字形合并核表，少写如实留缺，不机械要求长时间反复抄写。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-own-handwriting-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "在新原创短句中实际写出部分目标，再补未出现目标并上传。",
+          "answer": "句内与补写合并核当前字表，新句身份清楚，不能一处正确推全表。",
+          "analysis": "句内与补写合并核当前字表，新句身份清楚，不能一处正确推全表。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-own-handwriting-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "上传本次本人写字，说明看过范字或得到帮助的部分。",
+          "answer": "本人原件和帮助可核，旧字库或教师原件不能冒充本次。",
+          "analysis": "本人原件和帮助可核，旧字库或教师原件不能冒充本次。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-own-handwriting-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "保留本人一处真实订正的原改对照；没错不必造错。",
+          "answer": "改动有可追溯原件，清稿不倒造过程，字形质量不以改动数量计。",
+          "analysis": "改动有可追溯原件，清稿不倒造过程，字形质量不以改动数量计。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-own-handwriting-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "选择一个部件易混字先说明区别，再实际写并补全当前表。",
+          "answer": "方法说明与真实字形各自核，未写部分留缺，不用解释代原稿。",
+          "analysis": "方法说明与真实字形各自核，未写部分留缺，不用解释代原稿。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-own-handwriting-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本次重新书写字表并上传，注明实际完成范围和帮助。",
+          "answer": "本人本次覆盖逐字核，不由已学原字重复推出未见迁移或长期保持。",
+          "analysis": "本人本次覆盖逐字核，不由已学原字重复推出未见迁移或长期保持。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        }
+      ]
+    },
+    {
+      "lesson": "xiaoxingan",
+      "atomId": "source:chinese:g3:02915a7d:xiaoxingan-oral-reading",
+      "structure": "xiaoxingan-actual-passage-reading",
+      "familyProposal": "following-xiaoxingan-actual-passage-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人本次声音与原文对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "朗读处理服务当前句意",
+          "weight": 0.4
+        },
+        {
+          "criterion": "范围看稿与帮助清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "真实录音与原句对应，停顿可有合理差异，选段不充全篇完成。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "xiaoxingan-xiaoxingan-actual-passage-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人朗读本课一段，先说明选段范围，再说一处停顿怎样帮助听清季节、对象与动作关系。",
+          "answer": "真实录音与原句对应，停顿可有合理差异，选段不充全篇完成。",
+          "analysis": "真实录音与原句对应，停顿可有合理差异，选段不充全篇完成。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-actual-passage-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "读一处较长句，把不应拆散的词组连起来，再说明依据。",
+          "answer": "句意与词组关系支持停连，不要求唯一划线模板，书面划分不代声音。",
+          "analysis": "句意与词组关系支持停连，不要求唯一划线模板，书面划分不代声音。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-actual-passage-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "先读一段新的明确原创景物短句，再回原课读选段，分清材料身份。",
+          "answer": "新材料练方法与本课朗读各自留，不能用原创短句替整课朗读。",
+          "analysis": "新材料练方法与本课朗读各自留，不能用原创短句替整课朗读。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-actual-passage-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次实际朗读并报告是否看稿、听过示范或受提示。",
+          "answer": "当前本人声音与帮助清楚，看稿朗读不被记成脱稿背诵。",
+          "analysis": "当前本人声音与帮助清楚，看稿朗读不被记成脱稿背诵。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-actual-passage-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "比较本人一处两次读法，指出哪个更便于理解季节、对象与动作关系；保留原音。",
+          "answer": "比较有句意依据，读法合理可不同，不以音色或快慢单独自动评分。",
+          "analysis": "比较有句意依据，读法合理可不同，不以音色或快慢单独自动评分。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-actual-passage-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "如当前只完成局部，录音读该部分并报告其他部分状态。",
+          "answer": "范围真实，未完成不由参考音代填，文字陈述不代实际朗读。",
+          "analysis": "范围真实，未完成不由参考音代填，文字陈述不代实际朗读。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-xiaoxingan-actual-passage-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新实际朗读所选原文，报告帮助和自己仍需核对处。",
+          "answer": "本人原声、版本与范围可核，重复原文不自动成为未见理解或保持。",
+          "analysis": "本人原声、版本与范围可核，重复原文不自动成为未见理解或保持。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "xisha",
+      "atomId": "source:chinese:g3:02915a7d:xisha-paragraph",
+      "structure": "bird-paragraph-main-idea",
+      "familyProposal": "following-bird-paragraph-main-idea",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "概括句与鸟段信息对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "两项具体细节支持关系清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不按首句位置推广全部段落",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "树林中海鸟栖息、鸟蛋和鸟粪等都围绕鸟多和鸟的活动，不能只因句在段首就认定。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "xisha-bird-paragraph-main-idea-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "为什么鸟段用鸟的天下概括？连接树林栖息与鸟蛋等至少两项具体信息。",
+          "answer": "树林中海鸟栖息、鸟蛋和鸟粪等都围绕鸟多和鸟的活动，不能只因句在段首就认定。",
+          "analysis": "树林中海鸟栖息、鸟蛋和鸟粪等都围绕鸟多和鸟的活动，不能只因句在段首就认定。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-bird-paragraph-main-idea-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把鸟段的概括和三类细节列成关系表，说明一项细节怎样支持概括。",
+          "answer": "概括与树林海鸟、鸟蛋、鸟粪肥料关系可说明，原文信息与个人推想分清。",
+          "analysis": "概括与树林海鸟、鸟蛋、鸟粪肥料关系可说明，原文信息与个人推想分清。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-bird-paragraph-main-idea-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创段：“枝间有许多鸟巢，清晨常听到鸟鸣。这里是鸟儿喜欢停留的地方。”关键句在哪里？",
+          "answer": "末句概括前面的鸟巢鸟鸣线索，位置不同不妨碍概括；不把原创卡当西沙原段。",
+          "analysis": "末句概括前面的鸟巢鸟鸣线索，位置不同不妨碍概括；不把原创卡当西沙原段。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-bird-paragraph-main-idea-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "若只写岛上有树，能否充分说明鸟的天下？还要联系什么？",
+          "answer": "单一树木信息不够，需要鸟栖息、鸟蛋等对应细节；不从一类植物直接推鸟数量。",
+          "analysis": "单一树木信息不够，需要鸟栖息、鸟蛋等对应细节；不从一类植物直接推鸟数量。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-bird-paragraph-main-idea-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "有人说所有段落第一句都是关键句。用本课与原创末句例说明问题。",
+          "answer": "本课鸟段可由首句概括，原创例在末句；主要看覆盖关系，不能把个例推广全部。",
+          "analysis": "本课鸟段可由首句概括，原创例在末句；主要看覆盖关系，不能把个例推广全部。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-bird-paragraph-main-idea-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "给鸟段插入我书包是蓝色的，会更支持鸟的天下吗？说明。",
+          "answer": "当前没有相关联系，不能用无关个人信息凑细节；若有新联系须给材料而非猜。",
+          "analysis": "当前没有相关联系，不能用无关个人信息凑细节；若有新联系须给材料而非猜。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-bird-paragraph-main-idea-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用自己的话概括鸟段，再连接两条确在原文的信息，标一条仍未知的数量。",
+          "answer": "概括围绕鸟多及生活，具体信息可追溯，未给精确数量保留未知。",
+          "analysis": "概括围绕鸟多及生活，具体信息可追溯，未给精确数量保留未知。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "xisha",
+      "atomId": "source:chinese:g3:02915a7d:xisha-introduction",
+      "structure": "selected-xisha-introduction",
+      "familyProposal": "following-selected-xisha-introduction",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "喜欢部分与具体信息对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "介绍顺序使听众能理解",
+          "weight": 0.4
+        },
+        {
+          "criterion": "实际声音与准备来源分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "海水、鱼或海鸟等均可，原文信息有序，不要求唯一最喜欢部分或本人到过。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "xisha-selected-xisha-introduction-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "从原课选择自己喜欢的一部分，录音介绍两项具体特点并说选择理由。",
+          "answer": "海水、鱼或海鸟等均可，原文信息有序，不要求唯一最喜欢部分或本人到过。",
+          "analysis": "海水、鱼或海鸟等均可，原文信息有序，不要求唯一最喜欢部分或本人到过。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-selected-xisha-introduction-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先写提纲对象特点依据，再实际介绍；说明提纲与已完成介绍的区别。",
+          "answer": "提纲支持组织，实际本人声音才证明已说；两阶段和帮助分别保留。",
+          "analysis": "提纲支持组织，实际本人声音才证明已说；两阶段和帮助分别保留。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-selected-xisha-introduction-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创湖边卡给出水面叶影与两种鸟。实际介绍卡片内容，再说明它与西沙原课的身份不同。",
+          "answer": "新卡信息有顺序，不能把它移作西沙事实；本课喜欢部分任务仍需本人实际完成。",
+          "analysis": "新卡信息有顺序，不能把它移作西沙事实；本课喜欢部分任务仍需本人实际完成。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-selected-xisha-introduction-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只介绍鱼多时，怎样避免把一半水一半鱼说成实测数据？录音说明。",
+          "answer": "把它解释为夸张突出鱼多，具体形态种类来自原课，不宣布已测50%。",
+          "analysis": "把它解释为夸张突出鱼多，具体形态种类来自原课，不宣布已测50%。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-selected-xisha-introduction-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "向一位没看原文的听众介绍所选部分，提供足够背景但不补未核城名或物种名。",
+          "answer": "对象和特点可理解，原文给到哪里说到哪里，未知保留。",
+          "analysis": "对象和特点可理解，原文给到哪里说到哪里，未知保留。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-selected-xisha-introduction-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "如果尚未实际介绍，录音做一次练习并如实报告是否已有真实听众。",
+          "answer": "练习录音可留，不能自动写已向同伴完成正式交流或编回应。",
+          "analysis": "练习录音可留，不能自动写已向同伴完成正式交流或编回应。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-selected-xisha-introduction-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本次重新介绍喜欢部分，标出刚看稿和得到提示的信息。",
+          "answer": "本人原音与帮助保留，熟悉段复述不自动成为未见迁移或保持。",
+          "analysis": "本人原音与帮助保留，熟悉段复述不自动成为未见迁移或保持。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "xisha",
+      "atomId": "source:chinese:g3:02915a7d:xisha-picture-writing",
+      "structure": "one-picture-concrete-description",
+      "familyProposal": "following-one-picture-concrete-description",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "明确选择原页一幅图",
+          "weight": 0.4
+        },
+        {
+          "criterion": "具体细节受该图约束",
+          "weight": 0.4
+        },
+        {
+          "criterion": "想象与未知不冒充看见",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "任选鱼群、海底生物、海龟或海鸟画面之一，颜色形态位置活动按实际所选图，不强制四图全写。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "xisha-one-picture-concrete-description-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "打开准确原页四图，选一幅编号后写几句话，至少给两处确能看到的细节。",
+          "answer": "任选鱼群、海底生物、海龟或海鸟画面之一，颜色形态位置活动按实际所选图，不强制四图全写。",
+          "analysis": "任选鱼群、海底生物、海龟或海鸟画面之一，颜色形态位置活动按实际所选图，不强制四图全写。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-one-picture-concrete-description-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先列看见与想象两栏，再把所选图中相关细节连成几句话。",
+          "answer": "能见与推想分清，前后围绕同一图，猜出的种名或数量不当已见事实。",
+          "analysis": "能见与推想分清，前后围绕同一图，猜出的种名或数量不当已见事实。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-one-picture-concrete-description-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创图卡只画三条黄鱼在石旁游动。写两句并说明卡片没有证明什么。",
+          "answer": "黄鱼、石旁、游动可描述；图形不证明真实西沙调查、确切物种或所有鱼习性。",
+          "analysis": "黄鱼、石旁、游动可描述；图形不证明真实西沙调查、确切物种或所有鱼习性。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-one-picture-concrete-description-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "同伴说必须写全部四图才合格，怎样按原要求说明并完成自己所选的一幅？",
+          "answer": "原页任选一幅，几句话需具体，数量不增加为四幅必交。",
+          "analysis": "原页任选一幅，几句话需具体，数量不增加为四幅必交。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-one-picture-concrete-description-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "所选图若看不清生物名称，怎样写具体又不编造？",
+          "answer": "可以描述看得见的颜色形态位置，名称留未知，不为显得专业硬填物种。",
+          "analysis": "可以描述看得见的颜色形态位置，名称留未知，不为显得专业硬填物种。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-one-picture-concrete-description-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "检查自己图写中的一个像字表达，说明哪里相似、哪里不是实物事实。",
+          "answer": "比喻有可见相似处，不能据鱼像扇子证明鱼真有扇叶器官；不使用比喻也可写具体。",
+          "analysis": "比喻有可见相似处，不能据鱼像扇子证明鱼真有扇叶器官；不使用比喻也可写具体。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-one-picture-concrete-description-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新选一幅自己确实看到的图写几句，说明是否看过示范和未能确认的信息。",
+          "answer": "所选图与文字有对应，帮助与未知保留，旧图重复不自动成为未见保持材料。",
+          "analysis": "所选图与文字有对应，帮助与未知保留，旧图重复不自动成为未见保持材料。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "xisha",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "xisha-features-figures-and-source",
+      "familyProposal": "following-xisha-features-figures-and-source",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "具体信息支持优美或丰富",
+          "weight": 0.4
+        },
+        {
+          "criterion": "修辞和来源身份清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未知数据与本人经历不编",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "海水颜色等支持景色，生物种类成群等支持物产，判断关系具体而非空泛评价。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "xisha-xisha-features-figures-and-source-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "各用一项课内细节说明优美与丰富，为什么不能只写都很好？",
+          "answer": "海水颜色等支持景色，生物种类成群等支持物产，判断关系具体而非空泛评价。",
+          "analysis": "海水颜色等支持景色，生物种类成群等支持物产，判断关系具体而非空泛评价。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-features-figures-and-source-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "一半水一半鱼能推出水鱼体积各50%吗？说明当前语境。",
+          "answer": "不能，是夸张突出鱼多，原段没给实测方法样本体积。",
+          "analysis": "不能，是夸张突出鱼多，原段没给实测方法样本体积。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-features-figures-and-source-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡说树上鸟多得像星星。能据此计算鸟数等于星数吗？",
+          "answer": "不能，比喻夸张突出数量感受，卡没给测量数据，原课与新卡身份分清。",
+          "analysis": "不能，比喻夸张突出数量感受，卡没给测量数据，原课与新卡身份分清。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-features-figures-and-source-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "摄影孟峻颖是否就是文章作者？当前原件怎样署来源？",
+          "answer": "摄影署名不代作者；文章选自旧人教课本有改动，没有具名作者，不凭姓名猜。",
+          "analysis": "摄影署名不代作者；文章选自旧人教课本有改动，没有具名作者，不凭姓名猜。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-features-figures-and-source-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "珊瑚像花鹿角能证明珊瑚是花或鹿角吗？本课支持的相似是什么？",
+          "answer": "不能，外形形态相似不等生物类别或真实器物；不扩大成完整分类知识考核。",
+          "analysis": "不能，外形形态相似不等生物类别或真实器物；不扩大成完整分类知识考核。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-features-figures-and-source-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "海水颜色段给的深浅说明可以当所有海洋颜色完整机制吗？",
+          "answer": "当前是课文所给条件，不能据单段排除其他因素或宣称完整科学模型。",
+          "analysis": "当前是课文所给条件，不能据单段排除其他因素或宣称完整科学模型。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xisha-xisha-features-figures-and-source-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "分别列当前一项课文信息、一项修辞表达和一个仍不知道的数量，注明依据。",
+          "answer": "三者身份清楚，未给测量和本人游历不由想象填满。",
+          "analysis": "三者身份清楚，未给测量和本人游历不由想象填满。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "seaside",
+      "atomId": "source:chinese:g3:02915a7d:seaside-scene-organization",
+      "structure": "seaside-scenes-and-main-sentences",
+      "familyProposal": "following-seaside-scenes-and-main-sentences",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "景象地点时段和特点对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "重要句与相关细节连接",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不机械首句或混地点",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "各处信息对应，海滨小城美丽整洁由颜色活动树花和干净街道等支持，不串错地点。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "seaside-seaside-scenes-and-main-sentences-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "按大海沙滩庭院公园街道整理各一项特点，说明结尾概括怎样与它们相连。",
+          "answer": "各处信息对应，海滨小城美丽整洁由颜色活动树花和干净街道等支持，不串错地点。",
+          "analysis": "各处信息对应，海滨小城美丽整洁由颜色活动树花和干净街道等支持，不串错地点。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-scenes-and-main-sentences-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "选一段找重要句，再连接两处具体信息，说明它概括的范围。",
+          "answer": "如庭院树多与列树、公园美与榕树石凳、街道美与铺面整洁；关系比句子位置重要。",
+          "analysis": "如庭院树多与列树、公园美与榕树石凳、街道美与铺面整洁；关系比句子位置重要。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-scenes-and-main-sentences-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创段先写树阴石凳活动，末尾说公园真美。重要句一定在开头吗？",
+          "answer": "末句可概括前面景物，位置可变；新卡不是原课逐字段落。",
+          "analysis": "末句可概括前面景物，位置可变；新卡不是原课逐字段落。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-scenes-and-main-sentences-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "同是颜色描写，蓝色海天和早晨金黄色怎样避免自相矛盾的误读？",
+          "answer": "观察条件不同，早晨朝阳带来金色感受，不宣称物体本色或材质都改变。",
+          "analysis": "观察条件不同，早晨朝阳带来金色感受，不宣称物体本色或材质都改变。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-scenes-and-main-sentences-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "把庭院凤凰花放入街道铺面说明，当前哪里不合适？",
+          "answer": "地点对象不对应，除非另给真实联系；组织须依据原段，而非随便堆美景。",
+          "analysis": "地点对象不对应，除非另给真实联系；组织须依据原段，而非随便堆美景。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-scenes-and-main-sentences-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "海滩何时由较静到喧闹？用前后信息解释而不只贴热闹标签。",
+          "answer": "归船靠岸带来活动变化，前后时序支持，不把全天永远同一状态当事实。",
+          "analysis": "归船靠岸带来活动变化，前后时序支持，不把全天永远同一状态当事实。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-scenes-and-main-sentences-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用自己的话介绍一种景象，说明特点和一条支持信息，再列未知。",
+          "answer": "地点时段清楚，重要句与细节对应，未知具体城名或数据不补。",
+          "analysis": "地点时段清楚，重要句与细节对应，未知具体城名或数据不补。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "seaside",
+      "atomId": "source:chinese:g3:02915a7d:seaside-copy-exchange",
+      "structure": "seaside-own-copy-and-exchange",
+      "familyProposal": "following-seaside-own-copy-and-exchange",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人实际抄写对应原文所选句",
+          "weight": 0.4
+        },
+        {
+          "criterion": "喜欢理由有具体表达依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "实际交流与准备分别记录",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "原稿与原句可核，喜欢理由可接色彩、比较或组织，实际分享状态不能由示例补。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "seaside-seaside-own-copy-and-exchange-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "选确在原文的一句好句，本人实际抄写上传，再说明喜欢哪里及是否实际交流。",
+          "answer": "原稿与原句可核，喜欢理由可接色彩、比较或组织，实际分享状态不能由示例补。",
+          "analysis": "原稿与原句可核，喜欢理由可接色彩、比较或组织，实际分享状态不能由示例补。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "seaside-seaside-own-copy-and-exchange-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把所选句与本人抄写逐字核对，有实际订正则保留原改，没有不造错。",
+          "answer": "抄写准确和表达理由分别看，清稿不倒造修改过程。",
+          "analysis": "抄写准确和表达理由分别看，清稿不倒造修改过程。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "seaside-seaside-own-copy-and-exchange-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "先比较两句明确原创描写的表达效果，再回课文选句实际抄写，区分材料身份。",
+          "answer": "原创对照练方法，不代原课选句；本人真实书写仍需原稿。",
+          "analysis": "原创对照练方法，不代原课选句；本人真实书写仍需原稿。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "seaside-seaside-own-copy-and-exchange-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "上传本次实际抄写，标明看原文帮助，并说为什么看文抄写不等默写。",
+          "answer": "抄写本就看文，状态如实；不额外变成本课没有的全文默写任务。",
+          "analysis": "抄写本就看文，状态如实；不额外变成本课没有的全文默写任务。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "seaside-seaside-own-copy-and-exchange-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若还未和同伴交流，上传已完成抄写并报告剩余步骤，不编听众回应。",
+          "answer": "已做与待做分别记录，缺真实交流不能用计划补满。",
+          "analysis": "已做与待做分别记录，缺真实交流不能用计划补满。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "seaside-seaside-own-copy-and-exchange-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "向真实听众读所选句并说明理由，上传原稿和如实交流摘要。",
+          "answer": "听众回应仅记实际发生，理由不要求统一答案，声音交流与原稿各自可核。",
+          "analysis": "听众回应仅记实际发生，理由不要求统一答案，声音交流与原稿各自可核。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "seaside-seaside-own-copy-and-exchange-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新选择一句确在文中的好句实际抄写，说明与之前句子喜欢理由是否不同。",
+          "answer": "本次原稿与具体理由对应，重复熟悉句不自动成为新未见理解或保持。",
+          "analysis": "本次原稿与具体理由对应，重复熟悉句不自动成为新未见理解或保持。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 300
+        }
+      ]
+    },
+    {
+      "lesson": "seaside",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "seaside-context-figures-and-unknowns",
+      "familyProposal": "following-seaside-context-figures-and-unknowns",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前细节支持解释",
+          "weight": 0.4
+        },
+        {
+          "criterion": "拟人比喻和实际事实分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "地名时段与未知如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "早晨朝阳带来视觉色彩，金黄色描写不是实际材料镀层实验。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "seaside-seaside-context-figures-and-unknowns-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "为什么朝阳下镀金不能理解为所有物体真的包金属？指出条件。",
+          "answer": "早晨朝阳带来视觉色彩，金黄色描写不是实际材料镀层实验。",
+          "analysis": "早晨朝阳带来视觉色彩，金黄色描写不是实际材料镀层实验。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-context-figures-and-unknowns-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "贝壳寂寞、榕树大伞和凤凰花红云，各给一项表达关系与不能当真的地方。",
+          "answer": "拟人心理、树冠遮蔽与伞、花色成片与云是文学表达，不证明贝壳有人的感受或真伞真云。",
+          "analysis": "拟人心理、树冠遮蔽与伞、花色成片与云是文学表达，不证明贝壳有人的感受或真伞真云。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-context-figures-and-unknowns-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡说晚霞给白墙披红衣。区分真实对象、光色和联想。",
+          "answer": "白墙与晚霞光色有卡片依据，红衣是拟人比较，不推墙真穿衣或改变材料。",
+          "analysis": "白墙与晚霞光色有卡片依据，红衣是拟人比较，不推墙真穿衣或改变材料。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-context-figures-and-unknowns-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "当前课文给到广东，能凭熟悉作者的其他资料直接填本课具体城名吗？",
+          "answer": "不能把未在当前材料核实的外部信息冒充原文，具体城名保持未知或另核来源。",
+          "analysis": "不能把未在当前材料核实的外部信息冒充原文，具体城名保持未知或另核来源。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-context-figures-and-unknowns-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "公园树冠像伞能证明这里从来不下雨或完全不透光吗？",
+          "answer": "不能，比较支持形状遮蔽等感受，不提供全年气象或绝对物理测量。",
+          "analysis": "不能，比较支持形状遮蔽等感受，不提供全年气象或绝对物理测量。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-context-figures-and-unknowns-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "为什么原文中初夏香味和朝阳色彩不能不加条件推广全年所有时刻？",
+          "answer": "季节时段是材料限制，不能省略后扩大结论范围。",
+          "analysis": "季节时段是材料限制，不能省略后扩大结论范围。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "seaside-seaside-context-figures-and-unknowns-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "列一项直接描写、一项有据联想和一件本人尚未完成的朗读摘抄，保留来源。",
+          "answer": "材料身份和本人活动范围清楚，不由范例补本人记录。",
+          "analysis": "材料身份和本人活动范围清楚，不由范例补本人记录。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "xiaoxingan",
+      "atomId": "source:chinese:g3:02915a7d:xiaoxingan-word-choice",
+      "structure": "forest-word-choice-in-context",
+      "familyProposal": "following-forest-word-choice-in-context",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "抽浸与对象语境对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "能说明画面表达关系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不套另义或机械固定标签",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "抽出表现新枝生长动态，浸表现森林被浓雾包围的画面，不是人拔枝或整片泡水。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "xiaoxingan-forest-word-choice-in-context-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "联系春天枝条新生与夏天浓雾，分别说明抽出和浸带来的画面。",
+          "answer": "抽出表现新枝生长动态，浸表现森林被浓雾包围的画面，不是人拔枝或整片泡水。",
+          "analysis": "抽出表现新枝生长动态，浸表现森林被浓雾包围的画面，不是人拔枝或整片泡水。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-forest-word-choice-in-context-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把抽出换成长出比较，能否只说都是一样或必须一个词永远最好？",
+          "answer": "基本生长关系可相近，抽更突出动态；表达比较看当前画面，不宣布任何语境一个词都最好。",
+          "analysis": "基本生长关系可相近，抽更突出动态；表达比较看当前画面，不宣布任何语境一个词都最好。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-forest-word-choice-in-context-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创句“晨雾罩着小院”。与森林浸在浓雾里的画面比较，指出共同和不同对象。",
+          "answer": "都可表现雾包围，院与森林、具体条件不同；不能把雾当液态水淹没。",
+          "analysis": "都可表现雾包围，院与森林、具体条件不同；不能把雾当液态水淹没。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-forest-word-choice-in-context-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "为什么浸在这里不能套成洗衣服泡水的操作？",
+          "answer": "对象是森林与浓雾，前后描写约束词义，文学画面不代实际浸泡过程。",
+          "analysis": "对象是森林与浓雾，前后描写约束词义，文学画面不代实际浸泡过程。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-forest-word-choice-in-context-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "抽出新枝能推出生长精确几厘米每分钟吗？还缺什么？",
+          "answer": "不能，动态词不提供时间长度测量，量化条件未知。",
+          "analysis": "不能，动态词不提供时间长度测量，量化条件未知。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-forest-word-choice-in-context-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只背生动形象四字，足够解释抽浸好吗？请补具体对象和关系。",
+          "answer": "要说新枝生长、浓雾包围等当前画面，标签不代语境解释。",
+          "analysis": "要说新枝生长、浓雾包围等当前画面，标签不代语境解释。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-forest-word-choice-in-context-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选一处课内用词，用自己的话说明对象、条件和表达作用，保留未知。",
+          "answer": "解释与原句相容，可有不同措辞，不补未核生态因果或测量。",
+          "analysis": "解释与原句相容，可有不同措辞，不补未核生态因果或测量。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "xiaoxingan",
+      "atomId": "source:chinese:g3:02915a7d:xiaoxingan-season-structure",
+      "structure": "four-seasons-and-double-summary",
+      "familyProposal": "following-four-seasons-and-double-summary",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "季节与当前细节配对",
+          "weight": 0.4
+        },
+        {
+          "criterion": "花园宝库由对应信息支持",
+          "weight": 0.4
+        },
+        {
+          "criterion": "偏好可不同，选做不升必做",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "季节信息不串位，景色支持花园、物产支持宝库，两意可不同细节支撑。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "xiaoxingan-four-seasons-and-double-summary-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "按春夏秋冬各给一项确在课文的细节，再各举一项支持花园与宝库。",
+          "answer": "季节信息不串位，景色支持花园、物产支持宝库，两意可不同细节支撑。",
+          "analysis": "季节信息不串位，景色支持花园、物产支持宝库，两意可不同细节支撑。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-four-seasons-and-double-summary-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "选择一个想了解的季节并给课内理由；为什么不能只接受老师选的季节？",
+          "answer": "春新生、夏荫花、秋物产、冬雪等有据偏好可不同，评价依据联系而非相同选项。",
+          "analysis": "春新生、夏荫花、秋物产、冬雪等有据偏好可不同，评价依据联系而非相同选项。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-four-seasons-and-double-summary-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡按雨季旱季写草地变化。应照搬春夏秋冬四格吗？",
+          "answer": "按新卡实际季节条件整理，方法可变，不能硬凑未给四季细节。",
+          "analysis": "按新卡实际季节条件整理，方法可变，不能硬凑未给四季细节。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-four-seasons-and-double-summary-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "秋天白桦栎树和松柏有何不同？这怎样提醒我们不能说所有树叶都黄？",
+          "answer": "前者变黄、后者显苍翠，原文对照限制全部泛化。",
+          "analysis": "前者变黄、后者显苍翠，原文对照限制全部泛化。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-four-seasons-and-double-summary-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "冬段几种动物表现相同吗？用两种对照说明而不推出所有动物冬眠。",
+          "answer": "黑熊冬眠、紫貂捕兔、松鼠储食等不同，当前个例不充全部动物规则。",
+          "analysis": "黑熊冬眠、紫貂捕兔、松鼠储食等不同，当前个例不充全部动物规则。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-four-seasons-and-double-summary-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "家乡哪个季节美写一段是所有人必须交吗？当前旅游季节问答又看什么？",
+          "answer": "原页家乡写段明确选做；季节问答需课文理由，不强制实际旅行。",
+          "analysis": "原页家乡写段明确选做；季节问答需课文理由，不强制实际旅行。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-four-seasons-and-double-summary-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用两项不同细节解释结尾花园和宝库，标出自己当前未完成的选做活动。",
+          "answer": "景美与物产各有依据，选做未选不记必做失败，不能用范文充本人经历。",
+          "analysis": "景美与物产各有依据，选做未选不记必做失败，不能用范文充本人经历。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "xiaoxingan",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "forest-evidence-metaphor-and-scope",
+      "familyProposal": "following-forest-evidence-metaphor-and-scope",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前课文信息支持判断",
+          "weight": 0.4
+        },
+        {
+          "criterion": "文学联想与生态范围清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未知作者和实际活动不编",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能，连片绿色与景美物产等支持联想，实际对象仍是森林，不能当真实海水库房。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "xiaoxingan-forest-evidence-metaphor-and-scope-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "森林像绿色海洋、又称花园宝库，能否都理解成实物建筑或海水？",
+          "answer": "不能，连片绿色与景美物产等支持联想，实际对象仍是森林，不能当真实海水库房。",
+          "analysis": "不能，连片绿色与景美物产等支持联想，实际对象仍是森林，不能当真实海水库房。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-forest-evidence-metaphor-and-scope-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原件有没有具名文章作者？怎样准确写来源而不猜姓名？",
+          "answer": "当前选自旧人教全日制十年制小学课本语文第六册，无具名作者，保留实际来源。",
+          "analysis": "当前选自旧人教全日制十年制小学课本语文第六册，无具名作者，保留实际来源。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-forest-evidence-metaphor-and-scope-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡说果园是天然仓库。能据此证明有建筑仓房或允许采食所有野果吗？",
+          "answer": "不能，比喻不代建筑事实或安全许可，卡没给食用判断和活动授权。",
+          "analysis": "不能，比喻不代建筑事实或安全许可，卡没给食用判断和活动授权。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-forest-evidence-metaphor-and-scope-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "课文列蘑菇药材是否就是要求学生亲自采食验证？",
+          "answer": "不是，阅读物产信息不转为采食或药用操作，未知种类安全条件不补。",
+          "analysis": "不是，阅读物产信息不转为采食或药用操作，未知种类安全条件不补。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-forest-evidence-metaphor-and-scope-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "小鹿欣赏影子和松鼠看春天的表达，能当已完成动物心理实验吗？",
+          "answer": "不能，文学拟人有表达身份，不等已测心理动机或适用于所有动物。",
+          "analysis": "不能，文学拟人有表达身份，不等已测心理动机或适用于所有动物。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-forest-evidence-metaphor-and-scope-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "对同一旅游季节偏好，两位学生给不同有据理由，可以都合理吗？",
+          "answer": "可以，偏好与具体内容联系清楚即可，不把老师喜好当唯一答案。",
+          "analysis": "可以，偏好与具体内容联系清楚即可，不把老师喜好当唯一答案。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "xiaoxingan-forest-evidence-metaphor-and-scope-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "列一项当前细节、一项概括比喻、一项自己仍未实际完成的朗读，分别说明。",
+          "answer": "信息身份与实际声音范围清楚，未完成不由模板或范声代填。",
+          "analysis": "信息身份与实际声音范围清楚，未完成不由模板或范声代填。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "beautiful-place-writing",
+      "atomId": "source:chinese:g3:02915a7d:beautiful-place-observation",
+      "structure": "own-place-observation-notes",
+      "familyProposal": "following-own-place-observation-notes",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "对象和特点具体可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人观察与虚构训练分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不补行程地址或未见细节",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "本人实际对象和颜色形态位置等对应，未观察就用标明原创卡训练并留本人观察待做。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "beautiful-place-writing-own-place-observation-notes-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "选择身边一处自己确实观察到的地方，列有什么和什么样，说明观察来源。",
+          "answer": "本人实际对象和颜色形态位置等对应，未观察就用标明原创卡训练并留本人观察待做。",
+          "analysis": "本人实际对象和颜色形态位置等对应，未观察就用标明原创卡训练并留本人观察待做。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-own-place-observation-notes-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把观察笔记分对象特点条件三栏，再选两条最能支持想介绍的美。",
+          "answer": "笔记具体且受实际条件约束，喜欢理由不靠复制范文，未知不填。",
+          "analysis": "笔记具体且受实际条件约束，喜欢理由不靠复制范文，未知不填。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-own-place-observation-notes-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡仅给窗边三盆绿叶和一朵黄花。列能写与暂不知道的信息。",
+          "answer": "可写位置数量颜色，不能编花香、本人到访或植物确切名称，卡片是虚构训练。",
+          "analysis": "可写位置数量颜色，不能编花香、本人到访或植物确切名称，卡片是虚构训练。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-own-place-observation-notes-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "如果记不清当时颜色，怎样保留观察而不凭想象填确定？",
+          "answer": "承认不清，可在可行时重新观察或只写确定细节，不能代填本人已看清。",
+          "analysis": "承认不清，可在可行时重新观察或只写确定细节，不能代填本人已看清。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-own-place-observation-notes-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "同伴要求公开具体住址证明观察，完成此写景练习真的需要吗？",
+          "answer": "无需公开详细住址，可用普通方位与景物记录说明，不把隐私披露设为质量条件。",
+          "analysis": "无需公开详细住址，可用普通方位与景物记录说明，不把隐私披露设为质量条件。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-own-place-observation-notes-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "从两条实际笔记中选相关的一条，说明为什么更支持自己的主要意思。",
+          "answer": "选择与意思有具体关系，材料和本人状态真实，不拿词数多代关联。",
+          "analysis": "选择与意思有具体关系，材料和本人状态真实，不拿词数多代关联。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-own-place-observation-notes-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用本次新的真实观察或明确原创卡补两条细节，标帮助和未确认处。",
+          "answer": "来源身份、当前条件和未知保留，旧示例不换名充本人实际观察。",
+          "analysis": "来源身份、当前条件和未知保留，旧示例不换名充本人实际观察。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "beautiful-place-writing",
+      "atomId": "source:chinese:g3:02915a7d:beautiful-place-paragraph",
+      "structure": "one-idea-linked-scenery-writing",
+      "familyProposal": "following-one-idea-linked-scenery-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "一个主要意思清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "具体细节支持同一意思",
+          "weight": 0.4
+        },
+        {
+          "criterion": "词句贴合，不强制模板字数",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可写颜色丰富、安静等，细节与意思相连，不靠一句真美后堆无关内容。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "beautiful-place-writing-one-idea-linked-scenery-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "选一个主要意思，用两三条相关景物细节写一段；说明每条怎样支持它。",
+          "answer": "可写颜色丰富、安静等，细节与意思相连，不靠一句真美后堆无关内容。",
+          "analysis": "可写颜色丰富、安静等，细节与意思相连，不靠一句真美后堆无关内容。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-one-idea-linked-scenery-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创初稿写花圃多彩又插一句书包颜色。围绕花圃多彩应怎样处理？",
+          "answer": "花叶色彩支持主题，书包当前无关可删或另放，不因也有颜色就硬并。",
+          "analysis": "花叶色彩支持主题，书包当前无关可删或另放，不因也有颜色就硬并。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-one-idea-linked-scenery-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡写小河水清能见石子、岸边树影。围绕水清写几句，不照搬花圃词。",
+          "answer": "细节来自新卡，水清与可见水下石子等关系具体，不能无据加香甜狂欢。",
+          "analysis": "细节来自新卡，水清与可见水下石子等关系具体，不能无据加香甜狂欢。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-one-idea-linked-scenery-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原页列十二词和三个开头，是否必须全用、统一字数或标题？",
+          "answer": "是可用示例，按材料选择，当前页没有统一字数标题硬要求，不加任务。",
+          "analysis": "是可用示例，按材料选择，当前页没有统一字数标题硬要求，不加任务。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-one-idea-linked-scenery-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "写了开头真美是否就一定围绕一个意思？检查后文两项相关性。",
+          "answer": "须看细节支持关系，开头形式不代理解与组织，无关信息需说明或调整。",
+          "analysis": "须看细节支持关系，开头形式不代理解与组织，无关信息需说明或调整。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-one-idea-linked-scenery-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "不用比喻或华丽词，能否通过具体颜色位置活动把一处景写清？给例说明。",
+          "answer": "可以，具体贴切与相关是重点，修辞非固定数量门槛，例子身份标明。",
+          "analysis": "可以，具体贴切与相关是重点，修辞非固定数量门槛，例子身份标明。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-one-idea-linked-scenery-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "回看本人当前段落，圈主要意思，列相关细节和仍需改的一处；没有问题不造错。",
+          "answer": "本人原稿与检查有对应，判断受当前内容支持，示例不充本人已写。",
+          "analysis": "本人原稿与检查有对应，判断受当前内容支持，示例不充本人已写。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "beautiful-place-writing",
+      "atomId": "source:chinese:g3:02915a7d:beautiful-place-revision",
+      "structure": "own-draft-reading-and-revision",
+      "familyProposal": "following-own-draft-reading-and-revision",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "本人初稿与读后检查真实",
+          "weight": 0.4
+        },
+        {
+          "criterion": "实际改动原改对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不为留痕造错或用清稿倒造",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "检查来自本人当前原稿，改动可追溯，没有问题不为数量造错。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "beautiful-place-writing-own-draft-reading-and-revision-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "保留本人初稿，读后列实际需改错字或不清之处，给原改对照；无错如实写。",
+          "answer": "检查来自本人当前原稿，改动可追溯，没有问题不为数量造错。",
+          "analysis": "检查来自本人当前原稿，改动可追溯，没有问题不为数量造错。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-own-draft-reading-and-revision-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创练习句“公圆旁的小花很美”若写公园，怎样保留订正而不声称本人曾写错？",
+          "answer": "练习把公圆改公园，明确这是给定虚构错例；本人原稿订正须另有实际证据。",
+          "analysis": "练习把公圆改公园，明确这是给定虚构错例；本人原稿订正须另有实际证据。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-own-draft-reading-and-revision-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创段有两个互不相关主题，先确定主要意思再提出一项实际调整。",
+          "answer": "调整与当前主题有关，虚构修改练习不变本人生活初稿，说明不代实际实施。",
+          "analysis": "调整与当前主题有关，虚构修改练习不变本人生活初稿，说明不代实际实施。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-own-draft-reading-and-revision-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只有最终清稿，能否据此生成三次先前错字修改历史？",
+          "answer": "不能，缺初稿就保留缺口，不倒造过程；仍可对现稿做真实检查。",
+          "analysis": "不能，缺初稿就保留缺口，不倒造过程；仍可对现稿做真实检查。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-own-draft-reading-and-revision-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "读后发现一字不确定但未查证，怎样记录而不直接判本人已改对？",
+          "answer": "保留疑问、查证来源与后续改动，未完成不提前记完成。",
+          "analysis": "保留疑问、查证来源与后续改动，未完成不提前记完成。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-own-draft-reading-and-revision-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "若实际初稿无错字但有一处位置不清，可以怎样提高表达并保留原改？",
+          "answer": "可补必要位置说明等真实改动，不强求每次一定有错别字，质量不按错误数计。",
+          "analysis": "可补必要位置说明等真实改动，不强求每次一定有错别字，质量不按错误数计。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-own-draft-reading-and-revision-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本次本人读稿后实际修订，分别列已改、未改和帮助；没有改动说明检查结果。",
+          "answer": "原稿状态与实际操作一致，不能把教师示例或模型输出当本人修改过程。",
+          "analysis": "原稿状态与实际操作一致，不能把教师示例或模型输出当本人修改过程。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "beautiful-place-writing",
+      "atomId": "source:chinese:g3:02915a7d:beautiful-place-sharing",
+      "structure": "real-sharing-of-place-writing",
+      "familyProposal": "following-real-sharing-of-place-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人实际读稿与内容对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "真实听众与完成状态清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不编同伴回应或把准备当完成",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "本人当前声音与稿件一致，独自录音和已向听众分享状态分开。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "beautiful-place-writing-real-sharing-of-place-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人读出自己写的一段，说明是否已实际分享给同学等真实听众。",
+          "answer": "本人当前声音与稿件一致，独自录音和已向听众分享状态分开。",
+          "analysis": "本人当前声音与稿件一致，独自录音和已向听众分享状态分开。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-real-sharing-of-place-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "准备一句介绍主要景物的话，再实际读稿；分别报告准备和分享完成到哪里。",
+          "answer": "准备可帮助组织，只有实际发生的交流记已做，不从计划推完成。",
+          "analysis": "准备可帮助组织，只有实际发生的交流记已做，不从计划推完成。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-real-sharing-of-place-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "对明确原创景物卡做口头介绍练习，说明它为何不代自己真实观察的分享。",
+          "answer": "卡片是训练材料，本人观察与习作分享另留待做，不换名当经历。",
+          "analysis": "卡片是训练材料，本人观察与习作分享另留待做，不换名当经历。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-real-sharing-of-place-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "若听众实际问哪里看得出美，录音用稿内细节回应；没有问题不编对话。",
+          "answer": "回应有当前内容依据，真实问题和假设练习分开，不虚构同伴行为。",
+          "analysis": "回应有当前内容依据，真实问题和假设练习分开，不虚构同伴行为。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-real-sharing-of-place-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "实际分享后只收到一句听清了，能填所有人都赞美每处细节吗？",
+          "answer": "不能，按真实回应范围记录，不扩大他人评价来证明质量。",
+          "analysis": "不能，按真实回应范围记录，不扩大他人评价来证明质量。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-real-sharing-of-place-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "尚未找到听众时做一次读稿练习，并如实记录待分享。",
+          "answer": "练习本人原音可留，不冒充实际同伴活动完成，也不要求编身份。",
+          "analysis": "练习本人原音可留，不冒充实际同伴活动完成，也不要求编身份。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-real-sharing-of-place-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本次重新分享或练读，标听众状态、所用帮助和自己仍需核对处。",
+          "answer": "本人当前声音和实际状态可核，参考音不代本人，重复原稿不自动成未见保持。",
+          "analysis": "本人当前声音和实际状态可核，参考音不代本人，重复原稿不自动成未见保持。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "beautiful-place-writing",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "writing-source-process-and-evidence",
+      "familyProposal": "following-writing-source-process-and-evidence",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "细节与判断可对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "示例本人观察修改分享分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "缺口不由模板参考代填",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "细节让读者形成具体画面并理解评价来自哪里，空泛评价不显示所见特征。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "beautiful-place-writing-writing-source-process-and-evidence-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "为什么两项具体景物细节比只写非常美更能说明你的发现？举当前稿内依据。",
+          "answer": "细节让读者形成具体画面并理解评价来自哪里，空泛评价不显示所见特征。",
+          "analysis": "细节让读者形成具体画面并理解评价来自哪里，空泛评价不显示所见特征。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-writing-source-process-and-evidence-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "观察、初稿、修改和分享四步中只完成初稿，怎样准确记录？",
+          "answer": "初稿已做，其余看实际记录，未做保留待做；不能用范文和计划填满。",
+          "analysis": "初稿已做，其余看实际记录，未做保留待做；不能用范文和计划填满。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-writing-source-process-and-evidence-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡说花有红黄两色，却未写香味。能写自己闻到香甜吗？",
+          "answer": "不能冒充本人感官经历，想象可另标虚构；卡内确给颜色才作依据。",
+          "analysis": "不能冒充本人感官经历，想象可另标虚构；卡内确给颜色才作依据。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-writing-source-process-and-evidence-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "所有示例词都用上是否自动证明围绕一个意思？说明需核什么。",
+          "answer": "不自动，需看词义是否贴合景物、各句怎样服务同一意思，而非词数量。",
+          "analysis": "不自动，需看词义是否贴合景物、各句怎样服务同一意思，而非词数量。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-writing-source-process-and-evidence-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "老师给了一篇范文，能否当本人观察和本人修改的原始记录？",
+          "answer": "范文是帮助来源，不能代本人经历、初稿或实际订正，曝光与本人产物分开。",
+          "analysis": "范文是帮助来源，不能代本人经历、初稿或实际订正，曝光与本人产物分开。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-writing-source-process-and-evidence-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "同伴对同一景物感受不同，是否只能保留统一好看说法？",
+          "answer": "有细节依据的合理感受可不同，写作介绍需贴合材料，不强统一评价。",
+          "analysis": "有细节依据的合理感受可不同，写作介绍需贴合材料，不强统一评价。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "beautiful-place-writing-writing-source-process-and-evidence-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "分别列一项当前具体事实、一项个人感受和一步仍待完成的行动，说明依据。",
+          "answer": "事实感受行动身份清楚，未知和未做如实，不以文字齐全代过程证据。",
+          "analysis": "事实感受行动身份清楚，未知和未做如实，不以文字齐全代过程证据。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "garden-six",
+      "atomId": "source:chinese:g3:02915a7d:garden-six-reading",
+      "structure": "garden-six-contextual-word-reading",
+      "familyProposal": "following-garden-six-contextual-word-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人本次声音覆盖当前目标",
+          "weight": 0.4
+        },
+        {
+          "criterion": "语境读音与当前词义相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "缺项帮助与订正真实保留",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "蝌kē蚪dǒu蛾é鲤lǐ鲫jì鲨shā；按本人当前声音核覆盖，不由词数等同字数。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "garden-six-garden-six-contextual-word-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录音读“蝌蚪、飞蛾、鲤鱼、鲫鱼、鲨鱼”，逐字说明当前目标覆盖；文字拼音不代实际声音。",
+          "answer": "蝌kē蚪dǒu蛾é鲤lǐ鲫jì鲨shā；按本人当前声音核覆盖，不由词数等同字数。",
+          "analysis": "蝌kē蚪dǒu蛾é鲤lǐ鲫jì鲨shā；按本人当前声音核覆盖，不由词数等同字数。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-garden-six-contextual-word-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“蝌蚪、飞蛾、鲤鱼、鲫鱼、鲨鱼”分两组实际读出，标一处需要核对的读音，没问题不造错。",
+          "answer": "蝌kē蚪dǒu蛾é鲤lǐ鲫jì鲨shā；两组声音合并核覆盖，原音和订正后分开。",
+          "analysis": "蝌kē蚪dǒu蛾é鲤lǐ鲫jì鲨shā；两组声音合并核覆盖，原音和订正后分开。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-garden-six-contextual-word-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "给目标字各配一个新的合理词语实际录音，再补尚未覆盖目标。",
+          "answer": "新词语义与读音相容，当前目标全部逐字核；新词不保证自动形成未见独立题族。",
+          "analysis": "新词语义与读音相容，当前目标全部逐字核；新词不保证自动形成未见独立题族。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-garden-six-contextual-word-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次逐字读全当前目标，说明刚看过原页或听过示范的部分。",
+          "answer": "本人本次声音可核，原词重复与帮助曝光保留，不恢复未见资格。",
+          "analysis": "本人本次声音可核，原词重复与帮助曝光保留，不恢复未见资格。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-garden-six-contextual-word-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "选择一个确实不稳的目标查证后实际录音；如都稳则正常读全，不造错。",
+          "answer": "查证依据与实际声音分别看，解释会查不代发音正确，其余未做保留。",
+          "analysis": "查证依据与实际声音分别看，解释会查不代发音正确，其余未做保留。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-garden-six-contextual-word-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只读你本次实际完成的词，列未覆盖目标与帮助，不拿旧音补齐。",
+          "answer": "本次覆盖和未完成如实，分次允许但不能把教师示范当本人声音。",
+          "analysis": "本次覆盖和未完成如实，分次允许但不能把教师示范当本人声音。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-garden-six-contextual-word-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新实际录全表，说明哪一字因语境需特别核对。",
+          "answer": "蝌kē蚪dǒu蛾é鲤lǐ鲫jì鲨shā；说明和声音对应，不能只打拼音或自报都认识。",
+          "analysis": "蝌kē蚪dǒu蛾é鲤lǐ鲫jì鲨shā；说明和声音对应，不能只打拼音或自报都认识。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "garden-six",
+      "atomId": "source:chinese:g3:02915a7d:garden-six-radicals",
+      "structure": "radical-clues-without-taxonomy-collapse",
+      "familyProposal": "following-radical-clues-without-taxonomy-collapse",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前部件与词义联系清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "线索与分类结论分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "目标字与原词范围不混",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "虫旁词与一些动物有关，鱼旁词与鱼有关；蝌蚪螃蟹等不能因部件就归昆虫，线索不代分类。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "garden-six-radical-clues-without-taxonomy-collapse-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "比较当前虫旁与鱼旁词，各说一项含义联系，为什么虫旁不等全部昆虫？",
+          "answer": "虫旁词与一些动物有关，鱼旁词与鱼有关；蝌蚪螃蟹等不能因部件就归昆虫，线索不代分类。",
+          "analysis": "虫旁词与一些动物有关，鱼旁词与鱼有关；蝌蚪螃蟹等不能因部件就归昆虫，线索不代分类。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-radical-clues-without-taxonomy-collapse-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "新识字表六字是什么？原词螃蟹是否因此自动增加为本课新识目标两字？",
+          "answer": "六字蝌蚪蛾鲤鲫鲨，螃蟹在比较词中，不机械扩成新增识字表。",
+          "analysis": "六字蝌蚪蛾鲤鲫鲨，螃蟹在比较词中，不机械扩成新增识字表。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-radical-clues-without-taxonomy-collapse-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡给两种动物名都带虫旁，一种不是昆虫。能仅凭字旁否定卡片吗？",
+          "answer": "不能，字旁是汉字含义线索，不是现代生物分类充分条件；需核实际对象资料。",
+          "analysis": "不能，字旁是汉字含义线索，不是现代生物分类充分条件；需核实际对象资料。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-radical-clues-without-taxonomy-collapse-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "同样虫旁是否保证同音同义？联系当前词举例。",
+          "answer": "不保证，蝌蚪蛾等读音与具体含义不同，不能只认部件替整字。",
+          "analysis": "不保证，蝌蚪蛾等读音与具体含义不同，不能只认部件替整字。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-radical-clues-without-taxonomy-collapse-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "把蝌蚪写进昆虫栏仅因虫旁，怎样订正同时保留原答？",
+          "answer": "说明部件推断超范围，分类需对象依据，原答和核对后分开；不倒改最初记录。",
+          "analysis": "说明部件推断超范围，分类需对象依据，原答和核对后分开；不倒改最初记录。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-radical-clues-without-taxonomy-collapse-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "鱼旁可以帮助联想词义，但是否保证所有相关字只需用同一个解释？",
+          "answer": "不能，当前鲤鲫鲨各指具体词义，线索不能代逐词理解或精确分类。",
+          "analysis": "不能，当前鲤鲫鲨各指具体词义，线索不能代逐词理解或精确分类。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-radical-clues-without-taxonomy-collapse-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "各列一项当前能从部件联想到的关系和一项不能直接推出的信息。",
+          "answer": "含义方向可作线索，读音同一、全部昆虫或精确习性不能单凭部件推。",
+          "analysis": "含义方向可作线索，读音同一、全部昆虫或精确习性不能单凭部件推。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "garden-six",
+      "atomId": "source:chinese:g3:02915a7d:garden-six-key-sentence",
+      "structure": "variable-position-main-sentences",
+      "familyProposal": "following-variable-position-main-sentences",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "概括句与全部相关细节对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "位置变化不改变语义核查",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不机械圈首句或最短句",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "首句概括安静，后面不交谈与轻微叶响支持；不是只因在第一句。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "garden-six-variable-position-main-sentences-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创甲“院里很安静。窗下没人交谈，只听见风吹叶响。”哪句帮助概括？说明两项关系。",
+          "answer": "首句概括安静，后面不交谈与轻微叶响支持；不是只因在第一句。",
+          "analysis": "首句概括安静，后面不交谈与轻微叶响支持；不是只因在第一句。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-variable-position-main-sentences-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把概括句放最后：“窗下没人交谈，只听见风吹叶响。院里很安静。”段意变成叶子最多吗？",
+          "answer": "末句仍概括安静，细节关系支持相同意思，不因位置换成另一无据主题。",
+          "analysis": "末句仍概括安静，细节关系支持相同意思，不因位置换成另一无据主题。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-variable-position-main-sentences-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新段“书架旁坐满读者。阅览室真安静。大家轻翻书页，没人高声说话。”关键句在哪？",
+          "answer": "中间句概括声音安静，坐满读者不等吵闹；两侧信息一起核，不能固定选首句。",
+          "analysis": "中间句概括声音安静，坐满读者不等吵闹；两侧信息一起核，不能固定选首句。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-variable-position-main-sentences-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "有人只挑最短一句，怎样说明这种方法不充分？",
+          "answer": "长度不保证覆盖段意，要连接具体内容和概括范围，可有短细节而非关键句。",
+          "analysis": "长度不保证覆盖段意，要连接具体内容和概括范围，可有短细节而非关键句。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-variable-position-main-sentences-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若候选句说人很少，细节却写座位全满，当前应怎样核查？",
+          "answer": "有明显不相容，不因在段首就接受；重新找与全部主要信息相容的概括。",
+          "analysis": "有明显不相容，不因在段首就接受；重新找与全部主要信息相容的概括。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-variable-position-main-sentences-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "一个段落没有现成概括句，能否硬把第一句当万能答案？",
+          "answer": "不能，可用自己的话据细节概括，说明原段无现成句，不编原文存在。",
+          "analysis": "不能，可用自己的话据细节概括，说明原段无现成句，不编原文存在。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-variable-position-main-sentences-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "给一段自己真正新读的材料，找或概括主要意思，注明位置和两条依据。",
+          "answer": "判断有当前关系，原课已见例子若重复须标回顾，不自动当未见保持。",
+          "analysis": "判断有当前关系，原课已见例子若重复须标回顾，不自动当未见保持。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "garden-six",
+      "atomId": "source:chinese:g3:02915a7d:garden-six-abb-use",
+      "structure": "abb-words-and-specific-scenes",
+      "familyProposal": "following-abb-words-and-specific-scenes",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "所选一两个词义贴合",
+          "weight": 0.4
+        },
+        {
+          "criterion": "具体句子呈现对应画面",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不强八词全用或混同含义",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "词义与当前句子相容即可，不强制全用，虚构句子身份清楚。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "garden-six-abb-words-and-specific-scenes-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "从八个ABB词选一两个写句，给出能让读者想见的动作声音或场景。",
+          "answer": "词义与当前句子相容即可，不强制全用，虚构句子身份清楚。",
+          "analysis": "词义与当前句子相容即可，不强制全用，虚构句子身份清楚。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-abb-words-and-specific-scenes-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创卡甲座位坐满但人人轻读，乙房间无人却有机器轰鸣。分别更适合静悄悄还是空荡荡？",
+          "answer": "甲声音静可静悄悄，乙空间空可空荡荡；安静与无人不是完全同义。",
+          "analysis": "甲声音静可静悄悄，乙空间空可空荡荡；安静与无人不是完全同义。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-abb-words-and-specific-scenes-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡写同伴拿着录取通知快步奔来。选兴冲冲或慢腾腾写贴合句并说明。",
+          "answer": "给定动作期待更支持兴冲冲，不能只为格式选慢腾腾；其他有据条件需明确。",
+          "analysis": "给定动作期待更支持兴冲冲，不能只为格式选慢腾腾；其他有据条件需明确。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-abb-words-and-specific-scenes-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "颤巍巍与慢腾腾是否都只是很高兴？给具体语义差别。",
+          "answer": "前者不稳颤动、后者速度缓慢，不等相同高兴情绪，句子需相容。",
+          "analysis": "前者不稳颤动、后者速度缓慢，不等相同高兴情绪，句子需相容。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-abb-words-and-specific-scenes-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若只选静悄悄一词写清画面，是否因未用全部八词就不合要求？",
+          "answer": "原页选一两个，一词可合范围，评价贴切具体而非堆满八词。",
+          "analysis": "原页选一两个，一词可合范围，评价贴切具体而非堆满八词。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-abb-words-and-specific-scenes-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "闹哄哄与乱糟糟在当前句子分别侧重声音还是杂乱？各给一处依据。",
+          "answer": "可侧重嘈杂声音与秩序杂乱，具体对象条件说明，不机械说完全同义。",
+          "analysis": "可侧重嘈杂声音与秩序杂乱，具体对象条件说明，不机械说完全同义。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-abb-words-and-specific-scenes-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重写一处本人当前用词不贴合的句子，保留原改；没有问题不造错。",
+          "answer": "修订有语义条件依据，原答与帮助保留，例句不冒充本人真实经历。",
+          "analysis": "修订有语义条件依据，原答与帮助保留，例句不冒充本人真实经历。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "garden-six",
+      "atomId": "source:chinese:g3:02915a7d:garden-six-oral-paragraph",
+      "structure": "given-opening-coherent-oral-paragraph",
+      "familyProposal": "following-given-opening-coherent-oral-paragraph",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "实际声音形成相关一段",
+          "weight": 0.4
+        },
+        {
+          "criterion": "开头与具体细节意思相连",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原创卡与本人经历不混",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "细节服务同一意思，声音为本人当前；可用明确原创卡，不编本人实际出行。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "garden-six-given-opening-coherent-oral-paragraph-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "选车站人多或喜欢夏夜开头，本人实际说一段，至少连两项相关细节。",
+          "answer": "细节服务同一意思，声音为本人当前；可用明确原创卡，不编本人实际出行。",
+          "analysis": "细节服务同一意思，声音为本人当前；可用明确原创卡，不编本人实际出行。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-given-opening-coherent-oral-paragraph-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先给口头提纲再实际说段，说明准备和已经说出的区别。",
+          "answer": "提纲是准备，实际本人声音另核，不能用文字提纲记口语完成。",
+          "analysis": "提纲是准备，实际本人声音另核，不能用文字提纲记口语完成。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-given-opening-coherent-oral-paragraph-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创车站卡给候车长队、座位坐满。按人多开头说段，不补真实旅行日期。",
+          "answer": "两项信息支持人多，卡片身份清楚，未给出行数据不填。",
+          "analysis": "两项信息支持人多，卡片身份清楚，未给出行数据不填。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-given-opening-coherent-oral-paragraph-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "喜欢夏夜的段落可否给与别人不同但有依据的细节？录音说明。",
+          "answer": "喜好可不同，细节须与当前材料或本人真实观察相容，不强统一范文。",
+          "analysis": "喜好可不同，细节须与当前材料或本人真实观察相容，不强统一范文。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-given-opening-coherent-oral-paragraph-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "说车站人多时插入自己文具颜色，怎样判断是否偏离？",
+          "answer": "当前没有支持关系则可删或另放，不能只因想多说几句就凑内容。",
+          "analysis": "当前没有支持关系则可删或另放，不能只因想多说几句就凑内容。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-given-opening-coherent-oral-paragraph-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "仅独自练说尚未向同伴交流时，怎样保留状态？本人录音练一遍并如实说明。",
+          "answer": "本人练习可记录，真实同伴交流未做留待，不编反馈。",
+          "analysis": "本人练习可记录，真实同伴交流未做留待，不编反馈。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-given-opening-coherent-oral-paragraph-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本次重新实际说一段，标明所用提示和仍不清楚之处。",
+          "answer": "当前声音与开头细节关系可核，帮助与未完成保留，重复熟悉段不成未见保持。",
+          "analysis": "当前声音与开头细节关系可核，帮助与未完成保留，重复熟悉段不成未见保持。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "garden-six",
+      "atomId": "source:chinese:g3:02915a7d:garden-six-poem",
+      "structure": "baidi-poem-reading-and-image",
+      "familyProposal": "following-baidi-poem-reading-and-image",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人声音与全诗当前文字对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "读音和画面有词句依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不添默写精算或伪造背诵",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "朝zhāo还huán重chóng；四句实际声音按当前公版诗核，看稿朗读与脱稿积累分开。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "garden-six-baidi-poem-reading-and-image-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人朗读早发白帝城全文，说明朝辞、一日还、万重山的当前读音和是否看稿。",
+          "answer": "朝zhāo还huán重chóng；四句实际声音按当前公版诗核，看稿朗读与脱稿积累分开。",
+          "analysis": "朝zhāo还huán重chóng；四句实际声音按当前公版诗核，看稿朗读与脱稿积累分开。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-baidi-poem-reading-and-image-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "借朝辞、猿声、轻舟已过等词句说行舟画面，再实际朗读。",
+          "answer": "出发、沿江声音与轻舟过山的画面有据，不只背迅速标签或补未核时间年表。",
+          "analysis": "出发、沿江声音与轻舟过山的画面有据，不只背迅速标签或补未核时间年表。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-baidi-poem-reading-and-image-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创短诗写船轻快前行，先读并解释一处画面，再回原诗实际读全文。",
+          "answer": "原创卡与原诗身份分清，练方法不代本课诗篇实际声音。",
+          "analysis": "原创卡与原诗身份分清，练方法不代本课诗篇实际声音。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-baidi-poem-reading-and-image-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人尝试脱稿背诵本诗，保留停顿订正；未背全如实报告。",
+          "answer": "实际声音与覆盖可核，提示或刚看过全诗保留，不能把朗读改称无帮助背诵。",
+          "analysis": "实际声音与覆盖可核，提示或刚看过全诗保留，不能把朗读改称无帮助背诵。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-baidi-poem-reading-and-image-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "能从千里一日直接算现代船的精确航速吗？录音说明缺什么。",
+          "answer": "诗歌表达不提供现代单位与实测路径时长条件，不直接当现代精确实验数据。",
+          "analysis": "诗歌表达不提供现代单位与实测路径时长条件，不直接当现代精确实验数据。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-baidi-poem-reading-and-image-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本页日积月累有没有新增全诗默写指令？实际读诗并说明当前任务范围。",
+          "answer": "本页没有新增全文默写，不因栏目自行扩成必做；朗读积累与书写分别看。",
+          "analysis": "本页没有新增全文默写，不因栏目自行扩成必做；朗读积累与书写分别看。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-baidi-poem-reading-and-image-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新本人读全诗并说明已学原篇与帮助，不把同篇重复说成全新未见理解。",
+          "answer": "当前声音和版本可核，原文重复不自动批准陌生迁移或四间隔保持。",
+          "analysis": "当前声音和版本可核，原文重复不自动批准陌生迁移或四间隔保持。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "garden-six",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "garden-six-evidence-and-limits",
+      "familyProposal": "following-garden-six-evidence-and-limits",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "判断接当前词句或材料",
+          "weight": 0.4
+        },
+        {
+          "criterion": "形式线索与结论边界清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人实际状态和帮助不编",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "把前后细节接到概括范围，说明支持关系；开中末皆可能，位置不独立证明。",
+        "insufficientExample": "所有地方都一样，只要背过例子就全完成。",
+        "insufficientReason": "缺当前具体信息、判断关系或本人本次实际表现；参考与未完成状态混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有具体依据的不同表达。原答帮助版本与活动状态保留，不自动批准独立题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "garden-six-garden-six-evidence-and-limits-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "关键句在末尾或中间时，怎样证明它帮助理解而不是只看位置？",
+          "answer": "把前后细节接到概括范围，说明支持关系；开中末皆可能，位置不独立证明。",
+          "analysis": "把前后细节接到概括范围，说明支持关系；开中末皆可能，位置不独立证明。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-garden-six-evidence-and-limits-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "蝌蚪是虫旁就归昆虫，错在把哪种线索当充分结论？",
+          "answer": "把汉字部件含义线索当现代动物分类充分证据，当前对象需另核，不能直接推。",
+          "analysis": "把汉字部件含义线索当现代动物分类充分证据，当前对象需另核，不能直接推。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-garden-six-evidence-and-limits-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡有十人安静读书。说房间空荡荡需要什么额外信息？",
+          "answer": "十人和座位情况不支持无人空旷断言，声音安静不能直接推出空间空荡。",
+          "analysis": "十人和座位情况不支持无人空旷断言，声音安静不能直接推出空间空荡。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-garden-six-evidence-and-limits-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "八词中只用一个贴切词、古诗看稿朗读，各自能证明和不能证明什么？",
+          "answer": "一词可合造句数量范围，朗读有本人声音但不等脱稿背诵或默写完成，各项不互代。",
+          "analysis": "一词可合造句数量范围，朗读有本人声音但不等脱稿背诵或默写完成，各项不互代。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-garden-six-evidence-and-limits-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "全诗文本在scope元数据，但教学正文缺两句，是否已给学生完整阅读材料？",
+          "answer": "没有，必须实际正文有完整当前诗文；元数据完整和接口通过不代真实阅读完整。",
+          "analysis": "没有，必须实际正文有完整当前诗文；元数据完整和接口通过不代真实阅读完整。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-garden-six-evidence-and-limits-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "看过范文才改对重要句位置，应怎样保留原答和帮助？",
+          "answer": "原答、范文曝光和后改分开，不能倒改最初首答或恢复未见资格。",
+          "analysis": "原答、范文曝光和后改分开，不能倒改最初首答或恢复未见资格。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "garden-six-garden-six-evidence-and-limits-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "列当前一项原诗信息、一项原创段落推理和一项本人仍未完成的口头任务。",
+          "answer": "材料身份和本人状态清楚，未知与未做如实，不能用参考补全真实记录。",
+          "analysis": "材料身份和本人状态清楚，未知与未做如实，不能用参考补全真实记录。 仅供候选人工核查，不自动评分；旧范例、原诗重复或帮助后改答不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,365 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry4",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 86,
+    "pageEnd": 88,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:xiaoxingan-reading",
+      "version": 1,
+      "name": "小兴安岭十三字语境识读",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与阅读",
+      "objective": "在本课词语中识读兴融侧欣浸乳梢舍显材膝眠库十三字",
+      "successCriterion": "本人声音覆盖13字，兴xīng舍shè膝xī等按当前词核，不由常用另一读法替代",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:xiaoxingan-handwriting",
+      "version": 1,
+      "name": "小兴安岭十三字实际书写",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与写字",
+      "objective": "本人实际书写脑袋严实挡视线坛显材软刮库十三字",
+      "successCriterion": "本人原件覆盖13字，挡档坛谈等按当前目标核，文字判断不代实际字形",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:xiaoxingan-oral-reading",
+      "version": 1,
+      "name": "小兴安岭长句实际朗读",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "朗读与表达",
+      "objective": "朗读所选原文，借意思组织长句停顿",
+      "successCriterion": "本人声音与词组句意相容，停顿允许有据差异，不强制一句只能一种划分或全篇背诵",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:xiaoxingan-word-choice",
+      "version": 1,
+      "name": "抽出和浸的语境表达",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "阅读与表达",
+      "objective": "联系枝条新生、浓雾包围体会抽出浸等用词",
+      "successCriterion": "能说对象动作与画面，抽不是人拔树枝、浸不是森林整片泡水，不只背一个固定标签",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:xiaoxingan-season-structure",
+      "version": 1,
+      "name": "四季组织与花园宝库双意",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "阅读与组织",
+      "objective": "按春夏秋冬整理景物变化，说明花园和宝库各有什么依据",
+      "successCriterion": "各季细节与景美物产对应，季节选择理由有课文支持，家乡季节写作保持选做",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:xiaoxingan-reading",
+    "source:chinese:g3:02915a7d:xiaoxingan-handwriting",
+    "source:chinese:g3:02915a7d:xiaoxingan-oral-reading",
+    "source:chinese:g3:02915a7d:xiaoxingan-word-choice",
+    "source:chinese:g3:02915a7d:xiaoxingan-season-structure",
+    "core:chinese:detail-evidence"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "准确原件所选物理页已逐张核对正文、脚注、目标字与任务边界；AI来源核对不等教师、评分或独立题族审核。",
+    "pages": [
+      {
+        "page": 86,
+        "visualChecked": true,
+        "statement": "已看来源脚注、总写森林和春夏两季，抽浸语境、森林海洋与草地花坛的比较。"
+      },
+      {
+        "page": 87,
+        "visualChecked": true,
+        "statement": "已看秋冬全部细节和总结，白桦栎树与松柏、几种动物活动不同，花园宝库双意。"
+      },
+      {
+        "page": 88,
+        "visualChecked": true,
+        "statement": "已看13识13写、长句朗读、抽浸比较、季节选择理由；家乡写段明确选做。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "美丽的小兴安岭",
+    "author": null,
+    "attribution": "选自人民教育出版社全日制十年制学校小学课本试用本语文第六册",
+    "region": "我国东北",
+    "recognitionCharacters": [
+      "兴",
+      "融",
+      "侧",
+      "欣",
+      "浸",
+      "乳",
+      "梢",
+      "舍",
+      "显",
+      "材",
+      "膝",
+      "眠",
+      "库"
+    ],
+    "writingCharacters": [
+      "脑",
+      "袋",
+      "严",
+      "实",
+      "挡",
+      "视",
+      "线",
+      "坛",
+      "显",
+      "材",
+      "软",
+      "刮",
+      "库"
+    ],
+    "contextReadings": {
+      "小兴安岭": "xiǎo xīng ān lǐng",
+      "宿舍": "sù shè"
+    },
+    "fullTextRecitationRequired": false,
+    "hometownSeasonWritingOptional": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "美丽的小兴安岭：沿四季找变化，用细节支持选择",
+    "activation": {
+      "prompt": "原创记录卡同一片树林在春有嫩叶、夏有浓荫、秋有果实、冬有积雪。选你想了解的一个季节，并用卡片信息说理由；选择可以不同。",
+      "expectedObservation": "偏好有具体依据，而不是猜老师指定哪个季节。",
+      "bridge": "课文按四季写小兴安岭，不同季节的景色与物产共同支持花园和宝库的概括。"
+    },
+    "concept": {
+      "explanation": "全文先写东北森林广，再沿春夏秋冬观察，最后概括四季景色与物产。春段注意新枝嫩叶、融雪溪水与鹿；夏段注意繁密枝叶、浓雾、阳光和草地野花；秋段比较变黄的白桦栎叶与苍翠松柏，并看物产；冬段看雪风与文中所选动物活动。抽出使新枝生长的动态可感，浸写浓雾包围的画面，不按人抽树枝或真实泡水理解；森林像绿色海洋、草地像花坛同样是比较。花园概括景色美，宝库联系丰富物产，二者可用不同细节支持，不是森林里真有建筑库房。选择旅游季节没有唯一正确季节，要说明哪项课文内容与你的兴趣相连；只是阅读选择练习，不安排学生自行远行。当前文本所写动物行为与季节保留范围，不扩成所有动物、所有环境恒定规则，也不发出采食蘑菇药材的活动指令。课后家乡最美季节一段话明确选做，不能升级为所有学生必交，长句朗读与选做写作分别留证。",
+      "points": [
+        "总写、四季、总结的组织关系",
+        "同季不同对象、同物不同季变化",
+        "抽浸联系生长和雾境",
+        "花园与宝库由不同细节支持",
+        "季节选择有据可不同，家乡写段保持选做"
+      ]
+    },
+    "example": {
+      "situation": "原创材料：“春日，庭边冒出细细新芽。秋日，架上的小果渐渐转红。”两位孩子分别想看新芽和果实；材料没有给旅行安排。",
+      "steps": [
+        {
+          "explanation": "先把季节与对应对象变化配对，不能把秋果写成春段已成熟。",
+          "board": [
+            "春：细细新芽",
+            "秋：小果转红",
+            "条件按材料对应"
+          ]
+        },
+        {
+          "explanation": "偏好新芽或果实都可有理由，评价看依据与偏好关系，不比谁选老师喜欢的答案。",
+          "board": [
+            "选择可不同",
+            "理由须接当前细节",
+            "未知物产不补造"
+          ]
+        },
+        {
+          "explanation": "回课文按四季说明选择，再分清选做家乡段落与本课必做理解。",
+          "board": [
+            "四季表帮助定位",
+            "花园宝库分别找据",
+            "选做不强制升级"
+          ]
+        }
+      ],
+      "conclusion": "按季节整理能减少信息串位，有依据的偏好可以不同。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "四季线索和概括依据",
+        "headers": [
+          "部分",
+          "可用的课内线索",
+          "核对重点"
+        ],
+        "rows": [
+          [
+            "春",
+            "新枝嫩叶、融雪溪水与鹿",
+            "抽出是生长，活动有当前描写范围"
+          ],
+          [
+            "夏",
+            "密叶浓雾、阳光与野花",
+            "浸是雾包围画面，不当水淹"
+          ],
+          [
+            "秋",
+            "叶色对比与林间物产",
+            "松柏与白桦栎叶不写成全都黄"
+          ],
+          [
+            "冬",
+            "雪风与几种动物活动",
+            "不从个别动物推全部冬眠"
+          ],
+          [
+            "总结",
+            "景色诱人与丰富物产",
+            "花园宝库是概括比喻，非建筑实物"
+          ]
+        ],
+        "explanation": "表格按季节找证据，不把文学概括当完整生态规律或采食建议。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "把抽出说成人拔树枝，把浸说成森林泡在水里。",
+        "alternatives": [
+          "可能只套日常另一个义项。"
+        ],
+        "verification": "指出对象和前后描写，换词比较画面是否仍相容。",
+        "correctiveFeedback": "词义先与本句对象条件连起来，再说明表达效果。"
+      },
+      {
+        "observation": "说秋天所有树都黄、冬天全部动物冬眠。",
+        "alternatives": [
+          "可能由单项概括全部。"
+        ],
+        "verification": "分别核松柏与白桦栎树、黑熊与其他动物的不同描写。",
+        "correctiveFeedback": "当前材料内已有对照，不用一个对象代所有对象。"
+      },
+      {
+        "observation": "只接受一种旅游季节，要求每人交家乡季节段落。",
+        "alternatives": [
+          "可能把偏好题和选做误成统一必做。"
+        ],
+        "verification": "看季节选择理由是否支持，再核原页选做标记。",
+        "correctiveFeedback": "有据选择可以不同；家乡写作按自愿选做，未选不记必做失败。"
+      }
+    ],
+    "transfer": {
+      "scenario": "新原创园林卡按雨季旱季而非四季给不同变化，末尾概括景物与果实。",
+      "prompt": "按本卡条件整理变化，并用两项分别支持景美和物产的概括，不照搬四季表。",
+      "expectedStrategy": "组织方法随材料调整，课内答案不自动变新材料事实，未知安全与生态信息不补。"
+    },
+    "summary": {
+      "synthesis": "按四季看细节，用词看对象和画面；花园宝库各有依据。偏好有理即可不同，选做保持选做。",
+      "takeaways": [
+        "四季变化不串位",
+        "抽浸结合语境",
+        "概括有对应细节",
+        "选择允许不同，选做不升必做"
+      ]
+    },
+    "citations": [
+      {
+        "page": 86,
+        "quote": "春天，树木抽出新的枝条，长出嫩绿的叶子。",
+        "usedFor": "concept"
+      },
+      {
+        "page": 87,
+        "quote": "也是一座巨大的宝库",
+        "usedFor": "summary"
+      },
+      {
+        "page": 88,
+        "quote": "如果到小兴安岭旅游，你会选择哪个季节去？结合课文内容说",
+        "usedFor": "transfer"
+      },
+      {
+        "page": 88,
+        "quote": "你的家乡哪个季节最美？为什么？写一段话和同学交流。",
+        "usedFor": "check"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:xiaoxingan-reading",
+        "objective": "在本课词语中识读兴融侧欣浸乳梢舍显材膝眠库十三字",
+        "successCriterion": "本人声音覆盖13字，兴xīng舍shè膝xī等按当前词核，不由常用另一读法替代"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:xiaoxingan-handwriting",
+        "objective": "本人实际书写脑袋严实挡视线坛显材软刮库十三字",
+        "successCriterion": "本人原件覆盖13字，挡档坛谈等按当前目标核，文字判断不代实际字形"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:xiaoxingan-oral-reading",
+        "objective": "朗读所选原文，借意思组织长句停顿",
+        "successCriterion": "本人声音与词组句意相容，停顿允许有据差异，不强制一句只能一种划分或全篇背诵"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g3:02915a7d:xiaoxingan-word-choice",
+        "objective": "联系枝条新生、浓雾包围体会抽出浸等用词",
+        "successCriterion": "能说对象动作与画面，抽不是人拔树枝、浸不是森林整片泡水，不只背一个固定标签"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:chinese:g3:02915a7d:xiaoxingan-season-structure",
+        "objective": "按春夏秋冬整理景物变化，说明花园和宝库各有什么依据",
+        "successCriterion": "各季细节与景美物产对应，季节选择理由有课文支持，家乡季节写作保持选做"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "用当前材料具体信息支持判断，分原文、比喻、示例和本人实际表现",
+        "successCriterion": "依据与判断关系清楚，未知和未完成保留；原稿声音、帮助与订正不由参考答案代填"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "先审核目标、评分、独立结构与充分未见库存，再按真实日期复测。每间隔一份拟议样题不当充分库存；原篇已学、提示与帮助保留，模拟日期和参考声音原稿不当本人长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "xiaoxingan",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "现代原页、完整现代课文与注释不复制进候选；以原创讲解和必要逐字短引核对。古代公版诗文单独明示。",
+    "materialStatus": "候选讲解、例题、检查与量规；目标对齐、教师、题族独立性、评分金样本和充分保持库存仍待。",
+    "pacing": "识读、本人实际书写、朗读与理解表达分次安排，不用一次短练习概括全部目标。"
+  }
+}

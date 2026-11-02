@@ -1,0 +1,391 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry6",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 90,
+    "pageEnd": 91,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:garden-six-reading",
+      "version": 1,
+      "name": "园地六六字实际识读",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与阅读",
+      "objective": "在蝌蚪飞蛾鲤鱼鲫鱼鲨鱼中识读蝌蚪蛾鲤鲫鲨六字",
+      "successCriterion": "本人声音覆盖六字，蝌蚪dǒu与蛾é、鲫jì等按当前原页核，词数和字数不混",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:garden-six-radicals",
+      "version": 1,
+      "name": "字旁线索与词义联系",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字方法",
+      "objective": "比较当前虫旁和鱼旁词，说明部件可提示的含义联系",
+      "successCriterion": "虫旁与动物有关不等全属现代昆虫，蝌蚪与螃蟹等不被错误归为昆虫，部件不保证读音相同",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:garden-six-key-sentence",
+      "version": 1,
+      "name": "关键句位置与段意关系",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "阅读与组织",
+      "objective": "在开头中间末尾的原创段落中找概括句并连接细节",
+      "successCriterion": "位置可变，判断说明细节怎样支持，不把任意首句或最短句当万能中心",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:garden-six-abb-use",
+      "version": 1,
+      "name": "ABB词画面与造句",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "词句运用",
+      "objective": "从八个ABB词选一两个，用有条件的具体句子表现画面",
+      "successCriterion": "词义与人物活动或场景贴合，不强制八词全用或把所有ABB看成相同心情",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:garden-six-oral-paragraph",
+      "version": 1,
+      "name": "按给定开头说一段话",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "口语表达",
+      "objective": "选车站人多或夏夜喜欢的开头，组织相关细节实际说出",
+      "successCriterion": "本人声音与同一主要意思相连，虚构卡身份清楚，不强制本人去车站或编旅行",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:garden-six-poem",
+      "version": 1,
+      "name": "早发白帝城阅读与积累",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "古诗积累",
+      "objective": "实际朗读早发白帝城，用词句说明行舟画面并尝试积累",
+      "successCriterion": "本人声音与当前诗文相符，朝zhāo还huán重chóng按诗句核，不添全文默写或凭夸张精算航速",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:garden-six-reading",
+    "source:chinese:g3:02915a7d:garden-six-radicals",
+    "source:chinese:g3:02915a7d:garden-six-key-sentence",
+    "source:chinese:g3:02915a7d:garden-six-abb-use",
+    "source:chinese:g3:02915a7d:garden-six-oral-paragraph",
+    "source:chinese:g3:02915a7d:garden-six-poem",
+    "core:chinese:detail-evidence"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "准确原件所选物理页已逐张核对正文、脚注、目标字与任务边界；AI来源核对不等教师、评分或独立题族审核。",
+    "pages": [
+      {
+        "page": 90,
+        "visualChecked": true,
+        "statement": "已看平台开头末尾中间的明确边界、六字识读与虫鱼旁原词和插图，不将部件视为科学分类。"
+      },
+      {
+        "page": 91,
+        "visualChecked": true,
+        "statement": "已看八ABB词选一两个写句、两个开头说段、李白早发白帝城全文，无新增全文默写指令。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "语文园地六",
+    "activityKind": "language_garden",
+    "recognitionCharacters": [
+      "蝌",
+      "蚪",
+      "蛾",
+      "鲤",
+      "鲫",
+      "鲨"
+    ],
+    "writingCharacters": [],
+    "keySentencePositions": [
+      "开头",
+      "中间",
+      "末尾"
+    ],
+    "abbWords": [
+      "懒洋洋",
+      "慢腾腾",
+      "颤巍巍",
+      "兴冲冲",
+      "静悄悄",
+      "空荡荡",
+      "乱糟糟",
+      "闹哄哄"
+    ],
+    "sentenceWritingSelectedWordCount": [
+      1,
+      2
+    ],
+    "poem": {
+      "title": "早发白帝城",
+      "author": "李白",
+      "dynasty": "唐",
+      "text": [
+        "朝辞白帝彩云间，",
+        "千里江陵一日还。",
+        "两岸猿声啼不住，",
+        "轻舟已过万重山。"
+      ]
+    },
+    "poemFullDictationAdded": false,
+    "poemReadings": {
+      "朝辞": "zhāo cí",
+      "一日还": "yī rì huán",
+      "万重山": "wàn chóng shān"
+    },
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "语文园地六：关键句不只在段首，词语服务具体画面",
+    "activation": {
+      "prompt": "原创段甲先说院里安静再给细节，段乙先给细节最后说院里安静。它们一定只有第一句才能帮助理解段意吗？先读完整段再判断。",
+      "expectedObservation": "能关注概括和细节的关系，接受关键句在不同位置。",
+      "bridge": "交流平台把方法从一段首句扩展到中间与末尾；识字、用词、说段和古诗各自练习。"
+    },
+    "concept": {
+      "explanation": "日积月累原诗\n《早发白帝城》\n[唐] 李白\n朝辞白帝彩云间，\n千里江陵一日还。\n两岸猿声啼不住，\n轻舟已过万重山。\n\n园地学习\n关键句帮助读者概括一段的主要意思，有时在开头，也可能在中间或末尾。先读完整段，把每项细节与候选句相连，再判断其概括范围，不能只圈第一句。识字站六个新目标是蝌蚪蛾鲤鲫鲨，原词还包括螃蟹；部件可提示含义联系，但虫旁并不保证属于现代昆虫，蝌蚪不是昆虫，螃蟹也不因虫旁变成昆虫，认字与科学分类分清。八个ABB词能唤起动作、声音、空间或状态画面，选一两个造句即可，词义与具体条件贴合，不把静悄悄和空荡荡说成完全同义。用给定开头说段落时，车站人多可写队伍、座位等相关细节，夏夜喜欢可选自己有依据的方面；原创卡不能改成自己真实出行。日积月累为唐李白早发白帝城，朝辞的朝zhāo、一日还的还huán、万重山的重chóng按当前句义。诗中行舟轻快和连绵山水可用词句说明，不凭千里一日直接当现代精确航速数据，不补未核年表；本页没有新增全诗默写要求。",
+      "points": [
+        "关键句看概括关系，位置可变",
+        "六个新目标与原词列表分清",
+        "字旁线索不代科学分类",
+        "ABB词按画面选一两个",
+        "开头后细节仍围绕同一意思",
+        "古诗读音和原文核对，不增默写"
+      ]
+    },
+    "example": {
+      "situation": "原创对照甲：“小屋静悄悄。窗边没有说话声，只听见钟摆轻响。”乙：“窗边没有说话声，只听见钟摆轻响。小屋静悄悄。”",
+      "steps": [
+        {
+          "explanation": "两段表达相同主要意思，概括句在甲开头、乙末尾，细节关系没有因换位置消失。",
+          "board": [
+            "甲：概括→细节",
+            "乙：细节→概括",
+            "核心关系相同"
+          ]
+        },
+        {
+          "explanation": "再加中间式：“窗边没有说话声。小屋静悄悄。只有钟摆轻响。”中间句也能连接前后。",
+          "board": [
+            "细节→概括→细节",
+            "核全部信息",
+            "不按位置单判"
+          ]
+        },
+        {
+          "explanation": "静悄悄说声音状态，空荡荡偏空间空旷少人少物；新句需给贴合画面，不强制同时使用。",
+          "board": [
+            "词义有各自重点",
+            "选择一两个即可",
+            "当前画面支持用词"
+          ]
+        }
+      ],
+      "conclusion": "方法可迁移到不同句序，用词要有画面条件；形式相同不保证含义相同。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "园地六方法和实际边界",
+        "headers": [
+          "任务",
+          "怎样核查",
+          "避免什么替代"
+        ],
+        "rows": [
+          [
+            "关键句",
+            "开中末都检查概括与细节关系",
+            "首句位置不代理解"
+          ],
+          [
+            "识字",
+            "六字本人声音与当前词对应",
+            "螃蟹原词不自动变新增识字表"
+          ],
+          [
+            "字旁",
+            "当前含义线索与例外一起看",
+            "虫旁不当全部昆虫"
+          ],
+          [
+            "ABB词",
+            "一两个贴合动作声音空间",
+            "八词全塞不代准确"
+          ],
+          [
+            "说段",
+            "开头与相关细节的实际声音",
+            "书面准备不当已说"
+          ],
+          [
+            "古诗",
+            "全文读音、画面与帮助分清",
+            "不加全诗默写或精算航速"
+          ]
+        ],
+        "explanation": "每项独立核查，部分表现不能代整个园地已完成。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "每段只圈第一句，虫旁全归为昆虫。",
+        "alternatives": [
+          "可能把方法线索误成没有例外的公式。"
+        ],
+        "verification": "读句序不同的同义段，再比较蝌蚪螃蟹与飞蛾。",
+        "correctiveFeedback": "按语义关系找概括，字旁是线索，不代现代分类。"
+      },
+      {
+        "observation": "把八个ABB词全部塞进一句，或说静悄悄等于空荡荡。",
+        "alternatives": [
+          "可能只看形式，没有核具体含义。"
+        ],
+        "verification": "给有人但不说话、无人但有机器声音两种卡，分别选贴切词。",
+        "correctiveFeedback": "声音与空间特点可不同，选一两个贴合即可。"
+      },
+      {
+        "observation": "读诗就加全诗默写，拿千里一日直接计算现代船速。",
+        "alternatives": [
+          "可能把积累栏目和诗句数字扩大成额外指令或测量。"
+        ],
+        "verification": "核原页实际要求和是否给精确单位、路程测量。",
+        "correctiveFeedback": "古诗表达、历史信息与现代实测分清，不额外强加未给任务。"
+      }
+    ],
+    "transfer": {
+      "scenario": "新的原创操场段把主要意思放中间；另一张画面卡有人静读，四周座位坐满。",
+      "prompt": "解释中间句怎样联系两侧细节，再在静悄悄和空荡荡中选贴合的一个写句，说明理由。",
+      "expectedStrategy": "位置变但语义关系可核；声音安静不等空间无人，旧例不能代新条件。"
+    },
+    "summary": {
+      "synthesis": "先理解关系再用形式线索。关键句可换位置，字旁可提示含义，ABB词服务具体画面；古诗实际读与积累另核。",
+      "takeaways": [
+        "关键句不固定段首",
+        "字旁线索不能滥推",
+        "一两个ABB词贴合即可",
+        "说段围绕同一意思，古诗不加默写"
+      ]
+    },
+    "citations": [
+      {
+        "page": 90,
+        "quote": "这样的句子也有可能在一段话的末尾或中间。",
+        "usedFor": "concept"
+      },
+      {
+        "page": 91,
+        "quote": "懒洋洋    慢腾腾    颤巍巍    兴冲冲",
+        "usedFor": "example"
+      },
+      {
+        "page": 91,
+        "quote": "用下面的句子开头，试着说一段话。",
+        "usedFor": "transfer"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:garden-six-reading",
+        "objective": "在蝌蚪飞蛾鲤鱼鲫鱼鲨鱼中识读蝌蚪蛾鲤鲫鲨六字",
+        "successCriterion": "本人声音覆盖六字，蝌蚪dǒu与蛾é、鲫jì等按当前原页核，词数和字数不混"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:garden-six-radicals",
+        "objective": "比较当前虫旁和鱼旁词，说明部件可提示的含义联系",
+        "successCriterion": "虫旁与动物有关不等全属现代昆虫，蝌蚪与螃蟹等不被错误归为昆虫，部件不保证读音相同"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:garden-six-key-sentence",
+        "objective": "在开头中间末尾的原创段落中找概括句并连接细节",
+        "successCriterion": "位置可变，判断说明细节怎样支持，不把任意首句或最短句当万能中心"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g3:02915a7d:garden-six-abb-use",
+        "objective": "从八个ABB词选一两个，用有条件的具体句子表现画面",
+        "successCriterion": "词义与人物活动或场景贴合，不强制八词全用或把所有ABB看成相同心情"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:chinese:g3:02915a7d:garden-six-oral-paragraph",
+        "objective": "选车站人多或夏夜喜欢的开头，组织相关细节实际说出",
+        "successCriterion": "本人声音与同一主要意思相连，虚构卡身份清楚，不强制本人去车站或编旅行"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "source:chinese:g3:02915a7d:garden-six-poem",
+        "objective": "实际朗读早发白帝城，用词句说明行舟画面并尝试积累",
+        "successCriterion": "本人声音与当前诗文相符，朝zhāo还huán重chóng按诗句核，不添全文默写或凭夸张精算航速"
+      },
+      {
+        "id": "goal-7",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "用当前材料具体信息支持判断，分原文、比喻、示例和本人实际表现",
+        "successCriterion": "依据与判断关系清楚，未知和未完成保留；原稿声音、帮助与订正不由参考答案代填"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "先审核目标、评分、独立结构与充分未见库存，再按真实日期复测。每间隔一份拟议样题不当充分库存；原篇已学、提示与帮助保留，模拟日期和参考声音原稿不当本人长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "garden-six",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "现代原页、完整现代课文与注释不复制进候选；以原创讲解和必要逐字短引核对。古代公版诗文单独明示。",
+    "materialStatus": "候选讲解、例题、检查与量规；目标对齐、教师、题族独立性、评分金样本和充分保持库存仍待。",
+    "pacing": "识读、本人实际书写、朗读与理解表达分次安排，不用一次短练习概括全部目标。",
+    "pronunciationSupport": "resources/curriculum/source-reviews/baidi-zhao-reading-v1.json",
+    "poemTextBoundary": "Ancient public-domain poem is included in the actual teaching body; modern textbook pages and full annotations remain private. No extra full-poem dictation requirement."
+  }
+}

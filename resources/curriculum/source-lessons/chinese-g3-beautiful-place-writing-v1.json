@@ -1,0 +1,305 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry5",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 89,
+    "pageEnd": 89,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:beautiful-place-observation",
+      "version": 1,
+      "name": "写景前选择具体观察",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "观察与写作",
+      "objective": "选择身边一处可实际观察的地方，记录对象与具体特点",
+      "successCriterion": "本人观察和原创训练卡分清，颜色形态位置变化等有真实依据，不代写行程或虚构已看",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:beautiful-place-paragraph",
+      "version": 1,
+      "name": "围绕一个意思写景",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "段落写作",
+      "objective": "选择一个主要意思，组织能支持它的景物细节",
+      "successCriterion": "细节有联系并服务所选意思，不能只堆好看词、写了关键句就算全部围绕",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:beautiful-place-revision",
+      "version": 1,
+      "name": "自己读并实际订正习作",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "修改与表达",
+      "objective": "保留本人初稿，读后修正实际错字或表达问题",
+      "successCriterion": "原改对应真实，没错不造错，不用范文或清稿倒造本人修改过程",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:beautiful-place-sharing",
+      "version": 1,
+      "name": "实际分享发现的美景",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "表达与交流",
+      "objective": "把自己写的景物读给真实听众并如实保留交流",
+      "successCriterion": "本人声音与真实分享状态可核，准备稿不充已分享，不编同伴评价",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:beautiful-place-observation",
+    "source:chinese:g3:02915a7d:beautiful-place-paragraph",
+    "source:chinese:g3:02915a7d:beautiful-place-revision",
+    "source:chinese:g3:02915a7d:beautiful-place-sharing",
+    "core:chinese:detail-evidence"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "准确原件所选物理页已逐张核对正文、脚注、目标字与任务边界；AI来源核对不等教师、评分或独立题族审核。",
+    "pages": [
+      {
+        "page": 89,
+        "visualChecked": true,
+        "statement": "已看观察、围绕一个意思、三个示例开头、十二个可用词与本人读改分享要求，无统一字数标题要求。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "习作：这儿真美",
+    "activityKind": "writing",
+    "realObservationRequiredForPersonalClaim": true,
+    "requiredStages": [
+      "观察",
+      "围绕一个意思写",
+      "自己读改错别字",
+      "实际分享"
+    ],
+    "suggestedWords": [
+      "盛开",
+      "飞舞",
+      "狂欢",
+      "闪闪发光",
+      "漂亮",
+      "优美",
+      "明朗",
+      "静悄悄",
+      "粗壮",
+      "香甜",
+      "清凉",
+      "亮晶晶"
+    ],
+    "allSuggestedWordsRequired": false,
+    "fixedWordCountRequired": false,
+    "mandatoryTitleAdded": false,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "这儿真美：看清一处景，围绕一个意思写",
+    "activation": {
+      "prompt": "原创卡：小花圃里有三种花，矮栏边一片绿叶，一辆送货车从远处路过。若想写花圃色彩多，哪些细节最能帮助？",
+      "expectedObservation": "能选花与叶的相关信息，先不把送货车等无关信息硬凑。",
+      "bridge": "本人写景先观察，再选主要意思；示例练方法，不能代自己的真实发现。"
+    },
+    "concept": {
+      "explanation": "先选身边一处你确实能观察的景物，记录有什么、什么样；不为完成作业要求学生独自远行或公开详细住址。选一个想让别人明白的主要意思，例如颜色丰富、安静或某处有生机，再选与之有关的具体细节。围绕不只是开头放一句真美，后面也要让人明白为什么；细节可以按位置、观察顺序或同一方面展开，避免同时塞入许多不相连的主题。原页的开头和词语是可用示例，按自己的材料选择，不强制全用、固定字数或必须一个标题；漂亮优美等评价也需具体景物支持。写好后由本人读，改真实错别字，必要时调整不清或偏题内容，初稿与修改保留；没有错不必为了留痕故意造错。最后实际读给同学等真实听众分享，准备、完成和得到的回应分别记录，不能从模板生成同伴评价。若暂没有本人观察，用明确原创卡训练，仍把本人观察与分享保留待做。",
+      "points": [
+        "一处真实观察先有具体记录",
+        "一个主要意思贯穿相关细节",
+        "词语和开头可选，不堆示例",
+        "初稿与实际修改分别留",
+        "真实分享与准备状态分清"
+      ]
+    },
+    "example": {
+      "situation": "原创虚构初稿：“窗边的小盆景颜色真丰富。新叶浅绿，老叶墨绿，盆边开着两朵小黄花。我昨天买了新书包。”只供修改练习。",
+      "steps": [
+        {
+          "explanation": "前三项围绕盆景颜色，书包信息与当前主要意思没有给出联系。",
+          "board": [
+            "主意：颜色丰富",
+            "浅绿、墨绿、黄花支持",
+            "书包当前偏离"
+          ]
+        },
+        {
+          "explanation": "删除或另放无关句，再把读者不清楚的位置写清；不强制加更多华丽词。",
+          "board": [
+            "相关细节保留",
+            "无关信息另处理",
+            "具体比堆词更清楚"
+          ]
+        },
+        {
+          "explanation": "返回本人观察与初稿，实际修改后再分享；不能把这段虚构盆景改成自己已观察。",
+          "board": [
+            "示例身份保留",
+            "本人原改可对应",
+            "分享由本人实际完成"
+          ]
+        }
+      ],
+      "conclusion": "围绕的质量看细节与意思怎样联系，模板、词数和一句评价不能替代。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "写景习作的四个实际阶段",
+        "headers": [
+          "阶段",
+          "留下什么",
+          "不能冒充什么"
+        ],
+        "rows": [
+          [
+            "观察",
+            "本人对象与特点记录",
+            "原创卡不代本人已看"
+          ],
+          [
+            "成稿",
+            "一个意思和相关具体细节",
+            "开头真美不代段内联系"
+          ],
+          [
+            "修改",
+            "初稿、读后实际改动",
+            "清稿不倒造订正"
+          ],
+          [
+            "分享",
+            "真实读给听众与实际回应",
+            "准备不当完成，回应不编"
+          ]
+        ],
+        "explanation": "顺序帮助安排活动，各阶段实际状态保留，单份范文不代整个过程。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "把全部示例词塞进一段，觉得词越多越好。",
+        "alternatives": [
+          "可能把可以误成必须。"
+        ],
+        "verification": "逐词说与本人景物有什么关系，删除不贴合处。",
+        "correctiveFeedback": "按材料选词，数量不代贴切与具体。"
+      },
+      {
+        "observation": "开头写真美，后面谈很多无关事情。",
+        "alternatives": [
+          "可能把主要意思当一句口号。"
+        ],
+        "verification": "逐句回答这句怎样支持想写的景物特点。",
+        "correctiveFeedback": "有联系的细节才能帮助读者理解，不能只看开头形式。"
+      },
+      {
+        "observation": "用原创卡或范文填成自己观察和同伴已点赞。",
+        "alternatives": [
+          "可能混训练示例与真实活动。"
+        ],
+        "verification": "核本人观察、原改、实际听众和原回应，没有就留待做。",
+        "correctiveFeedback": "任务计划与示例不能代本人发生过的过程。"
+      }
+    ],
+    "transfer": {
+      "scenario": "本人下一次确实观察到的另一处普通景物；或明确标为虚构的新材料卡。",
+      "prompt": "先标材料性质，再围绕一个意思写相关细节，实际读改后报告分享状态。",
+      "expectedStrategy": "观察来源和活动状态真实，组织方法可迁移，虚构与本人证据不混。"
+    },
+    "summary": {
+      "synthesis": "先看清具体景物，选一层意思写清楚，再本人读改和分享。材料来源与实际过程比堆词或套句更重要。",
+      "takeaways": [
+        "观察有具体对象特点",
+        "围绕看细节联系",
+        "词语开头按需选",
+        "本人原改和分享真实留证"
+      ]
+    },
+    "citations": [
+      {
+        "page": 89,
+        "quote": "写之前仔细观察，看看这个地方有些什么，是什么样子的。",
+        "usedFor": "activation"
+      },
+      {
+        "page": 89,
+        "quote": "写好后自己读一读，改正错别字。",
+        "usedFor": "summary"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:beautiful-place-observation",
+        "objective": "选择身边一处可实际观察的地方，记录对象与具体特点",
+        "successCriterion": "本人观察和原创训练卡分清，颜色形态位置变化等有真实依据，不代写行程或虚构已看"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:beautiful-place-paragraph",
+        "objective": "选择一个主要意思，组织能支持它的景物细节",
+        "successCriterion": "细节有联系并服务所选意思，不能只堆好看词、写了关键句就算全部围绕"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:beautiful-place-revision",
+        "objective": "保留本人初稿，读后修正实际错字或表达问题",
+        "successCriterion": "原改对应真实，没错不造错，不用范文或清稿倒造本人修改过程"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g3:02915a7d:beautiful-place-sharing",
+        "objective": "把自己写的景物读给真实听众并如实保留交流",
+        "successCriterion": "本人声音与真实分享状态可核，准备稿不充已分享，不编同伴评价"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "用当前材料具体信息支持判断，分原文、比喻、示例和本人实际表现",
+        "successCriterion": "依据与判断关系清楚，未知和未完成保留；原稿声音、帮助与订正不由参考答案代填"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "先审核目标、评分、独立结构与充分未见库存，再按真实日期复测。每间隔一份拟议样题不当充分库存；原篇已学、提示与帮助保留，模拟日期和参考声音原稿不当本人长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "beautiful-place-writing",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "现代原页、完整现代课文与注释不复制进候选；以原创讲解和必要逐字短引核对。古代公版诗文单独明示。",
+    "materialStatus": "候选讲解、例题、检查与量规；目标对齐、教师、题族独立性、评分金样本和充分保持库存仍待。",
+    "pacing": "识读、本人实际书写、朗读与理解表达分次安排，不用一次短练习概括全部目标。"
+  }
+}

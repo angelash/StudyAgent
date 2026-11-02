@@ -1,0 +1,312 @@
+{
+  "at": "2026-11-02T13:22:33.309Z",
+  "baseCommit": "f8fab826a4e0bfc63ec39862f9fa02c8523f3454",
+  "branch": "main",
+  "localBranches": [
+    "main"
+  ],
+  "worktreeInventory": "worktree F:/workspace/github/StudyAgent\nHEAD f8fab826a4e0bfc63ec39862f9fa02c8523f3454\nbranch refs/heads/main\n\n",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "scripts/content/build-chinese-landscape-unit-candidates.cjs",
+      "bytes": 80101,
+      "sha256": "3330e6a4531cb0c4e532ce10ef7e0a67e405df35200e5ddab865746ec6054424",
+      "gitNormalizedSha256": "3330e6a4531cb0c4e532ce10ef7e0a67e405df35200e5ddab865746ec6054424"
+    },
+    {
+      "path": "scripts/qa/verify-chinese-poem-reading.cjs",
+      "bytes": 3081,
+      "sha256": "a588c54214073d59af524848965302dde60d44de6b90a49ae34b4fb50dcc0b5e",
+      "gitNormalizedSha256": "a588c54214073d59af524848965302dde60d44de6b90a49ae34b4fb50dcc0b5e"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-xisha-v1.json",
+      "bytes": 15781,
+      "sha256": "5b5b288171e95a726381fed68f8f55ad88cbfcac8ee1e537d0c58f2f1524a76d",
+      "gitNormalizedSha256": "5b5b288171e95a726381fed68f8f55ad88cbfcac8ee1e537d0c58f2f1524a76d"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-seaside-v1.json",
+      "bytes": 14541,
+      "sha256": "9e8158a97e80676de5fd04be218995be6681a65834ece433c6a9fa7ce8da78d2",
+      "gitNormalizedSha256": "9e8158a97e80676de5fd04be218995be6681a65834ece433c6a9fa7ce8da78d2"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-xiaoxingan-v1.json",
+      "bytes": 15249,
+      "sha256": "d91e4baaae8d9647e632b0fca409a355ad9a2e11ad24dff7635177fd699a8725",
+      "gitNormalizedSha256": "d91e4baaae8d9647e632b0fca409a355ad9a2e11ad24dff7635177fd699a8725"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-beautiful-place-writing-v1.json",
+      "bytes": 13101,
+      "sha256": "ecd9e08c08c69fc4cb058cdeb2d8eb7a51d5c2507db30e634fc34ef1d9ca4c67",
+      "gitNormalizedSha256": "ecd9e08c08c69fc4cb058cdeb2d8eb7a51d5c2507db30e634fc34ef1d9ca4c67"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-six-v1.json",
+      "bytes": 16926,
+      "sha256": "00248e2791c8c2c6cb7598ff3493b83a89af893a917a0b68f856dffab73dccd7",
+      "gitNormalizedSha256": "00248e2791c8c2c6cb7598ff3493b83a89af893a917a0b68f856dffab73dccd7"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-landscape-unit-v1.json",
+      "bytes": 193375,
+      "sha256": "c6c2351a4dcbd775e161b04831f03371884f8154da5af76bd02c553b30e5dabd",
+      "gitNormalizedSha256": "c6c2351a4dcbd775e161b04831f03371884f8154da5af76bd02c553b30e5dabd"
+    },
+    {
+      "path": "resources/curriculum/source-reviews/baidi-zhao-reading-v1.json",
+      "bytes": 882,
+      "sha256": "65a50fdf42878ba16f37305ad12f6de17d1f4452cb8c1bc053cd1b2d34675942",
+      "gitNormalizedSha256": "65a50fdf42878ba16f37305ad12f6de17d1f4452cb8c1bc053cd1b2d34675942"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 13568,
+      "sha256": "79bf158e87f8f9fadc5a1f15538bb911596247e8e23f3ce39d74a1f786b45741",
+      "gitNormalizedSha256": "012f64f084daf367d7e1170bcb408f875b9a1d39d4b339bd207260983b168638"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 174735,
+      "sha256": "a69c06042b1d40fc8e388d713ce508a78b46eebfbaeb149d24f0a54dcac38d51",
+      "gitNormalizedSha256": "32bfbf19430bdfb782d14b637b1262a7f4ac1ea55d8ea707c0d29e7c875c19f2"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 100783,
+      "sha256": "f089ad327eae269d58b7b3e7e84a0aad32886eebdfaa2d867331b0a36f74a462",
+      "gitNormalizedSha256": "bf366aebe6e062003ff87e7a2551e23619d68bc6f90fcd0b4212da520e081f30"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 106198,
+      "sha256": "7cbd7f5a8315b7fd3d4ea15d70c8e32a8ca7e8d71bdefb7874fdc6d8e93b4893",
+      "gitNormalizedSha256": "ef2fc9a1baf4095891598af5130a94366e7afaa97b66f469cb32acf0823cc109"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 15733,
+      "sha256": "d084d820ad41dc313a0babb75bf583b23b93d73568a0af5d094a4e42a167c4a9",
+      "gitNormalizedSha256": "54c201b533d71d91cf7d573f71fdb469de444a02112a7b0361728d3785313b2c"
+    },
+    {
+      "path": "doc/product/204-landscape-unit-main-ideas-and-real-writing.md",
+      "bytes": 4891,
+      "sha256": "7413ac8a5d4443de099b5635a852293df1eb16129b4387358861dbdeba11c767",
+      "gitNormalizedSha256": "7413ac8a5d4443de099b5635a852293df1eb16129b4387358861dbdeba11c767"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 34907,
+      "sha256": "c26bfdb4fd0125b0800d7629ee14264b2367beb89185ed295e6a740d76c9ddbf",
+      "gitNormalizedSha256": "89a8e9c591d507d24cb9af9468930f17b57bbae87997f1bfe7bdb5892a115694"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/browser/chinese-g3-beautiful-place-writing-v1-desktop.png",
+      "bytes": 227032,
+      "sha256": "d0776030633f58d707a3f31414fe66c14898cef19d8b1f7236d16408b6c664d5",
+      "gitNormalizedSha256": "790adbb98ade7e20dd67e6574e050506b1e23f527d5a8cca70f55dc689cbb61a"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/browser/chinese-g3-beautiful-place-writing-v1-mobile-table.png",
+      "bytes": 79089,
+      "sha256": "c6ee28938a63964852ebd6f9f2e17b818381ab56eaa8afc1fc5107b1081fc957",
+      "gitNormalizedSha256": "6d8a117bda12cb2311e8158dcc622ff5b523c05cf23fcebdc4e46cd20971b5bd"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/browser/chinese-g3-beautiful-place-writing-v1-table.png",
+      "bytes": 34406,
+      "sha256": "f5a88f347c8b3ea6dddf85afe4b26b1287dca473e90f17a4fef4e1a7aa824700",
+      "gitNormalizedSha256": "8f84276b319a5e60f1755de9d123d7e600b76f57a652f253acfeacc145d18aa6"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/browser/chinese-g3-garden-six-v1-desktop.png",
+      "bytes": 207722,
+      "sha256": "6110a2870b46303ac4f6f9aa207356a7106912470bb650697c9456a5961f0809",
+      "gitNormalizedSha256": "196f880b9e29448aff3dbe5c90e7b38f06f80fe60307767a9fce72ab73c1e535"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/browser/chinese-g3-garden-six-v1-table.png",
+      "bytes": 53504,
+      "sha256": "5c0d17115b91fc04d7801cffbdc9053e2e786c735ed9d9d377a811370cba9b30",
+      "gitNormalizedSha256": "6936f5223a8f5d969ea1f756c8117c2cd583fa140b48ae83cbf24468b7ac867c"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/browser/chinese-g3-seaside-v1-desktop.png",
+      "bytes": 223695,
+      "sha256": "20a2fbe1a611ff6e9b6482c38c1752e07c7bbae6a7a40f8b5bc0efd47b6667ba",
+      "gitNormalizedSha256": "7e4e5cc9522767cb47d92d67d2800220612448def1a4e6b39858b5b9610fc92a"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/browser/chinese-g3-seaside-v1-table.png",
+      "bytes": 46430,
+      "sha256": "15c9af3ada483c6571e831789ca3e2069c940c54edb11160b3aba76344d5262f",
+      "gitNormalizedSha256": "c820703495f215feb3da2f872a11624a9cb1bd8c2c94fd09f408c6afe6aa6692"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/browser/chinese-g3-xiaoxingan-v1-desktop.png",
+      "bytes": 244772,
+      "sha256": "dbff22ac4a18aecf58c8ba0ea5fa73b473afdee0c6d5ffbb370607dbb73f989a",
+      "gitNormalizedSha256": "e326feb024292eab7b8c4bf77ebb0bfdc246ca5846477c0e9e0312e032c4d422"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/browser/chinese-g3-xiaoxingan-v1-table.png",
+      "bytes": 45963,
+      "sha256": "045b2d9ac546c59bb8f30aa000aa7e363bcaf6a5e3884ae1332be98733d875c0",
+      "gitNormalizedSha256": "e2ef9b22e879a71b8c4ad09978b7db6d553524cd2965d30b5919ced2ba5ffe9e"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/browser/chinese-g3-xisha-v1-desktop.png",
+      "bytes": 236092,
+      "sha256": "a90cb8e025eefba28e1b17f8834bdbfe9c706bd55c2d8d72837c7a9f1b2cd882",
+      "gitNormalizedSha256": "c5601fe79f064b5a22f16fedb7e847ef2b0f1ed20acd7960dc4d7a4aa35a63bc"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/browser/chinese-g3-xisha-v1-table.png",
+      "bytes": 53626,
+      "sha256": "fffe041c592786357825e81fbbd84d4c1bf6ee9b40bf3fd9cb9c82a38d402b83",
+      "gitNormalizedSha256": "8611f43ce7a683d4c4546db3d80444680742c1da7f8fc479c5412cbf8f8a0e23"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/browser/receipt.json",
+      "bytes": 1607,
+      "sha256": "ae06f7b0fb825fa687dc5f26df742c7d73cd6bf8c364b7af8b776656aa4672d8",
+      "gitNormalizedSha256": "ae06f7b0fb825fa687dc5f26df742c7d73cd6bf8c364b7af8b776656aa4672d8"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/browser/runner.cjs",
+      "bytes": 16856,
+      "sha256": "f6bcbc1172e0ce5969fe2ca118fdd334c9268d3e0d29ac2c91e2ac254f081b06",
+      "gitNormalizedSha256": "f6bcbc1172e0ce5969fe2ca118fdd334c9268d3e0d29ac2c91e2ac254f081b06"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/checks/b4-landscape-unit-archive-scan.json",
+      "bytes": 997,
+      "sha256": "1c283749dc603ab94f024294da802e306f5a4bf9d30ee492b451e532e8438c97",
+      "gitNormalizedSha256": "1c283749dc603ab94f024294da802e306f5a4bf9d30ee492b451e532e8438c97"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/checks/content-worklist-landscape-unit-wording-second.json.gz",
+      "bytes": 114205,
+      "sha256": "5333b4a91677c3ae2a420c01ef1261cbcd0e620947d232aef1271fa7ba7ba61f",
+      "gitNormalizedSha256": "3a8c9ea6a1b41d6fbc5391b50d7ffb1493dba7e2a18b32903ce05214e3f35e31"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/checks/landscape-activities-materials-http-first.json",
+      "bytes": 2271,
+      "sha256": "d47fb20e84645f70fe8ca87a424764394adc03829d87646073f1e40a5c5058af",
+      "gitNormalizedSha256": "d47fb20e84645f70fe8ca87a424764394adc03829d87646073f1e40a5c5058af"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/checks/landscape-garden-materials-http-wording-second.json",
+      "bytes": 1611,
+      "sha256": "edac25e338874bd8ad023c415b7322629f7fb8c8c67cbeca22a1230905c4198e",
+      "gitNormalizedSha256": "edac25e338874bd8ad023c415b7322629f7fb8c8c67cbeca22a1230905c4198e"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/checks/landscape-prose-materials-http-first.json",
+      "bytes": 2947,
+      "sha256": "a33565c030affd439cdbdb202bbfd11a8dc0ef4a131090fe7b80e8f0a019ba48",
+      "gitNormalizedSha256": "a33565c030affd439cdbdb202bbfd11a8dc0ef4a131090fe7b80e8f0a019ba48"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/checks/landscape-unit-answer-wording-revision.json",
+      "bytes": 1295,
+      "sha256": "33a8fcd75cfaf4059fecab15e2fe43433e125be92b954fd92278f51a56cb7743",
+      "gitNormalizedSha256": "33a8fcd75cfaf4059fecab15e2fe43433e125be92b954fd92278f51a56cb7743"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/checks/landscape-unit-before-answer-wording-fix.json.gz",
+      "bytes": 23768,
+      "sha256": "b00c4c6f09dd63214cada8b4ec775450e06f7f96b50323479e9d8c9defc51839",
+      "gitNormalizedSha256": "b00c4c6f09dd63214cada8b4ec775450e06f7f96b50323479e9d8c9defc51839"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/checks/landscape-unit-before-pronunciation-review.json.gz",
+      "bytes": 119227,
+      "sha256": "ab1dd5c5b2069292a3b48422616b3361474cf8434d8ee4d970b6911da5c48aff",
+      "gitNormalizedSha256": "ab1dd5c5b2069292a3b48422616b3361474cf8434d8ee4d970b6911da5c48aff"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/checks/landscape-unit-generation-readback.json",
+      "bytes": 1564,
+      "sha256": "e383aa3c6335270311cab2da6a92d28bf0715bf5a673c51ee886e612b130f6e1",
+      "gitNormalizedSha256": "e383aa3c6335270311cab2da6a92d28bf0715bf5a673c51ee886e612b130f6e1"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/checks/landscape-unit-generation-wording-second.json",
+      "bytes": 1564,
+      "sha256": "c82f88790ed2b24d128c00abfe364cebcbce7401e36ffe195a4b259e797b59f4",
+      "gitNormalizedSha256": "c82f88790ed2b24d128c00abfe364cebcbce7401e36ffe195a4b259e797b59f4"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/checks/landscape-unit-pronunciation-correction.json",
+      "bytes": 454,
+      "sha256": "cd135b6c74b094465061bae2f2e1e427b6987859918e083d6ae1e3f296b9ef3f",
+      "gitNormalizedSha256": "cd135b6c74b094465061bae2f2e1e427b6987859918e083d6ae1e3f296b9ef3f"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/checks/landscape-unit-static-first.json",
+      "bytes": 1205,
+      "sha256": "aca4306a473dbb026b7906dfbc11154771995aff4f13716ac2fe9c23fb7f2734",
+      "gitNormalizedSha256": "aca4306a473dbb026b7906dfbc11154771995aff4f13716ac2fe9c23fb7f2734"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/checks/landscape-unit-static-wording-second.json",
+      "bytes": 1288,
+      "sha256": "fd366bf5c29912efef6affdd4db5102b383fac67d994438dbecf4639073ae8ac",
+      "gitNormalizedSha256": "fd366bf5c29912efef6affdd4db5102b383fac67d994438dbecf4639073ae8ac"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/checks/poem-reading-regression-garden-six.json",
+      "bytes": 347,
+      "sha256": "349a953c48d9206ebb1a4537d9897e05fb8d27d7a15397a6865dd9bfbd65e95f",
+      "gitNormalizedSha256": "349a953c48d9206ebb1a4537d9897e05fb8d27d7a15397a6865dd9bfbd65e95f"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/manifest.json",
+      "bytes": 5624,
+      "sha256": "b1c6f8764c5741e607431be1d6fce597e209791bf2a73d71d84a4a7d25834683",
+      "gitNormalizedSha256": "b1c6f8764c5741e607431be1d6fce597e209791bf2a73d71d84a4a7d25834683"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/receipt.json",
+      "bytes": 5665,
+      "sha256": "d79068d87b95a06c5a6950aedfe1e8113a9fbd41de106a58f00e44c7aaff101c",
+      "gitNormalizedSha256": "d79068d87b95a06c5a6950aedfe1e8113a9fbd41de106a58f00e44c7aaff101c"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/source-intake/b4-source-landscape-unit-first.json",
+      "bytes": 6447,
+      "sha256": "04df049277d3cd915b22a188cd2ebc6352e84e3655289591112b483b9aae11fd",
+      "gitNormalizedSha256": "04df049277d3cd915b22a188cd2ebc6352e84e3655289591112b483b9aae11fd"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/source-intake/b4-source-nature-unit-first.json",
+      "bytes": 5947,
+      "sha256": "6482a7dbd0f2db53c079b8d06047932107d84bd2b9b9978f31ba7325e28394dc",
+      "gitNormalizedSha256": "6482a7dbd0f2db53c079b8d06047932107d84bd2b9b9978f31ba7325e28394dc"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/sources.json.gz",
+      "bytes": 123347,
+      "sha256": "4a3655744b24541eda470564f54dfd1c7301f0d3701bdc017aa607745a3c174a",
+      "gitNormalizedSha256": "ec095bc9b6e8ca0266ffc80ebb064a7cd9884b9c879f15c2d12d3a7bc6196c87"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/tools/archive-landscape-unit.cjs",
+      "bytes": 7965,
+      "sha256": "94cf8f8b8f6ff156f3bbb199a8cf6f4b9109aa6e16c73996e8a35d7b25a10854",
+      "gitNormalizedSha256": "94cf8f8b8f6ff156f3bbb199a8cf6f4b9109aa6e16c73996e8a35d7b25a10854"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-landscape-unit-candidates/tools/stage-landscape-unit.cjs",
+      "bytes": 3420,
+      "sha256": "8ae58c4da3fabfdeea59c75c8d84e56b25d828a48d6863fef4fd7abfa12f16c9",
+      "gitNormalizedSha256": "8ae58c4da3fabfdeea59c75c8d84e56b25d828a48d6863fef4fd7abfa12f16c9"
+    }
+  ]
+}
