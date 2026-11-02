@@ -1,0 +1,109 @@
+{
+  "format": "study-block-four-prediction-final-candidates-v1",
+  "at": "2026-11-02T11:49:39.551Z",
+  "baseCommit": "657225312bdc1a8b7f5da0e640e45218aed14012",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "newDrafts": 2,
+  "targetCounts": [
+    5,
+    8
+  ],
+  "targetGroups": 13,
+  "newDefinitionCandidates": 10,
+  "newCandidateQuestions": 91,
+  "purposeCounts": {
+    "immediate": 39,
+    "proposedRetention": 52
+  },
+  "modes": {
+    "audio_record": 28,
+    "image_upload": 7,
+    "short_answer": 56
+  },
+  "source": {
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "physicalPages": [
+      65,
+      66,
+      67
+    ],
+    "previouslyVisuallyReviewed": true,
+    "originalImagesCommitted": false
+  },
+  "validation": {
+    "draftHttp": "checks/prediction-final-drafts-http-first.json",
+    "fullMaterialBeforeEditorialRevision": "checks/prediction-final-materials-http-first.json",
+    "editorialRevision": "checks/prediction-final-wording-revision.json",
+    "affectedGarden56QuestionsAfterRevision": "checks/prediction-final-garden-http-wording-second.json",
+    "unchangedWriting35QuestionsProvedByExactDifference": true,
+    "currentWholeBundleNotClaimedAsSingleRepeated91Run": true,
+    "exactSourceCitationsAndMetadataPreserved": true,
+    "originalCommandsReplayed": true,
+    "incompletePublicationRejected": true,
+    "browser": {
+      "buildId": "ELFqjEh0ZktmjW7mcCIOL",
+      "passed": 4,
+      "failed": 0,
+      "report": "browser/receipt.json",
+      "screenshotsVisuallyReviewed": 5
+    },
+    "gapCounts": [
+      {
+        "file": "story-continuation",
+        "gaps": 64
+      },
+      {
+        "file": "garden-four",
+        "gaps": 102
+      }
+    ]
+  },
+  "reusedEngineering": {
+    "applicationContractsAndTestsUnchangedSince": "65722531",
+    "apiSourceUnchangedSince": "4d26c399",
+    "fullApi": {
+      "passed": 3051,
+      "failed": 0,
+      "conditionalSkips": 131
+    },
+    "evidence": "../block-four-reading-preview-and-dog/receipt.json",
+    "countsNotAddedToContentBatch": true
+  },
+  "boundaries": {
+    "teacherReviewed": false,
+    "scoringReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0,
+    "published": 0,
+    "adoptions": 0,
+    "learnerResponses": 0,
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "formal": {
+    "schema": 24,
+    "revision": 188,
+    "protectedRuntimeFiles": 1063
+  },
+  "remaining": {
+    "registeredBooks": 449,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 101,
+    "booksWithDirectory": 113,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3512,
+    "lessonsWithCandidateFiles": 25,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3487,
+    "authoredFollowingMaterialCandidates": 1036,
+    "materialBundlesWithStaleDraftIdentity": 0,
+    "firstLesson44FollowupsNotIncludedIn1036": true,
+    "next": "Continue exact-source observation unit and all remaining per-lesson/GESP content, author sources and teacher/scoring/family/stock reviews, then block5 engineering and real acceptance."
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit4:entry5",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 65,
+    "pageEnd": 65,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:continuation-given-picture",
+      "version": 1,
+      "name": "区分原图信息与续写想象",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "图文与习作",
+      "objective": "读取已给图画和气泡，确定继续写作需要承接的条件",
+      "successCriterion": "李晓明快过生日、父母外地工作与同伴讨论是已给；具体庆祝办法、本人心情和结果需由后续创作明确，不推家庭忽视或精确年龄",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:continuation-coherent-story",
+      "version": 1,
+      "name": "完成有联系和结果的续写",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "习作表达",
+      "objective": "根据前图人物处境写出行动、经过与结果相联系的后续",
+      "successCriterion": "新行动承接前情，有具体经过与回应，可以有不同合理结局；原图、本人新增内容和参考示例分清，不强定蛋糕聚会或统一字数",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:continuation-own-revision",
+      "version": 1,
+      "name": "朗读并用修改符号订正本人原稿",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "习作修改",
+      "objective": "小声读本人续写，找明显问题并用已学修改符号改正",
+      "successCriterion": "保留本人原稿、实际标记和改后内容，说明怎样改清楚；下载范文、只抄改后稿或文字说改过不代实际原稿订正",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:continuation-reasoned-preference",
+      "version": 1,
+      "name": "交流习作并说明偏好理由",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "习作交流",
+      "objective": "交流实际习作后选择喜欢内容，联系具体表达说明理由",
+      "successCriterion": "偏好有可定位的情节或表达依据，允许不同喜欢；真实同伴作品和示例比较分别记录，不按人气或与范文相同程度评全部能力",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:continuation-given-picture",
+    "source:chinese:g3:02915a7d:continuation-coherent-story",
+    "source:chinese:g3:02915a7d:continuation-own-revision",
+    "source:chinese:g3:02915a7d:continuation-reasoned-preference",
+    "core:chinese:detail-evidence"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "选定原件全部原页、任务、图示与例句已逐张查看。只核当前教材范围，不把示范、续写、订正或拟议材料当教师审核和真实活动完成。",
+    "pages": [
+      {
+        "page": 65,
+        "visualChecked": true,
+        "statement": "物理65印60三图、气泡和最后问号已看：李晓明快生日、父母外地工作、同伴我们可以，未给完成安排；写后小声读、修改符号订正、交流喜欢作品，未给统一字数或必须标题。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "习作：续写故事",
+    "activity": true,
+    "givenPictures": 3,
+    "lastPictureIsQuestion": true,
+    "liXiaomingBirthdaySoon": true,
+    "liXiaomingAgeSpecified": false,
+    "parentsWorkingElsewhere": true,
+    "requiredEndingIsBirthdayParty": false,
+    "requiredWordCount": null,
+    "titleRequired": false,
+    "requiredTasks": [
+      "读图承接前情",
+      "完成后续故事",
+      "小声读并用已学修改符号订正",
+      "交流喜欢的习作"
+    ],
+    "writingCharacters": [],
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "续写故事：接住已给信息，把后来发生的事写完整",
+    "activation": {
+      "prompt": "原创前卡：同学谈起图书分享，小南说自己的书还在远方的家里，旁边两人商量“我们可以……”。先说已给了什么，再提出一种可能后续，别把自己的主意说成原卡已发生。",
+      "expectedObservation": "能提取人物需要与同伴商量，补出一种有联系的行动，同时保留已有信息和新写想象的区别。",
+      "bridge": "生日三图也留下“我们可以”和末尾问号，后续要从这些条件接着写。"
+    },
+    "concept": {
+      "explanation": "先看三幅图与气泡：同伴谈自己过生日的经历，李晓明想到自己也快生日、父母在外地工作，另有同伴商量可以怎样做。原页没有给最终安排，也没有证明父母不关心他、他独自生活或一定没有联系；前两位说九岁不等原页已明确李晓明的精确年龄。续写可以设计不同合理办法，重要的是承接快生日与同伴商量，让“谁为什么这样做、怎样做、后来怎样”连起来。比如先了解他的想法，再准备一件有心意的事，写出具体动作和回应；这只是可选思路，不要求所有人都买蛋糕或办同一种聚会。人物心情可以通过自己新增的动作、话语和变化表现，不能把创作当原图已明确的事实。写完后小声读一遍，检查人物指代、先后联系、缺词或重复等明显问题，用学过的修改符号在本人原稿上订正，保留原稿与改后。交流时说喜欢哪一处以及具体理由，不以谁最受欢迎、篇幅最长或最像范文为唯一标准。本页没有统一字数或必须标题的要求，完整与清楚按实际作品判断。",
+      "points": [
+        "先列已给条件，再补后续",
+        "行动、经过与结果相联系",
+        "不同合理结局可以成立",
+        "原稿、修改标记和改后分别留",
+        "偏好联系具体表达和理由"
+      ]
+    },
+    "example": {
+      "situation": "原创示例接图书前卡：小南的书在远方，同伴想让他参加图书分享。这不是生日原图的唯一答案。",
+      "steps": [
+        {
+          "explanation": "承接处境并确定人物目标：小禾先问小南愿不愿一起选班级图书，没有擅自替他决定。",
+          "board": [
+            "前情：书不在身边",
+            "新行动：先问想法",
+            "目标：一起参加分享"
+          ]
+        },
+        {
+          "explanation": "写具体经过：“小南点点头，两人从书架选出一本动物故事。小禾指着目录问：你想先讲哪一篇？小南翻到折角处，开始给他们介绍。”动作与对话使过程可读。",
+          "board": [
+            "选书和问目录",
+            "小南实际回应",
+            "经过支持后面结果"
+          ]
+        },
+        {
+          "explanation": "给出结果并核对联系：“分享时，小南举起书介绍了自己喜欢的片段。课后他说，下次也想把远方家里的书带来。”这是创作结果，不能倒写成前卡已给。",
+          "board": [
+            "结果：参与分享",
+            "回应与前情相连",
+            "不同续写另有可能"
+          ]
+        }
+      ],
+      "conclusion": "有前情、具体行动和结果，就能形成可核对的后续；参考内容帮助看方法，不要求照抄为本人作品。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "原图条件与后续创作分开",
+        "headers": [
+          "已给图文",
+          "续写可补什么",
+          "不能冒充原图事实"
+        ],
+        "rows": [
+          [
+            "李晓明快生日，父母外地工作",
+            "根据处境设计关心办法",
+            "不能断言父母忽视或永不联系"
+          ],
+          [
+            "同伴谈过生日的经历",
+            "衔接同伴为何注意到他",
+            "不能强定他精确九岁"
+          ],
+          [
+            "同伴说我们可以，末尾问号",
+            "具体做法、过程与人物回应",
+            "不能说只有蛋糕聚会一种正确结局"
+          ],
+          [
+            "本人已写的续篇",
+            "朗读、标记问题、订正",
+            "范文或抄好的清稿不代本人原稿"
+          ],
+          [
+            "实际交流到的习作",
+            "指出喜欢的具体情节与理由",
+            "没有交流不补造同伴作品和回应"
+          ]
+        ],
+        "explanation": "用表格检查内容来源和完成阶段；新情节可以想象，作为创作说明，不改写成原图已发生或本人真实生活。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "把父母外地工作直接改成不关心孩子，再规定所有续写必须买大蛋糕。",
+        "alternatives": [
+          "可能补充猜测时未标身份，也可能以熟悉范文当唯一标准。"
+        ],
+        "verification": "分别指出原气泡已经说什么、新稿加了什么，比较另一种同样承接处境的办法。",
+        "correctiveFeedback": "保留真实图文范围，创作可有多种合理发展，评价联系与表达，不强定唯一物品或家庭经历。"
+      },
+      {
+        "observation": "一开始就写大家很开心结束，中间谁做了什么没有交代。",
+        "alternatives": [
+          "可能只想到结果，也可能省略听众尚不知道的过程。"
+        ],
+        "verification": "请读者按前情、行动、结果复述，找出需要补具体动作或回应的位置。",
+        "correctiveFeedback": "补一个真正连接前情和结果的过程，不能只加很多形容词代事情。"
+      },
+      {
+        "observation": "只有一份整齐清稿，却声称已用修改符号订正本人原稿。",
+        "alternatives": [
+          "可能只保存改后稿，也可能把看懂示例当自己做过。"
+        ],
+        "verification": "核对本人原稿和实际标记，指出原问题、所用符号与改后内容；无原稿保持无法核查。",
+        "correctiveFeedback": "表达质量和修改过程分别看，不能由清稿倒造原问题或本人订正证据。"
+      }
+    ],
+    "transfer": {
+      "scenario": "换成同伴要参加阅读或班级展示却遇到具体困难的原创前情；也可继续原生日图，但应标明原图与新写内容。",
+      "prompt": "独立写有行动、经过与结果的后续。小声读本人原稿并用已学符号订正一处实际问题，再说明喜欢一份真实作品或标明示例的理由。",
+      "expectedStrategy": "承接已有条件，后续联系清楚；实际原稿、订正与交流范围分别保留，不由参考或角色示范代本人过程。"
+    },
+    "summary": {
+      "synthesis": "续写接住前图，补出可以读懂的后来。写完自己读，再把明显问题改清楚，交流时用具体内容说理由。",
+      "takeaways": [
+        "已给与想象分开",
+        "后续有具体过程与结果",
+        "结局可以合理不同",
+        "原稿与实际订正可核对",
+        "喜欢有具体理由"
+      ]
+    },
+    "citations": [
+      {
+        "page": 65,
+        "quote": "接下来可能会发生什么？请你把故事\n写完。",
+        "usedFor": "concept"
+      },
+      {
+        "page": 65,
+        "quote": "写好以后小声读一遍",
+        "usedFor": "example"
+      },
+      {
+        "page": 65,
+        "quote": "用学过的修改符号",
+        "usedFor": "check"
+      },
+      {
+        "page": 65,
+        "quote": "和同学交流习作之后，说说你更喜欢谁写的故事。",
+        "usedFor": "transfer"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:continuation-given-picture",
+        "objective": "读取已给图画和气泡，确定继续写作需要承接的条件",
+        "successCriterion": "李晓明快过生日、父母外地工作与同伴讨论是已给；具体庆祝办法、本人心情和结果需由后续创作明确，不推家庭忽视或精确年龄"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:continuation-coherent-story",
+        "objective": "根据前图人物处境写出行动、经过与结果相联系的后续",
+        "successCriterion": "新行动承接前情，有具体经过与回应，可以有不同合理结局；原图、本人新增内容和参考示例分清，不强定蛋糕聚会或统一字数"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:continuation-own-revision",
+        "objective": "小声读本人续写，找明显问题并用已学修改符号改正",
+        "successCriterion": "保留本人原稿、实际标记和改后内容，说明怎样改清楚；下载范文、只抄改后稿或文字说改过不代实际原稿订正"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g3:02915a7d:continuation-reasoned-preference",
+        "objective": "交流实际习作后选择喜欢内容，联系具体表达说明理由",
+        "successCriterion": "偏好有可定位的情节或表达依据，允许不同喜欢；真实同伴作品和示例比较分别记录，不按人气或与范文相同程度评全部能力"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "判断对应当前图文、原稿或真实交流信息，补充想象有明确身份",
+        "successCriterion": "原图已给、合理推测和本人续写分别标明，不用参考稿、后改或假同伴回应替真实原记录"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "审核目标、量规、未见结构与充分库存后按真实日期安排。已读原篇和示例、修改后的答案不恢复首次未见资格；拟议间隔、角色演示或模拟日期不能证明真人保持。"
+    }
+  },
+  "editorNotes": {
+    "slug": "story-continuation",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "materialStatus": "原创教学与候选材料，教师对齐、独立结构、评分及充分保持库存仍待审。",
+    "sourceBoundary": "原图文、角色示范、本人原稿与真实同伴活动分别核查；不以模板或题数代表实际完成。"
+  }
+}
