@@ -1,0 +1,170 @@
+{
+  "stats": {
+    "startTime": "2026-11-02T08:39:12.714Z",
+    "duration": 139092.635,
+    "expected": 13,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "rawReportSha256": "95f58f641e7f73149125239226da2dbc56a02913f8dbb0168cb064fde127c995",
+  "rawReportLocalOnly": true,
+  "cases": [
+    {
+      "file": "gesp-teaching-candidates.spec.ts",
+      "title": "GESP teaching: reviewers can inspect every original lesson in the existing workbench on desktop and mobile",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 12170,
+          "error": null
+        }
+      ]
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: a legacy receipt without first-response metadata never displays an independent-completion claim",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 19333,
+          "error": null
+        }
+      ]
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: code-first feedback stays held until both probe first responses are saved",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 17289,
+          "error": null
+        }
+      ]
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: exact original task and complete independent code survive task changes, reloads and a second tab",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 9656,
+          "error": null
+        }
+      ]
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: disabled storage requires the complete code download before mobile navigation and explicit import",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 9424,
+          "error": null
+        }
+      ]
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: a lost probe reply retains the original full command through reload and rejects another atom",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 2438,
+          "error": null
+        }
+      ]
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: a changed parent scope keeps the original full code visible for export and blocks new writes",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 4760,
+          "error": null
+        }
+      ]
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: a parent restores the exact linked child and certification level while keeping each level draft separate",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 3284,
+          "error": null
+        }
+      ]
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: a lost parent confirmation replays its original version while a later confirmed scope stays current",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 3103,
+          "error": null
+        }
+      ]
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: a parent with disabled storage downloads the full selection before changing levels and restores it explicitly",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 3860,
+          "error": null
+        }
+      ]
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: without Navigation API browser back preserves the full original-task code until its exact download",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 5787,
+          "error": null
+        }
+      ]
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: actual isolated code execution recovers one lost receipt while preserving later complete code edits",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 16146,
+          "error": null
+        }
+      ]
+    },
+    {
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: delayed parent reads and a disconnected refresh cannot replace another child or erase its complete draft",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 2600,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

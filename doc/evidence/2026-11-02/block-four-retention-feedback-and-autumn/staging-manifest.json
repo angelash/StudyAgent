@@ -1,0 +1,720 @@
+{
+  "at": "2026-11-02T09:35:07.979Z",
+  "baseCommit": "a30fc50f8786241ec835cedff382acb38092e9a8",
+  "branch": "main",
+  "localBranches": [
+    "main"
+  ],
+  "worktreeInventory": "worktree F:/workspace/github/StudyAgent\nHEAD a30fc50f8786241ec835cedff382acb38092e9a8\nbranch refs/heads/main\n\n",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "resources/compatibility/gesp-before-evidence-schema35-reader-v1.json.gz",
+      "bytes": 313837,
+      "sha256": "f581c8fe1c2349d9e383fc19dd7b360d9c7226055e889fce0b7a1cf13ca88a24",
+      "gitNormalizedSha256": "2b6951f7fdeff4369348aa1874628f05ea63a4c84fa371187072b781d951be7d"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-autumn-activities-v1.json",
+      "bytes": 91846,
+      "sha256": "360727ee0e488e7c1c75ee40525e6a741bbf97f17b68eacaad199841be8e70c1",
+      "gitNormalizedSha256": "360727ee0e488e7c1c75ee40525e6a741bbf97f17b68eacaad199841be8e70c1"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-autumn-v1.json",
+      "bytes": 137731,
+      "sha256": "718918e78725424a94ff91a62c9c794c5c5b403d48361419d4b32b7c27802303",
+      "gitNormalizedSha256": "718918e78725424a94ff91a62c9c794c5c5b403d48361419d4b32b7c27802303"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-autumn-poems-v1.json",
+      "bytes": 13853,
+      "sha256": "75b995c4566946f41eb3206d1e6a729e063b996756618bc63d3000bd7ae9f414",
+      "gitNormalizedSha256": "75b995c4566946f41eb3206d1e6a729e063b996756618bc63d3000bd7ae9f414"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-autumn-rain-v1.json",
+      "bytes": 15160,
+      "sha256": "05cf12243b36ce949b286bb05ba42eaf863cb9f96614ecb7d0364dc149f4ee6e",
+      "gitNormalizedSha256": "05cf12243b36ce949b286bb05ba42eaf863cb9f96614ecb7d0364dc149f4ee6e"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-autumn-sounds-v1.json",
+      "bytes": 11689,
+      "sha256": "a3011a0d1be77263edd7ef8fbdc8b036ac539723f25e57c5fdeed8c9c46e85e0",
+      "gitNormalizedSha256": "a3011a0d1be77263edd7ef8fbdc8b036ac539723f25e57c5fdeed8c9c46e85e0"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-diary-v1.json",
+      "bytes": 12058,
+      "sha256": "c98ad54634dca17c6b26257c750ad6649d5d5f7ac333404dd649480893e29fce",
+      "gitNormalizedSha256": "c98ad54634dca17c6b26257c750ad6649d5d5f7ac333404dd649480893e29fce"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-two-v1.json",
+      "bytes": 12855,
+      "sha256": "130b6a9828ad783f107945c5a61e9d3a65f91d6a119c822ccc22b7bc3e2aff08",
+      "gitNormalizedSha256": "130b6a9828ad783f107945c5a61e9d3a65f91d6a119c822ccc22b7bc3e2aff08"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-pavement-v1.json",
+      "bytes": 15772,
+      "sha256": "128746a92f2e5d07e6dafacce022b7a67dbbb9e2caee7e5a5594c4fcac4bf165",
+      "gitNormalizedSha256": "128746a92f2e5d07e6dafacce022b7a67dbbb9e2caee7e5a5594c4fcac4bf165"
+    },
+    {
+      "path": "scripts/content/build-chinese-autumn-activities.cjs",
+      "bytes": 21024,
+      "sha256": "6ce818574b8fd6993d3f4dd4edd0eab57daf949c9221d4ea5a626acd78b20746",
+      "gitNormalizedSha256": "6ce818574b8fd6993d3f4dd4edd0eab57daf949c9221d4ea5a626acd78b20746"
+    },
+    {
+      "path": "scripts/content/build-chinese-autumn-activity-materials.cjs",
+      "bytes": 29055,
+      "sha256": "2a230c23c0ee52f880e089089867b85aa2a6f36f90f306d9423ac8d32cc0be27",
+      "gitNormalizedSha256": "2a230c23c0ee52f880e089089867b85aa2a6f36f90f306d9423ac8d32cc0be27"
+    },
+    {
+      "path": "scripts/content/build-chinese-autumn-lessons.cjs",
+      "bytes": 24525,
+      "sha256": "bead2e45a73968c06230c23eff0cc04f9ec8deb152f624f06e0a452a397ec60c",
+      "gitNormalizedSha256": "bead2e45a73968c06230c23eff0cc04f9ec8deb152f624f06e0a452a397ec60c"
+    },
+    {
+      "path": "scripts/content/build-chinese-autumn-materials.cjs",
+      "bytes": 41671,
+      "sha256": "15528e548816e7a8e12d1e0e2783c9ab6ccb9d2e8fbcc47fde70dc1b4efa68df",
+      "gitNormalizedSha256": "15528e548816e7a8e12d1e0e2783c9ab6ccb9d2e8fbcc47fde70dc1b4efa68df"
+    },
+    {
+      "path": "apps/api/src/infrastructure/domain-database.ts",
+      "bytes": 55005,
+      "sha256": "a535c1898ecd796756d138b319e7322bf8856e1f9bd72b0e9b39d8a54113c974",
+      "gitNormalizedSha256": "905b3af2794cae9957d5df136f7674f4e8453c71b9bf50d8ecce5f0241ac7db5"
+    },
+    {
+      "path": "apps/api/src/infrastructure/gesp-evidence-reader.integration.test.ts",
+      "bytes": 7593,
+      "sha256": "4cf2f2b9066c486a20a5b8ecbfa3db0339d681fba4149e1f5492dd34ac91150c",
+      "gitNormalizedSha256": "4cf2f2b9066c486a20a5b8ecbfa3db0339d681fba4149e1f5492dd34ac91150c"
+    },
+    {
+      "path": "apps/api/src/infrastructure/textbook-edition-reader.integration.test.ts",
+      "bytes": 6149,
+      "sha256": "819b944b665070b41ad246874181d39117fed07405e6ee16ed4866a30d61ff99",
+      "gitNormalizedSha256": "dac0e82a27be94666ba149d23788398e127b05259e2795bf668c91142531b831"
+    },
+    {
+      "path": "apps/api/src/infrastructure/textbook-teaching-adoption-native.integration.test.ts",
+      "bytes": 10152,
+      "sha256": "a3e8b423be2f026eb42fc4be76335cbf2e532b9f02198f14d76b2ec5b86764a3",
+      "gitNormalizedSha256": "059e5fe27b0466ec69afadce28462ef413429b4aec3cc9fb8746bbe81e36b22f"
+    },
+    {
+      "path": "apps/api/src/infrastructure/textbook-teaching-early33-readers.integration.test.ts",
+      "bytes": 7350,
+      "sha256": "e8317b01a9f8ba99eb1dc1c32b73a4c6f0b4bcb1c4e4d29c173318f8f8303156",
+      "gitNormalizedSha256": "5cb0de5c2925c2a444572266d41bbc36f8321965d635849f1d78dd382e152e3f"
+    },
+    {
+      "path": "apps/api/src/infrastructure/textbook-teaching-native.integration.test.ts",
+      "bytes": 14279,
+      "sha256": "a62e38d71fe73ee3670280c193d427ca26b904191ebc13ddc4ef668431b53df9",
+      "gitNormalizedSha256": "a68fc22d4b95d098dfc8d6b383b922271de464cb23ea0263e2b55f636b825b12"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching.integration.test.ts",
+      "bytes": 28865,
+      "sha256": "cef5e0c4145a7cb43e3f47f5c797fc628e483160370854a9b91433952a825148",
+      "gitNormalizedSha256": "63bad60f00a1e268fc9bd6e1259da76c2f3a119070f4746243378dc7cb255293"
+    },
+    {
+      "path": "apps/api/src/modules/gesp/gesp-feedback-boundary.integration.test.ts",
+      "bytes": 13647,
+      "sha256": "b0cd578836dbc58514635d87fdc22237740a77b652f82d1f9a2c8678b7f2b436",
+      "gitNormalizedSha256": "b0cd578836dbc58514635d87fdc22237740a77b652f82d1f9a2c8678b7f2b436"
+    },
+    {
+      "path": "apps/api/src/modules/gesp/gesp-learning-loop.test.ts",
+      "bytes": 19843,
+      "sha256": "76329cec834555c98948a1709f0d628de140ad04b6dee315a1decfef6e5653b1",
+      "gitNormalizedSha256": "1d67aabe6dcf19f59b086984c6a8fce5ab40c4ee42578cfe48fc3ba0b8149972"
+    },
+    {
+      "path": "apps/api/src/modules/gesp/gesp.service.ts",
+      "bytes": 58321,
+      "sha256": "6ef36ca1bc0d784ba51364610612ea24e844931506dddeea28ea141046860491",
+      "gitNormalizedSha256": "cc0c8ec1d4def3bac4a831fbc718494d920bbec95c5350097465a03dad7067d8"
+    },
+    {
+      "path": "apps/web/app/parent/gesp/workbench.tsx",
+      "bytes": 22369,
+      "sha256": "f370271d4d964cfd12b0aa16bc881741bd30862fabe86b9a175c5242fffd372e",
+      "gitNormalizedSha256": "f370271d4d964cfd12b0aa16bc881741bd30862fabe86b9a175c5242fffd372e"
+    },
+    {
+      "path": "apps/web/app/student/gesp/workbench.tsx",
+      "bytes": 25961,
+      "sha256": "4788229492df3df4947fd05f13e15ff416ab1414fcca805bb8876f4dba383bfe",
+      "gitNormalizedSha256": "e36fcf4877af90a5b2bf710fa3410a1ae6325f9e5f24960c9f194bee12a96c36"
+    },
+    {
+      "path": "packages/contracts/src/gesp.ts",
+      "bytes": 11071,
+      "sha256": "0f7ac55837776ec465ed6f60b632b305b02b00104c1ba8300bdc3415139cc6f1",
+      "gitNormalizedSha256": "6bf8707dac3c8352f83747e560227ebd7d4857d8e8c38de3fc195cbf0af00a39"
+    },
+    {
+      "path": "scripts/operations/database-reader-guard.cjs",
+      "bytes": 1398,
+      "sha256": "7c9129e0aa41e5ee41b99c5345439bf81e5fedf2e722b21198d097aa2cd95b53",
+      "gitNormalizedSha256": "7d6abd092001d8f677cb4ee6bbac290b6eb56da431fe623c34b1c7cf05d3441a"
+    },
+    {
+      "path": "scripts/qa/verify-chinese-following-drafts.cjs",
+      "bytes": 15532,
+      "sha256": "e481ad5a7c41e995a09ace85947d627213a1f3d2a841af681675b8720e80115f",
+      "gitNormalizedSha256": "e481ad5a7c41e995a09ace85947d627213a1f3d2a841af681675b8720e80115f"
+    },
+    {
+      "path": "scripts/qa/verify-gesp-learning-loop.cjs",
+      "bytes": 13904,
+      "sha256": "11fb72138b2113bb1604dd29daecd3568998c4a35247813a71e77a2bd2cdd869",
+      "gitNormalizedSha256": "21aa4d3c1f2b73138711ac8ab4f9b015ad82b00448fa2d71a4b14c372b84f799"
+    },
+    {
+      "path": "tests/e2e/workspace-gesp.spec.ts",
+      "bytes": 25964,
+      "sha256": "53de343a67a3331e64f6c7b5e14620f179f5ff1c91c5efbeb73d670e805fc7a7",
+      "gitNormalizedSha256": "7a3dcb3c97e63a28c8822434e4dd119c4ce87c908508347d8d97273ab43242f2"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 12079,
+      "sha256": "d2ffd6ec71dbb429875670448054322921317ebdf96a0edb00a2fbb91ca8c74b",
+      "gitNormalizedSha256": "95b6e9fe2e753fecddec6f6fd9eae95f2bf660e25c758e2453cd377463d8eacd"
+    },
+    {
+      "path": "doc/product/03-development-plan.md",
+      "bytes": 12817,
+      "sha256": "fe8762cd68aa5e19fcafaebda0ffc698773ff7126c365cb9a4c5798cfd6b01b2",
+      "gitNormalizedSha256": "fe8762cd68aa5e19fcafaebda0ffc698773ff7126c365cb9a4c5798cfd6b01b2"
+    },
+    {
+      "path": "doc/product/92-experience-and-content-master-plan.md",
+      "bytes": 28486,
+      "sha256": "dd8e449c646a627b8d86f3a9a6eb4a6ba42736b675e7a6e30545b31db530ed95",
+      "gitNormalizedSha256": "8e62e21b1312f8c286b711a9e3aa0904d24b90cd7b81d9c712d3153ecc6e1b04"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 168849,
+      "sha256": "f854f01c63da7c431cd79c05df91dd803c52a1c97610601b442fd1a40ad188ab",
+      "gitNormalizedSha256": "c8312150bb102ffef4a16610dd4d7c0e5606d09d928c3d8dfc7f85dfe8ba3038"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 94599,
+      "sha256": "d7a73826162038c503eb9667dd0dc68d80386b6968b6b44acde8d12b0bb7e931",
+      "gitNormalizedSha256": "cb5617fc2a52446005faaa2ae74f6916e0ca5b48e65df6735b83621c06bcdbfa"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 100352,
+      "sha256": "9e5ef464c23e71a1fa479c6a3f9af795d645beed7b8213771e4bbbaaddc8f8b1",
+      "gitNormalizedSha256": "a975c88b70922fafc408c76a912d11c0b148a75ea4cdb497619ba0923553be1e"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 9650,
+      "sha256": "1a6a2771fff469cb8a9daaba3aaa9fbfa195e9ff4f7a1e11cde4f0bed5d6c083",
+      "gitNormalizedSha256": "619f804298fc337cff4323dac20bdf0c82e3333b0430a40eeec23b90ab3e39b5"
+    },
+    {
+      "path": "doc/product/193-gesp-retention-feedback-and-autumn-source-drafts.md",
+      "bytes": 8625,
+      "sha256": "f0737179c31083b2b576e12b4190f72388b697dd73dcc2637e883b1aceaeb195",
+      "gitNormalizedSha256": "f0737179c31083b2b576e12b4190f72388b697dd73dcc2637e883b1aceaeb195"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 28930,
+      "sha256": "b722dd2801efc3b99050d716047deb100e6858bb9e50a94b296a685a4fdecc0d",
+      "gitNormalizedSha256": "37b65d3998f356a231ec111dc2a522722a43997efaa2c92f7bdaad61f726bbd1"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/browser/gesp-teaching/level-1-desktop.png",
+      "bytes": 438266,
+      "sha256": "592c6e28dfda036f0771b5f53aab8a152e2a1d5b019a975b4730c73bed58fe18",
+      "gitNormalizedSha256": "b0430848ac341c39ff94ed53ba3fb8091c452dbee505c11f729a94366a40bb24"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/browser/gesp-teaching/level-2-desktop.png",
+      "bytes": 380019,
+      "sha256": "3ea33d30e0cae3d3e0eccf39580dc22d6ed8b7be4eb0c574a8b07ca4dd4caed6",
+      "gitNormalizedSha256": "f47e6a522035ee11d9c7efbacb83a96adc77305cbdf67f248281a496751f2a8c"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/browser/gesp-teaching/level-3-desktop.png",
+      "bytes": 376991,
+      "sha256": "66042da376e5649cde0375a44d5351f3352f7f25ca9b08e2148f20688ef61b52",
+      "gitNormalizedSha256": "81f6245bf9a3cac8286995501a514a50e4458748e388b1bd642348e740820c4e"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/browser/gesp-teaching/level-4-desktop.png",
+      "bytes": 427428,
+      "sha256": "9f14ce84a05ade7d10ec3795ceb6de7099a8007447b94d8afd7393abbeff586f",
+      "gitNormalizedSha256": "e6dc26b43312b557eb8ee510000de5e532202f73fa818224f852fa4b92b366ff"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/browser/gesp-teaching/level-four-mobile.png",
+      "bytes": 372945,
+      "sha256": "88e4d79ba04e4b4ec1bfa8989faeb3e07b62d0c9adef00818105cec59877b6f3",
+      "gitNormalizedSha256": "04c82bdc4f5205b412341d3d7796e7253e81a07e6538eed30d49d654185d4003"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/browser/index.json",
+      "bytes": 4764,
+      "sha256": "56a66bf598c0bd219978079c43726016e1582953a000c8ee3eed5b57e24362c8",
+      "gitNormalizedSha256": "56a66bf598c0bd219978079c43726016e1582953a000c8ee3eed5b57e24362c8"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/browser/workspace-gesp/first-group-code-before-probes-mobile.png",
+      "bytes": 377781,
+      "sha256": "4a8bdfa759c9ef27357dd99016d249006d215952117bebaa9311564e679b4ff5",
+      "gitNormalizedSha256": "ee6ee797d3d7baf8fe6a6e58ca739e2ca75733b0594b120b1630924c2b5714e3"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/autumn-activities-drafts-http-first.json",
+      "bytes": 2449,
+      "sha256": "5a5457946bbb6dcad6f52cdc076aab5ca9260af312ed01d0e1da0ba9e990f9ae",
+      "gitNormalizedSha256": "5a5457946bbb6dcad6f52cdc076aab5ca9260af312ed01d0e1da0ba9e990f9ae"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/autumn-activities-materials-http-first.json",
+      "bytes": 2934,
+      "sha256": "395c68d38b05af58a74b2de85ae894037855b5db9eecd632cca5763f235dc730",
+      "gitNormalizedSha256": "395c68d38b05af58a74b2de85ae894037855b5db9eecd632cca5763f235dc730"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/autumn-activities-materials-http-source-checked.json",
+      "bytes": 2920,
+      "sha256": "4f356ec0b6427b354645410f6eb6a3130475a3d9167910ef66d19fcec4a6157a",
+      "gitNormalizedSha256": "4f356ec0b6427b354645410f6eb6a3130475a3d9167910ef66d19fcec4a6157a"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/autumn-drafts-http-first.json",
+      "bytes": 2454,
+      "sha256": "9e773ea7393a44349d6f1787e15a47365383904133be1d1b081dde17ce87402e",
+      "gitNormalizedSha256": "9e773ea7393a44349d6f1787e15a47365383904133be1d1b081dde17ce87402e"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/autumn-materials-http-first.json",
+      "bytes": 2899,
+      "sha256": "4ae15d1ffc4fe425ad33d58b73a28267868baab1ff8c5225b20971a5032b790b",
+      "gitNormalizedSha256": "4ae15d1ffc4fe425ad33d58b73a28267868baab1ff8c5225b20971a5032b790b"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/autumn-materials-http-source-checked.json",
+      "bytes": 2949,
+      "sha256": "8d1cd5e907d76991b3d9c9cdcc7bd2766347437b551f92148d3b8d197e51ef6a",
+      "gitNormalizedSha256": "8d1cd5e907d76991b3d9c9cdcc7bd2766347437b551f92148d3b8d197e51ef6a"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/autumn-materials-static-review.json",
+      "bytes": 1418,
+      "sha256": "880a1e38b8c8949b2f2f471b56a34a26a9ade257955be1164daa1d87da20d280",
+      "gitNormalizedSha256": "880a1e38b8c8949b2f2f471b56a34a26a9ade257955be1164daa1d87da20d280"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/autumn-source-citation-revision.json",
+      "bytes": 1908,
+      "sha256": "998f4b5640bc2dcb0370cc1c344a76d83d4ac80e0f6ff27ca58f137556404aa9",
+      "gitNormalizedSha256": "998f4b5640bc2dcb0370cc1c344a76d83d4ac80e0f6ff27ca58f137556404aa9"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-gesp-postgres36-receipt.json",
+      "bytes": 1045,
+      "sha256": "17e15acaa5d190e46a74ca33302617a4b1a44e03519bbff7771c1cafb6351df0",
+      "gitNormalizedSha256": "17e15acaa5d190e46a74ca33302617a4b1a44e03519bbff7771c1cafb6351df0"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-group-anchor-repro-inputs.json.gz",
+      "bytes": 97728,
+      "sha256": "7de764d4c2486d7ef00688c4e1f60429be26dfab29178b804e370c96ec44a3be",
+      "gitNormalizedSha256": "254a39542a7c998d36abe38f49365fc4636cdde00955b363251fdd5f36236d6f"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-group-anchor-repro-vitest.json",
+      "bytes": 3677,
+      "sha256": "ba48bc3dbf4f65f9bacf595a43f3713fb7ade472b7ce7976151db9671e9b6748",
+      "gitNormalizedSha256": "ba48bc3dbf4f65f9bacf595a43f3713fb7ade472b7ce7976151db9671e9b6748"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-group-anchor-repro.json",
+      "bytes": 187,
+      "sha256": "73249fd25a62a7911234f356c0934d1c74ddb3345621f1aca1d530832dd9fafe",
+      "gitNormalizedSha256": "73249fd25a62a7911234f356c0934d1c74ddb3345621f1aca1d530832dd9fafe"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-reader-postgres36-receipt.json",
+      "bytes": 2834,
+      "sha256": "9a71ac31537a818ffea6a683e9e3e1fe2e1fce2bd9b5325fdbfcd27aaec6c679",
+      "gitNormalizedSha256": "9a71ac31537a818ffea6a683e9e3e1fe2e1fce2bd9b5325fdbfcd27aaec6c679"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-api-type-inputs.json.gz",
+      "bytes": 71248,
+      "sha256": "d2577064cb0ae6551a80726e3f4ae823553d42dae5ddefc6456989761a86bd59",
+      "gitNormalizedSha256": "aabdebaff51e3d7444d7ddd050bda7088aef1b563e4e468fd8c7f0804fd34c68"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-api-type.json",
+      "bytes": 186,
+      "sha256": "46f469b392e8bf05414a492af817405df1f314eab7f714f8bd5ed0b3a963bf6e",
+      "gitNormalizedSha256": "46f469b392e8bf05414a492af817405df1f314eab7f714f8bd5ed0b3a963bf6e"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-build-inputs.json.gz",
+      "bytes": 71251,
+      "sha256": "e529f95c5b1763235fab8a466548b5640a94a174297365bf8926cbfc7fc063e3",
+      "gitNormalizedSha256": "1a6f416f1dd8c87920a005f4818de97b237f2172dca857fbc1491cb5a48b9cbb"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-build.json",
+      "bytes": 186,
+      "sha256": "881bef8224ac310e9a930426fe42eff07d88991ea647f09bacd1c2ec0b258eac",
+      "gitNormalizedSha256": "881bef8224ac310e9a930426fe42eff07d88991ea647f09bacd1c2ec0b258eac"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-contracts-inputs.json.gz",
+      "bytes": 70676,
+      "sha256": "6d61e8f7dcb2dbdc93bc3f0fa26cdf479f79227dbfedcb080eb37bdacdcc8a9f",
+      "gitNormalizedSha256": "dcda272b02f4235db9a3ed375262e642fa9321a9b8e1e64dd1e703d9087df38a"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-contracts.json",
+      "bytes": 190,
+      "sha256": "d9e10ac538fd7ea47a6edff6057ed09165425b29bc2159da1d7713dd592effe6",
+      "gitNormalizedSha256": "d9e10ac538fd7ea47a6edff6057ed09165425b29bc2159da1d7713dd592effe6"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-feedback-repro-inputs.json.gz",
+      "bytes": 97724,
+      "sha256": "0bb6a50874cb0bb8fb5cb20bf095d179933ebbe44b26cb456ab5491c852edb7c",
+      "gitNormalizedSha256": "61a69d9ff145f590194215c5cd49491d5cdfe73478279d0748d37dde9cbad394"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-feedback-repro-vitest.json",
+      "bytes": 4471,
+      "sha256": "71e53574dd41b005eb8d787e57f83991b5c0d23e18d7a67775a5d5d3d7931f8b",
+      "gitNormalizedSha256": "71e53574dd41b005eb8d787e57f83991b5c0d23e18d7a67775a5d5d3d7931f8b"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-feedback-repro.json",
+      "bytes": 187,
+      "sha256": "8f491b184367631f3148b205b81130b1689b98e1e375fbc2a3f669a5f6391250",
+      "gitNormalizedSha256": "8f491b184367631f3148b205b81130b1689b98e1e375fbc2a3f669a5f6391250"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-final-build-inputs.json.gz",
+      "bytes": 71251,
+      "sha256": "18ddf19466e471ec2763bf9e59287d7acf447b956758905290f8ec2fcaaa78e7",
+      "gitNormalizedSha256": "bfafcf5cf5586db18deaec7e5669c561a275e9ec1a16b988830b90f2ac35e4df"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-final-build.json",
+      "bytes": 186,
+      "sha256": "c6409f6b3523d5eaa4f07b6a5de0386c924e7c50f32d3364fc6edc4d010abe6d",
+      "gitNormalizedSha256": "c6409f6b3523d5eaa4f07b6a5de0386c924e7c50f32d3364fc6edc4d010abe6d"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-focused-inputs.json.gz",
+      "bytes": 98331,
+      "sha256": "5cc63d634dc1142f72fbe9e6accbaa5f646f341754022bb7f3af00604118d822",
+      "gitNormalizedSha256": "eec7ba54dba90caa698dae7b40245e140b20fcf62594249442552e417f2f35a5"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-focused-vitest.json",
+      "bytes": 16734,
+      "sha256": "55e03211903507c7c15f5724cf09f7f607f0f9dd9c00fc892ed3d3e455e581d9",
+      "gitNormalizedSha256": "55e03211903507c7c15f5724cf09f7f607f0f9dd9c00fc892ed3d3e455e581d9"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-focused.json",
+      "bytes": 187,
+      "sha256": "f52008671702f6cbbe94d9f44553f4b4e1ff6f39c247a4afb225bc1aec34b1b0",
+      "gitNormalizedSha256": "f52008671702f6cbbe94d9f44553f4b4e1ff6f39c247a4afb225bc1aec34b1b0"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-type-harness-second.json",
+      "bytes": 274,
+      "sha256": "bd762160c78e55ad4668a47c8e700411cca0d3dcb6ff1298daf72e9354e1a200",
+      "gitNormalizedSha256": "bd762160c78e55ad4668a47c8e700411cca0d3dcb6ff1298daf72e9354e1a200"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-web-type-inputs.json.gz",
+      "bytes": 71248,
+      "sha256": "d2577064cb0ae6551a80726e3f4ae823553d42dae5ddefc6456989761a86bd59",
+      "gitNormalizedSha256": "aabdebaff51e3d7444d7ddd050bda7088aef1b563e4e468fd8c7f0804fd34c68"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-web-type.json",
+      "bytes": 189,
+      "sha256": "927a669ffd9dce41b2609bd857a10ee8eba0384a3226fbeb190aa5d0f397983b",
+      "gitNormalizedSha256": "927a669ffd9dce41b2609bd857a10ee8eba0384a3226fbeb190aa5d0f397983b"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-webbuild-inputs.json.gz",
+      "bytes": 71246,
+      "sha256": "046e8916e6d4a402f2f61a4a33c9718cc8babce31df5d35b594d6034f0b69e21",
+      "gitNormalizedSha256": "b028e14240fbb733443840456a023c302ca3cdd2520400854519ee77b6e89b88"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-retention-webbuild.json",
+      "bytes": 167,
+      "sha256": "5c29b4a838e19933651caac38c9970cf41fc69c1d50cad3ed9c8bd58fa16a8f0",
+      "gitNormalizedSha256": "5c29b4a838e19933651caac38c9970cf41fc69c1d50cad3ed9c8bd58fa16a8f0"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-rt-api-type3-inputs.json.gz",
+      "bytes": 71246,
+      "sha256": "2a5b469f69dc728526eaf2dcdbdfecc6bfa1b72c40a21e22e96d01ce7df89d2d",
+      "gitNormalizedSha256": "84581bbce5e31bfccbc33cc4d21d65717a1d89cd0d84d486b791196198722c23"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-rt-api-type3.json",
+      "bytes": 186,
+      "sha256": "f9631eb78f63a264a6ab2a708216a85f21689c623e2581eb858da1f1a20107e4",
+      "gitNormalizedSha256": "f9631eb78f63a264a6ab2a708216a85f21689c623e2581eb858da1f1a20107e4"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-rt-archive-scan.json",
+      "bytes": 999,
+      "sha256": "d0fa13919f1b8b68347def361f87f91dc9a35927d5b0e3dc01a9a736345cae4f",
+      "gitNormalizedSha256": "d0fa13919f1b8b68347def361f87f91dc9a35927d5b0e3dc01a9a736345cae4f"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-rt-browser-inputs.json.gz",
+      "bytes": 98340,
+      "sha256": "f902e087a7753c51d51ea1a28e088ffcef1ea30fc5cc92ee9fddf58f600f8095",
+      "gitNormalizedSha256": "7dcda846eb9f6863a9a4df1c0d35446778ae3bebf5e6bbdbd2ea86a9b75c7a01"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-rt-browser.json",
+      "bytes": 166,
+      "sha256": "92ac3b987ff111c866ce1b2845608bb7317bb7dc2a1243ba6e549afa705af47c",
+      "gitNormalizedSha256": "92ac3b987ff111c866ce1b2845608bb7317bb7dc2a1243ba6e549afa705af47c"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-rt-build3-inputs.json.gz",
+      "bytes": 71246,
+      "sha256": "2a5b469f69dc728526eaf2dcdbdfecc6bfa1b72c40a21e22e96d01ce7df89d2d",
+      "gitNormalizedSha256": "84581bbce5e31bfccbc33cc4d21d65717a1d89cd0d84d486b791196198722c23"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-rt-build3.json",
+      "bytes": 186,
+      "sha256": "6497605e9230701a70750e29cf5c9211d0217e72a0b61bd2f52aa6ba9fb500b4",
+      "gitNormalizedSha256": "6497605e9230701a70750e29cf5c9211d0217e72a0b61bd2f52aa6ba9fb500b4"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-rt-focused2-inputs.json.gz",
+      "bytes": 98331,
+      "sha256": "7ef5aad0976318758ef47208d5d5c1557b3ee0d425ad143911a27146747b5505",
+      "gitNormalizedSha256": "5afb9d1febb67241cb4ed544534c5e6f2e2da06b2d6ce86ff02ee2a8a5769e69"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-rt-focused2-vitest.json",
+      "bytes": 16723,
+      "sha256": "7603200f16d68f407d388772a7e6891dbef3c58d03890b247a6358f2bdb13f09",
+      "gitNormalizedSha256": "7603200f16d68f407d388772a7e6891dbef3c58d03890b247a6358f2bdb13f09"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-rt-focused2.json",
+      "bytes": 187,
+      "sha256": "9988ecc8a19c749830dbb540478c98715bf9ead5b3e66e99a702f7781caea6a9",
+      "gitNormalizedSha256": "9988ecc8a19c749830dbb540478c98715bf9ead5b3e66e99a702f7781caea6a9"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-rt-full-api-inputs.json.gz",
+      "bytes": 98530,
+      "sha256": "36132f1625e0fc894d42554112efdad7006e770edcf70bde8fd62a9ba382f553",
+      "gitNormalizedSha256": "a7d75ed3b530163172d97b2349e49a9cfa0a5644846c9790a4d088049068a376"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-rt-full-api-vitest.json",
+      "bytes": 1532968,
+      "sha256": "8fb397108e4e3a7366ea3f89b2fde92d5e5a2d1d872bb0788344e64094ff7736",
+      "gitNormalizedSha256": "8fb397108e4e3a7366ea3f89b2fde92d5e5a2d1d872bb0788344e64094ff7736"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-rt-full-api.json",
+      "bytes": 185,
+      "sha256": "dbc22bd97ac545a2e9937bb0b3ed3e83ea3cff92eb635f26bd9d183879c8d76b",
+      "gitNormalizedSha256": "dbc22bd97ac545a2e9937bb0b3ed3e83ea3cff92eb635f26bd9d183879c8d76b"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-rt-sqlite-inputs.json.gz",
+      "bytes": 98340,
+      "sha256": "f902e087a7753c51d51ea1a28e088ffcef1ea30fc5cc92ee9fddf58f600f8095",
+      "gitNormalizedSha256": "7dcda846eb9f6863a9a4df1c0d35446778ae3bebf5e6bbdbd2ea86a9b75c7a01"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-rt-sqlite-receipt.json",
+      "bytes": 1043,
+      "sha256": "f5c89e0999659533b62236cf53d1206bee9a1d8b50f42ad8aa0c91288b3aa103",
+      "gitNormalizedSha256": "f5c89e0999659533b62236cf53d1206bee9a1d8b50f42ad8aa0c91288b3aa103"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-rt-sqlite.json",
+      "bytes": 170,
+      "sha256": "e1d00ea8b2344a3d71d55df5a203880f84d2f686fe97d95744b9809f91f834cb",
+      "gitNormalizedSha256": "e1d00ea8b2344a3d71d55df5a203880f84d2f686fe97d95744b9809f91f834cb"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/b4-rt-visual-review.json",
+      "bytes": 2016,
+      "sha256": "9f922bd41b31495c7d6cb9f0b3a5509217596b3bb41e73c52467f7e162921729",
+      "gitNormalizedSha256": "9f922bd41b31495c7d6cb9f0b3a5509217596b3bb41e73c52467f7e162921729"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/content-worklist-autumn-activities-first.json",
+      "bytes": 2747209,
+      "sha256": "03fca576ac76047e19c582a8b959362ce459235eb86e953544af4a3a479dbf55",
+      "gitNormalizedSha256": "03fca576ac76047e19c582a8b959362ce459235eb86e953544af4a3a479dbf55"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/content-worklist-autumn-first.json",
+      "bytes": 2743926,
+      "sha256": "0de36bace401fbdbd73c4bb8f44c314a5dfaeab3b4a1f60c308b6e37c1396e3b",
+      "gitNormalizedSha256": "0de36bace401fbdbd73c4bb8f44c314a5dfaeab3b4a1f60c308b6e37c1396e3b"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/checks/content-worklist-autumn-source-checked.json",
+      "bytes": 2747209,
+      "sha256": "1d4eaae9d743d050238902d6d92ea91b979e267b75847efc764d1c2bc06ee5e3",
+      "gitNormalizedSha256": "1d4eaae9d743d050238902d6d92ea91b979e267b75847efc764d1c2bc06ee5e3"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/main-vs-frozen-qa.json",
+      "bytes": 2168,
+      "sha256": "8b35d9d77c5d9fd44383eae1d543c12bbe04004d9d7504feb1c7518377bb9910",
+      "gitNormalizedSha256": "8b35d9d77c5d9fd44383eae1d543c12bbe04004d9d7504feb1c7518377bb9910"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/manifest.json",
+      "bytes": 12915,
+      "sha256": "c08f549c37abd9ae8cae2b72fc971914bc063efd1bd4fe99b94dc329ab5fdeaf",
+      "gitNormalizedSha256": "c08f549c37abd9ae8cae2b72fc971914bc063efd1bd4fe99b94dc329ab5fdeaf"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/README.md",
+      "bytes": 2592,
+      "sha256": "0f2879412fb1a260abe337107b580aa585f8e6b56b4d7f3f1d0be660517f6bdb",
+      "gitNormalizedSha256": "0f2879412fb1a260abe337107b580aa585f8e6b56b4d7f3f1d0be660517f6bdb"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/receipt.json",
+      "bytes": 4321,
+      "sha256": "9eaa6c694247dcf1b4a00eb9add020b29f59e740995f2d5b404a6efa3bd35ff2",
+      "gitNormalizedSha256": "9eaa6c694247dcf1b4a00eb9add020b29f59e740995f2d5b404a6efa3bd35ff2"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/run-transcripts.json.gz",
+      "bytes": 4811,
+      "sha256": "f0b386213f6f4f4fc369399dd398c95a071419c4cd02723f01c448ec7e5b764d",
+      "gitNormalizedSha256": "f0b386213f6f4f4fc369399dd398c95a071419c4cd02723f01c448ec7e5b764d"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/source-intake/autumn-activities.json",
+      "bytes": 2038,
+      "sha256": "ae32dda5782e2e7c3ed662570559b03b3d1f02b63c59adc5ccc8ea6dddc4aa89",
+      "gitNormalizedSha256": "ae32dda5782e2e7c3ed662570559b03b3d1f02b63c59adc5ccc8ea6dddc4aa89"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/source-intake/autumn-three-lessons.json",
+      "bytes": 5015,
+      "sha256": "e0584329bbf0385585eee93c19d69b02ec1cfbed8908b3e7b562b905e4aa38a9",
+      "gitNormalizedSha256": "e0584329bbf0385585eee93c19d69b02ec1cfbed8908b3e7b562b905e4aa38a9"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/sources.json.gz",
+      "bytes": 604270,
+      "sha256": "ff43f792f8a451045fd133eb07494b38f0ab5531ba8185a6047bb481d6b744e1",
+      "gitNormalizedSha256": "5023ed5f8a5fc3d2bc089b99e334a820afb91ba3c2b1c1941529b0f1dd65fc00"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/tools/archive-retention-autumn.cjs",
+      "bytes": 10978,
+      "sha256": "7863c4c747037891835fdf0658c4bd3af91982e4252d193ac8b7c8429db138d8",
+      "gitNormalizedSha256": "7863c4c747037891835fdf0658c4bd3af91982e4252d193ac8b7c8429db138d8"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/tools/check.cjs",
+      "bytes": 3539,
+      "sha256": "d09d4247ebd221e67c435537c3929c907f3f816618b05e6fd3a83a113c75a904",
+      "gitNormalizedSha256": "349191c7c1cb027a25e3eecfeed2ac3dcc0d281a25659bf049433ab69a5ca556"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/tools/extra.cjs",
+      "bytes": 3072,
+      "sha256": "fcf4f4a347682f4df1d161a2016aaa92324f368c1b42ce201f0d0abebea834b6",
+      "gitNormalizedSha256": "bc9a255e4de57816d921e13a8a73ff90e374ba553e54133f5d4bc1371d2a0b5a"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/tools/freeze-reader35.cjs",
+      "bytes": 1672,
+      "sha256": "866cf561b8462c69d36838a72e90189a8055f995890c54f9e83208f153cad20b",
+      "gitNormalizedSha256": "866cf561b8462c69d36838a72e90189a8055f995890c54f9e83208f153cad20b"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/tools/intake-autumn-activities.cjs",
+      "bytes": 1511,
+      "sha256": "29cba89105a2d664f46550d8e8bea8821d90b01c480e29a845990a618d9dadb9",
+      "gitNormalizedSha256": "29cba89105a2d664f46550d8e8bea8821d90b01c480e29a845990a618d9dadb9"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/tools/intake-unit-two.cjs",
+      "bytes": 1511,
+      "sha256": "873a3c825081d3b1e154a4fb4a1162eed8f5f51fe526bcb9011eb26067e9e6d9",
+      "gitNormalizedSha256": "873a3c825081d3b1e154a4fb4a1162eed8f5f51fe526bcb9011eb26067e9e6d9"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/tools/postgres36.cjs",
+      "bytes": 3746,
+      "sha256": "545a116a79e7371b1e49119ba4a81fb4db0858f600a8e64ca2368404e3f05b00",
+      "gitNormalizedSha256": "545a116a79e7371b1e49119ba4a81fb4db0858f600a8e64ca2368404e3f05b00"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/tools/review-autumn-and-visuals.cjs",
+      "bytes": 5063,
+      "sha256": "4f9c97ea1e9407a59ef320ffdad0f1168174329a18895c14a2f68375741db126",
+      "gitNormalizedSha256": "4f9c97ea1e9407a59ef320ffdad0f1168174329a18895c14a2f68375741db126"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/tools/review-autumn-citation-revision.cjs",
+      "bytes": 2777,
+      "sha256": "4b919712e669acf70cd97da83a1f505ca27b6f3bc9590767df5f0403dc81fb30",
+      "gitNormalizedSha256": "4b919712e669acf70cd97da83a1f505ca27b6f3bc9590767df5f0403dc81fb30"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/tools/stage-retention-autumn.cjs",
+      "bytes": 3500,
+      "sha256": "9bd25c2baeb58b1019f2918d93a3abd3ed8b8685c85154dab43554483427d85a",
+      "gitNormalizedSha256": "9bd25c2baeb58b1019f2918d93a3abd3ed8b8685c85154dab43554483427d85a"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/tools/verify-following-before-source-check.cjs",
+      "bytes": 14758,
+      "sha256": "b2b402c5a00ef377da7360d2675740469a2efdb4acc0a596d2b6c4fba753cce4",
+      "gitNormalizedSha256": "b2b402c5a00ef377da7360d2675740469a2efdb4acc0a596d2b6c4fba753cce4"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-retention-feedback-and-autumn/tools/verify-retention-autumn.cjs",
+      "bytes": 6027,
+      "sha256": "18fe809fbb9d3d7b91029fb4834e83efa236407cf08c6c6e6dd95fa1d7d57785",
+      "gitNormalizedSha256": "f8fa56ae599a6789289eda450946bde9216f1cb5c2882e014213be014d67dd4e"
+    }
+  ]
+}

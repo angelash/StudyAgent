@@ -178,8 +178,7 @@ export class GespService implements OnModuleDestroy {
     const scopeHistory = this.store.select('gespLearningScopeRevisions', { studentId }).sort((a, b) => a.version - b.version).map(row => this.scopeView(row));
     const hints = this.store.select('gespHintEvents', { studentId }).sort((a, b) => b.createdAt.localeCompare(a.createdAt)).map(row => this.publicHint(row));
     const guidancePlans = this.store.select('gespGuidancePlans', { studentId }).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)).map(row => this.publicPlan(row));
-    const reviewTasks = this.store.select('gespReviewTasks', { studentId }).sort((a, b) => a.dueAt.localeCompare(b.dueAt)).map(row => ({ ...row,
-      due: row.status === 'scheduled' && Date.parse(row.dueAt) <= Date.now() }));
+    const reviewTasks = this.store.select('gespReviewTasks', { studentId }).sort((a, b) => a.dueAt.localeCompare(b.dueAt)).map(row => ({ ...row, ...this.reviewEligibility(row) }));
     return { studentId, scope: this.scopeView(scope), scopeHistory, notice: this.studentData().notice, tasks: available,
       availableTasks: user.role === 'student' ? [] : catalog, submissions, probeSubmissions: probes,
       hintEvents: hints, guidancePlans, reviewTasks,
@@ -312,7 +311,6 @@ export class GespService implements OnModuleDestroy {
     // A client cannot erase help by omitting a hint identifier or closing its panel.
     const evidence = this.responseEvidence(command.studentId, task.id, undefined, Boolean(review));
     if (review && (hint || evidence.hintEventIds.length)) throw new BadRequestException('间隔复测必须独立完成；本题已有提示曝光，请使用新的已审核独立任务');
-    if (review && (review.status !== 'scheduled' || Date.parse(review.dueAt) > Date.now())) throw new BadRequestException('复测尚未到期或已经完成');
     const taskContentSha256 = hash(JSON.stringify(task)), tests = review ? this.reviewTests(task, review.stageDay) : task.tests;
     if (review) {
       const testPackSha256 = hash(JSON.stringify(tests));
@@ -322,10 +320,13 @@ export class GespService implements OnModuleDestroy {
         throw new ConflictException('复测任务对应的题面或隐藏测试包已变化，请重新完成独立评测后再安排复测');
       }
     }
+    if (review && !this.reviewEligibility(review).due) throw new BadRequestException('复测尚未到期或已经完成；须从最近相关反馈起等待完整间隔');
     const provenance = this.taskProvenance(task, tests);
     const receipt = await this.runCpp(command.source, tests), now = new Date().toISOString(), sourceSha256 = receipt.sourceSha256;
     const finalEvidence = this.responseEvidence(command.studentId, task.id, undefined, Boolean(review));
     if (review && finalEvidence.hintEventIds.length) throw new ConflictException('运行期间已有提示曝光，本次不能计入独立保持证据');
+    const timing = review ? this.reviewEligibility(review) : null;
+    if (review && !timing?.due) throw new ConflictException('运行期间复测资格已变化；请按最近相关反馈重新等待完整间隔');
     const hintLevel = Math.max(0, ...this.store.select('gespHintEvents', { studentId: command.studentId, taskId: task.id }).map(row => row.level));
     const status = receipt.passed ? 'passed' as const : receipt.compile?.passed ? 'failed' as const : 'error' as const;
     const row: GespCodeSubmissionReceipt = { id: this.store.nextId('gesp_submission'), studentId: command.studentId, atomId: command.atomId,
@@ -337,6 +338,7 @@ export class GespService implements OnModuleDestroy {
         status: test.status, exitCode: test.exitCode, durationMs: test.durationMs })), hintEventId: hint?.id ?? null,
       hintLevel, independent: finalEvidence.classification === 'independent', reviewTaskId: review?.id ?? null, evidence: finalEvidence };
     row.provenance = provenance;
+    if (review && timing?.retentionTiming) row.retentionTiming = timing.retentionTiming;
     this.store.append('gespCodeSubmissions', row);
     row.feedbackHeld = !review && !this.feedbackReleased(command.studentId, task.id);
     if (review) {
@@ -394,8 +396,33 @@ export class GespService implements OnModuleDestroy {
     const probes = this.store.select('gespProbeSubmissions', { studentId }).sort((a, b) => a.createdAt.localeCompare(b.createdAt));
     const submissions = this.store.select('gespCodeSubmissions', { studentId }).sort((a, b) => a.createdAt.localeCompare(b.createdAt));
     const capability = this.capabilities([task.atomId], probes, submissions).at(0);
-    const code = submissions.find(row => row.taskId === task.id && this.independentResponse(row) && !row.reviewTaskId);
-    if (capability?.state === 'current_evidence_met' && code) this.scheduleReviews(studentId, task.atomId, task.id, code.id, code.createdAt);
+    const code = submissions.find(row => row.taskId === task.id && capability?.independentEvidenceIds.includes(row.id) && this.independentResponse(row) && !row.reviewTaskId);
+    if (capability?.state === 'current_evidence_met' && code) {
+      const responses = [...probes, ...submissions].filter(row => capability.independentEvidenceIds.includes(row.id));
+      const completedAt = new Date(Math.max(...responses.map(row => Date.parse(row.createdAt)))).toISOString();
+      this.scheduleReviews(studentId, task.atomId, task.id, code.id, completedAt);
+    }
+  }
+  private reviewEligibility(review: GespReviewTask) {
+    const blocked = (waitingReason: string) => ({ due: false, effectiveDueAt: null as string | null, retentionAnchorAt: null as string | null,
+      waitingReason, retentionTiming: null as GespCodeSubmissionReceipt['retentionTiming'] | null });
+    if (review.status !== 'scheduled') return blocked('');
+    const source = this.store.find('gespCodeSubmissions', { id: review.sourceSubmissionId, studentId: review.studentId });
+    if (!this.independentResponse(source) || source?.status !== 'passed' || source.taskId !== review.taskId) return blocked('历史独立性未确认，需要新的已审核独立任务。');
+    const task = this.studentData().tasks.find(row => row.id === review.taskId), taskHash = task ? hash(JSON.stringify(task)) : null;
+    if (!task || source.provenance?.taskContentSha256 !== taskHash || review.taskContentSha256 && review.taskContentSha256 !== taskHash ||
+        hash(JSON.stringify(this.reviewTests(task, review.stageDay))) !== review.testPackSha256) return blocked('原题或隐藏测试包已变化，需要重新核对独立任务。');
+    if (this.store.select('gespHintEvents', { studentId: review.studentId, taskId: review.taskId }).length) return blocked('本题已有提示帮助，需要新的已审核独立任务。');
+    const feedback = [...this.store.select('gespProbeSubmissions', { studentId: review.studentId, taskId: review.taskId }),
+      ...this.store.select('gespCodeSubmissions', { studentId: review.studentId, taskId: review.taskId }).filter(row => !row.reviewTaskId || row.status !== 'passed')]
+      .filter(row => row.feedbackHeld !== true);
+    const times = [Date.parse(review.createdAt), ...feedback.map(row => Date.parse(row.createdAt))], original = Date.parse(review.dueAt);
+    if (!Number.isFinite(original) || times.some(value => !Number.isFinite(value))) return blocked('缺少准确反馈时间，暂不能确认本次间隔。');
+    const anchor = Math.max(...times), eligible = Math.max(original, anchor + review.stageDay * 86_400_000);
+    const retentionTiming: NonNullable<GespCodeSubmissionReceipt['retentionTiming']> = { policy: 'gesp-feedback-delay-v1', anchorAt: new Date(anchor).toISOString(),
+      originalDueAt: review.dueAt, eligibleAt: new Date(eligible).toISOString(), feedbackResponseIds: feedback.map(row => row.id).sort() };
+    return { due: eligible <= Date.now(), effectiveDueAt: retentionTiming.eligibleAt, retentionAnchorAt: retentionTiming.anchorAt,
+      waitingReason: eligible > Date.now() ? '须从最近相关反馈起等待完整间隔；原计划日期保持。' : '', retentionTiming };
   }
   private responseEvidence(studentId: string, taskId: string, probeId?: string, retention = false): GespResponseEvidence {
     const hintEventIds = this.store.select('gespHintEvents', { studentId, taskId }).map(row => row.id);
@@ -423,7 +450,16 @@ export class GespService implements OnModuleDestroy {
       const latestProbe = (dimension: string) => compatibleProbes.find(row => row.dimension === dimension && this.independentResponse(row))
         ?? compatibleProbes.find(row => row.dimension === dimension);
       const latestCode = compatibleSubmissions.find(row => !row.reviewTaskId && this.independentResponse(row)) ?? compatibleSubmissions.find(row => !row.reviewTaskId), understanding = latestProbe('understanding'), procedure = latestProbe('procedure'),
-        atomReviews = compatibleReviews, completedReviews = atomReviews.filter(row => row.status === 'completed'),
+        atomReviews = compatibleReviews, completedReviews = atomReviews.filter(row => {
+          if (row.status !== 'completed' || typeof row.completedSubmissionId !== 'string') return false;
+          const result = this.store.find('gespCodeSubmissions', { id: row.completedSubmissionId }), timing = result?.retentionTiming;
+          if (!result || !compatible(result) || result.status !== 'passed' || result.reviewTaskId !== row.id || result.evidence?.classification !== 'retention' ||
+              timing?.policy !== 'gesp-feedback-delay-v1' || timing.originalDueAt !== row.dueAt || result.createdAt !== row.completedAt) return false;
+          const completedAt = Date.parse(result.createdAt), anchorAt = Date.parse(timing.anchorAt), eligibleAt = Date.parse(timing.eligibleAt), originalDueAt = Date.parse(row.dueAt);
+          return [completedAt, anchorAt, eligibleAt, originalDueAt].every(Number.isFinite) &&
+            eligibleAt >= Math.max(originalDueAt, anchorAt + row.stageDay * 86_400_000) && completedAt >= eligibleAt;
+        }),
+        historicalTimingUnknown = atomReviews.some(row => row.status === 'completed' && !completedReviews.includes(row)),
         latestReview = [...atomReviews].sort((left, right) => left.dueAt.localeCompare(right.dueAt)).at(-1),
         responseStatus = (row: any, passed: string) => !row ? 'unknown' : row.feedbackHeld && !this.feedbackReleased(row.studentId, row.taskId) ? 'recorded' : row.status !== passed ? row.status : this.independentResponse(row) ? row.status
           : row.evidence?.classification === 'assisted' ? `assisted_${passed === 'passed' ? 'pass' : 'correct'}` : row.evidence ? `practice_${passed === 'passed' ? 'pass' : 'correct'}` : 'independence_unknown',
@@ -431,7 +467,7 @@ export class GespService implements OnModuleDestroy {
         dimensions = [{ dimension: 'understanding', status: responseStatus(understanding, 'correct'), attempts: compatibleProbes.filter(row => row.dimension === 'understanding').length },
           { dimension: 'procedure', status: responseStatus(procedure, 'correct'), attempts: compatibleProbes.filter(row => row.dimension === 'procedure').length },
           { dimension: 'implementation', status: implementationStatus ?? 'unknown', attempts: compatibleSubmissions.filter(row => !row.reviewTaskId).length },
-          { dimension: 'retention', status: completedReviews.length ? 'correct' : latestReview?.lastStatus ?? (atomReviews.length ? 'scheduled' : 'unknown'),
+          { dimension: 'retention', status: completedReviews.length ? 'correct' : historicalTimingUnknown ? 'timing_unknown' : latestReview?.lastStatus ?? (atomReviews.length ? 'scheduled' : 'unknown'),
             attempts: atomReviews.reduce((sum, review) => sum + review.attemptCount, 0) }];
       const core = dimensions.slice(0, 3), known = core.filter(row => row.status !== 'unknown'), met = core.filter(row => row.status === 'correct' || row.status === 'passed'),
         failed = dimensions.filter(row => row.status === 'incorrect' || row.status === 'failed' || row.status === 'error');
@@ -450,6 +486,7 @@ export class GespService implements OnModuleDestroy {
         independentEvidenceIds: this.latestEvidenceIds(atomId, compatibleProbes, compatibleSubmissions),
         invalidatedEvidenceIds, evidenceNotice: invalidatedEvidenceIds.length
           ? `${invalidatedEvidenceIds.length}条证据来自已变化的题面或测试版本，保留在历史中但不计入当前能力。` :
+          historicalTimingUnknown ? '历史回执保持；缺少最近反馈与间隔快照的旧复测结果暂不确认保持资格。' :
           [...compatibleProbes, ...compatibleSubmissions].some(row => row.evidence?.policy !== 'gesp-first-group-v2') ? '历史回执保持；缺少首组反馈边界的旧结果不自动计为独立证据。' : '' };
     });
   }

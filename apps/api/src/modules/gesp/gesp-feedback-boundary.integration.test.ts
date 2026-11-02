@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { createHash, randomBytes, randomUUID } from 'node:crypto';
 import { NestFactory } from '@nestjs/core';
-import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import request from 'supertest';
 import curriculum from '../../../../../resources/gesp/student-curriculum-v2.json';
 
@@ -101,5 +101,53 @@ describe('GESP first-group feedback through the actual HTTP boundary', () => {
     expect(workspace.capabilities[0]).toMatchObject({ state: 'needs_verification' });
     expect(workspace.capabilities[0].dimensions[0]).toMatchObject({ status: 'incorrect', attempts: 2 });
     expect(workspace.capabilities[0].independentEvidenceIds).toContain(first.id); expect(workspace.reviewTasks).toHaveLength(0);
+  });
+  it('starts code-first review intervals at complete group feedback and preserves that schedule on practice', async () => {
+    // Simulated time is protocol evidence, never a real learner retention observation.
+    const start = Date.now(); vi.useFakeTimers({ toFake: ['Date'] }); vi.setSystemTime(start);
+    try {
+      const { studentId, actor } = await child();
+      const command = { studentId, atomId: task.atomId, source: 'int main(){}', requestKey: randomUUID() };
+      const code = await call('post', '/gesp/code-submissions', command, actor); expect(code.status).toBe('recorded');
+      const feedbackAt = start + 30 * 60_000; vi.setSystemTime(feedbackAt);
+      for (const probe of task.probes) await call('post', '/gesp/probe-submissions', { studentId, atomId: task.atomId,
+        probeId: probe.id, answer: probe.answer, requestKey: randomUUID() }, actor);
+      const complete = await call('get', `/gesp/students/${studentId}/workspace`, undefined, actor);
+      expect(complete.reviewTasks).toHaveLength(4);
+      for (const review of complete.reviewTasks) expect(Date.parse(review.dueAt)).toBe(feedbackAt + review.stageDay * 86_400_000);
+      vi.setSystemTime(feedbackAt + 10 * 60_000);
+      await call('post', '/gesp/code-submissions', { ...command, requestKey: randomUUID() }, actor);
+      const practiced = (await call('get', `/gesp/students/${studentId}/workspace`, undefined, actor)).reviewTasks;
+      expect(practiced.map((row: any) => row.dueAt)).toEqual(complete.reviewTasks.map((row: any) => row.dueAt));
+      for (const review of practiced) expect(Date.parse(review.effectiveDueAt)).toBe(feedbackAt + 10 * 60_000 + review.stageDay * 86_400_000);
+    } finally { vi.useRealTimers(); }
+  });
+  it('keeps the original review baseline but waits again after new practice feedback', async () => {
+    const { studentId, actor } = await child();
+    for (const probe of task.probes) await call('post', '/gesp/probe-submissions', { studentId, atomId: task.atomId,
+      probeId: probe.id, answer: probe.answer, requestKey: randomUUID() }, actor);
+    const command = { studentId, atomId: task.atomId, source: 'int main(){}', requestKey: randomUUID() };
+    await call('post', '/gesp/code-submissions', command, actor);
+    // Age generated records into a consistent protocol fixture; this is not six days of learner observation.
+    const anchor = Date.now() - 6 * 86_400_000;
+    await store.transaction(() => {
+      for (const collection of ['gespProbeSubmissions', 'gespCodeSubmissions']) for (const row of store.select(collection, { studentId })) row.createdAt = new Date(anchor).toISOString();
+      for (const row of store.select('gespReviewTasks', { studentId })) {
+        row.createdAt = new Date(anchor).toISOString(); row.dueAt = new Date(anchor + row.stageDay * 86_400_000).toISOString();
+      }
+    });
+    const before = await call('get', `/gesp/students/${studentId}/workspace`, undefined, actor);
+    const first = before.reviewTasks.find((row: any) => row.stageDay === 1), third = before.reviewTasks.find((row: any) => row.stageDay === 3);
+    expect(first.due).toBe(true); expect(third.due).toBe(true);
+    await call('post', '/gesp/code-submissions', { ...command, requestKey: randomUUID(), reviewTaskId: first.id }, actor);
+    const afterIndependentReview = await call('get', `/gesp/students/${studentId}/workspace`, undefined, actor);
+    expect(afterIndependentReview.reviewTasks.find((row: any) => row.id === third.id).due).toBe(true);
+    await call('post', '/gesp/code-submissions', { ...command, requestKey: randomUUID() }, actor);
+    const response = await base.post('/api/gesp/code-submissions').set('Authorization', 'Bearer ' + actor.token)
+      .send({ ...command, requestKey: randomUUID(), reviewTaskId: third.id });
+    expect(response.status).toBe(400);
+    const after = await call('get', `/gesp/students/${studentId}/workspace`, undefined, actor);
+    const waiting = after.reviewTasks.find((row: any) => row.id === third.id);
+    expect(waiting).toMatchObject({ status: 'scheduled', attemptCount: 0, due: false, dueAt: third.dueAt });
   });
 });

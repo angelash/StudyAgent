@@ -35,6 +35,17 @@ describe('GESP assisted hints, confirmed guidance and delayed reviews', () => {
   const submitProbes = () => {
     for (const probe of task.probes) service.submitProbe(learner, { studentId, atomId, probeId: probe.id, answer: probe.answer, requestKey: randomUUID() });
   };
+  const makeDue = async (review: any) => {
+    // Consistent generated historical timing, not a real retention observation.
+    const anchor = Date.now() - review.stageDay * 86_400_000 - 1000;
+    await store.transaction(() => {
+      for (const row of store.select('gespProbeSubmissions', { studentId, taskId: task.id })) row.createdAt = new Date(anchor).toISOString();
+      for (const row of store.select('gespCodeSubmissions', { studentId, taskId: task.id })) if (!row.reviewTaskId) row.createdAt = new Date(anchor).toISOString();
+      for (const row of store.select('gespReviewTasks', { studentId, taskId: task.id })) {
+        row.createdAt = new Date(anchor).toISOString(); row.dueAt = new Date(anchor + row.stageDay * 86_400_000).toISOString();
+      }
+    });
+  };
 
   it('schedules retention only after independent evidence and completes a due review with a different pack', async () => {
     submitProbes();
@@ -44,7 +55,7 @@ describe('GESP assisted hints, confirmed guidance and delayed reviews', () => {
     expect(workspace.capabilities[0].state).toBe('current_evidence_met');
     expect(workspace.reviewTasks.map((review: any) => review.stageDay)).toEqual([1, 3, 7, 14]);
     const first = workspace.reviewTasks[0]!;
-    store.transaction(() => { store.find('gespReviewTasks', { id: first.id })!.dueAt = new Date(Date.now() - 1).toISOString(); });
+    await makeDue(first);
     workspace = service.studentWorkspace(learner, studentId);
     expect(workspace.reviewTasks.find((review: any) => review.id === first.id)!.due).toBe(true);
     const review = await service.submitCode(learner, { studentId, atomId, source: 'int main(){return 0;}', requestKey: randomUUID(), reviewTaskId: first.id });
@@ -70,7 +81,7 @@ describe('GESP assisted hints, confirmed guidance and delayed reviews', () => {
     await service.submitCode(learner, { studentId, atomId, source: 'int main(){}', requestKey: randomUUID() });
     let workspace = service.studentWorkspace(learner, studentId);
     const scheduled = workspace.reviewTasks[0]!;
-    store.transaction(() => { store.find('gespReviewTasks', { id: scheduled.id })!.dueAt = new Date(Date.now() - 1).toISOString(); });
+    await makeDue(scheduled);
     const beforeCount = store.select('gespCodeSubmissions', { studentId }).length;
     const mutableTask = (service as any).studentData().tasks.find((row: any) => row.id === task.id);
     mutableTask.tests[0].expected += '\n';
@@ -173,7 +184,7 @@ describe('GESP assisted hints, confirmed guidance and delayed reviews', () => {
   it('rejects help-exposed retention without trusting an omitted hint reference', async () => {
     submitProbes();
     await service.submitCode(learner, { studentId, atomId, source: 'int main(){}', requestKey: randomUUID() });
-    const scheduled = store.select('gespReviewTasks', { studentId })[0]; scheduled.dueAt = new Date(Date.now() - 1).toISOString();
+    const scheduled = store.select('gespReviewTasks', { studentId })[0]; await makeDue(scheduled);
     service.requestHint(learner, { studentId, atomId, taskId: task.id, level: 1, requestKey: randomUUID() });
     await expect(service.submitCode(learner, { studentId, atomId, source: 'int main(){}', requestKey: randomUUID(),
       reviewTaskId: scheduled.id })).rejects.toThrow('独立完成');
@@ -194,5 +205,33 @@ describe('GESP assisted hints, confirmed guidance and delayed reviews', () => {
     const unconfirmed = service.studentWorkspace(learner, studentId);
     expect(unconfirmed.scope).toBeNull(); expect(unconfirmed.tasks).toEqual([]); expect(unconfirmed.availableTasks).toEqual([]);
     expect(service.studentWorkspace(parent, studentId).availableTasks).toHaveLength(49);
+  });
+  it('preserves old passed review receipts while leaving missing feedback timing unconfirmed', async () => {
+    submitProbes(); await service.submitCode(learner, { studentId, atomId, source: 'int main(){}', requestKey: randomUUID() });
+    const scheduled = store.select('gespReviewTasks', { studentId })[0]; await makeDue(scheduled);
+    const result = await service.submitCode(learner, { studentId, atomId, source: 'int main(){}', requestKey: randomUUID(), reviewTaskId: scheduled.id });
+    const row = store.find('gespCodeSubmissions', { id: result.id })!;
+    row.retentionTiming = { ...row.retentionTiming!, eligibleAt: 'invalid-timing-fixture' };
+    const malformed = JSON.stringify(row);
+    expect(service.studentWorkspace(learner, studentId).capabilities[0].dimensions.find((dimension: any) => dimension.dimension === 'retention')?.status).toBe('timing_unknown');
+    expect(JSON.stringify(row)).toBe(malformed);
+    delete row.retentionTiming;
+    const before = JSON.stringify(row), workspace = service.studentWorkspace(learner, studentId);
+    expect(workspace.capabilities[0].dimensions.find((dimension: any) => dimension.dimension === 'retention')?.status).toBe('timing_unknown');
+    expect(workspace.capabilities[0].evidenceNotice).toContain('历史回执保持');
+    expect(row.status).toBe('passed'); expect(JSON.stringify(row)).toBe(before);
+  });
+  it('waits after failed review feedback instead of immediately accepting another retention attempt', async () => {
+    submitProbes(); await service.submitCode(learner, { studentId, atomId, source: 'int main(){}', requestKey: randomUUID() });
+    const scheduled = store.select('gespReviewTasks', { studentId })[0]; await makeDue(scheduled);
+    vi.mocked((service as any).runCpp).mockImplementationOnce(async (source: string, tests: any[]) => ({
+      passed: false, sourceSha256: createHash('sha256').update(source).digest('hex'), toolchain: 'test-c++17', compile: { passed: true, stderr: '' },
+      tests: tests.map((_, index) => ({ index, passed: false, status: 'wrong_output', exitCode: 0, durationMs: 1, stderr: '' })),
+    }));
+    const failed = await service.submitCode(learner, { studentId, atomId, source: 'int main(){}', requestKey: randomUUID(), reviewTaskId: scheduled.id });
+    expect(failed.status).toBe('failed'); expect(failed.retentionTiming?.policy).toBe('gesp-feedback-delay-v1');
+    const waiting = service.studentWorkspace(learner, studentId).reviewTasks.find(row => row.id === scheduled.id)!;
+    expect(waiting).toMatchObject({ status: 'scheduled', attemptCount: 1, due: false });
+    await expect(service.submitCode(learner, { studentId, atomId, source: 'int main(){}', requestKey: randomUUID(), reviewTaskId: scheduled.id })).rejects.toThrow('最近相关反馈');
   });
 });

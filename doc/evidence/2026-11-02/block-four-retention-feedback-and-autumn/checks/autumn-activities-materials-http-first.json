@@ -1,0 +1,93 @@
+{
+  "at": "2026-11-02T09:23:21.389Z",
+  "passed": true,
+  "scope": "Original drafts, manual exact-source ranges, real SQLite HTTP and cold read. No teacher approval, material release, adoption or learner evidence.",
+  "drafts": [
+    {
+      "file": "chinese-g3-autumn-sounds-v1.json",
+      "sha256": "a3011a0d1be77263edd7ef8fbdc8b036ac539723f25e57c5fdeed8c9c46e85e0",
+      "physicalPages": [
+        27,
+        28
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 5,
+      "preflightPublishable": false,
+      "gapCount": 63,
+      "linkedDraftMaterialReferences": 35,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    },
+    {
+      "file": "chinese-g3-diary-v1.json",
+      "sha256": "c98ad54634dca17c6b26257c750ad6649d5d5f7ac333404dd649480893e29fce",
+      "physicalPages": [
+        29
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 5,
+      "preflightPublishable": false,
+      "gapCount": 64,
+      "linkedDraftMaterialReferences": 35,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    },
+    {
+      "file": "chinese-g3-garden-two-v1.json",
+      "sha256": "95d8ee8a3a596a286ed15f53a88117ee5cac5b77e9491e5860fdd5b82c41a236",
+      "physicalPages": [
+        30,
+        31
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 5,
+      "preflightPublishable": false,
+      "gapCount": 66,
+      "linkedDraftMaterialReferences": 35,
+      "gapCodes": [
+        "target_not_published",
+        "content_incomplete",
+        "citation_not_in_source",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 3,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 105,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/chinese-g3-autumn-activities-v1.json",
+    "sha256": "a3011817e7209068dd8e95d60d2c7490718602f24d1a1907861119c79d94f230",
+    "groups": 15,
+    "questions": 105,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

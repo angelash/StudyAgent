@@ -166,6 +166,7 @@ export type GespCodeSubmissionReceipt = {
   provenance?: GespTaskProvenance;
   evidence?: GespResponseEvidence;
   feedbackHeld?: boolean;
+  retentionTiming?: { policy: 'gesp-feedback-delay-v1'; anchorAt: string; originalDueAt: string; eligibleAt: string; feedbackResponseIds: string[] };
 };
 
 export type GespHintEvent = {

@@ -57,7 +57,7 @@ describe('actual ' + (configured ? 'PostgreSQL' : 'SQLite') + ' previous compile
   it('refuses the new exact-edition protocol before changing any native state or SQLite bytes', async () => {
     const Reader = oldReader(), url = await location(), current = new DomainDatabase(url); await current.open();
     try { await current.commit(await current.read(), { notebookEntries: [{ id: 'qa-new-edition-reader', content: 'Generated minimum-reader marker probe only.' }] }); } finally { await current.close(); }
-    const before = await native(url), bytes = configured ? null : sha(readFileSync(url)); expect(before.guard[0].state).toBe('ready-schema35-gesp-first-group-v2');
+    const before = await native(url), bytes = configured ? null : sha(readFileSync(url)); expect(before.guard[0].state).toBe('ready-schema36-gesp-retention-feedback-v1');
     const old = new Reader(url); try { await expect(old.open()).rejects.toThrow(/restoration is incomplete|minimum_reader_guard_mismatch/); } finally { await old.close(); }
     expect(teachingHash(await native(url))).toBe(teachingHash(before)); if (bytes) expect(sha(readFileSync(url))).toBe(bytes);
     const cold = new DomainDatabase(url); await cold.open(); await cold.close(); expect(await native(url)).toEqual(before);

@@ -50,6 +50,8 @@ test('GESP workspace: code-first feedback stays held until both probe first resp
   await expect(page.locator('.gesp-result')).toContainText('当前隐藏测试全部通过');
   await expect(page.locator('.gesp-result')).toContainText('本次首答在反馈展示前保存');
   const after=await f.workspace();expect(after.capabilities[0].state).toBe('current_evidence_met');expect(after.reviewTasks).toHaveLength(4);
+  const waiting=page.getByLabel('待到期复测',{exact:true});await expect(waiting).toContainText('4项');await waiting.locator('summary').click();
+  await expect(waiting).toContainText('最近相关反馈');await expect(waiting).toContainText('当前预计');await expect(waiting).toContainText('原计划');
   await page.setViewportSize({width:390,height:760});expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBeLessThanOrEqual(1);
   await capture(page,'first-group-code-before-probes-mobile');
 });

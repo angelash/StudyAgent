@@ -1,0 +1,134 @@
+{
+  "format": "study-block-four-retention-and-autumn-v1",
+  "at": "2026-11-02T09:33:28.267Z",
+  "baseCommit": "a30fc50f8786241ec835cedff382acb38092e9a8",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "implementation": {
+    "minimumReaderSchema": 36,
+    "minimumReaderMarker": "ready-schema36-gesp-retention-feedback-v1",
+    "firstGroupPolicy": "gesp-first-group-v2",
+    "retentionPolicy": "gesp-feedback-delay-v1",
+    "originalDatesAndReceiptsPreserved": true,
+    "recentPracticeAndFailedReviewDelayFullInterval": true,
+    "successfulReviewDoesNotMoveLaterIntervals": true,
+    "historicalTimingUnknownPreserved": true
+  },
+  "validation": {
+    "fullApi": {
+      "passed": 3051,
+      "failed": 0,
+      "conditionalSkips": 131,
+      "frozenInputs": 2154,
+      "changedInputs": [],
+      "report": "checks/b4-rt-full-api-vitest.json"
+    },
+    "focusedApi": {
+      "passed": 37,
+      "failed": 0,
+      "skipped": 0
+    },
+    "postgresReader": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0
+    },
+    "sqlitePersistentRestart": true,
+    "postgresPersistentRestart": true,
+    "apiTypeExit": 0,
+    "webTypeExit": 0,
+    "webBuildExit": 0,
+    "browser": {
+      "buildId": "Xdx2xTDzqV1BplmCAhxK9",
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "visuallyReviewedImages": 6
+    },
+    "contentHttpAndColdRead": [
+      {
+        "report": "checks/autumn-materials-http-source-checked.json",
+        "questions": 147,
+        "exactCitationAndSourceMetadataChecked": true
+      },
+      {
+        "report": "checks/autumn-activities-materials-http-source-checked.json",
+        "questions": 105,
+        "exactCitationAndSourceMetadataChecked": true
+      }
+    ]
+  },
+  "preservedFailures": {
+    "groupAnchorReproduction": {
+      "passed": 5,
+      "failed": 1
+    },
+    "recentFeedbackReproduction": {
+      "passed": 5,
+      "failed": 2
+    },
+    "apiTypeFirst": "Two nullable test accesses corrected; original failure retained.",
+    "harnessSecond": "TEMP prefix collision before start; not a product result.",
+    "gardenCitationFirst": "First draft/material HTTP saved successfully but preflight reported a seven-character citation. It was not source-qualified; exact eight-character original quotation fixed and strict pre-save plus actual-preflight assertions added. Original reports retained."
+  },
+  "content": {
+    "newDrafts": 6,
+    "newDefinitions": 26,
+    "targetGroups": 36,
+    "newCandidateQuestions": 252,
+    "purposeCounts": {
+      "immediate": 108,
+      "proposedRetention": 144
+    },
+    "modes": {
+      "audio_record": 63,
+      "image_upload": 42,
+      "short_answer": 147
+    },
+    "bundles": [
+      {
+        "path": "resources/curriculum/source-lesson-materials/chinese-g3-autumn-v1.json",
+        "sha256": "718918e78725424a94ff91a62c9c794c5c5b403d48361419d4b32b7c27802303"
+      },
+      {
+        "path": "resources/curriculum/source-lesson-materials/chinese-g3-autumn-activities-v1.json",
+        "sha256": "360727ee0e488e7c1c75ee40525e6a741bbf97f17b68eacaad199841be8e70c1"
+      }
+    ],
+    "teacherReviewed": false,
+    "perTargetIntervalSamples": 1,
+    "fullyStockedRetentionIntervals": 0,
+    "independentFamiliesApproved": 0,
+    "publishedPackages": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "formal": {
+    "migrated": false,
+    "schema": 24,
+    "revision": 188,
+    "protectedRuntimeFiles": 1063,
+    "changesSince187": "Only previously verified actual login events/sessions; never roll live data back to187."
+  },
+  "remaining": {
+    "registeredBooks": 449,
+    "booksWithoutDirectory": 336,
+    "directoryEntries": 3512,
+    "entriesWithVersionedCandidateDrafts": 12,
+    "entriesWithoutCandidateDraftsInSelectedInputs": 3500,
+    "next": "Continue exact-source per-lesson content and material/family/scoring reviews; remaining GESP classroom materials and sufficient stock; then block5 engineering and human/device/time-dependent acceptance."
+  },
+  "boundaries": {
+    "sourcePageImagesCommitted": false,
+    "teacherAcceptance": false,
+    "realDeviceAcceptance": false,
+    "humanRetention": false,
+    "rawTracesPrivateLogsAndCredentialsLocalOnly": true,
+    "pushed": false,
+    "deployed": false
+  }
+}

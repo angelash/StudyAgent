@@ -1,0 +1,50 @@
+{
+  "at": "2026-11-02T09:33:27.996Z",
+  "frozenInputCount": 2154,
+  "compiledExcluded": 608,
+  "sourceCompared": 1546,
+  "differences": [],
+  "newFilesAfterFreeze": [
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-autumn-activities-v1.json",
+      "sha256": "360727ee0e488e7c1c75ee40525e6a741bbf97f17b68eacaad199841be8e70c1"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-autumn-v1.json",
+      "sha256": "718918e78725424a94ff91a62c9c794c5c5b403d48361419d4b32b7c27802303"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-autumn-sounds-v1.json",
+      "sha256": "a3011a0d1be77263edd7ef8fbdc8b036ac539723f25e57c5fdeed8c9c46e85e0"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-diary-v1.json",
+      "sha256": "c98ad54634dca17c6b26257c750ad6649d5d5f7ac333404dd649480893e29fce"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-two-v1.json",
+      "sha256": "130b6a9828ad783f107945c5a61e9d3a65f91d6a119c822ccc22b7bc3e2aff08"
+    },
+    {
+      "path": "scripts/content/build-chinese-autumn-activities.cjs",
+      "sha256": "6ce818574b8fd6993d3f4dd4edd0eab57daf949c9221d4ea5a626acd78b20746"
+    },
+    {
+      "path": "scripts/content/build-chinese-autumn-activity-materials.cjs",
+      "sha256": "2a230c23c0ee52f880e089089867b85aa2a6f36f90f306d9423ac8d32cc0be27"
+    },
+    {
+      "path": "scripts/content/build-chinese-autumn-materials.cjs",
+      "sha256": "15528e548816e7a8e12d1e0e2783c9ab6ccb9d2e8fbcc47fde70dc1b4efa68df"
+    },
+    {
+      "path": "scripts/qa/verify-chinese-following-drafts.cjs",
+      "sha256": "e481ad5a7c41e995a09ace85947d627213a1f3d2a841af681675b8720e80115f"
+    },
+    {
+      "path": "scripts/qa/verify-gesp-learning-loop.cjs",
+      "sha256": "11fb72138b2113bb1604dd29daecd3568998c4a35247813a71e77a2bd2cdd869"
+    }
+  ],
+  "rule": "Current application, contracts and tests match the frozen full API input after line-ending normalization. Later original content and standalone QA scripts have their explicit HTTP/cold-read receipts, not a claim that the full API ran those later files."
+}

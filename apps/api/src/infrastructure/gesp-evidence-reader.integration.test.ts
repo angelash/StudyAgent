@@ -21,7 +21,7 @@ function currentReader() {
 }
 function previousReader(version = 33) {
   const capsule = JSON.parse(gunzipSync(readFileSync(join(root, `resources/compatibility/gesp-before-evidence-schema${version}-reader-v1.json.gz`))).toString());
-  expect(capsule.protocol).toBe(version === 33 ? 'study-agent-pre-gesp-evidence33-reader-v1' : 'study-agent-pre-gesp-feedback34-reader-v1');
+  expect(capsule.protocol).toBe(({33:'study-agent-pre-gesp-evidence33-reader-v1',34:'study-agent-pre-gesp-feedback34-reader-v1',35:'study-agent-pre-gesp-retention35-reader-v1'} as Record<number,string>)[version]);
   expect(sha(capsule.reader.code)).toBe(capsule.reader.sha256);
   for (const input of capsule.metadata.external) expect(sha(readFileSync(join(root, input.path)))).toBe(input.sha256);
   const file = join(directory, `reader${version}.cjs`);
@@ -53,34 +53,34 @@ describe('actual ' + (configured ? 'PostgreSQL' : 'SQLite') + ' GESP first-respo
     const before = await native(url); expect(before.guard[0].state).toBe('ready-schema33-exact-edition-v1');
     const cold = new Reader(url); await cold.open(); await cold.close(); expect(await native(url)).toEqual(before);
   });
-  it.each([33, 34])('upgrades schema%s without changing historical facts and refuses its reader before writes', async (version) => {
+  it.each([33, 34, 35])('upgrades schema%s without changing historical facts and refuses its reader before writes', async (version) => {
     const Reader = previousReader(version), url = await location(), old = new Reader(url), original = { id: 'qa-legacy-gesp-probe',
       studentId: 'qa-child', atomId: 'gesp-cpp.l1.io', taskId: 'gesp-student-cpp-sum-two', status: 'correct', createdAt: '2026-10-01T00:00:00.000Z' };
     await old.open(); try { await old.commit(await old.read(), { gespProbeSubmissions: [original] }); } finally { await old.close(); }
     const CurrentReader = currentReader(), current = new CurrentReader(url); await current.open(); try { expect((await current.read()).state.gespProbeSubmissions).toEqual([original]); } finally { await current.close(); }
     const before = await native(url), bytes = configured ? null : sha(readFileSync(url));
-    expect(before.guard[0].state).toBe('ready-schema35-gesp-first-group-v2');
-    expect(before.migrations.at(-1).version).toBe(35);
+    expect(before.guard[0].state).toBe('ready-schema36-gesp-retention-feedback-v1');
+    expect(before.migrations.at(-1).version).toBe(36);
     const incompatible = new Reader(url); try { await expect(incompatible.open()).rejects.toThrow(/restoration is incomplete|unsupported_database_schema|minimum_reader_guard_mismatch/); } finally { await incompatible.close(); }
     expect(await native(url)).toEqual(before); if (bytes) expect(sha(readFileSync(url))).toBe(bytes);
     const cold = new CurrentReader(url); await cold.open(); try { expect((await cold.read()).state.gespProbeSubmissions).toEqual([original]); } finally { await cold.close(); }
   });
-  it('rolls back the35 marker and version atomically when the migration is interrupted', async () => {
-    const Reader = previousReader(34), url = await location(), old = new Reader(url); await old.open(); await old.close();
+  it('rolls back the36 marker and version atomically when the migration is interrupted', async () => {
+    const Reader = previousReader(35), url = await location(), old = new Reader(url); await old.open(); await old.close();
     async function execute(sql: string) {
       if (configured) { const pg = new Pool({ connectionString: url, max: 1 }); try { await pg.query(sql); } finally { await pg.end(); } }
       else { const db = new DatabaseSync(url); try { db.exec(sql); } finally { db.close(); } }
     }
     if (configured) {
-      await execute("CREATE FUNCTION reject_gesp35() RETURNS trigger LANGUAGE plpgsql AS 'BEGIN IF NEW.state=''ready-schema35-gesp-first-group-v2'' THEN RAISE EXCEPTION ''injected_gesp35_failure''; END IF; RETURN NEW; END'");
-      await execute('CREATE TRIGGER reject_gesp35 BEFORE UPDATE ON study_restore_guard FOR EACH ROW EXECUTE FUNCTION reject_gesp35()');
-    } else await execute("CREATE TRIGGER reject_gesp35 BEFORE UPDATE ON study_restore_guard WHEN NEW.state='ready-schema35-gesp-first-group-v2' BEGIN SELECT RAISE(ABORT,'injected_gesp35_failure'); END");
+      await execute("CREATE FUNCTION reject_gesp36() RETURNS trigger LANGUAGE plpgsql AS 'BEGIN IF NEW.state=''ready-schema36-gesp-retention-feedback-v1'' THEN RAISE EXCEPTION ''injected_gesp36_failure''; END IF; RETURN NEW; END'");
+      await execute('CREATE TRIGGER reject_gesp36 BEFORE UPDATE ON study_restore_guard FOR EACH ROW EXECUTE FUNCTION reject_gesp36()');
+    } else await execute("CREATE TRIGGER reject_gesp36 BEFORE UPDATE ON study_restore_guard WHEN NEW.state='ready-schema36-gesp-retention-feedback-v1' BEGIN SELECT RAISE(ABORT,'injected_gesp36_failure'); END");
     const before = await native(url), CurrentReader = currentReader(), failed = new CurrentReader(url);
-    try { await expect(failed.open()).rejects.toThrow('injected_gesp35_failure'); } finally { await failed.close(); }
+    try { await expect(failed.open()).rejects.toThrow('injected_gesp36_failure'); } finally { await failed.close(); }
     expect(await native(url)).toEqual(before);
     const legacy = new Reader(url); await legacy.open(); await legacy.close();
-    await execute('DROP TRIGGER reject_gesp35' + (configured ? ' ON study_restore_guard' : ''));
+    await execute('DROP TRIGGER reject_gesp36' + (configured ? ' ON study_restore_guard' : ''));
     const recovered = new CurrentReader(url); await recovered.open(); await recovered.close();
-    expect((await native(url)).guard[0].state).toBe('ready-schema35-gesp-first-group-v2');
+    expect((await native(url)).guard[0].state).toBe('ready-schema36-gesp-retention-feedback-v1');
   });
 });

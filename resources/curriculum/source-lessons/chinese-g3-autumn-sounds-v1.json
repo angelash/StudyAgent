@@ -1,0 +1,282 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry4",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 27,
+    "pageEnd": 28,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:autumn-sounds-word-reading",
+      "version": 1,
+      "name": "听听秋声九字识读",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与阅读",
+      "objective": "结合词语识读抖蟋蟀振韵掠吟辽阔九字",
+      "successCriterion": "实际录音覆盖九字并按准确页注音核对，文字或拼音选择不能代替发音",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:autumn-sounds-oral-reading",
+      "version": 1,
+      "name": "秋声诗实际朗读与想象",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "朗读与表达",
+      "objective": "有感情朗读诗句，说明停顿与自己形成的画面的联系",
+      "successCriterion": "保留本次声音及实际范围，读法有据；原页未要求全文背诵，不用解释代替朗读",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:autumn-sounds-sound-imagination",
+      "version": 1,
+      "name": "从声音线索展开有据想象",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "文学阅读",
+      "objective": "联系黄叶蟋蟀大雁秋风等线索说明诗中声音和联想",
+      "successCriterion": "分清原句声音、文学想象与实际听见，不把汗水谷粒直接当作实测声源",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:autumn-sounds-word-reading",
+    "source:chinese:g3:02915a7d:autumn-sounds-oral-reading",
+    "source:chinese:g3:02915a7d:autumn-sounds-sound-imagination",
+    "core:chinese:contextmeaning",
+    "core:chinese:detail-evidence"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "已逐张查看准确原件全部范围、提示、注音与插图；仅为AI来源核对，不是教师审核或真人效果。",
+    "pages": [
+      {
+        "page": 27,
+        "visualChecked": true,
+        "statement": "已逐张查看前半诗、略读星号、作者毕国瑛及原提示，拟人和实际听觉分清。"
+      },
+      {
+        "page": 28,
+        "visualChecked": true,
+        "statement": "已逐张查看后半诗、九字识读表与插图，未见写字表或全文背诵要求，汗水谷粒保持诗意表达边界。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "听听，秋的声音",
+    "author": "毕国瑛",
+    "skim": true,
+    "recognitionCharacters": [
+      "抖",
+      "蟋",
+      "蟀",
+      "振",
+      "韵",
+      "掠",
+      "吟",
+      "辽",
+      "阔"
+    ],
+    "writingCharacters": [],
+    "fullTextRecitationRequired": false,
+    "requiredTasks": [
+      "有感情朗读",
+      "边读边想象",
+      "交流诗中的秋天声音"
+    ],
+    "imitationIsOptionalExtension": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "听听，秋的声音：从声音线索想象画面",
+    "activation": {
+      "prompt": "轻轻翻一页书，再说听到的声音。若只看到一张树叶图，你能说已经真的听过它吗？把实际听见与读后想象分开。",
+      "expectedObservation": "孩子能指出声音或说明没有实际声音，不把图画与参考文字当作听觉记录。",
+      "bridge": "读诗时同样先找声音线索，再说它带来的画面与感受。"
+    },
+    "concept": {
+      "explanation": "这首略读诗先写黄叶、蟋蟀，再写大雁和秋风，借道别、歌韵、叮咛与歌吟把秋天组织成可以想象的音乐厅。文字中的声音可以引出动作与画面，但拟人的话音不等于树叶具有人的意图；汗水与谷粒的写法联系劳动和丰收，不要求证明每粒谷子都发出实际声音。朗读时可在反复的听听之后自然停顿，让听者感到在留意不同景物；允许不同有依据的读法。课页要求边读边想象并交流，没有明确全文背诵或写字表要求。九字识读、朗读和画面解释分别看。",
+      "points": [
+        "先找具体声音与对象",
+        "想象说明依据，不冒充现场记录",
+        "反复语句帮助组织倾听",
+        "本次声音与文字说明分别留证"
+      ]
+    },
+    "example": {
+      "situation": "原创虚构小诗片段：窗边的纸片轻轻摆动，沙沙声像在提醒我，风又来了。此为阅读练习，没有提供实际音频。",
+      "steps": [
+        {
+          "explanation": "指出材料明确写了纸片摆动和沙沙声；阅读者目前获得的是文字信息。",
+          "board": [
+            "文字线索：纸片摆动",
+            "文字声音：沙沙",
+            "当前无实录音频"
+          ]
+        },
+        {
+          "explanation": "像在提醒是一种人的活动联想，不能推断纸片有意识地传话。",
+          "board": [
+            "可联想：提醒",
+            "不能证明：纸片有人的意图"
+          ]
+        },
+        {
+          "explanation": "实际朗读后说明停顿怎样帮助画面；文字解释不能代替那次声音。",
+          "board": [
+            "先录本次声音",
+            "再解释停顿",
+            "帮助条件单列"
+          ]
+        }
+      ],
+      "conclusion": "读诗可形成自己的画面，同时保留文字、联想和实际听觉的区别。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "声音、联想与证据",
+        "headers": [
+          "线索",
+          "可形成的画面",
+          "需要保留的边界"
+        ],
+        "rows": [
+          [
+            "黄叶与道别",
+            "落叶声音和离枝的联想",
+            "不证明树叶有人的告别意图"
+          ],
+          [
+            "蟋蟀与歌韵",
+            "虫鸣、振翅与告别的联想",
+            "不要求本人现场观察才能阅读"
+          ],
+          [
+            "大雁、秋风",
+            "移动的队伍与田野画面",
+            "没有实录就不说自己已听见"
+          ],
+          [
+            "汗水、谷粒",
+            "劳动与丰收的诗意联系",
+            "不逐字推成每粒都实际发声"
+          ]
+        ],
+        "explanation": "这是阅读组织表，不是自然声学实验结论。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "说画面里有叶子，所以我刚才已经听到落叶。",
+        "alternatives": [
+          "可能混淆看到与听到，也可能没说明这是诗中想象。"
+        ],
+        "verification": "请指出目前实际得到的是文字、图像还是声音，再说明想象依据。",
+        "correctiveFeedback": "可以说读到后想象沙沙声，未实听就不写成实际听觉记录。"
+      },
+      {
+        "observation": "用一段解释替代本人朗读，或自行增加全文背诵要求。",
+        "alternatives": [
+          "可能把任务方式混同，也可能凭其他课印象套要求。"
+        ],
+        "verification": "查看准确原页提示与本次声音，分别记朗读范围和理解。",
+        "correctiveFeedback": "解释与声音分别核对，没有录到的部分仍未测；不增加原页没有的要求。"
+      }
+    ],
+    "transfer": {
+      "scenario": "换用一段明确标注原创的声音短诗，或由孩子自愿提供普通环境中已经真实听见的信息。",
+      "prompt": "指出一处声音线索与联想，说明目前是否有实际声音，再真实朗读一小段并解释读法。",
+      "expectedStrategy": "先分来源性质，再找对象和表达联系，不编造外出观察或本人经历。"
+    },
+    "summary": {
+      "synthesis": "带着画面朗读，也说清画面从哪里来。诗意的声音与实际听觉分别记录，九字识读和本次朗读各自留证。",
+      "takeaways": [
+        "声音有具体对象",
+        "想象与实听分清",
+        "读法用句意支持",
+        "不添加全文背诵要求"
+      ]
+    },
+    "citations": [
+      {
+        "page": 27,
+        "quote": "有感情地朗读课文，一边读一边想象",
+        "usedFor": "concept"
+      },
+      {
+        "page": 28,
+        "quote": "在每一颗饱满的谷粒里",
+        "usedFor": "concept"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:autumn-sounds-word-reading",
+        "objective": "结合词语识读抖蟋蟀振韵掠吟辽阔九字",
+        "successCriterion": "实际录音覆盖九字并按准确页注音核对，文字或拼音选择不能代替发音"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:autumn-sounds-oral-reading",
+        "objective": "有感情朗读诗句，说明停顿与自己形成的画面的联系",
+        "successCriterion": "保留本次声音及实际范围，读法有据；原页未要求全文背诵，不用解释代替朗读"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:autumn-sounds-sound-imagination",
+        "objective": "联系黄叶蟋蟀大雁秋风等线索说明诗中声音和联想",
+        "successCriterion": "分清原句声音、文学想象与实际听见，不把汗水谷粒直接当作实测声源"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "core:chinese:contextmeaning",
+        "objective": "联系上下文、工具或已有知识解释词义，并说明方法",
+        "successCriterion": "解释与当前语境相容，能指出线索，不只重复词语或机械套用另一义"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "把判断与具体材料对应，分清原信息、感受和追加想象",
+        "successCriterion": "能指出支持关系，不用想象、例子或局部表现冒充实际观察和完整掌握"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "待目标、评分和充分未见库存审核后按真实日期安排；重复原诗、提示与讲解保留条件，不用合成日期当真人保持。"
+    }
+  },
+  "editorNotes": {
+    "slug": "autumn-sounds",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "reuseBoundary": "只复用明确列出的原有定义；新增定义、先修与等价关系保持待审，不自动建立独立题族。",
+    "materialStatus": "具体讲解、例子、图表和错因已经编写；检查材料、独立结构、评分和充分保持库存仍待审核。",
+    "pacing": "朗读、识读、实际书写和表达分次安排；一次局部完成不扩大成全部目标已掌握。"
+  }
+}

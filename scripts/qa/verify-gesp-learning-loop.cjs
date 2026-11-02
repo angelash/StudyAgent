@@ -105,7 +105,14 @@ async function main() {
   await call('PATCH', `/gesp/guidance-plans/${plan.id}`, { status: 'active', expectedVersion: 1, requestKey: randomUUID(),
     reason: '家长核对知识点、活动、成功标准和每日时长' });
   const due = workspace.reviewTasks[0];
-  await store.transaction(() => { store.find('gespReviewTasks', { id: due.id }).dueAt = new Date(Date.now() - 1000).toISOString(); });
+  const simulatedAnchor = Date.now() - 2 * 86_400_000;
+  await store.transaction(() => {
+    for (const collection of ['gespProbeSubmissions','gespCodeSubmissions']) for (const row of store.select(collection,{studentId,taskId:task.id})) if(!row.reviewTaskId) row.createdAt = new Date(simulatedAnchor).toISOString();
+    for (const row of store.select('gespReviewTasks',{studentId,taskId:task.id})) {
+      row.createdAt = new Date(simulatedAnchor).toISOString(); row.dueAt = new Date(simulatedAnchor + row.stageDay * 86_400_000).toISOString();
+    }
+  });
+  evidence.simulatedHistoricalTimingFixture = true;
   workspace = await call('GET', `/gesp/students/${studentId}/workspace`, undefined, learner);
   assert.equal(workspace.reviewTasks.find(row => row.id === due.id).due, true);
   const review = await call('POST', '/gesp/code-submissions', { studentId, atomId: task.atomId, source: 'int main(){}',

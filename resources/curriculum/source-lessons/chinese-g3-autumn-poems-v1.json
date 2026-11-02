@@ -1,0 +1,337 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry1",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 19,
+    "pageEnd": 20,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:autumn-poems-word-reading",
+      "version": 1,
+      "name": "古诗三首目标字识读",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与阅读",
+      "objective": "在准确原页和具体词语中识读本课10个目标字",
+      "successCriterion": "保留实际声音并核对原页注音与语境；不凭键盘拼音或旧版印象认定读音已正确",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:autumn-poems-handwriting",
+      "version": 1,
+      "name": "古诗三首12字实际书写",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与写字",
+      "objective": "观察并真实书写准确原页要求的12个字",
+      "successCriterion": "逐字看实际手写字形、部件位置与完整性，文本选择或字体截图不替代书写",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:autumn-poems-reading-recall",
+      "version": 1,
+      "name": "三首古诗朗读与背诵",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "古诗积累",
+      "objective": "有感情朗读并分别尝试积累山行、赠刘景文、夜书所见",
+      "successCriterion": "以真实录音区分看文朗读、提示后表达和脱离文本背诵；三首分别留证，不由一首推断全部",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:shanxing-written-recall",
+      "version": 1,
+      "name": "山行实际默写",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "古诗积累",
+      "objective": "按准确原件尝试默写山行并核对原稿",
+      "successCriterion": "保存本人真实默写、看文或提示条件与订正；只对山行有此课后要求，不强加其他两首默写",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:autumn-poems-word-reading",
+    "source:chinese:g3:02915a7d:autumn-poems-handwriting",
+    "source:chinese:g3:02915a7d:autumn-poems-reading-recall",
+    "source:chinese:g3:02915a7d:shanxing-written-recall",
+    "core:chinese:contextmeaning",
+    "core:chinese:detail-evidence"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "已逐张查看准确原件的全部课文、注释、识写表、课后任务与所选范围内阅读链接；此为AI来源核对，不是教师审核或材料独立性结论。",
+    "pages": [
+      {
+        "page": 19,
+        "visualChecked": true,
+        "statement": "已查看山行与赠刘景文完整诗文、两位作者朝代和注释，保留生处、坐与擎/君等语义边界。"
+      },
+      {
+        "page": 20,
+        "visualChecked": true,
+        "statement": "已查看夜书所见、作者朝代与注释、10字识读、12字写字及课后要求；三首背诵，仅山行明确默写。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "古诗三首",
+    "recognitionCharacters": [
+      "径",
+      "斜",
+      "赠",
+      "残",
+      "犹",
+      "傲",
+      "君",
+      "橙",
+      "橘",
+      "挑"
+    ],
+    "writingCharacters": [
+      "寒",
+      "径",
+      "斜",
+      "霜",
+      "赠",
+      "盖",
+      "菊",
+      "残",
+      "君",
+      "橙",
+      "送",
+      "挑"
+    ],
+    "poems": [
+      {
+        "title": "山行",
+        "author": "杜牧",
+        "dynasty": "唐"
+      },
+      {
+        "title": "赠刘景文",
+        "author": "苏轼",
+        "dynasty": "宋"
+      },
+      {
+        "title": "夜书所见",
+        "author": "叶绍翁",
+        "dynasty": "宋"
+      }
+    ],
+    "recitationTitles": [
+      "山行",
+      "赠刘景文",
+      "夜书所见"
+    ],
+    "dictationTitles": [
+      "山行"
+    ],
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "古诗三首：从景物与注释读出秋意",
+    "activation": {
+      "prompt": "说说“想象一个秋天画面”和“用词句说明为什么是秋天”有何不同。先选一处你已经读到的景物线索，没把握时保留问题。",
+      "expectedObservation": "孩子能区分个人画面与材料依据，不只凭诗题或插图猜季节。",
+      "bridge": "读三首诗时分别找景物、人物活动和注释，再比较相同季节中不同的观察。"
+    },
+    "concept": {
+      "explanation": "先逐首读准，再结合注释理解词句，用实际景物支持季节判断。《山行》有寒山、枫林、霜叶等线索；准确原件写白云生处，不能凭熟悉的另版文字改成深处。注释中坐指因为，不是坐下。《赠刘景文》把荷尽、菊残与橙黄橘绿放在同一时节，不等于花木都已没有生机；不同有依据的感受可以交流。《夜书所见》写秋风与客情，也写篱落灯明和对儿童活动的判断，不能将推知直接说成亲眼看见全部过程。看文朗读、背诵和默写分别留证，本课明确三首背诵、仅山行默写。",
+      "points": [
+        "逐首找景物，不凭一个统一标签解释全部",
+        "古今词义先结合本页注释",
+        "原句与自己的推知分清",
+        "三首积累分别核对，山行默写另留真实原稿"
+      ]
+    },
+    "example": {
+      "situation": "原创类比：甲句写“枝头叶子泛红，我停下脚步，因为眼前的颜色很特别”；乙句写“院里有灯，我猜同伴还在看书”。用它们练习依据与推知，再返回原诗。",
+      "steps": [
+        {
+          "explanation": "甲句明确颜色、停步和原因；解释原因不能只抓停下这个动作。",
+          "board": [
+            "景物：叶子泛红",
+            "动作：停步",
+            "原因：颜色引起注意"
+          ]
+        },
+        {
+          "explanation": "乙句先有灯光线索，再有读者推测；有灯不保证同伴一定在看书。",
+          "board": [
+            "已给：院里有灯",
+            "推测：同伴读书",
+            "还需：实际活动信息"
+          ]
+        },
+        {
+          "explanation": "回到原诗，对照注释说明坐的含义；用原词句支持季节与人物活动，不能把类比句替换进诗中。",
+          "board": [
+            "原诗原字保持",
+            "注释帮助词义",
+            "推知不冒充全程观察"
+          ]
+        }
+      ],
+      "conclusion": "类比帮助理解阅读方法，原诗的具体意思仍以本版诗句与注释为据。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "三首诗的线索与边界",
+        "headers": [
+          "诗题",
+          "可核对的线索",
+          "不能直接推出"
+        ],
+        "rows": [
+          [
+            "山行",
+            "寒山、枫林、霜叶与停车原因",
+            "不能把坐按坐下解释或擅改原字"
+          ],
+          [
+            "赠刘景文",
+            "荷尽菊残与橙黄橘绿的对照",
+            "不能说所有秋景只表达同一种悲伤"
+          ],
+          [
+            "夜书所见",
+            "秋风客情、灯明与儿童活动判断",
+            "不能说诗人亲眼看完所有儿童活动"
+          ]
+        ],
+        "explanation": "表格用于比较正文线索，不用空泛情感标签替代逐句理解。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "把停车坐爱中的坐解释成坐在车里。",
+        "alternatives": [
+          "可能套用了现代常见词义，也可能没有使用本页注释。"
+        ],
+        "verification": "请指出注释，再用自己的话连接停车与喜爱枫林的原因。",
+        "correctiveFeedback": "先按这里因为的意思理解因果，不能只因字形熟悉就忽略语境。"
+      },
+      {
+        "observation": "读到秋天就把三首感受全写成相同的难过。",
+        "alternatives": [
+          "可能先套季节标签，也可能没有比较具体景物和语句。"
+        ],
+        "verification": "分别指出各诗线索，比较赠诗的橙黄橘绿与其他景物如何组合。",
+        "correctiveFeedback": "感受可以不同，但都须有对应词句；同一季节不自动带来同一种情感。"
+      },
+      {
+        "observation": "朗读一首正确就认为三首背诵和山行默写都完成了。",
+        "alternatives": [
+          "可能把学习方式混同，也可能没有分开记录任务。"
+        ],
+        "verification": "分别核对三份声音、看文或帮助条件及本人山行默写原稿。",
+        "correctiveFeedback": "没有实际完成的部分仍未测，不能用一种表现替代另一种。"
+      }
+    ],
+    "transfer": {
+      "scenario": "换一段适龄原创秋景短诗，或对照三首中另一处未讲过的词句，保留原材料条件。",
+      "prompt": "用一处具体线索支持季节或画面理解，说明哪些是原句、哪些是自己的判断；若借助注释，指出它怎样帮助。",
+      "expectedStrategy": "先找材料，再解释关系；不把旧答案、插图或统一感受当成新依据。"
+    },
+    "summary": {
+      "synthesis": "读准、借注释、找依据，再交流各自的画面与感受。朗读、背诵、实际默写分开核对，原字与帮助条件不抹去。",
+      "takeaways": [
+        "注释约束古今词义",
+        "景物支持季节判断",
+        "三首感受有共性也有差别",
+        "山行默写不扩成三首都默写"
+      ]
+    },
+    "citations": [
+      {
+        "page": 20,
+        "quote": "有感情地朗读课文。背诵课文。默写《山行》。",
+        "usedFor": "summary"
+      },
+      {
+        "page": 20,
+        "quote": "这三首诗写的是哪个季节的景色",
+        "usedFor": "concept"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:autumn-poems-word-reading",
+        "objective": "在准确原页和具体词语中识读本课10个目标字",
+        "successCriterion": "保留实际声音并核对原页注音与语境；不凭键盘拼音或旧版印象认定读音已正确"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:autumn-poems-handwriting",
+        "objective": "观察并真实书写准确原页要求的12个字",
+        "successCriterion": "逐字看实际手写字形、部件位置与完整性，文本选择或字体截图不替代书写"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:autumn-poems-reading-recall",
+        "objective": "有感情朗读并分别尝试积累山行、赠刘景文、夜书所见",
+        "successCriterion": "以真实录音区分看文朗读、提示后表达和脱离文本背诵；三首分别留证，不由一首推断全部"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g3:02915a7d:shanxing-written-recall",
+        "objective": "按准确原件尝试默写山行并核对原稿",
+        "successCriterion": "保存本人真实默写、看文或提示条件与订正；只对山行有此课后要求，不强加其他两首默写"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "core:chinese:contextmeaning",
+        "objective": "结合原语境、注释或前后线索解释词句，并说明使用的方法",
+        "successCriterion": "解释受当前条件约束，能说明线索或注释怎样支持理解，不机械替换另一个常用词义"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "用具体词句支持画面、季节和表达理解，区分原信息与联想",
+        "successCriterion": "指出依据与支持关系，不用插图推断、固定感受或自己的经历冒充正文事实"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "先审核目标、量规与充分的未见材料，再按真实日期核查。原诗重复、看文、讲解、提示和帮助分别保留，不用模拟日期或参考答案当作学生保持表现。"
+    }
+  },
+  "editorNotes": {
+    "slug": "autumn-poems",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "materialStatus": "具体讲解、示例、错因和图表已编写；检查题、独立结构、量规金样本与充分保持库存仍待补齐。",
+    "reuseBoundary": "复用原词义与细节依据定义，新增定义保持草稿，等价和先修关系仍待教研审核。",
+    "pacing": "识读、实际书写、朗读背诵和理解表达分次安排，不能声称一次短学习已覆盖所有目标。"
+  }
+}

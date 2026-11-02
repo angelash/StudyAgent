@@ -1,0 +1,37 @@
+{
+  "at": "2026-11-02T09:32:46.240Z",
+  "firstHttpReportPassedOnlyItsSaveColdReadAssertions": true,
+  "firstGardenExactCitationQualified": false,
+  "originalSourceReportRetained": true,
+  "changedDraft": {
+    "path": "resources/curriculum/source-lessons/chinese-g3-garden-two-v1.json",
+    "previousSha256": "95d8ee8a3a596a286ed15f53a88117ee5cac5b77e9491e5860fdd5b82c41a236",
+    "currentSha256": "130b6a9828ad783f107945c5a61e9d3a65f91d6a119c822ccc22b7bc3e2aff08",
+    "onlyDifference": "Physical page31 quotation gains its original comma, length7 becomes8."
+  },
+  "changedBundle": {
+    "path": "resources/curriculum/source-lesson-materials/chinese-g3-autumn-activities-v1.json",
+    "previousSha256": "a3011817e7209068dd8e95d60d2c7490718602f24d1a1907861119c79d94f230",
+    "currentSha256": "360727ee0e488e7c1c75ee40525e6a741bbf97f17b68eacaad199841be8e70c1",
+    "onlyDifference": "Exact source draft binding hash; all105 exercise stems, answers, analyses, modes, rubrics and proposed intervals unchanged."
+  },
+  "currentBundleInputs": [
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-autumn-v1.json",
+      "sha256": "718918e78725424a94ff91a62c9c794c5c5b403d48361419d4b32b7c27802303"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-autumn-activities-v1.json",
+      "sha256": "360727ee0e488e7c1c75ee40525e6a741bbf97f17b68eacaad199841be8e70c1"
+    }
+  ],
+  "allCurrentDraftBindingsMatch": true,
+  "verificationScript": "Now requires minimum-length and literal quotation match before saving, rejects actual citation_not_in_source preflight gaps, uses exact lesson source name and cold-reads all authored-source metadata.",
+  "actualStrictResults": [
+    "autumn-materials-http-source-checked.json",
+    "autumn-activities-materials-http-source-checked.json"
+  ],
+  "teacherReviewed": false,
+  "published": false,
+  "wholeGoal": "active"
+}

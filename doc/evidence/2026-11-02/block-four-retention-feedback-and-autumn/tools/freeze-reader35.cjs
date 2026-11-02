@@ -1,0 +1,8 @@
+const fs=require('node:fs'),path=require('node:path'),zlib=require('node:zlib'),crypto=require('node:crypto'),esbuild=require('esbuild');
+const root=path.resolve(__dirname,'../../..'),output=path.join(root,'resources/compatibility/gesp-before-evidence-schema35-reader-v1.json.gz'),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+if(fs.existsSync(output))throw Error('Preserve previous compiled reader');
+const external=['zod','sharp','@nestjs/common','pdf-lib','pg'];
+const result=esbuild.buildSync({absWorkingDir:root,entryPoints:['apps/api/src/infrastructure/domain-database.ts'],bundle:true,platform:'node',format:'cjs',external,write:false,metafile:true});
+const code=result.outputFiles[0].text;if(!code.includes("ready-schema35-gesp-first-group-v2")||code.includes('ready-schema36-gesp'))throw Error('Exact pre-evidence33 reader required');
+const packed={protocol:'study-agent-pre-gesp-retention35-reader-v1',reader:{code,sha256:sha(Buffer.from(code))},metadata:{external:external.map(name=>{const file=require.resolve(name,{paths:[root]});return{name,path:path.relative(root,file).replaceAll('\\','/'),sha256:sha(fs.readFileSync(file))};}),inputs:Object.keys(result.metafile.inputs).map(file=>({path:file,sha256:sha(fs.readFileSync(path.join(root,file)))}))}};
+const bytes=zlib.gzipSync(JSON.stringify(packed));fs.writeFileSync(output,bytes,{flag:'wx'});if(sha(zlib.gunzipSync(fs.readFileSync(output)))!==sha(Buffer.from(JSON.stringify(packed))))throw Error('Reader capsule readback differs');console.log(JSON.stringify({output:path.relative(root,output),sha256:sha(bytes),sourceInputs:packed.metadata.inputs.length,readerSha256:packed.reader.sha256}));

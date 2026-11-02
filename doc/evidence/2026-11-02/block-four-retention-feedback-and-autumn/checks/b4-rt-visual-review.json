@@ -1,0 +1,39 @@
+{
+  "at": "2026-11-02T09:24:56.020Z",
+  "buildId": "Xdx2xTDzqV1BplmCAhxK9",
+  "images": [
+    {
+      "path": "data/qa/p187/data/qa/browser-evidence/b4-rt-browser-browser-220b50c733/gesp-teaching/level-1-desktop.png",
+      "sha256": "592c6e28dfda036f0771b5f53aab8a152e2a1d5b019a975b4730c73bed58fe18",
+      "visuallyViewed": true
+    },
+    {
+      "path": "data/qa/p187/data/qa/browser-evidence/b4-rt-browser-browser-220b50c733/gesp-teaching/level-2-desktop.png",
+      "sha256": "3ea33d30e0cae3d3e0eccf39580dc22d6ed8b7be4eb0c574a8b07ca4dd4caed6",
+      "visuallyViewed": true
+    },
+    {
+      "path": "data/qa/p187/data/qa/browser-evidence/b4-rt-browser-browser-220b50c733/gesp-teaching/level-3-desktop.png",
+      "sha256": "66042da376e5649cde0375a44d5351f3352f7f25ca9b08e2148f20688ef61b52",
+      "visuallyViewed": true
+    },
+    {
+      "path": "data/qa/p187/data/qa/browser-evidence/b4-rt-browser-browser-220b50c733/gesp-teaching/level-4-desktop.png",
+      "sha256": "9f14ce84a05ade7d10ec3795ceb6de7099a8007447b94d8afd7393abbeff586f",
+      "visuallyViewed": true
+    },
+    {
+      "path": "data/qa/p187/data/qa/browser-evidence/b4-rt-browser-browser-220b50c733/gesp-teaching/level-four-mobile.png",
+      "sha256": "88e4d79ba04e4b4ec1bfa8989faeb3e07b62d0c9adef00818105cec59877b6f3",
+      "visuallyViewed": true
+    },
+    {
+      "path": "data/qa/p187/data/qa/browser-evidence/b4-rt-browser-browser-220b50c733/workspace-gesp/first-group-code-before-probes-mobile.png",
+      "sha256": "4a8bdfa759c9ef27357dd99016d249006d215952117bebaa9311564e679b4ff5",
+      "visuallyViewed": true
+    }
+  ],
+  "findings": [],
+  "checks": "Four desktop teaching levels, stacked mobile teaching and first-response mobile queue: active target, readable content flow, no overlapping controls or clipped horizontal content at saved viewport. Queue shows original date, current eligible date and wait reason.",
+  "boundaries": "AI screenshot review only; not physical device, assistive technology or teacher acceptance."
+}

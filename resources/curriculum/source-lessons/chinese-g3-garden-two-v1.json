@@ -1,0 +1,305 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry6",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 30,
+    "pageEnd": 31,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:garden-two-method-exchange",
+      "version": 1,
+      "name": "交流理解词语的方法",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "阅读策略",
+      "objective": "在具体例子中说明联系上下文查字典等理解方法，并听取不同办法",
+      "successCriterion": "实际使用线索可指认；列方法数量不代替能解释，实际同伴交流未发生时保留未验",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:garden-two-season-words",
+      "version": 1,
+      "name": "用恰当词语描写季节",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "词语表达",
+      "objective": "选择与明确景物和季节条件相容的词语，说明理由",
+      "successCriterion": "不把教材示例当唯一答案，也不推广成每地区每年完全相同的气候",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:garden-two-handwriting",
+      "version": 1,
+      "name": "园地二八字横竖书写",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "书写",
+      "objective": "观察并真实书写狂排铺票盖寒臂假，注意横画平稳竖画端正",
+      "successCriterion": "本人原件逐字核对部件与完整性，横平竖直为书写提示，不把笔画机械画成几何绝对水平",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:garden-two-accumulated-words",
+      "version": 1,
+      "name": "秋景四字词语积累与应用",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "词语积累",
+      "objective": "读准园地九个四字词语，联系意思选择适合的表达",
+      "successCriterion": "真实声音与实际用法分别看，不以会读推断会用，也不将五谷丰登等扩大成实际全量收成结论",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:garden-two-method-exchange",
+    "source:chinese:g3:02915a7d:garden-two-season-words",
+    "source:chinese:g3:02915a7d:garden-two-handwriting",
+    "source:chinese:g3:02915a7d:garden-two-accumulated-words",
+    "core:chinese:contextmeaning"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "已逐张查看准确原件全部范围、提示、注音与插图；仅为AI来源核对，不是教师审核或真人效果。",
+    "pages": [
+      {
+        "page": 30,
+        "visualChecked": true,
+        "statement": "已逐张查看交流平台、四季词语和憧憬/忐忑不安上下文，查字典为示例方法，情绪不等于已发生结果。"
+      },
+      {
+        "page": 31,
+        "visualChecked": true,
+        "statement": "已逐张查看八字书写、执笔姿势、横竖提示与九个秋景词语，果实累累的累为léi；词语与具体地域条件分别看。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "语文园地（二）",
+    "activityKind": "language_garden",
+    "sections": [
+      "交流平台",
+      "词句段运用",
+      "书写提示",
+      "日积月累"
+    ],
+    "writingCharacters": [
+      "狂",
+      "排",
+      "铺",
+      "票",
+      "盖",
+      "寒",
+      "臂",
+      "假"
+    ],
+    "accumulatedPhrases": [
+      "秋高气爽",
+      "天高云淡",
+      "秋风习习",
+      "一叶知秋",
+      "金桂飘香",
+      "层林尽染",
+      "五谷丰登",
+      "果实累累",
+      "春华秋实"
+    ],
+    "actualPeerFeedbackNotFabricated": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "语文园地（二）：说清理解方法，把词语用在合适处",
+    "activation": {
+      "prompt": "遇到一个不理解的词，你会只报词义，还是能说明自己怎样知道？先用一条具体线索试着解释，没把握可查工具。",
+      "expectedObservation": "孩子能指出上下文、字典或已有知识的具体作用，不把列出方法名当作已经理解。",
+      "bridge": "接下来在季节表达和两个情绪词中试用方法，再分开看书写与词语积累。"
+    },
+    "concept": {
+      "explanation": "交流平台让小组总结理解词语的方法，查字典是示例，还可联系上下文、替换试读和已有知识，关键是说明当前方法怎样支持词义。憧憬可联系即将到来与期待表现，忐忑不安可联系担心受到责备，不能仅凭花瓶打碎推断实际已发生责备。描写季节的词要与具体条件相容，不能规定四季在所有地区完全一样。书写提示列狂排铺票盖寒臂假，强调横画平稳、竖画端正和执笔姿势；看本人原件，不按字体截图或绝对几何水平判字。九个秋景四字词语的读音、意思与使用分别核查，果实累累的累按此处注音léi核对，不套劳累读法。",
+      "points": [
+        "方法在具体语境中起作用",
+        "季节词与景物条件对应",
+        "情绪词解释不补造结果",
+        "实际书写和词语声音分别保留"
+      ]
+    },
+    "example": {
+      "situation": "原创句：活动还没开始，小禾已经想着怎样把模型讲清楚，盼着那一天快些来。另句：作品少了一件，他怕找不回来，心里一直不踏实。",
+      "steps": [
+        {
+          "explanation": "第一句找盼着和未来活动，支持对将来的向往，可用来理解憧憬。",
+          "board": [
+            "未来：活动未开始",
+            "态度：盼着到来",
+            "解释：向往期待"
+          ]
+        },
+        {
+          "explanation": "第二句找怕找不回与不踏实，支持担心不安，不证明物品永远找不回。",
+          "board": [
+            "具体担心",
+            "心中不安",
+            "结果仍未给"
+          ]
+        },
+        {
+          "explanation": "如果查字典有多个义项，代回当前句试读，看是否与这些线索相容。",
+          "board": [
+            "找义项",
+            "代回语境",
+            "解释为何适合"
+          ]
+        }
+      ],
+      "conclusion": "线索、词义与方法连起来，才能看出怎样理解；合理不同方法可并存。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "园地四项分别留下什么",
+        "headers": [
+          "项目",
+          "具体表现",
+          "不能替代"
+        ],
+        "rows": [
+          [
+            "理解方法",
+            "指出线索与解释关系",
+            "方法名称多不等于理解深"
+          ],
+          [
+            "季节词",
+            "给词与景物条件说明",
+            "一个地方不代替全部气候"
+          ],
+          [
+            "书写",
+            "本人八字原稿与订正",
+            "字体选择不代替实际手写"
+          ],
+          [
+            "四字词积累",
+            "本次读音和恰当使用",
+            "会读不自动证明全会用"
+          ]
+        ],
+        "explanation": "表格支持分项检查，不用总完成数掩盖未测部分。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "列出许多方法却无法解释一个词。",
+        "alternatives": [
+          "可能只记了名称，也可能未把方法用于当前材料。"
+        ],
+        "verification": "选一个词指出当前线索，说明删掉该线索后判断是否仍成立。",
+        "correctiveFeedback": "先让一种方法在具体句子里起作用，再交流其他办法，不单按方法数量评分。"
+      },
+      {
+        "observation": "把果实累累的累读成劳累的读法，或将担心被责备写成已经被责备。",
+        "alternatives": [
+          "可能机械套常见读音，也可能混淆情绪与结果。"
+        ],
+        "verification": "分别核对原页注音与句中实际信息，不把两类问题合为一种原因。",
+        "correctiveFeedback": "读音随当前词核对，担心的事情仍可能没有发生；各自保留真实表现。"
+      }
+    ],
+    "transfer": {
+      "scenario": "换一个适龄多义词语境和一张明确季节景物卡，不要求学生外出或提供个人行程。",
+      "prompt": "解释词义并说明一种方法，再选合适季节词说明依据。书写与声音任务另留本次本人原件，不由文字解释替代。",
+      "expectedStrategy": "用具体材料检查含义与用法，工具和帮助条件保留，不夸大一项表现覆盖全部。"
+    },
+    "summary": {
+      "synthesis": "说出怎样理解，把词用到恰当条件中。真实书写、实际声音与文字解释分开核查，未做的部分继续未验。",
+      "takeaways": [
+        "理解方法须有具体线索",
+        "季节词不是通用气候规律",
+        "横竖提示落到本人原稿",
+        "词义读音和使用分别看"
+      ]
+    },
+    "citations": [
+      {
+        "page": 30,
+        "quote": "你会用哪些词语来形容不同的季节",
+        "usedFor": "transfer"
+      },
+      {
+        "page": 31,
+        "quote": "横画要写得平稳，",
+        "usedFor": "concept"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:garden-two-method-exchange",
+        "objective": "在具体例子中说明联系上下文查字典等理解方法，并听取不同办法",
+        "successCriterion": "实际使用线索可指认；列方法数量不代替能解释，实际同伴交流未发生时保留未验"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:garden-two-season-words",
+        "objective": "选择与明确景物和季节条件相容的词语，说明理由",
+        "successCriterion": "不把教材示例当唯一答案，也不推广成每地区每年完全相同的气候"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:garden-two-handwriting",
+        "objective": "观察并真实书写狂排铺票盖寒臂假，注意横画平稳竖画端正",
+        "successCriterion": "本人原件逐字核对部件与完整性，横平竖直为书写提示，不把笔画机械画成几何绝对水平"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g3:02915a7d:garden-two-accumulated-words",
+        "objective": "读准园地九个四字词语，联系意思选择适合的表达",
+        "successCriterion": "真实声音与实际用法分别看，不以会读推断会用，也不将五谷丰登等扩大成实际全量收成结论"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "core:chinese:contextmeaning",
+        "objective": "联系上下文、工具或已有知识解释词义，并说明方法",
+        "successCriterion": "解释与当前语境相容，能指出线索，不只重复词语或机械套用另一义"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "待目标、评分和充分未见库存审核后按真实日期安排；重复原诗、提示与讲解保留条件，不用合成日期当真人保持。"
+    }
+  },
+  "editorNotes": {
+    "slug": "garden-two",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "reuseBoundary": "只复用明确列出的原有定义；新增定义、先修与等价关系保持待审，不自动建立独立题族。",
+    "materialStatus": "具体讲解、例子、图表和错因已经编写；检查材料、独立结构、评分和充分保持库存仍待审核。",
+    "pacing": "朗读、识读、实际书写和表达分次安排；一次局部完成不扩大成全部目标已掌握。"
+  }
+}

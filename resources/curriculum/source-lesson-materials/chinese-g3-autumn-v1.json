@@ -1,0 +1,2156 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "autumn-poems",
+      "path": "resources/curriculum/source-lessons/chinese-g3-autumn-poems-v1.json",
+      "sha256": "75b995c4566946f41eb3206d1e6a729e063b996756618bc63d3000bd7ae9f414",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry1",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 19,
+        "pageEnd": 20,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    },
+    {
+      "lesson": "pavement",
+      "path": "resources/curriculum/source-lessons/chinese-g3-pavement-v1.json",
+      "sha256": "128746a92f2e5d07e6dafacce022b7a67dbbb9e2caee7e5a5594c4fcac4bf165",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry2",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 21,
+        "pageEnd": 23,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    },
+    {
+      "lesson": "autumn-rain",
+      "path": "resources/curriculum/source-lessons/chinese-g3-autumn-rain-v1.json",
+      "sha256": "05cf12243b36ce949b286bb05ba42eaf863cb9f96614ecb7d0364dc149f4ee6e",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry3",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 24,
+        "pageEnd": 26,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标每间隔只有一份拟议样题，不代表充分四维库存；同结构换词、重排和原诗重复不获新的独立题族资格。真实声音、手写、默写和观察均需本人证据。",
+  "groups": [
+    {
+      "lesson": "autumn-poems",
+      "atomId": "source:chinese:g3:02915a7d:autumn-poems-word-reading",
+      "structure": "autumn-poems-contextual-reading",
+      "familyProposal": "following-autumn-poems-contextual-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "有完整实际录音，覆盖本次指定目标字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "联系具体词语和准确原页注音核对实际读法",
+          "weight": 0.4
+        },
+        {
+          "criterion": "文字或拼音选择不代替发音，非目标字不熟另记",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "听本次原音逐字核对径斜赠残犹傲君橙橘挑；斜按本页现代普通话注音，挑促织结合拨弄语境，不能套挑选的读法。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "autumn-poems-autumn-poems-contextual-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "请真实录音读“小径、斜着、赠送、残叶、犹如、傲霜、君子、橙子、橘子、挑促织”。核对10个目标字，其他不熟的字可以说明，不能用打字代替声音。",
+          "answer": "听本次原音逐字核对径斜赠残犹傲君橙橘挑；斜按本页现代普通话注音，挑促织结合拨弄语境，不能套挑选的读法。",
+          "analysis": "听本次原音逐字核对径斜赠残犹傲君橙橘挑；斜按本页现代普通话注音，挑促织结合拨弄语境，不能套挑选的读法。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-poems-autumn-poems-contextual-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "请真实录音比较“挑选”和“挑促织”的“挑”，再读本课其余9个目标字组成的词语。说明用了哪个语境判断。",
+          "answer": "挑选与挑促织读法不同，后者结合原页拨弄注释；其余9字须有实际声音，解释正确不能替代发音。",
+          "analysis": "挑选与挑促织读法不同，后者结合原页拨弄注释；其余9字须有实际声音，解释正确不能替代发音。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-poems-autumn-poems-contextual-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新读书卡把目标词重新排列：“橙子、橘子、小径、斜着、残叶、赠送、犹如、傲霜、君子、挑促织”。录音读出，再说一处仍需核对的地方。",
+          "answer": "顺序变化仍逐一核对10个目标字，不把换顺序认定新独立题族；没有声音的字保持未测。",
+          "analysis": "顺序变化仍逐一核对10个目标字，不把换顺序认定新独立题族；没有声音的字保持未测。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-poems-autumn-poems-contextual-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "录音读“山间小径、斜向上、赠给朋友、残叶、犹如、傲霜、君子、橙黄、橘绿、挑促织”，说明是否先看过示范。",
+          "answer": "实际覆盖10字，语境与读法相容；先看或听过示范需保留帮助条件，不由拼音书写推断声音正确。",
+          "analysis": "实际覆盖10字，语境与读法相容；先看或听过示范需保留帮助条件，不由拼音书写推断声音正确。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-poems-autumn-poems-contextual-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "请录音区分“斜”与自己原先容易混淆的读法，再用10个目标字各组一个合理词读出。",
+          "answer": "原页注音与现代普通话为核对依据，不强迫套所谓古音；组词与语境相容，实际声音逐项保留。",
+          "analysis": "原页注音与现代普通话为核对依据，不强迫套所谓古音；组词与语境相容，实际声音逐项保留。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-poems-autumn-poems-contextual-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "不沿用上次顺序，录音读本课10个目标字所在的词语，再解释“挑促织”为什么需联系注释。",
+          "answer": "全部目标字有实际声音，挑的语境是拨弄；没有完成的字不由其他字读准自动补齐。",
+          "analysis": "全部目标字有实际声音，挑的语境是拨弄；没有完成的字不由其他字读准自动补齐。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-poems-autumn-poems-contextual-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选本课三首中的目标词读出，再把未覆盖的目标字补成词录音。说明哪些字还没有把握。",
+          "answer": "核对实际覆盖集合是否含全部10字；抽到一首不能推断另两首目标字读音都正确。",
+          "analysis": "核对实际覆盖集合是否含全部10字；抽到一首不能推断另两首目标字读音都正确。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "autumn-poems",
+      "atomId": "source:chinese:g3:02915a7d:autumn-poems-handwriting",
+      "structure": "autumn-poems-original-handwriting",
+      "familyProposal": "following-autumn-poems-original-handwriting",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "真实手写原件覆盖本次指定内容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "逐字核对部件位置、字形与完整性",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原稿与订正保留，局部抽样不扩大成全部字已掌握",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "12字逐一看原件，部件准确且完整；说明可以不同，但不能从文字说明推断实际字形已写对。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "autumn-poems-autumn-poems-original-handwriting-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "请真实手写“寒径斜霜赠盖菊残君橙送挑”12字并上传完整原件，选择一处部件位置说明。不要以排版字体截图代替。",
+          "answer": "12字逐一看原件，部件准确且完整；说明可以不同，但不能从文字说明推断实际字形已写对。",
+          "analysis": "12字逐一看原件，部件准确且完整；说明可以不同，但不能从文字说明推断实际字形已写对。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-poems-autumn-poems-original-handwriting-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "真实手写“寒、霜、菊、橙、赠”，再补写其余7个目标字，保留订正并上传。",
+          "answer": "实际原件覆盖全部12字，订正前后可比较；仅能辨认正确字形不等于已经书写。",
+          "analysis": "实际原件覆盖全部12字，订正前后可比较；仅能辨认正确字形不等于已经书写。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-poems-autumn-poems-original-handwriting-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "把12个目标字放入自己理解的词语后真实手写并上传；不熟的词可先核对，但说明看文或帮助情况。",
+          "answer": "字形逐字看真实原件，词语合理；帮助条件与实际书写分别记录，不以写得多推断全都掌握。",
+          "analysis": "字形逐字看真实原件，词语合理；帮助条件与实际书写分别记录，不以写得多推断全都掌握。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-poems-autumn-poems-original-handwriting-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实手写“径、斜、残、君”，上传并说明自己怎样核对部件位置。",
+          "answer": "这次只覆盖4字，字形与说明分别看，不由抽样推断其余8字保持。",
+          "analysis": "这次只覆盖4字，字形与说明分别看，不由抽样推断其余8字保持。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-poems-autumn-poems-original-handwriting-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "真实手写“寒、霜、盖、菊”，保留原稿与订正，上传完整图像。",
+          "answer": "核对4字实际字形和部件；不把选择字体或复制文本当成本人手写。",
+          "analysis": "核对4字实际字形和部件；不把选择字体或复制文本当成本人手写。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-poems-autumn-poems-original-handwriting-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "真实手写“赠、橙、送、挑”，分别标出仍需核对处；没有完成的字不要隐藏。",
+          "answer": "实际字形逐项核对，仅覆盖本次4字；可保留未完成，不能用总张数判全部通过。",
+          "analysis": "实际字形逐项核对，仅覆盖本次4字；可保留未完成，不能用总张数判全部通过。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-poems-autumn-poems-original-handwriting-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "将本课12字分两次短书写完成并分别保留原件，本次上传允许的完整图像，说明未完成字。",
+          "answer": "需实际看到12字才覆盖全表，分次可接受；无原件部分保持未验证，不要求机械反复抄许多遍。",
+          "analysis": "需实际看到12字才覆盖全表，分次可接受；无原件部分保持未验证，不要求机械反复抄许多遍。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "autumn-poems",
+      "atomId": "source:chinese:g3:02915a7d:autumn-poems-reading-recall",
+      "structure": "autumn-poems-oral-recall",
+      "familyProposal": "following-autumn-poems-oral-recall",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "听实际声音，按诗题分别核对原诗和完整性",
+          "weight": 0.4
+        },
+        {
+          "criterion": "看文朗读、背诵、提示或未完成分别说明",
+          "weight": 0.4
+        },
+        {
+          "criterion": "一首正确不推断三首全部完成，原诗重复不称陌生迁移",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三首逐一听原音并对照准确原件；白云生处等原字保持，看文朗读与背诵分开，部分录音不自动覆盖三首。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "autumn-poems-autumn-poems-oral-recall-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "请真实录音朗读《山行》《赠刘景文》《夜书所见》，按诗题分成小段，并说明是否看文。能完成哪一首先保留哪一首，不把未录的两首算完成。",
+          "answer": "三首逐一听原音并对照准确原件；白云生处等原字保持，看文朗读与背诵分开，部分录音不自动覆盖三首。",
+          "analysis": "三首逐一听原音并对照准确原件；白云生处等原字保持，看文朗读与背诵分开，部分录音不自动覆盖三首。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-poems-autumn-poems-oral-recall-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "尝试录音背诵本课三首，可以按诗题分段；如看文本、得到提示或只能完成其中一首，请如实说明。",
+          "answer": "每首内容与声音分别核对，帮助后完成保留帮助条件；不因一首流利就认为三首均已背会。",
+          "analysis": "每首内容与声音分别核对，帮助后完成保留帮助条件；不因一首流利就认为三首均已背会。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-poems-autumn-poems-oral-recall-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "选择其中一首先朗读，再用自己的话说明读法与句意的联系；另外两首是否已录、是否看文，分别交代。",
+          "answer": "实际读法与句意相容即可，不规定唯一重音；解释正确不替代其他两首的实际积累。",
+          "analysis": "实际读法与句意相容即可，不规定唯一重音；解释正确不替代其他两首的实际积累。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-poems-autumn-poems-oral-recall-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次先录《山行》，再说明另外两首是否也已实际完成；原先的录音不能冒充本次。",
+          "answer": "核对本次原音与准确文本，未完成诗题分别保留，不能将重复原诗称新独立题族。",
+          "analysis": "核对本次原音与准确文本，未完成诗题分别保留，不能将重复原诗称新独立题族。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-poems-autumn-poems-oral-recall-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本次先录《赠刘景文》，看文与脱离文本尝试分别说明，并注明另外两首的实际完成情况。",
+          "answer": "逐句核对这首原诗，荷尽菊残等词不凭印象改写；本次只覆盖一首时不扩大结论。",
+          "analysis": "逐句核对这首原诗，荷尽菊残等词不凭印象改写；本次只覆盖一首时不扩大结论。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-poems-autumn-poems-oral-recall-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本次先录《夜书所见》，留意挑促织等词；如果先听过示范，保留该条件。说明三首哪些已完成。",
+          "answer": "听本次实际声音，帮助条件保持；有录音与真正读准、背会仍是不同事实。",
+          "analysis": "听本次实际声音，帮助条件保持；有录音与真正读准、背会仍是不同事实。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-poems-autumn-poems-oral-recall-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "对本课三首分别做一次真实朗读或背诵尝试，按诗题说明方式和未完成处。可以分次完成，不隐去提示。",
+          "answer": "三首分别有实际表现才覆盖整组，朗读、背诵与提示后完成不混算，不由原诗重复推断陌生诗理解。",
+          "analysis": "三首分别有实际表现才覆盖整组，朗读、背诵与提示后完成不混算，不由原诗重复推断陌生诗理解。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "autumn-poems",
+      "atomId": "source:chinese:g3:02915a7d:shanxing-written-recall",
+      "structure": "shanxing-real-dictation",
+      "familyProposal": "following-shanxing-real-dictation",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "提供本人真实默写原件并说明看文或提示条件",
+          "weight": 0.4
+        },
+        {
+          "criterion": "按本准确版本逐字核对山行，保留原稿与订正",
+          "weight": 0.4
+        },
+        {
+          "criterion": "仅评价本次默写，不扩成其他两首或看文抄写已通过",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "按本版“远上寒山石径斜，白云生处有人家。停车坐爱枫林晚，霜叶红于二月花。”逐字看原稿；条件与内容分别核对。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "autumn-poems-shanxing-real-dictation-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "请在不看文本的条件下尝试默写《山行》，真实上传原稿。若看过、得到提示或中途查文，请说明，再保留订正。",
+          "answer": "按本版“远上寒山石径斜，白云生处有人家。停车坐爱枫林晚，霜叶红于二月花。”逐字看原稿；条件与内容分别核对。",
+          "analysis": "按本版“远上寒山石径斜，白云生处有人家。停车坐爱枫林晚，霜叶红于二月花。”逐字看原稿；条件与内容分别核对。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-poems-shanxing-real-dictation-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "保留一次真实《山行》默写原稿，再对照本版修订，上传能看清前后的图像。不要把抄写稿改名为默写。",
+          "answer": "原稿与订正可区分，生处不改作别版深处；实际看文或提示如实记录，不用最后正确稿隐藏原表现。",
+          "analysis": "原稿与订正可区分，生处不改作别版深处；实际看文或提示如实记录，不用最后正确稿隐藏原表现。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-poems-shanxing-real-dictation-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "给不了解本次过程的老师看《山行》原稿与说明：写时是否看文、哪里不确定、后来怎样核对？上传本人真实作品。",
+          "answer": "过程条件和原稿对应，不能由整齐字形推断没有帮助；只对山行有本课默写要求。",
+          "analysis": "过程条件和原稿对应，不能由整齐字形推断没有帮助；只对山行有本课默写要求。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-poems-shanxing-real-dictation-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次真实尝试默写《山行》，未能写完可保留空处并说明，不上传上次原件冒充本次。",
+          "answer": "本次原稿逐字核对，未完成处保持未知；原诗重复不是新的通用独立结构。",
+          "analysis": "本次原稿逐字核对，未完成处保持未知；原诗重复不是新的通用独立结构。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-poems-shanxing-real-dictation-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "真实默写《山行》后，先标出自己的疑问，再对照准确原件订正并上传。",
+          "answer": "疑问、原字与订正可核对；不能凭最后改对断言最初已独立正确。",
+          "analysis": "疑问、原字与订正可核对；不能凭最后改对断言最初已独立正确。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-poems-shanxing-real-dictation-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "请完成一次真实《山行》默写或明确说明目前只能看文抄写，上传相应原稿并标明方式。",
+          "answer": "两种方式分别记录，看文抄写不叫默写；没有实际默写不判该目标已完成。",
+          "analysis": "两种方式分别记录，看文抄写不叫默写；没有实际默写不判该目标已完成。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-poems-shanxing-real-dictation-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "再做一次本人真实《山行》默写，保留所有帮助条件和订正。说明这份原件能证明与不能证明什么。",
+          "answer": "能核对本次原字和条件，不能由一首默写推断三首都默写或所有古诗都记住。",
+          "analysis": "能核对本次原字和条件，不能由一首默写推断三首都默写或所有古诗都记住。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "autumn-poems",
+      "atomId": "core:chinese:contextmeaning",
+      "structure": "context-supported-explanation",
+      "familyProposal": "following-context-supported-explanation",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "解释与当前语境或给定注释相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "指出线索并说明使用的理解方法",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不机械套用另一含义，也不补造原材料没有的信息",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "因喜爱晚间枫林而停车欣赏，注释限定因果；不要求固定译文，但不能解释成坐在车里所以爱枫林。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "autumn-poems-context-supported-explanation-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "准确原页给“坐”注释为“因为”。请用自己的话解释“停车坐爱枫林晚”的联系，不能只按现代坐下的意思。",
+          "answer": "因喜爱晚间枫林而停车欣赏，注释限定因果；不要求固定译文，但不能解释成坐在车里所以爱枫林。",
+          "analysis": "因喜爱晚间枫林而停车欣赏，注释限定因果；不要求固定译文，但不能解释成坐在车里所以爱枫林。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-poems-context-supported-explanation-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "注释说明“擎”是举、向上托。结合“荷尽已无擎雨盖”，说说这一词怎样帮助想象景物。",
+          "answer": "联系荷叶形态与向上托举雨盖的比拟，写荷叶已凋尽的景象；注释帮助理解动作，不是证明有实体雨伞。",
+          "analysis": "联系荷叶形态与向上托举雨盖的比拟，写荷叶已凋尽的景象；注释帮助理解动作，不是证明有实体雨伞。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-poems-context-supported-explanation-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "注释给“君”为对对方的尊称。结合“一年好景君须记”，说明这里君能否机械解释为所有场景里的君王。",
+          "answer": "这里称呼对方，应结合赠诗对象和注释，不把常见另一含义硬套；不同准确表述可接受。",
+          "analysis": "这里称呼对方，应结合赠诗对象和注释，不把常见另一含义硬套；不同准确表述可接受。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-poems-context-supported-explanation-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原页注释说“萧萧”形容风吹梧桐叶的声音。请解释它怎样与“寒声”组成画面，不只重复很冷。",
+          "answer": "风与梧叶发声提供声音线索，寒声带来秋意感受；不等于给出温度计读数。",
+          "analysis": "风与梧叶发声提供声音线索，寒声带来秋意感受；不等于给出温度计读数。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-poems-context-supported-explanation-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原页注释说明“挑”是用细长东西拨弄。解释“挑促织”时为什么不能套用挑选物品的意思？",
+          "answer": "促织指蟋蟀，当前动作为拨弄、逗引相关活动；挑选的含义不合注释与对象，不能只看同一字形。",
+          "analysis": "促织指蟋蟀，当前动作为拨弄、逗引相关活动；挑选的含义不合注释与对象，不能只看同一字形。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-poems-context-supported-explanation-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "注释把篱落解释为篱笆。请结合夜深与一灯明，说明注释提供了什么，仍没有提供什么。",
+          "answer": "提供灯光所在环境线索，未给全部人物过程或后来结果；不能把理解一个词扩大成知道所有事件。",
+          "analysis": "提供灯光所在环境线索，未给全部人物过程或后来结果；不能把理解一个词扩大成知道所有事件。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-poems-context-supported-explanation-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "任选本课一条实际注释，写出原词、注释如何帮助当前诗句理解，再举一个不能机械套用的常用义。",
+          "answer": "注释确在原页，解释与当前句相容；不要求与参考同词，不能凭空编注释或替原诗换字。",
+          "analysis": "注释确在原页，解释与当前句相容；不要求与参考同词，不能凭空编注释或替原诗换字。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "autumn-poems",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "claim-supported-by-record",
+      "familyProposal": "following-claim-supported-by-record",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "判断与材料实际信息相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "指出具体依据并说明支持关系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "分清原信息、合理联想和仍未证明的结果",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可用霜叶、枫林、寒山等组合支持深秋画面；依据须来自诗句，单凭插图颜色不替代文本。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "autumn-poems-claim-supported-by-record-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "用《山行》一处具体景物说明季节判断，不只说因为标题或图上有红色。",
+          "answer": "可用霜叶、枫林、寒山等组合支持深秋画面；依据须来自诗句，单凭插图颜色不替代文本。",
+          "analysis": "可用霜叶、枫林、寒山等组合支持深秋画面；依据须来自诗句，单凭插图颜色不替代文本。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-poems-claim-supported-by-record-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "《赠刘景文》同时写荷尽菊残与橙黄橘绿。它是否支持“秋天所有景物都只有衰败”这一概括？说明依据。",
+          "answer": "不支持，后两类颜色与果实景象提供不同线索；不能让一个方面遮住其他材料。",
+          "analysis": "不支持，后两类颜色与果实景象提供不同线索；不能让一个方面遮住其他材料。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-poems-claim-supported-by-record-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "《夜书所见》写夜深篱落一灯明与儿童活动的判断。能否据此说诗人亲眼看完了儿童活动的全过程？",
+          "answer": "不能从这些语句推出全程亲见；可说明灯光与诗中判断的联系，不额外补造全过程。",
+          "analysis": "不能从这些语句推出全程亲见；可说明灯光与诗中判断的联系，不额外补造全过程。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-poems-claim-supported-by-record-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "有人概括《山行》为“诗人因为不喜欢枫林而停车”。请用原词句核对。",
+          "answer": "坐依注释因为，爱表喜爱；原材料与不喜欢矛盾，不能只保留停车而忽略原因。",
+          "analysis": "坐依注释因为，爱表喜爱；原材料与不喜欢矛盾，不能只保留停车而忽略原因。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-poems-claim-supported-by-record-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "同学说三首都与秋天有关，所以感受一定完全一样。请选两首各举一处具体线索回应。",
+          "answer": "同季节不等于同感受，可比较霜叶、橙黄橘绿或客情等；评价须说明依据，不强制唯一情绪。",
+          "analysis": "同季节不等于同感受，可比较霜叶、橙黄橘绿或客情等；评价须说明依据，不强制唯一情绪。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-poems-claim-supported-by-record-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原诗写橙黄橘绿，读者补成所有果树在同一天同时成熟。哪些条件未被提供？",
+          "answer": "所有果树、同一天、同时成熟均未给，颜色线索不能支持全量时间结论。",
+          "analysis": "所有果树、同一天、同时成熟均未给，颜色线索不能支持全量时间结论。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-poems-claim-supported-by-record-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "比较“原诗明写的内容”和“我读后联想到的画面”，各写一项并指出依据。没有写到的结果保持未知。",
+          "answer": "原信息可定位，追加联想清楚标记，不能把个人想象或别版字句当作当前原文。",
+          "analysis": "原信息可定位，追加联想清楚标记，不能把个人想象或别版字句当作当前原文。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "pavement",
+      "atomId": "source:chinese:g3:02915a7d:pavement-word-reading",
+      "structure": "pavement-contextual-reading",
+      "familyProposal": "following-pavement-contextual-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "真实录音覆盖洼印凌增棕靴六字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "按水洼、凌乱、雨靴等具体词语核对读音",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不以文字或拼音选择代替实际声音",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "听本次实际声音逐一核对六字；读对文字答案不等于实际发音已正确，未录的字保持未测。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "pavement-pavement-contextual-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "请真实录音读“水洼、印记、凌乱、增加、棕色、雨靴”，再说明哪个词自己还需核对。",
+          "answer": "听本次实际声音逐一核对六字；读对文字答案不等于实际发音已正确，未录的字保持未测。",
+          "analysis": "听本次实际声音逐一核对六字；读对文字答案不等于实际发音已正确，未录的字保持未测。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "pavement-pavement-contextual-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把六词按“雨靴、棕色、增加、凌乱、印记、水洼”的顺序录音读出，再说凌乱在这里与什么有关。",
+          "answer": "六字实际声音分别核对，词义结合排列或状态；词义说明不替代发音。",
+          "analysis": "六字实际声音分别核对，词义结合排列或状态；词义说明不替代发音。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "pavement-pavement-contextual-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创短卡：“棕色的雨靴绕过水洼，地上留下印记，几片叶子增加了凌乱感。”请录音读出，目标只核对六字，其他不熟字另记。",
+          "answer": "实际覆盖全部六目标字，语境合理；其他字可单独留待核对，不自动扩大成六目标均未掌握。",
+          "analysis": "实际覆盖全部六目标字，语境合理；其他字可单独留待核对，不自动扩大成六目标均未掌握。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "pavement-pavement-contextual-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "录音读本课六个目标字各自所在的词语，说明是否先听过示范，不能使用旧录音冒充本次。",
+          "answer": "本次声音、覆盖集合和帮助条件均需保留，不因顺序变化就称新独立结构。",
+          "analysis": "本次声音、覆盖集合和帮助条件均需保留，不因顺序变化就称新独立结构。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "pavement-pavement-contextual-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "请录音读“水洼、雨靴、印记、棕色、凌乱、增加”，任选两词解释当前意思。",
+          "answer": "音与义分别核对，两词解释正确不代表其余四字已发音正确。",
+          "analysis": "音与义分别核对，两词解释正确不代表其余四字已发音正确。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "pavement-pavement-contextual-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "用洼印凌增棕靴六字各组一个合理词并真实录音读出；无法组词时可以说明。",
+          "answer": "词语合理且实际发音可听，未完成目标保留，不替学生补造成全会。",
+          "analysis": "词语合理且实际发音可听，未完成目标保留，不替学生补造成全会。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "pavement-pavement-contextual-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选六字中原来没有把握的词先录，再补齐其余目标。说明哪些得到帮助。",
+          "answer": "全六字实际覆盖才有全表识读信息，帮助不隐去；参考录音或文字不是本人表现。",
+          "analysis": "全六字实际覆盖才有全表识读信息，帮助不隐去；参考录音或文字不是本人表现。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pavement",
+      "atomId": "source:chinese:g3:02915a7d:pavement-handwriting",
+      "structure": "pavement-original-handwriting",
+      "familyProposal": "following-pavement-original-handwriting",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "真实手写原件覆盖本次指定内容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "逐字核对部件位置、字形与完整性",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原稿与订正保留，局部抽样不扩大成全部字已掌握",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "逐字看本人原件的结构和完整性，不能把另六个识读字机械全部加成写字任务，也不以字体截图替代。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "pavement-pavement-original-handwriting-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "真实手写“铺泥晶院墙印排列规则乱棕迟”13字，上传完整原件并圈出需再核对的一字。",
+          "answer": "逐字看本人原件的结构和完整性，不能把另六个识读字机械全部加成写字任务，也不以字体截图替代。",
+          "analysis": "逐字看本人原件的结构和完整性，不能把另六个识读字机械全部加成写字任务，也不以字体截图替代。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "pavement-pavement-original-handwriting-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "真实手写“铺、泥、晶、院、墙、印、排”，再补其余6个目标字，保留订正上传。",
+          "answer": "原件覆盖全部13字，部件位置逐项核对；选对字形或说对结构不能直接证明写对。",
+          "analysis": "原件覆盖全部13字，部件位置逐项核对；选对字形或说对结构不能直接证明写对。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "pavement-pavement-original-handwriting-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "将13个目标字分别放入合理词语中真实手写，上传原稿并说明实际参考或帮助。",
+          "answer": "逐字看实际字形，词语合理，帮助条件与书写质量分别保留。",
+          "analysis": "逐字看实际字形，词语合理，帮助条件与书写质量分别保留。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "pavement-pavement-original-handwriting-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次手写“铺、泥、晶、院”并上传，标出自己还需核对的部件。",
+          "answer": "只覆盖4字，不能从抽样推断其余9字保持；没有实际原件不评价手写。",
+          "analysis": "只覆盖4字，不能从抽样推断其余9字保持；没有实际原件不评价手写。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "pavement-pavement-original-handwriting-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "真实手写“墙、印、排、列”，保留原稿与订正后上传。",
+          "answer": "四字逐项看真实字形，原稿与改对区分，不以最终图像数量认定全表已掌握。",
+          "analysis": "四字逐项看真实字形，原稿与改对区分，不以最终图像数量认定全表已掌握。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "pavement-pavement-original-handwriting-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "真实手写“规、则、乱、棕、迟”，说明哪些仍不确定并上传完整原稿。",
+          "answer": "只对五字实际表现核查，未完成不填成已会；字形和字音是不同任务。",
+          "analysis": "只对五字实际表现核查，未完成不填成已会；字形和字音是不同任务。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "pavement-pavement-original-handwriting-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "把13字分两次短书写完成，保留两份本人原稿，上传可清楚核对的完整图像，注明未完成字。",
+          "answer": "分次可以，仍需实际覆盖13字，不能用部分抽样替代全表。",
+          "analysis": "分次可以，仍需实际覆盖13字，不能用部分抽样替代全表。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "pavement",
+      "atomId": "source:chinese:g3:02915a7d:pavement-scene-writing",
+      "structure": "specific-scene-observation-writing",
+      "familyProposal": "following-specific-scene-observation-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "给出具体颜色、形状、位置或变化",
+          "weight": 0.4
+        },
+        {
+          "criterion": "句子围绕当前景物且前后相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "实际观察与明确虚构分清，不代写本人经历",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可写颜色、叶边水珠与位置的关系，不能补造旅行或亲身过程；不同有据表达均可。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "pavement-specific-scene-observation-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "明确虚构景物卡：雨停，窗边有几片黄色叶子，叶边留着水珠。用几句话写清一个细节，不说这是自己的真实上学经历。",
+          "answer": "可写颜色、叶边水珠与位置的关系，不能补造旅行或亲身过程；不同有据表达均可。",
+          "analysis": "可写颜色、叶边水珠与位置的关系，不能补造旅行或亲身过程；不同有据表达均可。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-specific-scene-observation-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "写一处自己确实见过的普通景色，指出一个具体细节。当前没有实际观察时，改作清楚标明的虚构练习。",
+          "answer": "真实项由本人提供，虚构有标记；很美很好看不足以让读者想象具体画面。",
+          "analysis": "真实项由本人提供，虚构有标记；很美很好看不足以让读者想象具体画面。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-specific-scene-observation-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构卡：风停后，草地一角有三片红叶，另一侧仍是绿色。请写几句话，不把局部写成全部变红。",
+          "answer": "保留局部位置与颜色差别，不能从三片红叶推出整个草地或所有树叶都红。",
+          "analysis": "保留局部位置与颜色差别，不能从三片红叶推出整个草地或所有树叶都红。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-specific-scene-observation-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "选窗边、院落或给定图片里一处具体景物，用几句话写清楚来源性质与一个细节。",
+          "answer": "细节可定位，实际或虚构说明清楚；不要求提供个人路线，也不由好看等评价词代替观察。",
+          "analysis": "细节可定位，实际或虚构说明清楚；不要求提供个人路线，也不由好看等评价词代替观察。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-specific-scene-observation-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "虚构卡只写“地上有浅水，映着天空”。请写出具体画面，不能额外断定天气已晴一整天。",
+          "answer": "水、倒影与位置可描述，整天天气与水深数值未给，不能补造。",
+          "analysis": "水、倒影与位置可描述，整天天气与水深数值未给，不能补造。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-specific-scene-observation-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "比较“那里很漂亮”和自己写的一个具体景色片段，说明后者给读者多了什么信息。",
+          "answer": "能指出颜色、形状、位置或变化的具体信息，不以长短单独评价。",
+          "analysis": "能指出颜色、形状、位置或变化的具体信息，不以长短单独评价。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-specific-scene-observation-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "为一处新景物写几句话，再把“我实际知道的”和“我追加的联想”分开说明。",
+          "answer": "原信息与联想相容且分清，不能把虚构细节改成真实观察或参考例子改成本人经历。",
+          "analysis": "原信息与联想相容且分清，不能把虚构细节改成真实观察或参考例子改成本人经历。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "pavement",
+      "atomId": "source:chinese:g3:02915a7d:pavement-figurative-comparison",
+      "structure": "simile-shared-feature",
+      "familyProposal": "following-simile-shared-feature",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "指出所比较的两个对象",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明当前材料支持的相似处",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不把比较当实物变化或仅凭像判拟人",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "叶片与小船比较，可联系浮在水上的形态；不是叶子真的变成船，也不因有像就叫拟人。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "pavement-simile-shared-feature-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创句：“叶片浮在浅水上，像几只小船。”指出比较的两个对象和相似处，不能只说用了像。",
+          "answer": "叶片与小船比较，可联系浮在水上的形态；不是叶子真的变成船，也不因有像就叫拟人。",
+          "analysis": "叶片与小船比较，可联系浮在水上的形态；不是叶子真的变成船，也不因有像就叫拟人。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-simile-shared-feature-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "比较“落叶像巴掌”和“落叶邀请白云做客”。两句的表达依据有什么不同？",
+          "answer": "前者比较形状等相似处，后者赋予人的交往活动；不能把两种关系只按一个形式词归类。",
+          "analysis": "前者比较形状等相似处，后者赋予人的交往活动；不能把两种关系只按一个形式词归类。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-simile-shared-feature-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构卡：细长叶片排在窗台。有人比作小书签。请解释相似依据，再指出不能推出的实物结论。",
+          "answer": "可联系细长形状或排列，不能推出叶片由纸制成或具有真实书签用途。",
+          "analysis": "可联系细长形状或排列，不能推出叶片由纸制成或具有真实书签用途。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-simile-shared-feature-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "道路铺着连续黄色落叶，作者把它比作地毯。请指出画面联系，水泥真的变成织物了吗？",
+          "answer": "联系颜色和铺展范围，水泥材料没有因此改变；比喻不直接作材料变化事实。",
+          "analysis": "联系颜色和铺展范围，水泥材料没有因此改变；比喻不直接作材料变化事实。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-simile-shared-feature-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "雨靴被写得像小鸟，读者说因此鞋能飞。请用表达关系回应。",
+          "answer": "形状、颜色或轻快脚步可产生联想，不能由此证明鞋有翅膀或能飞。",
+          "analysis": "形状、颜色或轻快脚步可产生联想，不能由此证明鞋有翅膀或能飞。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-simile-shared-feature-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "为一个明确给定形态的景物写比较句，再说明你的相似依据；没有依据的形容不要硬套。",
+          "answer": "两个对象和相似特征清楚，表达与条件相容；参考措辞不是唯一标准。",
+          "analysis": "两个对象和相似特征清楚，表达与条件相容；参考措辞不是唯一标准。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-simile-shared-feature-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "有人提出“只要有像就一定是拟人”。请用一个比较句和一个赋予人的活动的句子具体说明。",
+          "answer": "比较看相似点，拟人看人的活动或情感，例句须具体而非只背术语。",
+          "analysis": "比较看相似点，拟人看人的活动或情感，例句须具体而非只背术语。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "pavement",
+      "atomId": "source:chinese:g3:02915a7d:pavement-oral-reading",
+      "structure": "scene-supported-oral-reading",
+      "familyProposal": "following-scene-supported-oral-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "保留本次实际完整录音及实际读到范围",
+          "weight": 0.4
+        },
+        {
+          "criterion": "语气停顿与句意和观察条件相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不把解释、文字选择或旧录音代替本人本次朗读",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "听本次声音与当前原文对照，范围清楚、读法有据即可，不以文字标记替代声音。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "pavement-scene-supported-oral-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "请真实录音朗读准确原页的一小段，先说明读的范围，再说一处读法怎样帮助表达景物。没有要求背全文。",
+          "answer": "听本次声音与当前原文对照，范围清楚、读法有据即可，不以文字标记替代声音。",
+          "analysis": "听本次声音与当前原文对照，范围清楚、读法有据即可，不以文字标记替代声音。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "pavement-scene-supported-oral-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "选择本课另一小段实际朗读，尝试一种停顿，再说明是否看文或听过示范。",
+          "answer": "实际声音、原文与帮助条件分别核对；看文朗读不伪装成背诵。",
+          "analysis": "实际声音、原文与帮助条件分别核对；看文朗读不伪装成背诵。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "pavement-scene-supported-oral-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创句：“雨停了，浅水映着一角天空。”请录音试两种自然读法，说明哪一种更保留原句关系。",
+          "answer": "不同合理读法可接受，但不能读成天空本身变成浅水等不合材料的意思。",
+          "analysis": "不同合理读法可接受，但不能读成天空本身变成浅水等不合材料的意思。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "pavement-scene-supported-oral-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次真实朗读本课一段，保留读到的范围及还没读好的地方，不上传旧录音冒充。",
+          "answer": "核对当前范围真实声音，部分朗读不能推断全篇已完成。",
+          "analysis": "核对当前范围真实声音，部分朗读不能推断全篇已完成。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "pavement-scene-supported-oral-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "选择一个描写脚步或景物的句子实际录音朗读，再解释读法与词句的联系。",
+          "answer": "读法有句意依据，解释正确不能替代声音，不能因语速快就判读得好。",
+          "analysis": "读法有句意依据，解释正确不能替代声音，不能因语速快就判读得好。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "pavement-scene-supported-oral-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "读本课不同于上次的一小段，说明实际使用的文本或帮助，保留未完成处。",
+          "answer": "本次声音与范围明确，帮助条件保持；不追加全文背诵要求。",
+          "analysis": "本次声音与范围明确，帮助条件保持；不追加全文背诵要求。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "pavement-scene-supported-oral-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "按实际情况完成本课一次朗读，可以分段；说明哪些段已有本次声音，哪些还没有。",
+          "answer": "只有实际录到的范围才有本次朗读证据，不由一段替代整课，也不以旧录音充数。",
+          "analysis": "只有实际录到的范围才有本次朗读证据，不由一段替代整课，也不以旧录音充数。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pavement",
+      "atomId": "source:chinese:g3:02915a7d:pavement-selected-copy",
+      "structure": "selected-source-sentence-copy",
+      "familyProposal": "following-selected-source-sentence-copy",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "选择确在准确原文中的句子并提供本人实际摘抄",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明选择理由与具体词句的联系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原稿和订正分清，不用复制整课或字体截图代替抄写",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "所选句确在文中，实际摘抄可核对，理由具体；不要求所有人选同一句或同一种感受。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "pavement-selected-source-sentence-copy-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "从本课准确原文选一句自己喜欢的话，真实手写摘抄后上传原件，并说明喜欢哪几个字。",
+          "answer": "所选句确在文中，实际摘抄可核对，理由具体；不要求所有人选同一句或同一种感受。",
+          "analysis": "所选句确在文中，实际摘抄可核对，理由具体；不要求所有人选同一句或同一种感受。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "pavement-selected-source-sentence-copy-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "保留一次本人实际摘抄原稿，再对照原文订正并上传，说明改了哪一处。",
+          "answer": "原稿、原句与订正关系清楚；不能只上传正确排版文字来证明本人已经抄写。",
+          "analysis": "原稿、原句与订正关系清楚；不能只上传正确排版文字来证明本人已经抄写。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "pavement-selected-source-sentence-copy-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "选择与上一回不同的原文句子真实摘抄，说明它让你注意到的景物细节。",
+          "answer": "句子确在当前版本，实际手写与理由分别看；不把别篇句子误说成本课。",
+          "analysis": "句子确在当前版本，实际手写与理由分别看；不把别篇句子误说成本课。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "pavement-selected-source-sentence-copy-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次从准确原页任选一句真实摘抄，上传并说明是否有参考或帮助，不用旧图冒充。",
+          "answer": "核对本次原件与原句，帮助条件保留；重复摘抄不叫新独立结构。",
+          "analysis": "核对本次原件与原句，帮助条件保留；重复摘抄不叫新独立结构。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "pavement-selected-source-sentence-copy-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "摘抄一句包含自己容易写错字的原句，保留原稿与订正，说明这次选择的具体理由。",
+          "answer": "选择、实际字形和理由均可核对，不由最后订正正确推断原先全对。",
+          "analysis": "选择、实际字形和理由均可核对，不由最后订正正确推断原先全对。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "pavement-selected-source-sentence-copy-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "真实摘抄一处喜欢的表达，再在说明中分清原句与自己的感受。",
+          "answer": "原文文字不擅改为个人联想，感受有据即可，不要求固定评价词。",
+          "analysis": "原文文字不擅改为个人联想，感受有据即可，不要求固定评价词。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "pavement-selected-source-sentence-copy-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本次完成一份新的本人摘抄原件，给出原页位置与选择理由，未完成处可以说明。",
+          "answer": "原句可定位、原稿真实可看；没有实际摘抄就不以文字选择或参考答案替代。",
+          "analysis": "原句可定位、原稿真实可看；没有实际摘抄就不以文字选择或参考答案替代。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "pavement",
+      "atomId": "core:chinese:contextmeaning",
+      "structure": "context-supported-explanation",
+      "familyProposal": "following-context-supported-explanation",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "解释与当前语境或给定注释相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "指出线索并说明使用的理解方法",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不机械套用另一含义，也不补造原材料没有的信息",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "联系天气放晴和天空的明亮清晰，不套性格开朗等含义；需说明具体前后线索。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "pavement-context-supported-explanation-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原句写天空明朗，前后有放晴和蓝天线索。解释明朗在这里的意思，并说用了什么信息。",
+          "answer": "联系天气放晴和天空的明亮清晰，不套性格开朗等含义；需说明具体前后线索。",
+          "analysis": "联系天气放晴和天空的明亮清晰，不套性格开朗等含义；需说明具体前后线索。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-context-supported-explanation-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "材料说落叶排列不规则，甚至有些凌乱。解释凌乱，再说明你如何利用前面的条件。",
+          "answer": "排列不规则提供不整齐的语境依据，不是指声音杂乱或必然令人讨厌。",
+          "analysis": "排列不规则提供不整齐的语境依据，不是指声音杂乱或必然令人讨厌。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-context-supported-explanation-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "陌生句：“他的讲述终于明朗起来，先后过程都说清了。”与天空明朗的语境有什么差别？",
+          "answer": "这里指表达清楚，先后过程说明提供依据；不能直接解释为教室太阳出来了。",
+          "analysis": "这里指表达清楚，先后过程说明提供依据；不能直接解释为教室太阳出来了。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-context-supported-explanation-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创句：“几张卡片散在不同角落，排列有些凌乱。”解释词义并指出支持信息。",
+          "answer": "联系散在角落和排列情况，说明不整齐；不凭词语推出有人一定故意弄乱。",
+          "analysis": "联系散在角落和排列情况，说明不整齐；不凭词语推出有人一定故意弄乱。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-context-supported-explanation-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创句：“水面映着一角天空。”这里映着是否说明天空真的掉进水里？用对象关系解释。",
+          "answer": "写倒影或映现的关系，不是实体天空掉落；对象与语境限制含义。",
+          "analysis": "写倒影或映现的关系，不是实体天空掉落；对象与语境限制含义。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-context-supported-explanation-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "有人只说“凌乱就是凌乱”，怎样补充才真正说明了理解方法？请用一个新的具体语境回答。",
+          "answer": "需给排列或状态的线索并解释联系，不能只重复目标词或加一个评价词。",
+          "analysis": "需给排列或状态的线索并解释联系，不能只重复目标词或加一个评价词。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-context-supported-explanation-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "任选本课一处词语，写出你的解释和使用的方法，再说明换到其他语境是否必然同义。",
+          "answer": "解释与本句相容，有可指出的信息或工具依据；多义词需逐境判断，不一概套用。",
+          "analysis": "解释与本句相容，有可指出的信息或工具依据；多义词需逐境判断，不一概套用。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "pavement",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "claim-supported-by-record",
+      "familyProposal": "following-claim-supported-by-record",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "判断与材料实际信息相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "指出具体依据并说明支持关系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "分清原信息、合理联想和仍未证明的结果",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能，存在水洼和局部落叶不证明每处淹没；需保留局部与全部的差别。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "pavement-claim-supported-by-record-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "材料写雨后路边有落叶与水洼。能否断定整条路每一处都被水淹没？指出依据范围。",
+          "answer": "不能，存在水洼和局部落叶不证明每处淹没；需保留局部与全部的差别。",
+          "analysis": "不能，存在水洼和局部落叶不证明每处淹没；需保留局部与全部的差别。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-claim-supported-by-record-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "作者用怕迟到说明自己没有一直慢慢走。能否据此说他已经迟到？",
+          "answer": "不能，担心迟到不等于实际迟到；原句给动机或条件，结果另需材料。",
+          "analysis": "不能，担心迟到不等于实际迟到；原句给动机或条件，结果另需材料。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-claim-supported-by-record-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构记录：“台阶一角有三片黄叶，另一侧没有记录。”写一句准确概括，指出未知处。",
+          "answer": "可确认一角三片黄叶，另一侧状况未给，不能补成整处都铺满落叶。",
+          "analysis": "可确认一角三片黄叶，另一侧状况未给，不能补成整处都铺满落叶。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-claim-supported-by-record-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "看到“第一回觉得水泥道真美”，能否把它改成这条路从前一定很丑？",
+          "answer": "不能，这是感受或注意的变化，不直接证明道路客观上以前丑，也不补造早先记录。",
+          "analysis": "不能，这是感受或注意的变化，不直接证明道路客观上以前丑，也不补造早先记录。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-claim-supported-by-record-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "材料说叶片有不规则排列，作者觉得增添了美。能否推出所有凌乱都一定美？",
+          "answer": "不能，当前感受有特定画面条件，不能推广为所有情境的普遍规则。",
+          "analysis": "不能，当前感受有特定画面条件，不能推广为所有情境的普遍规则。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-claim-supported-by-record-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "插图能帮助想象雨后道路，若图上有正文没写的人物或景物，概括时应怎样处理？",
+          "answer": "区分插图信息与正文依据，不能把图中额外细节说成文字已明确写出。",
+          "analysis": "区分插图信息与正文依据，不能把图中额外细节说成文字已明确写出。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "pavement-claim-supported-by-record-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "将一处正文依据、一项个人感受和一件仍不知道的事分开记录，说明相互关系。",
+          "answer": "依据可定位，感受受材料支持，未知不编造；参考措辞或外部经历不替原文。",
+          "analysis": "依据可定位，感受受材料支持，未知不编造；参考措辞或外部经历不替原文。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "autumn-rain",
+      "atomId": "source:chinese:g3:02915a7d:autumn-rain-word-reading",
+      "structure": "autumn-rain-contextual-reading",
+      "familyProposal": "following-autumn-rain-contextual-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "真实声音覆盖11个目标字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "联系钥匙、喇叭、一曲等词语读音与轻声",
+          "weight": 0.4
+        },
+        {
+          "criterion": "读音与文字选择分开，未完成部分不自动补齐",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "实际覆盖钥匙缤枚频勾喇叭厚曲丰，词中轻声与单字注音分清，一曲歌的曲联系音乐语境。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "autumn-rain-autumn-rain-contextual-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录音读“钥匙、五彩缤纷、一枚邮票、频频点头、勾住、喇叭、厚厚的、一曲歌、丰收”。只逐一核对11个目标字，其他不熟字可以说明。",
+          "answer": "实际覆盖钥匙缤枚频勾喇叭厚曲丰，词中轻声与单字注音分清，一曲歌的曲联系音乐语境。",
+          "analysis": "实际覆盖钥匙缤枚频勾喇叭厚曲丰，词中轻声与单字注音分清，一曲歌的曲联系音乐语境。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-rain-autumn-rain-contextual-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "录音比较“一曲歌”和“弯曲”的曲，再把其余10个目标字放进合理词语读出。",
+          "answer": "曲的读法依音乐或弯曲语境区别；其余目标字需有实际声音，说明正确不替代朗读。",
+          "analysis": "曲的读法依音乐或弯曲语境区别；其余目标字需有实际声音，说明正确不替代朗读。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-rain-autumn-rain-contextual-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡把词语顺序改为“丰收、一曲歌、厚厚的、喇叭、勾住、频频点头、一枚、五彩缤纷、钥匙”。请录音并说明仍没把握处。",
+          "answer": "全11字实际声音分别核对，顺序变换不成为新独立结构；没有录到的字保持未测。",
+          "analysis": "全11字实际声音分别核对，顺序变换不成为新独立结构；没有录到的字保持未测。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-rain-autumn-rain-contextual-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次录音读11个目标字所在词语，说明是否先听过示范，不上传旧录音替本次。",
+          "answer": "声音覆盖和帮助条件保留；钥匙、喇叭等词中读法需听原音，不凭拼音抄写判发音。",
+          "analysis": "声音覆盖和帮助条件保留；钥匙、喇叭等词中读法需听原音，不凭拼音抄写判发音。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-rain-autumn-rain-contextual-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "先录自己最不确定的目标词，再补齐其余词语，说出一处需要联系语境的读法。",
+          "answer": "全目标需实际覆盖，曲的语境等可以说明；局部读准不推断全表已会。",
+          "analysis": "全目标需实际覆盖，曲的语境等可以说明；局部读准不推断全表已会。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-rain-autumn-rain-contextual-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "用11个目标字各自所在的合理词语录音，解释其中两个词的当前意思。",
+          "answer": "实际读音与词义说明分别看，不能用两词解释替代所有目标字声音。",
+          "analysis": "实际读音与词义说明分别看，不能用两词解释替代所有目标字声音。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-rain-autumn-rain-contextual-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "再做一次真实词语识读，按自己的顺序覆盖全部目标；如中途看文或得到帮助请说明。",
+          "answer": "本次原音、覆盖与帮助可核对；没有实际录音不以参考语音或文字选择替代。",
+          "analysis": "本次原音、覆盖与帮助可核对；没有实际录音不以参考语音或文字选择替代。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "autumn-rain",
+      "atomId": "source:chinese:g3:02915a7d:autumn-rain-handwriting",
+      "structure": "autumn-rain-original-handwriting",
+      "familyProposal": "following-autumn-rain-original-handwriting",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "真实手写原件覆盖本次指定内容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "逐字核对部件位置、字形与完整性",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原稿与订正保留，局部抽样不扩大成全部字已掌握",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "13字本人原件逐一核对，识读表另11字不机械全部追加写字要求；说明不替代字形。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "autumn-rain-autumn-rain-original-handwriting-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "真实手写“盒颜料票争仙闻勾紧洞油曲丰”13字并上传，说明一处部件位置。",
+          "answer": "13字本人原件逐一核对，识读表另11字不机械全部追加写字要求；说明不替代字形。",
+          "analysis": "13字本人原件逐一核对，识读表另11字不机械全部追加写字要求；说明不替代字形。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-rain-autumn-rain-original-handwriting-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "真实手写“盒、颜、料、票、争、仙、闻”，再补其余6字，保留订正上传。",
+          "answer": "原件覆盖全13字，结构与完整性逐一看，不以选择字体推断已经写好。",
+          "analysis": "原件覆盖全13字，结构与完整性逐一看，不以选择字体推断已经写好。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-rain-autumn-rain-original-handwriting-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "将13个目标字放入合理词语中真实手写，上传并说明实际看文或帮助情况。",
+          "answer": "实际字形与词语相容，帮助条件保留；不能从字音说对推断字形已写对。",
+          "analysis": "实际字形与词语相容，帮助条件保留；不能从字音说对推断字形已写对。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-rain-autumn-rain-original-handwriting-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次真实手写“盒、颜、料、票”并上传，指出还需核对的部件。",
+          "answer": "只覆盖4字，不能推断其余9字保持；原稿与订正分别核查。",
+          "analysis": "只覆盖4字，不能推断其余9字保持；原稿与订正分别核查。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-rain-autumn-rain-original-handwriting-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "真实手写“争、仙、闻、勾、紧”，保留原稿与订正，上传可清楚查看的图像。",
+          "answer": "五字逐一看实际字形，未完成处留未知，不以图片张数评完整。",
+          "analysis": "五字逐一看实际字形，未完成处留未知，不以图片张数评完整。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-rain-autumn-rain-original-handwriting-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "真实手写“洞、油、曲、丰”，说明自己怎样对照字形并上传原件。",
+          "answer": "看四字部件与完整性，方法说明不能代实际书写，抽样不代表全表。",
+          "analysis": "看四字部件与完整性，方法说明不能代实际书写，抽样不代表全表。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "autumn-rain-autumn-rain-original-handwriting-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "分两次短书写覆盖本课13字，保留本人原件并说明未完成处，上传完整图像。",
+          "answer": "实际覆盖全表才有对应信息，分次可接受，不能用旧图或排版字体冒充本人这次书写。",
+          "analysis": "实际覆盖全表才有对应信息，分次可接受，不能用旧图或排版字体冒充本人这次书写。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "autumn-rain",
+      "atomId": "source:chinese:g3:02915a7d:autumn-rain-reading-recall",
+      "structure": "autumn-rain-oral-paragraph-recall",
+      "familyProposal": "following-autumn-rain-oral-paragraph-recall",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "真实声音与实际读到范围对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "看文朗读和第2自然段背诵分别说明",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不扩大成全文背诵，也不以旧录音代替本次",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "朗读的实际范围与声音可核对；第二段背诵需另看真实表现，原页没有要求全文背诵。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "autumn-rain-autumn-rain-oral-paragraph-recall-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "请真实录音朗读准确原页的一段，说明段落范围；再说明第2自然段是否另外做过脱离文本尝试，不把二者混算。",
+          "answer": "朗读的实际范围与声音可核对；第二段背诵需另看真实表现，原页没有要求全文背诵。",
+          "analysis": "朗读的实际范围与声音可核对；第二段背诵需另看真实表现，原页没有要求全文背诵。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-rain-autumn-rain-oral-paragraph-recall-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "尝试真实录音背诵第2自然段，若看文、得到提示或没完成，请说明并保留实际完成部分。",
+          "answer": "按准确原文和实际声音核对，帮助与未完成保持；看文朗读不当作背诵。",
+          "analysis": "按准确原文和实际声音核对，帮助与未完成保持；看文朗读不当作背诵。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-rain-autumn-rain-oral-paragraph-recall-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "选择另一段真实朗读，解释一种读法与句意的联系；说明它能否代替第二段背诵。",
+          "answer": "读法有据即可，但其他段朗读不能替第二段脱离文本表现，不要求唯一语气。",
+          "analysis": "读法有据即可，但其他段朗读不能替第二段脱离文本表现，不要求唯一语气。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-rain-autumn-rain-oral-paragraph-recall-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次录音尝试第2自然段的朗读或背诵，明确方式，不上传旧录音冒充。",
+          "answer": "本次声音、完整度与方式分别看；原段重复不等于新独立题族。",
+          "analysis": "本次声音、完整度与方式分别看；原段重复不等于新独立题族。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-rain-autumn-rain-oral-paragraph-recall-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "真实朗读气味或过冬一段，说明原页背诵要求实际指向哪一段。",
+          "answer": "实际朗读范围可听，能区分仅第2段背诵；不能因别段流利就判断目标背诵完成。",
+          "analysis": "实际朗读范围可听，能区分仅第2段背诵；不能因别段流利就判断目标背诵完成。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-rain-autumn-rain-oral-paragraph-recall-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "再次尝试第2自然段，保留原来不确定处及任何看文或提示，录音上传。",
+          "answer": "听本次原音和原文，提示后完成保留条件；不把重复答案自动判长期保持。",
+          "analysis": "听本次原音和原文，提示后完成保留条件；不把重复答案自动判长期保持。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "autumn-rain-autumn-rain-oral-paragraph-recall-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "根据实际情况保留本课朗读和第二段积累的本次声音，说明哪些已做、哪些还没有。",
+          "answer": "各自真实范围可核对，未做不补成已完成，不扩成全篇都必须背。",
+          "analysis": "各自真实范围可核对，未做不补成已完成，不扩成全篇都必须背。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "autumn-rain",
+      "atomId": "source:chinese:g3:02915a7d:autumn-rain-aspect-structure",
+      "structure": "description-aspect-evidence",
+      "familyProposal": "following-description-aspect-evidence",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "分类与具体材料相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "用细节说明它属于该方面的原因",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不让一个方面遮住其他内容或扩成普遍定律",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "颜色、气味、过冬准备分别组织，各用相应细节支持；不是只记一个标签就表示整课都理解。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "autumn-rain-description-aspect-evidence-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "将“叶片颜色、果子香味、动植物准备过冬”分别归类，说说各需什么具体材料支持，不能都只写颜色多。",
+          "answer": "颜色、气味、过冬准备分别组织，各用相应细节支持；不是只记一个标签就表示整课都理解。",
+          "analysis": "颜色、气味、过冬准备分别组织，各用相应细节支持；不是只记一个标签就表示整课都理解。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-description-aspect-evidence-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创卡：“深红叶片映在水边，果香从树旁飘来。”分两方面记录，并说明卡片还没有提供哪类信息。",
+          "answer": "颜色形态与气味可分，未给过冬活动；不能为了凑全三方面编造动物行为。",
+          "analysis": "颜色形态与气味可分，未给过冬活动；不能为了凑全三方面编造动物行为。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-description-aspect-evidence-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构段落写花坛颜色、果实气味和人们收拾物品。请按材料分方面，指出其中一项不能直接当作所有动植物的过冬方式。",
+          "answer": "分类与实际对象对应，人物收拾不代表所有动植物行为；具体对象和条件不能抹平。",
+          "analysis": "分类与实际对象对应，人物收拾不代表所有动植物行为；具体对象和条件不能抹平。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-description-aspect-evidence-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "一份概括只说课文颜色很多。请指出还可从哪两个主要方面补充，并各找相应原文线索。",
+          "answer": "气味与过冬准备有对应段落细节；需指出材料，不只列两个空标签。",
+          "analysis": "气味与过冬准备有对应段落细节；需指出材料，不只列两个空标签。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-description-aspect-evidence-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "材料一段写果香，下一段写某种动物准备过冬。能否说这两段都只写颜色？解释依据。",
+          "answer": "不能，气味和活动的信息不同，分类从内容出发，不能因同属秋景就混为一类。",
+          "analysis": "不能，气味和活动的信息不同，分类从内容出发，不能因同属秋景就混为一类。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-description-aspect-evidence-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "给原创秋景小段拟两个小标题，每个标题下写一条具体信息；没有写到的方面保持空缺。",
+          "answer": "标题与内容相容，空缺不由想象填成事实；不要求所有短段都必须包含同样方面。",
+          "analysis": "标题与内容相容，空缺不由想象填成事实；不要求所有短段都必须包含同样方面。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-description-aspect-evidence-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "说明课文结尾丰收与欢乐怎样联系前面内容，选一处具体线索，不推断所有地方都丰收。",
+          "answer": "有可定位的景物或果实等支持联系，感受有范围，不能从文学总结推广成全世界事实。",
+          "analysis": "有可定位的景物或果实等支持联系，感受有范围，不能从文学总结推广成全世界事实。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "autumn-rain",
+      "atomId": "source:chinese:g3:02915a7d:autumn-rain-linked-imitation",
+      "structure": "color-scene-linked-imitation",
+      "familyProposal": "following-color-scene-linked-imitation",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "颜色、景物与形态或动作前后相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "能解释联想依据，允许多种合理表达",
+          "weight": 0.4
+        },
+        {
+          "criterion": "文学想象与自然事实区分，不只套句式",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可围绕紫色、细长与轻摆等相容特征创作，说明依据；不能只套句式却换掉给定景物。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "autumn-rain-color-scene-linked-imitation-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创卡明确给定“紫色小花、细长花梗”。用一句有联系的想象写它，不把它改成材料未给的金色圆果。",
+          "answer": "可围绕紫色、细长与轻摆等相容特征创作，说明依据；不能只套句式却换掉给定景物。",
+          "analysis": "可围绕紫色、细长与轻摆等相容特征创作，说明依据；不能只套句式却换掉给定景物。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-color-scene-linked-imitation-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "比较“红叶像小邮票”和“红叶因为像邮票，所以真的能寄信”。哪一步把文学比较变成了无据事实？",
+          "answer": "从形态联想跳到真实邮政功能无依据；可保留比较，不证明叶子具有寄信资格。",
+          "analysis": "从形态联想跳到真实邮政功能无依据；可保留比较，不证明叶子具有寄信资格。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-color-scene-linked-imitation-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡：“白色芦花在风中轻晃。”写一个有联系的短句，并说明哪些来自卡片，哪些是想象。",
+          "answer": "白色、轻晃与芦花是给定，其他联想需相容且标明；不说成自己已实地观察过。",
+          "analysis": "白色、轻晃与芦花是给定，其他联想需相容且标明；不说成自己已实地观察过。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-color-scene-linked-imitation-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "用给定的“金黄色叶片”写一句文学想象，再解释颜色与后半句的联系。",
+          "answer": "想象具体且与金黄叶片条件相容，不要求同一个比喻，也不能写成原句事实。",
+          "analysis": "想象具体且与金黄叶片条件相容，不要求同一个比喻，也不能写成原句事实。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-color-scene-linked-imitation-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "给定“橘红果子挂在枝头”，续写一句有联系的画面，不能凭空改成树下已经收获完。",
+          "answer": "可联系颜色形态和挂在枝头，未给的完成结果不补造；不同合理表达可接受。",
+          "analysis": "可联系颜色形态和挂在枝头，未给的完成结果不补造；不同合理表达可接受。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-color-scene-linked-imitation-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "有人写“清凉的秋雨把所有叶子立即染成同一种颜色”。请改成有范围的文学表达，并说明为何不能当普遍自然结论。",
+          "answer": "可选某类给定景物写联想，去掉所有、立即、同一种等无据扩展；雨的文学写法不等于精确变色机制。",
+          "analysis": "可选某类给定景物写联想，去掉所有、立即、同一种等无据扩展；雨的文学写法不等于精确变色机制。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-color-scene-linked-imitation-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选择一种明确给定颜色和形态的景物写几句话，标出你使用的依据与想象。",
+          "answer": "前后有联系，实际条件不改，想象不冒充科学事实或本人观察。",
+          "analysis": "前后有联系，实际条件不改，想象不冒充科学事实或本人观察。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "autumn-rain",
+      "atomId": "core:chinese:contextmeaning",
+      "structure": "context-supported-explanation",
+      "familyProposal": "following-context-supported-explanation",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "解释与当前语境或给定注释相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "指出线索并说明使用的理解方法",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不机械套用另一含义，也不补造原材料没有的信息",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "指颜色繁多、丰富鲜明，可由多种景物颜色支持；不是恰好只有五种，需说出具体线索。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "autumn-rain-context-supported-explanation-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "课文用不同颜色的景物帮助理解五彩缤纷。解释这个词，并指出用了什么材料，不只重复颜色。",
+          "answer": "指颜色繁多、丰富鲜明，可由多种景物颜色支持；不是恰好只有五种，需说出具体线索。",
+          "analysis": "指颜色繁多、丰富鲜明，可由多种景物颜色支持；不是恰好只有五种，需说出具体线索。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-context-supported-explanation-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原句中香味勾住小朋友的脚。这里勾住是否意味着真的有钩子？联系语境说明。",
+          "answer": "写香味吸引人停留或注意的感受，不是证明有实体钩子；香味与脚步联系限定含义。",
+          "analysis": "写香味吸引人停留或注意的感受，不是证明有实体钩子；香味与脚步联系限定含义。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-context-supported-explanation-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "陌生句：“这条留言勾起他对旧书的回忆。”与用钩子勾住东西是否同义？说明依据。",
+          "answer": "回忆的语境指引发想起，不能直接套实体工具动作，解释须看对象和前后信息。",
+          "analysis": "回忆的语境指引发想起，不能直接套实体工具动作，解释须看对象和前后信息。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-context-supported-explanation-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "一曲丰收的歌中曲联系什么语境？为什么不能直接解释为物体弯曲？",
+          "answer": "联系歌曲与音乐，非物体形状；读音与词义都需当前语境支持。",
+          "analysis": "联系歌曲与音乐，非物体形状；读音与词义都需当前语境支持。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-context-supported-explanation-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "把秋雨写成钥匙，读者能据此说真有一把金属钥匙打开实体门吗？怎样理解这句？",
+          "answer": "是开启秋景的文学组织与联想，不能据此证明实体门锁；应联系后文展开的内容。",
+          "analysis": "是开启秋景的文学组织与联想，不能据此证明实体门锁；应联系后文展开的内容。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-context-supported-explanation-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "联系枫叶像邮票等具体内容，解释作者如何让颜色描写可想象，不只写很漂亮。",
+          "answer": "指出景物颜色、形态与联想关系，有实际词句依据；其他合理解释可接受，不必固定评价。",
+          "analysis": "指出景物颜色、形态与联想关系，有实际词句依据；其他合理解释可接受，不必固定评价。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-context-supported-explanation-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "任选本课一个多义或有文学色彩的词，解释当前含义并说明所用线索，指出不能机械套用的另一义。",
+          "answer": "词语确在当前文本，解释有据，不能凭常见义覆盖语境或编造原文。",
+          "analysis": "词语确在当前文本，解释有据，不能凭常见义覆盖语境或编造原文。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "autumn-rain",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "claim-supported-by-record",
+      "familyProposal": "following-claim-supported-by-record",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "判断与材料实际信息相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "指出具体依据并说明支持关系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "分清原信息、合理联想和仍未证明的结果",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能，具体对象、颜色与所有植物同一天不同；不能从列举扩成普遍时间结论。",
+        "insufficientExample": "就是这样，很好看。",
+        "insufficientReason": "没有执行指定表现或说明依据；实际录音、手写、默写和观察不能由评价词代替。",
+        "alternativeAnswers": "仅为原创评分参考，不是学生金样本。接受有依据的不同表达；缺实际媒体或帮助条件未明时保持相应未验证。"
+      },
+      "exercises": [
+        {
+          "id": "autumn-rain-claim-supported-by-record-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "材料给银杏叶黄色、枫叶红色。能否概括所有植物叶子都在同一天变成黄色？指出缺失条件。",
+          "answer": "不能，具体对象、颜色与所有植物同一天不同；不能从列举扩成普遍时间结论。",
+          "analysis": "不能，具体对象、颜色与所有植物同一天不同；不能从列举扩成普遍时间结论。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-claim-supported-by-record-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "课文列举几种动植物准备过冬。它能否证明所有动物都挖洞、所有树都以同样方式变化？",
+          "answer": "不能，需保留具体对象和方式；列举不等于全部物种规律。",
+          "analysis": "不能，需保留具体对象和方式；列举不等于全部物种规律。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-claim-supported-by-record-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构观察卡只记录果香和两种叶色。写一条有依据概括，再指出它没有提供的过冬信息。",
+          "answer": "保留果香与两叶色，未给的动物或活动不补造，也不扩大为所有地点。",
+          "analysis": "保留果香与两叶色，未给的动物或活动不补造，也不扩大为所有地点。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-claim-supported-by-record-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "阅读链接中的某地秋分后日照变化，能直接推广为全世界同一季节完全相同吗？说明还需什么条件。",
+          "answer": "不能，须考虑地区、南北半球等条件；阅读信息不能脱离范围直接推广，不要求学生做危险或外出操作。",
+          "analysis": "不能，须考虑地区、南北半球等条件；阅读信息不能脱离范围直接推广，不要求学生做危险或外出操作。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-claim-supported-by-record-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "描写花朵频频点头，能否据此证明花朵具有与人相同的同意意图？用表达边界解释。",
+          "answer": "不能，文学拟人借动作联想，不直接证明人的心理意图；也不否定其表达效果。",
+          "analysis": "不能，文学拟人借动作联想，不直接证明人的心理意图；也不否定其表达效果。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-claim-supported-by-record-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "结尾说丰收的歌，能否推出每个地方、每一种作物今年都丰收？给一个保留材料范围的说法。",
+          "answer": "不能，保留文章秋景和感受范围，不推全量实际产量；可说作者用景物表达丰收与欢乐感受。",
+          "analysis": "不能，保留文章秋景和感受范围，不推全量实际产量；可说作者用景物表达丰收与欢乐感受。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "autumn-rain-claim-supported-by-record-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "把一条明确原文信息、一项个人联想和一件仍待核对的自然条件分开写，说明为何不能混算。",
+          "answer": "原信息可定位，联想标明，自然条件需相应证据；不把文学表达当成实测数据。",
+          "analysis": "原信息可定位，联想标明，自然条件需相应证据；不把文学表达当成实测数据。 可以用自己的合理表达；请保留实际完成的部分，分清材料、联想与还不知道的事。",
+          "expectedSeconds": 160
+        }
+      ]
+    }
+  ]
+}
