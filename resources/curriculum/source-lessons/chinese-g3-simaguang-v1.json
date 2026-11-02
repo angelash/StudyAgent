@@ -1,0 +1,361 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry1",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 107,
+    "pageEnd": 107,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:simaguang-reading",
+      "version": 1,
+      "name": "司马光五字语境识读",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与阅读",
+      "objective": "在司马光跌落皆弃持等语境中识读司跌皆弃持五字",
+      "successCriterion": "本人当前声音覆盖司sī跌diē皆jiē弃qì持chí，不以键盘拼音代真实声音",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:simaguang-handwriting",
+      "version": 1,
+      "name": "司马光七字实际书写",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与写字",
+      "objective": "本人实际书写司庭登跌众弃持七字",
+      "successCriterion": "原稿逐字核部件与结构，庭与廷区分，七字写表不与五字识表混同",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:simaguang-oral",
+      "version": 1,
+      "name": "古文实际朗读与词句停顿",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "古文朗读",
+      "objective": "借真实示范或原文实际朗读，注意意义相关词句停连",
+      "successCriterion": "本人声音与当前古文对应，示范来源和帮助保留，不把固定斜线或老师原音代本人",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:simaguang-recall",
+      "version": 1,
+      "name": "司马光古文实际背诵",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "古文积累",
+      "objective": "本人尝试脱稿背诵当前短文并核对覆盖",
+      "successCriterion": "原文顺序与关键字按当前版本核，提示看文和订正分开，朗读不自动代背诵",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:simaguang-retelling",
+      "version": 1,
+      "name": "借注释用自己话讲故事",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "古文理解",
+      "objective": "联系庭瓮皆光迸等注释说明人物事情经过与结果",
+      "successCriterion": "动作因果清楚，光指司马光、破之指击破瓮，不编姓名对话和现代事故复现",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:simaguang-language",
+      "version": 1,
+      "name": "古文简洁与现代叙述比较",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "语言比较",
+      "objective": "用当前字词句比较古文和现代叙述的表达差别",
+      "successCriterion": "说明简短词语与语序用法，不贬古文不把现代扩写冒充原文或新增课后默写",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:simaguang-reading",
+    "source:chinese:g3:02915a7d:simaguang-handwriting",
+    "source:chinese:g3:02915a7d:simaguang-oral",
+    "source:chinese:g3:02915a7d:simaguang-recall",
+    "source:chinese:g3:02915a7d:simaguang-retelling",
+    "source:chinese:g3:02915a7d:simaguang-language",
+    "core:chinese:detail-evidence"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "准确原件所选物理页已逐张核查正文、脚注、字表和任务范围；AI来源核对不等教师、评分或独立题族审核。",
+    "pages": [
+      {
+        "page": 107,
+        "visualChecked": true,
+        "statement": "已看宋史司马光传出处、古文全文六项注释、5识7写与朗读停顿背诵、借注释讲述、语言比较；无新增默写。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "司马光",
+    "sourceWork": "宋史·司马光传",
+    "namedAuthorProvided": false,
+    "publicDomainClassicalText": "群儿戏于庭，一儿登瓮，足跌没水中。众皆弃去，光持石击瓮破之，水迸，儿得活。",
+    "recognitionCharacters": [
+      "司",
+      "跌",
+      "皆",
+      "弃",
+      "持"
+    ],
+    "writingCharacters": [
+      "司",
+      "庭",
+      "登",
+      "跌",
+      "众",
+      "弃",
+      "持"
+    ],
+    "requiredTasks": [
+      "跟示范朗读注意停顿",
+      "背诵",
+      "借注释用自己话讲",
+      "与其他课文语言比较"
+    ],
+    "fullTextDictationAdded": false,
+    "storyReenactmentRequired": false,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "司马光：借注释读古文，把动作与结果讲清楚",
+    "activation": {
+      "prompt": "原创卡：同伴遇到意外，一人先确认眼前条件，再赶紧向附近成人求助。先分卡片实际给出的动作和你还不知道的细节。卡片不是历史故事复原。",
+      "expectedObservation": "能按已知条件说过程，未知人物姓名时间不编。",
+      "bridge": "古文用很少的字交代事情，读时借注释理清谁做什么，以及动作带来怎样的结果。"
+    },
+    "concept": {
+      "explanation": "本课公版古文原文\n《司马光》\n群儿戏于庭，一儿登瓮，足跌没水中。众皆弃去，光持石击瓮破之，水迸，儿得活。\n\n借注释理解\n本篇选自宋史司马光传，传主司马光不等这段史书的作者，当前页没有给另一个具名作者。先读原文，再借注释分场景、意外、不同反应、行动和结果。群儿在庭院玩，一儿登上瓮后失足落水；瓮按本页注释是口小肚大的陶器，不默默换成别的原字。众皆弃去与光持石击瓮形成不同反应，光指司马光；破之承接瓮，水迸写水涌出，儿得活说明结局。用自己的话讲时可补清古文省略的指代，但不能加未给名字、对话、精确时长或称已经核过完整历史现场。没水中的没按淹没义读mò，停顿帮助理解词组关系；允许有意义依据的处理，不只背固定斜线。当前要求跟示范朗读、背诵、借注释讲和语言比较，没有新增默写。看原文读、听过示范后读、实际脱稿背各自记，参考声音不能冒充本人。古文短而凝练，现代讲述常用较多词说清同样关系，扩写属于解释不充原文。故事讨论沉着与关心同伴可用动作支持，不组织砸器具、落水等场面复现；现实遇险应及时向成人等求助，不把历史行动当学生必须模仿的操作。",
+      "points": [
+        "读原文、借注释、理指代",
+        "场景意外行动结果连起来",
+        "瓮与迸按当前字词核对",
+        "停顿服务意义，不只固定模板",
+        "看稿读与脱稿背分别留证",
+        "现代讲述不变古文原句，不组织事故复现"
+      ]
+    },
+    "example": {
+      "situation": "原创古文风格短句：“童失书，友拾还之，童谢。”只供比较语言，不是古籍原句或司马光故事后文。",
+      "steps": [
+        {
+          "explanation": "先按谁做什么理顺：孩子丢了书，朋友捡起归还，孩子道谢。",
+          "board": [
+            "童：失书",
+            "友：拾还",
+            "童：谢"
+          ]
+        },
+        {
+          "explanation": "之在此承接书，现代讲述要补清对象，不能把每处之都机械译成同一个抽象词。",
+          "board": [
+            "指代接前文对象",
+            "现代说法补清关系",
+            "按当前语境理解"
+          ]
+        },
+        {
+          "explanation": "回到原课核光和破之、水迸与儿得活的关系，再本人实际讲述。",
+          "board": [
+            "原课另核注释",
+            "行动→结果",
+            "扩写身份明示"
+          ]
+        }
+      ],
+      "conclusion": "注释与前后关系一起用，简洁表达也需要具体理解。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "司马光故事的关系线索",
+        "headers": [
+          "环节",
+          "借原文和注释说明",
+          "不能补成什么"
+        ],
+        "rows": [
+          [
+            "场景与意外",
+            "庭院、登瓮、跌没水中",
+            "不给精确年龄日期或未给孩子姓名"
+          ],
+          [
+            "不同反应",
+            "众弃去与光持石的对照",
+            "不由片段概括所有人一生品质"
+          ],
+          [
+            "行动指代",
+            "光为司马光、破之承接瓮",
+            "不把之误当另一个人或水"
+          ],
+          [
+            "结果",
+            "水涌出、孩子得活",
+            "不编额外对话或科学测量"
+          ],
+          [
+            "实际学习",
+            "五识七写、朗读背诵与讲述比较",
+            "范声范字不代本人，不加默写"
+          ]
+        ],
+        "explanation": "词语意义、人物行动和结果对应，古代文本理解不转为现实事故复现。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "按常见题名把瓮改成别字，或把光当发光。",
+        "alternatives": [
+          "可能套熟悉故事名而未核当前原文注释。"
+        ],
+        "verification": "指出本页瓮和光注释，再连接持石击瓮动作。",
+        "correctiveFeedback": "原字保留，光指司马光，注释与上下文共同约束。"
+      },
+      {
+        "observation": "把每个之都译成的人，或只记停顿斜线。",
+        "alternatives": [
+          "可能机械套常用译法和标记。"
+        ],
+        "verification": "说明破之指什么，用自己的话连动作和结果再实际朗读。",
+        "correctiveFeedback": "词义指代受当前关系约束，标记不代声音和理解。"
+      },
+      {
+        "observation": "看文朗读记脱稿背完，或组织砸瓮落水复现。",
+        "alternatives": [
+          "可能混任务方式与故事行动。"
+        ],
+        "verification": "核本人声音和帮助范围，读课后实际要求。",
+        "correctiveFeedback": "朗读背诵分开，故事理解不要求危险场面模仿。"
+      }
+    ],
+    "transfer": {
+      "scenario": "新的明确原创短句给遗失物品、拾还和道谢关系，或另一段有准确注释的适龄古文。",
+      "prompt": "指出人物、动作与指代，用现代话说清，再分原句与自己补清的解释。",
+      "expectedStrategy": "关系随新材料，不能把原故事熟悉答案代新文本；未知历史和实际学习状态如实。"
+    },
+    "summary": {
+      "synthesis": "先借注释读懂人物与动作，再有意义地朗读背诵，用自己的话说清过程。原文、解释和本人实际表现各有范围。",
+      "takeaways": [
+        "注释连前后语境",
+        "指代与行动结果清楚",
+        "本人朗读背诵分别核",
+        "古文现代讲述分身份，不复现事故"
+      ]
+    },
+    "citations": [
+      {
+        "page": 107,
+        "quote": "跟着老师朗读课文，注意词句间的停顿。背诵课文。",
+        "usedFor": "summary"
+      },
+      {
+        "page": 107,
+        "quote": "借助注释，用自己的话讲一讲这个故事。",
+        "usedFor": "concept"
+      },
+      {
+        "page": 107,
+        "quote": "这篇课文的语言和其他课文有什么不同？和同学交流。",
+        "usedFor": "transfer"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:simaguang-reading",
+        "objective": "在司马光跌落皆弃持等语境中识读司跌皆弃持五字",
+        "successCriterion": "本人当前声音覆盖司sī跌diē皆jiē弃qì持chí，不以键盘拼音代真实声音"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:simaguang-handwriting",
+        "objective": "本人实际书写司庭登跌众弃持七字",
+        "successCriterion": "原稿逐字核部件与结构，庭与廷区分，七字写表不与五字识表混同"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:simaguang-oral",
+        "objective": "借真实示范或原文实际朗读，注意意义相关词句停连",
+        "successCriterion": "本人声音与当前古文对应，示范来源和帮助保留，不把固定斜线或老师原音代本人"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g3:02915a7d:simaguang-recall",
+        "objective": "本人尝试脱稿背诵当前短文并核对覆盖",
+        "successCriterion": "原文顺序与关键字按当前版本核，提示看文和订正分开，朗读不自动代背诵"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:chinese:g3:02915a7d:simaguang-retelling",
+        "objective": "联系庭瓮皆光迸等注释说明人物事情经过与结果",
+        "successCriterion": "动作因果清楚，光指司马光、破之指击破瓮，不编姓名对话和现代事故复现"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "source:chinese:g3:02915a7d:simaguang-language",
+        "objective": "用当前字词句比较古文和现代叙述的表达差别",
+        "successCriterion": "说明简短词语与语序用法，不贬古文不把现代扩写冒充原文或新增课后默写"
+      },
+      {
+        "id": "goal-7",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "用当前材料具体信息支持判断，分原文、表达与本人实际表现",
+        "successCriterion": "依据和判断关系清楚，声音原稿与帮助保留；未知和未完成不由范例代填"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "先审核目标、评分、独立结构与充分未见材料，再按真实日期安排。每间隔一份样题不当充分库存；原篇已学、帮助和曝光保留，参考与模拟日期不当本人长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "simaguang",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "现代原页、完整现代课文和现代注释全文不复制进候选；原创讲解配必要短引核对。",
+    "materialStatus": "候选讲解、检查和量规；教师、目标对齐、独立结构、评分金样本和充分保持库存仍待。",
+    "pacing": "识读、写字、朗读、积累和理解表达分次完成，不能由一次短练习推整课全部目标。",
+    "classicalTextBoundary": "The complete ancient public-domain passage is in the actual reading body. Modern pages and full modern notes remain private; current explanatory prose is original."
+  }
+}

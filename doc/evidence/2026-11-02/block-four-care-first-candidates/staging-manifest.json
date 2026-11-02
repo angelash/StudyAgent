@@ -1,0 +1,234 @@
+{
+  "at": "2026-11-02T14:12:48.006Z",
+  "baseCommit": "a61fcdc73045d2b5e6dd1587221721706a845c85",
+  "branch": "main",
+  "localBranches": [
+    "main"
+  ],
+  "worktreeInventory": "worktree F:/workspace/github/StudyAgent\nHEAD a61fcdc73045d2b5e6dd1587221721706a845c85\nbranch refs/heads/main\n\n",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "scripts/content/build-chinese-care-first-candidates.cjs",
+      "bytes": 36671,
+      "sha256": "928a3ee2ff351fbe459bd1726444277f0e82d2f87bd26856677d95bbed8cc770",
+      "gitNormalizedSha256": "928a3ee2ff351fbe459bd1726444277f0e82d2f87bd26856677d95bbed8cc770"
+    },
+    {
+      "path": "scripts/qa/verify-chinese-classical-reading.cjs",
+      "bytes": 1455,
+      "sha256": "26670c8605e39e171c2d8b55c8d36278a76002977e968b61e020648c6f3b267d",
+      "gitNormalizedSha256": "26670c8605e39e171c2d8b55c8d36278a76002977e968b61e020648c6f3b267d"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-simaguang-v1.json",
+      "bytes": 15963,
+      "sha256": "5dd858f0c98a62c61978de1668d18beeaeb48035546a2ae7e88794ba1029996d",
+      "gitNormalizedSha256": "5dd858f0c98a62c61978de1668d18beeaeb48035546a2ae7e88794ba1029996d"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-grey-sparrows-v1.json",
+      "bytes": 17717,
+      "sha256": "5e1cbc4582f367b22435f1488c87eec611903789d975151200c67fcfdc30dc7b",
+      "gitNormalizedSha256": "5e1cbc4582f367b22435f1488c87eec611903789d975151200c67fcfdc30dc7b"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-care-first-v1.json",
+      "bytes": 91176,
+      "sha256": "a0093f9713ef1d0709ff76784211dab39ed2b43890aa485ca0767c4e74793f31",
+      "gitNormalizedSha256": "a0093f9713ef1d0709ff76784211dab39ed2b43890aa485ca0767c4e74793f31"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 13965,
+      "sha256": "dbd69b46a95fb20148d3721f2c95753234cbfc42d32cdf8ba7a0924628bf3761",
+      "gitNormalizedSha256": "d64cf332dd07640576c0d04d2f0014a0bf8baa90f6349bdff04108bf41d0aca8"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 176532,
+      "sha256": "1f6228c43550a731e37f6881248d08937e368f757e7c95fc185a14d39145a2df",
+      "gitNormalizedSha256": "1e7ed66a18ce3e73b8f111aaf51b54250e4eb4d05dce2c8b828bbd663e754c02"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 102580,
+      "sha256": "ce918d9c9ccd8619c6e839024e2350565e22f858154acc0c934c77938a377506",
+      "gitNormalizedSha256": "35cff57147c3c0dadf8fcdf1090cca18f8d05ce42d60dd746a051d0fdea9b094"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 107995,
+      "sha256": "c6f81613b2abb8454ddd681791332bd4de8237c542b372d6f801916fcd0a1f2d",
+      "gitNormalizedSha256": "fb9510982cadc520f31e464f413cb757e2fe241d7cd6a221176dab02e75e57ca"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 17530,
+      "sha256": "5b9287b5f7f4cf50852e4accdafa5b9c70eff47fd1a3a89749693ba929ef02f3",
+      "gitNormalizedSha256": "6d8338511d37e8a9917c2f7131b553e5203bba54ce011ecdbb045f32eaee1fcf"
+    },
+    {
+      "path": "doc/product/207-classical-prose-and-sparrow-supported-inference.md",
+      "bytes": 3732,
+      "sha256": "65c1915742ccf0ac6afc84c8ebd2beb9a1f47146a2f3e0652ab41e4d6e4c4464",
+      "gitNormalizedSha256": "65c1915742ccf0ac6afc84c8ebd2beb9a1f47146a2f3e0652ab41e4d6e4c4464"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 36713,
+      "sha256": "788e13aefa8cbb4d77084e9bacd92b1f9413b3f453626e08e4fba447291ffa9f",
+      "gitNormalizedSha256": "1e4185bb2ec00f08624945ae16c2f84deda31d80c97d7b506564e1cc9239be63"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/browser/first-incomplete/chinese-g3-grey-sparrows-v1-desktop.png",
+      "bytes": 272086,
+      "sha256": "d97a9412c6a31af6098cc41e7932f2dcf78fb315485c5ea3903a6d4ae0a5796e",
+      "gitNormalizedSha256": "ae6b09c7c0cf82a436b9dd81aa3528490a8b3a7ac9fcc3f4040540a31689ac4c"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/browser/first-incomplete/chinese-g3-grey-sparrows-v1-table.png",
+      "bytes": 60368,
+      "sha256": "6110ba7f7ee12ab9adab29fe575f8d2f9b517f100e984b3a75b6ba39f828161c",
+      "gitNormalizedSha256": "5f81f045ae295ed906c9896695017ea2f2873093a446e9a1198598a12d824f83"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/browser/first-incomplete/chinese-g3-simaguang-v1-desktop.png",
+      "bytes": 249629,
+      "sha256": "bacbbf2f239bdd89b932ac1525778b3b660f45d267b2714f2c57e3384de79299",
+      "gitNormalizedSha256": "3259db064aed3606b8a2bd6bbc7c5b17d7767d41e59721b4cbe1c031c23b8e4b"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/browser/first-incomplete/chinese-g3-simaguang-v1-table.png",
+      "bytes": 51848,
+      "sha256": "904b279e97c7d6e1dc795690d9d5df91beeba98c47c8b6918fb3652db4556e5b",
+      "gitNormalizedSha256": "6f9b53cd587a0a5d37432b0a36b30be1bb05c124c065a61c7108c5261a815095"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/browser/first-incomplete/runner.cjs",
+      "bytes": 17137,
+      "sha256": "63aa63ee07be08f9a26841766e1eb1126a1b89cae9247f9e47e12b93fdbb9e36",
+      "gitNormalizedSha256": "63aa63ee07be08f9a26841766e1eb1126a1b89cae9247f9e47e12b93fdbb9e36"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/browser/second/chinese-g3-grey-sparrows-v1-desktop.png",
+      "bytes": 272086,
+      "sha256": "d97a9412c6a31af6098cc41e7932f2dcf78fb315485c5ea3903a6d4ae0a5796e",
+      "gitNormalizedSha256": "ae6b09c7c0cf82a436b9dd81aa3528490a8b3a7ac9fcc3f4040540a31689ac4c"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/browser/second/chinese-g3-grey-sparrows-v1-mobile-table.png",
+      "bytes": 66152,
+      "sha256": "d053cf5db043241c0ac59f5cef12de775f40c2bae01b64adce64e08af0b38c4b",
+      "gitNormalizedSha256": "09c5721f5b3d9e181eaba2da494e6408bf28c93a7cfe70f9ff69efa8dbda1eab"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/browser/second/chinese-g3-grey-sparrows-v1-table.png",
+      "bytes": 60368,
+      "sha256": "6110ba7f7ee12ab9adab29fe575f8d2f9b517f100e984b3a75b6ba39f828161c",
+      "gitNormalizedSha256": "5f81f045ae295ed906c9896695017ea2f2873093a446e9a1198598a12d824f83"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/browser/second/chinese-g3-simaguang-v1-desktop.png",
+      "bytes": 249629,
+      "sha256": "bacbbf2f239bdd89b932ac1525778b3b660f45d267b2714f2c57e3384de79299",
+      "gitNormalizedSha256": "3259db064aed3606b8a2bd6bbc7c5b17d7767d41e59721b4cbe1c031c23b8e4b"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/browser/second/chinese-g3-simaguang-v1-table.png",
+      "bytes": 51848,
+      "sha256": "904b279e97c7d6e1dc795690d9d5df91beeba98c47c8b6918fb3652db4556e5b",
+      "gitNormalizedSha256": "6f9b53cd587a0a5d37432b0a36b30be1bb05c124c065a61c7108c5261a815095"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/browser/second/receipt.json",
+      "bytes": 1012,
+      "sha256": "86331d620f7d8f416e6c28ab6480d37ab7369c972322bedccd1748ff54f58043",
+      "gitNormalizedSha256": "86331d620f7d8f416e6c28ab6480d37ab7369c972322bedccd1748ff54f58043"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/browser/second/runner.cjs",
+      "bytes": 17137,
+      "sha256": "63aa63ee07be08f9a26841766e1eb1126a1b89cae9247f9e47e12b93fdbb9e36",
+      "gitNormalizedSha256": "63aa63ee07be08f9a26841766e1eb1126a1b89cae9247f9e47e12b93fdbb9e36"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/checks/b4-care-first-archive-scan.json",
+      "bytes": 996,
+      "sha256": "b491294bfa8ff08331f1b2001620fc2c019329ca4c5f12efc2ec49633ebb71a2",
+      "gitNormalizedSha256": "b491294bfa8ff08331f1b2001620fc2c019329ca4c5f12efc2ec49633ebb71a2"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/checks/care-first-browser-first-incomplete-observation.json",
+      "bytes": 441,
+      "sha256": "f7adfefa79a86e361a1f221421e5a9bde64f7d72a5cfa84a54b95aadc41001bb",
+      "gitNormalizedSha256": "f7adfefa79a86e361a1f221421e5a9bde64f7d72a5cfa84a54b95aadc41001bb"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/checks/care-first-generation-readback.json",
+      "bytes": 994,
+      "sha256": "d7c018ad2dffc55f12f90dfb972db5d758bd58145d148350a5dde14e3824aebd",
+      "gitNormalizedSha256": "d7c018ad2dffc55f12f90dfb972db5d758bd58145d148350a5dde14e3824aebd"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/checks/care-first-materials-http-first.json",
+      "bytes": 2262,
+      "sha256": "8ccf4a81f4d35ff676d0a87a4c40d15c877e840f4551bf3c1b65a19720eed73b",
+      "gitNormalizedSha256": "8ccf4a81f4d35ff676d0a87a4c40d15c877e840f4551bf3c1b65a19720eed73b"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/checks/care-first-static-first.json",
+      "bytes": 795,
+      "sha256": "638bead0e81a8b91f76033918e4c9683f2c7b18d3713e47b0a8b62913e444161",
+      "gitNormalizedSha256": "638bead0e81a8b91f76033918e4c9683f2c7b18d3713e47b0a8b62913e444161"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/checks/classical-reading-regression-first.json",
+      "bytes": 270,
+      "sha256": "d8fecc145fdca32b100ea7c91ce384aea9fb8f30d58afcad66b3bad6a5eda9a0",
+      "gitNormalizedSha256": "d8fecc145fdca32b100ea7c91ce384aea9fb8f30d58afcad66b3bad6a5eda9a0"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/checks/content-worklist-care-first.json.gz",
+      "bytes": 114901,
+      "sha256": "8bbe62f1a0f98b6eeec9481ca718ae2315fb5fd527651363293ddc8ae7b80fc0",
+      "gitNormalizedSha256": "8bef303b6516d8b21c247c137fa7928c2d66c9449b71fdc425023d59f40ede32"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/manifest.json",
+      "bytes": 3996,
+      "sha256": "f5db6bad6d2cebdcc9c723f297f4bd83a0c901c41355ff7c2f40f148f87c9a35",
+      "gitNormalizedSha256": "f5db6bad6d2cebdcc9c723f297f4bd83a0c901c41355ff7c2f40f148f87c9a35"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/receipt.json",
+      "bytes": 4040,
+      "sha256": "f3a04e87c8c26cd5e4b4fedfe2760b78a4df9e7c6071379b67e2c43411fb8a4a",
+      "gitNormalizedSha256": "f3a04e87c8c26cd5e4b4fedfe2760b78a4df9e7c6071379b67e2c43411fb8a4a"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/source-intake/care-unit-reviewed.json",
+      "bytes": 6279,
+      "sha256": "7a477d1084fff6e7a1480d1caa30e93974939cc4a9bae5cf30ada602d8660d9e",
+      "gitNormalizedSha256": "7a477d1084fff6e7a1480d1caa30e93974939cc4a9bae5cf30ada602d8660d9e"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/sources.json.gz",
+      "bytes": 56666,
+      "sha256": "c5ddb14a25100737f9ce9f337e874c31525fb9735268aad9980514bf54d074ff",
+      "gitNormalizedSha256": "c5ddb14a25100737f9ce9f337e874c31525fb9735268aad9980514bf54d074ff"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/tools/archive-care-first.cjs",
+      "bytes": 7370,
+      "sha256": "4fbe283979ef1487de6841cc432f4ac9fb198f4220ac5cc9ea08febb415a31c1",
+      "gitNormalizedSha256": "4fbe283979ef1487de6841cc432f4ac9fb198f4220ac5cc9ea08febb415a31c1"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-first-candidates/tools/stage-care-first.cjs",
+      "bytes": 3409,
+      "sha256": "6fdf4866c1d48b0b5abe25d5c1983ffcf7593b78800a572177494989d44ce94b",
+      "gitNormalizedSha256": "6fdf4866c1d48b0b5abe25d5c1983ffcf7593b78800a572177494989d44ce94b"
+    }
+  ]
+}

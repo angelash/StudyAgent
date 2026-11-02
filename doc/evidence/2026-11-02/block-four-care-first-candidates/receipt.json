@@ -1,0 +1,141 @@
+{
+  "format": "study-block-four-care-first-candidates-v1",
+  "at": "2026-11-02T14:12:10.982Z",
+  "baseCommit": "a61fcdc73045d2b5e6dd1587221721706a845c85",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "newDrafts": 2,
+  "targetCounts": [
+    7,
+    8
+  ],
+  "newDefinitionCandidates": 13,
+  "newCandidateQuestions": 105,
+  "purposeCounts": {
+    "immediate": 45,
+    "proposedRetention": 60
+  },
+  "modes": {
+    "audio_record": 35,
+    "image_upload": 14,
+    "short_answer": 56
+  },
+  "source": {
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "physicalPages": [
+      107,
+      108,
+      109
+    ],
+    "allSelectedPagesVisuallyReviewed": true,
+    "originalImagesAndModernFullTextCommitted": false,
+    "completePublicDomainClassicalPassageInReadingBody": true,
+    "recognitionCounts": [
+      5,
+      10
+    ],
+    "handwritingCounts": [
+      7,
+      13
+    ],
+    "explicitNarrationAndSupportedInferenceSeparated": true,
+    "unnarratedCaptureMethodNotAdded": true,
+    "extraFullTextDictationAdded": false
+  },
+  "validation": {
+    "http": "checks/care-first-materials-http-first.json",
+    "coldReadQuestions": 105,
+    "originalCommandsReplayed": true,
+    "incompletePublicationRejected": true,
+    "liveOriginalHttpVerifierNotRestartedAfterHandleLoss": true,
+    "browser": {
+      "firstAttempt": "checks/care-first-browser-first-incomplete-observation.json",
+      "firstNoTerminalReceiptNotCounted": true,
+      "ownedPidsAndPortsConfirmedStoppedBeforeRepeat": true,
+      "finalReport": "browser/second/receipt.json",
+      "buildId": "ELFqjEh0ZktmjW7mcCIOL",
+      "passed": 4,
+      "failed": 0,
+      "finalScreenshotsVisuallyReviewed": 5,
+      "firstPartialScreenshotsPreserved": 4,
+      "attemptsNotCombined": true
+    },
+    "classicalReading": {
+      "completePassages": 1,
+      "negativeCasesRejected": 2
+    },
+    "regeneration": {
+      "inputsAndOutputsUnchanged": 5,
+      "privateQaFilesRequired": false
+    },
+    "gapCounts": [
+      {
+        "file": "chinese-g3-simaguang-v1.json",
+        "gaps": 90,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      },
+      {
+        "file": "chinese-g3-grey-sparrows-v1.json",
+        "gaps": 103,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      }
+    ]
+  },
+  "reusedEngineering": {
+    "fullApi": {
+      "passed": 3051,
+      "failed": 0,
+      "conditionalSkips": 131
+    },
+    "applicationAndContractsUnchanged": true,
+    "evidence": "../block-four-reading-preview-and-dog/receipt.json",
+    "countsNotAddedToThisContentBatch": true
+  },
+  "boundaries": {
+    "teacherReviewed": false,
+    "scoringReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0,
+    "published": 0,
+    "adoptions": 0,
+    "learnerResponses": 0,
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "formal": {
+    "schema": 24,
+    "revision": 188,
+    "protectedFiles": 1063
+  },
+  "remaining": {
+    "registeredBooks": 449,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 101,
+    "booksWithDirectory": 113,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3512,
+    "lessonsWithCandidateFiles": 43,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3469,
+    "authoredFollowingMaterialCandidates": 1862,
+    "materialBundlesWithStaleDraftIdentity": 0,
+    "firstLesson44FollowupsNotIncludedIn1862": true,
+    "unit8OtherFiveItemsNeedDrafts": true,
+    "next": "Continue battlefield, coarse bowl, asking advice, happy-play writing and garden8, all other exact-source textbook/GESP content and reviews, then block5."
+  }
+}

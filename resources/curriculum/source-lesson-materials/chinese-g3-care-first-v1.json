@@ -1,0 +1,1542 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "simaguang",
+      "path": "resources/curriculum/source-lessons/chinese-g3-simaguang-v1.json",
+      "sha256": "5dd858f0c98a62c61978de1668d18beeaeb48035546a2ae7e88794ba1029996d",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry1",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 107,
+        "pageEnd": 107,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    },
+    {
+      "lesson": "grey-sparrows",
+      "path": "resources/curriculum/source-lessons/chinese-g3-grey-sparrows-v1.json",
+      "sha256": "5e1cbc4582f367b22435f1488c87eec611903789d975151200c67fcfdc30dc7b",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry2",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 108,
+        "pageEnd": 109,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三个即时和四个拟议间隔样题，不等充分库存或独立题族。古文原篇积累与陌生理解分开；灰雀心理解释允许有据不同，未叙过程不补；所有本人声音原稿和实际交流由本人完成，不制造学习表现。",
+  "groups": [
+    {
+      "lesson": "simaguang",
+      "atomId": "source:chinese:g3:02915a7d:simaguang-reading",
+      "structure": "simaguang-contextual-character-reading",
+      "familyProposal": "following-simaguang-contextual-character-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人声音覆盖当前字表",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前词语读音相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助原改与缺项保留",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "司sī跌diē皆jiē弃qì持chí；逐字核本人当前声音，文字拼音与词数不代字数覆盖。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "simaguang-simaguang-contextual-character-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录音读“司马光、跌落、皆、弃去、持石”，说明本课目标覆盖。",
+          "answer": "司sī跌diē皆jiē弃qì持chí；逐字核本人当前声音，文字拼音与词数不代字数覆盖。",
+          "analysis": "司sī跌diē皆jiē弃qì持chí；逐字核本人当前声音，文字拼音与词数不代字数覆盖。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-simaguang-contextual-character-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "分两组实际读当前词，标一处需要核对的读音，没问题不造错。",
+          "answer": "司sī跌diē皆jiē弃qì持chí；两组覆盖合并核，原音与订正后分开。",
+          "analysis": "司sī跌diē皆jiē弃qì持chí；两组覆盖合并核，原音与订正后分开。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-simaguang-contextual-character-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "给目标字配新的合理词实际读，再补未覆盖字，标新词身份。",
+          "answer": "新词与语义读音相容，目标逐字核，不能一词顺读推整表。",
+          "analysis": "新词与语义读音相容，目标逐字核，不能一词顺读推整表。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-simaguang-contextual-character-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次读全表，说明刚看原文或听示范的部分。",
+          "answer": "本人声音与帮助保留，原词重复不恢复未见资格。",
+          "analysis": "本人声音与帮助保留，原词重复不恢复未见资格。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-simaguang-contextual-character-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "确实不稳时查证后重录，保留原音；都稳则正常读。",
+          "answer": "查证来源和实际发音分别看，解释会查不代声音。",
+          "analysis": "查证来源和实际发音分别看，解释会查不代声音。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-simaguang-contextual-character-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只读当前实际完成的词并列缺项，不借教师旧音补齐。",
+          "answer": "覆盖真实，漏项留待，分次允许但不能伪造完成。",
+          "analysis": "覆盖真实，漏项留待，分次允许但不能伪造完成。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-simaguang-contextual-character-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新实际读齐并解释一处词义怎样帮助读音。",
+          "answer": "司sī跌diē皆jiē弃qì持chí；声音与说明对应，重复熟悉词不自动是新未见保持。",
+          "analysis": "司sī跌diē皆jiē弃qì持chí；声音与说明对应，重复熟悉词不自动是新未见保持。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "simaguang",
+      "atomId": "source:chinese:g3:02915a7d:simaguang-handwriting",
+      "structure": "simaguang-own-character-writing",
+      "familyProposal": "following-simaguang-own-character-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖字表",
+          "weight": 0.4
+        },
+        {
+          "criterion": "目标字形部件相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助原改与缺项真实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "逐字看本人当前原件与完整性，范字图和识读不代写字。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "simaguang-simaguang-own-character-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际书写“司庭登跌众弃持”并上传原稿，指出一处部件需核。",
+          "answer": "逐字看本人当前原件与完整性，范字图和识读不代写字。",
+          "analysis": "逐字看本人当前原件与完整性，范字图和识读不代写字。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "simaguang-simaguang-own-character-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "分两次短写覆盖当前字表，上传两份并说明范围。",
+          "answer": "实际覆盖合并核，漏字留缺，不要求长时反复抄或由部分推全部。",
+          "analysis": "实际覆盖合并核，漏字留缺，不要求长时反复抄或由部分推全部。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "simaguang-simaguang-own-character-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "在新原创短句中写部分目标，再补未出现字上传。",
+          "answer": "句内与补写逐字核，新句身份清楚，仍需本人实际字形。",
+          "analysis": "句内与补写逐字核，新句身份清楚，仍需本人实际字形。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "simaguang-simaguang-own-character-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "上传本人本次原稿，说明看范字提示和当前未完成处。",
+          "answer": "原件与帮助真实，旧稿教师稿不能补本人本次覆盖。",
+          "analysis": "原件与帮助真实，旧稿教师稿不能补本人本次覆盖。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "simaguang-simaguang-own-character-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "有真实订正留原改对照，无问题说明检查结果不造错。",
+          "answer": "修改可追溯，清稿不能倒造历史，质量不按改动数量计。",
+          "analysis": "修改可追溯，清稿不能倒造历史，质量不按改动数量计。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "simaguang-simaguang-own-character-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "选一处易混部件先说明再实际写，并补全当前表。",
+          "answer": "说明与字形各自核，能说结构不代实际写出。",
+          "analysis": "说明与字形各自核，能说结构不代实际写出。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "simaguang-simaguang-own-character-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重新写齐当前目标并上传，报告所用帮助。",
+          "answer": "当前覆盖逐字可核，已学字重复不自动证明陌生迁移或长期保持。",
+          "analysis": "当前覆盖逐字可核，已学字重复不自动证明陌生迁移或长期保持。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        }
+      ]
+    },
+    {
+      "lesson": "grey-sparrows",
+      "atomId": "source:chinese:g3:02915a7d:grey-sparrows-reading",
+      "structure": "grey-sparrows-contextual-character-reading",
+      "familyProposal": "following-grey-sparrows-contextual-character-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人声音覆盖当前字表",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前词语读音相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助原改与缺项保留",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "宁níng胸xiōng脯pú惹rě仰yǎng渣zhā或huò者zhě惜xī诚chéng；逐字核本人当前声音，文字拼音与词数不代字数覆盖。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "grey-sparrows-grey-sparrows-contextual-character-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录音读“列宁、胸脯、惹人喜爱、仰望、面包渣、或者、可惜、诚实”，说明本课目标覆盖。",
+          "answer": "宁níng胸xiōng脯pú惹rě仰yǎng渣zhā或huò者zhě惜xī诚chéng；逐字核本人当前声音，文字拼音与词数不代字数覆盖。",
+          "analysis": "宁níng胸xiōng脯pú惹rě仰yǎng渣zhā或huò者zhě惜xī诚chéng；逐字核本人当前声音，文字拼音与词数不代字数覆盖。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-grey-sparrows-contextual-character-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "分两组实际读当前词，标一处需要核对的读音，没问题不造错。",
+          "answer": "宁níng胸xiōng脯pú惹rě仰yǎng渣zhā或huò者zhě惜xī诚chéng；两组覆盖合并核，原音与订正后分开。",
+          "analysis": "宁níng胸xiōng脯pú惹rě仰yǎng渣zhā或huò者zhě惜xī诚chéng；两组覆盖合并核，原音与订正后分开。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-grey-sparrows-contextual-character-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "给目标字配新的合理词实际读，再补未覆盖字，标新词身份。",
+          "answer": "新词与语义读音相容，目标逐字核，不能一词顺读推整表。",
+          "analysis": "新词与语义读音相容，目标逐字核，不能一词顺读推整表。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-grey-sparrows-contextual-character-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次读全表，说明刚看原文或听示范的部分。",
+          "answer": "本人声音与帮助保留，原词重复不恢复未见资格。",
+          "analysis": "本人声音与帮助保留，原词重复不恢复未见资格。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-grey-sparrows-contextual-character-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "确实不稳时查证后重录，保留原音；都稳则正常读。",
+          "answer": "查证来源和实际发音分别看，解释会查不代声音。",
+          "analysis": "查证来源和实际发音分别看，解释会查不代声音。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-grey-sparrows-contextual-character-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只读当前实际完成的词并列缺项，不借教师旧音补齐。",
+          "answer": "覆盖真实，漏项留待，分次允许但不能伪造完成。",
+          "analysis": "覆盖真实，漏项留待，分次允许但不能伪造完成。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-grey-sparrows-contextual-character-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新实际读齐并解释一处词义怎样帮助读音。",
+          "answer": "宁níng胸xiōng脯pú惹rě仰yǎng渣zhā或huò者zhě惜xī诚chéng；声音与说明对应，重复熟悉词不自动是新未见保持。",
+          "analysis": "宁níng胸xiōng脯pú惹rě仰yǎng渣zhā或huò者zhě惜xī诚chéng；声音与说明对应，重复熟悉词不自动是新未见保持。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "grey-sparrows",
+      "atomId": "source:chinese:g3:02915a7d:grey-sparrows-handwriting",
+      "structure": "grey-sparrows-own-character-writing",
+      "familyProposal": "following-grey-sparrows-own-character-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖字表",
+          "weight": 0.4
+        },
+        {
+          "criterion": "目标字形部件相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助原改与缺项真实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "逐字看本人当前原件与完整性，范字图和识读不代写字。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "grey-sparrows-grey-sparrows-own-character-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际书写“郊养粉谷粒男或者冻冷惜肯诚”并上传原稿，指出一处部件需核。",
+          "answer": "逐字看本人当前原件与完整性，范字图和识读不代写字。",
+          "analysis": "逐字看本人当前原件与完整性，范字图和识读不代写字。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "grey-sparrows-grey-sparrows-own-character-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "分两次短写覆盖当前字表，上传两份并说明范围。",
+          "answer": "实际覆盖合并核，漏字留缺，不要求长时反复抄或由部分推全部。",
+          "analysis": "实际覆盖合并核，漏字留缺，不要求长时反复抄或由部分推全部。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "grey-sparrows-grey-sparrows-own-character-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "在新原创短句中写部分目标，再补未出现字上传。",
+          "answer": "句内与补写逐字核，新句身份清楚，仍需本人实际字形。",
+          "analysis": "句内与补写逐字核，新句身份清楚，仍需本人实际字形。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "grey-sparrows-grey-sparrows-own-character-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "上传本人本次原稿，说明看范字提示和当前未完成处。",
+          "answer": "原件与帮助真实，旧稿教师稿不能补本人本次覆盖。",
+          "analysis": "原件与帮助真实，旧稿教师稿不能补本人本次覆盖。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "grey-sparrows-grey-sparrows-own-character-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "有真实订正留原改对照，无问题说明检查结果不造错。",
+          "answer": "修改可追溯，清稿不能倒造历史，质量不按改动数量计。",
+          "analysis": "修改可追溯，清稿不能倒造历史，质量不按改动数量计。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "grey-sparrows-grey-sparrows-own-character-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "选一处易混部件先说明再实际写，并补全当前表。",
+          "answer": "说明与字形各自核，能说结构不代实际写出。",
+          "analysis": "说明与字形各自核，能说结构不代实际写出。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "grey-sparrows-grey-sparrows-own-character-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重新写齐当前目标并上传，报告所用帮助。",
+          "answer": "当前覆盖逐字可核，已学字重复不自动证明陌生迁移或长期保持。",
+          "analysis": "当前覆盖逐字可核，已学字重复不自动证明陌生迁移或长期保持。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        }
+      ]
+    },
+    {
+      "lesson": "simaguang",
+      "atomId": "source:chinese:g3:02915a7d:simaguang-oral",
+      "structure": "classical-actual-reading-and-pauses",
+      "familyProposal": "following-classical-actual-reading-and-pauses",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人当前声音对应全文",
+          "weight": 0.4
+        },
+        {
+          "criterion": "停连帮助词句意义",
+          "weight": 0.4
+        },
+        {
+          "criterion": "示范帮助与看稿真实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "原文词句按当前版本核，停顿可有合理依据差异，老师或合成参考音不能充本人。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "simaguang-classical-actual-reading-and-pauses-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际朗读司马光全文，标看稿和示范帮助，说一处停顿怎样帮助理解。",
+          "answer": "原文词句按当前版本核，停顿可有合理依据差异，老师或合成参考音不能充本人。",
+          "analysis": "原文词句按当前版本核，停顿可有合理依据差异，老师或合成参考音不能充本人。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-actual-reading-and-pauses-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "读足跌没水中、光持石击瓮破之等句，先说意义关系再实际读。",
+          "answer": "没mò按淹没义，光指司马光、之承接瓮，停连不割裂关键关系，解释不代声音。",
+          "analysis": "没mò按淹没义，光指司马光、之承接瓮，停连不割裂关键关系，解释不代声音。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-actual-reading-and-pauses-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "先读明确原创短句童失书友拾还之，再回原课读全文，分材料身份。",
+          "answer": "原创例练指代停顿，不能用它代本课全文朗读或冒充古籍原句。",
+          "analysis": "原创例练指代停顿，不能用它代本课全文朗读或冒充古籍原句。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-actual-reading-and-pauses-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次跟一份实际示范读后重新朗读，说明示范来源与帮助。",
+          "answer": "本人当前声音另留，示范是帮助，不把听过直接记无帮助首读或脱稿背诵。",
+          "analysis": "本人当前声音另留，示范是帮助，不把听过直接记无帮助首读或脱稿背诵。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-actual-reading-and-pauses-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "比较本人一处两次停顿，哪种让动作结果更清楚？实际读并说明。",
+          "answer": "依据语义而非唯一斜线模板，原音和改后分别留。",
+          "analysis": "依据语义而非唯一斜线模板，原音和改后分别留。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-actual-reading-and-pauses-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "如果只朗读了前半，读当前实际部分并报告后半状态。",
+          "answer": "范围真实，未读不由参考音补齐，局部顺读不推全文完成。",
+          "analysis": "范围真实，未读不由参考音补齐，局部顺读不推全文完成。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-actual-reading-and-pauses-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新本人读全篇，报告仍需核对处和帮助；无问题不造错。",
+          "answer": "版本范围与声音可核，重复原文不自动成为未见理解或保持。",
+          "analysis": "版本范围与声音可核，重复原文不自动成为未见理解或保持。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "simaguang",
+      "atomId": "source:chinese:g3:02915a7d:simaguang-recall",
+      "structure": "classical-own-recall",
+      "familyProposal": "following-classical-own-recall",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人声音覆盖当前全文",
+          "weight": 0.4
+        },
+        {
+          "criterion": "脱稿看稿提示分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原错订正和未完成保留",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "人物动作顺序和当前文字对应，实际本人声音核覆盖，看稿朗读不代脱稿背诵。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "simaguang-classical-own-recall-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人尝试脱稿背诵司马光全文，说明看文或提示部分。",
+          "answer": "人物动作顺序和当前文字对应，实际本人声音核覆盖，看稿朗读不代脱稿背诵。",
+          "analysis": "人物动作顺序和当前文字对应，实际本人声音核覆盖，看稿朗读不代脱稿背诵。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-own-recall-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先背当前确实会的部分，再报告其余与帮助，不拿旧音补全。",
+          "answer": "局部完成范围真实，剩余留待，前半流畅不推全文已背。",
+          "analysis": "局部完成范围真实，剩余留待，前半流畅不推全文已背。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-own-recall-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "先练一段明确原创短句的记忆方法，再回原课实际尝试全文。",
+          "answer": "原创练法不代指定短文，实际背诵仍核当前公版原文和本人声音。",
+          "analysis": "原创练法不代指定短文，实际背诵仍核当前公版原文和本人声音。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-own-recall-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次背全文，保留停顿卡壳与订正，说明刚看过的句子。",
+          "answer": "原音后改和帮助分别记，不倒改最初或假称完全无帮助。",
+          "analysis": "原音后改和帮助分别记，不倒改最初或假称完全无帮助。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-own-recall-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "背顺词序是否单独证明庭瓮皆迸都已理解？录音后说明还需什么。",
+          "answer": "背诵积累与语义解释分别看，不能背熟就自动填全部理解和写字完成。",
+          "analysis": "背诵积累与语义解释分别看，不能背熟就自动填全部理解和写字完成。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-own-recall-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原页要求背诵是否同时要求全文默写？实际尝试背诵后说明范围。",
+          "answer": "当前有背诵没有新增默写，五识七写与脱稿声音分别核，不加任务。",
+          "analysis": "当前有背诵没有新增默写，五识七写与脱稿声音分别核，不加任务。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-own-recall-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新本人背全文或实际完成部分，标熟悉与帮助，不充陌生首答。",
+          "answer": "当前声音版本和范围可核，原篇重复不自动证明未见迁移或长期保持。",
+          "analysis": "当前声音版本和范围可核，原篇重复不自动证明未见迁移或长期保持。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "simaguang",
+      "atomId": "source:chinese:g3:02915a7d:simaguang-retelling",
+      "structure": "annotations-actions-and-retelling",
+      "familyProposal": "following-annotations-actions-and-retelling",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "借注释说明人物指代",
+          "weight": 0.4
+        },
+        {
+          "criterion": "动作与结果连贯",
+          "weight": 0.4
+        },
+        {
+          "criterion": "现代解释与原文未知分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "庭院玩耍、一儿落瓮水、众离开与司马光持石击瓮、水出儿活，关系清楚，不加未给名字对话。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "simaguang-annotations-actions-and-retelling-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "借庭瓮皆光迸注释，用自己话讲故事，说明意外、不同反应、行动和结果。",
+          "answer": "庭院玩耍、一儿落瓮水、众离开与司马光持石击瓮、水出儿活，关系清楚，不加未给名字对话。",
+          "analysis": "庭院玩耍、一儿落瓮水、众离开与司马光持石击瓮、水出儿活，关系清楚，不加未给名字对话。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-annotations-actions-and-retelling-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "光和破之分别指什么？把它们与前后动作连起来。",
+          "answer": "光是司马光，之承接瓮，持石击破瓮使水涌出；不能指另一个人或直接说击破水。",
+          "analysis": "光是司马光，之承接瓮，持石击破瓮使水涌出；不能指另一个人或直接说击破水。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-annotations-actions-and-retelling-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创句“童失书，友拾还之”中的之指什么？与原课破之对象一样吗？",
+          "answer": "新句指书，原课指瓮，指代随前后语境，不把一个固定词义机械套所有之。",
+          "analysis": "新句指书，原课指瓮，指代随前后语境，不把一个固定词义机械套所有之。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-annotations-actions-and-retelling-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只按常见故事题名把瓮字改掉再称逐字原文，哪里不准确？",
+          "answer": "当前原文为瓮，注释给口小肚大陶器，现代解释可说明但原字不默默替换。",
+          "analysis": "当前原文为瓮，注释给口小肚大陶器，现代解释可说明但原字不默默替换。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-annotations-actions-and-retelling-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "用自己的话补清省略对象时，能否加确定求救对话或精确分钟数？",
+          "answer": "不应把未给话语时间补成原文事实，合理说明对象与编剧情分清。",
+          "analysis": "不应把未给话语时间补成原文事实，合理说明对象与编剧情分清。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-annotations-actions-and-retelling-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "水迸与儿得活之间怎样连接？为什么不能只说后来好了？",
+          "answer": "水涌出与孩子脱险结果相连，动作结果需讲清，不用空泛结尾代过程。",
+          "analysis": "水涌出与孩子脱险结果相连，动作结果需讲清，不用空泛结尾代过程。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-annotations-actions-and-retelling-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "回看本人讲述，标原文信息、补清指代与仍未知的一项事实。",
+          "answer": "三类身份清楚，未知历史不编，扩写不是原文直接叙述。",
+          "analysis": "三类身份清楚，未知历史不编，扩写不是原文直接叙述。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "simaguang",
+      "atomId": "source:chinese:g3:02915a7d:simaguang-language",
+      "structure": "classical-modern-language-comparison",
+      "familyProposal": "following-classical-modern-language-comparison",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "比较具体字词与说法",
+          "weight": 0.4
+        },
+        {
+          "criterion": "简洁和补清关系有据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "扩写不冒充原文或价值定论",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "古文常短词和省略指代，现代话可补全都、司马光、击破那瓮等，解释对应而不改原字。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "simaguang-classical-modern-language-comparison-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "选择皆、光、破之中的两处，与现代讲述比较表达有什么不同。",
+          "answer": "古文常短词和省略指代，现代话可补全都、司马光、击破那瓮等，解释对应而不改原字。",
+          "analysis": "古文常短词和省略指代，现代话可补全都、司马光、击破那瓮等，解释对应而不改原字。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-modern-language-comparison-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "为什么现代讲述字多一些不等原故事内容自动多出新事实？",
+          "answer": "补清原有关系可增加词，不能由长度增加就添未给人物对话年月。",
+          "analysis": "补清原有关系可增加词，不能由长度增加就添未给人物对话年月。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-modern-language-comparison-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创古文风格童谢与现代孩子说谢谢比较，哪些是解释、哪些不是古籍事实？",
+          "answer": "现代说法展开含义，原创短句不是古籍原文，不能标成真实历史原话。",
+          "analysis": "现代说法展开含义，原创短句不是古籍原文，不能标成真实历史原话。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-modern-language-comparison-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "古文更短是否证明一定更好或现代文没价值？当前比较应看什么？",
+          "answer": "不同表达各有特点，比较具体简洁指代和理解方式，不用长短做绝对价值排名。",
+          "analysis": "不同表达各有特点，比较具体简洁指代和理解方式，不用长短做绝对价值排名。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-modern-language-comparison-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "把当前短文直接全部换成现代话再背，是否完成指定原文背诵？",
+          "answer": "现代讲述与原文积累不同，指定背诵需本人按当前原文，解释不代原文。",
+          "analysis": "现代讲述与原文积累不同，指定背诵需本人按当前原文，解释不代原文。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-modern-language-comparison-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只说古文难懂，不举一处词句，怎样补成有依据的语言比较？",
+          "answer": "指出一个具体用法与现代对应，如皆全都或光指名字，说明语境作用。",
+          "analysis": "指出一个具体用法与现代对应，如皆全都或光指名字，说明语境作用。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-modern-language-comparison-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选另一处实际字词做古今表达对照，保留原文和自己的解释两栏。",
+          "answer": "对应关系清楚，现代补清不充原句，不由已学短文重复证明陌生古文全会。",
+          "analysis": "对应关系清楚，现代补清不充原句，不由已学短文重复证明陌生古文全会。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "simaguang",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "classical-text-action-and-actual-performance",
+      "familyProposal": "following-classical-text-action-and-actual-performance",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "判断连当前古文注释",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原文解释与学习方式分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未知历史和事故复现不补",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "持石击瓮与水出儿活支持此次行动理解，不由一段推出所有人一生品质或未给历史。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "simaguang-classical-text-action-and-actual-performance-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "说司马光行动果断关心同伴，可用哪些动作结果支持？结论范围是什么？",
+          "answer": "持石击瓮与水出儿活支持此次行动理解，不由一段推出所有人一生品质或未给历史。",
+          "analysis": "持石击瓮与水出儿活支持此次行动理解，不由一段推出所有人一生品质或未给历史。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-text-action-and-actual-performance-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "标题司马光是否证明这篇宋史文字由司马光本人写？",
+          "answer": "不证明，当前注明选自宋史司马光传，传主与书作者不同，未给具名作者不猜。",
+          "analysis": "不证明，当前注明选自宋史司马光传，传主与书作者不同，未给具名作者不猜。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-text-action-and-actual-performance-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创关系卡中甲拾还失物，能据此补精确日期、姓名和当事人所有心理吗？",
+          "answer": "不能，当前行为线索不提供完整历史心理资料，未知保留。",
+          "analysis": "不能，当前行为线索不提供完整历史心理资料，未知保留。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-text-action-and-actual-performance-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "古文全文只放scope、教学正文缺后半，是否已提供完整可读原文？",
+          "answer": "没有，实际正文必须完整当前公版短文，元数据和接口通过不代阅读完整。",
+          "analysis": "没有，实际正文必须完整当前公版短文，元数据和接口通过不代阅读完整。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-text-action-and-actual-performance-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "读懂故事是否要求学生复现砸瓮落水？实际遇险应如何保留教学边界？",
+          "answer": "本课理解与朗读讲述不组织事故复现，现实遇险及时求助成人等，不把历史情境当必模仿步骤。",
+          "analysis": "本课理解与朗读讲述不组织事故复现，现实遇险及时求助成人等，不把历史情境当必模仿步骤。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-text-action-and-actual-performance-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "看示范读对后怎样保留原声音和帮助，不充起初未见表现？",
+          "answer": "原音、示范曝光和后改分别记，不倒改首答，朗读背诵写字各需本人实际。",
+          "analysis": "原音、示范曝光和后改分别记，不倒改首答，朗读背诵写字各需本人实际。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "simaguang-classical-text-action-and-actual-performance-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "列一项原文事实、一项有据品格理解和一项本人未做的朗读背诵任务。",
+          "answer": "身份与完成范围真实，未给未做不由模板补齐。",
+          "analysis": "身份与完成范围真实，未给未做不由模板补齐。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "grey-sparrows",
+      "atomId": "source:chinese:g3:02915a7d:grey-sparrows-role-reading",
+      "structure": "real-role-dialogue-reading",
+      "familyProposal": "following-real-role-dialogue-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人声音对应角色句子",
+          "weight": 0.4
+        },
+        {
+          "criterion": "语气变化有文本依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "搭档帮助与完成状态真实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "停顿和一定会回等可支持不同语气，合理处理可不同，不强唯一情绪音色。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "grey-sparrows-real-role-dialogue-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际读男孩前后两处对话，分别说明犹豫和肯定的词句依据。",
+          "answer": "停顿和一定会回等可支持不同语气，合理处理可不同，不强唯一情绪音色。",
+          "analysis": "停顿和一定会回等可支持不同语气，合理处理可不同，不强唯一情绪音色。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-real-role-dialogue-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "选择列宁询问与惋惜话语实际读出，再说明为什么这样停顿或轻重。",
+          "answer": "读法接寻找关心等当前信息，不只靠角色名字套固定语调。",
+          "analysis": "读法接寻找关心等当前信息，不只靠角色名字套固定语调。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-real-role-dialogue-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡有人犹豫后承诺还书。实际读卡片对话，再回原课读一角色。",
+          "answer": "新卡与原文身份分清，不能把卡内明说的还书动作补成原课直接叙述。",
+          "analysis": "新卡与原文身份分清，不能把卡内明说的还书动作补成原课直接叙述。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-real-role-dialogue-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "没有真人搭档时本人分角色练读，报告实际方式，能记全班共同完成吗？",
+          "answer": "不能，个人练读可留本人原音，真实共同朗读尚未发生就留待，不编同伴音。",
+          "analysis": "不能，个人练读可留本人原音，真实共同朗读尚未发生就留待，不编同伴音。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-real-role-dialogue-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本次跟示范练后重新读一处，保留帮助与原音，不声称无帮助首次。",
+          "answer": "本人当前声音另核，示范不是本人，原改与帮助分开。",
+          "analysis": "本人当前声音另核，示范不是本人，原改与帮助分开。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-real-role-dialogue-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只完成男孩一句时实际读它并报告其余，别用参考音补全。",
+          "answer": "范围真实，局部完成不推全篇所有角色已读或默读已完成。",
+          "analysis": "范围真实，局部完成不推全篇所有角色已读或默读已完成。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-real-role-dialogue-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新本人读一组实际对话，说明所用帮助和一处读法依据。",
+          "answer": "当前声音与文本角色对应，重复熟悉句不自动是新未见理解或保持。",
+          "analysis": "当前声音与文本角色对应，重复熟悉句不自动是新未见理解或保持。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "grey-sparrows",
+      "atomId": "source:chinese:g3:02915a7d:grey-sparrows-thoughts",
+      "structure": "supported-thoughts-and-unknown-process",
+      "familyProposal": "following-supported-thoughts-and-unknown-process",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "想法有话语神态依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "明说与推想分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不强唯一心理或补具体捕藏",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "犹豫不敢讲与后肯定承诺可支持担心、想让鸟回等有据理解，心理措辞可不同，具体过程未给不补。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "grey-sparrows-supported-thoughts-and-unknown-process-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "默读后解释男孩前后话语可能的想法，各接一项词句，标哪项是推想。",
+          "answer": "犹豫不敢讲与后肯定承诺可支持担心、想让鸟回等有据理解，心理措辞可不同，具体过程未给不补。",
+          "analysis": "犹豫不敢讲与后肯定承诺可支持担心、想让鸟回等有据理解，心理措辞可不同，具体过程未给不补。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-supported-thoughts-and-unknown-process-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "列宁寻找询问惋惜可怎样支持人物想法？为什么不能自称读到全部内心？",
+          "answer": "当前行为话语支持关心担忧等，未给心理细节保持推想范围，不把合理解释当精确实测。",
+          "analysis": "当前行为话语支持关心担忧等，未给心理细节保持推想范围，不把合理解释当精确实测。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-supported-thoughts-and-unknown-process-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡中乙低声承诺明天书会回来，没给藏书过程。列明说、推想和未知。",
+          "answer": "承诺是明说，担心或想补救可据线索推想，具体藏处方法未知，新卡身份保留。",
+          "analysis": "承诺是明说，担心或想补救可据线索推想，具体藏处方法未知，新卡身份保留。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-supported-thoughts-and-unknown-process-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "读者写男孩用了某种工具抓鸟放进红笼，能称原文直接叙述吗？",
+          "answer": "不能，当前未逐一给捕藏工具地点，改编或想象须另标，不充原文。",
+          "analysis": "不能，当前未逐一给捕藏工具地点，改编或想象须另标，不充原文。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-supported-thoughts-and-unknown-process-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "同伴用担心你用犹豫，两种解释能否都有据？需要说明什么？",
+          "answer": "需各自连接实际话语神态，合理可不同，不以同老师心理标签作为唯一标准。",
+          "analysis": "需各自连接实际话语神态，合理可不同，不以同老师心理标签作为唯一标准。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-supported-thoughts-and-unknown-process-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "后来鸟回来是否能把列宁起初未知所有过程改成他早已亲眼看见？",
+          "answer": "不能，后续不倒改先前信息，知道或推想与直接观察分清。",
+          "analysis": "不能，后续不倒改先前信息，知道或推想与直接观察分清。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-supported-thoughts-and-unknown-process-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "回看本人一种心理解释，修一处无据细节并保留原改；无问题不造错。",
+          "answer": "修改受当前材料支持，原答与帮助分开，未给内心不填满。",
+          "analysis": "修改受当前材料支持，原答与帮助分开，未给内心不填满。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "grey-sparrows",
+      "atomId": "source:chinese:g3:02915a7d:grey-sparrows-sequence",
+      "structure": "sparrow-absence-promise-and-return",
+      "familyProposal": "following-sparrow-absence-promise-and-return",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "对象数量与颜色对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "时间话语行动分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "后续不倒改先前未知",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "两只粉红一只深红，不见深红者，不能说三只全部消失或添别种数量。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "grey-sparrows-sparrow-absence-promise-and-return-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "开头三雀各是什么胸脯颜色，不见的是哪只？按原文整理。",
+          "answer": "两只粉红一只深红，不见深红者，不能说三只全部消失或添别种数量。",
+          "analysis": "两只粉红一只深红，不见深红者，不能说三只全部消失或添别种数量。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-sparrow-absence-promise-and-return-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "按寻找不见、男孩承诺、次日回归列信息，哪一步还只是未来话语？",
+          "answer": "承诺是会回来的未来话语，次日原文才给回归结果，不能把承诺直接记已完成。",
+          "analysis": "承诺是会回来的未来话语，次日原文才给回归结果，不能把承诺直接记已完成。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-sparrow-absence-promise-and-return-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡前日说会还钥匙、次日钥匙出现，没给中间动作。哪些仍未知？",
+          "answer": "话语与结果可记，中间谁怎样何时放回未必全给，不能自动补成直接事实。",
+          "analysis": "话语与结果可记，中间谁怎样何时放回未必全给，不能自动补成直接事实。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-sparrow-absence-promise-and-return-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "次日看到灰雀，能证明前日列宁每句猜测都已被验证吗？",
+          "answer": "不能，后来活鸟回归改变认识，前日飞走或冻死等是人物话语，不倒记为全部已知事实。",
+          "analysis": "不能，后来活鸟回归改变认识，前日飞走或冻死等是人物话语，不倒记为全部已知事实。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-sparrow-absence-promise-and-return-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原文一年冬天能否直接填确定年月日？",
+          "answer": "不能，当前时间范围有限，未经本版来源核实不补精确年表。",
+          "analysis": "不能，当前时间范围有限，未经本版来源核实不补精确年表。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-sparrow-absence-promise-and-return-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "男孩肯定会回与结尾诚信判断怎样相连？还要看什么后续？",
+          "answer": "承诺需联系次日鸟回归和人物举动，话语与履约结果分开核，不只一个一定就证明。",
+          "analysis": "承诺需联系次日鸟回归和人物举动，话语与履约结果分开核，不只一个一定就证明。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-sparrow-absence-promise-and-return-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用自己的话按顺序概括，列一项当时未知、一项后来新增和一项仍未知。",
+          "answer": "对象时间范围清楚，后续不倒写原未知，中间未叙过程不填满。",
+          "analysis": "对象时间范围清楚，后续不倒写原未知，中间未叙过程不填满。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "grey-sparrows",
+      "atomId": "source:chinese:g3:02915a7d:grey-sparrows-care",
+      "structure": "liking-sparrows-with-text-evidence",
+      "familyProposal": "following-liking-sparrows-with-text-evidence",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "喜爱判断有具体语句",
+          "weight": 0.4
+        },
+        {
+          "criterion": "列宁男孩依据各自对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不以喜爱保证所有行为正确",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "列宁停看寻找关切等，男孩想说活着与肯定回归等可联系情节讨论；需具体依据，不只统一贴喜欢。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "grey-sparrows-liking-sparrows-with-text-evidence-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "分别找列宁和男孩喜爱灰雀的当前线索，说明怎样支持判断。",
+          "answer": "列宁停看寻找关切等，男孩想说活着与肯定回归等可联系情节讨论；需具体依据，不只统一贴喜欢。",
+          "analysis": "列宁停看寻找关切等，男孩想说活着与肯定回归等可联系情节讨论；需具体依据，不只统一贴喜欢。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-liking-sparrows-with-text-evidence-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "列宁每次停下与鸟不见后寻找，各支持怎样的当前感受？",
+          "answer": "关注欣赏与担忧关切可有据解释，不能由一个动作精算内心或补全部历史。",
+          "analysis": "关注欣赏与担忧关切可有据解释，不能由一个动作精算内心或补全部历史。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-liking-sparrows-with-text-evidence-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡有人喜欢看猫却未经同意把猫带走，喜欢是否自动让一切行为合适？",
+          "answer": "不能，喜爱感受与行为是否合适分开，需看对象和他人影响，不套原课未给过程。",
+          "analysis": "不能，喜爱感受与行为是否合适分开，需看对象和他人影响，不套原课未给过程。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-liking-sparrows-with-text-evidence-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "课内面包渣谷粒描写是否要求学生给所有野鸟同样食物？",
+          "answer": "不是，当前用于人物理解，不转成统一现实喂养指令，未核种类条件不补。",
+          "analysis": "不是，当前用于人物理解，不转成统一现实喂养指令，未核种类条件不补。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-liking-sparrows-with-text-evidence-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "男孩喜爱鸟的理解是否就证明每处话语都一开始毫无犹豫？",
+          "answer": "不能，前后犹豫与肯定要保留，感情判断不能抹掉叙述变化。",
+          "analysis": "不能，前后犹豫与肯定要保留，感情判断不能抹掉叙述变化。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-liking-sparrows-with-text-evidence-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际与同学交流尚未进行，只找到语句，怎样记录两阶段？",
+          "answer": "依据整理已做，真实交流待做，不能编对方赞同或完成过程。",
+          "analysis": "依据整理已做，真实交流待做，不能编对方赞同或完成过程。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-liking-sparrows-with-text-evidence-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "再选一条确在原文的线索解释关爱，并标一项仍需核对的推想。",
+          "answer": "依据与结论范围相容，未知和活动未做保留，旧原句重复不自动成未见保持。",
+          "analysis": "依据与结论范围相容，未知和活动未做保留，旧原句重复不自动成未见保持。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "grey-sparrows",
+      "atomId": "source:chinese:g3:02915a7d:grey-sparrows-honesty",
+      "structure": "closing-honesty-and-respectful-dialogue",
+      "familyProposal": "following-closing-honesty-and-respectful-dialogue",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "结尾判断接前后情节",
+          "weight": 0.4
+        },
+        {
+          "criterion": "理解关爱沟通有文本支持",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不无限扩大历史或字面鸟回答",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "当前变化与履约情节支持判断，前面犹豫保留，不能改成从头从未犹豫。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "grey-sparrows-closing-honesty-and-respectful-dialogue-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "结尾说男孩诚实，怎样联系承诺与次日回归解释，而不抹掉前面犹豫？",
+          "answer": "当前变化与履约情节支持判断，前面犹豫保留，不能改成从头从未犹豫。",
+          "analysis": "当前变化与履约情节支持判断，前面犹豫保留，不能改成从头从未犹豫。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-closing-honesty-and-respectful-dialogue-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "列宁微笑向鸟问话而不再问男孩，可怎样有据理解沟通方式？",
+          "answer": "可联系尊重、给男孩空间与关爱引导等，需接当前举动，合理解释可不同不补完整心理。",
+          "analysis": "可联系尊重、给男孩空间与关爱引导等，需接当前举动，合理解释可不同不补完整心理。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-closing-honesty-and-respectful-dialogue-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡中成人温和问失物而不公开责备孩子，能支持什么、不能保证什么？",
+          "answer": "可讨论尊重和引导的当前作用，不能保证所有人所有情境必同样有效，卡片不充原课事实。",
+          "analysis": "可讨论尊重和引导的当前作用，不能保证所有人所有情境必同样有效，卡片不充原课事实。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-closing-honesty-and-respectful-dialogue-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "灰雀没有告诉列宁是否表示它其实用人类语言在内心作答？",
+          "answer": "当前是叙述表达，不提供鸟的人语心理实验，不能补未给对话。",
+          "analysis": "当前是叙述表达，不提供鸟的人语心理实验，不能补未给对话。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-closing-honesty-and-respectful-dialogue-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "一次结尾诚实判断能推出男孩一生从未犯错吗？",
+          "answer": "不能，当前情节范围不代全部历史，人物成长与局部表现分清。",
+          "analysis": "不能，当前情节范围不代全部历史，人物成长与局部表现分清。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-closing-honesty-and-respectful-dialogue-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只背男孩诚实四字，不联系前后行为，解释缺什么？",
+          "answer": "缺话语承诺与后续结果的支持关系，标签不代阅读理解。",
+          "analysis": "缺话语承诺与后续结果的支持关系，标签不代阅读理解。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-closing-honesty-and-respectful-dialogue-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用自己话解释一种有据结尾理解，再列一个原文没给的历史或心理细节。",
+          "answer": "解释与材料相容，未知不填，参考答案不强唯一表达。",
+          "analysis": "解释与材料相容，未知不填，参考答案不强唯一表达。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "grey-sparrows",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "sparrow-source-inference-and-real-performance",
+      "familyProposal": "following-sparrow-source-inference-and-real-performance",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前信息支持判断",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原文推想与本人证据分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未知未做不由模板补",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三雀颜色或次日回归为直接信息，担心等需线索支持，具体工具笼子未给不编，身份分清。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "grey-sparrows-sparrow-source-inference-and-real-performance-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "直接叙述、有据心理推想和未给捕藏过程，怎样各举一项？",
+          "answer": "三雀颜色或次日回归为直接信息，担心等需线索支持，具体工具笼子未给不编，身份分清。",
+          "analysis": "三雀颜色或次日回归为直接信息，担心等需线索支持，具体工具笼子未给不编，身份分清。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-sparrow-source-inference-and-real-performance-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "当前作者译者分别是谁，列宁是故事人物还是作者署名？",
+          "answer": "苏联阿列克谢耶夫、译者李声权，列宁是人物，不把人物当署名或补未核年表。",
+          "analysis": "苏联阿列克谢耶夫、译者李声权，列宁是人物，不把人物当署名或补未核年表。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-sparrow-source-inference-and-real-performance-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡只有承诺和结果，能自动得出所有中间行动的精确录像式过程吗？",
+          "answer": "不能，后续结果不提供全部过程细节，推想须标依据和未知。",
+          "analysis": "不能，后续结果不提供全部过程细节，推想须标依据和未知。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-sparrow-source-inference-and-real-performance-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "书面解释人物想法答对，是否可填真人分角色朗读和同伴交流都完成？",
+          "answer": "不同任务需本人声音与真实活动记录，理解回答不代实际搭档过程。",
+          "analysis": "不同任务需本人声音与真实活动记录，理解回答不代实际搭档过程。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-sparrow-source-inference-and-real-performance-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "看稿朗读与默读后理解、全文背诵分别是什么状态？本课是否全背必做？",
+          "answer": "方式和证据不同，本课要求角色朗读与默读理解等，未增加全文背诵，不互相代填。",
+          "analysis": "方式和证据不同，本课要求角色朗读与默读理解等，未增加全文背诵，不互相代填。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-sparrow-source-inference-and-real-performance-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "看过讲解后改对心情解释，怎样保留原答帮助？",
+          "answer": "原答、讲解曝光与后改分开，不倒改起初或恢复未见资格。",
+          "analysis": "原答、讲解曝光与后改分开，不倒改起初或恢复未见资格。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "grey-sparrows-sparrow-source-inference-and-real-performance-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "列一项原文事实、一项有据理解和一步本人尚未实际完成的任务。",
+          "answer": "来源与完成范围真实，未知未做不靠范声、参考原稿或模板补齐。",
+          "analysis": "来源与完成范围真实，未知未做不靠范声、参考原稿或模板补齐。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    }
+  ]
+}
