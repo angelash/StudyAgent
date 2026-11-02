@@ -1,0 +1,514 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+    "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit8:entry1",
+    "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+    "pageStart": 93,
+    "pageEnd": 108,
+    "publicationYear": 2022,
+    "curriculumStandardYear": 2011
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:math:g1:a8e88021:carry-count-on",
+      "version": 1,
+      "name": "跨十接数不重复起点",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "进位加法意义",
+      "objective": "对和在11至20的加法按新增件数接着数",
+      "successCriterion": "原有量不是新增第一件，接数步数等于第二加数，记录完整当前对象",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:carry-nine",
+      "version": 1,
+      "name": "9加几拆出1先凑十",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "凑十方法",
+      "objective": "把第二加数分成1和剩余再求9加几",
+      "successCriterion": "拆后两份合原加数，9加1为10后只加剩余，既不重加也不漏加",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:carry-eight-seven-six",
+      "version": 1,
+      "name": "8、7、6加几按所缺凑十",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "凑十方法",
+      "objective": "先找补足10所缺数，再拆另一加数保持总量",
+      "successCriterion": "缺数分别2、3、4，余数由原加数减去已用部分，完整解释而非只报和",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:carry-method-choice",
+      "version": 1,
+      "name": "不同凑十法保持同一总量",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "方法与等价",
+      "objective": "比较两种拆法或交换加数求和并解释适用条件",
+      "successCriterion": "方法可不同但不增减原对象，交换加法可用不据此任意交换减法",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:carry-original-whole",
+      "version": 1,
+      "name": "已去掉与剩余合回原整体",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "部分整体问题",
+      "objective": "从明确吃掉领走和剩下两部分求原来多少",
+      "successCriterion": "两部分完整且无重叠，无其他变化才相加，不凭剩字一律做减法",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:carry-partitions",
+      "version": 1,
+      "name": "同一整体按两种完整标准分组",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "分类与总量",
+      "objective": "对同一集合的不同无重叠穷尽分类求合计",
+      "successCriterion": "每次分类各覆盖全部一次，不将两种分类四个部分再相加，单位一致",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:carry-missing-compare",
+      "version": 1,
+      "name": "补缺加数与比较算式值",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "运算关系",
+      "objective": "根据和找未知加数并严格比较两侧当前数量",
+      "successCriterion": "把候选数代回原式核，比较保留等号与严格关系，不能只比一个数字",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:carry-chain-check",
+      "version": 1,
+      "name": "多步运算和条件充分核查",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "运算与问题核对",
+      "objective": "按事件或无括号算式顺序计算并核问题范围",
+      "successCriterion": "保留中间量与全部相关条件，排队总数含说话者，缺条件不套参考",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:math:g1:a8e88021:carry-count-on",
+    "source:math:g1:a8e88021:carry-nine",
+    "source:math:g1:a8e88021:carry-eight-seven-six",
+    "source:math:g1:a8e88021:carry-method-choice",
+    "source:math:g1:a8e88021:carry-original-whole",
+    "source:math:g1:a8e88021:carry-partitions",
+    "source:math:g1:a8e88021:carry-missing-compare",
+    "source:math:g1:a8e88021:carry-chain-check"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "已实际查看物理93至108页全部16页，核9加几、8/7/6和小数加几、两种分法、原整体问题与整理；教师/评分/题族及真人效果未验。",
+    "pages": [
+      {
+        "page": 93,
+        "visualChecked": true,
+        "statement": "进位加法单元情境9盒与4盒，求完整两部分合计，不能只数盒中可见一面。"
+      },
+      {
+        "page": 94,
+        "visualChecked": true,
+        "statement": "9加几，4拆1和3凑10，接数与凑十都保持完整总量，剩余不可重复或漏加。"
+      },
+      {
+        "page": 95,
+        "visualChecked": true,
+        "statement": "练习二十添入7人、9加各数及算式比较，等于与严格大小分清。"
+      },
+      {
+        "page": 96,
+        "visualChecked": true,
+        "statement": "8加5、7加4、6加5凑十和相关连加，先确定缺几再保持被拆部分总量。"
+      },
+      {
+        "page": 97,
+        "visualChecked": true,
+        "statement": "8加9有两种凑十法，交换加数及8与9互助，不强求唯一思路。"
+      },
+      {
+        "page": 98,
+        "visualChecked": true,
+        "statement": "练习二十一算式分类与比较、混合进位非进位任务，按当前算式而非固定加几套答。"
+      },
+      {
+        "page": 99,
+        "visualChecked": true,
+        "statement": "未知部分补足15与12等、三项加减、明确跑来4只及重复涂色，整组条件需保留。"
+      },
+      {
+        "page": 100,
+        "visualChecked": true,
+        "statement": "5、4、3、2加几和交换加数联系，按得13找不同卡，不能把同得数当独立题族。"
+      },
+      {
+        "page": 101,
+        "visualChecked": true,
+        "statement": "练习二十二体育用品表、串数两部分与补缺加数，数量单位和行列完整。"
+      },
+      {
+        "page": 102,
+        "visualChecked": true,
+        "statement": "同一人群前后排8和7、男女6和9分组，两种完整不重叠分类求同整体15。"
+      },
+      {
+        "page": 103,
+        "visualChecked": true,
+        "statement": "已领走7仍剩5求原来整体，虽有剩下也用加法；鸡蛋例由吃掉与剩余补整体。"
+      },
+      {
+        "page": 104,
+        "visualChecked": true,
+        "statement": "练习二十三男女人数、灯笼两行、进位加法及比较，图与文字数据共同核。"
+      },
+      {
+        "page": 105,
+        "visualChecked": true,
+        "statement": "已进去与门外同学、两人同样多、三项加减、原有鱼与前后人数须加说话者本人。"
+      },
+      {
+        "page": 106,
+        "visualChecked": true,
+        "statement": "进位加法按和或加数整理、已吃6剩7求原来整体，已知所求与核对明确。"
+      },
+      {
+        "page": 107,
+        "visualChecked": true,
+        "statement": "练习二十四按和归类、比较、换分法及多步计算，等值表达与独立测量结构不同。"
+      },
+      {
+        "page": 108,
+        "visualChecked": true,
+        "statement": "同一积木总量按人或颜色分组、已吃8剩5、补缺加数和成长自评，实际本人事实另记。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "20以内的进位加法",
+    "directoryGranularity": "unit",
+    "printedPages": [
+      88,
+      103
+    ],
+    "publicationEdition": "2022年8月第2版",
+    "curriculumStandardYear": 2011,
+    "sumRange": [
+      0,
+      20
+    ],
+    "carryAdditionCore": true,
+    "borrowingSubtractionRequired": false,
+    "allPageActivitiesDelivered": false,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "凑成一个十，剩下的只加一次",
+    "activation": {
+      "prompt": "原创卡：一边9张纸，另一边4张，问合起来几张。可以从9后面数四次，也可以先从四张中移一张过去。你想怎样核清？",
+      "expectedObservation": "接数到10、11、12、13，或把4分1与3先凑10，再加剩3；两法都不增减纸。",
+      "bridge": "过了十也能用原来的分合。方法不同可以比较，但每一件只计一次，完整总量不改变。"
+    },
+    "concept": {
+      "explanation": "原来9张再添4张，从9后面数四次：10、11、12、13，得到13。起点9是原有量，不算新添的第一张。接数次数要与新增4张一致，不能把9也算一次就少到一个数。\n也可以先凑十。9还差1到10，把4分成1和3，先9+1=10，再10+3=13，所以9+4=13。用过那1张后，另一边只剩3张；不能凑好十后又把原4张全加一次，也不能把剩下3张忘掉。移位置只换分组，不会增加总量。\n8差2到十，7差3，6差4。8+5可把5拆2和3，8+2成10再加3得13；7+6把6拆3和3，先成10再加3也13；6+5把5拆4和1，先成10再加1得11。每次都要核原加数等于已拿去凑十与余下两份之和。\n方法不止一种。8+9可以把9拆2和7，8+2成10再加7；也可把8拆1和7，9+1成10再加7，都得17。小数在前的5+8，可联系8+5，也可保留5先补5成十，剩下3；不要因选了不同合理方法就判错。交换加数保持加法总量，不表示减法也能任意交换。\n求原来有多少，先分清整体。原创领走8张、还剩5张，且没有其他变化，原来是这两部分合起来，8+5=13。看到还剩二字，不一定本题就求剩余；若问原来，需把去掉与留下合回。若还发生别的添入或去掉，必须先把条件核齐。\n同一群人可按前后排分，也可按两种颜色卡分，只要每种分类都不漏不重复，就求同一整体。例如前排7、后排8，共15；另一种分成红卡6、蓝卡9，也共15。不能把7、8、6、9四份全相加，因为每个人在两种分类里被算了两次。\n算式有缺数时，先找该份，再放回原式核。8+□=13，填5后8+5确为13。比较9+4和14时，先算左边13，得13<14；不能只看9大于4就决定关系。等于与严格大小要分清，同得数卡只是按结果归一组，不自动是不同独立题族。\n多步无括号加减仍从左到右。先有7张添6成13再拿走3，结果10，每一步用当前数量。排队时若一个人说我前面8人、后面5人，整体还包含说话的本人，8+1+5=14；只把前后两部分相加就漏本人。图上看见几人不一定是题中总人数，文字条件和可见范围要共同核。\n保留自己最初的解法，再对照不同方法检查。参考、提示和真实原答的时间顺序分开，不能把看过方法后的复述写成从未见过的独立表现；示例领物和排队也不代本人真实事件。",
+      "points": [
+        "接数次数等于新增件数",
+        "9差1到十，拆开后余数不漏重",
+        "8差2、7差3、6差4",
+        "拆分前后总量一致",
+        "不同合理方法可等价",
+        "问原来可合回去掉和剩余",
+        "两种分类不能重复加四份",
+        "补缺数需代回，比较先算两侧",
+        "多步保留中间量，排队总数含本人"
+      ]
+    },
+    "example": {
+      "situation": "原创桌面8张圆纸片，另有5张方纸片，互不重复，求两边合起来多少张。",
+      "steps": [
+        {
+          "explanation": "要把8先凑成10，还需要2。把另一边5张分成2张和3张，完整五张都在。",
+          "board": [
+            "5分成2和3",
+            "8还差2到10",
+            "已用2，余3"
+          ]
+        },
+        {
+          "explanation": "把那两张移到八张一起，成十张；剩三张另放，逐项核没有漏也没有重数。",
+          "board": [
+            "8+2=10",
+            "10+3=13",
+            "8+5=13（张）"
+          ]
+        },
+        {
+          "explanation": "另一法从8后接数五次到13，也可保留5先取另一组5张凑十，原8还余3；每法都保持十三张。",
+          "board": [
+            "9、10、11、12、13：五次",
+            "8分成5和3",
+            "5+5=10，再加3得13"
+          ]
+        }
+      ],
+      "conclusion": "先说保留哪一组、缺几到十，再说拆哪组和还剩几；结果同，要看各法是否完整保留原数量。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "原创凑十表：先补缺，再只加剩余",
+        "headers": [
+          "原式",
+          "保留的一组缺几",
+          "另一组怎样拆",
+          "凑十后还剩",
+          "核完整和"
+        ],
+        "rows": [
+          [
+            "9+4",
+            "9缺1",
+            "4分1与3",
+            "3",
+            "10+3=13"
+          ],
+          [
+            "8+5",
+            "8缺2",
+            "5分2与3",
+            "3",
+            "10+3=13"
+          ],
+          [
+            "7+6",
+            "7缺3",
+            "6分3与3",
+            "3",
+            "10+3=13"
+          ],
+          [
+            "6+5",
+            "6缺4",
+            "5分4与1",
+            "1",
+            "10+1=11"
+          ],
+          [
+            "8+9的另一法",
+            "9缺1",
+            "8分1与7",
+            "7",
+            "10+7=17"
+          ]
+        ],
+        "explanation": "每行原加数都分成刚好补缺与剩余两部分，移过去的部分不能再次计入。表是原创数量关系，不将成像或数值变化当独立题族或本人已操作。"
+      },
+      {
+        "kind": "table",
+        "title": "原创整体表：所问相同，分类可不同",
+        "headers": [
+          "明确分类",
+          "第一部分",
+          "第二部分",
+          "同一整体"
+        ],
+        "rows": [
+          [
+            "按前后排",
+            "前排7人",
+            "后排8人",
+            "7+8=15人"
+          ],
+          [
+            "同一群人按红蓝卡且每人一种",
+            "红卡6人",
+            "蓝卡9人",
+            "6+9=15人"
+          ],
+          [
+            "领走后求原来且无其他变化",
+            "领走8张",
+            "剩5张",
+            "8+5=13张"
+          ]
+        ],
+        "explanation": "前两行是同一群人的两种完整不重叠分类，不能把四份再加一遍；第三行为另一事件，单位不同，不合并对象。真实经历需另外本人记录。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "9加4先凑十后又加原4，答14；或只说凑成10就停止。",
+        "alternatives": [
+          "已经凑十但余下数量未保持，重复或漏计了部分。"
+        ],
+        "verification": "把4张分成实际用1与余3，分别标记后只加剩余，核前后总量。",
+        "correctiveFeedback": "移过去的已在十里，剩下几才再加几，每件只算一次。"
+      },
+      {
+        "observation": "8加5直接拿3凑十，还说8加3是10。",
+        "alternatives": [
+          "补足十的缺数或被拆份额没有核对。"
+        ],
+        "verification": "先用8到10逐项补数，再核5拆成的两份与各自用途。",
+        "correctiveFeedback": "8到10缺2，先确认缺几再拆另一加数，不靠口诀位置猜。"
+      },
+      {
+        "observation": "求原来有多少时，只因题干有还剩就用剩数减领走数。",
+        "alternatives": [
+          "已知剩余与所求整体的角色混淆。"
+        ],
+        "verification": "画出领走一组、剩下一组，两组无重叠地合回原来，核是否还有别的变化。",
+        "correctiveFeedback": "先问所求是原来还是剩下，不由一个词决定运算。"
+      },
+      {
+        "observation": "同一人群按前后与红蓝两法分组后，把四个部分全相加。",
+        "alternatives": [
+          "把两种分类当成四批互不重复的人。"
+        ],
+        "verification": "给同一人同时标位置和颜色，逐一核每种分类覆盖一次。",
+        "correctiveFeedback": "两种法各算同一个整体，四份相加会把每人算两次。"
+      }
+    ],
+    "transfer": {
+      "scenario": "新的加数、领物原量问题或同群两种分类，和不超过二十，给出明确边界与单位。",
+      "prompt": "选择并解释一种合理方法，标拆分两份和余量，最后用当前条件核对；涉及本人操作请保存实际原迹及帮助。",
+      "expectedStrategy": "按实际缺数和所问整体处理，不套固定移1或见剩做减；合理不同方法与曝光边界分别保留。"
+    },
+    "summary": {
+      "synthesis": "凑十是保持总量的重新分组，先补所缺，再加剩余。解题先核所求整体、分类与单位，每步和每件都不能漏重。",
+      "takeaways": [
+        "起点不重数",
+        "先说缺几到十",
+        "拆后两份合原数",
+        "余数只加一次",
+        "合理方法不唯一",
+        "原量可合去掉与剩余",
+        "不同分类不重复叠加",
+        "独立首答与看参考分开"
+      ]
+    },
+    "citations": [
+      {
+        "page": 94,
+        "quote": "10加3得13。",
+        "usedFor": "concept"
+      },
+      {
+        "page": 97,
+        "quote": "你喜欢哪种方法？",
+        "usedFor": "example"
+      },
+      {
+        "page": 103,
+        "quote": "原来有多少个鸡蛋？",
+        "usedFor": "summary"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:math:g1:a8e88021:carry-count-on",
+        "objective": "对和在11至20的加法按新增件数接着数",
+        "successCriterion": "原有量不是新增第一件，接数步数等于第二加数，记录完整当前对象"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:math:g1:a8e88021:carry-nine",
+        "objective": "把第二加数分成1和剩余再求9加几",
+        "successCriterion": "拆后两份合原加数，9加1为10后只加剩余，既不重加也不漏加"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:math:g1:a8e88021:carry-eight-seven-six",
+        "objective": "先找补足10所缺数，再拆另一加数保持总量",
+        "successCriterion": "缺数分别2、3、4，余数由原加数减去已用部分，完整解释而非只报和"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:math:g1:a8e88021:carry-method-choice",
+        "objective": "比较两种拆法或交换加数求和并解释适用条件",
+        "successCriterion": "方法可不同但不增减原对象，交换加法可用不据此任意交换减法"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:math:g1:a8e88021:carry-original-whole",
+        "objective": "从明确吃掉领走和剩下两部分求原来多少",
+        "successCriterion": "两部分完整且无重叠，无其他变化才相加，不凭剩字一律做减法"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "source:math:g1:a8e88021:carry-partitions",
+        "objective": "对同一集合的不同无重叠穷尽分类求合计",
+        "successCriterion": "每次分类各覆盖全部一次，不将两种分类四个部分再相加，单位一致"
+      },
+      {
+        "id": "goal-7",
+        "atomId": "source:math:g1:a8e88021:carry-missing-compare",
+        "objective": "根据和找未知加数并严格比较两侧当前数量",
+        "successCriterion": "把候选数代回原式核，比较保留等号与严格关系，不能只比一个数字"
+      },
+      {
+        "id": "goal-8",
+        "atomId": "source:math:g1:a8e88021:carry-chain-check",
+        "objective": "按事件或无括号算式顺序计算并核问题范围",
+        "successCriterion": "保留中间量与全部相关条件，排队总数含说话者，缺条件不套参考"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "carry",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

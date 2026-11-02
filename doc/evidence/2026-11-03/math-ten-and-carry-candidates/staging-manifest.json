@@ -1,0 +1,254 @@
+{
+  "at": "2026-11-02T18:25:27.977Z",
+  "branch": "main",
+  "baseCommit": "8f4d23b324239a01206a50756a91c2127177d65f",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "scripts/content/build-math-g1-ten-candidates.cjs",
+      "bytes": 26769,
+      "sha256": "87dd5c855de93ed8959bdc369797176cdfdf17112115edff92e5c3984b52dc26",
+      "gitNormalizedSha256": "87dd5c855de93ed8959bdc369797176cdfdf17112115edff92e5c3984b52dc26"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-ten-v1.json",
+      "bytes": 23562,
+      "sha256": "2dcf6d709fafcc17a2d66aa94ed1d19c2158fd9b6a7fb16b865c3a48a9ade33f",
+      "gitNormalizedSha256": "2dcf6d709fafcc17a2d66aa94ed1d19c2158fd9b6a7fb16b865c3a48a9ade33f"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-ten-v1.json",
+      "bytes": 52580,
+      "sha256": "3536537db33b155c682389811f95ab924e2746f4e300ccc211696ef79e9a78d9",
+      "gitNormalizedSha256": "3536537db33b155c682389811f95ab924e2746f4e300ccc211696ef79e9a78d9"
+    },
+    {
+      "path": "scripts/content/build-math-g1-carry-candidates.cjs",
+      "bytes": 26144,
+      "sha256": "3e90cd7b0ac38a6879b6067890267ac3be4e00798ff0d0a28251906adb1d9a34",
+      "gitNormalizedSha256": "3e90cd7b0ac38a6879b6067890267ac3be4e00798ff0d0a28251906adb1d9a34"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-carry-v1.json",
+      "bytes": 21929,
+      "sha256": "61b49740c87a67a13d160d233f1dbf941f0306919958a537531878930850bb91",
+      "gitNormalizedSha256": "61b49740c87a67a13d160d233f1dbf941f0306919958a537531878930850bb91"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-carry-v1.json",
+      "bytes": 53074,
+      "sha256": "280e6b94850f5623d990b801f8c31393c8581f6e3201b48e02e97dc56b1a4b7a",
+      "gitNormalizedSha256": "280e6b94850f5623d990b801f8c31393c8581f6e3201b48e02e97dc56b1a4b7a"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 15021,
+      "sha256": "a4faf441190243ad5c69cdea5ad38569137d070e8c6cb24e140628d5b4c3f0f7",
+      "gitNormalizedSha256": "9789a6c518f1b2a1569d07228fc9ddec903a7bf9981a6c700c27c4ead926eb4b"
+    },
+    {
+      "path": "doc/product/215-ten-and-carry-addition-source-candidates.md",
+      "bytes": 3683,
+      "sha256": "c367a8dfcce2d0f4b421205446c39d8d1c86fbb5b50b9805d0a3b2399084eb12",
+      "gitNormalizedSha256": "c367a8dfcce2d0f4b421205446c39d8d1c86fbb5b50b9805d0a3b2399084eb12"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 180367,
+      "sha256": "d78db1887d0ce5256dd3163d36842caf273825f870a98a1d5071675a6f5426cc",
+      "gitNormalizedSha256": "dd83a458303a8a05f269d2dc0d4c6e9f63617c3b722eda00e4a4155762f0ea56"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 106751,
+      "sha256": "2dc228dddd42dbeec4487f2e604fbd1d9c972802aef7a9e13f85a92036aaf2e4",
+      "gitNormalizedSha256": "875e1b587f0ea196df3962e4fe997d2e4fec6eb07e778d31169a5d77cab52698"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 111830,
+      "sha256": "7e9ca3781b59d8406b9086e6bce44fabec285d7b27993204ce3d4499508a2aa8",
+      "gitNormalizedSha256": "f2e02b5026b7037a4c0d7d65744ee8c266af00d6f19d1f50afd3c6558100da4f"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 21768,
+      "sha256": "f5d0347515f87dd343f5380e1bd5278b7673645a2788a60b613be23291f9084d",
+      "gitNormalizedSha256": "b63223f91ce57cb422d51f07b774a1dc8731ac14b23194edd70b896a07174738"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 40575,
+      "sha256": "d87383fdd6d52fa9ff7cf9923bdc8ee65f0e2e4dd2f23231ffadba75dbe5b695",
+      "gitNormalizedSha256": "6523795a67a5085e41a7d0670a19efe13badf0712cdddde851c83b19d4ad929c"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/browser/carry-whole-partitions-mobile.png",
+      "bytes": 76484,
+      "sha256": "09dce89ae8ff520ffb9442bf1fb4e8f424d4f8d6dc678624156197c9974f560d",
+      "gitNormalizedSha256": "af032d8046b3a5bae32c22e2622f6ebbbd79beed87b033b224167805a3d630ca"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/browser/carry-whole-partitions-table.png",
+      "bytes": 27533,
+      "sha256": "e2d4575d1e0baa358e7ae65674938dc8ba9e03d29148ce604f9b7ee573660afb",
+      "gitNormalizedSha256": "cbb6d4ed34d8ac609396e1fe39d7221e9fefa14b8a41cdb7fee19b218498e1f9"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/browser/math-g1-a8e88021-carry-v1-desktop.png",
+      "bytes": 314900,
+      "sha256": "f9ef84d76cd95cb0634f65edb7ce7936561e5d1acd1c868cfb4c2de429f76704",
+      "gitNormalizedSha256": "7923b2dc282c8b07527068776acfdbb28f57863e7c4ad49da8d5272d08995604"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/browser/math-g1-a8e88021-carry-v1-mobile-table.png",
+      "bytes": 65658,
+      "sha256": "e2e7bb39e11c9caa794b2d4913d2c54d63373ad59f3744c676b3436100c60e04",
+      "gitNormalizedSha256": "b8a2635733bb1bd717d6a70d0a9d1280af9dc897020ac7c97a5d82fe283e2120"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/browser/math-g1-a8e88021-carry-v1-table.png",
+      "bytes": 32049,
+      "sha256": "d4c015bdff76190b26be9af7f25c4cac4cf86cf012f6f8aa3a59f3bede9681ea",
+      "gitNormalizedSha256": "0cb1d13ae6a9a6998b48df48e1289f6527d3af501cbb19a31a3ba7acd775c74d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/browser/math-g1-a8e88021-ten-v1-desktop.png",
+      "bytes": 282329,
+      "sha256": "fbad001c4c5a11affe5ef3fd927a00d30ef63c3dc3cd510a783bd7296fbda25b",
+      "gitNormalizedSha256": "e6c519ac1256888d5265e2a9aaf5738e18bb46e94476fed027f1cbf48827fafe"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/browser/math-g1-a8e88021-ten-v1-table.png",
+      "bytes": 30328,
+      "sha256": "48b192406f075cd9e58a52a23cddbb6f5c81c6f53a7673a4db38eabd8d0a319c",
+      "gitNormalizedSha256": "f841506bba335fc43cc02eac18a00e852e30416f15f35371510a586b8939c08f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/browser/receipt.json",
+      "bytes": 1192,
+      "sha256": "bc17ec79bcaed74edb7fbf7ae228345260fbb46c7f5bacee660f8e326a8e3e30",
+      "gitNormalizedSha256": "bc17ec79bcaed74edb7fbf7ae228345260fbb46c7f5bacee660f8e326a8e3e30"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/browser/runner.cjs",
+      "bytes": 18549,
+      "sha256": "2036c3dc8fefa410f1658bd34d7f262910a7195f206e08ee16d32fe953574a5d",
+      "gitNormalizedSha256": "2036c3dc8fefa410f1658bd34d7f262910a7195f206e08ee16d32fe953574a5d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/checks/branch-audit-previous.json",
+      "bytes": 6896,
+      "sha256": "eda6ffacfb67cc72776bb3ec114cd251aeaabf4a7e5b7cf85e0ab44a036b3461",
+      "gitNormalizedSha256": "eda6ffacfb67cc72776bb3ec114cd251aeaabf4a7e5b7cf85e0ab44a036b3461"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/checks/carry-http-first.json",
+      "bytes": 2339,
+      "sha256": "6b6b65ebb6ba9c5b7191e001e6a7f29db2799dab86922d94e0bc4f4935dab126",
+      "gitNormalizedSha256": "6b6b65ebb6ba9c5b7191e001e6a7f29db2799dab86922d94e0bc4f4935dab126"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/checks/content-worklist-first.json.gz",
+      "bytes": 116952,
+      "sha256": "60d0852a181b572feb96ea9890ed38935e73f827bb1c828e4d980dfc9fc63ce7",
+      "gitNormalizedSha256": "c50b847052ff716da01c0fc681c971129494d3a1ae36a67f0ef14f061f43609e"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/checks/playground-review-source-intake.json",
+      "bytes": 3908,
+      "sha256": "cf73e5f04cd93bd4b83c8eebe24d0abcad90672b934f39a947248a5fed14bef9",
+      "gitNormalizedSha256": "cf73e5f04cd93bd4b83c8eebe24d0abcad90672b934f39a947248a5fed14bef9"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/checks/protection-final.json",
+      "bytes": 294,
+      "sha256": "06502a94a5c2fea66c74dc1b6763905be22a0de9316d15a3841743c91df24e30",
+      "gitNormalizedSha256": "06502a94a5c2fea66c74dc1b6763905be22a0de9316d15a3841743c91df24e30"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/checks/rendered.json",
+      "bytes": 9993,
+      "sha256": "9621578fc776952bdf424943388186a3d6d8da66655fe2be74e782af151c2b62",
+      "gitNormalizedSha256": "9621578fc776952bdf424943388186a3d6d8da66655fe2be74e782af151c2b62"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/checks/reviewed-receipt.json",
+      "bytes": 18657,
+      "sha256": "f6f8416e48718b4365105d8da3f20143cc7866ca88ae994a83774dd0e984f5bb",
+      "gitNormalizedSha256": "f6f8416e48718b4365105d8da3f20143cc7866ca88ae994a83774dd0e984f5bb"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/checks/static-first.json",
+      "bytes": 965,
+      "sha256": "af77234f83c64d146fc8a7d64892d12c13e5a86096e2671e4963605967bf9955",
+      "gitNormalizedSha256": "af77234f83c64d146fc8a7d64892d12c13e5a86096e2671e4963605967bf9955"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/checks/sync-initial.json",
+      "bytes": 1710,
+      "sha256": "0bc7454f1fabed72faafc5f738e3d9ceb3fa35f61e0f4e7c4cf9f252754a0f41",
+      "gitNormalizedSha256": "0bc7454f1fabed72faafc5f738e3d9ceb3fa35f61e0f4e7c4cf9f252754a0f41"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/checks/ten-http-first.json",
+      "bytes": 2542,
+      "sha256": "986987944c99c2ff94eef67621d6f3278edf3a49f7fff2687ed269ef9675f90d",
+      "gitNormalizedSha256": "986987944c99c2ff94eef67621d6f3278edf3a49f7fff2687ed269ef9675f90d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/manifest.json",
+      "bytes": 4182,
+      "sha256": "923d4ea00980b1c52e505399f76a1fd8030c9db910c757c2c470b3e8a4cabd33",
+      "gitNormalizedSha256": "923d4ea00980b1c52e505399f76a1fd8030c9db910c757c2c470b3e8a4cabd33"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/receipt.json",
+      "bytes": 7437,
+      "sha256": "3217d3d43f090bfee17f7f8e64352b27edb8037f74916fee3670eccb4cb04f2f",
+      "gitNormalizedSha256": "3217d3d43f090bfee17f7f8e64352b27edb8037f74916fee3670eccb4cb04f2f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/sources.json.gz",
+      "bytes": 78408,
+      "sha256": "52a402810a4bbf377301c1c6a0c038f58130b874880d8adff3fc79c058e9982e",
+      "gitNormalizedSha256": "d933817b54017f0b2f3923cb81b66aaa5214a242016235a7498fe34a2446297d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/tools/archive.cjs",
+      "bytes": 6252,
+      "sha256": "e0812a4bf7ff0cb6109c3318610e5547f911c8c194de2b10a57e187b9e25b3c4",
+      "gitNormalizedSha256": "e0812a4bf7ff0cb6109c3318610e5547f911c8c194de2b10a57e187b9e25b3c4"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/tools/browser-run.cjs",
+      "bytes": 18549,
+      "sha256": "2036c3dc8fefa410f1658bd34d7f262910a7195f206e08ee16d32fe953574a5d",
+      "gitNormalizedSha256": "2036c3dc8fefa410f1658bd34d7f262910a7195f206e08ee16d32fe953574a5d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/tools/check.cjs",
+      "bytes": 3561,
+      "sha256": "83fc0423430398236603702cdeec809f18113dcda216eb85d53aaca72a073115",
+      "gitNormalizedSha256": "83fc0423430398236603702cdeec809f18113dcda216eb85d53aaca72a073115"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/tools/render-source.cjs",
+      "bytes": 1427,
+      "sha256": "e8f2a8b739dc8d2443d2de4d6f9b0c9c4a01429ab6c6510310bbbf540d03bf7f",
+      "gitNormalizedSha256": "e8f2a8b739dc8d2443d2de4d6f9b0c9c4a01429ab6c6510310bbbf540d03bf7f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/checks/staging-scan.json",
+      "bytes": 218,
+      "sha256": "4c982d01506d8b907798541cd9bd2f78291701541484f72b6fff753c637ac491",
+      "gitNormalizedSha256": "4c982d01506d8b907798541cd9bd2f78291701541484f72b6fff753c637ac491"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-ten-and-carry-candidates/tools/stage.cjs",
+      "bytes": 4255,
+      "sha256": "0b4f6fc1c577690c5c95ab67322bd278537f34c06abfb3f0941a5af2915a6b14",
+      "gitNormalizedSha256": "0b4f6fc1c577690c5c95ab67322bd278537f34c06abfb3f0941a5af2915a6b14"
+    }
+  ]
+}

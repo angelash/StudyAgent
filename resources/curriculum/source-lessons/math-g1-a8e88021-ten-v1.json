@@ -1,0 +1,556 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+    "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit5:entry1",
+    "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+    "pageStart": 44,
+    "pageEnd": 77,
+    "publicationYear": 2022,
+    "curriculumStandardYear": 2011
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:math:g1:a8e88021:ten-digit-writing",
+      "version": 1,
+      "name": "6至10的数量与本人书写",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "数与表示",
+      "objective": "把当前6至10个对象与本人书写的数字对应",
+      "successCriterion": "逐件计数和字形均核，10表示十不是1与0两件，提示描写原迹另存",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:ten-order-rank",
+      "version": 1,
+      "name": "比较6至10与指定方向序位",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "数序与位置",
+      "objective": "依当前数序比较大小并区分几个和第几个",
+      "successCriterion": "方向、单位和总数明确，不把第几缸与缸内几条鱼混为一问",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:ten-parts-facts",
+      "version": 1,
+      "name": "十以内两部分与相关算式",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "分合与运算",
+      "objective": "从同一完整数量的两部分写加减关系",
+      "successCriterion": "两份合整体，交换加数不换整体，等份不虚报四种不同算式",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:ten-problem",
+      "version": 1,
+      "name": "按已知与所求列十以内算式",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "解决问题",
+      "objective": "识别当前整体部分或去掉剩余再列式核对",
+      "successCriterion": "问题对象单位和括号范围保持，不只凭共有或还剩等词自动选运算",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:ten-difference",
+      "version": 1,
+      "name": "多几少几看一一配对剩余",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "比较与差",
+      "objective": "比较十以内两组的差并说清谁比谁多或少",
+      "successCriterion": "每件各配一次，较多减较少，差与两组总量分开",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:ten-chain",
+      "version": 1,
+      "name": "连加连减保留中间数量",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "连加连减",
+      "objective": "按给定两次添入或两次去掉执行并解释",
+      "successCriterion": "由左至右保存中间量，连减不能先把后两数相减，不跳过第二变化",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:ten-mixed",
+      "version": 1,
+      "name": "加减混合依事件顺序",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "加减混合",
+      "objective": "对十以内先添后减或先减后添列式执行",
+      "successCriterion": "每一步用上一步结果，正负角色保持，不能任意先算加法或交换符号",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:ten-organise-check",
+      "version": 1,
+      "name": "整理约束与条件充分性",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "数学核查",
+      "objective": "按明确规则整理并核完整信息与全部约束",
+      "successCriterion": "只在当前规则下列全，不由可见或熟悉结果补未知，不把自评当掌握事实",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:math:g1:a8e88021:ten-digit-writing",
+    "source:math:g1:a8e88021:ten-order-rank",
+    "source:math:g1:a8e88021:ten-parts-facts",
+    "source:math:g1:a8e88021:ten-problem",
+    "source:math:g1:a8e88021:ten-difference",
+    "source:math:g1:a8e88021:ten-chain",
+    "source:math:g1:a8e88021:ten-mixed",
+    "source:math:g1:a8e88021:ten-organise-check"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "已实际查看物理44至77页全部34页，核数量序位、分合、问题和连加减混合及整理；不当教师或测量独立性审核。",
+    "pages": [
+      {
+        "page": 44,
+        "visualChecked": true,
+        "statement": "6与7的实物点数、数字及安全摆棒，选定计数对象，不把老师与学生类别混算。"
+      },
+      {
+        "page": 45,
+        "visualChecked": true,
+        "statement": "5至7的序位比较、从左第7缸与有7条鱼的鱼缸、6和7的书写，量与序分清。"
+      },
+      {
+        "page": 46,
+        "visualChecked": true,
+        "statement": "6与7分成两份、按已知分法找交换对应，补足7需保持完整总量。"
+      },
+      {
+        "page": 47,
+        "visualChecked": true,
+        "statement": "同一分合关系的两加两减，等份3与3时算式重复，不说四个不同算式。"
+      },
+      {
+        "page": 48,
+        "visualChecked": true,
+        "statement": "数序、遮挡块计数、右边6只与从左第7只、分合补缺，不能由可见面数块。"
+      },
+      {
+        "page": 49,
+        "visualChecked": true,
+        "statement": "点卡合6合7、转盘差、抄算式、结果连线和大数减小数，按当前指令判断。"
+      },
+      {
+        "page": 50,
+        "visualChecked": true,
+        "statement": "说图意再计算、带零的算式与生活中的数量和班级标签，同数字不等同数量角色。"
+      },
+      {
+        "page": 51,
+        "visualChecked": true,
+        "statement": "兔和企鹅两部分合计，图中已知、求合计、解答和核对四步明确。"
+      },
+      {
+        "page": 52,
+        "visualChecked": true,
+        "statement": "7只跳走2只和总6知右4求左，求剩余与求静态另一部分同用减法但情境不同。"
+      },
+      {
+        "page": 53,
+        "visualChecked": true,
+        "statement": "练习十鱼分两边、已知全树果数求摘掉、遮住另一部分，按所问对象选信息。"
+      },
+      {
+        "page": 54,
+        "visualChecked": true,
+        "statement": "明确问题再解答，整体与部分的括号范围不同，不能只看问号邻近数字。"
+      },
+      {
+        "page": 55,
+        "visualChecked": true,
+        "statement": "8与9的实物集合、摆数和计数，完整一件和图像装饰分开。"
+      },
+      {
+        "page": 56,
+        "visualChecked": true,
+        "statement": "7至9大小、左8个与左第8个、已知队首的生肖序位、8与9的真实书写。"
+      },
+      {
+        "page": 57,
+        "visualChecked": true,
+        "statement": "8与9两份分合，先看一个分法可得到交换分法，标签约定和完整总量保持。"
+      },
+      {
+        "page": 58,
+        "visualChecked": true,
+        "statement": "两部分对应两加两减、等分4与4和花瓶成8成9，数量关系与实际物品分清。"
+      },
+      {
+        "page": 59,
+        "visualChecked": true,
+        "statement": "0至9连线、分类点数比较、车厢序位与分合表，不能把车厢标签当动物数量。"
+      },
+      {
+        "page": 60,
+        "visualChecked": true,
+        "statement": "合8合9配对、转盘减法、四个相关算式和书面抄写，结果与操作记录分开。"
+      },
+      {
+        "page": 61,
+        "visualChecked": true,
+        "statement": "9以内运算缺数、固定加数关系、多几少几一一对应与同组算式，量纲保持。"
+      },
+      {
+        "page": 62,
+        "visualChecked": true,
+        "statement": "总9去掉可见跑走部分求剩余，另有天鹅与蘑菇信息不混入所问对象。"
+      },
+      {
+        "page": 63,
+        "visualChecked": true,
+        "statement": "练习十二总8与弄坏3、现有与整体，提问和解答依给定信息，示例不代本人活动。"
+      },
+      {
+        "page": 64,
+        "visualChecked": true,
+        "statement": "10的完整集合与数尺、摆10朵花，写10是两个数字组成一个数。"
+      },
+      {
+        "page": 65,
+        "visualChecked": true,
+        "statement": "10分合、书写10、找朋友与古代算筹介绍，历史表示不当当前十位书写规则。"
+      },
+      {
+        "page": 66,
+        "visualChecked": true,
+        "statement": "1与9等分合对应加减、5与5只得两种不同算式，组成10的数需完整配对。"
+      },
+      {
+        "page": 67,
+        "visualChecked": true,
+        "statement": "0至10顺序、倒计数、合10卡片和10减几，按指定方向与当前数域回答。"
+      },
+      {
+        "page": 68,
+        "visualChecked": true,
+        "statement": "10以内未知部分、画点补足10、总数与还剩，条件不足不自行造隐藏数量。"
+      },
+      {
+        "page": 69,
+        "visualChecked": true,
+        "statement": "算式比较、同一图中可用7加3的不同分组、多几少几和每数只用一次的约束。"
+      },
+      {
+        "page": 70,
+        "visualChecked": true,
+        "statement": "连加连减按先后变化从左至右，5加2再加1与8减2再减2，保留中间量。"
+      },
+      {
+        "page": 71,
+        "visualChecked": true,
+        "statement": "三项和、两次去掉、行列三数各得9，行列约束都需核，不只核一个结果。"
+      },
+      {
+        "page": 72,
+        "visualChecked": true,
+        "statement": "加减混合到来离开，4加3减2与4减2加3分别按事件顺序，不能减号随意换位。"
+      },
+      {
+        "page": 73,
+        "visualChecked": true,
+        "statement": "练习十五连加减混合、行列和与流程箭头、补足10，顺序和中间结果保留。"
+      },
+      {
+        "page": 74,
+        "visualChecked": true,
+        "statement": "整理数和加法卡、楼层相差一层与总层数，图和文字充分条件分别检查。"
+      },
+      {
+        "page": 75,
+        "visualChecked": true,
+        "statement": "减法表、两部分企鹅总数和同条纸条去掉分开多步，当前问题与对象明确。"
+      },
+      {
+        "page": 76,
+        "visualChecked": true,
+        "statement": "练习十六分合、连加混合、遮挡蜗牛与瓶数、提数学问题，未见部分由总量约束才可求。"
+      },
+      {
+        "page": 77,
+        "visualChecked": true,
+        "statement": "每次加2或减2、线组三数和10、古埃及象形数与成长小档案，自评和例子不代真实表现。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "6～10的认识和加减法",
+    "directoryGranularity": "unit",
+    "printedPages": [
+      39,
+      72
+    ],
+    "publicationEdition": "2022年8月第2版",
+    "curriculumStandardYear": 2011,
+    "countRange": [
+      0,
+      10
+    ],
+    "genuineDigitWritingRequired": true,
+    "allPageActivitiesDelivered": false,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "十以内：看关系，按顺序，把每一步说清",
+    "activation": {
+      "prompt": "把六张纸片数清，添一张后再看。共有几张？如果只问从左第7张，和问有7张是一回事吗？请本人写数量数字并保留笔迹。",
+      "expectedObservation": "六添一为七，数量与序位不同；实际书写不由口头答案代填。",
+      "bridge": "数到十，要看数字表示什么，也要看加减法里每个数与当前对象的关系。"
+    },
+    "concept": {
+      "explanation": "6、7、8、9、10都可表示当前数清的数量。数一件说一个数词，10写成两个数字组成的一个数，不是说有1件再有0件。会识认、会口头数和本人写得清楚分别核查。第7个说按约定方向找到的位置；第7缸有几条鱼与哪缸有7条鱼，问的是不同内容。\n一组八张分成三张和五张，3+5=8与5+3=8都求合计，8-3=5与8-5=3找另一部分。总量不变，两个部分不可漏或重复。若分成四张与四张，交换后仍4+4=8，两道减法也同为8-4=4，不要为凑四种不同式子而重复计数。\n解问题先说已知什么、问什么。两区各3张和4张、无重复，求合计可3+4=7；原来7张拿走3张，求剩余可7-3=4；共有7张已知一边3张、问另一边也可7-3=4，但后者不一定真的拿走。看到共有两个字，不保证本题就求总量。\n比较谁多几，用一张配一张。甲8张、乙5张，配完五对，甲剩3张，甲比乙多3、乙比甲少3。差是剩余的数量，不是两组加起来13张；本课十以内比较时仍保留各组的单位和方向。\n连续添两次，每一次都算进去。原来4张，添2张成6，再添3张成9，写4+2+3=9。连续拿走两次也逐步核：原来9张拿走2张成7，再拿走3张成4，9-2-3=4；不能先算2-3再随意改式。\n有添有减，按事件先后从左到右。原来5张先拿走2张，再添4张，5-2+4先得3再得7。不要说有加号就先算2+4，也不能把拿走2变成添2。原来4张先添3后拿走2，同样得5；结果相同不保证变化过程相同。\n整理可以按总数、某一部分、被减数或得数，但要说明当前规则。行和列都要求三数和为9时，两方向都核；一行对了不等全题符合。只看到部分积木或一面，不能直接当全部块数；总量、遮挡和完整摆法若没给，先保留未知。\n本人提出一个新问题时，所问对象、可用信息和单位要完整。可以保留原来的错误，再另写更正，用当前对象解释；看过参考和被帮助的表现不能回写为独立首答，也不由一张自评花认定长期保持。",
+      "points": [
+        "数量与序位、识认与书写分开",
+        "十以内分合对应两加两减",
+        "等份不虚报不同算式",
+        "先读所问再选关系",
+        "多几少几看配对剩余",
+        "连加连减每步不漏",
+        "加减混合从左至右",
+        "整理规则与全部条件都要核"
+      ]
+    },
+    "example": {
+      "situation": "原创纸片任务：原来9张，先拿走2张，再拿走3张；另一任务原来5张，拿走2张后又添4张。",
+      "steps": [
+        {
+          "explanation": "第一任务先从9张拿走2张，余7张，把这一时刻单列保存。",
+          "board": [
+            "原来9张",
+            "第一次拿走2张",
+            "9-2=7（张）"
+          ]
+        },
+        {
+          "explanation": "再从剩下7张拿走3张，余4张。两次都从当前剩余去掉，不拿原来9张重复减出两份答案。",
+          "board": [
+            "第二次在7张中拿走3张",
+            "7-3=4（张）",
+            "9-2-3=4（张）"
+          ]
+        },
+        {
+          "explanation": "第二任务5张先拿走2张，余3；再添4，成7。按这次的先后和符号算。",
+          "board": [
+            "5-2=3",
+            "3+4=7",
+            "5-2+4=7（张）"
+          ]
+        }
+      ],
+      "conclusion": "每次变化都接着当前数量，完整保留中间量和所问范围，再核最终结果。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "原创事件表：每一步用上一步结果",
+        "headers": [
+          "任务",
+          "开始",
+          "第一步",
+          "第二步",
+          "最终表示"
+        ],
+        "rows": [
+          [
+            "连续拿走",
+            "9张",
+            "拿走2，余7",
+            "再拿走3，余4",
+            "9-2-3=4"
+          ],
+          [
+            "先拿走后添入",
+            "5张",
+            "拿走2，余3",
+            "再添4，成7",
+            "5-2+4=7"
+          ],
+          [
+            "两部分与整体",
+            "整体8张",
+            "分成3与5",
+            "按所问找部分或合计",
+            "3+5=8；8-3=5"
+          ]
+        ],
+        "explanation": "表中是原创明确条件，不复刻教材插图。每一步的中间量和单位同时保留，实际本人操作与示例分别记录；同得数不等同过程或独立题族。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "把第7缸的鱼数直接答成7，或把有7条鱼的缸号也直接答7。",
+        "alternatives": [
+          "序位和缸内数量可能混淆。"
+        ],
+        "verification": "分别指明从哪边数缸及当前缸里每条鱼，分开提出两问。",
+        "correctiveFeedback": "缸号说位置，几条说数量，一个答案不能包办两问。"
+      },
+      {
+        "observation": "把9-2-3改为9-5，虽然结果对，却不能说明两次拿走的过程。",
+        "alternatives": [
+          "合并拿走量可有合理解释，但当前题若考两步过程仍需分别核。"
+        ],
+        "verification": "先写9到7再到4，说明两次拿走各对应哪个时刻；另说明为何总拿走5。",
+        "correctiveFeedback": "可以比较等价方法，但结果不能替两次当前变化的解释。"
+      },
+      {
+        "observation": "算5-2+4时先算2+4，再说5减6；或把减2改成加2。",
+        "alternatives": [
+          "混合顺序或动作角色未保持。"
+        ],
+        "verification": "用五张纸先真拿走两张，再添四张，逐次记录当前总数。",
+        "correctiveFeedback": "本课无括号加减混合从左到右，每次保留添或拿走的原角色。"
+      },
+      {
+        "observation": "图中有遮挡，直接数可见几个面就当全部有几块。",
+        "alternatives": [
+          "平面、完整块和隐藏部分混为一类。"
+        ],
+        "verification": "先列已知总块或完整摆法，缺条件则说明未知，再数已确定的对象。",
+        "correctiveFeedback": "可见面的数量不是完整块数，不为凑答案补造隐藏块。"
+      }
+    ],
+    "transfer": {
+      "scenario": "换成不同的十以内纸片数量，题目可能求合计、剩余、差或第二次变化后的数量。",
+      "prompt": "先圈所问对象，再写每一步的角色和中间量；若需要本人书写/操作，保留真实原迹与帮助。",
+      "expectedStrategy": "依据当前条件确定关系、顺序和单位，不能只认关键词、图形面积或熟悉答案。"
+    },
+    "summary": {
+      "synthesis": "十以内运算先核完整数量关系，比较看配对剩余；连续变化逐步走，混合顺序不随意改。当前题、本人原迹与参考分别核对。",
+      "takeaways": [
+        "量与序分清",
+        "部分合整体",
+        "先问什么再算",
+        "差不是合计",
+        "每步保留中间量",
+        "未知不补造",
+        "原答和更正分开"
+      ]
+    },
+    "citations": [
+      {
+        "page": 50,
+        "quote": "说一说图的意思，再计算。",
+        "usedFor": "concept"
+      },
+      {
+        "page": 61,
+        "quote": "用下面的数，你能写出几组算式？",
+        "usedFor": "example"
+      },
+      {
+        "page": 75,
+        "quote": "说一说图的意思，再用算式表示出来。",
+        "usedFor": "summary"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:math:g1:a8e88021:ten-digit-writing",
+        "objective": "把当前6至10个对象与本人书写的数字对应",
+        "successCriterion": "逐件计数和字形均核，10表示十不是1与0两件，提示描写原迹另存"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:math:g1:a8e88021:ten-order-rank",
+        "objective": "依当前数序比较大小并区分几个和第几个",
+        "successCriterion": "方向、单位和总数明确，不把第几缸与缸内几条鱼混为一问"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:math:g1:a8e88021:ten-parts-facts",
+        "objective": "从同一完整数量的两部分写加减关系",
+        "successCriterion": "两份合整体，交换加数不换整体，等份不虚报四种不同算式"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:math:g1:a8e88021:ten-problem",
+        "objective": "识别当前整体部分或去掉剩余再列式核对",
+        "successCriterion": "问题对象单位和括号范围保持，不只凭共有或还剩等词自动选运算"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:math:g1:a8e88021:ten-difference",
+        "objective": "比较十以内两组的差并说清谁比谁多或少",
+        "successCriterion": "每件各配一次，较多减较少，差与两组总量分开"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "source:math:g1:a8e88021:ten-chain",
+        "objective": "按给定两次添入或两次去掉执行并解释",
+        "successCriterion": "由左至右保存中间量，连减不能先把后两数相减，不跳过第二变化"
+      },
+      {
+        "id": "goal-7",
+        "atomId": "source:math:g1:a8e88021:ten-mixed",
+        "objective": "对十以内先添后减或先减后添列式执行",
+        "successCriterion": "每一步用上一步结果，正负角色保持，不能任意先算加法或交换符号"
+      },
+      {
+        "id": "goal-8",
+        "atomId": "source:math:g1:a8e88021:ten-organise-check",
+        "objective": "按明确规则整理并核完整信息与全部约束",
+        "successCriterion": "只在当前规则下列全，不由可见或熟悉结果补未知，不把自评当掌握事实"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "ten",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

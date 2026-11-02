@@ -1,0 +1,828 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "ten",
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-ten-v1.json",
+      "sha256": "2dcf6d709fafcc17a2d66aa94ed1d19c2158fd9b6a7fb16b865c3a48a9ade33f",
+      "source": {
+        "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+        "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit5:entry1",
+        "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+        "pageStart": 44,
+        "pageEnd": 77,
+        "publicationYear": 2022,
+        "curriculumStandardYear": 2011
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "56道未审原创候选，逐目标3即时4拟议间隔。34页主题按单元级稿组织，不等每页全部活动交付；书写、示错、提示、原答与更正分开，独立题族、评分和充分保持库存待审。",
+  "groups": [
+    {
+      "lesson": "ten",
+      "atomId": "source:math:g1:a8e88021:ten-digit-writing",
+      "structure": "six-to-ten-genuine-numeral-work",
+      "familyProposal": "a8e88021-six-to-ten-genuine-numeral-work",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "当前逐件数量正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人数字笔迹可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "提示原迹与更正分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "应有六点和本人手写6，点数与字形分别核；打字不代纸面，未写或有提示如实记录。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-ten-six-to-ten-genuine-numeral-work-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人画六点，在旁边亲手写数量数字，上传含全部点和笔迹的原图；不能只发打字6。",
+          "answer": "应有六点和本人手写6，点数与字形分别核；打字不代纸面，未写或有提示如实记录。",
+          "analysis": "应有六点和本人手写6，点数与字形分别核；打字不代纸面，未写或有提示如实记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-ten-six-to-ten-genuine-numeral-work-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人取七张纸片并写数量，拍完整物件和笔迹。若纸片一大六小，怎样核总数？",
+          "answer": "按张各一件共七张，对应写7；大小不增减张数，实际原图与帮助另核，不用示例代做。",
+          "analysis": "按张各一件共七张，对应写7；大小不增减张数，实际原图与帮助另核，不用示例代做。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-ten-six-to-ten-genuine-numeral-work-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "本人画八个点，写数量，再把点重新排列另存图。重排前后数字应怎样保持？",
+          "answer": "未增未减都应表示8，真实两图须能各核八点；重排图不由旧照片冒作本次操作。",
+          "analysis": "未增未减都应表示8，真实两图须能各核八点；重排图不由旧照片冒作本次操作。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-ten-six-to-ten-genuine-numeral-work-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人画九点写数，若第一次把6写到旁边，请保留后另更正并说明数量和字形。",
+          "answer": "九点应对应9，保留原写6及更正9；写错不等点数一定不会数，两种表现分别核查。",
+          "analysis": "九点应对应9，保留原写6及更正9；写错不等点数一定不会数，两种表现分别核查。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-ten-six-to-ten-genuine-numeral-work-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本人画十点并亲手写10。有人说1和0是两个数所以只要画两点，请用原图回应。",
+          "answer": "10在此是表示十的一个数，需完整十点对应手写10；两个数字符号不等只有两件。",
+          "analysis": "10在此是表示十的一个数，需完整十点对应手写10；两个数字符号不等只有两件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-ten-six-to-ten-genuine-numeral-work-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人自选六至九件安全纸片，先数后写并保存原图；如果只照描参考，怎样记录？",
+          "answer": "按当前张数和实际笔迹核对，描写或提示注明；参考字形不能直接当独立书写已通过。",
+          "analysis": "按当前张数和实际笔迹核对，描写或提示注明；参考字形不能直接当独立书写已通过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-ten-six-to-ten-genuine-numeral-work-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "隔次本人画十点写10，注明是否看旧稿，保留这次原图，不直接上传前一次同图代本次。",
+          "answer": "需当前十点和本人笔迹及真实帮助曝光信息；旧图不能代新操作，也不自动认定到期未见保持。",
+          "analysis": "需当前十点和本人笔迹及真实帮助曝光信息；旧图不能代新操作，也不自动认定到期未见保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "ten",
+      "atomId": "source:math:g1:a8e88021:ten-order-rank",
+      "structure": "current-count-versus-rank",
+      "familyProposal": "a8e88021-current-count-versus-rank",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "量与序明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "方向与范围保持",
+          "weight": 0.4
+        },
+        {
+          "criterion": "比较依据完整",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "第7盒装3枚，有7枚的是第2盒；盒序位与盒内枚数不同，不把出现的7一概作答案。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-ten-current-count-versus-rank-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创从左数第7盒装3枚，另有第2盒装7枚。第7盒装几枚？有7枚的是第几盒？说明不同。",
+          "answer": "第7盒装3枚，有7枚的是第2盒；盒序位与盒内枚数不同，不把出现的7一概作答案。",
+          "analysis": "第7盒装3枚，有7枚的是第2盒；盒序位与盒内枚数不同，不把出现的7一概作答案。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-current-count-versus-rank-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创十张卡从左到右编号甲乙丙丁戊己庚辛壬癸。从右第3张是谁？一共几张？",
+          "answer": "从右为癸壬辛，第3张辛；共有10张。序位需定方向，总数不随起数方向改变。",
+          "analysis": "从右为癸壬辛，第3张辛；共有10张。序位需定方向，总数不随起数方向改变。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-current-count-versus-rank-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "在6、9、7中从小到大排列，并写其中最大数前一个是多少，说明方向。",
+          "answer": "从小到大6、7、9；最大9的前一个是8，前一个少1，不是只在给定三张卡里找邻近卡。",
+          "analysis": "从小到大6、7、9；最大9的前一个是8，前一个少1，不是只在给定三张卡里找邻近卡。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-current-count-versus-rank-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创左边八个与从左第八个两个指令，前者应选几件、后者几件？能直接视为同一操作吗？",
+          "answer": "前者选8件，后者选1件特定位置，不能视为同一；共同数字8不抹平数量和序位差异。",
+          "analysis": "前者选8件，后者选1件特定位置，不能视为同一；共同数字8不抹平数量和序位差异。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-current-count-versus-rank-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创7点排得长，9点排得短，约定每点一件。比较件数，写符号并说明。",
+          "answer": "7<9，逐件数量决定，长短与疏密不是件数；不能因排得长就把7判断为较多。",
+          "analysis": "7<9，逐件数量决定，长短与疏密不是件数；不能因排得长就把7判断为较多。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-current-count-versus-rank-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "题目只说排第8但没有队首或方向，也没有队伍长度。能唯一确定图中哪个对象吗？",
+          "answer": "不能保证，需明确起数方向或队首和当前队伍；不能沿用上一题位置，先核参照条件。",
+          "analysis": "不能保证，需明确起数方向或队首和当前队伍；不能沿用上一题位置，先核参照条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-current-count-versus-rank-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "在0至10内找全部大于8的整数，若只答9，能说已经列全吗？请逐项核范围。",
+          "answer": "全部是9和10，只答9是合适例子但不全；10也是大于8的整数，等于8不符合严格条件。",
+          "analysis": "全部是9和10，只答9是合适例子但不全；10也是大于8的整数，等于8不符合严格条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "ten",
+      "atomId": "source:math:g1:a8e88021:ten-parts-facts",
+      "structure": "whole-and-related-add-subtract",
+      "familyProposal": "a8e88021-whole-and-related-add-subtract",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "两份无漏重",
+          "weight": 0.4
+        },
+        {
+          "criterion": "算式角色一致",
+          "weight": 0.4
+        },
+        {
+          "criterion": "相同式不重复充数",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "3+5=8、5+3=8、8-3=5、8-5=3；整体始终8，两部分是3和5，不换成求两组总量之外的对象。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-ten-whole-and-related-add-subtract-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创整体8张分成3张和5张。写两道加法与两道减法，并说明各式的整体。",
+          "answer": "3+5=8、5+3=8、8-3=5、8-5=3；整体始终8，两部分是3和5，不换成求两组总量之外的对象。",
+          "analysis": "3+5=8、5+3=8、8-3=5、8-5=3；整体始终8，两部分是3和5，不换成求两组总量之外的对象。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-whole-and-related-add-subtract-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创整体6张分成3张和3张。能声称交换后得到四道彼此不同的算式吗？说明。",
+          "answer": "不能，交换仍3+3=6，两道减法也都6-3=3；可说明相关关系但仅两种不同书面式，不重复充数。",
+          "analysis": "不能，交换仍3+3=6，两道减法也都6-3=3；可说明相关关系但仅两种不同书面式，不重复充数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-whole-and-related-add-subtract-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创一共有10张，其中甲区4张，其余全在乙区。乙多少？写一个加法和一个减法核对。",
+          "answer": "乙6张，4+6=10、10-4=6；完整两区和总10已给，不能另造第三处改变关系。",
+          "analysis": "乙6张，4+6=10、10-4=6；完整两区和总10已给，不能另造第三处改变关系。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-whole-and-related-add-subtract-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "9张按甲乙有名盒各非空分，甲放1至4张时，逐项给乙的张数并解释总量。",
+          "answer": "分别甲1乙8、甲2乙7、甲3乙6、甲4乙5，各合9；这里只列指定甲1至4范围，不称全部有序分法。",
+          "analysis": "分别甲1乙8、甲2乙7、甲3乙6、甲4乙5，各合9；这里只列指定甲1至4范围，不称全部有序分法。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-whole-and-related-add-subtract-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创8张分两区，某记录写第一部分6、第二部分3。仅因为两部分都小于8就正确吗？",
+          "answer": "不正确，6与3合9不等整体8；需两份合计与整体一致，若一份6则另一份应2。",
+          "analysis": "不正确，6与3合9不等整体8；需两份合计与整体一致，若一份6则另一份应2。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-whole-and-related-add-subtract-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只知道甲区3张、乙区被遮且没给总量，能直接从旧例8推乙5张吗？说明依据。",
+          "answer": "不能，缺当前整体或关系，旧例8不属于本题条件；乙数量暂未知，不把遮住当零或固定五。",
+          "analysis": "不能，缺当前整体或关系，旧例8不属于本题条件；乙数量暂未知，不把遮住当零或固定五。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-whole-and-related-add-subtract-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创10由2和8组成，学生写10-2=8正确后又写2-10=8。请核哪条保持整体角色。",
+          "answer": "10-2=8保持整体10去部分2；2-10不保持当前部分整体且非本范围有效减法，不能随意交换。",
+          "analysis": "10-2=8保持整体10去部分2；2-10不保持当前部分整体且非本范围有效减法，不能随意交换。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "ten",
+      "atomId": "source:math:g1:a8e88021:ten-problem",
+      "structure": "question-first-part-whole",
+      "familyProposal": "a8e88021-question-first-part-whole",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "已知所求分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "对象单位一致",
+          "weight": 0.4
+        },
+        {
+          "criterion": "核回当前关系",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "4+3=7枚，所求是两个不重叠区域的合计；各数单位都是枚，不能把区域数2当物品数。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-ten-question-first-part-whole-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创甲区4枚、乙区3枚且无重复。求两区共几枚，列式并说明所问整体是什么。",
+          "answer": "4+3=7枚，所求是两个不重叠区域的合计；各数单位都是枚，不能把区域数2当物品数。",
+          "analysis": "4+3=7枚，所求是两个不重叠区域的合计；各数单位都是枚，不能把区域数2当物品数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-question-first-part-whole-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创原来9张，拿走4张，没有添入，问还剩多少。列式后怎样用原量核对？",
+          "answer": "9-4=5，剩5与拿走4合回9；核同一批纸而非只复述参考，实际本人操作另记。",
+          "analysis": "9-4=5，剩5与拿走4合回9；核同一批纸而非只复述参考，实际本人操作另记。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-question-first-part-whole-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创共有7张，甲区3张，问乙区且全部仅在两区。虽有共有二字，应加还是减？",
+          "answer": "用7-3=4求另一部分；7已是整体不是一部分，不能见共有就7+3，需按所问关系判断。",
+          "analysis": "用7-3=4求另一部分；7已是整体不是一部分，不能见共有就7+3，需按所问关系判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-question-first-part-whole-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创共有8只猫与2只狗，问猫里黑猫几只但没有猫的颜色信息。能用8-2直接答6吗？",
+          "answer": "不能，狗数不是非黑猫数，缺猫颜色分类；同一图中数字都可算不等都能解所问问题。",
+          "analysis": "不能，狗数不是非黑猫数，缺猫颜色分类；同一图中数字都可算不等都能解所问问题。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-question-first-part-whole-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创桌上6张，只把2张从左移到右，问整个桌面现有几张。怎样回答才保持范围？",
+          "answer": "整个桌面仍6张，只改位置未拿离边界；若问左区另核原来左区量，不能自动6-2。",
+          "analysis": "整个桌面仍6张，只改位置未拿离边界；若问左区另核原来左区量，不能自动6-2。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-question-first-part-whole-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创总10张，部分被遮，但说明可见3张且其余全在遮挡内。求隐藏张数需什么关系？",
+          "answer": "可用10-3=7，因总量和剩余全在遮挡内都明确；不是由遮挡面积或可见面数猜数量。",
+          "analysis": "可用10-3=7，因总量和剩余全在遮挡内都明确；不是由遮挡面积或可见面数猜数量。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-question-first-part-whole-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "请为7-2=5写一个原创静态两部分问题，再说明它与拿走2张的动态问题有何不同。",
+          "answer": "如总7张、甲2张、乙5张，问乙；与拿走2都用同式但前者无实际离开过程，示例不登记本人经历。",
+          "analysis": "如总7张、甲2张、乙5张，问乙；与拿走2都用同式但前者无实际离开过程，示例不登记本人经历。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "ten",
+      "atomId": "source:math:g1:a8e88021:ten-difference",
+      "structure": "paired-remainder-with-direction",
+      "familyProposal": "a8e88021-paired-remainder-with-direction",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "一件配一件",
+          "weight": 0.4
+        },
+        {
+          "criterion": "较多较少方向正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "差与总量分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "配五对，甲剩3张；甲比乙多3，乙比甲少3。差3不是甲总8或两组合计13。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-ten-paired-remainder-with-direction-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创甲8张、乙5张，一张配一张后谁剩几张？分别说谁比谁多几和少几。",
+          "answer": "配五对，甲剩3张；甲比乙多3，乙比甲少3。差3不是甲总8或两组合计13。",
+          "analysis": "配五对，甲剩3张；甲比乙多3，乙比甲少3。差3不是甲总8或两组合计13。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-paired-remainder-with-direction-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创甲6张乙6张。题目问甲多几，能为选多而硬说甲多6吗？说明。",
+          "answer": "两组同样多，甲比乙多0张；没有剩余，不能把甲的总6当差，等量关系保持。",
+          "analysis": "两组同样多，甲比乙多0张；没有剩余，不能把甲的总6当差，等量关系保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-paired-remainder-with-direction-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创甲7个小点乙9个大点，约定每点一件。问甲比乙少几，怎样配对和列式？",
+          "answer": "配七对，乙余2，所以甲比乙少2，可9-7=2；大小不替数量，所问少的方向要说明。",
+          "analysis": "配七对，乙余2，所以甲比乙少2，可9-7=2；大小不替数量，所问少的方向要说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-paired-remainder-with-direction-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "甲原有8张乙3张，只问甲比乙多几。有人写8+3=11并直接答11，错在求什么？",
+          "answer": "应求差8-3=5，11是两组总数而非多的部分；按所问配对看剩余，不只做任意算式。",
+          "analysis": "应求差8-3=5，11是两组总数而非多的部分；按所问配对看剩余，不只做任意算式。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-paired-remainder-with-direction-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只知道甲10张，乙被遮住无总量。能确定甲一定比乙多几，或一定更多吗？说明。",
+          "answer": "不能确定差也不能保证更多，需乙的当前数量；可见与不可见不是数量比较依据，不能套旧值。",
+          "analysis": "不能确定差也不能保证更多，需乙的当前数量；可见与不可见不是数量比较依据，不能套旧值。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-paired-remainder-with-direction-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创甲9张、乙6张，先答甲多3。现在问乙比甲少几，差会变成另一数吗？解释。",
+          "answer": "乙比甲少3，差的大小相同但表达方向变；较多仍甲、较少仍乙，不把少几改成乙有6张。",
+          "analysis": "乙比甲少3，差的大小相同但表达方向变；较多仍甲、较少仍乙，不把少几改成乙有6张。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-paired-remainder-with-direction-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创两组各不超过10张，请编一例多2张并列出配对剩余，不写为本人真实物品事实。",
+          "answer": "如甲7乙5，配五对甲余2，7-5=2；其他合条件例可接受，需清楚双方和单位，示例不代真实记录。",
+          "analysis": "如甲7乙5，配五对甲余2，7-5=2；其他合条件例可接受，需清楚双方和单位，示例不代真实记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "ten",
+      "atomId": "source:math:g1:a8e88021:ten-chain",
+      "structure": "two-successive-same-direction-changes",
+      "familyProposal": "a8e88021-two-successive-same-direction-changes",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "两次变化全计入",
+          "weight": 0.4
+        },
+        {
+          "criterion": "中间量正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色和顺序可解释",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "先4+2=6，再6+3=9，4+2+3=9；第二次从当前6继续，不漏任一次添入。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-ten-two-successive-same-direction-changes-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创原有4张，先添2张，再添3张。按两次先后列中间数量和最终算式。",
+          "answer": "先4+2=6，再6+3=9，4+2+3=9；第二次从当前6继续，不漏任一次添入。",
+          "analysis": "先4+2=6，再6+3=9，4+2+3=9；第二次从当前6继续，不漏任一次添入。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-two-successive-same-direction-changes-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创原有9张，先拿走2张，再拿走3张。请写每次还剩多少，不能只报最后一数。",
+          "answer": "第一次剩7，第二次剩4，9-2-3=4；两次拿走都从当前剩余，不先把2减3。",
+          "analysis": "第一次剩7，第二次剩4，9-2-3=4；两次拿走都从当前剩余，不先把2减3。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-two-successive-same-direction-changes-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创原有5张，两次分别添0张、添3张。添0能否让原有5张变没？说明各步。",
+          "answer": "先5+0=5，再5+3=8；添0不改变原量，两次变化仍保留，不能见0就把整体改零。",
+          "analysis": "先5+0=5，再5+3=8；添0不改变原量，两次变化仍保留，不能见0就把整体改零。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-two-successive-same-direction-changes-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创8张先拿走3再拿走2。学生只算8-3=5就结束，漏了哪步，最终多少？",
+          "answer": "漏第二次拿走2，应由5再减2剩3，8-3-2=3；中间5不是题目所求最终量。",
+          "analysis": "漏第二次拿走2，应由5再减2剩3，8-3-2=3；中间5不是题目所求最终量。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-two-successive-same-direction-changes-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创10张先拿走4再拿走6。能说第二次是从最初10张另取6而桌上仍有6吗？",
+          "answer": "不能，第二次从已剩6张继续取走6，最终0；10-4-6=0，原来和当前边界不混。",
+          "analysis": "不能，第二次从已剩6张继续取走6，最终0；10-4-6=0，原来和当前边界不混。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-two-successive-same-direction-changes-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创2+3+4算成先2+3得5再加4得9。若另人先合3与4也得9，怎样分清运算与事件要求？",
+          "answer": "纯加法可合理重组，结果9；若要求解释两次实际事件，仍需按原先后保留中间5，等价结果不代过程。",
+          "analysis": "纯加法可合理重组，结果9；若要求解释两次实际事件，仍需按原先后保留中间5，等价结果不代过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-two-successive-same-direction-changes-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "新题给9-2-3，有人先算9减2与9减3再将结果相加。请用同一批纸片说明错误。",
+          "answer": "同一整体被重复当两个起点，原题应9到7再到4；两个独立差相加不对应连续拿走过程。",
+          "analysis": "同一整体被重复当两个起点，原题应9到7再到4；两个独立差相加不对应连续拿走过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "ten",
+      "atomId": "source:math:g1:a8e88021:ten-mixed",
+      "structure": "successive-add-remove-roles",
+      "familyProposal": "a8e88021-successive-add-remove-roles",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "从左至右保留原操作",
+          "weight": 0.4
+        },
+        {
+          "criterion": "中间量正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "同结果不抹平过程",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "先剩3再成7，5-2+4=7；2是去掉、4是添入，先合2+4再减不对应原事件。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-ten-successive-add-remove-roles-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创5张先拿走2再添4。写两步和最终式，说明为何不能只把2与4先合起来。",
+          "answer": "先剩3再成7，5-2+4=7；2是去掉、4是添入，先合2+4再减不对应原事件。",
+          "analysis": "先剩3再成7，5-2+4=7；2是去掉、4是添入，先合2+4再减不对应原事件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-successive-add-remove-roles-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创4张先添3再拿走2。分别说第一步和第二步数量，不把减2看成添2。",
+          "answer": "第一步7张，第二步5张，4+3-2=5；每步保留添或拿走角色，不因最后有加号印象而全相加。",
+          "analysis": "第一步7张，第二步5张，4+3-2=5；每步保留添或拿走角色，不因最后有加号印象而全相加。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-successive-add-remove-roles-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创8张先拿走0再添1。按顺序记录，0这一步是否可以据此说没做过实际核查？",
+          "answer": "量为8到8再到9，8-0+1=9；数量不变不等无核查，是否本人实际做过与帮助另记。",
+          "analysis": "量为8到8再到9，8-0+1=9；数量不变不等无核查，是否本人实际做过与帮助另记。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-successive-add-remove-roles-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创7张先添2再拿走5，学生直接7+2=9就报9。怎样指出未完成变化？",
+          "answer": "还须从9拿走5，最终4，7+2-5=4；9只是中间量，不能省后一步。",
+          "analysis": "还须从9拿走5，最终4，7+2-5=4；9只是中间量，不能省后一步。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-successive-add-remove-roles-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创6张先拿走4再添3，与6张先添3再拿走4最终都可为5。能说两次实际过程相同吗？",
+          "answer": "最终同5，但中间分别2与9，事件顺序不同；不得把相同得数当同一过程或同一首答。",
+          "analysis": "最终同5，但中间分别2与9，事件顺序不同；不得把相同得数当同一过程或同一首答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-successive-add-remove-roles-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创10张先拿走6再添5。算到4后，又把最初10加5答15，哪里换错了起点？",
+          "answer": "第二步应从当前4添5得9，10-6+5=9；错用最初10造成忽略已拿走部分。",
+          "analysis": "第二步应从当前4添5得9，10-6+5=9；错用最初10造成忽略已拿走部分。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-successive-add-remove-roles-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "请为3+4-2=5写完整原创情境，标原有、第一变化、第二变化，不写成本人实做事实。",
+          "answer": "如原有3张添4成7，再拿2剩5，角色和顺序完整；这是原创示例，真实操作需本人另外记录。",
+          "analysis": "如原有3张添4成7，再拿2剩5，角色和顺序完整；这是原创示例，真实操作需本人另外记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "ten",
+      "atomId": "source:math:g1:a8e88021:ten-organise-check",
+      "structure": "explicit-rule-and-all-constraints",
+      "familyProposal": "a8e88021-explicit-rule-and-all-constraints",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "规则和范围明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "全部约束核齐",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未知和真实表现不代填",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "前三卡得8同组，9-3得6另组；同得数只是当前分类依据，不等合并与去掉是同一过程。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-ten-explicit-rule-and-all-constraints-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创卡6+2、4+4、10-2、9-3，明确按得数分组。请分组并说明同组是否同一过程。",
+          "answer": "前三卡得8同组，9-3得6另组；同得数只是当前分类依据，不等合并与去掉是同一过程。",
+          "analysis": "前三卡得8同组，9-3得6另组；同得数只是当前分类依据，不等合并与去掉是同一过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-explicit-rule-and-all-constraints-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创十字表横行2、3、4，竖列1、3、5，要求横竖都得9。请分别核，不只算一次。",
+          "answer": "横2+3+4=9，竖1+3+5=9，两方向都符合；交叉3属于各自所问行列，不能一行合格代全部。",
+          "analysis": "横2+3+4=9，竖1+3+5=9，两方向都符合；交叉3属于各自所问行列，不能一行合格代全部。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-explicit-rule-and-all-constraints-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创要求甲乙非空且合10，列甲1至9对应乙。只列1与9就说全部，怎样核？",
+          "answer": "对应乙9至1，需九种有名分配才列全；1与9仅一例，若不分标签则另约定，不能混计。",
+          "analysis": "对应乙9至1，需九种有名分配才列全；1与9仅一例，若不分标签则另约定，不能混计。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-explicit-rule-and-all-constraints-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创只给一张局部积木照片，看见五个平面，没有总块数或摆法。可直接认定五块吗？",
+          "answer": "不能，平面数与完整块数不同且可能有遮挡；需总数或完整结构约束，缺条件保持未知。",
+          "analysis": "不能，平面数与完整块数不同且可能有遮挡；需总数或完整结构约束，缺条件保持未知。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-explicit-rule-and-all-constraints-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创任务说每张数字卡只用一次，学生同一张5用在两个位置但各式都算对。符合全部条件吗？",
+          "answer": "不符合使用次数约束，算术结果对不代每卡只用一次；需同时核资源和各式关系。",
+          "analysis": "不符合使用次数约束，算术结果对不代每卡只用一次；需同时核资源和各式关系。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-explicit-rule-and-all-constraints-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只知亮亮在第7层，邻居比他高一层。能只据此说楼一共8层吗？怎样回答充分范围？",
+          "answer": "可知邻居第8层，但总层数仍未知，除非图或文字另给楼顶；不能把已知最高住户当整栋顶层。",
+          "analysis": "可知邻居第8层，但总层数仍未知，除非图或文字另给楼顶；不能把已知最高住户当整栋顶层。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-ten-explicit-rule-and-all-constraints-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人给自己画三朵自评花，并能复述参考算式。能直接记为所有未见迁移和14天保持通过吗？",
+          "answer": "不能，自评与参考复述不是相应未见任务和真实到期表现；保留自评原意，各目标另核本人原答。",
+          "analysis": "不能，自评与参考复述不是相应未见任务和真实到期表现；保留自评原意，各目标另核本人原答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

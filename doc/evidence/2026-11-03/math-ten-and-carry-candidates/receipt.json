@@ -1,0 +1,275 @@
+{
+  "protocol": "math-ten-and-carry-candidates-candidates-v1",
+  "at": "2026-11-02T18:25:23.701Z",
+  "branch": "main",
+  "baseCommit": "8f4d23b324239a01206a50756a91c2127177d65f",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "sourceFiles": 6,
+  "source": {
+    "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+    "sha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+    "publicationYear": 2022,
+    "curriculumStandardYear": 2011,
+    "physicalPageRanges": [
+      [
+        44,
+        77
+      ],
+      [
+        93,
+        108
+      ]
+    ],
+    "pagesIndividuallyVisuallyReviewed": 50
+  },
+  "content": {
+    "drafts": 2,
+    "targets": [
+      8,
+      8
+    ],
+    "newCandidateQuestions": [
+      56,
+      56
+    ],
+    "teacherReviewed": false,
+    "allPageActivitiesDelivered": false,
+    "sufficientRetentionIntervalsApproved": 0
+  },
+  "validation": {
+    "static": [
+      {
+        "slug": "ten",
+        "sourcePages": 34,
+        "targets": 8,
+        "questions": 56,
+        "generatorBytesReproduced": true,
+        "sourcePreflight": true,
+        "format": "source-following-original-materials-v1",
+        "genuineWorkSeparated": true,
+        "teacherReviewed": false,
+        "allPageActivitiesDelivered": false
+      },
+      {
+        "slug": "carry",
+        "sourcePages": 16,
+        "targets": 8,
+        "questions": 56,
+        "generatorBytesReproduced": true,
+        "sourcePreflight": true,
+        "format": "source-following-original-materials-v1",
+        "genuineWorkSeparated": true,
+        "teacherReviewed": false,
+        "allPageActivitiesDelivered": false
+      }
+    ],
+    "http": [
+      {
+        "slug": "ten",
+        "passed": true,
+        "commandReplay": [
+          {
+            "file": "math-g1-a8e88021-ten-v1.json",
+            "sha256": "2dcf6d709fafcc17a2d66aa94ed1d19c2158fd9b6a7fb16b865c3a48a9ade33f",
+            "physicalPages": [
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              66,
+              67,
+              68,
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77
+            ],
+            "fullSourceTextKeptPrivate": true,
+            "targets": 8,
+            "preflightPublishable": false,
+            "gapCount": 104,
+            "linkedDraftMaterialReferences": 56,
+            "gapCodes": [
+              "target_not_published",
+              "material_changed_or_ineligible",
+              "material_family_coverage",
+              "retention_stock_gap"
+            ],
+            "fullOriginalContentReadBack": true,
+            "originalCommandReplayed": true,
+            "incompletePublicationRejected": true
+          }
+        ],
+        "coldRead": {
+          "drafts": 1,
+          "wholeContentAndSourceFingerprintsPreserved": true,
+          "draftQuestions": 56,
+          "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+          "exactSourceNamesAndMetadataPreserved": true,
+          "visualQuestionDocuments": 0,
+          "wholeVisualDocumentsPreserved": true,
+          "staleVisualDocumentVersionRejected": false,
+          "publications": 0,
+          "adoptions": 0,
+          "learnerResponses": 0
+        }
+      },
+      {
+        "slug": "carry",
+        "passed": true,
+        "commandReplay": [
+          {
+            "file": "math-g1-a8e88021-carry-v1.json",
+            "sha256": "61b49740c87a67a13d160d233f1dbf941f0306919958a537531878930850bb91",
+            "physicalPages": [
+              93,
+              94,
+              95,
+              96,
+              97,
+              98,
+              99,
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108
+            ],
+            "fullSourceTextKeptPrivate": true,
+            "targets": 8,
+            "preflightPublishable": false,
+            "gapCount": 104,
+            "linkedDraftMaterialReferences": 56,
+            "gapCodes": [
+              "target_not_published",
+              "material_changed_or_ineligible",
+              "material_family_coverage",
+              "retention_stock_gap"
+            ],
+            "fullOriginalContentReadBack": true,
+            "originalCommandReplayed": true,
+            "incompletePublicationRejected": true
+          }
+        ],
+        "coldRead": {
+          "drafts": 1,
+          "wholeContentAndSourceFingerprintsPreserved": true,
+          "draftQuestions": 56,
+          "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+          "exactSourceNamesAndMetadataPreserved": true,
+          "visualQuestionDocuments": 0,
+          "wholeVisualDocumentsPreserved": true,
+          "staleVisualDocumentVersionRejected": false,
+          "publications": 0,
+          "adoptions": 0,
+          "learnerResponses": 0
+        }
+      }
+    ],
+    "browser": {
+      "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+      "passed": 5,
+      "failed": 0,
+      "screenshots": 7,
+      "wholeConceptTablesAndDownloadedCopyChecked": true,
+      "keyboardAndMobileChecked": true,
+      "learningAndPublicationWrites": 0
+    },
+    "frozenApplicationAndCompiledInputs": 1930,
+    "mainAndQaSyncedInputs": 8,
+    "applicationRuntimeChanged": false,
+    "databaseProtocolChanged": false,
+    "previousFullApi": {
+      "passed": 3103,
+      "failed": 1,
+      "conditionalSkips": 131,
+      "correctedEditorSuitesPassed": 50,
+      "fullSuiteRerun": false,
+      "separateBatches": true
+    }
+  },
+  "protection": {
+    "at": "2026-11-02T18:24:17.640Z",
+    "branch": "main",
+    "branches": [
+      "main"
+    ],
+    "worktreeCount": 1,
+    "protectedFiles": 1063,
+    "changedProtectedFiles": [],
+    "formal": {
+      "schema": 24,
+      "revision": 188
+    },
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "branches": {
+    "remoteNonMain": 41,
+    "allIncludedInMain": true,
+    "localBranches": [
+      "main"
+    ],
+    "worktrees": 1
+  },
+  "boundaries": {
+    "sourceOriginalImagesOrFullTextCommitted": false,
+    "privateLogsOrCredentialsCommitted": false,
+    "teacherAcceptance": false,
+    "scoringAndFamilyApproved": false,
+    "newLearnerResponses": 0,
+    "published": 0,
+    "adopted": 0,
+    "pushed": false,
+    "deployed": false
+  },
+  "remaining": {
+    "registeredBooks": 450,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 102,
+    "booksWithDirectory": 114,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3522,
+    "lessonsWithCandidateFiles": 56,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3466,
+    "authoredFollowingMaterialCandidates": 2499,
+    "materialBundlesWithStaleDraftIdentity": 0,
+    "firstLessonSeparateCandidates": 44,
+    "allRemainingTextbooksAndGesp": true,
+    "teacherScoringFamilyAndSufficientRetentionReview": true,
+    "block5": true
+  }
+}
