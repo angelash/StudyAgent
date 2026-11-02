@@ -1,0 +1,528 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "numbers-and-grid",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-numbers-and-grid-v1.json",
+      "sha256": "d45db90c849c3a8c8188d37f3cb8f4b8230aaf8f5f089e7ddaabb0771418b4a6",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry2",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 12,
+        "pageEnd": 13,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时和四项拟议间隔原创候选。识字、本人书写、朗读背诵和实际交流各自核查，帮助和原答另留；目标、量规、独立题族与充分未见保持库存均未审，不自动发布或写学习事实。",
+  "groups": [
+    {
+      "lesson": "numbers-and-grid",
+      "atomId": "source:chinese:g1:a692a990:numbers-seven-reading",
+      "structure": "numbers-seven-context",
+      "familyProposal": "a692a990-numbers-seven-context",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "七字逐个由本人认读",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字形和当前短语相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助与未读到的字分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "听本人声音逐字覆盖七字，顺序改变仍需看清，不能仅背数字串。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-seven-context-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人录音认读一二三四五上下，再把上和下放在最前面读一遍。",
+          "answer": "听本人声音逐字覆盖七字，顺序改变仍需看清，不能仅背数字串。",
+          "analysis": "听本人声音逐字覆盖七字，顺序改变仍需看清，不能仅背数字串。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-seven-context-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "单独比较一二三字牌，分别读出来，再认四五上下。",
+          "answer": "一二三横画数量和字音对应，另外四字也要实际认读。",
+          "analysis": "一二三横画数量和字音对应，另外四字也要实际认读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-seven-context-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "将七字摆成新顺序或给定新短语，录下自己逐字辨认的声音。",
+          "answer": "看当前字牌逐个认读，读音与字形相符；换顺序后仍要留意每个字。",
+          "analysis": "看当前字牌逐个认读，读音与字形相符；换顺序后仍要留意每个字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-seven-context-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只认出部分字时，先录真实部分，再说明其余字。",
+          "answer": "实际覆盖如实，未读出的字不由教师声音或参考文字补成本人已读。",
+          "analysis": "实际覆盖如实，未读出的字不由教师声音或参考文字补成本人已读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-seven-context-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "题名里有金木水火土，能据此说七字识读行就是那五字吗？录音说明并读识字行。",
+          "answer": "识字行实际是一二三四五上下；题名与识字行不同，仍须本人逐字读。",
+          "analysis": "识字行实际是一二三四五上下；题名与识字行不同，仍须本人逐字读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-seven-context-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "重新认读七字，说明是否先听了示范或看了旧顺序。",
+          "answer": "听本人当前实际读音，说明刚才听过哪些提示；先试过的部分和后来重读分开。",
+          "analysis": "听本人当前实际读音，说明刚才听过哪些提示；先试过的部分和后来重读分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-seven-context-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "先读四和五，再读其余五字，用自己的声音说明一处辨认方法。",
+          "answer": "看完整字形而非都数横线，方法说明与实际读音分别核对。",
+          "analysis": "看完整字形而非都数横线，方法说明与实际读音分别核对。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "numbers-and-grid",
+      "atomId": "source:chinese:g1:a692a990:numbers-four-writing",
+      "structure": "numbers-four-own-writing",
+      "familyProposal": "a692a990-numbers-four-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖一二三上",
+          "weight": 0.4
+        },
+        {
+          "criterion": "横画数量和上字结构可辨",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原写订正和帮助清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "逐字看本人本次原稿，横画数量和上字横竖结构清楚，不以键入文本代手写。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-four-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际书写一二三上四字，上传原稿并指出一处笔画位置。",
+          "answer": "逐字看本人本次原稿，横画数量和上字横竖结构清楚，不以键入文本代手写。",
+          "analysis": "逐字看本人本次原稿，横画数量和上字横竖结构清楚，不以键入文本代手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-four-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先写一二三比较横画间隔，再补上字，上传本人写的部分。",
+          "answer": "四字实际覆盖，间隔和结构按本人原稿核，不用范字图片替代。",
+          "analysis": "四字实际覆盖，间隔和结构按本人原稿核，不用范字图片替代。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-four-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换一张新的练习纸实际写四字，说明哪些格子对应哪个字。",
+          "answer": "纸张改变后仍核本人字形和覆盖，不把换纸本身当陌生知识迁移。",
+          "analysis": "纸张改变后仍核本人字形和覆盖，不把换纸本身当陌生知识迁移。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-four-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只写三和上时，上传原稿并报告另外两字的状态。",
+          "answer": "只记录实际两字，其余未写如实保留，不按两个正确推四字全会。",
+          "analysis": "只记录实际两字，其余未写如实保留，不按两个正确推四字全会。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-four-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "对照自己的二与三检查横画数量，需要订正时保留原稿再写。",
+          "answer": "原写与后改能对应，不故意制造错误，也不把清稿倒作初稿。",
+          "analysis": "原写与后改能对应，不故意制造错误，也不把清稿倒作初稿。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-four-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "重新实际书写四字，说明看范字或得到帮助的情况。",
+          "answer": "本人原稿与帮助条件清楚，识字声音不代字形，字写出也不独证全部笔顺过程。",
+          "analysis": "本人原稿与帮助条件清楚，识字声音不代字形，字写出也不独证全部笔顺过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-four-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选择一处自己不稳的笔画位置，实际再写并上传前后原稿。",
+          "answer": "能比较本人前后字形，未发现问题也可如实说明，不必为任务造错。",
+          "analysis": "能比较本人前后字形，未发现问题也可如实说明，不必为任务造错。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "numbers-and-grid",
+      "atomId": "source:chinese:g1:a692a990:numbers-grid",
+      "structure": "numbers-grid-lines",
+      "familyProposal": "a692a990-numbers-grid-lines",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "横中线和竖中线方向正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "示意格与字画分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人实际制作范围清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "横中线横过中间，竖中线竖过中间；看本人实际示意，不把辅助线当字的笔画。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-grid-lines-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人画一个田字格，标出横中线和竖中线并上传。",
+          "answer": "横中线横过中间，竖中线竖过中间；看本人实际示意，不把辅助线当字的笔画。",
+          "analysis": "横中线横过中间，竖中线竖过中间；看本人实际示意，不把辅助线当字的笔画。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-grid-lines-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "在自己的练习格中指出两条中线，再写一个本课写字目标并上传。",
+          "answer": "格线方向和本人字的笔画分别看，实际写字目标来自一二三上。",
+          "analysis": "格线方向和本人字的笔画分别看，实际写字目标来自一二三上。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-grid-lines-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换成没有字的新空格，自己补画中线并说明方向，上传原件。",
+          "answer": "按新格子的中间位置补横竖参照，图是本人本次制作，允许合理手绘差异。",
+          "analysis": "按新格子的中间位置补横竖参照，图是本人本次制作，允许合理手绘差异。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-grid-lines-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只有印好的格子还没有自己写字，上传时可以说明完成了什么？",
+          "answer": "可以说明观察或标示了格线，不能由空格照片直接登记本人字已写完。",
+          "analysis": "可以说明观察或标示了格线，不能由空格照片直接登记本人字已写完。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-grid-lines-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本次用颜色区分辅助线和自己写的上字，上传并说明各是什么。",
+          "answer": "颜色只是帮助区分，按格线与实际笔画身份判断，不把颜色当固定字义。",
+          "analysis": "颜色只是帮助区分，按格线与实际笔画身份判断，不把颜色当固定字义。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-grid-lines-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "检查自己的中线是否经过中间，必要时在新格中重画并留原图。",
+          "answer": "前后示意真实，改动有对应；不要求假装每次都画得完全相同。",
+          "analysis": "前后示意真实，改动有对应；不要求假装每次都画得完全相同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-grid-lines-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "自己画格、找中线，再实际写一个目标字，分别报告两个步骤。",
+          "answer": "本人示意与写字各有原件，做了一步不自动补成两步全部完成。",
+          "analysis": "本人示意与写字各有原件，做了一步不自动补成两步全部完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "numbers-and-grid",
+      "atomId": "source:chinese:g1:a692a990:numbers-position",
+      "structure": "numbers-current-reference",
+      "familyProposal": "a692a990-numbers-current-reference",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "明确要说的对象",
+          "weight": 0.4
+        },
+        {
+          "criterion": "明确当前比较参照",
+          "weight": 0.4
+        },
+        {
+          "criterion": "上下随给定条件判断",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "相对给定盒子，纸卡在上方；对象和参照都来自当前条件。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-current-reference-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "题目明确纸卡在盒子的上方。纸卡相对盒子在上还是在下？",
+          "answer": "相对给定盒子，纸卡在上方；对象和参照都来自当前条件。",
+          "analysis": "相对给定盒子，纸卡在上方；对象和参照都来自当前条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-current-reference-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把纸卡移到盒子下方后，原来的上方说法还适用吗？",
+          "answer": "不再适用，应按移动后的当前关系说在盒子下方。",
+          "analysis": "不再适用，应按移动后的当前关系说在盒子下方。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-current-reference-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新情境书本在桌面上，纸在书本下。纸相对书本怎样说？",
+          "answer": "纸在书本下方，不照搬纸卡相对盒子的旧位置。",
+          "analysis": "纸在书本下方，不照搬纸卡相对盒子的旧位置。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-current-reference-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只给一个上字但没说明谈哪件物体，可以确定某物现在在哪吗？",
+          "answer": "还不能，需要对象和当前位置关系，字牌本身不提供具体物体位置。",
+          "analysis": "还不能，需要对象和当前位置关系，字牌本身不提供具体物体位置。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-current-reference-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "同一件物体更换参照后，为什么要重新看上下关系？",
+          "answer": "位置词描述对象与参照的关系，换参照可能改变应怎样表述。",
+          "analysis": "位置词描述对象与参照的关系，换参照可能改变应怎样表述。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-current-reference-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "用一句话说明自己本次实际观察到的一个上下关系。",
+          "answer": "对象、参照和本次实际观察清楚；没观察就不能用角色示例代个人记录。",
+          "analysis": "对象、参照和本次实际观察清楚；没观察就不能用角色示例代个人记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-current-reference-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "给出明确条件让同伴判断上或下，再说明这只是题目条件还是实际摆放。",
+          "answer": "给定条件与真实活动身份清楚，回答依据当前关系，不由口头条件证明已摆物品。",
+          "analysis": "给定条件与真实活动身份清楚，回答依据当前关系，不由口头条件证明已摆物品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "numbers-and-grid",
+      "atomId": "source:chinese:g1:a692a990:numbers-recall",
+      "structure": "numbers-current-four-lines",
+      "familyProposal": "a692a990-numbers-current-four-lines",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人声音对应本件四句",
+          "weight": 0.4
+        },
+        {
+          "criterion": "朗读和脱稿条件清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "缺句帮助原改如实保留",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "逐句对照本件原页听核本人声音，朗读与看稿条件真实，不以数字串代四句。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-current-four-lines-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "先按本件原页朗读四句，录音说明自己是否看稿。",
+          "answer": "逐句对照本件原页听核本人声音，朗读与看稿条件真实，不以数字串代四句。",
+          "analysis": "逐句对照本件原页听核本人声音，朗读与看稿条件真实，不以数字串代四句。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-current-four-lines-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "尝试脱稿背自己实际会的部分，再说明其余句子的状态。",
+          "answer": "本人当前声音覆盖到哪句就核到哪句，未完成部分保留，不用参考音补齐。",
+          "analysis": "本人当前声音覆盖到哪句就核到哪句，未完成部分保留，不用参考音补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-current-four-lines-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "先读一条明确原创的新短句练节奏，再回本件四句朗读或背诵。",
+          "answer": "原创练习和指定原篇分开，短句练习不替本件四句的本人表现。",
+          "analysis": "原创练习和指定原篇分开，短句练习不替本件四句的本人表现。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-current-four-lines-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次实际尝试四句积累，卡顿或得到提示时保留原音。",
+          "answer": "本人初答、提示和后改对应，帮助后正确不倒改原来的表现。",
+          "analysis": "本人初答、提示和后改对应，帮助后正确不倒改原来的表现。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-current-four-lines-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只顺着说出一到五，是否等于背完本件四句？录音说明并实际尝试。",
+          "answer": "不等于；还需对照当前原篇其他句子和本人实际声音，不能只看数词顺序。",
+          "analysis": "不等于；还需对照当前原篇其他句子和本人实际声音，不能只看数词顺序。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-current-four-lines-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "重新实际读或背四句，说明刚才是否看过原页和所用帮助。",
+          "answer": "按本次真实声音核对四句，说明刚才看稿或听提示的情况，忘记的句子再回原篇练。",
+          "analysis": "按本次真实声音核对四句，说明刚才看稿或听提示的情况，忘记的句子再回原篇练。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-numbers-and-grid-numbers-current-four-lines-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人录音区分看稿朗读和脱稿尝试分别完成了哪些部分。",
+          "answer": "两种方式和范围清楚，没实际背到的部分不能由愿望或参考文字补为完成。",
+          "analysis": "两种方式和范围清楚，没实际背到的部分不能由愿望或参考文字补为完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

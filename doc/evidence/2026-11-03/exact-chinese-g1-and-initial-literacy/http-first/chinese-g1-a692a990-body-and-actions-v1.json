@@ -1,0 +1,62 @@
+{
+  "at": "2026-11-02T22:05:56.356Z",
+  "passed": true,
+  "storage": "sqlite",
+  "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+  "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+  "subject": "chinese",
+  "prewriteValidation": {
+    "passed": true,
+    "selectedDrafts": 1,
+    "questionCount": 28,
+    "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "proofFingerprint": "7aa016682f49c552065465f816e638c49b908b6ea07448e4921c0e6831bd2605"
+  },
+  "drafts": [
+    {
+      "file": "chinese-g1-a692a990-body-and-actions-v1.json",
+      "sha256": "cb0b0b0ad45dbd417416fb38775faf1ee3dcf7dd9c2e843fa93f1957b7ac4bac",
+      "physicalPages": [
+        14,
+        15
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 4,
+      "preflightPublishable": false,
+      "gapCount": 52,
+      "linkedDraftMaterialReferences": 28,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 1,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 28,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "exactSourceNamesAndMetadataPreserved": true,
+    "visualQuestionDocuments": 0,
+    "wholeVisualDocumentsPreserved": true,
+    "staleVisualDocumentVersionRejected": false,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-body-and-actions-v1.json",
+    "sha256": "4b7a2ee02624fe96b527f33bdf11d683734a56a57cdd7eb91f3b3c303ca473cd",
+    "groups": 4,
+    "questions": 28,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

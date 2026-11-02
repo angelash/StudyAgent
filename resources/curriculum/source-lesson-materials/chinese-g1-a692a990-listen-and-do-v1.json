@@ -1,0 +1,428 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "listen-and-do",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-listen-and-do-v1.json",
+      "sha256": "af3fd38fcf3046e1cba999facb4dfcf9a184f29f4db7d1b42950397d484c28e5",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry6",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 19,
+        "pageEnd": 19,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时和四项拟议间隔原创候选。识字、本人书写、朗读背诵和实际交流各自核查，帮助和原答另留；目标、量规、独立题族与充分未见保持库存均未审，不自动发布或写学习事实。",
+  "groups": [
+    {
+      "lesson": "listen-and-do",
+      "atomId": "source:chinese:g1:a692a990:game-speaking",
+      "structure": "game-clear-current-command",
+      "familyProposal": "a692a990-game-clear-current-command",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人指令对象动作清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "位置或顺序足够明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "音量与任务合适",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "本人声音清楚说出纸卡、放和书旁边；以听清为准，不要求喊叫。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-clear-current-command-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录一句原创指令，请角色把纸卡放在书旁边。",
+          "answer": "本人声音清楚说出纸卡、放和书旁边；以听清为准，不要求喊叫。",
+          "analysis": "本人声音清楚说出纸卡、放和书旁边；以听清为准，不要求喊叫。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-clear-current-command-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“放一下”补成别人能明白的一句话并录音。",
+          "answer": "补清放什么和放哪里，允许不同明确而合适的原创任务。",
+          "analysis": "补清放什么和放哪里，允许不同明确而合适的原创任务。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-clear-current-command-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换成合上一本书的任务，自己说一句清楚指令。",
+          "answer": "指令对应新动作，不照搬纸卡位置，音量适合当前环境。",
+          "analysis": "指令对应新动作，不照搬纸卡位置，音量适合当前环境。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-clear-current-command-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "对方说没听见时，录一句怎样重新说明。",
+          "answer": "可适当调整音量或重说要点，不能只责怪对方。",
+          "analysis": "可适当调整音量或重说要点，不能只责怪对方。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-clear-current-command-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "听者不知道是哪张纸卡，怎样补充一句？",
+          "answer": "补充可辨认的当前对象，如位置或明确标记，不编造未给条件。",
+          "analysis": "补充可辨认的当前对象，如位置或明确标记，不编造未给条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-clear-current-command-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "选择适合自己条件的一项任务，录一句让角色听清的指令。",
+          "answer": "本人指令合适且可执行，不要求危险动作或强迫身体姿态。",
+          "analysis": "本人指令合适且可执行，不要求危险动作或强迫身体姿态。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-clear-current-command-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "先说两步原创指令，再解释用哪个词提示先后。",
+          "answer": "两步清楚，可用先再提示顺序，口头发令不等别人已执行。",
+          "analysis": "两步清楚，可用先再提示顺序，口头发令不等别人已执行。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "listen-and-do",
+      "atomId": "source:chinese:g1:a692a990:game-listening",
+      "structure": "game-hear-and-confirm",
+      "familyProposal": "a692a990-game-hear-and-confirm",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "复述对应当前完整指令",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未听清会请求说明",
+          "weight": 0.4
+        },
+        {
+          "criterion": "听到与计划执行分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "成人提供声音，核本人复述是否覆盖两步；帮助条件保留。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-hear-and-confirm-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "请成人读题中原创指令“先合上书，再把纸卡放到书旁”。听完后本人复述。",
+          "answer": "成人提供声音，核本人复述是否覆盖两步；帮助条件保留。",
+          "analysis": "成人提供声音，核本人复述是否覆盖两步；帮助条件保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-hear-and-confirm-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "听者漏听放在哪里，录一句怎样追问。",
+          "answer": "询问当前位置或请对方重说，未知不假装已听清。",
+          "analysis": "询问当前位置或请对方重说，未知不假装已听清。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-hear-and-confirm-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "成人读新指令“先拿起纸卡，再放到盒子旁”，本人听完说两步。",
+          "answer": "复述对应新对象与位置，不沿用上题书旁的旧答案。",
+          "analysis": "复述对应新对象与位置，不沿用上题书旁的旧答案。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-hear-and-confirm-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只读了题中文字没听声音，录音要怎样说明？",
+          "answer": "说明是读文字练理解，真实听辨尚待提供声音，不登记成已经听过。",
+          "analysis": "说明是读文字练理解，真实听辨尚待提供声音，不登记成已经听过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-hear-and-confirm-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "听完说出计划但还没实际做，怎样介绍进度？",
+          "answer": "说明已听或复述计划、动作待做，不把复述当实际执行。",
+          "analysis": "说明已听或复述计划、动作待做，不把复述当实际执行。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-hear-and-confirm-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际听同伴一句合适指令后复述，并说明是否得到重复提示。",
+          "answer": "原话与复述对应，重复帮助保留，没有同伴则如实标练习条件。",
+          "analysis": "原话与复述对应，重复帮助保留，没有同伴则如实标练习条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-hear-and-confirm-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "听到两种不同指令时，本次应复述哪条？",
+          "answer": "明确当前指定的一条并按其原话复述，不能混合成未经发出的新指令。",
+          "analysis": "明确当前指定的一条并按其原话复述，不能混合成未经发出的新指令。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "listen-and-do",
+      "atomId": "source:chinese:g1:a692a990:game-sequence",
+      "structure": "game-current-order-process",
+      "familyProposal": "a692a990-game-current-order-process",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "步骤对应当前指令",
+          "weight": 0.4
+        },
+        {
+          "criterion": "先后有真实过程依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完成范围与调整清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "按实际过程核先后，静图不足处如实说明；不要求露脸或冒险动作。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-current-order-process-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "按“先合上书，再把纸卡放到书旁”实际尝试，上传能说明两步的本人过程图。",
+          "answer": "按实际过程核先后，静图不足处如实说明；不要求露脸或冒险动作。",
+          "analysis": "按实际过程核先后，静图不足处如实说明；不要求露脸或冒险动作。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-current-order-process-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先复述“先放纸卡到盒旁，再合书”，然后实际做并上传过程记录。",
+          "answer": "顺序按当前指令，复述与动作分别说明，不只看最后摆放。",
+          "analysis": "顺序按当前指令，复述与动作分别说明，不只看最后摆放。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-current-order-process-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新任务先把两张卡并排，再把书放到旁边，实际尝试并留过程图。",
+          "answer": "对象、步骤和顺序对应新条件，原步骤不能直接搬用。",
+          "analysis": "对象、步骤和顺序对应新条件，原步骤不能直接搬用。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-current-order-process-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只完成第一步时，上传原图后如何说明？",
+          "answer": "仅记实际第一步，第二步尚待做，不靠参考图补齐过程。",
+          "analysis": "仅记实际第一步，第二步尚待做，不靠参考图补齐过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-current-order-process-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "两张结果照片看不出先后，怎样补充真实说明？",
+          "answer": "说明实际观察者或过程记录能支持的范围，不能凭照片顺序编造动作顺序。",
+          "analysis": "说明实际观察者或过程记录能支持的范围，不能凭照片顺序编造动作顺序。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-current-order-process-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原动作不适合本人条件，和参与者商定合适任务后上传过程。",
+          "answer": "调整与当前真实任务清楚，以合适方法参与，不强迫完成不适合动作。",
+          "analysis": "调整与当前真实任务清楚，以合适方法参与，不强迫完成不适合动作。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-current-order-process-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重做一个当前两步指令，保留原来尝试和本次过程图。",
+          "answer": "两次过程分别对应，帮助与调整清楚，不用重做覆盖首次。",
+          "analysis": "两次过程分别对应，帮助与调整清楚，不用重做覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "listen-and-do",
+      "atomId": "source:chinese:g1:a692a990:game-turns",
+      "structure": "game-real-turn-taking",
+      "familyProposal": "a692a990-game-real-turn-taking",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "双方实际参与或模拟身份明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色轮换和回应清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "回应对应本次过程",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "真实发令与听者回应对应；动作另看过程，没有双方参与就注明模拟。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-real-turn-taking-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "双方愿意时轮流说一条合适指令，保留同意提供的交流声音并说明实际动作。",
+          "answer": "真实发令与听者回应对应；动作另看过程，没有双方参与就注明模拟。",
+          "analysis": "真实发令与听者回应对应；动作另看过程，没有双方参与就注明模拟。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-real-turn-taking-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "只由自己扮演两人，录一轮说听练习并标明条件。",
+          "answer": "本人分角色表达可以练习，不能登记成与真实同伴已互动。",
+          "analysis": "本人分角色表达可以练习，不能登记成与真实同伴已互动。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-real-turn-taking-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换一位愿意参与者和新指令，听完回应再换角色。",
+          "answer": "新原话与回应对应，参与和帮助按实际说明。",
+          "analysis": "新原话与回应对应，参与和帮助按实际说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-real-turn-taking-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "对方说最后一步不清楚，发令者可以怎样回应？",
+          "answer": "重说当前最后一步或解释对象位置，回应接对方真实疑问。",
+          "analysis": "重说当前最后一步或解释对象位置，回应接对方真实疑问。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-real-turn-taking-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本次同伴只说了指令，没有听者回应，应怎样说明？",
+          "answer": "记录实际发令，交流回应尚待完成，不由预设台词补成双方已说。",
+          "analysis": "记录实际发令，交流回应尚待完成，不由预设台词补成双方已说。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-real-turn-taking-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际换角色后分别说谁刚才发令、谁现在听做。",
+          "answer": "角色随本轮更新，不把人物永久固定为发令者或听者。",
+          "analysis": "角色随本轮更新，不把人物永久固定为发令者或听者。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-listen-and-do-game-real-turn-taking-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "回顾本次实际交流，各说一句已完成与仍需说明的事。",
+          "answer": "依据本次过程，允许不同合理表达，没发生的互动不由例子替代。",
+          "analysis": "依据本次过程，允许不同合理表达，没发生的互动不由例子替代。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

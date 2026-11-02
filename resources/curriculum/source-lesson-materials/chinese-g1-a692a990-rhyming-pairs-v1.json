@@ -1,0 +1,428 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "rhyming-pairs",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-rhyming-pairs-v1.json",
+      "sha256": "b8c9ea546ee9693c5c01aa40fe1b8a63743d13a6eee98b5269d21420bc6c2ab4",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry5",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 18,
+        "pageEnd": 18,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时和四项拟议间隔原创候选。识字、本人书写、朗读背诵和实际交流各自核查，帮助和原答另留；目标、量规、独立题族与充分未见保持库存均未审，不自动发布或写学习事实。",
+  "groups": [
+    {
+      "lesson": "rhyming-pairs",
+      "atomId": "source:chinese:g1:a692a990:rhyme-seven-reading",
+      "structure": "rhyme-seven-character-order",
+      "familyProposal": "a692a990-rhyme-seven-character-order",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人认读七字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "换序仍看当前字形",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助与原音清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "七字声音逐个对应，换位仍实际看字，不只背完整句子。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-seven-character-order-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读对云雨风花鸟虫，再把虫放在最前面重认。",
+          "answer": "七字声音逐个对应，换位仍实际看字，不只背完整句子。",
+          "analysis": "七字声音逐个对应，换位仍实际看字，不只背完整句子。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-seven-character-order-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先读云雨风三字，再认剩下四字并录音。",
+          "answer": "本人实际覆盖七字，字音与当前字牌清楚对应。",
+          "analysis": "本人实际覆盖七字，字音与当前字牌清楚对应。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-seven-character-order-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序鸟对虫花风雨云，自己看字再读。",
+          "answer": "按当前新序逐个辨认，不用原句背出代单字识读。",
+          "analysis": "按当前新序逐个辨认，不用原句背出代单字识读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-seven-character-order-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只有五字能自己认出，怎样说明另外两字？",
+          "answer": "保留真实原音，未认出的字等待提示后再练，不以示范声音补齐。",
+          "analysis": "保留真实原音，未认出的字等待提示后再练，不以示范声音补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-seven-character-order-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "从本件找云和鸟分别实际读，再把其他五字认一遍。",
+          "answer": "找字与本人读音对应，原句熟悉不自动证明全部单字可辨。",
+          "analysis": "找字与本人读音对应，原句熟悉不自动证明全部单字可辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-seven-character-order-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "看过示范后再次认七字，说明本次条件。",
+          "answer": "本人实际读音和所获帮助清楚，不倒改首次表现。",
+          "analysis": "本人实际读音和所获帮助清楚，不倒改首次表现。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-seven-character-order-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "任选两张容易混的字牌分别认，再补读其余五字。",
+          "answer": "按本次真实字形和声音核，允许不同学习者选择不同难字。",
+          "analysis": "按本次真实字形和声音核，允许不同学习者选择不同难字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "rhyming-pairs",
+      "atomId": "source:chinese:g1:a692a990:rhyme-pairs",
+      "structure": "rhyme-current-pair-relation",
+      "familyProposal": "a692a990-rhyme-current-pair-relation",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "按当前短句正确配对",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明词或短语的联系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不把成对一律说成反义",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "云与雨相对；两者联系天气，成对不表示一定反义。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-current-pair-relation-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件云与谁相对，能因为成对就说两词意思相反吗？",
+          "answer": "云与雨相对；两者联系天气，成对不表示一定反义。",
+          "analysis": "云与雨相对；两者联系天气，成对不表示一定反义。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-current-pair-relation-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "按本件原句，花对树、鸟对虫应怎样分组？",
+          "answer": "花与树一组，鸟与虫一组，依据本件短句而不交叉换词。",
+          "analysis": "花与树一组，鸟与虫一组，依据本件短句而不交叉换词。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-current-pair-relation-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创太阳与月亮配对可以说明什么联系，它是本件原句吗？",
+          "answer": "可联系天空中的事物或昼夜等明确联系；这是原创活动，不冒充本件原句。",
+          "analysis": "可联系天空中的事物或昼夜等明确联系；这是原创活动，不冒充本件原句。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-current-pair-relation-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "山清对水秀要只看清与秀两个字吗？",
+          "answer": "要看完整短语，分别描写山与水的美，不能随意丢掉对象。",
+          "analysis": "要看完整短语，分别描写山与水的美，不能随意丢掉对象。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-current-pair-relation-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "柳绿对桃红中两边颜色分别联系什么？",
+          "answer": "绿联系柳，红联系桃，按当前短语说明，不交换对象。",
+          "analysis": "绿联系柳，红联系桃，按当前短语说明，不交换对象。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-current-pair-relation-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "新编的花对草和本件花对树要怎样分别介绍？",
+          "answer": "前者标明原创配对，后者是本件原句，背诵指定原篇应核后者。",
+          "analysis": "前者标明原创配对，后者是本件原句，背诵指定原篇应核后者。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-current-pair-relation-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "任选一组本件配对，解释关联并说明是否一定是反义。",
+          "answer": "所选配对符合原篇，关联具体，知道成对不必互为反义。",
+          "analysis": "所选配对符合原篇，关联具体，知道成对不必互为反义。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "rhyming-pairs",
+      "atomId": "source:chinese:g1:a692a990:rhyme-three-writing",
+      "structure": "rhyme-three-own-writing",
+      "familyProposal": "a692a990-rhyme-three-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖虫云山",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字形结构和位置可辨",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原写订正帮助分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三字由本人写出，完整结构可辨，不用键入字或印刷范字代替。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-three-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际写虫云山三字，上传本次原稿。",
+          "answer": "三字由本人写出，完整结构可辨，不用键入字或印刷范字代替。",
+          "analysis": "三字由本人写出，完整结构可辨，不用键入字或印刷范字代替。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-three-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "观察范写后先写云与山，再补虫，上传原件。",
+          "answer": "实际三字范围齐全，范写与本人原稿分别说明。",
+          "analysis": "实际三字范围齐全，范写与本人原稿分别说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-three-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换新纸写三字，选一个字说明笔画位置。",
+          "answer": "位置说明对应本次原稿，纸张变化不代实际写字过程。",
+          "analysis": "位置说明对应本次原稿，纸张变化不代实际写字过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-three-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只写虫，上传时如何说明另外两字？",
+          "answer": "如实保留只写一字的范围，云山待写，不从部分推全部完成。",
+          "analysis": "如实保留只写一字的范围，云山待写，不从部分推全部完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-three-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "对照本人三字检查，需要改动时保留原稿再写并上传。",
+          "answer": "前后作品真实对应，没有问题可如实说明，不为任务故意造错。",
+          "analysis": "前后作品真实对应，没有问题可如实说明，不为任务故意造错。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-three-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "写三字时听过提示或看过范字，上传时怎样交代？",
+          "answer": "交代实际帮助与本人书写，帮助后作品不改成无帮助首写。",
+          "analysis": "交代实际帮助与本人书写，帮助后作品不改成无帮助首写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-three-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "上传三字原稿，另说明如何核本人实际笔顺。",
+          "answer": "照片看形，笔顺看实际过程或清楚过程记录，不能由结果独断顺序。",
+          "analysis": "照片看形，笔顺看实际过程或清楚过程记录，不能由结果独断顺序。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "rhyming-pairs",
+      "atomId": "source:chinese:g1:a692a990:rhyme-recall",
+      "structure": "rhyme-current-text-voice",
+      "familyProposal": "a692a990-rhyme-current-text-voice",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人声音对应完整原篇",
+          "weight": 0.4
+        },
+        {
+          "criterion": "短句停顿与配对清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "看稿脱稿帮助如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "逐句对照原篇，短词短语配对清楚，朗读条件真实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-current-text-voice-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "按本件完整短篇本人朗读一遍，录音说明是否看稿。",
+          "answer": "逐句对照原篇，短词短语配对清楚，朗读条件真实。",
+          "analysis": "逐句对照原篇，短词短语配对清楚，朗读条件真实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-current-text-voice-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "尝试脱稿背自己实际记住的句子，说明其余部分。",
+          "answer": "只核本人实际声音，缺句与提示保留，不把参考音补成本人。",
+          "analysis": "只核本人实际声音，缺句与提示保留，不把参考音补成本人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-current-text-voice-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "先读一组原创配对练停顿，再回本件原篇实际朗读。",
+          "answer": "原创与本件分明，停顿练习不替指定原篇的实际表现。",
+          "analysis": "原创与本件分明，停顿练习不替指定原篇的实际表现。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-current-text-voice-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次读到山清水秀相关句子时卡住，怎样留这段录音？",
+          "answer": "保留原卡顿，帮助后再读另记，不用清稿覆盖首次声音。",
+          "analysis": "保留原卡顿，帮助后再读另记，不用清稿覆盖首次声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-current-text-voice-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只背云对雨一句能说整篇都会了吗？录音说明并继续尝试。",
+          "answer": "不能，覆盖按本次实际句子核，未读或未背部分仍待练。",
+          "analysis": "不能，覆盖按本次实际句子核，未读或未背部分仍待练。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-current-text-voice-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "重新朗读或背诵整篇，说明刚才是否翻过原页。",
+          "answer": "看稿、近期复看与本人声音清楚，重复原篇不自动算未见测试。",
+          "analysis": "看稿、近期复看与本人声音清楚，重复原篇不自动算未见测试。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-rhyming-pairs-rhyme-current-text-voice-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人比较这次看稿朗读和脱稿尝试分别覆盖哪些句子。",
+          "answer": "两种条件和范围真实，不以愿望或熟悉感代替实际声音。",
+          "analysis": "两种条件和范围真实，不以愿望或熟悉感代替实际声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

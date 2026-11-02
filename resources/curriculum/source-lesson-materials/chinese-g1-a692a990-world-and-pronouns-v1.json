@@ -1,0 +1,428 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "world-and-pronouns",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-world-and-pronouns-v1.json",
+      "sha256": "efba4e27bd677e8eeb0d54a8d788d6aff61960f4bcdacd70c0ad4ce659d42ad0",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry1",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 11,
+        "pageEnd": 11,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时和四项拟议间隔原创候选。识字、本人书写、朗读背诵和实际交流各自核查，帮助和原答另留；目标、量规、独立题族与充分未见保持库存均未审，不自动发布或写学习事实。",
+  "groups": [
+    {
+      "lesson": "world-and-pronouns",
+      "atomId": "source:chinese:g1:a692a990:world-six-reading",
+      "structure": "world-six-character-voice",
+      "familyProposal": "a692a990-world-six-character-voice",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人实际声音覆盖六字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "改变次序后仍逐字认读",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助和未认出处如实保留",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "逐字听核本人当前读音与目标字对应；顺序改变仍需看清，跟读帮助如实说明。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-six-character-voice-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人录音逐个读天、地、人、你、我、他，再换成我、人、天、他、地、你的顺序。",
+          "answer": "逐字听核本人当前读音与目标字对应；顺序改变仍需看清，跟读帮助如实说明。",
+          "analysis": "逐字听核本人当前读音与目标字对应；顺序改变仍需看清，跟读帮助如实说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-six-character-voice-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先单独认天和人，再读另外四字，把不稳的地方说明。",
+          "answer": "本人声音逐字对应，比较天上方横画，不能只用背顺序代替辨认。",
+          "analysis": "本人声音逐字对应，比较天上方横画，不能只用背顺序代替辨认。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-six-character-voice-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "把六字写成新的排列字牌，请逐个指认并录下自己的声音。",
+          "answer": "新排列中六字都由本人实际认读，字牌顺序不同不改变字的身份。",
+          "analysis": "新排列中六字都由本人实际认读，字牌顺序不同不改变字的身份。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-six-character-voice-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次自己读六字，读不出的字可以请人说明后再试，并保留前后声音。",
+          "answer": "先答与帮助后的再答分开，未读到的字不由参考声音补齐。",
+          "analysis": "先答与帮助后的再答分开，未读到的字不由参考声音补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-six-character-voice-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只完成三个字时，先录真实读到的部分，再说明其余字。",
+          "answer": "实际覆盖范围清楚，不把三字流畅推为六字全部完成。",
+          "analysis": "实际覆盖范围清楚，不把三字流畅推为六字全部完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-six-character-voice-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "将你我他放在前三位重新认读，再读天地人，说明是否跟读过。",
+          "answer": "按当前顺序听本人逐字认读；先跟读过也如实说明，再看看哪些字能自己认出。",
+          "analysis": "按当前顺序听本人逐字认读；先跟读过也如实说明，再看看哪些字能自己认出。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-six-character-voice-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "不看旧排列再认六字，说明自己怎样看清一个容易混的字。",
+          "answer": "本人实际读出六字，再用完整字形说明一处区别；说出方法后仍要自己读一读。",
+          "analysis": "本人实际读出六字，再用完整字形说明一处区别；说出方法后仍要自己读一读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "world-and-pronouns",
+      "atomId": "source:chinese:g1:a692a990:world-meanings",
+      "structure": "world-contextual-meaning",
+      "familyProposal": "a692a990-world-contextual-meaning",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "依据当前说明选择字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "所指对象和字义相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "保留不知道的语境",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "天空联系天，大地联系地，小朋友作为一个人联系人；按当前所指对应。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-contextual-meaning-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "当前卡片说天空、大地和一个小朋友，分别可以联系天、地、人中的哪个字？",
+          "answer": "天空联系天，大地联系地，小朋友作为一个人联系人；按当前所指对应。",
+          "analysis": "天空联系天，大地联系地，小朋友作为一个人联系人；按当前所指对应。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-contextual-meaning-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "天和人看起来接近，辨认时可以留意哪一处？",
+          "answer": "天上方的横画与人的字形不同，应看完整字，不能只看下面展开的部分。",
+          "analysis": "天上方的横画与人的字形不同，应看完整字，不能只看下面展开的部分。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-contextual-meaning-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡片谈一位老师和头顶的天空，分别选人还是天，并说明依据。",
+          "answer": "老师是人，天空联系天，选择依据是当前对象而不是字牌摆放位置。",
+          "analysis": "老师是人，天空联系天，选择依据是当前对象而不是字牌摆放位置。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-contextual-meaning-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "字牌人被放到桌子最上方，会因此变成天吗？",
+          "answer": "不会，摆放位置不改变这个字的字形与身份，仍要看清字本身。",
+          "analysis": "不会，摆放位置不改变这个字的字形与身份，仍要看清字本身。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-contextual-meaning-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "卡片只说某个东西在上方，没说是什么，能直接判一定是天吗？",
+          "answer": "还不能，上方也可能有其他物体，需要当前对象的信息。",
+          "analysis": "还不能，上方也可能有其他物体，需要当前对象的信息。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-contextual-meaning-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本次找出表示大地的字，再说明另一张人字牌谈的是什么。",
+          "answer": "地联系当前大地，人联系被谈到的人，两张字不能只按位置互换。",
+          "analysis": "地联系当前大地，人联系被谈到的人，两张字不能只按位置互换。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-contextual-meaning-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "给天和人各说一个合适的简短情境，说明不是同一个意思。",
+          "answer": "情境与天空或人相符；允许合理不同表达，不把造句等同全部六字写得出。",
+          "analysis": "情境与天空或人相符；允许合理不同表达，不把造句等同全部六字写得出。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "world-and-pronouns",
+      "atomId": "source:chinese:g1:a692a990:world-speaker",
+      "structure": "world-speaker-switch",
+      "familyProposal": "a692a990-world-speaker-switch",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "明确当前说话受话角色",
+          "weight": 0.4
+        },
+        {
+          "criterion": "我和你随角色正确更新",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人实际说清对应关系",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "当前我指小禾、你指小岚；本人实际说明应对应给定说话与受话角色。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-speaker-switch-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "小禾对小岚说“我讲，你听”。录音说明我和你分别指谁。",
+          "answer": "当前我指小禾、你指小岚；本人实际说明应对应给定说话与受话角色。",
+          "analysis": "当前我指小禾、你指小岚；本人实际说明应对应给定说话与受话角色。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-speaker-switch-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "换成小岚对小禾说同一句，录音说明两字现在指谁。",
+          "answer": "当前我改指小岚、你改指小禾，不沿用上一轮的固定人名。",
+          "analysis": "当前我改指小岚、你改指小禾，不沿用上一轮的固定人名。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-speaker-switch-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新角色阿青对阿禾说“你先来，我等一等”。录音说清两个字指谁。",
+          "answer": "你指受话者阿禾，我指说话者阿青，按这句当前角色判断。",
+          "analysis": "你指受话者阿禾，我指说话者阿青，按这句当前角色判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-speaker-switch-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "自己分两种角色说一句我和你的话，录音注明是角色练习。",
+          "answer": "两轮角色与我你对应清楚，分角色练习不冒充真实同伴已参加。",
+          "analysis": "两轮角色与我你对应清楚，分角色练习不冒充真实同伴已参加。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-speaker-switch-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "题目没有告诉是谁在说，也没说对谁说，录音说明还想问什么。",
+          "answer": "需要知道说话者和受话者，不能只看我你二字就随意给出姓名。",
+          "analysis": "需要知道说话者和受话者，不能只看我你二字就随意给出姓名。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-speaker-switch-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本次先说谁在讲话，再说明我指谁，用自己的声音回答。",
+          "answer": "先确认角色再解释指称，答案和本人声音对应，不靠参考录音代答。",
+          "analysis": "先确认角色再解释指称，答案和本人声音对应，不靠参考录音代答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-speaker-switch-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用新的合适角色换一轮我你对话，指出哪一处随角色改变。",
+          "answer": "新轮次按当前说听对象解释，角色的资料与本人真实情况分开。",
+          "analysis": "新轮次按当前说听对象解释，角色的资料与本人真实情况分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "world-and-pronouns",
+      "atomId": "source:chinese:g1:a692a990:world-third-person",
+      "structure": "world-third-person-context",
+      "familyProposal": "a692a990-world-third-person-context",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "第三人的依据明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "没有语境时先说明未知",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不把角色当本人资料",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "他指卡片明确将讲故事的小宁，依据来自当前角色说明。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-third-person-context-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "卡片明确小宁将讲故事，小禾对小岚说“他来讲”。他指谁，依据是什么？",
+          "answer": "他指卡片明确将讲故事的小宁，依据来自当前角色说明。",
+          "analysis": "他指卡片明确将讲故事的小宁，依据来自当前角色说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-third-person-context-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "只听一句“他来了”，没有其他介绍，可以确定是小宁吗？",
+          "answer": "不能确定，需要问正在谈哪一个人，不能照搬熟悉的人名。",
+          "analysis": "不能确定，需要问正在谈哪一个人，不能照搬熟悉的人名。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-third-person-context-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡片明确阿禾在门口，阿青说“他在门口”。当前他指谁？",
+          "answer": "指已由卡片说明在门口的阿禾，新的指称按新语境判断。",
+          "analysis": "指已由卡片说明在门口的阿禾，新的指称按新语境判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-third-person-context-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "同一个他字放进另一段对话，能否总固定指原来的角色？",
+          "answer": "不能，字形虽相同，所指需要看当前前后说明。",
+          "analysis": "不能，字形虽相同，所指需要看当前前后说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-third-person-context-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "两个人都可能是“他来了”中的人，可以怎样补一句让听者清楚？",
+          "answer": "补出姓名或明确当前被谈到的人，再使用他，避免让听者猜。",
+          "analysis": "补出姓名或明确当前被谈到的人，再使用他，避免让听者猜。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-third-person-context-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人实际分享一段角色介绍，哪些姓名只是练习卡上的资料？",
+          "answer": "按实际材料标明虚构角色，不能把角色姓名和经历写成自己的资料。",
+          "analysis": "按实际材料标明虚构角色，不能把角色姓名和经历写成自己的资料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-world-and-pronouns-world-third-person-context-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "分别说明一段已交代对象和一段没交代对象的他字用法有什么不同。",
+          "answer": "前者可据当前说明确定所指，后者需要追问；未知不能由参考例子填补。",
+          "analysis": "前者可据当前说明确定所指，后者需要追问；未知不能由参考例子填补。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

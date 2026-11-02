@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "garden-one",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-garden-one-v1.json",
+      "sha256": "3759a02dd0b13c988ff90ae150a689cf752e713d341aa19130a339ab8a0405ca",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry7",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 20,
+        "pageEnd": 23,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时和四项拟议间隔原创候选。识字、本人书写、朗读背诵和实际交流各自核查，帮助和原答另留；目标、量规、独立题族与充分未见保持库存均未审，不自动发布或写学习事实。",
+  "groups": [
+    {
+      "lesson": "garden-one",
+      "atomId": "source:chinese:g1:a692a990:garden-five-reading",
+      "structure": "garden-five-number-voice",
+      "familyProposal": "a692a990-garden-five-number-voice",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人逐字认读五字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "变序仍依据字形",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助与实际覆盖清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "五字声音逐个对应，变序后仍看字而非只背数串。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-five-number-voice-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读六七八九十，再把十放前面重认。",
+          "answer": "五字声音逐个对应，变序后仍看字而非只背数串。",
+          "analysis": "五字声音逐个对应，变序后仍看字而非只背数串。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-five-number-voice-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先认八与六，再补认七九十并录音。",
+          "answer": "五字本人实际覆盖，字序按当前任务，帮助如实。",
+          "analysis": "五字本人实际覆盖，字序按当前任务，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-five-number-voice-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新序九七十六八，自己看字认读。",
+          "answer": "对应新顺序，不能顺背六到十代替。",
+          "analysis": "对应新顺序，不能顺背六到十代替。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-five-number-voice-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只认出三字时，录音后怎样说明？",
+          "answer": "保留实际已读与卡住范围，另两字待练。",
+          "analysis": "保留实际已读与卡住范围，另两字待练。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-five-number-voice-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "逐个认五字，再说哪两字是本页写字目标。",
+          "answer": "本人读音可核，写字目标八十；口头说明不代本人已经写过。",
+          "analysis": "本人读音可核，写字目标八十；口头说明不代本人已经写过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-five-number-voice-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "听过成人提示后重新认五字，说明本次条件。",
+          "answer": "帮助和本人声音分清，后一次不覆盖首次。",
+          "analysis": "帮助和本人声音分清，后一次不覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-five-number-voice-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "把五字单独出示再认，选一字说辨认线索。",
+          "answer": "线索来自当前完整字形，声音覆盖五字，避免只按位置猜。",
+          "analysis": "线索来自当前完整字形，声音覆盖五字，避免只按位置猜。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-one",
+      "atomId": "source:chinese:g1:a692a990:garden-two-writing",
+      "structure": "garden-eight-ten-writing",
+      "familyProposal": "a692a990-garden-eight-ten-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人实际写八十",
+          "weight": 0.4
+        },
+        {
+          "criterion": "两字结构清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原稿与帮助分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "八两笔向两侧展开，十横竖相交；本人原稿覆盖两字。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-eight-ten-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人写八和十，上传原稿并指出两字笔画方向。",
+          "answer": "八两笔向两侧展开，十横竖相交；本人原稿覆盖两字。",
+          "analysis": "八两笔向两侧展开，十横竖相交；本人原稿覆盖两字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-eight-ten-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "观察范写后自己写八十，上传本次作品。",
+          "answer": "作品由本人书写，范字与所用帮助说明清楚。",
+          "analysis": "作品由本人书写，范字与所用帮助说明清楚。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-eight-ten-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换一张练习纸写十再写八，上传并说明哪个字在哪里。",
+          "answer": "两字可辨且实际写出，顺序按当前任务，不要求假装首次接触。",
+          "analysis": "两字可辨且实际写出，顺序按当前任务，不要求假装首次接触。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-eight-ten-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只写八没写十时，上传如何说明？",
+          "answer": "只核实际八字原稿，十仍待写，不用打印十字补成完成。",
+          "analysis": "只核实际八字原稿，十仍待写，不用打印十字补成完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-eight-ten-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "检查自己十字的交点，必要时留原稿再订正上传。",
+          "answer": "具体位置与本人作品对应，不为任务故意造错。",
+          "analysis": "具体位置与本人作品对应，不为任务故意造错。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-eight-ten-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "写两字时用过提示，上传要保留哪些信息？",
+          "answer": "本人原写、实际帮助和后改分别说明，不以清稿代首写。",
+          "analysis": "本人原写、实际帮助和后改分别说明，不以清稿代首写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-eight-ten-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "上传八十并说明笔顺如何另行核查。",
+          "answer": "静图能看字形，实际顺序需观察本人书写过程。",
+          "analysis": "静图能看字形，实际顺序需观察本人书写过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "garden-one",
+      "atomId": "source:chinese:g1:a692a990:garden-compare",
+      "structure": "garden-three-similar-pairs",
+      "familyProposal": "a692a990-garden-three-similar-pairs",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "三组分别对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "具体笔画差别正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整字形而非位置判断",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "天比人多上方两横，要看完整字形而非只看下部相像。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-three-similar-pairs-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "把人和天字牌并排看，字形有什么具体不同？",
+          "answer": "天比人多上方两横，要看完整字形而非只看下部相像。",
+          "analysis": "天比人多上方两横，要看完整字形而非只看下部相像。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-three-similar-pairs-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "口和田同样有框，看完整字形怎样区分？",
+          "answer": "田框内有横竖相交，口框内没有笔画。",
+          "analysis": "田框内有横竖相交，口框内没有笔画。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-three-similar-pairs-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新字卡把日目交换位置，应看什么区分？",
+          "answer": "看内横数量，日内一横、目内两横，不随卡片位置猜。",
+          "analysis": "看内横数量，日内一横、目内两横，不随卡片位置猜。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-three-similar-pairs-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只看外框能分清口田日目吗，还要看哪里？",
+          "answer": "不能，还要看框内是否有横竖及横画数量。",
+          "analysis": "不能，还要看框内是否有横竖及横画数量。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-three-similar-pairs-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "把人天、口田、日目三组逐一说出一个差别。",
+          "answer": "三组分别核：天多两横；田有内横竖；目比日多一内横。",
+          "analysis": "三组分别核：天多两横；田有内横竖；目比日多一内横。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-three-similar-pairs-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "在自己的实际字卡中选一组，说共同处和不同处。",
+          "answer": "所选两字完整字形相符，具体说明可核，不用差不多代观察。",
+          "analysis": "所选两字完整字形相符，具体说明可核，不用差不多代观察。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-three-similar-pairs-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "若照片看不清内部笔画，可以直接判断是哪字吗？",
+          "answer": "信息不足时说明需清楚字形再看，不能凭熟悉位置补答案。",
+          "analysis": "信息不足时说明需清楚字形再看，不能凭熟悉位置补答案。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-one",
+      "atomId": "source:chinese:g1:a692a990:garden-order",
+      "structure": "garden-current-stroke-sequence",
+      "familyProposal": "a692a990-garden-current-stroke-sequence",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "二三十禾与规则对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "禾首撇及后续顺序准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "真实过程与静图范围分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "二三从上到下，十先横后竖；禾先撇再横竖后撇捺，过程据实际核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-current-stroke-sequence-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人写二三十禾，上传过程图并说明两条规则在哪些步骤使用。",
+          "answer": "二三从上到下，十先横后竖；禾先撇再横竖后撇捺，过程据实际核。",
+          "analysis": "二三从上到下，十先横后竖；禾先撇再横竖后撇捺，过程据实际核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-current-stroke-sequence-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先观察禾范写，再自己写并逐步说明首笔与横竖先后，上传原稿。",
+          "answer": "禾首笔撇，横在竖前；原稿看形，实际步骤由过程或观察说明。",
+          "analysis": "禾首笔撇，横在竖前；原稿看形，实际步骤由过程或观察说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-current-stroke-sequence-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换纸写三与禾，说明从上到下是否等于每个字都先写横。",
+          "answer": "不等；三按横画上下顺序，禾仍先撇，规则不能脱离具体字。",
+          "analysis": "不等；三按横画上下顺序，禾仍先撇，规则不能脱离具体字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-current-stroke-sequence-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只有写好的十照片，可以独自证明先横后竖吗？上传实际作品并说明。",
+          "answer": "不能独证先后，照片看形，需要本人书写过程才能核顺序。",
+          "analysis": "不能独证先后，照片看形，需要本人书写过程才能核顺序。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-current-stroke-sequence-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若把禾首笔误写横，怎样保留并重新练？",
+          "answer": "保留原写及实际说明，按先撇后横竖再撇捺重练，不覆盖首答。",
+          "analysis": "保留原写及实际说明，按先撇后横竖再撇捺重练，不覆盖首答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-current-stroke-sequence-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "按自身条件把纸笔放稳，实际写四字并说明得到的帮助。",
+          "answer": "本人过程、原稿和帮助可对应，不强求同一姿势或造出独立表现。",
+          "analysis": "本人过程、原稿和帮助可对应，不强求同一姿势或造出独立表现。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-current-stroke-sequence-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新写二三十禾，分别指出每字本次用到的顺序。",
+          "answer": "规则与四字实际过程分别核，重复成功不自动等于无帮助保持。",
+          "analysis": "规则与四字实际过程分别核，重复成功不自动等于无帮助保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "garden-one",
+      "atomId": "source:chinese:g1:a692a990:garden-goose",
+      "structure": "garden-full-goose-poem",
+      "familyProposal": "a692a990-garden-full-goose-poem",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人声音对应完整四句",
+          "weight": 0.4
+        },
+        {
+          "criterion": "清波与动作字义准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "看稿脱稿帮助分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "本人四句与原诗对应，清是清澈的清，不是颜色的青；看稿条件如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-full-goose-poem-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "看本稿完整咏鹅，录本人朗读四句，再说明清波的清是哪一个字。",
+          "answer": "本人四句与原诗对应，清是清澈的清，不是颜色的青；看稿条件如实。",
+          "analysis": "本人四句与原诗对应，清是清澈的清，不是颜色的青；看稿条件如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-full-goose-poem-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "录音解释曲项与红掌拨水的动作，再实际读相应诗句。",
+          "answer": "曲项为弯着脖颈，拨是拨水，解释与本人声音分别核。",
+          "analysis": "曲项为弯着脖颈，拨是拨水，解释与本人声音分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-full-goose-poem-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "先在原创情境说浮与拨的动作，再回咏鹅朗读。",
+          "answer": "原创说明不替原诗，最终按完整四句核本人读音。",
+          "analysis": "原创说明不替原诗，最终按完整四句核本人读音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-full-goose-poem-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只会背两句，怎样录音说明其余部分？",
+          "answer": "保留真实两句与缺句，未背出部分待练，不用参考音补齐。",
+          "analysis": "保留真实两句与缺句，未背出部分待练，不用参考音补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-full-goose-poem-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本人朗读后说诗中白绿红分别联系什么。",
+          "answer": "白毛、绿水、红掌对应，颜色与对象不交换，声音覆盖如实。",
+          "analysis": "白毛、绿水、红掌对应，颜色与对象不交换，声音覆盖如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-full-goose-poem-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "重新读或背四句，说明是否看稿、先听提示。",
+          "answer": "本人当前声音与条件清楚，提示后正确不倒作无提示首答。",
+          "analysis": "本人当前声音与条件清楚，提示后正确不倒作无提示首答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-full-goose-poem-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人尝试脱稿背，再对照清波字样核一处需要注意的地方。",
+          "answer": "实际覆盖与核对过程真实，不要求故意出错，原音和后改分开。",
+          "analysis": "实际覆盖与核对过程真实，不要求故意出错，原音和后改分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-one",
+      "atomId": "source:chinese:g1:a692a990:garden-rabbits",
+      "structure": "garden-rabbit-story-causes",
+      "familyProposal": "a692a990-garden-rabbit-story-causes",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "完整故事选择行动结果清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "共同阅读条件真实",
+          "weight": 0.4
+        },
+        {
+          "criterion": "劝勉与现实农业分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "小灰兔收白菜，小白兔要菜籽；两者都先帮收白菜，共读条件如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-rabbit-story-causes-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "成人帮助读完本件两兔故事后，本人用自己的话说两兔分别选了什么。",
+          "answer": "小灰兔收白菜，小白兔要菜籽；两者都先帮收白菜，共读条件如实。",
+          "analysis": "小灰兔收白菜，小白兔要菜籽；两者都先帮收白菜，共读条件如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-rabbit-story-causes-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人录音按选择、后续行动、结果概述两兔故事。",
+          "answer": "小白兔种植照料并回赠，小灰兔吃完后再要；依据完整本件，不编全文。",
+          "analysis": "小白兔种植照料并回赠，小灰兔吃完后再要；依据完整本件，不编全文。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-rabbit-story-causes-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创角色种一盆菜遇到缺水，能照搬故事说一定吃不完吗？录音解释。",
+          "answer": "不能；故事鼓励劳动，真实种植仍有水分季节土地和产量条件。",
+          "analysis": "不能；故事鼓励劳动，真实种植仍有水分季节土地和产量条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-rabbit-story-causes-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "还没有和成人共读，当前可以怎样准备并说明？",
+          "answer": "可以准备想问的问题或看过部分，真实共读仍待发生，不替成人填回答。",
+          "analysis": "可以准备想问的问题或看过部分，真实共读仍待发生，不替成人填回答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-rabbit-story-causes-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "两兔最初都帮助老山羊，能直接给真实同学贴勤懒标签吗？",
+          "answer": "不能；说明故事角色具体选择和行为，不由角色对照评价真实孩子。",
+          "analysis": "不能；说明故事角色具体选择和行为，不由角色对照评价真实孩子。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-rabbit-story-causes-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际共读后提一个问题，再录本人回应与得到的帮助。",
+          "answer": "问题和回应对应本次完整故事，成人原话与本人表达分明，未知细节回原篇查。",
+          "analysis": "问题和回应对应本次完整故事，成人原话与本人表达分明，未知细节回原篇查。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-one-garden-rabbit-story-causes-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "再次概述两兔差别，另说种菜现实中需注意一个条件。",
+          "answer": "故事因果与现实条件分别说明，合理条件可接受，不解释为无限产出。",
+          "analysis": "故事因果与现实条件分别说明，合理条件可接受，不解释为无限产出。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

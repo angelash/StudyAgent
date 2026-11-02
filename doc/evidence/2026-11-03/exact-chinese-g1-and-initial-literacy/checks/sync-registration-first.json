@@ -1,0 +1,68 @@
+{
+  "at": "2026-11-02T21:41:16.122Z",
+  "branch": "main",
+  "baseCommit": "2ed2f9e8f5e4a8286fcb4feaabe049b1268cf7d8",
+  "sync": [
+    {
+      "path": "resources/curriculum/reviewed-original-textbooks-v1.json",
+      "sha256": "d34f70df984e9acb362c5f647994047ee33dff3567162c63d5fe1a069422f09f"
+    },
+    {
+      "path": "resources/curriculum/textbook-edition-conformities-v1.json",
+      "sha256": "99ccb6a2c91b8c0466e02189308e36be544b096b7ee0eb924f296c06f58cd23d"
+    },
+    {
+      "path": "resources/curriculum/textbooks-v1.json",
+      "sha256": "b9123c94dea8b0327a4d9bde7a8a6da8912c9e2981120c05a4d970c95d86159d"
+    },
+    {
+      "path": "resources/curriculum/textbook-mapping-candidates-v1.json",
+      "sha256": "60620ba50651acce4a3455e6da27fba7b912064cb38c367793277c7056583f83"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-scope-inventory.integration.test.ts",
+      "sha256": "9190c75ce8b36f24443ff655e53e9081574a33267a4989888099f1c94393819a"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/verification-materials.integration.test.ts",
+      "sha256": "61e564aad1c05c0d933c990245ced985820b5afa6dd57815ce1f6b4cf9543ad3"
+    },
+    {
+      "path": "scripts/assets/test_reviewed_original_textbooks.py",
+      "sha256": "f0e1843985492fd0aabb072f5bf1e68faaa2e5c2fd4f8291a1f9c824ea045807"
+    },
+    {
+      "path": "scripts/assets/test_textbook_mapping_candidates.py",
+      "sha256": "d7ddfd0e32072d26230faa73f2d4a8b9277d8f0714bdba2c5843a6420ffe2f62"
+    }
+  ],
+  "previousFullInputs": 2191,
+  "changedExistingInputs": [
+    "apps/api/src/modules/diagnostics/textbook-scope-inventory.integration.test.ts",
+    "apps/api/src/modules/diagnostics/verification-materials.integration.test.ts",
+    "resources/curriculum/reviewed-original-textbooks-v1.json",
+    "resources/curriculum/textbook-edition-conformities-v1.json",
+    "resources/curriculum/textbook-mapping-candidates-v1.json",
+    "resources/curriculum/textbooks-v1.json"
+  ],
+  "additionalOfflineTestInputs": [
+    "scripts/assets/test_reviewed_original_textbooks.py",
+    "scripts/assets/test_textbook_mapping_candidates.py"
+  ],
+  "previous451BooksAnd526MappingsUnchanged": true,
+  "applicationRuntimeAndProtocol37Unchanged": true,
+  "previousFull": {
+    "passed": 3105,
+    "failed": 0,
+    "conditionalSkips": 131,
+    "countsNotAddedToFocusedChecks": true
+  },
+  "newBook": {
+    "id": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "teachingEntries": 51,
+    "references": 4,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "formalMigrated": false
+}

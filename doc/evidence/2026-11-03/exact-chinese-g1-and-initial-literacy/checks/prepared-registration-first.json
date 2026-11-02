@@ -1,0 +1,1055 @@
+{
+  "at": "2026-11-02T21:07:42.331Z",
+  "passed": true,
+  "preparedOnly": true,
+  "registryMutated": false,
+  "book": {
+    "id": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "subject": "chinese",
+    "grade": 1,
+    "term": "upper",
+    "edition": "统编版 · 独立原件 · 出版版次年份未核实",
+    "title": "语文一年级上册（独立原件，出版版次年份未核实）",
+    "source": "archive",
+    "sourceRef": "chinatextbook:chinese:g1:upper@a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "chapterState": "available",
+    "catalogVersion": "reviewed-original-directory-v1",
+    "sourceEdition": {
+      "sourceBookId": "chinatextbook:chinese:g1:upper",
+      "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+      "publicationYear": null,
+      "curriculumStandardYear": null,
+      "publicationStatement": "教育部组织编写、人民教育出版社出版的一年级上册独立原件。封面审定2016、后记编者署2016年7月，但物理3页没有明确出版版次或印次年月；publicationYear与curriculumStandardYear均保持null，不把审定年或后记日期替作版次，也不绑定2024修订。目录重复识字、课文组分别保存；参考附录为本地分组，不增加教学进度。"
+    },
+    "chapters": [
+      {
+        "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter1",
+        "name": "我上学了",
+        "printedPage": 2,
+        "tocPage": 4,
+        "kind": "orientation",
+        "pageBasis": "first_entry",
+        "lessons": [
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter1:entry1",
+            "name": "我上学了",
+            "printedPage": 2,
+            "tocPage": 4,
+            "kind": "activity"
+          }
+        ]
+      },
+      {
+        "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2",
+        "name": "识字",
+        "printedPage": 6,
+        "tocPage": 4,
+        "kind": "unit",
+        "pageBasis": "first_entry",
+        "lessons": [
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry1",
+            "name": "天地人",
+            "printedPage": 6,
+            "tocPage": 4,
+            "kind": "lesson",
+            "number": 1
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry2",
+            "name": "金木水火土",
+            "printedPage": 7,
+            "tocPage": 4,
+            "kind": "lesson",
+            "number": 2
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry3",
+            "name": "口耳目",
+            "printedPage": 9,
+            "tocPage": 4,
+            "kind": "lesson",
+            "number": 3
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry4",
+            "name": "日月水火",
+            "printedPage": 11,
+            "tocPage": 4,
+            "kind": "lesson",
+            "number": 4
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry5",
+            "name": "对韵歌",
+            "printedPage": 13,
+            "tocPage": 4,
+            "kind": "lesson",
+            "number": 5
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry6",
+            "name": "口语交际：我说你做",
+            "printedPage": 14,
+            "tocPage": 4,
+            "kind": "activity"
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry7",
+            "name": "语文园地一",
+            "printedPage": 15,
+            "tocPage": 4,
+            "kind": "activity"
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry8",
+            "name": "快乐读书吧：读书真快乐",
+            "printedPage": 19,
+            "tocPage": 4,
+            "kind": "activity"
+          }
+        ]
+      },
+      {
+        "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3",
+        "name": "汉语拼音",
+        "printedPage": 20,
+        "tocPage": 4,
+        "kind": "unit",
+        "pageBasis": "first_entry",
+        "lessons": [
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry1",
+            "name": "a o e",
+            "printedPage": 20,
+            "tocPage": 4,
+            "kind": "lesson",
+            "number": 1
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry2",
+            "name": "i u ü y w",
+            "printedPage": 22,
+            "tocPage": 4,
+            "kind": "lesson",
+            "number": 2
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry3",
+            "name": "b p m f",
+            "printedPage": 24,
+            "tocPage": 4,
+            "kind": "lesson",
+            "number": 3
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry4",
+            "name": "d t n l",
+            "printedPage": 26,
+            "tocPage": 4,
+            "kind": "lesson",
+            "number": 4
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry5",
+            "name": "g k h",
+            "printedPage": 28,
+            "tocPage": 4,
+            "kind": "lesson",
+            "number": 5
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry6",
+            "name": "j q x",
+            "printedPage": 30,
+            "tocPage": 4,
+            "kind": "lesson",
+            "number": 6
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry7",
+            "name": "z c s",
+            "printedPage": 32,
+            "tocPage": 4,
+            "kind": "lesson",
+            "number": 7
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry8",
+            "name": "zh ch sh r",
+            "printedPage": 34,
+            "tocPage": 4,
+            "kind": "lesson",
+            "number": 8
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry9",
+            "name": "语文园地二",
+            "printedPage": 36,
+            "tocPage": 4,
+            "kind": "activity"
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry10",
+            "name": "ai ei ui",
+            "printedPage": 40,
+            "tocPage": 5,
+            "kind": "lesson",
+            "number": 9
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry11",
+            "name": "ao ou iu",
+            "printedPage": 42,
+            "tocPage": 5,
+            "kind": "lesson",
+            "number": 10
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry12",
+            "name": "ie üe er",
+            "printedPage": 44,
+            "tocPage": 5,
+            "kind": "lesson",
+            "number": 11
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry13",
+            "name": "an en in un ün",
+            "printedPage": 46,
+            "tocPage": 5,
+            "kind": "lesson",
+            "number": 12
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry14",
+            "name": "ang eng ing ong",
+            "printedPage": 49,
+            "tocPage": 5,
+            "kind": "lesson",
+            "number": 13
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry15",
+            "name": "语文园地三",
+            "printedPage": 51,
+            "tocPage": 5,
+            "kind": "activity"
+          }
+        ]
+      },
+      {
+        "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4",
+        "name": "课文",
+        "printedPage": 54,
+        "tocPage": 5,
+        "kind": "unit",
+        "pageBasis": "first_entry",
+        "lessons": [
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry1",
+            "name": "秋天",
+            "printedPage": 54,
+            "tocPage": 5,
+            "kind": "lesson",
+            "number": 1
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry2",
+            "name": "小小的船",
+            "printedPage": 56,
+            "tocPage": 5,
+            "kind": "lesson",
+            "number": 2
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry3",
+            "name": "江南",
+            "printedPage": 58,
+            "tocPage": 5,
+            "kind": "lesson",
+            "number": 3
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry4",
+            "name": "四季",
+            "printedPage": 60,
+            "tocPage": 5,
+            "kind": "lesson",
+            "number": 4
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry5",
+            "name": "口语交际：我们做朋友",
+            "printedPage": 62,
+            "tocPage": 5,
+            "kind": "activity"
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry6",
+            "name": "语文园地四",
+            "printedPage": 63,
+            "tocPage": 5,
+            "kind": "activity"
+          }
+        ]
+      },
+      {
+        "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5",
+        "name": "识字",
+        "printedPage": 67,
+        "tocPage": 5,
+        "kind": "unit",
+        "pageBasis": "first_entry",
+        "lessons": [
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry1",
+            "name": "画",
+            "printedPage": 67,
+            "tocPage": 5,
+            "kind": "lesson",
+            "number": 6
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry2",
+            "name": "大小多少",
+            "printedPage": 68,
+            "tocPage": 5,
+            "kind": "lesson",
+            "number": 7
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry3",
+            "name": "小书包",
+            "printedPage": 70,
+            "tocPage": 5,
+            "kind": "lesson",
+            "number": 8
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry4",
+            "name": "日月明",
+            "printedPage": 72,
+            "tocPage": 5,
+            "kind": "lesson",
+            "number": 9
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry5",
+            "name": "升国旗",
+            "printedPage": 74,
+            "tocPage": 5,
+            "kind": "lesson",
+            "number": 10
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry6",
+            "name": "语文园地五",
+            "printedPage": 76,
+            "tocPage": 5,
+            "kind": "activity"
+          }
+        ]
+      },
+      {
+        "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6",
+        "name": "课文",
+        "printedPage": 80,
+        "tocPage": 6,
+        "kind": "unit",
+        "pageBasis": "first_entry",
+        "lessons": [
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry1",
+            "name": "影子",
+            "printedPage": 80,
+            "tocPage": 6,
+            "kind": "lesson",
+            "number": 5
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry2",
+            "name": "比尾巴",
+            "printedPage": 82,
+            "tocPage": 6,
+            "kind": "lesson",
+            "number": 6
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry3",
+            "name": "青蛙写诗",
+            "printedPage": 84,
+            "tocPage": 6,
+            "kind": "lesson",
+            "number": 7
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry4",
+            "name": "雨点儿",
+            "printedPage": 87,
+            "tocPage": 6,
+            "kind": "lesson",
+            "number": 8
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry5",
+            "name": "口语交际：用多大的声音",
+            "printedPage": 89,
+            "tocPage": 6,
+            "kind": "activity"
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry6",
+            "name": "语文园地六",
+            "printedPage": 90,
+            "tocPage": 6,
+            "kind": "activity"
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry7",
+            "name": "明天要远足",
+            "printedPage": 93,
+            "tocPage": 6,
+            "kind": "lesson",
+            "number": 9
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry8",
+            "name": "大还是小",
+            "printedPage": 96,
+            "tocPage": 6,
+            "kind": "lesson",
+            "number": 10
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry9",
+            "name": "项链",
+            "printedPage": 98,
+            "tocPage": 6,
+            "kind": "lesson",
+            "number": 11
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry10",
+            "name": "语文园地七",
+            "printedPage": 100,
+            "tocPage": 6,
+            "kind": "activity"
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry11",
+            "name": "雪地里的小画家",
+            "printedPage": 104,
+            "tocPage": 6,
+            "kind": "lesson",
+            "number": 12
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry12",
+            "name": "乌鸦喝水",
+            "printedPage": 106,
+            "tocPage": 6,
+            "kind": "lesson",
+            "number": 13
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry13",
+            "name": "小蜗牛",
+            "printedPage": 108,
+            "tocPage": 6,
+            "kind": "lesson",
+            "number": 14
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry14",
+            "name": "口语交际：小兔运南瓜",
+            "printedPage": 111,
+            "tocPage": 6,
+            "kind": "activity"
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry15",
+            "name": "语文园地八",
+            "printedPage": 112,
+            "tocPage": 6,
+            "kind": "activity"
+          }
+        ]
+      },
+      {
+        "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7",
+        "name": "参考附录（本地分组）",
+        "printedPage": 115,
+        "tocPage": 6,
+        "kind": "appendix",
+        "pageBasis": "first_entry",
+        "syntheticHeading": true,
+        "lessons": [
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7:entry1",
+            "name": "识字表",
+            "printedPage": 115,
+            "tocPage": 6,
+            "kind": "reference"
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7:entry2",
+            "name": "写字表",
+            "printedPage": 118,
+            "tocPage": 6,
+            "kind": "reference"
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7:entry3",
+            "name": "常用笔画名称表",
+            "printedPage": 119,
+            "tocPage": 6,
+            "kind": "reference"
+          },
+          {
+            "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7:entry4",
+            "name": "常用偏旁名称表",
+            "printedPage": 120,
+            "tocPage": 6,
+            "kind": "reference"
+          }
+        ]
+      }
+    ],
+    "version": "c63720a384e468a8dbd2630e",
+    "chapterEvidence": {
+      "reviewId": "original-chinese-g1-a692a990-20261103",
+      "method": "agent_visual_review",
+      "reviewedAt": "2026-11-02T21:07:42.331Z",
+      "idScheme": "local_toc_ids",
+      "sourceManifestSha256": "ffea2a5ec3e8e686fbe85246aa3c24181609a8228c0adc4d33383f6a2a96e1e6",
+      "metadataSha256": "c63720a384e468a8dbd2630ee2b82abfdbedd2df575719c1cadbb5174288a587",
+      "tocPageSha256s": [
+        "c0bdc4ccd86b7bbeeaf779acd8f007f356950b45f56741a3b9a0ed2e5e41fc3a",
+        "0600664e8101664d9c3341bf5a91b9ecaaafdc112468f53aa541012f9ebe922c",
+        "cc9a3ad929aca72a5bec7fd3c4b867ca8f918ac60bdb2ffa1b1f00f07ca43b84"
+      ],
+      "mappingReview": "not_reviewed"
+    }
+  },
+  "proof": {
+    "protocol": "textbook-edition-conformity-v1",
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "bookVersion": "c63720a384e468a8dbd2630e",
+    "registryFingerprint": "dcb25ca4cce877dc6bbb84c2f3f313cfb70db5f52161f09cf4eec02cf87c149c",
+    "sourceBookId": "chinatextbook:chinese:g1:upper",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "extractedSha256": "6dae830e70696a636c29022d580bec4ddfeb357b8370df9539e4cab8b13526dc",
+    "sourcePages": 127,
+    "edition": {
+      "publicationYear": null,
+      "curriculumStandardYear": null,
+      "independentlyRegistered": true,
+      "statement": "教育部组织编写、人民教育出版社出版的一年级上册独立原件。封面审定2016、后记编者署2016年7月，但物理3页没有明确出版版次或印次年月；publicationYear与curriculumStandardYear均保持null，不把审定年或后记日期替作版次，也不绑定2024修订。目录重复识字、课文组分别保存；参考附录为本地分组，不增加教学进度。",
+      "pages": [
+        {
+          "page": 1,
+          "textSha256": "d3432a8fc57bd6654650a07ca6adf4a97cb050268a8e2d2805506f3b046e16f3",
+          "imageSha256": "74c68ec24b2eebd6b3b0a6dd6878ef11c5c082e124315f550c5f27c4c4f50862"
+        },
+        {
+          "page": 2,
+          "textSha256": "4d3736ec7b7c4dc397dd6c284f62eb146caa86027f94002ea0906fd58e493f51",
+          "imageSha256": "ba5e2dc4d8d6d31b4611c35e10d731fcca5332b8619aab03ddcc79837a8a1ec1"
+        },
+        {
+          "page": 3,
+          "textSha256": "285f3fb9474d9db958d11129c1d76af875f9cdd40d18ebaed3c2338fbd1966d3",
+          "imageSha256": "a0d840bd2ea1dc869f8ccaf841132c5ef141618fe1353746c21a834224cb5d9f"
+        },
+        {
+          "page": 126,
+          "textSha256": "4755b0fbf24271d5af2ec56c6c0f9ed34a294757d2787dd39639122d0bdc8fd9",
+          "imageSha256": "373c382dac70003fc5edddf793278adc5850faab71cc8512832642f3030d678e"
+        },
+        {
+          "page": 127,
+          "textSha256": "76c213267f86f4abe861f479aee8498226118d6cd439e143f7cf92837e3698b2",
+          "imageSha256": "98231d5e678b9abacb45834807d09b7a4839bb90d9ae72f1bbefbe187704834f"
+        }
+      ]
+    },
+    "directory": {
+      "complete": true,
+      "pages": [
+        {
+          "page": 4,
+          "textSha256": "0d05867f7d25777307f78377c14267abcdaf0c1c22a2877f689861c7262687c2",
+          "imageSha256": "c0bdc4ccd86b7bbeeaf779acd8f007f356950b45f56741a3b9a0ed2e5e41fc3a"
+        },
+        {
+          "page": 5,
+          "textSha256": "e8fad5f2a8844f0492961f0604cf4f42cc475d72ecca7a95aac38c82074ae703",
+          "imageSha256": "0600664e8101664d9c3341bf5a91b9ecaaafdc112468f53aa541012f9ebe922c"
+        },
+        {
+          "page": 6,
+          "textSha256": "6a21993144cb0c9c409179103d5163a7b2a5b768a137dc0f16630d3860073ef7",
+          "imageSha256": "cc9a3ad929aca72a5bec7fd3c4b867ca8f918ac60bdb2ffa1b1f00f07ca43b84"
+        }
+      ],
+      "entries": [
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter1",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter1:entry1",
+          "lessonFingerprint": "5925bec91c4b21239a4b2064ea39245f33b16d86b400a7ea1708772d1f014538",
+          "physicalStartPage": 7,
+          "physicalEndPage": 10
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry1",
+          "lessonFingerprint": "2073b73e802f95693915f430276ac6f3f65bbe7fded7cec2cf908b5f8732f57b",
+          "physicalStartPage": 11,
+          "physicalEndPage": 11
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry2",
+          "lessonFingerprint": "de9d695f8459c94253eec49ba15bbf47bc1d34ef48b8d4ceb46e9362b0002035",
+          "physicalStartPage": 12,
+          "physicalEndPage": 13
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry3",
+          "lessonFingerprint": "7482d8935c345ea85a4e42f76cfbe6c69f10413b7769498770b9a7ed4f63182d",
+          "physicalStartPage": 14,
+          "physicalEndPage": 15
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry4",
+          "lessonFingerprint": "88eb5d3c1c35cca44731374aca5d7c02e1d9da085eb31682ed2b3076471e5c6f",
+          "physicalStartPage": 16,
+          "physicalEndPage": 17
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry5",
+          "lessonFingerprint": "c76e8e43c0035decc23829e49b58316f04a46d619859243f205954f7bb68dbcb",
+          "physicalStartPage": 18,
+          "physicalEndPage": 18
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry6",
+          "lessonFingerprint": "a4bf04bf9dd94451152ac140d0851b97af1a62c6d97a6e3406047176c849a09c",
+          "physicalStartPage": 19,
+          "physicalEndPage": 19
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry7",
+          "lessonFingerprint": "8279163acc5709e3f9149a02ecf98a99cb4bb81f655ad29ec6fd67230e190ec8",
+          "physicalStartPage": 20,
+          "physicalEndPage": 23
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry8",
+          "lessonFingerprint": "799dea173317d55a102a710513265954ab09c52fec98840c12af1c98144ee1b6",
+          "physicalStartPage": 24,
+          "physicalEndPage": 24
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry1",
+          "lessonFingerprint": "1c9de3d903955793971b8b6bd63abfd9a263c732bad99a434078fb54e2f8186d",
+          "physicalStartPage": 25,
+          "physicalEndPage": 26
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry2",
+          "lessonFingerprint": "c4b011f6e4a66b71d73fdb6765d32057de5d8fb26a73da57396096cf4f928ea0",
+          "physicalStartPage": 27,
+          "physicalEndPage": 28
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry3",
+          "lessonFingerprint": "82c56b7854b034a456ca80e4cdfb6b84d0a8b9e8561053361beeac6287763f64",
+          "physicalStartPage": 29,
+          "physicalEndPage": 30
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry4",
+          "lessonFingerprint": "1d7a68bc5d7b58773628e08422bcf943ee5b65c9560093b45396e1146cca9373",
+          "physicalStartPage": 31,
+          "physicalEndPage": 32
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry5",
+          "lessonFingerprint": "fabb95dfd7bd0dc03a84e2c86f71ab8b09bafc79a9ff3e0e01b851623f06b12f",
+          "physicalStartPage": 33,
+          "physicalEndPage": 34
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry6",
+          "lessonFingerprint": "8bf1ef1836d7bded311011bfe4a898ed39d61634c5be8f7fc1eb535ab41796dd",
+          "physicalStartPage": 35,
+          "physicalEndPage": 36
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry7",
+          "lessonFingerprint": "0728b35ff41451f5e97ef20b64d3a097119c28c4286af0e022e87952a1e70d1d",
+          "physicalStartPage": 37,
+          "physicalEndPage": 38
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry8",
+          "lessonFingerprint": "6b517fdb9128dc8a9bcd3af6b3982c1a27640c646c7fd5f1eecbd27e104126c4",
+          "physicalStartPage": 39,
+          "physicalEndPage": 40
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry9",
+          "lessonFingerprint": "0574f7aac81593a8c5e6aca11d20a8fa3eeeddf0bc46f30dddeddecd2fd70043",
+          "physicalStartPage": 41,
+          "physicalEndPage": 44
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry10",
+          "lessonFingerprint": "da62e2b8c3d161ae156ddc23ab9a9824d4411cccec171b365136f31fbe658fb1",
+          "physicalStartPage": 45,
+          "physicalEndPage": 46
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry11",
+          "lessonFingerprint": "b2062442a87c18f8bf452011193452b433ef0b05ae7ee4df8972ff845ae895cd",
+          "physicalStartPage": 47,
+          "physicalEndPage": 48
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry12",
+          "lessonFingerprint": "f41c658b6ccaaca2af37835e6d9f507f10283a49ab25c1c1f3b23a1862f7e7ad",
+          "physicalStartPage": 49,
+          "physicalEndPage": 50
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry13",
+          "lessonFingerprint": "24a4d2e5d74f2d9f32f8177cf172d6d3a08146d9dad2f703efc9a18d9b4994a0",
+          "physicalStartPage": 51,
+          "physicalEndPage": 53
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry14",
+          "lessonFingerprint": "2fe45bf62d2b6b332584bce14ebf6c86d607125cd5261d4437a25192b3068ac0",
+          "physicalStartPage": 54,
+          "physicalEndPage": 55
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry15",
+          "lessonFingerprint": "30c1770c7f4dad08d5e7cd81254a15cf17acaf29d87d88152428c1b4c51616d6",
+          "physicalStartPage": 56,
+          "physicalEndPage": 58
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry1",
+          "lessonFingerprint": "4b56d4d335432b3ac8e8eac6951c2f1501d3658468c84065551f7345be634d42",
+          "physicalStartPage": 59,
+          "physicalEndPage": 60
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry2",
+          "lessonFingerprint": "8f8e82ff96a4e5803d39923ac626e69af6ef32d17c3946ff4472ccd1cf8597c9",
+          "physicalStartPage": 61,
+          "physicalEndPage": 62
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry3",
+          "lessonFingerprint": "1e1ec63d8b8f3c5800f3004b0b3612b88370969cd9d3c5a0bf29db9c4907bc5f",
+          "physicalStartPage": 63,
+          "physicalEndPage": 64
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry4",
+          "lessonFingerprint": "1799b24726768fc8fcdf35a9ed83ffa7f5c62b5b7cd3a132290394d8cbc18382",
+          "physicalStartPage": 65,
+          "physicalEndPage": 66
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry5",
+          "lessonFingerprint": "6aaf82a62012249879ae1beb9f1a56b8db0d17d90d51fbe35ef331e22a017e09",
+          "physicalStartPage": 67,
+          "physicalEndPage": 67
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry6",
+          "lessonFingerprint": "d7f9dcb7e1a79c8a8f43edf00c39e63b725e52e2b5f1e0af2352aaa4d55eebd2",
+          "physicalStartPage": 68,
+          "physicalEndPage": 71
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry1",
+          "lessonFingerprint": "84783b446737837d67cff2cfd6ebe4589709e50f1822e8c4bde55cb359291381",
+          "physicalStartPage": 72,
+          "physicalEndPage": 72
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry2",
+          "lessonFingerprint": "add821716cf48681caaa628d5f4d0a7be2f15fce43f93af2acacd95c736682a7",
+          "physicalStartPage": 73,
+          "physicalEndPage": 74
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry3",
+          "lessonFingerprint": "41efe32071ed0b4fb265beea84ba212b7683f0701d2517a169796ae9f72feac5",
+          "physicalStartPage": 75,
+          "physicalEndPage": 76
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry4",
+          "lessonFingerprint": "df47f0da14fece56b42828a7ce13d8b6219b9600955f4c77d8ae305d6411984b",
+          "physicalStartPage": 77,
+          "physicalEndPage": 78
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry5",
+          "lessonFingerprint": "740343baf4bd0d42931ae3187bda3b3f237f763909cbe86f260e9a4903eedbfb",
+          "physicalStartPage": 79,
+          "physicalEndPage": 80
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry6",
+          "lessonFingerprint": "4c4e62b528488242f2947e1d38851933e6fd1295e1328778d4d145eaed7949b7",
+          "physicalStartPage": 81,
+          "physicalEndPage": 84
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry1",
+          "lessonFingerprint": "bddd96bc69c876f469cb68d452dffbbe328be7c700b82507aa1e3c8f9b11f374",
+          "physicalStartPage": 85,
+          "physicalEndPage": 86
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry2",
+          "lessonFingerprint": "bae2f6f909fedd90c3c95583c126d13d539658d9ebeb54c82321b1fdd6b90517",
+          "physicalStartPage": 87,
+          "physicalEndPage": 88
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry3",
+          "lessonFingerprint": "a83e737cf0c019721e51af926b1e04578e6dd6b83c64810c9bdc625f10fa1551",
+          "physicalStartPage": 89,
+          "physicalEndPage": 91
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry4",
+          "lessonFingerprint": "dc74c6ea6152c5b0ff494cbd7031465ad62b7b8d788baf02321af5fbda88f063",
+          "physicalStartPage": 92,
+          "physicalEndPage": 93
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry5",
+          "lessonFingerprint": "ec5abb2f476b7b7c8b7505ffe6e682ed62ad35fd465c13b7c87fa1cc061c1930",
+          "physicalStartPage": 94,
+          "physicalEndPage": 94
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry6",
+          "lessonFingerprint": "ae76f8daa13599397869ec3a9eb470a71b2aa8a766a7fb6c403e00dea0b0f4a1",
+          "physicalStartPage": 95,
+          "physicalEndPage": 97
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry7",
+          "lessonFingerprint": "cc8d0914e0969b829d5a57d626d9884fce253023448133f8d0c9f0033134e166",
+          "physicalStartPage": 98,
+          "physicalEndPage": 100
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry8",
+          "lessonFingerprint": "75e3ab8c6b0d5dc26a87786e3b9512375ac635ebf39be8cb6dcb590715a0d101",
+          "physicalStartPage": 101,
+          "physicalEndPage": 102
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry9",
+          "lessonFingerprint": "5616a3a3260669a07bdae53f7eef6cb98b8b14b2b4285eb400b661c76377ed17",
+          "physicalStartPage": 103,
+          "physicalEndPage": 104
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry10",
+          "lessonFingerprint": "ba7e5300863f9ed372b569cc610848a2294ae290b7275b706edff59098d90800",
+          "physicalStartPage": 105,
+          "physicalEndPage": 108
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry11",
+          "lessonFingerprint": "cfc258d156fa7bd521e4598d81f0649a4511d1277f694a74627da782b86b7814",
+          "physicalStartPage": 109,
+          "physicalEndPage": 110
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry12",
+          "lessonFingerprint": "55985311fa17c681c1da7b4bf471cf41eb5445a7b1e5f5d7b7fda1cf382fb2e7",
+          "physicalStartPage": 111,
+          "physicalEndPage": 112
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry13",
+          "lessonFingerprint": "225ebe40240a403faeed0d49fadfdba34ca91ac6be40dc53259462edb8a1e974",
+          "physicalStartPage": 113,
+          "physicalEndPage": 115
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry14",
+          "lessonFingerprint": "4ac3b0f701deb9b694390f3c41a0bac9e0f5f76a61d7948bbc396bc106ba77d6",
+          "physicalStartPage": 116,
+          "physicalEndPage": 116
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry15",
+          "lessonFingerprint": "2d15b7ea754666dd41683315e91865a5e0d3a93cb0e02b7f711bfecf30bccd12",
+          "physicalStartPage": 117,
+          "physicalEndPage": 119
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7:entry1",
+          "lessonFingerprint": "5cc31ac959c718c04d922fcc2349914c557301bd8d5fd050800b001d2f40dbe4",
+          "physicalStartPage": 120,
+          "physicalEndPage": 122
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7:entry2",
+          "lessonFingerprint": "7dea01134f543e52e00f3a97795a6c1fa300b793005a2473d226eef9c59003fd",
+          "physicalStartPage": 123,
+          "physicalEndPage": 123
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7:entry3",
+          "lessonFingerprint": "71fe21bc05c4300f155336695f438b7bb5e694a6dc8ea350ad3087d0ed357270",
+          "physicalStartPage": 124,
+          "physicalEndPage": 124
+        },
+        {
+          "chapterId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7",
+          "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7:entry4",
+          "lessonFingerprint": "dd59bb52da7c94d781928b77a32583945d7935ef5ba0c50c9a798b237261ad90",
+          "physicalStartPage": 125,
+          "physicalEndPage": 125
+        }
+      ]
+    },
+    "review": {
+      "method": "agent_visual_review",
+      "reviewerRef": "studyagent-exact-chinese-g1-original-review",
+      "reviewedAt": "2026-11-02T21:07:42.331Z",
+      "statement": "三页完整目录和55项起页已逐张核对；共74原页实读，未宣称127页全文均已看图。51教学条目与4参考附录分别保留。仅准确来源目录资格，不替教师、知识映射、逐课教学内容或学生采用。"
+    }
+  },
+  "mapping": {
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "bookVersion": "c63720a384e468a8dbd2630e",
+    "sourceBookId": "chinatextbook:chinese:g1:upper",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "extractedSha256": "6dae830e70696a636c29022d580bec4ddfeb357b8370df9539e4cab8b13526dc",
+    "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter1:entry1",
+    "lessonName": "我上学了",
+    "chapterName": "我上学了",
+    "lessonFingerprint": "5925bec91c4b21239a4b2064ea39245f33b16d86b400a7ea1708772d1f014538",
+    "editionProofFingerprint": "7aa016682f49c552065465f816e638c49b908b6ea07448e4921c0e6831bd2605",
+    "printedPage": 2,
+    "pdfStartPage": 7,
+    "pdfEndPage": 10,
+    "titleMatched": true,
+    "candidateAtomIds": [],
+    "rationale": "准确原件入学活动物理7至10页逐张核对；目录中的一项活动保留一个进度身份，角色或歌曲不代本人事实，未授予审核映射或2024修订版来源资格。",
+    "evidence": [
+      {
+        "page": 4,
+        "textSha256": "0d05867f7d25777307f78377c14267abcdaf0c1c22a2877f689861c7262687c2",
+        "imageSha256": "c0bdc4ccd86b7bbeeaf779acd8f007f356950b45f56741a3b9a0ed2e5e41fc3a"
+      },
+      {
+        "page": 7,
+        "textSha256": "f07a529364265802a68bbc1a2f1052c1b2a936bb716b5f412bae0453c56d4d19",
+        "imageSha256": "eee126b65441d64beaa4375c38734cce6da14e30f69dfc91e8dd9023d83b3a86"
+      },
+      {
+        "page": 8,
+        "textSha256": "2920934d2d20a6d97bf1062cd2a4e1dc2c8c8b9507fc0b04eb62dacfa15459ce",
+        "imageSha256": "99e21d1505749039c6da131b37715c8c7fdc94ee2cb26cb749d7c6677144826f"
+      },
+      {
+        "page": 9,
+        "textSha256": "054e43c08a79330d447689927ddaa7b34cf2755a5eaeb0f0743d0f3e47a89e73",
+        "imageSha256": "21a3642c030620177b77e9f49937316fb1dd6b7d517a2f860d5a0e7b5afe5b4b"
+      },
+      {
+        "page": 10,
+        "textSha256": "bdb67254afa4dde253858f27acf863426a9c6da996fa4fc1b12e5c10547b89ff",
+        "imageSha256": "1b361bcf6f7cf91b32a0a24539da7cd9a05bffa02f5d2f3a5c23e8b906ed9b3b"
+      }
+    ],
+    "reviewStatus": "candidate",
+    "approvedAtomIds": []
+  },
+  "proofFingerprint": "7aa016682f49c552065465f816e638c49b908b6ea07448e4921c0e6831bd2605",
+  "sourcePages": 127,
+  "visuallyReviewedPages": 74,
+  "directoryEntries": 55,
+  "instructionalEntries": 51,
+  "referenceEntries": 4,
+  "previousInputs": [
+    {
+      "path": "resources/curriculum/reviewed-original-textbooks-v1.json",
+      "sha256": "5c99d674608564deab9bedf76d8ad16d4f982822d3c5659e103e7a3c91822bce"
+    },
+    {
+      "path": "resources/curriculum/textbook-edition-conformities-v1.json",
+      "sha256": "854feae4109da5d5061531d550c4e15c91cef6c20fc8f3edf178ed873b4d65e4"
+    }
+  ]
+}

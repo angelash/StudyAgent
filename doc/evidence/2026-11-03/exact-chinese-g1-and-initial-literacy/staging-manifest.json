@@ -1,0 +1,1094 @@
+{
+  "at": "2026-11-02T22:18:16.089Z",
+  "branch": "main",
+  "baseCommit": "2ed2f9e8f5e4a8286fcb4feaabe049b1268cf7d8",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "resources/curriculum/reviewed-original-textbooks-v1.json",
+      "bytes": 61332,
+      "sha256": "d34f70df984e9acb362c5f647994047ee33dff3567162c63d5fe1a069422f09f",
+      "gitNormalizedSha256": "d34f70df984e9acb362c5f647994047ee33dff3567162c63d5fe1a069422f09f"
+    },
+    {
+      "path": "resources/curriculum/textbook-edition-conformities-v1.json",
+      "bytes": 58880,
+      "sha256": "99ccb6a2c91b8c0466e02189308e36be544b096b7ee0eb924f296c06f58cd23d",
+      "gitNormalizedSha256": "99ccb6a2c91b8c0466e02189308e36be544b096b7ee0eb924f296c06f58cd23d"
+    },
+    {
+      "path": "resources/curriculum/textbooks-v1.json",
+      "bytes": 1102090,
+      "sha256": "b9123c94dea8b0327a4d9bde7a8a6da8912c9e2981120c05a4d970c95d86159d",
+      "gitNormalizedSha256": "b9123c94dea8b0327a4d9bde7a8a6da8912c9e2981120c05a4d970c95d86159d"
+    },
+    {
+      "path": "resources/curriculum/textbook-mapping-candidates-v1.json",
+      "bytes": 691116,
+      "sha256": "60620ba50651acce4a3455e6da27fba7b912064cb38c367793277c7056583f83",
+      "gitNormalizedSha256": "734b95881ae0e0d6167a46e67bbf2544c503163beae48cfeecfe39fe343864f3"
+    },
+    {
+      "path": "scripts/assets/test_reviewed_original_textbooks.py",
+      "bytes": 6714,
+      "sha256": "f0e1843985492fd0aabb072f5bf1e68faaa2e5c2fd4f8291a1f9c824ea045807",
+      "gitNormalizedSha256": "f0e1843985492fd0aabb072f5bf1e68faaa2e5c2fd4f8291a1f9c824ea045807"
+    },
+    {
+      "path": "scripts/assets/test_textbook_mapping_candidates.py",
+      "bytes": 7655,
+      "sha256": "d7ddfd0e32072d26230faa73f2d4a8b9277d8f0714bdba2c5843a6420ffe2f62",
+      "gitNormalizedSha256": "d7ddfd0e32072d26230faa73f2d4a8b9277d8f0714bdba2c5843a6420ffe2f62"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-scope-inventory.integration.test.ts",
+      "bytes": 11498,
+      "sha256": "9190c75ce8b36f24443ff655e53e9081574a33267a4989888099f1c94393819a",
+      "gitNormalizedSha256": "9190c75ce8b36f24443ff655e53e9081574a33267a4989888099f1c94393819a"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/verification-materials.integration.test.ts",
+      "bytes": 14905,
+      "sha256": "69a48332804372b55a7a2199f7dc8d4748578947c3775bfbb63100667022949f",
+      "gitNormalizedSha256": "ff46ae0ae1a944851907d42739df09270c7bed2e8fd3a89150518105797bcb1b"
+    },
+    {
+      "path": "scripts/content/build-chinese-g1-first-candidates.cjs",
+      "bytes": 2559,
+      "sha256": "d0d6244b0eb2d950a981531f69a890432cfda885d04a7396166e8bf627c96029",
+      "gitNormalizedSha256": "d0d6244b0eb2d950a981531f69a890432cfda885d04a7396166e8bf627c96029"
+    },
+    {
+      "path": "scripts/content/chinese-g1-initial-reading.cjs",
+      "bytes": 36098,
+      "sha256": "c8dc0c554b3228a4db4de05cb1654b49d4da94fac72eee4c91a1beb7c39acc0c",
+      "gitNormalizedSha256": "c8dc0c554b3228a4db4de05cb1654b49d4da94fac72eee4c91a1beb7c39acc0c"
+    },
+    {
+      "path": "scripts/content/chinese-g1-initial-body-nature.cjs",
+      "bytes": 30755,
+      "sha256": "b8140ec6de697ea7576729fc8b2fd52590d1ef08d17402df95b7488ddd9f6abd",
+      "gitNormalizedSha256": "b8140ec6de697ea7576729fc8b2fd52590d1ef08d17402df95b7488ddd9f6abd"
+    },
+    {
+      "path": "scripts/content/chinese-g1-initial-activities.cjs",
+      "bytes": 35211,
+      "sha256": "1b0de5ddd2f7faa5d06ace9ae0b69d0973f927a36c22d361e1bb1175e6a32620",
+      "gitNormalizedSha256": "1b0de5ddd2f7faa5d06ace9ae0b69d0973f927a36c22d361e1bb1175e6a32620"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-body-and-actions-v1.json",
+      "bytes": 11745,
+      "sha256": "cb0b0b0ad45dbd417416fb38775faf1ee3dcf7dd9c2e843fa93f1957b7ac4bac",
+      "gitNormalizedSha256": "cb0b0b0ad45dbd417416fb38775faf1ee3dcf7dd9c2e843fa93f1957b7ac4bac"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-body-and-actions-v1.json",
+      "bytes": 24090,
+      "sha256": "4b7a2ee02624fe96b527f33bdf11d683734a56a57cdd7eb91f3b3c303ca473cd",
+      "gitNormalizedSha256": "4b7a2ee02624fe96b527f33bdf11d683734a56a57cdd7eb91f3b3c303ca473cd"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-garden-one-v1.json",
+      "bytes": 14500,
+      "sha256": "3759a02dd0b13c988ff90ae150a689cf752e713d341aa19130a339ab8a0405ca",
+      "gitNormalizedSha256": "3759a02dd0b13c988ff90ae150a689cf752e713d341aa19130a339ab8a0405ca"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-garden-one-v1.json",
+      "bytes": 35654,
+      "sha256": "32d6b88b6799cae8ef87f39861ad13a0a0724f0e9d4d8afa4f988a0746a9a7f1",
+      "gitNormalizedSha256": "32d6b88b6799cae8ef87f39861ad13a0a0724f0e9d4d8afa4f988a0746a9a7f1"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-happy-reading-v1.json",
+      "bytes": 11530,
+      "sha256": "a5b48d804988d884286d61e726eeabb1367fb8cbf180bbae28a6be9c7d4b0a8d",
+      "gitNormalizedSha256": "a5b48d804988d884286d61e726eeabb1367fb8cbf180bbae28a6be9c7d4b0a8d"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-happy-reading-v1.json",
+      "bytes": 24485,
+      "sha256": "d2c87e17b34171c500750de56c64b946dfcb73cf12cd1c9e0067e932afa91596",
+      "gitNormalizedSha256": "d2c87e17b34171c500750de56c64b946dfcb73cf12cd1c9e0067e932afa91596"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-listen-and-do-v1.json",
+      "bytes": 11248,
+      "sha256": "af3fd38fcf3046e1cba999facb4dfcf9a184f29f4db7d1b42950397d484c28e5",
+      "gitNormalizedSha256": "af3fd38fcf3046e1cba999facb4dfcf9a184f29f4db7d1b42950397d484c28e5"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-listen-and-do-v1.json",
+      "bytes": 24577,
+      "sha256": "3e8288d1ff738673baa627b603c2bf895a5c1bd648de9798caeef33d69d42b63",
+      "gitNormalizedSha256": "3e8288d1ff738673baa627b603c2bf895a5c1bd648de9798caeef33d69d42b63"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-numbers-and-grid-v1.json",
+      "bytes": 13378,
+      "sha256": "d45db90c849c3a8c8188d37f3cb8f4b8230aaf8f5f089e7ddaabb0771418b4a6",
+      "gitNormalizedSha256": "d45db90c849c3a8c8188d37f3cb8f4b8230aaf8f5f089e7ddaabb0771418b4a6"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-numbers-and-grid-v1.json",
+      "bytes": 31575,
+      "sha256": "29e451366d86282a3fa4e5346c332f7dc7f165c4cad804f7b4def0f9d971225b",
+      "gitNormalizedSha256": "29e451366d86282a3fa4e5346c332f7dc7f165c4cad804f7b4def0f9d971225b"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-rhyming-pairs-v1.json",
+      "bytes": 11253,
+      "sha256": "b8c9ea546ee9693c5c01aa40fe1b8a63743d13a6eee98b5269d21420bc6c2ab4",
+      "gitNormalizedSha256": "b8c9ea546ee9693c5c01aa40fe1b8a63743d13a6eee98b5269d21420bc6c2ab4"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-rhyming-pairs-v1.json",
+      "bytes": 24189,
+      "sha256": "c7532d5268947b571da06d7c6770fc55f74e2cd7b96a23e351179ca09e5a6c85",
+      "gitNormalizedSha256": "c7532d5268947b571da06d7c6770fc55f74e2cd7b96a23e351179ca09e5a6c85"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-school-start-v1.json",
+      "bytes": 12232,
+      "sha256": "2fb2e5cf3362211171b4e75417f41199b2e034a99b0bba6d60bc1c437e9434a3",
+      "gitNormalizedSha256": "2fb2e5cf3362211171b4e75417f41199b2e034a99b0bba6d60bc1c437e9434a3"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-school-start-v1.json",
+      "bytes": 24918,
+      "sha256": "135b27c814f6df8c82cc05219337e76ea4935dddc37d7e07d5f04ccbbba67e22",
+      "gitNormalizedSha256": "135b27c814f6df8c82cc05219337e76ea4935dddc37d7e07d5f04ccbbba67e22"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-sun-moon-and-forms-v1.json",
+      "bytes": 11623,
+      "sha256": "cb4a1bcd9386a7177b303807659888db73bc2638d2536b3aad0ee57485e6aeca",
+      "gitNormalizedSha256": "cb4a1bcd9386a7177b303807659888db73bc2638d2536b3aad0ee57485e6aeca"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-sun-moon-and-forms-v1.json",
+      "bytes": 24510,
+      "sha256": "667ea7627741f028891d7312d1631b9c5ba7a3ed15f0ff78064f072dbdd6527b",
+      "gitNormalizedSha256": "667ea7627741f028891d7312d1631b9c5ba7a3ed15f0ff78064f072dbdd6527b"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-world-and-pronouns-v1.json",
+      "bytes": 11661,
+      "sha256": "efba4e27bd677e8eeb0d54a8d788d6aff61960f4bcdacd70c0ad4ce659d42ad0",
+      "gitNormalizedSha256": "efba4e27bd677e8eeb0d54a8d788d6aff61960f4bcdacd70c0ad4ce659d42ad0"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-world-and-pronouns-v1.json",
+      "bytes": 25458,
+      "sha256": "91eed70a4ae30d9c2a5bc456add9587fd091f18871e66a8afdb592d1c373b6cf",
+      "gitNormalizedSha256": "91eed70a4ae30d9c2a5bc456add9587fd091f18871e66a8afdb592d1c373b6cf"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 15869,
+      "sha256": "937702df5d7ef1824c423bf98f28cdd4734fb758dc217193672965032e5acf95",
+      "gitNormalizedSha256": "1dd678cbd23fe50422e3a3f1bcb45d04207b43cb76bcaf4a8df3ba49c3892e24"
+    },
+    {
+      "path": "doc/product/221-exact-chinese-g1-source-and-initial-literacy.md",
+      "bytes": 7270,
+      "sha256": "9689b4d87c6152ad5f019d8ea1d41f1a517547796d23ee208e4480b0a029aad9",
+      "gitNormalizedSha256": "9689b4d87c6152ad5f019d8ea1d41f1a517547796d23ee208e4480b0a029aad9"
+    },
+    {
+      "path": "doc/product/222-pinyin-source-decoding-and-phonetic-lessons.md",
+      "bytes": 2633,
+      "sha256": "69919f4e6ca47f633a8beabe77ce87d391be51d47306986f8e28a71ec453dce4",
+      "gitNormalizedSha256": "69919f4e6ca47f633a8beabe77ce87d391be51d47306986f8e28a71ec453dce4"
+    },
+    {
+      "path": "doc/product/03-development-plan.md",
+      "bytes": 17897,
+      "sha256": "bc7de0a614034915cb3c8d6c0ec8b002944d87a33e4183b65c386ce6bab20997",
+      "gitNormalizedSha256": "bc7de0a614034915cb3c8d6c0ec8b002944d87a33e4183b65c386ce6bab20997"
+    },
+    {
+      "path": "doc/product/92-experience-and-content-master-plan.md",
+      "bytes": 33566,
+      "sha256": "0b4287d628077693d3b21a51d813362887b4a525cbc831e9f075638ad2d9c1f6",
+      "gitNormalizedSha256": "5f07a3b88a32daf6f14bcc94ba424c24ad5f8c946aac6a2a7c68cf905c32d894"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 185447,
+      "sha256": "75c3589a21641cec6df485b0e271a544bed9f4b19e0a20d29fc022d640c10f09",
+      "gitNormalizedSha256": "3e9516bb73a4dc6b89156dee8558393c824598c8297794d5cd9159f916b21051"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 111831,
+      "sha256": "1f4ca09b814effe4efcd4a81cde1cdc264359dbee408a7f161f84d8fc170d565",
+      "gitNormalizedSha256": "67d09df096f1afacf15c0a8ac7da6b14b20873d351c1c73807b1cfec3b2bc952"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 116910,
+      "sha256": "0a0f18d76bbbbd3a3604ce9dcccd5578347bb12be8230680aa8366e4e72265fe",
+      "gitNormalizedSha256": "0655fab18848427610e7f22fd78cda3a29b6ac69cf69ea4a700d420b01e38dd6"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 26848,
+      "sha256": "6e37913a6107c1b1260604a994b9bea1af232811c7e29d4c9ed5dfe0a1baf52d",
+      "gitNormalizedSha256": "212b41ab229ba0cc46a4cc2eeedbc3d8004ae27ec3fc1ed9a6cf1b943b627cf0"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 46111,
+      "sha256": "657677147c16d390675bde14b6ebefde450bd12b6d6d9fe32d3bfeedc8d1bc14",
+      "gitNormalizedSha256": "f5856785dc97db77aa1b3eae42fb798e36aaa12c7bc5c9f3aa4657e8bb52bcfb"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-body-and-actions-v1-desktop.png",
+      "bytes": 241850,
+      "sha256": "2d67c52f0a2e530394461e4cced96f1d299b25ed571abd6da655391293977eb9",
+      "gitNormalizedSha256": "6a3e7895b8139be2187e31a339d0b28c5390caaa301db3a847ee3f8c27770a84"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-body-and-actions-v1-mobile-table.png",
+      "bytes": 68035,
+      "sha256": "5b8827f256d8fc7490fa29c8a56627717607e20880cedc27f825526cdc4d871a",
+      "gitNormalizedSha256": "9611d65cf555aa696fa7830f8ef4e97fa792e1650b7ffef098fa5ef9bdfb0709"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-body-and-actions-v1-mobile.png",
+      "bytes": 35166,
+      "sha256": "ded3a9b4ae07d609cb1d4a645d392089c357ca2d2394e98310992cab5648ef58",
+      "gitNormalizedSha256": "f5bca9f1148c59c0ba03b7299e13c2dd565d2e98346d6589b711e91ac4e26e99"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-body-and-actions-v1-table.png",
+      "bytes": 31248,
+      "sha256": "47290f86e61ca08efe57ea1c0c3ad8413684676cf61cc6ca344cdebe5bb73c0e",
+      "gitNormalizedSha256": "5901ea5413dc822160166c7435eb211de8221490cf120a92aa6f76c7c0f307c8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-garden-one-v1-desktop.png",
+      "bytes": 250508,
+      "sha256": "48af272fd8c14802f0f2cce5fba94d26c6db2a7c0277083f51e743c621a0de00",
+      "gitNormalizedSha256": "def1151f1867f2d671356b2faa86da40bbaef3d1f4a6e46398beaf7b992aa154"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-garden-one-v1-mobile.png",
+      "bytes": 34543,
+      "sha256": "070374a488f40ee7430c09478f2939c360b38b3e10349ba0e66a730604aace8d",
+      "gitNormalizedSha256": "f623bede8f02c31cb5e7987d68f5628353c869afbd4dac2d9bb97c3ab0ac8c6d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-garden-one-v1-table.png",
+      "bytes": 36177,
+      "sha256": "57fa1e58d29ecd96a57e8d77663c8ba5796616ad0b77b6b98c3193c9a818ce38",
+      "gitNormalizedSha256": "6394938be1d423226075c71cbd85f35c41b95b2aaca65c5d656008aaff18725f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-happy-reading-v1-desktop.png",
+      "bytes": 241434,
+      "sha256": "8edc5623ebed5f3b6d38786fca875cf8e3492855cb54b8dfa9126ad51f7c0eaf",
+      "gitNormalizedSha256": "30b19d1fa1eac2e15e4b51422230fd567d8b9140b45366fe1330a4f3a2285396"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-happy-reading-v1-mobile.png",
+      "bytes": 75003,
+      "sha256": "965fcaf7cae0dbeadccc15aa7759bea84f87bc6694ac4a2ff9cfd64048513229",
+      "gitNormalizedSha256": "34997d0e4f2456c77522a8b95f2068d196686e7120281df0214a3f6dd631f5ab"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-happy-reading-v1-table.png",
+      "bytes": 35094,
+      "sha256": "2436e833732a9ea41938486039fecd622587176c1b1b1644296ffab0f1e0ac5f",
+      "gitNormalizedSha256": "a8c30ebd19e0df9cef6f07c361714f01e8ab9c180589bc4df4b26e92993627f6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-listen-and-do-v1-desktop.png",
+      "bytes": 251535,
+      "sha256": "dced85d6be67ab9128b79f18f218fa04f364b78e26dfe9693be0fd15a71d996a",
+      "gitNormalizedSha256": "0688300ed55294643b65eb126c9516721cdb2458bd0d97a6d21c8fcc130212a6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-listen-and-do-v1-mobile.png",
+      "bytes": 74261,
+      "sha256": "e86de9cd80d53461b07a3c663d0c03c0c3116e64e4e8ede6857019084ecd3834",
+      "gitNormalizedSha256": "da3a65a40835a2d71cf3193118cb7c54c91402bc346dd134034f99dd6891543a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-listen-and-do-v1-table.png",
+      "bytes": 33140,
+      "sha256": "677b983f389600500d1f42dd9794215a4ae1006dc3d4d81de8371298a3f9fc32",
+      "gitNormalizedSha256": "52a4e7997de5a79dfd9662c24980817d6016e5e8b175068e4715fc65b339e9c0"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-numbers-and-grid-v1-desktop.png",
+      "bytes": 247670,
+      "sha256": "c107ad00a0fd36205f244f34d59fc81a008facc9953d02d5afb680ae750e0bfc",
+      "gitNormalizedSha256": "99789eb2ffc08e1a77d7af9a0f635733caa1846e825da18a47c16cb4c528655e"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-numbers-and-grid-v1-mobile.png",
+      "bytes": 33053,
+      "sha256": "1b2dbbe28c15a9e6913d629ce2122740bdccc58126a8c5f1405f8ac52b27ed85",
+      "gitNormalizedSha256": "869a5f36339d0b07b7a790a3f9fe405084c4f2d40249ef429383bbe5ae1f37ff"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-numbers-and-grid-v1-table.png",
+      "bytes": 32984,
+      "sha256": "723ebe6902554358ab8f23f3d35f6e3a164a0da4ce01234ed6ae983bb32ea5ee",
+      "gitNormalizedSha256": "4baa0e4a38fce7f731f531f23c991fb7b876fa7e2d19a8f1a95e4a870e445049"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-rhyming-pairs-v1-desktop.png",
+      "bytes": 237202,
+      "sha256": "dda7b314ba28f37424c4f4c1c67e9d3cba8af8f53e6212ffb17c2657b66123c3",
+      "gitNormalizedSha256": "de406fd8855683ca47d554b384e4823d07bfe329f414873de525bd0744aad7af"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-rhyming-pairs-v1-mobile.png",
+      "bytes": 73564,
+      "sha256": "0b1eb5f49f4f06ede90376be8b2493ddb8b89a6e6aa1f66bf9a36f8958f91197",
+      "gitNormalizedSha256": "a6dfca274ca2bad3c1ea15f90d15d155c8b084cae3e6ea6f6822557cd7fd98df"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-rhyming-pairs-v1-table.png",
+      "bytes": 27902,
+      "sha256": "3bea340bcaf25bbed12fa8b20f916eff9ecd60fd55d53e6a22e722b118f78afd",
+      "gitNormalizedSha256": "9fa810f86a35d9708c94546b8d6958409f23cea15bc8f894907eb43be1369cfc"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-school-start-v1-desktop.png",
+      "bytes": 238508,
+      "sha256": "2cfa6fae201b6d04df3af8b2d305b230b673b33116a4bc592a3c824b6db68d96",
+      "gitNormalizedSha256": "85fc8bb14e100f86ae777cc9dcedb7ebd092322a6bc9ab269d097ab08e0e8a6d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-school-start-v1-mobile.png",
+      "bytes": 71539,
+      "sha256": "303718f1a6f1d1c93228a0a2804169ccdeedc2010fbc19023584b4775dc3548c",
+      "gitNormalizedSha256": "acae40f7f3463d71027f56d5caafb528c7932bcbb5b7c760ef26b5109a98f6cf"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-school-start-v1-table.png",
+      "bytes": 33239,
+      "sha256": "25ac2a1aa0dee200aa5f3afcd3b283ca404d81da6461a68fc76365d66fe0b803",
+      "gitNormalizedSha256": "75f4298df08d98c6345050e38ae85a7e165175cf46869a949d5c5e1fcfce20ce"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-sun-moon-and-forms-v1-desktop.png",
+      "bytes": 236436,
+      "sha256": "4e33fada19b94168925d849554c30e9f7f0f557746bcd3077a625f273755dd42",
+      "gitNormalizedSha256": "fdbc7b32d34029ab8680a3ce9a587171368af1af920c63c665e425a4578819d4"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-sun-moon-and-forms-v1-mobile.png",
+      "bytes": 73873,
+      "sha256": "ed040d2b8142a58517797fde24904845ad5ab42d84bb80c19db6887cca070075",
+      "gitNormalizedSha256": "7e65edd6d5d2f24b2615ca3d75b991b21d18807b753153fc454a41a758747ddb"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-sun-moon-and-forms-v1-table.png",
+      "bytes": 32080,
+      "sha256": "642b866475aa111bbacb62136f56e9e5cf4042aed6dc3120e928bd1cf39ff5c4",
+      "gitNormalizedSha256": "e562eab473da21c1222003e69cbefe6060ea9c540a9ef202f26a4433d29cd7a8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-world-and-pronouns-v1-desktop.png",
+      "bytes": 233296,
+      "sha256": "07df2347f1af7c9c163134d36eb2a4331077075fc45377e3c432f68245970dff",
+      "gitNormalizedSha256": "d9276fb323bdfecc3d1cdd74c6f89249670f46f4f8f7f989271648b55515200f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-world-and-pronouns-v1-mobile.png",
+      "bytes": 27645,
+      "sha256": "7a2ca126f4cd2b010fa7e2f44fbb6f09d83d9df45fc949d16b5279ded7b44a0f",
+      "gitNormalizedSha256": "47b3d1e9da0819e8fa279dfdccb786ac08b65480e36de4d98ad5af6485045cb5"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/chinese-g1-a692a990-world-and-pronouns-v1-table.png",
+      "bytes": 42715,
+      "sha256": "72b1f741b1b7847d47543822668cb8376153f1731b307cf399b5c00c5274b694",
+      "gitNormalizedSha256": "9d92171512e8579f75b5d4c9a10c22d805abd097c0547a089ea69ec0801bc0d5"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/derived/manifest.json",
+      "bytes": 6957,
+      "sha256": "d5edde353fc3eaa93ecc4cfc306e1e6c4ce6530cfcf183f378b07dd932f5332c",
+      "gitNormalizedSha256": "1e61a13589214501e79137599027dc9ef603a5f675111ac4d7df46e5fcf8c8f7"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/derived/mobile-1.png",
+      "bytes": 150251,
+      "sha256": "eb0a7c80c26ffcfa09c34d2ea3f1eb11c4116916a08fd974308c6f3dc144890b",
+      "gitNormalizedSha256": "b585e71954e64f0f0781e718aa057518062e516d1c80db50b70afd4889c01002"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/derived/mobile-2.png",
+      "bytes": 183304,
+      "sha256": "9d4bfc5f54891f50d54672c3f5192c61a9f208bcfcbb3edeae08992534beebe9",
+      "gitNormalizedSha256": "af049695e0532df3e86521cf5a214fa44e938f45c52b90373e1e2413f58911f5"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/derived/mobile-3.png",
+      "bytes": 175909,
+      "sha256": "664e847b32af981c7fabb3a6e89474f654a8518e2a8e03f6d2486e13242f8bc7",
+      "gitNormalizedSha256": "2bcd5962d4f9f1e266d19996e5c2b032911c086b583f4009671b27ba8202977e"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/derived/table-1.png",
+      "bytes": 113826,
+      "sha256": "754e0e1cfec24d8f4f9c8959cb1383489bc2aa9de97b8c694baf8eb0520bc02e",
+      "gitNormalizedSha256": "f9297d45597ecc71cab1f3c1f709b757836bc3e1acd89bda7c9990559836f398"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/derived/table-2.png",
+      "bytes": 104528,
+      "sha256": "755a353370a6285d68b882bac9e314c4e016e5f91ab966f20ebdc7b36fb9b4a0",
+      "gitNormalizedSha256": "cb76a00e82a53c91e4fbefdd05a1d3eb52420073467584b9e4adf4489c0fb3fc"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/derived/table-3.png",
+      "bytes": 119813,
+      "sha256": "c028ee2bb1e22dbaf9e06510e3e74034e5548c1fc1944c8fb074379da11f094f",
+      "gitNormalizedSha256": "8fb8712e1ed979fa71283fd49051f7a2b3becafef5b3cef2170187a3f5043b43"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/receipt.json",
+      "bytes": 3230,
+      "sha256": "5cece74e01a06d44d6dfafaadf3c26b1fadcac905ec17e92e744a7e5af2e30f7",
+      "gitNormalizedSha256": "5cece74e01a06d44d6dfafaadf3c26b1fadcac905ec17e92e744a7e5af2e30f7"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-first/runner.cjs",
+      "bytes": 17382,
+      "sha256": "f698fa23dec5a9ebb1dda4918ff3c89620af2e7c1cfb4f97928b31263e45340b",
+      "gitNormalizedSha256": "f698fa23dec5a9ebb1dda4918ff3c89620af2e7c1cfb4f97928b31263e45340b"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-body-and-actions-v1-desktop.png",
+      "bytes": 241850,
+      "sha256": "2d67c52f0a2e530394461e4cced96f1d299b25ed571abd6da655391293977eb9",
+      "gitNormalizedSha256": "6a3e7895b8139be2187e31a339d0b28c5390caaa301db3a847ee3f8c27770a84"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-body-and-actions-v1-mobile-table.png",
+      "bytes": 68035,
+      "sha256": "5b8827f256d8fc7490fa29c8a56627717607e20880cedc27f825526cdc4d871a",
+      "gitNormalizedSha256": "9611d65cf555aa696fa7830f8ef4e97fa792e1650b7ffef098fa5ef9bdfb0709"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-body-and-actions-v1-mobile.png",
+      "bytes": 67248,
+      "sha256": "e511b3d0513d3a702d2d90611d0464c87698bcad2dec4ce3b454313bf837caef",
+      "gitNormalizedSha256": "e1d703a13131dc9c2a602e1a4655d4e13cd1bf6e2ad54cd2bd000d671f49f35f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-body-and-actions-v1-table.png",
+      "bytes": 31248,
+      "sha256": "47290f86e61ca08efe57ea1c0c3ad8413684676cf61cc6ca344cdebe5bb73c0e",
+      "gitNormalizedSha256": "5901ea5413dc822160166c7435eb211de8221490cf120a92aa6f76c7c0f307c8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-garden-one-v1-desktop.png",
+      "bytes": 250508,
+      "sha256": "48af272fd8c14802f0f2cce5fba94d26c6db2a7c0277083f51e743c621a0de00",
+      "gitNormalizedSha256": "def1151f1867f2d671356b2faa86da40bbaef3d1f4a6e46398beaf7b992aa154"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-garden-one-v1-mobile.png",
+      "bytes": 62867,
+      "sha256": "e80690ed6522a7679cf9e4f97724a8abd6ab7af6688d561cdf8fe419bb41617f",
+      "gitNormalizedSha256": "cebb1c4db64dcbcc609cb108a30a012e66549bf2938f716b38ba2dfb70541b1a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-garden-one-v1-table.png",
+      "bytes": 36177,
+      "sha256": "57fa1e58d29ecd96a57e8d77663c8ba5796616ad0b77b6b98c3193c9a818ce38",
+      "gitNormalizedSha256": "6394938be1d423226075c71cbd85f35c41b95b2aaca65c5d656008aaff18725f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-happy-reading-v1-desktop.png",
+      "bytes": 241434,
+      "sha256": "8edc5623ebed5f3b6d38786fca875cf8e3492855cb54b8dfa9126ad51f7c0eaf",
+      "gitNormalizedSha256": "30b19d1fa1eac2e15e4b51422230fd567d8b9140b45366fe1330a4f3a2285396"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-happy-reading-v1-mobile.png",
+      "bytes": 75003,
+      "sha256": "965fcaf7cae0dbeadccc15aa7759bea84f87bc6694ac4a2ff9cfd64048513229",
+      "gitNormalizedSha256": "34997d0e4f2456c77522a8b95f2068d196686e7120281df0214a3f6dd631f5ab"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-happy-reading-v1-table.png",
+      "bytes": 35094,
+      "sha256": "2436e833732a9ea41938486039fecd622587176c1b1b1644296ffab0f1e0ac5f",
+      "gitNormalizedSha256": "a8c30ebd19e0df9cef6f07c361714f01e8ab9c180589bc4df4b26e92993627f6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-listen-and-do-v1-desktop.png",
+      "bytes": 251535,
+      "sha256": "dced85d6be67ab9128b79f18f218fa04f364b78e26dfe9693be0fd15a71d996a",
+      "gitNormalizedSha256": "0688300ed55294643b65eb126c9516721cdb2458bd0d97a6d21c8fcc130212a6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-listen-and-do-v1-mobile.png",
+      "bytes": 74261,
+      "sha256": "e86de9cd80d53461b07a3c663d0c03c0c3116e64e4e8ede6857019084ecd3834",
+      "gitNormalizedSha256": "da3a65a40835a2d71cf3193118cb7c54c91402bc346dd134034f99dd6891543a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-listen-and-do-v1-table.png",
+      "bytes": 33140,
+      "sha256": "677b983f389600500d1f42dd9794215a4ae1006dc3d4d81de8371298a3f9fc32",
+      "gitNormalizedSha256": "52a4e7997de5a79dfd9662c24980817d6016e5e8b175068e4715fc65b339e9c0"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-numbers-and-grid-v1-desktop.png",
+      "bytes": 247670,
+      "sha256": "c107ad00a0fd36205f244f34d59fc81a008facc9953d02d5afb680ae750e0bfc",
+      "gitNormalizedSha256": "99789eb2ffc08e1a77d7af9a0f635733caa1846e825da18a47c16cb4c528655e"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-numbers-and-grid-v1-mobile.png",
+      "bytes": 69057,
+      "sha256": "3329d9dca2aadeb4967912e7f4eecc7a9e1916edf4b182d88279b970beac3c55",
+      "gitNormalizedSha256": "c0c4499366c798524ad7219f24b89121617bebce1702087b221acac4ef756243"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-numbers-and-grid-v1-table.png",
+      "bytes": 32984,
+      "sha256": "723ebe6902554358ab8f23f3d35f6e3a164a0da4ce01234ed6ae983bb32ea5ee",
+      "gitNormalizedSha256": "4baa0e4a38fce7f731f531f23c991fb7b876fa7e2d19a8f1a95e4a870e445049"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-rhyming-pairs-v1-desktop.png",
+      "bytes": 237202,
+      "sha256": "dda7b314ba28f37424c4f4c1c67e9d3cba8af8f53e6212ffb17c2657b66123c3",
+      "gitNormalizedSha256": "de406fd8855683ca47d554b384e4823d07bfe329f414873de525bd0744aad7af"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-rhyming-pairs-v1-mobile.png",
+      "bytes": 73564,
+      "sha256": "0b1eb5f49f4f06ede90376be8b2493ddb8b89a6e6aa1f66bf9a36f8958f91197",
+      "gitNormalizedSha256": "a6dfca274ca2bad3c1ea15f90d15d155c8b084cae3e6ea6f6822557cd7fd98df"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-rhyming-pairs-v1-table.png",
+      "bytes": 27902,
+      "sha256": "3bea340bcaf25bbed12fa8b20f916eff9ecd60fd55d53e6a22e722b118f78afd",
+      "gitNormalizedSha256": "9fa810f86a35d9708c94546b8d6958409f23cea15bc8f894907eb43be1369cfc"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-school-start-v1-desktop.png",
+      "bytes": 238508,
+      "sha256": "2cfa6fae201b6d04df3af8b2d305b230b673b33116a4bc592a3c824b6db68d96",
+      "gitNormalizedSha256": "85fc8bb14e100f86ae777cc9dcedb7ebd092322a6bc9ab269d097ab08e0e8a6d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-school-start-v1-mobile.png",
+      "bytes": 71539,
+      "sha256": "303718f1a6f1d1c93228a0a2804169ccdeedc2010fbc19023584b4775dc3548c",
+      "gitNormalizedSha256": "acae40f7f3463d71027f56d5caafb528c7932bcbb5b7c760ef26b5109a98f6cf"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-school-start-v1-table.png",
+      "bytes": 33239,
+      "sha256": "25ac2a1aa0dee200aa5f3afcd3b283ca404d81da6461a68fc76365d66fe0b803",
+      "gitNormalizedSha256": "75f4298df08d98c6345050e38ae85a7e165175cf46869a949d5c5e1fcfce20ce"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-sun-moon-and-forms-v1-desktop.png",
+      "bytes": 236436,
+      "sha256": "4e33fada19b94168925d849554c30e9f7f0f557746bcd3077a625f273755dd42",
+      "gitNormalizedSha256": "fdbc7b32d34029ab8680a3ce9a587171368af1af920c63c665e425a4578819d4"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-sun-moon-and-forms-v1-mobile.png",
+      "bytes": 73873,
+      "sha256": "ed040d2b8142a58517797fde24904845ad5ab42d84bb80c19db6887cca070075",
+      "gitNormalizedSha256": "7e65edd6d5d2f24b2615ca3d75b991b21d18807b753153fc454a41a758747ddb"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-sun-moon-and-forms-v1-table.png",
+      "bytes": 32080,
+      "sha256": "642b866475aa111bbacb62136f56e9e5cf4042aed6dc3120e928bd1cf39ff5c4",
+      "gitNormalizedSha256": "e562eab473da21c1222003e69cbefe6060ea9c540a9ef202f26a4433d29cd7a8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-world-and-pronouns-v1-desktop.png",
+      "bytes": 233296,
+      "sha256": "07df2347f1af7c9c163134d36eb2a4331077075fc45377e3c432f68245970dff",
+      "gitNormalizedSha256": "d9276fb323bdfecc3d1cdd74c6f89249670f46f4f8f7f989271648b55515200f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-world-and-pronouns-v1-mobile.png",
+      "bytes": 73101,
+      "sha256": "243af8771ee63b39709e86ff9aca142113c3786b8b9c0051e4ba6924e7f60b19",
+      "gitNormalizedSha256": "1e1c79857ff3037e073d6573a0af7f929ead6d5ecb646b8a7d7d77ae33c3adec"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/chinese-g1-a692a990-world-and-pronouns-v1-table.png",
+      "bytes": 42715,
+      "sha256": "72b1f741b1b7847d47543822668cb8376153f1731b307cf399b5c00c5274b694",
+      "gitNormalizedSha256": "9d92171512e8579f75b5d4c9a10c22d805abd097c0547a089ea69ec0801bc0d5"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/derived/manifest.json",
+      "bytes": 6957,
+      "sha256": "e6c59eebc0c3afb590635d60080506a2619626631da255a454f06c8d3f99bd57",
+      "gitNormalizedSha256": "b77ab09d4558910ff7719ec743171fd0e334646b3f788c83937870dd840ac6ff"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/derived/mobile-1.png",
+      "bytes": 214005,
+      "sha256": "4280d84519f40acfa8b8d9f2d98367df131531cdda86d89cab65c4f034e05367",
+      "gitNormalizedSha256": "5511f40fc9d6a009c2d8051e1a054cb6f92a586e21f9be87b08a6fb43001b893"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/derived/mobile-2.png",
+      "bytes": 222981,
+      "sha256": "f22edc1ade53313705766996aa5b344a652b85b0ad04f3ca4d44231aef150b8f",
+      "gitNormalizedSha256": "ac6f88e092b07e509a33785c4e1440fa6f1008544ca2d93603d544894b44d015"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/derived/mobile-3.png",
+      "bytes": 221059,
+      "sha256": "a3765da0522d50fefa4b554cec2850ba4273fe8c2a6ba5b89abbbe97350a29f2",
+      "gitNormalizedSha256": "08a39c520d72bcb73982be8c1bef31fa44bd2c9b8fa161084795e05c5fc64266"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/derived/table-1.png",
+      "bytes": 113826,
+      "sha256": "754e0e1cfec24d8f4f9c8959cb1383489bc2aa9de97b8c694baf8eb0520bc02e",
+      "gitNormalizedSha256": "f9297d45597ecc71cab1f3c1f709b757836bc3e1acd89bda7c9990559836f398"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/derived/table-2.png",
+      "bytes": 104528,
+      "sha256": "755a353370a6285d68b882bac9e314c4e016e5f91ab966f20ebdc7b36fb9b4a0",
+      "gitNormalizedSha256": "cb76a00e82a53c91e4fbefdd05a1d3eb52420073467584b9e4adf4489c0fb3fc"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/derived/table-3.png",
+      "bytes": 119813,
+      "sha256": "c028ee2bb1e22dbaf9e06510e3e74034e5548c1fc1944c8fb074379da11f094f",
+      "gitNormalizedSha256": "8fb8712e1ed979fa71283fd49051f7a2b3becafef5b3cef2170187a3f5043b43"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/receipt.json",
+      "bytes": 3230,
+      "sha256": "5d0b32a8a979492cab49540e7fea82c9834a01b5e4bf80c95a533108e6c19614",
+      "gitNormalizedSha256": "5d0b32a8a979492cab49540e7fea82c9834a01b5e4bf80c95a533108e6c19614"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/browser-second/runner.cjs",
+      "bytes": 17909,
+      "sha256": "c75097f1e95c70f722d90b716679c6de78c3e1275283c00144f972e21ddc82f1",
+      "gitNormalizedSha256": "c75097f1e95c70f722d90b716679c6de78c3e1275283c00144f972e21ddc82f1"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/answer-language-correction.json",
+      "bytes": 760,
+      "sha256": "36ad18d6f633e906cd0d2fa50e0dc7a3442f2a2c1648b3d5d386fc9925ae6441",
+      "gitNormalizedSha256": "36ad18d6f633e906cd0d2fa50e0dc7a3442f2a2c1648b3d5d386fc9925ae6441"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/before-answer-language-correction.json.gz",
+      "bytes": 160819,
+      "sha256": "a9bb06a74a34fbcaedca5c247d92f0a9065a2816e01cdfda031a97d3cee67eec",
+      "gitNormalizedSha256": "a9bb06a74a34fbcaedca5c247d92f0a9065a2816e01cdfda031a97d3cee67eec"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/before-registration-first.json.gz",
+      "bytes": 290381,
+      "sha256": "6488840e6bdef47cdf0c4d27c50e1b33f9ff191ed2c21942d6627c40c4011181",
+      "gitNormalizedSha256": "6488840e6bdef47cdf0c4d27c50e1b33f9ff191ed2c21942d6627c40c4011181"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/browser-capture-correction.json",
+      "bytes": 611,
+      "sha256": "e89bebd7b893498be7cbd65f30b7815a6c7f17b1bdda5f98521190c79fd851ab",
+      "gitNormalizedSha256": "e89bebd7b893498be7cbd65f30b7815a6c7f17b1bdda5f98521190c79fd851ab"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/browser-visual-review.json",
+      "bytes": 813,
+      "sha256": "f5f745ba176f49ed63e8b1e5a0cd9a991848d55b1b5f412ba22dcdc072488bb6",
+      "gitNormalizedSha256": "f5f745ba176f49ed63e8b1e5a0cd9a991848d55b1b5f412ba22dcdc072488bb6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/candidate-before-question-wording-correction.json.gz",
+      "bytes": 160716,
+      "sha256": "6a25f04404c178f3b471645344f5b239fac5310957d37241da52daff9bc1c92f",
+      "gitNormalizedSha256": "6a25f04404c178f3b471645344f5b239fac5310957d37241da52daff9bc1c92f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/candidate-preflight-first.json",
+      "bytes": 7212,
+      "sha256": "5dadba2986bc191db494bf32e877c286e8c88909017e5f46d9e47c4de4312cb6",
+      "gitNormalizedSha256": "5dadba2986bc191db494bf32e877c286e8c88909017e5f46d9e47c4de4312cb6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/candidate-preflight-second-inputs.json.gz",
+      "bytes": 101252,
+      "sha256": "f01d2eab8b4e488ead70c3d782367ad16913393cb79861e086c768926016864d",
+      "gitNormalizedSha256": "86688ba7ef3a3f96e9a0452ce76300dc1e057736d510b8f7376a46edd3c42946"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/candidate-preflight-second.json",
+      "bytes": 7539,
+      "sha256": "36b61837bfcbc58a3e61e4311b4f7ff04b850561c4e0b874454de9bf699763f0",
+      "gitNormalizedSha256": "36b61837bfcbc58a3e61e4311b4f7ff04b850561c4e0b874454de9bf699763f0"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/candidate-preflight-third-inputs.json.gz",
+      "bytes": 101253,
+      "sha256": "059f2802fd9b0c3a9352b85969af672ab6bebcde9c4fa2adf01a5fe91278350a",
+      "gitNormalizedSha256": "914b17aae422660a4e6d20a4e81e6b95ceca1b729b7f078e54f12c0fa3d13d02"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/candidate-preflight-third.json",
+      "bytes": 7539,
+      "sha256": "0c644fde22902ab041a0406a781ecb56172acb018df84aa5d86ec4ec06f4bc6a",
+      "gitNormalizedSha256": "0c644fde22902ab041a0406a781ecb56172acb018df84aa5d86ec4ec06f4bc6a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/content-worklist-first.json.gz",
+      "bytes": 121468,
+      "sha256": "7a72d754b77a60bbc0250b985f70acbf5daf7a255255707d48de30bc4a0c308b",
+      "gitNormalizedSha256": "6bb606bb00ca12316412f857781b4b9ab1f31dccd7ecea7b00ce9fadd78f2194"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/content-worklist-second.json.gz",
+      "bytes": 121467,
+      "sha256": "529fa4eb18ee953e838c0492d487c154f909a6618612121ad6cb3f3073b40624",
+      "gitNormalizedSha256": "bc4e98b31d0a0913c496315b1409699f5302ce70585c861d535423d0be3992d0"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/numbers-and-grid-http-second.json",
+      "bytes": 2195,
+      "sha256": "88710ccd738f73cc283aea0643dc2891bf57eb7686a5e5b8e6d89235911b7d4a",
+      "gitNormalizedSha256": "88710ccd738f73cc283aea0643dc2891bf57eb7686a5e5b8e6d89235911b7d4a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/prepared-registration-first.json",
+      "bytes": 43731,
+      "sha256": "ef2c4223bd6d99bdf9745bbd45c57cc73125045ff54cd3eb7c89f3c3234f2da1",
+      "gitNormalizedSha256": "ef2c4223bd6d99bdf9745bbd45c57cc73125045ff54cd3eb7c89f3c3234f2da1"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/protection-final.json",
+      "bytes": 294,
+      "sha256": "41c44504142c94ed97ea16557303a2af5593a24cbedd20881ed63726ed9eb7d3",
+      "gitNormalizedSha256": "41c44504142c94ed97ea16557303a2af5593a24cbedd20881ed63726ed9eb7d3"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/question-wording-correction.json",
+      "bytes": 1478,
+      "sha256": "2b98c9fc7903becefe6d13ce6c0e7ee3480e243fa86021ce9245b9fd5dd0c25d",
+      "gitNormalizedSha256": "2b98c9fc7903becefe6d13ce6c0e7ee3480e243fa86021ce9245b9fd5dd0c25d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/registration-api-first-vitest.json.gz",
+      "bytes": 1462,
+      "sha256": "e01cbe3ca735f4fb6dd8e05c1b3d7d43485f6f72d1786f667bb8cc46778bd06f",
+      "gitNormalizedSha256": "e01cbe3ca735f4fb6dd8e05c1b3d7d43485f6f72d1786f667bb8cc46778bd06f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/registration-api-first.json",
+      "bytes": 172,
+      "sha256": "52bc38640fc8684cc4ecdea6edc868b2e66142f14198169c1b0dd5ade198c6f6",
+      "gitNormalizedSha256": "52bc38640fc8684cc4ecdea6edc868b2e66142f14198169c1b0dd5ade198c6f6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/registration-api-second-vitest.json.gz",
+      "bytes": 956,
+      "sha256": "c96e6a6b8946bb6d9b77174c2f926f72e75cba60b3b8a673fee50b58c5061393",
+      "gitNormalizedSha256": "2d512b382c2f3b42b9e569f4f6740271fb96413b21bf29b6dd9d9582578158b6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/registration-api-second.json",
+      "bytes": 172,
+      "sha256": "7b452d3d2f89f69d00bfe13b07918eba333286ec08ac65f9ade9c3fbd3875ea8",
+      "gitNormalizedSha256": "7b452d3d2f89f69d00bfe13b07918eba333286ec08ac65f9ade9c3fbd3875ea8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/registration-check-tool-first-failure.json",
+      "bytes": 397,
+      "sha256": "6b3b214fb6a3e5cbc52a439d05048f8586a84859fe6fa755e388f1e5b2831961",
+      "gitNormalizedSha256": "6b3b214fb6a3e5cbc52a439d05048f8586a84859fe6fa755e388f1e5b2831961"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/registration-first.json",
+      "bytes": 712,
+      "sha256": "5fd0845ea9741e267281becce0881d36c70c3e3bdd9fbb32df0211a6e53b4bb5",
+      "gitNormalizedSha256": "5fd0845ea9741e267281becce0881d36c70c3e3bdd9fbb32df0211a6e53b4bb5"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/registration-inputs-first.json.gz",
+      "bytes": 100156,
+      "sha256": "5f8b30e4b355bbc4e236e2c89cfd84086607cb21f9700388bb46423f58d54e3d",
+      "gitNormalizedSha256": "3e30f853a1c446e7f7081b4b8b59c9e9a5859e04c899dcae4d200f0b8ec72cf1"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/registration-inputs-second.json.gz",
+      "bytes": 100157,
+      "sha256": "b43034affe87f43086af3fbb5fb49139e0afaa4084a5a54dafdf312fcfbecd48",
+      "gitNormalizedSha256": "6412495152b548f0d761f7228f4ee6b218fd6fdd308c4dec7999e5480a6f4ed9"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/registry-final.json",
+      "bytes": 5673,
+      "sha256": "78833530579aa6364b5dd2ff297ab8d4ebf9fd7c474227dd6a8d410dc6239939",
+      "gitNormalizedSha256": "78833530579aa6364b5dd2ff297ab8d4ebf9fd7c474227dd6a8d410dc6239939"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/source-directory-visual-second.json",
+      "bytes": 44760,
+      "sha256": "6b0a2279c061e50096454daf8206b50157593c02b97b95a1cce18a74a9207ba7",
+      "gitNormalizedSha256": "6b0a2279c061e50096454daf8206b50157593c02b97b95a1cce18a74a9207ba7"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/source-pinyin-preparation-third.json",
+      "bytes": 46802,
+      "sha256": "11f0336f9d692dd2a94b2a0be9569211f591042e90c4d5cc095e659d4d1d0208",
+      "gitNormalizedSha256": "11f0336f9d692dd2a94b2a0be9569211f591042e90c4d5cc095e659d4d1d0208"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/source-render-tool-first-failure.json",
+      "bytes": 299,
+      "sha256": "c702562b0549a6c22de9a3c2a6c6523128239e1f97aa076f62051376de253b8d",
+      "gitNormalizedSha256": "c702562b0549a6c22de9a3c2a6c6523128239e1f97aa076f62051376de253b8d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/source-visual-first.json",
+      "bytes": 10535,
+      "sha256": "ec39a713366e1fecf1833270a0257390a71f0af59d4a8636c58b820e625173b4",
+      "gitNormalizedSha256": "ec39a713366e1fecf1833270a0257390a71f0af59d4a8636c58b820e625173b4"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/sync-registration-first.json",
+      "bytes": 2588,
+      "sha256": "e7aa9b9a62ca52981bd3cb21218f50bda3a1fedf9cccd1046439458991fb3aad",
+      "gitNormalizedSha256": "e7aa9b9a62ca52981bd3cb21218f50bda3a1fedf9cccd1046439458991fb3aad"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/verification-test-before-worklist-correction.json.gz",
+      "bytes": 6923,
+      "sha256": "826a710f96aa8894fd313d92ecb68fa1cc4e672b70333213f41c3ffe87e298c3",
+      "gitNormalizedSha256": "826a710f96aa8894fd313d92ecb68fa1cc4e672b70333213f41c3ffe87e298c3"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/worklist-expectation-correction.json",
+      "bytes": 470,
+      "sha256": "9833d3d34516897773866d412535cbec027b042ab3c166961a8e8db74da59776",
+      "gitNormalizedSha256": "9833d3d34516897773866d412535cbec027b042ab3c166961a8e8db74da59776"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/world-and-pronouns-http-second.json",
+      "bytes": 2187,
+      "sha256": "2663ee084fcf2520a3d8ef96e72ec5b4abf1ce60ad16c103effc0878da9beba8",
+      "gitNormalizedSha256": "2663ee084fcf2520a3d8ef96e72ec5b4abf1ce60ad16c103effc0878da9beba8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/http-first/chinese-g1-a692a990-body-and-actions-v1.json",
+      "bytes": 2195,
+      "sha256": "2f701999584a01fc062be6fe6cb7794a02d67f6a48d691271888c811d066e225",
+      "gitNormalizedSha256": "2f701999584a01fc062be6fe6cb7794a02d67f6a48d691271888c811d066e225"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/http-first/chinese-g1-a692a990-garden-one-v1.json",
+      "bytes": 2207,
+      "sha256": "78196f796a2fdbcea3b39a2e0828a9b733e903d199ee181dd33c29f12d499061",
+      "gitNormalizedSha256": "78196f796a2fdbcea3b39a2e0828a9b733e903d199ee181dd33c29f12d499061"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/http-first/chinese-g1-a692a990-happy-reading-v1.json",
+      "bytes": 2177,
+      "sha256": "3671eddaa3d7c2e2b9ca8a18058dbc7f13226f27110fd74e7cc6526ea698caad",
+      "gitNormalizedSha256": "3671eddaa3d7c2e2b9ca8a18058dbc7f13226f27110fd74e7cc6526ea698caad"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/http-first/chinese-g1-a692a990-listen-and-do-v1.json",
+      "bytes": 2177,
+      "sha256": "4b2deac27a70596f58d69dcb45bf3bd7d280b39cac19c0e112f1da71acc1795a",
+      "gitNormalizedSha256": "4b2deac27a70596f58d69dcb45bf3bd7d280b39cac19c0e112f1da71acc1795a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/http-first/chinese-g1-a692a990-numbers-and-grid-v1.json",
+      "bytes": 2195,
+      "sha256": "1764faf2609891b92ab84668e56d1a0256c1bdfbb6743fd12d7ed5d1cc56223e",
+      "gitNormalizedSha256": "1764faf2609891b92ab84668e56d1a0256c1bdfbb6743fd12d7ed5d1cc56223e"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/http-first/chinese-g1-a692a990-rhyming-pairs-v1.json",
+      "bytes": 2177,
+      "sha256": "2fb1cc0198aa5ef072f21748666f8ce088ea54a0c1b3c05235d9de74be865a81",
+      "gitNormalizedSha256": "2fb1cc0198aa5ef072f21748666f8ce088ea54a0c1b3c05235d9de74be865a81"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/http-first/chinese-g1-a692a990-school-start-v1.json",
+      "bytes": 2208,
+      "sha256": "82b23f265ebd3c33ed4e87e5536a14930b7394760f764e303b6a6fccca6a5fc4",
+      "gitNormalizedSha256": "82b23f265ebd3c33ed4e87e5536a14930b7394760f764e303b6a6fccca6a5fc4"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/http-first/chinese-g1-a692a990-sun-moon-and-forms-v1.json",
+      "bytes": 2199,
+      "sha256": "7af49812647f5f609fc7482aad7d7a82f0d4513cf9937038791364528af784e8",
+      "gitNormalizedSha256": "7af49812647f5f609fc7482aad7d7a82f0d4513cf9937038791364528af784e8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/http-first/chinese-g1-a692a990-world-and-pronouns-v1.json",
+      "bytes": 2187,
+      "sha256": "628792d2ef27115d676262a572ece35beedc41f9fc813b2a94cb2b4822b44cb6",
+      "gitNormalizedSha256": "628792d2ef27115d676262a572ece35beedc41f9fc813b2a94cb2b4822b44cb6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/http-first/summary.json",
+      "bytes": 1108,
+      "sha256": "e67d3bcf1d09dd6d0fe4d671376e41f1f6938c233072e724fe51ff118e5cad08",
+      "gitNormalizedSha256": "e67d3bcf1d09dd6d0fe4d671376e41f1f6938c233072e724fe51ff118e5cad08"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/manifest.json",
+      "bytes": 25316,
+      "sha256": "f655737dbace1ae2839e0eb6ba3befa997f9cdce16bdc41fd28d20736697e173",
+      "gitNormalizedSha256": "f655737dbace1ae2839e0eb6ba3befa997f9cdce16bdc41fd28d20736697e173"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/receipt.json",
+      "bytes": 40428,
+      "sha256": "ab7fba7ddde8a52a0e9dfedf66ab35f9f18414084b771ceecd0a1d3976092823",
+      "gitNormalizedSha256": "ab7fba7ddde8a52a0e9dfedf66ab35f9f18414084b771ceecd0a1d3976092823"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/sources.json.gz",
+      "bytes": 482582,
+      "sha256": "77c550efb63ee10af1ac5206ce0fec7220a587f04521bc9e6f9410951183f821",
+      "gitNormalizedSha256": "6a277261e4ec8b856b682b5d70e6e8411443817e48b2c37c987aff3fb439dffa"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/apply-registration.cjs",
+      "bytes": 2799,
+      "sha256": "3adebe4d3beeed98d267838dbf3078a892937de3899315d574def0038f06dd7b",
+      "gitNormalizedSha256": "3adebe4d3beeed98d267838dbf3078a892937de3899315d574def0038f06dd7b"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/archive.cjs",
+      "bytes": 9272,
+      "sha256": "e76d5f8de80299822d1d9ccb358d1d5e61edd41042b6e871e031ef55a2704e56",
+      "gitNormalizedSha256": "e76d5f8de80299822d1d9ccb358d1d5e61edd41042b6e871e031ef55a2704e56"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/browser-run.cjs",
+      "bytes": 17909,
+      "sha256": "c75097f1e95c70f722d90b716679c6de78c3e1275283c00144f972e21ddc82f1",
+      "gitNormalizedSha256": "c75097f1e95c70f722d90b716679c6de78c3e1275283c00144f972e21ddc82f1"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/check-registration.cjs",
+      "bytes": 2181,
+      "sha256": "425688a738c020e5a73163fef536dea7488e609a62b4ea9ec4d9d07ab4cadcc6",
+      "gitNormalizedSha256": "425688a738c020e5a73163fef536dea7488e609a62b4ea9ec4d9d07ab4cadcc6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/check-registry-final.cjs",
+      "bytes": 2500,
+      "sha256": "37dc5092392c8537fbc3f61ff4412d6e2d6ae2060a7dd171f16c63983cdcacb5",
+      "gitNormalizedSha256": "37dc5092392c8537fbc3f61ff4412d6e2d6ae2060a7dd171f16c63983cdcacb5"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/correct-editorial-answers.cjs",
+      "bytes": 3649,
+      "sha256": "a19fb5b990fbe6e7e22ebccb6dedb6a063c51ab0f9d2c408b79809e2e5f4b605",
+      "gitNormalizedSha256": "a19fb5b990fbe6e7e22ebccb6dedb6a063c51ab0f9d2c408b79809e2e5f4b605"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/correct-question-wording.cjs",
+      "bytes": 1434,
+      "sha256": "47884e08ddc11aeaa59083855975a292ee771cf06398de075d443ae01c805613",
+      "gitNormalizedSha256": "47884e08ddc11aeaa59083855975a292ee771cf06398de075d443ae01c805613"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/inspect-pinyin-fonts.py",
+      "bytes": 1105,
+      "sha256": "8ca4265b57ad65509b37cd0ae4cc5ba3414103205d4dfff218c531fb11c367aa",
+      "gitNormalizedSha256": "8ca4265b57ad65509b37cd0ae4cc5ba3414103205d4dfff218c531fb11c367aa"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/prepare-browser-second.cjs",
+      "bytes": 1686,
+      "sha256": "a8ba6e2faaa3e3efe575d5bad9658a4d4f35c25bc6fd358671c82bb13e86238e",
+      "gitNormalizedSha256": "a8ba6e2faaa3e3efe575d5bad9658a4d4f35c25bc6fd358671c82bb13e86238e"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/prepare-browser.cjs",
+      "bytes": 1366,
+      "sha256": "5d64d29c7cb78d7ac88dcc0253993e8ab806df84d685819aba7c217039f0b8e1",
+      "gitNormalizedSha256": "5d64d29c7cb78d7ac88dcc0253993e8ab806df84d685819aba7c217039f0b8e1"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/prepare-candidates.cjs",
+      "bytes": 3775,
+      "sha256": "d6c61b1e3caded99045cc3cef29b5ca2ad8a6d50de0dcd41bc792080a5897ebb",
+      "gitNormalizedSha256": "d6c61b1e3caded99045cc3cef29b5ca2ad8a6d50de0dcd41bc792080a5897ebb"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/prepare-registration.cjs",
+      "bytes": 6480,
+      "sha256": "b2625e9fd773f6a424935acaaeec7c62655ee91f692a4276e38e85022f10ea87",
+      "gitNormalizedSha256": "b2625e9fd773f6a424935acaaeec7c62655ee91f692a4276e38e85022f10ea87"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/record-visual-results.cjs",
+      "bytes": 2376,
+      "sha256": "d6433c55d86a6766bf69e2881f81d71f48df9207492ad5f9f8696d96f1cdc568",
+      "gitNormalizedSha256": "d6433c55d86a6766bf69e2881f81d71f48df9207492ad5f9f8696d96f1cdc568"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/run-http.cjs",
+      "bytes": 1722,
+      "sha256": "70deee660cdbee10462bf570730663b813f799796034c52d11e88fe586e7765a",
+      "gitNormalizedSha256": "70deee660cdbee10462bf570730663b813f799796034c52d11e88fe586e7765a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/sync-registration-test-correction.cjs",
+      "bytes": 1778,
+      "sha256": "0b351e268e9d6dc4fd7b2c2c2470ae3c9b186e5e955e1894acd631f95a5bd57d",
+      "gitNormalizedSha256": "0b351e268e9d6dc4fd7b2c2c2470ae3c9b186e5e955e1894acd631f95a5bd57d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/sync-registration.cjs",
+      "bytes": 3232,
+      "sha256": "9deed2df78d293f609856c53f26df34c69f5a3a3036f5421398dda2b7f03a165",
+      "gitNormalizedSha256": "9deed2df78d293f609856c53f26df34c69f5a3a3036f5421398dda2b7f03a165"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/update-plans.cjs",
+      "bytes": 2175,
+      "sha256": "b8a037bd00bbaaabbc68bed9aad0c0f599c04088f9d206eee700e1ea608f1519",
+      "gitNormalizedSha256": "b8a037bd00bbaaabbc68bed9aad0c0f599c04088f9d206eee700e1ea608f1519"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/visual-sheets.py",
+      "bytes": 1418,
+      "sha256": "2b57c198e9f539876d83612344771616f9e056e5bf144cc2fec0b81dfcbbae26",
+      "gitNormalizedSha256": "2b57c198e9f539876d83612344771616f9e056e5bf144cc2fec0b81dfcbbae26"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/checks/staging-scan.json",
+      "bytes": 219,
+      "sha256": "706273f086e8383b0101ee7d7971ad705a9dd3d9dfc6ea2ffe73c0c5e336cff5",
+      "gitNormalizedSha256": "706273f086e8383b0101ee7d7971ad705a9dd3d9dfc6ea2ffe73c0c5e336cff5"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/exact-chinese-g1-and-initial-literacy/tools/stage.cjs",
+      "bytes": 4400,
+      "sha256": "9c8a9e77ef41b1fe5ee83f8175a836c71e7d3b73e37830a1da5de8e9fd9df6e0",
+      "gitNormalizedSha256": "9c8a9e77ef41b1fe5ee83f8175a836c71e7d3b73e37830a1da5de8e9fd9df6e0"
+    }
+  ]
+}

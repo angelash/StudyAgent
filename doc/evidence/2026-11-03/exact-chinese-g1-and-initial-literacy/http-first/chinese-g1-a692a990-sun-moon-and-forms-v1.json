@@ -1,0 +1,62 @@
+{
+  "at": "2026-11-02T22:10:06.656Z",
+  "passed": true,
+  "storage": "sqlite",
+  "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+  "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+  "subject": "chinese",
+  "prewriteValidation": {
+    "passed": true,
+    "selectedDrafts": 1,
+    "questionCount": 28,
+    "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "proofFingerprint": "7aa016682f49c552065465f816e638c49b908b6ea07448e4921c0e6831bd2605"
+  },
+  "drafts": [
+    {
+      "file": "chinese-g1-a692a990-sun-moon-and-forms-v1.json",
+      "sha256": "cb4a1bcd9386a7177b303807659888db73bc2638d2536b3aad0ee57485e6aeca",
+      "physicalPages": [
+        16,
+        17
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 4,
+      "preflightPublishable": false,
+      "gapCount": 52,
+      "linkedDraftMaterialReferences": 28,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 1,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 28,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "exactSourceNamesAndMetadataPreserved": true,
+    "visualQuestionDocuments": 0,
+    "wholeVisualDocumentsPreserved": true,
+    "staleVisualDocumentVersionRejected": false,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-sun-moon-and-forms-v1.json",
+    "sha256": "667ea7627741f028891d7312d1631b9c5ba7a3ed15f0ff78064f072dbdd6527b",
+    "groups": 4,
+    "questions": 28,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

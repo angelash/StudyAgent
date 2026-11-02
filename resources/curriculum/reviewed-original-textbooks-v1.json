@@ -992,6 +992,536 @@
         ],
         "mappingReview": "not_reviewed"
       }
+    },
+    {
+      "id": "archive-book:chinese-g1-upper-a692a990d41b6291",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "edition": "统编版 · 独立原件 · 出版版次年份未核实",
+      "title": "语文一年级上册（独立原件，出版版次年份未核实）",
+      "source": "archive",
+      "sourceRef": "chinatextbook:chinese:g1:upper@a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+      "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+      "chapterState": "available",
+      "catalogVersion": "reviewed-original-directory-v1",
+      "sourceEdition": {
+        "sourceBookId": "chinatextbook:chinese:g1:upper",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "publicationYear": null,
+        "curriculumStandardYear": null,
+        "publicationStatement": "教育部组织编写、人民教育出版社出版的一年级上册独立原件。封面审定2016、后记编者署2016年7月，但物理3页没有明确出版版次或印次年月；publicationYear与curriculumStandardYear均保持null，不把审定年或后记日期替作版次，也不绑定2024修订。目录重复识字、课文组分别保存；参考附录为本地分组，不增加教学进度。"
+      },
+      "chapters": [
+        {
+          "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter1",
+          "name": "我上学了",
+          "printedPage": 2,
+          "tocPage": 4,
+          "kind": "orientation",
+          "pageBasis": "first_entry",
+          "lessons": [
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter1:entry1",
+              "name": "我上学了",
+              "printedPage": 2,
+              "tocPage": 4,
+              "kind": "activity"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2",
+          "name": "识字",
+          "printedPage": 6,
+          "tocPage": 4,
+          "kind": "unit",
+          "pageBasis": "first_entry",
+          "lessons": [
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry1",
+              "name": "天地人",
+              "printedPage": 6,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 1
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry2",
+              "name": "金木水火土",
+              "printedPage": 7,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 2
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry3",
+              "name": "口耳目",
+              "printedPage": 9,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 3
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry4",
+              "name": "日月水火",
+              "printedPage": 11,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 4
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry5",
+              "name": "对韵歌",
+              "printedPage": 13,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 5
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry6",
+              "name": "口语交际：我说你做",
+              "printedPage": 14,
+              "tocPage": 4,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry7",
+              "name": "语文园地一",
+              "printedPage": 15,
+              "tocPage": 4,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry8",
+              "name": "快乐读书吧：读书真快乐",
+              "printedPage": 19,
+              "tocPage": 4,
+              "kind": "activity"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3",
+          "name": "汉语拼音",
+          "printedPage": 20,
+          "tocPage": 4,
+          "kind": "unit",
+          "pageBasis": "first_entry",
+          "lessons": [
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry1",
+              "name": "a o e",
+              "printedPage": 20,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 1
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry2",
+              "name": "i u ü y w",
+              "printedPage": 22,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 2
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry3",
+              "name": "b p m f",
+              "printedPage": 24,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 3
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry4",
+              "name": "d t n l",
+              "printedPage": 26,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 4
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry5",
+              "name": "g k h",
+              "printedPage": 28,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 5
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry6",
+              "name": "j q x",
+              "printedPage": 30,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 6
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry7",
+              "name": "z c s",
+              "printedPage": 32,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 7
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry8",
+              "name": "zh ch sh r",
+              "printedPage": 34,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 8
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry9",
+              "name": "语文园地二",
+              "printedPage": 36,
+              "tocPage": 4,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry10",
+              "name": "ai ei ui",
+              "printedPage": 40,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 9
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry11",
+              "name": "ao ou iu",
+              "printedPage": 42,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 10
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry12",
+              "name": "ie üe er",
+              "printedPage": 44,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 11
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry13",
+              "name": "an en in un ün",
+              "printedPage": 46,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 12
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry14",
+              "name": "ang eng ing ong",
+              "printedPage": 49,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 13
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry15",
+              "name": "语文园地三",
+              "printedPage": 51,
+              "tocPage": 5,
+              "kind": "activity"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4",
+          "name": "课文",
+          "printedPage": 54,
+          "tocPage": 5,
+          "kind": "unit",
+          "pageBasis": "first_entry",
+          "lessons": [
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry1",
+              "name": "秋天",
+              "printedPage": 54,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 1
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry2",
+              "name": "小小的船",
+              "printedPage": 56,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 2
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry3",
+              "name": "江南",
+              "printedPage": 58,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 3
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry4",
+              "name": "四季",
+              "printedPage": 60,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 4
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry5",
+              "name": "口语交际：我们做朋友",
+              "printedPage": 62,
+              "tocPage": 5,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry6",
+              "name": "语文园地四",
+              "printedPage": 63,
+              "tocPage": 5,
+              "kind": "activity"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5",
+          "name": "识字",
+          "printedPage": 67,
+          "tocPage": 5,
+          "kind": "unit",
+          "pageBasis": "first_entry",
+          "lessons": [
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry1",
+              "name": "画",
+              "printedPage": 67,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 6
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry2",
+              "name": "大小多少",
+              "printedPage": 68,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 7
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry3",
+              "name": "小书包",
+              "printedPage": 70,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 8
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry4",
+              "name": "日月明",
+              "printedPage": 72,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 9
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry5",
+              "name": "升国旗",
+              "printedPage": 74,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 10
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry6",
+              "name": "语文园地五",
+              "printedPage": 76,
+              "tocPage": 5,
+              "kind": "activity"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6",
+          "name": "课文",
+          "printedPage": 80,
+          "tocPage": 6,
+          "kind": "unit",
+          "pageBasis": "first_entry",
+          "lessons": [
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry1",
+              "name": "影子",
+              "printedPage": 80,
+              "tocPage": 6,
+              "kind": "lesson",
+              "number": 5
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry2",
+              "name": "比尾巴",
+              "printedPage": 82,
+              "tocPage": 6,
+              "kind": "lesson",
+              "number": 6
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry3",
+              "name": "青蛙写诗",
+              "printedPage": 84,
+              "tocPage": 6,
+              "kind": "lesson",
+              "number": 7
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry4",
+              "name": "雨点儿",
+              "printedPage": 87,
+              "tocPage": 6,
+              "kind": "lesson",
+              "number": 8
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry5",
+              "name": "口语交际：用多大的声音",
+              "printedPage": 89,
+              "tocPage": 6,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry6",
+              "name": "语文园地六",
+              "printedPage": 90,
+              "tocPage": 6,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry7",
+              "name": "明天要远足",
+              "printedPage": 93,
+              "tocPage": 6,
+              "kind": "lesson",
+              "number": 9
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry8",
+              "name": "大还是小",
+              "printedPage": 96,
+              "tocPage": 6,
+              "kind": "lesson",
+              "number": 10
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry9",
+              "name": "项链",
+              "printedPage": 98,
+              "tocPage": 6,
+              "kind": "lesson",
+              "number": 11
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry10",
+              "name": "语文园地七",
+              "printedPage": 100,
+              "tocPage": 6,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry11",
+              "name": "雪地里的小画家",
+              "printedPage": 104,
+              "tocPage": 6,
+              "kind": "lesson",
+              "number": 12
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry12",
+              "name": "乌鸦喝水",
+              "printedPage": 106,
+              "tocPage": 6,
+              "kind": "lesson",
+              "number": 13
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry13",
+              "name": "小蜗牛",
+              "printedPage": 108,
+              "tocPage": 6,
+              "kind": "lesson",
+              "number": 14
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry14",
+              "name": "口语交际：小兔运南瓜",
+              "printedPage": 111,
+              "tocPage": 6,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry15",
+              "name": "语文园地八",
+              "printedPage": 112,
+              "tocPage": 6,
+              "kind": "activity"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7",
+          "name": "参考附录（本地分组）",
+          "printedPage": 115,
+          "tocPage": 6,
+          "kind": "appendix",
+          "pageBasis": "first_entry",
+          "syntheticHeading": true,
+          "lessons": [
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7:entry1",
+              "name": "识字表",
+              "printedPage": 115,
+              "tocPage": 6,
+              "kind": "reference"
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7:entry2",
+              "name": "写字表",
+              "printedPage": 118,
+              "tocPage": 6,
+              "kind": "reference"
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7:entry3",
+              "name": "常用笔画名称表",
+              "printedPage": 119,
+              "tocPage": 6,
+              "kind": "reference"
+            },
+            {
+              "id": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter7:entry4",
+              "name": "常用偏旁名称表",
+              "printedPage": 120,
+              "tocPage": 6,
+              "kind": "reference"
+            }
+          ]
+        }
+      ],
+      "version": "c63720a384e468a8dbd2630e",
+      "chapterEvidence": {
+        "reviewId": "original-chinese-g1-a692a990-20261103",
+        "method": "agent_visual_review",
+        "reviewedAt": "2026-11-02T21:07:42.331Z",
+        "idScheme": "local_toc_ids",
+        "sourceManifestSha256": "ffea2a5ec3e8e686fbe85246aa3c24181609a8228c0adc4d33383f6a2a96e1e6",
+        "metadataSha256": "c63720a384e468a8dbd2630ee2b82abfdbedd2df575719c1cadbb5174288a587",
+        "tocPageSha256s": [
+          "c0bdc4ccd86b7bbeeaf779acd8f007f356950b45f56741a3b9a0ed2e5e41fc3a",
+          "0600664e8101664d9c3341bf5a91b9ecaaafdc112468f53aa541012f9ebe922c",
+          "cc9a3ad929aca72a5bec7fd3c4b867ca8f918ac60bdb2ffa1b1f00f07ca43b84"
+        ],
+        "mappingReview": "not_reviewed"
+      }
     }
   ],
   "mappingCandidates": [
@@ -1117,6 +1647,53 @@
           "page": 16,
           "textSha256": "fc95f320c38c024d32e5d508baf79db44acdc94ef40c7915ce94434ec1cadfdc",
           "imageSha256": "d783a53deafc635e6e5c764a3fd4e7bf539499453bb30aa42b23a593b8b1a47b"
+        }
+      ],
+      "reviewStatus": "candidate",
+      "approvedAtomIds": []
+    },
+    {
+      "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+      "bookVersion": "c63720a384e468a8dbd2630e",
+      "sourceBookId": "chinatextbook:chinese:g1:upper",
+      "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+      "extractedSha256": "6dae830e70696a636c29022d580bec4ddfeb357b8370df9539e4cab8b13526dc",
+      "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter1:entry1",
+      "lessonName": "我上学了",
+      "chapterName": "我上学了",
+      "lessonFingerprint": "5925bec91c4b21239a4b2064ea39245f33b16d86b400a7ea1708772d1f014538",
+      "editionProofFingerprint": "7aa016682f49c552065465f816e638c49b908b6ea07448e4921c0e6831bd2605",
+      "printedPage": 2,
+      "pdfStartPage": 7,
+      "pdfEndPage": 10,
+      "titleMatched": true,
+      "candidateAtomIds": [],
+      "rationale": "准确原件入学活动物理7至10页逐张核对；目录中的一项活动保留一个进度身份，角色或歌曲不代本人事实，未授予审核映射或2024修订版来源资格。",
+      "evidence": [
+        {
+          "page": 4,
+          "textSha256": "0d05867f7d25777307f78377c14267abcdaf0c1c22a2877f689861c7262687c2",
+          "imageSha256": "c0bdc4ccd86b7bbeeaf779acd8f007f356950b45f56741a3b9a0ed2e5e41fc3a"
+        },
+        {
+          "page": 7,
+          "textSha256": "f07a529364265802a68bbc1a2f1052c1b2a936bb716b5f412bae0453c56d4d19",
+          "imageSha256": "eee126b65441d64beaa4375c38734cce6da14e30f69dfc91e8dd9023d83b3a86"
+        },
+        {
+          "page": 8,
+          "textSha256": "2920934d2d20a6d97bf1062cd2a4e1dc2c8c8b9507fc0b04eb62dacfa15459ce",
+          "imageSha256": "99e21d1505749039c6da131b37715c8c7fdc94ee2cb26cb749d7c6677144826f"
+        },
+        {
+          "page": 9,
+          "textSha256": "054e43c08a79330d447689927ddaa7b34cf2755a5eaeb0f0743d0f3e47a89e73",
+          "imageSha256": "21a3642c030620177b77e9f49937316fb1dd6b7d517a2f860d5a0e7b5afe5b4b"
+        },
+        {
+          "page": 10,
+          "textSha256": "bdb67254afa4dde253858f27acf863426a9c6da996fa4fc1b12e5c10547b89ff",
+          "imageSha256": "1b361bcf6f7cf91b32a0a24539da7cd9a05bffa02f5d2f3a5c23e8b906ed9b3b"
         }
       ],
       "reviewStatus": "candidate",

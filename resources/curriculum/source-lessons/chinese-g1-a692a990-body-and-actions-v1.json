@@ -1,0 +1,288 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry3",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "pageStart": 14,
+    "pageEnd": 15,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g1:a692a990:body-seven-reading",
+      "version": 1,
+      "name": "口耳目等七字的识读",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "识字与朗读",
+      "objective": "看清并实际认读口耳目手足站坐七字",
+      "successCriterion": "改变字序后仍逐字对应，不用动作模仿代本人读音",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:body-functions",
+      "version": 1,
+      "name": "身体名称与当前活动",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "字义与生活",
+      "objective": "把口耳目手足和给定活动联系起来",
+      "successCriterion": "能说明名称与活动的联系，允许不同身体条件下使用合适工具和方法",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:body-four-writing",
+      "version": 1,
+      "name": "口目耳手的实际书写",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "识字与写字",
+      "objective": "本人在练习纸上书写口目耳手并比较字形",
+      "successCriterion": "四字原稿可核，口目外框和内画、耳手笔画分别辨认",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:body-actions",
+      "version": 1,
+      "name": "听读站坐行卧的比喻",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "朗读与理解",
+      "objective": "在明确情境中辨认站坐行卧并理解形象说法",
+      "successCriterion": "能分清动作和比喻，动作练习按本人条件安全进行",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g1:a692a990:body-seven-reading",
+    "source:chinese:g1:a692a990:body-functions",
+    "source:chinese:g1:a692a990:body-four-writing",
+    "source:chinese:g1:a692a990:body-actions"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "准确原件本页段已逐张看图并核正文、识写表和活动范围；出版与课标年份未知，未据审定年推版次。来源核对不等教师、评分或独立题族审查。",
+    "pages": [
+      {
+        "page": 14,
+        "visualChecked": true,
+        "statement": "已看口耳目课题、五个身体名称及图中活动，图片名称和本课识字行分别核对。"
+      },
+      {
+        "page": 15,
+        "visualChecked": true,
+        "statement": "已看七字识读行、站坐行卧短句、口目耳手四写字示例及联系活动的问题，写字与动作实际过程分开。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "口耳目",
+    "recognitionCharacters": [
+      "口",
+      "耳",
+      "目",
+      "手",
+      "足",
+      "站",
+      "坐"
+    ],
+    "writingCharacters": [
+      "口",
+      "目",
+      "耳",
+      "手"
+    ],
+    "phoneticDecodingPrerequisite": false,
+    "directoryGranularity": "lesson_or_activity",
+    "allPageActivitiesDelivered": false,
+    "authenticListeningStimuliIncluded": false,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "口耳目",
+    "activation": {
+      "prompt": "看口和目两张字牌，外面都有框，里面一样吗？再想一想：看图画和听故事，可以联系到哪两个名称？",
+      "expectedObservation": "能发现目有内横，口没有；能把目和看、耳和听联系起来。",
+      "bridge": "看清字形，联系生活里的活动，再分别练习识字、写字和有节奏地朗读。"
+    },
+    "concept": {
+      "explanation": "这一课认识口、耳、目、手、足、站、坐。口可以联系说话，耳可以联系听声音，目表示眼睛，可以联系看图画；手和足也在许多活动中发挥作用。认识名称时可以看图、指字、说活动，不需要把所有活动都做一遍。每个人的身体条件可能不同，使用适合自己的工具和方法同样可以参与。\n先比较口和目。口的框里面没有横画，目的框里有两横；看完整字形，再自己读出对应的字。耳和手也要观察完整笔画，不能只看到一条横或竖就猜字。换个顺序继续认，帮助我们把声音和字形连起来。\n本课实际写口、目、耳、手四字。观察范字和笔顺示范，自己写过后再看原稿：外框是否清楚，目里面的横画是否齐全，耳和手的结构是否可辨。可以先慢写一个，再写下一个。写出来的形状和写的先后顺序要分别观察，静止照片能帮助看字形，笔顺还需要看实际过程。\n站、坐是本课认识的动作字，短句还提到行和卧。“站如松”借松树说明站得挺拔，“坐如钟”借钟说明坐得稳当；“行如风”形容行走轻快，“卧如弓”借弓的形状说侧卧姿态。比喻帮助想象，不是要求变成树或钟，也不是让人为了像风而奔跑。朗读时留意短句的停顿；动作活动根据自己的条件进行，听懂、说清也能参与。",
+      "points": [
+        "识七字并逐个自己读",
+        "口目看外框与内横",
+        "写四字看本人原稿",
+        "动作和形象比喻分清",
+        "根据自身条件参与活动"
+      ]
+    },
+    "example": {
+      "situation": "小禾先认口与目，再写一个目，最后解释站如松中的如字。",
+      "steps": [
+        {
+          "explanation": "先比较框内的横画，口里面没有横画，目里面有两横。",
+          "board": [
+            "口：框内无横",
+            "目：框内两横",
+            "看清再认读"
+          ]
+        },
+        {
+          "explanation": "观察本次写的目，再对照范字找一处需要注意的位置。",
+          "board": [
+            "本人先实际写",
+            "框与内横分别看",
+            "原稿保留再订正"
+          ]
+        },
+        {
+          "explanation": "把如理解为像，站如松是在借松的形象说姿态。",
+          "board": [
+            "如：像",
+            "站：人的动作",
+            "松：帮助想象"
+          ]
+        }
+      ],
+      "conclusion": "字形、本人书写与句子意思各自核对，逐项练习。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "字和活动连起来",
+        "headers": [
+          "名称或字",
+          "可以联系的活动",
+          "本课练法"
+        ],
+        "rows": [
+          [
+            "口、耳、目",
+            "说、听、看",
+            "看字并说出联系"
+          ],
+          [
+            "手、足",
+            "拿物、行走等",
+            "联系给定活动，不强求同一动作"
+          ],
+          [
+            "站、坐",
+            "两种不同姿态",
+            "认字并说明区别"
+          ],
+          [
+            "口、目、耳、手",
+            "本课四个写字目标",
+            "本人实际写，再看字形"
+          ]
+        ],
+        "explanation": "活动帮助理解名称；实际读过和写过仍需分别练习。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "把目读成口，没有看框里的两横。",
+        "alternatives": [
+          "还没有观察完整字形。"
+        ],
+        "verification": "把两字并排，指出内横后分别读。",
+        "correctiveFeedback": "先看框内，再看整个字，换序重认。"
+      },
+      {
+        "observation": "解释行如风时说必须跑得很快。",
+        "alternatives": [
+          "把比喻当作速度要求。"
+        ],
+        "verification": "问风帮助想象什么，当前行走应怎样照顾安全。",
+        "correctiveFeedback": "形象说法可帮助理解，实际活动按合适速度和本人条件进行。"
+      }
+    ],
+    "transfer": {
+      "scenario": "新角色看字幕听故事，用手指指字；另给打乱的目口耳手四字。",
+      "prompt": "说明角色当前活动与名称的联系，再实际认读四字，选择一字本人书写。",
+      "expectedStrategy": "依据新活动说明联系，识读和本人作品分别提供，不要求所有人用同一种动作完成。"
+    },
+    "summary": {
+      "synthesis": "看完整字形，联系当前活动，逐个认字；四个写字目标由自己实际写。朗读动作短句，借形象理解意思，按自己的条件参与。",
+      "takeaways": [
+        "口目留意内横",
+        "四字实际写",
+        "比喻帮助想象",
+        "活动方法可以合适地调整"
+      ]
+    },
+    "citations": [
+      {
+        "page": 15,
+        "quote": "口  耳  目  手  足  站  坐",
+        "usedFor": "concept"
+      },
+      {
+        "page": 15,
+        "quote": "站如松，坐如钟。\n行如风，卧如弓。",
+        "usedFor": "concept"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g1:a692a990:body-seven-reading",
+        "objective": "看清并实际认读口耳目手足站坐七字",
+        "successCriterion": "改变字序后仍逐字对应，不用动作模仿代本人读音"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g1:a692a990:body-functions",
+        "objective": "把口耳目手足和给定活动联系起来",
+        "successCriterion": "能说明名称与活动的联系，允许不同身体条件下使用合适工具和方法"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g1:a692a990:body-four-writing",
+        "objective": "本人在练习纸上书写口目耳手并比较字形",
+        "successCriterion": "四字原稿可核，口目外框和内画、耳手笔画分别辨认"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g1:a692a990:body-actions",
+        "objective": "在明确情境中辨认站坐行卧并理解形象说法",
+        "successCriterion": "能分清动作和比喻，动作练习按本人条件安全进行"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "body-and-actions",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

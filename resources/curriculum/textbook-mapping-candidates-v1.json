@@ -108,9 +108,9 @@
     "textbookManifest": "ffea2a5ec3e8e686fbe85246aa3c24181609a8228c0adc4d33383f6a2a96e1e6",
     "reviewedToc": "948f3fd8fb9afc4f0054d8d69a2882ea8cb0ccef1448b463090ca4086d80fc34",
     "atomCatalog": "02464cb314814076ec25c3bfcdc60449f8077a84862f01b94eb65bc19298fc70",
-    "registry": "fdbd3253c3d5d46a36c235eac05311f1f0f059ad94d91a42a64f93e08212eff5",
-    "originalRegistry": "5c99d674608564deab9bedf76d8ad16d4f982822d3c5659e103e7a3c91822bce",
-    "editionConformities": "854feae4109da5d5061531d550c4e15c91cef6c20fc8f3edf178ed873b4d65e4",
+    "registry": "b9123c94dea8b0327a4d9bde7a8a6da8912c9e2981120c05a4d970c95d86159d",
+    "originalRegistry": "d34f70df984e9acb362c5f647994047ee33dff3567162c63d5fe1a069422f09f",
+    "editionConformities": "99ccb6a2c91b8c0466e02189308e36be544b096b7ee0eb924f296c06f58cd23d",
     "primaryManifest": "b24580485e03b29394690382762e218f61d2f802933b9ffe0985e9633a029aee"
   },
   "pageOffsets": {
@@ -127,9 +127,9 @@
     "public-book:06422d77-21f1-45c3-b409-fa2947eee424": 5,
     "public-book:2e3dc199-9c42-486b-bbee-7731bd0ee227": 8
   },
-  "books": 15,
-  "lessons": 526,
-  "titleMatched": 319,
+  "books": 16,
+  "lessons": 527,
+  "titleMatched": 320,
   "lessonsWithCandidates": 234,
   "candidateMappings": 589,
   "atomsCovered": 55,
@@ -18613,6 +18613,53 @@
           "page": 16,
           "textSha256": "fc95f320c38c024d32e5d508baf79db44acdc94ef40c7915ce94434ec1cadfdc",
           "imageSha256": "d783a53deafc635e6e5c764a3fd4e7bf539499453bb30aa42b23a593b8b1a47b"
+        }
+      ],
+      "reviewStatus": "candidate",
+      "approvedAtomIds": []
+    },
+    {
+      "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+      "bookVersion": "c63720a384e468a8dbd2630e",
+      "sourceBookId": "chinatextbook:chinese:g1:upper",
+      "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+      "extractedSha256": "6dae830e70696a636c29022d580bec4ddfeb357b8370df9539e4cab8b13526dc",
+      "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter1:entry1",
+      "lessonName": "我上学了",
+      "chapterName": "我上学了",
+      "lessonFingerprint": "5925bec91c4b21239a4b2064ea39245f33b16d86b400a7ea1708772d1f014538",
+      "editionProofFingerprint": "7aa016682f49c552065465f816e638c49b908b6ea07448e4921c0e6831bd2605",
+      "printedPage": 2,
+      "pdfStartPage": 7,
+      "pdfEndPage": 10,
+      "titleMatched": true,
+      "candidateAtomIds": [],
+      "rationale": "准确原件入学活动物理7至10页逐张核对；目录中的一项活动保留一个进度身份，角色或歌曲不代本人事实，未授予审核映射或2024修订版来源资格。",
+      "evidence": [
+        {
+          "page": 4,
+          "textSha256": "0d05867f7d25777307f78377c14267abcdaf0c1c22a2877f689861c7262687c2",
+          "imageSha256": "c0bdc4ccd86b7bbeeaf779acd8f007f356950b45f56741a3b9a0ed2e5e41fc3a"
+        },
+        {
+          "page": 7,
+          "textSha256": "f07a529364265802a68bbc1a2f1052c1b2a936bb716b5f412bae0453c56d4d19",
+          "imageSha256": "eee126b65441d64beaa4375c38734cce6da14e30f69dfc91e8dd9023d83b3a86"
+        },
+        {
+          "page": 8,
+          "textSha256": "2920934d2d20a6d97bf1062cd2a4e1dc2c8c8b9507fc0b04eb62dacfa15459ce",
+          "imageSha256": "99e21d1505749039c6da131b37715c8c7fdc94ee2cb26cb749d7c6677144826f"
+        },
+        {
+          "page": 9,
+          "textSha256": "054e43c08a79330d447689927ddaa7b34cf2755a5eaeb0f0743d0f3e47a89e73",
+          "imageSha256": "21a3642c030620177b77e9f49937316fb1dd6b7d517a2f860d5a0e7b5afe5b4b"
+        },
+        {
+          "page": 10,
+          "textSha256": "bdb67254afa4dde253858f27acf863426a9c6da996fa4fc1b12e5c10547b89ff",
+          "imageSha256": "1b361bcf6f7cf91b32a0a24539da7cd9a05bffa02f5d2f3a5c23e8b906ed9b3b"
         }
       ],
       "reviewStatus": "candidate",

@@ -1,0 +1,428 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "body-and-actions",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-body-and-actions-v1.json",
+      "sha256": "cb0b0b0ad45dbd417416fb38775faf1ee3dcf7dd9c2e843fa93f1957b7ac4bac",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry3",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 14,
+        "pageEnd": 15,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时和四项拟议间隔原创候选。识字、本人书写、朗读背诵和实际交流各自核查，帮助和原答另留；目标、量规、独立题族与充分未见保持库存均未审，不自动发布或写学习事实。",
+  "groups": [
+    {
+      "lesson": "body-and-actions",
+      "atomId": "source:chinese:g1:a692a990:body-seven-reading",
+      "structure": "body-seven-voice",
+      "familyProposal": "a692a990-body-seven-voice",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人逐字认读七字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "口目等字形分辨清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "提示与未读范围如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "本人读音与七字逐个对应，交换后仍看清口与目。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-seven-voice-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录下自己认读口耳目手足站坐，再把口目交换位置读。",
+          "answer": "本人读音与七字逐个对应，交换后仍看清口与目。",
+          "analysis": "本人读音与七字逐个对应，交换后仍看清口与目。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-seven-voice-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先比较口目框内，再认耳手足站坐，录下实际声音。",
+          "answer": "能把口与目分别读出，其余五字也实际覆盖。",
+          "analysis": "能把口与目分别读出，其余五字也实际覆盖。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-seven-voice-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换顺序为坐手目足口站耳，本人再认一遍。",
+          "answer": "逐字依据当前字牌认读，不用原来的顺串代替。",
+          "analysis": "逐字依据当前字牌认读，不用原来的顺串代替。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-seven-voice-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只会读部分字，怎样保留这次录音？",
+          "answer": "保留本人已读与卡住处，未读出的字留待帮助后再练。",
+          "analysis": "保留本人已读与卡住处，未读出的字留待帮助后再练。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-seven-voice-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "将站坐放在最前面认，再说哪两个字表示姿态。",
+          "answer": "本人实际读站坐及其余五字，站和坐联系当前姿态。",
+          "analysis": "本人实际读站坐及其余五字，站和坐联系当前姿态。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-seven-voice-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "请成人出示本课七字，本人读后说明哪里得到提示。",
+          "answer": "实际声音与帮助条件清楚，提示后的表现与首次尝试分开。",
+          "analysis": "实际声音与帮助条件清楚，提示后的表现与首次尝试分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-seven-voice-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "不按原来顺序认七字，再选容易混的两个各读一次。",
+          "answer": "以本人当前逐字读音为据，合理说明自己本次需要注意的字。",
+          "analysis": "以本人当前逐字读音为据，合理说明自己本次需要注意的字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "body-and-actions",
+      "atomId": "source:chinese:g1:a692a990:body-functions",
+      "structure": "body-current-functions",
+      "familyProposal": "a692a990-body-current-functions",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "名称对应当前活动",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明有具体联系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "尊重不同条件和方法",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "耳和听声音联系起来；回答依据当前给定活动。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-current-functions-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "题目说小禾用耳朵听故事，耳联系哪种活动？",
+          "answer": "耳和听声音联系起来；回答依据当前给定活动。",
+          "analysis": "耳和听声音联系起来；回答依据当前给定活动。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-current-functions-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "看图画可以联系目，目在这里表示什么？",
+          "answer": "目表示眼睛，当前联系看图画的活动。",
+          "analysis": "目表示眼睛，当前联系看图画的活动。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-current-functions-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "有人借助字幕和工具理解故事，可以怎样参与交流？",
+          "answer": "按合适方法理解当前内容，再说自己的发现；不强求和别人用同一种方式。",
+          "analysis": "按合适方法理解当前内容，再说自己的发现；不强求和别人用同一种方式。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-current-functions-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "口和手都能帮助表达，能给出两种不同方法吗？",
+          "answer": "例如口头说一句话、用手写或画表达，方法与当前活动相符即可。",
+          "analysis": "例如口头说一句话、用手写或画表达，方法与当前活动相符即可。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-current-functions-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "给定角色用手拿起字牌，手联系哪件事？",
+          "answer": "手联系拿字牌这一步，不由这一步推出已经认读字牌。",
+          "analysis": "手联系拿字牌这一步，不由这一步推出已经认读字牌。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-current-functions-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只知道字牌上是足，能证明本人已经走过一段路吗？",
+          "answer": "不能；字义认识和实际动作是两件事，需要分别说明。",
+          "analysis": "不能；字义认识和实际动作是两件事，需要分别说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-current-functions-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选择一个本课名称，说明自己实际采用的一种学习方法。",
+          "answer": "名称与本人当前方法对应；未实际进行的活动可以只作为计划说明。",
+          "analysis": "名称与本人当前方法对应；未实际进行的活动可以只作为计划说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "body-and-actions",
+      "atomId": "source:chinese:g1:a692a990:body-four-writing",
+      "structure": "body-four-writing-process",
+      "familyProposal": "a692a990-body-four-writing-process",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖口目耳手",
+          "weight": 0.4
+        },
+        {
+          "criterion": "四字结构可辨",
+          "weight": 0.4
+        },
+        {
+          "criterion": "书写过程与订正分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四字由本人实际书写，口内无横、目内两横，其他字结构逐个看。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-four-writing-process-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际写口目耳手，上传原稿并指出口目的一处区别。",
+          "answer": "四字由本人实际书写，口内无横、目内两横，其他字结构逐个看。",
+          "analysis": "四字由本人实际书写，口内无横、目内两横，其他字结构逐个看。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-four-writing-process-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "在练习纸上先写口目，再补耳手，上传本次原件。",
+          "answer": "实际覆盖四字，外框内画清楚；不是打印范字或键入字。",
+          "analysis": "实际覆盖四字，外框内画清楚；不是打印范字或键入字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-four-writing-process-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换一张纸写四字，选一处笔画位置作说明。",
+          "answer": "核本次本人作品和具体位置，换纸本身不代完整过程证据。",
+          "analysis": "核本次本人作品和具体位置，换纸本身不代完整过程证据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-four-writing-process-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只写耳手时，上传后怎样说明其余两字？",
+          "answer": "只记录耳手的实际原稿，口目未写如实保留。",
+          "analysis": "只记录耳手的实际原稿，口目未写如实保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-four-writing-process-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "看自己写的口目，若需要改动，保留原稿再写一次并上传。",
+          "answer": "原写和后改有对应，不要求刻意造错，字形按各自原稿核。",
+          "analysis": "原写和后改有对应，不要求刻意造错，字形按各自原稿核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-four-writing-process-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "写四字时看过范字，上传作品要说明什么？",
+          "answer": "说明本人书写和所用帮助，不能把看范后的作品登记成无提示初答。",
+          "analysis": "说明本人书写和所用帮助，不能把看范后的作品登记成无提示初答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-four-writing-process-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "上传四字原稿，另说明如要核笔顺还需要看什么。",
+          "answer": "原稿看字形，笔顺应看实际书写过程或清楚的过程记录，静图不独证先后。",
+          "analysis": "原稿看字形，笔顺应看实际书写过程或清楚的过程记录，静图不独证先后。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "body-and-actions",
+      "atomId": "source:chinese:g1:a692a990:body-actions",
+      "structure": "body-action-and-simile",
+      "familyProposal": "a692a990-body-action-and-simile",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "辨认站坐行卧",
+          "weight": 0.4
+        },
+        {
+          "criterion": "解释形象说法",
+          "weight": 0.4
+        },
+        {
+          "criterion": "实际活动适合本人条件",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "如是像，借松树帮助想象站得挺拔，不是人变成树。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-action-and-simile-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "站如松中的如是什么意思，松帮助想象什么？",
+          "answer": "如是像，借松树帮助想象站得挺拔，不是人变成树。",
+          "analysis": "如是像，借松树帮助想象站得挺拔，不是人变成树。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-action-and-simile-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "读到坐如钟时，这句话在说什么姿态？",
+          "answer": "借钟帮助想象坐得稳当；姿态理解与本人实际动作分别说明。",
+          "analysis": "借钟帮助想象坐得稳当；姿态理解与本人实际动作分别说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-action-and-simile-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新句说行走轻快，能要求所有人为了像风而跑吗？",
+          "answer": "不能；形象说法不等速度命令，应按自身条件安全参与。",
+          "analysis": "不能；形象说法不等速度命令，应按自身条件安全参与。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-action-and-simile-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "站和坐是同一个动作吗？用给定情境说明。",
+          "answer": "两种姿态不同，可分别说明角色站着或坐着，不只凭读音相近判断。",
+          "analysis": "两种姿态不同，可分别说明角色站着或坐着，不只凭读音相近判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-action-and-simile-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "读到卧如弓时，借哪种形状帮助想象姿态？",
+          "answer": "借弓的弯曲形状说侧卧姿态，理解比喻不要求现场照做。",
+          "analysis": "借弓的弯曲形状说侧卧姿态，理解比喻不要求现场照做。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-action-and-simile-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "无法或不适合做某个动作时，还能怎样练这段话？",
+          "answer": "可以听读、认字、说意思或用合适替代方式参与，不强迫动作。",
+          "analysis": "可以听读、认字、说意思或用合适替代方式参与，不强迫动作。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-body-and-actions-body-action-and-simile-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选择一句短句解释动作与比喻各指什么。",
+          "answer": "明确人的动作和帮助想象的事物，解释对应所选句子。",
+          "analysis": "明确人的动作和帮助想象的事物，解释对应所选句子。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

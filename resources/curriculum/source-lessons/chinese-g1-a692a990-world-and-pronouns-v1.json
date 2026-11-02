@@ -1,0 +1,282 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry1",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "pageStart": 11,
+    "pageEnd": 11,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g1:a692a990:world-six-reading",
+      "version": 1,
+      "name": "六个基本字的实际识读",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "识字与朗读",
+      "objective": "识读天地人你我他六字并在改变顺序后继续辨认",
+      "successCriterion": "本人实际读音覆盖六字，字序改变不靠整串顺口背出代替逐字识读",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:world-meanings",
+      "version": 1,
+      "name": "天地图景与人的字义对应",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "字义理解",
+      "objective": "依据给定简短情境把天、地、人对应到所指",
+      "successCriterion": "能依据当前对象说明选择，字与图景对应清楚，不以所有上方事物都当作天",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:world-speaker",
+      "version": 1,
+      "name": "我和你随说话角色改变",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "指称与口语",
+      "objective": "在明确两人对话中解释我与当前受话者你指谁",
+      "successCriterion": "随着当前说话人转换正确说明指称，不把人名固定贴给我和你",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:world-third-person",
+      "version": 1,
+      "name": "用他谈论当前明确的第三人",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "指称与语境",
+      "objective": "依据已给角色说明他指的是哪一个人",
+      "successCriterion": "指称由当前语境确定，角色不足时能说明还需补信息",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g1:a692a990:world-six-reading",
+    "source:chinese:g1:a692a990:world-meanings",
+    "source:chinese:g1:a692a990:world-speaker",
+    "source:chinese:g1:a692a990:world-third-person"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "准确原件本页段已逐张看图并核正文、识写表和活动范围；出版与课标年份未知，未据审定年推版次。来源核对不等教师、评分或独立题族审查。",
+    "pages": [
+      {
+        "page": 11,
+        "visualChecked": true,
+        "statement": "已看天地图景字组与你我他六字和识字行，本页没有写字表、田字格或拼音先决要求。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "天地人",
+    "recognitionCharacters": [
+      "天",
+      "地",
+      "人",
+      "你",
+      "我",
+      "他"
+    ],
+    "writingCharacters": [],
+    "phoneticDecodingPrerequisite": false,
+    "directoryGranularity": "lesson_or_activity",
+    "allPageActivitiesDelivered": false,
+    "authenticListeningStimuliIncluded": false,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "天地人",
+    "activation": {
+      "prompt": "小禾对小岚说“我来讲，你来听”，接着小岚也说同一句话。两次的“我”和“你”一直指同一个人吗？",
+      "expectedObservation": "能发现说话人换了，我和你所指也会换；先说清当前是谁在讲话。",
+      "bridge": "这一页认识六个字，既看清字形，也在简单情境里懂它们怎样使用。"
+    },
+    "concept": {
+      "explanation": "先认识天、地、人三个字。说天空时可以用天，说脚下的大地时可以用地，谈到一个人或许多人时会用到人。看字的时候，把字形和当前意思连起来：人有两笔向两侧展开，天的上面还有横画，不能只凭大致外形就认成同一个字。这个比较帮助辨认，不要求本课把六个字全部默写出来。\n再看你、我、他。谁正在说话，句中的我通常就指谁；他说给哪一个人听，你就指当前受话者。小禾说“我讲，你听”，我是小禾，你是小岚；小岚接着说同一句话，我就改指小岚，你改指小禾。先交代角色，再理解句子，不能把我永远当成同一个名字。\n他常用来谈到当前已经明确的另一个人。如果只说“他来了”，却没有介绍在谈谁，听的人可能还不知道是谁，可以接着问清楚。用原创角色卡练习时，角色不等本人资料。\n先看清一个字，再自己读出来；换顺序、把字放到新的短句中再认一认。还没有学会拼音也可以听说明、看字形、联系意思来学习。跟着别人读过和自己重新认出是不同过程，需要帮助时可以先听，再尝试。",
+      "points": [
+        "六字逐个看清再读",
+        "天与人留意横画差别",
+        "天地图景与当前对象相连",
+        "我你跟随说听角色改变",
+        "他需要当前语境说明对象"
+      ]
+    },
+    "example": {
+      "situation": "原创角色卡：小禾和小岚轮流说话，小宁站在旁边。小禾对小岚说“我请你听，他来讲”。",
+      "steps": [
+        {
+          "explanation": "先确认当前说话者小禾和受话者小岚，再找我与对应的你。",
+          "board": [
+            "说话者：小禾",
+            "受话者：小岚",
+            "我你按本句确定"
+          ]
+        },
+        {
+          "explanation": "角色卡已明确站在旁边的小宁将讲故事，所以本句的他指小宁。",
+          "board": [
+            "第三人：小宁",
+            "由当前卡片提供",
+            "没有介绍就先问清"
+          ]
+        },
+        {
+          "explanation": "换小岚说话后重新核指称，再分别读三个代称字。",
+          "board": [
+            "换角色再判断",
+            "字形不因换人而变",
+            "实际自己读一读"
+          ]
+        }
+      ],
+      "conclusion": "字形保持，指称要跟着当前说话的人和语境一起理解。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "六个字在当前情境里",
+        "headers": [
+          "字",
+          "可以联系的意思或角色",
+          "辨认时看什么"
+        ],
+        "rows": [
+          [
+            "天",
+            "本次说的是天空",
+            "与人相比多留意上方横画"
+          ],
+          [
+            "地",
+            "本次说的是大地",
+            "联系当前所指，不只看方位"
+          ],
+          [
+            "人",
+            "本次谈到的人",
+            "看清完整字形"
+          ],
+          [
+            "我",
+            "当前说话者",
+            "谁在说这句话"
+          ],
+          [
+            "你",
+            "当前受话者",
+            "这句话说给谁听"
+          ],
+          [
+            "他",
+            "语境明确的另一个人",
+            "前后是否已说明对象"
+          ]
+        ],
+        "explanation": "字义与指称结合当前情境，先逐个认识，不靠固定顺序背串代替识字。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "换成小岚说话，仍把我说成小禾。",
+        "alternatives": [
+          "还没有跟着当前说话者重新确定我和你的对象。"
+        ],
+        "verification": "请先指出谁正在说，再说明本句中的我。",
+        "correctiveFeedback": "我不是固定姓名，每一轮先核当前角色。"
+      },
+      {
+        "observation": "六字顺着能背出，打乱后把天认成人。",
+        "alternatives": [
+          "可能记住整串声音但还没有逐字看清完整字形。"
+        ],
+        "verification": "把天和人单独摆出比较，再实际读每个字。",
+        "correctiveFeedback": "保留横画等当前字形线索，换顺序后再认一认。"
+      }
+    ],
+    "transfer": {
+      "scenario": "换一组明确角色：阿青对阿禾说我先读、你再读，随后由阿禾对阿青说同一句。",
+      "prompt": "分别指出两次的我和你，再说还需要怎样的信息才知道一句话中的他。",
+      "expectedStrategy": "随当前说话者和受话者更新指称；没有明确第三人时先问，不把熟悉角色直接套进去。"
+    },
+    "summary": {
+      "synthesis": "六个字要看清、读准，并放到具体意思里理解。天地图景与人各有指向，我你他则要联系当前角色和前后说明。",
+      "takeaways": [
+        "逐个认六字",
+        "天人字形仔细比",
+        "我你随说听角色变",
+        "他指谁先看语境"
+      ]
+    },
+    "citations": [
+      {
+        "page": 11,
+        "quote": "天  地  人  你  我  他",
+        "usedFor": "concept"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g1:a692a990:world-six-reading",
+        "objective": "识读天地人你我他六字并在改变顺序后继续辨认",
+        "successCriterion": "本人实际读音覆盖六字，字序改变不靠整串顺口背出代替逐字识读"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g1:a692a990:world-meanings",
+        "objective": "依据给定简短情境把天、地、人对应到所指",
+        "successCriterion": "能依据当前对象说明选择，字与图景对应清楚，不以所有上方事物都当作天"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g1:a692a990:world-speaker",
+        "objective": "在明确两人对话中解释我与当前受话者你指谁",
+        "successCriterion": "随着当前说话人转换正确说明指称，不把人名固定贴给我和你"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g1:a692a990:world-third-person",
+        "objective": "依据已给角色说明他指的是哪一个人",
+        "successCriterion": "指称由当前语境确定，角色不足时能说明还需补信息"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "world-and-pronouns",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

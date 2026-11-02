@@ -1,0 +1,36 @@
+{
+  "at": "2026-11-02T22:05:25.902Z",
+  "edits": [
+    {
+      "file": "scripts/content/chinese-g1-initial-body-nature.cjs",
+      "from": "坐如钟在说什么姿态？",
+      "to": "读到坐如钟时，这句话在说什么姿态？"
+    },
+    {
+      "file": "scripts/content/chinese-g1-initial-body-nature.cjs",
+      "from": "卧如弓借哪种形状帮助想象？",
+      "to": "读到卧如弓时，借哪种形状帮助想象姿态？"
+    },
+    {
+      "file": "scripts/content/chinese-g1-initial-body-nature.cjs",
+      "from": "花对树、鸟对虫应怎样分组？",
+      "to": "按本件原句，花对树、鸟对虫应怎样分组？"
+    },
+    {
+      "file": "scripts/content/chinese-g1-initial-activities.cjs",
+      "from": "人和天字形有什么具体不同？",
+      "to": "把人和天字牌并排看，字形有什么具体不同？"
+    },
+    {
+      "file": "scripts/content/chinese-g1-initial-activities.cjs",
+      "from": "口和田同样有框，怎样区分？",
+      "to": "口和田同样有框，看完整字形怎样区分？"
+    },
+    {
+      "file": "scripts/content/chinese-g1-initial-activities.cjs",
+      "from": "只看外框能分清口田日目吗？",
+      "to": "只看外框能分清口田日目吗，还要看哪里？"
+    }
+  ],
+  "reason": "Six prompts were under the existing 15-character preflight boundary; add concrete reading or comparison context without changing targets, answers, groups or review."
+}

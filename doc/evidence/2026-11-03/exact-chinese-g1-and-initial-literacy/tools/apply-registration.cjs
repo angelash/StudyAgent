@@ -1,0 +1,14 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),zlib=require('node:zlib'),assert=require('node:assert/strict'),cp=require('node:child_process');
+const root=path.resolve(__dirname,'../../..'),sha=b=>crypto.createHash('sha256').update(b).digest('hex'),prepared=JSON.parse(fs.readFileSync(path.join(__dirname,'prepared-registration-first.json')));
+assert.equal(cp.execFileSync('git',['branch','--show-current'],{cwd:root,encoding:'utf8'}).trim(),'main');assert(prepared.passed&&prepared.preparedOnly&&!prepared.registryMutated);
+for(const row of prepared.previousInputs)assert.equal(sha(fs.readFileSync(path.join(root,row.path))),row.sha256,'Prepared registry base changed');
+const files=['resources/curriculum/reviewed-original-textbooks-v1.json','resources/curriculum/textbook-edition-conformities-v1.json','resources/curriculum/textbooks-v1.json','resources/curriculum/textbook-mapping-candidates-v1.json'],before=files.map(file=>{const bytes=fs.readFileSync(path.join(root,file));return{path:file,sha256:sha(bytes),base64:bytes.toString('base64')};});
+fs.writeFileSync(path.join(__dirname,'before-registration-first.json.gz'),zlib.gzipSync(JSON.stringify({baseCommit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),files:before})),{flag:'wx'});
+const originals=JSON.parse(Buffer.from(before[0].base64,'base64')),proofs=JSON.parse(Buffer.from(before[1].base64,'base64')),id=prepared.book.id;
+assert(!originals.books.some(row=>row.id===id));assert(!proofs.rows.some(row=>row.bookId===id));
+const old={books:structuredClone(originals.books),mappings:structuredClone(originals.mappingCandidates),proofs:structuredClone(proofs.rows)};
+originals.books.push(prepared.book);originals.mappingCandidates.push(prepared.mapping);proofs.rows.push(prepared.proof);
+assert.deepEqual(originals.books.slice(0,-1),old.books);assert.deepEqual(originals.mappingCandidates.slice(0,-1),old.mappings);assert.deepEqual(proofs.rows.slice(0,-1),old.proofs);
+for(const [file,value]of [[files[0],originals],[files[1],proofs]])fs.writeFileSync(path.join(root,file),JSON.stringify(value,null,2)+'\n');
+const report={at:new Date().toISOString(),passed:true,bookId:id,bookVersion:prepared.book.version,proofFingerprint:prepared.proofFingerprint,publicationYear:null,curriculumStandardYear:null,approvalYear:2016,editorPostscriptDate:'2016-07',sourcePages:127,directoryEntries:55,instructionalEntries:51,referenceEntries:4,visuallyReviewedPages:74,allSourcePagesVisuallyReviewed:false,previousOriginalRecordsUnchanged:true,registryRebuildPending:true,teacherReviewed:false,published:0,learnerEvidenceCreated:false};
+fs.writeFileSync(path.join(__dirname,'registration-first.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(report));

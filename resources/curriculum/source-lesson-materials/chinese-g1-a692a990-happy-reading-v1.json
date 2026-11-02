@@ -1,0 +1,428 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "happy-reading",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-happy-reading-v1.json",
+      "sha256": "a5b48d804988d884286d61e726eeabb1367fb8cbf180bbae28a6be9c7d4b0a8d",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry8",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 24,
+        "pageEnd": 24,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时和四项拟议间隔原创候选。识字、本人书写、朗读背诵和实际交流各自核查，帮助和原答另留；目标、量规、独立题族与充分未见保持库存均未审，不自动发布或写学习事实。",
+  "groups": [
+    {
+      "lesson": "happy-reading",
+      "atomId": "source:chinese:g1:a692a990:books-choose",
+      "structure": "books-current-available-choice",
+      "familyProposal": "a692a990-books-current-available-choice",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "材料真实可用或示意身份清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "选择理由对应当前材料",
+          "weight": 0.4
+        },
+        {
+          "criterion": "选择和阅读完成分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "材料与选择真实，示意注明；封面或选择不证明已经读完。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-current-available-choice-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "选择一本当前能用的合适图画书，只拍封面或画自己的选择示意并说明理由。",
+          "answer": "材料与选择真实，示意注明；封面或选择不证明已经读完。",
+          "analysis": "材料与选择真实，示意注明；封面或选择不证明已经读完。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-current-available-choice-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "看看手边图书封面，指出引起兴趣的一处并上传当前材料图。",
+          "answer": "理由对应具体图画或标题，允许不同选择，不要求露脸。",
+          "analysis": "理由对应具体图画或标题，允许不同选择，不要求露脸。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-current-available-choice-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换一本可用图书，上传选择图并说与上次不同的一处。",
+          "answer": "新旧材料与理由可对应，未实际拿到的书只能作为愿望说明。",
+          "analysis": "新旧材料与理由可对应，未实际拿到的书只能作为愿望说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-current-available-choice-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "还没有合适图书时，可以上传什么准备并怎样说明？",
+          "answer": "可上传自己制作的选择计划示意，注明待取得材料，不假装图书已可用。",
+          "analysis": "可上传自己制作的选择计划示意，注明待取得材料，不假装图书已可用。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-current-available-choice-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "选好书但没翻开，上传后怎样介绍当前进度？",
+          "answer": "说明已选择和理由，实际阅读仍待开始，不由封面图推整本已读。",
+          "analysis": "说明已选择和理由，实际阅读仍待开始，不由封面图推整本已读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-current-available-choice-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本次在成人帮助下选书，上传材料并说明帮助。",
+          "answer": "选择依据和帮助清楚，不把成人推荐直接写成本人独立判断。",
+          "analysis": "选择依据和帮助清楚，不把成人推荐直接写成本人独立判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-current-available-choice-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新选择一项当前可读材料，说明想先看哪一部分。",
+          "answer": "材料身份与具体下一步相符，计划和实际完成分别核。",
+          "analysis": "材料身份与具体下一步相符，计划和实际完成分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "happy-reading",
+      "atomId": "source:chinese:g1:a692a990:books-read",
+      "structure": "books-real-partial-reading",
+      "familyProposal": "a692a990-books-real-partial-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "实际读看范围具体",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前发现与材料对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助和未读范围清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "书与部分明确，当前发现有依据，成人读和本人看分别说明。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-real-partial-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "实际看一幅图或共读一小段后，录音说本次看读了哪部分。",
+          "answer": "书与部分明确，当前发现有依据，成人读和本人看分别说明。",
+          "analysis": "书与部分明确，当前发现有依据，成人读和本人看分别说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-real-partial-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "请愿意参与的成人读一段，听完本人说一个听到的内容。",
+          "answer": "本次真实原话与本人回应相符，若尚无共读则说明条件未具。",
+          "analysis": "本次真实原话与本人回应相符，若尚无共读则说明条件未具。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-real-partial-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换一本可用图书实际看图，录一个新发现。",
+          "answer": "新发现对应当前图，不沿用上本书情节。",
+          "analysis": "新发现对应当前图，不沿用上本书情节。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-real-partial-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只看封面还没读内页，应怎样录音说明？",
+          "answer": "如实说看过封面，内页仍待读，不由兴趣推阅读已完整。",
+          "analysis": "如实说看过封面，内页仍待读，不由兴趣推阅读已完整。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-real-partial-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "尚未学拼音，本次可以怎样真实参与再说明？",
+          "answer": "可以看图听成人读或认已有会的字，参与范围与帮助如实。",
+          "analysis": "可以看图听成人读或认已有会的字，参与范围与帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-real-partial-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "读到不懂处向成人提问，再录本人理解与得到的帮助。",
+          "answer": "真实疑问回应分明，帮助后理解不覆盖原先不懂。",
+          "analysis": "真实疑问回应分明，帮助后理解不覆盖原先不懂。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-real-partial-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新读看当前一小部分，说明这次实际范围与还想知道的事。",
+          "answer": "范围具体，未知留作问题，不编后续情节或假填阅读时长。",
+          "analysis": "范围具体，未知留作问题，不编后续情节或假填阅读时长。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "happy-reading",
+      "atomId": "source:chinese:g1:a692a990:books-tell",
+      "structure": "books-tell-current-detail",
+      "familyProposal": "a692a990-books-tell-current-detail",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "说明当前图书或材料",
+          "weight": 0.4
+        },
+        {
+          "criterion": "分享对应实际读到的内容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "事实猜想示例分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "先说明当前材料，分享与本次内容相符，不借参考例子补本人经历。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-tell-current-detail-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "根据本次实际读看的部分，录音讲一个人物或一件事。",
+          "answer": "先说明当前材料，分享与本次内容相符，不借参考例子补本人经历。",
+          "analysis": "先说明当前材料，分享与本次内容相符，不借参考例子补本人经历。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-tell-current-detail-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "指着实际看过的一幅图，录一句让别人知道图中发生什么。",
+          "answer": "表达接当前图，人物动作清楚，信息不足处不硬补。",
+          "analysis": "表达接当前图，人物动作清楚，信息不足处不硬补。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-tell-current-detail-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换一幅实际看过的新图，讲一个与旧图不同的发现。",
+          "answer": "新材料具体，不能照背旧图情节当本次观察。",
+          "analysis": "新材料具体，不能照背旧图情节当本次观察。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-tell-current-detail-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只猜后面会发生什么，录音应怎样说明？",
+          "answer": "标明这是猜想，已读部分与未知后文分开。",
+          "analysis": "标明这是猜想，已读部分与未知后文分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-tell-current-detail-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "教材角色会讲很多故事，可以直接说本人也是故事大王吗？",
+          "answer": "不能，自己的讲述范围按实际表现核；可以说下一步想练。",
+          "analysis": "不能，自己的讲述范围按实际表现核；可以说下一步想练。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-tell-current-detail-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际讲给愿意听的人后，记录一个真实问题并录本人回应。",
+          "answer": "听者问题真实可对应，独自角色练习须注明，不补造交流。",
+          "analysis": "听者问题真实可对应，独自角色练习须注明，不补造交流。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-tell-current-detail-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "再讲一次本次读过的内容，忘了细节时怎样继续？",
+          "answer": "可回书核对并说明帮助，不把重新看后的清楚表现倒作无帮助首讲。",
+          "analysis": "可回书核对并说明帮助，不把重新看后的清楚表现倒作无帮助首讲。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "happy-reading",
+      "atomId": "source:chinese:g1:a692a990:books-plan",
+      "structure": "books-next-reading-step",
+      "familyProposal": "a692a990-books-next-reading-step",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "计划对象和一步行动明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "依据当前可用条件",
+          "weight": 0.4
+        },
+        {
+          "criterion": "已做与愿望分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "例如再看下一幅或请成人读对应一段，具体而可实行，未做仍是计划。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-next-reading-step-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "已看一幅图，想继续这本书，可以怎样安排下一步？",
+          "answer": "例如再看下一幅或请成人读对应一段，具体而可实行，未做仍是计划。",
+          "analysis": "例如再看下一幅或请成人读对应一段，具体而可实行，未做仍是计划。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-next-reading-step-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“我要读很多很多书”改成当前可以做的一步。",
+          "answer": "可选一本手边合适图书的一幅图或一小段，范围具体。",
+          "analysis": "可选一本手边合适图书的一幅图或一小段，范围具体。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-next-reading-step-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新书还没拿到，怎样调整当前阅读安排？",
+          "answer": "先用现有合适材料或准备取得书的步骤，不把未到书写成已读。",
+          "analysis": "先用现有合适材料或准备取得书的步骤，不把未到书写成已读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-next-reading-step-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "没学拼音是否必须等学完才看图或共读？",
+          "answer": "不必，可以按当前条件看图听读，后续拼音学习另安排。",
+          "analysis": "不必，可以按当前条件看图听读，后续拼音学习另安排。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-next-reading-step-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本次完成与明天愿望要怎样分别说明？",
+          "answer": "已做按实际范围说，未来安排明确为计划，不提前登记事实。",
+          "analysis": "已做按实际范围说，未来安排明确为计划，不提前登记事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-next-reading-step-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人临时不能共读，可以怎样保留或调整计划？",
+          "answer": "如实说明条件变化，改看图或等待合适时间，不虚构成人已参与。",
+          "analysis": "如实说明条件变化，改看图或等待合适时间，不虚构成人已参与。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-happy-reading-books-next-reading-step-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "根据本次真实发现提出一个阅读问题，再选下一步。",
+          "answer": "问题接当前内容，下一步有可实行方法，未知答案不由例子填充。",
+          "analysis": "问题接当前内容，下一步有可实行方法，未知答案不由例子填充。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

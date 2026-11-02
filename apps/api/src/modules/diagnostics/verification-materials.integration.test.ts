@@ -39,7 +39,7 @@ describe.sequential('eligible material coverage through real curriculum services
     expect(result.cells.reduce((sum: number, row: any) => sum + row.needingVerificationMaterials, 0)).toBe(0);
     expect(result.cells.every((row: any) => row.withVerificationMaterials + row.needingVerificationMaterials === row.atoms)).toBe(true);
     const other = await overview('', teacher); expect(other.atoms).toEqual(result.atoms); expect(other.cells).toEqual(result.cells); expect(fingerprint()).toBe(before);
-    expect(result.textbookCounts).toMatchObject({ imported: 451, sourceMatched: 3, sourceUnavailable: 448 });
+    expect(result.textbookCounts).toMatchObject({ imported: 452, sourceMatched: 4, sourceUnavailable: 448 });
   }, 30_000);
   it('filters both atoms and published aggregates by subject and grade', async () => {
     const math = await overview('?subject=math&grade=5'); expect(math.atoms).toHaveLength(19); expect(math.cells).toHaveLength(1);
@@ -52,10 +52,14 @@ describe.sequential('eligible material coverage through real curriculum services
   }, 30_000);
   it('pages the cross-textbook lesson worklist without approving title-based mappings', async () => {
     const result = await call('get', '/admin/curriculum/textbook-mapping-worklist?subject=chinese&grade=1&term=upper&status=unmapped&page=1&pageSize=20');
-    expect(result.books).toBe(1); expect(result.counts.all).toBeGreaterThan(result.rows.length); expect(result.counts.unmapped).toBe(result.counts.all);
+    expect(result.books).toBe(2); expect(result.counts.all).toBeGreaterThan(result.rows.length); expect(result.counts.unmapped).toBe(result.counts.all);
     expect(result.rows).toHaveLength(20); expect(result.rows.every((row: any) => row.state === 'unmapped' && row.mappingVersion === null && row.atomIds.length === 0)).toBe(true);
-    expect(result.sourceCounts).toEqual({ all: result.counts.all, matched: 0, unavailable: result.counts.all });
-    expect(result.rows.every((row: any) => row.sourceStatus === 'edition_unverified' && row.sourceReason.includes('整册'))).toBe(true);
+    expect(result.sourceCounts).toEqual({ all: result.counts.all, matched: 51, unavailable: result.counts.all - 51 });
+    const firstGradeId = 'archive-book:chinese-g1-upper-a692a990d41b6291';
+    expect(result.rows.every((row: any) => row.bookId === firstGradeId ? row.sourceStatus === 'matched' : row.sourceStatus === 'edition_unverified' && row.sourceReason.includes('整册'))).toBe(true);
+    const exactFirstGrade = await call('get', '/admin/curriculum/textbook-mapping-worklist?subject=chinese&grade=1&term=upper&status=unmapped&source=matched&pageSize=100');
+    expect(exactFirstGrade.rows).toHaveLength(51);
+    expect(exactFirstGrade.rows.every((row: any) => row.bookId === firstGradeId && row.state === 'unmapped' && row.mappingVersion === null && row.atomIds.length === 0)).toBe(true);
     expect(result.note).toContain('不根据标题自动批准');
     const unavailableMath = await call('get', '/admin/curriculum/textbook-mapping-worklist?subject=math&grade=3&term=upper&status=all&source=unavailable&page=1&pageSize=100');
     expect(unavailableMath.sourceCounts.matched).toBe(0); expect(unavailableMath.sourceCounts.unavailable).toBeGreaterThan(0);

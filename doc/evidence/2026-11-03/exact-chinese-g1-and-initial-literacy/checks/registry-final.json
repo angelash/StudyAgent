@@ -1,0 +1,196 @@
+{
+  "at": "2026-11-02T22:14:41.688Z",
+  "passed": true,
+  "assetTests": [
+    {
+      "pattern": "test_reviewed*.py",
+      "exit": 0,
+      "tests": 21,
+      "stdout": "",
+      "stderr": ".....................\r\n----------------------------------------------------------------------\r\nRan 21 tests in 0.618s\r\n\r\nOK\r\n"
+    },
+    {
+      "pattern": "test_textbook_mapping_candidates.py",
+      "exit": 0,
+      "tests": 11,
+      "stdout": "",
+      "stderr": "...........\r\n----------------------------------------------------------------------\r\nRan 11 tests in 0.351s\r\n\r\nOK\r\n"
+    }
+  ],
+  "registryAndMappingRebuildByteIdentical": true,
+  "remoteHistory": {
+    "cachedReferencesOnly": true,
+    "nonMainReferences": 41,
+    "refs": [
+      {
+        "ref": "refs/remotes/origin/docs/teaching-tools-design",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/admin-model-tools",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/ai-topic-whiteboards",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/assistant-notes-20261028",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/assistant-output-boundaries",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/assistant-practice-assignment-20261029",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/assistant-practice-content-20261029",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/assistant-practice-learner-20261029",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/classroom-multiple-choice",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/classroom-neutral-voice",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/complete-course-journeys",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/course-artifact-shared-20261028",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/course-panel-experience",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/course-teaching-context",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/durable-guidance-models",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/guided-project-teaching",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/hyperknow-original-ui-assets",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/knowledge-report-workspace",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/lecture-assistant-integration",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/measurement-evidence-v3",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/model-experience",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/model-qualification",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/paper-practice-journey",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/paper-review-workspace",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/practice-experience",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/reference-navigation",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/resumable-long-pdf",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/source-check-single-target",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/source-course-unit-checks",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/studio-lecture-assistant",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/teaching-controls-and-layout",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/teaching-tools-ui",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/topic-whiteboard-visual-manuscripts",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/whiteboard-continuous-narration",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/whiteboard-frozen-questions",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/whiteboard-question-figures",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/whiteboard-video-sentence-pacing",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/fix/measurement-guidance-fixture",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/fix/teaching-tool-json-inputs",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/release/assistant-notes-20261029",
+        "ancestorOfMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/release/source-teaching-20261029",
+        "ancestorOfMain": true
+      }
+    ],
+    "allAlreadyInMain": true,
+    "remoteBranchesDeleted": false
+  },
+  "localBranches": [
+    "main"
+  ]
+}

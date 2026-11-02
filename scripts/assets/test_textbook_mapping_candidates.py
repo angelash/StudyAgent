@@ -16,9 +16,9 @@ class MappingCandidateTest(unittest.TestCase):
         self.assertEqual(document['format'], 'textbook-mapping-candidates-v1')
         self.assertEqual(document['mappingStatus'], 'candidates_not_approved')
         self.assertEqual(document['sourceIdentityVersion'], 'textbook-source-candidate-v1')
-        self.assertEqual(document['books'], 15)
-        self.assertEqual(document['lessons'], 526)
-        self.assertEqual(len(document['rows']), 526)
+        self.assertEqual(document['books'], 16)
+        self.assertEqual(document['lessons'], 527)
+        self.assertEqual(len(document['rows']), 527)
         self.assertTrue(all(not row['approvedAtomIds'] for row in document['rows']))
         self.assertTrue(all(row['reviewStatus'] in {'candidate', 'unreviewed'} for row in document['rows']))
         registry = {b['id']: b for b in json.loads((ROOT / 'resources/curriculum/textbooks-v1.json').read_text('utf-8'))['books']}

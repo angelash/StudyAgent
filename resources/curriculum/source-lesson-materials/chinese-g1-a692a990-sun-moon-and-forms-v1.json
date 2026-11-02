@@ -1,0 +1,428 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "sun-moon-and-forms",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-sun-moon-and-forms-v1.json",
+      "sha256": "cb4a1bcd9386a7177b303807659888db73bc2638d2536b3aad0ee57485e6aeca",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry4",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 16,
+        "pageEnd": 17,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时和四项拟议间隔原创候选。识字、本人书写、朗读背诵和实际交流各自核查，帮助和原答另留；目标、量规、独立题族与充分未见保持库存均未审，不自动发布或写学习事实。",
+  "groups": [
+    {
+      "lesson": "sun-moon-and-forms",
+      "atomId": "source:chinese:g1:a692a990:nature-eight-reading",
+      "structure": "nature-eight-current-order",
+      "familyProposal": "a692a990-nature-eight-current-order",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人逐字认读八字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "日田等字形辨清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助与原声范围明确",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "八字实际覆盖，日田按各自内画辨认，换位后仍对应。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-eight-current-order-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录下本人认读日月水火山石田禾，再交换日田的位置。",
+          "answer": "八字实际覆盖，日田按各自内画辨认，换位后仍对应。",
+          "analysis": "八字实际覆盖，日田按各自内画辨认，换位后仍对应。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-eight-current-order-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先读禾与火，再依次认剩余六字。",
+          "answer": "看完整字形而非只记原序，八字由本人实际发声。",
+          "analysis": "看完整字形而非只记原序，八字由本人实际发声。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-eight-current-order-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序石日山禾田月火水，自己看字再读。",
+          "answer": "逐字对应当前顺序，不把原串背出当新序已读。",
+          "analysis": "逐字对应当前顺序，不把原串背出当新序已读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-eight-current-order-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读出六字时，怎样说明另两字？",
+          "answer": "保留实际声音和未读范围，需要帮助后另作尝试。",
+          "analysis": "保留实际声音和未读范围，需要帮助后另作尝试。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-eight-current-order-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "把表示太阳的字与表示田地的字分别认出并读。",
+          "answer": "日与田读音和当前字义对应，仍需实际认其他字。",
+          "analysis": "日与田读音和当前字义对应，仍需实际认其他字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-eight-current-order-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本次认八字前听过示范，录音时说明什么？",
+          "answer": "帮助与本人声音分开，不把跟读登记成无帮助的初次认读。",
+          "analysis": "帮助与本人声音分开，不把跟读登记成无帮助的初次认读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-eight-current-order-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重认八字，选择最容易混的两字说出一处区别。",
+          "answer": "区别基于当前完整字形，声音覆盖与说明各自核对。",
+          "analysis": "区别基于当前完整字形，声音覆盖与说明各自核对。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "sun-moon-and-forms",
+      "atomId": "source:chinese:g1:a692a990:nature-forms",
+      "structure": "nature-image-and-current-form",
+      "familyProposal": "a692a990-nature-image-and-current-form",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "指出具体形象线索",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说清图与今字差别",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不扩大为所有汉字通则",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不完全一样；太阳图可呈圆形，日是有明确笔画的现代字形。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-image-and-current-form-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "太阳图和今天的日字完全一样吗？说明一处差别。",
+          "answer": "不完全一样；太阳图可呈圆形，日是有明确笔画的现代字形。",
+          "analysis": "不完全一样；太阳图可呈圆形，日是有明确笔画的现代字形。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-image-and-current-form-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "禾字与禾苗图可以怎样联系，写字时看哪个对象？",
+          "answer": "图帮助理解禾苗的形象，写时仍看今天完整的禾字和范写。",
+          "analysis": "图帮助理解禾苗的形象，写时仍看今天完整的禾字和范写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-image-and-current-form-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新图与某字有一点相像，能立刻说所有笔画都是物体的一部分吗？",
+          "answer": "不能，要比较具体线索与差别，不把相像当逐笔完全对应。",
+          "analysis": "不能，要比较具体线索与差别，不把相像当逐笔完全对应。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-image-and-current-form-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原页把图、古形和今字并列，是帮助做什么？",
+          "answer": "帮助观察联系和变化，认读与书写仍回到现代字形。",
+          "analysis": "帮助观察联系和变化，认读与书写仍回到现代字形。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-image-and-current-form-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只会按图片位置说字名，怎样检查是否看清今字？",
+          "answer": "把字单独呈现或变换顺序，再实际辨认读音与字形。",
+          "analysis": "把字单独呈现或变换顺序，再实际辨认读音与字形。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-image-and-current-form-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "由这八例能推出所有汉字都是照画物体吗？",
+          "answer": "不能；这里只能据当前例子观察，不以少数材料代所有文字规律。",
+          "analysis": "不能；这里只能据当前例子观察，不以少数材料代所有文字规律。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-image-and-current-form-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选择本课一字，说出图景怎样帮你理解，再说明今字的一处特点。",
+          "answer": "图义与现代字形各有具体说明，未查到的字源细节不自行编造。",
+          "analysis": "图义与现代字形各有具体说明，未查到的字源细节不自行编造。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "sun-moon-and-forms",
+      "atomId": "source:chinese:g1:a692a990:nature-four-writing",
+      "structure": "nature-four-own-manuscript",
+      "familyProposal": "a692a990-nature-four-own-manuscript",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖日田禾火",
+          "weight": 0.4
+        },
+        {
+          "criterion": "框内与整体结构可辨",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原稿过程帮助分别说明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四字实际覆盖，日内一横、田内横竖分明，禾火看完整结构。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-four-own-manuscript-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人写日田禾火四字，上传原稿并比较日田内画。",
+          "answer": "四字实际覆盖，日内一横、田内横竖分明，禾火看完整结构。",
+          "analysis": "四字实际覆盖，日内一横、田内横竖分明，禾火看完整结构。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-four-own-manuscript-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先观察范字，再写四字并上传本次作品。",
+          "answer": "本人作品和所看范字分明，不用印刷图代本人写字。",
+          "analysis": "本人作品和所看范字分明，不用印刷图代本人写字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-four-own-manuscript-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换练习纸写四字，选禾或火说明一处笔画位置。",
+          "answer": "四字原稿可看，位置说明对应当前作品，允许合理手写差异。",
+          "analysis": "四字原稿可看，位置说明对应当前作品，允许合理手写差异。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-four-own-manuscript-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只写日田还没写禾火，上传时怎样报告？",
+          "answer": "仅说明实际两字，另外两字如实待写，不按部分扩大范围。",
+          "analysis": "仅说明实际两字，另外两字如实待写，不按部分扩大范围。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-four-own-manuscript-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "比较自己的日田，若混写内画，保留原稿后再订正并上传。",
+          "answer": "先后原稿可对应，不要求故意写错，也不覆盖初稿。",
+          "analysis": "先后原稿可对应，不要求故意写错，也不覆盖初稿。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-four-own-manuscript-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "重新写四字，注明得到过哪些范写或口头提示。",
+          "answer": "本人实际字形和帮助条件清楚，提示后作品不倒作无帮助首写。",
+          "analysis": "本人实际字形和帮助条件清楚，提示后作品不倒作无帮助首写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-four-own-manuscript-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "上传四字原稿并说明静图能够看什么、笔顺还怎样看。",
+          "answer": "静图看字形与结构，先后笔顺还需实际过程，不由结果独断过程。",
+          "analysis": "静图看字形与结构，先后笔顺还需实际过程，不由结果独断过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "sun-moon-and-forms",
+      "atomId": "source:chinese:g1:a692a990:nature-compare",
+      "structure": "nature-new-pairing-clues",
+      "familyProposal": "a692a990-nature-new-pairing-clues",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "观察当前形状线索",
+          "weight": 0.4
+        },
+        {
+          "criterion": "配对理由对应材料",
+          "weight": 0.4
+        },
+        {
+          "criterion": "猜想与核实清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可以依据树干树枝等形象提出联系，仍对照当前卡核实，不编造全部字源。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-new-pairing-clues-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "新卡给木字与一棵树的示意图，先说观察到什么再提配对。",
+          "answer": "可以依据树干树枝等形象提出联系，仍对照当前卡核实，不编造全部字源。",
+          "analysis": "可以依据树干树枝等形象提出联系，仍对照当前卡核实，不编造全部字源。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-new-pairing-clues-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "给出网字与网格图，猜测后应怎样检查？",
+          "answer": "指出具体线索，再对照当前材料说明是否配对成立。",
+          "analysis": "指出具体线索，再对照当前材料说明是否配对成立。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-new-pairing-clues-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新图有角的动物，给羊与竹两字，怎样先提出有依据的猜想？",
+          "answer": "根据题中角等明确线索提出羊的猜测，再核对图与字卡，不靠位置蒙猜。",
+          "analysis": "根据题中角等明确线索提出羊的猜测，再核对图与字卡，不靠位置蒙猜。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-new-pairing-clues-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "不确定兔与鸟的配对时，可以怎样继续？",
+          "answer": "保留当前猜想，重新比较或请人说明，未知不硬说成已确认。",
+          "analysis": "保留当前猜想，重新比较或请人说明，未知不硬说成已确认。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-new-pairing-clues-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原页探索出现木和鸟，能因此要求全部按本课四字默写吗？",
+          "answer": "不能；探索配对与本课日田禾火的实际书写范围分别核。",
+          "analysis": "不能；探索配对与本课日田禾火的实际书写范围分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-new-pairing-clues-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "两张图都让你想到同一个字，该怎样处理？",
+          "answer": "先说各自线索，检查当前可选字和材料；信息不够时说明还需核对。",
+          "analysis": "先说各自线索，检查当前可选字和材料；信息不够时说明还需核对。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-and-forms-nature-new-pairing-clues-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "任选一组实际配对，分别说第一次猜什么和核实后怎样。",
+          "answer": "初猜与核实结果真实对应，若没有改动也可如实说一致。",
+          "analysis": "初猜与核实结果真实对应，若没有改动也可如实说一致。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

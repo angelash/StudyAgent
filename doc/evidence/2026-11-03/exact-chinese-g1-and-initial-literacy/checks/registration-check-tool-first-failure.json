@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "stage": "pre_run_orchestration",
+  "error": "The registration check started before the source synchronization process finished writing its frozen input manifest.",
+  "applicationTestsExecuted": 0,
+  "applicationOrLearnerWrites": false,
+  "correction": "Wait for the owned sync process to finish before starting the dependent API check; no earlier result is overwritten."
+}

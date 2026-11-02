@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-02T22:11:27.240Z",
+  "firstBrowserPassed": 11,
+  "firstBrowserFailed": 0,
+  "firstScreenshots": 28,
+  "firstVisualReview": {
+    "desktop": 9,
+    "tables": 9,
+    "mobile": 10,
+    "blankMobileTableShots": [
+      "body-and-actions",
+      "garden-one",
+      "numbers-and-grid",
+      "world-and-pronouns"
+    ],
+    "finalKeyboardBodyShotVisible": true
+  },
+  "change": "Wait for two frames, loaded fonts and visible ancestor opacity after viewport resize; reset horizontal offset and centre the table, then capture. No application or content changes.",
+  "firstEvidencePreserved": true
+}

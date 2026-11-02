@@ -1,0 +1,6 @@
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');const root=path.resolve(__dirname,'../../..');
+const files=fs.readdirSync(path.join(root,'resources/curriculum/source-lessons')).filter(f=>f.startsWith('chinese-g1-a692a990-')).sort();assert.equal(files.length,9);
+let s=fs.readFileSync(path.join(root,'data/qa/b4-english-book-final-first/browser-run.cjs'),'utf8');assert(s.includes('data/qa/b4-math37-web'));s=s.replaceAll('data/qa/b4-math37-web','data/qa/b4-gesp220-web');
+const start=s.indexOf('  if(['),end=s.indexOf('.includes(row.file))',start);assert(start>0&&end>start);s=s.slice(0,start)+'  if('+JSON.stringify(files)+s.slice(end);
+const shot='await tab.screenshot({path:path.join(folder,tableShot)});screenshots.push(tableShot);';assert(s.includes(shot));s=s.replace(shot,shot+"await page.setViewportSize({width:390,height:844});await tab.scrollIntoViewIfNeeded();assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));const mobile=row.file.replace('.json','-mobile.png');await page.screenshot({path:path.join(folder,mobile)});screenshots.push(mobile);await page.setViewportSize({width:1440,height:1000});");
+fs.writeFileSync(path.join(__dirname,'browser-run.cjs'),s,{flag:'wx'});console.log(JSON.stringify({files:files.join(','),build:'tSQa109Myy2UD3Gs5L5KY',expectedScreenshots:28}));

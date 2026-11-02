@@ -1,0 +1,321 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter2:entry2",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "pageStart": 12,
+    "pageEnd": 13,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g1:a692a990:numbers-seven-reading",
+      "version": 1,
+      "name": "七字在当前语境中的识读",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "识字与朗读",
+      "objective": "识读一二三四五上下并在变化顺序和短语中辨认",
+      "successCriterion": "本人声音逐字覆盖七字，识字行与标题里的其他字分清",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:numbers-four-writing",
+      "version": 1,
+      "name": "一二三上的本人实际书写",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "识字与写字",
+      "objective": "本人实际书写一二三上四字并观察横竖位置",
+      "successCriterion": "原稿覆盖四字，横画多少和上字结构清楚，识读七字不代本人已写四字",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:numbers-grid",
+      "version": 1,
+      "name": "认识田字格中线与笔画位置",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "书写准备",
+      "objective": "在自己画的格子或实际练习纸中找横中线和竖中线",
+      "successCriterion": "能说明中线方向与笔画位置，示意格和本人实际写字分别核对",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:numbers-position",
+      "version": 1,
+      "name": "在明确参照中理解上和下",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "字义与位置",
+      "objective": "依据当前物体位置和给定参照使用上与下",
+      "successCriterion": "对象与参照清楚，换参照后重新判断，不只记住固定词序",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:numbers-recall",
+      "version": 1,
+      "name": "按当前原篇朗读与背诵",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "朗读与积累",
+      "objective": "先朗读本件四句，再按实际情况尝试脱稿背诵",
+      "successCriterion": "本人声音与当前原篇对应，看稿与脱稿条件清楚，不由顺口背数代完整四句",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g1:a692a990:numbers-seven-reading",
+    "source:chinese:g1:a692a990:numbers-four-writing",
+    "source:chinese:g1:a692a990:numbers-grid",
+    "source:chinese:g1:a692a990:numbers-position",
+    "source:chinese:g1:a692a990:numbers-recall"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "准确原件本页段已逐张看图并核正文、识写表和活动范围；出版与课标年份未知，未据审定年推版次。来源核对不等教师、评分或独立题族审查。",
+    "pages": [
+      {
+        "page": 12,
+        "visualChecked": true,
+        "statement": "已看本件四句、标题与图画署名，诗句和题名不自动扩大为全部识写字表或现代科学分类。"
+      },
+      {
+        "page": 13,
+        "visualChecked": true,
+        "statement": "已看七字识读行、一二三上写字示例、朗读背诵、田字格横竖中线与位置提示，识写任务分别核。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "金木水火土",
+    "recognitionCharacters": [
+      "一",
+      "二",
+      "三",
+      "四",
+      "五",
+      "上",
+      "下"
+    ],
+    "writingCharacters": [
+      "一",
+      "二",
+      "三",
+      "上"
+    ],
+    "fullTextRecitationRequired": true,
+    "titleWordsNotAllWritingTargets": true,
+    "directoryGranularity": "lesson_or_activity",
+    "allPageActivitiesDelivered": false,
+    "authenticListeningStimuliIncluded": false,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "金木水火土",
+    "activation": {
+      "prompt": "把一、二、三三张字牌打乱摆放，看看横画各有几笔。再看上字，除了横画，还要留意哪种方向的笔画？",
+      "expectedObservation": "能按完整字形比较横画数量，并发现上字还含竖画，观察不等已经实际写过。",
+      "bridge": "从认字到写字，借田字格看看笔画放在什么位置，再回原篇读出句子的节奏。"
+    },
+    "concept": {
+      "explanation": "这一课的识字行是一、二、三、四、五、上、下。先认一个字，再放到当前句子或顺序变化的字牌中看一看。一二三表示不同数词，字形中的横画数量也不同；四和五要看各自完整字形，不能把数词一律写成相同数量的横线。\n原篇把数词、金木水火土以及天地日月组织成有节奏的短句。这里的学习先围绕当前识字行、朗读背诵和四字书写展开；不能只看课题就把标题里所有字都当作本课必须默写的字，也不用这段识字材料代替现代科学的物质分类。\n本课实际写一、二、三、上四个字。写前看清笔画，写时注意横画的长短、间隔和上字中横竖的位置；写完再对照本人原稿检查。认得四和五不等已经会写这两个字，键盘输入也不代替手中的实际书写。\n田字格里的横中线是横着经过中间的线，竖中线是竖着经过中间的线，它们帮助观察笔画放在哪里。自己画的示意格可以用来找方向，正式写出的字仍要看本人实际练习。\n上和下要联系当前对象。若明确小纸卡在盒子上方，可说在盒子上面；换一个参照，要重新看位置。回到原篇时，可以先听说明、再看着读，之后按实际会的部分尝试脱稿。朗读与背诵分别练，不把只背出数词顺序当作整篇已会。",
+      "points": [
+        "识字行是七字，不按标题扩写字表",
+        "一二三横画数量不同",
+        "四字实际写一二三上",
+        "中线帮助观察笔画位置",
+        "上下联系当前对象和参照",
+        "看稿朗读与脱稿背诵分别练"
+      ]
+    },
+    "example": {
+      "situation": "原创练习：小禾先认打乱的一二三，再在自己画的田字格中写三和上，最后说纸卡在盒子的上方。",
+      "steps": [
+        {
+          "explanation": "先看字形辨认，不靠牌的摆放次序：三有三横，一有一横。",
+          "board": [
+            "字牌可以打乱",
+            "横画数量看清",
+            "逐字实际认读"
+          ]
+        },
+        {
+          "explanation": "在格中找到两条中线，再本人写字；中线是位置参照，不是汉字多出来的笔画。",
+          "board": [
+            "横中线横着走",
+            "竖中线竖着走",
+            "笔画与格线分清"
+          ]
+        },
+        {
+          "explanation": "最后按纸卡和盒子的当前关系说上方，换参照后再观察。",
+          "board": [
+            "明确纸卡对象",
+            "以盒子作参照",
+            "位置随条件判断"
+          ]
+        }
+      ],
+      "conclusion": "认字看形，写字看本人笔画，表示位置还要看当前参照。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "这课分别练什么",
+        "headers": [
+          "任务",
+          "本件范围",
+          "实际核对"
+        ],
+        "rows": [
+          [
+            "识读",
+            "一二三四五上下",
+            "逐字读音与当前字牌"
+          ],
+          [
+            "书写",
+            "一二三上",
+            "本人原稿和笔画位置"
+          ],
+          [
+            "田字格",
+            "横中线与竖中线",
+            "格线方向与字的笔画分开"
+          ],
+          [
+            "位置词",
+            "上、下",
+            "对象与当前参照"
+          ],
+          [
+            "积累",
+            "本件四句",
+            "朗读或脱稿条件和实际声音"
+          ]
+        ],
+        "explanation": "不同任务各有范围，先从一项做起，再核对其他实际表现。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "把题目金木水火土五字全说成本课必写字。",
+        "alternatives": [
+          "还没有区分课题、识字行和本页实际写字示例。"
+        ],
+        "verification": "对照识字行和四个写字示例，分别列出目标。",
+        "correctiveFeedback": "识七字与写四字分开，课题不自动扩大默写范围。"
+      },
+      {
+        "observation": "把田字格的中线也写成上字的一部分。",
+        "alternatives": [
+          "可能还没有分清辅助格线和字本身需要写的笔画。"
+        ],
+        "verification": "请指出纸上辅助线，再单独看本人写出的横竖。",
+        "correctiveFeedback": "中线用来观察位置，不增加汉字的笔画。"
+      }
+    ],
+    "transfer": {
+      "scenario": "新位置卡明确书本在桌面上，另一张纸在书本下。另给打乱的一二三上字牌和新的练习格。",
+      "prompt": "先认字，再按当前参照说位置；选本课一个写字目标实际书写。",
+      "expectedStrategy": "字形、当前位置与本人作品分别判断，不复制旧纸卡盒子的关系到新情境。"
+    },
+    "summary": {
+      "synthesis": "七字逐个认，四字实际写；借田字格中线观察笔画的位置，用上和下说明当前关系，再分别练习本件原篇的朗读与背诵。",
+      "takeaways": [
+        "识七字写四字",
+        "横竖和格线分清",
+        "位置判断有参照",
+        "本人朗读背诵如实"
+      ]
+    },
+    "citations": [
+      {
+        "page": 12,
+        "quote": "一二三四五，\n金木水火土。",
+        "usedFor": "concept"
+      },
+      {
+        "page": 13,
+        "quote": "朗读课文。背诵课文。",
+        "usedFor": "summary"
+      },
+      {
+        "page": 13,
+        "quote": "在田字格中的位置。",
+        "usedFor": "concept"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g1:a692a990:numbers-seven-reading",
+        "objective": "识读一二三四五上下并在变化顺序和短语中辨认",
+        "successCriterion": "本人声音逐字覆盖七字，识字行与标题里的其他字分清"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g1:a692a990:numbers-four-writing",
+        "objective": "本人实际书写一二三上四字并观察横竖位置",
+        "successCriterion": "原稿覆盖四字，横画多少和上字结构清楚，识读七字不代本人已写四字"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g1:a692a990:numbers-grid",
+        "objective": "在自己画的格子或实际练习纸中找横中线和竖中线",
+        "successCriterion": "能说明中线方向与笔画位置，示意格和本人实际写字分别核对"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g1:a692a990:numbers-position",
+        "objective": "依据当前物体位置和给定参照使用上与下",
+        "successCriterion": "对象与参照清楚，换参照后重新判断，不只记住固定词序"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:chinese:g1:a692a990:numbers-recall",
+        "objective": "先朗读本件四句，再按实际情况尝试脱稿背诵",
+        "successCriterion": "本人声音与当前原篇对应，看稿与脱稿条件清楚，不由顺口背数代完整四句"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "numbers-and-grid",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter1:entry1",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "pageStart": 7,
+    "pageEnd": 10,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g1:a692a990:school-activities",
+      "version": 1,
+      "name": "辨认语文学习的几种活动",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "学习活动",
+      "objective": "按当前说明分清读书、写字、讲故事和听故事",
+      "successCriterion": "能说清当前人在做什么，不把每个拿着书的动作都算已经读懂",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:school-speaking",
+      "version": 1,
+      "name": "用一句完整的话介绍学习愿望",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "口语表达",
+      "objective": "选择愿意分享的学习活动，用别人能听清的一句话表达",
+      "successCriterion": "本人实际说出的内容完整，角色示例与自己的情况分开",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:school-listening",
+      "version": 1,
+      "name": "轮流讲述并回应听到的内容",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "倾听交流",
+      "objective": "听完一段简短介绍，再回应对方说到的一件事",
+      "successCriterion": "回应对应原话，不只抢说自己的事情；没有同伴时标清角色练习",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:school-preparation",
+      "version": 1,
+      "name": "实际准备读书和写字材料",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "学习准备",
+      "objective": "按当前活动准备书或纸笔，并说明准备与完成的区别",
+      "successCriterion": "材料和活动相符，本人的实际完成范围清楚，不由摆好材料推出读写已完成",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g1:a692a990:school-activities",
+    "source:chinese:g1:a692a990:school-speaking",
+    "source:chinese:g1:a692a990:school-listening",
+    "source:chinese:g1:a692a990:school-preparation"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "准确原件本页段已逐张看图并核正文、识写表和活动范围；出版与课标年份未知，未据审定年推版次。来源核对不等教师、评分或独立题族审查。",
+    "pages": [
+      {
+        "page": 7,
+        "visualChecked": true,
+        "statement": "已看我上学了开篇图、国旗与不同服饰人物，图中身份不代学生个人资料。"
+      },
+      {
+        "page": 8,
+        "visualChecked": true,
+        "statement": "已看我是中国人标题及人物图，不由服饰推学生民族或强制披露本人身份。"
+      },
+      {
+        "page": 9,
+        "visualChecked": true,
+        "statement": "已看我是小学生与上学歌、选本脚注；歌曲和角色台词不代本人出勤或表现，歌词只留本地。"
+      },
+      {
+        "page": 10,
+        "visualChecked": true,
+        "statement": "已看读书、写字、讲故事和听故事四项图示，目录入学活动保持一个进度身份。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "我上学了",
+    "recognitionCharacters": [],
+    "writingCharacters": [],
+    "mandatoryNationalityDisclosure": false,
+    "lyricsRedistributed": false,
+    "directoryGranularity": "lesson_or_activity",
+    "allPageActivitiesDelivered": false,
+    "authenticListeningStimuliIncluded": false,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "我上学了",
+    "activation": {
+      "prompt": "小岚拿着一本图画书讲故事，小禾听完说出了最喜欢的人物。两个人都在学习语文，他们做的事情一样吗？",
+      "expectedObservation": "能指出一人在讲、一人在听，并发现语文学习有几种不同的活动。",
+      "bridge": "看看自己愿意试的活动，再练习清楚地说、认真地听和准备需要的材料。"
+    },
+    "concept": {
+      "explanation": "学习语文有许多方法。看着书里的文字或图画读一读，是读书；拿起笔在纸上写，是写字；把一个故事讲给别人听，是讲故事；留心别人讲了什么，是听故事。同一段活动中，这些事情可以先后发生，分清现在正在做什么就容易参与。\n介绍自己的时候，可以先想愿意告诉别人的一件事，再把一句话说完整。例如“小岚想学会讲一个故事”是在介绍角色的愿望；轮到自己，可以选择真实而愿意分享的愿望。教材中的自我介绍帮助我们进入学校情境，不要求把角色的资料变成自己的资料。\n听别人介绍，先等他说完，再回应一句与原话有关的话。对方说喜欢图画书，可以问他喜欢哪一幅图；还没听清，可以请他再说一遍。一个人也可以分角色练习，但真正与同伴交流要留待双方实际参加。\n读书前摆好要看的书，写字前准备纸和合适的笔。在适合自己的条件下把材料放稳、留出空间，再开始活动。准备好了是一个步骤，读过哪一部分、写过什么要按实际过程说明。先从一次短短的听、说、读或写开始，慢慢发现学习的乐趣。",
+      "points": [
+        "读书写字讲听故事各有活动",
+        "介绍愿望先想一句完整的话",
+        "听完再回应对方说的内容",
+        "需要帮助时可以请人再说明",
+        "准备材料后还要实际开展活动"
+      ]
+    },
+    "example": {
+      "situation": "原创情境：小禾先整理好纸笔，听小岚讲完一个故事，然后自己画出喜欢的一幕。",
+      "steps": [
+        {
+          "explanation": "先按顺序找活动：准备纸笔、听故事、画图，三步各有自己的动作。",
+          "board": [
+            "准备：纸笔放好",
+            "倾听：听完故事",
+            "表达：画出一幕"
+          ]
+        },
+        {
+          "explanation": "回应讲述者时，指出故事里实际听到的人物或事情，不用另一个熟悉故事代替。",
+          "board": [
+            "先听当前故事",
+            "再说喜欢的一处",
+            "没听清可再问"
+          ]
+        },
+        {
+          "explanation": "说自己本次做过什么：画过图不等已经把故事中的所有字写出来。",
+          "board": [
+            "本次实际过程",
+            "自己愿意分享",
+            "下一步再尝试"
+          ]
+        }
+      ],
+      "conclusion": "找准当前活动，用一句话清楚介绍，也认真回应别人说到的内容。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "这一次正在做什么",
+        "headers": [
+          "当前动作",
+          "活动名称",
+          "接下来可以怎么做"
+        ],
+        "rows": [
+          [
+            "看着图画书读一读",
+            "读书",
+            "指一处自己看懂的图或字"
+          ],
+          [
+            "拿笔在纸上实际书写",
+            "写字",
+            "看看本次写出的字"
+          ],
+          [
+            "把故事说给别人听",
+            "讲故事",
+            "讲清人物和一件事"
+          ],
+          [
+            "听别人讲完再回应",
+            "听故事",
+            "回应原话里的一个细节"
+          ]
+        ],
+        "explanation": "用具体动作认识活动，同一段学习中可以轮流尝试。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "看到角色说想学会写字，就说自己已经会写整本书。",
+        "alternatives": [
+          "还没有分清角色愿望与自己实际做过的事情。"
+        ],
+        "verification": "请分别说角色想做什么、自己本次已经做了什么。",
+        "correctiveFeedback": "愿望可以帮助选择下一步，完成情况按本次实际作品或过程说明。"
+      },
+      {
+        "observation": "对方还没讲完，就只重复自己准备好的句子。",
+        "alternatives": [
+          "还没有把自己的回应接到对方当前说的话上。"
+        ],
+        "verification": "请先听完，再说出对方提到的一件事。",
+        "correctiveFeedback": "回应可以很短，先让别人听出你在留意他的介绍。"
+      }
+    ],
+    "transfer": {
+      "scenario": "换一段原创情境：小宁先听一段介绍，再看书中的一幅图，最后告诉同伴自己发现了什么。",
+      "prompt": "按实际顺序说出活动，并选择一句能回应同伴的话。",
+      "expectedStrategy": "根据这次动作判断活动，回应当前介绍；角色练习与真实交流分别说明。"
+    },
+    "summary": {
+      "synthesis": "语文学习从听、说、读、写的具体活动开始。先准备、再尝试，用一句话说清自己愿意分享的事情，也给别人说话的机会。",
+      "takeaways": [
+        "活动名称接具体动作",
+        "说一句完整的话",
+        "听完后回应原话",
+        "准备与实际完成分开"
+      ]
+    },
+    "citations": [
+      {
+        "page": 10,
+        "quote": "读书\n写字\n讲故事    听故事",
+        "usedFor": "concept"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g1:a692a990:school-activities",
+        "objective": "按当前说明分清读书、写字、讲故事和听故事",
+        "successCriterion": "能说清当前人在做什么，不把每个拿着书的动作都算已经读懂"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g1:a692a990:school-speaking",
+        "objective": "选择愿意分享的学习活动，用别人能听清的一句话表达",
+        "successCriterion": "本人实际说出的内容完整，角色示例与自己的情况分开"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g1:a692a990:school-listening",
+        "objective": "听完一段简短介绍，再回应对方说到的一件事",
+        "successCriterion": "回应对应原话，不只抢说自己的事情；没有同伴时标清角色练习"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g1:a692a990:school-preparation",
+        "objective": "按当前活动准备书或纸笔，并说明准备与完成的区别",
+        "successCriterion": "材料和活动相符，本人的实际完成范围清楚，不由摆好材料推出读写已完成"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "school-start",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

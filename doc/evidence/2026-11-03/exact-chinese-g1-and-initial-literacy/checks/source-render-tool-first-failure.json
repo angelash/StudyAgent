@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "stage": "read_only_source_render",
+  "error": "The local helper name inspect.py shadowed Python inspect while importing PyMuPDF, causing a circular import.",
+  "sourceChanged": false,
+  "imagesWritten": 0,
+  "correction": "Rename only the QA helper to render-original.py."
+}
