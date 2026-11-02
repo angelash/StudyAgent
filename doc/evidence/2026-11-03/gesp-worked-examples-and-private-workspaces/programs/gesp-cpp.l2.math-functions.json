@@ -1,0 +1,43 @@
+{
+  "format": "gesp-isolated-run-v2",
+  "sourceSha256": "458743974c525aa50981b9462734a53533bb50b6c13b5c796a39aaf60fed6df8",
+  "testsSha256": "776b5f57efbfb5918cc551a9324633701c6cbf0e3997ab21a58e9097461de927",
+  "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "host": "wsl:Ubuntu",
+  "limits": {
+    "sourceBytes": 65536,
+    "tests": 40,
+    "inputBytes": 4096,
+    "outputBytes": 65536,
+    "compileSeconds": 12,
+    "runSeconds": 2,
+    "cpuSeconds": 3,
+    "virtualMemoryKb": 262144,
+    "compileMemoryKb": 524288,
+    "compileFileBytesKb": 32768,
+    "processes": 32,
+    "fileBytesKb": 1024,
+    "openFiles": 64
+  },
+  "compile": {
+    "passed": true,
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "",
+    "harnessExitCode": 0,
+    "timedOut": false
+  },
+  "tests": [
+    {
+      "index": 0,
+      "passed": true,
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 704,
+      "stdout": "9 9.0\n",
+      "stderr": "",
+      "harnessStderr": ""
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,445 @@
+{
+  "files": [
+    {
+      "path": "browser/level-1-desktop.png",
+      "bytes": 476261,
+      "sha256": "a55602b77aab9abdc1f5d21e25bf4badc554efe57a0442a31717dad864562574"
+    },
+    {
+      "path": "browser/level-2-desktop.png",
+      "bytes": 415410,
+      "sha256": "5203d683f371f6d48192d6ad0105345eeb285b79e39f2952df172a13cfa12903"
+    },
+    {
+      "path": "browser/level-3-desktop.png",
+      "bytes": 412693,
+      "sha256": "ee11dd4ba2497cc50005caf4dd80c9906508ced43177bd2a86b0df101d3b7dca"
+    },
+    {
+      "path": "browser/level-4-desktop.png",
+      "bytes": 468159,
+      "sha256": "94d6a1b0d0199a6c527dfa78696f6fdaf6fc66bd0dc6c3163ae18e34e31c3df0"
+    },
+    {
+      "path": "browser/level-four-mobile.png",
+      "bytes": 396001,
+      "sha256": "edabdb3ad8f21693c4f190328521a50c57f68fd1b7872d51d942d4d49dfa995c"
+    },
+    {
+      "path": "browser/mobile-reference-derived-crop.png",
+      "bytes": 48609,
+      "sha256": "63dba6320482b3c1c2d788b2890f16606cbc00569c1026ba0e2afaba1db4efd8"
+    },
+    {
+      "path": "browser/receipt.json",
+      "bytes": 738,
+      "sha256": "6a9edffd049b366043cc703ecd38c50d5d5eb4120fbecb3f18c1fe75e1ed680a"
+    },
+    {
+      "path": "checks/api-first-vitest.json.gz",
+      "bytes": 4191,
+      "sha256": "c0ae0ad32055e4bacc2d044a33d4f41ec0d6d4b1e4bbc6cf722ae3529721eef8"
+    },
+    {
+      "path": "checks/api-first.json",
+      "bytes": 162,
+      "sha256": "ca90eebba396e253f9a9bb6401f43308fce79b7aea0af4f2452c4cfee722dd94"
+    },
+    {
+      "path": "checks/api-second-vitest.json.gz",
+      "bytes": 3945,
+      "sha256": "d920ddcb39aa9e36357f1a508938c6ac079181c5a487847600c3fb559ed5e952"
+    },
+    {
+      "path": "checks/api-second.json",
+      "bytes": 162,
+      "sha256": "62994d8efdf882b21c051189cd5e2d6ae020df3f53fa73962074590c91e541e7"
+    },
+    {
+      "path": "checks/api-third-vitest.json.gz",
+      "bytes": 3622,
+      "sha256": "27b9f7c5c5a6fff0c662d4a3d4cb69003cbb5bafb7bdc30e311cc0932e66938d"
+    },
+    {
+      "path": "checks/api-third.json",
+      "bytes": 162,
+      "sha256": "02e1a64936e45d1e0c0498b723276ed6eaf4ab48534c4a498b052367d2bde9cf"
+    },
+    {
+      "path": "checks/apitype-first.json",
+      "bytes": 166,
+      "sha256": "794c8b067150f189c26ba58fde2568959773ae56af5e5807b8872c9d8cbfebc0"
+    },
+    {
+      "path": "checks/apitype-second.json",
+      "bytes": 166,
+      "sha256": "7b3e490e7d65ea815975919098f2dda424642bb6f5ed75396143baa3213066d2"
+    },
+    {
+      "path": "checks/application-inputs-first.json.gz",
+      "bytes": 87810,
+      "sha256": "d433108cef24f8e496d1c4817d454245456645153dfbed435c0728d26cd74b18"
+    },
+    {
+      "path": "checks/application-inputs-second.json.gz",
+      "bytes": 87809,
+      "sha256": "391dd83f30a5995aad750ac06b2870f8460d3094804a84fadaf3c608f154afc9"
+    },
+    {
+      "path": "checks/before-runner-and-fixture-fix.json.gz",
+      "bytes": 12731,
+      "sha256": "7728628c95f5c08a155c69859465c8aba2940428a3366bc00b3f911d953878cc"
+    },
+    {
+      "path": "checks/browser-first.json",
+      "bytes": 166,
+      "sha256": "47f95c7c2c01c533a02b98e87054b0aea05873ff4904da0e2dec6e6fc4d5b34e"
+    },
+    {
+      "path": "checks/browser-second.json",
+      "bytes": 166,
+      "sha256": "d01dab4c38aaaa1c3b9221454fdccc392e8d52e3fffd4cdd65aa56e888f1a5dc"
+    },
+    {
+      "path": "checks/build-first.json",
+      "bytes": 164,
+      "sha256": "1db4cb6b3a3d404b553c046f6dfdb303b5f0e2eb69dbd64feac36668945f7a97"
+    },
+    {
+      "path": "checks/concurrency-after-fix.json",
+      "bytes": 398,
+      "sha256": "f8c1987c655ad24fedf9046b287a60c2b73df0cce8878b8286eb9e30b57246a4"
+    },
+    {
+      "path": "checks/concurrency-before-fix.json",
+      "bytes": 455,
+      "sha256": "5d625642d293bb64c6505c4fe7f49cdb80bb0f2f5acf042719a576bc0c877ec6"
+    },
+    {
+      "path": "checks/content-worklist-first.json.gz",
+      "bytes": 118749,
+      "sha256": "f66ec44c44fd3345f7bf253527b566c9b68590e0624dec6c66b16d0d08ed2156"
+    },
+    {
+      "path": "checks/full-first-inputs.json.gz",
+      "bytes": 100165,
+      "sha256": "5f1646abe018bb9bd9e9300df3aa08bde38244f09eb73013357dd50c2b422383"
+    },
+    {
+      "path": "checks/full-first-vitest.json.gz",
+      "bytes": 175762,
+      "sha256": "4e1b79e0f8006dbaff738c5b39ffbb892627b126ca34a494a91556aaaa9e2a4c"
+    },
+    {
+      "path": "checks/full-first.json",
+      "bytes": 163,
+      "sha256": "c58d1aea9537a74cc19dac5634135eae37d70aec9fd69f7c3222923f9a08bed6"
+    },
+    {
+      "path": "checks/programs-first.json",
+      "bytes": 9167,
+      "sha256": "6f1690cafc27cd11f72717bb7c452e28025a57dfe104c8ee2a3c0cad861dadc7"
+    },
+    {
+      "path": "checks/programs-second.json",
+      "bytes": 19637,
+      "sha256": "bcaf66218ad26d6262dfe5ca759f53436777bb5361e9a3102d0d8fb74b23b3d2"
+    },
+    {
+      "path": "checks/protection-final.json",
+      "bytes": 294,
+      "sha256": "c16c4d7fdbd7040a4e6cd25a0ded47993fc6d55de8a81c0e5e07ad6eac656120"
+    },
+    {
+      "path": "checks/runner-after-fix.json",
+      "bytes": 1277,
+      "sha256": "704edc6465ce6d40695969d0fc1f21453c51776c482ec1ac8a4762861732a8e2"
+    },
+    {
+      "path": "checks/sync-first.json",
+      "bytes": 1559,
+      "sha256": "7051a12f0e1ba7a6f77bee394cf1b7833a4a1a1af600a293306ef2c9dbbbd1e1"
+    },
+    {
+      "path": "checks/sync-second.json",
+      "bytes": 1997,
+      "sha256": "99812ddec84d1c37286e945b9a4bd862006765464404b0fd2001ed7d7ff000d1"
+    },
+    {
+      "path": "checks/webtype-first.json",
+      "bytes": 166,
+      "sha256": "1621c3d415facfcada07ae143866180574dfc96afa9fbfa4e2d889df88961069"
+    },
+    {
+      "path": "first/program-failure.json",
+      "bytes": 893,
+      "sha256": "e3f0fe0be84baa61322ff1e72c5185885924b7df8b93b0c70029054bf274e4ec"
+    },
+    {
+      "path": "next-source/prepared-registration-first.json",
+      "bytes": 43731,
+      "sha256": "ef2c4223bd6d99bdf9745bbd45c57cc73125045ff54cd3eb7c89f3c3234f2da1"
+    },
+    {
+      "path": "next-source/source-directory-visual-second.json",
+      "bytes": 44760,
+      "sha256": "6b0a2279c061e50096454daf8206b50157593c02b97b95a1cce18a74a9207ba7"
+    },
+    {
+      "path": "next-source/source-render-tool-first-failure.json",
+      "bytes": 299,
+      "sha256": "c702562b0549a6c22de9a3c2a6c6523128239e1f97aa076f62051376de253b8d"
+    },
+    {
+      "path": "next-source/source-visual-first.json",
+      "bytes": 10535,
+      "sha256": "ec39a713366e1fecf1833270a0257390a71f0af59d4a8636c58b820e625173b4"
+    },
+    {
+      "path": "next-source/tools/prepare-registration.cjs",
+      "bytes": 6480,
+      "sha256": "b2625e9fd773f6a424935acaaeec7c62655ee91f692a4276e38e85022f10ea87"
+    },
+    {
+      "path": "next-source/tools/record-directory-review.cjs",
+      "bytes": 4341,
+      "sha256": "0bb36230a9a9c7e334f46db8302af8b63ab5eec4cfd7051b5921cda856230d76"
+    },
+    {
+      "path": "next-source/tools/record-first-review.cjs",
+      "bytes": 1903,
+      "sha256": "c2164379250400fe1a3602f039985368921c425e83e3d0d2b72289d732506f8f"
+    },
+    {
+      "path": "next-source/tools/render-original.py",
+      "bytes": 1816,
+      "sha256": "afe729fc0e2d9b6a49f7455795d059bafac8fac39990c98c2d77531986414f32"
+    },
+    {
+      "path": "programs/gesp-cpp.l1.arithmetic.json",
+      "bytes": 1408,
+      "sha256": "aa2bb7a3cbfd5bffe93f4b63e1ea88197fdb496ad0401ad265f2470bbc47175c"
+    },
+    {
+      "path": "programs/gesp-cpp.l1.branch.json",
+      "bytes": 1414,
+      "sha256": "e48d13331bc8bd74638affdc0ba907c31bbcdfbe9e9f5e6a2910e80bd93b63e7"
+    },
+    {
+      "path": "programs/gesp-cpp.l1.debug.json",
+      "bytes": 1398,
+      "sha256": "6965ea338d7a02502d2aa189317c1e51cbabf847733ba096e1d1548c8f3d8975"
+    },
+    {
+      "path": "programs/gesp-cpp.l1.division.json",
+      "bytes": 1406,
+      "sha256": "a3b75567f39994d3251393f5c1c9a196a7d3327b0e47e9c9a6b8d248976861cd"
+    },
+    {
+      "path": "programs/gesp-cpp.l1.io.json",
+      "bytes": 1398,
+      "sha256": "1bf16e489880f3878b5eb0d721a3573f558e94cc9c6b123f1625753ed99ac258"
+    },
+    {
+      "path": "programs/gesp-cpp.l1.logic.json",
+      "bytes": 1591,
+      "sha256": "1d9e5770d01c4423bc6f62b7e540648437d107fbb1e1d09e83e4a3d008c41202"
+    },
+    {
+      "path": "programs/gesp-cpp.l1.loop-control.json",
+      "bytes": 1022,
+      "sha256": "5c2c4285fa9062a13ca3f5123bc67543466eee4c9835b3d90efb6231adc152f5"
+    },
+    {
+      "path": "programs/gesp-cpp.l1.loop.json",
+      "bytes": 1398,
+      "sha256": "c9e2b5d899c8122c789e7cd1218649c6008b6ea6ed62e81a61683d3afc9361b2"
+    },
+    {
+      "path": "programs/gesp-cpp.l1.relations.json",
+      "bytes": 1399,
+      "sha256": "5566cb4fa13687142a2ec82e39def5a1b29ff6dcab84a581dd57cae9f1229b78"
+    },
+    {
+      "path": "programs/gesp-cpp.l1.sequence.json",
+      "bytes": 1016,
+      "sha256": "fd9e832bfbc543fc854e997cd499853f3805a53aca7f0067d8f9d9bfd17d72f8"
+    },
+    {
+      "path": "programs/gesp-cpp.l1.types.json",
+      "bytes": 1026,
+      "sha256": "3edaf6db9ee8aa43abfb1be276ff1600029be53712a6621ac78a6d75e33b7386"
+    },
+    {
+      "path": "programs/gesp-cpp.l1.variables.json",
+      "bytes": 1407,
+      "sha256": "06f5e29cfecae87cc03ee8730d1c1ef5fec5f9d6808e67666d8f4b3ec24a0ec4"
+    },
+    {
+      "path": "programs/gesp-cpp.l2.ascii.json",
+      "bytes": 1406,
+      "sha256": "a940cb721af3afe1775acb04c438d870b7799080fd2f1c4484e2c302de36bc77"
+    },
+    {
+      "path": "programs/gesp-cpp.l2.branches.json",
+      "bytes": 1419,
+      "sha256": "f334ccb7d09e18844d1e9a7d15076b404f572918f3b078f84d1b7108f01e307d"
+    },
+    {
+      "path": "programs/gesp-cpp.l2.conversion.json",
+      "bytes": 1015,
+      "sha256": "9015f5d6f7715198524e712da969768ca78519c9cbeb5e43aee8148f88cea603"
+    },
+    {
+      "path": "programs/gesp-cpp.l2.math-functions.json",
+      "bytes": 1013,
+      "sha256": "3c02d6a18961424669385ae7fdeb073b92ac93d55d6c2c66cf70f3a0568da5b9"
+    },
+    {
+      "path": "programs/gesp-cpp.l2.nested-loops.json",
+      "bytes": 1403,
+      "sha256": "0c5785f36a41bb77c17d89e6c36f2fa4ed8a5dedcf2ff2b5b8944eb16d912c07"
+    },
+    {
+      "path": "programs/gesp-cpp.l2.random.json",
+      "bytes": 1011,
+      "sha256": "b1d55e737186920832b0cc426fc98a54d6f14c44711a466cd037053a056faea5"
+    },
+    {
+      "path": "programs/gesp-cpp.l3.algorithm-description.json",
+      "bytes": 1400,
+      "sha256": "a1b7859ba0374fa3f10e352af376af07346f77c3a0d8912d89e491c7784fd590"
+    },
+    {
+      "path": "programs/gesp-cpp.l3.array.json",
+      "bytes": 1016,
+      "sha256": "daa2264c2a6293a42781ffb640410e99173b11ffdaeca411b2596dcaad325dd1"
+    },
+    {
+      "path": "programs/gesp-cpp.l3.base.json",
+      "bytes": 1013,
+      "sha256": "2a386ef48729559b127cb7a10a1b42edb839469cb06b2f58c686a9782b62c2ce"
+    },
+    {
+      "path": "programs/gesp-cpp.l3.bitwise.json",
+      "bytes": 1013,
+      "sha256": "3e6236bb76990879473470df3254db7c7c6c9d746903472f9f4baef588ac66cd"
+    },
+    {
+      "path": "programs/gesp-cpp.l3.enumeration.json",
+      "bytes": 1431,
+      "sha256": "a01bb1c5b5f4cad5ffdb9a78b56152db16957dfa9942fccf9d25708cadbb33b3"
+    },
+    {
+      "path": "programs/gesp-cpp.l3.shift.json",
+      "bytes": 1012,
+      "sha256": "33ed7e71ed5bc928edb514bb57632cea5a1402a5d81fdb53dfac0c72a10b8cfa"
+    },
+    {
+      "path": "programs/gesp-cpp.l3.simulation.json",
+      "bytes": 1408,
+      "sha256": "09a28418d165a8e665823be065b6b873359bd0d2d073ca60123cebda0453192f"
+    },
+    {
+      "path": "programs/gesp-cpp.l3.strings.json",
+      "bytes": 1026,
+      "sha256": "2b1b3db52f41ec051d1620f628f869d0b8c6097200d0db6a2d25d35a90cab768"
+    },
+    {
+      "path": "programs/gesp-cpp.l4.bubble.json",
+      "bytes": 1020,
+      "sha256": "477051df667244ca08ca3c10c9030489a011ae8f4c0187945f8057490aa8d997"
+    },
+    {
+      "path": "programs/gesp-cpp.l4.complexity.json",
+      "bytes": 1407,
+      "sha256": "afe8a059ee2581e3ef5c416f633daefd3f699385be5a3665f9f120da1d0f75a1"
+    },
+    {
+      "path": "programs/gesp-cpp.l4.exception.json",
+      "bytes": 1011,
+      "sha256": "21a2803d8d8aa95210213ca3d61bc1e89a808f593deeaf1936fd7186cecedc8d"
+    },
+    {
+      "path": "programs/gesp-cpp.l4.function.json",
+      "bytes": 1399,
+      "sha256": "0cc56f2854f77f93244009468812e994da457d023438b2c2f5c27f80a7f8c4d7"
+    },
+    {
+      "path": "programs/gesp-cpp.l4.insertion.json",
+      "bytes": 1015,
+      "sha256": "6659f5d5a5faf16662d2a58fa54d719db910fc49d37e4410341c090014d31517"
+    },
+    {
+      "path": "programs/gesp-cpp.l4.matrix.json",
+      "bytes": 1016,
+      "sha256": "76f8b44b3ceb9b2222ec0eb4d6b8c80ae221aa6cd77b42c67712fb80414af2c5"
+    },
+    {
+      "path": "programs/gesp-cpp.l4.parameter-reference.json",
+      "bytes": 1013,
+      "sha256": "97f51da64d460adbe246114092be006b02a9e7230d9fa68ac7ab64ffd5a0bb15"
+    },
+    {
+      "path": "programs/gesp-cpp.l4.parameter-value.json",
+      "bytes": 1012,
+      "sha256": "b0adec9a4ec0dd7903b7ee20aed20bca7bf3428f82e47718a7c3a9921fe21f91"
+    },
+    {
+      "path": "programs/gesp-cpp.l4.pointer.json",
+      "bytes": 1011,
+      "sha256": "54adb4eff3ed05d89c1f3c66e5e35de6bc2a715e74ea79cd0d4de72a292229ea"
+    },
+    {
+      "path": "programs/gesp-cpp.l4.recurrence.json",
+      "bytes": 1592,
+      "sha256": "140363a5bd9783f4075e9de0cc69f62a646ce53c103f8b9344a50046785facb5"
+    },
+    {
+      "path": "programs/gesp-cpp.l4.scope.json",
+      "bytes": 1012,
+      "sha256": "17d0bfa86c75dadfa5c386d1be7d99b0b0913821d0591ee4593c9dbcb343014a"
+    },
+    {
+      "path": "programs/gesp-cpp.l4.selection.json",
+      "bytes": 1013,
+      "sha256": "5425c330313847f3faadb9b10726152b86cd82cbc4dde6385257cf2cfe62c37d"
+    },
+    {
+      "path": "programs/gesp-cpp.l4.struct.json",
+      "bytes": 1017,
+      "sha256": "c6420f6a6a3b5867f464fe88485ce2ad042d08dbbd15a5f596c661f18322432e"
+    },
+    {
+      "path": "receipt.json",
+      "bytes": 5160,
+      "sha256": "376b8fc01661dc69ac7152f64f36eefe3a20c3dfedb7650703966fa2501b89a9"
+    },
+    {
+      "path": "sources.json.gz",
+      "bytes": 126378,
+      "sha256": "e816562375f9b9067493ce4f2f19bd88c4896c8b78e011feabb7f94a25eea121"
+    },
+    {
+      "path": "tools/archive.cjs",
+      "bytes": 8190,
+      "sha256": "37466c39ff07d85a01466edeba619556e406ddc29265d7b65dd44cdf71ec8043"
+    },
+    {
+      "path": "tools/prepare.cjs",
+      "bytes": 3188,
+      "sha256": "509836c6aae9f8057213a019d7784755d4a8e58991317a030607b84cb65fc084"
+    },
+    {
+      "path": "tools/run-check.cjs",
+      "bytes": 4281,
+      "sha256": "714efcb0864ec46ea975d207deb218b33298a4896392c570de8f2f9b04b277ec"
+    },
+    {
+      "path": "tools/sync-runner-correction.cjs",
+      "bytes": 2279,
+      "sha256": "5b1da09f90198783fc9d543b821227bb6eb1b5d8cb6ee4e02539f35c9088e594"
+    }
+  ],
+  "manifestExcludedFromOwnHash": true
+}

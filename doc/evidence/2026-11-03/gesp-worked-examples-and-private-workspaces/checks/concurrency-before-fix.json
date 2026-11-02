@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-02T20:45:40.622Z",
+  "passed": false,
+  "first": {
+    "status": 1,
+    "stdout": "",
+    "stderr": "cat: /dev/shm/study-agent-gesp-work/marker.txt: No such file or directory\n",
+    "error": null
+  },
+  "peer": {
+    "status": 0,
+    "stdout": "peer-cleanup-complete",
+    "stderr": ""
+  },
+  "host": "wsl:Ubuntu",
+  "overlapConfirmed": true,
+  "peerCleanupCompletedBeforeFirstAbsoluteLookup": true,
+  "sourceOrLearnerWrites": false
+}

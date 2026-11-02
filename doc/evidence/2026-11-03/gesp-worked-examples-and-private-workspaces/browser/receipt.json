@@ -1,0 +1,33 @@
+{
+  "at": "2026-11-02T21:28:17.767Z",
+  "buildId": "tSQa109Myy2UD3Gs5L5KY",
+  "stats": {
+    "startTime": "2026-11-02T20:49:12.178Z",
+    "duration": 34546.178,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "errors": [],
+  "specs": [
+    {
+      "title": "GESP teaching: reviewers can inspect every original lesson in the existing workbench on desktop and mobile",
+      "ok": true,
+      "tests": [
+        {
+          "status": "expected",
+          "attempts": [
+            {
+              "status": "passed",
+              "retry": 0,
+              "duration": 12305,
+              "errors": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "originalRuntimeConfigurationExcluded": true
+}

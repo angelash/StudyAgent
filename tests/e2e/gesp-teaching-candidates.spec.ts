@@ -25,11 +25,22 @@ test('GESP teaching: reviewers can inspect every original lesson in the existing
       const detail = current.locator('details').first(), reference = detail.getByText(lesson.example.referenceAnswer, { exact: true });
       if (!await reference.isVisible()) await detail.locator('summary').click();
       await expect(reference).toBeVisible();
+      const worked = current.getByRole('region', { name: '讲解例题参考内容', exact: true });
+      expect(await worked.textContent()).toBe(lesson.example.referenceAnswer);
+      await expect(worked).toContainText('逐步核对：');
+      await expect(worked).toContainText('适用范围：');
     }
     await page.screenshot({ path: browserEvidence('gesp-teaching') + '/level-' + level + '-desktop.png', fullPage: true });
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await expect(panel).toContainText('尚未认定为已审核独立题族');
+  const worked = panel.getByRole('region', { name: '讲解例题参考内容', exact: true });
+  await worked.focus();
+  expect(await worked.evaluate(node => getComputedStyle(node).whiteSpace)).toBe('pre-wrap');
+  if (await worked.evaluate(node => node.scrollHeight > node.clientHeight)) {
+    await page.keyboard.press('ArrowDown');
+    await expect.poll(() => worked.evaluate(node => node.scrollTop)).toBeGreaterThan(0);
+  }
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
   await page.screenshot({ path: browserEvidence('gesp-teaching') + '/level-four-mobile.png', fullPage: true });
   expect(errors).toEqual([]);

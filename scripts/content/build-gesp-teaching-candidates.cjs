@@ -309,6 +309,25 @@ add('l4.exception', 'throw触发异常传播，catch按类型接住匹配异常�
   ['只写catch(double)，却抛出int并认为会自动数值转换匹配。', '异常匹配不是一般数值赋值转换；应设置匹配类型或按设计统一异常接口。'],
   ['解析输入时发现不合法，设计明确错误返回或异常处理路径。', '先验证再计算；约定返回状态或抛出匹配异常，处理后不能把失败数据计为成功结果。'],
   ['隔日解释try/catch不能使越界读取成为合法操作。', '越界可产生未定义行为，必须在访问前验证边界，不能依赖catch补救。']);
+const worked = require('./gesp-worked-examples.cjs');
+if (worked.teacherReviewed !== false || worked.automaticPublication !== false || worked.rows.length !== 49 ||
+    new Set(worked.rows.map(row => row.atomId)).size !== 49) throw Error('Unapproved, unique worked examples required');
+for (const lesson of lessons) {
+  const row = worked.rows.find(row => row.atomId === lesson.atomId);
+  if (!row || row.steps.length < 3 || row.steps.some(step => step.length < 15) || row.boundary.length < 15)
+    throw Error('Complete example steps and scope required for ' + lesson.atomId);
+  const parts = [lesson.example.referenceAnswer, '逐步核对：', ...row.steps.map((step, i) => `${i + 1}. ${step}`)];
+  if (row.program) {
+    if (row.program.standard !== 'C++17' || row.program.tests.length < 1 || !row.program.source.endsWith('\n'))
+      throw Error('Explicit executable reference required');
+    parts.push('C++17完整演示程序：', row.program.source.trimEnd(), '演示输入与预期输出（∅表示空文本）：');
+    for (const [i, test] of row.program.tests.entries())
+      parts.push(`用例${i + 1}输入：\n${test.input || '∅'}\n预期输出：\n${test.expected || '∅'}`);
+  }
+  parts.push('适用范围：' + row.boundary);
+  lesson.example.referenceAnswer = parts.join('\n');
+  if (lesson.example.referenceAnswer.length > 2000) throw Error('Reference exceeds the existing content limit');
+}
 const expected = knowledge.atoms.filter(atom => atom.level <= 4).map(atom => atom.id).sort();
 if (JSON.stringify(lessons.map(row => row.atomId).sort()) !== JSON.stringify(expected)) throw Error('Teaching candidate coverage differs from level 1–4 targets');
 const bundle = { format: 'gesp-teaching-candidates-v1', status: 'editorial_candidate', automaticPublication: false,

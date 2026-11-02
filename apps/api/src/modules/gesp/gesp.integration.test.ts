@@ -41,19 +41,29 @@ describe('GESP certification research: provenance, bounded reads and isolation',
     db.prepare('INSERT INTO metadata VALUES(?,?)').run('summary', JSON.stringify({ format: 'gesp-research-index-v1', questions: 4, inputSha256 })); db.close();
     const { AppModule } = require('../../../dist/apps/api/src/app.module.js');
     const { InMemoryStoreService } = require('../../../dist/apps/api/src/infrastructure/in-memory-store.service.js');
-    const { AuthService } = require('../../../dist/apps/api/src/modules/auth/auth.service.js');
     const { GespService } = require('../../../dist/apps/api/src/modules/gesp/gesp.service.js');
     app = await NestFactory.create(AppModule, { logger: false }); app.setGlobalPrefix('api'); await app.init();
-    service = app.get(GespService); store = app.get(InMemoryStoreService); const auth = app.get(AuthService);
+    service = app.get(GespService); store = app.get(InMemoryStoreService);
+    const post = async (route: string, body: unknown, actor?: any) => {
+      let query = request(app.getHttpServer()).post('/api' + route);
+      if (actor) query = query.set('Authorization', `Bearer ${actor.token}`);
+      return (await query.send(body as object).expect(201)).body.data;
+    };
     const actors = [];
-    for (const role of ['admin', 'teacher', 'parent', 'student']) {
-      const actor = await auth.register({ principal: `gesp-${role}-qa`, credential: 'gesp-fixture-credential' });
-      store.users.find((u: any) => u.id === actor.user.id).role = role; actors.push(actor);
+    for (const role of ['admin', 'teacher', 'parent']) {
+      const actor = await post('/auth/register', { principal: `gesp-${role}-qa`, credential: 'gesp-fixture-credential' });
+      await store.transaction(() => { store.find('users', { id: actor.user.id }).role = role; });
+      actors.push(actor);
     }
-    [admin, teacher, parent, student] = actors;
-    store.bindings.push({ id: 'gesp-binding', parentUserId: parent.user.id, studentId: 'gesp-child', status: 'active', relation: 'guardian' });
-    store.studentLearningAccess.push({ id: 'gesp-access', studentId: 'gesp-child', userId: student.user.id, status: 'enabled', version: 1 });
-    Object.assign(store.sessions.find((s: any) => s.userId === student.user.id), { guardianId: parent.user.id, studentId: 'gesp-child', accessVersion: 1 });
+    [admin, teacher, parent] = actors;
+    const created = await post('/students', { nickname: 'GESP研究权限测试', grade: 4, preferredSessionMinutes: 15,
+      defaultVersionMap: { math: '', chinese: '', english: '' } }, parent);
+    const studentId = created.profile.id;
+    const access = await post(`/students/${studentId}/learning-access`, { enabled: true, expectedVersion: 0,
+      requestKey: 'gesp-research-enable', reason: '家长确认使用真实独立学习身份核对教研权限边界。' }, parent);
+    const code = await post(`/students/${studentId}/learning-access/codes`, { expectedVersion: access.version,
+      requestKey: 'gesp-research-code' }, parent);
+    student = await post('/auth/learning-code', { code: code.code });
   });
   afterAll(async () => {
     await app?.close(); rmSync(root, { recursive: true, force: true });
@@ -64,7 +74,7 @@ describe('GESP certification research: provenance, bounded reads and isolation',
   const get = (path: string, actor = admin) => request(app.getHttpServer()).get(`/api/gesp${path}`).set('Authorization', `Bearer ${actor.token}`);
   it('requires authentication and denies parents and valid student identities on every route', async () => {
     await request(app.getHttpServer()).get('/api/gesp/overview').expect(401);
-    for (const route of ['/overview', '/atoms', '/questions', `/questions/${rows[0].id}`, `/documents/${docSha}`]) {
+    for (const route of ['/overview', '/atoms', '/questions', '/teaching-candidates', `/questions/${rows[0].id}`, `/documents/${docSha}`]) {
       await get(route, parent).expect(403); await get(route, student).expect(403);
     }
     await get('/overview', teacher).expect(200);

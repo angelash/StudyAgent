@@ -36,6 +36,9 @@
 .gesp-panel details { border-top: 1px solid #d9e2dc; border-bottom: 1px solid #d9e2dc; margin: 24px 0; padding: 16px 0; }
 .gesp-workbench summary { cursor: pointer; font-weight: 700; line-height: 1.8; }
 .gesp-machine-text { white-space: pre-wrap; overflow-wrap: anywhere; tab-size: 4; max-height: 600px; overflow: auto; padding: 16px; background: #f5f7f3; font: 13px/1.9 Consolas, 'Microsoft YaHei', monospace; border: 1px solid #e0e6dd; }
+.gesp-columns > article { min-width: 0; }
+.gesp-reference { max-width: 100%; }
+.gesp-reference:focus-visible { outline: 3px solid var(--gesp-accent); outline-offset: 3px; }
 .gesp-source-links, .gesp-related { display: flex; gap: 12px; flex-wrap: wrap; }
 .gesp-source-links a { color: #235c47; text-decoration: underline; text-underline-offset: 4px; min-height: 36px; padding: 6px 0; }
 .gesp-related button { border: 1px solid #becfc2; color: #264f3b; background: #f5f8ef; border-radius: 3px; padding: 10px; min-height: 44px; text-align: left; cursor: pointer; }

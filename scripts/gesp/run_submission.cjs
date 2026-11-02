@@ -40,8 +40,11 @@ function isolatedBash(env, payloadPath, command, timeout) {
   if (!/^\/tmp\/study-gesp-(?:case-)?[A-Za-z0-9]+$/.test(payloadPath)) throw new Error('Invalid isolated payload path');
   const script = [
     'set -eu',
-    'mkdir -p /dev/shm/study-agent-gesp-work',
     'mount --make-rprivate /',
+    // The mountpoint directory must also be private. A shared /dev/shm directory
+    // can be removed by a peer's EXIT trap while this namespace is still using it.
+    'mount -t tmpfs -o size=16m,mode=0700 tmpfs /dev/shm',
+    'mkdir -p /dev/shm/study-agent-gesp-work',
     `mount --bind '${payloadPath}' /dev/shm/study-agent-gesp-work`,
     'mount -t tmpfs tmpfs /mnt',
     'mount -t tmpfs tmpfs /home',

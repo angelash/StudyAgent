@@ -1,0 +1,43 @@
+{
+  "at": "2026-11-02T20:42:09.740Z",
+  "branch": "main",
+  "sync": [
+    {
+      "path": "scripts/content/gesp-worked-examples.cjs",
+      "sha256": "528430d0208bb753a5d2b92f18334580d04981c6cc1ed535a3843bd66bea76be"
+    },
+    {
+      "path": "scripts/content/build-gesp-teaching-candidates.cjs",
+      "sha256": "bea0dc0a8b80f82fd950e1ed3b03689fc2fbad9851e99ce6b7ace5a4c9219adf"
+    },
+    {
+      "path": "scripts/qa/verify-gesp-worked-examples.cjs",
+      "sha256": "92d7cbc9556f8a311a1197422ef6855c20d1e5e205df5b7e381291ce90bf9e39"
+    },
+    {
+      "path": "resources/gesp/teaching-candidates-v1.json",
+      "sha256": "f1b1231b75ea4b0220b1752416fbc2bc6d6622364368758a0c8750fe23134f24"
+    },
+    {
+      "path": "apps/web/app/admin/gesp/teaching-candidates.tsx",
+      "sha256": "c4b5f3f495ec716c8841da28483d9bf8f7ed5085e851d007834c8e6927599232"
+    },
+    {
+      "path": "apps/web/app/admin/gesp/gesp.css",
+      "sha256": "667a66e04e899218f8a94b8db44d4608b8e77581821f12e908340c77d2d69dd3"
+    },
+    {
+      "path": "tests/e2e/gesp-teaching-candidates.spec.ts",
+      "sha256": "255868061f7edd37c05557a30c26a6e0981467d82c944043151c18b42c923517"
+    }
+  ],
+  "applicationInputs": 1930,
+  "changedApplicationSources": [
+    "apps/web/app/admin/gesp/gesp.css",
+    "apps/web/app/admin/gesp/teaching-candidates.tsx"
+  ],
+  "apiAndCompiledInputsUnchanged": true,
+  "old49Tasks98Probes162HiddenTestsAndReviewIdentitiesUnchanged": true,
+  "only49ExampleReferenceAnswersExpanded": true,
+  "baselineMainCommit": "f0e514a783f0f8fc4a4551f6cf5383eda16ad543"
+}

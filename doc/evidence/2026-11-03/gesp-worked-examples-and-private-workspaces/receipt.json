@@ -1,0 +1,187 @@
+{
+  "protocol": "gesp-worked-examples-and-private-workspaces-v1",
+  "at": "2026-11-02T21:28:17.909Z",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "content": {
+    "targets": 49,
+    "originalActivities": 245,
+    "workedReferences": 49,
+    "executableReferences": 39,
+    "exactOutputCases": 77,
+    "conceptualTraces": 10,
+    "original49Tasks98Probes162TestsUnchanged": true,
+    "teacherReviewed": false,
+    "familyScoringAndSufficientStockApproved": false
+  },
+  "runnerCorrection": {
+    "failure": "A shared mountpoint directory could be removed by a concurrent namespace EXIT trap.",
+    "before": {
+      "at": "2026-11-02T20:45:40.622Z",
+      "passed": false,
+      "first": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "cat: /dev/shm/study-agent-gesp-work/marker.txt: No such file or directory\n",
+        "error": null
+      },
+      "peer": {
+        "status": 0,
+        "stdout": "peer-cleanup-complete",
+        "stderr": ""
+      },
+      "host": "wsl:Ubuntu",
+      "overlapConfirmed": true,
+      "peerCleanupCompletedBeforeFirstAbsoluteLookup": true,
+      "sourceOrLearnerWrites": false
+    },
+    "after": {
+      "at": "2026-11-02T20:46:09.533Z",
+      "passed": true,
+      "first": {
+        "status": 0,
+        "stdout": "private-workspace\n",
+        "stderr": "",
+        "error": null
+      },
+      "peer": {
+        "status": 0,
+        "stdout": "peer-cleanup-complete",
+        "stderr": ""
+      },
+      "host": "wsl:Ubuntu",
+      "overlapConfirmed": true,
+      "peerCleanupCompletedBeforeFirstAbsoluteLookup": true,
+      "sourceOrLearnerWrites": false
+    },
+    "privateDevShmPerNamespace": true,
+    "limitsPreserved": {
+      "sourceBytes": 65536,
+      "tests": 40,
+      "inputBytes": 4096,
+      "outputBytes": 65536,
+      "compileSeconds": 12,
+      "runSeconds": 2,
+      "cpuSeconds": 3,
+      "virtualMemoryKb": 262144,
+      "compileMemoryKb": 524288,
+      "compileFileBytesKb": 32768,
+      "processes": 32,
+      "fileBytesKb": 1024,
+      "openFiles": 64
+    }
+  },
+  "validation": {
+    "programs": {
+      "passed": true,
+      "programs": 39,
+      "cases": 77,
+      "exactOutputCompared": true,
+      "firstPartialFailurePreserved": true
+    },
+    "sqliteGesp": {
+      "passed": 51,
+      "failed": 0,
+      "skipped": 0,
+      "first": {
+        "passed": 43,
+        "failed": 7,
+        "reason": "Old research fixture bypassed persisted registration/session context."
+      },
+      "second": {
+        "passed": 50,
+        "failed": 1,
+        "reason": "Harness reused the default QA database; prior review state was present."
+      },
+      "finalUsesNewSqliteStorage": true
+    },
+    "fullApi": {
+      "passed": 3105,
+      "failed": 0,
+      "conditionalSkips": 131,
+      "inputCount": 2191,
+      "changedDuringRun": [],
+      "storage": "Designed test-mode in-memory suite; actual SQLite 51 and isolated native runner separately verified."
+    },
+    "browser": {
+      "buildId": "tSQa109Myy2UD3Gs5L5KY",
+      "passed": 1,
+      "failed": 0,
+      "all49TargetsAndCompleteReferencesInspected": true,
+      "rawAttempts": 1,
+      "retries": 0,
+      "skipped": 0,
+      "mobileKeyboardAndNoPageOverflow": true,
+      "screenshotsVisuallyReviewed": 5,
+      "derivedCrop": {
+        "source": "level-four-mobile.png",
+        "left": 0,
+        "top": 3050,
+        "width": 390,
+        "height": 1200
+      },
+      "firstAttempt": "Anchored grep did not match the filename-prefixed full title; no tests executed. Test selection corrected only."
+    },
+    "typeChecks": {
+      "web": 0,
+      "api": 0
+    },
+    "runnerBoundary": {
+      "valid": true,
+      "wrong": "wrong_output",
+      "timeout": "timeout",
+      "filesystemBoundary": "BLOCKED",
+      "linuxNative": {
+        "host": "linux-native",
+        "passed": true
+      }
+    },
+    "databaseProtocolUnchanged": 37,
+    "apiApplicationSourceUnchanged": true
+  },
+  "protection": {
+    "at": "2026-11-02T21:27:21.109Z",
+    "branch": "main",
+    "branches": [
+      "main"
+    ],
+    "worktreeCount": 1,
+    "protectedFiles": 1063,
+    "changedProtectedFiles": [],
+    "formal": {
+      "schema": 24,
+      "revision": 188
+    },
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "remaining": {
+    "registeredBooks": 451,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 103,
+    "booksWithDirectory": 115,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3530,
+    "lessonsWithCandidateFiles": 66,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3464,
+    "authoredFollowingMaterialCandidates": 2968,
+    "materialBundlesWithStaleDraftIdentity": 0,
+    "firstLessonSeparateCandidates": 44,
+    "allRemainingTextbooksGespTeacherAndRealWorldAcceptance": true,
+    "block5": true
+  },
+  "boundaries": {
+    "syntheticQaLearnerFixturesOnly": true,
+    "realLearnerDataWritten": false,
+    "automaticApproval": false,
+    "published": false,
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  }
+}

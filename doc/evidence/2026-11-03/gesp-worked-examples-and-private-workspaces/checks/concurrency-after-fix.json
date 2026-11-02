@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-02T20:46:09.533Z",
+  "passed": true,
+  "first": {
+    "status": 0,
+    "stdout": "private-workspace\n",
+    "stderr": "",
+    "error": null
+  },
+  "peer": {
+    "status": 0,
+    "stdout": "peer-cleanup-complete",
+    "stderr": ""
+  },
+  "host": "wsl:Ubuntu",
+  "overlapConfirmed": true,
+  "peerCleanupCompletedBeforeFirstAbsoluteLookup": true,
+  "sourceOrLearnerWrites": false
+}

@@ -30,4 +30,10 @@ describe.skipIf(!available)('isolated GESP C++ runner', () => {
       tests: [{ input: '', expected: 'BLOCKED' }] });
     expect(receipt.passed).toBe(true); expect(receipt.tests[0].stdout.trim()).toBe('BLOCKED');
   }, 30_000);
+  it('keeps a live workspace readable after a concurrent namespace completes its cleanup', async () => {
+    const { verifyConcurrentWorkspaces } = require('../../../../../scripts/qa/verify-gesp-concurrent-workspaces.cjs');
+    expect(await verifyConcurrentWorkspaces()).toMatchObject({ passed: true, overlapConfirmed: true,
+      peerCleanupCompletedBeforeFirstAbsoluteLookup: true, first: { status: 0, stdout: 'private-workspace\n' },
+      peer: { status: 0 }, sourceOrLearnerWrites: false });
+  }, 40_000);
 });

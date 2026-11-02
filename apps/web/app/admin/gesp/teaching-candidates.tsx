@@ -24,7 +24,7 @@ export function GespTeachingCandidates({ level }: { level: number }) {
         {view.lessons.map(row => <button key={row.id} aria-pressed={row.id === selected} onClick={() => setSelected(row.id)}><strong>{row.title}</strong><small>{row.goal}</small></button>)}
       </div>{lesson && <article aria-label="当前教学候选"><span className="studio-eyebrow">原创候选 · 教师待审</span><h3>{lesson.title}</h3><p>{lesson.goal}</p>
         <h4>讲解</h4><p>{lesson.explanation}</p>{(Object.keys(labels) as Array<keyof typeof labels>).map(key => <section key={key} className="gesp-review-evidence">
-          <h4>{labels[key]}</h4><p>{lesson[key].prompt}</p><details><summary>查看教研参考与评分边界</summary><p>{lesson[key].referenceAnswer}</p><p>人工量规复核；尚未认定为已审核独立题族。</p></details>
+          <h4>{labels[key]}</h4><p>{lesson[key].prompt}</p><details><summary>查看教研参考与评分边界</summary><pre className="gesp-machine-text gesp-reference" role="region" aria-label={`${labels[key]}参考内容`} tabIndex={0}>{lesson[key].referenceAnswer}</pre><p>人工量规复核；尚未认定为已审核独立题族。</p></details>
         </section>)}<h4>官方范围依据</h4>{lesson.sourceEvidence.map(source => <p key={source.clauseId}><a href={`${source.pdfUrl}#page=${source.pdfPages[0]}`} target="_blank" rel="noreferrer">{source.clauseId} · PDF物理第{source.pdfPages.join('、')}页</a></p>)}
         <p>关联试题的原审核与本教学候选分别核对。本页查看和展开参考不会写入学生作答、曝光或学习结果。</p>
       </article>}</div></>}

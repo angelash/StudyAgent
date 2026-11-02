@@ -1,0 +1,255 @@
+{
+  "at": "2026-11-02T20:41:19.104Z",
+  "passed": false,
+  "inputs": [
+    {
+      "path": "scripts/content/gesp-worked-examples.cjs",
+      "sha256": "528430d0208bb753a5d2b92f18334580d04981c6cc1ed535a3843bd66bea76be"
+    },
+    {
+      "path": "scripts/content/build-gesp-teaching-candidates.cjs",
+      "sha256": "bea0dc0a8b80f82fd950e1ed3b03689fc2fbad9851e99ce6b7ace5a4c9219adf"
+    },
+    {
+      "path": "resources/gesp/teaching-candidates-v1.json",
+      "sha256": "f1b1231b75ea4b0220b1752416fbc2bc6d6622364368758a0c8750fe23134f24"
+    },
+    {
+      "path": "resources/gesp/student-curriculum-v2.json",
+      "sha256": "cdae4abec0af8fcad4d83b9503867d0eedd244808280e027f8a1e4533262bb9a"
+    },
+    {
+      "path": "resources/gesp/knowledge-map.json",
+      "sha256": "0131e9f7ef27755f1edacb6da6b40f1b6e6dc9bacb61760b27c0ba09f7345fb4"
+    },
+    {
+      "path": "scripts/gesp/run_submission.cjs",
+      "sha256": "f871584f56f298e2dcc308f7fa436188c66ea0f213a65161e6af33c3ceb07571"
+    }
+  ],
+  "teachingExamples": 49,
+  "programs": 15,
+  "programCases": 38,
+  "conceptualTraces": 7,
+  "rows": [
+    {
+      "atomId": "gesp-cpp.l1.computer",
+      "kind": "conceptual_trace",
+      "steps": 4,
+      "programExecutionNotApplicable": true,
+      "realDeviceOrToolAcceptance": false
+    },
+    {
+      "atomId": "gesp-cpp.l1.ide",
+      "kind": "conceptual_trace",
+      "steps": 4,
+      "programExecutionNotApplicable": true,
+      "realDeviceOrToolAcceptance": false
+    },
+    {
+      "atomId": "gesp-cpp.l1.io",
+      "kind": "cpp",
+      "passed": true,
+      "sourceSha256": "51b814290d27050dd1fc4009db7a68176f9ce1c3d16bf3bf6998a0a7727029e8",
+      "testsSha256": "0e18815c7661725ce6c92e1a6622a70ddfb59d8b1fc56be1bd57d773032f68ff",
+      "cases": 3,
+      "host": "wsl:Ubuntu",
+      "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "exactOutputPreserved": true
+    },
+    {
+      "atomId": "gesp-cpp.l1.identifiers",
+      "kind": "conceptual_trace",
+      "steps": 4,
+      "programExecutionNotApplicable": true,
+      "realDeviceOrToolAcceptance": false
+    },
+    {
+      "atomId": "gesp-cpp.l1.variables",
+      "kind": "cpp",
+      "passed": true,
+      "sourceSha256": "93be9254f0647c2757a563e14237ee8f8cd6ebf00d8c1bf3caae3b07282b9705",
+      "testsSha256": "479ef818af70880a73b8f75950e89acdd6d12a1b54b4cc21f55276db5e54ddfa",
+      "cases": 3,
+      "host": "wsl:Ubuntu",
+      "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "exactOutputPreserved": true
+    },
+    {
+      "atomId": "gesp-cpp.l1.types",
+      "kind": "cpp",
+      "passed": true,
+      "sourceSha256": "21044405accca4b8b042dd5cdea46bee1074b79d3230d2a3cc74bf6822cff9df",
+      "testsSha256": "537ce757b1d1d9c123645322930dcb97f7bf5e82d8b0af8de76c7e14b1c802ba",
+      "cases": 1,
+      "host": "wsl:Ubuntu",
+      "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "exactOutputPreserved": true
+    },
+    {
+      "atomId": "gesp-cpp.l1.arithmetic",
+      "kind": "cpp",
+      "passed": true,
+      "sourceSha256": "6c7b9d2c1cf483fb09fdd037063d278b9cd16f9b4bf97dffcb6ec5b5595a2814",
+      "testsSha256": "00f9eb4273e08b295f02dced1047094f2586b581131b279a9010baad8cb19991",
+      "cases": 3,
+      "host": "wsl:Ubuntu",
+      "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "exactOutputPreserved": true
+    },
+    {
+      "atomId": "gesp-cpp.l1.division",
+      "kind": "cpp",
+      "passed": true,
+      "sourceSha256": "3a6bc9aeb0417ec4d6afdc99fd572e36ce186af31ee719e25778db64d7db735d",
+      "testsSha256": "19bfe16b1d07c54703a2611e0ac37efb913e3692126d76a90524fe8d20b8d36d",
+      "cases": 3,
+      "host": "wsl:Ubuntu",
+      "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "exactOutputPreserved": true
+    },
+    {
+      "atomId": "gesp-cpp.l1.relations",
+      "kind": "cpp",
+      "passed": true,
+      "sourceSha256": "d7cc95d0ba9f923a0c0eca3546aa90bab4da78fc5c46cc419a40a6796d39c201",
+      "testsSha256": "a145db497d09bf85b7f9ded90670d3836160e722fc19851a4fb1b41f6db850e0",
+      "cases": 3,
+      "host": "wsl:Ubuntu",
+      "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "exactOutputPreserved": true
+    },
+    {
+      "atomId": "gesp-cpp.l1.logic",
+      "kind": "cpp",
+      "passed": true,
+      "sourceSha256": "be5f4f186153570f02b2bd7b2ea81cf0312db3397793c9a27619fed7d0bf6750",
+      "testsSha256": "8c141fe25dc3ece521067b9f130e7196ae271f2c42dbdac031fda8bc8d51a6e4",
+      "cases": 4,
+      "host": "wsl:Ubuntu",
+      "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "exactOutputPreserved": true
+    },
+    {
+      "atomId": "gesp-cpp.l1.sequence",
+      "kind": "cpp",
+      "passed": true,
+      "sourceSha256": "ed53df6918172dede80c474cd466c38c2081c4f51b3ed84ea9f4e5e6b9f549ba",
+      "testsSha256": "52b42ab20981517f99ea54f193db76c68b2e541320e6367359bfa085be537b25",
+      "cases": 1,
+      "host": "wsl:Ubuntu",
+      "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "exactOutputPreserved": true
+    },
+    {
+      "atomId": "gesp-cpp.l1.branch",
+      "kind": "cpp",
+      "passed": true,
+      "sourceSha256": "dbf1524e38ad48d59da42421bfa9f8d9b8ee30d7e712a6ccd509d1773b48e276",
+      "testsSha256": "7874e1409ef455d4bf63604bcea7578699210ddf3394d297a8d7de15d57aebfb",
+      "cases": 3,
+      "host": "wsl:Ubuntu",
+      "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "exactOutputPreserved": true
+    },
+    {
+      "atomId": "gesp-cpp.l1.loop",
+      "kind": "cpp",
+      "passed": true,
+      "sourceSha256": "2697bc126451f696117fbbb3617325a520d3258f99f75888489b5847abb12863",
+      "testsSha256": "298c93f11aa6704e0c740c61297fc2a12c5591989495df5d1b70bd597b16bfa5",
+      "cases": 3,
+      "host": "wsl:Ubuntu",
+      "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "exactOutputPreserved": true
+    },
+    {
+      "atomId": "gesp-cpp.l1.loop-control",
+      "kind": "cpp",
+      "passed": true,
+      "sourceSha256": "503eded95869ed3cafd6f029f1a2c72ae66bb929a850210e990706978c8d1259",
+      "testsSha256": "2d7382de33dc280d70b37bd7940045e9882e92cda59b67f7fc9b38c84bdd99ee",
+      "cases": 1,
+      "host": "wsl:Ubuntu",
+      "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "exactOutputPreserved": true
+    },
+    {
+      "atomId": "gesp-cpp.l1.debug",
+      "kind": "cpp",
+      "passed": true,
+      "sourceSha256": "2812fcd75a586b975a71c5f2072e6b58eb39272a6e20cc953c9df2178b0ae092",
+      "testsSha256": "b93b32fc775b55c83812421e736f84f9825fe4fa70a2fd4feb77ba48d2c505c4",
+      "cases": 3,
+      "host": "wsl:Ubuntu",
+      "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "exactOutputPreserved": true
+    },
+    {
+      "atomId": "gesp-cpp.l2.memory",
+      "kind": "conceptual_trace",
+      "steps": 4,
+      "programExecutionNotApplicable": true,
+      "realDeviceOrToolAcceptance": false
+    },
+    {
+      "atomId": "gesp-cpp.l2.network",
+      "kind": "conceptual_trace",
+      "steps": 4,
+      "programExecutionNotApplicable": true,
+      "realDeviceOrToolAcceptance": false
+    },
+    {
+      "atomId": "gesp-cpp.l2.languages",
+      "kind": "conceptual_trace",
+      "steps": 4,
+      "programExecutionNotApplicable": true,
+      "realDeviceOrToolAcceptance": false
+    },
+    {
+      "atomId": "gesp-cpp.l2.flowchart",
+      "kind": "conceptual_trace",
+      "steps": 4,
+      "programExecutionNotApplicable": true,
+      "realDeviceOrToolAcceptance": false
+    },
+    {
+      "atomId": "gesp-cpp.l2.ascii",
+      "kind": "cpp",
+      "passed": true,
+      "sourceSha256": "29801463902af4b65cb907f0a1bc5bdaab2f45212ddd2fe59f6d9a2f124892af",
+      "testsSha256": "c3434f39767286d76ab93e87b8273c48c36d283d215d38f13fadc50cc1c665df",
+      "cases": 3,
+      "host": "wsl:Ubuntu",
+      "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "exactOutputPreserved": true
+    },
+    {
+      "atomId": "gesp-cpp.l2.conversion",
+      "kind": "cpp",
+      "passed": true,
+      "sourceSha256": "6893bb685097dff3b846164918dff744c97f829c27bc416b127723963f52491c",
+      "testsSha256": "a959be1fff31702f83d0adfeda93aa7b224a5e46c171cdb3e01472003bcbce2e",
+      "cases": 1,
+      "host": "wsl:Ubuntu",
+      "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "exactOutputPreserved": true
+    },
+    {
+      "atomId": "gesp-cpp.l2.branches",
+      "kind": "cpp",
+      "passed": true,
+      "sourceSha256": "1e17f6720310234bdca7908c4bf2eac95442717bb9f92fd8f2c83659c973bfa0",
+      "testsSha256": "d89b18aa333fa43b9d28727ed3bc3233d6ca7e0995df925fffef5883d2184722",
+      "cases": 3,
+      "host": "wsl:Ubuntu",
+      "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "exactOutputPreserved": true
+    }
+  ],
+  "teacherReviewed": false,
+  "automaticPublication": false,
+  "learnerRecordsWritten": false,
+  "error": "{\"atomId\":\"gesp-cpp.l2.nested-loops\",\"compile\":{\"passed\":false,\"exitCode\":1,\"stdout\":\"\",\"stderr\":\"bash: line 11: cd: /dev/shm/study-agent-gesp-work: No such file or directory\\n\",\"harnessExitCode\":1,\"timedOut\":false},\"tests\":[]}",
+  "finishedAt": "2026-11-02T20:43:23.207Z"
+}

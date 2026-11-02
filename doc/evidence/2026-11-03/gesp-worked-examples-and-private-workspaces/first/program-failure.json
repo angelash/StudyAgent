@@ -1,0 +1,32 @@
+{
+  "format": "gesp-isolated-run-v2",
+  "sourceSha256": "a2cd337a85a4aaf2fc3cae43d7fa90cb588fad4e27ecda630a2b3c880af15001",
+  "testsSha256": "ad2c0c50cd9229a471001c9dab4c9f97c54a753b29217dc90bac2b78c60fb25f",
+  "toolchain": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "host": "wsl:Ubuntu",
+  "limits": {
+    "sourceBytes": 65536,
+    "tests": 40,
+    "inputBytes": 4096,
+    "outputBytes": 65536,
+    "compileSeconds": 12,
+    "runSeconds": 2,
+    "cpuSeconds": 3,
+    "virtualMemoryKb": 262144,
+    "compileMemoryKb": 524288,
+    "compileFileBytesKb": 32768,
+    "processes": 32,
+    "fileBytesKb": 1024,
+    "openFiles": 64
+  },
+  "compile": {
+    "passed": false,
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "bash: line 11: cd: /dev/shm/study-agent-gesp-work: No such file or directory\n",
+    "harnessExitCode": 1,
+    "timedOut": false
+  },
+  "tests": [],
+  "passed": false
+}

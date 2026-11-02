@@ -1,0 +1,51 @@
+{
+  "at": "2026-11-02T20:47:10.087Z",
+  "sync": [
+    {
+      "path": "scripts/content/gesp-worked-examples.cjs",
+      "sha256": "528430d0208bb753a5d2b92f18334580d04981c6cc1ed535a3843bd66bea76be"
+    },
+    {
+      "path": "scripts/content/build-gesp-teaching-candidates.cjs",
+      "sha256": "bea0dc0a8b80f82fd950e1ed3b03689fc2fbad9851e99ce6b7ace5a4c9219adf"
+    },
+    {
+      "path": "scripts/qa/verify-gesp-worked-examples.cjs",
+      "sha256": "92d7cbc9556f8a311a1197422ef6855c20d1e5e205df5b7e381291ce90bf9e39"
+    },
+    {
+      "path": "resources/gesp/teaching-candidates-v1.json",
+      "sha256": "f1b1231b75ea4b0220b1752416fbc2bc6d6622364368758a0c8750fe23134f24"
+    },
+    {
+      "path": "apps/web/app/admin/gesp/teaching-candidates.tsx",
+      "sha256": "c4b5f3f495ec716c8841da28483d9bf8f7ed5085e851d007834c8e6927599232"
+    },
+    {
+      "path": "apps/web/app/admin/gesp/gesp.css",
+      "sha256": "667a66e04e899218f8a94b8db44d4608b8e77581821f12e908340c77d2d69dd3"
+    },
+    {
+      "path": "tests/e2e/gesp-teaching-candidates.spec.ts",
+      "sha256": "255868061f7edd37c05557a30c26a6e0981467d82c944043151c18b42c923517"
+    },
+    {
+      "path": "scripts/gesp/run_submission.cjs",
+      "sha256": "b050a9c39d37e29b7b2d55e6f58974a2a28a329f3ca6e9fb4a241ebe2070afa9"
+    },
+    {
+      "path": "scripts/qa/verify-gesp-concurrent-workspaces.cjs",
+      "sha256": "c42d665443bbc30c6a030cc6e4fdbd096b41b4b9d624b1addb1b538a1ada62ad"
+    },
+    {
+      "path": "apps/api/src/modules/gesp/isolated-runner.test.ts",
+      "sha256": "80d895e013eed0992927b99ab76fdc664d71e6141ee2fcb934f687e4d3da0f85"
+    },
+    {
+      "path": "apps/api/src/modules/gesp/gesp.integration.test.ts",
+      "sha256": "4be601c302268b6c861cc442ffd2ff3a82732b940ae397e83874e9213764a8ae"
+    }
+  ],
+  "correction": "Private namespace /dev/shm; deterministic overlapping-workspace regression; real persisted HTTP identities in the old research test fixture.",
+  "apiRuntimeTypesAndDatabaseProtocolUnchanged": true
+}
