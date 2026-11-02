@@ -1,0 +1,57 @@
+{
+  "at": "2026-11-02T14:34:39.478Z",
+  "buildId": "ELFqjEh0ZktmjW7mcCIOL",
+  "source": "main synchronized to data/qa/p187",
+  "accurateTextbookCandidates": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 7,
+  "failed": 0,
+  "error": null,
+  "checks": [
+    {
+      "name": "actual-candidate-reading:chinese-g3-asking-advice-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-candidate-reading:chinese-g3-coarse-bowl-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-candidate-reading:chinese-g3-garden-eight-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-candidate-reading:chinese-g3-happy-play-writing-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-candidate-reading:chinese-g3-surgery-battlefield-v1.json",
+      "passed": true
+    },
+    {
+      "name": "mobile-table-keyboard-scroll-and-edit-preservation",
+      "passed": true
+    },
+    {
+      "name": "private-preview-creates-no-publication-or-learner-facts",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "chinese-g3-asking-advice-v1-desktop.png",
+    "chinese-g3-asking-advice-v1-table.png",
+    "chinese-g3-coarse-bowl-v1-desktop.png",
+    "chinese-g3-coarse-bowl-v1-table.png",
+    "chinese-g3-garden-eight-v1-desktop.png",
+    "chinese-g3-garden-eight-v1-table.png",
+    "chinese-g3-happy-play-writing-v1-desktop.png",
+    "chinese-g3-happy-play-writing-v1-table.png",
+    "chinese-g3-surgery-battlefield-v1-desktop.png",
+    "chinese-g3-surgery-battlefield-v1-table.png",
+    "chinese-g3-asking-advice-v1-mobile-table.png"
+  ],
+  "pageErrors": [],
+  "mutations": []
+}

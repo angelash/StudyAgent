@@ -1,0 +1,282 @@
+{
+  "at": "2026-11-02T14:49:55.335Z",
+  "baseCommit": "01f32e3ad15dcbad520fb83630cfa97f5defaa7b",
+  "branch": "main",
+  "localBranches": [
+    "main"
+  ],
+  "worktreeInventory": "worktree F:/workspace/github/StudyAgent\nHEAD 01f32e3ad15dcbad520fb83630cfa97f5defaa7b\nbranch refs/heads/main\n\n",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "scripts/content/build-chinese-care-final-candidates.cjs",
+      "bytes": 80938,
+      "sha256": "5400acf61d77a1fde2299eb2ad7849d61150dc89e2ec0d87d54804381a260a99",
+      "gitNormalizedSha256": "5400acf61d77a1fde2299eb2ad7849d61150dc89e2ec0d87d54804381a260a99"
+    },
+    {
+      "path": "scripts/qa/verify-chinese-classical-reading.cjs",
+      "bytes": 2552,
+      "sha256": "cc8ce722c0b7b711d4318713c814d1d560cdc3d63e232295d26d8fb5c0a20282",
+      "gitNormalizedSha256": "cc8ce722c0b7b711d4318713c814d1d560cdc3d63e232295d26d8fb5c0a20282"
+    },
+    {
+      "path": "scripts/operations/audit-chinese-g3-upper-candidates.cjs",
+      "bytes": 9666,
+      "sha256": "1e5e4b231d326fe12febc567192588c779024739aeafdf45d84a0253895ce7dc",
+      "gitNormalizedSha256": "1e5e4b231d326fe12febc567192588c779024739aeafdf45d84a0253895ce7dc"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-surgery-battlefield-v1.json",
+      "bytes": 16281,
+      "sha256": "33c6134059fc0339d9e8c504886ff669290ef87add21d55a895a7b66ced686b8",
+      "gitNormalizedSha256": "33c6134059fc0339d9e8c504886ff669290ef87add21d55a895a7b66ced686b8"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-coarse-bowl-v1.json",
+      "bytes": 14406,
+      "sha256": "a1cc68ed23c537dd2d20fb67184997a4979dfcf4a5bfd5a7ad50cfc194ab1a7b",
+      "gitNormalizedSha256": "a1cc68ed23c537dd2d20fb67184997a4979dfcf4a5bfd5a7ad50cfc194ab1a7b"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-asking-advice-v1.json",
+      "bytes": 13112,
+      "sha256": "7f442cc2f8c177a567245254b7a2545d20db00e8430f6b6614b51adf389b9c3d",
+      "gitNormalizedSha256": "7f442cc2f8c177a567245254b7a2545d20db00e8430f6b6614b51adf389b9c3d"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-happy-play-writing-v1.json",
+      "bytes": 14262,
+      "sha256": "aa518bb80ec4f635d77d96ae8047b95f8d83c1e3a5ba47f4dd958a0341fa0572",
+      "gitNormalizedSha256": "aa518bb80ec4f635d77d96ae8047b95f8d83c1e3a5ba47f4dd958a0341fa0572"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-eight-v1.json",
+      "bytes": 17711,
+      "sha256": "f829c3e92bdc6ca6dc5b04bf2e31975d12018eacac934b5d2f051ed1e3cf489d",
+      "gitNormalizedSha256": "f829c3e92bdc6ca6dc5b04bf2e31975d12018eacac934b5d2f051ed1e3cf489d"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-care-final-v1.json",
+      "bytes": 190049,
+      "sha256": "1810ff74f99276ad4ae2878e498c6b1c9a08cb9b473d70621d4231eab1b382d8",
+      "gitNormalizedSha256": "1810ff74f99276ad4ae2878e498c6b1c9a08cb9b473d70621d4231eab1b382d8"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 14105,
+      "sha256": "52ef9e847fc2e49e94e0a93efd475639577183f16bccfaf69c9f847281e1e23a",
+      "gitNormalizedSha256": "2a5897aa52c6cbae2cd595b77a89857f771b44fd83db7734e1c700e0298e802b"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 177110,
+      "sha256": "98002276e744943319c4a6014dd4a50ee6d22f6b8c9c28547661c0985e7ce434",
+      "gitNormalizedSha256": "dd2097c4f34e525c9308f59808385483ea05832ba271e6b782d41f765546c726"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 103158,
+      "sha256": "0078ab36377a0615d1827630fa989af73d9e0e379d577aeb8abc507cecfacae3",
+      "gitNormalizedSha256": "d2de49e3754fb90c216c4045e78e0ef8c949b9672a9f60ef098da29faa90713a"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 108573,
+      "sha256": "32ea4f5f9b3f502314bf269eea144c1df237b51218bcbc5e48da3f0ce33ed27f",
+      "gitNormalizedSha256": "0bde4cd7f5b64bfeedd5e661e23bcbcb8350748f89c9578b704b1f38ae0f7442"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 18108,
+      "sha256": "e0e818b560b51522bcda4af044cc29ab30e143596eabc05ced2fa6cb378e8b44",
+      "gitNormalizedSha256": "3dd2bfa1a9d462d87b024bb3ae0f087b6a085ca6a727bf468540f45e515ea207"
+    },
+    {
+      "path": "doc/product/208-care-unit-final-and-whole-book-candidates.md",
+      "bytes": 3878,
+      "sha256": "03f6b697115b82adaa5b4ac3e33335236d2960f6b50e5e50b6fd906993cec381",
+      "gitNormalizedSha256": "03f6b697115b82adaa5b4ac3e33335236d2960f6b50e5e50b6fd906993cec381"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 37294,
+      "sha256": "06f66ff5a00c7fc67dcf8193dbe11188aeac54fac7ee93f9f21b318523438125",
+      "gitNormalizedSha256": "766eff3399e5bc9eb74d4a76c60ffd77a4ac0e616b5e004cf87a383a355a0848"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/browser/chinese-g3-asking-advice-v1-desktop.png",
+      "bytes": 240472,
+      "sha256": "cb6971f474e8d154aad9b2bb264dd9433429570f20ea1a9ccdb645032b09aa3a",
+      "gitNormalizedSha256": "6826156fcd9e4749d5e95a816b5b27f10f13d6b4f84cbb2a1c8900deae0dddbc"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/browser/chinese-g3-asking-advice-v1-mobile-table.png",
+      "bytes": 73948,
+      "sha256": "5efcb546e1b3c4830aead70de03f3897b1c284b3b386e79f47fa76b7088fdda1",
+      "gitNormalizedSha256": "22626f2b247132e841d792d9a17115ec057d39a3ed19808f7527d960e24fbb9b"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/browser/chinese-g3-asking-advice-v1-table.png",
+      "bytes": 46820,
+      "sha256": "ea844074d68d2e12489d530cc004cedeea37d77f5ad20a7800f5dfa6c2bf3634",
+      "gitNormalizedSha256": "780a9785c2cea63cbb20bb5fa78bf78d7577edc0a0c344df8af679584b27b2f2"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/browser/chinese-g3-coarse-bowl-v1-desktop.png",
+      "bytes": 238601,
+      "sha256": "51cbd68253d16a8cd28168c7d57e34765ae47c06219cf00f31cd72961ff1a011",
+      "gitNormalizedSha256": "b10736fbf323467b5129a8fa076f4dfc5eb5d046f1cfcfc71ca38a91f5dad598"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/browser/chinese-g3-coarse-bowl-v1-table.png",
+      "bytes": 48177,
+      "sha256": "1956d7a7ca95df999e40f174c824ff9d07a06588336d091cfce0e45d1a3b2bee",
+      "gitNormalizedSha256": "0278c3aed459244d7b8e8499e1579ff3b7847ac532c82b1e6569d0aad0839ce3"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/browser/chinese-g3-garden-eight-v1-desktop.png",
+      "bytes": 252244,
+      "sha256": "8d7f0919577a3316c8b9c70fbec672646818d5508c6fb486a2e8e56f5f61b4e7",
+      "gitNormalizedSha256": "e1350d55b6d9cbecda1ed8d5b00ae2b21c4d9423f7416df221f08857157ad7fc"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/browser/chinese-g3-garden-eight-v1-table.png",
+      "bytes": 52068,
+      "sha256": "c21b77a9b79906f1da9f3c4a44ed95fae889996af368dae2284f8090c2310f8d",
+      "gitNormalizedSha256": "9dcfe652831a074605cd1c6847c8c06789dc8249da3115c0d2a0da3ce3d9f5b1"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/browser/chinese-g3-happy-play-writing-v1-desktop.png",
+      "bytes": 237522,
+      "sha256": "551ab61e025c8d04328314dead7e6caee121495ec7aa1ebe065b86f8a8904387",
+      "gitNormalizedSha256": "ea18514bb90d7bd012cd1027b57e8572ac549265e4279a0a63b1fa4d459ed1bb"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/browser/chinese-g3-happy-play-writing-v1-table.png",
+      "bytes": 44861,
+      "sha256": "3452c482e3ec83af6048f740859490511b32333ade77107ba8b58e62756e7202",
+      "gitNormalizedSha256": "1f08f937742106c0754150f30bcd93f08b680c01caafde966cce2b22a39239ce"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/browser/chinese-g3-surgery-battlefield-v1-desktop.png",
+      "bytes": 254960,
+      "sha256": "3d97dec294993b680cb903577081983969d0bba48583c6625dedacea60058002",
+      "gitNormalizedSha256": "d79cdc98c739e0ae428ded401e5a63d5251cdfb61687b1a32f979a97ccb31a6e"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/browser/chinese-g3-surgery-battlefield-v1-table.png",
+      "bytes": 60351,
+      "sha256": "77ce8a99017f25029fdded92519dea09e9559d8d3399c9e392a247e139d30d8f",
+      "gitNormalizedSha256": "ea07ae36592c21fea0c97e14449cd972c0ad19da8d4e0b687dc12025ef85be87"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/browser/receipt.json",
+      "bytes": 1651,
+      "sha256": "bd3355d6d0b9ddd5f6ea5cfb26d789fea9b1e0280af6b4a1cda51425b0702b22",
+      "gitNormalizedSha256": "bd3355d6d0b9ddd5f6ea5cfb26d789fea9b1e0280af6b4a1cda51425b0702b22"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/browser/runner.cjs",
+      "bytes": 17320,
+      "sha256": "7dd92e4635759444143b8c61ecee904c500dee331911f27fe26b0877bb0b7bb8",
+      "gitNormalizedSha256": "7dd92e4635759444143b8c61ecee904c500dee331911f27fe26b0877bb0b7bb8"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/checks/b4-care-final-archive-scan.json",
+      "bytes": 996,
+      "sha256": "62793b53cf717298c75317210ed7545d916b218092f5d496eb55aedf60e0bc1c",
+      "gitNormalizedSha256": "62793b53cf717298c75317210ed7545d916b218092f5d496eb55aedf60e0bc1c"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/checks/care-final-activities-materials-http-first.json",
+      "bytes": 2920,
+      "sha256": "da5b6a5034efdfd736fa410ba3f88a6b8a3290e2d40eaa85295f70b256bc22f2",
+      "gitNormalizedSha256": "da5b6a5034efdfd736fa410ba3f88a6b8a3290e2d40eaa85295f70b256bc22f2"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/checks/care-final-generation-readback.json",
+      "bytes": 1552,
+      "sha256": "aec7f418bbb9ba1af7d5db1748714a5def10bdc0ee9599f05a5c2d6b8f18a3a5",
+      "gitNormalizedSha256": "aec7f418bbb9ba1af7d5db1748714a5def10bdc0ee9599f05a5c2d6b8f18a3a5"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/checks/care-final-prose-materials-http-first.json",
+      "bytes": 2293,
+      "sha256": "757652dc96cb5a1aeb3a4a89c44c80bd94a05ad567eec205090649d1803a16c2",
+      "gitNormalizedSha256": "757652dc96cb5a1aeb3a4a89c44c80bd94a05ad567eec205090649d1803a16c2"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/checks/care-final-static-first.json",
+      "bytes": 1153,
+      "sha256": "efe899b529b7a7020bfaf138cf16a5b759721097da7d3235ebe6604a4fea6dc7",
+      "gitNormalizedSha256": "efe899b529b7a7020bfaf138cf16a5b759721097da7d3235ebe6604a4fea6dc7"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/checks/chinese-g3-upper-candidate-audit-first.json",
+      "bytes": 43814,
+      "sha256": "0a1619bb3e408778ea02b40b389c95008cad615b1ae529c29c98c288a9f81564",
+      "gitNormalizedSha256": "0a1619bb3e408778ea02b40b389c95008cad615b1ae529c29c98c288a9f81564"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/checks/chinese-g3-upper-candidate-audit-with-first-second.json",
+      "bytes": 44464,
+      "sha256": "db07a28125ff02f4da5cb67cbe6aed873fb36d26a6ca1bed02f5fb8f6aa4b345",
+      "gitNormalizedSha256": "db07a28125ff02f4da5cb67cbe6aed873fb36d26a6ca1bed02f5fb8f6aa4b345"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/checks/classical-maxim-reading-regression-first.json",
+      "bytes": 372,
+      "sha256": "dd0bcc826dc17cd395aeb98527e464a4343e8577ff9e7e2483838775a3be0c4f",
+      "gitNormalizedSha256": "dd0bcc826dc17cd395aeb98527e464a4343e8577ff9e7e2483838775a3be0c4f"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/checks/content-worklist-care-final-first.json.gz",
+      "bytes": 115250,
+      "sha256": "106ab22240c237923cb7527f07681bb14876d97b174a176142d032c30a981ee2",
+      "gitNormalizedSha256": "510a3fc0bc05abb496b5b36e87dfc7d4bd9f6b626a7174e1c5b2ffc5df984567"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/checks/first-followups-book-audit-summary.json",
+      "bytes": 1465,
+      "sha256": "ca7c9875969d48b07c6adc9f439d2946c9d6a6907958ebcd1266901dbd57fef4",
+      "gitNormalizedSha256": "ca7c9875969d48b07c6adc9f439d2946c9d6a6907958ebcd1266901dbd57fef4"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/manifest.json",
+      "bytes": 4687,
+      "sha256": "af144cf688b431eb7402063d4774da3e4ca24b64cb677add45507dac6f70e71a",
+      "gitNormalizedSha256": "af144cf688b431eb7402063d4774da3e4ca24b64cb677add45507dac6f70e71a"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/receipt.json",
+      "bytes": 5088,
+      "sha256": "b7ef1994dbba7afa751427fbc85533334755cde594e1c2c7dffd4d0508ac6d55",
+      "gitNormalizedSha256": "b7ef1994dbba7afa751427fbc85533334755cde594e1c2c7dffd4d0508ac6d55"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/source-intake/care-unit-reviewed.json",
+      "bytes": 6279,
+      "sha256": "7a477d1084fff6e7a1480d1caa30e93974939cc4a9bae5cf30ada602d8660d9e",
+      "gitNormalizedSha256": "7a477d1084fff6e7a1480d1caa30e93974939cc4a9bae5cf30ada602d8660d9e"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/sources.json.gz",
+      "bytes": 127049,
+      "sha256": "3edc78cb5890d3c0d81db9a56377e6f6c41f6ac4ac304a51f4293494a64ae4c6",
+      "gitNormalizedSha256": "3edc78cb5890d3c0d81db9a56377e6f6c41f6ac4ac304a51f4293494a64ae4c6"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/tools/archive-care-final.cjs",
+      "bytes": 7326,
+      "sha256": "8d1a7d3aa58131b90a84af6d9c93afa04304202e0e03e4c165d31c110c6c5f7b",
+      "gitNormalizedSha256": "0d1f9ea1b451c432a4acd6df182e91656224d621c43f696bdd2f19396bef6565"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-care-final-and-book-candidates/tools/stage-care-final.cjs",
+      "bytes": 3412,
+      "sha256": "0bfac57dbcfb9d0853c565373b932cdc32856eeb3a5ee35dce6b19e949bc5f0a",
+      "gitNormalizedSha256": "0bfac57dbcfb9d0853c565373b932cdc32856eeb3a5ee35dce6b19e949bc5f0a"
+    }
+  ]
+}

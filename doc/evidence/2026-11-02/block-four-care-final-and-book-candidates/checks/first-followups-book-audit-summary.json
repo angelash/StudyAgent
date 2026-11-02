@@ -1,0 +1,40 @@
+{
+  "at": "2026-11-02T14:38:59.913Z",
+  "format": "study-first-source-followup-candidate-v1",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry1",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 7,
+    "pageEnd": 9,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "packetSha256": "5613b47830ac0b13f83cad4f0e18f9d30bca010a8e04b70934af8eaa0574f0ab",
+  "questionCount": 44,
+  "proposedStructureCount": 32,
+  "candidateTargetCount": 8,
+  "targetCount": 8,
+  "sourceFiles": [
+    {
+      "file": "source-chinese-followup-probes.ts",
+      "mainMatchesValidatedQaSource": true,
+      "sha256": "3db77f67ef7f155f83ec7b3efff2f560c0f53f27e8b886993d4c2ef6b67975c6"
+    },
+    {
+      "file": "source-chinese-practical-followup-probes.ts",
+      "mainMatchesValidatedQaSource": true,
+      "sha256": "0b08b061c95f8204d635dcbf5fcc0549bd5487d8ca6b95e92375eb9243dc7737"
+    }
+  ],
+  "sideEffects": {
+    "databaseWritten": false,
+    "published": false,
+    "originalStockChanged": false,
+    "retentionReservesConsumed": false
+  },
+  "rawPacketLocalOnly": true,
+  "newHttpOrLearnerWrites": false,
+  "reviewed": false,
+  "scope": "Fresh generation and byte readback of the original separate 44-question followup protocol only; earlier actual HTTP/cold-read proof stays separately attributed."
+}

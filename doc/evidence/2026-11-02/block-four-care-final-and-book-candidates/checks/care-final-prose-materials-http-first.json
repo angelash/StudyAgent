@@ -1,0 +1,72 @@
+{
+  "at": "2026-11-02T14:33:32.559Z",
+  "passed": true,
+  "scope": "Original drafts, manual exact-source ranges, real SQLite HTTP and cold read. No teacher approval, material release, adoption or learner evidence.",
+  "drafts": [
+    {
+      "file": "chinese-g3-surgery-battlefield-v1.json",
+      "sha256": "33c6134059fc0339d9e8c504886ff669290ef87add21d55a895a7b66ced686b8",
+      "physicalPages": [
+        110,
+        111,
+        112
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 7,
+      "preflightPublishable": false,
+      "gapCount": 90,
+      "linkedDraftMaterialReferences": 49,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    },
+    {
+      "file": "chinese-g3-coarse-bowl-v1.json",
+      "sha256": "a1cc68ed23c537dd2d20fb67184997a4979dfcf4a5bfd5a7ad50cfc194ab1a7b",
+      "physicalPages": [
+        113,
+        114
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 6,
+      "preflightPublishable": false,
+      "gapCount": 77,
+      "linkedDraftMaterialReferences": 42,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 2,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 91,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "exactSourceNamesAndMetadataPreserved": true,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/chinese-g3-care-final-v1.json",
+    "sha256": "1810ff74f99276ad4ae2878e498c6b1c9a08cb9b473d70621d4231eab1b382d8",
+    "groups": 31,
+    "questions": 91,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

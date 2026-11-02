@@ -1,0 +1,1191 @@
+{
+  "format": "study-chinese-g3-upper-candidate-consistency-v1",
+  "at": "2026-11-02T14:39:56.023Z",
+  "passed": true,
+  "scope": "Read-only registered-candidate consistency: contracts, exact extraction quotes, target identities, current material bindings and question IDs. Not semantic teacher review, family independence, scoring approval, sufficient stock, publication, real classroom or learner outcomes.",
+  "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+  "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+  "inputs": [
+    {
+      "path": "resources/curriculum/textbooks-v1.json",
+      "sha256": "339f1cddf605e067745e5a4e9393ddc9bdc6a062de82c7ebae1092cd65f7209e"
+    },
+    {
+      "path": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g3-upper.json",
+      "sha256": "96e8ffc8ca547a3dddfb40e8c8a98951f8a0d1d2a1a735fd988d1e091e76df63"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-asking-advice-v1.json",
+      "sha256": "7f442cc2f8c177a567245254b7a2545d20db00e8430f6b6614b51adf389b9c3d"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-asking-v1.json",
+      "sha256": "837f260f0050c6d68d96a9b6cc1f26f6a71f06970b6e2740e29bcaa5813a0ca2"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-autumn-poems-v1.json",
+      "sha256": "62df3a22ba1622222f0d90532b4c93b777b4fd8246707d6d47a4ce6f9bc5d519"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-autumn-rain-v1.json",
+      "sha256": "05cf12243b36ce949b286bb05ba42eaf863cb9f96614ecb7d0364dc149f4ee6e"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-autumn-sounds-v1.json",
+      "sha256": "a3011a0d1be77263edd7ef8fbdc8b036ac539723f25e57c5fdeed8c9c46e85e0"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-beautiful-place-writing-v1.json",
+      "sha256": "ecd9e08c08c69fc4cb058cdeb2d8eb7a51d5c2507db30e634fc34ef1d9ca4c67"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-bird-v1.json",
+      "sha256": "7da8c93e384bb384e75e2ae2421f171c4f81203c9578e3a80d97dc4c2779679b"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-carrot-v1.json",
+      "sha256": "06a3f5adc79bf85034943f029624d81e3ea80442bdf1bccda5da30e19bf5d410"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-cheese-v1.json",
+      "sha256": "dc5420bdd790fa8501c7304053ff09ee22e2080ea971785cf0fec24f99ab3ab9"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-coarse-bowl-v1.json",
+      "sha256": "a1cc68ed23c537dd2d20fb67184997a4979dfcf4a5bfd5a7ad50cfc194ab1a7b"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-colorful-observation-writing-v1.json",
+      "sha256": "36297091766a7154ce73f60ac98ec1f0fe71f33a8229f718b4b83a53ebc8c018"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-cow-journey-v1.json",
+      "sha256": "bd46ff3ba64f6770061f5d7a57b10a947267cd29ac8aef6d9501c62b126db3b0"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-daqingshu-objectives-v1.json",
+      "sha256": "c0aff9078b7d871e20749f9fac73eb08fa7d109d46c6a8e5472daf6a47909287"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-daqingshu-v1.json",
+      "sha256": "2b35c967cd885c234da4ca46d38e39a65e9849f542125b67a1b1a2bddd2918f0"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-diary-v1.json",
+      "sha256": "c98ad54634dca17c6b26257c750ad6649d5d5f7ac333404dd649480893e29fce"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-dog-v1.json",
+      "sha256": "298263adb7469288becc534b73665cc62a214a349b2a05f190264bcd4a895199"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-fairy-composing-v1.json",
+      "sha256": "40d2b33e6b6cdcdccb9c5fe492ccdae811f56efcebb5fc8f54089f64a8066b64"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-fairy-reading-v1.json",
+      "sha256": "f45b01f0a2f5681fe39237c1ada6fa1814d96009de2ae4435cec286177b5edc2"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-father-forest-birds-v1.json",
+      "sha256": "40e42f14ecb21f7df80fab32ec803e1e7dbaec4fb89683900800f0bda3e4cfcb"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-flowers-v1.json",
+      "sha256": "ca09930380ab5dea892e25d7b11c7fbc885e5826e821ab4a4f9d6b71312634c7"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-eight-v1.json",
+      "sha256": "f829c3e92bdc6ca6dc5b04bf2e31975d12018eacac934b5d2f051ed1e3cf489d"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-four-v1.json",
+      "sha256": "865412e2fadecab37ee18faaa94da3b74f59a1eb6587109695704bc3a3d84c1f"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-seven-v1.json",
+      "sha256": "7fc0faba760ae0b345c55444068599b13f04a8169b7d707d116874badd94508b"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-six-v1.json",
+      "sha256": "00248e2791c8c2c6cb7598ff3493b83a89af893a917a0b68f856dffab73dccd7"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-three-v1.json",
+      "sha256": "d16be7ddaa2eb4f281c0a9003d990f27dbd84b2c860f4715f26816b37c99c98b"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-two-v1.json",
+      "sha256": "130b6a9828ad783f107945c5a61e9d3a65f91d6a119c822ccc22b7bc3e2aff08"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-v1.json",
+      "sha256": "6e206866a74c30cea1f472db5e96c271c4705a468086a47a2f36a94739db29ec"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-golden-grass-v1.json",
+      "sha256": "91a81a264da82de66e12f555e3495009c35c4cbfe8d19017b1d628e0770ccab9"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-grey-sparrows-v1.json",
+      "sha256": "5e1cbc4582f367b22435f1488c87eec611903789d975151200c67fcfdc30dc7b"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-happy-play-writing-v1.json",
+      "sha256": "aa518bb80ec4f635d77d96ae8047b95f8d83c1e3a5ba47f4dd958a0341fa0572"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-landscape-poems-v1.json",
+      "sha256": "844e4c209e3c38525d76b271c3d641913b241f38b964487fb48a133c9ab94e61"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-matches-v1.json",
+      "sha256": "befb7e68c44525b5eeb92ff05f12ea6b6c9692cf900d48700768230053dc6b6e"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-name-story-v1.json",
+      "sha256": "4d6180c855581e3e733cea0a1aed86482d83ace18ad81dcad56d9975ce40e478"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-nature-book-v1.json",
+      "sha256": "2bfb9c9c5b0c1c871481acb4fd27dd6b32207a77d215317ffdcc158c9e3fabd8"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-nature-sounds-v1.json",
+      "sha256": "184b38af03a88c16d658b1d96512799fa1160343270aaab786057c5cbb983e05"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-observation-examples-v1.json",
+      "sha256": "8526eaab588b98f912691fd0d95ec176cc28dcf245414c7ae033524fd535bd38"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-old-house-v1.json",
+      "sha256": "5be6862e67b6d52f05bad540373af7f9bee1523159b4fc8ea5e38edc1b35a835"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-one-idea-writing-v1.json",
+      "sha256": "dd590989d8c930435dad7a203663eb1c166e1da11b0d7f00c534302e40adfeaf"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-pavement-v1.json",
+      "sha256": "128746a92f2e5d07e6dafacce022b7a67dbbb9e2caee7e5a5594c4fcac4bf165"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-portrait-v1.json",
+      "sha256": "4301a1c55a272d5fdcbb29bc6c2ac289e83435633e1a3d386d1a5013d1f49cd0"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-seaside-v1.json",
+      "sha256": "9e8158a97e80676de5fd04be218995be6681a65834ece433c6a9fa7ce8da78d2"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-simaguang-v1.json",
+      "sha256": "5dd858f0c98a62c61978de1668d18beeaeb48035546a2ae7e88794ba1029996d"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-small-things-v1.json",
+      "sha256": "0eda8746dd85ea7f61ae7331fbff49388c382ccf7c8cc6c11812d97a61d042dc"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-story-continuation-v1.json",
+      "sha256": "300dfb2097632a8c712277970a2b5a08bd739485e7c137cb897b4583fe6ef70c"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-summer-v1.json",
+      "sha256": "aa9a512bbb66a72a15c4786715a4de52b3a6f995514b2255c4215b4e1bcf9c91"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-surgery-battlefield-v1.json",
+      "sha256": "33c6134059fc0339d9e8c504886ff669290ef87add21d55a895a7b66ced686b8"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-tree-journey-v1.json",
+      "sha256": "226852b97391998c41ef6af082726cb24f7b095ec8178d0ff119d232c27ce447"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-xiaoxingan-v1.json",
+      "sha256": "d91e4baaae8d9647e632b0fca409a355ad9a2e11ad24dff7635177fd699a8725"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-xisha-v1.json",
+      "sha256": "5b5b288171e95a726381fed68f8f55ad88cbfcac8ee1e537d0c58f2f1524a76d"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-autumn-activities-v1.json",
+      "sha256": "360727ee0e488e7c1c75ee40525e6a741bbf97f17b68eacaad199841be8e70c1"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-autumn-v1.json",
+      "sha256": "5ce81913a0eb3bad5ca94583a19a0a2918c1e1cfe04afd7bfbb27a4bd5ed1bb0"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-bird-v1.json",
+      "sha256": "a407d5d7a54aee0c05538c57ca553bc0027045f82a8b5bc82b6612ddc97be077"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-care-final-v1.json",
+      "sha256": "1810ff74f99276ad4ae2878e498c6b1c9a08cb9b473d70621d4231eab1b382d8"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-care-first-v1.json",
+      "sha256": "a0093f9713ef1d0709ff76784211dab39ed2b43890aa485ca0767c4e74793f31"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-dog-v1.json",
+      "sha256": "386e4dd695a31168d1585aadec563be8a72eba1949e9e7efe311ce175b6f86a4"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-fairy-activities-v1.json",
+      "sha256": "7e06d64e9e2fab0b8203d31c8ebef1dc0e6c16f0fbd2f33ed401e6edfd55b95d"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-fairy-first-v1.json",
+      "sha256": "042c077b33e2a9a6585e4d487af50554aa07886ccd538c541b479b710fb1a415"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-fairy-next-v1.json",
+      "sha256": "4572f31e5a3bb838e8aeac26c77fa84e23c94b021580614929b703454407d9e2"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-following-v1.json",
+      "sha256": "a5571d7c2b0ddd680b0b322437751bff9276fb3b2dafd08a50fdbbcba9ffd458"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-landscape-poems-v1.json",
+      "sha256": "a09a2271621b2d11e8d02712c6640d9482472c15fd3bd112ab77791a60af8e27"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-landscape-unit-v1.json",
+      "sha256": "c6c2351a4dcbd775e161b04831f03371884f8154da5af76bd02c553b30e5dabd"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-name-story-v1.json",
+      "sha256": "80a3367122c9a17bf9b8720fdcb0e5831af3f9d059b94ffa64cee853c18cbb5c"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-nature-sounds-v1.json",
+      "sha256": "7848eaa6c7adf096cc289736b2236d9bbc199f22c5b72f51b90f6e22e8f840e6"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-nature-unit-v1.json",
+      "sha256": "2bfea55ba5973244b5401606a9e16b80be0d40bce92ea4a9b8e03fd89c8efc28"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-observation-final-v1.json",
+      "sha256": "51f1b3e9e67f8f3fcb93cf7b1c270d36e91d0b197b4af40bffe6aaae9131ea19"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-prediction-final-v1.json",
+      "sha256": "c28246eb1a2462425fc639a2542d128d738e75cb523f86a1a64ce959ffc1dfca"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-prediction-first-v1.json",
+      "sha256": "8ee1e8bcc5aa5e9d24d02b6ccd348dceceff4f9eef7e7c10505e3d60244cc513"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-unit-activities-v1.json",
+      "sha256": "bfca728137f10181bab3512af5c10c0767e09446c34b17d93ab84485c88c02ff"
+    },
+    {
+      "path": "data/qa/block-four-content-source-first/first-followups-book-audit.private.json",
+      "sha256": "5613b47830ac0b13f83cad4f0e18f9d30bca010a8e04b70934af8eaa0574f0ab"
+    }
+  ],
+  "totals": {
+    "registeredInstructionalEntries": 48,
+    "candidateFiles": 48,
+    "uniquelyMatchedEntries": 48,
+    "checkedCitations": 127,
+    "definitionCandidates": 237,
+    "followingBoundEntries": 47,
+    "followingCandidateQuestions": 2079,
+    "firstLessonFollowupCandidatesSeparatelyAccounted": 44,
+    "firstLessonFollowupCountNotRevalidatedHere": false
+  },
+  "firstFollowups": {
+    "format": "study-first-source-followup-candidate-v1",
+    "input": "data/qa/block-four-content-source-first/first-followups-book-audit.private.json",
+    "inputSha256": "5613b47830ac0b13f83cad4f0e18f9d30bca010a8e04b70934af8eaa0574f0ab",
+    "questions": 44,
+    "proposedStructures": 32,
+    "targetCount": 8,
+    "rawPacketLocalOnly": true,
+    "countAndTargetIdentityChecked": true,
+    "notARepeatOfEarlierHttpTest": true
+  },
+  "lessons": [
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry1",
+      "name": "大青树下的小学",
+      "file": "resources/curriculum/source-lessons/chinese-g3-daqingshu-v1.json",
+      "range": {
+        "start": 7,
+        "end": 9
+      },
+      "targets": 8,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [],
+      "followingQuestions": 0,
+      "firstLessonFollowupsUseSeparateProtocol": true,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry2",
+      "name": "花的学校",
+      "file": "resources/curriculum/source-lessons/chinese-g3-flowers-v1.json",
+      "range": {
+        "start": 10,
+        "end": 11
+      },
+      "targets": 8,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-following-v1.json"
+      ],
+      "followingQuestions": 56,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry3",
+      "name": "不懂就要问",
+      "file": "resources/curriculum/source-lessons/chinese-g3-asking-v1.json",
+      "range": {
+        "start": 12,
+        "end": 13
+      },
+      "targets": 7,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-following-v1.json"
+      ],
+      "followingQuestions": 49,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry4",
+      "name": "口语交际：我的暑假生活",
+      "file": "resources/curriculum/source-lessons/chinese-g3-summer-v1.json",
+      "range": {
+        "start": 14,
+        "end": 14
+      },
+      "targets": 5,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-unit-activities-v1.json"
+      ],
+      "followingQuestions": 35,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry5",
+      "name": "习作：猜猜他是谁",
+      "file": "resources/curriculum/source-lessons/chinese-g3-portrait-v1.json",
+      "range": {
+        "start": 15,
+        "end": 15
+      },
+      "targets": 5,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-unit-activities-v1.json"
+      ],
+      "followingQuestions": 35,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry6",
+      "name": "语文园地",
+      "file": "resources/curriculum/source-lessons/chinese-g3-garden-v1.json",
+      "range": {
+        "start": 16,
+        "end": 17
+      },
+      "targets": 6,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-unit-activities-v1.json"
+      ],
+      "followingQuestions": 42,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry1",
+      "name": "古诗三首",
+      "file": "resources/curriculum/source-lessons/chinese-g3-autumn-poems-v1.json",
+      "range": {
+        "start": 19,
+        "end": 20
+      },
+      "targets": 6,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-autumn-v1.json"
+      ],
+      "followingQuestions": 42,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry2",
+      "name": "铺满金色巴掌的水泥道",
+      "file": "resources/curriculum/source-lessons/chinese-g3-pavement-v1.json",
+      "range": {
+        "start": 21,
+        "end": 23
+      },
+      "targets": 8,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-autumn-v1.json"
+      ],
+      "followingQuestions": 56,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry3",
+      "name": "秋天的雨",
+      "file": "resources/curriculum/source-lessons/chinese-g3-autumn-rain-v1.json",
+      "range": {
+        "start": 24,
+        "end": 26
+      },
+      "targets": 7,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-autumn-v1.json"
+      ],
+      "followingQuestions": 49,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry4",
+      "name": "听听，秋的声音",
+      "file": "resources/curriculum/source-lessons/chinese-g3-autumn-sounds-v1.json",
+      "range": {
+        "start": 27,
+        "end": 28
+      },
+      "targets": 5,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-autumn-activities-v1.json"
+      ],
+      "followingQuestions": 35,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry5",
+      "name": "习作：写日记",
+      "file": "resources/curriculum/source-lessons/chinese-g3-diary-v1.json",
+      "range": {
+        "start": 29,
+        "end": 29
+      },
+      "targets": 5,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-autumn-activities-v1.json"
+      ],
+      "followingQuestions": 35,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry6",
+      "name": "语文园地",
+      "file": "resources/curriculum/source-lessons/chinese-g3-garden-two-v1.json",
+      "range": {
+        "start": 30,
+        "end": 31
+      },
+      "targets": 5,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-autumn-activities-v1.json"
+      ],
+      "followingQuestions": 35,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry1",
+      "name": "卖火柴的小女孩",
+      "file": "resources/curriculum/source-lessons/chinese-g3-matches-v1.json",
+      "range": {
+        "start": 33,
+        "end": 37
+      },
+      "targets": 8,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-fairy-first-v1.json"
+      ],
+      "followingQuestions": 56,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry2",
+      "name": "那一定会很好",
+      "file": "resources/curriculum/source-lessons/chinese-g3-tree-journey-v1.json",
+      "range": {
+        "start": 38,
+        "end": 39
+      },
+      "targets": 6,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-fairy-first-v1.json"
+      ],
+      "followingQuestions": 42,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry3",
+      "name": "在牛肚子里旅行",
+      "file": "resources/curriculum/source-lessons/chinese-g3-cow-journey-v1.json",
+      "range": {
+        "start": 40,
+        "end": 42
+      },
+      "targets": 8,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-fairy-next-v1.json"
+      ],
+      "followingQuestions": 56,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry4",
+      "name": "一块奶酪",
+      "file": "resources/curriculum/source-lessons/chinese-g3-cheese-v1.json",
+      "range": {
+        "start": 43,
+        "end": 44
+      },
+      "targets": 5,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-fairy-next-v1.json"
+      ],
+      "followingQuestions": 35,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry5",
+      "name": "习作：我来编童话",
+      "file": "resources/curriculum/source-lessons/chinese-g3-fairy-composing-v1.json",
+      "range": {
+        "start": 45,
+        "end": 45
+      },
+      "targets": 5,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-fairy-activities-v1.json"
+      ],
+      "followingQuestions": 35,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry6",
+      "name": "语文园地",
+      "file": "resources/curriculum/source-lessons/chinese-g3-garden-three-v1.json",
+      "range": {
+        "start": 46,
+        "end": 47
+      },
+      "targets": 6,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-fairy-activities-v1.json"
+      ],
+      "followingQuestions": 42,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry7",
+      "name": "快乐读书吧：在那奇妙的王国里",
+      "file": "resources/curriculum/source-lessons/chinese-g3-fairy-reading-v1.json",
+      "range": {
+        "start": 48,
+        "end": 49
+      },
+      "targets": 5,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-fairy-activities-v1.json"
+      ],
+      "followingQuestions": 35,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit4:entry1",
+      "name": "总也倒不了的老屋",
+      "file": "resources/curriculum/source-lessons/chinese-g3-old-house-v1.json",
+      "range": {
+        "start": 51,
+        "end": 54
+      },
+      "targets": 7,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-prediction-first-v1.json"
+      ],
+      "followingQuestions": 49,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit4:entry2",
+      "name": "胡萝卜先生的长胡子",
+      "file": "resources/curriculum/source-lessons/chinese-g3-carrot-v1.json",
+      "range": {
+        "start": 55,
+        "end": 57
+      },
+      "targets": 6,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-prediction-first-v1.json"
+      ],
+      "followingQuestions": 42,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit4:entry3",
+      "name": "小狗学叫",
+      "file": "resources/curriculum/source-lessons/chinese-g3-dog-v1.json",
+      "range": {
+        "start": 58,
+        "end": 63
+      },
+      "targets": 7,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-dog-v1.json"
+      ],
+      "followingQuestions": 49,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit4:entry4",
+      "name": "口语交际：名字里的故事",
+      "file": "resources/curriculum/source-lessons/chinese-g3-name-story-v1.json",
+      "range": {
+        "start": 64,
+        "end": 64
+      },
+      "targets": 5,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-name-story-v1.json"
+      ],
+      "followingQuestions": 35,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit4:entry5",
+      "name": "习作：续写故事",
+      "file": "resources/curriculum/source-lessons/chinese-g3-story-continuation-v1.json",
+      "range": {
+        "start": 65,
+        "end": 65
+      },
+      "targets": 5,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-prediction-final-v1.json"
+      ],
+      "followingQuestions": 35,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit4:entry6",
+      "name": "语文园地",
+      "file": "resources/curriculum/source-lessons/chinese-g3-garden-four-v1.json",
+      "range": {
+        "start": 66,
+        "end": 67
+      },
+      "targets": 8,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-prediction-final-v1.json"
+      ],
+      "followingQuestions": 56,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit5:entry1",
+      "name": "搭船的鸟",
+      "file": "resources/curriculum/source-lessons/chinese-g3-bird-v1.json",
+      "range": {
+        "start": 69,
+        "end": 70
+      },
+      "targets": 7,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-bird-v1.json"
+      ],
+      "followingQuestions": 49,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit5:entry2",
+      "name": "金色的草地",
+      "file": "resources/curriculum/source-lessons/chinese-g3-golden-grass-v1.json",
+      "range": {
+        "start": 71,
+        "end": 73
+      },
+      "targets": 7,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-observation-final-v1.json"
+      ],
+      "followingQuestions": 49,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit5:entry3",
+      "name": "习作例文",
+      "file": "resources/curriculum/source-lessons/chinese-g3-observation-examples-v1.json",
+      "range": {
+        "start": 74,
+        "end": 76
+      },
+      "targets": 6,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-observation-final-v1.json"
+      ],
+      "followingQuestions": 42,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit5:entry4",
+      "name": "习作：我们眼中的缤纷世界",
+      "file": "resources/curriculum/source-lessons/chinese-g3-colorful-observation-writing-v1.json",
+      "range": {
+        "start": 77,
+        "end": 77
+      },
+      "targets": 5,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-observation-final-v1.json"
+      ],
+      "followingQuestions": 35,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry1",
+      "name": "古诗三首",
+      "file": "resources/curriculum/source-lessons/chinese-g3-landscape-poems-v1.json",
+      "range": {
+        "start": 79,
+        "end": 80
+      },
+      "targets": 8,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-landscape-poems-v1.json"
+      ],
+      "followingQuestions": 56,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry2",
+      "name": "富饶的西沙群岛",
+      "file": "resources/curriculum/source-lessons/chinese-g3-xisha-v1.json",
+      "range": {
+        "start": 81,
+        "end": 83
+      },
+      "targets": 7,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-landscape-unit-v1.json"
+      ],
+      "followingQuestions": 49,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry3",
+      "name": "海滨小城",
+      "file": "resources/curriculum/source-lessons/chinese-g3-seaside-v1.json",
+      "range": {
+        "start": 84,
+        "end": 85
+      },
+      "targets": 6,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-landscape-unit-v1.json"
+      ],
+      "followingQuestions": 42,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry4",
+      "name": "美丽的小兴安岭",
+      "file": "resources/curriculum/source-lessons/chinese-g3-xiaoxingan-v1.json",
+      "range": {
+        "start": 86,
+        "end": 88
+      },
+      "targets": 6,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-landscape-unit-v1.json"
+      ],
+      "followingQuestions": 42,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry5",
+      "name": "习作：这儿真美",
+      "file": "resources/curriculum/source-lessons/chinese-g3-beautiful-place-writing-v1.json",
+      "range": {
+        "start": 89,
+        "end": 89
+      },
+      "targets": 5,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-landscape-unit-v1.json"
+      ],
+      "followingQuestions": 35,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry6",
+      "name": "语文园地",
+      "file": "resources/curriculum/source-lessons/chinese-g3-garden-six-v1.json",
+      "range": {
+        "start": 90,
+        "end": 91
+      },
+      "targets": 7,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-landscape-unit-v1.json"
+      ],
+      "followingQuestions": 49,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit7:entry1",
+      "name": "大自然的声音",
+      "file": "resources/curriculum/source-lessons/chinese-g3-nature-sounds-v1.json",
+      "range": {
+        "start": 93,
+        "end": 95
+      },
+      "targets": 8,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-nature-sounds-v1.json"
+      ],
+      "followingQuestions": 56,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit7:entry2",
+      "name": "读不完的大书",
+      "file": "resources/curriculum/source-lessons/chinese-g3-nature-book-v1.json",
+      "range": {
+        "start": 96,
+        "end": 98
+      },
+      "targets": 7,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-nature-unit-v1.json"
+      ],
+      "followingQuestions": 49,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit7:entry3",
+      "name": "父亲、树林和鸟",
+      "file": "resources/curriculum/source-lessons/chinese-g3-father-forest-birds-v1.json",
+      "range": {
+        "start": 99,
+        "end": 101
+      },
+      "targets": 7,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-nature-unit-v1.json"
+      ],
+      "followingQuestions": 49,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit7:entry4",
+      "name": "口语交际：身边的“小事”",
+      "file": "resources/curriculum/source-lessons/chinese-g3-small-things-v1.json",
+      "range": {
+        "start": 102,
+        "end": 102
+      },
+      "targets": 5,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-nature-unit-v1.json"
+      ],
+      "followingQuestions": 35,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit7:entry5",
+      "name": "习作：我有一个想法",
+      "file": "resources/curriculum/source-lessons/chinese-g3-one-idea-writing-v1.json",
+      "range": {
+        "start": 103,
+        "end": 103
+      },
+      "targets": 5,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-nature-unit-v1.json"
+      ],
+      "followingQuestions": 35,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit7:entry6",
+      "name": "语文园地",
+      "file": "resources/curriculum/source-lessons/chinese-g3-garden-seven-v1.json",
+      "range": {
+        "start": 104,
+        "end": 105
+      },
+      "targets": 7,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-nature-unit-v1.json"
+      ],
+      "followingQuestions": 49,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry1",
+      "name": "司马光",
+      "file": "resources/curriculum/source-lessons/chinese-g3-simaguang-v1.json",
+      "range": {
+        "start": 107,
+        "end": 107
+      },
+      "targets": 7,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-care-first-v1.json"
+      ],
+      "followingQuestions": 49,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry2",
+      "name": "灰雀",
+      "file": "resources/curriculum/source-lessons/chinese-g3-grey-sparrows-v1.json",
+      "range": {
+        "start": 108,
+        "end": 109
+      },
+      "targets": 8,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-care-first-v1.json"
+      ],
+      "followingQuestions": 56,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry3",
+      "name": "手术台就是阵地",
+      "file": "resources/curriculum/source-lessons/chinese-g3-surgery-battlefield-v1.json",
+      "range": {
+        "start": 110,
+        "end": 112
+      },
+      "targets": 7,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-care-final-v1.json"
+      ],
+      "followingQuestions": 49,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry4",
+      "name": "一个粗瓷大碗",
+      "file": "resources/curriculum/source-lessons/chinese-g3-coarse-bowl-v1.json",
+      "range": {
+        "start": 113,
+        "end": 114
+      },
+      "targets": 6,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-care-final-v1.json"
+      ],
+      "followingQuestions": 42,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry5",
+      "name": "口语交际：请教",
+      "file": "resources/curriculum/source-lessons/chinese-g3-asking-advice-v1.json",
+      "range": {
+        "start": 115,
+        "end": 115
+      },
+      "targets": 5,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-care-final-v1.json"
+      ],
+      "followingQuestions": 35,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry6",
+      "name": "习作：那次玩得真高兴",
+      "file": "resources/curriculum/source-lessons/chinese-g3-happy-play-writing-v1.json",
+      "range": {
+        "start": 116,
+        "end": 116
+      },
+      "targets": 6,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-care-final-v1.json"
+      ],
+      "followingQuestions": 42,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    },
+    {
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry7",
+      "name": "语文园地",
+      "file": "resources/curriculum/source-lessons/chinese-g3-garden-eight-v1.json",
+      "range": {
+        "start": 117,
+        "end": 118
+      },
+      "targets": 7,
+      "sourceReviewMetadataValid": true,
+      "followingBundleReferences": [
+        "resources/curriculum/source-lesson-materials/chinese-g3-care-final-v1.json"
+      ],
+      "followingQuestions": 49,
+      "firstLessonFollowupsUseSeparateProtocol": false,
+      "teacherReviewed": false,
+      "published": false
+    }
+  ],
+  "issues": [],
+  "boundaries": {
+    "sourceReviewMetadataIsNotHumanReadingProof": true,
+    "teacherAcceptanceVerified": false,
+    "scoringApproved": false,
+    "familyIndependenceApproved": false,
+    "fullyStockedRetentionApproved": false,
+    "databaseWritten": false,
+    "learnerRecordsWritten": false,
+    "publicationPerformed": false
+  }
+}

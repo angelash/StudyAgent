@@ -1,0 +1,191 @@
+{
+  "format": "study-block-four-care-final-and-book-candidates-v1",
+  "at": "2026-11-02T14:49:43.951Z",
+  "baseCommit": "01f32e3ad15dcbad520fb83630cfa97f5defaa7b",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "newDrafts": 5,
+  "targetCounts": [
+    7,
+    6,
+    5,
+    6,
+    7
+  ],
+  "newDefinitionCandidates": 26,
+  "newCandidateQuestions": 217,
+  "purposeCounts": {
+    "immediate": 93,
+    "proposedRetention": 124
+  },
+  "modes": {
+    "audio_record": 56,
+    "image_upload": 7,
+    "short_answer": 154
+  },
+  "source": {
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "physicalPages": [
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118
+    ],
+    "selectedPagesVisuallyReviewed": true,
+    "originalImagesAndModernFullTextCommitted": false,
+    "completePublicDomainMaximsInReadingBody": 4,
+    "recognitionCountsForProse": [
+      12,
+      8
+    ],
+    "handwritingCountsForProse": [
+      11,
+      0
+    ],
+    "realPeerFeedbackOrPersonalExperienceNotInvented": true
+  },
+  "validation": {
+    "http": [
+      "checks/care-final-prose-materials-http-first.json",
+      "checks/care-final-activities-materials-http-first.json"
+    ],
+    "coldReadQuestions": [
+      91,
+      126
+    ],
+    "originalCommandsReplayed": true,
+    "incompletePublicationRejected": true,
+    "browser": {
+      "report": "browser/receipt.json",
+      "buildId": "ELFqjEh0ZktmjW7mcCIOL",
+      "passed": 7,
+      "failed": 0,
+      "screenshotsVisuallyReviewed": 11
+    },
+    "classicalReading": {
+      "completePassages": 1,
+      "negativeCasesRejected": 2,
+      "ancientMaxims": 4,
+      "maximNegativeCasesRejected": 5
+    },
+    "regeneration": {
+      "inputsAndOutputsUnchanged": 8,
+      "privateQaFilesRequired": false
+    },
+    "gapCounts": [
+      {
+        "file": "chinese-g3-surgery-battlefield-v1.json",
+        "gaps": 90,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      },
+      {
+        "file": "chinese-g3-coarse-bowl-v1.json",
+        "gaps": 77,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      },
+      {
+        "file": "chinese-g3-asking-advice-v1.json",
+        "gaps": 64,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      },
+      {
+        "file": "chinese-g3-happy-play-writing-v1.json",
+        "gaps": 77,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      },
+      {
+        "file": "chinese-g3-garden-eight-v1.json",
+        "gaps": 90,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      }
+    ],
+    "wholeBook": {
+      "report": "checks/chinese-g3-upper-candidate-audit-with-first-second.json",
+      "entries": 48,
+      "candidates": 48,
+      "exactQuotes": 127,
+      "definitionCandidates": 237,
+      "followingEntries": 47,
+      "followingQuestions": 2079,
+      "separateFirstLessonQuestions": 44,
+      "separateFirstRecountIsNotNewHttpValidation": true,
+      "metadataNotHumanReadingProof": true
+    }
+  },
+  "reusedEngineering": {
+    "fullApi": {
+      "passed": 3051,
+      "failed": 0,
+      "conditionalSkips": 131
+    },
+    "applicationAndContractsUnchanged": true,
+    "evidence": "../block-four-reading-preview-and-dog/receipt.json",
+    "countsNotAddedToThisContentBatch": true
+  },
+  "boundaries": {
+    "teacherReviewed": false,
+    "scoringReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0,
+    "published": 0,
+    "adoptions": 0,
+    "learnerResponses": 0,
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "formal": {
+    "schema": 24,
+    "revision": 188,
+    "protectedFiles": 1063
+  },
+  "remaining": {
+    "registeredBooks": 449,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 101,
+    "booksWithDirectory": 113,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3512,
+    "lessonsWithCandidateFiles": 48,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3464,
+    "authoredFollowingMaterialCandidates": 2079,
+    "materialBundlesWithStaleDraftIdentity": 0,
+    "firstLesson44FollowupsNotIncludedIn2079": true,
+    "next": "Verify exact next-book original and edition; continue all remaining textbook/GESP content, semantic and scoring review, independent families and sufficient retention stock, then block5."
+  }
+}

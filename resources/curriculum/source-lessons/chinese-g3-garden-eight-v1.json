@@ -1,0 +1,400 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry7",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 117,
+    "pageEnd": 118,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:garden-eight-silent",
+      "version": 1,
+      "name": "带问题默读与标记求解",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "阅读方法",
+      "objective": "默读时带问题思考，标记不懂处并联系上下文或请教",
+      "successCriterion": "实际范围和未解问题真实，不以口头自报或答对一题证明全程；尽量不用手指不变禁用必要辅助",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:garden-eight-reading",
+      "version": 1,
+      "name": "园地八五字语境识读",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与阅读",
+      "objective": "在当前眼部和看的词语中识读眨瞪瞅眶睹五字",
+      "successCriterion": "本人声音覆盖眨zhǎ瞪dèng瞅chǒu眶kuàng睹dǔ，原词已有字不机械全算新增",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:garden-eight-eye",
+      "version": 1,
+      "name": "目旁字与当前词义线索",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与词义",
+      "objective": "联系眨眼眼眶目瞪口呆耳闻目睹等词观察目旁含义",
+      "successCriterion": "看或眼部线索有当前词支持，不以同旁推同音同义，不把字旁代具体词义与医学推断",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:garden-eight-words",
+      "version": 1,
+      "name": "陆续继续连续的语境差别",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "词语运用",
+      "objective": "联系原三句比较先后出现、接着做与持续未断的表达，再选一词造句",
+      "successCriterion": "词义与当前主体时间条件相容，不无条件替换或强制三个全造句，方法说明不只背标签",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:garden-eight-shopping",
+      "version": 1,
+      "name": "分类整理完整购物清单",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "分类与表达",
+      "objective": "按一致可解释标准分类原14项物品，方便检查遗漏",
+      "successCriterion": "全部项目保留且不重复，合理分类可不同，虚构情境不当本人真实采购或执行购买",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:garden-eight-maxims",
+      "version": 1,
+      "name": "四条古代格言阅读与理解",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "经典积累",
+      "objective": "实际读当前四句并联系具体情境说明关爱尊重和友善表达",
+      "successCriterion": "格言与出处对应，读音有据；比喻和价值倡议不当字面伤害操作、强迫顺从或学生永不出错要求",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:garden-eight-silent",
+    "source:chinese:g3:02915a7d:garden-eight-reading",
+    "source:chinese:g3:02915a7d:garden-eight-eye",
+    "source:chinese:g3:02915a7d:garden-eight-words",
+    "source:chinese:g3:02915a7d:garden-eight-shopping",
+    "source:chinese:g3:02915a7d:garden-eight-maxims",
+    "core:chinese:detail-evidence"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "准确原件所选物理页已逐张核查正文、脚注、字表和任务范围；AI来源核对不等教师、评分或独立题族审核。",
+    "pages": [
+      {
+        "page": 117,
+        "visualChecked": true,
+        "statement": "已看默读不出声尽量不用手指、圈疑问联系上下文或请教、5识眨瞪瞅眶睹与原词。"
+      },
+      {
+        "page": 118,
+        "visualChecked": true,
+        "statement": "已看陆续继续连续三句与选一造句、14项购物清单分类、四条古代格言及论语墨子孟子荀子出处，无新增全文默写。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "语文园地八",
+    "activityKind": "language_garden",
+    "recognitionCharacters": [
+      "眨",
+      "瞪",
+      "瞅",
+      "眶",
+      "睹"
+    ],
+    "writingCharacters": [],
+    "silentReadingPractices": [
+      "不出声",
+      "尽量不用手指",
+      "圈出不认识或不理解处",
+      "带问题思考",
+      "联系上下文或请教"
+    ],
+    "necessaryReadingAssistanceNotForbidden": true,
+    "contextWords": [
+      "陆续",
+      "继续",
+      "连续"
+    ],
+    "sentenceWritingRequiredWords": 1,
+    "shoppingItems": [
+      "鲫鱼",
+      "速冻饺子",
+      "馒头",
+      "橙子",
+      "毛毯",
+      "牙刷",
+      "菜板",
+      "饼干",
+      "充电器",
+      "枕头",
+      "垃圾桶",
+      "棉拖鞋",
+      "沐浴液",
+      "衣架"
+    ],
+    "shoppingSimulationOnly": true,
+    "categorySolutionsMayVary": true,
+    "publicDomainMaxims": [
+      {
+        "text": "不迁怒，不贰过。",
+        "source": "《论语》"
+      },
+      {
+        "text": "爱人若爱其身。",
+        "source": "《墨子》"
+      },
+      {
+        "text": "仁者爱人，有礼者敬人。",
+        "source": "《孟子》"
+      },
+      {
+        "text": "与人善言，暖于布帛；伤人以言，深于矛戟。",
+        "source": "《荀子》"
+      }
+    ],
+    "extraFullDictationAdded": false,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "语文园地八：默读带问题，词语与清单看具体关系",
+    "activation": {
+      "prompt": "原创卡：几位同学先后到门口，一人接着刚才的整理做下去，另一人一段时间没有停。怎样分这三种时间关系？先看主体和条件，再选词。",
+      "expectedObservation": "能比较先后、接着与持续，知道形式相近不保证同一表达重点。",
+      "bridge": "园地把默读、目旁识字、词语比较、分类清单和古代格言各自练习，具体材料决定判断。"
+    },
+    "concept": {
+      "explanation": "日积月累公版原句\n不迁怒，不贰过。——《论语》\n爱人若爱其身。——《墨子》\n仁者爱人，有礼者敬人。——《孟子》\n与人善言，暖于布帛；伤人以言，深于矛戟。——《荀子》\n\n园地学习\n默读不出声，尽量不用手指，带着问题边读边想，把不认识的字或不理解处标记出来，读后联系上下文或请教；方法帮助理解，不能只看速度或强行禁止确有需要的辅助，也不从一个答对推整段过程已证实。五个新识字是眨瞪瞅眶睹，原图词中还有目睁等字，范围不混。目旁常提示与眼或看有关，但瞅是看、眼眶是眼周部位，具体义仍回词语，不能同旁就判同音同义或作医学结论。陆续重先后相继，继续重接着先前的事做，连续重在一段期间持续未断；原三句主体和时间关系不同，替换会改变重点或不相容，不能不看条件随意互换，也不宣称任何新语境都绝无替换可能。原页选一个词造句，不强制三个全写。购物清单按物品用途等合理标准分类，十四项逐一核对，分类名称可不同但一致可解释，不漏不重；这是给定情境整理，不执行真实购买或冒充本人家庭清单。四条古代格言联系迁怒、改过、关爱尊重与友善表达理解，出处分别核；不贰过强调吸取教训，不是儿童再犯一次就被判无价值，善言暖与伤言深是表达影响的比较，不当衣物温度或伤害操作。礼貌尊重也不等所有要求都必须顺从。实际读句和理解、真实生活实践分开，本页没有新增全文默写。",
+      "points": [
+        "默读标疑问再用方法求解",
+        "必要辅助和过程证据保留",
+        "五新字与目旁具体词义分清",
+        "陆续继续连续看主体时间",
+        "清单14项完整不重，分类可合理不同",
+        "格言出处和语义核对，不加默写"
+      ]
+    },
+    "example": {
+      "situation": "原创卡：“三位伙伴陆续到来。短谈之后，甲继续整理书架。乙连续十分钟核对书名。”另给三样物品：面包、毛巾、饼干。",
+      "steps": [
+        {
+          "explanation": "三句分别看不同主体与先后、接着、持续，不单按都和时间有关就全换同一个词。",
+          "board": [
+            "陆续：人先后到",
+            "继续：事接着做",
+            "连续：期间未断"
+          ]
+        },
+        {
+          "explanation": "三物可按食物与日用品分类，换其他合理标准也需一致，并核每项一次。",
+          "board": [
+            "标准可说明",
+            "每项放一处",
+            "不漏不重"
+          ]
+        },
+        {
+          "explanation": "原页清单另有14项要完整核，训练卡不补成实际采购，格言另按原句和出处读。",
+          "board": [
+            "练习与原清单分开",
+            "不是实际购买",
+            "不同任务各自留证"
+          ]
+        }
+      ],
+      "conclusion": "具体主体和关系帮助用词，分类标准与完整性帮助清单；形式和数量都不能互代。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "园地八各项核对什么",
+        "headers": [
+          "任务",
+          "依据与实际信息",
+          "避免什么"
+        ],
+        "rows": [
+          [
+            "默读",
+            "问题标记、前后线索与真实范围",
+            "答对一题不代全程，必要辅助不禁"
+          ],
+          [
+            "五字词义",
+            "本人声音、眼或看的语境",
+            "同旁不判同音同义或新增全表"
+          ],
+          [
+            "三个近义词",
+            "主体与先后接续持续关系",
+            "不无条件互换或强制三词全写"
+          ],
+          [
+            "清单",
+            "14项各一次、合理一致分类",
+            "不能漏重或执行真实购买"
+          ],
+          [
+            "格言",
+            "完整原句、出处和情境理解",
+            "不作字面伤害、绝对服从或默写加码"
+          ]
+        ],
+        "explanation": "任务之间有不同证据，示例和准备不自动变本人生活实践。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "默读越快越好，所有辅助都必须禁用，读懂一问就说全程完成。",
+        "alternatives": [
+          "可能只抓方法形式或局部结果。"
+        ],
+        "verification": "核原页尽量表述、真实范围和标记问题的解决依据。",
+        "correctiveFeedback": "方法服务理解，必要辅助与未读未解如实保留。"
+      },
+      {
+        "observation": "三词无条件互换，所有目旁字都同音同义。",
+        "alternatives": [
+          "可能用形式共性代具体语境。"
+        ],
+        "verification": "逐句标主体时间，逐词说明眼部或看的具体关系。",
+        "correctiveFeedback": "相近只是线索，具体条件和词义仍要核。"
+      },
+      {
+        "observation": "清单少一项却分类好看，格言当字面伤害或要求永不出错。",
+        "alternatives": [
+          "可能拿表面完整代真实覆盖与语义。"
+        ],
+        "verification": "逐项核14项与出处，联系关爱尊重和吸取教训解释。",
+        "correctiveFeedback": "完整不漏与合理分类同时看，价值倡议不转为伤害或苛责。"
+      }
+    ],
+    "transfer": {
+      "scenario": "新的原创材料给三种不同时间关系与六件物品清单，分类标准可自定说明。",
+      "prompt": "选贴合词并说明条件，分类后逐项核漏重；再用一个格言解释友善改过的情境。",
+      "expectedStrategy": "关系随材料变化，旧清单旧句不当新事实，生活实践需本人实际而非示例。"
+    },
+    "summary": {
+      "synthesis": "默读带问题并保留实际范围，识字用词看具体意义。清单分类完整，格言读懂出处与关系，未做实践不代填。",
+      "takeaways": [
+        "标记不懂处再求解",
+        "五字逐字实际读",
+        "三词有条件差别",
+        "14项分类不漏重",
+        "格言关爱尊重与改过，不增默写"
+      ]
+    },
+    "citations": [
+      {
+        "page": 117,
+        "quote": "默读时，带着问题边读边思考，能帮助我理\n解内容。",
+        "usedFor": "concept"
+      },
+      {
+        "page": 118,
+        "quote": "一个词语写一句话。",
+        "usedFor": "example"
+      },
+      {
+        "page": 118,
+        "quote": "快过节了，妈妈准备去超市买下面的东西，请你帮她整理一份",
+        "usedFor": "transfer"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:garden-eight-silent",
+        "objective": "默读时带问题思考，标记不懂处并联系上下文或请教",
+        "successCriterion": "实际范围和未解问题真实，不以口头自报或答对一题证明全程；尽量不用手指不变禁用必要辅助"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:garden-eight-reading",
+        "objective": "在当前眼部和看的词语中识读眨瞪瞅眶睹五字",
+        "successCriterion": "本人声音覆盖眨zhǎ瞪dèng瞅chǒu眶kuàng睹dǔ，原词已有字不机械全算新增"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:garden-eight-eye",
+        "objective": "联系眨眼眼眶目瞪口呆耳闻目睹等词观察目旁含义",
+        "successCriterion": "看或眼部线索有当前词支持，不以同旁推同音同义，不把字旁代具体词义与医学推断"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g3:02915a7d:garden-eight-words",
+        "objective": "联系原三句比较先后出现、接着做与持续未断的表达，再选一词造句",
+        "successCriterion": "词义与当前主体时间条件相容，不无条件替换或强制三个全造句，方法说明不只背标签"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:chinese:g3:02915a7d:garden-eight-shopping",
+        "objective": "按一致可解释标准分类原14项物品，方便检查遗漏",
+        "successCriterion": "全部项目保留且不重复，合理分类可不同，虚构情境不当本人真实采购或执行购买"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "source:chinese:g3:02915a7d:garden-eight-maxims",
+        "objective": "实际读当前四句并联系具体情境说明关爱尊重和友善表达",
+        "successCriterion": "格言与出处对应，读音有据；比喻和价值倡议不当字面伤害操作、强迫顺从或学生永不出错要求"
+      },
+      {
+        "id": "goal-7",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "用当前材料具体信息支持判断，分原文、表达与本人实际表现",
+        "successCriterion": "依据和判断关系清楚，声音原稿与帮助保留；未知和未完成不由范例代填"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "先审核目标、评分、独立结构与充分未见材料，再按真实日期安排。每间隔一份样题不当充分库存；原篇已学、帮助和曝光保留，参考与模拟日期不当本人长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "garden-eight",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "现代原页、完整现代课文和现代注释全文不复制进候选；原创讲解配必要短引核对。",
+    "materialStatus": "候选讲解、检查和量规；教师、目标对齐、独立结构、评分金样本和充分保持库存仍待。",
+    "pacing": "识读、写字、朗读、积累和理解表达分次完成，不能由一次短练习推整课全部目标。",
+    "publicDomainMaximBoundary": "Ancient public-domain sayings are in the actual reading body. Modern textbook pages and full annotations remain private; current explanations are original."
+  }
+}
