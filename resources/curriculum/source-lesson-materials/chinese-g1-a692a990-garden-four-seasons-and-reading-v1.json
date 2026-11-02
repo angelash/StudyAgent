@@ -1,0 +1,728 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "garden-four-seasons-and-reading",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-garden-four-seasons-and-reading-v1.json",
+      "sha256": "8ffc77a5ba535241d1e9c0bf6168846ddcf1d50d2f7d6b47602374c674113f9b",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry6",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 68,
+        "pageEnd": 71,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。",
+  "groups": [
+    {
+      "lesson": "garden-four-seasons-and-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-garden4-pairs",
+      "structure": "g1-garden4-paired-words-current-reference",
+      "familyProposal": "a692a990-g1-garden4-paired-words-current-reference",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "成对词语境准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "比较对象参照明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不由词类推兴趣能力",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不一定，大小需当前比较对象，甲相对乙大、相对更大丙小，不能把标签永久套用。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-paired-words-current-reference-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创两个盒子甲大乙小，换成甲与更大丙比较时，甲还一定最大吗？",
+          "answer": "不一定，大小需当前比较对象，甲相对乙大、相对更大丙小，不能把标签永久套用。",
+          "analysis": "不一定，大小需当前比较对象，甲相对乙大、相对更大丙小，不能把标签永久套用。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-paired-words-current-reference-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "书在桌上、球在桌下，这里的上下以什么为参照？",
+          "answer": "以当前桌子为参照，对象和关系明确，不脱离参照任意判断。",
+          "analysis": "以当前桌子为参照，对象和关系明确，不脱离参照任意判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-paired-words-current-reference-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新材料明确门当前关闭，按开关词组怎样描述？",
+          "answer": "门处于关的状态，依据当前材料，不沿用旧的开门例。",
+          "analysis": "门处于关的状态，依据当前材料，不沿用旧的开门例。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-paired-words-current-reference-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "看到男或女字就能判断某人一定喜欢拼图还是画画吗？",
+          "answer": "不能，当前词语不证明个人兴趣或能力，真实偏好需本人自愿说明。",
+          "analysis": "不能，当前词语不证明个人兴趣或能力，真实偏好需本人自愿说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-paired-words-current-reference-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "没有给图例只见纸面右边，就能借南北词确定现实方位吗？",
+          "answer": "不能，需当前方向参照，不能以版面代真实方位。",
+          "analysis": "不能，需当前方向参照，不能以版面代真实方位。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-paired-words-current-reference-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "正反在不同物品语境都必定只有同一含义吗？",
+          "answer": "不必，先明确当前对象与所说面或关系，不能只背一组就省掉语境。",
+          "analysis": "不必，先明确当前对象与所说面或关系，不能只背一组就省掉语境。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-paired-words-current-reference-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "从本件成对词选一组，用明确原创对象解释关系与适用范围。",
+          "answer": "对象、参照和词义对应，不把当前例子扩大到所有物品或个人能力。",
+          "analysis": "对象、参照和词义对应，不把当前例子扩大到所有物品或个人能力。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-four-seasons-and-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-garden4-recognition",
+      "structure": "g1-garden4-six-characters-and-season-words",
+      "familyProposal": "a692a990-g1-garden4-six-characters-and-season-words",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人认读六字与指定词",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前语境读法准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助和识写范围分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "六字与当前词语声音可核，大地中地dì，不机械套上一课de，帮助如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-six-characters-and-season-words-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读男女开关正反六字，再读大地和青蛙两词。",
+          "answer": "六字与当前词语声音可核，大地中地dì，不机械套上一课de，帮助如实。",
+          "analysis": "六字与当前词语声音可核，大地中地dì，不机械套上一课de，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-six-characters-and-season-words-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人比较大地与顽皮地的地。",
+          "answer": "前者dì、后者de，具体词语与声音对应，不按同字就一概同读。",
+          "analysis": "前者dì、后者de，具体词语与声音对应，不按同字就一概同读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-six-characters-and-season-words-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给反女关男正开，本人逐项认读。",
+          "answer": "按当前字形实际读，不顺背旧六字，卡住如实。",
+          "analysis": "按当前字形实际读，不顺背旧六字，卡住如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-six-characters-and-season-words-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只读出四字，另两字怎样说明？",
+          "answer": "保留真实已读与未读，未覆盖待帮助后练，不用熟悉成对词补齐。",
+          "analysis": "保留真实已读与未读，未覆盖待帮助后练，不用熟悉成对词补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-six-characters-and-season-words-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本人读春天夏天秋天冬天，再读一个本件景物词。",
+          "answer": "当前声音词义对应，识读不代真实所在地季节判断。",
+          "analysis": "当前声音词义对应，识读不代真实所在地季节判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-six-characters-and-season-words-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "读会六字，就都列为本课必写吗？",
+          "answer": "不能，必写女开两字另核，识读与手写范围不同。",
+          "analysis": "不能，必写女开两字另核，识读与手写范围不同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-six-characters-and-season-words-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再认六字和一景物词，说实际帮助与未读范围。",
+          "answer": "声音、词义和帮助真实，未写不补成已经手写。",
+          "analysis": "声音、词义和帮助真实，未写不补成已经手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-four-seasons-and-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-garden4-writing",
+      "structure": "g1-garden4-nv-kai-own-writing",
+      "familyProposal": "a692a990-g1-garden4-nv-kai-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖两字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整范形结构对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "真实过程帮助与后改分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "两字本人实际写，完整结构格位对应，键入或范字图不代本人作品。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-nv-kai-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按本件完整范形写女开，上传格中原稿。",
+          "answer": "两字本人实际写，完整结构格位对应，键入或范字图不代本人作品。",
+          "analysis": "两字本人实际写，完整结构格位对应，键入或范字图不代本人作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-nv-kai-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先看女字完整范形，再本人写并指出一处当前笔画连接。",
+          "answer": "说明接本人原稿，真实笔顺先后另看过程，帮助如实。",
+          "analysis": "说明接本人原稿，真实笔顺先后另看过程，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-nv-kai-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给开女，本人依次写上传。",
+          "answer": "当前顺序与完整字形对应，不沿用旧位置补作品。",
+          "analysis": "当前顺序与完整字形对应，不沿用旧位置补作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-nv-kai-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人目前只写女字，开字还未亲手写时怎样如实说明？",
+          "answer": "只核当前一字，开待本人实际写，不用参考图补齐。",
+          "analysis": "只核当前一字，开待本人实际写，不用参考图补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-nv-kai-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若开漏写一处，怎样留原稿再订正？",
+          "answer": "保留原写，回完整范形后本人重写，后改不覆盖首次。",
+          "analysis": "保留原写，回完整范形后本人重写，后改不覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-nv-kai-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "上传两字静态图，就能独证全部笔顺吗？",
+          "answer": "不能，成品核字形，先后看真实过程，范写帮助分别说明。",
+          "analysis": "不能，成品核字形，先后看真实过程，范写帮助分别说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-nv-kai-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次写两字，说明想核的一处结构与实际帮助。",
+          "answer": "说明有当前作品依据，不编错误或进步，范围真实。",
+          "analysis": "说明有当前作品依据，不编错误或进步，范围真实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "garden-four-seasons-and-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-garden4-season-expression",
+      "structure": "g1-garden4-current-season-scene-expression",
+      "familyProposal": "a692a990-g1-garden4-current-season-scene-expression",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人清楚完整表达",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前景物条件有依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色偏好和所在地分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "季节景物与角色理由对应，不直接写成本人偏好或所在地实际情况。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-current-season-scene-expression-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创情境给冬天有雪、角色喜欢堆雪人，本人据此说一句有理由的话。",
+          "answer": "季节景物与角色理由对应，不直接写成本人偏好或所在地实际情况。",
+          "analysis": "季节景物与角色理由对应，不直接写成本人偏好或所在地实际情况。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-current-season-scene-expression-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人自愿选一项真实季节偏好说理由，也可用明确角色卡。",
+          "answer": "内容自愿且理由对应，真实自述与角色分开，不要求披露住址。",
+          "analysis": "内容自愿且理由对应，真实自述与角色分开，不要求披露住址。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-current-season-scene-expression-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新条件给冬天无雪地区的树叶，本人说当前景物。",
+          "answer": "按当前条件表达，不硬套堆雪人或所有地区下雪。",
+          "analysis": "按当前条件表达，不硬套堆雪人或所有地区下雪。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-current-season-scene-expression-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "没有提供日期地点，就能替本人填我们这里现在是秋天吗？",
+          "answer": "不能，例子不代本人实际信息，真实季节要有当前条件。",
+          "analysis": "不能，例子不代本人实际信息，真实季节要有当前条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-current-season-scene-expression-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只读景物词就等于真实观察过吗？",
+          "answer": "不等于，词语练习、给定图景与本人真实观察分别核。",
+          "analysis": "不等于，词语练习、给定图景与本人真实观察分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-current-season-scene-expression-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人建议后本人修改季节句，怎样留原说法？",
+          "answer": "初次、帮助与新表达分开，后改不倒作初答，理由接当前材料。",
+          "analysis": "初次、帮助与新表达分开，后改不倒作初答，理由接当前材料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-current-season-scene-expression-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人换一组明确季节景物说短句，并说明信息来自哪里。",
+          "answer": "当前条件、声音和来源清楚，不将角色、愿望或学习材料改作本人事实。",
+          "analysis": "当前条件、声音和来源清楚，不将角色、愿望或学习材料改作本人事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-four-seasons-and-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-garden4-name-cards",
+      "structure": "g1-garden4-fictional-name-card-reading",
+      "familyProposal": "a692a990-g1-garden4-fictional-name-card-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人读当前角色卡",
+          "weight": 0.4
+        },
+        {
+          "criterion": "实际覆盖帮助清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色资料与本人档案分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "当前角色身份清楚，实际读到和需要帮助的字如实，不强制真实姓名。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-fictional-name-card-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创角色卡只给小禾、小岚两个称呼，本人选择愿意练的字实际读。",
+          "answer": "当前角色身份清楚，实际读到和需要帮助的字如实，不强制真实姓名。",
+          "analysis": "当前角色身份清楚，实际读到和需要帮助的字如实，不强制真实姓名。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-fictional-name-card-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "给定明确角色小禾卡另写一年级，本人读称呼与年级标签并说明主体。",
+          "answer": "文字属于题目角色，不把年级标签直接改学生档案。",
+          "analysis": "文字属于题目角色，不把年级标签直接改学生档案。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-fictional-name-card-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡片换成角色小青，本人按新文字认读，不沿用旧称呼。",
+          "answer": "当前字形声音对应，认识部分与全部分清，角色不当真实同伴。",
+          "analysis": "当前字形声音对应，认识部分与全部分清，角色不当真实同伴。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-fictional-name-card-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只认出卡上一个字，可以说所有标签都已独立读懂吗？",
+          "answer": "不能，按实际覆盖说明，年龄班级等未读部分保持待练。",
+          "analysis": "不能，按实际覆盖说明，年龄班级等未读部分保持待练。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-fictional-name-card-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "为了生活识字必须展示真实同学作业本和年龄吗？",
+          "answer": "不必须，可用明确角色卡完成当前任务，不要求采集他人个人资料。",
+          "analysis": "不必须，可用明确角色卡完成当前任务，不要求采集他人个人资料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-fictional-name-card-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人提示后才读出小岚，录音怎样说明？",
+          "answer": "保留原尝试、提示和新读，不把帮助后结果倒作独立首次。",
+          "analysis": "保留原尝试、提示和新读，不把帮助后结果倒作独立首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-fictional-name-card-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再读当前角色卡，说明哪些字独立认、哪些得到帮助。",
+          "answer": "说明接真实声音，角色资料不写本人档案，未读范围如实。",
+          "analysis": "说明接真实声音，角色资料不写本人档案，未读范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-four-seasons-and-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-garden4-sayings",
+      "structure": "g1-garden4-complete-sayings-and-time-metaphor",
+      "familyProposal": "a692a990-g1-garden4-complete-sayings-and-time-metaphor",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人读完整四行",
+          "weight": 0.4
+        },
+        {
+          "criterion": "比喻与计划解释合理",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原声帮助和真实日历分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四行当前原文实际覆盖，比较强调时间可贵，不当现金可换固定分钟。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-complete-sayings-and-time-metaphor-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人读正文四行传统格言，再用自己的话解释寸金与光阴的比较。",
+          "answer": "四行当前原文实际覆盖，比较强调时间可贵，不当现金可换固定分钟。",
+          "analysis": "四行当前原文实际覆盖，比较强调时间可贵，不当现金可换固定分钟。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-complete-sayings-and-time-metaphor-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读前两行并说明春与晨联系什么。",
+          "answer": "联系计划和开始时机的提醒，当前词语音与帮助如实，不下所有作息的道德结论。",
+          "analysis": "联系计划和开始时机的提醒，当前词语音与帮助如实，不下所有作息的道德结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-complete-sayings-and-time-metaphor-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "给定角色想用一小段合适时间读书，本人联系格言说合理建议。",
+          "answer": "建议接当前条件，可留休息，不由愿望登记已读或写真实日历。",
+          "analysis": "建议接当前条件，可留休息，不由愿望登记已读或写真实日历。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-complete-sayings-and-time-metaphor-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读前两行，能记录四行都已本人读完吗？",
+          "answer": "不能，前两行按真实原音核，后两行待读，不用参考声补齐。",
+          "analysis": "不能，前两行按真实原音核，后两行待读，不用参考声补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-complete-sayings-and-time-metaphor-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "寸金难买寸光阴能当真实金重与分钟兑换公式吗？",
+          "answer": "不能，是形象比较，不提供现金购买时间的实际数量关系。",
+          "analysis": "不能，是形象比较，不提供现金购买时间的实际数量关系。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-complete-sayings-and-time-metaphor-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "格言提到晨，就能断言夜里学习或需要晚起的人不努力吗？",
+          "answer": "不能，要看实际条件，格言提醒珍惜时机，不据一句话评判所有个人作息。",
+          "analysis": "不能，要看实际条件，格言提醒珍惜时机，不据一句话评判所有个人作息。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-complete-sayings-and-time-metaphor-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再读四行，说明一句理解、所用帮助和真实还待练的范围。",
+          "answer": "完整原声与解释分别核，不把熟悉原文当未见迁移或长期保持已证。",
+          "analysis": "完整原声与解释分别核，不把熟悉原文当未见迁移或长期保持已证。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-four-seasons-and-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-garden4-peanut",
+      "structure": "g1-garden4-peanut-question-picture-and-science",
+      "familyProposal": "a692a990-g1-garden4-peanut-question-picture-and-science",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "概述接实际共读",
+          "weight": 0.4
+        },
+        {
+          "criterion": "猜想图示科学分来源",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人回应与帮助范围真实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "尚未证明，角色因没在地上看见而疑惑，问题和事实分开，实际共读帮助如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-peanut-question-picture-and-science-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "成人帮助读本件小松鼠找花生后，本人说结尾的问题是否已经证明有人摘走。",
+          "answer": "尚未证明，角色因没在地上看见而疑惑，问题和事实分开，实际共读帮助如实。",
+          "analysis": "尚未证明，角色因没在地上看见而疑惑，问题和事实分开，实际共读帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-peanut-question-picture-and-science-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人说明末页地下花生图能提供什么线索，是否等于本人实际挖过。",
+          "answer": "图示有地下花生线索，不是本人实地观察或挖取记录，来源身份清楚。",
+          "analysis": "图示有地下花生线索，不是本人实地观察或挖取记录，来源身份清楚。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-peanut-question-picture-and-science-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "可靠植物资料说地上开花地下发育果实，本人解释为何没在地上见到不等被偷。",
+          "answer": "地下结果提供合理科学说明，和角色猜想分开，不冒充故事文字最后已经明说。",
+          "analysis": "地下结果提供合理科学说明，和角色猜想分开，不冒充故事文字最后已经明说。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-peanut-question-picture-and-science-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只看插图还没共读，怎样报告本次阅读范围？",
+          "answer": "如实说已看图，完整共读仍待发生，不用参考概述补成本人读完。",
+          "analysis": "如实说已看图，完整共读仍待发生，不用参考概述补成本人读完。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-peanut-question-picture-and-science-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创故事另给橡皮在书袋里，角色却猜被拿走，本人怎样按新材料回应？",
+          "answer": "按新材料书袋位置核事实，没看见不等被偷，不机械套花生地下结论。",
+          "analysis": "按新材料书袋位置核事实，没看见不等被偷，不机械套花生地下结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-peanut-question-picture-and-science-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "可以为了当前阅读任务要求学生实际挖花生验证吗？",
+          "answer": "不需要，可核当前原篇图示与可靠资料，阅读不自动生成真实采挖活动。",
+          "analysis": "不需要，可核当前原篇图示与可靠资料，阅读不自动生成真实采挖活动。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-four-seasons-and-reading-g1-garden4-peanut-question-picture-and-science-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再概述一处已读内容，分别说明文字疑问、图示线索和科学解释。",
+          "answer": "不同来源分明，本人实际回应与成人帮助如实，愿意继续读不当已完成。",
+          "analysis": "不同来源分明，本人实际回应与成人帮助如实，愿意继续读不当已完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

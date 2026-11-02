@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "jiangnan-lotus-reading",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-jiangnan-lotus-reading-v1.json",
+      "sha256": "755ab991e2e9e1bf739dab6fc9094b48e3af595d29e3b04365797d369eb8a6ca",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry3",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 63,
+        "pageEnd": 64,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。",
+  "groups": [
+    {
+      "lesson": "jiangnan-lotus-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-jiangnan-meaning",
+      "structure": "g1-jiangnan-current-poem-and-tiantiansense",
+      "familyProposal": "a692a990-g1-jiangnan-current-poem-and-tiantiansense",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "诗意有当前文字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "关键词语语境准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未知数量史实不补造",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "联系莲叶茂盛的样子，按当前完整诗句，不把熟悉单字意义机械拼成农田。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-current-poem-and-tiantiansense-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本诗莲叶何田田中的田田怎样理解？为什么不能只按田字猜农田？",
+          "answer": "联系莲叶茂盛的样子，按当前完整诗句，不把熟悉单字意义机械拼成农田。",
+          "analysis": "联系莲叶茂盛的样子，按当前完整诗句，不把熟悉单字意义机械拼成农田。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-current-poem-and-tiantiansense-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "鱼戏莲叶间呈现怎样的画面？用自己的话解释。",
+          "answer": "鱼在莲叶之间活泼游动的画面，依据当前诗句，不补具体鱼数或精确路线。",
+          "analysis": "鱼在莲叶之间活泼游动的画面，依据当前诗句，不补具体鱼数或精确路线。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-current-poem-and-tiantiansense-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创只给两片叶和一条鱼的图说，就能当原诗全部数量吗？",
+          "answer": "不能，新图数量只属当前原创材料，原诗未给精确总数，不能倒填。",
+          "analysis": "不能，新图数量只属当前原创材料，原诗未给精确总数，不能倒填。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-current-poem-and-tiantiansense-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本诗写采莲就要求学生为读诗真的去水边采摘吗？",
+          "answer": "不要求，阅读诗意与真实采摘不同，不能由文学活动生成本人经历。",
+          "analysis": "不要求，阅读诗意与真实采摘不同，不能由文学活动生成本人经历。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-current-poem-and-tiantiansense-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若不知道古代具体作者、日期，怎样介绍本件署名？",
+          "answer": "如实说本件署汉乐府，未知具体个人和日期不编。",
+          "analysis": "如实说本件署汉乐府，未知具体个人和日期不编。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-current-poem-and-tiantiansense-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只看题目没读正文，能解释已完整理解田田吗？",
+          "answer": "还不能，应回当前完整诗句核语境，不用熟悉标题补已读事实。",
+          "analysis": "还不能，应回当前完整诗句核语境，不用熟悉标题补已读事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-current-poem-and-tiantiansense-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选两处本诗线索概述画面，再说明一项没有给出的信息。",
+          "answer": "画面解释有实际诗句，数量面积或精确日期未给就保留未知。",
+          "analysis": "画面解释有实际诗句，数量面积或精确日期未给就保留未知。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "jiangnan-lotus-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-jiangnan-directions",
+      "structure": "g1-jiangnan-current-direction-reference",
+      "familyProposal": "a692a990-g1-jiangnan-current-direction-reference",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前方向图例明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "位置结论对应参照",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不以纸面左右替现实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "东，依据当前明确右东图例，不因所有书页右边都叫东。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-current-direction-reference-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创图规定上北右东，莲叶居中鱼在右侧，鱼在莲叶哪一方？",
+          "answer": "东，依据当前明确右东图例，不因所有书页右边都叫东。",
+          "analysis": "东，依据当前明确右东图例，不因所有书页右边都叫东。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-current-direction-reference-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "同图鱼改在下侧，当前应说哪一方？",
+          "answer": "南，按上北与相对方位核，下侧对应南，重新看当前位置。",
+          "analysis": "南，按上北与相对方位核，下侧对应南，重新看当前位置。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-current-direction-reference-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新图规定上东右南，鱼在上侧，应说哪一方？",
+          "answer": "东，按新图上东条件，不沿用旧图上北。",
+          "analysis": "东，按新图上东条件，不沿用旧图上北。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-current-direction-reference-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "没有任何方向标记，只见鱼在纸面左侧，能唯一确定西吗？",
+          "answer": "不能，缺方向参照，只能说图中左侧，需补当前方位条件。",
+          "analysis": "不能，缺方向参照，只能说图中左侧，需补当前方位条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-current-direction-reference-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本件插图摆在页边，就能测出现实水域方向吗？",
+          "answer": "不能，版面摆放与真实方位测量不同，现实需实际参照。",
+          "analysis": "不能，版面摆放与真实方位测量不同，现实需实际参照。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-current-direction-reference-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "题目只说东却没说以哪个对象为参照，怎样继续说明位置？",
+          "answer": "先明确相对对象及当前示意条件，不凭空补唯一位置。",
+          "analysis": "先明确相对对象及当前示意条件，不凭空补唯一位置。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-current-direction-reference-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "任选一张有明确图例的原创卡片，说方位、参照和适用范围。",
+          "answer": "位置结论与当前图例一致，限该材料，不推广到所有页面或现实地点。",
+          "analysis": "位置结论与当前图例一致，限该材料，不推广到所有页面或现实地点。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "jiangnan-lotus-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-jiangnan-recognition",
+      "structure": "g1-jiangnan-nine-characters-reading",
+      "familyProposal": "a692a990-g1-jiangnan-nine-characters-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人实际识读九字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前词义字音对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助与识写范围清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "九字实际声音对应当前语境，词语帮助和未读范围如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-nine-characters-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读江南可采莲鱼东西北九字，再读本件一个相关词。",
+          "answer": "九字实际声音对应当前语境，词语帮助和未读范围如实。",
+          "analysis": "九字实际声音对应当前语境，词语帮助和未读范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-nine-characters-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再按鱼北莲江东采可西南的新顺序认读。",
+          "answer": "按当前字形逐项读，不背旧顺序，声调与帮助实际可核。",
+          "analysis": "按当前字形逐项读，不背旧顺序，声调与帮助实际可核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-nine-characters-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡片给莲叶和鱼的明确图说，本人读莲鱼并解释所指。",
+          "answer": "当前声音词义与材料对应，角色图不当本人真实采莲见闻。",
+          "analysis": "当前声音词义与材料对应，角色图不当本人真实采莲见闻。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-nine-characters-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次本人只认出七字，怎样如实说明另外两字的识读状态？",
+          "answer": "保留实际已读和卡住项，未覆盖待练，不用完整熟诗补齐。",
+          "analysis": "保留实际已读和卡住项，未覆盖待练，不用完整熟诗补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-nine-characters-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "读得出东字就能证明本人测过现实东方吗？",
+          "answer": "不能，识读与真实方位判断分开，后者需实际参照。",
+          "analysis": "不能，识读与真实方位判断分开，后者需实际参照。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-nine-characters-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本课识九字，能自动把全部九字列为必写吗？",
+          "answer": "不能，必写可东西三字另核，识读与本人手写分别记录。",
+          "analysis": "不能，必写可东西三字另核，识读与本人手写分别记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-nine-characters-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再读九字并解释一词，报告实际帮助与覆盖。",
+          "answer": "声音词义范围真实，未手写不补为本人已写。",
+          "analysis": "声音词义范围真实，未手写不补为本人已写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "jiangnan-lotus-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-jiangnan-writing",
+      "structure": "g1-jiangnan-ke-dong-xi-own-writing",
+      "familyProposal": "a692a990-g1-jiangnan-ke-dong-xi-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖三字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整范形格位对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "笔顺帮助与后改分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三字实际覆盖，字形格位依本件核，键入或范字图不代本人作品。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-ke-dong-xi-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按本件完整范形写可东西，上传格中原稿。",
+          "answer": "三字实际覆盖，字形格位依本件核，键入或范字图不代本人作品。",
+          "analysis": "三字实际覆盖，字形格位依本件核，键入或范字图不代本人作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-ke-dong-xi-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先看东与西，再本人各写并说明一处可见结构区别。",
+          "answer": "说明接当前原稿和范形，字形与现实方位测量分开。",
+          "analysis": "说明接当前原稿和范形，字形与现实方位测量分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-ke-dong-xi-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给西可东，本人依序写上传。",
+          "answer": "字形与当前顺序对应，不按旧三字位置补作品。",
+          "analysis": "字形与当前顺序对应，不按旧三字位置补作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-ke-dong-xi-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只写可和东，西未写时如何报告？",
+          "answer": "只核实际两字，西待本人写，不用教材字图补齐。",
+          "analysis": "只核实际两字，西待本人写，不用教材字图补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-ke-dong-xi-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "可的结构写漏后，怎样保留原稿再订正？",
+          "answer": "保留原写，回完整范形后本人重写，后改不覆盖首次。",
+          "analysis": "保留原写，回完整范形后本人重写，后改不覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-ke-dong-xi-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只有静态三字图能证明全部笔顺先后吗？",
+          "answer": "不能，成品核字形，真实书写过程核先后，帮助分别说明。",
+          "analysis": "不能，成品核字形，真实书写过程核先后，帮助分别说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-ke-dong-xi-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次写三字，说明当前最想核的一处范形与帮助。",
+          "answer": "依据当前真实作品，不编错误或进步，范围如实。",
+          "analysis": "依据当前真实作品，不编错误或进步，范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "jiangnan-lotus-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-jiangnan-reading-recall",
+      "structure": "g1-jiangnan-seven-lines-real-reading-recall",
+      "familyProposal": "a692a990-g1-jiangnan-seven-lines-real-reading-recall",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "完整七句版本清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人读背与四方顺序可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "看文提示和覆盖如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "当前完整七句与本人声音对应，四方位按本件东、西、南、北顺序核，帮助如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-seven-lines-real-reading-recall-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人读正文所列江南七句，再尝试背其中一部分并说明是否看文。",
+          "answer": "当前完整七句与本人声音对应，四方位按本件东、西、南、北顺序核，帮助如实。",
+          "analysis": "当前完整七句与本人声音对应，四方位按本件东、西、南、北顺序核，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-seven-lines-real-reading-recall-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读最后四句，说明哪处得到方位提醒。",
+          "answer": "原诗末四句东、西、南、北，示范与本人原声分开，不用参考声补本人。",
+          "analysis": "原诗末四句东、西、南、北，示范与本人原声分开，不用参考声补本人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-seven-lines-real-reading-recall-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "合上原篇后本人尝试背开头三句，录真实过程。",
+          "answer": "实际是否看文、三句范围与提示清楚，概述不代原诗背诵。",
+          "analysis": "实际是否看文、三句范围与提示清楚，概述不代原诗背诵。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-seven-lines-real-reading-recall-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只背出末一句，能记录完整七句已背完吗？",
+          "answer": "不能，只核真实一句，其余待练，不能由局部推整首。",
+          "analysis": "不能，只核真实一句，其余待练，不能由局部推整首。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-seven-lines-real-reading-recall-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "中途把南北顺序读反，怎样留原音再重读？",
+          "answer": "保留原尝试，回当前七句和准确示范后本人重读，不覆盖首次。",
+          "analysis": "保留原尝试，回当前七句和准确示范后本人重读，不覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-seven-lines-real-reading-recall-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人再读何田田一处，说明声音与诗意解释是否同一项。",
+          "answer": "实际读音与诗意理解分别核，解释正确不自动表示本人已背。",
+          "analysis": "实际读音与诗意理解分别核，解释正确不自动表示本人已背。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-seven-lines-real-reading-recall-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人说明读过背过与待练范围，再实际读两句。",
+          "answer": "本人声音、覆盖和帮助一致，学过原诗不当未见迁移或长期保持证据。",
+          "analysis": "本人声音、覆盖和帮助一致，学过原诗不当未见迁移或长期保持证据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "jiangnan-lotus-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-jiangnan-repetition",
+      "structure": "g1-jiangnan-repeated-forms-and-changing-directions",
+      "familyProposal": "a692a990-g1-jiangnan-repeated-forms-and-changing-directions",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "相同变化有原诗依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "表达效果接画面",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不补唯一真实路线",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "主要鱼戏莲叶的形式反复，方位东、西、南、北依次变化，依据当前原诗。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-repeated-forms-and-changing-directions-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "比较末四句，主要相同部分和变化的部分各是什么？",
+          "answer": "主要鱼戏莲叶的形式反复，方位东、西、南、北依次变化，依据当前原诗。",
+          "analysis": "主要鱼戏莲叶的形式反复，方位东、西、南、北依次变化，依据当前原诗。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-repeated-forms-and-changing-directions-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "四个方位反复怎样帮助展开鱼戏画面？",
+          "answer": "让活动画面从不同方位展开并有节奏，解释接当前反复与变化。",
+          "analysis": "让活动画面从不同方位展开并有节奏，解释接当前反复与变化。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-repeated-forms-and-changing-directions-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创新句只列树前树后，可以直接说也写了原诗四方位吗？",
+          "answer": "不能，新材料只有当前前后位置，不能把熟悉原诗四方倒填。",
+          "analysis": "不能，新材料只有当前前后位置，不能把熟悉原诗四方倒填。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-repeated-forms-and-changing-directions-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "末四句列举的先后能唯一证明一条真实鱼怎样游过吗？",
+          "answer": "不能，诗歌反复展画面，不提供唯一真实轨迹或测量。",
+          "analysis": "不能，诗歌反复展画面，不提供唯一真实轨迹或测量。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-repeated-forms-and-changing-directions-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "如果只说句子都一样，遗漏了什么？",
+          "answer": "遗漏了东、西、南、北的变化，需要同时核相同形式和当前不同方位。",
+          "analysis": "遗漏了东、西、南、北的变化，需要同时核相同形式和当前不同方位。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-repeated-forms-and-changing-directions-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "有人只记方位四字但没读反复部分，怎样完善比较？",
+          "answer": "回四句完整形式，同时指出重复主体和变化处，不以单词清单代完整比较。",
+          "analysis": "回四句完整形式，同时指出重复主体和变化处，不以单词清单代完整比较。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-jiangnan-lotus-reading-g1-jiangnan-repeated-forms-and-changing-directions-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选两句说明一处相同一处变化，再说明结论限哪份材料。",
+          "answer": "比较有本件具体依据，限当前原诗，不推广成所有诗或现实鱼路线。",
+          "analysis": "比较有本件具体依据，限当前原诗，不推广成所有诗或现实鱼路线。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

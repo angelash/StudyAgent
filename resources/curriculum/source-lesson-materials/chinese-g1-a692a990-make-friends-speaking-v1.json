@@ -1,0 +1,428 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "make-friends-speaking",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-make-friends-speaking-v1.json",
+      "sha256": "8dd9d55df7f2d68174214a7cdbf932b0866bfc9391966a9b30794d4ea06de89b",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry5",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 67,
+        "pageEnd": 67,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。",
+  "groups": [
+    {
+      "lesson": "make-friends-speaking",
+      "atomId": "source:chinese:g1:a692a990:g1-friends-introduction",
+      "structure": "g1-friends-one-willing-introduction",
+      "familyProposal": "a692a990-g1-friends-one-willing-introduction",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人清楚完整表达",
+          "weight": 0.4
+        },
+        {
+          "criterion": "自愿内容与对象明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色和真实自述分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "话语完整可接收，内容自愿，角色与本人资料分开，不要求披露真实全名住址。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-one-willing-introduction-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人选择愿意分享的称呼或兴趣说一句介绍，也可用明确角色卡练习。",
+          "answer": "话语完整可接收，内容自愿，角色与本人资料分开，不要求披露真实全名住址。",
+          "analysis": "话语完整可接收，内容自愿，角色与本人资料分开，不要求披露真实全名住址。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-one-willing-introduction-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先想一件愿意介绍的事，再本人打招呼并说清当前内容。",
+          "answer": "介绍对象与内容明确，帮助如实，不用成人代说当本人完成。",
+          "analysis": "介绍对象与内容明确，帮助如实，不用成人代说当本人完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-one-willing-introduction-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新角色卡给喜欢搭积木，本人按该卡介绍，说明是否本人真实偏好。",
+          "answer": "角色内容对应搭积木，不能沿用旧拼图或把角色偏好写成本人事实。",
+          "analysis": "角色内容对应搭积木，不能沿用旧拼图或把角色偏好写成本人事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-one-willing-introduction-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只准备了介绍但尚未开口，本次怎样说明？",
+          "answer": "如实说已准备，实际表达待发生，不能用写好的稿代本人已说。",
+          "analysis": "如实说已准备，实际表达待发生，不能用写好的稿代本人已说。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-one-willing-introduction-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "不想分享姓名或家庭信息，可以怎样参与当前任务？",
+          "answer": "选愿意分享的兴趣或角色练习，不强制隐私披露，范围说明真实。",
+          "analysis": "选愿意分享的兴趣或角色练习，不强制隐私披露，范围说明真实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-one-willing-introduction-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人提醒后本人把一句说完整，怎样保留帮助？",
+          "answer": "原尝试、提醒和新表达分别留，不倒作首次独立。",
+          "analysis": "原尝试、提醒和新表达分别留，不倒作首次独立。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-one-willing-introduction-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再说一次简短介绍，说明当前对象和真实或角色情境。",
+          "answer": "声音与身份范围一致，不要求编兴趣、交友结果或学习进步。",
+          "analysis": "声音与身份范围一致，不要求编兴趣、交友结果或学习进步。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "make-friends-speaking",
+      "atomId": "source:chinese:g1:a692a990:g1-friends-listening",
+      "structure": "g1-friends-current-utterance-and-response",
+      "familyProposal": "a692a990-g1-friends-current-utterance-and-response",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "真实原话与回应对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人留心当前内容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "重复提示与角色范围如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "实际原话和本人回应对应，参与者与角色身份清楚，未发生不编交流。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-current-utterance-and-response-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "请参与者实际说一项愿意分享的兴趣，本人听完后回应其具体内容并留音。",
+          "answer": "实际原话和本人回应对应，参与者与角色身份清楚，未发生不编交流。",
+          "analysis": "实际原话和本人回应对应，参与者与角色身份清楚，未发生不编交流。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-current-utterance-and-response-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "明确角色说喜欢拼图，本人先回应拼图，再选愿意分享的内容。",
+          "answer": "先接当前原话，不把对方改成画画，角色练习不算真实新同伴经历。",
+          "analysis": "先接当前原话，不把对方改成画画，角色练习不算真实新同伴经历。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-current-utterance-and-response-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原话说喜欢搭积木，本人听后回应，不能沿用旧兴趣。",
+          "answer": "当前回应联系积木，按真实本轮内容更新，不照背旧例。",
+          "analysis": "当前回应联系积木，按真实本轮内容更新，不照背旧例。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-current-utterance-and-response-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "没有听清对方兴趣时，怎样继续并留本轮条件？",
+          "answer": "可以请重说或确认，保留未听清与重复条件，不凭期待编原话。",
+          "analysis": "可以请重说或确认，保留未听清与重复条件，不凭期待编原话。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-current-utterance-and-response-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本人兴趣不同也必须说我也喜欢才友好吗？",
+          "answer": "不必，可礼貌回应真实差异，不替本人或同伴编相同偏好。",
+          "analysis": "不必，可礼貌回应真实差异，不替本人或同伴编相同偏好。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-current-utterance-and-response-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只有单人分角色录音，能记录两名真实同伴已交流吗？",
+          "answer": "不能，只能说明角色练习，真实双方参加仍待实际发生。",
+          "analysis": "不能，只能说明角色练习，真实双方参加仍待实际发生。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-current-utterance-and-response-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人回顾一轮真实原话和回应，说明接住了哪件事及所用帮助。",
+          "answer": "说明有原音依据，示范与本人回应分开，不以参考代真实同伴内容。",
+          "analysis": "说明有原音依据，示范与本人回应分开，不以参考代真实同伴内容。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "make-friends-speaking",
+      "atomId": "source:chinese:g1:a692a990:g1-friends-invitation",
+      "structure": "g1-friends-optional-invitation-and-respect",
+      "familyProposal": "a692a990-g1-friends-optional-invitation-and-respect",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人邀请内容明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "回应选择受到尊重",
+          "weight": 0.4
+        },
+        {
+          "criterion": "建议约定参加和日历分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "活动明确且允许拒绝，可商量其他条件，角色示例不记真实双方已约定。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-optional-invitation-and-respect-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人用明确角色提出一起看图画书的可选邀请，再回应角色现在不方便。",
+          "answer": "活动明确且允许拒绝，可商量其他条件，角色示例不记真实双方已约定。",
+          "analysis": "活动明确且允许拒绝，可商量其他条件，角色示例不记真实双方已约定。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-optional-invitation-and-respect-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "真实参与者回应暂时想做别的，本人听完怎样接话？",
+          "answer": "尊重当前选择，可问是否愿意改时间或活动，不强迫答应或编已经同意。",
+          "analysis": "尊重当前选择，可问是否愿意改时间或活动，不强迫答应或编已经同意。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-optional-invitation-and-respect-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新角色只愿意先聊积木，本人据此换一项可选邀请。",
+          "answer": "邀请接当前兴趣和条件，不沿用旧例安排，不由愿望登记真实活动。",
+          "analysis": "邀请接当前兴趣和条件，不沿用旧例安排，不由愿望登记真实活动。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-optional-invitation-and-respect-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只说了邀请还没有得到答复，可以记录对方已答应吗？",
+          "answer": "不能，邀请、答应和实际参加分别核，缺回应保持未知。",
+          "analysis": "不能，邀请、答应和实际参加分别核，缺回应保持未知。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-optional-invitation-and-respect-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "角色答应了，就能自动写学生真实日历吗？",
+          "answer": "不能，角色练习不代真实安排，实际日历需本人真实条件和明确操作。",
+          "analysis": "不能，角色练习不代真实安排，实际日历需本人真实条件和明确操作。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-optional-invitation-and-respect-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "对方说不愿意时，本人能否把拒绝改写为同意以完成练习？",
+          "answer": "不能，保留真实回应，尊重选择，任务不要求制造交友成功。",
+          "analysis": "不能，保留真实回应，尊重选择，任务不要求制造交友成功。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-optional-invitation-and-respect-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人提出一项可选邀请，再说明真实发生到哪一步与仍待什么。",
+          "answer": "当前原音、回应及范围对应，愿望和后续计划不提前算参加完成。",
+          "analysis": "当前原音、回应及范围对应，愿望和后续计划不提前算参加完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "make-friends-speaking",
+      "atomId": "source:chinese:g1:a692a990:g1-friends-attention",
+      "structure": "g1-friends-receiving-conditions-turns-and-attention",
+      "familyProposal": "a692a990-g1-friends-receiving-conditions-turns-and-attention",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "接收与轮流条件明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人回应对应内容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "对视音量不作唯一能力结论",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "朝向、声音或其他合适方式与当前条件相符，实际内容回应和轮流可核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-receiving-conditions-turns-and-attention-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "按双方条件实际进行一轮介绍回应，说明怎样确认对方能接收。",
+          "answer": "朝向、声音或其他合适方式与当前条件相符，实际内容回应和轮流可核。",
+          "analysis": "朝向、声音或其他合适方式与当前条件相符，实际内容回应和轮流可核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-receiving-conditions-turns-and-attention-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "近距离交谈听不清时，本人怎样礼貌确认并调整？",
+          "answer": "先确认需要，可重说或调整合适音量，不以声音越大越好。",
+          "analysis": "先确认需要，可重说或调整合适音量，不以声音越大越好。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-receiving-conditions-turns-and-attention-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新情境对方用适合自己的非对视方式听，本人怎样继续交流？",
+          "answer": "尊重接收方式，按实际内容回应确认，不把持续对视当唯一要求。",
+          "analysis": "尊重接收方式，按实际内容回应确认，不把持续对视当唯一要求。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-receiving-conditions-turns-and-attention-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "一次没对视就能判定没认真听或能力不足吗？",
+          "answer": "不能，要看实际条件和内容回应等，不从单一行为下结论。",
+          "analysis": "不能，要看实际条件和内容回应等，不从单一行为下结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-receiving-conditions-turns-and-attention-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "别人尚未说完，本人怎样留出回应空间？",
+          "answer": "等当前话语说完再接，必要时说明需要，不把抢话当倾听完成。",
+          "analysis": "等当前话语说完再接，必要时说明需要，不把抢话当倾听完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-receiving-conditions-turns-and-attention-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "没有真实对方参与，只准备了接收方式说明，可以说双方已交流吗？",
+          "answer": "不能，准备与真实交谈不同，实际双方原话回应仍待发生。",
+          "analysis": "不能，准备与真实交谈不同，实际双方原话回应仍待发生。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-make-friends-speaking-g1-friends-receiving-conditions-turns-and-attention-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人回顾一轮声音和回应，说明帮助、轮流及仍需调整处。",
+          "answer": "依据真实过程，不编不礼貌或能力结论，未明显问题可如实。",
+          "analysis": "依据真实过程，不编不礼貌或能力结论，未明显问题可如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

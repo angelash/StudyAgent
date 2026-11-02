@@ -1,0 +1,10 @@
+// Four reading lessons and two activities from the exact, visually reviewed source.
+const assert=require('node:assert/strict'),{createKit}=require('./exact-source-candidate-kit.cjs');
+const bookId='archive-book:chinese-g1-upper-a692a990d41b6291',filePrefix='chinese-g1-a692a990',kit=createKit({bookId,prefix:'source:chinese:g1:a692a990:',filePrefix}),drafts=[],groups=[];
+function make(c){assert.equal(c.pageNotes.length,c.end-c.start+1);const d=kit.draft({slug:c.slug,lessonId:bookId+':chapter4:entry'+c.entry,start:c.start,end:c.end,definitions:c.definitions,
+ scope:{title:c.title,...c.scope,directoryGranularity:c.scope.directoryGranularity??'lesson',allPageActivitiesDelivered:false,authenticListeningStimuliIncluded:false},
+ content:{title:c.title,activation:c.activation,concept:{explanation:c.explanation,points:c.points},example:{situation:c.example.situation,steps:c.example.steps.map(([explanation,board])=>({explanation,board})),conclusion:c.example.conclusion},visuals:[{kind:'table',...c.table}],misconceptions:c.errors.map(([observation,alternative,verification,correctiveFeedback])=>({observation,alternatives:[alternative],verification,correctiveFeedback})),transfer:c.transfer,summary:c.summary,citations:c.citations},
+ sourceReview:{confirmedRange:true,statement:'本页段已逐张看图并核完整读篇、识写行、范写和任务；现代全文只在本地参考，正文采用原创解释。实际朗读、背诵、手写、同伴交流和帮助分别核，仍待教师审核。',pages:c.pageNotes.map((statement,i)=>({page:c.start+i,visualChecked:true,statement}))}});drafts.push(d);return c.slug;}
+function add(lesson,suffix,structure,mode,criteria,rows){groups.push(kit.group(lesson,suffix,structure,mode,criteria,rows));}
+for(const name of ['chinese-g1-autumn-and-boat','chinese-g1-jiangnan-and-seasons','chinese-g1-friends-and-garden-four'])require('./'+name+'.cjs')({make,add});assert.equal(drafts.length,6);
+for(const d of drafts)kit.write(filePrefix+'-'+d.editorNotes.slug+'-v1',[d],groups.filter(g=>g.lesson===d.editorNotes.slug),'每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。');

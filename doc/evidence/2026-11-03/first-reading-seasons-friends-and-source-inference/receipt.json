@@ -1,0 +1,813 @@
+{
+  "protocol": "first-reading-seasons-friends-and-source-inference-v1",
+  "at": "2026-11-02T23:58:48.127Z",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "source": {
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "extractedSha256": "9d4c9c93727eadcf19bfeda6580833b68b5ada8d2cdaed2daca1e578441ee987",
+    "currentPhysicalRange": [
+      59,
+      71
+    ],
+    "currentPagesFullyRead": 13,
+    "totalPagesVisuallyRead": 107,
+    "totalBookPages": 127,
+    "wholeBookFullyRead": false,
+    "nextFullyReadButNotAuthoredRange": [
+      72,
+      84
+    ],
+    "peanutScienceReference": {
+      "url": "https://plants.ces.ncsu.edu/plants/arachis-hypogaea/",
+      "publisher": "NC State Extension Plant Toolbox",
+      "htmlSha256": "62ae2bcf53387a5b58f7c0c462dca31cadb8d386fa64b0187ad235cf20f92331",
+      "snippets": [
+        " seeds. The species name hypogaea means \"under the earth\" and reflects that fact that the pods containing edible seeds grow below ground. The peanut is an herbaceous perennial, but grown as an annual. It produces flowers above ground, but develops the fruit below ground in a process known as geocarpy. Like most legume plants, peanuts ",
+        "ntaining edible seeds grow below ground. The peanut is an herbaceous perennial, but grown as an annual. It produces flowers above ground, but develops the fruit below ground in a process known as geocarpy. Like most legume plants, peanuts have roots which contain nodules of nitrogen fixing bacteria making it a valuable soil-enriching "
+      ],
+      "originalHtmlLocalOnly": true,
+      "retrievedAt": "2026-11-03",
+      "usedFor": "Distinguish pods developing underground from the fictional character's theft hypothesis"
+    }
+  },
+  "content": {
+    "drafts": 6,
+    "targets": 35,
+    "candidates": 245,
+    "perPacket": [
+      {
+        "name": "chinese-g1-a692a990-autumn-first-reading-v1.json",
+        "targets": 6,
+        "questions": 42,
+        "pages": [
+          59,
+          60
+        ],
+        "bodyCharacters": 688,
+        "completeBodyNonCheckGaps": [],
+        "teacherReviewed": false
+      },
+      {
+        "name": "chinese-g1-a692a990-four-seasons-reading-v1.json",
+        "targets": 6,
+        "questions": 42,
+        "pages": [
+          65,
+          66
+        ],
+        "bodyCharacters": 714,
+        "completeBodyNonCheckGaps": [],
+        "teacherReviewed": false
+      },
+      {
+        "name": "chinese-g1-a692a990-garden-four-seasons-and-reading-v1.json",
+        "targets": 7,
+        "questions": 49,
+        "pages": [
+          68,
+          69,
+          70,
+          71
+        ],
+        "bodyCharacters": 1057,
+        "completeBodyNonCheckGaps": [],
+        "teacherReviewed": false
+      },
+      {
+        "name": "chinese-g1-a692a990-jiangnan-lotus-reading-v1.json",
+        "targets": 6,
+        "questions": 42,
+        "pages": [
+          63,
+          64
+        ],
+        "bodyCharacters": 733,
+        "completeBodyNonCheckGaps": [],
+        "teacherReviewed": false
+      },
+      {
+        "name": "chinese-g1-a692a990-little-boat-reading-v1.json",
+        "targets": 6,
+        "questions": 42,
+        "pages": [
+          61,
+          62
+        ],
+        "bodyCharacters": 701,
+        "completeBodyNonCheckGaps": [],
+        "teacherReviewed": false
+      },
+      {
+        "name": "chinese-g1-a692a990-make-friends-speaking-v1.json",
+        "targets": 4,
+        "questions": 28,
+        "pages": [
+          67
+        ],
+        "bodyCharacters": 681,
+        "completeBodyNonCheckGaps": [],
+        "teacherReviewed": false
+      }
+    ],
+    "modes": {
+      "short_answer": 63,
+      "audio_record": 147,
+      "image_upload": 35
+    },
+    "jiangnanSevenLinesAndFourTraditionalSayingsInActualConcept": true,
+    "currentParagraphsPronunciationAndWritingExplicit": true,
+    "fictionalNameCardsAndVoluntaryConversation": true,
+    "eyeContactNotSoleAttentionEvidence": true,
+    "peanutQuestionIllustrationAndScienceSeparate": true,
+    "teacherReviewed": false,
+    "authenticSoundInventoryComplete": false,
+    "scoringIndependentFamiliesAndSufficientStockApproved": false
+  },
+  "validation": {
+    "firstStatic": {
+      "passed": false,
+      "invalidPackets": 4,
+      "shortStems": 5,
+      "failurePreserved": true
+    },
+    "correctedStatic": {
+      "passed": true,
+      "generationByteStable": true,
+      "onlyFiveStemsChangedAllOtherBundleFieldsIdentical": true
+    },
+    "http": {
+      "allSixPassed": true,
+      "questions": 245,
+      "results": [
+        {
+          "name": "chinese-g1-a692a990-autumn-first-reading-v1.json",
+          "result": {
+            "at": "2026-11-02T23:53:02.690Z",
+            "passed": true,
+            "storage": "sqlite",
+            "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+            "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+            "subject": "chinese",
+            "prewriteValidation": {
+              "passed": true,
+              "selectedDrafts": 1,
+              "questionCount": 42,
+              "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+              "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+            },
+            "drafts": [
+              {
+                "file": "chinese-g1-a692a990-autumn-first-reading-v1.json",
+                "sha256": "5537663bbc0d8d26ee5da5a012c7808b654713d39267fcb4c219de5ec6610d2a",
+                "physicalPages": [
+                  59,
+                  60
+                ],
+                "fullSourceTextKeptPrivate": true,
+                "targets": 6,
+                "preflightPublishable": false,
+                "gapCount": 78,
+                "linkedDraftMaterialReferences": 42,
+                "gapCodes": [
+                  "target_not_published",
+                  "material_changed_or_ineligible",
+                  "material_family_coverage",
+                  "retention_stock_gap"
+                ],
+                "fullOriginalContentReadBack": true,
+                "originalCommandReplayed": true,
+                "incompletePublicationRejected": true
+              }
+            ],
+            "coldRead": {
+              "drafts": 1,
+              "wholeContentAndSourceFingerprintsPreserved": true,
+              "draftQuestions": 42,
+              "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+              "exactSourceNamesAndMetadataPreserved": true,
+              "visualQuestionDocuments": 0,
+              "wholeVisualDocumentsPreserved": true,
+              "staleVisualDocumentVersionRejected": false,
+              "publications": 0,
+              "adoptions": 0,
+              "learnerResponses": 0
+            },
+            "materials": {
+              "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-autumn-first-reading-v1.json",
+              "sha256": "2cea2f0b85fba522c5a7dd9da258b3b779e88527cfe95ef33a0ee39efefeb44d",
+              "groups": 6,
+              "questions": 42,
+              "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+              "teacherReviewed": false,
+              "independentFamiliesApproved": 0,
+              "fullyStockedRetentionIntervals": 0
+            }
+          }
+        },
+        {
+          "name": "chinese-g1-a692a990-four-seasons-reading-v1.json",
+          "result": {
+            "at": "2026-11-02T23:53:02.771Z",
+            "passed": true,
+            "storage": "sqlite",
+            "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+            "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+            "subject": "chinese",
+            "prewriteValidation": {
+              "passed": true,
+              "selectedDrafts": 1,
+              "questionCount": 42,
+              "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+              "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+            },
+            "drafts": [
+              {
+                "file": "chinese-g1-a692a990-four-seasons-reading-v1.json",
+                "sha256": "63f506c3d92f8a4201b73d9ca2d37b05bc8f09248eca6919ad71d5a4c38a713a",
+                "physicalPages": [
+                  65,
+                  66
+                ],
+                "fullSourceTextKeptPrivate": true,
+                "targets": 6,
+                "preflightPublishable": false,
+                "gapCount": 78,
+                "linkedDraftMaterialReferences": 42,
+                "gapCodes": [
+                  "target_not_published",
+                  "material_changed_or_ineligible",
+                  "material_family_coverage",
+                  "retention_stock_gap"
+                ],
+                "fullOriginalContentReadBack": true,
+                "originalCommandReplayed": true,
+                "incompletePublicationRejected": true
+              }
+            ],
+            "coldRead": {
+              "drafts": 1,
+              "wholeContentAndSourceFingerprintsPreserved": true,
+              "draftQuestions": 42,
+              "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+              "exactSourceNamesAndMetadataPreserved": true,
+              "visualQuestionDocuments": 0,
+              "wholeVisualDocumentsPreserved": true,
+              "staleVisualDocumentVersionRejected": false,
+              "publications": 0,
+              "adoptions": 0,
+              "learnerResponses": 0
+            },
+            "materials": {
+              "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-four-seasons-reading-v1.json",
+              "sha256": "650a9250144592541f8b43d892fbfe29dacc08ef0ffad8c73aca557506f71627",
+              "groups": 6,
+              "questions": 42,
+              "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+              "teacherReviewed": false,
+              "independentFamiliesApproved": 0,
+              "fullyStockedRetentionIntervals": 0
+            }
+          }
+        },
+        {
+          "name": "chinese-g1-a692a990-garden-four-seasons-and-reading-v1.json",
+          "result": {
+            "at": "2026-11-02T23:54:34.669Z",
+            "passed": true,
+            "storage": "sqlite",
+            "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+            "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+            "subject": "chinese",
+            "prewriteValidation": {
+              "passed": true,
+              "selectedDrafts": 1,
+              "questionCount": 49,
+              "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+              "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+            },
+            "drafts": [
+              {
+                "file": "chinese-g1-a692a990-garden-four-seasons-and-reading-v1.json",
+                "sha256": "8ffc77a5ba535241d1e9c0bf6168846ddcf1d50d2f7d6b47602374c674113f9b",
+                "physicalPages": [
+                  68,
+                  69,
+                  70,
+                  71
+                ],
+                "fullSourceTextKeptPrivate": true,
+                "targets": 7,
+                "preflightPublishable": false,
+                "gapCount": 91,
+                "linkedDraftMaterialReferences": 49,
+                "gapCodes": [
+                  "target_not_published",
+                  "material_changed_or_ineligible",
+                  "material_family_coverage",
+                  "retention_stock_gap"
+                ],
+                "fullOriginalContentReadBack": true,
+                "originalCommandReplayed": true,
+                "incompletePublicationRejected": true
+              }
+            ],
+            "coldRead": {
+              "drafts": 1,
+              "wholeContentAndSourceFingerprintsPreserved": true,
+              "draftQuestions": 49,
+              "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+              "exactSourceNamesAndMetadataPreserved": true,
+              "visualQuestionDocuments": 0,
+              "wholeVisualDocumentsPreserved": true,
+              "staleVisualDocumentVersionRejected": false,
+              "publications": 0,
+              "adoptions": 0,
+              "learnerResponses": 0
+            },
+            "materials": {
+              "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-garden-four-seasons-and-reading-v1.json",
+              "sha256": "552733ef3fa4dc202d7410f3b073ec682e9b18e55e177e5853bae85677d642a5",
+              "groups": 7,
+              "questions": 49,
+              "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+              "teacherReviewed": false,
+              "independentFamiliesApproved": 0,
+              "fullyStockedRetentionIntervals": 0
+            }
+          }
+        },
+        {
+          "name": "chinese-g1-a692a990-jiangnan-lotus-reading-v1.json",
+          "result": {
+            "at": "2026-11-02T23:54:34.597Z",
+            "passed": true,
+            "storage": "sqlite",
+            "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+            "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+            "subject": "chinese",
+            "prewriteValidation": {
+              "passed": true,
+              "selectedDrafts": 1,
+              "questionCount": 42,
+              "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+              "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+            },
+            "drafts": [
+              {
+                "file": "chinese-g1-a692a990-jiangnan-lotus-reading-v1.json",
+                "sha256": "755ab991e2e9e1bf739dab6fc9094b48e3af595d29e3b04365797d369eb8a6ca",
+                "physicalPages": [
+                  63,
+                  64
+                ],
+                "fullSourceTextKeptPrivate": true,
+                "targets": 6,
+                "preflightPublishable": false,
+                "gapCount": 78,
+                "linkedDraftMaterialReferences": 42,
+                "gapCodes": [
+                  "target_not_published",
+                  "material_changed_or_ineligible",
+                  "material_family_coverage",
+                  "retention_stock_gap"
+                ],
+                "fullOriginalContentReadBack": true,
+                "originalCommandReplayed": true,
+                "incompletePublicationRejected": true
+              }
+            ],
+            "coldRead": {
+              "drafts": 1,
+              "wholeContentAndSourceFingerprintsPreserved": true,
+              "draftQuestions": 42,
+              "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+              "exactSourceNamesAndMetadataPreserved": true,
+              "visualQuestionDocuments": 0,
+              "wholeVisualDocumentsPreserved": true,
+              "staleVisualDocumentVersionRejected": false,
+              "publications": 0,
+              "adoptions": 0,
+              "learnerResponses": 0
+            },
+            "materials": {
+              "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-jiangnan-lotus-reading-v1.json",
+              "sha256": "aebdb8bf1fa517a95d045efcfdc73096fcdaf2ec30a91a7d5bc2faae8b3380ea",
+              "groups": 6,
+              "questions": 42,
+              "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+              "teacherReviewed": false,
+              "independentFamiliesApproved": 0,
+              "fullyStockedRetentionIntervals": 0
+            }
+          }
+        },
+        {
+          "name": "chinese-g1-a692a990-little-boat-reading-v1.json",
+          "result": {
+            "at": "2026-11-02T23:56:15.189Z",
+            "passed": true,
+            "storage": "sqlite",
+            "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+            "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+            "subject": "chinese",
+            "prewriteValidation": {
+              "passed": true,
+              "selectedDrafts": 1,
+              "questionCount": 42,
+              "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+              "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+            },
+            "drafts": [
+              {
+                "file": "chinese-g1-a692a990-little-boat-reading-v1.json",
+                "sha256": "dc6de1caef62ff383d2b2dd65e502ff0e447c564e982d3d2f8b9c83a1ef4b395",
+                "physicalPages": [
+                  61,
+                  62
+                ],
+                "fullSourceTextKeptPrivate": true,
+                "targets": 6,
+                "preflightPublishable": false,
+                "gapCount": 78,
+                "linkedDraftMaterialReferences": 42,
+                "gapCodes": [
+                  "target_not_published",
+                  "material_changed_or_ineligible",
+                  "material_family_coverage",
+                  "retention_stock_gap"
+                ],
+                "fullOriginalContentReadBack": true,
+                "originalCommandReplayed": true,
+                "incompletePublicationRejected": true
+              }
+            ],
+            "coldRead": {
+              "drafts": 1,
+              "wholeContentAndSourceFingerprintsPreserved": true,
+              "draftQuestions": 42,
+              "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+              "exactSourceNamesAndMetadataPreserved": true,
+              "visualQuestionDocuments": 0,
+              "wholeVisualDocumentsPreserved": true,
+              "staleVisualDocumentVersionRejected": false,
+              "publications": 0,
+              "adoptions": 0,
+              "learnerResponses": 0
+            },
+            "materials": {
+              "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-little-boat-reading-v1.json",
+              "sha256": "ea0696d798662536e3f694a367ad12b52d154a53e4305aa05597d4ac8398583b",
+              "groups": 6,
+              "questions": 42,
+              "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+              "teacherReviewed": false,
+              "independentFamiliesApproved": 0,
+              "fullyStockedRetentionIntervals": 0
+            }
+          }
+        },
+        {
+          "name": "chinese-g1-a692a990-make-friends-speaking-v1.json",
+          "result": {
+            "at": "2026-11-02T23:56:15.195Z",
+            "passed": true,
+            "storage": "sqlite",
+            "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+            "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+            "subject": "chinese",
+            "prewriteValidation": {
+              "passed": true,
+              "selectedDrafts": 1,
+              "questionCount": 28,
+              "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+              "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+            },
+            "drafts": [
+              {
+                "file": "chinese-g1-a692a990-make-friends-speaking-v1.json",
+                "sha256": "8dd9d55df7f2d68174214a7cdbf932b0866bfc9391966a9b30794d4ea06de89b",
+                "physicalPages": [
+                  67
+                ],
+                "fullSourceTextKeptPrivate": true,
+                "targets": 4,
+                "preflightPublishable": false,
+                "gapCount": 52,
+                "linkedDraftMaterialReferences": 28,
+                "gapCodes": [
+                  "target_not_published",
+                  "material_changed_or_ineligible",
+                  "material_family_coverage",
+                  "retention_stock_gap"
+                ],
+                "fullOriginalContentReadBack": true,
+                "originalCommandReplayed": true,
+                "incompletePublicationRejected": true
+              }
+            ],
+            "coldRead": {
+              "drafts": 1,
+              "wholeContentAndSourceFingerprintsPreserved": true,
+              "draftQuestions": 28,
+              "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+              "exactSourceNamesAndMetadataPreserved": true,
+              "visualQuestionDocuments": 0,
+              "wholeVisualDocumentsPreserved": true,
+              "staleVisualDocumentVersionRejected": false,
+              "publications": 0,
+              "adoptions": 0,
+              "learnerResponses": 0
+            },
+            "materials": {
+              "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-make-friends-speaking-v1.json",
+              "sha256": "d8b94e8457a83a4313399e3b81a7a8f4f39ca5be28e9ddc7748d7c62db8a59dd",
+              "groups": 4,
+              "questions": 28,
+              "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+              "teacherReviewed": false,
+              "independentFamiliesApproved": 0,
+              "fullyStockedRetentionIntervals": 0
+            }
+          }
+        }
+      ]
+    },
+    "browser": {
+      "buildId": "tSQa109Myy2UD3Gs5L5KY",
+      "passed": 8,
+      "failed": 0,
+      "screenshotsVisuallyInspected": 19,
+      "completeConceptTablesDownloadsAndLocalEditsVerified": true,
+      "mobileKeyboardAndNoPageOverflow": true,
+      "learningAndPublicationWrites": 0
+    },
+    "wholeBookCandidateProgress": {
+      "at": "2026-11-02T23:52:47.319Z",
+      "passed": true,
+      "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+      "teachingDirectoryEntries": 51,
+      "referencesExcluded": 4,
+      "teachingEntriesWithCandidates": 30,
+      "teachingEntriesWithoutCandidates": 21,
+      "targets": 163,
+      "candidateQuestions": 1141,
+      "sourceRange": [
+        7,
+        71
+      ],
+      "sourcePages": 65,
+      "rangesContinuousWithoutOverlap": true,
+      "allTargetAndQuestionIdentitiesUnique": true,
+      "allGenerationBytesReproduced": true,
+      "teacherReviewed": false,
+      "authenticSoundStockCompleted": false,
+      "allActivitiesDelivered": false,
+      "scoringFamiliesAndSufficientStockApproved": false,
+      "published": 0,
+      "adopted": 0,
+      "learnerResponses": 0,
+      "wholeBookCompleted": false
+    },
+    "frozenApplicationAndCompiledInputs": 1930,
+    "frozenPriorInputs": 2258,
+    "newInputs": 16,
+    "changedExistingInputs": [],
+    "applicationRuntimeChanged": false,
+    "databaseProtocolUnchanged": 37,
+    "previousFullApi": {
+      "passed": 3105,
+      "failed": 0,
+      "conditionalSkips": 131,
+      "currentFullSuiteRerun": false,
+      "countsNotCombined": true
+    }
+  },
+  "protection": {
+    "at": "2026-11-02T23:58:43.751Z",
+    "branch": "main",
+    "branches": [
+      "main"
+    ],
+    "worktreeCount": 1,
+    "protectedFiles": 1063,
+    "changedProtectedFiles": [],
+    "formal": {
+      "schema": 24,
+      "revision": 188
+    },
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "branchAncestry": {
+    "at": "2026-11-02T23:58:20.384Z",
+    "branch": "main",
+    "localBranches": [
+      "main"
+    ],
+    "cachedRemoteNonMainRefs": 41,
+    "allInMain": true,
+    "refs": [
+      {
+        "ref": "refs/remotes/origin/docs/teaching-tools-design",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/admin-model-tools",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/ai-topic-whiteboards",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/assistant-notes-20261028",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/assistant-output-boundaries",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/assistant-practice-assignment-20261029",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/assistant-practice-content-20261029",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/assistant-practice-learner-20261029",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/classroom-multiple-choice",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/classroom-neutral-voice",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/complete-course-journeys",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/course-artifact-shared-20261028",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/course-panel-experience",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/course-teaching-context",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/durable-guidance-models",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/guided-project-teaching",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/hyperknow-original-ui-assets",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/knowledge-report-workspace",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/lecture-assistant-integration",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/measurement-evidence-v3",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/model-experience",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/model-qualification",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/paper-practice-journey",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/paper-review-workspace",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/practice-experience",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/reference-navigation",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/resumable-long-pdf",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/source-check-single-target",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/source-course-unit-checks",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/studio-lecture-assistant",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/teaching-controls-and-layout",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/teaching-tools-ui",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/topic-whiteboard-visual-manuscripts",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/whiteboard-continuous-narration",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/whiteboard-frozen-questions",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/whiteboard-question-figures",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/feat/whiteboard-video-sentence-pacing",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/fix/measurement-guidance-fixture",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/fix/teaching-tool-json-inputs",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/release/assistant-notes-20261029",
+        "inMain": true
+      },
+      {
+        "ref": "refs/remotes/origin/release/source-teaching-20261029",
+        "inMain": true
+      }
+    ],
+    "readOnlyAudit": true,
+    "remoteRefsDeleted": false
+  },
+  "remaining": {
+    "registeredBooks": 452,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 104,
+    "booksWithDirectory": 116,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3581,
+    "lessonsWithCandidateFiles": 96,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3485,
+    "authoredFollowingMaterialCandidates": 4109,
+    "materialBundlesWithStaleDraftIdentity": 0,
+    "thisBookTeachingEntriesWithoutCandidates": 21,
+    "firstLessonSeparateCandidates": 44,
+    "nextSixLiteracyLessonsAndActivityNotAuthored": true,
+    "allRemainingTextbooksGespTeacherAndRealWorldConditions": true,
+    "block5": true
+  },
+  "boundaries": {
+    "rawOriginalImagesFullModernTextAndPrivateReferenceHtmlLocalOnly": true,
+    "privateRuntimeAndCredentialsExcluded": true,
+    "realLearnerDataWritten": false,
+    "automaticApproval": false,
+    "published": 0,
+    "adopted": 0,
+    "learnerResponses": 0,
+    "pushed": false,
+    "deployed": false
+  }
+}

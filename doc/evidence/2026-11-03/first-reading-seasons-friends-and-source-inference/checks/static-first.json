@@ -1,0 +1,124 @@
+{
+  "at": "2026-11-02T23:52:01.827Z",
+  "passed": false,
+  "generationByteStable": true,
+  "files": [
+    {
+      "path": "scripts/content/build-chinese-g1-seasonal-candidates.cjs",
+      "sha256": "6a8fbe6b7f6acf92137f7ddfe28633e51001888ad7ea8804daeaab99f0d5f0d6"
+    },
+    {
+      "path": "scripts/content/chinese-g1-autumn-and-boat.cjs",
+      "sha256": "593b1794dec2d31dee542322140d05d17a0eb1dc7fa20531488cd623e5a29961"
+    },
+    {
+      "path": "scripts/content/chinese-g1-jiangnan-and-seasons.cjs",
+      "sha256": "676c8581a3b6838bd51a3db73e9b756116a5c4bf324a6521d11989359d0d6ddf"
+    },
+    {
+      "path": "scripts/content/chinese-g1-friends-and-garden-four.cjs",
+      "sha256": "5604e19877dfb948e3ff8f5304d2300f5c95966056a52ef45c8fdf81e42f8da1"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-autumn-first-reading-v1.json",
+      "sha256": "5537663bbc0d8d26ee5da5a012c7808b654713d39267fcb4c219de5ec6610d2a"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-autumn-first-reading-v1.json",
+      "sha256": "92e506abd9c61efdf41b5f586b537ebae15ecc3f33bf36e371242478553691bf"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-four-seasons-reading-v1.json",
+      "sha256": "63f506c3d92f8a4201b73d9ca2d37b05bc8f09248eca6919ad71d5a4c38a713a"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-four-seasons-reading-v1.json",
+      "sha256": "a9c01c0c2427f5fb1312bf41d50145359d501fe109aa9715dbbcfa652cd9a5a1"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-garden-four-seasons-and-reading-v1.json",
+      "sha256": "8ffc77a5ba535241d1e9c0bf6168846ddcf1d50d2f7d6b47602374c674113f9b"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-garden-four-seasons-and-reading-v1.json",
+      "sha256": "65447ecf314b57a75929395cac0b85373c723d395e7d05ff121b347d6b9c9966"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-jiangnan-lotus-reading-v1.json",
+      "sha256": "755ab991e2e9e1bf739dab6fc9094b48e3af595d29e3b04365797d369eb8a6ca"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-jiangnan-lotus-reading-v1.json",
+      "sha256": "6aa9c05df0e91d56aca8f8183946a359c06268002a2175955a520c8826f3cd6f"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-little-boat-reading-v1.json",
+      "sha256": "dc6de1caef62ff383d2b2dd65e502ff0e447c564e982d3d2f8b9c83a1ef4b395"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-little-boat-reading-v1.json",
+      "sha256": "ea0696d798662536e3f694a367ad12b52d154a53e4305aa05597d4ac8398583b"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-make-friends-speaking-v1.json",
+      "sha256": "8dd9d55df7f2d68174214a7cdbf932b0866bfc9391966a9b30794d4ea06de89b"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-make-friends-speaking-v1.json",
+      "sha256": "d8b94e8457a83a4313399e3b81a7a8f4f39ca5be28e9ddc7748d7c62db8a59dd"
+    }
+  ],
+  "rows": [
+    {
+      "name": "chinese-g1-a692a990-little-boat-reading-v1.json",
+      "targets": 6,
+      "questions": 42,
+      "pages": [
+        61,
+        62
+      ],
+      "bodyCharacters": 701,
+      "completeBodyNonCheckGaps": [],
+      "teacherReviewed": false
+    },
+    {
+      "name": "chinese-g1-a692a990-make-friends-speaking-v1.json",
+      "targets": 4,
+      "questions": 28,
+      "pages": [
+        67
+      ],
+      "bodyCharacters": 681,
+      "completeBodyNonCheckGaps": [],
+      "teacherReviewed": false
+    }
+  ],
+  "modes": {
+    "short_answer": 7,
+    "audio_record": 56,
+    "image_upload": 7
+  },
+  "targets": 10,
+  "questions": 70,
+  "failures": [
+    {
+      "name": "chinese-g1-a692a990-autumn-first-reading-v1.json",
+      "error": "The expression evaluated to a falsy value:\n\n  assert(q.stem.trim().length>=15&&q.answer.trim().length>=15&&q.analysis.includes(q.answer))\n"
+    },
+    {
+      "name": "chinese-g1-a692a990-four-seasons-reading-v1.json",
+      "error": "The expression evaluated to a falsy value:\n\n  assert(q.stem.trim().length>=15&&q.answer.trim().length>=15&&q.analysis.includes(q.answer))\n"
+    },
+    {
+      "name": "chinese-g1-a692a990-garden-four-seasons-and-reading-v1.json",
+      "error": "The expression evaluated to a falsy value:\n\n  assert(q.stem.trim().length>=15&&q.answer.trim().length>=15&&q.analysis.includes(q.answer))\n"
+    },
+    {
+      "name": "chinese-g1-a692a990-jiangnan-lotus-reading-v1.json",
+      "error": "The expression evaluated to a falsy value:\n\n  assert(q.stem.trim().length>=15&&q.answer.trim().length>=15&&q.analysis.includes(q.answer))\n"
+    }
+  ],
+  "authenticSoundFilesIncluded": false,
+  "teacherReviewed": false,
+  "published": false
+}

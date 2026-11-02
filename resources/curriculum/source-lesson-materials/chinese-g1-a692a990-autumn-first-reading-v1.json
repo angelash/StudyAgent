@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "autumn-first-reading",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-autumn-first-reading-v1.json",
+      "sha256": "5537663bbc0d8d26ee5da5a012c7808b654713d39267fcb4c219de5ec6610d2a",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry1",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 59,
+        "pageEnd": 60,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。",
+  "groups": [
+    {
+      "lesson": "autumn-first-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-autumn-clues",
+      "structure": "g1-autumn-current-clues-and-boundaries",
+      "familyProposal": "a692a990-g1-autumn-current-clues-and-boundaries",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "概述有本件线索",
+          "weight": 0.4
+        },
+        {
+          "criterion": "顺序和对象清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "作品与真实地区观察分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "先联系天气树叶，再说天空雁群，依据本件描写，不把标题当全部证据。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-current-clues-and-boundaries-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件怎样从地面附近的景物转到天空？用自己的话概述两类线索。",
+          "answer": "先联系天气树叶，再说天空雁群，依据本件描写，不把标题当全部证据。",
+          "analysis": "先联系天气树叶，再说天空雁群，依据本件描写，不把标题当全部证据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-current-clues-and-boundaries-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "树叶与雁群分别怎样帮助理解当前秋景？说明依据类型。",
+          "answer": "树叶的颜色和飘落、雁群飞行及队形是本件不同线索，概述接当前文字。",
+          "analysis": "树叶的颜色和飘落、雁群飞行及队形是本件不同线索，概述接当前文字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-current-clues-and-boundaries-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创材料只说一片叶子变黄，能唯一确认任何地点都入秋吗？",
+          "answer": "不能，当前一处线索有限，还需地点时间与其他条件，不从一叶推所有地区。",
+          "analysis": "不能，当前一处线索有限，还需地点时间与其他条件，不从一叶推所有地区。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-current-clues-and-boundaries-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本件描写部分树叶变化，就能说所有树同一天全部落叶吗？",
+          "answer": "不能，作品当前景物不能推出全部树种和地区同时相同。",
+          "analysis": "不能，作品当前景物不能推出全部树种和地区同时相同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-current-clues-and-boundaries-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "如果只看标题没有读到雁群段，怎样报告已知范围？",
+          "answer": "可以说知道题目，具体雁群描写待读，不用参考概述补成已经读过。",
+          "analysis": "可以说知道题目，具体雁群描写待读，不用参考概述补成已经读过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-current-clues-and-boundaries-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创新材料写春日嫩叶，能直接套本件黄叶南飞结论吗？",
+          "answer": "不能，应按新材料的当前线索概述，题材相近不等内容相同。",
+          "analysis": "不能，应按新材料的当前线索概述，题材相近不等内容相同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-current-clues-and-boundaries-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选本件一处已读线索，说明它来自作品还是本人真实观察。",
+          "answer": "对象与来源明确，作品解释不登记成本人实地观察，实际未知如实。",
+          "analysis": "对象与来源明确，作品解释不登记成本人实地观察，实际未知如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "autumn-first-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-autumn-yi",
+      "structure": "g1-autumn-yi-current-contexts",
+      "familyProposal": "a692a990-g1-autumn-yi-current-contexts",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人读完整当前形式",
+          "weight": 0.4
+        },
+        {
+          "criterion": "四种当前语境对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "准确示范与帮助如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "本件分别yí、yì、yí、yī，完整语境清楚，不把文字解释代本人声音。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-yi-current-contexts-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人读一片片、一群、一会儿和“一”字，录下当前一的读音。",
+          "answer": "本件分别yí、yì、yí、yī，完整语境清楚，不把文字解释代本人声音。",
+          "analysis": "本件分别yí、yì、yí、yī，完整语境清楚，不把文字解释代本人声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-yi-current-contexts-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读一群与一会儿，说明差别。",
+          "answer": "一群中yì，一会儿中yí，当前形式与声音对应，帮助和本人尝试分开。",
+          "analysis": "一群中yì，一会儿中yí，当前形式与声音对应，帮助和本人尝试分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-yi-current-contexts-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给“一”字、一片片、一群，本人逐项读。",
+          "answer": "字名yī、一片片yí、一群yì，按当前语境，不顺背旧四项。",
+          "analysis": "字名yī、一片片yí、一群yì，按当前语境，不顺背旧四项。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-yi-current-contexts-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "有人把全文的一都读yī，本人怎样用本件一组说明？",
+          "answer": "实际读当前词语与字名作比较，当前变调和字名条件分开，不只报规则。",
+          "analysis": "实际读当前词语与字名作比较，当前变调和字名条件分开，不只报规则。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-yi-current-contexts-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只指出调号还没出声，可以说已完成实际朗读吗？",
+          "answer": "不能，只能说明当前观察，发音仍待本人实际尝试，不能补造声音。",
+          "analysis": "不能，只能说明当前观察，发音仍待本人实际尝试，不能补造声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-yi-current-contexts-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本次需要成人提醒才读准一片片，录音怎样保留条件？",
+          "answer": "保留初次、提醒与重读，yí按当前词语核，不把帮助后正确倒作初答。",
+          "analysis": "保留初次、提醒与重读，yí按当前词语核，不把帮助后正确倒作初答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-yi-current-contexts-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次读四形式，说明实际独立覆盖与还需核的地方。",
+          "answer": "按真实声音逐项说明，不从一词正确推所有语境都会读。",
+          "analysis": "按真实声音逐项说明，不从一词正确推所有语境都会读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "autumn-first-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-autumn-paragraph",
+      "structure": "g1-autumn-paragraph-vs-display-lines",
+      "familyProposal": "a692a990-g1-autumn-paragraph-vs-display-lines",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "段首依据明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原件与新材料区分",
+          "weight": 0.4
+        },
+        {
+          "criterion": "折行句号不代段数",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "有三个自然段，回原件段首与内容起始核，手机自动折行不作段数。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-paragraph-vs-display-lines-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件秋天有几个自然段？怎样核而不是数手机显示行？",
+          "answer": "有三个自然段，回原件段首与内容起始核，手机自动折行不作段数。",
+          "analysis": "有三个自然段，回原件段首与内容起始核，手机自动折行不作段数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-paragraph-vs-display-lines-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本件第二自然段有不止一句话，能每见句号就另算一段吗？",
+          "answer": "不能，句子与自然段层次不同，按原页段首核段落。",
+          "analysis": "不能，句子与自然段层次不同，按原页段首核段落。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-paragraph-vs-display-lines-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡片明确有两处段首，每段手机折成三行，应算几自然段？",
+          "answer": "算两自然段，六行是显示折行，当前材料不沿用教材三段。",
+          "analysis": "算两自然段，六行是显示折行，当前材料不沿用教材三段。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-paragraph-vs-display-lines-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "换成较窄屏幕，原件三自然段会自动变成五段吗？",
+          "answer": "不会，显示宽度只改变折行，原文段落仍按原件三处起始。",
+          "analysis": "不会，显示宽度只改变折行，原文段落仍按原件三处起始。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-paragraph-vs-display-lines-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只给无缩进的残片且不知道起始，能唯一确定完整篇段数吗？",
+          "answer": "不能，需完整原件与段落信息，残片不足时说明缺口。",
+          "analysis": "不能，需完整原件与段落信息，残片不足时说明缺口。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-paragraph-vs-display-lines-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "教材最后感叹段很短，就能把它忽略不计吗？",
+          "answer": "不能，段数依段首与原文结构，不以长短决定是否算一段。",
+          "analysis": "不能，段数依段首与原文结构，不以长短决定是否算一段。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-paragraph-vs-display-lines-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "比较教材与给定原创两段卡片，各说段数和依据。",
+          "answer": "教材三段、明确新卡片两段，依据分别对应，不能把一份材料结论套另一份。",
+          "analysis": "教材三段、明确新卡片两段，依据分别对应，不能把一份材料结论套另一份。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "autumn-first-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-autumn-recognition",
+      "structure": "g1-autumn-ten-characters-current-reading",
+      "familyProposal": "a692a990-g1-autumn-ten-characters-current-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人识读十字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前语境字音字义对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未读帮助与必写范围分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "十字声音实际对应，了在本课句末语境le，词语帮助和未读范围如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-ten-characters-current-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读秋气了树叶片大飞会个十字，再联系一个本件词语。",
+          "answer": "十字声音实际对应，了在本课句末语境le，词语帮助和未读范围如实。",
+          "analysis": "十字声音实际对应，了在本课句末语境le，词语帮助和未读范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-ten-characters-current-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再按叶秋飞气树了会大片个的新顺序读。",
+          "answer": "逐项看当前字形读，不背旧顺序，单字与具体语境需要时说明。",
+          "analysis": "逐项看当前字形读，不背旧顺序，单字与具体语境需要时说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-ten-characters-current-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡片给一片叶与一群雁的明确原创图说，本人读片飞并说所指。",
+          "answer": "字音词义接当前材料，原创图说不当本人真实观察。",
+          "analysis": "字音词义接当前材料，原创图说不当本人真实观察。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-ten-characters-current-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只认出八字时，怎样说明另两字？",
+          "answer": "保留实际八字与卡住处，另外两项待练，不用熟词或参考声补齐。",
+          "analysis": "保留实际八字与卡住处，另外两项待练，不用熟词或参考声补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-ten-characters-current-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本课了读le，就能说任何语境只读le吗？本人读本课形式后说明。",
+          "answer": "不能，当前句末语境核le，其他语境另核，不由本课推唯一读音。",
+          "analysis": "不能，当前句末语境核le，其他语境另核，不由本课推唯一读音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-ten-characters-current-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "认得树叶，就可以把树叶都加作本课必写吗？",
+          "answer": "不能，本课识十字而必写了子人大，识读和写字目标分别核。",
+          "analysis": "不能，本课识十字而必写了子人大，识读和写字目标分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-ten-characters-current-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再认十字，选一词解释并报告帮助。",
+          "answer": "声音、词义与当前范围真实，未做手写不登记为写过。",
+          "analysis": "声音、词义与当前范围真实，未做手写不登记为写过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "autumn-first-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-autumn-writing",
+      "structure": "g1-autumn-le-zi-ren-da-own-writing",
+      "familyProposal": "a692a990-g1-autumn-le-zi-ren-da-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖四字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整字形区别清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "范形帮助与真实过程分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四字实际覆盖，了子及人大区别按完整范形核，键入不代手写。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-le-zi-ren-da-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人看本件范形后在格中写了子人大，上传原稿。",
+          "answer": "四字实际覆盖，了子及人大区别按完整范形核，键入不代手写。",
+          "analysis": "四字实际覆盖，了子及人大区别按完整范形核，键入不代手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-le-zi-ren-da-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先比较了与子，再本人各写一次并指出当前可见区别。",
+          "answer": "比较接本人作品与范形，不只报熟悉字名，实际笔顺过程另核。",
+          "analysis": "比较接本人作品与范形，不只报熟悉字名，实际笔顺过程另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-le-zi-ren-da-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给大子了人，本人依序写，留原稿。",
+          "answer": "字形与当前顺序对应，不按旧四字位置补作品。",
+          "analysis": "字形与当前顺序对应，不按旧四字位置补作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-le-zi-ren-da-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人目前只写了、子两字，如何如实说明人、大两字状态？",
+          "answer": "只核实际两字，人大待写，不用参考字图补为本人已经完成。",
+          "analysis": "只核实际两字，人大待写，不用参考字图补为本人已经完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-le-zi-ren-da-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若把大漏成了人，怎样留原稿再订正？",
+          "answer": "保留原写，回完整范形由本人重写大，后改不覆盖首次。",
+          "analysis": "保留原写，回完整范形由本人重写大，后改不覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-le-zi-ren-da-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "上传四字静态原稿就能证明所有笔顺吗？",
+          "answer": "不能，成品可核字形，先后需实际书写过程，帮助和原写后改分明。",
+          "analysis": "不能，成品可核字形，先后需实际书写过程，帮助和原写后改分明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-le-zi-ren-da-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次写四字，选一处当前想核的字形说明所用帮助。",
+          "answer": "说明接真实作品，不要求造错或编进步，四字范围如实。",
+          "analysis": "说明接真实作品，不要求造错或编进步，四字范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "autumn-first-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-autumn-reading-recall",
+      "structure": "g1-autumn-real-reading-and-recall",
+      "familyProposal": "a692a990-g1-autumn-real-reading-and-recall",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人真实朗读背诵",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前原篇与范围明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "看文提示和原音分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "朗读与背诵分别核，当前原篇、一的读音、覆盖和帮助真实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-real-reading-and-recall-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人回本件完整原篇朗读，再尝试背一自然段，录音说明是否看文。",
+          "answer": "朗读与背诵分别核，当前原篇、一的读音、覆盖和帮助真实。",
+          "analysis": "朗读与背诵分别核，当前原篇、一的读音、覆盖和帮助真实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-real-reading-and-recall-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范再本人读第二自然段，说明哪个词得到提醒。",
+          "answer": "原声与本人声音分开，词语和提示对应当前，不把示范代本人完成。",
+          "analysis": "原声与本人声音分开，词语和提示对应当前，不把示范代本人完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-real-reading-and-recall-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "合上原件后本人尝试背第三自然段，再说明与看文读的不同。",
+          "answer": "按真实是否看文核，第三段范围明确，未背到如实，不用概述补原文背诵。",
+          "analysis": "按真实是否看文核，第三段范围明确，未背到如实，不用概述补原文背诵。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-real-reading-and-recall-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读过第一自然段，能登记完整篇已背诵吗？",
+          "answer": "不能，只核真实已读，另外范围待读背，概述不能替本人原声。",
+          "analysis": "不能，只核真实已读，另外范围待读背，概述不能替本人原声。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-real-reading-and-recall-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "中途看了一次原页才接上，录音怎样说明？",
+          "answer": "保留卡顿、查看和接读，不把得到提示后结果倒作完全独立。",
+          "analysis": "保留卡顿、查看和接读，不把得到提示后结果倒作完全独立。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-real-reading-and-recall-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人再读一处当前还想练的句段，比较前后真实声音。",
+          "answer": "比较依据录音，未明显变化如实，不要求造错或编学习效果。",
+          "analysis": "比较依据录音，未明显变化如实，不要求造错或编学习效果。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-autumn-first-reading-g1-autumn-real-reading-and-recall-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人说明当前读过、背过和还待练的范围，再实际读一小段。",
+          "answer": "范围、原声和帮助对应，不由部分成功推出整篇和所有新篇掌握。",
+          "analysis": "范围、原声和帮助对应，不由部分成功推出整篇和所有新篇掌握。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "little-boat-reading",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-little-boat-reading-v1.json",
+      "sha256": "dc6de1caef62ff383d2b2dd65e502ff0e447c564e982d3d2f8b9c83a1ef4b395",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter4:entry2",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 61,
+        "pageEnd": 62,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。",
+  "groups": [
+    {
+      "lesson": "little-boat-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-boat-metaphor",
+      "structure": "g1-boat-shape-and-literary-imagination",
+      "familyProposal": "a692a990-g1-boat-shape-and-literary-imagination",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "相似处有材料",
+          "weight": 0.4
+        },
+        {
+          "criterion": "想象说话者清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "作品不代现实经历",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "联系弯曲和两头尖等当前外形，说明是文学联想，不是现实可乘月亮。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-shape-and-literary-imagination-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "弯月为什么能让本件说话者想起小船？用自己的话说一处依据。",
+          "answer": "联系弯曲和两头尖等当前外形，说明是文学联想，不是现实可乘月亮。",
+          "analysis": "联系弯曲和两头尖等当前外形，说明是文学联想，不是现实可乘月亮。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-shape-and-literary-imagination-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "诗中的我与正在学习的本人一定是同一个人吗？",
+          "answer": "不是，作品说话者和学生本人分开，不能直接把角色活动填为本人经历。",
+          "analysis": "不是，作品说话者和学生本人分开，不能直接把角色活动填为本人经历。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-shape-and-literary-imagination-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创图只给圆盘，能直接说它有本件小船两头尖的同一依据吗？",
+          "answer": "不能，当前对象形状不同，应先核新材料特征，不沿用旧相似处。",
+          "analysis": "不能，当前对象形状不同，应先核新材料特征，不沿用旧相似处。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-shape-and-literary-imagination-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本件写弯月，就能说月亮每晚都呈同样弯形吗？",
+          "answer": "不能，诗中当前画面不作所有夜晚月相结论。",
+          "analysis": "不能，诗中当前画面不作所有夜晚月相结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-shape-and-literary-imagination-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "把作品坐船想象说成本人真实登月，怎样重新说明？",
+          "answer": "回作品说话者和当前想象，真实经历按实际事实，不用诗句补造。",
+          "analysis": "回作品说话者和当前想象，真实经历按实际事实，不用诗句补造。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-shape-and-literary-imagination-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只看插图未读原篇，能说明完整诗的全部内容吗？",
+          "answer": "不能，只能说当前看见图景，完整阅读与背诵仍待本人实际完成。",
+          "analysis": "不能，只能说当前看见图景，完整阅读与背诵仍待本人实际完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-shape-and-literary-imagination-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选一处本件画面概述，再说明依据与不知道的现实细节。",
+          "answer": "解释接当前作品，现实日期地点或本人活动未知就保留未知。",
+          "analysis": "解释接当前作品，现实日期地点或本人活动未知就保留未知。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "little-boat-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-boat-phrases",
+      "structure": "g1-boat-reduplicated-phrases-current-objects",
+      "familyProposal": "a692a990-g1-boat-reduplicated-phrases-current-objects",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人读完整短语",
+          "weight": 0.4
+        },
+        {
+          "criterion": "四组对象对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前声音和帮助如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四组完整声音与本件对象对应，当前词中读法按注音，帮助如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-reduplicated-phrases-current-objects-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人读小小的船、弯弯的月儿、闪闪的星星、蓝蓝的天。",
+          "answer": "四组完整声音与本件对象对应，当前词中读法按注音，帮助如实。",
+          "analysis": "四组完整声音与本件对象对应，当前词中读法按注音，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-reduplicated-phrases-current-objects-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人说闪闪的修饰什么，并读当前短语。",
+          "answer": "本件修饰星星，实际读音可核，文字搭配说明不代本人声音。",
+          "analysis": "本件修饰星星，实际读音可核，文字搭配说明不代本人声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-reduplicated-phrases-current-objects-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序先给天再给船，本人按本件补完整短语并读。",
+          "answer": "蓝蓝的天、小小的船，按当前对象更新，不照背旧顺序。",
+          "analysis": "蓝蓝的天、小小的船，按当前对象更新，不照背旧顺序。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-reduplicated-phrases-current-objects-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "把弯弯的与天随意换位，就一定是作者本件搭配吗？本人读原组再说。",
+          "answer": "不是，原组是弯弯的月儿，当前搭配需回本件，原创另标。",
+          "analysis": "不是，原组是弯弯的月儿，当前搭配需回本件，原创另标。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-reduplicated-phrases-current-objects-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只连线没出声，可以说已实际朗读四组吗？",
+          "answer": "不能，连线可核关系选择，实际声音仍待本人读。",
+          "analysis": "不能，连线可核关系选择，实际声音仍待本人读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-reduplicated-phrases-current-objects-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人读月儿与船儿，说明当前儿的读法如何核。",
+          "answer": "按本件注音与准确示范核，不把所有儿词无条件套相同儿化。",
+          "analysis": "按本件注音与准确示范核，不把所有儿词无条件套相同儿化。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-reduplicated-phrases-current-objects-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再读四组，说明哪些独立读、哪些有提醒。",
+          "answer": "逐项按真实声音和帮助核，部分流利不推整篇已背。",
+          "analysis": "逐项按真实声音和帮助核，部分流利不推整篇已背。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "little-boat-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-boat-recognition",
+      "structure": "g1-boat-ten-characters-current-reading",
+      "familyProposal": "a692a990-g1-boat-ten-characters-current-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人识读十字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字词当前音义对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "识写和帮助范围分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "实际十字声音对应，完整词看见两字分别核，不以一个字代全部。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-ten-characters-current-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读的船两头在里看见闪星十字，再读看见一词。",
+          "answer": "实际十字声音对应，完整词看见两字分别核，不以一个字代全部。",
+          "analysis": "实际十字声音对应，完整词看见两字分别核，不以一个字代全部。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-ten-characters-current-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再按星里船闪两见的头看在的新顺序认读。",
+          "answer": "逐项看当前字形，不背旧顺序，帮助如实。",
+          "analysis": "逐项看当前字形，不背旧顺序，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-ten-characters-current-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡片给船与星的明确图说，本人读相关字并解释一处所指。",
+          "answer": "字音字义接当前原创材料，图说不当本人真实见闻。",
+          "analysis": "字音字义接当前原创材料，图说不当本人真实见闻。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-ten-characters-current-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只读清八字，怎样说明另两字？",
+          "answer": "保留实际已读与卡住项，未覆盖待练，不用熟悉词补齐。",
+          "analysis": "保留实际已读与卡住项，未覆盖待练，不用熟悉词补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-ten-characters-current-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本件星星后字读法可以直接套单独星字吗？",
+          "answer": "不能，当前词中和单字条件分别核，实际本人声音留存。",
+          "analysis": "不能，当前词中和单字条件分别核，实际本人声音留存。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-ten-characters-current-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "读会的船两头等字，就都成必写了吗？",
+          "answer": "不是，本课必写月儿头里，识读与手写目标分开。",
+          "analysis": "不是，本课必写月儿头里，识读与手写目标分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-ten-characters-current-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重认十字并解释一个当前词，说明帮助与范围。",
+          "answer": "声音词义与帮助对应，不把认读自动登记为本人已写。",
+          "analysis": "声音词义与帮助对应，不把认读自动登记为本人已写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "little-boat-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-boat-writing",
+      "structure": "g1-boat-yue-er-tou-li-own-writing",
+      "familyProposal": "a692a990-g1-boat-yue-er-tou-li-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖四字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整范形与格位对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "过程提示和后改分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四字本人实际写，完整字形格位对应，不用键入或教材图代作品。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-yue-er-tou-li-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按本件范形写月儿头里，上传格中原稿。",
+          "answer": "四字本人实际写，完整字形格位对应，不用键入或教材图代作品。",
+          "analysis": "四字本人实际写，完整字形格位对应，不用键入或教材图代作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-yue-er-tou-li-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先看月与儿范形，再本人各写并说明一处可见差别。",
+          "answer": "比较接当前原稿与完整范形，笔顺先后另依实际过程。",
+          "analysis": "比较接当前原稿与完整范形，笔顺先后另依实际过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-yue-er-tou-li-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给里头儿月，本人依次写并上传。",
+          "answer": "当前顺序与字形相符，不背旧四字位置代作品。",
+          "analysis": "当前顺序与字形相符，不背旧四字位置代作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-yue-er-tou-li-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只写月儿，头里尚未写时怎样说明？",
+          "answer": "只核实际两字，另外两字待写，不以范例补本人作品。",
+          "analysis": "只核实际两字，另外两字待写，不以范例补本人作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-yue-er-tou-li-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若里的内部写漏一笔，怎样留原稿再订正？",
+          "answer": "保留原写，回完整范形后本人重写，后改不覆盖首次。",
+          "analysis": "保留原写，回完整范形后本人重写，后改不覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-yue-er-tou-li-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只有静态四字图能证明本人所有笔顺正确吗？",
+          "answer": "不能，成品核字形，过程看实际书写，所用帮助分别说明。",
+          "analysis": "不能，成品核字形，过程看实际书写，所用帮助分别说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-yue-er-tou-li-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再写四字，选一处想核的结构说明实际帮助。",
+          "answer": "说明接当前作品，不要求编错误或进步，真实范围如实。",
+          "analysis": "说明接当前作品，不要求编错误或进步，真实范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "little-boat-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-boat-reading-recall",
+      "structure": "g1-boat-real-reading-and-recall",
+      "familyProposal": "a692a990-g1-boat-real-reading-and-recall",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "当前完整原篇真实",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人读背覆盖可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "看文提示与原声分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "读与背分别核，叠词和当前词语音对应，未覆盖与帮助如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-real-reading-and-recall-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人回本件完整原篇朗读，再尝试背一部分并说明是否看文。",
+          "answer": "读与背分别核，叠词和当前词语音对应，未覆盖与帮助如实。",
+          "analysis": "读与背分别核，叠词和当前词语音对应，未覆盖与帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-real-reading-and-recall-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读一处叠词句段，说提醒了哪里。",
+          "answer": "参考声不代本人声音，当前原篇与提示范围清楚。",
+          "analysis": "参考声不代本人声音，当前原篇与提示范围清楚。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-real-reading-and-recall-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "合上本件后本人尝试接出前后相关内容，录下真实尝试。",
+          "answer": "按实际是否看文核背诵，卡住如实，不用概述代原篇。",
+          "analysis": "按实际是否看文核背诵，卡住如实，不用概述代原篇。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-real-reading-and-recall-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只会背一处叠词，就能记完整诗已背完吗？",
+          "answer": "不能，只核实际范围，其余待练，不由局部推整篇。",
+          "analysis": "不能，只核实际范围，其余待练，不由局部推整篇。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-real-reading-and-recall-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "中途成人给了开头提示，怎样保留这次背诵条件？",
+          "answer": "保留原尝试、提示与接读，不倒作为完全独立首次。",
+          "analysis": "保留原尝试、提示与接读，不倒作为完全独立首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-real-reading-and-recall-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人再读当前想练的一处，比较前后实际声音。",
+          "answer": "比较有原音，未明显变化如实，不要求造错或编效果。",
+          "analysis": "比较有原音，未明显变化如实，不要求造错或编效果。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-real-reading-and-recall-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人说明读过、背过、还待练范围，再实际读一小段。",
+          "answer": "真实声音与范围一致，参考和本人表达分开，现代全文回原件。",
+          "analysis": "真实声音与范围一致，参考和本人表达分开，现代全文回原件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "little-boat-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-boat-new-phrases",
+      "structure": "g1-boat-new-object-phrase-expression",
+      "familyProposal": "a692a990-g1-boat-new-object-phrase-expression",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人完整表达",
+          "weight": 0.4
+        },
+        {
+          "criterion": "新对象特点对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原创与原篇事实分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可说弯弯的小路，特点接当前给定材料，原创短语不冒充原篇。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-new-object-phrase-expression-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创卡片给一条弯曲小路，本人用叠词说完整短语并解释。",
+          "answer": "可说弯弯的小路，特点接当前给定材料，原创短语不冒充原篇。",
+          "analysis": "可说弯弯的小路，特点接当前给定材料，原创短语不冒充原篇。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-new-object-phrase-expression-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "新材料明确给圆形盘子和高灯塔，本人分别说短语。",
+          "answer": "可说圆圆的盘子、高高的灯塔，词语与当前特点对应，合理不同表达可接受。",
+          "analysis": "可说圆圆的盘子、高高的灯塔，词语与当前特点对应，合理不同表达可接受。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-new-object-phrase-expression-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创给一盏明亮窗灯，本人换一条合适表达说明原因。",
+          "answer": "可说亮亮的窗灯等，依据当前明亮特点，不照套本件蓝蓝的天。",
+          "analysis": "可说亮亮的窗灯等，依据当前明亮特点，不照套本件蓝蓝的天。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-new-object-phrase-expression-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "没给对象颜色却坚持只有蓝蓝的唯一正确，怎样改说？",
+          "answer": "说明缺颜色条件，先补材料或选已知特点，不能编唯一结论。",
+          "analysis": "说明缺颜色条件，先补材料或选已知特点，不能编唯一结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-new-object-phrase-expression-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "说出原创小路短语就能登记本人今天走过那里吗？",
+          "answer": "不能，当前口头例子和真实经历分别核，不由材料代本人活动。",
+          "analysis": "不能，当前口头例子和真实经历分别核，不由材料代本人活动。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-new-object-phrase-expression-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人听成人一个建议后修改短语，怎样留原说法？",
+          "answer": "保留初次、建议和新表达，后改不覆盖原答，理由接当前对象。",
+          "analysis": "保留初次、建议和新表达，后改不覆盖原答，理由接当前对象。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-little-boat-reading-g1-boat-new-object-phrase-expression-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人选新对象说两个短语，解释与原篇例子的相同方法和不同对象。",
+          "answer": "方法按特点选词，对象与原创身份清楚，不能只重复熟句当新材料迁移。",
+          "analysis": "方法按特点选词，对象与原创身份清楚，不能只重复熟句当新材料迁移。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}
